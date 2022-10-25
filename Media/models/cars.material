@@ -1,0 +1,213 @@
+
+//  ES car  -------------------------------------------------
+hlms body_realtime pbs
+{
+	diffuse_map  ES_body_yellow.png
+	// diffuse_map  ES_body_blue.png
+	//normal_map   ES_normal.png
+	roughness_map  ES_refl.png
+	metalness_map  ES_refl.png
+
+	// workflow metallic
+	fresnel_coeff 0.1
+
+	diffuse		0.6 0.3 0.3
+	specular	0.9 0.9 0.9
+	roughness 0.1
+	metalness 1.0
+}
+
+hlms ES_interior pbs
+{
+	diffuse_map  ES_interior.png
+	normal_map   ES_interior_normal.jpg
+	//roughness_map  ES_interior.png
+	//metalness_map  ES_interior.png
+
+	workflow specular_fresnel
+	fresnel_coeff 0.01
+
+	//diffuse		0.4 0.4 0.4
+	specular	0.1 0.1 0.1
+	roughness 0.7
+	metalness 0.01
+}
+
+hlms ES_glass pbs
+{
+	diffuse_map  ES_glass.png
+
+	// workflow specular_fresnel
+	// fresnel_coeff 0.1
+
+	roughness 0.2
+	metalness 0.8
+
+    cull_mode none
+    depth_write off
+    transparency 0.5
+	transparency_mode transparent
+}
+
+hlms ES_wheel pbs
+{
+	diffuse_map   ES_wheel.png
+	// normal_map    ES_wheel_normal.jpg
+	metalness_map ES_wheel_spec.png
+	specular_map  ES_wheel_spec.png
+	
+	workflow metallic
+	fresnel_coeff 0.01
+
+	specular	0.2 0.2 0.2
+	roughness 0.3
+	metalness 0.5
+}
+
+
+//  SX car  -------------------------------------------------
+hlms SX_body pbs
+{
+	// diffuse_map  SX_body_blue.png
+	// diffuse_map  SX_body_gray.png
+	diffuse_map  SX_body_violet.png
+	//normal_map   ES_normal.png
+	//roughness_map  SX_body.png
+	//metalness_map  SX_body.png
+
+	workflow metallic
+	fresnel_coeff 0.1
+
+	// diffuse		0.7 0.8 0.9
+	diffuse		0.6 0.6 0.6
+	// diffuse		0.3 0.3 0.3
+	// diffuse		0.03 0.03 0.03
+	specular	0.7 0.7 0.7
+	//roughness 0.1
+	roughness 0.1
+	metalness 0.9
+	// metalness 0.7
+}
+
+hlms SX_exterior pbs
+{
+	diffuse_map  SX_exterior.png
+	//normal_map   SX_exterior.png
+	//roughness_map  SX_exterior.png
+	//metalness_map  SX_exterior_refl.png
+
+	workflow specular_fresnel
+	fresnel_coeff 0.01
+
+	diffuse		0.3 0.3 0.3
+	specular	0.6 0.6 0.6
+	roughness 0.5
+	metalness 0.6
+}
+
+hlms SX_interior pbs
+{
+	diffuse_map  SX_interior.png
+	//normal_map   XZ_interior.png
+	//roughness_map  ES_interior.png
+	//metalness_map  SZ_interior_refl.png
+
+	fresnel_coeff 0.1
+	//diffuse		0.4 0.4 0.4
+	specular	0.1 0.1 0.1
+	roughness 0.6
+	metalness 0.1
+}
+
+hlms SX_glass pbs
+{
+	diffuse_map  SX_glass.png
+	//workflow specular_fresnel
+	//fresnel_coeff 0.1
+
+	roughness 0.1
+	metalness 1.0
+
+    cull_mode none
+    depth_write off
+    transparency 0.5
+	transparency_mode transparent
+	two_sided true
+}
+
+hlms SX_wheel pbs
+{
+	diffuse_map  SX_wheel.png
+	//normal_map   XZ_interior.png
+	//roughness_map  SX_wheel_refl.png
+	metalness_map  SX_wheel_refl.png
+	specular_map   SX_wheel_spec.png
+
+	workflow specular_fresnel
+	fresnel_coeff 0.1
+
+	diffuse		0.5 0.5 0.5
+	specular	0.3 0.3 0.3
+	roughness 0.4
+	metalness 0.6
+}
+
+
+//  HI car  -------------------------------------------------
+hlms HI_body pbs
+{
+	diffuse_map  HI_body_blue.png
+	metalness_map  HI_refl.png
+	
+	workflow metallic
+	fresnel_coeff 0.1
+
+	diffuse		0.6 0.6 0.6
+	specular	0.6 0.6 0.6
+	roughness 0.2
+	metalness 1.0
+}
+
+hlms HI_interior pbs
+{
+	diffuse_map  HI_interior.png
+
+	workflow specular_fresnel
+	fresnel_coeff 0.1
+
+	//diffuse		0.4 0.4 0.4
+	specular	0.1 0.1 0.1
+	roughness 0.7
+	metalness 0.1
+}
+
+hlms HI_glass pbs
+{
+	diffuse_map  HI_glass.png
+
+	// workflow specular_fresnel
+	// fresnel_coeff 0.1
+
+	roughness 0.1
+	metalness 1.0
+
+    cull_mode none
+    depth_write off
+    transparency 0.5
+	transparency_mode transparent
+	two_sided true
+}
+
+hlms HI_wheel pbs
+{
+	diffuse_map   HI_wheel.png
+	metalness_map HI_wheel_refl.png
+	specular_map  HI_wheel_refl.png
+
+	workflow specular_fresnel
+	fresnel_coeff 0.1
+
+	specular	0.3 0.3 0.3
+	roughness 0.3
+	metalness 0.8
+}

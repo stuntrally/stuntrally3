@@ -1,32 +1,26 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
+syntax: glob
 *.dll
+*.pdb
 
-# Fortran module files
-*.mod
-*.smod
+# VS crap
+#*.vcxproj
+#*.filters
+*.vcxproj.user
+*.ilk
+*.tlog
+*.obj
+*.rule
+*.sdf
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+.cache
+bin/*
+build/*
+Dependencies/*
 
-# Executables
-*.exe
-*.out
-*.app
+.DS_Store
+iOSDependencies
+AndroidBuild/
+AndroidDependencies/
+Build/
+EmscriptenDependencies
+EmscriptenBuild
