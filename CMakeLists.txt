@@ -54,16 +54,29 @@ macro( add_recursive dir retVal )
 endmacro()
 
 
-include_directories( "./include" )
+#  compiler
+include_directories(
+	src
+	src/game
+	src/OgreCommon
+	src/OgreCommon/System
+	src/OgreCommon/System/Desktop
+	src/OgreCommon/Threading
+	src/OgreCommon/Utils
+	src/Terra
+	src/Terra/Hlms
+	src/Terra/Hlms/PbsListener
+)
 
-add_recursive( ./src SOURCES )
-add_recursive( ./include HEADERS )
+add_recursive( ./src GAME_SOURCES )
 
 
-add_executable( ${PROJECT_NAME} WIN32 MACOSX_BUNDLE ${SOURCES} ${HEADERS} ${RESOURCES} )
+add_executable( ${PROJECT_NAME} WIN32 MACOSX_BUNDLE ${GAME_SOURCES} )
+
 
 target_compile_options( ${PROJECT_NAME} PRIVATE -Wswitch)
 
+#  linker
 target_link_libraries( ${PROJECT_NAME} ${OGRE_LIBRARIES} )
 ## Fix 3 sdl
 target_link_libraries( ${PROJECT_NAME} "-lSDL2" )
