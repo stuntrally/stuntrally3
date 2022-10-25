@@ -7,18 +7,18 @@
 #include "tracksurface.h"
 #include "configfile.h"
 #include "settings.h"
-#include "../ogre/CGame.h"  // replay
-#include "../ogre/CarModel.h"  // camera pos
-#include "../ogre/FollowCamera.h"  // camera pos
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/data/SceneXml.h"
-#include "../ogre/common/CScene.h"
-#include "../ogre/common/GraphView.h"
-#include "../ogre/common/Axes.h"
-#include "../network/protocol.hpp"
+#include "CGame.h"  // replay
+// #include "../ogre/CarModel.h"  // camera pos
+// #include "../ogre/FollowCamera.h"  // camera pos
+#include "Def_Str.h"
+#include "SceneXml.h"
+#include "CScene.h"
+// #include "../ogre/common/GraphView.h"
+ #include "Axes.h"
+// #include "../network/protocol.hpp"
 #include "tobullet.h"
 #include "game.h"
-#include "../ogre/SplitScreen.h"  // num plr
+// #include "../ogre/SplitScreen.h"  // num plr
 #include "../sound/SoundMgr.h"
 #include "../sound/SoundBase.h"
 #include "../sound/SoundBaseMgr.h"
@@ -158,8 +158,8 @@ void CAR::UpdateSounds(float dt)
 	bool terminal = dynamics.fDamage >= 100.f;
 	float fDmg = pApp->scn->sc->damageMul;
 
-	///  replay play  ------------------------------------------
-	if (pApp->bRplPlay)
+	///;  replay play  ------------------------------------------
+	/*if (pApp->bRplPlay)
 	{	dmg = false;
 
 		#ifdef DEBUG
@@ -205,7 +205,7 @@ void CAR::UpdateSounds(float dt)
 			if (wh.whP >= 1)  mud = true;
 		}
 	}
-	else  /// game  ------------------------------------------
+	else*/  /// game  ------------------------------------------
 	{
 		pos = dynamics.GetPosition();  rot = dynamics.GetOrientation();
 		rpm = GetEngineRPM();

@@ -1,8 +1,8 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
+#include "Def_Str.h"
 #include "carcontrolmap_local.h"
-#include "../ogre/CGame.h"
-#include "../ogre/CGui.h"
+// #include "CGame.h"
+// #include "../ogre/CGui.h"
 #include "../vdrift/par.h"
 
 
@@ -32,7 +32,7 @@ const std::vector <float> & CARCONTROLMAP_LOCAL::ProcessInput(
 	bool bPerfTest, EPerfTest iPerfTestStage)
 {
 	assert(inputs.size() == CARINPUT::ALL);
-
+/*	//; input
 	//-----------------------------------------------------------------
 	if (bPerfTest)  // Perf test, automatic car input
 	{
@@ -104,6 +104,6 @@ const std::vector <float> & CARCONTROLMAP_LOCAL::ProcessInput(
 	//  last chk
 	inputs[CARINPUT::LAST_CHK]	= forceBrake ? false : channels[A_LastChk];
 	inputs[CARINPUT::REWIND]	= forceBrake ? false : channels[A_Rewind];
-
+*/
 	return inputs;
 }

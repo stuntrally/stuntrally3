@@ -2,7 +2,7 @@
 #include "../vdrift/par.h"
 #include "common/Def_Str.h"
 #include "FollowCamera.h"
-#include "../settings.h"
+#include "settings.h"
 
 #include "tinyxml2.h"
 #include "../vdrift/pathmanager.h"
@@ -10,7 +10,7 @@
 // ray cast
 #include "../vdrift/collision_contact.h"
 #include "../vdrift/collision_world.h"
-#include "../btOgre/BtOgreDebug.h"
+// #include "../btOgre/BtOgreDebug.h"
 #include "btBulletCollisionCommon.h"
 #include "CarPosInfo.h"
 
@@ -20,11 +20,10 @@
 // #include <OgreTerrainGroup.h>
 // #include <OgreVector3.h>
 
-#if OGRE_VERSION_MAJOR >= 13
-#include <OgreDeprecated.h>
-#endif
+// #if OGRE_VERSION_MAJOR >= 13
+// #include <OgreDeprecated.h>
+// #endif
 
-#include <MyGUI.h>
 using namespace Ogre;
 using namespace tinyxml2;
 
@@ -616,6 +615,7 @@ bool FollowCamera::loadCameras()
 //-----------------------------------------------------------------------------------------------------
 void FollowCamera::updFmtTxt()
 {
+	/*
 	String sTR = TR("#{CamInfoStrings}");
 	vector<String>::type vs = StringUtil::split(sTR,",");
 	
@@ -648,4 +648,5 @@ void FollowCamera::updFmtTxt()
 	sFmt_Car =
 		sType+": %d %s  "+sOffset+": %4.2f %4.2f  "+sHeight+": %4.2f\n"+
 		sLEFT+": "+sHeight+" | "+sRIGHT+": "+sOffset+" | "+sMiddle+": "+sreset+" "+sOffset+"X";
+	*/
 }

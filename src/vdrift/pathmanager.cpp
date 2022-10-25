@@ -2,7 +2,7 @@
 /// Big portions of this file are borrowed and adapted from Performous under GPL (https://performous.org)
 
 #include "pathmanager.h"
-#include <boost/filesystem.hpp>
+#include <filesystem>
 #include <string>
 #include <fstream>
 #include <list>
@@ -26,7 +26,7 @@
 using namespace std;
 
 
-namespace fs = boost::filesystem;
+namespace fs = std::filesystem;
 
 namespace
 {
@@ -56,7 +56,7 @@ void PATHMANAGER::Init(bool log_paths)
 			#ifdef _WIN32
 			ogre_plugin = ".";
 			#else
-			ogre_plugin = OGRE_PLUGIN_DIR_REL;
+			//; ogre_plugin = OGRE_PLUGIN_DIR_REL;
 			#endif
 		}
 	}

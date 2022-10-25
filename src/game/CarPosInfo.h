@@ -5,7 +5,7 @@
 #include "../vdrift/mathvector.h"
 #include "../vdrift/quaternion.h"
 #include "../vdrift/cardefs.h"
-#include "half.hpp"
+//#include "half.hpp"
 
 struct ReplayFrame;  struct ReplayFrame2;
 class CAR;
@@ -47,7 +47,7 @@ struct PosInfo
 	PosInfo();
 	
 	//  copy
-	void FromRpl(const ReplayFrame* rf);
-	void FromRpl2(const ReplayFrame2* rf, class CARDYNAMICS* cd);
+	// void FromRpl(const ReplayFrame* rf);
+	// void FromRpl2(const ReplayFrame2* rf, class CARDYNAMICS* cd);
 	void FromCar(CAR* pCar);
 };

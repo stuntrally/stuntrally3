@@ -5,8 +5,8 @@
 #include "tinyxml2.h"
 #include <set>
 #include "../vdrift/pathmanager.h"
-#include "../../ReplayTrk.h"  // check
-#include "../../CHud.h"  // StrTime
+// #include "../../ReplayTrk.h"  // check
+// #include "../../CHud.h"  // StrTime
 using namespace std;
 using namespace tinyxml2;
 using Ogre::uchar;
@@ -171,7 +171,7 @@ bool TracksXml::LoadIni(string file, bool check)
 	
 	///  *  checks and  Log sceneries with stats  *
 	//--------------------------------------------------------------
-	if (check)
+	/*if (check)
 	{
 		LogO("))) Checking: tracks.ini");
 		i=1;  int c,n, nn = trks.size()-1;
@@ -236,7 +236,7 @@ bool TracksXml::LoadIni(string file, bool check)
 				LogO("!! Track not in ini: " + s);
 		}
 		LogO("");
-	}
+	}*/
 	return true;
 }
 //--------------------------------------------------------------------------------------------------------------------------------------

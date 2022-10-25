@@ -7,15 +7,15 @@
 #include "tracksurface.h"
 #include "configfile.h"
 #include "settings.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/data/CData.h"
-#include "../ogre/common/CScene.h"
-#include "../ogre/common/GraphView.h"
-#include "../ogre/CGame.h"  //+ replay
-#include "../ogre/CarModel.h"  //+ camera pos
-#include "../ogre/FollowCamera.h"  //+ camera pos
-#include "../road/PaceNotes.h"  //+ pace reset
-#include "../network/protocol.hpp"
+#include "Def_Str.h"
+#include "common/data/CData.h"
+#include "CScene.h"
+// #include "../ogre/common/GraphView.h"
+#include "CGame.h"  //+ replay
+// #include "../ogre/CarModel.h"  //+ camera pos
+#include "FollowCamera.h"  //+ camera pos
+// #include "../road/PaceNotes.h"  //+ pace reset
+// #include "../network/protocol.hpp"
 #include "../sound/SoundMgr.h"
 #include "tobullet.h"
 #include "game.h"  //sound
@@ -163,8 +163,8 @@ void CAR::Update(double dt)
 	UpdateSounds(dt);  // and damage
 	
 	///  graphs new values  .-_/\_.-
-	if (pApp->pSet->show_graphs && id == 0)  // for 1st car
-		GraphsNewVals(dt);  // implementation in Hud_Graphs.cpp
+	//; if (pApp->pSet->show_graphs && id == 0)  // for 1st car
+		// GraphsNewVals(dt);  // implementation in Hud_Graphs.cpp
 }
 
 
@@ -173,8 +173,8 @@ void CAR::Update(double dt)
 void CAR::HandleInputs(const std::vector <float> & inputs, float dt)
 {
 	assert(inputs.size() == CARINPUT::ALL); //-
-	if (pApp && pApp->IsFocGuiInput())
-		return;
+	//; if (pApp && pApp->IsFocGuiInput())
+		// return;
 
 	dynamics.inputsCopy = inputs;
 
@@ -323,7 +323,7 @@ float CAR::GetTireSquealAmount(WHEEL_POSITION i, float* slide, float* s1, float*
 
 //  Network CAR data send/receive
 ///------------------------------------------------------------------------------------------------------------------------------
-protocol::CarStatePackage CAR::GetCarStatePackage() const
+/*protocol::CarStatePackage CAR::GetCarStatePackage() const
 {
 	protocol::CarStatePackage csp;
 	csp.pos = ToMathVector<float>(dynamics.chassis->getCenterOfMassPosition());
@@ -369,7 +369,7 @@ void CAR::UpdateCarState(const protocol::CarStatePackage& state)
 	dynamics.doBoost = state.boost / 255.f;  // unpack from uint8
 	dynamics.SetBrake(state.brake / 255.f);
 	trackPercentCopy = state.trackPercent / 255.f * 100.f;
-}
+}*/
 
 //------------------------------------------------------------------------------------------------------------------------------
 void CAR::SetPosition1(const MATHVECTOR<float,3> & pos)
@@ -422,8 +422,8 @@ void CAR::ResetPos(bool fromStart)
 
 		dynamics.boostFuel = dynamics.boostFuelStart;  // restore boost fuel
 		dynamics.fDamage = 0.f;  // clear damage
-		if (pApp->scn->pace)
-			pApp->scn->pace->Reset();  //
+		//; if (pApp->scn->pace)
+			// pApp->scn->pace->Reset();  //
 	}else
 		dynamics.fDamage = dmgLastCheck;
 

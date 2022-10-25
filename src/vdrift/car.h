@@ -146,8 +146,8 @@ public:
 	}
 
 	// Networking
-	protocol::CarStatePackage GetCarStatePackage() const;
-	void UpdateCarState(const protocol::CarStatePackage& state);
+	// protocol::CarStatePackage GetCarStatePackage() const;
+	// void UpdateCarState(const protocol::CarStatePackage& state);
 
 	///  new
 	int id;  // index of car (same as for carModels)

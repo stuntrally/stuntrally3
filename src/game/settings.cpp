@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "settings.h"
-#include "../network/protocol.hpp"
+//#include "../network/protocol.hpp"
 #include <stdio.h>
 
 
@@ -133,10 +133,10 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "misc.show_welcome", show_welcome);	Param(c,w, "misc.loadingback", loadingbackground);
 
 	//  network
-	Param(c,w, "network.master_server_address", master_server_address);	Param(c,w, "network.nickname", nickname);
-	Param(c,w, "network.master_server_port", master_server_port);		Param(c,w, "network.local_port", local_port);
-	Param(c,w, "network.connect_address", connect_address);				Param(c,w, "network.game_name", netGameName);
-	Param(c,w, "network.connect_port", connect_port);
+	// Param(c,w, "network.master_server_address", master_server_address);	Param(c,w, "network.nickname", nickname);
+	// Param(c,w, "network.master_server_port", master_server_port);		Param(c,w, "network.local_port", local_port);
+	// Param(c,w, "network.connect_address", connect_address);				Param(c,w, "network.game_name", netGameName);
+	// Param(c,w, "network.connect_port", connect_port);
 
 	//  replay
 	Param(c,w, "replay.rec", rpl_rec);				Param(c,w, "replay.ghost", rpl_ghost);
@@ -222,12 +222,12 @@ SETTINGS::SETTINGS()   ///  Defaults
 	,bltDebug(0), bltLines(1),  bltProfilerTxt(0), profilerTxt(0)
 	,loadingbackground(true), show_welcome(true)
 	//  network
-	,nickname("Player"), netGameName("Default Game")
-	,master_server_address("")
-	,master_server_port(protocol::DEFAULT_PORT)
-	,local_port(protocol::DEFAULT_PORT)
-	,connect_address("localhost")
-	,connect_port(protocol::DEFAULT_PORT)
+	// ,nickname("Player"), netGameName("Default Game")
+	// ,master_server_address("")
+	// ,master_server_port(protocol::DEFAULT_PORT)
+	// ,local_port(protocol::DEFAULT_PORT)
+	// ,connect_address("localhost")
+	// ,connect_port(protocol::DEFAULT_PORT)
 	//  replay
 	,rpl_ghost(1), rpl_bestonly(1), rpl_trackghost(1)
 	,rpl_ghostpar(0), rpl_ghostrewind(1), rpl_ghostother(1)

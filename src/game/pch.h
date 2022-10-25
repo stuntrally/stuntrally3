@@ -25,41 +25,4 @@
 #include <time.h>
 #include <math.h>
 
-///  win
-#include <OgrePlatform.h>
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-	#define WIN32_LEAN_AND_MEAN
-	#include <windows.h>
-	#include <process.h>
-#endif
-
-#include "tinyxml.h"
-#include "tinyxml2.h"
-#include "half.hpp"
-
-///  SDL, Sound
-#include <SDL.h>
-#include <vorbis/vorbisfile.h>
-///  Ogre
-#include <Ogre.h>
-#include <OgreCamera.h>
-#include <OgreEntity.h>
-#include <OgreLogManager.h>
-#include <OgreRoot.h>
-#include <OgreViewport.h>
-#include <OgreSceneManager.h>
-#include <OgreRenderWindow.h>
-#include <OgreConfigFile.h>
-#include <OgreWindowEventUtilities.h>
-
-#include <OgreTerrain.h>
-#include <OgreTerrainGroup.h>
-#include <OgreTerrainQuadTreeNode.h>
-#include <OgreTerrainMaterialGeneratorA.h>
-#include <OgreTerrainPaging.h>
-
-#include "btBulletDynamicsCommon.h"
-#include <MyGUI.h>
-#include <MyGUI_OgrePlatform.h>
-
 #endif

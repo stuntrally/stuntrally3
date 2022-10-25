@@ -2,7 +2,7 @@
 #include "Axes.h"
 #include "../../vdrift/dbl.h"
 using namespace Ogre;
-using half_float::half;
+// using half_float::half;
 
 
 //  transform axes, vdrift to ogre  car & wheels
@@ -40,11 +40,11 @@ Quaternion Axes::toOgre(const QUATERNION<double>& vIn)
 }
 
 //  wheels
-Quaternion Axes::toOgreW(const QUATERNION<half>& vIn)
-{
-	Quaternion q(vIn[0], -vIn[3], vIn[1], vIn[2]);
-	return q * qFixWh;
-}
+// Quaternion Axes::toOgreW(const QUATERNION<half>& vIn)
+// {
+// 	Quaternion q(vIn[0], -vIn[3], vIn[1], vIn[2]);
+// 	return q * qFixWh;
+// }
 Quaternion Axes::toOgreW(const QUATERNION<float>& vIn)
 {
 	Quaternion q(vIn[0], -vIn[3], vIn[1], vIn[2]);

@@ -4,7 +4,7 @@
 #include <iomanip>
 #include <OgreLogManager.h>
 #include <OgreStringConverter.h>
-#include <MyGUI_LanguageManager.h>
+//; #include <MyGUI_LanguageManager.h>
 
 //  Log in ogre.log
 #define LogO(s)  Ogre::LogManager::getSingleton().logMessage(s)
@@ -14,7 +14,7 @@
 #define toStrC(v)  Ogre::StringConverter::toString(v).c_str()
 
 //  translation
-#define TR(s)  MyGUI::LanguageManager::getInstance().replaceTags(s)
+//; #define TR(s)  MyGUI::LanguageManager::getInstance().replaceTags(s)
 
 
 //  format int,float to string
@@ -44,7 +44,7 @@ static Ogre::String fToStr(const float v, const char precision=2, const char wid
 
 #define b2s(b)  (b) ? "true" : "false"
 
-
+/*
 const int ciShadowSizesNum = 5;
 const int ciShadowSizesA[ciShadowSizesNum] = {256,512,1024,2048,4096};
 
@@ -68,3 +68,4 @@ static Ogre::String StrTime2(float time)  // short
 	}else
 		return "-:--";
 }
+*/

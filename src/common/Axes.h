@@ -1,10 +1,10 @@
 #pragma once
-#include <Ogre.h>
-// #include <OgreVector3.h>
-// #include <OgreQuaternion.h>
+// #include <Ogre.h>
+#include <OgreVector3.h>
+#include <OgreQuaternion.h>
 #include "../vdrift/mathvector.h"
 #include "../vdrift/quaternion.h"
-#include "../half.hpp"
+// #include "../half.hpp"
 
 
 struct Axes
@@ -18,7 +18,7 @@ struct Axes
 
 	static Ogre::Quaternion toOgre(const QUATERNION<float>& vIn);  // car
 	static Ogre::Quaternion toOgre(const QUATERNION<double>& vIn);
-	static Ogre::Quaternion toOgreW(const QUATERNION<half_float::half>& vIn);  // wheels
+	// static Ogre::Quaternion toOgreW(const QUATERNION<half_float::half>& vIn);  // wheels
 	static Ogre::Quaternion toOgreW(const QUATERNION<float>& vIn);
 	static Ogre::Quaternion toOgreW(const QUATERNION<double>& vIn);
 };
