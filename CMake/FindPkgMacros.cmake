@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------
 # This file is part of the CMake build system for OGRE
 #     (Object-oriented Graphics Rendering Engine)
-# For the latest info, see http://www.ogre3d.org/
+# For the latest info, see https://www.ogre3d.org/
 #
 # The contents of this file are placed in the public domain. Feel
 # free to make use of it in any way you like.
@@ -10,6 +10,12 @@
 ##################################################################
 # Provides some common functionality for the FindPackage modules
 ##################################################################
+
+# Sets the QUIET and REQUIRED flags for a sub library
+macro(component_setvars COMP PARENT)
+	set(${COMP}_FIND_QUIETLY ${PARENT}_FIND_QUIETLY)
+	set(${COMP}_FIND_REQUIRED ${PARENT}_FIND_REQUIRED)
+endmacro(component_setvars)
 
 # Begin processing of package
 macro(findpkg_begin PREFIX)
@@ -20,7 +26,7 @@ endmacro(findpkg_begin)
 
 # Display a status message unless FIND_QUIETLY is set
 macro(pkg_message PREFIX)
-  if (NOT ${PREFIX}_FIND_QUIETLY)
+  if (NOT ${PREFIX}_FIND_QUIETLY AND NOT ${ARG1}_FIND_QUIETLY)
     message(STATUS ${ARGN})
   endif ()
 endmacro(pkg_message)
@@ -44,20 +50,12 @@ macro(create_search_paths PREFIX)
     set(${PREFIX}_BIN_SEARCH_PATH ${${PREFIX}_BIN_SEARCH_PATH}
       ${dir}/bin)
   endforeach(dir)
-  if(ANDROID)
-	set(${PREFIX}_LIB_SEARCH_PATH ${${PREFIX}_LIB_SEARCH_PATH} ${OGRE_DEPENDENCIES_DIR}/lib/${ANDROID_ABI})
-  endif()
   set(${PREFIX}_FRAMEWORK_SEARCH_PATH ${${PREFIX}_PREFIX_PATH})
 endmacro(create_search_paths)
 
 # clear cache variables if a certain variable changed
 macro(clear_if_changed TESTVAR)
   # test against internal check variable
-  # HACK: Apparently, adding a variable to the cache cleans up the list
-  # a bit. We need to also remove any empty strings from the list, but
-  # at the same time ensure that we are actually dealing with a list.
-  list(APPEND ${TESTVAR} "")
-  list(REMOVE_ITEM ${TESTVAR} "")
   if (NOT "${${TESTVAR}}" STREQUAL "${${TESTVAR}_INT_CHECK}")
     message(STATUS "${TESTVAR} changed.")
     foreach(var ${ARGN})
@@ -69,12 +67,10 @@ endmacro(clear_if_changed)
 
 # Try to get some hints from pkg-config, if available
 macro(use_pkgconfig PREFIX PKGNAME)
-  if(NOT ANDROID)
-    find_package(PkgConfig)
-    if (PKG_CONFIG_FOUND)
-      pkg_check_modules(${PREFIX} ${PKGNAME})
-    endif ()
-  endif()
+  find_package(PkgConfig)
+  if (PKG_CONFIG_FOUND)
+    pkg_check_modules(${PREFIX} ${PKGNAME})
+  endif ()
 endmacro (use_pkgconfig)
 
 # Couple a set of release AND debug libraries (or frameworks)
@@ -129,37 +125,29 @@ endmacro(findpkg_finish)
 
 
 # Slightly customised framework finder
-macro(findpkg_framework fwk)
-  if(APPLE)
-    set(${fwk}_FRAMEWORK_PATH
+MACRO(findpkg_framework fwk)
+  IF(APPLE)
+    SET(${fwk}_FRAMEWORK_PATH
       ${${fwk}_FRAMEWORK_SEARCH_PATH}
       ${CMAKE_FRAMEWORK_PATH}
       ~/Library/Frameworks
       /Library/Frameworks
       /System/Library/Frameworks
       /Network/Library/Frameworks
-      ${CMAKE_CURRENT_SOURCE_DIR}/lib/macosx/Release
-      ${CMAKE_CURRENT_SOURCE_DIR}/lib/macosx/Debug
+      /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/System/Library/Frameworks/
+      ${CMAKE_CURRENT_SOURCE_DIR}/lib/Release
+      ${CMAKE_CURRENT_SOURCE_DIR}/lib/Debug
     )
-    # These could be arrays of paths, add each individually to the search paths
-    foreach(i ${OGRE_PREFIX_PATH})
-      set(${fwk}_FRAMEWORK_PATH ${${fwk}_FRAMEWORK_PATH} ${i}/lib/macosx/Release ${i}/lib/macosx/Debug)
-    endforeach(i)
-
-    foreach(i ${OGRE_PREFIX_BUILD})
-      set(${fwk}_FRAMEWORK_PATH ${${fwk}_FRAMEWORK_PATH} ${i}/lib/macosx/Release ${i}/lib/macosx/Debug)
-    endforeach(i)
-
-    foreach(dir ${${fwk}_FRAMEWORK_PATH})
-      set(fwkpath ${dir}/${fwk}.framework)
-      if(EXISTS ${fwkpath})
-        set(${fwk}_FRAMEWORK_INCLUDES ${${fwk}_FRAMEWORK_INCLUDES}
+    FOREACH(dir ${${fwk}_FRAMEWORK_PATH})
+      SET(fwkpath ${dir}/${fwk}.framework)
+      IF(EXISTS ${fwkpath})
+        SET(${fwk}_FRAMEWORK_INCLUDES ${${fwk}_FRAMEWORK_INCLUDES}
           ${fwkpath}/Headers ${fwkpath}/PrivateHeaders)
-        set(${fwk}_FRAMEWORK_PATH ${dir})
+        SET(${fwk}_FRAMEWORK_PATH ${dir})
         if (NOT ${fwk}_LIBRARY_FWK)
-          set(${fwk}_LIBRARY_FWK "-framework ${fwk}")
+          SET(${fwk}_LIBRARY_FWK "-framework ${fwk}")
         endif ()
-      endif(EXISTS ${fwkpath})
-    endforeach(dir)
-  endif(APPLE)
-endmacro(findpkg_framework)
+      ENDIF(EXISTS ${fwkpath})
+    ENDFOREACH(dir)
+  ENDIF(APPLE)
+ENDMACRO(findpkg_framework)
