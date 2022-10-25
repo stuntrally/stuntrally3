@@ -6,10 +6,10 @@
 #include "tobullet.h"
 #include "aabb.h"
 #include "settings.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/ShapeData.h"
-#include "../ogre/common/Axes.h"
-#include "../ogre/CarPosInfo.h"
+#include "Def_Str.h"
+#include "ShapeData.h"
+#include "Axes.h"
+#include "CarPosInfo.h"
 #include "Buoyancy.h"
 #include <OgreTimer.h>
 using namespace std;

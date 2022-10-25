@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "bucketed_hashmap.h"
-#include "../ogre/common/Def_Str.h"
+#include "Def_Str.h"
 
 
 class CONFIGVARIABLE

@@ -1,16 +1,17 @@
 #include "pch.h"
 #include "par.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/data/SceneXml.h"
-#include "../ogre/common/ShapeData.h"
-#include "../ogre/common/CScene.h"
+#include "Def_Str.h"
+#include "data/SceneXml.h"
+#include "ShapeData.h"
+#include "CScene.h"
+
 #include "collision_world.h"
 #include "tobullet.h"
 #include "collision_contact.h"
 #include "cardynamics.h"
 //#include "car.h"//
 #include "game.h"  //
-#include "../ogre/CGame.h"  //
+#include "CGame.h"  //
 #include <iostream>
 using namespace Ogre;
 

@@ -1,4 +1,5 @@
 #pragma once
+#include <list>
 #include "dbl.h"
 #include "mathvector.h"
 #include "quaternion.h"
@@ -18,7 +19,7 @@
 
 #include "cardefs.h"
 #include "collision_contact.h"
-#include "../btOgre/BtOgreDebug.h"
+// #include "../btOgre/BtOgreDebug.h"
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
 #include "Buoyancy.h"

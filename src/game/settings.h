@@ -1,6 +1,6 @@
 #pragma once
 #include "../vdrift/configfile.h"
-#include "../ogre/common/settings_com.h"
+#include "settings_com.h"
 
 
 #define SET_VER  2700  // 2.7
@@ -176,9 +176,9 @@ public:
 	float ghoHideDist, ghoHideDistTrk;  // ghost hide dist, when close
 
 	//  network
-	std::string nickname, netGameName;
-	std::string master_server_address, connect_address;
-	int master_server_port, local_port, connect_port;
+	// std::string nickname, netGameName;
+	// std::string master_server_address, connect_address;
+	// int master_server_port, local_port, connect_port;
 
 	// not in gui
 	int net_local_plr;

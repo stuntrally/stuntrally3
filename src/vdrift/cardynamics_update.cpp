@@ -5,12 +5,13 @@
 #include "settings.h"
 #include "game.h"
 #include "tobullet.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/data/CData.h"
-#include "../ogre/common/data/SceneXml.h"
-#include "../ogre/common/data/FluidsXml.h"
-#include "../ogre/common/ShapeData.h"
-#include "../ogre/CGame.h"
+
+#include "Def_Str.h"
+#include "CData.h"
+#include "SceneXml.h"
+#include "FluidsXml.h"
+#include "ShapeData.h"
+#include "CGame.h"
 #include "Buoyancy.h"
 
 
