@@ -1,0 +1,73 @@
+compositor_node Terra/ShadowGenerator
+{
+	in 0 terrain_shadows
+	in 1 tmpGaussianFilter
+	
+	// texture tmpGaussianFilter target_width target_height target_format depth_pool 0 uav
+
+	target terrain_shadows
+	{
+		pass compute
+		{
+			job Terra/ShadowGenerator
+			uav 0 terrain_shadows write
+		}
+
+		pass compute
+		{
+			job Terra/GaussianBlurH
+			input 0 terrain_shadows
+			uav 0 tmpGaussianFilter write
+		}
+		
+		pass compute
+		{
+			job Terra/GaussianBlurV
+			input 0 tmpGaussianFilter
+			uav 0 terrain_shadows write
+		}
+	}
+}
+
+workspace Terra/ShadowGeneratorWorkspace
+{
+	connect_external 0 Terra/ShadowGenerator 0
+	connect_external 1 Terra/ShadowGenerator 1
+}
+
+compositor_node Terra/ShadowGeneratorU16
+{
+	in 0 terrain_shadows
+	in 1 tmpGaussianFilter
+
+	// texture tmpGaussianFilter target_width target_height target_format depth_pool 0 uav
+
+	target terrain_shadows
+	{
+		pass compute
+		{
+			job Terra/ShadowGeneratorU16
+			uav 0 terrain_shadows write
+		}
+
+		pass compute
+		{
+			job Terra/GaussianBlurH
+			input 0 terrain_shadows
+			uav 0 tmpGaussianFilter write
+		}
+
+		pass compute
+		{
+			job Terra/GaussianBlurV
+			input 0 tmpGaussianFilter
+			uav 0 terrain_shadows write
+		}
+	}
+}
+
+workspace Terra/ShadowGeneratorWorkspaceU16
+{
+	connect_external 0 Terra/ShadowGeneratorU16 0
+	connect_external 1 Terra/ShadowGeneratorU16 1
+}

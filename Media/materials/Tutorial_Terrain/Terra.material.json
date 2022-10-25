@@ -1,0 +1,80 @@
+{
+    "samplers" :
+    {
+        "aniso" :
+        {
+            "min" : "anisotropic",
+            "mag" : "anisotropic",
+            "mip" : "linear",
+            "u" : "wrap",
+            "v" : "wrap",
+            "w" : "wrap",
+            "max_anisotropic" : 16
+        }
+    },
+    
+    "Terra" :
+    {
+        "TerraExampleMaterial" :
+        {
+            "diffuse" :
+            {
+                "value" : [0.7, 0.7, 0.7],
+                "texture" : "stones_gray_h2.jpg"
+            },
+			
+			"detail_weight" :
+            {
+                "texture" : "HeightmapBlendmap.png",
+                "sampler" : "unique_name",
+                "normalize" : true
+            },
+			
+			"detail0" :
+            {
+                "offset" : [0, 0],
+                "scale" : [128, 128],
+				"roughness" : 0.5,
+				"metalness" : 0.5,
+                "diffuse_map" : "grass_ground_d.jpg",
+                "normal_map" : "grass_ground_n.jpg",
+				"roughness_map" : "grass_ground_h.jpg",
+				"metalness_map" : "grass_ground_s.jpg"
+            },
+			"detail1" :
+            {
+                "offset" : [0, 0],
+                "scale" : [64, 64],
+				"roughness" : 0.8,
+				"metalness" : 0.5,
+                "diffuse_map" : "mntn_brown_d.jpg",
+                "normal_map" : "mntn_brown_n.jpg",
+				"roughness_map" : "mntn_brown_h.jpg",
+				"metalness_map" : "mntn_brown_s.jpg"
+            },
+ 			"detail2" :
+            {
+                "offset" : [0, 0],
+                "scale" : [50, 50],
+				"roughness" : 0.7,
+				"metalness" : 0.6,
+                "diffuse_map" : "mntn_gray_d.jpg",
+                "normal_map" : "mntn_dark_n.jpg",
+				"roughness_map" : "mntn_dark_s.jpg",
+				"metalness_map" : "mntn_dark_s.jpg"
+            },
+            "detail3" :
+            {
+                "offset" : [0, 0],
+                "scale" : [32, 32],
+				"roughness" : 0.7,
+				"metalness" : 0.6,
+                "diffuse_map" : "mntn_white_d.jpg",
+                "normal_map" : "jungle_stone_n.jpg",
+				"roughness_map" : "jungle_stone_h.jpg",
+				"metalness_map" : "jungle_stone_s.jpg"
+            },
+            "fresnel_coeff" : 0.01
+        }
+    }
+}

@@ -1,0 +1,17 @@
+
+//#include "SyntaxHighlightingMisc.h"
+@piece( DeclDualParaboloidFunc )
+
+/// Converts UVW coordinates that would be used for sampling a cubemap,
+/// and returns UV coordinates to sample a dual paraboloid in 2D
+INLINE midf2 mapCubemapToDpm( midf3 cubemapDir )
+{
+    cubemapDir = normalize( cubemapDir );
+	midf2 retVal;
+	retVal.x = (cubemapDir.x / (_h( 1.0 ) + abs( cubemapDir.z ))) * _h( 0.25 ) +
+			   (cubemapDir.z < _h( 0.0 ) ? _h( 0.75 ) : _h( 0.25 ) );
+	retVal.y = (cubemapDir.y / (_h( 1.0 ) + abs( cubemapDir.z ))) * _h( 0.5 ) + _h( 0.5 );
+	return retVal;
+}
+
+@end /// DeclDualParaboloidFunc
