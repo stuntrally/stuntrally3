@@ -32,7 +32,7 @@ using namespace Ogre;
 bool CAR::LoadSounds(const std::string & carpath)
 {
 	Ogre::Timer ti;
-	bool ss = pApp->pSet->game.local_players > 1;
+	bool ss = false; //; pApp->pSet->game.local_players > 1;
 	CARsounds& s = sounds;
 	
 	SoundMgr* snd = pGame->snd;

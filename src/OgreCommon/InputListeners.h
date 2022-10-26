@@ -2,6 +2,7 @@
 #ifndef _Demo_InputListeners_H_
 #define _Demo_InputListeners_H_
 
+#include "OgrePlatform.h"
 union SDL_Event;
 struct SDL_MouseButtonEvent;
 

@@ -110,7 +110,7 @@ namespace Demo
         pGame->app = pApp;
 
 
-    	pApp->NewGame(true);
+    	// pApp->NewGame(true);
 
         // pGame->Tick();
     }

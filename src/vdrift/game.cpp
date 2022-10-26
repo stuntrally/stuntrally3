@@ -481,7 +481,7 @@ void GAME::AdvanceGameLogic(double dt)
 			}*/
 
 			if (dt > 0.0)
-				collision.Update(dt, settings->bltProfilerTxt);
+				collision.Update(dt, 0);  //; settings->bltProfilerTxt);
 
 			PROFILER.endBlock("-physics");
 

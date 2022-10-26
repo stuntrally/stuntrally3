@@ -456,7 +456,7 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 	}else
 		boostVal = 0.f;
 	
-	fBoostFov += (boostVal - fBoostFov) * pSet->fov_smooth * 0.0001f;
+	//; fBoostFov += (boostVal - fBoostFov) * pSet->fov_smooth * 0.0001f;
 		
 	//  add fuel over time
 	if (pSet->game.boost_type == 2 && pGame->timer.pretime < 0.001f && fDamage < 100.f)

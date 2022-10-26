@@ -45,38 +45,39 @@ public:
 
 	//  menu
 	int iMenu;  // EMenu,
-	int yMain =0, yRace =0;  // kbd up/dn cursors
-	int difficulty =0;
+	// int yMain =0, yRace =0;  // kbd up/dn cursors
+	// int difficulty =0;
 
 	//  show
-	bool show_gauges, show_digits,
-		trackmap, mini_zoomed, mini_rotated, mini_terrain, mini_border,
-		check_beam, check_arrow,
-		show_times, show_opponents, opplist_sort,
-		show_cam, cam_tilt,
-		car_dbgbars, car_dbgtxt, car_dbgsurf,
-		car_tirevis, show_graphs,
-		ch_all =0;  // show all champs/challs
+	bool //show_gauges, show_digits,
+		//trackmap, mini_zoomed, mini_rotated, mini_terrain, mini_border,
+		// check_beam, check_arrow,
+		// show_times, //show_opponents, opplist_sort,
+		//show_cam,
+		cam_tilt;
+		// car_dbgbars, car_dbgtxt, car_dbgsurf,
+		// car_tirevis, show_graphs,
+		// ch_all =0;  // show all champs/challs
 
-	float size_gauges, size_minimap, size_minipos, size_arrow, zoom_minimap;
-	int gauges_type, gauges_layout;
+	// float size_gauges, size_minimap, size_minipos, size_arrow, zoom_minimap;
+	// int gauges_type, gauges_layout;
 	//  cam
-	float fov_min, fov_boost, fov_smooth;
-	bool cam_loop_chng;  int cam_in_loop;
+	// float fov_min, fov_boost, fov_smooth;
+	// bool cam_loop_chng;  int cam_in_loop;
 	bool cam_bounce;  float cam_bnc_mul;
 	//  pacenotes
-	bool pace_show;  int pace_next;
-	float pace_dist, pace_size, pace_near, pace_alpha;
-	bool trail_show;
+	// bool pace_show;  int pace_next;
+	// float pace_dist, pace_size, pace_near, pace_alpha;
+	// bool trail_show;
 
 	eGraphType graphs_type;
 	int car_dbgtxtclr, car_dbgtxtcnt;
 	bool sounds_info;
 	//  gui
-	bool cars_sortup;  int cars_view, cars_sort;
-	int champ_type, chall_type;
-	bool champ_info;
-	int car_ed_tab, tweak_tab;
+	// bool cars_sortup;  int cars_view, cars_sort;
+	// int champ_type, chall_type;
+	// bool champ_info;
+	// int car_ed_tab, tweak_tab;
 
 
 	//  graphics
@@ -109,7 +110,7 @@ public:
 		std::vector<std::string> car;  //[4] local players
 		std::vector<float> car_hue, car_sat, car_val, car_gloss, car_refl;  //[6] also for ghosts
 
-		int local_players, num_laps;  // split
+		// int local_players, num_laps;  // split
 		//  game setup
 		std::string sim_mode;
 		bool collis_veget, collis_cars, collis_roadw, dyn_objects;
@@ -119,12 +120,12 @@ public:
 		float boost_power, boost_max, boost_min, boost_per_km, boost_add_sec;
 		void BoostDefault();
 
-		bool rpl_rec;
+		// bool rpl_rec;
 		//  champ
-		int champ_num, chall_num;  // -1 none
-		bool champ_rev;
+		// int champ_num, chall_num;  // -1 none
+		// bool champ_rev;
 
-		float pre_time;  int start_order;
+		// float pre_time;  int start_order;
 
 		GameSet();
 	}  game,  // current game, changed only on new game start
@@ -134,11 +135,11 @@ public:
 
 	//  misc
 	bool dev_keys, dev_no_prvs;  // dev
-	bool split_vertically;
+	// bool split_vertically;
 
 	//  startup, other
-	bool bltDebug, bltLines, bltProfilerTxt, profilerTxt;
-	bool loadingbackground, show_welcome;
+	// bool bltDebug, bltLines, bltProfilerTxt, profilerTxt;
+	// bool loadingbackground, show_welcome;
 
 	//  sound
 	float vol_master, vol_hud,
@@ -148,8 +149,8 @@ public:
 	bool snd_reverb;  std::string snd_device;
 
 	//  sim freq (1/interval timestep)
-	float game_fq, blt_fq,  perf_speed;
-	int blt_iter, dyn_iter,  multi_thr, thread_sleep, gui_sleep;
+	float game_fq, blt_fq;//,  perf_speed;
+	int blt_iter, dyn_iter,  multi_thr, thread_sleep;//, gui_sleep;
 
 	//  graphs vis
 	float tc_r, tc_xr;  // tire circles max
@@ -158,22 +159,22 @@ public:
 
 
 	//  effects
-	bool all_effects, bloom, blur, hdr;
-	float bloom_int, bloom_orig, blur_int;  // intensity
-	float dof_focus, dof_far;
-	bool softparticles, ssao, godrays, dof, filmgrain;
+	// bool all_effects, bloom, blur, hdr;
+	// float bloom_int, bloom_orig, blur_int;  // intensity
+	// float dof_focus, dof_far;
+	// bool softparticles, ssao, godrays, dof, filmgrain;
 	//  hdr
-	float hdrBloomint, hdrBloomorig;
-	float hdrParam1, hdrParam2, hdrParam3;
-	float hdrAdaptationScale;
-	float vignRadius, vignDarkness;
+	// float hdrBloomint, hdrBloomorig;
+	// float hdrParam1, hdrParam2, hdrParam3;
+	// float hdrAdaptationScale;
+	// float vignRadius, vignDarkness;
 
 	//  replay
-	bool rpl_rec, rpl_ghost, rpl_bestonly;
-	bool rpl_ghostother, rpl_trackghost;
-	bool rpl_ghostpar, rpl_ghostrewind, rpl_listghosts;
-	int rpl_listview, rpl_numViews;
-	float ghoHideDist, ghoHideDistTrk;  // ghost hide dist, when close
+	// bool rpl_rec, rpl_ghost, rpl_bestonly;
+	// bool rpl_ghostother, rpl_trackghost;
+	// bool rpl_ghostpar, rpl_ghostrewind, rpl_listghosts;
+	// int rpl_listview, rpl_numViews;
+	// float ghoHideDist, ghoHideDistTrk;  // ghost hide dist, when close
 
 	//  network
 	// std::string nickname, netGameName;
@@ -181,7 +182,7 @@ public:
 	// int master_server_port, local_port, connect_port;
 
 	// not in gui
-	int net_local_plr;
+	// int net_local_plr;
 
 
 //------------------------------------------
