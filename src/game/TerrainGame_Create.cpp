@@ -23,8 +23,19 @@
 #    include "OgreAtmosphereNpr.h"
 #endif
 
+//  SR
+#include "pathmanager.h"
+#include "settings.h"
+#include "CGame.h"
+#include "game.h"
+
+#include <list>
+#include <filesystem>
+
+
 using namespace Demo;
 using namespace Ogre;
+using namespace std;
 
 
 namespace Demo
@@ -40,11 +51,91 @@ namespace Demo
         SetupVeget();
     }
 
+
+    //  load settings from default file
+    void TerrainGame::LoadDefaultSet(SETTINGS* settings, string setFile)
+    {
+        settings->Load(PATHMANAGER::GameConfigDir() + "/game-default.cfg");
+        settings->Save(setFile);
+        //  delete old keys.xml too
+        string sKeys = PATHMANAGER::UserConfigDir() + "/keys.xml";
+        if (std::filesystem::exists(sKeys))
+            std::filesystem::rename(sKeys, PATHMANAGER::UserConfigDir() + "/keys_old.xml");
+    }
+
+
+    //  Init SR game
+    //-----------------------------------------------------------------------------------------------------------------------------
+    void TerrainGame::Init()
+    {
+
+        Ogre::Timer ti;
+        setlocale(LC_NUMERIC, "C");
+
+        //  Paths
+        PATHMANAGER::Init();
+        
+
+        ///  Load Settings
+        //----------------------------------------------------------------
+        settings = new SETTINGS();
+        string setFile = PATHMANAGER::SettingsFile();
+        
+        if (!PATHMANAGER::FileExists(setFile))
+        {
+            cerr << "Settings not found - loading defaults." << endl;
+            LoadDefaultSet(settings,setFile);
+        }
+        settings->Load(setFile);  // LOAD
+        if (settings->version != SET_VER)  // loaded older, use default
+        {
+            cerr << "Settings found, but older version - loading defaults." << endl;
+            std::filesystem::rename(setFile, PATHMANAGER::UserConfigDir() + "/game_old.cfg");
+            LoadDefaultSet(settings,setFile);
+            settings->Load(setFile);  // LOAD
+        }
+
+
+        //  paths
+        LogO(PATHMANAGER::info.str());
+
+
+        ///  Game start
+        //----------------------------------------------------------------
+        pGame = new GAME(settings);
+        pGame->Start();
+
+        pApp = new App(settings, pGame);
+        //; pApp->mRoot = root;
+        pGame->app = pApp;
+
+
+    	pApp->NewGame(true);
+
+        // pGame->Tick();
+    }
+
+    void TerrainGame::Destroy()
+    {
+        if (pGame)
+		    pGame->End();
+	
+        delete pApp;
+        delete pGame;
+        delete settings;
+    }
+
+
     
     //  Create
     //-----------------------------------------------------------------------------------------------------------------------------
     void TerrainGame::createScene01()
     {
+        LogO(">>>> Init SR ----");
+        Init();
+        LogO(">>>> Init SR done ----");
+
+
         mGraphicsSystem->mWorkspace = setupCompositor();
 
         SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
@@ -136,6 +227,10 @@ namespace Demo
         LogO("---- tutorial destroyScene");
 
         TutorialGameState::destroyScene();
+
+        LogO(">>>> Destroy SR ----");
+        Destroy();
+        LogO(">>>> Destroy SR done ----");
     }
 
 }

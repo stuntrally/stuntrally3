@@ -26,7 +26,7 @@ public:
 
 	GAME(SETTINGS* pSettings);
 
-	void Start(std::list <std::string>& args);
+	void Start();
 
 	double TickPeriod() const {  return framerate;  }
 	bool OneLoop(double dt);

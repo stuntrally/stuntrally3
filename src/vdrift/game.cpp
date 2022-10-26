@@ -51,8 +51,8 @@ GAME::GAME(SETTINGS* pSettings)
 }
 
 
-//  start the game with the given arguments
-void GAME::Start(list <string> & args)
+//  start the game
+void GAME::Start()
 {
 	//Test();  return;  // unit tests-
 

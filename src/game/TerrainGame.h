@@ -7,6 +7,9 @@
 
 #define LogO(s)  LogManager::getSingleton().logMessage(s)
 
+class SETTINGS;
+class GAME;
+class App;
 
 namespace Ogre
 {
@@ -69,6 +72,16 @@ namespace Demo
 
     public:
         TerrainGame( const Ogre::String &helpDescription );
+
+        //  SR
+        SETTINGS* settings = 0;
+        GAME* pGame = 0;
+        App* pApp = 0;
+
+        void LoadDefaultSet(SETTINGS* settings, std::string setFile);
+        void Init();
+        void Destroy();
+
 
         //  main
         void createScene01() override;

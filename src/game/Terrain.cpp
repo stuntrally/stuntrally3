@@ -236,7 +236,7 @@ namespace Demo
 
     const char* MainEntryPoints::getWindowTitle()
     {
-        return "Terrain Demo";
+        return "Stunt Rally 3";
     }
 }
 
@@ -248,5 +248,6 @@ int mainApp( int argc, const char *argv[] )
 #endif
 {
     return Demo::MainEntryPoints::mainAppSingleThreaded( DEMO_MAIN_ENTRY_PARAMS );
+    // return Demo::MainEntryPoints::mainAppMultiThreaded( DEMO_MAIN_ENTRY_PARAMS );  // todo
 }
 #endif

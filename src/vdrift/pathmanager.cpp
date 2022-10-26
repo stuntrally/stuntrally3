@@ -63,7 +63,7 @@ void PATHMANAGER::Init(bool log_paths)
 	//ogre_plugin = "/usr/lib/x86_64-linux-gnu/OGRE-1.9.0";
 	ogre_plugin = "/usr/local/lib/OGRE";
 
-	fs::path stuntrally = "stuntrally";
+	fs::path stuntrally3 = "stuntrally3";
 	// Figure out the user's home directory
 	{
 		home_dir = "";
@@ -92,8 +92,8 @@ void PATHMANAGER::Init(bool log_paths)
 	#ifndef _WIN32 // POSIX
 	{
 		char const* conf = getenv("XDG_CONFIG_HOME");
-		if (conf) user_config = (fs::path(conf) / stuntrally).string();
-		else user_config = (fs::path(home_dir) / ".config" / stuntrally).string();
+		if (conf) user_config = (fs::path(conf) / stuntrally3).string();
+		else user_config = (fs::path(home_dir) / ".config" / stuntrally3).string();
 	}
 	#else // Windows
 	{
@@ -110,7 +110,7 @@ void PATHMANAGER::Init(bool log_paths)
 				if (AppDir[i] == '\\') str += '/';
 				else str += AppDir[i];
 			}
-			user_config = (fs::path(str) / stuntrally).string();
+			user_config = (fs::path(str) / stuntrally3).string();
 		}
 	}
 	#endif
@@ -119,12 +119,12 @@ void PATHMANAGER::Init(bool log_paths)
 
 	// Find user's data dir (for additional data)
 	#ifdef _WIN32
-	user_data = user_config;  // APPDATA/stuntrally
+	user_data = user_config;  // APPDATA/stuntrally3
 	#else
 	{
 		char const* xdg_data_home = getenv("XDG_DATA_HOME");
-		user_data = (xdg_data_home ? xdg_data_home / stuntrally
-					: fs::path(home_dir) / ".local/share" / stuntrally).string();
+		user_data = (xdg_data_home ? xdg_data_home / stuntrally3
+					: fs::path(home_dir) / ".local/share" / stuntrally3).string();
 	}
 	#endif
 
@@ -142,21 +142,20 @@ void PATHMANAGER::Init(bool log_paths)
 
 
 	// Find game data dir and defaults config dir
-	char *datadir = getenv("STUNTRALLY_DATA_ROOT");
+	char *datadir = getenv("STUNTRALLY3_DATA_ROOT");
 	if (datadir)
 		game_data = string(datadir);
 	else
 	{	fs::path shareDir = SHARED_DATA_DIR;
 		Paths dirs;
 
-		// Adding users data dir
-		// TODO: Disabled for now until this is handled properly
+		// todo: Adding users data dir?
 		//dirs.push_back(user_data_dir);
 
 		// Adding relative path for running from sources
-		dirs.push_back(execname().parent_path().parent_path() / "data");
+		dirs.push_back(execname().parent_path().parent_path() / "Media");
 		dirs.push_back(execname().parent_path().parent_path());
-		dirs.push_back(execname().parent_path() / "data");
+		dirs.push_back(execname().parent_path() / "Media");
 		dirs.push_back(execname().parent_path());
 		// Adding relative path from installed executable
 		dirs.push_back(execname().parent_path().parent_path() / shareDir);
@@ -165,7 +164,7 @@ void PATHMANAGER::Init(bool log_paths)
 		{
 			char const* xdg_data_dirs = getenv("XDG_DATA_DIRS");
 			istringstream iss(xdg_data_dirs ? xdg_data_dirs : "/usr/local/share/:/usr/share/");
-			for (string p; getline(iss, p, ':'); dirs.push_back(p / stuntrally)) {}
+			for (string p; getline(iss, p, ':'); dirs.push_back(p / stuntrally3)) {}
 		}
 		#endif
 		// TODO: Adding path from config file
@@ -196,11 +195,11 @@ void PATHMANAGER::Init(bool log_paths)
 
 	// Find cache dir
 	#ifdef _WIN32
-	cache_dir = user_config + "/cache";  // APPDATA/stuntrally/cache
+	cache_dir = user_config + "/cache";  // APPDATA/stuntrally3/cache
 	#else
 	char const* xdg_cache_home = getenv("XDG_CACHE_HOME");
-	cache_dir = (xdg_cache_home ? xdg_cache_home / stuntrally
-				: fs::path(home_dir) / ".cache" / stuntrally).string();
+	cache_dir = (xdg_cache_home ? xdg_cache_home / stuntrally3
+				: fs::path(home_dir) / ".cache" / stuntrally3).string();
 	#endif
 	// Create cache dir
 	CreateDir(CacheDir());
@@ -212,7 +211,7 @@ void PATHMANAGER::Init(bool log_paths)
 	{
 		info << "Paths info" << endl;
 		info << "-------------------------" << endl;
-		info << "Ogre plugin:  " << ogre_plugin << endl;
+		info << "Ogre plugin-: " << ogre_plugin << endl;
 		info << "Data:         " << Data() << endl;
 		//info << "Default cfg:  " << GetGameConfigDir() << endl;
 		info << "Home:         " << home_dir << endl;
@@ -223,6 +222,8 @@ void PATHMANAGER::Init(bool log_paths)
 	}
 }
 
+
+//  utils
 bool PATHMANAGER::FileExists(const string& filename)
 {
 	return fs::exists(filename);
@@ -240,7 +241,6 @@ bool PATHMANAGER::CreateDir(const string& path)
 }
 
 
-// TODO: implement with boost::filesystem
 bool PATHMANAGER::DirList(string dirpath, strlist& dirlist, string extension)
 {
 //------Folder listing code for POSIX
@@ -294,7 +294,6 @@ bool PATHMANAGER::DirList(string dirpath, strlist& dirlist, string extension)
 			}
 		}
 	}
-
 	FindClose(hList);
 #endif
 //------End
@@ -316,6 +315,7 @@ bool PATHMANAGER::DirList(string dirpath, strlist& dirlist, string extension)
 	dirlist.sort();
 	return true;
 }
+
 
 namespace
 {
