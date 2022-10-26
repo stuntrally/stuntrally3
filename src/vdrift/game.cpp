@@ -300,7 +300,7 @@ bool GAME::InitializeSound()
 	string path = PATHMANAGER::Sounds()+"/sounds.cfg";
 	fi.open(path.c_str(), ios_base::binary);
 	if (!fi)
-	{	LogO("@  Can't load sounds.cfg");  return false;  }
+	{	LogO("@  Can't load " + path);  return false;  }
 	FileStreamDataStream fd(&fi,false);
 	snd->parseScript(&fd);
 	fd.close();

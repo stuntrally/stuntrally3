@@ -19,6 +19,9 @@
 #    include "OgreAtmosphereNpr.h"
 #endif
 
+#include "game.h"  // snd
+#include "SoundMgr.h"
+
 using namespace Demo;
 using namespace Ogre;
 
@@ -196,6 +199,11 @@ namespace Demo
         case SDL_SCANCODE_KP_MINUS:     mKeys[1] = 1;  break;
         case SDL_SCANCODE_KP_MULTIPLY:  mKeys[2] = 1;  break;
         case SDL_SCANCODE_KP_DIVIDE:    mKeys[3] = 1;  break;
+
+        case SDL_SCANCODE_SPACE:  // snd test
+            pGame->snd_lapbest->start();  //)
+            break;
+
         
         //** terrain wireframe toggle
         case SDL_SCANCODE_R:

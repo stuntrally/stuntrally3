@@ -109,6 +109,7 @@ namespace Demo
         //; pApp->mRoot = root;
         pGame->app = pApp;
 
+        pGame->NewGameDoLoadMisc(0.f);
 
     	// pApp->NewGame(true);
 

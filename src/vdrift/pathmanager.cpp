@@ -18,13 +18,13 @@
 	#include <sys/types.h>
 	#include <dirent.h>
 #endif
+//#include "Def_Str.h"  // LogO
 
 // Should come from CMake
 #ifndef SHARED_DATA_DIR
-#define SHARED_DATA_DIR "data"
+#define SHARED_DATA_DIR "Media"
 #endif
 using namespace std;
-
 
 namespace fs = std::filesystem;
 
@@ -83,7 +83,7 @@ void PATHMANAGER::Init(bool log_paths)
 			}
 		#else // Windows
 			char *homedir = getenv("USERPROFILE");
-			if (homedir == NULL) homedir = "data"; // WIN 9x/Me
+			if (homedir == NULL) homedir = "Media"; // WIN 9x/Me
 		#endif
 		home_dir += homedir;
 	}
@@ -153,6 +153,7 @@ void PATHMANAGER::Init(bool log_paths)
 		//dirs.push_back(user_data_dir);
 
 		// Adding relative path for running from sources
+		dirs.push_back(execname().parent_path().parent_path().parent_path() / "Media");
 		dirs.push_back(execname().parent_path().parent_path() / "Media");
 		dirs.push_back(execname().parent_path().parent_path());
 		dirs.push_back(execname().parent_path() / "Media");
@@ -172,7 +173,8 @@ void PATHMANAGER::Init(bool log_paths)
 		//  Loop through the paths and pick the first one that contain some data
 		for (auto d : dirs)
 		{	//  Data dir
-			if (fs::exists(d / "hud"))
+			// LogO(d / "packs");
+			if (fs::exists(d / "sounds"))
 				game_data = d.string();
 			//  Config dir
 			if (fs::exists(d / "config"))
@@ -213,7 +215,7 @@ void PATHMANAGER::Init(bool log_paths)
 		info << "-------------------------" << endl;
 		info << "Ogre plugin-: " << ogre_plugin << endl;
 		info << "Data:         " << Data() << endl;
-		//info << "Default cfg:  " << GetGameConfigDir() << endl;
+		info << "ConfigDir:    " << GameConfigDir() << endl;
 		info << "Home:         " << home_dir << endl;
 		info << "User cfg,log: " << UserConfigDir() << endl;
 		info << "User data:    " << user_data << endl;
