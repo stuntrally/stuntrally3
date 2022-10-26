@@ -1,13 +1,13 @@
 #pragma once
-#include "PreviewTex.h"
-#include <Ogre.h>
+// #include "PreviewTex.h"
+// #include <Ogre.h>
 // #include <OgreVector3.h>
 // #include <OgreVector4.h>
-// #include <OgreString.h>
+#include <OgreString.h>
 // #include <OgreTexture.h>
 // #include <OgreShadowCameraSetup.h>
 
-namespace Forests {  class PagedGeometry;  }
+// namespace Forests {  class PagedGeometry;  }
 namespace Ogre  {  class Terrain;  class TerrainGlobalOptions;  class TerrainGroup;  class StaticGeometry;
 	class Light;  class SceneNode;  class Camera;  class Texture;  class SceneManager;  class Entity;
 	class Rectangle2D;  class RenderTexture;  class Viewport;  class Root;  class ParticleSystem; }
@@ -25,9 +25,9 @@ public:
 
 
 	//  Shadows
-	void changeShadows(), UpdShaderParams(), UpdPaceParams(), UpdPSSMMaterials();
-	Ogre::Vector4 splitPoints;
-	Ogre::ShadowCameraSetupPtr mPSSMSetup;
+	// void changeShadows(), UpdShaderParams(), UpdPaceParams(), UpdPSSMMaterials();
+	// Ogre::Vector4 splitPoints;
+	// Ogre::ShadowCameraSetupPtr mPSSMSetup;
 	
 
 	///  Setup  scene.xml
@@ -38,76 +38,77 @@ public:
 
 	
 	//  Sun
-	Ogre::Light* sun;
-	void UpdFog(bool bForce=false), UpdSun(), UpdSky();
-	void CreateSkyDome(Ogre::String sMater, Ogre::Vector3 scale, float yaw);
+	// Ogre::Light* sun;
+	// void UpdFog(bool bForce=false), UpdSun(), UpdSky();
+	// void CreateSkyDome(Ogre::String sMater, Ogre::Vector3 scale, float yaw);
 
-	//  Weather  rain, snow
-	Ogre::ParticleSystem *pr,*pr2;
-	void CreateWeather(), DestroyWeather();
-	void UpdateWeather(Ogre::Camera* cam, float mul = 1.f);
+	//;  Weather  rain, snow
+	// Ogre::ParticleSystem *pr,*pr2;
+	// void CreateWeather(), DestroyWeather();
+	// void UpdateWeather(Ogre::Camera* cam, float mul = 1.f);
 
 
 	//  Emitters
-	void CreateEmitters(), DestroyEmitters(bool clear);
+	// void CreateEmitters(), DestroyEmitters(bool clear);
 
 
 	//  Fluids  water, mud
 	std::vector<Ogre::String/*MeshPtr*/> vFlSMesh;
 	std::vector<Ogre::Entity*> vFlEnt;
 	std::vector<Ogre::SceneNode*> vFlNd;
-	void CreateFluids(), DestroyFluids(), CreateBltFluids();
+	// void CreateFluids(), DestroyFluids(), CreateBltFluids();
 
-	WaterRTT* mWaterRTT;
-	void UpdateWaterRTT(Ogre::Camera* cam);
+	// WaterRTT* mWaterRTT;
+	// void UpdateWaterRTT(Ogre::Camera* cam);
 
 
-	//  Road
-	int rdCur = 0;  // cur
-	std::vector<SplineRoad*> roads;
-	SplineRoad* road = 0;  // main
+	//;  Road
+	// int rdCur = 0;  // cur
+	// std::vector<SplineRoad*> roads;
+	// SplineRoad* road = 0;  // main
 	
-	SplineRoad* trail = 0;  // driving aids
-	PaceNotes* pace = 0;
-	void DestroyRoads(), DestroyPace(), DestroyTrail();
+	// SplineRoad* trail = 0;  // driving aids
+	// PaceNotes* pace = 0;
+	// void DestroyRoads(), DestroyPace(), DestroyTrail();
 
 	
 	//  Vegetation
-	Forests::PagedGeometry *trees, *grass;
-	void CreateTrees(), DestroyTrees(), RecreateTrees(), updGrsTer(), UpdCamera();
+	// Forests::PagedGeometry *trees, *grass;
+	// void CreateTrees(), DestroyTrees(), RecreateTrees(), updGrsTer(), UpdCamera();
 
 
 	///  Terrain
 	//-----------------------------------
-	PreviewTex texLayD[6],texLayN[6];  // layers
-	void CreateTerrain(bool bNewHmap=false, bool bTer=true, bool terLoad=true);
-	void DestroyTerrain(), CreateBltTerrain(), copyTerHmap();
+	// PreviewTex texLayD[6],texLayN[6];  // layers
+	// void CreateTerrain(bool bNewHmap=false, bool bTer=true, bool terLoad=true);
+	// void DestroyTerrain()
+	void CreateBltTerrain(), copyTerHmap();
 
-	Ogre::Terrain* terrain;
-	Ogre::TerrainGlobalOptions* mTerrainGlobals;
-	Ogre::TerrainGroup* mTerrainGroup;
-	void SetupTerrain(), UpdTerErr();
+	// Ogre::Terrain* terrain;
+	// Ogre::TerrainGlobalOptions* mTerrainGlobals;
+	// Ogre::TerrainGroup* mTerrainGroup;
+	// void SetupTerrain(), UpdTerErr();
 
-	Ogre::Terrain* horizon;
-	Ogre::TerrainGlobalOptions* mHorizonGlobals;
-	Ogre::TerrainGroup* mHorizonGroup;
-	void SetupHorizon();
+	// Ogre::Terrain* horizon;
+	// Ogre::TerrainGlobalOptions* mHorizonGlobals;
+	// Ogre::TerrainGroup* mHorizonGroup;
+	// void SetupHorizon();
 
 	
 	//  Blendmap, rtt
 	//-----------------------------------
-	void CreateBlendTex(), UpdBlendmap(), UpdLayerPars();
-	void UpdGrassDens(), UpdGrassPars();
+	// void CreateBlendTex(), UpdBlendmap(), UpdLayerPars();
+	// void UpdGrassDens(), UpdGrassPars();
 	
 	//  tex, mtr names
 	const static Ogre::String sHmap, sAng,sAngMat,
 		sBlend,sBlendMat, sGrassDens,sGrassDensMat;
 
-	Ogre::TexturePtr heightTex, angleRTex, blendRTex;  // height, angles, blend
-	Ogre::TexturePtr grassDensRTex;  // grass density and channels
-	PreviewTex roadDens;
+	// Ogre::TexturePtr heightTex, angleRTex, blendRTex;  // height, angles, blend
+	// Ogre::TexturePtr grassDensRTex;  // grass density and channels
+	// PreviewTex roadDens;
 
-	struct RenderToTex  // rtt common
+	/*struct RenderToTex  // rtt common
 	{
 		Ogre::RenderTexture* rnd;  Ogre::Texture* tex;
 		Ogre::SceneManager* scm;  Ogre::Camera* cam;  Ogre::Viewport* vp;
@@ -120,7 +121,7 @@ public:
 
 		void Setup(Ogre::Root* rt, Ogre::String sName, Ogre::TexturePtr pTex, Ogre::String sMtr);
 	};
-	RenderToTex blendRTT, angleRTT, grassDensRTT;
+	RenderToTex blendRTT, angleRTT, grassDensRTT;*/
 
 
 	//  noise  -------

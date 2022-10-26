@@ -13,13 +13,14 @@
 #include "quickprof.h"
 #include "tracksurface.h"
 #include "forcefeedback.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/data/SceneXml.h"
-#include "../ogre/common/CScene.h"
-#include "../ogre/CGame.h"
-#include "../ogre/CInput.h"
-#include "../ogre/FollowCamera.h"
-#include "../oics/ICSInputControlSystem.h"
+
+#include "Def_Str.h"
+#include "SceneXml.h"
+#include "CScene.h"
+#include "CGame.h"
+//; #include "CInput.h"
+#include "FollowCamera.h"
+// #include "../oics/ICSInputControlSystem.h"
 #include <OgreTimer.h>
 #include <OgreDataStream.h>
 
@@ -427,11 +428,11 @@ void GAME::Tick(double deltat)
 		
 	//.  dont simulate before /network start
 	if (!app)  return;
-	bool sim = app->iLoad1stFrames == -2 && (!timer.waiting || timer.end_sim);
+	bool sim = true; //; app->iLoad1stFrames == -2 && (!timer.waiting || timer.end_sim);
 
 	//  speed up perf test
-	if (app && app->bPerfTest)
-		deltat *= settings->perf_speed;
+	//; if (app && app->bPerfTest)
+		// deltat *= settings->perf_speed;
 	
 	target_time += deltat;
 	double tickperriod = TickPeriod();
@@ -442,8 +443,8 @@ void GAME::Tick(double deltat)
 		frame++;
 		AdvanceGameLogic(sim ? tickperriod : 0.0);
 
-		if (app)
-			app->newPoses(tickperriod);
+		// if (app)
+			//; app->newPoses(tickperriod);  // fixme next
 
 		curticks++;
 		target_time -= tickperriod;
@@ -474,10 +475,10 @@ void GAME::AdvanceGameLogic(double dt)
 					cd.inFluidsWh[w].clear();
 			}
 
-			if (bResetObj)
+			/*if (bResetObj)
 			{	bResetObj = false;
 				app->ResetObjects();
-			}
+			}*/
 
 			if (dt > 0.0)
 				collision.Update(dt, settings->bltProfilerTxt);
@@ -509,19 +510,20 @@ void GAME::UpdateCarInputs(CAR & car)
 {
 	vector <float> carinputs(CARINPUT::ALL, 0.0f);
 	//  race countdown or loading
-	bool forceBrake = timer.waiting || timer.pretime > 0.f || app->iLoad1stFrames > -2;
+	bool forceBrake = false; //timer.waiting || timer.pretime > 0.f; || app->iLoad1stFrames > -2;
 
 	int i = app->scn->sc->asphalt ? 1 : 0;
 	float sss_eff = settings->sss_effect[i], sss_velf = settings->sss_velfactor[i];
 	float carspeed = car.GetSpeedDir();  //car.GetSpeed();
 	//LogO(fToStr(car.GetSpeed(),2,6)+" "+fToStr(car.GetSpeedDir(),2,6));
 
-	boost::lock_guard<boost::mutex> lock(app->input->mPlayerInputStateMutex);
+	// fixme next
+	/*boost::lock_guard<boost::mutex> lock(app->input->mPlayerInputStateMutex);
 	int id = std::min(3, car.id);
-	carinputs = controls.second.ProcessInput(
+	//; carinputs = controls.second.ProcessInput(
 		app->input->mPlayerInputState[id], car.id,
 		carspeed, sss_eff, sss_velf,  app->mInputCtrlPlayer[id]->mbOneAxisThrottleBrake,
-		forceBrake, app->bPerfTest, app->iPerfTestStage);
+		forceBrake, app->bPerfTest, app->iPerfTestStage);*/
 
 	car.HandleInputs(carinputs, TickPeriod());
 }
@@ -675,7 +677,7 @@ void GAME::UpdateForceFeedback(float dt)
 
 void GAME::UpdateTimer()
 {
-	if (app->iLoad1stFrames == -2)  // ended loading
+	//; if (app->iLoad1stFrames == -2)  // ended loading
 		timer.Tick(TickPeriod());
 	//timer.DebugPrint(info_output);
 }
