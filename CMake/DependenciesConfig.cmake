@@ -64,13 +64,14 @@ add_external_lib(
         FIND_PACKAGE
 )
 
-add_external_lib(
-        OpenAL
-        openal/1.21.1
-        REQUIRED
-        PKG_CONFIG "openal >= 1.18"
-        FIND_PACKAGE_OPTIONS CONFIG
-)
+#  todo: fix  Cannot load recipe.
+#add_external_lib(
+#        OpenAL
+#        openal/1.21.1
+#        REQUIRED
+#        PKG_CONFIG "openal >= 1.18"
+#        FIND_PACKAGE_OPTIONS CONFIG
+#)
 
 #add_external_lib(
 #        ENet
