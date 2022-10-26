@@ -1,0 +1,30 @@
+
+-- sounds from  https://www.freesound.org/
+
+| dir/files     | author       | sound name |
+--------------------------------------------------
+
+water* mud*   cgeffex     large splashes
+
+mud_cont      justinbw    water spigget onto mud 2
+water_cont    justinbw    water spigget onto mud 1
+
+
+hit/terrain   halleck   hit with dirt spray 1
+hit/dirt      halleck   hit with dirt spray 1 body
+              halleck   hit with dirt spray 2 body
+              halleck   hit with dirt spray 3
+
+vehicle/boost    nathanshadow   thruster level ii
+
+hud*
+
+
+-- sounds from VDrift
+
+vehicle/bump_front*
+vehicle/bump_rear*
+surface/grass_*
+surface/gravel_*
+surface/tire_squeal_*
+vehicle/wind

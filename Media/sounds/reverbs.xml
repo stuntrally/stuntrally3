@@ -1,0 +1,55 @@
+<reverbs>
+	<base name="base" normal="MOUNTAINS"
+		cave="STONEROOM" cavebig="CAVE" pipe="PIPE_SMALL" pipebig="PIPE_LARGE" influid="UNDERWATER"
+		descr="basic, general, low reverb" />
+
+	<rev name="Desert"       normal="PLAIN" 
+		descr="Open flat terrain, no reverb" />
+
+	<rev name="Australia"    normal="OUTDOORS_ROLLINGPLAINS" 
+		descr="Mostly open, flat terrain - nearly no reverb" /><!--OUTDOORS_ROLLINGPLAINS-->
+
+	<rev name="Islands"      normal="MOUNTAINS" 
+		descr="Rare vegetation or rocks - very low reverb" /><!--MOUNTAINS-->
+
+	<rev name="Savanna"      normal="OUTDOORS_VALLEY" 
+		descr="Rare trees - low reverb" /><!--OUTDOORS_VALLEY-->
+
+	<rev name="Forest"       normal="WOODEN_COURTYARD" 
+		descr="Some trees - low reverb" /><!--WOODEN_COURTYARD OUTDOORS_CREEK-->
+
+	<rev name="ForestDense"  normal="OUTDOORS_BACKYARD" 
+		descr="Many trees - close reverb" /><!--OUTDOORS_BACKYARD FOREST-->
+
+	<rev name="Jungle"       normal="WOODEN_LARGEROOM" 
+		descr="Plenty of vegetation - close reverb" /><!--WOODEN_LARGEROOM WOODEN_LONGPASSAGE-->
+
+	<rev name="JungleDense"  normal="WOODEN_MEDIUMROOM" 
+		descr="Lots of vegetation - dull close reverb" /><!--WOODEN_MEDIUMROOM-->
+
+	<rev name="Rocky"        normal="OUTDOORS_DEEPCANYON" 
+		descr="Some rocks and vegetation - longer reverb" /><!--OUTDOORS_DEEPCANYON` CASTLE_COURTYARD-->
+
+	<rev name="Canyon"       normal="CASTLE_LONGPASSAGE" 
+		descr="Valleys open rocks - medium echo" /><!--CASTLE_LONGPASSAGE ALLEY-->
+
+	<rev name="Mountains"    normal="WOODEN_HALL" 
+		descr="High mountains - long echoing" /><!--AUDITORIUM FACTORY_LARGEROOM` WOODEN_HALL-->
+
+	<rev name="MountainsClose"  normal="CASTLE_HALL" 
+		descr="High mountains close - high long close reverb" /><!--CASTLE_HALL STONECORRIDOR-->
+
+	<!--  special atmosphere  -->
+	<rev name="Crystals"     normal="ICEPALACE_LONGPASSAGE" 
+		descr="custom Crystals - own setup" /><!--ICEPALACE_LONGPASSAGE-->
+	<rev name="Alien"        normal="QUARRY" 
+		descr="custom Alien - own setup" />
+	<rev name="Space"        normal="PLAIN" 
+		descr="custom" />
+	<rev name="Unidentified" normal="MOOD_HEAVEN" 
+		descr="custom Unidentified - own setup" />
+	<rev name="UnidentMntn" normal="CHAPEL" 
+		descr="custom Unidentified, Mountains - long close reverb" />
+	
+	<!-- See SoundBaseMgrUtil :328  InitReverbMap()  for more names -->
+</reverbs>
