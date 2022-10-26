@@ -520,10 +520,14 @@ void GAME::UpdateCarInputs(CAR & car)
 	// fixme next
 	/*boost::lock_guard<boost::mutex> lock(app->input->mPlayerInputStateMutex);
 	int id = std::min(3, car.id);
-	//; carinputs = controls.second.ProcessInput(
+	carinputs = controls.second.ProcessInput(
 		app->input->mPlayerInputState[id], car.id,
 		carspeed, sss_eff, sss_velf,  app->mInputCtrlPlayer[id]->mbOneAxisThrottleBrake,
 		forceBrake, app->bPerfTest, app->iPerfTestStage);*/
+	// temp ..
+	carinputs = controls.second.ProcessInput(
+		app->inputs, car.id,
+		carspeed, sss_eff, sss_velf);
 
 	car.HandleInputs(carinputs, TickPeriod());
 }

@@ -36,6 +36,9 @@ public:
 	CData* data =0;  //p
 	
 	GAME* pGame =0;
+
+	/// temp new
+	float inputs[14] = {0,0,0,0};
 	
 
 	//  BaseApp init

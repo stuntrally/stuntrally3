@@ -21,7 +21,10 @@
 
 #include "game.h"  // snd
 #include "SoundMgr.h"
+#include "CarPosInfo.h"
+#include "CGame.h"
 
+#include "Def_Str.h"
 using namespace Demo;
 using namespace Ogre;
 
@@ -33,6 +36,41 @@ namespace Demo
     //-----------------------------------------------------------------------------------------------------------------------------
     void TerrainGame::update( float timeSinceLast )
     {
+        if (pGame && pApp)
+        {
+            // enum PlayerActions
+            // {	A_Throttle, A_Brake, A_Steering, A_HandBrake, A_Boost, A_Flip,
+            //     A_ShiftUp, A_ShiftDown, A_PrevCamera, A_NextCamera, A_LastChk, A_Rewind, NumPlayerActions
+            // };
+            //  inputs
+            pApp->inputs[0] = mArrows[2];
+            pApp->inputs[1] = mArrows[3];
+            pApp->inputs[2] = 0.5f * (1 + mArrows[1] - mArrows[0]);
+            pApp->inputs[3] = mArrows[4];
+            pApp->inputs[4] = mArrows[5];
+            pApp->inputs[5] = 0.5f * (1 + mArrows[6] - mArrows[7]);
+
+            pGame->OneLoop(timeSinceLast);  // sim
+
+            //  set car pos
+            if (ndCar[0] && !pGame->cars.empty())
+            {
+                PosInfo pi;  pi.FromCar(pGame->cars[0]);
+                for (auto nd : ndCar)
+                if (nd)
+                {   nd->setPosition(pi.pos);
+                    nd->setOrientation(pi.rot);
+                }
+                int i=0;
+                for (auto nd : ndWheel)
+                if (nd)
+                {   nd->setPosition(pi.whPos[i]);
+                    nd->setOrientation(pi.whRot[i]);
+                    ++i;
+                }
+            }
+        }
+
         //  Keys
         float mul = shift ? 0.2f : ctrl ? 3.f : 1.f;
         int d = right ? 1 : left ? -1 : 0;
@@ -118,7 +156,6 @@ namespace Demo
     //-----------------------------------------------------------------------------------------------------------------------------
     void TerrainGame::generateDebugText( float timeSinceLast, String &outText )
     {
-        #define toStr(v, p)  StringConverter::toString(v,p)
         outText = "";
 
         if( mDisplayHelpMode == 0 )
@@ -126,11 +163,11 @@ namespace Demo
             TutorialGameState::generateDebugText( timeSinceLast, outText );
             
             Vector3 camPos = mGraphicsSystem->getCamera()->getPosition();
-            outText += "Pos: " + toStr( camPos.x, 4) +" "+ toStr( camPos.y, 4) +" "+ toStr( camPos.z, 4) + "\n\n";
+            outText += "Pos: " + fToStr( camPos.x, 4) +" "+ fToStr( camPos.y, 4) +" "+ fToStr( camPos.z, 4) + "\n\n";
 
             #if 1  // list all veget cnts
             for (const auto& lay : vegetLayers)
-                outText += toStr( lay.count, 4 ) + " " + lay.mesh + "\n";
+                outText += iToStr( lay.count, 4 ) + " " + lay.mesh + "\n";
             #endif
         }
         else if( mDisplayHelpMode == 1 )
@@ -140,17 +177,17 @@ namespace Demo
             const RenderingMetrics& rm = rs->getMetrics();  //** fps
             const FrameStats *st = mGraphicsSystem->getRoot()->getFrameStats();
             
-            outText += toStr( (int)st->getAvgFps(), 4) +"  "+ //"\n" +
-                "f " + toStr( rm.mFaceCount/1000, 0) + //"k v " + toStr( rm.mVertexCount/1000 ) + 
-                "k d " + toStr( rm.mDrawCount, 0) + " i " + toStr( rm.mInstanceCount, 0)
+            outText += iToStr( (int)st->getAvgFps(), 4) +"  "+ //"\n" +
+                "f " + toStr( rm.mFaceCount/1000) + //"k v " + toStr( rm.mVertexCount/1000 ) + 
+                "k d " + toStr( rm.mDrawCount) + " i " + toStr( rm.mInstanceCount)
                 +"\n";
                 // +" b " + toStr( rm.mBatchCount, 0) + "\n";
 
-            outText += "Veget all  " + toStr(vegetNodes.size(), 5);
-            outText += "\n- + Sun Pitch  " + toStr( mPitch * 180.f / Math::PI, 3 );
-            outText += "\n/ * Sun Yaw    " + toStr( mYaw * 180.f / Math::PI, 3 );
+            outText += "Veget all  " + fToStr(vegetNodes.size(), 5);
+            outText += "\n- + Sun Pitch  " + fToStr( mPitch * 180.f / Math::PI, 3 );
+            outText += "\n/ * Sun Yaw    " + fToStr( mYaw * 180.f / Math::PI, 3 );
 
-            outText += "\n^ v Param  " + toStr( param, 0 );
+            outText += "\n^ v Param  " + fToStr( param, 0 );
             
             SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
             AtmosphereNpr *atmosphere = static_cast<AtmosphereNpr*>( sceneManager->getAtmosphere() );
@@ -159,21 +196,36 @@ namespace Demo
             outText += "\n< > ";  const int d = 3;
             switch (param)
             {
-            case 0:   outText += "Fog density  " + toStr( p.fogDensity, d );  break;
-            case 1:   outText += "density coeff  " + toStr( p.densityCoeff, d );  break;
-            case 2:   outText += "density diffusion  " + toStr( p.densityDiffusion, d );  break;
-            case 3:   outText += "horizon limit  " + toStr( p.horizonLimit, d );  break;
-            case 4:   outText += "Sun Power  " + toStr( p.sunPower, d );  break;
-            case 5:   outText += "sky Power  " + toStr( p.skyPower, d );  break;
-            case 6:   outText += "sky Colour   Red  " + toStr( p.skyColour.x, d );  break;
-            case 7:   outText += "sky Colour Green  " + toStr( p.skyColour.y, d );  break;
-            case 8:   outText += "sky Colour  Blue  " + toStr( p.skyColour.z, d );  break;
-            case 9:   outText += "fog break MinBright  " + toStr( p.fogBreakMinBrightness, d );  break;
-            case 10:  outText += "fog break Falloff  " + toStr( p.fogBreakFalloff, d );  break;
-            case 11:  outText += "linked LightPower  " + toStr( p.linkedLightPower, d );  break;
-            case 12:  outText += "ambient UpperPower  " + toStr( p.linkedSceneAmbientUpperPower, d );  break;
-            case 13:  outText += "ambient LowerPower  " + toStr( p.linkedSceneAmbientLowerPower, d );  break;
-            case 14:  outText += "envmap Scale  " + toStr( p.envmapScale, d );  break;
+            case 0:   outText += "Fog density  " + fToStr( p.fogDensity, d );  break;
+            case 1:   outText += "density coeff  " + fToStr( p.densityCoeff, d );  break;
+            case 2:   outText += "density diffusion  " + fToStr( p.densityDiffusion, d );  break;
+            case 3:   outText += "horizon limit  " + fToStr( p.horizonLimit, d );  break;
+            case 4:   outText += "Sun Power  " + fToStr( p.sunPower, d );  break;
+            case 5:   outText += "sky Power  " + fToStr( p.skyPower, d );  break;
+            case 6:   outText += "sky Colour   Red  " + fToStr( p.skyColour.x, d );  break;
+            case 7:   outText += "sky Colour Green  " + fToStr( p.skyColour.y, d );  break;
+            case 8:   outText += "sky Colour  Blue  " + fToStr( p.skyColour.z, d );  break;
+            case 9:   outText += "fog break MinBright  " + fToStr( p.fogBreakMinBrightness, d );  break;
+            case 10:  outText += "fog break Falloff  " + fToStr( p.fogBreakFalloff, d );  break;
+            case 11:  outText += "linked LightPower  " + fToStr( p.linkedLightPower, d );  break;
+            case 12:  outText += "ambient UpperPower  " + fToStr( p.linkedSceneAmbientUpperPower, d );  break;
+            case 13:  outText += "ambient LowerPower  " + fToStr( p.linkedSceneAmbientLowerPower, d );  break;
+            case 14:  outText += "envmap Scale  " + fToStr( p.envmapScale, d );  break;
+            }
+        }
+
+        if (pGame)  // CAR text
+        {
+            outText += "\n\n";
+            int num = pGame->cars.size();
+            outText += "cars " + toStr(num) + "\n";
+            
+            for (const CAR* car : pGame->cars)
+            {
+                auto pos = car->dynamics.GetPosition();
+                outText += "pos  " + fToStr(pos[0],2) + "  " + fToStr(pos[1],2) + "  " + fToStr(pos[2],2) +"\n";
+                outText += "gear  " + iToStr(car->GetGear()) + "  rpm  " + iToStr(car->GetEngineRPM(),4)
+                         + "  km/h " + fToStr(car->GetSpeedometer()*3.6f, 0) +"\n";
             }
         }
     }
@@ -187,22 +239,34 @@ namespace Demo
     {
         switch (arg.keysym.scancode)
         {
-        case SDL_SCANCODE_LSHIFT:  shift = true;  break;
-        case SDL_SCANCODE_LCTRL:   ctrl = true;   break;
+        case SDL_SCANCODE_RSHIFT:  shift = true;  break;
+        case SDL_SCANCODE_RCTRL:   ctrl = true;   break;
 
-        case SDL_SCANCODE_LEFT:   left = true;   break;
-        case SDL_SCANCODE_RIGHT:  right = true;  break;
-        case SDL_SCANCODE_UP:     --param;  break;
-        case SDL_SCANCODE_DOWN:   ++param;  break;
 
-        case SDL_SCANCODE_KP_PLUS:      mKeys[0] = 1;  break;
+        case SDL_SCANCODE_LEFT:   mArrows[0] = 1;  break;  // car
+        case SDL_SCANCODE_RIGHT:  mArrows[1] = 1;  break;
+        case SDL_SCANCODE_UP:     mArrows[2] = 1;  break;
+        case SDL_SCANCODE_DOWN:   mArrows[3] = 1;  break;
+
+        case SDL_SCANCODE_SPACE:  mArrows[4] = 1;  break;
+        case SDL_SCANCODE_LCTRL:  mArrows[5] = 1;  break;
+        case SDL_SCANCODE_1:      mArrows[6] = 1;  break;
+        case SDL_SCANCODE_2:      mArrows[7] = 1;  break;
+
+
+        case SDL_SCANCODE_HOME:  left  = true;  break;  // params
+        case SDL_SCANCODE_END:   right = true;  break;
+        case SDL_SCANCODE_PAGEUP:     --param;  break;
+        case SDL_SCANCODE_PAGEDOWN:   ++param;  break;
+
+        case SDL_SCANCODE_KP_PLUS:      mKeys[0] = 1;  break;  // sun
         case SDL_SCANCODE_KP_MINUS:     mKeys[1] = 1;  break;
         case SDL_SCANCODE_KP_MULTIPLY:  mKeys[2] = 1;  break;
         case SDL_SCANCODE_KP_DIVIDE:    mKeys[3] = 1;  break;
 
-        case SDL_SCANCODE_SPACE:  // snd test
-            pGame->snd_lapbest->start();  //)
-            break;
+        // case SDL_SCANCODE_SPACE:  // snd test
+            // pGame->snd_lapbest->start();  //)
+            // break;
 
         
         //** terrain wireframe toggle
@@ -262,13 +326,25 @@ namespace Demo
     {
         switch (arg.keysym.scancode)
         {
-        case SDL_SCANCODE_LSHIFT:  shift = false;  break;
-        case SDL_SCANCODE_LCTRL:   ctrl = false;   break;
+        case SDL_SCANCODE_RSHIFT:  shift = false;  break;
+        case SDL_SCANCODE_RCTRL:   ctrl = false;   break;
 
-        case SDL_SCANCODE_LEFT:   left = false;   break;
-        case SDL_SCANCODE_RIGHT:  right = false;  break;
 
-        case SDL_SCANCODE_KP_PLUS:      mKeys[0] = 0;  break;
+        case SDL_SCANCODE_LEFT:   mArrows[0] = 0;  break;  // car
+        case SDL_SCANCODE_RIGHT:  mArrows[1] = 0;  break;
+        case SDL_SCANCODE_UP:     mArrows[2] = 0;  break;
+        case SDL_SCANCODE_DOWN:   mArrows[3] = 0;  break;
+
+        case SDL_SCANCODE_SPACE:  mArrows[4] = 0;  break;
+        case SDL_SCANCODE_LCTRL:  mArrows[5] = 0;  break;
+        case SDL_SCANCODE_1:      mArrows[6] = 0;  break;
+        case SDL_SCANCODE_2:      mArrows[7] = 0;  break;
+
+
+        case SDL_SCANCODE_HOME:  left = false;   break;  // params
+        case SDL_SCANCODE_END:   right = false;  break;
+
+        case SDL_SCANCODE_KP_PLUS:      mKeys[0] = 0;  break;  // sun
         case SDL_SCANCODE_KP_MINUS:     mKeys[1] = 0;  break;
         case SDL_SCANCODE_KP_MULTIPLY:  mKeys[2] = 0;  break;
         case SDL_SCANCODE_KP_DIVIDE:    mKeys[3] = 0;  break;

@@ -25,6 +25,17 @@
 #include "OgreHlmsPbs.h"
 #include "OgreHlmsPbsDatablock.h"
 
+//  SR
+#include "CGame.h"
+#include "game.h"
+#include "settings.h"
+#include "ShapeData.h"
+#include "SceneXml.h"
+
+#include <BulletCollision/CollisionDispatch/btCollisionObject.h>
+#include <BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h>
+
+#include "Def_Str.h"
 using namespace Demo;
 using namespace Ogre;
 
@@ -108,11 +119,11 @@ namespace Demo
     //-----------------------------------------------------------------------------------------------------------------------------
     void TerrainGame::CreatePlane()
     {
-        sizeXZ = 2000.0f;
+        sizeXZ = 1000.0f;
         v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
             "Plane v1", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
             Plane( Vector3::UNIT_Y, 1.0f ), sizeXZ, sizeXZ,
-            10, 10, true, 1, 40.0f, 40.0f, Vector3::UNIT_Z,
+            20, 20, true, 1, 160.f, 160.f, Vector3::UNIT_Z,
             v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 
         planeMesh = MeshManager::getSingleton().createByImportingV1(
@@ -126,7 +137,7 @@ namespace Demo
         planeItem->setDatablock( "Ground" );
         
         planeNode = rootNode->createChildSceneNode( SCENE_STATIC );
-        planeNode->setPosition( 0, 0, 0 );
+        planeNode->setPosition( 0, -1.f, 0 );
         planeNode->attachObject( planeItem );
     }
 
@@ -223,5 +234,84 @@ namespace Demo
         if (ndSky)
         {   mgr->destroySceneNode(ndSky);  ndSky = 0;  }
     }
+
+
+    //  Bullet Terrain
+    //---------------------------------------------------------------------------------------------------------------
+    void TerrainGame::CreateBltTerrain()
+    {
+        if (!sc)
+        {   sc = new Scene();
+            sc->Default();
+            sc->asphalt = false;
+            int s = sc->td.iVertsX;
+            sc->td.hfHeight = new float[s * s];
+            // todo: delete
+            
+            pApp->blendMapSize = s;
+            pApp->blendMtr = new char[s * s];
+            sc->td.layersAll[0].surfId = 2;
+            
+            int a = 0;
+            for (int y=0; y < s; ++y)
+            for (int y=0; y < s; ++y)
+            {
+                sc->td.hfHeight[a] = 0.f;
+                pApp->blendMtr[a] = 0;
+                ++a;
+            }
+        }
+        btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
+            sc->td.iVertsX, sc->td.iVertsY, sc->td.hfHeight, sc->td.fTriangleSize,
+            -1300.f,1300.f, 2, PHY_FLOAT,false);  //par- max height
+        
+        hfShape->setUseDiamondSubdivision(true);
+
+        btVector3 scl(sc->td.fTriangleSize, sc->td.fTriangleSize, 1);
+        hfShape->setLocalScaling(scl);
+        hfShape->setUserPointer((void*)SU_Terrain);
+
+        btCollisionObject* col = new btCollisionObject();
+        col->setCollisionShape(hfShape);
+        //col->setWorldTransform(tr);
+        col->setFriction(0.9);   //+
+        col->setRestitution(0.0);
+        //col->setHitFraction(0.1f);
+        col->setCollisionFlags(col->getCollisionFlags() |
+            btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+        #ifndef SR_EDITOR  // game
+            pGame->collision.world->addCollisionObject(col);
+            pGame->collision.shapes.push_back(hfShape);
+        #else
+            world->addCollisionObject(col);
+        #endif
+        
+        #ifndef SR_EDITOR
+        ///  border planes []
+        const float px[4] = {-1, 1, 0, 0};
+        const float py[4] = { 0, 0,-1, 1};
+
+        for (int i=0; i < 4; ++i)
+        {
+            btVector3 vpl(px[i], py[i], 0);
+            btCollisionShape* shp = new btStaticPlaneShape(vpl,0);
+            shp->setUserPointer((void*)SU_Border);
+            
+            btTransform tr;  tr.setIdentity();
+            tr.setOrigin(vpl * -0.5 * sc->td.fTerWorldSize);
+
+            btCollisionObject* col = new btCollisionObject();
+            col->setCollisionShape(shp);
+            col->setWorldTransform(tr);
+            col->setFriction(0.3);   //+
+            col->setRestitution(0.0);
+            col->setCollisionFlags(col->getCollisionFlags() |
+                btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+
+            pGame->collision.world->addCollisionObject(col);
+            pGame->collision.shapes.push_back(shp);
+        }
+        #endif
+}
 
 }

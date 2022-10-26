@@ -18,6 +18,8 @@
 #include "OgreGpuProgramManager.h"
 #include "OgreTextureGpuManager.h"
 #include "OgrePixelFormatGpuUtils.h"
+#include "mathvector.h"
+#include "quaternion.h"
 
 #ifdef OGRE_BUILD_COMPONENT_ATMOSPHERE
 #    include "OgreAtmosphereNpr.h"
@@ -99,6 +101,7 @@ namespace Demo
         //  paths
         LogO(PATHMANAGER::info.str());
 
+        CreateCar();  //+
 
         ///  Game start
         //----------------------------------------------------------------
@@ -108,6 +111,21 @@ namespace Demo
         pApp = new App(settings, pGame);
         //; pApp->mRoot = root;
         pGame->app = pApp;
+
+        pGame->ReloadSimData();
+
+        CreateBltTerrain();
+        
+       	//  CAR  ---
+        // <start pos="-1.30182 7.95081 -10.5378" rot="-0 0 -1.62921e-07 -1" />
+        QUATERNION<float> q(0,0,0,-1);
+
+    	std::string carname = "SX", file = carname + ".car",
+	    	pathOrig  = PATHMANAGER::CarSim()  + "/" + settings->game.sim_mode + "/cars/" + file;
+
+        //CAR* pCar =
+        pGame->LoadCar(pathOrig, carname, MATHVECTOR<float,3>(11.3,8,0), q, true, false, 0);
+
 
         pGame->NewGameDoLoadMisc(0.f);
 
@@ -195,12 +213,10 @@ namespace Demo
         mCameraController = new CameraController( mGraphicsSystem, false );
         mGraphicsSystem->getCamera()->setFarClipDistance( 100000.f );  // par far
 
-        //camPos = Vector3(-10.f, 80.f, 10.f );
-        //camPos = Vector3(-2005.f, 40.f, -929.f);
-        camPos = Vector3(-52.f, mTerra ? 735.f : 60.f, mTerra ? 975.f : 517.f);
+        camPos = Vector3(13.f, 8.f, 4.f );
         //camPos.y += mTerra->getHeightAt( camPos );
         mGraphicsSystem->getCamera()->setPosition( camPos );
-        mGraphicsSystem->getCamera()->lookAt( camPos + Vector3(0.f, -0.5f, -1.f) );
+        mGraphicsSystem->getCamera()->lookAt( camPos + Vector3(-6.f, 2.f, -8.f) );
         Vector3 objPos;
 
 

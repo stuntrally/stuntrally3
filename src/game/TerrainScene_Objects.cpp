@@ -1,3 +1,4 @@
+#include "OgreCommon.h"
 #include "TerrainGame.h"
 #include "CameraController.h"
 #include "GraphicsSystem.h"
@@ -25,6 +26,7 @@
 #include "OgreHlmsPbs.h"
 #include "OgreHlmsPbsDatablock.h"
 
+#include "Def_Str.h"
 using namespace Demo;
 using namespace Ogre;
 
@@ -82,7 +84,7 @@ namespace Demo
         const String carPart[carParts] = {"_body.mesh", "_interior.mesh", "_glass.mesh"}, sWheel = "_wheel.mesh";
 
         //  scale
-        Real s = 6.f;
+        Real s = 1.f;
 
         //  pos
         Vector3 objPos = camPos, pos = objPos;
@@ -93,20 +95,23 @@ namespace Demo
             objPos.y = ymin;
 
         //  car  ------------------------
+        // ndCar = rootNode->createChildSceneNode( SCENE_DYNAMIC );
         for (int i=0; i < carParts; ++i)
         {
             Item *item = mgr->createItem( car + carPart[i],
-                ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
+                ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_DYNAMIC );
             item->setVisibilityFlags(RV_Car);
 
-            SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
+            // SceneNode *node = ndCar->createChildSceneNode( SCENE_DYNAMIC );
+            SceneNode *node = rootNode->createChildSceneNode( SCENE_DYNAMIC );
             node->attachObject( item );
             if (i==2)
                 item->setRenderQueueGroup( 202 );  // glass after Veget
             
-            node->scale( s, s, s );
+            //node->scale( s, s, s );
             
             node->setPosition( objPos );
+            ndCar[i] = node;
             
             //  rot
             Quaternion q;  q.FromAngleAxis( Degree(180), Vector3::UNIT_Z );
@@ -126,10 +131,10 @@ namespace Demo
         for (int i=0; i < 4; ++i)
         {
             Item *item = mgr->createItem( car + sWheel,
-                ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
+                ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_DYNAMIC );
             item->setVisibilityFlags(RV_Car);
 
-            SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
+            SceneNode *node = rootNode->createChildSceneNode( SCENE_DYNAMIC );
             node->attachObject( item );
             
             node->scale( s, s, s );
@@ -151,6 +156,7 @@ namespace Demo
             Quaternion q;  q.FromAngleAxis( Degree(-180), Vector3::UNIT_Z );
             Quaternion r;  r.FromAngleAxis( Degree(i%2 ? 90 : -90), Vector3::UNIT_Y );
             node->setOrientation( r * q );
+            ndWheel[i] = node;
 
             //  set reflection cube
             assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem( 0 )->getDatablock() ) );

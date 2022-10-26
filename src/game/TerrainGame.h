@@ -5,11 +5,11 @@
 #include "OgrePrerequisites.h"
 #include "TutorialGameState.h"
 
-#define LogO(s)  LogManager::getSingleton().logMessage(s)
 
 class SETTINGS;
 class GAME;
 class App;
+class Scene;
 
 namespace Ogre
 {
@@ -52,7 +52,7 @@ namespace Demo
         Ogre::Vector3 camPos;
 
         //  input
-        int mKeys[4] = {0,0,0,0};  // sun keys
+        int mArrows[8] = {0,0,0,0,0,0,0,0}, mKeys[4] = {0,0,0,0};  // sun keys
         int param = 0;  // to adjust
         bool left = false, right = false;  // arrows
         bool shift = false, ctrl = false;
@@ -77,6 +77,9 @@ namespace Demo
         SETTINGS* settings = 0;
         GAME* pGame = 0;
         App* pApp = 0;
+        
+        Scene* sc = 0;  // in pApp->scn ..
+        void CreateBltTerrain();
 
         void LoadDefaultSet(SETTINGS* settings, std::string setFile);
         void Init();
@@ -131,8 +134,12 @@ namespace Demo
         void CreateManualObj(Ogre::Vector3 camPos);
         void CreateParticles();
 
+
         //  cars  ----
+        const static int carParts = 3;
+        Ogre::SceneNode* ndCar[carParts] = {0,0,0}, *ndWheel[4] = {0,0,0,0};
         void CreateCar();
+        
         int iCar = 1;
         const static int nCars = 3;
         const static Ogre::uint32 RV_Car = 2;

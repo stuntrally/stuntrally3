@@ -283,7 +283,7 @@ SETTINGS::GameSet::GameSet()
 	// ,local_players(1), num_laps(2)
 	,sim_mode("normal")
 	,collis_veget(true), collis_cars(false), collis_roadw(false), dyn_objects(true)
-	,boost_type(2), flip_type(1), damage_type(1), rewind_type(1), damage_dec(0.f)
+	,boost_type(3), flip_type(2), damage_type(1), rewind_type(1), damage_dec(0.f)
 	// ,rpl_rec(1)
 	//  champ
 	// ,champ_num(-1), chall_num(-1)
