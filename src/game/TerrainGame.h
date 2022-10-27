@@ -140,8 +140,8 @@ namespace Demo
         Ogre::SceneNode* ndCar[carParts] = {0,0,0}, *ndWheel[4] = {0,0,0,0};
         void CreateCar();
         
-        int iCar = 1;
-        const static int nCars = 3;
+        int iCar = 0;
+        const static int nCars = 2;  //3
         const static Ogre::uint32 RV_Car = 2;
     };
 }

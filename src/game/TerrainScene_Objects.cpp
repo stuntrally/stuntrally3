@@ -49,7 +49,7 @@ namespace Demo
         for (int i=0; i < 2; ++i)  // 20
         {
             ParticleSystem* parSys = mgr->createParticleSystem(
-                i%2 ? "Smoke" : "Fire");
+                i%2 ? "Smoke2" : "Fire2");
             //parHit->setVisibilityFlags(RV_Particles);
             SceneNode* node = rootNode->createChildSceneNode();
             node->attachObject( parSys );
@@ -69,13 +69,13 @@ namespace Demo
     void TerrainGame::CreateCar()
     {
         SceneManager *mgr = mGraphicsSystem->getSceneManager();
-        SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
+        SceneNode *rootNode = mgr->getRootSceneNode( SCENE_DYNAMIC );
 
         Vector3 camPos = mGraphicsSystem->getCamera()->getPosition();
         Vector3 dir = mGraphicsSystem->getCamera()->getDirection();
         camPos += dir * 40.f;
 
-        const String cars[nCars] = { "ES", "SX", "HI" };
+        const String cars[nCars] = {"SX", "HI"}; //{ "ES", "SX", "HI" };
         const String car = cars[iCar];
         ++iCar;
         if (iCar == nCars)  iCar = 0;  // next

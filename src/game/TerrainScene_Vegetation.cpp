@@ -121,6 +121,7 @@ namespace Demo
                 if (mTerra)
                     mTerra->getHeightAt( objPos );
                 objPos.y += std::min( item->getLocalAabb().getMinimum().y, Real(0.0f) ) * -0.1f + lay.down;  //par
+                objPos.y -= 11.f;  //par ..
                 node->setPosition( objPos );
                 
                 //  rot

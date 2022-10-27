@@ -298,7 +298,7 @@ SETTINGS::GameSet::GameSet()
 
 	//  cars
 	for (int i=0; i < 6; ++i)
-	{	if (i < 4)  car[i] = "ES";
+	{	if (i < 4)  car[i] = "SX";
 		car_hue[i] = 0.4f+0.2f*i;  car_sat[i] = 1.f;  car_val[i] = 1.f;
 		car_gloss[i] = 0.5f;  car_refl[i] = 1.f;
 	}
