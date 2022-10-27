@@ -1,7 +1,10 @@
 #
 # This assumes you used scripts to get and build latest Ogre-next from sources
 # And your Ogre source code is above, in ../Ogre/ogre-next and ../Ogre/ogre-next-deps
-# Tested on Linux.  Windows most likely broken..
+# Tested on Linux.
+# Windows most likely broken and it probably needs Ogre inside Dependencies subdir here.
+# conan can be is used
+# see CMake/DependenciesConfig.cmake
 #
 
 cmake_minimum_required( VERSION 3.16 )
@@ -127,9 +130,9 @@ include_directories(
 add_recursive( ./src GAME_SOURCES )
 
 
-# fix 4
-find_package(OpenAL REQUIRED)
-include_directories(${OPENAL_INCLUDE_DIR})
+# fix 4  since conan failed
+find_package( OpenAL REQUIRED )
+include_directories( ${OPENAL_INCLUDE_DIR} )
 
 
 add_executable( ${PROJECT_NAME} WIN32 ${GAME_SOURCES} )
@@ -149,5 +152,5 @@ target_link_libraries( ${PROJECT_NAME} ${OGRE_LIBRARIES} )
 ## Fix 3 sdl
 target_link_libraries( ${PROJECT_NAME} "-lSDL2" )
 
-message(STATUS ${LIBS} )
+message( STATUS "Libs: " ${LIBS} )
 target_link_libraries( ${PROJECT_NAME} ${LIBS} )

@@ -82,7 +82,7 @@ bool CData::IsChallCar(const Chall* ch, std::string name)
 void CData::Load(std::map <std::string, int>* surf_map, bool check)
 {
 	//  common
-	fluids->LoadXml(PATHMANAGER::Data() + "/materials2/fluids.xml", /**/surf_map);
+	fluids->LoadXml(PATHMANAGER::Data() + "/materials/fluids.xml", /**/surf_map);
 	LogO(String("**** Loaded Fluids: ") + toStr(fluids->fls.size()));
 
 	objs->LoadXml();  //  collisions.xml
@@ -108,11 +108,11 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 		colors->LoadIni(path + "/colors.ini");
 		LogO(String("**** Loaded Car Colors: ") + toStr(colors->v.size()));
 
-		champs->LoadXml(path + "/championships.xml", tracks, check);
-		LogO(String("**** Loaded Championships: ") + toStr(champs->all.size()));
+		//; champs->LoadXml(path + "/championships.xml", tracks, check);
+		// LogO(String("**** Loaded Championships: ") + toStr(champs->all.size()));
 
-		chall->LoadXml(path + "/challenges.xml", tracks, check);
-		LogO(String("**** Loaded Challenges: ") + toStr(chall->all.size()));
+		//; chall->LoadXml(path + "/challenges.xml", tracks, check);
+		// LogO(String("**** Loaded Challenges: ") + toStr(chall->all.size()));
 	#endif
 
 

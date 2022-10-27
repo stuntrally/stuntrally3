@@ -215,8 +215,8 @@ void PATHMANAGER::Init(bool log_paths)
 		info << "-------------------------" << endl;
 		info << "Ogre plugin-: " << ogre_plugin << endl;
 		info << "Data:         " << Data() << endl;
-		info << "ConfigDir:    " << GameConfigDir() << endl;
-		info << "Home:         " << home_dir << endl;
+		info << "ConfigDir:    " << GameConfigDir() << endl;  //?
+		// info << "Home:         " << home_dir << endl;
 		info << "User cfg,log: " << UserConfigDir() << endl;
 		info << "User data:    " << user_data << endl;
 		info << "Cache:        " << CacheDir() << endl;
