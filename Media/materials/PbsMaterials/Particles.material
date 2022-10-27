@@ -1,0 +1,135 @@
+//  Particles
+//  -----------------
+hlms ParFire unlit
+{
+	diffuse_map boost_red.png
+	depth_write	off
+	scene_blend	add
+}
+
+hlms ParSmoke unlit
+{
+	diffuse_map boost_red.png
+	depth_write	off
+	scene_blend	alpha_blend
+}
+
+
+// hlms Base_particle unlit
+// {
+//     parent base
+//     vertex_colour true
+//     depth_write off
+//     receives_shadows false
+// 	alpha_rejection greater 2
+//     ambient 0 0 0
+//     diffuse 0 0 0 1
+//     emissive 1 1 1
+//     diffuse_address_mode clamp
+//     scene_blend alpha_blend
+// }
+
+
+hlms Boost unlit
+{
+    diffuse_map boost.png
+	depth_write	off
+    scene_blend add
+    // fog_en false
+}
+
+hlms Boost_Red unlit
+{
+    diffuse_map boost_red.png
+	depth_write	off
+    scene_blend add
+}
+
+
+hlms Particles/Spark unlit
+{
+    diffuse_map spark.png
+	depth_write	off
+    scene_blend add
+}
+
+hlms flare1 unlit
+{
+    diffuse_map flare1.png
+	depth_write	off
+    scene_blend add
+}
+
+
+hlms TireTrail unlit
+{
+    parent base
+    emissive 1 1 1
+    ambient 0 0 0
+    diffuse 0 0 0 1
+    scene_blend alpha_blend
+    depth_write off
+    depth_bias 3
+    cull_hardware none
+    vertex_colour true
+    diffuse_map trail.png
+    //alphaMap trail.png
+    //diffuse_address_mode mirror  // 2d texture not supported
+}
+
+
+hlms Mud unlit
+{
+	diffuse_map mud.png
+    // alpha_rejection greater 64
+	depth_write	off
+	scene_blend	alpha_blend
+}
+
+hlms Dust unlit
+{
+	diffuse_map dust.png
+	depth_write	off
+	scene_blend	alpha_blend
+}
+
+hlms Smoke unlit
+{
+	diffuse_map smoke.png
+	depth_write	off
+	scene_blend	alpha_blend
+}
+
+hlms MarsDust unlit
+{
+	diffuse_map dust.png
+	depth_write	off
+	scene_blend	alpha_blend
+}
+
+ hlms FluidMud unlit
+ {
+     //ambient 1.6 1.6 1.6
+     //diffuse 0.5 0.5 1.5
+     //specular 1 1 0 32
+     //emissive 0.3 0.3 0.3
+     //water_particles_lit true
+     //vertex_colour true
+     
+     scene_blend alpha_blend
+     diffuse_map fluid-mud-dark.png
+     alpha_rejection greater 64
+ }
+
+hlms FluidMudSoft unlit
+{
+    diffuse_map fluid-mud-soft.png
+    scene_blend alpha_blend
+}
+
+hlms FluidWater unlit
+{
+    diffuse_map fluid-water.png
+    scene_blend alpha_blend
+}
+

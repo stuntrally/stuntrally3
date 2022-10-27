@@ -211,21 +211,6 @@ hlms rock_n2 pbs
 //}
 
 
-//  Particles
-//  -----------------
-hlms ParFire unlit
-{
-	diffuse_map boost_red.png
-	depth_write	off
-	scene_blend	add
-}
-
-hlms ParSmoke unlit
-{
-	diffuse_map boost_red.png
-	depth_write	off
-	scene_blend	alpha_blend
-}
 
 //  Skies
 //  -----------------

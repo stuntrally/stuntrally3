@@ -1,5 +1,5 @@
 
-particle_system Smoke
+particle_system Smoke2
 {
     material        ParSmoke
     particle_width  1.6
@@ -45,7 +45,7 @@ particle_system Smoke
 }
 
 
-particle_system Fire
+particle_system Fire2
 {
     material        ParFire
     particle_width  1.9
