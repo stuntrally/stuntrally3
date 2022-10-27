@@ -6,6 +6,7 @@
 // #include "ReplayTrk.h"
 #include "../vdrift/cardefs.h"
 #include "CarPosInfo.h"
+// #include "OgreTextureGpu.h"
 
 // #include <boost/thread.hpp>
 // #include <OgreShadowCameraSetup.h>
@@ -15,7 +16,7 @@
 // #include "common/PreviewTex.h"
 
 
-namespace Ogre {  class SceneNode;  class SceneManager;  }
+namespace Ogre {  class SceneNode;  class SceneManager;  class TextureGpu;  }
 // namespace BtOgre  {  class DebugDrawer;  }
 class CScene;  class CData;  class CInput;  class GraphView;
 class GAME;  class CHud;  class CGui;  class CGuiCom;
@@ -43,7 +44,15 @@ public:
 
 	//  BaseApp init
 	// void postInit(), SetFactoryDefaults();
-		
+	Ogre::Camera* mCamera =0;
+	Ogre::SceneManager* mSceneMgr =0;
+	Ogre::TextureGpu* mDynamicCubemap =0;
+	
+	bool bLoading =0, bLoadingEnd =0, bSimulating =0;  int iLoad1stFrames =0;
+	
+	//  has to be in baseApp for camera mouse move
+	typedef std::vector<class CarModel*> CarModels;
+	CarModels carModels;
 	
 	///  Game Cars Data
 	//  new positions info for every CarModel
@@ -79,7 +88,7 @@ public:
 	// virtual bool frameEnd(Ogre::Real time);
 	float fLastFrameDT;
 
-	bool isTweakTab();
+	// bool isTweakTab();
 		
 	// BtOgre::DebugDrawer *dbgdraw;  /// blt dbg
 
@@ -98,13 +107,17 @@ public:
 	///  create  . . . . . . . . . . . . . . . . . . . . . . . . 
 	Ogre::String resCar, resTrk, resDrv;
 	void CreateCar(), CreateRoads(), CreateRoadsInt(), CreateTrail(Ogre::Camera* cam);
-	void CreateObjects(), DestroyObjects(bool clear), ResetObjects();
+	// void CreateObjects(), DestroyObjects(bool clear), ResetObjects();
 
 	void NewGame(bool force=false);
-	void NewGameDoLoad();  bool newGameRpl;
+	void NewGameDoLoad();
+
+	void CreateScene();
+	bool newGameRpl;
 
 	bool dstTrk;  // destroy track, false if same
 	Ogre::String oldTrack;  bool oldTrkUser;
+	Ogre::String TrkDir();
 
 	//  fluids to destroy
 	// std::vector<Ogre::String/*MeshPtr*/> vFlSMesh;

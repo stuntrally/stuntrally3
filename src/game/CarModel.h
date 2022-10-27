@@ -6,15 +6,19 @@
 // #include <OgreVector4.h>
 // #include <OgreMatrix4.h>
 // #include <OgreColourValue.h>
-#include "../vdrift/mathvector.h"
-#include "../vdrift/quaternion.h"
-#include "../shiny/Main/MaterialInstance.hpp"
-#include "../vdrift/cardefs.h"
+#include "OgrePrerequisites.h"
+#include "mathvector.h"
+#include "quaternion.h"
+// #include "../shiny/Main/MaterialInstance.hpp"
+#include "cardefs.h"
 #include "CarPosInfo.h"
 
-namespace Ogre {  class SceneNode;  class Terrain;  class Camera;  class SceneManager;
-	class ParticleSystem;  class Entity;  class RibbonTrail;  class ManualObject;  class AxisAlignedBox;  }
-namespace MyGUI {  class TextBox;  }
+/*namespace Ogre {  class SceneNode;  class Terrain;  class Camera;  class SceneManager;
+	class ParticleSystem;  class Item;  class ManualObject;  class AxisAlignedBox;  
+	namespace v1 {
+		class RibbonTrail;  class BillboardSet;
+}	}*/
+// namespace MyGUI {  class TextBox;  }
 class SETTINGS;  class GAME;  class CAR;
 class Scene;  class App;  class FollowCamera;  class CarReflection;
 
@@ -22,7 +26,7 @@ class Scene;  class App;  class FollowCamera;  class CarReflection;
 //  CarModel is the "Ogre" part of the car.
 //  It is used to put meshes together, particle emitters, etc.
 
-class CarModel : public sh::MaterialInstanceListener
+class CarModel //: public sh::MaterialInstanceListener
 {
 public:
 	/// -------------------- Car Types ---------------------------
@@ -51,7 +55,7 @@ public:
 	~CarModel();
 	
 	Ogre::String sDispName;  // diplay name in opponents list (nick for CT_REMOTE)
-	MyGUI::TextBox* pNickTxt;  // multiplayer nick above car
+	// MyGUI::TextBox* pNickTxt;  // multiplayer nick above car
 	bool updTimes, updLap;  float fLapAlpha;
 	
 	
@@ -79,18 +83,18 @@ public:
 
 
 	///--------  Create
-	void Load(int startId, bool loop), Create(), CreateReflection(), Destroy();
+	void Load(int startId, bool loop), Create(), /*CreateReflection(),*/ Destroy();
 	void CreatePart(Ogre::SceneNode* ndCar, Ogre::Vector3 vPofs,
 		Ogre::String sCar2, Ogre::String sCarI, Ogre::String sMesh, Ogre::String sEnt,
 		bool ghost, Ogre::uint32 visFlags,
-		Ogre::AxisAlignedBox* bbox=0, Ogre::String stMtr="", bool bLogInfo=true);
+		Ogre::Aabb* bbox=0, Ogre::String stMtr="", bool bLogInfo=true);
 
-	void LogMeshInfo(const Ogre::Entity* ent, const Ogre::String& name, int mul=1);
+	void LogMeshInfo(const Ogre::Item* ent, const Ogre::String& name, int mul=1);
 	int all_subs, all_tris;  //stats
 	
-	void RecreateMaterials();
-	void setMtrNames(); // assign materials to entity / manualobject
-	void setMtrName(const Ogre::String& entName, const Ogre::String& mtrName);
+	// void RecreateMaterials();
+	// void setMtrNames(); // assign materials to entity / manualobject
+	// void setMtrName(const Ogre::String& entName, const Ogre::String& mtrName);
 	
 	
 	//--------  Update
@@ -122,12 +126,12 @@ public:
 	//  Main node
 	Ogre::SceneNode* pMainNode, *ndSph;
 	Ogre::Vector3 posSph[2];
-	Ogre::BillboardSet* brakes;
+	Ogre::v1::BillboardSet* brakes;
 	
 	void setVisible(bool visible);  // hide/show
 	bool mbVisible;  float hideTime;
 		
-	CarReflection* pReflect;
+	// CarReflection* pReflect;
 		
 	//  VDrift car
 	CAR* pCar;  // all need this set (even ghost, has it from 1st car)
@@ -175,17 +179,17 @@ public:
 	//  par-wheels, boost-car rear, spaceship thruster, sparks-world hit
 	Ogre::ParticleSystem* par[PAR_ALL][MAX_WHEELS];
 	Ogre::ParticleSystem* parBoost[PAR_BOOST], *parThrust[PAR_THRUST*2], *parHit;
-	std::vector<Ogre::RibbonTrail*> whTrail;  // tire trail
+	std::vector<Ogre::v1::RibbonTrail*> whTrail;  // tire trail
 	std::vector<Ogre::Real> whTemp;  // spin time, approx tire temp.
 	
 	//  Wheels, Nodes
 	std::vector<Ogre::SceneNode*> ndWh, ndWhE, ndBrake;
-	Ogre::SceneNode* ndNextChk;
-	Ogre::Entity* entNextChk;
+	// Ogre::SceneNode* ndNextChk;
+	// Ogre::Item* entNextChk;
 
 	//  to destroy
 	std::vector<Ogre::SceneNode*> vDelNd;		void ToDel(Ogre::SceneNode* nd);
-	std::vector<Ogre::Entity*> vDelEnt;			void ToDel(Ogre::Entity* ent);
+	std::vector<Ogre::Item*> vDelEnt;			void ToDel(Ogre::Item* ent);
 	std::vector<Ogre::ParticleSystem*> vDelPar;	void ToDel(Ogre::ParticleSystem* par);
 	
 		
@@ -194,14 +198,14 @@ public:
 	void UpdateBraking();
 	
 	//  lightmap toggle depending on distance to terrain
-	Ogre::Terrain* terrain;
-	bool bLightMapEnabled;
-	void UpdateLightMap();
+	// Ogre::Terrain* terrain;
+	// bool bLightMapEnabled;
+	// void UpdateLightMap();
 	
 	//  cam,chk old states
 	int iCamNextOld;
 	bool bLastChkOld;
 
-	virtual void requestedConfiguration (sh::MaterialInstance* m, const std::string& configuration);
-	virtual void createdConfiguration (sh::MaterialInstance* m, const std::string& configuration);
+	// virtual void requestedConfiguration (sh::MaterialInstance* m, const std::string& configuration);
+	// virtual void createdConfiguration (sh::MaterialInstance* m, const std::string& configuration);
 };

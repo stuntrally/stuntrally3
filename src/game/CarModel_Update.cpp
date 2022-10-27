@@ -1,23 +1,23 @@
 #include "pch.h"
-#include "../vdrift/par.h"
-#include "common/Def_Str.h"
-#include "common/RenderConst.h"
+#include "par.h"
+#include "Def_Str.h"
+#include "RenderConst.h"
 #include "CarModel.h"
-#include "../vdrift/pathmanager.h"
-#include "../vdrift/mathvector.h"
-#include "../vdrift/game.h"
-#include "common/data/SceneXml.h"
-#include "common/CScene.h"
+#include "pathmanager.h"
+#include "mathvector.h"
+#include "game.h"
+#include "SceneXml.h"
+#include "CScene.h"
 #include "CGame.h"
-#include "SplitScreen.h"
+// #include "SplitScreen.h"
 #include "FollowCamera.h"
-#include "CarReflection.h"
-#include "../road/Road.h"
-#include "../vdrift/par.h"
+// #include "CarReflection.h"
+// #include "Road.h"
 
 #include <OgreRoot.h>
-#include <OgreTerrain.h>
+// #include <OgreTerrain.h>
 #include <OgreEntity.h>
+#include <OgreItem.h>
 #include <OgreManualObject.h>
 #include <OgreMaterialManager.h>
 #include <OgreParticleSystem.h>
@@ -28,7 +28,7 @@
 #include <OgreSceneNode.h>
 #include <OgreTechnique.h>
 #include <OgreViewport.h>
-#include <MyGUI_TextBox.h>
+// #include <MyGUI_TextBox.h>
 using namespace Ogre;
 
 
@@ -48,7 +48,7 @@ void CarModel::setVisible(bool vis)
 
 void CarModel::UpdNextCheck()
 {
-	updTimes = true;
+	/*updTimes = true;
 	if (eType != CarModel::CT_LOCAL)  return;
 	if (!ndNextChk || !pApp || !pApp->scn->road)  return;
 	if (pApp->scn->road->mChks.empty())  return;
@@ -76,18 +76,18 @@ void CarModel::UpdNextCheck()
 	p.y -= gPar.chkBeamSy;  // lower
 	ndNextChk->setPosition(p);
 	ndNextChk->setScale(gPar.chkBeamSx, gPar.chkBeamSy, gPar.chkBeamSx);
-	ndNextChk->setVisible(pSet->check_beam && !pApp->bHideHudBeam);
+	ndNextChk->setVisible(pSet->check_beam && !pApp->bHideHudBeam);*/
 }
 void CarModel::ShowNextChk(bool visible)
 {
-	if (ndNextChk)
-		ndNextChk->setVisible(visible && !pApp->bHideHudBeam);
+	// if (ndNextChk)
+	// 	ndNextChk->setVisible(visible && !pApp->bHideHudBeam);
 }
 
 
 void CarModel::ResetChecks(bool bDist)  // needs to be done after road load!
 {
-	updTimes = true;
+	/*updTimes = true;
 	iCurChk = -1;  iNumChks = 0;  // reset lap, chk vars
 	iLoopChk = -1;  iLoopLastCam = -1;
 	trackPercent = 0.f;
@@ -98,8 +98,8 @@ void CarModel::ResetChecks(bool bDist)  // needs to be done after road load!
 	UpdNextCheck();
 
 	//LogO("ResetChecks");
-	SplineRoad* trail = pApp->scn->trail;
-	if (trail)  // +
+	// SplineRoad* trail = pApp->scn->trail;
+	// if (trail)  // +
 		trail->trailSegId = 0;
 
 	//  percent const  ------
@@ -111,13 +111,14 @@ void CarModel::ResetChecks(bool bDist)  // needs to be done after road load!
 		Vector3 vLast  = lastC - vStartPos;   distLast = vLast.length();
 		distTotal = distFirst + distLast + road->chksRoadLen;
 		//LogO("Chk first: "+toStr(distFirst)+" last: "+toStr(distLast)+" total: "+toStr(distTotal));
-	}
+	}*/
 }
 
 //  get track driven dist part in %
 //--------------------------------------------------------------------------------------------------------
 void CarModel::UpdTrackPercent()
 {
+#if 0
 	if (!pApp || !pApp->scn->road)  return;
 	const SplineRoad* road = pApp->scn->road;
 	
@@ -173,6 +174,7 @@ void CarModel::UpdTrackPercent()
 		if (perc > trackPercent)
 			trackPercent = perc;
 	}
+#endif
 }
 
 
@@ -181,16 +183,16 @@ void CarModel::UpdTrackPercent()
 //-------------------------------------------------------------------------------------------------------
 void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 {	
-	pReflect->camPosition = pMainNode->getPosition();
+	// pReflect->camPosition = pMainNode->getPosition();
 	int w,i;
 	
 	//  upd chk mtr
-	if (bChkUpd && entNextChk)
+	/*if (bChkUpd && entNextChk)
 	{
 		MaterialPtr mtr = MaterialManager::getSingleton().getByName(sChkMtr);
 		if (mtr)
 			entNextChk->setMaterial(mtr);
-	}
+	}*/
 
 	//  stop/resume par sys
 	float fa = pGame->pause ? 0.f : 1.f;
@@ -239,7 +241,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		///~~  camera in fluid fog, detect and compute
 		iCamFluid = -1;  fCamFl = 0.f;  // none
 		const size_t sf = sc->fluids.size();
-		if (sf > 0  && pSet->game.local_players == 1)
+		if (sf > 0  /*&& pSet->game.local_players == 1*/)
 		{
 			const Vector3& p = posInfo.camPos;
 			const float r = 0.2f;  //par, near cam?
@@ -283,7 +285,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	#endif
 	
 	//  terrain lightmap enable/disable (depending on distance to terrain)
-	#define MAX_TERRAIN_DIST 2.0  // meters
+	/*#define MAX_TERRAIN_DIST 2.0  // meters
 	bool changed = false;
 	if (terrain)
 	{
@@ -303,7 +305,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	{	changed = true;  bLightMapEnabled = false;	}
 	
 	if (changed)
-		UpdateLightMap();
+		UpdateLightMap();*/
 		
 
 	//  update particle emitters
@@ -397,10 +399,11 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		if (pipe)  emitD = 0;  // no dust in pipes
 		if (posInfo.whH[w] > 0.1f)  emitD = 0;  // no dust in fluids
 
-		bool ghost = isGhost();  // opt dis for ghost
-		bool ghPar = !(ghost && !pSet->rpl_ghostpar);
+		bool ghost = false; //; isGhost();  // opt dis for ghost
+		bool ghPar = true; //!(ghost && !pSet->rpl_ghostpar);
 		if (!ghPar)
 		{	emitD = 0.f;  emitM = 0.f;  emitS = 0.f;  }
+		// emitD = 0.f;  //; fixme
 
 		///  emit particles
 		Vector3 vpos = posInfo.whPos[w];
@@ -472,8 +475,8 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		if (pSet->trails)
 		{	if (ndWhE[w])
 			{	Vector3 vp = vpos + posInfo.carY * wR*trlH;
-				if (terrain && whMtr > 0)
-					vp.y = terrain->getHeightAtWorldPosition(vp) + 0.02f;  // 0.05f
+				// if (terrain && whMtr > 0)
+					//; fixme vp.y = terrain->getHeightAtWorldPosition(vp) + 0.02f;  // 0.05f
 					//if (/*whOnRoad[w]*/whMtr > 0 && road)  // on road, add ofs
 					//	vp.y += road->fHeight;	}/**/
 				ndWhE[w]->setPosition(vp);
@@ -545,21 +548,21 @@ void CarModel::UpdateKeys()
 	if (iC != 0 && iCamNextOld == 0)
 	{
 		//  with ctrl - change current camera car index  (mouse move camera for many players)
-		if (pApp->ctrl && iIndex == 0)
+		/*if (pApp->ctrl && iIndex == 0)
 			pApp->iCurCam = (pApp->iCurCam + iC + pSet->game.local_players) % pSet->game.local_players;
-		else
+		else*/
 		{
-			int visMask = 255;
-			pApp->roadUpdTm = 1.f;
+			// int visMask = 255;
+			// pApp->roadUpdTm = 1.f;
 
 			if (fCam)
-			{	fCam->Next(iC < 0, pApp->shift);
+			{	fCam->Next(iC < 0, false/*pApp->shift*/);
 				pApp->carsCamNum[iIndex] = fCam->miCurrent +1;  // save for pSet
 				
-				visMask = fCam->ca->mHideGlass ? RV_MaskAll-RV_CarGlass : RV_MaskAll;
+				// visMask = fCam->ca->mHideGlass ? RV_MaskAll-RV_CarGlass : RV_MaskAll;
 				
-				for (auto vp : pApp->mSplitMgr->mViewports)
-					vp->setVisibilityMask(visMask);
+				// for (auto vp : pApp->mSplitMgr->mViewports)
+				// 	vp->setVisibilityMask(visMask);
 		}	}
 	}
 	iCamNextOld = iC;
@@ -570,7 +573,7 @@ void CarModel::UpdateKeys()
 //-------------------------------------------------------------------------------------------------------
 //  utility
 //-------------------------------------------------------------------------------------------------------
-void CarModel::UpdateLightMap()
+/*void CarModel::UpdateLightMap()
 {
 	MaterialPtr mtr;
 	for (int i=0; i < NumMaterials; ++i)
@@ -589,13 +592,13 @@ void CarModel::UpdateLightMap()
 						params->setIgnoreMissingParams(true);  // don't throw exception if material doesnt use lightmap
 						params->setNamedConstant("enableTerrainLightMap", bLightMapEnabled ? 1.f : 0.f);
 	}	}	}	}	}
-}
+}*/
 
 void CarModel::UpdateBraking()
 {
 	if (brakes)
 		brakes->setVisible(bBraking && mbVisible);
-
+/*
 	std::string texName = sDirname + (bBraking ? "_body00_brake.png" : "_body00_add.png");
 
 	MaterialPtr mtr = MaterialManager::getSingleton().getByName(sMtr[Mtr_CarBody]);
@@ -612,7 +615,7 @@ void CarModel::UpdateBraking()
 					TextureUnitState* tus = tusIt.getNext();
 					if (tus->getName() == "diffuseMap")
 					{	tus->setTextureName( texName );  return;  }
-	}	}	}	}
+	}	}	}	}*/
 }
 
 
@@ -659,6 +662,7 @@ void CarModel::UpdWhTerMtr()
 		const TRACKSURFACE* tsu = cd.GetWheelContact(WHEEL_POSITION(i)).GetSurfacePtr();
 		//pCar->dynamics.bTerrain = true;
 
+		#if 0
 		if (pSet->car_dbgsurf)  // dbg info surf  -------
 		{
 		//TerLayer& lay = /*mtr == 0 ? sc->td.layerRoad :*/ sc->td.layersAll[ sc->td.layers[ std::min((int)sc->td.layers.size()-1, mtr-1) ] ];
@@ -675,6 +679,7 @@ void CarModel::UpdWhTerMtr()
 				//,lay.dust, lay.mud, lay.dustS	//,lay.tclr.r, lay.tclr.g, lay.tclr.b, lay.tclr.a
 			)) + "\n";
 		}
+		#endif
 	}
 }
 
@@ -684,7 +689,7 @@ void CarModel::UpdWhTerMtr()
 
 void CarModel::ChangeClr()
 {
-	int i = iColor;
+	/*int i = iColor;
 	float h = pSet->gui.car_hue[i], s = pSet->gui.car_sat[i], v = pSet->gui.car_val[i],
 		gloss = pSet->gui.car_gloss[i], refl = pSet->gui.car_refl[i];
 	color.setHSB(1.f - h, s, v);  //set, mini pos clr
@@ -707,6 +712,7 @@ void CarModel::ChangeClr()
 
 	if (pNickTxt)
 		pNickTxt->setTextColour(MyGUI::Colour(color.r, color.g, color.b));
+	*/
 	
 	// opp list text and mini pos colors - auto in hud update
 }

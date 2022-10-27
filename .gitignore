@@ -16,6 +16,7 @@ syntax: glob
 bin/*
 build/*
 Dependencies/*
+tracks
 
 .DS_Store
 iOSDependencies

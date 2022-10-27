@@ -23,6 +23,8 @@
 #include "SoundMgr.h"
 #include "CarPosInfo.h"
 #include "CGame.h"
+#include "CarModel.h"
+#include "FollowCamera.h"
 
 #include "Def_Str.h"
 using namespace Demo;
@@ -34,8 +36,39 @@ namespace Demo
 
     //  Update  frame
     //-----------------------------------------------------------------------------------------------------------------------------
-    void TerrainGame::update( float timeSinceLast )
+    void TerrainGame::update( float dt )
     {
+
+        if (pApp->bLoading)
+        {
+            pApp->NewGameDoLoad();
+            // PROFILER.endBlock(" frameSt");
+            // return;  //?
+        }
+        else 
+        {
+            ///  loading end  ------
+            const int iFr = 3;
+            if (pApp->iLoad1stFrames >= 0)
+            {	++pApp->iLoad1stFrames;
+                if (pApp->iLoad1stFrames == iFr)
+                {
+                    // LoadingOff();  // hide loading overlay
+                    // mSplitMgr->mGuiViewport->setClearEveryFrame(true, FBT_DEPTH);
+                    // gui->Ch_LoadEnd();
+                    pApp->bLoadingEnd = true;
+                    // iLoad1stFrames = -1;  // for refl
+                }
+            }else if (pApp->iLoad1stFrames >= -1)
+            {
+                --pApp->iLoad1stFrames;  // -2 end
+
+                // imgLoad->setVisible(false);  // hide back imgs
+                // if (imgBack)
+                //     imgBack->setVisible(false);
+            }
+        }
+    
         if (pGame && pApp)
         {
             // enum PlayerActions
@@ -50,23 +83,32 @@ namespace Demo
             pApp->inputs[4] = mArrows[5];
             pApp->inputs[5] = 0.5f * (1 + mArrows[6] - mArrows[7]);
 
-            pGame->OneLoop(timeSinceLast);  // sim
+            pGame->OneLoop(dt);  // sim
 
             //  set car pos
-            if (ndCar[0] && !pGame->cars.empty())
+            if (!pGame->cars.empty() && !pApp->carModels.empty())
             {
-                PosInfo pi;  pi.FromCar(pGame->cars[0]);
-                for (auto nd : ndCar)
-                if (nd)
-                {   nd->setPosition(pi.pos);
-                    nd->setOrientation(pi.rot);
-                }
-                int i=0;
-                for (auto nd : ndWheel)
-                if (nd)
-                {   nd->setPosition(pi.whPos[i]);
-                    nd->setOrientation(pi.whRot[i]);
-                    ++i;
+                auto carM = pApp->carModels[0];
+                PosInfo pi, po;  pi.FromCar(pGame->cars[0]);
+                pi.bNew = true;
+                carM->Update(pi, pi, dt);
+
+                if (mCubeCamera)  // refl
+                    mCubeCamera->setPosition(pi.pos);
+
+                //  update camera
+                if (carM->fCam)
+                    carM->fCam->update(dt, pi, /*&carPoses[qn][c]*/&po, &pGame->collision,
+                        /*!bRplPlay &&*/ pApp->pSet->cam_bounce, carM->vtype == V_Sphere);
+                // iCurPoses[c] = qn;  // atomic, set new index in queue
+                
+                ///))  upd sound camera
+                if (/*c == 0 &&*/ pGame->snd)
+                {
+                    Vector3 x,y,z;
+                    /*carPoses[qn][c]*/po.camRot.ToAxes(x,y,z);
+                    bool camCar = carM->fCam && carM->fCam->TypeCar();  // fix
+                    pGame->snd->setCamera(/*carPoses[qn][c]*/po.camPos, camCar ? -y : -z, camCar ? -z : y, Vector3::ZERO);
                 }
             }
         }
@@ -104,14 +146,14 @@ namespace Demo
         d = mKeys[0] - mKeys[1];
         if (d)
         {
-            mPitch += d * mul * 0.6f * timeSinceLast;
+            mPitch += d * mul * 0.6f * dt;
             mPitch = std::max( 0.f, std::min( mPitch, (float)Math::PI ) );
         }
 
         d = mKeys[2] - mKeys[3];
         if (d)
         {
-            mYaw += d * mul * 1.5f * timeSinceLast;
+            mYaw += d * mul * 1.5f * dt;
             mYaw = fmodf( mYaw, Math::TWO_PI );
             if( mYaw < 0.f )
                 mYaw = Math::TWO_PI + mYaw;
@@ -148,7 +190,7 @@ namespace Demo
             mTerra->update( mSunLight->getDerivedDirectionUpdated(), lightEpsilon );
         }
 
-        TutorialGameState::update( timeSinceLast );
+        TutorialGameState::update( dt );
     }
 
 
@@ -196,7 +238,7 @@ namespace Demo
             outText += "\n< > ";  const int d = 3;
             switch (param)
             {
-            case 0:   outText += "Fog density  " + fToStr( p.fogDensity, d );  break;
+            case 0:   outText += "Fog density  " + fToStr( p.fogDensity, 5 );  break;
             case 1:   outText += "density coeff  " + fToStr( p.densityCoeff, d );  break;
             case 2:   outText += "density diffusion  " + fToStr( p.densityDiffusion, d );  break;
             case 3:   outText += "horizon limit  " + fToStr( p.horizonLimit, d );  break;
@@ -239,7 +281,7 @@ namespace Demo
     {
         switch (arg.keysym.scancode)
         {
-        case SDL_SCANCODE_RSHIFT:  shift = true;  break;
+        case SDL_SCANCODE_RSHIFT:  shift = true;  break;  // mod
         case SDL_SCANCODE_RCTRL:   ctrl = true;   break;
 
 
@@ -298,7 +340,7 @@ namespace Demo
 
         //  other
         case SDL_SCANCODE_F:  CreateParticles();  break;
-        case SDL_SCANCODE_G:  CreateCar();  break;
+        // case SDL_SCANCODE_G:  CreateCar();  break;
 
         case SDL_SCANCODE_K:  
             if (ndSky)
@@ -326,7 +368,7 @@ namespace Demo
     {
         switch (arg.keysym.scancode)
         {
-        case SDL_SCANCODE_RSHIFT:  shift = false;  break;
+        case SDL_SCANCODE_RSHIFT:  shift = false;  break;  // mod
         case SDL_SCANCODE_RCTRL:   ctrl = false;   break;
 
 

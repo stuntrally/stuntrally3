@@ -1,45 +1,47 @@
-#include "SplineBase.h"
+// #include "SplineBase.h"
 #include "pch.h"
-#include "common/Def_Str.h"
-#include "common/RenderConst.h"
-#include "common/data/CData.h"
-#include "common/data/SceneXml.h"
-#include "../ogre/common/Axes.h"
-#include "common/CScene.h"
-#include "common/GuiCom.h"
+#include "Def_Str.h"
+#include "RenderConst.h"
+#include "CData.h"
+#include "SceneXml.h"
+#include "Axes.h"
+#include "CScene.h"
+// #include "GuiCom.h"
 #include "CGame.h"
-#include "CHud.h"
-#include "CGui.h"
-#include "../vdrift/game.h"
-#include "../road/Road.h"
-#include "../road/PaceNotes.h"
-#include "../sound/SoundMgr.h"
-#include "../sound/SoundBaseMgr.h"
-#include "LoadingBar.h"
+// #include "CHud.h"
+// #include "CGui.h"
+#include "game.h"
+// #include "Road.h"
+// #include "PaceNotes.h"
+#include "SoundMgr.h"
+#include "SoundBaseMgr.h"
+// #include "LoadingBar.h"
 #include "FollowCamera.h"
-#include "SplitScreen.h"
-#include "common/GraphView.h"
-#include "../network/gameclient.hpp"
-#include "../paged-geom/PagedGeometry.h"
-#include "../shiny/Main/Factory.hpp"
-#include <boost/thread.hpp>
-#include <MyGUI_OgrePlatform.h>
-#include <MyGUI_PointerManager.h>
-#include <OgreTerrainGroup.h>
+#include "CarModel.h"
+// #include "SplitScreen.h"
+// #include "common/GraphView.h"
+//; #include "../network/gameclient.hpp"
+// #include "../paged-geom/PagedGeometry.h"
+// #include "../shiny/Main/Factory.hpp"
+// #include <boost/thread.hpp>
+// #include <MyGUI_OgrePlatform.h>
+// #include <MyGUI_PointerManager.h>
+// #include <OgreTerrainGroup.h>
+#include <OgreSceneManager.h>
 #include <OgreParticleSystem.h>
 #include <OgreResourceGroupManager.h>
 
-using namespace MyGUI;
+// using namespace MyGUI;
 using namespace Ogre;
 using namespace std;
 
 
 //  Create Scene
 //-------------------------------------------------------------------------------------
-void App::createScene()
+void App::CreateScene()
 {
 	//  prv tex
-	int k = 1024;
+	/*int k = 1024;
 	prvView.Create(k,k,"PrvView");
 	prvRoad.Create(k,k,"PrvRoad");
 	 prvTer.Create(k,k,"PrvTer");
@@ -55,11 +57,11 @@ void App::createScene()
 		scn->texLayN[i].SetName("layN"+si);
 	}
 	
-	mLoadingBar->loadTex.Create(1920,1200,"LoadingTex");
+	mLoadingBar->loadTex.Create(1920,1200,"LoadingTex");*/
 
 	//  tex fil
-	MaterialManager::getSingleton().setDefaultTextureFiltering(TFO_ANISOTROPIC);
-	MaterialManager::getSingleton().setDefaultAnisotropy(pSet->anisotropy);
+	// MaterialManager::getSingleton().setDefaultTextureFiltering(TFO_ANISOTROPIC);
+	// MaterialManager::getSingleton().setDefaultAnisotropy(pSet->anisotropy);
 	
 	//  restore camNums
 	for (int i=0; i<4; ++i)
@@ -79,10 +81,10 @@ void App::createScene()
 	scn->sc->pReverbsXml = scn->data->reverbs;
 
 	//  championships.xml, progress.xml
-	gui->Ch_XmlLoad();
+	//; gui->Ch_XmlLoad();
 
 	//  user.xml
-	#if 0
+	/*#if 0
 	userXml.LoadXml(PATHMANAGER::UserConfigDir() + "/user.xml");
 	for (int i=0; i < data->tracks->trks.size(); ++i)
 	{
@@ -95,22 +97,23 @@ void App::createScene()
 			userXml.trkmap[ti.name] = userXml.trks.size();
 	}	}
 	userXml.SaveXml(PATHMANAGER::UserConfigDir() + "/user.xml");
-	#endif
+	#endif*/
 
 	//  rpl sizes
-	ushort u(0x1020);
+	/*ushort u(0x1020);
 	struct SV{  std::vector<int> v;  };
 	int sv = sizeof(SV), sr2 = sizeof(ReplayFrame2)-3*sv, wh2 = sizeof(RWheel);
 
 	LogO(String("**** ReplayFrame size ") +toStr(sr2)+"+ wh: "+toStr(wh2)+"= "+toStr(sr2+4*wh2));
 	LogO(String("**** Replay test sizes: 12244: ") + toStr(sizeof(char))+","+toStr(sizeof(short))+
 		","+toStr(sizeof(half))+","+toStr(sizeof(float))+","+toStr(sizeof(int))+"  sv: "+toStr(sv)+
-		"   hi,lo 16,32: h "+toStr(*((uchar*)&u+1))+" l "+toStr(*((uchar*)&u)));
+		"   hi,lo 16,32: h "+toStr(*((uchar*)&u+1))+" l "+toStr(*((uchar*)&u)));*/
 
 	LogO(String("::: Time load xmls: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
 
 	///  rpl test-
+#if 0
 	#if 0
 	std::string file = PATHMANAGER::Ghosts() + "/normal/TestC4-ow_V2.rpl";
 	replay.LoadFile(file);  exit(0);
@@ -162,9 +165,10 @@ void App::createScene()
 		pGame->collision.world->getDebugDrawer()->setDebugMode(
 			1 /*0xfe/*8+(1<<13)*/);
 	}
+#endif
 	
 	//  load
-	if (pSet->autostart)
+	//if (pSet->autostart)  //;
 		NewGame();
 }
 
@@ -175,31 +179,31 @@ void App::createScene()
 void App::NewGame(bool force)
 {
 	//  actual loading isn't done here
-	isFocGui = false;
-	gui->toggleGui(false);  // hide gui
-	mWndNetEnd->setVisible(false);
+	// isFocGui = false;
+	// gui->toggleGui(false);  // hide gui
+	// mWndNetEnd->setVisible(false);
  
 	bLoading = true;  iLoad1stFrames = 0;
-	carIdWin = 1;  iRplCarOfs = 0;
+	// carIdWin = 1;  iRplCarOfs = 0;
 
 	//  wait until sim finishes
-	while (bSimulating)
-		boost::this_thread::sleep(boost::posix_time::milliseconds(pSet->thread_sleep));
+	// while (bSimulating)
+		// boost::this_thread::sleep(boost::posix_time::milliseconds(pSet->thread_sleep));
 
-	bRplPlay = 0;  iRplSkip = 0;
-	pSet->rpl_rec = bRplRec;  // changed only at new game
-	gui->pChall = 0;
+	// bRplPlay = 0;  iRplSkip = 0;
+	// pSet->rpl_rec = bRplRec;  // changed only at new game
+	// gui->pChall = 0;
 	
 	
 	if (!newGameRpl)  // if from replay, dont
 	{
 		pSet->game = pSet->gui;  // copy game config from gui
-		Ch_NewGame();
+		// Ch_NewGame();
 
-		if (mClient && mLobbyState != HOSTING)  // all but host
+		/*if (mClient && mLobbyState != HOSTING)  // all but host
 			gui->updateGameSet();  // override gameset params for networked game (from host gameset)
 		if (mClient)  // for all, including host
-			pSet->game.local_players = 1;
+			pSet->game.local_players = 1;*/
 	}
 	newGameRpl = false;
 
@@ -207,24 +211,24 @@ void App::NewGame(bool force)
 	dstTrk = force || oldTrack != pSet->game.track || oldTrkUser != pSet->gui.track_user;
 
 	///  check if track exist ..
-	if (!PATHMANAGER::FileExists(gcom->TrkDir()+"scene.xml"))
+	if (!PATHMANAGER::FileExists(TrkDir()+"scene.xml"))
 	{
 		bLoading = false;  //iLoad1stFrames = -2;
-		gui->BackFromChs();
+		LogO("TRACK doesn't exist !!");
+		/*gui->BackFromChs();
 		//toggleGui(true);  // show gui
 		Message::createMessageBox("Message", TR("#{Track}"),
 			TR("#{TrackNotFound}")+"\n" + pSet->game.track +
 			(pSet->game.track_user ? " *"+TR("#{TweakUser}")+"*" :"") + "\nPath: " + gcom->TrkDir(),
-			MessageBoxStyle::IconError | MessageBoxStyle::Ok);
-		//todo: gui is stuck..
+			MessageBoxStyle::IconError | MessageBoxStyle::Ok);*/
 		return;
 	}	
-	mWndRpl->setVisible(false);  mWndRplTxt->setVisible(false);  // hide rpl ctrl
+	// mWndRpl->setVisible(false);  mWndRplTxt->setVisible(false);  // hide rpl ctrl
 
-	LoadingOn();
-	hud->Show(true);  // hide HUD
+	// LoadingOn();
+	// hud->Show(true);  // hide HUD
 	//mFpsOverlay->hide();  // hide FPS
-	hideMouse();
+	// hideMouse();
 
 	curLoadState = 0;
 }
@@ -235,22 +239,23 @@ void App::NewGame(bool force)
 
 void App::LoadCleanUp()  // 1 first
 {
-	updMouse();
+	// updMouse();
 	
-	if (dstTrk)
-	{	scn->DestroyFluids();  DestroyObjects(true);  }
+	/*if (dstTrk)
+	{	//scn->DestroyFluids();
+		DestroyObjects(true);  }*/
 	
-	DestroyGraphs();  hud->Destroy();
+	// DestroyGraphs();  hud->Destroy();
 	
 	//  hide hud arrow,beam,pace,trail
-	bool morePlr = pSet->game.local_players > 1;
-	bool rplRd = bRplPlay /*|| scn->road && scn->road->getNumPoints() < 2/**/;
-	bHideHudBeam = rplRd;
-	bHideHudArr = rplRd || morePlr;
-	bool denyPace = gui->pChall && !gui->pChall->pacenotes;
-	bHideHudPace = morePlr || denyPace;  // todo: ? pace, trail for splitscreen
-	bool denyTrail = gui->pChall && !gui->pChall->trail;
-	bHideHudTrail = morePlr || denyTrail;
+	bool morePlr = false; //pSet->game.local_players > 1;
+	// bool rplRd = bRplPlay /*|| scn->road && scn->road->getNumPoints() < 2/**/;
+	// bHideHudBeam = rplRd;
+	// bHideHudArr = rplRd || morePlr;
+	// bool denyPace = gui->pChall && !gui->pChall->pacenotes;
+	// bHideHudPace = morePlr || denyPace;  // todo: ? pace, trail for splitscreen
+	// bool denyTrail = gui->pChall && !gui->pChall->trail;
+	// bHideHudTrail = morePlr || denyTrail;
 
 
 	// rem old track
@@ -258,12 +263,12 @@ void App::LoadCleanUp()  // 1 first
 	{
 		if (resTrk != "")  ResourceGroupManager::getSingleton().removeResourceLocation(resTrk);
 		LogO("------  Loading track: "+pSet->game.track);
-		resTrk = gcom->TrkDir() + "objects";
-		ResourceGroupManager::getSingleton().addResourceLocation(resTrk, "FileSystem");
+		//; resTrk = gcom->TrkDir() + "objects";
+		// ResourceGroupManager::getSingleton().addResourceLocation(resTrk, "FileSystem");
 	}
 	
 	//  Delete all cars
-	for (int i=0; i < carModels.size(); ++i)
+/*	for (int i=0; i < carModels.size(); ++i)
 	{
 		CarModel* c = carModels[i];
 		if (c && c->fCam)
@@ -277,19 +282,19 @@ void App::LoadCleanUp()  // 1 first
 		delete c;
 	}
 	carModels.clear();  //carPoses.clear();
-
+*/
 	
-	LogO("------  # Destroy trk");
+	LogO("------  # Destroy trk  does nothing");
 	if (dstTrk)
 	{
-		scn->DestroyTrees();
-		scn->DestroyWeather();
-		scn->DestroyEmitters(true);
+		// scn->DestroyTrees();
+		// scn->DestroyWeather();
+		// scn->DestroyEmitters(true);
 		
-		scn->DestroyTerrain();
-		scn->DestroyRoads();
+		// scn->DestroyTerrain();
+		// scn->DestroyRoads();
 	}
-	scn->DestroyTrail();
+	// scn->DestroyTrail();
 
 
 	///  destroy all
@@ -297,42 +302,48 @@ void App::LoadCleanUp()  // 1 first
 	if (dstTrk)
 	{
 		//mSceneMgr->getRootSceneNode()->removeAndDestroyAllChildren();  // destroy all scenenodes
-		mSceneMgr->destroyAllManualObjects();
-		mSceneMgr->destroyAllEntities();
-		mSceneMgr->destroyAllStaticGeometry();
+		// mSceneMgr->destroyAllManualObjects();
+		// mSceneMgr->destroyAllEntities();
+		// mSceneMgr->destroyAllStaticGeometry();
 		//mSceneMgr->destroyAllParticleSystems();
-		mSceneMgr->destroyAllRibbonTrails();
-		mSplitMgr->mGuiSceneMgr->destroyAllManualObjects(); // !?..
+		// mSceneMgr->destroyAllRibbonTrails();
+		// mSplitMgr->mGuiSceneMgr->destroyAllManualObjects(); // !?..
 	}
 
 	// remove junk from previous tracks
-	LogO("------  # Unload prev track res");
+	/*LogO("------  # Unload prev track res");
 	MeshManager::getSingleton().unloadUnreferencedResources();
 	sh::Factory::getInstance().unloadUnreferencedMaterials();
 	Ogre::TextureManager::getSingleton().unloadUnreferencedResources();
-	LogO("------  # Unload prev track res done");
+	LogO("------  # Unload prev track res done");*/
 }
 
 
 //---------------------------------------------------------------------------------------------------------------
+String App::TrkDir()
+{
+	auto pathTrk = PATHMANAGER::Tracks() + "/";
+	return pathTrk + pSet->gui.track + "/";
+}
+
 void App::LoadGame()  // 2
 {
 	//  viewports
-	int numRplViews = std::max(1, std::min( int(replay.header.numPlayers), pSet->rpl_numViews ));
-	mSplitMgr->mNumViewports = bRplPlay ? numRplViews : pSet->game.local_players;  // set num players
-	mSplitMgr->Align();
-	mPlatform->getRenderManagerPtr()->setActiveViewport(mSplitMgr->mNumViewports);
+	// int numRplViews = std::max(1, std::min( int(replay.header.numPlayers), pSet->rpl_numViews ));
+	// mSplitMgr->mNumViewports = bRplPlay ? numRplViews : pSet->game.local_players;  // set num players
+	// mSplitMgr->Align();
+	// mPlatform->getRenderManagerPtr()->setActiveViewport(mSplitMgr->mNumViewports);
 	
 	pGame->LeaveGame(dstTrk);
 
-	if (gui->bReloadSim)
+	/*if (gui->bReloadSim)
 	{	gui->bReloadSim = false;
 		pGame->ReloadSimData();
 
 		static bool f1 = true;
 		if (f1) {  f1 = false;
 			gui->updSld_TwkSurf(0);  }
-	}
+	}*/
 	
 	///<>  save old track
 	oldTrack = pSet->game.track;  oldTrkUser = pSet->game.track_user;
@@ -343,7 +354,7 @@ void App::LoadGame()  // 2
 	if (dstTrk)
 	{
 		scn->sc->pGame = pGame;
-		scn->sc->LoadXml(gcom->TrkDir()+"scene.xml");
+		scn->sc->LoadXml(TrkDir()+"scene.xml");
 		// pGame->track.asphalt = scn->sc->asphalt;  //*
 		// pGame->track.sDefaultTire = scn->sc->asphalt ? "asphalt" : "gravel";  //*
 		if (scn->sc->denyReversed)
@@ -365,19 +376,19 @@ void App::LoadGame()  // 2
 	///--------------------------------------------
 	//  will create vdrift cars, actual car loading will be done later in LoadCar()
 	//  this is just here because vdrift car has to be created first
-	auto camIt = mSplitMgr->mCameras.begin();
+	auto camIt = mCamera;
 	
-	int numCars = mClient ? mClient->getPeerCount()+1 : pSet->game.local_players;  // networked or splitscreen
+	int numCars = 1; //; mClient ? mClient->getPeerCount()+1 : pSet->game.local_players;  // networked or splitscreen
 	int i;
 	for (i = 0; i < numCars; ++i)
 	{
-		// TODO: This only handles one local player
+		// This only handles one local player
 		CarModel::eCarType et = CarModel::CT_LOCAL;
 		int startId = i;
 		std::string carName = pSet->game.car[std::min(3,i)], nick = "";
-		if (mClient)
+		/*if (mClient)
 		{
-			// FIXME: Various places assume carModels[0] is local
+			// Various places assume carModels[0] is local
 			// so we swap 0 and local's id but preserve starting position
 			if (i == 0)  startId = mClient->getId();
 			else  et = CarModel::CT_REMOTE;
@@ -388,30 +399,32 @@ void App::LoadGame()  // 2
 			//  get nick name
 			if (i == 0)  nick = pSet->nickname;
 			else  nick = mClient->getPeer(startId).name;
-		}
+		}*/
+		// Camera* cam = mCamera; //0;
 		Camera* cam = 0;
-		if (et == CarModel::CT_LOCAL && camIt != mSplitMgr->mCameras.end())
-		{	cam = *camIt;  ++camIt;  }
+		// if (et == CarModel::CT_LOCAL && camIt != mSplitMgr->mCameras.end())
+		// {	cam = *camIt;  ++camIt;  }
 
 		//  need road looped here
-		String sRd = gcom->PathListTrk() + "/road.xml";
-		SplineRoad rd(pGame);  rd.LoadFile(sRd,false);
-		bool loop = //rd.getNumPoints() < 2 ? false :
-					!rd.isLooped && pSet->game.trackreverse ? true : false;
+		// String sRd = gcom->PathListTrk() + "/road.xml";
+		// SplineRoad rd(pGame);  rd.LoadFile(sRd,false);
+		bool loop = false;/*//rd.getNumPoints() < 2 ? false :
+					!rd.isLooped && pSet->game.trackreverse ? true : false;*/
 		
 		CarModel* car = new CarModel(i, i, et, carName, mSceneMgr, pSet, pGame, scn->sc, cam, this);
 		car->Load(startId, loop);
 		carModels.push_back(car);
 		
-		if (nick != "")  // set remote nickname
+		/*if (nick != "")  // set remote nickname
 		{	car->sDispName = nick;
 			if (i != 0)  // not for local
 				car->pNickTxt = hud->CreateNickText(i, car->sDispName);
-		}
+		}*/
 	}
 
 	///  ghost car - last in carModels
 	///--------------------------------------------
+#if 0
 	ghplay.Clear();
 	if (!bRplPlay/*|| pSet->rpl_show_ghost)*/ && pSet->rpl_ghost && !mClient)
 	{
@@ -457,8 +470,8 @@ void App::LoadGame()  // 2
 	{	pGame->timer.waiting = true;  //+
 		pGame->timer.end_sim = false;
 	}
-	
-	pGame->NewGameDoLoadMisc(pretime);
+#endif
+	pGame->NewGameDoLoadMisc(0.f/*pretime*/);
 }
 //---------------------------------------------------------------------------------------------------------------
 
@@ -466,41 +479,41 @@ void App::LoadGame()  // 2
 void App::LoadScene()  // 3
 {
 	//  water RTT
-	scn->UpdateWaterRTT(mSplitMgr->mCameras.front());
+	// scn->UpdateWaterRTT(mSplitMgr->mCameras.front());
 
 	/// generate materials
-	try {
+	/*try {
 		refreshCompositor();
 	} catch (InvalidParametersException &e) {
 		// ignore missing compositors
-	}
+	}*/
 
 	//  fluids
-	if (dstTrk)
-		scn->CreateFluids();
+	// if (dstTrk)
+		// scn->CreateFluids();
 
 	if (dstTrk)
 		pGame->collision.world->setGravity(btVector3(0.0, 0.0, -scn->sc->gravity));
 
 
 	//  set sky tex name for water
-	sh::MaterialInstance* m = mFactory->getMaterialInstance(scn->sc->skyMtr);
-	std::string skyTex = sh::retrieveValue<sh::StringValue>(m->getProperty("texture"), 0).get();
-	sh::Factory::getInstance().setTextureAlias("SkyReflection", skyTex);
+	// sh::MaterialInstance* m = mFactory->getMaterialInstance(scn->sc->skyMtr);
+	// std::string skyTex = sh::retrieveValue<sh::StringValue>(m->getProperty("texture"), 0).get();
+	// sh::Factory::getInstance().setTextureAlias("SkyReflection", skyTex);
 	
 
 	//  weather
-	if (dstTrk)
-		scn->CreateWeather();
+	// if (dstTrk)
+		// scn->CreateWeather();
 
-	if (dstTrk)
-		scn->CreateEmitters();
+	// if (dstTrk)
+		// scn->CreateEmitters();
 	
 		
 	//  checkpoint arrow
-	bool deny = gui->pChall && !gui->pChall->chk_arr;
-	if (!bHideHudArr && !deny)
-		hud->arrow.Create(mSceneMgr, pSet);
+	// bool deny = gui->pChall && !gui->pChall->chk_arr;
+	// if (!bHideHudArr && !deny)
+	// 	hud->arrow.Create(mSceneMgr, pSet);
 }
 
 
@@ -514,20 +527,20 @@ void App::LoadCar()  // 4
 		c->Create();
 
 		///  challenge off abs,tcs
-		if (gui->pChall && c->pCar)
+		/*if (gui->pChall && c->pCar)
 		{
 			if (!gui->pChall->abs)  c->pCar->dynamics.SetABS(false);
 			if (!gui->pChall->tcs)  c->pCar->dynamics.SetTCS(false);
-		}
+		}*/
 
 		//  restore which cam view
 		if (c->fCam && carsCamNum[i] != 0)
 		{
 			c->fCam->setCamera(carsCamNum[i] -1);
 			
-			int visMask = c->fCam->ca->mHideGlass ? RV_MaskAll-RV_CarGlass : RV_MaskAll;
-			for (auto vp : mSplitMgr->mViewports)
-				vp->setVisibilityMask(visMask);
+			// int visMask = c->fCam->ca->mHideGlass ? RV_MaskAll-RV_CarGlass : RV_MaskAll;
+			// for (auto vp : mSplitMgr->mViewports)
+			// 	vp->setVisibilityMask(visMask);
 		}
 		iCurPoses[i] = 0;
 	}
@@ -537,7 +550,7 @@ void App::LoadCar()  // 4
 	
 	///  Init Replay  header, once
 	///=================----------------
-	ReplayHeader2& rh = replay.header, &gh = ghost.header;
+	/*ReplayHeader2& rh = replay.header, &gh = ghost.header;
 	if (!bRplPlay)
 	{
 		replay.InitHeader(pSet->game.track.c_str(), pSet->game.track_user, !bRplPlay);
@@ -579,7 +592,7 @@ void App::LoadCar()  // 4
 		CarModel* cm = carModels[p];
 		cm->sDispName = rh.nicks[p];
 		cm->pNickTxt = hud->CreateNickText(p, cm->sDispName);
-	}
+	}*/
 }
 //---------------------------------------------------------------------------------------------------------------
 
@@ -588,29 +601,29 @@ void App::LoadTerrain()  // 5
 {
 	if (dstTrk)
 	{
-		scn->CreateTerrain(false, scn->sc->ter);  // common
-		GetTerMtrIds();
+		//; scn->CreateTerrain(false, scn->sc->ter);  // common
+		//; GetTerMtrIds();
 		if (scn->sc->ter)
 			scn->CreateBltTerrain();
 	}
 
-	for (int c=0; c < carModels.size(); ++c)
-		carModels[c]->terrain = scn->terrain;
+	//; for (int c=0; c < carModels.size(); ++c)
+	// 	carModels[c]->terrain = scn->terrain;
 	
-	sh::Factory::getInstance().setTextureAlias("CubeReflection", "ReflectionCube");
+	// sh::Factory::getInstance().setTextureAlias("CubeReflection", "ReflectionCube");
 }
 
 void App::LoadRoad()  // 6
 {
-	CreateRoads();   // dstTrk inside
+	// CreateRoads();   // dstTrk inside
 		
-	if (hud->arrow.nodeRot)
-		hud->arrow.nodeRot->setVisible(pSet->check_arrow && !bHideHudArr);
+	// if (hud->arrow.nodeRot)
+		// hud->arrow.nodeRot->setVisible(pSet->check_arrow && !bHideHudArr);
 
 	//  boost fuel at start  . . .
 	//  based on road length
-	float boost_start = std::min(pSet->game.boost_max, std::max(pSet->game.boost_min,
-		scn->road->st.Length * 0.001f * pSet->game.boost_per_km));
+	float boost_start = 6.f; /*std::min(pSet->game.boost_max, std::max(pSet->game.boost_min,
+		scn->road->st.Length * 0.001f * pSet->game.boost_per_km));*/
 		
 	for (int i=0; i < carModels.size(); ++i)
 	{	CAR* car = carModels[i]->pCar;
@@ -622,7 +635,7 @@ void App::LoadRoad()  // 6
 
 	///  Run track's ghost
 	//  to get times at checkpoints
-	fLastTime = 1.f;
+	/*fLastTime = 1.f;
 	if (!scn->road || ghtrk.GetTimeLength() < 1.f)  return;
 	int ncs = scn->road->mChks.size();
 	if (ncs == 0)  return;
@@ -648,26 +661,26 @@ void App::LoadRoad()  // 6
 			{	vTimeAtChks[c] = tf.time;
 				//LogO("Chk "+toStr(c)+" ti "+fToStr(tf.time,1,4));
 		}	}
-	}
+	}*/
 }
 
 void App::LoadObjects()  // 7
 {
-	if (dstTrk)
-		CreateObjects();
+	// if (dstTrk)
+	// 	CreateObjects();
 }
 
 void App::LoadTrees()  // 8
 {
-	if (!dstTrk)
+	/*if (!dstTrk)
 		scn->UpdCamera();  // paged cam
 	else
 	if (scn->sc->ter)
-		scn->CreateTrees();
+		scn->CreateTrees();*/  //;
 	
 		
 	//  check for cars inside terrain ___
-	if (scn->terrain)
+	/*if (scn->terrain)
 	for (int i=0; i < carModels.size(); ++i)
 	{
 		CAR* car = carModels[i]->pCar;
@@ -681,86 +694,36 @@ void App::LoadTrees()  // 8
 			if (yd < 0.f)
 				pos[2] += -yd + (pSet->game.sim_mode == "easy" ? -0.1f : 0.9f);
 			car->SetPosition1(pos);
-	}	}
+	}	}*/
 }
 
 
 void App::LoadMisc()  // 9 last
 {
 	bool rev = pSet->game.trackreverse;	
-	/**/if (pGame && !pGame->cars.empty())  //todo: move this into gui track tab chg evt, for cur game type
+	/**if (pGame && !pGame->cars.empty())  //todo: move this into gui track tab chg evt, for cur game type
 		gcom->UpdGuiRdStats(scn->road, scn->sc, gcom->sListTrack,
 			pGame->timer.GetBestLap(0, rev), rev, 0);  // current
-	/**/
+	**/
 
-	hud->Create();
-	hud->Show(true);  // hide
+	// hud->Create();
+	// hud->Show(true);  // hide
 	
 	// Camera settings
 	for (auto car : carModels)
 	{	car->First();
 		if (car->fCam)
-		{	car->fCam->mTerrain = scn->mTerrainGroup;
+		{	//; car->fCam->mTerrain = scn->mTerrainGroup;
 			//car->fCam->mWorld = &(pGame->collision);
 	}	}
 	
-	if (dstTrk)
+	/*if (dstTrk)
 	try
 	{	TexturePtr tex = Ogre::TextureManager::getSingleton().getByName("waterDepth.png");
 		if (tex)
 			tex->reload();
 	} catch(...)
-	{	}
-	
-	/// rendertextures debug
-#if 0
-	// init overlay elements
-	OverlayManager& mgr = OverlayManager::getSingleton();
-	Overlay* overlay;
-	// destroy if already exists
-	if (overlay = mgr.getByName("DebugOverlay"))
-		mgr.destroy(overlay);
-	overlay = mgr.create("DebugOverlay");
-	//Ogre::CompositorInstance  *compositor= CompositorManager::getSingleton().getCompositorChain(mSplitMgr->mViewports.front())->getCompositor("HDR");
-	for (int i=0; i < 3; ++i)
-	{
-		// Set up a debug panel
-		if (MaterialManager::getSingleton().resourceExists("Ogre/DebugTexture" + toStr(i)))
-			MaterialManager::getSingleton().remove("Ogre/DebugTexture" + toStr(i));
-		MaterialPtr debugMat = MaterialManager::getSingleton().create(
-			"Ogre/DebugTexture" + toStr(i), 
-			ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-		debugMat->getTechnique(0)->getPass(0)->setLightingEnabled(false);
-		//TexturePtr depthTexture = compositor->getTextureInstance("mrt_output",i);
-		//TexturePtr depthTexture = compositor->getTextureInstance("rt_bloom0",0);
-		TexturePtr depthTexture = mSceneMgr->getShadowTexture(i);
-		if (depthTexture)
-		{
-			TextureUnitState *t = debugMat->getTechnique(0)->getPass(0)->createTextureUnitState(depthTexture->getName());
-			t->setTextureAddressingMode(TextureUnitState::TAM_CLAMP);
-		}
-		OverlayContainer* debugPanel;
-		// destroy container if exists
-		try
-		{
-			if (debugPanel = static_cast<OverlayContainer*>(
-					mgr.getOverlayElement("Ogre/DebugTexPanel" + toStr(i)
-				)))
-				mgr.destroyOverlayElement(debugPanel);
-		}
-		catch (Exception&)
-		{	}
-
-		debugPanel = (OverlayContainer*)
-			(OverlayManager::getSingleton().createOverlayElement("Panel", "Ogre/DebugTexPanel" + StringConverter::toString(i)));
-		debugPanel->_setPosition(0.67, i*0.33);
-		debugPanel->_setDimensions(0.33, 0.33);
-		debugPanel->setMaterialName(debugMat->getName());
-		debugPanel->show();
-		overlay->add2D(debugPanel);
-		overlay->show();
-	}
-#endif
+	{	}*/
 }
 
 
@@ -775,10 +738,10 @@ void App::NewGameDoLoad()
 	{
 		// Loading finished
 		bLoading = false;
-		#ifdef DEBUG  //todo: doesnt hide later, why?
-		LoadingOff();
-		#endif
-		mLoadingBar->SetWidth(100.f);
+		// #ifdef DEBUG  //todo: doesnt hide later, why?
+		// LoadingOff();
+		// #endif
+		// mLoadingBar->SetWidth(100.f);
 
 		//-  cars need update
 		for (int i=0; i < carModels.size(); ++i)
@@ -816,8 +779,8 @@ void App::NewGameDoLoad()
 	}
 
 	//  Update bar,txt
-	txLoad->setCaption(TR("#{"+cStrLoad[curLoadState]+"}"));
-	mLoadingBar->SetWidth(perc);
+	// txLoad->setCaption(TR("#{"+cStrLoad[curLoadState]+"}"));
+	// mLoadingBar->SetWidth(perc);
 
 	//  next loading step
 	++curLoadState;
@@ -830,6 +793,7 @@ void App::NewGameDoLoad()
 
 void App::CreateRoads()
 {
+/*  //;
 	///  road  ~ ~ ~
 	SplineRoad*& road = scn->road;
 	Camera* cam = *mSplitMgr->mCameras.begin();
@@ -880,12 +844,13 @@ void App::CreateRoads()
 	}
 
 	CreateTrail(cam);
+*/
 }
 
 
 void App::CreateRoadsInt()
 {
-	Camera* cam = *mSplitMgr->mCameras.begin();
+/*	Camera* cam = *mSplitMgr->mCameras.begin();
 
 	//  get all road*.xml
 	strlist lr;  string path = gcom->TrkDir();
@@ -903,7 +868,7 @@ void App::CreateRoadsInt()
 	}
 
 	scn->rdCur = 0;
-	scn->road = scn->roads[scn->rdCur];
+	scn->road = scn->roads[scn->rdCur];*/
 }
 
 
@@ -912,7 +877,7 @@ void App::CreateRoadsInt()
 
 void App::CreateTrail(Camera* cam)
 {
-	if (scn->trail)
+	/*if (scn->trail)
 		scn->DestroyTrail();
 
 	//  load
@@ -1019,5 +984,5 @@ void App::CreateTrail(Camera* cam)
 	tr->RebuildRoadInt();
 	scn->trail = tr;
 	bool vis = !pSet->trail_show || bHideHudTrail;
-	tr->SetVisTrail(!vis);
+	tr->SetVisTrail(!vis);*/
 }

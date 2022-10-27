@@ -107,9 +107,11 @@ int Demo::MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
     #if OGRE_USE_SDL2
         //Do this after creating the scene for easier the debugging (the mouse doesn't hide itself)
         SdlInputHandler *inputHandler = graphicsSystem->getInputHandler();
+      #ifndef DEBUG
         inputHandler->setGrabMousePointer( true );
         inputHandler->setMouseVisible( false );
         inputHandler->setMouseRelative( true );
+      #endif
     #endif
 
         Ogre::Timer timer;

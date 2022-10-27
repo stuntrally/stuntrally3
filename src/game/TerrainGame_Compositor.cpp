@@ -102,8 +102,8 @@ namespace Demo
             mCubeCamera->setNearClipDistance( 0.5 );
             mCubeCamera->setVisibilityFlags(0xFFFFFFFF - RV_Car);  // no car parts in reflections
 
-            mCubeCamera->setFarClipDistance( 100 );  // par
-            mCubeCamera->setShadowRenderingDistance( 50 );  // par
+            mCubeCamera->setFarClipDistance( 300 );  // par
+            mCubeCamera->setShadowRenderingDistance( 100 );  // par
             mCubeCamera->setCastShadows(false);
         }
 

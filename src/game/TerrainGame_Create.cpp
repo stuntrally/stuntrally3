@@ -30,6 +30,8 @@
 #include "settings.h"
 #include "CGame.h"
 #include "game.h"
+#include "CarModel.h"
+#include "CScene.h"
 
 #include <list>
 #include <filesystem>
@@ -47,7 +49,7 @@ namespace Demo
         , mPitch( 50.f * Math::PI / 180.f )  // par
         , mYaw( 102 * Math::PI / 180.f )
         //, mIblQuality( IblHigh )  // par
-        , mIblQuality( MipmapsLowest )
+        //, mIblQuality( MipmapsLowest )
     {
         macroblockWire.mPolygonMode = PM_WIREFRAME;
         SetupVeget();
@@ -101,7 +103,6 @@ namespace Demo
         //  paths
         LogO(PATHMANAGER::info.str());
 
-        CreateCar();  //+
 
         ///  Game start
         //----------------------------------------------------------------
@@ -114,24 +115,15 @@ namespace Demo
 
         pGame->ReloadSimData();
 
-        CreateBltTerrain();
         
-       	//  CAR  ---
-        // <start pos="-1.30182 7.95081 -10.5378" rot="-0 0 -1.62921e-07 -1" />
-        QUATERNION<float> q(0,0,0,-1);
+        //  new game
+        pApp->mCamera = mGraphicsSystem->getCamera();
+        pApp->mSceneMgr = mGraphicsSystem->getSceneManager();
+        pApp->mDynamicCubemap = mDynamicCubemap;
 
-    	std::string carname = "SX", file = carname + ".car",
-	    	pathOrig  = PATHMANAGER::CarSim()  + "/" + settings->game.sim_mode + "/cars/" + file;
-
-        //CAR* pCar =
-        pGame->LoadCar(pathOrig, carname, MATHVECTOR<float,3>(11.3,8,0), q, true, false, 0);
-
-
+        pApp->CreateScene();  /// New
+        
         pGame->NewGameDoLoadMisc(0.f);
-
-    	// pApp->NewGame(true);
-
-        // pGame->Tick();
     }
 
     void TerrainGame::Destroy()
@@ -213,10 +205,10 @@ namespace Demo
         mCameraController = new CameraController( mGraphicsSystem, false );
         mGraphicsSystem->getCamera()->setFarClipDistance( 100000.f );  // par far
 
-        camPos = Vector3(13.f, 8.f, 4.f );
+        camPos = Vector3(10.f, 11.f, 16.f );
         //camPos.y += mTerra->getHeightAt( camPos );
         mGraphicsSystem->getCamera()->setPosition( camPos );
-        mGraphicsSystem->getCamera()->lookAt( camPos + Vector3(-6.f, 2.f, -8.f) );
+        mGraphicsSystem->getCamera()->lookAt( camPos + Vector3(0.f, -1.6f, -2.f) );
         Vector3 objPos;
 
 
