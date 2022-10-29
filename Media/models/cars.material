@@ -43,16 +43,16 @@ hlms ES_glass pbs
 	roughness 0.2
 	metalness 0.8
 
-    cull_mode none
-    depth_write off
-    transparency 0.5
+	cull_mode none
+	depth_write off
+	transparency 0.5
 	transparency_mode transparent
 }
 
 hlms ES_wheel pbs
 {
 	diffuse_map   ES_wheel.png
-	// normal_map    ES_wheel_normal.jpg
+	// normal_map	ES_wheel_normal.jpg
 	metalness_map ES_wheel_spec.png
 	specular_map  ES_wheel_spec.png
 	
@@ -128,9 +128,9 @@ hlms SX_glass pbs
 	roughness 0.1
 	metalness 1.0
 
-    cull_mode none
-    depth_write off
-    transparency 0.5
+	cull_mode none
+	depth_write off
+	transparency 0.5
 	transparency_mode transparent
 	two_sided true
 }
@@ -191,9 +191,9 @@ hlms HI_glass pbs
 	roughness 0.1
 	metalness 1.0
 
-    cull_mode none
-    depth_write off
-    transparency 0.5
+	cull_mode none
+	depth_write off
+	transparency 0.5
 	transparency_mode transparent
 	two_sided true
 }
