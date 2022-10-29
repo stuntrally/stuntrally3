@@ -45,6 +45,8 @@ THE SOFTWARE.
 #include "OgreRoot.h"
 
 #include "OgreLwString.h"
+#include "OgreStagingTexture.h"
+#include "Def_Str.h"
 
 namespace Ogre
 {
@@ -76,7 +78,8 @@ namespace Ogre
     //-----------------------------------------------------------------------------------
     void ShadowMapper::createCompositorWorkspace()
     {
-        //return;  //**  5 sec delay
+        return;  //**  5 sec delay
+
         OGRE_ASSERT_LOW( !m_shadowWorkspace );
         OGRE_ASSERT_LOW( !m_tmpGaussianFilterTex );
 
@@ -164,6 +167,7 @@ namespace Ogre
         }
         m_shadowMapTex->setResolution( width, height );
 
+        PixelFormatGpu format;
         {
             // Check for something that is supported. If they all fail, we assume the driver
             // is broken and at least PFG_RGBA8_UNORM must be supported
@@ -177,11 +181,37 @@ namespace Ogre
                     i == numFormats - 1u )
                 {
                     m_shadowMapTex->setPixelFormat( c_formats[i] );
+                    format = c_formats[i];
+                    LogO("Terrain shadowmap texture format: " + toStr(format));
                     break;
                 }
             }
         }
         m_shadowMapTex->scheduleTransitionTo( GpuResidency::Resident );
+
+
+        //----  clear shadowmap
+        // todo: save/load from file, editor dynamic
+        StagingTexture *stagingTexture = textureManager->getStagingTexture(
+            width, height, 1u, 1u, format );
+        stagingTexture->startMapRegion();
+        TextureBox texBox = stagingTexture->mapRegion( width, height, 1u, 1u, format );
+
+        uint32* data = new uint32[width * height];
+        int a=0;
+        for (int y=0; y < height; ++y)
+        for (int x=0; x < width; ++x)
+            data[a++] = 1500000100;  // any not shadowed
+            //data[a++] = 2000000000 + 2000000000 * sin(x*0.01) * cos(y*0.02);
+        texBox.copyFrom(data, width, height, width * sizeof(uint32) );
+
+        stagingTexture->stopMapRegion();
+        stagingTexture->upload( texBox, m_shadowMapTex, 0, 0, 0 );
+        textureManager->removeStagingTexture( stagingTexture );
+        stagingTexture = 0;
+        delete[] data;
+        //----
+
 
         if( !m_minimizeMemoryConsumption )
             createCompositorWorkspace();

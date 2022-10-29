@@ -81,9 +81,9 @@ namespace Ogre
         m_gridX             = gridPos.x;
         m_gridZ             = gridPos.z;
         m_lodLevel          = lodLevel;
-
-        horizontalPixelDim  = std::min( horizontalPixelDim, m_parentTerra->m_width - m_gridX );
-        verticalPixelDim    = std::min( verticalPixelDim, m_parentTerra->m_depth - m_gridZ );
+    
+        horizontalPixelDim  = std::min( horizontalPixelDim, m_parentTerra->m_iWidth - m_gridX );
+        verticalPixelDim    = std::min( verticalPixelDim, m_parentTerra->m_iHeight - m_gridZ );
 
         m_sizeX = horizontalPixelDim;
         m_sizeZ = verticalPixelDim;
@@ -173,8 +173,8 @@ namespace Ogre
         //ivec4 xzTexPosBounds
         ((int32*RESTRICT_ALIAS)gpuPtr)[4] = m_gridX;
         ((int32*RESTRICT_ALIAS)gpuPtr)[5] = m_gridZ;
-        ((int32*RESTRICT_ALIAS)gpuPtr)[6] = m_parentTerra->m_width - 1u;
-        ((int32*RESTRICT_ALIAS)gpuPtr)[7] = m_parentTerra->m_depth - 1u;
+        ((int32*RESTRICT_ALIAS)gpuPtr)[6] = m_parentTerra->m_iWidth - 1u;
+        ((int32*RESTRICT_ALIAS)gpuPtr)[7] = m_parentTerra->m_iHeight - 1u;
 
         ((float*RESTRICT_ALIAS)gpuPtr)[8]  = m_parentTerra->m_terrainOrigin.x;
         ((float*RESTRICT_ALIAS)gpuPtr)[9]  = m_parentTerra->m_terrainOrigin.y;
