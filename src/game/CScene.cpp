@@ -4,11 +4,8 @@
 #include "data/CData.h"
 #include "data/SceneXml.h"
 // #include "WaterRTT.h"
-// #include "../../road/Road.h"
-// #include "../../road/PaceNotes.h"
-
-// #include <OgreTerrain.h>
-// #include <OgreTerrainGroup.h>
+// #include "Road.h"
+// #include "PaceNotes.h"
 
 
 CScene::CScene(App* app1)
@@ -73,5 +70,5 @@ void CScene::destroyScene()
 	// DestroyTrees();
 	// DestroyWeather();
 
-	delete[] sc->td.hfHeight;
+	// delete[] sc->td.hfHeight;
 }

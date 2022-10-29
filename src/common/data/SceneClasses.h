@@ -42,7 +42,7 @@ class TerData		///  Terrain
 {
 public:	
 	//  height field
-	float* hfHeight;
+	std::vector<float> hfHeight;
 	
 	//  size
 	int iVertsX, iVertsY, iTerSize;  // size in vertices

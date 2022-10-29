@@ -65,7 +65,6 @@ void Object::SetFromBlt()
 //------------------------------------------
 TerData::TerData()
 {
-	hfHeight = NULL;
 	Default();
 }
 void TerData::Default()

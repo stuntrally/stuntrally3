@@ -21,12 +21,8 @@
 // #include "SplitScreen.h"
 // #include "common/GraphView.h"
 //; #include "../network/gameclient.hpp"
-// #include "../paged-geom/PagedGeometry.h"
-// #include "../shiny/Main/Factory.hpp"
-// #include <boost/thread.hpp>
 // #include <MyGUI_OgrePlatform.h>
 // #include <MyGUI_PointerManager.h>
-// #include <OgreTerrainGroup.h>
 #include <OgreSceneManager.h>
 #include <OgreParticleSystem.h>
 #include <OgreResourceGroupManager.h>
@@ -362,8 +358,8 @@ void App::LoadGame()  // 2
 
 		pGame->NewGameDoLoadTrack();
 
-		if (!scn->sc->ter)
-			scn->sc->td.hfHeight = NULL;  // sc->td.layerRoad.smoke = 1.f;
+		// if (!scn->sc->ter)
+			// scn->sc->td.hfHeight = NULL;  // sc->td.layerRoad.smoke = 1.f;
 	}
 	//  set normal reverb
 	pGame->snd->sound_mgr->SetReverb(scn->sc->revSet.normal);
