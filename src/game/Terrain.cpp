@@ -213,11 +213,10 @@ namespace Demo
                                          GameState **outLogicGameState,
                                          LogicSystem **outLogicSystem )
     {
-        TerrainGame *gfxGameState = new TerrainGame(
-        "   * Info\n" );
+        TerrainGame *gfxGameState = new TerrainGame();
 
         Tutorial_TerrainGraphicsSystem *graphicsSystem =
-                new Tutorial_TerrainGraphicsSystem( gfxGameState );
+            new Tutorial_TerrainGraphicsSystem( gfxGameState );
 
         gfxGameState->_notifyGraphicsSystem( graphicsSystem );
 

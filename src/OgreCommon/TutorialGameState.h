@@ -27,7 +27,6 @@ namespace Demo
         /// Optional, for controlling the camera with WASD and the mouse
         CameraController    *mCameraController;
 
-        Ogre::String        mHelpDescription;
         Ogre::uint16        mDisplayHelpMode;
         Ogre::uint16        mNumDisplayHelpModes;
 
@@ -35,10 +34,9 @@ namespace Demo
         Ogre::v1::TextAreaOverlayElement *mDebugTextShadow;
 
         virtual void createDebugTextOverlay();
-        virtual void generateDebugText( float timeSinceLast, Ogre::String &outText );
 
     public:
-        TutorialGameState( const Ogre::String &helpDescription );
+        TutorialGameState();
         virtual ~TutorialGameState();
 
         void _notifyGraphicsSystem( GraphicsSystem *graphicsSystem );

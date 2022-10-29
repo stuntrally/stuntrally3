@@ -9,6 +9,7 @@
 #include "OgreCamera.h"
 #include "OgreWindow.h"
 #include "OgreFrameStats.h"
+#include "OgreTextAreaOverlayElement.h"
 
 #include "Terra/Terra.h"
 #include "OgreHlms.h"
@@ -190,26 +191,34 @@ namespace Demo
             mTerra->update( mSunLight->getDerivedDirectionUpdated(), lightEpsilon );
         }
 
+        generateDebugText();
+
         TutorialGameState::update( dt );
     }
 
 
     //  text
     //-----------------------------------------------------------------------------------------------------------------------------
-    void TerrainGame::generateDebugText( float timeSinceLast, String &outText )
+    void TerrainGame::generateDebugText()
     {
-        outText = "";
+        String txt = "";
 
         if( mDisplayHelpMode == 0 )
         {
-            TutorialGameState::generateDebugText( timeSinceLast, outText );
+            //outText = mHelpDescription;
+            txt = "F1 toggle help\n";
+            txt += "Reload shaders:\n"
+                       "Ctrl+F1 PBS  Ctrl+F2 Unlit  Ctrl+F3 Compute  Ctrl+F4 Terra\n\n";
+            txt += "V add Vegetation  C clear it\n";
+            txt += "T terrain / flat  R wireframe\n";
+            txt += "K next Sky  G add next Car  F add Fire\n\n";
             
             Vector3 camPos = mGraphicsSystem->getCamera()->getPosition();
-            outText += "Pos: " + fToStr( camPos.x, 4) +" "+ fToStr( camPos.y, 4) +" "+ fToStr( camPos.z, 4) + "\n\n";
+            txt += "\n\nPos:  " + fToStr( camPos.x, 1) +"  "+ fToStr( camPos.y, 1) +"  "+ fToStr( camPos.z, 1) + "\n\n";
 
             #if 1  // list all veget cnts
             for (const auto& lay : vegetLayers)
-                outText += iToStr( lay.count, 4 ) + " " + lay.mesh + "\n";
+                txt += iToStr( lay.count, 4 ) + " " + lay.mesh + "\n";
             #endif
         }
         else if( mDisplayHelpMode == 1 )
@@ -219,57 +228,60 @@ namespace Demo
             const RenderingMetrics& rm = rs->getMetrics();  //** fps
             const FrameStats *st = mGraphicsSystem->getRoot()->getFrameStats();
             
-            outText += iToStr( (int)st->getAvgFps(), 4) +"  "+ //"\n" +
+            txt += iToStr( (int)st->getAvgFps(), 4) +"  "+ //"\n" +
                 "f " + toStr( rm.mFaceCount/1000) + //"k v " + toStr( rm.mVertexCount/1000 ) + 
                 "k d " + toStr( rm.mDrawCount) + " i " + toStr( rm.mInstanceCount)
-                +"\n";
                 // +" b " + toStr( rm.mBatchCount, 0) + "\n";
+                +"\n";
 
-            outText += "Veget all  " + fToStr(vegetNodes.size(), 5);
-            outText += "\n- + Sun Pitch  " + fToStr( mPitch * 180.f / Math::PI, 3 );
-            outText += "\n/ * Sun Yaw    " + fToStr( mYaw * 180.f / Math::PI, 3 );
+            txt += "Veget all  " + iToStr(vegetNodes.size(), 5);
+            txt += "\n\n- + Sun Pitch  " + fToStr( mPitch * 180.f / Math::PI, 3 );
+            txt += "\n/ * Sun Yaw    " + fToStr( mYaw * 180.f / Math::PI, 3 );
 
-            outText += "\n^ v Param  " + fToStr( param, 0 );
+            txt += "\n^ v Param  " + fToStr( param, 0 );
             
             SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
             AtmosphereNpr *atmosphere = static_cast<AtmosphereNpr*>( sceneManager->getAtmosphere() );
             AtmosphereNpr::Preset p = atmosphere->getPreset();
             
-            outText += "\n< > ";  const int d = 3;
+            txt += "\n< > ";  const int d = 3;
             switch (param)
             {
-            case 0:   outText += "Fog density  " + fToStr( p.fogDensity, 5 );  break;
-            case 1:   outText += "density coeff  " + fToStr( p.densityCoeff, d );  break;
-            case 2:   outText += "density diffusion  " + fToStr( p.densityDiffusion, d );  break;
-            case 3:   outText += "horizon limit  " + fToStr( p.horizonLimit, d );  break;
-            case 4:   outText += "Sun Power  " + fToStr( p.sunPower, d );  break;
-            case 5:   outText += "sky Power  " + fToStr( p.skyPower, d );  break;
-            case 6:   outText += "sky Colour   Red  " + fToStr( p.skyColour.x, d );  break;
-            case 7:   outText += "sky Colour Green  " + fToStr( p.skyColour.y, d );  break;
-            case 8:   outText += "sky Colour  Blue  " + fToStr( p.skyColour.z, d );  break;
-            case 9:   outText += "fog break MinBright  " + fToStr( p.fogBreakMinBrightness, d );  break;
-            case 10:  outText += "fog break Falloff  " + fToStr( p.fogBreakFalloff, d );  break;
-            case 11:  outText += "linked LightPower  " + fToStr( p.linkedLightPower, d );  break;
-            case 12:  outText += "ambient UpperPower  " + fToStr( p.linkedSceneAmbientUpperPower, d );  break;
-            case 13:  outText += "ambient LowerPower  " + fToStr( p.linkedSceneAmbientLowerPower, d );  break;
-            case 14:  outText += "envmap Scale  " + fToStr( p.envmapScale, d );  break;
+            case 0:   txt += "Fog density  " + fToStr( p.fogDensity, 5 );  break;
+            case 1:   txt += "density coeff  " + fToStr( p.densityCoeff, d );  break;
+            case 2:   txt += "density diffusion  " + fToStr( p.densityDiffusion, d );  break;
+            case 3:   txt += "horizon limit  " + fToStr( p.horizonLimit, d );  break;
+            case 4:   txt += "Sun Power  " + fToStr( p.sunPower, d );  break;
+            case 5:   txt += "sky Power  " + fToStr( p.skyPower, d );  break;
+            case 6:   txt += "sky Colour   Red  " + fToStr( p.skyColour.x, d );  break;
+            case 7:   txt += "sky Colour Green  " + fToStr( p.skyColour.y, d );  break;
+            case 8:   txt += "sky Colour  Blue  " + fToStr( p.skyColour.z, d );  break;
+            case 9:   txt += "fog break MinBright  " + fToStr( p.fogBreakMinBrightness, d );  break;
+            case 10:  txt += "fog break Falloff  " + fToStr( p.fogBreakFalloff, d );  break;
+            case 11:  txt += "linked LightPower  " + fToStr( p.linkedLightPower, d );  break;
+            case 12:  txt += "ambient UpperPower  " + fToStr( p.linkedSceneAmbientUpperPower, d );  break;
+            case 13:  txt += "ambient LowerPower  " + fToStr( p.linkedSceneAmbientLowerPower, d );  break;
+            case 14:  txt += "envmap Scale  " + fToStr( p.envmapScale, d );  break;
             }
         }
 
         if (pGame)  // CAR text
         {
-            outText += "\n\n";
+            txt += "\n\n";
             int num = pGame->cars.size();
-            outText += "cars " + toStr(num) + "\n";
+            txt += "cars " + toStr(num) + "\n";
             
             for (const CAR* car : pGame->cars)
             {
                 auto pos = car->dynamics.GetPosition();
-                outText += "pos  " + fToStr(pos[0],2) + "  " + fToStr(pos[1],2) + "  " + fToStr(pos[2],2) +"\n";
-                outText += "gear  " + iToStr(car->GetGear()) + "  rpm  " + iToStr(car->GetEngineRPM(),4)
+                txt += "pos  " + fToStr(pos[0],2) + "  " + fToStr(pos[1],2) + "  " + fToStr(pos[2],2) +"\n";
+                txt += "gear  " + iToStr(car->GetGear()) + "  rpm  " + iToStr(car->GetEngineRPM(),4)
                          + "  km/h " + fToStr(car->GetSpeedometer()*3.6f, 0) +"\n";
             }
         }
+        
+        mDebugText->setCaption( txt );
+        mDebugTextShadow->setCaption( txt );
     }
 
 

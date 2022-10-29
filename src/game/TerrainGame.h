@@ -68,10 +68,10 @@ namespace Demo
         Ogre::HlmsMacroblock macroblockWire;
         bool wireTerrain = false;
 
-        void generateDebugText( float timeSinceLast, Ogre::String &outText ) override;
+        void generateDebugText();
 
     public:
-        TerrainGame( const Ogre::String &helpDescription );
+        TerrainGame();
 
         //  SR
         SETTINGS* settings = 0;

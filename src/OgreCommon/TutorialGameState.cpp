@@ -22,10 +22,9 @@ using namespace Demo;
 
 namespace Demo
 {
-    TutorialGameState::TutorialGameState( const Ogre::String &helpDescription ) :
+    TutorialGameState::TutorialGameState() :
         mGraphicsSystem( 0 ),
         mCameraController( 0 ),
-        mHelpDescription( helpDescription ),
         mDisplayHelpMode( 1 ),
         mNumDisplayHelpModes( 2 ),
         mDebugText( 0 )
@@ -73,28 +72,8 @@ namespace Demo
         overlay->show();
     }
     //-----------------------------------------------------------------------------------
-    void TutorialGameState::generateDebugText( float timeSinceLast, Ogre::String &outText )
-    {
-        if( mDisplayHelpMode == 0 )
-        {
-            //outText = mHelpDescription;
-            outText = "F1 toggle help\n";
-            outText += "Reload shaders:\n"
-                       "Ctrl+F1 PBS  Ctrl+F2 Unlit  Ctrl+F3 Compute  Ctrl+F4 Terra\n\n";
-            outText += "V add Vegetation  C clear it\n";
-            outText += "T terrain / flat  R wireframe\n";
-            outText += "K next Sky  G add next Car  F add Fire\n\n";
-        }
-    }
-    //-----------------------------------------------------------------------------------
     void TutorialGameState::update( float timeSinceLast )
     {
-        //Show FPS etc
-        Ogre::String finalText;
-        generateDebugText( timeSinceLast, finalText );
-        mDebugText->setCaption( finalText );
-        mDebugTextShadow->setCaption( finalText );
-
         if( mCameraController )
             mCameraController->update( timeSinceLast );
     }
@@ -115,11 +94,6 @@ namespace Demo
         if( arg.keysym.scancode == SDL_SCANCODE_F1 && (arg.keysym.mod & ~(KMOD_NUM|KMOD_CAPS)) == 0 )
         {
             mDisplayHelpMode = (mDisplayHelpMode + 1) % mNumDisplayHelpModes;
-
-            Ogre::String finalText;
-            generateDebugText( 0, finalText );
-            mDebugText->setCaption( finalText );
-            mDebugTextShadow->setCaption( finalText );
         }
         else if( arg.keysym.scancode == SDL_SCANCODE_F1 && (arg.keysym.mod & (KMOD_LCTRL|KMOD_RCTRL)) )
         {

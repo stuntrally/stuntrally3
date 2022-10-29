@@ -44,8 +44,8 @@ using namespace std;
 
 namespace Demo
 {
-    TerrainGame::TerrainGame( const String &helpDescription )
-        : TutorialGameState( helpDescription )
+    TerrainGame::TerrainGame()
+        : TutorialGameState()
         , mPitch( 50.f * Math::PI / 180.f )  // par
         , mYaw( 102 * Math::PI / 180.f )
         //, mIblQuality( IblHigh )  // par
@@ -112,10 +112,24 @@ namespace Demo
         pApp = new App(settings, pGame);
         //; pApp->mRoot = root;
         pGame->app = pApp;
+        sc = pApp->scn->sc;
 
         pGame->ReloadSimData();
 
-        
+/*  for game.cfg
+track = Test1-Flat
+track = Test3-Bumps
+track = Test4-TerrainBig
+track = Test7-FluidsSmall
+track = Test12-Snow
+
+track = Jng13-Tropic
+track = Jng20-JungleMaze
+track = For12-HighPeaks
+track = Jng25-CantorJungle
+track = For18-MountCaro
+track = Isl17-AdapterIslands
+*/
         //  new game
         pApp->mCamera = mGraphicsSystem->getCamera();
         pApp->mSceneMgr = mGraphicsSystem->getSceneManager();
@@ -123,7 +137,6 @@ namespace Demo
 
         pApp->CreateScene();  /// New
         
-        pGame->NewGameDoLoadMisc(0.f);
     }
 
     void TerrainGame::Destroy()
@@ -142,10 +155,6 @@ namespace Demo
     //-----------------------------------------------------------------------------------------------------------------------------
     void TerrainGame::createScene01()
     {
-        LogO(">>>> Init SR ----");
-        Init();
-        LogO(">>>> Init SR done ----");
-
 
         mGraphicsSystem->mWorkspace = setupCompositor();
 
@@ -212,8 +221,12 @@ namespace Demo
         Vector3 objPos;
 
 
+        LogO(">>>> Init SR ----");
+        Init();
+        LogO(">>>> Init SR done ----");
+
         //  Terrain  ------------------------------------------------
-        CreatePlane();  // fast
+        // CreatePlane();  // fast
         // CreateTerrain();  // 5sec
         // CreateVeget();
 
