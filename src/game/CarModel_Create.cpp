@@ -577,7 +577,6 @@ void CarModel::Create()
 	if (pCar)
 	if (!brakePos.empty())
 	{
-	#if 0  // fixme ?material not found..
 		SceneNode* nd = ndCar->createChildSceneNode();  ToDel(nd);
 		brakes = mSceneMgr->createBillboardSet(/*"Flr"+strI,2*/);
 		brakes->setDefaultDimensions(brakeSize, brakeSize);
@@ -588,9 +587,8 @@ void CarModel::Create()
 			brakes->createBillboard(brakePos[i], brakeClr);
 
 		brakes->setVisible(false);
-		brakes->setMaterialName("flare1", "Popular"); //?
+		brakes->setDatablockOrMaterialName("flare1", "Popular");
 		nd->attachObject(brakes);
-	#endif
 	}
 	
 	if (!ghostTrk)
@@ -687,17 +685,18 @@ void CarModel::Create()
 				if (!ndWhE[w])
 				{	ndWhE[w] = ndRoot->createChildSceneNode();  ToDel(ndWhE[w]);  }
 
-			#if 0  // fixme trails?
+			#if 1  // fixme trails alpha..
 				if (!whTrail[w])
 				{	NameValuePairList params;
 					params["numberOfChains"] = "1";
 					params["maxElements"] = toStr(320 * pSet->trails_len);
 
-					whTrail[w] = (v1::RibbonTrail*)mSceneMgr->createMovableObject("RibbonTrail", 0, &params);
+					whTrail[w] = (v1::RibbonTrail*)mSceneMgr->createMovableObject(
+						"RibbonTrail", &mSceneMgr->_getEntityMemoryManager(SCENE_DYNAMIC), &params);
 					whTrail[w]->setInitialColour(0, 0.1,0.1,0.1, 0);
 					whTrail[w]->setFaceCamera(false,Vector3::UNIT_Y);
 					ndRoot->attachObject(whTrail[w]);
-					// whTrail[w]->setMaterialName("TireTrail", "Popular");  //?
+					whTrail[w]->setDatablockOrMaterialName("TireTrail", "Popular");  //?
 					whTrail[w]->setCastShadows(false);
 					whTrail[w]->addNode(ndWhE[w]);
 				}

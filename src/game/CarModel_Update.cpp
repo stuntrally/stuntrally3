@@ -474,16 +474,18 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		if (pSet->trails)
 		{	if (ndWhE[w])
 			{	Vector3 vp = vpos + posInfo.carY * wR*trlH;
+				// vp.y += 0.5f;  //test
 				// if (terrain && whMtr > 0)
 					//; fixme vp.y = terrain->getHeightAtWorldPosition(vp) + 0.02f;  // 0.05f
 					//if (/*whOnRoad[w]*/whMtr > 0 && road)  // on road, add ofs
 					//	vp.y += road->fHeight;	}/**/
 				ndWhE[w]->setPosition(vp);
-				ndWhE[w]->setOrientation(posInfo.rot);
+				//ndWhE[w]->setOrientation(posInfo.rot);  // fixme? upside down
 			}
 			//  const trail alpha
 			float ac = pipe ? 0.f : /*own par..*/lay.smoke < 0.5f ? 0.14f : 0.f;
 			float al = (ac + 0.6f * std::min(1.f, 0.7f * whTemp[w]) ) * onGr;  // par+
+			// al = 1.f;  // test
 			if (whTrail[w])
 			{	whTrail[w]->setInitialColour(0,
 				lay.tcl.x, lay.tcl.y, lay.tcl.z, lay.tcl.w * al/**/);

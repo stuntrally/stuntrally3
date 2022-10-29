@@ -192,17 +192,19 @@ namespace Ogre
 
         LogO("Ter Hmap dim " + toStr(m_iWidth)+" x "+ toStr(m_iHeight)+"  "+ toStr(row));
         
-    #if 0  // simple, exact
-        texBox.copyFrom(hfHeight, m_iWidth, m_iHeight, bytesRow );
-    #else
-        int a = 0;  // SR  Hmap  fix 1025 to 1024,  and flip
-        for (int y=0; y < m_iHeight; ++y)
-        for (int x=0; x < m_iWidth; ++x)
-            m_heightMap[a++] = hfHeight[x + (m_iHeight-1-y) * (m_iWidth+1)];
-            // m_heightMap[a++] = 10.f + 10.f * sin(x*0.01) * cos(y*0.02);  // test
-        
-        texBox.copyFrom( &m_heightMap[0], m_iWidth, m_iHeight, m_iWidth * sizeof(float) );
-    #endif
+        // simple, exact
+        if (m_iHeight == row)
+        {
+            texBox.copyFrom( &hfHeight[0], m_iWidth, m_iHeight, row * m_iWidth * sizeof(float) );
+        }else
+        {   int a = 0;  // SR  Hmap  fix 1025 to 1024,  and flip
+            for (int y=0; y < m_iHeight; ++y)
+            for (int x=0; x < m_iWidth; ++x)
+                m_heightMap[a++] = hfHeight[x + (m_iHeight-1-y) * row];
+                // m_heightMap[a++] = 10.f + 10.f * sin(x*0.01) * cos(y*0.02);  // test
+            
+            texBox.copyFrom( &m_heightMap[0], m_iWidth, m_iHeight, m_iWidth * sizeof(float) );
+        }
 
         stagingTexture->stopMapRegion();
         stagingTexture->upload( texBox, m_heightMapTex, 0, 0, 0 );
