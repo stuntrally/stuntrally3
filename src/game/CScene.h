@@ -5,9 +5,7 @@
 // #include <OgreVector4.h>
 #include <OgreString.h>
 // #include <OgreTexture.h>
-// #include <OgreShadowCameraSetup.h>
 
-// namespace Forests {  class PagedGeometry;  }
 namespace Ogre  {  class Terrain;  class TerrainGlobalOptions;  class TerrainGroup;  class StaticGeometry;
 	class Light;  class SceneNode;  class Camera;  class Texture;  class SceneManager;  class Entity;
 	class Rectangle2D;  class RenderTexture;  class Viewport;  class Root;  class ParticleSystem; }
@@ -24,7 +22,7 @@ public:
 	void destroyScene();
 
 
-	//  Shadows
+	//  Shadows-
 	// void changeShadows(), UpdShaderParams(), UpdPaceParams(), UpdPSSMMaterials();
 	// Ogre::Vector4 splitPoints;
 	// Ogre::ShadowCameraSetupPtr mPSSMSetup;

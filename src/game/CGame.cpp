@@ -2,28 +2,24 @@
 #include "CGame.h"
 // #include "CHud.h"
 // #include "CGui.h"
-#include "common/Def_Str.h"
-// #include "common/RenderConst.h"
-// #include "common/GuiCom.h"
+#include "Def_Str.h"
+// #include "RenderConst.h"
+// #include "GuiCom.h"
 #include "CData.h"
 #include "SceneXml.h"
 #include "CScene.h"
-#include "../vdrift/cardefs.h"
-#include "../vdrift/game.h"
-// #include "../road/Road.h"
+#include "cardefs.h"
+#include "game.h"
+
+#include "CarModel.h"
+// #include "Road.h"
 // #include "SplitScreen.h"
-// #include "../paged-geom/PagedGeometry.h"
-// #include "common/WaterRTT.h"
-// #include "common/MultiList2.h"
-// #include "common/Gui_Popup.h"
+// #include "WaterRTT.h"
+// #include "MultiList2.h"
+// #include "Gui_Popup.h"
 #include "Axes.h"
-// #include <OgreTerrain.h>
-// #include <OgreTerrainGroup.h>
-// #include <OgreTerrainPaging.h>
-// #include <OgrePageManager.h>
 // #include <OgreManualObject.h>
 // #include <OgreTechnique.h>
-// #include "../shiny/Platforms/Ogre/OgreMaterial.hpp"
 // #include "../ogre/common/RenderBoxScene.h"
 using namespace Ogre;
 
@@ -144,7 +140,6 @@ void App::destroyScene()
 	if (pGame)
 		pGame->End();
 	
-	delete[] scn->sc->td.hfHeight;
 	delete[] blendMtr;  blendMtr = 0;
 
 	// BaseApp::destroyScene();

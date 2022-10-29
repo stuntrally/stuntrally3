@@ -1,15 +1,15 @@
 #include "pch.h"
-#include "../vdrift/par.h"
+#include "par.h"
 #include "common/Def_Str.h"
 #include "FollowCamera.h"
 #include "settings.h"
 
 #include "tinyxml2.h"
-#include "../vdrift/pathmanager.h"
-#include "../vdrift/mathvector.h"
+#include "pathmanager.h"
+#include "mathvector.h"
 // ray cast
-#include "../vdrift/collision_contact.h"
-#include "../vdrift/collision_world.h"
+#include "collision_contact.h"
+#include "collision_world.h"
 // #include "../btOgre/BtOgreDebug.h"
 #include "btBulletCollisionCommon.h"
 #include "CarPosInfo.h"
@@ -17,7 +17,6 @@
 #include <Ogre.h>
 // #include <OgreCamera.h>
 // #include <OgreSceneNode.h>
-// #include <OgreTerrainGroup.h>
 // #include <OgreVector3.h>
 
 // #if OGRE_VERSION_MAJOR >= 13

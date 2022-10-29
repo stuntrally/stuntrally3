@@ -9,7 +9,6 @@
 #include "OgrePrerequisites.h"
 #include "mathvector.h"
 #include "quaternion.h"
-// #include "../shiny/Main/MaterialInstance.hpp"
 #include "cardefs.h"
 #include "CarPosInfo.h"
 

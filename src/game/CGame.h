@@ -1,19 +1,17 @@
 #pragma once
 #include "settings.h"
-// #include "common/Gui_Def.h"
+// #include "Gui_Def.h"
 // #include "BaseApp.h"
 // #include "Replay.h"
 // #include "ReplayTrk.h"
-#include "../vdrift/cardefs.h"
+#include "cardefs.h"
 #include "CarPosInfo.h"
 // #include "OgreTextureGpu.h"
 
-// #include <boost/thread.hpp>
 // #include <OgreShadowCameraSetup.h>
-// #include "../shiny/Main/Factory.hpp"
 // #include "../network/networkcallbacks.hpp"
 // #include "../oics/ICSChannelListener.h"
-// #include "common/PreviewTex.h"
+// #include "PreviewTex.h"
 
 
 namespace Ogre {  class SceneNode;  class SceneManager;  class TextureGpu;  }
