@@ -41,25 +41,25 @@ namespace Demo
         vegetLayers.clear();   //  OgreMeshTool args
         // sc min, max, dens, down
         vegetLayers.emplace_back(VegetLayer("jungle_tree-lod8.mesh",
-            3.0f, 5.0f, 10.f, -0.1f, 5000, 0 ));  //  -v2 -l 10 -d 100 -p 11 jungle_tree.mesh
+            3.0f, 5.0f, 20.f, -0.1f, 500, 0 ));  //  -v2 -l 10 -d 100 -p 11 jungle_tree.mesh
         vegetLayers.emplace_back(VegetLayer("palm2-lod8.mesh",
-            7.5f,12.5f, 8.f,  -0.1f, 5000, 0 ));  //  -v2 -l 8 -d 200 -p 10 palm2.mesh
+            7.5f,12.5f, 18.f,  -0.1f, 500, 0 ));  //  -v2 -l 8 -d 200 -p 10 palm2.mesh
 
         vegetLayers.emplace_back(VegetLayer("plant_tropical-lod6.mesh",
-            4.5f, 7.5f, 30.f, -0.1f, 1000, 0 ));  //  -v2 -l 6 -d 200 -p 15 plant_tropical.mesh
-        vegetLayers.emplace_back(VegetLayer("fern-lod6.mesh",
-            0.6f, 1.0f, 55.f, 0.0f, 600, 0 ));  //  -v2 -l 6 -d 200 -p 15 fern.mesh
+            4.5f, 7.5f, 20.f, -0.1f, 300, 0 ));  //  -v2 -l 6 -d 200 -p 15 plant_tropical.mesh
+        // vegetLayers.emplace_back(VegetLayer("fern-lod6.mesh",
+        //     0.6f, 1.0f, 55.f, 0.0f, 400, 0 ));  //  -v2 -l 6 -d 200 -p 15 fern.mesh
         vegetLayers.emplace_back(VegetLayer("fern2-lod6.mesh",
-            0.6f, 1.0f, 50.f, 0.0f, 600, 0 ));  //  -v2 -l 8 -d 200 -p 10 palm2.mesh
+            0.8f, 1.2f, 30.f, 0.0f, 300, 0 ));  //  -v2 -l 8 -d 200 -p 10 palm2.mesh
 
-        vegetLayers.emplace_back(VegetLayer("rock02brown2flat.mesh",
-            1.1f, 5.0f, 5.0f, 0.0f, 3000, 1 ));  //  -v2 -l 6 -d 200 -p 15 rock*.mesh
+        // vegetLayers.emplace_back(VegetLayer("rock02brown2flat.mesh",
+        //     1.1f, 5.0f, 5.0f, 0.0f, 3000, 1 ));  //  -v2 -l 6 -d 200 -p 15 rock*.mesh
         vegetLayers.emplace_back(VegetLayer("rock25dark2Harsh2.mesh",
-            0.6f, 3.0f, 5.0f, 0.0f, 3000, 1 ));
+            0.6f, 3.0f, 5.0f, 0.0f, 400, 1 ));
         vegetLayers.emplace_back(VegetLayer("rock30grayGreen.mesh",
-            2.1f, 6.0f, 5.0f, 0.0f, 3000, 1 ));
-        vegetLayers.emplace_back(VegetLayer("rock37brGr1tall.mesh",
-            1.1f, 3.0f, 5.0f, 0.0f, 3000, 1 ));
+            2.1f, 6.0f, 5.0f, 0.0f, 400, 1 ));
+        // vegetLayers.emplace_back(VegetLayer("rock37brGr1tall.mesh",
+        //     1.1f, 3.0f, 5.0f, 0.0f, 3000, 1 ));
         // vegetLayers.emplace_back(VegetLayer("rock18black3.mesh",
         //     1.6f,7.f, 5.f ));
         // vegetLayers.emplace_back(VegetLayer("rock_B02.mesh",
@@ -86,7 +86,7 @@ namespace Demo
 		
         for (auto& lay : vegetLayers)
         {
-            int cnt = mult * lay.density * 200.f;  // count, fake..
+            int cnt = mult * lay.density * 10.f;  // count, fake..
             for (int i=0; i < cnt; ++i)
             {
                 ++lay.count;
@@ -103,7 +103,7 @@ namespace Demo
                 }
                 //item->setDatablock( "pine2norm" );
                 item->setRenderQueueGroup( 200 );  // after terrain
-                item->setRenderingDistance( lay.visFar );  // how far visible
+                item->setRenderingDistance( lay.visFar );  // how far visible  //par * scale..
 				vegetItems.push_back(item);
 
 				//  Node  ----
@@ -121,7 +121,6 @@ namespace Demo
                 if (mTerra)
                     mTerra->getHeightAt( objPos );
                 objPos.y += std::min( item->getLocalAabb().getMinimum().y, Real(0.0f) ) * -0.1f + lay.down;  //par
-                objPos.y -= 11.f;  //par ..
                 node->setPosition( objPos );
                 
                 //  rot
