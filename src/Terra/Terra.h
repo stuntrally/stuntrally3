@@ -69,20 +69,21 @@ namespace Ogre
             Camera const *m_camera;
         };
 
-        std::vector<float>          m_heightMap;
-        uint32                      m_width;
-        uint32                      m_depth; //PNG's Height
-        float                       m_depthWidthRatio;
-        float                       m_skirtSize; // Already unorm scaled
-        float                       m_invWidth;
-        float                       m_invDepth;
+        std::vector<float>  m_heightMap;
+        uint32      m_iWidth;
+        uint32      m_iHeight;
+
+        float       m_depthWidthRatio;
+        float       m_skirtSize; // Already unorm scaled
+        float       m_invWidth;
+        float       m_invDepth;
 
         bool m_zUp;
 
         Vector2     m_xzDimensions;
         Vector2     m_xzInvDimensions;
         Vector2     m_xzRelativeSize; // m_xzDimensions / [m_width, m_height]
-        float       m_height;
+        float       m_fHeightMul;
         float       m_heightUnormScaled; // m_height / 1 or m_height / 65535
         Vector3     m_terrainOrigin;
         uint32      m_basePixelDimension;
@@ -125,13 +126,13 @@ namespace Ogre
     protected:
         void destroyHeightmapTexture();
 
-        /// Creates the Ogre texture based on the image data.
-        /// Called by @see createHeightmap
-        void createHeightmapTexture( const Image2 &image, const String &imageName );
-
-        /// Calls createHeightmapTexture, loads image data to our CPU-side buffers
-        void createHeightmap( Image2 &image, const String &imageName, bool bMinimizeMemoryConsumption,
-                              bool bLowResShadow );
+        /// Creates the Ogre texture based on heightmap float array.
+        void createHeightmap(
+            int width, int height,
+            std::vector<float> hfHeight, int row,
+            bool bMinimizeMemoryConsumption, bool bLowResShadow );
+        void createHeightmapTexture(
+            std::vector<float> hfHeight, int row );
 
         void createNormalTexture();
         void destroyNormalTexture();
@@ -209,9 +210,8 @@ namespace Ogre
         @param bLowResShadow
             See ShadowMapper::createShadowMap
         */
-        void load( const String &texName, const Vector3 &center, const Vector3 &dimensions,
-                   bool bMinimizeMemoryConsumption, bool bLowResShadow );
-        void load( Image2 &image, Vector3 center, Vector3 dimensions, bool bMinimizeMemoryConsumption,
+        void load( int width, int height, std::vector<float> hfHeight, int row,
+                   Vector3 center, Vector3 dimensions, bool bMinimizeMemoryConsumption,
                    bool bLowResShadow, const String &imageName = BLANKSTRING );
 
         /** Gets the interpolated height at the given location.
@@ -251,7 +251,7 @@ namespace Ogre
         // These are always in Y-up space
         const Vector2& getXZDimensions() const      { return m_xzDimensions; }
         const Vector2& getXZInvDimensions() const   { return m_xzInvDimensions; }
-        float getHeight() const                     { return m_height; }
+        float getHeightMul() const                  { return m_fHeightMul; }
         const Vector3& getTerrainOriginRaw() const  { return m_terrainOrigin; }
 
         /// Return value is in client-space (i.e. could be y- or z-up)

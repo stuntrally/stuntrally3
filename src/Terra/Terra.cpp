@@ -44,6 +44,7 @@ THE SOFTWARE.
 #include "OgreStagingTexture.h"
 #include "OgreTechnique.h"
 #include "OgreTextureGpuManager.h"
+#include "Def_Str.h"
 
 namespace Ogre
 {
@@ -70,8 +71,8 @@ namespace Ogre
                   uint8 renderQueueId, CompositorManager2 *compositorManager, Camera *camera,
                   bool zUp ) :
         MovableObject( id, objectMemoryManager, sceneManager, renderQueueId ),
-        m_width( 0u ),
-        m_depth( 0u ),
+        m_iWidth( 0u ),
+        m_iHeight( 0u ),
         m_depthWidthRatio( 1.0f ),
         m_skirtSize( 10.0f ),
         m_invWidth( 1.0f ),
@@ -80,7 +81,7 @@ namespace Ogre
         m_xzDimensions( Vector2::UNIT_SCALE ),
         m_xzInvDimensions( Vector2::UNIT_SCALE ),
         m_xzRelativeSize( Vector2::UNIT_SCALE ),
-        m_height( 1.0f ),
+        m_fHeightMul( 1.0f ),
         m_heightUnormScaled( 1.0f ),
         m_terrainOrigin( Vector3::ZERO ),
         m_basePixelDimension( 256u ),
@@ -158,54 +159,51 @@ namespace Ogre
     }
 
     //-----------------------------------------------------------------------------------
-    void Terra::createHeightmapTexture( const Ogre::Image2 &image, const String &imageName )
+    void Terra::createHeightmapTexture(
+        std::vector<float> hfHeight, int row)
     {
         destroyHeightmapTexture();
 
-        if( image.getPixelFormat() != PFG_R8_UNORM &&
-            image.getPixelFormat() != PFG_R16_UNORM &&
-            image.getPixelFormat() != PFG_R32_FLOAT )
-        {
-            OGRE_EXCEPT( Exception::ERR_INVALIDPARAMS,
-                         "Texture " + imageName + "must be greyscale 8 bpp, 16 bpp, or 32-bit Float",
-                         "Terra::createHeightmapTexture" );
-        }
-
-        //const uint8 numMipmaps = image.getNumMipmaps();
 
         TextureGpuManager *textureManager =
-                mManager->getDestinationRenderSystem()->getTextureGpuManager();
-        m_heightUnormScaled = m_height;
-        PixelFormatGpu pixelFormat = image.getPixelFormat();
-#if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
-        // Many Android GPUs don't support PFG_R16_UNORM so we scale it by hand
-        if( pixelFormat == PFG_R16_UNORM &&
-            !textureManager->checkSupport( PFG_R16_UNORM, TextureTypes::Type2D, 0 ) )
-        {
-            pixelFormat = PFG_R16_UINT;
-            m_heightUnormScaled /= 65535.0f;
-        }
-#endif
+            mManager->getDestinationRenderSystem()->getTextureGpuManager();
+        m_heightUnormScaled = m_fHeightMul;
+
+        PixelFormatGpu pixelFormat = PFG_R32_FLOAT;
+
+        // Many Android GPUs don't support PFG_R16_UNORM so we scale it by hand,  // nope
 
         m_heightMapTex = textureManager->createTexture(
-                             "HeightMapTex" + StringConverter::toString( getId() ),
-                             GpuPageOutStrategy::SaveToSystemRam,
-                             TextureFlags::ManualTexture,
-                             TextureTypes::Type2D );
-        m_heightMapTex->setResolution( image.getWidth(), image.getHeight() );
+            "HeightMapTex" + StringConverter::toString( getId() ),
+            GpuPageOutStrategy::SaveToSystemRam,
+            TextureFlags::ManualTexture,
+            TextureTypes::Type2D );
+        m_heightMapTex->setResolution( m_iWidth, m_iHeight );
         m_heightMapTex->setPixelFormat( pixelFormat );
         m_heightMapTex->scheduleTransitionTo( GpuResidency::Resident );
 
-        StagingTexture *stagingTexture = textureManager->getStagingTexture( image.getWidth(),
-                                                                            image.getHeight(),
-                                                                            1u, 1u,
-                                                                            pixelFormat );
-        stagingTexture->startMapRegion();
-        TextureBox texBox = stagingTexture->mapRegion( image.getWidth(), image.getHeight(), 1u, 1u,
-                                                       pixelFormat );
 
-        //for( uint8 mip=0; mip<numMipmaps; ++mip )
-        texBox.copyFrom( image.getData( 0 ) );
+        //**  fill Hmap tex
+        StagingTexture *stagingTexture = textureManager->getStagingTexture(
+            m_iWidth, m_iHeight, 1u, 1u, pixelFormat );
+        stagingTexture->startMapRegion();
+        TextureBox texBox = stagingTexture->mapRegion(
+            m_iWidth, m_iHeight, 1u, 1u, pixelFormat );
+
+        LogO("Ter Hmap dim " + toStr(m_iWidth)+" x "+ toStr(m_iHeight)+"  "+ toStr(row));
+        
+    #if 0  // simple, exact
+        texBox.copyFrom(hfHeight, m_iWidth, m_iHeight, bytesRow );
+    #else
+        int a = 0;  // SR  Hmap  fix 1025 to 1024,  and flip
+        for (int y=0; y < m_iHeight; ++y)
+        for (int x=0; x < m_iWidth; ++x)
+            m_heightMap[a++] = hfHeight[x + (m_iHeight-1-y) * (m_iWidth+1)];
+            // m_heightMap[a++] = 10.f + 10.f * sin(x*0.01) * cos(y*0.02);  // test
+        
+        texBox.copyFrom( &m_heightMap[0], m_iWidth, m_iHeight, m_iWidth * sizeof(float) );
+    #endif
+
         stagingTexture->stopMapRegion();
         stagingTexture->upload( texBox, m_heightMapTex, 0, 0, 0 );
         textureManager->removeStagingTexture( stagingTexture );
@@ -213,61 +211,23 @@ namespace Ogre
     }
 
     //-----------------------------------------------------------------------------------
-    void Terra::createHeightmap( Image2 &image, const String &imageName, bool bMinimizeMemoryConsumption,
-                                 bool bLowResShadow )
+    void Terra::createHeightmap(
+            int width, int height, std::vector<float> hfHeight, int row,
+            bool bMinimizeMemory, bool bLowResShadow )
     {
-        m_width = image.getWidth();
-        m_depth = image.getHeight();
-        m_depthWidthRatio = m_depth / (float)(m_width);
-        m_invWidth = 1.0f / m_width;
-        m_invDepth = 1.0f / m_depth;
+        m_iWidth = width;
+        m_iHeight = height;
+        m_depthWidthRatio = m_iHeight / (float)(m_iWidth);
+        m_invWidth = 1.0f / m_iWidth;
+        m_invDepth = 1.0f / m_iHeight;
 
-        //image.generateMipmaps( false, Image::FILTER_NEAREST );
+        m_heightMap.resize( m_iWidth * m_iHeight );
 
-        createHeightmapTexture( image, imageName );
+        createHeightmapTexture( hfHeight, row );
 
-        m_heightMap.resize( m_width * m_depth );
-
-        float fBpp = (float)(PixelFormatGpuUtils::getBytesPerPixel( image.getPixelFormat() ) << 3u);
-        const float maxValue = powf( 2.0f, fBpp ) - 1.0f;
-        const float invMaxValue = 1.0f / maxValue;
-
-        if( image.getPixelFormat() == PFG_R8_UNORM )
-        {
-            for( uint32 y=0; y<m_depth; ++y )
-            {
-                TextureBox texBox = image.getData(0);
-                const uint8 * RESTRICT_ALIAS data =
-                        reinterpret_cast<uint8*RESTRICT_ALIAS>( texBox.at( 0, y, 0 ) );
-                for( uint32 x=0; x<m_width; ++x )
-                    m_heightMap[y * m_width + x] = (data[x] * invMaxValue) * m_height;
-            }
-        }
-        else if( image.getPixelFormat() == PFG_R16_UNORM )
-        {
-            TextureBox texBox = image.getData(0);
-            for( uint32 y=0; y<m_depth; ++y )
-            {
-                const uint16 * RESTRICT_ALIAS data =
-                        reinterpret_cast<uint16*RESTRICT_ALIAS>( texBox.at( 0, y, 0 ) );
-                for( uint32 x=0; x<m_width; ++x )
-                    m_heightMap[y * m_width + x] = (data[x] * invMaxValue) * m_height;
-            }
-        }
-        else if( image.getPixelFormat() == PFG_R32_FLOAT )
-        {
-            TextureBox texBox = image.getData(0);
-            for( uint32 y=0; y<m_depth; ++y )
-            {
-                const float * RESTRICT_ALIAS data =
-                        reinterpret_cast<float*RESTRICT_ALIAS>( texBox.at( 0, y, 0 ) );
-                for( uint32 x=0; x<m_width; ++x )
-                    m_heightMap[y * m_width + x] = data[x] * m_height;
-            }
-        }
-
-        m_xzRelativeSize = m_xzDimensions / Vector2( static_cast<Real>(m_width),
-                                                     static_cast<Real>(m_depth) );
+        
+        m_xzRelativeSize = m_xzDimensions / Vector2( static_cast<Real>(m_iWidth),
+                                                     static_cast<Real>(m_iHeight) );
 
         createNormalTexture();
 
@@ -276,11 +236,12 @@ namespace Ogre
         delete m_shadowMapper;
         m_shadowMapper = new ShadowMapper( mManager, m_compositorManager );
         m_shadowMapper->_setSharedResources( m_sharedResources );
-        m_shadowMapper->setMinimizeMemoryConsumption( bMinimizeMemoryConsumption );
+        m_shadowMapper->setMinimizeMemoryConsumption( bMinimizeMemory );
         m_shadowMapper->createShadowMap( getId(), m_heightMapTex, bLowResShadow );
 
         calculateOptimumSkirtSize();
     }
+
 
     //-----------------------------------------------------------------------------------
     void Terra::createNormalTexture()
@@ -292,6 +253,7 @@ namespace Ogre
         m_normalMapTex = textureManager->createTexture(
             "NormalMapTex_" + StringConverter::toString( getId() ), GpuPageOutStrategy::SaveToSystemRam,
             TextureFlags::ManualTexture, TextureTypes::Type2D );
+        
         m_normalMapTex->setResolution( m_heightMapTex->getWidth(), m_heightMapTex->getHeight() );
         m_normalMapTex->setNumMipmaps( PixelFormatGpuUtils::getMaxMipmapCount(
             m_normalMapTex->getWidth(), m_normalMapTex->getHeight() ) );
@@ -300,9 +262,7 @@ namespace Ogre
                 TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps ) )
         {
             m_normalMapTex->setPixelFormat( PFG_R10G10B10A2_UNORM );
-        }
-        else
-        {
+        }else{
             m_normalMapTex->setPixelFormat( PFG_RGBA8_UNORM );
         }
         m_normalMapTex->scheduleTransitionTo( GpuResidency::Resident );
@@ -324,8 +284,8 @@ namespace Ogre
             Vector3( m_xzRelativeSize.x, m_heightUnormScaled, m_xzRelativeSize.y ).normalisedCopy();
 
         GpuProgramParametersSharedPtr psParams = pass->getFragmentProgramParameters();
-        psParams->setNamedConstant( "heightMapResolution", Vector4( static_cast<Real>( m_width ),
-                                                                    static_cast<Real>( m_depth ),
+        psParams->setNamedConstant( "heightMapResolution", Vector4( static_cast<Real>( m_iWidth ),
+                                                                    static_cast<Real>( m_iHeight ),
                                                                     1, 1 ) );
         psParams->setNamedConstant( "vScale", vScale );
 
@@ -374,43 +334,43 @@ namespace Ogre
         const uint32 basePixelDimension = m_basePixelDimension;
         const uint32 vertPixelDimension = static_cast<uint32>(m_basePixelDimension * m_depthWidthRatio);
 
-        for( size_t y=vertPixelDimension-1u; y<m_depth-1u; y += vertPixelDimension )
+        for( size_t y=vertPixelDimension-1u; y<m_iHeight-1u; y += vertPixelDimension )
         {
             const size_t ny = y + 1u;
 
             bool allEqualInLine = true;
-            float minHeight = m_heightMap[y * m_width];
-            for( size_t x=0; x<m_width; ++x )
+            float minHeight = m_heightMap[y * m_iWidth];
+            for( size_t x=0; x<m_iWidth; ++x )
             {
-                const float minValue = std::min( m_heightMap[y * m_width + x],
-                                                  m_heightMap[ny * m_width + x] );
+                const float minValue = std::min( m_heightMap[y * m_iWidth + x],
+                                                  m_heightMap[ny * m_iWidth + x] );
                 minHeight = std::min( minValue, minHeight );
-                allEqualInLine &= m_heightMap[y * m_width + x] == m_heightMap[ny * m_width + x];
+                allEqualInLine &= m_heightMap[y * m_iWidth + x] == m_heightMap[ny * m_iWidth + x];
             }
 
             if( !allEqualInLine )
                 m_skirtSize = std::min( minHeight, m_skirtSize );
         }
 
-        for( size_t x=basePixelDimension-1u; x<m_width-1u; x += basePixelDimension )
+        for( size_t x=basePixelDimension-1u; x<m_iWidth-1u; x += basePixelDimension )
         {
             const size_t nx = x + 1u;
 
             bool allEqualInLine = true;
             float minHeight = m_heightMap[x];
-            for( size_t y=0; y<m_depth; ++y )
+            for( size_t y=0; y<m_iHeight; ++y )
             {
-                const float minValue = std::min( m_heightMap[y * m_width + x],
-                                                  m_heightMap[y * m_width + nx] );
+                const float minValue = std::min( m_heightMap[y * m_iWidth + x],
+                                                  m_heightMap[y * m_iWidth + nx] );
                 minHeight = std::min( minValue, minHeight );
-                allEqualInLine &= m_heightMap[y * m_width + x] == m_heightMap[y * m_width + nx];
+                allEqualInLine &= m_heightMap[y * m_iWidth + x] == m_heightMap[y * m_iWidth + nx];
             }
 
             if( !allEqualInLine )
                 m_skirtSize = std::min( minHeight, m_skirtSize );
         }
 
-        m_skirtSize /= m_height;
+        m_skirtSize /= m_fHeightMul;
 
         // Many Android GPUs don't support PFG_R16_UNORM so we scale it by hand
         if( m_heightMapTex->getPixelFormat() == PFG_R16_UINT )
@@ -420,8 +380,8 @@ namespace Ogre
     inline GridPoint Terra::worldToGrid( const Vector3 &vPos ) const
     {
         GridPoint retVal;
-        const float fWidth = static_cast<float>( m_width );
-        const float fDepth = static_cast<float>( m_depth );
+        const float fWidth = static_cast<float>( m_iWidth );
+        const float fDepth = static_cast<float>( m_iHeight );
 
         const float fX = floorf( ((vPos.x - m_terrainOrigin.x) * m_xzInvDimensions.x) * fWidth );
         const float fZ = floorf( ((vPos.z - m_terrainOrigin.z) * m_xzInvDimensions.y) * fDepth );
@@ -434,8 +394,8 @@ namespace Ogre
     inline Vector2 Terra::gridToWorld( const GridPoint &gPos ) const
     {
         Vector2 retVal;
-        const float fWidth = static_cast<float>( m_width );
-        const float fDepth = static_cast<float>( m_depth );
+        const float fWidth = static_cast<float>( m_iWidth );
+        const float fDepth = static_cast<float>( m_iHeight );
 
         retVal.x = (gPos.x / fWidth) * m_xzDimensions.x + m_terrainOrigin.x;
         retVal.y = (gPos.z / fDepth) * m_xzDimensions.y + m_terrainOrigin.z;
@@ -445,8 +405,10 @@ namespace Ogre
     //-----------------------------------------------------------------------------------
     bool Terra::isVisible( const GridPoint &gPos, const GridPoint &gSize ) const
     {
-        if( gPos.x >= static_cast<int32>( m_width ) ||
-            gPos.z >= static_cast<int32>( m_depth ) ||
+        // return true;
+
+        if( gPos.x >= static_cast<int32>( m_iWidth ) ||
+            gPos.z >= static_cast<int32>( m_iHeight ) ||
             gPos.x + gSize.x <= 0 ||
             gPos.z + gSize.z <= 0 )
         {
@@ -454,13 +416,13 @@ namespace Ogre
             return false;
         }
 
-//        return true;
+       return true;  //** temp fix bug
 
         const Vector2 cellPos = gridToWorld( gPos );
         const Vector2 cellSize( (gSize.x + 1u) * m_xzRelativeSize.x,
                                 (gSize.z + 1u) * m_xzRelativeSize.y );
 
-        const Vector3 vHalfSizeYUp = Vector3( cellSize.x, m_height, cellSize.y ) * 0.5f;
+        const Vector3 vHalfSizeYUp = Vector3( cellSize.x, m_fHeightMul, cellSize.y ) * 0.5f;
         const Vector3 vCenter =
             fromYUp( Vector3( cellPos.x, m_terrainOrigin.y, cellPos.y ) + vHalfSizeYUp );
         const Vector3 vHalfSize = fromYUpSignPreserving( vHalfSizeYUp );
@@ -545,7 +507,7 @@ namespace Ogre
                     (float)m_prevLightDir.dotProduct( lightDir.normalisedCopy() ), -1.0f, 1.0f );
         if( lightCosAngleChange <= (1.0f - lightEpsilon) )
         {
-            m_shadowMapper->updateShadowMap( toYUp( lightDir ), m_xzDimensions, m_height );
+            m_shadowMapper->updateShadowMap( toYUp( lightDir ), m_xzDimensions, m_fHeightMul );
             m_prevLightDir = lightDir.normalisedCopy();
         }
         //m_shadowMapper->updateShadowMap( Vector3::UNIT_X, m_xzDimensions, m_height );
@@ -593,7 +555,7 @@ namespace Ogre
 
         m_currentCell = 16u; //The first 16 cells don't use skirts.
 
-        const uint32 maxRes = std::max( m_width, m_depth );
+        const uint32 maxRes = std::max( m_iWidth, m_iHeight );
         //TODO: When we're too far (outside the terrain), just display a 4x4 grid or something like that.
 
         size_t numObjectsAdded = std::numeric_limits<size_t>::max();
@@ -608,7 +570,7 @@ namespace Ogre
             cellSize.z <<= 1u;
             
             #if 1  //**  0 for all at lod0, max tris
-            if (currentLod < 5)  //**  par lod max
+            if (currentLod < 3)  //** 5 par lod max
             	++currentLod;
             #endif
 
@@ -668,17 +630,10 @@ namespace Ogre
             optimizeCellsAndAdd();
         }
     }
+    
     //-----------------------------------------------------------------------------------
-    void Terra::load( const String &texName, const Vector3 &center, const Vector3 &dimensions,
-                      bool bMinimizeMemoryConsumption, bool bLowResShadow )
-    {
-        Ogre::Image2 image;
-        image.load( texName, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME );
-
-        load( image, center, dimensions, bMinimizeMemoryConsumption, bLowResShadow, texName );
-    }
-    //-----------------------------------------------------------------------------------
-    void Terra::load( Image2 &image, Vector3 center, Vector3 dimensions, bool bMinimizeMemoryConsumption,
+    void Terra::load( int width, int height, std::vector<float> hfHeight, int row,
+                      Vector3 center, Vector3 dimensions, bool bMinimizeMemoryConsumption,
                       bool bLowResShadow, const String &imageName )
     {
         // Use sign-preserving because origin in XZ plane is always from
@@ -686,12 +641,15 @@ namespace Ogre
         // If we use toYUp, we'll start from top-right and go up and right
         m_terrainOrigin = toYUpSignPreserving( center - dimensions * 0.5f );
         center = toYUp( center );
+        
         dimensions = toYUpSignPreserving( dimensions );
         m_xzDimensions = Vector2( dimensions.x, dimensions.z );
         m_xzInvDimensions = 1.0f / m_xzDimensions;
-        m_height = dimensions.y;
+        m_fHeightMul = dimensions.y;
         m_basePixelDimension = 64u;
-        createHeightmap( image, imageName, bMinimizeMemoryConsumption, bLowResShadow );
+
+        createHeightmap( width, height, hfHeight, row,
+            bMinimizeMemoryConsumption, bLowResShadow );
 
         {
             //Find out how many TerrainCells we need. I think this might be
@@ -700,7 +658,7 @@ namespace Ogre
             const uint32 vertPixelDimension = static_cast<uint32>( m_basePixelDimension *
                                                                    m_depthWidthRatio );
             const uint32 maxPixelDimension = std::max( basePixelDimension, vertPixelDimension );
-            const uint32 maxRes = std::max( m_width, m_depth );
+            const uint32 maxRes = std::max( m_iWidth, m_iHeight );
 
             uint32 numCells = 16u; //4x4
             uint32 accumDim = 0u;
@@ -739,6 +697,7 @@ namespace Ogre
             }
         }
     }
+
     //-----------------------------------------------------------------------------------
     bool Terra::getHeightAt( Vector3 &vPosArg ) const
     {
@@ -748,16 +707,16 @@ namespace Ogre
 
         GridPoint pos2D = worldToGrid( vPos );
 
-        if( pos2D.x < m_width-1 && pos2D.z < m_depth-1 )
+        if( pos2D.x < m_iWidth-1 && pos2D.z < m_iHeight-1 )
         {
             const Vector2 vPos2D = gridToWorld( pos2D );
 
-            const float dx = (vPos.x - vPos2D.x) * m_width * m_xzInvDimensions.x;
-            const float dz = (vPos.z - vPos2D.y) * m_depth * m_xzInvDimensions.y;
+            const float dx = (vPos.x - vPos2D.x) * m_iWidth * m_xzInvDimensions.x;
+            const float dz = (vPos.z - vPos2D.y) * m_iHeight * m_xzInvDimensions.y;
 
             float a, b, c;
-            const float h00 = m_heightMap[ pos2D.z * m_width + pos2D.x ];
-            const float h11 = m_heightMap[ (pos2D.z+1) * m_width + pos2D.x + 1 ];
+            const float h00 = m_heightMap[ pos2D.z * m_iWidth + pos2D.x ];
+            const float h11 = m_heightMap[ (pos2D.z+1) * m_iWidth + pos2D.x + 1 ];
 
             c = h00;
             if( dx < dz )
@@ -766,7 +725,7 @@ namespace Ogre
                 //x=0 z=0 -> c		= h00
                 //x=0 z=1 -> b + c	= h01 -> b = h01 - c
                 //x=1 z=1 -> a + b + c  = h11 -> a = h11 - b - c
-                const float h01 = m_heightMap[ (pos2D.z+1) * m_width + pos2D.x ];
+                const float h01 = m_heightMap[ (pos2D.z+1) * m_iWidth + pos2D.x ];
 
                 b = h01 - c;
                 a = h11 - b - c;
@@ -777,7 +736,7 @@ namespace Ogre
                 //x=0 z=0 -> c		= h00
                 //x=1 z=0 -> a + c	= h10 -> a = h10 - c
                 //x=1 z=1 -> a + b + c  = h11 -> b = h11 - a - c
-                const float h10 = m_heightMap[ pos2D.z * m_width + pos2D.x + 1 ];
+                const float h10 = m_heightMap[ pos2D.z * m_iWidth + pos2D.x + 1 ];
 
                 a = h10 - c;
                 b = h11 - a - c;

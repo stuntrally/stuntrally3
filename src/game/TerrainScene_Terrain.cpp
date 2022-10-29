@@ -28,6 +28,8 @@
 //  SR
 #include "CGame.h"
 #include "CScene.h"
+#include "SceneXml.h"
+#include "SceneClasses.h"
 #include "game.h"
 #include "settings.h"
 #include "ShapeData.h"
@@ -67,24 +69,17 @@ namespace Demo
         LogO("---- Terra load");
 
         //  Heightmap  ------------------------------------------------
-        switch (1)
-        {
-        case 0:  //  64  flat
-            sizeXZ = 12096.f;
-            mTerra->load( "Heightmap64.png", Vector3( 64.0f, 4096.0f * 0.15f, 64.0f), Vector3(sizeXZ, 6096.0f, sizeXZ), false, false);  break;
-        case 1:  //  1k  600 fps  4 tex
-            sizeXZ = 4096.f;
-            mTerra->load( "Heightmap.png", Vector3( 64.0f, 4096.0f * 0.5f, 64.0f), Vector3(sizeXZ, 4096.0f, sizeXZ), false, false);  break;
-        case 2:  //  1k
-            sizeXZ = 1024.f;
-            mTerra->load( "Heightmap.png", Vector3( 64.f, 512.f, 64.f), Vector3(sizeXZ, 1.f, sizeXZ), false, false);  break;
-        case 3:  //  2k
-            sizeXZ = 12096.f;
-            mTerra->load( "Heightmap2c.png", Vector3( 64.0f, 4096.0f * 0.15f, 64.0f), Vector3(sizeXZ, 6096.0f, sizeXZ), false, false);  break;
-        case 4:  //  4k
-            sizeXZ = 2.f* 4096.f;
-            mTerra->load( "Heightmap4.png", Vector3( 64.0f, 4096.0f * 0.5f, 64.0f), Vector3(sizeXZ, 2.f* 4096.0f, sizeXZ), false, false);  break;
-        }
+        sizeXZ = sc->td.fTriangleSize * (sc->td.iVertsX-1);  //sc->td.fTerWorldSize;
+        float ofs = sc->td.fTriangleSize * -0.5f;  // todo: ofs 1025 to 1024 verts
+        LogO("Ter size: " + toStr(sc->td.iVertsX));// +" "+ toStr((sc->td.iVertsX)*sizeof(float))
+
+        mTerra->load(
+            sc->td.iVertsX-1, sc->td.iVertsY-1, 
+            sc->td.hfHeight, sc->td.iVertsX,
+            Vector3( ofs*0.f, 0.45f, -ofs),  //** y?
+            Vector3( sizeXZ, 1.0f, sizeXZ),
+            // true, true);
+            false, false);
 
         SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
         node->attachObject( mTerra );
@@ -120,6 +115,7 @@ namespace Demo
     //-----------------------------------------------------------------------------------------------------------------------------
     void TerrainGame::CreatePlane()
     {
+    #if 0
         sizeXZ = 1000.0f;
         v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
             "Plane v1", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
@@ -142,6 +138,40 @@ namespace Demo
         planeNode = rootNode->createChildSceneNode( SCENE_STATIC );
         planeNode->setPosition( 0, -12.2f, 0 );
         planeNode->attachObject( planeItem );
+    #else
+    // todo ... test center and borders 
+    const int num = 2;  // pos norm up
+    Vector3 pos[num][3] = {
+        {Vector3(0,0,0), Vector3(1,0,0), Vector3(0,1,0) },
+        {Vector3(0,0,0), Vector3(-1,0,0), Vector3(0,-1,0) },
+    };
+    for (int i=0; i < num; ++i)
+    {
+        sizeXZ = sc->td.fTriangleSize * (sc->td.iVertsX-1);
+        v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
+            "Plane v1-"+toStr(i), ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+            Plane( pos[i][1], 1.0f ), sizeXZ, sizeXZ,
+            10, 10, true, 1, 160.f, 160.f, pos[i][2],
+            v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
+
+        planeMesh = MeshManager::getSingleton().createByImportingV1(
+            "Plane-"+toStr(i), ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+            planeMeshV1.get(), true, true, true );
+        
+        planeMeshV1->unload();
+
+        SceneManager *mgr = mGraphicsSystem->getSceneManager();
+        SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
+
+        planeItem = mgr->createItem( planeMesh, SCENE_STATIC );
+        planeItem->setDatablock( "Ground" );
+        planeItem->setCastShadows(false);
+        
+        planeNode = rootNode->createChildSceneNode( SCENE_STATIC );
+        planeNode->setPosition( pos[i][0] );
+        planeNode->attachObject( planeItem );
+    }
+    #endif
     }
 
     void TerrainGame::DestroyPlane()
@@ -236,6 +266,7 @@ namespace Demo
     }
 }
 
+
 //  Bullet Terrain
 //---------------------------------------------------------------------------------------------------------------
 void CScene::CreateBltTerrain()
@@ -245,7 +276,8 @@ void CScene::CreateBltTerrain()
 	// if (terLoad || bNewHmap)
 	{
 		int wx = sc->td.iVertsX, wy = sc->td.iVertsY, wxy = wx * wy;  //wy=wx
-		delete[] sc->td.hfHeight;  sc->td.hfHeight = new float[wxy];
+        sc->td.hfHeight.clear();
+        sc->td.hfHeight.resize(wxy);
 		const int size = wxy * sizeof(float);
 
 		String name = app->TrkDir() + (/*bNewHmap ? "heightmap-new.f32" :*/ "heightmap.f32");
@@ -271,7 +303,8 @@ void CScene::CreateBltTerrain()
 
 
     btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
-        sc->td.iVertsX, sc->td.iVertsY, sc->td.hfHeight, sc->td.fTriangleSize,
+        sc->td.iVertsX, sc->td.iVertsY,
+        &sc->td.hfHeight[0], sc->td.fTriangleSize,
         -1300.f,1300.f, 2, PHY_FLOAT,false);  //par- max height
     
     hfShape->setUseDiamondSubdivision(true);
