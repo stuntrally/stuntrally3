@@ -57,34 +57,31 @@ void CScene::CreateFluids()
 		Plane p;  p.normal = Vector3::UNIT_Y;  p.d = 0;
 		String smesh = "WaterMesh"+toStr(i);
 
-		v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
+		v1::MeshPtr meshV1 = v1::MeshManager::getSingleton().createPlane(
 			smesh, rgDef,
 			p, fb.size.x, fb.size.z,
 			6,6, true, 1,
 			fb.tile.x*fb.size.x, fb.tile.y*fb.size.z, Vector3::UNIT_Z,
 			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 
-		MeshPtr planeMesh = MeshManager::getSingleton().createByImportingV1(
+		MeshPtr mesh = MeshManager::getSingleton().createByImportingV1(
 			"WtrPlane"+toStr(i), rgDef,
-			planeMeshV1.get(), true, true, true );
+			meshV1.get(), true, true, true );
 		
-		planeMeshV1->unload();
+		meshV1->unload();
 
 		SceneManager *mgr = app->mSceneMgr;
 		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 
-		Item* item = mgr->createItem( planeMesh, SCENE_STATIC );
+		Item* item = mgr->createItem( mesh, SCENE_STATIC );
 		String sMtr = fb.id == -1 ? "" : data->fluids->fls[fb.id].material;  //"Water"+toStr(1+fb.type)
+		
 		item->setDatablock( sMtr );  item->setCastShadows( false );
-		item->setRenderQueueGroup( RQG_Fluid );  item->setVisibilityFlags( RV_Terrain );
+		// item->setRenderQueueGroup( RQG_Fluid );  item->setVisibilityFlags( RV_Terrain );
 		
 		SceneNode* node = rootNode->createChildSceneNode( SCENE_STATIC );
 		node->setPosition( fb.pos );  //, Quaternion(Degree(fb.rot.x),Vector3::UNIT_Y)
 		node->attachObject( item );
-
-		/*unsigned short src,dest;  //?
-		if (!mesh->suggestTangentVectorBuildParams(VES_TANGENT, src,dest))
-			mesh->buildTangentVectors(VES_TANGENT, src,dest);*/
 		
 		vFlSMesh.push_back(smesh);  vFlIt.push_back(item);  vFlNd.push_back(node);
 

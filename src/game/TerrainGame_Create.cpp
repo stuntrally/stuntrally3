@@ -127,6 +127,8 @@ track = Test12-Snow
 track = Jng13-Tropic
 track = Jng20-JungleMaze
 track = For12-HighPeaks
+
+track = Tox2-AcidLakes
 track = Jng25-CantorJungle
 track = For18-MountCaro
 track = Isl17-AdapterIslands
