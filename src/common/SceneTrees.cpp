@@ -1,34 +1,34 @@
+#include "OgreCommon.h"
 #include "pch.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
-#include "data/CData.h"
-#include "data/SceneXml.h"
-#include "data/BltObjects.h"
+#include "CData.h"
+#include "SceneXml.h"
+#include "BltObjects.h"
 #include "ShapeData.h"
+
 #include "CScene.h"
-#include "../../road/SplineBase.h"
-#include "GuiCom.h"
+// #include "SplineBase.h"
+// #include "GuiCom.h"
 #ifdef SR_EDITOR
-	#include "../../editor/CApp.h"
-	#include "../../editor/settings.h"
+	#include "CApp.h"
+	#include "settings.h"
 #else
-	#include "../CGame.h"
-	#include "../settings.h"
-	#include "../../vdrift/game.h"
-	#include "../SplitScreen.h"
-	#include "../../btOgre/BtOgreGP.h"
+	#include "CGame.h"
+	#include "settings.h"
+	#include "game.h"
+	// #include "SplitScreen.h"
+	// #include "BtOgreGP.h"
 #endif
-#include "../../vdrift/pathmanager.h"
-#include "../../paged-geom/GrassLoader.h"
-#include "../../paged-geom/BatchPage.h"
-#include "../../paged-geom/WindBatchPage.h"
-#include "../../paged-geom/ImpostorPage.h"
-#include "../../paged-geom/TreeLoader2D.h"
-#include "../../paged-geom/MersenneTwister.h"
-#include <boost/filesystem.hpp>
+#include "pathmanager.h"
+#include "MersenneTwister.h"
+
+// #include <filesystem>
 #include <OgreTimer.h>
-#include <OgreTerrain.h>
-#include <OgreSubMesh.h>
+#include <Ogre.h>
+#include <OgreItem.h>
+
+#include "Terra.h"
 using namespace Ogre;
 
 
@@ -36,19 +36,11 @@ using namespace Ogre;
 ///  Trees  ^ ^ ^ ^
 //---------------------------------------------------------------------------------------------------------------
 
-Terrain* gTerrain = NULL;
-
-inline Real getTerrainHeight(const Real x, const Real z, void *userData)
-{
-	return gTerrain->getHeightAtWorldPosition(x, 0, z);
-}
-
-
 void CScene::DestroyTrees()
 {
-	if (grass) {  delete grass->getPageLoader();  delete grass;  grass=0;   }
+	// if (grass) {  delete grass->getPageLoader();  delete grass;  grass=0;   }
 	LogO("------  # Destroy trees");
-	if (trees) {  delete trees->getPageLoader();  delete trees;  trees=0;   }
+	// if (trees) {  delete trees->getPageLoader();  delete trees;  trees=0;   }
 	LogO("------  # Destroy trees done");
 }
 
@@ -65,30 +57,15 @@ void CScene::RecreateTrees()
 #endif
 }
 
-void CScene::updGrsTer()
-{	gTerrain = terrain;  }
-
-void CScene::UpdCamera()
-{
-	#ifndef SR_EDITOR
-	Camera* cam = app->mSplitMgr->mCameras.front();
-	#else
-	Camera* cam = app->mCamera;
-	#endif
-	if (grass)  grass->setCamera(cam);
-	if (trees)  trees->setCamera(cam);
-}
-
-
 void CScene::CreateTrees()
 {
 	LogO("# CreateTrees()");
 	Ogre::Timer ti;
-	updGrsTer();
+	// updGrsTer();
 		
 	//-------------------------------------- Grass --------------------------------------
 	int imgRoadSize = 0;
-	Image imgRoad;
+	/*Image imgRoad;  //;
 	try{
 		imgRoad.load(String("roadDensity.png"),"General");
 	}catch(...)
@@ -96,42 +73,13 @@ void CScene::CreateTrees()
 	}
 	imgRoadSize = imgRoad.getWidth();  // square[]
 	
-	roadDens.Load(app->gcom->TrkDir()+"objects/roadDensity.png");
+	roadDens.Load(TrkDir()+"objects/roadDensity.png");
 	
 	UpdGrassDens();  //!
+	*/
 	
-	
-	// remove old BinFolder's (paged geom temp resource groups)
-	ResourceGroupManager& resMgr = ResourceGroupManager::getSingleton();
-	try{
-	//LogO("# destroyResourceGroup BinFolder");
-	//resMgr.destroyResourceGroup( "BinFolder" );
-	//LogO("# destroyResourceGroup BinFolder ok");
-	if (resMgr.resourceGroupExists("BinFolder"))
-	{
-		LogO("# resourceGroupExists BinFolder");
-		StringVectorPtr locations = resMgr.listResourceLocations("BinFolder");
-		for (auto it = locations->begin(); it != locations->end(); ++it)
-		{
-			LogO("# removeResourceLocation BinFolder "+(*it));
-			//resMgr.destroyResourceGroup( (*it), "BinFolder" );
-			resMgr.removeResourceLocation( (*it), "BinFolder" );
-		}
-	}
-	}catch (Ogre::Exception&)
-	{	LogO("# impostor destroy BinFolder in CreateTrees");  }
-	
-	std::string sCache = PATHMANAGER::CacheDir() + "/tracks/";
-	#ifndef SR_EDITOR
-	sCache += app->pSet->game.track;
-	#else  // ed
-	sCache += app->pSet->gui.track;
-	#endif
-	
-
-	using namespace Forests;
 	Real tws = sc->td.fTerWorldSize * 0.5f;
-	TBounds tbnd(-tws, -tws, tws, tws);
+	// TBounds tbnd(-tws, -tws, tws, tws);
 	//  pos0 - original  pos - with offset
 	Vector3 pos0 = Vector3::ZERO, pos = Vector3::ZERO;  Radian yaw;
 
@@ -142,27 +90,17 @@ void CScene::CreateTrees()
 	#else
 	Real fTrees = pSet->game.trees * sc->densTrees;
 	#endif
-	#ifndef SR_EDITOR
-	Camera* cam = app->mSplitMgr->mCameras.front();
-	#else
-	Camera* cam = app->mCamera;
-	#endif
+
 	#ifdef CAR_PRV
 	fTrees = 1.0f;
 	fGrass = 1.0f;
 	#endif
 	
+#if 0
 	if (fGrass > 0.f)
 	{
-		grass = new PagedGeometry(cam, sc->grPage);
-		
-		// create dir if not exist
-		boost::filesystem::create_directory(sCache);
-		grass->setTempDir(sCache + "/");
-		
 		grass->addDetailLevel<GrassPage>(sc->grDist * pSet->grass_dist);
 
-		GrassLoader *grassLoader = new Forests::GrassLoader(grass);
 		grassLoader->setRenderQueueGroup(RQG_BatchAlpha);
 		grass->setPageLoader(grassLoader);
 		grassLoader->setHeightFunction(&getTerrainHeight);
@@ -196,43 +134,22 @@ void CScene::CreateTrees()
 		grass->setShadersEnabled(true);
 	}
 	LogO(String("::: Time Grass: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
-	
+#endif
 
 	//---------------------------------------------- Trees ----------------------------------------------
 	if (fTrees > 0.f)
 	{
-		trees = new PagedGeometry(cam, sc->trPage);
-		
-		bool imp = pSet->use_impostors || (!pSet->use_impostors && pSet->impostors_only);
-		
-		// create dir if not exist
-		boost::filesystem::create_directory(sCache);
-		trees->setTempDir(sCache + "/");
+		// if (!pSet->impostors_only)
+		// 	trees->addDetailLevel<WindBatchPage>(sc->trDist * pSet->trees_dist, 0);
+		// 	trees->addDetailLevel<ImpostorPage>(sc->trDistImp * pSet->trees_dist, 0);
+		ResourceGroupManager& resMgr = ResourceGroupManager::getSingleton();
+		SceneManager *mgr = app->mSceneMgr;
+		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 
-		//ImpostorPage* ipg = 0;
-		if (!pSet->impostors_only)
-		{
-			trees->addDetailLevel<WindBatchPage>(sc->trDist * pSet->trees_dist, 0);
-			//trees->addDetailLevel<BatchPage>	 (sc->trDist * pSet->trees_dist, 0);  // no wind
-		}
-		if (imp)
-		{
-			LogO("# addDetailLevel<ImpostorPage");
-			trees->addDetailLevel<ImpostorPage>(sc->trDistImp * pSet->trees_dist, 0);
-			LogO("# addResourceLocation BinFolder");
-			resMgr.addResourceLocation(trees->getTempDir(), "FileSystem", "BinFolder");
-			LogO("# addResourceLocation BinFolder ok");
-		}
-
-		TreeLoader2D* treeLoader = new TreeLoader2D(trees, tbnd);
-		trees->setPageLoader(treeLoader);
-		treeLoader->setHeightFunction(getTerrainHeight/*Around /*,userdata*/);
-		treeLoader->setMaximumScale(4);  //6
-		//treeLoader->setMinimumScale(0.5);  // todo: rescale all meshes, range is spread to only 255 vals!
 		tws = sc->td.fTerWorldSize;
 		int r = imgRoadSize, cntr = 0, cntshp = 0, txy = sc->td.iVertsX*sc->td.iVertsY-1;
 
-		//  set random seed  /// todo: seed in scene.xml and in editor gui...
+		//  set random seed  /// add seed in scene.xml and in editor gui..
 		MTRand rnd((MTRand::uint32)1213);
 		#define getTerPos()		(rnd.rand()-0.5) * sc->td.fTerWorldSize
 
@@ -240,7 +157,7 @@ void CScene::CreateTrees()
 		for (size_t l=0; l < sc->pgLayers.size(); ++l)
 		{
 			PagedLayer& pg = sc->pgLayersAll[sc->pgLayers[l]];
-			String file = pg.name, fpng = file+".png";
+			String file = pg.name;  //, fpng = file+".png";
 			pg.cnt = 0;
 
 			bool found = resMgr.resourceExistsInAnyGroup(file);
@@ -251,13 +168,14 @@ void CScene::CreateTrees()
 				//file = "sphere.mesh";  // if not found, use white sphere
 			}
 
-			Entity* ent = app->mSceneMgr->createEntity(file);
-			ent->setVisibilityFlags(RV_Vegetation);  ///vis+  disable in render targets
-			if (pg.windFx > 0.f)  {
-				trees->setCustomParam(ent->getName(), "windFactorX", pg.windFx);
-				trees->setCustomParam(ent->getName(), "windFactorY", pg.windFy);  }
+			// Item* ent = app->mSceneMgr->createItem(file);
+			// ent->setVisibilityFlags(RV_Vegetation);  ///vis+  disable in render targets
+			// if (pg.windFx > 0.f)  {
+			// 	trees->setCustomParam(ent->getName(), "windFactorX", pg.windFx);
+			// 	trees->setCustomParam(ent->getName(), "windFactorY", pg.windFy);  }
 
-			#if 1  // log info
+
+			#if 0  // log info
 			const MeshPtr& msh = ent->getMesh();
 			int tris=0, subs = msh->getNumSubMeshes();
 			for (int i=0; i < subs; ++i)
@@ -267,24 +185,6 @@ void CScene::CreateTrees()
 			}
 			LogO("TREE info:  "+file+"\t sub: "+toStr(subs)+"  tri: "+fToStr(tris/1000.f,1,4)+"k");
 			#endif
-
-
-			if (imp && found)  /// preload impostor textures
-			{
-				if (!resMgr.resourceExistsInAnyGroup(fpng))
-				{
-					ImpostorPage group(app->mSceneMgr, trees);
-					ImpostorTexture* it = new ImpostorTexture(&group, ent, true);  // only to renderTextures()
-					delete it;
-				}
-				try
-				{	TextureManager::getSingleton().load(fpng, "BinFolder", TEX_TYPE_2D, MIP_UNLIMITED);  ///T png first
-				}
-				catch (Exception&)
-				{
-					LogO("## Veget impostor, Can't load: "+fpng);
-				}
-			}
 
 
 			///  collision object
@@ -315,6 +215,7 @@ void CScene::CreateTrees()
 				vo.y = ofs.x * syr + ofs.y * cyr;
 				pos.x += vo.x * scl;  pos.z += vo.y * scl;
 				
+			#if 0
 				//  check if on road - uses roadDensity.png
 				if (r > 0)  //  ----------------
 				{
@@ -350,16 +251,17 @@ void CScene::CreateTrees()
 						add = false;
 				}
 				if (!add)  continue;  //
+			#endif
 
-				//  check ter angle  ------------
-				float ang = TerUtil::GetAngleAt(terrain, pos.x, pos.z, sc->td.fTriangleSize);
+				//;  check ter angle  ------------
+				/*float ang = terrain->GetAngleAt(pos.x, pos.z, sc->td.fTriangleSize);
 				if (ang > pg.maxTerAng)
-					add = false;
+					add = false;*/
 
 				if (!add)  continue;  //
 
 				//  check ter height  ------------
-				pos.y = terrain->getHeightAtWorldPosition(pos.x, 0, pos.z);
+				terrain->getHeightAt(pos);
 				if (pos.y < pg.minTerH || pos.y > pg.maxTerH)
 					add = false;				
 				
@@ -372,8 +274,17 @@ void CScene::CreateTrees()
 				
 				if (!add)  continue;  //
 
-				//  add
-				treeLoader->addTree(ent, pos0, yaw, scl);
+
+				//  add  **************
+				Item *item = mgr->createItem( file,
+					ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
+				item->setVisibilityFlags(RV_Vegetation);
+
+				SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
+				node->attachObject( item );
+				
+				// node->scale( s, s, s );
+				// treeLoader->addTree(ent, pos0, yaw, scl);
 				++pg.cnt;  ++cntr;  // count stats
 					
 				
@@ -399,7 +310,7 @@ void CScene::CreateTrees()
 					pos.x += vo.x * scl;  pos.z += vo.y * scl;
 
 					//  apply pos offset xyz, rotY, mul by scale
-					pos.y = terrain->getHeightAtWorldPosition(pos.x, 0, pos.z);
+					terrain->getHeightAt(pos);
 					btVector3 pc(pos.x, -pos.z, pos.y + ofs.z * scl);  // center
 					btTransform tr;  tr.setIdentity();  tr.setOrigin(pc);
 
@@ -422,6 +333,7 @@ void CScene::CreateTrees()
 				}
 				else  // use trimesh  . . . . . . . . . . . . 
 				{
+				#if 0  // fixme add btOgre
 					const BltShape* shp = !col ? &data->objs->defPars : &col->shapes[0];
 					Vector3 pc(pos0.x, pos.y, pos0.z);
 					Quaternion q;  q.FromAngleAxis(yaw, Vector3::UNIT_Y);
@@ -440,11 +352,11 @@ void CScene::CreateTrees()
 					app->pGame->collision.world->addCollisionObject(bco);
 					app->pGame->collision.shapes.push_back(shape);
 					++cntshp;
+				#endif
 				}
 				#endif
 			}
 		}
-		trees->update();
 		
 		LogO(String("***** Vegetation objects count: ") + toStr(cntr) + "  shapes: " + toStr(cntshp));
 	}

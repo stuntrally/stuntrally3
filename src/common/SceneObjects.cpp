@@ -1,19 +1,20 @@
+#include "OgreCommon.h"
 #include "pch.h"
 #include "RenderConst.h"
 #include "Def_Str.h"
-#include "../common/data/SceneXml.h"
-#include "../common/CScene.h"
-#include "../common/Axes.h"
-#include "../../vdrift/pathmanager.h"
-#include "../../btOgre/BtOgreGP.h"
-#include "../../road/Road.h"
-#include "../common/ShapeData.h"
+#include "SceneXml.h"
+#include "CScene.h"
+#include "Axes.h"
+#include "pathmanager.h"
+// #include "../../btOgre/BtOgreGP.h"
+// #include "Road.h"
+#include "ShapeData.h"
 #ifdef SR_EDITOR
-	#include "../../editor/CApp.h"
-	#include "../../editor/CGui.h"
+	#include "CApp.h"
+	#include "CGui.h"
 #else
-	#include "../CGame.h"
-	#include "../../vdrift/game.h"
+	#include "CGame.h"
+	#include "game.h"
 #endif
 #include <BulletCollision/CollisionDispatch/btCollisionObject.h>
 #include <BulletCollision/CollisionShapes/btCollisionShape.h>
@@ -27,16 +28,16 @@
 #include <OgreManualObject.h>
 #include <OgreMeshManager.h>
 #include <OgreMaterialManager.h>
-#include <OgreEntity.h>
+#include <OgreItem.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
-#include <OgreRenderWindow.h>
-#include <OgreSubEntity.h>
+// #include <OgreRenderWindow.h>
+// #include <OgreSubEntity.h>
 #include <OgreCamera.h>
-#include <MyGUI.h>
-#include <MyGUI_InputManager.h>
+// #include <MyGUI.h>
+// #include <MyGUI_InputManager.h>
 using namespace Ogre;
-using namespace MyGUI;
+// using namespace MyGUI;
 using namespace std;
 
 
@@ -148,16 +149,17 @@ void App::CreateObjects()
 
 		//  add to ogre
 		bool no = !objExists[o.name];
-		o.ent = mSceneMgr->createEntity("oE"+s, (no ? "sphere" : o.name) + ".mesh");
-		o.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode("oN"+s);
+		o.it = mSceneMgr->createItem(/*"oE"+s,*/ (no ? "sphere" : o.name) + ".mesh");
+		o.nd = mSceneMgr->getRootSceneNode(Ogre::SCENE_DYNAMIC)->createChildSceneNode();
 		o.SetFromBlt();
-		o.nd->attachObject(o.ent);  o.ent->setVisibilityFlags(RV_Objects);
+		o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Objects);
 		o.nd->setScale(o.scale);
 		if (no)  continue;
 
 		//  add to bullet world (in game)
 		if (!o.dyn)
 		{
+		#if 0  // fixme: add btOgre ..
 			///  static  . . . . . . . . . . . . 
 			Vector3 posO = Axes::toOgre(o.pos);
 			Quaternion rotO = Axes::toOgreW(o.rot);
@@ -180,6 +182,7 @@ void App::CreateObjects()
 			o.co = bco;  o.ms = 0;  o.rb = 0;
 			pGame->collision.shapes.push_back(shape);
 			#endif
+		#endif
 		}
 		else  ///  dynamic  . . . . . . . . . . . . 
 		{
