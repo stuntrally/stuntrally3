@@ -1,10 +1,10 @@
 ## Description
 
-Very early efforts to port latest [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.7 to latest [Ogre-next](https://github.com/OGRECave/ogre-next) 3.0.  
+Early efforts to port latest [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.7 to latest [Ogre-next](https://github.com/OGRECave/ogre-next) 3.0.  
 
 [Roadmap here](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap#sr_3), Help and contributing is welcome.
 
-Forum: [SR topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18515), [Ogre topic]().
+Forum: [SR topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18515), [Ogre topic](https://forums.ogre3d.org/viewtopic.php?t=96576).
 
 ## Building
 
