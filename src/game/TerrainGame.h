@@ -69,6 +69,7 @@ namespace Demo
         bool wireTerrain = false;
 
         void generateDebugText();
+        Ogre::String generateFpsDebugText();
 
     public:
         TerrainGame();
