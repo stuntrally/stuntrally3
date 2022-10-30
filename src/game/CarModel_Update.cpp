@@ -283,29 +283,6 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	}
 	#endif
 	
-	//  terrain lightmap enable/disable (depending on distance to terrain)
-	/*#define MAX_TERRAIN_DIST 2.0  // meters
-	bool changed = false;
-	if (terrain)
-	{
-		Vector3 carPos = pMainNode->getPosition();
-		float terrainHeight = terrain->getHeightAtWorldPosition(carPos);
-		float diff = std::abs(carPos.y - terrainHeight);
-		if (diff > MAX_TERRAIN_DIST)
-		{
-			if (bLightMapEnabled)
-			{	changed = true;  bLightMapEnabled = false;	}
-		}
-		else if (!bLightMapEnabled)
-		{	changed = true;  bLightMapEnabled = true;	}
-	}
-	//  if no terrain, disable
-	else if (bLightMapEnabled)
-	{	changed = true;  bLightMapEnabled = false;	}
-	
-	if (changed)
-		UpdateLightMap();*/
-		
 
 	//  update particle emitters
 	if (pSet->particles && pCar)

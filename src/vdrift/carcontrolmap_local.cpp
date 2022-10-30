@@ -23,12 +23,6 @@ float CARCONTROLMAP_LOCAL::GetSSScoeff(float carspeed, float sss_velfactor, floa
 	return coeff;
 }
 
-//; temp ..
-enum PlayerActions
-{	A_Throttle, A_Brake, A_Steering, A_HandBrake, A_Boost, A_Flip,
-	A_ShiftUp, A_ShiftDown, A_PrevCamera, A_NextCamera, A_LastChk, A_Rewind, NumPlayerActions
-};
-
 
 ///  Process Input
 const std::vector <float> & CARCONTROLMAP_LOCAL::ProcessInput(

@@ -24,6 +24,7 @@
 #include "CGame.h"
 #include "CarModel.h"
 #include "FollowCamera.h"
+#include "carcontrolmap_local.h"
 
 #include "Def_Str.h"
 using namespace Demo;
@@ -68,19 +69,19 @@ namespace Demo
 			}
 		}
 	
+	
 		if (pGame && pApp)
 		{
-			// enum PlayerActions
-			// {	A_Throttle, A_Brake, A_Steering, A_HandBrake, A_Boost, A_Flip,
-			//     A_ShiftUp, A_ShiftDown, A_PrevCamera, A_NextCamera, A_LastChk, A_Rewind, NumPlayerActions
-			// };
-			//  inputs
-			pApp->inputs[0] = mArrows[2];
-			pApp->inputs[1] = mArrows[3];
-			pApp->inputs[2] = 0.5f * (1 + mArrows[1] - mArrows[0]);
-			pApp->inputs[3] = mArrows[4];
-			pApp->inputs[4] = mArrows[5];
-			pApp->inputs[5] = 0.5f * (1 + mArrows[6] - mArrows[7]);
+			//  set game inputs .. // todo: use oics
+			pApp->inputs[A_Throttle] = mArrows[2];
+			pApp->inputs[A_Brake] = mArrows[3];
+			pApp->inputs[A_Steering] = 0.5f * (1 + mArrows[1] - mArrows[0]);
+			pApp->inputs[A_HandBrake] = mArrows[4];
+			pApp->inputs[A_Boost] = mArrows[5];
+			pApp->inputs[A_Flip] = 0.5f * (1 + mArrows[7] - mArrows[6]);
+			pApp->inputs[A_NextCamera] = mArrows[8];
+			pApp->inputs[A_PrevCamera] = mArrows[9];
+			pApp->inputs[A_Rewind] = mArrows[10];
 
 			pGame->OneLoop(dt);  // sim
 
@@ -127,7 +128,8 @@ namespace Demo
 			}
 		}
 
-		//  Keys
+
+		//  Keys  params  ----
 		float mul = shift ? 0.2f : ctrl ? 3.f : 1.f;
 		int d = right ? 1 : left ? -1 : 0;
 		if (d)
@@ -157,13 +159,13 @@ namespace Demo
 			atmosphere->setPreset(p);
 		}
 
+		//  Light  sun dir  ----
 		d = mKeys[0] - mKeys[1];
 		if (d)
 		{
 			mPitch += d * mul * 0.6f * dt;
 			mPitch = std::max( 0.f, std::min( mPitch, (float)Math::PI ) );
 		}
-
 		d = mKeys[2] - mKeys[3];
 		if (d)
 		{
@@ -172,7 +174,6 @@ namespace Demo
 			if( mYaw < 0.f )
 				mYaw = Math::TWO_PI + mYaw;
 		}
-		//  Light  sun dir  ----
 		Vector3 dir = Quaternion( Radian(mYaw), Vector3::UNIT_Y ) *
 			Vector3( cosf( mPitch ), -sinf( mPitch ), 0.0 ).normalisedCopy();
 		mSunLight->setDirection( dir );
@@ -235,6 +236,10 @@ namespace Demo
 		case SDL_SCANCODE_1:      mArrows[6] = 1;  break;
 		case SDL_SCANCODE_2:      mArrows[7] = 1;  break;
 
+		case SDL_SCANCODE_C:      mArrows[8] = 1;  break;
+		case SDL_SCANCODE_X:      mArrows[9] = 1;  break;
+		case SDL_SCANCODE_INSERT: mArrows[10] = 1;  break;
+
 
 		case SDL_SCANCODE_HOME:  left  = true;  break;  // params
 		case SDL_SCANCODE_END:   right = true;  break;
@@ -276,7 +281,7 @@ namespace Demo
 
 		//  Vegetation add, destroy all
 		case SDL_SCANCODE_V:  CreateVeget();  break;
-		case SDL_SCANCODE_C:  DestroyVeget();  break;
+		case SDL_SCANCODE_B:  DestroyVeget();  break;
 
 		//  other
 		case SDL_SCANCODE_F:  CreateParticles();  break;
@@ -304,6 +309,7 @@ namespace Demo
 		TutorialGameState::keyPressed( arg );
 	}
 	
+
 	void TerrainGame::keyReleased( const SDL_KeyboardEvent &arg )
 	{
 		switch (arg.keysym.scancode)
@@ -321,6 +327,10 @@ namespace Demo
 		case SDL_SCANCODE_LCTRL:  mArrows[5] = 0;  break;
 		case SDL_SCANCODE_1:      mArrows[6] = 0;  break;
 		case SDL_SCANCODE_2:      mArrows[7] = 0;  break;
+		
+		case SDL_SCANCODE_C:      mArrows[8] = 0;  break;
+		case SDL_SCANCODE_X:      mArrows[9] = 0;  break;
+		case SDL_SCANCODE_INSERT: mArrows[10] = 0;  break;
 
 
 		case SDL_SCANCODE_HOME:  left = false;   break;  // params

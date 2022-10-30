@@ -10,11 +10,11 @@
 #include "Def_Str.h"
 #include "common/data/CData.h"
 #include "CScene.h"
-// #include "../ogre/common/GraphView.h"
+// #include "GraphView.h"
 #include "CGame.h"  //+ replay
-// #include "../ogre/CarModel.h"  //+ camera pos
+// #include "CarModel.h"  //+ camera pos
 #include "FollowCamera.h"  //+ camera pos
-// #include "../road/PaceNotes.h"  //+ pace reset
+// #include "PaceNotes.h"  //+ pace reset
 // #include "../network/protocol.hpp"
 #include "../sound/SoundMgr.h"
 #include "tobullet.h"
@@ -451,7 +451,8 @@ void CAR::SavePosAtCheck()
 }
 
 ///  set pos, for rewind
-void CAR::SetPosRewind(const MATHVECTOR<float,3>& pos, const QUATERNION<float>& rot, const MATHVECTOR<float,3>& vel, const MATHVECTOR<float,3>& angvel)
+void CAR::SetPosRewind(const MATHVECTOR<float,3>& pos, const QUATERNION<float>& rot,
+	const MATHVECTOR<float,3>& vel, const MATHVECTOR<float,3>& angvel)
 {
 	SetPosition(pos, rot);
 

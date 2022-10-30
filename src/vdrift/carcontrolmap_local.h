@@ -3,6 +3,12 @@
 #include <vector>
 
 
+enum PlayerActions
+{	A_Throttle, A_Brake, A_Steering, A_HandBrake, A_Boost, A_Flip,
+	A_ShiftUp, A_ShiftDown, A_PrevCamera, A_NextCamera, A_LastChk, A_Rewind, NumPlayerActions
+};
+
+
 class CARCONTROLMAP_LOCAL
 {
 private:

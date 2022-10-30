@@ -37,10 +37,11 @@ namespace Demo
 		const RenderingMetrics& rm = rs->getMetrics();  //** fps
 		const FrameStats *st = mGraphicsSystem->getRoot()->getFrameStats();
 
-		String txt = iToStr( (int)st->getAvgFps(), 4) +"  "+ //"\n" +
-			"f " + toStr( rm.mFaceCount/1000) + //"k v " + toStr( rm.mVertexCount/1000 ) + 
-			"k d " + toStr( rm.mDrawCount) + " i " + toStr( rm.mInstanceCount);
-			//" b " + toStr( rm.mBatchCount, 0) + "\n";
+		String txt = iToStr( (int)st->getAvgFps(), 4) +
+			"  "+ fToStr( rm.mFaceCount/1000000.f,1) +
+			//" v " + toStr( rm.mVertexCount/1000 ) +
+			"m  " + iToStr( rm.mDrawCount,2) + " " + iToStr( rm.mInstanceCount,4);
+			//" b " + toStr( rm.mBatchCount, 0);
 	#if 1
 		//  mem
 		VaoManager::MemoryStatsEntryVec memoryStats;
@@ -84,7 +85,7 @@ namespace Demo
 		text.a( "\nTotal GPU:\t", ( Ogre::uint32 )( totalBytesNeeded / bytesToMb ), " MB" );
 		outText += text.c_str();*/
 
-		txt += " MB " + toStr( totalBytesNeeded / bytesToMb ) + "\n";
+		txt += "  " + toStr( totalBytesNeeded / bytesToMb ) + " MB\n";
 	#endif
 		return txt;
 	}
