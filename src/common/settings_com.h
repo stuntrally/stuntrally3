@@ -1,5 +1,5 @@
 #pragma once
-#include "../vdrift/configfile.h"
+#include "configfile.h"
 
 enum eShadowType  {  Sh_None=0, Sh_Depth, Sh_Soft  };
 
