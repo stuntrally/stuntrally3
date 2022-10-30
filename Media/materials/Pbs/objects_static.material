@@ -8,6 +8,9 @@ hlms han pbs
 	ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
 	specular 1.8 1.8 1.8 //12
+	fresnel_coeff 0.1
+	roughness 0.5
+	metalness 0.1
 }
 
 hlms maur pbs
@@ -19,6 +22,9 @@ hlms maur pbs
 	ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
 	specular 1.8 1.8 1.8 //12
+	fresnel_coeff 0.1
+	roughness 0.5
+	metalness 0.1
 }
 hlms maur2 pbs
 {
@@ -29,6 +35,9 @@ hlms maur2 pbs
 	ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
 	specular 1.8 1.8 1.8 //12
+	fresnel_coeff 0.1
+	roughness 0.5
+	metalness 0.1
 }
 
 hlms maur_boat pbs
@@ -40,6 +49,9 @@ hlms maur_boat pbs
 	ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
 	specular 1.8 1.8 1.8 //12
+	fresnel_coeff 0.1
+	roughness 0.5
+	metalness 0.1
 }
 hlms maur_ship pbs
 {
@@ -50,6 +62,9 @@ hlms maur_ship pbs
 	ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
 	specular 1.1 1.1 1.1 //12
+	fresnel_coeff 0.1
+	roughness 0.5
+	metalness 0.1
 }
 
 //  0AD buildings old  ----
@@ -60,6 +75,9 @@ hlms pers_struct_dds pbs
 	ambient 1.1 1.1 1.05
 	diffuse 0.75 0.75 0.7
 	specular 0.1 0.1 0.1 //12
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 hlms ptol_struct pbs
@@ -70,6 +88,9 @@ hlms ptol_struct pbs
 	ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
 	specular 0.2 0.2 0.2 //12
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 hlms rome pbs
@@ -79,6 +100,9 @@ hlms rome pbs
 	ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
 	specular 0.2 0.2 0.2 //12
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms rome2 pbs
 {
@@ -87,6 +111,9 @@ hlms rome2 pbs
 	ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
 	specular 0.2 0.2 0.2 //12
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 hlms kart pbs
@@ -96,7 +123,9 @@ hlms kart pbs
 	ambient 1.1 1.1 1.1
 	diffuse 0.9 0.9 0.9
 	specular 0.3 0.3 0.3 //12
-
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 //  0AD obj  ----
@@ -107,7 +136,9 @@ hlms pyramid_small pbs
 	ambient 0.9 0.8 0.5
 	diffuse 0.6 0.6 0.4
 	specular 0.05 0.05 0.05 //24
-
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms pyramid_big pbs
 {
@@ -116,7 +147,9 @@ hlms pyramid_big pbs
 	ambient 0.9 0.9 0.6
 	diffuse 0.6 0.6 0.5
 	specular 0.1 0.1 0.1 //32
-
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 hlms obelisk pbs
@@ -126,7 +159,9 @@ hlms obelisk pbs
 	ambient 1.0 0.92 0.7
 	diffuse 1.0 0.92 0.7
 	specular 0.2 0.2 0.2 //8
-
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 //  black
@@ -137,6 +172,9 @@ hlms pyramid_small_black pbs
 	ambient 0.3 0.34 0.4
 	diffuse 0.2 0.24 0.3
 	specular 0.05 0.05 0.07 //24
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.6
 }
 hlms pyramid_big_black pbs
 {
@@ -145,6 +183,9 @@ hlms pyramid_big_black pbs
 	ambient 0.3 0.34 0.4
 	diffuse 0.1 0.14 0.2
 	specular 0.05 0.05 0.07 //24
+	fresnel_coeff 0.1
+	roughness 0.3
+	metalness 0.5
 }
 
 //---------------------------------------------------
@@ -156,8 +197,10 @@ hlms Temple pbs
 	ambient 0.6 0.6 0.6
 	diffuse 0.5 0.5 0.5
 	specular 0.2 0.2 0.2 //48
-
-	diffuse_address_mode wrap
+	// diffuse_address_mode wrap
+	fresnel_coeff 0.1
+	roughness 0.3
+	metalness 0.2
 }
 
 hlms DishHole pbs
@@ -167,6 +210,9 @@ hlms DishHole pbs
 	ambient 1 1 1
 	diffuse 0.8 0.8 0.8
 	specular 0.4 0.4 0.4 //16
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 hlms watchtower pbs
@@ -200,6 +246,9 @@ hlms gate_01 pbs
 	ambient 1 1 1
 	diffuse 0.8 0.8 0.8
 	specular 0.1 0.1 0.1 //8
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 hlms gas_tank pbs
@@ -209,7 +258,9 @@ hlms gas_tank pbs
 	ambient 0.90 0.90 0.95
 	diffuse 0.70 0.70 0.75
 	specular 0.3 0.3 0.32 //32
-
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 
@@ -221,6 +272,9 @@ hlms house_1_4 pbs
 	specular 0.3 0.3 0.3
 	diffuse_map  house_1.jpg
 	normal_map   house_1_norm.jpg
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms house_2_4 pbs
 {
@@ -229,6 +283,9 @@ hlms house_2_4 pbs
 	specular 0.3 0.3 0.3
 	diffuse_map  house_2.jpg
 	normal_map   house_2_norm.jpg
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms house_3_4 pbs
 {
@@ -237,6 +294,9 @@ hlms house_3_4 pbs
 	specular 0.3 0.3 0.3
 	diffuse_map  house_3.jpg
 	normal_map   house_3_norm.jpg
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms house_4_4 pbs
 {
@@ -245,6 +305,9 @@ hlms house_4_4 pbs
 	specular 0.3 0.3 0.3
 	diffuse_map  house_4.jpg
 	normal_map   house_4_norm.jpg
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 hlms well pbs
@@ -254,6 +317,9 @@ hlms well pbs
 	ambient 1.2 1.2 1.2
 	diffuse 0.7 0.7 0.7
 	specular 0.2 0.2 0.2 //32
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 
@@ -265,6 +331,9 @@ hlms city_house1 pbs
 	ambient 1.1 1.1 1.1
 	diffuse 1.1 1.1 1.1
 	specular 0.2 0.2 0.2 //16
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms city_house2 pbs
 {
@@ -273,6 +342,9 @@ hlms city_house2 pbs
 	ambient 1.2 1.2 1.2
 	diffuse 1.2 1.2 1.2
 	specular 0.2 0.2 0.2 //16
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms city_house3 pbs
 {
@@ -280,6 +352,9 @@ hlms city_house3 pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.9 0.9 0.9
 	specular 0.2 0.2 0.2 //16
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms city_house4 pbs
 {
@@ -287,6 +362,9 @@ hlms city_house4 pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.9 0.9 0.9
 	specular 0.2 0.2 0.2 //16
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms city_shop pbs
 {
@@ -294,6 +372,9 @@ hlms city_shop pbs
 	ambient 1.1 1.1 1.1
 	diffuse 1.1 1.1 1.1
 	specular 0.2 0.2 0.2 //16
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 hlms Building pbs
@@ -305,11 +386,13 @@ hlms Building pbs
 	ambient 0.8 0.8 0.8
 	diffuse 0.9 0.9 0.9
 	specular 0.4 0.4 0.4 //32
+	fresnel_coeff 0.1
+	roughness 0.5
+	metalness 0.1
 	// env_map true
 	// fresnel false
 	// refl_amount 0.3
 }
-4
 
 //  big
 hlms water_plane_big pbs
@@ -319,7 +402,7 @@ hlms water_plane_big pbs
 	diffuse 1.0 1.04 1.05
 	specular 0.4 0.5 0.6 //32
 	fresnel_coeff 0.21
-	roughness 0.4
+	roughness 0.3
 	metalness 0.8
 	// workflow specular_ogre
 	// shadowBias 0.0001
@@ -331,6 +414,9 @@ hlms balloon1 pbs
 	ambient 0.7 0.7 0.7
 	diffuse 0.8 0.8 0.8
 	specular 0.3 0.3 0.3 //20
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms balloon1b pbs
 {
@@ -338,6 +424,9 @@ hlms balloon1b pbs
 	ambient 0.7 0.7 0.7
 	diffuse 0.8 0.8 0.8
 	specular 0.3 0.3 0.3 //20
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms balloon2 pbs
 {
@@ -345,6 +434,9 @@ hlms balloon2 pbs
 	ambient 0.8 0.8 0.8
 	diffuse 0.9 0.9 0.9
 	specular 0.2 0.2 0.2 //16
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms balloon2b pbs
 {
@@ -352,6 +444,9 @@ hlms balloon2b pbs
 	ambient 0.8 0.8 0.8
 	diffuse 0.9 0.9 0.9
 	specular 0.2 0.2 0.2 //16
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms balloon2cl pbs
 {
@@ -359,6 +454,9 @@ hlms balloon2cl pbs
 	ambient 0.8 0.8 0.8
 	diffuse 0.9 0.9 0.9
 	specular 0.2 0.2 0.2 //16
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms balloon2clr pbs
 {
@@ -366,6 +464,9 @@ hlms balloon2clr pbs
 	ambient 0.8 0.8 0.8
 	diffuse 0.9 0.9 0.9
 	specular 0.2 0.2 0.2 //16
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 
@@ -377,6 +478,9 @@ hlms Buddha_Statue pbs
 	ambient 0.8 0.8 0.8
 	diffuse 0.9 0.9 0.9
 	specular 1.0 1.0 1.0 //8
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 hlms chapel pbs
@@ -386,6 +490,9 @@ hlms chapel pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.9 0.9 0.9
 	specular 0.1 0.1 0.1 //32
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms statue_angel pbs
 {
@@ -393,6 +500,9 @@ hlms statue_angel pbs
 	ambient 1.0 0.98 1.0
 	diffuse 0.9 0.88 0.9
 	specular 0.12 0.12 0.12 //6
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms statue_woman pbs
 {
@@ -400,6 +510,9 @@ hlms statue_woman pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 0.1 0.1 0.1 //24
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 
@@ -410,6 +523,9 @@ hlms tree_trunks pbs
 	ambient 0.8 0.8 0.8
 	diffuse 0.9 0.9 0.9
 	specular 0.1 0.1 0.1 //32
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.2
 }
 
 hlms container_big pbs
@@ -436,6 +552,9 @@ hlms windmill pbs
 	ambient 0.9 0.9 0.9
 	diffuse 1.5 1.5 1.5
 	specular 1.5 1.5 1.5 //8
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 hlms windmill_fan pbs
 {
@@ -444,6 +563,9 @@ hlms windmill_fan pbs
 	ambient 0.9 0.9 0.9
 	diffuse 1.4 1.4 1.4
 	specular 0.4 0.4 0.4 //16
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 
@@ -451,20 +573,24 @@ hlms rock_n2_alien pbs
 {
 	diffuse_map  rock_L2.jpg
 	normal_map   rock_n2_norm.png
-
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 //32
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 hlms rock_n5_alien pbs
 {
 	diffuse_map  rock_n5_alien.jpg
 	normal_map   rock_n5_norm.png
-
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 //32
+	fresnel_coeff 0.1
+	roughness 0.6
+	metalness 0.1
 }
 
 
@@ -479,6 +605,9 @@ hlms metal_01 pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 0.6 0.6 0.6 //20
+	fresnel_coeff 0.1
+	roughness 0.3
+	metalness 0.8
 	// env_map true
 	// fresnel false
 	// refl_amount 0.05
@@ -494,6 +623,9 @@ hlms metal_02 pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 0.8 0.8 0.8 //16
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.8
 	// env_map true
 	// fresnel false
 	// refl_amount 0.05
@@ -508,6 +640,9 @@ hlms metal_02_dark pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 0.7 0.7 0.7 //32
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.8
 	// env_map true
 	// fresnel false
 	// refl_amount 0.01
@@ -519,6 +654,9 @@ hlms metal_03_green pbs
 	normal_map   metal_03_norm.jpg
 	specMap metal_03_green_spec.jpg
 	specMap_rgb true
+	fresnel_coeff 0.1
+	roughness 0.3
+	metalness 0.7
 	// ambient 1.0 1.0 1.0
 	// diffuse 0.7 0.7 0.7
 	// specular 0.5 0.5 0.5 24
@@ -533,6 +671,9 @@ hlms metal_03_red pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 0.8 0.8 0.8 //32
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.7
 }
 
 hlms metal_04 pbs
@@ -544,6 +685,9 @@ hlms metal_04 pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 1 1 1 //12
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.7
 }
 
 hlms metal_05 pbs
@@ -555,6 +699,9 @@ hlms metal_05 pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 1 1 1 //16
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.7
 }
 
 hlms metal_06 pbs
@@ -567,6 +714,9 @@ hlms metal_06 pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 1 1 1 //12
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.7
 	// env_map true
 	// fresnel false
 	// refl_amount 0.05
@@ -581,6 +731,9 @@ hlms metal_07 pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 1 1 1 //24
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.7
 }
 
 hlms metal_08 pbs
@@ -592,6 +745,9 @@ hlms metal_08 pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 1 1 1 20
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.7
 }
 
 hlms metal_details pbs
@@ -603,6 +759,9 @@ hlms metal_details pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 1 1 1 //16
+	fresnel_coeff 0.1
+	roughness 0.3
+	metalness 0.7
 }
 
 
@@ -616,6 +775,9 @@ hlms sign pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 0.4 0.4 0.4 //20
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.7
 	// env_map true
 	// fresnel false
 	// refl_amount 0.05
@@ -630,6 +792,9 @@ hlms sign_post pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 0.4 0.4 0.4 //20
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.7
 	// env_map true
 	// fresnel false
 	// refl_amount 0.05
@@ -646,6 +811,9 @@ hlms structure pbs
 	ambient 1.0 1.0 1.1
 	diffuse 0.7 0.7 0.8
 	specular 0.5 0.5 0.7 //12
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.7
 	// env_map true
 	// fresnel false
 	// refl_amount 0.05

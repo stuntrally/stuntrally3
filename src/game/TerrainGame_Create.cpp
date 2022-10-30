@@ -142,6 +142,11 @@ Tox2-AcidLakes
 Jng25-CantorJungle
 For18-MountCaro
 Isl17-AdapterIslands
+
+Des11-PersianCity
+Des17-NileCity
+Grc8-SlopeCity
+Grc10-BeachCity
 */
 		//  new game
 		pApp->mCamera = mGraphicsSystem->getCamera();

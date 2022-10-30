@@ -253,8 +253,8 @@ namespace Demo
 
 		case SDL_SCANCODE_SPACE:  mArrows[4] = 1;  break;
 		case SDL_SCANCODE_LCTRL:  mArrows[5] = 1;  break;
-		case SDL_SCANCODE_1:      mArrows[6] = 1;  break;
-		case SDL_SCANCODE_2:      mArrows[7] = 1;  break;
+		case SDL_SCANCODE_Q:      mArrows[6] = 1;  break;
+		case SDL_SCANCODE_W:      mArrows[7] = 1;  break;
 
 		case SDL_SCANCODE_C:      mArrows[8] = 1;  break;
 		case SDL_SCANCODE_X:      mArrows[9] = 1;  break;
@@ -348,8 +348,8 @@ namespace Demo
 
 		case SDL_SCANCODE_SPACE:  mArrows[4] = 0;  break;
 		case SDL_SCANCODE_LCTRL:  mArrows[5] = 0;  break;
-		case SDL_SCANCODE_1:      mArrows[6] = 0;  break;
-		case SDL_SCANCODE_2:      mArrows[7] = 0;  break;
+		case SDL_SCANCODE_Q:      mArrows[6] = 0;  break;
+		case SDL_SCANCODE_W:      mArrows[7] = 0;  break;
 		
 		case SDL_SCANCODE_C:      mArrows[8] = 0;  break;
 		case SDL_SCANCODE_X:      mArrows[9] = 0;  break;

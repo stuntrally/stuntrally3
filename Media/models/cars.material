@@ -73,24 +73,50 @@ hlms SX_body pbs
 	diffuse_map  SX_body_violet.png
 	//normal_map   ES_normal.png
 	//roughness_map  SX_body.png
-	//metalness_map  SX_body.png
+	metalness_map  SX_body.png
 
-	workflow metallic
-	fresnel_coeff 0.25
+	// workflow metallic
+	// fresnel_coeff 0.25
+	fresnel 3.1
 
-	// diffuse		0.7 0.8 0.9
+	diffuse		0.7 0.8 0.9
 	// diffuse		0.3 0.3 0.3
 	// diffuse		0.03 0.03 0.03
-	diffuse		0.1 0.2 0.3
-	diffuse		0.2 0.2 0.25
+	// diffuse		0.1 0.2 0.3
+	// diffuse		0.2 0.2 0.25
 	// specular	0.9 0.5 0.2
-	specular	0.7 0.7 0.8
+	// specular	0.7 0.7 0.8
 	// specular	0.8 0.85 0.9
 	//roughness 0.1
-	roughness 0.35
-	metalness 0.95
-	// metalness 0.7
+	roughness 0.45
+	// metalness 0.95
+	metalness 0.7
 }
+// hlms SX_body pbs
+// {
+// 	// diffuse_map  SX_body_blue.png
+// 	// diffuse_map  SX_body_gray.png
+// 	diffuse_map  SX_body_violet.png
+// 	//normal_map   ES_normal.png
+// 	//roughness_map  SX_body.png
+// 	//metalness_map  SX_body.png
+
+// 	workflow metallic
+// 	fresnel_coeff 0.25
+
+// 	// diffuse		0.7 0.8 0.9
+// 	// diffuse		0.3 0.3 0.3
+// 	// diffuse		0.03 0.03 0.03
+// 	diffuse		0.1 0.2 0.3
+// 	diffuse		0.2 0.2 0.25
+// 	// specular	0.9 0.5 0.2
+// 	specular	0.7 0.7 0.8
+// 	// specular	0.8 0.85 0.9
+// 	//roughness 0.1
+// 	roughness 0.35
+// 	metalness 0.95
+// 	// metalness 0.7
+// }
 
 hlms SX_exterior pbs
 {
