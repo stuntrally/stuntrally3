@@ -55,192 +55,192 @@ THREAD_DECLARE( logicThread );
 
 struct ThreadData
 {
-    GraphicsSystem  *graphicsSystem;
-    LogicSystem     *logicSystem;
-    Ogre::Barrier   *barrier;
+	GraphicsSystem  *graphicsSystem;
+	LogicSystem     *logicSystem;
+	Ogre::Barrier   *barrier;
 };
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 INT WINAPI Demo::MainEntryPoints::mainAppMultiThreaded( HINSTANCE hInst, HINSTANCE hPrevInstance,
-                                                        LPSTR strCmdLine, INT nCmdShow )
+														LPSTR strCmdLine, INT nCmdShow )
 #else
 int Demo::MainEntryPoints::mainAppMultiThreaded( int argc, const char *argv[] )
 #endif
 {
-    GameState *graphicsGameState = 0;
-    GraphicsSystem *graphicsSystem = 0;
-    GameState *logicGameState = 0;
-    LogicSystem *logicSystem = 0;
+	GameState *graphicsGameState = 0;
+	GraphicsSystem *graphicsSystem = 0;
+	GameState *logicGameState = 0;
+	LogicSystem *logicSystem = 0;
 
-    Ogre::Barrier barrier( 2 );
+	Ogre::Barrier barrier( 2 );
 
-    MainEntryPoints::createSystems( &graphicsGameState, &graphicsSystem,
-                                    &logicGameState, &logicSystem );
+	MainEntryPoints::createSystems( &graphicsGameState, &graphicsSystem,
+									&logicGameState, &logicSystem );
 
-    GameEntityManager gameEntityManager( graphicsSystem, logicSystem );
+	GameEntityManager gameEntityManager( graphicsSystem, logicSystem );
 
-    ThreadData threadData;
-    threadData.graphicsSystem   = graphicsSystem;
-    threadData.logicSystem      = logicSystem;
-    threadData.barrier          = &barrier;
+	ThreadData threadData;
+	threadData.graphicsSystem   = graphicsSystem;
+	threadData.logicSystem      = logicSystem;
+	threadData.barrier          = &barrier;
 
-    Ogre::ThreadHandlePtr threadHandles[2];
-    threadHandles[0] = Ogre::Threads::CreateThread( THREAD_GET( renderThread ), 0, &threadData );
-    threadHandles[1] = Ogre::Threads::CreateThread( THREAD_GET( logicThread ), 1, &threadData );
+	Ogre::ThreadHandlePtr threadHandles[2];
+	threadHandles[0] = Ogre::Threads::CreateThread( THREAD_GET( renderThread ), 0, &threadData );
+	threadHandles[1] = Ogre::Threads::CreateThread( THREAD_GET( logicThread ), 1, &threadData );
 
-    Ogre::Threads::WaitForThreads( 2, threadHandles );
+	Ogre::Threads::WaitForThreads( 2, threadHandles );
 
-    MainEntryPoints::destroySystems( graphicsGameState, graphicsSystem,
-                                     logicGameState, logicSystem );
+	MainEntryPoints::destroySystems( graphicsGameState, graphicsSystem,
+									 logicGameState, logicSystem );
 
-    return 0;
+	return 0;
 }
 
 //---------------------------------------------------------------------
 unsigned long renderThreadApp( Ogre::ThreadHandle *threadHandle )
 {
-    ThreadData *threadData = reinterpret_cast<ThreadData*>( threadHandle->getUserParam() );
-    GraphicsSystem *graphicsSystem  = threadData->graphicsSystem;
-    Ogre::Barrier *barrier          = threadData->barrier;
+	ThreadData *threadData = reinterpret_cast<ThreadData*>( threadHandle->getUserParam() );
+	GraphicsSystem *graphicsSystem  = threadData->graphicsSystem;
+	Ogre::Barrier *barrier          = threadData->barrier;
 
-    graphicsSystem->initialize( "Tutorial 06: Multithreading" );
-    barrier->sync();
+	graphicsSystem->initialize( "Tutorial 06: Multithreading" );
+	barrier->sync();
 
-    if( graphicsSystem->getQuit() )
-    {
-        graphicsSystem->deinitialize();
-        return 0; //User cancelled config
-    }
+	if( graphicsSystem->getQuit() )
+	{
+		graphicsSystem->deinitialize();
+		return 0; //User cancelled config
+	}
 
-    graphicsSystem->createScene01();
-    barrier->sync();
+	graphicsSystem->createScene01();
+	barrier->sync();
 
-    graphicsSystem->createScene02();
-    barrier->sync();
+	graphicsSystem->createScene02();
+	barrier->sync();
 
-    #if OGRE_USE_SDL2
-    //Do this after creating the scene for easier the debugging (the mouse doesn't hide itself)
-    SdlInputHandler *inputHandler = graphicsSystem->getInputHandler();
-    inputHandler->setGrabMousePointer( true );
-    inputHandler->setMouseVisible( false );
-    inputHandler->setMouseRelative( true );
-    #endif
+	#if OGRE_USE_SDL2
+	//Do this after creating the scene for easier the debugging (the mouse doesn't hide itself)
+	SdlInputHandler *inputHandler = graphicsSystem->getInputHandler();
+	inputHandler->setGrabMousePointer( true );
+	inputHandler->setMouseVisible( false );
+	inputHandler->setMouseRelative( true );
+	#endif
 
-    Ogre::Window *renderWindow = graphicsSystem->getRenderWindow();
+	Ogre::Window *renderWindow = graphicsSystem->getRenderWindow();
 
-    Ogre::Timer timer;
+	Ogre::Timer timer;
 
-    Ogre::uint64 startTime = timer.getMicroseconds();
+	Ogre::uint64 startTime = timer.getMicroseconds();
 
-    double timeSinceLast = 1.0 / 60.0;
+	double timeSinceLast = 1.0 / 60.0;
 
-    while( !graphicsSystem->getQuit() )
-    {
-        graphicsSystem->beginFrameParallel();
-        graphicsSystem->update( static_cast<float>( timeSinceLast ) );
-        graphicsSystem->finishFrameParallel();
+	while( !graphicsSystem->getQuit() )
+	{
+		graphicsSystem->beginFrameParallel();
+		graphicsSystem->update( static_cast<float>( timeSinceLast ) );
+		graphicsSystem->finishFrameParallel();
 
-        if( !renderWindow->isVisible() )
-        {
-            //Don't burn CPU cycles unnecessary when we're minimized.
-            Ogre::Threads::Sleep( 500 );
-        }
+		if( !renderWindow->isVisible() )
+		{
+			//Don't burn CPU cycles unnecessary when we're minimized.
+			Ogre::Threads::Sleep( 500 );
+		}
 
-        Ogre::uint64 endTime = timer.getMicroseconds();
-        timeSinceLast = (endTime - startTime) / 1000000.0;
-        timeSinceLast = std::min( 1.0, timeSinceLast ); //Prevent from going haywire.
-        startTime = endTime;
-    }
+		Ogre::uint64 endTime = timer.getMicroseconds();
+		timeSinceLast = (endTime - startTime) / 1000000.0;
+		timeSinceLast = std::min( 1.0, timeSinceLast ); //Prevent from going haywire.
+		startTime = endTime;
+	}
 
-    barrier->sync();
+	barrier->sync();
 
-    graphicsSystem->destroyScene();
-    barrier->sync();
+	graphicsSystem->destroyScene();
+	barrier->sync();
 
-    graphicsSystem->deinitialize();
-    barrier->sync();
+	graphicsSystem->deinitialize();
+	barrier->sync();
 
-    return 0;
+	return 0;
 }
 
 unsigned long renderThread( Ogre::ThreadHandle *threadHandle )
 {
-    unsigned long retVal = -1;
+	unsigned long retVal = -1;
 
-    try
-    {
-        retVal = renderThreadApp( threadHandle );
-    }
-    catch( Ogre::Exception& e )
-    {
+	try
+	{
+		retVal = renderThreadApp( threadHandle );
+	}
+	catch( Ogre::Exception& e )
+	{
    #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-        MessageBoxA( NULL, e.getFullDescription().c_str(), "An exception has occured!",
-                     MB_OK | MB_ICONERROR | MB_TASKMODAL );
+		MessageBoxA( NULL, e.getFullDescription().c_str(), "An exception has occured!",
+					 MB_OK | MB_ICONERROR | MB_TASKMODAL );
    #else
-        std::cerr << "An exception has occured: " <<
-                     e.getFullDescription().c_str() << std::endl;
+		std::cerr << "An exception has occured: " <<
+					 e.getFullDescription().c_str() << std::endl;
    #endif
 
-        abort();
-    }
+		abort();
+	}
 
-    return retVal;
+	return retVal;
 }
 //---------------------------------------------------------------------
 unsigned long logicThread( Ogre::ThreadHandle *threadHandle )
 {
-    ThreadData *threadData = reinterpret_cast<ThreadData*>( threadHandle->getUserParam() );
-    GraphicsSystem *graphicsSystem  = threadData->graphicsSystem;
-    LogicSystem *logicSystem        = threadData->logicSystem;
-    Ogre::Barrier *barrier          = threadData->barrier;
+	ThreadData *threadData = reinterpret_cast<ThreadData*>( threadHandle->getUserParam() );
+	GraphicsSystem *graphicsSystem  = threadData->graphicsSystem;
+	LogicSystem *logicSystem        = threadData->logicSystem;
+	Ogre::Barrier *barrier          = threadData->barrier;
 
-    logicSystem->initialize();
-    barrier->sync();
+	logicSystem->initialize();
+	barrier->sync();
 
-    if( graphicsSystem->getQuit() )
-    {
-        logicSystem->deinitialize();
-        return 0; //Render thread cancelled early
-    }
+	if( graphicsSystem->getQuit() )
+	{
+		logicSystem->deinitialize();
+		return 0; //Render thread cancelled early
+	}
 
-    logicSystem->createScene01();
-    barrier->sync();
+	logicSystem->createScene01();
+	barrier->sync();
 
-    logicSystem->createScene02();
-    barrier->sync();
+	logicSystem->createScene02();
+	barrier->sync();
 
-    Ogre::Window *renderWindow = graphicsSystem->getRenderWindow();
+	Ogre::Window *renderWindow = graphicsSystem->getRenderWindow();
 
-    Ogre::Timer timer;
-    YieldTimer yieldTimer( &timer );
+	Ogre::Timer timer;
+	YieldTimer yieldTimer( &timer );
 
-    unsigned long startTime = timer.getMicroseconds();
+	unsigned long startTime = timer.getMicroseconds();
 
-    while( !graphicsSystem->getQuit() )
-    {
-        logicSystem->beginFrameParallel();
-        logicSystem->update( static_cast<float>( MainEntryPoints::Frametime ) );
-        logicSystem->finishFrameParallel();
+	while( !graphicsSystem->getQuit() )
+	{
+		logicSystem->beginFrameParallel();
+		logicSystem->update( static_cast<float>( MainEntryPoints::Frametime ) );
+		logicSystem->finishFrameParallel();
 
-        logicSystem->finishFrame();
+		logicSystem->finishFrame();
 
-        if( !renderWindow->isVisible() )
-        {
-            //Don't burn CPU cycles unnecessary when we're minimized.
-            Ogre::Threads::Sleep( 500 );
-        }
+		if( !renderWindow->isVisible() )
+		{
+			//Don't burn CPU cycles unnecessary when we're minimized.
+			Ogre::Threads::Sleep( 500 );
+		}
 
-        //YieldTimer will wait until the current time is greater than startTime + cFrametime
-        startTime = yieldTimer.yield( MainEntryPoints::Frametime, startTime );
-    }
+		//YieldTimer will wait until the current time is greater than startTime + cFrametime
+		startTime = yieldTimer.yield( MainEntryPoints::Frametime, startTime );
+	}
 
-    barrier->sync();
+	barrier->sync();
 
-    logicSystem->destroyScene();
-    barrier->sync();
+	logicSystem->destroyScene();
+	barrier->sync();
 
-    logicSystem->deinitialize();
-    barrier->sync();
+	logicSystem->deinitialize();
+	barrier->sync();
 
-    return 0;
+	return 0;
 }

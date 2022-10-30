@@ -565,11 +565,11 @@ void CarModel::Create()
 			ndWh[w]->attachObject(eWh);  eWh->setVisibilityFlags(RV_Car);
 			if (bLogInfo && (w==0 || w==2))  LogMeshInfo(eWh, name, 2);
 
-            //**  set reflection cube
-            assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() ) );
-            Ogre::HlmsPbsDatablock *datablock =
-                static_cast<Ogre::HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() );
-            datablock->setTexture( Ogre::PBSM_REFLECTION, pApp->mDynamicCubemap );
+			//**  set reflection cube
+			assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() ) );
+			Ogre::HlmsPbsDatablock *datablock =
+				static_cast<Ogre::HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() );
+			datablock->setTexture( Ogre::PBSM_REFLECTION, pApp->mDynamicCubemap );
 		}		
 		if (FileExists(sCar + "_brake.mesh") && !ghostTrk)
 		{

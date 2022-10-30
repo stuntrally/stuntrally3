@@ -4,7 +4,7 @@
 /*
 -----------------------------------------------------------------------------
 This source file is part of OGRE-Next
-    (Object-oriented Graphics Rendering Engine)
+	(Object-oriented Graphics Rendering Engine)
 For the latest info, see http://www.ogre3d.org/
 
 Copyright (c) 2000-2014 Torus Knot Software Ltd
@@ -31,31 +31,31 @@ THE SOFTWARE.
 
 namespace Ogre
 {
-    //-----------------------------------------------------------------------------------
-    void HlmsTerraDatablock::cloneImpl( HlmsDatablock *datablock ) const
-    {
-        HlmsTerraBaseTextureDatablock::cloneImpl( datablock );
-        HlmsTerraDatablock *datablockImpl = static_cast<HlmsTerraDatablock*>( datablock );
+	//-----------------------------------------------------------------------------------
+	void HlmsTerraDatablock::cloneImpl( HlmsDatablock *datablock ) const
+	{
+		HlmsTerraBaseTextureDatablock::cloneImpl( datablock );
+		HlmsTerraDatablock *datablockImpl = static_cast<HlmsTerraDatablock*>( datablock );
 
-        datablockImpl->mkDr = mkDr;
-        datablockImpl->mkDg = mkDg;
-        datablockImpl->mkDb = mkDb;
-        datablockImpl->mShadowConstantBiasGpu = mShadowConstantBiasGpu;
-        datablockImpl->mBrdf = mBrdf;
+		datablockImpl->mkDr = mkDr;
+		datablockImpl->mkDg = mkDg;
+		datablockImpl->mkDb = mkDb;
+		datablockImpl->mShadowConstantBiasGpu = mShadowConstantBiasGpu;
+		datablockImpl->mBrdf = mBrdf;
 
-        for( size_t i=0; i<4; ++i )
-        {
-            datablockImpl->mRoughness[i] = mRoughness[i];
-        }
+		for( size_t i=0; i<4; ++i )
+		{
+			datablockImpl->mRoughness[i] = mRoughness[i];
+		}
 
-        for( size_t i=0; i<4; ++i )
-        {
-            datablockImpl->mMetalness[i] = mMetalness[i];
-        }
+		for( size_t i=0; i<4; ++i )
+		{
+			datablockImpl->mMetalness[i] = mMetalness[i];
+		}
 
-        for( size_t i=0; i<4; ++i )
-        {
-            datablockImpl->mDetailsOffsetScale[i] = mDetailsOffsetScale[i];
-        }
-    }
+		for( size_t i=0; i<4; ++i )
+		{
+			datablockImpl->mDetailsOffsetScale[i] = mDetailsOffsetScale[i];
+		}
+	}
 }

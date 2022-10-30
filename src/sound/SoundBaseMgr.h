@@ -12,7 +12,7 @@ class SoundBaseMgr
 {
 	friend class SoundBase;
 public:
-    SoundBaseMgr();
+	SoundBaseMgr();
 	~SoundBaseMgr();
 
 	//  main  ---

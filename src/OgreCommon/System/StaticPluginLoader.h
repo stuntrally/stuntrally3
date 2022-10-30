@@ -34,54 +34,54 @@ THE SOFTWARE.
 namespace Ogre
 {
 #ifdef OGRE_STATIC_LIB
-    #ifdef OGRE_BUILD_RENDERSYSTEM_METAL
-        class MetalPlugin;
-    #endif
-    #ifdef OGRE_BUILD_RENDERSYSTEM_D3D11
-        class D3D11Plugin;
-    #endif
-    #ifdef OGRE_BUILD_RENDERSYSTEM_GL3PLUS
-        class GL3PlusPlugin;
-    #endif
-    #ifdef OGRE_BUILD_RENDERSYSTEM_GLES2
-        class GLES2Plugin;
-    #endif
-    #ifdef OGRE_BUILD_RENDERSYSTEM_VULKAN
-        class VulkanPlugin;
-    #endif
+	#ifdef OGRE_BUILD_RENDERSYSTEM_METAL
+		class MetalPlugin;
+	#endif
+	#ifdef OGRE_BUILD_RENDERSYSTEM_D3D11
+		class D3D11Plugin;
+	#endif
+	#ifdef OGRE_BUILD_RENDERSYSTEM_GL3PLUS
+		class GL3PlusPlugin;
+	#endif
+	#ifdef OGRE_BUILD_RENDERSYSTEM_GLES2
+		class GLES2Plugin;
+	#endif
+	#ifdef OGRE_BUILD_RENDERSYSTEM_VULKAN
+		class VulkanPlugin;
+	#endif
 #endif
-    class Root;
+	class Root;
 }
 
 namespace Demo
 {
-    /// Utility class to load plugins statically
-    class StaticPluginLoader
-    {
+	/// Utility class to load plugins statically
+	class StaticPluginLoader
+	{
 #ifdef OGRE_STATIC_LIB
-        unsigned int    mDummy;
-    #ifdef OGRE_BUILD_RENDERSYSTEM_GL3PLUS
-        Ogre::GL3PlusPlugin         *mGL3PlusPlugin;
-    #endif
-    #ifdef OGRE_BUILD_RENDERSYSTEM_GLES2
-        Ogre::GLES2Plugin           *mGLES2Plugin;
-    #endif
-    #ifdef OGRE_BUILD_RENDERSYSTEM_D3D11
-        Ogre::D3D11Plugin           *mD3D11PlusPlugin;
-    #endif
-    #ifdef OGRE_BUILD_RENDERSYSTEM_METAL
-        Ogre::MetalPlugin           *mMetalPlugin;
-    #endif
-    #ifdef OGRE_BUILD_RENDERSYSTEM_VULKAN
-        Ogre::VulkanPlugin			*mVulkanPlugin;
-    #endif
+		unsigned int    mDummy;
+	#ifdef OGRE_BUILD_RENDERSYSTEM_GL3PLUS
+		Ogre::GL3PlusPlugin         *mGL3PlusPlugin;
+	#endif
+	#ifdef OGRE_BUILD_RENDERSYSTEM_GLES2
+		Ogre::GLES2Plugin           *mGLES2Plugin;
+	#endif
+	#ifdef OGRE_BUILD_RENDERSYSTEM_D3D11
+		Ogre::D3D11Plugin           *mD3D11PlusPlugin;
+	#endif
+	#ifdef OGRE_BUILD_RENDERSYSTEM_METAL
+		Ogre::MetalPlugin           *mMetalPlugin;
+	#endif
+	#ifdef OGRE_BUILD_RENDERSYSTEM_VULKAN
+		Ogre::VulkanPlugin			*mVulkanPlugin;
+	#endif
 #endif
-    public:
-        StaticPluginLoader();
-        ~StaticPluginLoader();
+	public:
+		StaticPluginLoader();
+		~StaticPluginLoader();
 
-        void install( Ogre::Root *root );
-    };
+		void install( Ogre::Root *root );
+	};
 }
 
 #endif

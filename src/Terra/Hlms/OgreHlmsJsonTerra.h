@@ -1,7 +1,7 @@
 /*
 -----------------------------------------------------------------------------
 This source file is part of OGRE-Next
-    (Object-oriented Graphics Rendering Engine)
+	(Object-oriented Graphics Rendering Engine)
 For the latest info, see http://www.ogre3d.org/
 
 Copyright (c) 2000-2014 Torus Knot Software Ltd
@@ -40,59 +40,59 @@ THE SOFTWARE.
 
 namespace Ogre
 {
-    /** \addtogroup Component
-    *  @{
-    */
-    /** \addtogroup Material
-    *  @{
-    */
+	/** \addtogroup Component
+	*  @{
+	*/
+	/** \addtogroup Material
+	*  @{
+	*/
 
-    class HlmsJsonTerra
-    {
-        HlmsManager         *mHlmsManager;
-        TextureGpuManager   *mTextureManager;
+	class HlmsJsonTerra
+	{
+		HlmsManager         *mHlmsManager;
+		TextureGpuManager   *mTextureManager;
 
-        static TerraBrdf::TerraBrdf parseBrdf( const char *value );
-        static void parseOffset( const rapidjson::Value &jsonArray, Vector4 &offsetScale );
-        static void parseScale( const rapidjson::Value &jsonArray, Vector4 &offsetScale );
+		static TerraBrdf::TerraBrdf parseBrdf( const char *value );
+		static void parseOffset( const rapidjson::Value &jsonArray, Vector4 &offsetScale );
+		static void parseScale( const rapidjson::Value &jsonArray, Vector4 &offsetScale );
 
-        static inline Vector3 parseVector3Array( const rapidjson::Value &jsonArray );
+		static inline Vector3 parseVector3Array( const rapidjson::Value &jsonArray );
 
-        void loadTexture( const rapidjson::Value &json, const char *keyName,
-                          TerraTextureTypes textureType, HlmsTerraDatablock *datablock,
-                          const String &resourceGroup );
+		void loadTexture( const rapidjson::Value &json, const char *keyName,
+						  TerraTextureTypes textureType, HlmsTerraDatablock *datablock,
+						  const String &resourceGroup );
 
-        void loadTexture( const rapidjson::Value &json, const HlmsJson::NamedBlocks &blocks,
-                          TerraTextureTypes textureType, HlmsTerraDatablock *datablock,
-                          const String &resourceGroup );
+		void loadTexture( const rapidjson::Value &json, const HlmsJson::NamedBlocks &blocks,
+						  TerraTextureTypes textureType, HlmsTerraDatablock *datablock,
+						  const String &resourceGroup );
 
-        void saveTexture( const char *blockName,
-                          TerraTextureTypes textureType,
-                          const HlmsTerraDatablock *datablock, String &outString,
-                          bool writeTexture=true );
-        void saveTexture( const Vector3 &value, const char *blockName,
-                          TerraTextureTypes textureType,
-                          const HlmsTerraDatablock *datablock, String &outString,
-                          bool writeTexture=true );
+		void saveTexture( const char *blockName,
+						  TerraTextureTypes textureType,
+						  const HlmsTerraDatablock *datablock, String &outString,
+						  bool writeTexture=true );
+		void saveTexture( const Vector3 &value, const char *blockName,
+						  TerraTextureTypes textureType,
+						  const HlmsTerraDatablock *datablock, String &outString,
+						  bool writeTexture=true );
 
-        void saveTexture( const Vector3 &value, const char *blockName,
-                          TerraTextureTypes textureType,
-                          bool writeValue, bool writeTexture,
-                          const HlmsTerraDatablock *datablock, String &outString );
+		void saveTexture( const Vector3 &value, const char *blockName,
+						  TerraTextureTypes textureType,
+						  bool writeValue, bool writeTexture,
+						  const HlmsTerraDatablock *datablock, String &outString );
 
-    public:
-        HlmsJsonTerra( HlmsManager *hlmsManager, TextureGpuManager *textureManager );
+	public:
+		HlmsJsonTerra( HlmsManager *hlmsManager, TextureGpuManager *textureManager );
 
-        void loadMaterial( const rapidjson::Value &json, const HlmsJson::NamedBlocks &blocks,
-                           HlmsDatablock *datablock , const String &resourceGroup );
-        void saveMaterial( const HlmsDatablock *datablock, String &outString );
+		void loadMaterial( const rapidjson::Value &json, const HlmsJson::NamedBlocks &blocks,
+						   HlmsDatablock *datablock , const String &resourceGroup );
+		void saveMaterial( const HlmsDatablock *datablock, String &outString );
 
-        static void collectSamplerblocks( const HlmsDatablock *datablock,
-                                          set<const HlmsSamplerblock*>::type &outSamplerblocks );
-    };
+		static void collectSamplerblocks( const HlmsDatablock *datablock,
+										  set<const HlmsSamplerblock*>::type &outSamplerblocks );
+	};
 
-    /** @} */
-    /** @} */
+	/** @} */
+	/** @} */
 
 }
 

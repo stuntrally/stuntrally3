@@ -1,7 +1,7 @@
 /*
 -----------------------------------------------------------------------------
 This source file is part of OGRE
-    (Object-oriented Graphics Rendering Engine)
+	(Object-oriented Graphics Rendering Engine)
 For the latest info, see http://www.ogre3d.org/
 
 Copyright (c) 2000-2021 Torus Knot Software Ltd
@@ -39,109 +39,109 @@ THE SOFTWARE.
 
 namespace Ogre
 {
-    TerraWorkspaceListener::TerraWorkspaceListener( HlmsTerra *hlmsTerra ) :
-        m_hlmsTerra( hlmsTerra ),
-        m_terraNeedsRestoring( false )
-    {
-    }
-    //-------------------------------------------------------------------------
-    TerraWorkspaceListener::~TerraWorkspaceListener() {}
-    //-------------------------------------------------------------------------
-    void TerraWorkspaceListener::passPreExecute( CompositorPass *pass )
-    {
-        const CompositorPassDef *definition = pass->getDefinition();
-        if( definition->getType() != PASS_SCENE )
-            return;  // We don't care
+	TerraWorkspaceListener::TerraWorkspaceListener( HlmsTerra *hlmsTerra ) :
+		m_hlmsTerra( hlmsTerra ),
+		m_terraNeedsRestoring( false )
+	{
+	}
+	//-------------------------------------------------------------------------
+	TerraWorkspaceListener::~TerraWorkspaceListener() {}
+	//-------------------------------------------------------------------------
+	void TerraWorkspaceListener::passPreExecute( CompositorPass *pass )
+	{
+		const CompositorPassDef *definition = pass->getDefinition();
+		if( definition->getType() != PASS_SCENE )
+			return;  // We don't care
 
-        OGRE_ASSERT_HIGH( dynamic_cast<const CompositorPassSceneDef *>( definition ) );
-        const CompositorPassSceneDef *sceneDef =
-            static_cast<const CompositorPassSceneDef *>( definition );
+		OGRE_ASSERT_HIGH( dynamic_cast<const CompositorPassSceneDef *>( definition ) );
+		const CompositorPassSceneDef *sceneDef =
+			static_cast<const CompositorPassSceneDef *>( definition );
 
-        if( sceneDef->mShadowNodeRecalculation != SHADOW_NODE_CASTER_PASS )
-            return;
+		if( sceneDef->mShadowNodeRecalculation != SHADOW_NODE_CASTER_PASS )
+			return;
 
-        OGRE_ASSERT_HIGH( dynamic_cast<const CompositorPassScene *>( pass ) );
-        const CompositorPassScene *passScene = static_cast<const CompositorPassScene *>( pass );
+		OGRE_ASSERT_HIGH( dynamic_cast<const CompositorPassScene *>( pass ) );
+		const CompositorPassScene *passScene = static_cast<const CompositorPassScene *>( pass );
 
-        const Camera *renderingCamera = passScene->getCamera();
-        const SceneManager *sceneManager = renderingCamera->getSceneManager();
+		const Camera *renderingCamera = passScene->getCamera();
+		const SceneManager *sceneManager = renderingCamera->getSceneManager();
 
-        const CompositorShadowNode *shadowNode = sceneManager->getCurrentShadowNode();
+		const CompositorShadowNode *shadowNode = sceneManager->getCurrentShadowNode();
 
-        const Light *light = shadowNode->getLightAssociatedWith( definition->mShadowMapIdx );
+		const Light *light = shadowNode->getLightAssociatedWith( definition->mShadowMapIdx );
 
-        if( light->getType() != Light::LT_DIRECTIONAL )
-        {
-            const bool needsRestoring = m_terraNeedsRestoring;
+		if( light->getType() != Light::LT_DIRECTIONAL )
+		{
+			const bool needsRestoring = m_terraNeedsRestoring;
 
-            const FastArray<Terra *> &linkedTerras = m_hlmsTerra->getLinkedTerras();
+			const FastArray<Terra *> &linkedTerras = m_hlmsTerra->getLinkedTerras();
 
-            FastArray<Terra *>::const_iterator itor = linkedTerras.begin();
-            FastArray<Terra *>::const_iterator endt = linkedTerras.end();
+			FastArray<Terra *>::const_iterator itor = linkedTerras.begin();
+			FastArray<Terra *>::const_iterator endt = linkedTerras.end();
 
-            while( itor != endt )
-            {
-                Terra *terra = *itor;
-                if( !needsRestoring )
-                {
-                    // This is our first time rendering non-directional shadows
-                    // We have to save the state
-                    terra->_swapSavedState();
-                }
-                terra->setCastShadows( true );
-                terra->setCamera( renderingCamera );
+			while( itor != endt )
+			{
+				Terra *terra = *itor;
+				if( !needsRestoring )
+				{
+					// This is our first time rendering non-directional shadows
+					// We have to save the state
+					terra->_swapSavedState();
+				}
+				terra->setCastShadows( true );
+				terra->setCamera( renderingCamera );
 
-                // Use 5.0f as epsilon because that guarantees us
-                // it will never trigger a shadow recalculation
-                terra->update( Ogre::Vector3::ZERO, 5.0f );
-                ++itor;
-            }
+				// Use 5.0f as epsilon because that guarantees us
+				// it will never trigger a shadow recalculation
+				terra->update( Ogre::Vector3::ZERO, 5.0f );
+				++itor;
+			}
 
-            m_terraNeedsRestoring = true;
-        }
-        else
-        {
-            const FastArray<Terra *> &linkedTerras = m_hlmsTerra->getLinkedTerras();
+			m_terraNeedsRestoring = true;
+		}
+		else
+		{
+			const FastArray<Terra *> &linkedTerras = m_hlmsTerra->getLinkedTerras();
 
-            FastArray<Terra *>::const_iterator itor = linkedTerras.begin();
-            FastArray<Terra *>::const_iterator endt = linkedTerras.end();
+			FastArray<Terra *>::const_iterator itor = linkedTerras.begin();
+			FastArray<Terra *>::const_iterator endt = linkedTerras.end();
 
-            while( itor != endt )
-            {
-                ( *itor )->setCastShadows( false );
-                ++itor;
-            }
-        }
-    }
-    //-------------------------------------------------------------------------
-    void TerraWorkspaceListener::passSceneAfterShadowMaps( CompositorPassScene *pass )
-    {
-        if( !m_terraNeedsRestoring )
-            return;  // Nothing to restore
+			while( itor != endt )
+			{
+				( *itor )->setCastShadows( false );
+				++itor;
+			}
+		}
+	}
+	//-------------------------------------------------------------------------
+	void TerraWorkspaceListener::passSceneAfterShadowMaps( CompositorPassScene *pass )
+	{
+		if( !m_terraNeedsRestoring )
+			return;  // Nothing to restore
 
-        const CompositorPassDef *definition = pass->getDefinition();
-        if( definition->getType() != PASS_SCENE )
-            return;  // We don't care
+		const CompositorPassDef *definition = pass->getDefinition();
+		if( definition->getType() != PASS_SCENE )
+			return;  // We don't care
 
-        OGRE_ASSERT_HIGH( dynamic_cast<const CompositorPassSceneDef *>( definition ) );
-        const CompositorPassSceneDef *sceneDef =
-            static_cast<const CompositorPassSceneDef *>( definition );
+		OGRE_ASSERT_HIGH( dynamic_cast<const CompositorPassSceneDef *>( definition ) );
+		const CompositorPassSceneDef *sceneDef =
+			static_cast<const CompositorPassSceneDef *>( definition );
 
-        if( sceneDef->mShadowNodeRecalculation == SHADOW_NODE_CASTER_PASS )
-            return;  // passEarlyPreExecute handled this
+		if( sceneDef->mShadowNodeRecalculation == SHADOW_NODE_CASTER_PASS )
+			return;  // passEarlyPreExecute handled this
 
-        const FastArray<Terra *> &linkedTerras = m_hlmsTerra->getLinkedTerras();
+		const FastArray<Terra *> &linkedTerras = m_hlmsTerra->getLinkedTerras();
 
-        FastArray<Terra *>::const_iterator itor = linkedTerras.begin();
-        FastArray<Terra *>::const_iterator endt = linkedTerras.end();
+		FastArray<Terra *>::const_iterator itor = linkedTerras.begin();
+		FastArray<Terra *>::const_iterator endt = linkedTerras.end();
 
-        while( itor != endt )
-        {
-            ( *itor )->setCamera( 0 );
-            ( *itor )->_swapSavedState();
-            ++itor;
-        }
+		while( itor != endt )
+		{
+			( *itor )->setCamera( 0 );
+			( *itor )->_swapSavedState();
+			++itor;
+		}
 
-        m_terraNeedsRestoring = false;
-    }
+		m_terraNeedsRestoring = false;
+	}
 }  // namespace Ogre

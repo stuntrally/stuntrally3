@@ -151,9 +151,9 @@ void App::CreateScene()
 
 	gui->InitGui();
 
-    //  bullet Debug drawing
-    //------------------------------------
-    if (pSet->bltLines)
+	//  bullet Debug drawing
+	//------------------------------------
+	if (pSet->bltLines)
 	{	dbgdraw = new BtOgre::DebugDrawer(
 			mSceneMgr->getRootSceneNode(),
 			pGame->collision.world);

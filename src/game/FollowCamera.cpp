@@ -133,8 +133,8 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 	
 
 	//-------------------------------------------------------------------------------------------
-    if (ca->mType == CAM_Car)	/* 3 Car - car pos & rot full */
-    {
+	if (ca->mType == CAM_Car)	/* 3 Car - car pos & rot full */
+	{
 		camPosFinal = goalLook;
 		camRotFinal = sphere ? orient * qSphFix : orient;
 
@@ -143,8 +143,8 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 		return;
 	}
 	
-    if (ca->mType == CAM_Follow)  ofs = ca->mOffset;
-    
+	if (ca->mType == CAM_Follow)  ofs = ca->mOffset;
+	
 	Vector3  pos,goalPos;
 	pos     = camPosFinal - ofs;
 	goalPos = posGoal;
@@ -164,9 +164,9 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 	switch (ca->mType)
 	{
 		case CAM_Arena:		/* 2 Arena - free pos & rot */
-		    goalPos = ca->mOffset - ofs;
-		    break;
-		    
+			goalPos = ca->mOffset - ofs;
+			break;
+			
 		case CAM_Free:		/* 1 Free - free rot, pos from car */
 			goalPos += xyz;
 			break;
@@ -245,9 +245,9 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 	if (!manualOrient)  // CAM_Free or CAM_Follow
 	{
 		Vector3 zdir = camPosFinal - mLook;  zdir.normalise();
-        Vector3 xVec = Vector3::UNIT_Y.crossProduct(zdir);  xVec.normalise();
-        Vector3 yVec = zdir.crossProduct(xVec);  yVec.normalise();
-        Quaternion q;  q.FromAxes(xVec, yVec, zdir);
+		Vector3 xVec = Vector3::UNIT_Y.crossProduct(zdir);  xVec.normalise();
+		Vector3 yVec = zdir.crossProduct(xVec);  yVec.normalise();
+		Quaternion q;  q.FromAxes(xVec, yVec, zdir);
 		camRotFinal = q;
 	}
 	
@@ -429,8 +429,8 @@ bool FollowCamera::updInfo(Real time)
 	else
 		fMoveTime += time;
 	
-    switch (ca->mType)
-    {
+	switch (ca->mType)
+	{
 	case CAM_Follow: sprintf(ss, sFmt_Follow.c_str()
 		,ca->mType, CAM_Str[ca->mType], ca->mYaw.valueDegrees(), ca->mPitch.valueDegrees(), ca->mDist
 		,ca->mOffset.y, ca->mSpeed);	break;
@@ -461,8 +461,8 @@ void FollowCamera::updAngle()
 
 	CameraAngle* c = mCameraAngles[miCurrent];
 	if (ca->mType != c->mType)	First();  // changed type, reset
-    *ca = *c;  // copy
-    mDistReduce = 0.f;  //reset
+	*ca = *c;  // copy
+	mDistReduce = 0.f;  //reset
 
 	sName = toStr(miCurrent+1) + "/" + toStr(miCount)
 		+ (ca->mMain > 0 ? ". " : "  ") + ca->mName;
@@ -516,9 +516,9 @@ void FollowCamera::setCamera(int ang)
 
 FollowCamera::FollowCamera(Camera* cam,	SETTINGS* pSet1) :
 	first(true), iFirst(0), ca(0), updName(0),
-    mCamera(cam), mTerrain(0), chassis(0), pSet(pSet1),
-    mLook(Vector3::ZERO), mPosNodeOld(Vector3::ZERO), mVel(0),
-    mAPitch(0.f),mAYaw(0.f), mATilt(0.f), mDistReduce(0.f)
+	mCamera(cam), mTerrain(0), chassis(0), pSet(pSet1),
+	mLook(Vector3::ZERO), mPosNodeOld(Vector3::ZERO), mVel(0),
+	mAPitch(0.f),mAYaw(0.f), mATilt(0.f), mDistReduce(0.f)
 { 
 	ca = new CameraAngle();
 	ss[0]=0;

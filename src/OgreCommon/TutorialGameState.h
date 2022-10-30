@@ -7,49 +7,49 @@
 
 namespace Ogre
 {
-    namespace v1
-    {
-        class TextAreaOverlayElement;
-    }
+	namespace v1
+	{
+		class TextAreaOverlayElement;
+	}
 }
 
 namespace Demo
 {
-    class GraphicsSystem;
-    class CameraController;
+	class GraphicsSystem;
+	class CameraController;
 
-    /// Base game state for the tutorials. All it does is show a little text on screen :)
-    class TutorialGameState : public GameState
-    {
-    protected:
-        GraphicsSystem      *mGraphicsSystem;
+	/// Base game state for the tutorials. All it does is show a little text on screen :)
+	class TutorialGameState : public GameState
+	{
+	protected:
+		GraphicsSystem      *mGraphicsSystem;
 
-        /// Optional, for controlling the camera with WASD and the mouse
-        CameraController    *mCameraController;
+		/// Optional, for controlling the camera with WASD and the mouse
+		CameraController    *mCameraController;
 
-        Ogre::uint16        mDisplayHelpMode;
-        Ogre::uint16        mNumDisplayHelpModes;
+		Ogre::uint16        mDisplayHelpMode;
+		Ogre::uint16        mNumDisplayHelpModes;
 
-        Ogre::v1::TextAreaOverlayElement *mDebugText;
-        Ogre::v1::TextAreaOverlayElement *mDebugTextShadow;
+		Ogre::v1::TextAreaOverlayElement *mDebugText;
+		Ogre::v1::TextAreaOverlayElement *mDebugTextShadow;
 
-        virtual void createDebugTextOverlay();
+		virtual void createDebugTextOverlay();
 
-    public:
-        TutorialGameState();
-        virtual ~TutorialGameState();
+	public:
+		TutorialGameState();
+		virtual ~TutorialGameState();
 
-        void _notifyGraphicsSystem( GraphicsSystem *graphicsSystem );
+		void _notifyGraphicsSystem( GraphicsSystem *graphicsSystem );
 
-        virtual void createScene01();
+		virtual void createScene01();
 
-        virtual void update( float timeSinceLast );
+		virtual void update( float timeSinceLast );
 
-        virtual void keyPressed( const SDL_KeyboardEvent &arg );
-        virtual void keyReleased( const SDL_KeyboardEvent &arg );
+		virtual void keyPressed( const SDL_KeyboardEvent &arg );
+		virtual void keyReleased( const SDL_KeyboardEvent &arg );
 
-        virtual void mouseMoved( const SDL_Event &arg );
-    };
+		virtual void mouseMoved( const SDL_Event &arg );
+	};
 }
 
 #endif

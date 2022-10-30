@@ -44,77 +44,77 @@ using namespace std;
 
 namespace Demo
 {
-    TerrainGame::TerrainGame()
-        : TutorialGameState()
-        , mPitch( 50.f * Math::PI / 180.f )  // par
-        , mYaw( 102 * Math::PI / 180.f )
-        //, mIblQuality( IblHigh )  // par
-        //, mIblQuality( MipmapsLowest )
-    {
-        macroblockWire.mPolygonMode = PM_WIREFRAME;
-        SetupVeget();
-    }
+	TerrainGame::TerrainGame()
+		: TutorialGameState()
+		, mPitch( 50.f * Math::PI / 180.f )  // par
+		, mYaw( 102 * Math::PI / 180.f )
+		//, mIblQuality( IblHigh )  // par
+		//, mIblQuality( MipmapsLowest )
+	{
+		macroblockWire.mPolygonMode = PM_WIREFRAME;
+		SetupVeget();
+	}
 
 
-    //  load settings from default file
-    void TerrainGame::LoadDefaultSet(SETTINGS* settings, string setFile)
-    {
-        settings->Load(PATHMANAGER::GameConfigDir() + "/game-default.cfg");
-        settings->Save(setFile);
-        //  delete old keys.xml too
-        string sKeys = PATHMANAGER::UserConfigDir() + "/keys.xml";
-        if (std::filesystem::exists(sKeys))
-            std::filesystem::rename(sKeys, PATHMANAGER::UserConfigDir() + "/keys_old.xml");
-    }
+	//  load settings from default file
+	void TerrainGame::LoadDefaultSet(SETTINGS* settings, string setFile)
+	{
+		settings->Load(PATHMANAGER::GameConfigDir() + "/game-default.cfg");
+		settings->Save(setFile);
+		//  delete old keys.xml too
+		string sKeys = PATHMANAGER::UserConfigDir() + "/keys.xml";
+		if (std::filesystem::exists(sKeys))
+			std::filesystem::rename(sKeys, PATHMANAGER::UserConfigDir() + "/keys_old.xml");
+	}
 
 
-    //  Init SR game
-    //-----------------------------------------------------------------------------------------------------------------------------
-    void TerrainGame::Init()
-    {
+	//  Init SR game
+	//-----------------------------------------------------------------------------------------------------------------------------
+	void TerrainGame::Init()
+	{
 
-        Ogre::Timer ti;
-        setlocale(LC_NUMERIC, "C");
+		Ogre::Timer ti;
+		setlocale(LC_NUMERIC, "C");
 
-        //  Paths
-        PATHMANAGER::Init();
-        
+		//  Paths
+		PATHMANAGER::Init();
+		
 
-        ///  Load Settings
-        //----------------------------------------------------------------
-        settings = new SETTINGS();
-        string setFile = PATHMANAGER::SettingsFile();
-        
-        if (!PATHMANAGER::FileExists(setFile))
-        {
-            cerr << "Settings not found - loading defaults." << endl;
-            LoadDefaultSet(settings,setFile);
-        }
-        settings->Load(setFile);  // LOAD
-        if (settings->version != SET_VER)  // loaded older, use default
-        {
-            cerr << "Settings found, but older version - loading defaults." << endl;
-            std::filesystem::rename(setFile, PATHMANAGER::UserConfigDir() + "/game_old.cfg");
-            LoadDefaultSet(settings,setFile);
-            settings->Load(setFile);  // LOAD
-        }
-
-
-        //  paths
-        LogO(PATHMANAGER::info.str());
+		///  Load Settings
+		//----------------------------------------------------------------
+		settings = new SETTINGS();
+		string setFile = PATHMANAGER::SettingsFile();
+		
+		if (!PATHMANAGER::FileExists(setFile))
+		{
+			cerr << "Settings not found - loading defaults." << endl;
+			LoadDefaultSet(settings,setFile);
+		}
+		settings->Load(setFile);  // LOAD
+		if (settings->version != SET_VER)  // loaded older, use default
+		{
+			cerr << "Settings found, but older version - loading defaults." << endl;
+			std::filesystem::rename(setFile, PATHMANAGER::UserConfigDir() + "/game_old.cfg");
+			LoadDefaultSet(settings,setFile);
+			settings->Load(setFile);  // LOAD
+		}
 
 
-        ///  Game start
-        //----------------------------------------------------------------
-        pGame = new GAME(settings);
-        pGame->Start();
+		//  paths
+		LogO(PATHMANAGER::info.str());
 
-        pApp = new App(settings, pGame);
-        //; pApp->mRoot = root;
-        pGame->app = pApp;
-        sc = pApp->scn->sc;
 
-        pGame->ReloadSimData();
+		///  Game start
+		//----------------------------------------------------------------
+		pGame = new GAME(settings);
+		pGame->Start();
+
+		pApp = new App(settings, pGame);
+		//; pApp->mRoot = root;
+		pGame->app = pApp;
+		sc = pApp->scn->sc;
+
+		pGame->ReloadSimData();
 
 /*  for game.cfg
 track = Test1-Flat
@@ -130,130 +130,130 @@ track = Jng25-CantorJungle
 track = For18-MountCaro
 track = Isl17-AdapterIslands
 */
-        //  new game
-        pApp->mCamera = mGraphicsSystem->getCamera();
-        pApp->mSceneMgr = mGraphicsSystem->getSceneManager();
-        pApp->mDynamicCubemap = mDynamicCubemap;
+		//  new game
+		pApp->mCamera = mGraphicsSystem->getCamera();
+		pApp->mSceneMgr = mGraphicsSystem->getSceneManager();
+		pApp->mDynamicCubemap = mDynamicCubemap;
 
-        pApp->CreateScene();  /// New
-        
-    }
+		pApp->CreateScene();  /// New
+		
+	}
 
-    void TerrainGame::Destroy()
-    {
-        if (pGame)
-		    pGame->End();
+	void TerrainGame::Destroy()
+	{
+		if (pGame)
+			pGame->End();
 	
-        delete pApp;
-        delete pGame;
-        delete settings;
-    }
+		delete pApp;
+		delete pGame;
+		delete settings;
+	}
 
 
-    
-    //  Create
-    //-----------------------------------------------------------------------------------------------------------------------------
-    void TerrainGame::createScene01()
-    {
+	
+	//  Create
+	//-----------------------------------------------------------------------------------------------------------------------------
+	void TerrainGame::createScene01()
+	{
 
-        mGraphicsSystem->mWorkspace = setupCompositor();
+		mGraphicsSystem->mWorkspace = setupCompositor();
 
-        SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
-        SceneNode *rootNode = sceneManager->getRootSceneNode( SCENE_STATIC );
+		SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
+		SceneNode *rootNode = sceneManager->getRootSceneNode( SCENE_STATIC );
 
-        LogManager::getSingleton().setLogDetail(LoggingLevel::LL_BOREME);
+		LogManager::getSingleton().setLogDetail(LoggingLevel::LL_BOREME);
 
-        LogO("---- createScene");
-        Root *root = mGraphicsSystem->getRoot();
-        RenderSystem *renderSystem = root->getRenderSystem();
-        renderSystem->setMetricsRecordingEnabled( true );
-
-
-        //  Light  ------------------------------------------------
-        LogO("---- new light");
-        mSunLight = sceneManager->createLight();
-        SceneNode *lightNode = rootNode->createChildSceneNode();
-        lightNode->attachObject( mSunLight );
-        
-        // mSunLight->setPowerScale( 1.0f );  // should be * 1..
-        mSunLight->setPowerScale( Math::PI * 3 );  //** par! 1.5 2 3* 4
-        mSunLight->setType( Light::LT_DIRECTIONAL );
-        mSunLight->setDirection( Vector3( 0, -1, 0 ).normalisedCopy() );  //-
-
-        //  ambient  set in update ..
-        sceneManager->setAmbientLight(
-            // ColourValue( 0.63f, 0.61f, 0.28f ) * 0.04f,
-            // ColourValue( 0.52f, 0.63f, 0.76f ) * 0.04f,
-            ColourValue( 0.33f, 0.61f, 0.98f ) * 0.01f,
-            ColourValue( 0.02f, 0.53f, 0.96f ) * 0.01f,
-            Vector3::UNIT_Y );
-
-        //  atmosphere  ------------------------------------------------
-    #ifdef OGRE_BUILD_COMPONENT_ATMOSPHERE
-        LogO("---- new Atmosphere");
-        mGraphicsSystem->createAtmosphere( mSunLight );
-        OGRE_ASSERT_HIGH( dynamic_cast<AtmosphereNpr *>( sceneManager->getAtmosphere() ) );
-        AtmosphereNpr *atmosphere = static_cast<AtmosphereNpr *>( sceneManager->getAtmosphere() );
-        AtmosphereNpr::Preset p = atmosphere->getPreset();
-        p.fogDensity = 0.0002f;  //** par
-        p.densityCoeff = 0.27f;  //0.47f;
-        p.densityDiffusion = 0.75f;  //2.0f;
-        p.horizonLimit = 0.025f;
-        // p.sunPower = 1.0f;
-        // p.skyPower = 1.0f;
-        p.skyColour = Vector3(0.234f, 0.57f, 1.0f);
-        p.fogBreakMinBrightness = 0.25f;
-        p.fogBreakFalloff = 0.1f;
-        // p.linkedLightPower = Math::PI;
-        // p.linkedSceneAmbientUpperPower = 0.1f * Math::PI;
-        // p.linkedSceneAmbientLowerPower = 0.01f * Math::PI;
-        p.envmapScale = 1.0f;
-        atmosphere->setPreset( p );
-    #endif
-
-        //  camera  ------------------------------------------------
-        // mCameraController = new CameraController( mGraphicsSystem, false );
-        mGraphicsSystem->getCamera()->setFarClipDistance( 20000.f );  // par far
-
-        camPos = Vector3(10.f, 11.f, 16.f );
-        //camPos.y += mTerra->getHeightAt( camPos );
-        mGraphicsSystem->getCamera()->setPosition( camPos );
-        mGraphicsSystem->getCamera()->lookAt( camPos + Vector3(0.f, -1.6f, -2.f) );
-        Vector3 objPos;
+		LogO("---- createScene");
+		Root *root = mGraphicsSystem->getRoot();
+		RenderSystem *renderSystem = root->getRenderSystem();
+		renderSystem->setMetricsRecordingEnabled( true );
 
 
-        LogO(">>>> Init SR ----");
-        Init();
-        LogO(">>>> Init SR done ----");
+		//  Light  ------------------------------------------------
+		LogO("---- new light");
+		mSunLight = sceneManager->createLight();
+		SceneNode *lightNode = rootNode->createChildSceneNode();
+		lightNode->attachObject( mSunLight );
+		
+		// mSunLight->setPowerScale( 1.0f );  // should be * 1..
+		mSunLight->setPowerScale( Math::PI * 3 );  //** par! 1.5 2 3* 4
+		mSunLight->setType( Light::LT_DIRECTIONAL );
+		mSunLight->setDirection( Vector3( 0, -1, 0 ).normalisedCopy() );  //-
 
-        //  Terrain  ------------------------------------------------
-        // CreatePlane();  // fast
-        // CreateTerrain();  // 5sec
-        // CreateVeget();
+		//  ambient  set in update ..
+		sceneManager->setAmbientLight(
+			// ColourValue( 0.63f, 0.61f, 0.28f ) * 0.04f,
+			// ColourValue( 0.52f, 0.63f, 0.76f ) * 0.04f,
+			ColourValue( 0.33f, 0.61f, 0.98f ) * 0.01f,
+			ColourValue( 0.02f, 0.53f, 0.96f ) * 0.01f,
+			Vector3::UNIT_Y );
+
+		//  atmosphere  ------------------------------------------------
+	#ifdef OGRE_BUILD_COMPONENT_ATMOSPHERE
+		LogO("---- new Atmosphere");
+		mGraphicsSystem->createAtmosphere( mSunLight );
+		OGRE_ASSERT_HIGH( dynamic_cast<AtmosphereNpr *>( sceneManager->getAtmosphere() ) );
+		AtmosphereNpr *atmosphere = static_cast<AtmosphereNpr *>( sceneManager->getAtmosphere() );
+		AtmosphereNpr::Preset p = atmosphere->getPreset();
+		p.fogDensity = 0.0002f;  //** par
+		p.densityCoeff = 0.27f;  //0.47f;
+		p.densityDiffusion = 0.75f;  //2.0f;
+		p.horizonLimit = 0.025f;
+		// p.sunPower = 1.0f;
+		// p.skyPower = 1.0f;
+		p.skyColour = Vector3(0.234f, 0.57f, 1.0f);
+		p.fogBreakMinBrightness = 0.25f;
+		p.fogBreakFalloff = 0.1f;
+		// p.linkedLightPower = Math::PI;
+		// p.linkedSceneAmbientUpperPower = 0.1f * Math::PI;
+		// p.linkedSceneAmbientLowerPower = 0.01f * Math::PI;
+		p.envmapScale = 1.0f;
+		atmosphere->setPreset( p );
+	#endif
+
+		//  camera  ------------------------------------------------
+		// mCameraController = new CameraController( mGraphicsSystem, false );
+		mGraphicsSystem->getCamera()->setFarClipDistance( 20000.f );  // par far
+
+		camPos = Vector3(10.f, 11.f, 16.f );
+		//camPos.y += mTerra->getHeightAt( camPos );
+		mGraphicsSystem->getCamera()->setPosition( camPos );
+		mGraphicsSystem->getCamera()->lookAt( camPos + Vector3(0.f, -1.6f, -2.f) );
+		Vector3 objPos;
 
 
-        LogO("---- tutorial createScene");
+		LogO(">>>> Init SR ----");
+		Init();
+		LogO(">>>> Init SR done ----");
 
-        TutorialGameState::createScene01();
-    }
+		//  Terrain  ------------------------------------------------
+		// CreatePlane();  // fast
+		// CreateTerrain();  // 5sec
+		// CreateVeget();
 
 
-    //  Destroy
-    //-----------------------------------------------------------------------------------
-    void TerrainGame::destroyScene()
-    {
-        LogO("---- destroyScene");
+		LogO("---- tutorial createScene");
 
-        DestroyTerrain();
-        DestroyPlane();
+		TutorialGameState::createScene01();
+	}
 
-        LogO("---- tutorial destroyScene");
 
-        TutorialGameState::destroyScene();
+	//  Destroy
+	//-----------------------------------------------------------------------------------
+	void TerrainGame::destroyScene()
+	{
+		LogO("---- destroyScene");
 
-        LogO(">>>> Destroy SR ----");
-        Destroy();
-        LogO(">>>> Destroy SR done ----");
-    }
+		DestroyTerrain();
+		DestroyPlane();
+
+		LogO("---- tutorial destroyScene");
+
+		TutorialGameState::destroyScene();
+
+		LogO(">>>> Destroy SR ----");
+		Destroy();
+		LogO(">>>> Destroy SR done ----");
+	}
 
 }

@@ -21,7 +21,7 @@
 	100-199: V1_FAST \n
 	200-224: FAST \n
 	225-255: V1_FAST */
-    
+	
 const Ogre::uint8
 	RENDER_QUEUE_MAIN = 50,
 	RENDER_QUEUE_7 = 70,

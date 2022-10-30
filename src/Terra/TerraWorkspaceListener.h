@@ -1,7 +1,7 @@
 /*
 -----------------------------------------------------------------------------
 This source file is part of OGRE-Next
-    (Object-oriented Graphics Rendering Engine)
+	(Object-oriented Graphics Rendering Engine)
 For the latest info, see http://www.ogre3d.org/
 
 Copyright (c) 2000-2021 Torus Knot Software Ltd
@@ -35,42 +35,42 @@ THE SOFTWARE.
 
 namespace Ogre
 {
-    class Terra;
+	class Terra;
 
-    /** \addtogroup Component
-     *  @{
-     */
-    /** \addtogroup Effects
-     *  @{
-     */
+	/** \addtogroup Component
+	 *  @{
+	 */
+	/** \addtogroup Effects
+	 *  @{
+	 */
 
-    /**
-    @brief TerraWorkspaceListener
-        This listener allows Terra to cast shadows in Point and Spot shadow maps
-        This feature is optional.
+	/**
+	@brief TerraWorkspaceListener
+		This listener allows Terra to cast shadows in Point and Spot shadow maps
+		This feature is optional.
 
-        If the listener is not registered, Terra won't cast shadows in point
-        and spot lights
-    */
-    class TerraWorkspaceListener : public CompositorWorkspaceListener
-    {
-        HlmsTerra *m_hlmsTerra;
-        /// When true, we've modified Terra to properly perform shadow mapping
-        /// for non-directional lights
-        bool m_terraNeedsRestoring;
+		If the listener is not registered, Terra won't cast shadows in point
+		and spot lights
+	*/
+	class TerraWorkspaceListener : public CompositorWorkspaceListener
+	{
+		HlmsTerra *m_hlmsTerra;
+		/// When true, we've modified Terra to properly perform shadow mapping
+		/// for non-directional lights
+		bool m_terraNeedsRestoring;
 
-    public:
-        TerraWorkspaceListener( HlmsTerra *hlmsTerra );
-        virtual ~TerraWorkspaceListener();
+	public:
+		TerraWorkspaceListener( HlmsTerra *hlmsTerra );
+		virtual ~TerraWorkspaceListener();
 
-        void setHlmsTerra( HlmsTerra *hlmsTerra ) { m_hlmsTerra = hlmsTerra; }
+		void setHlmsTerra( HlmsTerra *hlmsTerra ) { m_hlmsTerra = hlmsTerra; }
 
-        void passPreExecute( CompositorPass *pass ) override;
-        void passSceneAfterShadowMaps( CompositorPassScene *pass ) override;
-    };
+		void passPreExecute( CompositorPass *pass ) override;
+		void passSceneAfterShadowMaps( CompositorPassScene *pass ) override;
+	};
 
-    /** @} */
-    /** @} */
+	/** @} */
+	/** @} */
 
 }  // namespace Ogre
 

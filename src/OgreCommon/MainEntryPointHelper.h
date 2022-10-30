@@ -5,21 +5,21 @@
 #if OGRE_PLATFORM != OGRE_PLATFORM_APPLE_IOS && OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32 || OGRE_PLATFORM == OGRE_PLATFORM_WINRT
-    #define WIN32_LEAN_AND_MEAN
-    #define VC_EXTRALEAN
-    #define NOMINMAX
-    #include <windows.h>
+	#define WIN32_LEAN_AND_MEAN
+	#define VC_EXTRALEAN
+	#define NOMINMAX
+	#include <windows.h>
 #endif
 #if OGRE_PLATFORM == OGRE_PLATFORM_WINRT
 #include <wrl.h>
 #endif
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-    #define DEMO_MAIN_ENTRY_PARAMS hInst, hPrevInstance, strCmdLine, nCmdShow
-    INT WINAPI WinMainApp( HINSTANCE hInst, HINSTANCE hPrevInstance, LPSTR strCmdLine, INT nCmdShow );
+	#define DEMO_MAIN_ENTRY_PARAMS hInst, hPrevInstance, strCmdLine, nCmdShow
+	INT WINAPI WinMainApp( HINSTANCE hInst, HINSTANCE hPrevInstance, LPSTR strCmdLine, INT nCmdShow );
 #else
-    #define DEMO_MAIN_ENTRY_PARAMS argc, argv
-    int mainApp( int argc, const char *argv[] );
+	#define DEMO_MAIN_ENTRY_PARAMS argc, argv
+	int mainApp( int argc, const char *argv[] );
 #endif
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32 || OGRE_PLATFORM == OGRE_PLATFORM_WINRT
@@ -28,30 +28,30 @@ INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE hInst2, LPSTR strCmdLine, INT int
 int main( int argc, const char *argv[] )
 #endif
 {
-    int retVal = -1;
-    try
-    {
-    #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-        retVal = WinMainApp( hInst, hInst2, strCmdLine, intParam );
-    #elif OGRE_PLATFORM == OGRE_PLATFORM_WINRT
-        if (SUCCEEDED(Windows::Foundation::Initialize(RO_INIT_MULTITHREADED)))
-            retVal = SDL_WinRTRunApp((int(*)(int,char**))mainApp, NULL);
-    #else
-        retVal = mainApp( argc, argv );
-    #endif
-    }
-    catch( Ogre::Exception& e )
-    {
+	int retVal = -1;
+	try
+	{
+	#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+		retVal = WinMainApp( hInst, hInst2, strCmdLine, intParam );
+	#elif OGRE_PLATFORM == OGRE_PLATFORM_WINRT
+		if (SUCCEEDED(Windows::Foundation::Initialize(RO_INIT_MULTITHREADED)))
+			retVal = SDL_WinRTRunApp((int(*)(int,char**))mainApp, NULL);
+	#else
+		retVal = mainApp( argc, argv );
+	#endif
+	}
+	catch( Ogre::Exception& e )
+	{
    #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-        MessageBoxA( NULL, e.getFullDescription().c_str(), "An exception has occured!",
-                    MB_OK | MB_ICONERROR | MB_TASKMODAL );
+		MessageBoxA( NULL, e.getFullDescription().c_str(), "An exception has occured!",
+					MB_OK | MB_ICONERROR | MB_TASKMODAL );
    #else
-        std::cerr << "An exception has occured: " <<
-                     e.getFullDescription().c_str() << std::endl;
+		std::cerr << "An exception has occured: " <<
+					 e.getFullDescription().c_str() << std::endl;
    #endif
-    }
+	}
 
-    return retVal;
+	return retVal;
 }
 
 #else

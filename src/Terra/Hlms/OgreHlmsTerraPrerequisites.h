@@ -1,7 +1,7 @@
 /*
 -----------------------------------------------------------------------------
 This source file is part of OGRE-Next
-    (Object-oriented Graphics Rendering Engine)
+	(Object-oriented Graphics Rendering Engine)
 For the latest info, see http://www.ogre3d.org/
 
 Copyright (c) 2000-2014 Torus Knot Software Ltd
@@ -30,36 +30,36 @@ THE SOFTWARE.
 
 namespace Ogre
 {
-    enum TerraTextureTypes
-    {
-        TERRA_DIFFUSE,
-        TERRA_DETAIL_WEIGHT,
-        TERRA_DETAIL0,
-        TERRA_DETAIL1,
-        TERRA_DETAIL2,
-        TERRA_DETAIL3,
-        TERRA_DETAIL0_NM,
-        TERRA_DETAIL1_NM,
-        TERRA_DETAIL2_NM,
-        TERRA_DETAIL3_NM,
-        TERRA_DETAIL_ROUGHNESS0,
-        TERRA_DETAIL_ROUGHNESS1,
-        TERRA_DETAIL_ROUGHNESS2,
-        TERRA_DETAIL_ROUGHNESS3,
-        TERRA_DETAIL_METALNESS0,
-        TERRA_DETAIL_METALNESS1,
-        TERRA_DETAIL_METALNESS2,
-        TERRA_DETAIL_METALNESS3,
-        TERRA_REFLECTION,
-        TERRA_RESERVED0,
-        TERRA_RESERVED1,
-        TERRA_RESERVED2,
-        TERRA_RESERVED3,
-        TERRA_RESERVED4,
-        NUM_TERRA_TEXTURE_TYPES
-    };
+	enum TerraTextureTypes
+	{
+		TERRA_DIFFUSE,
+		TERRA_DETAIL_WEIGHT,
+		TERRA_DETAIL0,
+		TERRA_DETAIL1,
+		TERRA_DETAIL2,
+		TERRA_DETAIL3,
+		TERRA_DETAIL0_NM,
+		TERRA_DETAIL1_NM,
+		TERRA_DETAIL2_NM,
+		TERRA_DETAIL3_NM,
+		TERRA_DETAIL_ROUGHNESS0,
+		TERRA_DETAIL_ROUGHNESS1,
+		TERRA_DETAIL_ROUGHNESS2,
+		TERRA_DETAIL_ROUGHNESS3,
+		TERRA_DETAIL_METALNESS0,
+		TERRA_DETAIL_METALNESS1,
+		TERRA_DETAIL_METALNESS2,
+		TERRA_DETAIL_METALNESS3,
+		TERRA_REFLECTION,
+		TERRA_RESERVED0,
+		TERRA_RESERVED1,
+		TERRA_RESERVED2,
+		TERRA_RESERVED3,
+		TERRA_RESERVED4,
+		NUM_TERRA_TEXTURE_TYPES
+	};
 
-    class HlmsTerra;
+	class HlmsTerra;
 }
 
 #endif

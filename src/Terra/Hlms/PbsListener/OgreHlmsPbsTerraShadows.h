@@ -1,7 +1,7 @@
 /*
 -----------------------------------------------------------------------------
 This source file is part of OGRE-Next
-    (Object-oriented Graphics Rendering Engine)
+	(Object-oriented Graphics Rendering Engine)
 For the latest info, see http://www.ogre3d.org/
 
 Copyright (c) 2000-2014 Torus Knot Software Ltd
@@ -34,50 +34,50 @@ THE SOFTWARE.
 
 namespace Ogre
 {
-    class Terra;
+	class Terra;
 
-    class HlmsPbsTerraShadows : public HlmsListener
-    {
-    protected:
-        Terra                   *mTerra;
-        HlmsSamplerblock const  *mTerraSamplerblock;
+	class HlmsPbsTerraShadows : public HlmsListener
+	{
+	protected:
+		Terra                   *mTerra;
+		HlmsSamplerblock const  *mTerraSamplerblock;
 #if OGRE_DEBUG_MODE
-        SceneManager            *mSceneManager;
+		SceneManager            *mSceneManager;
 #endif
 
-    public:
-        HlmsPbsTerraShadows();
-        virtual ~HlmsPbsTerraShadows();
+	public:
+		HlmsPbsTerraShadows();
+		virtual ~HlmsPbsTerraShadows();
 
-        void setTerra( Terra *terra );
+		void setTerra( Terra *terra );
 
-        uint16 getNumExtraPassTextures( const HlmsPropertyVec &properties,
-                                        bool                   casterPass ) const override;
+		uint16 getNumExtraPassTextures( const HlmsPropertyVec &properties,
+										bool                   casterPass ) const override;
 
-        void propertiesMergedPreGenerationStep( Hlms *hlms, const HlmsCache &passCache,
-                                                const HlmsPropertyVec &renderableCacheProperties,
-                                                const PiecesMap renderableCachePieces[NumShaderTypes],
-                                                const HlmsPropertyVec & properties,
-                                                const QueuedRenderable &queuedRenderable ) override;
+		void propertiesMergedPreGenerationStep( Hlms *hlms, const HlmsCache &passCache,
+												const HlmsPropertyVec &renderableCacheProperties,
+												const PiecesMap renderableCachePieces[NumShaderTypes],
+												const HlmsPropertyVec & properties,
+												const QueuedRenderable &queuedRenderable ) override;
 
-        void preparePassHash( const CompositorShadowNode *shadowNode, bool casterPass,
-                              bool dualParaboloid, SceneManager *sceneManager, Hlms *hlms ) override;
+		void preparePassHash( const CompositorShadowNode *shadowNode, bool casterPass,
+							  bool dualParaboloid, SceneManager *sceneManager, Hlms *hlms ) override;
 
-        uint32 getPassBufferSize( const CompositorShadowNode *shadowNode, bool casterPass,
-                                  bool dualParaboloid, SceneManager *sceneManager ) const override;
+		uint32 getPassBufferSize( const CompositorShadowNode *shadowNode, bool casterPass,
+								  bool dualParaboloid, SceneManager *sceneManager ) const override;
 
-        float *preparePassBuffer( const CompositorShadowNode *shadowNode, bool casterPass,
-                                          bool dualParaboloid, SceneManager *sceneManager,
-                                  float *passBufferPtr ) override;
+		float *preparePassBuffer( const CompositorShadowNode *shadowNode, bool casterPass,
+										  bool dualParaboloid, SceneManager *sceneManager,
+								  float *passBufferPtr ) override;
 
-        void hlmsTypeChanged( bool casterPass, CommandBuffer *commandBuffer,
-                              const HlmsDatablock *datablock, size_t texUnit ) override;
-    };
+		void hlmsTypeChanged( bool casterPass, CommandBuffer *commandBuffer,
+							  const HlmsDatablock *datablock, size_t texUnit ) override;
+	};
 
-    struct PbsTerraProperty
-    {
-        static const IdString TerraEnabled;
-    };
+	struct PbsTerraProperty
+	{
+		static const IdString TerraEnabled;
+	};
 }
 
 #endif
