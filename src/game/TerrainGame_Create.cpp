@@ -82,21 +82,21 @@ namespace Demo
 
 		///  Load Settings
 		//----------------------------------------------------------------
-		settings = new SETTINGS();
+		pSet = new SETTINGS();
 		string setFile = PATHMANAGER::SettingsFile();
 		
 		if (!PATHMANAGER::FileExists(setFile))
 		{
 			cerr << "Settings not found - loading defaults." << endl;
-			LoadDefaultSet(settings,setFile);
+			LoadDefaultSet(pSet,setFile);
 		}
-		settings->Load(setFile);  // LOAD
-		if (settings->version != SET_VER)  // loaded older, use default
+		pSet->Load(setFile);  // LOAD
+		if (pSet->version != SET_VER)  // loaded older, use default
 		{
 			cerr << "Settings found, but older version - loading defaults." << endl;
 			std::filesystem::rename(setFile, PATHMANAGER::UserConfigDir() + "/game_old.cfg");
-			LoadDefaultSet(settings,setFile);
-			settings->Load(setFile);  // LOAD
+			LoadDefaultSet(pSet,setFile);
+			pSet->Load(setFile);  // LOAD
 		}
 
 
@@ -106,10 +106,10 @@ namespace Demo
 
 		///  Game start
 		//----------------------------------------------------------------
-		pGame = new GAME(settings);
+		pGame = new GAME(pSet);
 		pGame->Start();
 
-		pApp = new App(settings, pGame);
+		pApp = new App(pSet, pGame);
 		//; pApp->mRoot = root;
 		pGame->app = pApp;
 		sc = pApp->scn->sc;
@@ -117,21 +117,31 @@ namespace Demo
 		pGame->ReloadSimData();
 
 /*  for game.cfg
-track = Test1-Flat
-track = Test2-Asphalt
-track = Test3-Bumps
-track = Test4-TerrainBig
-track = Test7-FluidsSmall
-track = Test12-Snow
+track = 
+Test1-Flat
+Test2-Asphalt
+Test3-Bumps
+Test4-TerrainBig
 
-track = Jng13-Tropic
-track = Jng20-JungleMaze
-track = For12-HighPeaks
+Test7-FluidsSmall
+Test8-Objects
+Test12-Snow
 
-track = Tox2-AcidLakes
-track = Jng25-CantorJungle
-track = For18-MountCaro
-track = Isl17-AdapterIslands
+TestC6-Temp
+TestC8-Align
+TestC9-Jumps
+TestC10-Pace
+TestC12-SR
+TestC13-Rivers
+
+Jng13-Tropic
+Jng20-JungleMaze
+For12-HighPeaks
+Tox2-AcidLakes
+
+Jng25-CantorJungle
+For18-MountCaro
+Isl17-AdapterIslands
 */
 		//  new game
 		pApp->mCamera = mGraphicsSystem->getCamera();
@@ -149,7 +159,7 @@ track = Isl17-AdapterIslands
 	
 		delete pApp;
 		delete pGame;
-		delete settings;
+		delete pSet;
 	}
 
 
@@ -235,7 +245,7 @@ track = Isl17-AdapterIslands
 		// CreateVeget();
 
 
-		LogO("---- tutorial createScene");
+		LogO("---- base createScene");
 
 		TutorialGameState::createScene01();
 	}
@@ -250,7 +260,7 @@ track = Isl17-AdapterIslands
 		DestroyTerrain();
 		DestroyPlane();
 
-		LogO("---- tutorial destroyScene");
+		LogO("---- base destroyScene");
 
 		TutorialGameState::destroyScene();
 

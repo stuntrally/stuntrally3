@@ -27,6 +27,10 @@
 #include "carcontrolmap_local.h"
 
 #include "Def_Str.h"
+#include "CScene.h"
+#include "SceneXml.h"
+#include "SceneClasses.h"
+#include "settings.h"
 using namespace Demo;
 using namespace Ogre;
 
@@ -125,6 +129,22 @@ namespace Demo
 					bool camCar = carM->fCam && carM->fCam->TypeCar();  // fix
 					pGame->snd->setCamera(/*carPoses[qn][c]*/po.camPos, camCar ? -y : -z, camCar ? -z : y, Vector3::ZERO);
 				}
+			}
+		}
+
+		///  objects - dynamic (props)  -------------------------------------------------------------
+		for (int i=0; i < pApp->scn->sc->objects.size(); ++i)
+		{
+			Object& o = pApp->scn->sc->objects[i];
+			if (o.ms)
+			{
+				btTransform tr, ofs;
+				o.ms->getWorldTransform(tr);
+				const btVector3& p = tr.getOrigin();
+				const btQuaternion& q = tr.getRotation();
+				o.pos[0] = p.x();  o.pos[1] = p.y();  o.pos[2] = p.z();
+				o.rot[0] = q.x();  o.rot[1] = q.y();  o.rot[2] = q.z();  o.rot[3] = q.w();
+				o.SetFromBlt();
 			}
 		}
 
@@ -255,6 +275,9 @@ namespace Demo
 			// pGame->snd_lapbest->start();  //)
 			// break;
 
+		case SDL_SCANCODE_ESCAPE:
+			if (pSet->escquit)
+				mGraphicsSystem->setQuit();  break;
 		
 		//** terrain wireframe toggle
 		case SDL_SCANCODE_R:

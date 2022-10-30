@@ -65,7 +65,7 @@ public:
 	}
 
 	btRigidBody* createRigidBody(bool isDynamic, btScalar mass, const btTransform& startTransform,
-								btCollisionShape* shape, const char* bodyName)
+								 btCollisionShape* shape, const char* bodyName)
 	{
 		btVector3 localInertia;
 		localInertia.setZero();

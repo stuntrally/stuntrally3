@@ -107,15 +107,15 @@ namespace Demo
 			else if( *(originalDataFolder.end() - 1) != '/' )
 				originalDataFolder += "/";
 
-			const int count = 6;
+			const int count = 5;
 			const char *c_locations[count] =
 			{
-				"materials/Tutorial_Terrain",
-				"materials/Tutorial_Terrain/GLSL",
-				"materials/Tutorial_Terrain/HLSL",
-				"materials/Tutorial_Terrain/Metal",
-				"materials/Postprocessing/SceneAssets",
-				"materials/PbsMaterials"
+				"materials/Terrain",
+				"materials/Terrain/GLSL",
+				"materials/Terrain/HLSL",
+				"materials/Terrain/Metal",
+				// "materials/Postprocessing/SceneAssets",
+				"materials/Pbs"
 			};
 
 			for( size_t i=0; i < count; ++i )

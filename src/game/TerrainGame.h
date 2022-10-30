@@ -76,7 +76,7 @@ namespace Demo
 		TerrainGame();
 
 		//  SR
-		SETTINGS* settings = 0;
+		SETTINGS* pSet = 0;
 		GAME* pGame = 0;
 		App* pApp = 0;
 		

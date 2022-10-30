@@ -664,8 +664,8 @@ void App::LoadRoad()  // 6
 
 void App::LoadObjects()  // 7
 {
-	// if (dstTrk)
-	// 	CreateObjects();
+	if (dstTrk)
+		CreateObjects();
 }
 
 void App::LoadTrees()  // 8

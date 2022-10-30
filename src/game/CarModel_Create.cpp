@@ -379,7 +379,7 @@ void CarModel::LogMeshInfo(const Item* ent, const String& name, int mul)
 	for (int i=0; i < subs; ++i)
 	{
 		SubMesh* sm = msh->getSubMesh(i);
-		//; tris += sm->IndexMap.size();//indexData->indexCount;
+		tris += sm->mVao[0].size();  //? indexData->indexCount;
 	}
 	all_tris += tris * mul;  //wheels x4
 	all_subs += subs * mul;
