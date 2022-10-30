@@ -175,7 +175,8 @@ track = Isl17-AdapterIslands
         SceneNode *lightNode = rootNode->createChildSceneNode();
         lightNode->attachObject( mSunLight );
         
-        mSunLight->setPowerScale( Math::PI * 3 );  //** par! 1.5 2 3* 4  should be * 1..
+        // mSunLight->setPowerScale( 1.0f );  // should be * 1..
+        mSunLight->setPowerScale( Math::PI * 3 );  //** par! 1.5 2 3* 4
         mSunLight->setType( Light::LT_DIRECTIONAL );
         mSunLight->setDirection( Vector3( 0, -1, 0 ).normalisedCopy() );  //-
 
@@ -211,8 +212,8 @@ track = Isl17-AdapterIslands
     #endif
 
         //  camera  ------------------------------------------------
-        mCameraController = new CameraController( mGraphicsSystem, false );
-        mGraphicsSystem->getCamera()->setFarClipDistance( 100000.f );  // par far
+        // mCameraController = new CameraController( mGraphicsSystem, false );
+        mGraphicsSystem->getCamera()->setFarClipDistance( 20000.f );  // par far
 
         camPos = Vector3(10.f, 11.f, 16.f );
         //camPos.y += mTerra->getHeightAt( camPos );

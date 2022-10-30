@@ -161,7 +161,6 @@ namespace Demo
 
             Ogre::ArchiveManager &archiveManager = Ogre::ArchiveManager::getSingleton();
 
-            Ogre::HlmsTerra *hlmsTerra = 0;
             Ogre::HlmsManager *hlmsManager = mRoot->getHlmsManager();
 
             {

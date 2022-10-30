@@ -24,6 +24,7 @@
 
 #include "OgreHlmsPbs.h"
 #include "OgreHlmsPbsDatablock.h"
+#include "OgreHlmsTerraDatablock.h"
 
 //  SR
 #include "CGame.h"
@@ -58,6 +59,59 @@ namespace Demo
         HlmsManager *hlmsManager = root->getHlmsManager();
         HlmsDatablock *datablock = 0;
 
+        LogO("---- new Terra json mat");
+
+    #if 1
+        std::string datablockName = "TerraExampleMaterial";  // from .json
+    #else
+        std::string datablockName = "TerraExampleMaterial2";
+        mGraphicsSystem->hlmsTerra->setDetailTextureProperty(
+        datablock = mGraphicsSystem->hlmsTerra->createDatablock(
+            datablockName.c_str(), datablockName.c_str(),
+            HlmsMacroblock(),
+            HlmsBlendblock(),
+            HlmsParamVec() );
+        assert( dynamic_cast<HlmsTerraDatablock *>( datablock ) );
+        // datablock->set
+        HlmsTerraDatablock *tblock = static_cast<HlmsTerraDatablock *>( datablock );
+        //tblock->setDiffuse(Vector3());
+        // tblock->setDetail
+        // loadTexture( subobj, "diffuse_map", static_cast<TerraTextureTypes>( TERRA_DETAIL0 + i ),
+        //                 terraDatablock, resourceGroup );
+        // loadTexture( subobj, "normal_map",
+        //                 static_cast<TerraTextureTypes>( TERRA_DETAIL0_NM + i ), terraDatablock,
+        //                 resourceGroup );
+        const HlmsSamplerblock *sam = tblock->getSamplerblock( TERRA_DETAIL0 );
+        sam->setTexture(
+        sam->setTexture()
+
+        tblock->setDetailTextureProperty();
+           "diffuse" :
+            {
+                "value" : [0.7, 0.7, 0.7],
+                "texture" : "stones_gray_h2.jpg"
+            },
+			
+			"detail_weight" :
+            {
+                "texture" : "HeightmapBlendmap.png",
+                "sampler" : "unique_name",
+                "normalize" : true
+            },
+			
+			"detail0" :
+            {
+                "offset" : [0, 0],
+                "scale" : [128, 128],
+				"roughness" : 0.5,
+				"metalness" : 0.5,
+                "diffuse_map" : "grass_ground_d.jpg",
+                "normal_map" : "grass_ground_n.jpg",
+				"roughness_map" : "grass_ground_h.jpg",
+				"metalness_map" : "grass_ground_s.jpg"
+            },
+    #endif
+
         LogO("---- new Terra");
 
         mTerra = new Terra( Id::generateNewId<MovableObject>(),
@@ -86,7 +140,7 @@ namespace Demo
 
         LogO("---- Terra attach");
 
-        datablock = hlmsManager->getDatablock( "TerraExampleMaterial" );
+        datablock = hlmsManager->getDatablock( datablockName );
         mTerra->setDatablock( datablock );
 
         mHlmsPbsTerraShadows = new HlmsPbsTerraShadows();

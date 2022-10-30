@@ -531,6 +531,18 @@ void CarModel::Create()
 	vPofs = Vector3::ZERO;
 	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    "g", ghost, RV_CarGlass, 0, sMtr[Mtr_CarBody]+"g",  bLogInfo);
 	
+#if 0  //  lights test ** ?
+	Light* light = mSceneMgr->createLight();
+	SceneNode* lightNode = ndCar->createChildSceneNode();
+	lightNode->attachObject( light );
+	light->setDiffuseColour( 1.f, 1.f, 1.f );  // Warm
+	light->setSpecularColour( 1.f, 1.f, 1.f );
+	light->setPowerScale( Ogre::Math::PI );
+	light->setType( Ogre::Light::LT_POINT); // SPOTLIGHT );
+	lightNode->setPosition( 0.0f, 1.0f, 0.0f );  // ofs?
+	light->setDirection( Ogre::Vector3( 1, 0, 0 ).normalisedCopy() );
+	light->setAttenuationBasedOnRadius( 10.0f, 0.01f );
+#endif
 
 	//  wheels  ----------------------
 	int w2 = numWheels==2 ? 1 : 2;
@@ -685,7 +697,7 @@ void CarModel::Create()
 				if (!ndWhE[w])
 				{	ndWhE[w] = ndRoot->createChildSceneNode();  ToDel(ndWhE[w]);  }
 
-			#if 1  // fixme trails alpha..
+			#if 0  // fixme trails alpha..
 				if (!whTrail[w])
 				{	NameValuePairList params;
 					params["numberOfChains"] = "1";

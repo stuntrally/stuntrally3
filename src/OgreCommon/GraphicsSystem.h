@@ -18,6 +18,11 @@
     #include <SDL.h>
 #endif
 
+namespace Ogre
+{
+    class HlmsTerra;
+}
+
 namespace Demo
 {
     class SdlInputHandler;
@@ -41,6 +46,7 @@ namespace Demo
         Ogre::Camera                *mCamera;
     public:
         Ogre::CompositorWorkspace   *mWorkspace;
+        Ogre::HlmsTerra *hlmsTerra = 0;
     protected:
         Ogre::String                mPluginsFolder;
         Ogre::String                mWriteAccessFolder;
