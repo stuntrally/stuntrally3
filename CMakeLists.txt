@@ -137,6 +137,8 @@ include_directories( ${OPENAL_INCLUDE_DIR} )
 
 add_executable( ${PROJECT_NAME} WIN32 ${GAME_SOURCES} )
 
+target_precompile_headers(${PROJECT_NAME} PRIVATE src/game/pch.h)
+
 
 # fix 4
 #message(STATUS "${OPENAL_INCLUDE_DIR} ${OPENAL_LIBRARY}")
