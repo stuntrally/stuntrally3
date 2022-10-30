@@ -19,9 +19,7 @@ class CScene;  class CData;  class CInput;  class GraphView;
 class GAME;  class CHud;  class CGui;  class CGuiCom;
 
 
-class App /*: public BaseApp,
-			public sh::MaterialListener,
-			public ICS::ChannelListener*/
+class App //: public ICS::ChannelListener
 {
 public:
 	App(SETTINGS* settings, GAME* game);
@@ -40,7 +38,7 @@ public:
 	
 
 	//  BaseApp init
-	// void postInit(), SetFactoryDefaults();
+	// void postInit();
 	Ogre::Camera* mCamera =0;
 	Ogre::SceneManager* mSceneMgr =0;
 	Ogre::TextureGpu* mDynamicCubemap =0;
@@ -104,7 +102,7 @@ public:
 	///  create  . . . . . . . . . . . . . . . . . . . . . . . . 
 	Ogre::String resCar, resTrk, resDrv;
 	void CreateCar(), CreateRoads(), CreateRoadsInt(), CreateTrail(Ogre::Camera* cam);
-	// void CreateObjects(), DestroyObjects(bool clear), ResetObjects();
+	void CreateObjects(), DestroyObjects(bool clear), ResetObjects();
 
 	void NewGame(bool force=false);
 	void NewGameDoLoad();
@@ -115,11 +113,6 @@ public:
 	bool dstTrk;  // destroy track, false if same
 	Ogre::String oldTrack;  bool oldTrkUser;
 	Ogre::String TrkDir();
-
-	//  fluids to destroy
-	// std::vector<Ogre::String/*MeshPtr*/> vFlSMesh;
-	// std::vector<Ogre::Entity*> vFlEnt;
-	// std::vector<Ogre::SceneNode*> vFlNd;
 
 	
 	//  Loading

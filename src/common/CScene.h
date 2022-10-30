@@ -6,9 +6,9 @@
 #include <OgreString.h>
 // #include <OgreTexture.h>
 
-namespace Ogre  {  class Terrain;  class TerrainGlobalOptions;  class TerrainGroup;  class StaticGeometry;
+namespace Ogre  {  class Terra;  class StaticGeometry;
 	class Light;  class SceneNode;  class Camera;  class Texture;  class SceneManager;  class Entity;
-	class Rectangle2D;  class RenderTexture;  class Viewport;  class Root;  class ParticleSystem; }
+	class Rectangle2D;  class RenderTexture;  class Viewport;  class Root;  class ParticleSystem;  }
 class App;  class Scene;  class WaterRTT;  class CData;  class SplineRoad;  class PaceNotes;
 
 
@@ -52,9 +52,10 @@ public:
 
 	//  Fluids  water, mud
 	std::vector<Ogre::String/*MeshPtr*/> vFlSMesh;
-	std::vector<Ogre::Entity*> vFlEnt;
+	std::vector<Ogre::Item*> vFlIt;
 	std::vector<Ogre::SceneNode*> vFlNd;
-	// void CreateFluids(), DestroyFluids(), CreateBltFluids();
+	Ogre::SceneNode* mNdFluidsRoot =0;
+	void CreateFluids(), DestroyFluids(), CreateBltFluids();
 
 	// WaterRTT* mWaterRTT;
 	// void UpdateWaterRTT(Ogre::Camera* cam);
@@ -71,8 +72,7 @@ public:
 
 	
 	//  Vegetation
-	// Forests::PagedGeometry *trees, *grass;
-	// void CreateTrees(), DestroyTrees(), RecreateTrees(), updGrsTer(), UpdCamera();
+	void CreateTrees(), DestroyTrees(), RecreateTrees(); //, updGrsTer(), UpdCamera();
 
 
 	///  Terrain
@@ -82,7 +82,7 @@ public:
 	// void DestroyTerrain()
 	void CreateBltTerrain(), copyTerHmap();
 
-	// Ogre::Terrain* terrain;
+	Ogre::Terra* terrain;
 	// Ogre::TerrainGlobalOptions* mTerrainGlobals;
 	// Ogre::TerrainGroup* mTerrainGroup;
 	// void SetupTerrain(), UpdTerErr();

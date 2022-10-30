@@ -444,6 +444,7 @@ void App::LoadGame()  // 2
 			carModels.push_back(c);
 		}
 	}
+
 	///  track's ghost  . . .
 	///--------------------------------------------
 	ghtrk.Clear();  vTimeAtChks.clear();
@@ -467,6 +468,7 @@ void App::LoadGame()  // 2
 		pGame->timer.end_sim = false;
 	}
 #endif
+
 	pGame->NewGameDoLoadMisc(0.f/*pretime*/);
 }
 //---------------------------------------------------------------------------------------------------------------
@@ -485,8 +487,8 @@ void App::LoadScene()  // 3
 	}*/
 
 	//  fluids
-	// if (dstTrk)
-		// scn->CreateFluids();
+	if (dstTrk)
+		scn->CreateFluids();
 
 	if (dstTrk)
 		pGame->collision.world->setGravity(btVector3(0.0, 0.0, -scn->sc->gravity));

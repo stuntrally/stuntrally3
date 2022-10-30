@@ -1,33 +1,41 @@
+#include "OgreCommon.h"
 #include "pch.h"
 #include "RenderConst.h"
 #include "Def_Str.h"
-#include "data/SceneXml.h"
-#include "data/FluidsXml.h"
-#include "data/CData.h"
+#include "SceneXml.h"
+#include "FluidsXml.h"
+#include "CData.h"
 #include "ShapeData.h"
-#include "WaterRTT.h"
+
+// #include "WaterRTT.h"
 #include "CScene.h"
 #ifdef SR_EDITOR
-	#include "../../editor/CApp.h"
-	#include "../../editor/settings.h"
+	#include "CApp.h"
+	#include "settings.h"
 	#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
 #else
-	#include "../CGame.h"
-	#include "../../vdrift/game.h"
-	//#include "../../settings.h"
+	#include "CGame.h"
+	#include "game.h"
+	//#include "settings.h"
 #endif
 #include <BulletCollision/CollisionDispatch/btCollisionObject.h>
 #include <BulletCollision/CollisionShapes/btBoxShape.h>
 #include <BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h>
+
 #include <OgreManualObject.h>
 #include <OgreMeshManager.h>
 #include <OgreMaterialManager.h>
 #include <OgreEntity.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
-#include <OgreMesh.h>
 #include <OgreTimer.h>
-#include "../shiny/Main/Factory.hpp"
+
+#include "OgreItem.h"
+#include "OgreMesh.h"
+#include "OgreMeshManager.h"
+#include "OgreMesh2.h"
+#include "OgreMeshManager2.h"
+#include "OgreManualObject2.h"
 using namespace Ogre;
 
 
@@ -35,12 +43,12 @@ using namespace Ogre;
 //----------------------------------------------------------------------------------------------------------------------
 void CScene::CreateFluids()
 {
-	vFlNd.clear();  vFlEnt.clear();  vFlSMesh.clear();
+	vFlNd.clear();  vFlIt.clear();  vFlSMesh.clear();
 #ifdef SR_EDITOR
 	app->UpdFluidBox();
 #endif
-	if (!mWaterRTT->mNdFluidsRoot)
-		mWaterRTT->mNdFluidsRoot = app->mSceneMgr->getRootSceneNode()->createChildSceneNode("FluidsRootNode");
+	if (!mNdFluidsRoot)
+		mNdFluidsRoot = app->mSceneMgr->getRootSceneNode()->createChildSceneNode(SCENE_STATIC/*"FluidsRootNode"*/);
 			
 	for (int i=0; i < sc->fluids.size(); ++i)
 	{
@@ -48,25 +56,37 @@ void CScene::CreateFluids()
 		//  plane
 		Plane p;  p.normal = Vector3::UNIT_Y;  p.d = 0;
 		String smesh = "WaterMesh"+toStr(i);
-		MeshPtr mesh = MeshManager::getSingleton().createPlane( smesh, rgDef,
-			p, fb.size.x,fb.size.z, 6,6, true, 1, fb.tile.x*fb.size.x,fb.tile.y*fb.size.z, Vector3::UNIT_Z);
 
-		Entity* efl = app->mSceneMgr->createEntity("WaterPlane"+toStr(i), "WaterMesh"+toStr(i));
-		unsigned short src,dest;
-		if (!mesh->suggestTangentVectorBuildParams(VES_TANGENT, src,dest))
-			mesh->buildTangentVectors(VES_TANGENT, src,dest);
+		v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
+			smesh, rgDef,
+			p, fb.size.x, fb.size.z,
+			6,6, true, 1,
+			fb.tile.x*fb.size.x, fb.tile.y*fb.size.z, Vector3::UNIT_Z,
+			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 
+		MeshPtr planeMesh = MeshManager::getSingleton().createByImportingV1(
+			"WtrPlane"+toStr(i), rgDef,
+			planeMeshV1.get(), true, true, true );
+		
+		planeMeshV1->unload();
+
+		SceneManager *mgr = app->mSceneMgr;
+		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
+
+		Item* item = mgr->createItem( planeMesh, SCENE_STATIC );
 		String sMtr = fb.id == -1 ? "" : data->fluids->fls[fb.id].material;  //"Water"+toStr(1+fb.type)
-		MaterialPtr mtr = MaterialManager::getSingleton().getByName(sMtr);  //temp
+		item->setDatablock( sMtr );  item->setCastShadows( false );
+		item->setRenderQueueGroup( RQG_Fluid );  item->setVisibilityFlags( RV_Terrain );
+		
+		SceneNode* node = rootNode->createChildSceneNode( SCENE_STATIC );
+		node->setPosition( fb.pos );  //, Quaternion(Degree(fb.rot.x),Vector3::UNIT_Y)
+		node->attachObject( item );
 
-		efl->setMaterial(mtr);  efl->setCastShadows(false);
-		efl->setRenderQueueGroup(RQG_Fluid);  efl->setVisibilityFlags(RV_Terrain);
-
-		SceneNode* nfl = mWaterRTT->mNdFluidsRoot->createChildSceneNode(
-			fb.pos/*, Quaternion(Degree(fb.rot.x),Vector3::UNIT_Y)*/);
-		nfl->attachObject(efl);
-
-		vFlSMesh.push_back(smesh);  vFlEnt.push_back(efl);  vFlNd.push_back(nfl);
+		/*unsigned short src,dest;  //?
+		if (!mesh->suggestTangentVectorBuildParams(VES_TANGENT, src,dest))
+			mesh->buildTangentVectors(VES_TANGENT, src,dest);*/
+		
+		vFlSMesh.push_back(smesh);  vFlIt.push_back(item);  vFlNd.push_back(node);
 
 	#ifndef SR_EDITOR  // game
 		CreateBltFluids();
@@ -90,7 +110,7 @@ void CScene::CreateBltFluids()
 		float t = sc->td.fTerWorldSize*0.5f;  // not bigger than terrain
 		btScalar sx = std::min(t, fb.size.x*0.5f), sy = std::min(t, fb.size.z*0.5f), sz = fb.size.y*0.5f;
 		
-	if (0 && fp.solid)
+	if (0 && fp.solid)  /// test random ray jumps meh-
 	{
 		const int size = 16;
 		float* hfHeight = new float[size*size];
@@ -171,11 +191,11 @@ void CScene::DestroyFluids()
 	for (int i=0; i < vFlSMesh.size(); ++i)
 	{
 		vFlNd[i]->detachAllObjects();
-		app->mSceneMgr->destroyEntity(vFlEnt[i]);
+		app->mSceneMgr->destroyItem(vFlIt[i]);
 		app->mSceneMgr->destroySceneNode(vFlNd[i]);
 		Ogre::MeshManager::getSingleton().remove(vFlSMesh[i]);
 	}
-	vFlNd.clear();  vFlEnt.clear();  vFlSMesh.clear();
+	vFlNd.clear();  vFlIt.clear();  vFlSMesh.clear();
 }
 
 #ifdef SR_EDITOR
@@ -203,8 +223,8 @@ void App::UpdMtrWaterDepth()
 #endif
 
 
-//  Water rtt, setup and recreate
-void CScene::UpdateWaterRTT(Camera* cam)
+//;  Water rtt, setup and recreate
+/*void CScene::UpdateWaterRTT(Camera* cam)
 {
 	mWaterRTT->setRTTSize(ciShadowSizesA[app->pSet->water_rttsize]);
 	mWaterRTT->setReflect(app->pSet->water_reflect);
@@ -218,3 +238,4 @@ void CScene::UpdateWaterRTT(Camera* cam)
 	mWaterRTT->recreate();
 	mWaterRTT->setActive(!sc->fluids.empty());
 }
+*/
