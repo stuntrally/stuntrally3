@@ -1,5 +1,5 @@
 #pragma once
-// -- NOT to be included in headers  --
+// -- NOT to be included in headers?  --
 
 #include <iomanip>
 #include <OgreLogManager.h>
@@ -47,7 +47,7 @@ static Ogre::String fToStr(const float v, const char precision=2, const char wid
 /*
 const int ciShadowSizesNum = 5;
 const int ciShadowSizesA[ciShadowSizesNum] = {256,512,1024,2048,4096};
-
+*/
 static Ogre::String StrTime(float time)  // format time string
 {
 	int min = (int) time / 60;
@@ -68,4 +68,3 @@ static Ogre::String StrTime2(float time)  // short
 	}else
 		return "-:--";
 }
-*/

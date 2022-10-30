@@ -557,9 +557,9 @@ void App::LoadCar()  // 4
 		rh.networked = mClient ? 1 : 0;
 		rh.num_laps = pSet->game.num_laps;
 		rh.sim_mode = pSet->game.sim_mode;
-	}
+	}*/
 	rewind.Clear();
-
+	/*
 	ghost.InitHeader(pSet->game.track.c_str(), pSet->game.track_user, !bRplPlay);
 	gh.numPlayers = 1;  // ghost always 1 car
 	ghost.Clear();  ghost.ClearCars();

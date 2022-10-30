@@ -2,13 +2,12 @@
 #include "settings.h"
 // #include "Gui_Def.h"
 // #include "BaseApp.h"
-// #include "Replay.h"
-// #include "ReplayTrk.h"
+#include "Replay.h"
+#include "ReplayTrk.h"
 #include "cardefs.h"
 #include "CarPosInfo.h"
 // #include "OgreTextureGpu.h"
 
-// #include <OgreShadowCameraSetup.h>
 // #include "../network/networkcallbacks.hpp"
 // #include "../oics/ICSChannelListener.h"
 // #include "PreviewTex.h"
@@ -66,7 +65,7 @@ public:
 	//  ghost - saved on best lap
 	//  ghplay - ghost ride replay, loaded if was on disk, replaced when new
 	//; Replay2 replay, ghost, ghplay;
-	// Rewind rewind;  // to take car back in time (after crash etc.)
+	Rewind rewind;  // to take car back in time (after crash etc.)
 	// TrackGhost ghtrk;  //  ghtrk - track's ghost
 
 	// std::vector<ReplayFrame2> frm;  //size:16  //  frm - used when playing replay for hud and sounds
