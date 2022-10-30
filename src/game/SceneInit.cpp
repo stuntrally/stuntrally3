@@ -396,8 +396,8 @@ void App::LoadGame()  // 2
 			if (i == 0)  nick = pSet->nickname;
 			else  nick = mClient->getPeer(startId).name;
 		}*/
-		// Camera* cam = mCamera; //0;
-		Camera* cam = 0;
+		Camera* cam = mCamera;
+		// Camera* cam = 0;
 		// if (et == CarModel::CT_LOCAL && camIt != mSplitMgr->mCameras.end())
 		// {	cam = *camIt;  ++camIt;  }
 

@@ -49,7 +49,7 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 	Vector3 posGoal = posIn.pos;
 	Quaternion orientGoal = posIn.rot;
 	///  output saved back to car posInfoOut
-	Quaternion camRotFinal;
+	// Quaternion camRotFinal;
 
 	const static Quaternion
 		qOrFix = Quaternion(Degree(180), Vector3::UNIT_Z) * Quaternion(Degree(-90), Vector3::UNIT_Y),

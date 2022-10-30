@@ -59,6 +59,7 @@ public:
 	Ogre::Quaternion qq;  // for ext cam
 	Ogre::Radian mAPitch,mAYaw, mATilt;  // for arena cam, smoothing
 	Ogre::Vector3 camPosFinal;  Ogre::Real mDistReduce;  //float dbgLen;
+	Ogre::Quaternion camRotFinal;
 
 	#ifdef CAM_TILT_DBG
 		Ogre::Vector3 posHit[4];
