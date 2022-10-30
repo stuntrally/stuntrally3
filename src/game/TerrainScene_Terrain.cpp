@@ -40,6 +40,7 @@
 #include <BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h>
 
 #include "Def_Str.h"
+#include "RenderConst.h"
 using namespace Demo;
 using namespace Ogre;
 
@@ -169,16 +170,17 @@ namespace Demo
 	//-----------------------------------------------------------------------------------------------------------------------------
 	void TerrainGame::CreatePlane()
 	{
+		return;  //-
 	#if 0
 		sizeXZ = 1000.0f;
 		v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
-			"Plane v1", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+			"Plane v1", rgDef,
 			Plane( Vector3::UNIT_Y, 1.0f ), sizeXZ, sizeXZ,
 			20, 20, true, 1, 160.f, 160.f, Vector3::UNIT_Z,
 			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 
 		planeMesh = MeshManager::getSingleton().createByImportingV1(
-			"Plane", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+			"Plane", rgDef,
 			planeMeshV1.get(), true, true, true );
 		
 		planeMeshV1->unload();
@@ -203,13 +205,13 @@ namespace Demo
 	{
 		sizeXZ = sc->td.fTriangleSize * (sc->td.iVertsX-1);
 		v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
-			"Plane v1-"+toStr(i), ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+			"Plane v1-"+toStr(i), rgDef,
 			Plane( pos[i][1], 1.0f ), sizeXZ, sizeXZ,
 			10, 10, true, 1, 160.f, 160.f, pos[i][2],
 			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 
 		planeMesh = MeshManager::getSingleton().createByImportingV1(
-			"Plane-"+toStr(i), ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+			"Plane-"+toStr(i), rgDef,
 			planeMeshV1.get(), true, true, true );
 		
 		planeMeshV1->unload();
@@ -352,7 +354,7 @@ void CScene::CreateBltTerrain()
 		memset(app->blendMtr,0,size2);  // zero
 
 		app->blendMapSize = wx;
-		sc->td.layersAll[0].surfId = 3;  //par ter mtr..
+		// sc->td.layersAll[0].surfId = 0;  //par ter mtr..
 	}
 
 

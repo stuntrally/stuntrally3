@@ -38,9 +38,9 @@ namespace Demo
 		const FrameStats *st = mGraphicsSystem->getRoot()->getFrameStats();
 
 		String txt = iToStr( (int)st->getAvgFps(), 4) +
-			"  "+ fToStr( rm.mFaceCount/1000000.f,1) +
+			"  "+ fToStr( rm.mFaceCount/1000000.f, 2) +
 			//" v " + toStr( rm.mVertexCount/1000 ) +
-			"m  " + iToStr( rm.mDrawCount,2) + " " + iToStr( rm.mInstanceCount,4);
+			"m  " + iToStr( rm.mDrawCount, 2) + " " + iToStr( rm.mInstanceCount, 4);
 			//" b " + toStr( rm.mBatchCount, 0);
 	#if 1
 		//  mem

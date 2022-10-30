@@ -197,9 +197,9 @@ void CarModel::Destroy()
 	// 	if (MaterialManager::getSingleton().resourceExists(sMtr[i]))
 	// 		MaterialManager::getSingleton().remove(sMtr[i], resGrpId);
 
-	s = vDelEnt.size();
-	for (i=0; i < s; ++i)  mSceneMgr->destroyItem(vDelEnt[i]);
-	vDelEnt.clear();
+	s = vDelIt.size();
+	for (i=0; i < s; ++i)  mSceneMgr->destroyItem(vDelIt[i]);
+	vDelIt.clear();
 	
 	s = vDelPar.size();
 	for (i=0; i < s; ++i)  mSceneMgr->destroyParticleSystem(vDelPar[i]);
@@ -224,7 +224,7 @@ CarModel::~CarModel()
 }
 
 void CarModel::ToDel(SceneNode* nd){		vDelNd.push_back(nd);  }
-void CarModel::ToDel(Item* ent){			vDelEnt.push_back(ent);  }
+void CarModel::ToDel(Item* it){				vDelIt.push_back(it);  }
 void CarModel::ToDel(ParticleSystem* par){	vDelPar.push_back(par);  }
 
 

@@ -118,6 +118,7 @@ namespace Demo
 
 /*  for game.cfg
 track = Test1-Flat
+track = Test2-Asphalt
 track = Test3-Bumps
 track = Test4-TerrainBig
 track = Test7-FluidsSmall

@@ -379,7 +379,6 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		bool ghPar = true; //!(ghost && !pSet->rpl_ghostpar);
 		if (!ghPar)
 		{	emitD = 0.f;  emitM = 0.f;  emitS = 0.f;  }
-		// emitD = 0.f;  //; fixme
 
 		///  emit particles
 		Vector3 vpos = posInfo.whPos[w];

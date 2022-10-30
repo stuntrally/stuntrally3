@@ -188,7 +188,7 @@ public:
 
 	//  to destroy
 	std::vector<Ogre::SceneNode*> vDelNd;		void ToDel(Ogre::SceneNode* nd);
-	std::vector<Ogre::Item*> vDelEnt;			void ToDel(Ogre::Item* ent);
+	std::vector<Ogre::Item*> vDelIt;			void ToDel(Ogre::Item* it);
 	std::vector<Ogre::ParticleSystem*> vDelPar;	void ToDel(Ogre::ParticleSystem* par);
 	
 		

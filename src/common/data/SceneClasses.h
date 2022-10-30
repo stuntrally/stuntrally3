@@ -1,15 +1,15 @@
 #pragma once
 #include "SColor.h"
-#include <Ogre.h>
-// #include <OgreCommon.h>
-// #include <OgreVector2.h>
-// #include <OgreVector3.h>
-// #include <OgreVector4.h>
-// #include <OgreQuaternion.h>
-#include "../../../vdrift/mathvector.h"
-#include "../../../vdrift/quaternion.h"
+// #include <Ogre.h>
+#include <OgreCommon.h>
+#include <OgreVector2.h>
+#include <OgreVector3.h>
+#include <OgreVector4.h>
+#include <OgreQuaternion.h>
+#include "mathvector.h"
+#include "quaternion.h"
 
-namespace Ogre {  class SceneNode;  class Entity;  class ParticleSystem;  }
+namespace Ogre {  class SceneNode;  class Item;  class ParticleSystem;  }
 namespace Forests {  class GrassLayer;  }
 
 
@@ -137,7 +137,7 @@ public:
 	std::string name;  // mesh file name
 
 	Ogre::SceneNode* nd;  // ogre
-	Ogre::Entity* ent;
+	Ogre::Item* it;
 	class btDefaultMotionState* ms;  // bullet
 	class btCollisionObject* co;
 	class btRigidBody* rb;

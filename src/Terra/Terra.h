@@ -227,6 +227,7 @@ namespace Ogre
 			True if Y (or Z for Z-up) component was changed
 		*/
 		bool getHeightAt( Vector3 &vPos ) const;
+		// float getAngleAt( Vector3 &vPos, float step ) const;
 
 		/// load must already have been called.
 		void setDatablock( HlmsDatablock *datablock );
