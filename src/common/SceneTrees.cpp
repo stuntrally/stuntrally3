@@ -1,4 +1,5 @@
 #include "OgreCommon.h"
+#include "OgreVector3.h"
 #include "pch.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
@@ -38,6 +39,7 @@ using namespace Ogre;
 
 void CScene::DestroyTrees()
 {
+	// fixme
 	// if (grass) {  delete grass->getPageLoader();  delete grass;  grass=0;   }
 	LogO("------  # Destroy trees");
 	// if (trees) {  delete trees->getPageLoader();  delete trees;  trees=0;   }
@@ -61,6 +63,7 @@ void CScene::CreateTrees()
 {
 	LogO("# CreateTrees()");
 	Ogre::Timer ti;
+	cntAll = 0;
 	// updGrsTer();
 		
 	//-------------------------------------- Grass --------------------------------------
@@ -100,10 +103,7 @@ void CScene::CreateTrees()
 	if (fGrass > 0.f)
 	{
 		grass->addDetailLevel<GrassPage>(sc->grDist * pSet->grass_dist);
-
 		grassLoader->setRenderQueueGroup(RQG_BatchAlpha);
-		grass->setPageLoader(grassLoader);
-		grassLoader->setHeightFunction(&getTerrainHeight);
 
 		//  Grass layers
 		const SGrassLayer* g0 = &sc->grLayersAll[0];
@@ -147,7 +147,7 @@ void CScene::CreateTrees()
 		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 
 		tws = sc->td.fTerWorldSize;
-		int r = imgRoadSize, cntr = 0, cntshp = 0, txy = sc->td.iVertsX*sc->td.iVertsY-1;
+		int r = imgRoadSize, cntshp = 0, txy = sc->td.iVertsX*sc->td.iVertsY-1;
 
 		//  set random seed  /// add seed in scene.xml and in editor gui..
 		MTRand rnd((MTRand::uint32)1213);
@@ -203,7 +203,7 @@ void CScene::CreateTrees()
 				#else
 					yaw = Degree(rnd.rand(360.0));
 					pos.x = getTerPos();  pos.z = getTerPos();
-					Real scl = rnd.rand() * (pg.maxScale-pg.minScale) + pg.minScale;
+					Real scl = rnd.rand() * (pg.maxScale - pg.minScale) + pg.minScale;
 				#endif
 				pos0 = pos;  // store original place
 				bool add = true;
@@ -263,7 +263,7 @@ void CScene::CreateTrees()
 				//  check ter height  ------------
 				terrain->getHeightAt(pos);
 				if (pos.y < pg.minTerH || pos.y > pg.maxTerH)
-					add = false;				
+					add = false;
 				
 				if (!add)  continue;  //
 				
@@ -271,21 +271,32 @@ void CScene::CreateTrees()
 				float fa = sc->GetDepthInFluids(pos);
 				if (fa > pg.maxDepth)
 					add = false;
+
+				//  check if outside of terrain?
+				// if (pos.x < 
 				
 				if (!add)  continue;  //
 
 
-				//  add  **************
+				//  **************  add  **************
 				Item *item = mgr->createItem( file,
 					ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
 				item->setVisibilityFlags(RV_Vegetation);
 
 				SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
 				node->attachObject( item );
+				node->scale( scl * Vector3::UNIT_SCALE );
+				// pos.y += std::min( item->getLocalAabb().getMinimum().y, Real(0.0f) ) * -0.1f + lay.down;  //par
+				node->setPosition( pos );
+
+				Degree a( Math::RangeRandom(0, 360.f) );
+				Quaternion q;  q.FromAngleAxis( a, Vector3::UNIT_Y );
+				node->setOrientation( q );
+				//  ****************************
 				
 				// node->scale( s, s, s );
 				// treeLoader->addTree(ent, pos0, yaw, scl);
-				++pg.cnt;  ++cntr;  // count stats
+				++pg.cnt;  ++cntAll;  // count stats
 					
 				
 				///  add to bullet world
@@ -358,7 +369,7 @@ void CScene::CreateTrees()
 			}
 		}
 		
-		LogO(String("***** Vegetation objects count: ") + toStr(cntr) + "  shapes: " + toStr(cntshp));
+		LogO(String("***** Vegetation objects count: ") + toStr(cntAll) + "  shapes: " + toStr(cntshp));
 	}
 	//imgRoadSize = 0;
 	LogO(String("::: Time Trees: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");

@@ -70,7 +70,7 @@ public:
 
 
 	//  cars  ---
-	SETTINGS* settings;
+	SETTINGS* pSet;
 
 	std::vector<CAR*> cars;
 	std::pair <CAR*, CARCONTROLMAP_LOCAL> controls;

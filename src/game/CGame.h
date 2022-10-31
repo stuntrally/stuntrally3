@@ -17,6 +17,7 @@ namespace Ogre {  class SceneNode;  class SceneManager;  class TextureGpu;  }
 // namespace BtOgre  {  class DebugDrawer;  }
 class CScene;  class CData;  class CInput;  class GraphView;
 class GAME;  class CHud;  class CGui;  class CGuiCom;
+namespace Demo {  class TerrainGame;  }
 
 
 class App //: public ICS::ChannelListener
@@ -28,6 +29,7 @@ public:
 	
 	class SETTINGS* pSet =0;  //;  from BaseApp
 
+	Demo::TerrainGame* mainApp = 0;
 	CScene* scn =0;
 	CData* data =0;  //p
 	
@@ -119,14 +121,15 @@ public:
 	void LoadCleanUp(), LoadGame(), LoadScene(), LoadCar(), LoadTerrain(), LoadRoad(), LoadObjects(), LoadTrees(), LoadMisc();
 	enum ELoadState { LS_CLEANUP=0, LS_GAME, LS_SCENE, LS_CAR, LS_TERRAIN, LS_ROAD, LS_OBJECTS, LS_TREES, LS_MISC, LS_ALL };
 	static Ogre::String cStrLoad[LS_ALL+1];
-	int curLoadState;
+	int curLoadState = 0;
 	std::map<int, std::string> loadingStates;
 
 	float mTimer;  // wind,water
 
 
 	//  mtr from ter  . . . 
-	int blendMapSize;  char* blendMtr =0;
+	int blendMapSize;
+	std::vector<char> blendMtr;
 	//; void GetTerMtrIds();
 
 

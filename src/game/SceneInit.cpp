@@ -599,16 +599,13 @@ void App::LoadTerrain()  // 5
 {
 	if (dstTrk)
 	{
-		//; scn->CreateTerrain(false, scn->sc->ter);  // common
+		scn->CreateTerrain(false);  // common
 		//; GetTerMtrIds();
-		if (scn->sc->ter)
-			scn->CreateBltTerrain();
+		scn->CreateBltTerrain();  // todo: before cars..
 	}
 
 	//; for (int c=0; c < carModels.size(); ++c)
 	// 	carModels[c]->terrain = scn->terrain;
-	
-	// sh::Factory::getInstance().setTextureAlias("CubeReflection", "ReflectionCube");
 }
 
 void App::LoadRoad()  // 6
@@ -670,11 +667,8 @@ void App::LoadObjects()  // 7
 
 void App::LoadTrees()  // 8
 {
-	/*if (!dstTrk)
-		scn->UpdCamera();  // paged cam
-	else
-	if (scn->sc->ter)
-		scn->CreateTrees();*/  //;
+	if (dstTrk) // && scn->sc->ter)
+		scn->CreateTrees();
 	
 		
 	//  check for cars inside terrain ___

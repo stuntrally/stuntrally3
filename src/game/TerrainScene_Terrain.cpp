@@ -1,4 +1,6 @@
 #include "TerrainGame.h"
+#include "OgrePrerequisites.h"
+#include "OgreVector4.h"
 #include "CameraController.h"
 #include "GraphicsSystem.h"
 
@@ -25,6 +27,11 @@
 #include "OgreHlmsPbs.h"
 #include "OgreHlmsPbsDatablock.h"
 #include "OgreHlmsTerraDatablock.h"
+#include "OgreTextureGpuManager.h"
+
+#include "OgreGpuResource.h"
+#include "OgreHlmsTerraPrerequisites.h"
+// #include "OgreHlmsTerra.h"
 
 //  SR
 #include "CGame.h"
@@ -64,9 +71,10 @@ namespace Demo
 
 	#if 1
 		std::string datablockName = "TerraExampleMaterial";  // from .json
+		// mGraphicsSystem->hlmsTerra->loadMaterial( "FileName for logging purposes", defaultResourceGroupForLoadingTextures, jsonString, "" );
 	#else
 		std::string datablockName = "TerraExampleMaterial2";
-		mGraphicsSystem->hlmsTerra->setDetailTextureProperty(
+		// mGraphicsSystem->hlmsTerra->setDetailTextureProperty(
 		datablock = mGraphicsSystem->hlmsTerra->createDatablock(
 			datablockName.c_str(), datablockName.c_str(),
 			HlmsMacroblock(),
@@ -75,42 +83,62 @@ namespace Demo
 		assert( dynamic_cast<HlmsTerraDatablock *>( datablock ) );
 		// datablock->set
 		HlmsTerraDatablock *tblock = static_cast<HlmsTerraDatablock *>( datablock );
-		//tblock->setDiffuse(Vector3());
-		// tblock->setDetail
-		// loadTexture( subobj, "diffuse_map", static_cast<TerraTextureTypes>( TERRA_DETAIL0 + i ),
-		//                 terraDatablock, resourceGroup );
-		// loadTexture( subobj, "normal_map",
-		//                 static_cast<TerraTextureTypes>( TERRA_DETAIL0_NM + i ), terraDatablock,
-		//                 resourceGroup );
-		const HlmsSamplerblock *sam = tblock->getSamplerblock( TERRA_DETAIL0 );
-		sam->setTexture(
-		sam->setTexture()
+		TextureGpuManager *texMgr = root->getRenderSystem()->getTextureGpuManager();
 
-		tblock->setDetailTextureProperty();
-		   "diffuse" :
-			{
-				"value" : [0.7, 0.7, 0.7],
-				"texture" : "stones_gray_h2.jpg"
-			},
+		///  Layer Textures  ----
+		int ls = sc->td.layers.size();
+		for (int i=0; i < ls; ++i)
+		{
+			TerLayer& l = sc->td.layersAll[sc->td.layers[i]];
+			// di.layerList[i].worldSize = l.tiling;
+
+			//  combined rgb,a from 2 tex
+			String path = PATHMANAGER::Data() + "/terrain/";
+			String d_d, d_s, n_n, n_h;
 			
-			"detail_weight" :
-			{
-				"texture" : "HeightmapBlendmap.png",
-				"sampler" : "unique_name",
-				"normalize" : true
-			},
-			
-			"detail0" :
-			{
-				"offset" : [0, 0],
-				"scale" : [128, 128],
-				"roughness" : 0.5,
-				"metalness" : 0.5,
-				"diffuse_map" : "grass_ground_d.jpg",
-				"normal_map" : "grass_ground_n.jpg",
-				"roughness_map" : "grass_ground_h.jpg",
-				"metalness_map" : "grass_ground_s.jpg"
-			},
+			///  diff
+			d_d = l.texFile;  // ends with _d
+			d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");
+			d_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");
+			n_n = l.texNorm;  // ends with _n
+			n_h = StringUtil::replaceAll(l.texNorm,"_n.","_h.");
+
+
+			auto tex = texMgr->createOrRetrieveTexture(d_d,
+				GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
+			/*if (tex)
+			{	tex->isTextureGpu();
+				tex->setPixelFormat( PFG_RGBA8_UNORM_SRGB );
+				tex->scheduleTransitionTo( GpuResidency::Resident );
+			}*/
+			tblock->setTexture( TERRA_DETAIL0 + i, tex );
+			// tblock->setSamplerblock(uint8 texType, const HlmsSamplerblock &params)
+
+			tex = texMgr->createOrRetrieveTexture(n_n,
+				GpuPageOutStrategy::Discard, CommonTextureTypes::NormalMap, "General" );
+			if (tex)
+				tblock->setTexture( TERRA_DETAIL0_NM + i, tex );
+
+			/*tex = texMgr->createOrRetrieveTexture(n_h,
+				GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
+			if (tex)
+				tblock->setTexture( TERRA_DETAIL_ROUGHNESS0 + i, tex );
+
+			tex = texMgr->createOrRetrieveTexture(d_s,
+				GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
+			if (tex)
+				tblock->setTexture( TERRA_DETAIL_METALNESS0 + i, tex );*/
+
+			tblock->setDetailMapOffsetScale( i, Vector4(0,0, l.tiling, l.tiling) );
+			tblock->setMetalness(i, 0.1);
+			tblock->setRoughness(i, 0.6);
+		}
+		//tblock->setDiffuse(Vector3());
+		// const HlmsSamplerblock *sam = tblock->getSamplerblock( TERRA_DETAIL0 );
+		// sam->setTexture()
+
+		// tblock->setDetailTextureProperty();
+
 	#endif
 
 		LogO("---- new Terra");
@@ -120,6 +148,7 @@ namespace Demo
 							mgr, 11u, root->getCompositorManager2(),
 							mGraphicsSystem->getCamera(), false );
 		mTerra->setCastShadows( false );
+		pApp->scn->terrain = mTerra;
 
 		LogO("---- Terra load");
 
@@ -301,14 +330,15 @@ namespace Demo
 		Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_UNLIT );
 		HlmsUnlitDatablock *datablock = static_cast<HlmsUnlitDatablock*>(hlms->getDatablock(sMater));
 		// HlmsPbsDatablock *datablock = static_cast<HlmsPbsDatablock*>(m->getDatablock() );
-		HlmsSamplerblock samplerblock( *datablock->getSamplerblock( PBSM_DIFFUSE ) );  // hard copy
-		samplerblock.mU = TAM_WRAP;
-		samplerblock.mV = TAM_WRAP;
-		samplerblock.mW = TAM_WRAP;
-		datablock->setSamplerblock( PBSM_DIFFUSE, samplerblock );
-		datablock->setSamplerblock( PBSM_NORMAL, samplerblock );
-		datablock->setSamplerblock( PBSM_ROUGHNESS, samplerblock );
-		datablock->setSamplerblock( PBSM_METALLIC, samplerblock );/**/
+		HlmsSamplerblock sampler( *datablock->getSamplerblock( PBSM_DIFFUSE ) );  // hard copy
+		sampler.mU = TAM_WRAP;
+		sampler.mV = TAM_WRAP;
+		sampler.mW = TAM_WRAP;
+		datablock->setSamplerblock( PBSM_DIFFUSE, sampler );
+		datablock->setSamplerblock( PBSM_NORMAL, sampler );
+		datablock->setSamplerblock( PBSM_ROUGHNESS, sampler );
+		datablock->setSamplerblock( PBSM_METALLIC, sampler );/**/
+		// datablock->setSamplerblock(sampler);
 	}
 
 	void TerrainGame::DestroySkyDome()
@@ -320,94 +350,4 @@ namespace Demo
 		if (ndSky)
 		{   mgr->destroySceneNode(ndSky);  ndSky = 0;  }
 	}
-}
-
-
-//  Bullet Terrain
-//---------------------------------------------------------------------------------------------------------------
-void CScene::CreateBltTerrain()
-{
-	///  --------  fill HeightField data --------
-	//Ogre::Timer ti;
-	// if (terLoad || bNewHmap)
-	{
-		int wx = sc->td.iVertsX, wy = sc->td.iVertsY, wxy = wx * wy;  //wy=wx
-		sc->td.hfHeight.clear();
-		sc->td.hfHeight.resize(wxy);
-		const int size = wxy * sizeof(float);
-
-		String name = app->TrkDir() + (/*bNewHmap ? "heightmap-new.f32" :*/ "heightmap.f32");
-
-		//  load from f32 HMap +
-		{
-			std::ifstream fi;
-			fi.open(name.c_str(), std::ios_base::binary);
-			fi.read((char*)&sc->td.hfHeight[0], size);
-			fi.close();
-		}
-	
-	
-	   	//**  new  .. GetTerMtrIds() from blendmap ..
-		int size2 = wxy;
-		delete[] app->blendMtr;
-		app->blendMtr = new char[size2];
-		memset(app->blendMtr,0,size2);  // zero
-
-		app->blendMapSize = wx;
-		// sc->td.layersAll[0].surfId = 0;  //par ter mtr..
-	}
-
-
-	btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
-		sc->td.iVertsX, sc->td.iVertsY,
-		&sc->td.hfHeight[0], sc->td.fTriangleSize,
-		-1300.f,1300.f, 2, PHY_FLOAT,false);  //par- max height
-	
-	hfShape->setUseDiamondSubdivision(true);
-
-	btVector3 scl(sc->td.fTriangleSize, sc->td.fTriangleSize, 1);
-	hfShape->setLocalScaling(scl);
-	hfShape->setUserPointer((void*)SU_Terrain);
-
-	btCollisionObject* col = new btCollisionObject();
-	col->setCollisionShape(hfShape);
-	//col->setWorldTransform(tr);
-	col->setFriction(0.9);   //+
-	col->setRestitution(0.0);
-	//col->setHitFraction(0.1f);
-	col->setCollisionFlags(col->getCollisionFlags() |
-		btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
-	#ifndef SR_EDITOR  // game
-		app->pGame->collision.world->addCollisionObject(col);
-		app->pGame->collision.shapes.push_back(hfShape);
-	#else
-		app->world->addCollisionObject(col);
-	#endif
-	
-	#ifndef SR_EDITOR
-	///  border planes []
-	const float px[4] = {-1, 1, 0, 0};
-	const float py[4] = { 0, 0,-1, 1};
-
-	for (int i=0; i < 4; ++i)
-	{
-		btVector3 vpl(px[i], py[i], 0);
-		btCollisionShape* shp = new btStaticPlaneShape(vpl,0);
-		shp->setUserPointer((void*)SU_Border);
-		
-		btTransform tr;  tr.setIdentity();
-		tr.setOrigin(vpl * -0.5 * sc->td.fTerWorldSize);
-
-		btCollisionObject* col = new btCollisionObject();
-		col->setCollisionShape(shp);
-		col->setWorldTransform(tr);
-		col->setFriction(0.3);   //+
-		col->setRestitution(0.0);
-		col->setCollisionFlags(col->getCollisionFlags() |
-			btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
-
-		app->pGame->collision.world->addCollisionObject(col);
-		app->pGame->collision.shapes.push_back(shp);
-	}
-	#endif
 }

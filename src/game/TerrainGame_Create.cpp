@@ -110,7 +110,7 @@ namespace Demo
 		pGame->Start();
 
 		pApp = new App(pSet, pGame);
-		//; pApp->mRoot = root;
+		pApp->mainApp = this;
 		pGame->app = pApp;
 		sc = pApp->scn->sc;
 
@@ -137,16 +137,23 @@ TestC13-Rivers
 Jng13-Tropic
 Jng20-JungleMaze
 For12-HighPeaks
-Tox2-AcidLakes
 
+Tox2-AcidLakes
+Atm3-Orange -
+Isl10-Treasure
+
+Jng23-FollowValley
 Jng25-CantorJungle
 For18-MountCaro
 Isl17-AdapterIslands
+Mos6-TaraMosses
 
 Des11-PersianCity
 Des17-NileCity
 Grc8-SlopeCity
 Grc10-BeachCity
+Aus10-PreythCity
+Grc13-YeleyStunts
 */
 		//  new game
 		pApp->mCamera = mGraphicsSystem->getCamera();

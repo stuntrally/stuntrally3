@@ -27,10 +27,6 @@ bool Scene::LoadXml(String file, bool bTer)
 	// clear  --
 	Default();
 
-	//  terrain, asphalt set, vdr outside
-	asphalt = !bTer;
-	ter = bTer;
-
 	//td.layers.clear();
 	//pgLayers.clear();
 

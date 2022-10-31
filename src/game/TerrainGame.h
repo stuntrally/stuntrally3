@@ -110,7 +110,9 @@ namespace Demo
 
 		//  terrain  ----
 		Ogre::Real sizeXZ = 1000.f;
+	public:		
 		void CreateTerrain(), DestroyTerrain();
+	protected:
 		Ogre::SceneNode *nodeTerrain = 0;
 
 		void CreatePlane(), DestroyPlane();

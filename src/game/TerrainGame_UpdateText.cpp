@@ -21,6 +21,7 @@
 #include "SoundMgr.h"
 #include "CGame.h"
 #include "CarModel.h"
+#include "CScene.h"
 
 #include "Def_Str.h"
 using namespace Demo;
@@ -119,7 +120,7 @@ namespace Demo
 		{
 			txt = generateFpsDebugText();
 
-			txt += "Veget all  " + iToStr(vegetNodes.size(), 5);
+			txt += "Veget " + iToStr(pApp->scn->cntAll + vegetNodes.size(), 5);
 			txt += "\n\n- + Sun Pitch  " + fToStr( mPitch * 180.f / Math::PI, 3 );
 			txt += "\n/ * Sun Yaw    " + fToStr( mYaw * 180.f / Math::PI, 3 );
 
@@ -150,6 +151,11 @@ namespace Demo
 			}
 		}
 
+		if (pApp->bLoading)
+		{
+			txt += "\nLoading... "+toStr(pApp->curLoadState)+" / "+toStr(App::LS_ALL);
+		}
+		else  //-
 		if (pGame)  // CAR text
 		{
 			txt += "\n\n";
@@ -171,7 +177,7 @@ namespace Demo
 					txt += "no cam \n";
 			}*/
 		}
-		
+
 		mDebugText->setCaption( txt );
 		mDebugTextShadow->setCaption( txt );
 	}

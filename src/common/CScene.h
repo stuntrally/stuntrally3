@@ -72,25 +72,19 @@ public:
 
 	
 	//  Vegetation
+	int cntAll = 0;
 	void CreateTrees(), DestroyTrees(), RecreateTrees(); //, updGrsTer(), UpdCamera();
 
 
 	///  Terrain
 	//-----------------------------------
 	// PreviewTex texLayD[6],texLayN[6];  // layers
-	// void CreateTerrain(bool bNewHmap=false, bool bTer=true, bool terLoad=true);
-	// void DestroyTerrain()
+	void CreateTerrain(bool bNewHmap=false, bool terLoad=true);
+	void DestroyTerrain();
 	void CreateBltTerrain(), copyTerHmap();
 
 	Ogre::Terra* terrain;
-	// Ogre::TerrainGlobalOptions* mTerrainGlobals;
-	// Ogre::TerrainGroup* mTerrainGroup;
 	// void SetupTerrain(), UpdTerErr();
-
-	// Ogre::Terrain* horizon;
-	// Ogre::TerrainGlobalOptions* mHorizonGlobals;
-	// Ogre::TerrainGroup* mHorizonGroup;
-	// void SetupHorizon();
 
 	
 	//  Blendmap, rtt

@@ -1,0 +1,227 @@
+#include "pch.h"
+#include "Def_Str.h"
+#include "RenderConst.h"
+#include "ShapeData.h"
+// #include "GuiCom.h"
+#include "CScene.h"
+#include "SceneXml.h"
+#include "pathmanager.h"
+#ifdef SR_EDITOR
+	#include "CApp.h"
+	#include "settings.h"
+	#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
+#else
+	#include "CGame.h"
+	#include "game.h"
+	#include "settings.h"
+#endif
+#include <BulletCollision/CollisionDispatch/btCollisionObject.h>
+#include <BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h>
+#include <OgreTimer.h>
+
+#include "TerrainGame.h"
+using namespace Ogre;
+
+
+///  Setup Terrain
+//---------------------------------------------------------------------------------------------------------------
+/*void CScene::SetupTerrain()
+{
+	// UpdTerErr();
+
+	mTerrainGlobals->setLayerBlendMapSize(4);  // we use our own rtt, so reduce this
+	mTerrainGlobals->setLightMapDirection(sun->getDerivedDirection());
+	// mTerrainGlobals->setSkirtSize(1);  // low because in water reflect
+
+	// di.terrainSize = sc->td.iTerSize; // square []-
+	// di.worldSize = sc->td.fTerWorldSize;  //di.inputScale = td.Hmax;
+
+	///  layer textures
+	int ls = sc->td.layers.size();
+	di.layerList.resize(ls);
+	for (int i=0; i < ls; ++i)
+	{
+		TerLayer& l = sc->td.layersAll[sc->td.layers[i]];
+		di.layerList[i].worldSize = l.tiling;
+
+		//  combined rgb,a from 2 tex
+		String p = PATHMANAGER::Data() + (app->pSet->tex_size > 0 ? "/terrain/" : "/terrain_s/");
+		String d_d, d_s, n_n, n_h;
+		
+		///  diff
+		d_d = l.texFile;  // ends with _d
+		d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");
+
+		if (!PATHMANAGER::FileExists(p+ d_d))
+			texLayD[i].LoadTer(p+ "grass_green_d.jpg", p+ "grass_green_n.jpg", 0.f);
+		else
+		if (PATHMANAGER::FileExists(p+ d_s))
+			texLayD[i].LoadTer(p+ d_d, p+ d_s, 0.f);
+		else  // use _s from norm tex name
+		{	d_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");
+			texLayD[i].LoadTer(p+ d_d, p+ d_s, 0.f);
+		}
+		///  norm
+		n_n = l.texNorm;  // ends with _n
+		n_h = StringUtil::replaceAll(l.texNorm,"_n.","_h.");
+
+		if (PATHMANAGER::FileExists(p+ n_n))
+			texLayN[i].LoadTer(p+ n_n, p+ n_h, 1.f);
+		else
+			texLayN[i].LoadTer(p+ "flat_n.png", p+ n_h, 1.f);
+		
+		di.layerList[i].textureNames.push_back("layD"+toStr(i));
+		di.layerList[i].textureNames.push_back("layN"+toStr(i));
+	}
+}*/
+
+
+///--------------------------------------------------------------------------------------------------------------
+//  Create Terrain
+///--------------------------------------------------------------------------------------------------------------
+void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
+{
+	Ogre::Timer tm;
+	terrain = 0;
+
+	
+	///  sky
+	// Vector3 scl = app->pSet->view_distance*Vector3::UNIT_SCALE;
+	// CreateSkyDome(sc->skyMtr, scl, sc->skyYaw);
+	// UpdFog();
+
+	//  light
+	// app->mSceneMgr->destroyAllLights();
+	// sun = app->mSceneMgr->createLight("Sun");
+	// sun->setType(Light::LT_DIRECTIONAL);  UpdSun();
+
+
+	// UpdShaderParams();
+	// UpdLayerPars();
+	
+
+	///  --------  fill HeightField data --------
+	//Ogre::Timer ti;
+	// if (terLoad || bNewHmap)
+	{
+		int wx = sc->td.iVertsX, wy = sc->td.iVertsY, wxy = wx * wy;  //wy=wx
+		sc->td.hfHeight.clear();
+		sc->td.hfHeight.resize(wxy);
+		const int size = wxy * sizeof(float);
+
+		String name = app->TrkDir() + (/*bNewHmap ? "heightmap-new.f32" :*/ "heightmap.f32");
+
+		//  load from f32 HMap +
+		{
+			std::ifstream fi;
+			fi.open(name.c_str(), std::ios_base::binary);
+			fi.read((char*)&sc->td.hfHeight[0], size);
+			fi.close();
+		}
+	
+	
+	   	//**  new  .. GetTerMtrIds() from blendmap ..
+		int size2 = wxy;
+		app->blendMtr.resize(size2);
+		// memset(app->blendMtr,0,size2);  // zero
+
+		app->blendMapSize = wx;
+		// sc->td.layersAll[0].surfId = 0;  //par ter mtr..
+	}
+
+
+	//; CreateBlendTex();  //+
+
+	//LogO(String("::: Time Hmap: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();  // 4MB ~13ms
+
+	//; UpdBlendmap();
+
+	app->mainApp->CreateTerrain();
+	
+	LogO(String("::: Time Terrain: ") + fToStr(tm.getMilliseconds(),0,3) + " ms");
+}
+
+
+//  save ter hmap to mem (all editing would be lost)
+/*void CScene::copyTerHmap()
+{
+	if (!terrain) return;
+	float *fHmap = terrain->getHeightData();
+	int size = sc->td.iVertsX * sc->td.iVertsY * sizeof(float);
+	memcpy(sc->td.hfHeight, fHmap, size);
+}*/
+
+
+//  Destroy
+void CScene::DestroyTerrain()
+{
+	/*for (int i=0; i < 6; ++i)
+	{
+		texLayD[i].Destroy();
+		texLayN[i].Destroy();
+	}
+	terrain = 0;
+	if (mTerrainGroup)
+		mTerrainGroup->removeAllTerrains();
+	*/
+	app->mainApp->DestroyTerrain();
+}
+
+
+//  Bullet Terrain
+//---------------------------------------------------------------------------------------------------------------
+void CScene::CreateBltTerrain()
+{
+	btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
+		sc->td.iVertsX, sc->td.iVertsY,
+		&sc->td.hfHeight[0], sc->td.fTriangleSize,
+		-1300.f,1300.f, 2, PHY_FLOAT,false);  //par- max height
+	
+	hfShape->setUseDiamondSubdivision(true);
+
+	btVector3 scl(sc->td.fTriangleSize, sc->td.fTriangleSize, 1);
+	hfShape->setLocalScaling(scl);
+	hfShape->setUserPointer((void*)SU_Terrain);
+
+	btCollisionObject* col = new btCollisionObject();
+	col->setCollisionShape(hfShape);
+	//col->setWorldTransform(tr);
+	col->setFriction(0.9);   //+
+	col->setRestitution(0.0);
+	//col->setHitFraction(0.1f);
+	col->setCollisionFlags(col->getCollisionFlags() |
+		btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+	#ifndef SR_EDITOR  // game
+		app->pGame->collision.world->addCollisionObject(col);
+		app->pGame->collision.shapes.push_back(hfShape);
+	#else
+		app->world->addCollisionObject(col);
+	#endif
+	
+	#ifndef SR_EDITOR
+	///  border planes []
+	const float px[4] = {-1, 1, 0, 0};
+	const float py[4] = { 0, 0,-1, 1};
+
+	for (int i=0; i < 4; ++i)
+	{
+		btVector3 vpl(px[i], py[i], 0);
+		btCollisionShape* shp = new btStaticPlaneShape(vpl,0);
+		shp->setUserPointer((void*)SU_Border);
+		
+		btTransform tr;  tr.setIdentity();
+		tr.setOrigin(vpl * -0.5 * sc->td.fTerWorldSize);
+
+		btCollisionObject* col = new btCollisionObject();
+		col->setCollisionShape(shp);
+		col->setWorldTransform(tr);
+		col->setFriction(0.3);   //+
+		col->setRestitution(0.0);
+		col->setCollisionFlags(col->getCollisionFlags() |
+			btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+
+		app->pGame->collision.world->addCollisionObject(col);
+		app->pGame->collision.shapes.push_back(shp);
+	}
+	#endif
+}

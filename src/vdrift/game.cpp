@@ -30,7 +30,7 @@ using namespace std;
 
 ///  ctor
 GAME::GAME(SETTINGS* pSettings)
-	:app(NULL), settings(pSettings)
+	:app(NULL), pSet(pSettings)
 	,frame(0), displayframe(0), clocktime(0), target_time(0)
 	//,framerate(0.01f),  ///~  0.004+  o:0.01
 	,fps_min(0), fps_max(0)
@@ -86,7 +86,7 @@ void GAME::ReloadSimData()  /// New
 	LoadAllSurfaces();
 	LoadSusp();
 
-	LogO("* * * Simulation: "+settings->game.sim_mode+". Loaded: "+toStr(tires.size()) +" tires, "+ toStr(surfaces.size()) +" surfaces, "+ toStr(suspS.size()) +"="+ toStr(suspD.size()) +" suspensions.");
+	LogO("* * * Simulation: "+pSet->game.sim_mode+". Loaded: "+toStr(tires.size()) +" tires, "+ toStr(surfaces.size()) +" surfaces, "+ toStr(suspS.size()) +"="+ toStr(suspD.size()) +" suspensions.");
 }
 
 
@@ -97,7 +97,7 @@ bool GAME::LoadAllSurfaces()
 	surfaces.clear();
 	surf_map.clear();
 
-	string path, file = "/" + settings->game.sim_mode + "/surfaces.cfg";
+	string path, file = "/" + pSet->game.sim_mode + "/surfaces.cfg";
 	path = PATHMANAGER::CarSimU() + file;
 	if (!PATHMANAGER::FileExists(path))  // user or orig
 		path = PATHMANAGER::CarSim() + file;
@@ -211,7 +211,7 @@ bool GAME::LoadTires()
 	for (int u=0; u < 2; ++u)
 	{
 		string path = u == 1 ? PATHMANAGER::CarSimU() : PATHMANAGER::CarSim();
-		path += "/" + settings->game.sim_mode + "/tires";
+		path += "/" + pSet->game.sim_mode + "/tires";
 		list <string> li;
 		PATHMANAGER::DirList(path, li);
 
@@ -254,7 +254,7 @@ bool GAME::LoadSusp()
 	suspS.clear();  suspS_map.clear();
 	suspD.clear();  suspD_map.clear();
 	
-	string path = PATHMANAGER::CarSim() + "/" + settings->game.sim_mode + "/susp";
+	string path = PATHMANAGER::CarSim() + "/" + pSet->game.sim_mode + "/susp";
 	list <string> li;
 	PATHMANAGER::DirList(path, li);
 	for (auto file : li)
@@ -290,7 +290,7 @@ bool GAME::InitializeSound()
 	Ogre::Timer ti;
 	
 	snd = new SoundMgr();
-	snd->Init(settings->snd_device, settings->snd_reverb);
+	snd->Init(pSet->snd_device, pSet->snd_reverb);
 	snd->setMasterVolume(0.f);
 	using namespace Ogre;
 
@@ -306,7 +306,7 @@ bool GAME::InitializeSound()
 	fd.close();
 	fi.close();
 
-	snd->setMasterVolume(settings->vol_master);
+	snd->setMasterVolume(pSet->vol_master);
 
 
 	LogO("::: Time Sounds: "+ fToStr(ti.getMilliseconds(),0,3) +" ms");
@@ -338,7 +338,7 @@ void GAME::LoadHudSounds()
 
 void GAME::UpdHudSndVol()
 {
-	float g = settings->vol_hud;
+	float g = pSet->vol_hud;
 	snd_chk->setGain(g);  snd_chkwr->setGain(g);
 	snd_lap->setGain(g);  snd_lapbest->setGain(g);
 	snd_stage->setGain(g);
@@ -377,7 +377,7 @@ void GAME::End()
 
 
 	///+  save settings first incase later deinits cause crashes
-	settings->Save(PATHMANAGER::SettingsFile());
+	pSet->Save(PATHMANAGER::SettingsFile());
 
 	collision.Clear();
 }
@@ -513,7 +513,7 @@ void GAME::UpdateCarInputs(CAR & car)
 	bool forceBrake = false; //timer.waiting || timer.pretime > 0.f; || app->iLoad1stFrames > -2;
 
 	int i = app->scn->sc->asphalt ? 1 : 0;
-	float sss_eff = settings->sss_effect[i], sss_velf = settings->sss_velfactor[i];
+	float sss_eff = pSet->sss_effect[i], sss_velf = pSet->sss_velfactor[i];
 	float carspeed = car.GetSpeedDir();  //car.GetSpeed();
 	//LogO(fToStr(car.GetSpeed(),2,6)+" "+fToStr(car.GetSpeedDir(),2,6));
 
@@ -544,7 +544,7 @@ bool GAME::NewGameDoLoadTrack()
 bool GAME::NewGameDoLoadMisc(float pre_time)
 {
 	//  load the timer
-	if (!timer.Load(PATHMANAGER::Records()+"/"+ settings->game.sim_mode+"/"+ settings->game.track+".txt", pre_time))
+	if (!timer.Load(PATHMANAGER::Records()+"/"+ pSet->game.sim_mode+"/"+ pSet->game.track+".txt", pre_time))
 		return false;
 
 	for (size_t i = 0; i < cars.size(); ++i)
@@ -596,7 +596,7 @@ CAR* GAME::LoadCar(const string& pathCar, const string& carname,
 
 	if (!car->Load(app,  carconf, carname,
 		start_pos, start_rot,  collision,
-		settings->abs, settings->tcs,  isRemote, idCar, false))
+		pSet->abs, pSet->tcs,  isRemote, idCar, false))
 	{
 		LogO("-=- Error: loading CAR: "+carname);
 		return NULL;
@@ -614,7 +614,7 @@ CAR* GAME::LoadCar(const string& pathCar, const string& carname,
 			//setup auto clutch and auto shift
 			ProcessNewSettings();
 			// shift into first gear if autoshift enabled
-			if (controls.first && settings->autoshift)
+			if (controls.first && pSet->autoshift)
 				controls.first->SetGear(1);
 		}
 	}
@@ -632,13 +632,13 @@ void GAME::ProcessNewSettings()
 	if (controls.first)
 	{
 		int i = app->scn->sc->asphalt ? 1 : 0;
-		controls.first->SetABS(settings->abs[i]);
-		controls.first->SetTCS(settings->tcs[i]);
-		controls.first->SetAutoShift(settings->autoshift);
-		controls.first->SetAutoRear(settings->autorear);
+		controls.first->SetABS(pSet->abs[i]);
+		controls.first->SetTCS(pSet->tcs[i]);
+		controls.first->SetAutoShift(pSet->autoshift);
+		controls.first->SetAutoRear(pSet->autorear);
 		//controls.first->SetAutoClutch(settings->rear_inv);
 	}
-	snd->setMasterVolume(settings->vol_master);
+	snd->setMasterVolume(pSet->vol_master);
 }
 
 void GAME::UpdateForceFeedback(float dt)
@@ -690,7 +690,7 @@ void GAME::UpdateTimer()
 ///  Car Steering range multiplier
 float GAME::GetSteerRange() const
 {
-	float range = settings->steer_sim[settings->gui.sim_mode == "easy" ? 0 : 1];
-	range *= settings->steer_range[/*track.asphalt*/0];
+	float range = pSet->steer_sim[pSet->gui.sim_mode == "easy" ? 0 : 1];
+	range *= pSet->steer_range[/*track.asphalt*/0];
 	return range;
 }
