@@ -1,13 +1,13 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
+#include "Def_Str.h"
 #include "Road.h"
 #include "tinyxml.h"
 #include "tinyxml2.h"
 
 #include <OgreCamera.h>
 #include <OgreMaterialManager.h>
-#include <OgreEntity.h>
-#include <OgreSubEntity.h>
+#include <OgreItem.h>
+// #include <OgreSubEntity.h>
 #include <OgreSceneNode.h>
 using namespace Ogre;
 using namespace tinyxml2;
@@ -102,15 +102,15 @@ void SplineRoad::UpdLodVis(float fBias, bool bFull)
 			/*if (bMerge)  vis = rs.mrgLod == i;  // vis mrg test-
 			else  vis = i == 3;/**/  // check lod 0
 			
-			#ifdef SR_EDITOR
-			if (vis)  //  road mark selected segments, vSel, SELECTED_GLOW, isSelected in main.shader
+			/*#ifdef SR_EDITOR
+			if (vis)  //;  road mark selected segments, vSel, SELECTED_GLOW, isSelected in main.shader
 			{
 				if (rs.road[i].ent)
 					rs.road[i].ent->getSubEntity(0)->setCustomParameter(1, Vector4(bSel ? 1 : 0, 0,0,0));
 				if (rs.blend[i].ent)
 					rs.blend[i].ent->getSubEntity(0)->setCustomParameter(1, Vector4(bSel ? 1 : 0, 0,0,0));
 			}
-			#endif
+			#endif*/
 			
 			if (rs.road[i].ent)  rs.road[i].ent->setVisible(vis);
 			if (rs.wall[i].ent)  rs.wall[i].ent->setVisible(vis);

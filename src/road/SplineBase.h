@@ -2,7 +2,7 @@
 #include <deque>
 #include <Ogre.h>
 
-namespace Ogre {  class Terrain;  class SceneNode;  }
+namespace Ogre {  class Terra;  class SceneNode;  }
 
 
 class TerUtil  //  helper
@@ -10,8 +10,8 @@ class TerUtil  //  helper
 public:
 	static float GetAngle(float x, float y);  // atan(y/x)
 	//  terrain
-	static float         GetAngleAt(Ogre::Terrain* terrain, float x, float z, float s);
-	static Ogre::Vector3 GetNormalAt(Ogre::Terrain* terrain, float x, float z, float s);
+	static float         GetAngleAt(Ogre::Terra* terrain, float x, float z, float s);
+	static Ogre::Vector3 GetNormalAt(Ogre::Terra* terrain, float x, float z, float s);
 };
 
 
@@ -138,7 +138,7 @@ class SplineEdit : public SplineBase
 {
 public:
 	//  terrain helpers
-	Ogre::Terrain* mTerrain =0;  // for on terrain, height snap
+	Ogre::Terra* mTerrain =0;  // for on terrain, height snap
 
 	Ogre::Real getTerH(const Ogre::Vector3& p);
 
@@ -206,7 +206,7 @@ protected:
 	struct Mark  // marker node  ----
 	{
 		Ogre::SceneNode* nd =0; //,*ndC;
-		Ogre::Entity* ent =0; //,*entC;
+		Ogre::Item* it =0; //,*entC;
 		
 		void setPos(Ogre::Vector3 pos);
 		void setVis(bool vis);
@@ -248,10 +248,10 @@ class SplineMarkEd : public SplineEditChk
 public:
 	//  Setup, call this on Init
 	void Setup(Ogre::String sMarkerMeshFile, Ogre::Real scale,
-		Ogre::Terrain* terrain, Ogre::SceneManager* sceneMgr,  Ogre::Camera* camera, int idx);
+		Ogre::Terra* terrain, Ogre::SceneManager* sceneMgr,  Ogre::Camera* camera, int idx);
 	
 	void createMarker(Ogre::String name, Ogre::String mat,
-					Ogre::Entity*& ent, Ogre::SceneNode*& nd);
+		Ogre::Item*& ent, Ogre::SceneNode*& nd);
 
 	//  control markers  -------
 	void AddMarker(Ogre::Vector3 pos);
@@ -271,5 +271,5 @@ public:
 
 	int lastNdSel = -2, lastNdChosen = -2;
 	Ogre::SceneNode *ndSel =0, *ndChosen =0, *ndRot =0, *ndHit =0, *ndChk =0;
-	Ogre::Entity   *entSel =0, *entChs =0, *entRot =0, *entHit =0, *entChk =0;
+	Ogre::Item     *entSel =0, *entChs =0, *entRot =0, *entHit =0, *entChk =0;
 };

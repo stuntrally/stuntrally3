@@ -1,10 +1,11 @@
+#include "OgreVector3.h"
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../vdrift/dbl.h"
+#include "Def_Str.h"
+#include "dbl.h"
 #include "Road.h"
 
 #include <OgreCamera.h>
-#include <OgreTerrain.h>
+#include "Terra.h"
 #include <OgreSceneNode.h>
 #include <OgreMaterialManager.h>
 using namespace Ogre;
@@ -146,7 +147,10 @@ void SplineEdit::UpdPointsH()
 
 Real SplineEdit::getTerH(const Vector3& p)
 {
-	return mTerrain ? mTerrain->getHeightAtWorldPosition(p.x, 0.f, p.z) : 0.f;
+	Vector3 pos = p;
+	if (mTerrain)
+		mTerrain->getHeightAt(pos);
+	return pos.y;
 }
 
 
@@ -449,7 +453,7 @@ bool SplineRoad::isPipe(int seg)
 
 //  materials
 //  info text only
-const String& SplineRoad::getMtrStr(int seg)
+/*const String& SplineRoad::getMtrStr(int seg)
 {
 	static String sHid = TR("#{Hidden}");
 	if (seg < 0)  // new
@@ -474,7 +478,7 @@ const String& SplineRoad::getWallMtrStr(int seg)
 	int i = mP[seg].idWall;
 	if (i==-1)  return sHid;
 	return !isPipe(seg) ? sMtrWall : sMtrWallPipe;  //todo: more [i]..
-}
+}*/
 
 void SplineRoad::SetMtrPipe(int i, String sMtr)
 {
@@ -677,8 +681,8 @@ void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,  bool bRay, bool bAddH,
 			vMarks[i].setVis(!bHide);
 	}
 	
-	//  ray terrain hit pos
-	if (bRay && ndHit && mTerrain)
+	//;  ray terrain hit pos
+	/*if (bRay && ndHit && mTerrain)
 	{
 		std::pair<bool, Vector3> p = mTerrain->rayIntersects(ray);
 		bHitTer = p.first;  //ndHit->setVisible(bHitTer);
@@ -692,5 +696,5 @@ void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,  bool bRay, bool bAddH,
 				pos.y = newP.pos.y;
 			ndHit->setPosition(pos);
 		}
-	}
+	}*/
 }

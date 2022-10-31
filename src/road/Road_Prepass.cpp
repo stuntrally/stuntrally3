@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../vdrift/dbl.h"
+#include "Def_Str.h"
+#include "dbl.h"
 #include "Road.h"
 #include <OgreTimer.h>
 using namespace Ogre;

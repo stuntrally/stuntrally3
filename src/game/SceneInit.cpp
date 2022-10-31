@@ -11,7 +11,7 @@
 // #include "CHud.h"
 // #include "CGui.h"
 #include "game.h"
-// #include "Road.h"
+#include "Road.h"
 // #include "PaceNotes.h"
 #include "SoundMgr.h"
 #include "SoundBaseMgr.h"
@@ -19,7 +19,7 @@
 #include "FollowCamera.h"
 #include "CarModel.h"
 // #include "SplitScreen.h"
-// #include "common/GraphView.h"
+// #include "GraphView.h"
 //; #include "../network/gameclient.hpp"
 // #include <MyGUI_OgrePlatform.h>
 // #include <MyGUI_PointerManager.h>
@@ -613,7 +613,7 @@ void App::LoadTerrain()  // 5
 
 void App::LoadRoad()  // 6
 {
-	// CreateRoads();   // dstTrk inside
+	CreateRoads();   // dstTrk inside
 		
 	// if (hud->arrow.nodeRot)
 		// hud->arrow.nodeRot->setVisible(pSet->check_arrow && !bHideHudArr);
@@ -791,10 +791,9 @@ void App::NewGameDoLoad()
 
 void App::CreateRoads()
 {
-/*  //;
 	///  road  ~ ~ ~
 	SplineRoad*& road = scn->road;
-	Camera* cam = *mSplitMgr->mCameras.begin();
+	Camera* cam = mCamera; //*mSplitMgr->mCameras.begin();
 
 	//  road
 	if (dstTrk)
@@ -806,15 +805,15 @@ void App::CreateRoads()
 
 
 	//  pace ~ ~
-	scn->DestroyPace();
+	// scn->DestroyPace();
 	//LogO("->-- DestroyTrail");
 	//scn->DestroyTrail();
 
-	if (!bHideHudPace)
+	/*if (!bHideHudPace)
 	{
 		scn->pace = new PaceNotes(pSet);
-		scn->pace->Setup(mSceneMgr, cam, scn->terrain, gui->mGui, mWindow);
-	}
+		scn->pace->Setup(mSceneMgr, cam, scn->terrain, //gui->mGui, mWindow);
+	}*/
 
 
 	//  after road load we have iChk1 so set it for carModels
@@ -823,7 +822,7 @@ void App::CreateRoads()
 
 	if (dstTrk)
 	{
-		scn->UpdPSSMMaterials();  ///+~-
+		// scn->UpdPSSMMaterials();  ///+~-
 
 		road->bCastShadow = pSet->shadow_type >= Sh_Depth;
 		road->bRoadWFullCol = pSet->gui.collis_roadw;
@@ -835,23 +834,22 @@ void App::CreateRoads()
 	
 
 	//  pace ~ ~
-	if (scn->pace)
+	/*if (scn->pace)
 	{
 		road->RebuildRoadPace();  //todo: load only..
 		scn->pace->Rebuild(road, scn->sc, pSet->game.trackreverse);
-	}
+	}*/
 
-	CreateTrail(cam);
-*/
+	CreateTrail(cam);	
 }
 
 
 void App::CreateRoadsInt()
 {
-/*	Camera* cam = *mSplitMgr->mCameras.begin();
+	Camera* cam = mCamera; //*mSplitMgr->mCameras.begin();
 
 	//  get all road*.xml
-	strlist lr;  string path = gcom->TrkDir();
+	strlist lr;  string path = TrkDir();
 	PATHMANAGER::DirList(path, lr, "xml");
 	
 	for (auto fname:lr)
@@ -866,11 +864,11 @@ void App::CreateRoadsInt()
 	}
 
 	scn->rdCur = 0;
-	scn->road = scn->roads[scn->rdCur];*/
+	scn->road = scn->roads[scn->rdCur];
 }
 
 
-///  Trail ghost track  ~~--~-~--
+///;  Trail ghost track  ~~--~-~--
 //---------------------------------------------------------------------------------------------------------------
 
 void App::CreateTrail(Camera* cam)

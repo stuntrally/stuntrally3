@@ -1,12 +1,12 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/RenderConst.h"
+#include "Def_Str.h"
+#include "RenderConst.h"
 #include "Road.h"
 #include <OgreException.h>
 #include <OgreSubMesh.h>
 #include <OgreSceneManager.h>
 #include <OgreMeshManager.h>
-#include <OgreEntity.h>
+#include <OgreItem.h>
 #include <OgreSceneNode.h>
 using namespace Ogre;
 
@@ -22,6 +22,8 @@ void SplineRoad::CreateMesh(SubMesh* mesh, AxisAlignedBox& aabox,
 	if (si == 0)  {
 		LogO("!!Error:  Road CreateMesh 0 verts !");
 		return;  }
+	// fixme ..
+	/*Mesh m;  m.add
 	mesh->useSharedVertices = false;
 	mesh->vertexData = new VertexData();
 	mesh->vertexData->vertexStart = 0;
@@ -79,7 +81,7 @@ void SplineRoad::CreateMesh(SubMesh* mesh, AxisAlignedBox& aabox,
 		*ip++ = idx[i];
 	
 	id->indexBuffer->unlock();
-	mesh->setMaterialName(sMtrName);
+	mesh->setMaterialName(sMtrName);*/
 }
 
 
@@ -87,8 +89,9 @@ void SplineRoad::CreateMesh(SubMesh* mesh, AxisAlignedBox& aabox,
 //---------------------------------------------------------
 
 void SplineRoad::AddMesh(MeshPtr mesh, String sMesh, const AxisAlignedBox& aabox,
-	Entity** pEnt, SceneNode** pNode, String sEnd)
+	Item** pEnt, SceneNode** pNode, String sEnd)
 {
+#if 0  // fixme
 	mesh->_setBounds(aabox);
 	mesh->_setBoundingSphereRadius((aabox.getMaximum()-aabox.getMinimum()).length()/2.0);  
 	mesh->load();
@@ -96,11 +99,12 @@ void SplineRoad::AddMesh(MeshPtr mesh, String sMesh, const AxisAlignedBox& aabox
 	if (!mesh->suggestTangentVectorBuildParams(VES_TANGENT, src, dest))
 		mesh->buildTangentVectors(VES_TANGENT, src, dest);
 
-	*pEnt = mSceneMgr->createEntity("rd.ent"+sEnd, sMesh);
+	*pEnt = mSceneMgr->createItem(/*"rd.ent"+sEnd,*/ sMesh);
 	*pNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("rd.node"+sEnd);
 	(*pNode)->attachObject(*pEnt);
 	(*pEnt)->setVisible(false);  (*pEnt)->setCastShadows(false);
 	(*pEnt)->setVisibilityFlags(RV_Road);
+#endif
 }
 
 
@@ -139,11 +143,11 @@ void SplineRoad::Destroy()  // full
 	if (ndRot)	mSceneMgr->destroySceneNode(ndRot);
 	if (ndHit)	mSceneMgr->destroySceneNode(ndHit);
 	if (ndChk)	mSceneMgr->destroySceneNode(ndChk);
-	if (entSel)  mSceneMgr->destroyEntity(entSel);
-	if (entChs)  mSceneMgr->destroyEntity(entChs);
-	if (entRot)  mSceneMgr->destroyEntity(entRot);
-	if (entHit)  mSceneMgr->destroyEntity(entHit);
-	if (entChk)  mSceneMgr->destroyEntity(entChk);
+	if (entSel)  mSceneMgr->destroyItem(entSel);
+	if (entChs)  mSceneMgr->destroyItem(entChs);
+	if (entRot)  mSceneMgr->destroyItem(entRot);
+	if (entHit)  mSceneMgr->destroyItem(entHit);
+	if (entChk)  mSceneMgr->destroyItem(entChk);
 	DestroyMarkers();
 	DestroyRoad();
 }
@@ -161,43 +165,43 @@ try
 		{
 			rs.wall[l].node->detachAllObjects();
 			#ifdef SR_EDITOR
-			mSceneMgr->destroyEntity(rs.wall[l].ent);
+			mSceneMgr->destroyItem(rs.wall[l].ent);
 			#endif
 			//rs.wall[l].node->getParentSceneNode()->detachObject(0);
 			mSceneMgr->destroySceneNode(rs.wall[l].node);
-			Ogre::MeshManager::getSingleton().remove(rs.wall[l].smesh);
+			//; Ogre::MeshManager::getSingleton().remove(rs.wall[l].smesh);
 		}
 		if (rs.blend[l].ent)  // > blend
 		{
 			rs.blend[l].node->detachAllObjects();
 			#ifdef SR_EDITOR
-			mSceneMgr->destroyEntity(rs.blend[l].ent);
+			mSceneMgr->destroyItem(rs.blend[l].ent);
 			#endif
 			mSceneMgr->destroySceneNode(rs.blend[l].node);
-			Ogre::MeshManager::getSingleton().remove(rs.blend[l].smesh);
+			//; Ogre::MeshManager::getSingleton().remove(rs.blend[l].smesh);
 		}
 	}
 	if (rs.col.ent)  // | column
 	{
 		#ifdef SR_EDITOR
 		rs.col.node->detachAllObjects();
-		mSceneMgr->destroyEntity(rs.col.ent);
+		mSceneMgr->destroyItem(rs.col.ent);
 		#endif
 		mSceneMgr->destroySceneNode(rs.col.node);
-		Ogre::MeshManager::getSingleton().remove(rs.col.smesh);
+		//; Ogre::MeshManager::getSingleton().remove(rs.col.smesh);
 	}
 	for (int l=0; l < LODs; ++l)
 	if (rs.road[l].ent)
 	{
 		rs.road[l].node->detachAllObjects();
 		if (IsTrail())
-			mSceneMgr->destroyEntity(rs.road[l].ent);
+			mSceneMgr->destroyItem(rs.road[l].ent);
 		#ifdef SR_EDITOR  //_crash in game (destroy all ents is before)
-		mSceneMgr->destroyEntity(rs.road[l].ent);
+		mSceneMgr->destroyItem(rs.road[l].ent);
 		#endif
 		mSceneMgr->destroySceneNode(rs.road[l].node);
-		if (Ogre::MeshManager::getSingleton().resourceExists(rs.road[l].smesh))
-			Ogre::MeshManager::getSingleton().remove(rs.road[l].smesh);
+		//; if (Ogre::MeshManager::getSingleton().resourceExists(rs.road[l].smesh))
+			// Ogre::MeshManager::getSingleton().remove(rs.road[l].smesh);
 		//Resource* r = ResourceManae::getSingleton().remove(rs.road[l].smesh);
 	}
 }catch (Exception ex)

@@ -1,36 +1,36 @@
 #include "pch.h"
-#include "../vdrift/dbl.h"
-#include "../ogre/common/Def_Str.h"
+#include "dbl.h"
+#include "Def_Str.h"
 #include "SplineBase.h"
 #include <Ogre.h>
 #include <OgreLogManager.h>
-#include <OgreTerrain.h>
+#include "Terra.h"
 using namespace Ogre;
 
 
 //  terrain utility
 //---------------------------------------------------------------------
 
-Vector3 TerUtil::GetNormalAt(Terrain* terrain, float x, float z, float s)
+Vector3 TerUtil::GetNormalAt(Terra* terrain, float x, float z, float s)
 {
 	Real y0=0;
 	Vector3 vx(x-s, y0, z), vz(x, y0, z-s);
 	Vector3 vX(x+s, y0, z), vZ(x, y0, z+s);
-	vx.y = terrain->getHeightAtWorldPosition(vx);  vX.y = terrain->getHeightAtWorldPosition(vX);
-	vz.y = terrain->getHeightAtWorldPosition(vz);  vZ.y = terrain->getHeightAtWorldPosition(vZ);
+	vx.y = terrain->getHeightAt(vx);  vX.y = terrain->getHeightAt(vX);
+	vz.y = terrain->getHeightAt(vz);  vZ.y = terrain->getHeightAt(vZ);
 	Vector3 v_x = vx-vX;  v_x.normalise();
 	Vector3 v_z = vz-vZ;  v_z.normalise();
 	Vector3 n = -v_x.crossProduct(v_z);  n.normalise();
 	return n;
 }
 
-float TerUtil::GetAngleAt(Terrain* terrain, float x, float z, float s)
+float TerUtil::GetAngleAt(Terra* terrain, float x, float z, float s)
 {
 	Real y0=0;
 	Vector3 vx(x-s, y0, z), vz(x, y0, z-s);
 	Vector3 vX(x+s, y0, z), vZ(x, y0, z+s);
-	vx.y = terrain->getHeightAtWorldPosition(vx);  vX.y = terrain->getHeightAtWorldPosition(vX);
-	vz.y = terrain->getHeightAtWorldPosition(vz);  vZ.y = terrain->getHeightAtWorldPosition(vZ);
+	vx.y = terrain->getHeightAt(vx);  vX.y = terrain->getHeightAt(vX);
+	vz.y = terrain->getHeightAt(vz);  vZ.y = terrain->getHeightAt(vZ);
 	Vector3 v_x = vx-vX;  //v_x.normalise();
 	Vector3 v_z = vz-vZ;  //v_z.normalise();
 	Vector3 n = -v_x.crossProduct(v_z);  n.normalise();

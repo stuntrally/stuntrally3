@@ -9,7 +9,7 @@
 #include <OgreMesh.h>
 #include <OgreAxisAlignedBox.h>
 
-namespace Ogre {  class SceneManager;  class SceneNode;  class Entity;  class Terrain;  class Camera;  }
+namespace Ogre {  class SceneManager;  class SceneNode;  class Item;  class Terrain;  class Camera;  }
 class btTriangleMesh;
 
 #if defined(_WIN32) && defined(SR_EDITOR)
@@ -32,7 +32,7 @@ class btTriangleMesh;
 struct RoadSeg
 {
 	struct SegData
-	{	Ogre::SceneNode* node =0;  Ogre::Entity* ent =0;
+	{	Ogre::SceneNode* node =0;  Ogre::Item* ent =0;
 		Ogre::MeshPtr mesh;  Ogre::String smesh ="";
 	};
 	
@@ -120,7 +120,7 @@ public:
 
 
 	//  other
-	const Ogre::String& getMtrStr(int seg);  const Ogre::String& getWallMtrStr(int seg);
+	// const Ogre::String& getMtrStr(int seg);  const Ogre::String& getWallMtrStr(int seg);
 	bool isPipe(int seg);
 	
 
@@ -133,7 +133,7 @@ private:
 		const std::vector<Ogre::Vector2>& tcs, const std::vector<Ogre::uint16>& idx, Ogre::String sMtrName);
 
 	void AddMesh( Ogre::MeshPtr mesh, Ogre::String sMesh, const Ogre::AxisAlignedBox& aabox,
-		Ogre::Entity** pEnt, Ogre::SceneNode** pNode, Ogre::String sEnd);
+		Ogre::Item** pEnt, Ogre::SceneNode** pNode, Ogre::String sEnd);
 
 	std::vector<Ogre::uint16>    idx, idxB;	  // mesh indices
 

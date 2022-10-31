@@ -1,24 +1,24 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/RenderConst.h"
-#include "../ogre/common/ShapeData.h"
-#include "../vdrift/dbl.h"
+#include "Def_Str.h"
+#include "RenderConst.h"
+#include "ShapeData.h"
+#include "dbl.h"
 #include "Road.h"
 #ifndef SR_EDITOR
-	#include "../vdrift/game.h"
-	#include "../ogre/CGame.h"
-	#include "../ogre/common/CScene.h"
-	#include "../ogre/common/data/SceneXml.h"
+	#include "game.h"
+	#include "CGame.h"
+	#include "CScene.h"
+	#include "SceneXml.h"
 #else
-	#include "../editor/CApp.h"
+	#include "CApp.h"
 	#include <BulletCollision/CollisionShapes/btTriangleMesh.h>
 	#include <BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h>
 	#include <BulletCollision/CollisionDispatch/btCollisionObject.h>
 	#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
 #endif
-#include <OgreTerrain.h>
+#include "Terra.h"
 #include <OgreMeshManager.h>
-#include <OgreEntity.h>
+#include <OgreItem.h>
 using namespace Ogre;
 using std::vector;  using std::min;  using std::max;
 
@@ -239,7 +239,7 @@ void SplineRoad::BuildSeg(
 			{	//  flat --
 				vP = vL0 + vw * (tcw - 0.5);
 				vN = vn;
-				yTer = mTerrain ? mTerrain->getHeightAtWorldPosition(vP.x, 0, vP.z) : 0.f;
+				yTer = mTerrain ? mTerrain->getHeightAt(vP/*.x, 0, vP.z*/) : 0.f;
 				if (onTer1)  //  onTerrain
 				{
 					vP.y = yTer + g_Height * ((w==0 || w==iw) ? 0.15f : 1.f);
@@ -257,7 +257,7 @@ void SplineRoad::BuildSeg(
 				if (vN.y < 0.f)  vN.y = -vN.y;
 				if (trans)  //  transition from flat to pipe
 				{	vP += vw * (tcw - 0.5) * trp;  }
-				yTer = mTerrain ? mTerrain->getHeightAtWorldPosition(vP.x, 0, vP.z) : 0.f;
+				yTer = mTerrain ? mTerrain->getHeight(vP/*.x, 0, vP.z*/) : 0.f;
 			}
 			
 			//  skirt ends, gap patch_
@@ -406,7 +406,7 @@ void SplineRoad::BuildSeg(
 						vP.y += yy;
 					}
 					else  // bottom below ground
-					{	yy = (mTerrain ? mTerrain->getHeightAtWorldPosition(vP) : 0.f) - 0.3f;
+					{	yy = (mTerrain ? mTerrain->getHeight(vP) : 0.f) - 0.3f;
 						vP.y = yy;
 					}
 
@@ -569,9 +569,10 @@ void SplineRoad::createSeg_Meshes(
 	blendTri = false;
 
 
-	//  create Ogre Mesh
+	//;  create Ogre Mesh
 	//-----------------------------------------
-	MeshPtr meshOld = MeshManager::getSingleton().getByName(sMesh);
+	// fixme
+	/*MeshPtr meshOld = MeshManager::getSingleton().getByName(sMesh);
 	if (meshOld)  LogR("Mesh exists !!!" + sMesh);
 
 	AxisAlignedBox aabox;
@@ -582,16 +583,16 @@ void SplineRoad::createSeg_Meshes(
 		mesh = MeshManager::getSingleton().createManual(sMesh,"General");
 		sm = mesh->createSubMesh();
 		CreateMesh(sm, aabox, DLM.pos,DLM.norm,DLM.clr,DLM.tcs, idx, rs.sMtrRd);
-	}
+	}*/
 
 	bool wall = !DLM.posW.empty();
-	if (wall)
+	/*if (wall)
 	{
 		meshW = MeshManager::getSingleton().createManual(sMeshW,"General");
 		meshW->createSubMesh();
-	}
+	}*/
 	bool cols = !DLM.posC.empty() && DL.isLod0;  // cols have no lods
-	if (cols)
+	/*if (cols)
 	{
 		meshC = MeshManager::getSingleton().createManual(sMeshC,"General");
 		meshC->createSubMesh();
@@ -601,7 +602,7 @@ void SplineRoad::createSeg_Meshes(
 		meshB = MeshManager::getSingleton().createManual(sMeshB,"General");
 		sm = meshB->createSubMesh();
 		CreateMesh(sm, aabox, DLM.posB,DLM.normB,DLM.clrB,DLM.tcsB, idxB, rs.sMtrB);
-	}
+	}*/
 	//*=*/wall = 0;  cols = 0;  // test
 
 
@@ -637,10 +638,11 @@ void SplineRoad::createSeg_Meshes(
 			vSegs[seg].nTri[DL.lod] += idx.size()/3;
 		}
 		
-		sm = meshW->getSubMesh(0);   // for glass only..
+		/*sm = meshW->getSubMesh(0);   // for glass only..
 		rs.sMtrWall = !pipeGlass ? sMtrWall : sMtrWallPipe;
 		if (!DLM.posW.empty())
 			CreateMesh(sm, aabox, DLM.posW,DLM.normW,DLM.clr0,DLM.tcsW, idx, rs.sMtrWall);
+		*/  // fixme
 	}
 	
 	
@@ -661,17 +663,19 @@ void SplineRoad::createSeg_Meshes(
 		}					
 		vSegs[DS.seg].nTri[DL.lod] += idx.size()/3;
 
-		sm = meshC->getSubMesh(0);
+		/*sm = meshC->getSubMesh(0);
 		//if (!posC.empty())
 		CreateMesh(sm, aabox, DLM.posC,DLM.normC,DLM.clr0,DLM.tcsC, idx, sMtrCol);
+		*/
 	}
 	
 					
 	//  add Mesh to Scene  -----------------------------------------
-	Entity* ent = 0, *entW = 0, *entC = 0, *entB = 0;
+	Item* ent = 0, *entW = 0, *entC = 0, *entB = 0;
 	SceneNode* node = 0, *nodeW = 0, *nodeC = 0, *nodeB = 0;
 
 	//  road
+#if 0  // fixme
 	if (HasRoad())
 	{
 		AddMesh(mesh, sMesh, aabox, &ent, &node, "."+sEnd);
@@ -701,7 +705,6 @@ void SplineRoad::createSeg_Meshes(
 		AddMesh(meshB, sMeshB, aabox, &entB, &nodeB, "B."+sEnd);
 		entB->setRenderQueueGroup(RQG_RoadBlend);
 	}
-
 	
 	//>>  store ogre data  ------------
 	int lod = DL.lod;
@@ -715,6 +718,7 @@ void SplineRoad::createSeg_Meshes(
 		rs.col.mesh = meshC;
 		rs.col.smesh = sMeshC;  }
 	rs.empty = false;  // new
+#endif
 }
 
 

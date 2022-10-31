@@ -115,6 +115,7 @@ include_directories(
 	src/common
 	src/common/data
 	src/game
+	src/road
 	src/OgreCommon
 	src/OgreCommon/System
 	src/OgreCommon/System/Desktop

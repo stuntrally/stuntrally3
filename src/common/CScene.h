@@ -61,14 +61,14 @@ public:
 	// void UpdateWaterRTT(Ogre::Camera* cam);
 
 
-	//;  Road
-	// int rdCur = 0;  // cur
-	// std::vector<SplineRoad*> roads;
-	// SplineRoad* road = 0;  // main
+	//  Road
+	int rdCur = 0;  // cur
+	std::vector<SplineRoad*> roads;
+	SplineRoad* road = 0;  // main
 	
-	// SplineRoad* trail = 0;  // driving aids
-	// PaceNotes* pace = 0;
-	// void DestroyRoads(), DestroyPace(), DestroyTrail();
+	SplineRoad* trail = 0;  // driving aids
+	PaceNotes* pace = 0;
+	void DestroyRoads(), DestroyPace(), DestroyTrail();
 
 	
 	//  Vegetation

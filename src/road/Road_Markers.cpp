@@ -1,28 +1,29 @@
+#include "OgreCommon.h"
 #include "pch.h"
 #include "Road.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/RenderConst.h"
+#include "Def_Str.h"
+#include "RenderConst.h"
 
 #include <OgreSceneManager.h>
-#include <OgreTerrain.h>
+#include "Terra.h"
 #include <OgreSceneNode.h>
-#include <OgreEntity.h>
+#include <OgreItem.h>
 using namespace Ogre;
 
 
 //  Setup
 //---------------------------------------------------------------------------------------------------------------
-void SplineMarkEd::createMarker(String name, String mat, Entity*& ent, SceneNode*& nd)
+void SplineMarkEd::createMarker(String name, String mat, Item*& ent, SceneNode*& nd)
 {
-	ent = mSceneMgr->createEntity(name, sMarkerMesh);
+	ent = mSceneMgr->createItem(/*name,*/ sMarkerMesh);
 	ent->setMaterialName(mat);  ent->setCastShadows(false);  ent->setVisibilityFlags(RV_Hud);
-	nd = mSceneMgr->getRootSceneNode()->createChildSceneNode(name);
+	nd = mSceneMgr->getRootSceneNode(SCENE_STATIC)->createChildSceneNode(/*name*/);
 	nd->attachObject(ent);  nd->setVisible(false);
 }
 
 void SplineMarkEd::Setup(
 	String sMarkerMeshFile, Real scale,
-	Terrain* terrain, SceneManager* sceneMgr, Camera* camera, int idx)
+	Terra* terrain, SceneManager* sceneMgr, Camera* camera, int idx)
 {
 	idRd = idx;
 	sMarkerMesh = sMarkerMeshFile;
@@ -61,17 +62,19 @@ void SplineEdit::Mark::setVis(bool vis)
 void SplineMarkEd::AddMarker(Vector3 pos)
 {
 	if (sMarkerMesh == "")  return;
-	Entity* ent;//, *entC;
+	Item* it;//, *entC;
 	SceneNode* nd;//, *ndC;
 
-	ent = mSceneMgr->createEntity(sMarkerMesh);
-	ent->setMaterialName("sphere_norm");  ent->setCastShadows(false);
-	ent->setVisibilityFlags(RV_Hud);
+	it = mSceneMgr->createItem(sMarkerMesh);
+	it->setMaterialName("sphere_norm");  it->setCastShadows(false);
+	it->setVisibilityFlags(RV_Hud);
 	
-	nd = mSceneMgr->getRootSceneNode()->createChildSceneNode(pos);
-	nd->attachObject(ent);  nd->scale(fMarkerScale * Vector3::UNIT_SCALE);
+	nd = mSceneMgr->getRootSceneNode(SCENE_STATIC)->createChildSceneNode(SCENE_STATIC);
+	nd->attachObject(it);
+	nd->setPosition(pos);
+	nd->scale(fMarkerScale * Vector3::UNIT_SCALE);
 
-	//entC = mSceneMgr->createEntity(sMarkerMesh);
+	//entC = mSceneMgr->createItem(sMarkerMesh);
 	//entC->setMaterialName("sphere_norm");  entC->setCastShadows(false);
 	//entC->setVisibilityFlags(RV_Hud/*RQG_RoadMarkers*/);
 	
@@ -79,7 +82,7 @@ void SplineMarkEd::AddMarker(Vector3 pos)
 	//ndC->attachObject(entC);  //ndC->setVisible(true);
 
 	Mark m;
-	m.nd = nd;  m.ent = ent;
+	m.nd = nd;  m.it = it;
 	//m.ndC = ndC;  m.entC = entC;
 	vMarks.push_back(m);
 }
@@ -87,8 +90,8 @@ void SplineMarkEd::AddMarker(Vector3 pos)
 void SplineMarkEd::DestroyMarker(int id)
 {
 	Mark& m = vMarks[id];
-	mSceneMgr->destroyEntity(m.ent);
-	//mSceneMgr->destroyEntity(m.entC);
+	mSceneMgr->destroyItem(m.it);
+	//mSceneMgr->destroyItem(m.entC);
 	mSceneMgr->destroySceneNode(m.nd);
 	//mSceneMgr->destroySceneNode(m.ndC);
 }

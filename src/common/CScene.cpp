@@ -4,7 +4,7 @@
 #include "data/CData.h"
 #include "data/SceneXml.h"
 // #include "WaterRTT.h"
-// #include "Road.h"
+#include "Road.h"
 // #include "PaceNotes.h"
 
 
@@ -36,7 +36,7 @@ CScene::~CScene()
 	delete sc;
 	delete data;
 }
-/*
+
 void CScene::DestroyRoads()
 {
 	for (auto r : roads)
@@ -45,7 +45,7 @@ void CScene::DestroyRoads()
 	rdCur = 0;
 	road = 0;
 }
-
+/*
 void CScene::DestroyPace()
 {
 	if (pace)

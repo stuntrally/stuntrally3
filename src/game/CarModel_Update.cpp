@@ -550,49 +550,11 @@ void CarModel::UpdateKeys()
 //-------------------------------------------------------------------------------------------------------
 //  utility
 //-------------------------------------------------------------------------------------------------------
-/*void CarModel::UpdateLightMap()
-{
-	MaterialPtr mtr;
-	for (int i=0; i < NumMaterials; ++i)
-	{
-		mtr = MaterialManager::getSingleton().getByName(sMtr[i]);
-		if (mtr)
-		{	Material::TechniqueIterator techIt = mtr->getTechniqueIterator();
-			while (techIt.hasMoreElements())
-			{	Technique* tech = techIt.getNext();
-				Technique::PassIterator passIt = tech->getPassIterator();
-				while (passIt.hasMoreElements())
-				{	Pass* pass = passIt.getNext();
-					if (pass->hasFragmentProgram())
-					{
-						GpuProgramParametersSharedPtr params = pass->getFragmentProgramParameters();
-						params->setIgnoreMissingParams(true);  // don't throw exception if material doesnt use lightmap
-						params->setNamedConstant("enableTerrainLightMap", bLightMapEnabled ? 1.f : 0.f);
-	}	}	}	}	}
-}*/
 
 void CarModel::UpdateBraking()
 {
 	if (brakes)
 		brakes->setVisible(bBraking && mbVisible);
-/*
-	std::string texName = sDirname + (bBraking ? "_body00_brake.png" : "_body00_add.png");
-
-	MaterialPtr mtr = MaterialManager::getSingleton().getByName(sMtr[Mtr_CarBody]);
-	if (mtr)
-	{	Material::TechniqueIterator techIt = mtr->getTechniqueIterator();
-		while (techIt.hasMoreElements())
-		{	Technique* tech = techIt.getNext();
-			Technique::PassIterator passIt = tech->getPassIterator();
-			while (passIt.hasMoreElements())
-			{	Pass* pass = passIt.getNext();
-				Pass::TextureUnitStateIterator tusIt = pass->getTextureUnitStateIterator();
-				while (tusIt.hasMoreElements())
-				{
-					TextureUnitState* tus = tusIt.getNext();
-					if (tus->getName() == "diffuseMap")
-					{	tus->setTextureName( texName );  return;  }
-	}	}	}	}*/
 }
 
 

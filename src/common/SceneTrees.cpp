@@ -254,9 +254,9 @@ void CScene::CreateTrees()
 			#endif
 
 				//;  check ter angle  ------------
-				/*float ang = terrain->GetAngleAt(pos.x, pos.z, sc->td.fTriangleSize);
+				float ang = terrain->getAngle(pos.x, pos.z, sc->td.fTriangleSize);
 				if (ang > pg.maxTerAng)
-					add = false;*/
+					add = false;
 
 				if (!add)  continue;  //
 
