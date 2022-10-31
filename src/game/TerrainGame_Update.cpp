@@ -74,7 +74,7 @@ namespace Demo
 		}
 	
 	
-		if (pGame && pApp)
+		if (pGame && pApp && !pApp->bLoading)//pApp->iLoad1stFrames == -2)
 		{
 			//  set game inputs .. // todo: use oics
 			pApp->inputs[A_Throttle] = mArrows[2];

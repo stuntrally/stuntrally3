@@ -36,7 +36,7 @@ namespace Demo
 		{   }
 	};
 
-	enum IblQuality
+	enum IblQuality  // reflections
 	{
 		MipmapsLowest,
 		IblLow,
@@ -81,7 +81,6 @@ namespace Demo
 		App* pApp = 0;
 		
 		Scene* sc = 0;  // in pApp->scn ..
-		void CreateBltTerrain();
 
 		void LoadDefaultSet(SETTINGS* settings, std::string setFile);
 		void Init();
@@ -137,16 +136,6 @@ namespace Demo
 		//  other
 		void CreateManualObj(Ogre::Vector3 camPos);
 		void CreateParticles();
-
-
-		//  cars  ----
-		const static int carParts = 3;
-		Ogre::SceneNode* ndCar[carParts] = {0,0,0}, *ndWheel[4] = {0,0,0,0};
-		void CreateCar();
-		
-		int iCar = 0;
-		const static int nCars = 2;  //3
-		const static Ogre::uint32 RV_Car = 2;
 	};
 }
 

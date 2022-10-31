@@ -22,7 +22,7 @@ Scene::Scene()
 }
 void Scene::Default()
 {
-	ter = true;  secEdited = 0;
+	secEdited = 0;
 
 	asphalt = false;  denyReversed = false;  noWrongChks = false;
 	windAmt = 0.f;  damageMul = 1.f;

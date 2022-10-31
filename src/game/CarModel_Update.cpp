@@ -321,7 +321,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	}
 
 	//  wheels  ------------------------------------------------------------------------
-	const float trlH = sc->ter ? 0.90f : 0.76f;  // vdr needs up (ter bumps), no ter  ..get from wheel contact ?rpl
+	const float trlH = 0.90f;
 
 	for (w=0; w < numWheels; ++w)
 	{

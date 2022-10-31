@@ -150,15 +150,15 @@ namespace Demo
 			case 14:  txt += "envmap Scale  " + fToStr( p.envmapScale, d );  break;
 			}
 		}
+		txt += "\n\n";
 
 		if (pApp->bLoading)
 		{
-			txt += "\nLoading... "+toStr(pApp->curLoadState)+" / "+toStr(App::LS_ALL);
+			txt += "Loading... "+toStr(pApp->curLoadState)+" / "+toStr(App::LS_ALL);
 		}
 		else  //-
 		if (pGame)  // CAR text
 		{
-			txt += "\n\n";
 			int num = pGame->cars.size();
 			txt += "cars " + toStr(num) + "\n";
 			

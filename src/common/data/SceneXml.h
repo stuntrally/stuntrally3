@@ -48,7 +48,7 @@ public:
 
 
 	//  game
-	bool asphalt;  // use asphalt tires car
+	bool asphalt;  // use asphalt tires
 	bool denyReversed;  // track (road) dir
 	bool noWrongChks;  // dont show "wrong checkpoint" messages
 
@@ -70,7 +70,6 @@ public:
 	Ogre::String  sParDust, sParMud, sParSmoke;
 	
 	///  Terrain  ----
-	bool ter;  // has terrain
 	TerData td;
 
 	

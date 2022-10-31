@@ -21,6 +21,7 @@
 #include "Compositor/OgreCompositorWorkspaceDef.h"
 #include "Compositor/Pass/PassIblSpecular/OgreCompositorPassIblSpecularDef.h"
 
+#include "RenderConst.h"
 using namespace Demo;
 using namespace Ogre;
 

@@ -116,45 +116,6 @@ namespace Demo
 
 		pGame->ReloadSimData();
 
-/*  for game.cfg
-track = 
-Test1-Flat
-Test2-Asphalt
-Test3-Bumps
-Test4-TerrainBig
-
-Test7-FluidsSmall
-Test8-Objects
-Test12-Snow
-
-TestC6-Temp
-TestC8-Align
-TestC9-Jumps
-TestC10-Pace
-TestC12-SR
-TestC13-Rivers
-
-Jng13-Tropic
-Jng20-JungleMaze
-For12-HighPeaks
-
-Tox2-AcidLakes
-Atm3-Orange -
-Isl10-Treasure
-
-Jng23-FollowValley
-Jng25-CantorJungle
-For18-MountCaro
-Isl17-AdapterIslands
-Mos6-TaraMosses
-
-Des11-PersianCity
-Des17-NileCity
-Grc8-SlopeCity
-Grc10-BeachCity
-Aus10-PreythCity
-Grc13-YeleyStunts
-*/
 		//  new game
 		pApp->mCamera = mGraphicsSystem->getCamera();
 		pApp->mSceneMgr = mGraphicsSystem->getSceneManager();
@@ -282,3 +243,46 @@ Grc13-YeleyStunts
 	}
 
 }
+
+/*  for game.cfg
+track = 
+Test1-Flat
+Test2-Asphalt
+Test3-Bumps
+Test4-TerrainBig
+
+Test7-FluidsSmall
+Test8-Objects
+Test12-Snow
+
+TestC6-Temp
+TestC8-Align
+TestC9-Jumps
+TestC10-Pace
+TestC12-SR
+TestC13-Rivers
+
+Jng13-Tropic
+Jng20-JungleMaze
+For12-HighPeaks
+
+Tox2-AcidLakes
+Atm3-Orange -
+Isl10-Treasure
+
+Jng23-FollowValley
+Jng25-CantorJungle
+For18-MountCaro
+Isl17-AdapterIslands
+Mos6-TaraMosses -
+Isl16-SandyMountain
+
+Des11-PersianCity
+Des17-NileCity
+Grc8-SlopeCity
+
+Grc10-BeachCity
+Aus10-PreythCity
+Grc13-YeleyStunts
+Isl19-Shocacosh
+*/
