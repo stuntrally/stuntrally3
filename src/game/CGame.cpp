@@ -116,7 +116,7 @@ void App::destroyScene()
 	
 	// scn->mWaterRTT->destroy();
 	
-	//; DestroyObjects(true);
+	DestroyObjects(true);
 	
 	// for (int i=0; i < graphs.size(); ++i)
 	// 	delete graphs[i];
@@ -133,14 +133,14 @@ void App::destroyScene()
 	
 	// gcom->mToolTip = 0;  //?
 
-	// scn->DestroyRoads();
+	scn->DestroyRoads();
 
-	// scn->DestroyTrees();
+	scn->DestroyTrees();
 
 	if (pGame)
 		pGame->End();
 	
-	delete[] blendMtr;  blendMtr = 0;
+	// delete[] blendMtr;  blendMtr = 0;
 
 	// BaseApp::destroyScene();
 }

@@ -31,6 +31,7 @@
 
 #include "OgreGpuResource.h"
 #include "OgreHlmsTerraPrerequisites.h"
+#include "OgreHlmsUnlitDatablock.h"
 // #include "OgreHlmsTerra.h"
 
 //  SR
@@ -69,21 +70,32 @@ namespace Demo
 
 		LogO("---- new Terra json mat");
 
-	#if 1
+	#if 0  // default .json
 		std::string datablockName = "TerraExampleMaterial";  // from .json
-		// mGraphicsSystem->hlmsTerra->loadMaterial( "FileName for logging purposes", defaultResourceGroupForLoadingTextures, jsonString, "" );
+		// mGraphicsSystem->hlmsTerra->loadMaterial( "FileName for logging", defaultResourceGroupForLoadingTextures, jsonString, "" );
 	#else
 		std::string datablockName = "TerraExampleMaterial2";
-		// mGraphicsSystem->hlmsTerra->setDetailTextureProperty(
 		datablock = mGraphicsSystem->hlmsTerra->createDatablock(
 			datablockName.c_str(), datablockName.c_str(),
-			HlmsMacroblock(),
-			HlmsBlendblock(),
-			HlmsParamVec() );
+			HlmsMacroblock(), HlmsBlendblock(), HlmsParamVec() );
 		assert( dynamic_cast<HlmsTerraDatablock *>( datablock ) );
-		// datablock->set
 		HlmsTerraDatablock *tblock = static_cast<HlmsTerraDatablock *>( datablock );
+		
+		//  tex filtering
+		HlmsSamplerblock sampler;
+		sampler.mMinFilter = FO_ANISOTROPIC;
+		sampler.mMagFilter = FO_ANISOTROPIC;
+		sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
+		sampler.mMaxAnisotropy = pSet->anisotropy;
+		sampler.mU = TAM_WRAP;
+		sampler.mV = TAM_WRAP;
+		sampler.mW = TAM_WRAP;
 		TextureGpuManager *texMgr = root->getRenderSystem()->getTextureGpuManager();
+
+		//  blendmap ..  // todo: dynamic, shader
+		auto tex = texMgr->createOrRetrieveTexture("HeightmapBlendmap.png",
+			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
+		tblock->setTexture( TERRA_DETAIL_WEIGHT, tex );
 
 		///  Layer Textures  ----
 		int ls = sc->td.layers.size();
@@ -106,30 +118,29 @@ namespace Demo
 
 			auto tex = texMgr->createOrRetrieveTexture(d_d,
 				GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
-			/*if (tex)
-			{	tex->isTextureGpu();
-				tex->setPixelFormat( PFG_RGBA8_UNORM_SRGB );
-				tex->scheduleTransitionTo( GpuResidency::Resident );
-			}*/
-			tblock->setTexture( TERRA_DETAIL0 + i, tex );
-			// tblock->setSamplerblock(uint8 texType, const HlmsSamplerblock &params)
-
+			if (tex)
+			{	tblock->setTexture( TERRA_DETAIL0 + i, tex );
+				tblock->setSamplerblock( TERRA_DETAIL0 + i, sampler );
+			}
 			tex = texMgr->createOrRetrieveTexture(n_n,
 				GpuPageOutStrategy::Discard, CommonTextureTypes::NormalMap, "General" );
 			if (tex)
-				tblock->setTexture( TERRA_DETAIL0_NM + i, tex );
-
-			/*tex = texMgr->createOrRetrieveTexture(n_h,
+			{	tblock->setTexture( TERRA_DETAIL0_NM + i, tex );
+				tblock->setSamplerblock( TERRA_DETAIL0_NM + i, sampler );
+			}
+			tex = texMgr->createOrRetrieveTexture(n_h,
 				GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 			if (tex)
-				tblock->setTexture( TERRA_DETAIL_ROUGHNESS0 + i, tex );
-
+			{	tblock->setTexture( TERRA_DETAIL_ROUGHNESS0 + i, tex );
+				tblock->setSamplerblock( TERRA_DETAIL_ROUGHNESS0 + i, sampler );
+			}
 			tex = texMgr->createOrRetrieveTexture(d_s,
 				GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 			if (tex)
-				tblock->setTexture( TERRA_DETAIL_METALNESS0 + i, tex );*/
-
-			tblock->setDetailMapOffsetScale( i, Vector4(0,0, l.tiling, l.tiling) );
+			{	tblock->setTexture( TERRA_DETAIL_METALNESS0 + i, tex );
+				tblock->setSamplerblock( TERRA_DETAIL_METALNESS0 + i, sampler );
+			}
+			tblock->setDetailMapOffsetScale( i, Vector4(0,0, l.tiling *2,2* l.tiling) );
 			tblock->setMetalness(i, 0.1);
 			tblock->setRoughness(i, 0.6);
 		}
@@ -320,25 +331,18 @@ namespace Demo
 		m->setCastShadows(false);
 
 		ndSky = mgr->getRootSceneNode()->createChildSceneNode();
-		ndSky->attachObject(m);  // SCENE_DYNAMIC
+		ndSky->attachObject(m);
 		ndSky->setScale(scale);
 		Quaternion q;  q.FromAngleAxis(Degree(-yaw), Vector3::UNIT_Y);
 		ndSky->setOrientation(q);
 
-		//  Change the addressing mode to wrap  ?
-		/*Root *root = mGraphicsSystem->getRoot();
+		//  change to wrap..
+		Root *root = mGraphicsSystem->getRoot();
 		Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_UNLIT );
 		HlmsUnlitDatablock *datablock = static_cast<HlmsUnlitDatablock*>(hlms->getDatablock(sMater));
-		// HlmsPbsDatablock *datablock = static_cast<HlmsPbsDatablock*>(m->getDatablock() );
-		HlmsSamplerblock sampler( *datablock->getSamplerblock( PBSM_DIFFUSE ) );  // hard copy
-		sampler.mU = TAM_WRAP;
-		sampler.mV = TAM_WRAP;
-		sampler.mW = TAM_WRAP;
-		datablock->setSamplerblock( PBSM_DIFFUSE, sampler );
-		datablock->setSamplerblock( PBSM_NORMAL, sampler );
-		datablock->setSamplerblock( PBSM_ROUGHNESS, sampler );
-		datablock->setSamplerblock( PBSM_METALLIC, sampler );/**/
-		// datablock->setSamplerblock(sampler);
+		HlmsSamplerblock sampler( *datablock->getSamplerblock( PBSM_DIFFUSE ) );  // copy
+		sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
+		datablock->setSamplerblock( PBSM_DIFFUSE, sampler );/**/
 	}
 
 	void TerrainGame::DestroySkyDome()

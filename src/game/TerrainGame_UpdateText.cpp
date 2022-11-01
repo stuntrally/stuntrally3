@@ -103,10 +103,10 @@ namespace Demo
 			//outText = mHelpDescription;
 			txt = "F1 toggle help\n";
 			txt += "Reload shaders:\n"
-					   "Ctrl+F1 PBS  Ctrl+F2 Unlit  Ctrl+F3 Compute  Ctrl+F4 Terra\n\n";
+					"Ctrl+F1 PBS  Ctrl+F2 Unlit  Ctrl+F3 Compute  Ctrl+F4 Terra\n\n";
 			txt += "V add Vegetation  C clear it\n";
 			txt += "T terrain / flat  R wireframe\n";
-			txt += "K next Sky  G add next Car  F add Fire\n\n";
+			txt += "K next Sky  F add Fire\n\n";
 			
 			Vector3 camPos = mGraphicsSystem->getCamera()->getPosition();
 			txt += "\n\nPos:  " + fToStr( camPos.x, 1) +"  "+ fToStr( camPos.y, 1) +"  "+ fToStr( camPos.z, 1) + "\n\n";
