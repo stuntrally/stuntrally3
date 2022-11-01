@@ -3,7 +3,7 @@ hlms han pbs
 {
 	diffuse_map  han_struct_02.png
 	normal_map   han_struct_02_norm.jpg
-	specMap han_struct_02_spec.png
+	// specMap han_struct_02_spec.png
 
 	ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
@@ -17,7 +17,7 @@ hlms maur pbs
 {
 	diffuse_map  maur_struct_b.png
 	normal_map   maur_struct_b_norm.png
-	specMap maur_struct_b_spec.png
+	// specMap maur_struct_b_spec.png
 
 	ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
@@ -30,7 +30,7 @@ hlms maur2 pbs
 {
 	diffuse_map  maur_struct_a.png
 	normal_map   maur_struct_a_norm.png
-	specMap maur_struct_a_spec.png
+	// specMap maur_struct_a_spec.png
 
 	ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
@@ -44,7 +44,7 @@ hlms maur_boat pbs
 {
 	diffuse_map  maur_boat.png
 	normal_map   maur_boat_norm.png
-	specMap maur_boat_spec.png
+	// specMap maur_boat_spec.png
 
 	ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
@@ -84,7 +84,7 @@ hlms ptol_struct pbs
 {
 	diffuse_map  ptol_struct.jpg
 	normal_map   ptol_struct_norm.jpg
-	specMap ptol_struct_spec.jpg
+	// specMap ptol_struct_spec.jpg
 	ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
 	specular 0.2 0.2 0.2 //12
@@ -548,7 +548,7 @@ hlms windmill pbs
 {
 	diffuse_map  windmill.jpg
 	normal_map   windmill_norm.jpg
-	specMap windmill_spec.png
+	// specMap windmill_spec.png
 	ambient 0.9 0.9 0.9
 	diffuse 1.5 1.5 1.5
 	specular 1.5 1.5 1.5 //8
@@ -601,12 +601,11 @@ hlms metal_01 pbs
 	normal_map   metal_01_norm.jpg
 	// specMap metal_01_spec.jpg
 	// reflMap metal_01_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 0.6 0.6 0.6 //20
 	fresnel_coeff 0.1
-	roughness 0.3
+	roughness 0.4
 	metalness 0.8
 	// env_map true
 	// fresnel false
@@ -619,12 +618,11 @@ hlms metal_02 pbs
 	normal_map   metal_02_norm.jpg
 	// specMap metal_02_spec.jpg
 	// reflMap metal_02_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 0.8 0.8 0.8 //16
 	fresnel_coeff 0.1
-	roughness 0.2
+	roughness 0.3
 	metalness 0.8
 	// env_map true
 	// fresnel false
@@ -636,7 +634,6 @@ hlms metal_02_dark pbs
 	diffuse_map  metal_02_dark.jpg
 	normal_map   metal_02_norm.jpg
 	// specMap metal_02_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 0.7 0.7 0.7 //32
@@ -652,8 +649,7 @@ hlms metal_03_green pbs
 {
 	diffuse_map  metal_03_green.jpg
 	normal_map   metal_03_norm.jpg
-	specMap metal_03_green_spec.jpg
-	specMap_rgb true
+	// specMap metal_03_green_spec.jpg
 	fresnel_coeff 0.1
 	roughness 0.3
 	metalness 0.7
@@ -667,7 +663,6 @@ hlms metal_03_red pbs
 	diffuse_map  metal_03_red.jpg
 	normal_map   metal_03_norm.jpg
 	// specMap metal_03_red_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 0.8 0.8 0.8 //32
@@ -681,7 +676,6 @@ hlms metal_04 pbs
 	diffuse_map  metal_04.jpg
 	normal_map   metal_04_norm.jpg
 	// specMap metal_04_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 1 1 1 //12
@@ -695,7 +689,6 @@ hlms metal_05 pbs
 	diffuse_map  metal_05.jpg
 	normal_map   metal_05_norm.jpg
 	// specMap metal_05_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 1 1 1 //16
@@ -710,7 +703,6 @@ hlms metal_06 pbs
 	normal_map   metal_06_norm.jpg
 	// specMap metal_06_spec.jpg
 	// reflMap metal_06.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 1 1 1 //12
@@ -727,7 +719,6 @@ hlms metal_07 pbs
 	diffuse_map  metal_07.jpg
 	normal_map   metal_07_norm.jpg
 	// specMap metal_07_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 1 1 1 //24
@@ -741,10 +732,9 @@ hlms metal_08 pbs
 	diffuse_map  metal_08.jpg
 	normal_map   metal_08_norm.png
 	// specMap metal_08_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
-	specular 1 1 1 20
+	specular 1 1 1 //20
 	fresnel_coeff 0.1
 	roughness 0.2
 	metalness 0.7
@@ -755,7 +745,6 @@ hlms metal_details pbs
 	diffuse_map  metal_details.png
 	normal_map   metal_details_norm.jpg
 	// specMap metal_details_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 1 1 1 //16
@@ -771,7 +760,6 @@ hlms sign pbs
 	diffuse_map  signs.jpg
 	normal_map   metal_01_norm.jpg
 	// specMap metal_01_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 0.4 0.4 0.4 //20
@@ -788,7 +776,6 @@ hlms sign_post pbs
 	diffuse_map  sign_back.jpg
 	normal_map   metal_01_norm.jpg
 	// specMap metal_01_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 0.4 0.4 0.4 //20
@@ -807,7 +794,6 @@ hlms structure pbs
 	normal_map   metal_01_norm.jpg
 	// specMap metal_01_spec.jpg
 	// reflMap metal_01_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.1
 	diffuse 0.7 0.7 0.8
 	specular 0.5 0.5 0.7 //12
@@ -826,13 +812,14 @@ hlms ring_blue pbs
 	normal_map   metal_01_norm.jpg
 	// specMap metal_01_spec.jpg
 	// reflMap metal_01_spec.jpg
-	// specMap_rgb true
 	ambient 0.5 1.0 1.6
 	diffuse 0.4 0.7 0.9
 	specular 0.3 0.3 0.4 //6
 	// env_map true
 	// fresnel false
 	// refl_amount 0.05
+	roughness 0.3
+	metalness 0.7
 }
 hlms ring_blue_stick pbs
 {
@@ -843,6 +830,8 @@ hlms ring_blue_stick pbs
 	ambient 0.5 1.0 1.6
 	diffuse 0.4 0.7 0.9
 	specular 0.3 0.3 0.4 //6
+	roughness 0.3
+	metalness 0.7
 }
 
 hlms ring_red pbs
@@ -851,13 +840,14 @@ hlms ring_red pbs
 	normal_map   metal_01_norm.jpg
 	// specMap metal_01_spec.jpg
 	// reflMap metal_01_spec.jpg
-	// specMap_rgb true
 	ambient 2 1.0 0.8
 	diffuse 1.4 0.6 0.5
 	specular 0.5 0.3 0.3 //6
 	// env_map true
 	// fresnel false
 	// refl_amount 0.05
+	roughness 0.3
+	metalness 0.7
 }
 hlms ring_red_stick pbs
 {
@@ -868,6 +858,8 @@ hlms ring_red_stick pbs
 	ambient 2 1.0 0.8
 	diffuse 1.4 0.6 0.5
 	specular 0.5 0.3 0.3 //6
+	roughness 0.3
+	metalness 0.7
 }
 
 hlms ring_lime pbs
@@ -876,13 +868,14 @@ hlms ring_lime pbs
 	normal_map   metal_01_norm.jpg
 	// specMap metal_01_spec.jpg
 	// reflMap metal_01_spec.jpg
-	// specMap_rgb true
 	ambient 0.9 1.5 0.2
 	diffuse 0.9 1 0.1
 	specular 0.27 0.5 0.1 //6
 	// env_map true
 	// fresnel false
 	// refl_amount 0.05
+	roughness 0.3
+	metalness 0.7
 }
 hlms ring_lime_stick pbs
 {
@@ -893,6 +886,8 @@ hlms ring_lime_stick pbs
 	ambient 0.9 1.5 0.2
 	diffuse 0.9 1 0.1
 	specular 0.27 0.5 0.1 //6
+	roughness 0.3
+	metalness 0.7
 }
 
 
@@ -902,10 +897,11 @@ hlms metal_12 pbs
 	diffuse_map  metal_12.jpg
 	normal_map   metal_12_norm.jpg
 	// specMap metal_12_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
-	specular 1 1 1 //20
+	// specular 1 1 1 //20
+	roughness 0.3
+	metalness 0.7
 }
 
 hlms metal_mixed_01 pbs
@@ -913,10 +909,11 @@ hlms metal_mixed_01 pbs
 	diffuse_map  metal_mixed_01.jpg
 	normal_map   metal_mixed_01_norm.jpg
 	// specMap metal_mixed_01_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
-	specular 1 1 1 //16
+	// specular 1 1 1 //16
+	roughness 0.4
+	metalness 0.8
 }
 
 hlms metal_mixed_02 pbs
@@ -924,10 +921,11 @@ hlms metal_mixed_02 pbs
 	diffuse_map  metal_mixed_02.jpg
 	normal_map   metal_mixed_02_norm.jpg
 	// specMap metal_mixed_02_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
-	specular 1 1 1 //16
+	// specular 1 1 1 //16
+	roughness 0.1
+	metalness 0.8
 }
 
 hlms metal_mixed_03 pbs
@@ -935,10 +933,11 @@ hlms metal_mixed_03 pbs
 	diffuse_map  metal_mixed_03.jpg
 	normal_map   metal_mixed_03_norm.jpg
 	// specMap metal_mixed_03_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 1 1 1 //16
+	roughness 0.2
+	metalness 0.7
 }
 
 hlms metal_mixed_04 pbs
@@ -946,10 +945,11 @@ hlms metal_mixed_04 pbs
 	diffuse_map  metal_mixed_04.jpg
 	normal_map   metal_mixed_04_norm.jpg
 	// specMap metal_mixed_04_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
-	specular 1 1 1 //16
+	// specular 1 1 1 //16
+	roughness 0.3
+	metalness 0.8
 }
 
 hlms metal_mixed_05 pbs
@@ -957,10 +957,11 @@ hlms metal_mixed_05 pbs
 	diffuse_map  metal_mixed_05.jpg
 	normal_map   metal_mixed_05_norm.jpg
 	// specMap metal_mixed_05_spec.jpg
-	// specMap_rgb true
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.7
 	specular 1 1 1 //16
+	roughness 0.3
+	metalness 0.7
 }
 
 //  crystal
@@ -971,6 +972,8 @@ hlms DishHoleCrystal pbs
 	ambient 1 1 1
 	diffuse 0.8 0.8 0.8
 	specular 0.6 0.6 0.6 //24
+	roughness 0.3
+	metalness 0.7
 }
 
 hlms ObeliskCrystal pbs
@@ -980,4 +983,6 @@ hlms ObeliskCrystal pbs
 	ambient 1 1 1
 	diffuse 0.8 0.8 0.8
 	specular 0.6 0.6 0.6 //24
+	roughness 0.3
+	metalness 0.7
 }

@@ -1,0 +1,605 @@
+//    CH trees
+
+//    trunk
+hlms base-tree pbs
+{
+    diffuse_map trunk2m.png
+    //diffuse 0.8 0.8 0.8
+
+    // tree_wind true
+    // terrain_light_map true
+    //diffuse_address_mode mirror
+    fresnel_coeff 0.1
+    roughness 0.7
+    metalness 0.1
+  }
+
+//    leaves
+hlms base-twig pbs
+{
+    alpha_test greater 0.5
+    diffuse_map twig21_0yo.png
+
+    ambient 1.3 1.3 1.3
+    diffuse 0.9 0.9 0.9
+    specular 0.2 0.2 0.2 //32
+
+    // tree_wind true
+    // terrain_light_map true
+    
+    cull_mode none
+    // transparent true
+    two_sided true
+    // receives_shadows true
+    // shadowBias 0.0001
+    fresnel_coeff 0.1
+    roughness 0.5
+    metalness 0.2
+  }
+
+
+//    Autumn
+//---------------------------------------------------------------
+hlms tree10okyTrunk	 pbs : base-tree
+{
+    diffuse_map trunk4m.png
+}
+hlms tree10okyTwig	 pbs : base-twig
+{
+    ambient 0.9 0.9 0.9
+    diffuse_map twig39_1or.png
+}
+
+hlms tree11tallTrunk pbs : base-tree
+{
+    diffuse_map trunk4m.png
+}
+hlms tree11tallTwig	 pbs : base-twig
+{
+    diffuse_map twig22_1y.png
+}
+
+hlms tree12smallTrunk pbs : base-tree
+{
+    diffuse_map trunk4m.png
+}
+hlms tree12smallTwig pbs : base-twig
+{
+    diffuse_map twig40_2rk.png
+}
+
+hlms tree13bigTrunk	 pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree13bigTwig	 pbs : base-twig
+{
+    ambient 0.7 0.7 0.7
+    diffuse_map twig38_5or.png
+}
+
+hlms tree14big7kTrunk pbs : base-tree
+{
+    diffuse_map trunk4m.png
+}
+hlms tree14big7kTwig pbs : base-twig
+{
+    diffuse_map twig24_1yow.png
+}
+
+hlms tree16tallTrunk pbs : base-tree
+{
+    ambient 0.9 0.9 0.9
+    diffuse_map trunk115w.png
+}
+hlms tree16tallTwig	 pbs : base-twig
+{
+    diffuse_map twig21_0yo.png
+}
+
+hlms tree17tallsmTrunk pbs : base-tree
+{
+    ambient 0.9 0.9 0.9
+    diffuse_map trunk115w.png
+}
+hlms tree17tallsmTwig pbs : base-twig
+{
+    ambient 0.9 0.9 0.9
+    diffuse_map twig21_2or.png
+}
+
+hlms tree18tallupTrunk pbs : base-tree
+{
+    diffuse_map trunk1m.png
+}
+hlms tree18tallupTwig pbs : base-twig
+{
+    ambient 1.1 1.1 1.1
+    diffuse_map twig26_2yo.png
+}
+
+hlms tree19twideTrunk pbs : base-tree
+{
+    diffuse_map trunk1m.png
+}
+hlms tree19twideTwig pbs : base-twig
+{
+    diffuse 0.9 0.9 0.9
+    diffuse_map twig26_1y.png
+}
+
+hlms tree20wideTrunk pbs : base-tree
+{
+    diffuse_map trunk1m.png
+}
+hlms tree20wideTwig	 pbs : base-twig
+{
+    diffuse_map twig26_1y.png
+}
+
+hlms tree25widedTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree25widedTwig pbs : base-twig
+{
+    ambient 0.9 0.9 0.9
+    diffuse_map twig39_2o.png
+}
+
+hlms tree26hugeasyTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree26hugeasyTwig pbs : base-twig
+{
+    ambient 0.9 0.9 0.9
+    diffuse_map twig39_1or.png
+}
+
+hlms tree27mtinyTrunk pbs : base-tree
+{
+    diffuse_map trunk1m.png
+}
+hlms tree27mtinyTwig pbs : base-twig
+{
+    diffuse_map twig26_2yo.png
+}
+
+hlms tree28mwtTrunk	 pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree28mwtTwig	 pbs : base-twig
+{
+    diffuse_map twig21_0yo.png
+}
+
+
+//    Moss    ..
+//---------------------------------------------------------------
+hlms tree29downswpTrunk pbs : base-tree
+{
+    ambient 0.9 0.9 0.9
+    diffuse_map trunk3m.png
+}
+hlms tree29downswpTwig pbs : base-twig
+{
+    ambient 0.5 0.9 1.2
+    // receives_shadows false
+    diffuse_map twig22g1.png
+}
+
+hlms tree36upballTrunk pbs : base-tree
+{
+    ambient 0.9 0.9 0.7
+    diffuse_map trunk3m.png
+}
+hlms tree36upballTwig pbs : base-twig
+{
+    ambient 0.76 1.0 0.35
+    // receives_shadows false
+    diffuse_map twig22g1.png
+}
+    //diffuse_map twig22g0d.png
+}
+
+
+//    Greece
+//---------------------------------------------------------------
+hlms tree32kinkupTrunk pbs : base-tree
+{
+    ambient 1.6 1.6 1.4
+    diffuse 1.3 1.3 1.2
+    diffuse_map trunk5m.png
+}
+hlms tree32kinkupTwig pbs : base-twig
+{
+    diffuse_map twigP27c.png
+}
+// WW cyan dragon
+
+hlms tree37wballTrunk pbs : base-tree
+{
+    diffuse_map trunk1m.png
+}
+hlms tree37wballTwig pbs : base-twig
+{
+    diffuse_map twig33g1.png
+}
+// norm green aca
+
+hlms tree41midTrunk	 pbs : base-tree
+{
+    diffuse_map trunk4m.png
+}
+hlms tree41midTwig	 pbs : base-twig
+{
+    ambient 0.9 1.0 0.9
+    diffuse 0.9 1.0 0.9
+    diffuse_map twig22g1.png
+}
+
+
+//    Desert
+//---------------------------------------------------------------
+
+hlms tree22fatTrunk	 pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree22fatTwig	 pbs : base-twig
+{
+    ambient 0.9 0.9 0.7
+    diffuse_map twigP2b4.png
+}
+    //diffuse_map twigP27c.png
+}
+// wil,    Greece`
+
+hlms tree34stinyTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree34stinyTwig pbs : base-twig
+{
+    ambient 0.9 1.2 1.1
+    diffuse_map twigP27y.png
+}
+// W kink empty    Greece~
+
+
+//    Finland
+//---------------------------------------------------------------
+hlms tree16GtallTwig pbs : base-twig
+{
+    ambient 0.9 0.9 0.9
+    diffuse_map twig21g1.png
+}
+
+hlms tree17GtallsmTwig pbs : base-twig
+{
+    ambient 0.8 0.8 0.8
+    diffuse_map twig21g1.png
+}
+
+
+
+//    Green    todo..
+//---------------------------------------------------------------
+hlms tree19gwideTwig pbs : base-twig
+{
+    //ambient 0.55 0.5 0.6    // dark+
+    //diffuse 1.1 0.9 1.2
+    //specular 1.1 0.9 1.2 32
+    ambient 0.9 0.85 0.95
+    diffuse 1.05 0.95 1.1
+    specular 1.05 0.95 1.1 32
+    normal_map  twig39g1_norm.png
+    diffuse_map twig39g1.png
+}
+//tall    forest+
+
+//hlms tree19gwideTwig pbs : base-twig
+// {
+//    ambient 0.9 0.9 0.8
+//    diffuse 0.9 0.9 0.8
+//    specular 0.9 0.9 0.8 40
+//    normal_map  twig25g_norm.png
+//    diffuse_map twig25g.png
+// }    //tall    forest+
+
+
+hlms tree31kinklowTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree31kinklowTwig pbs : base-twig
+{
+    //ambient 1.2 1.2 1.2    //-
+    //diffuse 1.1 1.1 1.1
+    //ambient 0.7 0.8 1.1    //`-    gr-cyan-wh    Greece+
+    //diffuse 0.7 0.8 1.1
+    //specular 0.1 0.1 0.1 32
+    //diffuse_map twig29p1.png
+
+    diffuse_map twig22g0d.png
+}
+// twig22g1+ yel-wh
+
+
+hlms tree33kinkupTrunk pbs : base-tree
+{
+    diffuse_map trunk4m.png
+}
+hlms tree33kinkupTwig pbs : base-twig
+{
+    ambient 1.2 1.2 1.2
+    diffuse 0.8 0.8 0.8
+    diffuse_map twig24g1.png
+}
+//tall gr-yel    greece/forest+
+
+
+hlms tree35ballTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree35ballTwig	 pbs : base-twig
+{
+    //diffuse_map twig39g1.png
+    // normal
+    ambient 1.0 1.0 1.05
+    diffuse 1.15 1.15 1.2
+    specular 0.6 0.6 0.7 32
+    normal_map  twig39g1_norm.png
+    diffuse_map twig39g1.png
+}
+//tall    Jungle+ /forest
+
+
+hlms tree38tallwsphrTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree38tallwsphrTwig pbs : base-twig
+{
+    diffuse_map twig24g1.png
+}
+
+hlms tree39topsphrTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree39topsphrTwig pbs : base-twig
+{
+    ambient 0.7 0.7 0.9
+    diffuse_map twig26g1.png
+}
+
+hlms tree40topsmTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree40topsmTwig pbs : base-twig
+{
+    diffuse_map twig34g2c.png
+}
+    // greece,des`
+    //ambient 0.8 1.1 1.0    //other
+    //diffuse_map twig40_4wg.png
+// }
+
+
+// trunk114         trunk115w        trunk116        trunk117
+// trunk149j+     trunk152         trunk153
+
+// trunk1 `sm br-gr-cy    maple -amb darker
+// trunk2 +big br    oak
+// trunk3 -cy-gr
+// trunk4 `br
+// trunk5 -blk
+// trunko.jpg ~gn-gr
+
+//    h -too high contr    l -too low contr    d -dark
+//    *used    `^~+ rating
+
+///     birch small ov 2clr green org/ylw
+// *twig21_0yo `        twig21_1y -rg1.2 b.5     *twig21_2or ~.9
+///     aspen    medium o` dense
+// *twig22_1y ~         twig22_3gw `m     twig22_4g ?l
+///     LL slim ()` plum    dense ok    medium trees?    -not saturated, or rg1.2 b.9
+//    twig24_0o -d?    *twig24_1yow `     twig24_2yo `
+///     OO slim bigger
+//    twig25g
+
+///     maple + dense 5v    yellow, for big trees
+// *twig26_1y `        *twig26_2yo `l     twig26_3ow -l
+///     birch ` tiny sparse 3v
+//    twig31_0y `
+///     oak new + 7w    red, for smaller trees
+//    twig38_2y `h        twig38_4o ^.7    *twig38_5or `.7     twig38_6r `rg.9 b.5
+// *twig39_1or `.9 *twig39_2o ~.9     twig39_3yo `l    
+// *twig40_2rk `        twig40_3o -         twig40_4wg `mo
+
+///     green
+// *twig21g1    beech
+//    twig22g0d    *twig22g1    aspen
+//    twig23g1d    big dark leaves    moss?
+// *twig24g1     twig24g2    ll
+// *twig26g1    maple
+
+//    twig38g1     twig39g1    twig39g2y    oak+
+//    twig33g1    acacia..
+//    twig34g1     twig34g2c    willow..    moss
+//    twig37k     empty
+//    twig27p1    will-pine    twig29p1    pine
+
+    //ambient 0.7 0.7 0.7
+    //ambient 0.9 0.9 0.9
+
+
+hlms tree42lowTrunk	 pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree42lowTwig	 pbs : base-twig
+{
+    //ambient 0.8 0.8 0.9
+    //diffuse 0.6 0.6 0.6
+    diffuse_map twig39g1.png
+}
+
+hlms tree43low2Trunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree43low2Twig	 pbs : base-twig
+{
+    diffuse_map twig21_0yo.png
+}
+
+hlms tree44low3Trunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree44low3Twig	 pbs : base-twig
+{
+    diffuse_map twig21_0yo.png
+}
+
+hlms tree51siteTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree51siteTwig	 pbs : base-twig
+{
+    diffuse_map twig21_0yo.png
+}
+
+hlms tree52sitefatTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree52sitefatTwig pbs : base-twig
+{
+    diffuse_map twig21_0yo.png
+}
+
+hlms tree53siteTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree53siteTwig	 pbs : base-twig
+{
+    diffuse_map twig21_0yo.png
+}
+
+hlms tree55sitebigTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree55sitebigTwig pbs : base-twig
+{
+    diffuse_map twig21_0yo.png
+}
+
+
+hlms tree60bigTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree60bigTwig pbs : base-twig
+{
+    diffuse_map twig39g1.png
+}
+
+hlms tree61lowupTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}					
+hlms tree61lowupTwig pbs : base-twig
+{
+    diffuse_map twig39g1.png
+}
+
+hlms tree62broadUpTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree62broadUpTwig pbs : base-twig
+{
+    diffuse_map twig39g1.png
+}
+
+hlms tree63willowTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}					 
+hlms tree63willowTwig pbs : base-twig
+{
+    diffuse_map twig39g1.png
+}
+
+hlms tree64willow2Trunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree64willow2Twig pbs : base-twig
+{
+    diffuse_map twig39g1.png
+}
+
+hlms tree65willow3broadTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree65willow3broadTwig pbs : base-twig
+{
+    diffuse_map twig39g1.png
+}
+
+hlms tree66bigUpWideTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}						
+hlms tree66bigUpWideTwig pbs : base-twig
+{
+    diffuse_map twig39g1.png
+}
+
+hlms tree67bigDnWideTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}						
+hlms tree67bigDnWideTwig pbs : base-twig
+{
+    diffuse_map twig39g1.png
+}
+
+hlms tree68bigUpWTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}					 
+hlms tree68bigUpWTwig pbs : base-twig
+{
+    diffuse_map twig39g1.png
+}
+
+hlms tree69bigUpWbTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree69bigUpWbTwig pbs : base-twig
+{
+    diffuse_map twig39g1.png
+}
+
+hlms tree70tallUpWTrunk pbs : base-tree
+{
+    diffuse_map trunk2m.png
+}
+hlms tree70tallUpWTwig pbs : base-twig
+{
+    diffuse_map twig39g1.png
+}
