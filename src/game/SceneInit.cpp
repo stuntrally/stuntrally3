@@ -259,8 +259,8 @@ void App::LoadCleanUp()  // 1 first
 	{
 		if (resTrk != "")  ResourceGroupManager::getSingleton().removeResourceLocation(resTrk);
 		LogO("------  Loading track: "+pSet->game.track);
-		//; resTrk = gcom->TrkDir() + "objects";
-		// ResourceGroupManager::getSingleton().addResourceLocation(resTrk, "FileSystem");
+		resTrk = TrkDir() + "objects";  // for roadDensity.png
+		ResourceGroupManager::getSingleton().addResourceLocation(resTrk, "FileSystem");
 	}
 	
 	//  Delete all cars
@@ -610,7 +610,7 @@ void App::LoadTerrain()  // 5
 
 void App::LoadRoad()  // 6
 {
-	CreateRoads();   // dstTrk inside
+	// CreateRoads();   // dstTrk inside
 		
 	// if (hud->arrow.nodeRot)
 		// hud->arrow.nodeRot->setVisible(pSet->check_arrow && !bHideHudArr);

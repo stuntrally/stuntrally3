@@ -28,6 +28,7 @@
 #include <OgreTimer.h>
 #include <Ogre.h>
 #include <OgreItem.h>
+#include <OgreImage2.h>
 
 #include "Terra.h"
 using namespace Ogre;
@@ -68,15 +69,15 @@ void CScene::CreateTrees()
 		
 	//-------------------------------------- Grass --------------------------------------
 	int imgRoadSize = 0;
-	/*Image imgRoad;  //;
-	try{
-		imgRoad.load(String("roadDensity.png"),"General");
+	Image2 imgRoad;  //;
+	try
+	{	imgRoad.load(String("roadDensity.png"),"General");
 	}catch(...)
 	{	LogO("Warning: Trees can't load roadDensity !");
 	}
 	imgRoadSize = imgRoad.getWidth();  // square[]
 	
-	roadDens.Load(TrkDir()+"objects/roadDensity.png");
+	/*roadDens.Load(TrkDir()+"objects/roadDensity.png");
 	
 	UpdGrassDens();  //!
 	*/
@@ -215,7 +216,7 @@ void CScene::CreateTrees()
 				vo.y = ofs.x * syr + ofs.y * cyr;
 				pos.x += vo.x * scl;  pos.z += vo.y * scl;
 				
-			#if 0
+			#if 1
 				//  check if on road - uses roadDensity.png
 				if (r > 0)  //  ----------------
 				{
