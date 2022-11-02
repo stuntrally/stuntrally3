@@ -1,0 +1,169 @@
+//  Skies
+//-----------------
+
+hlms sky/dust unlit
+{
+    diffuse_map  sky_dust.jpg
+}
+
+hlms sky/duskred unlit
+{
+    diffuse_map  duskred.jpg
+}
+
+hlms sky/white unlit
+{
+    diffuse_map  sky_white.jpg
+}
+
+hlms sky/white2 unlit
+{
+    diffuse_map  sky_white2.jpg
+}
+
+hlms sky/light_blue unlit
+{
+    diffuse_map  sky_lightblue.jpg
+}
+
+hlms sky/blue_clouds unlit
+{
+    diffuse_map  sky_photo6.jpg
+}
+
+hlms sky/gray_clouds unlit
+{
+    diffuse_map  sky_photo3.jpg
+}
+
+hlms sky/dark_clouds unlit
+{
+    diffuse_map  sky_p3dark.jpg
+}
+
+hlms sky/sunset unlit
+{
+    diffuse_map  sky_sunset.jpg
+}
+
+hlms sky/dawn unlit
+{
+    diffuse_map  sky_dawn.jpg
+}
+
+hlms sky/duskstormy unlit
+{
+    diffuse_map  duskstormy.jpg
+}
+
+hlms sky/dayovercast unlit
+{
+    diffuse_map  dayovercast.jpg
+}
+
+hlms sky/magic unlit
+{
+    diffuse_map  magic.jpg
+}
+
+hlms sky/magicdark unlit
+{
+    diffuse_map  magicdark.jpg
+}
+
+
+//  new
+hlms sky/morning_gen unlit
+{
+    diffuse_map  gen-brightday.jpg
+}
+
+hlms sky/morning2_gen unlit
+{
+    diffuse_map  gen-brightday2.jpg
+}
+
+hlms sky/foggy_gen unlit
+{
+    diffuse_map  gen-foggy.jpg
+}
+
+hlms sky/sunset_rays_gen unlit
+{
+    diffuse_map  gen-godrays.jpg
+}
+
+hlms sky/sunset_blue_gen unlit
+{
+    diffuse_map  gen-morning.jpg
+}
+
+hlms sky/offworld_gen unlit
+{
+    diffuse_map  gen-offworld.jpg
+}
+
+hlms sky/big_clouds_gen unlit
+{
+    diffuse_map  gen-bigclouds.jpg
+}
+
+hlms sky/big_clouds2_gen unlit
+{
+    diffuse_map  gen-bigclouds2.jpg
+}
+
+hlms sky/sunset_gen unlit
+{
+    diffuse_map  gen-sunset.jpg
+}
+
+hlms sky/dawn_cloudy unlit
+{
+    diffuse_map  sky-sunset.jpg
+}
+
+hlms sky/gray_clouded unlit
+{
+    diffuse_map  sky-darkclouds.jpg
+}
+
+hlms sky/dawn_bright unlit
+{
+    diffuse_map  sky-clearday.jpg
+}
+
+hlms sky/day_blue unlit
+{
+    diffuse_map  sky-clearday1.jpg
+}
+
+hlms sky/day_clouds unlit
+{
+    diffuse_map  sky-clearday2.jpg
+}
+
+hlms sky/day_blue2 unlit
+{
+    diffuse_map  sky-1day.jpg
+}
+
+hlms sky/cloudy unlit
+{
+    diffuse_map  sky-2clouds.jpg
+}
+
+hlms sky/twighlight_gen unlit
+{
+    diffuse_map  gen-twighlight.jpg
+}
+
+hlms sky/night_blue unlit
+{
+    diffuse_map  sky-night.jpg
+}
+
+hlms sky/magic_alien unlit
+{
+    diffuse_map  magic_alien.jpg
+}

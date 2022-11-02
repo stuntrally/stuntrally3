@@ -6,11 +6,9 @@ hlms base-tree pbs
     diffuse_map trunk2m.png
     //diffuse 0.8 0.8 0.8
 
-    // tree_wind true
-    // terrain_light_map true
-    //diffuse_address_mode mirror
+    diffuse_address_mode mirror
     fresnel_coeff 0.1
-    roughness 0.7
+    roughness 0.5
     metalness 0.1
 }
 
@@ -18,33 +16,30 @@ hlms base-tree pbs
 hlms base-twig pbs
 {
     alpha_test greater 0.5
-    diffuse_map twig21_0yo.png
+    // diffuse_map twig21_0yo.png
 
     ambient 1.3 1.3 1.3
     diffuse 0.9 0.9 0.9
     specular 0.2 0.2 0.2 //32
 
-    // tree_wind true
-    // terrain_light_map true
-    
     cull_mode none
     // transparent true
     two_sided true
     // receives_shadows true
     // shadowBias 0.0001
     fresnel_coeff 0.1
-    roughness 0.5
+    roughness 0.3
     metalness 0.2
 }
 
 
 //    Autumn
 //---------------------------------------------------------------
-hlms tree10okyTrunk	 pbs : base-tree
+hlms tree10okyTrunk pbs : base-tree
 {
     diffuse_map trunk4m.png
 }
-hlms tree10okyTwig	 pbs : base-twig
+hlms tree10okyTwig pbs : base-twig
 {
     ambient 0.9 0.9 0.9
     diffuse_map twig39_1or.png
@@ -54,7 +49,7 @@ hlms tree11tallTrunk pbs : base-tree
 {
     diffuse_map trunk4m.png
 }
-hlms tree11tallTwig	 pbs : base-twig
+hlms tree11tallTwig pbs : base-twig
 {
     diffuse_map twig22_1y.png
 }
@@ -68,11 +63,11 @@ hlms tree12smallTwig pbs : base-twig
     diffuse_map twig40_2rk.png
 }
 
-hlms tree13bigTrunk	 pbs : base-tree
+hlms tree13bigTrunk pbs : base-tree
 {
     diffuse_map trunk2m.png
 }
-hlms tree13bigTwig	 pbs : base-twig
+hlms tree13bigTwig pbs : base-twig
 {
     ambient 0.7 0.7 0.7
     diffuse_map twig38_5or.png
@@ -92,7 +87,7 @@ hlms tree16tallTrunk pbs : base-tree
     ambient 0.9 0.9 0.9
     diffuse_map trunk115w.png
 }
-hlms tree16tallTwig	 pbs : base-twig
+hlms tree16tallTwig pbs : base-twig
 {
     diffuse_map twig21_0yo.png
 }
@@ -132,7 +127,7 @@ hlms tree20wideTrunk pbs : base-tree
 {
     diffuse_map trunk1m.png
 }
-hlms tree20wideTwig	 pbs : base-twig
+hlms tree20wideTwig pbs : base-twig
 {
     diffuse_map twig26_1y.png
 }
@@ -166,11 +161,11 @@ hlms tree27mtinyTwig pbs : base-twig
     diffuse_map twig26_2yo.png
 }
 
-hlms tree28mwtTrunk	 pbs : base-tree
+hlms tree28mwtTrunk pbs : base-tree
 {
     diffuse_map trunk2m.png
 }
-hlms tree28mwtTwig	 pbs : base-twig
+hlms tree28mwtTwig pbs : base-twig
 {
     diffuse_map twig21_0yo.png
 }
@@ -229,11 +224,11 @@ hlms tree37wballTwig pbs : base-twig
 }
 // norm green aca
 
-hlms tree41midTrunk	 pbs : base-tree
+hlms tree41midTrunk pbs : base-tree
 {
     diffuse_map trunk4m.png
 }
-hlms tree41midTwig	 pbs : base-twig
+hlms tree41midTwig pbs : base-twig
 {
     ambient 0.9 1.0 0.9
     diffuse 0.9 1.0 0.9
@@ -244,11 +239,11 @@ hlms tree41midTwig	 pbs : base-twig
 //    Desert
 //---------------------------------------------------------------
 
-hlms tree22fatTrunk	 pbs : base-tree
+hlms tree22fatTrunk pbs : base-tree
 {
     diffuse_map trunk2m.png
 }
-hlms tree22fatTwig	 pbs : base-twig
+hlms tree22fatTwig pbs : base-twig
 {
     ambient 0.9 0.9 0.7
     diffuse_map twigP2b4.png
@@ -345,7 +340,7 @@ hlms tree35ballTrunk pbs : base-tree
 {
     diffuse_map trunk2m.png
 }
-hlms tree35ballTwig	 pbs : base-twig
+hlms tree35ballTwig pbs : base-twig
 {
     //diffuse_map twig39g1.png
     // normal
@@ -439,11 +434,11 @@ hlms tree40topsmTwig pbs : base-twig
     //ambient 0.9 0.9 0.9
 
 
-hlms tree42lowTrunk	 pbs : base-tree
+hlms tree42lowTrunk pbs : base-tree
 {
     diffuse_map trunk2m.png
 }
-hlms tree42lowTwig	 pbs : base-twig
+hlms tree42lowTwig pbs : base-twig
 {
     //ambient 0.8 0.8 0.9
     //diffuse 0.6 0.6 0.6
@@ -454,7 +449,7 @@ hlms tree43low2Trunk pbs : base-tree
 {
     diffuse_map trunk2m.png
 }
-hlms tree43low2Twig	 pbs : base-twig
+hlms tree43low2Twig pbs : base-twig
 {
     diffuse_map twig21_0yo.png
 }
@@ -463,7 +458,7 @@ hlms tree44low3Trunk pbs : base-tree
 {
     diffuse_map trunk2m.png
 }
-hlms tree44low3Twig	 pbs : base-twig
+hlms tree44low3Twig pbs : base-twig
 {
     diffuse_map twig21_0yo.png
 }
@@ -472,7 +467,7 @@ hlms tree51siteTrunk pbs : base-tree
 {
     diffuse_map trunk2m.png
 }
-hlms tree51siteTwig	 pbs : base-twig
+hlms tree51siteTwig pbs : base-twig
 {
     diffuse_map twig21_0yo.png
 }
@@ -490,7 +485,7 @@ hlms tree53siteTrunk pbs : base-tree
 {
     diffuse_map trunk2m.png
 }
-hlms tree53siteTwig	 pbs : base-twig
+hlms tree53siteTwig pbs : base-twig
 {
     diffuse_map twig21_0yo.png
 }
