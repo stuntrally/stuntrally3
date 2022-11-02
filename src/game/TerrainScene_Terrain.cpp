@@ -4,12 +4,12 @@
 #include "CameraController.h"
 #include "GraphicsSystem.h"
 
-#include "OgreSceneManager.h"
-#include "OgreRoot.h"
-#include "OgreLogManager.h"
+#include <OgreSceneManager.h>
+#include <OgreRoot.h>
+#include <OgreLogManager.h>
 
-#include "OgreCamera.h"
-#include "OgreWindow.h"
+#include <OgreCamera.h>
+#include <OgreWindow.h>
 
 #include "Terra/Hlms/OgreHlmsTerra.h"
 #include "Terra/Hlms/PbsListener/OgreHlmsPbsTerraShadows.h"
@@ -17,22 +17,22 @@
 #include "Terra/TerraShadowMapper.h"
 #include "OgreGpuProgramManager.h"
 
-#include "OgreItem.h"
-#include "OgreMesh.h"
-#include "OgreMeshManager.h"
-#include "OgreMesh2.h"
-#include "OgreMeshManager2.h"
-#include "OgreManualObject2.h"
+#include <OgreItem.h>
+#include <OgreMesh.h>
+#include <OgreMeshManager.h>
+#include <OgreMesh2.h>
+#include <OgreMeshManager2.h>
+#include <OgreManualObject2.h>
 
-#include "OgreHlmsPbs.h"
-#include "OgreHlmsPbsDatablock.h"
-#include "OgreHlmsTerraDatablock.h"
-#include "OgreTextureGpuManager.h"
+#include <OgreHlmsPbs.h>
+#include <OgreHlmsPbsDatablock.h>
+#include <OgreHlmsTerraDatablock.h>
+#include <OgreTextureGpuManager.h>
 
-#include "OgreGpuResource.h"
-#include "OgreHlmsTerraPrerequisites.h"
-#include "OgreHlmsUnlitDatablock.h"
-#include "OgreHlmsSamplerblock.h"
+#include <OgreGpuResource.h>
+#include <OgreHlmsTerraPrerequisites.h>
+#include <OgreHlmsUnlitDatablock.h>
+#include <OgreHlmsSamplerblock.h>
 // #include "OgreHlmsTerra.h"
 
 //  SR
@@ -281,79 +281,4 @@ namespace Demo
 		{   mgr->destroySceneNode(planeNode);  planeNode = 0;  }
 	}
 
-
-	//  Sky dome
-	//-----------------------------------------------------------------------------------------------------------------------------
-	void TerrainGame::CreateSkyDome(String sMater, float yaw)
-	{
-		if (moSky)  return;
-		Vector3 scale = 15000 * Vector3::UNIT_SCALE;
-		// Vector3 scale = pSet->view_distance * Vector3::UNIT_SCALE * 0.7f;
-		
-		SceneManager *mgr = mGraphicsSystem->getSceneManager();
-		ManualObject* m = mgr->createManualObject();
-		m->begin(sMater, OT_TRIANGLE_LIST);
-
-		//  divisions- quality
-		int ia = 32*2, ib = 24,iB = 24 +1/*below_*/, i=0;
-		
-		//  angles, max
-		const Real B = Math::HALF_PI, A = Math::TWO_PI;
-		Real bb = B/ib, aa = A/ia;  // add
-		Real a,b;
-		ia += 1;
-
-		//  up/dn y  )
-		for (b = 0.f; b <= B+bb/*1*/*iB; b += bb)
-		{
-			Real cb = sinf(b), sb = cosf(b);
-			Real y = sb;
-
-			//  circle xz  o
-			for (a = 0.f; a <= A; a += aa, ++i)
-			{
-				Real x = cosf(a)*cb, z = sinf(a)*cb;
-				m->position(x,y,z);
-
-				m->textureCoord(a/A, b/B);
-
-				if (a > 0.f && b > 0.f)  // rect 2tri
-				{
-					m->index(i-1);  m->index(i);     m->index(i-ia);
-					m->index(i-1);  m->index(i-ia);  m->index(i-ia-1);
-				}
-			}
-		}
-		m->end();
-		moSky = m;
-
-		Aabb aab(Vector3(0,0,0), Vector3(1,1,1)*1000000);
-		m->setLocalAabb(aab);  // always visible
-		//m->setRenderQueueGroup(230);  //?
-		m->setCastShadows(false);
-
-		ndSky = mgr->getRootSceneNode()->createChildSceneNode();
-		ndSky->attachObject(m);
-		ndSky->setScale(scale);
-		Quaternion q;  q.FromAngleAxis(Degree(-yaw), Vector3::UNIT_Y);
-		ndSky->setOrientation(q);
-
-		//  change to wrap..
-		Root *root = mGraphicsSystem->getRoot();
-		Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_UNLIT );
-		HlmsUnlitDatablock *datablock = static_cast<HlmsUnlitDatablock*>(hlms->getDatablock(sMater));
-		HlmsSamplerblock sampler( *datablock->getSamplerblock( PBSM_DIFFUSE ) );  // copy
-		sampler.mU = TAM_MIRROR;  sampler.mV = TAM_MIRROR;  sampler.mW = TAM_MIRROR;
-		datablock->setSamplerblock( PBSM_DIFFUSE, sampler );
-	}
-
-	void TerrainGame::DestroySkyDome()
-	{
-		LogO("---- destroy SkyDome");
-		SceneManager *mgr = mGraphicsSystem->getSceneManager();
-		if (moSky)
-		{   mgr->destroyManualObject(moSky);  moSky = 0;  }
-		if (ndSky)
-		{   mgr->destroySceneNode(ndSky);  ndSky = 0;  }
-	}
 }

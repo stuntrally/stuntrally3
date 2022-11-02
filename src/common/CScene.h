@@ -24,8 +24,6 @@ public:
 
 	//  Shadows-
 	// void changeShadows(), UpdShaderParams(), UpdPaceParams(), UpdPSSMMaterials();
-	// Ogre::Vector4 splitPoints;
-	// Ogre::ShadowCameraSetupPtr mPSSMSetup;
 	
 
 	///  Setup  scene.xml
@@ -35,15 +33,21 @@ public:
 	CData* data;
 
 	
+	//  Sky
+	Ogre::ManualObject* moSky = 0;
+	Ogre::SceneNode* ndSky = 0;
+	void CreateSkyDome(Ogre::String sMater, float yaw);
+	void DestroySkyDome();
+
+
 	//  Sun
-	// Ogre::Light* sun;
-	// void UpdFog(bool bForce=false), UpdSun(), UpdSky();
-	// void CreateSkyDome(Ogre::String sMater, Ogre::Vector3 scale, float yaw);
+	Ogre::Light* sun = 0;
+	void UpdFog(bool bForce=false), UpdSun(), UpdSky();
 
 	//;  Weather  rain, snow
-	// Ogre::ParticleSystem *pr,*pr2;
-	// void CreateWeather(), DestroyWeather();
-	// void UpdateWeather(Ogre::Camera* cam, float mul = 1.f);
+	Ogre::ParticleSystem *pr =0, *pr2 =0;
+	void CreateWeather(), DestroyWeather();
+	void UpdateWeather(Ogre::Camera* cam, float lastFPS = 60.f, float emitMul = 1.f);
 
 
 	//  Emitters

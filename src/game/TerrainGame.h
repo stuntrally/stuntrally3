@@ -119,15 +119,7 @@ namespace Demo
 		Ogre::Item *planeItem = 0;
 		Ogre::SceneNode *planeNode = 0;
 
-		//  sky
-	public:		
-		void CreateSkyDome(Ogre::String sMater, float yaw);
-	protected:
-		int iSky = 0;
-		Ogre::ManualObject* moSky = 0;
-		Ogre::SceneNode* ndSky = 0;
-		void DestroySkyDome();
-	
+
 		//  vegetation  ----
 		void SetupVeget(), CreateVeget(), DestroyVeget();
 
@@ -138,6 +130,8 @@ namespace Demo
 		//  other
 		void CreateManualObj(Ogre::Vector3 camPos);
 		void CreateParticles();
+
+		int iSky = 0;
 	};
 }
 

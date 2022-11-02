@@ -306,21 +306,23 @@ namespace Demo
 		case SDL_SCANCODE_V:  CreateVeget();  break;
 		case SDL_SCANCODE_B:  DestroyVeget();  break;
 
-		//  other
-		case SDL_SCANCODE_F:  CreateParticles();  break;
-
+		//  sky
 		case SDL_SCANCODE_K:  
-			if (ndSky)
-				DestroySkyDome();
+			if (pApp->scn->ndSky)
+				pApp->scn->DestroySkyDome();
 			else
 			{   switch (iSky)
 				{
-				case 0:  CreateSkyDome("sky-clearday1", 0.f);  ++iSky;  break;
-				case 1:  CreateSkyDome("sky_photo6", 0.f);  iSky = 0;  break;  // clouds
+				case 0:  pApp->scn->CreateSkyDome("sky-clearday1", 0.f);  ++iSky;  break;
+				case 1:  pApp->scn->CreateSkyDome("sky_photo6", 0.f);  iSky = 0;  break;  // clouds
 				}
 			}
 			break;
 		
+		//  other
+		case SDL_SCANCODE_F:
+			CreateParticles();  break;
+
 		case SDL_SCANCODE_M:
 		{
 			// Vector3 camPos(-52.f, mTerra ? 735.f : 60.f, mTerra ? 975.f : 517.f);

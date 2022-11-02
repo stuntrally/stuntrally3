@@ -87,7 +87,7 @@ void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
 	
 	///  sky
 	// Vector3 scl = app->pSet->view_distance * Vector3::UNIT_SCALE;
-	app->mainApp->CreateSkyDome(sc->skyMtr, /*scl,*/ sc->skyYaw);
+	CreateSkyDome(sc->skyMtr, /*scl,*/ sc->skyYaw);
 	// UpdFog();
 
 	//  light

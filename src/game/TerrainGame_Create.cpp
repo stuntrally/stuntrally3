@@ -117,6 +117,7 @@ namespace Demo
 		pGame->ReloadSimData();
 
 		//  new game
+		pApp->mRoot = mGraphicsSystem->getRoot();
 		pApp->mCamera = mGraphicsSystem->getCamera();
 		pApp->mSceneMgr = mGraphicsSystem->getSceneManager();
 		pApp->mDynamicCubemap = mDynamicCubemap;

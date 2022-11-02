@@ -13,7 +13,7 @@
 // #include "PreviewTex.h"
 
 
-namespace Ogre {  class SceneNode;  class SceneManager;  class TextureGpu;  }
+namespace Ogre {  class SceneNode;  class SceneManager;  class TextureGpu;  class Root;  }
 // namespace BtOgre  {  class DebugDrawer;  }
 class CScene;  class CData;  class CInput;  class GraphView;
 class GAME;  class CHud;  class CGui;  class CGuiCom;
@@ -41,6 +41,7 @@ public:
 
 	//  BaseApp init
 	// void postInit();
+	Ogre::Root* mRoot =0;
 	Ogre::Camera* mCamera =0;
 	Ogre::SceneManager* mSceneMgr =0;
 	Ogre::TextureGpu* mDynamicCubemap =0;
