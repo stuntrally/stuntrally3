@@ -6,9 +6,15 @@ hlms gum_branch pbs
     diffuse_map gum_branch.png
     ambient 0.59 0.59 0.59
     diffuse 0.59 0.59 0.59
-    alpha_test greater 0.5
+
+	alpha_test greater 0.5
     cull_mode none
     // transparent true
+
+	fresnel_coeff 0.4
+	roughness 0.2
+	metalness 0.4
+	specular 0.8 0.8 0.8
 }
 
 hlms gum_bark pbs
@@ -17,6 +23,11 @@ hlms gum_bark pbs
     ambient 0.8 0.8 0.8
     diffuse 0.64 0.64 0.64
     specular 0.12 0.12 0.12 //32
+
+	fresnel_coeff 0.1
+	roughness 0.3
+	metalness 0.1
+	specular 0.5 0.5 0.5
 }
 
 
@@ -26,10 +37,17 @@ hlms palm2 pbs
 {
 	diffuse_map palm2_diffuse.png
 	normal_map  palm2_normal.png
-	// specMap palm2_specular.png
+	//? specular_map palm2_specular.png
+
+	fresnel_coeff 0.4
+	roughness 0.3
+	metalness 0.5
+	specular 0.2 0.2 0.2
+	workflow specular_ogre
+	
 	alpha_test greater 0.5
-	specular 0.5 0.5 0.5 //32
-	cull_mode none
+    cull_mode none
+	two_sided true
 }
 
 hlms Palm pbs
@@ -37,9 +55,14 @@ hlms Palm pbs
 	diffuse_map palm.png
 	normal_map  palm_norm.png
 	alpha_test greater 0.31
+
 	ambient 1.2 1.2 1.2
 	diffuse 0.4 0.4 0.4
 	specular 0.3 0.3 0.3 //21
+
+	fresnel_coeff 0.1
+	roughness 0.3
+	metalness 0.1
 }
 
 
@@ -47,12 +70,22 @@ hlms Palm pbs
 
 hlms jungle_tree pbs
 {
-    alpha_test greater 0.5
 	diffuse_map jungle_tree.png
 	normal_map  jungle_tree_normal.png
-	//specMap jungle_tree_spec.png
-	specular 0.4 0.4 0.4 //32
-	cull_mode none
+	//sspecular_map jungle_tree_spec.png
+
+	fresnel_coeff 0.1
+	roughness 0.5
+	metalness 0.1
+	workflow specular_ogre
+	
+	alpha_test greater 0.5
+    cull_mode none
+	//alpha_test_threshold 0.4
+	two_sided true
+    
+	//diffuse 0.7 0.7 0.7
+	specular 0.2 0.2 0.2
 }
 
 
@@ -61,50 +94,66 @@ hlms jungle_tree pbs
 
 hlms fern_v2 pbs
 {
-    alpha_test greater 0.5
 	diffuse_map fern.png
 	normal_map  fern_normal.png
-	// specMap fern_spec.png
-	specular 0.5 0.5 0.5 //32
-	cull_mode none
+	specular_map fern_spec.png
+
+	fresnel_coeff 0.4
+	roughness 0.3
+	metalness 0.5
+	workflow specular_ogre
+	specular 0.8 0.8 0.8
+	
+	alpha_test greater 0.5
+    cull_mode none
+	two_sided true
 }
 	
 hlms fern2 pbs
 {
-	alpha_test greater 0.5
 	diffuse_map fern2.png
 	normal_map  fern2_normal.png
-	// specMap fern2_spec.png
-	specular 0.5 0.5 0.5 //32
+	//? specular_map fern2_spec.png
+
+	fresnel_coeff 0.4
+	roughness 0.3
+	metalness 0.5
+	specular 0.8 0.8 0.8
+	workflow specular_ogre
+	
+	alpha_test greater 0.5
     cull_mode none
+	two_sided true
 }
 	
 hlms palm_plant pbs
 {
-	alpha_test greater 0.5
 	diffuse_map palm_plant.png
 	normal_map  palm_plant_normal.png
-	// specMap palm_plant_spec.png
+	specular_map palm_plant_spec.png
+
 	ambient 1.5 1.5 1.5
 	diffuse 1.5 1.5 1.5
 	specular 0.5 0.5 0.5 //32
+
+	alpha_test greater 0.5
 	cull_mode none
-	//receives_shadows false
 	two_sided true
 }
 
 hlms plant_tropical pbs
 {
-	alpha_test greater 0.5
 	diffuse_map plant_tropical_m.png
 	normal_map  plant_tropical_norm_m.png
-	//specMap palm_plant_spec.png
+	//specular_map palm_plant_spec.png
 	ambient 1.5 1.5 1.5
-	specular 0.57 0.6 0.5 24
+	specular 0.57 0.6 0.5 //24
+
+	alpha_test greater 0.5
 	cull_mode none
-	//receives_shadows false
 	two_sided true
-    fresnel_coeff 0.1
+
+	fresnel_coeff 0.1
     roughness 0.2
     metalness 0.7
 }
@@ -232,16 +281,21 @@ hlms pine3norm pbs : pine_base
 
 hlms bush_05 pbs
 {
-	alpha_test greater 0.5
 	diffuse_map bush_05.png
 	//normal_map  plant_tropical_norm_m.png
-	//specMap palm_plant_spec.png
+	//specular_map palm_plant_spec.png
 	ambient 1.0 1.0 1.0
 	diffuse 1.0 1.0 1.0
 	specular 0.57 0.6 0.5 //24
+
+	alpha_test greater 0.5
 	cull_mode none
 	//receives_shadows false
 	two_sided true
+
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.3
 }
 
 
@@ -254,10 +308,13 @@ hlms gum_branch_alien pbs
     ambient 1.0 1.2 0.9
     diffuse 1.0 1.2 0.9
     specular 0.12 0.12 0.12 //32
-    alpha_test greater 0.5
+
+	alpha_test greater 0.5
     cull_mode none
-    // transparent true
-	//receives_shadows false
+
+	fresnel_coeff 0.1
+	roughness 0.3
+	metalness 0.2
 }
 
 hlms gum_bark_alien pbs
@@ -266,18 +323,27 @@ hlms gum_bark_alien pbs
     ambient 0.8 0.8 0.8
     diffuse 0.64 0.64 0.64
     specular 0.12 0.12 0.12 //32
+
+	fresnel_coeff 0.1
+	roughness 0.5
+	metalness 0.1
 }
 
 hlms jungle_tree_alien pbs
 {
 	diffuse_map jungle_tree_alien.png
 	normal_map  jungle_tree_normal.png
-	//specMap jungle_tree_spec.png
+	//specular_map jungle_tree_spec.png
     ambient 0.6 0.7 0.6
     diffuse 0.6 0.72 0.7
 	specular 0.4 0.4 0.4 //32
-    alpha_test greater 0.5
+
+	alpha_test greater 0.5
 	cull_mode none
+
+	fresnel_coeff 0.1
+	roughness 0.4
+	metalness 0.1
 }
 
 hlms shroom1_alien pbs
@@ -287,7 +353,8 @@ hlms shroom1_alien pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 32
-    fresnel_coeff 0.1
+
+	fresnel_coeff 0.1
     roughness 0.3
     metalness 0.2
 }
@@ -299,7 +366,8 @@ hlms shroom2_alien pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 32
-    fresnel_coeff 0.1
+    
+	fresnel_coeff 0.1
     roughness 0.3
     metalness 0.2
 }
@@ -311,7 +379,8 @@ hlms shroom3_alien pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 32
-    fresnel_coeff 0.1
+    
+	fresnel_coeff 0.1
     roughness 0.3
     metalness 0.2
 }
@@ -322,14 +391,16 @@ hlms shroom3_alien pbs
 
 hlms fern2_black pbs
 {
-	alpha_test greater 0.5
 	diffuse_map fern2.png
 	normal_map  fern2_normal.png
-	// specMap fern2_spec.png
+	//specular_map fern2_spec.png
 	specular 0.3 0.5 0.7 //32
 	emissive 0.1 0.25 2.5
-    cull_mode none
-    fresnel_coeff 0.1
+
+	alpha_test greater 0.5
+	cull_mode none
+    
+	fresnel_coeff 0.1
     roughness 0.3
     metalness 0.4
 }
@@ -344,8 +415,7 @@ hlms gum_branch_black pbs
 
 	alpha_test greater 0.5
     cull_mode none
-    // transparent true
-	//receives_shadows false
+
     fresnel_coeff 0.1
     roughness 0.3
     metalness 0.4

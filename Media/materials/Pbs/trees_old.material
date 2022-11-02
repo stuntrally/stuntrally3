@@ -94,6 +94,9 @@ hlms 3D-Diggers/base pbs
     alpha_test greater 0.5
 	// scene_blend	alpha_blend
 	// depth_write off
+	fresnel_coeff 0.1
+	roughness 0.3
+	metalness 0.3
 }
 
 hlms 3D-Diggers/farn01 pbs : 3D-Diggers/base
