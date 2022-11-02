@@ -104,6 +104,9 @@ hlms plant_tropical pbs
 	cull_mode none
 	//receives_shadows false
 	two_sided true
+    fresnel_coeff 0.1
+    roughness 0.2
+    metalness 0.7
 }
 
 
@@ -111,13 +114,18 @@ hlms plant_tropical pbs
 
 hlms cactus pbs
 {
-	tree_wind false
+	// tree_wind false
 	alpha_test greater 0.5
 	diffuse_map cactus.png
 	normal_map  cactus_norm.png
+
 	ambient 1.4 1.4 1.4
 	diffuse 1.0 1.0 1.0
 	specular 0.2 0.2 0.2 //32
+
+	fresnel_coeff 0.1
+    roughness 0.3
+    metalness 0.2
 }
 
 
@@ -279,6 +287,9 @@ hlms shroom1_alien pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 32
+    fresnel_coeff 0.1
+    roughness 0.3
+    metalness 0.2
 }
 
 hlms shroom2_alien pbs
@@ -288,6 +299,9 @@ hlms shroom2_alien pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 32
+    fresnel_coeff 0.1
+    roughness 0.3
+    metalness 0.2
 }
 
 hlms shroom3_alien pbs
@@ -297,6 +311,9 @@ hlms shroom3_alien pbs
 	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 32
+    fresnel_coeff 0.1
+    roughness 0.3
+    metalness 0.2
 }
 
 
@@ -312,6 +329,9 @@ hlms fern2_black pbs
 	specular 0.3 0.5 0.7 //32
 	emissive 0.1 0.25 2.5
     cull_mode none
+    fresnel_coeff 0.1
+    roughness 0.3
+    metalness 0.4
 }
 
 hlms gum_branch_black pbs
@@ -326,4 +346,7 @@ hlms gum_branch_black pbs
     cull_mode none
     // transparent true
 	//receives_shadows false
+    fresnel_coeff 0.1
+    roughness 0.3
+    metalness 0.4
 }

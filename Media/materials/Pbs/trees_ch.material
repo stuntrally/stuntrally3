@@ -12,7 +12,7 @@ hlms base-tree pbs
     fresnel_coeff 0.1
     roughness 0.7
     metalness 0.1
-  }
+}
 
 //    leaves
 hlms base-twig pbs
@@ -35,7 +35,7 @@ hlms base-twig pbs
     fresnel_coeff 0.1
     roughness 0.5
     metalness 0.2
-  }
+}
 
 
 //    Autumn

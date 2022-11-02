@@ -48,18 +48,17 @@ hlms jungle_tree pbs
 	diffuse_map  jungle_tree.png
 	normal_map   jungle_tree_normal.png
 	fresnel_coeff 0.1
-	roughness 0.3
-	metalness 0.5
+	roughness 0.5
+	metalness 0.1
 	workflow specular_ogre
 	
     cull_mode none
 	alpha_test greater 0.5
 	//alpha_test_threshold 0.4
+	two_sided true
     
 	//diffuse 0.7 0.7 0.7
 	specular 0.2 0.2 0.2
-	
-	two_sided true
 }
 
 hlms palm2 pbs
@@ -74,9 +73,9 @@ hlms palm2 pbs
 	
     cull_mode none
     alpha_test greater 0.5
+	two_sided true
     
 	specular 0.2 0.2 0.2
-	two_sided true
 }
 
 //  plants  ---------------------------------------------
@@ -92,9 +91,9 @@ hlms plant_tropical pbs
 	
     cull_mode none
     alpha_test greater 0.5
+	two_sided true
     
 	specular 0.2 0.2 0.2
-	two_sided true
 }
 
 hlms fern_v2 pbs
@@ -109,9 +108,9 @@ hlms fern_v2 pbs
 	
     cull_mode none
     alpha_test greater 0.5
+	two_sided true
     
 	specular 0.8 0.8 0.8
-	two_sided true
 }
 
 hlms fern2 pbs
@@ -126,9 +125,9 @@ hlms fern2 pbs
 	
     cull_mode none
     alpha_test greater 0.5
+	two_sided true
     
 	specular 0.8 0.8 0.8
-	two_sided true
 }
 
 //  rocks  ---------------------------------------------

@@ -255,9 +255,9 @@ Test7-FluidsSmall
 Test8-Objects
 Test12-Snow
 
-TestC6-Temp
+TestC6-Temp -
 TestC8-Align
-TestC9-Jumps
+TestC9-Jumps -
 TestC10-Pace
 TestC12-SR
 TestC13-Rivers
@@ -269,20 +269,32 @@ For12-HighPeaks
 Tox2-AcidLakes
 Atm3-Orange -
 Isl10-Treasure
+Wnt2-Wet
 
-Jng23-FollowValley
+Jng23-FollowValley -
 Jng25-CantorJungle
 For18-MountCaro
 Isl17-AdapterIslands
-Mos6-TaraMosses -
+Mos6-TaraMosses
 Isl16-SandyMountain
 
 Des11-PersianCity
 Des17-NileCity
-Grc8-SlopeCity
+Grc8-SlopeCity -
 
 Grc10-BeachCity
 Aus10-PreythCity
 Grc13-YeleyStunts
 Isl19-Shocacosh
+
+Mrs1-Mars
+Cry1-CrystalMoon
+Sur5-FreshBreeze
+Sur3-Chaotic -
+
+Mud4-Taiga
+Can3-Vast
+Fin1-Lakes
+Atm9-SchwabAutumn 5m!
+
 */
