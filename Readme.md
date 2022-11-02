@@ -14,6 +14,9 @@ Only tested on GNU/Linux, Debian 11.
 
 It is using Conan (optionally) to get all deps for original Stunt Rally, info on old [wiki here](https://stuntrally.tuxfamily.org/wiki/doku.php?id=compile).
 
-Needs to have Ogre-Next built from sources, using [scripts](https://github.com/OGRECave/ogre-next/tree/master/Scripts/BuildScripts/output).
+Needs to have Ogre-Next built from sources, using [scripts](https://github.com/OGRECave/ogre-next/tree/master/Scripts/BuildScripts/output).  
+I use `../Ogre/ogre-next` dir with Ogre. But CMake default is `Dependencies/Ogre`, it can be as link.
 
-See [CMakeLists.txt](/CMakeLists.txt) and adjust if needed, it has some fixes, for SLD2, OpenAL etc.
+See [CMakeLists.txt](/CMakeLists.txt) and adjust if needed, it has some of my setup fixes, for SLD2, OpenAL etc.  
+
+Also needs [SR tracks](https://github.com/stuntrally/tracks) repo inside `Media/tracks` cloned or as link.
