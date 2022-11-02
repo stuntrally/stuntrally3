@@ -200,6 +200,7 @@ namespace Demo
 		//  camera  ------------------------------------------------
 		// mCameraController = new CameraController( mGraphicsSystem, false );
 		mGraphicsSystem->getCamera()->setFarClipDistance( 20000.f );  // par far
+		// mGraphicsSystem->getCamera()->setFarClipDistance( pSet->view_distance );  // par far
 
 		camPos = Vector3(10.f, 11.f, 16.f );
 		//camPos.y += mTerra->getHeightAt( camPos );
@@ -267,9 +268,11 @@ Jng20-JungleMaze
 For12-HighPeaks
 
 Tox2-AcidLakes
-Atm3-Orange -
+Atm3-Orange
 Isl10-Treasure
 Wnt2-Wet
+Wnt11-Glacier
+Wnt17-FrozenGarden
 
 Jng23-FollowValley -
 Jng25-CantorJungle
@@ -289,12 +292,18 @@ Isl19-Shocacosh
 
 Mrs1-Mars
 Cry1-CrystalMoon
+
 Sur5-FreshBreeze
+Sur1-Surreal
 Sur3-Chaotic -
 
 Mud4-Taiga
 Can3-Vast
 Fin1-Lakes
 Atm9-SchwabAutumn 5m!
+
+Vlc4-Spikeland
+Vlc5-Sad
+Vlc12-LavaPools
 
 */

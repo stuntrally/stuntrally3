@@ -120,7 +120,9 @@ namespace Demo
 		Ogre::SceneNode *planeNode = 0;
 
 		//  sky
+	public:		
 		void CreateSkyDome(Ogre::String sMater, float yaw);
+	protected:
 		int iSky = 0;
 		Ogre::ManualObject* moSky = 0;
 		Ogre::SceneNode* ndSky = 0;

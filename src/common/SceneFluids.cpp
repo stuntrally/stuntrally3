@@ -1,4 +1,3 @@
-#include "OgreCommon.h"
 #include "pch.h"
 #include "RenderConst.h"
 #include "Def_Str.h"
@@ -22,6 +21,7 @@
 #include <BulletCollision/CollisionShapes/btBoxShape.h>
 #include <BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h>
 
+#include "OgreCommon.h"
 #include <OgreManualObject.h>
 #include <OgreMeshManager.h>
 #include <OgreMaterialManager.h>
@@ -30,12 +30,14 @@
 #include <OgreSceneNode.h>
 #include <OgreTimer.h>
 
-#include "OgreItem.h"
-#include "OgreMesh.h"
-#include "OgreMeshManager.h"
-#include "OgreMesh2.h"
-#include "OgreMeshManager2.h"
-#include "OgreManualObject2.h"
+#include <OgreItem.h>
+#include <OgreMesh.h>
+#include <OgreMeshManager.h>
+#include <OgreMesh2.h>
+#include <OgreMeshManager2.h>
+#include <OgreManualObject2.h>
+#include <OgreHlmsPbsPrerequisites.h>
+#include <OgreHlmsPbsDatablock.h>
 using namespace Ogre;
 
 
@@ -70,6 +72,7 @@ void CScene::CreateFluids()
 		
 		meshV1->unload();
 
+
 		SceneManager *mgr = app->mSceneMgr;
 		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 
@@ -77,7 +80,21 @@ void CScene::CreateFluids()
 		String sMtr = fb.id == -1 ? "" : data->fluids->fls[fb.id].material;  //"Water"+toStr(1+fb.type)
 		
 		item->setDatablock( sMtr );  item->setCastShadows( false );
-		// item->setRenderQueueGroup( RQG_Fluid );  item->setVisibilityFlags( RV_Terrain );
+		item->setRenderQueueGroup( RQG_Fluid );  item->setVisibilityFlags( RV_Terrain );
+
+		
+		//  wrap tex
+		HlmsSamplerblock sampler;
+		sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
+		sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
+		sampler.mMaxAnisotropy = app->pSet->anisotropy;
+		sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
+		assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem( 0 )->getDatablock() ) );
+		HlmsPbsDatablock *datablock =
+			static_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem( 0 )->getDatablock() );
+		datablock->setSamplerblock( PBSM_DIFFUSE, sampler );
+		datablock->setSamplerblock( PBSM_NORMAL, sampler );
+
 		
 		SceneNode* node = rootNode->createChildSceneNode( SCENE_STATIC );
 		node->setPosition( fb.pos );  //, Quaternion(Degree(fb.rot.x),Vector3::UNIT_Y)

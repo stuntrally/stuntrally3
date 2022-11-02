@@ -286,7 +286,7 @@ namespace Demo
 			Root *root = mGraphicsSystem->getRoot();
 			HlmsManager *hlmsManager = root->getHlmsManager();
 			HlmsDatablock *datablock = 0;
-			datablock = hlmsManager->getDatablock( "TerraExampleMaterial" );
+			datablock = hlmsManager->getDatablock( "TerraExampleMaterial2" );
 			if (wireTerrain)
 			{
 				datablock = hlmsManager->getHlms( HLMS_USER3 )->getDefaultDatablock();

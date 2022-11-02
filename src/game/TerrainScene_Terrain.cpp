@@ -32,6 +32,7 @@
 #include "OgreGpuResource.h"
 #include "OgreHlmsTerraPrerequisites.h"
 #include "OgreHlmsUnlitDatablock.h"
+#include "OgreHlmsSamplerblock.h"
 // #include "OgreHlmsTerra.h"
 
 //  SR
@@ -83,13 +84,10 @@ namespace Demo
 		
 		//  tex filtering
 		HlmsSamplerblock sampler;
-		sampler.mMinFilter = FO_ANISOTROPIC;
-		sampler.mMagFilter = FO_ANISOTROPIC;
+		sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
 		sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
 		sampler.mMaxAnisotropy = pSet->anisotropy;
-		sampler.mU = TAM_WRAP;
-		sampler.mV = TAM_WRAP;
-		sampler.mW = TAM_WRAP;
+		sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
 		TextureGpuManager *texMgr = root->getRenderSystem()->getTextureGpuManager();
 
 		//  blendmap ..  // todo: dynamic, shader
@@ -98,6 +96,7 @@ namespace Demo
 		tblock->setTexture( TERRA_DETAIL_WEIGHT, tex );
 
 		///  Layer Textures  ----
+		const Real fTer = sc->td.fTerWorldSize;  //= fTriangleSize * iTerSize;
 		int ls = sc->td.layers.size();
 		for (int i=0; i < ls; ++i)
 		{
@@ -140,9 +139,11 @@ namespace Demo
 			{	tblock->setTexture( TERRA_DETAIL_METALNESS0 + i, tex );
 				tblock->setSamplerblock( TERRA_DETAIL_METALNESS0 + i, sampler );
 			}
-			tblock->setDetailMapOffsetScale( i, Vector4(0,0, l.tiling *2,2* l.tiling) );
+			Real sc = fTer / l.tiling;
+			tblock->setDetailMapOffsetScale( i, Vector4(0,0, sc,sc) );
 			tblock->setMetalness(i, 0.1);
 			tblock->setRoughness(i, 0.6);
+			// datablock->setFres
 		}
 		//tblock->setDiffuse(Vector3());
 		// const HlmsSamplerblock *sam = tblock->getSamplerblock( TERRA_DETAIL0 );
@@ -286,7 +287,8 @@ namespace Demo
 	void TerrainGame::CreateSkyDome(String sMater, float yaw)
 	{
 		if (moSky)  return;
-		Vector3 scale = 25000 /*view_distance*/ * Vector3::UNIT_SCALE;
+		Vector3 scale = 15000 * Vector3::UNIT_SCALE;
+		// Vector3 scale = pSet->view_distance * Vector3::UNIT_SCALE * 0.7f;
 		
 		SceneManager *mgr = mGraphicsSystem->getSceneManager();
 		ManualObject* m = mgr->createManualObject();
@@ -341,8 +343,8 @@ namespace Demo
 		Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_UNLIT );
 		HlmsUnlitDatablock *datablock = static_cast<HlmsUnlitDatablock*>(hlms->getDatablock(sMater));
 		HlmsSamplerblock sampler( *datablock->getSamplerblock( PBSM_DIFFUSE ) );  // copy
-		sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
-		datablock->setSamplerblock( PBSM_DIFFUSE, sampler );/**/
+		sampler.mU = TAM_MIRROR;  sampler.mV = TAM_MIRROR;  sampler.mW = TAM_MIRROR;
+		datablock->setSamplerblock( PBSM_DIFFUSE, sampler );
 	}
 
 	void TerrainGame::DestroySkyDome()
