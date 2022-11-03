@@ -166,13 +166,13 @@ namespace Demo
 
 		//  Heightmap  ------------------------------------------------
 		sizeXZ = sc->td.fTriangleSize * (sc->td.iVertsX-1);  //sc->td.fTerWorldSize;
-		float ofs = sc->td.fTriangleSize * -0.5f;  // todo: ofs 1025 to 1024 verts
+		float ofs = sc->td.fTriangleSize;  // ofs 1025 to 1024 verts
 		LogO("Ter size: " + toStr(sc->td.iVertsX));// +" "+ toStr((sc->td.iVertsX)*sizeof(float))
 
 		mTerra->load(
 			sc->td.iVertsX-1, sc->td.iVertsY-1, 
 			sc->td.hfHeight, sc->td.iVertsX,
-			Vector3( ofs*0.f, 0.45f, -ofs),  //** y?
+			Vector3( /*ofs*/0.f, 0.45f, ofs),  //** y why?
 			Vector3( sizeXZ, 1.0f, sizeXZ),
 			// true, true);
 			false, false);
