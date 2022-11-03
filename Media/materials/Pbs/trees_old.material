@@ -121,6 +121,9 @@ hlms 3D-Diggers/fir01 pbs
     diffuse_map fir01.png
     alpha_test greater 0.5
 	// scene_blend	alpha_blend
+	fresnel_coeff 0.1
+	roughness 0.5
+	metalness 0.1
 }
 
 hlms 3D-Diggers/fir02 pbs
@@ -128,6 +131,9 @@ hlms 3D-Diggers/fir02 pbs
     ambient 1.0 1.0 1.0
     diffuse 0.6 0.6 0.6
     diffuse_map fir02.jpg
+	fresnel_coeff 0.1
+	roughness 0.5
+	metalness 0.1
 }
 
 hlms 3D-Diggers/firW1 pbs : 3D-Diggers/fir01
