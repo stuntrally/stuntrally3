@@ -112,9 +112,9 @@ void SplineRoad::UpdLodVis(float fBias, bool bFull)
 			}
 			#endif*/
 			
-			if (rs.road[i].ent)  rs.road[i].ent->setVisible(vis);
-			if (rs.wall[i].ent)  rs.wall[i].ent->setVisible(vis);
-			if (rs.blend[i].ent) rs.blend[i].ent->setVisible(vis);
+			if (rs.road[i].it)  rs.road[i].it->setVisible(vis);
+			if (rs.wall[i].it)  rs.wall[i].it->setVisible(vis);
+			if (rs.blend[i].it) rs.blend[i].it->setVisible(vis);
 			//if (rs.col.ent && i==0)
 			//	rs.col.ent->setVisible(vis);
 			if (vis) {  ++st.iVis;  st.iTris += rs.nTri[i];  }
@@ -154,17 +154,17 @@ void SplineRoad::SetForRnd(String sMtr)
 		
 		for (int i=0; i < LODs; ++i)
 		{
-			if (rs.road[i].ent)
-			{	rs.road[i].ent->setVisible(i==0);
-				rs.road[i].ent->setMaterial(mat);
+			if (rs.road[i].it)
+			{	rs.road[i].it->setVisible(i==0);
+				rs.road[i].it->setMaterial(mat);
 			}
-			if (rs.wall[i].ent)
-				rs.wall[i].ent->setVisible(false);
-			if (rs.blend[i].ent)
-				rs.blend[i].ent->setVisible(false);
+			if (rs.wall[i].it)
+				rs.wall[i].it->setVisible(false);
+			if (rs.blend[i].it)
+				rs.blend[i].it->setVisible(false);
 		}
-		if (rs.col.ent)
-			rs.col.ent->setVisible(false);
+		if (rs.col.it)
+			rs.col.it->setVisible(false);
 	}
 }
 void SplineRoad::UnsetForRnd()
@@ -177,12 +177,12 @@ void SplineRoad::UnsetForRnd()
 			rs.sMtrRd);
 		for (int i=0; i < LODs; ++i)
 		{
-			if (rs.road[i].ent)
-				rs.road[i].ent->setMaterial(mat);
+			if (rs.road[i].it)
+				rs.road[i].it->setMaterial(mat);
 			// wall auto in updLodVis
 		}
-		if (rs.col.ent)
-			rs.col.ent->setVisible(true);
+		if (rs.col.it)
+			rs.col.it->setVisible(true);
 	}
 }
 void SplineRoad::SetVisTrail(bool vis)
@@ -192,7 +192,7 @@ void SplineRoad::SetVisTrail(bool vis)
 		if (rs.empty)  continue;
 
 		for (int i=0; i < LODs; ++i)
-			rs.road[i].ent->setVisible(vis);
+			rs.road[i].it->setVisible(vis);
 	}
 }
 

@@ -88,7 +88,7 @@ public:
 	void DestroyTerrain();
 	void CreateBltTerrain(), copyTerHmap();
 
-	Ogre::Terra* terrain;
+	Ogre::Terra* terrain = 0;
 	// void SetupTerrain(), UpdTerErr();
 
 	

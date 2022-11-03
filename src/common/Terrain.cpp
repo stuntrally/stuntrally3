@@ -131,7 +131,9 @@ void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
 
 	//; UpdBlendmap();
 
+
 	app->mainApp->CreateTerrain();
+	terrain = app->mainApp->mTerra;
 	
 	LogO(String("::: Time Terrain: ") + fToStr(tm.getMilliseconds(),0,3) + " ms");
 }

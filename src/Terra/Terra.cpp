@@ -190,7 +190,7 @@ namespace Ogre
 		TextureBox texBox = stagingTexture->mapRegion(
 			m_iWidth, m_iHeight, 1u, 1u, pixelFormat );
 
-		LogO("Ter Hmap dim " + toStr(m_iWidth)+" x "+ toStr(m_iHeight)+"  "+ toStr(row));
+		LogO("Ter Hmap dim " + iToStr(m_iWidth)+" x "+ iToStr(m_iHeight)+"  "+ iToStr(row));
 		
 		// simple, exact
 		if (m_iHeight == row)
@@ -716,9 +716,9 @@ namespace Ogre
 		return a;
 	}
 
-	Real Terra::getHeight( Vector3 &vPos ) const
+	Real Terra::getHeight( Real x, Real z ) const
 	{
-		Vector3 pos = vPos;
+		Vector3 pos(x, 0, z);
 		getHeightAt(pos);
 		return pos.y;
 	}

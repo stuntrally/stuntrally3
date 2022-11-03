@@ -32,7 +32,7 @@ class btTriangleMesh;
 struct RoadSeg
 {
 	struct SegData
-	{	Ogre::SceneNode* node =0;  Ogre::Item* ent =0;
+	{	Ogre::SceneNode* node =0;  Ogre::Item* it =0;
 		Ogre::MeshPtr mesh;  Ogre::String smesh ="";
 	};
 	

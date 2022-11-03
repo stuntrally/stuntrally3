@@ -227,7 +227,7 @@ namespace Ogre
 			True if Y (or Z for Z-up) component was changed
 		*/
 		bool getHeightAt( Vector3 &vPos ) const;
-		Ogre::Real getHeight( Vector3 &vPos ) const;
+		Ogre::Real getHeight( Ogre::Real x, Ogre::Real z ) const;
 		float getAngle( float x, float z, float s) const;
 
 		/// load must already have been called.

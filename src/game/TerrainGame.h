@@ -57,8 +57,6 @@ namespace Demo
 		bool shift = false, ctrl = false;
 
 		//  terrain
-		Ogre::Terra *mTerra = 0;
-
 		// Listener to make PBS objects also be affected by terrain's shadows
 		Ogre::HlmsPbsTerraShadows *mHlmsPbsTerraShadows = 0;
 
@@ -70,6 +68,8 @@ namespace Demo
 		Ogre::String generateFpsDebugText();
 
 	public:
+		Ogre::Terra *mTerra = 0;
+
 		TerrainGame();
 
 		//  SR

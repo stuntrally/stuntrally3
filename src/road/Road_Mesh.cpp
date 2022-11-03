@@ -161,7 +161,7 @@ try
 {
 	for (int l=0; l < LODs; ++l)
 	{
-		if (rs.wall[l].ent)  // ] wall
+		if (rs.wall[l].it)  // ] wall
 		{
 			rs.wall[l].node->detachAllObjects();
 			#ifdef SR_EDITOR
@@ -171,7 +171,7 @@ try
 			mSceneMgr->destroySceneNode(rs.wall[l].node);
 			//; Ogre::MeshManager::getSingleton().remove(rs.wall[l].smesh);
 		}
-		if (rs.blend[l].ent)  // > blend
+		if (rs.blend[l].it)  // > blend
 		{
 			rs.blend[l].node->detachAllObjects();
 			#ifdef SR_EDITOR
@@ -181,7 +181,7 @@ try
 			//; Ogre::MeshManager::getSingleton().remove(rs.blend[l].smesh);
 		}
 	}
-	if (rs.col.ent)  // | column
+	if (rs.col.it)  // | column
 	{
 		#ifdef SR_EDITOR
 		rs.col.node->detachAllObjects();
@@ -191,11 +191,11 @@ try
 		//; Ogre::MeshManager::getSingleton().remove(rs.col.smesh);
 	}
 	for (int l=0; l < LODs; ++l)
-	if (rs.road[l].ent)
+	if (rs.road[l].it)
 	{
 		rs.road[l].node->detachAllObjects();
 		if (IsTrail())
-			mSceneMgr->destroyItem(rs.road[l].ent);
+			mSceneMgr->destroyItem(rs.road[l].it);
 		#ifdef SR_EDITOR  //_crash in game (destroy all ents is before)
 		mSceneMgr->destroyItem(rs.road[l].ent);
 		#endif
