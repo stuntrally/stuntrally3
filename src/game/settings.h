@@ -138,7 +138,7 @@ public:
 	// bool split_vertically;
 
 	//  startup, other
-	// bool bltDebug, bltLines, bltProfilerTxt, profilerTxt;
+	bool bltDebug, bltLines;//, bltProfilerTxt, profilerTxt;
 	// bool loadingbackground, show_welcome;
 
 	//  sound

@@ -277,8 +277,8 @@ btBvhTriangleMeshShape* VertexIndexToShape::createTrimesh()
 	btVector3 vertexPos[3];
 	for (auto i = size_t{ 0U }; i < numFaces; ++i)
 	{
-		for (const auto j : { 0, 1, 2 })
-			vertexPos[j] = Convert::toBullet(mVertexBuffer[mIndexBuffer[3 * i + j]]);
+		for (const auto j : { 0, 1, 2 })  ///!  // fixme only works with scale 1.0
+			vertexPos[j] = Convert::toBullet2(mVertexBuffer[mIndexBuffer[3 * i + j]]);
 
 		trimesh->addTriangle(vertexPos[0], vertexPos[1], vertexPos[2]);
 	}

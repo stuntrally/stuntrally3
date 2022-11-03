@@ -112,6 +112,7 @@ endmacro()
 #  compiler  ----
 include_directories(
 	src
+	src/btOgre2
 	src/common
 	src/common/data
 	src/game

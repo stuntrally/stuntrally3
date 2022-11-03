@@ -14,7 +14,7 @@
 
 
 namespace Ogre {  class SceneNode;  class SceneManager;  class TextureGpu;  class Root;  }
-// namespace BtOgre  {  class DebugDrawer;  }
+namespace BtOgre  {  class DebugDrawer;  }
 class CScene;  class CData;  class CInput;  class GraphView;
 class GAME;  class CHud;  class CGui;  class CGuiCom;
 namespace Demo {  class TerrainGame;  }
@@ -88,7 +88,7 @@ public:
 
 	// bool isTweakTab();
 		
-	// BtOgre::DebugDrawer *dbgdraw;  /// blt dbg
+	BtOgre::DebugDrawer *dbgdraw = 0;  /// blt dbg
 
 	//  mtr reload
 	/*enum eMaterials {

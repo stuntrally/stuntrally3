@@ -126,7 +126,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 	//  misc
 	Param(c,w, "misc.version", version);
-	// Param(c,w, "misc.bulletDebug", bltDebug);		Param(c,w, "misc.bulletLines", bltLines);
+	Param(c,w, "misc.bulletDebug", bltDebug);		Param(c,w, "misc.bulletLines", bltLines);
 	// Param(c,w, "misc.profilerTxt", profilerTxt);	Param(c,w, "misc.bulletProfilerTxt", bltProfilerTxt);
 	Param(c,w, "misc.dev_keys", dev_keys);			Param(c,w, "misc.dev_no_prvs", dev_no_prvs);
 
@@ -221,7 +221,7 @@ SETTINGS::SETTINGS()   ///  Defaults
 	,dev_keys(0), dev_no_prvs(0)
 	// ,split_vertically(true)
 	//  misc
-	// ,bltDebug(0), bltLines(1),  bltProfilerTxt(0), profilerTxt(0)
+	,bltDebug(0), bltLines(1)//,  bltProfilerTxt(0), profilerTxt(0)
 	// ,loadingbackground(true), show_welcome(true)
 	//  network
 	// ,nickname("Player"), netGameName("Default Game")

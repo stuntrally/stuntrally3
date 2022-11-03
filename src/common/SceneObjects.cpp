@@ -6,7 +6,7 @@
 #include "CScene.h"
 #include "Axes.h"
 #include "pathmanager.h"
-// #include "../../btOgre/BtOgreGP.h"
+#include "BtOgreGP.h"
 // #include "Road.h"
 #include "ShapeData.h"
 #ifdef SR_EDITOR
@@ -167,13 +167,13 @@ void App::CreateObjects()
 		//  add to bullet world (in game)
 		if (!o.dyn)
 		{
-		#if 0  // fixme: add btOgre ..
+		#if 1
 			///  static  . . . . . . . . . . . . 
 			Vector3 posO = Axes::toOgre(o.pos);
 			Quaternion rotO = Axes::toOgreW(o.rot);
 
-			Matrix4 tre;  tre.makeTransform(posO,o.scale,rotO);
-			BtOgre::StaticMeshToShapeConverter converter(o.ent, tre);
+			Matrix4 tre;  tre.makeTransform(posO,o.scale, rotO);
+			BtOgre::StaticMeshToShapeConverter converter(o.it, tre);
 			btCollisionShape* shape = converter.createTrimesh();  //=new x2 todo:del?...
 			shape->setUserPointer((void*)SU_ObjectStatic);  // mark
 
@@ -184,7 +184,7 @@ void App::CreateObjects()
 			bco->setFriction(0.7f);   //+
 			bco->setRestitution(0.f);
 			bco->setCollisionFlags(bco->getCollisionFlags() |
-				btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+				btCollisionObject::CF_STATIC_OBJECT /*| btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
 			world->addCollisionObject(bco);
 			#ifndef SR_EDITOR
 			o.co = bco;  o.ms = 0;  o.rb = 0;

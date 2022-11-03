@@ -19,7 +19,7 @@
 	#include "settings.h"
 	#include "game.h"
 	// #include "SplitScreen.h"
-	// #include "BtOgreGP.h"
+	#include "BtOgreGP.h"
 #endif
 #include "pathmanager.h"
 #include "MersenneTwister.h"
@@ -345,12 +345,12 @@ void CScene::CreateTrees()
 				}
 				else  // use trimesh  . . . . . . . . . . . . 
 				{
-				#if 0  // fixme add btOgre
+				#if 1
 					const BltShape* shp = !col ? &data->objs->defPars : &col->shapes[0];
 					Vector3 pc(pos0.x, pos.y, pos0.z);
 					Quaternion q;  q.FromAngleAxis(yaw, Vector3::UNIT_Y);
 					Matrix4 tre;  tre.makeTransform(pc, scl*Vector3::UNIT_SCALE, q);
-					BtOgre::StaticMeshToShapeConverter converter(ent, tre);
+					BtOgre::StaticMeshToShapeConverter converter(item, tre);
 					btCollisionShape* shape = converter.createTrimesh();
 					shape->setUserPointer((void*)SU_Vegetation);
 

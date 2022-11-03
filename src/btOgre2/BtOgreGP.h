@@ -33,11 +33,11 @@
 #include "BtOgreExtras.h"
 #include "BtOgre.hpp"
 
-#if OGRE_VERSION_MINOR > 3
+// #if OGRE_VERSION_MINOR > 3
 #define OGRE_VertexArrayObject_ReadRequests VertexArrayObject::ReadRequestsVec
-#else
-#define OGRE_VertexArrayObject_ReadRequests VertexArrayObject::ReadRequestsArray
-#endif
+// #else
+// #define OGRE_VertexArrayObject_ReadRequests VertexArrayObject::ReadRequestsArray
+// #endif
 
 namespace BtOgre
 {

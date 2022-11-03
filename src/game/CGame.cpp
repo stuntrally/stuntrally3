@@ -32,7 +32,7 @@ App::App(SETTINGS *settings, GAME *game)
 	// ,mThread()
 	, mTimer(0.f)
 	// game
-	,blendMtr(0), blendMapSize(513)//, dbgdraw(0)
+	,blendMtr(0), blendMapSize(513)
 	// ,carIdWin(-1), iRplCarOfs(0)
 	// other
 	,newGameRpl(0), curLoadState(0), dstTrk(1)
@@ -112,7 +112,7 @@ App::~App()
 
 void App::destroyScene()
 {
-	// delete dbgdraw;  dbgdraw = 0;
+	delete dbgdraw;  dbgdraw = 0;
 	
 	// scn->mWaterRTT->destroy();
 	

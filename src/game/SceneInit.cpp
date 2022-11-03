@@ -1,17 +1,22 @@
-// #include "SplineBase.h"
 #include "pch.h"
+#include "Road.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
 #include "CData.h"
 #include "SceneXml.h"
 #include "Axes.h"
 #include "CScene.h"
+
+// #include "SplineBase.h"
+#include "OgreCommon.h"
+#include "OgreVector3.h"
+#include "TerrainGame.h"
+
 // #include "GuiCom.h"
 #include "CGame.h"
 // #include "CHud.h"
 // #include "CGui.h"
 #include "game.h"
-#include "Road.h"
 // #include "PaceNotes.h"
 #include "SoundMgr.h"
 #include "SoundBaseMgr.h"
@@ -150,18 +155,18 @@ void App::CreateScene()
 	bRplRec = pSet->rpl_rec;  // startup setting
 
 	gui->InitGui();
+#endif
 
 	//  bullet Debug drawing
 	//------------------------------------
 	if (pSet->bltLines)
 	{	dbgdraw = new BtOgre::DebugDrawer(
 			mSceneMgr->getRootSceneNode(),
-			pGame->collision.world);
+			pGame->collision.world, mSceneMgr);
 		pGame->collision.world->setDebugDrawer(dbgdraw);
 		pGame->collision.world->getDebugDrawer()->setDebugMode(
 			1 /*0xfe/*8+(1<<13)*/);
 	}
-#endif
 	
 	//  load
 	//if (pSet->autostart)  //;
@@ -610,7 +615,7 @@ void App::LoadTerrain()  // 5
 
 void App::LoadRoad()  // 6
 {
-	// CreateRoads();   // dstTrk inside
+	CreateRoads();   // dstTrk inside
 		
 	// if (hud->arrow.nodeRot)
 		// hud->arrow.nodeRot->setVisible(pSet->check_arrow && !bHideHudArr);
@@ -822,7 +827,9 @@ void App::CreateRoads()
 		road->bRoadWFullCol = pSet->gui.collis_roadw;
 
 		for (auto r : scn->roads)
-		{	r->RebuildRoadInt();
+		{
+			r->mTerrain = scn->terrain;
+			r->RebuildRoadInt();
 			r->SetChecks();  // 2nd, upd
 	}	}
 	

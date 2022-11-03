@@ -148,6 +148,12 @@ namespace Demo
 			}
 		}
 
+		//**  bullet bebug draw
+		if (pApp->dbgdraw)  // DBG_DrawWireframe
+		{
+			pApp->dbgdraw->setDebugMode(1); //pSet->bltDebug ? 1 /*+(1<<13) 255*/ : 0);
+			pApp->dbgdraw->step();
+		}
 
 		//  Keys  params  ----
 		float mul = shift ? 0.2f : ctrl ? 3.f : 1.f;

@@ -79,7 +79,7 @@ void CScene::CreateSun()
 	
 
 	AtmosphereNpr::Preset p = atmo->getPreset();
-	p.fogDensity = 2000.f / sc->fogEnd * 0.001f; //0.0002f;  //** par
+	p.fogDensity = 2000.f / sc->fogEnd * 0.0006f; //0.0002f;  //** par
 	p.densityCoeff = 0.27f;  //0.47f;
 	p.densityDiffusion = 0.75f;  //2.0f;
 	p.horizonLimit = 0.025f;

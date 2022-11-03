@@ -13,7 +13,12 @@ btQuaternion Convert::toBullet(const Quaternion& q)
 
 btVector3 Convert::toBullet(const Vector3& v)
 {
-	return { v.x, v.y, v.z };
+	return { v.x, v.z, v.y };  ///!
+}
+
+btVector3 Convert::toBullet2(const Vector3& v)
+{
+	return { v.x, -v.z, v.y };  ///!
 }
 
 Quaternion Convert::toOgre(const btQuaternion& q)
@@ -23,7 +28,7 @@ Quaternion Convert::toOgre(const btQuaternion& q)
 
 Vector3 Convert::toOgre(const btVector3& v)
 {
-	return { v.x(), v.y(), v.z() };
+	return { v.x(), v.z(), -v.y() };  ///!
 }
 
 LineDrawer::LineDrawer(SceneNode* node, String datablockId, SceneManager* smgr) :

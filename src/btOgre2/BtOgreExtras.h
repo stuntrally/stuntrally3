@@ -25,7 +25,7 @@
 #include <OgrePass.h>
 #include <OgreRoot.h>
 #include <OgreHlms.h>
-#include <Hlms/Unlit/OgreHlmsUnlit.h>
+#include <OgreHlmsUnlit.h>
 #include <OgreLogManager.h>
 
 namespace BtOgre
@@ -44,6 +44,7 @@ namespace BtOgre
 
 		///Ogre -> Bullet Vector 3D
 		static btVector3 toBullet(const Ogre::Vector3& v);
+		static btVector3 toBullet2(const Ogre::Vector3& v);
 
 		///Bullet -> Ogre Quaternion
 		static Ogre::Quaternion toOgre(const btQuaternion& q);

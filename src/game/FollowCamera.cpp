@@ -10,7 +10,7 @@
 // ray cast
 #include "collision_contact.h"
 #include "collision_world.h"
-// #include "../btOgre/BtOgreDebug.h"
+#include "BtOgreExtras.h"
 #include "btBulletCollisionCommon.h"
 #include "CarPosInfo.h"
 
