@@ -2,6 +2,7 @@
 // -- NOT to be included in headers?  --
 
 #include <iomanip>
+#include <OgreVector3.h>
 #include <OgreLogManager.h>
 #include <OgreStringConverter.h>
 //; #include <MyGUI_LanguageManager.h>
@@ -10,8 +11,15 @@
 #define LogO(s)  Ogre::LogManager::getSingleton().logMessage(s)
 
 //  to string
-#define toStr(v)   Ogre::StringConverter::toString(v)
-#define toStrC(v)  Ogre::StringConverter::toString(v).c_str()
+// #define toStr(v)   Ogre::StringConverter::toString(v)  // cant
+inline Ogre::String toStr(const int    a)        {  return Ogre::StringConverter::toString(a);  }
+inline Ogre::String toStr(const unsigned int a)  {  return Ogre::StringConverter::toString(a);  }
+inline Ogre::String toStr(const float  a)        {  return Ogre::StringConverter::toString(a);  }
+inline Ogre::String toStr(const size_t a)        {  return Ogre::StringConverter::toString(a);  }
+inline Ogre::String toStr(const Ogre::Vector2 a) {  return Ogre::StringConverter::toString(a);  }
+inline Ogre::String toStr(const Ogre::Vector3 a) {  return Ogre::StringConverter::toString(a);  }
+inline Ogre::String toStr(const Ogre::Vector4 a) {  return Ogre::StringConverter::toString(a);  }
+#define toStrC(v)  toStr(v).c_str()
 
 //  translation
 //; #define TR(s)  MyGUI::LanguageManager::getInstance().replaceTags(s)
@@ -34,15 +42,15 @@ static Ogre::String fToStr(const float v, const char precision=2, const char wid
 }
 
 //  string to var
-#define s2r(s)  Ogre::StringConverter::parseReal(s)
-#define s2i(s)  Ogre::StringConverter::parseInt(s)
-#define s2c(s)  Ogre::StringConverter::parseColourValue(s)
+#define s2r(s)   Ogre::StringConverter::parseReal(s)
+#define s2i(s)   Ogre::StringConverter::parseInt(s)
+#define s2c(s)   Ogre::StringConverter::parseColourValue(s)
 
-#define s2v2(s) Ogre::StringConverter::parseVector2(s)
-#define s2v(s)  Ogre::StringConverter::parseVector3(s)
-#define s2v4(s) Ogre::StringConverter::parseVector4(s)
+#define s2v2(s)  Ogre::StringConverter::parseVector2(s)
+#define s2v(s)   Ogre::StringConverter::parseVector3(s)
+#define s2v4(s)  Ogre::StringConverter::parseVector4(s)
 
-#define b2s(b)  (b) ? "true" : "false"
+#define b2s(b)   (b) ? "true" : "false"
 
 /*
 const int ciShadowSizesNum = 5;
