@@ -22,6 +22,7 @@
 #include "CGame.h"
 #include "CarModel.h"
 #include "CScene.h"
+#include "SceneXml.h"
 
 #include "Def_Str.h"
 using namespace Demo;
@@ -121,8 +122,8 @@ namespace Demo
 			txt = generateFpsDebugText();
 
 			txt += "Veget " + iToStr(pApp->scn->cntAll + vegetNodes.size(), 5);
-			txt += "\n\n- + Sun Pitch  " + fToStr( mPitch * 180.f / Math::PI, 3 );
-			txt += "\n/ * Sun Yaw    " + fToStr( mYaw * 180.f / Math::PI, 3 );
+			txt += "\n\n- + Sun Pitch  " + fToStr( sc->ldPitch, 3 );
+			txt += "\n/ * Sun Yaw    " + fToStr( sc->ldYaw, 3 );
 
 			txt += "\n^ v Param  " + fToStr( param, 0 );
 			

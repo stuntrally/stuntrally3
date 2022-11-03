@@ -28,9 +28,72 @@
 
 #include <OgreHlmsUnlitDatablock.h>
 #include <OgreHlmsPbsPrerequisites.h>
-// #include <OgreRenderWindow.h>
+
 // #include "TerrainGame.h"
+#include "OgreAtmosphereComponent.h"
+#include "OgreAtmosphereNpr.h"
 using namespace Ogre;
+
+
+
+
+//  Light
+//-------------------------------------------------------------------------------------{
+void CScene::CreateSun()
+{
+	SceneManager *mgr = app->mSceneMgr;
+	mgr->destroyAllLights();
+	LogO("---- new sun light");
+	sun = mgr->createLight();
+	sun->setType( Light::LT_DIRECTIONAL );
+
+	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
+	SceneNode *lightNode = rootNode->createChildSceneNode();
+	lightNode->attachObject( sun );
+
+	// mSunLight->setPowerScale( 1.f );  // should be * 1..
+	sun->setPowerScale( Math::PI * 2.5 );  //** par! 1.5 2 3* 4
+	UpdSun();
+
+
+	//  Atmosphere  ------------------------------------------------
+	LogO("---- new Atmosphere");
+	AtmosphereComponent *atmosphere = mgr->getAtmosphereRaw();
+	OGRE_DELETE atmosphere;
+
+	atmo = OGRE_NEW AtmosphereNpr( app->mRoot->getRenderSystem()->getVaoManager() );
+	{
+		// Preserve the Power Scale explicitly set by the sample
+		AtmosphereNpr::Preset preset = atmo->getPreset();
+		preset.linkedLightPower = sun->getPowerScale();
+		atmo->setPreset( preset );
+	}
+
+	atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
+		// std::asin( Math::Clamp( -sun->getDirection().y, -1.0f, 1.0f ) ) / Math::PI );
+	atmo->setLight( sun );
+	atmo->setSky( mgr, true );
+	
+	OGRE_ASSERT_HIGH( dynamic_cast<AtmosphereNpr*>( mgr->getAtmosphere() ) );
+	atmo = static_cast<AtmosphereNpr*>( mgr->getAtmosphere() );
+	
+
+	AtmosphereNpr::Preset p = atmo->getPreset();
+	p.fogDensity = 2000.f / sc->fogEnd * 0.001f; //0.0002f;  //** par
+	p.densityCoeff = 0.27f;  //0.47f;
+	p.densityDiffusion = 0.75f;  //2.0f;
+	p.horizonLimit = 0.025f;
+	// p.sunPower = 1.0f;
+	// p.skyPower = 1.0f;
+	p.skyColour = sc->fogClr.GetRGB1(); //Vector3(0.234f, 0.57f, 1.0f);
+	p.fogBreakMinBrightness = 0.25f;
+	p.fogBreakFalloff = 0.1f;
+	// p.linkedLightPower = Math::PI;
+	// p.linkedSceneAmbientUpperPower = 0.1f * Math::PI;
+	// p.linkedSceneAmbientLowerPower = 0.01f * Math::PI;
+	p.envmapScale = 1.0f;
+	atmo->setPreset( p );
+}
 
 
 //  Sky dome
@@ -116,9 +179,10 @@ void CScene::UpdSky()
 {
 	Quaternion q;  q.FromAngleAxis(Degree(-sc->skyYaw), Vector3::UNIT_Y);
 	ndSky->setOrientation(q);
-	UpdSun();
+	UpdSun();  //in ed
 }
 
+//  upd sun
 void CScene::UpdSun()
 {
 	if (!sun)  return;
@@ -127,6 +191,27 @@ void CScene::UpdSun()
 	sun->setDiffuseColour( sc->lDiff.GetClr());
 	sun->setSpecularColour(sc->lSpec.GetClr());
 	//; app->mSceneMgr->setAmbientLight(sc->lAmb.GetClr());
+
+	//  ambient
+	app->mSceneMgr->setAmbientLight(
+		// ColourValue( 0.63f, 0.61f, 0.28f ) * 0.04f,
+		// ColourValue( 0.52f, 0.63f, 0.76f ) * 0.04f,
+		// ColourValue( 0.33f, 0.61f, 0.98f ) * 0.01f,
+		// ColourValue( 0.02f, 0.53f, 0.96f ) * 0.01f,
+
+		// ColourValue( 0.93f, 0.91f, 0.38f ) * 0.04f,
+		// ColourValue( 0.22f, 0.53f, 0.96f ) * 0.04f,
+		// ColourValue( 0.33f, 0.61f, 0.98f ) * 0.01f,
+		// ColourValue( 0.02f, 0.53f, 0.96f ) * 0.01f,
+		ColourValue( 0.99f, 0.94f, 0.90f ) * 0.04f,  //** par
+		ColourValue( 0.90f, 0.93f, 0.96f ) * 0.04f,
+		// ColourValue( 0.3f, 0.5f, 0.7f ) * 0.1f * 0.75f,
+		// ColourValue( 0.6f, 0.45f, 0.3f ) * 0.065f * 0.75f,
+		-dir );
+		// -dir + Ogre::Vector3::UNIT_Y * 0.2f );
+
+	if (atmo)
+		atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
 }
 
 //  Fog

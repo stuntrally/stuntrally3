@@ -180,43 +180,24 @@ namespace Demo
 		}
 
 		//  Light  sun dir  ----
+		bool any = false;
 		d = mKeys[0] - mKeys[1];
 		if (d)
-		{
-			mPitch += d * mul * 0.6f * dt;
-			mPitch = std::max( 0.f, std::min( mPitch, (float)Math::PI ) );
+		{	any = true;
+			sc->ldPitch += d * mul * 20.f * dt;
+			sc->ldPitch = std::max( 0.f, std::min( sc->ldPitch, 180.f ) );
 		}
 		d = mKeys[2] - mKeys[3];
 		if (d)
-		{
-			mYaw += d * mul * 1.5f * dt;
-			mYaw = fmodf( mYaw, Math::TWO_PI );
-			if( mYaw < 0.f )
-				mYaw = Math::TWO_PI + mYaw;
+		{	any = true;
+			sc->ldYaw += d * mul * 30.f * dt;
+			sc->ldYaw = fmodf( sc->ldYaw, 360.f );
+			if( sc->ldYaw < 0.f )
+				sc->ldYaw = 360.f + sc->ldYaw;
 		}
-		Vector3 dir = Quaternion( Radian(mYaw), Vector3::UNIT_Y ) *
-			Vector3( cosf( mPitch ), -sinf( mPitch ), 0.0 ).normalisedCopy();
-		mSunLight->setDirection( dir );
-
-
-		SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
-		// sceneManager->setAmbientLight( Ogre::ColourValue( 0.3f, 0.5f, 0.7f ) * 0.1f * 0.75f,
-		//                                Ogre::ColourValue( 0.6f, 0.45f, 0.3f ) * 0.065f * 0.75f,
-		//                                -light->getDirection() + Ogre::Vector3::UNIT_Y * 0.2f );
-		sceneManager->setAmbientLight(
-			ColourValue( 0.99f, 0.94f, 0.90f ) * 0.04f,  //** par
-			ColourValue( 0.90f, 0.93f, 0.96f ) * 0.04f,
-			// ColourValue( 0.93f, 0.91f, 0.38f ) * 0.04f,
-			// ColourValue( 0.22f, 0.53f, 0.96f ) * 0.04f,
-			// ColourValue( 0.33f, 0.61f, 0.98f ) * 0.01f,
-			// ColourValue( 0.02f, 0.53f, 0.96f ) * 0.01f,
-			-dir );
-
-	#ifdef OGRE_BUILD_COMPONENT_ATMOSPHERE
-		OGRE_ASSERT_HIGH( dynamic_cast<AtmosphereNpr *>( sceneManager->getAtmosphere() ) );
-		AtmosphereNpr *atmosphere = static_cast<AtmosphereNpr *>( sceneManager->getAtmosphere() );
-		atmosphere->setSunDir( mSunLight->getDirection(), mPitch / Math::PI );
-	#endif
+		auto sun = pApp->scn->sun;
+		if (any)
+			pApp->scn->UpdSun();
 
 		///  Terrain  ----
 		if (mTerra && mGraphicsSystem->getRenderWindow()->isVisible() )
@@ -225,7 +206,7 @@ namespace Demo
 			// user in this sample with higher framerates than what he may encounter in many of
 			// his possible uses.
 			const float lightEpsilon = 0.0001f;  //** 0.0f slow
-			mTerra->update( mSunLight->getDerivedDirectionUpdated(), lightEpsilon );
+			mTerra->update( sun->getDerivedDirectionUpdated(), lightEpsilon );
 		}
 
 		generateDebugText();

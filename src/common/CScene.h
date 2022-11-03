@@ -6,9 +6,9 @@
 #include <OgreString.h>
 // #include <OgreTexture.h>
 
-namespace Ogre  {  class Terra;  class StaticGeometry;
-	class Light;  class SceneNode;  class Camera;  class Texture;  class SceneManager;  class Entity;
-	class Rectangle2D;  class RenderTexture;  class Viewport;  class Root;  class ParticleSystem;  }
+namespace Ogre  {  class Terra;  class AtmosphereNpr;
+	class Light;  class SceneNode;  class Camera;  class SceneManager;
+	class Viewport;  class Root;  class ParticleSystem;  }
 class App;  class Scene;  class WaterRTT;  class CData;  class SplineRoad;  class PaceNotes;
 
 
@@ -39,10 +39,11 @@ public:
 	void CreateSkyDome(Ogre::String sMater, float yaw);
 	void DestroySkyDome();
 
-
-	//  Sun
+	//  Sun and Fog  *
 	Ogre::Light* sun = 0;
-	void UpdFog(bool bForce=false), UpdSun(), UpdSky();
+	Ogre::AtmosphereNpr* atmo = 0;
+	void CreateSun(), UpdSun(), UpdSky();
+	void UpdFog(bool bForce=false);
 
 	//;  Weather  rain, snow
 	Ogre::ParticleSystem *pr =0, *pr2 =0;

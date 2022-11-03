@@ -533,13 +533,12 @@ void CarModel::Create()
 	
 #if 0  //  lights test ** ?
 	Light* light = mSceneMgr->createLight();
-	SceneNode* lightNode = ndCar->createChildSceneNode();
+	SceneNode* lightNode = ndCar->createChildSceneNode(SCENE_DYNAMIC, Vector3(0.0f, 2.0f, 2.0f) );
 	lightNode->attachObject( light );
 	light->setDiffuseColour( 1.f, 1.f, 1.f );  // Warm
 	light->setSpecularColour( 1.f, 1.f, 1.f );
 	light->setPowerScale( Ogre::Math::PI );
 	light->setType( Ogre::Light::LT_POINT); // SPOTLIGHT );
-	lightNode->setPosition( 0.0f, 1.0f, 0.0f );  // ofs?
 	light->setDirection( Ogre::Vector3( 1, 0, 0 ).normalisedCopy() );
 	light->setAttenuationBasedOnRadius( 10.0f, 0.01f );
 #endif

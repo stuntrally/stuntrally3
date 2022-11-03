@@ -47,8 +47,6 @@ namespace Demo
 	class TerrainGame : public TutorialGameState
 	{
 		//  vars
-		float mPitch;  // sun dir
-		float mYaw;
 		Ogre::Vector3 camPos;
 
 		//  input
@@ -60,7 +58,6 @@ namespace Demo
 
 		//  terrain
 		Ogre::Terra *mTerra = 0;
-		Ogre::Light *mSunLight = 0;
 
 		// Listener to make PBS objects also be affected by terrain's shadows
 		Ogre::HlmsPbsTerraShadows *mHlmsPbsTerraShadows = 0;

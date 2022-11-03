@@ -149,7 +149,15 @@ void App::CreateObjects()
 
 		//  add to ogre
 		bool no = !objExists[o.name];
-		o.it = mSceneMgr->createItem(/*"oE"+s,*/ (no ? "sphere" : o.name) + ".mesh");
+		if (no)  continue;  //- no spheres
+		try 
+		{	o.it = mSceneMgr->createItem(/*"oE"+s,*/ (no ? "sphere" : o.name) + ".mesh");
+		}
+		catch( Ogre::Exception& e )
+		{
+			LogO(String("Create obj fail: ") + e.what());
+			continue;
+		}
 		o.nd = mSceneMgr->getRootSceneNode(Ogre::SCENE_DYNAMIC)->createChildSceneNode();
 		o.SetFromBlt();
 		o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Objects);

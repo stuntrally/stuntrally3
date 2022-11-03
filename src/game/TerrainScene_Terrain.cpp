@@ -157,7 +157,7 @@ namespace Demo
 
 		mTerra = new Terra( Id::generateNewId<MovableObject>(),
 							&mgr->_getEntityMemoryManager( SCENE_STATIC ),
-							mgr, 11u, root->getCompositorManager2(),
+							mgr, 11u/*RQG_..*/, root->getCompositorManager2(),
 							mGraphicsSystem->getCamera(), false );
 		mTerra->setCastShadows( false );
 		pApp->scn->terrain = mTerra;

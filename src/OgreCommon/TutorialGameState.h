@@ -21,8 +21,9 @@ namespace Demo
 	/// Base game state for the tutorials. All it does is show a little text on screen :)
 	class TutorialGameState : public GameState
 	{
-	protected:
+	public:
 		GraphicsSystem      *mGraphicsSystem;
+	protected:
 
 		/// Optional, for controlling the camera with WASD and the mouse
 		CameraController    *mCameraController;

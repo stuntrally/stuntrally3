@@ -86,15 +86,10 @@ void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
 
 	
 	///  sky
-	// Vector3 scl = app->pSet->view_distance * Vector3::UNIT_SCALE;
-	CreateSkyDome(sc->skyMtr, /*scl,*/ sc->skyYaw);
+	CreateSkyDome(sc->skyMtr, /*app->pSet->view_distance,*/ sc->skyYaw);
 	// UpdFog();
 
-	//  light
-	// app->mSceneMgr->destroyAllLights();
-	// sun = app->mSceneMgr->createLight("Sun");
-	// sun->setType(Light::LT_DIRECTIONAL);  UpdSun();
-
+	CreateSun();
 
 	// UpdShaderParams();
 	// UpdLayerPars();
