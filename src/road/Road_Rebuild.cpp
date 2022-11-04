@@ -17,7 +17,8 @@
 	#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
 #endif
 #include "Terra.h"
-#include <OgreMeshManager.h>
+#include <OgreMeshManager2.h>
+#include <OgreMesh2.h>
 #include <OgreItem.h>
 using namespace Ogre;
 using std::vector;  using std::min;  using std::max;
@@ -572,18 +573,18 @@ void SplineRoad::createSeg_Meshes(
 	//;  create Ogre Mesh
 	//-----------------------------------------
 	// fixme
-	/*MeshPtr meshOld = MeshManager::getSingleton().getByName(sMesh);
+	MeshPtr meshOld = MeshManager::getSingleton().getByName(sMesh);
 	if (meshOld)  LogR("Mesh exists !!!" + sMesh);
 
-	AxisAlignedBox aabox;
+	Aabb aabox;
 	SubMesh* sm;
 	MeshPtr mesh, meshW, meshC, meshB;  // ] | >
 	if (HasRoad())
 	{
-		mesh = MeshManager::getSingleton().createManual(sMesh,"General");
+		mesh = MeshManager::getSingleton().createManual(sMesh, "General");
 		sm = mesh->createSubMesh();
 		CreateMesh(sm, aabox, DLM.pos,DLM.norm,DLM.clr,DLM.tcs, idx, rs.sMtrRd);
-	}*/
+	}
 
 	bool wall = !DLM.posW.empty();
 	/*if (wall)
@@ -671,54 +672,54 @@ void SplineRoad::createSeg_Meshes(
 	
 					
 	//  add Mesh to Scene  -----------------------------------------
-	Item* ent = 0, *entW = 0, *entC = 0, *entB = 0;
+	Item* it = 0, *itW = 0, *itC = 0, *itB = 0;
 	SceneNode* node = 0, *nodeW = 0, *nodeC = 0, *nodeB = 0;
 
 	//  road
-#if 0  // fixme
 	if (HasRoad())
 	{
-		AddMesh(mesh, sMesh, aabox, &ent, &node, "."+sEnd);
-		ent->setRenderQueueGroup(
+		AddMesh(mesh, sMesh, aabox, &it, &node, "."+sEnd);
+		it->setRenderQueueGroup(
 			IsTrail() ? /*RQG_RoadBlend :*/ RQG_Hud1 :
 			pipeGlass || IsRiver() ? RQG_PipeGlass : RQG_Road);
 		if (IsTrail())
-			ent->setVisibilityFlags(RV_Hud);
+			it->setVisibilityFlags(RV_Hud);
 
 		if (bCastShadow && !DS.onTer && !IsRiver())
-			ent->setCastShadows(true);
+			it->setCastShadows(true);
 	}
+#if 0  // fixme
 	if (wall)
 	{
-		AddMesh(meshW, sMeshW, aabox, &entW, &nodeW, "W."+sEnd);
-		entW->setCastShadows(true);
+		AddMesh(meshW, sMeshW, aabox, &itW, &nodeW, "W."+sEnd);
+		itW->setCastShadows(true);
 	}
 	if (cols)
 	{
-		AddMesh(meshC, sMeshC, aabox, &entC, &nodeC, "C."+sEnd);
-		entC->setVisible(true);
+		AddMesh(meshC, sMeshC, aabox, &itC, &nodeC, "C."+sEnd);
+		itC->setVisible(true);
 		if (bCastShadow)
-			entC->setCastShadows(true);
+			itC->setCastShadows(true);
 	}
 	if (DS.hasBlend)
 	{
-		AddMesh(meshB, sMeshB, aabox, &entB, &nodeB, "B."+sEnd);
-		entB->setRenderQueueGroup(RQG_RoadBlend);
+		AddMesh(meshB, sMeshB, aabox, &itB, &nodeB, "B."+sEnd);
+		itB->setRenderQueueGroup(RQG_RoadBlend);
 	}
+#endif
 	
 	//>>  store ogre data  ------------
 	int lod = DL.lod;
 	rs.road[lod].node = node;	rs.wall[lod].node = nodeW;	 rs.blend[lod].node = nodeB;
-	rs.road[lod].ent = ent;		rs.wall[lod].ent = entW;	 rs.blend[lod].ent = entB;
+	rs.road[lod].it = it;		rs.wall[lod].it = itW;		 rs.blend[lod].it = itB;
 	rs.road[lod].mesh = mesh;	rs.wall[lod].mesh = meshW;	 rs.blend[lod].mesh = meshB;
 	rs.road[lod].smesh = sMesh; rs.wall[lod].smesh = sMeshW; rs.blend[lod].smesh = sMeshB;
 	if (DL.isLod0)  {
 		rs.col.node = nodeC;
-		rs.col.ent = entC;
+		rs.col.it = itC;
 		rs.col.mesh = meshC;
 		rs.col.smesh = sMeshC;  }
 	rs.empty = false;  // new
-#endif
 }
 
 

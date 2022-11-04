@@ -7,7 +7,7 @@
 
 #include <Ogre.h>
 #include <OgreMesh.h>
-#include <OgreAxisAlignedBox.h>
+#include <Math/Simple/OgreAabb.h>
 
 namespace Ogre {  class SceneManager;  class SceneNode;  class Item;  class Terrain;  class Camera;  }
 class btTriangleMesh;
@@ -128,12 +128,12 @@ private:
 ///  ***  MESH  ****
 //---------------------------------------------------------------------------------------
 
-	void CreateMesh( Ogre::SubMesh* submesh, Ogre::AxisAlignedBox& aabox,
+	void CreateMesh( Ogre::SubMesh* submesh, Ogre::Aabb& aabox,
 		const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm, const std::vector<Ogre::Vector4>& clr,
 		const std::vector<Ogre::Vector2>& tcs, const std::vector<Ogre::uint16>& idx, Ogre::String sMtrName);
 
-	void AddMesh( Ogre::MeshPtr mesh, Ogre::String sMesh, const Ogre::AxisAlignedBox& aabox,
-		Ogre::Item** pEnt, Ogre::SceneNode** pNode, Ogre::String sEnd);
+	void AddMesh( Ogre::MeshPtr mesh, Ogre::String sMesh, const Ogre::Aabb& aabox,
+		Ogre::Item** pIt, Ogre::SceneNode** pNode, Ogre::String sEnd);
 
 	std::vector<Ogre::uint16>    idx, idxB;	  // mesh indices
 

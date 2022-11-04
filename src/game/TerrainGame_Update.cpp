@@ -158,6 +158,30 @@ namespace Demo
 			pApp->dbgdraw->step();
 		}
 
+		//  road upd lods
+		static float roadUpdTm = 0.f;
+		if (pApp->scn->road)
+		{
+			//PROFILER.beginBlock("g.road");  // below 0.0 ms
+
+			//  more than 1: in pre viewport, each frame
+			// if (mSplitMgr->mNumViewports == 1)
+			{
+				roadUpdTm += dt;
+				if (roadUpdTm > 0.1f)  // interval [sec]
+				{
+					roadUpdTm = 0.f;
+					for (auto r : pApp->scn->roads)
+						r->UpdLodVis(pSet->road_dist);
+					
+					//  trail upd lods
+					// if (scn->trail && pSet->trail_show && !bHideHudTrail)
+						// scn->trail->UpdLodVis();
+				}
+			}
+			//PROFILER.endBlock("g.road");
+		}
+		
 
 		//  Keys  params  ----
 		float mul = shift ? 0.2f : ctrl ? 3.f : 1.f;
