@@ -23,6 +23,8 @@
 #include "CarModel.h"
 #include "CScene.h"
 #include "SceneXml.h"
+#include "TracksXml.h"
+#include "CData.h"
 
 #include "Def_Str.h"
 using namespace Demo;
@@ -153,6 +155,10 @@ namespace Demo
 		}
 		txt += "\n\n";
 
+		const auto* data = pApp->scn->data;
+		txt += "Track:  " + data->tracks->trks[idTrack].name +"\n";
+		txt += "Car:  "   + data->cars->cars[idCar].id + " " + data->cars->cars[idCar].name +"\n\n";
+
 		if (pApp->bLoading)
 		{
 			txt += "Loading... "+toStr(pApp->curLoadState)+" / "+toStr(App::LS_ALL);
@@ -161,12 +167,13 @@ namespace Demo
 		if (pGame)  // CAR text
 		{
 			int num = pGame->cars.size();
-			txt += "cars " + toStr(num) + "\n";
+			if (num != 1)
+				txt += "cars " + toStr(num) + "\n";
 			
 			for (const CAR* car : pGame->cars)
 			{
 				auto pos = car->dynamics.GetPosition();
-				txt += "pos  " + fToStr(pos[0],2) + "  " + fToStr(pos[1],2) + "  " + fToStr(pos[2],2) +"\n";
+				// txt += "pos  " + fToStr(pos[0],2) + "  " + fToStr(pos[1],2) + "  " + fToStr(pos[2],2) +"\n";
 				txt += "gear  " + iToStr(car->GetGear()) + "  rpm  " + iToStr(car->GetEngineRPM(),4)
 					+ "  km/h " + fToStr(car->GetSpeedometer()*3.6f, 0) +"\n";
 			}

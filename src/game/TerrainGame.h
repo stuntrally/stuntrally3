@@ -55,6 +55,8 @@ namespace Demo
 		int param = 0;  // to adjust
 		bool left = false, right = false;  // arrows
 		bool shift = false, ctrl = false;
+		
+		int idTrack = 0, idCar = 0;
 
 		//  terrain
 		// Listener to make PBS objects also be affected by terrain's shadows

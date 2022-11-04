@@ -25,10 +25,13 @@
 #include "CarModel.h"
 #include "FollowCamera.h"
 #include "carcontrolmap_local.h"
+#include "Road.h"
 
 #include "Def_Str.h"
 #include "CScene.h"
 #include "SceneXml.h"
+#include "TracksXml.h"
+#include "CData.h"
 #include "SceneClasses.h"
 #include "settings.h"
 using namespace Demo;
@@ -155,6 +158,7 @@ namespace Demo
 			pApp->dbgdraw->step();
 		}
 
+
 		//  Keys  params  ----
 		float mul = shift ? 0.2f : ctrl ? 3.f : 1.f;
 		int d = right ? 1 : left ? -1 : 0;
@@ -163,6 +167,7 @@ namespace Demo
 			SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
 			AtmosphereNpr *atmosphere = static_cast<AtmosphereNpr*>( sceneManager->getAtmosphere() );
 			AtmosphereNpr::Preset p = atmosphere->getPreset();
+
 			float mul1 = 1.f + 0.003f * mul * d;
 			switch (param)
 			{
@@ -227,6 +232,7 @@ namespace Demo
 	//-----------------------------------------------------------------------------------------------------------------------------
 	void TerrainGame::keyPressed( const SDL_KeyboardEvent &arg )
 	{
+		int itrk = 0, icar = 0;
 		switch (arg.keysym.scancode)
 		{
 		case SDL_SCANCODE_RSHIFT:  shift = true;  break;  // mod
@@ -246,6 +252,12 @@ namespace Demo
 		case SDL_SCANCODE_C:      mArrows[8] = 1;  break;
 		case SDL_SCANCODE_X:      mArrows[9] = 1;  break;
 		case SDL_SCANCODE_INSERT: mArrows[10] = 1;  break;
+
+
+		case SDL_SCANCODE_1:  itrk = -1;  break;
+		case SDL_SCANCODE_2:  itrk =  1;  break;
+		case SDL_SCANCODE_3:  icar = -1;  break;
+		case SDL_SCANCODE_4:  icar =  1;  break;
 
 
 		case SDL_SCANCODE_HOME:  left  = true;  break;  // params
@@ -316,7 +328,23 @@ namespace Demo
 			CreateManualObj(camPos);
 		}   break;
 		}
-		
+
+
+		//***  pick track, car  ***
+		int mul4 = shift ? 10 : ctrl ? 4 : 1;
+		const auto* data = pApp->scn->data;
+		int tracks = data->tracks->trks.size();
+		int cars = data->cars->cars.size();
+
+		if (itrk)
+		{	idTrack = (idTrack + mul4 * itrk + tracks) % tracks;
+			pSet->gui.track = data->tracks->trks[idTrack].name;
+		}
+		if (icar)
+		{	idCar = (idCar + mul4 * icar + cars) % cars;
+			pSet->gui.car[0] = data->cars->cars[idCar].id;
+		}
+
 		TutorialGameState::keyPressed( arg );
 	}
 	
