@@ -167,7 +167,7 @@ void App::CreateObjects()
 		//  add to bullet world (in game)
 		if (!o.dyn)
 		{
-		#if 1
+		#if 0  // fixme BtOgre bad for scale != 1
 			///  static  . . . . . . . . . . . . 
 			Vector3 posO = Axes::toOgre(o.pos);
 			Quaternion rotO = Axes::toOgreW(o.rot);

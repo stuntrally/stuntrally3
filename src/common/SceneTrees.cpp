@@ -345,7 +345,7 @@ void CScene::CreateTrees()
 				}
 				else  // use trimesh  . . . . . . . . . . . . 
 				{
-				#if 1
+				#if 0
 					const BltShape* shp = !col ? &data->objs->defPars : &col->shapes[0];
 					Vector3 pc(pos0.x, pos.y, pos0.z);
 					Quaternion q;  q.FromAngleAxis(yaw, Vector3::UNIT_Y);
