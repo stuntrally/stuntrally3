@@ -1,0 +1,961 @@
+hlms column pbs
+{
+    ambient  1.0 1.0 1.0
+    diffuse  1.0 1.0 1.0 //1.0
+    specular 1 1 1 //24
+    // depth_bias 3
+
+	fresnel_coeff 0.01
+	roughness 0.6
+	metalness 0.1
+}
+
+hlms pipe_base pbs  // not glass
+{
+    ambient  1.0 1.0 1.0
+    diffuse  1.0 1.0 1.0 //1.0
+    specular 1 1 1 //24
+    depth_bias 3
+	cull_mode none
+	twoside true
+
+	fresnel_coeff 0.01
+	roughness 0.4
+	metalness 0.1
+}
+
+hlms pipe_glass pbs
+{
+    ambient  1.0 1.0 1.0
+    diffuse  1.0 1.0 1.0 //1.0
+    specular 1 1 1 //24
+    emissive 0 0 0
+    //if env_map true, spec power gets mul by x4
+
+    scene_blend alpha_blend
+    depth_write off
+    depth_bias 3
+
+	fresnel_coeff 0.01
+	roughness 0.15
+	metalness 0.9
+
+	// receives_shadows true
+    // refl_amount 0.1  // only used when fresnel off
+
+    // transparent false  // for shadowcaster
+    // diffuse_address_mode wrap
+
+    twoside true
+    // specular_alpha true
+    // env_alpha 0 0 0 0
+
+    // pass  // todo: glass mat
+	// {
+	// 	cull_mode clockwise
+	// 	scene_blend $scene_blend
+	// 	transparent_sorting force
+	// }
+	// pass
+	// {
+	// 	cull_mode anticlockwise
+	// 	scene_blend $scene_blend
+	// 	alpha_rejection $alpha_rejection
+	// 	transparent_sorting force
+	// }
+}
+
+
+//--------------------------------------------------------------------------------------
+
+hlms pipeGlass pbs : pipe_glass
+{
+	ambient  0.35 0.48 0.55
+	diffuse  0.76 0.82 0.90
+	diffuse_map  roadGlassC_dirt.png
+	specular_map roadGlass_spec1l.png
+	//normal_map   roadGlassD_norm.png
+	// bump_scale 0.1
+}
+
+hlms pipeGlassCyan pbs : pipe_glass
+{
+	ambient  0.34 0.71 0.71
+	diffuse  0.5 0.67 0.73
+	diffuse_map  roadGlassC_dirt2.png
+	specular_map roadGlass_spec2h.png
+}
+
+hlms pipeGlassBlue pbs : pipe_glass
+{
+	ambient  0.30 0.47 0.57
+	diffuse  0.46 0.61 0.72
+	diffuse_map  roadGlassD.png
+	specular_map roadGlass_spec0.png
+}
+
+hlms pipeGlassGreen	pbs : pipe_glass
+{
+	ambient  0.45 0.46 0.2
+	diffuse  0.35 0.6 0.1
+	diffuse_map  roadGlassC_dirt2.png
+	specular_map roadGlass_spec2h.png
+}
+
+hlms pipeGlassRed pbs : pipe_glass
+{
+	ambient  0.8 0.4 0.3
+	diffuse  0.6 0.3 0.2
+	diffuse_map  roadGlassD.png
+	specular_map roadGlass_spec0.png
+}
+
+hlms pipeGlassOrange pbs : pipe_glass
+{
+	ambient  0.6 0.35 0.1
+	diffuse  0.8 0.35 0.1
+	diffuse_map  roadGlassD.png
+	specular_map roadGlass_spec0.png
+}
+
+
+hlms pipeGlassBlueD pbs : pipe_glass
+{
+	ambient  0.0 0.0 0.47
+	diffuse  0.5 1.0 1.0
+	diffuse_map  roadGlassC_dirt2.png
+	specular_map roadGlass_spec2h.png
+	normal_map   normal_1.png
+	// bump_scale 1
+}
+
+hlms pipeGlassWhiteB pbs : pipe_glass
+{
+	ambient  0.0 0.0 0.47
+	diffuse  1.5 2.0 3.0
+	diffuse_map  roadGlassC_dirt2.png
+	specular_map roadGlass_spec2h.png
+	normal_map   normal_1.png
+	// bump_scale 2
+}
+
+hlms pipeGlassWhiteV pbs : pipe_glass
+{
+	ambient  0.35 0.0 0.33
+	diffuse  1.5 2.0 3.0
+	diffuse_map  roadGlassC_dirt2.png
+	specular_map roadGlass_spec2h.png
+	normal_map   normal_2.png
+	// bump_scale 0.5
+}
+
+
+hlms pipeGlassViolet pbs : pipe_glass
+{
+	ambient  0.4 0.4 0.6
+	diffuse  0.6 0.5 0.9
+	diffuse_map  roadGlassD.png
+	specular_map roadGlass_spec2h.png
+	normal_map   normal_2.png
+}
+
+hlms pipeGlassYellow pbs : pipe_glass
+{
+	ambient  0.9 0.75 0.1
+	diffuse  1.0 1.0 0.6
+	diffuse_map  roadGlassC_dirt2.png
+	specular_map roadGlass_spec2h.png
+	normal_map   normal_1.png
+}
+
+hlms pipeGlassCrystal pbs : pipe_glass
+{
+	ambient  0.0 0.1 0.2
+	diffuse  0.2 0.5 0.7
+	diffuse_map  roadGlassD.png
+	specular 0.1 0.3 0.5 //128
+	specular_map roadGlass_spec0.png
+	normal_map   normal_1.png
+	// bump_scale 0.1
+}
+
+
+//  crystal
+hlms road_wall_crystal pbs : road_wall
+{
+	ambient  0.9 0.9 0.9
+	diffuse  0.95 0.95 0.95
+	specular 0.21 0.21 0.61 //4
+	diffuse_map  crystal_wall.jpg
+	normal_map   normal_1.png
+	// bump_scale 1.5
+}
+
+hlms pipe_wall_crystal pbs : pipe_wall
+{
+	ambient  0.9 0.9 0.9
+	diffuse  0.95 0.95 0.95
+	specular 0.21 0.21 0.61 //4
+	diffuse_map  crystal_wall.jpg
+	normal_map   normal_1.png
+	// bump_scale 1.5
+}
+
+hlms road_col_crystal pbs
+{
+	ambient  0.9 0.9 0.9
+	diffuse  0.95 0.95 0.95
+	specular 0.21 0.21 0.61 //4
+	diffuse_map  crystal_wall.jpg
+	normal_map   normal_1.png
+	// bump_scale 1.2
+}
+
+
+//  asphalt pipes
+//----------------------------------------------------
+
+hlms pipeAsphalt pbs : pipe_base
+{
+	diffuse_map  roadAsphalt.jpg
+	ambient  1.0 1.0 1.0
+	diffuse  0.6 0.6 0.6
+	specular 0.3 0.3 0.25 //24
+	depth_bias 3
+	cull_mode none
+	// receives_shadows false
+}
+
+hlms pipeAsphaltRed pbs : pipe_base
+{
+	diffuse_map  roadAsphalt.jpg
+	ambient  1.0 0.8 0.7
+	diffuse  1.0 0.6 0.5
+	specular 0.4 0.35 0.3 //24
+	depth_bias 3
+	cull_mode none
+	// receives_shadows false
+}
+
+//  pipe metal
+hlms pipeMetal pbs : pipe_base
+{
+	diffuse_map  metal_pipe.png
+	ambient  1.0 1.0 1.0
+	diffuse  1.0 1.0 1.0
+	specular 0.3 0.3 0.3 //16
+	//specular_map metal_pipe_spec.png
+	normal_map   metal_pipe_norm.png
+	// bump_scale 0.12
+	depth_bias 3
+	cull_mode none
+	// receives_shadows false
+}
+
+hlms pipeMetalOrn pbs : pipeMetal
+{
+	diffuse_map  metal_pipe.png
+	ambient  1.2 1.0 0.8
+	diffuse  1.2 1.0 0.8
+	specular 0.5 0.3 0.4 //16
+	// bump_scale 0.2
+}
+
+hlms pipeMetalBlue pbs : pipeMetal
+{
+	ambient  0.8 0.9 1.0
+	diffuse  0.8 0.9 1.0
+	specular 0.2 0.3 0.4 //24
+	// bump_scale 0.05
+}
+
+
+//  road  Wall
+//--------------------------------------------------------------------------------------
+
+hlms pipe_wall pbs : pipe_base
+{
+	depth_bias 3
+	diffuse_map  brass_patina.jpg
+	normal_map   brass_patina_n.png
+
+	// envMap ReflectionCube
+	// env_map true
+	// refl_amount 0.1
+
+	ambient  0.94 0.96 0.98
+	diffuse  0.4 0.46 0.5
+	specular 0.25 0.267 0.28 //1 //x4
+	cull_mode none
+
+	fresnel_coeff 0.01
+	roughness 0.15
+	metalness 0.9
+}
+
+hlms road_wall pbs : pipe_wall
+{
+	ambient  0.9 0.96 0.98
+	diffuse  0.6 0.66 0.7
+	specular 0.24 0.267 0.28 //4
+	cull_mode clockwise
+
+	fresnel_coeff 0.01
+	roughness 0.5
+	metalness 0.1
+}
+
+//  Jungle
+hlms road_wall_JDark pbs : road_wall
+{
+	ambient  0.4 0.47 0.38
+	diffuse  0.31 0.35 0.25
+	specular 0.25 0.26 0.24 //16
+	diffuse_map  brass_patina.jpg
+	normal_map   normal_1.png
+	// bump_scale 4.0
+}
+
+hlms road_wall_Jungle pbs : road_wall
+{
+	ambient  0.69 0.77 0.65
+	diffuse  0.54 0.61 0.48
+	specular 0.18 0.21 0.14 //8
+	diffuse_map  brass_patina.jpg
+	normal_map   normal_1.png
+	// bump_scale 2.0
+}
+
+//  winter
+hlms road_wall_Winter pbs : road_wall
+{
+	ambient  0.97 0.99 1.0
+	diffuse  0.9 0.93 0.93
+	specular 0.6 0.6 0.6 //8
+	diffuse_map  concrete1w.jpg
+	normal_map   concrete_norm.jpg
+	// bump_scale 2.0
+}
+
+//  australia
+hlms road_wall_Red pbs : road_wall
+{
+	ambient  0.93 0.87 0.81
+	diffuse  0.678 0.61 0.59
+	specular 0.33 0.31 0.27 //16
+	//diffuse_map  concrete1w.jpg
+	//normal_map   concrete_norm.jpg
+	diffuse_map  brass_patina.jpg
+	normal_map   normal_1.png
+	// bump_scale 3.0
+}
+
+//  desert
+hlms road_wall_Desert pbs : road_wall
+{
+	ambient  0.8 0.8 0.6
+	diffuse  0.6 0.6 0.4
+	specular 0.3 0.3 0.2 //16
+	diffuse_map  concrete1w.jpg
+	normal_map   concrete_norm.jpg
+}
+
+
+//  pipe Wall
+//----------------------------------------------------
+
+hlms pipe_wall_JDark pbs : pipe_wall
+{
+	ambient  0.4 0.47 0.38
+	diffuse  0.31 0.35 0.25
+	specular 0.25 0.26 0.24 //16
+	diffuse_map  brass_patina.jpg
+	normal_map   normal_1.png
+	// bump_scale 4.0
+}
+
+hlms pipe_wall_Jungle pbs : pipe_wall
+{
+	ambient  0.69 0.77 0.65
+	diffuse  0.54 0.61 0.48
+	specular 0.18 0.21 0.14 //8
+	diffuse_map  brass_patina.jpg
+	normal_map   normal_1.png
+	// bump_scale 2.0
+}
+
+//  australia
+hlms pipe_wall_Red pbs : pipe_wall
+{
+	ambient  1.0 0.47 0.40
+	diffuse  1.0 0.61 0.48
+	specular 0.68 0.34 0.24 //16
+	diffuse_map  brass_patina.jpg
+	normal_map   normal_1.png
+	// bump_scale 2.0
+}
+
+hlms pipe_wall_Orange pbs : pipe_wall
+{
+	ambient  1.0 0.67 0.50
+	diffuse  1.0 0.81 0.68
+	specular 0.68 0.54 0.44 //16
+	diffuse_map  brass_patina.jpg
+	normal_map   normal_1.png
+	// bump_scale 2.0
+}
+
+hlms pipe_wall_Yellow pbs : pipe_wall
+{
+	ambient  0.9 0.9 0.3
+	diffuse  1.0 1.0 0.7
+	specular 0.8 0.8 0.7 //16
+	diffuse_map  brass_patina.jpg
+	normal_map   normal_2.png
+	// bump_scale 2.0
+}
+
+hlms pipe_wall_Winter pbs : pipe_wall
+{
+	ambient  0.97 0.99 1.0
+	diffuse  0.9 0.93 0.93
+	specular 0.6 0.6 0.6 //8
+	diffuse_map  concrete1w.jpg
+	normal_map   concrete_norm.jpg
+	// bump_scale 2.0
+}
+
+
+//  Column
+//--------------------------------------------------------------------------------------
+
+hlms road_col pbs : column
+{
+	ambient  0.78 0.80 0.80
+	diffuse  0.54 0.55 0.55
+	specular 0.25 0.25 0.25 //24
+	diffuse_map  concrete03.png
+	normal_map   brass_patina_n.png
+	// bump_scale 4
+}
+
+hlms road_col_Dark pbs : column
+{
+	ambient  0.44 0.44 0.40
+	diffuse  0.55 0.60 0.55
+	specular 0.35 0.36 0.35 //32
+	diffuse_map  brass_patina.jpg
+	normal_map   normal_1.png
+}
+
+hlms road_col_Blue pbs : column
+{
+	ambient  0.50 0.65 0.80
+	diffuse  0.45 0.60 0.75
+	specular 0.2 0.35 0.5 //40
+	diffuse_map  brass_patina.jpg
+	normal_map   normal_2.png
+	// bump_scale 2
+}
+
+hlms road_col_Winter pbs : road_wall
+{
+	ambient  1.2 1.24 1.34
+	diffuse  1.0 1.14 1.24
+	specular 0.43 0.42 0.41 //8
+	diffuse_map  concrete03.png
+	normal_map   concrete_norm.jpg
+	// bump_scale 2.0
+}
+
+hlms road_col_Red pbs : road_wall
+{
+	ambient  0.78 .70 0.68
+	diffuse  0.60 0.54 0.50
+	specular 0.30 0.30 0.29 //24
+	diffuse_map  concrete03.png
+	normal_map   concrete_norm.jpg
+	// bump_scale 2.0
+}
+
+hlms road_col_Desert pbs : road_wall
+{
+	ambient  0.59 0.59 0.35
+	diffuse  0.54 0.53 0.40
+	specular 0.30 0.30 0.29 //8
+	diffuse_map  concrete1w.jpg
+	normal_map   normal_1.png
+	// bump_scale 2.0
+}
+
+
+//  Alien
+hlms road_wall_Alien pbs : road_wall
+{
+	ambient  0.8 0.8 0.8
+	diffuse  0.7 0.7 0.7
+	specular 0.18 0.21 0.14 //8
+	diffuse_map  alien_wall.jpg
+	normal_map   normal_1.png
+	// bump_scale 2.0
+}
+
+hlms pipe_wall_Alien pbs : pipe_wall
+{
+	ambient  0.8 0.8 0.8
+	diffuse  0.7 0.7 0.7
+	specular 0.18 0.21 0.14 //8
+	diffuse_map  alien_wall.jpg
+	normal_map   normal_1.png
+	// bump_scale 2.0
+}
+
+hlms road_col_Alien pbs : column
+{
+	ambient  0.8 0.8 0.8
+	diffuse  0.7 0.7 0.7
+	specular 0.35 0.36 0.35 32
+	diffuse_map  alien_wall.jpg
+	normal_map   normal_1.png
+}
+
+hlms pipeGlassAlien pbs : pipe_glass
+{
+	ambient  0.35 0.48 0.55
+	diffuse  0.76 0.82 0.90
+	diffuse_map  roadGlass_alien.png
+	specular_map roadGlass_spec2h.png
+	normal_map   normal_3.jpg
+	// bump_scale 0.15
+}
+
+hlms pipeGlassAlienBlue pbs : pipe_glass
+{
+	ambient  0.0 0.34 0.87
+	diffuse  0.0 0.31 0.82
+	diffuse_map  roadGlass_alien.png
+	specular_map roadGlass_spec2h.png
+	normal_map   normal_3.jpg
+	// bump_scale 0.15
+}
+
+hlms pipeGlassAlienGreen pbs : pipe_glass
+{
+	ambient  0.25 0.96 0.3
+	diffuse  0.25 0.8 0.2
+	diffuse_map  roadGlass_alien.png
+	specular_map roadGlass_spec2h.png
+	normal_map   normal_3.jpg
+	// bump_scale 0.15
+}
+
+hlms pipeGlassAlienLime pbs : pipe_glass
+{
+	ambient  0.7 0.95 0.1
+	diffuse  0.5 1.0 0.0
+	diffuse_map  roadGlass_alien.png
+	specular_map roadGlass_spec2h.png
+	normal_map   normal_3.jpg
+	// bump_scale 0.15
+}
+
+
+//  universal  any road,pipe,wall,column  SR 2.7
+//--------------------------------------------------------------------------------------
+//  univ space
+hlms wall_space_diam pbs : road_wall
+{
+	ambient  1.1 1.1 1.1
+	diffuse  1.1 1.1 1.1
+	specular 1.1 1.1 1.1 //24
+	diffuse_map  space_diam_d.jpg
+	normal_map   space_diam_n.jpg
+	specular_map space_diam_s.jpg
+}
+hlms wallP_space_diam pbs : wall_space_diam
+{
+	cull_mode none
+}
+
+hlms wall_space_dots pbs : road_wall
+{
+	ambient  1.1 1.1 1.1
+	diffuse  1.1 1.1 1.1
+	specular 1.1 1.1 1.1 //24
+	diffuse_map  space_dots_d.jpg
+	normal_map   space_dots_n.jpg
+	specular_map space_dots_s.jpg
+}
+hlms wallP_space_dots pbs : wall_space_dots
+{
+	cull_mode none
+}
+hlms wall_space_dots_orn pbs : road_wall
+{
+	ambient  0.9 0.7 0.5
+	diffuse  0.9 0.7 0.5
+	specular 0.9 0.7 0.5 //24
+	diffuse_map  space_dots_d.jpg
+	normal_map   space_dots_n.jpg
+	specular_map space_dots_s.jpg
+}
+hlms wallP_space_dots_orn pbs : wall_space_dots_orn
+{
+	cull_mode none
+}
+
+hlms wall_space_gray pbs : road_wall
+{
+	ambient  1.1 1.1 1.1
+	diffuse  1.1 1.1 1.1
+	specular 1.1 1.1 1.1 //24
+	diffuse_map  space_gray_d.jpg
+	normal_map   space_gray_n.jpg
+	specular_map space_gray_s.jpg
+}
+hlms wallP_space_gray pbs : wall_space_gray
+{
+	cull_mode none
+}
+hlms wall_space_grayblue pbs : road_wall
+{
+	ambient  0.6 0.9 1.1
+	diffuse  0.6 0.9 1.1
+	specular 0.9 0.9 0.9 //24
+	diffuse_map  space_gray_d.jpg
+	normal_map   space_gray_n.jpg
+	specular_map space_gray_s.jpg
+}
+hlms wallP_space_grayblue pbs : wall_space_grayblue
+{
+	cull_mode none
+}
+
+hlms wall_space_metal pbs : road_wall
+{
+	ambient  1.1 1.1 1.1
+	diffuse  1.1 1.1 1.1
+	specular 1.1 1.1 1.1 //24
+	diffuse_map  space_metal_d.jpg
+	normal_map   space_metal_n.jpg
+	specular_map space_metal_s.jpg
+}
+hlms wallP_space_metal pbs : wall_space_metal
+{
+	cull_mode none
+}
+hlms wall_space_metaldark pbs : wall_space_metal
+{
+	ambient  0.8 0.8 0.8
+	diffuse  0.8 0.8 0.8
+	specular 0.8 0.8 0.8 //24
+}
+hlms wallP_space_metaldark pbs : wall_space_metaldark
+{
+	cull_mode none
+}
+hlms wall_space_x pbs : road_wall
+{
+	ambient  1.1 1.1 1.1
+	diffuse  1.1 1.1 1.1
+	specular 1.1 1.1 1.1 //24
+	diffuse_map  space_x_d.jpg
+	normal_map   space_x_n.jpg
+	specular_map space_x_s.jpg
+}
+hlms wallP_space_x pbs : wall_space_x
+{
+	cull_mode none
+}
+
+//  univ metal
+hlms wall_metal_01 pbs : road_wall
+{
+	ambient  0.9 0.9 0.9
+	diffuse  0.9 0.9 0.9
+	specular 0.7 0.7 0.7 128
+	diffuse_map  metal_01_spec.jpg
+	normal_map   metal_01_norm.jpg
+	specular_map metal_01_spec.jpg
+}
+hlms wallP_metal_01 pbs : wall_metal_01
+{
+	cull_mode none
+}
+hlms wall_metal_03_red pbs : road_wall
+{
+	ambient  1.1 1.1 1.1
+	diffuse  1.1 1.1 1.1
+	specular 1.1 1.1 1.1 //24
+	diffuse_map  metal_03_red.jpg
+	normal_map   metal_03_norm.jpg
+	specular_map metal_03_red_spec.jpg
+}
+hlms wallP_metal_03_red pbs : wall_metal_03_red
+{
+	cull_mode none
+}
+hlms wall_metal_03_gray pbs : wall_metal_03_red
+{
+	ambient  0.7 1.1 1.1
+	diffuse  0.7 1.1 1.1
+	specular 0.7 1 1 //24
+}
+hlms wallP_metal_03_gray pbs : wall_metal_03_gray
+{
+	cull_mode none
+}
+
+hlms wall_metal_03_green pbs : road_wall
+{
+	ambient  0.7 0.8 0.8
+	diffuse  0.7 0.8 0.8
+	specular 0.7 0.7 0.7 //24
+	diffuse_map  metal_03_green.jpg
+	normal_map   metal_03_norm.jpg
+	specular_map metal_03_green_spec.jpg
+}
+hlms wallP_metal_03_green pbs : wall_metal_03_green
+{
+	cull_mode none
+}
+hlms wall_metal_03_yellow pbs : wall_metal_03_green
+{
+	ambient  1.1 0.7 0.7
+	diffuse  1.1 0.7 0.7
+	specular 1 1 0.7 //24
+}
+hlms wallP_metal_03_yellow pbs : wall_metal_03_yellow
+{
+	cull_mode none
+}
+
+hlms wall_metal_04_x pbs : road_wall
+{
+	ambient  1.1 1.1 1.1
+	diffuse  1.1 1.1 1.1
+	specular 1.1 1.1 1.1 //24
+	diffuse_map  metal_04.jpg
+	normal_map   metal_04_norm.jpg
+	specular_map metal_04_spec.jpg
+}
+hlms wallP_metal_04_x pbs : wall_metal_04_x
+{
+	cull_mode none
+}
+hlms wall_metal_04_x_viol pbs : wall_metal_04_x
+{
+	ambient  0.9 0.8 1.1
+	diffuse  0.9 0.8 1.1
+	specular 0.9 0.9 0.9 //24
+}
+hlms wallP_metal_04_x_viol pbs : wall_metal_04_x_viol
+{
+	cull_mode none
+}
+
+hlms wall_metal_05_bars pbs : road_wall
+{
+	ambient  1.1 1.1 1.1
+	diffuse  1.1 1.1 1.1
+	specular 1.1 1.1 1.1 //24
+	diffuse_map  metal_05.jpg
+	normal_map   metal_05_norm.jpg
+	specular_map metal_05_spec.jpg
+}
+hlms wallP_metal_05_bars pbs : wall_metal_05_bars
+{
+	cull_mode none
+}
+
+hlms wall_metal_06_plates pbs : road_wall
+{
+	ambient  1.1 1.1 1.1
+	diffuse  1.1 1.1 1.1
+	specular 1.1 1.1 1.1 //24
+	diffuse_map  metal_06.jpg
+	normal_map   metal_06_norm.jpg
+	specular_map metal_06_spec.jpg
+}
+hlms wallP_metal_06_plates pbs : wall_metal_06_plates
+{
+	cull_mode none
+}
+hlms wall_metal_06_yellow pbs : wall_metal_06_plates
+{
+	ambient  0.9 0.9 0.5
+	diffuse  0.9 0.9 0.5
+	specular 0.9 0.9 0.5 //24
+}
+hlms wallP_metal_06_yellow pbs : wall_metal_06_yellow
+{
+	cull_mode none
+}
+
+hlms wall_metal_07_worn pbs : road_wall
+{
+	ambient  1.1 1.1 1.1
+	diffuse  1.1 1.1 1.1
+	specular 1.1 1.1 1.1 //24
+	diffuse_map  metal_07.jpg
+	normal_map   metal_07_norm.jpg
+	specular_map metal_07_spec.jpg
+}
+hlms wallP_metal_07_worn pbs : wall_metal_07_worn
+{
+	cull_mode none
+}
+hlms wall_metal_08_hex pbs : road_wall
+{
+	ambient  1.1 1.1 1.1
+	diffuse  1.1 1.1 1.1
+	specular 1.1 1.1 1.1 //24
+	diffuse_map  metal_08.jpg
+	normal_map   metal_08_norm.png
+	specular_map metal_08_spec.jpg
+}
+hlms wallP_metal_08_hex pbs : wall_metal_08_hex
+{
+	cull_mode none
+}
+
+hlms wall_metal_12_dots pbs : road_wall
+{
+	ambient  1.1 1.1 1.1
+	diffuse  1.1 1.1 1.1
+	specular 1.1 1.1 1.1 //24
+	diffuse_map  metal_12.jpg
+	normal_map   metal_12_norm.jpg
+	specular_map metal_12_spec.jpg
+	// bump_scale 1.0
+}
+hlms wallP_metal_12_dots pbs : wall_metal_12_dots
+{
+	cull_mode none
+}
+hlms wall_metal_12_blue pbs : wall_metal_12_dots
+{
+	ambient  0.4 0.7 1.1
+	diffuse  0.4 0.7 1.1
+	specular 0.7 0.8 1.0 //24
+}
+hlms wallP_metal_12_blue pbs : wall_metal_12_blue
+{
+	cull_mode none
+}
+hlms wall_metal_12_cyan pbs : wall_metal_12_dots
+{
+	ambient  0.4 1.1 1.1
+	diffuse  0.4 1.1 1.1
+	specular 0.7 0.8 1.0 //24
+}
+hlms wallP_metal_12_cyan pbs : wall_metal_12_cyan
+{
+	cull_mode none
+}
+
+//  new 7'22
+hlms wall_metal_241_diam pbs : road_wall
+{
+	ambient  1.1 1.1 1.1
+	diffuse  1.1 1.1 1.1
+	specular 1.1 1.1 1.1 //16
+	diffuse_map  metal_241.jpg
+	normal_map   metal_241_norm.jpg
+	specular_map metal_241_spec.jpg
+}
+hlms wallP_metal_241_diam pbs : wall_metal_241_diam
+{
+	cull_mode none
+}
+
+hlms wall_metal_212_scr pbs : road_wall
+{
+	ambient  1 1 1
+	diffuse  1 1 1
+	specular 1 1 1 //16
+	diffuse_map  metal_212.jpg
+	normal_map   metal_212_norm.jpg
+	specular_map metal_212_spec.jpg
+}
+hlms wallP_metal_212_scr pbs : wall_metal_212_scr
+{
+	cull_mode none
+}
+hlms wall_metal_212_white pbs : wall_metal_212_scr
+{
+	diffuse_map  metal_212_wh.jpg
+}
+hlms wallP_metal_212_white pbs : wall_metal_212_white
+{
+	cull_mode none
+}
+hlms wall_metal_212_paint pbs : wall_metal_212_scr
+{
+	diffuse_map  metal_212_spec.jpg
+	specular_map metal_212_wh.jpg
+	specular 0.7 0.7 0.7 //8
+}
+hlms wallP_metal_212_paint pbs : wall_metal_212_paint
+{
+	cull_mode none
+}
+
+hlms wall_metal_213_rust pbs : road_wall
+{
+	ambient  1 1 1
+	diffuse  1 1 1
+	specular 1 1 1 //16
+	diffuse_map  metal_213.jpg
+	normal_map   metal_213_norm.jpg
+	specular_map metal_213_spec.jpg
+}
+hlms wallP_metal_213_rust pbs : wall_metal_213_rust
+{
+	cull_mode none
+}
+
+hlms wall_metal_4a_box pbs : road_wall
+{
+	ambient  1 1 1
+	diffuse  1 1 1
+	specular 1 1 1 //16
+	diffuse_map  metal_4a.jpg
+	normal_map   metal_4norm.jpg
+	specular_map metal_4spec.jpg
+	scene_blend alpha_blend
+}
+hlms wallP_metal_4a_box pbs : wall_metal_4a_box
+{
+	cull_mode none
+}
+
+hlms wall_metal_29_inst pbs : road_wall
+{
+	ambient  1 1 1
+	diffuse  1 1 1
+	specular 1 1 1 //16
+	diffuse_map  metal_29.jpg
+	normal_map   metal_29norm.jpg
+	specular_map metal_29spec.jpg
+	scene_blend alpha_blend
+}
+hlms wallP_metal_29_inst pbs : wall_metal_29_inst
+{
+	cull_mode none
+}
+
+hlms wall_metal_40_grid pbs : road_wall
+{
+	ambient  1 1 1
+	diffuse  1 1 1
+	specular 1 1 1 //16
+	diffuse_map  metal_40.png
+	normal_map   metal_40norm.jpg
+	specular_map metal_40spec.jpg
+	scene_blend alpha_blend
+}
+hlms wallP_metal_40_grid pbs : wall_metal_40_grid
+{
+	cull_mode none
+}

@@ -19,7 +19,7 @@ hlms Water pbs
 
 //  Base  Mud
 //--------------------------------------------------------
-hlms Mud pbs
+hlms BaseMud pbs
 {
 	diffuse_map  mntn_dark_d.jpg
 	normal_map   mntn_dark_n.jpg
@@ -139,19 +139,19 @@ hlms LavaBlk pbs : Water   // lava solid
 
 //  Mud
 //--------------------------------------------------------
-hlms Mud_orange pbs : Mud
+hlms Mud_orange pbs : BaseMud
 {
 	diffuse   0.63 0.44 0.04
 	specular  0.33 0.25 0.2
 }
 
-hlms Mud_brown pbs : Mud
+hlms Mud_brown pbs : BaseMud
 {
 	diffuse   0.50 0.33 0.10
 	specular  0.26 0.22 0.14
 }
 
-hlms Mud_dark pbs : Mud
+hlms Mud_dark pbs : BaseMud
 {
 	diffuse   0.2 0.17 0.05
 	specular  0.31 0.27 0.18
@@ -159,19 +159,19 @@ hlms Mud_dark pbs : Mud
 
 //  Mud  Jungle Dark
 //--------------------------------------------------------
-hlms Mud_orange_JD pbs : Mud
+hlms Mud_orange_JD pbs : BaseMud
 {
     diffuse   0.314 0.336 0.031  1.0
 	specular  0.41 0.33 0.16  16
 }
 
-hlms Mud_brown_JD pbs : Mud
+hlms Mud_brown_JD pbs : BaseMud
 {
     diffuse   0.258 0.268 0.10  1.0
 	specular  0.238 0.266 0.063  32
 }
 
-hlms Mud_dark_JD pbs : Mud
+hlms Mud_dark_JD pbs : BaseMud
 {
 	diffuse   0.154 0.17 0.05  1.0
     specular  0.283 0.30 0.18  64
