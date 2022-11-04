@@ -1,0 +1,27 @@
+
+License: CC-BY-SA
+Import and model fixes by CryHam
+
+-----
+From:  0 A.D.\binaries\data\mods\public\art\LICENSE.txt
+-----
+
+The files in this directory are Copyright (C) 2009 Wildfire Games.
+
+These files are licensed under the Creative Commons Attribution-Share Alike 3.0
+(CC-by-sa) license, available at https://creativecommons.org/licenses/by-sa/3.0/
+
+Briefly, this means:
+
+* You may use, modify and distribute these files, for commercial and
+  non-commercial purposes.
+
+* If you distribute one of these files, you must include attribution (e.g.
+  in the credits screen of a game or a video, or in a text file accompanying
+  the files). The attribution must include:
+  * A link to https://creativecommons.org/licenses/by-sa/3.0/
+  * The name "Wildfire Games" as the original author
+  * A link to https://www.wildfiregames.com/
+
+* If you distribute one of these files, you must release it (and any
+  modifications you have made to it) under the CC-by-sa license.
