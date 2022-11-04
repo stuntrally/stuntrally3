@@ -32,6 +32,8 @@
 #include "game.h"
 #include "CarModel.h"
 #include "CScene.h"
+#include "CData.h"
+#include "TracksXml.h"
 
 #include <list>
 #include <filesystem>
@@ -174,6 +176,11 @@ namespace Demo
 		// CreatePlane();  // fast
 		// CreateTerrain();  // 5sec
 		// CreateVeget();
+
+		//  find cur id
+		const auto* data = pApp->scn->data;
+		idTrack = data->tracks->trkmap[pSet->gui.track] -1;
+		idCar = data->cars->carmap[pSet->gui.car[0]] -1;
 
 
 		LogO("---- base createScene");

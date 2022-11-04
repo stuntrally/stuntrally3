@@ -154,6 +154,7 @@ void PATHMANAGER::Init(bool log_paths)
 
 		// Adding relative path for running from sources
 		dirs.push_back(execname().parent_path().parent_path().parent_path() / "Media");
+		dirs.push_back(execname().parent_path().parent_path().parent_path());
 		dirs.push_back(execname().parent_path().parent_path() / "Media");
 		dirs.push_back(execname().parent_path().parent_path());
 		dirs.push_back(execname().parent_path() / "Media");
@@ -172,13 +173,15 @@ void PATHMANAGER::Init(bool log_paths)
 
 		//  Loop through the paths and pick the first one that contain some data
 		for (auto d : dirs)
-		{	//  Data dir
-			// LogO(d / "packs");
+		{
+			//  Data dir
+			// LogO(d);
 			if (fs::exists(d / "sounds"))
 				game_data = d.string();
 			//  Config dir
 			if (fs::exists(d / "config"))
 				game_config = (d / "config").string();
+
 			//  Check if both are found
 			if (!game_data.empty() && !game_config.empty())  break;
 		}
