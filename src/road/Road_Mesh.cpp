@@ -1,5 +1,6 @@
 #include "OgreCommon.h"
 #include "OgreHlmsPbsDatablock.h"
+#include "OgreHlmsPbsPrerequisites.h"
 #include "OgreMeshManager.h"
 #include "pch.h"
 #include "Def_Str.h"
@@ -205,7 +206,9 @@ void SplineRoad::AddMesh(MeshPtr mesh, String sMesh, const Aabb& aabox,
 	HlmsPbsDatablock *datablock =
 		static_cast<Ogre::HlmsPbsDatablock *>( (*pIt)->getSubItem( 0 )->getDatablock() );
 	datablock->setSamplerblock( PBSM_DIFFUSE, sampler );
-	datablock->setSamplerblock( PBSM_NORMAL, sampler );/**/
+	datablock->setSamplerblock( PBSM_NORMAL, sampler );
+	datablock->setSamplerblock( PBSM_METALLIC, sampler );
+	datablock->setSamplerblock( PBSM_ROUGHNESS, sampler );/**/
 }
 
 

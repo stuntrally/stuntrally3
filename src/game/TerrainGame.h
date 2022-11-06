@@ -111,6 +111,7 @@ namespace Demo
 	public:		
 		void CreateTerrain(), DestroyTerrain();
 	protected:
+		Ogre::String mtrName;
 		Ogre::SceneNode *nodeTerrain = 0;
 
 		void CreatePlane(), DestroyPlane();

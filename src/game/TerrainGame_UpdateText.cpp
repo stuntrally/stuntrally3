@@ -161,7 +161,8 @@ namespace Demo
 
 		if (pApp->bLoading)
 		{
-			txt += "Loading... "+toStr(pApp->curLoadState)+" / "+toStr(App::LS_ALL);
+			txt += "Loading... " + toStr(pApp->curLoadState) +" / "+
+				toStr(App::LS_ALL) +"  "+ pApp->cStrLoad[pApp->curLoadState];
 		}
 		else  //-
 		if (pGame)  // CAR text

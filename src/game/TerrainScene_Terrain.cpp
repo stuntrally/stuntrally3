@@ -72,12 +72,12 @@ namespace Demo
 		LogO("---- new Terra json mat");
 
 	#if 0  // default .json
-		std::string datablockName = "TerraExampleMaterial";  // from .json
+		mtrName = "TerraExampleMaterial";  // from .json
 		// mGraphicsSystem->hlmsTerra->loadMaterial( "FileName for logging", defaultResourceGroupForLoadingTextures, jsonString, "" );
 	#else
-		std::string datablockName = "TerraExampleMaterial2";
+		mtrName = "TerraExampleMaterial2";
 		datablock = mGraphicsSystem->hlmsTerra->createDatablock(
-			datablockName.c_str(), datablockName.c_str(),
+			mtrName.c_str(), mtrName.c_str(),
 			HlmsMacroblock(), HlmsBlendblock(), HlmsParamVec() );
 		assert( dynamic_cast<HlmsTerraDatablock *>( datablock ) );
 		HlmsTerraDatablock *tblock = static_cast<HlmsTerraDatablock *>( datablock );
@@ -94,6 +94,10 @@ namespace Demo
 		auto tex = texMgr->createOrRetrieveTexture("HeightmapBlendmap.png",
 			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 		tblock->setTexture( TERRA_DETAIL_WEIGHT, tex );
+
+		tblock->setBrdf(TerraBrdf::BlinnPhongLegacyMath);  //** no fresnel-
+		//? tblock->setFresnel();
+		// tblock->setDiffuse(Vector3(1,0,0));
 
 		///  Layer Textures  ----
 		const Real fTer = sc->td.fTerWorldSize;  //= fTriangleSize * iTerSize;
@@ -141,11 +145,9 @@ namespace Demo
 			}
 			Real sc = fTer / l.tiling;
 			tblock->setDetailMapOffsetScale( i, Vector4(0,0, sc,sc) );
-			tblock->setMetalness(i, 0.1);
-			tblock->setRoughness(i, 0.6);
-			// datablock->setFres
+			tblock->setMetalness(i, 0.9);
+			tblock->setRoughness(i, 0.2);
 		}
-		//tblock->setDiffuse(Vector3());
 		// const HlmsSamplerblock *sam = tblock->getSamplerblock( TERRA_DETAIL0 );
 		// sam->setTexture()
 
@@ -159,6 +161,7 @@ namespace Demo
 							&mgr->_getEntityMemoryManager( SCENE_STATIC ),
 							mgr, 11u/*RQG_..*/, root->getCompositorManager2(),
 							mGraphicsSystem->getCamera(), false );
+		// mTerra->setCustomSkirtMinHeight(0.8f); //?-
 		mTerra->setCastShadows( false );
 		pApp->scn->terrain = mTerra;
 
@@ -182,7 +185,7 @@ namespace Demo
 
 		LogO("---- Terra attach");
 
-		datablock = hlmsManager->getDatablock( datablockName );
+		datablock = hlmsManager->getDatablock( mtrName );
 		mTerra->setDatablock( datablock );
 
 		mHlmsPbsTerraShadows = new HlmsPbsTerraShadows();
@@ -195,6 +198,7 @@ namespace Demo
 	void TerrainGame::DestroyTerrain()
 	{
 		LogO("---- destroy Terrain");
+
 		Root *root = mGraphicsSystem->getRoot();
 		Hlms *hlmsPbs = root->getHlmsManager()->getHlms( HLMS_PBS );
 
@@ -204,6 +208,11 @@ namespace Demo
 			delete mHlmsPbsTerraShadows;  mHlmsPbsTerraShadows = 0;
 		}
 		delete mTerra;  mTerra = 0;
+
+		if (!mtrName.empty())
+		{	mGraphicsSystem->hlmsTerra->destroyDatablock(mtrName);
+			mtrName = "";
+		}
 	}
 
 
