@@ -1,5 +1,6 @@
 #include "OgreCommon.h"
 #include "OgreHlmsPbsDatablock.h"
+#include "OgreMeshManager.h"
 #include "pch.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
@@ -18,6 +19,7 @@
 #include <OgreSceneManager.h>
 #include <OgreMeshManager2.h>
 #include <Vao/OgreVaoManager.h>
+#include <OgreMesh.h>
 using namespace Ogre;
 
 #define USE_UMA_SHARED_BUFFERS 1
@@ -55,29 +57,31 @@ void SplineRoad::CreateMesh(SubMesh* subMesh, Aabb& aabox,
 	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );
 	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_NORMAL ) );
 	vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );
-	// if (clr.size() > 0)
-	// 	vertexElements.push_back( VertexElement2( VET_FLOAT4, VES_DIFFUSE ) );
+	bool bClr = clr.size() > 0;
+	if (bClr)
+		vertexElements.push_back( VertexElement2( VET_FLOAT4, VES_DIFFUSE ) );
 
 
 	//  vertex data  ------------------------------------------
-	// For immutable buffers, it is mandatory that vertices is not a null pointer.
 	uint vertCnt = pos.size();
-	uint vertSize = (3 + 3 + 2) * sizeof( float );
+	uint vertSize = (3 + 3 + 2 + (bClr ? 4 : 0)) * sizeof( float );
 	float *vertices = reinterpret_cast<float *>(
 		OGRE_MALLOC_SIMD( sizeof( float ) * vertSize * vertCnt, MEMCATEGORY_GEOMETRY ) );
 	
-	// Fill the data
 	uint a = 0;
+	if (bClr)
 	for (uint i=0; i < vertCnt; ++i)
 	{
-		vertices[a++] = pos[i].x;
-		vertices[a++] = pos[i].y;
-		vertices[a++] = pos[i].z;  aabox.merge(pos[i]);
-		vertices[a++] = norm[i].x;
-		vertices[a++] = norm[i].y;
-		vertices[a++] = norm[i].z;
-		vertices[a++] = tcs[i].x;
-		vertices[a++] = tcs[i].y;
+		vertices[a++] = pos[i].x;   vertices[a++] = pos[i].y;   vertices[a++] = pos[i].z;  aabox.merge(pos[i]);
+		vertices[a++] = norm[i].x;  vertices[a++] = norm[i].y;  vertices[a++] = norm[i].z;
+		vertices[a++] = tcs[i].x;   vertices[a++] = tcs[i].y;
+		vertices[a++] = clr[i].x;   vertices[a++] = clr[i].y;   vertices[a++] = clr[i].z;   vertices[a++] = clr[i].w;
+	}else
+	for (uint i=0; i < vertCnt; ++i)
+	{
+		vertices[a++] = pos[i].x;   vertices[a++] = pos[i].y;   vertices[a++] = pos[i].z;  aabox.merge(pos[i]);
+		vertices[a++] = norm[i].x;  vertices[a++] = norm[i].y;  vertices[a++] = norm[i].z;
+		vertices[a++] = tcs[i].x;   vertices[a++] = tcs[i].y;
 	}
 
 	VertexBufferPacked *vertexBuffer = 0;
@@ -96,16 +100,15 @@ void SplineRoad::CreateMesh(SubMesh* subMesh, Aabb& aabox,
 	}
 	catch( Exception &e )
 	{
-		// Important: Please note that we passed keepAsShadow = true to createVertexBuffer,
-		// thus Ogre will free the pointer. However had we passed keepAsShadow = false,
-		// it would be YOUR responsability to free the pointer, not Ogre's
+		// we passed keepAsShadow = true to createVertexBuffer, thus Ogre will free the pointer
+		// if keepAsShadow = false, YOU need to free the pointer
 		OGRE_FREE_SIMD( vertexBuffer, MEMCATEGORY_GEOMETRY );
 		vertexBuffer = 0;
 		throw e;
 	}
 
 
-	// Now the Vao. We'll just use one vertex buffer source (multi-source not working yet)
+	//  Vao, one vertex buffer source (multi-source not working yet)
 	VertexBufferPackedVec vertexBuffers;
 	vertexBuffers.push_back( vertexBuffer );
 
@@ -140,10 +143,6 @@ void SplineRoad::CreateMesh(SubMesh* subMesh, Aabb& aabox,
 		// When keepAsShadow = true, the memory will be freed when the index buffer is destroyed.
 		// However if for some weird reason there is an exception raised, the memory will
 		// not be freed, so it is up to us to do so.
-		// The reasons for exceptions are very rare. But we're doing this for correctness.
-		// Important: Please note that we passed keepAsShadow = true to createIndexBuffer,
-		// thus Ogre will free the pointer. However had we passed keepAsShadow = false,
-		// it would be YOUR responsability to free the pointer, not Ogre's
 		OGRE_FREE_SIMD( indexBuffer, MEMCATEGORY_GEOMETRY );
 		indexBuffer = 0;
 		throw e;
@@ -153,77 +152,18 @@ void SplineRoad::CreateMesh(SubMesh* subMesh, Aabb& aabox,
 		vaoManager->createVertexArrayObject( vertexBuffers, indexBuffer, OT_TRIANGLE_LIST );
 
 	// Each Vao pushed to the vector refers to an LOD level.
-	// Must be in sync with mesh->mLodValues & mesh->mNumLods if you use more than one level
+	// todo: all LODs here
+	// Must be in sync with mesh->mLodValues & mesh->mNumLods if > 1 level
 	subMesh->mVao[VpNormal].push_back( vao );
-	// Use the same geometry for shadow casting.
-	subMesh->mVao[VpShadow].push_back( vao );
+	subMesh->mVao[VpShadow].push_back( vao );  // same geometry for shadow casting
 
-	// subMesh->arrangeEfficient(true, true, true);
+	subMesh->arrangeEfficient(false, false, true);  // no?
 
-	// Set the bounds to get frustum culling and LOD to work correctly.
-	// mesh->_setBounds( Aabb( Vector3::ZERO, Vector3::UNIT_SCALE ), false );
-	// mesh->_setBoundingSphereRadius( 1.732f );
-
-	// return mesh;
-    //-----------------------------------------------------------------------------------
-
-	/*mesh->useSharedVertices = false;
-	mesh->vertexData = new VertexData();
-	mesh->vertexData->vertexStart = 0;
-	mesh->vertexData->vertexCount = si;
-
-	//  decl
-	VertexDeclaration* decl = mesh->vertexData->vertexDeclaration;
-	size_t offset = 0;
-	offset += decl->addElement(0,offset,VET_FLOAT3,VES_POSITION).getSize();
-	offset += decl->addElement(0,offset,VET_FLOAT3,VES_NORMAL).getSize();
-	offset += decl->addElement(0,offset,VET_FLOAT2,VES_TEXTURE_COORDINATES).getSize();
-	if (clr.size() > 0)
-		offset += decl->addElement(0,offset,VET_FLOAT4,VES_DIFFUSE).getSize();
-
-	//  vertex
-	//-----------------------------------------
+	/*  old
 	HardwareVertexBufferSharedPtr vbuffer = HardwareBufferManager::getSingleton().createVertexBuffer(
 		decl->getVertexSize(0), si, HardwareBuffer::HBU_STATIC);
 	float* vp = static_cast<float*>(vbuffer->lock(HardwareBuffer::HBL_DISCARD));
-	
-	//  fill vb, update aabb
-	if (clr.size() > 0)
-	for (i=0; i < si; ++i)
-	{
-		const Vector3& p = pos[i];
-		*vp++ = p.x;  *vp++ = p.y;  *vp++ = p.z;	aabox.merge(p);
-		const Vector3& n = norm[i];
-		*vp++ = n.x;  *vp++ = n.y;  *vp++ = n.z;
-		*vp++ = tcs[i].x;  *vp++ = tcs[i].y;
-		const Vector4& c = clr[i];
-		*vp++ = c.x;  *vp++ = c.y;  *vp++ = c.z;  *vp++ = c.w;
-	}
-	else
-	for (i=0; i < si; ++i)
-	{
-		const Vector3& p = pos[i];
-		*vp++ = p.x;  *vp++ = p.y;  *vp++ = p.z;	aabox.merge(p);
-		const Vector3& n = norm[i];
-		*vp++ = n.x;  *vp++ = n.y;  *vp++ = n.z;
-		*vp++ = tcs[i].x;  *vp++ = tcs[i].y;
-	}
-	vbuffer->unlock();
-	mesh->vertexData->vertexBufferBinding->setBinding(0,vbuffer);
-	
-	//  index
-	//-----------------------------------------
-	IndexData* id = mesh->indexData;
-	id->indexCount = idx.size();  id->indexStart = 0;
-	id->indexBuffer = HardwareBufferManager::getSingleton().createIndexBuffer(
-		HardwareIndexBuffer::IT_16BIT, id->indexCount, HardwareBuffer::HBU_STATIC);
-	uint16* ip = static_cast<uint16*>(id->indexBuffer->lock(HardwareBuffer::HBL_DISCARD));
-
-	//  fill ib
-	for (size_t i=0; i < idx.size(); ++i)
-		*ip++ = idx[i];
-	
-	id->indexBuffer->unlock();*/
+		HardwareIndexBuffer::IT_16BIT, id->indexCount, HardwareBuffer::HBU_STATIC);*/
 	subMesh->setMaterialName(sMtrName);
 }
 
@@ -234,24 +174,32 @@ void SplineRoad::CreateMesh(SubMesh* subMesh, Aabb& aabox,
 void SplineRoad::AddMesh(MeshPtr mesh, String sMesh, const Aabb& aabox,
 	Item** pIt, SceneNode** pNode, String sEnd)
 {
-	mesh->_setBounds(aabox);
+	mesh->_setBounds(aabox, false);  //?
 	mesh->_setBoundingSphereRadius((aabox.getMaximum() - aabox.getMinimum()).length() / 2.0);  
-	// mesh->load();
-	/*unsigned short src, dest;
-	if (!mesh->suggestTangentVectorBuildParams(VES_TANGENT, src, dest))
-		mesh->buildTangentVectors(VES_TANGENT, src, dest);*/
+	//mesh->setManuallyLoaded(false);
+	//mesh->arrangeEfficient(false, false, true);
 
-	*pIt = mSceneMgr->createItem(/*"rd.ent"+sEnd,*/ sMesh, "General", Ogre::SCENE_STATIC);
-	*pNode = mSceneMgr->getRootSceneNode(SCENE_STATIC)->createChildSceneNode(/*"rd.node"+sEnd*/SCENE_STATIC);
+	//  tangents-
+	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create("v1"+sMesh, "General");
+	m1->importV2(mesh.get());
+	unsigned short src, dest;
+	m1->buildTangentVectors(VES_TANGENT, src, dest);
+	mesh->importV1(m1.get(), false, false, false);
+	// mesh->importV1(m1.get(), true, true, true);
+	//mesh->load();
+
+	//  item
+	*pIt = mSceneMgr->createItem( sMesh, "General", Ogre::SCENE_STATIC );
+	*pNode = mSceneMgr->getRootSceneNode( SCENE_STATIC )->createChildSceneNode( SCENE_STATIC );
 	(*pNode)->attachObject(*pIt);
 	(*pIt)->setVisible(false);  (*pIt)->setCastShadows(false);
 	(*pIt)->setVisibilityFlags(RV_Road);
 
-	//  wrap tex
+	//  wrap tex-
 	HlmsSamplerblock sampler;
 	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
 	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
-	sampler.mMaxAnisotropy = 16;//app->pSet->anisotropy;
+	sampler.mMaxAnisotropy = pGame->pSet->anisotropy;
 	sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
 	assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( (*pIt)->getSubItem( 0 )->getDatablock() ) );
 	HlmsPbsDatablock *datablock =
@@ -316,52 +264,53 @@ try
 	{
 		if (rs.wall[l].it)  // ] wall
 		{
-			rs.wall[l].node->detachAllObjects();
-			#ifdef SR_EDITOR
-			mSceneMgr->destroyItem(rs.wall[l].ent);
-			#endif
-			//rs.wall[l].node->getParentSceneNode()->detachObject(0);
 			mSceneMgr->destroySceneNode(rs.wall[l].node);
-			//; Ogre::MeshManager::getSingleton().remove(rs.wall[l].smesh);
+			// rs.wall[l].node->detachAllObjects();
+			// #ifdef SR_EDITOR
+			mSceneMgr->destroyItem(rs.wall[l].it);
+			MeshManager::getSingleton().remove(rs.wall[l].smesh);
+			// #endif
+			// rs.wall[l].node->getParentSceneNode()->detachObject(0);
+			// MeshManager::getSingleton().remove(rs.wall[l].smesh);
 		}
 		if (rs.blend[l].it)  // > blend
 		{
-			rs.blend[l].node->detachAllObjects();
-			#ifdef SR_EDITOR
-			mSceneMgr->destroyItem(rs.blend[l].ent);
-			#endif
+			// rs.blend[l].node->detachAllObjects();
+			// #ifdef SR_EDITOR
 			mSceneMgr->destroySceneNode(rs.blend[l].node);
-			//; Ogre::MeshManager::getSingleton().remove(rs.blend[l].smesh);
+			mSceneMgr->destroyItem(rs.blend[l].it);
+			// #endif
+			MeshManager::getSingleton().remove(rs.blend[l].smesh);
 		}
 	}
 	if (rs.col.it)  // | column
 	{
-		#ifdef SR_EDITOR
-		rs.col.node->detachAllObjects();
-		mSceneMgr->destroyItem(rs.col.ent);
-		#endif
+		// #ifdef SR_EDITOR
 		mSceneMgr->destroySceneNode(rs.col.node);
-		//; Ogre::MeshManager::getSingleton().remove(rs.col.smesh);
+		// rs.col.node->detachAllObjects();
+		mSceneMgr->destroyItem(rs.col.it);
+		// #endif
+		MeshManager::getSingleton().remove(rs.col.smesh);
 	}
 	for (int l=0; l < LODs; ++l)
 	if (rs.road[l].it)
 	{
-		rs.road[l].node->detachAllObjects();
-		if (IsTrail())
-			mSceneMgr->destroyItem(rs.road[l].it);
-		#ifdef SR_EDITOR  //_crash in game (destroy all ents is before)
-		mSceneMgr->destroyItem(rs.road[l].ent);
-		#endif
+		// rs.road[l].node->detachAllObjects();
 		mSceneMgr->destroySceneNode(rs.road[l].node);
-		//; if (Ogre::MeshManager::getSingleton().resourceExists(rs.road[l].smesh))
-			// Ogre::MeshManager::getSingleton().remove(rs.road[l].smesh);
+		// if (IsTrail())
+		mSceneMgr->destroyItem(rs.road[l].it);
+		// #ifdef SR_EDITOR  //_crash in game (destroy all ents is before)
+		// mSceneMgr->destroyItem(rs.road[l].ent);
+		// #endif
+		// if (MeshManager::getSingleton().resourceExists(rs.road[l].smesh))
+		MeshManager::getSingleton().remove(rs.road[l].smesh);
 		//Resource* r = ResourceManae::getSingleton().remove(rs.road[l].smesh);
 	}
 }catch (Exception ex)
 {
 	LogO(String("# Error! road DestroySeg") + ex.what());
 }
-	//LogO("Destroyed.");
+	// LogO("---- road Destroyed");
 	rs.empty = true;
 	rs.lpos.clear();
 }

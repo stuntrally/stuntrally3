@@ -570,9 +570,8 @@ void SplineRoad::createSeg_Meshes(
 	blendTri = false;
 
 
-	//;  create Ogre Mesh
+	//  create Ogre Mesh
 	//-----------------------------------------
-	// fixme
 	MeshPtr meshOld = MeshManager::getSingleton().getByName(sMesh);
 	if (meshOld)  LogR("Mesh exists !!!" + sMesh);
 
@@ -587,18 +586,18 @@ void SplineRoad::createSeg_Meshes(
 	}
 
 	bool wall = !DLM.posW.empty();
-	/*if (wall)
+	if (wall)
 	{
 		meshW = MeshManager::getSingleton().createManual(sMeshW,"General");
 		meshW->createSubMesh();
-	}*/
+	}
 	bool cols = !DLM.posC.empty() && DL.isLod0;  // cols have no lods
-	/*if (cols)
+	/*if (cols)  // fixme
 	{
 		meshC = MeshManager::getSingleton().createManual(sMeshC,"General");
 		meshC->createSubMesh();
 	}
-	if (DS.hasBlend)
+	if (DS.hasBlend)  // fixme
 	{
 		meshB = MeshManager::getSingleton().createManual(sMeshB,"General");
 		sm = meshB->createSubMesh();
@@ -639,11 +638,10 @@ void SplineRoad::createSeg_Meshes(
 			vSegs[seg].nTri[DL.lod] += idx.size()/3;
 		}
 		
-		/*sm = meshW->getSubMesh(0);   // for glass only..
+		sm = meshW->getSubMesh(0);   // for glass only..
 		rs.sMtrWall = !pipeGlass ? sMtrWall : sMtrWallPipe;
 		if (!DLM.posW.empty())
 			CreateMesh(sm, aabox, DLM.posW,DLM.normW,DLM.clr0,DLM.tcsW, idx, rs.sMtrWall);
-		*/  // fixme
 	}
 	
 	
@@ -679,21 +677,21 @@ void SplineRoad::createSeg_Meshes(
 	if (HasRoad())
 	{
 		AddMesh(mesh, sMesh, aabox, &it, &node, "."+sEnd);
-		it->setRenderQueueGroup(
-			IsTrail() ? /*RQG_RoadBlend :*/ RQG_Hud1 :
-			pipeGlass || IsRiver() ? RQG_PipeGlass : RQG_Road);
+		// it->setRenderQueueGroup(  // ?
+		// 	IsTrail() ? /*RQG_RoadBlend :*/ RQG_Hud1 :
+		// 	pipeGlass || IsRiver() ? RQG_PipeGlass : RQG_Road);
 		if (IsTrail())
 			it->setVisibilityFlags(RV_Hud);
 
 		if (bCastShadow && !DS.onTer && !IsRiver())
 			it->setCastShadows(true);
 	}
-#if 0  // fixme
 	if (wall)
 	{
 		AddMesh(meshW, sMeshW, aabox, &itW, &nodeW, "W."+sEnd);
 		itW->setCastShadows(true);
 	}
+#if 0  // fixme
 	if (cols)
 	{
 		AddMesh(meshC, sMeshC, aabox, &itC, &nodeC, "C."+sEnd);
@@ -701,10 +699,11 @@ void SplineRoad::createSeg_Meshes(
 		if (bCastShadow)
 			itC->setCastShadows(true);
 	}
+//#if 0  // fixme
 	if (DS.hasBlend)
 	{
 		AddMesh(meshB, sMeshB, aabox, &itB, &nodeB, "B."+sEnd);
-		itB->setRenderQueueGroup(RQG_RoadBlend);
+		// itB->setRenderQueueGroup(RQG_RoadBlend);
 	}
 #endif
 	

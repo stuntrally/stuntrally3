@@ -41,7 +41,7 @@ void SplineMarkEd::Setup(
 
 	ndHit->setScale(/*fMarkerScale **/ fScHit * Vector3::UNIT_SCALE);
 	ndRot->setScale(fMarkerScale * fScRot * Vector3::UNIT_SCALE);
-	entChk->setRenderQueueGroup(RQG_RoadMarkers);  // after road
+	// entChk->setRenderQueueGroup(RQG_RoadMarkers);  // after road
 }
 
 
