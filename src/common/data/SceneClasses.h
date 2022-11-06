@@ -120,7 +120,7 @@ public:
 	int id;  // auto set, index to FluidParams, -1 doesnt exist
 	std::string name;
 
-	class btCollisionObject* cobj;
+	class btCollisionObject* cobj = 0;
 	int idParticles;   // auto set  index for wheel particles  -1 none
 	bool solid, deep;  // auto set, from FluidParams
 	
@@ -136,13 +136,13 @@ public:
 	Ogre::Vector3 scale;
 	std::string name;  // mesh file name
 
-	Ogre::SceneNode* nd;  // ogre
-	Ogre::Item* it;
-	class btDefaultMotionState* ms;  // bullet
-	class btCollisionObject* co;
-	class btRigidBody* rb;
+	Ogre::SceneNode* nd = 0;  // ogre
+	Ogre::Item* it = 0;
+	class btDefaultMotionState* ms = 0;  // bullet
+	class btCollisionObject* co = 0;
+	class btRigidBody* rb = 0;
 	bool dyn;
-	class btTransform* tr1;  // 1st pos after load, for reset
+	class btTransform* tr1 = 0;  // 1st pos after load, for reset
 
 	Object();
 	void SetFromBlt();
@@ -160,8 +160,8 @@ public:
 	float upd;  // update time for static
 	bool stat;  // static for, e.g. clouds
 
-	Ogre::SceneNode* nd;  // ogre
-	Ogre::ParticleSystem* ps;
+	Ogre::SceneNode* nd = 0;  // ogre
+	Ogre::ParticleSystem* ps = 0;
 	
 	SEmitter();
 	void UpdEmitter();

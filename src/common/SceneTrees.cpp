@@ -40,11 +40,18 @@ using namespace Ogre;
 
 void CScene::DestroyTrees()
 {
-	// fixme
-	// if (grass) {  delete grass->getPageLoader();  delete grass;  grass=0;   }
-	LogO("------  # Destroy trees");
-	// if (trees) {  delete trees->getPageLoader();  delete trees;  trees=0;   }
-	LogO("------  # Destroy trees done");
+	LogO("---- destroy trees");
+
+	SceneManager *mgr = app->mSceneMgr;
+	for (auto node : vegetNodes)
+		mgr->destroySceneNode(node);
+	vegetNodes.clear();
+	
+	for (auto item : vegetItems)
+		mgr->destroyItem(item);
+	vegetItems.clear();
+
+	//LogO("---- destroy trees done");
 }
 
 void CScene::RecreateTrees()
@@ -104,7 +111,7 @@ void CScene::CreateTrees()
 	if (fGrass > 0.f)
 	{
 		grass->addDetailLevel<GrassPage>(sc->grDist * pSet->grass_dist);
-		grassLoader->setRenderQueueGroup(RQG_BatchAlpha);
+		// grassLoader->setRenderQueueGroup(RQG_BatchAlpha);
 
 		//  Grass layers
 		const SGrassLayer* g0 = &sc->grLayersAll[0];
@@ -283,6 +290,7 @@ void CScene::CreateTrees()
 				Item *item = mgr->createItem( file,
 					ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
 				item->setVisibilityFlags(RV_Vegetation);
+				vegetItems.push_back(item);
 
 				SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
 				node->attachObject( item );
@@ -293,6 +301,7 @@ void CScene::CreateTrees()
 				Degree a( Math::RangeRandom(0, 360.f) );
 				Quaternion q;  q.FromAngleAxis( a, Vector3::UNIT_Y );
 				node->setOrientation( q );
+				vegetNodes.push_back(node);
 				//  ****************************
 				
 				// node->scale( s, s, s );

@@ -795,8 +795,8 @@ void CarModel::setMtrName(const String& entName, const String& mtrName)
 
 void CarModel::setMtrNames()
 {
-	//if (FileExists(resCar + "/" + sDirname + "_body00_add.png") ||
-	//	FileExists(resCar + "/" + sDirname + "_body00_red.png"))
+	//if (FileExists(resCar + "/" + sDirname + "_body_add.png") ||
+	//	FileExists(resCar + "/" + sDirname + "_body_red.png"))
 	setMtrName("Car"+mtrId, sMtr[Mtr_CarBody]);
 
 	#if 0

@@ -259,7 +259,9 @@ namespace Demo
 		int itrk = 0, icar = 0;
 		switch (arg.keysym.scancode)
 		{
+		case SDL_SCANCODE_LSHIFT:
 		case SDL_SCANCODE_RSHIFT:  shift = true;  break;  // mod
+		case SDL_SCANCODE_LALT:
 		case SDL_SCANCODE_RCTRL:   ctrl = true;   break;
 
 
@@ -301,8 +303,38 @@ namespace Demo
 		case SDL_SCANCODE_ESCAPE:
 			if (pSet->escquit)
 				mGraphicsSystem->setQuit();  break;
-		
-		//** terrain wireframe toggle
+
+
+		//###  restart game, new track or car
+		case SDL_SCANCODE_RETURN:
+		case SDL_SCANCODE_KP_ENTER:
+			pApp->NewGame(shift);  return;
+
+		//###  reset game - fast (same track & cars)
+		case SDL_SCANCODE_BACKSPACE:
+		{
+			for (int c=0; c < pApp->carModels.size(); ++c)
+			{
+				CarModel* cm = pApp->carModels[c];
+				if (cm->pCar)
+					cm->pCar->bResetPos = true;
+				if (cm->iLoopLastCam != -1 && cm->fCam)
+				{	cm->fCam->setCamera(cm->iLoopLastCam);  //o restore
+					cm->iLoopLastCam = -1;  }
+				cm->First();
+				cm->ResetChecks();
+				cm->iWonPlace = 0;  cm->iWonPlaceOld = 0;
+				cm->iWonMsgTime = 0.f;
+			}
+			// pGame->timer.Reset(-1);
+			// pGame->timer.pretime = mClient ? 2.0f : pSet->game.pre_time;  // same for all multi players
+
+			// carIdWin = 1;  //
+			// ghost.Clear();  replay.Clear();
+		}	return;;
+
+
+		//**  terrain wireframe toggle
 		case SDL_SCANCODE_R:
 		{
 			wireTerrain = !wireTerrain;
@@ -377,7 +409,9 @@ namespace Demo
 	{
 		switch (arg.keysym.scancode)
 		{
+		case SDL_SCANCODE_LSHIFT:
 		case SDL_SCANCODE_RSHIFT:  shift = false;  break;  // mod
+		case SDL_SCANCODE_LALT:
 		case SDL_SCANCODE_RCTRL:   ctrl = false;   break;
 
 

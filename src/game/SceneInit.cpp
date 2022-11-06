@@ -242,9 +242,10 @@ void App::LoadCleanUp()  // 1 first
 {
 	// updMouse();
 	
-	/*if (dstTrk)
-	{	//scn->DestroyFluids();
-		DestroyObjects(true);  }*/
+	if (dstTrk)
+	{	scn->DestroyFluids();
+		DestroyObjects(true);
+	}
 	
 	// DestroyGraphs();  hud->Destroy();
 	
@@ -262,14 +263,15 @@ void App::LoadCleanUp()  // 1 first
 	// rem old track
 	if (dstTrk)
 	{
-		if (resTrk != "")  ResourceGroupManager::getSingleton().removeResourceLocation(resTrk);
+		if (resTrk != "")
+			ResourceGroupManager::getSingleton().removeResourceLocation(resTrk);
 		LogO("------  Loading track: "+pSet->game.track);
 		resTrk = TrkDir() + "objects";  // for roadDensity.png
 		ResourceGroupManager::getSingleton().addResourceLocation(resTrk, "FileSystem");
 	}
 	
 	//  Delete all cars
-/*	for (int i=0; i < carModels.size(); ++i)
+	for (int i=0; i < carModels.size(); ++i)
 	{
 		CarModel* c = carModels[i];
 		if (c && c->fCam)
@@ -283,30 +285,32 @@ void App::LoadCleanUp()  // 1 first
 		delete c;
 	}
 	carModels.clear();  //carPoses.clear();
-*/
-	
-	LogO("------  # Destroy trk  does nothing");
+
+
+	LogO("------  # Destroy All track");
 	if (dstTrk)
 	{
-		// scn->DestroyTrees();
-		// scn->DestroyWeather();
-		// scn->DestroyEmitters(true);
-		
-		// scn->DestroyTerrain();
-		// scn->DestroyRoads();
+		scn->DestroyTrees();
+		//^ DestroyObjects(true);
+		scn->DestroyRoads();
+		scn->DestroyTerrain();
+		//^ cars
+		//^ scn->DestroyFluids();  //Scene
+		//scn->DestroyEmitters(true);
+		scn->DestroyAllAtmo();
 	}
-	// scn->DestroyTrail();
+	scn->DestroyTrail();
 
 
 	///  destroy all
-	LogO("------  # Destroy all");
+	LogO("------  # Destroy All");
 	if (dstTrk)
-	{
-		//mSceneMgr->getRootSceneNode()->removeAndDestroyAllChildren();  // destroy all scenenodes
+	{	// destroy all scenenodes
+		mSceneMgr->getRootSceneNode()->removeAndDestroyAllChildren();
 		// mSceneMgr->destroyAllManualObjects();
 		// mSceneMgr->destroyAllEntities();
 		// mSceneMgr->destroyAllStaticGeometry();
-		//mSceneMgr->destroyAllParticleSystems();
+		mSceneMgr->destroyAllParticleSystems();
 		// mSceneMgr->destroyAllRibbonTrails();
 		// mSplitMgr->mGuiSceneMgr->destroyAllManualObjects(); // !?..
 	}
@@ -481,6 +485,14 @@ void App::LoadGame()  // 2
 
 void App::LoadScene()  // 3
 {
+	//  sun, fog, weather, sky
+	if (dstTrk)
+		scn->CreateAllAtmo();
+
+	// if (dstTrk)
+		// scn->CreateEmitters();
+
+
 	//  water RTT
 	// scn->UpdateWaterRTT(mSplitMgr->mCameras.front());
 
@@ -505,14 +517,6 @@ void App::LoadScene()  // 3
 	// sh::Factory::getInstance().setTextureAlias("SkyReflection", skyTex);
 	
 
-	//  weather
-	// if (dstTrk)
-		// scn->CreateWeather();
-
-	// if (dstTrk)
-		// scn->CreateEmitters();
-	
-		
 	//  checkpoint arrow
 	// bool deny = gui->pChall && !gui->pChall->chk_arr;
 	// if (!bHideHudArr && !deny)
@@ -733,7 +737,7 @@ void App::NewGameDoLoad()
 {
 	if (curLoadState == LS_ALL)
 	{
-		// Loading finished
+		//  Loading finished
 		bLoading = false;
 		// #ifdef DEBUG  //todo: doesnt hide later, why?
 		// LoadingOff();
@@ -758,6 +762,7 @@ void App::NewGameDoLoad()
 		//.bLoadingEnd = true;
 		return;
 	}
+
 	//  Do the next loading step
 	int perc = 0;
 	switch (curLoadState)
@@ -874,7 +879,8 @@ void App::CreateRoadsInt()
 
 void App::CreateTrail(Camera* cam)
 {
-	/*if (scn->trail)
+	// return;  //--
+	if (scn->trail)
 		scn->DestroyTrail();
 
 	//  load
@@ -980,6 +986,7 @@ void App::CreateTrail(Camera* cam)
 	tr->Rebuild(true);
 	tr->RebuildRoadInt();
 	scn->trail = tr;
-	bool vis = !pSet->trail_show || bHideHudTrail;
+	/*bool vis = !pSet->trail_show || bHideHudTrail;
 	tr->SetVisTrail(!vis);*/
+	tr->SetVisTrail(false);
 }

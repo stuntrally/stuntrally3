@@ -15,7 +15,7 @@ class App;  class Scene;  class WaterRTT;  class CData;  class SplineRoad;  clas
 class CScene
 {
 public:
-	App* app;
+	App* app = 0;
 	CScene(App* app1);
 	~CScene();
 
@@ -27,36 +27,41 @@ public:
 	
 
 	///  Setup  scene.xml
-	Scene* sc;
+	Scene* sc = 0;
 
 	//  const, xmls
-	CData* data;
+	CData* data = 0;
 
 	
-	//  Sky
+	//  All:  sun, atmo/fog, weather
+	void CreateAllAtmo(), DestroyAllAtmo();
+
+	//  Sky ~
 	Ogre::ManualObject* moSky = 0;
 	Ogre::SceneNode* ndSky = 0;
 	void CreateSkyDome(Ogre::String sMater, float yaw);
-	void DestroySkyDome();
+	void DestroySkyDome(), UpdSky();
 
-	//  Sun and Fog  *
+	//  Sun *
 	Ogre::Light* sun = 0;
-	Ogre::AtmosphereNpr* atmo = 0;
-	void CreateSun(), UpdSun(), UpdSky();
-	void UpdFog(bool bForce=false);
+	Ogre::SceneNode *ndSun = 0;
+	void CreateSun(), DestroySun(), UpdSun();
 
-	//;  Weather  rain, snow
-	Ogre::ParticleSystem *pr =0, *pr2 =0;
+	//  Fog / Atmo
+	Ogre::AtmosphereNpr* atmo = 0;
+	void CreateFog(), DestroyFog(), UpdFog(/*bool bForce=false*/);
+	
+	//  Weather :  rain, snow
+	Ogre::ParticleSystem *pr = 0, *pr2 = 0;
 	void CreateWeather(), DestroyWeather();
 	void UpdateWeather(Ogre::Camera* cam, float lastFPS = 60.f, float emitMul = 1.f);
-
 
 	//  Emitters
 	// void CreateEmitters(), DestroyEmitters(bool clear);
 
 
 	//  Fluids  water, mud
-	std::vector<Ogre::String/*MeshPtr*/> vFlSMesh;
+	std::vector<Ogre::String/*MeshPtr*/> vFlSMesh, vFlSMesh2;
 	std::vector<Ogre::Item*> vFlIt;
 	std::vector<Ogre::SceneNode*> vFlNd;
 	Ogre::SceneNode* mNdFluidsRoot =0;
@@ -79,6 +84,8 @@ public:
 	//  Vegetation
 	int cntAll = 0;
 	void CreateTrees(), DestroyTrees(), RecreateTrees(); //, updGrsTer(), UpdCamera();
+	std::vector<Ogre::Item*> vegetItems;
+	std::vector<Ogre::SceneNode*> vegetNodes;
 
 
 	///  Terrain

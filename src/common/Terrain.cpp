@@ -85,12 +85,6 @@ void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
 	terrain = 0;
 
 	
-	///  sky
-	CreateSkyDome(sc->skyMtr, /*app->pSet->view_distance,*/ sc->skyYaw);
-	// UpdFog();
-
-	CreateSun();
-
 	// UpdShaderParams();
 	// UpdLayerPars();
 	

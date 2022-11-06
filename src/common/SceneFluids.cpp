@@ -45,7 +45,6 @@ using namespace Ogre;
 //----------------------------------------------------------------------------------------------------------------------
 void CScene::CreateFluids()
 {
-	vFlNd.clear();  vFlIt.clear();  vFlSMesh.clear();
 #ifdef SR_EDITOR
 	app->UpdFluidBox();
 #endif
@@ -57,17 +56,17 @@ void CScene::CreateFluids()
 		FluidBox& fb = sc->fluids[i];
 		//  plane
 		Plane p;  p.normal = Vector3::UNIT_Y;  p.d = 0;
-		String smesh = "WaterMesh"+toStr(i);
+		String sMesh = "WaterMesh"+toStr(i), sMesh2 = "WtrPlane"+toStr(i);
 
 		v1::MeshPtr meshV1 = v1::MeshManager::getSingleton().createPlane(
-			smesh, rgDef,
+			sMesh, rgDef,
 			p, fb.size.x, fb.size.z,
 			6,6, true, 1,
 			fb.tile.x*fb.size.x, fb.tile.y*fb.size.z, Vector3::UNIT_Z,
 			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 
 		MeshPtr mesh = MeshManager::getSingleton().createByImportingV1(
-			"WtrPlane"+toStr(i), rgDef,
+			sMesh2, rgDef,
 			meshV1.get(), true, true, true );
 		
 		meshV1->unload();
@@ -80,7 +79,7 @@ void CScene::CreateFluids()
 		String sMtr = fb.id == -1 ? "" : data->fluids->fls[fb.id].material;  //"Water"+toStr(1+fb.type)
 		
 		item->setDatablock( sMtr );  item->setCastShadows( false );
-		item->setRenderQueueGroup( RQG_Fluid );  item->setVisibilityFlags( RV_Terrain );
+		// item->setRenderQueueGroup( RQG_Fluid );  item->setVisibilityFlags( RV_Terrain );
 
 		
 		//  wrap tex
@@ -100,7 +99,8 @@ void CScene::CreateFluids()
 		node->setPosition( fb.pos );  //, Quaternion(Degree(fb.rot.x),Vector3::UNIT_Y)
 		node->attachObject( item );
 		
-		vFlSMesh.push_back(smesh);  vFlIt.push_back(item);  vFlNd.push_back(node);
+		vFlSMesh.push_back(sMesh);  vFlSMesh2.push_back(sMesh2);
+		vFlIt.push_back(item);  vFlNd.push_back(node);
 
 	#ifndef SR_EDITOR  // game
 		CreateBltFluids();
@@ -202,14 +202,16 @@ void CScene::CreateBltFluids()
 
 void CScene::DestroyFluids()
 {
-	for (int i=0; i < vFlSMesh.size(); ++i)
+	for (int i=0; i < vFlNd.size(); ++i)
 	{
 		vFlNd[i]->detachAllObjects();
 		app->mSceneMgr->destroyItem(vFlIt[i]);
 		app->mSceneMgr->destroySceneNode(vFlNd[i]);
-		Ogre::MeshManager::getSingleton().remove(vFlSMesh[i]);
+		v1::MeshManager::getSingleton().remove(vFlSMesh[i]);
+		MeshManager::getSingleton().remove(vFlSMesh2[i]);
 	}
-	vFlNd.clear();  vFlIt.clear();  vFlSMesh.clear();
+	vFlNd.clear();  vFlIt.clear();
+	vFlSMesh.clear();  vFlSMesh2.clear();
 }
 
 #ifdef SR_EDITOR

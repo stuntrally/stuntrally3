@@ -12,8 +12,6 @@ CScene::CScene(App* app1)
 	:app(app1)
 	// ,sun(0), pr(0),pr2(0)
 	// ,grass(0), trees(0)
-	// ,terrain(0), mTerrainGroup(0), mTerrainGlobals(0)
-	// ,mWaterRTT(0)
 	// ,road(0), pace(0), trail(0)
 {
 	data = new CData();
@@ -27,9 +25,7 @@ CScene::~CScene()
 	// delete pace;
 
 	// OGRE_DELETE mTerrainGroup;
-	// OGRE_DELETE mTerrainGlobals;
 
-	// delete mWaterRTT;
 	delete sc;
 	delete data;
 }
@@ -49,7 +45,7 @@ void CScene::DestroyPace()
 	{	pace->Destroy();
 		delete pace;  pace = 0;
 	}
-}
+}*/
 void CScene::DestroyTrail()
 {
 	if (trail)
@@ -57,7 +53,6 @@ void CScene::DestroyTrail()
 		delete trail;  trail = 0;
 	}
 }
-*/
 
 void CScene::destroyScene()
 {
@@ -66,6 +61,4 @@ void CScene::destroyScene()
 	// DestroyRoads();  DestroyPace();  DestroyTrail();
 	// DestroyTrees();
 	// DestroyWeather();
-
-	// delete[] sc->td.hfHeight;
 }

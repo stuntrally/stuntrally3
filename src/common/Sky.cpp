@@ -36,61 +36,98 @@ using namespace Ogre;
 
 
 
+void CScene::CreateAllAtmo()
+{
+	CreateSun();
+	CreateFog();
+	CreateWeather();
+	CreateSkyDome(sc->skyMtr, /*app->pSet->view_distance,*/ sc->skyYaw);
+}
+void CScene::DestroyAllAtmo()
+{
+	DestroySkyDome();
+	DestroyWeather();
+	DestroyFog();
+	DestroySun();
+}
+
 
 //  Light
-//-------------------------------------------------------------------------------------{
+//-------------------------------------------------------------------------------------
 void CScene::CreateSun()
 {
-	SceneManager *mgr = app->mSceneMgr;
-	mgr->destroyAllLights();
-	LogO("---- new sun light");
+	LogO("---- create sun");
+	auto *mgr = app->mSceneMgr;
 	sun = mgr->createLight();
 	sun->setType( Light::LT_DIRECTIONAL );
 
 	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
-	SceneNode *lightNode = rootNode->createChildSceneNode();
-	lightNode->attachObject( sun );
+	ndSun = rootNode->createChildSceneNode();
+	ndSun->attachObject( sun );
 
 	// mSunLight->setPowerScale( 1.f );  // should be * 1..
 	sun->setPowerScale( Math::PI * 2.5 );  //** par! 1.5 2 3* 4
 	UpdSun();
+}
+
+void CScene::DestroySun()
+{
+	if (atmo)
+		atmo->setLight(0);
+	
+	auto *mgr = app->mSceneMgr;
+	if (sun)
+		mgr->destroyLight(sun);
+	sun = 0;
+
+	if (ndSun)
+		mgr->destroySceneNode( ndSun );
+	ndSun = 0;
+}
 
 
-	//  Atmosphere  ------------------------------------------------
-	LogO("---- new Atmosphere");
-	AtmosphereComponent *atmosphere = mgr->getAtmosphereRaw();
-	OGRE_DELETE atmosphere;
+//  Fog / Atmosphere  ------------------------------------------------
+void CScene::CreateFog()
+{
+	LogO("---- create Atmosphere");
+	auto *mgr = app->mSceneMgr;
 
 	atmo = OGRE_NEW AtmosphereNpr( app->mRoot->getRenderSystem()->getVaoManager() );
-	{
-		// Preserve the Power Scale explicitly set by the sample
-		AtmosphereNpr::Preset preset = atmo->getPreset();
-		preset.linkedLightPower = sun->getPowerScale();
-		atmo->setPreset( preset );
-	}
 
 	atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
-		// std::asin( Math::Clamp( -sun->getDirection().y, -1.0f, 1.0f ) ) / Math::PI );
 	atmo->setLight( sun );
 	atmo->setSky( mgr, true );
 	
 	OGRE_ASSERT_HIGH( dynamic_cast<AtmosphereNpr*>( mgr->getAtmosphere() ) );
 	atmo = static_cast<AtmosphereNpr*>( mgr->getAtmosphere() );
-	
+	UpdFog();
+}	
 
+void CScene::DestroyFog()
+{
+	LogO("---- destroy Atmosphere");
+	auto *mgr = app->mSceneMgr;
+
+	AtmosphereComponent *atm = mgr->getAtmosphereRaw();
+	OGRE_DELETE atm;
+	atmo = 0;
+}
+
+void CScene::UpdFog()
+{
 	AtmosphereNpr::Preset p = atmo->getPreset();
-	p.fogDensity = 2000.f / sc->fogEnd * 0.0006f; //0.0002f;  //** par
+	p.fogDensity = 2000.f / sc->fogEnd * 0.0004f;  //** par
 	p.densityCoeff = 0.27f;  //0.47f;
 	p.densityDiffusion = 0.75f;  //2.0f;
 	p.horizonLimit = 0.025f;
-	// p.sunPower = 1.0f;
-	// p.skyPower = 1.0f;
+	p.sunPower = 1.0f;
+	p.skyPower = 1.0f;
 	p.skyColour = sc->fogClr.GetRGB1(); //Vector3(0.234f, 0.57f, 1.0f);
 	p.fogBreakMinBrightness = 0.25f;
 	p.fogBreakFalloff = 0.1f;
-	// p.linkedLightPower = Math::PI;
-	// p.linkedSceneAmbientUpperPower = 0.1f * Math::PI;
-	// p.linkedSceneAmbientLowerPower = 0.01f * Math::PI;
+	p.linkedLightPower = sun->getPowerScale();
+	p.linkedSceneAmbientUpperPower = 0.2f * Math::PI;  // ?
+	p.linkedSceneAmbientLowerPower = 0.02f * Math::PI;
 	p.envmapScale = 1.0f;
 	atmo->setPreset( p );
 }
@@ -102,10 +139,11 @@ void CScene::CreateSun()
 void CScene::CreateSkyDome(String sMater, float yaw)
 {
 	if (moSky)  return;
+	LogO("---- create SkyDome");
 	Vector3 scale = 15000 * Vector3::UNIT_SCALE;
 	// Vector3 scale = pSet->view_distance * Vector3::UNIT_SCALE * 0.7f;
 	
-	SceneManager *mgr = app->mSceneMgr;
+	auto *mgr = app->mSceneMgr;
 	ManualObject* m = mgr->createManualObject();
 	m->begin(sMater, OT_TRIANGLE_LIST);
 
@@ -137,8 +175,7 @@ void CScene::CreateSkyDome(String sMater, float yaw)
 				m->index(i-1);  m->index(i);     m->index(i-ia);
 				m->index(i-1);  m->index(i-ia);  m->index(i-ia-1);
 			}
-		}
-	}
+	}	}
 	m->end();
 	moSky = m;
 
@@ -165,7 +202,7 @@ void CScene::CreateSkyDome(String sMater, float yaw)
 void CScene::DestroySkyDome()
 {
 	LogO("---- destroy SkyDome");
-	SceneManager *mgr = app->mSceneMgr;
+	auto *mgr = app->mSceneMgr;
 	if (moSky)
 	{   mgr->destroyManualObject(moSky);  moSky = 0;  }
 	if (ndSky)
@@ -188,33 +225,33 @@ void CScene::UpdSun()
 	if (!sun)  return;
 	Vector3 dir = SplineRoad::GetRot(sc->ldYaw - sc->skyYaw, -sc->ldPitch);
 	sun->setDirection(dir);
-	sun->setDiffuseColour( sc->lDiff.GetClr());
-	sun->setSpecularColour(sc->lSpec.GetClr());
-	//; app->mSceneMgr->setAmbientLight(sc->lAmb.GetClr());
+	sun->setDiffuseColour(0.1, 1.0, 0.1);// sc->lDiff.GetClr());
+	sun->setSpecularColour(0.1, 0.1, 1.0);//sc->lSpec.GetClr());
 
 	//  ambient
 	app->mSceneMgr->setAmbientLight(
+		sc->lAmb.GetClr() * 0.2f,
+		sc->lAmb.GetClr() * 0.1f,
+
+		// ColourValue( 0.99f, 0.94f, 0.90f ) * 0.04f,  //** par
+		// ColourValue( 0.90f, 0.93f, 0.96f ) * 0.04f,
+
 		// ColourValue( 0.63f, 0.61f, 0.28f ) * 0.04f,
 		// ColourValue( 0.52f, 0.63f, 0.76f ) * 0.04f,
-		// ColourValue( 0.33f, 0.61f, 0.98f ) * 0.01f,
-		// ColourValue( 0.02f, 0.53f, 0.96f ) * 0.01f,
 
 		// ColourValue( 0.93f, 0.91f, 0.38f ) * 0.04f,
 		// ColourValue( 0.22f, 0.53f, 0.96f ) * 0.04f,
-		// ColourValue( 0.33f, 0.61f, 0.98f ) * 0.01f,
-		// ColourValue( 0.02f, 0.53f, 0.96f ) * 0.01f,
-		ColourValue( 0.99f, 0.94f, 0.90f ) * 0.04f,  //** par
-		ColourValue( 0.90f, 0.93f, 0.96f ) * 0.04f,
-		// ColourValue( 0.3f, 0.5f, 0.7f ) * 0.1f * 0.75f,
-		// ColourValue( 0.6f, 0.45f, 0.3f ) * 0.065f * 0.75f,
 		-dir );
 		// -dir + Ogre::Vector3::UNIT_Y * 0.2f );
 
 	if (atmo)
-		atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
+	{	atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
+		atmo->setLight(sun);
+	}
 }
 
-//  Fog
+#if 0
+//  Fog old?-
 void CScene::UpdFog(bool bForce)
 {
 	const ColourValue clr(0.5,0.6,0.7,1);
@@ -230,12 +267,14 @@ void CScene::UpdFog(bool bForce)
 	v = sc->fogClrH.GetRGBA();
 	sc->fogHeight, ok ? 1.f/sc->fogHDensity : 0.f, sc->fogHStart, 1.f/(sc->fogHEnd - sc->fogHStart);*/
 }
+#endif
 
 
 //  Weather  rain,snow
 //-------------------------------------------------------------------------------------
 void CScene::CreateWeather()
 {
+	LogO("---- create weather");
 	if (!pr && !sc->rainName.empty())
 	{	try
 		{	pr = app->mSceneMgr->createParticleSystem(sc->rainName);
@@ -245,7 +284,7 @@ void CScene::CreateWeather()
 		}
 		pr->setVisibilityFlags(RV_Particles);
 		app->mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(pr);
-		pr->setRenderQueueGroup(RQG_Weather);
+		// pr->setRenderQueueGroup(RQG_Weather);
 		pr->getEmitter(0)->setEmissionRate(0);
 		pr->_update(2.f);  // emit, started 2 sec ago
 	}
@@ -258,13 +297,14 @@ void CScene::CreateWeather()
 		}
 		pr2->setVisibilityFlags(RV_Particles);
 		app->mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(pr2);
-		pr2->setRenderQueueGroup(RQG_Weather);
+		// pr2->setRenderQueueGroup(RQG_Weather);
 		pr2->getEmitter(0)->setEmissionRate(0);
 		pr2->_update(2.f);
 	}
 }
 void CScene::DestroyWeather()
 {
+	LogO("---- destroy weather");
 	if (pr)  {  app->mSceneMgr->destroyParticleSystem(pr);   pr=0;  }
 	if (pr2) {  app->mSceneMgr->destroyParticleSystem(pr2);  pr2=0;  }
 }

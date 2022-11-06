@@ -211,63 +211,23 @@ namespace Demo
 
 /*  for game.cfg
 track = 
-Test1-Flat
-Test2-Asphalt
-Test3-Bumps
-Test4-TerrainBig
-
+	test
 Test7-FluidsSmall
 Test8-Objects
-Test12-Snow
+TestC6-Temp
+TestC9-Jumps
+	good
+Jng25-CantorJungle  +
+Mos6-TaraMosses  ~
+Des17-NileCity  +
+	errors: // fixme
 
-TestC6-Temp -
-TestC8-Align
-TestC9-Jumps -
-TestC10-Pace
-TestC12-SR
-TestC13-Rivers
+Grc8-SlopeCity - model? crash
+Sur3-Chaotic  -
+Isl17-AdapterIslands  -
 
-Jng13-Tropic
-Jng20-JungleMaze
-For12-HighPeaks
-
-Tox2-AcidLakes
-Atm3-Orange
-Isl10-Treasure
-Wnt2-Wet
-Wnt11-Glacier
-Wnt17-FrozenGarden
-
-Jng23-FollowValley -
-Jng25-CantorJungle
-For18-MountCaro
-Isl17-AdapterIslands
-Mos6-TaraMosses
-Isl16-SandyMountain
-
-Des11-PersianCity
-Des17-NileCity
-Grc8-SlopeCity -
-
-Grc10-BeachCity
-Aus10-PreythCity
-Grc13-YeleyStunts
-Isl19-Shocacosh
-
-Mrs1-Mars
-Cry1-CrystalMoon
-
-Sur5-FreshBreeze
-Sur1-Surreal
-Sur3-Chaotic -
-
-Mud4-Taiga
-Can3-Vast
-Fin1-Lakes
-Atm9-SchwabAutumn 5m!
-
-Vlc4-Spikeland
-Vlc5-Sad
-Vlc12-LavaPools
+Atm9-SchwabAutumn  -5m! tris trees
+Vlc4-Spikeland  -ter fps low
+Cry1-CrystalMoon  -cry glow bad
 
 */
