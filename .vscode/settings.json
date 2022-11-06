@@ -4,13 +4,13 @@
   "files.associations": {
     "*.any": "c",
     "*.glsl": "c",
-    "*.material": "json",
+    "*.material": "csharp",
     "*.compositor": "json",
     "*.particle": "c",
     "*.mat": "c",
     "*.car": "ini",
     "*.ini": "ruby",
-    "*.layout": "xml",
+    "*.layout": "xml"
   },
   "files.exclude": {
         ".vscode": false,
