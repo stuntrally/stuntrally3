@@ -672,14 +672,15 @@ void SplineRoad::createSeg_Meshes(
 	//  add Mesh to Scene  -----------------------------------------
 	Item* it = 0, *itW = 0, *itC = 0, *itB = 0;
 	SceneNode* node = 0, *nodeW = 0, *nodeC = 0, *nodeB = 0;
+	String sr, sw;
 
 	//  road
 	if (HasRoad())
 	{
-		AddMesh(mesh, sMesh, aabox, &it, &node, "."+sEnd);
-		// it->setRenderQueueGroup(  // ?
-		// 	IsTrail() ? /*RQG_RoadBlend :*/ RQG_Hud1 :
-		// 	pipeGlass || IsRiver() ? RQG_PipeGlass : RQG_Road);
+		sr = AddMesh(mesh, sMesh, aabox, &it, &node, "."+sEnd);
+		it->setRenderQueueGroup(  // ?
+			IsTrail() ? /*RQG_RoadBlend :*/ RQG_Hud1 :
+			pipeGlass || IsRiver() ? RQG_PipeGlass : RQG_Road);
 		if (IsTrail())
 			it->setVisibilityFlags(RV_Hud);
 
@@ -708,6 +709,8 @@ void SplineRoad::createSeg_Meshes(
 #endif
 	
 	//>>  store ogre data  ------------
+	LogO(sMesh +" "+ sEnd +"  R "+ rs.sMtrRd +" "+ sr +"  W  "+ sw + " " + rs.sMtrWall);
+
 	int lod = DL.lod;
 	rs.road[lod].node = node;	rs.wall[lod].node = nodeW;	 rs.blend[lod].node = nodeB;
 	rs.road[lod].it = it;		rs.wall[lod].it = itW;		 rs.blend[lod].it = itB;
