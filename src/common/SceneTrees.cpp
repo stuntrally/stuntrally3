@@ -290,17 +290,25 @@ void CScene::CreateTrees()
 				Item *item = mgr->createItem( file,
 					ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
 				item->setVisibilityFlags(RV_Vegetation);
+				item->setRenderingDistance( 1000.f );  // how far visible  // todo: par * scale ..
 				vegetItems.push_back(item);
 
 				SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
 				node->attachObject( item );
 				node->scale( scl * Vector3::UNIT_SCALE );
 				// pos.y += std::min( item->getLocalAabb().getMinimum().y, Real(0.0f) ) * -0.1f + lay.down;  //par
+				// todo: ter h in few +-xz, get lowest ..
 				node->setPosition( pos );
 
 				Degree a( Math::RangeRandom(0, 360.f) );
 				Quaternion q;  q.FromAngleAxis( a, Vector3::UNIT_Y );
-				node->setOrientation( q );
+				if (0) //pg.tilt)
+				{
+					Degree at( Math::RangeRandom(0, 20.f) );  // todo: par tilt ..
+					Quaternion qt;  qt.FromAngleAxis( -at, Vector3::UNIT_Z );
+					node->setOrientation( qt * q );
+				}else
+					node->setOrientation( q );
 				vegetNodes.push_back(node);
 				//  ****************************
 				
