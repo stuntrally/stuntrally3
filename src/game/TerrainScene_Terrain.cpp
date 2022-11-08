@@ -131,6 +131,7 @@ namespace Demo
 			{	tblock->setTexture( TERRA_DETAIL0_NM + i, tex );
 				tblock->setSamplerblock( TERRA_DETAIL0_NM + i, sampler );
 			}
+			n_h = d_s = "white.png";
 			tex = texMgr->createOrRetrieveTexture(n_h,
 				GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 			if (tex)
@@ -145,8 +146,8 @@ namespace Demo
 			}
 			Real sc = fTer / l.tiling;
 			tblock->setDetailMapOffsetScale( i, Vector4(0,0, sc,sc) );
-			tblock->setMetalness(i, 0.9);
-			tblock->setRoughness(i, 0.2);
+			tblock->setMetalness(i, 0.1);
+			tblock->setRoughness(i, 0.5);
 		}
 		// const HlmsSamplerblock *sam = tblock->getSamplerblock( TERRA_DETAIL0 );
 		// sam->setTexture()

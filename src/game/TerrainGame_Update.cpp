@@ -1,3 +1,4 @@
+#include "OgreVector3.h"
 #include "TerrainGame.h"
 #include "CameraController.h"
 #include "GraphicsSystem.h"
@@ -192,7 +193,7 @@ namespace Demo
 			AtmosphereNpr *atmosphere = static_cast<AtmosphereNpr*>( sceneManager->getAtmosphere() );
 			AtmosphereNpr::Preset p = atmosphere->getPreset();
 
-			float mul1 = 1.f + 0.003f * mul * d;
+			float mul1 = 1.f + 0.01f * mul * d;  //par
 			switch (param)
 			{
 			case 0:  p.fogDensity *= mul1;  break;
@@ -241,7 +242,8 @@ namespace Demo
 			// user in this sample with higher framerates than what he may encounter in many of
 			// his possible uses.
 			const float lightEpsilon = 0.0001f;  //** 0.0f slow
-			mTerra->update( sun->getDerivedDirectionUpdated(), lightEpsilon );
+			mTerra->update( !sun ? -Vector3::UNIT_Y :
+				sun->getDerivedDirectionUpdated(), lightEpsilon );
 		}
 
 		generateDebugText();

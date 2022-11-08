@@ -58,16 +58,27 @@ void CScene::CreateSun()
 {
 	LogO("---- create sun");
 	auto *mgr = app->mSceneMgr;
+	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 	sun = mgr->createLight();
 	sun->setType( Light::LT_DIRECTIONAL );
 
-	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 	ndSun = rootNode->createChildSceneNode();
 	ndSun->attachObject( sun );
 
-	// mSunLight->setPowerScale( 1.f );  // should be * 1..
-	sun->setPowerScale( Math::PI * 2.5 );  //** par! 1.5 2 3* 4
+	sun->setPowerScale( 1.f );  // should be * 1..
+	// sun->setPowerScale( Math::PI * 2.5 );  //** par! 1.5 2 3* 4
 	UpdSun();
+
+	/*Light* light = mgr->createLight();  // nothing..?
+	auto* lightNode = rootNode->createChildSceneNode();
+	lightNode->attachObject( light );
+	light->setDiffuseColour( 0.8f, 0.4f, 0.2f );  // Warm
+	light->setSpecularColour( 0.8f, 0.4f, 0.2f );
+	light->setPowerScale( Ogre::Math::PI * 6 );
+	light->setType( Ogre::Light::LT_POINT );
+	lightNode->setPosition( 8.0f, -7.0f, -5.0f );
+	light->setDirection( Ogre::Vector3( 0, -1, 0 ).normalisedCopy() );
+	light->setAttenuationBasedOnRadius( 20.0f, 0.01f );*/
 }
 
 void CScene::DestroySun()
@@ -92,6 +103,8 @@ void CScene::CreateFog()
 	LogO("---- create Atmosphere");
 	auto *mgr = app->mSceneMgr;
 
+if (0)  // fixme atmo only fog
+{
 	atmo = OGRE_NEW AtmosphereNpr( app->mRoot->getRenderSystem()->getVaoManager() );
 
 	atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
@@ -100,6 +113,7 @@ void CScene::CreateFog()
 	
 	OGRE_ASSERT_HIGH( dynamic_cast<AtmosphereNpr*>( mgr->getAtmosphere() ) );
 	atmo = static_cast<AtmosphereNpr*>( mgr->getAtmosphere() );
+}
 	UpdFog();
 }	
 
@@ -115,6 +129,7 @@ void CScene::DestroyFog()
 
 void CScene::UpdFog()
 {
+	if (!atmo || !sun)  return;
 	AtmosphereNpr::Preset p = atmo->getPreset();
 	p.fogDensity = 2000.f / sc->fogEnd * 0.0004f;  //** par
 	p.densityCoeff = 0.27f;  //0.47f;
@@ -225,13 +240,19 @@ void CScene::UpdSun()
 	if (!sun)  return;
 	Vector3 dir = SplineRoad::GetRot(sc->ldYaw - sc->skyYaw, -sc->ldPitch);
 	sun->setDirection(dir);
-	sun->setDiffuseColour(0.1, 1.0, 0.1);// sc->lDiff.GetClr());
-	sun->setSpecularColour(0.1, 0.1, 1.0);//sc->lSpec.GetClr());
+	// sun->setDiffuseColour( 0.0, 1.0, 0.0);
+	// sun->setSpecularColour(0.0, 0.0, 1.0);
+	// sun->setDiffuseColour( 1.0, 1.0, 1.0);
+	// sun->setSpecularColour(1.0, 1.0, 1.0);
+	sun->setDiffuseColour( sc->lDiff.GetClr() * 3.f );
+	sun->setSpecularColour(sc->lSpec.GetClr() * 1.f );
 
 	//  ambient
 	app->mSceneMgr->setAmbientLight(
-		sc->lAmb.GetClr() * 0.2f,
-		sc->lAmb.GetClr() * 0.1f,
+		sc->lAmb.GetClr() * 1.5f,
+		sc->lAmb.GetClr() * 1.5f,
+		// ColourValue( 1.f, 0.f, 0.f ) * 0.1f,
+		// ColourValue( 0.f, 1.f, 0.f ) * 0.1f,
 
 		// ColourValue( 0.99f, 0.94f, 0.90f ) * 0.04f,  //** par
 		// ColourValue( 0.90f, 0.93f, 0.96f ) * 0.04f,
@@ -240,8 +261,9 @@ void CScene::UpdSun()
 		// ColourValue( 0.52f, 0.63f, 0.76f ) * 0.04f,
 
 		// ColourValue( 0.93f, 0.91f, 0.38f ) * 0.04f,
-		// ColourValue( 0.22f, 0.53f, 0.96f ) * 0.04f,
-		-dir );
+		// ColourValue( 0.22f, 0.53f, 0.96f ) * 0.01f,
+		-dir,
+		0.8f, 0x0 );  // env? EnvFeatures_DiffuseGiFromReflectionProbe
 		// -dir + Ogre::Vector3::UNIT_Y * 0.2f );
 
 	if (atmo)
