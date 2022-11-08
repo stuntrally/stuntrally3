@@ -54,23 +54,25 @@ void SplineRoad::CreateMesh(SubMesh* subMesh, Aabb& aabox,
 
 
 	// Vertex declaration
+	uint vertSize = 0;
 	VertexElement2Vec vertexElements;
-	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );
-	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_NORMAL ) );
-	vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );
-	bool bClr = clr.size() > 0;
-	if (bClr)
-		vertexElements.push_back( VertexElement2( VET_FLOAT4, VES_DIFFUSE ) );
+	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );  vertSize += 3;
+	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_NORMAL ) );    vertSize += 3;
+	vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  vertSize += 2;
+	// vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  vertSize += 2;  //2nd uv-
+	bool hasClr = clr.size() > 0;
+	if (hasClr)
+	{	vertexElements.push_back( VertexElement2( VET_FLOAT4, VES_DIFFUSE ) );  vertSize += 4;  }
 
 
 	//  vertex data  ------------------------------------------
 	uint vertCnt = pos.size();
-	uint vertSize = (3 + 3 + 2 + (bClr ? 4 : 0)) * sizeof( float );
+	vertSize *= sizeof( float );
 	float *vertices = reinterpret_cast<float *>(
 		OGRE_MALLOC_SIMD( sizeof( float ) * vertSize * vertCnt, MEMCATEGORY_GEOMETRY ) );
 	
 	uint a = 0;
-	if (bClr)
+	if (hasClr)
 	for (uint i=0; i < vertCnt; ++i)
 	{
 		vertices[a++] = pos[i].x;   vertices[a++] = pos[i].y;   vertices[a++] = pos[i].z;  aabox.merge(pos[i]);
@@ -83,6 +85,7 @@ void SplineRoad::CreateMesh(SubMesh* subMesh, Aabb& aabox,
 		vertices[a++] = pos[i].x;   vertices[a++] = pos[i].y;   vertices[a++] = pos[i].z;  aabox.merge(pos[i]);
 		vertices[a++] = norm[i].x;  vertices[a++] = norm[i].y;  vertices[a++] = norm[i].z;
 		vertices[a++] = tcs[i].x;   vertices[a++] = tcs[i].y;
+		// vertices[a++] = tcs[i].x;   vertices[a++] = tcs[i].y;  //2nd uv-
 	}
 
 	VertexBufferPacked *vertexBuffer = 0;
@@ -172,7 +175,7 @@ void SplineRoad::CreateMesh(SubMesh* subMesh, Aabb& aabox,
 //  add mesh to scene
 //---------------------------------------------------------
 
-void SplineRoad::AddMesh(MeshPtr mesh, String sMesh, const Aabb& aabox,
+String SplineRoad::AddMesh(MeshPtr mesh, String sMesh, const Aabb& aabox,
 	Item** pIt, SceneNode** pNode, String sEnd)
 {
 	mesh->_setBounds(aabox, false);  //?
@@ -181,16 +184,17 @@ void SplineRoad::AddMesh(MeshPtr mesh, String sMesh, const Aabb& aabox,
 	//mesh->arrangeEfficient(false, false, true);
 
 	//  tangents-
-	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create("v1"+sMesh, "General");
+	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create("v1"+sMesh+sEnd, "General");
 	m1->importV2(mesh.get());
 	unsigned short src, dest;
 	m1->buildTangentVectors(VES_TANGENT, src, dest);
 	mesh->importV1(m1.get(), false, false, false);
 	// mesh->importV1(m1.get(), true, true, true);
+	// m1->unload();  //?
 	//mesh->load();
 
 	//  item
-	*pIt = mSceneMgr->createItem( sMesh, "General", Ogre::SCENE_STATIC );
+	*pIt = mSceneMgr->createItem( mesh, Ogre::SCENE_STATIC );
 	*pNode = mSceneMgr->getRootSceneNode( SCENE_STATIC )->createChildSceneNode( SCENE_STATIC );
 	(*pNode)->attachObject(*pIt);
 	(*pIt)->setVisible(false);  (*pIt)->setCastShadows(false);
@@ -209,6 +213,16 @@ void SplineRoad::AddMesh(MeshPtr mesh, String sMesh, const Aabb& aabox,
 	datablock->setSamplerblock( PBSM_NORMAL, sampler );
 	datablock->setSamplerblock( PBSM_METALLIC, sampler );
 	datablock->setSamplerblock( PBSM_ROUGHNESS, sampler );/**/
+
+	//  alpha ?..
+	// datablock->setDetailMapBlendMode(0, Ogre::PBSM_BLEND_NORMAL_NON_PREMUL/* PBSM_BLEND_NORMAL_PREMUL*/);
+	// datablock->setDetailMapWeight(0, 0.5);
+	// datablock->setDetailMapOffsetScale(0, Vector4(0,0,2,4));
+	// datablock->setTexture(PBSM_DETAIL_WEIGHT, const String &name)
+	// datablock->setTexture(PBSM_DETAIL0, "roadAlpha.png");
+	//  datablock->setTexture(PBSM_DETAIL0, "roadGlassC_dirt2.png");
+
+	return datablock->getName().getReleaseText();
 }
 
 
@@ -268,46 +282,28 @@ try
 		if (rs.wall[l].it)  // ] wall
 		{
 			mSceneMgr->destroySceneNode(rs.wall[l].node);
-			// rs.wall[l].node->detachAllObjects();
-			// #ifdef SR_EDITOR
 			mSceneMgr->destroyItem(rs.wall[l].it);
 			MeshManager::getSingleton().remove(rs.wall[l].smesh);
-			// #endif
-			// rs.wall[l].node->getParentSceneNode()->detachObject(0);
-			// MeshManager::getSingleton().remove(rs.wall[l].smesh);
 		}
 		if (rs.blend[l].it)  // > blend
 		{
-			// rs.blend[l].node->detachAllObjects();
-			// #ifdef SR_EDITOR
 			mSceneMgr->destroySceneNode(rs.blend[l].node);
 			mSceneMgr->destroyItem(rs.blend[l].it);
-			// #endif
 			MeshManager::getSingleton().remove(rs.blend[l].smesh);
 		}
 	}
 	if (rs.col.it)  // | column
 	{
-		// #ifdef SR_EDITOR
 		mSceneMgr->destroySceneNode(rs.col.node);
-		// rs.col.node->detachAllObjects();
 		mSceneMgr->destroyItem(rs.col.it);
-		// #endif
 		MeshManager::getSingleton().remove(rs.col.smesh);
 	}
 	for (int l=0; l < LODs; ++l)
-	if (rs.road[l].it)
+	if (rs.road[l].it)  // - road
 	{
-		// rs.road[l].node->detachAllObjects();
 		mSceneMgr->destroySceneNode(rs.road[l].node);
-		// if (IsTrail())
 		mSceneMgr->destroyItem(rs.road[l].it);
-		// #ifdef SR_EDITOR  //_crash in game (destroy all ents is before)
-		// mSceneMgr->destroyItem(rs.road[l].ent);
-		// #endif
-		// if (MeshManager::getSingleton().resourceExists(rs.road[l].smesh))
 		MeshManager::getSingleton().remove(rs.road[l].smesh);
-		//Resource* r = ResourceManae::getSingleton().remove(rs.road[l].smesh);
 	}
 }catch (Exception ex)
 {

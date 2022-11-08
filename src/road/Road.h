@@ -132,7 +132,7 @@ private:
 		const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm, const std::vector<Ogre::Vector4>& clr,
 		const std::vector<Ogre::Vector2>& tcs, const std::vector<Ogre::uint16>& idx, Ogre::String sMtrName);
 
-	void AddMesh( Ogre::MeshPtr mesh, Ogre::String sMesh, const Ogre::Aabb& aabox,
+	Ogre::String AddMesh( Ogre::MeshPtr mesh, Ogre::String sMesh, const Ogre::Aabb& aabox,
 		Ogre::Item** pIt, Ogre::SceneNode** pNode, Ogre::String sEnd);
 
 	std::vector<Ogre::uint16>    idx, idxB;	  // mesh indices
