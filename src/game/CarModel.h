@@ -126,6 +126,7 @@ public:
 	Ogre::SceneNode* pMainNode, *ndSph;
 	Ogre::Vector3 posSph[2];
 	Ogre::v1::BillboardSet* brakes;
+	std::vector<Ogre::Light*> lights;
 	
 	void setVisible(bool visible);  // hide/show
 	bool mbVisible;  float hideTime;

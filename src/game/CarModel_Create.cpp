@@ -196,6 +196,10 @@ void CarModel::Destroy()
 	// for (i=0; i < NumMaterials; ++i)
 	// 	if (MaterialManager::getSingleton().resourceExists(sMtr[i]))
 	// 		MaterialManager::getSingleton().remove(sMtr[i], resGrpId);
+	
+	for (auto l:lights)
+		mSceneMgr->destroyLight(l);
+	lights.clear();
 
 	s = vDelIt.size();
 	for (i=0; i < s; ++i)  mSceneMgr->destroyItem(vDelIt[i]);
@@ -531,16 +535,22 @@ void CarModel::Create()
 	vPofs = Vector3::ZERO;
 	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    "g", ghost, RV_CarGlass, 0, sMtr[Mtr_CarBody]+"g",  bLogInfo);
 	
-#if 0  //  lights test ** ?
+#if 1  //  lights test **  // par set..
+for (int i=0; i < 2; ++i)
+{
 	Light* light = mSceneMgr->createLight();
-	SceneNode* lightNode = ndCar->createChildSceneNode(SCENE_DYNAMIC, Vector3(0.0f, 2.0f, 2.0f) );
+	SceneNode* lightNode = ndCar->createChildSceneNode(SCENE_DYNAMIC, Vector3(-1.1, 0.0, i ? -0.6 : 0.6) );
 	lightNode->attachObject( light );
-	light->setDiffuseColour( 1.f, 1.f, 1.f );  // Warm
-	light->setSpecularColour( 1.f, 1.f, 1.f );
-	light->setPowerScale( Ogre::Math::PI );
-	light->setType( Ogre::Light::LT_POINT); // SPOTLIGHT );
-	light->setDirection( Ogre::Vector3( 1, 0, 0 ).normalisedCopy() );
-	light->setAttenuationBasedOnRadius( 10.0f, 0.01f );
+	light->setDiffuseColour( 1.f, 1.1f, 1.1f );
+	light->setSpecularColour( 1.f, 1.1f, 1.1f );
+	light->setPowerScale( Ogre::Math::PI * 3 );
+	light->setType( Ogre::Light::LT_SPOTLIGHT );
+	light->setDirection( Ogre::Vector3( -1, 0.1, 0 ).normalisedCopy() );
+	light->setAttenuationBasedOnRadius( 30.0f, 0.01f );
+    light->setSpotlightRange(Degree(5), Degree(30), 1.0f );  //par
+	light->setCastShadows(false);
+	lights.push_back(light);
+}
 #endif
 
 	//  wheels  ----------------------

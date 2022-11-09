@@ -59,6 +59,9 @@ void CScene::CreateSun()
 	LogO("---- create sun");
 	auto *mgr = app->mSceneMgr;
 	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
+	
+	mgr->setForwardClustered( true, 16, 8, 24, 4, 0, 2, 2, 50 );  // for more lights
+
 	sun = mgr->createLight();
 	sun->setType( Light::LT_DIRECTIONAL );
 
@@ -68,17 +71,6 @@ void CScene::CreateSun()
 	sun->setPowerScale( 1.f );  // should be * 1..
 	// sun->setPowerScale( Math::PI * 2.5 );  //** par! 1.5 2 3* 4
 	UpdSun();
-
-	/*Light* light = mgr->createLight();  // nothing..?
-	auto* lightNode = rootNode->createChildSceneNode();
-	lightNode->attachObject( light );
-	light->setDiffuseColour( 0.8f, 0.4f, 0.2f );  // Warm
-	light->setSpecularColour( 0.8f, 0.4f, 0.2f );
-	light->setPowerScale( Ogre::Math::PI * 6 );
-	light->setType( Ogre::Light::LT_POINT );
-	lightNode->setPosition( 8.0f, -7.0f, -5.0f );
-	light->setDirection( Ogre::Vector3( 0, -1, 0 ).normalisedCopy() );
-	light->setAttenuationBasedOnRadius( 20.0f, 0.01f );*/
 }
 
 void CScene::DestroySun()
