@@ -48,29 +48,39 @@
 //  bridges  base  -------------
 hlms road pbs
 {
-	// scene_blend alpha_blend
-	// alphaMap white.png  //
 	depth_bias 3
+	scene_blend alpha_blend
+	// alphaMap white.png  //
 	// road_blend true
 
 	// specular_map roadAsphalt_spec.jpg
 	// specMap_rgb true
-	fresnel	1.33 1.33 1.2
-	roughness 0.3
-	metalness 0.4
+	// fresnel	1.33 1.33 1.2
+	roughness 0.1
+	metalness 0.1
+
+	fresnel	2.13
+	// ambient  1.0 0.0 0.0
+	// diffuse  1.0 0.0 0.0
+	// specular 0.0 0.0 0.5 //48
 }
 //  on terrain  base  -------------
 hlms road_terrain pbs
 {
-	depth_write off
-	// scene_blend alpha_blend
-	// alphaMap roadAlpha.png  // todo: 
 	depth_bias 3
-	// terrain_light_map true
+	// depth_write off
+	scene_blend alpha_blend
+	// transparency 0.7
+	// transparency_mode transparent
+
+	// alphaMap roadAlpha.png  // todo: 
 	// road_blend true
 	fresnel	3.1
 	roughness 0.5
 	metalness 0.1
+	// ambient  1.0 0.0 1.0
+	// diffuse  0.0 0.7 0.7
+	// specular 0.0 0.3 0.0 //48
 }
 
 
@@ -83,17 +93,17 @@ hlms trailRoad pbs
 	// alphaMap white.png
 
 	depth_bias 3
-	depth_check off
+	// depth_check off
 	//depth_write off
 	cull_mode none
 	// fog_override true
-	twoside true
+	// twoside true
 	// receives_shadows false
 
 	// diffuse_map  white.png
 	ambient 1 1 1
 	diffuse 0 0 0
-	specular 0 0 1 //32
+	specular 0 0 0 //32
 }
 
 
@@ -102,7 +112,7 @@ hlms trailRoad pbs
 hlms roadJungle pbs : road
 {
 	diffuse_map  roadJungle.jpg
-	ambient  1.0 1.0 1.0
+	// ambient  1.0 1.0 1.0
 	diffuse  0.7 0.7 0.7
 	specular 0.3 0.3 0.25 //48
 }
@@ -110,7 +120,7 @@ hlms roadJungle_ter pbs : road_terrain
 {
 	diffuse_map  roadJungle.jpg
 	normal_map   normal_2.png
-	ambient  1.02 1.0 1.0
+	// ambient  1.02 1.0 1.0
 	diffuse  0.65 0.65 0.65
 	specular 0.2 0.2 0.15 //32
 }
