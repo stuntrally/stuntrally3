@@ -485,9 +485,6 @@ void SplineRoad::createSeg_Meshes(
 	const DataLodMesh& DLM,
 	DataSeg& DS, RoadSeg& rs)
 {
-	String sEnd = toStr(idStr) + "_" + toStr(idRd);  ++idStr;
-	String sMesh = "rd.mesh." + sEnd, sMeshW = sMesh + "W", sMeshC = sMesh + "C", sMeshB = sMesh + "B";
-
 	posBt.clear();
 	idx.clear();  // set for addTri
 	idxB.clear();
@@ -570,26 +567,28 @@ void SplineRoad::createSeg_Meshes(
 	blendTri = false;
 
 
-	//  create Ogre Mesh
+	//  create Ogre Meshes
 	//-----------------------------------------
-	MeshPtr meshOld = MeshManager::getSingleton().getByName(sMesh);
-	if (meshOld)  LogR("Mesh exists !!!" + sMesh);
+	const String sEnd = toStr(idStr) + "_" + toStr(idRd);  ++idStr;
+	const String sMesh = "rd.mesh." + sEnd,
+		sMeshW = sMesh + "W", sMeshC = sMesh + "C", sMeshB = sMesh + "B";
+	const int lod = DL.lod;
 
-	Aabb aabox;
-	SubMesh* sm;
-	MeshPtr mesh, meshW, meshC, meshB;  // ] | >
+	const bool wall = !DLM.posW.empty();
+	const bool pipeGlass = DS.pipe && bMtrPipeGlass[ mP[seg].idMtr ];  // pipe glass mtr
+
+
 	if (HasRoad())
 	{
-		mesh = MeshManager::getSingleton().createManual(sMesh, "General");
-		sm = mesh->createSubMesh();
-		CreateMesh(sm, aabox, DLM.pos,DLM.norm,DLM.clr,DLM.tcs, idx, rs.sMtrRd);
+		LogO("---- Create Road seg " + rs.road[lod].smesh);
+		CreateMesh(rs.road[lod], sMesh, rs.sMtrRd,
+			DLM.pos, DLM.norm, DLM.clr, DLM.tcs, idx);
 	}
 
-	bool wall = !DLM.posW.empty();
 	if (wall)
 	{
-		meshW = MeshManager::getSingleton().createManual(sMeshW,"General");
-		meshW->createSubMesh();
+		// meshW = MeshManager::getSingleton().createManual(sMeshW,"General");
+		// meshW->createSubMesh();
 	}
 	bool cols = !DLM.posC.empty() && DL.isLod0;  // cols have no lods
 	/*if (cols)  // fixme
@@ -608,7 +607,6 @@ void SplineRoad::createSeg_Meshes(
 
 	///  wall ]
 	//------------------------------------------------------------------------------------
-	bool pipeGlass = DS.pipe && bMtrPipeGlass[ mP[seg].idMtr ];  // pipe glass mtr
 	if (wall)
 	{
 		idx.clear();
@@ -638,10 +636,14 @@ void SplineRoad::createSeg_Meshes(
 			vSegs[seg].nTri[DL.lod] += idx.size()/3;
 		}
 		
-		sm = meshW->getSubMesh(0);   // for glass only..
-		rs.sMtrWall = !pipeGlass ? sMtrWall : sMtrWallPipe;
+		// sm = meshW->getSubMesh(0);   // for glass only..
 		if (!DLM.posW.empty())
-			CreateMesh(sm, aabox, DLM.posW,DLM.normW,DLM.clr0,DLM.tcsW, idx, rs.sMtrWall);
+		{
+			rs.sMtrWall = !pipeGlass ? sMtrWall : sMtrWallPipe;
+
+			CreateMesh(rs.wall[lod], sMesh+"W", rs.sMtrWall,
+				DLM.posW, DLM.normW, DLM.clr0, DLM.tcsW, idx);
+		}
 	}
 	
 	
@@ -670,14 +672,15 @@ void SplineRoad::createSeg_Meshes(
 	
 					
 	//  add Mesh to Scene  -----------------------------------------
-	Item* it = 0, *itW = 0, *itC = 0, *itB = 0;
-	SceneNode* node = 0, *nodeW = 0, *nodeC = 0, *nodeB = 0;
-	String sr, sw;
+	// Item* it = 0, *itW = 0, *itC = 0, *itB = 0;
+	// SceneNode* node = 0, *nodeW = 0, *nodeC = 0, *nodeB = 0;
+	// String sr, sw;
 
 	//  road
 	if (HasRoad())
 	{
-		sr = AddMesh(mesh, sMesh, aabox, &it, &node, "."+sEnd);
+		auto it = rs.road[lod].it;
+		// sr = AddMesh(mesh, sMesh, aabox, &it, &node, "."+sEnd);
 		it->setRenderQueueGroup(  // ?
 			IsTrail() ? /*RQG_RoadBlend :*/ RQG_Hud1 :
 			pipeGlass || IsRiver() ? RQG_PipeGlass : RQG_Road);
@@ -687,11 +690,11 @@ void SplineRoad::createSeg_Meshes(
 		if (bCastShadow && !DS.onTer && !IsRiver())
 			it->setCastShadows(true);
 	}
-	if (wall)
+	/*if (wall)
 	{
 		AddMesh(meshW, sMeshW, aabox, &itW, &nodeW, "W."+sEnd);
 		itW->setCastShadows(true);
-	}
+	}*/
 #if 0  // fixme
 	if (cols)
 	{
@@ -709,9 +712,9 @@ void SplineRoad::createSeg_Meshes(
 #endif
 	
 	//>>  store ogre data  ------------
-	LogO(sMesh +" "+ sEnd +"  R "+ rs.sMtrRd +" "+ sr +"  W  "+ sw + " " + rs.sMtrWall);
+	// LogO(sMesh +" "+ sEnd +"  R "+ rs.sMtrRd +" "+ sr +"  W  "+ sw + " " + rs.sMtrWall);
 
-	int lod = DL.lod;
+	/*int lod = DL.lod;
 	rs.road[lod].node = node;	rs.wall[lod].node = nodeW;	 rs.blend[lod].node = nodeB;
 	rs.road[lod].it = it;		rs.wall[lod].it = itW;		 rs.blend[lod].it = itB;
 	rs.road[lod].mesh = mesh;	rs.wall[lod].mesh = meshW;	 rs.blend[lod].mesh = meshB;
@@ -720,7 +723,7 @@ void SplineRoad::createSeg_Meshes(
 		rs.col.node = nodeC;
 		rs.col.it = itC;
 		rs.col.mesh = meshC;
-		rs.col.smesh = sMeshC;  }
+		rs.col.smesh = sMeshC;  }*/
 	rs.empty = false;  // new
 }
 

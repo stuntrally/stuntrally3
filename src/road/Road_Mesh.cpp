@@ -28,30 +28,29 @@ using namespace Ogre;
 //  Create Mesh
 //---------------------------------------------------------
 
-void SplineRoad::CreateMesh(SubMesh* subMesh, Aabb& aabox,
-	const std::vector<Vector3>& pos, const std::vector<Vector3>& norm, const std::vector<Vector4>& clr,
-	const std::vector<Vector2>& tcs, const std::vector<Ogre::uint16>& idx, String sMtrName)
+void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrName,
+	const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
+	const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,
+	const std::vector<Ogre::uint16>& idx)
 {
 	size_t i, si = pos.size();
 	if (si == 0)
 	{	LogO("Error:  Road CreateMesh 0 verts !");
 		return;
 	}
+	if (MeshManager::getSingleton().getByName(sMesh))
+		LogR("Mesh exists !!!" + sMesh);
+
+ 	Aabb aabox;
+ 	MeshPtr mesh = MeshManager::getSingleton().createManual(sMesh, "General");
+		//ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME );
+	SubMesh* subMesh = mesh->createSubMesh();
 
     //-----------------------------------------------------------------------------------
     bool partialMesh = false;
 	Root *root = pGame->app->mainApp->mGraphicsSystem->getRoot();
 	RenderSystem *renderSystem = root->getRenderSystem();
 	VaoManager *vaoManager = renderSystem->getVaoManager();
-
-	// Create the mesh
-	/*MeshPtr mesh = MeshManager::getSingleton().createManual(
-		partialMesh ? "My PartialMesh" : "My StaticMesh",
-		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME );*/
-
-	// Create one submesh
-	// SubMesh *subMesh = mesh->createSubMesh();
-
 
 	// Vertex declaration
 	uint vertSize = 0;
@@ -93,7 +92,7 @@ void SplineRoad::CreateMesh(SubMesh* subMesh, Aabb& aabox,
 	{
 	#if USE_UMA_SHARED_BUFFERS
 		const RenderSystemCapabilities *caps = renderSystem->getCapabilities();
-		if(caps && caps->hasCapability(RSC_UMA))
+		if (caps && caps->hasCapability(RSC_UMA))
 		{
 			vertexBuffer = vaoManager->createVertexBuffer(
 				vertexElements, vertCnt, BT_DEFAULT_SHARED, &vertices[0], true );
@@ -102,7 +101,7 @@ void SplineRoad::CreateMesh(SubMesh* subMesh, Aabb& aabox,
 			vertexBuffer = vaoManager->createVertexBuffer(
 				vertexElements, vertCnt, partialMesh ? BT_DEFAULT : BT_IMMUTABLE, &vertices[0], true );
 	}
-	catch( Exception &e )
+	catch (Exception &e)
 	{
 		// we passed keepAsShadow = true to createVertexBuffer, thus Ogre will free the pointer
 		// if keepAsShadow = false, YOU need to free the pointer
@@ -163,42 +162,31 @@ void SplineRoad::CreateMesh(SubMesh* subMesh, Aabb& aabox,
 
 	subMesh->arrangeEfficient(false, false, true);  // no?
 
-	/*  old
-	HardwareVertexBufferSharedPtr vbuffer = HardwareBufferManager::getSingleton().createVertexBuffer(
-		decl->getVertexSize(0), si, HardwareBuffer::HBU_STATIC);
-	float* vp = static_cast<float*>(vbuffer->lock(HardwareBuffer::HBL_DISCARD));
-		HardwareIndexBuffer::IT_16BIT, id->indexCount, HardwareBuffer::HBU_STATIC);*/
+
+	//  add mesh to scene
+	//---------------------------------------------------------
 	subMesh->setMaterialName(sMtrName);
-}
 
-
-//  add mesh to scene
-//---------------------------------------------------------
-
-String SplineRoad::AddMesh(MeshPtr mesh, String sMesh, const Aabb& aabox,
-	Item** pIt, SceneNode** pNode, String sEnd)
-{
 	mesh->_setBounds(aabox, false);  //?
 	mesh->_setBoundingSphereRadius((aabox.getMaximum() - aabox.getMinimum()).length() / 2.0);  
-	//mesh->setManuallyLoaded(false);
-	//mesh->arrangeEfficient(false, false, true);
 
 	//  tangents-
-	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create("v1"+sMesh+sEnd, "General");
+	String s1 = sMesh+"v1", s2 = sMesh+"v2";
+	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create(s1, "General");
 	m1->importV2(mesh.get());
-	unsigned short src, dest;
-	m1->buildTangentVectors(VES_TANGENT, src, dest);
-	mesh->importV1(m1.get(), false, false, false);
-	// mesh->importV1(m1.get(), true, true, true);
-	// m1->unload();  //?
-	//mesh->load();
+	m1->buildTangentVectors();
+	mesh = MeshManager::getSingleton().createByImportingV1(s2, "General", m1.get(), false,false,true);
+	MeshManager::getSingleton().remove(sMesh);  // not needed
 
-	//  item
-	*pIt = mSceneMgr->createItem( mesh, Ogre::SCENE_STATIC );
-	*pNode = mSceneMgr->getRootSceneNode( SCENE_STATIC )->createChildSceneNode( SCENE_STATIC );
-	(*pNode)->attachObject(*pIt);
-	(*pIt)->setVisible(false);  (*pIt)->setCastShadows(false);
-	(*pIt)->setVisibilityFlags(RV_Road);
+
+	//  add mesh to scene
+	//---------------------------------------------------------
+	Item* it = mSceneMgr->createItem(s2, "General", Ogre::SCENE_STATIC );
+	// *it = mSceneMgr->createItem( mesh, Ogre::SCENE_STATIC );
+	SceneNode* node = mSceneMgr->getRootSceneNode( SCENE_STATIC )->createChildSceneNode( SCENE_STATIC );
+	node->attachObject(it);
+	it->setVisible(false);  it->setCastShadows(false);//-
+	it->setVisibilityFlags(RV_Road);
 
 	//  wrap tex-
 	HlmsSamplerblock sampler;
@@ -208,7 +196,7 @@ String SplineRoad::AddMesh(MeshPtr mesh, String sMesh, const Aabb& aabox,
 	sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
 	assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( (*pIt)->getSubItem( 0 )->getDatablock() ) );
 	HlmsPbsDatablock *datablock =
-		static_cast<Ogre::HlmsPbsDatablock *>( (*pIt)->getSubItem( 0 )->getDatablock() );
+		static_cast<Ogre::HlmsPbsDatablock *>( it->getSubItem( 0 )->getDatablock() );
 	datablock->setSamplerblock( PBSM_DIFFUSE, sampler );
 	datablock->setSamplerblock( PBSM_NORMAL, sampler );
 	datablock->setSamplerblock( PBSM_METALLIC, sampler );
@@ -222,7 +210,12 @@ String SplineRoad::AddMesh(MeshPtr mesh, String sMesh, const Aabb& aabox,
 	// datablock->setTexture(PBSM_DETAIL0, "roadAlpha.png");
 	//  datablock->setTexture(PBSM_DETAIL0, "roadGlassC_dirt2.png");
 
-	return datablock->getName().getReleaseText();
+	sd.it = it;
+	sd.node = node;
+	sd.smesh = sMesh;
+	// sd.mesh = mesh;  sd.mesh1 = m1;
+
+	//LogO(sMesh + " " + datablock->getName().getReleaseText());  // hash
 }
 
 
@@ -256,6 +249,7 @@ void SplineRoad::addTri(int f1, int f2, int f3, int i)
 
 void SplineRoad::Destroy()  // full
 {
+	LogO("---- Destroy Road");
 	if (ndSel)	mSceneMgr->destroySceneNode(ndSel);
 	if (ndChosen)	mSceneMgr->destroySceneNode(ndChosen);
 	if (ndRot)	mSceneMgr->destroySceneNode(ndRot);
@@ -283,13 +277,28 @@ try
 		{
 			mSceneMgr->destroySceneNode(rs.wall[l].node);
 			mSceneMgr->destroyItem(rs.wall[l].it);
-			MeshManager::getSingleton().remove(rs.wall[l].smesh);
+
+			String sMesh = rs.wall[l].smesh, s1 = sMesh+"v1", s2 = sMesh+"v2";
+			MeshManager::getSingleton().remove(sMesh);
+			MeshManager::getSingleton().remove(s2);
+			v1::MeshManager::getSingleton().remove(s1);
 		}
 		if (rs.blend[l].it)  // > blend
 		{
 			mSceneMgr->destroySceneNode(rs.blend[l].node);
 			mSceneMgr->destroyItem(rs.blend[l].it);
 			MeshManager::getSingleton().remove(rs.blend[l].smesh);
+		}
+		if (rs.road[l].it)  // - road
+		{
+			// LogO("---- Destroy Road seg " + rs.road[l].smesh);
+			mSceneMgr->destroySceneNode(rs.road[l].node);
+			mSceneMgr->destroyItem(rs.road[l].it);
+
+			String sMesh = rs.road[l].smesh, s1 = sMesh+"v1", s2 = sMesh+"v2";
+			// MeshManager::getSingleton().remove(sMesh);
+			MeshManager::getSingleton().remove(s2);
+			v1::MeshManager::getSingleton().remove(s1);
 		}
 	}
 	if (rs.col.it)  // | column
@@ -298,14 +307,8 @@ try
 		mSceneMgr->destroyItem(rs.col.it);
 		MeshManager::getSingleton().remove(rs.col.smesh);
 	}
-	for (int l=0; l < LODs; ++l)
-	if (rs.road[l].it)  // - road
-	{
-		mSceneMgr->destroySceneNode(rs.road[l].node);
-		mSceneMgr->destroyItem(rs.road[l].it);
-		MeshManager::getSingleton().remove(rs.road[l].smesh);
-	}
-}catch (Exception ex)
+}
+catch (Exception ex)
 {
 	LogO(String("# Error! road DestroySeg") + ex.what());
 }

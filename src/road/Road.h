@@ -29,13 +29,16 @@ class btTriangleMesh;
 #define  LoopTypes  9  // for pace notes
 
 
+struct SegData
+{
+	//  ogre resources for 1 segment
+	Ogre::SceneNode* node =0;  Ogre::Item* it =0;
+	Ogre::String smesh;
+	// Ogre::MeshPtr mesh;  Ogre::v1::MeshPtr mesh1;
+};
+
 struct RoadSeg
 {
-	struct SegData
-	{	Ogre::SceneNode* node =0;  Ogre::Item* it =0;
-		Ogre::MeshPtr mesh;  Ogre::String smesh ="";
-	};
-	
 	SegData road[LODs], wall[LODs], col, blend[LODs];
 	Ogre::String sMtrRd,sMtrWall,sMtrB;
 	int mtrId = 0;
@@ -128,12 +131,10 @@ private:
 ///  ***  MESH  ****
 //---------------------------------------------------------------------------------------
 
-	void CreateMesh( Ogre::SubMesh* submesh, Ogre::Aabb& aabox,
-		const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm, const std::vector<Ogre::Vector4>& clr,
-		const std::vector<Ogre::Vector2>& tcs, const std::vector<Ogre::uint16>& idx, Ogre::String sMtrName);
-
-	Ogre::String AddMesh( Ogre::MeshPtr mesh, Ogre::String sMesh, const Ogre::Aabb& aabox,
-		Ogre::Item** pIt, Ogre::SceneNode** pNode, Ogre::String sEnd);
+	void CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrName, //Ogre::Aabb& aabox,
+		const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
+		const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,
+		const std::vector<Ogre::uint16>& idx);
 
 	std::vector<Ogre::uint16>    idx, idxB;	  // mesh indices
 
