@@ -879,7 +879,7 @@ void App::CreateRoadsInt()
 
 void App::CreateTrail(Camera* cam)
 {
-	// return;  //--
+	return;  //--
 	if (scn->trail)
 		scn->DestroyTrail();
 

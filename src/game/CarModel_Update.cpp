@@ -479,7 +479,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	{
 		if (ndBrake[w])
 		{
-			ndBrake[w]->_setDerivedOrientation( pMainNode->getOrientation() );
+			// fixme ? ndBrake[w]->_setDerivedOrientation( pMainNode->getOrientation() );
 			
 			// this transformation code is just so the brake mesh can have the same alignment as the wheel mesh
 			ndBrake[w]->yaw(Degree(-90), Node::TS_LOCAL);
@@ -564,15 +564,15 @@ void CarModel::UpdParsTrails(bool visible)
 	for (int w=0; w < numWheels; ++w)
 	{
 		uint8 grp = RQG_CarTrails;  //9=road  after glass
-		if (w < PAR_BOOST && parBoost[w]) {  parBoost[w]->setVisible(vis);  parBoost[w]->setRenderQueueGroup(grp);  }
-		if (whTrail[w]){  whTrail[w]->setVisible(visible && pSet->trails);  whTrail[w]->setRenderQueueGroup(grp);  }
+		if (w < PAR_BOOST && parBoost[w]) {  parBoost[w]->setVisible(vis);  /*parBoost[w]->setRenderQueueGroup(grp);*/  }
+		if (whTrail[w]){  whTrail[w]->setVisible(visible && pSet->trails);  /*whTrail[w]->setRenderQueueGroup(grp);*/  }
 		grp = RQG_CarParticles;
 		for (int p=0; p < PAR_ALL; ++p)
-			if (par[p][w]){  par[p][w]->setVisible(vis);  par[p][w]->setRenderQueueGroup(grp);  }
-		if (parHit && w==0)	{  parHit->setVisible(vis);  parHit->setRenderQueueGroup(grp);  }
+			if (par[p][w]){  par[p][w]->setVisible(vis);  /*par[p][w]->setRenderQueueGroup(grp);*/  }
+		if (parHit && w==0)	{  parHit->setVisible(vis);  /*parHit->setRenderQueueGroup(grp);*/  }
 	}
 	for (int w=0; w < PAR_THRUST*2; ++w)
-		if (parThrust[w]) {  parThrust[w]->setVisible(vis);  parThrust[w]->setRenderQueueGroup(RQG_CarTrails);  }
+		if (parThrust[w]) {  parThrust[w]->setVisible(vis);  /*parThrust[w]->setRenderQueueGroup(RQG_CarTrails);*/  }
 }
 
 

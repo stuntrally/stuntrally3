@@ -190,8 +190,10 @@ namespace Demo
 		if (d)
 		{
 			SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
-			AtmosphereNpr *atmosphere = static_cast<AtmosphereNpr*>( sceneManager->getAtmosphere() );
-			AtmosphereNpr::Preset p = atmosphere->getPreset();
+			AtmosphereNpr *atmo = static_cast<AtmosphereNpr*>( sceneManager->getAtmosphere() );
+			if (atmo)
+			{
+			AtmosphereNpr::Preset p = atmo->getPreset();
 
 			float mul1 = 1.f + 0.01f * mul * d;  //par
 			switch (param)
@@ -212,8 +214,8 @@ namespace Demo
 			case 13:  p.linkedSceneAmbientLowerPower *= mul1;  break;
 			case 14:  p.envmapScale *= mul1;  break;
 			}
-			atmosphere->setPreset(p);
-		}
+			atmo->setPreset(p);
+		}	}
 
 		//  Light  sun dir  ----
 		bool any = false;

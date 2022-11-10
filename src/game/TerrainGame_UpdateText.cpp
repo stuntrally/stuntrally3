@@ -156,8 +156,8 @@ namespace Demo
 		txt += "\n\n";
 
 		const auto* data = pApp->scn->data;
-		txt += "Track:  " + data->tracks->trks[idTrack].name +"\n";
-		txt += "Car:  "   + data->cars->cars[idCar].id + " " + data->cars->cars[idCar].name +"\n\n";
+		txt += /*"Track: " +*/ toStr(idTrack) +" "+ data->tracks->trks[idTrack].name +"\n";
+		txt += /*"  Car: " +*/ toStr(idCar) +"  "+ data->cars->cars[idCar].id + " " + data->cars->cars[idCar].name +"\n\n";
 
 		if (pApp->bLoading)
 		{
