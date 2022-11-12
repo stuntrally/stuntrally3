@@ -165,10 +165,10 @@ hlms crystal1 pbs : rock_base
 	diffuse 0.3 0.6 0.6
 	specular 0.05 0.2 0.25 64
 
-	transparent true
+	// transparent true
 	scene_blend add
 	//scene_blend alpha_blend
-	//cull_hardware none
+	cull_mode none
 
 	depth_write off
 	depth_check off
@@ -186,10 +186,10 @@ hlms crystal6 pbs : rock_base
 	diffuse 0.22 0.25 0.3
 	specular 0.2 0.2 0.3 64
 
-	transparent true
+	// transparent true
 	scene_blend add
 	//scene_blend alpha_blend
-	cull_hardware none
+	cull_mode none
 
 	depth_write off
 	depth_check off

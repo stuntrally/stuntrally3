@@ -564,15 +564,15 @@ void CarModel::UpdParsTrails(bool visible)
 	for (int w=0; w < numWheels; ++w)
 	{
 		uint8 grp = RQG_CarTrails;  //9=road  after glass
-		if (w < PAR_BOOST && parBoost[w]) {  parBoost[w]->setVisible(vis);  /*parBoost[w]->setRenderQueueGroup(grp);*/  }
-		if (whTrail[w]){  whTrail[w]->setVisible(visible && pSet->trails);  /*whTrail[w]->setRenderQueueGroup(grp);*/  }
+		if (w < PAR_BOOST && parBoost[w]) {  parBoost[w]->setVisible(vis);  parBoost[w]->setRenderQueueGroup(grp);  }
+		if (whTrail[w]){  whTrail[w]->setVisible(visible && pSet->trails);  whTrail[w]->setRenderQueueGroup(grp);  }
 		grp = RQG_CarParticles;
 		for (int p=0; p < PAR_ALL; ++p)
-			if (par[p][w]){  par[p][w]->setVisible(vis);  /*par[p][w]->setRenderQueueGroup(grp);*/  }
-		if (parHit && w==0)	{  parHit->setVisible(vis);  /*parHit->setRenderQueueGroup(grp);*/  }
+			if (par[p][w]){  par[p][w]->setVisible(vis);  par[p][w]->setRenderQueueGroup(grp);  }
+		if (parHit && w==0)	{  parHit->setVisible(vis);  parHit->setRenderQueueGroup(grp);  }
 	}
 	for (int w=0; w < PAR_THRUST*2; ++w)
-		if (parThrust[w]) {  parThrust[w]->setVisible(vis);  /*parThrust[w]->setRenderQueueGroup(RQG_CarTrails);*/  }
+		if (parThrust[w]) {  parThrust[w]->setVisible(vis);  parThrust[w]->setRenderQueueGroup(RQG_CarTrails);  }
 }
 
 
@@ -626,7 +626,7 @@ void CarModel::UpdWhTerMtr()
 //  utils
 //-------------------------------------------------------------------------------------------------------
 
-void CarModel::ChangeClr()
+void CarModel::ChangeClr()  // todo: diffuse clr?
 {
 	/*int i = iColor;
 	float h = pSet->gui.car_hue[i], s = pSet->gui.car_sat[i], v = pSet->gui.car_val[i],

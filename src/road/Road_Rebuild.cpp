@@ -580,23 +580,12 @@ void SplineRoad::createSeg_Meshes(
 
 	if (HasRoad())
 	{
-		LogO("---- Create Road seg " + rs.road[lod].smesh);
 		CreateMesh(rs.road[lod], sMesh, rs.sMtrRd,
 			DLM.pos, DLM.norm, DLM.clr, DLM.tcs, idx);
 	}
 
-	if (wall)
-	{
-		// meshW = MeshManager::getSingleton().createManual(sMeshW,"General");
-		// meshW->createSubMesh();
-	}
 	bool cols = !DLM.posC.empty() && DL.isLod0;  // cols have no lods
-	/*if (cols)  // fixme
-	{
-		meshC = MeshManager::getSingleton().createManual(sMeshC,"General");
-		meshC->createSubMesh();
-	}
-	if (DS.hasBlend)  // fixme
+	/*if (DS.hasBlend)  // fixme
 	{
 		meshB = MeshManager::getSingleton().createManual(sMeshB,"General");
 		sm = meshB->createSubMesh();
@@ -664,17 +653,11 @@ void SplineRoad::createSeg_Meshes(
 		}					
 		vSegs[DS.seg].nTri[DL.lod] += idx.size()/3;
 
-		/*sm = meshC->getSubMesh(0);
-		//if (!posC.empty())
+		/*if (!posC.empty())
 		CreateMesh(sm, aabox, DLM.posC,DLM.normC,DLM.clr0,DLM.tcsC, idx, sMtrCol);
 		*/
 	}
 	
-					
-	//  add Mesh to Scene  -----------------------------------------
-	// Item* it = 0, *itW = 0, *itC = 0, *itB = 0;
-	// SceneNode* node = 0, *nodeW = 0, *nodeC = 0, *nodeB = 0;
-	// String sr, sw;
 
 	//  road
 	if (HasRoad())
@@ -710,20 +693,7 @@ void SplineRoad::createSeg_Meshes(
 		// itB->setRenderQueueGroup(RQG_RoadBlend);
 	}
 #endif
-	
-	//>>  store ogre data  ------------
-	// LogO(sMesh +" "+ sEnd +"  R "+ rs.sMtrRd +" "+ sr +"  W  "+ sw + " " + rs.sMtrWall);
 
-	/*int lod = DL.lod;
-	rs.road[lod].node = node;	rs.wall[lod].node = nodeW;	 rs.blend[lod].node = nodeB;
-	rs.road[lod].it = it;		rs.wall[lod].it = itW;		 rs.blend[lod].it = itB;
-	rs.road[lod].mesh = mesh;	rs.wall[lod].mesh = meshW;	 rs.blend[lod].mesh = meshB;
-	rs.road[lod].smesh = sMesh; rs.wall[lod].smesh = sMeshW; rs.blend[lod].smesh = sMeshB;
-	if (DL.isLod0)  {
-		rs.col.node = nodeC;
-		rs.col.it = itC;
-		rs.col.mesh = meshC;
-		rs.col.smesh = sMeshC;  }*/
 	rs.empty = false;  // new
 }
 

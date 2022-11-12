@@ -131,7 +131,7 @@ namespace Demo
 			{	tblock->setTexture( TERRA_DETAIL0_NM + i, tex );
 				tblock->setSamplerblock( TERRA_DETAIL0_NM + i, sampler );
 			}
-			n_h = d_s = "white.png";
+			n_h = d_s = "white.png";  // todo: _r _m terrain textures..
 			tex = texMgr->createOrRetrieveTexture(n_h,
 				GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 			if (tex)
