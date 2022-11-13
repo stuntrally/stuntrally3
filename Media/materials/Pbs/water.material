@@ -114,23 +114,37 @@ hlms Acid_green pbs : Water   // green acid
 	specular  0.33 0.38 0.33
 }
 
-hlms Ice pbs : Water   // solid
+hlms Ice pbs //: BaseMud   // solid
 {
     diffuse   0.8 0.94 0.95
 	specular  0.75 0.78 0.8
+
+	diffuse_map  snow2_d.jpg
+	normal_map   snow2_n.jpg
+
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.8
 }
-hlms Ice_cyan pbs : Water   // solid
+hlms Ice_cyan pbs //: BaseMud   // solid
 {
     diffuse   0.8 0.94 0.95
 	specular  0.75 0.78 0.8
+
+	diffuse_map  snow2_s.jpg
+	normal_map   snow2_n.jpg
+
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.8
 }
 
-hlms LavaOrn pbs : Water   // lava dense fluid
+hlms LavaOrn pbs : BaseMud   // lava dense fluid
 {
     diffuse   0.247 0.214 0.195
 	specular  1.0 0.70 0.44
 }
-hlms LavaBlk pbs : Water   // lava solid
+hlms LavaBlk pbs : BaseMud   // lava solid
 {
     diffuse   0.077 0.08 0.085
 	specular  1.5 0.75 0.30
@@ -179,91 +193,91 @@ hlms Mud_dark_JD pbs : BaseMud
 
 
 
-// //  Rivers  .-.-.--.-..-..
-// //--------------------------------------------------------
-// hlms River_blue pbs : Water_blue  // I3-Islands  J13-Tropic
-// {
-//     WaterDepthMap roadAlpha.png
-//     alphaMap HmapTex
-//     speed -15.0 -0.5
-// }
+//  Rivers  .-.-.--.-..-..
+//--------------------------------------------------------
+hlms River_blue pbs : Water_blue  // I3-Islands  J13-Tropic
+{
+    // WaterDepthMap roadAlpha.png
+    // alphaMap HmapTex
+    // speed -15.0 -0.5
+}
 
-// hlms River_cyan pbs : Water_cyan // G2-Coast
-// {
-//     speed -12.0 -0.2
-// }
+hlms River_cyan pbs : Water_cyan // G2-Coast
+{
+    // speed -12.0 -0.2
+}
 
-// hlms River_green pbs : Water_green  // J11-Temple
-// {
-//     speed -3.0 -1.0
-// }
+hlms River_green pbs : Water_green  // J11-Temple
+{
+    // speed -3.0 -1.0
+}
 
-// hlms River_moss pbs : Water_moss  // O2-Mouse
-// {
-//     speed -3.0 -1.0
-// }
+hlms River_moss pbs : Water_moss  // O2-Mouse
+{
+    // speed -3.0 -1.0
+}
 
-// hlms River_white pbs : Water_white  // W2-Wet
-// {
-//     speed -3.0 -1.0
-// }
+hlms River_white pbs : Water_white  // W2-Wet
+{
+    // speed -3.0 -1.0
+}
 
-// hlms River_sunset pbs : Water_sunset  // I4-Sunset
-// {
-//     speed -3.0 -1.0
-// }
+hlms River_sunset pbs : Water_sunset  // I4-Sunset
+{
+    // speed -3.0 -1.0
+}
 
-// hlms River_sunset_cyan pbs : Water_sunset_cyan  // I13-Beauty
-// {
-//     speed -3.0 -1.0
-// }
+hlms River_sunset_cyan pbs : Water_sunset_cyan  // I13-Beauty
+{
+    // speed -3.0 -1.0
+}
 
-// hlms River_shore pbs : Water_shore  // I5-Shore
-// {
-//     speed -3.0 -1.0
-// }
+hlms River_shore pbs : Water_shore  // I5-Shore
+{
+    // speed -3.0 -1.0
+}
 
-// hlms River_dark pbs : Water_dark  // V1-Dark
-// {
-//     speed -3.0 -1.0
-// }
+hlms River_dark pbs : Water_dark  // V1-Dark
+{
+    // speed -3.0 -1.0
+}
 
-// hlms River_blue_dark pbs : Water_blue_dark  // E1
-// {
-//     speed -3.0 -1.0
-// }
+hlms River_blue_dark pbs : Water_blue_dark  // E1
+{
+    // speed -3.0 -1.0
+}
 
-// hlms River_Grease_jelly pbs : Grease_jelly  // X1-Magic
-// {
-//     speed -3.1 -1.0
-// }
+hlms River_Grease_jelly pbs : Grease_jelly  // X1-Magic
+{
+    // speed -3.1 -1.0
+}
 
-// hlms River_Blue_jelly pbs : Blue_jelly
-// {
-// 	   speed -3.05 -1.0
-// }
+hlms River_Blue_jelly pbs : Blue_jelly
+{
+	// speed -3.05 -1.0
+}
 
-// hlms River_Acid_green pbs : Acid_green  // green acid
-// {
-//     speed -3.8 -1.0
-// }
+hlms River_Acid_green pbs : Acid_green  // green acid
+{
+    // speed -3.8 -1.0
+}
 
-// hlms River_Ice pbs : Ice  // solid
-// {
-//     diffuse 0.8 0.94 0.95  0.0
-//     speed -3.0 -1.0
-// }
-// hlms River_Ice_cyan pbs : Ice_cyan  // solid
-// {
-//     speed -3.0 -1.0
-// }
+hlms River_Ice pbs : Ice  // solid
+{
+    diffuse 0.8 0.94 0.95  0.0
+    // speed -3.0 -1.0
+}
+hlms River_Ice_cyan pbs : Ice_cyan  // solid
+{
+    // speed -3.0 -1.0
+}
 
-// hlms River_LavaOrn pbs : LavaOrn  // lava dense fluid
-// {
-//     speed -0.478 -1.0
-// }
-// hlms River_LavaBlk pbs : LavaBlk  // lava solid
-// {
-//     speed -0.15 -1.0
-// }
+hlms River_LavaOrn pbs : LavaOrn  // lava dense fluid
+{
+    // speed -0.478 -1.0
+}
+hlms River_LavaBlk pbs : LavaBlk  // lava solid
+{
+    // speed -0.15 -1.0
+}
 

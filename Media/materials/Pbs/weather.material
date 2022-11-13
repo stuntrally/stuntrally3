@@ -1,0 +1,74 @@
+hlms Base_particle unlit
+{
+	// alpha_rejection greater 64
+	depth_write	off
+	scene_blend	alpha_blend
+	// scene_blend	add  // test UpdateWeather
+}
+
+hlms Add_particle unlit
+{
+	depth_write	off
+	scene_blend	add
+	alpha_rejection none
+}
+
+
+hlms RainDrop unlit : Base_particle
+{
+    diffuse_map droplet.png
+}
+hlms RainDropLong unlit : Base_particle
+{
+    diffuse_map droplet-long.png
+}
+
+hlms SnowFlake unlit : Base_particle
+{
+    diffuse_map snow.png
+}
+
+
+//  Cloud  oOoOOoOoo
+hlms Cloud1 unlit : Base_particle
+{
+    diffuse_map cloud1.png
+}
+hlms Cloud2 unlit : Base_particle
+{
+    diffuse_map cloud2.png
+}
+hlms Cloud3 unlit : Base_particle
+{
+    diffuse_map cloud3.png
+}
+hlms Cloud4 unlit : Base_particle
+{
+    diffuse_map cloud4.png
+}
+hlms Cloud5 unlit : Base_particle
+{
+    diffuse_map cloud5.png
+}
+
+
+//  Fire  ~ ~~ ~~ ~  
+hlms Fire1 unlit : Add_particle
+{
+    // fog_en false
+	// alpha_rejection none
+    diffuse_map fire1.png
+}
+hlms Fire2 unlit : Add_particle
+{
+    diffuse_map fire2.png
+}
+hlms Fire3 unlit : Add_particle
+{
+    diffuse_map fire3.png
+}
+
+hlms Lava1 unlit : Add_particle
+{
+    diffuse_map lava1.png
+}

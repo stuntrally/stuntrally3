@@ -57,7 +57,7 @@ public:
 	void UpdateWeather(Ogre::Camera* cam, float lastFPS = 60.f, float emitMul = 1.f);
 
 	//  Emitters
-	// void CreateEmitters(), DestroyEmitters(bool clear);
+	void CreateEmitters(), DestroyEmitters(bool clear);
 
 
 	//  Fluids  water, mud

@@ -152,6 +152,10 @@ namespace Demo
 			}
 		}
 
+		if (pSet->particles)
+			pApp->scn->UpdateWeather(mGraphicsSystem->getCamera());  //, 1.f/dt
+		
+
 		//**  bullet bebug draw
 		if (pApp->dbgdraw)  // DBG_DrawWireframe
 		{

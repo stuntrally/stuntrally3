@@ -296,7 +296,7 @@ void App::LoadCleanUp()  // 1 first
 		scn->DestroyTerrain();
 		//^ cars
 		scn->DestroyFluids();
-		//scn->DestroyEmitters(true);
+		scn->DestroyEmitters(true);
 		scn->DestroyAllAtmo();
 	}
 	scn->DestroyTrail();
@@ -489,8 +489,8 @@ void App::LoadScene()  // 3
 	if (dstTrk)
 		scn->CreateAllAtmo();
 
-	// if (dstTrk)
-		// scn->CreateEmitters();
+	if (dstTrk)
+		scn->CreateEmitters();
 
 
 	//  water RTT
