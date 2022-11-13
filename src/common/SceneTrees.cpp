@@ -289,7 +289,9 @@ void CScene::CreateTrees()
 				//  **************  add  **************
 				Item *item = mgr->createItem( file,
 					ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
-				item->setVisibilityFlags(RV_Vegetation);
+				bool alpha = file == "crystal2.mesh" || file == "crystal2.mesh";  // todo: par in xml
+				item->setRenderQueueGroup( alpha ? RQG_BatchAlpha : RQG_Road );
+				item->setVisibilityFlags( RV_Vegetation );
 				item->setRenderingDistance( 1000.f );  // how far visible  // todo: par * scale ..
 				vegetItems.push_back(item);
 

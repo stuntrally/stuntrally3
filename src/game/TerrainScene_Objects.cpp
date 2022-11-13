@@ -1,4 +1,5 @@
 #include "OgreCommon.h"
+#include "RenderConst.h"
 #include "TerrainGame.h"
 #include "CameraController.h"
 #include "GraphicsSystem.h"
@@ -53,7 +54,7 @@ namespace Demo
 			//parHit->setVisibilityFlags(RV_Particles);
 			SceneNode* node = rootNode->createChildSceneNode();
 			node->attachObject( parSys );
-			parSys->setRenderQueueGroup( 225 );  //? after Veget
+			parSys->setRenderQueueGroup( RQG_CarParticles );  // after Veget
 
 			Vector3 objPos = camPos + Vector3( i/2 * 2.f, -5.f + i%2 * 4.f, 0.f);
 			// if (mTerra)

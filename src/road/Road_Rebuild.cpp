@@ -653,9 +653,9 @@ void SplineRoad::createSeg_Meshes(
 		}					
 		vSegs[DS.seg].nTri[DL.lod] += idx.size()/3;
 
-		/*if (!posC.empty())
-		CreateMesh(sm, aabox, DLM.posC,DLM.normC,DLM.clr0,DLM.tcsC, idx, sMtrCol);
-		*/
+		/*if (!DLM.posC.empty())
+			CreateMesh(rs.col, sMesh+"C", sMtrCol,
+				DLM.posC, DLM.normC, DLM.clr0, DLM.tcsC, idx);*/
 	}
 	
 
