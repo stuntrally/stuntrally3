@@ -1,0 +1,8 @@
+DebugFont
+{
+	type 		truetype
+	source 		Inconsolata-Bold.ttf
+	size 		15
+	resolution 	192
+}
+
