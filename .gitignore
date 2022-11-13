@@ -16,7 +16,14 @@ syntax: glob
 bin/*
 build/*
 Dependencies/*
-tracks
+#tracks
+cars
+#objects
+fonts
+terrain
+#trees2
+#Media
+*.mat
 
 .DS_Store
 iOSDependencies

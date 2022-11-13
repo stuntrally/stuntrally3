@@ -85,6 +85,8 @@ atmoColour *= p_lightDensity;
 
 atmoColour *= p_finalMultiplier;
 
+//atmoColour += midf3_c( 1.0f, 0.0f, 0.0f );
+
 outVs.fog.xyz = atmoColour;
 // @end
 

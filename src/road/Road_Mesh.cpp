@@ -160,7 +160,7 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrN
 	subMesh->mVao[VpNormal].push_back( vao );
 	subMesh->mVao[VpShadow].push_back( vao );  // same geometry for shadow casting
 
-	subMesh->arrangeEfficient(false, false, true);  // no?
+	subMesh->arrangeEfficient(false, false, false);  // no?
 
 
 	//  add mesh to scene
@@ -175,7 +175,7 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrN
 	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create(s1, "General");
 	m1->importV2(mesh.get());
 	m1->buildTangentVectors();
-	mesh = MeshManager::getSingleton().createByImportingV1(s2, "General", m1.get(), false,false,true);
+	mesh = MeshManager::getSingleton().createByImportingV1(s2, "General", m1.get(), false,false,false);
 	MeshManager::getSingleton().remove(sMesh);  // not needed
 
 

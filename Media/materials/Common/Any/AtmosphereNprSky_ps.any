@@ -85,6 +85,8 @@ atmoColour *= p_lightDensity;
 atmoColour *= p_finalMultiplier;
 atmoColour += sunDisk * p_skyLightAbsorption;
 
+// atmoColour += float3( 0.0f, 1.0f, 0.0f ) * 1.0f;
+
 #endif
 
 // @end !atmosky_npr
