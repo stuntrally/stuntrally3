@@ -291,11 +291,11 @@ void App::LoadCleanUp()  // 1 first
 	if (dstTrk)
 	{
 		scn->DestroyTrees();
-		//^ DestroyObjects(true);
+		DestroyObjects(true);
 		scn->DestroyRoads();
 		scn->DestroyTerrain();
 		//^ cars
-		//^ scn->DestroyFluids();  //Scene
+		scn->DestroyFluids();
 		//scn->DestroyEmitters(true);
 		scn->DestroyAllAtmo();
 	}
@@ -718,7 +718,7 @@ void App::LoadMisc()  // 9 last
 			//car->fCam->mWorld = &(pGame->collision);
 	}	}
 	
-	/*if (dstTrk)
+	/*if (dstTrk)  // drop this
 	try
 	{	TexturePtr tex = Ogre::TextureManager::getSingleton().getByName("waterDepth.png");
 		if (tex)

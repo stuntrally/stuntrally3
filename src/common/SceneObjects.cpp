@@ -243,9 +243,7 @@ void App::DestroyObjects(bool clear)
 
 		// ogre
 		if (o.nd)  mSceneMgr->destroySceneNode(o.nd);  o.nd = 0;
-		#ifdef SR_EDITOR  // game has destroyAll
-		if (o.ent)  mSceneMgr->destroyEntity(o.ent);  o.ent = 0;
-		#endif
+		if (o.it)  mSceneMgr->destroyItem(o.it);  o.it = 0;
 
 		#ifdef SR_EDITOR
 		// bullet
