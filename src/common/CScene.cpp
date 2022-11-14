@@ -6,6 +6,9 @@
 // #include "WaterRTT.h"
 #include "Road.h"
 // #include "PaceNotes.h"
+#include "Grass.h"
+#include "CGame.h"
+#include "TerrainGame.h"
 
 
 CScene::CScene(App* app1)
@@ -17,14 +20,20 @@ CScene::CScene(App* app1)
 	data = new CData();
 	sc = new Scene();
 	// mWaterRTT = new WaterRTT();
+
+	//  Grass
+	grass = new Grass();
+	grass->mSceneMgr = app->mSceneMgr;
+	// grass->terrain = app->mainApp->mTerra;
+	grass->scn = this;
+	grass->pSet = app->pSet;
 }
 
 CScene::~CScene()
 {
+	delete grass;
 	//?DestroyRoad();
 	// delete pace;
-
-	// OGRE_DELETE mTerrainGroup;
 
 	delete sc;
 	delete data;

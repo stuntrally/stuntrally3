@@ -2,13 +2,16 @@
 #include "OgreHlmsPbsDatablock.h"
 #include "OgreHlmsPbsPrerequisites.h"
 #include "OgreMeshManager.h"
+#include "Terra.h"
 #include "pch.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
-#include "Road.h"
+#include "Grass.h"
 
 #include "CGame.h"
 #include "game.h"
+#include "CScene.h"
+#include "SceneXml.h"
 #include "TerrainGame.h"
 #include "GraphicsSystem.h"
 
@@ -22,24 +25,125 @@
 #include <Vao/OgreVaoManager.h>
 #include <OgreMesh.h>
 using namespace Ogre;
+using namespace std;
 
 #define USE_UMA_SHARED_BUFFERS 1
+
+
+//  Create  Grass
+//---------------------------------------------------------
+void Grass::Create()
+{
+	LogO("---- Create Grass: ");
+	Timer ti;
+	if (!pSet || !scn || !terrain)
+		return;
+
+	auto* sc = scn->sc;
+	Real tws = sc->td.fTerWorldSize * 0.49f;  //par
+
+	Real fGrass = pSet->grass * sc->densGrass * 3.0f;  // std::min(pSet->grass, 
+	#ifdef SR_EDITOR
+	Real fTrees = pSet->gui.trees * sc->densTrees;
+	#else
+	Real fTrees = pSet->game.trees * sc->densTrees;
+	#endif
+	
+	if (fGrass > 0.f)
+	{
+		/*	sc->grPage;  GrassPage(sc->grDist * pSet->grass_dist);*/
+		//gds.reserve(100);
+
+		int id = 0;
+		//  Grass layers
+		const SGrassLayer* g0 = &sc->grLayersAll[0];
+		for (int i=0; i < sc->ciNumGrLay; ++i)
+		{
+			SGrassLayer* gr = &sc->grLayersAll[i];
+			if (gr->on)
+			{
+				//  create grass page
+				std::vector<Ogre::Vector3> pos, norm;
+				std::vector<Ogre::Vector4> clr;
+				std::vector<Ogre::Vector2> tcs;
+				std::vector<Ogre::uint16> idx;
+				++id;
+
+				//  par
+				int nn = 200000 * gr->dens * fGrass, ix = 0;
+				for (int n = 0; n < nn; ++n)
+				{
+					Real xw = Math::RangeRandom(-tws, tws);  // world pos
+					Real zw = Math::RangeRandom(-tws, tws);
+					Real sx = Math::RangeRandom(gr->minSx, gr->maxSx) * 0.5f;  // size
+					Real sy = Math::RangeRandom(gr->minSy, gr->maxSy);
+					Real ax = Math::RangeRandom(0, Math::PI);
+
+					for (int q=0; q < 2; ++q)  // cross
+					for (int y=0; y < 2; ++y)  // rect
+					for (int x=0; x < 2; ++x)
+					{
+						Real a = ax + q * Math::HALF_PI + x * Math::PI;
+						Real xr = cosf(a) * sx,  // rot
+							 zr = sinf(a) * sx;
+						Vector3 p(  // pos
+							xw +xr, y * sy,
+							zw +zr );
+						p.y += terrain->getHeight(p.x, p.z);
+
+						// LogO(String("^ gr ")+fToStr(wx)+" "+fToStr(wz)+"  "+fToStr(sx)+" "+fToStr(sy));
+						// LogO(String("^ gr ")+fToStr(p.x)+" "+fToStr(p.y)+" "+fToStr(p.z));
+
+						Vector2 uv(x, 1.f - y);
+						Vector3 n(1,0,0);  //-
+						Vector4 c(1,1,1,1);
+
+						pos.push_back(p);  norm.push_back(n);
+						tcs.push_back(uv);  clr.push_back(c);
+					}
+					idx.push_back(ix+1);  idx.push_back(ix+3);  idx.push_back(ix+0);  // |\ |
+					idx.push_back(ix+3);  idx.push_back(ix+2);  idx.push_back(ix+0);  // | \|
+					// idx.push_back(ix+0);  idx.push_back(ix+1);  idx.push_back(ix+2);  // |\ |
+					// idx.push_back(ix+1);  idx.push_back(ix+2);  idx.push_back(ix+3);  // | \|
+					ix += 4;
+				}
+				LogO(String("^ grass ") +toStr(nn) +" "+ gr->material);
+				GrassData gd;  //-
+
+				CreateMesh(gd, "g"+toStr(id), gr->material, 
+					pos, norm, clr, tcs, idx);
+				gds.push_back(gd);
+
+				// l->setSwayDistribution(g0->swayDistr);
+				// l->setSwayLength(g0->swayLen);  l->setSwaySpeed(g0->swaySpeed);
+
+				// l->setFadeTechnique(FADETECH_ALPHA);  //FADETECH_GROW-
+				// l->setColorMap(gr->colorMap);
+				// l->setDensityMap(grassDensRTex, MapChannel(gr->iChan));
+				// gr->grl = l;
+			}
+		}
+		// grass->setShadersEnabled(true);
+	}
+	LogO(String("::: Time Grass: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
+}
+
 
 //  Create Mesh
 //---------------------------------------------------------
 
-void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrName,
+void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName,
 	const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
 	const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,
 	const std::vector<Ogre::uint16>& idx)
 {
 	size_t i, si = pos.size();
 	if (si == 0)
-	{	LogO("Error:  Road CreateMesh 0 verts !");
+	{	LogO("Error:  Grass CreateMesh 0 verts !");
 		return;
 	}
 	if (MeshManager::getSingleton().getByName(sMesh))
-		LogR("Mesh exists !!!" + sMesh);
+		LogO("Mesh exists !!!" + sMesh);
 
  	Aabb aabox;
  	MeshPtr mesh = MeshManager::getSingleton().createManual(sMesh, "General");
@@ -48,7 +152,7 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrN
 
     //-----------------------------------------------------------------------------------
     bool partialMesh = false;
-	Root *root = pGame->app->mainApp->mGraphicsSystem->getRoot();
+	Root *root = scn->app->mainApp->mGraphicsSystem->getRoot();
 	RenderSystem *renderSystem = root->getRenderSystem();
 	VaoManager *vaoManager = renderSystem->getVaoManager();
 
@@ -185,14 +289,15 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrN
 	// *it = mSceneMgr->createItem( mesh, Ogre::SCENE_STATIC );
 	SceneNode* node = mSceneMgr->getRootSceneNode( SCENE_STATIC )->createChildSceneNode( SCENE_STATIC );
 	node->attachObject(it);
-	it->setVisible(false);  it->setCastShadows(false);//-
-	it->setVisibilityFlags(RV_Road);
+	it->setCastShadows(false);  //**
+	it->setVisibilityFlags(RV_VegetGrass);
+	it->setRenderQueueGroup(RQG_BatchAlpha);
 
 	//  wrap tex-
 	HlmsSamplerblock sampler;
 	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
 	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
-	sampler.mMaxAnisotropy = pGame->pSet->anisotropy;
+	sampler.mMaxAnisotropy = pSet->anisotropy;
 	sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
 	assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() ) );
 	HlmsPbsDatablock *datablock =
@@ -201,14 +306,6 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrN
 	datablock->setSamplerblock( PBSM_NORMAL, sampler );
 	datablock->setSamplerblock( PBSM_METALLIC, sampler );
 	datablock->setSamplerblock( PBSM_ROUGHNESS, sampler );/**/
-
-	//  alpha ?..
-	// datablock->setDetailMapBlendMode(0, Ogre::PBSM_BLEND_NORMAL_NON_PREMUL/* PBSM_BLEND_NORMAL_PREMUL*/);
-	// datablock->setDetailMapWeight(0, 0.5);
-	// datablock->setDetailMapOffsetScale(0, Vector4(0,0,2,4));
-	// datablock->setTexture(PBSM_DETAIL_WEIGHT, const String &name)
-	// datablock->setTexture(PBSM_DETAIL0, "roadAlpha.png");
-	//  datablock->setTexture(PBSM_DETAIL0, "roadGlassC_dirt2.png");
 
 	sd.it = it;
 	sd.node = node;
@@ -219,117 +316,40 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrN
 }
 
 
-//  add triangle to bullet
-//---------------------------------------------------------
-void SplineRoad::addTri(int f1, int f2, int f3, int i)
-{
-	/*bool ok = true;  const int fmax = 65530; //16bit
-	if (f1 >= at_size || f1 > fmax)  {  LogO("idx too big: "+toStr(f1)+" >= "+toStr(at_size));  ok = 0;  }
-	if (f2 >= at_size || f2 > fmax)  {  LogO("idx too big: "+toStr(f2)+" >= "+toStr(at_size));  ok = 0;  }
-	if (f3 >= at_size || f3 > fmax)  {  LogO("idx too big: "+toStr(f3)+" >= "+toStr(at_size));  ok = 0;  }
-	if (!ok)  return;/**/
-
-	idx.push_back(f1);  idx.push_back(f2);  idx.push_back(f3);
-	if (blendTri)
-	{
-		idxB.push_back(f1);  idxB.push_back(f2);  idxB.push_back(f3);
-	}
-
-	if (bltTri && i > 0 && i < at_ilBt)
-	{
-		posBt.push_back((*at_pos)[f1]);
-		posBt.push_back((*at_pos)[f2]);
-		posBt.push_back((*at_pos)[f3]);
-	}
-}
-
-
 ///  Destroy
 //---------------------------------------------------------
 
-void SplineRoad::Destroy()  // full
+void Grass::Destroy()  // full
 {
-	LogO("---- Destroy Road");
-	if (ndSel)	mSceneMgr->destroySceneNode(ndSel);
-	if (ndChosen)	mSceneMgr->destroySceneNode(ndChosen);
-	if (ndRot)	mSceneMgr->destroySceneNode(ndRot);
-	if (ndHit)	mSceneMgr->destroySceneNode(ndHit);
-	if (ndChk)	mSceneMgr->destroySceneNode(ndChk);
-	if (entSel)  mSceneMgr->destroyItem(entSel);
-	if (entChs)  mSceneMgr->destroyItem(entChs);
-	if (entRot)  mSceneMgr->destroyItem(entRot);
-	if (entHit)  mSceneMgr->destroyItem(entHit);
-	if (entChk)  mSceneMgr->destroyItem(entChk);
-	DestroyMarkers();
-	DestroyRoad();
-}
-
-void SplineRoad::DestroySeg(int id)
-{
-	//LogO("DestroySeg" + toStr(id));
-	RoadSeg& rs = vSegs[id];
-	if (rs.empty)  return;
-try
-{
-	for (int l=0; l < LODs; ++l)
+	LogO("---- Destroy Grass");
+	for (size_t i=0; i < gds.size(); ++i)
 	{
-		if (rs.wall[l].it)  // ] wall
+		GrassData& gd = gds[i];
+		// if (rs.empty)  return;
+		try
 		{
-			mSceneMgr->destroySceneNode(rs.wall[l].node);
-			mSceneMgr->destroyItem(rs.wall[l].it);
+			// for (int l=0; l < LODs; ++l)
+			{
+				if (gd.it)
+				{
+					mSceneMgr->destroySceneNode(gd.node);
+					mSceneMgr->destroyItem(gd.it);
 
-			String sMesh = rs.wall[l].smesh, s1 = sMesh+"v1", s2 = sMesh+"v2";
-			MeshManager::getSingleton().remove(sMesh);
-			MeshManager::getSingleton().remove(s2);
-			v1::MeshManager::getSingleton().remove(s1);
+					String sMesh = gd.smesh, s1 = sMesh+"v1", s2 = sMesh+"v2";
+					// MeshManager::getSingleton().remove(sMesh);
+					MeshManager::getSingleton().remove(s2);
+					v1::MeshManager::getSingleton().remove(s1);
+				}
+			}
 		}
-		if (rs.blend[l].it)  // > blend
+		catch (Exception ex)
 		{
-			mSceneMgr->destroySceneNode(rs.blend[l].node);
-			mSceneMgr->destroyItem(rs.blend[l].it);
-			MeshManager::getSingleton().remove(rs.blend[l].smesh);
-		}
-		if (rs.road[l].it)  // - road
-		{
-			// LogO("---- Destroy Road seg " + rs.road[l].smesh);
-			mSceneMgr->destroySceneNode(rs.road[l].node);
-			mSceneMgr->destroyItem(rs.road[l].it);
-
-			String sMesh = rs.road[l].smesh, s1 = sMesh+"v1", s2 = sMesh+"v2";
-			// MeshManager::getSingleton().remove(sMesh);
-			MeshManager::getSingleton().remove(s2);
-			v1::MeshManager::getSingleton().remove(s1);
+			// LogO(String("# Error! grass DestroySeg") + ex.what());
 		}
 	}
-	if (rs.col.it)  // | column
-	{
-		mSceneMgr->destroySceneNode(rs.col.node);
-		mSceneMgr->destroyItem(rs.col.it);
-		MeshManager::getSingleton().remove(rs.col.smesh);
-	}
-}
-catch (Exception ex)
-{
-	LogO(String("# Error! road DestroySeg") + ex.what());
-}
+	gds.clear();
+	// idStr = 0;
 	// LogO("---- road Destroyed");
-	rs.empty = true;
-	rs.lpos.clear();
-}
-
-
-void SplineRoad::DestroyRoad()
-{
-	
-#ifndef SR_EDITOR
-	for (int i=0; i < vbtTriMesh.size(); ++i)
-		delete vbtTriMesh[i];
-	vbtTriMesh.clear();
-#endif
-	for (size_t seg=0; seg < vSegs.size(); ++seg)
-		DestroySeg(seg);
-	vSegs.clear();
-
-	idStr = 0;
-	st.Reset();
+	// rs.empty = true;
+	// rs.lpos.clear();
 }

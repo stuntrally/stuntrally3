@@ -11,6 +11,7 @@
 #include "OgreCommon.h"
 #include "OgreVector3.h"
 #include "TerrainGame.h"
+#include "Grass.h"
 
 // #include "GuiCom.h"
 #include "CGame.h"
@@ -290,6 +291,7 @@ void App::LoadCleanUp()  // 1 first
 	LogO("------  # Destroy All track");
 	if (dstTrk)
 	{
+		scn->grass->Destroy();
 		scn->DestroyTrees();
 		DestroyObjects(true);
 		scn->DestroyRoads();
@@ -676,7 +678,10 @@ void App::LoadObjects()  // 7
 
 void App::LoadTrees()  // 8
 {
-	if (dstTrk) // && scn->sc->ter)
+	if (dstTrk)
+		scn->grass->Create();
+
+	if (dstTrk)
 		scn->CreateTrees();
 	
 		

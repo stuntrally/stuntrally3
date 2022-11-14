@@ -269,7 +269,8 @@ void CScene::CreateTrees()
 				if (!add)  continue;  //
 
 				//  check ter height  ------------
-				terrain->getHeightAt(pos);
+				bool in = terrain->getHeightAt(pos);
+				if (!in)  add = false;  // outside
 				if (pos.y < pg.minTerH || pos.y > pg.maxTerH)
 					add = false;
 				

@@ -20,6 +20,7 @@
 #include <OgreTimer.h>
 
 #include "TerrainGame.h"
+#include "Grass.h"
 using namespace Ogre;
 
 
@@ -127,7 +128,10 @@ void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
 
 
 	app->mainApp->CreateTerrain();
-	terrain = app->mainApp->mTerra;
+
+	terrain = app->mainApp->mTerra;  //set ptr
+	grass->terrain = app->mainApp->mTerra;
+	grass->mSceneMgr = app->mSceneMgr;
 	
 	LogO(String("::: Time Terrain: ") + fToStr(tm.getMilliseconds(),0,3) + " ms");
 }

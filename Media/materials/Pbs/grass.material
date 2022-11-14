@@ -1,0 +1,338 @@
+hlms grass pbs
+{
+    alpha_test greater 0.5
+    cull_mode none
+    scene_blend alpha_blend
+    // grass_wind true
+    // vertex_colour true
+    // diffuse_address_mode clamp
+	// depth_write off
+	two_sided true
+
+    diffuse 1 1 1
+    specular 0.2 0.2 0.2
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.1
+}
+
+//  old  -
+hlms grassAustralia pbs : grass
+{
+    diffuse_map grassAustralia.png
+    ambient 1.4 1.5 1.4
+    diffuse 0.5 0.5 0.5
+}
+hlms grassDesert pbs : grass
+{
+    diffuse_map grassDesert.png
+    ambient 1.4 1.5 1.4
+    diffuse 0.5 0.5 0.5
+}
+hlms grassForest pbs : grass
+{
+    diffuse_map grassForest.png
+    ambient 1.4 1.5 1.4
+    diffuse 0.5 0.5 0.5
+}
+hlms grassJungle pbs : grass
+{
+    diffuse_map grassJungle.png
+    ambient 1.4 1.5 1.4
+    diffuse 0.5 0.5 0.5
+}
+hlms grassGreece pbs : grass
+{
+    diffuse_map grassGreece.png
+    ambient 1.0 1.0 1.0
+    diffuse 0.5 0.55 0.5
+}
+hlms grassSavanna pbs : grass
+{
+    diffuse_map grassSavanna.png
+    ambient 1.35 1.35 1.3
+    diffuse 0.5 0.5 0.5
+}
+hlms grassWinter pbs : grass
+{
+    diffuse_map grassWinter.png
+    alpha_rejection greater_equal 220
+    ambient 1.4 1.5 1.4
+    diffuse 0.5 0.5 0.5
+}
+hlms grassUnidentified pbs : grass
+{
+    diffuse_map grassUnidentified.png
+    ambient 1.2 1.2 1.2
+    diffuse 0.4 0.4 0.4
+}
+
+//  new  +
+
+hlms grass2 pbs : grass
+{
+    diffuse_map grass2.png
+}
+
+hlms grass2g pbs : grass
+{
+    diffuse_map grass2g.png
+}
+
+hlms grass3 pbs : grass
+{
+    diffuse_map grass3.png
+}
+
+hlms grass3g pbs : grass
+{
+    diffuse_map grass3g.png
+}
+
+hlms grass3o pbs : grass
+{
+    diffuse_map grass3o.png
+}
+
+hlms grass3y pbs : grass
+{
+    diffuse_map grass3y.png
+}
+
+hlms grass3s pbs : grass
+{
+    diffuse_map grass3s.png
+}
+
+hlms grass4v pbs : grass
+{
+    diffuse_map grass4v.png
+}
+
+hlms grass5 pbs : grass
+{
+    diffuse_map grass5.png
+}
+
+
+hlms grass6r pbs : grass
+{
+	diffuse_map grass6r.png
+}
+
+hlms grass6s pbs : grass
+{
+    diffuse_map grass6s.png
+}
+
+hlms grass7wg pbs : grass
+{
+    diffuse_map grass7wg.png
+}
+
+hlms grass7wy pbs : grass
+{
+	diffuse_map grass7wy.png
+}
+
+hlms grass8g pbs : grass
+{
+	diffuse_map grass8g.png
+}
+
+hlms grass9r pbs : grass
+{
+    diffuse_map grass9r.png
+}
+
+hlms grass10 pbs : grass
+{
+    diffuse_map grass10.png
+}
+
+hlms grass11w pbs : grass
+{
+	diffuse_map grass11w.png
+}
+
+hlms grass11wg pbs : grass
+{
+    diffuse_map grass11wg.png
+}
+
+
+hlms grass12o pbs : grass
+{
+	diffuse_map grass12o.png
+}
+
+hlms grass12w pbs : grass
+{
+    diffuse_map grass12w.png
+}
+
+hlms grass12s pbs : grass
+{
+    diffuse_map grass12s.png
+}
+
+hlms grass12y- pbs : grass
+{
+    diffuse_map grass12y-.png
+}
+
+hlms grass15 pbs : grass
+{
+    diffuse_map grass15.png
+}
+
+hlms grass15g pbs : grass
+{
+    diffuse_map grass15g.png
+}
+
+hlms grass15o pbs : grass
+{
+    diffuse_map grass15o.png
+}
+
+hlms grass16g pbs : grass
+{
+    diffuse_map grass16g.png
+}
+
+hlms grass16s pbs : grass
+{
+    diffuse_map grass16s.png
+}
+
+hlms grass16r pbs : grass
+{
+    diffuse_map grass16r.png
+}
+
+
+hlms grass17 pbs : grass
+{
+    diffuse_map grass17.png
+}
+
+hlms grass17r pbs : grass
+{
+    diffuse_map grass17r.png
+}
+
+hlms grass18gw pbs : grass
+{
+    diffuse_map grass18gw.png
+}
+
+hlms grass18w pbs : grass
+{
+    diffuse_map grass18w.png
+}
+
+hlms grass18s pbs : grass
+{
+    diffuse_map grass18s.png
+}
+
+hlms grass18wg pbs : grass
+{
+	diffuse_map grass18wg.png
+}
+
+hlms grass19 pbs : grass
+{
+	diffuse_map grass19.png
+}
+
+hlms grass20 pbs : grass
+{
+	diffuse_map grass20.png
+}
+
+hlms grass20p pbs : grass
+{
+    diffuse_map grass20p.png
+}
+
+hlms gplant1 pbs : grass
+{
+    diffuse_map gplant1.png
+}
+
+
+//  unidentified
+hlms grassXc pbs : grass
+{
+    diffuse_map grassXc.png
+}
+
+hlms grassXv pbs : grass
+{
+    diffuse_map grassXv.png
+}
+
+hlms grassX10b pbs : grass
+{
+    diffuse_map grassX10b.png
+}
+
+hlms grassX13p pbs : grass
+{
+    diffuse_map grassX13p.png
+}
+
+//  alien
+hlms grass4v-alien pbs : grass
+{
+    diffuse_map grass4v-alien.png
+}
+
+hlms grassX10b-alien pbs : grass
+{
+    diffuse_map grassX10b-alien.png
+}
+
+hlms grassXc-alien pbs : grass
+{
+    diffuse_map grassXc-alien.png
+}
+
+//  black desert
+hlms grassZ10 pbs : grass
+{
+	emissive 0.3 0.3 0.3
+    diffuse_map grassZ10.png
+}
+
+hlms grassZ11 pbs : grass
+{
+	emissive 0.2 0.2 0.2
+    diffuse_map grassZ11.png
+}
+
+hlms grassZ13p pbs : grass
+{
+	emissive 0.2 0.2 0.2
+    diffuse_map grassZ13p.png
+}
+
+hlms grassZ13r pbs : grass
+{
+	emissive 0.2 0.2 0.2
+    diffuse_map grassZ13r.png
+}
+
+hlms grassZ14r pbs : grass
+{
+	emissive 0.2 0.2 0.2
+    diffuse_map grassZ14r.png
+}
+
+hlms grassZ1r pbs : grass
+{
+	emissive 0.2 0.2 0.2
+    diffuse_map grassZ1r.png
+}

@@ -9,7 +9,7 @@
 namespace Ogre  {  class Terra;  class AtmosphereNpr;
 	class Light;  class SceneNode;  class Camera;  class SceneManager;
 	class Viewport;  class Root;  class ParticleSystem;  }
-class App;  class Scene;  class WaterRTT;  class CData;  class SplineRoad;  class PaceNotes;
+class App;  class Scene;  class WaterRTT;  class CData;  class SplineRoad;  class PaceNotes;  class Grass;
 
 
 class CScene
@@ -86,6 +86,8 @@ public:
 	void CreateTrees(), DestroyTrees(), RecreateTrees(); //, updGrsTer(), UpdCamera();
 	std::vector<Ogre::Item*> vegetItems;
 	std::vector<Ogre::SceneNode*> vegetNodes;
+	//  Grass
+	Grass* grass = 0;
 
 
 	///  Terrain

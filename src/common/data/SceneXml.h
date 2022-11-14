@@ -79,12 +79,12 @@ public:
 	float trPage, trDist, trDistImp;
 	int trRdDist;  // dist from road to trees
 
-	//  grass layers
+	//  grass layers  paged
 	const static int ciNumGrLay = 6;  // all, for edit
 	SGrassLayer grLayersAll[ciNumGrLay];
 	SGrassChannel grChan[4];
 
-	//  paged layers  (models: trees,rocks,etc)
+	//  model layers  (trees,rocks,etc)  not paged
 	const static int ciNumPgLay = 10;  // all, for edit
 	PagedLayer pgLayersAll[ciNumPgLay];
 	std::vector<int> pgLayers;    // active only (on)

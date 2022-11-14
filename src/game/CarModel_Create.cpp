@@ -535,7 +535,7 @@ void CarModel::Create()
 	vPofs = Vector3::ZERO;
 	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    "g", ghost, RV_CarGlass, 0, sMtr[Mtr_CarBody]+"g",  bLogInfo);
 	
-#if 1  //  lights test **  // par set..
+#if 0  //  car lights test **  // par set..
 for (int i=0; i < 2; ++i)
 {
 	Light* light = mSceneMgr->createLight();
