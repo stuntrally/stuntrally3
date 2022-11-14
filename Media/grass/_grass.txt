@@ -1,0 +1,19 @@
+grass2.png .. grass20
+
+Plants textures Pack 01,02,03,04
+Author: yughues
+License(s): CC0
+
+https://opengameart.org/content/plants-textures-pack-01
+https://opengameart.org/content/plants-textures-pack-02
+https://opengameart.org/content/plants-textures-pack-03
+https://opengameart.org/content/plants-textures-pack-04
+
+many colored by CryHam for SR
+
+---- Old
+grassJungle.png  rest is colored
+
+This grass texture included with PagedGeometry was kindly provided by
+Agnisola Philippe (https://www.blitz3dfr.com/portal_joomla/) for 
+commercial or non-commercial use.
