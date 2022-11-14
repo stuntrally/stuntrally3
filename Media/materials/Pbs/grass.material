@@ -2,7 +2,7 @@ hlms grass pbs
 {
     alpha_test greater 0.5
     cull_mode none
-    scene_blend alpha_blend
+    // scene_blend alpha_blend
     // grass_wind true
     // vertex_colour true
     // diffuse_address_mode clamp
