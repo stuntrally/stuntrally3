@@ -236,13 +236,13 @@ void CScene::UpdSun()
 	// sun->setSpecularColour(0.0, 0.0, 1.0);
 	// sun->setDiffuseColour( 1.0, 1.0, 1.0);
 	// sun->setSpecularColour(1.0, 1.0, 1.0);
-	sun->setDiffuseColour( sc->lDiff.GetClr() * 4.f );
-	sun->setSpecularColour(sc->lSpec.GetClr() * 1.f );
+	sun->setDiffuseColour( sc->lDiff.GetClr() * 5.f );
+	sun->setSpecularColour(sc->lSpec.GetClr() * 3.f );
 
 	//  ambient
 	app->mSceneMgr->setAmbientLight(
-		sc->lAmb.GetClr() * 2.f,
-		sc->lAmb.GetClr() * 2.f,
+		sc->lAmb.GetClr() * 1.5f,
+		sc->lAmb.GetClr() * 1.5f,
 		// ColourValue( 1.f, 0.f, 0.f ) * 0.1f,
 		// ColourValue( 0.f, 1.f, 0.f ) * 0.1f,
 

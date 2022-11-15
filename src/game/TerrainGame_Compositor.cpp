@@ -101,7 +101,7 @@ namespace Demo
 			mCubeCamera->setFixedYawAxis( false );
 			mCubeCamera->setPosition( 0, 1.0, 0 );  // upd in car
 			mCubeCamera->setNearClipDistance( 0.5 );
-			mCubeCamera->setVisibilityFlags(0xFFFFFFFF - RV_Car);  // no car parts in reflections
+			mCubeCamera->setVisibilityFlags( RV_MaskReflect );  //**
 
 			mCubeCamera->setFarClipDistance( 300 );  // par
 			mCubeCamera->setShadowRenderingDistance( 100 );  // par

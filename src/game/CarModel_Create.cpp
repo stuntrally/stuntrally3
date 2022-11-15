@@ -408,9 +408,9 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 			sCarI/*ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME/**/, SCENE_DYNAMIC );
 
 		//**  set reflection cube  // fixme broken?
-		assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem( 0 )->getDatablock() ) );
+		assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() ) );
 		Ogre::HlmsPbsDatablock *datablock =
-			static_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem( 0 )->getDatablock() );
+			static_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() );
 		datablock->setTexture( Ogre::PBSM_REFLECTION, pApp->mDynamicCubemap );
 		//datablock->setDiffuse(Vector3(Math::RangeRandom(0.f, 1.f), 0.5f, 0.f));  // test
 	}
@@ -420,9 +420,9 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 	}
 	ToDel(item);
 
-	if (bbox)  *bbox = item->getLocalAabb();//getBoundingBox();
-	// if (ghost)  {  item->setRenderQueueGroup(RQG_CarGhost);  item->setCastShadows(false);  }
-	//; fixme else  if (visFlags == RV_CarGlass)  item->setRenderQueueGroup(RQG_CarGlass);
+	if (bbox)  *bbox = item->getLocalAabb(); //getBoundingBox();
+	if (ghost)  {  item->setRenderQueueGroup(RQG_CarGhost);  item->setCastShadows(false);  }
+	else  if (visFlags == RV_CarGlass)  item->setRenderQueueGroup(RQG_CarGlass);
 	ndCar->attachObject(item);  //item->setVisibilityFlags(visFlags);
 	if (bLogInfo)  LogMeshInfo(item, sDirname + sMesh);
 }
@@ -535,6 +535,7 @@ void CarModel::Create()
 	vPofs = Vector3::ZERO;
 	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    "g", ghost, RV_CarGlass, 0, sMtr[Mtr_CarBody]+"g",  bLogInfo);
 	
+
 #if 0  //  car lights test **  // par set..
 for (int i=0; i < 2; ++i)
 {
@@ -547,7 +548,7 @@ for (int i=0; i < 2; ++i)
 	light->setType( Ogre::Light::LT_SPOTLIGHT );
 	light->setDirection( Ogre::Vector3( -1, 0.1, 0 ).normalisedCopy() );
 	light->setAttenuationBasedOnRadius( 30.0f, 0.01f );
-    light->setSpotlightRange(Degree(5), Degree(30), 1.0f );  //par
+    light->setSpotlightRange(Degree(5), Degree(40), 1.0f );  //par 5 30
 	light->setCastShadows(false);
 	lights.push_back(light);
 }
@@ -607,8 +608,8 @@ for (int i=0; i < 2; ++i)
 		for (int i=0; i < brakePos.size(); ++i)
 			brakes->createBillboard(brakePos[i], brakeClr);
 
-		brakes->setVisible(false);
 		brakes->setDatablockOrMaterialName("flare1", "Popular");
+		brakes->setVisible(false);
 		nd->attachObject(brakes);
 	}
 	
