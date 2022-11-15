@@ -1,12 +1,15 @@
+#include "OgrePixelFormatGpu.h"
+#include "pch.h"
+#include "Grass.h"
+#include "Def_Str.h"
+#include "RenderConst.h"
+
 #include "OgreCommon.h"
 #include "OgreHlmsPbsDatablock.h"
 #include "OgreHlmsPbsPrerequisites.h"
+#include "OgreImage2.h"
 #include "OgreMeshManager.h"
 #include "Terra.h"
-#include "pch.h"
-#include "Def_Str.h"
-#include "RenderConst.h"
-#include "Grass.h"
 
 #include "CGame.h"
 #include "game.h"
@@ -24,6 +27,7 @@
 #include <OgreMeshManager2.h>
 #include <Vao/OgreVaoManager.h>
 #include <OgreMesh.h>
+#include <OgreTextureBox.h>
 using namespace Ogre;
 using namespace std;
 
@@ -68,23 +72,64 @@ void Grass::Create()
 				std::vector<Ogre::Vector2> tcs;
 				std::vector<Ogre::uint16> idx;
 				++id;
+				TextureBox tb = scn->imgRoad->getData(0);
 
 				//  par
-				int nn = 200000 * gr->dens * fGrass, ix = 0;
+				int nn = 200000 * gr->dens * fGrass, ix = 0, na = 0;
 				for (int n = 0; n < nn; ++n)
 				{
 					Real xw = Math::RangeRandom(-tws, tws);  // world pos
 					Real zw = Math::RangeRandom(-tws, tws);
 					Real sx = Math::RangeRandom(gr->minSx, gr->maxSx) * 0.5f;  // size
 					Real sy = Math::RangeRandom(gr->minSy, gr->maxSy);
-					Real ax = Math::RangeRandom(0, Math::PI);
+					Real ay = Math::RangeRandom(0, Math::PI);
+					bool add = true;
 
-					for (int q=0; q < 2; ++q)  // cross
+					//  check if on road - uses roadDensity.png
+					if (scn->imgRoad)
+					{
+						int r = scn->imgRoadSize;
+						int mx = (0.5*xw/tws + 0.5) * r,
+							my = (0.5*zw/tws + 0.5) * r;
+
+					#if 1
+						float cr = scn->imgRoad->getColourAt(
+							std::max(0,std::min(r-1, mx)),
+							std::max(0,std::min(r-1, my)), 0).r;
+						if (cr < 0.85f)
+							continue;
+					#else
+						// 	d = c + pg.maxRdist+1;  // not less than c
+						const int d = 0;  // > slow
+
+						//  find dist to road
+						int ii,jj, rr, rmin = 3000;  //d
+						for (jj = -d; jj <= d; ++jj)
+						for (ii = -d; ii <= d; ++ii)
+						{
+							float cr = scn->imgRoad->getColourAt(
+								std::max(0,std::min(r-1, mx+ii)),
+								std::max(0,std::min(r-1, my+jj)), 0).r;
+							// uint* p = tb.at(
+							
+							if (cr < 0.75f)  //par 0.75-
+							// if (p[0] > 129)
+							{
+								add = false;
+								continue;
+							}
+						}
+						if (!add)  continue;  //
+						#endif
+					}
+					++na;
+	
+					for (int q=0; q < 2; ++q)  // cross  // todo: more types, blades, lods?
 					for (int y=0; y < 2; ++y)  // rect
 					for (int x=0; x < 2; ++x)
 					{
-						Real a = ax + q * Math::HALF_PI + x * Math::PI;
-						Real xr = cosf(a) * sx,  // rot
+						Real a = ay + q * Math::HALF_PI + x * Math::PI;
+						Real xr = cosf(a) * sx,  // rot y
 							 zr = sinf(a) * sx;
 						Vector3 p(  // pos
 							xw +xr, y * sy,
@@ -95,7 +140,7 @@ void Grass::Create()
 						// LogO(String("^ gr ")+fToStr(p.x)+" "+fToStr(p.y)+" "+fToStr(p.z));
 
 						Vector2 uv(x, 1.f - y);
-						Vector3 n(1,0,0);  //-
+						Vector3 n(0,1,0);  // todo: tilt^?
 						Vector4 c(1,1,1,1);
 
 						pos.push_back(p);  norm.push_back(n);
@@ -103,27 +148,24 @@ void Grass::Create()
 					}
 					idx.push_back(ix+1);  idx.push_back(ix+3);  idx.push_back(ix+0);  // |\ |
 					idx.push_back(ix+3);  idx.push_back(ix+2);  idx.push_back(ix+0);  // | \|
-					// idx.push_back(ix+0);  idx.push_back(ix+1);  idx.push_back(ix+2);  // |\ |
-					// idx.push_back(ix+1);  idx.push_back(ix+2);  idx.push_back(ix+3);  // | \|
 					ix += 4;
 				}
-				LogO(String("^ grass ") +toStr(nn) +" "+ gr->material);
-				GrassData gd;  //-
+				LogO(String("^ grass ") +toStr(na) +" / "+ toStr(nn) +" "+ gr->material);
 
-				CreateMesh(gd, "g"+toStr(id), gr->material, 
-					pos, norm, clr, tcs, idx);
-				gds.push_back(gd);
+				if (!pos.empty())  // add mesh
+				{	GrassData gd;
 
-				// l->setSwayDistribution(g0->swayDistr);
-				// l->setSwayLength(g0->swayLen);  l->setSwaySpeed(g0->swaySpeed);
-
-				// l->setFadeTechnique(FADETECH_ALPHA);  //FADETECH_GROW-
-				// l->setColorMap(gr->colorMap);
+					CreateMesh(gd, "g"+toStr(id), gr->material, 
+						pos, norm, clr, tcs, idx);
+					gds.push_back(gd);
+				}
+				// g0->swayDistr;
+				// g0->swayLen;  g0->swaySpeed;
+				// FADETECH_ALPHA  //FADETECH_GROW-
+				// gr->colorMap
 				// l->setDensityMap(grassDensRTex, MapChannel(gr->iChan));
-				// gr->grl = l;
 			}
 		}
-		// grass->setShadersEnabled(true);
 	}
 	LogO(String("::: Time Grass: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 }
@@ -264,7 +306,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	subMesh->mVao[VpNormal].push_back( vao );
 	subMesh->mVao[VpShadow].push_back( vao );  // same geometry for shadow casting
 
-	subMesh->arrangeEfficient(false, false, false);  // no?
+	//subMesh->arrangeEfficient(false, false, false);  // no?
 
 
 	//  add mesh to scene
@@ -275,18 +317,19 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	mesh->_setBoundingSphereRadius((aabox.getMaximum() - aabox.getMinimum()).length() / 2.0);  
 
 	//  tangents-
-	String s1 = sMesh+"v1", s2 = sMesh+"v2";
+/*	String s1 = sMesh+"v1", s2 = sMesh+"v2";
 	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create(s1, "General");
 	m1->importV2(mesh.get());
 	m1->buildTangentVectors();
 	mesh = MeshManager::getSingleton().createByImportingV1(s2, "General", m1.get(), false,false,false);
 	MeshManager::getSingleton().remove(sMesh);  // not needed
-
+*/
 
 	//  add mesh to scene
 	//---------------------------------------------------------
-	Item* it = mSceneMgr->createItem(s2, "General", Ogre::SCENE_STATIC );
-	// *it = mSceneMgr->createItem( mesh, Ogre::SCENE_STATIC );
+	Item* it = mSceneMgr->createItem(mesh, SCENE_STATIC );  // no tangents
+	// Item* it = mSceneMgr->createItem(s2, "General", SCENE_STATIC );
+	// *it = mSceneMgr->createItem( mesh, SCENE_STATIC );
 	SceneNode* node = mSceneMgr->getRootSceneNode( SCENE_STATIC )->createChildSceneNode( SCENE_STATIC );
 	node->attachObject(it);
 	it->setCastShadows(false);  //**
@@ -336,9 +379,9 @@ void Grass::Destroy()  // full
 					mSceneMgr->destroyItem(gd.it);
 
 					String sMesh = gd.smesh, s1 = sMesh+"v1", s2 = sMesh+"v2";
-					// MeshManager::getSingleton().remove(sMesh);
-					MeshManager::getSingleton().remove(s2);
-					v1::MeshManager::getSingleton().remove(s1);
+					MeshManager::getSingleton().remove(sMesh);
+					// MeshManager::getSingleton().remove(s2);  // with tangents
+					// v1::MeshManager::getSingleton().remove(s1);
 				}
 			}
 		}

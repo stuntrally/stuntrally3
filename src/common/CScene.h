@@ -34,6 +34,7 @@ public:
 
 	
 	//  All:  sun, atmo/fog, weather
+	//-----------------------------------
 	void CreateAllAtmo(), DestroyAllAtmo();
 
 	//  Sky ~
@@ -61,6 +62,7 @@ public:
 
 
 	//  Fluids  water, mud
+	//-----------------------------------
 	std::vector<Ogre::String/*MeshPtr*/> vFlSMesh, vFlSMesh2;
 	std::vector<Ogre::Item*> vFlIt;
 	std::vector<Ogre::SceneNode*> vFlNd;
@@ -72,6 +74,7 @@ public:
 
 
 	//  Road
+	//-----------------------------------
 	int rdCur = 0;  // cur
 	std::vector<SplineRoad*> roads;
 	SplineRoad* road = 0;  // main
@@ -82,8 +85,12 @@ public:
 
 	
 	//  Vegetation
-	int cntAll = 0;
+	//-----------------------------------
+	Ogre::Image2* imgRoad = 0;  int imgRoadSize = 0;
+	void LoadRoadDens(), DelRoadDens();
+
 	void CreateTrees(), DestroyTrees(), RecreateTrees(); //, updGrsTer(), UpdCamera();
+	int cntAll = 0;
 	std::vector<Ogre::Item*> vegetItems;
 	std::vector<Ogre::SceneNode*> vegetNodes;
 	//  Grass

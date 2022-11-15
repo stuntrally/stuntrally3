@@ -1,3 +1,4 @@
+#include "OgreImage2.h"
 #include "pch.h"
 #include "Road.h"
 #include "Def_Str.h"
@@ -291,6 +292,7 @@ void App::LoadCleanUp()  // 1 first
 	LogO("------  # Destroy All track");
 	if (dstTrk)
 	{
+		scn->DelRoadDens();
 		scn->grass->Destroy();
 		scn->DestroyTrees();
 		DestroyObjects(true);
@@ -679,11 +681,13 @@ void App::LoadObjects()  // 7
 void App::LoadTrees()  // 8
 {
 	if (dstTrk)
-		scn->grass->Create();
+	{
+		scn->LoadRoadDens();
 
-	if (dstTrk)
+		scn->grass->Create();  // split step
+
 		scn->CreateTrees();
-	
+	}	
 		
 	//  check for cars inside terrain ___
 	/*if (scn->terrain)

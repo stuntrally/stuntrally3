@@ -73,83 +73,26 @@ void CScene::CreateTrees()
 	Ogre::Timer ti;
 	cntAll = 0;
 	// updGrsTer();
-		
-	//-------------------------------------- Grass --------------------------------------
-	int imgRoadSize = 0;
-	Image2 imgRoad;  //;
-	try
-	{	imgRoad.load(String("roadDensity.png"),"General");
-	}catch(...)
-	{	LogO("Warning: Trees can't load roadDensity !");
-	}
-	imgRoadSize = imgRoad.getWidth();  // square[]
-	
-	/*roadDens.Load(TrkDir()+"objects/roadDensity.png");
-	
-	UpdGrassDens();  //!
-	*/
-	
+
+
 	Real tws = sc->td.fTerWorldSize * 0.5f;
-	// TBounds tbnd(-tws, -tws, tws, tws);
 	//  pos0 - original  pos - with offset
 	Vector3 pos0 = Vector3::ZERO, pos = Vector3::ZERO;  Radian yaw;
 
 	SETTINGS* pSet = app->pSet;
-	Real fGrass = pSet->grass * sc->densGrass * 3.0f;  // std::min(pSet->grass, 
 	#ifdef SR_EDITOR
 	Real fTrees = pSet->gui.trees * sc->densTrees;
 	#else
 	Real fTrees = pSet->game.trees * sc->densTrees;
 	#endif
-
-	#ifdef CAR_PRV
-	fTrees = 1.0f;
-	fGrass = 1.0f;
-	#endif
 	
-#if 0
-	if (fGrass > 0.f)
-	{
-		grass->addDetailLevel<GrassPage>(sc->grDist * pSet->grass_dist);
-		// grassLoader->setRenderQueueGroup(RQG_BatchAlpha);
-
-		//  Grass layers
-		const SGrassLayer* g0 = &sc->grLayersAll[0];
-		for (int i=0; i < sc->ciNumGrLay; ++i)
-		{
-			SGrassLayer* gr = &sc->grLayersAll[i];
-			if (gr->on)
-			{
-				GrassLayer *l = grassLoader->addLayer(gr->material);
-				l->setMinimumSize(gr->minSx, gr->minSy);
-				l->setMaximumSize(gr->maxSx, gr->maxSy);
-				l->setDensity(gr->dens * fGrass);
-
-				l->setSwayDistribution(g0->swayDistr);
-				l->setSwayLength(g0->swayLen);  l->setSwaySpeed(g0->swaySpeed);
-
-				l->setAnimationEnabled(true);  //l->setLightingEnabled(true);
-				l->setRenderTechnique(GRASSTECH_CROSSQUADS);  //GRASSTECH_SPRITE-
-				l->setFadeTechnique(FADETECH_ALPHA);  //FADETECH_GROW-
-
-				l->setColorMap(gr->colorMap);
-				
-				l->setDensityMap(grassDensRTex, MapChannel(gr->iChan));
-				l->setMapBounds(tbnd);
-				gr->grl = l;
-			}
-		}
-		grass->setShadersEnabled(true);
-	}
-	LogO(String("::: Time Grass: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
-#endif
 
 	//---------------------------------------------- Trees ----------------------------------------------
 	if (fTrees > 0.f)
 	{
-		// if (!pSet->impostors_only)
-		// 	trees->addDetailLevel<WindBatchPage>(sc->trDist * pSet->trees_dist, 0);
-		// 	trees->addDetailLevel<ImpostorPage>(sc->trDistImp * pSet->trees_dist, 0);
+		//if (!pSet->impostors_only)
+		//<WindBatchPage>(sc->trDist * pSet->trees_dist, 0);
+		//<ImpostorPage>(sc->trDistImp * pSet->trees_dist, 0);
 		ResourceGroupManager& resMgr = ResourceGroupManager::getSingleton();
 		SceneManager *mgr = app->mSceneMgr;
 		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
@@ -223,9 +166,9 @@ void CScene::CreateTrees()
 				vo.y = ofs.x * syr + ofs.y * cyr;
 				pos.x += vo.x * scl;  pos.z += vo.y * scl;
 				
-			#if 1
+
 				//  check if on road - uses roadDensity.png
-				if (r > 0)  //  ----------------
+				if (imgRoad && r > 0)  //  ----------------
 				{
 				int mx = (pos.x + 0.5*tws)/tws*r,
 					my = (pos.z + 0.5*tws)/tws*r;
@@ -241,7 +184,7 @@ void CScene::CreateTrees()
 					for (jj = -d; jj <= d; ++jj)
 					for (ii = -d; ii <= d; ++ii)
 					{
-						float cr = imgRoad.getColourAt(
+						float cr = imgRoad->getColourAt(
 							std::max(0,std::min(r-1, mx+ii)),
 							std::max(0,std::min(r-1, my+jj)), 0).r;
 						
@@ -259,9 +202,9 @@ void CScene::CreateTrees()
 						add = false;
 				}
 				if (!add)  continue;  //
-			#endif
 
-				//;  check ter angle  ------------
+
+				//  check ter angle  ------------
 				float ang = terrain->getAngle(pos.x, pos.z, sc->td.fTriangleSize);
 				if (ang > pg.maxTerAng)
 					add = false;
@@ -271,6 +214,7 @@ void CScene::CreateTrees()
 				//  check ter height  ------------
 				bool in = terrain->getHeightAt(pos);
 				if (!in)  add = false;  // outside
+				
 				if (pos.y < pg.minTerH || pos.y > pg.maxTerH)
 					add = false;
 				
@@ -305,9 +249,9 @@ void CScene::CreateTrees()
 
 				Degree a( Math::RangeRandom(0, 360.f) );
 				Quaternion q;  q.FromAngleAxis( a, Vector3::UNIT_Y );
-				if (0) //pg.tilt)
+				if (0) // todo: par pg.tilt ..
 				{
-					Degree at( Math::RangeRandom(0, 20.f) );  // todo: par tilt ..
+					Degree at( Math::RangeRandom(0, 20.f) );
 					Quaternion qt;  qt.FromAngleAxis( -at, Vector3::UNIT_Z );
 					node->setOrientation( qt * q );
 				}else
@@ -389,9 +333,30 @@ void CScene::CreateTrees()
 				#endif
 			}
 		}
-		
-		LogO(String("***** Vegetation objects count: ") + toStr(cntAll) + "  shapes: " + toStr(cntshp));
+		LogO(String("***** Vegetation models count: ") + toStr(cntAll) + "  shapes: " + toStr(cntshp));
 	}
-	//imgRoadSize = 0;
 	LogO(String("::: Time Trees: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+}
+
+
+void CScene::LoadRoadDens()
+{
+	DelRoadDens();
+
+	imgRoad = new Image2();
+	try
+	{	imgRoad->load(String("roadDensity.png"), "General");
+		imgRoadSize = imgRoad->getWidth();  // square[]
+		LogO("roadDensity: "+toStr(imgRoadSize));
+	}
+	catch(...)
+	{	LogO("Warning: Trees can't load roadDensity !");
+		DelRoadDens();
+	}
+}
+
+void CScene::DelRoadDens()
+{
+	imgRoadSize = 0;
+	delete imgRoad;  imgRoad = 0;
 }
