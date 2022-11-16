@@ -1,3 +1,4 @@
+#include "OgreLogManager.h"
 #include "OgrePixelFormatGpu.h"
 #include "pch.h"
 #include "Grass.h"
@@ -40,133 +41,132 @@ void Grass::Create()
 {
 	LogO("---- Create Grass: ");
 	Timer ti;
-	if (!pSet || !scn || !terrain)
+	if (!pSet || !scn || !terrain || !scn->imgRoad)
 		return;
 
-	auto* sc = scn->sc;
-	Real tws = sc->td.fTerWorldSize * 0.49f;  //par
+	const auto* sc = scn->sc;
+	const Real tws = sc->td.fTerWorldSize, hws = tws * 0.5f;  //par-
+	const Real mrg = 0.97f;
 
-	Real fGrass = pSet->grass * sc->densGrass * 3.0f;  // std::min(pSet->grass, 
+	const Real fGrass = pSet->grass * sc->densGrass * 3.0f;  // std::min(pSet->grass, 
 	#ifdef SR_EDITOR
-	Real fTrees = pSet->gui.trees * sc->densTrees;
+	const Real fTrees = pSet->gui.trees * sc->densTrees;
 	#else
-	Real fTrees = pSet->game.trees * sc->densTrees;
+	const Real fTrees = pSet->game.trees * sc->densTrees;
 	#endif
 	
-	if (fGrass > 0.f)
-	{
-		/*	sc->grPage;  GrassPage(sc->grDist * pSet->grass_dist);*/
-		//gds.reserve(100);
+	if (fGrass <= 0.f)  return;
+	LogManager::getSingleton().setLogDetail(LoggingLevel::LL_NORMAL);  // skip warnings for no loader
 
-		int id = 0;
-		//  Grass layers
-		const SGrassLayer* g0 = &sc->grLayersAll[0];
-		for (int i=0; i < sc->ciNumGrLay; ++i)
+	// sc->grPage;  GrassPage(sc->grDist * pSet->grass_dist);  // global, not or per track ?
+	//gds.reserve(100);
+	const int r = scn->imgRoadSize;  //-1?
+
+	int id = 0;
+	//  Grass layers
+	const SGrassLayer* g0 = &sc->grLayersAll[0];
+	for (int i=0; i < sc->ciNumGrLay; ++i)
+	{
+		const SGrassLayer* gr = &sc->grLayersAll[i];
+		if (gr->on)
 		{
-			SGrassLayer* gr = &sc->grLayersAll[i];
-			if (gr->on)
+			const Real pws = 50.f;   // page size  100
+			// const Real pws = tws / 2.f;  // par divs
+			const Real hps = pws / 2.f;
+			const Real pws2 = pws * pws;
+			int na = 0, pg = 0;  // stats
+
+			//  pages
+			for (Real yy = -hws; yy < hws; yy += pws)
+			for (Real xx = -hws; xx < hws; xx += pws)
 			{
 				//  create grass page
 				std::vector<Ogre::Vector3> pos, norm;
-				std::vector<Ogre::Vector4> clr;
 				std::vector<Ogre::Vector2> tcs;
+				std::vector<Ogre::Vector4> clr; //-
 				std::vector<Ogre::uint16> idx;
-				++id;
-				TextureBox tb = scn->imgRoad->getData(0);
+				++id;  ++pg;
+				
+				//  page y pos
+				const Real xp = xx + hps, zp = yy + hps;  // world pos
+				const Real yp = terrain->getHeight(xp, zp);
+				//? TextureBox tb = scn->imgRoad->getData(0);
 
-				//  par
-				int nn = 200000 * gr->dens * fGrass, ix = 0, na = 0;
+				//  density  par
+				const int nn = gr->dens * fGrass * 2.0f * pws2;
+				int ix = 0;
 				for (int n = 0; n < nn; ++n)
 				{
-					Real xw = Math::RangeRandom(-tws, tws);  // world pos
-					Real zw = Math::RangeRandom(-tws, tws);
-					Real sx = Math::RangeRandom(gr->minSx, gr->maxSx) * 0.5f;  // size
-					Real sy = Math::RangeRandom(gr->minSy, gr->maxSy);
-					Real ay = Math::RangeRandom(0, Math::PI);
-					bool add = true;
+					const Real xl = Math::RangeRandom(-hps, hps);  // local pos
+					const Real zl = Math::RangeRandom(-hps, hps);  // -+ half page
+					const Real xw = (xl + xp) / hws;  // half world
+					const Real zw = (zl + zp) / hws;
+					if (xw <= -mrg || zw <= -mrg ||
+						xw >=  mrg || zw >=  mrg)
+						continue;  // outside ter
 
 					//  check if on road - uses roadDensity.png
-					if (scn->imgRoad)
-					{
-						int r = scn->imgRoadSize;
-						int mx = (0.5*xw/tws + 0.5) * r,
-							my = (0.5*zw/tws + 0.5) * r;
-
-					#if 1
-						float cr = scn->imgRoad->getColourAt(
-							std::max(0,std::min(r-1, mx)),
-							std::max(0,std::min(r-1, my)), 0).r;
-						if (cr < 0.85f)
-							continue;
-					#else
-						// 	d = c + pg.maxRdist+1;  // not less than c
-						const int d = 0;  // > slow
-
-						//  find dist to road
-						int ii,jj, rr, rmin = 3000;  //d
-						for (jj = -d; jj <= d; ++jj)
-						for (ii = -d; ii <= d; ++ii)
-						{
-							float cr = scn->imgRoad->getColourAt(
-								std::max(0,std::min(r-1, mx+ii)),
-								std::max(0,std::min(r-1, my+jj)), 0).r;
-							// uint* p = tb.at(
-							
-							if (cr < 0.75f)  //par 0.75-
-							// if (p[0] > 129)
-							{
-								add = false;
-								continue;
-							}
-						}
-						if (!add)  continue;  //
-						#endif
-					}
+					const int xrd = (0.5 * xw + 0.5) * r;
+					const int yrd = (0.5 * zw + 0.5) * r;
+					float cr = scn->imgRoad->getColourAt(  // slow
+						xrd, yrd, 0).r;
+					if (cr < 0.15f)  //par
+						continue;
+					
+					//  add new  grass x
+					Real sx = Math::RangeRandom(gr->minSx, gr->maxSx) * 0.5f;  // sizes
+					Real sy = Math::RangeRandom(gr->minSy, gr->maxSy);
+					Real ay = Math::RangeRandom(0, Math::PI);  // rot
 					++na;
 	
-					for (int q=0; q < 2; ++q)  // cross  // todo: more types, blades, lods?
-					for (int y=0; y < 2; ++y)  // rect
+					for (int q=0; q < 2; ++q)  // cross x  // todo: more types, blades, lods?
+					for (int y=0; y < 2; ++y)  // rect []
 					for (int x=0; x < 2; ++x)
 					{
-						Real a = ay + q * Math::HALF_PI + x * Math::PI;
-						Real xr = cosf(a) * sx,  // rot y
-							 zr = sinf(a) * sx;
+						const Real a = ay + q * Math::HALF_PI + x * Math::PI;
+						const Real  // rot y
+							xr = cosf(a) * sx,
+							zr = sinf(a) * sx;
 						Vector3 p(  // pos
-							xw +xr, y * sy,
-							zw +zr );
-						p.y += terrain->getHeight(p.x, p.z);
-
-						// LogO(String("^ gr ")+fToStr(wx)+" "+fToStr(wz)+"  "+fToStr(sx)+" "+fToStr(sy));
-						// LogO(String("^ gr ")+fToStr(p.x)+" "+fToStr(p.y)+" "+fToStr(p.z));
+							xl + xr, y * sy,
+							zl + zr );
+						
+						p.y += terrain->getHeight(p.x + xp, p.z + zp) - yp;
 
 						Vector2 uv(x, 1.f - y);
 						Vector3 n(0,1,0);  // todo: tilt^?
-						Vector4 c(1,1,1,1);
+						//Vector4 c(1,1,1,1);
 
 						pos.push_back(p);  norm.push_back(n);
-						tcs.push_back(uv);  clr.push_back(c);
+						tcs.push_back(uv);  //clr.push_back(c);
 					}
 					idx.push_back(ix+1);  idx.push_back(ix+3);  idx.push_back(ix+0);  // |\ |
 					idx.push_back(ix+3);  idx.push_back(ix+2);  idx.push_back(ix+0);  // | \|
 					ix += 4;
 				}
-				LogO(String("^ grass ") +toStr(na) +" / "+ toStr(nn) +" "+ gr->material);
 
 				if (!pos.empty())  // add mesh
 				{	GrassData gd;
 
 					CreateMesh(gd, "g"+toStr(id), gr->material, 
 						pos, norm, clr, tcs, idx);
+					
+					gd.node->setPosition(Vector3(xp, yp, zp));
+					gd.it->setRenderingDistance( 100.f * pSet->grass_dist );  //par
 					gds.push_back(gd);
 				}
-				// g0->swayDistr;
-				// g0->swayLen;  g0->swaySpeed;
-				// FADETECH_ALPHA  //FADETECH_GROW-
-				// gr->colorMap
-				// l->setDensityMap(grassDensRTex, MapChannel(gr->iChan));
-			}
+			}	// pages
+
+			LogO(String("^ grass  na ") +toStr(na) +"  pg "+ toStr(pg) +"  "+ gr->material);
+			// g0->swayDistr;
+			// g0->swayLen;  g0->swaySpeed;
+			// FADETECH_ALPHA  //FADETECH_GROW-
+			// gr->colorMap
+			// l->setDensityMap(grassDensRTex, MapChannel(gr->iChan));
 		}
 	}
+
+	LogManager::getSingleton().setLogDetail(LoggingLevel::LL_BOREME);
 	LogO(String("::: Time Grass: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 }
 
@@ -204,7 +204,6 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );  vertSize += 3;
 	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_NORMAL ) );    vertSize += 3;
 	vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  vertSize += 2;
-	// vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  vertSize += 2;  //2nd uv-
 	bool hasClr = clr.size() > 0;
 	if (hasClr)
 	{	vertexElements.push_back( VertexElement2( VET_FLOAT4, VES_DIFFUSE ) );  vertSize += 4;  }
@@ -323,7 +322,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	m1->buildTangentVectors();
 	mesh = MeshManager::getSingleton().createByImportingV1(s2, "General", m1.get(), false,false,false);
 	MeshManager::getSingleton().remove(sMesh);  // not needed
-*/
+*/	// faster but will be lost with device..
 
 	//  add mesh to scene
 	//---------------------------------------------------------

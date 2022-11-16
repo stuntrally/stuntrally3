@@ -191,7 +191,7 @@ namespace Demo
 		//  Keys  params  ----
 		float mul = shift ? 0.2f : ctrl ? 3.f : 1.f;
 		int d = right ? 1 : left ? -1 : 0;
-		if (d)
+		if (d && pApp->scn->atmo)
 		{
 			SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
 			AtmosphereNpr *atmo = static_cast<AtmosphereNpr*>( sceneManager->getAtmosphere() );

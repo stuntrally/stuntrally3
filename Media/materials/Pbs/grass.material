@@ -10,10 +10,10 @@ hlms grass pbs
 	two_sided true
 
     diffuse 1 1 1
-    specular 0.2 0.2 0.2
+    specular 0.0 0.0 0.0
     //emissive 0.2 0.2 0.2
 	fresnel_coeff 0.1
-	roughness 0.2
+	roughness 0.4
 	metalness 0.1
 }
 
