@@ -70,8 +70,9 @@ void Grass::Create()
 		const SGrassLayer* gr = &sc->grLayersAll[i];
 		if (gr->on)
 		{
+			const SGrassChannel* ch = &scn->sc->grChan[gr->iChan];
+
 			const Real pws = 50.f;   // page size  100
-			// const Real pws = tws / 2.f;  // par divs
 			const Real hps = pws / 2.f;
 			const Real pws2 = pws * pws;
 			int na = 0, pg = 0;  // stats
@@ -99,20 +100,30 @@ void Grass::Create()
 				{
 					const Real xl = Math::RangeRandom(-hps, hps);  // local pos
 					const Real zl = Math::RangeRandom(-hps, hps);  // -+ half page
-					const Real xw = (xl + xp) / hws;  // half world
-					const Real zw = (zl + zp) / hws;
-					if (xw <= -mrg || zw <= -mrg ||
-						xw >=  mrg || zw >=  mrg)
+					const Real xw = xl + xp, xn = xw / hws;  // w world
+					const Real zw = zl + zp, zn = zw / hws;  // n -1..1
+					if (xn <= -mrg || zn <= -mrg ||
+						xn >=  mrg || zn >=  mrg)
 						continue;  // outside ter
 
 					//  check if on road - uses roadDensity.png
-					const int xrd = (0.5 * xw + 0.5) * r;
-					const int yrd = (0.5 * zw + 0.5) * r;
+					const int xrd = (0.5 * xn + 0.5) * r;  // 0..1
+					const int yrd = (0.5 * zn + 0.5) * r;
 					float cr = scn->imgRoad->getColourAt(  // slow
 						xrd, yrd, 0).r;
-					if (cr < 0.15f)  //par
+					if (cr < 0.35f)  //par
 						continue;
-					
+
+					//  ter h
+					Real h = terrain->getHeight(xw, zw);  // /2 par..
+					if (h < ch->hMin - ch->hSm/2.f || h > ch->hMax + ch->hSm)  // linRange-
+						continue;
+					//  ang
+					Real at = terrain->getAngle(xw, zw, 1.f);
+					if (at < ch->angMin - ch->angSm/2.f || at > ch->angMax + ch->angSm/2.f)
+						continue;
+
+
 					//  add new  grass x
 					Real sx = Math::RangeRandom(gr->minSx, gr->maxSx) * 0.5f;  // sizes
 					Real sy = Math::RangeRandom(gr->minSy, gr->maxSy);
