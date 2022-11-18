@@ -11,6 +11,7 @@
 // #include "../network/networkcallbacks.hpp"
 // #include "../oics/ICSChannelListener.h"
 // #include "PreviewTex.h"
+#include <thread>
 
 
 namespace Ogre {  class SceneNode;  class SceneManager;  class TextureGpu;  class Root;  }
@@ -58,26 +59,25 @@ public:
 	int iCurPoses[MAX_CARS];  // current index for carPoses queue
 	std::map<int,int> carsCamNum;  // picked camera number for cars
 	
-	// void newPoses(float time), newPerfTest(float time);  // vdrift
-	// void updatePoses(float time);  // ogre
-	// void UpdThr();
+	void newPoses(float time), newPerfTest(float time);  // vdrift
+	void updatePoses(float time);  // ogre
+	void UpdThr();
+	bool mShutDown = false;
+	std::thread* mThread = 0;  // 2nd thread for simulation
 
 	//  replay - full, saved by user
 	//  ghost - saved on best lap
 	//  ghplay - ghost ride replay, loaded if was on disk, replaced when new
-	//; Replay2 replay, ghost, ghplay;
+	Replay2 replay, ghost, ghplay;
 	Rewind rewind;  // to take car back in time (after crash etc.)
-	// TrackGhost ghtrk;  //  ghtrk - track's ghost
+	TrackGhost ghtrk;  //  ghtrk - track's ghost
 
-	// std::vector<ReplayFrame2> frm;  //size:16  //  frm - used when playing replay for hud and sounds
+	std::vector<ReplayFrame2> frm;  //size:16  //  frm - used when playing replay for hud and sounds
 
-	// bool isGhost2nd;  // if present (ghost but from other car)
+	bool isGhost2nd;  // if present (ghost but from other car)
 	// std::vector<float> vTimeAtChks;  // track ghost's times at road checkpoints
 	float fLastTime;  // thk ghost total time
 		
-
-	// std::thread mThread;  // 2nd thread for simulation
-
 
 	// virtual void createScene();
 	virtual void destroyScene();
@@ -159,8 +159,8 @@ public:
 	// bool bHideHudPace;  // hides pacenotes when same or deny by challenge
 	// bool bHideHudTrail; // hides trail if denied by challenge
 	
-	// bool bRplPlay,bRplPause, bRplRec, bRplWnd;  //  game
-	// int carIdWin, iRplCarOfs, iRplSkip;
+	bool bRplPlay,bRplPause, bRplRec, bRplWnd;  //  game
+	int carIdWin, iRplCarOfs, iRplSkip;
 
 	//  race pos
 	// int GetRacePos(float timeCur, float timeTrk, float carTimeMul, bool coldStart, float* pPoints=0);

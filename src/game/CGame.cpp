@@ -21,7 +21,9 @@
 // #include <OgreManualObject.h>
 // #include <OgreTechnique.h>
 // #include "../ogre/common/RenderBoxScene.h"
+#include <thread>
 using namespace Ogre;
+using namespace std;
 
 
 //  ctors  -----------------------------------------------
@@ -33,22 +35,22 @@ App::App(SETTINGS *settings, GAME *game)
 	, mTimer(0.f)
 	// game
 	,blendMtr(0), blendMapSize(513)
-	// ,carIdWin(-1), iRplCarOfs(0)
+	,carIdWin(-1), iRplCarOfs(0)
 	// other
 	,newGameRpl(0), curLoadState(0), dstTrk(1)
 	// ,bHideHudArr(0), bHideHudBeam(0), bHideHudPace(0), bHideHudTrail(0)
-	// ,bRplPlay(0),bRplPause(0), bRplRec(0), bRplWnd(1)
-	// , iRplSkip(0)
+	,bRplPlay(0),bRplPause(0), bRplRec(0), bRplWnd(1)
+	, iRplSkip(0)
 	// ,iEdTire(0), iTireLoad(0), iCurLat(0),iCurLong(0),iCurAlign(0), iUpdTireGr(0)
 	,fLastFrameDT(0.001f)
 	// ,bPerfTest(0),iPerfTestStage(PT_StartWait)
-	// ,isGhost2nd(0)
+	,isGhost2nd(0)
 	,fLastTime(1.f)
 {
 	pSet = settings;
 	pGame->collision.pApp = this;
 
-	// frm.resize(MAX_CARS);
+	frm.resize(MAX_CARS);
 	for (int i=0; i < MAX_CARS; ++i)
 		iCurPoses[i] = 0;
 
@@ -73,14 +75,14 @@ App::App(SETTINGS *settings, GAME *game)
 	// input = new CInput(this);
 
 	// if (pSet->multi_thr)
-	// 	mThread = boost::thread(boost::bind(&App::UpdThr, boost::ref(*this)));
+	mThread = new thread(&App::UpdThr, this);
 }
 
 void App::ShutDown()
 {
-	// mShutDown = true;
-	// if (mThread.joinable())
-		// mThread.join();
+	mShutDown = true;
+	if (mThread->joinable())
+		mThread->join();
 }
 
 App::~App()
@@ -143,4 +145,38 @@ void App::destroyScene()
 	// delete[] blendMtr;  blendMtr = 0;
 
 	// BaseApp::destroyScene();
+}
+
+
+//  simulation (2nd) thread
+//---------------------------------------------------------------------------------------------------------------
+
+void App::UpdThr()
+{
+	Ogre::Timer gtim;
+	//#ifdef _WIN32
+	//DWORD af = 2;
+	//gtim.setOption("QueryAffinityMask", &af);
+	//#endif
+	gtim.reset();
+
+	while (!mShutDown)
+	{
+		///  step Game  **
+
+		double dt = double(gtim.getMicroseconds()) * 0.000001;
+		gtim.reset();
+		
+		if (/*pSet->multi_thr == 1 &&*/ !bLoading && !mShutDown)
+		{
+			bSimulating = true;
+			bool ret = pGame->OneLoop(dt);
+			if (!ret)
+				mShutDown = true;  //ShutDown();
+
+			// DoNetworking();
+			bSimulating = false;
+		}
+		this_thread::sleep_for(chrono::milliseconds(pSet->thread_sleep));
+	}
 }

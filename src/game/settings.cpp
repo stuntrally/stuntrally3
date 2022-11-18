@@ -71,7 +71,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "game.collis_roadw", gui.collis_roadw);	Param(c,w, "game.dyn_objects", gui.dyn_objects);
 
 	Param(c,w, "game.trk_reverse", gui.trackreverse);	Param(c,w, "game.sim_mode", gui.sim_mode);
-	// Param(c,w, "game.local_players", gui.local_players); Param(c,w, "game.num_laps", gui.num_laps);
+	Param(c,w, "game.local_players", gui.local_players); Param(c,w, "game.num_laps", gui.num_laps);
 	// Param(c,w, "game.start_order", gui.start_order);	Param(c,w, "game.split_vertically", split_vertically);
 
 	//  graphs
@@ -105,7 +105,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "hud_size.mini_border", mini_border);
 	Param(c,w, "hud_size.gauges_type", gauges_type);	//Param(c,w, "hud_size.gauges_layout", gauges_layout);*/
 	//  cam
-	// Param(c,w, "hud_size.cam_loop_chng", cam_loop_chng); Param(c,w, "hud_size.cam_in_loop", cam_in_loop);
+	Param(c,w, "hud_size.cam_loop_chng", cam_loop_chng); Param(c,w, "hud_size.cam_in_loop", cam_in_loop);
 	// Param(c,w, "hud_size.fov", fov_min);				Param(c,w, "hud_size.fov_boost", fov_boost);
 	// Param(c,w, "hud_size.fov_smooth", fov_smooth);
 	Param(c,w, "hud_size.cam_bounce", cam_bounce);		Param(c,w, "hud_size.cam_bnc_mul", cam_bnc_mul);
@@ -139,15 +139,15 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	// Param(c,w, "network.connect_port", connect_port);
 
 	//  replay
-	// Param(c,w, "replay.rec", rpl_rec);				Param(c,w, "replay.ghost", rpl_ghost);
-	// Param(c,w, "replay.bestonly", rpl_bestonly);	Param(c,w, "replay.trackghost", rpl_trackghost);
-	// Param(c,w, "replay.listview", rpl_listview);	Param(c,w, "replay.listghosts", rpl_listghosts);
-	// Param(c,w, "replay.ghostpar", rpl_ghostpar);	Param(c,w, "replay.ghostother", rpl_ghostother);
-	// Param(c,w, "replay.num_views", rpl_numViews);	Param(c,w, "replay.ghostrewind", rpl_ghostrewind);
-	// Param(c,w, "replay.ghoHideDist", ghoHideDist);	Param(c,w, "replay.ghoHideDistTrk", ghoHideDistTrk);
+	Param(c,w, "replay.rec", rpl_rec);				Param(c,w, "replay.ghost", rpl_ghost);
+	Param(c,w, "replay.bestonly", rpl_bestonly);	Param(c,w, "replay.trackghost", rpl_trackghost);
+	Param(c,w, "replay.listview", rpl_listview);	Param(c,w, "replay.listghosts", rpl_listghosts);
+	Param(c,w, "replay.ghostpar", rpl_ghostpar);	Param(c,w, "replay.ghostother", rpl_ghostother);
+	Param(c,w, "replay.num_views", rpl_numViews);	Param(c,w, "replay.ghostrewind", rpl_ghostrewind);
+	Param(c,w, "replay.ghoHideDist", ghoHideDist);	Param(c,w, "replay.ghoHideDistTrk", ghoHideDistTrk);
 
 	//  sim
-	Param(c,w, "sim.game_freq", game_fq);			Param(c,w, "sim.multi_thr", multi_thr);
+	Param(c,w, "sim.game_freq", game_fq);			//Param(c,w, "sim.multi_thr", multi_thr);
 	Param(c,w, "sim.bullet_freq", blt_fq);			Param(c,w, "sim.bullet_iter", blt_iter);
 	Param(c,w, "sim.dynamics_iter", dyn_iter);		Param(c,w, "sim.thread_sleep", thread_sleep);
 	//Param(c,w, "sim.perf_speed", perf_speed);		Param(c,w, "sim.gui_sleep", gui_sleep);
@@ -196,7 +196,7 @@ SETTINGS::SETTINGS()   ///  Defaults
 	// ,check_arrow(0),size_arrow(0.2), check_beam(1)
 	// ,gauges_type(1),gauges_layout(1), graphs_type(Gh_Fps)
 	//  cam
-	// ,cam_loop_chng(1), cam_in_loop(1)
+	,cam_loop_chng(1), cam_in_loop(1)
 	// ,fov_min(90.f), fov_boost(5.f), fov_smooth(5.f)
 	,cam_bounce(1), cam_bnc_mul(1.f)
 	//  pace
@@ -217,7 +217,7 @@ SETTINGS::SETTINGS()   ///  Defaults
 	//  car
 	,autoshift(1), autorear(1), rear_inv(1), show_mph(0)
 	//  misc
-	// ,rpl_rec(0)
+	,rpl_rec(0)
 	,dev_keys(0), dev_no_prvs(0)
 	// ,split_vertically(true)
 	//  misc
@@ -231,13 +231,13 @@ SETTINGS::SETTINGS()   ///  Defaults
 	// ,connect_address("localhost")
 	// ,connect_port(protocol::DEFAULT_PORT)
 	//  replay
-	// ,rpl_ghost(1), rpl_bestonly(1), rpl_trackghost(1)
-	// ,rpl_ghostpar(0), rpl_ghostrewind(1), rpl_ghostother(1)
-	// ,rpl_listview(0), rpl_listghosts(0), rpl_numViews(4)
-	// ,ghoHideDist(5.f), ghoHideDistTrk(5.f)
+	,rpl_ghost(1), rpl_bestonly(1), rpl_trackghost(1)
+	,rpl_ghostpar(0), rpl_ghostrewind(1), rpl_ghostother(1)
+	,rpl_listview(0), rpl_listghosts(0), rpl_numViews(4)
+	,ghoHideDist(5.f), ghoHideDistTrk(5.f)
 	//  sim
 	,game_fq(82.f), blt_fq(160.f), blt_iter(24), dyn_iter(30)
-	,multi_thr(0), thread_sleep(5)//, gui_sleep(1), perf_speed(100000)
+	,/*multi_thr(1),*/ thread_sleep(5)//, gui_sleep(1), perf_speed(100000)
 	//  graphs
 	,tc_r(6000.f), tc_xr(1.f)
 	,te_yf(8000.f), te_xf_pow(1.f), te_xfy(160.f), te_xfx(12.f)
@@ -280,11 +280,11 @@ SETTINGS::GameSet::GameSet()
 	,trees(1.f)  // common
 	,trackreverse(false)
 	//  game setup
-	// ,local_players(1), num_laps(2)
+	,local_players(1), num_laps(2)
 	,sim_mode("normal")
 	,collis_veget(true), collis_cars(false), collis_roadw(false), dyn_objects(true)
 	,boost_type(3), flip_type(2), damage_type(1), rewind_type(1), damage_dec(0.f)
-	// ,rpl_rec(1)
+	,rpl_rec(1)
 	//  champ
 	// ,champ_num(-1), chall_num(-1)
 	// ,champ_rev(false)

@@ -443,8 +443,8 @@ void GAME::Tick(double deltat)
 		frame++;
 		AdvanceGameLogic(sim ? tickperriod : 0.0);
 
-		// if (app)
-			//; app->newPoses(tickperriod);  // fixme next
+		if (app)
+			app->newPoses(tickperriod);
 
 		curticks++;
 		target_time -= tickperriod;

@@ -91,6 +91,16 @@ namespace Demo
 			pApp->inputs[A_PrevCamera] = mArrows[9];
 			pApp->inputs[A_Rewind] = mArrows[10];
 
+
+			//  multi thread
+			// if (pSet->multi_thr == 1 && pGame && !bLoading)
+			{
+				pApp->updatePoses(dt);
+			}
+
+			// if (mCubeCamera)  // todo: refl 
+			// 	mCubeCamera->setPosition(pi.pos);
+#if 0
 			pGame->OneLoop(dt);  // sim
 
 			//  set car pos
@@ -134,10 +144,11 @@ namespace Demo
 					pGame->snd->setCamera(/*carPoses[qn][c]*/po.camPos, camCar ? -y : -z, camCar ? -z : y, Vector3::ZERO);
 				}
 			}
+#endif
 		}
 
 		///  objects - dynamic (props)  -------------------------------------------------------------
-		for (int i=0; i < pApp->scn->sc->objects.size(); ++i)
+		/*for (int i=0; i < pApp->scn->sc->objects.size(); ++i)
 		{
 			Object& o = pApp->scn->sc->objects[i];
 			if (o.ms)
@@ -150,7 +161,7 @@ namespace Demo
 				o.rot[0] = q.x();  o.rot[1] = q.y();  o.rot[2] = q.z();  o.rot[3] = q.w();
 				o.SetFromBlt();
 			}
-		}
+		}*/
 
 		if (pSet->particles)
 			pApp->scn->UpdateWeather(mGraphicsSystem->getCamera());  //, 1.f/dt
@@ -202,6 +213,7 @@ namespace Demo
 			float mul1 = 1.f + 0.01f * mul * d;  //par
 			switch (param)
 			{
+			// mCamera->setLodBias(0.1);  //** todo: par
 			case 0:  p.fogDensity *= mul1;  break;
 			case 1:  p.densityCoeff *= mul1;  break;
 			case 2:  p.densityDiffusion *= mul1;  break;
@@ -338,7 +350,7 @@ namespace Demo
 			// pGame->timer.pretime = mClient ? 2.0f : pSet->game.pre_time;  // same for all multi players
 
 			// carIdWin = 1;  //
-			// ghost.Clear();  replay.Clear();
+			//; ghost.Clear();  replay.Clear();
 		}	return;;
 
 

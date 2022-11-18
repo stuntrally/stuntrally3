@@ -137,9 +137,15 @@ find_package( OpenAL REQUIRED )
 include_directories( ${OPENAL_INCLUDE_DIR} )
 
 
+find_package( Threads )
+
+
 add_executable( ${PROJECT_NAME} WIN32 ${GAME_SOURCES} )
 
 target_precompile_headers(${PROJECT_NAME} PRIVATE src/game/pch.h)
+
+
+target_link_libraries( ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
 
 # fix 4

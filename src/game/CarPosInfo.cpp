@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CarPosInfo.h"
-// #include "Replay.h"
+#include "Replay.h"
 #include "../vdrift/cardynamics.h"
 #include "../vdrift/car.h"
 #include "common/data/SceneXml.h"
@@ -32,7 +32,7 @@ PosInfo::PosInfo()
 
 ///  pos from new Replay/ghost  New
 //-----------------------------------------------------------------------
-/*void PosInfo::FromRpl2(const ReplayFrame2* rf, CARDYNAMICS* cd)
+void PosInfo::FromRpl2(const ReplayFrame2* rf, CARDYNAMICS* cd)
 {
 	//  car
 	Axes::toOgre(pos, rf->pos);
@@ -66,7 +66,7 @@ PosInfo::PosInfo()
 	{
 		const RWheel& wh = rf->wheels[w];
 		Axes::toOgre(whPos[w], wh.pos);
-		whRot[w] = Axes::toOgreW(wh.rot);
+		//; whRot[w] = Axes::toOgreW(wh.rot);  // fixme
 		//whR[w] = outside
 		
 		whVel[w] = wh.whVel;
@@ -78,7 +78,7 @@ PosInfo::PosInfo()
 		whAngVel[w] = wh.whAngVel;
 		whSteerAng[w] = wh.whSteerAng;
 	}
-}*/
+}
 
 
 ///  pos from Simulation
@@ -128,7 +128,7 @@ void PosInfo::FromCar(CAR* pCar)
 
 ///  replay from Simulation  New
 //-----------------------------------------------------------------------
-/*void ReplayFrame2::FromCar(const CAR* pCar, half prevHitTime)
+void ReplayFrame2::FromCar(const CAR* pCar, half prevHitTime)
 {
 	//  car
 	const CARDYNAMICS& cd = pCar->dynamics;
@@ -211,4 +211,3 @@ void PosInfo::FromCar(CAR* pCar)
 		hit.push_back(h);
 	}
 }
-*/

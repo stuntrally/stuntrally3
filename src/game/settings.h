@@ -63,7 +63,7 @@ public:
 	// int gauges_type, gauges_layout;
 	//  cam
 	// float fov_min, fov_boost, fov_smooth;
-	// bool cam_loop_chng;  int cam_in_loop;
+	bool cam_loop_chng;  int cam_in_loop;
 	bool cam_bounce;  float cam_bnc_mul;
 	//  pacenotes
 	// bool pace_show;  int pace_next;
@@ -110,7 +110,7 @@ public:
 		std::vector<std::string> car;  //[4] local players
 		std::vector<float> car_hue, car_sat, car_val, car_gloss, car_refl;  //[6] also for ghosts
 
-		// int local_players, num_laps;  // split
+		int local_players, num_laps;  // split
 		//  game setup
 		std::string sim_mode;
 		bool collis_veget, collis_cars, collis_roadw, dyn_objects;
@@ -120,7 +120,7 @@ public:
 		float boost_power, boost_max, boost_min, boost_per_km, boost_add_sec;
 		void BoostDefault();
 
-		// bool rpl_rec;
+		bool rpl_rec;
 		//  champ
 		// int champ_num, chall_num;  // -1 none
 		// bool champ_rev;
@@ -150,7 +150,7 @@ public:
 
 	//  sim freq (1/interval timestep)
 	float game_fq, blt_fq;//,  perf_speed;
-	int blt_iter, dyn_iter,  multi_thr, thread_sleep;//, gui_sleep;
+	int blt_iter, dyn_iter,  /*multi_thr,*/ thread_sleep;//, gui_sleep;
 
 	//  graphs vis
 	float tc_r, tc_xr;  // tire circles max
@@ -170,11 +170,11 @@ public:
 	// float vignRadius, vignDarkness;
 
 	//  replay
-	// bool rpl_rec, rpl_ghost, rpl_bestonly;
-	// bool rpl_ghostother, rpl_trackghost;
-	// bool rpl_ghostpar, rpl_ghostrewind, rpl_listghosts;
-	// int rpl_listview, rpl_numViews;
-	// float ghoHideDist, ghoHideDistTrk;  // ghost hide dist, when close
+	bool rpl_rec, rpl_ghost, rpl_bestonly;
+	bool rpl_ghostother, rpl_trackghost;
+	bool rpl_ghostpar, rpl_ghostrewind, rpl_listghosts;
+	int rpl_listview, rpl_numViews;
+	float ghoHideDist, ghoHideDistTrk;  // ghost hide dist, when close
 
 	//  network
 	// std::string nickname, netGameName;

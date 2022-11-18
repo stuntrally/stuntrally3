@@ -187,14 +187,14 @@ void App::NewGame(bool force)
 	// mWndNetEnd->setVisible(false);
  
 	bLoading = true;  iLoad1stFrames = 0;
-	// carIdWin = 1;  iRplCarOfs = 0;
+	carIdWin = 1;  iRplCarOfs = 0;
 
 	//  wait until sim finishes
 	// while (bSimulating)
 		// boost::this_thread::sleep(boost::posix_time::milliseconds(pSet->thread_sleep));
 
-	// bRplPlay = 0;  iRplSkip = 0;
-	// pSet->rpl_rec = bRplRec;  // changed only at new game
+	bRplPlay = 0;  iRplSkip = 0;
+	pSet->rpl_rec = bRplRec;  // changed only at new game
 	// gui->pChall = 0;
 	
 	
