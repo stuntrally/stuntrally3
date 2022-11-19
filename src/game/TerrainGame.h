@@ -95,10 +95,11 @@ namespace Demo
 		//  events
 		void keyPressed( const SDL_KeyboardEvent &arg ) override;
 		void keyReleased( const SDL_KeyboardEvent &arg ) override;
-	protected:
+	public:
 
 		//  reflection cube  ----
 		Ogre::Camera *mCubeCamera = 0;
+	protected:
 		Ogre::TextureGpu *mDynamicCubemap = 0;
 		Ogre::CompositorWorkspace *mDynamicCubemapWorkspace = 0;
 

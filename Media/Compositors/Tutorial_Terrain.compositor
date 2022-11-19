@@ -6,7 +6,7 @@ abstract target cubemap_target
 		load
 		{
 			all				clear
-			clear_colour	0 0 0 1
+			clear_colour	1 1 0 1  // test yellow
 		}
 		store
 		{
@@ -17,8 +17,10 @@ abstract target cubemap_target
 
 		expose cubemap
 
-		//Filter stuff that shouldn't be reflected (vampires?)
-		visibility_mask		0x00000005
+		visibility_mask		0x0000012D
+		// visibility_mask		0x010
+		// 301
+		// visibility_mask		0x000000FF
 		overlays			off
 		camera_cubemap_reorient true
 	}
@@ -30,6 +32,8 @@ compositor_node CubemapRendererNode
 	in 0 cubemap
 
 	texture tmpCubemap target_width target_height target_format cubemap mipmaps 0
+
+	visibility_mask		32
 
 	target tmpCubemap +X : cubemap_target { }
 	target tmpCubemap -X : cubemap_target { }
@@ -63,6 +67,8 @@ compositor_node CubemapRendererNodeMsaa
 		// Specify we want to render to tmpMsaa at slot[0] but we want to resolve to tmpCubemap
 		colour	0 tmpMsaa resolve tmpCubemap
 	}
+
+	visibility_mask		32
 
 	target mixedCubemapRtv +X : cubemap_target { }
 	target mixedCubemapRtv -X : cubemap_target { }

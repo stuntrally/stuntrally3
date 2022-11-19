@@ -19,6 +19,7 @@
 // #include "SplitScreen.h"
 #include "settings.h"
 #include "CarModel.h"
+#include "TerrainGame.h"
 #include <Ogre.h>
 // #include <OgreCamera.h>
 // #include <OgreQuaternion.h>
@@ -505,7 +506,13 @@ void App::updatePoses(float time)
 		int qq = iCurPoses[cc];
 		PosInfo& pi = carPoses[q][c], &pic = carPoses[qq][cc];
 		carM->Update(carPoses[q][c], carPoses[qq][cc], time);
-		
+
+		if (mainApp->mCubeCamera)  // refl
+		{	mainApp->mCubeCamera->setPosition(carM->pMainNode->getPosition());// carPoses[q][c].pos);
+			mainApp->mCubeCamera->setVisibilityFlags( 32 );
+			// mainApp->mCubeCamera->setOrientation(carM->pMainNode->getOrientation());
+		}
+
 
 		//  nick text pos upd  3d to 2d
 		/*if (carM->pNickTxt && carM->pMainNode)

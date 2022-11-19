@@ -423,7 +423,7 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 	if (bbox)  *bbox = item->getLocalAabb(); //getBoundingBox();
 	if (ghost)  {  item->setRenderQueueGroup(RQG_CarGhost);  item->setCastShadows(false);  }
 	else  if (visFlags == RV_CarGlass)  item->setRenderQueueGroup(RQG_CarGlass);
-	ndCar->attachObject(item);  //item->setVisibilityFlags(visFlags);
+	ndCar->attachObject(item);  item->setVisibilityFlags(visFlags);
 	if (bLogInfo)  LogMeshInfo(item, sDirname + sMesh);
 }
 
