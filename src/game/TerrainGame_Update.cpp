@@ -99,70 +99,9 @@ namespace Demo
 				pApp->updatePoses(dt);
 			}
 
-			// if (mCubeCamera)  // todo: refl 
-			// 	mCubeCamera->setPosition(pi.pos);
-#if 0
-			pGame->OneLoop(dt);  // sim
 
-			//  set car pos
-			if (!pGame->cars.empty() && !pApp->carModels.empty())
-			{
-				auto carM = pApp->carModels[0];
-				PosInfo pi, po;  pi.FromCar(pGame->cars[0]);
-				pi.bNew = true;
-				po.bNew = true;
-				carM->Update(pi, pi, dt);
-
-				if (mCubeCamera)  // refl
-					mCubeCamera->setPosition(pi.pos);
-
-				//  update camera
-				if (carM->fCam)
-					carM->fCam->update(dt, pi, /*&carPoses[qn][c]*/&po, &pGame->collision,
-						/*!bRplPlay &&*/ pApp->pSet->cam_bounce, carM->vtype == V_Sphere);
-				// iCurPoses[c] = qn;  // atomic, set new index in queue
-
-				Camera *camera = mGraphicsSystem->getCamera();
-				if (carM->fCam)
-				{   camera->setPosition(carM->fCam->camPosFinal);
-					camera->setOrientation(carM->fCam->camRotFinal);
-				}
-				/*Node *cameraNode = camera->getParentNode();
-
-				cameraNode->_getFullTransformUpdated();
-				cameraNode->setOrientation(po.rot);
-				cameraNode->setPosition(po.pos);*/
-
-				// camera->setPosition(po.pos);
-				// camera->setOrientation(po.rot);
-				
-				///))  upd sound camera
-				if (/*c == 0 &&*/ pGame->snd)
-				{
-					Vector3 x,y,z;
-					/*carPoses[qn][c]*/po.camRot.ToAxes(x,y,z);
-					bool camCar = carM->fCam && carM->fCam->TypeCar();  // fix
-					pGame->snd->setCamera(/*carPoses[qn][c]*/po.camPos, camCar ? -y : -z, camCar ? -z : y, Vector3::ZERO);
-				}
-			}
-#endif
 		}
 
-		///  objects - dynamic (props)  -------------------------------------------------------------
-		/*for (int i=0; i < pApp->scn->sc->objects.size(); ++i)
-		{
-			Object& o = pApp->scn->sc->objects[i];
-			if (o.ms)
-			{
-				btTransform tr, ofs;
-				o.ms->getWorldTransform(tr);
-				const btVector3& p = tr.getOrigin();
-				const btQuaternion& q = tr.getRotation();
-				o.pos[0] = p.x();  o.pos[1] = p.y();  o.pos[2] = p.z();
-				o.rot[0] = q.x();  o.rot[1] = q.y();  o.rot[2] = q.z();  o.rot[3] = q.w();
-				o.SetFromBlt();
-			}
-		}*/
 
 		if (pSet->particles)
 			pApp->scn->UpdateWeather(mGraphicsSystem->getCamera());  //, 1.f/dt
@@ -371,39 +310,14 @@ namespace Demo
 			mTerra->setDatablock( datablock );
 		}   break;
 
-		case SDL_SCANCODE_T:
-			if (mTerra)
-			{   DestroyTerrain();  CreatePlane();  }
-			else
-			{   CreateTerrain();  DestroyPlane();  }
-			break;
-
-		//  Vegetation add, destroy all
-		case SDL_SCANCODE_V:  CreateVeget();  break;
-		case SDL_SCANCODE_B:  DestroyVeget();  break;
 
 		//  sky
 		case SDL_SCANCODE_K:  
 			if (pApp->scn->ndSky)
 				pApp->scn->DestroySkyDome();
 			else
-			{   switch (iSky)
-				{
-				case 0:  pApp->scn->CreateSkyDome("sky-clearday1", 0.f);  ++iSky;  break;
-				case 1:  pApp->scn->CreateSkyDome("sky_photo6", 0.f);  iSky = 0;  break;  // clouds
-				}
-			}
+				pApp->scn->CreateSkyDome("sky-clearday1", 0.f);
 			break;
-		
-		//  other
-		case SDL_SCANCODE_F:
-			CreateParticles();  break;
-
-		case SDL_SCANCODE_M:
-		{
-			// Vector3 camPos(-52.f, mTerra ? 735.f : 60.f, mTerra ? 975.f : 517.f);
-			CreateManualObj(camPos);
-		}   break;
 		}
 
 
@@ -463,7 +377,7 @@ namespace Demo
 		case SDL_SCANCODE_F4:
 		if (arg.keysym.mod & (KMOD_LCTRL|KMOD_RCTRL))
 		{
-			//Hot reload of Terra shaders.
+			// Hot reload of Terra shaders
 			Root *root = mGraphicsSystem->getRoot();
 			HlmsManager *hlmsManager = root->getHlmsManager();
 

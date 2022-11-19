@@ -103,27 +103,20 @@ namespace Demo
 
 		if( mDisplayHelpMode == 0 )
 		{
-			//outText = mHelpDescription;
 			txt = "F1 toggle help\n";
 			txt += "Reload shaders:\n"
 					"Ctrl+F1 PBS  Ctrl+F2 Unlit  Ctrl+F3 Compute  Ctrl+F4 Terra\n\n";
-			txt += "V add Vegetation  C clear it\n";
-			txt += "T terrain / flat  R wireframe\n";
-			txt += "K next Sky  F add Fire\n\n";
+			txt += "R terrain wireframe\n";
+			txt += "K next Sky\n\n";
 			
 			Vector3 camPos = mGraphicsSystem->getCamera()->getPosition();
 			txt += "\n\nPos:  " + fToStr( camPos.x, 1) +"  "+ fToStr( camPos.y, 1) +"  "+ fToStr( camPos.z, 1) + "\n\n";
-
-			#if 1  // list all veget cnts
-			for (const auto& lay : vegetLayers)
-				txt += iToStr( lay.count, 4 ) + " " + lay.mesh + "\n";
-			#endif
 		}
 		else if( mDisplayHelpMode == 1 )
 		{
 			txt = generateFpsDebugText();
 
-			txt += "Veget " + iToStr(pApp->scn->cntAll + vegetNodes.size(), 5);
+			txt += "Veget " + iToStr(pApp->scn->cntAll, 5);
 			txt += "\n\n- + Sun Pitch  " + fToStr( sc->ldPitch, 3 );
 			txt += "\n/ * Sun Yaw    " + fToStr( sc->ldYaw, 3 );
 

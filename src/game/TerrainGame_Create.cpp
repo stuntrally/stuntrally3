@@ -52,7 +52,6 @@ namespace Demo
 		//, mIblQuality( MipmapsLowest )
 	{
 		macroblockWire.mPolygonMode = PM_WIREFRAME;
-		SetupVeget();
 	}
 
 
@@ -61,6 +60,7 @@ namespace Demo
 	{
 		settings->Load(PATHMANAGER::GameConfigDir() + "/game-default.cfg");
 		settings->Save(setFile);
+
 		//  delete old keys.xml too
 		string sKeys = PATHMANAGER::UserConfigDir() + "/keys.xml";
 		if (std::filesystem::exists(sKeys))
@@ -157,7 +157,6 @@ namespace Demo
 
 
 		//  camera  ------------------------------------------------
-		// mCameraController = new CameraController( mGraphicsSystem, false );
 		mGraphicsSystem->getCamera()->setFarClipDistance( 20000.f );  // par far
 		// mGraphicsSystem->getCamera()->setFarClipDistance( pSet->view_distance );  // par far
 
@@ -171,11 +170,6 @@ namespace Demo
 		LogO(">>>> Init SR ----");
 		Init();
 		LogO(">>>> Init SR done ----");
-
-		//  Terrain  ------------------------------------------------
-		// CreatePlane();  // fast
-		// CreateTerrain();  // 5sec
-		// CreateVeget();
 
 		//  find cur id
 		const auto* data = pApp->scn->data;
@@ -196,7 +190,6 @@ namespace Demo
 		LogO("---- destroyScene");
 
 		DestroyTerrain();
-		DestroyPlane();
 
 		LogO("---- base destroyScene");
 
@@ -210,24 +203,19 @@ namespace Demo
 }
 
 /*  for game.cfg
-track = 
-	test
 Test7-FluidsSmall
 Test8-Objects
 TestC6-Temp
-TestC9-Jumps
 	good
 Jng25-CantorJungle  +
 Mos6-TaraMosses  ~
 Des17-NileCity  +
-	errors: // fixme
 
+	errors: // fixme
 Grc8-SlopeCity - model? crash
 Sur3-Chaotic  -
 Isl17-AdapterIslands  -
 
 Atm9-SchwabAutumn  -5m! tris trees
 Vlc4-Spikeland  -ter fps low
-Cry1-CrystalMoon  -cry glow bad
-
 */

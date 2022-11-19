@@ -160,7 +160,7 @@ namespace Demo
 
 		mTerra = new Terra( Id::generateNewId<MovableObject>(),
 							&mgr->_getEntityMemoryManager( SCENE_STATIC ),
-							mgr, 11u/*RQG_..*/, root->getCompositorManager2(),
+							mgr, RQG_Terrain, root->getCompositorManager2(),
 							mGraphicsSystem->getCamera(), false );
 		// mTerra->setCustomSkirtMinHeight(0.8f); //?-
 		mTerra->setCastShadows( false );
@@ -176,8 +176,8 @@ namespace Demo
 		mTerra->load(
 			sc->td.iVertsX-1, sc->td.iVertsY-1, 
 			sc->td.hfHeight, sc->td.iVertsX,
-			Vector3( /*ofs*/0.f, 0.45f, ofs),  //** y why?
-			Vector3( sizeXZ, 1.0f, sizeXZ),
+			Vector3( /*ofs*/0.f, 0.45f, ofs ),  //** y why?
+			Vector3( sizeXZ, 1.0f, sizeXZ ),
 			// true, true);
 			false, false);
 
@@ -214,81 +214,6 @@ namespace Demo
 		{	mGraphicsSystem->hlmsTerra->destroyDatablock(mtrName);
 			mtrName = "";
 		}
-	}
-
-
-	//  Plane
-	//-----------------------------------------------------------------------------------------------------------------------------
-	void TerrainGame::CreatePlane()
-	{
-		return;  //-
-	#if 0
-		sizeXZ = 1000.0f;
-		v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
-			"Plane v1", rgDef,
-			Plane( Vector3::UNIT_Y, 1.0f ), sizeXZ, sizeXZ,
-			20, 20, true, 1, 160.f, 160.f, Vector3::UNIT_Z,
-			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
-
-		planeMesh = MeshManager::getSingleton().createByImportingV1(
-			"Plane", rgDef,
-			planeMeshV1.get(), true, true, true );
-		
-		planeMeshV1->unload();
-
-		SceneManager *mgr = mGraphicsSystem->getSceneManager();
-		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
-
-		planeItem = mgr->createItem( planeMesh, SCENE_STATIC );
-		planeItem->setDatablock( "Ground" );
-		
-		planeNode = rootNode->createChildSceneNode( SCENE_STATIC );
-		planeNode->setPosition( 0, -12.2f, 0 );
-		planeNode->attachObject( planeItem );
-	#else
-	// todo ... test center and borders 
-	const int num = 2;  // pos norm up
-	Vector3 pos[num][3] = {
-		{Vector3(0,0,0), Vector3(1,0,0), Vector3(0,1,0) },
-		{Vector3(0,0,0), Vector3(-1,0,0), Vector3(0,-1,0) },
-	};
-	for (int i=0; i < num; ++i)
-	{
-		sizeXZ = sc->td.fTriangleSize * (sc->td.iVertsX-1);
-		v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
-			"Plane v1-"+toStr(i), rgDef,
-			Plane( pos[i][1], 1.0f ), sizeXZ, sizeXZ,
-			10, 10, true, 1, 160.f, 160.f, pos[i][2],
-			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
-
-		planeMesh = MeshManager::getSingleton().createByImportingV1(
-			"Plane-"+toStr(i), rgDef,
-			planeMeshV1.get(), true, true, true );
-		
-		planeMeshV1->unload();
-
-		SceneManager *mgr = mGraphicsSystem->getSceneManager();
-		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
-
-		planeItem = mgr->createItem( planeMesh, SCENE_STATIC );
-		planeItem->setDatablock( "Ground" );
-		planeItem->setCastShadows(false);
-		
-		planeNode = rootNode->createChildSceneNode( SCENE_STATIC );
-		planeNode->setPosition( pos[i][0] );
-		planeNode->attachObject( planeItem );
-	}
-	#endif
-	}
-
-	void TerrainGame::DestroyPlane()
-	{
-		LogO("---- destroy Plane");
-		SceneManager *mgr = mGraphicsSystem->getSceneManager();
-		if (planeItem)
-		{   mgr->destroyItem(planeItem);  planeItem = 0;  }
-		if (planeNode)
-		{   mgr->destroySceneNode(planeNode);  planeNode = 0;  }
 	}
 
 }

@@ -1,6 +1,4 @@
-#ifndef _Demo_TerrainGame_H_
-#define _Demo_TerrainGame_H_
-
+#pragma once
 #include "OgreHlmsDatablock.h"
 #include "OgrePrerequisites.h"
 #include "TutorialGameState.h"
@@ -19,22 +17,6 @@ namespace Ogre
 
 namespace Demo
 {
-
-	struct VegetLayer
-	{
-		std::string mesh;
-		float scaleMin, scaleMax, density;
-		float visFar, down;  // visibility max, down offset
-		bool rotAll;  // allow all axes rotation
-		int count;  // auto
-		// range ter angle, height..
-		
-		VegetLayer(std::string mesh1, float scMin, float scMax,
-				float dens, float dn, float vis, bool rot)
-			: mesh(mesh1), scaleMin(scMin), scaleMax(scMax)
-			, density(dens), visFar(vis), down(dn), rotAll(rot), count(0)
-		{   }
-	};
 
 	enum IblQuality  // reflections
 	{
@@ -97,6 +79,7 @@ namespace Demo
 		void keyReleased( const SDL_KeyboardEvent &arg ) override;
 	public:
 
+
 		//  reflection cube  ----
 		Ogre::Camera *mCubeCamera = 0;
 	protected:
@@ -115,25 +98,5 @@ namespace Demo
 		Ogre::String mtrName;
 		Ogre::SceneNode *nodeTerrain = 0;
 
-		void CreatePlane(), DestroyPlane();
-		Ogre::MeshPtr planeMesh = 0;
-		Ogre::Item *planeItem = 0;
-		Ogre::SceneNode *planeNode = 0;
-
-
-		//  vegetation  ----
-		void SetupVeget(), CreateVeget(), DestroyVeget();
-
-		std::vector<VegetLayer> vegetLayers;
-		std::vector<Ogre::Item*> vegetItems;
-		std::vector<Ogre::SceneNode*> vegetNodes;
-
-		//  other
-		void CreateManualObj(Ogre::Vector3 camPos);
-		void CreateParticles();
-
-		int iSky = 0;
 	};
 }
-
-#endif
