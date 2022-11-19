@@ -163,7 +163,7 @@ void App::CreateScene()
 	//------------------------------------
 	if (pSet->bltLines)
 	{	dbgdraw = new BtOgre::DebugDrawer(
-			mSceneMgr->getRootSceneNode(),
+			mSceneMgr->getRootSceneNode(SCENE_STATIC),
 			pGame->collision.world, mSceneMgr);
 		pGame->collision.world->setDebugDrawer(dbgdraw);
 		pGame->collision.world->getDebugDrawer()->setDebugMode(

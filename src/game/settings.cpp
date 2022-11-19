@@ -221,7 +221,7 @@ SETTINGS::SETTINGS()   ///  Defaults
 	,dev_keys(0), dev_no_prvs(0)
 	// ,split_vertically(true)
 	//  misc
-	,bltDebug(0), bltLines(1)//,  bltProfilerTxt(0), profilerTxt(0)
+	,bltDebug(0), bltLines(0)//,  bltProfilerTxt(0), profilerTxt(0)
 	// ,loadingbackground(true), show_welcome(true)
 	//  network
 	// ,nickname("Player"), netGameName("Default Game")

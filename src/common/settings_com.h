@@ -13,7 +13,7 @@ public:
 	// std::string language;  // "" autodetect lang
 
 	//  startup, other
-	bool autostart =0, escquit =0, startInMain =1;
+	bool autostart =0, escquit =1, startInMain =1;
 	bool ogre_dialog =0, mouse_capture =1, screen_png =0;
 
 	//  screen
