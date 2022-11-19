@@ -95,7 +95,7 @@ void CScene::CreateFog()
 	LogO("---- create Atmosphere");
 	auto *mgr = app->mSceneMgr;
 
-if (0)  // fixme atmo only fog
+if (1)
 {
 	atmo = OGRE_NEW AtmosphereNpr( app->mRoot->getRenderSystem()->getVaoManager() );
 
@@ -134,7 +134,7 @@ void CScene::UpdFog()
 	p.fogBreakFalloff = 0.1f;
 	p.linkedLightPower = sun->getPowerScale();
 	p.linkedSceneAmbientUpperPower = 0.2f * Math::PI;  // ?
-	p.linkedSceneAmbientLowerPower = 0.02f * Math::PI;
+	p.linkedSceneAmbientLowerPower = 0.2f * Math::PI;
 	p.envmapScale = 1.0f;
 	atmo->setPreset( p );
 }
@@ -188,6 +188,7 @@ void CScene::CreateSkyDome(String sMater, float yaw)
 
 	Aabb aab(Vector3(0,0,0), Vector3(1,1,1)*1000000);
 	m->setLocalAabb(aab);  // always visible
+	m->setVisibilityFlags(RV_Sky);
 	//m->setRenderQueueGroup(230);  //?
 	m->setCastShadows(false);
 
@@ -237,7 +238,12 @@ void CScene::UpdSun()
 	// sun->setDiffuseColour( 1.0, 1.0, 1.0);
 	// sun->setSpecularColour(1.0, 1.0, 1.0);
 	sun->setDiffuseColour( sc->lDiff.GetClr() * 5.f );
-	sun->setSpecularColour(sc->lSpec.GetClr() * 3.f );
+	sun->setSpecularColour(sc->lSpec.GetClr() * 1.f );
+
+	if (atmo)
+	{	atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
+		atmo->setLight(sun);
+	}
 
 	//  ambient
 	app->mSceneMgr->setAmbientLight(
@@ -254,14 +260,10 @@ void CScene::UpdSun()
 
 		// ColourValue( 0.93f, 0.91f, 0.38f ) * 0.04f,
 		// ColourValue( 0.22f, 0.53f, 0.96f ) * 0.01f,
-		-dir,
-		0.8f, 0x0 );  // env? EnvFeatures_DiffuseGiFromReflectionProbe
+		-dir);
+		// 0.8f, 0x0 );  // env? EnvFeatures_DiffuseGiFromReflectionProbe
 		// -dir + Ogre::Vector3::UNIT_Y * 0.2f );
 
-	if (atmo)
-	{	atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
-		atmo->setLight(sun);
-	}
 }
 
 #if 0
