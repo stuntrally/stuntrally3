@@ -175,7 +175,8 @@ void SplineRoad::BuildSeg(
 		if (i == il+1)  tc = skLen* tcRmul + tcEnd0;
 		
 		///  width <dir>   --
-		if (mP[seg].onTer && mP[seg1].onTer)
+		bool onTer = mP[seg].onTer && mP[seg1].onTer;
+		if (onTer)
 		{	vw = Vector3(vl.z, 0, -vl.x);  }
 		else		/// angles ()__
 		{	Real ay = ay1 + ay21 * l;  // linear-
@@ -313,7 +314,8 @@ void SplineRoad::BuildSeg(
 				}else
 					c = (float(i)/il) * (mP[seg1].clr - mP[seg].clr) + mP[seg].clr;
 
-				Vector2 vtc(tcw * 1.f /**2p..*/, tcL);
+				Vector2 vtc(tcw * 1.f /**2p..*/,
+					onTer ? tcL * 0.03f : tcL);  //** par = alpha tc!
 
 				//>  data road
 				DLM.pos.push_back(vP);   DLM.norm.push_back(vN);

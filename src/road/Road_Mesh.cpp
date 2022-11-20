@@ -1,4 +1,5 @@
 #include "OgreCommon.h"
+#include "OgreHlmsPbs.h"
 #include "OgreHlmsPbsDatablock.h"
 #include "OgreHlmsPbsPrerequisites.h"
 #include "OgreMeshManager.h"
@@ -181,35 +182,52 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrN
 
 	//  add mesh to scene
 	//---------------------------------------------------------
-	Item* it = mSceneMgr->createItem(s2, "General", Ogre::SCENE_STATIC );
-	// *it = mSceneMgr->createItem( mesh, Ogre::SCENE_STATIC );
+	Item *it = mSceneMgr->createItem( mesh, SCENE_STATIC );
 	SceneNode* node = mSceneMgr->getRootSceneNode( SCENE_STATIC )->createChildSceneNode( SCENE_STATIC );
 	node->attachObject(it);
 	it->setVisible(false);  it->setCastShadows(false);//-
 	it->setVisibilityFlags(RV_Road);
 
-	//  wrap tex-
+	//  wrap tex  ----
 	HlmsSamplerblock sampler;
 	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
 	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
 	sampler.mMaxAnisotropy = pGame->pSet->anisotropy;
 	sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
-	assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() ) );
+	assert( dynamic_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() ) );
 	HlmsPbsDatablock *datablock =
-		static_cast<Ogre::HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
-	datablock->setSamplerblock( PBSM_DIFFUSE, sampler );
-	datablock->setSamplerblock( PBSM_NORMAL, sampler );
-	datablock->setSamplerblock( PBSM_METALLIC, sampler );
-	datablock->setSamplerblock( PBSM_ROUGHNESS, sampler );/**/
+		static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
+	for (int n=0; n < NUM_PBSM_SOURCES; ++n)
+		datablock->setSamplerblock( PBSM_DIFFUSE + n, sampler );
 
-	//  alpha ?..
-	// datablock->setDetailMapBlendMode(0, Ogre::PBSM_BLEND_NORMAL_NON_PREMUL/* PBSM_BLEND_NORMAL_PREMUL*/);
-	// datablock->setDetailMapWeight(0, 0.5);
-	// datablock->setDetailMapOffsetScale(0, Vector4(0,0,2,4));
-	// datablock->setTexture(PBSM_DETAIL_WEIGHT, const String &name)
-	// datablock->setTexture(PBSM_DETAIL0, "roadAlpha.png");
-	//  datablock->setTexture(PBSM_DETAIL0, "roadGlassC_dirt2.png");
+	//  replace alpha  ----
+	if (sMtrName.find("_ter") != String::npos)
+	{
+		TextureGpu *diffTex = datablock->getDiffuseTexture(),
+			*normTex = datablock->getTexture(PBSM_NORMAL);
+		const String sAlpha = "roadAlpha2.png", sFlat = "flat_n.png",
+			sDiff = diffTex->getNameStr(), sNorm = normTex->getNameStr();
 
+		if (sDiff != sAlpha)  // once
+		{
+			//LogO("RD mtr: "+ sMtrName+" tex: "+sDiff+" norm: "+sNorm);
+			datablock->setTexture(PBSM_DIFFUSE, sAlpha);  // same for all
+			datablock->setTexture(PBSM_NORMAL, sFlat);
+
+			datablock->setDetailMapBlendMode(0, PBSM_BLEND_MULTIPLY);
+			// datablock->setDetailMapBlendMode(1, PBSM_BLEND_NORMAL_NON_PREMUL);
+			datablock->setTexture(PBSM_DETAIL_WEIGHT, "roadAlpha2.png");
+			// datablock->setTexture(PBSM_DETAIL_WEIGHT, "HeightmapBlendmap.png");
+			datablock->setDetailMapWeight(0, 1.0);
+			// datablock->setDetailMapWeight(1, 1.0);
+			const Real v = 33.3;  // 1.f / 0.03 = alpha tc in rebuild
+			datablock->setDetailMapOffsetScale(0, Vector4(0,0, 1,v));
+			// datablock->setDetailMapOffsetScale(1, Vector4(0,0, 1,v));
+
+			datablock->setTexture(PBSM_DETAIL0, sDiff);
+			datablock->setTexture(PBSM_DETAIL0_NM, sNorm);
+		}
+	}
 	sd.it = it;
 	sd.node = node;
 	sd.smesh = sMesh;
