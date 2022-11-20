@@ -1,0 +1,43 @@
+//  satellite antenna
+hlms satellite1a pbs
+{
+	diffuse_map satellite1a.jpg
+	normal_map  satellite1a_norm.jpg
+	ambient 0.6 0.6 0.6
+	diffuse 0.8 0.8 0.8
+	specular 0.6 0.6 0.6 24
+}
+hlms satellite1b pbs
+{
+	diffuse_map satellite1b.jpg
+	normal_map  satellite1b_norm.jpg
+	ambient 0.6 0.6 0.6
+	diffuse 0.8 0.8 0.8
+	specular 0.6 0.6 0.6 32
+}
+
+hlms satellite2a pbs
+{
+	diffuse_map satellite2a.jpg
+	normal_map  satellite2a_norm.jpg
+	ambient 0.6 0.6 0.6
+	diffuse 0.8 0.8 0.8
+	specular 0.6 0.6 0.6 24
+}
+hlms satellite2b pbs
+{
+	diffuse_map satellite2b.jpg
+	normal_map  satellite2b_norm.jpg
+	ambient 0.6 0.6 0.6
+	diffuse 0.8 0.8 0.8
+	specular 0.6 0.6 0.6 32
+}
+
+hlms satellite3 pbs
+{
+	diffuse_map satellite3.jpg
+	normal_map  satellite3_norm.jpg
+	ambient 0.6 0.6 0.6
+	diffuse 0.8 0.8 0.8
+	specular 0.6 0.6 0.6 24
+}

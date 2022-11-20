@@ -83,6 +83,7 @@ void App::ShutDown()
 	mShutDown = true;
 	if (mThread->joinable())
 		mThread->join();
+	delete mThread;
 }
 
 App::~App()

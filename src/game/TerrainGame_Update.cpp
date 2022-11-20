@@ -262,7 +262,9 @@ namespace Demo
 
 		case SDL_SCANCODE_ESCAPE:
 			if (pSet->escquit)
-				mGraphicsSystem->setQuit();  break;
+			{	pApp->mShutDown = true;
+				mGraphicsSystem->setQuit();
+			}	break;
 
 
 		//###  restart game, new track or car
