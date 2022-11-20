@@ -129,7 +129,7 @@ namespace Demo
 			txt += "\n< > ";  const int d = 3;
 			switch (param)
 			{
-			case 0:   txt += "Fog density  " + fToStr( p.fogDensity, 5 );  break;
+			case 0:   txt += "Fog  " + fToStr( p.fogDensity, 5 );  break;
 			case 1:   txt += "density coeff  " + fToStr( p.densityCoeff, d );  break;
 			case 2:   txt += "density diffusion  " + fToStr( p.densityDiffusion, d );  break;
 			case 3:   txt += "horizon limit  " + fToStr( p.horizonLimit, d );  break;

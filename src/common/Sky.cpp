@@ -68,8 +68,8 @@ void CScene::CreateSun()
 	ndSun = rootNode->createChildSceneNode();
 	ndSun->attachObject( sun );
 
-	sun->setPowerScale( 1.f );  // should be * 1..
-	// sun->setPowerScale( Math::PI * 2.5 );  //** par! 1.5 2 3* 4
+	// sun->setPowerScale( 1.f );  // should be 1 with HDR
+	sun->setPowerScale( Math::PI );  //** par! no HDR, * 2.5?  1.5 2 3* 4
 	UpdSun();
 }
 
@@ -129,7 +129,8 @@ void CScene::UpdFog()
 	p.horizonLimit = 0.025f;
 	p.sunPower = 1.0f;
 	p.skyPower = 1.0f;
-	p.skyColour = sc->fogClr.GetRGB1(); //Vector3(0.234f, 0.57f, 1.0f);
+	// p.skyColour = Vector3(0,0.5,1);// sc->fogClr2.GetRGB();
+	p.skyColour = sc->fogClr2.GetRGB1(); //Vector3(0.234f, 0.57f, 1.0f);
 	p.fogBreakMinBrightness = 0.25f;
 	p.fogBreakFalloff = 0.1f;
 	p.linkedLightPower = sun->getPowerScale();
@@ -232,34 +233,24 @@ void CScene::UpdSun()
 {
 	if (!sun)  return;
 	Vector3 dir = SplineRoad::GetRot(sc->ldYaw - sc->skyYaw, -sc->ldPitch);
-	sun->setDirection(dir);
 	// sun->setDiffuseColour( 0.0, 1.0, 0.0);
 	// sun->setSpecularColour(0.0, 0.0, 1.0);
-	// sun->setDiffuseColour( 1.0, 1.0, 1.0);
-	// sun->setSpecularColour(1.0, 1.0, 1.0);
-	sun->setDiffuseColour( sc->lDiff.GetClr() * 5.f );
-	sun->setSpecularColour(sc->lSpec.GetClr() * 1.f );
-
 	if (atmo)
 	{	atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
 		atmo->setLight(sun);
 	}
+	sun->setDirection(dir);
+
+	sun->setPowerScale( Math::PI );
+	sun->setDiffuseColour( sc->lDiff.GetClr() * 2.2f );
+	sun->setSpecularColour(sc->lSpec.GetClr() * 0.75f );
 
 	//  ambient
 	app->mSceneMgr->setAmbientLight(
-		sc->lAmb.GetClr() * 1.5f,
-		sc->lAmb.GetClr() * 1.5f,
+		sc->lAmb.GetClr() * 1.2f,
+		sc->lAmb.GetClr() * 1.2f,
 		// ColourValue( 1.f, 0.f, 0.f ) * 0.1f,
 		// ColourValue( 0.f, 1.f, 0.f ) * 0.1f,
-
-		// ColourValue( 0.99f, 0.94f, 0.90f ) * 0.04f,  //** par
-		// ColourValue( 0.90f, 0.93f, 0.96f ) * 0.04f,
-
-		// ColourValue( 0.63f, 0.61f, 0.28f ) * 0.04f,
-		// ColourValue( 0.52f, 0.63f, 0.76f ) * 0.04f,
-
-		// ColourValue( 0.93f, 0.91f, 0.38f ) * 0.04f,
-		// ColourValue( 0.22f, 0.53f, 0.96f ) * 0.01f,
 		-dir);
 		// 0.8f, 0x0 );  // env? EnvFeatures_DiffuseGiFromReflectionProbe
 		// -dir + Ogre::Vector3::UNIT_Y * 0.2f );
