@@ -46,6 +46,7 @@ struct RoadSeg
 	std::vector<Ogre::Vector3> lpos;  //points for lod dist
 	int nTri[LODs], mrgLod = 0;
 	bool empty = true;
+	bool alpha = false;  // border fade
 
 	RoadSeg()
 	{	for (int i=0; i<LODs; ++i)  nTri[i] = 0;  }
@@ -131,7 +132,8 @@ private:
 ///  ***  MESH  ****
 //---------------------------------------------------------------------------------------
 
-	void CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrName, //Ogre::Aabb& aabox,
+	void CreateMesh( SegData& sd, Ogre::String sMesh,
+		Ogre::String sMtrName, bool alpha,
 		const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
 		const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,
 		const std::vector<Ogre::uint16>& idx);

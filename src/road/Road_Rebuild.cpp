@@ -125,7 +125,13 @@ void SplineRoad::BuildSeg(
 	//  skirt /\ not for bridges
 	bool useSkirt = DS.onTer || DS.pipe;  // pipe own factor..
 	Real skLen = useSkirt ? g_SkirtLen : 0.f, skH = useSkirt ? g_SkirtH : 0.f;
-	
+
+	//  alpha border
+	rs.alpha = DS.onTer &&
+		rs.sMtrRd.find("_ter") != String::npos &&
+		rs.sMtrRd.find("phalt") == String::npos &&
+		rs.sMtrRd.find("etal") == String::npos;  // meh- par in mtr..
+
 	
 	//  seg params  -----------------
 	const int iwC = g_ColNSides;  // column  polygon steps
@@ -315,7 +321,7 @@ void SplineRoad::BuildSeg(
 					c = (float(i)/il) * (mP[seg1].clr - mP[seg].clr) + mP[seg].clr;
 
 				Vector2 vtc(tcw * 1.f /**2p..*/,
-					onTer ? tcL * 0.03f : tcL);  //** par = alpha tc!
+					rs.alpha ? tcL * 0.03f : tcL);  //** par = alpha tc!
 
 				//>  data road
 				DLM.pos.push_back(vP);   DLM.norm.push_back(vN);
@@ -582,7 +588,7 @@ void SplineRoad::createSeg_Meshes(
 
 	if (HasRoad())
 	{
-		CreateMesh(rs.road[lod], sMesh, rs.sMtrRd,
+		CreateMesh(rs.road[lod], sMesh, rs.sMtrRd, rs.alpha,
 			DLM.pos, DLM.norm, DLM.clr, DLM.tcs, idx);
 	}
 
@@ -632,8 +638,9 @@ void SplineRoad::createSeg_Meshes(
 		{
 			rs.sMtrWall = !pipeGlass ? sMtrWall : sMtrWallPipe;
 
-			CreateMesh(rs.wall[lod], sMesh+"W", rs.sMtrWall,
+			CreateMesh(rs.wall[lod], sMesh+"W", rs.sMtrWall, false,
 				DLM.posW, DLM.normW, DLM.clr0, DLM.tcsW, idx);
+			rs.wall[lod].it->setCastShadows(true);
 		}
 	}
 	
@@ -656,7 +663,7 @@ void SplineRoad::createSeg_Meshes(
 		vSegs[DS.seg].nTri[DL.lod] += idx.size()/3;
 
 		/*if (!DLM.posC.empty())
-			CreateMesh(rs.col, sMesh+"C", sMtrCol,
+			CreateMesh(rs.col, sMesh+"C", sMtrCol, false,
 				DLM.posC, DLM.normC, DLM.clr0, DLM.tcsC, idx);*/
 	}
 	
@@ -675,11 +682,6 @@ void SplineRoad::createSeg_Meshes(
 		if (bCastShadow && !DS.onTer && !IsRiver())
 			it->setCastShadows(true);
 	}
-	/*if (wall)
-	{
-		AddMesh(meshW, sMeshW, aabox, &itW, &nodeW, "W."+sEnd);
-		itW->setCastShadows(true);
-	}*/
 #if 0  // fixme
 	if (cols)
 	{

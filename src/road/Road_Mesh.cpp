@@ -29,7 +29,8 @@ using namespace Ogre;
 //  Create Mesh
 //---------------------------------------------------------
 
-void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrName,
+void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
+	Ogre::String sMtrName, bool alpha,
 	const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
 	const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,
 	const std::vector<Ogre::uint16>& idx)
@@ -182,7 +183,8 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrN
 
 	//  add mesh to scene
 	//---------------------------------------------------------
-	Item *it = mSceneMgr->createItem( mesh, SCENE_STATIC );
+	Item *it = mSceneMgr->createItem(s2, "General", SCENE_STATIC );
+	// Item *it = mSceneMgr->createItem( mesh, SCENE_STATIC );
 	SceneNode* node = mSceneMgr->getRootSceneNode( SCENE_STATIC )->createChildSceneNode( SCENE_STATIC );
 	node->attachObject(it);
 	it->setVisible(false);  it->setCastShadows(false);//-
@@ -201,7 +203,7 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrN
 		datablock->setSamplerblock( PBSM_DIFFUSE + n, sampler );
 
 	//  replace alpha  ----
-	if (sMtrName.find("_ter") != String::npos)
+	if (alpha)
 	{
 		TextureGpu *diffTex = datablock->getDiffuseTexture(),
 			*normTex = datablock->getTexture(PBSM_NORMAL);
@@ -214,15 +216,11 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrN
 			datablock->setTexture(PBSM_DIFFUSE, sAlpha);  // same for all
 			datablock->setTexture(PBSM_NORMAL, sFlat);
 
-			datablock->setDetailMapBlendMode(0, PBSM_BLEND_MULTIPLY);
-			// datablock->setDetailMapBlendMode(1, PBSM_BLEND_NORMAL_NON_PREMUL);
-			datablock->setTexture(PBSM_DETAIL_WEIGHT, "roadAlpha2y.png");
-			// datablock->setTexture(PBSM_DETAIL_WEIGHT, "HeightmapBlendmap.png");
+			datablock->setDetailMapBlendMode(0, PBSM_BLEND_MULTIPLY);  //PBSM_BLEND_NORMAL_NON_PREMUL);
+			datablock->setTexture(PBSM_DETAIL_WEIGHT, "roadAlpha2y.png");  //"HeightmapBlendmap.png");
 			datablock->setDetailMapWeight(0, 1.0);
-			// datablock->setDetailMapWeight(1, 1.0);
 			const Real v = 33.3;  // 1.f / 0.03 = alpha tc in rebuild
 			datablock->setDetailMapOffsetScale(0, Vector4(0,0, 1,v));
-			// datablock->setDetailMapOffsetScale(1, Vector4(0,0, 1,v));
 
 			datablock->setTexture(PBSM_DETAIL0, sDiff);
 			datablock->setTexture(PBSM_DETAIL0_NM, sNorm);

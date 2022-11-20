@@ -50,6 +50,8 @@ void SplineEdit::LastPoint()
 //  mark need to rebuild geometry
 void SplineEdit::Rebuild(bool full)
 {
+	//return;  // test no road
+
 	rebuild = true;
 	if (full)
 		iDirtyId = -1;
