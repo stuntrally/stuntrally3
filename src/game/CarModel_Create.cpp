@@ -58,7 +58,7 @@ CarModel::CarModel(int index, int colorId, eCarType type, const string& name,
 	,fCam(0), iCamFluid(-1), fCamFl(0.6f)
 	,pMainNode(0), pCar(0), /*terrain(0),*/ ndSph(0), brakes(0)
 	,/*pReflect(0),*/ color(0,1,0), maxangle(26.f)
-	,hideTime(1.f), mbVisible(true), /*bLightMapEnabled(true),*/ bBraking(false)
+	,hideTime(1.f), mbVisible(true), /*bLightMapEnabled(true),*/ bBraking(true)
 	,iCamNextOld(0), bLastChkOld(0), bInSt(0), bWrongChk(0),  iFirst(0)
 	,angCarY(0), vStartPos(0,0,0)//, pNickTxt(0)
 	// ,ndNextChk(0), entNextChk(0)

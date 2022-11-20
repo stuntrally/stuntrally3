@@ -33,8 +33,6 @@ compositor_node CubemapRendererNode
 
 	texture tmpCubemap target_width target_height target_format cubemap mipmaps 0
 
-	visibility_mask		32
-
 	target tmpCubemap +X : cubemap_target { }
 	target tmpCubemap -X : cubemap_target { }
 	target tmpCubemap +Y : cubemap_target { }
@@ -67,8 +65,6 @@ compositor_node CubemapRendererNodeMsaa
 		// Specify we want to render to tmpMsaa at slot[0] but we want to resolve to tmpCubemap
 		colour	0 tmpMsaa resolve tmpCubemap
 	}
-
-	visibility_mask		32
 
 	target mixedCubemapRtv +X : cubemap_target { }
 	target mixedCubemapRtv -X : cubemap_target { }

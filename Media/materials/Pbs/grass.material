@@ -2,16 +2,13 @@ hlms grass pbs
 {
     alpha_test greater 0.5
     cull_mode none
-    // scene_blend alpha_blend
     // grass_wind true
     // vertex_colour true
     // diffuse_address_mode clamp
-	// depth_write off
 	two_sided true
 
     diffuse 1 1 1
     specular 0.0 0.0 0.0
-    //emissive 0.2 0.2 0.2
 	fresnel_coeff 0.1
 	roughness 0.4
 	metalness 0.1
@@ -302,38 +299,61 @@ hlms grassXc-alien pbs : grass
 }
 
 //  black desert
-hlms grassZ10 pbs : grass
+hlms grass_emis pbs
 {
-	emissive 0.3 0.3 0.3
-    diffuse_map grassZ10.png
+    alpha_test greater 0.5
+    cull_mode none
+    // grass_wind true
+    // vertex_colour true
+    // diffuse_address_mode clamp
+	two_sided true
+
+    diffuse 0 0 0
+    specular 0 0 0
+    emissive 1 1 1
+	fresnel_coeff 0.01
+	roughness 0.1
+	metalness 0.1
 }
 
-hlms grassZ11 pbs : grass
+hlms grassZ10 pbs : grass_emis
 {
-	emissive 0.2 0.2 0.2
-    diffuse_map grassZ11.png
+	// emissive 0.3 0.3 0.3
+    diffuse_map  grassZ10.png
+    emissive_map grassZ10.png
 }
 
-hlms grassZ13p pbs : grass
+hlms grassZ11 pbs : grass_emis
 {
-	emissive 0.2 0.2 0.2
-    diffuse_map grassZ13p.png
+	// emissive 0.2 0.2 0.2
+    diffuse_map  grassZ11.png
+    emissive_map grassZ11.png
 }
 
-hlms grassZ13r pbs : grass
+hlms grassZ13p pbs : grass_emis
 {
-	emissive 0.2 0.2 0.2
-    diffuse_map grassZ13r.png
+	// emissive 0.2 0.2 0.2
+    diffuse_map  grassZ13p.png
+    emissive_map grassZ13p.png
 }
 
-hlms grassZ14r pbs : grass
+hlms grassZ13r pbs : grass_emis
 {
-	emissive 0.2 0.2 0.2
-    diffuse_map grassZ14r.png
+	// emissive 0.2 0.2 0.2
+    diffuse_map  grassZ13r.png
+    emissive_map grassZ13r.png
 }
 
-hlms grassZ1r pbs : grass
+hlms grassZ14r pbs : grass_emis
 {
-	emissive 0.2 0.2 0.2
-    diffuse_map grassZ1r.png
+	// emissive 0.2 0.2 0.2
+    diffuse_map  grassZ14r.png
+    emissive_map grassZ14r.png
+}
+
+hlms grassZ1r pbs : grass_emis
+{
+	// emissive 0.2 0.2 0.2
+    diffuse_map  grassZ1r.png
+    emissive_map grassZ1r.png
 }
