@@ -191,7 +191,7 @@ hlms pine_base pbs
 	//normal_map  pine_half_norm.png
 	ambient 1.2 1.2 1.2
 	diffuse 0.8 0.8 0.8
-	specular 0.8 0.8 0.8 //24
+	specular 0.5 0.5 0.5 //24
 
 	fresnel_coeff 0.1
 	roughness 0.2
@@ -204,7 +204,7 @@ hlms pine1full pbs : pine_base
 	normal_map  pine_full_norm.png
 	ambient 1.2 1.22 1.22
 	diffuse 0.8 0.82 0.82
-	specular 1.0 1.0 1.0 //32
+	// specular 1.0 1.0 1.0 //32
 }
 
 hlms pine2full pbs : pine_base
@@ -213,7 +213,7 @@ hlms pine2full pbs : pine_base
 	normal_map  pine_full_norm.png
 	ambient 1.2 1.21 1.21
 	diffuse 0.8 0.81 0.81
-	specular 1.0 1.0 1.0 //16
+	// specular 1.0 1.0 1.0 //16
 }
 
 hlms pine3full pbs : pine_base
@@ -222,7 +222,7 @@ hlms pine3full pbs : pine_base
 	normal_map  pine_full_norm.png
 	ambient 1.2 1.21 1.21
 	diffuse 0.8 0.81 0.81
-	specular 1.0 1.0 1.0 //24
+	// specular 1.0 1.0 1.0 //24
 }
 
 
@@ -230,21 +230,21 @@ hlms pine1half pbs : pine_base
 {
 	diffuse_map pine_half.png
 	normal_map  pine_half_norm.png
-	specular 0.9 0.9 0.9 //16
+	// specular 0.9 0.9 0.9 //16
 }
 
 hlms pine2half pbs : pine_base
 {
 	diffuse_map pine_half.png
 	normal_map  pine_half_norm.png
-	specular 0.9 0.9 0.9 //16
+	// specular 0.9 0.9 0.9 //16
 }
 
 hlms pine3half pbs : pine_base
 {
 	diffuse_map pine_half.png
 	normal_map  pine_half_norm.png
-	specular 0.9 0.9 0.9 //16
+	// specular 0.9 0.9 0.9 //16
 }
 
 
@@ -273,29 +273,6 @@ hlms pine3norm pbs : pine_base
 	ambient 0.9 0.9 0.9
 	diffuse 0.5 0.5 0.5
 	specular 0.3 0.3 0.3 //16
-}
-
-
-//  Bushes  todo ..
-//------------------------------------------------------------------
-
-hlms bush_05 pbs
-{
-	diffuse_map bush_05.png
-	//normal_map  plant_tropical_norm_m.png
-	//specular_map palm_plant_spec.png
-	ambient 1.0 1.0 1.0
-	diffuse 1.0 1.0 1.0
-	specular 0.57 0.6 0.5 //24
-
-	alpha_test greater 0.5
-	cull_mode none
-	//receives_shadows false
-	two_sided true
-
-	fresnel_coeff 0.1
-	roughness 0.2
-	metalness 0.3
 }
 
 

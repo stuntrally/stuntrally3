@@ -23,10 +23,7 @@ hlms base-twig pbs
     specular 0.2 0.2 0.2 //32
 
     cull_mode none
-    // transparent true
     two_sided true
-    // receives_shadows true
-    // shadowBias 0.0001
     fresnel_coeff 0.1
     roughness 0.3
     metalness 0.2
@@ -181,7 +178,6 @@ hlms tree29downswpTrunk pbs : base-tree
 hlms tree29downswpTwig pbs : base-twig
 {
     ambient 0.5 0.9 1.2
-    // receives_shadows false
     diffuse_map twig22g1.png
 }
 
@@ -193,9 +189,7 @@ hlms tree36upballTrunk pbs : base-tree
 hlms tree36upballTwig pbs : base-twig
 {
     ambient 0.76 1.0 0.35
-    // receives_shadows false
     diffuse_map twig22g1.png
-}
     //diffuse_map twig22g0d.png
 }
 

@@ -234,10 +234,16 @@ void CScene::CreateTrees()
 				//  **************  add  **************
 				Item *item = mgr->createItem( file,
 					ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
+				
 				bool alpha = file == "crystal2.mesh" || file == "crystal2.mesh";  // todo: par in xml
 				item->setRenderQueueGroup( alpha ? RQG_BatchAlpha : RQG_Road );
 				item->setVisibilityFlags( RV_Vegetation );
-				item->setRenderingDistance( 1000.f );  // how far visible  // todo: par * scale ..
+				
+				auto s4 = file.substr(0,4), s3 = file.substr(0,3);
+				bool big = s4 == "palm" || s4 == "tree" || s4 == "jung" || s4 == "pine" ||
+					s3 == "gum" || s3 == "fir" || s4 == "crys" || s4 == "shro";
+				item->setRenderingDistance(  // todo: par in xml * scale,aabb?
+					big ? i % 3 == 0 ? 1000.f : 600.f : 300.f );  // how far visible
 				vegetItems.push_back(item);
 
 				SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
@@ -360,3 +366,34 @@ void CScene::DelRoadDens()
 	imgRoadSize = 0;
 	delete imgRoad;  imgRoad = 0;
 }
+
+#if 0
+	// sc min, max, dens, down
+	"jungle_tree-lod8.mesh",
+		3.0f, 5.0f, 20.f, -0.1f, 500, 0 ));  //  -v2 -l 10 -d 100 -p 11 jungle_tree.mesh
+	"palm2-lod8.mesh",
+		7.5f,12.5f, 18.f, -0.1f, 500, 0 ));  //  -v2 -l 8 -d 200 -p 10 palm2.mesh
+
+	"plant_tropical-lod6.mesh",
+		4.5f, 7.5f, 20.f, -0.1f, 300, 0 ));  //  -v2 -l 6 -d 200 -p 15 plant_tropical.mesh
+	"fern-lod6.mesh",
+		0.6f, 1.0f, 55.f, 0.0f, 400, 0 ));  //  -v2 -l 6 -d 200 -p 15 fern.mesh
+	"fern2-lod6.mesh",
+		0.8f, 1.2f, 30.f, 0.0f, 300, 0 ));  //  -v2 -l 8 -d 200 -p 10 palm2.mesh
+
+	"rock02brown2flat.mesh",
+		1.1f, 5.0f, 5.0f, 0.0f, 300, 1 ));  //  -v2 -l 6 -d 200 -p 15 rock*.mesh
+	"rock25dark2Harsh2.mesh",
+		0.6f, 3.0f, 5.0f, 0.0f, 400, 1 ));
+	"rock30grayGreen.mesh",
+		2.1f, 6.0f, 5.0f, 0.0f, 400, 1 ));
+	"rock37brGr1tall.mesh",
+		1.1f, 3.0f, 5.0f, 0.0f, 300, 1 ));
+	"rock18black3.mesh",
+		1.6f,7.f, 5.f ));
+	"rock_B02.mesh",
+		0.5f,2.f, 5.f ));
+
+	"pine2_tall_norm-lod9.mesh",
+		2.5f,4.f, 10.f ));  //  -v2 -l 9 -d 100 -p 9 pine2_tall_norm.mesh
+#endif

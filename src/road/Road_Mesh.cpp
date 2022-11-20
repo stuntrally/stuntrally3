@@ -216,7 +216,7 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh, Ogre::String sMtrN
 
 			datablock->setDetailMapBlendMode(0, PBSM_BLEND_MULTIPLY);
 			// datablock->setDetailMapBlendMode(1, PBSM_BLEND_NORMAL_NON_PREMUL);
-			datablock->setTexture(PBSM_DETAIL_WEIGHT, "roadAlpha2.png");
+			datablock->setTexture(PBSM_DETAIL_WEIGHT, "roadAlpha2y.png");
 			// datablock->setTexture(PBSM_DETAIL_WEIGHT, "HeightmapBlendmap.png");
 			datablock->setDetailMapWeight(0, 1.0);
 			// datablock->setDetailMapWeight(1, 1.0);

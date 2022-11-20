@@ -407,7 +407,7 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 		item = mSceneMgr->createItem( sDirname + sMesh, //"Cars"
 			sCarI/*ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME/**/, SCENE_DYNAMIC );
 
-		//**  set reflection cube  // fixme broken?
+		//**  set reflection cube
 		assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() ) );
 		Ogre::HlmsPbsDatablock *datablock =
 			static_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() );

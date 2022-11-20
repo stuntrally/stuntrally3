@@ -117,8 +117,8 @@ namespace Demo
 			txt = generateFpsDebugText();
 
 			txt += "Veget " + iToStr(pApp->scn->cntAll, 5);
-			txt += "\n\n- + Sun Pitch  " + fToStr( sc->ldPitch, 3 );
-			txt += "\n/ * Sun Yaw    " + fToStr( sc->ldYaw, 3 );
+			txt += "\n\n- + Pitch  " + fToStr( sc->ldPitch, 1,4 );
+			txt +=   "\n/ * Yaw    " + fToStr( sc->ldYaw, 1,4 );
 
 			txt += "\n^ v Param  " + fToStr( param, 0 );
 			

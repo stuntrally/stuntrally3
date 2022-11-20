@@ -321,6 +321,7 @@ namespace Demo
 
 		params.insert( std::make_pair("title", windowTitle) );
 		params.insert( std::make_pair("gamma", cfgOpts["sRGB Gamma Conversion"].currentValue) );
+		// params.insert( std::make_pair("gamma", "true") );
 		if( cfgOpts.find( "VSync Method" ) != cfgOpts.end() )
 			params.insert( std::make_pair( "vsync_method", cfgOpts["VSync Method"].currentValue ) );
 		params.insert( std::make_pair("FSAA", cfgOpts["FSAA"].currentValue) );
