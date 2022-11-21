@@ -49,17 +49,15 @@
 hlms road pbs
 {
 	depth_bias 3
-	scene_blend alpha_blend
-	// alphaMap white.png  //
-	// road_blend true
+	// scene_blend alpha_blend
 
 	// specular_map roadAsphalt_spec.jpg
-	// specMap_rgb true
-	// fresnel	1.33 1.33 1.2
-	roughness 0.1
-	metalness 0.1
+	workflow metallic
+	roughness 0.5
+	metalness 0.3
 
-	fresnel	2.13
+	// fresnel	1.33 1.33 1.2
+	fresnel_coeff 0.3 0.3 0.3
 	// ambient  1.0 0.0 0.0
 	// diffuse  1.0 0.0 0.0
 	// specular 0.0 0.0 0.5 //48
@@ -68,16 +66,12 @@ hlms road pbs
 hlms road_terrain pbs
 {
 	depth_bias 3
-	// depth_write off
 	scene_blend alpha_blend
-	// transparency 0.7
-	// transparency_mode transparent
 
-	// alphaMap roadAlpha.png  // todo: 
-	// road_blend true
-	fresnel	3.1
-	roughness 0.5
-	metalness 0.1
+	fresnel_coeff 0.3 0.3 0.3
+	// fresnel	3.1
+	roughness 0.7
+	metalness 0.2
 	// ambient  1.0 0.0 1.0
 	// diffuse  0.0 0.7 0.7
 	// specular 0.0 0.3 0.0 //48
