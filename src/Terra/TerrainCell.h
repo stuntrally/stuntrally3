@@ -57,7 +57,7 @@ namespace Ogre
 		TerrainCell( Terra *parentTerra );
 		~TerrainCell() override;
 
-		bool getUseSkirts() const                   { return m_useSkirts; }
+		bool getUseSkirts() const   { return m_useSkirts; }
 
 		bool isZUp() const;
 

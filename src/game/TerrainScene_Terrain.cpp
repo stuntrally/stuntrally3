@@ -173,11 +173,12 @@ namespace Demo
 		float ofs = sc->td.fTriangleSize;  // ofs 1025 to 1024 verts
 		LogO("Ter size: " + toStr(sc->td.iVertsX));// +" "+ toStr((sc->td.iVertsX)*sizeof(float))
 
+		bool any = !mTerra->bNormalized;
 		mTerra->load(
 			sc->td.iVertsX-1, sc->td.iVertsY-1, 
 			sc->td.hfHeight, sc->td.iVertsX,
-			Vector3( /*ofs*/0.f, 0.45f, ofs ),  //** y why?
-			Vector3( sizeXZ, 1.0f, sizeXZ ),
+			Vector3( 0.f,    any ? 0.45f : 0.f, ofs ),  //** y why?
+			Vector3( sizeXZ, any ? 1.f : mTerra->fHRange, sizeXZ ),  //** ter norm scale..
 			// true, true);
 			false, false);
 
@@ -195,6 +196,7 @@ namespace Demo
 		Hlms *hlmsPbs = root->getHlmsManager()->getHlms( HLMS_PBS );
 		hlmsPbs->setListener( mHlmsPbsTerraShadows );
 	}
+
 
 	void TerrainGame::DestroyTerrain()
 	{

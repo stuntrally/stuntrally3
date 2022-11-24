@@ -65,6 +65,7 @@ namespace Ogre
 		//Ogre stuff
 		SceneManager            *m_sceneManager;
 		CompositorManager2      *m_compositorManager;
+		bool m_bGenerateShadowMap;
 
 		static inline size_t getStartsPtrCount( int32 *starts, int32 *startsBase );
 
@@ -107,7 +108,7 @@ namespace Ogre
 		void destroyCompositorWorkspace();
 
 	public:
-		ShadowMapper( SceneManager *sceneManager, CompositorManager2 *compositorManager );
+		ShadowMapper( SceneManager *sceneManager, CompositorManager2 *compositorManager, bool bGenerateShadowMap );
 		~ShadowMapper();
 
 		/** Sets the parameter of the gaussian filter we apply to the shadow map.

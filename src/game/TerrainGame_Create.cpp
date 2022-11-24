@@ -204,13 +204,13 @@ namespace Demo
 
 /*
 	good scn +
-Atm  Can Des  Fin For Grc  Jng Mos  Mud Sav  Wnt
+Atm  Aus Blk Can Des  Fin For Grc  Jng Mos  Mud Sav  Spc Stn  Wnt
 
 	bad scn -  // fixme look
-Isl Mrs Uni Vlc
+Aln Cry  Isl  Mrs  Sur Tox  Uni  Vlc
 
 	bad cars
-ES OT TW  U8 gls O
+3B uv  ES n  OT TW wh-  U8 O gls-
 
 	low fps
 167 Taiga

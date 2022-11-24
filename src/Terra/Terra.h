@@ -122,6 +122,11 @@ namespace Ogre
 
 	public:
 		uint32 mHlmsTerraIndex;
+		bool bGenerateShadowMap;  //** ter
+		bool bNormalized;  // true: Hmap floats 0..1,  false: any, real heights
+		int iLodMax;
+		float fHMin, fHMax, fHRange;
+
 
 	protected:
 		void destroyHeightmapTexture();
@@ -212,7 +217,7 @@ namespace Ogre
 		*/
 		void load( int width, int height, std::vector<float> hfHeight, int row,
 				   Vector3 center, Vector3 dimensions, bool bMinimizeMemoryConsumption,
-				   bool bLowResShadow, const String &imageName = BLANKSTRING );
+				   bool bLowResShadow );
 
 		/** Gets the interpolated height at the given location.
 			If outside the bounds, it leaves the height untouched.

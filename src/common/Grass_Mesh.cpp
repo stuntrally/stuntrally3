@@ -121,7 +121,7 @@ void Grass::Create()
 					//  ang
 					Real at = terrain->getAngle(xw, zw, 1.f);
 					if (at < ch->angMin - ch->angSm/2.f || at > ch->angMax + ch->angSm/2.f)
-						continue;
+						continue;  // todo smooth ..
 
 
 					//  add new  grass x

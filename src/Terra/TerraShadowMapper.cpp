@@ -50,7 +50,7 @@ THE SOFTWARE.
 
 namespace Ogre
 {
-	ShadowMapper::ShadowMapper( SceneManager *sceneManager, CompositorManager2 *compositorManager ) :
+	ShadowMapper::ShadowMapper( SceneManager *sceneManager, CompositorManager2 *compositorManager, bool bGenerateShadowMap ) :
 		m_shadowStarts( 0 ),
 		m_shadowPerGroupData( 0 ),
 		m_shadowWorkspace( 0 ),
@@ -67,7 +67,8 @@ namespace Ogre
 		m_lowResShadow( false ),
 		m_sharedResources( 0 ),
 		m_sceneManager( sceneManager ),
-		m_compositorManager( compositorManager )
+		m_compositorManager( compositorManager ),
+		m_bGenerateShadowMap( bGenerateShadowMap )
 	{
 	}
 	//-----------------------------------------------------------------------------------
@@ -78,7 +79,8 @@ namespace Ogre
 	//-----------------------------------------------------------------------------------
 	void ShadowMapper::createCompositorWorkspace()
 	{
-		return;  //**  5 sec delay
+		if (!m_bGenerateShadowMap)
+			return;  //**  5 sec delay
 
 		OGRE_ASSERT_LOW( !m_shadowWorkspace );
 		OGRE_ASSERT_LOW( !m_tmpGaussianFilterTex );
@@ -191,27 +193,28 @@ namespace Ogre
 
 
 		//----  clear shadowmap
-	#if 1
-		// todo: save/load from file, editor dynamic
-		StagingTexture *stagingTexture = textureManager->getStagingTexture(
-			width, height, 1u, 1u, format );
-		stagingTexture->startMapRegion();
-		TextureBox texBox = stagingTexture->mapRegion( width, height, 1u, 1u, format );
+		if (!m_bGenerateShadowMap)
+		{
+			// todo: save/load from file, editor dynamic
+			StagingTexture *stagingTexture = textureManager->getStagingTexture(
+				width, height, 1u, 1u, format );
+			stagingTexture->startMapRegion();
+			TextureBox texBox = stagingTexture->mapRegion( width, height, 1u, 1u, format );
 
-		uint32* data = new uint32[width * height];
-		int a=0;
-		for (int y=0; y < height; ++y)
-		for (int x=0; x < width; ++x)
-			data[a++] = 1500000100;  // any not shadowed
-			//data[a++] = 2000000000 + 2000000000 * sin(x*0.01) * cos(y*0.02);
-		texBox.copyFrom(data, width, height, width * sizeof(uint32) );
+			uint32* data = new uint32[width * height];
+			int a=0;
+			for (int y=0; y < height; ++y)
+			for (int x=0; x < width; ++x)
+				data[a++] = 1500000100;  // any not shadowed
+				//data[a++] = 2000000000 + 2000000000 * sin(x*0.01) * cos(y*0.02);
+			texBox.copyFrom(data, width, height, width * sizeof(uint32) );
 
-		stagingTexture->stopMapRegion();
-		stagingTexture->upload( texBox, m_shadowMapTex, 0, 0, 0 );
-		textureManager->removeStagingTexture( stagingTexture );
-		stagingTexture = 0;
-		delete[] data;
-	#endif
+			stagingTexture->stopMapRegion();
+			stagingTexture->upload( texBox, m_shadowMapTex, 0, 0, 0 );
+			textureManager->removeStagingTexture( stagingTexture );
+			stagingTexture = 0;
+			delete[] data;
+		}
 		//----
 
 
@@ -226,9 +229,9 @@ namespace Ogre
 		m_jobParamResolutionShift = shaderParams.findParameter( "resolutionShift" );
 
 		if( bLowResShadow )
-			setGaussianFilterParams( 4, 0.5f );
+			setGaussianFilterParams( 2, 0.5f );  //** ter blur 4
 		else
-			setGaussianFilterParams( 8, 0.5f );
+			setGaussianFilterParams( 4, 0.5f );  // 8
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -487,6 +490,9 @@ namespace Ogre
 
 		if (m_shadowWorkspace)
 			m_shadowWorkspace->_update();
+		
+		// if (m_bGenerateShadowMap)
+			// m_shadowMapTex->writeContentsToFile("shadowmap.png",0,0);  //** ter
 
 		if( m_minimizeMemoryConsumption )
 			destroyCompositorWorkspace();

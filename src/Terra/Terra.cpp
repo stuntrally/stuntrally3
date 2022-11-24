@@ -94,7 +94,13 @@ namespace Ogre
 		m_compositorManager( compositorManager ),
 		m_camera( camera ),
 		mHlmsTerraIndex( std::numeric_limits<uint32>::max() )
+		
+		,bGenerateShadowMap( 0 )  //** ter par
+		,bNormalized( 0 )
+		,fHMin(-100.f), fHMax(100.f)
+		,iLodMax( 0 )  // 5 lq, max lods .. 0 hq, all lod0
 	{
+		fHRange = fHMax - fHMin;
 	}
 	//-----------------------------------------------------------------------------------
 	Terra::~Terra()
@@ -198,10 +204,20 @@ namespace Ogre
 			texBox.copyFrom( &hfHeight[0], m_iWidth, m_iHeight, row * m_iWidth * sizeof(float) );
 		}else
 		{   int a = 0;  // SR  Hmap  fix 1025 to 1024,  and flip
-			for (int y=0; y < m_iHeight; ++y)
-			for (int x=0; x < m_iWidth; ++x)
-				m_heightMap[a++] = hfHeight[x + (m_iHeight-1-y) * row];
-				// m_heightMap[a++] = 10.f + 10.f * sin(x*0.01) * cos(y*0.02);  // test
+			if (bNormalized)
+			{
+				for (int y=0; y < m_iHeight; ++y)
+				for (int x=0; x < m_iWidth; ++x)
+				{
+					float h = hfHeight[x + (m_iHeight-1-y) * row];
+					m_heightMap[a++] = (h - fHMin) / fHRange;  //** ter norm scale
+					// m_heightMap[a++] = 0.5f + 0.5f * sin(x*0.01) * cos(y*0.02);  // test
+				}
+			}else  // any floats
+			{	for (int y=0; y < m_iHeight; ++y)
+				for (int x=0; x < m_iWidth; ++x)
+					m_heightMap[a++] = hfHeight[x + (m_iHeight-1-y) * row];
+			}
 			
 			texBox.copyFrom( &m_heightMap[0], m_iWidth, m_iHeight, m_iWidth * sizeof(float) );
 		}
@@ -236,7 +252,7 @@ namespace Ogre
 		m_prevLightDir = Vector3::ZERO;
 
 		delete m_shadowMapper;
-		m_shadowMapper = new ShadowMapper( mManager, m_compositorManager );
+		m_shadowMapper = new ShadowMapper( mManager, m_compositorManager, bGenerateShadowMap );
 		m_shadowMapper->_setSharedResources( m_sharedResources );
 		m_shadowMapper->setMinimizeMemoryConsumption( bMinimizeMemory );
 		m_shadowMapper->createShadowMap( getId(), m_heightMapTex, bLowResShadow );
@@ -373,11 +389,8 @@ namespace Ogre
 		}
 
 		m_skirtSize /= m_fHeightMul;
-
-		// Many Android GPUs don't support PFG_R16_UNORM so we scale it by hand
-		if( m_heightMapTex->getPixelFormat() == PFG_R16_UINT )
-			m_skirtSize *= 65535.0f;
 	}
+
 	//-----------------------------------------------------------------------------------
 	inline GridPoint Terra::worldToGrid( const Vector3 &vPos ) const
 	{
@@ -407,7 +420,6 @@ namespace Ogre
 	//-----------------------------------------------------------------------------------
 	bool Terra::isVisible( const GridPoint &gPos, const GridPoint &gSize ) const
 	{
-		// return true;
 
 		if( gPos.x >= static_cast<int32>( m_iWidth ) ||
 			gPos.z >= static_cast<int32>( m_iHeight ) ||
@@ -418,7 +430,8 @@ namespace Ogre
 			return false;
 		}
 
-	   return true;  //** temp fix bug
+		if (!bNormalized)
+			return true;  //** ter temp fix bug unnorm vis
 
 		const Vector2 cellPos = gridToWorld( gPos );
 		const Vector2 cellSize( (gSize.x + 1u) * m_xzRelativeSize.x,
@@ -572,7 +585,8 @@ namespace Ogre
 			cellSize.z <<= 1u;
 			
 			#if 1  //**  0 for all at lod0, max tris
-			if (currentLod < 3)  //** 5 par lod max
+			if (iLodMax > 0)
+			if (currentLod < iLodMax)  //** ter 5 par lod max
 				++currentLod;
 			#endif
 
@@ -636,7 +650,7 @@ namespace Ogre
 	//-----------------------------------------------------------------------------------
 	void Terra::load( int width, int height, std::vector<float> hfHeight, int row,
 					  Vector3 center, Vector3 dimensions, bool bMinimizeMemoryConsumption,
-					  bool bLowResShadow, const String &imageName )
+					  bool bLowResShadow )
 	{
 		// Use sign-preserving because origin in XZ plane is always from
 		// bottom-left to top-right.
@@ -727,7 +741,7 @@ namespace Ogre
 	//-----------------------------------------------------------------------------------
 	bool Terra::getHeightAt( Vector3 &vPosArg ) const
 	{
-		bool retVal = false;
+		bool inside = false;
 
 		Vector3 vPos = toYUp( vPosArg );
 
@@ -769,13 +783,16 @@ namespace Ogre
 			}
 
 			vPos.y = a * dx + b * dz + c + m_terrainOrigin.y;
-			retVal = true;
+			// if (bNormalized)
+				// vPos.y = vPos.y * fHRange + fHMin;  //** ter scale
+			inside = true;
 		}
 
 		vPosArg = fromYUp( vPos );
 
-		return retVal;
+		return inside;
 	}
+
 	//-----------------------------------------------------------------------------------
 	void Terra::setDatablock( HlmsDatablock *datablock )
 	{
