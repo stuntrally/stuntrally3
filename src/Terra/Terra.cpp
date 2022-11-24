@@ -98,7 +98,7 @@ namespace Ogre
 		,bGenerateShadowMap( 0 )  //** ter par
 		,bNormalized( 0 )
 		,fHMin(-100.f), fHMax(100.f)
-		,iLodMax( 0 )  // 5 lq, max lods .. 0 hq, all lod0
+		,iLodMax( 4 )  // 5 lq, max lods .. 0 hq, all lod0
 	{
 		fHRange = fHMax - fHMin;
 	}

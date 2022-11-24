@@ -96,16 +96,28 @@ hlms Water_blue_dark pbs : Water   // Fin1-Lakes
 }
 
 
-hlms Grease_jelly pbs : Water   // Uni1-Magic
+hlms Grease_jelly pbs //: Water   // Uni1-Magic
 {
     diffuse   0.46 0.33 0.66
     specular  1.0 1.0 1.0
+	diffuse_map  alien_mntn4_d.jpg
+	normal_map   adesert_mntn4_n.jpg
+
+	fresnel_coeff 0.1
+	roughness 0.2
+	metalness 0.8
 }
 
-hlms Blue_jelly pbs : Water
+hlms Blue_jelly pbs //: Water
 {
 	diffuse   0.1 0.18 0.46
 	specular  1.0 1.0 1.0
+	diffuse_map  alien_mntn4_d.jpg
+	normal_map   adesert_mntn4_n.jpg
+
+	fresnel_coeff 0.1
+	roughness 0.3
+	metalness 0.7
 }
 
 hlms Acid_green pbs : Water   // green acid

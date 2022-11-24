@@ -218,6 +218,7 @@ Aln Cry  Isl  Mrs  Sur Tox  Uni  Vlc
 	border 60fps
 128 Beauty
  62 Tropic
+ 84 JungleCanyons
  54 Grc Long
 114 Fin Lakes
  14 Cross

@@ -61,8 +61,8 @@ void CScene::CreateFluids()
 		v1::MeshPtr meshV1 = v1::MeshManager::getSingleton().createPlane(
 			sMesh, rgDef,
 			p, fb.size.x, fb.size.z,
-			6,6, true, 1,
-			fb.tile.x*fb.size.x, fb.tile.y*fb.size.z, Vector3::UNIT_Z,
+			6,6, true, 1,  //par fake
+			fb.tile.x*fb.size.x *10,10* fb.tile.y*fb.size.z, Vector3::UNIT_Z,
 			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 
 		MeshPtr mesh = MeshManager::getSingleton().createByImportingV1(

@@ -145,7 +145,7 @@ void Grass::Create()
 						p.y += terrain->getHeight(p.x + xp, p.z + zp) - yp;
 
 						Vector2 uv(x, 1.f - y);
-						Vector3 n(0,1,0);  // todo: tilt^?
+						Vector3 n(0,1,0);  // todo: tilt^? bad for car lights
 						//Vector4 c(1,1,1,1);
 
 						pos.push_back(p);  norm.push_back(n);

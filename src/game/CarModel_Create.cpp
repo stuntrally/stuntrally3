@@ -15,6 +15,8 @@
 // #include "Road.h"
 // #include "../network/gameclient.hpp"
 
+#include <OgreQuaternion.h>
+#include <OgreVector3.h>
 #include <OgreException.h>
 #include <OgreEntity.h>
 #include <OgreItem.h>
@@ -34,10 +36,8 @@
 #include <OgreBillboardSet.h>
 #include <OgreBillboardChain.h>
 
-#undef toStr
 #include "OgreHlmsPbs.h"
 #include "OgreHlmsPbsDatablock.h"
-#define toStr(v)   Ogre::StringConverter::toString(v)
 
 // #include <MyGUI_Gui.h>
 // #include <MyGUI_TextBox.h>
@@ -540,13 +540,17 @@ void CarModel::Create()
 for (int i=0; i < 2; ++i)
 {
 	Light* light = mSceneMgr->createLight();
-	SceneNode* lightNode = ndCar->createChildSceneNode(SCENE_DYNAMIC, Vector3(-1.1, 0.0, i ? -0.6 : 0.6) );
+	SceneNode* lightNode = ndCar->createChildSceneNode( SCENE_DYNAMIC,
+		bRotFix ?
+		Vector3(i ? -0.6 : 0.6, 0.0, 1.1) :  //par
+		Vector3(-1.1, 0.0, i ? -0.6 : 0.6) );
 	lightNode->attachObject( light );
 	light->setDiffuseColour( 1.f, 1.1f, 1.1f );
 	light->setSpecularColour( 1.f, 1.1f, 1.1f );
-	light->setPowerScale( Ogre::Math::PI * 3 );
-	light->setType( Ogre::Light::LT_SPOTLIGHT );
-	light->setDirection( Ogre::Vector3( -1, 0.1, 0 ).normalisedCopy() );
+	light->setPowerScale( Math::PI * 3 );
+	light->setType( Light::LT_SPOTLIGHT );
+	light->setDirection(
+		bRotFix ? Vector3( 0, -0.1, 1 ) : Vector3( -1, 0.1, 0 ) );
 	light->setAttenuationBasedOnRadius( 30.0f, 0.01f );
     light->setSpotlightRange(Degree(5), Degree(40), 1.0f );  //par 5 30
 	light->setCastShadows(false);
@@ -576,17 +580,17 @@ for (int i=0; i < 2; ++i)
 			if (bLogInfo && (w==0 || w==2))  LogMeshInfo(eWh, name, 2);
 
 			//**  set reflection cube
-			assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() ) );
-			Ogre::HlmsPbsDatablock *datablock =
-				static_cast<Ogre::HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() );
-			datablock->setTexture( Ogre::PBSM_REFLECTION, pApp->mDynamicCubemap );
+			assert( dynamic_cast<HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() ) );
+			HlmsPbsDatablock *datablock =
+				static_cast<HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() );
+			datablock->setTexture( PBSM_REFLECTION, pApp->mDynamicCubemap );
 		}		
 		if (FileExists(sCar + "_brake.mesh") && !ghostTrk)
 		{
 			String name = sDirname + "_brake.mesh";
 			Item* eBrake = mSceneMgr->createItem(name, res);  ToDel(eBrake);
 			// if (ghost)  {  eBrake->setRenderQueueGroup(g);  eBrake->setCastShadows(false);  }
-			ndBrake[w] = ndWh[w]->createChildSceneNode();  ToDel(ndBrake[w]);
+			ndBrake[w] = /*ndWh[w]->*/ndRoot->createChildSceneNode();  ToDel(ndBrake[w]);
 			ndBrake[w]->attachObject(eBrake);  eBrake->setVisibilityFlags(RV_Car);
 			if (bLogInfo && w==0)  LogMeshInfo(eBrake, name, 4);
 		}

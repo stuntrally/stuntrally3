@@ -479,7 +479,8 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	{
 		if (ndBrake[w])
 		{
-			// fixme ? ndBrake[w]->_setDerivedOrientation( pMainNode->getOrientation() );
+			ndBrake[w]->setPosition(ndWh[w]->getPosition());
+			ndBrake[w]->setOrientation( pMainNode->getOrientation() );
 			
 			// this transformation code is just so the brake mesh can have the same alignment as the wheel mesh
 			ndBrake[w]->yaw(Degree(-90), Node::TS_LOCAL);

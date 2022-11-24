@@ -22,8 +22,8 @@ hlms base-twig pbs
     diffuse 0.9 0.9 0.9
     specular 0.2 0.2 0.2 //32
 
-    cull_mode none
-    two_sided true
+    // cull_mode none
+    // two_sided true
     fresnel_coeff 0.1
     roughness 0.3
     metalness 0.2
