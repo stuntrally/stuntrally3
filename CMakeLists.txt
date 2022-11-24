@@ -113,6 +113,8 @@ endmacro()
 include_directories(
 	src
 	src/btOgre2
+	src/oics
+	
 	src/common
 	src/common/data
 	src/game

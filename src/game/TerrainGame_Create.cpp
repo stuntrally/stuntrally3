@@ -202,20 +202,24 @@ namespace Demo
 
 }
 
-/*  for game.cfg
-Test7-FluidsSmall
-Test8-Objects
-TestC6-Temp
-	good
-Jng25-CantorJungle  +
-Mos6-TaraMosses  ~
-Des17-NileCity  +
+/*
+	good scn +
+Atm  Can Des  Fin For Grc  Jng Mos  Mud Sav  Wnt
 
-	errors: // fixme
-Grc8-SlopeCity - model? crash
-Sur3-Chaotic  -
-Isl17-AdapterIslands  -
+	bad scn -  // fixme look
+Isl Mrs Uni Vlc
 
-Atm9-SchwabAutumn  -5m! tris trees
-Vlc4-Spikeland  -ter fps low
+	bad cars
+ES OT TW  U8 gls O
+
+	low fps
+167 Taiga
+191 SandyMountain
+	border 60fps
+128 Beauty
+ 62 Tropic
+ 54 Grc Long
+114 Fin Lakes
+ 14 Cross
+
 */
