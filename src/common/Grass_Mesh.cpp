@@ -345,20 +345,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	it->setCastShadows(false);  //**
 	it->setVisibilityFlags(RV_VegetGrass);
 	it->setRenderQueueGroup(RQG_BatchAlpha);
-
-	//  wrap tex-
-	HlmsSamplerblock sampler;
-	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
-	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
-	sampler.mMaxAnisotropy = pSet->anisotropy;
-	sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
-	assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() ) );
-	HlmsPbsDatablock *datablock =
-		static_cast<Ogre::HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
-	datablock->setSamplerblock( PBSM_DIFFUSE, sampler );
-	datablock->setSamplerblock( PBSM_NORMAL, sampler );
-	datablock->setSamplerblock( PBSM_METALLIC, sampler );
-	datablock->setSamplerblock( PBSM_ROUGHNESS, sampler );/**/
+	scn->SetTexWrap(it);
 
 	sd.it = it;
 	sd.node = node;

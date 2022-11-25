@@ -10,6 +10,12 @@
 #include "CGame.h"
 #include "TerrainGame.h"
 
+#include <OgreItem.h>
+#include <OgreHlmsPbsPrerequisites.h>
+#include <OgreHlmsPbsDatablock.h>
+#include <OgreHlmsSamplerblock.h>
+using namespace Ogre;
+
 
 CScene::CScene(App* app1)
 	:app(app1)
@@ -70,4 +76,23 @@ void CScene::destroyScene()
 	// DestroyRoads();  DestroyPace();  DestroyTrail();
 	// DestroyTrees();
 	// DestroyWeather();
+}
+
+
+//  util
+void CScene::SetTexWrap(Ogre::Item* it)
+{
+	//  wrap tex  ----
+	static HlmsSamplerblock sampler;
+	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
+	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
+	sampler.mMaxAnisotropy = app->pSet->anisotropy;
+	sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
+
+	assert( dynamic_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() ) );
+	HlmsPbsDatablock *datablock =
+		static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
+	// for (int n=0; n < NUM_PBSM_SOURCES; ++n)
+	for (int n=0; n <= PBSM_ROUGHNESS; ++n)
+		datablock->getSamplerblock( PBSM_DIFFUSE + n, sampler );
 }

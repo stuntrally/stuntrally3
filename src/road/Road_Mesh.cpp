@@ -9,6 +9,7 @@
 #include "Road.h"
 
 #include "CGame.h"
+#include "CScene.h"
 #include "game.h"
 #include "TerrainGame.h"
 #include "GraphicsSystem.h"
@@ -191,16 +192,9 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	it->setVisibilityFlags(RV_Road);
 
 	//  wrap tex  ----
-	HlmsSamplerblock sampler;
-	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
-	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
-	sampler.mMaxAnisotropy = pGame->pSet->anisotropy;
-	sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
-	assert( dynamic_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() ) );
+	pGame->app->scn->SetTexWrap(it);
 	HlmsPbsDatablock *datablock =
 		static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
-	for (int n=0; n < NUM_PBSM_SOURCES; ++n)
-		datablock->setSamplerblock( PBSM_DIFFUSE + n, sampler );
 
 	//  replace alpha  ----
 	if (alpha)

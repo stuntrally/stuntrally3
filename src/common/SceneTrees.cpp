@@ -31,6 +31,9 @@
 #include <OgreImage2.h>
 
 #include "Terra.h"
+#include "OgreHlmsPbs.h"
+#include "OgreHlmsPbsDatablock.h"
+#include "OgreHlmsPbsPrerequisites.h"
 using namespace Ogre;
 
 
@@ -213,6 +216,7 @@ void CScene::CreateTrees()
 
 				//  check ter height  ------------
 				bool in = terrain->getHeightAt(pos);
+				// LogO(fToStr(pos.y));
 				if (!in)  add = false;  // outside
 				
 				if (pos.y < pg.minTerH || pos.y > pg.maxTerH)
@@ -238,7 +242,8 @@ void CScene::CreateTrees()
 				bool alpha = file == "crystal2.mesh" || file == "crystal2.mesh";  // todo: par in xml
 				item->setRenderQueueGroup( alpha ? RQG_BatchAlpha : RQG_Road );
 				item->setVisibilityFlags( RV_Vegetation );
-				
+				SetTexWrap(item);
+
 				auto s4 = file.substr(0,4), s3 = file.substr(0,3);
 				bool big = s4 == "palm" || s4 == "tree" || s4 == "jung" || s4 == "pine" ||
 					s3 == "gum" || s3 == "fir" || s4 == "crys" || s4 == "shro";

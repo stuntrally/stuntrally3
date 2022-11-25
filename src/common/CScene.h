@@ -88,6 +88,7 @@ public:
 	//-----------------------------------
 	Ogre::Image2* imgRoad = 0;  int imgRoadSize = 0;
 	void LoadRoadDens(), DelRoadDens();
+	void SetTexWrap(Ogre::Item* it);
 
 	void CreateTrees(), DestroyTrees(), RecreateTrees(); //, updGrsTer(), UpdCamera();
 	int cntAll = 0;

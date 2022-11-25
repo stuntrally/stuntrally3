@@ -3,18 +3,21 @@
 //--------------------------------------------------------
 hlms Water pbs
 {
-	diffuse_map  grass_ground_h.jpg
-	normal_map   grass_ground_n.jpg
+	diffuse_map  snow_bumpy_d.jpg
+	// diffuse_map  snow1_d.jpg
+	normal_map  jungle_mntn_n.jpg
+	// normal_map  desert_mntn2_n.jpg
+	// normal_map   grass_ground_n.jpg
 
-	fresnel_coeff 0.1
-	roughness 0.2
-	metalness 0.8
+	workflow metallic
+	fresnel_coeff 1.0 1.0 1.0
+	roughness 0.4
+	metalness 0.99
 
 	cull_mode none
-	// depth_write off
-	transparency 0.7
+	transparency 0.93
 	transparency_mode transparent
-	two_sided true
+	//two_sided true
 }
 
 //  Base  Mud
@@ -25,7 +28,7 @@ hlms BaseMud pbs
 	normal_map   mntn_dark_n.jpg
 
 	fresnel_coeff 0.1
-	roughness 0.2
+	roughness 0.5
 	metalness 0.8
 
 	cull_mode none

@@ -61,16 +61,18 @@ void CScene::CreateFluids()
 		v1::MeshPtr meshV1 = v1::MeshManager::getSingleton().createPlane(
 			sMesh, rgDef,
 			p, fb.size.x, fb.size.z,
-			6,6, true, 1,  //par fake
-			fb.tile.x*fb.size.x *10,10* fb.tile.y*fb.size.z, Vector3::UNIT_Z,
+			6,6, true, 1,  //par /fake
+			fb.tile.x*fb.size.x *6,6* fb.tile.y*fb.size.z, Vector3::UNIT_Z,
 			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
+
+		meshV1->buildTangentVectors();
 
 		MeshPtr mesh = MeshManager::getSingleton().createByImportingV1(
 			sMesh2, rgDef,
 			meshV1.get(), true, true, true );
 		
-		meshV1->unload();
-
+		MeshManager::getSingleton().remove(sMesh);  // not needed
+		// meshV1->unload();  //
 
 		SceneManager *mgr = app->mSceneMgr;
 		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
@@ -80,20 +82,7 @@ void CScene::CreateFluids()
 		
 		item->setDatablock( sMtr );  item->setCastShadows( false );
 		item->setRenderQueueGroup( RQG_Fluid );  item->setVisibilityFlags( RV_Terrain );
-
-		
-		//  wrap tex
-		HlmsSamplerblock sampler;
-		sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
-		sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
-		sampler.mMaxAnisotropy = app->pSet->anisotropy;
-		sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
-		assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem( 0 )->getDatablock() ) );
-		HlmsPbsDatablock *datablock =
-			static_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem( 0 )->getDatablock() );
-		datablock->setSamplerblock( PBSM_DIFFUSE, sampler );
-		datablock->setSamplerblock( PBSM_NORMAL, sampler );
-
+		SetTexWrap(item);
 		
 		SceneNode* node = rootNode->createChildSceneNode( SCENE_STATIC );
 		node->setPosition( fb.pos );  //, Quaternion(Degree(fb.rot.x),Vector3::UNIT_Y)
