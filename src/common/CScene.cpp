@@ -92,7 +92,6 @@ void CScene::SetTexWrap(Ogre::Item* it)
 	assert( dynamic_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() ) );
 	HlmsPbsDatablock *datablock =
 		static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
-	// for (int n=0; n < NUM_PBSM_SOURCES; ++n)
-	for (int n=0; n <= PBSM_ROUGHNESS; ++n)
-		datablock->getSamplerblock( PBSM_DIFFUSE + n, sampler );
+	for (int n=0; n < NUM_PBSM_SOURCES; ++n)
+		datablock->setSamplerblock( PBSM_DIFFUSE + n, sampler );
 }
