@@ -38,6 +38,7 @@
 
 #include "OgreHlmsPbs.h"
 #include "OgreHlmsPbsDatablock.h"
+#include <OgreMaterialManager.h>
 
 // #include <MyGUI_Gui.h>
 // #include <MyGUI_TextBox.h>
@@ -406,6 +407,7 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 		//ent = mSceneMgr->createEntity(sCarI + sEnt, sDirname + sMesh, sCarI);
 		item = mSceneMgr->createItem( sDirname + sMesh, //"Cars"
 			sCarI/*ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME/**/, SCENE_DYNAMIC );
+		pApp->scn->SetTexWrap(item);
 
 		//**  set reflection cube
 		assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() ) );
@@ -535,6 +537,8 @@ void CarModel::Create()
 	vPofs = Vector3::ZERO;
 	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    "g", ghost, RV_CarGlass, 0, sMtr[Mtr_CarBody]+"g",  bLogInfo);
 	
+	if (vtype == V_Sphere)  //par temp
+		ndCar->setScale(2.f,2.f,2.f);
 
 #if 0  //  car lights test **  // par set..
 for (int i=0; i < 2; ++i)
@@ -575,6 +579,7 @@ for (int i=0; i < 2; ++i)
 		{
 			String name = sDirname + sMesh;
 			Item* eWh = mSceneMgr->createItem(sDirname + sMesh, res);  ToDel(eWh);
+			pApp->scn->SetTexWrap(eWh);
 			// if (ghost)  {  eWh->setRenderQueueGroup(g);  eWh->setCastShadows(false);  }
 			ndWh[w]->attachObject(eWh);  eWh->setVisibilityFlags(RV_Car);
 			if (bLogInfo && (w==0 || w==2))  LogMeshInfo(eWh, name, 2);
@@ -625,6 +630,10 @@ for (int i=0; i < 2; ++i)
 		if (!parHit)
 		{	parHit = mSceneMgr->createParticleSystem("Sparks");  ToDel(parHit);
 			parHit->setVisibilityFlags(RV_Particles);
+			
+			//? MaterialPtr m = MaterialManager::getSingleton().getByName(parHit->getMaterialName());
+			//? auto s = m->getTechnique(0)->getPass(0)->getTextureUnitState(0)->getSamplerblock();
+			
 			SceneNode* np = ndRoot->createChildSceneNode();  ToDel(np);
 			np->attachObject(parHit);
 			parHit->getEmitter(0)->setEmissionRate(0);

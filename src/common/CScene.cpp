@@ -80,14 +80,15 @@ void CScene::destroyScene()
 
 
 //  util
-void CScene::SetTexWrap(Ogre::Item* it)
+void CScene::SetTexWrap(Ogre::Item* it, bool wrap)
 {
 	//  wrap tex  ----
 	static HlmsSamplerblock sampler;
 	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
 	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
 	sampler.mMaxAnisotropy = app->pSet->anisotropy;
-	sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
+	auto w = wrap ? TAM_WRAP : TAM_CLAMP;
+	sampler.mU = w;  sampler.mV = w;  sampler.mW = w;
 
 	assert( dynamic_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() ) );
 	HlmsPbsDatablock *datablock =

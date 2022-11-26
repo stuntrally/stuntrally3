@@ -802,16 +802,19 @@ hlms 3B_interior pbs : car_interior
 	diffuse  0.6 0.6 0.6
 	specular 1 1 1  //8
 }
-hlms 3B_wheel pbs : car_wheel
+hlms 3B_wheel pbs //: car_wheel
 {
 	diffuse_map   3B_wheel.jpg
 	normal_map    3B_norm.jpg
-	specular_map  3B_wheel.jpg
-	metalness_map 3B_wheel.jpg
+	// specular_map  3B_wheel.jpg
+	// metalness_map 3B_wheel.jpg
 	//roughness_map  3B_wheel.jpg
-	ambient  0.4 0.4 0.4
-	diffuse  0.2 0.2 0.2
-	specular 0.5 0.5 0.5  //2.5
+	diffuse  0.0 0.0 0.0
+	specular 0.99 0.99 0.99
+	workflow metallic
+	fresnel_coeff 0.06 0.06 0.06
+	roughness 0.4
+	metalness 0.9
 }
 
 
