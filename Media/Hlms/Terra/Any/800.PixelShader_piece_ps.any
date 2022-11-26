@@ -364,17 +364,41 @@
 			@insertpiece( BRDF_EnvMap )
 		@end
 
-		@property( hlms_fog )
-			const float distToCamera = length( inPs.pos.xyz );
-			const midf luminance = dot( finalColour.xyz,
-										midf3_c( _h( 0.212655 ), _h( 0.715158 ), _h( 0.072187 ) ) );
-			const midf lumFogWeight = max( exp2( atmoSettings.fogBreakFalloff * luminance +
-												 atmoSettings.fogBreakMinBrightness ),
-										   _h( 0.0 ) );
-			midf fogWeight = midf_c( exp2( -distToCamera * atmoSettings.fogDensity ) );
-			fogWeight = lerp( _h( 1.0 ), fogWeight, lumFogWeight );
-			finalColour.xyz = lerp( inPs.fog.xyz, finalColour.xyz, fogWeight );
-		@end
+		///_ calculate fog
+        // float fogDepth = shSaturate((depth - fogParams.y) * fogParams.w);  // w = 1 / (max - min)
+        // float fogDepthH = shSaturate((depth - fogParamsH.z) * fogParamsH.w);
+
+        // float fogDir = dot( normalize(eyeDir.xz), normalize(lightDir.xz) ) * 0.5 + 0.5;
+        // float fogH = shSaturate( (fogParamsH.x/*h*/ - worldPosY) * fogParamsH.y/*dens*/);
+
+        // float4 fogClrDir = shLerp( fogColorAway, fogColorSun, fogDir);
+        // float4 fogClrFinal = shLerp( fogClrDir, fogColorH, fogH);
+		// float fogL = shLerp( fogDepth * fogClrDir.a, fogDepthH * fogColorH.a, fogH);
+
+        // /// fluid fog
+        // float flDepth = shSaturate(depth * fogFluidH.y);
+        // float flH = shSaturate((fogFluidH.x/*h*/ - worldPosY) * fogFluidH.z);
+        // float4 flClrFinal = shLerp( fogClrFinal, fogFluidClr, flH);
+		// float flL = shLerp( fogL, flDepth /* * fogFluidClr.a*/, flH);
+
+        // shOutputColour(0).xyz = shLerp( shOutputColour(0).xyz, flClrFinal.rgb, flL);
+        ///_
+
+			@property( hlms_fog )
+				const float distToCamera = length( inPs.pos.xyz );
+				const midf luminance = dot( finalColour.xyz,
+											midf3_c( _h( 0.212655 ), _h( 0.715158 ), _h( 0.072187 ) ) );
+				const midf lumFogWeight = max( exp2( atmoSettings.fogBreakFalloff * luminance +
+													 atmoSettings.fogBreakMinBrightness ),
+											   _h( 0.0 ) );
+				midf fogWeight = midf_c( exp2( -distToCamera * atmoSettings.fogDensity ) );
+				fogWeight = lerp( _h( 1.0 ), fogWeight, lumFogWeight );
+				finalColour.xyz = lerp( inPs.fog.xyz, finalColour.xyz, fogWeight );
+				
+				// const float heightMul = saturate( ( inPs.worldH + 11 ) * 0.2 );
+				// finalColour.xyz = lerp( float3(1,0.5,0), finalColour.xyz, heightMul );
+				//finalColour.xyz = lerp( float3(0,0.5,1), finalColour.xyz, saturate(-atmoSettings.cameraDisplacement.y * 0.0001) );
+			@end
 	@end ///!hlms_prepass
 
 	@property( !hlms_render_depth_only )

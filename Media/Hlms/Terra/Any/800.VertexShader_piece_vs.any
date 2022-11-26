@@ -148,6 +148,10 @@
 		outVs.zwDepth.xy = outVs_Position.zw;
 	@end
 
+	@property( hlms_fog )
+		outVs.worldH = worldPos.y;
+	@end
+
 	@property( hlms_instanced_stereo )
 		outVs_viewportIndex	= int( inVs_stereoDrawId & 0x01u );
 	@end

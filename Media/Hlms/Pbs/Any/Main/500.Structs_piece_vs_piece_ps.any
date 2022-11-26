@@ -441,6 +441,7 @@ struct Material
 		@property( hlms_fog )
 			// fog.xyz = colour
 			INTERPOLANT( midf3 fog, @counter(texcoord) );
+			INTERPOLANT( float worldH, @counter(texcoord) );
 		@end
 	@else
 		@property( alpha_test )
