@@ -121,7 +121,7 @@ namespace Ogre
 		inline Vector3 toYUpSignPreserving( Vector3 value ) const;
 
 	public:
-		Ogre::TextureGpu *m_blendMapTex;
+		Ogre::TextureGpu *m_blendMapTex;//, *m_blendRtt;
 		uint32 mHlmsTerraIndex;
 		bool bGenerateShadowMap;  //** ter
 		bool bNormalized;  // true: Hmap floats 0..1,  false: any, real heights

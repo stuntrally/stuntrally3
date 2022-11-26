@@ -28,6 +28,7 @@ THE SOFTWARE.
 
 #include "Terra/Terra.h"
 
+#include "OgreTextureGpu.h"
 #include "Terra/TerraShadowMapper.h"
 #include "Terra/Hlms/OgreHlmsTerra.h"
 
@@ -340,7 +341,7 @@ namespace Ogre
 							tmpRtt->getEmptyBox( i ), i );
 		}
 
-		TerraSharedResources::destroyTempTexture( m_sharedResources, tmpRtt );
+		// TerraSharedResources::destroyTempTexture( m_sharedResources, tmpRtt );
 	}
 	//-----------------------------------------------------------------------------------
 	void Terra::destroyNormalTexture()
@@ -364,9 +365,9 @@ namespace Ogre
 			mManager->getDestinationRenderSystem()->getTextureGpuManager();
 		m_blendMapTex = textureManager->createTexture(
 			"BlendMapTex_" + StringConverter::toString( getId() ), GpuPageOutStrategy::SaveToSystemRam,
-			// TextureFlags::Uav,
-			TextureFlags::ManualTexture,
-			TextureTypes::Type2D );
+			//TextureFlags::ManualTexture|*/TextureFlags::AutomaticBatching,
+			TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps,
+			TextureTypes::Type2DArray, "General" );
 		
 		m_blendMapTex->setResolution( m_heightMapTex->getWidth(), m_heightMapTex->getHeight() );
 		m_blendMapTex->setNumMipmaps( PixelFormatGpuUtils::getMaxMipmapCount(
@@ -383,9 +384,11 @@ namespace Ogre
 		}*/
 		m_blendMapTex->scheduleTransitionTo( GpuResidency::Resident );
 
-		Ogre::TextureGpu *tmpRtt = TerraSharedResources::getTempTexture(
-			"TMP BlendMapTex_", getId(), m_sharedResources, TerraSharedResources::TmpBlendMap,
+		/*Ogre::TextureGpu *tmpRtt = TerraSharedResources::getTempTexture(
+			"TMP BlendMapTex_", getId(), m_sharedResources,
+			TerraSharedResources::TmpBlendMap,
 			m_blendMapTex, TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps );
+		m_blendRtt = tmpRtt;*/
 
 		MaterialPtr blendMapperMat = MaterialManager::getSingleton().load(
 					"Terra/GpuBlendMapper",
@@ -394,6 +397,7 @@ namespace Ogre
 		Pass *pass = blendMapperMat->getTechnique(0)->getPass(0);
 		TextureUnitState *texUnit = pass->getTextureUnitState(0);
 		texUnit->setTexture( m_heightMapTex );
+		// texUnit = pass->getTextureUnitState(1);
 		// texUnit->setTexture( m_normalMapTex );
 
 		// Normalize vScale for better precision in the shader math
@@ -406,14 +410,14 @@ namespace Ogre
 																	1, 1 ) );
 		psParams->setNamedConstant( "vScale", vScale );
 
-		CompositorChannelVec finalTargetChannels( 1, CompositorChannel() );
-		finalTargetChannels[0] = tmpRtt;
+		// CompositorChannelVec finalTargetChannels( 1, CompositorChannel() );
+		// finalTargetChannels[0] = m_blendMapTex; //tmpRtt;
 
 		Camera *dummyCamera = mManager->createCamera( "TerraDummyCamera2" );
 
 		const IdString workspaceName = "Terra/GpuBlendMapperWorkspace";
 		CompositorWorkspace *workspace = m_compositorManager->addWorkspace(
-			mManager, finalTargetChannels, dummyCamera, workspaceName, false );
+			mManager, m_blendMapTex/*finalTargetChannels*/, dummyCamera, workspaceName, false );
 		workspace->_beginUpdate( true );
 		workspace->_update();
 		workspace->_endUpdate( true );
@@ -421,15 +425,15 @@ namespace Ogre
 		m_compositorManager->removeWorkspace( workspace );
 		mManager->destroyCamera( dummyCamera );
 
-		// for( uint8 i = 0u; i < m_blendMapTex->getNumMipmaps(); ++i )
-		uint8 i = 0u;
+		/*for( uint8 i = 0u; i < m_blendMapTex->getNumMipmaps(); ++i )
+		// uint8 i = 0u;
 		{
 			tmpRtt->copyTo( m_blendMapTex, m_blendMapTex->getEmptyBox( i ), i,
 							tmpRtt->getEmptyBox( i ), i );
-		}
-		// m_blendMapTex->writeContentsToFile("blendmap.png", 0, 1);
+		}*/
+		// m_blendMapTex->writeContentsToFile("blendmapRTT.png", 0, 1);  //** ter test blendmap
 
-		TerraSharedResources::destroyTempTexture( m_sharedResources, tmpRtt );
+		// TerraSharedResources::destroyTempTexture( m_sharedResources, tmpRtt );
 	}
 	//-----------------------------------------------------------------------------------
 	void Terra::destroyBlendmap()

@@ -80,17 +80,14 @@ void main()
 	vNormal += cross( (vNN - v00), (vN0 - v00) );
 	vNormal += cross( (vN0 - v00), (v01 - v00) );
 
-//	vNormal += cross( (v01 - v00), (v11 - v00) );
-//	vNormal += cross( (v11 - v00), (v10 - v00) );
-//	vNormal += cross( (v10 - v00), (v1N - v00) );
-//	vNormal += cross( (v1N - v00), (v0N - v00) );
-//	vNormal += cross( (v0N - v00), (vNN - v00) );
-//	vNormal += cross( (vNN - v00), (vN0 - v00) );
-//	vNormal += cross( (vN0 - v00), (vN1 - v00) );
-//	vNormal += cross( (vN1 - v00), (v01 - v00) );
-
 	vNormal = normalize( vNormal );
+	float a = max(0.0, acos(vNormal.y) * 180.0 / 3.1415926536);  // get angle in degrees
 
 	//fragColour.xy = vNormal.zx;
-	fragColour = vec4( vNormal.y * 0.5 + 0.5, 0.f, 0.f, 1.0f );
+	float l3 = clamp( (a - 25.0) / 15.0, 0.0, 1.0);
+	float l2 = clamp(a/15.0 * (1.0 - l3), 0.0, 1.0);
+	float l1 = (1.0 - l2) * (1.0 - l3);
+	float ll = l1 + l2 + l3;
+	
+	fragColour = vec4( l1/ll, l2/ll, l3/ll, 0.f );
 }

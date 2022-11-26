@@ -186,9 +186,7 @@ namespace Demo
 			false, false);
 
 		// if (mTerra->m_blendMapTex)
-		// tblock->setTexture( TERRA_DETAIL_WEIGHT, mTerra->m_blendMapTex );  //** !?
-		// tblock->setTexture( TERRA_DETAIL0, mTerra->m_blendMapTex );
-		// tblock->calculateHash();
+		tblock->setTexture( TERRA_DETAIL_WEIGHT, mTerra->m_blendMapTex );  //**
 
 		SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
 		node->attachObject( mTerra );
