@@ -91,9 +91,12 @@ namespace Demo
 		TextureGpuManager *texMgr = root->getRenderSystem()->getTextureGpuManager();
 
 		//  blendmap ..  // todo: dynamic, shader
-		auto tex = texMgr->createOrRetrieveTexture("HeightmapBlendmap.png",
+	#if 1
+		auto tex = texMgr->createOrRetrieveTexture( //"blendmap.png",
+			"HeightmapBlendmap.png",
 			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 		tblock->setTexture( TERRA_DETAIL_WEIGHT, tex );
+	#endif
 
 		tblock->setBrdf(TerraBrdf::BlinnPhongLegacyMath);  //** no fresnel-
 		//? tblock->setFresnel();
@@ -181,6 +184,11 @@ namespace Demo
 			Vector3( sizeXZ, any ? 1.f : mTerra->fHRange, sizeXZ ),  //** ter norm scale..
 			// true, true);
 			false, false);
+
+		// if (mTerra->m_blendMapTex)
+		// tblock->setTexture( TERRA_DETAIL_WEIGHT, mTerra->m_blendMapTex );  //** !?
+		// tblock->setTexture( TERRA_DETAIL0, mTerra->m_blendMapTex );
+		// tblock->calculateHash();
 
 		SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
 		node->attachObject( mTerra );

@@ -1,0 +1,21 @@
+compositor_node Terra/GpuBlendMapper
+{
+	in 0 rt_output
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			material Terra/GpuBlendMapper
+		}
+
+		pass generate_mipmaps
+		{
+		}
+	}
+}
+
+workspace Terra/GpuBlendMapperWorkspace
+{
+	connect_output Terra/GpuBlendMapper 0
+}

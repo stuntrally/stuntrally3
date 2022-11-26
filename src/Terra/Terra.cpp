@@ -86,8 +86,11 @@ namespace Ogre
 		m_terrainOrigin( Vector3::ZERO ),
 		m_basePixelDimension( 256u ),
 		m_currentCell( 0u ),
+
 		m_heightMapTex( 0 ),
 		m_normalMapTex( 0 ),
+		m_blendMapTex( 0 ),
+
 		m_prevLightDir( Vector3::ZERO ),
 		m_shadowMapper( 0 ),
 		m_sharedResources( 0 ),
@@ -119,11 +122,15 @@ namespace Ogre
 			delete m_shadowMapper;
 			m_shadowMapper = 0;
 		}
+
+		destroyBlendmap();
 		destroyNormalTexture();
 		destroyHeightmapTexture();
+		
 		m_terrainCells[0].clear();
 		m_terrainCells[1].clear();
 	}
+
 	//-----------------------------------------------------------------------------------
 	Vector3 Terra::fromYUp( Vector3 value ) const
 	{
@@ -164,6 +171,7 @@ namespace Ogre
 		}
 	}
 
+	//  Height
 	//-----------------------------------------------------------------------------------
 	void Terra::createHeightmapTexture(
 		std::vector<float> hfHeight, int row)
@@ -248,6 +256,7 @@ namespace Ogre
 													 static_cast<Real>(m_iHeight) );
 
 		createNormalTexture();
+		createBlendmap();
 
 		m_prevLightDir = Vector3::ZERO;
 
@@ -261,6 +270,7 @@ namespace Ogre
 	}
 
 
+	//  Normal
 	//-----------------------------------------------------------------------------------
 	void Terra::createNormalTexture()
 	{
@@ -341,6 +351,95 @@ namespace Ogre
 					mManager->getDestinationRenderSystem()->getTextureGpuManager();
 			textureManager->destroyTexture( m_normalMapTex );
 			m_normalMapTex = 0;
+		}
+	}
+
+	//**  Blendmap  * * *
+	//-----------------------------------------------------------------------------------
+	void Terra::createBlendmap()
+	{
+		destroyBlendmap();
+
+		TextureGpuManager *textureManager =
+			mManager->getDestinationRenderSystem()->getTextureGpuManager();
+		m_blendMapTex = textureManager->createTexture(
+			"BlendMapTex_" + StringConverter::toString( getId() ), GpuPageOutStrategy::SaveToSystemRam,
+			// TextureFlags::Uav,
+			TextureFlags::ManualTexture,
+			TextureTypes::Type2D );
+		
+		m_blendMapTex->setResolution( m_heightMapTex->getWidth(), m_heightMapTex->getHeight() );
+		m_blendMapTex->setNumMipmaps( PixelFormatGpuUtils::getMaxMipmapCount(
+			m_blendMapTex->getWidth(), m_blendMapTex->getHeight() ) );
+
+		m_blendMapTex->setPixelFormat( PFG_RGBA8_UNORM );
+		/*if( textureManager->checkSupport(
+				PFG_R10G10B10A2_UNORM, TextureTypes::Type2D,
+				TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps ) )
+		{
+			m_blendMapTex->setPixelFormat( PFG_R10G10B10A2_UNORM );
+		}else{
+			m_blendMapTex->setPixelFormat( PFG_RGBA8_UNORM );
+		}*/
+		m_blendMapTex->scheduleTransitionTo( GpuResidency::Resident );
+
+		Ogre::TextureGpu *tmpRtt = TerraSharedResources::getTempTexture(
+			"TMP BlendMapTex_", getId(), m_sharedResources, TerraSharedResources::TmpBlendMap,
+			m_blendMapTex, TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps );
+
+		MaterialPtr blendMapperMat = MaterialManager::getSingleton().load(
+					"Terra/GpuBlendMapper",
+					ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ).
+				staticCast<Material>();
+		Pass *pass = blendMapperMat->getTechnique(0)->getPass(0);
+		TextureUnitState *texUnit = pass->getTextureUnitState(0);
+		texUnit->setTexture( m_heightMapTex );
+		// texUnit->setTexture( m_normalMapTex );
+
+		// Normalize vScale for better precision in the shader math
+		const Vector3 vScale =
+			Vector3( m_xzRelativeSize.x, m_heightUnormScaled, m_xzRelativeSize.y ).normalisedCopy();
+
+		GpuProgramParametersSharedPtr psParams = pass->getFragmentProgramParameters();
+		psParams->setNamedConstant( "heightMapResolution", Vector4( static_cast<Real>( m_iWidth ),
+																	static_cast<Real>( m_iHeight ),
+																	1, 1 ) );
+		psParams->setNamedConstant( "vScale", vScale );
+
+		CompositorChannelVec finalTargetChannels( 1, CompositorChannel() );
+		finalTargetChannels[0] = tmpRtt;
+
+		Camera *dummyCamera = mManager->createCamera( "TerraDummyCamera2" );
+
+		const IdString workspaceName = "Terra/GpuBlendMapperWorkspace";
+		CompositorWorkspace *workspace = m_compositorManager->addWorkspace(
+			mManager, finalTargetChannels, dummyCamera, workspaceName, false );
+		workspace->_beginUpdate( true );
+		workspace->_update();
+		workspace->_endUpdate( true );
+
+		m_compositorManager->removeWorkspace( workspace );
+		mManager->destroyCamera( dummyCamera );
+
+		// for( uint8 i = 0u; i < m_blendMapTex->getNumMipmaps(); ++i )
+		uint8 i = 0u;
+		{
+			tmpRtt->copyTo( m_blendMapTex, m_blendMapTex->getEmptyBox( i ), i,
+							tmpRtt->getEmptyBox( i ), i );
+		}
+		// m_blendMapTex->writeContentsToFile("blendmap.png", 0, 1);
+
+		TerraSharedResources::destroyTempTexture( m_sharedResources, tmpRtt );
+	}
+	//-----------------------------------------------------------------------------------
+	void Terra::destroyBlendmap()
+	{
+		if( m_blendMapTex )
+		{
+			TextureGpuManager *textureManager =
+					mManager->getDestinationRenderSystem()->getTextureGpuManager();
+			textureManager->destroyTexture( m_blendMapTex );
+			m_blendMapTex = 0;
 		}
 	}
 

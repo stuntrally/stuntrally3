@@ -121,6 +121,7 @@ namespace Ogre
 		inline Vector3 toYUpSignPreserving( Vector3 value ) const;
 
 	public:
+		Ogre::TextureGpu *m_blendMapTex;
 		uint32 mHlmsTerraIndex;
 		bool bGenerateShadowMap;  //** ter
 		bool bNormalized;  // true: Hmap floats 0..1,  false: any, real heights
@@ -139,8 +140,8 @@ namespace Ogre
 		void createHeightmapTexture(
 			std::vector<float> hfHeight, int row );
 
-		void createNormalTexture();
-		void destroyNormalTexture();
+		void createNormalTexture(), createBlendmap();
+		void destroyNormalTexture(), destroyBlendmap();
 
 		///	Automatically calculates the optimum skirt size (no gaps with
 		/// lowest overdraw possible).
@@ -308,6 +309,7 @@ namespace Ogre
 		enum TemporaryUsages
 		{
 			TmpNormalMap,
+			TmpBlendMap,
 			NumStaticTmpTextures,
 			TmpShadows = NumStaticTmpTextures,
 			NumTemporaryUsages

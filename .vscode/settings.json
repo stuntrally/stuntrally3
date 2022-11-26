@@ -5,7 +5,7 @@
     "*.any": "c",
     "*.glsl": "c",
     "*.material": "csharp",
-    "*.compositor": "json",
+    "*.compositor": "jsonc",
     "*.particle": "c",
     "*.mat": "c",
     "*.car": "ini",
