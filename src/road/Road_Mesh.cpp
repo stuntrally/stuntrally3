@@ -176,7 +176,10 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	//  tangents-
 	String s1 = sMesh+"v1", s2 = sMesh+"v2";
 	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create(s1, "General");
-	m1->importV2(mesh.get());
+	/*v1::MeshPtr m1 = static_cast<v1::MeshPtr>(v1::MeshManager::getSingleton().createOrRetrieve(s1, "General",
+		true, 0, 0,
+		v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC ).first);*/
+ 	m1->importV2(mesh.get());
 	m1->buildTangentVectors();
 	mesh = MeshManager::getSingleton().createByImportingV1(s2, "General", m1.get(), false,false,false);
 	MeshManager::getSingleton().remove(sMesh);  // not needed

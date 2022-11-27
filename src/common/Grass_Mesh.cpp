@@ -168,7 +168,7 @@ void Grass::Create()
 				}
 			}	// pages
 
-			LogO(String("^ grass  na ") +toStr(na) +"  pg "+ toStr(pg) +"  "+ gr->material);
+			LogO(String("^ grass  x ") +iToStr(na,5) +"  pages "+ toStr(pg) +"  mtr "+ gr->material);
 			// g0->swayDistr;
 			// g0->swayLen;  g0->swaySpeed;
 			// FADETECH_ALPHA  //FADETECH_GROW-
@@ -328,12 +328,14 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 
 	//  tangents-
 /*	String s1 = sMesh+"v1", s2 = sMesh+"v2";
-	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create(s1, "General");
+	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create(s1, "General",
+		v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 	m1->importV2(mesh.get());
 	m1->buildTangentVectors();
 	mesh = MeshManager::getSingleton().createByImportingV1(s2, "General", m1.get(), false,false,false);
 	MeshManager::getSingleton().remove(sMesh);  // not needed
 */	// faster but will be lost with device..
+	mesh->arrangeEfficient(true, true, true);
 
 	//  add mesh to scene
 	//---------------------------------------------------------
@@ -345,7 +347,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	it->setCastShadows(false);  //**
 	it->setVisibilityFlags(RV_VegetGrass);
 	it->setRenderQueueGroup(RQG_BatchAlpha);
-	scn->SetTexWrap(it);
+	scn->SetTexWrap(it, false);
 
 	sd.it = it;
 	sd.node = node;
