@@ -54,12 +54,17 @@ material Terra/GpuBlendMapper
 			vertex_program_ref Ogre/Compositor/Quad_vs
 			{
 			}
-
 			fragment_program_ref Terra/GpuBlendMapper_ps
 			{
 			}
 
 			texture_unit heightMap
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+
+			texture_unit normalMap1
 			{
 				tex_address_mode clamp
 				filtering none

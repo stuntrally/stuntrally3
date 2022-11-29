@@ -167,20 +167,21 @@ namespace Demo
 							mGraphicsSystem->getCamera(), false );
 		// mTerra->setCustomSkirtMinHeight(0.8f); //?-
 		mTerra->setCastShadows( false );
+		mTerra->sc = pApp->scn->sc;
 		pApp->scn->terrain = mTerra;
 
 		LogO("---- Terra load");
 
 		//  Heightmap  ------------------------------------------------
 		sizeXZ = sc->td.fTriangleSize * (sc->td.iVertsX-1);  //sc->td.fTerWorldSize;
-		float ofs = sc->td.fTriangleSize;  // ofs 1025 to 1024 verts
+		float ofs = sc->td.fTriangleSize;  // ofs fix, 1025 to 1024 verts etc
 		LogO("Ter size: " + toStr(sc->td.iVertsX));// +" "+ toStr((sc->td.iVertsX)*sizeof(float))
 
 		bool any = !mTerra->bNormalized;
 		mTerra->load(
 			sc->td.iVertsX-1, sc->td.iVertsY-1, 
 			sc->td.hfHeight, sc->td.iVertsX,
-			Vector3( 0.f,    any ? 0.45f : 0.f, ofs ),  //** y why?
+			Vector3( 0.f,    any ? 0.5f : 0.f, ofs ),  //** y why?
 			Vector3( sizeXZ, any ? 1.f : mTerra->fHRange, sizeXZ ),  //** ter norm scale..
 			// true, true);
 			false, false);

@@ -35,6 +35,9 @@ THE SOFTWARE.
 
 #include "Terra/TerrainCell.h"
 
+class Scene;
+
+
 namespace Ogre
 {
 	struct GridPoint
@@ -127,6 +130,7 @@ namespace Ogre
 		bool bNormalized;  // true: Hmap floats 0..1,  false: any, real heights
 		int iLodMax;
 		float fHMin, fHMax, fHRange;
+		Scene* sc = 0;
 
 
 	protected:

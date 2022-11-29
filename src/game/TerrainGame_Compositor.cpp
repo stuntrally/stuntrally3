@@ -107,7 +107,7 @@ namespace Demo
 			// mCubeCamera->setDefaultVisibilityFlags( RV_Sky); //RV_MaskReflect );  //** set in cubemap_target
 
 			mCubeCamera->setFarClipDistance( 20000 ); //300 );  // par  20000 needed for sky meh..
-			mCubeCamera->setShadowRenderingDistance( 100 );  // par
+			// mCubeCamera->setShadowRenderingDistance( 100 );  // par?-
 			//mCubeCamera->setCastShadows(false);
 		}
 

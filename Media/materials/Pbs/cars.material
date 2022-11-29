@@ -184,13 +184,15 @@ hlms S8_brake pbs : car_wheel
 //  XZ  -------------------------------
 hlms XZ_body1_material_ pbs
 {
-	// workflow specular_fresnel
-	workflow metallic
+	workflow specular_fresnel
+	// workflow metallic
 	diffuse_map   XZ_body_red.png
 	diffuse  0.0 0.0 0.0
 	// specular 0.9 0.9 0.9
 	specular 0.02 0.05 0.09
+	// specular 0.1 0.2 0.27
 	// specular 0.7 0.8 0.95
+	// fresnel 0.2
 	fresnel_coeff 1.0 1.0 1.0
 	roughness 0.45
  	metalness 0.99
@@ -609,13 +611,31 @@ hlms O_body1 pbs : car_body
 hlms O_glass pbs //: car_glass2
 {
 	diffuse_map  O_glass.png
-	diffuse	  0.7 0.4 0.1
+	// diffuse	  0.0 0.0 0.0
+	// specular  0.0 0.0 0.0
 	workflow metallic
 	// fresnel 3.1
 	fresnel_coeff 0.3 0.3 0.3
 	// diffuse	  0.7 0.7 0.7
 	roughness 0.9
 	metalness 0.4
+}
+
+//  O refl test  -------------------------------------------------
+hlms DebugSphere1234 pbs
+{
+	workflow specular_fresnel
+	// workflow metallic
+	// fresnel_coeff 0.2 0.2 0.3
+	fresnel_coeff 1 1 1
+
+	// ambient  0.5 0.5 0.5
+	// diffuse  0.3 0.3 0.3
+	// specular 0.9 0.9 0.9
+	diffuse	  0.0 0.0 0.0
+	specular  1 1 1
+	roughness 0.1
+	metalness 0.9
 }
 
 
@@ -853,21 +873,6 @@ hlms BE_wheel pbs : car_wheel
 	specular 0.5 0.5 0.5  //4
 }
 
-
-//  O refl test  -------------------------------------------------
-hlms DebugSphere1234 pbs
-{
-	// workflow specular_fresnel
-	workflow metallic
-	// fresnel_coeff 0.2 0.2 0.3
-	fresnel_coeff 1 1 1
-
-	// ambient  0.5 0.5 0.5
-	// diffuse  0.3 0.3 0.3
-	// specular 0.9 0.9 0.9
-	roughness 0.1
-	metalness 0.9
-}
 
 //  SX  -------------------------------------------------
 hlms SX_body pbs //: car_body

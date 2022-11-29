@@ -204,10 +204,14 @@ namespace Demo
 
 /*
 	good scn +
-Atm  Aus Blk Can Des  Fin For Grc  Jng Mos  Mud Sav  Spc Stn  Wnt
+Aln Cry Atm  Aus Blk Can Des  Fin For Grc  Jng Mos  Mud Sav  Spc Stn Sur  Wnt
 
 	bad scn -  // fixme look
-Aln Cry  Isl  Mrs  Sur Tox  Uni  Vlc
+Mrs- all  Tox- all  Uni- all  Vlc emis
+-62 Tropic  -75 HighPeaks  tripl  60 Aus3-Canyon  ter spec-
+clr:
+103 Des SandStorm  65 Vlc1-Dark  66 Isl5-Shore  121 Isl-StuntIsl
+110 Atm5-Twister  186 Sur4-BlueWinter  
 
 	bad cars
 3B uv  ES n  OT TW wh-  U8 O gls-

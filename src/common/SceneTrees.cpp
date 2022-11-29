@@ -254,6 +254,8 @@ void CScene::CreateTrees()
 				SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
 				node->attachObject( item );
 				node->scale( scl * Vector3::UNIT_SCALE );
+				if (big)
+					pos.y -= 0.52f;
 				// pos.y += std::min( item->getLocalAabb().getMinimum().y, Real(0.0f) ) * -0.1f + lay.down;  //par
 				// todo: ter h in few +-xz, get lowest ..
 				node->setPosition( pos );

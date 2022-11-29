@@ -29,6 +29,7 @@ THE SOFTWARE.
 #include "Terra/Terra.h"
 
 #include "OgreTextureGpu.h"
+#include "OgreVector4.h"
 #include "Terra/TerraShadowMapper.h"
 #include "Terra/Hlms/OgreHlmsTerra.h"
 
@@ -45,7 +46,11 @@ THE SOFTWARE.
 #include "OgreStagingTexture.h"
 #include "OgreTechnique.h"
 #include "OgreTextureGpuManager.h"
+
 #include "Def_Str.h"
+#include "CScene.h"
+#include "SceneXml.h"
+
 
 namespace Ogre
 {
@@ -301,9 +306,8 @@ namespace Ogre
 			m_normalMapTex, TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps );
 
 		MaterialPtr normalMapperMat = MaterialManager::getSingleton().load(
-					"Terra/GpuNormalMapper",
-					ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ).
-				staticCast<Material>();
+			"Terra/GpuNormalMapper",
+			ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ).staticCast<Material>();
 		Pass *pass = normalMapperMat->getTechnique(0)->getPass(0);
 		TextureUnitState *texUnit = pass->getTextureUnitState(0);
 		texUnit->setTexture( m_heightMapTex );
@@ -313,9 +317,8 @@ namespace Ogre
 			Vector3( m_xzRelativeSize.x, m_heightUnormScaled, m_xzRelativeSize.y ).normalisedCopy();
 
 		GpuProgramParametersSharedPtr psParams = pass->getFragmentProgramParameters();
-		psParams->setNamedConstant( "heightMapResolution", Vector4( static_cast<Real>( m_iWidth ),
-																	static_cast<Real>( m_iHeight ),
-																	1, 1 ) );
+		psParams->setNamedConstant( "heightMapResolution", Vector4(
+			static_cast<Real>( m_iWidth ), static_cast<Real>( m_iHeight ), 1, 1 ) );
 		psParams->setNamedConstant( "vScale", vScale );
 
 		CompositorChannelVec finalTargetChannels( 1, CompositorChannel() );
@@ -324,8 +327,7 @@ namespace Ogre
 		Camera *dummyCamera = mManager->createCamera( "TerraDummyCamera" );
 
 		const IdString workspaceName = m_heightMapTex->getPixelFormat() == PFG_R16_UINT
-										   ? "Terra/GpuNormalMapperWorkspaceU16"
-										   : "Terra/GpuNormalMapperWorkspace";
+			? "Terra/GpuNormalMapperWorkspaceU16" : "Terra/GpuNormalMapperWorkspace";
 		CompositorWorkspace *workspace = m_compositorManager->addWorkspace(
 			mManager, finalTargetChannels, dummyCamera, workspaceName, false );
 		workspace->_beginUpdate( true );
@@ -365,7 +367,6 @@ namespace Ogre
 			mManager->getDestinationRenderSystem()->getTextureGpuManager();
 		m_blendMapTex = textureManager->createTexture(
 			"BlendMapTex_" + StringConverter::toString( getId() ), GpuPageOutStrategy::SaveToSystemRam,
-			//TextureFlags::ManualTexture|*/TextureFlags::AutomaticBatching,
 			TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps,
 			TextureTypes::Type2DArray, "General" );
 		
@@ -374,44 +375,69 @@ namespace Ogre
 			m_blendMapTex->getWidth(), m_blendMapTex->getHeight() ) );
 
 		m_blendMapTex->setPixelFormat( PFG_RGBA8_UNORM );
-		/*if( textureManager->checkSupport(
-				PFG_R10G10B10A2_UNORM, TextureTypes::Type2D,
-				TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps ) )
-		{
-			m_blendMapTex->setPixelFormat( PFG_R10G10B10A2_UNORM );
-		}else{
-			m_blendMapTex->setPixelFormat( PFG_RGBA8_UNORM );
-		}*/
 		m_blendMapTex->scheduleTransitionTo( GpuResidency::Resident );
 
-		/*Ogre::TextureGpu *tmpRtt = TerraSharedResources::getTempTexture(
-			"TMP BlendMapTex_", getId(), m_sharedResources,
-			TerraSharedResources::TmpBlendMap,
-			m_blendMapTex, TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps );
-		m_blendRtt = tmpRtt;*/
-
 		MaterialPtr blendMapperMat = MaterialManager::getSingleton().load(
-					"Terra/GpuBlendMapper",
-					ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ).
-				staticCast<Material>();
+			"Terra/GpuBlendMapper",
+			ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ).staticCast<Material>();
 		Pass *pass = blendMapperMat->getTechnique(0)->getPass(0);
 		TextureUnitState *texUnit = pass->getTextureUnitState(0);
 		texUnit->setTexture( m_heightMapTex );
-		// texUnit = pass->getTextureUnitState(1);
-		// texUnit->setTexture( m_normalMapTex );
+		texUnit = pass->getTextureUnitState(1);  // n
+		texUnit->setTexture( m_normalMapTex );
 
 		// Normalize vScale for better precision in the shader math
 		const Vector3 vScale =
 			Vector3( m_xzRelativeSize.x, m_heightUnormScaled, m_xzRelativeSize.y ).normalisedCopy();
 
-		GpuProgramParametersSharedPtr psParams = pass->getFragmentProgramParameters();
-		psParams->setNamedConstant( "heightMapResolution", Vector4( static_cast<Real>( m_iWidth ),
-																	static_cast<Real>( m_iHeight ),
-																	1, 1 ) );
-		psParams->setNamedConstant( "vScale", vScale );
 
-		// CompositorChannelVec finalTargetChannels( 1, CompositorChannel() );
-		// finalTargetChannels[0] = m_blendMapTex; //tmpRtt;
+		//  blendmap params  ~~~~
+		GpuProgramParametersSharedPtr psParams = pass->getFragmentProgramParameters();
+		psParams->setNamedConstant( "heightMapResolution",
+			Vector4( static_cast<Real>( m_iWidth ), static_cast<Real>( m_iHeight ), 1, 1 ) );
+		psParams->setNamedConstant( "vScale", vScale );
+		// psParams->setNamedConstant( "vLayers", Vector4(1.f, 1.f, 1.f, 0.f) );
+
+	int i;
+	float Hmin[4],Hmax[4],Hsmt[4], Amin[4],Amax[4],Asmt[4];
+	float Nnext[4],Nprev[3],Nnext2[2], Nonly[4];
+	float Nfreq[3],Noct[3],Npers[3],Npow[3];
+	float Nfreq2[2],Noct2[2],Npers2[2],Npow2[2];
+	//  zero
+	for (i=0; i < 4; ++i)
+	{	Hmin[i]=0.f; Hmax[i]=0.f; Hsmt[i]=0.f;  Amin[i]=0.f; Amax[i]=0.f; Asmt[i]=0.f;
+		Nnext[i]=0.f;  Nonly[i]=0.f;  }
+	for (i=0; i < 3; ++i)
+	{	Nprev[i]=0.f;  Nfreq[i]=0.f; Noct[i]=0.f; Npers[i]=0.f; Npow[i]=0.f;  }
+	for (i=0; i < 2; ++i)
+	{	Nnext2[i]=0.f;  Nfreq2[i]=0.f; Noct2[i]=0.f; Npers2[i]=0.f; Npow2[i]=0.f;  }
+	
+	int nl = std::min(4, (int)sc->td.layers.size());
+	for (i=0; i < nl; ++i)
+	{	//  range
+		const TerLayer& l = sc->td.layersAll[sc->td.layers[i]];
+		Hmin[i] = l.hMin;	Hmax[i] = l.hMax;	Hsmt[i] = l.hSm;
+		Amin[i] = l.angMin;	Amax[i] = l.angMax;	Asmt[i] = l.angSm;
+		//  noise
+		Nonly[i] = !l.nOnly ? 1.f : 0.f;
+		Nnext[i] = i < nl-1 ? l.noise : 0.f;  // dont +1 last
+		if (i > 0)  Nprev[i-1] = l.nprev;  // dont -1 first
+		if (i < 2)  Nnext2[i] = nl > 2 ? l.nnext2 : 0.f;
+		//  n par +1,-1, +2
+		if (i < nl-1){  Nfreq[i] = l.nFreq[0];  Noct[i] = l.nOct[0];  Npers[i] = l.nPers[0];  Npow[i] = l.nPow[0];  }
+		if (i < nl-2){  Nfreq2[i]= l.nFreq[1];  Noct2[i]= l.nOct[1];  Npers2[i]= l.nPers[1];  Npow2[i]= l.nPow[1];  }
+	}
+	#define Set4(s,v)  psParams->setNamedConstant( s, Vector4(v[0], v[1], v[2], v[3]) )
+	#define Set3(s,v)  psParams->setNamedConstant( s, Vector3(v[0], v[1], v[2]) )
+	#define Set2(s,v)  psParams->setNamedConstant( s, Vector2(v[0], v[1]) )
+	#define Set1(s,v)  psParams->setNamedConstant( s, v )
+	Set4("Hmin", Hmin);  Set4("Hmax", Hmax);  Set4("Hsmt", Hsmt);
+	Set4("Amin", Amin);  Set4("Amax", Amax);  Set4("Asmt", Asmt);  Set4("Nonly", Nonly);
+	Set3("Nnext", Nnext);  Set3("Nprev", Nprev);  Set2("Nnext2", Nnext2);
+	Set3("Nfreq", Nfreq);  Set3("Noct", Noct);  Set3("Npers", Npers);  Set3("Npow", Npow);
+	Set2("Nfreq2", Nfreq2);  Set2("Noct2", Noct2);  Set2("Npers2", Npers2);  Set2("Npow2", Npow2);
+	Set1("terrainWorldSize", sc->td.fTerWorldSize);
+
 
 		Camera *dummyCamera = mManager->createCamera( "TerraDummyCamera2" );
 
@@ -425,15 +451,7 @@ namespace Ogre
 		m_compositorManager->removeWorkspace( workspace );
 		mManager->destroyCamera( dummyCamera );
 
-		/*for( uint8 i = 0u; i < m_blendMapTex->getNumMipmaps(); ++i )
-		// uint8 i = 0u;
-		{
-			tmpRtt->copyTo( m_blendMapTex, m_blendMapTex->getEmptyBox( i ), i,
-							tmpRtt->getEmptyBox( i ), i );
-		}*/
 		// m_blendMapTex->writeContentsToFile("blendmapRTT.png", 0, 1);  //** ter test blendmap
-
-		// TerraSharedResources::destroyTempTexture( m_sharedResources, tmpRtt );
 	}
 	//-----------------------------------------------------------------------------------
 	void Terra::destroyBlendmap()
