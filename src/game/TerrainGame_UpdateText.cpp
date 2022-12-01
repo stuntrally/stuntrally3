@@ -127,7 +127,7 @@ namespace Demo
 			txt += "\n< > ";  const int d = 3;
 			switch (param)
 			{
-			// p.fogHcolor.xyz
+			// p.fogHcolor.xyz  fogHparams.xy
 			case 0:   txt += "Fog  " + fToStr( p.fogDensity, 5 );  break;
 			case 1:   txt += "density coeff  " + fToStr( p.densityCoeff, d );  break;
 			case 2:   txt += "density diffusion  " + fToStr( p.densityDiffusion, d );  break;

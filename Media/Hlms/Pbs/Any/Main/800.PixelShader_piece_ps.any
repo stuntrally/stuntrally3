@@ -915,7 +915,7 @@
 				fogWeight = lerp( _h( 1.0 ), fogWeight, lumFogWeight );
 				finalColour.xyz = lerp( inPs.fog.xyz, finalColour.xyz, fogWeight );
 
-				const float heightMul = saturate( ( inPs.worldH + 11 ) * 0.2 );
+				const float heightMul = saturate( ( inPs.worldH - atmoSettings.fogHparams.x ) * atmoSettings.fogHparams.y );
 				finalColour.xyz = lerp( atmoSettings.fogHcolor.xyz, finalColour.xyz, heightMul );
 				//finalColour.xyz = lerp( float3(0,0.5,1), finalColour.xyz, saturate(-atmoSettings.cameraDisplacement.y * 0.0001) );
 			@end

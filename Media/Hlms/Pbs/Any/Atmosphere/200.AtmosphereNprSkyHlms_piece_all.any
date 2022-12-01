@@ -25,6 +25,7 @@
 		float padding0;
 		
 		float4 fogHcolor;
+		float4 fogHparams;
 	};
 
 	@property( syntax != metal )

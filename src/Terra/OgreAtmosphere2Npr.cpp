@@ -64,6 +64,7 @@ namespace Ogre
         float padding;
         
         float4 fogHcolor;
+        float4 fogHparams;
     };
 
     Atmosphere2Npr::Atmosphere2Npr( VaoManager *vaoManager ) :
@@ -408,7 +409,7 @@ namespace Ogre
             psParams->setNamedConstant( "cameraDisplacement", cameraDisplacement );
         }
 
-        AtmoSettingsGpu atmoSettingsGpu;
+        AtmoSettingsGpu atmoGpu;
 
         const float sunHeight = std::sin( mNormalizedTimeOfDay * Math::PI );
         const float sunHeightWeight = std::exp2( -1.0f / sunHeight );
@@ -416,10 +417,10 @@ namespace Ogre
         const float lightDensity =
             mPreset.densityCoeff / std::pow( std::max( sunHeight, 0.0035f ), 0.75f );
 
-        atmoSettingsGpu.densityCoeff = mPreset.densityCoeff;
-        atmoSettingsGpu.lightDensity = lightDensity;
-        atmoSettingsGpu.sunHeight = sunHeight;
-        atmoSettingsGpu.sunHeightWeight = sunHeightWeight;
+        atmoGpu.densityCoeff = mPreset.densityCoeff;
+        atmoGpu.lightDensity = lightDensity;
+        atmoGpu.sunHeight = sunHeight;
+        atmoGpu.sunHeightWeight = sunHeightWeight;
 
         const Vector3 mieAbsorption =
             std::pow( std::max( 1.0f - lightDensity, 0.1f ), 4.0f ) *
@@ -430,21 +431,22 @@ namespace Ogre
         const Vector4 packedParams2( mSunDir, mPreset.horizonLimit );
         const Vector4 packedParams3( mPreset.skyColour, mPreset.densityDiffusion );
 
-        atmoSettingsGpu.skyLightAbsorption =
+        atmoGpu.skyLightAbsorption =
             Vector4( getSkyRayleighAbsorption( mPreset.skyColour, lightDensity ), cameraPos.x );
-        atmoSettingsGpu.sunAbsorption =
+        atmoGpu.sunAbsorption =
             Vector4( getSkyRayleighAbsorption( 1.0f - mPreset.skyColour, lightDensity ), cameraPos.y );
-        atmoSettingsGpu.cameraDisplacement = Vector4( cameraDisplacement, cameraPos.z );
-        atmoSettingsGpu.packedParams1 = packedParams1;
-        atmoSettingsGpu.packedParams2 = packedParams2;
-        atmoSettingsGpu.packedParams3 = packedParams3;
-        atmoSettingsGpu.fogDensity = mPreset.fogDensity;
-        atmoSettingsGpu.fogBreakMinBrightness = mPreset.fogBreakMinBrightness * mPreset.fogBreakFalloff;
-        atmoSettingsGpu.fogBreakFalloff = -mPreset.fogBreakFalloff;
+        atmoGpu.cameraDisplacement = Vector4( cameraDisplacement, cameraPos.z );
+        atmoGpu.packedParams1 = packedParams1;
+        atmoGpu.packedParams2 = packedParams2;
+        atmoGpu.packedParams3 = packedParams3;
+        atmoGpu.fogDensity = mPreset.fogDensity;
+        atmoGpu.fogBreakMinBrightness = mPreset.fogBreakMinBrightness * mPreset.fogBreakFalloff;
+        atmoGpu.fogBreakFalloff = -mPreset.fogBreakFalloff;
 
-        atmoSettingsGpu.fogHcolor = mPreset.fogHcolor;
+        atmoGpu.fogHcolor = mPreset.fogHcolor;
+        atmoGpu.fogHparams = mPreset.fogHparams;
 
-        mHlmsBuffer->upload( &atmoSettingsGpu, 0u, sizeof( atmoSettingsGpu ) );
+        mHlmsBuffer->upload( &atmoGpu, 0u, sizeof( atmoGpu ) );
     }
     
     //-------------------------------------------------------------------------
@@ -583,7 +585,7 @@ namespace Ogre
         LERP_VALUE( linkedSceneAmbientUpperPower );
         LERP_VALUE( linkedSceneAmbientLowerPower );
         LERP_VALUE( envmapScale );
-        //fogHcolor?
+        //fogHcolor fogHparams ?
         #undef LERP_VALUE
     }
 

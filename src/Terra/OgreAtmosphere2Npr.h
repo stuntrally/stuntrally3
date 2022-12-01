@@ -100,7 +100,7 @@ namespace Ogre
             float envmapScale;
 
             //  new
-            Ogre::Vector4 fogHcolor;
+            Ogre::Vector4 fogHcolor, fogHparams;
 
             Preset() :
                 time( 0.0f ),
@@ -119,7 +119,8 @@ namespace Ogre
                 linkedSceneAmbientUpperPower( 0.1f * Math::PI ),
                 linkedSceneAmbientLowerPower( 0.01f * Math::PI ),
                 envmapScale( 1.0f ),
-                fogHcolor(0.5,0.75,1,1)
+                
+                fogHcolor(0.5,0.75,1,1), fogHparams(11,0.2,0,0)
             {
             }
 

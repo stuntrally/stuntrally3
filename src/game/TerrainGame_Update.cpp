@@ -152,7 +152,7 @@ namespace Demo
 			switch (param)
 			{
 			// mCamera->setLodBias(0.1);  //** todo: par
-			// p.fogHcolor.xyz
+			// p.fogHcolor.xyz  fogHparams.xy
 			case 0:  p.fogDensity *= mul1;  break;
 			case 1:  p.densityCoeff *= mul1;  break;
 			case 2:  p.densityDiffusion *= mul1;  break;
