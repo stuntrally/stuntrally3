@@ -395,9 +395,12 @@
 				fogWeight = lerp( _h( 1.0 ), fogWeight, lumFogWeight );
 				finalColour.xyz = lerp( inPs.fog.xyz, finalColour.xyz, fogWeight );
 				
-				const float heightMul = saturate( ( inPs.worldH - atmoSettings.fogHparams.x ) * atmoSettings.fogHparams.y );
-				finalColour.xyz = lerp( atmoSettings.fogHcolor.xyz, finalColour.xyz, heightMul );
-				//finalColour.xyz = lerp( float3(0,0.5,1), finalColour.xyz, saturate(-atmoSettings.cameraDisplacement.y * 0.0001) );
+				//**  height fog
+				midf fogHWeight = midf_c( exp2( -distToCamera * atmoSettings.fogHparams.z ) );
+				const midf heightMul = saturate( ( inPs.worldH - atmoSettings.fogHparams.x ) * atmoSettings.fogHparams.y );
+				const midf3 fogHclr = lerp( lerp(finalColour.xyz, atmoSettings.fogHcolor.xyz, atmoSettings.fogHcolor.w), finalColour.xyz, fogHWeight );
+				finalColour.xyz = lerp( fogHclr, finalColour.xyz, heightMul );
+				//finalColour.xyz = lerp( atmoSettings.fogHcolor.xyz, finalColour.xyz, saturate(-atmoSettings.cameraDisplacement.y * 0.0001) );
 			@end
 	@end ///!hlms_prepass
 

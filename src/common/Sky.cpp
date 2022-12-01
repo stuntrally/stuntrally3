@@ -125,6 +125,8 @@ void CScene::UpdFog()
 	Atmosphere2Npr::Preset p = atmo->getPreset();
 	p.fogDensity = 2000.f / sc->fogEnd * 0.0004f;  //** par
 	p.fogHcolor = sc->fogClrH.GetRGBA();
+	p.fogHparams = Vector4(sc->fogHeight - sc->fogHDensity,
+		1.f/sc->fogHDensity, 2000.f / sc->fogHEnd * 0.0004f, 0);
 
 	p.densityCoeff = 0.27f;  //0.47f;
 	p.densityDiffusion = 0.75f;  //2.0f;
