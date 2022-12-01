@@ -27,19 +27,19 @@ midf3 pow3( midf3 v, midf e )
 
 // @piece( DoAtmosphereNprSky )
 // clang-format off
-#define p_densityCoeff			midf_c( atmoSettings.densityCoeff )
-#define p_lightDensity			midf_c( atmoSettings.lightDensity )
-#define p_sunHeight				midf_c( atmoSettings.sunHeight )
-#define p_sunHeightWeight		midf_c( atmoSettings.sunHeightWeight )
+#define p_densityCoeff			midf_c(  atmoSettings.densityCoeff )
+#define p_lightDensity			midf_c(  atmoSettings.lightDensity )
+#define p_sunHeight				midf_c(  atmoSettings.sunHeight )
+#define p_sunHeightWeight		midf_c(  atmoSettings.sunHeightWeight )
 #define p_skyLightAbsorption	midf3_c( atmoSettings.skyLightAbsorption.xyz )
 #define p_sunAbsorption			midf3_c( atmoSettings.sunAbsorption.xyz )
 #define p_cameraDisplacement	midf3_c( atmoSettings.cameraDisplacement.xyz )
 #define p_mieAbsorption			midf3_c( atmoSettings.packedParams1.xyz )
-#define p_finalMultiplier		midf_c( atmoSettings.packedParams1.w )
+#define p_finalMultiplier		midf_c(  atmoSettings.packedParams1.w )
 #define p_sunDir				midf3_c( atmoSettings.packedParams2.xyz )
-#define p_borderLimit			midf_c( atmoSettings.packedParams2.w )
+#define p_borderLimit			midf_c(  atmoSettings.packedParams2.w )
 #define p_skyColour				midf3_c( atmoSettings.packedParams3.xyz )
-#define p_densityDiffusion		midf_c( atmoSettings.packedParams3.w )
+#define p_densityDiffusion		midf_c(  atmoSettings.packedParams3.w )
 // clang-format on
 
 const float3 cameraPos = float3( atmoSettings.skyLightAbsorption.w, atmoSettings.sunAbsorption.w,

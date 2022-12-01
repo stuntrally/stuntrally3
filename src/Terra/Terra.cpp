@@ -437,6 +437,7 @@ namespace Ogre
 	Set3("Nfreq", Nfreq);  Set3("Noct", Noct);  Set3("Npers", Npers);  Set3("Npow", Npow);
 	Set2("Nfreq2", Nfreq2);  Set2("Noct2", Noct2);  Set2("Npers2", Npers2);  Set2("Npow2", Npow2);
 	Set1("terrainWorldSize", sc->td.fTerWorldSize);
+		//  blendmap params  ~~~~
 
 
 		Camera *dummyCamera = mManager->createCamera( "TerraDummyCamera2" );

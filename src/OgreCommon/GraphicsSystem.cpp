@@ -43,9 +43,7 @@
 #include "System/Android/AndroidSystems.h"
 
 #include "OgreAtmosphereComponent.h"
-#ifdef OGRE_BUILD_COMPONENT_ATMOSPHERE
-#    include "OgreAtmosphereNpr.h"
-#endif
+#include "OgreAtmosphere2Npr.h"
 
 #include <fstream>
 
@@ -928,11 +926,11 @@ namespace Demo
 			OGRE_DELETE atmosphere;
 		}
 
-		Ogre::AtmosphereNpr *atmosphere =
-			OGRE_NEW Ogre::AtmosphereNpr( mRoot->getRenderSystem()->getVaoManager() );
+		Ogre::Atmosphere2Npr *atmosphere =
+			OGRE_NEW Ogre::Atmosphere2Npr( mRoot->getRenderSystem()->getVaoManager() );
 		{
 			// Preserve the Power Scale explicitly set by the sample
-			Ogre::AtmosphereNpr::Preset preset = atmosphere->getPreset();
+			Ogre::Atmosphere2Npr::Preset preset = atmosphere->getPreset();
 			preset.linkedLightPower = sunLight->getPowerScale();
 			atmosphere->setPreset( preset );
 		}

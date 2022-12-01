@@ -31,7 +31,7 @@
 
 // #include "TerrainGame.h"
 #include "OgreAtmosphereComponent.h"
-#include "OgreAtmosphereNpr.h"
+#include "OgreAtmosphere2Npr.h"
 using namespace Ogre;
 
 
@@ -97,14 +97,14 @@ void CScene::CreateFog()
 
 if (1)
 {
-	atmo = OGRE_NEW AtmosphereNpr( app->mRoot->getRenderSystem()->getVaoManager() );
+	atmo = OGRE_NEW Atmosphere2Npr( app->mRoot->getRenderSystem()->getVaoManager() );
 
 	atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
 	atmo->setLight( sun );
 	atmo->setSky( mgr, true );
 	
-	OGRE_ASSERT_HIGH( dynamic_cast<AtmosphereNpr*>( mgr->getAtmosphere() ) );
-	atmo = static_cast<AtmosphereNpr*>( mgr->getAtmosphere() );
+	OGRE_ASSERT_HIGH( dynamic_cast<Atmosphere2Npr*>( mgr->getAtmosphere() ) );
+	atmo = static_cast<Atmosphere2Npr*>( mgr->getAtmosphere() );
 }
 	UpdFog();
 }	
@@ -122,8 +122,10 @@ void CScene::DestroyFog()
 void CScene::UpdFog()
 {
 	if (!atmo || !sun)  return;
-	AtmosphereNpr::Preset p = atmo->getPreset();
+	Atmosphere2Npr::Preset p = atmo->getPreset();
 	p.fogDensity = 2000.f / sc->fogEnd * 0.0004f;  //** par
+	p.fogHcolor = sc->fogClrH.GetRGBA();
+
 	p.densityCoeff = 0.27f;  //0.47f;
 	p.densityDiffusion = 0.75f;  //2.0f;
 	p.horizonLimit = 0.025f;

@@ -13,9 +13,7 @@
 #include "OgreHlmsPbs.h"
 #include "OgreHlmsManager.h"
 
-#ifdef OGRE_BUILD_COMPONENT_ATMOSPHERE
-#    include "OgreAtmosphereNpr.h"
-#endif
+// #include "OgreAtmosphere2Npr.h"
 #include "Compositor/OgreCompositorManager2.h"
 #include "Compositor/OgreCompositorNodeDef.h"
 #include "Compositor/OgreCompositorWorkspaceDef.h"

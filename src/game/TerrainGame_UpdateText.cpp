@@ -13,9 +13,7 @@
 #include "OgreTextureGpuManager.h"
 #include "Vao/OgreVaoManager.h"
 
-#ifdef OGRE_BUILD_COMPONENT_ATMOSPHERE
-#    include "OgreAtmosphereNpr.h"
-#endif
+#include "OgreAtmosphere2Npr.h"
 
 #include "game.h"  // snd
 #include "SoundMgr.h"
@@ -123,12 +121,13 @@ namespace Demo
 			txt += "\n^ v Param  " + fToStr( param, 0 );
 			
 			SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
-			AtmosphereNpr *atmosphere = static_cast<AtmosphereNpr*>( sceneManager->getAtmosphere() );
-			AtmosphereNpr::Preset p = atmosphere->getPreset();
+			Atmosphere2Npr *atmo = static_cast<Atmosphere2Npr*>( sceneManager->getAtmosphere() );
+			Atmosphere2Npr::Preset p = atmo->getPreset();
 			
 			txt += "\n< > ";  const int d = 3;
 			switch (param)
 			{
+			// p.fogHcolor.xyz
 			case 0:   txt += "Fog  " + fToStr( p.fogDensity, 5 );  break;
 			case 1:   txt += "density coeff  " + fToStr( p.densityCoeff, d );  break;
 			case 2:   txt += "density diffusion  " + fToStr( p.densityDiffusion, d );  break;
@@ -172,8 +171,8 @@ namespace Demo
 			{
 				auto pos = car->dynamics.GetPosition();
 				// txt += "pos  " + fToStr(pos[0],2) + "  " + fToStr(pos[1],2) + "  " + fToStr(pos[2],2) +"\n";
-				txt += "gear  " + iToStr(car->GetGear()) + "  rpm  " + iToStr(car->GetEngineRPM(),4)
-					+ "  km/h " + fToStr(car->GetSpeedometer()*3.6f, 0) +"\n";
+				txt += "\ngear  " + iToStr(car->GetGear()) + "\nrpm  " + iToStr(car->GetEngineRPM(),4)
+					+ "\nkm/h " + fToStr(car->GetSpeedometer()*3.6f, 0) +"\n";
 			}
 			/*for (const auto* cm : pApp->carModels)
 			{

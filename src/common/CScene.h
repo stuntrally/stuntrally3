@@ -6,7 +6,7 @@
 #include <OgreString.h>
 // #include <OgreTexture.h>
 
-namespace Ogre  {  class Terra;  class AtmosphereNpr;
+namespace Ogre  {  class Terra;  class Atmosphere2Npr;
 	class Light;  class SceneNode;  class Camera;  class SceneManager;
 	class Viewport;  class Root;  class ParticleSystem;  }
 class App;  class Scene;  class WaterRTT;  class CData;  class SplineRoad;  class PaceNotes;  class Grass;
@@ -49,7 +49,7 @@ public:
 	void CreateSun(), DestroySun(), UpdSun();
 
 	//  Fog / Atmo
-	Ogre::AtmosphereNpr* atmo = 0;
+	Ogre::Atmosphere2Npr* atmo = 0;
 	void CreateFog(), DestroyFog(), UpdFog(/*bool bForce=false*/);
 	
 	//  Weather :  rain, snow

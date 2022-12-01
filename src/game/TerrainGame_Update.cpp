@@ -15,9 +15,7 @@
 #include "OgreHlmsManager.h"
 #include "OgreGpuProgramManager.h"
 
-#ifdef OGRE_BUILD_COMPONENT_ATMOSPHERE
-#    include "OgreAtmosphereNpr.h"
-#endif
+#include "OgreAtmosphere2Npr.h"
 
 #include "game.h"  // snd
 #include "SoundMgr.h"
@@ -145,15 +143,16 @@ namespace Demo
 		if (d && pApp->scn->atmo)
 		{
 			SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
-			AtmosphereNpr *atmo = static_cast<AtmosphereNpr*>( sceneManager->getAtmosphere() );
+			Atmosphere2Npr *atmo = static_cast<Atmosphere2Npr*>( sceneManager->getAtmosphere() );
 			if (atmo)
 			{
-			AtmosphereNpr::Preset p = atmo->getPreset();
+			Atmosphere2Npr::Preset p = atmo->getPreset();
 
 			float mul1 = 1.f + 0.01f * mul * d;  //par
 			switch (param)
 			{
 			// mCamera->setLodBias(0.1);  //** todo: par
+			// p.fogHcolor.xyz
 			case 0:  p.fogDensity *= mul1;  break;
 			case 1:  p.densityCoeff *= mul1;  break;
 			case 2:  p.densityDiffusion *= mul1;  break;

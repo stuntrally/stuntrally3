@@ -62,6 +62,8 @@ namespace Ogre
         float fogBreakMinBrightness;
         float fogBreakFalloff;
         float padding;
+        
+        float4 fogHcolor;
     };
 
     Atmosphere2Npr::Atmosphere2Npr( VaoManager *vaoManager ) :
@@ -440,6 +442,8 @@ namespace Ogre
         atmoSettingsGpu.fogBreakMinBrightness = mPreset.fogBreakMinBrightness * mPreset.fogBreakFalloff;
         atmoSettingsGpu.fogBreakFalloff = -mPreset.fogBreakFalloff;
 
+        atmoSettingsGpu.fogHcolor = mPreset.fogHcolor;
+
         mHlmsBuffer->upload( &atmoSettingsGpu, 0u, sizeof( atmoSettingsGpu ) );
     }
     
@@ -579,6 +583,7 @@ namespace Ogre
         LERP_VALUE( linkedSceneAmbientUpperPower );
         LERP_VALUE( linkedSceneAmbientLowerPower );
         LERP_VALUE( envmapScale );
+        //fogHcolor?
         #undef LERP_VALUE
     }
 

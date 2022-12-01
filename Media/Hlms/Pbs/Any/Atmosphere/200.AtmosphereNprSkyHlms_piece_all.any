@@ -23,6 +23,8 @@
 		float fogBreakMinBrightness;
 		float fogBreakFalloff;
 		float padding0;
+		
+		float4 fogHcolor;
 	};
 
 	@property( syntax != metal )
