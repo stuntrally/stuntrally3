@@ -173,7 +173,7 @@ namespace Demo
 		LogO("---- Terra load");
 
 		//  Heightmap  ------------------------------------------------
-		sizeXZ = sc->td.fTriangleSize * (sc->td.iVertsX-1);  //sc->td.fTerWorldSize;
+		Real sizeXZ = sc->td.fTriangleSize * (sc->td.iVertsX-1);  //sc->td.fTerWorldSize;
 		float ofs = sc->td.fTriangleSize;  // ofs fix, 1025 to 1024 verts etc
 		LogO("Ter size: " + toStr(sc->td.iVertsX));// +" "+ toStr((sc->td.iVertsX)*sizeof(float))
 

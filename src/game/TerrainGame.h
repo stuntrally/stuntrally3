@@ -13,6 +13,8 @@ namespace Ogre
 {
 	class Terra;
 	class HlmsPbsTerraShadows;
+	class TextureGpu;
+	class HlmsDatablock;
 }
 
 namespace Demo
@@ -91,12 +93,23 @@ namespace Demo
 
 
 		//  terrain  ----
-		Ogre::Real sizeXZ = 1000.f;
 	public:		
 		void CreateTerrain(), DestroyTerrain();
 	protected:
 		Ogre::String mtrName;
 		Ogre::SceneNode *nodeTerrain = 0;
 
+
+		//  util
+		template <typename T, size_t MaxNumTextures>
+		void unloadTexturesFromUnusedMaterials( Ogre::HlmsDatablock *datablock,
+												std::set<Ogre::TextureGpu *> &usedTex,
+												std::set<Ogre::TextureGpu *> &unusedTex );
+    	void unloadTexturesFromUnusedMaterials();
+	    void unloadUnusedTextures();
+	public:
+	    void minimizeMemory();
+    	// void setTightMemoryBudget();
+	    // void setRelaxedMemoryBudget();
 	};
 }

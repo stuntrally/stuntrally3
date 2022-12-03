@@ -3,7 +3,7 @@
 #include "settings_com.h"
 
 
-#define SET_VER  2700  // 2.7
+#define SET_VER  3001  // 3.0
 
 
 enum eGraphType  {

@@ -1,4 +1,3 @@
-#include "OgreImage2.h"
 #include "pch.h"
 #include "Road.h"
 #include "Def_Str.h"
@@ -33,6 +32,10 @@
 #include <OgreSceneManager.h>
 #include <OgreParticleSystem.h>
 #include <OgreResourceGroupManager.h>
+#include <OgreImage2.h>
+#include <OgreMaterial.h>
+#include <OgreMaterialManager.h>
+#include "OgreTextureGpuManager.h"
 
 // using namespace MyGUI;
 using namespace Ogre;
@@ -311,6 +314,7 @@ void App::LoadCleanUp()  // 1 first
 	if (dstTrk)
 	{	// destroy all scenenodes
 		mSceneMgr->getRootSceneNode()->removeAndDestroyAllChildren();
+		// MaterialManager::getSingleton().destroyAllResourcePools();
 		// mSceneMgr->destroyAllManualObjects();
 		// mSceneMgr->destroyAllEntities();
 		// mSceneMgr->destroyAllStaticGeometry();
@@ -325,6 +329,10 @@ void App::LoadCleanUp()  // 1 first
 	sh::Factory::getInstance().unloadUnreferencedMaterials();
 	Ogre::TextureManager::getSingleton().unloadUnreferencedResources();
 	LogO("------  # Unload prev track res done");*/
+	// MeshManager::getSingleton().unloadUnreferencedResources();
+	// sh::Factory::getInstance().unloadUnreferencedMaterials();
+	// TextureGpuManager::getEntries() Singleton().unloadUnreferencedResources();
+	mainApp->minimizeMemory();
 }
 
 

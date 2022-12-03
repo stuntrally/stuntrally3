@@ -1,34 +1,12 @@
 #include "TerrainGame.h"
-#include "CameraController.h"
 #include "GraphicsSystem.h"
-#include "SDL_scancode.h"
 #include "OgreLogManager.h"
-
-#include "OgreSceneManager.h"
-#include "OgreRoot.h"
 #include "OgreCamera.h"
-#include "OgreWindow.h"
-#include "OgreFrameStats.h"
-
-#include "Terra/Terra.h"
-#include "OgreItem.h"
-#include "OgreHlms.h"
-#include "OgreHlmsPbs.h"
-#include "OgreHlmsManager.h"
-#include "OgreGpuProgramManager.h"
-#include "OgreTextureGpuManager.h"
-#include "OgrePixelFormatGpuUtils.h"
-#include "mathvector.h"
-#include "quaternion.h"
-
-//#include "OgreAtmosphere2Npr.h"
 
 //  SR
-#include "pathmanager.h"
 #include "settings.h"
 #include "CGame.h"
 #include "game.h"
-#include "CarModel.h"
 #include "CScene.h"
 #include "CData.h"
 #include "TracksXml.h"
@@ -149,8 +127,7 @@ namespace Demo
 		LogManager::getSingleton().setLogDetail(LoggingLevel::LL_BOREME);
 
 		LogO("---- createScene");
-		Root *root = mGraphicsSystem->getRoot();
-		RenderSystem *renderSystem = root->getRenderSystem();
+		RenderSystem *renderSystem = mGraphicsSystem->getRoot()->getRenderSystem();
 		renderSystem->setMetricsRecordingEnabled( true );
 
 

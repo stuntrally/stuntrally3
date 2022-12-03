@@ -1,5 +1,5 @@
-#include "pathmanager.h"
 #include "pch.h"
+#include "pathmanager.h"
 #include "CScene.h"
 #include "data/CData.h"
 #include "data/SceneXml.h"
@@ -83,7 +83,7 @@ void CScene::destroyScene()
 void CScene::SetTexWrap(Ogre::Item* it, bool wrap)
 {
 	//  wrap tex  ----
-	static HlmsSamplerblock sampler;
+	HlmsSamplerblock sampler;
 	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
 	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
 	sampler.mMaxAnisotropy = app->pSet->anisotropy;
