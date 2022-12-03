@@ -27,7 +27,7 @@ THE SOFTWARE.
 */
 
 #include "GraphicsSystem.h"
-#include "TerrainGame.h"
+#include "Game.h"
 
 #include "OgreRoot.h"
 #include "Compositor/OgreCompositorManager2.h"

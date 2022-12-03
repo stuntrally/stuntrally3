@@ -1,5 +1,5 @@
 #include "OgreVector3.h"
-#include "TerrainGame.h"
+#include "Game.h"
 #include "CameraController.h"
 #include "GraphicsSystem.h"
 #include "SDL_scancode.h"

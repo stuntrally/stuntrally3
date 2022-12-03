@@ -1,4 +1,4 @@
-#include "TerrainGame.h"
+#include "Game.h"
 #include "OgrePrerequisites.h"
 #include "OgreVector4.h"
 #include "CameraController.h"
@@ -90,16 +90,14 @@ namespace Demo
 		sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
 		TextureGpuManager *texMgr = root->getRenderSystem()->getTextureGpuManager();
 
-		//  blendmap ..  // todo: dynamic, shader
-	#if 1
-		auto tex = texMgr->createOrRetrieveTexture( //"blendmap.png",
-			"HeightmapBlendmap.png",
-			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
-		tblock->setTexture( TERRA_DETAIL_WEIGHT, tex );
-	#endif
 
-		tblock->setBrdf(TerraBrdf::BlinnPhongLegacyMath);  //** no fresnel-
-		//? tblock->setFresnel();
+		tblock->setBrdf(TerraBrdf::BlinnPhongLegacyMath);
+		// tblock->setBrdf(TerraBrdf::BlinnPhongSeparateDiffuseFresnel);  //** no fresnel-?
+		// tblock->setBrdf(TerraBrdf::CookTorranceSeparateDiffuseFresnel);  //** no fresnel-?
+		// tblock->setBrdf(TerraBrdf::CookTorrance);
+		// tblock->setBrdf(TerraBrdf::DefaultUncorrelated);
+		// tblock->setBrdf(TerraBrdf::DefaultSeparateDiffuseFresnel);
+		// tblock->setFresnel();
 		// tblock->setDiffuse(Vector3(1,0,0));
 
 		///  Layer Textures  ----

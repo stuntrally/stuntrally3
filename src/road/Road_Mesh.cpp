@@ -11,7 +11,7 @@
 #include "CGame.h"
 #include "CScene.h"
 #include "game.h"
-#include "TerrainGame.h"
+#include "Game.h"
 #include "GraphicsSystem.h"
 
 #include <OgreException.h>

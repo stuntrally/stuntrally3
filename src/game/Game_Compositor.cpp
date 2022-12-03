@@ -1,4 +1,4 @@
-#include "TerrainGame.h"
+#include "Game.h"
 #include "CameraController.h"
 #include "GraphicsSystem.h"
 #include "OgreLogManager.h"

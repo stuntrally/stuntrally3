@@ -10,7 +10,7 @@
 // #include "SplineBase.h"
 #include "OgreCommon.h"
 #include "OgreVector3.h"
-#include "TerrainGame.h"
+#include "Game.h"
 #include "Grass.h"
 
 // #include "GuiCom.h"

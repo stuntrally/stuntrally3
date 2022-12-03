@@ -29,7 +29,7 @@
 #include <OgreHlmsUnlitDatablock.h>
 #include <OgreHlmsPbsPrerequisites.h>
 
-// #include "TerrainGame.h"
+// #include "Game.h"
 #include "OgreAtmosphereComponent.h"
 #include "OgreAtmosphere2Npr.h"
 using namespace Ogre;

@@ -8,7 +8,7 @@
 // #include "PaceNotes.h"
 #include "Grass.h"
 #include "CGame.h"
-#include "TerrainGame.h"
+#include "Game.h"
 
 #include <OgreItem.h>
 #include <OgreHlmsPbsPrerequisites.h>

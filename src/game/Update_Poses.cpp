@@ -19,7 +19,7 @@
 // #include "SplitScreen.h"
 #include "settings.h"
 #include "CarModel.h"
-#include "TerrainGame.h"
+#include "Game.h"
 #include <Ogre.h>
 // #include <OgreCamera.h>
 // #include <OgreQuaternion.h>

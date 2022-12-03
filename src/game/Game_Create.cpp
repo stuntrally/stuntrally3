@@ -1,4 +1,4 @@
-#include "TerrainGame.h"
+#include "Game.h"
 #include "GraphicsSystem.h"
 #include "OgreLogManager.h"
 #include "OgreCamera.h"
@@ -192,7 +192,7 @@ clr:
 3B uv  ES n  OT TW wh-  U8 O gls-
 
 	low fps
-167 Taiga
+167 Taiga  grass trees
 191 SandyMountain
 	border 60fps
 128 Beauty
