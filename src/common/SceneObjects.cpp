@@ -25,7 +25,7 @@
 #include <BulletFileLoader/btBulletFile.h>
 #include <BulletWorldImporter/btBulletWorldImporter.h>
 
-#include <OgreManualObject.h>
+// #include <OgreManualObject.h>
 #include <OgreMeshManager.h>
 #include <OgreMaterialManager.h>
 #include <OgreItem.h>

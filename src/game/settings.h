@@ -49,18 +49,17 @@ public:
 	// int difficulty =0;
 
 	//  show
-	bool //show_gauges, show_digits,
-		//trackmap, mini_zoomed, mini_rotated, mini_terrain, mini_border,
-		// check_beam, check_arrow,
-		// show_times, //show_opponents, opplist_sort,
-		//show_cam,
-		cam_tilt;
-		// car_dbgbars, car_dbgtxt, car_dbgsurf,
-		// car_tirevis, show_graphs,
-		// ch_all =0;  // show all champs/challs
+	bool show_gauges, show_digits,
+		trackmap, mini_zoomed, mini_rotated, mini_terrain, mini_border,
+		check_beam, check_arrow,
+		show_times, show_opponents, opplist_sort,
+		show_cam, cam_tilt,
+		car_dbgbars, car_dbgtxt, car_dbgsurf,
+		car_tirevis, show_graphs,
+		ch_all =0;  // show all champs/challs
 
-	// float size_gauges, size_minimap, size_minipos, size_arrow, zoom_minimap;
-	// int gauges_type, gauges_layout;
+	float size_gauges, size_minimap, size_minipos, size_arrow, zoom_minimap;
+	int gauges_type, gauges_layout;
 	//  cam
 	// float fov_min, fov_boost, fov_smooth;
 	bool cam_loop_chng;  int cam_in_loop;
@@ -150,7 +149,7 @@ public:
 
 	//  sim freq (1/interval timestep)
 	float game_fq, blt_fq;//,  perf_speed;
-	int blt_iter, dyn_iter,  /*multi_thr,*/ thread_sleep;//, gui_sleep;
+	int blt_iter, dyn_iter,  thread_sleep;//, gui_sleep;
 
 	//  graphs vis
 	float tc_r, tc_xr;  // tire circles max

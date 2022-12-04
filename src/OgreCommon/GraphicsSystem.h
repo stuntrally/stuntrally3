@@ -40,11 +40,11 @@ namespace Demo
 		SdlInputHandler     *mInputHandler;
 	#endif
 
-		Ogre::Root                  *mRoot;
 		Ogre::Window                *mRenderWindow;
 		Ogre::SceneManager          *mSceneManager;
 		Ogre::Camera                *mCamera;
 	public:
+		Ogre::Root                  *mRoot;
 		Ogre::CompositorWorkspace   *mWorkspace;
 		Ogre::HlmsTerra *hlmsTerra = 0;
 	protected:

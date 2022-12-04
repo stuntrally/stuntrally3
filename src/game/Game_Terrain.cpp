@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Game.h"
 #include "OgrePrerequisites.h"
 #include "OgreVector4.h"

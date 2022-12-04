@@ -1,7 +1,7 @@
 DebugFont
 {
 	type 		truetype
-	source 		Inconsolata-Bold.ttf
+	source 		VeraMono.ttf
 	size 		15
 	resolution 	192
 }

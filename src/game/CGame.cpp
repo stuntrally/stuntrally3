@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CGame.h"
-// #include "CHud.h"
+#include "CHud.h"
 // #include "CGui.h"
 #include "Def_Str.h"
 // #include "RenderConst.h"
@@ -62,7 +62,7 @@ App::App(SETTINGS *settings, GAME *game)
 	///  new
 	scn = new CScene(this);
 	data = scn->data;
-	// hud = new CHud(this);
+	hud = new CHud(this);
 
 	// gcom = new CGuiCom(this);
 	// gui = new CGui(this);
@@ -98,7 +98,7 @@ App::~App()
 	// delete gui;
 	delete scn;
 
-	// delete hud;
+	delete hud;
 	// delete input;
 }
 

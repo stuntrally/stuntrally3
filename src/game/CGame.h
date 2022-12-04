@@ -38,6 +38,10 @@ public:
 
 	/// temp new
 	float inputs[14] = {0,0,0,0};
+
+
+	bool bSizeHUD = true;
+	CHud* hud =0;
 	
 
 	//  BaseApp init

@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Game.h"
 #include "CameraController.h"
 #include "GraphicsSystem.h"
@@ -173,6 +174,7 @@ namespace Demo
 				// txt += "pos  " + fToStr(pos[0],2) + "  " + fToStr(pos[1],2) + "  " + fToStr(pos[2],2) +"\n";
 				txt += "\ngear  " + iToStr(car->GetGear()) + "\nrpm  " + iToStr(car->GetEngineRPM(),4)
 					+ "\nkm/h " + fToStr(car->GetSpeedometer()*3.6f, 0) +"\n";
+					// todo: + "trk  " + fToStr(pApp->carModels[0]->trackPercent, 0) + "%";
 			}
 			/*for (const auto* cm : pApp->carModels)
 			{

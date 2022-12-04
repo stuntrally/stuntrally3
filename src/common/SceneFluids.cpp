@@ -22,7 +22,7 @@
 #include <BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h>
 
 #include "OgreCommon.h"
-#include <OgreManualObject.h>
+// #include <OgreManualObject.h>
 #include <OgreMeshManager.h>
 #include <OgreMaterialManager.h>
 #include <OgreEntity.h>

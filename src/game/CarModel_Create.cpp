@@ -22,7 +22,7 @@
 #include <OgreItem.h>
 #include <OgreSceneNode.h>
 
-#include <OgreManualObject.h>
+// #include <OgreManualObject.h>
 #include <OgreSubMesh2.h>
 #include <OgreMesh2.h>
 

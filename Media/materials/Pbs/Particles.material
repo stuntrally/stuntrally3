@@ -75,7 +75,7 @@ hlms TireTrail unlit
 	scene_blend alpha_blend
 	depth_write off
 	depth_bias 3
-	cull_hardware none
+	cull_mode none
 	// vertex_colour true  // 
 	diffuse_map trail.png
 	//alphaMap trail.png

@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Game.h"
 #include "GraphicsSystem.h"
 #include "OgreLogManager.h"

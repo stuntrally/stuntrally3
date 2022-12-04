@@ -1,3 +1,5 @@
+#include "pch.h"
+#include "CHud.h"
 #include "OgreVector3.h"
 #include "Game.h"
 #include "CameraController.h"
@@ -74,6 +76,17 @@ namespace Demo
 				// if (imgBack)
 				//     imgBack->setVisible(false);
 			}
+
+			//  HUD
+		#if 0  // todo: hud
+			if (pApp->bSizeHUD)
+			{	pApp->bSizeHUD = false;
+				
+				pApp->hud->Size();
+			}
+			pApp->hud->Update(0, dt);
+			pApp->hud->Update(-1, dt);
+		#endif
 		}
 	
 	
@@ -90,14 +103,11 @@ namespace Demo
 			pApp->inputs[A_PrevCamera] = mArrows[9];
 			pApp->inputs[A_Rewind] = mArrows[10];
 
-
 			//  multi thread
 			// if (pSet->multi_thr == 1 && pGame && !bLoading)
 			{
 				pApp->updatePoses(dt);
 			}
-
-
 		}
 
 
@@ -287,7 +297,7 @@ namespace Demo
 				cm->iWonPlace = 0;  cm->iWonPlaceOld = 0;
 				cm->iWonMsgTime = 0.f;
 			}
-			// pGame->timer.Reset(-1);
+			pGame->timer.Reset(-1);
 			// pGame->timer.pretime = mClient ? 2.0f : pSet->game.pre_time;  // same for all multi players
 
 			// carIdWin = 1;  //

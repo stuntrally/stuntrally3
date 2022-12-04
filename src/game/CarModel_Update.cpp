@@ -12,12 +12,12 @@
 // #include "SplitScreen.h"
 #include "FollowCamera.h"
 // #include "CarReflection.h"
-// #include "Road.h"
+#include "Road.h"
 
 #include <OgreRoot.h>
 #include <OgreEntity.h>
 #include <OgreItem.h>
-#include <OgreManualObject.h>
+// #include <OgreManualObject2.h>
 #include <OgreMaterialManager.h>
 #include <OgreParticleSystem.h>
 #include <OgreParticleEmitter.h>
@@ -86,7 +86,7 @@ void CarModel::ShowNextChk(bool visible)
 
 void CarModel::ResetChecks(bool bDist)  // needs to be done after road load!
 {
-	/*updTimes = true;
+	updTimes = true;
 	iCurChk = -1;  iNumChks = 0;  // reset lap, chk vars
 	iLoopChk = -1;  iLoopLastCam = -1;
 	trackPercent = 0.f;
@@ -97,8 +97,8 @@ void CarModel::ResetChecks(bool bDist)  // needs to be done after road load!
 	UpdNextCheck();
 
 	//LogO("ResetChecks");
-	// SplineRoad* trail = pApp->scn->trail;
-	// if (trail)  // +
+	SplineRoad* trail = pApp->scn->trail;
+	if (trail)  // +
 		trail->trailSegId = 0;
 
 	//  percent const  ------
@@ -110,14 +110,13 @@ void CarModel::ResetChecks(bool bDist)  // needs to be done after road load!
 		Vector3 vLast  = lastC - vStartPos;   distLast = vLast.length();
 		distTotal = distFirst + distLast + road->chksRoadLen;
 		//LogO("Chk first: "+toStr(distFirst)+" last: "+toStr(distLast)+" total: "+toStr(distTotal));
-	}*/
+	}
 }
 
 //  get track driven dist part in %
 //--------------------------------------------------------------------------------------------------------
 void CarModel::UpdTrackPercent()
 {
-#if 0
 	if (!pApp || !pApp->scn->road)  return;
 	const SplineRoad* road = pApp->scn->road;
 	
@@ -173,7 +172,6 @@ void CarModel::UpdTrackPercent()
 		if (perc > trackPercent)
 			trackPercent = perc;
 	}
-#endif
 }
 
 

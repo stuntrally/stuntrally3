@@ -59,12 +59,12 @@ namespace Demo
 		mDebugText->setFontName( "DebugFont" );
 		mDebugText->setCharHeight( 0.022f );
 
-		mDebugTextShadow= static_cast<Ogre::v1::TextAreaOverlayElement*>(
+		mDebugTextShadow = static_cast<Ogre::v1::TextAreaOverlayElement*>(
 			overlayManager.createOverlayElement( "TextArea", "0DebugTextShadow" ) );
 		mDebugTextShadow->setFontName( "DebugFont" );
 		mDebugTextShadow->setCharHeight( 0.022f );
 		mDebugTextShadow->setColour( Ogre::ColourValue::Black );
-		mDebugTextShadow->setPosition( 0.002f, 0.002f );
+		mDebugTextShadow->setPosition( 0.001f, 0.001f );
 
 		panel->addChild( mDebugTextShadow );
 		panel->addChild( mDebugText );

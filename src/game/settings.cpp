@@ -82,28 +82,28 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 
 	//  hud
-	Param(c,w, "hud_show.mph", show_mph);/*
+	Param(c,w, "hud_show.mph", show_mph);
 	Param(c,w, "hud_show.gauges", show_gauges);			Param(c,w, "hud_show.show_digits", show_digits);
 	Param(c,w, "hud_show.trackmap", trackmap);			Param(c,w, "hud_show.times", show_times);
-	Param(c,w, "hud_show.caminfo", show_cam);			*/Param(c,w, "hud_show.cam_tilt", cam_tilt);/*
+	Param(c,w, "hud_show.caminfo", show_cam);			Param(c,w, "hud_show.cam_tilt", cam_tilt);
 	Param(c,w, "hud_show.car_dbgtxt", car_dbgtxt);		Param(c,w, "hud_show.show_cardbg", car_dbgbars);
 	Param(c,w, "hud_show.car_dbgsurf", car_dbgsurf);	Param(c,w, "hud_show.car_tirevis", car_tirevis);
 	Param(c,w, "hud_show.car_dbgtxtclr", car_dbgtxtclr); Param(c,w, "hud_show.car_dbgtxtcnt", car_dbgtxtcnt);
 	Param(c,w, "hud_show.check_arrow", check_arrow);	Param(c,w, "hud_show.check_beam", check_beam);
 	Param(c,w, "hud_show.opponents", show_opponents);	Param(c,w, "hud_show.opplist_sort", opplist_sort);
-	Param(c,w, "hud_show.graphs", show_graphs);			Param(c,w, "hud_show.graphs_type", (int&)graphs_type);*/
+	Param(c,w, "hud_show.graphs", show_graphs);			Param(c,w, "hud_show.graphs_type", (int&)graphs_type);
 	//  gui
 	// Param(c,w, "gui.cars_view", cars_view);			Param(c,w, "gui.cars_sort", cars_sort);
 	// Param(c,w, "gui.car_ed_tab", car_ed_tab);		Param(c,w, "gui.tweak_tab", tweak_tab);
 	// Param(c,w, "gui.champ_tab", champ_type);
 	// Param(c,w, "gui.chall_tab", chall_type);		Param(c,w, "gui.champ_info", champ_info);
 	//  hud size
-	/*Param(c,w, "hud_size.gauges", size_gauges);			Param(c,w, "hud_size.arrow", size_arrow);
+	Param(c,w, "hud_size.gauges", size_gauges);			Param(c,w, "hud_size.arrow", size_arrow);
 	Param(c,w, "hud_size.minimap", size_minimap);		Param(c,w, "hud_size.minipos", size_minipos);
 	Param(c,w, "hud_size.mini_zoom", zoom_minimap);		Param(c,w, "hud_size.mini_zoomed", mini_zoomed);
 	Param(c,w, "hud_size.mini_rotated", mini_rotated);	Param(c,w, "hud_size.mini_terrain", mini_terrain);
 	Param(c,w, "hud_size.mini_border", mini_border);
-	Param(c,w, "hud_size.gauges_type", gauges_type);	//Param(c,w, "hud_size.gauges_layout", gauges_layout);*/
+	Param(c,w, "hud_size.gauges_type", gauges_type);	//Param(c,w, "hud_size.gauges_layout", gauges_layout);
 	//  cam
 	Param(c,w, "hud_size.cam_loop_chng", cam_loop_chng); Param(c,w, "hud_size.cam_in_loop", cam_in_loop);
 	// Param(c,w, "hud_size.fov", fov_min);				Param(c,w, "hud_size.fov_boost", fov_boost);
@@ -184,17 +184,17 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 SETTINGS::SETTINGS()   ///  Defaults
 	:version(100)  // old
 	//  hud
-	// ,show_gauges(1), trackmap(1)
-	// ,show_cam(1)//, show_times(0), show_digits(1)
+	,show_gauges(1), trackmap(1)
+	,show_cam(1), show_times(0), show_digits(1)
 	// ,show_opponents(1), opplist_sort(true)
 	, cam_tilt(1)
-	// ,car_dbgtxt(0), car_dbgbars(0), car_dbgsurf(0), show_graphs(0)
-	// ,car_dbgtxtclr(0), car_dbgtxtcnt(0), car_tirevis(0), sounds_info(0)
+	,car_dbgtxt(0), car_dbgbars(0), car_dbgsurf(0), show_graphs(0)
+	,car_dbgtxtclr(0), car_dbgtxtcnt(0), car_tirevis(0), sounds_info(0)
 
-	// ,size_gauges(0.18), size_minimap(0.2), size_minipos(0.1), zoom_minimap(1.0)
-	// ,mini_zoomed(0), mini_rotated(1), mini_terrain(0), mini_border(1)
-	// ,check_arrow(0),size_arrow(0.2), check_beam(1)
-	// ,gauges_type(1),gauges_layout(1), graphs_type(Gh_Fps)
+	,size_gauges(0.18), size_minimap(0.2), size_minipos(0.1), zoom_minimap(1.0)
+	,mini_zoomed(0), mini_rotated(1), mini_terrain(0), mini_border(1)
+	,check_arrow(0),size_arrow(0.2), check_beam(1)
+	,gauges_type(1),gauges_layout(1), graphs_type(Gh_Fps)
 	//  cam
 	,cam_loop_chng(1), cam_in_loop(1)
 	// ,fov_min(90.f), fov_boost(5.f), fov_smooth(5.f)
@@ -237,7 +237,7 @@ SETTINGS::SETTINGS()   ///  Defaults
 	,ghoHideDist(5.f), ghoHideDistTrk(5.f)
 	//  sim
 	,game_fq(82.f), blt_fq(160.f), blt_iter(24), dyn_iter(30)
-	,/*multi_thr(1),*/ thread_sleep(5)//, gui_sleep(1), perf_speed(100000)
+	,thread_sleep(5)//, gui_sleep(1), perf_speed(100000)
 	//  graphs
 	,tc_r(6000.f), tc_xr(1.f)
 	,te_yf(8000.f), te_xf_pow(1.f), te_xfy(160.f), te_xfx(12.f)

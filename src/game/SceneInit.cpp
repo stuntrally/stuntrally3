@@ -15,7 +15,7 @@
 
 // #include "GuiCom.h"
 #include "CGame.h"
-// #include "CHud.h"
+#include "CHud.h"
 // #include "CGui.h"
 #include "game.h"
 // #include "PaceNotes.h"
@@ -252,7 +252,8 @@ void App::LoadCleanUp()  // 1 first
 		DestroyObjects(true);
 	}
 	
-	// DestroyGraphs();  hud->Destroy();
+	// DestroyGraphs();
+	hud->Destroy();
 	
 	//  hide hud arrow,beam,pace,trail
 	bool morePlr = false; //pSet->game.local_players > 1;
@@ -724,8 +725,9 @@ void App::LoadMisc()  // 9 last
 			pGame->timer.GetBestLap(0, rev), rev, 0);  // current
 	**/
 
-	// hud->Create();
-	// hud->Show(true);  // hide
+	// hud->Create();  // todo: hud
+	// hud->Show();
+	//- hud->Show(true);  // hide
 	
 	// Camera settings
 	for (auto car : carModels)
