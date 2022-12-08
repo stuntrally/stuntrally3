@@ -38,7 +38,9 @@ public:
 	void CreateAllAtmo(), DestroyAllAtmo();
 
 	//  Sky ~
-	Ogre::ManualObject* moSky = 0;
+	Ogre::String sMeshSky;
+	Ogre::Item* itSky = 0;
+	// Ogre::ManualObject* moSky = 0;
 	Ogre::SceneNode* ndSky = 0;
 	void CreateSkyDome(Ogre::String sMater, float yaw);
 	void DestroySkyDome(), UpdSky();

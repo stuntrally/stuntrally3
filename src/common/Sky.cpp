@@ -26,7 +26,7 @@
 #include <OgreMeshManager2.h>
 #include <OgreManualObject2.h>
 
-#include <OgreHlmsUnlitDatablock.h>
+#include <OgreHlmsPbsDatablock.h>
 #include <OgreHlmsPbsPrerequisites.h>
 
 // #include "Game.h"
@@ -150,7 +150,7 @@ void CScene::UpdFog()
 // void CScene::CreateSkyDome(String sMater, float sc, float yaw)
 void CScene::CreateSkyDome(String sMater, float yaw)
 {
-	if (moSky)  return;
+	if (itSky)  return;
 	LogO("---- create SkyDome");
 	Vector3 scale = 15000 * Vector3::UNIT_SCALE;
 	// Vector3 scale = pSet->view_distance * Vector3::UNIT_SCALE * 0.7f;
@@ -179,6 +179,7 @@ void CScene::CreateSkyDome(String sMater, float yaw)
 		{
 			Real x = cosf(a)*cb, z = sinf(a)*cb;
 			m->position(x,y,z);
+			m->normal(-x,0,-z);
 
 			m->textureCoord(a/A, b/B);
 
@@ -189,37 +190,42 @@ void CScene::CreateSkyDome(String sMater, float yaw)
 			}
 	}	}
 	m->end();
-	moSky = m;
 
-	Aabb aab(Vector3(0,0,0), Vector3(1,1,1)*1000000);
-	m->setLocalAabb(aab);  // always visible
-	m->setVisibilityFlags(RV_Sky);
-	//m->setRenderQueueGroup(230);  //?
-	m->setCastShadows(false);
+	sMeshSky = "skymesh";
+	MeshPtr mesh = m->convertToMesh(sMeshSky, "General", false);
 
-	ndSky = mgr->getRootSceneNode()->createChildSceneNode();
-	ndSky->attachObject(m);
+	itSky = app->mSceneMgr->createItem( mesh, SCENE_STATIC );
+	itSky->setCastShadows(false);
+	itSky->setVisibilityFlags(RV_Sky);
+	ndSky = app->mSceneMgr->getRootSceneNode( SCENE_STATIC )->createChildSceneNode( SCENE_STATIC );
+	ndSky->attachObject(itSky);
 	ndSky->setScale(scale);
 	Quaternion q;  q.FromAngleAxis(Degree(-yaw), Vector3::UNIT_Y);
 	ndSky->setOrientation(q);
 
-	//  change to wrap..
+	//  change to mirror
 	Root *root = app->mRoot;
-	Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_UNLIT );
-	HlmsUnlitDatablock *datablock = static_cast<HlmsUnlitDatablock*>(hlms->getDatablock(sMater));
-	HlmsSamplerblock sampler( *datablock->getSamplerblock( PBSM_DIFFUSE ) );  // copy
-	sampler.mU = TAM_MIRROR;  sampler.mV = TAM_MIRROR;  sampler.mW = TAM_MIRROR;
-	datablock->setSamplerblock( PBSM_DIFFUSE, sampler );
+	HlmsSamplerblock sampler;
+	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
+	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
+	sampler.mMaxAnisotropy = app->pSet->anisotropy;
+	auto w = TAM_MIRROR;
+	sampler.mU = w;  sampler.mV = w;  sampler.mW = w;
+
+	Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_PBS );
+	HlmsPbsDatablock *datablock = static_cast<HlmsPbsDatablock*>(hlms->getDatablock(sMater));
+	datablock->setSamplerblock( PBSM_EMISSIVE, sampler );
 }
 
 void CScene::DestroySkyDome()
 {
 	LogO("---- destroy SkyDome");
 	auto *mgr = app->mSceneMgr;
-	if (moSky)
-	{   mgr->destroyManualObject(moSky);  moSky = 0;  }
+	MeshManager::getSingleton().remove(sMeshSky);
 	if (ndSky)
 	{   mgr->destroySceneNode(ndSky);  ndSky = 0;  }
+	if (itSky)
+	{   mgr->destroyItem(itSky);  itSky = 0;  }
 }
 
 
