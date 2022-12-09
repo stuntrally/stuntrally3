@@ -24,7 +24,7 @@ include(Macros)
 include(FeatureSummary)
 
 
-project( TerrainDemo )
+project( StuntRally3 )
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
@@ -91,6 +91,10 @@ setupOgre( OGRE_SOURCE, OGRE_BINARIES, OGRE_LIBRARIES, FALSE, FALSE )
 ## Fix 2 sdl
 include_directories("/usr/include/SDL2")
 include_directories(${DIR_ONE_ABOVE}/Ogre/ogre-next-deps/build/ogredeps/include)  #for rapidjson
+
+# mygui
+include_directories(${DIR_ONE_ABOVE}/mygui-next/MyGUIEngine/include)
+include_directories(${DIR_ONE_ABOVE}/mygui-next/Platforms/Ogre2/Ogre2Platform/include)
 
 
 # Setup our application
@@ -163,6 +167,14 @@ target_compile_features( ${PROJECT_NAME} PRIVATE cxx_std_17)
 target_link_libraries( ${PROJECT_NAME} ${OGRE_LIBRARIES} )
 ## Fix 3 sdl
 target_link_libraries( ${PROJECT_NAME} "-lSDL2" )
+
+# mygui
+target_link_libraries(${PROJECT_NAME} ${DIR_ONE_ABOVE}/mygui-next/build/lib/libMyGUI.Ogre2Platform.a)
+
+add_library(libMyGUIEngine SHARED IMPORTED)
+set_target_properties(libMyGUIEngine PROPERTIES IMPORTED_LOCATION ${DIR_ONE_ABOVE}/mygui-next/build/lib/libMyGUIEngine.so)
+target_link_libraries(${PROJECT_NAME} libMyGUIEngine)
+
 
 message( STATUS "Libs: " ${LIBS} )
 target_link_libraries( ${PROJECT_NAME} ${LIBS} )

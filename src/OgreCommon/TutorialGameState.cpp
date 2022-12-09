@@ -18,6 +18,8 @@
 #include "OgreHlmsCompute.h"
 #include "OgreGpuProgramManager.h"
 
+#include <MyGUI_InputManager.h>
+
 using namespace Demo;
 
 namespace Demo
@@ -143,12 +145,40 @@ namespace Demo
 				GameState::keyReleased( arg );
 		}
 	}
+
+
+	//  input events
 	//-----------------------------------------------------------------------------------
+	MyGUI::MouseButton sdlButtonToMyGUI(Uint8 button)
+	{
+		//  The right button is the second button, according to MyGUI
+		if (button == SDL_BUTTON_RIGHT)  button = SDL_BUTTON_MIDDLE;
+		else if (button == SDL_BUTTON_MIDDLE)  button = SDL_BUTTON_RIGHT;
+		//  MyGUI's buttons are 0 indexed
+		return MyGUI::MouseButton::Enum(button - 1);
+	}
+
 	void TutorialGameState::mouseMoved( const SDL_Event &arg )
 	{
 		if( mCameraController )
 			mCameraController->mouseMoved( arg );
 
+	// if (bGuiFocus)
+		MyGUI::InputManager::getInstance().injectMouseMove(
+            arg.motion.x, arg.motion.y, arg.wheel.y);
+
 		GameState::mouseMoved( arg );
 	}
+
+    void TutorialGameState::mousePressed( const SDL_MouseButtonEvent &arg, Ogre::uint8 id )
+    {
+		MyGUI::InputManager::getInstance().injectMousePress(
+            arg.x, arg.y, sdlButtonToMyGUI(arg.button));
+    }
+    void TutorialGameState::mouseReleased( const SDL_MouseButtonEvent &arg, Ogre::uint8 id )
+    {
+		MyGUI::InputManager::getInstance().injectMouseRelease(
+            arg.x, arg.y, sdlButtonToMyGUI(arg.button));
+    }
+
 }

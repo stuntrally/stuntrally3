@@ -42,14 +42,16 @@ namespace Demo
 
 		void _notifyGraphicsSystem( GraphicsSystem *graphicsSystem );
 
-		virtual void createScene01();
+        void createScene01() override;
 
-		virtual void update( float timeSinceLast );
+        void update( float timeSinceLast ) override;
 
-		virtual void keyPressed( const SDL_KeyboardEvent &arg );
-		virtual void keyReleased( const SDL_KeyboardEvent &arg );
+        void keyPressed( const SDL_KeyboardEvent &arg ) override;
+        void keyReleased( const SDL_KeyboardEvent &arg ) override;
 
-		virtual void mouseMoved( const SDL_Event &arg );
+        void mouseMoved( const SDL_Event &arg ) override;
+        void mousePressed( const SDL_MouseButtonEvent &arg, Ogre::uint8 id ) override;
+        void mouseReleased( const SDL_MouseButtonEvent &arg, Ogre::uint8 id ) override;
 	};
 }
 

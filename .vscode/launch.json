@@ -9,14 +9,14 @@
 			"request": "launch",
 			"name": "Debug lldb",
 			"args": [],
-			"program": "${workspaceFolder}/bin/Debug/TerrainDemo",
+			"program": "${workspaceFolder}/bin/Debug/StuntRally3",
 			"cwd": "${workspaceFolder}/bin/Debug/"
 		},
 		{
 			"type": "gdb",
 			"request": "launch",
 			"name": "Debug gdb",
-			"target": "${workspaceFolder}/bin/Debug/TerrainDemo",
+			"target": "${workspaceFolder}/bin/Debug/StuntRally3",
 			"cwd": "${workspaceFolder}/bin/Debug/",
 			"valuesFormatting": "parseText"
 		}
