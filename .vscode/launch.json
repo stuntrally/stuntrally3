@@ -19,6 +19,22 @@
 			"target": "${workspaceFolder}/bin/Debug/StuntRally3",
 			"cwd": "${workspaceFolder}/bin/Debug/",
 			"valuesFormatting": "parseText"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "RelWithDebInfo lldb",
+			"args": [],
+			"program": "${workspaceFolder}/bin/RelWithDebInfo/StuntRally3",
+			"cwd": "${workspaceFolder}/bin/RelWithDebInfo/"
+		},
+		{
+			"type": "gdb",
+			"request": "launch",
+			"name": "RelWithDebInfo gdb",
+			"target": "${workspaceFolder}/bin/RelWithDebInfo/StuntRally3",
+			"cwd": "${workspaceFolder}/bin/RelWithDebInfo/",
+			"valuesFormatting": "parseText"
 		}
 	]
 }

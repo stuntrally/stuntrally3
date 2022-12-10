@@ -38,6 +38,7 @@ public:
 	Ogre::Root                  *mRoot;
 	Ogre::CompositorWorkspace   *mWorkspace;
 	Ogre::HlmsTerra *hlmsTerra = 0;
+	bool                        mGrabMouse;
 protected:
 	Ogre::String                mPluginsFolder;
 	Ogre::String                mWriteAccessFolder;

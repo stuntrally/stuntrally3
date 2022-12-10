@@ -60,7 +60,6 @@ set( EXECUTABLE_OUTPUT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}
 
 
 
-
 include( CMake/Bootstrap.cmake )
 include( CMake/Dependencies/OGRE.cmake )
 
@@ -115,6 +114,10 @@ endmacro()
 
 #  Compiler  ----
 include_directories(
+	Media/gui
+	Media/materials
+	Media/particles
+
 	src
 	src/btOgre2
 	src/oics
@@ -171,6 +174,7 @@ target_link_libraries( ${PROJECT_NAME} "-lSDL2" )
 
 
 #  MyGui
+# todo: windows ..
 target_link_libraries( ${PROJECT_NAME} ${DIR_ONE_ABOVE}/mygui-next/build/lib/libMyGUI.Ogre2Platform.a )
 
 add_library( libMyGUIEngine SHARED IMPORTED)

@@ -120,9 +120,12 @@ unsigned long renderThreadApp( Ogre::ThreadHandle *threadHandle )
 	#if OGRE_USE_SDL2
 	//Do this after creating the scene for easier the debugging (the mouse doesn't hide itself)
 	SdlInputHandler *inputHandler = graphicsSystem->getInputHandler();
-	inputHandler->setGrabMousePointer( true );
-	inputHandler->setMouseVisible( false );
-	inputHandler->setMouseRelative( true );
+	if (graphicsSystem->mGrabMouse)
+	{
+		inputHandler->setGrabMousePointer( true );
+		inputHandler->setMouseVisible( false );
+		inputHandler->setMouseRelative( true );
+	}
 	#endif
 
 	Ogre::Window *renderWindow = graphicsSystem->getRenderWindow();

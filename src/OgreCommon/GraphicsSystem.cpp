@@ -86,6 +86,7 @@ GraphicsSystem::GraphicsSystem( GameState *gameState,
 	mAlwaysAskForConfig( false ),
 	mUseHlmsDiskCache( true ),
 	mUseMicrocodeCache( true ),
+	mGrabMouse( false ),  //** par, true in release, from set..
 	mBackgroundColour( backgroundColour )
 {
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE
