@@ -468,23 +468,25 @@ void App::LoadGame()  // 2
 			carModels.push_back(c);
 		}
 	}
+#endif
 
 	///  track's ghost  . . .
 	///--------------------------------------------
 	ghtrk.Clear();  vTimeAtChks.clear();
-	bool deny = gui->pChall && !gui->pChall->trk_ghost;
-	if (!bRplPlay /*&& pSet->rpl_trackghost?*/ && !mClient && !pSet->game.track_user && !deny)
+	// bool deny = gui->pChall && !gui->pChall->trk_ghost;
+	if (!bRplPlay /*&& pSet->rpl_trackghost? && !mClient*/ && !pSet->game.track_user)// && !deny)
 	{
 		std::string sRev = pSet->game.trackreverse ? "_r" : "";
 		std::string file = PATHMANAGER::TrkGhosts()+"/"+ pSet->game.track + sRev + ".gho";
 		if (ghtrk.LoadFile(file))
 		{
-			CarModel* c = new CarModel(i, 5, CarModel::CT_TRACK, "ES", mSceneMgr, pSet, pGame, scn->sc, 0, this);
+		/*	CarModel* c = new CarModel(i, 5, CarModel::CT_TRACK, "ES", mSceneMgr, pSet, pGame, scn->sc, 0, this);
 			c->Load(-1, false);
 			c->pCar = (*carModels.begin())->pCar;  // based on 1st car
-			carModels.push_back(c);
+			carModels.push_back(c);*/
 	}	}
-	
+
+#if 0	
 	float pretime = mClient ? 2.0f : pSet->game.pre_time;  // same for all multi players
 	if (bRplPlay)  pretime = 0.f;
 	if (mClient)

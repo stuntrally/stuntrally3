@@ -227,8 +227,7 @@ void CHud::Create()
 		h.txTimTxt = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 2*120,2*260, Align::Left, "TimT"+s);
 		h.txTimTxt->setFontName("DigGear");  // hud.times");
-		h.txTimTxt->setFontHeight(55);
-		h.txTimTxt->setTextShadow(true);
+		h.txTimTxt->setFontHeight(55);  h.txTimTxt->setTextShadow(true);
 		h.txTimTxt->setInheritsAlpha(false);
 		/*h.txTimTxt->setCaption(  // fixme
 			(hasLaps ? String("#90D0C0")+TR("#{TBLap}") : "")+
@@ -242,20 +241,20 @@ void CHud::Create()
 			0,y, 2*230,2*260, Align::Left, "Tim"+s);
 		h.txTimes->setInheritsAlpha(false);
 		h.txTimes->setFontName("DigGear");  // hud.times");  // fixme
-		h.txTimes->setFontHeight(55);
-		h.txTimes->setTextShadow(true);
+		h.txTimes->setFontHeight(55);  h.txTimes->setTextShadow(true);
 
 
 		///  lap results  ----------------------
 		h.bckLap = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 2*320,2*210, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
 		h.bckLap->setColour(Colour(0.4,0.4,0.4));
-		h.bckLap->setAlpha(0.5f);
+		h.bckLap->setAlpha(0.2f);
 		h.bckLap->setImageTexture("back_times.png");
 
 		h.txLapTxt = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 2*120,2*300, Align::Left, "LapT"+s);
-		h.txLapTxt->setFontName("DigGear");  h.txLapTxt->setTextShadow(true);  // hud.times
+		h.txLapTxt->setFontName("DigGear");  // hud.times
+		h.txTimTxt->setFontHeight(55);  h.txLapTxt->setTextShadow(true);
 		h.txLapTxt->setInheritsAlpha(false);
 		/*h.txLapTxt->setCaption(//String("\n")+  // fixme
 			//(hasLaps ? String("#D0F8F0")+TR("#{TBLap}") : "")+
@@ -269,7 +268,8 @@ void CHud::Create()
 		h.txLap = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 2*230,2*320, Align::Left, "Lap"+s);
 		h.txLap->setInheritsAlpha(false);
-		h.txLap->setFontName("DigGear");  h.txLap->setTextShadow(true);  // hud.times
+		h.txLap->setFontName("DigGear");  // hud.times
+		h.txTimTxt->setFontHeight(55);  h.txLap->setTextShadow(true);
 		h.txLap->setVisible(false);
 
 

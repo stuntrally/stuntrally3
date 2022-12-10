@@ -399,7 +399,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 				"\n#80E080" + StrTime(time)+
 				"\n#D0D040" + (cur ? toStr( chkPlace )     : "--")+
 				"\n#F0A040" + (cur ? fToStr(chkPoints,1,3) : "--");
-		#if 0
+
 			float dlap = last - time;
 			h.sLap =
 				"#D0E8FF"+TR("#{TBLapResults}") +
@@ -411,7 +411,6 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 				"\n#F0A040" + (b ? fToStr(points,1,3) : "--");
 			if (h.txLap)
 				h.txLap->setCaption(h.sLap);
-		#endif
 		}
 		if (h.txTimes)
 			h.txTimes->setCaption(
@@ -430,7 +429,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			//}
 			float a = std::min(1.f, pCarM->fLapAlpha * 2.f);
 			bool hasRoad = app->scn->road && app->scn->road->getNumPoints() > 2;
-			bool vis = pSet->show_times && hasRoad && a > 0.f;
+			bool vis = false; //pSet->show_times && hasRoad && a > 0.f;
 			if (vis)
 			{	if (app->iLoad1stFrames == -2)  //bLoading)  //  fade out
 				{	pCarM->fLapAlpha -= !hasRoad ? 1.f : time * gPar.fadeLapResults;
