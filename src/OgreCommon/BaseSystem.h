@@ -1,35 +1,29 @@
-
-#ifndef _Demo_BaseSystem_H_
-#define _Demo_BaseSystem_H_
-
+#pragma once
 #include "Threading/MessageQueueSystem.h"
 
-namespace Demo
+class GameState;
+
+
+class BaseSystem : public Mq::MessageQueueSystem
 {
-	class GameState;
+protected:
+	GameState   *mCurrentGameState;
 
-	class BaseSystem : public Mq::MessageQueueSystem
-	{
-	protected:
-		GameState   *mCurrentGameState;
+public:
+	BaseSystem( GameState *gameState );
+	virtual ~BaseSystem();
 
-	public:
-		BaseSystem( GameState *gameState );
-		virtual ~BaseSystem();
+	virtual void initialize();
+	virtual void deinitialize();
 
-		virtual void initialize();
-		virtual void deinitialize();
+	virtual void createScene01();
+	virtual void createScene02();
 
-		virtual void createScene01();
-		virtual void createScene02();
+	virtual void destroyScene();
 
-		virtual void destroyScene();
-
-		void beginFrameParallel();
-		void update( float timeSinceLast );
-		void finishFrameParallel();
-		void finishFrame();
-	};
-}
-
-#endif
+	void beginFrameParallel();
+	void update( float timeSinceLast );
+	
+	void finishFrameParallel();
+	void finishFrame();
+};

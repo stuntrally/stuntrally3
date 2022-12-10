@@ -39,14 +39,13 @@ THE SOFTWARE.
 
 #include "System/MainEntryPoints.h"
 
-using namespace Demo;
 
 @implementation GameViewController
 {
-    Demo::GameState *_graphicsGameState;
-    Demo::GraphicsSystem *_graphicsSystem;
-    Demo::GameState *_logicGameState;
-    Demo::LogicSystem *_logicSystem;
+    GameState *_graphicsGameState;
+    GraphicsSystem *_graphicsSystem;
+    GameState *_logicGameState;
+    LogicSystem *_logicSystem;
     double _accumulator;
     CADisplayLink *_timer;
 

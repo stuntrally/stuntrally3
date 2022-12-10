@@ -18,7 +18,6 @@ namespace Ogre {  class SceneNode;  class SceneManager;  class TextureGpu;  clas
 namespace BtOgre  {  class DebugDrawer;  }
 class CScene;  class CData;  class CInput;  class GraphView;
 class GAME;  class CHud;  class CGui;  class CGuiCom;
-namespace Demo {  class TerrainGame;  }
 namespace MyGUI {  class Gui;  }
 
 
@@ -31,7 +30,7 @@ public:
 	
 	class SETTINGS* pSet =0;  //;  from BaseApp
 
-	Demo::TerrainGame* mainApp = 0;
+	class TerrainGame* mainApp = 0;
 	MyGUI::Gui* mGui = 0;
 
 	CScene* scn =0;

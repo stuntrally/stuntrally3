@@ -1,28 +1,21 @@
-
-#ifndef _Demo_GameState_H_
-#define _Demo_GameState_H_
-
+#pragma once
 #include "InputListeners.h"
 
-namespace Demo
+
+class GameState : public MouseListener, public KeyboardListener, public JoystickListener
 {
-	class GameState : public MouseListener, public KeyboardListener, public JoystickListener
-	{
-	public:
-		virtual ~GameState() {}
+public:
+	virtual ~GameState() {}
 
-		virtual void initialize() {}
-		virtual void deinitialize() {}
+	virtual void initialize() {}
+	virtual void deinitialize() {}
 
-		virtual void createScene01() {}
-		virtual void createScene02() {}
+	virtual void createScene01() {}
+	virtual void createScene02() {}
 
-		virtual void destroyScene() {}
+	virtual void destroyScene() {}
 
-		virtual void update( float timeSinceLast ) {}
-		virtual void finishFrameParallel() {}
-		virtual void finishFrame() {}
-	};
-}
-
-#endif
+	virtual void update( float timeSinceLast ) {}
+	virtual void finishFrameParallel() {}
+	virtual void finishFrame() {}
+};

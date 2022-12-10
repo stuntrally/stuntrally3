@@ -25,48 +25,41 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
-
-#ifndef _Demo_AndroidSystems_H_
-#define _Demo_AndroidSystems_H_
-
+#pragma once
 #include "OgrePrerequisites.h"
 
 struct android_app;
 struct ANativeWindow;
 
-namespace Demo
+
+/// Utility class to load plugins statically
+class AndroidSystems
 {
-    /// Utility class to load plugins statically
-    class AndroidSystems
-    {
-        android_app *mAndroidApp;
-        ANativeWindow *mNativeWindow;
+    android_app *mAndroidApp;
+    ANativeWindow *mNativeWindow;
 
-    public:
-        AndroidSystems();
+public:
+    AndroidSystems();
 
-        static void setAndroidApp( android_app *androidApp );
+    static void setAndroidApp( android_app *androidApp );
 
-        static void setNativeWindow( ANativeWindow *nativeWindow );
-        static ANativeWindow *getNativeWindow( void );
+    static void setNativeWindow( ANativeWindow *nativeWindow );
+    static ANativeWindow *getNativeWindow( void );
 
-        /**
-        On Android platforms:
-            Opens a file in an APK and returns a DataStream smart pointer that can be read from
-        On non-Android platforms:
-            Returns the same string as received (passthrough), so that receiver can use traditional
-            file-reading interfaces to open the file
-        */
+    /**
+    On Android platforms:
+        Opens a file in an APK and returns a DataStream smart pointer that can be read from
+    On non-Android platforms:
+        Returns the same string as received (passthrough), so that receiver can use traditional
+        file-reading interfaces to open the file
+    */
 #if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
-        static Ogre::DataStreamPtr openFile( const Ogre::String &filename );
+    static Ogre::DataStreamPtr openFile( const Ogre::String &filename );
 #else
-        static const Ogre::String &openFile( const Ogre::String &filename ) { return filename; }
+    static const Ogre::String &openFile( const Ogre::String &filename ) { return filename; }
 #endif
 
-        static bool isAndroid();
+    static bool isAndroid();
 
-        static void registerArchiveFactories( void );
-    };
-}  // namespace Demo
-
-#endif
+    static void registerArchiveFactories( void );
+};

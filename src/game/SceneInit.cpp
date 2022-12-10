@@ -333,9 +333,10 @@ void App::LoadCleanUp()  // 1 first
 	// MeshManager::getSingleton().unloadUnreferencedResources();
 	// sh::Factory::getInstance().unloadUnreferencedMaterials();
 	// TextureGpuManager::getEntries() Singleton().unloadUnreferencedResources();
-	mainApp->minimizeMemory();
 
-	mainApp->setupCompositor();  //?
+	// mainApp->minimizeMemory();  //! drops gui font tex
+
+	// mainApp->setupCompositor();  //? twice
 }
 
 

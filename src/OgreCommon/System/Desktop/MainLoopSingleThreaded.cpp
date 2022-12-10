@@ -25,12 +25,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
-
+#include "pch.h"
 #include "OgrePrerequisites.h"
 #include <iostream>
 
 #include "System/MainEntryPoints.h"
-
 #include "System/Desktop/UnitTesting.h"
 
 #include "GraphicsSystem.h"
@@ -43,13 +42,12 @@ THE SOFTWARE.
 
 #include "Threading/OgreThreads.h"
 
-using namespace Demo;
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-INT WINAPI Demo::MainEntryPoints::mainAppSingleThreaded( HINSTANCE hInst, HINSTANCE hPrevInstance,
+INT WINAPI MainEntryPoints::mainAppSingleThreaded( HINSTANCE hInst, HINSTANCE hPrevInstance,
 														 LPSTR strCmdLine, INT nCmdShow )
 #else
-int Demo::MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
+int MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 #endif
 {
 	UnitTest unitTest;
@@ -105,7 +103,7 @@ int Demo::MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 			logicSystem->createScene02();
 
 	#if OGRE_USE_SDL2
-		//Do this after creating the scene for easier the debugging (the mouse doesn't hide itself)
+		// Do this after creating the scene for easier the debugging (the mouse doesn't hide itself)
 		SdlInputHandler *inputHandler = graphicsSystem->getInputHandler();
 	  #ifndef DEBUG
 		inputHandler->setGrabMousePointer( true );
@@ -145,7 +143,7 @@ int Demo::MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 
 			if( !renderWindow->isVisible() )
 			{
-				//Don't burn CPU cycles unnecessary when we're minimized.
+				// Don't burn CPU cycles unnecessary when we're minimized.
 				Ogre::Threads::Sleep( 500 );
 			}
 
@@ -184,6 +182,5 @@ int Demo::MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 		MainEntryPoints::destroySystems( graphicsGameState, graphicsSystem,
 										 logicGameState, logicSystem );
 	}
-
 	return 0;
 }

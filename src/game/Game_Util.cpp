@@ -18,12 +18,9 @@
 #include "OgrePixelFormatGpuUtils.h"
 #include "Vao/OgreVaoManager.h"
 
-using namespace Demo;
 using namespace Ogre;
 using namespace std;
 
-namespace Demo
-{
 
 //  util
 //-----------------------------------------------------------------------------------
@@ -112,7 +109,6 @@ void TerrainGame::unloadUnusedTextures()
 
 	auto itor = entries.begin();
 	auto end = entries.end();
-
 	while( itor != end )
 	{
 		const TextureGpuManager::ResourceEntry &entry = itor->second;
@@ -123,7 +119,6 @@ void TerrainGame::unloadUnusedTextures()
 
 		auto itListener = listeners.begin();
 		auto enListener = listeners.end();
-
 		while( itListener != enListener )
 		{
 			HlmsDatablock *datablock = dynamic_cast<HlmsDatablock *>( *itListener );
@@ -204,5 +199,3 @@ OGRE_ARCH_TYPE != OGRE_ARCHITECTURE_32
 	mTightMemoryBudget = false;
 }
 #endif
-
-}

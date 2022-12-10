@@ -32,7 +32,5 @@ THE SOFTWARE.
 
 #include "System/MainEntryPoints.h"
 
-namespace Demo
-{
-	double MainEntryPoints::Frametime = 1.0 / 60.0;
-}
+
+double MainEntryPoints::Frametime = 1.0 / 60.0;

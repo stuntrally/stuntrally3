@@ -1,16 +1,11 @@
-
-#ifndef _Mq_MessageQueueSystem_H_
-#define _Mq_MessageQueueSystem_H_
-
+#pragma once
 #include "Threading/OgreLightweightMutex.h"
 #include "OgreCommon.h"
 #include "OgreFastArray.h"
 #include "MqMessages.h"
-
 #include <map>
 
-namespace Demo
-{
+
 namespace Mq
 {
 	class MessageQueueSystem
@@ -142,6 +137,3 @@ namespace Mq
 		virtual void processIncomingMessage( Mq::MessageId messageId, const void *data ) = 0;
 	};
 }
-}
-
-#endif

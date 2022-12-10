@@ -1,12 +1,7 @@
-
-#ifndef _Mq_MqMessages_H_
-#define _Mq_MqMessages_H_
-
+#pragma once
 #include <vector>
 #include <assert.h>
 
-namespace Demo
-{
 namespace Mq
 {
 	enum MessageId
@@ -23,6 +18,3 @@ namespace Mq
 		NUM_MESSAGE_IDS
 	};
 }
-}
-
-#endif
