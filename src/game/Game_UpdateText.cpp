@@ -26,6 +26,9 @@
 #include "CData.h"
 
 #include "Def_Str.h"
+#include "MyGUI.h"
+#include "MyGUI_Ogre2Platform.h"
+
 using namespace Demo;
 using namespace Ogre;
 
@@ -46,7 +49,7 @@ namespace Demo
 			"m  " + iToStr( rm.mDrawCount, 2) + " " + iToStr( rm.mInstanceCount, 4);
 			//" b " + toStr( rm.mBatchCount, 0);
 	#if 1
-		//  mem
+		//  GPU RAM mem
 		VaoManager::MemoryStatsEntryVec memoryStats;
 		size_t freeBytes;
 		size_t capacityBytes;
@@ -88,7 +91,8 @@ namespace Demo
 		text.a( "\nTotal GPU:\t", ( Ogre::uint32 )( totalBytesNeeded / bytesToMb ), " MB" );
 		outText += text.c_str();*/
 
-		txt += "  " + toStr( totalBytesNeeded / bytesToMb ) + " MB\n";
+		txt += "  " + toStr( totalBytesNeeded / bytesToMb ) + "M\n";
+		// txt += "  " + fToStr( 1.f/1024.f * totalBytesNeeded / bytesToMb, 2, 4 ) + "G\n";
 	#endif
 		return txt;
 	}
@@ -110,14 +114,15 @@ namespace Demo
 			
 			Vector3 camPos = mGraphicsSystem->getCamera()->getPosition();
 			txt += "\n\nPos:  " + fToStr( camPos.x, 1) +"  "+ fToStr( camPos.y, 1) +"  "+ fToStr( camPos.z, 1) + "\n\n";
+			txt += "\n- + Pitch  " + fToStr( sc->ldPitch, 1,4 );
+			txt += "\n/ * Yaw    " + fToStr( sc->ldYaw, 1,4 );
 		}
 		else if( mDisplayHelpMode == 1 )
 		{
 			txt = generateFpsDebugText();
 
-			txt += "Veget " + iToStr(pApp->scn->cntAll, 5);
-			txt += "\n\n- + Pitch  " + fToStr( sc->ldPitch, 1,4 );
-			txt +=   "\n/ * Yaw    " + fToStr( sc->ldYaw, 1,4 );
+			txt += "Vgt " + iToStr(pApp->scn->cntAll, 5);
+	        txt += "  Gui " + toStr( MyGUI::Ogre2RenderManager::getInstance().getBatchCount() );
 
 			txt += "\n^ v Param  " + fToStr( param, 0 );
 			

@@ -19,6 +19,7 @@ namespace BtOgre  {  class DebugDrawer;  }
 class CScene;  class CData;  class CInput;  class GraphView;
 class GAME;  class CHud;  class CGui;  class CGuiCom;
 namespace Demo {  class TerrainGame;  }
+namespace MyGUI {  class Gui;  }
 
 
 class App //: public ICS::ChannelListener
@@ -31,6 +32,8 @@ public:
 	class SETTINGS* pSet =0;  //;  from BaseApp
 
 	Demo::TerrainGame* mainApp = 0;
+	MyGUI::Gui* mGui = 0;
+
 	CScene* scn =0;
 	CData* data =0;  //p
 	
@@ -49,7 +52,6 @@ public:
 	Ogre::Root* mRoot =0;
 	Ogre::Camera* mCamera =0;
 	Ogre::SceneManager* mSceneMgr =0;
-	Ogre::TextureGpu* mDynamicCubemap =0;
 	
 	bool bLoading =0, bLoadingEnd =0, bSimulating =0;  int iLoad1stFrames =0;
 	
@@ -79,7 +81,7 @@ public:
 	std::vector<ReplayFrame2> frm;  //size:16  //  frm - used when playing replay for hud and sounds
 
 	bool isGhost2nd;  // if present (ghost but from other car)
-	// std::vector<float> vTimeAtChks;  // track ghost's times at road checkpoints
+	std::vector<float> vTimeAtChks;  // track ghost's times at road checkpoints
 	float fLastTime;  // thk ghost total time
 		
 

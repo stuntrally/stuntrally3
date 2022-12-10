@@ -7,6 +7,7 @@
 #include "SceneXml.h"
 #include "RenderConst.h"
 #include "CGame.h"
+#include "Game.h"
 // #include "CGui.h"
 #include "CarModel.h"
 // #include "SplitScreen.h"
@@ -413,7 +414,7 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 		assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() ) );
 		Ogre::HlmsPbsDatablock *datablock =
 			static_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() );
-		datablock->setTexture( Ogre::PBSM_REFLECTION, pApp->mDynamicCubemap );
+		datablock->setTexture( Ogre::PBSM_REFLECTION, pApp->mainApp->mDynamicCubemap );
 		//datablock->setDiffuse(Vector3(Math::RangeRandom(0.f, 1.f), 0.5f, 0.f));  // test
 	}
 	catch (Ogre::Exception ex)
@@ -588,7 +589,7 @@ for (int i=0; i < 2; ++i)
 			assert( dynamic_cast<HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() ) );
 			HlmsPbsDatablock *datablock =
 				static_cast<HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() );
-			datablock->setTexture( PBSM_REFLECTION, pApp->mDynamicCubemap );
+			datablock->setTexture( PBSM_REFLECTION, pApp->mainApp->mDynamicCubemap );
 		}		
 		if (FileExists(sCar + "_brake.mesh") && !ghostTrk)
 		{

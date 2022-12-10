@@ -22,8 +22,11 @@
 #include <OgreSceneManager.h>
 // #include <OgreOverlayManager.h>
 // #include <OgreOverlayElement.h>
+
+#include <MyGUI.h>
+#include <MyGUI_Ogre2Platform.h>
 using namespace Ogre;
-// using namespace MyGUI;
+using namespace MyGUI;
 
 
 ///  HUD resize
@@ -38,6 +41,7 @@ void CHud::Size()
 {
 	// float wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
 	float wx = pSet->windowx, wy = pSet->windowy;
+	// float wx = 800, wy = 400;
 	asp = wx/wy;
 
 	int cnt = pSet->game.local_players;
@@ -52,7 +56,7 @@ void CHud::Size()
 		VPDims dim;
 		//  gauges
 		Real xcRpm,ycRpm,xcRpmL, xcVel,ycVel, ygMax, xBFuel;  // -1..1
-		if (h.ndGauges)
+		/*if (h.ndGauges)
 		{
 			Real sc = pSet->size_gauges * dim.avgsize;
 			Real spx = sc * 1.1f, spy = spx*asp;
@@ -66,7 +70,7 @@ void CHud::Size()
 			h.vcVel = Vector2(xcVel,ycVel);
 			h.fScale = sc;
 			h.updGauges = true;
-		}
+		}*/
 		
 		//  minimap
 		Real sc = pSet->size_minimap * dim.avgsize;
@@ -75,10 +79,10 @@ void CHud::Size()
 		Real fMiniY =-dim.bottom + sc*asp * marg;  //-dim.top - sc*asp * marg;
 		Real miniTopY = fMiniY + sc*asp;
 
-		if (h.ndMap)
+		/*if (h.ndMap)
 		{	h.ndMap->setScale(sc, sc*asp,1);
 			h.ndMap->setPosition(Vector3(fMiniX,fMiniY,0.f));
-		}
+		}*/
 	
 		//  current viewport max x,y in pixels
 		int xMin = (dim.left+1.f)*0.5f*wx, xMax = (dim.right +1.f)*0.5f*wx,
@@ -87,7 +91,7 @@ void CHud::Size()
 
 		//  gear, vel
 		//  positioning, min yMax - dont go below viewport bottom
-		/*if (h.txVel)
+		if (h.txVel)
 		{
 			int vv = pSet->gauges_type > 0 ? -45 : 40;
 			int gx = (xcRpm+1.f)*0.5f*wx - 10, gy = (-ycRpm+1.f)*0.5f*wy +22;
@@ -123,7 +127,7 @@ void CHud::Size()
 			//tx = 24;  ty = 4;  //(hasLaps ? 16 : 4);
 			h.txTimTxt->setPosition(tx,ty);
 			h.txTimes->setPosition(tx+126,ty);
-			
+/*			
 			//  lap result
 			int lx = xMax - 320, ly = ty;
 			h.bckLap->setPosition(lx-14,ly-8);
@@ -149,8 +153,8 @@ void CHud::Size()
 			h.txCam->setPosition(xMax-260,yMax-30);
 			//  abs,tcs
 			h.txAbs->setPosition(xMin+160,yMax-30);
-			h.txTcs->setPosition(xMin+220,yMax-30);
-		}*/
+			h.txTcs->setPosition(xMin+220,yMax-30);*/
+		}
 	}
 	/*if (txCamInfo)
 	{	txCamInfo->setPosition(270,wy-100);
@@ -163,7 +167,7 @@ void CHud::Size()
 //---------------------------------------------------------------------------------------------------------------
 void CHud::Show(bool hideAll)
 {
-	if (hideAll || app->iLoad1stFrames > -1)  // still loading
+	// if (hideAll || app->iLoad1stFrames > -1)  // still loading
 	{
 		/*if (ovCarDbg)  ovCarDbg->hide();
 		if (ovCarDbgTxt)  ovCarDbgTxt->hide();
@@ -182,8 +186,9 @@ void CHud::Show(bool hideAll)
 		app->hideMouse();
 		if (app->mWndRpl)  app->mWndRpl->setVisible(false);
 		if (app->mWndRplTxt)  app->mWndRplTxt->setVisible(false);*/
-		return;
+		// return;
 	}
+
 	//  this goes each frame..
 	bool show = pSet->car_dbgbars;
 	/*if (ovCarDbg){  if (show)  ovCarDbg->show();  else  ovCarDbg->hide();  }
@@ -206,9 +211,8 @@ void CHud::Show(bool hideAll)
 		show = pSet->show_gauges;
 		for (int c=0; c < hud.size(); ++c)
 		{	Hud& h = hud[c];
-			// if (h.parent && h.txVel)
+			if (h.parent && h.txVel)
 			{	
-			#if 0
 				h.parent->setVisible(true);
 			
 				if (h.txGear)
@@ -220,21 +224,21 @@ void CHud::Show(bool hideAll)
 				if (h.txDamage)
 				{	h.txDamage->setVisible(show && bdmg);  h.icoDamage->setVisible(show && bdmg);
 					h.imgDamage->setVisible(show && bdmg);  }
-			#endif
 				//txRewind;icoRewind;
 
-				h.ndGauges->setVisible(show);  h.ndNeedles->setVisible(show);
-				h.ndMap->setVisible(pSet->trackmap);
-			#if 0
+				// h.ndGauges->setVisible(show);  h.ndNeedles->setVisible(show);
+				
+				// h.ndMap->setVisible(pSet->trackmap);
 				h.txTimes->setVisible(times);  h.txTimTxt->setVisible(times);
 				//h.txLap->setVisible(times);  h.txLapTxt->setVisible(times);  h.bckLap->setVisible(times);
+			#if 0
 				h.bckOpp->setVisible(opp);
 				h.txOpp[0]->setVisible(opp);  h.txOpp[1]->setVisible(opp);  h.txOpp[2]->setVisible(opp);
 				h.txCam->setVisible(cam);
 			#endif
 		}	}
 	}
-	if (ndPos)  ndPos->setVisible(pSet->trackmap);
+	//; if (ndPos)  ndPos->setVisible(pSet->trackmap);
 	
 	/*app->updMouse();
 	if (app->mWndRpl && !app->bLoading)  // replay ctrls

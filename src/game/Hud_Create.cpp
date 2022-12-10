@@ -25,9 +25,12 @@
 #include <OgreSceneManager.h>
 #include <OgreOverlayManager.h>
 #include <OgreOverlayElement.h>
-#include "OgreTextureGpuManager.h"
+#include <OgreTextureGpuManager.h>
+
+#include <MyGUI.h>
+#include <MyGUI_Ogre2Platform.h>
 using namespace Ogre;
-// using namespace MyGUI;
+using namespace MyGUI;
 
 
 ///---------------------------------------------------------------------------------------------------------------
@@ -36,20 +39,21 @@ using namespace Ogre;
 
 void CHud::Create()
 {
+	LogO("Create Hud [][]");
 	//Destroy();  //
 	if (app->carModels.size() == 0)  return;
 
 	Ogre::Timer ti;
 
 	SceneManager* scm = app->mSceneMgr;
-	if (hud[0].moMap)//; || hud[0].txVel || hud[0].txTimes)
-		LogO("Create Hud: exists !");
+	// if (hud[0].moMap)//; || hud[0].txVel || hud[0].txTimes)
+		// LogO("Create Hud: exists !");
 
 	// app->CreateGraphs();
 		
 	//  minimap from road img
 	int plr = 1; //app->mSplitMgr->mNumViewports;  // pSet->game.local_players;
-	LogO("-- Create Hud  plrs="+toStr(plr));
+	//; LogO("-- Create Hud  plrs="+toStr(plr));
 	asp = 1.f;
 
 #if 0
@@ -81,11 +85,11 @@ void CHud::Create()
 
 	
 	//  car pos tris (form all cars on all viewports)
-	SceneNode* rt = scm->getRootSceneNode();
-	asp = 1.f;  //_temp
-	moPos = Create2D("hud/CarPos", scm, 0.f, true,true, 1.f,Vector2(1,1), RV_Hud,RQG_Hud3, plr * 6);
-	ndPos = rt->createChildSceneNode();
-	ndPos->attachObject(moPos);
+	//; SceneNode* rt = scm->getRootSceneNode();
+	// asp = 1.f;  //_temp
+	// moPos = Create2D("hud/CarPos", scm, 0.f, true,true, 1.f,Vector2(1,1), RV_Hud,RQG_Hud3, plr * 6);
+	// ndPos = rt->createChildSceneNode();
+	// ndPos->attachObject(moPos);
 
 
 	//  for each car
@@ -101,7 +105,7 @@ void CHud::Create()
 		float fMapSizeX = maxX - minX, fMapSizeY = maxY - minY;  // map size
 		float size = std::max(fMapSizeX, fMapSizeY*asp);
 		scX = 1.f / size;  scY = 1.f / size;
-		
+	#if 0
 		//  change minimap image
 		String sMat = "circle_minimap";
 		/*MaterialPtr mm = MaterialManager::getSingleton().getByName(sMat);
@@ -120,7 +124,6 @@ void CHud::Create()
 		//asp = float(mWindow->getWidth())/float(mWindow->getHeight());
 		h.ndMap->setVisible(false/*pSet->trackmap*/);
 
-	
 		//  gauges  backgr  -----------
 		String st = toStr(pSet->gauges_type);
 		h.moGauges = Create2D("hud_"+st,scm, 1.f, true,false, 0.f,Vector2(0.f,0.5f), RV_Hud,RQG_Hud1, 2);
@@ -129,11 +132,10 @@ void CHud::Create()
 		//  gauges  needles
 		h.moNeedles = Create2D("hud_"+st,scm, 1.f, true,false, 0.f,Vector2(0.5f,0.5f), RV_Hud,RQG_Hud3, 2);
 		h.ndNeedles = rt->createChildSceneNode();  h.ndNeedles->attachObject(h.moNeedles);  //h.ndNeedles->setVisible(false);
-
+	#endif
 
 		///  GUI
 		//  gear  text  -----------
-	#if 0
 		h.parent = app->mGui->createWidget<Widget>("",0,0,pSet->windowx,pSet->windowy,Align::Left,"Back","main"+s);
 
 		if (cm->vtype == V_Car)
@@ -157,7 +159,7 @@ void CHud::Create()
 		h.txVel->setFontName("DigGear");  //h.txVel->setFontHeight(64);
 		//h.txVel->setInheritsAlpha(false);
 		//h.txVel->setTextShadow(true);
-		
+
 		//  boost
 		if (cm->vtype != V_Sphere)
 		{
@@ -215,32 +217,36 @@ void CHud::Create()
 		h.icoRewind->setImageCoord(IntCoord(512,384,128,128));
 		#endif
 
-
 		///  times text  ----------------------
 		/*h.bckTimes = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 356,260, Align::Left, "TimP"+s);  h.bckTimes->setVisible(false);
 		h.bckTimes->setAlpha(0.f);
 		h.bckTimes->setImageTexture("back_times.png");*/
-		bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 || app->mClient;
+		bool hasLaps = 0; //; pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 || app->mClient;
 
 		h.txTimTxt = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 120,260, Align::Left, "TimT"+s);
-		h.txTimTxt->setFontName("hud.times");  h.txTimTxt->setTextShadow(true);
+		h.txTimTxt->setFontName("DigGear");  // hud.times");
+		h.txTimTxt->setFontHeight(55);
+		h.txTimTxt->setTextShadow(true);
 		h.txTimTxt->setInheritsAlpha(false);
-		h.txTimTxt->setCaption(
+		/*h.txTimTxt->setCaption(
 			(hasLaps ? String("#90D0C0")+TR("#{TBLap}") : "")+
 			"\n#A0E0E0"+TR("#{TBTime}") +
 			"\n#70D070"+TR("#{Track}") +
 			"\n#C0C030"+TR("#{TBPosition}") +
 			"\n#F0C050"+TR("#{TBPoints}") +
-			"\n#C8A898"+TR("#{Progress}") );
+			"\n#C8A898"+TR("#{Progress}") );*/
 
 		h.txTimes = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 230,260, Align::Left, "Tim"+s);
 		h.txTimes->setInheritsAlpha(false);
-		h.txTimes->setFontName("hud.times");  h.txTimes->setTextShadow(true);
+		h.txTimes->setFontName("DigGear");  // hud.times");  // fixme
+		h.txTimes->setFontHeight(55);
+		h.txTimes->setTextShadow(true);
 
 
+	#if 0
 		///  lap results  ----------------------
 		h.bckLap = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 320,210, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
@@ -361,6 +367,7 @@ void CHud::Create()
 	txMsg->setTextColour(Colour(0.95,0.95,1.0));
 #endif
 
+	LogO("-- Create Hud  13");
 
 	///  tex
 	// resMgr.removeResourceLocation(path, sGrp);
@@ -372,11 +379,13 @@ void CHud::Create()
 		cm->updLap = true;  cm->fLapAlpha = 1.f;
 	}
 
-	
+	LogO("-- Create Hud  14");
+
 	///  tire vis circles  + + + +
 	asp = float(pSet->windowx) / float(pSet->windowy);
 	// asp = float(app->mWindow->getWidth())/float(app->mWindow->getHeight());
 
+#if 0
 	if (pSet->car_tirevis)
 	{	SceneNode* rt = scm->getRootSceneNode();
 		for (int i=0; i < 4; ++i)
@@ -406,6 +415,7 @@ void CHud::Create()
 			const Real s = 0.06f;  // par
 			ndTireVis[i]->setScale(s, s*asp, 1.f);
 	}	}
+#endif
 
 
 	//  dbg texts
@@ -423,9 +433,12 @@ void CHud::Create()
 	}
 #endif
 
+	LogO("-- Create Hud  15e");
 	Show();  //_
+	LogO("-- Create Hud  16");
 	app->bSizeHUD = true;
-	//Size();
+	LogO("-- Create Hud  17");
+	Size();
 	
 	LogO("::: Time Create Hud: "+fToStr(ti.getMilliseconds(),0,3)+" ms");
 }
@@ -454,35 +467,35 @@ void CHud::Destroy()
 			if (mo) {  scm->destroyManualObject(mo);  mo=0;  } \
 			if (nd) {  scm->destroySceneNode(nd);  nd=0;  }  }
 		
-		Dest2(h.moMap,h.ndMap)
-		Dest2(h.moGauges,h.ndGauges)
-		Dest2(h.moNeedles,h.ndNeedles)
+		// Dest2(h.moMap,h.ndMap)
+		// Dest2(h.moGauges,h.ndGauges)
+		// Dest2(h.moNeedles,h.ndNeedles)
 
-		/*#define Dest(w)  \
+		#define Dest(w)  \
 			if (w) {  app->mGui->destroyWidget(w);  w = 0;  }
 			
 		Dest(h.txGear)  Dest(h.txVel)  Dest(h.bckVel)
-		Dest(h.txAbs)  Dest(h.txTcs)  Dest(h.txCam)
+		Dest(h.txAbs)  Dest(h.txTcs)  //Dest(h.txCam)
 		
 		Dest(h.txBFuel)  Dest(h.txDamage)  Dest(h.txRewind)  Dest(h.imgDamage)
 		Dest(h.icoBFuel)  Dest(h.icoBInf)  Dest(h.icoDamage)  Dest(h.icoRewind)
 
-		for (i=0; i < 3; ++i)  Dest(h.txOpp[i])
-		Dest(h.bckOpp)
+		// for (i=0; i < 3; ++i)  Dest(h.txOpp[i])
+		// Dest(h.bckOpp)
 		Dest(h.txTimTxt)  Dest(h.txTimes)  //Dest(h.bckTimes)
-		Dest(h.txLapTxt)  Dest(h.txLap)  Dest(h.bckLap)
+		// Dest(h.txLapTxt)  Dest(h.txLap)  Dest(h.bckLap)
 		h.sTimes = "";  h.sLap = "";
 		
-		Dest(h.txWarn)  Dest(h.bckWarn)
-		Dest(h.txPlace)  Dest(h.bckPlace)
-		Dest(h.txCountdown)*/
+		// Dest(h.txWarn)  Dest(h.bckWarn)
+		// Dest(h.txPlace)  Dest(h.bckPlace)
+		// Dest(h.txCountdown)
 	}
-	Dest2(moPos, ndPos)
+	// Dest2(moPos, ndPos)
 	/*Dest(txMsg)  Dest(bckMsg)
 	Dest(txCamInfo)*/
 	
-	for (i=0; i < 4; ++i)
-		Dest2(moTireVis[i],ndTireVis[i])
+	// for (i=0; i < 4; ++i)
+		// Dest2(moTireVis[i],ndTireVis[i])
 }
 
 

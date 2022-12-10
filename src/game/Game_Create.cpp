@@ -119,8 +119,11 @@ namespace Demo
 	//-----------------------------------------------------------------------------------------------------------------------------
 	void TerrainGame::createScene01()
 	{
+		
+		InitGui();
 
 		mGraphicsSystem->mWorkspace = setupCompositor();
+
 
 		SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
 		SceneNode *rootNode = sceneManager->getRootSceneNode( SCENE_STATIC );
@@ -156,6 +159,8 @@ namespace Demo
 		LogO("---- base createScene");
 
 		TutorialGameState::createScene01();
+
+
 	}
 
 

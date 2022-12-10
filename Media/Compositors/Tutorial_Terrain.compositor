@@ -117,6 +117,11 @@ compositor_node Tutorial_TerrainRenderingNode
 			overlays	on
 			shadows		Tutorial_TerrainShadowNode
 		}
+
+		// pass custom MYGUI
+		// {
+			// provider?  added in code
+		// }
 	}
 }
 

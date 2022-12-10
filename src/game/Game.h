@@ -16,6 +16,12 @@ namespace Ogre
 	class TextureGpu;
 	class HlmsDatablock;
 }
+namespace MyGUI
+{
+    class Gui;
+	class Ogre2Platform;
+}
+
 
 namespace Demo
 {
@@ -56,7 +62,11 @@ namespace Demo
 	public:
 		Ogre::Terra *mTerra = 0;
 
+    	MyGUI::Gui* mGui = 0;
+    	MyGUI::Ogre2Platform* mPlatform = 0;
+
 		TerrainGame();
+		void InitGui();
 
 		//  SR
 		SETTINGS* pSet = 0;
@@ -84,11 +94,12 @@ namespace Demo
 
 		//  reflection cube  ----
 		Ogre::Camera *mCubeCamera = 0;
-	protected:
 		Ogre::TextureGpu *mDynamicCubemap = 0;
+	protected:
 		Ogre::CompositorWorkspace *mDynamicCubemapWorkspace = 0;
 
 		IblQuality mIblQuality = IblLow;  // par in ctor
+	public:		
 		Ogre::CompositorWorkspace *setupCompositor();
 
 

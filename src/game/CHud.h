@@ -7,7 +7,7 @@
 // #include "common/MessageBox/MessageBox.h"
 // #include "common/MessageBox/MessageBoxStyle.h"
 // #include "common/GraphView.h"
-// #include "common/Gui_Def.h"
+#include "Gui_Def.h"
 
 // #include "../network/networkcallbacks.hpp"
 // #include <boost/thread.hpp>
@@ -24,12 +24,12 @@ namespace Ogre {  class SceneNode;  class SceneManager;  class Viewport;  class 
 class GraphView;  class App;  class SETTINGS;  class CGui;
 
 
-class CHud //: public BGui
+class CHud : public BGui
 {
 public:
 	App* app =0;
 	SETTINGS* pSet =0;
-	CGui* gui =0;
+	//CGui* gui =0;
 	
 	CHud(App* ap1);
 		
@@ -46,7 +46,7 @@ public:
 	{
 	public:
 		//  times bar
-		// Txt txTimTxt =0, txTimes =0;
+		Txt txTimTxt =0, txTimes =0;
 		Ogre::String sTimes, sLap;
 		//  lap results
 		// Txt txLapTxt =0, txLap =0;  Img bckLap =0;
@@ -61,17 +61,17 @@ public:
 		// Txt txCountdown =0;
 
 		//  gauges
-		Ogre::SceneNode    *ndNeedles =0, *ndGauges =0;
-		Ogre::ManualObject *moNeedles =0, *moGauges =0;
+		//; Ogre::SceneNode    *ndNeedles =0, *ndGauges =0;
+		//; Ogre::ManualObject *moNeedles =0, *moGauges =0;
 		//  gear, vel
-		// Txt txVel =0, txGear =0, txAbs =0, txTcs =0;
-		// Img bckVel =0;
+		Txt txVel =0, txGear =0, txAbs =0, txTcs =0;
+		Img bckVel =0;
 
 		//  damage %, rewind time, boost fuel
 		float dmgBlink = 0.f, dmgOld = 0.f;
-		// Img imgDamage =0;
-		// Txt txDamage =0,  txRewind =0,  txBFuel =0;
-		// Img icoDamage =0, icoRewind =0, icoBFuel =0, icoBInf =0;
+		Img imgDamage =0;
+		Txt txDamage =0,  txRewind =0,  txBFuel =0;
+		Img icoDamage =0, icoRewind =0, icoBFuel =0, icoBInf =0;
 		
 		//  input bars
 		//Img imgSteer =0, barSteer =0,  barThrottle =0, barBrake =0;
@@ -81,7 +81,7 @@ public:
 		// Txt txCam =0;
 
 		//  miniap
-		Ogre::ManualObject *moMap =0;  Ogre::SceneNode *ndMap =0;
+		// Ogre::ManualObject *moMap =0;  Ogre::SceneNode *ndMap =0;
 		//  all info for this car's minimap
 		std::vector<SMiniPos> vMiniPos;  // const size: 6
 		
@@ -89,7 +89,7 @@ public:
 		Ogre::Vector2 vcRpm, vcVel;  Ogre::Real fScale;
 		bool updGauges =0;
 
-		// WP parent =0;
+		WP parent =0;
 		Hud();
 	};
 	std::vector<Hud> hud;  // const size: max viewports 4
@@ -100,7 +100,7 @@ public:
 
 	//  car pos tris on minimap
 	//  one for all cars on all viewports
-	Ogre::SceneNode* ndPos =0;  Ogre::ManualObject* moPos =0;
+	//; Ogre::SceneNode* ndPos =0;  Ogre::ManualObject* moPos =0;
 
 	//  chat messages
 	// Txt txMsg =0;  Img bckMsg =0;
@@ -110,8 +110,8 @@ public:
 	//  car debug texts  todo...
 	// Txt txDbgCar =0, txDbgTxt =0, txDbgExt =0;
 
-	Ogre::SceneNode    *ndTireVis[4];
-	Ogre::ManualObject *moTireVis[4];
+	//; Ogre::SceneNode    *ndTireVis[4];
+	//; Ogre::ManualObject *moTireVis[4];
 
 	/*struct OvrDbg
 	{

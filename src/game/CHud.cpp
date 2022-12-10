@@ -26,8 +26,8 @@ CHud::CHud(App* ap1)
 {
 	hud.resize(4);  //; ov.resize(5);
 	
-	for (int i=0; i < 4; ++i)
-	{	ndTireVis[i]=0;  moTireVis[i]=0;  }
+	// for (int i=0; i < 4; ++i)
+	// {	ndTireVis[i]=0;  moTireVis[i]=0;  }
 	
 	pSet = ap1->pSet;
 	// gui = ap1->gui;

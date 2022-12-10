@@ -160,8 +160,8 @@ bool SoundBaseMgr::loadWAVFile(String file, ALuint buffer, int& outSamples)
 	else
 	{	LogO("@  Invalid WAV file wrong channels: "+toStr(channels)+" or bps: "+toStr(bps)+"  file: "+file);  return false;  }
 
-	if (channels != 1)  // for 3D only mono!
-		LogO("@  WAV file is not mono: "+file);
+	// if (channels != 1)  // for 3D only mono!
+		// LogO("@  WAV file is not mono: "+file);
 
 	//  creating buffer
 	void* bdata = malloc(size);

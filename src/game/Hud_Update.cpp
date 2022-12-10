@@ -27,6 +27,7 @@
 #include <OgreSceneManager.h>
 #include <OgreOverlayManager.h>
 #include <OgreOverlayElement.h>
+
 using namespace Ogre;
 // using namespace MyGUI;
 
@@ -43,7 +44,7 @@ void CHud::Update(int carId, float time)
 	int cnt = std::min(6, (int)app->carModels.size());  // all cars
 	int cntC = std::min(4, cnt - (app->isGhost2nd && !app->bRplPlay ? 1 : 0));  // all vis plr
 	
-	UpdPosElems(cnt, cntC, carId);
+	// UpdPosElems(cnt, cntC, carId);
 
 
 	//  track %  local, updated always
@@ -119,6 +120,7 @@ void CHud::Update(int carId, float time)
 //---------------------------------------------------------------------------------------------------------------
 void CHud::UpdPosElems(int cnt, int cntC, int carId)
 {
+#if 0
 	//LogO(toStr(cnt)+" "+toStr(cntC)+" "+toStr(carId));
 	int c;
 	//  gui viewport - done once for all
@@ -173,6 +175,7 @@ void CHud::UpdPosElems(int cnt, int cntC, int carId)
 		}
 		moPos->end();
 	}
+#endif
 }
 
 //---------------------------------------------------------------------------------------------------------------
@@ -181,6 +184,7 @@ void CHud::UpdPosElems(int cnt, int cntC, int carId)
 //---------------------------------------------------------------------------------------------------------------
 void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 {
+#if 0
 	//LogO(toStr(carId));
 	//if (carId == -1)  return;
 	int b = baseCarId, c = carId;
@@ -376,4 +380,5 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 	{	h.vMiniPos[c].x = xp;
 		h.vMiniPos[c].y = yp;
 	}
+#endif
 }

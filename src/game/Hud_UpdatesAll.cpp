@@ -27,8 +27,11 @@
 #include <OgreSceneManager.h>
 #include <OgreOverlayManager.h>
 #include <OgreOverlayElement.h>
+
+#include <MyGUI.h>
+#include <MyGUI_Ogre2Platform.h>
 using namespace Ogre;
-// using namespace MyGUI;
+using namespace MyGUI;
 
 
 //  HUD utils
@@ -252,7 +255,6 @@ void CHud::UpdOpponents(Hud& h, int cnt, CarModel* pCarM)
 //-------------------------------------------------------------------------------------------------------------------
 void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 {
-#if 0
 	float vel=0.f, rpm=0.f, clutch=1.f;  int gear=1;
 	GetCarVals(carId,&vel,&rpm,&clutch,&gear);
 
@@ -333,7 +335,6 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 		vis = pCar->GetTCSEnabled();  h.txTcs->setVisible(vis);
 		if (vis)  h.txTcs->setAlpha(pCar->GetTCSActive() ? 1.f : 0.6f);
 	}
-#endif
 }
 
 
@@ -341,12 +342,11 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 //-------------------------------------------------------------------------------------------------------------------
 void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 {
-#if 0
 	///  times, race pos  -----------------------------
 	if (pSet->show_times && pCar)
 	{
 		TIMER& tim = app->pGame->timer;
-		bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 || app->mClient;
+		/*bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 || app->mClient;
 		if (hasLaps)
 		{	//  place
 			if (pCarM->iWonPlace > 0 && h.txPlace)
@@ -357,7 +357,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 					Colour(0.4,1,0.2), Colour(1,1,0.3), Colour(1,0.7,0.2), Colour(1,0.5,0.2) };
 				h.txPlace->setTextColour(clrPlace[pCarM->iWonPlace-1]);
 				h.bckPlace->setVisible(true);
-		}	}
+		}	}*/
 
 		//  times  ------------------------------
 		bool cur = pCarM->iCurChk >= 0 && !app->vTimeAtChks.empty();
@@ -365,7 +365,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 		float part = ghTimeES / app->fLastTime;  // fraction which track ghost has driven
 
 		bool coldStart = tim.GetCurrentLap(carId) == 1;  // was 0
-		float carMul = app->GetCarTimeMul(pSet->game.car[carId], pSet->game.sim_mode);
+		float carMul = 1.f;//; app->GetCarTimeMul(pSet->game.car[carId], pSet->game.sim_mode);
 		//| cur
 		float ghTimeC = ghTimeES + (coldStart ? 0 : 1);
 		float ghTime = ghTimeC * carMul;  // scaled
@@ -386,20 +386,21 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			//float t1pl = data->carsXml.magic * timeTrk;
 
 			float points = 0.f, curPoints = 0.f;
-			int place = app->GetRacePos(timeCur, timeTrk, carMul, coldStart, &points);
+			int place = 1;//;app->GetRacePos(timeCur, timeTrk, carMul, coldStart, &points);
 			//| cur
 			float timCC = timeTrk + (coldStart ? 0 : 1);
 			float timCu = timCC * carMul;
 			diff = pCarM->timeAtCurChk + /*(coldStart ? 1:0)*carMul*/ - time * part;  ///new
 
 			float chkPoints = 0.f;  // cur, at chk, assume diff time later than track ghost
-			int chkPlace = app->GetRacePos(timCu + diffT, timeTrk, carMul, coldStart, &chkPoints);
+			int chkPlace = 1;//;app->GetRacePos(timCu + diffT, timeTrk, carMul, coldStart, &chkPoints);
 			bool any = cur || b;
 	
 			h.sTimes =
 				"\n#80E080" + StrTime(time)+
 				"\n#D0D040" + (cur ? toStr( chkPlace )     : "--")+
 				"\n#F0A040" + (cur ? fToStr(chkPoints,1,3) : "--");
+		#if 0
 			float dlap = last - time;
 			h.sLap =
 				"#D0E8FF"+TR("#{TBLapResults}") +
@@ -411,16 +412,17 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 				"\n#F0A040" + (b ? fToStr(points,1,3) : "--");
 			if (h.txLap)
 				h.txLap->setCaption(h.sLap);
+		#endif
 		}
 		if (h.txTimes)
 			h.txTimes->setCaption(
-				(hasLaps ? "#A0E0D0"+toStr(tim.GetCurrentLap(carId)+1)+" / "+toStr(pSet->game.num_laps) : "") +
+				//; (hasLaps ? "#A0E0D0"+toStr(tim.GetCurrentLap(carId)+1)+" / "+toStr(pSet->game.num_laps) : "") +
 				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId))+
-				(cur ? String("  ") + (diff > 0.f ? "#80E0FF+" : "#60FF60-")+
-					fToStr(fabs(diff), 1,3) : "")+
+				//; (cur ? String("  ") + (diff > 0.f ? "#80E0FF+" : "#60FF60-")+
+				//; 	fToStr(fabs(diff), 1,3) : "")+
 				h.sTimes+
 				"\n#E0B090" + fToStr(pCarM->trackPercent,0,1)+"%" );
-
+	#if 0
 		if (h.txLap)
 		{
 			//if (pCarM->updLap)
@@ -441,9 +443,10 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			h.bckLap->setVisible(vis);
 			h.txLapTxt->setVisible(vis);  h.txLap->setVisible(vis);
 		}
+	#endif
 	}
 
-
+#if 0
 	//  checkpoint warning  --------
 	if (app->scn->road && h.bckWarn && pCarM)
 	{

@@ -3,10 +3,10 @@ compositor_node Terra/GpuBlendMapper
 {
 	in 0 rt_output
 
-	rtv rt_output
-	{
-		slice 1  // draw to slice 1
-	}
+	// rtv rt_output
+	// {
+	// 	slice 1  // draw to slice 1
+	// }
 
 	target rt_output
 	{

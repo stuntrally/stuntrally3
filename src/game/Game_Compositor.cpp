@@ -1,5 +1,8 @@
 #include "pch.h"
+#include "RenderConst.h"
 #include "Game.h"
+#include "CGame.h"
+
 #include "CameraController.h"
 #include "GraphicsSystem.h"
 #include "OgreLogManager.h"
@@ -20,7 +23,8 @@
 #include "Compositor/OgreCompositorWorkspaceDef.h"
 #include "Compositor/Pass/PassIblSpecular/OgreCompositorPassIblSpecularDef.h"
 
-#include "RenderConst.h"
+#include <MyGUI.h>
+#include <MyGUI_Ogre2Platform.h>
 using namespace Demo;
 using namespace Ogre;
 
@@ -39,7 +43,6 @@ namespace Demo
 		// you can either programatically modify the workspace definition (which is cumbersome)
 		// or just pass a PF_NULL texture that works as a dud and barely consumes any memory.
 		// See Tutorial_Terrain for an example of PF_NULL dud.
-		using namespace Ogre;
 
 		Root *root = mGraphicsSystem->getRoot();
 		SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
@@ -87,6 +90,7 @@ namespace Demo
 		mDynamicCubemap->setPixelFormat( PFG_RGBA8_UNORM_SRGB );
 		mDynamicCubemap->scheduleTransitionTo( GpuResidency::Resident );
 
+
 		Ogre::HlmsManager *hlmsManager = mGraphicsSystem->getRoot()->getHlmsManager();
 		assert( dynamic_cast<Ogre::HlmsPbs *>( hlmsManager->getHlms( Ogre::HLMS_PBS ) ) );
 		Ogre::HlmsPbs *hlmsPbs = static_cast<Ogre::HlmsPbs *>( hlmsManager->getHlms( Ogre::HLMS_PBS ) );
@@ -126,7 +130,8 @@ namespace Demo
 			iblSpecPassDef->mSamplesSingleIterationFallback = iblSpecPassDef->mSamplesPerIteration;
 		}
 
-		// Setup the cubemap's compositor.
+
+		//  Setup the cubemap's compositor
 		CompositorChannelVec cubemapExternalChannels( 1 );
 		cubemapExternalChannels[0] = mDynamicCubemap;
 
@@ -138,15 +143,26 @@ namespace Demo
 		}
 
 		mDynamicCubemapWorkspace = compositorManager->addWorkspace(
-			sceneManager, cubemapExternalChannels, mCubeCamera, workspaceName, true );
+			sceneManager, cubemapExternalChannels, mCubeCamera,
+			workspaceName, true );
 
-		// Now setup the regular Render window
+
+		//  Now setup the regular Render window
 		CompositorChannelVec externalChannels( 2 );
 		externalChannels[0] = renderWindow->getTexture();
 		externalChannels[1] = mDynamicCubemap;
 
-		return compositorManager->addWorkspace( sceneManager, externalChannels, camera,
+		
+		//  Gui, add MyGUI pass
+		CompositorNodeDef * def = compositorManager->getNodeDefinitionNonConst("Tutorial_TerrainRenderingNode");
+		CompositorTargetDef *tar = def->getTargetPass(0);
+		tar->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
+		
+
+		CompositorWorkspace* wrk = compositorManager->addWorkspace(
+			sceneManager, externalChannels, camera,
 			"Tutorial_TerrainWorkspace", true );  // in .compositor
+		return wrk;
 	}
 	
 }

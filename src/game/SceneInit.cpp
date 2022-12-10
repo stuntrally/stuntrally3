@@ -334,6 +334,8 @@ void App::LoadCleanUp()  // 1 first
 	// sh::Factory::getInstance().unloadUnreferencedMaterials();
 	// TextureGpuManager::getEntries() Singleton().unloadUnreferencedResources();
 	mainApp->minimizeMemory();
+
+	mainApp->setupCompositor();  //?
 }
 
 
@@ -510,6 +512,7 @@ void App::LoadScene()  // 3
 	// scn->UpdateWaterRTT(mSplitMgr->mCameras.front());
 
 	/// generate materials
+	// mainApp->setupCompositor();
 	/*try {
 		refreshCompositor();
 	} catch (InvalidParametersException &e) {
@@ -652,7 +655,7 @@ void App::LoadRoad()  // 6
 
 	///  Run track's ghost
 	//  to get times at checkpoints
-	/*fLastTime = 1.f;
+	fLastTime = 1.f;
 	if (!scn->road || ghtrk.GetTimeLength() < 1.f)  return;
 	int ncs = scn->road->mChks.size();
 	if (ncs == 0)  return;
@@ -678,7 +681,7 @@ void App::LoadRoad()  // 6
 			{	vTimeAtChks[c] = tf.time;
 				//LogO("Chk "+toStr(c)+" ti "+fToStr(tf.time,1,4));
 		}	}
-	}*/
+	}
 }
 
 void App::LoadObjects()  // 7
@@ -725,8 +728,8 @@ void App::LoadMisc()  // 9 last
 			pGame->timer.GetBestLap(0, rev), rev, 0);  // current
 	**/
 
-	// hud->Create();  // todo: hud
-	// hud->Show();
+	hud->Create();
+	hud->Show();
 	//- hud->Show(true);  // hide
 	
 	// Camera settings

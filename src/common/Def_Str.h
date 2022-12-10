@@ -5,7 +5,7 @@
 #include <OgreVector3.h>
 #include <OgreLogManager.h>
 #include <OgreStringConverter.h>
-//; #include <MyGUI_LanguageManager.h>
+#include <MyGUI_LanguageManager.h>
 
 //  Log in ogre.log
 #define LogO(s)  Ogre::LogManager::getSingleton().logMessage(s)
@@ -22,7 +22,7 @@ inline Ogre::String toStr(const Ogre::Vector4 a) {  return Ogre::StringConverter
 #define toStrC(v)  toStr(v).c_str()
 
 //  translation
-//; #define TR(s)  MyGUI::LanguageManager::getInstance().replaceTags(s)
+#define TR(s)  MyGUI::LanguageManager::getInstance().replaceTags(s)
 
 
 //  format int,float to string

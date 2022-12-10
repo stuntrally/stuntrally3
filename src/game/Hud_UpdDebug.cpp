@@ -172,7 +172,7 @@ void CHud::UpdDebug(CAR* pCar, CarModel* pCarM)
 	}
 #endif
 	
-
+#if 0
 	///  tire vis circles  + + + +
 	if (pCar && moTireVis[0] && pSet->car_tirevis)
 	{
@@ -228,4 +228,5 @@ void CHud::UpdDebug(CAR* pCar, CarModel* pCarM)
 			m->end();
 		}
 	}
+#endif
 }
