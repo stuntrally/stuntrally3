@@ -16,12 +16,14 @@ syntax: glob
 bin/*
 build/*
 Dependencies/*
-#tracks
+
+#  data
+hud
+#gui
+tracks
 cars
 #objects
-fonts
 terrain
-#trees2
 #Media
 *.mat
 

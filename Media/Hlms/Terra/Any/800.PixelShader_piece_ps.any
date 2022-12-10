@@ -112,7 +112,7 @@
 
 
 	@property( !detail_maps_diffuse && !detail_maps_normal )
-		midf4 detailWeights = midf4_c( 0.25f, 0.25f, 0.25f, 0.25f );
+		midf4 detailWeights = midf4_c( 0.25f, 0.25f, 0.25f, 0.25f  );
 	@else
 		pixelData.diffuse.xyz *= (detailCol0.xyz * detailWeights.x + detailCol1.xyz * detailWeights.y) +
 								 (detailCol2.xyz * detailWeights.z + detailCol3.xyz * detailWeights.w);
@@ -201,6 +201,9 @@
 
 	@insertpiece( LoadDetailWeights )
 
+	//property( !hlms_use_prepass )
+		//insertpiece( LoadNormalData )
+	//end
 	@insertpiece( SampleDetailMaps )
 
 	@property( !hlms_prepass )
@@ -400,7 +403,10 @@
 				const midf heightMul = saturate( ( inPs.worldH - atmoSettings.fogHparams.x ) * atmoSettings.fogHparams.y );
 				const midf3 fogHclr = lerp( lerp(finalColour.xyz, atmoSettings.fogHcolor.xyz, atmoSettings.fogHcolor.w), finalColour.xyz, fogHWeight );
 				finalColour.xyz = lerp( fogHclr, finalColour.xyz, heightMul );
-				//finalColour.xyz = lerp( atmoSettings.fogHcolor.xyz, finalColour.xyz, saturate(-atmoSettings.cameraDisplacement.y * 0.0001) );
+
+				// const midf fogHin = saturate( ( atmoSettings.cameraDisplacement.y - atmoSettings.fogHparams.x ) * atmoSettings.fogHparams.y );
+				// midf fogHinWeight = midf_c( exp2( -fogHin * atmoSettings.fogHparams.z ) );
+				// finalColour.xyz = lerp( atmoSettings.fogHcolor.xyz, finalColour.xyz, fogHinWeight );
 			@end
 	@end ///!hlms_prepass
 

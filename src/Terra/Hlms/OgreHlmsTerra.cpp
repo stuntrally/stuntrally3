@@ -289,6 +289,8 @@ namespace Ogre
 
 		setProperty( PbsProperty::ReceiveShadows, 1 );
 
+		setProperty( "triplanar", 1 );
+
 		uint32 brdf = datablock->getBrdf();
 		if( (brdf & TerraBrdf::BRDF_MASK) == TerraBrdf::Default )
 		{
