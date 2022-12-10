@@ -56,7 +56,7 @@ using namespace Ogre;
 
 //  Terrain
 //-----------------------------------------------------------------------------------------------------------------------------
-void TerrainGame::CreateTerrain()
+void OgreGame::CreateTerrain()
 {
 	if (mTerra) return;
 	Root *root = mGraphicsSystem->getRoot();
@@ -200,7 +200,7 @@ void TerrainGame::CreateTerrain()
 }
 
 
-void TerrainGame::DestroyTerrain()
+void OgreGame::DestroyTerrain()
 {
 	LogO("---- destroy Terrain");
 

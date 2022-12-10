@@ -40,7 +40,7 @@ using namespace Ogre;
 
 //  Update  frame
 //-----------------------------------------------------------------------------------------------------------------------------
-void TerrainGame::update( float dt )
+void OgreGame::update( float dt )
 {
 	pApp->scn->UpdSun();
 
@@ -217,7 +217,7 @@ void TerrainGame::update( float dt )
 #pragma GCC diagnostic ignored "-Wswitch"
 //  Key events
 //-----------------------------------------------------------------------------------------------------------------------------
-void TerrainGame::keyPressed( const SDL_KeyboardEvent &arg )
+void OgreGame::keyPressed( const SDL_KeyboardEvent &arg )
 {
 	int itrk = 0, icar = 0;
 	switch (arg.keysym.scancode)
@@ -345,7 +345,7 @@ void TerrainGame::keyPressed( const SDL_KeyboardEvent &arg )
 }
 
 
-void TerrainGame::keyReleased( const SDL_KeyboardEvent &arg )
+void OgreGame::keyReleased( const SDL_KeyboardEvent &arg )
 {
 	switch (arg.keysym.scancode)
 	{

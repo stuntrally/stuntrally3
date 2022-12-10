@@ -34,7 +34,7 @@ using namespace Ogre;
 
 //  fps stats
 //------------------------------------------------------------------------------------------------
-String TerrainGame::generateFpsDebugText()
+String OgreGame::generateFpsDebugText()
 {
 	RenderSystem *rs = mGraphicsSystem->getRoot()->getRenderSystem();
 	const RenderingMetrics& rm = rs->getMetrics();  //** fps
@@ -97,7 +97,7 @@ String TerrainGame::generateFpsDebugText()
 
 //  text
 //------------------------------------------------------------------------------------------------
-void TerrainGame::generateDebugText()
+void OgreGame::generateDebugText()
 {
 	String txt;
 

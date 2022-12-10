@@ -19,7 +19,7 @@ using namespace Ogre;
 using namespace std;
 
 
-TerrainGame::TerrainGame()
+OgreGame::OgreGame()
 	: TutorialGameState()
 	//, mIblQuality( IblHigh )  // par
 	//, mIblQuality( MipmapsLowest )
@@ -29,7 +29,7 @@ TerrainGame::TerrainGame()
 
 
 //  load settings from default file
-void TerrainGame::LoadDefaultSet(SETTINGS* settings, string setFile)
+void OgreGame::LoadDefaultSet(SETTINGS* settings, string setFile)
 {
 	settings->Load(PATHMANAGER::GameConfigDir() + "/game-default.cfg");
 	settings->Save(setFile);
@@ -43,7 +43,7 @@ void TerrainGame::LoadDefaultSet(SETTINGS* settings, string setFile)
 
 //  Init SR game
 //-----------------------------------------------------------------------------------------------------------------------------
-void TerrainGame::Init()
+void OgreGame::Init()
 {
 
 	Ogre::Timer ti;
@@ -102,7 +102,7 @@ void TerrainGame::Init()
 	
 }
 
-void TerrainGame::Destroy()
+void OgreGame::Destroy()
 {
 	if (pGame)
 		pGame->End();
@@ -118,7 +118,7 @@ void TerrainGame::Destroy()
 
 //  Create
 //-----------------------------------------------------------------------------------------------------------------------------
-void TerrainGame::createScene01()
+void OgreGame::createScene01()
 {
 	
 	InitGui();
@@ -167,7 +167,7 @@ void TerrainGame::createScene01()
 
 //  Destroy
 //-----------------------------------------------------------------------------------
-void TerrainGame::destroyScene()
+void OgreGame::destroyScene()
 {
 	LogO("---- destroyScene");
 

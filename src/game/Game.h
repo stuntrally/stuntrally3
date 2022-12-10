@@ -31,7 +31,7 @@ enum IblQuality  // reflections
 };
 
 
-class TerrainGame : public TutorialGameState
+class OgreGame : public TutorialGameState
 {
 	//  vars
 	Ogre::Vector3 camPos;
@@ -62,7 +62,7 @@ public:
 	MyGUI::Gui* mGui = 0;
 	MyGUI::Ogre2Platform* mPlatform = 0;
 
-	TerrainGame();
+	OgreGame();
 	void InitGui(), DestroyGui();
 
 	//  SR

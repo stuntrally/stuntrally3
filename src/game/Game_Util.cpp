@@ -25,7 +25,7 @@ using namespace std;
 //  util
 //-----------------------------------------------------------------------------------
 template <typename T, size_t MaxNumTextures>
-void TerrainGame::unloadTexturesFromUnusedMaterials( HlmsDatablock *datablock,
+void OgreGame::unloadTexturesFromUnusedMaterials( HlmsDatablock *datablock,
 													std::set<TextureGpu *> &usedTex,
 													std::set<TextureGpu *> &unusedTex )
 {
@@ -48,7 +48,7 @@ void TerrainGame::unloadTexturesFromUnusedMaterials( HlmsDatablock *datablock,
 	}
 }
 //-----------------------------------------------------------------------------------
-void TerrainGame::unloadTexturesFromUnusedMaterials()
+void OgreGame::unloadTexturesFromUnusedMaterials()
 {
 	Root *root = mGraphicsSystem->getRoot();
 	HlmsManager *hlmsManager = root->getHlmsManager();
@@ -99,7 +99,7 @@ void TerrainGame::unloadTexturesFromUnusedMaterials()
 }
 
 //-----------------------------------------------------------------------------------
-void TerrainGame::unloadUnusedTextures()
+void OgreGame::unloadUnusedTextures()
 {
 	RenderSystem *renderSystem = mGraphicsSystem->getRoot()->getRenderSystem();
 
@@ -144,7 +144,7 @@ void TerrainGame::unloadUnusedTextures()
 }
 
 //-----------------------------------------------------------------------------------
-void TerrainGame::minimizeMemory()
+void OgreGame::minimizeMemory()
 {
 	// setTightMemoryBudget();
 	unloadTexturesFromUnusedMaterials();
@@ -161,7 +161,7 @@ void TerrainGame::minimizeMemory()
 
 #if 0
 //-----------------------------------------------------------------------------------
-void TerrainGame::setTightMemoryBudget()
+void OgreGame::setTightMemoryBudget()
 {
 	Root *root = mGraphicsSystem->getRoot();
 	RenderSystem *renderSystem = root->getRenderSystem();
@@ -178,7 +178,7 @@ void TerrainGame::setTightMemoryBudget()
 	mTightMemoryBudget = true;
 }
 //-----------------------------------------------------------------------------------
-void TerrainGame::setRelaxedMemoryBudget()
+void OgreGame::setRelaxedMemoryBudget()
 {
 	Root *root = mGraphicsSystem->getRoot();
 	RenderSystem *renderSystem = root->getRenderSystem();

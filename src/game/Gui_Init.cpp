@@ -14,7 +14,7 @@ using namespace MyGUI;
 using namespace Ogre;
 
 
-void TerrainGame::InitGui()
+void OgreGame::InitGui()
 {
 	if (mPlatform)
 		return;
@@ -83,7 +83,7 @@ void TerrainGame::InitGui()
 
 }
 
-void TerrainGame::DestroyGui()
+void OgreGame::DestroyGui()
 {
 	if (mGui)
 	{	mGui->shutdown();  delete mGui;  mGui = 0;  }

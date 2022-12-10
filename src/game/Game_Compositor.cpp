@@ -29,7 +29,7 @@ using namespace Ogre;
 
 
 //-----------------------------------------------------------------------------------
-CompositorWorkspace *TerrainGame::setupCompositor()
+CompositorWorkspace *OgreGame::setupCompositor()
 {
 	// We first create the Cubemap workspace and pass it to the final workspace
 	// that does the real rendering.

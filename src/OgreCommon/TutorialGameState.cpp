@@ -29,22 +29,22 @@ TutorialGameState::TutorialGameState() :
 	mDebugText( 0 )
 {
 }
-//-----------------------------------------------------------------------------------
 TutorialGameState::~TutorialGameState()
 {
 	delete mCameraController;
 	mCameraController = 0;
 }
-//-----------------------------------------------------------------------------------
+
 void TutorialGameState::_notifyGraphicsSystem( GraphicsSystem *graphicsSystem )
 {
 	mGraphicsSystem = graphicsSystem;
 }
-//-----------------------------------------------------------------------------------
 void TutorialGameState::createScene01()
+
 {
 	createDebugTextOverlay();
 }
+
 //-----------------------------------------------------------------------------------
 void TutorialGameState::createDebugTextOverlay()
 {
@@ -70,12 +70,14 @@ void TutorialGameState::createDebugTextOverlay()
 	overlay->add2D( panel );
 	overlay->show();
 }
+
 //-----------------------------------------------------------------------------------
 void TutorialGameState::update( float timeSinceLast )
 {
 	if( mCameraController )
 		mCameraController->update( timeSinceLast );
 }
+
 //-----------------------------------------------------------------------------------
 void TutorialGameState::keyPressed( const SDL_KeyboardEvent &arg )
 {
@@ -87,6 +89,7 @@ void TutorialGameState::keyPressed( const SDL_KeyboardEvent &arg )
 	if( !handledEvent )
 		GameState::keyPressed( arg );
 }
+
 //-----------------------------------------------------------------------------------
 void TutorialGameState::keyReleased( const SDL_KeyboardEvent &arg )
 {
@@ -149,8 +152,10 @@ void TutorialGameState::keyReleased( const SDL_KeyboardEvent &arg )
 MyGUI::MouseButton sdlButtonToMyGUI(Uint8 button)
 {
 	//  The right button is the second button, according to MyGUI
-	if (button == SDL_BUTTON_RIGHT)  button = SDL_BUTTON_MIDDLE;
-	else if (button == SDL_BUTTON_MIDDLE)  button = SDL_BUTTON_RIGHT;
+	if (button == SDL_BUTTON_RIGHT)
+		button = SDL_BUTTON_MIDDLE;
+	else if (button == SDL_BUTTON_MIDDLE)
+		button = SDL_BUTTON_RIGHT;
 	//  MyGUI's buttons are 0 indexed
 	return MyGUI::MouseButton::Enum(button - 1);
 }

@@ -186,7 +186,7 @@ class Tutorial_TerrainGraphicsSystem final : public GraphicsSystem
 		//Add Terra's piece files that customize the PBS implementation.
 		//These pieces are coded so that they will be activated when
 		//we set the HlmsPbsTerraShadows listener and there's an active Terra
-		//(see TerrainGame::createScene01)
+		//(see OgreGame::createScene01)
 		Ogre::Hlms *hlmsPbs = hlmsManager->getHlms( Ogre::HLMS_PBS );
 		Ogre::Archive *archivePbs = hlmsPbs->getDataFolder();
 		Ogre::ArchiveVec libraryPbs = hlmsPbs->getPiecesLibraryAsArchiveVec();
@@ -210,7 +210,7 @@ void MainEntryPoints::createSystems( GameState **outGraphicsGameState,
 										GameState **outLogicGameState,
 										LogicSystem **outLogicSystem )
 {
-	TerrainGame *gfxGameState = new TerrainGame();
+	OgreGame *gfxGameState = new OgreGame();
 
 	Tutorial_TerrainGraphicsSystem *graphicsSystem =
 		new Tutorial_TerrainGraphicsSystem( gfxGameState );

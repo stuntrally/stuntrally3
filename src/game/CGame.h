@@ -30,7 +30,7 @@ public:
 	
 	class SETTINGS* pSet =0;  //;  from BaseApp
 
-	class TerrainGame* mainApp = 0;
+	class OgreGame* mainApp = 0;
 	MyGUI::Gui* mGui = 0;
 
 	CScene* scn =0;
