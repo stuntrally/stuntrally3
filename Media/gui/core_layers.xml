@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MyGUI type="Layer" version="1.2">
+	<Layer type="SharedLayer" name="Back">
+		<Property key="Pick" value="true"/>
+	</Layer>
+	<Layer type="OverlappedLayer" name="Overlapped">
+		<Property key="Pick" value="true"/>
+	</Layer>
+	<Layer type="SharedLayer" name="Main">
+		<Property key="Pick" value="true"/>
+	</Layer>
+	<Layer type="OverlappedLayer" name="Popup">
+		<Property key="Pick" value="true"/>
+	</Layer>
+	<Layer type="SharedLayer" name="ToolTip">
+		<Property key="Pick" value="false"/>
+	</Layer>
+	<Layer type="SharedLayer" name="Pointer">
+		<Property key="Pick" value="false"/>
+	</Layer>
+</MyGUI>

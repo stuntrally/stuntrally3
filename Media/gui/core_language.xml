@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<MyGUI type="Language">
+
+	<Language default="en">
+		<Info name="en">
+			<Source>core_language_en_tag.xml</Source>
+		</Info>
+		<Info name="de">
+			<Source>core_language_de_tag.xml</Source>
+		</Info>
+		<Info name="fi">
+			<Source>core_language_fi_tag.xml</Source>
+		</Info>
+		<Info name="fr">
+			<Source>core_language_fr_tag.xml</Source>
+		</Info>
+		<Info name="pl">
+			<Source>core_language_pl_tag.xml</Source>
+		</Info>
+		<Info name="ro">
+			<Source>core_language_ro_tag.xml</Source>
+		</Info>
+		<Info name="ru">
+			<Source>core_language_ru_tag.xml</Source>
+		</Info>
+		<Info name="pt_BR">
+			<Source>core_language_pt_BR_tag.xml</Source>
+		</Info>
+		<Info name="it">
+			<Source>core_language_it_tag.xml</Source>
+		</Info>
+		<Info name="sk">
+			<Source>core_language_sk_tag.xml</Source>
+		</Info>
+		<Info name="es_AR">
+			<Source>core_language_es_AR_tag.xml</Source>
+		</Info>
+		<Info name="cs">
+			<Source>core_language_cs_tag.xml</Source>
+		</Info>
+		<Info name="hu_HU">
+			<Source>core_language_hu_HU_tag.xml</Source>
+		</Info>
+		<Info name="nl_NL">
+			<Source>core_language_nl_NL_tag.xml</Source>
+		</Info>
+	</Language>
+
+</MyGUI>
