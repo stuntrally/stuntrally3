@@ -1,0 +1,64 @@
+//  gauge base
+hlms hud_base unlit
+{
+	// diffuse_map mud.png
+	// alpha_rejection greater 64
+	depth_write off
+	depth_check off
+	scene_blend alpha_blend
+	cull_mode none
+	alpha_rejection none
+}
+
+hlms hud_0 unlit : hud_base
+{
+	diffuse_map gauges0.png
+}
+hlms hud_1 unlit : hud_base
+{
+	diffuse_map gauges1.png
+}
+hlms hud_2 unlit : hud_base
+{
+	diffuse_map gauges2.png
+}
+hlms hud_3 unlit : hud_base
+{
+	diffuse_map gauges3.png
+}
+hlms hud_4 unlit : hud_base
+{
+	diffuse_map gauges4.png
+}
+hlms hud_5 unlit : hud_base
+{
+	diffuse_map gauges5.png
+}
+
+
+//  minimap
+hlms hud/Minimap unlit : hud_base
+{
+}
+
+hlms hud/CarPos unlit : hud_base
+{
+	// diffuse vertexcolour
+	diffuse_map carpos0.png
+}
+
+
+hlms hud/Times unlit : hud_base
+{
+	diffuse_map border_rect.png
+}
+
+hlms hud/line unlit : hud_base
+{
+	// diffuse vertexcolour
+}
+
+hlms circle_minimap unlit : hud_base
+{
+
+}
