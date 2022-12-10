@@ -57,11 +57,11 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "hud_show.fps", show_fps);
 
 	//  gui tracks  ---
-	/*Param(c,w, "gui_tracks.view", tracks_view);		Param(c,w, "gui_tracks.filter", tracks_filter);
+	Param(c,w, "gui_tracks.view", tracks_view);		Param(c,w, "gui_tracks.filter", tracks_filter);
 	Param(c,w, "gui_tracks.sort", tracks_sort);		Param(c,w, "gui_tracks.sortup", tracks_sortup);
 
 	//  columns, filters
-	/*std::string s;
+	std::string s;
 	int i,v,ii,a;
 	
 	if (w)	//  write
@@ -96,7 +96,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 			{	std::stringstream sf(s);
 				for (i=0; i < COL_FIL; ++i)
 				{	sf >> a;  col_fil[v][i] = a;  }
-		}	}*/
+		}	}
 }
 
 
@@ -119,13 +119,13 @@ SETcom::SETcom()   ///  Defaults
 	// ,use_impostors(true), impostors_only(false)
 {
 
-	/*int i,v;
+	int i,v;
 	for (v=0; v < 2; ++v)
 	{	for (i=0; i < COL_FIL; ++i)  col_fil[v][i] = colFilDef[v][i];
 		for (i=0; i < COL_VIS; ++i)  col_vis[v][i] = colVisDef[v][i];
-	}*/
+	}
 }
-/*
+
 //  tracks list columns  --
 const bool SETcom::colVisDef[2][COL_VIS] =
 	{{0,0,1, 0,0,0, 1,1, 0,0,0,0,0,0,0,0,0,0,0},
@@ -137,4 +137,3 @@ const char SETcom::colFilDef[2][COL_FIL] =
 	{{01, 0,0,  0,0, 0,0, 0,0,0, 0,0, 0,0},
 	 {27, 6,6,  4,4, 5,5, 4,5,4, 5,5, 25,24}};
 	///^ up in next ver, also in *default.cfg
-*/

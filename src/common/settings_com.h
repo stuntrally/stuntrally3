@@ -45,7 +45,7 @@ public:
 
 
 	//  track
-	/*int tracks_view =0, tracks_sort =2;
+	int tracks_view =0, tracks_sort =2;
 	bool tracks_sortup =1, tracks_filter =0;
 
 	#define COL_VIS 19
@@ -55,7 +55,7 @@ public:
 	int  col_fil[2][COL_FIL];  // filtering range for columns 0min-1max
 
 	const static bool colVisDef[2][COL_VIS];
-	const static char colFilDef[2][COL_FIL];*/
+	const static char colFilDef[2][COL_FIL];
 	
 
 //------------------------------------------

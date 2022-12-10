@@ -3,17 +3,17 @@
 #include "Gui_Def.h"
 #include "GuiCom.h"
 #include "CScene.h"
-#include "../../vdrift/pathmanager.h"
+#include "pathmanager.h"
 #ifndef SR_EDITOR
-	#include "../CGame.h"
-	#include "../CGui.h"
-	#include "../settings.h"
+	#include "CGame.h"
+	// #include "CGui.h"
+	#include "settings.h"
 #else
-	#include "../../editor/CApp.h"
-	#include "../../editor/CGui.h"
-	#include "../../editor/settings.h"
+	#include "CApp.h"
+	#include "CGui.h"
+	#include "settings.h"
 #endif
-#include "../../sdl4ogre/sdlinputwrapper.hpp"
+// #include "../../sdl4ogre/sdlinputwrapper.hpp"
 #include <MyGUI_InputManager.h>
 #include <MyGUI_Widget.h>
 #include <MyGUI_EditBox.h>
@@ -38,8 +38,8 @@ CGuiCom::CGuiCom(App* app1)
 	,edTrkFind(0), resList(0)
 	,txtTracksFAll(0), txtTracksFCur(0)
 {
-	pSet = app1->pSet;
-	sc = app1->scn->sc;
+	// pSet = app1->pSet;
+	// sc = app1->scn->sc;
 	//mGui = app1->mGui;  set in GuiInit
 
 	pathTrk[0] = PATHMANAGER::Tracks() + "/";
@@ -112,10 +112,10 @@ TrkL::TrkL() :
 //----------------------------------------------------------------------------------------------------------------
 void CGuiCom::GuiCenterMouse()
 {	
-	int xm = app->mWindow->getWidth()/2, ym = app->mWindow->getHeight()/2;
+	// int xm = app->mWindow->getWidth()/2, ym = app->mWindow->getHeight()/2;
 
-	app->mInputWrapper->warpMouse(xm, ym);
-	InputManager::getInstance().injectMouseMove(xm, ym, 0);
+	// app->mInputWrapper->warpMouse(xm, ym);
+	// InputManager::getInstance().injectMouseMove(xm, ym, 0);
 }
 
 void CGuiCom::btnQuit(WP)
@@ -131,7 +131,8 @@ void CGuiCom::UnfocusLists()
 	{
 		//LogO(w->getTypeName() +" "+ w->getName());
 
-		#ifdef SR_EDITOR
+		return;
+		/*#ifdef SR_EDITOR
 		if (w == (WP)trkList  || w == (WP)app->gui->liSky || w == (WP)app->gui->liTex ||
 			w == (WP)app->gui->liGrs || w == (WP)app->gui->liVeg || w == (WP)app->gui->liRd)
 		#else
@@ -142,7 +143,7 @@ void CGuiCom::UnfocusLists()
 		{
 			InputManager::getInstance().resetKeyFocusWidget();
 			return;
-		}
+		}*/
 		w = w->getParent();
 	}
 }
@@ -167,12 +168,12 @@ TabPtr CGuiCom::FindSubTab(WP tab)
 void CGuiCom::SizeGUI()
 {
 	#ifndef SR_EDITOR
-	app->baseSizeGui();
+	//; app->baseSizeGui();
 	#endif
 	
 	//  call recursive method for all root widgets
-	for (VectorWidgetPtr::iterator it = app->vwGui.begin(); it != app->vwGui.end(); ++it)
-		doSizeGUI((*it)->getEnumerator());
+	//; for (VectorWidgetPtr::iterator it = app->vwGui.begin(); it != app->vwGui.end(); ++it)
+	// 	doSizeGUI((*it)->getEnumerator());
 }
 
 void CGuiCom::doSizeGUI(EnumeratorWidgetPtr widgets)
@@ -186,9 +187,9 @@ void CGuiCom::doSizeGUI(EnumeratorWidgetPtr widgets)
 		{
 			//  position & size relative to the widget specified in "RelativeTo" property (or full screen)
 			IntSize relSize;
-			if (relativeTo == "Screen")
+			/*if (relativeTo == "Screen")
 				relSize = IntSize(app->mWindow->getWidth(), app->mWindow->getHeight());
-			else
+			else*/
 			{	WP window = fWP(relativeTo);
 				relSize = window->getSize();
 			}
@@ -228,8 +229,8 @@ void CGuiCom::GuiInitTooltip()
 	mToolTip->setVisible(false);
 	mToolTipTxt = mToolTip->getChildAt(0)->castType<Edit>();
 
-	for (VectorWidgetPtr::iterator it = app->vwGui.begin(); it != app->vwGui.end(); ++it)
-		setToolTips((*it)->getEnumerator());
+	// for (VectorWidgetPtr::iterator it = app->vwGui.begin(); it != app->vwGui.end(); ++it)
+	// 	setToolTips((*it)->getEnumerator());
 }
 
 void CGuiCom::setToolTips(EnumeratorWidgetPtr widgets)
@@ -278,9 +279,9 @@ void CGuiCom::notifyToolTip(WP wp, const ToolTipInfo &info)
 	if (!mToolTip)  return;
 
 	#ifndef SR_EDITOR
-	if (!app->isFocGui)
+	// if (!app->isFocGui)
 	#else
-	if (!app->bGuiFocus)
+	// if (!app->bGuiFocus)
 	#endif
 	{	mToolTip->setVisible(false);
 		return;
@@ -306,7 +307,7 @@ void CGuiCom::notifyToolTip(WP wp, const ToolTipInfo &info)
 //  Move a widget to a point while making it stay in the viewport.
 void CGuiCom::boundedMove(Widget* moving, const IntPoint& point)
 {
-	const IntPoint offset(20, 20);  // mouse cursor
+	/*const IntPoint offset(20, 20);  // mouse cursor
 	IntPoint p = point + offset;
 
 	const IntSize& size = moving->getSize();
@@ -317,7 +318,7 @@ void CGuiCom::boundedMove(Widget* moving, const IntPoint& point)
 	if (p.left + size.width > w)  p.left = w - size.width;
 	if (p.top + size.height > h)  p.top = h - size.height;
 			
-	moving->setPosition(p);
+	moving->setPosition(p);*/
 }
 
 
@@ -349,8 +350,8 @@ void CGuiCom::GuiInitLang()
 	for (auto it = languages.cbegin(); it != languages.end(); ++it)
 	{
 		combo->addItem(it->second);
-		if (it->first == pSet->language)
-			combo->setIndexSelected(combo->getItemCount()-1);
+		// if (it->first == pSet->language)
+		// 	combo->setIndexSelected(combo->getItemCount()-1);
 	}
 }
 
@@ -361,10 +362,10 @@ void CGuiCom::comboLanguage(ComboBox* wp, size_t val)
 	
 	for (auto it = languages.cbegin(); it != languages.end(); ++it)
 	{
-		if (it->second == sel)
-			pSet->language = it->first;
+		// if (it->second == sel)
+		// 	pSet->language = it->first;
 	}
-	LanguageManager::getInstance().setCurrentLanguage(pSet->language);
+	// LanguageManager::getInstance().setCurrentLanguage(pSet->language);
 
 	// todo: fix, without restart
 	//  reinit gui
@@ -390,6 +391,7 @@ void CGuiCom::CreateFonts()
 	String inf;
 	for (int i=0; i < cnt; ++i)
 	{
+		LogO("bb");
 		//  del old
 		const string name = names[i];
 		if (mgr.isExist(name))
@@ -397,7 +399,7 @@ void CGuiCom::CreateFonts()
 
 		//  setup font				   // par
 		float size = sizes[i];  // less for low screen res
-		size *= max(0.55f, min(1.2f, (pSet->windowy - 600.f) / 600.f));
+		size *= max(0.55f, min(1.2f, (/*pSet->windowy*/1100.f - 600.f) / 600.f));
 		inf += name+"  "+fToStr(size,1,3)+"  ";
 
 		//  create
@@ -423,7 +425,9 @@ void CGuiCom::CreateFonts()
 
 		font->initialise();
 	#else
+	LogO("aaaa");
 		ResourceTrueTypeFont* font = (ResourceTrueTypeFont*)FactoryManager::getInstance().createObject("Resource", "ResourceTrueTypeFont");
+	LogO("aaaa");
 
 		//  Loading from XML, data members are private in MyGUI 3.2.0
 		xml::Document doc;

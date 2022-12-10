@@ -2,29 +2,29 @@
 #include "Def_Str.h"
 #include "Gui_Def.h"
 #include "GuiCom.h"
-#include "../../road/Road.h"
-#include "../../vdrift/pathmanager.h"
-#include "data/SceneXml.h"
-#include "data/TracksXml.h"
-#include "data/CData.h"
+#include "Road.h"
+#include "pathmanager.h"
+#include "SceneXml.h"
+#include "TracksXml.h"
+#include "CData.h"
 #include "CScene.h"
 #ifndef SR_EDITOR
-	#include "../../vdrift/game.h"
-	#include "../CGame.h"
-	#include "../CHud.h"
-	#include "../CGui.h"
-	#include "../SplitScreen.h"
+	#include "game.h"
+	#include "CGame.h"
+	#include "CHud.h"
+	// #include "CGui.h"
+	// #include "SplitScreen.h"
 #else
-	#include "../../editor/CApp.h"
-	#include "../../editor/CGui.h"
-	#include "../../editor/settings.h"
+	#include "CApp.h"
+	#include "CGui.h"
+	#include "settings.h"
 #endif
 #include "MultiList2.h"
 #include <OgreRoot.h>
 #include <OgreMaterialManager.h>
 #include <OgreSceneManager.h>
-#include <OgreTerrain.h>
-#include <OgreRenderWindow.h>
+// #include <OgreTerrain.h>
+// #include <OgreRenderWindow.h>
 #include <MyGUI.h>
 //#include <MyGUI_Delegate.h>
 //#include <MyGUI_Widget.h>
@@ -62,10 +62,10 @@ const String CGuiCom::getClrSum(int i)    {  return clrsSum   [std::min(iClrsSum
 const int wi = 15;            // id name nm   N  scn ver
 const int CGuiCom::colTrk[33] = {40, 90, 80, 25, 76, 25, wi, wi, wi, wi, wi, wi, wi, wi, wi, wi, wi, 22, 22, 24};
 #ifndef SR_EDITOR
-const int CGui::colCar[16] = {34, 80, 27, wi, wi, wi, wi, 37, 45, 24};  // car
-const int CGui::colCh [16] = {16, 200, 120, 50, 80, 80, 60, 40};  // champs
-const int CGui::colChL[16] = {16, 180, 90, 100, 50, 60, 60, 60, 50};  // challs
-const int CGui::colSt [16] = {30, 170, 100, 90, 50, 80, 70};  // stages
+// const int CGui::colCar[16] = {34, 80, 27, wi, wi, wi, wi, 37, 45, 24};  // car
+// const int CGui::colCh [16] = {16, 200, 120, 50, 80, 80, 60, 40};  // champs
+// const int CGui::colChL[16] = {16, 180, 90, 100, 50, 60, 60, 60, 50};  // challs
+// const int CGui::colSt [16] = {30, 170, 100, 90, 50, 80, 70};  // stages
 #endif
 
 //  get scenery color string from track name
@@ -318,10 +318,10 @@ void CGuiCom::ReadTrkStats()
 	SplineRoad rd(app->pGame);  rd.LoadFile(sRd,false);  // load
 
 	TIMER tim;  tim.Load(PATHMANAGER::Records()+"/"+ pSet->gui.sim_mode+"/"+ sListTrack+".txt", 0.f);
-	tim.AddCar(app->gui->sListCar);
+	// tim.AddCar(app->gui->sListCar);
 
 	bool reverse = sc->denyReversed ? false : pSet->gui.trackreverse;
-	app->gui->ckReverse.setVisible(!sc->denyReversed);  //
+	// app->gui->ckReverse.setVisible(!sc->denyReversed);  //
 	UpdGuiRdStats(&rd,sc, sListTrack, tim.GetBestLap(0, reverse), reverse, 0);
 #else
 	SplineRoad rd(app);  rd.LoadFile(sRd,false);  // load
@@ -331,7 +331,7 @@ void CGuiCom::ReadTrkStats()
 }
 
 #ifndef SR_EDITOR  // game
-void CGui::ReadTrkStatsChamp(String track, bool reverse)
+/*void CGui::ReadTrkStatsChamp(String track, bool reverse)
 {
 	String sRd = gcom->pathTrk[0] + track + "/road.xml";
 	String sSc = gcom->pathTrk[0] + track + "/scene.xml";
@@ -343,7 +343,7 @@ void CGui::ReadTrkStatsChamp(String track, bool reverse)
 	tim.AddCar(sListCar);
 
 	gcom->UpdGuiRdStats(&rd,sc, track, tim.GetBestLap(0, reverse), reverse, 1);
-}
+}*/
 #endif
 
 
@@ -423,8 +423,8 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 		stTrk[ch][8]->setAlpha(a);  imStTrk[ch][3]->setAlpha(a);
 	}
 	#ifndef SR_EDITOR
-	if (app->gui->txTrackAuthor)
-		app->gui->txTrackAuthor->setCaption("");  // user trks
+	// if (app->gui->txTrackAuthor)
+	// 	app->gui->txTrackAuthor->setCaption("");  // user trks
 	#endif
 	
 	int id = app->scn->data->tracks->trkmap[sTrack];
@@ -458,8 +458,8 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 		imInfTrk[ch][10]->setAlpha(0.2f + 0.8f * ti.rating / 6.f);
 
 		#ifndef SR_EDITOR
-		if (app->gui->txTrackAuthor)
-			app->gui->txTrackAuthor->setCaption(ti.author=="CH" ? "CryHam" : ti.author);
+		// if (app->gui->txTrackAuthor)
+			// app->gui->txTrackAuthor->setCaption(ti.author=="CH" ? "CryHam" : ti.author);
 		#endif
 	}
 
@@ -515,9 +515,9 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 #endif
 	String path = PathListTrkPrv(any ? 0 : -1, sTrack);
 
-	app->prvView.Load(path+"view.jpg");
-	app->prvRoad.Load(path+"road.png");
-	app->prvTer.Load(path+"terrain.jpg");
+	// app->prvView.Load(path+"view.jpg");
+	// app->prvRoad.Load(path+"road.png");
+	// app->prvTer.Load(path+"terrain.jpg");
 
 
 	//  start pos on minimap

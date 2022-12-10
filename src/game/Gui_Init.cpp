@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Game.h"
 #include "CGame.h"
+#include "GuiCom.h"
 #include "GraphicsSystem.h"
 #include "OgreWindow.h"
 
@@ -47,6 +48,9 @@ void TerrainGame::InitGui()
 	FactoryManager::getInstance().registerFactory<MultiList2>("Widget");
 	FactoryManager::getInstance().registerFactory<Slider>("Widget");
 
+	CGuiCom gcom(pApp);
+	gcom.CreateFonts();
+
 	//  Fps  test
 	/*ImageBox* bckFps = mGui->createWidget<ImageBox>("ImageBox",
 		0,350, 220,50, Align::Default, "Pointer", "Main");
@@ -63,7 +67,7 @@ void TerrainGame::InitGui()
 	
 	// PointerManager::getInstance().setVisible(false);  //+
 
-	// lay
+	//  load
 	// LayoutManager::getInstance().loadLayout("Game.layout");
 	// LayoutManager::getInstance().loadLayout("Game_Main.layout");  //+
 	// LayoutManager::getInstance().loadLayout("Game_Options.layout");

@@ -95,7 +95,7 @@ void TerrainGame::Init()
 	pApp->mSceneMgr = mGraphicsSystem->getSceneManager();
 
 
-	InitGui();
+	// InitGui();
 	pApp->mGui = mGui;
 
 	pApp->CreateScene();  /// New
@@ -194,7 +194,7 @@ clr:
 110 Atm5-Twister  186 Sur4-BlueWinter  
 
 	bad cars
-3B uv  ES n  OT TW wh-  U8 O gls-
+3B uv,clr  ES n,gls  OT TW wh-  U8 O gls-
 
 	low fps
 167 Taiga  grass trees

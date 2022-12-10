@@ -1,11 +1,10 @@
 #pragma once
-
 #include <OgrePlatform.h>
 
 #include <MyGUI_Delegate.h>
 #include <MyGUI_UString.h>
 
-namespace MyGUI {  class OgreD3D11Platform;  class OgrePlatform;
+namespace MyGUI {  class OgreD3D11Platform;  class Ogre2Platform;
 	class Widget;  class Window;  class Gui;  }
 
 
@@ -46,7 +45,7 @@ public:
 	
 	MyGUI::Gui* mGui;
 
-	MyGUI::OgrePlatform* mPlatform;
+	MyGUI::Ogre2Platform* mPlatform;
 	
 protected:
 	void ButtonClick(MyGUI::Widget*);

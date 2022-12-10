@@ -1,31 +1,31 @@
 #include "pch.h"
-#include "../common/Def_Str.h"
+#include "Def_Str.h"
 #include "GuiCom.h"
-#include "../../road/Road.h"
-#include "../../vdrift/pathmanager.h"
-#include "../common/data/SceneXml.h"
-#include "../common/data/TracksXml.h"
-#include "../common/data/CData.h"
-#include "../common/CScene.h"
+#include "Road.h"
+#include "pathmanager.h"
+#include "SceneXml.h"
+#include "TracksXml.h"
+#include "CData.h"
+#include "CScene.h"
 #ifndef SR_EDITOR
-	#include "../../vdrift/game.h"
-	#include "../CGame.h"
-	#include "../CHud.h"
-	#include "../CGui.h"
-	#include "../SplitScreen.h"
+	#include "game.h"
+	#include "CGame.h"
+	#include "CHud.h"
+	// #include "CGui.h"
+	// #include "SplitScreen.h"
 #else
-	#include "../../editor/CApp.h"
-	#include "../../editor/CGui.h"
-	#include "../../editor/settings.h"
+	#include "CApp.h"
+	#include "CGui.h"
+	#include "settings.h"
 #endif
 #include "MultiList2.h"
 #include <OgreRoot.h>
 #include <OgreMaterialManager.h>
 #include <OgreSceneManager.h>
-#include <OgreTerrain.h>
-#include <OgreRenderWindow.h>
+// #include <OgreTerrain.h>
+// #include <OgreRenderWindow.h>
 #include "Gui_Def.h"
-#include <boost/filesystem.hpp>
+// #include <filesystem>
 #include <MyGUI_Window.h>
 #include <MyGUI_TabItem.h>
 #include <MyGUI_TabControl.h>
@@ -206,9 +206,9 @@ void CGuiCom::listTrackChng(Mli2 li, size_t pos)
 	sListTrack = s;
 
 #ifndef SR_EDITOR
-	app->gui->changeTrack();
-	app->gui->CarListUpd(false);  // upd % col
-	app->gui->UpdDrivability(sListTrack, bListTrackU);
+	//; app->gui->changeTrack();
+	// app->gui->CarListUpd(false);  // upd % col
+	// app->gui->UpdDrivability(sListTrack, bListTrackU);
 #endif
 #ifdef SR_EDITOR
 	if (app->gui->iLoadNext==0)
@@ -258,7 +258,7 @@ void CGuiCom::editTrkFind(EditPtr ed)
 }
 
 #ifndef SR_EDITOR
-void CGui::edRplFind(EditPtr ed)
+/*void CGui::edRplFind(EditPtr ed)
 {
 	String s = ed->getCaption();
 	if (s == "")
@@ -268,15 +268,15 @@ void CGui::edRplFind(EditPtr ed)
 		StringUtil::toLowerCase(sRplFind);
 	}
 	updReplaysList();
-}
+}*/
 #endif
 
 
 //  view change
 //-----------------------------------------------------------------------------------------------------------
 #ifndef SR_EDITOR
-void CGui::btnCarView1(WP) {  pSet->cars_view = 0;  gcom->updTrkListDim();  }
-void CGui::btnCarView2(WP) {  pSet->cars_view = 1;  gcom->updTrkListDim();  }
+// void CGui::btnCarView1(WP) {  pSet->cars_view = 0;  gcom->updTrkListDim();  }
+// void CGui::btnCarView2(WP) {  pSet->cars_view = 1;  gcom->updTrkListDim();  }
 #endif
 
 void CGuiCom::btnTrkView1(WP) {  pSet->tracks_view = 0;  ChangeTrackView();  }
@@ -286,11 +286,11 @@ void CGuiCom::ChangeTrackView()
 {
 	bool full = pSet->tracks_view;
 
-	imgTrkIco1->setVisible(full);  imgTrkIco2->setVisible(full);
-	if (imgPrv[0])
-		imgPrv[0]->setVisible(!full);
-	trkDesc[0]->setVisible(!full);
-	trkAdvice[0]->setVisible(!full);
+	// imgTrkIco1->setVisible(full);  imgTrkIco2->setVisible(full);
+	// if (imgPrv[0])
+	// 	imgPrv[0]->setVisible(!full);
+	// trkDesc[0]->setVisible(!full);
+	// trkAdvice[0]->setVisible(!full);
 
 	ChkUpd_Col();
 	updTrkListDim();  // change size, columns
@@ -300,7 +300,7 @@ void CGuiCom::ChangeTrackView()
 ///  tracks list  cols,filter
 void CGuiCom::btnTrkFilter(WP)
 {
-	app->mWndTrkFilt->setVisible( !app->mWndTrkFilt->getVisible());
+	// app->mWndTrkFilt->setVisible( !app->mWndTrkFilt->getVisible());
 }
 
 void CGuiCom::chkTrkColVis(Ck* ck)
@@ -329,6 +329,7 @@ void CGuiCom::updTrkListDim()
 	for (c=0; c < cnt-1; ++c)
 		if (pSet->colVisDef[1][c])  sum += colTrk[c];
 
+#if 0
 	const IntCoord& wi = app->mWndOpts->getCoord();
 	int sw = 0, xico1 = 0, xico2 = 0, wico = 0;
 	
@@ -353,7 +354,6 @@ void CGuiCom::updTrkListDim()
 	if (!hid)
 	#endif
 		trkList->setVisible(true);
-
 
 	//  car list
 	//-------------------------------
@@ -394,4 +394,5 @@ void CGuiCom::updTrkListDim()
 	float ih = 0.045f;
 	app->bckInput->setRealCoord(0.2f, 1.f-ih, 0.5f, ih);
 	#endif
+#endif
 }

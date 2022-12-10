@@ -3,17 +3,17 @@
 #include "Gui_Def.h"
 #include "GuiCom.h"
 #ifndef SR_EDITOR
-	#include "../CGame.h"
-	#include "../SplitScreen.h"
-	#include "../settings.h"
+	#include "CGame.h"
+	// #include "SplitScreen.h"
+	#include "settings.h"
 #else
-	#include "../../editor/CApp.h"
-	#include "../../editor/settings.h"
-	#include "../../editor/CGui.h"
+	#include "CApp.h"
+	#include "settings.h"
+	#include "CGui.h"
 #endif
 #include "SDL_video.h"
 #include <OgreRoot.h>
-#include <OgreRenderWindow.h>
+// #include <OgreRenderWindow.h>
 #include <MyGUI_Widget.h>
 #include <MyGUI_EditBox.h>
 #include <MyGUI_ListBox.h>
@@ -32,7 +32,7 @@ using namespace Ogre;
 void CGuiCom::cmbAntiAliasing(MyGUI::ComboBox* wp, size_t val)
 {
 	int v = s2i(wp->getItemNameAt(val));
-	/*if (app->gui->bGI)*/  pSet->fsaa = v;
+	//*if (app->gui->bGI)*/  pSet->fsaa = v;
 }
 
 ///  change resolution
@@ -47,7 +47,7 @@ void CGuiCom::btnResChng(WP)
 	pSet->windowx = w;
 	pSet->windowy = h;
 
-	Uint32 flags = SDL_GetWindowFlags(app->mSDLWindow);
+	/*Uint32 flags = SDL_GetWindowFlags(app->mSDLWindow);
 	if (flags & SDL_WINDOW_MAXIMIZED)  // Can't change size of a maximized window
 		SDL_RestoreWindow(app->mSDLWindow);
 
@@ -62,6 +62,7 @@ void CGuiCom::btnResChng(WP)
 		SDL_SetWindowFullscreen(app->mSDLWindow, SDL_WINDOW_FULLSCREEN);
 	}else
 		SDL_SetWindowSize(app->mSDLWindow, pSet->windowx, pSet->windowy);
+	*/
 }
 
 
@@ -124,9 +125,9 @@ void CGuiCom::InitGuiScreenRes()
 				ScrRes res;  res.w = w;  res.h = h;  res.mode = mode;
 				vRes.push_back(res);
 
-				int ww = w - app->mWindow->getWidth(), hh = h - app->mWindow->getHeight();
-				if (abs(ww) < 30 && abs(hh) < 50)  // window difference
-					modeSel = mode;
+				//; int ww = w - app->mWindow->getWidth(), hh = h - app->mWindow->getHeight();
+				// if (abs(ww) < 30 && abs(hh) < 50)  // window difference
+				// 	modeSel = mode;
 			}
 		}
 
@@ -160,7 +161,7 @@ float CGuiCom::GetGuiMargin(int wy)
 //  resize Options wnd
 void CGuiCom::ResizeOptWnd()
 {
-	if (!app->mWndOpts)  return;
+	// if (!app->mWndOpts)  return;
 
 	const int wx = pSet->windowx, wy = pSet->windowy;
 
@@ -171,25 +172,25 @@ void CGuiCom::ResizeOptWnd()
 
 #ifndef SR_EDITOR  // game
 	int xc = (wx - wy)*0.5f;
-	imgPrv[2]->setCoord(xc, 0, wy, wy);  // fullscr prv
-	imgTer[2]->setCoord(xc, 0, wy, wy);
-	imgMini[2]->setCoord(xc, 0, wy, wy);  initMiniPos(2);
+	// imgPrv[2]->setCoord(xc, 0, wy, wy);  // fullscr prv
+	// imgTer[2]->setCoord(xc, 0, wy, wy);
+	// imgMini[2]->setCoord(xc, 0, wy, wy);  initMiniPos(2);
 
-	app->mWndGame->setCoord(xm, ym, xo, yo);
-	app->mWndReplays->setCoord(xm, ym, xo, yo);
-	app->mWndWelcome->setCoord(xm, ym, xo, yo);
-	app->mWndHowTo->setCoord(xm, ym, xo, yo);
+	// app->mWndGame->setCoord(xm, ym, xo, yo);
+	// app->mWndReplays->setCoord(xm, ym, xo, yo);
+	// app->mWndWelcome->setCoord(xm, ym, xo, yo);
+	// app->mWndHowTo->setCoord(xm, ym, xo, yo);
 	//ap->mWndTweak->setCoord(0, 6, xo/3, yo-ym);
 #else  // editor
-	app->mWndTrack->setCoord(xm, ym, xo, yo);
-	app->mWndEdit->setCoord(xm, ym, xo, yo);
+	// app->mWndTrack->setCoord(xm, ym, xo, yo);
+	// app->mWndEdit->setCoord(xm, ym, xo, yo);
 #endif  // both
-	app->mWndTrkFilt->setCoord(xm, ym+50, xo, yo);
-	app->mWndHelp->setCoord(xm, ym, xo, yo);
-	app->mWndOpts->setCoord(xm, ym, xo, yo);
+	// app->mWndTrkFilt->setCoord(xm, ym+50, xo, yo);
+	// app->mWndHelp->setCoord(xm, ym, xo, yo);
+	// app->mWndOpts->setCoord(xm, ym, xo, yo);
 
-	if (bnQuit)  //  reposition Quit btn
-		bnQuit->setCoord(wx - 0.12*wx, 0, 0.12*wx + 2, /*0.05*wy*/36);
+	// if (bnQuit)  //  reposition Quit btn
+	// 	bnQuit->setCoord(wx - 0.12*wx, 0, 0.12*wx + 2, /*0.05*wy*/36);
 
 	//  ed mode, status  ._
 	#ifdef SR_EDITOR
@@ -205,24 +206,21 @@ void CGuiCom::ResizeOptWnd()
 
 void CGuiCom::chkVidFullscr(Ck*)
 {
-	SDL_SetWindowFullscreen(app->mSDLWindow, pSet->fullscreen ? SDL_WINDOW_FULLSCREEN : 0);
+	/*SDL_SetWindowFullscreen(app->mSDLWindow, pSet->fullscreen ? SDL_WINDOW_FULLSCREEN : 0);
 	#ifndef SR_EDITOR
 	app->bRecreateHUD = true;
 	#endif
+	*/
 }
 
 void CGuiCom::chkVidVSync(Ck*)
 {		
-#if OGRE_VERSION < (1 << 16 | 9 << 8 | 0)
-	// This method is redundant and was removed in 1.9
-	Root::getSingleton().getRenderSystem()->setWaitForVerticalBlank(pSet->vsync);
-#endif
 	// Note that vsync toggle is broken on linux in 1.8 https://ogre3d.atlassian.net/browse/OGRE-278
 	// TODO: Once we have completely moved to 1.9+, remove the (**) from the VSync checkbox to indicate that it applies immediately
-	app->mWindow->setVSyncEnabled(pSet->vsync);
+	// app->mWindow->setVSyncEnabled(pSet->vsync);
 }
 
 void CGuiCom::comboRenderSystem(ComboBoxPtr wp, size_t val)
 {
-	pSet->rendersystem = wp->getItemNameAt(val);
+	// pSet->rendersystem = wp->getItemNameAt(val);
 }

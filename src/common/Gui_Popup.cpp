@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 #include <MyGUI_Gui.h>
-#include <MyGUI_OgrePlatform.h>
+#include <MyGUI_Ogre2Platform.h>
 #include <MyGUI_Window.h>
 #include <MyGUI_TextBox.h>
 #include <MyGUI_EditBox.h>
@@ -35,7 +35,8 @@ bool GuiPopup::Show(
 	if (!text0.empty())  ++numEdits;  if (!text1.empty())  ++numEdits;
 	if (!text2.empty())  ++numEdits;  if (!text3.empty())  ++numEdits;
 
-	int scr_w = mPlatform->getRenderManagerPtr()->getViewSize().width, scr_h = mPlatform->getRenderManagerPtr()->getViewSize().height;
+	int scr_w = mPlatform->getRenderManagerPtr()->getViewSize().width,
+		scr_h = mPlatform->getRenderManagerPtr()->getViewSize().height;
 	int wnd_w = 392, wnd_h = 140 + numEdits * 80,
 		wnd_x = (scr_w - wnd_w)/2, wnd_y = (scr_h - wnd_h)/2;  // center
 

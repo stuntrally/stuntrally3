@@ -3,24 +3,24 @@
 #include "Gui_Def.h"
 #include "GuiCom.h"
 #include "CScene.h"
-#include "../../road/Road.h"
-#include "../../vdrift/pathmanager.h"
+#include "Road.h"
+#include "pathmanager.h"
 #ifndef SR_EDITOR
-	#include "../../vdrift/game.h"
-	#include "../CGame.h"
-	#include "../SplitScreen.h"
+	#include "game.h"
+	#include "CGame.h"
+	// #include "SplitScreen.h"
 #else
-	#include "../../editor/CApp.h"
-	#include "../../editor/settings.h"
+	#include "CApp.h"
+	#include "settings.h"
 #endif
 #include "Slider.h"
-#include "WaterRTT.h"
-#include "../shiny/Main/Factory.hpp"
-#include "../sdl4ogre/sdlinputwrapper.hpp"
-#include <OgreTerrain.h>
+// #include "WaterRTT.h"
+// #include "../shiny/Main/Factory.hpp"
+// #include "../sdl4ogre/sdlinputwrapper.hpp"
+// #include <OgreTerrain.h>
 #include <OgreCamera.h>
-#include <OgreMaterialManager.h>
-#include <OgreSceneNode.h>
+// #include <OgreMaterialManager.h>
+// #include <OgreSceneNode.h>
 #include <MyGUI.h>
 using namespace MyGUI;
 using namespace Ogre;
@@ -74,17 +74,17 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 	sv= &svGrassDist;	sv->Init("GrassDist",   &pSet->grass_dist,	0.5f,7.f, 2.f);  sv->DefaultF(2.f);
 	BtnC("TrGrReset",  btnTrGrReset);
 
-	ck= &ckUseImposters;  ck->Init("UseImposters", &pSet->use_impostors);
-	ck= &ckImpostorsOnly; ck->Init("ImpostorsOnly",&pSet->impostors_only);
+	// ck= &ckUseImposters;  ck->Init("UseImposters", &pSet->use_impostors);
+	// ck= &ckImpostorsOnly; ck->Init("ImpostorsOnly",&pSet->impostors_only);
 
 	//  shadows
 	sv= &svShadowType;
 		sv->strMap[0] = TR("#{None}");	sv->strMap[1] = "Depth";	sv->strMap[2] = "Soft-";
 						sv->Init("ShadowType",	&pSet->shadow_type,  0,1);  sv->DefaultI(1);
 	sv= &svShadowCount;	sv->Init("ShadowCount",	&pSet->shadow_count, 1,3);  sv->DefaultI(2);
-	sv= &svShadowSize;
-		for (int i=0; i < ciShadowSizesNum; ++i)  sv->strMap[i] = toStr(ciShadowSizesA[i]);
-						sv->Init("ShadowSize",	&pSet->shadow_size, 0,ciShadowSizesNum-1);   sv->DefaultI(3);
+	// sv= &svShadowSize;
+	// 	for (int i=0; i < ciShadowSizesNum; ++i)  sv->strMap[i] = toStr(ciShadowSizesA[i]);
+	// 					sv->Init("ShadowSize",	&pSet->shadow_size, 0,ciShadowSizesNum-1);   sv->DefaultI(3);
 	sv= &svShadowDist;	sv->Init("ShadowDist",	&pSet->shadow_dist, 20.f,5000.f, 3.f, 0,3, 1.f," m");  sv->DefaultF(1300.f);
 
 	BtnC("Apply", btnShadows);
@@ -92,11 +92,11 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 	BtnC("ApplyShadersWater", btnShaders);
 	
 	//  water
-	ck= &ckWaterReflect; ck->Init("WaterReflection", &pSet->water_reflect);  CevC(Water);
-	ck= &ckWaterRefract; ck->Init("WaterRefraction", &pSet->water_refract);  CevC(Water);
-	sv= &svWaterSize;
-		for (int i=0; i <= 2; ++i)  sv->strMap[i] = toStr(ciShadowSizesA[i]);
-						sv->Init("WaterSize",	&pSet->water_rttsize, 0.f,2.f);  sv->DefaultI(0);  SevC(WaterSize);
+	// ck= &ckWaterReflect; ck->Init("WaterReflection", &pSet->water_reflect);  CevC(Water);
+	// ck= &ckWaterRefract; ck->Init("WaterRefraction", &pSet->water_refract);  CevC(Water);
+	// sv= &svWaterSize;
+		// for (int i=0; i <= 2; ++i)  sv->strMap[i] = toStr(ciShadowSizesA[i]);
+		// 				sv->Init("WaterSize",	&pSet->water_rttsize, 0.f,2.f);  sv->DefaultI(0);  SevC(WaterSize);
 	
 	//  presets
 	CmbC(cmb, "CmbGraphicsAll", comboGraphicsAll);
@@ -106,7 +106,7 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 		cmb->addItem(TR("#{GraphicsAll_Medium}"));  cmb->addItem(TR("#{GraphicsAll_High}"));
 		cmb->addItem(TR("#{GraphicsAll_Higher}"));  cmb->addItem(TR("#{GraphicsAll_VeryHigh}"));
 		cmb->addItem(TR("#{GraphicsAll_Ultra}"));   cmb->addItem(TR("#{GraphicsAll_Impossible}"));
-		cmb->setIndexSelected(pSet->preset);
+		// cmb->setIndexSelected(pSet->preset);
 	}
 	
 	//  video
@@ -115,7 +115,7 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 	sv= &svLimitSleep; sv->Init("LimitSleep", &pSet->limit_sleep,  -2,20, 1.5f);  sv->DefaultI(-1);
 	
 	//  screen
-	CmbC(cmb, "CmbAntiAliasing", cmbAntiAliasing);
+	/*CmbC(cmb, "CmbAntiAliasing", cmbAntiAliasing);
 	int si=0;
 	if (cmb)
 	{	cmb->removeAllItems();
@@ -129,7 +129,7 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 				si = i;
 		}
 		cmb->setIndexSelected(si);
-	}
+	}*/
 
 	//  render systems
 	#if 0
@@ -164,28 +164,28 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 
 void CGuiCom::comboTexFilter(CMB)
 {
-	pSet->tex_filt = val;
+	/*pSet->tex_filt = val;
 	TextureFilterOptions tfo;
 	switch (val)  {
 		case 0:	 tfo = TFO_BILINEAR;	break;
 		case 1:	 tfo = TFO_TRILINEAR;	break;
 		case 2:	 tfo = TFO_ANISOTROPIC;	break;	}
-	MaterialManager::getSingleton().setDefaultTextureFiltering(tfo);
+	MaterialManager::getSingleton().setDefaultTextureFiltering(tfo);*/
 }
 
 void CGuiCom::slAnisotropy(SV*)
 {
-	MaterialManager::getSingleton().setDefaultAnisotropy(pSet->anisotropy);
+	// MaterialManager::getSingleton().setDefaultAnisotropy(pSet->anisotropy);
 }
 
 void CGuiCom::slViewDist(SV* sv)
 {
 	Vector3 sc = pSet->view_distance * Vector3::UNIT_SCALE;
-	if (app->ndSky)
-		app->ndSky->setScale(sc);
+	// if (app->ndSky)
+	// 	app->ndSky->setScale(sc);
 
 	#ifndef SR_EDITOR
-		app->mSplitMgr->UpdateCamDist();  // game, for all cams
+		// app->mSplitMgr->UpdateCamDist();  // game, for all cams
 	#else
 		app->mCamera->setFarClipDistance(pSet->view_distance*1.1f);
 	#endif
@@ -193,13 +193,13 @@ void CGuiCom::slViewDist(SV* sv)
 
 void CGuiCom::slTerDetail(SV*)
 {
-	app->scn->UpdTerErr();
+	// app->scn->UpdTerErr();
 }
 
 void CGuiCom::slTerDist(SV*)
 {
-	if (app->scn->mTerrainGlobals)
-		app->scn->mTerrainGlobals->setCompositeMapDistance(pSet->terdist);
+	// if (app->scn->mTerrainGlobals)
+	// 	app->scn->mTerrainGlobals->setCompositeMapDistance(pSet->terdist);
 }
 
 //  trees/grass
@@ -213,21 +213,21 @@ void CGuiCom::btnTrGrReset(WP wp)
 
 
 //  shadows
-void CGuiCom::btnShadows(WP){	app->scn->changeShadows();	}
-void CGuiCom::btnShaders(WP){	app->scn->changeShadows();	}
+void CGuiCom::btnShadows(WP){	/*app->scn->changeShadows();*/  }
+void CGuiCom::btnShaders(WP){	/*app->scn->changeShadows();*/  }
 
 
 //  water
 void CGuiCom::chkWater(Ck*)
 {
-	app->scn->mWaterRTT->setReflect(pSet->water_reflect);
-	app->scn->mWaterRTT->setRefract(pSet->water_refract);
-	app->scn->changeShadows();
-	app->scn->mWaterRTT->recreate();
+	// app->scn->mWaterRTT->setReflect(pSet->water_reflect);
+	// app->scn->mWaterRTT->setRefract(pSet->water_refract);
+	// app->scn->changeShadows();
+	// app->scn->mWaterRTT->recreate();
 }
 
 void CGuiCom::slWaterSize(SV*)
 {
-	app->scn->mWaterRTT->setRTTSize(ciShadowSizesA[pSet->water_rttsize]);
-	app->scn->mWaterRTT->recreate();
+	// app->scn->mWaterRTT->setRTTSize(ciShadowSizesA[pSet->water_rttsize]);
+	// app->scn->mWaterRTT->recreate();
 }
