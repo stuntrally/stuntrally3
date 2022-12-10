@@ -164,7 +164,7 @@ void CHud::Create()
 		if (cm->vtype != V_Sphere)
 		{
 			h.txBFuel = h.parent->createWidget<TextBox>("TextBox",
-				0,y, 120,80, Align::Right, "Fuel"+s);  h.txBFuel->setVisible(false);
+				0,y, 120,80, Align::Right, "Fuel"+s);  //h.txBFuel->setVisible(false);
 			h.txBFuel->setTextAlign(Align::Right|Align::VCenter);
 			h.txBFuel->setFontName("DigGear");  h.txBFuel->setFontHeight(72);
 			h.txBFuel->setTextColour(Colour(0.6,0.8,1.0));  //h.txBFuel->setTextShadow(true);
@@ -182,7 +182,7 @@ void CHud::Create()
 		}
 
 		//  damage %
-		if (pSet->game.damage_type > 0)
+		//if (pSet->game.damage_type > 0)
 		{
 			h.imgDamage = h.parent->createWidget<ImageBox>("ImageBox",
 				0,y, 130,46, Align::Left, "PDmg"+s);
@@ -191,7 +191,7 @@ void CHud::Create()
 			h.txDamage = h.parent->createWidget<TextBox>("TextBox",
 				0,y, 120,40, Align::Right, "Dmg"+s);  //h.txDamage->setVisible(false);
 			h.txDamage->setTextAlign(Align::Right|Align::VCenter);
-			h.txDamage->setFontName("DigGear"); /*hud.replay");*/  h.txDamage->setFontHeight(64);
+			h.txDamage->setFontName("hud.replay");  h.txDamage->setFontHeight(64);
 			h.txDamage->setTextColour(Colour(0.7,0.7,0.7));  h.txDamage->setTextShadow(true);
 
 			h.icoDamage = h.parent->createWidget<ImageBox>("ImageBox",
@@ -217,59 +217,66 @@ void CHud::Create()
 		h.icoRewind->setImageCoord(IntCoord(512,384,128,128));
 	#endif
 
+
 		///  times text  ----------------------
-		/*h.bckTimes = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 356,260, Align::Left, "TimP"+s);  h.bckTimes->setVisible(false);
-		h.bckTimes->setAlpha(0.f);
-		h.bckTimes->setImageTexture("back_times.png");*/
+		h.bckTimes = h.parent->createWidget<ImageBox>("ImageBox",
+			0,y, 450,280, Align::Left, "TimP"+s);  h.bckTimes->setVisible(false);
+		h.bckTimes->setColour(Colour(0.1,0.1,0.1));
+		h.bckTimes->setAlpha(0.6f);
+		h.bckTimes->setImageTexture("back_times.png");
 		bool hasLaps = 0; //; pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 || app->mClient;
 
 		h.txTimTxt = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 2*120,2*260, Align::Left, "TimT"+s);
-		h.txTimTxt->setFontName("DigGear");  // hud.times");
-		h.txTimTxt->setFontHeight(55);  h.txTimTxt->setTextShadow(true);
+			0,y, 170,260, Align::Left, "TimT"+s);
+		h.txTimTxt->setFontName("hud.times");
+		// h.txTimTxt->setFontHeight(25);
+		h.txTimTxt->setTextShadowColour(Colour::Black);  h.txTimTxt->setTextShadow(true);
 		h.txTimTxt->setInheritsAlpha(false);
-		/*h.txTimTxt->setCaption(  // fixme
+		h.txTimTxt->setCaption(
 			(hasLaps ? String("#90D0C0")+TR("#{TBLap}") : "")+
 			"\n#A0E0E0"+TR("#{TBTime}") +
 			"\n#70D070"+TR("#{Track}") +
 			"\n#C0C030"+TR("#{TBPosition}") +
 			"\n#F0C050"+TR("#{TBPoints}") +
-			"\n#C8A898"+TR("#{Progress}") );*/
+			"\n#C8A898"+TR("#{Progress}") );/**/
 
 		h.txTimes = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 2*230,2*260, Align::Left, "Tim"+s);
+			0,y, 230,260, Align::Left, "Tim"+s);
 		h.txTimes->setInheritsAlpha(false);
-		h.txTimes->setFontName("DigGear");  // hud.times");  // fixme
-		h.txTimes->setFontHeight(55);  h.txTimes->setTextShadow(true);
+		h.txTimes->setFontName("hud.times");
+		// h.txTimes->setFontName("DigGear");  //?
+		// h.txTimes->setFontHeight(45);
+		h.txTimes->setTextShadow(true);
 
 
 		///  lap results  ----------------------
 		h.bckLap = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 2*320,2*210, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
+			0,y, 320,210, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
 		h.bckLap->setColour(Colour(0.4,0.4,0.4));
 		h.bckLap->setAlpha(0.2f);
 		h.bckLap->setImageTexture("back_times.png");
 
 		h.txLapTxt = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 2*120,2*300, Align::Left, "LapT"+s);
-		h.txLapTxt->setFontName("DigGear");  // hud.times
-		h.txTimTxt->setFontHeight(55);  h.txLapTxt->setTextShadow(true);
+			0,y, 120,300, Align::Left, "LapT"+s);
+		h.txLapTxt->setFontName("hud.times");
+		// h.txLapTxt->setFontHeight(25);
+		h.txLapTxt->setTextShadow(true);
 		h.txLapTxt->setInheritsAlpha(false);
-		/*h.txLapTxt->setCaption(//String("\n")+  // fixme
-			//(hasLaps ? String("#D0F8F0")+TR("#{TBLap}") : "")+
+		h.txLapTxt->setCaption(//String("\n")+  // fixme
+			(hasLaps ? String("#D0F8F0")+TR("#{TBLap}") : "")+
 			"\n#80C0F0"+TR("#{TBLast}") +
 			"\n#80E0E0"+TR("#{TBBest}") +
 			"\n#70D070"+TR("#{Track}") +
 			"\n#C0C030"+TR("#{TBPosition}") +
-			"\n#F0C050"+TR("#{TBPoints}") );*/
+			"\n#F0C050"+TR("#{TBPoints}") );/**/
 		h.txLapTxt->setVisible(false);
 
 		h.txLap = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 2*230,2*320, Align::Left, "Lap"+s);
+			0,y, 230,320, Align::Left, "Lap"+s);
 		h.txLap->setInheritsAlpha(false);
-		h.txLap->setFontName("DigGear");  // hud.times
-		h.txTimTxt->setFontHeight(55);  h.txLap->setTextShadow(true);
+		h.txLap->setFontName("hud.times");
+		// h.txLap->setFontHeight(25);
+		h.txLap->setTextShadow(true);
 		h.txLap->setVisible(false);
 
 
@@ -333,6 +340,7 @@ void CHud::Create()
 			0,0, 300,30, Align::Left, "CamT"+s);
 		h.txCam->setFontName("hud.text");  h.txCam->setTextShadow(true);
 		h.txCam->setTextColour(Colour(0.65,0.85,0.85));
+		h.txCam->setCaption("Camera");//
 
 		//  input bars  --------------
 		/*Img bar = tabitem->createWidget<ImageBox>("ImageBox",
@@ -345,7 +353,7 @@ void CHud::Create()
 	#endif
 	}
 
-#if 0
+
 	//  camera info
 	txCamInfo = app->mGui->createWidget<TextBox>("TextBox",
 		0,y, 900,100, Align::Left, "Back", "CamIT");  txCamInfo->setVisible(false);
@@ -365,9 +373,7 @@ void CHud::Create()
 	txMsg->setInheritsAlpha(false);
 	txMsg->setFontName("hud.text");  txMsg->setTextShadow(true);
 	txMsg->setTextColour(Colour(0.95,0.95,1.0));
-#endif
 
-	LogO("-- Create Hud  13");
 
 	///  tex
 	// resMgr.removeResourceLocation(path, sGrp);
@@ -378,8 +384,6 @@ void CHud::Create()
 		cm->updTimes = true;
 		cm->updLap = true;  cm->fLapAlpha = 1.f;
 	}
-
-	LogO("-- Create Hud  14");
 
 	///  tire vis circles  + + + +
 	asp = float(pSet->windowx) / float(pSet->windowy);
@@ -472,15 +476,15 @@ void CHud::Destroy()
 			if (w) {  app->mGui->destroyWidget(w);  w = 0;  }
 			
 		Dest(h.txGear)  Dest(h.txVel)  Dest(h.bckVel)
-		Dest(h.txAbs)  Dest(h.txTcs)  //Dest(h.txCam)
+		Dest(h.txAbs)  Dest(h.txTcs)  Dest(h.txCam)
 		
 		Dest(h.txBFuel)  Dest(h.txDamage)  Dest(h.txRewind)  Dest(h.imgDamage)
 		Dest(h.icoBFuel)  Dest(h.icoBInf)  Dest(h.icoDamage)  Dest(h.icoRewind)
 
 		// for (i=0; i < 3; ++i)  Dest(h.txOpp[i])
 		// Dest(h.bckOpp)
-		Dest(h.txTimTxt)  Dest(h.txTimes)  //Dest(h.bckTimes)
-		// Dest(h.txLapTxt)  Dest(h.txLap)  Dest(h.bckLap)
+		Dest(h.txTimTxt)  Dest(h.txTimes)  Dest(h.bckTimes)
+		Dest(h.txLapTxt)  Dest(h.txLap)  Dest(h.bckLap)
 		h.sTimes = "";  h.sLap = "";
 		
 		// Dest(h.txWarn)  Dest(h.bckWarn)
@@ -488,8 +492,8 @@ void CHud::Destroy()
 		// Dest(h.txCountdown)
 	}
 	// Dest2(moPos, ndPos)
-	/*Dest(txMsg)  Dest(bckMsg)
-	Dest(txCamInfo)*/
+	Dest(txMsg)  Dest(bckMsg)
+	Dest(txCamInfo)
 	
 	// for (i=0; i < 4; ++i)
 		// Dest2(moTireVis[i],ndTireVis[i])

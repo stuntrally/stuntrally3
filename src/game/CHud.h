@@ -46,6 +46,7 @@ public:
 	{
 	public:
 		//  times bar
+		Img bckTimes =0;
 		Txt txTimTxt =0, txTimes =0;
 		Ogre::String sTimes, sLap;
 		//  lap results
@@ -78,7 +79,7 @@ public:
 		//Txt txtOther =0;  //barHandBrake = 0, barBoost = 0, barRewind =0;
 
 		//  current camera name
-		// Txt txCam =0;
+		Txt txCam =0;
 
 		//  miniap
 		// Ogre::ManualObject *moMap =0;  Ogre::SceneNode *ndMap =0;
@@ -103,10 +104,10 @@ public:
 	//; Ogre::SceneNode* ndPos =0;  Ogre::ManualObject* moPos =0;
 
 	//  chat messages
-	// Txt txMsg =0;  Img bckMsg =0;
+	Txt txMsg =0;  Img bckMsg =0;
 	
 	//  camera move info
-	// Txt txCamInfo =0;
+	Txt txCamInfo =0;
 	//  car debug texts  todo...
 	// Txt txDbgCar =0, txDbgTxt =0, txDbgExt =0;
 

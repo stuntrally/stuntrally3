@@ -294,7 +294,7 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 	}
 
 	//  boost fuel (time)  ------
-	if (h.txBFuel && pCar && h.txBFuel->getVisible())
+	if (h.txBFuel && pCar)// && h.txBFuel->getVisible())
 	{
 		float f = 0.1f * std::min(10.f, pCar->dynamics.boostFuel);
 		//ColourValue c;  c.setHSB(0.6f - f*0.1f, 0.7f + f*0.3f, 0.8f + f*0.2f);
@@ -304,7 +304,7 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 	}
 
 	//  damage %  ------
-	if (h.txDamage && pCar && h.txDamage->getVisible())
+	if (h.txDamage && pCar) // && h.txDamage->getVisible())
 	{
 		float d = std::min(100.f, Math::Floor(pCar->dynamics.fDamage));
 		float& a = h.dmgBlink;
@@ -420,14 +420,14 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 				 	fToStr(fabs(diff), 1,3) : "")+
 				h.sTimes+
 				"\n#E0B090" + fToStr(pCarM->trackPercent,0,1)+"%" );
-	#if 1
+
 		if (h.txLap)
 		{
 			//if (pCarM->updLap)
 			//{	pCarM->updLap = false;
-				//h.txLap->setCaption(h.sLap);
+				h.txLap->setCaption(h.sLap);
 			//}
-			float a = std::min(1.f, pCarM->fLapAlpha * 2.f);
+			float a = 1.f; //; std::min(1.f, pCarM->fLapAlpha * 2.f);
 			bool hasRoad = app->scn->road && app->scn->road->getNumPoints() > 2;
 			bool vis = false; //pSet->show_times && hasRoad && a > 0.f;
 			if (vis)
@@ -441,7 +441,6 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			h.bckLap->setVisible(vis);
 			h.txLapTxt->setVisible(vis);  h.txLap->setVisible(vis);
 		}
-	#endif
 	}
 
 #if 0

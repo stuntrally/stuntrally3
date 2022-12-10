@@ -47,7 +47,7 @@
 	<!-- Hud Text  Big  Times -->
 	<Resource type="ResourceTrueTypeFont" name="hud.times">
 		<Property key="Source" value="DejaVuLGCSans.ttf"/>
-		<Property key="Size" value="58"/>
+		<Property key="Size" value="45"/>
 		<Property key="Resolution" value="50"/>
 		<Property key="Antialias" value="false"/>
 		<Property key="TabWidth" value="8"/>
@@ -86,6 +86,7 @@
     <Resource type="ResourceManualFont" name="DigGear">
         <Property key="Source" value="Digital_41.png"/>
         <Property key="DefaultHeight" value="88"/>
+		<Property key="OffsetHeight" value="0"/>
         <Codes>
             <Code index="9" advance="112"/>
             <Code index="32" bearing="0 44" advance="27"/>

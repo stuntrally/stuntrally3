@@ -5,49 +5,23 @@
 #include "CameraController.h"
 #include "GraphicsSystem.h"
 
-#include <OgreSceneManager.h>
-#include <OgreRoot.h>
-#include <OgreLogManager.h>
-
-#include <OgreCamera.h>
-#include <OgreWindow.h>
-
 #include "Terra/Hlms/OgreHlmsTerra.h"
 #include "Terra/Hlms/PbsListener/OgreHlmsPbsTerraShadows.h"
 #include "Terra/Terra.h"
-#include "Terra/TerraShadowMapper.h"
-#include "OgreGpuProgramManager.h"
 
-#include <OgreItem.h>
-#include <OgreMesh.h>
-#include <OgreMeshManager.h>
-#include <OgreMesh2.h>
-#include <OgreMeshManager2.h>
-#include <OgreManualObject2.h>
-
-#include <OgreHlmsPbs.h>
-#include <OgreHlmsPbsDatablock.h>
 #include <OgreHlmsTerraDatablock.h>
 #include <OgreTextureGpuManager.h>
-
 #include <OgreGpuResource.h>
 #include <OgreHlmsTerraPrerequisites.h>
-#include <OgreHlmsUnlitDatablock.h>
 #include <OgreHlmsSamplerblock.h>
-// #include "OgreHlmsTerra.h"
 
 //  SR
 #include "CGame.h"
 #include "CScene.h"
-#include "SceneXml.h"
-#include "SceneClasses.h"
-#include "game.h"
 #include "settings.h"
 #include "ShapeData.h"
 #include "SceneXml.h"
-
-#include <BulletCollision/CollisionDispatch/btCollisionObject.h>
-#include <BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h>
+#include "pathmanager.h"
 
 #include "Def_Str.h"
 #include "RenderConst.h"
@@ -129,7 +103,7 @@ void OgreGame::CreateTerrain()
 		{	tblock->setTexture( TERRA_DETAIL0_NM + i, tex );
 			tblock->setSamplerblock( TERRA_DETAIL0_NM + i, sampler );
 		}
-		n_h = d_s = "white.png";  // todo: _r _m terrain textures..
+		/*n_h = d_s = "white.png";  // todo: _r _m terrain textures..
 		tex = texMgr->createOrRetrieveTexture(n_h,
 			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 		if (tex)
@@ -141,10 +115,10 @@ void OgreGame::CreateTerrain()
 		if (tex)
 		{	tblock->setTexture( TERRA_DETAIL_METALNESS0 + i, tex );
 			tblock->setSamplerblock( TERRA_DETAIL_METALNESS0 + i, sampler );
-		}
+		}*/
 		Real sc = fTer / l.tiling;
 		tblock->setDetailMapOffsetScale( i, Vector4(0,0, sc,sc) );
-		tblock->setMetalness(i, 0.1);
+		tblock->setMetalness(i, 0.2);
 		tblock->setRoughness(i, 0.5);
 	}
 	// const HlmsSamplerblock *sam = tblock->getSamplerblock( TERRA_DETAIL0 );

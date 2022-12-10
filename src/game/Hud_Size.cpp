@@ -33,7 +33,7 @@ using namespace MyGUI;
 //---------------------------------------------------------------------------------------------------------------
 struct VPDims
 {	Ogre::Real top,left, width,height, right,bottom, avgsize;
-	void Default() {  top=0.f; left=0.f;  width=1.f; height=1.f;  right=1.f; bottom=1.f;  avgsize=1.f;  }
+	void Default() {  top=-1.f; left=-1.f;  width=2.f; height=2.f;  right=1.f; bottom=1.f;  avgsize=1.f;  }
 	VPDims() {  Default();  }
 } mDims[4];
 
@@ -41,11 +41,9 @@ void CHud::Size()
 {
 	// float wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
 	float wx = pSet->windowx, wy = pSet->windowy;
-	// float wx = 1900, wy = 1000;
-	// float wx = 800, wy = 400;
 	asp = wx/wy;
 
-	int cnt = pSet->game.local_players;
+	int cnt = 1; //pSet->game.local_players;
 	#ifdef DEBUG
 	assert(cnt <= hud.size());
 	#endif
@@ -56,7 +54,7 @@ void CHud::Size()
 		// const SplitScr::VPDims& dim = app->mSplitMgr->mDims[c];
 		VPDims dim;
 		//  gauges
-		Real xcRpm,ycRpm,xcRpmL, xcVel,ycVel, ygMax, xBFuel;  // -1..1
+		Real xcRpm=0.f,ycRpm=0.f,xcRpmL=0.f, xcVel=0.f,ycVel=0.f, ygMax=0.f, xBFuel=0.f;  // -1..1
 		// if (h.ndGauges)
 		{
 			Real sc = pSet->size_gauges * dim.avgsize;
@@ -67,10 +65,10 @@ void CHud::Size()
 			xcVel = dim.right - spx;       ycVel =-dim.bottom + spy*0.9f;
 			ygMax = ycVel - sc;  xBFuel = xcVel - sc;
 
-			/*h.vcRpm = Vector2(xcRpm,ycRpm);  // store for updates
+			h.vcRpm = Vector2(xcRpm,ycRpm);  // store for updates
 			h.vcVel = Vector2(xcVel,ycVel);
 			h.fScale = sc;
-			h.updGauges = true;*/
+			h.updGauges = true;
 		}
 		
 		//  minimap
@@ -122,18 +120,18 @@ void CHud::Size()
 			}
 
 			//  times
-			//bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || app->mClient;
-			int tx = xMin + 40, ty = yMin + 40;
-			//h.bckTimes->setPosition(tx,ty);
-			//tx = 24;  ty = 4;  //(hasLaps ? 16 : 4);
+			// bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || app->mClient;
+			int w = 160, tx = xMin + 40, ty = yMin + 400; //40
+			h.bckTimes->setPosition(tx-20,ty);
+			//tx = 24;  ty = (hasLaps ? 16 : 4);
 			h.txTimTxt->setPosition(tx,ty);
-			h.txTimes->setPosition(tx+126,ty);
+			h.txTimes->setPosition(tx+w,ty);
 
 			//  lap result
 			int lx = xMax - 320, ly = ty;
 			h.bckLap->setPosition(lx-14,ly-8);
 			h.txLapTxt->setPosition(lx,ly);
-			h.txLap->setPosition(lx+126,ly);
+			h.txLap->setPosition(lx+w,ly);
 		/*		
 			//  opp list
 			//int ox = itx + 5, oy = (ycRpm+1.f)*0.5f*wy - 10;
@@ -150,17 +148,19 @@ void CHud::Size()
 			h.bckPlace->setPosition(ox,oy + 40);
 			
 			h.txCountdown->setPosition((xMax-xMin)/2 -100, (yMax-yMin)/2 -60);
+		*/
 			//  camera
-			h.txCam->setPosition(xMax-260,yMax-30);
+			if (h.txCam)
+				h.txCam->setPosition(xMax-260,yMax-30);
 			//  abs,tcs
-			h.txAbs->setPosition(xMin+160,yMax-30);
-			h.txTcs->setPosition(xMin+220,yMax-30);*/
+			// h.txAbs->setPosition(xMin+160,yMax-30);
+			// h.txTcs->setPosition(xMin+220,yMax-30);
 		}
 	}
-	/*if (txCamInfo)
+	if (txCamInfo)
 	{	txCamInfo->setPosition(270,wy-100);
 		bckMsg->setPosition(256,0);
-	}*/
+	}
 }
 
 
@@ -203,11 +203,11 @@ void CHud::Show(bool hideAll)
 	{
 		bool cam = pSet->show_cam /*&& !app->isFocGui*/, times = pSet->show_times;
 		//bool opp = pSet->show_opponents && (app->scn->road && app->scn->road->getNumPoints() > 0);
-		bool bfuel = pSet->game.boost_type >= 1; // && pSet->game.boost_type <= 3;
-		bool btxt = pSet->game.boost_type == 1 || pSet->game.boost_type == 2;
+		bool bfuel = 1;// pSet->game.boost_type >= 1; // && pSet->game.boost_type <= 3;
+		bool btxt = 1; //pSet->game.boost_type == 1 || pSet->game.boost_type == 2;
 		//bool binf = pSet->game.boost_type == 3;
-		bool bdmg = pSet->game.damage_type > 0;
-		//txCamInfo->setVisible(cam);
+		bool bdmg = 1; //pSet->game.damage_type > 0;
+		txCamInfo->setVisible(cam);
 
 		show = pSet->show_gauges;
 		for (int c=0; c < hud.size(); ++c)
@@ -230,13 +230,14 @@ void CHud::Show(bool hideAll)
 				// h.ndGauges->setVisible(show);  h.ndNeedles->setVisible(show);
 				
 				// h.ndMap->setVisible(pSet->trackmap);
-				h.txTimes->setVisible(times);  h.txTimTxt->setVisible(times);
+				h.txTimes->setVisible(times);  h.txTimTxt->setVisible(times);  h.bckTimes->setVisible(times);
 				h.txLap->setVisible(times);  h.txLapTxt->setVisible(times);  h.bckLap->setVisible(times);
 			#if 0
 				h.bckOpp->setVisible(opp);
 				h.txOpp[0]->setVisible(opp);  h.txOpp[1]->setVisible(opp);  h.txOpp[2]->setVisible(opp);
-				h.txCam->setVisible(cam);
-			#endif
+				#endif
+				if (h.txCam)
+					h.txCam->setVisible(cam);
 		}	}
 	}
 	//; if (ndPos)  ndPos->setVisible(pSet->trackmap);
