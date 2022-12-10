@@ -49,7 +49,7 @@ public:
 		Txt txTimTxt =0, txTimes =0;
 		Ogre::String sTimes, sLap;
 		//  lap results
-		// Txt txLapTxt =0, txLap =0;  Img bckLap =0;
+		Txt txLapTxt =0, txLap =0;  Img bckLap =0;
 		//  opponents list  columns: trk %, dist m, nick
 		// Txt txOpp[3]={0,0,0};  Img bckOpp =0;
 		int xOpp =0, yOpp =0, lastOppH = -1;

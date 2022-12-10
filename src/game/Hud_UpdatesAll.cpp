@@ -365,7 +365,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 		float part = ghTimeES / app->fLastTime;  // fraction which track ghost has driven
 
 		bool coldStart = tim.GetCurrentLap(carId) == 1;  // was 0
-		float carMul = 1.f;//; app->GetCarTimeMul(pSet->game.car[carId], pSet->game.sim_mode);
+		float carMul = app->GetCarTimeMul(pSet->game.car[carId], pSet->game.sim_mode);
 		//| cur
 		float ghTimeC = ghTimeES + (coldStart ? 0 : 1);
 		float ghTime = ghTimeC * carMul;  // scaled
@@ -381,19 +381,18 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			float timeTrk = app->data->tracks->times[pSet->game.track];
 			bool b = timeTrk > 0.f && timeCur > 0.f;
 
-			//bool coldStart = tim.GetCurrentLap(carId) == 1;  // was 0
 			float time = (/*place*/1 * app->data->cars->magic * timeTrk + timeTrk) / carMul;  // trk time (for 1st place)
 			//float t1pl = data->carsXml.magic * timeTrk;
 
 			float points = 0.f, curPoints = 0.f;
-			int place = 1;//;app->GetRacePos(timeCur, timeTrk, carMul, coldStart, &points);
+			int place = app->GetRacePos(timeCur, timeTrk, carMul, coldStart, &points);
 			//| cur
 			float timCC = timeTrk + (coldStart ? 0 : 1);
 			float timCu = timCC * carMul;
 			diff = pCarM->timeAtCurChk + /*(coldStart ? 1:0)*carMul*/ - time * part;  ///new
 
 			float chkPoints = 0.f;  // cur, at chk, assume diff time later than track ghost
-			int chkPlace = 1;//;app->GetRacePos(timCu + diffT, timeTrk, carMul, coldStart, &chkPoints);
+			int chkPlace = app->GetRacePos(timCu + diffT, timeTrk, carMul, coldStart, &chkPoints);
 			bool any = cur || b;
 	
 			h.sTimes =
@@ -418,11 +417,11 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			h.txTimes->setCaption(
 				//; (hasLaps ? "#A0E0D0"+toStr(tim.GetCurrentLap(carId)+1)+" / "+toStr(pSet->game.num_laps) : "") +
 				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId))+
-				//; (cur ? String("  ") + (diff > 0.f ? "#80E0FF+" : "#60FF60-")+
-				//; 	fToStr(fabs(diff), 1,3) : "")+
+				(cur ? String("  ") + (diff > 0.f ? "#80E0FF+" : "#60FF60-")+
+				 	fToStr(fabs(diff), 1,3) : "")+
 				h.sTimes+
 				"\n#E0B090" + fToStr(pCarM->trackPercent,0,1)+"%" );
-	#if 0
+	#if 1
 		if (h.txLap)
 		{
 			//if (pCarM->updLap)

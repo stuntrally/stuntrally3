@@ -56,9 +56,11 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "car1.steer_sim_normal", steer_sim[1]);
 
 	//  game
-	// Param(c,w, "game.pre_time", gui.pre_time);			//Param(c,w, "game.chall_num", gui.chall_num);  //rem-
-	// Param(c,w, "game.champ_num", gui.champ_num);		Param(c,w, "game.champ_rev", gui.champ_rev);
-	// Param(c,w, "game.ch_all", ch_all);
+	// Param(c,w, "game.pre_time", gui.pre_time);
+	Param(c,w, "game.chall_num", gui.chall_num);  //rem-
+	Param(c,w, "game.champ_num", gui.champ_num);		Param(c,w, "game.champ_rev", gui.champ_rev);
+	Param(c,w, "game.ch_all", ch_all);
+
 	Param(c,w, "game.boost_type", gui.boost_type);		Param(c,w, "game.flip_type", gui.flip_type);
 	Param(c,w, "game.rewind_type", gui.rewind_type);
 	Param(c,w, "game.damage_type", gui.damage_type);	Param(c,w, "game.damage_dec", gui.damage_dec);
@@ -286,8 +288,8 @@ SETTINGS::GameSet::GameSet()
 	,boost_type(3), flip_type(2), damage_type(1), rewind_type(1), damage_dec(0.f)
 	,rpl_rec(1)
 	//  champ
-	// ,champ_num(-1), chall_num(-1)
-	// ,champ_rev(false)
+	,champ_num(-1), chall_num(-1)
+	,champ_rev(false)
 	// ,pre_time(2.f), start_order(0)
 {
 	car_hue.resize(6);  car_sat.resize(6);  car_val.resize(6);

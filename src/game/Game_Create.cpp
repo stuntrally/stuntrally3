@@ -97,7 +97,10 @@ namespace Demo
 		pApp->mRoot = mGraphicsSystem->getRoot();
 		pApp->mCamera = mGraphicsSystem->getCamera();
 		pApp->mSceneMgr = mGraphicsSystem->getSceneManager();
-		pApp->mDynamicCubemap = mDynamicCubemap;
+
+
+		InitGui();
+		pApp->mGui = mGui;
 
 		pApp->CreateScene();  /// New
 		

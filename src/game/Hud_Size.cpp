@@ -41,6 +41,7 @@ void CHud::Size()
 {
 	// float wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
 	float wx = pSet->windowx, wy = pSet->windowy;
+	// float wx = 1900, wy = 1000;
 	// float wx = 800, wy = 400;
 	asp = wx/wy;
 
@@ -56,7 +57,7 @@ void CHud::Size()
 		VPDims dim;
 		//  gauges
 		Real xcRpm,ycRpm,xcRpmL, xcVel,ycVel, ygMax, xBFuel;  // -1..1
-		/*if (h.ndGauges)
+		// if (h.ndGauges)
 		{
 			Real sc = pSet->size_gauges * dim.avgsize;
 			Real spx = sc * 1.1f, spy = spx*asp;
@@ -66,11 +67,11 @@ void CHud::Size()
 			xcVel = dim.right - spx;       ycVel =-dim.bottom + spy*0.9f;
 			ygMax = ycVel - sc;  xBFuel = xcVel - sc;
 
-			h.vcRpm = Vector2(xcRpm,ycRpm);  // store for updates
+			/*h.vcRpm = Vector2(xcRpm,ycRpm);  // store for updates
 			h.vcVel = Vector2(xcVel,ycVel);
 			h.fScale = sc;
-			h.updGauges = true;
-		}*/
+			h.updGauges = true;*/
+		}
 		
 		//  minimap
 		Real sc = pSet->size_minimap * dim.avgsize;
@@ -127,13 +128,13 @@ void CHud::Size()
 			//tx = 24;  ty = 4;  //(hasLaps ? 16 : 4);
 			h.txTimTxt->setPosition(tx,ty);
 			h.txTimes->setPosition(tx+126,ty);
-/*			
+
 			//  lap result
 			int lx = xMax - 320, ly = ty;
 			h.bckLap->setPosition(lx-14,ly-8);
 			h.txLapTxt->setPosition(lx,ly);
 			h.txLap->setPosition(lx+126,ly);
-				
+		/*		
 			//  opp list
 			//int ox = itx + 5, oy = (ycRpm+1.f)*0.5f*wy - 10;
 			int ox = xMin + 40, oy = (-miniTopY+1.f)*0.5f*wy - 5;  //par
@@ -230,7 +231,7 @@ void CHud::Show(bool hideAll)
 				
 				// h.ndMap->setVisible(pSet->trackmap);
 				h.txTimes->setVisible(times);  h.txTimTxt->setVisible(times);
-				//h.txLap->setVisible(times);  h.txLapTxt->setVisible(times);  h.bckLap->setVisible(times);
+				h.txLap->setVisible(times);  h.txLapTxt->setVisible(times);  h.bckLap->setVisible(times);
 			#if 0
 				h.bckOpp->setVisible(opp);
 				h.txOpp[0]->setVisible(opp);  h.txOpp[1]->setVisible(opp);  h.txOpp[2]->setVisible(opp);

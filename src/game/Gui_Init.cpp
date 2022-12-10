@@ -70,8 +70,8 @@ void TerrainGame::InitGui()
 	// mPlatform->getRenderManagerPtr()->setActiveViewport(mSplitMgr->mNumViewports);
 
 
-	//  Fps
-	ImageBox* bckFps = mGui->createWidget<ImageBox>("ImageBox",
+	//  Fps  test
+	/*ImageBox* bckFps = mGui->createWidget<ImageBox>("ImageBox",
 		0,350, 220,50, Align::Default, "Pointer", "Main");
 	bckFps->setImageTexture("back_fps.png");
 	bckFps->setAlpha(0.2f);
@@ -82,9 +82,9 @@ void TerrainGame::InitGui()
 	txFps->setFontName("DigGear");
 	// txFps->setFontName("hud.text");  // fixme  ttf fails ?
 	txFps->setCaption("0:12:34.56 -7.8");//\nasdf WERG sxv");
-	txFps->setVisible(true);
+	txFps->setVisible(true);*/
 	
-	//PointerManager::getInsance().setVisible(true);
+	PointerManager::getInstance().setVisible(false);
 
 	// lay
 	// LayoutManager::getInstance().loadLayout("Game.layout");

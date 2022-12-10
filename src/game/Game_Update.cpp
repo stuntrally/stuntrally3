@@ -78,7 +78,6 @@ namespace Demo
 			}
 
 			//  HUD
-		#if 0  // todo: hud
 			if (pApp->bSizeHUD)
 			{	pApp->bSizeHUD = false;
 				
@@ -86,7 +85,6 @@ namespace Demo
 			}
 			pApp->hud->Update(0, dt);
 			pApp->hud->Update(-1, dt);
-		#endif
 		}
 	
 	

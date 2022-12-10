@@ -121,8 +121,8 @@ public:
 
 		bool rpl_rec;
 		//  champ
-		// int champ_num, chall_num;  // -1 none
-		// bool champ_rev;
+		int champ_num, chall_num;  // -1 none
+		bool champ_rev;
 
 		// float pre_time;  int start_order;
 

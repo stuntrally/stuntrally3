@@ -39,7 +39,7 @@ using namespace MyGUI;
 
 void CHud::Create()
 {
-	LogO("Create Hud [][]");
+	LogO("-- Create Hud");
 	//Destroy();  //
 	if (app->carModels.size() == 0)  return;
 
@@ -191,7 +191,7 @@ void CHud::Create()
 			h.txDamage = h.parent->createWidget<TextBox>("TextBox",
 				0,y, 120,40, Align::Right, "Dmg"+s);  //h.txDamage->setVisible(false);
 			h.txDamage->setTextAlign(Align::Right|Align::VCenter);
-			h.txDamage->setFontName("hud.replay");  //h.txDamage->setFontHeight(64);
+			h.txDamage->setFontName("DigGear"); /*hud.replay");*/  h.txDamage->setFontHeight(64);
 			h.txDamage->setTextColour(Colour(0.7,0.7,0.7));  h.txDamage->setTextShadow(true);
 
 			h.icoDamage = h.parent->createWidget<ImageBox>("ImageBox",
@@ -204,7 +204,7 @@ void CHud::Create()
 		}
 		
 		//  rewind <<
-		#if 0
+	#if 0
 		h.txRewind = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 240,80, Align::Right, "Rew"+s);  //h.txRewind->setVisible(false);
 		h.txRewind->setFontName("DigGear");  h.txRewind->setFontHeight(64);
@@ -215,7 +215,7 @@ void CHud::Create()
 			200,180, 40,40, Align::Left, "IRew"+s);  //h.icoRewind->setVisible(false);
 		h.icoRewind->setImageTexture("gui_icons.png");
 		h.icoRewind->setImageCoord(IntCoord(512,384,128,128));
-		#endif
+	#endif
 
 		///  times text  ----------------------
 		/*h.bckTimes = h.parent->createWidget<ImageBox>("ImageBox",
@@ -225,12 +225,12 @@ void CHud::Create()
 		bool hasLaps = 0; //; pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 || app->mClient;
 
 		h.txTimTxt = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 120,260, Align::Left, "TimT"+s);
+			0,y, 2*120,2*260, Align::Left, "TimT"+s);
 		h.txTimTxt->setFontName("DigGear");  // hud.times");
 		h.txTimTxt->setFontHeight(55);
 		h.txTimTxt->setTextShadow(true);
 		h.txTimTxt->setInheritsAlpha(false);
-		/*h.txTimTxt->setCaption(
+		/*h.txTimTxt->setCaption(  // fixme
 			(hasLaps ? String("#90D0C0")+TR("#{TBLap}") : "")+
 			"\n#A0E0E0"+TR("#{TBTime}") +
 			"\n#70D070"+TR("#{Track}") +
@@ -239,41 +239,41 @@ void CHud::Create()
 			"\n#C8A898"+TR("#{Progress}") );*/
 
 		h.txTimes = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 230,260, Align::Left, "Tim"+s);
+			0,y, 2*230,2*260, Align::Left, "Tim"+s);
 		h.txTimes->setInheritsAlpha(false);
 		h.txTimes->setFontName("DigGear");  // hud.times");  // fixme
 		h.txTimes->setFontHeight(55);
 		h.txTimes->setTextShadow(true);
 
 
-	#if 0
 		///  lap results  ----------------------
 		h.bckLap = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 320,210, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
+			0,y, 2*320,2*210, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
 		h.bckLap->setColour(Colour(0.4,0.4,0.4));
 		h.bckLap->setAlpha(0.5f);
 		h.bckLap->setImageTexture("back_times.png");
 
 		h.txLapTxt = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 120,300, Align::Left, "LapT"+s);
-		h.txLapTxt->setFontName("hud.times");  h.txLapTxt->setTextShadow(true);
+			0,y, 2*120,2*300, Align::Left, "LapT"+s);
+		h.txLapTxt->setFontName("DigGear");  h.txLapTxt->setTextShadow(true);  // hud.times
 		h.txLapTxt->setInheritsAlpha(false);
-		h.txLapTxt->setCaption(//String("\n")+
+		/*h.txLapTxt->setCaption(//String("\n")+  // fixme
 			//(hasLaps ? String("#D0F8F0")+TR("#{TBLap}") : "")+
 			"\n#80C0F0"+TR("#{TBLast}") +
 			"\n#80E0E0"+TR("#{TBBest}") +
 			"\n#70D070"+TR("#{Track}") +
 			"\n#C0C030"+TR("#{TBPosition}") +
-			"\n#F0C050"+TR("#{TBPoints}") );
+			"\n#F0C050"+TR("#{TBPoints}") );*/
 		h.txLapTxt->setVisible(false);
 
 		h.txLap = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 230,320, Align::Left, "Lap"+s);
+			0,y, 2*230,2*320, Align::Left, "Lap"+s);
 		h.txLap->setInheritsAlpha(false);
-		h.txLap->setFontName("hud.times");  h.txLap->setTextShadow(true);
+		h.txLap->setFontName("DigGear");  h.txLap->setTextShadow(true);  // hud.times
 		h.txLap->setVisible(false);
 
 
+	#if 0
 		//  opp list  -----------
 		h.bckOpp = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 224,200, Align::Left, "OppB"+toStr(c));
@@ -433,12 +433,9 @@ void CHud::Create()
 	}
 #endif
 
-	LogO("-- Create Hud  15e");
 	Show();  //_
-	LogO("-- Create Hud  16");
 	app->bSizeHUD = true;
-	LogO("-- Create Hud  17");
-	Size();
+	// Size();
 	
 	LogO("::: Time Create Hud: "+fToStr(ti.getMilliseconds(),0,3)+" ms");
 }
