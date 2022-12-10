@@ -148,19 +148,19 @@ find_package( Threads )
 #  exe  ----
 add_executable( ${PROJECT_NAME} WIN32 ${GAME_SOURCES} )
 
-target_precompile_headers(${PROJECT_NAME} PRIVATE src/game/pch.h)
+target_precompile_headers( ${PROJECT_NAME} PRIVATE src/game/pch.h )
 
 
-target_link_libraries( ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries( ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT} )
 
 
 #  fix 4  OpenAL
 #message(STATUS "${OPENAL_INCLUDE_DIR} ${OPENAL_LIBRARY}")
-target_link_libraries( ${PROJECT_NAME} "${OPENAL_LIBRARY}")
+target_link_libraries( ${PROJECT_NAME} "${OPENAL_LIBRARY}" )
 
 
-target_compile_options( ${PROJECT_NAME} PRIVATE -Wswitch)
-target_compile_features( ${PROJECT_NAME} PRIVATE cxx_std_17)
+target_compile_options( ${PROJECT_NAME} PRIVATE -Wswitch )
+target_compile_features( ${PROJECT_NAME} PRIVATE cxx_std_17 )
 
 
 #  Linker  ----
@@ -171,11 +171,11 @@ target_link_libraries( ${PROJECT_NAME} "-lSDL2" )
 
 
 #  MyGui
-target_link_libraries(${PROJECT_NAME} ${DIR_ONE_ABOVE}/mygui-next/build/lib/libMyGUI.Ogre2Platform.a)
+target_link_libraries( ${PROJECT_NAME} ${DIR_ONE_ABOVE}/mygui-next/build/lib/libMyGUI.Ogre2Platform.a )
 
-add_library(libMyGUIEngine SHARED IMPORTED)
-set_target_properties(libMyGUIEngine PROPERTIES IMPORTED_LOCATION ${DIR_ONE_ABOVE}/mygui-next/build/lib/libMyGUIEngine.so)
-target_link_libraries(${PROJECT_NAME} libMyGUIEngine)
+add_library( libMyGUIEngine SHARED IMPORTED)
+set_target_properties( libMyGUIEngine PROPERTIES IMPORTED_LOCATION ${DIR_ONE_ABOVE}/mygui-next/build/lib/libMyGUIEngine.so )
+target_link_libraries( ${PROJECT_NAME} libMyGUIEngine)
 
 
 #  end

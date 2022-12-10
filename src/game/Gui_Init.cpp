@@ -6,6 +6,8 @@
 
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>
+#include "MultiList2.h"
+#include "Slider.h"
 
 using namespace MyGUI;
 using namespace Ogre;
@@ -16,6 +18,7 @@ void TerrainGame::InitGui()
 	if (mPlatform)
 		return;
 	LogO(">> InitGui ***");
+
 	//  Gui
 	mPlatform = new Ogre2Platform();
 
@@ -40,6 +43,10 @@ void TerrainGame::InitGui()
 	// mPlatform->getRenderManagerPtr()->setActiveViewport(mSplitMgr->mNumViewports);
 
 
+	//  new widgets
+	FactoryManager::getInstance().registerFactory<MultiList2>("Widget");
+	FactoryManager::getInstance().registerFactory<Slider>("Widget");
+
 	//  Fps  test
 	/*ImageBox* bckFps = mGui->createWidget<ImageBox>("ImageBox",
 		0,350, 220,50, Align::Default, "Pointer", "Main");
@@ -54,7 +61,7 @@ void TerrainGame::InitGui()
 	txFps->setCaption("0:12:34.56 +7.8\nasdf WERG sxv");
 	txFps->setVisible(true);/**/
 	
-	PointerManager::getInstance().setVisible(false);  //+
+	// PointerManager::getInstance().setVisible(false);  //+
 
 	// lay
 	// LayoutManager::getInstance().loadLayout("Game.layout");
