@@ -1,7 +1,8 @@
 #include "pch.h"
 #include "CGame.h"
 #include "CHud.h"
-// #include "CGui.h"
+#include "CGui.h"
+#include "GuiCom.h"
 #include "Def_Str.h"
 // #include "RenderConst.h"
 // #include "GuiCom.h"
@@ -26,9 +27,11 @@ using namespace Ogre;
 using namespace std;
 
 
-//  ctors  -----------------------------------------------
-App::App(SETTINGS *settings, GAME *game)
-	:pGame(game)
+//  ctor  -----------------------------------------------
+App::App()
+	: TutorialGameState()
+	//, mIblQuality( IblHigh )  // par
+	//, mIblQuality( MipmapsLowest )
 	// ,hud(0), gui(0), gcom(0)
 	// , input(0)
 	// ,mThread()
@@ -47,8 +50,7 @@ App::App(SETTINGS *settings, GAME *game)
 	,isGhost2nd(0)
 	,fLastTime(1.f)
 {
-	pSet = settings;
-	pGame->collision.pApp = this;
+	macroblockWire.mPolygonMode = PM_WIREFRAME;
 
 	frm.resize(MAX_CARS);
 	for (int i=0; i < MAX_CARS; ++i)
@@ -59,23 +61,7 @@ App::App(SETTINGS *settings, GAME *game)
 	resCar = "";  resTrk = "";  resDrv = "";
 	oldTrack = "";  oldTrkUser = false;
 	
-	///  new
-	scn = new CScene(this);
-	data = scn->data;
-	hud = new CHud(this);
-
-	// gcom = new CGuiCom(this);
-	// gui = new CGui(this);
-	// gui->gcom = gcom;
-	// hud->gui = gui;
-	// gui->popup = new GuiPopup();
-	// gui->viewBox = new wraps::RenderBoxScene();
-
-	// mBindListner = gui;
-	// input = new CInput(this);
-
-	// if (pSet->multi_thr)
-	mThread = new thread(&App::UpdThr, this);
+	// Load();  later in createScene01
 }
 
 void App::ShutDown()
@@ -94,8 +80,8 @@ App::~App()
 	// delete gui->viewBox;
 
 	// delete gui->popup;
-	// delete gcom;
-	// delete gui;
+	delete gcom;
+	delete gui;
 	delete scn;
 
 	delete hud;
@@ -103,18 +89,10 @@ App::~App()
 }
 
 
-/*void App::postInit()
-{
-	SetFactoryDefaults();
-
-	mSplitMgr->pApp = this;
-
-	mFactory->setMaterialListener(this);
-}
-*/
-
 void App::destroyScene()
 {
+	LogO("---- destroyScene");
+	
 	delete dbgdraw;  dbgdraw = 0;
 	
 	// scn->mWaterRTT->destroy();
@@ -145,7 +123,20 @@ void App::destroyScene()
 	
 	// delete[] blendMtr;  blendMtr = 0;
 
+
 	// BaseApp::destroyScene();
+
+	LogO("---- destroyScene");
+
+	DestroyTerrain();
+
+	LogO("---- base destroyScene");
+
+	TutorialGameState::destroyScene();
+
+	LogO(">>>> Destroy SR ----");
+	Destroy();
+	LogO(">>>> Destroy SR done ----");
 }
 
 
@@ -168,7 +159,7 @@ void App::UpdThr()
 		double dt = double(gtim.getMicroseconds()) * 0.000001;
 		gtim.reset();
 		
-		if (/*pSet->multi_thr == 1 &&*/ !bLoading && !mShutDown)
+		if (/*pSet->multi_thr == 1 &&*/ !bLoading && !mShutDown && pGame)
 		{
 			bSimulating = true;
 			bool ret = pGame->OneLoop(dt);
@@ -178,6 +169,6 @@ void App::UpdThr()
 			// DoNetworking();
 			bSimulating = false;
 		}
-		this_thread::sleep_for(chrono::milliseconds(pSet->thread_sleep));
+		this_thread::sleep_for(chrono::milliseconds(pSet ? pSet->thread_sleep : 100));
 	}
 }

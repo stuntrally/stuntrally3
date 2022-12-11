@@ -10,7 +10,7 @@ public:
 //------------------------------------------
 
 	//  misc
-	// std::string language;  // "" autodetect lang
+	std::string language;  // "" autodetect lang
 
 	//  startup, other
 	bool autostart =0, escquit =1, startInMain =1;
@@ -39,9 +39,8 @@ public:
 	float grass =1.f, trees_dist =1.f, grass_dist =1.f;  // trees in gui.
 
 	//  graphics other
-	// int preset;  // last set, info only
+	int preset;  // last set, info only
 	// bool horizon;
-	// std::string shader_mode;
 
 
 	//  track

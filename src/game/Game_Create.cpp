@@ -1,5 +1,7 @@
 #include "pch.h"
-#include "Game.h"
+#include "CGui.h"
+#include "CHud.h"
+#include "GuiCom.h"
 #include "GraphicsSystem.h"
 #include "OgreLogManager.h"
 #include "OgreCamera.h"
@@ -19,17 +21,8 @@ using namespace Ogre;
 using namespace std;
 
 
-OgreGame::OgreGame()
-	: TutorialGameState()
-	//, mIblQuality( IblHigh )  // par
-	//, mIblQuality( MipmapsLowest )
-{
-	macroblockWire.mPolygonMode = PM_WIREFRAME;
-}
-
-
 //  load settings from default file
-void OgreGame::LoadDefaultSet(SETTINGS* settings, string setFile)
+void App::LoadDefaultSet(SETTINGS* settings, string setFile)
 {
 	settings->Load(PATHMANAGER::GameConfigDir() + "/game-default.cfg");
 	settings->Save(setFile);
@@ -43,7 +36,7 @@ void OgreGame::LoadDefaultSet(SETTINGS* settings, string setFile)
 
 //  Init SR game
 //-----------------------------------------------------------------------------------------------------------------------------
-void OgreGame::Init()
+void App::Load()
 {
 
 	Ogre::Timer ti;
@@ -79,37 +72,54 @@ void OgreGame::Init()
 
 	///  Game start
 	//----------------------------------------------------------------
+	LogO("@ @  Init game, sounds");
+
 	pGame = new GAME(pSet);
+	pGame->collision.pApp = this;
 	pGame->Start();
 
-	pApp = new App(pSet, pGame);
-	pApp->mainApp = this;
-	pGame->app = pApp;
-	sc = pApp->scn->sc;
+	// pApp = new App(pSet, pGame);
+	// Init();
+	///  new
+	scn = new CScene(this);
+	data = scn->data;
+	hud = new CHud(this);
+
+	gcom = new CGuiCom(this);
+	gui = new CGui(this);
+	gui->gcom = gcom;
+	// hud->gui = gui;
+	// gui->popup = new GuiPopup();
+	// gui->viewBox = new wraps::RenderBoxScene();
+
+	// mBindListner = gui;
+
+	// input = new CInput(this);  // todo
+
+	pGame->app = this;
+	sc = scn->sc;
 
 	pGame->ReloadSimData();
 
 	//  new game
-	pApp->mRoot = mGraphicsSystem->getRoot();
-	pApp->mCamera = mGraphicsSystem->getCamera();
-	pApp->mSceneMgr = mGraphicsSystem->getSceneManager();
+	mRoot = mGraphicsSystem->getRoot();
+	mCamera = mGraphicsSystem->getCamera();
+	mSceneMgr = mGraphicsSystem->getSceneManager();
 
 
-	// InitGui();
-	pApp->mGui = mGui;
+	LoadData();  /// loads data xmls
 
-	pApp->CreateScene();  /// New
-	
+	mThread = new thread(&App::UpdThr, this);
 }
 
-void OgreGame::Destroy()
+void App::Destroy()
 {
 	if (pGame)
 		pGame->End();
 
 	DestroyGui();
 
-	delete pApp;
+	// delete pApp;
 	delete pGame;
 	delete pSet;
 }
@@ -118,10 +128,15 @@ void OgreGame::Destroy()
 
 //  Create
 //-----------------------------------------------------------------------------------------------------------------------------
-void OgreGame::createScene01()
+void App::createScene01()
 {
+	LogO(">>>> Init SR ----");
+	Load();  // cfg, xmls etc
 	
-	InitGui();
+	// Gui Init
+	baseInitGui(mGraphicsSystem);
+	gui->mGui = mGui;
+	gui->InitGui();
 
 	mGraphicsSystem->mWorkspace = setupCompositor();
 
@@ -147,12 +162,12 @@ void OgreGame::createScene01()
 	Vector3 objPos;
 
 
-	LogO(">>>> Init SR ----");
-	Init();
-	LogO(">>>> Init SR done ----");
+	// LogO(">>>> Init SR ----");
+	// Init();
+	LogO("---- Init SR done2 ----");
 
 	//  find cur id
-	const auto* data = pApp->scn->data;
+	const auto* data = scn->data;
 	idTrack = data->tracks->trkmap[pSet->gui.track] -1;
 	idCar = data->cars->carmap[pSet->gui.car[0]] -1;
 
@@ -160,14 +175,12 @@ void OgreGame::createScene01()
 	LogO("---- base createScene");
 
 	TutorialGameState::createScene01();
-
-
 }
 
 
 //  Destroy
 //-----------------------------------------------------------------------------------
-void OgreGame::destroyScene()
+/*void App::destroyScene()
 {
 	LogO("---- destroyScene");
 
@@ -180,7 +193,7 @@ void OgreGame::destroyScene()
 	LogO(">>>> Destroy SR ----");
 	Destroy();
 	LogO(">>>> Destroy SR done ----");
-}
+}*/
 
 /*
 	good scn +

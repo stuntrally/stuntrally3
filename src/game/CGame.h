@@ -6,45 +6,131 @@
 #include "ReplayTrk.h"
 #include "cardefs.h"
 #include "CarPosInfo.h"
-// #include "OgreTextureGpu.h"
-
-// #include "../network/networkcallbacks.hpp"
-// #include "../oics/ICSChannelListener.h"
+// #include "networkcallbacks.hpp"
+// #include "ICSChannelListener.h"
 // #include "PreviewTex.h"
 #include <thread>
+//#include "OgreTextureGpu.h"
+#include "OgreHlmsDatablock.h"
+#include "OgrePrerequisites.h"
+#include "TutorialGameState.h"
 
-
-namespace Ogre {  class SceneNode;  class SceneManager;  class TextureGpu;  class Root;  }
+namespace Ogre {  class SceneNode;  class SceneManager;  class TextureGpu;  class Root;
+	class Terra;  class HlmsPbsTerraShadows;  class HlmsDatablock;  }
 namespace BtOgre  {  class DebugDrawer;  }
-class CScene;  class CData;  class CInput;  class GraphView;
-class GAME;  class CHud;  class CGui;  class CGuiCom;
-namespace MyGUI {  class Gui;  }
+class Scene;  class CScene;  class CData;  class CInput;  class GraphView;
+class SETTINGS;  class GAME;  class CHud;  class CGui;  class CGuiCom;
+namespace MyGUI {  class Gui;  class Ogre2Platform;  }
 
 
-class App : public BaseApp 	//, public ICS::ChannelListener
+enum IblQuality  // reflections
 {
+	MipmapsLowest,
+	IblLow,
+	IblHigh
+};
+
+
+class App : public BaseApp,	//public ICS::ChannelListener,
+ 	public TutorialGameState
+{
+	//  vars
+	Ogre::Vector3 camPos;
+
+	//  input  temp  ----
+	int mArrows[11] = {0,0,0,0,0,0,0,0,0,0},
+		mKeys[4] = {0,0,0,0};  // sun keys
+	int param = 0;  // to adjust
+	bool left = false, right = false;  // arrows
+public:	
+	bool shift = false, ctrl = false;
+private:
+	int idTrack = 0, idCar = 0;
+
+	//  wireframe
+	Ogre::HlmsMacroblock macroblockWire;
+	bool wireTerrain = false;
+
+	//  fps overlay
+	void generateDebugText();
+	Ogre::String generateFpsDebugText();
+
+
 public:
-	App(SETTINGS* settings, GAME* game);
+	//  Gui
+	// MyGUI::Gui* mGui = 0;
+	// MyGUI::Ogre2Platform* mPlatform = 0;
+
+	void InitGui();//, DestroyGui();
+
+	//  SR
+	void LoadDefaultSet(SETTINGS* settings, std::string setFile);
+	void Init(), Load();
+	void Destroy();
+
+
+	//  main
+	void createScene01() override;
+	void destroyScene() override;
+
+	void update( float timeSinceLast ) override;
+
+	//  events
+	void keyPressed( const SDL_KeyboardEvent &arg ) override;
+	void keyReleased( const SDL_KeyboardEvent &arg ) override;
+public:
+
+
+	//  reflection cube  ----
+	Ogre::Camera *mCubeCamera = 0;
+	Ogre::TextureGpu *mDynamicCubemap = 0;
+protected:
+	Ogre::CompositorWorkspace *mDynamicCubemapWorkspace = 0;
+
+	IblQuality mIblQuality = IblLow;  // par in ctor
+public:		
+	Ogre::CompositorWorkspace *setupCompositor();
+
+
+	//  terrain  ----
+public:
+	Ogre::Terra *mTerra = 0;
+	void CreateTerrain(), DestroyTerrain();
+protected:
+	Ogre::String mtrName;
+	Ogre::SceneNode *nodeTerrain = 0;
+	// Listener to make PBS objects also be affected by terrain's shadows
+	Ogre::HlmsPbsTerraShadows *mHlmsPbsTerraShadows = 0;
+
+
+	//  util mtr, mem
+	template <typename T, size_t MaxNumTextures>
+	void unloadTexturesFromUnusedMaterials( Ogre::HlmsDatablock *datablock,
+											std::set<Ogre::TextureGpu *> &usedTex,
+											std::set<Ogre::TextureGpu *> &unusedTex );
+	void unloadTexturesFromUnusedMaterials();
+	void unloadUnusedTextures();
+public:
+	void minimizeMemory();
+	// void setTightMemoryBudget();
+	// void setRelaxedMemoryBudget();
+
+
+public:
+	//  ctor
+	App();
+	// void Init(SETTINGS* settings, GAME* game);
 	virtual ~App();
 	void ShutDown();
 	
-	class SETTINGS* pSet =0;  //;  from BaseApp
-
-	class OgreGame* mainApp = 0;
-	MyGUI::Gui* mGui = 0;
+	//SETTINGS* pSet =0;  //;  from BaseApp
 
 	CScene* scn =0;
 	CData* data =0;  //p
+	Scene* sc = 0;  // in pApp->scn ..
 	
 	GAME* pGame =0;
 
-	/// temp new
-	float inputs[14] = {0,0,0,0};
-
-
-	bool bSizeHUD = true;
-	CHud* hud =0;
-	
 
 	//  BaseApp init
 	// void postInit();
@@ -84,12 +170,9 @@ public:
 	float fLastTime;  // thk ghost total time
 		
 
-	// virtual void createScene();
-	virtual void destroyScene();
-
 	// virtual bool frameStart(Ogre::Real time);  //;void DoNetworking();
 	// virtual bool frameEnd(Ogre::Real time);
-	float fLastFrameDT;
+	float fLastFrameDT = 0.01f;
 
 	// bool isTweakTab();
 		
@@ -97,7 +180,8 @@ public:
 
 
 	///  HUD
-	// CHud* hud;
+	CHud* hud = 0;
+	bool bSizeHUD = true;
 
 
 	///  create  . . . . . . . . . . . . . . . . . . . . . . . . 
@@ -108,11 +192,11 @@ public:
 	void NewGame(bool force=false);
 	void NewGameDoLoad();
 
-	void CreateScene();
-	bool newGameRpl;
+	void LoadData();
+	bool newGameRpl =0;
 
-	bool dstTrk;  // destroy track, false if same
-	Ogre::String oldTrack;  bool oldTrkUser;
+	bool dstTrk =0;  // destroy track, false if same
+	Ogre::String oldTrack;  bool oldTrkUser =0;
 	Ogre::String TrkDir();
 
 	
@@ -137,7 +221,10 @@ public:
 	// virtual void materialCreated(sh::MaterialInstance* m, const std::string& configuration, unsigned short lodIndex);
 
 
-	//  Input
+	//  Input  ----
+	/// todo: temp
+	float inputs[14] = {0,0,0,0};
+
 	// CInput* input =0;
 
 	// virtual bool keyPressed(const SDL_KeyboardEvent &arg);

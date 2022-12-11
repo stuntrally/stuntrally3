@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "common/Def_Str.h"
 #include "BaseApp.h"
-// #include "LoadingBar.h"
 
 #include "pathmanager.h"
 #include "settings.h"
@@ -14,6 +13,7 @@
 
 #include "CarModel.h"
 #include "FollowCamera.h"
+#include "GraphicsSystem.h"
 
 #include <OgreLogManager.h>
 #include <MyGUI_Prerequest.h>
@@ -27,7 +27,7 @@
 
 #include <OgreTimer.h>
 #include <OgreOverlayManager.h>
-#include <OgreTimer.h>
+#include <OgreWindow.h>
 
 // #include "PointerFix.h"
 // #include "ICSInputControlSystem.h"
@@ -163,10 +163,7 @@ BaseApp::~BaseApp()
 	// delete mLoadingBar;
 	// delete mSplitMgr;
 	
-	if (mGui)
-	{	mGui->shutdown();  delete mGui;  mGui = 0;  }
-	if (mPlatform)
-	{	mPlatform->shutdown();  delete mPlatform;  mPlatform = 0;  }
+	DestroyGui();
 
 	//  save inputs
 	/*mInputCtrl->save(PATHMANAGER::UserConfigDir() + "/input.xml");
@@ -446,12 +443,18 @@ void BaseApp::loadResources()
 	ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 	LoadingOff();
 }
+#endif
 
 
 ///  show / hide  Loading bar
 //-------------------------------------------------------------------------------------
 void BaseApp::LoadingOn()
 {
+	if (!imgLoad)  return;
+	imgLoad->setVisible(true);
+	imgBack->setVisible(true);
+	bckLoad->setVisible(true);
+#if 0
 	mSplitMgr->SetBackground(ColourValue(0.15,0.165,0.18));
 	mSplitMgr->mGuiViewport->setBackgroundColour(ColourValue(0.15,0.165,0.18,1.0));
 	mSplitMgr->mGuiViewport->setClearEveryFrame(true);
@@ -461,17 +464,24 @@ void BaseApp::LoadingOn()
 	mSceneMgr->clearSpecialCaseRenderQueues();
 	mSceneMgr->addSpecialCaseRenderQueue(RENDER_QUEUE_OVERLAY);
 	mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_INCLUDE);
+#endif
 }
 void BaseApp::LoadingOff()
 {
+	if (!imgLoad)  return;
+	imgLoad->setVisible(false);
+	imgBack->setVisible(false);
+	bckLoad->setVisible(false);
+#if 0
 	// Turn On  full rendering
 	mSplitMgr->SetBackground(ColourValue(0.2,0.3,0.4));
 	mSplitMgr->mGuiViewport->setBackgroundColour(ColourValue(0.2,0.3,0.4));
 	mSceneMgr->clearSpecialCaseRenderQueues();
 	mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
 	mLoadingBar->finish();
-}
 #endif
+}
+
 
 #if 0
 //-------------------------------------------------------------------------------------
@@ -651,25 +661,40 @@ void BaseApp::windowClosed()
 
 ///  base Init Gui
 //--------------------------------------------------------------------------------------------------------------
-void BaseApp::baseInitGui()
+void BaseApp::baseInitGui(GraphicsSystem *mGraphicsSystem)
 {
-	return;
+	mWindow = mGraphicsSystem->getRenderWindow();
+
+	if (mPlatform)
+		return;
+	LogO(">> InitGui ***");
+
 	using namespace MyGUI;
-	mPlatform = new MyGUI::Ogre2Platform();
-	// mPlatform->initialise(mWindow, mSceneMgr, "General", PATHMANAGER::UserConfigDir() + "/MyGUI.log");
-	mGui = new MyGUI::Gui();
+	//  Gui
+	mPlatform = new Ogre2Platform();
+	mPlatform->initialise(
+		mWindow, mGraphicsSystem->getSceneManager(),
+		"Essential",
+		// PATHMANAGER::UserConfigDir() + "/MyGUI.log");
+		"MyGUI.log");
 
-	mGui->initialise("");
+	// mGraphicsSystem->mWorkspace = setupCompositor();
 
-	// MyGUI::FactoryManager::getInstance().registerFactory<ResourceImageSetPointerFix>("Resource", "ResourceImageSetPointer");
-	MyGUI::ResourceManager::getInstance().load("core.xml");
 
-	// MyGUI::PointerManager::getInstance().eventChangeMousePointer +=	MyGUI::newDelegate(this, &BaseApp::onCursorChange);
-	// MyGUI::PointerManager::getInstance().setVisible(false);
+	mGui = new Gui();
+	mGui->initialise("core.xml");
+
+	// MyGUI::LanguageManager::getInstance().setCurrentLanguage("en");
+
+	// FactoryManager::getInstance().registerFactory<ResourceImageSetPointerFix>("Resource", "ResourceImageSetPointer");
+	// MyGUI::ResourceManager::getInstance().load("core.xml");
+
+	// PointerManager::getInstance().eventChangeMousePointer +=	MyGUI::newDelegate(this, &BaseApp::onCursorChange);
+	// PointerManager::getInstance().setVisible(false);
 
 		
 	//------------------------ lang
-	// if (pSet->language == "")  // autodetect
+	if (pSet->language == "")  // autodetect
 	// {	pSet->language = getSystemLanguage();
 	// 	setlocale(LC_NUMERIC, "C");  }
 	
@@ -728,20 +753,28 @@ void BaseApp::baseInitGui()
 
 	///  menu background image
 	//  dont show for autoload and no loadingbackground
-	/*if (!(!pSet->loadingbackground && pSet->autostart))
+	if (!(!pSet->loadingbackground && pSet->autostart))
 	{
 		imgBack = mGui->createWidget<ImageBox>("ImageBox",
 			0,0, 800,600, Align::Default, "Back","ImgBack");
 		imgBack->setImageTexture("background.jpg");
-	}*/
+	}
 
 	///  loading background img
 	imgLoad = mGui->createWidget<ImageBox>("ImageBox",
 		0,0, 800,600, Align::Default, "Back", "ImgLoad");
-	//imgLoad->setImageTexture("background.png");
-	//imgLoad->setVisible(true);
+	imgLoad->setImageTexture("background.png");
+	imgLoad->setVisible(true);
 
 	baseSizeGui();
+}
+
+void BaseApp::SetLoadingBar(float pecent)
+{
+	float p = pecent * 0.01f;
+	int s = p * barSizeX; // w = p * 512.f;
+	//barLoad->setImageCoord( IntCoord(512-w,0, w,64) );
+	barLoad->setSize( s, barSizeY );
 }
 
 
@@ -749,8 +782,7 @@ void BaseApp::baseInitGui()
 //-------------------------------------------------------------------
 void BaseApp::baseSizeGui()
 {
-	int sx = 1920, sy = 1100;
-	// int sx = mWindow->getWidth(), sy = mWindow->getHeight();
+	int sx = mWindow->getWidth(), sy = mWindow->getHeight() +30; //?
 	bckLoad->setPosition(sx/2 - 250/*200*/, sy - 140);
 
 	//imgBack->setCoord(0,0, sx, sy);
@@ -773,4 +805,13 @@ void BaseApp::baseSizeGui()
 	imgLoad->setCoord(-oix, -oiy, six, siy);
 	if (imgBack)
 	imgBack->setCoord(-oix, -oiy, six, siy);
+}
+
+
+void BaseApp::DestroyGui()
+{
+	if (mGui)
+	{	mGui->shutdown();  delete mGui;  mGui = 0;  }
+	if (mPlatform)
+	{	mPlatform->shutdown();  delete mPlatform;  mPlatform = 0;  }
 }

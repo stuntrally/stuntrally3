@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "CHud.h"
+#include "CGui.h"
+#include "GuiCom.h"
 #include "OgreVector3.h"
 #include "CGame.h"
 #include "CameraController.h"
@@ -34,6 +36,8 @@
 #include "CData.h"
 #include "SceneClasses.h"
 #include "settings.h"
+
+#include "MyGUI_ImageBox.h"
 using namespace Ogre;
 
 
@@ -61,16 +65,49 @@ void App::update( float dt )
 				// mSplitMgr->mGuiViewport->setClearEveryFrame(true, FBT_DEPTH);
 				// gui->Ch_LoadEnd();
 				bLoadingEnd = true;
-				// iLoad1stFrames = -1;  // for refl
+				iLoad1stFrames = -1;  // for refl
 			}
 		}else if (iLoad1stFrames >= -1)
 		{
 			--iLoad1stFrames;  // -2 end
-
-			// imgLoad->setVisible(false);  // hide back imgs
-			// if (imgBack)
-			//     imgBack->setVisible(false);
+			LoadingOff();  // hide loading overlay
 		}
+
+
+		///  Gui  ----
+		#if 1
+		// if (gui)
+			// gui->GuiUpdate();
+
+		
+		if (bWindowResized && gcom)
+		{	bWindowResized = false;
+
+			gcom->ResizeOptWnd();
+			gcom->SizeGUI();
+			// gcom->updTrkListDim();
+			// gui->updChampListDim();  // resize lists
+			// gui->slSSS(0);
+			// gui->listCarChng(gui->carList,0);  // had wrong size
+			// bRecreateHUD = true;
+			
+			/*if (mSplitMgr)  //  reassign car cameras from new viewports
+			{	std::list<Camera*>::iterator it = mSplitMgr->mCameras.begin();
+				for (int i=0; i < carModels.size(); ++i)
+					if (carModels[i]->fCam && it != mSplitMgr->mCameras.end())
+					{	carModels[i]->fCam->mCamera = *it;  ++it;  }
+			}
+			if (!mSplitMgr->mCameras.empty())
+			{
+				Camera* cam1 = *mSplitMgr->mCameras.begin();
+				scn->mWaterRTT->setViewerCamera(cam1);
+				if (scn->grass)  scn->grass->setCamera(cam1);
+				if (scn->trees)  scn->trees->setCamera(cam1);
+			}*/
+
+			///gui->InitCarPrv();
+		}
+		#endif
 
 		//  HUD
 		if (bSizeHUD)
@@ -219,7 +256,37 @@ void App::update( float dt )
 void App::keyPressed( const SDL_KeyboardEvent &arg )
 {
 	int itrk = 0, icar = 0;
+
+	#define key(a)  SDL_SCANCODE_##a
+if (arg.keysym.mod == KMOD_LALT)  // alt?
 	switch (arg.keysym.scancode)
+	{
+	case key(Q):	gui->GuiShortcut(MN_Single, TAB_Track); break;  // Q Track
+	case key(C):	gui->GuiShortcut(MN_Single, TAB_Car);	break;  // C Car
+
+	case key(W):	gui->GuiShortcut(MN_Single, TAB_Setup); break;  // W Setup
+	case key(G):	gui->GuiShortcut(MN_Single, TAB_Split);	break;  // G SplitScreen
+
+	case key(J):	gui->GuiShortcut(MN_Tutorial, TAB_Champs);	break;  // J Tutorials
+	case key(H):	gui->GuiShortcut(MN_Champ,    TAB_Champs);	break;  // H Champs
+	case key(L):	gui->GuiShortcut(MN_Chall,    TAB_Champs);	break;  // L Challenges
+
+	case key(U):	gui->GuiShortcut(MN_Single,   TAB_Multi);	break;  // U Multiplayer
+	case key(R):	gui->GuiShortcut(MN_Replays,  1);	break;		  // R Replays
+
+	case key(S):	gui->GuiShortcut(MN_Options, TABo_Screen);	break;  // S Screen
+	case key(I):	gui->GuiShortcut(MN_Options, TABo_Input);	break;  // I Input
+	case key(V):	gui->GuiShortcut(MN_Options, TABo_View);	break;  // V View
+
+	case key(A):	gui->GuiShortcut(MN_Options, TABo_Graphics);	break;  // A Graphics
+	// case key(E):	gui->GuiShortcut(MN_Options, TABo_Graphics,2);	break;  // E -Effects
+
+	case key(T):	gui->GuiShortcut(MN_Options, TABo_Settings);	break;  // T Settings
+	case key(O):	gui->GuiShortcut(MN_Options, TABo_Sound);	break;  // O Sound
+	case key(K):	gui->GuiShortcut(MN_Options, TABo_Tweak);  break;  // K Tweak
+	#undef key
+	}
+else switch (arg.keysym.scancode)
 	{
 	case SDL_SCANCODE_LSHIFT:
 	case SDL_SCANCODE_RSHIFT:  shift = true;  break;  // mod
@@ -313,7 +380,6 @@ void App::keyPressed( const SDL_KeyboardEvent &arg )
 		}
 		mTerra->setDatablock( datablock );
 	}   break;
-
 
 	//  sky
 	case SDL_SCANCODE_K:  

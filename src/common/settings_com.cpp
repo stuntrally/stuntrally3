@@ -13,7 +13,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "misc.autostart", autostart);		Param(c,w, "misc.ogredialog", ogre_dialog);
 	Param(c,w, "misc.escquit", escquit);
 	
-	// Param(c,w, "misc.language", language);
+	Param(c,w, "misc.language", language);
 	Param(c,w, "misc.mouse_capture", mouse_capture);
 	Param(c,w, "misc.screenshot_png", screen_png);
 
@@ -29,8 +29,8 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 
 
 	//  graphics  ----
-	// Param(c,w, "graph_detail.preset", preset);
-	// Param(c,w, "graph_shadow.shader_mode", shader_mode);	Param(c,w, "graph_shadow.lightmap_size", lightmap_size);
+	Param(c,w, "graph_detail.preset", preset);
+	// Param(c,w, "graph_shadow.lightmap_size", lightmap_size);
 	
 	Param(c,w, "graph_detail.anisotropy", anisotropy);
 	Param(c,w, "graph_detail.tex_filter", tex_filt);		Param(c,w, "graph_detail.tex_size", tex_size);
@@ -107,10 +107,10 @@ SETcom::SETcom()   ///  Defaults
 	// ,rendersystem("Default")
 
 	//  graphics
-	// ,preset(4)
-	// ,shader_mode(""), horizon(0), lightmap_size(0) //-
+	:preset(4)
+	// ,horizon(0), lightmap_size(0) //-
 
-	:tex_filt(2), anisotropy(4), view_distance(2000.f)
+	,tex_filt(2), anisotropy(4), view_distance(2000.f)
 	,terdetail(1.f), terdist(300.f), road_dist(1.f)
 	,tex_size(1), ter_mtr(2), ter_tripl(0)
 

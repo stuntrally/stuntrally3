@@ -9,7 +9,7 @@
 // namespace SFO {  class InputWrapper;  class SDLCursorManager;  }
 // namespace ICS {  class InputControlSystem;  class DetectingBindingListener;  }
 namespace MyGUI{  class Ogre2Platform;  }
-namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  }
+namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class Window;  }
 // class MasterClient;  class P2PGameClient;
 
 
@@ -47,16 +47,11 @@ public:
 	
 	void showMouse(), hideMouse(), updMouse();
 	
-	//  stuff to be executed in App after BaseApp init
-	// virtual void postInit() = 0;
-		
 	///  effects
 	// void recreateCompositor();
 	// bool AnyEffectEnabled();
 
 	class SETTINGS* pSet =0;
-
-	// sh::Factory* mFactory =0;
 
 	//  wnd, hud, upl
 	bool bWindowResized =1, bSizeHUD =1, bRecreateHUD =0;
@@ -76,7 +71,7 @@ public:
 
 	// void createFrameListener(), createViewports(), refreshCompositor(bool disableAll=false);
 	// void setupResources(), createResourceListener(), loadResources();
-	// void LoadingOn(), LoadingOff();
+	void LoadingOn(), LoadingOff();
 
 	///  frame events
 	// bool frameRenderingQueued(const Ogre::FrameEvent& evt);
@@ -99,7 +94,7 @@ public:
 
 	///  Ogre
 	Ogre::Root* mRoot =0;  Ogre::SceneManager* mSceneMgr =0;
-	// Ogre::RenderWindow* mWindow =0;
+	Ogre::Window* mWindow =0;
 	// SDL_Window* mSDLWindow =0;
 
 	// virtual void windowResized (int x, int y);
@@ -118,7 +113,7 @@ public:
 
 	bool IsFocGuiInput()  {  return isFocGui || isFocRpl;  }
 	bool IsFocGui();
-	// Ogre::RenderWindow* getWindow()  {  return mWindow;  }
+	Ogre::Window* getWindow()  {  return mWindow;  }
 
 	///  input
 	bool alt =0, ctrl =0, shift =0;  // key modifiers
@@ -143,6 +138,7 @@ public:
 	Img bckLoad =0, bckLoadBar =0, barLoad =0, imgLoad =0;
 	Txt txLoadBig =0, txLoad =0;
 	int barSizeX =0, barSizeY =0;
+	void SetLoadingBar(float pecent);
 
 
 	///  main menu  // pSet->inMenu

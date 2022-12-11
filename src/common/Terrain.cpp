@@ -19,7 +19,6 @@
 #include <BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h>
 #include <OgreTimer.h>
 
-#include "Game.h"
 #include "Grass.h"
 using namespace Ogre;
 

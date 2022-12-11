@@ -16,7 +16,6 @@
 #include "game.h"
 #include "CScene.h"
 #include "SceneXml.h"
-#include "Game.h"
 #include "GraphicsSystem.h"
 
 #include <OgreException.h>

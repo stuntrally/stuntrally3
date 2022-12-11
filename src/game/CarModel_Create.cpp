@@ -7,7 +7,6 @@
 #include "SceneXml.h"
 #include "RenderConst.h"
 #include "CGame.h"
-#include "Game.h"
 // #include "CGui.h"
 #include "CarModel.h"
 // #include "SplitScreen.h"
