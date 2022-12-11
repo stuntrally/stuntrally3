@@ -59,7 +59,7 @@ void CHud::Create()
 #if 0
 	///  reload mini textures
 	ResourceGroupManager& resMgr = ResourceGroupManager::getSingleton();
-	TextureGpuManager *texMgr = app->mainApp->mGraphicsSystem->mRoot->getRenderSystem()->getTextureGpuManager();
+	TextureGpuManager *texMgr = app->mGraphicsSystem->mRoot->getRenderSystem()->getTextureGpuManager();
 
 	String path = "";/*app->bRplPlay ? 
 		app->gcom->PathListTrkPrv(app->replay.header.track_user, app->replay.header.track) :

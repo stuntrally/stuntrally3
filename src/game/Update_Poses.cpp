@@ -507,10 +507,10 @@ void App::updatePoses(float time)
 		PosInfo& pi = carPoses[q][c], &pic = carPoses[qq][cc];
 		carM->Update(carPoses[q][c], carPoses[qq][cc], time);
 
-		if (mainApp->mCubeCamera)  // refl
-		{	mainApp->mCubeCamera->setPosition(carM->pMainNode->getPosition());// carPoses[q][c].pos);
-			mainApp->mCubeCamera->setVisibilityFlags( 32 );
-			// mainApp->mCubeCamera->setOrientation(carM->pMainNode->getOrientation());
+		if (mCubeCamera)  // refl
+		{	mCubeCamera->setPosition(carM->pMainNode->getPosition());// carPoses[q][c].pos);
+			mCubeCamera->setVisibilityFlags( 32 );
+			// mCubeCamera->setOrientation(carM->pMainNode->getOrientation());
 		}
 
 

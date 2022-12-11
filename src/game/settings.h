@@ -138,7 +138,7 @@ public:
 
 	//  startup, other
 	bool bltDebug, bltLines;//, bltProfilerTxt, profilerTxt;
-	// bool loadingbackground, show_welcome;
+	bool loadingbackground;//, show_welcome;
 
 	//  sound
 	float vol_master, vol_hud,

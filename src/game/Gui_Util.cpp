@@ -702,7 +702,7 @@ void CGui::GuiUpdate()
 {
 	gcom->UnfocusLists();
 
-	if (gcom->bGuiReinit)  // after language change from combo
+	/*if (gcom->bGuiReinit)  // after language change from combo
 	{	gcom->bGuiReinit = false;
 
 		mGui->destroyWidgets(app->vwGui);
@@ -713,7 +713,7 @@ void CGui::GuiUpdate()
 
 		app->bWindowResized = true;
 		app->mWndTabsOpts->setIndexSelected(3);  // switch back to view tab
-	}
+	}*/
 
 		
 	//  sort trk list

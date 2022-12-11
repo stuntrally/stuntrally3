@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Game.h"
+#include "CGame.h"
 #include "CameraController.h"
 #include "GraphicsSystem.h"
 #include "OgreLogManager.h"
@@ -18,7 +18,6 @@
 
 #include "game.h"  // snd
 #include "SoundMgr.h"
-#include "CGame.h"
 #include "CarModel.h"
 #include "CScene.h"
 #include "SceneXml.h"
@@ -34,7 +33,7 @@ using namespace Ogre;
 
 //  fps stats
 //------------------------------------------------------------------------------------------------
-String OgreGame::generateFpsDebugText()
+String App::generateFpsDebugText()
 {
 	RenderSystem *rs = mGraphicsSystem->getRoot()->getRenderSystem();
 	const RenderingMetrics& rm = rs->getMetrics();  //** fps
@@ -97,7 +96,7 @@ String OgreGame::generateFpsDebugText()
 
 //  text
 //------------------------------------------------------------------------------------------------
-void OgreGame::generateDebugText()
+void App::generateDebugText()
 {
 	String txt;
 
@@ -118,7 +117,7 @@ void OgreGame::generateDebugText()
 	{
 		txt = generateFpsDebugText();
 
-		txt += "Vgt " + iToStr(pApp->scn->cntAll, 5);
+		txt += "Vgt " + iToStr(scn->cntAll, 5);
 		txt += "  Gui " + toStr( MyGUI::Ogre2RenderManager::getInstance().getBatchCount() );
 
 		txt += "\n^ v Param  " + fToStr( param, 0 );
@@ -150,7 +149,7 @@ void OgreGame::generateDebugText()
 	}
 	txt += "\n\n";
 
-	const auto* data = pApp->scn->data;
+	const auto* data = scn->data;
 	txt += /*"Track: " +*/ //toStr(idTrack)
 		toStr(data->tracks->trks[idTrack].n) +" "+
 		data->tracks->trks[idTrack].name +"\n";
@@ -158,10 +157,10 @@ void OgreGame::generateDebugText()
 		data->cars->cars[idCar].id + " " +
 		data->cars->cars[idCar].name +"\n\n";
 
-	if (pApp->bLoading)
+	if (bLoading)
 	{
-		txt += "Loading... " + toStr(pApp->curLoadState) +" / "+
-			toStr(App::LS_ALL) +"  "+ pApp->cStrLoad[pApp->curLoadState];
+		txt += "Loading... " + toStr(curLoadState) +" / "+
+			toStr(App::LS_ALL) +"  "+ cStrLoad[curLoadState];
 	}
 	else  //-
 	if (pGame)  // CAR text
@@ -176,9 +175,9 @@ void OgreGame::generateDebugText()
 			// txt += "pos  " + fToStr(pos[0],2) + "  " + fToStr(pos[1],2) + "  " + fToStr(pos[2],2) +"\n";
 			txt += "\ngear  " + iToStr(car->GetGear()) + "\nrpm  " + iToStr(car->GetEngineRPM(),4)
 				+ "\nkm/h " + fToStr(car->GetSpeedometer()*3.6f, 0) +"\n";
-				// todo: + "trk  " + fToStr(pApp->carModels[0]->trackPercent, 0) + "%";
+				// todo: + "trk  " + fToStr(carModels[0]->trackPercent, 0) + "%";
 		}
-		/*for (const auto* cm : pApp->carModels)
+		/*for (const auto* cm : carModels)
 		{
 			if (cm->fCam)
 				txt += "cam  " + toStr(cm->fCam->camPosFinal) + "  " + cm->fCam->sName +"\n";

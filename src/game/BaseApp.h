@@ -132,7 +132,9 @@ public:
 	bool isTweak();
 	
 	MyGUI::Gui* mGui =0;
-	void baseInitGui(), baseSizeGui();
+	MyGUI::Ogre2Platform* mPlatform =0;
+	void baseInitGui(class GraphicsSystem *mGraphicsSystem), baseSizeGui();
+	void DestroyGui();
 
 	Img bckFps =0, imgBack =0;
 	Txt txFps =0;
@@ -143,8 +145,6 @@ public:
 	int barSizeX =0, barSizeY =0;
 
 
-	MyGUI::Ogre2Platform* mPlatform =0;
-	
 	///  main menu  // pSet->inMenu
 	WP mWndMainPanels[ciMainBtns] ={0,}, mWndRacePanels[ciRaceBtns] ={0,};
 	Btn mWndMainBtns[ciMainBtns]  ={0,}, mWndRaceBtns[ciRaceBtns]   ={0,};

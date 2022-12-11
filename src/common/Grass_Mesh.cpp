@@ -205,7 +205,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 
     //-----------------------------------------------------------------------------------
     bool partialMesh = false;
-	Root *root = scn->app->mainApp->mGraphicsSystem->getRoot();
+	Root *root = scn->app->mGraphicsSystem->getRoot();
 	RenderSystem *renderSystem = root->getRenderSystem();
 	VaoManager *vaoManager = renderSystem->getVaoManager();
 

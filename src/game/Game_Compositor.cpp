@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "RenderConst.h"
-#include "Game.h"
 #include "CGame.h"
 
 #include "CameraController.h"
@@ -29,7 +28,7 @@ using namespace Ogre;
 
 
 //-----------------------------------------------------------------------------------
-CompositorWorkspace *OgreGame::setupCompositor()
+CompositorWorkspace *App::setupCompositor()
 {
 	// We first create the Cubemap workspace and pass it to the final workspace
 	// that does the real rendering.

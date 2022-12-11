@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Game.h"
+#include "CGame.h"
 #include "GraphicsSystem.h"
 #include "OgreLogManager.h"
 
@@ -25,9 +25,9 @@ using namespace std;
 //  util
 //-----------------------------------------------------------------------------------
 template <typename T, size_t MaxNumTextures>
-void OgreGame::unloadTexturesFromUnusedMaterials( HlmsDatablock *datablock,
-													std::set<TextureGpu *> &usedTex,
-													std::set<TextureGpu *> &unusedTex )
+void App::unloadTexturesFromUnusedMaterials( HlmsDatablock *datablock,
+											std::set<TextureGpu *> &usedTex,
+											std::set<TextureGpu *> &unusedTex )
 {
 	OGRE_ASSERT_HIGH( dynamic_cast<T *>( datablock ) );
 	T *derivedDatablock = static_cast<T *>( datablock );
@@ -48,7 +48,7 @@ void OgreGame::unloadTexturesFromUnusedMaterials( HlmsDatablock *datablock,
 	}
 }
 //-----------------------------------------------------------------------------------
-void OgreGame::unloadTexturesFromUnusedMaterials()
+void App::unloadTexturesFromUnusedMaterials()
 {
 	Root *root = mGraphicsSystem->getRoot();
 	HlmsManager *hlmsManager = root->getHlmsManager();
@@ -99,7 +99,7 @@ void OgreGame::unloadTexturesFromUnusedMaterials()
 }
 
 //-----------------------------------------------------------------------------------
-void OgreGame::unloadUnusedTextures()
+void App::unloadUnusedTextures()
 {
 	RenderSystem *renderSystem = mGraphicsSystem->getRoot()->getRenderSystem();
 
@@ -144,7 +144,7 @@ void OgreGame::unloadUnusedTextures()
 }
 
 //-----------------------------------------------------------------------------------
-void OgreGame::minimizeMemory()
+void App::minimizeMemory()
 {
 	// setTightMemoryBudget();
 	unloadTexturesFromUnusedMaterials();
@@ -161,7 +161,7 @@ void OgreGame::minimizeMemory()
 
 #if 0
 //-----------------------------------------------------------------------------------
-void OgreGame::setTightMemoryBudget()
+void App::setTightMemoryBudget()
 {
 	Root *root = mGraphicsSystem->getRoot();
 	RenderSystem *renderSystem = root->getRenderSystem();
@@ -178,7 +178,7 @@ void OgreGame::setTightMemoryBudget()
 	mTightMemoryBudget = true;
 }
 //-----------------------------------------------------------------------------------
-void OgreGame::setRelaxedMemoryBudget()
+void App::setRelaxedMemoryBudget()
 {
 	Root *root = mGraphicsSystem->getRoot();
 	RenderSystem *renderSystem = root->getRenderSystem();

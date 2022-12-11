@@ -27,18 +27,19 @@
 // for usage instructions.
 
 #pragma once
-//#include <iostream>
-//#include <fstream>
-//#include <sstream>
-//#include <map>
-//#include <math.h>
+#include <iomanip>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <map>
+#include <math.h>
 
 #if defined(WIN32) || defined(_WIN32)
 	#define USE_WINDOWS_TIMERS
-	//#include <windows.h>
-	//#include <time.h>
+	#include <windows.h>
+	#include <time.h>
 #else
-	//#include <sys/time.h>
+	#include <sys/time.h>
 #endif
 
 /// Use this macro to access the profiler singleton.  For example: 

@@ -30,7 +30,7 @@ CScene::CScene(App* app1)
 	//  Grass
 	grass = new Grass();
 	grass->mSceneMgr = app->mSceneMgr;
-	// grass->terrain = app->mainApp->mTerra;
+	// grass->terrain = app->mTerra;
 	grass->scn = this;
 	grass->pSet = app->pSet;
 }

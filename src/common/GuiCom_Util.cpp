@@ -38,8 +38,8 @@ CGuiCom::CGuiCom(App* app1)
 	,edTrkFind(0), resList(0)
 	,txtTracksFAll(0), txtTracksFCur(0)
 {
-	// pSet = app1->pSet;
-	// sc = app1->scn->sc;
+	pSet = app1->pSet;
+	sc = app1->scn->sc;
 	//mGui = app1->mGui;  set in GuiInit
 
 	pathTrk[0] = PATHMANAGER::Tracks() + "/";
@@ -391,7 +391,6 @@ void CGuiCom::CreateFonts()
 	String inf;
 	for (int i=0; i < cnt; ++i)
 	{
-		LogO("bb");
 		//  del old
 		const string name = names[i];
 		if (mgr.isExist(name))
@@ -425,9 +424,7 @@ void CGuiCom::CreateFonts()
 
 		font->initialise();
 	#else
-	LogO("aaaa");
 		ResourceTrueTypeFont* font = (ResourceTrueTypeFont*)FactoryManager::getInstance().createObject("Resource", "ResourceTrueTypeFont");
-	LogO("aaaa");
 
 		//  Loading from XML, data members are private in MyGUI 3.2.0
 		xml::Document doc;

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CHud.h"
 #include "OgreVector3.h"
-#include "Game.h"
+#include "CGame.h"
 #include "CameraController.h"
 #include "GraphicsSystem.h"
 #include "SDL_scancode.h"
@@ -22,7 +22,6 @@
 #include "game.h"  // snd
 #include "SoundMgr.h"
 #include "CarPosInfo.h"
-#include "CGame.h"
 #include "CarModel.h"
 #include "FollowCamera.h"
 #include "carcontrolmap_local.h"
@@ -40,13 +39,13 @@ using namespace Ogre;
 
 //  Update  frame
 //-----------------------------------------------------------------------------------------------------------------------------
-void OgreGame::update( float dt )
+void App::update( float dt )
 {
-	pApp->scn->UpdSun();
+	scn->UpdSun();
 
-	if (pApp->bLoading)
+	if (bLoading)
 	{
-		pApp->NewGameDoLoad();
+		NewGameDoLoad();
 		// PROFILER.endBlock(" frameSt");
 		// return;  //?
 	}
@@ -54,19 +53,19 @@ void OgreGame::update( float dt )
 	{
 		///  loading end  ------
 		const int iFr = 3;
-		if (pApp->iLoad1stFrames >= 0)
-		{	++pApp->iLoad1stFrames;
-			if (pApp->iLoad1stFrames == iFr)
+		if (iLoad1stFrames >= 0)
+		{	++iLoad1stFrames;
+			if (iLoad1stFrames == iFr)
 			{
 				// LoadingOff();  // hide loading overlay
 				// mSplitMgr->mGuiViewport->setClearEveryFrame(true, FBT_DEPTH);
 				// gui->Ch_LoadEnd();
-				pApp->bLoadingEnd = true;
+				bLoadingEnd = true;
 				// iLoad1stFrames = -1;  // for refl
 			}
-		}else if (pApp->iLoad1stFrames >= -1)
+		}else if (iLoad1stFrames >= -1)
 		{
-			--pApp->iLoad1stFrames;  // -2 end
+			--iLoad1stFrames;  // -2 end
 
 			// imgLoad->setVisible(false);  // hide back imgs
 			// if (imgBack)
@@ -74,51 +73,51 @@ void OgreGame::update( float dt )
 		}
 
 		//  HUD
-		if (pApp->bSizeHUD)
-		{	pApp->bSizeHUD = false;
+		if (bSizeHUD)
+		{	bSizeHUD = false;
 			
-			pApp->hud->Size();
+			hud->Size();
 		}
-		pApp->hud->Update(0, dt);
-		pApp->hud->Update(-1, dt);
+		hud->Update(0, dt);
+		hud->Update(-1, dt);
 	}
 
 
-	if (pGame && pApp && !pApp->bLoading)//pApp->iLoad1stFrames == -2)
+	if (pGame && !bLoading)//iLoad1stFrames == -2)
 	{
 		//  set game inputs .. // todo: use oics
-		pApp->inputs[A_Throttle] = mArrows[2];
-		pApp->inputs[A_Brake] = mArrows[3];
-		pApp->inputs[A_Steering] = 0.5f * (1 + mArrows[1] - mArrows[0]);
-		pApp->inputs[A_HandBrake] = mArrows[4];
-		pApp->inputs[A_Boost] = mArrows[5];
-		pApp->inputs[A_Flip] = 0.5f * (1 + mArrows[7] - mArrows[6]);
-		pApp->inputs[A_NextCamera] = mArrows[8];
-		pApp->inputs[A_PrevCamera] = mArrows[9];
-		pApp->inputs[A_Rewind] = mArrows[10];
+		inputs[A_Throttle] = mArrows[2];
+		inputs[A_Brake] = mArrows[3];
+		inputs[A_Steering] = 0.5f * (1 + mArrows[1] - mArrows[0]);
+		inputs[A_HandBrake] = mArrows[4];
+		inputs[A_Boost] = mArrows[5];
+		inputs[A_Flip] = 0.5f * (1 + mArrows[7] - mArrows[6]);
+		inputs[A_NextCamera] = mArrows[8];
+		inputs[A_PrevCamera] = mArrows[9];
+		inputs[A_Rewind] = mArrows[10];
 
 		//  multi thread
 		// if (pSet->multi_thr == 1 && pGame && !bLoading)
 		{
-			pApp->updatePoses(dt);
+			updatePoses(dt);
 		}
 	}
 
 
 	if (pSet->particles)
-		pApp->scn->UpdateWeather(mGraphicsSystem->getCamera());  //, 1.f/dt
+		scn->UpdateWeather(mGraphicsSystem->getCamera());  //, 1.f/dt
 	
 
 	//**  bullet bebug draw
-	if (pApp->dbgdraw)  // DBG_DrawWireframe
+	if (dbgdraw)  // DBG_DrawWireframe
 	{
-		pApp->dbgdraw->setDebugMode(1); //pSet->bltDebug ? 1 /*+(1<<13) 255*/ : 0);
-		pApp->dbgdraw->step();
+		dbgdraw->setDebugMode(1); //pSet->bltDebug ? 1 /*+(1<<13) 255*/ : 0);
+		dbgdraw->step();
 	}
 
 	//  road upd lods
 	static float roadUpdTm = 0.f;
-	if (pApp->scn->road)
+	if (scn->road)
 	{
 		//PROFILER.beginBlock("g.road");  // below 0.0 ms
 
@@ -129,7 +128,7 @@ void OgreGame::update( float dt )
 			if (roadUpdTm > 0.1f)  // interval [sec]
 			{
 				roadUpdTm = 0.f;
-				for (auto r : pApp->scn->roads)
+				for (auto r : scn->roads)
 					r->UpdLodVis(pSet->road_dist);
 				
 				//  trail upd lods
@@ -144,7 +143,7 @@ void OgreGame::update( float dt )
 	//  Keys  params  ----
 	float mul = shift ? 0.2f : ctrl ? 3.f : 1.f;
 	int d = right ? 1 : left ? -1 : 0;
-	if (d && pApp->scn->atmo)
+	if (d && scn->atmo)
 	{
 		SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
 		Atmosphere2Npr *atmo = static_cast<Atmosphere2Npr*>( sceneManager->getAtmosphere() );
@@ -192,9 +191,9 @@ void OgreGame::update( float dt )
 		if( sc->ldYaw < 0.f )
 			sc->ldYaw = 360.f + sc->ldYaw;
 	}
-	auto sun = pApp->scn->sun;
+	auto sun = scn->sun;
 	if (any)
-		pApp->scn->UpdSun();
+		scn->UpdSun();
 
 	///  Terrain  ----
 	if (mTerra && mGraphicsSystem->getRenderWindow()->isVisible() )
@@ -217,7 +216,7 @@ void OgreGame::update( float dt )
 #pragma GCC diagnostic ignored "-Wswitch"
 //  Key events
 //-----------------------------------------------------------------------------------------------------------------------------
-void OgreGame::keyPressed( const SDL_KeyboardEvent &arg )
+void App::keyPressed( const SDL_KeyboardEvent &arg )
 {
 	int itrk = 0, icar = 0;
 	switch (arg.keysym.scancode)
@@ -265,7 +264,7 @@ void OgreGame::keyPressed( const SDL_KeyboardEvent &arg )
 
 	case SDL_SCANCODE_ESCAPE:
 		if (pSet->escquit)
-		{	pApp->mShutDown = true;
+		{	mShutDown = true;
 			mGraphicsSystem->setQuit();
 		}	break;
 
@@ -273,14 +272,14 @@ void OgreGame::keyPressed( const SDL_KeyboardEvent &arg )
 	//###  restart game, new track or car
 	case SDL_SCANCODE_RETURN:
 	case SDL_SCANCODE_KP_ENTER:
-		pApp->NewGame(shift);  return;
+		NewGame(shift);  return;
 
 	//###  reset game - fast (same track & cars)
 	case SDL_SCANCODE_BACKSPACE:
 	{
-		for (int c=0; c < pApp->carModels.size(); ++c)
+		for (int c=0; c < carModels.size(); ++c)
 		{
-			CarModel* cm = pApp->carModels[c];
+			CarModel* cm = carModels[c];
 			if (cm->pCar)
 				cm->pCar->bResetPos = true;
 			if (cm->iLoopLastCam != -1 && cm->fCam)
@@ -318,17 +317,17 @@ void OgreGame::keyPressed( const SDL_KeyboardEvent &arg )
 
 	//  sky
 	case SDL_SCANCODE_K:  
-		if (pApp->scn->ndSky)
-			pApp->scn->DestroySkyDome();
+		if (scn->ndSky)
+			scn->DestroySkyDome();
 		else
-			pApp->scn->CreateSkyDome("sky-clearday1", 0.f);
+			scn->CreateSkyDome("sky-clearday1", 0.f);
 		break;
 	}
 
 
 	//***  pick track, car  ***
 	int mul4 = shift ? 10 : ctrl ? 4 : 1;
-	const auto* data = pApp->scn->data;
+	const auto* data = scn->data;
 	int tracks = data->tracks->trks.size();
 	int cars = data->cars->cars.size();
 
@@ -345,7 +344,7 @@ void OgreGame::keyPressed( const SDL_KeyboardEvent &arg )
 }
 
 
-void OgreGame::keyReleased( const SDL_KeyboardEvent &arg )
+void App::keyReleased( const SDL_KeyboardEvent &arg )
 {
 	switch (arg.keysym.scancode)
 	{

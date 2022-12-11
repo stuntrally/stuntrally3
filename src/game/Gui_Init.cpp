@@ -29,6 +29,7 @@ using namespace std;
 
 void CGui::InitGui()
 {
+	LogO(Ogre::String("::: Init Gui ----"));
 	mGui = app->mGui;
 	gcom->mGui = mGui;
 	Check::pGUI = mGui;  SliderValue::pGUI = mGui;

@@ -39,8 +39,8 @@ void TutorialGameState::_notifyGraphicsSystem( GraphicsSystem *graphicsSystem )
 {
 	mGraphicsSystem = graphicsSystem;
 }
-void TutorialGameState::createScene01()
 
+void TutorialGameState::createScene01()
 {
 	createDebugTextOverlay();
 }

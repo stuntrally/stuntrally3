@@ -87,7 +87,7 @@ public:
 
 	void _overrideKeyboardListener( KeyboardListener *listener );
 	void _overrideMouseListener( MouseListener *listener );
-	KeyboardListener *getKeyboardListener( void );
-	MouseListener *getMouseListener( void );
+	KeyboardListener *getKeyboardListener();
+	MouseListener *getMouseListener();
 };
 #endif

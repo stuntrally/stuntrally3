@@ -127,10 +127,10 @@ void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
 	//; UpdBlendmap();
 
 
-	app->mainApp->CreateTerrain();
+	app->CreateTerrain();
 
-	terrain = app->mainApp->mTerra;  //set ptr
-	grass->terrain = app->mainApp->mTerra;
+	terrain = app->mTerra;  //set ptr
+	grass->terrain = app->mTerra;
 	grass->mSceneMgr = app->mSceneMgr;
 	
 	LogO(String("::: Time Terrain: ") + fToStr(tm.getMilliseconds(),0,3) + " ms");
@@ -159,7 +159,7 @@ void CScene::DestroyTerrain()
 	if (mTerrainGroup)
 		mTerrainGroup->removeAllTerrains();
 	*/
-	app->mainApp->DestroyTerrain();
+	app->DestroyTerrain();
 }
 
 

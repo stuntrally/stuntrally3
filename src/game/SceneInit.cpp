@@ -334,9 +334,9 @@ void App::LoadCleanUp()  // 1 first
 	// sh::Factory::getInstance().unloadUnreferencedMaterials();
 	// TextureGpuManager::getEntries() Singleton().unloadUnreferencedResources();
 
-	// mainApp->minimizeMemory();  //! drops gui font tex
+	// minimizeMemory();  //! drops gui font tex
 
-	// mainApp->setupCompositor();  //? twice
+	// setupCompositor();  //? twice
 }
 
 
@@ -515,7 +515,7 @@ void App::LoadScene()  // 3
 	// scn->UpdateWaterRTT(mSplitMgr->mCameras.front());
 
 	/// generate materials
-	// mainApp->setupCompositor();
+	// setupCompositor();
 	/*try {
 		refreshCompositor();
 	} catch (InvalidParametersException &e) {

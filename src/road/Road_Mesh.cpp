@@ -51,7 +51,7 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 
     //-----------------------------------------------------------------------------------
     bool partialMesh = false;
-	Root *root = pGame->app->mainApp->mGraphicsSystem->getRoot();
+	Root *root = pGame->app->mGraphicsSystem->getRoot();
 	RenderSystem *renderSystem = root->getRenderSystem();
 	VaoManager *vaoManager = renderSystem->getVaoManager();
 

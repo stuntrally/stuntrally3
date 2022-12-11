@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Game.h"
+#include "CGame.h"
 #include "OgrePrerequisites.h"
 #include "OgreVector4.h"
 #include "CameraController.h"
@@ -16,7 +16,6 @@
 #include <OgreHlmsSamplerblock.h>
 
 //  SR
-#include "CGame.h"
 #include "CScene.h"
 #include "settings.h"
 #include "ShapeData.h"
@@ -30,7 +29,7 @@ using namespace Ogre;
 
 //  Terrain
 //-----------------------------------------------------------------------------------------------------------------------------
-void OgreGame::CreateTerrain()
+void App::CreateTerrain()
 {
 	if (mTerra) return;
 	Root *root = mGraphicsSystem->getRoot();
@@ -136,8 +135,8 @@ void OgreGame::CreateTerrain()
 						mGraphicsSystem->getCamera(), false );
 	// mTerra->setCustomSkirtMinHeight(0.8f); //?-
 	mTerra->setCastShadows( false );
-	mTerra->sc = pApp->scn->sc;
-	pApp->scn->terrain = mTerra;
+	mTerra->sc = scn->sc;
+	scn->terrain = mTerra;
 
 	LogO("---- Terra load");
 
@@ -174,7 +173,7 @@ void OgreGame::CreateTerrain()
 }
 
 
-void OgreGame::DestroyTerrain()
+void App::DestroyTerrain()
 {
 	LogO("---- destroy Terrain");
 
