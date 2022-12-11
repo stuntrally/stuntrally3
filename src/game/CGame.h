@@ -1,7 +1,7 @@
 #pragma once
 #include "settings.h"
 // #include "Gui_Def.h"
-// #include "BaseApp.h"
+#include "BaseApp.h"
 #include "Replay.h"
 #include "ReplayTrk.h"
 #include "cardefs.h"
@@ -21,7 +21,7 @@ class GAME;  class CHud;  class CGui;  class CGuiCom;
 namespace MyGUI {  class Gui;  }
 
 
-class App //: public ICS::ChannelListener
+class App : public BaseApp 	//, public ICS::ChannelListener
 {
 public:
 	App(SETTINGS* settings, GAME* game);
@@ -95,13 +95,6 @@ public:
 		
 	BtOgre::DebugDrawer *dbgdraw = 0;  /// blt dbg
 
-	//  mtr reload
-	/*enum eMaterials {
-		Mtr_CarBody, Mtr_CarInterior, Mtr_CarGlass,
-		Mtr_CarTireFront, Mtr_CarTireRear,
-		Mtr_Road,  NumMaterials  };
-	Ogre::String sMtr[NumMaterials];*/
-
 
 	///  HUD
 	// CHud* hud;
@@ -153,8 +146,8 @@ public:
 
 	///  Gui
 	//-----------------------------------------------------------------
-	// CGui* gui =0;
-	// CGuiCom* gcom =0;
+	CGui* gui =0;
+	CGuiCom* gcom =0;
 
 	// PreviewTex prvView,prvRoad,prvTer;  // track tab
 	// PreviewTex prvStCh;  // champ,chall stage view
