@@ -1,45 +1,36 @@
 #include "pch.h"
 #include "common/Def_Str.h"
 #include "BaseApp.h"
-#include "LoadingBar.h"
+// #include "LoadingBar.h"
 
-#include "../vdrift/pathmanager.h"
-#include "../settings.h"
-#include "../network/masterclient.hpp"
-#include "../network/gameclient.hpp"
+#include "pathmanager.h"
+#include "settings.h"
+// #include "network/masterclient.hpp"
+// #include "network/gameclient.hpp"
 
-#include "Localization.h"
-#include "SplitScreen.h"
-#include "Compositor.h"
+// #include "Localization.h"
+// #include "SplitScreen.h"
+// #include "Compositor.h"
 
 #include "CarModel.h"
 #include "FollowCamera.h"
 
 #include <OgreLogManager.h>
 #include <MyGUI_Prerequest.h>
-#if OGRE_VERSION >= MYGUI_DEFINE_VERSION(1, 9, 0)
-#include <OgreOverlaySystem.h>
-#endif
-#include "boost/filesystem.hpp"
+// #if OGRE_VERSION >= MYGUI_DEFINE_VERSION(1, 9, 0)
+// #include <OgreOverlaySystem.h>
+// #endif
+// #include "boost/filesystem.hpp"
 
 #include <MyGUI.h>
-#include <MyGUI_OgrePlatform.h>
-//#include "common/MyGUI_D3D11.h"
+#include <MyGUI_Ogre2Platform.h>
 
 #include <OgreTimer.h>
 #include <OgreOverlayManager.h>
 #include <OgreTimer.h>
-#include "Compositor.h"
 
-#include "../shiny/Main/Factory.hpp"
-#include "../shiny/Platforms/Ogre/OgrePlatform.hpp"
-
-#include "../sdl4ogre/sdlinputwrapper.hpp"
-#include "../sdl4ogre/sdlcursormanager.hpp"
-#include "../sdl4ogre/sdlwindowhelper.hpp"
-
-#include "common/PointerFix.h"
-#include "../oics/ICSInputControlSystem.h"
+// #include "PointerFix.h"
+// #include "ICSInputControlSystem.h"
 using namespace Ogre;
 
 
@@ -89,6 +80,7 @@ namespace
 
 //  Create
 //-------------------------------------------------------------------------------------
+/*
 void BaseApp::createFrameListener()
 {
 	mInputWrapper = new SFO::InputWrapper(mSDLWindow, mWindow);
@@ -119,10 +111,11 @@ void BaseApp::createFrameListener()
 
 	mRoot->addFrameListener(this);
 }
-
+*/
 
 //  Run
 //-------------------------------------------------------------------------------------
+/*
 void BaseApp::Run(bool showDialog)
 {
 	mShowDialog = showDialog;
@@ -149,35 +142,34 @@ void BaseApp::Run(bool showDialog)
 
 	destroyScene();
 }
-
+*/
 
 //  ctor
 //-------------------------------------------------------------------------------------
 BaseApp::BaseApp()
-	:mMasterClient(), mClient()
+	// :mMasterClient(), mClient()
 {
-	mLoadingBar = new LoadingBar(this);
+	// mLoadingBar = new LoadingBar(this);
 }
 
 //  dtor
 //-------------------------------------------------------------------------------------
 BaseApp::~BaseApp()
 {
-	delete mFactory;
 	//if (mSplitMgr)
 		//refreshCompositor(false);
 
-	CompositorManager::getSingleton().removeAll();
-	delete mLoadingBar;
-	delete mSplitMgr;
+	// CompositorManager::getSingleton().removeAll();
+	// delete mLoadingBar;
+	// delete mSplitMgr;
 	
-	if (mGui)  {
-		mGui->shutdown();  delete mGui;  mGui = 0;  }
-	if (mPlatform)  {
-		mPlatform->shutdown();  delete mPlatform;  mPlatform = 0;  }
+	if (mGui)
+	{	mGui->shutdown();  delete mGui;  mGui = 0;  }
+	if (mPlatform)
+	{	mPlatform->shutdown();  delete mPlatform;  mPlatform = 0;  }
 
 	//  save inputs
-	mInputCtrl->save(PATHMANAGER::UserConfigDir() + "/input.xml");
+	/*mInputCtrl->save(PATHMANAGER::UserConfigDir() + "/input.xml");
 	delete mInputCtrl;
 	for (int i=0; i<4; ++i)
 	{
@@ -186,22 +178,22 @@ BaseApp::~BaseApp()
 	}
 
 	delete mInputWrapper;
-	delete mCursorManager;
-
+	delete mCursorManager;*/
+/*
 	#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 		mRoot->unloadPlugin("RenderSystem_Direct3D9");
 		//mRoot->unloadPlugin("RenderSystem_Direct3D11");
 	#endif
 	mRoot->unloadPlugin("RenderSystem_GL");
 
+*/
+	// OGRE_DELETE mRoot;
 
-	OGRE_DELETE mRoot;
-	delete mHDRLogic;  mHDRLogic = 0;
-
-	SDL_SetWindowFullscreen(mSDLWindow, 0);
-	SDL_DestroyWindow(mSDLWindow);
+	// SDL_SetWindowFullscreen(mSDLWindow, 0);
+	// SDL_DestroyWindow(mSDLWindow);
 }
 
+#if 0
 
 //  config
 //-------------------------------------------------------------------------------------
@@ -479,8 +471,9 @@ void BaseApp::LoadingOff()
 	mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
 	mLoadingBar->finish();
 }
+#endif
 
-
+#if 0
 //-------------------------------------------------------------------------------------
 //  key, mouse, window
 //-------------------------------------------------------------------------------------
@@ -653,46 +646,48 @@ void BaseApp::windowClosed()
 {
 	Root::getSingleton().queueEndRendering();
 }
+#endif
 
 
 ///  base Init Gui
 //--------------------------------------------------------------------------------------------------------------
 void BaseApp::baseInitGui()
 {
+	return;
 	using namespace MyGUI;
-	mPlatform = new MyGUI::OgrePlatform();
-	mPlatform->initialise(mWindow, mSceneMgr, "General", PATHMANAGER::UserConfigDir() + "/MyGUI.log");
+	mPlatform = new MyGUI::Ogre2Platform();
+	// mPlatform->initialise(mWindow, mSceneMgr, "General", PATHMANAGER::UserConfigDir() + "/MyGUI.log");
 	mGui = new MyGUI::Gui();
 
 	mGui->initialise("");
 
-	MyGUI::FactoryManager::getInstance().registerFactory<ResourceImageSetPointerFix>("Resource", "ResourceImageSetPointer");
+	// MyGUI::FactoryManager::getInstance().registerFactory<ResourceImageSetPointerFix>("Resource", "ResourceImageSetPointer");
 	MyGUI::ResourceManager::getInstance().load("core.xml");
 
-	MyGUI::PointerManager::getInstance().eventChangeMousePointer +=	MyGUI::newDelegate(this, &BaseApp::onCursorChange);
-	MyGUI::PointerManager::getInstance().setVisible(false);
+	// MyGUI::PointerManager::getInstance().eventChangeMousePointer +=	MyGUI::newDelegate(this, &BaseApp::onCursorChange);
+	// MyGUI::PointerManager::getInstance().setVisible(false);
 
 		
 	//------------------------ lang
-	if (pSet->language == "")  // autodetect
-	{	pSet->language = getSystemLanguage();
-		setlocale(LC_NUMERIC, "C");  }
+	// if (pSet->language == "")  // autodetect
+	// {	pSet->language = getSystemLanguage();
+	// 	setlocale(LC_NUMERIC, "C");  }
 	
-	if (!boost::filesystem::exists(PATHMANAGER::Data() + "/gui/core_language_" + pSet->language + "_tag.xml"))
-		pSet->language = "en";  // use en if not found
+	// if (!std::filesystem::exists(PATHMANAGER::Data() + "/gui/core_language_" + pSet->language + "_tag.xml"))
+		// pSet->language = "en";  // use en if not found
 		
-	MyGUI::LanguageManager::getInstance().setCurrentLanguage(pSet->language);
+	MyGUI::LanguageManager::getInstance().setCurrentLanguage("en"); //pSet->language);
 	//------------------------
 
 		
-	mPlatform->getRenderManagerPtr()->setSceneManager(mSplitMgr->mGuiSceneMgr);
-	mPlatform->getRenderManagerPtr()->setActiveViewport(mSplitMgr->mNumViewports);
+	// mPlatform->getRenderManagerPtr()->setSceneManager(mSplitMgr->mGuiSceneMgr);
+	// mPlatform->getRenderManagerPtr()->setActiveViewport(mSplitMgr->mNumViewports);
 
 
 	///  create widgets
 	//------------------------------------------------
 	//  Fps
-	bckFps = mGui->createWidget<ImageBox>("ImageBox",
+	/*bckFps = mGui->createWidget<ImageBox>("ImageBox",
 		0,0, 212,25, Align::Default, "Pointer", "FpsB");
 	bckFps->setImageTexture("back_fps.png");
 
@@ -700,7 +695,7 @@ void BaseApp::baseInitGui()
 		1,1, 212,25, Align::Default, "FpsT");
 	txFps->setFontName("hud.fps");
 
-	bckFps->setVisible(false);
+	bckFps->setVisible(false);*/
 
 
 	//  loading
@@ -733,12 +728,12 @@ void BaseApp::baseInitGui()
 
 	///  menu background image
 	//  dont show for autoload and no loadingbackground
-	if (!(!pSet->loadingbackground && pSet->autostart))
+	/*if (!(!pSet->loadingbackground && pSet->autostart))
 	{
 		imgBack = mGui->createWidget<ImageBox>("ImageBox",
 			0,0, 800,600, Align::Default, "Back","ImgBack");
 		imgBack->setImageTexture("background.jpg");
-	}
+	}*/
 
 	///  loading background img
 	imgLoad = mGui->createWidget<ImageBox>("ImageBox",
@@ -754,7 +749,8 @@ void BaseApp::baseInitGui()
 //-------------------------------------------------------------------
 void BaseApp::baseSizeGui()
 {
-	int sx = mWindow->getWidth(), sy = mWindow->getHeight();
+	int sx = 1920, sy = 1100;
+	// int sx = mWindow->getWidth(), sy = mWindow->getHeight();
 	bckLoad->setPosition(sx/2 - 250/*200*/, sy - 140);
 
 	//imgBack->setCoord(0,0, sx, sy);

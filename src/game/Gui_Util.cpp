@@ -1,27 +1,21 @@
 #include "pch.h"
-#include "common/Def_Str.h"
-#include "common/Gui_Def.h"
-#include "../vdrift/pathmanager.h"
-#include "../settings.h"
-#include "../vdrift/game.h"
+#include "Def_Str.h"
+#include "Gui_Def.h"
+#include "pathmanager.h"
+#include "settings.h"
+#include "game.h"
 #include "CGame.h"
 #include "CGui.h"
-#include "common/data/CData.h"
-#include "common/data/TracksXml.h"
-#include "common/GuiCom.h"
-#include "common/MultiList2.h"
-#include "common/Slider.h"
-#include "../network/gameclient.hpp"
-#include <boost/filesystem.hpp>
+#include "CData.h"
+#include "TracksXml.h"
+#include "GuiCom.h"
+
+#include "MultiList2.h"
+#include "Slider.h"
+// #include "gameclient.hpp"
+// #include <boost/filesystem.hpp>
 #include <OgreTimer.h>
-#include <MyGUI_Gui.h>
-#include <MyGUI_TabControl.h>
-#include <MyGUI_TabItem.h>
-#include <MyGUI_EditBox.h>
-#include <MyGUI_Window.h>
-#include <MyGUI_ImageBox.h>
-#include <MyGUI_MultiListBox.h>
-#include <MyGUI_PolygonalSkin.h>
+#include <MyGUI.h>
 #include "tinyxml2.h"
 #include "settings.h"
 using namespace std;
@@ -56,7 +50,7 @@ bool (*CarSort[allSortFunc])(const CarL& c1, const CarL& c2) = {
 //-----------------------------------------------------------------------------------------------------------
 void CGui::CarListUpd(bool resetNotFound)
 {
-	bool filter = isChallGui();
+	bool filter = 0;//isChallGui();
 		
 	if (carList)
 	{	carList->removeAllItems();
@@ -75,7 +69,7 @@ void CGui::CarListUpd(bool resetNotFound)
 			//if (sTrkFind == "" || strstr(nlow.c_str(), sTrkFind.c_str()) != 0)
 
 			///  filter for challenge
-			if (!filter || IsChallCar(name))
+			if (!filter) //; || IsChallCar(name))
 			{
 				AddCarL(name, (*i).ci);
 				if (name == pSet->gui.car[0])  {  si = ii;
@@ -233,7 +227,7 @@ void CGui::listCarChng(MultiList2* li, size_t)
 	sListCar = li->getItemNameAt(i).substr(7);
 
 	if (imgCar && !pSet->dev_no_prvs)  imgCar->setImageTexture(sListCar+".jpg");
-	if (app->mClient)  app->mClient->updatePlayerInfo(pSet->nickname, sListCar);
+	// if (app->mClient)  app->mClient->updatePlayerInfo(pSet->nickname, sListCar);
 	
 	//  car desc txt
 	String sd = String("#BFD3E5")+TR("#{CarDesc_"+sListCar+"}");
@@ -477,16 +471,16 @@ void CGui::changeTrack()
 	pSet->gui.track = gcom->sListTrack;
 	pSet->gui.track_user = gcom->bListTrackU;
 							//_ only for host..
-	if (app->mMasterClient && valNetPassword->getVisible())
+	/*if (app->mMasterClient && valNetPassword->getVisible())
 	{	uploadGameInfo();
-		updateGameInfoGUI();  }
+		updateGameInfoGUI();  }*/
 }
 
 //  new game
 void CGui::btnNewGame(WP wp)
 {
-	if (app->mWndGame->getVisible() && app->mWndTabsGame->getIndexSelected() < TAB_Champs  || app->mClient)
-		BackFromChs();  /// champ, back to single race
+	// if (app->mWndGame->getVisible() && app->mWndTabsGame->getIndexSelected() < TAB_Champs  || app->mClient)
+	// 	BackFromChs();  /// champ, back to single race
 	
 	bool force = false;
 	if (wp)
@@ -499,7 +493,7 @@ void CGui::btnNewGame(WP wp)
 	app->mWndRpl->setVisible(false);  app->mWndRplTxt->setVisible(false);//
 	gcom->bnQuit->setVisible(app->isFocGui);
 	
-	app->updMouse();
+	// app->updMouse();
 	
 	gcom->mToolTip->setVisible(false);
 }
@@ -550,7 +544,7 @@ void CGui::toggleGui(bool toggle)
 	UString sCh = tutor ? TR("#FFC020#{Tutorial}") :
 		champ ? TR("#B0FFB0#{Championship}") : TR("#C0C0FF#{Challenge}");
 
-	UpdChampTabVis();
+	// UpdChampTabVis();
 	
 	bool notMain = gui && !(mnu == MN1_Main || mnu == MN1_Race);
 	bool vis = notMain && gc;
@@ -580,7 +574,7 @@ void CGui::toggleGui(bool toggle)
 	}
 
 	gcom->bnQuit->setVisible(gui);
-	app->updMouse();
+	// app->updMouse();
 	if (!gui)  gcom->mToolTip->setVisible(false);
 
 	for (int i=0; i < ciMainBtns; ++i)
@@ -641,12 +635,12 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab)
 }
 
 //  close netw end
-void CGui::btnNetEndClose(WP)
+/*void CGui::btnNetEndClose(WP)
 {
 	app->mWndNetEnd->setVisible(false);
 	app->isFocGui = true;  // show back gui
 	toggleGui(false);
-}
+}*/
 
 
 //  utility
@@ -685,20 +679,20 @@ int CGui::LNext(Li lp, int rel, int ofs)
 void CGui::LNext(int rel)
 {
 	//if (!ap->isFocGui || pSet->isMain)  return;
-	if (pSet->iMenu == MN_Replays)
+	/*if (pSet->iMenu == MN_Replays)
 		listRplChng(rplList,  LNext(rplList, rel, 11));
-	else
+	else*/
 	if (app->mWndGame->getVisible())
 		switch (app->mWndTabsGame->getIndexSelected())
 		{	case TAB_Track:  gcom->listTrackChng(gcom->trkList,  LNext(gcom->trkList, rel, 11));  return;
 			case TAB_Car:	 listCarChng(carList, LNext(carList, rel, 5));  return;
 			case TAB_Champs:
-				if (isChallGui())
+				/*if (isChallGui())
 				      listChallChng(liChalls, LNext(liChalls, rel, 8));
-				else  listChampChng(liChamps, LNext(liChamps, rel, 8));
+				else  listChampChng(liChamps, LNext(liChamps, rel, 8));*/
 				return;
-			case TAB_Stages: listStageChng(liStages, LNext(liStages, rel, 8));  return;
-			case TAB_Stage:	 if (rel > 0)  btnStageNext(0);  else  btnStagePrev(0);  return;
+			// case TAB_Stages: listStageChng(liStages, LNext(liStages, rel, 8));  return;
+			// case TAB_Stage:	 if (rel > 0)  btnStageNext(0);  else  btnStagePrev(0);  return;
 		}
 }
 
@@ -734,12 +728,12 @@ void CGui::GuiUpdate()
 	}
 
 	//  upd tweak tire save
-	if (app->pGame->reloadSimDone)
+	/*if (app->pGame->reloadSimDone)
 	{	app->pGame->reloadSimDone = false;
 
 		FillTweakLists();
 		btnTweakTireLoad(0);  // load back
-	}
+	}*/
 }
 
 

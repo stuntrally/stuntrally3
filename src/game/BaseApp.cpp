@@ -1,21 +1,21 @@
 #include "pch.h"
 #include "common/Def_Str.h"
 #include "BaseApp.h"
-#include "FollowCamera.h"
-#include "../vdrift/pathmanager.h"
-#include "SplitScreen.h"
+// #include "FollowCamera.h"
+// #include "pathmanager.h"
+// #include "SplitScreen.h"
 
-#include "MyGUI_Prerequest.h"
-#include "MyGUI_PointerManager.h"
+// #include "MyGUI_Prerequest.h"
+// #include "MyGUI_PointerManager.h"
 
 #include <MyGUI.h>
-#include <MyGUI_OgrePlatform.h>
+// #include <MyGUI_Ogre2Platform.h>
 using namespace Ogre;
 
-#include "../sdl4ogre/sdlinputwrapper.hpp"
-#include "../oics/ICSInputControlSystem.h"
+// #include "../sdl4ogre/sdlinputwrapper.hpp"
+// #include "../oics/ICSInputControlSystem.h"
 
-
+#if 0
 //  rendering
 //-------------------------------------------------------------------------------------
 bool BaseApp::frameRenderingQueued(const FrameEvent& evt)
@@ -105,7 +105,7 @@ void BaseApp::updateStats()
 	}
 	catch(...) {  /*ignore*/  }
 }
-
+#endif
 
 bool BaseApp::IsFocGui()
 {

@@ -1,22 +1,22 @@
 #include "pch.h"
-#include "common/Def_Str.h"
-#include "common/Gui_Def.h"
-#include "common/GuiCom.h"
-#include "common/CScene.h"
-#include "../settings.h"
-#include "../vdrift/game.h"
-#include "../road/PaceNotes.h"
-#include "../road/Road.h"
+#include "Def_Str.h"
+#include "Gui_Def.h"
+#include "GuiCom.h"
+#include "CScene.h"
+#include "settings.h"
+#include "game.h"
+// #include "PaceNotes.h"
+#include "Road.h"
 #include "CGame.h"
 #include "CHud.h"
 #include "CGui.h"
-#include "SplitScreen.h"
-#include "common/Slider.h"
-#include "common/MultiList2.h"
+// #include "SplitScreen.h"
+#include "Slider.h"
+#include "MultiList2.h"
 #include <OgreCamera.h>
 #include <OgreSceneNode.h>
-#include "../ogre/common/RenderBoxScene.h"
-#include <MyGUI_Types.h>
+// #include "RenderBoxScene.h"
+#include <MyGUI.h>
 using namespace std;
 using namespace Ogre;
 using namespace MyGUI;
@@ -239,8 +239,8 @@ void CGui::radUpd(bool kmh)
 {
 	Radio2(bRkmh, bRmph, kmh);
 	pSet->show_mph = !kmh;  hud->Size();
-	if (app->scn->pace)
-		app->scn->pace->UpdTxt();
+	// if (app->scn->pace)
+	// 	app->scn->pace->UpdTxt();
 }
 void CGui::radKmh(WP wp){	radUpd(true);   }
 void CGui::radMph(WP wp){	radUpd(false);  }
@@ -257,9 +257,9 @@ void CGui::btnNumPlayers(WP wp)
 
 void CGui::chkStartOrd(WP wp)
 {
-	pSet->gui.start_order = pSet->gui.start_order==0 ? 1 : 0;
-	Btn chk = wp->castType<Button>();
-    chk->setStateSelected(pSet->gui.start_order > 0);
+	// pSet->gui.start_order = pSet->gui.start_order==0 ? 1 : 0;
+	// Btn chk = wp->castType<Button>();
+    // chk->setStateSelected(pSet->gui.start_order > 0);
 }
 
 
@@ -269,7 +269,7 @@ void CGui::chkStartOrd(WP wp)
 //  reflection
 void CGui::slReflDist(SV*)
 {
-	app->recreateReflections();
+	// app->recreateReflections();
 }
 void CGui::slReflMode(SV* sv)
 {
@@ -280,16 +280,16 @@ void CGui::slReflMode(SV* sv)
 		case 1: sv->setTextClr(1.0, 0.5, 0.0);  break;
 		case 2: sv->setTextClr(1.0, 0.0, 0.0);  break;
 	}
-	app->recreateReflections();
+	// app->recreateReflections();
 }
-void App::recreateReflections()
+/*void App::recreateReflections()
 {
 	for (auto* car : carModels)
 	{	
 		delete car->pReflect;
 		car->CreateReflection();
 	}
-}
+}*/
 
 void CGui::chkParTrl(Ck*)
 {		
@@ -320,8 +320,8 @@ void CGui::slSizeArrow(SV*)
 }
 void CGui::slCountdownTime(SL)
 {
-	float v = (int)(val * 10.f +slHalf) * 0.5f;	if (bGI)  pSet->gui.pre_time = v;
-	if (valCountdownTime){	valCountdownTime->setCaption(fToStr(v,1,4));  }
+	// float v = (int)(val * 10.f +slHalf) * 0.5f;	if (bGI)  pSet->gui.pre_time = v;
+	// if (valCountdownTime){	valCountdownTime->setCaption(fToStr(v,1,4));  }
 }
 
 
@@ -334,14 +334,15 @@ void CGui::chkWireframe(Ck*)
 	///  Set for all cameras
 	PolygonMode mode = b ? PM_WIREFRAME : PM_SOLID;
 	
-	app->refreshCompositor(b);  // disable effects
+	// app->refreshCompositor(b);  // disable effects
 
-	if (app->mSplitMgr)
+	/*if (app->mSplitMgr)
 	for (auto* cam : app->mSplitMgr->mCameras)
 		cam->setPolygonMode(mode);
 	
 	if (app->ndSky)
 		app->ndSky->setVisible(!b);  // hide sky
+	*/
 }
 
 //  HUD
@@ -352,21 +353,21 @@ void CGui::chkHudShow(Ck*)
 
 void CGui::chkArrow(Ck*)
 {
-	if (hud->arrow.nodeRot)
-		hud->arrow.nodeRot->setVisible(pSet->check_arrow && !app->bHideHudArr);
+	// if (hud->arrow.nodeRot)
+	// 	hud->arrow.nodeRot->setVisible(pSet->check_arrow && !app->bHideHudArr);
 }
 void CGui::chkBeam(Ck*)
 {
-	for (int i=0; i < app->carModels.size(); ++i)
-		app->carModels[i]->ShowNextChk(pSet->check_beam && !app->bHideHudBeam);
+	// for (int i=0; i < app->carModels.size(); ++i)
+	// 	app->carModels[i]->ShowNextChk(pSet->check_beam && !app->bHideHudBeam);
 }
 
 //  hud minimap
 void CGui::chkMinimap(Ck*)
 {
-	for (int c=0; c < hud->hud.size(); ++c)
-		if (hud->hud[c].ndMap)
-			hud->hud[c].ndMap->setVisible(pSet->trackmap);
+	// for (int c=0; c < hud->hud.size(); ++c)
+	// 	if (hud->hud[c].ndMap)
+	// 		hud->hud[c].ndMap->setVisible(pSet->trackmap);
 }
 
 void CGui::chkMiniUpd(Ck*)
@@ -377,14 +378,14 @@ void CGui::chkMiniUpd(Ck*)
 //  pacenotes
 void CGui::slUpd_Pace(SV*)
 {
-	app->scn->UpdPaceParams();
+	// app->scn->UpdPaceParams();
 }
 
 void CGui::chkTrailShow(Ck*)
 {
-	if (!app->scn->trail)  return;
-	if (!pSet->trail_show)
-		app->scn->trail->SetVisTrail(false);
+	//; if (!app->scn->trail)  return;
+	// if (!pSet->trail_show)
+	// 	app->scn->trail->SetVisTrail(false);
 }
 
 void CGui::chkReverse(Ck*) {  gcom->ReadTrkStats();  }
@@ -393,26 +394,26 @@ void CGui::chkReverse(Ck*) {  gcom->ReadTrkStats();  }
 //  graphs
 void CGui::chkGraphs(Ck*)
 {
-	bool te = pSet->graphs_type == Gh_TireEdit;
-	for (int i=0; i < app->graphs.size(); ++i)
-		app->graphs[i]->SetVisible(!te ? pSet->show_graphs :  // reference vis
-			pSet->show_graphs && (i < 2*App::TireNG || i >= 4*App::TireNG || pSet->te_reference));
+	// bool te = pSet->graphs_type == Gh_TireEdit;
+	// for (int i=0; i < app->graphs.size(); ++i)
+	// 	app->graphs[i]->SetVisible(!te ? pSet->show_graphs :  // reference vis
+	// 		pSet->show_graphs && (i < 2*App::TireNG || i >= 4*App::TireNG || pSet->te_reference));
 }
 void CGui::comboGraphs(CMB)
 {
-	if (valGraphsType)
-		valGraphsType->setCaption(toStr(val));
-	if (bGI /*&& pSet->graphs_type != v*/)  {
-		pSet->graphs_type = (eGraphType)val;
-		app->DestroyGraphs();  app->CreateGraphs();  }
+	// if (valGraphsType)
+	// 	valGraphsType->setCaption(toStr(val));
+	// if (bGI /*&& pSet->graphs_type != v*/)  {
+	// 	pSet->graphs_type = (eGraphType)val;
+	// 	app->DestroyGraphs();  app->CreateGraphs();  }
 }
 
 //  Startup
 void CGui::chkMultiThread(WP wp)
 {
-	pSet->multi_thr = pSet->multi_thr ? 0 : 1;
-	Btn chk = wp->castType<Button>();
-	chk->setStateSelected(pSet->multi_thr > 0);
+	// pSet->multi_thr = pSet->multi_thr ? 0 : 1;
+	// Btn chk = wp->castType<Button>();
+	// chk->setStateSelected(pSet->multi_thr > 0);
 }
 
 
@@ -420,22 +421,22 @@ void CGui::chkMultiThread(WP wp)
 
 void CGui::chkAllEffects(Ck*)
 {
-	app->recreateCompositor();  //app->refreshCompositor();
-	app->scn->changeShadows();
+	// app->recreateCompositor();  //app->refreshCompositor();
+	// app->scn->changeShadows();
 }
 void CGui::chkEffUpd(Ck*)
 {		
-	app->refreshCompositor();
+	// app->refreshCompositor();
 }
 void CGui::chkEffUpdShd(Ck*)
 {
-	app->refreshCompositor();
-	app->scn->changeShadows();
+	// app->refreshCompositor();
+	// app->scn->changeShadows();
 }
 
 void CGui::slEffUpd(SV*)
 {
-	if (bGI)  app->refreshCompositor();
+	// if (bGI)  app->refreshCompositor();
 }
 
 
@@ -523,7 +524,7 @@ void CGui::btnLesson(WP wp)
 	}
 	file = PATHMANAGER::Lessons() + "/" + file + ".rpl";
 	bLesson = true;  //`
-	btnRplLoadFile(file);
+	// btnRplLoadFile(file);
 	pSet->game.trackreverse = file.find('b') != string::npos;  //app->replay.header.reverse;
 	
 	rplSubText->setCaption("");  app->mWndRplTxt->setVisible(false);
@@ -629,6 +630,7 @@ IntCoord CGui::GetViewSize()
 
 void CGui::InitCarPrv()
 {
+#if 0
 	viewCanvas = app->mWndGame->createWidget<Canvas>("Canvas", GetViewSize(), Align::Stretch);
 	viewCanvas->setInheritsAlpha(false);
 	viewCanvas->setPointer("hand");
@@ -655,4 +657,5 @@ void CGui::InitCarPrv()
 	//viewBox->mCameraNode->setPosition(Vector3(0,2,4));
 	//viewBox->mCameraNode->lookAt(Vector3(0,0,0), Node::TS_WORLD);
 	//viewBox->updateViewport();
+#endif
 }

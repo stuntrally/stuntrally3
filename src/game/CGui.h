@@ -1,25 +1,25 @@
 #pragma once
-#include "BaseApp.h"
-#include "common/Gui_Def.h"
-#include "common/SliderValue.h"
+// #include "BaseApp.h"
+#include "Gui_Def.h"
+#include "SliderValue.h"
 
 #include <MyGUI_Enumerator.h>
-#include "common/MessageBox/MessageBoxStyle.h"
+// #include "MessageBoxStyle.h"
 
-#include "../network/networkcallbacks.hpp"
-#include "../oics/ICSInputControlSystem.h"
-#include <boost/thread.hpp>
+// #include "networkcallbacks.hpp"
+// #include "ICSInputControlSystem.h"
+// #include <thread>
 
 #include "ChampsXml.h"  // progress..
 #include "ChallengesXml.h"
-#include "CInput.h"
-#include "../settings.h"
+// #include "CInput.h"
+#include "settings.h"
 
 namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class RenderWindow;  class Viewport;  class Light;  }
 namespace MyGUI{  class MultiList2;  class Slider;  class Message;  class PolygonalSkin;  }
 namespace wraps {	class RenderBoxScene;  }
 class Scene;  class SplineRoad;  class GAME;  class CHud;  class CData;
-class CGuiCom;  class CarInfo;  class GuiPopup;
+class CGuiCom;  class CarInfo;  class GuiPopup;  class App;
 
 
 //  cars list items - with info for sorting
@@ -30,9 +30,9 @@ struct CarL
 };
 
 
-class CGui : public BGui,
-			 public GameClientCallback, public MasterClientCallback,
-			 public ICS::DetectingBindingListener
+class CGui : public BGui
+			//  public GameClientCallback, public MasterClientCallback,
+			//  public ICS::DetectingBindingListener
 {
 public:
 	App* app =0;  GAME* pGame =0;  SETTINGS* pSet =0;
@@ -107,6 +107,7 @@ public:
 	///-----------------------------------------------------------------------------------------------------------------
 
 	//  bind events   . . . . .
+/*
 	virtual void keyBindingDetected(
 		ICS::InputControlSystem* ICS, ICS::Control* control,  SDL_Keycode key,
 		ICS::Control::ControlChangingDirection direction);
@@ -148,7 +149,7 @@ public:
 
 	virtual void notifyInputActionBound(bool complete);
 	bool actionIsActive(std::string, std::string);
-
+*/
 	//  input gui
 	Tab tabInput =0;  void tabInputChg(Tab, size_t);
 	Txt txtInpDetail =0;  WP panInputDetail =0;  Btn chOneAxis =0;
@@ -287,9 +288,9 @@ public:
 
 
 	///  Car 3d view  ---
-	CarModel* viewCar =0;
+	/*CarModel* viewCar =0;
 	Can viewCanvas;
-	wraps::RenderBoxScene* viewBox =0;  Ogre::Vector3 viewSc;
+	wraps::RenderBoxScene* viewBox =0;  Ogre::Vector3 viewSc;*/
 	MyGUI::IntCoord GetViewSize();
 	void InitCarPrv();
 
@@ -337,7 +338,7 @@ public:
 
 	///  [Replay]  -----------------------------
 	Li rplList =0;
-	void listRplChng(Li, size_t);
+	// void listRplChng(Li, size_t);
 	void updReplaysList();
 
 	//  cur rpl stats gui
@@ -373,7 +374,7 @@ public:
 	void btnRplToStart(WP),btnRplToEnd(WP), btnRplPlay(WP);
 	void btnRplBackDn(WP,int,int,MyGUI::MouseButton), btnRplBackUp(WP,int,int,MyGUI::MouseButton);
 	void btnRplFwdDn(WP,int,int, MyGUI::MouseButton), btnRplFwdUp(WP,int,int, MyGUI::MouseButton);
-	void msgRplDelete(MyGUI::Message*, MyGUI::MessageBoxStyle);
+	// void msgRplDelete(MyGUI::Message*, MyGUI::MessageBoxStyle);
 
 
 	//  Game
@@ -492,6 +493,7 @@ public:
 
 	///  multiplayer game
 	///-----------------------------------------------------------------------------------------------------------------
+/*
 	void rebuildGameList(), rebuildPlayerList();
 	void updateGameInfo(), updateGameSet(), updateGameInfoGUI();
 	void setNetGuiHosting(bool enabled);
@@ -530,7 +532,6 @@ public:
 
 	Ed edNetChatMsg =0;
 	Btn btnNetSendMsg =0;  void chatSendMsg();
-	GuiPopup* popup =0;  // msg with edits
 
 	//  Net gui
 	Btn btnNetRefresh =0, btnNetJoin =0;    void evBtnNetRefresh(WP), evBtnNetJoin(WP),   evBtnNetJoinLockedClose();
@@ -542,6 +543,8 @@ public:
 	Ed edNetGameName =0,   edNetPassword =0;   void evEdNetGameName(Ed),   evEdNetPassword(Ed);
 	Ed edNetNick =0,       edNetLocalPort =0;  void evEdNetNick(Ed),       evEdNetLocalPort(Ed);
 	Ed edNetServerPort =0, edNetServerIP =0;   void evEdNetServerPort(Ed), evEdNetServerIP(Ed);
+*/
+	// GuiPopup* popup =0;  // msg with edits
 
 	//  open urls
 	void btnWelcome(WP), btnWebsite(WP), btnWiki(WP), btnWikiInput(WP);

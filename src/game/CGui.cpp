@@ -1,27 +1,29 @@
-#include "BaseApp.h"
-#include "Gui_Def.h"
 #include "pch.h"
+// #include "BaseApp.h"
+#include "Gui_Def.h"
 #include "CGame.h"
 #include "CHud.h"
 #include "CGui.h"
-#include "common/GuiCom.h"
-#include "common/CScene.h"
-#include "../vdrift/pathmanager.h"
-#include <OgreRoot.h>
-#include <OgreRenderWindow.h>
-#include <OgreOverlay.h>
+#include "GuiCom.h"
+#include "CScene.h"
+#include "pathmanager.h"
 #include "settings.h"
-#include "common/MultiList2.h"
-#include "common/Slider.h"
-#include "common/Gui_Popup.h"
+
 #include <OgreRoot.h>
-#include <OgreRenderWindow.h>
 #include <OgreOverlay.h>
-#include <MyGUI_Gui.h>
-#include <MyGUI_Widget.h>
-#include <MyGUI_Button.h>
-#include <MyGUI_Window.h>
-#include <MyGUI_TabControl.h>
+#include "MultiList2.h"
+#include "Slider.h"
+#include "Gui_Popup.h"
+
+#include <OgreRoot.h>
+// #include <OgreRenderWindow.h>
+#include <OgreOverlay.h>
+#include <MyGUI.h>
+// #include <MyGUI_Gui.h>
+// #include <MyGUI_Widget.h>
+// #include <MyGUI_Button.h>
+// #include <MyGUI_Window.h>
+// #include <MyGUI_TabControl.h>
 using namespace MyGUI;
 using namespace Ogre;
 using namespace std;
@@ -68,7 +70,8 @@ void CGui::InitMainMenu()
 	}
 
 	//  center
-	int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
+	int wx = 1920, wy = 1100;
+	// int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
 	
 	Wnd wnd = app->mWndMain;  IntSize w = wnd->getSize();
 	wnd->setPosition((wx-w.width)*0.5f, (wy-w.height)*0.5f);
@@ -145,7 +148,7 @@ void CGui::tabMainMenu(Tab tab, size_t id)
 	
 		app->mWndTrkFilt->setVisible(false);  //
 
-		if (id == TAB_Multi)
+		/*if (id == TAB_Multi)
 		{	//  back to mplr tab, upload game info
 									//_ only for host..
 			if (app->mMasterClient && app->gui->valNetPassword->getVisible())
@@ -153,7 +156,7 @@ void CGui::tabMainMenu(Tab tab, size_t id)
 				app->gui->updateGameInfoGUI();
 			}
 			//- app->gui->evBtnNetRefresh(0);  // upd games list (don't, breaks game start)
-		}
+		}*/
 	}
 	
 	if (id != 0)  return;  // <back
@@ -238,6 +241,6 @@ void CGui::comboDiff(Cmb cmb, size_t val)
 	gcom->TrackListUpd(true);  gcom->listTrackChng(gcom->trkList,0);
 	listCarChng(carList,0);
 
-	ChampsListUpdate();
-	ChallsListUpdate();
+	// ChampsListUpdate();
+	// ChallsListUpdate();
 }

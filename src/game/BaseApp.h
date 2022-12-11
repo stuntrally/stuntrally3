@@ -3,16 +3,14 @@
 #include <OgreFrameListener.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreMaterialManager.h>
-#include <boost/scoped_ptr.hpp>
-#include "../sdl4ogre/events.h"
-namespace SFO {  class InputWrapper;  class SDLCursorManager;  }
-namespace ICS {  class InputControlSystem;  class DetectingBindingListener;  }
+// #include <boost/scoped_ptr.hpp>
+// #include "../sdl4ogre/events.h"
 
-namespace MyGUI{  class OgreD3D11Platform;  class OgrePlatform;  }
-namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class RenderWindow; }
-namespace sh   {  class Factory;  }
-
-class MasterClient;  class P2PGameClient;
+// namespace SFO {  class InputWrapper;  class SDLCursorManager;  }
+// namespace ICS {  class InputControlSystem;  class DetectingBindingListener;  }
+namespace MyGUI{  class Ogre2Platform;  }
+namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  }
+// class MasterClient;  class P2PGameClient;
 
 
 //  main, race menus
@@ -26,10 +24,10 @@ enum LobbyState  {  DISCONNECTED, HOSTING, JOINED  };
 
 
 
-class BaseApp : public BGui,
-	public Ogre::FrameListener,
-	public SFO::KeyListener, public SFO::MouseListener,
-	public SFO::JoyListener, public SFO::WindowListener
+class BaseApp : public BGui
+	// public Ogre::FrameListener,
+	// public SFO::KeyListener, public SFO::MouseListener,
+	// public SFO::JoyListener, public SFO::WindowListener
 {
 	friend class CarModel;
 	friend class CGame;
@@ -39,7 +37,7 @@ class BaseApp : public BGui,
 public:
 	BaseApp();
 	virtual ~BaseApp();
-	virtual void Run(bool showDialog);
+	// virtual void Run(bool showDialog);
 	
 	bool bLoading =0, bLoadingEnd =0, bSimulating =0;  int iLoad1stFrames =0;
 	
@@ -50,95 +48,84 @@ public:
 	void showMouse(), hideMouse(), updMouse();
 	
 	//  stuff to be executed in App after BaseApp init
-	virtual void postInit() = 0;
+	// virtual void postInit() = 0;
 		
 	///  effects
-	class SplitScr* mSplitMgr =0;
-	class HDRLogic* mHDRLogic =0;
-	class MotionBlurLogic* mMotionBlurLogic =0;
-	class CameraBlurLogic* mCameraBlurLogic =0;
-	class SSAOLogic* mSSAOLogic =0;
-	class GodRaysLogic* mGodRaysLogic =0;
-	class SoftParticlesLogic* mSoftParticlesLogic =0;
-	class DepthOfFieldLogic* mDepthOfFieldLogic =0;
-	class GBufferLogic* mGBufferLogic =0;
-	class FilmGrainLogic* mFilmGrainLogic =0;
-	void recreateCompositor();
-	bool AnyEffectEnabled();
-	bool NeedMRTBuffer();
-	float motionBlurIntensity =0.9f;
+	// void recreateCompositor();
+	// bool AnyEffectEnabled();
 
 	class SETTINGS* pSet =0;
 
-	sh::Factory* mFactory =0;
+	// sh::Factory* mFactory =0;
 
 	//  wnd, hud, upl
 	bool bWindowResized =1, bSizeHUD =1, bRecreateHUD =0;
-	float roadUpdTm =0.f;
-	class LoadingBar* mLoadingBar =0;
-	Ogre::SceneNode* ndSky =0;  //-
+	// float roadUpdTm =0.f;
+	// class LoadingBar* mLoadingBar =0;
+	// Ogre::SceneNode* ndSky =0;  //-
 	
 
-	bool mShowDialog =0, mShutDown =0;
-	bool setup(), configure();  void updateStats();
+	// bool mShowDialog =0, mShutDown =0;
+	// bool setup(), configure();  void updateStats();
 
-	int mMouseX =0, mMouseY =0;
+	// int mMouseX =0, mMouseY =0;
 	
 	///  create
-	virtual void createScene() = 0;
-	virtual void destroyScene() = 0;
+	// virtual void createScene() = 0;
+	// virtual void destroyScene() = 0;
 
-	void createFrameListener(), createViewports(), refreshCompositor(bool disableAll=false);
-	void setupResources(), createResourceListener(), loadResources();
-	void LoadingOn(), LoadingOff();
+	// void createFrameListener(), createViewports(), refreshCompositor(bool disableAll=false);
+	// void setupResources(), createResourceListener(), loadResources();
+	// void LoadingOn(), LoadingOff();
 
 	///  frame events
-	bool frameRenderingQueued(const Ogre::FrameEvent& evt);
-	bool frameEnded(const Ogre::FrameEvent& evt);
-	virtual bool frameStart(Ogre::Real time) = 0;
-	virtual bool frameEnd(Ogre::Real time) = 0;
+	// bool frameRenderingQueued(const Ogre::FrameEvent& evt);
+	// bool frameEnded(const Ogre::FrameEvent& evt);
+	// virtual bool frameStart(Ogre::Real time) = 0;
+	// virtual bool frameEnd(Ogre::Real time) = 0;
 	
 	///  input events
-	virtual bool mouseMoved(const SFO::MouseMotionEvent &arg );
-	virtual bool mousePressed(const SDL_MouseButtonEvent &arg, Uint8 id );
-	virtual bool mouseReleased(const SDL_MouseButtonEvent &arg, Uint8 id );
-	virtual void textInput(const SDL_TextInputEvent& arg);
-	virtual bool keyPressed(const SDL_KeyboardEvent &arg) = 0;
-	virtual bool keyReleased(const SDL_KeyboardEvent &arg);
-	virtual bool buttonPressed(const SDL_JoyButtonEvent &evt, int button );
-	virtual bool buttonReleased(const SDL_JoyButtonEvent &evt, int button );
-	virtual bool axisMoved(const SDL_JoyAxisEvent &arg, int axis );
+	// virtual bool mouseMoved(const SFO::MouseMotionEvent &arg );
+	// virtual bool mousePressed(const SDL_MouseButtonEvent &arg, Uint8 id );
+	// virtual bool mouseReleased(const SDL_MouseButtonEvent &arg, Uint8 id );
+	// virtual void textInput(const SDL_TextInputEvent& arg);
+	// virtual bool keyPressed(const SDL_KeyboardEvent &arg) = 0;
+	// virtual bool keyReleased(const SDL_KeyboardEvent &arg);
+	// virtual bool buttonPressed(const SDL_JoyButtonEvent &evt, int button );
+	// virtual bool buttonReleased(const SDL_JoyButtonEvent &evt, int button );
+	// virtual bool axisMoved(const SDL_JoyAxisEvent &arg, int axis );
 
-	void onCursorChange(const std::string& name);
+	// void onCursorChange(const std::string& name);
 
 	///  Ogre
 	Ogre::Root* mRoot =0;  Ogre::SceneManager* mSceneMgr =0;
-	Ogre::RenderWindow* mWindow =0;
-	SDL_Window* mSDLWindow =0;
+	// Ogre::RenderWindow* mWindow =0;
+	// SDL_Window* mSDLWindow =0;
 
-	virtual void windowResized (int x, int y);
-	virtual void windowClosed();
+	// virtual void windowResized (int x, int y);
+	// virtual void windowClosed();
 
 	///  input
-	SFO::InputWrapper* mInputWrapper =0;
-	SFO::SDLCursorManager* mCursorManager =0;
-	ICS::InputControlSystem* mInputCtrl =0;
-	ICS::InputControlSystem* mInputCtrlPlayer[4] ={0,};
-	std::vector<SDL_Joystick*> mJoysticks;
+	// SFO::InputWrapper* mInputWrapper =0;
+	// SFO::SDLCursorManager* mCursorManager =0;
+	// ICS::InputControlSystem* mInputCtrl =0;
+	// ICS::InputControlSystem* mInputCtrlPlayer[4] ={0,};
+	// std::vector<SDL_Joystick*> mJoysticks;
 	
 	// this is set to true when the user is asked to assign a new key
-	bool bAssignKey =0;
-	ICS::DetectingBindingListener* mBindListner =0;
+	// bool bAssignKey =0;
+	// ICS::DetectingBindingListener* mBindListner =0;
 
 	bool IsFocGuiInput()  {  return isFocGui || isFocRpl;  }
 	bool IsFocGui();
-	Ogre::RenderWindow* getWindow()  {  return mWindow;  }
+	// Ogre::RenderWindow* getWindow()  {  return mWindow;  }
 
 	///  input
 	bool alt =0, ctrl =0, shift =0;  // key modifiers
 	bool mbLeft =0, mbRight =0, mbMiddle =0;  // mouse buttons
 	bool mbWireFrame =0;
 	int iCurCam =0;
+
 
 	///  Gui  ..........................
 	bool isFocGui =0, isFocRpl =0;  // gui shown
@@ -156,7 +143,7 @@ public:
 	int barSizeX =0, barSizeY =0;
 
 
-	MyGUI::OgrePlatform* mPlatform;
+	MyGUI::Ogre2Platform* mPlatform =0;
 	
 	///  main menu  // pSet->inMenu
 	WP mWndMainPanels[ciMainBtns] ={0,}, mWndRacePanels[ciRaceBtns] ={0,};
@@ -174,7 +161,7 @@ public:
 	std::vector<WP> vwGui;  // all widgets to destroy
 
 	///  networking
-	boost::scoped_ptr<MasterClient> mMasterClient;
-	boost::scoped_ptr<P2PGameClient> mClient;
-	LobbyState mLobbyState =DISCONNECTED;
+	// boost::scoped_ptr<MasterClient> mMasterClient;
+	// boost::scoped_ptr<P2PGameClient> mClient;
+	// LobbyState mLobbyState =DISCONNECTED;
 };
