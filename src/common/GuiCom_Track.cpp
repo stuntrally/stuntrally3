@@ -322,7 +322,7 @@ void CGuiCom::ReadTrkStats()
 
 	bool reverse = sc->denyReversed ? false : pSet->gui.trackreverse;
 	// app->gui->ckReverse.setVisible(!sc->denyReversed);  //
-	UpdGuiRdStats(&rd,sc, sListTrack, tim.GetBestLap(0, reverse), reverse, 0);
+	//; UpdGuiRdStats(&rd,sc, sListTrack, tim.GetBestLap(0, reverse), reverse, 0);
 #else
 	SplineRoad rd(app);  rd.LoadFile(sRd,false);  // load
 	UpdGuiRdStats(&rd,sc, sListTrack, 0.f, false, 0);

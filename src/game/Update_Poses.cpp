@@ -19,7 +19,6 @@
 // #include "SplitScreen.h"
 #include "settings.h"
 #include "CarModel.h"
-#include "Game.h"
 #include <Ogre.h>
 // #include <OgreCamera.h>
 // #include <OgreQuaternion.h>
@@ -348,7 +347,7 @@ void App::newPoses(float time)  // time only for camera update
 									carM->iWonPlace = carIdWin++;
 								}
 							}
-							// else if (champ)
+							//; else if (champ)
 							// 	gui->ChampionshipAdvance(timeCur);
 							// else
 							// 	gui->ChallengeAdvance(timeCur);

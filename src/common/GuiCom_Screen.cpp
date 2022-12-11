@@ -161,7 +161,7 @@ float CGuiCom::GetGuiMargin(int wy)
 //  resize Options wnd
 void CGuiCom::ResizeOptWnd()
 {
-	// if (!app->mWndOpts)  return;
+	if (!app->mWndOpts)  return;
 
 	const int wx = pSet->windowx, wy = pSet->windowy;
 
@@ -176,18 +176,18 @@ void CGuiCom::ResizeOptWnd()
 	// imgTer[2]->setCoord(xc, 0, wy, wy);
 	// imgMini[2]->setCoord(xc, 0, wy, wy);  initMiniPos(2);
 
-	// app->mWndGame->setCoord(xm, ym, xo, yo);
-	// app->mWndReplays->setCoord(xm, ym, xo, yo);
-	// app->mWndWelcome->setCoord(xm, ym, xo, yo);
-	// app->mWndHowTo->setCoord(xm, ym, xo, yo);
-	//ap->mWndTweak->setCoord(0, 6, xo/3, yo-ym);
+	app->mWndGame->setCoord(xm, ym, xo, yo);
+	app->mWndReplays->setCoord(xm, ym, xo, yo);
+	app->mWndWelcome->setCoord(xm, ym, xo, yo);
+	app->mWndHowTo->setCoord(xm, ym, xo, yo);
+	app->mWndTweak->setCoord(0, 6, xo/3, yo-ym);
 #else  // editor
-	// app->mWndTrack->setCoord(xm, ym, xo, yo);
-	// app->mWndEdit->setCoord(xm, ym, xo, yo);
+	app->mWndTrack->setCoord(xm, ym, xo, yo);
+	app->mWndEdit->setCoord(xm, ym, xo, yo);
 #endif  // both
-	// app->mWndTrkFilt->setCoord(xm, ym+50, xo, yo);
-	// app->mWndHelp->setCoord(xm, ym, xo, yo);
-	// app->mWndOpts->setCoord(xm, ym, xo, yo);
+	app->mWndTrkFilt->setCoord(xm, ym+50, xo, yo);
+	app->mWndHelp->setCoord(xm, ym, xo, yo);
+	app->mWndOpts->setCoord(xm, ym, xo, yo);
 
 	// if (bnQuit)  //  reposition Quit btn
 	// 	bnQuit->setCoord(wx - 0.12*wx, 0, 0.12*wx + 2, /*0.05*wy*/36);
@@ -201,7 +201,7 @@ void CGuiCom::ResizeOptWnd()
 		app->gui->panStatus->setCoord(0.08*wy, wy - 0.035*wy, 0.15*wy, 0.035*wy);
 	#endif
 
-	updTrkListDim();
+	// updTrkListDim();
 }
 
 void CGuiCom::chkVidFullscr(Ck*)

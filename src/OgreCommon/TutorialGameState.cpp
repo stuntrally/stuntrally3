@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "Def_Str.h"
 #include "TutorialGameState.h"
 #include "CameraController.h"
 #include "GraphicsSystem.h"
@@ -166,8 +167,9 @@ void TutorialGameState::mouseMoved( const SDL_Event &arg )
 		mCameraController->mouseMoved( arg );
 
 // if (bGuiFocus)
+	// LogO(toStr(arg.motion.x)+" "+toStr(arg.motion.y)+" "+toStr(arg.wheel.y));
 	MyGUI::InputManager::getInstance().injectMouseMove(
-		arg.motion.x, arg.motion.y, arg.wheel.y);
+		arg.motion.x, arg.motion.y, 0/*arg.wheel.y*/);
 
 	GameState::mouseMoved( arg );
 }

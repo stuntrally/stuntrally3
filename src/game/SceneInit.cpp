@@ -10,7 +10,6 @@
 // #include "SplineBase.h"
 #include "OgreCommon.h"
 #include "OgreVector3.h"
-#include "Game.h"
 #include "Grass.h"
 
 // #include "GuiCom.h"
@@ -37,14 +36,15 @@
 #include <OgreMaterialManager.h>
 #include "OgreTextureGpuManager.h"
 
+#include "MyGUI_TextBox.h"
 // using namespace MyGUI;
 using namespace Ogre;
 using namespace std;
 
 
-//  Create Scene
+//  Load Scene Data
 //-------------------------------------------------------------------------------------
-void App::CreateScene()
+void App::LoadData()
 {
 	//  prv tex
 	/*int k = 1024;
@@ -174,7 +174,7 @@ void App::CreateScene()
 	}
 	
 	//  load
-	//if (pSet->autostart)  //;
+	if (pSet->autostart)  //;
 		NewGame();
 }
 
@@ -219,7 +219,7 @@ void App::NewGame(bool force)
 	///  check if track exist ..
 	if (!PATHMANAGER::FileExists(TrkDir()+"scene.xml"))
 	{
-		bLoading = false;  //iLoad1stFrames = -2;
+		bLoading = false;  iLoad1stFrames = -2;
 		LogO("TRACK doesn't exist !!");
 		/*gui->BackFromChs();
 		//toggleGui(true);  // show gui
@@ -231,7 +231,7 @@ void App::NewGame(bool force)
 	}	
 	// mWndRpl->setVisible(false);  mWndRplTxt->setVisible(false);  // hide rpl ctrl
 
-	// LoadingOn();
+	LoadingOn();
 	// hud->Show(true);  // hide HUD
 	//mFpsOverlay->hide();  // hide FPS
 	// hideMouse();
@@ -806,8 +806,8 @@ void App::NewGameDoLoad()
 	}
 
 	//  Update bar,txt
-	// txLoad->setCaption(TR("#{"+cStrLoad[curLoadState]+"}"));
-	// mLoadingBar->SetWidth(perc);
+	txLoad->setCaption(TR("#{"+cStrLoad[curLoadState]+"}"));
+	SetLoadingBar(perc);
 
 	//  next loading step
 	++curLoadState;

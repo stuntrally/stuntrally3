@@ -168,12 +168,12 @@ TabPtr CGuiCom::FindSubTab(WP tab)
 void CGuiCom::SizeGUI()
 {
 	#ifndef SR_EDITOR
-	//; app->baseSizeGui();
+	app->baseSizeGui();
 	#endif
 	
 	//  call recursive method for all root widgets
-	//; for (VectorWidgetPtr::iterator it = app->vwGui.begin(); it != app->vwGui.end(); ++it)
-	// 	doSizeGUI((*it)->getEnumerator());
+	for (VectorWidgetPtr::iterator it = app->vwGui.begin(); it != app->vwGui.end(); ++it)
+		doSizeGUI((*it)->getEnumerator());
 }
 
 void CGuiCom::doSizeGUI(EnumeratorWidgetPtr widgets)
@@ -229,8 +229,8 @@ void CGuiCom::GuiInitTooltip()
 	mToolTip->setVisible(false);
 	mToolTipTxt = mToolTip->getChildAt(0)->castType<Edit>();
 
-	// for (VectorWidgetPtr::iterator it = app->vwGui.begin(); it != app->vwGui.end(); ++it)
-	// 	setToolTips((*it)->getEnumerator());
+	for (VectorWidgetPtr::iterator it = app->vwGui.begin(); it != app->vwGui.end(); ++it)
+		setToolTips((*it)->getEnumerator());
 }
 
 void CGuiCom::setToolTips(EnumeratorWidgetPtr widgets)
@@ -269,7 +269,7 @@ void CGuiCom::setToolTips(EnumeratorWidgetPtr widgets)
 			wp->setNeedToolTip(true);
 			wp->eventToolTip += newDelegate(this, &CGuiCom::notifyToolTip);
 		}
-		//LogO(wp->getName() + (tip ? "  *" : ""));
+		LogO(wp->getName() + (tip ? "  *" : ""));
 		setToolTips(wp->getEnumerator());
 	}
 }
