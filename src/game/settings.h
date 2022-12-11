@@ -3,7 +3,7 @@
 #include "settings_com.h"
 
 
-#define SET_VER  3001  // 3.0
+#define SET_VER  3003  // 3.0
 
 
 enum eGraphType  {
@@ -45,8 +45,8 @@ public:
 
 	//  menu
 	int iMenu;  // EMenu,
-	// int yMain =0, yRace =0;  // kbd up/dn cursors
-	// int difficulty =0;
+	int yMain =0, yRace =0;  // kbd up/dn cursors
+	int difficulty =0;
 
 	//  show
 	bool show_gauges, show_digits,
@@ -73,10 +73,10 @@ public:
 	int car_dbgtxtclr, car_dbgtxtcnt;
 	bool sounds_info;
 	//  gui
-	// bool cars_sortup;  int cars_view, cars_sort;
-	// int champ_type, chall_type;
-	// bool champ_info;
-	// int car_ed_tab, tweak_tab;
+	bool cars_sortup;  int cars_view, cars_sort;
+	int champ_type, chall_type;
+	bool champ_info;
+	int car_ed_tab, tweak_tab;
 
 
 	//  graphics

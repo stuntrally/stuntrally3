@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "GuiCom.h"
+#include "CGui.h"
 #include "Road.h"
 #include "pathmanager.h"
 #include "SceneXml.h"
@@ -275,8 +276,8 @@ void CGuiCom::editTrkFind(EditPtr ed)
 //  view change
 //-----------------------------------------------------------------------------------------------------------
 #ifndef SR_EDITOR
-// void CGui::btnCarView1(WP) {  pSet->cars_view = 0;  gcom->updTrkListDim();  }
-// void CGui::btnCarView2(WP) {  pSet->cars_view = 1;  gcom->updTrkListDim();  }
+void CGui::btnCarView1(WP) {  pSet->cars_view = 0;  gcom->updTrkListDim();  }
+void CGui::btnCarView2(WP) {  pSet->cars_view = 1;  gcom->updTrkListDim();  }
 #endif
 
 void CGuiCom::btnTrkView1(WP) {  pSet->tracks_view = 0;  ChangeTrackView();  }

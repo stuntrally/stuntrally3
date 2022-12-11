@@ -12,7 +12,7 @@
 	#include "game.h"
 	#include "CGame.h"
 	#include "CHud.h"
-	// #include "CGui.h"
+	#include "CGui.h"
 	// #include "SplitScreen.h"
 #else
 	#include "CApp.h"
@@ -62,10 +62,10 @@ const String CGuiCom::getClrSum(int i)    {  return clrsSum   [std::min(iClrsSum
 const int wi = 15;            // id name nm   N  scn ver
 const int CGuiCom::colTrk[33] = {40, 90, 80, 25, 76, 25, wi, wi, wi, wi, wi, wi, wi, wi, wi, wi, wi, 22, 22, 24};
 #ifndef SR_EDITOR
-// const int CGui::colCar[16] = {34, 80, 27, wi, wi, wi, wi, 37, 45, 24};  // car
-// const int CGui::colCh [16] = {16, 200, 120, 50, 80, 80, 60, 40};  // champs
-// const int CGui::colChL[16] = {16, 180, 90, 100, 50, 60, 60, 60, 50};  // challs
-// const int CGui::colSt [16] = {30, 170, 100, 90, 50, 80, 70};  // stages
+const int CGui::colCar[16] = {34, 80, 27, wi, wi, wi, wi, 37, 45, 24};  // car
+const int CGui::colCh [16] = {16, 200, 120, 50, 80, 80, 60, 40};  // champs
+const int CGui::colChL[16] = {16, 180, 90, 100, 50, 60, 60, 60, 50};  // challs
+const int CGui::colSt [16] = {30, 170, 100, 90, 50, 80, 70};  // stages
 #endif
 
 //  get scenery color string from track name

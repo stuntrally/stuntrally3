@@ -23,8 +23,8 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 	SerializeCommon(w,c);
 
-	Param(c,w, "game.menu", iMenu);  //Param(c,w, "game.ymain", yMain);  Param(c,w, "game.yrace", yRace);
-	//Param(c,w, "game.difficulty", difficulty);
+	Param(c,w, "game.menu", iMenu);  Param(c,w, "game.ymain", yMain);  Param(c,w, "game.yrace", yRace);
+	Param(c,w, "game.difficulty", difficulty);
 
 	//  game common
 	Param(c,w, "game.track", gui.track);				Param(c,w, "game.track_user", gui.track_user);
@@ -95,17 +95,17 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "hud_show.opponents", show_opponents);	Param(c,w, "hud_show.opplist_sort", opplist_sort);
 	Param(c,w, "hud_show.graphs", show_graphs);			Param(c,w, "hud_show.graphs_type", (int&)graphs_type);
 	//  gui
-	// Param(c,w, "gui.cars_view", cars_view);			Param(c,w, "gui.cars_sort", cars_sort);
-	// Param(c,w, "gui.car_ed_tab", car_ed_tab);		Param(c,w, "gui.tweak_tab", tweak_tab);
-	// Param(c,w, "gui.champ_tab", champ_type);
-	// Param(c,w, "gui.chall_tab", chall_type);		Param(c,w, "gui.champ_info", champ_info);
+	Param(c,w, "gui.cars_view", cars_view);			Param(c,w, "gui.cars_sort", cars_sort);
+	Param(c,w, "gui.car_ed_tab", car_ed_tab);		Param(c,w, "gui.tweak_tab", tweak_tab);
+	Param(c,w, "gui.champ_tab", champ_type);
+	Param(c,w, "gui.chall_tab", chall_type);		Param(c,w, "gui.champ_info", champ_info);
 	//  hud size
 	Param(c,w, "hud_size.gauges", size_gauges);			Param(c,w, "hud_size.arrow", size_arrow);
 	Param(c,w, "hud_size.minimap", size_minimap);		Param(c,w, "hud_size.minipos", size_minipos);
 	Param(c,w, "hud_size.mini_zoom", zoom_minimap);		Param(c,w, "hud_size.mini_zoomed", mini_zoomed);
 	Param(c,w, "hud_size.mini_rotated", mini_rotated);	Param(c,w, "hud_size.mini_terrain", mini_terrain);
 	Param(c,w, "hud_size.mini_border", mini_border);
-	Param(c,w, "hud_size.gauges_type", gauges_type);	//Param(c,w, "hud_size.gauges_layout", gauges_layout);
+	Param(c,w, "hud_size.gauges_type", gauges_type);	Param(c,w, "hud_size.gauges_layout", gauges_layout);
 	//  cam
 	Param(c,w, "hud_size.cam_loop_chng", cam_loop_chng); Param(c,w, "hud_size.cam_in_loop", cam_in_loop);
 	// Param(c,w, "hud_size.fov", fov_min);				Param(c,w, "hud_size.fov_boost", fov_boost);
@@ -207,9 +207,9 @@ SETTINGS::SETTINGS()   ///  Defaults
 	// ,trail_show(1)
 
 	//  gui
-	// ,cars_view(0), cars_sort(1), cars_sortup(1)
-	// ,champ_type(0),chall_type(0), champ_info(1)
-	// ,car_ed_tab(0),tweak_tab(0)
+	,cars_view(0), cars_sort(1), cars_sortup(1)
+	,champ_type(0),chall_type(0), champ_info(1)
+	,car_ed_tab(0),tweak_tab(0)
 	//  graphics
 	, bFog(0)
 	,refl_skip(200), refl_faces(1), refl_size(0), refl_dist(500.f), refl_mode(1)

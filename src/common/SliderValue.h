@@ -1,5 +1,5 @@
 #pragma once
-//#include <map>
+#include <map>
 #include <OgreString.h>
 #include <MyGUI_Delegate.h>
 
