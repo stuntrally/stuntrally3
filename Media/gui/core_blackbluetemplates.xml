@@ -130,7 +130,7 @@
     <Resource type="ResourceLayout" name="TextBoxS" version="3.2.0">
         <Widget type="Widget" skin="TextBoxSkin" position="20 20 16 16" name="Root">
             <Property key="TextAlign" value="Default"/>
-            <!-- <Property key="FontName" value="font.small"/> -->
+            <Property key="FontName" value="font.small"/>
             <Property key="TextColour" value="1 1 1"/>
             <UserString key="LE_TargetWidgetType" value="TextBox"/>
         </Widget>
@@ -226,7 +226,7 @@
                 <Widget type="TextBox" skin="TextBox" position="7 1 52 22" align="HStretch Top" name="Caption">
                     <Property key="TextColour" value="1 1 1"/>
                     <Property key="TextAlign" value="Center"/>
-                    <!-- <Property key="FontName" value="font.small"/> -->
+                    <Property key="FontName" value="font.small"/>
                 </Widget>
             </Widget>
             <Widget type="Widget" skin="WindowFrameSkin" position="0 28 68 20" align="Stretch">
@@ -390,7 +390,7 @@
     </Resource>
     <Resource type="ResourceLayout" name="ListBoxItem" version="3.2.0">
         <Widget type="Widget" skin="ListBoxItemSkin" position="20 20 43 13" name="Root">
-            <!-- <Property key="FontName" value="font.small"/> -->
+            <Property key="FontName" value="font.small"/>
             <Property key="TextAlign" value="Left VCenter"/>
             <UserString key="LE_TargetWidgetType" value="Button"/>
         </Widget>
@@ -499,7 +499,7 @@
 
     <Resource type="ResourceLayout" name="TabHeaderButtonS" version="3.2.0">
         <Widget type="Widget" skin="TabHeaderButtonSkin" position="20 25 52 25" name="Root">
-            <!-- <Property key="FontName" value="font.small"/> -->
+            <Property key="FontName" value="font.small"/>
             <Property key="TextAlign" value="Left"/>
             <UserString key="LE_TargetWidgetType" value="Button"/>
         </Widget>
@@ -534,7 +534,7 @@
     </Resource>
     <Resource type="ResourceLayout" name="MultiListButton" version="3.2.0">
         <Widget type="Widget" skin="MultiListButtonSkin" position="20 25 45 21" name="Root">
-            <!-- <Property key="FontName" value="font.small"/> -->
+            <Property key="FontName" value="font.small"/>
             <Property key="TextAlign" value="Center"/>
             <UserString key="LE_TargetWidgetType" value="Button"/>
             <Widget type="ImageBox" skin="ImageBox" position="29 4 12 10" align="Right VCenter" name="Image">

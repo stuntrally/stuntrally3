@@ -207,9 +207,9 @@ void CGuiCom::listTrackChng(Mli2 li, size_t pos)
 	sListTrack = s;
 
 #ifndef SR_EDITOR
-	//; app->gui->changeTrack();
-	// app->gui->CarListUpd(false);  // upd % col
-	// app->gui->UpdDrivability(sListTrack, bListTrackU);
+	app->gui->changeTrack();
+	app->gui->CarListUpd(false);  // upd % col
+	app->gui->UpdDrivability(sListTrack, bListTrackU);
 #endif
 #ifdef SR_EDITOR
 	if (app->gui->iLoadNext==0)
@@ -287,11 +287,11 @@ void CGuiCom::ChangeTrackView()
 {
 	bool full = pSet->tracks_view;
 
-	// imgTrkIco1->setVisible(full);  imgTrkIco2->setVisible(full);
-	// if (imgPrv[0])
-	// 	imgPrv[0]->setVisible(!full);
-	// trkDesc[0]->setVisible(!full);
-	// trkAdvice[0]->setVisible(!full);
+	imgTrkIco1->setVisible(full);  imgTrkIco2->setVisible(full);
+	if (imgPrv[0])
+		imgPrv[0]->setVisible(!full);
+	trkDesc[0]->setVisible(!full);
+	trkAdvice[0]->setVisible(!full);
 
 	ChkUpd_Col();
 	updTrkListDim();  // change size, columns
@@ -330,7 +330,6 @@ void CGuiCom::updTrkListDim()
 	for (c=0; c < cnt-1; ++c)
 		if (pSet->colVisDef[1][c])  sum += colTrk[c];
 
-#if 0
 	const IntCoord& wi = app->mWndOpts->getCoord();
 	int sw = 0, xico1 = 0, xico2 = 0, wico = 0;
 	
@@ -351,7 +350,7 @@ void CGuiCom::updTrkListDim()
 	imgTrkIco1->setCoord(xt + xico1+2, yico, 11*wico, wico);
 	imgTrkIco2->setCoord(xt + xico2+wico*3/4, yico, 2*wico, wico);
 	#ifndef SR_EDITOR
-	bool hid = app->gui->panNetTrack && app->gui->panNetTrack->getVisible();
+	bool hid = 0;//; app->gui->panNetTrack && app->gui->panNetTrack->getVisible();
 	if (!hid)
 	#endif
 		trkList->setVisible(true);
@@ -376,10 +375,10 @@ void CGuiCom::updTrkListDim()
 	#endif
 	
 	#ifndef SR_EDITOR
-	if (app->gui->panNetTrack)  {
+	/*if (app->gui->panNetTrack)  {
 		Tbi trkTab = fTbi("TabTrack");
 		const IntCoord& tc = trkTab->getCoord();
-		app->gui->panNetTrack->setCoord(0, 0.82f*tc.height, tc.width*0.64f, 0.162f*tc.height);  }
+		app->gui->panNetTrack->setCoord(0, 0.82f*tc.height, tc.width*0.64f, 0.162f*tc.height);  }*/
 	#endif
 
 	#ifdef SR_EDITOR
@@ -395,5 +394,4 @@ void CGuiCom::updTrkListDim()
 	float ih = 0.045f;
 	app->bckInput->setRealCoord(0.2f, 1.f-ih, 0.5f, ih);
 	#endif
-#endif
 }

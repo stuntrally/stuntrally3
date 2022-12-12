@@ -397,7 +397,6 @@ void CGui::InitGui()
 
 	ck= &ckBltLines;	ck->Init("BltLines",	&pSet->bltLines);
 	// ck= &ckShowPics;	ck->Init("ShowPictures",&pSet->loadingbackground);
-	// Chk("MultiThread", chkMultiThread, pSet->multi_thr > 0);
 	ck= &ckDevKeys;		ck->Init("DevKeys",		&pSet->dev_keys);
 	ck= &ckScreenPng;   ck->Init("ScreenPng",   &pSet->screen_png);
 
@@ -723,7 +722,6 @@ void CGui::InitGui()
 
 
 	//  championships
-#if 1
 	//------------------------------------------------------------------------
 	app->mWndRaceBtns[1]->setVisible(pSet->difficulty < 4);  // tutorials
 
@@ -859,7 +857,7 @@ void CGui::InitGui()
 	imgChallCup    = fImg("ChallEndImgCup");   txChallEndC = fTxt("ChallEndCongrats");
 
 	UpdChampTabVis();
-#endif
+
 
 	//  netw end list  ------
 /*	Btn("btnNetEndClose", btnNetEndClose);
