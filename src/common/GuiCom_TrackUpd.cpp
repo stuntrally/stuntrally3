@@ -259,7 +259,7 @@ void CGuiCom::editTrkFind(EditPtr ed)
 }
 
 #ifndef SR_EDITOR
-/*void CGui::edRplFind(EditPtr ed)
+void CGui::edRplFind(EditPtr ed)
 {
 	String s = ed->getCaption();
 	if (s == "")
@@ -269,7 +269,7 @@ void CGuiCom::editTrkFind(EditPtr ed)
 		StringUtil::toLowerCase(sRplFind);
 	}
 	updReplaysList();
-}*/
+}
 #endif
 
 

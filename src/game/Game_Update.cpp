@@ -303,7 +303,7 @@ void App::keyPressed( const SDL_KeyboardEvent &arg )
 	case SDL_SCANCODE_RCTRL:   ctrl = true;   break;
 
 	case SDL_SCANCODE_TAB:
-		gui->toggleGui(true);	// gui on/off
+		gui->toggleGui(true);  break;  // gui on/off
 
 	case SDL_SCANCODE_LEFT:   mArrows[0] = 1;  break;  // car
 	case SDL_SCANCODE_RIGHT:  mArrows[1] = 1;  break;
@@ -372,7 +372,7 @@ void App::keyPressed( const SDL_KeyboardEvent &arg )
 		// pGame->timer.pretime = mClient ? 2.0f : pSet->game.pre_time;  // same for all multi players
 
 		// carIdWin = 1;  //
-		//; ghost.Clear();  replay.Clear();
+		ghost.Clear();  replay.Clear();
 	}	return;;
 
 

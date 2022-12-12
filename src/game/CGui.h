@@ -4,7 +4,7 @@
 #include "SliderValue.h"
 
 #include <MyGUI_Enumerator.h>
-// #include "MessageBoxStyle.h"
+#include "MessageBoxStyle.h"
 
 // #include "networkcallbacks.hpp"
 // #include "ICSInputControlSystem.h"
@@ -270,7 +270,6 @@ public:
 	Ck ckStartInMain, ckOgreDialog;
 	Ck ckBltLines, ckShowPics;
 	Ck ckMouseCapture, ckDevKeys, ckScreenPng;
-	void chkMultiThread(WP);
 
 	//  [Effects]
 	CK(AllEffects);
@@ -338,7 +337,7 @@ public:
 
 	///  [Replay]  -----------------------------
 	Li rplList =0;
-	// void listRplChng(Li, size_t);
+	void listRplChng(Li, size_t);
 	void updReplaysList();
 
 	//  cur rpl stats gui
@@ -374,7 +373,7 @@ public:
 	void btnRplToStart(WP),btnRplToEnd(WP), btnRplPlay(WP);
 	void btnRplBackDn(WP,int,int,MyGUI::MouseButton), btnRplBackUp(WP,int,int,MyGUI::MouseButton);
 	void btnRplFwdDn(WP,int,int, MyGUI::MouseButton), btnRplFwdUp(WP,int,int, MyGUI::MouseButton);
-	// void msgRplDelete(MyGUI::Message*, MyGUI::MessageBoxStyle);
+	void msgRplDelete(MyGUI::Message*, MyGUI::MessageBoxStyle);
 
 
 	//  Game

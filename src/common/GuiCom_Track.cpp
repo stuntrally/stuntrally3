@@ -318,11 +318,11 @@ void CGuiCom::ReadTrkStats()
 	SplineRoad rd(app->pGame);  rd.LoadFile(sRd,false);  // load
 
 	TIMER tim;  tim.Load(PATHMANAGER::Records()+"/"+ pSet->gui.sim_mode+"/"+ sListTrack+".txt", 0.f);
-	// tim.AddCar(app->gui->sListCar);
+	tim.AddCar(app->gui->sListCar);
 
 	bool reverse = sc->denyReversed ? false : pSet->gui.trackreverse;
-	// app->gui->ckReverse.setVisible(!sc->denyReversed);  //
-	//; UpdGuiRdStats(&rd,sc, sListTrack, tim.GetBestLap(0, reverse), reverse, 0);
+	app->gui->ckReverse.setVisible(!sc->denyReversed);  //
+	UpdGuiRdStats(&rd,sc, sListTrack, tim.GetBestLap(0, reverse), reverse, 0);
 #else
 	SplineRoad rd(app);  rd.LoadFile(sRd,false);  // load
 	UpdGuiRdStats(&rd,sc, sListTrack, 0.f, false, 0);

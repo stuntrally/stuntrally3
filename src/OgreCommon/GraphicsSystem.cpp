@@ -86,7 +86,7 @@ GraphicsSystem::GraphicsSystem( GameState *gameState,
 	mAlwaysAskForConfig( false ),
 	mUseHlmsDiskCache( true ),
 	mUseMicrocodeCache( true ),
-	mGrabMouse( false ),  //** par, true in release, from set..
+	mGrabMouse( true ),  //** par, true in release, from set..
 	mBackgroundColour( backgroundColour )
 {
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE
@@ -98,13 +98,13 @@ GraphicsSystem::GraphicsSystem( GameState *gameState,
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE
 	mPluginsFolder = mResourcePath;
 #endif
-	if( isWriteAccessFolder( mPluginsFolder, "Ogre.log" ) )
+	/*if( isWriteAccessFolder( mPluginsFolder, "Ogre.log" ) )
 		mWriteAccessFolder = mPluginsFolder;
 	else
 	{
 		Ogre::FileSystemLayer filesystemLayer( OGRE_VERSION_NAME );
 		mWriteAccessFolder = filesystemLayer.getWritablePath( "" );
-	}
+	}*/
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------
@@ -646,9 +646,9 @@ void GraphicsSystem::loadHlmsDiskCache()
 				catch( Ogre::Exception& )
 				{
 					Ogre::LogManager::getSingleton().logMessage(
-								"Error loading cache from " + mWriteAccessFolder + "/" +
-								filename + "! If you have issues, try deleting the file "
-								"and restarting the app" );
+						"Error loading cache from " + mWriteAccessFolder + "/" +
+						filename + "! If you have issues, try deleting the file "
+						"and restarting the app" );
 				}
 			}
 		}

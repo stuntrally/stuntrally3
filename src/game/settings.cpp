@@ -140,7 +140,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	// Param(c,w, "network.connect_port", connect_port);
 
 	//  replay
-	Param(c,w, "replay.rec", rpl_rec);				Param(c,w, "replay.ghost", rpl_ghost);
+	Param(c,w, "replay.record", rpl_rec);			Param(c,w, "replay.ghost", rpl_ghost);
 	Param(c,w, "replay.bestonly", rpl_bestonly);	Param(c,w, "replay.trackghost", rpl_trackghost);
 	Param(c,w, "replay.listview", rpl_listview);	Param(c,w, "replay.listghosts", rpl_listghosts);
 	Param(c,w, "replay.ghostpar", rpl_ghostpar);	Param(c,w, "replay.ghostother", rpl_ghostother);

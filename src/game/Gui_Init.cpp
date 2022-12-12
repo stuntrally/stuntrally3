@@ -130,7 +130,7 @@ void CGui::InitGui()
 
 
 	///  Welcome, HowToPlay, Hints  ----
-	//; ck= &ckShowWelcome;  ck->Init("chkHintShow", &pSet->show_welcome);
+	ck= &ckShowWelcome;  ck->Init("chkHintShow", &pSet->show_welcome);
 
 	edHintTitle = fEd("HintTitle");  edHintText = fEd("HintText");
 	imgHint = fImg("HintImg");  UpdHint();
@@ -139,7 +139,7 @@ void CGui::InitGui()
 	Btn("btnHintScreen",btnHintScreen);  Btn("btnHintInput", btnHintInput);
 	Btn("btnHintClose", btnHintClose);
 
-	//; app->mWndWelcome->setVisible(pSet->show_welcome && !pSet->autostart);
+	app->mWndWelcome->setVisible(pSet->show_welcome && !pSet->autostart);
 
 	//  How to play  >> >
 	Btn("btnHowToBack", btnHowToBack);
@@ -158,7 +158,7 @@ void CGui::InitGui()
 	sv= &svSizeMinimap;	sv->Init("SizeMinimap",	&pSet->size_minimap,   0.05f, 0.3f, 1.f, 3,4);  sv->DefaultF(0.165f);  Sev(HudSize);
 	sv= &svZoomMinimap;	sv->Init("ZoomMinimap",	&pSet->zoom_minimap,   0.9f, 4.f,   1.f, 2,4);  sv->DefaultF(1.6f);    Sev(HudSize);
 	sv= &svSizeArrow;	sv->Init("SizeArrow",   &pSet->size_arrow,     0.1f, 0.5f,  1.f, 3,4);  sv->DefaultF(0.26f);  Sev(SizeArrow);
-	// Slv(CountdownTime,  pSet->gui.pre_time / 0.5f /10.f);  sl->mfDefault = 4.f /10.f;
+	Slv(CountdownTime,  pSet->gui.pre_time / 0.5f /10.f);  sl->mfDefault = 4.f /10.f;
 
 
 	//  graphs
@@ -301,9 +301,9 @@ void CGui::InitGui()
 	//; app->bckFps->setVisible(pSet->show_fps);
 	ck= &ckWireframe;	ck->Init("Wireframe",   &app->mbWireFrame);  Cev(Wireframe);
 
-	// ck= &ckProfilerTxt;	ck->Init("ProfilerTxt",  &pSet->profilerTxt);
+	ck= &ckProfilerTxt;	ck->Init("ProfilerTxt",  &pSet->profilerTxt);
 	ck= &ckBulletDebug;	ck->Init("BulletDebug",  &pSet->bltDebug);
-	// ck= &ckBltProfTxt;	ck->Init("BltProfTxt",   &pSet->bltProfilerTxt);
+	ck= &ckBltProfTxt;	ck->Init("BltProfTxt",   &pSet->bltProfilerTxt);
 	ck= &ckSoundInfo;	ck->Init("SoundInfo",    &pSet->sounds_info);
 
 	ck= &ckCarDbgBars;	ck->Init("CarDbgBars",  &pSet->car_dbgbars);   Cev(HudShow);
@@ -377,8 +377,8 @@ void CGui::InitGui()
 	Btn("btnPlayers1", btnNumPlayers);	Btn("btnPlayers2", btnNumPlayers);
 	Btn("btnPlayers3", btnNumPlayers);	Btn("btnPlayers4", btnNumPlayers);
 
-	// ck= &ckSplitVert;	ck->Init("chkSplitVertically", &pSet->split_vertically);
-	// Chk("chkStartOrderRev", chkStartOrd, pSet->gui.start_order);
+	ck= &ckSplitVert;	ck->Init("chkSplitVertically", &pSet->split_vertically);
+	Chk("chkStartOrderRev", chkStartOrd, pSet->gui.start_order);
 	valLocPlayers = fTxt("valLocPlayers");
 	if (valLocPlayers)  valLocPlayers->setCaption(toStr(pSet->gui.local_players));
 
@@ -396,7 +396,7 @@ void CGui::InitGui()
 	ck= &ckMouseCapture;ck->Init("MouseCapture",&pSet->mouse_capture);
 
 	ck= &ckBltLines;	ck->Init("BltLines",	&pSet->bltLines);
-	// ck= &ckShowPics;	ck->Init("ShowPictures",&pSet->loadingbackground);
+	ck= &ckShowPics;	ck->Init("ShowPictures",&pSet->loadingbackground);
 	ck= &ckDevKeys;		ck->Init("DevKeys",		&pSet->dev_keys);
 	ck= &ckScreenPng;   ck->Init("ScreenPng",   &pSet->screen_png);
 
@@ -408,32 +408,19 @@ void CGui::InitGui()
 	// sv= &svBloomInt;	sv->Init("BloomInt",	&pSet->bloom_int);   sv->DefaultF(0.13f);  Sev(EffUpd);
 	// sv= &svBloomOrig;	sv->Init("BloomOrig",	&pSet->bloom_orig);	 sv->DefaultF(0.91f);  Sev(EffUpd);
 
-	// ck= &ckBlur;		ck->Init("MotionBlur",	&pSet->blur);  Cev(EffUpdShd);
-	// sv= &svBlurIntens;	sv->Init("BlurIntens",	&pSet->blur_int);	sv->DefaultF(0.4f);  Sev(EffUpd);
-
 	// ck= &ckSSAO;		ck->Init("SSAO",		&pSet->ssao);  Cev(EffUpdShd);
 	// ck= &ckSoftPar;		ck->Init("SoftParticles",&pSet->softparticles);  Cev(EffUpdShd);
 	// ck= &ckGodRays;		ck->Init("GodRays",		&pSet->godrays);  Cev(EffUpdShd);
 
-	// ck= &ckDoF;			ck->Init("DepthOfField",&pSet->dof);  Cev(EffUpdShd);
-	// sv= &svDofFocus;	sv->Init("DofFocus",	&pSet->dof_focus, 0.f, 2000.f, 2.f, 0,3);	sv->DefaultF(100.f);  Sev(EffUpd);
-	// sv= &svDofFar;		sv->Init("DofFar",		&pSet->dof_far,   0.f, 2000.f, 2.f, 0,4);	sv->DefaultF(1000.f);  Sev(EffUpd);
-
 	//  hdr
 	// ck= &ckHDR;				ck->Init("HDR",				&pSet->hdr);  Cev(EffUpd);
-	// sv= &svHDRParam1;		sv->Init("HDRParam1",		&pSet->hdrParam1);  sv->DefaultF(0.62f);
-	// sv= &svHDRParam2;		sv->Init("HDRParam2",		&pSet->hdrParam2, 0.f, 1.f, 2.f);  sv->DefaultF(0.10f);
-	// sv= &svHDRParam3;		sv->Init("HDRParam3",		&pSet->hdrParam3);  sv->DefaultF(0.79f);
-	// sv= &svHDRAdaptScale;	sv->Init("HDRAdaptScale",	&pSet->hdrAdaptationScale, 0.f, 1.f, 2.f);  sv->DefaultF(0.10f);
 	// sv= &svHDRBloomInt;		sv->Init("HDRBloomInt",		&pSet->hdrBloomint);   sv->DefaultF(0.81f);
 	// sv= &svHDRBloomOrig;	sv->Init("HDRBloomOrig",	&pSet->hdrBloomorig);  sv->DefaultF(0.34f);
-	// sv= &svHDRVignRadius;	sv->Init("HDRVignRadius",	&pSet->vignRadius, 0.f, 10.f);  sv->DefaultF(2.85f);
-	// sv= &svHDRVignDark;		sv->Init("HDRVignDark",		&pSet->vignDarkness);  sv->DefaultF(0.34f);
 
 
 	//  replays  ------------------------------------------------------------
-	// Btn("RplLoad",   btnRplLoad);    Btn("RplSave",   btnRplSave);
-	// Btn("RplDelete", btnRplDelete);  Btn("RplRename", btnRplRename);
+	Btn("RplLoad",   btnRplLoad);    Btn("RplSave",   btnRplSave);
+	Btn("RplDelete", btnRplDelete);  Btn("RplRename", btnRplRename);
 	//  settings
 	ck= &ckRplAutoRec;		ck->Init("RplChkAutoRec",	 &app->bRplRec);
 	ck= &ckRplBestOnly;		ck->Init("RplChkBestOnly",	 &pSet->rpl_bestonly);
@@ -443,30 +430,30 @@ void CGui::InitGui()
 	ck= &ckRplRewind;		ck->Init("RplChkRewind",	 &pSet->rpl_ghostrewind);
 	ck= &ckRplGhostOther;	ck->Init("RplChkGhostOther", &pSet->rpl_ghostother);
 	ck= &ckRplTrackGhost;	ck->Init("RplChkTrackGhost", &pSet->rpl_trackghost);
-	// Slv(RplNumViewports, (pSet->rpl_numViews-1) / 3.f);
+	Slv(RplNumViewports, (pSet->rpl_numViews-1) / 3.f);
 	sv= &svGhoHideDist;		sv->Init("GhoHideDist",		 &pSet->ghoHideDist,    0.f, 30.f, 1.5f, 1,4);  sv->DefaultF(5.f);
 	sv= &svGhoHideDistTrk;	sv->Init("GhoHideDistTrk",	 &pSet->ghoHideDistTrk, 0.f, 30.f, 1.5f, 1,4);  sv->DefaultF(5.f);
 	ck= &ckRplParticles;	ck->Init("RplChkParticles",	 &pSet->rpl_ghostpar);
-	// ck= &ckRplHideHudAids;  ck->Init("RplChkHideHudAids",&pSet->rpl_hideHudAids);
+	ck= &ckRplHideHudAids;  ck->Init("RplChkHideHudAids",&pSet->rpl_hideHudAids);
 
 	//  radios, filter
-	ck= &ckRplGhosts;	ck->Init("RplBtnGhosts",  &pSet->rpl_listghosts);  //Cev(RplGhosts);
-	// Btn("RplBtnAll", btnRplAll);  rbRplAll = btn;
-	// Btn("RplBtnCur", btnRplCur);  rbRplCur = btn;
+	ck= &ckRplGhosts;	ck->Init("RplBtnGhosts",  &pSet->rpl_listghosts);  Cev(RplGhosts);
+	Btn("RplBtnAll", btnRplAll);  rbRplAll = btn;
+	Btn("RplBtnCur", btnRplCur);  rbRplCur = btn;
 	btn = pSet->rpl_listview == 0 ? rbRplAll : rbRplCur;
 	if (btn)  btn->setStateSelected(true);
 
 
 	if (app->mWndRpl)
 	{	//  replay controls
-		// Btn("RplToStart", btnRplToStart);  Btn("RplToEnd", btnRplToEnd)
-		// Btn("RplPlay", btnRplPlay);  btRplPl = btn;
-		// btn = fBtn("RplBack");		btn->eventMouseButtonPressed += newDelegate(this, &CGui::btnRplBackDn);  btn->eventMouseButtonReleased += newDelegate(this, &CGui::btnRplBackUp);
-		// btn = fBtn("RplForward");	btn->eventMouseButtonPressed += newDelegate(this, &CGui::btnRplFwdDn);   btn->eventMouseButtonReleased += newDelegate(this, &CGui::btnRplFwdUp);
+		Btn("RplToStart", btnRplToStart);  Btn("RplToEnd", btnRplToEnd)
+		Btn("RplPlay", btnRplPlay);  btRplPl = btn;
+		btn = fBtn("RplBack");		btn->eventMouseButtonPressed += newDelegate(this, &CGui::btnRplBackDn);  btn->eventMouseButtonReleased += newDelegate(this, &CGui::btnRplBackUp);
+		btn = fBtn("RplForward");	btn->eventMouseButtonPressed += newDelegate(this, &CGui::btnRplFwdDn);   btn->eventMouseButtonReleased += newDelegate(this, &CGui::btnRplFwdUp);
 
 		//  info
 		slRplPos = (Slider*)app->mWndRpl->findWidget("RplSlider");
-		// if (slRplPos)  slRplPos->eventValueChanged += newDelegate(this, &CGui::slRplPosEv);
+		if (slRplPos)  slRplPos->eventValueChanged += newDelegate(this, &CGui::slRplPosEv);
 
 		valRplPerc = fTxt("RplPercent");
 		valRplCur = fTxt("RplTimeCur");
@@ -480,8 +467,8 @@ void CGui::InitGui()
 	//edRplDesc = fEd("RplDesc");
 
 	rplList = fLi("RplList");
-	// Lev(rplList, RplChng);
-	// updReplaysList();
+	Lev(rplList, RplChng);  // todo: lazy load..
+	updReplaysList();
 
 
 	///  Car
@@ -527,7 +514,7 @@ void CGui::InitGui()
 	tbPlr2 = fTab("SubTabPlayer2");  Tev(tbPlr2, Player);
 	//; Btn("btnPlayers1", btnNumPlayers);	Btn("btnPlayers2", btnNumPlayers);
 	// Btn("btnPlayers3", btnNumPlayers);	Btn("btnPlayers4", btnNumPlayers);
-	// ck= &ckSplitVert;	ck->Init("chkSplitVertically",  &pSet->split_vertically);
+	ck= &ckSplitVert;	ck->Init("chkSplitVertically",  &pSet->split_vertically);
 
 
 	///  Multiplayer
@@ -702,7 +689,7 @@ void CGui::InitGui()
 	gcom->GuiInitTrack();
 
 	Ed ed;
-	// Edt(ed,"RplFind",edRplFind);
+	Edt(ed,"RplFind",edRplFind);
 
 	//  netw
 	Tbi trkTab = fTbi("TabTrack");

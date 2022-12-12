@@ -4,7 +4,7 @@
 #include "Axes.h"
 #include "CGame.h"
 // #include "CHud.h"
-// #include "CGui.h"
+#include "CGui.h"
 #include "SceneXml.h"
 #include "CScene.h"
 #include "FollowCamera.h"
@@ -146,7 +146,7 @@ void App::newPoses(float time)  // time only for camera update
 			ghtim = std::max(0.0, ghtim - time * gPar.rewindSpeed);  //rewind ghost time too
 			if (pSet->game.rewind_type == 2 || gPar.backTime)
 			{	pGame->timer.Back(c, - time * gPar.rewindSpeed);
-				//; ghost.DeleteFrames(0, ghtim);
+				ghost.DeleteFrames(0, ghtim);
 			}
 			RewindFrame rf;
 			bool ok = rewind.GetFrame(gtime, &rf, c);
@@ -299,14 +299,14 @@ void App::newPoses(float time)  // time only for camera update
 						if (!pSet->rpl_bestonly || best || pSet->game.rewind_type == 2 || gPar.backTime)
 						if (c==0 && pSet->rpl_rec)  // for many, only 1st car
 						{
-							// ghost.SaveFile(gui->GetGhostFile());  //,boost_type?
+							ghost.SaveFile(gui->GetGhostFile());  //,boost_type?
 							ghplay.CopyFrom(ghost);
 							isGhost2nd = false;  // hide 2nd ghost
 							newbest = true;
 						}
 
-						//; bool champ = pSet->game.champ_num >= 0, chall = pSet->game.chall_num >= 0;
-						bool chs = false;//champ || chall;
+						bool champ = pSet->game.champ_num >= 0, chall = pSet->game.chall_num >= 0;
+						bool chs = champ || chall;
 						
 						if (!chs)
 						{	if (newbest)
@@ -347,10 +347,10 @@ void App::newPoses(float time)  // time only for camera update
 									carM->iWonPlace = carIdWin++;
 								}
 							}
-							//; else if (champ)
-							// 	gui->ChampionshipAdvance(timeCur);
-							// else
-							// 	gui->ChallengeAdvance(timeCur);
+							else if (champ)
+								gui->ChampionshipAdvance(timeCur);
+							else
+								gui->ChallengeAdvance(timeCur);
 						}
 					}
 					

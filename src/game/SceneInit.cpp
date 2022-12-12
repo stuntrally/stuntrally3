@@ -15,7 +15,7 @@
 // #include "GuiCom.h"
 #include "CGame.h"
 #include "CHud.h"
-// #include "CGui.h"
+#include "CGui.h"
 #include "game.h"
 // #include "PaceNotes.h"
 #include "SoundMgr.h"
@@ -87,7 +87,7 @@ void App::LoadData()
 	scn->sc->pReverbsXml = scn->data->reverbs;
 
 	//  championships.xml, progress.xml
-	//; gui->Ch_XmlLoad();
+	gui->Ch_XmlLoad();
 
 	//  user.xml
 	/*#if 0
@@ -106,20 +106,19 @@ void App::LoadData()
 	#endif*/
 
 	//  rpl sizes
-	/*ushort u(0x1020);
+	ushort u(0x1020);
 	struct SV{  std::vector<int> v;  };
 	int sv = sizeof(SV), sr2 = sizeof(ReplayFrame2)-3*sv, wh2 = sizeof(RWheel);
 
 	LogO(String("**** ReplayFrame size ") +toStr(sr2)+"+ wh: "+toStr(wh2)+"= "+toStr(sr2+4*wh2));
 	LogO(String("**** Replay test sizes: 12244: ") + toStr(sizeof(char))+","+toStr(sizeof(short))+
 		","+toStr(sizeof(half))+","+toStr(sizeof(float))+","+toStr(sizeof(int))+"  sv: "+toStr(sv)+
-		"   hi,lo 16,32: h "+toStr(*((uchar*)&u+1))+" l "+toStr(*((uchar*)&u)));*/
+		"   hi,lo 16,32: h "+toStr(*((uchar*)&u+1))+" l "+toStr(*((uchar*)&u)));
 
 	LogO(String("::: Time load xmls: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
 
 	///  rpl test-
-#if 0
 	#if 0
 	std::string file = PATHMANAGER::Ghosts() + "/normal/TestC4-ow_V2.rpl";
 	replay.LoadFile(file);  exit(0);
@@ -159,8 +158,6 @@ void App::LoadData()
 
 	bRplRec = pSet->rpl_rec;  // startup setting
 
-	gui->InitGui();
-#endif
 
 	//  bullet Debug drawing
 	//------------------------------------
@@ -198,13 +195,13 @@ void App::NewGame(bool force)
 
 	bRplPlay = 0;  iRplSkip = 0;
 	pSet->rpl_rec = bRplRec;  // changed only at new game
-	// gui->pChall = 0;
+	gui->pChall = 0;
 	
 	
 	if (!newGameRpl)  // if from replay, dont
 	{
 		pSet->game = pSet->gui;  // copy game config from gui
-		//; Ch_NewGame();
+		Ch_NewGame();
 
 		/*if (mClient && mLobbyState != HOSTING)  // all but host
 			gui->updateGameSet();  // override gameset params for networked game (from host gameset)
@@ -334,7 +331,7 @@ void App::LoadCleanUp()  // 1 first
 	// sh::Factory::getInstance().unloadUnreferencedMaterials();
 	// TextureGpuManager::getEntries() Singleton().unloadUnreferencedResources();
 
-	// minimizeMemory();  //! drops gui font tex
+	// minimizeMemory();  // todo: ! drops gui font tex
 
 	// setupCompositor();  //? twice
 }
@@ -576,20 +573,20 @@ void App::LoadCar()  // 4
 	
 	///  Init Replay  header, once
 	///=================----------------
-	/*ReplayHeader2& rh = replay.header, &gh = ghost.header;
+	ReplayHeader2& rh = replay.header, &gh = ghost.header;
 	if (!bRplPlay)
 	{
 		replay.InitHeader(pSet->game.track.c_str(), pSet->game.track_user, !bRplPlay);
-		rh.numPlayers = mClient ? (int)mClient->getPeerCount()+1 : pSet->game.local_players;  // networked or splitscreen
+		rh.numPlayers = 1; //; mClient ? (int)mClient->getPeerCount()+1 : pSet->game.local_players;  // networked or splitscreen
 		replay.Clear();  replay.ClearCars();  // upd num plr
 		rh.trees = pSet->game.trees;
 
-		rh.networked = mClient ? 1 : 0;
+		rh.networked = 0; //; mClient ? 1 : 0;
 		rh.num_laps = pSet->game.num_laps;
 		rh.sim_mode = pSet->game.sim_mode;
-	}*/
+	}
 	rewind.Clear();
-	/*
+	
 	ghost.InitHeader(pSet->game.track.c_str(), pSet->game.track_user, !bRplPlay);
 	gh.numPlayers = 1;  // ghost always 1 car
 	ghost.Clear();  ghost.ClearCars();
@@ -600,8 +597,8 @@ void App::LoadCar()  // 4
 
 	//  fill other cars (names, nicks, colors)
 	int p, pp = pSet->game.local_players;
-	if (mClient)  // networked, 0 is local car
-		pp = (int)mClient->getPeerCount()+1;
+	//; if (mClient)  // networked, 0 is local car
+		// pp = (int)mClient->getPeerCount()+1;
 
 	if (!bRplPlay)
 	for (p=0; p < pp; ++p)
@@ -617,8 +614,8 @@ void App::LoadCar()  // 4
 	{
 		CarModel* cm = carModels[p];
 		cm->sDispName = rh.nicks[p];
-		cm->pNickTxt = hud->CreateNickText(p, cm->sDispName);
-	}*/
+		//; cm->pNickTxt = hud->CreateNickText(p, cm->sDispName);
+	}
 }
 //---------------------------------------------------------------------------------------------------------------
 
@@ -628,7 +625,7 @@ void App::LoadTerrain()  // 5
 	if (dstTrk)
 	{
 		scn->CreateTerrain(false);  // common
-		//; GetTerMtrIds();
+		//; GetTerMtrIds();  // todo: get from blendmap tex ..
 		scn->CreateBltTerrain();  // todo: before cars..
 	}
 

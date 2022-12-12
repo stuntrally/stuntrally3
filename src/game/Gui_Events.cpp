@@ -408,14 +408,6 @@ void CGui::comboGraphs(CMB)
 	// 	app->DestroyGraphs();  app->CreateGraphs();  }
 }
 
-//  Startup
-void CGui::chkMultiThread(WP wp)
-{
-	// pSet->multi_thr = pSet->multi_thr ? 0 : 1;
-	// Btn chk = wp->castType<Button>();
-	// chk->setStateSelected(pSet->multi_thr > 0);
-}
-
 
 //  [Effects]  . . . . . . . . . . . . . . . . . . . .    ---- ------ ----    . . . . . . . . . . . . . . . . . . . .
 

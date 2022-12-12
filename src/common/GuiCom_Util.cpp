@@ -269,7 +269,7 @@ void CGuiCom::setToolTips(EnumeratorWidgetPtr widgets)
 			wp->setNeedToolTip(true);
 			wp->eventToolTip += newDelegate(this, &CGuiCom::notifyToolTip);
 		}
-		LogO(wp->getName() + (tip ? "  *" : ""));
+		//LogO(wp->getName() + (tip ? "  *" : ""));
 		setToolTips(wp->getEnumerator());
 	}
 }

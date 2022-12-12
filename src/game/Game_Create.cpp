@@ -165,9 +165,9 @@ void App::createScene01()
 	Vector3 objPos;
 
 
-	LogO("---- Init SR done ----");
+	LogO(">>>> Init SR done ----");
 
-	//  find cur id
+	//  find cur id  remove..
 	const auto* data = scn->data;
 	idTrack = data->tracks->trkmap[pSet->gui.track] -1;
 	idCar = data->cars->carmap[pSet->gui.car[0]] -1;
