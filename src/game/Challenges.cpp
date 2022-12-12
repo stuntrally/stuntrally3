@@ -24,8 +24,8 @@ void CGui::BackFromChs()
 {
 	pSet->gui.champ_num = -1;
 	pSet->gui.chall_num = -1;
-	//pChall = 0;
-	//CarListUpd();  // off filtering
+	pChall = 0;
+	CarListUpd();  // off filtering
 }
 
 bool CGui::isChallGui()
@@ -478,7 +478,7 @@ void CGui::ChallengeAdvance(float timeCur/*total*/)
 	txChallEndF->setCaption(passed ? TR("#{ChallEndFinished}") : TR("#{Finished}"));
 
 	edChallEnd->setCaption(s);
-	//ap->mWndChallEnd->setVisible(true);  // show after stage end
+	app->mWndChallEnd->setVisible(true);  // show after stage end
 	
 	LogO("|]");
 }

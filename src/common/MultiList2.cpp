@@ -77,7 +77,7 @@ namespace MyGUI
 		if (isUserString("WidthSeparator"))
 			mWidthSeparator = utility::parseValue<int>(getUserString("WidthSeparator"));
 
-		// OBSOLETE
+		// obsolete
 		if (isUserString("HeightButton"))
 			mHeightButton = utility::parseValue<int>(getUserString("HeightButton"));
 		if (mHeightButton < 0)
@@ -117,7 +117,7 @@ namespace MyGUI
 	{
 		MYGUI_ASSERT_RANGE(_column, mVectorColumnInfo.size(), "MultiList2::setColumnNameAt");
 		mVectorColumnInfo[_column].name = _name;
-		// обновляем кэпшен сначала
+
 		redrawButtons();
 		updateColumns();
 	}
@@ -154,7 +154,7 @@ namespace MyGUI
 		{
 			mSortUp = !mSortUp;
 			redrawButtons();
-			// если было недосортированно то сортируем
+
 			if (mFrameAdvise)
 				sortList();
 
@@ -223,7 +223,6 @@ namespace MyGUI
 		size_t index = BiIndexBase::convertToBack(_index);
 		getSubItemAt(_column)->setItemNameAt(index, _name);
 
-		// если мы попортили список с активным сортом, надо пересчитывать
 		if (_column == mSortColumnIndex)
 			frameAdvise(true);
 	}
@@ -254,7 +253,6 @@ namespace MyGUI
 		if (nullptr == mWidgetEmpty)
 			return;
 
-		// кнопка, для заполнения пустоты
 		if (mWidthBar >= mClient->getWidth())
 			mWidgetEmpty->setVisible(false);
 		else
@@ -276,13 +274,11 @@ namespace MyGUI
 
 		mItemSelected = BiIndexBase::convertToFace(_position);
 
-		// наш евент
 		eventListChangePosition(this, mItemSelected);
 	}
 
 	void MultiList2::notifyListSelectAccept(ListBox* _sender, size_t _position)
 	{
-		// наш евент
 		eventListSelectAccept(this, BiIndexBase::convertToFace(_position));
 	}
 
@@ -365,7 +361,7 @@ namespace MyGUI
 	{
 		if (!mWidthSeparator || mSkinSeparator.empty())
 			return nullptr;
-		// последний столбик
+
 		if (_index == mVectorColumnInfo.size() - 1)
 			return nullptr;
 
@@ -429,7 +425,7 @@ namespace MyGUI
 		if (0 == count)
 			return;
 
-		// shell sort
+		//  shell sort
 		int first;
 		size_t last;
 		for (size_t step = count >> 1; step > 0 ; step >>= 1)
@@ -465,14 +461,11 @@ namespace MyGUI
 		if (ITEM_NONE == _index)
 			_index = mVectorColumnInfo.front().list->getItemCount();
 
-		// если надо, то меняем выделенный элемент
-		// при сортировке, обновится
 		if ((mItemSelected != ITEM_NONE) && (_index <= mItemSelected))
 			mItemSelected ++;
 
 		size_t index = BiIndexBase::insertItemAt(_index);
 
-		// вставляем во все поля пустые, а потом присваиваем первому
 		for (VectorColumnInfo::iterator iter = mVectorColumnInfo.begin(); iter != mVectorColumnInfo.end(); ++iter)
 		{
 			(*iter).list->insertItemAt(index, "");
@@ -495,7 +488,6 @@ namespace MyGUI
 			(*iter).list->removeItemAt(index);
 		}
 
-		// если надо, то меняем выделенный элемент
 		size_t count = mVectorColumnInfo.begin()->list->getItemCount();
 		if (count == 0)
 			mItemSelected = ITEM_NONE;
@@ -515,11 +507,7 @@ namespace MyGUI
 		MYGUI_ASSERT_RANGE(_index1, mVectorColumnInfo.begin()->list->getItemCount(), "MultiList2::swapItemsAt");
 		MYGUI_ASSERT_RANGE(_index2, mVectorColumnInfo.begin()->list->getItemCount(), "MultiList2::swapItemsAt");
 
-		// при сортированном, меняем только индексы
 		BiIndexBase::swapItemsFaceAt(_index1, _index2);
-
-		// при несортированном, нужно наоборот, поменять только данные
-		// FIXME
 	}
 
 	void MultiList2::setColumnDataAt(size_t _index, Any _data)
@@ -713,7 +701,6 @@ namespace MyGUI
 
 	void MultiList2::_wrapItem(MultiListItem* _item)
 	{
-		// скрываем у крайнего скролл
 		if (!mVectorColumnInfo.empty())
 			mVectorColumnInfo.back().list->setScrollVisible(false);
 		else
@@ -737,7 +724,6 @@ namespace MyGUI
 
 		column.button->eventMouseButtonClick += newDelegate(this, &MultiList2::notifyButtonClick);
 
-		// если уже были столбики, то делаем то же колличество полей
 		if (!mVectorColumnInfo.empty())
 		{
 			size_t count = mVectorColumnInfo.front().list->getItemCount();
@@ -749,7 +735,6 @@ namespace MyGUI
 
 		updateColumns();
 
-		// показываем скролл нового крайнего
 		mVectorColumnInfo.back().list->setScrollVisible(true);
 	}
 
@@ -972,7 +957,6 @@ namespace MyGUI
 
 			mWidthBar += columnWidth;
 
-			// промежуток между листами
 			Widget* separator = getSeparator(index);
 			if (separator)
 			{
@@ -986,4 +970,4 @@ namespace MyGUI
 		updateOnlyEmpty();
 	}
 
-} // namespace MyGUI
+}

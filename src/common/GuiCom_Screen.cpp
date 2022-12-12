@@ -125,9 +125,9 @@ void CGuiCom::InitGuiScreenRes()
 				ScrRes res;  res.w = w;  res.h = h;  res.mode = mode;
 				vRes.push_back(res);
 
-				//; int ww = w - app->mWindow->getWidth(), hh = h - app->mWindow->getHeight();
-				// if (abs(ww) < 30 && abs(hh) < 50)  // window difference
-				// 	modeSel = mode;
+				int ww = w - app->mWindow->getWidth(), hh = h - app->mWindow->getHeight();
+				if (abs(ww) < 30 && abs(hh) < 50)  // window difference
+					modeSel = mode;
 			}
 		}
 

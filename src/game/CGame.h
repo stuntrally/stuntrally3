@@ -119,21 +119,17 @@ public:
 public:
 	//  ctor
 	App();
-	// void Init(SETTINGS* settings, GAME* game);
 	virtual ~App();
 	void ShutDown();
-	
-	//SETTINGS* pSet =0;  //;  from BaseApp
 
 	CScene* scn =0;
-	CData* data =0;  //p
-	Scene* sc = 0;  // in pApp->scn ..
+	CData* data =0;
+	Scene* sc = 0;
 	
 	GAME* pGame =0;
 
 
 	//  BaseApp init
-	// void postInit();
 	Ogre::Root* mRoot =0;
 	Ogre::Camera* mCamera =0;
 	Ogre::SceneManager* mSceneMgr =0;

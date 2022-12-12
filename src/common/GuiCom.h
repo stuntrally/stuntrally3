@@ -77,7 +77,6 @@ public:
 	SV svShadowType, svShadowCount, svShadowSize, svShadowDist;  // shadow
 	SlV(WaterSize);
 
-	Ck ckUseImposters, ckImpostorsOnly;
 	Ck ckWaterReflect, ckWaterRefract;  void chkWater(Ck*);
 
 	void comboTexFilter(CMB), cmbAntiAliasing(CMB);

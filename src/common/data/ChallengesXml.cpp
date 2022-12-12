@@ -64,7 +64,7 @@ bool ChallXml::LoadXml(std::string file, TracksXml* trks, bool check)
 			a = eCarT->Attribute("names");
 			if (a)
 			{	String s = a;
-				//; c.carTypes = StringUtil::split(s, "|");
+				c.carTypes = StringUtil::split(s, "|");
 			}
 			//  wheels
 			a = eCarT->Attribute("whMin");	if (a)  c.whMin = s2i(a);
@@ -77,12 +77,12 @@ bool ChallXml::LoadXml(std::string file, TracksXml* trks, bool check)
 			a = eCar->Attribute("names");
 			if (a)
 			{	String s = a;
-				//; c.cars = StringUtil::split(s, "|");
+				c.cars = StringUtil::split(s, "|");
 			}
 			a = eCar->Attribute("deny");
 			if (a)
 			{	String s = a;
-				//; c.carsDeny = StringUtil::split(s, "|");
+				c.carsDeny = StringUtil::split(s, "|");
 		}	}
 		
 		XMLElement* eHud = eCh->FirstChildElement("hud");

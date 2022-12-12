@@ -427,9 +427,9 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			//{	pCarM->updLap = false;
 				h.txLap->setCaption(h.sLap);
 			//}
-			float a = 1.f; //; std::min(1.f, pCarM->fLapAlpha * 2.f);
+			float a = std::min(1.f, pCarM->fLapAlpha * 2.f);
 			bool hasRoad = app->scn->road && app->scn->road->getNumPoints() > 2;
-			bool vis = false; //pSet->show_times && hasRoad && a > 0.f;
+			bool vis = pSet->show_times && hasRoad && a > 0.f;
 			if (vis)
 			{	if (app->iLoad1stFrames == -2)  //bLoading)  //  fade out
 				{	pCarM->fLapAlpha -= !hasRoad ? 1.f : time * gPar.fadeLapResults;

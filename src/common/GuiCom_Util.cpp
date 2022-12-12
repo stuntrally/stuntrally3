@@ -14,6 +14,7 @@
 	#include "settings.h"
 #endif
 // #include "../../sdl4ogre/sdlinputwrapper.hpp"
+#include <OgreWindow.h>
 #include <MyGUI_InputManager.h>
 #include <MyGUI_Widget.h>
 #include <MyGUI_EditBox.h>
@@ -397,33 +398,11 @@ void CGuiCom::CreateFonts()
 			mgr.removeByName(name);
 
 		//  setup font				   // par
-		float size = sizes[i];  // less for low screen res
-		size *= max(0.55f, min(1.2f, (/*pSet->windowy*/1100.f - 600.f) / 600.f));
+		float size = 0.95f* sizes[i];  // less for low screen res
+		size *= max(0.55f, min(1.2f, (app->mWindow->getHeight()/*pSet->windowy*/ - 600.f) / 600.f));
 		inf += name+"  "+fToStr(size,1,3)+"  ";
 
 		//  create
-	#if 0  //  mygui from svn
-		string cat = mgr.getCategoryName();   // createObject("Resource", "ResourceTrueTypeFont"));
-		ResourceTrueTypeFont* font = FactoryManager::getInstance().createObject<ResourceTrueTypeFont>(cat);
-		font->setResourceName(name);
-
-		font->setSource("DejaVuLGCSans.ttf");
-		font->setSize(size);  font->setResolution(50);  font->setAntialias(false);  //font->setHinting("");
-		font->setTabWidth(8);  font->setDistance(4);  font->setOffsetHeight(0);
-		//font->setSubstituteCode(_data->getPropertyValue<int>("SubstituteCode"));
-
-		//  char ranges
-		if (bfont)
-		{	const auto& vv = bfont->getCodePointRanges();
-			for (auto it = vv.cbegin(); it != vv.cend(); ++it)
-			if ((*it).first > 10 && (*it).first < 10000)
-			{	//LogO("aa "+toStr((*it).first)+" "+toStr((*it).second));
-				font->addCodePointRange((*it).first, (*it).second);  }
-		}else
-			font->addCodePointRange(33,255);
-
-		font->initialise();
-	#else
 		ResourceTrueTypeFont* font = (ResourceTrueTypeFont*)FactoryManager::getInstance().createObject("Resource", "ResourceTrueTypeFont");
 
 		//  Loading from XML, data members are private in MyGUI 3.2.0
@@ -452,7 +431,7 @@ void CGuiCom::CreateFonts()
 		}
 		//doc.save(string("aaa.txt"));
 		font->deserialization(root, Version(3,2,0));
-	#endif
+
 		//  add
 		mgr.addResource(font);
 	}

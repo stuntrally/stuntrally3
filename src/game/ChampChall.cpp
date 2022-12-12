@@ -303,7 +303,7 @@ void CGui::UpdChampTabVis()
 {
 	if (!liChamps || !tabChamp || !btStChamp)  return;
 	bool game = pSet->iMenu == MN_Single,   champ = pSet->iMenu == MN_Champ,
-		tutor = pSet->iMenu == MN_Tutorial, chall = pSet->iMenu == MN_Chall;
+		tutor = pSet->iMenu == MN_Tutorial, chall = 1; //; fixme pSet->iMenu == MN_Chall;
 	bool any = tutor || champ || chall;
 
 	imgTut->setVisible(tutor);    btStTut->setVisible(tutor);

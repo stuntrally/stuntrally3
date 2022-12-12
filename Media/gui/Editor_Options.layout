@@ -227,14 +227,6 @@
 								<Widget type="TextBox" skin="TextBox" position="210 140 60 24" name="GrassDistVal">
 									<Property key="TextColour" value="0.7 0.8 0.5"/>
 								</Widget>
-								<Widget type="Button" skin="CheckBox" position="32 180 200 26" name="UseImposters">
-									<Property key="Caption" value="#{UseImposters}*"/>
-									<Property key="TextColour" value="0.6 1 0.3"/>
-								</Widget>
-								<Widget type="Button" skin="CheckBox" position="32 210 300 26" name="ImpostorsOnly">
-									<Property key="Caption" value="#{ImpostorsOnly}*"/>
-									<Property key="TextColour" value="0.6 1 0.3"/>
-								</Widget>
 							</Widget>
 							<Widget type="TabItem" skin="" position="2 24 694 272">
 								<Property key="Caption" value="#B0B0B0#{Shadows}"/>

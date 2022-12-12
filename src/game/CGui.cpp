@@ -192,7 +192,6 @@ void CGui::comboSim(Cmb cmb, size_t val)
 void CGui::comboDiff(Cmb cmb, size_t val)
 {
 	LogO("+ comboDiff" + toStr(val));
-	return;  // fixme
 	pSet->difficulty = val;
 
 	auto resetFilter = [&]()
@@ -241,6 +240,6 @@ void CGui::comboDiff(Cmb cmb, size_t val)
 	gcom->TrackListUpd(true);  gcom->listTrackChng(gcom->trkList,0);
 	listCarChng(carList,0);
 
-	// ChampsListUpdate();
-	// ChallsListUpdate();
+	ChampsListUpdate();
+	ChallsListUpdate();
 }
