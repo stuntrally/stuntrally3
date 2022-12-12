@@ -67,7 +67,7 @@ public:
 	//  pacenotes
 	// bool pace_show;  int pace_next;
 	// float pace_dist, pace_size, pace_near, pace_alpha;
-	// bool trail_show;
+	bool trail_show;
 
 	eGraphType graphs_type;
 	int car_dbgtxtclr, car_dbgtxtcnt;

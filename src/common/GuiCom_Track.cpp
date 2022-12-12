@@ -331,7 +331,7 @@ void CGuiCom::ReadTrkStats()
 }
 
 #ifndef SR_EDITOR  // game
-/*void CGui::ReadTrkStatsChamp(String track, bool reverse)
+void CGui::ReadTrkStatsChamp(String track, bool reverse)
 {
 	String sRd = gcom->pathTrk[0] + track + "/road.xml";
 	String sSc = gcom->pathTrk[0] + track + "/scene.xml";
@@ -343,7 +343,7 @@ void CGuiCom::ReadTrkStats()
 	tim.AddCar(sListCar);
 
 	gcom->UpdGuiRdStats(&rd,sc, track, tim.GetBestLap(0, reverse), reverse, 1);
-}*/
+}
 #endif
 
 

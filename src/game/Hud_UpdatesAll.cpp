@@ -294,7 +294,7 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 	}
 
 	//  boost fuel (time)  ------
-	if (h.txBFuel && pCar)// && h.txBFuel->getVisible())
+	if (h.txBFuel && pCar && h.txBFuel->getVisible())
 	{
 		float f = 0.1f * std::min(10.f, pCar->dynamics.boostFuel);
 		//ColourValue c;  c.setHSB(0.6f - f*0.1f, 0.7f + f*0.3f, 0.8f + f*0.2f);
@@ -304,7 +304,7 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 	}
 
 	//  damage %  ------
-	if (h.txDamage && pCar) // && h.txDamage->getVisible())
+	if (h.txDamage && pCar && h.txDamage->getVisible())
 	{
 		float d = std::min(100.f, Math::Floor(pCar->dynamics.fDamage));
 		float& a = h.dmgBlink;

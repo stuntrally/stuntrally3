@@ -10,7 +10,7 @@
 #include "CGui.h"
 #include "MultiList2.h"
 #include "Slider.h"
-// #include "Gui_Popup.h"
+#include "Gui_Popup.h"
 #include "data/CData.h"
 #include "data/TracksXml.h"
 
@@ -35,8 +35,8 @@ void CGui::InitGui()
 	Check::pGUI = mGui;  SliderValue::pGUI = mGui;
 	Check::bGI = &bGI;   SliderValue::bGI = &bGI;
 
-	// popup->mGui = mGui;
-	// popup->mPlatform = app->mPlatform;
+	popup->mGui = mGui;
+	popup->mPlatform = app->mPlatform;
 
 	if (!mGui)  return;
 	Ogre::Timer ti;
@@ -130,7 +130,7 @@ void CGui::InitGui()
 
 
 	///  Welcome, HowToPlay, Hints  ----
-	// ck= &ckShowWelcome;  ck->Init("chkHintShow", &pSet->show_welcome);
+	//; ck= &ckShowWelcome;  ck->Init("chkHintShow", &pSet->show_welcome);
 
 	edHintTitle = fEd("HintTitle");  edHintText = fEd("HintText");
 	imgHint = fImg("HintImg");  UpdHint();
@@ -139,7 +139,7 @@ void CGui::InitGui()
 	Btn("btnHintScreen",btnHintScreen);  Btn("btnHintInput", btnHintInput);
 	Btn("btnHintClose", btnHintClose);
 
-	// app->mWndWelcome->setVisible(pSet->show_welcome && !pSet->autostart);
+	//; app->mWndWelcome->setVisible(pSet->show_welcome && !pSet->autostart);
 
 	//  How to play  >> >
 	Btn("btnHowToBack", btnHowToBack);
@@ -287,7 +287,7 @@ void CGui::InitGui()
 	// sv= &svPaceNear;	sv->Init("PaceNear",	&pSet->pace_near,   0.1f,2.f);  sv->DefaultF(1.f);  Sev(Upd_Pace);
 	// sv= &svPaceAlpha;	sv->Init("PaceAlpha",	&pSet->pace_alpha,  0.3f,1.f);  sv->DefaultF(1.f);  Sev(Upd_Pace);
 	// //slUpd_Pace(0);
-	// ck= &ckTrailShow;	ck->Init("ChkTrail",	&pSet->trail_show);  Cev(TrailShow);
+	ck= &ckTrailShow;	ck->Init("ChkTrail",	&pSet->trail_show);  Cev(TrailShow);
 
 
 	//  times, opp
@@ -384,8 +384,8 @@ void CGui::InitGui()
 
 
 	//  kmh/mph radio
-	// Btn("kmh", radKmh);  bRkmh = btn;  bRkmh->setStateSelected(!pSet->show_mph);
-	// Btn("mph", radMph);	 bRmph = btn;  bRmph->setStateSelected( pSet->show_mph);
+	Btn("kmh", radKmh);  bRkmh = btn;  bRkmh->setStateSelected(!pSet->show_mph);
+	Btn("mph", radMph);	 bRmph = btn;  bRmph->setStateSelected( pSet->show_mph);
 
 
 	//  startup
@@ -526,7 +526,7 @@ void CGui::InitGui()
 
 	tbPlr  = fTab("SubTabPlayer");   Tev(tbPlr, Player);
 	tbPlr2 = fTab("SubTabPlayer2");  Tev(tbPlr2, Player);
-	// Btn("btnPlayers1", btnNumPlayers);	Btn("btnPlayers2", btnNumPlayers);
+	//; Btn("btnPlayers1", btnNumPlayers);	Btn("btnPlayers2", btnNumPlayers);
 	// Btn("btnPlayers3", btnNumPlayers);	Btn("btnPlayers4", btnNumPlayers);
 	// ck= &ckSplitVert;	ck->Init("chkSplitVertically",  &pSet->split_vertically);
 
@@ -657,7 +657,7 @@ void CGui::InitGui()
 */
 
 	///  input tab  -------
-	// InitInputGui();
+	//; InitInputGui();
 
 
 	///  cars list
@@ -723,7 +723,7 @@ void CGui::InitGui()
 
 
 	//  championships
-#if 0
+#if 1
 	//------------------------------------------------------------------------
 	app->mWndRaceBtns[1]->setVisible(pSet->difficulty < 4);  // tutorials
 
@@ -816,36 +816,36 @@ void CGui::InitGui()
 
 
 	//  tabs
-	// tabChamp = fTab("ChampType");        Tev(tabChamp, ChampType);  tabChamp->setIndexSelected(pSet->champ_type);
-	// tabChall = fTab("SubTabChallType");  Tev(tabChall, ChallType);  tabChall->setIndexSelected(pSet->chall_type);
+	tabChamp = fTab("ChampType");        Tev(tabChamp, ChampType);  tabChamp->setIndexSelected(pSet->champ_type);
+	tabChall = fTab("SubTabChallType");  Tev(tabChall, ChallType);  tabChall->setIndexSelected(pSet->chall_type);
 	imgTut   = fImg("imgTut");
 	imgChamp = fImg("imgChamp");
 	imgChall = fImg("imgChall");
 
-	// updChampListDim();
-	// ChampsListUpdate();  listChampChng(liChamps, liChamps->getIndexSelected());
-	// ChallsListUpdate();  listChallChng(liChalls, liChalls->getIndexSelected());
+	updChampListDim();
+	ChampsListUpdate();  listChampChng(liChamps, liChamps->getIndexSelected());
+	ChallsListUpdate();  listChallChng(liChalls, liChalls->getIndexSelected());
 
-	// Btn("btnTutStart",  btnChampStart);  btStTut = btn;
-	// Btn("btnChampStart",btnChampStart);  btStChamp = btn;
-	// Btn("btnChallStart",btnChallStart);  btStChall = btn;
-	// Btn("btnChRestart", btnChRestart);   btChRestart = btn;
+	Btn("btnTutStart",  btnChampStart);  btStTut = btn;
+	Btn("btnChampStart",btnChampStart);  btStChamp = btn;
+	Btn("btnChallStart",btnChallStart);  btStChall = btn;
+	Btn("btnChRestart", btnChRestart);   btChRestart = btn;
 
 
 	//  ch other
 	ck= &ckChampRev;	ck->Init("ChampRev",    &pSet->gui.champ_rev);   Cev(ChampRev);
 	ck= &ckCh_All;  	ck->Init("Ch_All",      &pSet->ch_all);          Cev(Ch_All);
 
-	// Btn("btnChampStageBack", btnChampStageBack);
-	// Btn("btnChampStageStart",btnChampStageStart);  btChampStage = btn;
-	// Btn("btnChampEndClose",  btnChampEndClose);
+	Btn("btnChampStageBack", btnChampStageBack);
+	Btn("btnChampStageStart",btnChampStageStart);  btChampStage = btn;
+	Btn("btnChampEndClose",  btnChampEndClose);
 
-	// Btn("btnChallStageBack", btnChallStageBack);
-	// Btn("btnChallStageStart",btnChallStageStart);  btChallStage = btn;
-	// Btn("btnChallEndClose",  btnChallEndClose);
+	Btn("btnChallStageBack", btnChallStageBack);
+	Btn("btnChallStageStart",btnChallStageStart);  btChallStage = btn;
+	Btn("btnChallEndClose",  btnChallEndClose);
 
-	// Btn("btnStageNext", btnStageNext);
-	// Btn("btnStagePrev", btnStagePrev);
+	Btn("btnStageNext", btnStageNext);
+	Btn("btnStagePrev", btnStagePrev);
 	valStageNum = fTxt("StageNum");
 
 	edChampStage = fEd("ChampStageText");  edChampEnd = fEd("ChampEndText");
@@ -858,7 +858,7 @@ void CGui::InitGui()
 	imgChallFail   = fImg("ChallEndImgFail");  txChallEndF = fTxt("ChallEndFinished");
 	imgChallCup    = fImg("ChallEndImgCup");   txChallEndC = fTxt("ChallEndCongrats");
 
-	// UpdChampTabVis();
+	UpdChampTabVis();
 #endif
 
 	//  netw end list  ------

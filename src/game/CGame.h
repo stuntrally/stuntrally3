@@ -251,7 +251,7 @@ public:
 	int GetRacePos(float timeCur, float timeTrk, float carTimeMul, bool coldStart, float* pPoints=0);
 	float GetCarTimeMul(const std::string& car, const std::string& sim_mode);
 
-	// void Ch_NewGame();
+	void Ch_NewGame();
 
 
 	///  graphs

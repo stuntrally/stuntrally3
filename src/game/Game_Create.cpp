@@ -2,6 +2,7 @@
 #include "CGui.h"
 #include "CHud.h"
 #include "GuiCom.h"
+#include "Gui_Popup.h"
 #include "GraphicsSystem.h"
 #include "OgreLogManager.h"
 #include "OgreCamera.h"
@@ -78,8 +79,7 @@ void App::Load()
 	pGame->collision.pApp = this;
 	pGame->Start();
 
-	// pApp = new App(pSet, pGame);
-	// Init();
+
 	///  new
 	scn = new CScene(this);
 	data = scn->data;
@@ -89,7 +89,7 @@ void App::Load()
 	gui = new CGui(this);
 	gui->gcom = gcom;
 	// hud->gui = gui;
-	// gui->popup = new GuiPopup();
+	gui->popup = new GuiPopup();
 	// gui->viewBox = new wraps::RenderBoxScene();
 
 	// mBindListner = gui;
@@ -101,7 +101,7 @@ void App::Load()
 
 	pGame->ReloadSimData();
 
-	//  new game
+
 	mRoot = mGraphicsSystem->getRoot();
 	mCamera = mGraphicsSystem->getCamera();
 	mSceneMgr = mGraphicsSystem->getSceneManager();
@@ -119,7 +119,6 @@ void App::Destroy()
 
 	DestroyGui();
 
-	// delete pApp;
 	delete pGame;
 	delete pSet;
 }
@@ -131,12 +130,16 @@ void App::Destroy()
 void App::createScene01()
 {
 	LogO(">>>> Init SR ----");
-	Load();  // cfg, xmls etc
 	
-	// Gui Init
+	//  SR cfg, xmls etc
+	Load();
+	
+
+	//  Gui Init
 	baseInitGui(mGraphicsSystem);
 	gui->mGui = mGui;
 	gui->InitGui();
+
 
 	mGraphicsSystem->mWorkspace = setupCompositor();
 
@@ -162,9 +165,7 @@ void App::createScene01()
 	Vector3 objPos;
 
 
-	// LogO(">>>> Init SR ----");
-	// Init();
-	LogO("---- Init SR done2 ----");
+	LogO("---- Init SR done ----");
 
 	//  find cur id
 	const auto* data = scn->data;
@@ -177,24 +178,7 @@ void App::createScene01()
 	TutorialGameState::createScene01();
 }
 
-
-//  Destroy
 //-----------------------------------------------------------------------------------
-/*void App::destroyScene()
-{
-	LogO("---- destroyScene");
-
-	DestroyTerrain();
-
-	LogO("---- base destroyScene");
-
-	TutorialGameState::destroyScene();
-
-	LogO(">>>> Destroy SR ----");
-	Destroy();
-	LogO(">>>> Destroy SR done ----");
-}*/
-
 /*
 	good scn +
 Aln Cry Atm  Aus Blk Can Des  Fin For Grc  Jng Mos  Mud Sav  Spc Stn Sur  Wnt

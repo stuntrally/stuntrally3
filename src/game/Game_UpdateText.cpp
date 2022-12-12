@@ -150,26 +150,20 @@ void App::generateDebugText()
 	txt += "\n\n";
 
 	const auto* data = scn->data;
-	txt += /*"Track: " +*/ //toStr(idTrack)
+	txt +=
 		toStr(data->tracks->trks[idTrack].n) +" "+
 		data->tracks->trks[idTrack].name +"\n";
-	txt += /*"  Car: " +*/ toStr(idCar+1) +"  "+
+	txt += toStr(idCar+1) +"  "+
 		data->cars->cars[idCar].id + " " +
 		data->cars->cars[idCar].name +"\n\n";
 
-	if (bLoading)
-	{
-		txt += "Loading... " + toStr(curLoadState) +" / "+
-			toStr(App::LS_ALL) +"  "+ cStrLoad[curLoadState];
-	}
-	else  //-
 	if (pGame)  // CAR text
 	{
 		int num = pGame->cars.size();
 		if (num != 1)
 			txt += "cars " + toStr(num) + "\n";
 		
-		for (const CAR* car : pGame->cars)
+		/*for (const CAR* car : pGame->cars)
 		{
 			auto pos = car->dynamics.GetPosition();
 			// txt += "pos  " + fToStr(pos[0],2) + "  " + fToStr(pos[1],2) + "  " + fToStr(pos[2],2) +"\n";

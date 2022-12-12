@@ -203,10 +203,10 @@ void CHud::Show(bool hideAll)
 	{
 		bool cam = pSet->show_cam /*&& !app->isFocGui*/, times = pSet->show_times;
 		//bool opp = pSet->show_opponents && (app->scn->road && app->scn->road->getNumPoints() > 0);
-		bool bfuel = 1;// pSet->game.boost_type >= 1; // && pSet->game.boost_type <= 3;
-		bool btxt = 1; //pSet->game.boost_type == 1 || pSet->game.boost_type == 2;
+		bool bfuel = pSet->game.boost_type >= 1; // && pSet->game.boost_type <= 3;
+		bool btxt = pSet->game.boost_type == 1 || pSet->game.boost_type == 2;
 		//bool binf = pSet->game.boost_type == 3;
-		bool bdmg = 1; //pSet->game.damage_type > 0;
+		bool bdmg = pSet->game.damage_type > 0;
 		txCamInfo->setVisible(cam);
 
 		show = pSet->show_gauges;

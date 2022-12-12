@@ -133,11 +133,7 @@ void App::update( float dt )
 		inputs[A_PrevCamera] = mArrows[9];
 		inputs[A_Rewind] = mArrows[10];
 
-		//  multi thread
-		// if (pSet->multi_thr == 1 && pGame && !bLoading)
-		{
-			updatePoses(dt);
-		}
+		updatePoses(dt);
 	}
 
 
@@ -169,8 +165,8 @@ void App::update( float dt )
 					r->UpdLodVis(pSet->road_dist);
 				
 				//  trail upd lods
-				// if (scn->trail && pSet->trail_show && !bHideHudTrail)
-					// scn->trail->UpdLodVis();
+				if (scn->trail && pSet->trail_show)//; && !bHideHudTrail)
+					scn->trail->UpdLodVis();
 			}
 		}
 		//PROFILER.endBlock("g.road");

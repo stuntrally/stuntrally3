@@ -181,7 +181,7 @@ void CHud::Create()
 		}
 
 		//  damage %
-		//if (pSet->game.damage_type > 0)
+		if (pSet->game.damage_type > 0)
 		{
 			h.imgDamage = h.parent->createWidget<ImageBox>("ImageBox",
 				0,y, 130,46, Align::Left, "PDmg"+s);
@@ -190,7 +190,7 @@ void CHud::Create()
 			h.txDamage = h.parent->createWidget<TextBox>("TextBox",
 				0,y, 120,40, Align::Right, "Dmg"+s);  //h.txDamage->setVisible(false);
 			h.txDamage->setTextAlign(Align::Right|Align::VCenter);
-			h.txDamage->setFontName("hud.replay");  h.txDamage->setFontHeight(64);
+			h.txDamage->setFontName("hud.replay");  //h.txDamage->setFontHeight(44);
 			h.txDamage->setTextColour(Colour(0.7,0.7,0.7));  h.txDamage->setTextShadow(true);
 
 			h.icoDamage = h.parent->createWidget<ImageBox>("ImageBox",

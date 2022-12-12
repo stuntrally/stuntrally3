@@ -4,14 +4,15 @@
 #include "TracksXml.h"
 #include "ChampsXml.h"
 #include "ChallengesXml.h"
-// #include "GuiCom.h"
+#include "GuiCom.h"
 #include "pathmanager.h"
 #include "game.h"
 #include "Road.h"
 #include "CGame.h"
 #include "CHud.h"
-// #include "CGui.h"
-// #include "MultiList2.h"
+#include "CGui.h"
+#include "MultiList2.h"
+#include <MyGUI.h>
 using namespace std;
 using namespace Ogre;
 using namespace MyGUI;
@@ -21,7 +22,6 @@ using namespace MyGUI;
 ///
 ///  load championship or challenge track
 ///______________________________________________________________________________________________
-#if 0
 void App::Ch_NewGame()
 {
 	if (pSet->game.champ_num >= (int)data->champs->all.size() ||
@@ -103,7 +103,6 @@ void App::Ch_NewGame()
 		pGame->timer.waiting = false;
 	}
 }
-#endif
 
 ///  car time mul
 //-----------------------------------------------------------------------------------------------
@@ -148,7 +147,6 @@ int App::GetRacePos(float timeCur, float timeTrk, float carTimeMul, bool coldSta
 ///______________________________________________________________________________________________
 ///  Load  championships.xml, progress.xml (once)
 //-----------------------------------------------------------------------------------------------
-#if 0
 void CGui::Ch_XmlLoad()
 {
 	/* stats */
@@ -455,4 +453,3 @@ void CGui::btnChRestart(WP)
 		pc.curTrack = 0;  ChallsListUpdate();
 	}
 }
-#endif

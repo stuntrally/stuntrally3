@@ -383,9 +383,9 @@ void CGui::slUpd_Pace(SV*)
 
 void CGui::chkTrailShow(Ck*)
 {
-	//; if (!app->scn->trail)  return;
-	// if (!pSet->trail_show)
-	// 	app->scn->trail->SetVisTrail(false);
+	if (!app->scn->trail)  return;
+	if (!pSet->trail_show)
+		app->scn->trail->SetVisTrail(false);
 }
 
 void CGui::chkReverse(Ck*) {  gcom->ReadTrkStats();  }

@@ -544,7 +544,7 @@ public:
 	Ed edNetNick =0,       edNetLocalPort =0;  void evEdNetNick(Ed),       evEdNetLocalPort(Ed);
 	Ed edNetServerPort =0, edNetServerIP =0;   void evEdNetServerPort(Ed), evEdNetServerIP(Ed);
 */
-	// GuiPopup* popup =0;  // msg with edits
+	GuiPopup* popup =0;  // msg with edits
 
 	//  open urls
 	void btnWelcome(WP), btnWebsite(WP), btnWiki(WP), btnWikiInput(WP);

@@ -204,7 +204,7 @@ void App::NewGame(bool force)
 	if (!newGameRpl)  // if from replay, dont
 	{
 		pSet->game = pSet->gui;  // copy game config from gui
-		// Ch_NewGame();
+		//; Ch_NewGame();
 
 		/*if (mClient && mLobbyState != HOSTING)  // all but host
 			gui->updateGameSet();  // override gameset params for networked game (from host gameset)
@@ -904,7 +904,8 @@ void App::CreateRoadsInt()
 
 void App::CreateTrail(Camera* cam)
 {
-	return;  //--
+	if (!pSet->trail_show)
+		return;  //--
 	if (scn->trail)
 		scn->DestroyTrail();
 
@@ -1011,7 +1012,7 @@ void App::CreateTrail(Camera* cam)
 	tr->Rebuild(true);
 	tr->RebuildRoadInt();
 	scn->trail = tr;
-	/*bool vis = !pSet->trail_show || bHideHudTrail;
-	tr->SetVisTrail(!vis);*/
+	bool vis = !pSet->trail_show;//; || bHideHudTrail;
+	tr->SetVisTrail(!vis);
 	tr->SetVisTrail(false);
 }
