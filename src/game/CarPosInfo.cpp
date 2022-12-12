@@ -66,7 +66,7 @@ void PosInfo::FromRpl2(const ReplayFrame2* rf, CARDYNAMICS* cd)
 	{
 		const RWheel& wh = rf->wheels[w];
 		Axes::toOgre(whPos[w], wh.pos);
-		//; whRot[w] = Axes::toOgreW(wh.rot);  // fixme
+		whRot[w] = Axes::toOgreW(wh.rot);
 		//whR[w] = outside
 		
 		whVel[w] = wh.whVel;

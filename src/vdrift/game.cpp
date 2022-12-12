@@ -517,7 +517,7 @@ void GAME::UpdateCarInputs(CAR & car)
 	float carspeed = car.GetSpeedDir();  //car.GetSpeed();
 	//LogO(fToStr(car.GetSpeed(),2,6)+" "+fToStr(car.GetSpeedDir(),2,6));
 
-	// fixme next
+	// fixme input
 	/*boost::lock_guard<boost::mutex> lock(app->input->mPlayerInputStateMutex);
 	int id = std::min(3, car.id);
 	carinputs = controls.second.ProcessInput(

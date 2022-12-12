@@ -600,8 +600,8 @@ for (int i=0; i < 2; ++i)
 			if (bLogInfo && w==0)  LogMeshInfo(eBrake, name, 4);
 		}
 	}
-	if (bLogInfo)  // all
-		LogO("MESH info:  "+sDirname+"\t ALL sub: "+toStr(all_subs)+"  tri: "+fToStr(all_tris/1000.f,1,4)+"k");
+	// if (bLogInfo)  // all
+	// 	LogO("MESH info:  "+sDirname+"\t ALL sub: "+toStr(all_subs)+"  tri: "+fToStr(all_tris/1000.f,1,4)+"k");
 	
 	
 	///  brake flares  ++ ++

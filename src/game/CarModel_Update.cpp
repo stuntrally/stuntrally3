@@ -373,8 +373,8 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		if (pipe)  emitD = 0;  // no dust in pipes
 		if (posInfo.whH[w] > 0.1f)  emitD = 0;  // no dust in fluids
 
-		bool ghost = false; //; isGhost();  // opt dis for ghost
-		bool ghPar = true; //!(ghost && !pSet->rpl_ghostpar);
+		bool ghost = isGhost();  // opt dis for ghost
+		bool ghPar = !(ghost && !pSet->rpl_ghostpar);
 		if (!ghPar)
 		{	emitD = 0.f;  emitM = 0.f;  emitS = 0.f;  }
 
