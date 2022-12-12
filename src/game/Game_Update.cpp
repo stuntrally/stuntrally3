@@ -134,6 +134,19 @@ void App::update( float dt )
 		inputs[A_Rewind] = mArrows[10];
 
 		updatePoses(dt);
+
+
+		//  keys up/dn, for gui lists
+		static float dirU = 0.f,dirD = 0.f;
+		if (isFocGui && pSet->iMenu >= MN_Single && pSet->iMenu <= MN_Chall && !isTweak())
+		{
+			if (mArrows[2])  dirD += dt;  else
+			if (mArrows[3])  dirU += dt;  else
+			{	dirU = 0.f;  dirD = 0.f;  }
+			int d = ctrl ? 4 : 1;
+			if (dirU > 0.0f) {  gui->LNext( d);  dirU = -0.2f;  }
+			if (dirD > 0.0f) {  gui->LNext(-d);  dirD = -0.2f;  }
+		}
 	}
 
 

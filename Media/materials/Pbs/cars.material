@@ -885,12 +885,13 @@ hlms SX_body pbs //: car_body
 
 	diffuse		0.0 0.0 0.0
 	// diffuse		0.0 0.1 0.2
-	specular	0.15 0.10 0.25
+	specular	0.25 0.25 0.45
+	// specular	0.15 0.10 0.25
 	// specular	0.03 0.03 0.05
 	// specular	0.1 0.2 0.3
 	// specular	0.8 0.85 0.9
-	roughness 0.9
-	// roughness 0.6
+	// roughness 0.9
+	roughness 0.6
 	metalness 0.7
 	// metalness 1.0
 }
