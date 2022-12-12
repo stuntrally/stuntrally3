@@ -16,7 +16,7 @@
 #include "Gui_Popup.h"
 
 #include <OgreRoot.h>
-// #include <OgreRenderWindow.h>
+#include <OgreWindow.h>
 #include <OgreOverlay.h>
 #include <MyGUI.h>
 // #include <MyGUI_Gui.h>
@@ -70,8 +70,7 @@ void CGui::InitMainMenu()
 	}
 
 	//  center
-	int wx = 1920, wy = 1100;
-	// int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
+	int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
 	
 	Wnd wnd = app->mWndMain;  IntSize w = wnd->getSize();
 	wnd->setPosition((wx-w.width)*0.5f, (wy-w.height)*0.5f);

@@ -17,7 +17,7 @@
 // #include "SplitScreen.h"
 // #include "WaterRTT.h"
 // #include "MultiList2.h"
-// #include "Gui_Popup.h"
+#include "Gui_Popup.h"
 #include "Axes.h"
 // #include <OgreManualObject.h>
 // #include <OgreTechnique.h>

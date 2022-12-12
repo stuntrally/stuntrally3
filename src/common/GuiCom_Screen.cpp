@@ -13,7 +13,7 @@
 #endif
 #include "SDL_video.h"
 #include <OgreRoot.h>
-// #include <OgreRenderWindow.h>
+#include <OgreWindow.h>
 #include <MyGUI_Widget.h>
 #include <MyGUI_EditBox.h>
 #include <MyGUI_ListBox.h>
@@ -163,7 +163,7 @@ void CGuiCom::ResizeOptWnd()
 {
 	if (!app->mWndOpts)  return;
 
-	const int wx = pSet->windowx, wy = pSet->windowy;
+	const int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
 
 	Real xm = 0.f, ym = GetGuiMargin(wy);  // margin
 
@@ -201,7 +201,7 @@ void CGuiCom::ResizeOptWnd()
 		app->gui->panStatus->setCoord(0.08*wy, wy - 0.035*wy, 0.15*wy, 0.035*wy);
 	#endif
 
-	// updTrkListDim();
+	updTrkListDim();
 }
 
 void CGuiCom::chkVidFullscr(Ck*)

@@ -11,7 +11,7 @@
 #include "Road.h"
 // #include "SplitScreen.h"
 
-// #include <OgreRenderWindow.h>
+#include <OgreWindow.h>
 // #include <OgreEntity.h>
 #include <OgreSceneNode.h>
 // #include <OgreMaterialManager.h>
@@ -39,8 +39,7 @@ struct VPDims
 
 void CHud::Size()
 {
-	// float wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
-	float wx = pSet->windowx, wy = pSet->windowy;
+	float wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
 	asp = wx/wy;
 
 	int cnt = 1; //pSet->game.local_players;
@@ -232,10 +231,9 @@ void CHud::Show(bool hideAll)
 				// h.ndMap->setVisible(pSet->trackmap);
 				h.txTimes->setVisible(times);  h.txTimTxt->setVisible(times);  h.bckTimes->setVisible(times);
 				h.txLap->setVisible(times);  h.txLapTxt->setVisible(times);  h.bckLap->setVisible(times);
-			#if 0
-				h.bckOpp->setVisible(opp);
-				h.txOpp[0]->setVisible(opp);  h.txOpp[1]->setVisible(opp);  h.txOpp[2]->setVisible(opp);
-				#endif
+
+				/*h.bckOpp->setVisible(opp);
+				h.txOpp[0]->setVisible(opp);  h.txOpp[1]->setVisible(opp);  h.txOpp[2]->setVisible(opp);*/
 				if (h.txCam)
 					h.txCam->setVisible(cam);
 		}	}
