@@ -62,8 +62,11 @@
 
 
 GraphicsSystem::GraphicsSystem( GameState *gameState,
-								Ogre::String resourcePath ,
-								Ogre::ColourValue backgroundColour ) :
+		Ogre::String logCfgPath,
+		Ogre::String cachePath,
+		Ogre::String resourcePath,
+		Ogre::String pluginsPath,
+		Ogre::ColourValue backgroundColour ) :
 	BaseSystem( gameState ),
 	mLogicSystem( 0 ),
 #if OGRE_USE_SDL2
@@ -75,17 +78,23 @@ GraphicsSystem::GraphicsSystem( GameState *gameState,
 	mSceneManager( 0 ),
 	mCamera( 0 ),
 	mWorkspace( 0 ),
-	mPluginsFolder( "./" ),
-	mResourcePath( resourcePath ),
+
+	mLogCfgFolder( logCfgPath ),  // in/out: ogre.cfg  out: Ogre.log
+	mCacheFolder( cachePath ),    // out: shaders etc
+	mResourcePath( resourcePath ),  // in: for resources2.cfg only
+	mPluginsFolder( pluginsPath ),  // in: ./  same as binary
+
 	mOverlaySystem( 0 ),
 	mAccumTimeSinceLastLogicFrame( 0 ),
 	mCurrentTransformIdx( 0 ),
 	mThreadGameEntityToUpdate( 0 ),
 	mThreadWeight( 0 ),
+
 	mQuit( false ),
 	mAlwaysAskForConfig( false ),
 	mUseHlmsDiskCache( true ),
 	mUseMicrocodeCache( true ),
+
 	mGrabMouse( true ),  //** par, true in release, from set..
 	mBackgroundColour( backgroundColour )
 {
@@ -98,12 +107,13 @@ GraphicsSystem::GraphicsSystem( GameState *gameState,
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE
 	mPluginsFolder = mResourcePath;
 #endif
+
 	/*if( isWriteAccessFolder( mPluginsFolder, "Ogre.log" ) )
-		mWriteAccessFolder = mPluginsFolder;
+		mCacheFolder = mPluginsFolder;
 	else
 	{
 		Ogre::FileSystemLayer filesystemLayer( OGRE_VERSION_NAME );
-		mWriteAccessFolder = filesystemLayer.getWritablePath( "" );
+		mCacheFolder = filesystemLayer.getWritablePath( "" );
 	}*/
 }
 
@@ -155,14 +165,14 @@ void GraphicsSystem::initialize( const Ogre::String &windowTitle )
 #endif
 
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
-	const Ogre::String cfgPath = mWriteAccessFolder + "ogre.cfg";
+	const Ogre::String cfgPath = mLogCfgFolder + "ogre.cfg";
 #else
 	const Ogre::String cfgPath = "";
 #endif
 
 	const Ogre::AbiCookie abiCookie = Ogre::generateAbiCookie();
 	mRoot = OGRE_NEW Ogre::Root( &abiCookie, pluginsPath, cfgPath,
-									mWriteAccessFolder + "Ogre.log",
+									mLogCfgFolder + "Ogre.log",
 									windowTitle );
 
 	AndroidSystems::registerArchiveFactories();
@@ -545,7 +555,7 @@ void GraphicsSystem::loadTextureCache()
 #if !OGRE_NO_JSON
 	Ogre::ArchiveManager &archiveManager = Ogre::ArchiveManager::getSingleton();
 	Ogre::Archive *rwAccessFolderArchive =
-		archiveManager.load( mWriteAccessFolder, "FileSystem", true );
+		archiveManager.load( mCacheFolder, "FileSystem", true );
 	try
 	{
 		const Ogre::String filename = "textureMetadataCache.json";
@@ -567,7 +577,7 @@ void GraphicsSystem::loadTextureCache()
 		else
 		{
 			Ogre::LogManager::getSingleton().logMessage(
-						"[INFO] Texture cache not found at " + mWriteAccessFolder +
+						"[INFO] Texture cache not found at " + mCacheFolder +
 						"/textureMetadataCache.json" );
 		}
 	}
@@ -590,7 +600,7 @@ void GraphicsSystem::saveTextureCache()
 		{
 			Ogre::String jsonString;
 			textureManager->exportTextureMetadataCache( jsonString );
-			const Ogre::String path = mWriteAccessFolder + "/textureMetadataCache.json";
+			const Ogre::String path = mCacheFolder + "/textureMetadataCache.json";
 			std::ofstream file( path.c_str(), std::ios::binary | std::ios::out );
 			if( file.is_open() )
 				file.write( jsonString.c_str(), static_cast<std::streamsize>( jsonString.size() ) );
@@ -610,7 +620,7 @@ void GraphicsSystem::loadHlmsDiskCache()
 	Ogre::ArchiveManager &archiveManager = Ogre::ArchiveManager::getSingleton();
 
 	Ogre::Archive *rwAccessFolderArchive =
-		archiveManager.load( mWriteAccessFolder, "FileSystem", true );
+		archiveManager.load( mCacheFolder, "FileSystem", true );
 
 	if( mUseMicrocodeCache )
 	{
@@ -646,15 +656,14 @@ void GraphicsSystem::loadHlmsDiskCache()
 				catch( Ogre::Exception& )
 				{
 					Ogre::LogManager::getSingleton().logMessage(
-						"Error loading cache from " + mWriteAccessFolder + "/" +
+						"Error loading cache from " + mCacheFolder + "/" +
 						filename + "! If you have issues, try deleting the file "
 						"and restarting the app" );
 				}
 			}
 		}
 	}
-
-	archiveManager.unload( mWriteAccessFolder );
+	archiveManager.unload( mCacheFolder );
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------
@@ -668,8 +677,7 @@ void GraphicsSystem::saveHlmsDiskCache()
 
 		Ogre::ArchiveManager &archiveManager = Ogre::ArchiveManager::getSingleton();
 
-		Ogre::Archive *rwAccessFolderArchive = archiveManager.load( mWriteAccessFolder,
-																	"FileSystem", false );
+		Ogre::Archive *rwAccessFolderArchive = archiveManager.load( mCacheFolder, "FileSystem", false );
 
 		if( mUseHlmsDiskCache )
 		{
@@ -681,9 +689,8 @@ void GraphicsSystem::saveHlmsDiskCache()
 					diskCache.copyFrom( hlms );
 
 					Ogre::DataStreamPtr diskCacheFile =
-							rwAccessFolderArchive->create( "hlmsDiskCache" +
-															Ogre::StringConverter::toString( i ) +
-															".bin" );
+						rwAccessFolderArchive->create( "hlmsDiskCache" +
+							Ogre::StringConverter::toString( i ) + ".bin" );
 					diskCache.saveTo( diskCacheFile );
 				}
 			}
@@ -695,8 +702,7 @@ void GraphicsSystem::saveHlmsDiskCache()
 			Ogre::DataStreamPtr shaderCacheFile = rwAccessFolderArchive->create( filename );
 			Ogre::GpuProgramManager::getSingleton().saveMicrocodeCache( shaderCacheFile );
 		}
-
-		archiveManager.unload( mWriteAccessFolder );
+		archiveManager.unload( mCacheFolder );
 	}
 }
 

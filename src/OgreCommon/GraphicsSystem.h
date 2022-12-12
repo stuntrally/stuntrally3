@@ -38,11 +38,14 @@ public:
 	Ogre::Root                  *mRoot;
 	Ogre::CompositorWorkspace   *mWorkspace;
 	Ogre::HlmsTerra *hlmsTerra = 0;
+	
+	//  new  ----
 	bool                        mGrabMouse;
+	Ogre::String                mLogCfgFolder;
+	Ogre::String                mCacheFolder;
 protected:
-	Ogre::String                mPluginsFolder;
-	Ogre::String                mWriteAccessFolder;
 	Ogre::String                mResourcePath;
+	Ogre::String                mPluginsFolder;
 
 	Ogre::v1::OverlaySystem     *mOverlaySystem;
 
@@ -102,9 +105,13 @@ protected:
 	void gameEntityRemoved( GameEntity *toRemove );
 
 public:
+	//  ctor  ----
 	GraphicsSystem( GameState *gameState,
-					Ogre::String resourcePath = Ogre::String(""),
-					Ogre::ColourValue backgroundColour = Ogre::ColourValue( 0.2f, 0.4f, 0.6f ) );
+		Ogre::String logCfgPath = Ogre::String(""),
+		Ogre::String cachePath = Ogre::String(""),
+		Ogre::String resourcePath = Ogre::String(""),
+		Ogre::String pluginsPath = Ogre::String("./"),
+		Ogre::ColourValue backgroundColour = Ogre::ColourValue( 0.2f, 0.4f, 0.6f ) );
 	~GraphicsSystem() override;
 
 	void _notifyLogicSystem( BaseSystem *logicSystem )      { mLogicSystem = logicSystem; }
@@ -161,7 +168,6 @@ public:
 	bool getAlwaysAskForConfig() const { return mAlwaysAskForConfig; }
 
 	const Ogre::String& getPluginsFolder() const        { return mPluginsFolder; }
-	const Ogre::String& getWriteAccessFolder() const    { return mWriteAccessFolder; }
 	const Ogre::String& getResourcePath() const         { return mResourcePath; }
 	const char *        getMediaReadArchiveType() const;
 

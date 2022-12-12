@@ -27,6 +27,7 @@ THE SOFTWARE.
 */
 #include "pch.h"
 #include "GraphicsSystem.h"
+#include "pathmanager.h"
 #include "CGame.h"
 
 #include "OgreRoot.h"
@@ -55,7 +56,7 @@ THE SOFTWARE.
 #endif
 
 
-class Tutorial_TerrainGraphicsSystem final : public GraphicsSystem
+class GameGraphicsSystem final : public GraphicsSystem
 {
 	Ogre::TerraWorkspaceListener *mTerraWorkspaceListener;
 
@@ -197,29 +198,53 @@ class Tutorial_TerrainGraphicsSystem final : public GraphicsSystem
 	}
 
 public:
-	Tutorial_TerrainGraphicsSystem( GameState *gameState ) :
-		GraphicsSystem( gameState ),
-		mTerraWorkspaceListener( 0 )
+	//  ctor  ----
+	GameGraphicsSystem( GameState *gameState,
+			Ogre::String logCfgPath = Ogre::String(""),
+			Ogre::String cachePath = Ogre::String(""),
+			Ogre::String resourcePath = Ogre::String(""),
+			Ogre::String pluginsPath = Ogre::String("./") )
+		: GraphicsSystem( gameState,
+			logCfgPath,
+			cachePath,
+			resourcePath,
+			pluginsPath )
+		, mTerraWorkspaceListener( 0 )
 	{
-		mResourcePath = "./";
+		mResourcePath = resourcePath; //"./";  // todo: ?
 	}
 };
 
+
+//  main App ctor
 void MainEntryPoints::createSystems( GameState **outGraphicsGameState,
 										GraphicsSystem **outGraphicsSystem,
 										GameState **outLogicGameState,
 										LogicSystem **outLogicSystem )
 {
+	std::cout << "Init :: createSystems\n";
 	App *app = new App();
 
-	Tutorial_TerrainGraphicsSystem *graphicsSystem =
-		new Tutorial_TerrainGraphicsSystem( app );
+	std::cout << "Init :: pathmanager\n";
+	PATHMANAGER::Init();
+	std::cout << PATHMANAGER::info.str();
+
+	std::cout << "Init :: new GraphicsSystem\n";
+
+	GameGraphicsSystem *graphicsSystem = new GameGraphicsSystem(
+		app,
+		PATHMANAGER::UserConfigDir()+"/",
+		PATHMANAGER::CacheDir()+"/",
+		Ogre::String("./"),
+		// PATHMANAGER::GameConfigDir()+"/",  // todo: config/resources2.cfg
+		Ogre::String("./") );
 
 	app->_notifyGraphicsSystem( graphicsSystem );
 
 	*outGraphicsGameState = app;
 	*outGraphicsSystem = graphicsSystem;
 }
+
 
 void MainEntryPoints::destroySystems( GameState *graphicsGameState,
 										GraphicsSystem *graphicsSystem,
@@ -236,6 +261,7 @@ const char* MainEntryPoints::getWindowTitle()
 }
 
 
+//  main
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 INT WINAPI WinMainApp( HINSTANCE hInst, HINSTANCE hPrevInstance, LPSTR strCmdLine, INT nCmdShow )
@@ -244,6 +270,6 @@ int mainApp( int argc, const char *argv[] )
 #endif
 {
 	return MainEntryPoints::mainAppSingleThreaded( DEMO_MAIN_ENTRY_PARAMS );
-	// return MainEntryPoints::mainAppMultiThreaded( DEMO_MAIN_ENTRY_PARAMS );  // todo
+	// return MainEntryPoints::mainAppMultiThreaded( DEMO_MAIN_ENTRY_PARAMS );  // todo ?
 }
 #endif

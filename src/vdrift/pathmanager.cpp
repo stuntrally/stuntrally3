@@ -214,6 +214,7 @@ void PATHMANAGER::Init(bool log_paths)
 	// Print diagnostic info
 	if (log_paths)
 	{
+		info.clear();
 		info << "Paths info" << endl;
 		info << "-------------------------" << endl;
 		info << "Ogre plugin-: " << ogre_plugin << endl;

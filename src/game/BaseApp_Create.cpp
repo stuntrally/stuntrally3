@@ -675,8 +675,7 @@ void BaseApp::baseInitGui(GraphicsSystem *mGraphicsSystem)
 	mPlatform->initialise(
 		mWindow, mGraphicsSystem->getSceneManager(),
 		"Essential",
-		// PATHMANAGER::UserConfigDir() + "/MyGUI.log");
-		"MyGUI.log");
+		PATHMANAGER::UserConfigDir() + "/MyGUI.log");
 
 	// mGraphicsSystem->mWorkspace = setupCompositor();
 
