@@ -9,8 +9,8 @@
 // #include <OgreVector4.h>
 // #include <OgreColourValue.h>
 // #include <OgreQuaternion.h>
-#include "../../../vdrift/mathvector.h"
-#include "../../../vdrift/quaternion.h"
+#include "mathvector.h"
+#include "quaternion.h"
 
 namespace Ogre {  class SceneNode;  class Entity;  class ParticleSystem;  }
 namespace Forests {  class GrassLayer;  }

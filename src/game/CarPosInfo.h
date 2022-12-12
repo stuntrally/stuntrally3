@@ -1,11 +1,11 @@
 #pragma once
-#include <Ogre.h>
-// #include <OgreVector3.h>
-// #include <OgreQuaternion.h>
-#include "../vdrift/mathvector.h"
-#include "../vdrift/quaternion.h"
-#include "../vdrift/cardefs.h"
+#include "mathvector.h"
+#include "quaternion.h"
+#include "cardefs.h"
 //#include "half.hpp"
+// #include <Ogre.h>
+#include <OgreVector3.h>
+#include <OgreQuaternion.h>
 
 struct ReplayFrame;  struct ReplayFrame2;
 class CAR;

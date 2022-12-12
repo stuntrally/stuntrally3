@@ -2,8 +2,8 @@
 #include "Def_Str.h"
 #include "carcontrolmap_local.h"
 // #include "CGame.h"
-// #include "../ogre/CGui.h"
-#include "../vdrift/par.h"
+// #include "CGui.h"
+#include "par.h"
 
 
 //*  speed sensitive steering
@@ -11,14 +11,9 @@ float CARCONTROLMAP_LOCAL::GetSSScoeff(float carspeed, float sss_velfactor, floa
 {								//  m/s
 	float coeff = 1.f, carmph = carspeed * 2.23693629f;
 	if (carmph > 1.f)
-	{
-		//coeff = (3.f-sss_velfactor) * 450.0f * (1.0f - atan(carmph*20.0f*sss_effect) * 0.6366198f);  // old ?-
-		//if (coeff > 1.f)  coeff = 1.f;
-		coeff = std::max(1.f - sss_effect, 1.f - sss_velfactor * carspeed * 0.02f);  // new linear+
-	}
+		coeff = std::max(1.f - sss_effect, 1.f - sss_velfactor * carspeed * 0.02f);
 
 	//LogO("vel: "+fToStr(carspeed*3.6f,1,5)+"  sss: "+fToStr(coeff));
-
 	//val = val >= 0.f ? powf(val,1.5f) : -powf(-val,1.5f);
 	return coeff;
 }

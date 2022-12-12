@@ -21,7 +21,7 @@
 #include "Axes.h"
 // #include <OgreManualObject.h>
 // #include <OgreTechnique.h>
-// #include "../ogre/common/RenderBoxScene.h"
+// #include "RenderBoxScene.h"
 #include <thread>
 using namespace Ogre;
 using namespace std;

@@ -8,20 +8,20 @@
 #include "configfile.h"
 #include "settings.h"
 #include "CGame.h"  // replay
-// #include "../ogre/CarModel.h"  // camera pos
-// #include "../ogre/FollowCamera.h"  // camera pos
+// #include "CarModel.h"  // camera pos
+// #include "FollowCamera.h"  // camera pos
 #include "Def_Str.h"
 #include "SceneXml.h"
 #include "CScene.h"
-// #include "../ogre/common/GraphView.h"
+// #include "GraphView.h"
  #include "Axes.h"
-// #include "../network/protocol.hpp"
+// #include "protocol.hpp"
 #include "tobullet.h"
 #include "game.h"
-// #include "../ogre/SplitScreen.h"  // num plr
-#include "../sound/SoundMgr.h"
-#include "../sound/SoundBase.h"
-#include "../sound/SoundBaseMgr.h"
+// #include "SplitScreen.h"  // num plr
+#include "SoundMgr.h"
+#include "SoundBase.h"
+#include "SoundBaseMgr.h"
 #include <OgreCamera.h>
 using namespace std;
 using namespace Ogre;

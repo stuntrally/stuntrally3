@@ -1,14 +1,15 @@
 #include "pch.h"
-#include "../Def_Str.h"
-#include "../vdrift/par.h"
+#include "Def_Str.h"
+#include "par.h"
 #include "SceneXml.h"
 #include "FluidsXml.h"
 #include "TracksXml.h"
-#include "../Axes.h"
+#include "Axes.h"
+#include "vdrift/game.h"  // for surfaces map
+
 #include "tinyxml.h"
 #include "tinyxml2.h"
 #include <OgreSceneNode.h>
-#include "../vdrift/game.h"  // for surfaces map
 using namespace std;
 using namespace Ogre;
 using namespace tinyxml2;

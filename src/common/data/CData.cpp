@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CData.h"
-#include "../vdrift/pathmanager.h"
+#include "pathmanager.h"
 #include "Def_Str.h"
 using Ogre::String;
 

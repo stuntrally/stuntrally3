@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "CarPosInfo.h"
 #include "Replay.h"
-#include "../vdrift/cardynamics.h"
-#include "../vdrift/car.h"
-#include "common/data/SceneXml.h"
-#include "common/Axes.h"
+#include "cardynamics.h"
+#include "car.h"
+#include "SceneXml.h"
+#include "Axes.h"
 using namespace Ogre;
 
 
