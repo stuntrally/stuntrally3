@@ -678,21 +678,21 @@ int CGui::LNext(Li lp, int rel, int ofs)
 
 void CGui::LNext(int rel)
 {
-	//if (!ap->isFocGui || pSet->isMain)  return;
-	/*if (pSet->iMenu == MN_Replays)
+	if (!app->isFocGui /*|| pSet->isMain*/)  return;
+	if (pSet->iMenu == MN_Replays)
 		listRplChng(rplList,  LNext(rplList, rel, 11));
-	else*/
+	else
 	if (app->mWndGame->getVisible())
 		switch (app->mWndTabsGame->getIndexSelected())
 		{	case TAB_Track:  gcom->listTrackChng(gcom->trkList,  LNext(gcom->trkList, rel, 11));  return;
 			case TAB_Car:	 listCarChng(carList, LNext(carList, rel, 5));  return;
 			case TAB_Champs:
-				/*if (isChallGui())
+				if (isChallGui())
 				      listChallChng(liChalls, LNext(liChalls, rel, 8));
-				else  listChampChng(liChamps, LNext(liChamps, rel, 8));*/
+				else  listChampChng(liChamps, LNext(liChamps, rel, 8));
 				return;
-			// case TAB_Stages: listStageChng(liStages, LNext(liStages, rel, 8));  return;
-			// case TAB_Stage:	 if (rel > 0)  btnStageNext(0);  else  btnStagePrev(0);  return;
+			case TAB_Stages: listStageChng(liStages, LNext(liStages, rel, 8));  return;
+			case TAB_Stage:	 if (rel > 0)  btnStageNext(0);  else  btnStagePrev(0);  return;
 		}
 }
 

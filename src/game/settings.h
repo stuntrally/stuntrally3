@@ -1,9 +1,9 @@
 #pragma once
-#include "../vdrift/configfile.h"
+#include "configfile.h"
 #include "settings_com.h"
 
 
-#define SET_VER  3003  // 3.0
+#define SET_VER  3005  // 3.0
 
 
 enum eGraphType  {
@@ -61,10 +61,10 @@ public:
 	float size_gauges, size_minimap, size_minipos, size_arrow, zoom_minimap;
 	int gauges_type, gauges_layout;
 	//  cam
-	// float fov_min, fov_boost, fov_smooth;
+	// float fov_min, fov_boost, fov_smooth;  // todo:
 	bool cam_loop_chng;  int cam_in_loop;
 	bool cam_bounce;  float cam_bnc_mul;
-	//  pacenotes
+	//  pacenotes  // todo:
 	// bool pace_show;  int pace_next;
 	// float pace_dist, pace_size, pace_near, pace_alpha;
 	bool trail_show;
@@ -124,7 +124,7 @@ public:
 		int champ_num, chall_num;  // -1 none
 		bool champ_rev;
 
-		// float pre_time;  int start_order;
+		float pre_time;  int start_order;
 
 		GameSet();
 	}  game,  // current game, changed only on new game start
@@ -134,11 +134,11 @@ public:
 
 	//  misc
 	bool dev_keys, dev_no_prvs;  // dev
-	// bool split_vertically;
+	bool split_vertically;
 
 	//  startup, other
-	bool bltDebug, bltLines;//, bltProfilerTxt, profilerTxt;
-	bool loadingbackground;//, show_welcome;
+	bool bltDebug, bltLines, bltProfilerTxt, profilerTxt;
+	bool loadingbackground, show_welcome;
 
 	//  sound
 	float vol_master, vol_hud,
@@ -148,7 +148,7 @@ public:
 	bool snd_reverb;  std::string snd_device;
 
 	//  sim freq (1/interval timestep)
-	float game_fq, blt_fq;//,  perf_speed;
+	float game_fq, blt_fq,  perf_speed;
 	int blt_iter, dyn_iter,  thread_sleep;//, gui_sleep;
 
 	//  graphs vis
@@ -158,20 +158,16 @@ public:
 
 
 	//  effects
-	// bool all_effects, bloom, blur, hdr;
-	// float bloom_int, bloom_orig, blur_int;  // intensity
-	// float dof_focus, dof_far;
-	// bool softparticles, ssao, godrays, dof, filmgrain;
-	//  hdr
-	// float hdrBloomint, hdrBloomorig;
-	// float hdrParam1, hdrParam2, hdrParam3;
-	// float hdrAdaptationScale;
-	// float vignRadius, vignDarkness;
+	// bool all_effects;
+	// bool hdr, bloom, ssao;  // todo: 1st
+	// bool soft_particles, god_rays, motion_blur;  // todo: 2nd
+	// float bloom_int, bloom_orig, blur_intensity;
 
 	//  replay
 	bool rpl_rec, rpl_ghost, rpl_bestonly;
 	bool rpl_ghostother, rpl_trackghost;
 	bool rpl_ghostpar, rpl_ghostrewind, rpl_listghosts;
+	bool rpl_hideHudAids;
 	int rpl_listview, rpl_numViews;
 	float ghoHideDist, ghoHideDistTrk;  // ghost hide dist, when close
 

@@ -114,16 +114,20 @@ endmacro()
 
 #  Compiler  ----
 include_directories(
+	#  not really sources
 	Media/gui
 	Media/materials
 	Media/particles
 
+	#  libs
 	src
 	src/btOgre2
 	src/oics
 	
+	#  sources
 	src/common
 	src/common/data
+	src/common/MessageBox
 	src/game
 	src/road
 	src/OgreCommon

@@ -33,7 +33,7 @@ Use Conan to get all deps (same as for original Stunt Rally), info on old [wiki 
 This is optional but recommended, especially on Windows.  
 See [CMakeLists.txt](/CMakeLists.txt) and adjust if needed, it has some of my setup fixes, for SDL2, OpenAL etc.  
 
-4. Also needs [SR tracks](https://github.com/stuntrally/tracks) repo inside `Media/tracks`, cloned or as link.
+4. Have [SR tracks](https://github.com/stuntrally/tracks) repo inside `Media/tracks`, cloned or as link.
 
 
 ### My folder tree
@@ -44,7 +44,7 @@ sr3 - with this repo
       Release - has StuntRally3, ogre.cfg, Ogre.log, MyGUI.log, plugins.cfg, resources2.cfg
       RelWithDebInfo
    Media
-      tracks
+      tracks - has Test1-Flat, Test3-Bumps
 mygui-next
    build
       lib - has libMyGUI.Ogre2Platform.a, libMyGUIEngine.so.3.2.3

@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "settings.h"
-//#include "../network/protocol.hpp"
+//#include "protocol.hpp"
 #include <stdio.h>
 
 
@@ -56,8 +56,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "car1.steer_sim_normal", steer_sim[1]);
 
 	//  game
-	// Param(c,w, "game.pre_time", gui.pre_time);
-	Param(c,w, "game.chall_num", gui.chall_num);  //rem-
+	Param(c,w, "game.pre_time", gui.pre_time);			Param(c,w, "game.chall_num", gui.chall_num);  //rem-
 	Param(c,w, "game.champ_num", gui.champ_num);		Param(c,w, "game.champ_rev", gui.champ_rev);
 	Param(c,w, "game.ch_all", ch_all);
 
@@ -74,7 +73,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 	Param(c,w, "game.trk_reverse", gui.trackreverse);	Param(c,w, "game.sim_mode", gui.sim_mode);
 	Param(c,w, "game.local_players", gui.local_players); Param(c,w, "game.num_laps", gui.num_laps);
-	// Param(c,w, "game.start_order", gui.start_order);	Param(c,w, "game.split_vertically", split_vertically);
+	Param(c,w, "game.start_order", gui.start_order);	Param(c,w, "game.split_vertically", split_vertically);
 
 	//  graphs
 	Param(c,w, "graphs.tc_r", tc_r);			Param(c,w, "graphs.tc_xr", tc_xr);
@@ -105,7 +104,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "hud_size.mini_zoom", zoom_minimap);		Param(c,w, "hud_size.mini_zoomed", mini_zoomed);
 	Param(c,w, "hud_size.mini_rotated", mini_rotated);	Param(c,w, "hud_size.mini_terrain", mini_terrain);
 	Param(c,w, "hud_size.mini_border", mini_border);
-	Param(c,w, "hud_size.gauges_type", gauges_type);	Param(c,w, "hud_size.gauges_layout", gauges_layout);
+	Param(c,w, "hud_size.gauges_type", gauges_type);	//Param(c,w, "hud_size.gauges_layout", gauges_layout);
 	//  cam
 	Param(c,w, "hud_size.cam_loop_chng", cam_loop_chng); Param(c,w, "hud_size.cam_in_loop", cam_in_loop);
 	// Param(c,w, "hud_size.fov", fov_min);				Param(c,w, "hud_size.fov_boost", fov_boost);
@@ -129,11 +128,10 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	//  misc
 	Param(c,w, "misc.version", version);
 	Param(c,w, "misc.bulletDebug", bltDebug);		Param(c,w, "misc.bulletLines", bltLines);
-	// Param(c,w, "misc.profilerTxt", profilerTxt);	Param(c,w, "misc.bulletProfilerTxt", bltProfilerTxt);
+	Param(c,w, "misc.profilerTxt", profilerTxt);	Param(c,w, "misc.bulletProfilerTxt", bltProfilerTxt);
 	Param(c,w, "misc.dev_keys", dev_keys);			Param(c,w, "misc.dev_no_prvs", dev_no_prvs);
 
-	// Param(c,w, "misc.show_welcome", show_welcome);
-	Param(c,w, "misc.loadingback", loadingbackground);
+	Param(c,w, "misc.show_welcome", show_welcome);	Param(c,w, "misc.loadingback", loadingbackground);
 
 	//  network
 	// Param(c,w, "network.master_server_address", master_server_address);	Param(c,w, "network.nickname", nickname);
@@ -150,10 +148,10 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "replay.ghoHideDist", ghoHideDist);	Param(c,w, "replay.ghoHideDistTrk", ghoHideDistTrk);
 
 	//  sim
-	Param(c,w, "sim.game_freq", game_fq);			//Param(c,w, "sim.multi_thr", multi_thr);
+	Param(c,w, "sim.game_freq", game_fq);			Param(c,w, "sim.dynamics_iter", dyn_iter);
 	Param(c,w, "sim.bullet_freq", blt_fq);			Param(c,w, "sim.bullet_iter", blt_iter);
-	Param(c,w, "sim.dynamics_iter", dyn_iter);		Param(c,w, "sim.thread_sleep", thread_sleep);
-	//Param(c,w, "sim.perf_speed", perf_speed);		Param(c,w, "sim.gui_sleep", gui_sleep);
+	Param(c,w, "sim.thread_sleep", thread_sleep);	Param(c,w, "sim.perf_speed", perf_speed);
+	//Param(c,w, "sim.gui_sleep", gui_sleep);
 
 
 	//  sound
@@ -169,19 +167,11 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	//  effects
 	/*Param(c,w, "video_eff.all_effects", all_effects);
 	Param(c,w, "video_eff.bloom", bloom);				Param(c,w, "video_eff.bloomintensity", bloom_int);
-	Param(c,w, "video_eff.bloomorig", bloom_orig);
-	Param(c,w, "video_eff.motionblur", blur);			Param(c,w, "video_eff.motionblurintensity", blur_int);
 	Param(c,w, "video_eff.ssao", ssao);					Param(c,w, "video_eff.softparticles", softparticles);
 	Param(c,w, "video_eff.godrays", godrays);
-	Param(c,w, "video_eff.dof", dof);
-	Param(c,w, "video_eff.dof_focus", dof_focus);		Param(c,w, "video_eff.dof_far", dof_far);
 	Param(c,w, "video_eff.boost_fov", boost_fov);
 	//  effects hdr
-	Param(c,w, "video_eff.hdr", hdr);					Param(c,w, "video_eff.hdr_p1", hdrParam1);
-	Param(c,w, "video_eff.hdr_p2", hdrParam2);			Param(c,w, "video_eff.hdr_p3", hdrParam3);
-	Param(c,w, "video_eff.hdr_bloomint", hdrBloomint);	Param(c,w, "video_eff.hdr_bloomorig", hdrBloomorig);
-	Param(c,w, "video_eff.hdr_adaptationScale", hdrAdaptationScale);
-	Param(c,w, "video_eff.hdr_vignettingRadius", vignRadius);  Param(c,w, "video_eff.hdr_vignettingDarkness", vignDarkness);*/
+	Param(c,w, "video_eff.hdr", hdr);					Param(c,w, "video_eff.hdr_p1", hdrParam1);*/
 }
 
 SETTINGS::SETTINGS()   ///  Defaults
@@ -214,18 +204,17 @@ SETTINGS::SETTINGS()   ///  Defaults
 	//  graphics
 	, bFog(0)
 	,refl_skip(200), refl_faces(1), refl_size(0), refl_dist(500.f), refl_mode(1)
-	,particles(true), trails(true), particles_len(1.f), trails_len(1.f)
-	,boost_fov(true)
+	,particles(true), trails(true), particles_len(1.f), trails_len(1.f), boost_fov(true)
 
 	//  car
 	,autoshift(1), autorear(1), rear_inv(1), show_mph(0)
 	//  misc
 	,rpl_rec(0)
 	,dev_keys(0), dev_no_prvs(0)
-	// ,split_vertically(true)
+	,split_vertically(true)
 	//  misc
-	,bltDebug(0), bltLines(0)//,  bltProfilerTxt(0), profilerTxt(0)
-	,loadingbackground(true)//, show_welcome(true)
+	,bltDebug(0), bltLines(0),  bltProfilerTxt(0), profilerTxt(0)
+	,loadingbackground(true), show_welcome(true)
 	//  network
 	// ,nickname("Player"), netGameName("Default Game")
 	// ,master_server_address("")
@@ -240,7 +229,7 @@ SETTINGS::SETTINGS()   ///  Defaults
 	,ghoHideDist(5.f), ghoHideDistTrk(5.f)
 	//  sim
 	,game_fq(82.f), blt_fq(160.f), blt_iter(24), dyn_iter(30)
-	,thread_sleep(5)//, gui_sleep(1), perf_speed(100000)
+	,thread_sleep(5), perf_speed(100000)//, gui_sleep(1)
 	//  graphs
 	,tc_r(6000.f), tc_xr(1.f)
 	,te_yf(8000.f), te_xf_pow(1.f), te_xfy(160.f), te_xfx(12.f)
@@ -251,18 +240,10 @@ SETTINGS::SETTINGS()   ///  Defaults
 	,vol_fl_splash(1.f),vol_fl_cont(1.f), vol_car_crash(1.f),vol_car_scrap(1.f)
 	,vol_hud(1.f), snd_chk(0), snd_chkwr(1)
 	,snd_device(""), snd_reverb(1)
-	//  video eff
-	/*,all_effects(false), godrays(false), filmgrain(false)
-	,bloom(false), bloom_int(0.13), bloom_orig(0.9), hdr(false)
-	,blur(false), blur_int(0.1)
-	,dof_focus(100), dof_far(1000), dof(false)
-	,ssao(false), softparticles(false)
-	//  hdr
-	,hdrParam1(0.62), hdrParam2(0.10), hdrParam3(0.79)
-	,hdrBloomint(0.81), hdrBloomorig(0.34), hdrAdaptationScale(0.51)
-	,vignRadius(2.85), vignDarkness(0.34)
+	//  effects
+	//..
 	//  not in gui
-	,net_local_plr(-1)*/
+	/*,net_local_plr(-1)*/
 {
 	//  car setup  (update in game-default.cfg)
 	abs[0] = 0;  abs[1] = 0;
@@ -286,12 +267,12 @@ SETTINGS::GameSet::GameSet()
 	,local_players(1), num_laps(2)
 	,sim_mode("normal")
 	,collis_veget(true), collis_cars(false), collis_roadw(false), dyn_objects(true)
-	,boost_type(3), flip_type(2), damage_type(1), rewind_type(1), damage_dec(0.f)
+	,boost_type(3), flip_type(2), damage_type(1), rewind_type(1), damage_dec(0.4f)
 	,rpl_rec(1)
 	//  champ
 	,champ_num(-1), chall_num(-1)
 	,champ_rev(false)
-	// ,pre_time(2.f), start_order(0)
+	,pre_time(2.f), start_order(0)
 {
 	car_hue.resize(6);  car_sat.resize(6);  car_val.resize(6);
 	car_gloss.resize(6);  car_refl.resize(6);
@@ -301,7 +282,7 @@ SETTINGS::GameSet::GameSet()
 
 	//  cars
 	for (int i=0; i < 6; ++i)
-	{	if (i < 4)  car[i] = "SX";
+	{	if (i < 4)  car[i] = "HI";
 		car_hue[i] = 0.4f+0.2f*i;  car_sat[i] = 1.f;  car_val[i] = 1.f;
 		car_gloss[i] = 0.5f;  car_refl[i] = 1.f;
 	}
