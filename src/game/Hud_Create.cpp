@@ -13,7 +13,7 @@
 #include "GraphicsSystem.h"
 // #include "SplitScreen.h"
 
-// #include <OgreRenderWindow.h>
+#include <OgreWindow.h>
 #include <OgreCommon.h>
 #include <OgreEntity.h>
 #include <OgreSceneNode.h>
@@ -46,8 +46,9 @@ void CHud::Create()
 	Ogre::Timer ti;
 
 	SceneManager* scm = app->mSceneMgr;
-	// if (hud[0].moMap)//; || hud[0].txVel || hud[0].txTimes)
-		// LogO("Create Hud: exists !");
+	// if (hud[0].moMap)//;
+	if (hud[0].txVel || hud[0].txTimes)
+		LogO("Create Hud: exists !");
 
 	// app->CreateGraphs();
 		
@@ -98,10 +99,10 @@ void CHud::Create()
 		String s = toStr(c);
 		Hud& h = hud[c];
 		CarModel* cm = app->carModels[c];
-		// if (sc->ter)
-		{	float t = sc->td.fTerWorldSize*0.5;
-			minX = -t;  minY = -t;  maxX = t;  maxY = t;
-		}
+
+		float t = sc->td.fTerWorldSize*0.5;
+		minX = -t;  minY = -t;  maxX = t;  maxY = t;
+		
 		float fMapSizeX = maxX - minX, fMapSizeY = maxY - minY;  // map size
 		float size = std::max(fMapSizeX, fMapSizeY*asp);
 		scX = 1.f / size;  scY = 1.f / size;
@@ -136,7 +137,9 @@ void CHud::Create()
 
 		///  GUI
 		//  gear  text  -----------
-		h.parent = app->mGui->createWidget<Widget>("",0,0,pSet->windowx,pSet->windowy,Align::Left,"Back","main"+s);
+		h.parent = app->mGui->createWidget<Widget>("", 0,0,
+			app->mWindow->getWidth(), app->mWindow->getHeight(),
+			Align::Left,"Back","main"+s);
 
 		if (cm->vtype == V_Car)
 		{
@@ -164,7 +167,7 @@ void CHud::Create()
 		if (cm->vtype != V_Sphere)
 		{
 			h.txBFuel = h.parent->createWidget<TextBox>("TextBox",
-				0,y, 120,80, Align::Right, "Fuel"+s);  //h.txBFuel->setVisible(false);
+				0,y, 120,80, Align::Right, "Fuel"+s);  h.txBFuel->setVisible(false);
 			h.txBFuel->setTextAlign(Align::Right|Align::VCenter);
 			h.txBFuel->setFontName("DigGear");  h.txBFuel->setFontHeight(72);
 			h.txBFuel->setTextColour(Colour(0.6,0.8,1.0));  //h.txBFuel->setTextShadow(true);
@@ -253,7 +256,7 @@ void CHud::Create()
 		h.bckLap = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 320,210, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
 		h.bckLap->setColour(Colour(0.4,0.4,0.4));
-		h.bckLap->setAlpha(0.2f);
+		h.bckLap->setAlpha(0.5f);
 		h.bckLap->setImageTexture("back_times.png");
 
 		h.txLapTxt = h.parent->createWidget<TextBox>("TextBox",
@@ -262,8 +265,8 @@ void CHud::Create()
 		// h.txLapTxt->setFontHeight(25);
 		h.txLapTxt->setTextShadow(true);
 		h.txLapTxt->setInheritsAlpha(false);
-		h.txLapTxt->setCaption(//String("\n")+  // fixme
-			(hasLaps ? String("#D0F8F0")+TR("#{TBLap}") : "")+
+		h.txLapTxt->setCaption(//String("\n")+
+			//(hasLaps ? String("#D0F8F0")+TR("#{TBLap}") : "")+
 			"\n#80C0F0"+TR("#{TBLast}") +
 			"\n#80E0E0"+TR("#{TBBest}") +
 			"\n#70D070"+TR("#{Track}") +
