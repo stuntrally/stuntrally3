@@ -757,6 +757,7 @@ void App::NewGameDoLoad()
 		// #ifdef DEBUG  //todo: doesnt hide later, why?
 		// LoadingOff();
 		// #endif
+		SetLoadingBar(100.f);
 
 		//-  cars need update
 		for (int i=0; i < carModels.size(); ++i)
