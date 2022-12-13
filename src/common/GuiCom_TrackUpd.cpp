@@ -301,7 +301,7 @@ void CGuiCom::ChangeTrackView()
 ///  tracks list  cols,filter
 void CGuiCom::btnTrkFilter(WP)
 {
-	// app->mWndTrkFilt->setVisible( !app->mWndTrkFilt->getVisible());
+	app->mWndTrkFilt->setVisible( !app->mWndTrkFilt->getVisible());
 }
 
 void CGuiCom::chkTrkColVis(Ck* ck)

@@ -10,6 +10,8 @@
 #include "CHud.h"
 #include "CGui.h"
 #include "FollowCamera.h"
+#include "CarModel.h"
+
 #include <time.h>
 #include <filesystem>
 #include <MyGUI.h>

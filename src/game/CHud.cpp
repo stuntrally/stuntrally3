@@ -33,10 +33,6 @@ CHud::CHud(App* ap1)
 	// gui = ap1->gui;
 }
 
-CHud::Arrow::Arrow()
-	:ent(0),node(0),nodeRot(0)
-{	}
-
 
 ///  HUD utilities
 

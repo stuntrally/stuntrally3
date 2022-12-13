@@ -41,7 +41,7 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 	//  detail
 	sv= &svTerDetail;	sv->Init("TerDetail",	&pSet->terdetail,	0.f,4.f, 1.5f);  SevC(TerDetail);  sv->DefaultF(1.f);
 	sv= &svTerDist;		sv->Init("TerDist",		&pSet->terdist, 0.f,2000.f, 2.f, 0,3, 1.f," m");
-																				SevC(TerDist);  sv->DefaultI(500.f); //ed 2000-
+																				SevC(TerDist);  sv->DefaultI(500.f);
 	sv= &svRoadDist;	sv->Init("RoadDist",	&pSet->road_dist,	0.f,4.f, 2.f, 2,5);  sv->DefaultF(1.6f);
 
 	//  textures

@@ -47,7 +47,7 @@ void CarModel::setVisible(bool vis)
 
 void CarModel::UpdNextCheck()
 {
-	/*updTimes = true;
+	updTimes = true;
 	if (eType != CarModel::CT_LOCAL)  return;
 	if (!ndNextChk || !pApp || !pApp->scn->road)  return;
 	if (pApp->scn->road->mChks.empty())  return;
@@ -55,18 +55,16 @@ void CarModel::UpdNextCheck()
 	Vector3 p;
 	if (iNumChks == pApp->scn->road->mChks.size() && iCurChk != -1)
 	{
-		bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 || pApp->mClient;
+		bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 /*|| pApp->mClient*/;
 		int lap = pGame->timer.GetCurrentLap(iIndex) + 1, laps = pSet->game.num_laps;
 		String smtr = "checkpoint_lap";
 		if (hasLaps)
-		if (lap == laps - 1)   smtr = "checkpoint_lastlap";
-		else if (lap == laps)  smtr = "checkpoint_finish";
+			if (lap == laps - 1)   smtr = "checkpoint_lastlap";
+			else if (lap == laps)  smtr = "checkpoint_finish";
 		p = vStartPos;  // finish
 		sChkMtr = smtr;
 		bChkUpd = true;
-	}
-	else
-	{
+	}else{
 		p = pApp->scn->road->mChks[iNextChk].pos;
 		sChkMtr = "checkpoint_normal";
 		bChkUpd = true;
@@ -75,12 +73,12 @@ void CarModel::UpdNextCheck()
 	p.y -= gPar.chkBeamSy;  // lower
 	ndNextChk->setPosition(p);
 	ndNextChk->setScale(gPar.chkBeamSx, gPar.chkBeamSy, gPar.chkBeamSx);
-	ndNextChk->setVisible(pSet->check_beam && !pApp->bHideHudBeam);*/
+	ndNextChk->setVisible(pSet->check_beam && !pApp->bHideHudBeam);
 }
 void CarModel::ShowNextChk(bool visible)
 {
-	// if (ndNextChk)
-	// 	ndNextChk->setVisible(visible && !pApp->bHideHudBeam);
+	if (ndNextChk)
+		ndNextChk->setVisible(visible && !pApp->bHideHudBeam);
 }
 
 
@@ -184,12 +182,9 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	int w,i;
 	
 	//  upd chk mtr
-	/*if (bChkUpd && entNextChk)
-	{
-		MaterialPtr mtr = MaterialManager::getSingleton().getByName(sChkMtr);
-		if (mtr)
-			entNextChk->setMaterial(mtr);
-	}*/
+	if (bChkUpd && itNextChk)
+		itNextChk->setDatablockOrMaterialName(sChkMtr);
+
 
 	//  stop/resume par sys
 	float fa = pGame->pause ? 0.f : 1.f;

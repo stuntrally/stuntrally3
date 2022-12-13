@@ -235,10 +235,10 @@ public:
 	// PreviewTex prvView,prvRoad,prvTer;  // track tab
 	// PreviewTex prvStCh;  // champ,chall stage view
 
-	// bool bHideHudBeam;  // hides beam when replay or no road
-	// bool bHideHudArr;	// hides arrow when replay,splitscreen
-	// bool bHideHudPace;  // hides pacenotes when same or deny by challenge
-	// bool bHideHudTrail; // hides trail if denied by challenge
+	bool bHideHudBeam;  // hides beam when replay or no road
+	bool bHideHudArr;	// hides arrow when replay,splitscreen
+	bool bHideHudPace;  // hides pacenotes when same or deny by challenge
+	bool bHideHudTrail; // hides trail if denied by challenge
 	
 	bool bRplPlay,bRplPause, bRplRec, bRplWnd;  //  game
 	int carIdWin, iRplCarOfs, iRplSkip;

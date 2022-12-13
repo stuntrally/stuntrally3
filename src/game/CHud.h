@@ -1,13 +1,14 @@
 #pragma once
 #include "Replay.h"
 #include "cardefs.h"
-#include "CarModel.h"
+// #include "CarModel.h"
 // #include "CarReflection.h"
 
 // #include "common/MessageBox/MessageBox.h"
 // #include "common/MessageBox/MessageBoxStyle.h"
 // #include "common/GraphView.h"
 #include "Gui_Def.h"
+#include <OgreVector3.h>
 
 // #include "../network/networkcallbacks.hpp"
 // #include <boost/thread.hpp>
@@ -22,6 +23,7 @@
 namespace Ogre {  class SceneNode;  class SceneManager;  class Viewport;  class ManualObject;  class Item;  }
 // namespace MyGUI  {  class MultiList2;  class Slider;  }
 class GraphView;  class App;  class SETTINGS;  class CGui;
+class SplineRoad;  class CarModel;
 
 
 class CHud : public BGui
@@ -123,14 +125,17 @@ public:
 	Ogre::Overlay *ovCarDbg =0, *ovCarDbgTxt =0, *ovCarDbgExt =0;/**/
 
 
-	///  checkpoint arrow
+	///  next checkpoint arrow 3d
 	struct Arrow
 	{
-		Ogre::Item* ent;
-		Ogre::SceneNode* node,*nodeRot;  // checkpoint arrow
+		Ogre::Item* it =0;
+		Ogre::SceneNode* node =0, *nodeRot =0;  // checkpoint arrow
 		Ogre::Quaternion qStart, qEnd, qCur;  // smooth animation
-		Arrow();
-		void Create(Ogre::SceneManager* mSceneMgr, SETTINGS* pSet);
+
+		void Create(Ogre::SceneManager* mgr, SETTINGS* pSet);
+		void UpdateChk(SplineRoad* road, CarModel* carM, const Ogre::Vector3& pos);
+		void Update(CarModel* carM, float time);
+		void Destroy(Ogre::SceneManager* mgr);
 	} arrow;
 		
 	float asp =1.f, scX =1.f, scY =1.f,

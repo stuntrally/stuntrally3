@@ -9,6 +9,7 @@
 // #include "GuiCom.h"
 #include "game.h"
 #include "Road.h"
+#include "CarModel.h"
 #include "GraphicsSystem.h"
 // #include "SplitScreen.h"
 
@@ -496,19 +497,4 @@ void CHud::Destroy()
 	
 	// for (i=0; i < 4; ++i)
 		// Dest2(moTireVis[i],ndTireVis[i])
-}
-
-
-void CHud::Arrow::Create(SceneManager* mSceneMgr, SETTINGS* pSet)
-{
-	/*if (!node)  node = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	if (ent)  return;
-	ent = mSceneMgr->createEntity("CheckpointArrow", "arrow.mesh");
-	ent->setRenderQueueGroup(RQG_Hud3);
-	ent->setCastShadows(false);
-	nodeRot = node->createChildSceneNode();
-	nodeRot->attachObject(ent);
-	nodeRot->setScale(pSet->size_arrow/2.f * Vector3::UNIT_SCALE);
-	ent->setVisibilityFlags(RV_Hud);
-	nodeRot->setVisible(pSet->check_arrow);*/
 }

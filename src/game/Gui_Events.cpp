@@ -11,6 +11,8 @@
 #include "CHud.h"
 #include "CGui.h"
 // #include "SplitScreen.h"
+#include "CarModel.h"
+
 #include "Slider.h"
 #include "MultiList2.h"
 #include <OgreCamera.h>
@@ -353,13 +355,13 @@ void CGui::chkHudShow(Ck*)
 
 void CGui::chkArrow(Ck*)
 {
-	// if (hud->arrow.nodeRot)
-	// 	hud->arrow.nodeRot->setVisible(pSet->check_arrow && !app->bHideHudArr);
+	if (hud->arrow.nodeRot)
+		hud->arrow.nodeRot->setVisible(pSet->check_arrow && !app->bHideHudArr);
 }
 void CGui::chkBeam(Ck*)
 {
-	// for (int i=0; i < app->carModels.size(); ++i)
-	// 	app->carModels[i]->ShowNextChk(pSet->check_beam && !app->bHideHudBeam);
+	for (int i=0; i < app->carModels.size(); ++i)
+		app->carModels[i]->ShowNextChk(pSet->check_beam && !app->bHideHudBeam);
 }
 
 //  hud minimap

@@ -137,6 +137,9 @@ void App::update( float dt )
 			inputs[A_Rewind] = mArrows[10];
 
 			updatePoses(dt);
+
+			if (pSet->check_arrow && !bRplPlay && !carModels.empty())
+				hud->arrow.Update(carModels[0], dt);
 		}
 
 		

@@ -7,7 +7,7 @@
 #include "SceneXml.h"
 #include "RenderConst.h"
 #include "CGame.h"
-// #include "CGui.h"
+#include "CGui.h"
 #include "CarModel.h"
 // #include "SplitScreen.h"
 #include "FollowCamera.h"
@@ -56,20 +56,21 @@ CarModel::CarModel(int index, int colorId, eCarType type, const string& name,
 	:mSceneMgr(sceneMgr), pSet(set), pGame(game)
 	,sc(s), mCamera(cam), pApp(app)
 	,iIndex(index), iColor(colorId % 6), sDirname(name), eType(type), vtype(V_Car)
-	,fCam(0), iCamFluid(-1), fCamFl(0.6f)
-	,pMainNode(0), pCar(0), /*terrain(0),*/ ndSph(0), brakes(0)
+	
+	// ,fCam(0), iCamFluid(-1), fCamFl(0.6f)
+	// ,pMainNode(0), pCar(0), /*terrain(0),*/ ndSph(0), brakes(0)
 	,/*pReflect(0),*/ color(0,1,0), maxangle(26.f)
-	,hideTime(1.f), mbVisible(true), /*bLightMapEnabled(true),*/ bBraking(true)
-	,iCamNextOld(0), bLastChkOld(0), bInSt(0), bWrongChk(0),  iFirst(0)
-	,angCarY(0), vStartPos(0,0,0)//, pNickTxt(0)
-	// ,ndNextChk(0), entNextChk(0)
-	,all_subs(0), all_tris(0)  //stats
-	,bGetStPos(true), fChkTime(0.f), iWonPlace(0), iWonPlaceOld(0), iWonMsgTime(0.f)
-	,iInChk(-1),iCurChk(-1), iNumChks(0), iNextChk(0), iLoopChk(-1)  //ResetChecks();  // no road yet
-	,iInWrChk(-1), timeAtCurChk(0.f), iLoopLastCam(-1)
+	// ,hideTime(1.f), mbVisible(true), /*bLightMapEnabled(true),*/ bBraking(true)
+	// ,iCamNextOld(0), bLastChkOld(0), bInSt(0), bWrongChk(0),  iFirst(0)
+	// ,angCarY(0), vStartPos(0,0,0)//, pNickTxt(0)
+	// ,ndNextChk(0), itNextChk(0)
+	// ,all_subs(0), all_tris(0)  //stats
+	// ,bGetStPos(true), fChkTime(0.f), iWonPlace(0), iWonPlaceOld(0), iWonMsgTime(0.f)
+	// ,iInChk(-1),iCurChk(-1), iNumChks(0), iNextChk(0), iLoopChk(-1)  //ResetChecks();  // no road yet
+	// ,iInWrChk(-1), timeAtCurChk(0.f), iLoopLastCam(-1)
 	,sChkMtr("checkpoint_normal"), bChkUpd(true)
-	,distFirst(1.f), distLast(1.f), distTotal(10.f), trackPercent(0.f)
-	,updTimes(1), updLap(1), fLapAlpha(1.f)
+	// ,distFirst(1.f), distLast(1.f), distTotal(10.f), trackPercent(0.f)
+	// ,updTimes(1), updLap(1), fLapAlpha(1.f)
 {
 	SetNumWheels(4);
 	int i,w;
@@ -489,18 +490,18 @@ void CarModel::Create()
 	// CreateReflection();
 	
 
-	//  next checkpoint marker
-	/*bool deny = pApp->gui->pChall && !pApp->gui->pChall->chk_beam;
+	//  next checkpoint marker beam
+	bool deny = pApp->gui->pChall && !pApp->gui->pChall->chk_beam;
 	if (eType == CT_LOCAL && !deny && !pApp->bHideHudBeam)
 	{
-		entNextChk = mSceneMgr->createEntity("Chk"+strI, "check.mesh");  ToDel(entNextChk);
-		entNextChk->setRenderQueueGroup(RQG_Weather);  entNextChk->setCastShadows(false);
-		MaterialPtr mtr = MaterialManager::getSingleton().getByName("checkpoint_normal");
-		entNextChk->setMaterial(mtr);
+		itNextChk = mSceneMgr->createItem("check.mesh");  ToDel(itNextChk);
+		itNextChk->setRenderQueueGroup(RQG_Weather);  itNextChk->setCastShadows(false);
+		itNextChk->setDatablockOrMaterialName("checkpoint_normal");
+		
 		ndNextChk = ndRoot->createChildSceneNode();  ToDel(ndNextChk);
-		ndNextChk->attachObject(entNextChk);  entNextChk->setVisibilityFlags(RV_Hud);
+		ndNextChk->attachObject(itNextChk);  itNextChk->setVisibilityFlags(RV_Hud);
 		ndNextChk->setVisible(false);
-	}*/
+	}
 
 
 	///()  grass sphere test

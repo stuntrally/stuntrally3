@@ -3,7 +3,7 @@
 #include "Def_Str.h"
 #include "Axes.h"
 #include "CGame.h"
-// #include "CHud.h"
+#include "CHud.h"
 #include "CGui.h"
 #include "SceneXml.h"
 #include "CScene.h"
@@ -20,6 +20,7 @@
 #include "settings.h"
 #include "CarModel.h"
 #include <Ogre.h>
+#include <MyGUI.h>
 // #include <OgreCamera.h>
 // #include <OgreQuaternion.h>
 // #include <OgreSceneNode.h>
@@ -200,61 +201,26 @@ void App::newPoses(float time)  // time only for camera update
 				{
 					int size = replay.GetNumFrames() * 232;  //par approx  sizeof(ReplayFrame);
 					std::string s = fToStr( float(size)/1000000.f, 2,5);
-					// String ss = String( TR("#{RplRecTime}: ")) + StrTime(replay.GetTimeLength()) + TR("   #{RplSize}: ") + s + TR(" #{UnitMB}");
-					// gui->valRplName2->setCaption(ss);
+					String ss = String( TR("#{RplRecTime}: ")) + StrTime(replay.GetTimeLength()) + TR("   #{RplSize}: ") + s + TR(" #{UnitMB}");
+					gui->valRplName2->setCaption(ss);
 				}
 			}
 		}
-		// if (bRplPlay)  gui->valRplName2->setCaption("");
+		if (bRplPlay)  gui->valRplName2->setCaption("");
 		///-----------------------------------------------------------------------
 		
 
 		//  checkpoints, lap start
 		//-----------------------------------------------------------------------
-		if (bGhost /*&& !gui->bLesson*/)   // dont check for ghost
+		if (bGhost && !gui->bLesson)   // dont check for ghost
 			carM->bWrongChk = false;
 		else
 		{
 			///  arrow update  --------------------------------------
 			SplineRoad* road = scn->road;
-			/*if (pSet->check_arrow && carM->eType == CarModel::CT_LOCAL
+			if (pSet->check_arrow && carM->eType == CarModel::CT_LOCAL
 			  && !bRplPlay && hud->arrow.node && road && road->mChks.size()>0)
-			{
-				//  set animation start to old orientation
-				hud->arrow.qStart = hud->arrow.qCur;
-				
-				//  game start: no animation
-				bool noAnim = carM->iNumChks == 0;
-				
-				//  get vector from camera to checkpoint
-				Vector3 chkPos = road->mChks[std::max(0, std::min((int)road->mChks.size()-1, carM->iNextChk))].pos;
-
-				//  last checkpoint, point to start pos
-				if (carM->iNumChks == road->mChks.size())
-					chkPos = carM->vStartPos;
-				
-				const Vector3& playerPos = pi.pos;
-				Vector3 dir = chkPos - playerPos;  dir[1] = 0;  // only x and z rotation
-				Quaternion quat = Vector3::UNIT_Z.getRotationTo(-dir);
-
-				const bool valid = !quat.isNaN();
-				if (valid)
-				{	if (noAnim)  hud->arrow.qStart = quat;
-					hud->arrow.qEnd = quat;
-				
-					//  calc angle towards cam
-					Real angle = (hud->arrow.qCur.zAxis().dotProduct(carM->fCam->mCamera->getOrientation().zAxis())+1)/2.0f;
-
-					//  set color in material (red for wrong dir)
-					Vector3 col1 = angle * Vector3(0.0, 1.0, 0.0) + (1-angle) * Vector3(1.0, 0.0, 0.0);
-					Vector3 col2 = angle * Vector3(0.0, 0.4, 0.0) + (1-angle) * Vector3(0.4, 0.0, 0.0);
-
-					sh::Vector3* v1 = new sh::Vector3(col1.x, col1.y, col1.z);
-					sh::Vector3* v2 = new sh::Vector3(col2.x, col2.y, col2.z);
-					sh::Factory::getInstance().setSharedParameter("arrowColour1", sh::makeProperty <sh::Vector3>(v1));
-					sh::Factory::getInstance().setSharedParameter("arrowColour2", sh::makeProperty <sh::Vector3>(v2));
-				}
-			}*/
+		  		hud->arrow.UpdateChk(road, carM, pi.pos);
 			
 			//----------------------------------------------------------------------------
 			if (carM->bGetStPos)  // get finish, end box
@@ -542,7 +508,7 @@ void App::updatePoses(float time)
 
 
 		//  lessons  >> >
-		/*if (gui->bLesson)
+		if (gui->bLesson)
 		{
 			if (v > 0.98f && !isFocGui)  // end, back to gui
 			{	//bRplPause = true;
@@ -562,7 +528,7 @@ void App::updatePoses(float time)
 					}	break;
 				}
 			mWndRplTxt->setVisible(vis);
-		}*/
+		}
 	}	
 	
 	

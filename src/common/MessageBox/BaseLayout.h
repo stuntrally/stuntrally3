@@ -91,12 +91,10 @@ namespace wraps
 			const std::string MAIN_WINDOW2 = "Root";
 			mLayoutName = _layout;
 
-			// оборачиваем
 			if (mLayoutName.empty())
 			{
 				mMainWidget = _parent;
 			}
-			// загружаем лейаут на виджет
 			else
 			{
 				mPrefix = MyGUI::utility::toString(this, "_");

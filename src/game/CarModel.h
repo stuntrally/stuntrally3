@@ -55,7 +55,8 @@ public:
 	
 	Ogre::String sDispName;  // diplay name in opponents list (nick for CT_REMOTE)
 	// MyGUI::TextBox* pNickTxt;  // multiplayer nick above car
-	bool updTimes, updLap;  float fLapAlpha;
+	
+	bool updTimes = true, updLap = true;  float fLapAlpha = 1.f;
 	
 	
 	///----  model params  from .car
@@ -71,7 +72,7 @@ public:
 	std::vector<float> whRadius, whWidth;  // for tire trails
 	std::vector<MATHVECTOR<float,3> > whPos;
 	QUATERNION<float> qFixWh[2];
-	float maxangle;  //steer
+	float maxangle = 26.f;  //steer
 
 	//  exhaust position for boost particles
 	bool manualExhaustPos;  // if true, use values below, if false, guess from bounding box
@@ -89,7 +90,7 @@ public:
 		Ogre::Aabb* bbox=0, Ogre::String stMtr="", bool bLogInfo=true);
 
 	void LogMeshInfo(const Ogre::Item* ent, const Ogre::String& name, int mul=1);
-	int all_subs, all_tris;  //stats
+	int all_subs = 0, all_tris = 0;  //stats
 	
 	// void RecreateMaterials();
 	// void setMtrNames(); // assign materials to entity / manualobject
@@ -103,7 +104,7 @@ public:
 
 	//  reset camera after pos change etc	
 	void First();
-	int iFirst;
+	int iFirst = 0;
 	
 	//  color
 	Ogre::ColourValue color;  // for minimap pos tri color  //float hue, sat, val;
@@ -117,43 +118,45 @@ public:
 	
 	
 	///----  Camera, can be null
-	FollowCamera* fCam;
-	int iCamFluid;  // id to fluids[], -1 none
-	float fCamFl;  // factor, close to surface
+	FollowCamera* fCam =0;
+	int iCamFluid = -1;  // id to fluids[], -1 none
+	float fCamFl = 0.6f;  // factor, close to surface
 	float camDist;  // mul from .car
 
 	//  Main node
-	Ogre::SceneNode* pMainNode, *ndSph;
+	Ogre::SceneNode* pMainNode =0, *ndSph =0;
 	Ogre::Vector3 posSph[2];
-	Ogre::v1::BillboardSet* brakes;
+	Ogre::v1::BillboardSet* brakes =0;
 	std::vector<Ogre::Light*> lights;
 	
 	void setVisible(bool visible);  // hide/show
-	bool mbVisible;  float hideTime;
+	bool mbVisible = true;  float hideTime = 1.f;
 		
-	// CarReflection* pReflect;
+	// CarReflection* pReflect =0;
 		
 	//  VDrift car
-	CAR* pCar;  // all need this set (even ghost, has it from 1st car)
+	CAR* pCar =0;  // all need this set (even ghost, has it from 1st car)
 	
 	
 	///----  Logic vars
-	float angCarY;  // car yaw angle for minimap
-	float distFirst, distLast, distTotal;  // checks const distances set at start
-	float trackPercent;  // % of track driven
+	float angCarY = 0.f;  // car yaw angle for minimap
+	float distFirst = 1.f, distLast = 1., distTotal = 10.f;  // checks const distances set at start
+	float trackPercent = 0.f;  // % of track driven
 	void UpdTrackPercent();
 
 	///  Checkpoint vars,  start pos, lap
-	bool bGetStPos;  Ogre::Matrix4 matStPos;  Ogre::Vector4 vStDist;
-	int iInChk, iCurChk, iNextChk, iNumChks,  // cur checkpoint -1 at start
-		iInWrChk, iWonPlace, iWonPlaceOld;  float iWonMsgTime;
-	bool bInSt, bWrongChk;  float fChkTime;
-	float timeAtCurChk;
+	bool bGetStPos = true;  Ogre::Matrix4 matStPos;  Ogre::Vector4 vStDist;
+	int iInChk = -1, iCurChk = -1,
+		iNextChk = 0, iNumChks = 0,  // cur checkpoint -1 at start
+		iInWrChk = -1, iWonPlace = 0, iWonPlaceOld = 0;
+	float iWonMsgTime = 0.f;
+	bool bInSt = 0, bWrongChk = 0;  float fChkTime = 0.f;
+	float timeAtCurChk = 0.f;
 	//bool Checkpoint(const PosInfo& posInfo, class SplineRoad* road);  // update
 	Ogre::Vector3 vStartPos;  void ResetChecks(bool bDist=false), UpdNextCheck(), ShowNextChk(bool visible);
-	Ogre::String sChkMtr;  bool bChkUpd;
+	Ogre::String sChkMtr;  bool bChkUpd = true;
 	//  for loop camera change
-	int iLoopChk, iLoopLastCam;
+	int iLoopChk = -1, iLoopLastCam = -1;
 	
 	
 	///--------  common
@@ -184,8 +187,8 @@ public:
 	
 	//  Wheels, Nodes
 	std::vector<Ogre::SceneNode*> ndWh, ndWhE, ndBrake;
-	// Ogre::SceneNode* ndNextChk;
-	// Ogre::Item* entNextChk;
+	Ogre::SceneNode* ndNextChk =0;  // beam
+	Ogre::Item* itNextChk =0;
 
 	//  to destroy
 	std::vector<Ogre::SceneNode*> vDelNd;		void ToDel(Ogre::SceneNode* nd);
@@ -194,7 +197,7 @@ public:
 	
 		
 	//  brake state
-	bool bBraking;
+	bool bBraking = true;
 	void UpdateBraking();
 	
 	//  lightmap toggle depending on distance to terrain
@@ -203,8 +206,8 @@ public:
 	// void UpdateLightMap();
 	
 	//  cam,chk old states
-	int iCamNextOld;
-	bool bLastChkOld;
+	int iCamNextOld = 0;
+	bool bLastChkOld = 0;
 
 	// virtual void requestedConfiguration (sh::MaterialInstance* m, const std::string& configuration);
 	// virtual void createdConfiguration (sh::MaterialInstance* m, const std::string& configuration);

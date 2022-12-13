@@ -15,6 +15,7 @@
 // #include "CGui.h"
 // #include "SplitScreen.h"
 #include "FollowCamera.h"
+#include "CarModel.h"
 // #include "MultiList2.h"
 // #include "GraphView.h"
 
