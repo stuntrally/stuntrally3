@@ -426,7 +426,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 		{
 			//if (pCarM->updLap)
 			//{	pCarM->updLap = false;
-				h.txLap->setCaption(h.sLap);
+				//h.txLap->setCaption(h.sLap);
 			//}
 			float a = std::min(1.f, pCarM->fLapAlpha * 2.f);
 			bool hasRoad = app->scn->road && app->scn->road->getNumPoints() > 2;
@@ -444,7 +444,6 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 		}
 	}
 
-#if 0
 	//  checkpoint warning  --------
 	if (app->scn->road && h.bckWarn && pCarM)
 	{
@@ -482,5 +481,4 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 		{	cam->updName = false;
 			h.txCam->setCaption(cam->sName);
 	}	}
-#endif
 }

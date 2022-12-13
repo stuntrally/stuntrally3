@@ -55,10 +55,10 @@ public:
 		int xOpp =0, yOpp =0, lastOppH = -1;
 
 		//  wrong check warning, win place
-		// Txt txWarn =0,  txPlace =0;
-		// Img bckWarn =0, bckPlace =0;
+		Txt txWarn =0,  txPlace =0;
+		Img bckWarn =0, bckPlace =0;
 		//  start countdown
-		// Txt txCountdown =0;
+		Txt txCountdown =0;
 
 		//  gauges
 		//; Ogre::SceneNode    *ndNeedles =0, *ndGauges =0;

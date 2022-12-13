@@ -141,14 +141,14 @@ void CHud::Size()
 			//h.bckOpp->setPosition(ox,oy -2);  //h.bckOpp->setSize(230, plr*25 +4);
 			//for (int n=0; n<3; ++n)
 			//	h.txOpp[n]->setPosition(n*65+5,0);
-			
+		*/
 			//  warn,win
-			ox = (xMax-xMin)/2 + xMin - 200;  oy = yMin + 15;
+			int ox = (xMax-xMin)/2 + xMin - 200;  int oy = yMin + 15;
 			h.bckWarn->setPosition(ox,oy);
 			h.bckPlace->setPosition(ox,oy + 40);
 			
 			h.txCountdown->setPosition((xMax-xMin)/2 -100, (yMax-yMin)/2 -60);
-		*/
+
 			//  camera
 			if (h.txCam)
 				h.txCam->setPosition(xMax-260,yMax-30);

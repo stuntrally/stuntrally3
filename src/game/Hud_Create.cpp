@@ -223,7 +223,7 @@ void CHud::Create()
 
 		///  times text  ----------------------
 		h.bckTimes = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 450,280, Align::Left, "TimP"+s);  h.bckTimes->setVisible(false);
+			0,y, 350,210, Align::Left, "TimP"+s);  h.bckTimes->setVisible(false);
 		h.bckTimes->setColour(Colour(0.1,0.1,0.1));
 		h.bckTimes->setAlpha(0.6f);
 		h.bckTimes->setImageTexture("back_times.png");
@@ -254,7 +254,7 @@ void CHud::Create()
 
 		///  lap results  ----------------------
 		h.bckLap = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 320,210, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
+			0,y, 340,210, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
 		h.bckLap->setColour(Colour(0.4,0.4,0.4));
 		h.bckLap->setAlpha(0.5f);
 		h.bckLap->setImageTexture("back_times.png");
@@ -298,6 +298,7 @@ void CHud::Create()
 			if (n==0)  h.txOpp[n]->setTextShadow(true);
 		}
 		h.lastOppH = -1;  // upd size
+	#endif
 
 		//  wrong chk warning  -----------
 		h.bckWarn = h.parent->createWidget<ImageBox>("ImageBox",
@@ -327,6 +328,7 @@ void CHud::Create()
 		h.txCountdown->setFontName("DigGear");  h.txCountdown->setTextShadow(true);
 		h.txCountdown->setTextColour(Colour(0.8,0.9,1));  h.txCountdown->setTextAlign(Align::Center);
 
+	#if 0
 		//  abs, tcs
 		h.txAbs = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 120,60, Align::Left, "AbsT"+s);
@@ -337,6 +339,7 @@ void CHud::Create()
 			0,y, 120,60, Align::Left, "TcsT"+s);
 		h.txTcs->setFontName("hud.text");  h.txTcs->setTextShadow(true);
 		h.txTcs->setCaption("TCS");  h.txTcs->setTextColour(Colour(0.6,1,1));
+	#endif
 
 		//  camera name
 		h.txCam = h.parent->createWidget<TextBox>("TextBox",
@@ -345,7 +348,7 @@ void CHud::Create()
 		h.txCam->setTextColour(Colour(0.65,0.85,0.85));
 		h.txCam->setCaption("Camera");//
 
-		//  input bars  --------------
+		//  todo:  input bars, accel G's  --------------
 		/*Img bar = tabitem->createWidget<ImageBox>("ImageBox",
 			x2 + (twosided ? 0 : 64), y+4, twosided ? 128 : 64, 16, Align::Default,
 			"bar_" + toStr(i) + "_" + sPlr);
@@ -353,7 +356,6 @@ void CHud::Create()
 		bar->setUserData(*it);
 		bar->setImageTexture(String("input_bar.png"));  bar->setImageCoord(IntCoord(0,0,128,16));
 		*/
-	#endif
 	}
 
 
@@ -490,9 +492,9 @@ void CHud::Destroy()
 		Dest(h.txLapTxt)  Dest(h.txLap)  Dest(h.bckLap)
 		h.sTimes = "";  h.sLap = "";
 		
-		// Dest(h.txWarn)  Dest(h.bckWarn)
-		// Dest(h.txPlace)  Dest(h.bckPlace)
-		// Dest(h.txCountdown)
+		Dest(h.txWarn)  Dest(h.bckWarn)
+		Dest(h.txPlace)  Dest(h.bckPlace)
+		Dest(h.txCountdown)
 	}
 	// Dest2(moPos, ndPos)
 	Dest(txMsg)  Dest(bckMsg)
