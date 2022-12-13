@@ -71,7 +71,7 @@ void App::update( float dt )
 			{
 				// LoadingOff();  // hide loading overlay
 				// mSplitMgr->mGuiViewport->setClearEveryFrame(true, FBT_DEPTH);
-				// gui->Ch_LoadEnd();
+				gui->Ch_LoadEnd();
 				bLoadingEnd = true;
 				iLoad1stFrames = -1;  // for refl
 			}

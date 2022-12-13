@@ -15,7 +15,7 @@
 		</Widget>
 	</Widget>
 
-	<Widget type="Window" skin="WindowC" position="28 1360 948 590" align="Center" layer="Popup" name="WndChampStage">
+	<Widget type="Window" skin="WindowC" position="128 160 948 590" align="Center" layer="Popup" name="WndChampStage">
 		<Property key="Caption" value="#{Championship}"/>
 		<Property key="Alpha" value="0.8"/>
 		<Property key="Colour" value="0.4 1 0.4"/>
@@ -47,7 +47,7 @@
 		<Widget type="ImageBox" skin="ImageBox" position="588 24 320 320" name="ChampStageImg"/>
 	</Widget>
 
-	<Widget type="Window" skin="WindowC" position="796 1356 536 486" align="Center" layer="Popup" name="WndChampEnd">
+	<Widget type="Window" skin="WindowC" position="196 156 536 486" align="Center" layer="Popup" name="WndChampEnd">
 		<Property key="Caption" value="#{Championship}"/>
 		<Property key="Alpha" value="0.9"/>
 		<Property key="Colour" value="0.4 1 1"/>
@@ -86,7 +86,7 @@
 		</Widget>
 	</Widget>
 
-	<Widget type="Window" skin="WindowC" position="28 1860 948 590" align="Center" layer="Popup" name="WndChallStage">
+	<Widget type="Window" skin="WindowC" position="128 160 948 590" align="Center" layer="Popup" name="WndChallStage">
 		<Property key="Caption" value="#{Challenge}"/>
 		<Property key="Alpha" value="0.8"/>
 		<Property key="Colour" value="0.4 1 0.7"/>
@@ -118,7 +118,7 @@
 		<Widget type="ImageBox" skin="ImageBox" position="588 24 320 320" name="ChallStageImg"/>
 	</Widget>
 
-	<Widget type="Window" skin="WindowC" position="796 1856 576 556" align="Center" layer="Popup" name="WndChallEnd">
+	<Widget type="Window" skin="WindowC" position="196 156 576 556" align="Center" layer="Popup" name="WndChallEnd">
 		<Property key="Caption" value="#{Challenge}"/>
 		<Property key="Alpha" value="0.9"/>
 		<Property key="Colour" value="0.8 0.6 1.0"/>

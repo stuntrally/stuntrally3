@@ -478,8 +478,8 @@ void CGui::changeTrack()
 //  new game
 void CGui::btnNewGame(WP wp)
 {
-	// if (app->mWndGame->getVisible() && app->mWndTabsGame->getIndexSelected() < TAB_Champs  || app->mClient)
-	// 	BackFromChs();  /// champ, back to single race
+	if (app->mWndGame->getVisible() && app->mWndTabsGame->getIndexSelected() < TAB_Champs  /*|| app->mClient*/)
+		BackFromChs();  /// champ, back to single race
 	
 	bool force = false;
 	if (wp)
