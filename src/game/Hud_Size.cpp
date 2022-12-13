@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Def_Str.h"
-#include "data/SceneXml.h"
+#include "SceneXml.h"
 #include "CScene.h"
 #include "RenderConst.h"
 // #include "GuiCom.h"
@@ -36,6 +36,7 @@ struct VPDims
 	void Default() {  top=-1.f; left=-1.f;  width=2.f; height=2.f;  right=1.f; bottom=1.f;  avgsize=1.f;  }
 	VPDims() {  Default();  }
 } mDims[4];
+
 
 void CHud::Size()
 {
@@ -119,7 +120,7 @@ void CHud::Size()
 			}
 
 			//  times
-			// bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || app->mClient;
+			bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 /*|| app->mClient*/;
 			int w = 160, tx = xMin + 40, ty = yMin + 400; //40
 			h.bckTimes->setPosition(tx-20,ty);
 			//tx = 24;  ty = (hasLaps ? 16 : 4);
@@ -200,7 +201,7 @@ void CHud::Show(bool hideAll)
 	// app->bckFps->setVisible(pSet->show_fps);
 	// if (bckMsg)
 	{
-		bool cam = pSet->show_cam /*&& !app->isFocGui*/, times = pSet->show_times;
+		bool cam = pSet->show_cam && !app->isFocGui, times = pSet->show_times;
 		//bool opp = pSet->show_opponents && (app->scn->road && app->scn->road->getNumPoints() > 0);
 		bool bfuel = pSet->game.boost_type >= 1; // && pSet->game.boost_type <= 3;
 		bool btxt = pSet->game.boost_type == 1 || pSet->game.boost_type == 2;
@@ -224,7 +225,7 @@ void CHud::Show(bool hideAll)
 				if (h.txDamage)
 				{	h.txDamage->setVisible(show && bdmg);  h.icoDamage->setVisible(show && bdmg);
 					h.imgDamage->setVisible(show && bdmg);  }
-				//txRewind;icoRewind;
+				//txRewind; icoRewind;
 
 				// h.ndGauges->setVisible(show);  h.ndNeedles->setVisible(show);
 				

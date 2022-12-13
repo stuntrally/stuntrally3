@@ -15,8 +15,8 @@
 // #include "CGui.h"
 // #include "SplitScreen.h"
 #include "FollowCamera.h"
-// #include "common/MultiList2.h"
-// #include "common/GraphView.h"
+// #include "MultiList2.h"
+// #include "GraphView.h"
 
 // #include <OgreRenderWindow.h>
 #include <OgreSceneNode.h>

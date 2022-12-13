@@ -13,7 +13,7 @@
 #include "FollowCamera.h"
 // #include "CarReflection.h"
 // #include "Road.h"
-// #include "../network/gameclient.hpp"
+// #include "gameclient.hpp"
 
 #include <OgreQuaternion.h>
 #include <OgreVector3.h>

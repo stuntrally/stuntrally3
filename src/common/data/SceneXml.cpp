@@ -5,7 +5,7 @@
 #include "FluidsXml.h"
 #include "TracksXml.h"
 #include "Axes.h"
-#include "vdrift/game.h"  // for surfaces map
+#include "game.h"  // for surfaces map
 
 #include "tinyxml.h"
 #include "tinyxml2.h"

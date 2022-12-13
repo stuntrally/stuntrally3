@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "par.h"
 #include "Def_Str.h"
-#include "data/SceneXml.h"
+#include "SceneXml.h"
 #include "ShapeData.h"
 #include "CScene.h"
 

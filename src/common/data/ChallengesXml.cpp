@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "common/Def_Str.h"
-#include "common/data/TracksXml.h"
+#include "Def_Str.h"
+#include "TracksXml.h"
 #include "ChallengesXml.h"
 #include "tinyxml.h"
 #include "tinyxml2.h"

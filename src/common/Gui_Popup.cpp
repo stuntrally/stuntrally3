@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Gui_Popup.h"
-//#include "../Def_Str.h"
+//#include "Def_Str.h"
 #include <stdio.h>
 
 #include <MyGUI_Gui.h>

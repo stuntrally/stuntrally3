@@ -11,8 +11,8 @@
 #include "MultiList2.h"
 #include "Slider.h"
 #include "Gui_Popup.h"
-#include "data/CData.h"
-#include "data/TracksXml.h"
+#include "CData.h"
+#include "TracksXml.h"
 
 // #include <OgreRoot.h>
 // #include <OgreRenderWindow.h>

@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "par.h"
-#include "common/Def_Str.h"
+#include "Def_Str.h"
 #include "FollowCamera.h"
 #include "settings.h"
 

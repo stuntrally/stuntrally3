@@ -4,13 +4,13 @@
 // #include "CarModel.h"
 // #include "CarReflection.h"
 
-// #include "common/MessageBox/MessageBox.h"
-// #include "common/MessageBox/MessageBoxStyle.h"
-// #include "common/GraphView.h"
+// #include "MessageBox.h"
+// #include "MessageBoxStyle.h"
+// #include "GraphView.h"
 #include "Gui_Def.h"
 #include <OgreVector3.h>
 
-// #include "../network/networkcallbacks.hpp"
+// #include "networkcallbacks.hpp"
 // #include <thread>
 // #include <MyGUI.h>
 //#include <OgreOverlayElement.h>

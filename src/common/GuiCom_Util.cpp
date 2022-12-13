@@ -13,7 +13,7 @@
 	#include "CGui.h"
 	#include "settings.h"
 #endif
-// #include "../../sdl4ogre/sdlinputwrapper.hpp"
+// #include "sdlinputwrapper.hpp"
 #include <OgreWindow.h>
 #include <MyGUI_InputManager.h>
 #include <MyGUI_Widget.h>

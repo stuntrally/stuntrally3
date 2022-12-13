@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "../Def_Str.h"
+#include "Def_Str.h"
 #include "SColor.h"
 using namespace std;
 using namespace Ogre;

@@ -12,9 +12,9 @@
 #include "tracksurface.h"
 #include "timer.h"
 #include "forcefeedback.h"
-//#include "../sound/SoundMgr.h"
+//#include "SoundMgr.h"
 #include <OgreTimer.h>
-#include <boost/thread.hpp>
+#include <thread>
 
 class SoundMgr;  class Sound;
 

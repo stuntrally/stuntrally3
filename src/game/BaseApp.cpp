@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "common/Def_Str.h"
+#include "Def_Str.h"
 #include "BaseApp.h"
 // #include "FollowCamera.h"
 // #include "pathmanager.h"
@@ -12,8 +12,8 @@
 // #include <MyGUI_Ogre2Platform.h>
 using namespace Ogre;
 
-// #include "../sdl4ogre/sdlinputwrapper.hpp"
-// #include "../oics/ICSInputControlSystem.h"
+// #include "sdlinputwrapper.hpp"
+// #include "ICSInputControlSystem.h"
 
 #if 0
 //  rendering

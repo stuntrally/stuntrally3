@@ -2,7 +2,7 @@
 #include <OgreHlms.h>
 #include "Def_Str.h"
 #include "RenderConst.h"
-#include "data/SceneXml.h"
+#include "SceneXml.h"
 #include "CScene.h"
 #include "Road.h"  // sun rot
 #include "dbl.h"

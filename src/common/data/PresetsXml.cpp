@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "../Def_Str.h"
+#include "Def_Str.h"
 #include "PresetsXml.h"
 #include "tinyxml2.h"
 using namespace std;

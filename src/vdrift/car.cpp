@@ -8,15 +8,15 @@
 #include "configfile.h"
 #include "settings.h"
 #include "Def_Str.h"
-#include "common/data/CData.h"
+#include "CData.h"
 #include "CScene.h"
 // #include "GraphView.h"
 #include "CGame.h"  //+ replay
 // #include "CarModel.h"  //+ camera pos
 #include "FollowCamera.h"  //+ camera pos
 // #include "PaceNotes.h"  //+ pace reset
-// #include "../network/protocol.hpp"
-#include "../sound/SoundMgr.h"
+// #include "protocol.hpp"
+#include "SoundMgr.h"
 #include "tobullet.h"
 #include "game.h"  //sound
 

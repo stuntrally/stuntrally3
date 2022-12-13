@@ -1,11 +1,9 @@
 #include "pch.h"
-#include "common/Def_Str.h"
+#include "Def_Str.h"
 #include "BaseApp.h"
 
 #include "pathmanager.h"
 #include "settings.h"
-// #include "network/masterclient.hpp"
-// #include "network/gameclient.hpp"
 
 // #include "Localization.h"
 // #include "SplitScreen.h"
@@ -20,7 +18,7 @@
 // #if OGRE_VERSION >= MYGUI_DEFINE_VERSION(1, 9, 0)
 // #include <OgreOverlaySystem.h>
 // #endif
-// #include "boost/filesystem.hpp"
+// #include <filesystem>
 
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>

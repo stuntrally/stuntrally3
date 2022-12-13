@@ -6,9 +6,9 @@
 #include "configfile.h"
 #include "cardefs.h"
 #include <math.h>
-#include "../sound/SoundMgr.h"
-#include "../sound/SoundBase.h"
-#include "../sound/SoundBaseMgr.h"
+#include "SoundMgr.h"
+#include "SoundBase.h"
+#include "SoundBaseMgr.h"
 #include "numprocessors.h"
 #include "quickprof.h"
 #include "tracksurface.h"
@@ -20,7 +20,7 @@
 #include "CGame.h"
 //; #include "CInput.h"
 #include "FollowCamera.h"
-// #include "../oics/ICSInputControlSystem.h"
+// #include "ICSInputControlSystem.h"
 #include <OgreTimer.h>
 #include <OgreDataStream.h>
 

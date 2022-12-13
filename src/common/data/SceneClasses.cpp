@@ -1,7 +1,7 @@
 #include "pch.h"
-#include "../Def_Str.h"
+#include "Def_Str.h"
 #include "SceneClasses.h"
-#include "../Axes.h"
+#include "Axes.h"
 #include <OgreSceneNode.h>
 using namespace std;
 using namespace Ogre;
