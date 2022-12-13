@@ -193,7 +193,6 @@ public:
 
 	bool dstTrk =0;  // destroy track, false if same
 	Ogre::String oldTrack;  bool oldTrkUser =0;
-	Ogre::String TrkDir();
 
 	
 	//  Loading

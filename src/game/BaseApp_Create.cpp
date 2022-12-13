@@ -149,7 +149,6 @@ void BaseApp::Run(bool showDialog)
 BaseApp::BaseApp()
 	// :mMasterClient(), mClient()
 {
-	// mLoadingBar = new LoadingBar(this);
 }
 
 //  dtor
@@ -160,7 +159,6 @@ BaseApp::~BaseApp()
 		//refreshCompositor(false);
 
 	// CompositorManager::getSingleton().removeAll();
-	// delete mLoadingBar;
 	// delete mSplitMgr;
 	
 	DestroyGui();
@@ -458,7 +456,6 @@ void BaseApp::LoadingOn()
 	mSplitMgr->SetBackground(ColourValue(0.15,0.165,0.18));
 	mSplitMgr->mGuiViewport->setBackgroundColour(ColourValue(0.15,0.165,0.18,1.0));
 	mSplitMgr->mGuiViewport->setClearEveryFrame(true);
-	mLoadingBar->start(mWindow, 1, 1, 1 );
 
 	// Turn off  rendering except overlays
 	mSceneMgr->clearSpecialCaseRenderQueues();
@@ -478,7 +475,6 @@ void BaseApp::LoadingOff()
 	mSplitMgr->mGuiViewport->setBackgroundColour(ColourValue(0.2,0.3,0.4));
 	mSceneMgr->clearSpecialCaseRenderQueues();
 	mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
-	mLoadingBar->finish();
 #endif
 }
 

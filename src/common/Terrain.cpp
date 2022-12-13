@@ -2,7 +2,7 @@
 #include "Def_Str.h"
 #include "RenderConst.h"
 #include "ShapeData.h"
-// #include "GuiCom.h"
+#include "GuiCom.h"
 #include "CScene.h"
 #include "SceneXml.h"
 #include "pathmanager.h"
@@ -98,7 +98,7 @@ void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
 		sc->td.hfHeight.resize(wxy);
 		const int size = wxy * sizeof(float);
 
-		String name = app->TrkDir() + (/*bNewHmap ? "heightmap-new.f32" :*/ "heightmap.f32");
+		String name = app->gcom->TrkDir() + (/*bNewHmap ? "heightmap-new.f32" :*/ "heightmap.f32");
 
 		//  load from f32 HMap +
 		{

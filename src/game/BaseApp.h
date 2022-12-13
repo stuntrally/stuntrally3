@@ -56,7 +56,6 @@ public:
 	//  wnd, hud, upl
 	bool bWindowResized =1, bSizeHUD =1, bRecreateHUD =0;
 	// float roadUpdTm =0.f;
-	// class LoadingBar* mLoadingBar =0;
 	// Ogre::SceneNode* ndSky =0;  //-
 	
 

@@ -12,7 +12,7 @@
 #include "OgreVector3.h"
 #include "Grass.h"
 
-// #include "GuiCom.h"
+#include "GuiCom.h"
 #include "CGame.h"
 #include "CHud.h"
 #include "CGui.h"
@@ -20,7 +20,6 @@
 // #include "PaceNotes.h"
 #include "SoundMgr.h"
 #include "SoundBaseMgr.h"
-// #include "LoadingBar.h"
 #include "FollowCamera.h"
 #include "CarModel.h"
 // #include "SplitScreen.h"
@@ -38,7 +37,8 @@
 
 #include <MyGUI_TextBox.h>
 #include <MyGUI_Window.h>
-// using namespace MyGUI;
+#include "MessageBox.h"
+using namespace MyGUI;
 using namespace Ogre;
 using namespace std;
 
@@ -216,16 +216,16 @@ void App::NewGame(bool force)
 	dstTrk = force || oldTrack != pSet->game.track || oldTrkUser != pSet->gui.track_user;
 
 	///  check if track exist ..
-	if (!PATHMANAGER::FileExists(TrkDir()+"scene.xml"))
+	if (!PATHMANAGER::FileExists(gcom->TrkDir()+"scene.xml"))
 	{
 		bLoading = false;  iLoad1stFrames = -2;
 		LogO("TRACK doesn't exist !!");
 		gui->BackFromChs();
 		//toggleGui(true);  // show gui
-		/*Message::createMessageBox("Message", TR("#{Track}"),
+		Message::createMessageBox("Message", TR("#{Track}"),
 			TR("#{TrackNotFound}")+"\n" + pSet->game.track +
 			(pSet->game.track_user ? " *"+TR("#{TweakUser}")+"*" :"") + "\nPath: " + gcom->TrkDir(),
-			MessageBoxStyle::IconError | MessageBoxStyle::Ok);*/
+			MessageBoxStyle::IconError | MessageBoxStyle::Ok);
 		return;
 	}	
 	if (mWndRpl)     mWndRpl->setVisible(false);
@@ -257,13 +257,13 @@ void App::LoadCleanUp()  // 1 first
 	
 	//  hide hud arrow,beam,pace,trail
 	bool morePlr = false; //pSet->game.local_players > 1;
-	// bool rplRd = bRplPlay /*|| scn->road && scn->road->getNumPoints() < 2/**/;
-	// bHideHudBeam = rplRd;
-	// bHideHudArr = rplRd || morePlr;
-	// bool denyPace = gui->pChall && !gui->pChall->pacenotes;
-	// bHideHudPace = morePlr || denyPace;  // todo: ? pace, trail for splitscreen
-	// bool denyTrail = gui->pChall && !gui->pChall->trail;
-	// bHideHudTrail = morePlr || denyTrail;
+	bool rplRd = bRplPlay /*|| scn->road && scn->road->getNumPoints() < 2/**/;
+	bHideHudBeam = rplRd;
+	bHideHudArr = rplRd || morePlr;
+	bool denyPace = gui->pChall && !gui->pChall->pacenotes;
+	bHideHudPace = morePlr || denyPace;  // todo: ? pace, trail for splitscreen
+	bool denyTrail = gui->pChall && !gui->pChall->trail;
+	bHideHudTrail = morePlr || denyTrail;
 
 
 	// rem old track
@@ -272,10 +272,13 @@ void App::LoadCleanUp()  // 1 first
 		if (resTrk != "")
 			ResourceGroupManager::getSingleton().removeResourceLocation(resTrk);
 		LogO("------  Loading track: "+pSet->game.track);
-		resTrk = TrkDir() + "objects";  // for roadDensity.png
+		resTrk = gcom->TrkDir() + "objects";  // for roadDensity.png
 		ResourceGroupManager::getSingleton().addResourceLocation(resTrk, "FileSystem");
 	}
-	
+
+	hud->arrow.Destroy(mSceneMgr);
+
+
 	//  Delete all cars
 	for (int i=0; i < carModels.size(); ++i)
 	{
@@ -316,36 +319,25 @@ void App::LoadCleanUp()  // 1 first
 	{	// destroy all scenenodes
 		mSceneMgr->getRootSceneNode()->removeAndDestroyAllChildren();
 		// MaterialManager::getSingleton().destroyAllResourcePools();
-		// mSceneMgr->destroyAllManualObjects();
-		// mSceneMgr->destroyAllEntities();
-		// mSceneMgr->destroyAllStaticGeometry();
 		mSceneMgr->destroyAllParticleSystems();
 		// mSceneMgr->destroyAllRibbonTrails();
-		// mSplitMgr->mGuiSceneMgr->destroyAllManualObjects(); // !?..
+		// mSplitMgr->mGuiSceneMgr->destroyAllManualObjects(); //-
 	}
 
-	// remove junk from previous tracks
 	/*LogO("------  # Unload prev track res");
 	MeshManager::getSingleton().unloadUnreferencedResources();
 	sh::Factory::getInstance().unloadUnreferencedMaterials();
 	Ogre::TextureManager::getSingleton().unloadUnreferencedResources();
-	LogO("------  # Unload prev track res done");*/
-	// MeshManager::getSingleton().unloadUnreferencedResources();
-	// sh::Factory::getInstance().unloadUnreferencedMaterials();
 	// TextureGpuManager::getEntries() Singleton().unloadUnreferencedResources();
+	LogO("------  # Unload prev track res done");*/
 
-	// minimizeMemory();  // todo: ! drops gui font tex
+	// minimizeMemory();  // todo: ! drops gui font tex, car refl-
 
 	// setupCompositor();  //? twice
 }
 
 
 //---------------------------------------------------------------------------------------------------------------
-String App::TrkDir()
-{
-	auto pathTrk = PATHMANAGER::Tracks() + "/";
-	return pathTrk + pSet->gui.track + "/";
-}
 
 void App::LoadGame()  // 2
 {
@@ -375,17 +367,15 @@ void App::LoadGame()  // 2
 	if (dstTrk)
 	{
 		scn->sc->pGame = pGame;
-		scn->sc->LoadXml(TrkDir()+"scene.xml");
+		scn->sc->LoadXml(gcom->TrkDir()+"scene.xml");
 		// pGame->track.asphalt = scn->sc->asphalt;  //*
 		// pGame->track.sDefaultTire = scn->sc->asphalt ? "asphalt" : "gravel";  //*
 		if (scn->sc->denyReversed)
 			pSet->game.trackreverse = false;
 
 		pGame->NewGameDoLoadTrack();
-
-		// if (!scn->sc->ter)
-			// scn->sc->td.hfHeight = NULL;  // sc->td.layerRoad.smoke = 1.f;
 	}
+
 	//  set normal reverb
 	pGame->snd->sound_mgr->SetReverb(scn->sc->revSet.normal);
 	
@@ -537,9 +527,9 @@ void App::LoadScene()  // 3
 	
 
 	//  checkpoint arrow
-	// bool deny = gui->pChall && !gui->pChall->chk_arr;
-	// if (!bHideHudArr && !deny)
-	// 	hud->arrow.Create(mSceneMgr, pSet);
+	bool deny = gui->pChall && !gui->pChall->chk_arr;
+	if (!bHideHudArr && !deny)
+		hud->arrow.Create(mSceneMgr, pSet);
 }
 
 
@@ -713,7 +703,7 @@ void App::LoadTrees()  // 8
 		{
 			MATHVECTOR<float,3> pos = car->posAtStart;
 			Vector3 stPos(pos[0],pos[2],-pos[1]);
-			float yt = scn->terrain->getHeightAtWorldPosition(stPos), yd = stPos.y - yt - 0.5f;
+			float yt = scn->terrain->getHeight(stPos), yd = stPos.y - yt - 0.5f;
 			//todo: either sweep test car body, or world->CastRay x4 at wheels -for bridges, pipes
 			//pGame->collision.world->;  //car->dynamics.chassis
 			if (yd < 0.f)
@@ -767,7 +757,6 @@ void App::NewGameDoLoad()
 		// #ifdef DEBUG  //todo: doesnt hide later, why?
 		// LoadingOff();
 		// #endif
-		// mLoadingBar->SetWidth(100.f);
 
 		//-  cars need update
 		for (int i=0; i < carModels.size(); ++i)
@@ -880,7 +869,7 @@ void App::CreateRoadsInt()
 	Camera* cam = mCamera; //*mSplitMgr->mCameras.begin();
 
 	//  get all road*.xml
-	strlist lr;  string path = TrkDir();
+	strlist lr;  string path = gcom->TrkDir();
 	PATHMANAGER::DirList(path, lr, "xml");
 	
 	for (auto fname:lr)
