@@ -167,12 +167,6 @@ void App::createScene01()
 
 	LogO(">>>> Init SR done ----");
 
-	//  find cur id  remove..
-	const auto* data = scn->data;
-	idTrack = data->tracks->trkmap[pSet->gui.track] -1;
-	idCar = data->cars->carmap[pSet->gui.car[0]] -1;
-
-
 	LogO("---- base createScene");
 
 	TutorialGameState::createScene01();

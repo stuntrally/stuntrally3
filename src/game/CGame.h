@@ -45,7 +45,6 @@ class App : public BaseApp,	//public ICS::ChannelListener,
 public:	
 	bool shift = false, ctrl = false;
 private:
-	int idTrack = 0, idCar = 0;
 
 	//  wireframe
 	Ogre::HlmsMacroblock macroblockWire;

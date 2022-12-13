@@ -121,7 +121,7 @@ void CHud::Size()
 
 			//  times
 			bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 /*|| app->mClient*/;
-			int w = 160, tx = xMin + 40, ty = yMin + 400; //40
+			int w = 160, tx = xMin + 40, ty = yMin + 40;
 			h.bckTimes->setPosition(tx-20,ty);
 			//tx = 24;  ty = (hasLaps ? 16 : 4);
 			h.txTimTxt->setPosition(tx,ty);

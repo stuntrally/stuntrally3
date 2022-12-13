@@ -112,13 +112,6 @@ void App::generateDebugText()
 		txt += "\n\nPos:  " + fToStr( camPos.x, 1) +"  "+ fToStr( camPos.y, 1) +"  "+ fToStr( camPos.z, 1) + "\n\n";
 		txt += "\n- + Pitch  " + fToStr( sc->ldPitch, 1,4 );
 		txt += "\n/ * Yaw    " + fToStr( sc->ldYaw, 1,4 );
-	}
-	else if( mDisplayHelpMode == 1 )
-	{
-		txt = generateFpsDebugText();
-
-		txt += "Vgt " + iToStr(scn->cntAll, 5);
-		txt += "  Gui " + toStr( MyGUI::Ogre2RenderManager::getInstance().getBatchCount() );
 
 		txt += "\n^ v Param  " + fToStr( param, 0 );
 		
@@ -147,15 +140,14 @@ void App::generateDebugText()
 		case 14:  txt += "envmap Scale  " + fToStr( p.envmapScale, d );  break;
 		}
 	}
-	txt += "\n\n";
+	else if( mDisplayHelpMode == 1 )
+	{
+		txt = "\n" + generateFpsDebugText();
 
-	const auto* data = scn->data;
-	txt +=
-		toStr(data->tracks->trks[idTrack].n) +" "+
-		data->tracks->trks[idTrack].name +"\n";
-	txt += toStr(idCar+1) +"  "+
-		data->cars->cars[idCar].id + " " +
-		data->cars->cars[idCar].name +"\n\n";
+		txt += "  Vgt " + iToStr(scn->cntAll, 5);
+		txt += "  Gui " + toStr( MyGUI::Ogre2RenderManager::getInstance().getBatchCount() );
+	}
+	txt += "\n\n";
 
 	if (pGame)  // CAR text
 	{

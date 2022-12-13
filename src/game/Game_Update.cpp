@@ -442,22 +442,6 @@ void App::keyPressed( const SDL_KeyboardEvent &arg )
 		break;
 	}
 
-
-	//***  pick track, car  ***
-	int mul4 = shift ? 10 : ctrl ? 4 : 1;
-	const auto* data = scn->data;
-	int tracks = data->tracks->trks.size();
-	int cars = data->cars->cars.size();
-
-	if (itrk)
-	{	idTrack = (idTrack + mul4 * itrk + tracks) % tracks;
-		pSet->gui.track = data->tracks->trks[idTrack].name;
-	}
-	if (icar)
-	{	idCar = (idCar + mul4 * icar + cars) % cars;
-		pSet->gui.car[0] = data->cars->cars[idCar].id;
-	}
-
 	TutorialGameState::keyPressed( arg );
 }
 
