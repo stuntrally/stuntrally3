@@ -346,8 +346,8 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 	if (pSet->show_times && pCar)
 	{
 		TIMER& tim = app->pGame->timer;
-		/*bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 || app->mClient;
-		if (hasLaps)
+		bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 /*|| app->mClient*/;
+		/*if (hasLaps) //;
 		{	//  place
 			if (pCarM->iWonPlace > 0 && h.txPlace)
 			{
@@ -414,7 +414,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 		}
 		if (h.txTimes)
 			h.txTimes->setCaption(
-				//; (hasLaps ? "#A0E0D0"+toStr(tim.GetCurrentLap(carId)+1)+" / "+toStr(pSet->game.num_laps) : "") +
+				(hasLaps ? "#A0E0D0"+toStr(tim.GetCurrentLap(carId)+1)+" / "+toStr(pSet->game.num_laps) : "") +
 				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId))+
 				(cur ? String("  ") + (diff > 0.f ? "#80E0FF+" : "#60FF60-")+
 				 	fToStr(fabs(diff), 1,3) : "")+

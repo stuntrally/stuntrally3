@@ -13,7 +13,7 @@
 #include <OgreManualObject2.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
-// #include <OgreRenderWindow.h>
+#include "OgreWindow.h"
 #include <OgreCamera.h>
 #include <OgreOverlayElement.h>
 #include <OgreTechnique.h>
@@ -108,8 +108,7 @@ Vector3 CHud::projectPoint(const Camera* cam, const Vector3& pos)
 	Real y = -pos2D.y * 0.5f + 0.5f;
 	bool out = !cam->isVisible(pos);
 
-	//; return Vector3(x * app->mWindow->getWidth(), y * app->mWindow->getHeight(), out ? -1.f : 1.f);
-	return Vector3(x, y, out ? -1.f : 1.f);
+	return Vector3(x * app->mWindow->getWidth(), y * app->mWindow->getHeight(), out ? -1.f : 1.f);
 }
 /*
 using namespace MyGUI;
@@ -142,10 +141,10 @@ void CHud::UpdDbgTxtClr()
 	}
 }
 */
+
 #ifndef BT_NO_PROFILE
 ///  Bullet profiling text
 //--------------------------------------------------------------------------------------------------------------
-
 void CHud::bltDumpRecursive(CProfileIterator* pit, int spacing, std::stringstream& os)
 {
 	pit->First();

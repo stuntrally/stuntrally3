@@ -25,7 +25,7 @@
 #include "CarModel.h"
 // #include "SplitScreen.h"
 // #include "GraphView.h"
-//; #include "../network/gameclient.hpp"
+//; #include "gameclient.hpp"
 // #include <MyGUI_OgrePlatform.h>
 // #include <MyGUI_PointerManager.h>
 #include <OgreSceneManager.h>
@@ -36,7 +36,8 @@
 #include <OgreMaterialManager.h>
 #include "OgreTextureGpuManager.h"
 
-#include "MyGUI_TextBox.h"
+#include <MyGUI_TextBox.h>
+#include <MyGUI_Window.h>
 // using namespace MyGUI;
 using namespace Ogre;
 using namespace std;
@@ -171,7 +172,7 @@ void App::LoadData()
 	}
 	
 	//  load
-	if (pSet->autostart)  //;
+	if (pSet->autostart)
 		NewGame();
 }
 
@@ -182,16 +183,17 @@ void App::LoadData()
 void App::NewGame(bool force)
 {
 	//  actual loading isn't done here
-	// isFocGui = false;
-	// gui->toggleGui(false);  // hide gui
+	isFocGui = false;
+	if (gui->bGI)
+		gui->toggleGui(false);  // hide gui
 	// mWndNetEnd->setVisible(false);
  
 	bLoading = true;  iLoad1stFrames = 0;
 	carIdWin = 1;  iRplCarOfs = 0;
 
 	//  wait until sim finishes
-	// while (bSimulating)
-		// boost::this_thread::sleep(boost::posix_time::milliseconds(pSet->thread_sleep));
+	while (bSimulating)
+		Threads::Sleep( pSet->thread_sleep );
 
 	bRplPlay = 0;  iRplSkip = 0;
 	pSet->rpl_rec = bRplRec;  // changed only at new game
@@ -218,15 +220,16 @@ void App::NewGame(bool force)
 	{
 		bLoading = false;  iLoad1stFrames = -2;
 		LogO("TRACK doesn't exist !!");
-		/*gui->BackFromChs();
+		gui->BackFromChs();
 		//toggleGui(true);  // show gui
-		Message::createMessageBox("Message", TR("#{Track}"),
+		/*Message::createMessageBox("Message", TR("#{Track}"),
 			TR("#{TrackNotFound}")+"\n" + pSet->game.track +
 			(pSet->game.track_user ? " *"+TR("#{TweakUser}")+"*" :"") + "\nPath: " + gcom->TrkDir(),
 			MessageBoxStyle::IconError | MessageBoxStyle::Ok);*/
 		return;
 	}	
-	// mWndRpl->setVisible(false);  mWndRplTxt->setVisible(false);  // hide rpl ctrl
+	if (mWndRpl)     mWndRpl->setVisible(false);
+	if (mWndRplTxt)  mWndRplTxt->setVisible(false);  // hide rpl ctrl
 
 	LoadingOn();
 	// hud->Show(true);  // hide HUD
@@ -896,13 +899,13 @@ void App::CreateRoadsInt()
 }
 
 
-///;  Trail ghost track  ~~--~-~--
+///  Trail ghost track  ~~--~-~--
 //---------------------------------------------------------------------------------------------------------------
 
 void App::CreateTrail(Camera* cam)
 {
-	if (!pSet->trail_show)
-		return;  //--
+	// if (!pSet->trail_show)
+		return;  // fixme crash in replay--
 	if (scn->trail)
 		scn->DestroyTrail();
 

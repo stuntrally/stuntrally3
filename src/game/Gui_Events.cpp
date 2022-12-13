@@ -516,12 +516,12 @@ void CGui::btnLesson(WP wp)
 	}
 	file = PATHMANAGER::Lessons() + "/" + file + ".rpl";
 	bLesson = true;  //`
-	// btnRplLoadFile(file);
+	btnRplLoadFile(file);
 	pSet->game.trackreverse = file.find('b') != string::npos;  //app->replay.header.reverse;
 	
 	rplSubText->setCaption("");  app->mWndRplTxt->setVisible(false);
 	//  hud setup, restore ..
-	ckTrailShow.SetValue(1);  ckPaceShow.SetValue(1);  ckMinimap.SetValue(1);
+	// ckTrailShow.SetValue(1);  /*ckPaceShow.SetValue(1);*/  ckMinimap.SetValue(1);
 	ckTimes.SetValue(0);
 }
 

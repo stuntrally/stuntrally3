@@ -1369,10 +1369,6 @@
 					<Property key="Caption" value="#{ScreenshotPng}"/>
 				</Widget>
 
-				<Widget type="Button" skin="CheckBox" position="362 62 256 24" name="MultiThread">
-					<Property key="TextColour" value="0.7 0.89 1.0"/>
-					<Property key="Caption" value="#{MultiThread} *"/>
-				</Widget>
 				<Widget type="Button" skin="CheckBox" position="362 94 300 24" name="ShowPictures">
 					<Property key="TextColour" value="0.5 0.6 0.7"/>
 					<Property key="Caption" value="#{ShowPictures} *"/>

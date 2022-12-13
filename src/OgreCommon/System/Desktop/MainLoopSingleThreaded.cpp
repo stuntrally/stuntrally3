@@ -108,9 +108,9 @@ int MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 	   	if (graphicsSystem->mGrabMouse)
 		{
 	 		inputHandler->setGrabMousePointer( true );
-	 		inputHandler->setMouseVisible( false );
 	 		inputHandler->setMouseRelative( true );
 		}
+	 		inputHandler->setMouseVisible( false );
 	#endif
 
 		Ogre::Timer timer;

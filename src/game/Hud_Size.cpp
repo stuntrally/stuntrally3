@@ -6,7 +6,7 @@
 // #include "GuiCom.h"
 #include "CGame.h"
 #include "CHud.h"
-// #include "CGui.h"
+#include "CGui.h"
 #include "game.h"
 #include "Road.h"
 // #include "SplitScreen.h"
@@ -240,12 +240,12 @@ void CHud::Show(bool hideAll)
 	}
 	//; if (ndPos)  ndPos->setVisible(pSet->trackmap);
 	
-	/*app->updMouse();
+	/*app->updMouse();*/
 	if (app->mWndRpl && !app->bLoading)  // replay ctrls
-		app->mWndRpl->setVisible(app->bRplPlay && app->bRplWnd);*/
+		app->mWndRpl->setVisible(app->bRplPlay && app->bRplWnd);
 	//  lesson replay  >> >
-	/*if (app->mWndRplTxt && !app->bLoading && app->gui->bLesson)
-		app->mWndRplTxt->setVisible(app->bRplPlay);*/
+	if (app->mWndRplTxt && !app->bLoading && app->gui->bLesson)
+		app->mWndRplTxt->setVisible(app->bRplPlay);
 }
 
 void CHud::ShowVp(bool vp)	// todo: use vis mask ..

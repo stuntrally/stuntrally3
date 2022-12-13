@@ -123,9 +123,9 @@ unsigned long renderThreadApp( Ogre::ThreadHandle *threadHandle )
 	if (graphicsSystem->mGrabMouse)
 	{
 		inputHandler->setGrabMousePointer( true );
-		inputHandler->setMouseVisible( false );
 		inputHandler->setMouseRelative( true );
 	}
+		inputHandler->setMouseVisible( false );
 	#endif
 
 	Ogre::Window *renderWindow = graphicsSystem->getRenderWindow();

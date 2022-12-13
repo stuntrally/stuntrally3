@@ -114,13 +114,13 @@ void App::Load()
 
 void App::Destroy()
 {
-	if (pGame)
-		pGame->End();
-
 	DestroyGui();
 
 	delete pGame;
 	delete pSet;
+	// delete data;
+	// delete hud;
+	// rest in ~App()
 }
 
 

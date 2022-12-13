@@ -428,7 +428,7 @@ void GAME::Tick(double deltat)
 		
 	//.  dont simulate before /network start
 	if (!app)  return;
-	bool sim = true; //; app->iLoad1stFrames == -2 && (!timer.waiting || timer.end_sim);
+	bool sim = app->iLoad1stFrames == -2 && (!timer.waiting || timer.end_sim);
 
 	//  speed up perf test
 	//; if (app && app->bPerfTest)
@@ -481,7 +481,7 @@ void GAME::AdvanceGameLogic(double dt)
 			}*/
 
 			if (dt > 0.0)
-				collision.Update(dt, 0);  //; settings->bltProfilerTxt);
+				collision.Update(dt, pSet->bltProfilerTxt);
 
 			PROFILER.endBlock("-physics");
 

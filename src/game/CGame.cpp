@@ -159,7 +159,7 @@ void App::UpdThr()
 		double dt = double(gtim.getMicroseconds()) * 0.000001;
 		gtim.reset();
 		
-		if (/*pSet->multi_thr == 1 &&*/ !bLoading && !mShutDown && pGame)
+		if (!bLoading && !mShutDown && pGame)
 		{
 			bSimulating = true;
 			bool ret = pGame->OneLoop(dt);

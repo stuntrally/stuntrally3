@@ -158,8 +158,8 @@ void CAR::UpdateSounds(float dt)
 	bool terminal = dynamics.fDamage >= 100.f;
 	float fDmg = pApp->scn->sc->damageMul;
 
-	///;  replay play  ------------------------------------------
-	/*if (pApp->bRplPlay)
+	//  replay play  ------------------------------------------
+	if (pApp->bRplPlay)
 	{	dmg = false;
 
 		#ifdef DEBUG
@@ -205,7 +205,7 @@ void CAR::UpdateSounds(float dt)
 			if (wh.whP >= 1)  mud = true;
 		}
 	}
-	else*/  /// game  ------------------------------------------
+	else  /// game  ------------------------------------------
 	{
 		pos = dynamics.GetPosition();  rot = dynamics.GetOrientation();
 		rpm = GetEngineRPM();

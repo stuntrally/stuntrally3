@@ -209,12 +209,12 @@ void PATHMANAGER::Init(bool log_paths)
 	// Create cache dir
 	CreateDir(CacheDir());
 	CreateDir(CacheDir()+"/tracks");
-	CreateDir(ShaderDir());
+	// CreateDir(ShaderDir());
 
 	// Print diagnostic info
 	if (log_paths)
 	{
-		info.clear();
+		info.str(string());  // clear, to not have twice
 		info << "Paths info" << endl;
 		info << "-------------------------" << endl;
 		info << "Ogre plugin-: " << ogre_plugin << endl;

@@ -69,7 +69,7 @@ void CGui::CarListUpd(bool resetNotFound)
 			//if (sTrkFind == "" || strstr(nlow.c_str(), sTrkFind.c_str()) != 0)
 
 			///  filter for challenge
-			if (!filter) //; || IsChallCar(name))
+			if (!filter || IsChallCar(name))
 			{
 				AddCarL(name, (*i).ci);
 				if (name == pSet->gui.car[0])  {  si = ii;
@@ -260,7 +260,7 @@ void CGui::listCarChng(MultiList2* li, size_t)
 
 	changeCar();
 	UpdCarStats(car);
-	//LogO(String(":::: Time car tab upd: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::: Time car tab upd: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }	
 void CGui::changeCar()
 {
