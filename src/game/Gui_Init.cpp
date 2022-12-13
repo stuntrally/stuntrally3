@@ -123,7 +123,6 @@ void CGui::InitGui()
 	gcom->InitGuiScreenRes();
 
 
-	loadReadme = true;
 	toggleGui(false);
 	// app->updMouse();
 	gcom->bnQuit->setVisible(app->isFocGui);
