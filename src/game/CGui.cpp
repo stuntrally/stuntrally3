@@ -1,5 +1,4 @@
 #include "pch.h"
-// #include "BaseApp.h"
 #include "Gui_Def.h"
 #include "CGame.h"
 #include "CHud.h"
@@ -19,11 +18,6 @@
 #include <OgreWindow.h>
 #include <OgreOverlay.h>
 #include <MyGUI.h>
-// #include <MyGUI_Gui.h>
-// #include <MyGUI_Widget.h>
-// #include <MyGUI_Button.h>
-// #include <MyGUI_Window.h>
-// #include <MyGUI_TabControl.h>
 using namespace MyGUI;
 using namespace Ogre;
 using namespace std;

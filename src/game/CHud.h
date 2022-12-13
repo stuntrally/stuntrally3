@@ -11,13 +11,10 @@
 #include <OgreVector3.h>
 
 // #include "../network/networkcallbacks.hpp"
-// #include <boost/thread.hpp>
+// #include <thread>
 // #include <MyGUI.h>
-// #include <OgreShadowCameraSetup.h>
 //#include <OgreOverlayElement.h>
 // #include <OgreOverlay.h>
-
-// #include "../shiny/Main/Factory.hpp"
 
 
 namespace Ogre {  class SceneNode;  class SceneManager;  class Viewport;  class ManualObject;  class Item;  }

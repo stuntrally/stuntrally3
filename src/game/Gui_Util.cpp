@@ -13,11 +13,10 @@
 #include "MultiList2.h"
 #include "Slider.h"
 // #include "gameclient.hpp"
-// #include <boost/filesystem.hpp>
+// #include <filesystem>
 #include <OgreTimer.h>
 #include <MyGUI.h>
 #include "tinyxml2.h"
-#include "settings.h"
 using namespace std;
 using namespace Ogre;
 using namespace MyGUI;
@@ -544,7 +543,7 @@ void CGui::toggleGui(bool toggle)
 	UString sCh = tutor ? TR("#FFC020#{Tutorial}") :
 		champ ? TR("#B0FFB0#{Championship}") : TR("#C0C0FF#{Challenge}");
 
-	// UpdChampTabVis();
+	UpdChampTabVis();
 	
 	bool notMain = gui && !(mnu == MN1_Main || mnu == MN1_Race);
 	bool vis = notMain && gc;
@@ -588,7 +587,7 @@ void CGui::toggleGui(bool toggle)
 	{	first = false;
 		gcom->GuiCenterMouse();
 	}
-	//LogO(String(":::: Time gui upd: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::: Time gui upd: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 
 

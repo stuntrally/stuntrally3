@@ -61,9 +61,9 @@ void CGui::btnRplLoadFile(std::string file)
 {
 	if (!app->replay.LoadFile(file))
 	{
-		/*Message::createMessageBox(
+		Message::createMessageBox(
 			"Message", TR("#{Replay} - #{RplLoad}"), TR("#{Error}."),
-			MessageBoxStyle::IconWarning | MessageBoxStyle::Ok);*/
+			MessageBoxStyle::IconWarning | MessageBoxStyle::Ok);
 	}else
 	{	//  car, track change
 		const ReplayHeader2& h = app->replay.header;
@@ -82,9 +82,9 @@ void CGui::btnRplLoadFile(std::string file)
 				er += TR("#{Vehicle}: ")+h.cars[p]+TR(" - #{DoesntExist}.\n");
 
 		if (!er.empty())
-		{	/*Message::createMessageBox(
+		{	Message::createMessageBox(
 				"Message", TR("#{Replay} - #{RplLoad} - #{Error}"), "\n"+er,
-				MessageBoxStyle::IconError | MessageBoxStyle::Ok);*/
+				MessageBoxStyle::IconError | MessageBoxStyle::Ok);
 			return;
 		}
 		//collis_veget, collis_cars, collis_roadw, dyn_objects;
