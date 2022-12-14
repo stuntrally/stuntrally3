@@ -2,7 +2,7 @@ DebugFont
 {
 	type 		truetype
 	source 		VeraMono.ttf
-	size 		15
+	size 		17
 	resolution 	192
 }
 

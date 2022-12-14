@@ -150,18 +150,18 @@ void CHud::Create()
 		}
 		
 		//  vel
-		/*h.bckVel = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 130,82, Align::Left, "IVel"+s);
-		h.bckVel->setImageTexture("back_vel.png");
-		h.bckVel->setAlpha(0.7f);*/
+		h.bckVel = h.parent->createWidget<ImageBox>("ImageBox",
+			0,y, 340+24,96+12, Align::Left, "IVel"+s);
+		h.bckVel->setImageTexture("background2.jpg");
+		h.bckVel->setAlpha(0.7f);
 		
-		//h.txVel = h.bckVel->createWidget<TextBox>("TextBox",
-		//	10,5, 360,96, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
+		// h.txVel = h.bckVel->createWidget<TextBox>("TextBox",
+			// 10,5, 360,96, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
 		h.txVel = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 360,96, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
+			0,y, 340,96, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
 		h.txVel->setFontName("DigGear");  //h.txVel->setFontHeight(64);
-		//h.txVel->setInheritsAlpha(false);
-		//h.txVel->setTextShadow(true);
+		h.txVel->setInheritsAlpha(false);
+		h.txVel->setTextShadowColour(Colour::Black);  h.txVel->setTextShadow(true);
 
 		//  boost
 		if (cm->vType != V_Sphere)

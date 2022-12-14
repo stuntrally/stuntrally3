@@ -83,7 +83,7 @@
 	
 	
 	<!-- HUD, gear, vel digits -->
-    <Resource type="ResourceManualFont" name="DigGear">
+    <Resource type="ResourceManualFont" name="DigGear2">
         <Property key="Source" value="Digital_41.png"/>
         <Property key="DefaultHeight" value="88"/>
 		<Property key="OffsetHeight" value="0"/>
@@ -132,17 +132,21 @@
 
 
 	<!-- HUD, gear, vel digits  0-9 N R -->
-	<!--<Resource type="ResourceTrueTypeFont" name="DigGearBig">
-		<Property key="Source" value="LiberationSans-BoldItalic.ttf"/>
+	<Resource type="ResourceTrueTypeFont" name="DigGear">
+		<!-- <Property key="Source" value="LiberationSans-BoldItalic.ttf"/>
+		<Property key="SpaceWidth" value="39"/> -->
+		<Property key="Source" value="DejaVuLGCSans.ttf"/>
+		<Property key="SpaceWidth" value="42"/>
+		<!-- <Property key="Source" value="VeraMono.ttf"/>
+		<Property key="SpaceWidth" value="40"/> -->
 		<Property key="Size" value="96"/>
 		<Property key="Resolution" value="50"/>
-		<Property key="Antialias" value="false"/>
-		<Property key="SpaceWidth" value="34"/>
+		<Property key="Antialias" value="true"/>
 		<Property key="TabWidth" value="8"/>
 		<Property key="Distance" value="4"/>
 		<Property key="OffsetHeight" value="-1"/>
 		<Codes>
-			<Code range="48 57"/>
+			<Code range="37 58"/>
 			<Code range="78"/>
 			<Code range="82"/>
 		</Codes>

@@ -227,25 +227,25 @@
 					<UserString key="tip" value="cryham.tuxfamily.org"/>
 				</Widget>
 
-				<Widget type="TextBox" skin="TextBox" position="102 456 150 24">
+				<Widget type="TextBox" skin="TextBox" position="102 476 150 24">
 					<Property key="Caption" value="#{BasedOn}"/>
-					<Property key="TextColour" value="0.8 1 0.8"/>
+					<Property key="TextColour" value="0.8 0.8 0.8"/>
 					<Property key="FontName" value="font.big"/>
-					<Property key="Alpha" value="0.7"/>
-				</Widget>
-				<Widget type="ImageBox" skin="ImageBox" position="4 470 256 128">
-					<Property key="ImageTexture" value="ogre-logo.png"/>
-					<UserString key="tip" value="ogre3d.org"/>
 					<Property key="Alpha" value="0.5"/>
 				</Widget>
-
-				<Widget type="TextBox" skin="TextBox" position="614 466 150 24">
-					<Property key="Caption" value="#{AndUsing}"/>
-					<Property key="TextColour" value="0.85 0.85 0.85"/>
-					<Property key="FontName" value="font.big"/>
+				<Widget type="ImageBox" skin="ImageBox" position="4 500 341 85">
+					<Property key="ImageTexture" value="ogre-logo.png"/>
+					<UserString key="tip" value="ogre3d.org"/>
 					<Property key="Alpha" value="0.7"/>
 				</Widget>
-				<Widget type="ImageBox" skin="ImageBox" position="468 480 330 76">
+
+				<Widget type="TextBox" skin="TextBox" position="614 476 150 24">
+					<Property key="Caption" value="#{AndUsing}"/>
+					<Property key="TextColour" value="0.8 0.8 0.8"/>
+					<Property key="FontName" value="font.big"/>
+					<Property key="Alpha" value="0.5"/>
+				</Widget>
+				<Widget type="ImageBox" skin="ImageBox" position="488 490 297 68">
 					<Property key="ImageTexture" value="vdrift-logo.png"/>
 					<UserString key="tip" value="vdrift.net"/>
 					<Property key="Alpha" value="0.6"/>

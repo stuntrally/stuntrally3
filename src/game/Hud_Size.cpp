@@ -101,6 +101,8 @@ void CHud::Size()
 				bx = std::min(bx, xMax -180);  // not too near to vel
 			if (h.txGear)
 				h.txGear->setPosition(gx,gy);
+			if (h.bckVel)
+				h.bckVel->setPosition(vx-32,vy-6);
 			h.txVel->setPosition(vx,vy);  //h.bckVel
 
 			#if 0
@@ -218,6 +220,8 @@ void CHud::Show(bool hideAll)
 			
 				if (h.txGear)
 					h.txGear->setVisible(pSet->show_digits);
+				if (h.bckVel)
+					h.bckVel->setVisible(pSet->show_digits);
 				h.txVel->setVisible(pSet->show_digits);
 				if (h.txBFuel)
 				{	h.txBFuel->setVisible(show && btxt);

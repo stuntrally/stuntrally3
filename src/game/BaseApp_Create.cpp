@@ -728,13 +728,13 @@ void BaseApp::baseInitGui(GraphicsSystem *mGraphicsSystem)
 	{
 		imgBack = mGui->createWidget<ImageBox>("ImageBox",
 			0,0, 800,600, Align::Default, "Back","ImgBack");
-		imgBack->setImageTexture("background3s.jpg");
+		imgBack->setImageTexture("background2.jpg");
 	}
 
 	///  loading background img
 	imgLoad = mGui->createWidget<ImageBox>("ImageBox",
 		0,0, 800,600, Align::Default, "Back", "ImgLoad");
-	imgLoad->setImageTexture("background3s.png");
+	imgLoad->setImageTexture("background2.png");
 	imgLoad->setVisible(true);
 
 	baseSizeGui();

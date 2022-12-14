@@ -67,7 +67,7 @@ public:
 	// virtual void createScene() = 0;
 	// virtual void destroyScene() = 0;
 
-	void createFrameListener();
+	void createInputs();
 	// void createViewports(), refreshCompositor(bool disableAll=false);
 	// void setupResources(), createResourceListener(), loadResources();
 	void LoadingOn(), LoadingOff();
