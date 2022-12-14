@@ -519,7 +519,7 @@ void GAME::UpdateCarInputs(CAR & car)
 
 	//  Input
 	app->input->mPlayerInputStateMutex.lock();
-	int id = 0; //; std::min(3, car.id);
+	int id = std::min(3, car.id);
 	for (int i=0; i<4; ++i)
 	{
 		for (int a = 0; a < NumPlayerActions; ++a)

@@ -391,7 +391,8 @@ void App::LoadGame()  // 2
 	//  this is just here because vdrift car has to be created first
 	auto camIt = mCamera;
 	
-	int numCars = /*mClient ? mClient->getPeerCount()+1 :*/ pSet->game.local_players;  // networked or splitscreen
+	int numCars = /*mClient ? mClient->getPeerCount()+1 :*/
+		pSet->game.local_players;  // networked or splitscreen
 	int i;
 	for (i = 0; i < numCars; ++i)
 	{
@@ -567,7 +568,8 @@ void App::LoadCar()  // 4
 	if (!bRplPlay)
 	{
 		replay.InitHeader(pSet->game.track.c_str(), pSet->game.track_user, !bRplPlay);
-		rh.numPlayers = 1; //; mClient ? (int)mClient->getPeerCount()+1 : pSet->game.local_players;  // networked or splitscreen
+		rh.numPlayers = /*mClient ? (int)mClient->getPeerCount()+1 :*/
+			pSet->game.local_players;  // networked or splitscreen
 		replay.Clear();  replay.ClearCars();  // upd num plr
 		rh.trees = pSet->game.trees;
 

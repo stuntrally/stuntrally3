@@ -347,7 +347,8 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 	if (pSet->show_times && pCar)
 	{
 		TIMER& tim = app->pGame->timer;
-		bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 /*|| app->mClient*/;
+		bool hasLaps = pSet->game.local_players > 1 ||
+			pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 /*|| app->mClient*/;
 		if (hasLaps)
 		{	//  place
 			if (pCarM->iWonPlace > 0 && h.txPlace)

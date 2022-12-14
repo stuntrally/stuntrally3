@@ -55,7 +55,8 @@ void CarModel::UpdNextCheck()
 	Vector3 p;
 	if (iNumChks == pApp->scn->road->mChks.size() && iCurChk != -1)
 	{
-		bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 /*|| pApp->mClient*/;
+		bool hasLaps = pSet->game.local_players > 1 ||
+			pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 /*|| pApp->mClient*/;
 		int lap = pGame->timer.GetCurrentLap(iIndex) + 1, laps = pSet->game.num_laps;
 		String smtr = "checkpoint_lap";
 		if (hasLaps)

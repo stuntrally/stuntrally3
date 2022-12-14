@@ -144,12 +144,12 @@ void CarModel::Load(int startId, bool loop)
 	if (!isGhost())  // ghost has pCar, dont create
 	{
 		if (startId == -1)  startId = iIndex;
-		/*if (pSet->game.start_order == 1)  //;
+		// /*if (pSet->game.start_order == 1)  //;
 		{	//  reverse start order
-			int numCars = pApp->mClient ? pApp->mClient->getPeerCount()+1  // networked
-										: pSet->game.local_players;  // splitscreen
+			int numCars = //pApp->mClient ? pApp->mClient->getPeerCount()+1 :  // networked
+				pSet->game.local_players;  // splitscreen
 			startId = numCars-1 - startId;
-		}*/
+		}
 		int i = pSet->game.collis_cars ? startId : 0;  // offset when cars collide
 
 		//  start pos

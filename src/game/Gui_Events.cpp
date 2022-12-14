@@ -254,7 +254,8 @@ void CGui::btnNumPlayers(WP wp)
 	else if (wp->getName() == "btnPlayers2")  pSet->gui.local_players = 2;
 	else if (wp->getName() == "btnPlayers3")  pSet->gui.local_players = 3;
 	else if (wp->getName() == "btnPlayers4")  pSet->gui.local_players = 4;
-	if (valLocPlayers)  valLocPlayers->setCaption(toStr(pSet->gui.local_players));
+	if (valLocPlayers)
+		valLocPlayers->setCaption(toStr(pSet->gui.local_players));
 }
 
 void CGui::chkStartOrd(WP wp)

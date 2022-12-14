@@ -227,7 +227,8 @@ void CHud::Create()
 		h.bckTimes->setColour(Colour(0.1,0.1,0.1));
 		h.bckTimes->setAlpha(0.6f);
 		h.bckTimes->setImageTexture("back_times.png");
-		bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 /*|| app->mClient*/;
+		bool hasLaps = pSet->game.local_players > 1 ||
+			pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 /*|| app->mClient*/;
 
 		h.txTimTxt = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 170,260, Align::Left, "TimT"+s);

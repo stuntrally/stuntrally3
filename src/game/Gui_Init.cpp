@@ -379,7 +379,8 @@ void CGui::InitGui()
 	ck= &ckSplitVert;	ck->Init("chkSplitVertically", &pSet->split_vertically);
 	Chk("chkStartOrderRev", chkStartOrd, pSet->gui.start_order);
 	valLocPlayers = fTxt("valLocPlayers");
-	if (valLocPlayers)  valLocPlayers->setCaption(toStr(pSet->gui.local_players));
+	if (valLocPlayers)
+		valLocPlayers->setCaption(toStr(pSet->gui.local_players));
 
 
 	//  kmh/mph radio
