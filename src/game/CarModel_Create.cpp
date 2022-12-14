@@ -55,22 +55,10 @@ CarModel::CarModel(int index, int colorId, eCarType type, const string& name,
 
 	:mSceneMgr(sceneMgr), pSet(set), pGame(game)
 	,sc(s), mCamera(cam), pApp(app)
-	,iIndex(index), iColor(colorId % 6), sDirname(name), eType(type), vtype(V_Car)
+	,iIndex(index), iColor(colorId % 6), sDirname(name), cType(type), vType(V_Car)
 	
-	// ,fCam(0), iCamFluid(-1), fCamFl(0.6f)
-	// ,pMainNode(0), pCar(0), /*terrain(0),*/ ndSph(0), brakes(0)
-	,/*pReflect(0),*/ color(0,1,0), maxangle(26.f)
-	// ,hideTime(1.f), mbVisible(true), /*bLightMapEnabled(true),*/ bBraking(true)
-	// ,iCamNextOld(0), bLastChkOld(0), bInSt(0), bWrongChk(0),  iFirst(0)
-	// ,angCarY(0), vStartPos(0,0,0)//, pNickTxt(0)
-	// ,ndNextChk(0), itNextChk(0)
-	// ,all_subs(0), all_tris(0)  //stats
-	// ,bGetStPos(true), fChkTime(0.f), iWonPlace(0), iWonPlaceOld(0), iWonMsgTime(0.f)
-	// ,iInChk(-1),iCurChk(-1), iNumChks(0), iNextChk(0), iLoopChk(-1)  //ResetChecks();  // no road yet
-	// ,iInWrChk(-1), timeAtCurChk(0.f), iLoopLastCam(-1)
-	,sChkMtr("checkpoint_normal"), bChkUpd(true)
-	// ,distFirst(1.f), distLast(1.f), distTotal(10.f), trackPercent(0.f)
-	// ,updTimes(1), updLap(1), fLapAlpha(1.f)
+	,color(0,1,0)
+	,sChkMtr("checkpoint_normal")
 {
 	SetNumWheels(4);
 	int i,w;
@@ -156,7 +144,7 @@ void CarModel::Load(int startId, bool loop)
 	if (!isGhost())  // ghost has pCar, dont create
 	{
 		if (startId == -1)  startId = iIndex;
-		/*if (pSet->game.start_order == 1)
+		/*if (pSet->game.start_order == 1)  //;
 		{	//  reverse start order
 			int numCars = pApp->mClient ? pApp->mClient->getPeerCount()+1  // networked
 										: pSet->game.local_players;  // splitscreen
@@ -173,7 +161,7 @@ void CarModel::Load(int startId, bool loop)
 		if (pSet->game.trackreverse)
 		{	rot.Rotate(PI_d, 0,0,1);  rot[0] = -rot[0];  rot[1] = -rot[1];  }
 
-		pCar = pGame->LoadCar(pathCar, sDirname, pos, rot, true, eType == CT_REMOTE, iIndex);
+		pCar = pGame->LoadCar(pathCar, sDirname, pos, rot, true, cType == CT_REMOTE, iIndex);
 
 		if (!pCar)  LogO("Error: Creating CAR: " + sDirname + "  path: " + pathCar);
 		else  pCar->pCarM = this;
@@ -252,14 +240,14 @@ void CarModel::LoadConfig(const string & pathCar)
 
 
 	//  vehicle type
-	vtype = V_Car;
+	vType = V_Car;
 	string drive;
 	cf.GetParam("drive", drive);
 
 	if (drive == "hover")  //>
-		vtype = V_Spaceship;
+		vType = V_Spaceship;
 	else if (drive == "sphere")
-		vtype = V_Sphere;
+		vType = V_Sphere;
 
 
 	//  wheel count
@@ -405,17 +393,23 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 	Item *item =0;
 	try
 	{
-		//ent = mSceneMgr->createEntity(sCarI + sEnt, sDirname + sMesh, sCarI);
-		item = mSceneMgr->createItem( sDirname + sMesh, //"Cars"
-			sCarI/*ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME/**/, SCENE_DYNAMIC );
+		item = mSceneMgr->createItem( sDirname + sMesh, sCarI, SCENE_DYNAMIC );
 		pApp->scn->SetTexWrap(item);
 
 		//**  set reflection cube
-		assert( dynamic_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() ) );
-		Ogre::HlmsPbsDatablock *datablock =
-			static_cast<Ogre::HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() );
-		datablock->setTexture( Ogre::PBSM_REFLECTION, pApp->mDynamicCubemap );
-		//datablock->setDiffuse(Vector3(Math::RangeRandom(0.f, 1.f), 0.5f, 0.f));  // test
+		assert( dynamic_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() ) );
+		HlmsPbsDatablock *pDb =
+			static_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() );
+		pDb->setTexture( PBSM_REFLECTION, pApp->mDynamicCubemap );
+		// pDb->setSpecular(Vector3(Math::RangeRandom(0.f, 1.f), 0.5f, 0.f));  // test
+		/*
+		HlmsPbsDatablock db( *pDb );
+		db.setTexture( PBSM_REFLECTION, pApp->mDynamicCubemap );
+		db.setSpecular(Vector3(
+			Math::RangeRandom(0.f, 1.f),
+			Math::RangeRandom(0.f, 1.f),
+			Math::RangeRandom(0.f, 1.f)));  // test
+		item->getSubItem(0)->setDatablock( &db );*/
 	}
 	catch (Ogre::Exception ex)
 	{
@@ -424,7 +418,7 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 	ToDel(item);
 
 	if (bbox)  *bbox = item->getLocalAabb(); //getBoundingBox();
-	if (ghost)  {  item->setRenderQueueGroup(RQG_CarGhost);  item->setCastShadows(false);  }
+	// if (ghost)  {  item->setRenderQueueGroup(RQG_CarGhost);  item->setCastShadows(false);  }
 	else  if (visFlags == RV_CarGlass)  item->setRenderQueueGroup(RQG_CarGlass);
 	ndCar->attachObject(item);  item->setVisibilityFlags(visFlags);
 	if (bLogInfo)  LogMeshInfo(item, sDirname + sMesh);
@@ -438,7 +432,7 @@ void CarModel::Create()
 {
 	//if (!pCar)  return;
 
-	String strI = toStr(iIndex)+ (eType == CT_TRACK ? "Z" : (eType == CT_GHOST2 ? "V" :""));
+	String strI = toStr(iIndex)+ (cType == CT_TRACK ? "Z" : (cType == CT_GHOST2 ? "V" :""));
 	mtrId = strI;
 	String sCarI = "Car" + strI;
 	resGrpId = sCarI;
@@ -448,9 +442,9 @@ void CarModel::Create()
 	String rCar = resCar + "/" + sDirname;
 	String sCar = sCars + "/" + sDirname;
 	
-	bool ghost = false;  //isGhost();  //1 || for ghost test
+	bool ghost = isGhost();  //1 || for ghost test
 	bool bLogInfo = !isGhost();  // log mesh info
-	bool ghostTrk = false;//isGhostTrk();
+	bool ghostTrk = isGhostTrk();
 	
 
 	//  Resource locations -----------------------------------------
@@ -492,7 +486,7 @@ void CarModel::Create()
 
 	//  next checkpoint marker beam
 	bool deny = pApp->gui->pChall && !pApp->gui->pChall->chk_beam;
-	if (eType == CT_LOCAL && !deny && !pApp->bHideHudBeam)
+	if (cType == CT_LOCAL && !deny && !pApp->bHideHudBeam)
 	{
 		itNextChk = mSceneMgr->createItem("check.mesh");  ToDel(itNextChk);
 		itNextChk->setRenderQueueGroup(RQG_Weather);  itNextChk->setCastShadows(false);
@@ -532,36 +526,37 @@ void CarModel::Create()
 	CreatePart(ndCar, vPofs, sCar, res, "_body.mesh",     "",  ghost, RV_Car,  &bodyBox,  sMtr[Mtr_CarBody],  bLogInfo);
 
 	vPofs = Vector3(interiorOffset[0],interiorOffset[1],interiorOffset[2]);  //x+ back y+ down z+ right
-	if (!ghost)
+	// if (!ghostTrk)  //!ghost)
 	CreatePart(ndCar, vPofs, sCar, res, "_interior.mesh", "i", ghost, RV_Car,      0, sMtr[Mtr_CarBody]+"i",  bLogInfo);
 
 	vPofs = Vector3::ZERO;
 	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    "g", ghost, RV_CarGlass, 0, sMtr[Mtr_CarBody]+"g",  bLogInfo);
 	
-	if (vtype == V_Sphere)  //par temp
+	if (vType == V_Sphere)  //par temp
 		ndCar->setScale(2.f,2.f,2.f);
 
-#if 0  //  car lights test **  // par set..
-for (int i=0; i < 2; ++i)
-{
-	Light* light = mSceneMgr->createLight();
-	SceneNode* lightNode = ndCar->createChildSceneNode( SCENE_DYNAMIC,
-		bRotFix ?
-		Vector3(i ? -0.6 : 0.6, 0.0, 1.1) :  //par
-		Vector3(-1.1, 0.0, i ? -0.6 : 0.6) );
-	lightNode->attachObject( light );
-	light->setDiffuseColour( 1.f, 1.1f, 1.1f );
-	light->setSpecularColour( 1.f, 1.1f, 1.1f );
-	light->setPowerScale( Math::PI * 3 );
-	light->setType( Light::LT_SPOTLIGHT );
-	light->setDirection(
-		bRotFix ? Vector3( 0, -0.1, 1 ) : Vector3( -1, 0.1, 0 ) );
-	light->setAttenuationBasedOnRadius( 30.0f, 0.01f );
-    light->setSpotlightRange(Degree(5), Degree(40), 1.0f );  //par 5 30
-	light->setCastShadows(false);
-	lights.push_back(light);
-}
-#endif
+
+	if (0 && !ghost)  //  car lights **  // par set..
+	for (int i=0; i < 2; ++i)
+	{
+		Light* light = mSceneMgr->createLight();
+		SceneNode* lightNode = ndCar->createChildSceneNode( SCENE_DYNAMIC,
+			bRotFix ?
+			Vector3(i ? -0.6 : 0.6, 0.0, 1.1) :  //par
+			Vector3(-1.1, 0.0, i ? -0.6 : 0.6) );
+		lightNode->attachObject( light );
+		light->setDiffuseColour( 1.f, 1.1f, 1.1f );
+		light->setSpecularColour( 1.f, 1.1f, 1.1f );
+		light->setPowerScale( Math::PI * 3 );
+		light->setType( Light::LT_SPOTLIGHT );
+		light->setDirection(
+			bRotFix ? Vector3( 0, -0.1, 1 ) : Vector3( -1, 0.1, 0 ) );
+		light->setAttenuationBasedOnRadius( 30.0f, 0.01f );
+		light->setSpotlightRange(Degree(5), Degree(40), 1.0f );  //par 5 30
+		light->setCastShadows(false);
+		lights.push_back(light);
+	}
+
 
 	//  wheels  ----------------------
 	int w2 = numWheels==2 ? 1 : 2;
@@ -596,7 +591,7 @@ for (int i=0; i < 2; ++i)
 			String name = sDirname + "_brake.mesh";
 			Item* eBrake = mSceneMgr->createItem(name, res);  ToDel(eBrake);
 			// if (ghost)  {  eBrake->setRenderQueueGroup(g);  eBrake->setCastShadows(false);  }
-			ndBrake[w] = /*ndWh[w]->*/ndRoot->createChildSceneNode();  ToDel(ndBrake[w]);
+			ndBrake[w] = ndRoot->createChildSceneNode();  ToDel(ndBrake[w]);
 			ndBrake[w]->attachObject(eBrake);  eBrake->setVisibilityFlags(RV_Car);
 			if (bLogInfo && w==0)  LogMeshInfo(eBrake, name, 4);
 		}
@@ -610,7 +605,7 @@ for (int i=0; i < 2; ++i)
 	if (!brakePos.empty())
 	{
 		SceneNode* nd = ndCar->createChildSceneNode();  ToDel(nd);
-		brakes = mSceneMgr->createBillboardSet(/*"Flr"+strI,2*/);
+		brakes = mSceneMgr->createBillboardSet();
 		brakes->setDefaultDimensions(brakeSize, brakeSize);
 		// brakes->setRenderQueueGroup(RQG_CarTrails);
 		brakes->setVisibilityFlags(RV_Car);
@@ -806,7 +801,7 @@ void CarModel::RecreateMaterials()
 
 	//ChangeClr();
 
-	UpdateLightMap();
+	// UpdateLightMap();
 }
 
 void CarModel::setMtrName(const String& entName, const String& mtrName)
@@ -854,7 +849,7 @@ void CarModel::requestedConfiguration(sh::MaterialInstance* m, const string& con
 
 void CarModel::createdConfiguration(sh::MaterialInstance* m, const string& configuration)
 {
-	UpdateLightMap();
+	// UpdateLightMap();
 	ChangeClr();
 }
 #endif

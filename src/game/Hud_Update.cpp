@@ -51,8 +51,8 @@ void CHud::Update(int carId, float time)
 	//  track %  local, updated always
 	for (int c = 0; c < cntC; ++c)
 	{	CarModel* cm = app->carModels[c];
-		if (cm->eType == CarModel::CT_LOCAL ||
-			cm->eType == CarModel::CT_REPLAY)
+		if (cm->cType == CarModel::CT_LOCAL ||
+			cm->cType == CarModel::CT_REPLAY)
 			cm->UpdTrackPercent();
 	}
 	

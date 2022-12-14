@@ -348,7 +348,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 	{
 		TIMER& tim = app->pGame->timer;
 		bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 /*|| app->mClient*/;
-		/*if (hasLaps) //;
+		if (hasLaps)
 		{	//  place
 			if (pCarM->iWonPlace > 0 && h.txPlace)
 			{
@@ -358,7 +358,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 					Colour(0.4,1,0.2), Colour(1,1,0.3), Colour(1,0.7,0.2), Colour(1,0.5,0.2) };
 				h.txPlace->setTextColour(clrPlace[pCarM->iWonPlace-1]);
 				h.bckPlace->setVisible(true);
-		}	}*/
+		}	}
 
 		//  times  ------------------------------
 		bool cur = pCarM->iCurChk >= 0 && !app->vTimeAtChks.empty();

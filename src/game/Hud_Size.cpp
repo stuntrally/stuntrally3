@@ -43,7 +43,7 @@ void CHud::Size()
 	float wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
 	asp = wx/wy;
 
-	int cnt = 1; //pSet->game.local_players;
+	int cnt = 1; //; pSet->game.local_players;
 	#ifdef DEBUG
 	assert(cnt <= hud.size());
 	#endif

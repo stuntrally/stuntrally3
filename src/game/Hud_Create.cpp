@@ -141,7 +141,7 @@ void CHud::Create()
 			app->mWindow->getWidth(), app->mWindow->getHeight(),
 			Align::Left,"Back","main"+s);
 
-		if (cm->vtype == V_Car)
+		if (cm->vType == V_Car)
 		{
 			h.txGear = h.parent->createWidget<TextBox>("TextBox",
 				0,y, 160,116, Align::Left, "Gear"+s);  h.txGear->setVisible(false);
@@ -164,7 +164,7 @@ void CHud::Create()
 		//h.txVel->setTextShadow(true);
 
 		//  boost
-		if (cm->vtype != V_Sphere)
+		if (cm->vType != V_Sphere)
 		{
 			h.txBFuel = h.parent->createWidget<TextBox>("TextBox",
 				0,y, 120,80, Align::Right, "Fuel"+s);  h.txBFuel->setVisible(false);

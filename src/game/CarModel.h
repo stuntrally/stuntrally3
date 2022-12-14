@@ -14,18 +14,16 @@
 
 /*namespace Ogre {  class SceneNode;  class Terrain;  class Camera;  class SceneManager;
 	class ParticleSystem;  class Item;  class ManualObject;  class AxisAlignedBox;  
-	namespace v1 {
-		class RibbonTrail;  class BillboardSet;
-}	}*/
+	namespace v1 {	class RibbonTrail;  class BillboardSet;  }  }*/
 // namespace MyGUI {  class TextBox;  }
 class SETTINGS;  class GAME;  class CAR;
 class Scene;  class App;  class FollowCamera;  class CarReflection;
 
 
-//  CarModel is the "Ogre" part of the car.
+//  CarModel is the "Ogre" part of a vehicle.
 //  It is used to put meshes together, particle emitters, etc.
 
-class CarModel //: public sh::MaterialInstanceListener
+class CarModel
 {
 public:
 	/// -------------------- Car Types ---------------------------
@@ -38,13 +36,12 @@ public:
 	// CT_TRACK:	track's ghost file
 
 	enum eCarType {  CT_LOCAL=0, CT_REMOTE, CT_REPLAY,  CT_GHOST, CT_GHOST2, CT_TRACK };
-	eCarType eType;
-	bool isGhost()    const {  return eType >= CT_GHOST;  }
-	bool isGhostTrk() const {  return eType == CT_TRACK;  }
+	eCarType    cType = CT_LOCAL;
+	VehicleType vType = V_Car;
+	int numWheels = 4;
 
-	VehicleType vtype;
-
-	int numWheels;
+	bool isGhost()    const {  return cType >= CT_GHOST;  }
+	bool isGhostTrk() const {  return cType == CT_TRACK;  }
 	void SetNumWheels(int n);
 	
 	//  ctor
@@ -53,19 +50,23 @@ public:
 		Ogre::Camera* cam, App* app);
 	~CarModel();
 	
+
 	Ogre::String sDispName;  // diplay name in opponents list (nick for CT_REMOTE)
-	// MyGUI::TextBox* pNickTxt;  // multiplayer nick above car
-	
-	bool updTimes = true, updLap = true;  float fLapAlpha = 1.f;
+	// MyGUI::TextBox* pNickTxt =0;  // multiplayer nick above car
+
+	bool updTimes = true, updLap = true;
+	float fLapAlpha = 1.f;
 	
 	
 	///----  model params  from .car
 	float driver_view[3], hood_view[3], ground_view[3];  // mounted cameras
-	float interiorOffset[3], boostOffset[3],boostSizeZ;
-	float thrusterOfs[PAR_THRUST][3],thrusterSizeZ[PAR_THRUST];
+	float interiorOffset[3], boostOffset[3], boostSizeZ;
+	float thrusterOfs[PAR_THRUST][3], thrusterSizeZ[PAR_THRUST];
 
-	std::vector<Ogre::Vector3> brakePos;  // flares
-	float brakeSize;  Ogre::ColourValue brakeClr;
+	std::vector<Ogre::Vector3> brakePos;  // brake flares
+	float brakeSize = 0.2f;
+	Ogre::ColourValue brakeClr;
+	
 	std::string sBoostParName, sThrusterPar[PAR_THRUST];
 	bool bRotFix;
 
@@ -119,7 +120,7 @@ public:
 	
 	///----  Camera, can be null
 	FollowCamera* fCam =0;
-	int iCamFluid = -1;  // id to fluids[], -1 none
+	int iCamFluid = -1;   // id to fluids[], -1 none
 	float fCamFl = 0.6f;  // factor, close to surface
 	float camDist;  // mul from .car
 
@@ -140,7 +141,7 @@ public:
 	
 	///----  Logic vars
 	float angCarY = 0.f;  // car yaw angle for minimap
-	float distFirst = 1.f, distLast = 1., distTotal = 10.f;  // checks const distances set at start
+	float distFirst = 1.f, distLast = 1.f, distTotal = 10.f;  // checks const distances set at start
 	float trackPercent = 0.f;  // % of track driven
 	void UpdTrackPercent();
 
@@ -148,26 +149,31 @@ public:
 	bool bGetStPos = true;  Ogre::Matrix4 matStPos;  Ogre::Vector4 vStDist;
 	int iInChk = -1, iCurChk = -1,
 		iNextChk = 0, iNumChks = 0,  // cur checkpoint -1 at start
-		iInWrChk = -1, iWonPlace = 0, iWonPlaceOld = 0;
+		iInWrChk = -1,
+		iWonPlace = 0, iWonPlaceOld = 0;
 	float iWonMsgTime = 0.f;
 	bool bInSt = 0, bWrongChk = 0;  float fChkTime = 0.f;
 	float timeAtCurChk = 0.f;
+
 	//bool Checkpoint(const PosInfo& posInfo, class SplineRoad* road);  // update
-	Ogre::Vector3 vStartPos;  void ResetChecks(bool bDist=false), UpdNextCheck(), ShowNextChk(bool visible);
+	Ogre::Vector3 vStartPos;
+	void ResetChecks(bool bDist=false), UpdNextCheck(), ShowNextChk(bool visible);
 	Ogre::String sChkMtr;  bool bChkUpd = true;
 	//  for loop camera change
 	int iLoopChk = -1, iLoopLastCam = -1;
+	//  cam,chk old states
+	int iCamNextOld = 0;  bool bLastChkOld = 0;
 	
 	
 	///--------  common
-	GAME* pGame;
-	Ogre::Camera* mCamera;
-	Scene* sc;
-	Ogre::SceneManager* mSceneMgr;
-	SETTINGS* pSet;
-	App* pApp;
+	GAME* pGame =0;
+	Ogre::Camera* mCamera =0;
+	Scene* sc =0;
+	Ogre::SceneManager* mSceneMgr =0;
+	SETTINGS* pSet =0;
+	App* pApp =0;
 	
-	int iIndex, iColor;  // car id, color id
+	int iIndex = 0, iColor = 0;  // car id, color id
 	std::string sDirname;  // dir name of car (e.g. ES)
 	Ogre::String resGrpId, mtrId;  // resource group name, material suffix
 	std::string resCar;  // path to car textures
@@ -194,21 +200,11 @@ public:
 	std::vector<Ogre::SceneNode*> vDelNd;		void ToDel(Ogre::SceneNode* nd);
 	std::vector<Ogre::Item*> vDelIt;			void ToDel(Ogre::Item* it);
 	std::vector<Ogre::ParticleSystem*> vDelPar;	void ToDel(Ogre::ParticleSystem* par);
-	
-		
+
 	//  brake state
 	bool bBraking = true;
 	void UpdateBraking();
 	
-	//  lightmap toggle depending on distance to terrain
-	// Ogre::Terrain* terrain;
-	// bool bLightMapEnabled;
-	// void UpdateLightMap();
-	
-	//  cam,chk old states
-	int iCamNextOld = 0;
-	bool bLastChkOld = 0;
-
 	// virtual void requestedConfiguration (sh::MaterialInstance* m, const std::string& configuration);
 	// virtual void createdConfiguration (sh::MaterialInstance* m, const std::string& configuration);
 };

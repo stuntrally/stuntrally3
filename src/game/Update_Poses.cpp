@@ -100,7 +100,7 @@ void App::newPoses(float time)  // time only for camera update
 				if (ok)
 					pi.FromRpl2(&gf, 0);
 
-				if (carM->vtype == V_Sphere)
+				if (carM->vType == V_Sphere)
 				{	//  weird fix, mini rot
 					pi.carY = Vector3::UNIT_Y;
 					pi.hov_roll = -pi.hov_roll;
@@ -153,7 +153,7 @@ void App::newPoses(float time)  // time only for camera update
 
 			pCar->SetPosRewind(rf.pos, rf.rot, rf.vel, rf.angvel);
 			pCar->dynamics.fDamage = rf.fDamage;  // take damage back
-			if (carModels[c]->vtype == V_Sphere)
+			if (carModels[c]->vType == V_Sphere)
 				pCar->dynamics.sphereYaw = rf.hov_roll;
 			carModels[c]->First();
 		}
@@ -217,7 +217,7 @@ void App::newPoses(float time)  // time only for camera update
 		{
 			///  arrow update  --------------------------------------
 			SplineRoad* road = scn->road;
-			if (pSet->check_arrow && carM->eType == CarModel::CT_LOCAL
+			if (pSet->check_arrow && carM->cType == CarModel::CT_LOCAL
 			  && !bRplPlay && hud->arrow.node && road && road->mChks.size()>0)
 		  		hud->arrow.UpdateChk(road, carM, pi.pos);
 			
@@ -240,7 +240,7 @@ void App::newPoses(float time)  // time only for camera update
 					abs(carM->vStDist.z) < road->vStBoxDim.z;
 							
 				carM->iInChk = -1;  carM->bWrongChk = false;
-				bool locar = carM->eType == CarModel::CT_LOCAL;
+				bool locar = carM->cType == CarModel::CT_LOCAL;
 				int ncs = road->mChks.size();
 				if (ncs > 0)
 				{
@@ -391,7 +391,7 @@ void App::newPoses(float time)  // time only for camera update
 			//  update camera
 			if (carM->fCam)
 				carM->fCam->update(time, pi, &carPoses[qn][c], &pGame->collision,
-					!bRplPlay && pSet->cam_bounce, carM->vtype);
+					!bRplPlay && pSet->cam_bounce, carM->vType);
 			iCurPoses[c] = qn;  // atomic, set new index in queue
 			
 			///))  upd sound camera
@@ -428,7 +428,7 @@ void App::updatePoses(float time)
 		
 		///  ghosts visibility  . . .
 		//  hide when empty or near car
-		bool bGhostCar = carM->eType == (isGhost2nd ? CarModel::CT_GHOST2 : CarModel::CT_GHOST),  // show only actual
+		bool bGhostCar = carM->cType == (isGhost2nd ? CarModel::CT_GHOST2 : CarModel::CT_GHOST),  // show only actual
 			bGhTrkVis = carM->isGhostTrk() && ghtrk.GetTimeLength()>0 && pSet->rpl_trackghost,
 			bGhostVis = ghplay.GetNumFrames()>0 && pSet->rpl_ghost,
 			bGhostEnd = pGame->timer.GetPlayerTime(0) > ghplay.GetTimeLength();

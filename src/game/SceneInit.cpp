@@ -256,14 +256,16 @@ void App::LoadCleanUp()  // 1 first
 	hud->Destroy();
 	
 	//  hide hud arrow,beam,pace,trail
-	bool morePlr = false; //pSet->game.local_players > 1;
+	bool morePlr = pSet->game.local_players > 1;
 	bool rplRd = bRplPlay /*|| scn->road && scn->road->getNumPoints() < 2/**/;
+	bool rplHide = bRplPlay && pSet->rpl_hideHudAids;
+
 	bHideHudBeam = rplRd;
 	bHideHudArr = rplRd || morePlr;
 	bool denyPace = gui->pChall && !gui->pChall->pacenotes;
-	bHideHudPace = morePlr || denyPace;  // todo: ? pace, trail for splitscreen
+	bHideHudPace = morePlr || denyPace || rplHide;  // todo: ? pace, trail for splitscreen
 	bool denyTrail = gui->pChall && !gui->pChall->trail;
-	bHideHudTrail = morePlr || denyTrail;
+	bHideHudTrail = morePlr || denyTrail || rplHide;
 
 
 	// rem old track
@@ -349,7 +351,7 @@ void App::LoadGame()  // 2
 	
 	pGame->LeaveGame(dstTrk);
 
-	/*if (gui->bReloadSim)
+	/*if (gui->bReloadSim)  //; ?
 	{	gui->bReloadSim = false;
 		pGame->ReloadSimData();
 
@@ -389,7 +391,7 @@ void App::LoadGame()  // 2
 	//  this is just here because vdrift car has to be created first
 	auto camIt = mCamera;
 	
-	int numCars = 1; //; mClient ? mClient->getPeerCount()+1 : pSet->game.local_players;  // networked or splitscreen
+	int numCars = /*mClient ? mClient->getPeerCount()+1 :*/ pSet->game.local_players;  // networked or splitscreen
 	int i;
 	for (i = 0; i < numCars; ++i)
 	{
@@ -417,10 +419,10 @@ void App::LoadGame()  // 2
 		// {	cam = *camIt;  ++camIt;  }
 
 		//  need road looped here
-		// String sRd = gcom->PathListTrk() + "/road.xml";
-		// SplineRoad rd(pGame);  rd.LoadFile(sRd,false);
-		bool loop = false;/*//rd.getNumPoints() < 2 ? false :
-					!rd.isLooped && pSet->game.trackreverse ? true : false;*/
+		String sRd = gcom->PathListTrk() + "/road.xml";
+		SplineRoad rd(pGame);  rd.LoadFile(sRd,false);
+		bool loop = //rd.getNumPoints() < 2 ? false :
+					!rd.isLooped && pSet->game.trackreverse ? true : false;
 		
 		CarModel* car = new CarModel(i, i, et, carName, mSceneMgr, pSet, pGame, scn->sc, cam, this);
 		car->Load(startId, loop);
@@ -435,9 +437,8 @@ void App::LoadGame()  // 2
 
 	///  ghost car - last in carModels
 	///--------------------------------------------
-#if 0
 	ghplay.Clear();
-	if (!bRplPlay/*|| pSet->rpl_show_ghost)*/ && pSet->rpl_ghost && !mClient)
+	if (!bRplPlay/*|| pSet->rpl_show_ghost)*/ && pSet->rpl_ghost /*&& !mClient*/)
 	{
 		std::string ghCar = pSet->game.car[0], orgCar = ghCar;
 		ghplay.LoadFile(gui->GetGhostFile(pSet->rpl_ghostother ? &ghCar : 0));
@@ -459,34 +460,30 @@ void App::LoadGame()  // 2
 			carModels.push_back(c);
 		}
 	}
-#endif
-
 	///  track's ghost  . . .
 	///--------------------------------------------
 	ghtrk.Clear();  vTimeAtChks.clear();
-	// bool deny = gui->pChall && !gui->pChall->trk_ghost;
-	if (!bRplPlay /*&& pSet->rpl_trackghost? && !mClient*/ && !pSet->game.track_user)// && !deny)
+	bool deny = gui->pChall && !gui->pChall->trk_ghost;
+	if (!bRplPlay /*&& pSet->rpl_trackghost- && !mClient*/ && !pSet->game.track_user && !deny)
 	{
 		std::string sRev = pSet->game.trackreverse ? "_r" : "";
 		std::string file = PATHMANAGER::TrkGhosts()+"/"+ pSet->game.track + sRev + ".gho";
 		if (ghtrk.LoadFile(file))
 		{
-		/*	CarModel* c = new CarModel(i, 5, CarModel::CT_TRACK, "ES", mSceneMgr, pSet, pGame, scn->sc, 0, this);
+			CarModel* c = new CarModel(i, 5, CarModel::CT_TRACK, "ES", mSceneMgr, pSet, pGame, scn->sc, 0, this);
 			c->Load(-1, false);
 			c->pCar = (*carModels.begin())->pCar;  // based on 1st car
-			carModels.push_back(c);*/
+			carModels.push_back(c);
 	}	}
 
-#if 0	
-	float pretime = mClient ? 2.0f : pSet->game.pre_time;  // same for all multi players
+	float pretime = /*mClient ? 2.0f :*/ pSet->game.pre_time;  // same for all multi players
 	if (bRplPlay)  pretime = 0.f;
-	if (mClient)
+	/*if (mClient)
 	{	pGame->timer.waiting = true;  //+
 		pGame->timer.end_sim = false;
-	}
-#endif
+	}*/
 
-	pGame->NewGameDoLoadMisc(0.f/*pretime*/);
+	pGame->NewGameDoLoadMisc(pretime);
 }
 //---------------------------------------------------------------------------------------------------------------
 

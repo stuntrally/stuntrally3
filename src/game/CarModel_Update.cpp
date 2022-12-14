@@ -48,7 +48,7 @@ void CarModel::setVisible(bool vis)
 void CarModel::UpdNextCheck()
 {
 	updTimes = true;
-	if (eType != CarModel::CT_LOCAL)  return;
+	if (cType != CarModel::CT_LOCAL)  return;
 	if (!ndNextChk || !pApp || !pApp->scn->road)  return;
 	if (pApp->scn->road->mChks.empty())  return;
 
@@ -208,10 +208,10 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 
 	//  set car pos and rot
 	pMainNode->setPosition(posInfo.pos);
-	if (vtype == V_Sphere)
+	if (vType == V_Sphere)
 		pMainNode->setOrientation(Quaternion(Quaternion(Degree(-posInfo.hov_roll),Vector3::UNIT_Y)));
 	else
-	if (vtype == V_Spaceship)  // roll  vis only
+	if (vType == V_Spaceship)  // roll  vis only
 		pMainNode->setOrientation(posInfo.rot * Quaternion(Degree(posInfo.hov_roll),Vector3::UNIT_X));
 	else
 		pMainNode->setOrientation(posInfo.rot);
@@ -233,7 +233,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		///~~  camera in fluid fog, detect and compute
 		iCamFluid = -1;  fCamFl = 0.f;  // none
 		const size_t sf = sc->fluids.size();
-		if (sf > 0  /*&& pSet->game.local_players == 1*/)
+		if (sf > 0 && pSet->game.local_players == 1)
 		{
 			const Vector3& p = posInfo.camPos;
 			const float r = 0.2f;  //par, near cam?
@@ -259,7 +259,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	}	}
 
 	//  upd rotY for minimap
-	if (vtype == V_Sphere)
+	if (vType == V_Sphere)
 		angCarY = posInfo.hov_roll * 180.f / PI_d + 180.f;
 	else
 	{	Quaternion q = posInfo.rot * Quaternion(Degree(90),Vector3(0,1,0));
@@ -519,9 +519,9 @@ void CarModel::UpdateKeys()
 	if (iC != 0 && iCamNextOld == 0)
 	{
 		//  with ctrl - change current camera car index  (mouse move camera for many players)
-		/*if (pApp->ctrl && iIndex == 0)
+		if (pApp->ctrl && iIndex == 0)
 			pApp->iCurCam = (pApp->iCurCam + iC + pSet->game.local_players) % pSet->game.local_players;
-		else*/
+		else
 		{
 			// int visMask = 255;
 			// pApp->roadUpdTm = 1.f;
