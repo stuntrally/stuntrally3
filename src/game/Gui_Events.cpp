@@ -284,14 +284,7 @@ void CGui::slReflMode(SV* sv)
 	}
 	// app->recreateReflections();
 }
-/*void App::recreateReflections()
-{
-	for (auto* car : carModels)
-	{	
-		delete car->pReflect;
-		car->CreateReflection();
-	}
-}*/
+
 
 void CGui::chkParTrl(Ck*)
 {		

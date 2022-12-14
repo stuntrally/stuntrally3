@@ -44,12 +44,19 @@ public:
 	bool isGhostTrk() const {  return cType == CT_TRACK;  }
 	void SetNumWheels(int n);
 	
-	//  ctor
+	//  ctor  ----
 	CarModel(int index, int colorId, eCarType type, const std::string& name,
 		Ogre::SceneManager* sceneMgr, SETTINGS* set, GAME* game, Scene* sc,
 		Ogre::Camera* cam, App* app);
 	~CarModel();
 	
+	App* pApp =0;
+	GAME* pGame =0;
+	SETTINGS* pSet =0;
+	Scene* sc =0;
+	Ogre::Camera* mCamera =0;
+	Ogre::SceneManager* mSceneMgr =0;
+
 
 	Ogre::String sDispName;  // diplay name in opponents list (nick for CT_REMOTE)
 	// MyGUI::TextBox* pNickTxt =0;  // multiplayer nick above car
@@ -88,14 +95,10 @@ public:
 	void CreatePart(Ogre::SceneNode* ndCar, Ogre::Vector3 vPofs,
 		Ogre::String sCar2, Ogre::String sCarI, Ogre::String sMesh, Ogre::String sEnt,
 		bool ghost, Ogre::uint32 visFlags,
-		Ogre::Aabb* bbox=0, Ogre::String stMtr="", bool bLogInfo=true);
+		Ogre::Aabb* bbox=0, bool bLogInfo=true, bool body = false);
 
 	void LogMeshInfo(const Ogre::Item* ent, const Ogre::String& name, int mul=1);
 	int all_subs = 0, all_tris = 0;  //stats
-	
-	// void RecreateMaterials();
-	// void setMtrNames(); // assign materials to entity / manualobject
-	// void setMtrName(const Ogre::String& entName, const Ogre::String& mtrName);
 	
 	
 	//--------  Update
@@ -133,8 +136,6 @@ public:
 	void setVisible(bool visible);  // hide/show
 	bool mbVisible = true;  float hideTime = 1.f;
 		
-	// CarReflection* pReflect =0;
-		
 	//  VDrift car
 	CAR* pCar =0;  // all need this set (even ghost, has it from 1st car)
 	
@@ -165,24 +166,13 @@ public:
 	int iCamNextOld = 0;  bool bLastChkOld = 0;
 	
 	
-	///--------  common
-	GAME* pGame =0;
-	Ogre::Camera* mCamera =0;
-	Scene* sc =0;
-	Ogre::SceneManager* mSceneMgr =0;
-	SETTINGS* pSet =0;
-	App* pApp =0;
-	
+	//----  resource
 	int iIndex = 0, iColor = 0;  // car id, color id
 	std::string sDirname;  // dir name of car (e.g. ES)
 	Ogre::String resGrpId, mtrId;  // resource group name, material suffix
 	std::string resCar;  // path to car textures
 
 
-	//  Material names
-	enum eMaterials {  Mtr_CarBody, Mtr_CarBrake,  NumMaterials  };
-	std::string sMtr[NumMaterials];
-			
 	//--------  Particle systems
 	enum EParTypes {  PAR_Smoke=0, PAR_Mud, PAR_Dust, PAR_Water, PAR_MudHard, PAR_MudSoft, PAR_ALL };
 	//  par-wheels, boost-car rear, spaceship thruster, sparks-world hit
@@ -204,7 +194,4 @@ public:
 	//  brake state
 	bool bBraking = true;
 	void UpdateBraking();
-	
-	// virtual void requestedConfiguration (sh::MaterialInstance* m, const std::string& configuration);
-	// virtual void createdConfiguration (sh::MaterialInstance* m, const std::string& configuration);
 };

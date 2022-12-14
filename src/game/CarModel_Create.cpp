@@ -385,31 +385,35 @@ void CarModel::LogMeshInfo(const Item* ent, const String& name, int mul)
 void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 	String sCar2, String sCarI, String sMesh, String sEnt,
 	bool ghost, uint32 visFlags,
-	Aabb* bbox, String stMtr, bool bLogInfo)
+	Aabb* bbox, bool bLogInfo, bool body)
 {
 	if (!FileExists(sCar2 + sMesh))
 		return;
 	LogO("CreatePart " + sCarI + sEnt + " " + sDirname +  sMesh + " r "+  sCarI);
+	
 	Item *item =0;
 	try
-	{
-		item = mSceneMgr->createItem( sDirname + sMesh, sCarI, SCENE_DYNAMIC );
+	{	item = mSceneMgr->createItem( sDirname + sMesh, sCarI, SCENE_DYNAMIC );
 		pApp->scn->SetTexWrap(item);
 
 		//**  set reflection cube
 		assert( dynamic_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() ) );
 		HlmsPbsDatablock *pDb =
 			static_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() );
-		pDb->setTexture( PBSM_REFLECTION, pApp->mDynamicCubemap );
-		// pDb->setSpecular(Vector3(Math::RangeRandom(0.f, 1.f), 0.5f, 0.f));  // test
-		/*
-		HlmsPbsDatablock db( *pDb );
-		db.setTexture( PBSM_REFLECTION, pApp->mDynamicCubemap );
-		db.setSpecular(Vector3(
-			Math::RangeRandom(0.f, 1.f),
-			Math::RangeRandom(0.f, 1.f),
-			Math::RangeRandom(0.f, 1.f)));  // test
-		item->getSubItem(0)->setDatablock( &db );*/
+		if (!body)
+			pDb->setTexture( PBSM_REFLECTION, pApp->mDynamicCubemap );
+		else
+		{	//  clone,  set car color
+			static int id = 0;  ++id;
+			HlmsPbsDatablock *db = static_cast<HlmsPbsDatablock *>(
+				pDb->clone( "CarBody" + sCarI + toStr(id) ) );
+			db->setTexture( PBSM_REFLECTION, pApp->mDynamicCubemap );
+			db->setSpecular(Vector3(
+				Math::RangeRandom(0.f, 1.f),
+				Math::RangeRandom(0.f, 1.f),
+				Math::RangeRandom(0.f, 1.f)));  // todo: color cfg
+			item->getSubItem(0)->setDatablock( db );
+		}
 	}
 	catch (Ogre::Exception ex)
 	{
@@ -481,8 +485,6 @@ void CarModel::Create()
 				cam->mOffset = Vector3(ground_view[0], ground_view[2], -ground_view[1]);
 	}	}
 	
-	// CreateReflection();
-	
 
 	//  next checkpoint marker beam
 	bool deny = pApp->gui->pChall && !pApp->gui->pChall->chk_beam;
@@ -508,9 +510,8 @@ void CarModel::Create()
 	ndSph->attachObject(es);
 	#endif*/
 
-
-	///  Create Models:  body, interior, glass
-	//-------------------------------------------------
+	
+	//  var
 	Vector3 vPofs(0,0,0);
 	Aabb bodyBox;  uint8 g = RQG_CarGhost;
 	all_subs=0;  all_tris=0;  //stats
@@ -521,18 +522,20 @@ void CarModel::Create()
 			Quaternion(Degree(180),Vector3::UNIT_X));
 
 
-	//const String& res = "General"; //ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME;
+	///  Create Models:  body, interior, glass
+	//-------------------------------------------------
 	const String& res = resGrpId;
-	CreatePart(ndCar, vPofs, sCar, res, "_body.mesh",     "",  ghost, RV_Car,  &bodyBox,  sMtr[Mtr_CarBody],  bLogInfo);
+	CreatePart(ndCar, vPofs, sCar, res, "_body.mesh",     "",  ghost, RV_Car,  &bodyBox,  bLogInfo, true);
 
 	vPofs = Vector3(interiorOffset[0],interiorOffset[1],interiorOffset[2]);  //x+ back y+ down z+ right
 	// if (!ghostTrk)  //!ghost)
-	CreatePart(ndCar, vPofs, sCar, res, "_interior.mesh", "i", ghost, RV_Car,      0, sMtr[Mtr_CarBody]+"i",  bLogInfo);
+	CreatePart(ndCar, vPofs, sCar, res, "_interior.mesh", "i", ghost, RV_Car,      0, bLogInfo);
 
 	vPofs = Vector3::ZERO;
-	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    "g", ghost, RV_CarGlass, 0, sMtr[Mtr_CarBody]+"g",  bLogInfo);
+	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    "g", ghost, RV_CarGlass, 0, bLogInfo);
 	
-	if (vType == V_Sphere)  //par temp
+
+	if (vType == V_Sphere)  //; par temp-
 		ndCar->setScale(2.f,2.f,2.f);
 
 
@@ -739,117 +742,4 @@ void CarModel::Create()
 		}	}
 		// UpdParsTrails();  //?
 	}
-
-	// RecreateMaterials();
-		
-	// setMtrNames();
 }
-
-
-//-------------------------------------------------------------------------------------------------------
-//  materials  NOPE
-//-------------------------------------------------------------------------------------------------------
-#if 0
-void CarModel::RecreateMaterials()
-{
-	String sCar = resCar + "/" + sDirname;
-	bool ghost = false;  //isGhost();  //1 || for ghost test
-	
-	// --------- Materials  -------------------
-	
-	// if specialised car material (e.g. car_body_FM) exists, use this one instead of e.g. car_body
-	// useful macro for choosing between these 2 variants
-	#define chooseMat(s)  MaterialManager::getSingleton().resourceExists( \
-		"car"+String(s) + "_"+sDirname) ? "car"+String(s) + "_"+sDirname : "car"+String(s)
-
-	//  ghost car has no interior, particles, trails and uses same material for all meshes
-	if (!ghost)
-	{	sMtr[Mtr_CarBody]     = chooseMat("_body");
-		sMtr[Mtr_CarBrake]    = chooseMat("_glass");
-	}else
-	for (int i=0; i < NumMaterials; ++i)
-		sMtr[i] = "car_ghost";
-
-	//  copy material to a new material with index
-	//  only for car body to have different colors
-	MaterialPtr mat;
-	for (int i=0; i < 1/*NumMaterials*/; ++i)
-	{
-		sh::Factory::getInstance().destroyMaterialInstance(sMtr[i] + mtrId);
-		sh::MaterialInstance* m = sh::Factory::getInstance().createMaterialInstance(sMtr[i] + mtrId, sMtr[i]);
-
-		m->setListener(this);
-
-		// change textures for the car
-		if (m->hasProperty("diffuseMap"))
-		{
-			string v = sh::retrieveValue<sh::StringValue>(m->getProperty("diffuseMap"), 0).get();
-			m->setProperty("diffuseMap", sh::makeProperty<sh::StringValue>(new sh::StringValue(sDirname + "_" + v)));
-		}
-		if (m->hasProperty("carPaintMap"))
-		{
-			string v = sh::retrieveValue<sh::StringValue>(m->getProperty("carPaintMap"), 0).get();
-			m->setProperty("carPaintMap", sh::makeProperty<sh::StringValue>(new sh::StringValue(sDirname + "_" + v)));
-		}
-		if (m->hasProperty("reflMap"))
-		{
-			string v = sh::retrieveValue<sh::StringValue>(m->getProperty("reflMap"), 0).get();
-			m->setProperty("reflMap", sh::makeProperty<sh::StringValue>(new sh::StringValue(sDirname + "_" + v)));
-		}
-		sMtr[i] = sMtr[i] + mtrId;
-	}
-
-	//ChangeClr();
-
-	// UpdateLightMap();
-}
-
-void CarModel::setMtrName(const String& entName, const String& mtrName)
-{
-	if (mSceneMgr->hasEntity(entName))
-		mSceneMgr->getEntity(entName)->setMaterialName(mtrName);
-	else
-	if (mSceneMgr->hasManualObject(entName))
-		mSceneMgr->getManualObject(entName)->setMaterialName(0, mtrName);
-}
-
-void CarModel::setMtrNames()
-{
-	//if (FileExists(resCar + "/" + sDirname + "_body_add.png") ||
-	//	FileExists(resCar + "/" + sDirname + "_body_red.png"))
-	setMtrName("Car"+mtrId, sMtr[Mtr_CarBody]);
-
-	#if 0
-	setMtrName("Car.interior"+mtrI, sMtr[Mtr_CarInterior]);
-	setMtrName("Car.glass"+mtrI, sMtr[Mtr_CarGlass]);
-
-	for (int w=0; w < numWheels; ++w)
-	{
-		String sw = "Wheel"+mtrI+"_"+toStr(w), sm = w < 2 ? sMtr[Mtr_CarTireFront] : sMtr[Mtr_CarTireRear];
-		setMtrName(sw,          sm);
-		setMtrName(sw+"_brake", sm);
-	}
-	#endif
-}
-
-//  ----------------- Reflection ------------------------
-void CarModel::CreateReflection()
-{
-	char suffix = (eType == CT_TRACK ? 'Z' : (eType == CT_GHOST2 ? 'V' :' '));
-	pReflect = new CarReflection(pSet, pApp, mSceneMgr, iIndex, suffix);
-	for (int i=0; i < NumMaterials; ++i)
-		pReflect->sMtr[i] = sMtr[i];
-
-	pReflect->Create();
-}
-
-void CarModel::requestedConfiguration(sh::MaterialInstance* m, const string& configuration)
-{
-}
-
-void CarModel::createdConfiguration(sh::MaterialInstance* m, const string& configuration)
-{
-	// UpdateLightMap();
-	ChangeClr();
-}
-#endif

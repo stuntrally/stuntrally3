@@ -29,7 +29,7 @@ void CHud::Arrow::Create(SceneManager* mgr, SETTINGS* pSet)
 	nodeRot->attachObject(it);
 	nodeRot->setScale(pSet->size_arrow/2.f * Vector3::UNIT_SCALE);
 	it->setVisibilityFlags(RV_Hud);
-	nodeRot->setVisible(1);//pSet->check_arrow);
+	nodeRot->setVisible(pSet->check_arrow);
 }
 
 

@@ -620,28 +620,13 @@ void CarModel::UpdWhTerMtr()
 //  utils
 //-------------------------------------------------------------------------------------------------------
 
-void CarModel::ChangeClr()  // todo: diffuse clr?
+void CarModel::ChangeClr()  // todo:
 {
 	/*int i = iColor;
 	float h = pSet->gui.car_hue[i], s = pSet->gui.car_sat[i], v = pSet->gui.car_val[i],
 		gloss = pSet->gui.car_gloss[i], refl = pSet->gui.car_refl[i];
 	color.setHSB(1.f - h, s, v);  //set, mini pos clr
 
-	MaterialPtr mtr = MaterialManager::getSingleton().getByName(sMtr[Mtr_CarBody]);
-	if (mtr)
-	{	Material::TechniqueIterator techIt = mtr->getTechniqueIterator();
-		while (techIt.hasMoreElements())
-		{	Technique* tech = techIt.getNext();
-			Technique::PassIterator passIt = tech->getPassIterator();
-			while (passIt.hasMoreElements())
-			{	Pass* pass = passIt.getNext();
-				if (pass->hasFragmentProgram())
-				{
-					GpuProgramParametersSharedPtr params = pass->getFragmentProgramParameters();
-					params->setNamedConstant("carColour", color);
-					params->setNamedConstant("glossiness", 1 - gloss);
-					params->setNamedConstant("reflectiveness", refl);
-	}	}	}	}
 
 	if (pNickTxt)
 		pNickTxt->setTextColour(MyGUI::Colour(color.r, color.g, color.b));

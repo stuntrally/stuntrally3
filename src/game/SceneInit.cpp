@@ -627,13 +627,13 @@ void App::LoadRoad()  // 6
 {
 	CreateRoads();   // dstTrk inside
 		
-	// if (hud->arrow.nodeRot)
-		// hud->arrow.nodeRot->setVisible(pSet->check_arrow && !bHideHudArr);
+	if (hud->arrow.nodeRot)
+		hud->arrow.nodeRot->setVisible(pSet->check_arrow && !bHideHudArr);
 
 	//  boost fuel at start  . . .
 	//  based on road length
-	float boost_start = 6.f; /*std::min(pSet->game.boost_max, std::max(pSet->game.boost_min,
-		scn->road->st.Length * 0.001f * pSet->game.boost_per_km));*/
+	float boost_start = std::min(pSet->game.boost_max, std::max(pSet->game.boost_min,
+		scn->road->st.Length * 0.001f * pSet->game.boost_per_km));
 		
 	for (int i=0; i < carModels.size(); ++i)
 	{	CAR* car = carModels[i]->pCar;
@@ -999,7 +999,7 @@ void App::CreateTrail(Camera* cam)
 	tr->Rebuild(true);
 	tr->RebuildRoadInt();
 	scn->trail = tr;
-	bool vis = !pSet->trail_show;//; || bHideHudTrail;
+	bool vis = !pSet->trail_show || bHideHudTrail;
 	tr->SetVisTrail(!vis);
 	tr->SetVisTrail(false);
 }
