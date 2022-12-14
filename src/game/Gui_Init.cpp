@@ -642,7 +642,7 @@ void CGui::InitGui()
 */
 
 	///  input tab  -------
-	//; InitInputGui();
+	InitInputGui();
 
 
 	///  cars list

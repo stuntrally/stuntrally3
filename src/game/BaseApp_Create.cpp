@@ -28,7 +28,7 @@
 #include <OgreWindow.h>
 
 // #include "PointerFix.h"
-// #include "ICSInputControlSystem.h"
+#include "ICSInputControlSystem.h"
 using namespace Ogre;
 
 
@@ -78,38 +78,36 @@ namespace
 
 //  Create
 //-------------------------------------------------------------------------------------
-/*
-void BaseApp::createFrameListener()
+void BaseApp::createInputs()
 {
-	mInputWrapper = new SFO::InputWrapper(mSDLWindow, mWindow);
-	mInputWrapper->setMouseEventCallback(this);
-	mInputWrapper->setKeyboardEventCallback(this);
-	mInputWrapper->setJoyEventCallback(this);
-	mInputWrapper->setWindowEventCallback(this);
-	mCursorManager = new SFO::SDLCursorManager();
-	onCursorChange(MyGUI::PointerManager::getInstance().getDefaultPointer());
-	mCursorManager->setEnabled(true);
+	// mInputWrapper = new SFO::InputWrapper(mSDLWindow, mWindow);
+	// mInputWrapper->setMouseEventCallback(this);
+	// mInputWrapper->setKeyboardEventCallback(this);
+	// mInputWrapper->setJoyEventCallback(this);
+	// mInputWrapper->setWindowEventCallback(this);
+	// mCursorManager = new SFO::SDLCursorManager();
+	// onCursorChange(MyGUI::PointerManager::getInstance().getDefaultPointer());
+	// mCursorManager->setEnabled(true);
 
-	std::string file = PATHMANAGER::UserConfigDir()+"/input.xml";
+	std::string file = PATHMANAGER::UserConfigDir() + "/input.xml";
 	mInputCtrl = new ICS::InputControlSystem(file, true, mBindListner, NULL, 100);
 
 	for (int j=0; j<SDL_NumJoysticks(); ++j)
 		mInputCtrl->addJoystick(j);
 	for (int i=0; i<4; ++i)
 	{
-		file = PATHMANAGER::UserConfigDir()+"/input_p" + toStr(i) + ".xml";
+		file = PATHMANAGER::UserConfigDir() + "/input_p" + toStr(i) + ".xml";
 		mInputCtrlPlayer[i] = new ICS::InputControlSystem(file, true, mBindListner, NULL, 100);
 		for (int j=0; j<SDL_NumJoysticks(); ++j)
 			mInputCtrlPlayer[i]->addJoystick(j);
 	}
 
-	bSizeHUD = true;
-	bWindowResized = true;
-	mSplitMgr->Align();
+	// bSizeHUD = true;
+	// bWindowResized = true;
+	// mSplitMgr->Align();
 
-	mRoot->addFrameListener(this);
+	// mRoot->addFrameListener(this);
 }
-*/
 
 //  Run
 //-------------------------------------------------------------------------------------
@@ -178,7 +176,6 @@ BaseApp::~BaseApp()
 		//mRoot->unloadPlugin("RenderSystem_Direct3D11");
 	#endif
 	mRoot->unloadPlugin("RenderSystem_GL");
-
 */
 	// OGRE_DELETE mRoot;
 
@@ -213,7 +210,7 @@ bool BaseApp::configure()
 			throw std::runtime_error("Could not initialize SDL! " + std::string(SDL_GetError()));
 	}
 
-	//  Enable joystick events
+	//  Enable joystick events  // todo:
 	SDL_JoystickEventState(SDL_ENABLE);
 	//  Open all available joysticks.  TODO: open them when they are required
 	for (int i=0; i<SDL_NumJoysticks(); ++i)
@@ -409,25 +406,6 @@ void BaseApp::setupResources()
 			ResourceGroupManager::getSingleton().addResourceLocation(
 				PATHMANAGER::Data() + "/" + archName, typeName, secName);
 	}	}
-
-#if defined(OGRE_VERSION) && OGRE_VERSION >= 0x10C00
-	// create stubs for Ogre 1.12 core shaders (unused by stuntrally)
-	auto& gpm = HighLevelGpuProgramManager::getSingleton();
-	for(auto name : {"PointLight", "DirLight", "PointLightFinite", "DirLightFinite"})
-	    gpm.createProgram("Ogre/ShadowExtrude"+String(name), "OgreInternal", "unified", GPT_VERTEX_PROGRAM);
-	gpm.createProgram("Ogre/ShadowBlendVP", "OgreInternal", "unified", GPT_VERTEX_PROGRAM);
-	gpm.createProgram("Ogre/ShadowBlendFP", "OgreInternal", "unified", GPT_FRAGMENT_PROGRAM);
-#endif
-#if defined(OGRE_MIN_VERSION)
-#if OGRE_MIN_VERSION(13, 3, 0)
-	auto& matm = MaterialManager::getSingleton();
-	for (auto name : {"Ogre/Debug/ShadowVolumes", "Ogre/StencilShadowVolumes", "Ogre/StencilShadowModulationPass", "Ogre/TextureShadowCaster"})
-	{
-		auto mat = matm.create(name, "OgreInternal");
-		mat->createTechnique()->createPass()->setVertexProgram("Ogre/ShadowBlendVP");
-	}
-#endif
-#endif
 }
 
 void BaseApp::createResourceListener()
@@ -750,13 +728,13 @@ void BaseApp::baseInitGui(GraphicsSystem *mGraphicsSystem)
 	{
 		imgBack = mGui->createWidget<ImageBox>("ImageBox",
 			0,0, 800,600, Align::Default, "Back","ImgBack");
-		imgBack->setImageTexture("background.jpg");
+		imgBack->setImageTexture("background3s.jpg");
 	}
 
 	///  loading background img
 	imgLoad = mGui->createWidget<ImageBox>("ImageBox",
 		0,0, 800,600, Align::Default, "Back", "ImgLoad");
-	imgLoad->setImageTexture("background.png");
+	imgLoad->setImageTexture("background3s.png");
 	imgLoad->setVisible(true);
 
 	baseSizeGui();

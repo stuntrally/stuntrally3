@@ -13,6 +13,7 @@
 #include "game.h"
 
 #include "CarModel.h"
+#include "CInput.h"
 // #include "Road.h"
 // #include "SplitScreen.h"
 // #include "WaterRTT.h"
@@ -32,23 +33,10 @@ App::App()
 	: TutorialGameState()
 	//, mIblQuality( IblHigh )  // par
 	//, mIblQuality( MipmapsLowest )
-	// ,hud(0), gui(0), gcom(0)
-	// , input(0)
 	// ,mThread()
-	, mTimer(0.f)
-	// game
-	,blendMtr(0), blendMapSize(513)
-	,carIdWin(-1), iRplCarOfs(0)
-	// other
-	,newGameRpl(0), curLoadState(0), dstTrk(1)
-	// ,bHideHudArr(0), bHideHudBeam(0), bHideHudPace(0), bHideHudTrail(0)
-	,bRplPlay(0),bRplPause(0), bRplRec(0), bRplWnd(1)
-	, iRplSkip(0)
 	// ,iEdTire(0), iTireLoad(0), iCurLat(0),iCurLong(0),iCurAlign(0), iUpdTireGr(0)
 	,fLastFrameDT(0.001f)
 	// ,bPerfTest(0),iPerfTestStage(PT_StartWait)
-	,isGhost2nd(0)
-	,fLastTime(1.f)
 {
 	macroblockWire.mPolygonMode = PM_WIREFRAME;
 
@@ -85,7 +73,7 @@ App::~App()
 	delete scn;
 
 	delete hud;
-	// delete input;
+	delete input;
 }
 
 
@@ -169,6 +157,7 @@ void App::UpdThr()
 			// DoNetworking();
 			bSimulating = false;
 		}
-		this_thread::sleep_for(chrono::milliseconds(pSet ? pSet->thread_sleep : 100));
+		this_thread::sleep_for(chrono::milliseconds(
+			pSet ? pSet->thread_sleep : 100));
 	}
 }

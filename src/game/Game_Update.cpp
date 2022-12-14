@@ -27,6 +27,7 @@
 #include "CarModel.h"
 #include "FollowCamera.h"
 #include "carcontrolmap_local.h"
+#include "CInput.h"
 #include "Road.h"
 
 #include "Def_Str.h"
@@ -37,8 +38,10 @@
 #include "SceneClasses.h"
 #include "settings.h"
 
+#include "ICSInputControlSystem.h"
 #include "SDL_keycode.h"
 #include "MyGUI_ImageBox.h"
+#include "MyGUI_TabControl.h"
 #include <string>
 using namespace Ogre;
 using namespace std;
@@ -53,6 +56,12 @@ void App::update( float dt )
 		mGraphicsSystem->setQuit();
 		return;
 	}
+
+	//  input
+	mInputCtrl->update(dt);
+	for (int i=0; i<4; ++i)
+		mInputCtrlPlayer[i]->update(dt);
+
 
 	scn->UpdSun();
 
@@ -85,6 +94,11 @@ void App::update( float dt )
 		///  Gui  ----
 		// if (gui)
 			// gui->GuiUpdate();
+
+		//  input
+		if (isFocGui && pSet->iMenu == MN_Options &&
+			mWndTabsOpts->getIndexSelected() == TABo_Input)
+			gui->UpdateInputBars();
 
 		
 		if (bWindowResized && gcom)
@@ -128,17 +142,6 @@ void App::update( float dt )
 
 		if (pGame && iLoad1stFrames == -2)
 		{
-			//  set game inputs .. // todo: use oics
-			inputs[A_Throttle] = mArrows[2];
-			inputs[A_Brake] = mArrows[3];
-			inputs[A_Steering] = 0.5f * (1 + mArrows[1] - mArrows[0]);
-			inputs[A_HandBrake] = mArrows[4];
-			inputs[A_Boost] = mArrows[5];
-			inputs[A_Flip] = 0.5f * (1 + mArrows[7] - mArrows[6]);
-			inputs[A_NextCamera] = mArrows[8];
-			inputs[A_PrevCamera] = mArrows[9];
-			inputs[A_Rewind] = mArrows[10];
-
 			updatePoses(dt);
 
 			if (pSet->check_arrow && !bRplPlay && !carModels.empty())
@@ -275,10 +278,22 @@ void App::update( float dt )
 
 #define key(a)  SDL_SCANCODE_##a
 
-//  Key events
+//  Key Pressed
 //-----------------------------------------------------------------------------------------------------------------------------
 void App::keyPressed( const SDL_KeyboardEvent &arg )
 {
+	//  input
+	mInputCtrl->keyPressed(arg);
+	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->keyPressed(arg);
+
+	/*if (!mInputCtrl->keyPressed(arg))
+		return;
+	for (int i=0; i<4; ++i)
+	{
+		if (!mInputCtrlPlayer[i]->keyPressed(arg))
+			return;
+	}*/
+
 	int itrk = 0, icar = 0;
 
 	if (arg.keysym.mod == KMOD_LALT)  // alt
@@ -445,9 +460,15 @@ void App::keyPressed( const SDL_KeyboardEvent &arg )
 	TutorialGameState::keyPressed( arg );
 }
 
+//  Key Released
+//-----------------------------------------------------------------------------------------------------------------------------
 
 void App::keyReleased( const SDL_KeyboardEvent &arg )
 {
+	//  input
+	mInputCtrl->keyReleased(arg);
+	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->keyReleased(arg);
+
 	switch (arg.keysym.scancode)
 	{
 	case key(LSHIFT):
@@ -497,5 +518,13 @@ void App::keyReleased( const SDL_KeyboardEvent &arg )
 }
 
 #undef key
-
 #pragma GCC diagnostic pop
+
+
+//  Key events input
+//-----------------------------------------------------------------------------------------------------------------------------
+
+void App::channelChanged(ICS::Channel *channel, float currentValue, float previousValue)
+{
+
+}

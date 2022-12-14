@@ -14,6 +14,7 @@
 #include "CScene.h"
 #include "CData.h"
 #include "TracksXml.h"
+#include "CInput.h"
 
 #include <list>
 #include <filesystem>
@@ -94,7 +95,7 @@ void App::Load()
 
 	// mBindListner = gui;
 
-	// input = new CInput(this);  // todo
+	input = new CInput(this);
 
 	pGame->app = this;
 	sc = scn->sc;
@@ -134,6 +135,7 @@ void App::createScene01()
 	//  SR cfg, xmls etc
 	Load();
 	
+	createInputs();
 
 	//  Gui Init
 	baseInitGui(mGraphicsSystem);

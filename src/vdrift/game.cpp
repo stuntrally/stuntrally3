@@ -18,9 +18,9 @@
 #include "SceneXml.h"
 #include "CScene.h"
 #include "CGame.h"
-//; #include "CInput.h"
+#include "CInput.h"
 #include "FollowCamera.h"
-// #include "ICSInputControlSystem.h"
+#include "ICSInputControlSystem.h"
 #include <OgreTimer.h>
 #include <OgreDataStream.h>
 
@@ -510,24 +510,26 @@ void GAME::UpdateCarInputs(CAR & car)
 {
 	vector <float> carinputs(CARINPUT::ALL, 0.0f);
 	//  race countdown or loading
-	bool forceBrake = false; //timer.waiting || timer.pretime > 0.f; || app->iLoad1stFrames > -2;
+	bool forceBrake = timer.waiting || timer.pretime > 0.f || app->iLoad1stFrames > -2;
 
 	int i = app->scn->sc->asphalt ? 1 : 0;
 	float sss_eff = pSet->sss_effect[i], sss_velf = pSet->sss_velfactor[i];
 	float carspeed = car.GetSpeedDir();  //car.GetSpeed();
 	//LogO(fToStr(car.GetSpeed(),2,6)+" "+fToStr(car.GetSpeedDir(),2,6));
 
-	// fixme input
-	/*boost::lock_guard<boost::mutex> lock(app->input->mPlayerInputStateMutex);
-	int id = std::min(3, car.id);
+	//  Input
+	app->input->mPlayerInputStateMutex.lock();
+	int id = 0; //; std::min(3, car.id);
+	for (int i=0; i<4; ++i)
+	{
+		for (int a = 0; a < NumPlayerActions; ++a)
+			app->input->mPlayerInputState[i][a] = app->mInputCtrlPlayer[i]->getChannel(a)->getValue();
+	}
 	carinputs = controls.second.ProcessInput(
 		app->input->mPlayerInputState[id], car.id,
 		carspeed, sss_eff, sss_velf,  app->mInputCtrlPlayer[id]->mbOneAxisThrottleBrake,
-		forceBrake, app->bPerfTest, app->iPerfTestStage);*/
-	// temp ..
-	carinputs = controls.second.ProcessInput(
-		app->inputs, car.id,
-		carspeed, sss_eff, sss_velf);
+		forceBrake/*, app->bPerfTest, app->iPerfTestStage*/);
+	app->input->mPlayerInputStateMutex.unlock();
 
 	car.HandleInputs(carinputs, TickPeriod());
 }

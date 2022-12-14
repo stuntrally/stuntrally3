@@ -12,7 +12,7 @@
 
 #include "ChampsXml.h"  // progress..
 #include "ChallengesXml.h"
-// #include "CInput.h"
+#include "CInput.h"
 #include "settings.h"
 
 namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class RenderWindow;  class Viewport;  class Light;  }
@@ -133,7 +133,7 @@ public:
 	virtual void mouseButtonBindingDetected(
 		ICS::InputControlSystem* ICS, ICS::Control* control,  unsigned int button,
 		ICS::Control::ControlChangingDirection direction) {  return;  }
-
+*/
 	//  init
 	void CreateInputTab( int iTab, bool player,
 		const std::vector<InputAction>& actions, ICS::InputControlSystem* ICS);
@@ -141,9 +141,10 @@ public:
 
 	//  bind
 	void inputBindBtnClicked(WP), inputUnbind(WP), inputBindBtn2(WP, int, int, MyGUI::MouseButton mb);
+
 	enum EBind {  B_Done=0, B_First, B_Second  };
 	void UpdateInputButton(Btn button, const InputAction& action, EBind bind = B_Done);
-
+/*
 	InputAction* mBindingAction =0;
 	Btn mBindingSender =0;
 

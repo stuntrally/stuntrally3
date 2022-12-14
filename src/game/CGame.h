@@ -7,7 +7,7 @@
 #include "cardefs.h"
 #include "CarPosInfo.h"
 // #include "networkcallbacks.hpp"
-// #include "ICSChannelListener.h"
+#include "ICSChannelListener.h"
 // #include "PreviewTex.h"
 #include <thread>
 //#include "OgreTextureGpu.h"
@@ -31,7 +31,7 @@ enum IblQuality  // reflections
 };
 
 
-class App : public BaseApp,	//public ICS::ChannelListener,
+class App : public BaseApp,	public ICS::ChannelListener,
  	public TutorialGameState
 {
 	//  vars
@@ -56,10 +56,6 @@ private:
 
 
 public:
-	//  Gui
-	// MyGUI::Gui* mGui = 0;
-	// MyGUI::Ogre2Platform* mPlatform = 0;
-
 	void InitGui();//, DestroyGui();
 
 	//  SR
@@ -160,9 +156,9 @@ public:
 
 	std::vector<ReplayFrame2> frm;  //size:16  //  frm - used when playing replay for hud and sounds
 
-	bool isGhost2nd;  // if present (ghost but from other car)
+	bool isGhost2nd =0;  // if present (ghost but from other car)
 	std::vector<float> vTimeAtChks;  // track ghost's times at road checkpoints
-	float fLastTime;  // thk ghost total time
+	float fLastTime = 1.f;  // trk ghost total time
 		
 
 	// virtual bool frameStart(Ogre::Real time);  //;void DoNetworking();
@@ -190,7 +186,7 @@ public:
 	void LoadData();
 	bool newGameRpl =0;
 
-	bool dstTrk =0;  // destroy track, false if same
+	bool dstTrk = 1;  // destroy track, false if same
 	Ogre::String oldTrack;  bool oldTrkUser =0;
 
 	
@@ -201,28 +197,24 @@ public:
 	int curLoadState = 0;
 	std::map<int, std::string> loadingStates;
 
-	float mTimer;  // wind,water
+	float mTimer = 0.f;  // wind,water
 
 
 	//  mtr from ter  . . . 
-	int blendMapSize;
+	int blendMapSize =513;
 	std::vector<char> blendMtr;
 	//; void GetTerMtrIds();
 
-
 	// void recreateReflections();  // call after refl_mode changed
-
-	// virtual void materialCreated(sh::MaterialInstance* m, const std::string& configuration, unsigned short lodIndex);
 
 
 	//  Input  ----
 	/// todo: temp
 	float inputs[14] = {0,0,0,0};
 
-	// CInput* input =0;
+	CInput* input =0;
 
-	// virtual bool keyPressed(const SDL_KeyboardEvent &arg);
-	// void channelChanged(ICS::Channel *channel, float currentValue, float previousValue);
+	void channelChanged(ICS::Channel *channel, float currentValue, float previousValue) override;
 
 
 	///  Gui
@@ -233,13 +225,13 @@ public:
 	// PreviewTex prvView,prvRoad,prvTer;  // track tab
 	// PreviewTex prvStCh;  // champ,chall stage view
 
-	bool bHideHudBeam;  // hides beam when replay or no road
-	bool bHideHudArr;	// hides arrow when replay,splitscreen
-	bool bHideHudPace;  // hides pacenotes when same or deny by challenge
-	bool bHideHudTrail; // hides trail if denied by challenge
+	bool bHideHudBeam  =0;  // hides beam when replay or no road
+	bool bHideHudArr   =0;	// hides arrow when replay,splitscreen
+	bool bHideHudPace  =0;  // hides pacenotes when same or deny by challenge
+	bool bHideHudTrail =0;  // hides trail if denied by challenge
 	
-	bool bRplPlay,bRplPause, bRplRec, bRplWnd;  //  game
-	int carIdWin, iRplCarOfs, iRplSkip;
+	bool bRplPlay =0, bRplPause =0, bRplRec =0, bRplWnd =1;  //  game
+	int carIdWin =-1, iRplCarOfs =0, iRplSkip =0;
 
 	//  race pos
 	int GetRacePos(float timeCur, float timeTrk, float carTimeMul, bool coldStart, float* pPoints=0);

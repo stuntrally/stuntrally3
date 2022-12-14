@@ -6,7 +6,7 @@
 // #include "../sdl4ogre/events.h"
 
 // namespace SFO {  class InputWrapper;  class SDLCursorManager;  }
-// namespace ICS {  class InputControlSystem;  class DetectingBindingListener;  }
+namespace ICS {  class InputControlSystem;  class DetectingBindingListener;  }
 namespace MyGUI{  class Ogre2Platform;  }
 namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class Window;  }
 // class MasterClient;  class P2PGameClient;
@@ -67,7 +67,8 @@ public:
 	// virtual void createScene() = 0;
 	// virtual void destroyScene() = 0;
 
-	// void createFrameListener(), createViewports(), refreshCompositor(bool disableAll=false);
+	void createFrameListener();
+	// void createViewports(), refreshCompositor(bool disableAll=false);
 	// void setupResources(), createResourceListener(), loadResources();
 	void LoadingOn(), LoadingOff();
 
@@ -101,13 +102,13 @@ public:
 	///  input
 	// SFO::InputWrapper* mInputWrapper =0;
 	// SFO::SDLCursorManager* mCursorManager =0;
-	// ICS::InputControlSystem* mInputCtrl =0;
-	// ICS::InputControlSystem* mInputCtrlPlayer[4] ={0,};
+	ICS::InputControlSystem* mInputCtrl =0;
+	ICS::InputControlSystem* mInputCtrlPlayer[4] ={0,};
 	// std::vector<SDL_Joystick*> mJoysticks;
 	
 	// this is set to true when the user is asked to assign a new key
 	// bool bAssignKey =0;
-	// ICS::DetectingBindingListener* mBindListner =0;
+	ICS::DetectingBindingListener* mBindListner =0;
 
 	bool IsFocGuiInput()  {  return isFocGui || isFocRpl;  }
 	bool IsFocGui();
