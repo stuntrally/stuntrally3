@@ -100,8 +100,8 @@ CompositorWorkspace *App::setupCompositor()
 		mCubeCamera->setNearClipDistance( 0.1 );
 		// mCubeCamera->setUseRenderingDistance(true);
 		// mCubeCamera->_setRenderedRqs(0, 200);
-		// mCubeCamera->setVisibilityFlags( RV_Sky); 
-		// mCubeCamera->setDefaultVisibilityFlags( RV_Sky); //RV_MaskReflect );  //** set in cubemap_target
+		mCubeCamera->setVisibilityFlags( RV_MaskReflect );
+		// mCubeCamera->setDefaultVisibilityFlags( RV_Sky);  //** set in cubemap_target
 
 		mCubeCamera->setFarClipDistance( 20000 ); //300 );  // par  20000 needed for sky meh..
 		// mCubeCamera->setShadowRenderingDistance( 100 );  // par?-

@@ -152,6 +152,7 @@ void App::CreateObjects()
 		if (no)  continue;  //- no spheres
 		try 
 		{	o.it = mSceneMgr->createItem(/*"oE"+s,*/ (no ? "sphere" : o.name) + ".mesh");
+			scn->SetTexWrap(o.it);
 		}
 		catch( Ogre::Exception& e )
 		{

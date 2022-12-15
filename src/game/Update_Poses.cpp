@@ -1,3 +1,4 @@
+#include "RenderConst.h"
 #include "pch.h"
 #include "par.h"
 #include "Def_Str.h"
@@ -471,9 +472,9 @@ void App::updatePoses(float time)
 		PosInfo& pi = carPoses[q][c], &pic = carPoses[qq][cc];
 		carM->Update(carPoses[q][c], carPoses[qq][cc], time);
 
-		if (mCubeCamera)  // refl
+		if (mCubeCamera && c == 0)  // refl
 		{	mCubeCamera->setPosition(carM->pMainNode->getPosition());// carPoses[q][c].pos);
-			mCubeCamera->setVisibilityFlags( 32 );
+			// mCubeCamera->setVisibilityFlags( RV_MaskReflect /*32*/ );
 			// mCubeCamera->setOrientation(carM->pMainNode->getOrientation());
 		}
 
