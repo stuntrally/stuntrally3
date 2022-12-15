@@ -151,9 +151,9 @@ void App::generateDebugText()
 
 	if (pGame)  // CAR text
 	{
-		int num = pGame->cars.size();
+		/*int num = pGame->cars.size();
 		if (num != 1)
-			txt += "cars " + toStr(num) + "\n";
+			txt += "cars " + toStr(num) + "\n";*/
 		
 		/*for (const CAR* car : pGame->cars)
 		{

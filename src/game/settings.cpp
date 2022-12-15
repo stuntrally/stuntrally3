@@ -111,9 +111,9 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	// Param(c,w, "hud_size.fov_smooth", fov_smooth);
 	Param(c,w, "hud_size.cam_bounce", cam_bounce);		Param(c,w, "hud_size.cam_bnc_mul", cam_bnc_mul);
 	//  pacenotes
-	// Param(c,w, "pacenotes.show", pace_show);		Param(c,w, "pacenotes.dist", pace_dist);
-	// Param(c,w, "pacenotes.size", pace_size);		Param(c,w, "pacenotes.near", pace_near);
-	// Param(c,w, "pacenotes.next", pace_next);		Param(c,w, "pacenotes.alpha", pace_alpha);
+	Param(c,w, "pacenotes.show", pace_show);		Param(c,w, "pacenotes.dist", pace_dist);
+	Param(c,w, "pacenotes.size", pace_size);		Param(c,w, "pacenotes.near", pace_near);
+	Param(c,w, "pacenotes.next", pace_next);		Param(c,w, "pacenotes.alpha", pace_alpha);
 	Param(c,w, "pacenotes.trail", trail_show);
 
 
@@ -193,8 +193,8 @@ SETTINGS::SETTINGS()   ///  Defaults
 	// ,fov_min(90.f), fov_boost(5.f), fov_smooth(5.f)
 	,cam_bounce(1), cam_bnc_mul(1.f)
 	//  pace
-	// ,pace_show(1), pace_next(4)
-	// ,pace_dist(200.f), pace_size(1.f), pace_near(1.f), pace_alpha(1.f)
+	,pace_show(1), pace_next(4)
+	,pace_dist(200.f), pace_size(1.f), pace_near(1.f), pace_alpha(1.f)
 	,trail_show(1)
 
 	//  gui

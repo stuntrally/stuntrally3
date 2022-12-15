@@ -614,7 +614,6 @@ bool FollowCamera::loadCameras()
 //-----------------------------------------------------------------------------------------------------
 void FollowCamera::updFmtTxt()
 {
-	/*
 	String sTR = TR("#{CamInfoStrings}");
 	vector<String>::type vs = StringUtil::split(sTR,",");
 	
@@ -647,5 +646,4 @@ void FollowCamera::updFmtTxt()
 	sFmt_Car =
 		sType+": %d %s  "+sOffset+": %4.2f %4.2f  "+sHeight+": %4.2f\n"+
 		sLEFT+": "+sHeight+" | "+sRIGHT+": "+sOffset+" | "+sMiddle+": "+sreset+" "+sOffset+"X";
-	*/
 }

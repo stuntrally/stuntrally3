@@ -26,7 +26,7 @@ hlms ParSmoke unlit
 //	 receives_shadows false
 //	 alpha_rejection greater 2
 //	 ambient 0 0 0
-//	 diffuse 0 0 0 1
+//	 diffuse 0 0 0
 //	 emissive 1 1 1
 //	 diffuse_address_mode clamp
 //	 scene_blend alpha_blend

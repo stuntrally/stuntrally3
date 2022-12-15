@@ -18,9 +18,6 @@ using namespace Ogre;
 
 CScene::CScene(App* app1)
 	:app(app1)
-	// ,sun(0), pr(0),pr2(0)
-	// ,grass(0), trees(0)
-	// ,road(0), pace(0), trail(0)
 {
 	data = new CData();
 	sc = new Scene();

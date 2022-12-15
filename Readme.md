@@ -2,7 +2,7 @@
 
 Early port of latest [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.7 using latest [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0.  
 
-Already playable Single Race with GUI.
+Already playable and with GUI.
 
 [Roadmap here](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap#sr_3), Help and contributing is welcome.
 

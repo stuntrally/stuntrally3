@@ -111,10 +111,10 @@ void App::LoadData()
 	struct SV{  std::vector<int> v;  };
 	int sv = sizeof(SV), sr2 = sizeof(ReplayFrame2)-3*sv, wh2 = sizeof(RWheel);
 
-	LogO(String("**** ReplayFrame size ") +toStr(sr2)+"+ wh: "+toStr(wh2)+"= "+toStr(sr2+4*wh2));
+	LogO(String("**** ReplayFrame size ") +toStr(sr2)+" + "+toStr(wh2)+" *4 (wh) = "+toStr(sr2+4*wh2));
 	LogO(String("**** Replay test sizes: 12244: ") + toStr(sizeof(char))+","+toStr(sizeof(short))+
-		","+toStr(sizeof(half))+","+toStr(sizeof(float))+","+toStr(sizeof(int))+"  sv: "+toStr(sv)+
-		"   hi,lo 16,32: h "+toStr(*((uchar*)&u+1))+" l "+toStr(*((uchar*)&u)));
+		","+toStr(sizeof(half))+","+toStr(sizeof(float))+","+toStr(sizeof(int))+"  vec: "+toStr(sv)+
+		"   hi,lo 16,32: "+toStr(*((uchar*)&u+1))+","+toStr(*((uchar*)&u)));
 
 	LogO(String("::: Time load xmls: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
@@ -830,7 +830,7 @@ void App::CreateRoads()
 	/*if (!bHideHudPace)
 	{
 		scn->pace = new PaceNotes(pSet);
-		scn->pace->Setup(mSceneMgr, cam, scn->terrain, //gui->mGui, mWindow);
+		scn->pace->Setup(mSceneMgr, cam, scn->terrain, gui->mGui, mWindow);
 	}*/
 
 

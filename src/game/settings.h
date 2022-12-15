@@ -64,9 +64,9 @@ public:
 	// float fov_min, fov_boost, fov_smooth;  // todo:
 	bool cam_loop_chng;  int cam_in_loop;
 	bool cam_bounce;  float cam_bnc_mul;
-	//  pacenotes  // todo:
-	// bool pace_show;  int pace_next;
-	// float pace_dist, pace_size, pace_near, pace_alpha;
+	//  pacenotes
+	bool pace_show;  int pace_next;
+	float pace_dist, pace_size, pace_near, pace_alpha;
 	bool trail_show;
 
 	eGraphType graphs_type;

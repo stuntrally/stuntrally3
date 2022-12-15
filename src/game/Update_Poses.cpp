@@ -77,7 +77,7 @@ void App::newPoses(float time)  // time only for camera update
 				//pi.vHitPos = Vector3::ZERO;  pi.vHitNorm = Vector3::UNIT_Y;
 
 				//  wheels
-				//dynamics.SetSteering(state.steer, pGame->GetSteerRange());  //peers can have other game settins..
+				//dynamics.SetSteering(state.steer, pGame->GetSteerRange());  //peers can have other game settings..
 				for (int w=0; w < carM->numWheels; ++w)
 				{
 					MATHVECTOR<float,3> whP = carM->whPos[w];
@@ -384,7 +384,7 @@ void App::newPoses(float time)  // time only for camera update
 
 		
 		///  store new pos info in queue  _________
-		//if (!(isFocGui || isTweakTab()) || mClient)  // dont if gui, but network always
+		//if (!(isFocGui /*|| isTweakTab()) || mClient*/))  // dont if gui, but network always
 		{
 			int qn = (iCurPoses[c] + 1) % CarPosCnt;  // next index in queue
 			carPoses[qn][c] = pi;
