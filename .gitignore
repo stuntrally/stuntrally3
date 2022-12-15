@@ -18,7 +18,8 @@ build/*
 Dependencies/*
 
 #  data
-hud
+config
+#hud
 #gui
 tracks
 cars

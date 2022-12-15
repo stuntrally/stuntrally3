@@ -133,3 +133,18 @@ hlms Arrow pbs
 	// transparency_mode transparent
 	// two_sided true
 }
+
+hlms pacenote unlit
+{
+    diffuse  1 1 1
+    specular 0.1 0.1 0.1
+
+	// depth_write off
+	//depth_check off
+	// depth_bias 3
+		
+	scene_blend alpha_blend
+	// fog_override true  // no fog
+
+	diffuse_map pacenotes.png
+}
