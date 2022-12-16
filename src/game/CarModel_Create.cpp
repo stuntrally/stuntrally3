@@ -173,6 +173,8 @@ void CarModel::Load(int startId, bool loop)
 void CarModel::Destroy()
 {
 	// if (pNickTxt){  pApp->mGui->destroyWidget(pNickTxt);  pNickTxt = 0;  }
+	// itNextChk = 0;  ndNextChk = 0;
+	// pMainNode =0;  ndSph =0;
 
 	// delete pReflect;  pReflect = 0;
 	delete fCam;  fCam = 0;
@@ -205,7 +207,6 @@ void CarModel::Destroy()
 
 	if (brakes)  mSceneMgr->destroyBillboardSet(brakes);
 	brakes = 0;
-	//if (pMainNode)  mSceneMgr->destroySceneNode(pMainNode);  //last?
 
 	//  destroy resource group, will also destroy all resources in it
 	if (ResourceGroupManager::getSingleton().resourceGroupExists(resGrpId))
@@ -405,14 +406,11 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 		else
 		{	//  clone,  set car color
 			static int id = 0;  ++id;
-			HlmsPbsDatablock *db = static_cast<HlmsPbsDatablock *>(
+			db = static_cast<HlmsPbsDatablock *>(
 				pDb->clone( "CarBody" + sCarI + toStr(id) ) );
 			db->setTexture( PBSM_REFLECTION, pApp->mDynamicCubemap );
-			db->setSpecular(Vector3(
-				Math::RangeRandom(0.f, 1.f),
-				Math::RangeRandom(0.f, 1.f),
-				Math::RangeRandom(0.f, 1.f)));  // todo: color cfg
 			item->getSubItem(0)->setDatablock( db );
+			ChangeClr();
 		}
 	}
 	catch (Ogre::Exception ex)

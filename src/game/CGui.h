@@ -300,7 +300,8 @@ public:
 
 	///  [Car] color  --===---
 	SV svCarClrH, svCarClrS, svCarClrV;
-	SV svCarClrGloss, svCarClrRefl;  void slCarClr(SV*);
+	SV svCarClrGloss, svCarClrMetal, svCarClrRough;
+	void slCarClr(SV*);
 	void SldUpd_CarClr();
 	void UpdCarClrSld(bool upd=true);
 	void SetCarClr(), UpdImgClr();

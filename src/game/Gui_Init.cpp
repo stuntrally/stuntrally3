@@ -211,11 +211,12 @@ void CGui::InitGui()
 
 	//  car color
 	float f;  // temp
-	sv= &svCarClrH;		sv->Init("CarClrH", &f, 0.f,1.f);  Sev(CarClr);
-	sv= &svCarClrS;		sv->Init("CarClrS", &f, 0.f,1.f);  Sev(CarClr);
-	sv= &svCarClrV;		sv->Init("CarClrV", &f, 0.f,1.f);  Sev(CarClr);
-	sv= &svCarClrGloss;	sv->Init("CarClrGloss", &f, 0.f,1.f, 1.6f);  Sev(CarClr);
-	sv= &svCarClrRefl;	sv->Init("CarClrRefl",  &f, 0.f,1.4f);  Sev(CarClr);
+	sv= &svCarClrH;		sv->Init("CarClrH",     &f, 0.f, 1.f);  Sev(CarClr);
+	sv= &svCarClrS;		sv->Init("CarClrS",     &f, 0.f, 1.f);  Sev(CarClr);
+	sv= &svCarClrV;		sv->Init("CarClrV",     &f, 0.f, 1.f);  Sev(CarClr);
+	sv= &svCarClrGloss;	sv->Init("CarClrGloss", &f, 0.f,   1.3f, 1.5f);  Sev(CarClr);
+	sv= &svCarClrMetal;	sv->Init("CarClrMetal", &f, 0.f,   1.0f, 1.f );  Sev(CarClr);
+	sv= &svCarClrRough;	sv->Init("CarClrRough", &f, 0.01f, 1.0f, 1.f );  Sev(CarClr);
 	imgCarClr = fImg("ImgCarClr");
 	UpdCarClrSld();
 
@@ -479,19 +480,21 @@ void CGui::InitGui()
 	{
 		int x = i % clrRow, y = i / clrRow;
 		Img img = tbc->createWidget<ImageBox>("ImageBox",
-			12+x*sx, 52+y*sx, sx-1,sx-1, Align::Left, "carClr"+toStr(i));
+			12+x*sx, 102+y*sx, sx-1,sx-1, Align::Left, "carClr"+toStr(i));
 		img->setImageTexture("white.png");
 		gcom->setOrigPos(img, "GameWnd");
 
 		const CarColor& cl = data->colors->v[i];
-		float h = cl.hue, s = cl.sat, v = cl.val, g = cl.gloss, r = cl.refl;
+		float h = cl.hue, s = cl.sat, v = cl.val;
+		
 		Ogre::ColourValue c;  c.setHSB(1.f-h, s, v);
 		img->setColour(Colour(c.r,c.g,c.b));
 		img->eventMouseButtonClick += newDelegate(this, &CGui::imgBtnCarClr);
-		img->setUserString("s", toStr(s));  img->setUserString("h", toStr(h));
-		img->setUserString("v", toStr(v));  img->setUserString("g", toStr(g));  img->setUserString("r", toStr(r));
+		img->setUserString("s", toStr(s));  img->setUserString("h", toStr(h));  img->setUserString("v", toStr(v));
+		img->setUserString("g", toStr(cl.gloss));
+		img->setUserString("m", toStr(cl.metal));  img->setUserString("r", toStr(cl.rough));
 	}
-	// Btn("CarClrRandom", btnCarClrRandom);
+	Btn("CarClrRandom", btnCarClrRandom);
 	sv= &svNumLaps;  sv->Init("NumLaps",  &pSet->gui.num_laps, 1,10, 1.3f);  sv->DefaultI(2);
 
 	//  car stats
@@ -573,12 +576,11 @@ void CGui::InitGui()
 	Edt(edNetServerIP,	"edNetServerIP",	evEdNetServerIP);	edNetServerIP->setCaption(	pSet->master_server_address);
 	Edt(edNetServerPort,"edNetServerPort",	evEdNetServerPort);	edNetServerPort->setCaption(toStr(pSet->master_server_port));
 	Edt(edNetLocalPort,	"edNetLocalPort",	evEdNetLocalPort);	edNetLocalPort->setCaption(	toStr(pSet->local_port));
-
+*/
 
 	//  user dir
 	Ed edUserDir = fEd("EdUserDir");
 	edUserDir->setCaption(PATHMANAGER::UserConfigDir());
-*/
 
 
 	///  tire graphs  ----

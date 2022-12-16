@@ -107,7 +107,8 @@ public:
 
 		bool trackreverse;
 		std::vector<std::string> car;  //[4] local players
-		std::vector<float> car_hue, car_sat, car_val, car_gloss, car_refl;  //[6] also for ghosts
+		std::vector<float> car_hue, car_sat, car_val,
+			car_gloss, car_metal, car_rough;  //[6] also for ghosts
 
 		int local_players, num_laps;  // split
 		//  game setup

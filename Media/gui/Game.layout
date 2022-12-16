@@ -874,95 +874,110 @@
 							</Widget>
 						</Widget>
 		
-						<Widget type="Button" skin="Button" position="12 222 148 28" name="CarClrRandom">
+						<Widget type="Button" skin="Button" position="12 42 316 28" name="CarClrRandom">
 							<Property key="Caption" value="#{CarClrRandom}"/>
 							<Property key="Colour" value="0.8 0.7 1.0"/>
 							<Property key="TextColour" value="0.9 0.9 1.0"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="12 280 88 22">
+						<Widget type="TextBox" skin="TextBox" position="400 150 88 22">
 							<Property key="Caption" value="#80E0F0#{Adjust}"/>
 							<Property key="TextColour" value="0.4 0.6 0.9"/>
 						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="180 302 472 8">
-							<Property key="ImageTexture" value="hue_bar.png"/>
-						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="500 330 52 52" name="ImgCarClr">
+						<Widget type="ImageBox" skin="ImageBox" position="650 130 52 52" name="ImgCarClr">
 							<Property key="ImageTexture" value="white.png"/>
 						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="408 212 392 8">
+							<Property key="ImageTexture" value="hue_bar.png"/>
+						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="12 310 98 22">
+						<Widget type="TextBox" skin="TextBox" position="400 190 98 22">
 							<Property key="Caption" value="#{ColHue}"/>
 							<Property key="TextColour" value="0.4 0.7 1.0"/>
 							<UserString key="tip" value="#{TipChangeHue}"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="164 310 416 16" name="CarClrH">
+						<Widget type="Slider" skin="Slider" position="400 220 336 16" name="CarClrH">
 							<UserString key="tip" value="#{TipChangeHue}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="110 310 52 22" name="CarClrHVal">
+						<Widget type="TextBox" skin="TextBox" position="550 200 52 22" name="CarClrHVal">
 							<Property key="TextColour" value="0.6 0.8 1.0"/>
 							<Property key="FontName" value="font.small"/>
 							<UserString key="tip" value="#{TipChangeHue}"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="12 335 98 22">
+						<Widget type="TextBox" skin="TextBox" position="400 240 98 22">
 							<Property key="TextColour" value="0.6 0.7 0.8"/>
 							<Property key="Caption" value="#{ColSat}"/>
 							<Property key="FontName" value="font.small"/>
 							<UserString key="tip" value="#{TipChangeSat}"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="164 335 324 14" name="CarClrS">
+						<Widget type="Slider" skin="Slider" position="400 260 334 14" name="CarClrS">
 							<UserString key="tip" value="#{TipChangeSat}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="110 335 52 22" name="CarClrSVal">
+						<Widget type="TextBox" skin="TextBox" position="550 240 52 22" name="CarClrSVal">
 							<Property key="TextColour" value="0.7 0.8 0.9"/>
 							<Property key="FontName" value="font.small"/>
 							<UserString key="tip" value="#{TipChangeSat}"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="12 360 98 22">
+						<Widget type="TextBox" skin="TextBox" position="400 280 98 22">
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
 							<Property key="Caption" value="#{ColBright}"/>
 							<Property key="FontName" value="font.small"/>
 							<UserString key="tip" value="#{TipChangeBright}"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="164 360 324 14" name="CarClrV">
+						<Widget type="Slider" skin="Slider" position="400 300 334 14" name="CarClrV">
 							<UserString key="tip" value="#{TipChangeBright}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="110 360 52 22" name="CarClrVVal">
+						<Widget type="TextBox" skin="TextBox" position="550 280 52 22" name="CarClrVVal">
 							<Property key="TextColour" value="0.65 0.8 0.95"/>
 							<Property key="FontName" value="font.small"/>
 							<UserString key="tip" value="#{TipChangeBright}"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="12 400 88 22">
+						<Widget type="TextBox" skin="TextBox" position="400 340 88 22">
 							<Property key="TextColour" value="0.7 0.7 0.7"/>
 							<Property key="Caption" value="#{ColGloss}"/>
 							<Property key="FontName" value="font.small"/>
 							<UserString key="tip" value="#{TipChangeGloss}"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="164 400 324 14" name="CarClrGloss">
+						<Widget type="Slider" skin="Slider" position="400 360 334 14" name="CarClrGloss">
 							<UserString key="tip" value="#{TipChangeGloss}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="110 400 52 22" name="CarClrGlossVal">
+						<Widget type="TextBox" skin="TextBox" position="550 340 52 22" name="CarClrGlossVal">
 							<Property key="TextColour" value="0.8 0.8 0.8"/>
 							<Property key="FontName" value="font.small"/>
 							<UserString key="tip" value="#{TipChangeGloss}"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="12 425 98 22">
+						<Widget type="TextBox" skin="TextBox" position="400 380 98 22">
 							<Property key="TextColour" value="0.6 0.6 0.9"/>
-							<Property key="Caption" value="#{ColReflect}"/>
+							<Property key="Caption" value="#{ColMetalness}"/>
 							<Property key="FontName" value="font.small"/>
-							<UserString key="tip" value="#{TipChangeReflect}"/>
+							<!-- <UserString key="tip" value="#{TipChangeReflect}"/> -->
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="164 425 324 14" name="CarClrRefl">
-							<UserString key="tip" value="#{TipChangeReflect}"/>
+						<Widget type="Slider" skin="Slider" position="400 400 334 14" name="CarClrMetal">
+							<!-- <UserString key="tip" value="#{TipChangeReflect}"/> -->
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="110 425 52 22" name="CarClrReflVal">
+						<Widget type="TextBox" skin="TextBox" position="550 380 52 22" name="CarClrMetalVal">
 							<Property key="TextColour" value="0.7 0.7 1.0"/>
 							<Property key="FontName" value="font.small"/>
-							<UserString key="tip" value="#{TipChangeReflect}"/>
+							<!-- <UserString key="tip" value="#{TipChangeReflect}"/> -->
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="400 420 98 22">
+							<Property key="TextColour" value="0.6 0.6 0.9"/>
+							<Property key="Caption" value="#{ColRoughness}"/>
+							<Property key="FontName" value="font.small"/>
+							<!-- <UserString key="tip" value="#{TipChangeReflect}"/> -->
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="400 440 334 14" name="CarClrRough">
+							<!-- <UserString key="tip" value="#{TipChangeReflect}"/> -->
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="550 420 52 22" name="CarClrRoughVal">
+							<Property key="TextColour" value="0.7 0.7 1.0"/>
+							<Property key="FontName" value="font.small"/>
+							<!-- <UserString key="tip" value="#{TipChangeReflect}"/> -->
 						</Widget>
 					</Widget>
 

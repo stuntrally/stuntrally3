@@ -27,6 +27,7 @@
 #include <OgreSceneNode.h>
 #include <OgreTechnique.h>
 #include <OgreViewport.h>
+#include "OgreHlmsPbsDatablock.h"
 // #include <MyGUI_TextBox.h>
 using namespace Ogre;
 
@@ -623,15 +624,25 @@ void CarModel::UpdWhTerMtr()
 
 void CarModel::ChangeClr()  // todo:
 {
-	/*int i = iColor;
-	float h = pSet->gui.car_hue[i], s = pSet->gui.car_sat[i], v = pSet->gui.car_val[i],
-		gloss = pSet->gui.car_gloss[i], refl = pSet->gui.car_refl[i];
+	int i = iColor;
+	float h = pSet->gui.car_hue[i],
+		s = pSet->gui.car_sat[i],
+		v = pSet->gui.car_val[i],
+		gloss = pSet->gui.car_gloss[i],
+		metal = pSet->gui.car_metal[i],
+		rough = pSet->gui.car_rough[i];
 	color.setHSB(1.f - h, s, v);  //set, mini pos clr
 
-
-	if (pNickTxt)
-		pNickTxt->setTextColour(MyGUI::Colour(color.r, color.g, color.b));
-	*/
+	if (!db)  return;
+	Vector3 clr(color.r, color.g, color.b);
+	db->setSpecular( clr * gloss );
+	db->setDiffuse( clr * (1.f - gloss) );
+	//db->setMetalness( metal );  //?
+	// db->setIndexOfRefraction( Vector3::UNIT_SCALE * (3.f-metal*3.f), false );
+	db->setFresnel( Vector3::UNIT_SCALE * (metal), false );
+	db->setRoughness( rough );
+	// if (pNickTxt)
+	// 	pNickTxt->setTextColour(MyGUI::Colour(color.r, color.g, color.b));
 	
 	// opp list text and mini pos colors - auto in hud update
 }

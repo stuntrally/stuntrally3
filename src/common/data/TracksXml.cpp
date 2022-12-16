@@ -347,8 +347,10 @@ bool ColorsXml::LoadIni(string file)
 			if (s[0] >= '0' && s[0] <= '9')
 			{
 				CarColor c;
-				sscanf(s, "%f %f %f %f %f",
-					&c.hue, &c.sat, &c.val, &c.gloss, &c.refl);
+				sscanf(s, "%f %f %f %f %f %f",
+					&c.hue, &c.sat, &c.val, &c.gloss, &c.metal, &c.rough);
+				if (c.metal > 1.f)  c.metal = 1.f;
+				if (c.rough > 1.f)  c.rough = 1.f;
 
 				v.push_back(c);
 			}

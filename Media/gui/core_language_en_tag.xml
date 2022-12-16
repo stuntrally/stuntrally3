@@ -199,6 +199,8 @@
 	<Tag name="ColBright">Brightness</Tag>
 	<Tag name="ColGloss">Glossiness</Tag>
 	<Tag name="ColReflect">Reflection</Tag>
+	<Tag name="ColMetalness">Metalness</Tag>
+	<Tag name="ColRoughness">Roughness</Tag>
 	<Tag name="CarClrRandom">Random</Tag>
 	<Tag name="Adjust">Adjust</Tag>
 	<Tag name="Transparency">Transparency</Tag>

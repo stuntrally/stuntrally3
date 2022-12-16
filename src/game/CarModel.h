@@ -1,20 +1,21 @@
 #pragma once
-#include <Ogre.h>
+// #include <Ogre.h>
 // #include <OgreVector2.h>
 // #include <OgreVector3.h>
 // #include <OgreQuaternion.h>
 // #include <OgreVector4.h>
 // #include <OgreMatrix4.h>
-// #include <OgreColourValue.h>
-#include "OgrePrerequisites.h"
+#include <OgrePrerequisites.h>
+#include <OgreColourValue.h>
 #include "mathvector.h"
 #include "quaternion.h"
 #include "cardefs.h"
 #include "CarPosInfo.h"
 
-/*namespace Ogre {  class SceneNode;  class Terrain;  class Camera;  class SceneManager;
-	class ParticleSystem;  class Item;  class ManualObject;  class AxisAlignedBox;  
-	namespace v1 {	class RibbonTrail;  class BillboardSet;  }  }*/
+namespace Ogre {  class HlmsPbsDatablock;
+	// class SceneNode;  class Terra;  class Camera;  class SceneManager;
+	// class ParticleSystem;  class Item;  class ManualObject;  class AxisAlignedBox;  
+	/*namespace v1 {	class RibbonTrail;  class BillboardSet;  }*/  }
 // namespace MyGUI {  class TextBox;  }
 class SETTINGS;  class GAME;  class CAR;
 class Scene;  class App;  class FollowCamera;  class CarReflection;
@@ -112,6 +113,7 @@ public:
 	
 	//  color
 	Ogre::ColourValue color;  // for minimap pos tri color  //float hue, sat, val;
+	Ogre::HlmsPbsDatablock *db =0;
 	void ChangeClr();  //  Apply new color
 		
 	//  track surface for wheels

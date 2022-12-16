@@ -120,7 +120,7 @@ public:
 class CarColor
 {
 public:
-	float hue, sat, val, refl, gloss;
+	float hue, sat, val, gloss, metal, rough;
 };
 
 

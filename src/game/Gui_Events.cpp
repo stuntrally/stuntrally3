@@ -161,8 +161,9 @@ void CGui::UpdCarClrSld(bool upd)
 	pSet->game.car_hue[i] = h;  // copy to apply
 	pSet->game.car_sat[i] = s;
 	pSet->game.car_val[i] = v;
-	pSet->game.car_gloss[i]= pSet->gui.car_gloss[i];
-	pSet->game.car_refl[i] = pSet->gui.car_refl[i];
+	pSet->game.car_gloss[i] = pSet->gui.car_gloss[i];
+	pSet->game.car_metal[i] = pSet->gui.car_metal[i];
+	pSet->game.car_rough[i] = pSet->gui.car_rough[i];
 	if (upd)
 		SetCarClr();
 	UpdImgClr();
@@ -176,7 +177,8 @@ void CGui::SldUpd_CarClr()
 	svCarClrS.UpdF(&pSet->gui.car_sat[i]);
 	svCarClrV.UpdF(&pSet->gui.car_val[i]);
 	svCarClrGloss.UpdF(&pSet->gui.car_gloss[i]);
-	svCarClrRefl.UpdF(&pSet->gui.car_refl[i]);
+	svCarClrMetal.UpdF(&pSet->gui.car_metal[i]);
+	svCarClrRough.UpdF(&pSet->gui.car_rough[i]);
 }
 
 void CGui::slCarClr(SV*)
@@ -202,7 +204,8 @@ void CGui::imgBtnCarClr(WP img)
 	pSet->gui.car_sat[i] = s2r(img->getUserString("s"));
 	pSet->gui.car_val[i] = s2r(img->getUserString("v"));
 	pSet->gui.car_gloss[i]= s2r(img->getUserString("g"));
-	pSet->gui.car_refl[i] = s2r(img->getUserString("r"));
+	pSet->gui.car_metal[i] = s2r(img->getUserString("m"));
+	pSet->gui.car_rough[i] = s2r(img->getUserString("r"));
 	UpdCarClrSld();
 }
 void CGui::btnCarClrRandom(WP)
@@ -211,8 +214,9 @@ void CGui::btnCarClrRandom(WP)
 	pSet->gui.car_hue[i] = Math::UnitRandom();
 	pSet->gui.car_sat[i] = Math::UnitRandom();
 	pSet->gui.car_val[i] = Math::UnitRandom();
-	pSet->gui.car_gloss[i]= Math::UnitRandom();
-	pSet->gui.car_refl[i] = Math::RangeRandom(0.3f,1.1f);
+	pSet->gui.car_gloss[i] = Math::UnitRandom();
+	pSet->gui.car_metal[i] = Math::RangeRandom(0.f,1.f);
+	pSet->gui.car_rough[i] = Math::RangeRandom(0.f,1.f);
 	UpdCarClrSld();
 }
 

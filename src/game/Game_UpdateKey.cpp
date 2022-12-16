@@ -119,7 +119,8 @@ void App::keyPressed( const SDL_KeyboardEvent &arg )
 			case key(A):  t = "Test1-Flat";  break;			case key(S):  t = "Test7-FluidsSmall";  break;
 			case key(D):  t = "TestC13-Rivers";  break;		case key(F):  t = "Test3-Bumps";  break;
 
-			case key(X):  t = "Test8-Objects";  break;		case key(C):  t = "TestC10-Pace";  break;
+			case key(X):  t = "Test8-Objects";  break;		case key(C):  t = "TestC6-Temp";  break;
+			case key(V):  t = "TestC10-Pace";  break;
 		} 
 		if (!t.empty())
 		{

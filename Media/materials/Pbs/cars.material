@@ -2,10 +2,10 @@
 
 hlms car_body pbs
 {
-	workflow metallic
-	//diffuse_map body_red.png
-	// metalness_map refl.png
-
+	// workflow metallic
+	workflow specular_fresnel
+	// workflow specular_ogre
+	
 	// fresnelScaleBiasPower 1.31 0.10 4
 	// specular 1.02 1.02 1.0  //20 //x4
 	// fresnel 3.1
@@ -874,11 +874,11 @@ hlms SX_body pbs //: car_body
 {
 	//diffuse_map  SX_body_violet.png
 	diffuse_map    SX_body_red.png
-	specular_map   SX_body_red.png
-	metalness_map  SX_body_red.png
+	// specular_map   SX_body_red.png
+	// metalness_map  SX_body_red.png
 	// roughness_map  SX_body_red.png
 
-	workflow metallic
+	workflow specular_fresnel
 	// fresnel 12.1  // nothing
 	// fresnel_coeff 0.1 0.1 0.1
 	fresnel_coeff 1 1 1

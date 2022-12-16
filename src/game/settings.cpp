@@ -36,11 +36,11 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	{
 		char ss[64];  sprintf(ss, "car%d.", i+1);   std::string s = ss;
 		if (i < 4)
-		{	Param(c,w, s+"car", gui.car[i]);			Param(c,w, s+"camera", cam_view[i]);
+		{	Param(c,w, s+"car", gui.car[i]);		Param(c,w, s+"camera", cam_view[i]);
 		}
-		Param(c,w, s+"clr_hue", gui.car_hue[i]);
-		Param(c,w, s+"clr_sat", gui.car_sat[i]);		Param(c,w, s+"clr_val", gui.car_val[i]);
-		Param(c,w, s+"clr_gloss", gui.car_gloss[i]);	Param(c,w, s+"clr_refl", gui.car_refl[i]);
+		Param(c,w, s+"clr_hue", gui.car_hue[i]);	Param(c,w, s+"clr_gloss", gui.car_gloss[i]);
+		Param(c,w, s+"clr_sat", gui.car_sat[i]);	Param(c,w, s+"clr_metal", gui.car_metal[i]);
+		Param(c,w, s+"clr_val", gui.car_val[i]);	Param(c,w, s+"clr_rough", gui.car_rough[i]);
 	}
 	//todo: this for all 4 cars..
 	Param(c,w, "car1.autotrans", autoshift);
@@ -275,7 +275,7 @@ SETTINGS::GameSet::GameSet()
 	,pre_time(2.f), start_order(0)
 {
 	car_hue.resize(6);  car_sat.resize(6);  car_val.resize(6);
-	car_gloss.resize(6);  car_refl.resize(6);
+	car_gloss.resize(6);  car_metal.resize(6);  car_rough.resize(6);
 	car.resize(4);
 
 	BoostDefault();
@@ -284,7 +284,7 @@ SETTINGS::GameSet::GameSet()
 	for (int i=0; i < 6; ++i)
 	{	if (i < 4)  car[i] = "HI";
 		car_hue[i] = 0.4f+0.2f*i;  car_sat[i] = 1.f;  car_val[i] = 1.f;
-		car_gloss[i] = 0.5f;  car_refl[i] = 1.f;
+		car_gloss[i] = 0.5f;  car_metal[i] = 0.5f;  car_rough[i] = 0.5f;
 	}
 }
 
