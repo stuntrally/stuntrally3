@@ -91,8 +91,8 @@ void App::update( float dt )
 
 
 		///  Gui  ----
-		// if (gui)
-			// gui->GuiUpdate();
+		if (gui)
+			gui->GuiUpdate();
 
 		//  input
 		if (isFocGui && pSet->iMenu == MN_Options &&

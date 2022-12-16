@@ -1,4 +1,6 @@
 #pragma once
+#include "Gui_Def.h"
+#include "HudRenderable.h"
 #include "Replay.h"
 #include "cardefs.h"
 // #include "CarModel.h"
@@ -7,7 +9,6 @@
 // #include "MessageBox.h"
 // #include "MessageBoxStyle.h"
 // #include "GraphView.h"
-#include "Gui_Def.h"
 #include <OgreVector3.h>
 
 // #include "networkcallbacks.hpp"
@@ -20,7 +21,7 @@
 namespace Ogre {  class SceneNode;  class SceneManager;  class Viewport;  class ManualObject;  class Item;  }
 // namespace MyGUI  {  class MultiList2;  class Slider;  }
 class GraphView;  class App;  class SETTINGS;  class CGui;
-class SplineRoad;  class CarModel;
+class SplineRoad;  class CarModel;  class HudRenderable;
 
 
 class CHud : public BGui
@@ -61,11 +62,11 @@ public:
 		Txt txCountdown =0;
 
 		//  gauges
-		//; Ogre::SceneNode    *ndNeedles =0, *ndGauges =0;
-		//; Ogre::ManualObject *moNeedles =0, *moGauges =0;
+		HudRenderable* moGauges =0;
+		Ogre::SceneNode *ndGauges =0;
 		//  gear, vel
 		Txt txVel =0, txGear =0, txAbs =0, txTcs =0;
-		Img bckVel =0;
+		Img bckVel =0, bckGear =0;
 
 		//  damage %, rewind time, boost fuel
 		float dmgBlink = 0.f, dmgOld = 0.f;
@@ -81,7 +82,7 @@ public:
 		Txt txCam =0;
 
 		//  miniap
-		// Ogre::ManualObject *moMap =0;  Ogre::SceneNode *ndMap =0;
+		HudRenderable *moMap =0;  Ogre::SceneNode *ndMap =0;
 		//  all info for this car's minimap
 		std::vector<SMiniPos> vMiniPos;  // const size: 6
 		

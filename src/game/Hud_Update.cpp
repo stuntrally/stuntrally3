@@ -45,7 +45,7 @@ void CHud::Update(int carId, float time)
 	int cnt = std::min(6, (int)app->carModels.size());  // all cars
 	int cntC = std::min(4, cnt - (app->isGhost2nd && !app->bRplPlay ? 1 : 0));  // all vis plr
 	
-	// UpdPosElems(cnt, cntC, carId);
+	UpdPosElems(cnt, cntC, carId);
 
 
 	//  track %  local, updated always
@@ -121,19 +121,18 @@ void CHud::Update(int carId, float time)
 //---------------------------------------------------------------------------------------------------------------
 void CHud::UpdPosElems(int cnt, int cntC, int carId)
 {
-#if 0
 	//LogO(toStr(cnt)+" "+toStr(cntC)+" "+toStr(carId));
 	int c;
 	//  gui viewport - done once for all
 	if (carId == -1)
 	for (c = 0; c < cntC; ++c)
-	if (app->carModels[c]->eType == CarModel::CT_LOCAL)
+	if (app->carModels[c]->cType == CarModel::CT_LOCAL)
 	{
 		//  hud rpm,vel
 		float vel=0.f, rpm=0.f, clutch=1.f;  int gear=1;
 		GetCarVals(c,&vel,&rpm,&clutch,&gear);
 
-		if (!app->carModels[c]->vtype == V_Car)
+		if (!app->carModels[c]->vType == V_Car)
 			rpm = -1.f;  // hide rpm gauge
 		
 		//  update all mini pos tri
@@ -141,6 +140,7 @@ void CHud::UpdPosElems(int cnt, int cntC, int carId)
 			UpdRotElems(c, i, vel, rpm);
 	}
 
+#if 0
 	///  all minimap car pos-es rot
 	const static Real tc[4][2] = {{0,1}, {1,1}, {0,0}, {1,0}};
 	const float z = pSet->size_minipos;  // tri size
@@ -185,11 +185,10 @@ void CHud::UpdPosElems(int cnt, int cntC, int carId)
 //---------------------------------------------------------------------------------------------------------------
 void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 {
-#if 0
-	//LogO(toStr(carId));
 	//if (carId == -1)  return;
 	int b = baseCarId, c = carId;
 	bool main = b == c;
+	// LogO(toStr(b)+" b "+toStr(c)+" c");
 	#ifdef DEBUG
 	assert(c >= 0);
 	assert(b >= 0);
@@ -252,54 +251,47 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
     //  rpm,vel needles
     float r = 0.55f, v = 0.85f;
     bool bRpm = rpm >= 0.f;
-	if (main && h.moNeedles)
-	{
-		h.moNeedles->beginUpdate(0);
-		if (bRpm)
-		for (p=0; p < 4; ++p)
-		{	h.moNeedles->position(
-				h.vcRpm.x + rx[p]*r,
-				h.vcRpm.y + ry[p]*r, 0);
-			h.moNeedles->textureCoord(tn[p][0], tn[p][1]);
-		}
-		for (p=0; p < 4; ++p)
-		{	h.moNeedles->position(
-				h.vcVel.x + vx[p]*v,
-				h.vcVel.y + vy[p]*v, 0);
-			h.moNeedles->textureCoord(tn[p][0], tn[p][1]);
-		}
-		h.moNeedles->quad(0,1,3,2);
-		if (bRpm)
-			h.moNeedles->quad(4,5,7,6);
- 		h.moNeedles->end();
-	}
-	
+
 	//  rpm,vel gauges backgr
-	if (main && h.updGauges && h.moGauges)
+	HudRenderable* hr = h.moGauges;
+	if (main && /*h.updGauges &&*/ hr)
 	{	h.updGauges = false;
 		Real o = pSet->show_mph ? 0.5f : 0.f;
 	
-		h.moGauges->beginUpdate(0);
-		if (bRpm)
+		hr->begin();
+		// if (bRpm)
 		for (p=0; p < 4; ++p)
-		{	h.moGauges->position(
+		{	hr->position(
 				h.vcRpm.x + tp[p][0]*h.fScale*r,
 				h.vcRpm.y + tp[p][1]*h.fScale*asp*r, 0);
-			h.moGauges->textureCoord(tc[p][0]*0.5f, tc[p][1]*0.5f + 0.5f);
+			hr->textureCoord(tc[p][0]*0.5f, tc[p][1]*0.5f + 0.5f);
 		}
 		for (p=0; p < 4; ++p)
-		{	h.moGauges->position(
+		{	hr->position(
 				h.vcVel.x + tp[p][0]*h.fScale*v,
 				h.vcVel.y + tp[p][1]*h.fScale*asp*v, 0);
-			h.moGauges->textureCoord(tc[p][0]*0.5f+o, tc[p][1]*0.5f);
+			hr->textureCoord(tc[p][0]*0.5f+o, tc[p][1]*0.5f);
 		}
-		h.moGauges->quad(0,1,3,2);
-		if (bRpm)
-			h.moGauges->quad(4,5,7,6);
-		h.moGauges->end();
+
+		//  needles
+		// if (bRpm)
+		for (p=0; p < 4; ++p)
+		{	hr->position(
+				h.vcRpm.x + rx[p]*r,
+				h.vcRpm.y + ry[p]*r, 0);
+			hr->textureCoord(tn[p][0], tn[p][1]);
+		}
+		for (p=0; p < 4; ++p)
+		{	hr->position(
+				h.vcVel.x + vx[p]*v,
+				h.vcVel.y + vy[p]*v, 0);
+			hr->textureCoord(tn[p][0], tn[p][1]);
+		}
+
+		hr->end();
 	}
 
-		
+#if 0		
 	//---------------------------------------------------------------------------------------------------------------
 	///  minimap car pos-es rot
 	for (p=0; p < 4; ++p)

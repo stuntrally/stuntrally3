@@ -12,6 +12,7 @@
 #include "CarModel.h"
 #include "GraphicsSystem.h"
 // #include "SplitScreen.h"
+#include "HudRenderable.h"
 
 #include <OgreWindow.h>
 #include <OgreCommon.h>
@@ -79,14 +80,14 @@ void CHud::Create()
 	//if (terrain)
 	int cnt = std::min(6/**/, (int)app->carModels.size() );  // others
 	#ifdef DEBUG
-	assert(plr <= hud.size());
+	// assert(plr <= hud.size());
 	//assert(cnt <= hud[0].moPos.size());
 	#endif
 	int y=1200; //off 0
 
 	
 	//  car pos tris (form all cars on all viewports)
-	//; SceneNode* rt = scm->getRootSceneNode();
+	SceneNode* rt = scm->getRootSceneNode();
 	// asp = 1.f;  //_temp
 	// moPos = Create2D("hud/CarPos", scm, 0.f, true,true, 1.f,Vector2(1,1), RV_Hud,RQG_Hud3, plr * 6);
 	// ndPos = rt->createChildSceneNode();
@@ -106,9 +107,10 @@ void CHud::Create()
 		float fMapSizeX = maxX - minX, fMapSizeY = maxY - minY;  // map size
 		float size = std::max(fMapSizeX, fMapSizeY*asp);
 		scX = 1.f / size;  scY = 1.f / size;
-	#if 0
+
 		//  change minimap image
 		String sMat = "circle_minimap";
+	#if 0
 		/*MaterialPtr mm = MaterialManager::getSingleton().getByName(sMat);
 		Pass* pass = mm->getTechnique(0)->getPass(0);
 		TextureUnitState* tus = pass->getTextureUnitState(0);
@@ -116,24 +118,24 @@ void CHud::Create()
 		tus = pass->getTextureUnitState(2);
 		if (tus)  tus->setTextureName( sTer );*/
 		UpdMiniTer();
+	#endif
 		
 		float fHudSize = pSet->size_minimap * 1.f; //app->mSplitMgr->mDims[c].avgsize;
 		h.ndMap = rt->createChildSceneNode();
-		asp = 1.f;  //_temp
-		ManualObject* m = Create2D(sMat,scm,1, true,true, 1.f,Vector2(1,1), RV_Hud,RQG_Hud1);  h.moMap = m;
-		h.ndMap->attachObject(m);
-		//asp = float(mWindow->getWidth())/float(mWindow->getHeight());
-		h.ndMap->setVisible(false/*pSet->trackmap*/);
+		h.moMap = new HudRenderable(sMat, scm, true, RV_Hud,RQG_Hud1, 1);
+		h.ndMap->attachObject(h.moMap);
+		asp = float(app->mWindow->getWidth()) / float(app->mWindow->getHeight());
+		h.ndMap->setVisible(pSet->trackmap);
 
 		//  gauges  backgr  -----------
 		String st = toStr(pSet->gauges_type);
-		h.moGauges = Create2D("hud_"+st,scm, 1.f, true,false, 0.f,Vector2(0.f,0.5f), RV_Hud,RQG_Hud1, 2);
+		h.moGauges = new HudRenderable("hud_"+st, scm, false, RV_Hud,RQG_Hud1, 4);
+			//Create2D("hud_"+st, scm, 1.f, true,false, 0.f,Vector2(0.f,0.5f), RV_Hud,RQG_Hud1, 2);
 		h.ndGauges = rt->createChildSceneNode();  h.ndGauges->attachObject(h.moGauges);  //h.ndGauges->setVisible(false);
 
 		//  gauges  needles
-		h.moNeedles = Create2D("hud_"+st,scm, 1.f, true,false, 0.f,Vector2(0.5f,0.5f), RV_Hud,RQG_Hud3, 2);
-		h.ndNeedles = rt->createChildSceneNode();  h.ndNeedles->attachObject(h.moNeedles);  //h.ndNeedles->setVisible(false);
-	#endif
+		// h.moNeedles = Create2D("hud_"+st,scm, 1.f, true,false, 0.f,Vector2(0.5f,0.5f), RV_Hud,RQG_Hud3, 2);
+		// h.ndNeedles = rt->createChildSceneNode();  h.ndNeedles->attachObject(h.moNeedles);  //h.ndNeedles->setVisible(false);
 
 		///  GUI
 		//  gear  text  -----------
@@ -143,24 +145,29 @@ void CHud::Create()
 
 		if (cm->vType == V_Car)
 		{
+			h.bckGear = h.parent->createWidget<ImageBox>("ImageBox",
+				0,y, 70+14,86+12, Align::Left, "IGear"+s);
+			h.bckGear->setImageTexture("background2.jpg");
+			h.bckGear->setAlpha(0.6f);
+
 			h.txGear = h.parent->createWidget<TextBox>("TextBox",
-				0,y, 160,116, Align::Left, "Gear"+s);  h.txGear->setVisible(false);
-			h.txGear->setFontName("DigGear");  h.txGear->setFontHeight(126);
-			//h.txGear->setTextShadow(true);
+				0,y, 70,86, Align::Left, "Gear"+s);  h.txGear->setVisible(false);
+			h.txGear->setFontName("DigGear");  h.txGear->setFontHeight(106);  //par..
+			h.txGear->setTextShadowColour(Colour::Black);  h.txGear->setTextShadow(true);
 		}
 		
 		//  vel
 		h.bckVel = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 340+24,96+12, Align::Left, "IVel"+s);
+			0,y, 170+24,96+12, Align::Left, "IVel"+s);
 		h.bckVel->setImageTexture("background2.jpg");
-		h.bckVel->setAlpha(0.7f);
+		h.bckVel->setAlpha(0.6f);
 		
 		// h.txVel = h.bckVel->createWidget<TextBox>("TextBox",
 			// 10,5, 360,96, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
 		h.txVel = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 340,96, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
+			0,y, 170,96, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
 		h.txVel->setFontName("DigGear");  //h.txVel->setFontHeight(64);
-		h.txVel->setInheritsAlpha(false);
+		// h.txVel->setInheritsAlpha(false);
 		h.txVel->setTextShadowColour(Colour::Black);  h.txVel->setTextShadow(true);
 
 		//  boost
@@ -445,7 +452,7 @@ void CHud::Create()
 
 	Show();  //_
 	app->bSizeHUD = true;
-	// Size();
+	Size();
 	
 	LogO("::: Time Create Hud: "+fToStr(ti.getMilliseconds(),0,3)+" ms");
 }
@@ -470,18 +477,18 @@ void CHud::Destroy()
 	for (c=0; c < hud.size(); ++c)
 	{	Hud& h = hud[c];
 
-		#define Dest2(mo,nd)  {  \
-			if (mo) {  scm->destroyManualObject(mo);  mo=0;  } \
+		#define Dest2(nd)  {  \
 			if (nd) {  scm->destroySceneNode(nd);  nd=0;  }  }
 		
-		// Dest2(h.moMap,h.ndMap)
-		// Dest2(h.moGauges,h.ndGauges)
+		Dest2(h.ndMap)  delete h.moMap;
+		Dest2(h.ndGauges)  delete h.moGauges;
 		// Dest2(h.moNeedles,h.ndNeedles)
 
 		#define Dest(w)  \
 			if (w) {  app->mGui->destroyWidget(w);  w = 0;  }
 			
-		Dest(h.txGear)  Dest(h.txVel)  Dest(h.bckVel)
+		Dest(h.txGear) Dest(h.bckGear)
+		Dest(h.txVel)  Dest(h.bckVel)
 		Dest(h.txAbs)  Dest(h.txTcs)  Dest(h.txCam)
 		
 		Dest(h.txBFuel)  Dest(h.txDamage)  Dest(h.txRewind)  Dest(h.imgDamage)

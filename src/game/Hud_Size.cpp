@@ -99,10 +99,11 @@ void CHud::Size()
 			int bx =(xBFuel+1.f)*0.5f*wx - 10, by = std::min(yMax -36, my + 5);
 				vx = std::min(vx, xMax -100);
 				bx = std::min(bx, xMax -180);  // not too near to vel
-			if (h.txGear)
-				h.txGear->setPosition(gx,gy);
-			if (h.bckVel)
-				h.bckVel->setPosition(vx-32,vy-6);
+
+			if (h.txGear)  h.txGear->setPosition(gx,gy +10);
+			if (h.bckGear) h.bckGear->setPosition(gx-12,gy +10);
+
+			if (h.bckVel)  h.bckVel->setPosition(vx-32,vy-6);
 			h.txVel->setPosition(vx,vy);  //h.bckVel
 
 			#if 0
@@ -201,7 +202,7 @@ void CHud::Show(bool hideAll)
 	if (ovCarDbgExt){  if (show)  ovCarDbgExt->show();  else  ovCarDbgExt->hide();  }*/
 
 	// app->bckFps->setVisible(pSet->show_fps);
-	// if (bckMsg)
+	if (bckMsg)
 	{
 		bool cam = pSet->show_cam && !app->isFocGui, times = pSet->show_times;
 		//bool opp = pSet->show_opponents && (app->scn->road && app->scn->road->getNumPoints() > 0);
@@ -214,24 +215,25 @@ void CHud::Show(bool hideAll)
 		show = pSet->show_gauges;
 		for (int c=0; c < hud.size(); ++c)
 		{	Hud& h = hud[c];
-			if (h.parent && h.txVel)
-			{	
-				h.parent->setVisible(true);
+
+			if (h.parent)
+			{	h.parent->setVisible(true);
 			
-				if (h.txGear)
-					h.txGear->setVisible(pSet->show_digits);
-				if (h.bckVel)
-					h.bckVel->setVisible(pSet->show_digits);
+				if (h.bckGear) h.bckGear->setVisible(pSet->show_digits);
+				if (h.txGear)  h.txGear->setVisible(pSet->show_digits);
+
+				if (h.bckVel)  h.bckVel->setVisible(pSet->show_digits);
 				h.txVel->setVisible(pSet->show_digits);
-				if (h.txBFuel)
-				{	h.txBFuel->setVisible(show && btxt);
+				
+				if (h.txBFuel){  h.txBFuel->setVisible(show && btxt);
 					h.icoBFuel->setVisible(show && bfuel);  /*h.icoBInf->setVisible(show && binf);*/  }
-				if (h.txDamage)
-				{	h.txDamage->setVisible(show && bdmg);  h.icoDamage->setVisible(show && bdmg);
+				
+				if (h.txDamage){  h.txDamage->setVisible(show && bdmg);
+					h.icoDamage->setVisible(show && bdmg);
 					h.imgDamage->setVisible(show && bdmg);  }
 				//txRewind; icoRewind;
 
-				// h.ndGauges->setVisible(show);  h.ndNeedles->setVisible(show);
+				h.ndGauges->setVisible(show);  //h.ndNeedles->setVisible(show);
 				
 				// h.ndMap->setVisible(pSet->trackmap);
 				h.txTimes->setVisible(times);  h.txTimTxt->setVisible(times);  h.bckTimes->setVisible(times);
