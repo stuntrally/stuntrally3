@@ -144,8 +144,8 @@ hlms HI_wheel pbs : car_wheel
 hlms S8_carpaint pbs : car_body
 {
 	diffuse_map   S8_body_white.png
-	specular_map  S8_refl.png
-	metalness_map S8_refl.png
+	specular_map  S8_body_white.png
+	// metalness_map S8_refl.png
 	// diffuse	  0.0 0.3 0.5
 	specular  0.0 0.2 0.2
 }

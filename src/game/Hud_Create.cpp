@@ -240,7 +240,7 @@ void CHud::Create()
 		h.txTimTxt = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 170,260, Align::Left, "TimT"+s);
 		h.txTimTxt->setFontName("hud.times");
-		// h.txTimTxt->setFontHeight(25);
+		h.txTimTxt->setFontHeight(32);
 		h.txTimTxt->setTextShadowColour(Colour::Black);  h.txTimTxt->setTextShadow(true);
 		h.txTimTxt->setInheritsAlpha(false);
 		h.txTimTxt->setCaption(
@@ -249,14 +249,14 @@ void CHud::Create()
 			"\n#70D070"+TR("#{Track}") +
 			"\n#C0C030"+TR("#{TBPosition}") +
 			"\n#F0C050"+TR("#{TBPoints}") +
-			"\n#C8A898"+TR("#{Progress}") );/**/
+			"\n#C8A898"+TR("#{Progress}%") );/**/
 
 		h.txTimes = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 230,260, Align::Left, "Tim"+s);
 		h.txTimes->setInheritsAlpha(false);
-		h.txTimes->setFontName("hud.times");
-		// h.txTimes->setFontName("DigGear");  //?
-		// h.txTimes->setFontHeight(45);
+		// h.txTimes->setFontName("hud.times");
+		h.txTimes->setFontName("DigGearSeg");  //?
+		h.txTimes->setFontHeight(32);
 		h.txTimes->setTextShadow(true);
 
 

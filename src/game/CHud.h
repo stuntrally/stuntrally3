@@ -146,7 +146,7 @@ public:
 	void Create(), Destroy();
 
 	//  show, size
-	void Size(), Show(bool hideAll=false), ShowVp(bool vp);
+	void Size(), Show(bool hideAll=false); //, ShowVp(bool vp);
 
 	///  update
 	void Update(int carId, float time);

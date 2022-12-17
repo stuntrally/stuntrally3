@@ -67,7 +67,7 @@ void App::newPoses(float time)  // time only for camera update
 			{
 				TrackFrame tf;       // par: sec after, 1st lap
 				float lap1 = pGame->timer.GetCurrentLap(0) > 0 ? 2.f : 0.f;
-				bool ok = ghtrk.GetFrame(rewTime + lap1, &tf);
+				bool ok = ghTrk.GetFrame(rewTime + lap1, &tf);
 				//  car
 				Axes::toOgre(pi.pos, tf.pos);
 				pi.rot = Axes::toOgre(tf.rot);
@@ -96,8 +96,8 @@ void App::newPoses(float time)  // time only for camera update
 			}else  ///>>  ghost
 			{
 				ReplayFrame2 gf;
-				float ti = std::min((float)rewTime, ghplay.GetTimeLength());
-				bool ok = ghplay.GetFrame(ti, &gf, 0);
+				float ti = std::min((float)rewTime, ghPlay.GetTimeLength());
+				bool ok = ghPlay.GetFrame(ti, &gf, 0);
 				if (ok)
 					pi.FromRpl2(&gf, 0);
 
@@ -266,7 +266,7 @@ void App::newPoses(float time)  // time only for camera update
 						if (c==0 && pSet->rpl_rec)  // for many, only 1st car
 						{
 							ghost.SaveFile(gui->GetGhostFile());  //,boost_type?
-							ghplay.CopyFrom(ghost);
+							ghPlay.CopyFrom(ghost);
 							isGhost2nd = false;  // hide 2nd ghost
 							newbest = true;
 						}
@@ -430,9 +430,9 @@ void App::updatePoses(float time)
 		///  ghosts visibility  . . .
 		//  hide when empty or near car
 		bool bGhostCar = carM->cType == (isGhost2nd ? CarModel::CT_GHOST2 : CarModel::CT_GHOST),  // show only actual
-			bGhTrkVis = carM->isGhostTrk() && ghtrk.GetTimeLength()>0 && pSet->rpl_trackghost,
-			bGhostVis = ghplay.GetNumFrames()>0 && pSet->rpl_ghost,
-			bGhostEnd = pGame->timer.GetPlayerTime(0) > ghplay.GetTimeLength();
+			bGhTrkVis = carM->isGhostTrk() && ghTrk.GetTimeLength()>0 && pSet->rpl_trackghost,
+			bGhostVis = ghPlay.GetNumFrames()>0 && pSet->rpl_ghost,
+			bGhostEnd = pGame->timer.GetPlayerTime(0) > ghPlay.GetTimeLength();
 		if (bGhostCar)  cgh = c;
 
 		if (carM->isGhost())  // for all

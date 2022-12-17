@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "Def_Str.h"
 #include "CGame.h"
 #include "CameraController.h"
 #include "GraphicsSystem.h"
@@ -24,79 +25,115 @@
 #include "TracksXml.h"
 #include "CData.h"
 
-#include "Def_Str.h"
 #include "MyGUI.h"
 #include "MyGUI_Ogre2Platform.h"
-
 using namespace Ogre;
 
 
-//  fps stats
+//  stat colors
+const int iClrVal = 8;
+const String sClrVal[iClrVal] =  // long
+	{"#A0C0FF", "#20A0FF", "#10FFFF", "#10FF10", "#FFFF20", "#FFC010", "#FF8010", "#FF1010"};
+
+const String clrVal(int i)
+{	return sClrVal[std::max(0, std::min(iClrVal-1, i))];  }
+
+String cvsF(float v, float grn, float red, int precision=2, int width=4)
+{
+	int c = 4.f * (v - grn) / (red - grn) + 3.f /*grn id*/;
+	return clrVal(c) + fToStr(v, precision, width);
+}
+String cvsI(int v, int grn, int red, int width=4)
+{
+	int c = 4.f * (v - grn) / (red - grn) + 3.f /*grn id*/;
+	return clrVal(c) + iToStr(v, width);
+}
+
+
+//  Fps stats
 //------------------------------------------------------------------------------------------------
-String App::generateFpsDebugText()
+void App::updFpsText()
 {
 	RenderSystem *rs = mGraphicsSystem->getRoot()->getRenderSystem();
 	const RenderingMetrics& rm = rs->getMetrics();  //** fps
 	const FrameStats *st = mGraphicsSystem->getRoot()->getFrameStats();
 
-	String txt = iToStr( (int)st->getAvgFps(), 4) +
-		"  "+ fToStr( rm.mFaceCount/1000000.f, 2) +
-		//" v " + toStr( rm.mVertexCount/1000 ) +
-		"m  " + iToStr( rm.mDrawCount, 2) + " " + iToStr( rm.mInstanceCount, 4);
-		//" b " + toStr( rm.mBatchCount, 0);
-#if 1
-	//  GPU RAM mem
-	VaoManager::MemoryStatsEntryVec memoryStats;
-	size_t freeBytes;
-	size_t capacityBytes;
-	bool bIncludesTextures;
-	VaoManager *vaoManager = rs->getVaoManager();
-	vaoManager->getMemoryStats( memoryStats, capacityBytes, freeBytes, 0, bIncludesTextures );
+	const float fps = st->getAvgFps(), tris = rm.mFaceCount/1000000.f, mem = getGPUmem();
+	const int draw = rm.mDrawCount,
+		inst = rm.mInstanceCount, vgt = scn->cntAll,
+		gui = MyGUI::Ogre2RenderManager::getInstance().getBatchCount();
 
-	TextureGpuManager *textureGpuManager = rs->getTextureGpuManager();
-	size_t textureBytesCpu, textureBytesGpu, usedStagingTextureBytes, availableStagingTextureBytes;
-	textureGpuManager->getMemoryStats( textureBytesCpu, textureBytesGpu, usedStagingTextureBytes,
-									availableStagingTextureBytes );
+	String txt;
+	txt += cvsF( fps,  59.f, 30.f, fps >= 100.f ? 0 : 1,4) + "  ";
+	txt += cvsF( tris, 1.f, 3.f, 2,4) + "m ";  //txt += "v " + toStr( rm.mVertexCount/1000 ) + "  ";
+	txt += cvsI( draw, 50, 180, 3) + "\n";
+
+	txt += "#A0C0A0 Vgt ";
+	txt += cvsI( inst, 1000, 8000, 5) + " ";  //txt += "b " + toStr( rm.mBatchCount, 0);
+	txt += cvsI( vgt, 3000, 15000, 5) + "\n";
+
+	txt += "#B0B0B0 Gui " + cvsI( gui, 5, 30, 2) + " ";
+	txt += cvsF( mem,  500.f, 1300.f, 0,4) + "M\n";
+
+	//  test colors
+	/*for (int i = 15; i < 60; i+=5)
+		txt += cvsF( i, 30.f, 50.f, 0,2) + " ";
+	txt += "\n";/**/
+
+	txFps->setCaption(txt);
+}
+
+//  GPU RAM mem
+float App::getGPUmem()
+{
+	RenderSystem *rs = mGraphicsSystem->getRoot()->getRenderSystem();
+	size_t freeB, capacityB;  // B = Bytes
+	bool bIncludesTex;  // Textures
+	VaoManager::MemoryStatsEntryVec memStats;
+	VaoManager *vaoManager = rs->getVaoManager();
+	vaoManager->getMemoryStats( memStats, capacityB, freeB, 0, bIncludesTex );
+
+	TextureGpuManager *mgr = rs->getTextureGpuManager();
+	size_t texBCpu, texBGpu, usedStagingTexB, availStagingTexB;
+	mgr->getMemoryStats(
+		texBCpu, texBGpu, usedStagingTexB, availStagingTexB );
 
 	// Don't count texture memory twice if it's already included in VaoManager
-	if( bIncludesTextures )
-		capacityBytes -= textureBytesGpu + usedStagingTextureBytes + availableStagingTextureBytes;
+	if( bIncludesTex )
+		capacityB -= texBGpu + usedStagingTexB + availStagingTexB;
 
-	const size_t bytesToMb = 1024u * 1024u;
+	const size_t BtoMB = 1024u * 1024u;
 	/*char tmpBuffer[256];
 	LwString text( Ogre::LwString::FromEmptyPointer( tmpBuffer, sizeof( tmpBuffer ) ) );
 	text.clear();
 	text.a( "\n\nGPU buffer pools (meshes, const, texture, indirect & uav buffers): ",
-			( Ogre::uint32 )( ( capacityBytes - freeBytes ) / bytesToMb ), "/",
-			( Ogre::uint32 )( capacityBytes / bytesToMb ), " MB" );
+			( Ogre::uint32 )( ( capacityB - freeB ) / BtoMB ), "/",
+			( Ogre::uint32 )( capacityB / BtoMB ), " MB" );
 	outText += text.c_str();
 	text.clear();
 	text.a(
-		"\nGPU StagingTextures. In use: ", ( Ogre::uint32 )( usedStagingTextureBytes / bytesToMb ),
-		" MB. Available: ", ( Ogre::uint32 )( availableStagingTextureBytes / bytesToMb ),
+		"\nGPU StagingTexs. In use: ", ( Ogre::uint32 )( usedStagingTexB / BtoMB ),
+		" MB. Available: ", ( Ogre::uint32 )( availStagingTexB / BtoMB ),
 		" MB. Total:",
-		( Ogre::uint32 )( ( usedStagingTextureBytes + availableStagingTextureBytes ) / bytesToMb ) );
+		( Ogre::uint32 )( ( usedStagingTexB + availStagingTexB ) / BtoMB ) );
 	outText += text.c_str();*/
 
-	const size_t totalBytesNeeded =
-		capacityBytes + textureBytesGpu + usedStagingTextureBytes + availableStagingTextureBytes;
+	const size_t totalB =
+		capacityB + texBGpu + usedStagingTexB + availStagingTexB;
 
 	/*text.clear();
-	text.a( "\nGPU Textures:\t", ( Ogre::uint32 )( textureBytesGpu / bytesToMb ), " MB" );
-	text.a( "\nCPU Textures:\t", ( Ogre::uint32 )( textureBytesCpu / bytesToMb ), " MB" );
-	text.a( "\nTotal GPU:\t", ( Ogre::uint32 )( totalBytesNeeded / bytesToMb ), " MB" );
+	text.a( "\nGPU Textures:\t", ( Ogre::uint32 )( textureBGpu / BtoMB ), " MB" );
+	text.a( "\nCPU Textures:\t", ( Ogre::uint32 )( textureBCpu / BtoMB ), " MB" );
+	text.a( "\nTotal GPU:\t", ( Ogre::uint32 )( totalBNeeded / BtoMB ), " MB" );
 	outText += text.c_str();*/
 
-	txt += "  " + toStr( totalBytesNeeded / bytesToMb ) + "M\n";
-	// txt += "  " + fToStr( 1.f/1024.f * totalBytesNeeded / bytesToMb, 2, 4 ) + "G\n";
-#endif
-	return txt;
+	return float( totalB / BtoMB ); // MB
+	//return float( 1.f/1024.f * totalB / BtoMB);  // GB
 }
-
 
 //  text
 //------------------------------------------------------------------------------------------------
-void App::generateDebugText()
+void App::updDebugText()
 {
 	String txt;
 
@@ -142,10 +179,6 @@ void App::generateDebugText()
 	}
 	else if( mDisplayHelpMode == 1 )
 	{
-		txt = "\n" + generateFpsDebugText();
-
-		txt += "  Vgt " + iToStr(scn->cntAll, 5);
-		txt += "  Gui " + toStr( MyGUI::Ogre2RenderManager::getInstance().getBatchCount() );
 	}
 	txt += "\n\n";
 

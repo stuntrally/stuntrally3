@@ -438,11 +438,11 @@ void App::LoadGame()  // 2
 
 	///  ghost car - last in carModels
 	///--------------------------------------------
-	ghplay.Clear();
+	ghPlay.Clear();
 	if (!bRplPlay/*|| pSet->rpl_show_ghost)*/ && pSet->rpl_ghost /*&& !mClient*/)
 	{
 		std::string ghCar = pSet->game.car[0], orgCar = ghCar;
-		ghplay.LoadFile(gui->GetGhostFile(pSet->rpl_ghostother ? &ghCar : 0));
+		ghPlay.LoadFile(gui->GetGhostFile(pSet->rpl_ghostother ? &ghCar : 0));
 		isGhost2nd = ghCar != orgCar;
 		
 		//  always because ghplay can appear during play after best lap
@@ -463,13 +463,13 @@ void App::LoadGame()  // 2
 	}
 	///  track's ghost  . . .
 	///--------------------------------------------
-	ghtrk.Clear();  vTimeAtChks.clear();
+	ghTrk.Clear();  vTimeAtChks.clear();
 	bool deny = gui->pChall && !gui->pChall->trk_ghost;
 	if (!bRplPlay /*&& pSet->rpl_trackghost- && !mClient*/ && !pSet->game.track_user && !deny)
 	{
 		std::string sRev = pSet->game.trackreverse ? "_r" : "";
 		std::string file = PATHMANAGER::TrkGhosts()+"/"+ pSet->game.track + sRev + ".gho";
-		if (ghtrk.LoadFile(file))
+		if (ghTrk.LoadFile(file))
 		{
 			CarModel* c = new CarModel(i, 5, CarModel::CT_TRACK, "ES", mSceneMgr, pSet, pGame, scn->sc, 0, this);
 			c->Load(-1, false);
@@ -648,7 +648,7 @@ void App::LoadRoad()  // 6
 	///  Run track's ghost
 	//  to get times at checkpoints
 	fLastTime = 1.f;
-	if (!scn->road || ghtrk.GetTimeLength() < 1.f)  return;
+	if (!scn->road || ghTrk.GetTimeLength() < 1.f)  return;
 	int ncs = scn->road->mChks.size();
 	if (ncs == 0)  return;
 
@@ -657,10 +657,10 @@ void App::LoadRoad()  // 6
 	for (c=0; c < ncs; ++c)
 		vTimeAtChks[c] = 0.f;
 
-	int si = ghtrk.frames.size();
+	int si = ghTrk.frames.size();
 	for (i=0; i < si; ++i)
 	{
-		const TrackFrame& tf = ghtrk.frames[i];  // car
+		const TrackFrame& tf = ghTrk.frames[i];  // car
 		if (tf.time > fLastTime)
 			fLastTime = tf.time;
 		for (c=0; c < ncs; ++c)  // test if in any checkpoint

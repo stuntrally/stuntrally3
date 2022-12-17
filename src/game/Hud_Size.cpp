@@ -124,7 +124,7 @@ void CHud::Size()
 
 			//  times
 			bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 /*|| app->mClient*/;
-			int w = 160, tx = xMin + 40, ty = yMin + 40;
+			int w = 160, tx = xMin + 40, ty = yMin + 55;  //40
 			h.bckTimes->setPosition(tx-20,ty);
 			//tx = 24;  ty = (hasLaps ? 16 : 4);
 			h.txTimTxt->setPosition(tx,ty);
@@ -171,26 +171,26 @@ void CHud::Size()
 //---------------------------------------------------------------------------------------------------------------
 void CHud::Show(bool hideAll)
 {
-	// if (hideAll || app->iLoad1stFrames > -1)  // still loading
+	if (hideAll /*|| app->iLoad1stFrames > -1*/)  // still loading
 	{
 		/*if (ovCarDbg)  ovCarDbg->hide();
-		if (ovCarDbgTxt)  ovCarDbgTxt->hide();
+		if (ovCarDbgTxt)  ovCarDbgTxt->hide();*/
 
 		app->bckFps->setVisible(false);
+		app->txFps->setVisible(false);
 		if (bckMsg)
 		{
 			txCamInfo->setVisible(false);
 			bckMsg->setVisible(false);
 
-			for (int c=0; c < hud.size(); ++c)
-			{	Hud& h = hud[c];
+			for (auto h:hud)
 				if (h.parent)
 					h.parent->setVisible(false);
-		}	}
-		app->hideMouse();
+		}
+		// app->hideMouse();
 		if (app->mWndRpl)  app->mWndRpl->setVisible(false);
-		if (app->mWndRplTxt)  app->mWndRplTxt->setVisible(false);*/
-		// return;
+		if (app->mWndRplTxt)  app->mWndRplTxt->setVisible(false);
+		return;
 	}
 
 	//  this goes each frame..
@@ -201,7 +201,8 @@ void CHud::Show(bool hideAll)
 	show = pSet->car_dbgsurf;
 	if (ovCarDbgExt){  if (show)  ovCarDbgExt->show();  else  ovCarDbgExt->hide();  }*/
 
-	// app->bckFps->setVisible(pSet->show_fps);
+	app->bckFps->setVisible(pSet->show_fps);
+	app->txFps->setVisible(pSet->show_fps);
 	if (bckMsg)
 	{
 		bool cam = pSet->show_cam && !app->isFocGui, times = pSet->show_times;
@@ -255,7 +256,8 @@ void CHud::Show(bool hideAll)
 		app->mWndRplTxt->setVisible(app->bRplPlay);
 }
 
-void CHud::ShowVp(bool vp)	// todo: use vis mask ..
+
+/*void CHud::ShowVp(bool vp)	//?
 {
 	// show/hide for render viewport / gui viewport
 	// first show everything
@@ -271,3 +273,4 @@ void CHud::ShowVp(bool vp)	// todo: use vis mask ..
 		//bckFps->setVisible(false);
 	}
 }
+*/

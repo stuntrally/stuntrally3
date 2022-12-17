@@ -9,10 +9,10 @@
 	<!-- Fps -->
 	<Resource type="ResourceTrueTypeFont" name="hud.fps">
 		<Property key="Source" value="DejaVuLGCSans.ttf"/>
-		<Property key="Size" value="24"/>
+		<Property key="Size" value="32"/>  <!-- 24 -->
 		<Property key="Resolution" value="50"/>
 		<Property key="Antialias" value="false"/>
-		<Property key="SpaceWidth" value="11"/><!--same as digit width-->
+		<Property key="SpaceWidth" value="14"/> <!-- 11 same as digit width-->
 		<Property key="TabWidth" value="8"/>
 		<Property key="Distance" value="4"/>
 		<Property key="OffsetHeight" value="0"/>
@@ -83,9 +83,9 @@
 	
 	
 	<!-- HUD, gear, vel digits -->
-    <Resource type="ResourceManualFont" name="DigGear2">
+    <Resource type="ResourceManualFont" name="DigGearSeg">
         <Property key="Source" value="Digital_41.png"/>
-        <Property key="DefaultHeight" value="88"/>
+        <Property key="DefaultHeight" value="45"/>
 		<Property key="OffsetHeight" value="0"/>
         <Codes>
             <Code index="9" advance="112"/>

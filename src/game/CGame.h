@@ -50,9 +50,9 @@ private:
 	Ogre::HlmsMacroblock macroblockWire;
 	bool wireTerrain = false;
 
-	//  fps overlay
-	void generateDebugText();
-	Ogre::String generateFpsDebugText();
+	//  Fps overlay
+	void updDebugText();
+	void updFpsText();  float getGPUmem();
 
 
 public:
@@ -87,18 +87,18 @@ public:
 	Ogre::CompositorWorkspace *setupCompositor();
 
 
-	//  terrain  ----
+	//  ⛰️ Terrain  ----
 public:
 	Ogre::Terra *mTerra = 0;
 	void CreateTerrain(), DestroyTerrain();
 protected:
 	Ogre::String mtrName;
 	Ogre::SceneNode *nodeTerrain = 0;
-	// Listener to make PBS objects also be affected by terrain's shadows
+	//  listener to make PBS objects also be affected by terrain's shadows
 	Ogre::HlmsPbsTerraShadows *mHlmsPbsTerraShadows = 0;
 
 
-	//  util mtr, mem
+	//  Util mtr, reduce mem, each load
 	template <typename T, size_t MaxNumTextures>
 	void unloadTexturesFromUnusedMaterials( Ogre::HlmsDatablock *datablock,
 											std::set<Ogre::TextureGpu *> &usedTex,
@@ -117,25 +117,24 @@ public:
 	virtual ~App();
 	void ShutDown();
 
+	//  data
 	CScene* scn =0;
 	CData* data =0;
 	Scene* sc = 0;
 	
 	GAME* pGame =0;
 
-
-	//  BaseApp init
+	//  Ogre base
 	Ogre::Root* mRoot =0;
 	Ogre::Camera* mCamera =0;
 	Ogre::SceneManager* mSceneMgr =0;
 	
-	bool bLoading =0, bLoadingEnd =0, bSimulating =0;  int iLoad1stFrames =0;
-	
+
+	///  🚗 Cars Game data  ----------------
 	//  has to be in baseApp for camera mouse move
 	typedef std::vector<class CarModel*> CarModels;
 	CarModels carModels;
 	
-	///  Game Cars Data
 	//  new positions info for every CarModel
 	PosInfo carPoses[CarPosCnt][MAX_CARS];  // max 16cars
 	int iCurPoses[MAX_CARS];  // current index for carPoses queue
@@ -145,37 +144,39 @@ public:
 	void updatePoses(float time);  // ogre
 	void UpdThr();
 	bool mShutDown = false;
-	std::thread* mThread = 0;  // 2nd thread for simulation
+	std::thread* mThread =0;  // 2nd thread for simulation
 
+
+	//  📽️ Replays  ----------------
 	//  replay - full, saved by user
-	//  ghost - saved on best lap
-	//  ghplay - ghost ride replay, loaded if was on disk, replaced when new
-	Replay2 replay, ghost, ghplay;
+	//  ghost  - saved on best lap
+	//  ghPlay - ghost ride replay, loaded if was on disk, replaced when new
+	//  ghTrk  - track's ghost
+	Replay2 replay, ghost, ghPlay;
 	Rewind rewind;  // to take car back in time (after crash etc.)
-	TrackGhost ghtrk;  //  ghtrk - track's ghost
+	TrackGhost ghTrk;
 
-	std::vector<ReplayFrame2> frm;  //size:16  //  frm - used when playing replay for hud and sounds
+	//  frm - used when playing replay for hud and sounds
+	std::vector<ReplayFrame2> frm;  //size:16
 
-	bool isGhost2nd =0;  // if present (ghost but from other car)
+	bool isGhost2nd = 0;  // if present (ghost but from other car)
 	std::vector<float> vTimeAtChks;  // track ghost's times at road checkpoints
 	float fLastTime = 1.f;  // trk ghost total time
 		
 
-	// virtual bool frameStart(Ogre::Real time);  //;void DoNetworking();
-	// virtual bool frameEnd(Ogre::Real time);
-	float fLastFrameDT = 0.01f;
-
-	// bool isTweakTab();
-		
-	BtOgre::DebugDrawer *dbgdraw = 0;  /// blt dbg
-
-
-	///  HUD
+	///  ⏱️ HUD  ----------------
 	CHud* hud = 0;
 	bool bSizeHUD = true;
 
+	// bool isTweakTab();
+	BtOgre::DebugDrawer *dbgdraw = 0;  /// blt dbg
 
-	///  create  . . . . . . . . . . . . . . . . . . . . . . . . 
+	float fLastFrameDT = 0.01f;
+	// virtual bool frameStart(Ogre::Real time);  //;void DoNetworking();
+	// virtual bool frameEnd(Ogre::Real time);
+
+
+	///  🆕 Create  . . . . . . . . . . . . . . . . . . . . . . . . 
 	Ogre::String resCar, resTrk, resDrv;
 	void CreateCar(), CreateRoads(), CreateRoadsInt(), CreateTrail(Ogre::Camera* cam);
 	void CreateObjects(), DestroyObjects(bool clear), ResetObjects();
@@ -184,40 +185,39 @@ public:
 	void NewGameDoLoad();
 
 	void LoadData();
-	bool newGameRpl =0;
+	bool newGameRpl = 0;
 
 	bool dstTrk = 1;  // destroy track, false if same
-	Ogre::String oldTrack;  bool oldTrkUser =0;
+	Ogre::String oldTrack;  bool oldTrkUser = 0;
 
 	
-	//  Loading
+	//  ⏳ Loading  ----------------
+	bool bLoading = 0, bLoadingEnd = 0, bSimulating = 0;  int iLoad1stFrames = 0;
 	void LoadCleanUp(), LoadGame(), LoadScene(), LoadCar(), LoadTerrain(), LoadRoad(), LoadObjects(), LoadTrees(), LoadMisc();
+
 	enum ELoadState { LS_CLEANUP=0, LS_GAME, LS_SCENE, LS_CAR, LS_TERRAIN, LS_ROAD, LS_OBJECTS, LS_TREES, LS_MISC, LS_ALL };
 	static Ogre::String cStrLoad[LS_ALL+1];
 	int curLoadState = 0;
 	std::map<int, std::string> loadingStates;
 
-	float mTimer = 0.f;  // wind,water
+	// float mTimer = 0.f;  // todo: wind,water
 
 
 	//  mtr from ter  . . . 
 	int blendMapSize =513;
 	std::vector<char> blendMtr;
-	//; void GetTerMtrIds();
+	//; void GetTerMtrIds();  // todo:
 
 	// void recreateReflections();  // call after refl_mode changed
 
 
-	//  Input  ----
-	/// todo: temp
-	float inputs[14] = {0,0,0,0};
-
+	//  🕹️ Input  ----------------
 	CInput* input =0;
 
 	void channelChanged(ICS::Channel *channel, float currentValue, float previousValue) override;
 
 
-	///  Gui
+	//  🎛️ Gui
 	//-----------------------------------------------------------------
 	CGui* gui =0;
 	CGuiCom* gcom =0;
@@ -240,7 +240,7 @@ public:
 	void Ch_NewGame();
 
 
-	///  graphs
+	///  📉 Graphs  ~^.
 	// std::vector<GraphView*> graphs;
 	// void CreateGraphs(), DestroyGraphs();
 	// void UpdateGraphs(), GraphsNewVals();

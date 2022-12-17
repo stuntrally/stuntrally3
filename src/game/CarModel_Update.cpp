@@ -40,9 +40,12 @@ void CarModel::setVisible(bool vis)
 	pMainNode->setVisible(vis);
 	if (brakes)
 		brakes->setVisible(bBraking && vis);
-	for (int w=0; w < numWheels; ++w)
-		ndWh[w]->setVisible(vis);
 
+	for (int w=0; w < numWheels; ++w)
+	{	ndWh[w]->setVisible(vis);
+		if (ndBrake[w])
+			ndBrake[w]->setVisible(vis);
+	}
 	UpdParsTrails(vis);
 }
 

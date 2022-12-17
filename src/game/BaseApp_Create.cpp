@@ -683,15 +683,15 @@ void BaseApp::baseInitGui(GraphicsSystem *mGraphicsSystem)
 	///  create widgets
 	//------------------------------------------------
 	//  Fps
-	/*bckFps = mGui->createWidget<ImageBox>("ImageBox",
-		0,0, 212,25, Align::Default, "Pointer", "FpsB");
+	bckFps = mGui->createWidget<ImageBox>("ImageBox",
+		0,0, 234,78, Align::Default, "Main");
 	bckFps->setImageTexture("back_fps.png");
+	bckFps->setAlpha(0.9f);  bckFps->setVisible(false);
 
-	txFps = bckFps->createWidget<TextBox>("TextBox",
-		1,1, 212,25, Align::Default, "FpsT");
-	txFps->setFontName("hud.fps");
-
-	bckFps->setVisible(false);*/
+	txFps = mGui->createWidget<TextBox>("TextBox",
+		6,3, 226,78, Align::Default, "ToolTip");
+	txFps->setFontName("hud.fps");  //txFps->setAlpha(1.f);
+	txFps->setTextShadow(true);  txFps->setTextShadowColour(Colour::Black);
 
 
 	//  loading
@@ -713,12 +713,14 @@ void BaseApp::baseInitGui(GraphicsSystem *mGraphicsSystem)
 
 	txLoadBig = bckLoad->createWidget<TextBox>("TextBox",
 		10,8, 400,30, Align::Default, "LoadTbig");
-	txLoadBig->setFontName("hud.text");  txLoadBig->setTextColour(Colour(0.7,0.83,1));
+	txLoadBig->setFontName("hud.text");
+	txLoadBig->setTextColour(Colour(0.7,0.83,1));
 	txLoadBig->setCaption(TR("#{LoadingDesc}"));
 
 	txLoad = bckLoad->createWidget<TextBox>("TextBox",
 		10,77, 400,24, Align::Default, "LoadT");
-	txLoad->setFontName("hud.text");  txLoad->setTextColour(Colour(0.65,0.78,1));
+	txLoad->setFontName("hud.text");
+	txLoad->setTextColour(Colour(0.65,0.78,1));
 	txLoad->setCaption(TR("#{Initializing}..."));
 
 

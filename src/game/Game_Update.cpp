@@ -266,7 +266,8 @@ void App::update( float dt )
 
 	}
 
-	generateDebugText();
+	updFpsText();
+	updDebugText();
 
 	TutorialGameState::update( dt );
 }
