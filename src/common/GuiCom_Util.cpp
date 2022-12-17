@@ -351,8 +351,8 @@ void CGuiCom::GuiInitLang()
 	for (auto it = languages.cbegin(); it != languages.end(); ++it)
 	{
 		combo->addItem(it->second);
-		// if (it->first == pSet->language)
-		// 	combo->setIndexSelected(combo->getItemCount()-1);
+		if (it->first == pSet->language)
+			combo->setIndexSelected(combo->getItemCount()-1);
 	}
 }
 
@@ -363,10 +363,10 @@ void CGuiCom::comboLanguage(ComboBox* wp, size_t val)
 	
 	for (auto it = languages.cbegin(); it != languages.end(); ++it)
 	{
-		// if (it->second == sel)
-		// 	pSet->language = it->first;
+		if (it->second == sel)
+			pSet->language = it->first;
 	}
-	// LanguageManager::getInstance().setCurrentLanguage(pSet->language);
+	LanguageManager::getInstance().setCurrentLanguage(pSet->language);
 
 	// todo: fix, without restart
 	//  reinit gui

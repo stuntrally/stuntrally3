@@ -665,14 +665,14 @@ void BaseApp::baseInitGui(GraphicsSystem *mGraphicsSystem)
 
 		
 	//------------------------ lang
-	if (pSet->language == "")  // autodetect
-	// {	pSet->language = getSystemLanguage();
-	// 	setlocale(LC_NUMERIC, "C");  }
+	/*if (pSet->language == "")  // autodetect
+	{	pSet->language = getSystemLanguage();
+		setlocale(LC_NUMERIC, "C");  }*/
 	
-	// if (!std::filesystem::exists(PATHMANAGER::Data() + "/gui/core_language_" + pSet->language + "_tag.xml"))
-		// pSet->language = "en";  // use en if not found
+	if (!PATHMANAGER::FileExists(PATHMANAGER::Data() + "/gui/core_language_" + pSet->language + "_tag.xml"))
+		pSet->language = "en";  // use en if not found
 		
-	MyGUI::LanguageManager::getInstance().setCurrentLanguage("en"); //pSet->language);
+	MyGUI::LanguageManager::getInstance().setCurrentLanguage(pSet->language);
 	//------------------------
 
 		
