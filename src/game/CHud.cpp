@@ -13,7 +13,7 @@
 #include <OgreManualObject2.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
-#include "OgreWindow.h"
+#include <OgreWindow.h>
 #include <OgreCamera.h>
 #include <OgreOverlayElement.h>
 #include <OgreTechnique.h>

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CGame.h"
-#include "OgrePrerequisites.h"
-#include "OgreVector4.h"
+#include <OgrePrerequisites.h>
+#include <OgreVector4.h>
 #include "GraphicsSystem.h"
 
 #include "Terra/Hlms/OgreHlmsTerra.h"

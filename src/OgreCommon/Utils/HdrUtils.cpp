@@ -1,19 +1,19 @@
 
 #include "Utils/HdrUtils.h"
 
-#include "OgreVector4.h"
+#include <OgreVector4.h>
 
-#include "OgreRoot.h"
+#include <OgreRoot.h>
 #include "Compositor/OgreCompositorManager2.h"
 #include "Compositor/OgreCompositorWorkspace.h"
 #include "Compositor/OgreCompositorNode.h"
 #include "Compositor/OgreCompositorNodeDef.h"
 #include "Compositor/Pass/OgreCompositorPass.h"
 
-#include "OgreMaterialManager.h"
-#include "OgreMaterial.h"
-#include "OgreTechnique.h"
-#include "OgrePass.h"
+#include <OgreMaterialManager.h>
+#include <OgreMaterial.h>
+#include <OgreTechnique.h>
+#include <OgrePass.h>
 
 namespace Demo
 {

@@ -1,7 +1,7 @@
 
-#include "OgrePrerequisites.h"
-#include "OgreStringVector.h"
-#include "OgrePixelFormatGpu.h"
+#include <OgrePrerequisites.h>
+#include <OgreStringVector.h>
+#include <OgrePixelFormatGpu.h>
 
 namespace Demo
 {

@@ -11,7 +11,7 @@
 	#include "settings.h"
 	#include "CGui.h"
 #endif
-#include "SDL_video.h"
+#include <SDL_video.h>
 #include <OgreRoot.h>
 #include <OgreWindow.h>
 #include <MyGUI_Widget.h>

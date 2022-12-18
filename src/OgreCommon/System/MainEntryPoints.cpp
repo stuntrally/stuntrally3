@@ -26,8 +26,8 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 
-#include "OgrePrerequisites.h"
-#include "OgreException.h"
+#include <OgrePrerequisites.h>
+#include <OgreException.h>
 #include <iostream>
 
 #include "System/MainEntryPoints.h"

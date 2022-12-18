@@ -26,16 +26,16 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 
-#include "OgreBuildSettings.h"
+#include <OgreBuildSettings.h>
 
 #if !OGRE_NO_JSON
 
 #include "Terra/Hlms/OgreHlmsJsonTerra.h"
-#include "OgreHlmsManager.h"
-#include "OgreTextureGpuManager.h"
+#include <OgreHlmsManager.h>
+#include <OgreTextureGpuManager.h>
 
-#include "OgreLwString.h"
-#include "OgreStringConverter.h"
+#include <OgreLwString.h>
+#include <OgreStringConverter.h>
 
 #include "rapidjson/document.h"
 

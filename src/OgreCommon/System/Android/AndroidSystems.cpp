@@ -28,7 +28,7 @@ THE SOFTWARE.
 
 #include "System/Android/AndroidSystems.h"
 
-#include "OgreArchiveManager.h"
+#include <OgreArchiveManager.h>
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
 #    include "Android/OgreAPKFileSystemArchive.h"

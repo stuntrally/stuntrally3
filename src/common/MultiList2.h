@@ -21,15 +21,15 @@
 	along with MyGUI.  If not, see <https://www.gnu.org/licenses/>.
 */
 #pragma once
-#include "MyGUI_Prerequest.h"
-#include "MyGUI_Widget.h"
-#include "MyGUI_ListBox.h"
-#include "MyGUI_Any.h"
-#include "MyGUI_BiIndexBase.h"
-#include "MyGUI_EventPair.h"
-#include "MyGUI_IItem.h"
-#include "MyGUI_IItemContainer.h"
-#include "MyGUI_ResizingPolicy.h"
+#include <MyGUI_Prerequest.h>
+#include <MyGUI_Widget.h>
+#include <MyGUI_ListBox.h>
+#include <MyGUI_Any.h>
+#include <MyGUI_BiIndexBase.h>
+#include <MyGUI_EventPair.h>
+#include <MyGUI_IItem.h>
+#include <MyGUI_IItemContainer.h>
+#include <MyGUI_ResizingPolicy.h>
 
 namespace MyGUI
 {

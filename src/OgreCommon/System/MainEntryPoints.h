@@ -1,5 +1,5 @@
 #pragma once
-#include "OgrePrerequisites.h"
+#include <OgrePrerequisites.h>
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32 || OGRE_PLATFORM == OGRE_PLATFORM_WINRT
 	#define WIN32_LEAN_AND_MEAN

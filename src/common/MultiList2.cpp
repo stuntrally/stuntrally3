@@ -21,15 +21,15 @@
 	along with MyGUI.  If not, see <https://www.gnu.org/licenses/>.
 */
 #include "pch.h"
-#include "MyGUI_Precompiled.h"
+#include <MyGUI_Precompiled.h>
 #include "MultiList2.h"
-#include "MyGUI_MultiListItem.h"
-#include "MyGUI_ResourceSkin.h"
-#include "MyGUI_Button.h"
-#include "MyGUI_ImageBox.h"
-#include "MyGUI_ListBox.h"
-#include "MyGUI_Gui.h"
-#include "MyGUI_WidgetManager.h"
+#include <MyGUI_MultiListItem.h>
+#include <MyGUI_ResourceSkin.h>
+#include <MyGUI_Button.h>
+#include <MyGUI_ImageBox.h>
+#include <MyGUI_ListBox.h>
+#include <MyGUI_Gui.h>
+#include <MyGUI_WidgetManager.h>
 
 namespace MyGUI
 {

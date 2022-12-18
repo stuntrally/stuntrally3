@@ -1,5 +1,5 @@
 
-#include "OgrePrerequisites.h"
+#include <OgrePrerequisites.h>
 
 namespace Demo
 {

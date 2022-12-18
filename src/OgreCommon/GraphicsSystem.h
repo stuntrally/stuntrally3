@@ -1,12 +1,12 @@
 #pragma once
-#include "OgreOverlayPrerequisites.h"
-#include "OgrePrerequisites.h"
+#include <OgreOverlayPrerequisites.h>
+#include <OgrePrerequisites.h>
 #include "BaseSystem.h"
 
 #include "GameEntityManager.h"
-#include "OgreColourValue.h"
-#include "OgreOverlaySystem.h"
-#include "SdlEmulationLayer.h"
+#include <OgreColourValue.h>
+#include <OgreOverlaySystem.h>
+#include <SdlEmulationLayer.h>
 #include "System/StaticPluginLoader.h"
 #include "Threading/OgreUniformScalableTask.h"
 

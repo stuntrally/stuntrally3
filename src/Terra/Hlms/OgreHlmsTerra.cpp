@@ -34,18 +34,18 @@ THE SOFTWARE.
 #include "CommandBuffer/OgreCommandBuffer.h"
 #include "Compositor/OgreCompositorShadowNode.h"
 #include "Cubemaps/OgreParallaxCorrectedCubemap.h"
-#include "OgreAtmosphereComponent.h"
-#include "OgreCamera.h"
-#include "OgreForward3D.h"
-#include "OgreHighLevelGpuProgram.h"
-#include "OgreHighLevelGpuProgramManager.h"
-#include "OgreHlmsListener.h"
-#include "OgreHlmsManager.h"
-#include "OgreIrradianceVolume.h"
-#include "OgreLwString.h"
-#include "OgreRenderQueue.h"
-#include "OgreSceneManager.h"
-#include "OgreViewport.h"
+#include <OgreAtmosphereComponent.h>
+#include <OgreCamera.h>
+#include <OgreForward3D.h>
+#include <OgreHighLevelGpuProgram.h>
+#include <OgreHighLevelGpuProgramManager.h>
+#include <OgreHlmsListener.h>
+#include <OgreHlmsManager.h>
+#include <OgreIrradianceVolume.h>
+#include <OgreLwString.h>
+#include <OgreRenderQueue.h>
+#include <OgreSceneManager.h>
+#include <OgreViewport.h>
 #include "Vao/OgreConstBufferPacked.h"
 #include "Vao/OgreVaoManager.h"
 
@@ -54,7 +54,7 @@ THE SOFTWARE.
 #endif
 
 #ifdef OGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS
-	#include "OgrePlanarReflections.h"
+	#include <OgrePlanarReflections.h>
 #endif
 
 #include "Terra/Terra.h"

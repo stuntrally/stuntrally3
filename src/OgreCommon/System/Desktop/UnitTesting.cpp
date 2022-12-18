@@ -34,13 +34,13 @@ THE SOFTWARE.
 #include "SdlInputHandler.h"
 #include "System/MainEntryPoints.h"
 
-#include "OgreCamera.h"
-#include "OgreFrameStats.h"
-#include "OgreLwString.h"
-#include "OgreRoot.h"
-#include "OgreStringConverter.h"
-#include "OgreTextureGpuManager.h"
-#include "OgreWindow.h"
+#include <OgreCamera.h>
+#include <OgreFrameStats.h>
+#include <OgreLwString.h>
+#include <OgreRoot.h>
+#include <OgreStringConverter.h>
+#include <OgreTextureGpuManager.h>
+#include <OgreWindow.h>
 
 #if !OGRE_NO_JSON
 #    include "rapidjson/document.h"

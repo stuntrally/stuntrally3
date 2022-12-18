@@ -1,5 +1,3 @@
-#include "OgreCommon.h"
-#include "OgreVector3.h"
 #include "pch.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
@@ -31,9 +29,11 @@
 #include <OgreImage2.h>
 
 #include "Terra.h"
-#include "OgreHlmsPbs.h"
-#include "OgreHlmsPbsDatablock.h"
-#include "OgreHlmsPbsPrerequisites.h"
+#include <OgreCommon.h>
+#include <OgreVector3.h>
+#include <OgreHlmsPbs.h>
+#include <OgreHlmsPbsDatablock.h>
+#include <OgreHlmsPbsPrerequisites.h>
 using namespace Ogre;
 
 

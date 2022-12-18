@@ -29,8 +29,8 @@
 #include <OgreHlmsPbsDatablock.h>
 #include <OgreHlmsPbsPrerequisites.h>
 
-#include "OgreAtmosphereComponent.h"
-#include "OgreAtmosphere2Npr.h"
+#include <OgreAtmosphereComponent.h>
+#include <OgreAtmosphere2Npr.h>
 using namespace Ogre;
 
 

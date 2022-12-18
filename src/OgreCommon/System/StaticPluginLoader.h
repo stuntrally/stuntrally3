@@ -26,7 +26,7 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 #pragma once
-#include "OgreBuildSettings.h"
+#include <OgreBuildSettings.h>
 
 
 namespace Ogre

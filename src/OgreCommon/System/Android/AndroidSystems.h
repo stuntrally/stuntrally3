@@ -26,7 +26,7 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 #pragma once
-#include "OgrePrerequisites.h"
+#include <OgrePrerequisites.h>
 
 struct android_app;
 struct ANativeWindow;

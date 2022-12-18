@@ -1,5 +1,5 @@
 
-#include "OgrePrerequisites.h"
+#include <OgrePrerequisites.h>
 #include <iostream>
 
 #if OGRE_PLATFORM != OGRE_PLATFORM_APPLE_IOS && OGRE_PLATFORM != OGRE_PLATFORM_ANDROID

@@ -1,13 +1,13 @@
 
 #include "Utils/MiscUtils.h"
 
-#include "OgreHlmsCompute.h"
-#include "OgreHlmsComputeJob.h"
-#include "OgreLwString.h"
+#include <OgreHlmsCompute.h>
+#include <OgreHlmsComputeJob.h>
+#include <OgreLwString.h>
 
-#include "OgreMaterialManager.h"
-#include "OgreMaterial.h"
-#include "OgreTechnique.h"
+#include <OgreMaterialManager.h>
+#include <OgreMaterial.h>
+#include <OgreTechnique.h>
 
 namespace Demo
 {

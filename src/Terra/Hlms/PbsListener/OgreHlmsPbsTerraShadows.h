@@ -29,8 +29,8 @@ THE SOFTWARE.
 #ifndef _OgreHlmsPbsTerraShadows_
 #define _OgreHlmsPbsTerraShadows_
 
-#include "OgreGpuProgram.h"
-#include "OgreHlmsListener.h"
+#include <OgreGpuProgram.h>
+#include <OgreHlmsListener.h>
 
 namespace Ogre
 {

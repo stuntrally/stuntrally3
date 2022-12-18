@@ -1,6 +1,6 @@
 #pragma once
 
-#include "OgreTimer.h"
+#include <OgreTimer.h>
 
 
 class YieldTimer

@@ -36,8 +36,8 @@
 #include <OgreBillboardSet.h>
 #include <OgreBillboardChain.h>
 
-#include "OgreHlmsPbs.h"
-#include "OgreHlmsPbsDatablock.h"
+#include <OgreHlmsPbs.h>
+#include <OgreHlmsPbsDatablock.h>
 #include <OgreMaterialManager.h>
 
 // #include <MyGUI_Gui.h>
@@ -402,13 +402,13 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 		HlmsPbsDatablock *pDb =
 			static_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() );
 		if (!body)
-			pDb->setTexture( PBSM_REFLECTION, pApp->mDynamicCubemap );
+			pDb->setTexture( PBSM_REFLECTION, pApp->mCubemapReflTex );
 		else
 		{	//  clone,  set car color
 			static int id = 0;  ++id;
 			db = static_cast<HlmsPbsDatablock *>(
 				pDb->clone( "CarBody" + sCarI + toStr(id) ) );
-			db->setTexture( PBSM_REFLECTION, pApp->mDynamicCubemap );
+			db->setTexture( PBSM_REFLECTION, pApp->mCubemapReflTex );
 			item->getSubItem(0)->setDatablock( db );
 			ChangeClr();
 		}
@@ -585,7 +585,7 @@ void CarModel::Create()
 			assert( dynamic_cast<HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() ) );
 			HlmsPbsDatablock *datablock =
 				static_cast<HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() );
-			datablock->setTexture( PBSM_REFLECTION, pApp->mDynamicCubemap );
+			datablock->setTexture( PBSM_REFLECTION, pApp->mCubemapReflTex );
 		}		
 		if (FileExists(sCar + "_brake.mesh") && !ghostTrk)
 		{

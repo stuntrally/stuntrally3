@@ -1,4 +1,3 @@
-#include "OgreCommon.h"
 #include "pch.h"
 #include "RenderConst.h"
 #include "Def_Str.h"
@@ -12,6 +11,7 @@
 #else
 	#include "CGame.h"
 #endif
+#include <OgreCommon.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include <OgreParticleSystem.h>

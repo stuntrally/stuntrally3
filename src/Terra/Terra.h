@@ -29,9 +29,9 @@ THE SOFTWARE.
 #ifndef _OgreTerra_H_
 #define _OgreTerra_H_
 
-#include "OgrePrerequisites.h"
-#include "OgreMovableObject.h"
-#include "OgreShaderParams.h"
+#include <OgrePrerequisites.h>
+#include <OgreMovableObject.h>
+#include <OgreShaderParams.h>
 
 #include "Terra/TerrainCell.h"
 

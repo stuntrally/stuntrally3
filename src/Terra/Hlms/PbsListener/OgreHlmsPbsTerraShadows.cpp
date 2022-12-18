@@ -34,9 +34,9 @@ THE SOFTWARE.
 #include "CommandBuffer/OgreCommandBuffer.h"
 #include "CommandBuffer/OgreCbTexture.h"
 
-#include "OgreHlmsPbs.h"
-#include "OgreHlmsManager.h"
-#include "OgreRoot.h"
+#include <OgreHlmsPbs.h>
+#include <OgreHlmsManager.h>
+#include <OgreRoot.h>
 
 namespace Ogre
 {

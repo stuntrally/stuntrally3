@@ -2,7 +2,7 @@
 #ifndef _Demo_SdlEmulationLayer_H_
 #define _Demo_SdlEmulationLayer_H_
 
-#include "OgrePrerequisites.h"
+#include <OgrePrerequisites.h>
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS || OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
 	#define OGRE_USE_SDL2 0

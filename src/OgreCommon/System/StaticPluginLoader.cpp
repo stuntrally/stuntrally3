@@ -30,22 +30,22 @@ THE SOFTWARE.
 
 #ifdef OGRE_STATIC_LIB
 	#ifdef OGRE_BUILD_RENDERSYSTEM_GL3PLUS
-		#include "OgreGL3PlusPlugin.h"
+		#include <OgreGL3PlusPlugin.h>
 	#endif
 	#ifdef OGRE_BUILD_RENDERSYSTEM_GLES2
-		#include "OgreGLES2Plugin.h"
+		#include <OgreGLES2Plugin.h>
 	#endif
 	#ifdef OGRE_BUILD_RENDERSYSTEM_D3D11
-		#include "OgreD3D11Plugin.h"
+		#include <OgreD3D11Plugin.h>
 	#endif
 	#ifdef OGRE_BUILD_RENDERSYSTEM_METAL
-		#include "OgreMetalPlugin.h"
+		#include <OgreMetalPlugin.h>
 	#endif
 	#ifdef OGRE_BUILD_RENDERSYSTEM_VULKAN
-		#include "OgreVulkanPlugin.h"
+		#include <OgreVulkanPlugin.h>
 	#endif
 #endif
-#include "OgreRoot.h"
+#include <OgreRoot.h>
 
 
 StaticPluginLoader::StaticPluginLoader()

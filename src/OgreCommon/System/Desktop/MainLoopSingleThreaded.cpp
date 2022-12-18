@@ -26,7 +26,6 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 #include "pch.h"
-#include "OgrePrerequisites.h"
 #include <iostream>
 
 #include "System/MainEntryPoints.h"
@@ -37,8 +36,9 @@ THE SOFTWARE.
 #include "GameState.h"
 #include "SdlInputHandler.h"
 
-#include "OgreWindow.h"
-#include "OgreTimer.h"
+#include <OgrePrerequisites.h>
+#include <OgreWindow.h>
+#include <OgreTimer.h>
 
 #include "Threading/OgreThreads.h"
 

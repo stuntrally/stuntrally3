@@ -1,7 +1,7 @@
 #pragma once
-#include "OgreVector3.h"
-#include "OgreQuaternion.h"
-#include "OgreStringVector.h"
+#include <OgreVector3.h>
+#include <OgreQuaternion.h>
+#include <OgreStringVector.h>
 
 
 #define NUM_GAME_ENTITY_BUFFERS 4

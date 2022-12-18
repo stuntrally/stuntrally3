@@ -28,25 +28,25 @@ THE SOFTWARE.
 
 #include "Terra/Hlms/OgreHlmsTerraDatablock.h"
 #include "Terra/Hlms/OgreHlmsTerra.h"
-#include "OgreHlmsManager.h"
-#include "OgreTextureGpu.h"
-#include "OgreTextureGpuManager.h"
-#include "OgreRenderSystem.h"
-#include "OgreTextureFilters.h"
-#include "OgreLogManager.h"
-#include "OgreShaderPrimitives.h"
+#include <OgreHlmsManager.h>
+#include <OgreTextureGpu.h>
+#include <OgreTextureGpuManager.h>
+#include <OgreRenderSystem.h>
+#include <OgreTextureFilters.h>
+#include <OgreLogManager.h>
+#include <OgreShaderPrimitives.h>
 
 #define _OgreHlmsTextureBaseClassExport
 #define OGRE_HLMS_TEXTURE_BASE_CLASS HlmsTerraBaseTextureDatablock
 #define OGRE_HLMS_TEXTURE_BASE_MAX_TEX NUM_TERRA_TEXTURE_TYPES
 #define OGRE_HLMS_CREATOR_CLASS HlmsTerra
-	#include "OgreHlmsTextureBaseClass.inl"
+	#include <OgreHlmsTextureBaseClass.inl>
 #undef _OgreHlmsTextureBaseClassExport
 #undef OGRE_HLMS_TEXTURE_BASE_CLASS
 #undef OGRE_HLMS_TEXTURE_BASE_MAX_TEX
 #undef OGRE_HLMS_CREATOR_CLASS
 
-#include "OgreHlmsTerraDatablock.cpp.inc"
+#include <OgreHlmsTerraDatablock.cpp.inc>
 
 namespace Ogre
 {

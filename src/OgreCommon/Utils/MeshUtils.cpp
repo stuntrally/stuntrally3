@@ -1,10 +1,10 @@
 
 #include "Utils/MeshUtils.h"
 
-#include "OgreMeshManager.h"
-#include "OgreMesh.h"
-#include "OgreMeshManager2.h"
-#include "OgreMesh2.h"
+#include <OgreMeshManager.h>
+#include <OgreMesh.h>
+#include <OgreMeshManager2.h>
+#include <OgreMesh2.h>
 
 namespace Demo
 {

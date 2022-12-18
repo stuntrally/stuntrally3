@@ -2,23 +2,23 @@
 #include "CHud.h"
 #include "CGui.h"
 #include "GuiCom.h"
-#include "OgreVector3.h"
 #include "CGame.h"
 #include "GraphicsSystem.h"
-#include "SDL_scancode.h"
-#include "OgreLogManager.h"
+#include <SDL_scancode.h>
+#include <OgreLogManager.h>
 
-#include "OgreSceneManager.h"
-#include "OgreRoot.h"
-#include "OgreCamera.h"
-#include "OgreWindow.h"
+#include <OgreSceneManager.h>
+#include <OgreRoot.h>
+#include <OgreCamera.h>
+#include <OgreVector3.h>
+#include <OgreWindow.h>
 
 #include "Terra/Terra.h"
-#include "OgreHlms.h"
-#include "OgreHlmsManager.h"
-#include "OgreGpuProgramManager.h"
+#include <OgreHlms.h>
+#include <OgreHlmsManager.h>
+#include <OgreGpuProgramManager.h>
 
-#include "OgreAtmosphere2Npr.h"
+#include <OgreAtmosphere2Npr.h>
 
 #include "game.h"  // snd
 #include "SoundMgr.h"

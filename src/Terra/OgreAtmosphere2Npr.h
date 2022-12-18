@@ -27,16 +27,16 @@ THE SOFTWARE.
 */
 #pragma once
 
-#include "OgreAtmosphere2Prerequisites.h"
+#include <OgreAtmosphere2Prerequisites.h>
 
-#include "OgreAtmosphereComponent.h"
-#include "OgreColourValue.h"
-#include "OgreSharedPtr.h"
-#include "OgreVector3.h"
+#include <OgreAtmosphereComponent.h>
+#include <OgreColourValue.h>
+#include <OgreSharedPtr.h>
+#include <OgreVector3.h>
 
 #include <map>
 
-#include "OgreHeaderPrefix.h"
+#include <OgreHeaderPrefix.h>
 
 namespace Ogre
 {
@@ -287,5 +287,5 @@ namespace Ogre
     /** @} */
 }  // namespace Ogre
 
-#include "OgreHeaderSuffix.h"
+#include <OgreHeaderSuffix.h>
 

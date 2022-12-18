@@ -6,10 +6,10 @@
 // #include "pathmanager.h"
 // #include "SplitScreen.h"
 
-// #include "MyGUI_Prerequest.h"
-// #include "MyGUI_PointerManager.h"
+// #include <MyGUI_Prerequest.h>
+// #include <MyGUI_PointerManager.h>
 #include "ICSInputControlSystem.h"
-#include "SDL_events.h"
+#include <SDL_events.h>
 
 #include <MyGUI.h>
 // #include <MyGUI_Ogre2Platform.h>

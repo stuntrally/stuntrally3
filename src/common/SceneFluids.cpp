@@ -21,7 +21,7 @@
 #include <BulletCollision/CollisionShapes/btBoxShape.h>
 #include <BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h>
 
-#include "OgreCommon.h"
+#include <OgreCommon.h>
 // #include <OgreManualObject.h>
 #include <OgreMeshManager.h>
 #include <OgreMaterialManager.h>

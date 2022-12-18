@@ -27,7 +27,7 @@
 #include <OgreSceneNode.h>
 #include <OgreTechnique.h>
 #include <OgreViewport.h>
-#include "OgreHlmsPbsDatablock.h"
+#include <OgreHlmsPbsDatablock.h>
 // #include <MyGUI_TextBox.h>
 using namespace Ogre;
 

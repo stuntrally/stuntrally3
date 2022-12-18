@@ -1,15 +1,15 @@
 
 #include "Utils/TestUtils.h"
 
-#include "OgreTextureGpuManager.h"
-#include "OgrePixelFormatGpuUtils.h"
-#include "OgreStringConverter.h"
+#include <OgreTextureGpuManager.h>
+#include <OgrePixelFormatGpuUtils.h>
+#include <OgreStringConverter.h>
 
-#include "OgreRoot.h"
-#include "OgreHlmsManager.h"
-#include "OgreHlms.h"
-#include "OgreHlmsPbsDatablock.h"
-#include "OgreHlmsUnlitDatablock.h"
+#include <OgreRoot.h>
+#include <OgreHlmsManager.h>
+#include <OgreHlms.h>
+#include <OgreHlmsPbsDatablock.h>
+#include <OgreHlmsUnlitDatablock.h>
 
 namespace Demo
 {

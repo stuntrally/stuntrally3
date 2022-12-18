@@ -26,7 +26,7 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 #include "pch.h"
-#include "OgrePrerequisites.h"
+#include <OgrePrerequisites.h>
 #include <iostream>
 
 #include "System/MainEntryPoints.h"
@@ -38,8 +38,8 @@ THE SOFTWARE.
 
 #include "Threading/YieldTimer.h"
 
-#include "OgreWindow.h"
-#include "OgreTimer.h"
+#include <OgreWindow.h>
+#include <OgreTimer.h>
 
 #include "Threading/OgreThreads.h"
 #include "Threading/OgreBarrier.h"

@@ -3,7 +3,7 @@
 #include "CGame.h"
 #include "CInput.h"
 #include "ICSInputControlSystem.h"
-#include "SDL_keycode.h"
+#include <SDL_keycode.h>
 using namespace std;
 
 

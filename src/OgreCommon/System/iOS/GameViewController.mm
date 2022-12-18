@@ -31,7 +31,7 @@ THE SOFTWARE.
 
 #import <simd/simd.h>
 
-#include "OgreWindow.h"
+#include <OgreWindow.h>
 
 #include "GraphicsSystem.h"
 #include "LogicSystem.h"

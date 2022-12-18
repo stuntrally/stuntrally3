@@ -2,23 +2,23 @@
 #include "Def_Str.h"
 #include "CGame.h"
 #include "GraphicsSystem.h"
-#include "OgreLogManager.h"
+#include <OgreLogManager.h>
 
-#include "OgreSceneManager.h"
-#include "OgreRoot.h"
-#include "OgreCamera.h"
-#include "OgreWindow.h"
+#include <OgreSceneManager.h>
+#include <OgreRoot.h>
+#include <OgreCamera.h>
+#include <OgreWindow.h>
 
-#include "OgreFrameStats.h"
-#include "OgreTextureGpuManager.h"
+#include <OgreFrameStats.h>
+#include <OgreTextureGpuManager.h>
 #include "Vao/OgreVaoManager.h"
 
-#include "OgreOverlayManager.h"
-#include "OgreOverlay.h"
-#include "OgreOverlayContainer.h"
-#include "OgreTextAreaOverlayElement.h"
+#include <OgreOverlayManager.h>
+#include <OgreOverlay.h>
+#include <OgreOverlayContainer.h>
+#include <OgreTextAreaOverlayElement.h>
 
-#include "OgreAtmosphere2Npr.h"
+#include <OgreAtmosphere2Npr.h>
 
 #include "game.h"  // snd
 #include "SoundMgr.h"
@@ -28,8 +28,8 @@
 #include "TracksXml.h"
 #include "CData.h"
 
-#include "MyGUI.h"
-#include "MyGUI_Ogre2Platform.h"
+#include <MyGUI.h>
+#include <MyGUI_Ogre2Platform.h>
 using namespace Ogre;
 
 
@@ -213,6 +213,8 @@ void App::updDebugText()
 void App::CreateDebugTextOverlay()
 {
 	return;  // todo: move to Gui..
+
+	LogO("---- create overlay");
 	Ogre::v1::OverlayManager &mgr = Ogre::v1::OverlayManager::getSingleton();
 	Ogre::v1::Overlay *overlay = mgr.create( "DebugText" );
 

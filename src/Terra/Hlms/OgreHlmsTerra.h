@@ -30,13 +30,13 @@ THE SOFTWARE.
 
 #include "Terra/Hlms/OgreHlmsTerraPrerequisites.h"
 
-#include "OgreHlmsPbs.h"
+#include <OgreHlmsPbs.h>
 
-#include "OgreConstBufferPool.h"
-#include "OgreHlmsBufferManager.h"
-#include "OgreMatrix4.h"
+#include <OgreConstBufferPool.h>
+#include <OgreHlmsBufferManager.h>
+#include <OgreMatrix4.h>
 
-#include "OgreHeaderPrefix.h"
+#include <OgreHeaderPrefix.h>
 
 namespace Ogre
 {
@@ -147,6 +147,6 @@ namespace Ogre
 
 }
 
-#include "OgreHeaderSuffix.h"
+#include <OgreHeaderSuffix.h>
 
 #endif

@@ -13,7 +13,6 @@
 	#include "CGui.h"
 	#include "settings.h"
 #endif
-// #include "sdlinputwrapper.hpp"
 #include <OgreWindow.h>
 #include <MyGUI_InputManager.h>
 #include <MyGUI_Widget.h>
@@ -436,5 +435,5 @@ void CGuiCom::CreateFonts()
 		mgr.addResource(font);
 	}
 
-	LogO("-- Font sizes:  "+inf);
+	LogO("--- Font sizes:  "+inf);
 }

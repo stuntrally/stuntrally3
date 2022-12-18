@@ -31,12 +31,12 @@ THE SOFTWARE.
 
 #include "Terra/Hlms/OgreHlmsTerraPrerequisites.h"
 
-#include "OgreHlmsJson.h"
+#include <OgreHlmsJson.h>
 
 #if !OGRE_NO_JSON
 #    include "Terra/Hlms/OgreHlmsTerraDatablock.h"
 
-#include "OgreHeaderPrefix.h"
+#include <OgreHeaderPrefix.h>
 
 namespace Ogre
 {
@@ -96,7 +96,7 @@ namespace Ogre
 
 }
 
-#include "OgreHeaderSuffix.h"
+#include <OgreHeaderSuffix.h>
 
 #endif
 

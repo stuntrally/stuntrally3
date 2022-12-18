@@ -26,19 +26,19 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 
-#include "OgreAtmosphere2Npr.h"
+#include <OgreAtmosphere2Npr.h>
 
 #include "CommandBuffer/OgreCbShaderBuffer.h"
 #include "CommandBuffer/OgreCommandBuffer.h"
-#include "OgreCamera.h"
-#include "OgreHlms.h"
-#include "OgreLogManager.h"
-#include "OgreMaterialManager.h"
-#include "OgrePass.h"
-#include "OgreRectangle2D2.h"
-#include "OgreSceneManager.h"
-#include "OgreShaderPrimitives.h"
-#include "OgreTechnique.h"
+#include <OgreCamera.h>
+#include <OgreHlms.h>
+#include <OgreLogManager.h>
+#include <OgreMaterialManager.h>
+#include <OgrePass.h>
+#include <OgreRectangle2D2.h>
+#include <OgreSceneManager.h>
+#include <OgreShaderPrimitives.h>
+#include <OgreTechnique.h>
 #include "Vao/OgreConstBufferPacked.h"
 #include "Vao/OgreVaoManager.h"
 

@@ -1,4 +1,3 @@
-#include "OgreCommon.h"
 #include "pch.h"
 #include "RenderConst.h"
 #include "Def_Str.h"
@@ -25,7 +24,7 @@
 #include <BulletFileLoader/btBulletFile.h>
 #include <BulletWorldImporter/btBulletWorldImporter.h>
 
-// #include <OgreManualObject.h>
+#include <OgreCommon.h>
 #include <OgreMeshManager.h>
 #include <OgreMaterialManager.h>
 #include <OgreItem.h>

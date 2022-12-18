@@ -1,10 +1,10 @@
 #include "pch.h"
-#include "MyGUI_Precompiled.h"
+#include <MyGUI_Precompiled.h>
 #include "Slider.h"
-#include "MyGUI_InputManager.h"
-#include "MyGUI_Button.h"
-#include "MyGUI_ResourceSkin.h"
-#include "MyGUI_ImageBox.h"
+#include <MyGUI_InputManager.h>
+#include <MyGUI_Button.h>
+#include <MyGUI_ResourceSkin.h>
+#include <MyGUI_ImageBox.h>
 
 namespace MyGUI
 {

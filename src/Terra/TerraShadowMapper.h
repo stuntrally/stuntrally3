@@ -29,9 +29,9 @@ THE SOFTWARE.
 #ifndef _OgreTerraShadowMapper_H_
 #define _OgreTerraShadowMapper_H_
 
-#include "OgrePrerequisites.h"
-#include "OgreMovableObject.h"
-#include "OgreShaderParams.h"
+#include <OgrePrerequisites.h>
+#include <OgreMovableObject.h>
+#include <OgreShaderParams.h>
 
 #include "Terra/TerrainCell.h"
 

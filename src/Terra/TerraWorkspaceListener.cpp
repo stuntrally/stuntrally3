@@ -35,7 +35,7 @@ THE SOFTWARE.
 #include "Compositor/Pass/OgreCompositorPass.h"
 #include "Compositor/Pass/PassScene/OgreCompositorPassScene.h"
 #include "Compositor/Pass/PassScene/OgreCompositorPassSceneDef.h"
-#include "OgreCamera.h"
+#include <OgreCamera.h>
 
 namespace Ogre
 {

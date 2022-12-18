@@ -8,8 +8,8 @@
 #include "CScene.h"
 
 // #include "SplineBase.h"
-#include "OgreCommon.h"
-#include "OgreVector3.h"
+#include <OgreCommon.h>
+#include <OgreVector3.h>
 #include "Grass.h"
 
 #include "GuiCom.h"
@@ -33,7 +33,7 @@
 #include <OgreImage2.h>
 #include <OgreMaterial.h>
 #include <OgreMaterialManager.h>
-#include "OgreTextureGpuManager.h"
+#include <OgreTextureGpuManager.h>
 
 #include <MyGUI_TextBox.h>
 #include <MyGUI_Window.h>
@@ -333,9 +333,9 @@ void App::LoadCleanUp()  // 1 first
 	// TextureGpuManager::getEntries() Singleton().unloadUnreferencedResources();
 	LogO("------  # Unload prev track res done");*/
 
-	// minimizeMemory();  // todo: ! drops gui font tex, car refl-
+	MinimizeMemory();  // todo: car refl ?
 
-	// setupCompositor();  //? twice
+	// SetupCompositor();  //? twice
 }
 
 
@@ -719,6 +719,9 @@ void App::LoadMisc()  // 9 last
 		gcom->UpdGuiRdStats(scn->road, scn->sc, gcom->sListTrack,
 			pGame->timer.GetBestLap(0, rev), rev, 0);  // current
 	**/
+
+	// SetTexWrap( HLMS_UNLIT, "FluidWater", false );
+
 
 	hud->Create();
 	hud->Show();

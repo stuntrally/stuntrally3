@@ -1,7 +1,7 @@
 #pragma once
 #include "Threading/OgreLightweightMutex.h"
-#include "OgreCommon.h"
-#include "OgreFastArray.h"
+#include <OgreCommon.h>
+#include <OgreFastArray.h>
 #include "MqMessages.h"
 #include <map>
 

@@ -30,22 +30,22 @@ THE SOFTWARE.
 
 #include "Terra/Terra.h"
 
-#include "OgreTextureGpuManager.h"
+#include <OgreTextureGpuManager.h>
 
-#include "OgreSceneManager.h"
+#include <OgreSceneManager.h>
 #include "Compositor/OgreCompositorManager2.h"
 #include "Compositor/OgreCompositorWorkspace.h"
 #include "Compositor/OgreCompositorChannel.h"
 
-#include "OgreHlmsManager.h"
-#include "OgreHlmsCompute.h"
-#include "OgreHlmsComputeJob.h"
+#include <OgreHlmsManager.h>
+#include <OgreHlmsCompute.h>
+#include <OgreHlmsComputeJob.h>
 #include "Vao/OgreConstBufferPacked.h"
 #include "Vao/OgreVaoManager.h"
-#include "OgreRoot.h"
+#include <OgreRoot.h>
 
-#include "OgreLwString.h"
-#include "OgreStagingTexture.h"
+#include <OgreLwString.h>
+#include <OgreStagingTexture.h>
 #include "Def_Str.h"
 
 namespace Ogre

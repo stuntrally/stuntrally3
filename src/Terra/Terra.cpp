@@ -28,24 +28,24 @@ THE SOFTWARE.
 
 #include "Terra/Terra.h"
 
-#include "OgreTextureGpu.h"
-#include "OgreVector4.h"
+#include <OgreTextureGpu.h>
+#include <OgreVector4.h>
 #include "Terra/TerraShadowMapper.h"
 #include "Terra/Hlms/OgreHlmsTerra.h"
 
-#include "OgreImage2.h"
+#include <OgreImage2.h>
 
 #include "Compositor/OgreCompositorChannel.h"
 #include "Compositor/OgreCompositorManager2.h"
 #include "Compositor/OgreCompositorWorkspace.h"
-#include "OgreCamera.h"
-#include "OgreDepthBuffer.h"
-#include "OgreMaterialManager.h"
-#include "OgrePixelFormatGpuUtils.h"
-#include "OgreSceneManager.h"
-#include "OgreStagingTexture.h"
-#include "OgreTechnique.h"
-#include "OgreTextureGpuManager.h"
+#include <OgreCamera.h>
+#include <OgreDepthBuffer.h>
+#include <OgreMaterialManager.h>
+#include <OgrePixelFormatGpuUtils.h>
+#include <OgreSceneManager.h>
+#include <OgreStagingTexture.h>
+#include <OgreTechnique.h>
+#include <OgreTextureGpuManager.h>
 
 #include "Def_Str.h"
 #include "CScene.h"

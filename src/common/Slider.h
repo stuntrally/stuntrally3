@@ -1,6 +1,6 @@
 #pragma once
-#include "MyGUI_Prerequest.h"
-#include "MyGUI_Widget.h"
+#include <MyGUI_Prerequest.h>
+#include <MyGUI_Widget.h>
 
 namespace MyGUI
 {

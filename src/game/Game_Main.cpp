@@ -1,7 +1,5 @@
-/*
------------------------------------------------------------------------------
-This source file is part of OGRE
-	(Object-oriented Graphics Rendering Engine)
+/*-----------------------------------------------------------------------------
+This source file was part of OGRE (Object-oriented Graphics Rendering Engine)
 For the latest info, see http://www.ogre3d.org/
 
 Copyright (c) 2000-2021 Torus Knot Software Ltd
@@ -23,21 +21,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
------------------------------------------------------------------------------
-*/
+-----------------------------------------------------------------------------*/
 #include "pch.h"
 #include "GraphicsSystem.h"
 #include "pathmanager.h"
 #include "CGame.h"
 
-#include "OgreRoot.h"
+#include <OgreRoot.h>
 #include "Compositor/OgreCompositorManager2.h"
-#include "OgreConfigFile.h"
-#include "OgreWindow.h"
+#include <OgreConfigFile.h>
+#include <OgreWindow.h>
 
 #include "Compositor/OgreCompositorWorkspace.h"
-#include "OgreArchiveManager.h"
-#include "OgreHlmsManager.h"
+#include <OgreArchiveManager.h>
+#include <OgreHlmsManager.h>
 #include "Terra/Hlms/OgreHlmsTerra.h"
 #include "Terra/TerraWorkspaceListener.h"
 
@@ -54,11 +51,12 @@ THE SOFTWARE.
 		#include "System/OSX/OSXUtils.h"
 	#endif
 #endif
+using namespace Ogre;
 
 
 class GameGraphicsSystem final : public GraphicsSystem
 {
-	Ogre::TerraWorkspaceListener *mTerraWorkspaceListener;
+	TerraWorkspaceListener *mTerraWorkspaceListener;
 
 	void stopCompositor() override
 	{
@@ -68,12 +66,11 @@ class GameGraphicsSystem final : public GraphicsSystem
 		mTerraWorkspaceListener = 0;
 	}
 
-	Ogre::CompositorWorkspace *setupCompositor() override
+	CompositorWorkspace *setupCompositor() override
 	{
-		/*using namespace Ogre;
-		CompositorManager2 *compositorManager = mRoot->getCompositorManager2();
+		/*CompositorManager2 *compositorManager = mRoot->getCompositorManager2();
 
-		//+ pbs
+		// pbs
 		CompositorWorkspace *workspace = compositorManager->addWorkspace(
 			mSceneManager, mRenderWindow->getTexture(), mCamera,
 			// "PbsMaterialsWorkspace", true );
@@ -96,10 +93,10 @@ class GameGraphicsSystem final : public GraphicsSystem
 	{
 		GraphicsSystem::setupResources();
 
-		Ogre::ConfigFile cf;
+		ConfigFile cf;
 		cf.load( AndroidSystems::openFile( mResourcePath + "resources2.cfg" ) );
 
-		Ogre::String originalDataFolder = cf.getSetting( "DoNotUseAsResource", "Hlms", "" );
+		String originalDataFolder = cf.getSetting( "DoNotUseAsResource", "Hlms", "" );
 
 		if( originalDataFolder.empty() )
 			originalDataFolder = AndroidSystems::isAndroid() ? "/" : "./";
@@ -119,7 +116,7 @@ class GameGraphicsSystem final : public GraphicsSystem
 
 		for( size_t i=0; i < count; ++i )
 		{
-			Ogre::String dataFolder = originalDataFolder + c_locations[i];
+			String dataFolder = originalDataFolder + c_locations[i];
 			addResourceLocation( dataFolder, getMediaReadArchiveType(), "General" );
 		}
 	}
@@ -128,14 +125,14 @@ class GameGraphicsSystem final : public GraphicsSystem
 	{
 		GraphicsSystem::registerHlms();
 
-		Ogre::ConfigFile cf;
+		ConfigFile cf;
 		cf.load( AndroidSystems::openFile( mResourcePath + "resources2.cfg" ) );
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE || OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
-		Ogre::String rootHlmsFolder = Ogre::macBundlePath() + '/' +
+		String rootHlmsFolder = macBundlePath() + '/' +
 			cf.getSetting( "DoNotUseAsResource", "Hlms", "" );
 #else
-		Ogre::String rootHlmsFolder = mResourcePath +
+		String rootHlmsFolder = mResourcePath +
 			cf.getSetting( "DoNotUseAsResource", "Hlms", "" );
 #endif
 		if( rootHlmsFolder.empty() )
@@ -143,9 +140,9 @@ class GameGraphicsSystem final : public GraphicsSystem
 		else if( *(rootHlmsFolder.end() - 1) != '/' )
 			rootHlmsFolder += "/";
 
-		Ogre::RenderSystem *renderSystem = mRoot->getRenderSystem();
+		RenderSystem *renderSystem = mRoot->getRenderSystem();
 
-		Ogre::String shaderSyntax = "GLSL";
+		String shaderSyntax = "GLSL";
 		if (renderSystem->getName() == "OpenGL ES 2.x Rendering Subsystem")
 			shaderSyntax = "GLSLES";
 		if( renderSystem->getName() == "Direct3D11 Rendering Subsystem" )
@@ -153,34 +150,34 @@ class GameGraphicsSystem final : public GraphicsSystem
 		else if( renderSystem->getName() == "Metal Rendering Subsystem" )
 			shaderSyntax = "Metal";
 
-		Ogre::String mainFolderPath;
-		Ogre::StringVector libraryFoldersPaths;
-		Ogre::StringVector::const_iterator libraryFolderPathIt;
-		Ogre::StringVector::const_iterator libraryFolderPathEn;
+		String mainFolderPath;
+		StringVector libraryFoldersPaths;
+		StringVector::const_iterator libraryFolderPathIt;
+		StringVector::const_iterator libraryFolderPathEn;
 
-		Ogre::ArchiveManager &archiveManager = Ogre::ArchiveManager::getSingleton();
+		ArchiveManager &archiveManager = ArchiveManager::getSingleton();
 
-		Ogre::HlmsManager *hlmsManager = mRoot->getHlmsManager();
+		HlmsManager *hlmsManager = mRoot->getHlmsManager();
 
 		{
 			//Create & Register HlmsTerra
 			//Get the path to all the subdirectories used by HlmsTerra
-			Ogre::HlmsTerra::getDefaultPaths( mainFolderPath, libraryFoldersPaths );
-			Ogre::Archive *archiveTerra = archiveManager.load( rootHlmsFolder + mainFolderPath,
+			HlmsTerra::getDefaultPaths( mainFolderPath, libraryFoldersPaths );
+			Archive *archiveTerra = archiveManager.load( rootHlmsFolder + mainFolderPath,
 																getMediaReadArchiveType(), true );
-			Ogre::ArchiveVec archiveTerraLibraryFolders;
+			ArchiveVec archiveTerraLibraryFolders;
 			libraryFolderPathIt = libraryFoldersPaths.begin();
 			libraryFolderPathEn = libraryFoldersPaths.end();
 			while( libraryFolderPathIt != libraryFolderPathEn )
 			{
-				Ogre::Archive *archiveLibrary = archiveManager.load(
+				Archive *archiveLibrary = archiveManager.load(
 					rootHlmsFolder + *libraryFolderPathIt, getMediaReadArchiveType(), true );
 				archiveTerraLibraryFolders.push_back( archiveLibrary );
 				++libraryFolderPathIt;
 			}
 
 			//Create and register the terra Hlms
-			hlmsTerra = OGRE_NEW Ogre::HlmsTerra( archiveTerra, &archiveTerraLibraryFolders );
+			hlmsTerra = OGRE_NEW HlmsTerra( archiveTerra, &archiveTerraLibraryFolders );
 			hlmsManager->registerHlms( hlmsTerra );
 		}
 
@@ -188,10 +185,10 @@ class GameGraphicsSystem final : public GraphicsSystem
 		//These pieces are coded so that they will be activated when
 		//we set the HlmsPbsTerraShadows listener and there's an active Terra
 		//(see App::createScene01)
-		Ogre::Hlms *hlmsPbs = hlmsManager->getHlms( Ogre::HLMS_PBS );
-		Ogre::Archive *archivePbs = hlmsPbs->getDataFolder();
-		Ogre::ArchiveVec libraryPbs = hlmsPbs->getPiecesLibraryAsArchiveVec();
-		libraryPbs.push_back( Ogre::ArchiveManager::getSingletonPtr()->load(
+		Hlms *hlmsPbs = hlmsManager->getHlms( HLMS_PBS );
+		Archive *archivePbs = hlmsPbs->getDataFolder();
+		ArchiveVec libraryPbs = hlmsPbs->getPiecesLibraryAsArchiveVec();
+		libraryPbs.push_back( ArchiveManager::getSingletonPtr()->load(
 									rootHlmsFolder + "Hlms/Terra/" + shaderSyntax + "/PbsTerraShadows",
 									getMediaReadArchiveType(), true ) );
 		hlmsPbs->reloadFrom( archivePbs, &libraryPbs );
@@ -200,10 +197,10 @@ class GameGraphicsSystem final : public GraphicsSystem
 public:
 	//  ctor  ----
 	GameGraphicsSystem( GameState *gameState,
-			Ogre::String logCfgPath = Ogre::String(""),
-			Ogre::String cachePath = Ogre::String(""),
-			Ogre::String resourcePath = Ogre::String(""),
-			Ogre::String pluginsPath = Ogre::String("./") )
+			String logCfgPath = String(""),
+			String cachePath = String(""),
+			String resourcePath = String(""),
+			String pluginsPath = String("./") )
 		: GraphicsSystem( gameState,
 			logCfgPath,
 			cachePath,
@@ -235,11 +232,11 @@ void MainEntryPoints::createSystems( GameState **outGraphicsGameState,
 		app,
 		PATHMANAGER::UserConfigDir()+"/",
 		PATHMANAGER::CacheDir()+"/",
-		Ogre::String("./"),
+		String("./"),
 		// PATHMANAGER::GameConfigDir()+"/",  // todo: config/resources2.cfg
-		Ogre::String("./") );
+		String("./") );
 
-	app->_notifyGraphicsSystem( graphicsSystem );
+	app->mGraphicsSystem = graphicsSystem;
 
 	*outGraphicsGameState = app;
 	*outGraphicsSystem = graphicsSystem;

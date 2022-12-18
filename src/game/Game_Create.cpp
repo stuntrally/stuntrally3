@@ -4,8 +4,8 @@
 #include "GuiCom.h"
 #include "Gui_Popup.h"
 #include "GraphicsSystem.h"
-#include "OgreLogManager.h"
-#include "OgreCamera.h"
+#include <OgreLogManager.h>
+#include <OgreCamera.h>
 
 //  SR
 #include "settings.h"
@@ -129,7 +129,7 @@ void App::Destroy()
 //-----------------------------------------------------------------------------------------------------------------------------
 void App::createScene01()
 {
-	LogO(">>>> Init SR ----");
+	LogO(">>>>>>>> Init SR --------");
 	
 	//  SR cfg, xmls etc
 	Load();
@@ -142,7 +142,7 @@ void App::createScene01()
 	gui->InitGui();
 
 
-	mGraphicsSystem->mWorkspace = setupCompositor();
+	mGraphicsSystem->mWorkspace = SetupCompositor();
 
 
 	SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
@@ -166,9 +166,7 @@ void App::createScene01()
 	Vector3 objPos;
 
 
-	LogO(">>>> Init SR done ----");
-
-	LogO("---- create overlay");
+	LogO(">>>>---- Init SR done ----");
 
 	CreateDebugTextOverlay();
 }

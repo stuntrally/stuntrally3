@@ -29,8 +29,8 @@ THE SOFTWARE.
 #ifndef _OgreTerrainCell_H_
 #define _OgreTerrainCell_H_
 
-#include "OgrePrerequisites.h"
-#include "OgreRenderable.h"
+#include <OgrePrerequisites.h>
+#include <OgreRenderable.h>
 
 namespace Ogre
 {

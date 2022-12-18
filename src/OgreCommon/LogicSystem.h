@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseSystem.h"
-#include "OgrePrerequisites.h"
+#include <OgrePrerequisites.h>
 #include <deque>
 
 class GameEntityManager;

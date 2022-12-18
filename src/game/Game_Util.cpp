@@ -1,22 +1,22 @@
 #include "pch.h"
 #include "CGame.h"
 #include "GraphicsSystem.h"
-#include "OgreLogManager.h"
+#include <OgreLogManager.h>
 
-#include "OgreSceneManager.h"
-#include "OgreRoot.h"
-#include "OgreString.h"
+#include <OgreSceneManager.h>
+#include <OgreRoot.h>
+#include <OgreString.h>
 
-#include "OgreHlms.h"
-#include "OgreHlmsPbs.h"
-#include "OgreHlmsPbsDatablock.h"
-#include "OgreHlmsDatablock.h"
-#include "OgreHlmsUnlitDatablock.h"
+#include <OgreHlms.h>
+#include <OgreHlmsPbs.h>
+#include <OgreHlmsPbsDatablock.h>
+#include <OgreHlmsDatablock.h>
+#include <OgreHlmsUnlitDatablock.h>
 
-#include "OgreHlmsManager.h"
-#include "OgreGpuProgramManager.h"
-#include "OgreTextureGpuManager.h"
-#include "OgrePixelFormatGpuUtils.h"
+#include <OgreHlmsManager.h>
+#include <OgreGpuProgramManager.h>
+#include <OgreTextureGpuManager.h>
+#include <OgrePixelFormatGpuUtils.h>
 #include "Vao/OgreVaoManager.h"
 
 using namespace Ogre;
@@ -138,7 +138,7 @@ void App::unloadUnusedTextures()
 			!entry.texture->hasAutomaticBatching() || !entry.texture->isTexture() ||
 			entry.texture->isRenderToTexture() || entry.texture->isUav() )
 		{
-			// likely a internal texture
+			// likely internal texture
 			// LogO("Skip: "+name);
 			canBeUnloaded = false;
 		}
@@ -150,7 +150,7 @@ void App::unloadUnusedTextures()
 }
 
 //-----------------------------------------------------------------------------------
-void App::minimizeMemory()
+void App::MinimizeMemory()
 {
 	// setTightMemoryBudget();
 	unloadTexturesFromUnusedMaterials();

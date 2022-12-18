@@ -1,5 +1,5 @@
 #pragma once
-#include "OgrePlatform.h"
+#include <OgrePlatform.h>
 
 union SDL_Event;
 struct SDL_MouseButtonEvent;

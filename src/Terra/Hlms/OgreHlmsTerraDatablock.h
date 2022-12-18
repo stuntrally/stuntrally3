@@ -29,21 +29,21 @@ THE SOFTWARE.
 #define _OgreHlmsTerraDatablock_H_
 
 #include "Terra/Hlms/OgreHlmsTerraPrerequisites.h"
-#include "OgreHlmsDatablock.h"
-#include "OgreConstBufferPool.h"
-#include "OgreVector4.h"
+#include <OgreHlmsDatablock.h>
+#include <OgreConstBufferPool.h>
+#include <OgreVector4.h>
 
 #define _OgreHlmsTextureBaseClassExport
 #define OGRE_HLMS_TEXTURE_BASE_CLASS HlmsTerraBaseTextureDatablock
 #define OGRE_HLMS_TEXTURE_BASE_MAX_TEX NUM_TERRA_TEXTURE_TYPES
 #define OGRE_HLMS_CREATOR_CLASS HlmsTerra
-	#include "OgreHlmsTextureBaseClass.h"
+	#include <OgreHlmsTextureBaseClass.h>
 #undef _OgreHlmsTextureBaseClassExport
 #undef OGRE_HLMS_TEXTURE_BASE_CLASS
 #undef OGRE_HLMS_TEXTURE_BASE_MAX_TEX
 #undef OGRE_HLMS_CREATOR_CLASS
 
-#include "OgreHeaderPrefix.h"
+#include <OgreHeaderPrefix.h>
 
 namespace Ogre
 {
@@ -260,6 +260,6 @@ namespace Ogre
 
 }
 
-#include "OgreHeaderSuffix.h"
+#include <OgreHeaderSuffix.h>
 
 #endif

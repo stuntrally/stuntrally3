@@ -1,11 +1,11 @@
-#include "OgreVector3.h"
 #include "pch.h"
 #include "Def_Str.h"
 #include "dbl.h"
 #include "Road.h"
 
-#include <OgreCamera.h>
 #include "Terra.h"
+#include <OgreCamera.h>
+#include <OgreVector3.h>
 #include <OgreSceneNode.h>
 #include <OgreMaterialManager.h>
 using namespace Ogre;

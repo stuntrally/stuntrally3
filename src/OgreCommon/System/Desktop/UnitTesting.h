@@ -26,13 +26,13 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 #pragma once
-#include "OgrePrerequisites.h"
+#include <OgrePrerequisites.h>
 
 #include "InputListeners.h"
 
-#include "OgreQuaternion.h"
-#include "OgreStringVector.h"
-#include "OgreVector3.h"
+#include <OgreQuaternion.h>
+#include <OgreStringVector.h>
+#include <OgreVector3.h>
 
 #include <stdint.h>
 

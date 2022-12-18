@@ -2,22 +2,22 @@
 #include "CHud.h"
 #include "CGui.h"
 #include "GuiCom.h"
-#include "OgreVector3.h"
+#include <OgreVector3.h>
 #include "CGame.h"
 #include "GraphicsSystem.h"
-#include "SDL_scancode.h"
+#include <SDL_scancode.h>
 
-#include "OgreLogManager.h"
-#include "OgreSceneManager.h"
-#include "OgreRoot.h"
-#include "OgreCamera.h"
-#include "OgreWindow.h"
+#include <OgreLogManager.h>
+#include <OgreSceneManager.h>
+#include <OgreRoot.h>
+#include <OgreCamera.h>
+#include <OgreWindow.h>
 
 #include "Terra/Terra.h"
-#include "OgreHlms.h"
-#include "OgreHlmsManager.h"
-#include "OgreGpuProgramManager.h"
-#include "OgreAtmosphere2Npr.h"
+#include <OgreHlms.h>
+#include <OgreHlmsManager.h>
+#include <OgreGpuProgramManager.h>
+#include <OgreAtmosphere2Npr.h>
 
 #include "game.h"  // snd
 #include "SoundMgr.h"
@@ -37,9 +37,9 @@
 #include "settings.h"
 
 #include "ICSInputControlSystem.h"
-#include "SDL_keycode.h"
-#include "MyGUI_ImageBox.h"
-#include "MyGUI_TabControl.h"
+#include <SDL_keycode.h>
+#include <MyGUI_ImageBox.h>
+#include <MyGUI_TabControl.h>
 #include <string>
 using namespace Ogre;
 using namespace std;

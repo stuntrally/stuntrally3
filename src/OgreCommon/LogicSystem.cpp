@@ -4,20 +4,20 @@
 #include "SdlInputHandler.h"
 #include "GameEntityManager.h"
 
-#include "OgreRoot.h"
-#include "OgreException.h"
-#include "OgreConfigFile.h"
+#include <OgreRoot.h>
+#include <OgreException.h>
+#include <OgreConfigFile.h>
 
-#include "OgreCamera.h"
+#include <OgreCamera.h>
 
-#include "OgreHlmsUnlit.h"
-#include "OgreHlmsPbs.h"
-#include "OgreHlmsManager.h"
-#include "OgreArchiveManager.h"
+#include <OgreHlmsUnlit.h>
+#include <OgreHlmsPbs.h>
+#include <OgreHlmsManager.h>
+#include <OgreArchiveManager.h>
 
 #include "Compositor/OgreCompositorManager2.h"
 
-#include "OgreOverlaySystem.h"
+#include <OgreOverlaySystem.h>
 
 #if OGRE_USE_SDL2
 	#include <SDL_syswm.h>

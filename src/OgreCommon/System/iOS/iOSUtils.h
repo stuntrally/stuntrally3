@@ -28,7 +28,7 @@ THE SOFTWARE.
 
 #import "System/iOS/iOSUtils.h"
 
-#include "OgreVector2.h"
+#include <OgreVector2.h>
 
 namespace Demo
 {
