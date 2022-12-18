@@ -94,9 +94,8 @@ public:
 	///  input  vars
 	bool alt =0, ctrl =0, shift =0;  // key modifiers  for FollowCamera move
 	bool mbLeft =0, mbRight =0, mbMiddle =0;  // mouse buttons
-	// int mMouseX =0, mMouseY =0;
 	bool mbWireFrame =0;
-	int iCurCam =0;
+	int iCurCam = 0;  // move
 	void CreateInputs();
 
 	///  input events  ----

@@ -310,7 +310,7 @@ void FollowCamera::Move( bool mbLeft, bool mbRight, bool mbMiddle, bool shift, R
 	if (!ca)  return;
 	fMoveTime = 0;
 	bool arena = ca->mType == CAM_Arena;
-	Real myH = my * -0.01, mzH = mz/120.f;
+	Real myH = my * -0.01, mzH = mz;
 	mx *= 0.005;  my *= 0.005;
 
 	if (shift && mbMiddle)

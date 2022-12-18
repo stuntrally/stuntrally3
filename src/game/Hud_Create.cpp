@@ -124,7 +124,8 @@ void CHud::Create()
 		h.ndMap = rt->createChildSceneNode();
 		h.moMap = new HudRenderable(sMat, scm, true, RV_Hud,RQG_Hud1, 1);
 		h.ndMap->attachObject(h.moMap);
-		asp = float(app->mWindow->getWidth()) / float(app->mWindow->getHeight());
+		const int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight() +10;  //+? why
+		const float asp = float(wx) / float(wy);
 		h.ndMap->setVisible(pSet->trackmap);
 
 		//  gauges  backgr  -----------
@@ -139,33 +140,32 @@ void CHud::Create()
 
 		///  GUI
 		//  gear  text  -----------
-		h.parent = app->mGui->createWidget<Widget>("", 0,0,
-			app->mWindow->getWidth(), app->mWindow->getHeight(),
+		h.parent = app->mGui->createWidget<Widget>("", 0,0,	wx, wy, //+?
 			Align::Left,"Back","main"+s);
 
 		if (cm->vType == V_Car)
 		{
 			h.bckGear = h.parent->createWidget<ImageBox>("ImageBox",
-				0,y, 70+14,86+12, Align::Left, "IGear"+s);
+				0,y, 65+14,90+12, Align::Left, "IGear"+s);
 			h.bckGear->setImageTexture("background2.jpg");
 			h.bckGear->setAlpha(0.6f);
 
 			h.txGear = h.parent->createWidget<TextBox>("TextBox",
-				0,y, 70,86, Align::Left, "Gear"+s);  h.txGear->setVisible(false);
+				0,y, 65,90, Align::Left, "Gear"+s);  h.txGear->setVisible(false);
 			h.txGear->setFontName("DigGear");  h.txGear->setFontHeight(106);  //par..
 			h.txGear->setTextShadowColour(Colour::Black);  h.txGear->setTextShadow(true);
 		}
 		
 		//  vel
 		h.bckVel = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 170+24,96+12, Align::Left, "IVel"+s);
+			0,y, 160+24,72+12, Align::Left, "IVel"+s);
 		h.bckVel->setImageTexture("background2.jpg");
 		h.bckVel->setAlpha(0.6f);
 		
 		// h.txVel = h.bckVel->createWidget<TextBox>("TextBox",
 			// 10,5, 360,96, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
 		h.txVel = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 170,96, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
+			0,y, 160,72, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
 		h.txVel->setFontName("DigGear");  //h.txVel->setFontHeight(64);
 		// h.txVel->setInheritsAlpha(false);
 		h.txVel->setTextShadowColour(Colour::Black);  h.txVel->setTextShadow(true);
@@ -354,7 +354,6 @@ void CHud::Create()
 			0,0, 300,30, Align::Left, "CamT"+s);
 		h.txCam->setFontName("hud.text");  h.txCam->setTextShadow(true);
 		h.txCam->setTextColour(Colour(0.65,0.85,0.85));
-		h.txCam->setCaption("Camera");//
 
 		//  todo:  input bars, accel G's  --------------
 		/*Img bar = tabitem->createWidget<ImageBox>("ImageBox",

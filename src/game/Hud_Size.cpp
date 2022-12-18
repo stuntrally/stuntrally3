@@ -152,9 +152,9 @@ void CHud::Size()
 			
 			h.txCountdown->setPosition((xMax-xMin)/2 -100, (yMax-yMin)/2 -60);
 
-			//  camera
+			//  camera info
 			if (h.txCam)
-				h.txCam->setPosition(xMax-260,yMax-30);
+				h.txCam->setPosition(xMax-260,yMax-10);
 			//  abs,tcs
 			// h.txAbs->setPosition(xMin+160,yMax-30);
 			// h.txTcs->setPosition(xMin+220,yMax-30);

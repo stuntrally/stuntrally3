@@ -123,8 +123,8 @@ void BaseApp::keyReleased(const SDL_KeyboardEvent& arg)
 
 void BaseApp::mouseMoved(const SDL_Event &arg)
 {
-	int mx = 0, my = 0, mz = 0;
-	int rx = 0, ry = 0, rz = 0;
+	int mx = 0, my = 0, mz = 0;  // abs
+	int rx = 0, ry = 0, rz = 0;  // rel
 
 	if (arg.type == SDL_MOUSEMOTION)
 	{
@@ -136,7 +136,7 @@ void BaseApp::mouseMoved(const SDL_Event &arg)
 	}
 	else if (arg.type == SDL_MOUSEWHEEL)
 	{
-		mz = arg.wheel.y;  rz = mz; //arg.wheel.yrel;
+		mz = arg.wheel.y;  rz = mz;
 	}
 
 	if (bAssignKey)  return;
@@ -147,14 +147,11 @@ void BaseApp::mouseMoved(const SDL_Event &arg)
 		return;
 	}
 
-	///  Follow Camera Controls
+	///  🎥 Follow Camera Controls
 	int i = 0;  //Log("cam: "+toStr(iCurCam));
 	for (auto it = carModels.begin(); it != carModels.end(); ++it,++i)
 		if (i == iCurCam && (*it)->fCam)
 			(*it)->fCam->Move( mbLeft, mbRight, mbMiddle, shift, rx, ry, rz );
-
-	// mMouseX = arg.x;
-	// mMouseY = arg.y;
 }
 
 void BaseApp::mousePressed( const SDL_MouseButtonEvent& arg, Uint8 id )
