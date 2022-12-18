@@ -93,15 +93,15 @@ compositor_node Tutorial_TerrainRenderingNode
 	{
 		pass clear
 		{
-			colour_value 0.1 0.2 0.3 1
+			colour_value  0.02 0.015 0.03 1
 		}
 
 		pass render_scene
 		{
 			load
 			{
-				all				clear
-				clear_colour	0.1 0.2 0.3 1
+				all			  clear
+				clear_colour  0.01 0.01 0.02 1
 			}
 			store
 			{

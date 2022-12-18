@@ -15,6 +15,7 @@ class App;  class Scene;  class WaterRTT;  class CData;  class SplineRoad;  clas
 class CScene
 {
 public:
+	//  🌟 ctor  ----
 	App* app = 0;
 	CScene(App* app1);
 	~CScene();
@@ -37,7 +38,7 @@ public:
 	//-----------------------------------
 	void CreateAllAtmo(), DestroyAllAtmo();
 
-	//  Sky ~
+	//  ⛅ Sky ~
 	Ogre::String sMeshSky;
 	Ogre::Item* itSky = 0;
 	// Ogre::ManualObject* moSky = 0;
@@ -45,25 +46,26 @@ public:
 	void CreateSkyDome(Ogre::String sMater, float yaw);
 	void DestroySkyDome(), UpdSky();
 
-	//  Sun *
+	//  🌞 Sun *
 	Ogre::Light* sun = 0;
 	Ogre::SceneNode *ndSun = 0;
 	void CreateSun(), DestroySun(), UpdSun();
 
-	//  Fog / Atmo
+	//  🌫️ Fog / Atmo
 	Ogre::Atmosphere2Npr* atmo = 0;
 	void CreateFog(), DestroyFog(), UpdFog(/*bool bForce=false*/);
 	
-	//  Weather :  rain, snow
+	//  🌧️ Weather :  rain, snow
 	Ogre::ParticleSystem *pr = 0, *pr2 = 0;
 	void CreateWeather(), DestroyWeather();
 	void UpdateWeather(Ogre::Camera* cam, float lastFPS = 60.f, float emitMul = 1.f);
 
-	//  Emitters
+
+	//  🔥 Emitters
 	void CreateEmitters(), DestroyEmitters(bool clear);
 
 
-	//  Fluids  water, mud
+	//  💧 Fluids  water, mud
 	//-----------------------------------
 	std::vector<Ogre::String/*MeshPtr*/> vFlSMesh, vFlSMesh2;
 	std::vector<Ogre::Item*> vFlIt;
@@ -71,11 +73,11 @@ public:
 	Ogre::SceneNode* mNdFluidsRoot =0;
 	void CreateFluids(), DestroyFluids(), CreateBltFluids();
 
-	// WaterRTT* mWaterRTT;
+	// WaterRTT* mWaterRTT;  // todo:
 	// void UpdateWaterRTT(Ogre::Camera* cam);
 
 
-	//  Road
+	//  🛣️ Road
 	//-----------------------------------
 	int rdCur = 0;  // cur
 	std::vector<SplineRoad*> roads;
@@ -86,21 +88,21 @@ public:
 	void DestroyRoads(), DestroyPace(), DestroyTrail();
 
 	
-	//  Vegetation
+	//  🌳🪨 Vegetation
 	//-----------------------------------
 	Ogre::Image2* imgRoad = 0;  int imgRoadSize = 0;
 	void LoadRoadDens(), DelRoadDens();
-	void SetTexWrap(Ogre::Item* it, bool wrap = true);
 
 	void CreateTrees(), DestroyTrees(), RecreateTrees(); //, updGrsTer(), UpdCamera();
 	int cntAll = 0;
 	std::vector<Ogre::Item*> vegetItems;
 	std::vector<Ogre::SceneNode*> vegetNodes;
-	//  Grass
+	
+	//  🌿 Grass
 	Grass* grass = 0;
 
 
-	///  Terrain
+	///  ⛰️ Terrain
 	//-----------------------------------
 	// PreviewTex texLayD[6],texLayN[6];  // layers
 	void CreateTerrain(bool bNewHmap=false, bool terLoad=true);
@@ -111,7 +113,7 @@ public:
 	// void SetupTerrain(), UpdTerErr();
 
 	
-	//  Blendmap, rtt
+	//  🏔️ Blendmap, rtt
 	//-----------------------------------
 	// void CreateBlendTex(), UpdBlendmap(), UpdLayerPars();
 	// void UpdGrassDens(), UpdGrassPars();
@@ -140,7 +142,7 @@ public:
 	RenderToTex blendRTT, angleRTT, grassDensRTT;*/
 
 
-	//  noise  -------
+	//  🌀 noise  -------
 	static float Noise(float x, float zoom, int octaves, float persistence);
 	static float Noise(float x, float y, float zoom, int octaves, float persistance);
 	//     xa  xb
@@ -156,4 +158,6 @@ public:
 		return 0.f;
 	}
 
+	//  util
+	void SetTexWrap(Ogre::Item* it, bool wrap = true);
 };

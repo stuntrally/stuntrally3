@@ -20,11 +20,11 @@ using namespace Ogre;
 
 
 
-///  create particle Emitters  : : : : : : : : 
+///  🔥 create particle Emitters  : : : : : : : : 
 //----------------------------------------------------------------------------------------------------------------------
 void CScene::CreateEmitters()
 {
-	LogO("---- create Emitters");
+	LogO("C--- create Emitters");
 	SceneNode* rt = app->mSceneMgr->getRootSceneNode(SCENE_DYNAMIC);
 	for (int i=0; i < sc->emitters.size(); ++i)
 	{
@@ -35,7 +35,7 @@ void CScene::CreateEmitters()
 		ParticleSystem* ps;
 		try
 		{	ps = app->mSceneMgr->createParticleSystem(em.name);
-			// LogO("---- create Emitter" + em.name);
+			// LogO("C--- create Emitter" + em.name);
 		}
 		catch (Exception& ex)
 		{
@@ -66,7 +66,7 @@ void SEmitter::UpdEmitter()
 
 void CScene::DestroyEmitters(bool clear)
 {
-	LogO("---- destroy Emitters");
+	LogO("D--- destroy Emitters");
 	for (int i=0; i < sc->emitters.size(); ++i)
 	{
 		SEmitter& em = sc->emitters[i];

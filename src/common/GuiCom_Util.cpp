@@ -435,5 +435,5 @@ void CGuiCom::CreateFonts()
 		mgr.addResource(font);
 	}
 
-	LogO("--- Font sizes:  "+inf);
+	LogO("---# Font sizes:  "+inf);
 }

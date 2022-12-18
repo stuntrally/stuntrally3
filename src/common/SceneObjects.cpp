@@ -41,7 +41,7 @@ using namespace std;
 
 
 
-///  Objects  ... .. . . .
+///  📦 Objects  ... .. . . .
 //----------------------------------------------------------------------------------------------------------------------
 class BulletWorldOffset : public btBulletWorldImporter
 {

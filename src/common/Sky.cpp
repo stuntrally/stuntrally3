@@ -34,7 +34,7 @@
 using namespace Ogre;
 
 
-
+//  🌟 all
 void CScene::CreateAllAtmo()
 {
 	CreateSun();
@@ -51,11 +51,11 @@ void CScene::DestroyAllAtmo()
 }
 
 
-//  Light
+//  💡 Light
 //-------------------------------------------------------------------------------------
 void CScene::CreateSun()
 {
-	LogO("---- create sun");
+	LogO("C--- create sun");
 	auto *mgr = app->mSceneMgr;
 	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 	
@@ -88,10 +88,11 @@ void CScene::DestroySun()
 }
 
 
-//  Fog / Atmosphere  ------------------------------------------------
+//  🌫️ Fog / Atmosphere
+//-------------------------------------------------------------------------------------
 void CScene::CreateFog()
 {
-	LogO("---- create Atmosphere");
+	LogO("C--- create Atmosphere");
 	auto *mgr = app->mSceneMgr;
 
 if (1)
@@ -110,7 +111,7 @@ if (1)
 
 void CScene::DestroyFog()
 {
-	LogO("---- destroy Atmosphere");
+	LogO("D--- destroy Atmosphere");
 	auto *mgr = app->mSceneMgr;
 
 	AtmosphereComponent *atm = mgr->getAtmosphereRaw();
@@ -144,13 +145,13 @@ void CScene::UpdFog()
 }
 
 
-//  Sky dome
+//  ⛅ Sky dome
 //-------------------------------------------------------------------------------------
 // void CScene::CreateSkyDome(String sMater, float sc, float yaw)
 void CScene::CreateSkyDome(String sMater, float yaw)
 {
 	if (itSky)  return;
-	LogO("---- create SkyDome");
+	LogO("C--- create SkyDome");
 	Vector3 scale = 15000 * Vector3::UNIT_SCALE;
 	// Vector3 scale = pSet->view_distance * Vector3::UNIT_SCALE * 0.7f;
 	
@@ -218,7 +219,7 @@ void CScene::CreateSkyDome(String sMater, float yaw)
 
 void CScene::DestroySkyDome()
 {
-	LogO("---- destroy SkyDome");
+	LogO("D--- destroy SkyDome");
 	auto *mgr = app->mSceneMgr;
 	MeshManager::getSingleton().remove(sMeshSky);
 	if (ndSky)
@@ -228,7 +229,7 @@ void CScene::DestroySkyDome()
 }
 
 
-//  Sun
+//  🌞 Sun
 //-------------------------------------------------------------------------------------
 void CScene::UpdSky()
 {
@@ -286,11 +287,11 @@ void CScene::UpdFog(bool bForce)
 #endif
 
 
-//  Weather  rain,snow
+//  🌧️ Weather  rain,snow
 //-------------------------------------------------------------------------------------
 void CScene::CreateWeather()
 {
-	LogO("---- create weather");
+	LogO("C--- create weather");
 	if (!pr && !sc->rainName.empty())
 	{	try
 		{	pr = app->mSceneMgr->createParticleSystem(sc->rainName);

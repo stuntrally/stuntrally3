@@ -5,19 +5,18 @@
 #include <OgreVector3.h>
 #include "half.hpp"
 // #include <OgrePrerequisites.h>  //
+
+class CAR;
 using Ogre::uchar;
 using Ogre::ushort;
-class CAR;
 using half_float::half;
 
 //  replay load log and check
 #define LOG_RPL
 
 
-//  NEW replays since 2.6
 //  variable header and frame sizes
 //----------------------------------------------------------------------------------------
-
 /// size of ReplayFrame2
 //= 202 Bytes per frame (minimal,approx)
 //  202 * 80 fps = 16.1 kB/s
@@ -50,7 +49,7 @@ struct ReplayHeader2
 };
 
 //  car data, for each simulation frame
-//--------------------------------------------
+//----------------------------------------------------------------------------------------
 enum eFlags {  b_braking=0, b_scrap, b_hit, b_fluid, b_hov };  // max 8
 
 //  wheel
@@ -84,6 +83,9 @@ struct RHit
 	Ogre::Vector3 vHitPos, vHitNorm;  // world hit data
 };  // 30B
 
+
+//  replay frame
+//----------------------------------------------------------------------------------------
 struct ReplayFrame2
 {
 	//dont use int, not portable
@@ -138,8 +140,9 @@ struct ReplayFrame2
 	//total: 50B + 4*38B = 202B min
 };
 
-//  Replay
-//--------------------------------------------
+
+//  📽️ Replay
+//----------------------------------------------------------------------------------------
 class Replay2
 {
 public:
@@ -174,8 +177,8 @@ private:
 };
 
 
-//  Rewind  only data for car sim, to rewind back
-//-----------------------------------------------------------------------------------------------------------
+//  ⏪ Rewind  only data for car sim, to rewind back
+//----------------------------------------------------------------------------------------
 struct RewindFrame
 {
 	//  time  since game start
@@ -188,7 +191,7 @@ struct RewindFrame
 };
 
 
-///  Rewind
+///  ⏪ Rewind
 //  to move car back in time, not saved in file, can have less frames than replay
 //--------------------------------------------
 class Rewind

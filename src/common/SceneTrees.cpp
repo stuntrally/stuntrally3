@@ -38,12 +38,12 @@ using namespace Ogre;
 
 
 //---------------------------------------------------------------------------------------------------------------
-///  Trees  ^ ^ ^ ^
+///  🌳🪨 Vegetation  ^ ^ ^ ^
 //---------------------------------------------------------------------------------------------------------------
 
 void CScene::DestroyTrees()
 {
-	LogO("---- destroy trees");
+	LogO("D--- destroy trees");
 
 	SceneManager *mgr = app->mSceneMgr;
 	for (auto node : vegetNodes)
@@ -53,8 +53,6 @@ void CScene::DestroyTrees()
 	for (auto item : vegetItems)
 		mgr->destroyItem(item);
 	vegetItems.clear();
-
-	//LogO("---- destroy trees done");
 }
 
 void CScene::RecreateTrees()
@@ -72,7 +70,7 @@ void CScene::RecreateTrees()
 
 void CScene::CreateTrees()
 {
-	LogO("# CreateTrees()");
+	LogO("C--- CreateTrees");
 	Ogre::Timer ti;
 	cntAll = 0;
 	// updGrsTer();
@@ -374,7 +372,7 @@ void CScene::DelRoadDens()
 	delete imgRoad;  imgRoad = 0;
 }
 
-#if 0
+#if 0  // old--
 	// sc min, max, dens, down
 	"jungle_tree-lod8.mesh",
 		3.0f, 5.0f, 20.f, -0.1f, 500, 0 ));  //  -v2 -l 10 -d 100 -p 11 jungle_tree.mesh

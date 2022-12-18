@@ -16,7 +16,7 @@ using Ogre::String;
 #endif
 
 
-//  get drivability, vehicle on track fitness
+//  📐 get drivability, vehicle on track fitness
 float CData::GetDrivability(std::string car, std::string trk, bool track_user)
 {
 	if (track_user)  return -1.f;  // unknown
@@ -78,7 +78,7 @@ bool CData::IsChallCar(const Chall* ch, std::string name)
 #endif
 
 
-//  Load all xmls
+//  📄📄 Load all xmls
 void CData::Load(std::map <std::string, int>* surf_map, bool check)
 {
 	//  common

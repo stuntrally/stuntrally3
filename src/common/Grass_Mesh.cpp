@@ -38,7 +38,7 @@ using namespace std;
 //---------------------------------------------------------
 void Grass::Create()
 {
-	LogO("---- Create Grass: ");
+	LogO("C--- Create Grass: ");
 	Timer ti;
 	if (!pSet || !scn || !terrain || !scn->imgRoad)
 		return;
@@ -362,7 +362,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 
 void Grass::Destroy()  // full
 {
-	LogO("---- Destroy Grass");
+	LogO("D--- Destroy Grass");
 	for (size_t i=0; i < gds.size(); ++i)
 	{
 		GrassData& gd = gds[i];
@@ -390,7 +390,7 @@ void Grass::Destroy()  // full
 	}
 	gds.clear();
 	// idStr = 0;
-	// LogO("---- road Destroyed");
+	// LogO("D--- road Destroyed");
 	// rs.empty = true;
 	// rs.lpos.clear();
 }

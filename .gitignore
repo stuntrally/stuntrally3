@@ -18,6 +18,7 @@ build/*
 Dependencies/*
 
 #  data
+*_tag.xml
 config
 #hud
 #gui

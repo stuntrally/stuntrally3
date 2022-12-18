@@ -35,12 +35,12 @@ using namespace MyGUI;
 
 
 ///---------------------------------------------------------------------------------------------------------------
-///  HUD create
+///  ⏱️ HUD create
 ///---------------------------------------------------------------------------------------------------------------
 
 void CHud::Create()
 {
-	LogO("---- Create Hud");
+	LogO("C--- Create Hud");
 	//Destroy();  //
 	if (app->carModels.size() == 0)  return;
 
@@ -55,7 +55,7 @@ void CHud::Create()
 		
 	//  minimap from road img
 	int plr = 1; //app->mSplitMgr->mNumViewports;  // pSet->game.local_players;
-	//; LogO("---- Create Hud  plrs="+toStr(plr));
+	//; LogO("C--- Create Hud  plrs="+toStr(plr));
 	asp = 1.f;
 
 #if 0

@@ -407,7 +407,7 @@ void BaseApp::baseInitGui(GraphicsSystem *mGraphicsSystem)
 
 	if (mPlatform)
 		return;
-	LogO("::: Init MyGui");
+	LogO("C::# Init MyGui");
 
 	using namespace MyGUI;
 	//  Gui
@@ -507,7 +507,7 @@ void BaseApp::baseInitGui(GraphicsSystem *mGraphicsSystem)
 	imgLoad->setImageTexture("background2.png");
 	imgLoad->setVisible(true);
 
-	LogO("--- baseSizeGui");
+	LogO("---- baseSizeGui");
 	baseSizeGui();
 }
 
@@ -552,7 +552,7 @@ void BaseApp::baseSizeGui()
 
 void BaseApp::DestroyGui()
 {
-	LogO("::: Destroy MyGui");
+	LogO("D::# Destroy MyGui");
 	if (mGui)
 	{	mGui->shutdown();  delete mGui;  mGui = 0;  }
 	if (mPlatform)

@@ -1,10 +1,10 @@
 #pragma once
 // #include <Ogre.h>
 // #include <OgreVector2.h>
-// #include <OgreVector3.h>
+#include <OgreVector3.h>
 // #include <OgreQuaternion.h>
 // #include <OgreVector4.h>
-// #include <OgreMatrix4.h>
+#include <OgreMatrix4.h>
 #include <OgrePrerequisites.h>
 #include <OgreColourValue.h>
 #include "mathvector.h"
@@ -13,12 +13,12 @@
 #include "CarPosInfo.h"
 
 namespace Ogre {  class HlmsPbsDatablock;
-	// class SceneNode;  class Terra;  class Camera;  class SceneManager;
-	// class ParticleSystem;  class Item;  class ManualObject;  class AxisAlignedBox;  
-	/*namespace v1 {	class RibbonTrail;  class BillboardSet;  }*/  }
-// namespace MyGUI {  class TextBox;  }
-class SETTINGS;  class GAME;  class CAR;
-class Scene;  class App;  class FollowCamera;  class CarReflection;
+	class SceneNode;  class Camera;  class SceneManager;  //class Terra;  
+	class ParticleSystem;  class Item;  //class ManualObject;  class AxisAlignedBox;  
+	namespace v1 {  class RibbonTrail;  class BillboardSet;  }  }
+namespace MyGUI {  class TextBox;  }
+class SETTINGS;  class GAME;  class CAR;  // vdrift
+class Scene;  class App;  class FollowCamera;  //class CarReflection;
 
 
 //  CarModel is the "Ogre" part of a vehicle.
@@ -55,12 +55,13 @@ public:
 	GAME* pGame =0;
 	SETTINGS* pSet =0;
 	Scene* sc =0;
+	//  🟢 Ogre
 	Ogre::Camera* mCamera =0;
 	Ogre::SceneManager* mSceneMgr =0;
 
 
 	Ogre::String sDispName;  // diplay name in opponents list (nick for CT_REMOTE)
-	// MyGUI::TextBox* pNickTxt =0;  // multiplayer nick above car
+	// MyGUI::TextBox* pNickTxt =0;  // multiplayer 3d nick above car
 
 	bool updTimes = true, updLap = true;
 	float fLapAlpha = 1.f;

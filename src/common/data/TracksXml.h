@@ -17,7 +17,7 @@ struct Date
 };
 
 
-//  Track's additional info
+//  🏞️ Track's additional info
 //  shown on gui [Track] tab, in detailed view
 //  for sorting by date, difficulty, etc.
 //--------------------------------------------------------------------
@@ -40,7 +40,6 @@ public:
 	bool test =0, testC =0;  // starts with Test.. or TestC..
 };
 
-
 //  all tracks infos
 //.................................
 class TracksXml
@@ -51,14 +50,14 @@ public:
 	std::map<std::string, float> times;  // track times
 	
 	int cntAll =0;
-	bool LoadIni(std::string file, bool check);
+	bool LoadIni(std::string file, bool check=false);
 };
 
 
 //  user Track's info
 //  rating, stats todo: not used yet ..
 //-------------------------------------
-class UserTrkInfo
+/*class UserTrkInfo
 {
 public:
 	std::string name;
@@ -66,7 +65,6 @@ public:
 	Date last;  // driven
 	int laps =0;
 };
-
 
 //  user xml (tracks)
 class UserXml
@@ -76,10 +74,10 @@ public:
 	std::map<std::string, int> trkmap;  // 0 if not found
 	
 	bool LoadXml(std::string file), SaveXml(std::string file);
-};
+};*/
 
 
-//  Car's additional info  (all Car = Vehicle)
+//  🚗 Car's additional info  (all Car = Vehicle)
 //  shown on gui [Car] tab, in detailed view
 //  for sorting by speed, type, etc.
 //--------------------------------------------------------------------
@@ -100,7 +98,6 @@ public:
 	float easy = 0.96f, norm = 1.f;
 };
 
-
 //  all cars infos
 //.................................
 class CarsXml
@@ -115,14 +112,13 @@ public:
 };
 
 
-//  car colors.ini  for Gui
+//  🎨 car colors.ini  for Gui
 //--------------------------------------------------------------------
 class CarColor
 {
 public:
 	float hue, sat, val, gloss, metal, rough;
 };
-
 
 //  all colors
 class ColorsXml
@@ -135,7 +131,7 @@ public:
 };
 
 
-//  Reverb presets on sceneries  ed combo
+//  🔉 Reverb presets on sceneries  ed combo
 //--------------------------------------------------------------------
 struct ReverbSet
 {

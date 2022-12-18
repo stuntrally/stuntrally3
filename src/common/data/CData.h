@@ -43,7 +43,7 @@ public:
 		ChallXml* chall;  //ProgressLXml progressL[2];
 	#endif
 
-	//  get drivability, vehicle on track fitness
+	//  📐 get drivability, vehicle on track fitness
 	float GetDrivability(std::string car, std::string trk, bool track_user);
 	#ifndef SR_EDITOR
 		bool IsChallCar(const Chall* ch, std::string name);

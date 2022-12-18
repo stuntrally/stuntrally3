@@ -10,6 +10,7 @@ namespace ICS {  class InputControlSystem;  class DetectingBindingListener;  }
 namespace MyGUI{  class Ogre2Platform;  }
 namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class Window;  }
 // class MasterClient;  class P2PGameClient;
+class CarModel;  class SETTINGS;
 
 
 //  main, race menus
@@ -26,11 +27,6 @@ enum LobbyState  {  DISCONNECTED, HOSTING, JOINED  };
 class BaseApp : public BGui, public GameState
 	// public Ogre::FrameListener, public SFO::WindowListener
 {
-	friend class CarModel;
-	friend class CGame;
-	friend class CHud;
-	friend class CGui;
-
 public:
 	BaseApp();
 	virtual ~BaseApp();
@@ -40,7 +36,7 @@ public:
 	
 	//  🚗 Cars / vehicles
 	//  is in BaseApp for camera mouse move
-	typedef std::vector<class CarModel*> CarModels;
+	typedef std::vector<CarModel*> CarModels;
 	CarModels carModels;
 	
 	void showMouse(), hideMouse(), updMouse();
@@ -49,7 +45,7 @@ public:
 	// void recreateCompositor();
 	// bool AnyEffectEnabled();
 
-	class SETTINGS* pSet =0;
+	SETTINGS* pSet =0;
 
 	//  wnd, hud, upl
 	bool bWindowResized =1, bSizeHUD =1, bRecreateHUD =0;
@@ -142,7 +138,7 @@ public:
 	void SetLoadingBar(float pecent);
 
 
-	///  main menu  // pSet->inMenu
+	///  🪧 main menu  // pSet->inMenu
 	WP mWndMainPanels[ciMainBtns] ={0,}, mWndRacePanels[ciRaceBtns] ={0,};
 	Btn mWndMainBtns[ciMainBtns]  ={0,}, mWndRaceBtns[ciRaceBtns]   ={0,};
 

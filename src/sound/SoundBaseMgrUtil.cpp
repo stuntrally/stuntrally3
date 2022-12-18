@@ -264,7 +264,7 @@ ALuint SoundBaseMgr::LoadEffect(const REVERB_PRESET* r)
 	alGenEffects(1, &e);
 	if (alGetEnumValue("AL_EFFECT_EAXREVERB") != 0)
 	{
-		LogO("@  Using EAX Reverb");
+		LogO("@ @  Using EAX Reverb");
 		alEffecti(e, AL_EFFECT_TYPE, AL_EFFECT_EAXREVERB);
 		alEffectf(e, AL_EAXREVERB_DENSITY, r->flDensity);
 		alEffectf(e, AL_EAXREVERB_DIFFUSION, r->flDiffusion);
@@ -290,7 +290,7 @@ ALuint SoundBaseMgr::LoadEffect(const REVERB_PRESET* r)
 		alEffectf(e, AL_EAXREVERB_ROOM_ROLLOFF_FACTOR, r->flRoomRolloffFactor);
 		alEffecti(e, AL_EAXREVERB_DECAY_HFLIMIT, r->iDecayHFLimit);
 	}else{
-		LogO("@  Using Standard Reverb");
+		LogO("@ @  Using Standard Reverb");
 		alEffecti(e, AL_EFFECT_TYPE, AL_EFFECT_REVERB);
 		alEffectf(e, AL_REVERB_DENSITY, r->flDensity);
 		alEffectf(e, AL_REVERB_DIFFUSION, r->flDiffusion);

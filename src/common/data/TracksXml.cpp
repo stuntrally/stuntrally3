@@ -2,7 +2,7 @@
 #include "Def_Str.h"
 #include "TracksXml.h"
 #include "pathmanager.h"
-// #include "ReplayTrk.h"  // check
+#include "ReplayTrk.h"  // check
 // #include "CHud.h"  // StrTime
 #include "tinyxml.h"
 #include "tinyxml2.h"
@@ -24,10 +24,9 @@ string dt2s(const Date& dt)
 }
 
 
-///  User Load
+///  User Load  ..not used
 ///------------------------------------------------------------------------------------
-
-bool UserXml::LoadXml(string file)
+/*bool UserXml::LoadXml(string file)
 {
 	XMLDocument doc;
 	XMLError e = doc.LoadFile(file.c_str());
@@ -58,10 +57,8 @@ bool UserXml::LoadXml(string file)
 	return true;
 }
 
-
 ///  User Save
 ///------------------------------------------------------------------------------------
-
 bool UserXml::SaveXml(string file)
 {
 	TiXmlDocument xml;	TiXmlElement root("tracks");
@@ -80,12 +77,11 @@ bool UserXml::SaveXml(string file)
 	}
 	xml.InsertEndChild(root);
 	return xml.SaveFile(file.c_str());
-}
+}*/
 
 
-//  Load
 //--------------------------------------------------------------------------------------------------------------------------------------
-//  Load Ini
+//  🏞️ Load  tracks.ini 📄
 //--------------------------------------------------------------------------------------------------------------------------------------
 bool TracksXml::LoadIni(string file, bool check)
 {
@@ -171,7 +167,7 @@ bool TracksXml::LoadIni(string file, bool check)
 	
 	///  *  checks and  Log sceneries with stats  *
 	//--------------------------------------------------------------
-	/*if (check)
+	if (check)
 	{
 		LogO("))) Checking: tracks.ini");
 		i=1;  int c,n, nn = trks.size()-1;
@@ -236,16 +232,15 @@ bool TracksXml::LoadIni(string file, bool check)
 				LogO("!! Track not in ini: " + s);
 		}
 		LogO("");
-	}*/
+	}
 	return true;
 }
 //--------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-///  Load  cars.xml
+///  🚗 Load  cars.xml 📄
 //-------------------------------------------------------------------------------------
-
 bool CarsXml::LoadXml(string file)
 {
 	XMLDocument doc;
@@ -321,8 +316,7 @@ bool CarsXml::LoadXml(string file)
 }
 
 
-
-//  Load car colors.ini
+//  🎨 Load car colors.ini 📄
 //--------------------------------------------------------------------------------------------------------------------------------------
 bool ColorsXml::LoadIni(string file)
 {
@@ -359,9 +353,8 @@ bool ColorsXml::LoadIni(string file)
 }
 
 
-///  Load  reverbs.xml
+///  🔉 Load  reverbs.xml 📄
 //-------------------------------------------------------------------------------------
-
 bool ReverbsXml::LoadXml(string file)
 {
 	XMLDocument doc;

@@ -1,14 +1,11 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "CGame.h"
+#include "CScene.h"
+#include "SceneXml.h"
 #include "GraphicsSystem.h"
-#include <OgreLogManager.h>
 
-#include <OgreSceneManager.h>
 #include <OgreRoot.h>
-#include <OgreCamera.h>
-#include <OgreWindow.h>
-
 #include <OgreFrameStats.h>
 #include <OgreTextureGpuManager.h>
 #include "Vao/OgreVaoManager.h"
@@ -17,23 +14,15 @@
 #include <OgreOverlay.h>
 #include <OgreOverlayContainer.h>
 #include <OgreTextAreaOverlayElement.h>
-
 #include <OgreAtmosphere2Npr.h>
-
-#include "game.h"  // snd
-#include "SoundMgr.h"
-#include "CarModel.h"
-#include "CScene.h"
-#include "SceneXml.h"
-#include "TracksXml.h"
-#include "CData.h"
 
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>
 using namespace Ogre;
 
 
-//  stat colors
+//  Fps, stat colors 🌈
+//-----------------------------------------------------------------------------------
 const int iClrVal = 8;
 const String sClrVal[iClrVal] =  // long
 	{"#A0C0FF", "#20A0FF", "#10FFFF", "#10FF10", "#FFFF20", "#FFC010", "#FF8010", "#FF1010"};
@@ -53,8 +42,8 @@ String cvsI(int v, int grn, int red, int width=4)
 }
 
 
-//  Fps stats
-//------------------------------------------------------------------------------------------------
+//  📈 Fps stats
+//-----------------------------------------------------------------------------------
 void App::updFpsText()
 {
 	RenderSystem *rs = mGraphicsSystem->getRoot()->getRenderSystem();
@@ -86,7 +75,9 @@ void App::updFpsText()
 	txFps->setCaption(txt);
 }
 
-//  GPU RAM mem
+
+//  util  GPU RAM mem
+//-----------------------------------------------------------------------------------
 float App::getGPUmem()
 {
 	RenderSystem *rs = mGraphicsSystem->getRoot()->getRenderSystem();
@@ -133,6 +124,7 @@ float App::getGPUmem()
 	return float( totalB / BtoMB ); // MB
 	//return float( 1.f/1024.f * totalB / BtoMB);  // GB
 }
+
 
 //  text overlay-
 //------------------------------------------------------------------------------------------------
@@ -214,7 +206,7 @@ void App::CreateDebugTextOverlay()
 {
 	return;  // todo: move to Gui..
 
-	LogO("---- create overlay");
+	LogO("C--- create overlay");
 	Ogre::v1::OverlayManager &mgr = Ogre::v1::OverlayManager::getSingleton();
 	Ogre::v1::Overlay *overlay = mgr.create( "DebugText" );
 
@@ -249,7 +241,7 @@ void keyReleased( const SDL_KeyboardEvent &arg )
 	}
 	else if( arg.keysym.scancode == SDL_SCANCODE_F1 && (arg.keysym.mod & (KMOD_LCTRL|KMOD_RCTRL)) )
 	{
-		//Hot reload of shaders.
+		// Hot reload of shaders.
 		Ogre::Root *root = mGraphicsSystem->getRoot();
 		Ogre::HlmsManager *hlmsManager = root->getHlmsManager();
 
@@ -261,7 +253,7 @@ void keyReleased( const SDL_KeyboardEvent &arg )
 	}
 	else if( arg.keysym.scancode == SDL_SCANCODE_F5 && (arg.keysym.mod & (KMOD_LCTRL|KMOD_RCTRL)) )
 	{
-		//Force device reelection
+		// Force device reelection
 		Ogre::Root *root = mGraphicsSystem->getRoot();
 		root->getRenderSystem()->validateDevice( true );
 	}

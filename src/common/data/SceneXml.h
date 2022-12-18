@@ -2,18 +2,12 @@
 #include "SColor.h"
 #include "SceneClasses.h"
 
-#include <Ogre.h>
-// #include <OgreCommon.h>
-// #include <OgreVector2.h>
-// #include <OgreVector3.h>
-// #include <OgreVector4.h>
-// #include <OgreColourValue.h>
-// #include <OgreQuaternion.h>
+#include <OgreString.h>
+#include <OgreVector3.h>
 #include "mathvector.h"
 #include "quaternion.h"
 
-namespace Ogre {  class SceneNode;  class Entity;  class ParticleSystem;  }
-namespace Forests {  class GrassLayer;  }
+class GAME;  class ReverbsXml;  class FluidsXml;
 
 
 ///  Scene setup xml
@@ -22,7 +16,7 @@ class Scene
 {
 public:
 
-	//  car start pos
+	//  🏁 car start pos
 	MATHVECTOR <float,3> startPos[2];  // [1] is end for not looped, and start for reversed
 	QUATERNION <float>   startRot[2];
 	std::pair <MATHVECTOR<float,3>, QUATERNION<float>> GetStart(int index, bool looped);
@@ -31,14 +25,14 @@ public:
 	Ogre::Vector3 camPos,camDir;
 
 
-	//  Sky  ()
+	//  ⛅ Sky  ()
 	Ogre::String skyMtr;  float skyYaw;
 	int  rainEmit,rain2Emit;  Ogre::String rainName,rain2Name;
-	//  Light
-	float ldPitch, ldYaw;  // sun dir angles
+	//  🌞 Sun, Light
+	float ldPitch, ldYaw;  // dir angles
 	SColor lAmb,lDiff,lSpec;
 
-	//  Fog
+	//  🌫️ Fog
 	float fogStart, fogEnd;  // lin range
 	SColor fogClr,fogClr2;  // 2colors sun-away  .a = intensity
 
@@ -57,29 +51,29 @@ public:
 	float gravity;  // 9.81
 	
 
-	//  sound  <)
+	//  🔉 sound
 	std::string sAmbient, sReverbs;  void UpdRevSet();
 	struct RevSet  // copy from ReverbSet, name = sReverbs, from base if ""
 	{	std::string descr,
 			normal, cave, cavebig, pipe, pipebig, influid;
 	} revSet;
-	class ReverbsXml* pReverbsXml;  //! set this after Load
+	ReverbsXml* pReverbsXml =0;  //! set this after Load
 	
 
-	//  particle types
+	//  ⚫💭  wheel particle types
 	Ogre::String  sParDust, sParMud, sParSmoke;
 	
-	///  Terrain  ----
+	///  ⛰️ Terrain  ----
 	TerData td;
 
 	
-	///  Vegetation params  --------
+	///  🌳🪨  Vegetation params  --------
 	float densTrees, densGrass;  int grDensSmooth;
 	float grPage, grDist;
 	float trPage, trDist, trDistImp;
 	int trRdDist;  // dist from road to trees
 
-	//  grass layers  paged
+	//  🌿 grass layers  paged
 	const static int ciNumGrLay = 6;  // all, for edit
 	SGrassLayer grLayersAll[ciNumGrLay];
 	SGrassChannel grChan[4];
@@ -91,15 +85,15 @@ public:
 	void UpdPgLayers();
 
 	
-	//  Fluids  ~~~
+	//  💧 Fluids  ~~~
 	std::vector<FluidBox> fluids;
-	class FluidsXml* pFluidsXml;  //! set this after Load
+	FluidsXml* pFluidsXml =0;  //! set this after Load
 	float GetDepthInFluids(Ogre::Vector3 pos);
 	
-	//  Objects  []o
+	//  📦 Objects  []o
 	std::vector<Object> objects;
 
-	//  Particles  Emitters  ::
+	//  🔥 Particles  Emitters  ::
 	std::vector<SEmitter> emitters;
 
 
@@ -108,10 +102,11 @@ public:
 	int secEdited;  // time in seconds of track editing
 
 	
-	//  Main methods  ----
-	Scene();  void Default();
+	//  🌟 Main methods  ----
+	Scene();
+	void Default();
 	void UpdateFluidsId(), UpdateSurfId();
 
-	class GAME* pGame;  // for all surfaces by name
+	GAME* pGame =0;  // for all surfaces by name
 	bool LoadXml(Ogre::String file, bool bTer = true), SaveXml(Ogre::String file);
 };

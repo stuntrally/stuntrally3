@@ -315,7 +315,7 @@ void SplineEdit::AddPipe(Real relP)    ///  Pipe
 
 //  toggle
 
-void SplineEdit::ToggleOnTerrain()   ///  On Ter
+void SplineEdit::ToggleOnTerrain()   ///  ⛰️ On Ter
 {
 	if (!vSel.empty()) {  // sel
 		for (auto it = vSel.begin(); it != vSel.end(); ++it)
@@ -344,7 +344,7 @@ void SplineEdit::ToggleColumn()      ///  Column
 	Move(Vector3::ZERO);
 }
 
-void SplineEdit::ToggleOnPipe(bool old)  ///  On Pipe  (old for stats only,  new also flips normal)
+void SplineEdit::ToggleOnPipe(bool old)  ///  ⭕ On Pipe  (old for stats only,  new also flips normal)
 {
 	#define onp(o)  old ? (o ? 0 : 1) : (o ? 0 : 2)
 	
@@ -373,7 +373,7 @@ void SplineEdit::ToggleNotReal()  ///  Not Real  (not drivable road)
 	mP[iChosen].notReal = !mP[iChosen].notReal;
 }
 
-void SplineEdit::ChgLoopType(int rel)   ///  Loop type,  (camera change on chk, pacenotes)
+void SplineEdit::ChgLoopType(int rel)   ///  ➰ Loop type,  (camera change on chk, pacenotes)
 {
 	if (!vSel.empty()) {  // sel
 		for (auto it = vSel.begin(); it != vSel.end(); ++it)
