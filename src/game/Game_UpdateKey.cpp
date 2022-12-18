@@ -1,48 +1,16 @@
 #include "pch.h"
-#include "CHud.h"
+#include "Def_Str.h"
+#include "settings.h"
 #include "CGui.h"
-#include "GuiCom.h"
 #include "CGame.h"
-#include "GraphicsSystem.h"
-#include <SDL_scancode.h>
-#include <OgreLogManager.h>
-
-#include <OgreSceneManager.h>
-#include <OgreRoot.h>
-#include <OgreCamera.h>
-#include <OgreVector3.h>
-#include <OgreWindow.h>
-
-#include "Terra/Terra.h"
-#include <OgreHlms.h>
-#include <OgreHlmsManager.h>
-#include <OgreGpuProgramManager.h>
-
-#include <OgreAtmosphere2Npr.h>
-
-#include "game.h"  // snd
-#include "SoundMgr.h"
-#include "CarPosInfo.h"
+#include "game.h"
 #include "CarModel.h"
 #include "FollowCamera.h"
-#include "carcontrolmap_local.h"
-#include "CInput.h"
-#include "Road.h"
-
-#include "Def_Str.h"
-#include "CScene.h"
-#include "SceneXml.h"
-#include "TracksXml.h"
-#include "CData.h"
-#include "SceneClasses.h"
-#include "settings.h"
-
 #include "ICSInputControlSystem.h"
+#include <SDL_scancode.h>
 #include <SDL_keycode.h>
-#include <OgreHlmsCommon.h>
 #include <MyGUI_ImageBox.h>
-#include <MyGUI_TabControl.h>
-#include <string>
+#include <MyGUI_TextBox.h>
 using namespace Ogre;
 using namespace std;
 
@@ -163,7 +131,7 @@ void App::keyPressed( const SDL_KeyboardEvent &arg )
 
 	//###  restart game, new track or car
 	case key(F5):
-	case key(RETURN):
+	case key(RETURN)://
 	case key(KP_ENTER):
 		NewGame(shift);  return;
 
@@ -191,24 +159,16 @@ void App::keyPressed( const SDL_KeyboardEvent &arg )
 	}	return;
 
 
-	//**  wireframe toggle
+	//  wireframe
 	case key(F10):
-	{
-		wireTerrain = !wireTerrain;
-		SetWireframe( HLMS_PBS, wireTerrain );  // 3d all
-		// SetWireframe( HLMS_UNLIT, wireTerrain );  // 2d particles, Gui
-		SetWireframe( HLMS_USER3, wireTerrain );  // terrain
-	}   break;
+		gui->ckWireframe.Invert();
+		break;
 
+	//  Fps
 	case key(F11):
-		gui->ckFps.Invert();  break;
-
-	//  sky
-	case key(F8):  
-		if (scn->ndSky)
-			scn->DestroySkyDome();
-		else
-			scn->CreateSkyDome("sky-clearday1", 0.f);
+		gui->ckFps.Invert();
+		bckFps->setVisible(pSet->show_fps);
+		txFps->setVisible(pSet->show_fps);
 		break;
 	}
 }
@@ -241,7 +201,7 @@ void App::keyReleased( const SDL_KeyboardEvent &arg )
 	case key(KP_MULTIPLY):  mKeys[2] = 0;  break;
 	case key(KP_DIVIDE):    mKeys[3] = 0;  break;
 
-	case key(F4):
+	/*case key(F4):
 	if (arg.keysym.mod & (KMOD_LCTRL|KMOD_RCTRL))
 	{
 		// Hot reload of Terra shaders
@@ -251,7 +211,7 @@ void App::keyReleased( const SDL_KeyboardEvent &arg )
 		Hlms *hlms = hlmsManager->getHlms( HLMS_USER3 );
 		GpuProgramManager::getSingleton().clearMicrocodeCache();
 		hlms->reloadFrom( hlms->getDataFolder() );
-	}   break;
+	}   break;*/
 	}
 }
 

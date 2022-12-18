@@ -41,11 +41,8 @@ public:
 
 	GraphicsSystem      *mGraphicsSystem =0;
 private:
-	//  wireframe
-	Ogre::HlmsMacroblock macroblockWire;
-	bool wireTerrain = false;
 
-	//  Fps overlay
+	//  📈 Fps overlay
 	void updDebugText();
 	void updFpsText();  float getGPUmem();
 
@@ -98,7 +95,7 @@ public:
 	//; void GetTerMtrIds();  // todo:
 
 
-	//  🛠 Util  ----
+	//  ⛓️ Util  ----
 	template <typename T, size_t MaxNumTextures>
 	void unloadTexturesFromUnusedMaterials( Ogre::HlmsDatablock *datablock,
 											std::set<Ogre::TextureGpu *> &usedTex,
@@ -126,7 +123,7 @@ public:
 	
 	GAME* pGame =0;
 
-	//  Ogre base
+	//  🟢 Ogre base
 	Ogre::Root* mRoot =0;
 	Ogre::Camera* mCamera =0;
 	Ogre::SceneManager* mSceneMgr =0;

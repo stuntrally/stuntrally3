@@ -331,18 +331,12 @@ void CGui::chkWireframe(Ck*)
 {
 	bool b = app->mbWireFrame;
 	
-	///  Set for all cameras
-	PolygonMode mode = b ? PM_WIREFRAME : PM_SOLID;
+	app->SetWireframe( HLMS_PBS, b );  // 3d all
+	// SetWireframe( HLMS_UNLIT, b );  // 2d particles, Gui
+	app->SetWireframe( HLMS_USER3, b );  // terrain
 	
-	// app->refreshCompositor(b);  // disable effects
-
-	/*if (app->mSplitMgr)
-	for (auto* cam : app->mSplitMgr->mCameras)
-		cam->setPolygonMode(mode);
-	
-	if (app->ndSky)
-		app->ndSky->setVisible(!b);  // hide sky
-	*/
+	// if (app->ndSky)
+	// 	app->ndSky->setVisible(!b);  // hide sky-
 }
 
 //  HUD

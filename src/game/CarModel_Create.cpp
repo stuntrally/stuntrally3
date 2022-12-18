@@ -9,36 +9,34 @@
 #include "CGame.h"
 #include "CGui.h"
 #include "CarModel.h"
-// #include "SplitScreen.h"
 #include "FollowCamera.h"
-// #include "CarReflection.h"
-// #include "Road.h"
 // #include "gameclient.hpp"
 
-#include <OgreQuaternion.h>
-#include <OgreVector3.h>
-#include <OgreException.h>
-#include <OgreEntity.h>
+#include <Ogre.h>
+// #include <OgreVector3.h>
+// #include <OgreException.h>
+// #include <OgreEntity.h>
 #include <OgreItem.h>
+#include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 
 // #include <OgreManualObject.h>
 #include <OgreSubMesh2.h>
 #include <OgreMesh2.h>
 
-#include <OgreMaterialManager.h>
-#include <OgreResourceGroupManager.h>
+// #include <OgreMaterialManager.h>
+// #include <OgreResourceGroupManager.h>
 
-#include <OgreParticleSystem.h>
-#include <OgreParticleEmitter.h>
-#include <OgreParticleAffector.h>
-#include <OgreRibbonTrail.h>
-#include <OgreBillboardSet.h>
-#include <OgreBillboardChain.h>
+// #include <OgreParticleSystem.h>
+// #include <OgreParticleEmitter.h>
+// #include <OgreParticleAffector.h>
+// #include <OgreRibbonTrail.h>
+// #include <OgreBillboardSet.h>
+// #include <OgreBillboardChain.h>
 
-#include <OgreHlmsPbs.h>
+// #include <OgreHlmsPbs.h>
 #include <OgreHlmsPbsDatablock.h>
-#include <OgreMaterialManager.h>
+// #include <OgreMaterialManager.h>
 
 // #include <MyGUI_Gui.h>
 // #include <MyGUI_TextBox.h>
@@ -47,128 +45,7 @@ using namespace std;
 #define  FileExists(s)  PATHMANAGER::FileExists(s)
 
 
-//  🌟 ctor
-//------------------------------------------------------------------------------------------------------
-CarModel::CarModel(int index, int colorId, eCarType type, const string& name,
-	SceneManager* sceneMgr, SETTINGS* set, GAME* game, Scene* s,
-	Camera* cam, App* app)
-
-	:mSceneMgr(sceneMgr), pSet(set), pGame(game)
-	,sc(s), mCamera(cam), pApp(app)
-	,iIndex(index), iColor(colorId % 6), sDirname(name), cType(type), vType(V_Car)
-	
-	,color(0,1,0)
-	,sChkMtr("checkpoint_normal")
-{
-	SetNumWheels(4);
-	int i,w;
-	for (w = 0; w < MAX_WHEELS; ++w)
-	for (int p=0; p < PAR_ALL; ++p)
-		par[p][w] = 0;
-
-	for (i=0; i < PAR_BOOST; ++i)  parBoost[i] = 0;
-	for (i=0; i < PAR_THRUST*2; ++i)  parThrust[i] = 0;
-	parHit = 0;
-
-	qFixWh[0].Rotate(2*PI_d,0,0,1);
-	qFixWh[1].Rotate(  PI_d,0,0,1);
-
-	Defaults();
-}
-
-void CarModel::SetNumWheels(int n)
-{
-	numWheels = n;
-	whPos.resize(n);  whRadius.resize(n);  whWidth.resize(n);
-	whTrail.resize(n);  whTemp.resize(n);
-	ndWh.resize(n);  ndWhE.resize(n);  ndBrake.resize(n);
-}
-
-void CarModel::Defaults()
-{
-	int i,w;
-	for (i=0; i < 3; ++i)
-	{
-		driver_view[i] = 0.f;  hood_view[i] = 0.f;  ground_view[i] = 0.f;
-		interiorOffset[i] = 0.f;  boostOffset[i] = 0.f;  exhaustPos[i] = 0.f;
-	}
-	camDist = 1.f;
-	for (i=0; i < PAR_THRUST; ++i)
-	{
-		for (w=0; w<3; ++w)  thrusterOfs[i][w] = 0.f;
-		thrusterSizeZ[i] = 0.f;
-		sThrusterPar[i] = "";
-	}
-	brakePos.clear();
-	brakeClr = ColourValue(1,0,0);
-	brakeSize = 0.f;
-
-	bRotFix = false;
-	sBoostParName = "Boost";  boostSizeZ = 1.f;
-
-	for (w=0; w < numWheels; ++w)
-	{
-		whRadius[w] = 0.3f;  whWidth[w] = 0.2f;
-	}
-	manualExhaustPos = false;  has2exhausts = false;
-
-	maxangle = 26.f;
-	for (w=0; w < 2; ++w)
-		posSph[w] = Vector3::ZERO;
-
-	matStPos = Matrix4::IDENTITY;
-	vStDist = Vector4(0,0,0,0);
-}
-
-
-//  Load CAR
-//------------------------------------------------------------------------------------------------------
-void CarModel::Load(int startId, bool loop)
-{
-	//  names for local play
-	// if (isGhostTrk())    sDispName = TR("#{Track}");
-	// else if (isGhost())  sDispName = TR("#{Ghost}");
-	// else if (eType == CT_LOCAL)
-	// 	sDispName = TR("#{Player}") + toStr(iIndex+1);
-	
-
-	///  load config .car
-	// string pathCar;
-	// pApp->gui->GetCarPath(&pathCar, 0, 0, sDirname, pApp->mClient.get() != 0);  // force orig for newtorked games
-	std::string file = sDirname + ".car",
-		pathCar  = PATHMANAGER::CarSim()  + "/" + pSet->game.sim_mode + "/cars/" + file;
-	LoadConfig(pathCar);
-
-	
-	///  Create CAR (dynamic)
-	if (!isGhost())  // ghost has pCar, dont create
-	{
-		if (startId == -1)  startId = iIndex;
-		// /*if (pSet->game.start_order == 1)  //;
-		{	//  reverse start order
-			int numCars = //pApp->mClient ? pApp->mClient->getPeerCount()+1 :  // networked
-				pSet->game.local_players;  // splitscreen
-			startId = numCars-1 - startId;
-		}
-		int i = pSet->game.collis_cars ? startId : 0;  // offset when cars collide
-
-		//  start pos
-		auto st = pApp->scn->sc->GetStart(i, loop);
-		MATHVECTOR<float,3> pos = st.first;
-		QUATERNION<float> rot = st.second;
-		
-		vStartPos = Vector3(pos[0], pos[2], -pos[1]);
-		if (pSet->game.trackreverse)
-		{	rot.Rotate(PI_d, 0,0,1);  rot[0] = -rot[0];  rot[1] = -rot[1];  }
-
-		pCar = pGame->LoadCar(pathCar, sDirname, pos, rot, true, cType == CT_REMOTE, iIndex);
-
-		if (!pCar)  LogO("Error: Creating CAR: " + sDirname + "  path: " + pathCar);
-		else  pCar->pCarM = this;
-	}
-}
-
-//  Destroy
+//  💥 Destroy
 //------------------------------------------------------------------------------------------------------
 void CarModel::Destroy()
 {
@@ -222,148 +99,6 @@ void CarModel::ToDel(SceneNode* nd){		vDelNd.push_back(nd);  }
 void CarModel::ToDel(Item* it){				vDelIt.push_back(it);  }
 void CarModel::ToDel(ParticleSystem* par){	vDelPar.push_back(par);  }
 
-
-///   Load .car
-//------------------------------------------------------------------------------------------------------
-static void ConvertV2to1(float & x, float & y, float & z)
-{
-	float tx = x, ty = y, tz = z;
-	x = ty;  y = -tx;  z = tz;
-}
-void CarModel::LoadConfig(const string & pathCar)
-{
-	Defaults();
-
-	///  load  -----
-	CONFIGFILE cf;
-	if (!cf.Load(pathCar))
-	{  LogO("Error: CarModel Can't load .car: "+pathCar);  return;  }
-
-
-	//  vehicle type
-	vType = V_Car;
-	string drive;
-	cf.GetParam("drive", drive);
-
-	if (drive == "hover")  //>
-		vType = V_Spaceship;
-	else if (drive == "sphere")
-		vType = V_Sphere;
-
-
-	//  wheel count
-	int nw = 0;
-	cf.GetParam("wheels", nw);
-	if (nw >= 2 && nw <= MAX_WHEELS)
-		SetNumWheels(nw);
-
-
-	//-  custom interior model offset
-	cf.GetParam("model_ofs.interior-x", interiorOffset[0]);
-	cf.GetParam("model_ofs.interior-y", interiorOffset[1]);
-	cf.GetParam("model_ofs.interior-z", interiorOffset[2]);
-	cf.GetParam("model_ofs.rot_fix", bRotFix);
-
-	//~  boost offset
-	cf.GetParam("model_ofs.boost-x", boostOffset[0]);
-	cf.GetParam("model_ofs.boost-y", boostOffset[1]);
-	cf.GetParam("model_ofs.boost-z", boostOffset[2]);
-	cf.GetParam("model_ofs.boost-size-z", boostSizeZ);
-	cf.GetParam("model_ofs.boost-name", sBoostParName);
-	
-	//  thruster  spaceship hover  max 4 pairs
-	int i;
-	for (i=0; i < PAR_THRUST; ++i)
-	{
-		string s = "model_ofs.thrust";
-		if (i > 0)  s += toStr(i);
-		cf.GetParam(s+"-x", thrusterOfs[i][0]);
-		cf.GetParam(s+"-y", thrusterOfs[i][1]);
-		cf.GetParam(s+"-z", thrusterOfs[i][2]);
-		cf.GetParam(s+"-size-z", thrusterSizeZ[i]);
-		cf.GetParam(s+"-name", sThrusterPar[i]);
-	}
-	
-
-	//~  brake flares
-	float pos[3];  bool ok=true;  i=0;
-	while (ok)
-	{	ok = cf.GetParam("flares.brake-pos"+toStr(i), pos);  ++i;
-		if (ok)  brakePos.push_back(bRotFix ? Vector3(-pos[0],pos[2],pos[1]) : Vector3(-pos[1],-pos[2],pos[0]));
-	}
-	cf.GetParam("flares.brake-color", pos);
-	brakeClr = ColourValue(pos[0],pos[1],pos[2]);
-	cf.GetParam("flares.brake-size", brakeSize);
-	
-	
-	//-  custom exhaust pos for boost particles
-	if (cf.GetParam("model_ofs.exhaust-x", exhaustPos[0]))
-	{
-		manualExhaustPos = true;
-		cf.GetParam("model_ofs.exhaust-y", exhaustPos[1]);
-		cf.GetParam("model_ofs.exhaust-z", exhaustPos[2]);
-	}else
-		manualExhaustPos = false;
-	if (!cf.GetParam("model_ofs.exhaust-mirror-second", has2exhausts))
-		has2exhausts = false;
-
-
-	//- load cameras pos
-	cf.GetParamE("driver.view-position", pos);
-	driver_view[0]=pos[1]; driver_view[1]=-pos[0]; driver_view[2]=pos[2];
-	
-	cf.GetParamE("driver.hood-position", pos);
-	hood_view[0]=pos[1]; hood_view[1]=-pos[0]; hood_view[2]=pos[2];
-
-	if (cf.GetParam("driver.ground-position", pos))
-	{	ground_view[0]=pos[1]; ground_view[1]=-pos[0]; ground_view[2]=pos[2];  }
-	else
-	{	ground_view[0]=0.f; ground_view[1]=1.6; ground_view[2]=0.4f;  }
-
-	cf.GetParam("driver.dist", camDist);
-
-
-	//  tire params
-	float val;
-	bool both = cf.GetParam("tire-both.radius", val);
-
-	int axles = std::max(2, numWheels/2);
-	for (i=0; i < axles; ++i)
-	{
-		WHEEL_POSITION wl, wr;  string pos;
-		CARDYNAMICS::GetWPosStr(i, numWheels, wl, wr, pos);
-		if (both)  pos = "both";
-		
-		float radius;
-		cf.GetParamE("tire-"+pos+".radius", radius);
-		whRadius[wl] = radius;  whRadius[wr] = radius;
-		
-		float width = 0.2f;
-		cf.GetParam("tire-"+pos+".width-trail", width);
-		whWidth[wl] = width;  whWidth[wr] = width;
-	}
-	
-	//  wheel pos
-	//  for track's ghost or garage view
-	int version = 2;
-	cf.GetParam("version", version);
-	for (i = 0; i < numWheels; ++i)
-	{
-		string sPos = sCfgWh[i];
-		float pos[3];  MATHVECTOR<float,3> vec;
-
-		cf.GetParamE("wheel-"+sPos+".position", pos);
-		if (version == 2)  ConvertV2to1(pos[0],pos[1],pos[2]);
-		vec.Set(pos[0],pos[1], pos[2]);
-		
-		whPos[i] = vec;
-	}
-	//  steer angle
-	maxangle = 26.f;
-	cf.GetParamE("steering.max-angle", maxangle);
-	maxangle *= pGame->GetSteerRange();
-}
-
 	
 //  log mesh stats
 void CarModel::LogMeshInfo(const Item* ent, const String& name, int mul)
@@ -381,8 +116,9 @@ void CarModel::LogMeshInfo(const Item* ent, const String& name, int mul)
 	LogO("MESH info:  "+name+"\t sub: "+toStr(subs)+"  tri: "+fToStr(tris/1000.f,1,4)+"k");
 }
 
-//  CreatePart mesh
-//---------------------------------------------------
+
+//  🆕 CreatePart mesh
+//-------------------------------------------------------------------------------------------------------
 void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 	String sCar2, String sCarI, String sMesh, String sEnt,
 	bool ghost, uint32 visFlags,
@@ -428,7 +164,7 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 
 
 //-------------------------------------------------------------------------------------------------------
-//  Create
+//  🆕 Create
 //-------------------------------------------------------------------------------------------------------
 void CarModel::Create()
 {
@@ -464,7 +200,7 @@ void CarModel::Create()
 	pMainNode = ndRoot->createChildSceneNode();  ToDel(pMainNode);
 	SceneNode* ndCar = pMainNode->createChildSceneNode();  ToDel(ndCar);
 
-	//  --------  Follow Camera  --------
+	//  🎥 --------  Follow Camera   --------
 	if (mCamera && pCar)
 	{
 		fCam = new FollowCamera(mCamera, pSet);
@@ -484,7 +220,7 @@ void CarModel::Create()
 	}	}
 	
 
-	//  next checkpoint marker beam
+	//  📍 next checkpoint marker beam
 	bool deny = pApp->gui->pChall && !pApp->gui->pChall->chk_beam;
 	if (cType == CT_LOCAL && !deny && !pApp->bHideHudBeam)
 	{
@@ -520,7 +256,7 @@ void CarModel::Create()
 			Quaternion(Degree(180),Vector3::UNIT_X));
 
 
-	///  Create Models:  body, interior, glass
+	///  🆕 Create Models:  body, interior, glass
 	//-------------------------------------------------
 	const String& res = resGrpId;
 	CreatePart(ndCar, vPofs, sCar, res, "_body.mesh",     "",  ghost, RV_Car,  &bodyBox,  bLogInfo, true);
@@ -537,7 +273,8 @@ void CarModel::Create()
 		ndCar->setScale(2.f,2.f,2.f);
 
 
-	if (0 && !ghost)  //  car lights **  // par set..
+	//  💡 car lights **  // par set..
+	if (0 && !ghost)
 	for (int i=0; i < 2; ++i)
 	{
 		Light* light = mSceneMgr->createLight();
@@ -559,7 +296,7 @@ void CarModel::Create()
 	}
 
 
-	//  wheels  ----------------------
+	//  ⚫ wheels  ----------------------
 	int w2 = numWheels==2 ? 1 : 2;
 	for (int w=0; w < numWheels; ++w)
 	{
@@ -601,7 +338,7 @@ void CarModel::Create()
 	// 	LogO("MESH info:  "+sDirname+"\t ALL sub: "+toStr(all_subs)+"  tri: "+fToStr(all_tris/1000.f,1,4)+"k");
 	
 	
-	///  brake flares  ++ ++
+	///  🔴 brake flares  ++ ++
 	if (pCar)
 	if (!brakePos.empty())
 	{
@@ -621,7 +358,7 @@ void CarModel::Create()
 	
 	if (!ghostTrk)
 	{
-		//  Particles
+		//  ✨ Particles
 		//-------------------------------------------------
 		///  world hit sparks
 		if (!parHit)
@@ -636,7 +373,7 @@ void CarModel::Create()
 			parHit->getEmitter(0)->setEmissionRate(0);
 		}
 		
-		///  boost emitters  ------------------------
+		///  💨 boost emitters  ------------------------
 		for (int i=0; i < PAR_BOOST; ++i)
 		{
 			String si = strI + "_" +toStr(i);
@@ -673,7 +410,7 @@ void CarModel::Create()
 				parBoost[i]->getEmitter(0)->setEmissionRate(0);
 		}	}
 
-		///  spaceship thrusters ^  ------------------------
+		///  💨 spaceship thrusters ^  ------------------------
 		for (int w=0; w < PAR_THRUST; ++w)
 		if (!sThrusterPar[w].empty())
 		{
@@ -694,7 +431,7 @@ void CarModel::Create()
 					parThrust[ii]->getEmitter(0)->setEmissionRate(0);
 		}	}	}
 
-		///  wheel emitters  ------------------------
+		///  ⚫💭 wheel emitters  ------------------------
 		if (!ghost)
 		{
 			const static String sPar[PAR_ALL] = {"Smoke","Mud","Dust","FlWater","FlMud","FlMudS"};  // for ogre name

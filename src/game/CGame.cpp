@@ -31,7 +31,7 @@ using namespace std;
 //  🌟 ctor
 //-----------------------------------------------
 App::App()
-	:fLastFrameDT(0.001f)
+	: fLastFrameDT(0.001f)
 	// , mIblQuality( IblHigh )  // 45 fps-  // par
 	// , mIblQuality( IblMedium )
 	// , mIblQuality( MipmapsLowest )  // very low, no mips-
@@ -39,8 +39,6 @@ App::App()
 	// ,iEdTire(0), iTireLoad(0), iCurLat(0),iCurLong(0),iCurAlign(0), iUpdTireGr(0)
 	// ,bPerfTest(0),iPerfTestStage(PT_StartWait)
 {
-	macroblockWire.mPolygonMode = PM_WIREFRAME;
-
 	frm.resize(MAX_CARS);
 	for (int i=0; i < MAX_CARS; ++i)
 		iCurPoses[i] = 0;
@@ -125,9 +123,8 @@ void App::destroyScene()
 }
 
 
-//  simulation (2nd) thread
+//  💫 simulation  2nd thread
 //---------------------------------------------------------------------------------------------------------------
-
 void App::UpdThr()
 {
 	Ogre::Timer gtim;
