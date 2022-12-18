@@ -98,7 +98,7 @@ namespace ICS
 		JoystickIDList& getJoystickIdList(){ return mJoystickIDList; };
 		
 		// MouseListener
-		// bool mouseMoved(const SFO::MouseMotionEvent &evt);
+		bool mouseMoved(const SDL_MouseMotionEvent &evt);
 		bool mousePressed(const SDL_MouseButtonEvent &evt, Uint8);
 		bool mouseReleased(const SDL_MouseButtonEvent &evt, Uint8);
 		

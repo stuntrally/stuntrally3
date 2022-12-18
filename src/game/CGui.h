@@ -7,7 +7,7 @@
 #include "MessageBoxStyle.h"
 
 // #include "networkcallbacks.hpp"
-// #include "ICSInputControlSystem.h"
+#include "ICSInputControlSystem.h"
 // #include <thread>
 
 #include "ChampsXml.h"  // progress..
@@ -31,8 +31,8 @@ struct CarL
 
 
 class CGui : public BGui
-			//  public GameClientCallback, public MasterClientCallback,
-			//  public ICS::DetectingBindingListener
+	//,  public GameClientCallback, public MasterClientCallback,
+	, public ICS::DetectingBindingListener
 {
 public:
 	App* app =0;  GAME* pGame =0;  SETTINGS* pSet =0;
@@ -54,7 +54,7 @@ public:
 	Cmb diffList;  void comboDiff(CMB);
 
 
-	///  Gui
+	///  🎛️ Gui
 	///-----------------------------------------------------------------------------------------------------------------
 
 	bool bGI =0;  // gui inited  set values
@@ -80,7 +80,7 @@ public:
 	void ImgPrvClk(WP), ImgTerClk(WP), ImgPrvClose(WP);
 
 
-	//  hints
+	//  👈 hints
 	Ck ckShowWelcome;
 	const static int iHints;  int iHintCur = 0;
 	Ed edHintTitle =0, edHintText =0, rplSubText =0;
@@ -103,55 +103,45 @@ public:
 	std::list<Subtitle> rplSubtitles;
 
 
-	///  [Input] tab
+	///  🕹️ [Input] tab
 	///-----------------------------------------------------------------------------------------------------------------
 
 	//  bind events   . . . . .
-/*
-	virtual void keyBindingDetected(
+	void keyBindingDetected(
 		ICS::InputControlSystem* ICS, ICS::Control* control,  SDL_Keycode key,
-		ICS::Control::ControlChangingDirection direction);
+		ICS::Control::ControlChangingDirection direction) override;
 
-	virtual void joystickAxisBindingDetected(
+	void joystickAxisBindingDetected(
 		ICS::InputControlSystem* ICS, ICS::Control* control,  int deviceId, int axis,
-		ICS::Control::ControlChangingDirection direction);
+		ICS::Control::ControlChangingDirection direction) override;
 
-	virtual void joystickButtonBindingDetected(
+	void joystickButtonBindingDetected(
 		ICS::InputControlSystem* ICS, ICS::Control* control,  int deviceId, unsigned int button,
-		ICS::Control::ControlChangingDirection direction);
+		ICS::Control::ControlChangingDirection direction) override;
 
 	//  not needed
-	virtual void joystickPOVBindingDetected(
+	void joystickPOVBindingDetected(
 		ICS::InputControlSystem* ICS, ICS::Control* control,  int deviceId, int pov,
 		ICS::InputControlSystem::POVAxis axis,
-		ICS::Control::ControlChangingDirection direction) {  return;  }
+		ICS::Control::ControlChangingDirection direction) override
+	{	return;  }
 
-	virtual void mouseAxisBindingDetected(
+	void mouseAxisBindingDetected(
 		ICS::InputControlSystem* ICS, ICS::Control* control,  ICS::InputControlSystem::NamedAxis axis,
-		ICS::Control::ControlChangingDirection direction) {  return;  }
+		ICS::Control::ControlChangingDirection direction) override
+	{	return;  }
 
-	virtual void mouseButtonBindingDetected(
+	void mouseButtonBindingDetected(
 		ICS::InputControlSystem* ICS, ICS::Control* control,  unsigned int button,
-		ICS::Control::ControlChangingDirection direction) {  return;  }
-*/
-	//  init
+		ICS::Control::ControlChangingDirection direction) override
+	{  return;  }
+	
+	//  init  ----
 	void CreateInputTab( int iTab, bool player,
 		const std::vector<InputAction>& actions, ICS::InputControlSystem* ICS);
 	void InitInputGui();
 
-	//  bind
-	void inputBindBtnClicked(WP), inputUnbind(WP), inputBindBtn2(WP, int, int, MyGUI::MouseButton mb);
-
-	enum EBind {  B_Done=0, B_First, B_Second  };
-	void UpdateInputButton(Btn button, const InputAction& action, EBind bind = B_Done);
-/*
-	InputAction* mBindingAction =0;
-	Btn mBindingSender =0;
-
-	virtual void notifyInputActionBound(bool complete);
-	bool actionIsActive(std::string, std::string);
-*/
-	//  input gui
+	//  input gui  ----
 	Tab tabInput =0;  void tabInputChg(Tab, size_t);
 	Txt txtInpDetail =0;  WP panInputDetail =0;  Btn chOneAxis =0;
 	Ed edInputIncrease =0;
@@ -161,8 +151,20 @@ public:
 	void UpdateInputBars(), inputDetailBtn(WP);
 	bool TabInputId(int* pId);
 
+	//  bind  ----
+	void inputBindBtnClicked(WP), inputUnbind(WP), inputBindBtn2(WP, int, int, MyGUI::MouseButton mb);
 
-	///  [Tweak]  -----------------------------------------
+	enum EBind {  B_Done=0, B_First, B_Second  };
+	void UpdateInputButton(Btn button, const InputAction& action, EBind bind = B_Done);
+
+	InputAction* mBindingAction =0;
+	Btn mBindingSender =0;
+
+	void notifyInputActionBound(bool complete);
+	bool actionIsActive(std::string, std::string);
+
+
+	///  🛠 [Tweak]  -----------------------------------------
 	const static int ciEdCar = 12;
 	Ed edCar[ciEdCar] ={0,}, edPerfTest =0, edTweakCol =0;
 	Txt txtTweakPath =0, txtTweakTire =0, txtTweakPathCol;
@@ -202,7 +204,7 @@ public:
 	Cmb cmbGraphs =0;  void comboGraphs(CMB);  Txt valGraphsType =0;
 
 
-	///  [Options]  game only
+	///  ⚙️ [Options]  game only
 	///-----------------------------------------------------------------------------------------------------------------
 	//  reflection
 	SV svReflSkip, svReflFaces, svReflSize;
@@ -226,7 +228,7 @@ public:
 	Ck ckSndChk, ckSndChkWr, ckReverb;
 
 
-	///  Checks  . . . . . . . . . . . . . . . . . . . .
+	///  ✅ Checks  . . . . . . . . . . . . . . . . . . . .
 	CK(Reverse);  // track
 
 	//  Options
@@ -272,19 +274,15 @@ public:
 	Ck ckBltLines, ckShowPics;
 	Ck ckMouseCapture, ckDevKeys, ckScreenPng;
 
+
 	//  [Effects]
-	CK(AllEffects);
-	Ck ckBloom, ckBlur, ckSoftPar, ckSSAO, ckGodRays, ckDoF, ckHDR;
+	/*CK(AllEffects);
+	Ck ckBloom, ckBlur, ckSoftPar, ckSSAO, ckGodRays, ckHDR;
 	void chkEffUpd(Ck*), chkEffUpdShd(Ck*);
 
 	SV svBloomInt, svBloomOrig;
-	SV svBlurIntens;  // motion blur
-	SV svDofFocus, svDofFar;  // depth of field
 	void slEffUpd(SV*);
-	//  hdr
-	SV svHDRParam1, svHDRParam2, svHDRParam3;
-	SV svHDRBloomInt, svHDRBloomOrig, svHDRAdaptScale;
-	SV svHDRVignRadius, svHDRVignDark;
+	SV svHDRBloomInt, svHDRBloomOrig;*/
 
 
 	///  Car 3d view  ---
@@ -307,7 +305,7 @@ public:
 	void SetCarClr(), UpdImgClr();
 
 
-	//  [Setup] car
+	//  🔧 [Setup] car
 	Ck ckCarGear, ckCarRear, ckCarRearInv;  void chkGear(Ck*);
 	Ck ckAbs, ckTcs;
 	Btn bchAbs =0, bchTcs =0;
@@ -337,7 +335,8 @@ public:
 	SV svBmin,svBmax,svBpow,svBperKm,svBaddSec;
 
 
-	///  [Replay]  -----------------------------
+	///  📽️ [Replay]
+	///---------------------------------------------------
 	Li rplList =0;
 	void listRplChng(Li, size_t);
 	void updReplaysList();
@@ -379,7 +378,7 @@ public:
 
 
 	//  Game
-	///---------------------------------------
+	///---------------------------------------------------
 	Btn btNewGameCar =0;
 	void btnNewGame(WP), btnNewGameStart(WP);
 
@@ -389,7 +388,8 @@ public:
 	Ck ckSplitVert;
 	void chkStartOrd(WP);
 
-	//  [Car] list  (all Car = Vehicle)
+
+	//  🚗 [Car] list  (all Car = Vehicle)
 	int iCurCar = 0;  // current
 	Ogre::String sListCar;
 
@@ -417,16 +417,7 @@ public:
 	void comboBoost(CMB), comboFlip(CMB), comboDamage(CMB), comboRewind(CMB);
 
 
-	//  key util
-	int LNext(Mli2, int rel, int ofs), LNext(Li, int rel, int ofs),
-		LNext(Mli, int rel);  // util next in list
-	void LNext(int rel);  void tabPlayer(Tab, size_t);
-
-	const Ogre::String& GetGhostFile(std::string* ghCar=NULL);
-	std::string GetRplListDir();
-
-
-	///  championships & challenges
+	///  🏆 championships & challenges
 	///-----------------------------------------------------------------------------------------------------------------
 	Btn btStTut =0, btStChamp =0, btStChall =0;
 	Img imgTut =0, imgChamp =0, imgChall =0;
@@ -488,11 +479,21 @@ public:
 	bool IsChallCar(Ogre::String name);
 	bool isChallGui();  void BackFromChs();
 
-	//  _Tools_
+
+	//  ⛓️ _Tools_
 	void ToolGhosts(),ToolGhostsConv(), ToolTestTrkGhosts();
 
+	//  key util
+	int LNext(Mli2, int rel, int ofs), LNext(Li, int rel, int ofs),
+		LNext(Mli, int rel);  // util next in list
+	void LNext(int rel);  void tabPlayer(Tab, size_t);
 
-	///  multiplayer game
+	const Ogre::String& GetGhostFile(std::string* ghCar=NULL);
+	std::string GetRplListDir();
+
+
+
+	///  👥 multiplayer game
 	///-----------------------------------------------------------------------------------------------------------------
 /*
 	void rebuildGameList(), rebuildPlayerList();
@@ -547,7 +548,7 @@ public:
 */
 	GuiPopup* popup =0;  // msg with edits
 
-	//  open urls
+	//  🌍 open urls
 	void btnWelcome(WP), btnWebsite(WP), btnWiki(WP), btnWikiInput(WP);
 	void btnForum(WP), btnSources(WP), btnEdTut(WP), btnTransl(WP), btnDonations(WP);
 };

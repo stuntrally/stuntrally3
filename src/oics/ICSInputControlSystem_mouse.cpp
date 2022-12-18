@@ -220,8 +220,7 @@ namespace ICS
 	}
 
 	// mouse Listeners
-	#if 0
-	bool InputControlSystem::mouseMoved(const SFO::MouseMotionEvent& evt)
+	bool InputControlSystem::mouseMoved(const SDL_MouseMotionEvent& evt)
 	{
 		if(mActive)
 		{
@@ -286,7 +285,7 @@ namespace ICS
 
 					mMouseAxisBindingInitialValues[0] += evt.xrel;
 					mMouseAxisBindingInitialValues[1] += evt.yrel;
-					mMouseAxisBindingInitialValues[2] += evt.zrel;
+					// mMouseAxisBindingInitialValues[2] += evt.zrel;
 
 					if( abs(mMouseAxisBindingInitialValues[0]) > ICS_MOUSE_BINDING_MARGIN )
 					{
@@ -309,7 +308,6 @@ namespace ICS
 
 		return true;
 	}
-	#endif
 
 	bool InputControlSystem::mousePressed(const SDL_MouseButtonEvent &evt, Uint8 btn)
 	{

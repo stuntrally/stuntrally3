@@ -99,7 +99,8 @@ public:
 	// virtual void windowResized (int x, int y);
 	// virtual void windowClosed();
 
-	///  input
+
+	///  🕹️ input  ----
 	// SFO::InputWrapper* mInputWrapper =0;
 	// SFO::SDLCursorManager* mCursorManager =0;
 	ICS::InputControlSystem* mInputCtrl =0;
@@ -107,23 +108,22 @@ public:
 	// std::vector<SDL_Joystick*> mJoysticks;
 	
 	// this is set to true when the user is asked to assign a new key
-	// bool bAssignKey =0;
-	ICS::DetectingBindingListener* mBindListner =0;
+	bool bAssignKey =0;
+	ICS::DetectingBindingListener* mInputBindListner =0;
 
-	bool IsFocGuiInput()  {  return isFocGui || isFocRpl;  }
-	bool IsFocGui();
-	Ogre::Window* getWindow()  {  return mWindow;  }
-
-	///  input
+	///  input  vars
 	bool alt =0, ctrl =0, shift =0;  // key modifiers
 	bool mbLeft =0, mbRight =0, mbMiddle =0;  // mouse buttons
 	bool mbWireFrame =0;
 	int iCurCam =0;
 
 
-	///  Gui  ..........................
-	bool isFocGui =0, isFocRpl =0;  // gui shown
+	///  🎛️ Gui  ..........................
+	bool isFocGui = 0, isFocRpl = 0;  // gui shown
+	bool IsFocGuiInput()  {  return isFocGui || isFocRpl;  }
+	bool IsFocGui();
 	bool isTweak();
+	Ogre::Window* getWindow()  {  return mWindow;  }
 	
 	MyGUI::Gui* mGui =0;
 	MyGUI::Ogre2Platform* mPlatform =0;
@@ -133,7 +133,7 @@ public:
 	Img bckFps =0, imgBack =0;
 	Txt txFps =0;
 
-	//  loading
+	//  ⏳ Loading  backgr, bar
 	Img bckLoad =0, bckLoadBar =0, barLoad =0, imgLoad =0;
 	Txt txLoadBig =0, txLoad =0;
 	int barSizeX =0, barSizeY =0;
@@ -155,7 +155,8 @@ public:
 	//MyGUI::VectorWidgetPtr
 	std::vector<WP> vwGui;  // all widgets to destroy
 
-	///  networking
+
+	///  👥 multiplayer  networking
 	// boost::scoped_ptr<MasterClient> mMasterClient;
 	// boost::scoped_ptr<P2PGameClient> mClient;
 	// LobbyState mLobbyState =DISCONNECTED;

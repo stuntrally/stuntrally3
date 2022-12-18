@@ -93,8 +93,7 @@ void App::Load()
 	gui->popup = new GuiPopup();
 	// gui->viewBox = new wraps::RenderBoxScene();
 
-	// mBindListner = gui;
-
+	mInputBindListner = gui;
 	input = new CInput(this);
 
 	pGame->app = this;

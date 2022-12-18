@@ -90,14 +90,14 @@ void BaseApp::createInputs()
 	// mCursorManager->setEnabled(true);
 
 	std::string file = PATHMANAGER::UserConfigDir() + "/input.xml";
-	mInputCtrl = new ICS::InputControlSystem(file, true, mBindListner, NULL, 100);
+	mInputCtrl = new ICS::InputControlSystem(file, true, mInputBindListner, NULL, 100);
 
 	for (int j=0; j<SDL_NumJoysticks(); ++j)
 		mInputCtrl->addJoystick(j);
 	for (int i=0; i<4; ++i)
 	{
 		file = PATHMANAGER::UserConfigDir() + "/input_p" + toStr(i) + ".xml";
-		mInputCtrlPlayer[i] = new ICS::InputControlSystem(file, true, mBindListner, NULL, 100);
+		mInputCtrlPlayer[i] = new ICS::InputControlSystem(file, true, mInputBindListner, NULL, 100);
 		for (int j=0; j<SDL_NumJoysticks(); ++j)
 			mInputCtrlPlayer[i]->addJoystick(j);
 	}
@@ -160,7 +160,7 @@ BaseApp::~BaseApp()
 	DestroyGui();
 
 	//  save inputs
-	/*mInputCtrl->save(PATHMANAGER::UserConfigDir() + "/input.xml");
+	mInputCtrl->save(PATHMANAGER::UserConfigDir() + "/input.xml");
 	delete mInputCtrl;
 	for (int i=0; i<4; ++i)
 	{
@@ -168,9 +168,9 @@ BaseApp::~BaseApp()
 		delete mInputCtrlPlayer[i];
 	}
 
-	delete mInputWrapper;
-	delete mCursorManager;*/
-/*
+/*	delete mInputWrapper;
+	delete mCursorManager;
+
 	#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 		mRoot->unloadPlugin("RenderSystem_Direct3D9");
 		//mRoot->unloadPlugin("RenderSystem_Direct3D11");

@@ -411,25 +411,25 @@ void CGui::comboGraphs(CMB)
 
 //  [Effects]  . . . . . . . . . . . . . . . . . . . .    ---- ------ ----    . . . . . . . . . . . . . . . . . . . .
 
-void CGui::chkAllEffects(Ck*)
+/*void CGui::chkAllEffects(Ck*)
 {
-	// app->recreateCompositor();  //app->refreshCompositor();
-	// app->scn->changeShadows();
+	app->recreateCompositor();  //app->refreshCompositor();
+	app->scn->changeShadows();
 }
 void CGui::chkEffUpd(Ck*)
 {		
-	// app->refreshCompositor();
+	app->refreshCompositor();
 }
 void CGui::chkEffUpdShd(Ck*)
 {
-	// app->refreshCompositor();
-	// app->scn->changeShadows();
+	app->refreshCompositor();
+	app->scn->changeShadows();
 }
 
 void CGui::slEffUpd(SV*)
 {
-	// if (bGI)  app->refreshCompositor();
-}
+	if (bGI)  app->refreshCompositor();
+}*/
 
 
 //  [Sound]

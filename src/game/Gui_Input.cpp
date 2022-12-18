@@ -276,7 +276,7 @@ void CGui::inputBindBtnClicked(WP sender)
 	sender->castType<Button>()->setCaption( TR("#FFA030#{InputAssignKey}"));
 
 	InputAction* action = sender->getUserData<InputAction>();
-	/*mBindingAction = action;
+	mBindingAction = action;
 	mBindingSender = sender->castType<Button>();
 
 	if (mBindingAction->mType == InputAction::Axis)
@@ -289,10 +289,10 @@ void CGui::inputBindBtnClicked(WP sender)
 
 	// activate key capture mode
 	app->bAssignKey = true;
-	app->hideMouse();*/
+	// app->hideMouse();
 }
 
-/*void CGui::notifyInputActionBound(bool complete)
+void CGui::notifyInputActionBound(bool complete)
 {	
 	UpdateInputButton(mBindingSender, *mBindingAction, complete ? B_Done : B_Second);
 	if (complete)
@@ -311,12 +311,12 @@ void CGui::inputBindBtnClicked(WP sender)
 				UpdateInputButton(button, *button->getUserData<InputAction>());
 		}
 	}
-}*/
+}
 
 void CGui::inputUnbind(WP sender)
 {
 	InputAction* action = sender->getUserData<InputAction>();
-	/*mBindingAction = action;
+	mBindingAction = action;
 	mBindingSender = sender->castType<Button>();
 
 	SDL_Keycode key = action->mICS->getKeyBinding(action->mControl, ICS::Control::INCREASE);
@@ -335,7 +335,7 @@ void CGui::inputUnbind(WP sender)
 		if (btn != ICS::InputControlSystem::UNASSIGNED)
 			action->mICS->removeJoystickButtonBinding(j, btn);
 	}
-	UpdateInputButton(mBindingSender, *action);*/
+	UpdateInputButton(mBindingSender, *action);
 }
 
 
@@ -347,29 +347,29 @@ void CGui::inputDetailBtn(WP sender)
 	if (txtInpDetail)
 		txtInpDetail->setCaptionWithReplacing( TR("#{InputDetailsFor}")+":  #{InputMap"+action.mName+"}");
 
-	//mBindingAction = sender->getUserData<InputAction>();
+	mBindingAction = sender->getUserData<InputAction>();
 	if (panInputDetail)
 		panInputDetail->setVisible(false);
 
 	Button* btnInputInv = fBtn("InputInv");
-	/*if (btnInputInv)
+	if (btnInputInv)
 		btnInputInv->setStateSelected( mBindingAction->mControl->getInverted());
 	if (edInputIncrease)
-		edInputIncrease->setCaption( toStr(action.mControl->getStepSize() * action.mControl->getStepsPerSeconds()));*/
+		edInputIncrease->setCaption( toStr(action.mControl->getStepSize() * action.mControl->getStepsPerSeconds()));
 }
 
 void CGui::editInput(EditPtr ed)
 {
 	Real vInc = s2r(edInputIncrease->getCaption());
-	// mBindingAction->mControl->setStepSize(0.1);
-	// mBindingAction->mControl->setStepsPerSeconds(vInc*10);
+	mBindingAction->mControl->setStepSize(0.1);
+	mBindingAction->mControl->setStepsPerSeconds(vInc*10);
 }
 
 void CGui::btnInputInv(WP wp)
 {
 	ButtonPtr chk = wp->castType<Button>();
 	chk->setStateSelected(!chk->getStateSelected());
-	// mBindingAction->mControl->setInverted(chk->getStateSelected());
+	mBindingAction->mControl->setInverted(chk->getStateSelected());
 }
 
 void CGui::chkOneAxis(WP wp)
@@ -450,8 +450,10 @@ void CGui::UpdateInputBars()
 	}
 }
 
+
+//-------------------------------------------------------------------------------
 //  Bind Key   . . . . .
-/*void CGui::keyBindingDetected(
+void CGui::keyBindingDetected(
 	ICS::InputControlSystem* pICS, ICS::Control* control,
 	SDL_Keycode key,
 	ICS::Control::ControlChangingDirection direction)
@@ -500,4 +502,3 @@ void CGui::joystickButtonBindingDetected(
 	
 	notifyInputActionBound(true);
 }
-*/
