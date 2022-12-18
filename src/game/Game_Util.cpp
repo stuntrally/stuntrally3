@@ -5,6 +5,7 @@
 
 #include "OgreSceneManager.h"
 #include "OgreRoot.h"
+#include "OgreString.h"
 
 #include "OgreHlms.h"
 #include "OgreHlmsPbs.h"
@@ -67,9 +68,11 @@ void App::unloadTexturesFromUnusedMaterials()
 
 			auto itor = datablocks.begin();
 			auto end = datablocks.end();
-
 			while( itor != end )
 			{
+				String name = itor->second.name;
+				if( !StringUtil::endsWith(name, "_TrueTypeFont", false))  // Gui font
+				{
 				if( i == HLMS_PBS )
 				{
 					unloadTexturesFromUnusedMaterials<HlmsPbsDatablock, NUM_PBSM_TEXTURE_TYPES>(
@@ -79,6 +82,7 @@ void App::unloadTexturesFromUnusedMaterials()
 				{
 					unloadTexturesFromUnusedMaterials<HlmsUnlitDatablock, NUM_UNLIT_TEXTURE_TYPES>(
 						itor->second.datablock, usedTex, unusedTex );
+				}
 				}
 				++itor;
 			}
@@ -128,12 +132,14 @@ void App::unloadUnusedTextures()
 			canBeUnloaded &= ( *itListener )->shouldStayLoaded( entry.texture );
 			++itListener;
 		}
-
-		if( entry.texture->getTextureType() != TextureTypes::Type2D ||
+		String name = entry.texture->getNameStr();
+		if( StringUtil::endsWith(name, "_TrueTypeFont", false) ||  // Gui font
+			entry.texture->getTextureType() != TextureTypes::Type2D ||
 			!entry.texture->hasAutomaticBatching() || !entry.texture->isTexture() ||
 			entry.texture->isRenderToTexture() || entry.texture->isUav() )
 		{
 			// likely a internal texture
+			// LogO("Skip: "+name);
 			canBeUnloaded = false;
 		}
 
@@ -199,3 +205,44 @@ OGRE_ARCH_TYPE != OGRE_ARCHITECTURE_32
 	mTightMemoryBudget = false;
 }
 #endif
+
+
+//  util wrap tex
+//-----------------------------------------------------------------------------------
+void App::SetTexWrap(Ogre::HlmsTypes type, Ogre::String name, bool wrap)
+{
+	HlmsSamplerblock sampler;
+	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
+	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
+	sampler.mMaxAnisotropy = pSet->anisotropy;
+	auto w = wrap ? TAM_WRAP : TAM_CLAMP;
+	sampler.mU = w;  sampler.mV = w;  sampler.mW = w;
+
+	Hlms *hlms = mRoot->getHlmsManager()->getHlms( type );
+	if (type == HLMS_PBS)
+	{	HlmsPbsDatablock *db = static_cast<HlmsPbsDatablock*>(hlms->getDatablock( name ));
+		if (db)  db->setSamplerblock( PBSM_DIFFUSE, sampler );
+	}
+	else if (type == HLMS_UNLIT)
+	{	HlmsUnlitDatablock *db = static_cast<HlmsUnlitDatablock*>(hlms->getDatablock( name ));
+		if (db)  db->setSamplerblock( PBSM_DIFFUSE, sampler );
+	}
+}
+
+//  util wireframe
+void App::SetWireframe(Ogre::HlmsTypes type, bool wire)
+{
+	HlmsMacroblock mb;
+	mb.mPolygonMode = wire ? PM_WIREFRAME : PM_SOLID;
+
+	Hlms *hlms = mRoot->getHlmsManager()->getHlms( type );
+
+	const auto &dbs = hlms->getDatablockMap();
+	for (auto it = dbs.begin(); it != dbs.end(); ++it)
+	{
+		// String name = itor->second.name;
+		// if( !StringUtil::endsWith(name, "_TrueTypeFont", false))  // Gui font
+		auto db = it->second.datablock;
+		if (db)  db->setMacroblock( mb );
+	}
+}

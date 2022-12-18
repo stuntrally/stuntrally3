@@ -4,7 +4,6 @@
 #include "GuiCom.h"
 #include "OgreVector3.h"
 #include "CGame.h"
-#include "CameraController.h"
 #include "GraphicsSystem.h"
 #include "SDL_scancode.h"
 #include "OgreLogManager.h"
@@ -39,9 +38,10 @@
 #include "settings.h"
 
 #include "ICSInputControlSystem.h"
-#include "SDL_keycode.h"
-#include "MyGUI_ImageBox.h"
-#include "MyGUI_TabControl.h"
+#include <SDL_keycode.h>
+#include <OgreHlmsCommon.h>
+#include <MyGUI_ImageBox.h>
+#include <MyGUI_TabControl.h>
 #include <string>
 using namespace Ogre;
 using namespace std;
@@ -204,24 +204,20 @@ void App::keyPressed( const SDL_KeyboardEvent &arg )
 
 		// carIdWin = 1;  //
 		ghost.Clear();  replay.Clear();
-	}	return;;
+	}	return;
 
 
-	//**  terrain wireframe toggle
+	//**  wireframe toggle
 	case key(F10):
 	{
 		wireTerrain = !wireTerrain;
-		Root *root = mGraphicsSystem->getRoot();
-		HlmsManager *hlmsManager = root->getHlmsManager();
-		HlmsDatablock *datablock = 0;
-		datablock = hlmsManager->getDatablock( "TerraExampleMaterial2" );
-		if (wireTerrain)
-		{
-			datablock = hlmsManager->getHlms( HLMS_USER3 )->getDefaultDatablock();
-			datablock->setMacroblock( macroblockWire );
-		}
-		mTerra->setDatablock( datablock );
+		SetWireframe( HLMS_PBS, wireTerrain );  // 3d all
+		// SetWireframe( HLMS_UNLIT, wireTerrain );  // 2d particles, Gui
+		SetWireframe( HLMS_USER3, wireTerrain );  // terrain
 	}   break;
+
+	case key(F11):
+		gui->ckFps.Invert();  break;
 
 	//  sky
 	case key(F8):  
@@ -231,8 +227,6 @@ void App::keyPressed( const SDL_KeyboardEvent &arg )
 			scn->CreateSkyDome("sky-clearday1", 0.f);
 		break;
 	}
-
-	TutorialGameState::keyPressed( arg );
 }
 
 
@@ -289,8 +283,6 @@ void App::keyReleased( const SDL_KeyboardEvent &arg )
 		hlms->reloadFrom( hlms->getDataFolder() );
 	}   break;
 	}
-
-	TutorialGameState::keyReleased( arg );
 }
 
 #undef key
