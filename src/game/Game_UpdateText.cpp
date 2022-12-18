@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "CGame.h"
-#include "CameraController.h"
 #include "GraphicsSystem.h"
 #include "OgreLogManager.h"
 
@@ -11,9 +10,13 @@
 #include "OgreWindow.h"
 
 #include "OgreFrameStats.h"
-#include "OgreTextAreaOverlayElement.h"
 #include "OgreTextureGpuManager.h"
 #include "Vao/OgreVaoManager.h"
+
+#include "OgreOverlayManager.h"
+#include "OgreOverlay.h"
+#include "OgreOverlayContainer.h"
+#include "OgreTextAreaOverlayElement.h"
 
 #include "OgreAtmosphere2Npr.h"
 
@@ -131,13 +134,15 @@ float App::getGPUmem()
 	//return float( 1.f/1024.f * totalB / BtoMB);  // GB
 }
 
-//  text
+//  text overlay-
 //------------------------------------------------------------------------------------------------
 void App::updDebugText()
 {
+	if (!mDebugText)  return;
+
 	String txt;
 
-	if( mDisplayHelpMode == 0 )
+	if (mDisplayOverlay)
 	{
 		txt = "F1 toggle help\n";
 		txt += "Reload shaders:\n"
@@ -177,10 +182,6 @@ void App::updDebugText()
 		case 14:  txt += "envmap Scale  " + fToStr( p.envmapScale, d );  break;
 		}
 	}
-	else if( mDisplayHelpMode == 1 )
-	{
-	}
-	txt += "\n\n";
 
 	if (pGame)  // CAR text
 	{
@@ -190,13 +191,11 @@ void App::updDebugText()
 		
 		/*for (const CAR* car : pGame->cars)
 		{
-			auto pos = car->dynamics.GetPosition();
-			// txt += "pos  " + fToStr(pos[0],2) + "  " + fToStr(pos[1],2) + "  " + fToStr(pos[2],2) +"\n";
 			txt += "\ngear  " + iToStr(car->GetGear()) + "\nrpm  " + iToStr(car->GetEngineRPM(),4)
 				+ "\nkm/h " + fToStr(car->GetSpeedometer()*3.6f, 0) +"\n";
 				// todo: + "trk  " + fToStr(carModels[0]->trackPercent, 0) + "%";
 		}
-		/*for (const auto* cm : carModels)
+		for (const auto* cm : carModels)
 		{
 			if (cm->fCam)
 				txt += "cam  " + toStr(cm->fCam->camPosFinal) + "  " + cm->fCam->sName +"\n";
@@ -208,3 +207,62 @@ void App::updDebugText()
 	mDebugText->setCaption( txt );
 	mDebugTextShadow->setCaption( txt );
 }
+
+
+//-----------------------------------------------------------------------------------
+void App::CreateDebugTextOverlay()
+{
+	return;  // todo: move to Gui..
+	Ogre::v1::OverlayManager &mgr = Ogre::v1::OverlayManager::getSingleton();
+	Ogre::v1::Overlay *overlay = mgr.create( "DebugText" );
+
+	Ogre::v1::OverlayContainer *panel = static_cast<Ogre::v1::OverlayContainer*>(
+		mgr.createOverlayElement("Panel", "DebugPanel"));
+	mDebugText = static_cast<Ogre::v1::TextAreaOverlayElement*>(
+		mgr.createOverlayElement( "TextArea", "DebugText" ) );
+	mDebugText->setFontName( "DebugFont" );
+	mDebugText->setCharHeight( 0.022f );
+
+	mDebugTextShadow = static_cast<Ogre::v1::TextAreaOverlayElement*>(
+		mgr.createOverlayElement( "TextArea", "0DebugTextShadow" ) );
+	mDebugTextShadow->setFontName( "DebugFont" );
+	mDebugTextShadow->setCharHeight( 0.022f );
+	mDebugTextShadow->setColour( Ogre::ColourValue::Black );
+	mDebugTextShadow->setPosition( 0.001f, 0.001f );
+
+	panel->addChild( mDebugTextShadow );
+	panel->addChild( mDebugText );
+	overlay->add2D( panel );
+	overlay->show();
+}
+
+
+#if 0
+//-----------------------------------------------------------------------------------
+void keyReleased( const SDL_KeyboardEvent &arg )
+{
+	if( arg.keysym.scancode == SDL_SCANCODE_F1 && (arg.keysym.mod & ~(KMOD_NUM|KMOD_CAPS)) == 0 )
+	{
+		mDisplayHelpMode = !mDisplayHelpMode;
+	}
+	else if( arg.keysym.scancode == SDL_SCANCODE_F1 && (arg.keysym.mod & (KMOD_LCTRL|KMOD_RCTRL)) )
+	{
+		//Hot reload of shaders.
+		Ogre::Root *root = mGraphicsSystem->getRoot();
+		Ogre::HlmsManager *hlmsManager = root->getHlmsManager();
+
+		Ogre::Hlms *hlms = hlmsManager->getHlms( Ogre::HLMS_PBS );  // F1
+		Ogre::Hlms *hlms = hlmsManager->getHlms( Ogre::HLMS_UNLIT );  // F2
+		Ogre::Hlms *hlms = hlmsManager->getComputeHlms();  // F3
+		Ogre::GpuProgramManager::getSingleton().clearMicrocodeCache();
+		hlms->reloadFrom( hlms->getDataFolder() );
+	}
+	else if( arg.keysym.scancode == SDL_SCANCODE_F5 && (arg.keysym.mod & (KMOD_LCTRL|KMOD_RCTRL)) )
+	{
+		//Force device reelection
+		Ogre::Root *root = mGraphicsSystem->getRoot();
+		root->getRenderSystem()->validateDevice( true );
+	}
+
+}
+#endif

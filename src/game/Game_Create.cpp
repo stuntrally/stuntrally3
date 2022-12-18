@@ -134,7 +134,7 @@ void App::createScene01()
 	//  SR cfg, xmls etc
 	Load();
 	
-	createInputs();
+	CreateInputs();
 
 	//  Gui Init
 	baseInitGui(mGraphicsSystem);
@@ -168,9 +168,9 @@ void App::createScene01()
 
 	LogO(">>>> Init SR done ----");
 
-	LogO("---- base createScene");
+	LogO("---- create overlay");
 
-	TutorialGameState::createScene01();
+	CreateDebugTextOverlay();
 }
 
 //-----------------------------------------------------------------------------------

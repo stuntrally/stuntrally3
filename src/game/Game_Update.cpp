@@ -4,7 +4,6 @@
 #include "GuiCom.h"
 #include "OgreVector3.h"
 #include "CGame.h"
-#include "CameraController.h"
 #include "GraphicsSystem.h"
 #include "SDL_scancode.h"
 
@@ -268,7 +267,5 @@ void App::update( float dt )
 
 	updFpsText();
 	updDebugText();
-
-	TutorialGameState::update( dt );
 }
 

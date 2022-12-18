@@ -30,12 +30,12 @@ using namespace std;
 
 //  ctor  -----------------------------------------------
 App::App()
-	: TutorialGameState()
-	//, mIblQuality( IblHigh )  // par
-	//, mIblQuality( MipmapsLowest )
+	:fLastFrameDT(0.001f)
+	// , mIblQuality( IblHigh )  // 45 fps-  // par
+	// , mIblQuality( IblMedium )
+	// , mIblQuality( MipmapsLowest )  // very low, no mips-
 	// ,mThread()
 	// ,iEdTire(0), iTireLoad(0), iCurLat(0),iCurLong(0),iCurAlign(0), iUpdTireGr(0)
-	,fLastFrameDT(0.001f)
 	// ,bPerfTest(0),iPerfTestStage(PT_StartWait)
 {
 	macroblockWire.mPolygonMode = PM_WIREFRAME;
@@ -114,13 +114,7 @@ void App::destroyScene()
 
 	// BaseApp::destroyScene();
 
-	LogO("---- destroyScene");
-
 	DestroyTerrain();
-
-	LogO("---- base destroyScene");
-
-	TutorialGameState::destroyScene();
 
 	LogO(">>>> Destroy SR ----");
 	Destroy();

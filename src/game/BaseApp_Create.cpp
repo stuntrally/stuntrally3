@@ -65,26 +65,21 @@ namespace
 		return unicode;
 	}
 
-	MyGUI::MouseButton sdlButtonToMyGUI(Uint8 button)
+	/*MyGUI::MouseButton sdlButtonToMyGUI(Uint8 button)
 	{
 		//  The right button is the second button, according to MyGUI
 		if (button == SDL_BUTTON_RIGHT)  button = SDL_BUTTON_MIDDLE;
 		else if (button == SDL_BUTTON_MIDDLE)  button = SDL_BUTTON_RIGHT;
 		//  MyGUI's buttons are 0 indexed
 		return MyGUI::MouseButton::Enum(button - 1);
-	}
+	}*/
 }
 
 
 //  Create
 //-------------------------------------------------------------------------------------
-void BaseApp::createInputs()
+void BaseApp::CreateInputs()
 {
-	// mInputWrapper = new SFO::InputWrapper(mSDLWindow, mWindow);
-	// mInputWrapper->setMouseEventCallback(this);
-	// mInputWrapper->setKeyboardEventCallback(this);
-	// mInputWrapper->setJoyEventCallback(this);
-	// mInputWrapper->setWindowEventCallback(this);
 	// mCursorManager = new SFO::SDLCursorManager();
 	// onCursorChange(MyGUI::PointerManager::getInstance().getDefaultPointer());
 	// mCursorManager->setEnabled(true);
@@ -168,8 +163,7 @@ BaseApp::~BaseApp()
 		delete mInputCtrlPlayer[i];
 	}
 
-/*	delete mInputWrapper;
-	delete mCursorManager;
+/*	delete mCursorManager;
 
 	#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 		mRoot->unloadPlugin("RenderSystem_Direct3D9");
@@ -455,182 +449,6 @@ void BaseApp::LoadingOff()
 }
 
 
-#if 0
-//-------------------------------------------------------------------------------------
-//  key, mouse, window
-//-------------------------------------------------------------------------------------
-
-bool BaseApp::keyReleased(const SDL_KeyboardEvent& arg)
-{
-	mInputCtrl->keyReleased(arg);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->keyReleased(arg);
-
-	if (bAssignKey) return true;
-
-	if (mGui && (isFocGui || isTweak()))
-	{
-		OIS::KeyCode kc = mInputWrapper->sdl2OISKeyCode(arg.keysym.sym);
-
-		MyGUI::InputManager::getInstance().injectKeyRelease(MyGUI::KeyCode::Enum(kc));
-		return true;
-	}
-	return true;
-}
-
-//  Mouse events
-//-------------------------------------------------------------------------------------
-
-bool BaseApp::mouseMoved(const SFO::MouseMotionEvent &arg)
-{
-	mInputCtrl->mouseMoved(arg);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->mouseMoved(arg);
-
-	if (bAssignKey)  return true;
-
-	mMouseX = arg.x;
-	mMouseY = arg.y;
-
-	if (IsFocGui() && mGui)  {
-		MyGUI::InputManager::getInstance().injectMouseMove(arg.x, arg.y, arg.z);
-		return true;  }
-
-	///  Follow Camera Controls
-	int i = 0;  //Log("cam: "+toStr(iCurCam));
-	for (std::vector<CarModel*>::iterator it=carModels.begin(); it!=carModels.end(); ++it,++i)
-		if (i == iCurCam && (*it)->fCam)
-			(*it)->fCam->Move( mbLeft, mbRight, mbMiddle, shift, arg.xrel, arg.yrel, arg.zrel );
-
-	return true;
-}
-
-bool BaseApp::mousePressed( const SDL_MouseButtonEvent& arg, Uint8 id )
-{
-	mInputCtrl->mousePressed(arg, id);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->mousePressed(arg, id);
-
-	if (bAssignKey)  return true;
-	if (IsFocGui() && mGui)  {
-		MyGUI::InputManager::getInstance().injectMousePress(arg.x, arg.y, sdlButtonToMyGUI(id));
-		return true;  }
-
-	if		(id == SDL_BUTTON_LEFT)		mbLeft = true;
-	else if (id == SDL_BUTTON_RIGHT)	mbRight = true;
-	else if (id == SDL_BUTTON_MIDDLE)	mbMiddle = true;
-	return true;
-}
-
-bool BaseApp::mouseReleased( const SDL_MouseButtonEvent& arg, Uint8 id )
-{
-	mInputCtrl->mouseReleased(arg, id);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->mouseReleased(arg, id);
-
-	if (bAssignKey)  return true;
-	if (IsFocGui() && mGui)  {
-		MyGUI::InputManager::getInstance().injectMouseRelease(arg.x, arg.y, sdlButtonToMyGUI(id));
-		return true;  }
-
-	if		(id == SDL_BUTTON_LEFT)		mbLeft = false;
-	else if (id == SDL_BUTTON_RIGHT)	mbRight = false;
-	else if (id == SDL_BUTTON_MIDDLE)	mbMiddle = false;
-	return true;
-}
-
-void BaseApp::textInput(const SDL_TextInputEvent &arg)
-{
-	const char* text = &arg.text[0];
-	std::vector<unsigned long> unicode = utf8ToUnicode(std::string(text));
-
-	if (isFocGui || isTweak())
-	for (std::vector<unsigned long>::iterator it = unicode.begin(); it != unicode.end(); ++it)
-		MyGUI::InputManager::getInstance().injectKeyPress(MyGUI::KeyCode::None, *it);
-}
-
-bool BaseApp::axisMoved(const SDL_JoyAxisEvent &arg, int axis)
-{
-	mInputCtrl->axisMoved(arg, axis);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->axisMoved(arg, axis);
-	return true;
-}
-
-bool BaseApp::buttonPressed(const SDL_JoyButtonEvent &evt, int button)
-{
-	mInputCtrl->buttonPressed(evt, button);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->buttonPressed(evt, button);
-	return true;
-}
-
-bool BaseApp::buttonReleased(const SDL_JoyButtonEvent &evt, int button)
-{
-	mInputCtrl->buttonReleased(evt, button);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->buttonReleased(evt, button);
-	return true;
-}
-
-//  mouse cursor
-//-------------------------------------------------------
-void BaseApp::showMouse()
-{	
-	mInputWrapper->setMouseVisible(true);
-}
-void BaseApp::hideMouse()
-{                
-	mInputWrapper->setMouseVisible(false);
-}
-
-void BaseApp::updMouse()
-{
-	if (IsFocGui())	showMouse();
-	else			hideMouse();
-
-	mInputWrapper->setAllowGrab(pSet->mouse_capture);
-
-	mInputWrapper->setMouseRelative(!IsFocGui());
-	mInputWrapper->setGrabPointer(!IsFocGui());
-}
-
-void BaseApp::onCursorChange(const std::string &name)
-{
-	if (!mCursorManager->cursorChanged(name))
-		return; //the cursor manager doesn't want any more info about this cursor
-	//See if we can get the information we need out of the cursor resource
-	ResourceImageSetPointerFix* imgSetPtr = dynamic_cast<ResourceImageSetPointerFix*>(MyGUI::PointerManager::getInstance().getByName(name));
-	if (imgSetPtr != NULL)
-	{
-		MyGUI::ResourceImageSet* imgSet = imgSetPtr->getImageSet();
-		std::string tex_name = imgSet->getIndexInfo(0,0).texture;
-		TexturePtr tex = TextureManager::getSingleton().getByName(tex_name);
-
-		//everything looks good, send it to the cursor manager
-		if (tex)
-		{
-			Uint8 size_x = imgSetPtr->getSize().width;
-			Uint8 size_y = imgSetPtr->getSize().height;
-			Uint8 left = imgSetPtr->getTexturePosition().left;
-			Uint8 top = imgSetPtr->getTexturePosition().top;
-			Uint8 hotspot_x = imgSetPtr->getHotSpot().left;
-			Uint8 hotspot_y = imgSetPtr->getHotSpot().top;
-
-			mCursorManager->receiveCursorInfo(name, tex, left, top, size_x, size_y, hotspot_x, hotspot_y);
-	}	}
-}
-
-void BaseApp::windowResized(int x, int y)
-{
-	pSet->windowx = x;  pSet->windowy = y;
-	bWindowResized = true;
-	
-	// Adjust viewports
-	mSplitMgr->Align();
-	mPlatform->getRenderManagerPtr()->setActiveViewport(mSplitMgr->mNumViewports);
-}
-
-void BaseApp::windowClosed()
-{
-	Root::getSingleton().queueEndRendering();
-}
-#endif
-
-
 ///  base Init Gui
 //--------------------------------------------------------------------------------------------------------------
 void BaseApp::baseInitGui(GraphicsSystem *mGraphicsSystem)
@@ -639,7 +457,7 @@ void BaseApp::baseInitGui(GraphicsSystem *mGraphicsSystem)
 
 	if (mPlatform)
 		return;
-	LogO(">> InitGui ***");
+	LogO("::: Init MyGui");
 
 	using namespace MyGUI;
 	//  Gui
@@ -739,6 +557,7 @@ void BaseApp::baseInitGui(GraphicsSystem *mGraphicsSystem)
 	imgLoad->setImageTexture("background2.png");
 	imgLoad->setVisible(true);
 
+	LogO("--- baseSizeGui");
 	baseSizeGui();
 }
 
@@ -783,6 +602,7 @@ void BaseApp::baseSizeGui()
 
 void BaseApp::DestroyGui()
 {
+	LogO("::: Destroy MyGui");
 	if (mGui)
 	{	mGui->shutdown();  delete mGui;  mGui = 0;  }
 	if (mPlatform)

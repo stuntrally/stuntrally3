@@ -1,11 +1,11 @@
 #pragma once
 #include "Gui_Def.h"
-#include <OgreFrameListener.h>
-#include <OgreWindowEventUtilities.h>
-#include <OgreMaterialManager.h>
-// #include "../sdl4ogre/events.h"
+#include "GameState.h"
+// #include <OgreFrameListener.h>
+// #include <OgreWindowEventUtilities.h>
+// #include <OgreMaterialManager.h>
+#include <vector>
 
-// namespace SFO {  class InputWrapper;  class SDLCursorManager;  }
 namespace ICS {  class InputControlSystem;  class DetectingBindingListener;  }
 namespace MyGUI{  class Ogre2Platform;  }
 namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class Window;  }
@@ -23,10 +23,8 @@ enum LobbyState  {  DISCONNECTED, HOSTING, JOINED  };
 
 
 
-class BaseApp : public BGui
-	// public Ogre::FrameListener,
-	// public SFO::KeyListener, public SFO::MouseListener,
-	// public SFO::JoyListener, public SFO::WindowListener
+class BaseApp : public BGui, public GameState
+	// public Ogre::FrameListener, public SFO::WindowListener
 {
 	friend class CarModel;
 	friend class CGame;
@@ -40,7 +38,8 @@ public:
 	
 	bool bLoading =0, bLoadingEnd =0, bSimulating =0;  int iLoad1stFrames =0;
 	
-	//  has to be in baseApp for camera mouse move
+	//  🚗 Cars / vehicles
+	//  is in BaseApp for camera mouse move
 	typedef std::vector<class CarModel*> CarModels;
 	CarModels carModels;
 	
@@ -61,13 +60,10 @@ public:
 	// bool mShowDialog =0, mShutDown =0;
 	// bool setup(), configure();  void updateStats();
 
-	// int mMouseX =0, mMouseY =0;
-	
 	///  create
 	// virtual void createScene() = 0;
 	// virtual void destroyScene() = 0;
 
-	void createInputs();
 	// void createViewports(), refreshCompositor(bool disableAll=false);
 	// void setupResources(), createResourceListener(), loadResources();
 	void LoadingOn(), LoadingOff();
@@ -77,19 +73,8 @@ public:
 	// bool frameEnded(const Ogre::FrameEvent& evt);
 	// virtual bool frameStart(Ogre::Real time) = 0;
 	// virtual bool frameEnd(Ogre::Real time) = 0;
-	
-	///  input events
-	// virtual bool mouseMoved(const SFO::MouseMotionEvent &arg );
-	// virtual bool mousePressed(const SDL_MouseButtonEvent &arg, Uint8 id );
-	// virtual bool mouseReleased(const SDL_MouseButtonEvent &arg, Uint8 id );
-	// virtual void textInput(const SDL_TextInputEvent& arg);
-	// virtual bool keyPressed(const SDL_KeyboardEvent &arg) = 0;
-	// virtual bool keyReleased(const SDL_KeyboardEvent &arg);
-	// virtual bool buttonPressed(const SDL_JoyButtonEvent &evt, int button );
-	// virtual bool buttonReleased(const SDL_JoyButtonEvent &evt, int button );
-	// virtual bool axisMoved(const SDL_JoyAxisEvent &arg, int axis );
-
 	// void onCursorChange(const std::string& name);
+
 
 	///  Ogre
 	Ogre::Root* mRoot =0;  Ogre::SceneManager* mSceneMgr =0;
@@ -100,9 +85,8 @@ public:
 	// virtual void windowClosed();
 
 
-	///  🕹️ input  ----
-	// SFO::InputWrapper* mInputWrapper =0;
-	// SFO::SDLCursorManager* mCursorManager =0;
+	///  🕹️ Input
+	//------------------------------------------------------------
 	ICS::InputControlSystem* mInputCtrl =0;
 	ICS::InputControlSystem* mInputCtrlPlayer[4] ={0,};
 	// std::vector<SDL_Joystick*> mJoysticks;
@@ -114,8 +98,26 @@ public:
 	///  input  vars
 	bool alt =0, ctrl =0, shift =0;  // key modifiers
 	bool mbLeft =0, mbRight =0, mbMiddle =0;  // mouse buttons
+	// int mMouseX =0, mMouseY =0;
 	bool mbWireFrame =0;
 	int iCurCam =0;
+	void CreateInputs();
+
+	///  input events  ----
+	void mouseMoved( const SDL_Event &arg ) override;
+	void mousePressed( const SDL_MouseButtonEvent &arg, Ogre::uint8 id ) override;
+	void mouseReleased( const SDL_MouseButtonEvent &arg, Ogre::uint8 id ) override;
+
+	// void textEditing( const SDL_TextEditingEvent& arg ) override;
+	// void textInput( const SDL_TextInputEvent& arg ) override;
+
+	// virtual void keyPressed( const SDL_KeyboardEvent &arg ) override;  // in App
+	// virtual void keyReleased(const SDL_KeyboardEvent &arg ) override;
+
+	void joyButtonPressed( const SDL_JoyButtonEvent &evt, int button ) override;
+	void joyButtonReleased( const SDL_JoyButtonEvent &evt, int button ) override;
+	void joyAxisMoved( const SDL_JoyAxisEvent &arg, int axis ) override;
+	// void joyPovMoved( const SDL_JoyHatEvent &arg, int index ) override;
 
 
 	///  🎛️ Gui  ..........................

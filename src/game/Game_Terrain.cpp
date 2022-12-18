@@ -2,7 +2,6 @@
 #include "CGame.h"
 #include "OgrePrerequisites.h"
 #include "OgreVector4.h"
-#include "CameraController.h"
 #include "GraphicsSystem.h"
 
 #include "Terra/Hlms/OgreHlmsTerra.h"
