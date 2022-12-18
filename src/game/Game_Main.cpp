@@ -1,4 +1,5 @@
-/*-----------------------------------------------------------------------------
+/*
+-----------------------------------------------------------------------------
 This source file was part of OGRE (Object-oriented Graphics Rendering Engine)
 For the latest info, see http://www.ogre3d.org/
 
@@ -21,7 +22,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
------------------------------------------------------------------------------*/
+-----------------------------------------------------------------------------
+*/
 #include "pch.h"
 #include "GraphicsSystem.h"
 #include "pathmanager.h"
@@ -195,7 +197,7 @@ class GameGraphicsSystem final : public GraphicsSystem
 	}
 
 public:
-	//  ctor  ----
+	//  🌟 ctor  ----
 	GameGraphicsSystem( GameState *gameState,
 			String logCfgPath = String(""),
 			String cachePath = String(""),
@@ -213,7 +215,7 @@ public:
 };
 
 
-//  main App ctor
+//  🌟 main App ctor
 void MainEntryPoints::createSystems( GameState **outGraphicsGameState,
 										GraphicsSystem **outGraphicsSystem,
 										GameState **outLogicGameState,

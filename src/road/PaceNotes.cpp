@@ -26,7 +26,7 @@ using namespace Ogre;
 using namespace MyGUI;
 
 
-//  ctor  ---------
+//  🌟 ctor  ---------
 PaceNote::PaceNote()
 	:nd(0), bb(0),bc(0), txt(0), text(0)
 	,pos(0,0,0), use(1), id(0)
@@ -206,7 +206,7 @@ void PaceNotes::updTxt(PaceNote& n, bool vis)
 }
 
 
-//  ctor  ---------
+//  🌟 ctor  ---------
 PaceNotes::PaceNotes(SETTINGS* pset) :pSet(pset)
 	,mSceneMgr(0),mCamera(0),mTerrain(0),mGui(0),mWindow(0)
 	,ii(0), iStart(0),iAll(1), iDir(1), iCur(0)

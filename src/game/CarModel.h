@@ -45,7 +45,7 @@ public:
 	bool isGhostTrk() const {  return cType == CT_TRACK;  }
 	void SetNumWheels(int n);
 	
-	//  ctor  ----
+	//  🌟 ctor  ----
 	CarModel(int index, int colorId, eCarType type, const std::string& name,
 		Ogre::SceneManager* sceneMgr, SETTINGS* set, GAME* game, Scene* sc,
 		Ogre::Camera* cam, App* app);
@@ -66,7 +66,10 @@ public:
 	float fLapAlpha = 1.f;
 	
 	
-	///----  model params  from .car
+	///  📄 config  --------
+	void LoadConfig(const std::string & pathCar), Defaults();
+
+	//  model params  from .car
 	float driver_view[3], hood_view[3], ground_view[3];  // mounted cameras
 	float interiorOffset[3], boostOffset[3], boostSizeZ;
 	float thrusterOfs[PAR_THRUST][3], thrusterSizeZ[PAR_THRUST];
@@ -88,10 +91,8 @@ public:
 	bool has2exhausts;  // car has 2nd exhaust, if true, mirror exhaust 1 for position
 	float exhaustPos[3];  // position of first exhaust
 	
-	void LoadConfig(const std::string & pathCar), Defaults();
 
-
-	///--------  Create
+	///  🆕 Create  --------
 	void Load(int startId, bool loop), Create(), /*CreateReflection(),*/ Destroy();
 	void CreatePart(Ogre::SceneNode* ndCar, Ogre::Vector3 vPofs,
 		Ogre::String sCar2, Ogre::String sCarI, Ogre::String sMesh, Ogre::String sEnt,
@@ -102,34 +103,33 @@ public:
 	int all_subs = 0, all_tris = 0;  //stats
 	
 	
-	//--------  Update
+	//  💫 Update  --------
 	void Update(PosInfo& posInfo, PosInfo& posInfoCam, float time);
 	void UpdateKeys();  // for camera X,C, last chk F12
 
 
-	//  reset camera after pos change etc	
-	void First();
-	int iFirst = 0;
-	
+	//  resource  --------
+	int iIndex = 0, iColor = 0;  // car id, color id
+	std::string sDirname;  // dir name of car (e.g. ES)
+	Ogre::String resGrpId, mtrId;  // resource group name, material suffix
+	std::string resCar;  // path to car textures
 	//  color
 	Ogre::ColourValue color;  // for minimap pos tri color  //float hue, sat, val;
 	Ogre::HlmsPbsDatablock *db =0;
 	void ChangeClr();  //  Apply new color
 		
-	//  track surface for wheels
-	void UpdWhTerMtr();
-	Ogre::String txtDbgSurf;
 	
-	void UpdParsTrails(bool visible=true);
-	
-	
-	///----  Camera, can be null
+	///  🎥 Camera, can be null  ----
 	FollowCamera* fCam =0;
 	int iCamFluid = -1;   // id to fluids[], -1 none
 	float fCamFl = 0.6f;  // factor, close to surface
 	float camDist;  // mul from .car
 
-	//  Main node
+	int iFirst = 0;
+	void First();  // reset camera after pos change etc	
+
+
+	//  🚗 Main node  --------
 	Ogre::SceneNode* pMainNode =0, *ndSph =0;
 	Ogre::Vector3 posSph[2];
 	Ogre::v1::BillboardSet* brakes =0;
@@ -142,13 +142,8 @@ public:
 	CAR* pCar =0;  // all need this set (even ghost, has it from 1st car)
 	
 	
-	///----  Logic vars
-	float angCarY = 0.f;  // car yaw angle for minimap
-	float distFirst = 1.f, distLast = 1.f, distTotal = 10.f;  // checks const distances set at start
-	float trackPercent = 0.f;  // % of track driven
-	void UpdTrackPercent();
-
-	///  Checkpoint vars,  start pos, lap
+	///  🏁 Checkpoint  --------
+	//  vars, start pos, lap
 	bool bGetStPos = true;  Ogre::Matrix4 matStPos;  Ogre::Vector4 vStDist;
 	int iInChk = -1, iCurChk = -1,
 		iNextChk = 0, iNumChks = 0,  // cur checkpoint -1 at start
@@ -162,31 +157,40 @@ public:
 	Ogre::Vector3 vStartPos;
 	void ResetChecks(bool bDist=false), UpdNextCheck(), ShowNextChk(bool visible);
 	Ogre::String sChkMtr;  bool bChkUpd = true;
+
 	//  for loop camera change
 	int iLoopChk = -1, iLoopLastCam = -1;
 	//  cam,chk old states
 	int iCamNextOld = 0;  bool bLastChkOld = 0;
-	
-	
-	//----  resource
-	int iIndex = 0, iColor = 0;  // car id, color id
-	std::string sDirname;  // dir name of car (e.g. ES)
-	Ogre::String resGrpId, mtrId;  // resource group name, material suffix
-	std::string resCar;  // path to car textures
 
+	///  Logic vars  ----
+	float angCarY = 0.f;  // car yaw angle for minimap
+	float distFirst = 1.f, distLast = 1.f, distTotal = 10.f;  // checks const distances set at start
 
-	//--------  Particle systems
+	float trackPercent = 0.f;  // % of track driven
+	void UpdTrackPercent();
+
+	
+	//  ✨ Particle systems  --------
 	enum EParTypes {  PAR_Smoke=0, PAR_Mud, PAR_Dust, PAR_Water, PAR_MudHard, PAR_MudSoft, PAR_ALL };
 	//  par-wheels, boost-car rear, spaceship thruster, sparks-world hit
 	Ogre::ParticleSystem* par[PAR_ALL][MAX_WHEELS];
 	Ogre::ParticleSystem* parBoost[PAR_BOOST], *parThrust[PAR_THRUST*2], *parHit;
 	std::vector<Ogre::v1::RibbonTrail*> whTrail;  // tire trail
 	std::vector<Ogre::Real> whTemp;  // spin time, approx tire temp.
-	
-	//  Wheels, Nodes
+
+	void UpdParsTrails(bool visible=true);
+
+
+	//  ⚫ Wheels, Nodes  --------
 	std::vector<Ogre::SceneNode*> ndWh, ndWhE, ndBrake;
 	Ogre::SceneNode* ndNextChk =0;  // beam
 	Ogre::Item* itNextChk =0;
+
+	//  track surface for wheels
+	void UpdWhTerMtr();
+	Ogre::String txtDbgSurf;
+	
 
 	//  to destroy
 	std::vector<Ogre::SceneNode*> vDelNd;		void ToDel(Ogre::SceneNode* nd);

@@ -1,8 +1,3 @@
-#include "OgreCommon.h"
-#include "OgreHlmsPbs.h"
-#include "OgreHlmsPbsDatablock.h"
-#include "OgreHlmsPbsPrerequisites.h"
-#include "OgreMeshManager.h"
 #include "pch.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
@@ -13,6 +8,11 @@
 #include "game.h"
 #include "GraphicsSystem.h"
 
+#include <OgreCommon.h>
+#include <OgreHlmsPbs.h>
+#include <OgreHlmsPbsDatablock.h>
+#include <OgreHlmsPbsPrerequisites.h>
+#include <OgreMeshManager.h>
 #include <OgreException.h>
 #include <OgreItem.h>
 #include <OgreSceneNode.h>

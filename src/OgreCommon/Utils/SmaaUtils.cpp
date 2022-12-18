@@ -1,12 +1,12 @@
 
 #include "Utils/SmaaUtils.h"
 
-#include "OgreRoot.h"
+#include <OgreRoot.h>
 
-#include "OgreMaterialManager.h"
-#include "OgreMaterial.h"
-#include "OgreTechnique.h"
-#include "OgrePass.h"
+#include <OgreMaterialManager.h>
+#include <OgreMaterial.h>
+#include <OgreTechnique.h>
+#include <OgrePass.h>
 
 namespace Demo
 {

@@ -8,7 +8,7 @@
 using namespace Ogre;
 
 
-//  ctor
+//  🌟 ctor
 PosInfo::PosInfo()
 	:bNew(false)  // not inited
 	,pos(0,-200,0), percent(0.f), braking(0)

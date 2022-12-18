@@ -28,7 +28,7 @@
 using namespace std;
 
 
-///  ctor
+///  🌟 ctor
 GAME::GAME(SETTINGS* pSettings)
 	:app(NULL), pSet(pSettings)
 	,frame(0), displayframe(0), clocktime(0), target_time(0)
@@ -163,7 +163,7 @@ bool GAME::LoadAllSurfaces()
 }
 
 
-///  Tires  all in data/carsim/normal/tires/*.tire
+///  ⚫ Tires  all in data/carsim/normal/tires/*.tire
 //------------------------------------------------------------------------------------------------------------------------------
 bool GAME::LoadTire(CARTIRE& ct, string path, string& file)
 {
@@ -284,7 +284,7 @@ bool GAME::LoadSusp()
 //------------------------------------------------------------------------------------------------------------------------------
 
 
-///  Sound Init
+///  🔉 Sound Init
 bool GAME::InitializeSound()
 {
 	Ogre::Timer ti;
@@ -389,8 +389,8 @@ void GAME::Test()
 }
 
 
-///  the main game loop
-//----------------------------------------------------------------------------------------------------------------------------
+///  💫1  one game loop
+//---------------------------------------------------------------
 bool GAME::OneLoop(double dt)
 {
 	if (reloadSimNeed)
@@ -414,7 +414,9 @@ bool GAME::OneLoop(double dt)
 	return true;
 }
 
-///  step game required amount of ticks
+//---------------------------------------------------------------
+///  💫  step game  required amount of ticks
+//---------------------------------------------------------------
 void GAME::Tick(double deltat)
 {
 	const float minfps = 10.f;  // this is the minimum fps the game will run at before it starts slowing down time
@@ -452,7 +454,7 @@ void GAME::Tick(double deltat)
 }
 
 
-///  simulate game by one frame
+///  💫  simulate game  by one frame
 //----------------------------------------------------------------------------------------------------------------------------
 void GAME::AdvanceGameLogic(double dt)
 {

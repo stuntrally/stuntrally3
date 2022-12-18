@@ -28,7 +28,8 @@ using namespace Ogre;
 using namespace std;
 
 
-//  ctor  -----------------------------------------------
+//  🌟 ctor
+//-----------------------------------------------
 App::App()
 	:fLastFrameDT(0.001f)
 	// , mIblQuality( IblHigh )  // 45 fps-  // par
@@ -52,6 +53,8 @@ App::App()
 	// Load();  later in createScene01
 }
 
+//  💥 dtor
+//-----------------------------------------------
 void App::ShutDown()
 {
 	mShutDown = true;

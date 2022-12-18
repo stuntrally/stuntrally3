@@ -512,7 +512,7 @@ void FollowCamera::setCamera(int ang)
 }
 
 
-//  ctors
+//  🌟 ctor  ----
 
 FollowCamera::FollowCamera(Camera* cam,	SETTINGS* pSet1) :
 	first(true), iFirst(0), ca(0), updName(0),

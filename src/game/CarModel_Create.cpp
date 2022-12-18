@@ -47,7 +47,7 @@ using namespace std;
 #define  FileExists(s)  PATHMANAGER::FileExists(s)
 
 
-//  ctor
+//  🌟 ctor
 //------------------------------------------------------------------------------------------------------
 CarModel::CarModel(int index, int colorId, eCarType type, const string& name,
 	SceneManager* sceneMgr, SETTINGS* set, GAME* game, Scene* s,

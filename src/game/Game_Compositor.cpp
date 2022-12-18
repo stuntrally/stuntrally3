@@ -2,21 +2,20 @@
 #include "RenderConst.h"
 #include "CGame.h"
 
-#include "CameraController.h"
 #include "GraphicsSystem.h"
-#include "OgreLogManager.h"
+#include <OgreLogManager.h>
 
-#include "OgreSceneManager.h"
-#include "OgreRoot.h"
-#include "OgreCamera.h"
-#include "OgreWindow.h"
+#include <OgreSceneManager.h>
+#include <OgreRoot.h>
+#include <OgreCamera.h>
+#include <OgreWindow.h>
 
-#include "OgreTextureGpuManager.h"
-#include "OgrePixelFormatGpuUtils.h"
-#include "OgreHlmsPbs.h"
-#include "OgreHlmsManager.h"
+#include <OgreTextureGpuManager.h>
+#include <OgrePixelFormatGpuUtils.h>
+#include <OgreHlmsPbs.h>
+#include <OgreHlmsManager.h>
 
-// #include "OgreAtmosphere2Npr.h"
+// #include <OgreAtmosphere2Npr.h>
 #include "Compositor/OgreCompositorManager2.h"
 #include "Compositor/OgreCompositorNodeDef.h"
 #include "Compositor/OgreCompositorWorkspaceDef.h"
@@ -28,8 +27,9 @@ using namespace Ogre;
 
 
 //-----------------------------------------------------------------------------------
-CompositorWorkspace *App::setupCompositor()
+CompositorWorkspace *App::SetupCompositor()
 {
+	LogO("#### setupCompositor");
 	// We first create the Cubemap workspace and pass it to the final workspace
 	// that does the real rendering.
 	//
@@ -44,10 +44,11 @@ CompositorWorkspace *App::setupCompositor()
 	Camera *camera = mGraphicsSystem->getCamera();
 	CompositorManager2 *compositorManager = root->getCompositorManager2();
 
-	if( mDynamicCubemapWorkspace )
+	if( mWorkspace )
 	{
-		compositorManager->removeWorkspace( mDynamicCubemapWorkspace );
-		mDynamicCubemapWorkspace = 0;
+		compositorManager->removeWorkspace( mWorkspace );
+		mWorkspace = 0;
+		LogO("#### setupCompositor rem workspace");
 	}
 
 	uint32 iblSpecularFlag = 0;
@@ -61,28 +62,30 @@ CompositorWorkspace *App::setupCompositor()
 	// explicitly generate the mipmaps by calling generate_mipmaps. It's just an API
 	// hint to tell the GPU we will be using the mipmaps auto generation routines.
 	TextureGpuManager *textureManager = root->getRenderSystem()->getTextureGpuManager();
-	mDynamicCubemap = textureManager->createOrRetrieveTexture( "DynamicCubemap",
+	mCubemapReflTex = textureManager->createOrRetrieveTexture( "DynamicCubemap",
 		GpuPageOutStrategy::Discard,
 		TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps | iblSpecularFlag,
 		TextureTypes::TypeCube );
-	mDynamicCubemap->scheduleTransitionTo( GpuResidency::OnStorage );
+	mCubemapReflTex->scheduleTransitionTo( GpuResidency::OnStorage );
 
 	uint32 resolution = 512u;
-	if( mIblQuality == MipmapsLowest )
+	if( mIblQuality == MipmapsLowest || mIblQuality == IblMedium)
 		resolution = 1024u;
 	else if( mIblQuality == IblLow )
 		resolution = 256u;
 	else
 		resolution = 512u;
-	mDynamicCubemap->setResolution( resolution, resolution );
-	mDynamicCubemap->setNumMipmaps( PixelFormatGpuUtils::getMaxMipmapCount( resolution ) );
+	mCubemapReflTex->setResolution( resolution, resolution );
+	mCubemapReflTex->setNumMipmaps( PixelFormatGpuUtils::getMaxMipmapCount( resolution ) );
 	if( mIblQuality != MipmapsLowest )
 	{
-		// Limit max mipmap to 16x16
-		mDynamicCubemap->setNumMipmaps( mDynamicCubemap->getNumMipmaps() - 4u );
+		// Limit max mipmap to 16x16 .. 
+		// mDynamicCubemap->setNumMipmaps( mDynamicCubemap->getNumMipmaps() - 4u );
+		mCubemapReflTex->setNumMipmaps( mCubemapReflTex->getNumMipmaps() - 2u );  // -4u
+		// mDynamicCubemap->setNumMipmaps( mDynamicCubemap->getNumMipmaps() /*- 1u*/ );
 	}
-	mDynamicCubemap->setPixelFormat( PFG_RGBA8_UNORM_SRGB );
-	mDynamicCubemap->scheduleTransitionTo( GpuResidency::Resident );
+	mCubemapReflTex->setPixelFormat( PFG_RGBA8_UNORM_SRGB );
+	mCubemapReflTex->scheduleTransitionTo( GpuResidency::Resident );
 
 
 	Ogre::HlmsManager *hlmsManager = mGraphicsSystem->getRoot()->getHlmsManager();
@@ -102,10 +105,10 @@ CompositorWorkspace *App::setupCompositor()
 		// mCubeCamera->_setRenderedRqs(0, 200);
 		mCubeCamera->setVisibilityFlags( RV_MaskReflect );
 		// mCubeCamera->setDefaultVisibilityFlags( RV_Sky);  //** set in cubemap_target
-
+		//? mCubeCamera->setVrData(VrData
 		mCubeCamera->setFarClipDistance( 20000 ); //300 );  // par  20000 needed for sky meh..
-		// mCubeCamera->setShadowRenderingDistance( 100 );  // par?-
-		//mCubeCamera->setCastShadows(false);
+		// mCubeCamera->setShadowRenderingDistance( 300 );  // par?-
+		// mCubeCamera->setCastShadows(true);
 	}
 
 	// No need to tie RenderWindow's use of MSAA with cubemap's MSAA. Could never use MSAA for cubemap.
@@ -120,14 +123,14 @@ CompositorWorkspace *App::setupCompositor()
 		CompositorPassIblSpecularDef *iblSpecPassDef =
 			static_cast<CompositorPassIblSpecularDef *>( passes.back() );
 		iblSpecPassDef->mForceMipmapFallback = mIblQuality == MipmapsLowest;
-		iblSpecPassDef->mSamplesPerIteration = mIblQuality == IblLow ? 32.0f : 128.0f;
+		iblSpecPassDef->mSamplesPerIteration = mIblQuality == IblLow ? 32.0f : mIblQuality == IblMedium ? 16.f : 128.0f;
 		iblSpecPassDef->mSamplesSingleIterationFallback = iblSpecPassDef->mSamplesPerIteration;
 	}
 
 
 	//  Setup the cubemap's compositor
 	CompositorChannelVec cubemapExternalChannels( 1 );
-	cubemapExternalChannels[0] = mDynamicCubemap;
+	cubemapExternalChannels[0] = mCubemapReflTex;
 
 	const Ogre::String workspaceName( "Tutorial_DynamicCubemap_cubemap" );  // created from code
 	if( !compositorManager->hasWorkspaceDefinition( workspaceName ) )
@@ -136,7 +139,7 @@ CompositorWorkspace *App::setupCompositor()
 		workspaceDef->connectExternal( 0, cubemapRendererNode, 0 );
 	}
 
-	mDynamicCubemapWorkspace = compositorManager->addWorkspace(
+	mWorkspace = compositorManager->addWorkspace(
 		sceneManager, cubemapExternalChannels, mCubeCamera,
 		workspaceName, true );
 
@@ -144,7 +147,7 @@ CompositorWorkspace *App::setupCompositor()
 	//  Now setup the regular Render window
 	CompositorChannelVec externalChannels( 2 );
 	externalChannels[0] = renderWindow->getTexture();
-	externalChannels[1] = mDynamicCubemap;
+	externalChannels[1] = mCubemapReflTex;
 
 	
 	//  Gui, add MyGUI pass

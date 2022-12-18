@@ -1,8 +1,8 @@
 
-#include "OgrePrerequisites.h"
+#include <OgrePrerequisites.h>
 
-#include "OgreGpuProgramParams.h"
-#include "OgreMatrix4.h"
+#include <OgreGpuProgramParams.h>
+#include <OgreMatrix4.h>
 
 namespace Demo
 {

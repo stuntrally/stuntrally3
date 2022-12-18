@@ -10,12 +10,12 @@
 #include "ICSChannelListener.h"
 // #include "PreviewTex.h"
 #include <thread>
-//#include "OgreTextureGpu.h"
-#include "OgreHlmsDatablock.h"
-#include "OgrePrerequisites.h"
-#include "TutorialGameState.h"
+//#include <OgreTextureGpu.h>
+#include <OgreHlmsDatablock.h>
+#include <OgrePrerequisites.h>
 
 namespace Ogre {  class SceneNode;  class SceneManager;  class TextureGpu;  class Root;
+	namespace v1 {  class TextAreaOverlayElement;  }
 	class Terra;  class HlmsPbsTerraShadows;  class HlmsDatablock;  }
 namespace BtOgre  {  class DebugDrawer;  }
 class Scene;  class CScene;  class CData;  class CInput;  class GraphView;
@@ -23,16 +23,13 @@ class SETTINGS;  class GAME;  class CHud;  class CGui;  class CGuiCom;
 namespace MyGUI {  class Gui;  class Ogre2Platform;  }
 
 
-enum IblQuality  // reflections
+enum IblQuality  // car reflections
 {
-	MipmapsLowest,
-	IblLow,
-	IblHigh
+	MipmapsLowest, IblLow, IblMedium, IblHigh
 };
 
 
-class App : public BaseApp,	public ICS::ChannelListener,
- 	public TutorialGameState
+class App : public BaseApp,	public ICS::ChannelListener
 {
 	//  vars
 	Ogre::Vector3 camPos;
@@ -44,8 +41,9 @@ class App : public BaseApp,	public ICS::ChannelListener,
 	bool left = false, right = false;  // arrows
 public:	
 	bool shift = false, ctrl = false;
-private:
 
+	GraphicsSystem      *mGraphicsSystem =0;
+private:
 	//  wireframe
 	Ogre::HlmsMacroblock macroblockWire;
 	bool wireTerrain = false;
@@ -53,6 +51,10 @@ private:
 	//  Fps overlay
 	void updDebugText();
 	void updFpsText();  float getGPUmem();
+
+	bool mDisplayOverlay = 0;  //remove..
+	Ogre::v1::TextAreaOverlayElement *mDebugText =0, *mDebugTextShadow =0;
+	void CreateDebugTextOverlay();
 
 
 public:
@@ -73,51 +75,54 @@ public:
 	//  events
 	void keyPressed( const SDL_KeyboardEvent &arg ) override;
 	void keyReleased( const SDL_KeyboardEvent &arg ) override;
-public:
 
 
-	//  reflection cube  ----
+	//  🔮 reflection cubemap  ----
 	Ogre::Camera *mCubeCamera = 0;
-	Ogre::TextureGpu *mDynamicCubemap = 0;
-protected:
-	Ogre::CompositorWorkspace *mDynamicCubemapWorkspace = 0;
+	Ogre::TextureGpu *mCubemapReflTex = 0;
 
 	IblQuality mIblQuality = IblLow;  // par in ctor
-public:		
-	Ogre::CompositorWorkspace *setupCompositor();
+	Ogre::CompositorWorkspace *mWorkspace = 0;
+	Ogre::CompositorWorkspace *SetupCompositor();
 
 
 	//  ⛰️ Terrain  ----
-public:
 	Ogre::Terra *mTerra = 0;
 	void CreateTerrain(), DestroyTerrain();
-protected:
+
 	Ogre::String mtrName;
 	Ogre::SceneNode *nodeTerrain = 0;
 	//  listener to make PBS objects also be affected by terrain's shadows
 	Ogre::HlmsPbsTerraShadows *mHlmsPbsTerraShadows = 0;
 
+	//  mtr ids, from ter  . . . 
+	int blendMapSize =513;
+	std::vector<char> blendMtr;
+	//; void GetTerMtrIds();  // todo:
 
-	//  Util mtr, reduce mem, each load
+
+	//  🛠 Util  ----
 	template <typename T, size_t MaxNumTextures>
 	void unloadTexturesFromUnusedMaterials( Ogre::HlmsDatablock *datablock,
 											std::set<Ogre::TextureGpu *> &usedTex,
 											std::set<Ogre::TextureGpu *> &unusedTex );
 	void unloadTexturesFromUnusedMaterials();
 	void unloadUnusedTextures();
-public:
-	void minimizeMemory();
-	// void setTightMemoryBudget();
-	// void setRelaxedMemoryBudget();
+
+	void MinimizeMemory();  // mtr,tex, reduce mem, each track load
+	// void setTightMemoryBudget(), setRelaxedMemoryBudget();
+	//  utils
+	void SetTexWrap(Ogre::HlmsTypes type, Ogre::String name, bool wrap);
+	void SetWireframe(Ogre::HlmsTypes type, bool wire);
 
 
 public:
-	//  ctor
+	//  🌟 ctor  ----
 	App();
 	virtual ~App();
 	void ShutDown();
 
-	//  data
+	//  scene data
 	CScene* scn =0;
 	CData* data =0;
 	Scene* sc = 0;
@@ -130,11 +135,7 @@ public:
 	Ogre::SceneManager* mSceneMgr =0;
 	
 
-	///  🚗 Cars Game data  ----------------
-	//  has to be in baseApp for camera mouse move
-	typedef std::vector<class CarModel*> CarModels;
-	CarModels carModels;
-	
+	///  🚗 Cars pos Game data  ----------------
 	//  new positions info for every CarModel
 	PosInfo carPoses[CarPosCnt][MAX_CARS];  // max 16cars
 	int iCurPoses[MAX_CARS];  // current index for carPoses queue
@@ -191,22 +192,18 @@ public:
 	Ogre::String oldTrack;  bool oldTrkUser = 0;
 
 	
-	//  ⏳ Loading  ----------------
+	//  ⏳ Loading  states  ----------------
 	bool bLoading = 0, bLoadingEnd = 0, bSimulating = 0;  int iLoad1stFrames = 0;
 	void LoadCleanUp(), LoadGame(), LoadScene(), LoadCar(), LoadTerrain(), LoadRoad(), LoadObjects(), LoadTrees(), LoadMisc();
 
-	enum ELoadState { LS_CLEANUP=0, LS_GAME, LS_SCENE, LS_CAR, LS_TERRAIN, LS_ROAD, LS_OBJECTS, LS_TREES, LS_MISC, LS_ALL };
+	enum ELoadState
+	{	LS_CLEANUP=0, LS_GAME, LS_SCENE, LS_CAR,
+		LS_TERRAIN, LS_ROAD, LS_OBJECTS, LS_TREES, LS_MISC, LS_ALL  };
 	static Ogre::String cStrLoad[LS_ALL+1];
 	int curLoadState = 0;
 	std::map<int, std::string> loadingStates;
 
 	// float mTimer = 0.f;  // todo: wind,water
-
-
-	//  mtr from ter  . . . 
-	int blendMapSize =513;
-	std::vector<char> blendMtr;
-	//; void GetTerMtrIds();  // todo:
 
 	// void recreateReflections();  // call after refl_mode changed
 

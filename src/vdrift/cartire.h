@@ -26,7 +26,7 @@ public:
 	void FindSigmaHatAlphaHat(Dbl load, Dbl & output_sigmahat, Dbl & output_alphahat, int iterations = 400);
 
 public:
-	//  ctor
+	//  🌟 ctor
 	CARTIRE()
 	{
 		longitudinal.resize(11, 0.0);

@@ -105,7 +105,7 @@ protected:
 	void gameEntityRemoved( GameEntity *toRemove );
 
 public:
-	//  ctor  ----
+	//  🌟 ctor  ----
 	GraphicsSystem( GameState *gameState,
 		Ogre::String logCfgPath = Ogre::String(""),
 		Ogre::String cachePath = Ogre::String(""),

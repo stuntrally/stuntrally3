@@ -69,7 +69,7 @@ public:
 	bool benchmode, profilingmode, pause;
 
 
-	//  cars  ---
+	//  🚗 cars  ----
 	SETTINGS* pSet;
 
 	std::vector<CAR*> cars;
@@ -78,10 +78,10 @@ public:
 	COLLISION_WORLD collision;
 	bool bResetObj;
 	
-	TIMER timer;
+	TIMER timer;  // ⏱️
 
 
-	//  Sound  ---
+	//  🔉 Sound  ----
 	SoundMgr* snd;
 	Sound* snd_chk, *snd_chkwr,  *snd_lap, *snd_lapbest,  *snd_stage, *snd_win[3], *snd_fail;
 	void UpdHudSndVol();
@@ -96,6 +96,7 @@ public:
 	//  ref graphs, tire edit
 	std::string tire_ref;  int tire_ref_id;
 	void PickTireRef(std::string name);
+
 
 	std::vector <TRACKSURFACE> surfaces;  /// all surfaces
 	std::map <std::string, int> surf_map;  // name to surface id

@@ -203,7 +203,7 @@ void COLLISION_WORLD::Update(double dt, bool profiling)
 //-------------------------------------------------------------------------------------------------------------------------------
 
 
-///  ctor bullet world
+///  🌟 ctor  [(  bullet world  )]
 COLLISION_WORLD::COLLISION_WORLD() : pApp(0),
 	config(0), dispatcher(0), broadphase(0), solver(0), world(0), cdOld(0), 
 	fixedTimestep(1.0/60.0), maxSubsteps(7)  // default, set from settings

@@ -13,7 +13,7 @@ using namespace Ogre;
 using namespace tinyxml2;
 
 
-//  ctor
+//  🌟 ctor
 //---------------------------------------------------------------------------------------------------------------
 #ifdef SR_EDITOR
 SplineRoad::SplineRoad(App* papp) : pApp(papp)
@@ -50,7 +50,7 @@ void SplineRoad::Defaults()
 	iChkId1 = 0;  iChkId1Rev = 0;
 }
 
-//  ctor stats
+//  🌟 ctor stats
 void SplineRoad::Stats::Reset()
 {
 	iMrgSegs = 0;  segsMrg = 0;
