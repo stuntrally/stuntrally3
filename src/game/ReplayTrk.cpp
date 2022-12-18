@@ -139,7 +139,7 @@ bool TrackGhost::LoadFile(std::string file, bool bLog)
 			+"  time: "+fToStr(GetTimeLength(),2,5)+"  frames: "+toStr(frames.size()));
 	#endif
 
-	if (bLog)  LogO(Ogre::String("::: Time Load trk ghost: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	if (bLog)  LogO(Ogre::String(":::* Time Load trk ghost: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
     return true;
 }
 

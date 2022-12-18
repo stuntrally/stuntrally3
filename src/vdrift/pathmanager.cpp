@@ -216,7 +216,7 @@ void PATHMANAGER::Init(bool log_paths)
 	{
 		info.str(string());  // clear, to not have twice
 		info << "Paths info" << endl;
-		info << "-------------------------" << endl;
+		info << "-------------" << endl;
 		info << "Ogre plugin-: " << ogre_plugin << endl;
 		info << "Data:         " << Data() << endl;
 		info << "ConfigDir:    " << GameConfigDir() << endl;  //?
@@ -224,7 +224,7 @@ void PATHMANAGER::Init(bool log_paths)
 		info << "User cfg,log: " << UserConfigDir() << endl;
 		info << "User data:    " << user_data << endl;
 		info << "Cache:        " << CacheDir() << endl;
-		info << "-------------------------";
+		info << "-------------";
 	}
 }
 

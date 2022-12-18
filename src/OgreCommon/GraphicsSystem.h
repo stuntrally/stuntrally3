@@ -111,7 +111,7 @@ public:
 		Ogre::String cachePath = Ogre::String(""),
 		Ogre::String resourcePath = Ogre::String(""),
 		Ogre::String pluginsPath = Ogre::String("./"),
-		Ogre::ColourValue backgroundColour = Ogre::ColourValue( 0.2f, 0.4f, 0.6f ) );
+		Ogre::ColourValue backClr = Ogre::ColourValue( 0.15,0.165,0.18 ) );  // ignored, in .compositor
 	~GraphicsSystem() override;
 
 	void _notifyLogicSystem( BaseSystem *logicSystem )      { mLogicSystem = logicSystem; }

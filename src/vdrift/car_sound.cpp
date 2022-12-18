@@ -72,7 +72,7 @@ bool CAR::LoadSounds(const std::string & carpath)
 	s.mud_cont   = snd->createInstance("mud_cont",   0);  s.mud_cont->set2D(ss);
 	s.water_cont = snd->createInstance("water_cont", 0);  s.water_cont->set2D(ss);
 
-	LogO("::: Time car Sounds: "/*+carpath+" "*/+ fToStr(ti.getMilliseconds(),0,3) +" ms");
+	LogO(":::* Time car Sounds: "/*+carpath+" "*/+ fToStr(ti.getMilliseconds(),0,3) +" ms");
 	return true;
 }
 

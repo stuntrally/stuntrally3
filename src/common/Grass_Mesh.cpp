@@ -177,7 +177,7 @@ void Grass::Create()
 	}
 
 	LogManager::getSingleton().setLogDetail(LoggingLevel::LL_BOREME);
-	LogO(String("::: Time Grass: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
+	LogO(String(":::* Time Grass: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 }
 
 

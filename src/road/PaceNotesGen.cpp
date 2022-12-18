@@ -324,7 +324,7 @@ void PaceNotes::Rebuild(SplineRoad* road, Scene* sc, bool reversed)
 		}
 	}
 
-	LogO(String("::: Time PaceNotes Rebuild1: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time PaceNotes Rebuild1: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 	
 
 ///  ~~~  trace Track's Ghost  ~~~
@@ -577,7 +577,7 @@ void PaceNotes::Rebuild(SplineRoad* road, Scene* sc, bool reversed)
 	Reset();
 	#endif
 
-	LogO(String("::: Time PaceNotes Rebuild2: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time PaceNotes Rebuild2: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 
 void PaceNotes::Reset()

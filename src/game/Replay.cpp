@@ -214,7 +214,7 @@ bool Replay2::LoadFile(string file, bool onlyHdr)
 				"  time: "+fToStr(GetTimeLength(),2,5)+"  frames: "+toStr(frames[0].size()));
 	#endif
 
-	LogO(String("::: Time Replay2 Load: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time Replay2 Load: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 	return true;
 }
 

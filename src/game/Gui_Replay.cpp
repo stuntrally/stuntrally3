@@ -273,7 +273,7 @@ void CGui::updReplaysList()
 				t = s.substr(0, p);
 			rplList->addItem(gcom->GetSceneryColor(t) + s);
 	}	}
-	//LogO(String("::: Time ReplaysList: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	//LogO(String(":::* Time ReplaysList: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 
 

@@ -309,7 +309,7 @@ bool GAME::InitializeSound()
 	snd->setMasterVolume(pSet->vol_master);
 
 
-	LogO("::: Time Sounds: "+ fToStr(ti.getMilliseconds(),0,3) +" ms");
+	LogO(":::* Time Sounds: "+ fToStr(ti.getMilliseconds(),0,3) +" ms");
 	if (snd->sound_mgr->isDisabled())
 	{
 		LogO("@  Sound init - Disabled.");
@@ -332,7 +332,7 @@ void GAME::LoadHudSounds()
 	snd_win[i] = snd->createInstance("hud/win"+toStr(i),  0);
 	snd_fail = snd->createInstance("hud/fail",  0);
 	UpdHudSndVol();
-	LogO("::: Time Hud Sounds: "+ fToStr(ti.getMilliseconds(),0,3) +" ms");
+	LogO(":::* Time Hud Sounds: "+ fToStr(ti.getMilliseconds(),0,3) +" ms");
 }
 
 
@@ -602,13 +602,13 @@ CAR* GAME::LoadCar(const string& pathCar, const string& carname,
 		start_pos, start_rot,  collision,
 		pSet->abs, pSet->tcs,  isRemote, idCar, false))
 	{
-		LogO("-=- Error: loading CAR: "+carname);
+		LogO("-==- Error: loading CAR: "+carname);
 		return NULL;
 	}
 	else
 	{
 		cars.push_back(car);
-		LogO("-=- Car loaded: "+carname);
+		LogO("-==- Car loaded: "+carname);
 
 		if (islocal)
 		{

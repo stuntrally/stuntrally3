@@ -41,7 +41,7 @@ void SplineRoad::RebuildRoadPace()
 		--sNum;  ++segM;  // next
 	}
 
-	LogO(String("::: Time Road Pace Rebuild: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time Road Pace Rebuild: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 
 
@@ -124,7 +124,7 @@ bool SplineRoad::RebuildRoadInt(bool editorAlign, bool bulletFull)
 
 
 	if (full)
-		LogO(String("::: Time Road Rebuild: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+		LogO(String(":::* Time Road Rebuild: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 
 	return full;
 }

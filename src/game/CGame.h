@@ -32,15 +32,12 @@ enum IblQuality  // car reflections
 class App : public BaseApp,	public ICS::ChannelListener
 {
 	//  vars
-	Ogre::Vector3 camPos;
-
 	//  input  temp  ----
-	int mArrows[11] = {0,0,0,0,0,0,0,0,0,0},
-		mKeys[4] = {0,0,0,0};  // sun keys
+	int mKeys[4] = {0,0,0,0};  // sun adj
 	int param = 0;  // to adjust
-	bool left = false, right = false;  // arrows
+	bool left = false, right = false;  // home,end
+	bool up = false, down = false;  // arrows gui lists
 public:	
-	bool shift = false, ctrl = false;
 
 	GraphicsSystem      *mGraphicsSystem =0;
 private:

@@ -2,22 +2,8 @@
 #include "CHud.h"
 #include "CGui.h"
 #include "GuiCom.h"
-#include <OgreVector3.h>
 #include "CGame.h"
 #include "GraphicsSystem.h"
-#include <SDL_scancode.h>
-
-#include <OgreLogManager.h>
-#include <OgreSceneManager.h>
-#include <OgreRoot.h>
-#include <OgreCamera.h>
-#include <OgreWindow.h>
-
-#include "Terra/Terra.h"
-#include <OgreHlms.h>
-#include <OgreHlmsManager.h>
-#include <OgreGpuProgramManager.h>
-#include <OgreAtmosphere2Npr.h>
 
 #include "game.h"  // snd
 #include "SoundMgr.h"
@@ -31,21 +17,30 @@
 #include "Def_Str.h"
 #include "CScene.h"
 #include "SceneXml.h"
-#include "TracksXml.h"
 #include "CData.h"
-#include "SceneClasses.h"
 #include "settings.h"
+
+#include <OgreVector3.h>
+#include <OgreSceneManager.h>
+#include <OgreRoot.h>
+#include <OgreCamera.h>
+#include <OgreWindow.h>
+
+#include "Terra/Terra.h"
+#include <OgreAtmosphere2Npr.h>
 
 #include "ICSInputControlSystem.h"
 #include <SDL_keycode.h>
+#include <SDL_scancode.h>
 #include <MyGUI_ImageBox.h>
 #include <MyGUI_TabControl.h>
+#include <MyGUI_TextBox.h>
 #include <string>
 using namespace Ogre;
 using namespace std;
 
 
-//  Update  frame
+//  💫 Update  frame
 //-----------------------------------------------------------------------------------------------------------------------------
 void App::update( float dt )
 {
@@ -55,7 +50,7 @@ void App::update( float dt )
 		return;
 	}
 
-	//  input
+	//  🕹️ Input upd  ----
 	mInputCtrl->update(dt);
 	for (int i=0; i<4; ++i)
 		mInputCtrlPlayer[i]->update(dt);
@@ -63,6 +58,7 @@ void App::update( float dt )
 
 	scn->UpdSun();
 
+	//  ⏳ Loading steps --------
 	if (bLoading)
 	{
 		NewGameDoLoad();
@@ -89,7 +85,7 @@ void App::update( float dt )
 		}
 
 
-		///  Gui  ----
+		///  🎛️ Gui  --------
 		if (gui)
 			gui->GuiUpdate();
 
@@ -108,7 +104,7 @@ void App::update( float dt )
 			gui->updChampListDim();  // resize lists
 			gui->slSSS(0);
 			gui->listCarChng(gui->carList,0);  // had wrong size
-			// bRecreateHUD = true;
+			//; bRecreateHUD = true;
 			
 			/*if (mSplitMgr)  //  reassign car cameras from new viewports
 			{	std::list<Camera*>::iterator it = mSplitMgr->mCameras.begin();
@@ -123,12 +119,11 @@ void App::update( float dt )
 				if (scn->grass)  scn->grass->setCamera(cam1);
 				if (scn->trees)  scn->trees->setCamera(cam1);
 			}*/
-
 			///gui->InitCarPrv();
 		}
 
 
-		//  HUD
+		//  ⏱️ HUD  ----
 		if (bSizeHUD)
 		{	bSizeHUD = false;
 			
@@ -138,25 +133,38 @@ void App::update( float dt )
 		hud->Update(-1, dt);
 	
 
+		//  car pos
 		if (pGame && iLoad1stFrames == -2)
 		{
 			updatePoses(dt);
 
 			if (pSet->check_arrow && !bRplPlay && !carModels.empty())
 				hud->arrow.Update(carModels[0], dt);
+
+			//  cam info text
+			if (pSet->show_cam && !carModels.empty() && hud->txCamInfo)
+			{	FollowCamera* cam = carModels[0]->fCam;
+				if (cam)
+				{	bool vis = cam->updInfo(dt) && !isFocGui;
+					if (vis)
+						hud->txCamInfo->setCaption(String(cam->ss));
+					hud->txCamInfo->setVisible(vis);
+			}	}
 		}
 
 		
-		//  keys up/dn, for gui lists
+		//  keys up/dn, for gui lists  ----
 		static float dirU = 0.f,dirD = 0.f;
-		if (isFocGui && pSet->iMenu >= MN_Single && pSet->iMenu <= MN_Chall && !isTweak())
+		if (isFocGui && !isTweak() &&
+			pSet->iMenu >= MN_Single &&
+			pSet->iMenu <= MN_Chall)
 		{
-			if (mArrows[2])  dirD += dt;  else
-			if (mArrows[3])  dirU += dt;  else
+			if (down)  dirD += dt;  else
+			if (up)    dirU += dt;  else
 			{	dirU = 0.f;  dirD = 0.f;  }
 			int d = ctrl ? 4 : 1;
-			if (dirU > 0.0f) {  gui->LNext( d);  dirU = -0.2f;  }
-			if (dirD > 0.0f) {  gui->LNext(-d);  dirD = -0.2f;  }
+			if (dirU > 0.0f) {  gui->LNext(-d);  dirU = -0.15f;  }
+			if (dirD > 0.0f) {  gui->LNext( d);  dirD = -0.15f;  }
 		}
 
 
@@ -172,7 +180,7 @@ void App::update( float dt )
 		}
 
 
-		//  road upd lods
+		//  🛣️ Road  upd lods  ----
 		static float roadUpdTm = 0.f;
 		if (scn->road)
 		{
@@ -189,7 +197,7 @@ void App::update( float dt )
 						r->UpdLodVis(pSet->road_dist);
 					
 					//  trail upd lods
-					if (scn->trail && pSet->trail_show)//; && !bHideHudTrail)
+					if (scn->trail && pSet->trail_show && !bHideHudTrail)
 						scn->trail->UpdLodVis();
 				}
 			}
@@ -268,4 +276,3 @@ void App::update( float dt )
 	updFpsText();
 	updDebugText();
 }
-

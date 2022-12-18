@@ -47,7 +47,7 @@ bool SoundBaseMgr::Init(std::string snd_device, bool reverb1)
 	reverb = reverb1;
 
 	//  list devices
-	LogO("@  ---- Sound devices ----");
+	LogO("@@  ---- Sound devices ----");
 	if (alcIsExtensionPresent(NULL, "ALC_ENUMERATE_ALL_EXT") != AL_FALSE)
 		logList(alcGetString(NULL, ALC_ALL_DEVICES_SPECIFIER));
 	else
@@ -94,7 +94,7 @@ bool SoundBaseMgr::Init(std::string snd_device, bool reverb1)
 	
 	//  log info  ----
 	String s,t;
-	LogO("@ @  ---- SoundManager Info ----");
+	LogO("@@  ---- SoundManager Info ----");
 	s = alGetString(AL_VENDOR);		LogO("@  vendor: " + s);
 	s = alGetString(AL_VERSION);	LogO("@  version: " + s);
 	s = alGetString(AL_RENDERER);	LogO("@  renderer: " + s);

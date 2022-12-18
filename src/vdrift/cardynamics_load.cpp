@@ -659,7 +659,7 @@ bool CARDYNAMICS::Load(GAME* game, CONFIGFILE& c)
 
 	UpdateMass();
 
-	LogO(":::: Time car dynamics load: " + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(":::* Time .car dynamics load: " + fToStr(ti.getMilliseconds(),0,3) + " ms");
 	return true;
 }
 

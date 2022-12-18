@@ -348,7 +348,7 @@ void CScene::CreateTrees()
 		}
 		LogO(String("***** Vegetation models count: ") + toStr(cntAll) + "  shapes: " + toStr(cntshp));
 	}
-	LogO(String("::: Time Trees: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time Trees: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 
 

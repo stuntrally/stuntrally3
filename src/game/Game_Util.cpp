@@ -152,6 +152,7 @@ void App::unloadUnusedTextures()
 //-----------------------------------------------------------------------------------
 void App::MinimizeMemory()
 {
+	LogO("#### MinimizeMemory");
 	// setTightMemoryBudget();
 	unloadTexturesFromUnusedMaterials();
 	unloadUnusedTextures();

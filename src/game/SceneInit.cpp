@@ -116,7 +116,7 @@ void App::LoadData()
 		","+toStr(sizeof(half))+","+toStr(sizeof(float))+","+toStr(sizeof(int))+"  vec: "+toStr(sv)+
 		"   hi,lo 16,32: "+toStr(*((uchar*)&u+1))+","+toStr(*((uchar*)&u)));
 
-	LogO(String("::: Time load xmls: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
+	LogO(String(":::* Time load xmls: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
 
 	///  rpl test-
@@ -298,7 +298,7 @@ void App::LoadCleanUp()  // 1 first
 	carModels.clear();  //carPoses.clear();
 
 
-	LogO("------  # Destroy All track");
+	LogO("#### Destroy All track ----");
 	if (dstTrk)
 	{
 		scn->DelRoadDens();
@@ -316,7 +316,7 @@ void App::LoadCleanUp()  // 1 first
 
 
 	///  destroy all
-	LogO("------  # Destroy All");
+	LogO("#### Destroy All ----");
 	if (dstTrk)
 	{	// destroy all scenenodes
 		mSceneMgr->getRootSceneNode()->removeAndDestroyAllChildren();

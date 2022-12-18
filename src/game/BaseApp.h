@@ -96,7 +96,7 @@ public:
 	ICS::DetectingBindingListener* mInputBindListner =0;
 
 	///  input  vars
-	bool alt =0, ctrl =0, shift =0;  // key modifiers
+	bool alt =0, ctrl =0, shift =0;  // key modifiers  for FollowCamera move
 	bool mbLeft =0, mbRight =0, mbMiddle =0;  // mouse buttons
 	// int mMouseX =0, mMouseY =0;
 	bool mbWireFrame =0;
@@ -109,7 +109,7 @@ public:
 	void mouseReleased( const SDL_MouseButtonEvent &arg, Ogre::uint8 id ) override;
 
 	// void textEditing( const SDL_TextEditingEvent& arg ) override;
-	// void textInput( const SDL_TextInputEvent& arg ) override;
+	void textInput( const SDL_TextInputEvent& arg ) override;
 
 	// virtual void keyPressed( const SDL_KeyboardEvent &arg ) override;  // in App
 	// virtual void keyReleased(const SDL_KeyboardEvent &arg ) override;

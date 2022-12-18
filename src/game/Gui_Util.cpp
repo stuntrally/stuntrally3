@@ -259,7 +259,7 @@ void CGui::listCarChng(MultiList2* li, size_t)
 
 	changeCar();
 	UpdCarStats(car);
-	LogO(String(":::: Time car tab upd: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	// LogO(String(":::* Time car tab upd: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }	
 void CGui::changeCar()
 {
@@ -478,7 +478,8 @@ void CGui::changeTrack()
 //  new game
 void CGui::btnNewGame(WP wp)
 {
-	if (app->mWndGame->getVisible() && app->mWndTabsGame->getIndexSelected() < TAB_Champs  /*|| app->mClient*/)
+	if (app->mWndGame->getVisible() &&
+		app->mWndTabsGame->getIndexSelected() < TAB_Champs  /*|| app->mClient*/)
 		BackFromChs();  /// champ, back to single race
 	
 	bool force = false;
@@ -587,7 +588,7 @@ void CGui::toggleGui(bool toggle)
 	{	first = false;
 		gcom->GuiCenterMouse();
 	}
-	// LogO(String(":::: Time gui upd: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time Gui upd: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 
 
@@ -605,10 +606,10 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab)
 	std::vector<TabControl*>* subt = 0;
 	
 	switch (menu)
-	{	case MN_Replays:	mWndTabs = app->mWndTabsRpl;  break;
-		case MN_Help:		mWndTabs = app->mWndTabsHelp;  break;
-		case MN_Options:	mWndTabs = app->mWndTabsOpts;  subt = &vSubTabsOpts;  break;
-		default:			mWndTabs = app->mWndTabsGame;  subt = &vSubTabsGame;  break;
+	{	case MN_Replays:  mWndTabs = app->mWndTabsRpl;  break;
+		case MN_Help:     mWndTabs = app->mWndTabsHelp;  break;
+		case MN_Options:  mWndTabs = app->mWndTabsOpts;  subt = &vSubTabsOpts;  break;
+		default:          mWndTabs = app->mWndTabsGame;  subt = &vSubTabsGame;  break;
 	}
 	toggleGui(false);
 

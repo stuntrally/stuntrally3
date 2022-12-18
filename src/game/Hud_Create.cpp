@@ -40,7 +40,7 @@ using namespace MyGUI;
 
 void CHud::Create()
 {
-	LogO("-- Create Hud");
+	LogO("---- Create Hud");
 	//Destroy();  //
 	if (app->carModels.size() == 0)  return;
 
@@ -55,7 +55,7 @@ void CHud::Create()
 		
 	//  minimap from road img
 	int plr = 1; //app->mSplitMgr->mNumViewports;  // pSet->game.local_players;
-	//; LogO("-- Create Hud  plrs="+toStr(plr));
+	//; LogO("---- Create Hud  plrs="+toStr(plr));
 	asp = 1.f;
 
 #if 0
@@ -454,7 +454,7 @@ void CHud::Create()
 	app->bSizeHUD = true;
 	Size();
 	
-	LogO("::: Time Create Hud: "+fToStr(ti.getMilliseconds(),0,3)+" ms");
+	LogO(":::* Time Create Hud: "+fToStr(ti.getMilliseconds(),0,3)+" ms");
 }
 
 

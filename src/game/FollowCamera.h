@@ -67,7 +67,9 @@ public:
 
 	///  update, simulates camera
 	void update(Ogre::Real time, const PosInfo& posInPrev, PosInfo* posOut, COLLISION_WORLD* world, bool bounce, bool sphere);
-	bool updInfo(Ogre::Real time = 0);  char ss[512];
+	
+	char ss[512];  // move info string with values
+	bool updInfo(Ogre::Real time = 0);
 	Ogre::String sName;  bool updName;
 
 	//  apply, sets mCamera's pos and rot

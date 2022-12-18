@@ -36,7 +36,7 @@ void App::LoadDefaultSet(SETTINGS* settings, string setFile)
 }
 
 
-//  Init SR game
+//  🌟 Init SR game
 //-----------------------------------------------------------------------------------------------------------------------------
 void App::Load()
 {
@@ -74,7 +74,7 @@ void App::Load()
 
 	///  Game start
 	//----------------------------------------------------------------
-	LogO("@ @  Init game, sounds");
+	LogO("@@@@ Init game, sounds ----");
 
 	pGame = new GAME(pSet);
 	pGame->collision.pApp = this;
@@ -112,6 +112,7 @@ void App::Load()
 	mThread = new thread(&App::UpdThr, this);
 }
 
+//  💥
 void App::Destroy()
 {
 	DestroyGui();
@@ -125,7 +126,7 @@ void App::Destroy()
 
 
 
-//  Create
+//  🌟 Create
 //-----------------------------------------------------------------------------------------------------------------------------
 void App::createScene01()
 {
@@ -159,14 +160,12 @@ void App::createScene01()
 	mGraphicsSystem->getCamera()->setFarClipDistance( 20000.f );  // par far
 	// mGraphicsSystem->getCamera()->setFarClipDistance( pSet->view_distance );  // par far
 
-	camPos = Vector3(10.f, 11.f, 16.f );
-	//camPos.y += mTerra->getHeightAt( camPos );
-	mGraphicsSystem->getCamera()->setPosition( camPos );
-	mGraphicsSystem->getCamera()->lookAt( camPos + Vector3(0.f, -1.6f, -2.f) );
-	Vector3 objPos;
+	// Vector3 camPos(10.f, 11.f, 16.f);
+	// mGraphicsSystem->getCamera()->setPosition( camPos );
+	// mGraphicsSystem->getCamera()->lookAt( camPos + Vector3(0.f, -1.6f, -2.f) );
 
 
-	LogO(">>>>---- Init SR done ----");
+	LogO(">>>>>>>> Init SR done ----");
 
 	CreateDebugTextOverlay();
 }

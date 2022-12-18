@@ -57,18 +57,26 @@ using namespace std;
 void App::keyPressed( const SDL_KeyboardEvent &arg )
 {
 	//  input
-	mInputCtrl->keyPressed(arg);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->keyPressed(arg);
+	// mInputCtrl->keyPressed(arg);
+	// for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->keyPressed(arg);
 
-	/*if (!mInputCtrl->keyPressed(arg))
+	if (!mInputCtrl->keyPressed(arg))
 		return;
 	for (int i=0; i<4; ++i)
 	{
 		if (!mInputCtrlPlayer[i]->keyPressed(arg))
 			return;
-	}*/
+	}
 
-	int itrk = 0, icar = 0;
+	switch (arg.keysym.scancode)
+	{
+	case key(LSHIFT):
+	case key(RSHIFT):  shift = true;  break;  // mods
+	case key(LCTRL):
+	case key(RCTRL):  ctrl = true;  break;
+	case key(LALT):
+	case key(RALT):  alt = true;  break;
+	}
 
 	if (arg.keysym.mod == KMOD_LALT)  // alt
 	{
@@ -97,7 +105,6 @@ void App::keyPressed( const SDL_KeyboardEvent &arg )
 			case key(T):	gui->GuiShortcut(MN_Options, TABo_Settings);	break;  // T Settings
 			case key(O):	gui->GuiShortcut(MN_Options, TABo_Sound);	break;  // O Sound
 			case key(K):	gui->GuiShortcut(MN_Options, TABo_Tweak);  break;  // K Tweak
-
 		}
 		return;
 	}
@@ -134,34 +141,11 @@ void App::keyPressed( const SDL_KeyboardEvent &arg )
 
 	switch (arg.keysym.scancode)
 	{
-	case key(LSHIFT):
-	case key(RSHIFT):  shift = true;  break;  // mod
-	case key(RCTRL):   ctrl = true;   break;
-
 	case key(TAB):
 		gui->toggleGui(true);  break;  // gui on/off
 
-	case key(LEFT):   mArrows[0] = 1;  break;  // car
-	case key(RIGHT):  mArrows[1] = 1;  break;
-	case key(UP):     mArrows[2] = 1;  break;
-	case key(DOWN):   mArrows[3] = 1;  break;
-
-	case key(SPACE):  mArrows[4] = 1;  break;
-	case key(LCTRL):  mArrows[5] = 1;  break;
-	case key(Q):      mArrows[6] = 1;  break;
-	case key(W):      mArrows[7] = 1;  break;
-
-	case key(C):      mArrows[8] = 1;  break;
-	case key(X):      mArrows[9] = 1;  break;
-	case key(INSERT): mArrows[10] = 1;  break;
-
-
-	case key(1):  itrk = -1;  break;
-	case key(2):  itrk =  1;  break;
-	case key(3):  icar = -1;  break;
-	case key(4):  icar =  1;  break;
-
-
+	case key(DOWN):  down = true;   break;
+	case key(UP):    up = true;  break;
 	case key(HOME):  left  = true;  break;  // params
 	case key(END):   right = true;  break;
 	case key(PAGEUP):     --param;  break;
@@ -232,7 +216,6 @@ void App::keyPressed( const SDL_KeyboardEvent &arg )
 
 //  Key Released
 //-----------------------------------------------------------------------------------------------------------------------------
-
 void App::keyReleased( const SDL_KeyboardEvent &arg )
 {
 	//  input
@@ -242,26 +225,14 @@ void App::keyReleased( const SDL_KeyboardEvent &arg )
 	switch (arg.keysym.scancode)
 	{
 	case key(LSHIFT):
-	case key(RSHIFT):  shift = false;  break;  // mod
+	case key(RSHIFT):  shift = false;  break;  // mods
+	case key(LCTRL):
+	case key(RCTRL):  ctrl = false;  break;
 	case key(LALT):
-	case key(RCTRL):   ctrl = false;   break;
+	case key(RALT):  alt = false;  break;
 
-
-	case key(LEFT):   mArrows[0] = 0;  break;  // car
-	case key(RIGHT):  mArrows[1] = 0;  break;
-	case key(UP):     mArrows[2] = 0;  break;
-	case key(DOWN):   mArrows[3] = 0;  break;
-
-	case key(SPACE):  mArrows[4] = 0;  break;
-	case key(LCTRL):  mArrows[5] = 0;  break;
-	case key(Q):      mArrows[6] = 0;  break;
-	case key(W):      mArrows[7] = 0;  break;
-	
-	case key(C):      mArrows[8] = 0;  break;
-	case key(X):      mArrows[9] = 0;  break;
-	case key(INSERT): mArrows[10] = 0;  break;
-
-
+	case key(DOWN):  down = false;   break;
+	case key(UP):    up = false;     break;
 	case key(HOME):  left = false;   break;  // params
 	case key(END):   right = false;  break;
 
@@ -269,7 +240,6 @@ void App::keyReleased( const SDL_KeyboardEvent &arg )
 	case key(KP_MINUS):     mKeys[1] = 0;  break;
 	case key(KP_MULTIPLY):  mKeys[2] = 0;  break;
 	case key(KP_DIVIDE):    mKeys[3] = 0;  break;
-
 
 	case key(F4):
 	if (arg.keysym.mod & (KMOD_LCTRL|KMOD_RCTRL))

@@ -154,6 +154,7 @@ void CGui::tabMainMenu(Tab tab, size_t id)
 	
 	if (id != 0)  return;  // <back
 	tab->setIndexSelected(1);  // dont switch to 0
+	
 	if (pSet->iMenu >= MN_Single && pSet->iMenu <= MN_Chall)
 		pSet->iMenu = MN1_Race;
 	else

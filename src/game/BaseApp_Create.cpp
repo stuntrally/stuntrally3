@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "BaseApp.h"
-
 #include "pathmanager.h"
 #include "settings.h"
 
@@ -13,16 +12,11 @@
 #include "FollowCamera.h"
 #include "GraphicsSystem.h"
 
-#include <OgreLogManager.h>
 #include <MyGUI_Prerequest.h>
-// #if OGRE_VERSION >= MYGUI_DEFINE_VERSION(1, 9, 0)
-// #include <OgreOverlaySystem.h>
-// #endif
-// #include <filesystem>
-
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>
 
+#include <OgreLogManager.h>
 #include <OgreTimer.h>
 #include <OgreOverlayManager.h>
 #include <OgreWindow.h>
@@ -30,50 +24,6 @@
 // #include "PointerFix.h"
 #include "ICSInputControlSystem.h"
 using namespace Ogre;
-
-
-namespace
-{
-	std::vector<unsigned long> utf8ToUnicode(const std::string& utf8)
-	{
-		std::vector<unsigned long> unicode;
-		size_t i = 0;
-		while (i < utf8.size())
-		{
-			unsigned long uni;  size_t todo;
-			unsigned char ch = utf8[i++];
-
-				 if (ch <= 0x7F){	uni = ch;	todo = 0;	}
-			else if (ch <= 0xBF){	throw std::logic_error("not a UTF-8 string");	}
-			else if (ch <= 0xDF){	uni = ch&0x1F;	todo = 1;	}
-			else if (ch <= 0xEF){	uni = ch&0x0F;	todo = 2;	}
-			else if (ch <= 0xF7){	uni = ch&0x07;	todo = 3;	}
-			else				{	throw std::logic_error("not a UTF-8 string");	}
-
-			for (size_t j = 0; j < todo; ++j)
-			{
-				if (i == utf8.size())	throw std::logic_error("not a UTF-8 string");
-				unsigned char ch = utf8[i++];
-				if (ch < 0x80 || ch > 0xBF)  throw std::logic_error("not a UTF-8 string");
-				uni <<= 6;
-				uni += ch & 0x3F;
-			}
-			if (uni >= 0xD800 && uni <= 0xDFFF)  throw std::logic_error("not a UTF-8 string");
-			if (uni > 0x10FFFF)  throw std::logic_error("not a UTF-8 string");
-			unicode.push_back(uni);
-		}
-		return unicode;
-	}
-
-	/*MyGUI::MouseButton sdlButtonToMyGUI(Uint8 button)
-	{
-		//  The right button is the second button, according to MyGUI
-		if (button == SDL_BUTTON_RIGHT)  button = SDL_BUTTON_MIDDLE;
-		else if (button == SDL_BUTTON_MIDDLE)  button = SDL_BUTTON_RIGHT;
-		//  MyGUI's buttons are 0 indexed
-		return MyGUI::MouseButton::Enum(button - 1);
-	}*/
-}
 
 
 //  Create
@@ -324,13 +274,13 @@ bool BaseApp::setup()
 
 	TextureManager::getSingleton().setDefaultNumMipmaps(5);
 
-		LogO(String(":::: Time setup vp: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
+		LogO(String(":::* Time setup vp: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
 
 	//  Gui
 	baseInitGui();
 
-		LogO(String(":::: Time setup gui: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
+		LogO(String(":::* Time setup gui: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
 	createResourceListener();
 
@@ -338,12 +288,12 @@ bool BaseApp::setup()
 	LogO("*** createFrameListener ***");
 	createFrameListener();
 
-		LogO(String(":::: Time createFrameListener: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
+		LogO(String(":::* Time createFrameListener: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
 	LogO("*** createScene ***");
 	createScene();
 
-		LogO(String(":::: Time createScene: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
+		LogO(String(":::* Time createScene: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
 	LogO("*** recreateCompositor, does nothing ***");
 	recreateCompositor();
@@ -359,13 +309,13 @@ bool BaseApp::setup()
 
 	postInit();
 
-		LogO(String(":::: Time post, mat factory: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
+		LogO(String(":::* Time post, mat factory: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
 	loadResources();
 
-		LogO(String(":::: Time resources: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();  
+		LogO(String(":::* Time resources: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();  
 
-	LogO(String(":::: Time setup total: ") + fToStr(ti2.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time setup total: ") + fToStr(ti2.getMilliseconds(),0,3) + " ms");
 	
 	return true;
 }

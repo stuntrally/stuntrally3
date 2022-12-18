@@ -119,9 +119,9 @@ void App::destroyScene()
 
 	DestroyTerrain();
 
-	LogO(">>>> Destroy SR ----");
+	LogO(">>>>>>>> Destroy SR ----");
 	Destroy();
-	LogO(">>>> Destroy SR done ----");
+	LogO(">>>>>>>> Destroy SR done ----");
 }
 
 

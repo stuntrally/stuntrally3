@@ -46,7 +46,7 @@ public:
 	typedef std::list <std::string> strlist;
 
 
-	//  main menu
+	//  🪧 main menu
 	void InitMainMenu();
 	void btnMainMenu(WP);  void tabMainMenu(Tab tab, size_t id);
 
@@ -72,10 +72,10 @@ public:
 
 	const static int colCar[16],colCh[16],colChL[16],colSt[16];
 
-
 	//  util
 	void toggleGui(bool toggle=true);
 	void GuiShortcut(EMenu menu, int tab, int subtab=-1);
+	
 	bool loadReadme = 1;  void FillHelpTxt();
 	void ImgPrvClk(WP), ImgTerClk(WP), ImgPrvClose(WP);
 
@@ -164,7 +164,7 @@ public:
 	bool actionIsActive(std::string, std::string);
 
 
-	///  🛠 [Tweak]  -----------------------------------------
+	///  🛠️ [Tweak]  -----------------------------------------
 	const static int ciEdCar = 12;
 	Ed edCar[ciEdCar] ={0,}, edPerfTest =0, edTweakCol =0;
 	Txt txtTweakPath =0, txtTweakTire =0, txtTweakPathCol;
