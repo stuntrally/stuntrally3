@@ -4,13 +4,16 @@
 // #include <OgreFrameListener.h>
 // #include <OgreWindowEventUtilities.h>
 // #include <OgreMaterialManager.h>
+#include <unordered_map>
 #include <vector>
+#include <MyGUI_KeyCode.h>
+#include <SDL_keycode.h>
 
 namespace ICS {  class InputControlSystem;  class DetectingBindingListener;  }
 namespace MyGUI{  class Ogre2Platform;  }
 namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class Window;  }
 // class MasterClient;  class P2PGameClient;
-class CarModel;  class SETTINGS;
+class CarModel;  class SETTINGS;  class GraphicsSystem;
 
 
 //  main, race menus
@@ -31,7 +34,10 @@ public:
 	BaseApp();
 	virtual ~BaseApp();
 	// virtual void Run(bool showDialog);
-	
+
+	GraphicsSystem *mGraphicsSystem =0;
+
+
 	bool bLoading =0, bLoadingEnd =0, bSimulating =0;  int iLoad1stFrames =0;
 	
 	//  🚗 Cars / vehicles
@@ -72,8 +78,9 @@ public:
 	// void onCursorChange(const std::string& name);
 
 
-	///  Ogre
-	Ogre::Root* mRoot =0;  Ogre::SceneManager* mSceneMgr =0;
+	///  🟢 Ogre
+	Ogre::Root* mRoot =0;
+	Ogre::SceneManager* mSceneMgr =0;
 	Ogre::Window* mWindow =0;
 	// SDL_Window* mSDLWindow =0;
 
@@ -98,13 +105,18 @@ public:
 	int iCurCam = 0;  // move
 	void CreateInputs();
 
-	///  input events  ----
+	///  ⚡ input events  ------------
 	void mouseMoved( const SDL_Event &arg ) override;
 	void mousePressed( const SDL_MouseButtonEvent &arg, Ogre::uint8 id ) override;
 	void mouseReleased( const SDL_MouseButtonEvent &arg, Ogre::uint8 id ) override;
 
 	// void textEditing( const SDL_TextEditingEvent& arg ) override;
 	void textInput( const SDL_TextInputEvent& arg ) override;
+
+	//  util  sdl2 to gui keys
+	MyGUI::KeyCode SDL2toGUIKey(SDL_Keycode code);
+	void SetupKeysForGUI();
+	std::unordered_map<SDL_Keycode, MyGUI::KeyCode> mKeyMap;
 
 	// virtual void keyPressed( const SDL_KeyboardEvent &arg ) override;  // in App
 	// virtual void keyReleased(const SDL_KeyboardEvent &arg ) override;
@@ -124,7 +136,7 @@ public:
 	
 	MyGUI::Gui* mGui =0;
 	MyGUI::Ogre2Platform* mPlatform =0;
-	void baseInitGui(class GraphicsSystem *mGraphicsSystem), baseSizeGui();
+	void baseInitGui(), baseSizeGui();
 	void DestroyGui();
 
 	Img bckFps =0, imgBack =0;

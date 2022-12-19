@@ -3,15 +3,20 @@
 #include "BaseApp.h"
 #include "CarModel.h"
 #include "FollowCamera.h"
+#include "settings.h"
 // #include "pathmanager.h"
 // #include "SplitScreen.h"
 
-// #include <MyGUI_Prerequest.h>
-// #include <MyGUI_PointerManager.h>
+#include "GraphicsSystem.h"
+#include "SdlInputHandler.h"
 #include "ICSInputControlSystem.h"
 #include <SDL_events.h>
 
 #include <MyGUI.h>
+#include <MyGUI_KeyCode.h>
+#include <SDL_keycode.h>
+// #include <MyGUI_Prerequest.h>
+// #include <MyGUI_PointerManager.h>
 // #include <MyGUI_Ogre2Platform.h>
 using namespace Ogre;
 
@@ -105,36 +110,35 @@ bool BaseApp::isTweak()
 //-------------------------------------------------------------------------------------
 void BaseApp::mouseMoved(const SDL_Event &arg)
 {
-	static int xm = 0, ym = 0;  // old abs
-	int mx = 0, my = 0, mz = 0;  // abs
-	int rx = 0, ry = 0;  // rel
+	static int xAbs = 0, yAbs = 0, whAbs = 0;  // abs
+	int xRel = 0, yRel = 0, whRel = 0;  // rel
 
 	if (arg.type == SDL_MOUSEMOTION)
 	{
 		mInputCtrl->mouseMoved(arg.motion);
 		for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->mouseMoved(arg.motion);
 
-		xm = mx = arg.motion.x;  rx = arg.motion.xrel;
-		ym = my = arg.motion.y;  ry = arg.motion.yrel;
+		xAbs = arg.motion.x;  xRel = arg.motion.xrel;
+		yAbs = arg.motion.y;  yRel = arg.motion.yrel;
 	}
 	else if (arg.type == SDL_MOUSEWHEEL)
 	{
-		mz = arg.wheel.y;
+		whRel = arg.wheel.y;  whAbs += whRel;
 	}
 
 	if (bAssignKey)  return;
 
 	if (IsFocGui() && mGui)
 	{
-		MyGUI::InputManager::getInstance().injectMouseMove(xm, ym, mz/*?*/);
+		MyGUI::InputManager::getInstance().injectMouseMove( xAbs, yAbs, whAbs );
 		return;
 	}
 
 	///  🎥 Follow Camera Controls  ----
-	int i = 0;  //Log("cam: "+toStr(iCurCam));
+	int i = 0;  //LogO("cam: "+toStr(iCurCam));
 	for (auto it = carModels.begin(); it != carModels.end(); ++it,++i)
 		if (i == iCurCam && (*it)->fCam)
-			(*it)->fCam->Move( mbLeft, mbRight, mbMiddle, shift, rx, ry, mz );
+			(*it)->fCam->Move( mbLeft, mbRight, mbMiddle, shift, xRel, yRel, whRel );
 }
 
 void BaseApp::mousePressed( const SDL_MouseButtonEvent& arg, Uint8 id )
@@ -172,7 +176,7 @@ void BaseApp::mouseReleased( const SDL_MouseButtonEvent& arg, Uint8 id )
 	else if (id == SDL_BUTTON_MIDDLE)	mbMiddle = false;
 }
 
-//  text
+//  edit text
 void BaseApp::textInput(const SDL_TextInputEvent &arg)
 {
 	const char* text = &arg.text[0];
@@ -204,29 +208,32 @@ void BaseApp::joyButtonReleased(const SDL_JoyButtonEvent &evt, int button)
 }
 
 
-#if 0
-//  todo: mouse cursor
+
+//  🖱️ mouse cursor
 //-------------------------------------------------------
 void BaseApp::showMouse()
 {
-	mInputWrapper->setMouseVisible(true);
+	MyGUI::PointerManager::getInstance().setVisible(1);
 }
 void BaseApp::hideMouse()
 {                
-	mInputWrapper->setMouseVisible(false);
+	MyGUI::PointerManager::getInstance().setVisible(0);
 }
 
 void BaseApp::updMouse()
 {
-	if (IsFocGui())	showMouse();
-	else			hideMouse();
+	bool gui = IsFocGui();
+	if (gui)  showMouse();
+	else      hideMouse();
 
-	mInputWrapper->setAllowGrab(pSet->mouse_capture);
-
-	mInputWrapper->setMouseRelative(!IsFocGui());
-	mInputWrapper->setGrabPointer(!IsFocGui());
+	auto* inp = mGraphicsSystem->getInputHandler();
+	inp->setGrabMousePointer( pSet->mouse_capture && !gui );
+	inp->setMouseRelative( !gui );
+	// inp->setMouseVisible( pSet->mouse_capture );
+	// mInputWrapper->setAllowGrab(pSet->mouse_capture);
 }
 
+#if 0
 void BaseApp::onCursorChange(const std::string &name)
 {
 	if (!mCursorManager->cursorChanged(name))
@@ -268,3 +275,42 @@ void BaseApp::windowClosed()
 	Root::getSingleton().queueEndRendering();
 }
 #endif
+
+
+//  util
+//-----------------------------------------------------------------------------------------------------------
+MyGUI::KeyCode BaseApp::SDL2toGUIKey(SDL_Keycode code)
+{
+	MyGUI::KeyCode kc = MyGUI::KeyCode::None;
+
+	auto key = mKeyMap.find(code);
+	if (key != mKeyMap.end())
+		kc = key->second;
+
+	return kc;
+}
+
+void BaseApp::SetupKeysForGUI()
+{
+	mKeyMap.clear();
+
+	mKeyMap[SDLK_HOME] = MyGUI::KeyCode::Home;
+	mKeyMap[SDLK_END] = MyGUI::KeyCode::End;
+	mKeyMap[SDLK_PAGEUP] = MyGUI::KeyCode::PageUp;
+	mKeyMap[SDLK_PAGEDOWN] = MyGUI::KeyCode::PageDown;
+	mKeyMap[SDLK_UP] = MyGUI::KeyCode::ArrowUp;
+	mKeyMap[SDLK_DOWN] = MyGUI::KeyCode::ArrowDown;
+	mKeyMap[SDLK_LEFT] = MyGUI::KeyCode::ArrowLeft;
+	mKeyMap[SDLK_RIGHT] = MyGUI::KeyCode::ArrowRight;
+
+	mKeyMap[SDLK_DELETE] = MyGUI::KeyCode::Delete;
+    mKeyMap[SDLK_BACKSPACE] = MyGUI::KeyCode::Backspace;
+	mKeyMap[SDLK_SPACE] = MyGUI::KeyCode::Space;
+    mKeyMap[SDLK_ESCAPE] = MyGUI::KeyCode::Escape;
+	mKeyMap[SDLK_INSERT] = MyGUI::KeyCode::Insert;
+	mKeyMap[SDLK_RETURN] = MyGUI::KeyCode::Return;
+	// mKeyMap[SDLK_KP_0] = MyGUI::KeyCode::Numpad0;
+	// mKeyMap[SDLK_KP_ENTER] = MyGUI::KeyCode::NumpadEnter;
+
+	// Don't need more, rest comes in textInput
+}

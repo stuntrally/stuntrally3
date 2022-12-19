@@ -30,6 +30,7 @@ using namespace Ogre;
 //-------------------------------------------------------------------------------------
 void BaseApp::CreateInputs()
 {
+	SetupKeysForGUI();
 	// mCursorManager = new SFO::SDLCursorManager();
 	// onCursorChange(MyGUI::PointerManager::getInstance().getDefaultPointer());
 	// mCursorManager->setEnabled(true);
@@ -401,7 +402,7 @@ void BaseApp::LoadingOff()
 
 ///  base Init Gui
 //--------------------------------------------------------------------------------------------------------------
-void BaseApp::baseInitGui(GraphicsSystem *mGraphicsSystem)
+void BaseApp::baseInitGui()
 {
 	mWindow = mGraphicsSystem->getRenderWindow();
 

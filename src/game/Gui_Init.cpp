@@ -124,7 +124,7 @@ void CGui::InitGui()
 
 
 	toggleGui(false);
-	// app->updMouse();
+	app->updMouse();
 	gcom->bnQuit->setVisible(app->isFocGui);
 
 
@@ -862,7 +862,7 @@ void CGui::InitGui()
 	liNetEnd = li;
 */
 
-	//  🌍 open url btns  -------------
+	//  🔗 open url btns  -------------
 	Btn("OpenWelcome", btnWelcome);  Btn("OpenWebsite", btnWebsite);   Btn("OpenSources", btnSources);
 	Btn("OpenForum",   btnForum);    Btn("OpenDonations", btnDonations);
 	//  wiki

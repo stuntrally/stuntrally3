@@ -548,7 +548,7 @@ public:
 */
 	GuiPopup* popup =0;  // msg with edits
 
-	//  🌍 open urls
+	//  🔗 open urls
 	void btnWelcome(WP), btnWebsite(WP), btnWiki(WP), btnWikiInput(WP);
 	void btnForum(WP), btnSources(WP), btnEdTut(WP), btnTransl(WP), btnDonations(WP);
 };

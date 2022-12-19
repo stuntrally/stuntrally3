@@ -12,13 +12,7 @@
 // #include "SplitScreen.h"
 
 #include <OgreWindow.h>
-// #include <OgreEntity.h>
 #include <OgreSceneNode.h>
-// #include <OgreMaterialManager.h>
-// #include <OgreTextureGpuManager.h>
-// #include <OgreManualObject.h>
-// #include <OgrePass.h>
-// #include <OgreTechnique.h>
 #include <OgreSceneManager.h>
 // #include <OgreOverlayManager.h>
 // #include <OgreOverlayElement.h>
@@ -187,7 +181,7 @@ void CHud::Show(bool hideAll)
 				if (h.parent)
 					h.parent->setVisible(false);
 		}
-		// app->hideMouse();
+		app->hideMouse();
 		if (app->mWndRpl)  app->mWndRpl->setVisible(false);
 		if (app->mWndRplTxt)  app->mWndRplTxt->setVisible(false);
 		return;
@@ -248,7 +242,7 @@ void CHud::Show(bool hideAll)
 	}
 	//; if (ndPos)  ndPos->setVisible(pSet->trackmap);
 	
-	/*app->updMouse();*/
+	app->updMouse();
 	if (app->mWndRpl && !app->bLoading)  // replay ctrls
 		app->mWndRpl->setVisible(app->bRplPlay && app->bRplWnd);
 	//  lesson replay  >> >

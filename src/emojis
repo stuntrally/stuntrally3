@@ -1,39 +1,43 @@
-
-🌟 ctor  💥 dtor  🆕 Create  ⏳ Loading  💫 Update  🟢 Ogre
-
-🚗 Vehicles Cars  ⚫💭 Tires wheels  ⏱️ HUD timer
-
-🏆 champs challs  📃 list  🏁 checkpoints start
-
-
-🕹️ Input  🎛️ Gui  🔉 Sound  🪧 menu  🖥️ screen  📈 Fps  📐 drivability
-
-🎥 Camera  📽️ Replays  👥 multiplayer  👻 Ghost  💨 boost  ⏪ rewind
-
-
-⛰️ Terrain  🌳🪨 Vegetation  🌿 Grass  🏞️ Track Scene  🛣️ Road  🏔️ Blendmap
-
-✨ Particles  🔮 reflection  🔥 Emitters  📦 Objects
-
-💡 Light  🌫️ Fog  🌦️🌧️ Weather  ⛅☁️ Sky clouds  🌞☀️ Sun  🌊💧 water Fluids
-
-
-📉 Graphs  📄 Config  👈 Hints  🎨🌈 Color  📝 Help  ✅ checks  ➰ Loop  ⭕ Pipe
-
-📊⚙️ Settings  🛠️🛠 Tools  🔧 Tweak  ⛓️ utils  🌍 url  🪟 window  ↗️ arrow
-
-
-🎮 🪄   🥇 🖼️   🌴 🌲 🏝️ 
-
-💎 🔍   ⌨️ 🖱️ 🎚️ 💻 💬 🕑 ☢️ 
-
-🗒️ 📑   🪟 🪞
-
-📐 🗜️ 🪛 🔗 📍 🔒 🚦 🚧 
-
-🌀 ⚡ ❄️ 🌌 🪐 🚀 ➿ 
-
-⚠ ☑️ ✔️ ✖️ ➕ ➖ ❗ ❓ ❌ ❎ 
-
-🔵 🟢 🔶 🟨 🔴 🟪 🔘   🔆 ⭐ 🔙 
-
+ Scene              Scene elements        Atmosphere        HUD
+ 
+ 🏞️ Track Scene     🚗 Vehicles Cars     💡 Light          ⏱️ HUD timer
+ 
+ ⛰️ Terrain         ⚫💭 Tires wheels    🌫️ Fog            📍 next chk beam
+ 
+ 🏔️ Blendmap        ✨ Particles         🌦️🌧️ Weather      🔝↗️ arrow
+ 
+ 🌳🪨 Vegetation    🔥 Emitters          ⛅☁️ Sky clouds    🏁 checkpoints start
+ 
+ 🌿 Grass           📦 Objects           🌞☀️ Sun           🔨 Damage 
+ 
+ 🛣️ Road            💧🌊 water Fluids    🔮🪞 reflection   🌍 minimap
+ 
+                                          💎 refraction     🚦 pacenotes
+ 
+ 
+ Components      Game                   GUI           GUI code       Code           Code2
+ 
+ 🕹️🎮 Input      🏆 Champ-ionship       🪧 Menu       ✅ checks     🌟 ctor        📄 Config
+ 
+ 🔉 Sound        🥇 Chall-enge          📃 list       🎚️ sliders    💥 dtor        ⛓️ utils
+ 
+ 🎛️ Gui          💨 Boost               🖥️ screen     🪟 windows    🆕🪄 Create    🌀 noise
+ 
+ 🎥 Camera       ⏪ Rewind              📈 Fps        🗜️ resize     ⏳ Loading     🔍 find
+ 
+ 📽️ Replays      🚀 Spaceship           📉 Graphs     🔧 Tweak      💫 Update      🔴 brakes
+ 
+ 👻 Ghost        🔘 Sphere              📝❔ Help     🔗 url        🟢 Ogre
+ 
+ 👥 Multiplayer  📐 Drivability         📊⚙️ Options   🖱️ mouse
+ 
+ 👈 Hints        ➰➿ Loop              🛠️🛠 Tools     ⌨️ keys
+ 
+                 ⭕ Pipe                🎨🌈 Color   
+ 
+ 
+ 🗺️ 🖼️ 🌅 ⛲ 🌋 ⛈️ 🌪️ 🧊 🌴 🌲 🏝️    💻 💬 🕑 ☢️   📂 🗒️ 📑    🪛 🔩 🔒 🚧  🧱 🏛️
+ 
+ ⚡ ❄️ 🌌 🪐 🌠 🎆 🎉 🎗️  ⚠ ☑️ ✔️ ✖️ ➕ ➖ ❗ ❓ ❌   🔵 🔶 🟪 🔆 🔙 🔠 🔤
+ 
+ 

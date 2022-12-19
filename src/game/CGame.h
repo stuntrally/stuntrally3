@@ -36,11 +36,7 @@ class App : public BaseApp,	public ICS::ChannelListener
 	int mKeys[4] = {0,0,0,0};  // sun adj
 	int param = 0;  // to adjust
 	bool left = false, right = false;  // home,end
-	bool up = false, down = false;  // arrows gui lists
-public:	
-
-	GraphicsSystem      *mGraphicsSystem =0;
-private:
+	bool pgup = false, pgdown = false, up = false, down = false;  // arrows for gui lists
 
 	//  📈 Fps overlay
 	void updDebugText();

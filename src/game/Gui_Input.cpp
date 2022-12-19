@@ -289,7 +289,7 @@ void CGui::inputBindBtnClicked(WP sender)
 
 	// activate key capture mode
 	app->bAssignKey = true;
-	// app->hideMouse();
+	app->hideMouse();
 }
 
 void CGui::notifyInputActionBound(bool complete)

@@ -6,7 +6,7 @@
 #include "pathmanager.h"
 #ifndef SR_EDITOR
 	#include "CGame.h"
-	// #include "CGui.h"
+	#include "CGui.h"
 	#include "settings.h"
 #else
 	#include "CApp.h"
@@ -80,7 +80,7 @@ CGuiCom::CGuiCom(App* app1)
 	scnN["Sur"] = "Surreal";       scnN["Spc"] = "Space";           scnN["SuSp"] = "SurrealSpace";
 	scnN["Oth"] = "Other";         scnN["Blk"] = "BlackDesert";     scnN["Asp"] = "Asphalt";
 
-	//  scenery colors  for track names  *  *  * * * * ** ** ** *** *** ****
+	//  🏞️ scenery 🌈 colors  for track names  *  *  * * * * ** ** ** *** *** ****
 	scnClr["Jungle"]       = "#50FF50";  scnClr["JungleDark"]   = "#40C040";  scnClr["Moss"]         = "#70F0B0";
 	scnClr["Forest"]       = "#A0C000";  scnClr["ForestMntn"]   = "#A0C080";  scnClr["ForestYellow"] = "#C0C000";
 	scnClr["Finland"]      = "#A0E080";  scnClr["Mud"]          = "#A0A000";  scnClr["DesertMud"]    = "#B0B000";
@@ -131,8 +131,7 @@ void CGuiCom::UnfocusLists()
 	{
 		//LogO(w->getTypeName() +" "+ w->getName());
 
-		return;
-		/*#ifdef SR_EDITOR
+		#ifdef SR_EDITOR
 		if (w == (WP)trkList  || w == (WP)app->gui->liSky || w == (WP)app->gui->liTex ||
 			w == (WP)app->gui->liGrs || w == (WP)app->gui->liVeg || w == (WP)app->gui->liRd)
 		#else
@@ -143,7 +142,7 @@ void CGuiCom::UnfocusLists()
 		{
 			InputManager::getInstance().resetKeyFocusWidget();
 			return;
-		}*/
+		}
 		w = w->getParent();
 	}
 }
@@ -162,7 +161,7 @@ TabPtr CGuiCom::FindSubTab(WP tab)
 }
 
 
-//  Resize MyGUI
+//  🗜️ Resize MyGUI
 //-----------------------------------------------------------------------------------
 
 void CGuiCom::SizeGUI()
@@ -187,9 +186,9 @@ void CGuiCom::doSizeGUI(EnumeratorWidgetPtr widgets)
 		{
 			//  position & size relative to the widget specified in "RelativeTo" property (or full screen)
 			IntSize relSize;
-			/*if (relativeTo == "Screen")
+			if (relativeTo == "Screen")
 				relSize = IntSize(app->mWindow->getWidth(), app->mWindow->getHeight());
-			else*/
+			else
 			{	WP window = fWP(relativeTo);
 				relSize = window->getSize();
 			}
@@ -279,9 +278,9 @@ void CGuiCom::notifyToolTip(WP wp, const ToolTipInfo &info)
 	if (!mToolTip)  return;
 
 	#ifndef SR_EDITOR
-	// if (!app->isFocGui)
+	if (!app->isFocGui)
 	#else
-	// if (!app->bGuiFocus)
+	if (!app->bGuiFocus)
 	#endif
 	{	mToolTip->setVisible(false);
 		return;
@@ -307,7 +306,7 @@ void CGuiCom::notifyToolTip(WP wp, const ToolTipInfo &info)
 //  Move a widget to a point while making it stay in the viewport.
 void CGuiCom::boundedMove(Widget* moving, const IntPoint& point)
 {
-	/*const IntPoint offset(20, 20);  // mouse cursor
+	const IntPoint offset(20, 20);  // mouse cursor
 	IntPoint p = point + offset;
 
 	const IntSize& size = moving->getSize();
@@ -318,7 +317,7 @@ void CGuiCom::boundedMove(Widget* moving, const IntPoint& point)
 	if (p.left + size.width > w)  p.left = w - size.width;
 	if (p.top + size.height > h)  p.top = h - size.height;
 			
-	moving->setPosition(p);*/
+	moving->setPosition(p);
 }
 
 

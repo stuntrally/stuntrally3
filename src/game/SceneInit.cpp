@@ -232,9 +232,9 @@ void App::NewGame(bool force)
 	if (mWndRplTxt)  mWndRplTxt->setVisible(false);  // hide rpl ctrl
 
 	LoadingOn();
-	// hud->Show(true);  // hide HUD
+	hud->Show(true);  // hide HUD
 	//mFpsOverlay->hide();  // hide FPS
-	// hideMouse();
+	hideMouse();
 
 	curLoadState = 0;
 }
@@ -245,14 +245,14 @@ void App::NewGame(bool force)
 
 void App::LoadCleanUp()  // 1 first
 {
-	// updMouse();
+	updMouse();
 	
 	if (dstTrk)
 	{	scn->DestroyFluids();
 		DestroyObjects(true);
 	}
 	
-	// DestroyGraphs();
+	DestroyGraphs();
 	hud->Destroy();
 	
 	//  hide hud arrow,beam,pace,trail

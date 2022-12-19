@@ -493,8 +493,7 @@ void CGui::btnNewGame(WP wp)
 	app->mWndRpl->setVisible(false);  app->mWndRplTxt->setVisible(false);//
 	gcom->bnQuit->setVisible(app->isFocGui);
 	
-	// app->updMouse();
-	
+	app->updMouse();
 	gcom->mToolTip->setVisible(false);
 }
 void CGui::btnNewGameStart(WP wp)
@@ -574,7 +573,7 @@ void CGui::toggleGui(bool toggle)
 	}
 
 	gcom->bnQuit->setVisible(gui);
-	// app->updMouse();
+	app->updMouse();
 	if (!gui)  gcom->mToolTip->setVisible(false);
 
 	for (int i=0; i < ciMainBtns; ++i)
@@ -737,7 +736,7 @@ void CGui::GuiUpdate()
 }
 
 
-//  🌍 open urls
+//  🔗 open urls
 //.......................................................................................
 void CGui::btnWelcome(WP)
 {

@@ -138,7 +138,7 @@ void App::createScene01()
 	CreateInputs();
 
 	//  Gui Init
-	baseInitGui(mGraphicsSystem);
+	baseInitGui();
 	gui->mGui = mGui;
 	gui->InitGui();
 
