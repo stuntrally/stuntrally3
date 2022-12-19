@@ -37,7 +37,7 @@ void CGui::tabChampType(Tab wp, size_t id)
 }
 
 
-///  Championships list  fill
+///  🏆 Championships list  fill
 //----------------------------------------------------------------------------------------------------------------------
 void CGui::ChampsListUpdate()
 {
@@ -94,7 +94,7 @@ void CGui::ChampsListUpdate()
 
 void CGui::fillChampsList(std::vector<int> vIds)
 {
-	const char clrCh[8][8] = {
+	const char clrCh[8][8] = {  // 🌈
 	//  0 tutorial  1 tutorial hard  // 2 normal  3 hard  4 very hard  // 5 scenery  6 scenery2  7 test
 		"#FFFFA0", "#E0E000",   "#A0F0FF", "#60C0FF", "#A0A0E0",   "#80FF80", "#A0D080",  "#909090"  };
 
@@ -175,7 +175,7 @@ void CGui::updChampListDim()
 }
 
 
-///  Championships list  sel changed,  fill Stages list
+///  🏆📃 Championships list  sel changed,  fill Stages list
 //----------------------------------------------------------------------------------------------------------------------
 void CGui::listChampChng(MyGUI::MultiList2* chlist, size_t id)
 {
@@ -232,7 +232,7 @@ void CGui::listChampChng(MyGUI::MultiList2* chlist, size_t id)
 }
 
 
-///  champ start
+///  🪟🏆 champ start
 //---------------------------------------------------------------------
 void CGui::btnChampStart(WP)
 {
@@ -254,7 +254,7 @@ void CGui::btnChampStart(WP)
 	btnNewGame(0);
 }
 
-///  stage start / end
+///  🪟🏞️ stage start / end
 //----------------------------------------------------------------------------------------------------------------------
 void CGui::btnChampStageStart(WP)
 {
@@ -333,7 +333,7 @@ void CGui::ProgressSave(bool upgGui)
 }
 
 
-///  championship advance logic
+///  🏆💫 championship advance logic
 //  caution: called from GAME, 2nd thread, no Ogre stuff here
 //----------------------------------------------------------------------------------------------------------------------
 void CGui::ChampionshipAdvance(float timeCur)
@@ -429,7 +429,7 @@ void CGui::ChampionshipAdvance(float timeCur)
 }
 
 
-//  stage wnd text
+//  🪟🏞️ stage wnd text
 //----------------------------------------------------------------------------------------------------------------------
 void CGui::ChampFillStageInfo(bool finished)
 {

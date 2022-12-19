@@ -232,13 +232,13 @@ public:
 
 
 	///  📉 Graphs  ~^.
-	// std::vector<GraphView*> graphs;
-	// void CreateGraphs(), DestroyGraphs();
-	// void UpdateGraphs(), GraphsNewVals();
+	std::vector<GraphView*> graphs;
+	void CreateGraphs(), DestroyGraphs();
+	void UpdateGraphs(), GraphsNewVals();
 
 	///* tire edit */
-	// const static int TireNG;
-	// int iEdTire, iTireLoad, iCurLat,iCurLong,iCurAlign, iUpdTireGr;
+	const static int TireNG;
+	int iEdTire, iTireLoad, iCurLat,iCurLong,iCurAlign, iUpdTireGr;
 
 	///  car perf test
 	// bool bPerfTest;  EPerfTest iPerfTestStage;

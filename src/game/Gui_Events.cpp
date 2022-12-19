@@ -12,6 +12,7 @@
 #include "CGui.h"
 // #include "SplitScreen.h"
 #include "CarModel.h"
+#include "GraphView.h"
 
 #include "Slider.h"
 #include "MultiList2.h"
@@ -127,7 +128,7 @@ void CGui::tabPlayer(Tab, size_t id)
 	UpdCarClrSld(false);  // no car color change
 }
 
-//  car color
+//  🎨 car Color
 //---------------------------------------------------------------------
 //  3. apply new color to car/ghost
 void CGui::SetCarClr()
@@ -264,9 +265,9 @@ void CGui::btnNumPlayers(WP wp)
 
 void CGui::chkStartOrd(WP wp)
 {
-	// pSet->gui.start_order = pSet->gui.start_order==0 ? 1 : 0;
-	// Btn chk = wp->castType<Button>();
-    // chk->setStateSelected(pSet->gui.start_order > 0);
+	pSet->gui.start_order = pSet->gui.start_order==0 ? 1 : 0;
+	Btn chk = wp->castType<Button>();
+	chk->setStateSelected(pSet->gui.start_order > 0);
 }
 
 
@@ -339,7 +340,7 @@ void CGui::chkWireframe(Ck*)
 	// 	app->ndSky->setVisible(!b);  // hide sky-
 }
 
-//  HUD
+//  ⏱️ HUD
 void CGui::chkHudShow(Ck*)
 {
 	hud->Show();
@@ -385,21 +386,22 @@ void CGui::chkTrailShow(Ck*)
 void CGui::chkReverse(Ck*) {  gcom->ReadTrkStats();  }
 
 
-//  graphs
+//  📉 Graphs  -^-.-
+
 void CGui::chkGraphs(Ck*)
 {
-	// bool te = pSet->graphs_type == Gh_TireEdit;
-	// for (int i=0; i < app->graphs.size(); ++i)
-	// 	app->graphs[i]->SetVisible(!te ? pSet->show_graphs :  // reference vis
-	// 		pSet->show_graphs && (i < 2*App::TireNG || i >= 4*App::TireNG || pSet->te_reference));
+	bool te = pSet->graphs_type == Gh_TireEdit;
+	for (int i=0; i < app->graphs.size(); ++i)
+		app->graphs[i]->SetVisible(!te ? pSet->show_graphs :  // reference vis
+			pSet->show_graphs && (i < 2*App::TireNG || i >= 4*App::TireNG || pSet->te_reference));
 }
 void CGui::comboGraphs(CMB)
 {
-	// if (valGraphsType)
-	// 	valGraphsType->setCaption(toStr(val));
-	// if (bGI /*&& pSet->graphs_type != v*/)  {
-	// 	pSet->graphs_type = (eGraphType)val;
-	// 	app->DestroyGraphs();  app->CreateGraphs();  }
+	if (valGraphsType)
+		valGraphsType->setCaption(toStr(val));
+	if (bGI /*&& pSet->graphs_type != v*/)  {
+		pSet->graphs_type = (eGraphType)val;
+		app->DestroyGraphs();  app->CreateGraphs();  }
 }
 
 
@@ -438,7 +440,7 @@ void CGui::slVolHud(SV*)
 }
 
 
-//  Hints, How to play
+//  👈 Hints  How to play
 //---------------------------------------------------------------------
 const int CGui::iHints = 28;
 const static char hintsOrder[CGui::iHints] = {

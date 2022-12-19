@@ -23,7 +23,7 @@ using namespace MyGUI;
 using namespace tinyxml2;
 
 
-///  Car list
+///  🚗📃  Car list
 
 //  sort	 . . . . . . . . . . . . . . . . . . . . . . 
 //-----------------------------------------------------------------------------------------------------------
@@ -129,7 +129,7 @@ void CGui::FillCarList()
 //-----------------------------------------------------------------------------------------------------------
 
 
-//  ghost filename
+//  👻 ghost filename
 //
 string ghostFile(SETTINGS* pSet, string sim_mode, string car)
 {
@@ -218,7 +218,7 @@ string CGui::GetRplListDir()
 
 //  [Game] 	. . . . . . . . . . . . . . . . . . . .    --- lists ----    . . . . . . . . . . . . . . . . . . 
 
-//  car
+//  🚗📃 car
 void CGui::listCarChng(MultiList2* li, size_t)
 {
 	size_t i = li->getIndexSelected();  if (i==ITEM_NONE)  return;
@@ -268,7 +268,7 @@ void CGui::changeCar()
 }
 
 
-//  Drivability  ------------------------
+//  📐 Drivability  ------------------------
 void CGui::UpdDrivability(std::string trk, bool user)
 {
 	float drv = max(0.f, data->GetDrivability(sListCar, trk, user));
@@ -282,7 +282,7 @@ void CGui::UpdDrivability(std::string trk, bool user)
 }	}
 
 
-///  load car stats xml
+///  🚗📈 load car stats xml
 //-----------------------------------------------------------------------------------------------------------
 void CGui::UpdCarStats(bool car)
 {
@@ -504,7 +504,7 @@ void CGui::btnNewGameStart(WP wp)
 }
 
 
-//  Menu
+//  🪟🪧 Gui windows vis
 //-----------------------------------------------------------------------------------------------------------
 
 void CGui::toggleGui(bool toggle)
@@ -588,7 +588,7 @@ void CGui::toggleGui(bool toggle)
 	{	first = false;
 		gcom->GuiCenterMouse();
 	}
-	LogO(String(":::* Time Gui upd: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	// LogO(String(":::* Time Gui upd: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 
 
@@ -643,7 +643,7 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab)
 }*/
 
 
-//  utility
+//  ⛓️ utility
 //---------------------------------------------------------------------------------------------------------------------
 
 //  next/prev in list by key
@@ -697,7 +697,7 @@ void CGui::LNext(int rel)
 }
 
 
-///  Update (frame start)  .,.,.,.,..,.,.,.,..,.,.,.,..,.,.,.,.
+///  💫 Update (frame start)  .,.,.,.,..,.,.,.,..,.,.,.,..,.,.,.,.
 void CGui::GuiUpdate()
 {
 	gcom->UnfocusLists();
@@ -737,7 +737,7 @@ void CGui::GuiUpdate()
 }
 
 
-//  open urls
+//  🌍 open urls
 //.......................................................................................
 void CGui::btnWelcome(WP)
 {
@@ -778,7 +778,7 @@ void CGui::btnDonations(WP)
 }
 
 
-//  read and fill help texts
+//  📝 read and fill help texts
 //.......................................................................................
 void CGui::FillHelpTxt()
 {
@@ -867,6 +867,8 @@ void CGui::FillHelpTxt()
 	}
 }
 
+
+//  fullscr previews
 void CGui::ImgPrvClk(WP)
 {
 	gcom->imgPrv[2]->setVisible(true);

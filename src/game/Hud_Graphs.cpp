@@ -1,25 +1,24 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "CGame.h"
-// #include "CGui.h"
+#include "CGui.h"
 #include "game.h"
 #include "car.h"
 #include "SoundBaseMgr.h"
 #include "SoundMgr.h"
 #include "SoundBase.h"
-// #include "PaceNotes.h"
+#include "PaceNotes.h"
 #include "Road.h"
 #include "SceneXml.h"
 #include "CScene.h"
-// #include "GraphView.h"
+#include "GraphView.h"
 // #include "SplitScreen.h"
 #include "CarModel.h"
 #include <OgreSceneManager.h>
-// #include <OgreRenderWindow.h>
+#include <OgreWindow.h>
 using namespace Ogre;
 // using namespace MyGUI;
 
-#if 0
 
 //  Update
 //-----------------------------------------
@@ -46,7 +45,7 @@ inline double negPow(double x, double y)
 }
 
 
-///  Create Graphs  .-_/\._-
+///  📉🆕 Create Graphs  .-_/\._-
 //-----------------------------------------------------------------------------------
 const int App::TireNG = 4,   // tire graphs count (for variable load)
 			TireLenG = 256;  // tire graphs data length
@@ -55,7 +54,7 @@ const static String TireVar[2] = {"variable Load", "variable camber"};
 void App::CreateGraphs()
 {
 	if (!graphs.empty())  return;
-	SceneManager* scm = mSplitMgr->mGuiSceneMgr;
+	SceneManager* scm = mSceneMgr;
 	bool tireEdit = false;
 	GraphView* gv;
 	int nWh = carModels[0]->numWheels, i,j,c,w,n;
@@ -361,7 +360,8 @@ void App::CreateGraphs()
 	}
 }
 
-///  add new Values to graphs (each frame)
+
+///  📉💫 add new Values to graphs (each frame)
 //-----------------------------------------------------------------------------------
 void App::GraphsNewVals()				// Game
 {
@@ -426,8 +426,9 @@ void App::GraphsNewVals()				// Game
 	case Gh_Fps:  /// fps
 	if (gsi >= 2)
 	{
-		const RenderTarget::FrameStats& stats = mWindow->getStatistics();
-		graphs[0]->AddVal(stats.lastFPS /60.f*0.5f);  // 60 fps in middle
+		// const RenderTarget::FrameStats& stats = mWindow->getStatistics();
+		int fps = 60; //stats.lastFPS;
+		graphs[0]->AddVal(fps /60.f*0.5f);  // 60 fps in middle
 		//graphs[1]->AddVal(1000.f/PROFILER.getAvgDuration(" frameSt",quickprof::MILLISECONDS) /60.f*0.2f);
 		graphs[1]->AddVal(fLastFrameDT==0.f ? 1.f : (1.f/fLastFrameDT/60.f*0.5f));
 	}	break;
@@ -897,4 +898,3 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 		pApp->graphs[gsi-1]->UpdTitle(sd);
 	}
 }
-#endif

@@ -480,10 +480,10 @@ public:
 	bool isChallGui();  void BackFromChs();
 
 
-	//  ⛓️ _Tools_
+	//  🛠️ _Tools_
 	void ToolGhosts(),ToolGhostsConv(), ToolTestTrkGhosts();
 
-	//  key util
+	//  ⛓️ key util
 	int LNext(Mli2, int rel, int ofs), LNext(Li, int rel, int ofs),
 		LNext(Mli, int rel);  // util next in list
 	void LNext(int rel);  void tabPlayer(Tab, size_t);
