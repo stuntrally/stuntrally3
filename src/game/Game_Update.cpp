@@ -153,19 +153,23 @@ void App::update( float dt )
 		}
 
 		
-		//  keys up/dn, for gui lists  ----
-		static float dirU = 0.f,dirD = 0.f;
+		//  keys up/dn, for gui lists  ------------
+		static float fUp = 0.f, fDn = 0.f, fPgUp = 0.f, fPgDn = 0.f;
+		const float rpt = -0.15f;  // ms delay
 		if (isFocGui && !isTweak() &&
 			pSet->iMenu >= MN_Single &&
 			pSet->iMenu <= MN_Chall)
 		{
-			if (down)  dirD += dt;  else
-			if (up)    dirU += dt;  else
-			{	dirU = 0.f;  dirD = 0.f;  }
-			int d = ctrl ? 4 : 1;
-			if (dirU > 0.0f) {  gui->LNext(-d);  dirU = -0.15f;  }
-			if (dirD > 0.0f) {  gui->LNext( d);  dirD = -0.15f;  }
-		}
+			if (down)  fDn += dt;  else  if (pgdown)  fPgDn += dt;  else
+			if (up)    fUp += dt;  else  if (pgup)    fPgUp += dt;  else
+			{	fUp = 0.f;  fDn = 0.f;  fPgUp = 0.f;  fPgDn = 0.f;  }
+			int d  = alt ? 16 : ctrl ? 4  : 1,
+				pg = alt ? 64 : ctrl ? 32 : 8;
+			if (fUp   > 0.f) {  gui->LNext(-d);   fUp = rpt;  }
+			if (fDn   > 0.f) {  gui->LNext( d);   fDn = rpt;  }
+			if (fPgUp > 0.f) {  gui->LNext(-pg);  fPgUp = rpt;  }
+			if (fPgDn > 0.f) {  gui->LNext( pg);  fPgDn = rpt;  }
+		}/**/
 
 
 		if (pSet->particles)

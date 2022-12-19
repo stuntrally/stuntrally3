@@ -39,17 +39,16 @@ void App::keyReleased( const SDL_KeyboardEvent &arg )
 
 	switch (arg.keysym.scancode)
 	{
-	case key(LSHIFT):
-	case key(RSHIFT):  shift = false;  break;  // mods
-	case key(LCTRL):
-	case key(RCTRL):  ctrl = false;  break;
-	case key(LALT):
-	case key(RALT):  alt = false;  break;
+	case key(LSHIFT):  case key(RSHIFT):  shift = false;  break;  // mods
+	case key(LCTRL):   case key(RCTRL):   ctrl = false;   break;
+	case key(LALT):    case key(RALT):    alt = false;    break;
 
 	case key(DOWN):  down = false;   break;
-	case key(UP):    up = false;     break;
-	case key(HOME):  left = false;   break;  // params
-	case key(END):   right = false;  break;
+	case key(UP):    up   = false;   break;
+	case key(HOME):  left  = false;   break;  // params
+	case key(END):   right = false;   break;
+	case key(PAGEDOWN):  pgdown = false;   break;
+	case key(PAGEUP):    pgup   = false;   break;
 
 	case key(KP_PLUS):      mKeys[0] = 0;  break;  // sun
 	case key(KP_MINUS):     mKeys[1] = 0;  break;
@@ -70,9 +69,9 @@ void App::keyReleased( const SDL_KeyboardEvent &arg )
 	}
 
 	if (mGui && (isFocGui || isTweak()))
-	{	// todo:
-		// OIS::KeyCode kc = mInputWrapper->sdl2OISKeyCode(arg.keysym.sym);
-		// MyGUI::InputManager::getInstance().injectKeyRelease(MyGUI::KeyCode::Enum(kc));
+	{
+		MyGUI::KeyCode kc = SDL2toGUIKey(arg.keysym.sym);
+		MyGUI::InputManager::getInstance().injectKeyRelease(kc);
 	}
 }
 
@@ -95,20 +94,16 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 	switch (skey)
 	{
-	case key(LSHIFT):
-	case key(RSHIFT):  shift = true;  break;  // mods
-	case key(LCTRL):
-	case key(RCTRL):  ctrl = true;  break;
-	case key(LALT):
-	case key(RALT):  alt = true;  break;
+	case key(LSHIFT): case key(RSHIFT):  shift = true;  break;  // mods
+	case key(LCTRL):  case key(RCTRL):   ctrl = true;   break;
+	case key(LALT):   case key(RALT):    alt = true;    break;
 
-	case key(DOWN):  down = true;   break;  // for gui lists
-	case key(UP):    up = true;  break;
-	
+	case key(DOWN):  down  = true;   break;  // for gui lists
+	case key(UP):    up    = true;   break;
 	case key(HOME):  left  = true;  break;  // params
 	case key(END):   right = true;  break;
-	case key(PAGEUP):     --param;  break;
-	case key(PAGEDOWN):   ++param;  break;
+	case key(PAGEDOWN):  /*++param;*/  pgdown = true;  break;
+	case key(PAGEUP):    /*--param;*/  pgup   = true;  break;
 
 	case key(KP_PLUS):      mKeys[0] = 1;  break;  // sun
 	case key(KP_MINUS):     mKeys[1] = 1;  break;
@@ -472,9 +467,12 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		}
 	}
 
-	/*if (skey != key(RCTRL) && skey != key(LCTRL))  // todo
-		MyGUI::InputManager::getInstance().injectKeyPress(
-			MyGUI::KeyCode::Enum( mInputWrapper->sdl2OISKeyCode(arg.keysym.sym)), 0);*/
+	if (skey != key(RCTRL) && skey != key(LCTRL))
+	if (mGui && (isFocGui || isTweak()))
+	{
+		MyGUI::KeyCode kc = SDL2toGUIKey(arg.keysym.sym);
+		MyGUI::InputManager::getInstance().injectKeyPress(kc);
+	}
 }
 #undef key
 #pragma GCC diagnostic pop
