@@ -5,7 +5,7 @@
 #include <OgreStringVector.h>
 
 
-//  single Track in challenge
+//  🏞️ single Track in challenge
 class ChallTrack
 {
 public:
@@ -20,7 +20,7 @@ public:
 };
 
 
-///  one Challenge setup
+///  🥇 one Challenge setup
 class Chall
 {
 public:
@@ -61,7 +61,7 @@ public:
 };
 
 
-///-----  all challenges
+///-----  📃 all challenges
 //
 class ChallXml
 {
@@ -72,7 +72,7 @@ public:
 };
 
 
-//  progress on single track
+//  ⏳ progress on single track
 class ProgressTrackL
 {
 public:

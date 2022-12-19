@@ -108,7 +108,7 @@ void CHud::Create()
 		float size = std::max(fMapSizeX, fMapSizeY*asp);
 		scX = 1.f / size;  scY = 1.f / size;
 
-		//  change minimap image
+		//  🌍 change minimap image  -----------
 		String sMat = "circle_minimap";
 	#if 0
 		/*MaterialPtr mm = MaterialManager::getSingleton().getByName(sMat);
@@ -128,7 +128,7 @@ void CHud::Create()
 		const float asp = float(wx) / float(wy);
 		h.ndMap->setVisible(pSet->trackmap);
 
-		//  gauges  backgr  -----------
+		//  ⏲️ gauges  backgr  -----------
 		String st = toStr(pSet->gauges_type);
 		h.moGauges = new HudRenderable("hud_"+st, scm, false, RV_Hud,RQG_Hud1, 4);
 			//Create2D("hud_"+st, scm, 1.f, true,false, 0.f,Vector2(0.f,0.5f), RV_Hud,RQG_Hud1, 2);
@@ -138,7 +138,6 @@ void CHud::Create()
 		// h.moNeedles = Create2D("hud_"+st,scm, 1.f, true,false, 0.f,Vector2(0.5f,0.5f), RV_Hud,RQG_Hud3, 2);
 		// h.ndNeedles = rt->createChildSceneNode();  h.ndNeedles->attachObject(h.moNeedles);  //h.ndNeedles->setVisible(false);
 
-		///  GUI
 		//  gear  text  -----------
 		h.parent = app->mGui->createWidget<Widget>("", 0,0,	wx, wy, //+?
 			Align::Left,"Back","main"+s);
@@ -152,11 +151,12 @@ void CHud::Create()
 
 			h.txGear = h.parent->createWidget<TextBox>("TextBox",
 				0,y, 65,90, Align::Left, "Gear"+s);  h.txGear->setVisible(false);
-			h.txGear->setFontName("DigGear");  h.txGear->setFontHeight(106);  //par..
+			h.txGear->setFontName("DigGear");
+			h.txGear->setFontHeight(106);  //par..
 			h.txGear->setTextShadowColour(Colour::Black);  h.txGear->setTextShadow(true);
 		}
 		
-		//  vel
+		//  vel  km/h
 		h.bckVel = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 160+24,72+12, Align::Left, "IVel"+s);
 		h.bckVel->setImageTexture("background2.jpg");
@@ -166,17 +166,20 @@ void CHud::Create()
 			// 10,5, 360,96, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
 		h.txVel = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 160,72, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
-		h.txVel->setFontName("DigGear");  //h.txVel->setFontHeight(64);
-		// h.txVel->setInheritsAlpha(false);
+		h.txVel->setFontName("DigGear");
+		//h.txVel->setFontHeight(64);
+		//h.txVel->setInheritsAlpha(false);
 		h.txVel->setTextShadowColour(Colour::Black);  h.txVel->setTextShadow(true);
 
-		//  boost
+
+		//  💨 boost
 		if (cm->vType != V_Sphere)
 		{
 			h.txBFuel = h.parent->createWidget<TextBox>("TextBox",
-				0,y, 120,80, Align::Right, "Fuel"+s);  h.txBFuel->setVisible(false);
+				0,y, 120,60, Align::Right, "Fuel"+s);  h.txBFuel->setVisible(false);
 			h.txBFuel->setTextAlign(Align::Right|Align::VCenter);
-			h.txBFuel->setFontName("DigGear");  h.txBFuel->setFontHeight(72);
+			h.txBFuel->setFontName("DigGearSeg");
+			h.txBFuel->setFontHeight(44);
 			h.txBFuel->setTextColour(Colour(0.6,0.8,1.0));  //h.txBFuel->setTextShadow(true);
 
 			h.icoBFuel = h.parent->createWidget<ImageBox>("ImageBox",
@@ -191,7 +194,7 @@ void CHud::Create()
 			//h.icoBInf->setImageCoord(IntCoord(512,768,128,128));
 		}
 
-		//  damage %
+		//  🔨 damage %
 		if (pSet->game.damage_type > 0)
 		{
 			h.imgDamage = h.parent->createWidget<ImageBox>("ImageBox",
@@ -213,7 +216,7 @@ void CHud::Create()
 				h.icoDamage->setImageCoord(IntCoord(640,384,128,128));
 		}
 		
-		//  rewind <<
+		//  ⏪ rewind <<
 	#if 0
 		h.txRewind = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 240,80, Align::Right, "Rew"+s);  //h.txRewind->setVisible(false);
@@ -228,11 +231,11 @@ void CHud::Create()
 	#endif
 
 
-		///  times text  ----------------------
+		///  ⏱️ times text  ----------------------
 		h.bckTimes = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 350,210, Align::Left, "TimP"+s);  h.bckTimes->setVisible(false);
 		h.bckTimes->setColour(Colour(0.1,0.1,0.1));
-		h.bckTimes->setAlpha(0.6f);
+		h.bckTimes->setAlpha(0.3f);
 		h.bckTimes->setImageTexture("back_times.png");
 		bool hasLaps = pSet->game.local_players > 1 ||
 			pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 /*|| app->mClient*/;
@@ -260,7 +263,7 @@ void CHud::Create()
 		h.txTimes->setTextShadow(true);
 
 
-		///  lap results  ----------------------
+		///  🏁 lap results  ----------------------
 		h.bckLap = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 340,210, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
 		h.bckLap->setColour(Colour(0.4,0.4,0.4));
@@ -292,7 +295,7 @@ void CHud::Create()
 
 
 	#if 0
-		//  opp list  -----------
+		//  👥 opponents list  -----------
 		h.bckOpp = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 224,200, Align::Left, "OppB"+toStr(c));
 		h.bckOpp->setAlpha(0.9f);  h.bckOpp->setVisible(false);
@@ -308,7 +311,7 @@ void CHud::Create()
 		h.lastOppH = -1;  // upd size
 	#endif
 
-		//  wrong chk warning  -----------
+		//  ❌ wrong chk warning  -----------
 		h.bckWarn = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 400,60, Align::Left, "WarnB"+s);  h.bckWarn->setVisible(false);
 		h.bckWarn->setImageTexture("back_times.png");
@@ -319,7 +322,7 @@ void CHud::Create()
 		h.txWarn->setTextColour(Colour(1,0.3,0));  h.txWarn->setTextAlign(Align::Center);
 		h.txWarn->setCaption(TR("#{WrongChk}"));
 
-		//  win place  -----------
+		//  🥇 win place  -----------
 		h.bckPlace = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 400,60, Align::Left, "PlcB"+s);  h.bckPlace->setVisible(false);
 		h.bckPlace->setImageTexture("back_times.png");
@@ -330,7 +333,7 @@ void CHud::Create()
 		h.txPlace->setTextAlign(Align::Center);
 
 
-		//  start countdown
+		//  🏁 start countdown
 		h.txCountdown = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 200,120, Align::Left, "CntT"+s);  h.txCountdown->setVisible(false);
 		h.txCountdown->setFontName("DigGear");  h.txCountdown->setTextShadow(true);
@@ -349,7 +352,7 @@ void CHud::Create()
 		h.txTcs->setCaption("TCS");  h.txTcs->setTextColour(Colour(0.6,1,1));
 	#endif
 
-		//  camera name
+		//  🎥 camera name
 		h.txCam = h.parent->createWidget<TextBox>("TextBox",
 			0,0, 300,30, Align::Left, "CamT"+s);
 		h.txCam->setFontName("hud.text");  h.txCam->setTextShadow(true);
@@ -366,14 +369,14 @@ void CHud::Create()
 	}
 
 
-	//  camera info
+	//  🎥 camera move info text
 	txCamInfo = app->mGui->createWidget<TextBox>("TextBox",
 		0,y, 900,100, Align::Left, "Back", "CamIT");  txCamInfo->setVisible(false);
 	txCamInfo->setFontName("hud.text");  txCamInfo->setTextShadow(true);
 	txCamInfo->setTextColour(Colour(0.8,0.9,0.9));
 
 
-	//  chat msg  -----------
+	//  💬 chat msg  -----------
 	bckMsg = app->mGui->createWidget<ImageBox>("ImageBox",
 		0,y, 600,80, Align::Left, "Back", "MsgB");  bckMsg->setVisible(false);
 	bckMsg->setAlpha(0.9f);
@@ -397,7 +400,7 @@ void CHud::Create()
 		cm->updLap = true;  cm->fLapAlpha = 1.f;
 	}
 
-	///  tire vis circles  + + + +
+	///  ⚫ tire vis circles  + + + +
 	asp = float(pSet->windowx) / float(pSet->windowy);
 	// asp = float(app->mWindow->getWidth())/float(app->mWindow->getHeight());
 
@@ -458,7 +461,7 @@ void CHud::Create()
 
 
 
-//  HUD destroy
+//  💥 HUD destroy
 //---------------------------------------------------------------------------------------------------------------
 // CHud::OvrDbg::OvrDbg() :
 // 	oL(0),oR(0),oS(0), oU(0),oX(0)

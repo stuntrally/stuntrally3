@@ -4,7 +4,7 @@
 #include <map>
 
 
-//  single track on championship
+//  🏞️ single track on championship
 class ChampTrack
 {
 public:
@@ -15,7 +15,7 @@ public:
 	ChampTrack();
 };
 
-//  one championship data
+//  🏆 one championship data
 class Champ
 {
 public:
@@ -32,7 +32,7 @@ public:
 };
 
 
-///-----  all championships and tutorials
+///-----  📃 all championships and tutorials
 //
 class ChampsXml
 {
@@ -44,7 +44,7 @@ public:
 };
 
 
-//  progress on single track
+//  ⏳ progress on single track
 class ProgressTrack
 {
 public:

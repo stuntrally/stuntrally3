@@ -1,42 +1,42 @@
- Scene              Scene elements        Atmosphere        HUD
- 
- 🏞️ Track Scene     🚗 Vehicles Cars     💡 Light          ⏱️ HUD timer
- 
- ⛰️ Terrain         ⚫💭 Tires wheels    🌫️ Fog            📍 next chk beam
- 
- 🏔️ Blendmap        ✨ Particles         🌦️🌧️ Weather      🔝↗️ arrow
- 
- 🌳🪨 Vegetation    🔥 Emitters          ⛅☁️ Sky clouds    🏁 checkpoints start
- 
- 🌿 Grass           📦 Objects           🌞☀️ Sun           🔨 Damage 
- 
- 🛣️ Road            💧🌊 water Fluids    🔮🪞 reflection   🌍 minimap
- 
-                                          💎 refraction     🚦 pacenotes
- 
- 
- Components      Game                   GUI           GUI code       Code           Code2
- 
- 🕹️🎮 Input      🏆 Champ-ionship       🪧 Menu       ✅ checks     🌟 ctor        📄 Config
- 
- 🔉 Sound        🥇 Chall-enge          📃 list       🎚️ sliders    💥 dtor        ⛓️ utils
- 
- 🎛️ Gui          💨 Boost               🖥️ screen     🪟 windows    🆕🪄 Create    🌀 noise
- 
- 🎥 Camera       ⏪ Rewind              📈 Fps        🗜️ resize     ⏳ Loading     🔍 find
- 
- 📽️ Replays      🚀 Spaceship           📉 Graphs     🔧 Tweak      💫 Update      🔴 brakes
- 
- 👻 Ghost        🔘 Sphere              📝❔ Help     🔗 url        🟢 Ogre
- 
- 👥 Multiplayer  📐 Drivability         📊⚙️ Options   🖱️ mouse
- 
- 👈 Hints        ➰➿ Loop              🛠️🛠 Tools     ⌨️ keys
- 
-                 ⭕ Pipe                🎨🌈 Color   
- 
- 
- 🗺️ 🖼️ 🌅 ⛲ 🌋 ⛈️ 🌪️ 🧊 🌴 🌲 🏝️    💻 💬 🕑 ☢️   📂 🗒️ 📑    🪛 🔩 🔒 🚧  🧱 🏛️
+ Scene              Scene elements        Atmosphere         HUD, Game          HUD2              Road
+                                                                                                  
+ 🏞️ Track Scene     🚗 Vehicles Cars     💡 Light           ⏱️ HUD timer                         🛣️ Road
+                                                                                                  
+ ⛰️ Terrain         ⚫💭 Tires wheels    🌫️ Fog             📍 Next chk beam   🔝↗️ Arrow         🧱 Wall bridge
+                                                                                                  
+ 🏔️ Blendmap        ✨ Particles         🌦️🌧️ Weather       🔨 Damage                            🏛️ Column
+                                                                                                  
+ 🌳🪨 Vegetation    🔥 Emitters          ⛅☁️ Sky clouds     🌍 Minimap         ⏲️ Gauges         ⭕ Pipe
+                                                                                                  
+ 🌿 Grass           📦 Objects           🌞☀️ Sun            💨 Boost           ⏪ Rewind         ➰➿ Loop
+                                                                                                  
+ 💧🌊 water Fluids                       🔮🪞 reflection    🚦 pacenotes                         
+                                                                                                  
+                                         💎 refraction                                            
+                                                                                                  
+                                                                                                  
+ Components       Game                   GUI            GUI Code        Code           Code2        
+                                                                                                    
+ 🕹️🎮 Input       🏆 Champ-ionship       🪧 Menu        ✅ checks      🌟 ctor        📄 Config    
+                                                                                                    
+ 🔉 Sound         🥇 Chall-enge          📃 List        🎚️ sliders     💥 dtor        ⛓️ utils     
+                                                                                                    
+ 🎛️ GUI           🚀 Spaceship           🖥️ screen      🪟 windows     🆕🪄 Create    🌀 noise     
+                                                                                                     
+ 🎥 Camera        🔘 Sphere              📈 Fps         🗜️ resize      ⏳ Loading     🔍 find      
+                                                                                                    
+ 📽️ Replay        🏁 checkpoints start   📉 Graphs      🔧 Tweak       💫 Update      🔴 brakes    
+                                                                                                    
+ 👻 Ghost         📐 Drivability         📝❔ Help      🔗 url         🟢 Ogre        💬 chat      
+                                                                                                    
+ 👥 Multiplayer                          📊⚙️ Options    🖱️ mouse       🎨🌈 Color                  
+                                                                                                    
+ 👈 Hints                                🛠️🛠 Tools      ⌨️ keys                                     
+                                                                                                    
+                                         🖼️ image prv    🔩 Setup                                   
+
+
+ 🗺️ 🌅 ⛲ 🌋 ⛈️ 🌪️ 🧊 🌴 🌲 🏝️    💻 🕑 ☢️   📂 🗒️ 📑    🪛 🔒 🚧  
  
  ⚡ ❄️ 🌌 🪐 🌠 🎆 🎉 🎗️  ⚠ ☑️ ✔️ ✖️ ➕ ➖ ❗ ❓ ❌   🔵 🔶 🟪 🔆 🔙 🔠 🔤
  

@@ -1,19 +1,16 @@
 #pragma once
-// #include "BaseApp.h"
 #include "Gui_Def.h"
-#include "SliderValue.h"
-
-#include <MyGUI_Enumerator.h>
-#include "MessageBoxStyle.h"
-
-// #include "networkcallbacks.hpp"
-#include "ICSInputControlSystem.h"
-// #include <thread>
-
-#include "ChampsXml.h"  // progress..
+#include "settings.h"
+#include "ChampsXml.h"  // progress
 #include "ChallengesXml.h"
 #include "CInput.h"
-#include "settings.h"
+
+// #include "networkcallbacks.hpp"
+#include "SliderValue.h"
+#include "MessageBoxStyle.h"
+#include <MyGUI_Enumerator.h>
+#include "ICSInputControlSystem.h"
+// #include <thread>
 
 namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class RenderWindow;  class Viewport;  class Light;  }
 namespace MyGUI{  class MultiList2;  class Slider;  class Message;  class PolygonalSkin;  }
@@ -31,8 +28,8 @@ struct CarL
 
 
 class CGui : public BGui
-	//,  public GameClientCallback, public MasterClientCallback,
 	, public ICS::DetectingBindingListener
+	//, public GameClientCallback, public MasterClientCallback
 {
 public:
 	App* app =0;  GAME* pGame =0;  SETTINGS* pSet =0;
@@ -41,12 +38,11 @@ public:
 
 	CGui(App* ap1);
 	~CGui();
-	//friend class CarModel;
 
 	typedef std::list <std::string> strlist;
 
 
-	//  🪧 main menu
+	//  🪧 Main Menu
 	void InitMainMenu();
 	void btnMainMenu(WP);  void tabMainMenu(Tab tab, size_t id);
 
@@ -54,25 +50,19 @@ public:
 	Cmb diffList;  void comboDiff(CMB);
 
 
-	///  🎛️ Gui
+	///  🎛️ Gui Init
 	///-----------------------------------------------------------------------------------------------------------------
 
-	bool bGI =0;  // gui inited  set values
+	bool bGI = 0;  // gui inited  set values
 	void InitGui(), GuiUpdate();
+	void InitGuiCar(), InitGuiChamps();
 	void UpdGuiAfterPreset();
 
 	Txt valTrkNet =0;
 	std::vector<Tab> vSubTabsGame, vSubTabsOpts;
+	GuiPopup* popup =0;  // msg with edits
 
-	//  car list
-	void CarListUpd(bool resetNotFound=false);
-	void AddCarL(std::string name, const CarInfo* ci);
-	std::list<CarL> liCar;
-	void FillCarList();
-
-	const static int colCar[16],colCh[16],colChL[16],colSt[16];
-
-	//  util
+	//  Gui util
 	void toggleGui(bool toggle=true);
 	void GuiShortcut(EMenu menu, int tab, int subtab=-1);
 	
@@ -80,27 +70,77 @@ public:
 	void ImgPrvClk(WP), ImgTerClk(WP), ImgPrvClose(WP);
 
 
-	//  👈 hints
-	Ck ckShowWelcome;
-	const static int iHints;  int iHintCur = 0;
-	Ed edHintTitle =0, edHintText =0, rplSubText =0;
-	Img imgHint =0, rplSubImg =0;
+	//  🚗 Car
+	///-----------------------------------------------------------------------------------------------------------------
 
-	void UpdHint(), setHintImg(Img img, int h);
-	void btnHintPrev(WP), btnHintNext(WP);
-	void btnHintScreen(WP), btnHintInput(WP), btnHintClose(WP);
-	void btnHowToBack(WP), btnLesson(WP);
+	/*CarModel* viewCar =0;
+	Can viewCanvas;  // 3d view  ---
+	wraps::RenderBoxScene* viewBox =0;  Ogre::Vector3 viewSc;*/
+	MyGUI::IntCoord GetViewSize();
+	void InitCarPrv();
 
-	struct Subtitle  // for replay lessons
-	{
-		std::string txt;
-		float beg, end;  // time
-		int hintImg;
-		Subtitle(float beginTime, float endTime, int imgId, std::string text)
-			:txt(text), beg(beginTime), end(endTime), hintImg(imgId)
-		{	}
-	};
-	std::list<Subtitle> rplSubtitles;
+	WP graphV =0, graphS =0;
+	MyGUI::PolygonalSkin* graphVel =0,*graphVGrid =0, *graphSSS =0,*graphSGrid =0;
+
+
+	///  🎨 Car color  ------
+	SV svCarClrH, svCarClrS, svCarClrV;
+	SV svCarClrGloss, svCarClrMetal, svCarClrRough;
+	void slCarClr(SV*);
+	void SldUpd_CarClr();
+	void UpdCarClrSld(bool upd=true);
+	void SetCarClr(), UpdImgClr();
+	Img imgCarClr =0;
+	void imgBtnCarClr(WP), btnCarClrRandom(WP);
+
+
+	//  🔩 Setup car  ----
+	Ck ckCarGear, ckCarRear, ckCarRearInv;  void chkGear(Ck*);
+	Ck ckAbs, ckTcs;
+	Btn bchAbs =0, bchTcs =0;
+	void chkAbs(WP), chkTcs(WP);
+
+	//  ⚫ gui car tire set gravel/asphalt
+	int iTireSet = 0;
+	void tabTireSet(Tab, size_t);
+	void SldUpd_TireSet();
+	bool bReloadSim = 1;
+
+	SV svSSSEffect, svSSSVelFactor;  // sss
+	SV svSteerRangeSurf, svSteerRangeSim;
+	void btnSSSReset(WP), btnSteerReset(WP), slSSS(SV*);
+
+
+	//  🚗📃 Car list  (all Car = Vehicle)
+	///---------------------------------------------------
+	const static int colCar[16],colCh[16],colChL[16],colSt[16];
+
+	void CarListUpd(bool resetNotFound=false);
+	void AddCarL(std::string name, const CarInfo* ci);
+	std::list<CarL> liCar;
+	void FillCarList();
+
+	int iCurCar = 0;  // current
+	Ogre::String sListCar;
+	Img imgCar =0;  Ed carDesc =0;
+	Tab tbPlr =0, tbPlr2 =0;
+
+	Mli2 carList =0;
+	void listCarChng(Mli2, size_t);
+	void btnCarView1(WP), btnCarView2(WP);
+
+	void changeCar(), changeTrack();
+
+	//  🚗📉 Car stats
+	const static int iCarSt = 10, iDrvSt = 3;
+	Img barCarSt[iCarSt], barCarSpeed =0;
+	Txt txCarStTxt[iCarSt], txCarStVals[iCarSt],
+		txCarSpeed =0, txCarType =0, txCarYear =0,
+		txCarRating =0, txCarDiff =0, txCarWidth =0,
+		txCarAuthor =0, txTrackAuthor =0,
+		txTrkDrivab[iDrvSt] = {0,0,0};
+	Img imgTrkDrivab[iDrvSt] = {0,0,0};
+	void UpdCarStats(bool car), UpdDrivability(std::string trk, bool track_user);
 
 
 	///  🕹️ [Input] tab
@@ -164,7 +204,9 @@ public:
 	bool actionIsActive(std::string, std::string);
 
 
-	///  🛠️ [Tweak]  -----------------------------------------
+	///  🛠️ [Tweak]
+	///-----------------------------------------------------------------------------------------------------------------
+
 	const static int ciEdCar = 12;
 	Ed edCar[ciEdCar] ={0,}, edPerfTest =0, edTweakCol =0;
 	Txt txtTweakPath =0, txtTweakTire =0, txtTweakPathCol;
@@ -172,14 +214,14 @@ public:
 	Tab tabTweak =0, tabEdCar =0;
 	void tabCarEdChng(Tab, size_t), tabTweakChng(Tab, size_t);
 
-	///  tire
+	///  ⚫ Tire
 	Ed edTweakTireSet =0;  void editTweakTireSet(Ed);
 	Li liTwkTiresUser =0, liTwkTiresOrig =0;
 	void listTwkTiresUser(Li, size_t), listTwkTiresOrig(Li, size_t);
 	void btnTweakTireLoad(WP), btnTweakTireReset(WP), btnTweakTireDelete(WP);
 	void FillTweakLists();  Ogre::String sTireLoad;
 
-	///  surface
+	///  Surface
 	Li liTwkSurfaces =0;  void listTwkSurfaces(Li, size_t);
 	int idTwkSurf = -1;  void btnTwkSurfPick(WP), updSld_TwkSurf(int id);
 	SV svSuFrict, svSuFrictX, svSuFrictY, svSuRollDrag, svSuRollRes;
@@ -200,82 +242,90 @@ public:
 		std::string* pathSave/*=0*/, std::string* pathSaveDir/*=0*/,
 		std::string carname, bool forceOrig=false);
 
-	//  graphs
+
+	//  📉 Graphs  ----------
 	Cmb cmbGraphs =0;  void comboGraphs(CMB);  Txt valGraphsType =0;
 
-
-	///  ⚙️ [Options]  game only
-	///-----------------------------------------------------------------------------------------------------------------
-	//  reflection
-	SV svReflSkip, svReflFaces, svReflSize;
-	SlV(ReflDist);  SlV(ReflMode);
-
-	//  hud view
-	SV svSizeGaug;
-	SV svTypeGaug, svLayoutGaug;
-
-	SV svSizeMinimap, svZoomMinimap;
-	void slHudSize(SV*), slHudCreate(SV*);
-
-	SlV(SizeArrow);
-	SLV(CountdownTime);  //-
-	SV svDbgTxtClr, svDbgTxtCnt;
-
-	//  sound
-	SlV(VolMaster);  SlV(VolHud);
-	SV svVolEngine, svVolTires, svVolSusp, svVolEnv;
-	SV svVolFlSplash, svVolFlCont, svVolCarCrash, svVolCarScrap;
-	Ck ckSndChk, ckSndChkWr, ckReverb;
-
-
-	///  ✅ Checks  . . . . . . . . . . . . . . . . . . . .
-	CK(Reverse);  // track
-
-	//  Options
-	SV svParticles, svTrails;
-	Ck ckParticles, ckTrails;  void chkParTrl(Ck*);
-
-	//  Hud view
-	Ck ckDigits, ckGauges;  void chkHudShow(Ck*);
-	//  Minimap
-	CK(Arrow);  CK(Beam);
-	CK(Minimap);  void chkMiniUpd(Ck*);
-	Ck ckMiniZoom, ckMiniRot, ckMiniTer, ckMiniBorder;
-	//  Camera
-	Ck ckCamInfo, ckCamTilt, ckCamLoop;
-	Ck ckCamBnc;  SV svCamBnc;
-	SV svFov, svFovBoost, svFovSm;
-	//  Pacenotes
-	Ck ckPaceShow;  SV svPaceDist, svPaceSize, svPaceNext;
-	SV svPaceNear, svPaceAlpha;
-	void slUpd_Pace(SV*);
-	//  Trail
-	CK(TrailShow);
-	//  Times, opp
-	Ck ckTimes, ckOpponents, ckOppSort;
-
-	//  Graphs
 	SV svTC_r, svTC_xr;
 	SV svTE_yf, svTE_xfx, svTE_xfy, svTE_xpow;
 	Ck ckTE_Common, ckTE_Reference;  void chkTEupd(Ck*);
+	CK(Graphs);
 
-	//  Hud dbg,other
+
+	//  📈 Fps debug, other
 	Ck ckFps;  CK(Wireframe);
 	//  profiler
 	Ck ckProfilerTxt, ckBulletDebug, ckBltProfTxt, ckSoundInfo;
 	//  car dbg
 	Ck ckCarDbgBars, ckCarDbgTxt, ckCarDbgSurf;
 	Ck ckTireVis;  void chkHudCreate(Ck*);
-	CK(Graphs);
+	SV svDbgTxtClr, svDbgTxtCnt;
 
-	//  Startup
+
+	/// 📊 Options  game only
+	///-----------------------------------------------------------------------------------------------------------------
+	
+	//  🔮 reflection
+	SV svReflSkip, svReflFaces, svReflSize;
+	SlV(ReflDist);  SlV(ReflMode);
+
+	//  🔉 Sound
+	SlV(VolMaster);  SlV(VolHud);
+	SV svVolEngine, svVolTires, svVolSusp, svVolEnv;
+	SV svVolFlSplash, svVolFlCont, svVolCarCrash, svVolCarScrap;
+	Ck ckSndChk, ckSndChkWr, ckReverb;
+
+	CK(Reverse);  // 🏞️ track
+
+	//  ✨ Particles, Trails
+	SV svParticles, svTrails;
+	Ck ckParticles, ckTrails;  void chkParTrl(Ck*);
+
+	//  ⏲️ Hud view
+	Ck ckDigits, ckGauges;  void chkHudShow(Ck*);
+	SV svSizeGaug;
+	SV svTypeGaug, svLayoutGaug;
+
+	//  🔝 Arrow 📍
+	CK(Arrow);  CK(Beam);
+	SlV(SizeArrow);
+
+	//  🌍 Minimap
+	CK(Minimap);  void chkMiniUpd(Ck*);
+	Ck ckMiniZoom, ckMiniRot, ckMiniTer, ckMiniBorder;
+	SV svSizeMinimap, svZoomMinimap;
+	void slHudSize(SV*), slHudCreate(SV*);
+
+	//  🎥 Camera
+	Ck ckCamInfo, ckCamTilt, ckCamLoop;
+	Ck ckCamBnc;  SV svCamBnc;
+	SV svFov, svFovBoost, svFovSm;
+	
+	//  🚦 Pacenotes
+	Ck ckPaceShow;  SV svPaceDist, svPaceSize, svPaceNext;
+	SV svPaceNear, svPaceAlpha;
+	void slUpd_Pace(SV*);
+	
+	//  Trail
+	CK(TrailShow);
+	
+	//  ⏱️ Times, opp
+	Ck ckTimes, ckOpponents, ckOppSort;
+	SLV(CountdownTime);  //-
+
+	//  radios
+	Btn bRkmh =0, bRmph =0;  // km/h, mph
+	void radKmh(WP), radMph(WP), radUpd(bool kmh);
+
+
+	//  🆕 Startup  ----
 	Ck ckAutoStart, ckEscQuits;
 	Ck ckStartInMain, ckOgreDialog;
 	Ck ckBltLines, ckShowPics;
 	Ck ckMouseCapture, ckDevKeys, ckScreenPng;
 
 
-	//  [Effects]
+	//  Effects  ----
 	/*CK(AllEffects);
 	Ck ckBloom, ckBlur, ckSoftPar, ckSSAO, ckGodRays, ckHDR;
 	void chkEffUpd(Ck*), chkEffUpdShd(Ck*);
@@ -285,58 +335,19 @@ public:
 	SV svHDRBloomInt, svHDRBloomOrig;*/
 
 
-	///  Car 3d view  ---
-	/*CarModel* viewCar =0;
-	Can viewCanvas;
-	wraps::RenderBoxScene* viewBox =0;  Ogre::Vector3 viewSc;*/
-	MyGUI::IntCoord GetViewSize();
-	void InitCarPrv();
-
-	WP graphV =0, graphS =0;
-	MyGUI::PolygonalSkin* graphVel =0,*graphVGrid =0, *graphSSS =0,*graphSGrid =0;
-
-
-	///  [Car] color  --===---
-	SV svCarClrH, svCarClrS, svCarClrV;
-	SV svCarClrGloss, svCarClrMetal, svCarClrRough;
-	void slCarClr(SV*);
-	void SldUpd_CarClr();
-	void UpdCarClrSld(bool upd=true);
-	void SetCarClr(), UpdImgClr();
-
-
-	//  🔧 [Setup] car
-	Ck ckCarGear, ckCarRear, ckCarRearInv;  void chkGear(Ck*);
-	Ck ckAbs, ckTcs;
-	Btn bchAbs =0, bchTcs =0;
-	void chkAbs(WP), chkTcs(WP);
-
-	//  gui car tire set gravel/asphalt
-	int iTireSet = 0;
-	void tabTireSet(Tab, size_t);
-	void SldUpd_TireSet();
-
-	SV svSSSEffect, svSSSVelFactor;
-	SV svSteerRangeSurf, svSteerRangeSim;
-	void btnSSSReset(WP), btnSteerReset(WP), slSSS(SV*);
-
-	void imgBtnCarClr(WP), btnCarClrRandom(WP);  Img imgCarClr =0;
-
-	//  radios
-	Btn bRkmh =0, bRmph =0;  // km/h, mph
-	void radKmh(WP), radMph(WP), radUpd(bool kmh);
-
-	bool bReloadSim = 1;
-
-	//  [Game] setup
+	//  🔨 Game  setup  ----
 	Ck ckVegetCollis, ckCarCollis, ckRoadWCollis, ckDynamicObjs;
 	SV svNumLaps;  SLV(RplNumViewports);  //-
 	SV svDamageDec;
 	SV svBmin,svBmax,svBpow,svBperKm,svBaddSec;
 
+	Cmb cmbBoost =0, cmbFlip =0, cmbDamage =0, cmbRewind =0;
+	void comboBoost(CMB), comboFlip(CMB), comboDamage(CMB), comboRewind(CMB);
 
-	///  📽️ [Replay]
-	///---------------------------------------------------
+
+	///  📽️ Replay
+	///-----------------------------------------------------------------------------------------------------------------
+
 	Li rplList =0;
 	void listRplChng(Li, size_t);
 	void updReplaysList();
@@ -377,48 +388,45 @@ public:
 	void msgRplDelete(MyGUI::Message*, MyGUI::MessageBoxStyle);
 
 
-	//  Game
+	//  👈 Hints
+	///---------------------------------------------------
+	Ck ckShowWelcome;
+	const static int iHints;  int iHintCur = 0;
+	Ed edHintTitle =0, edHintText =0, rplSubText =0;
+	Img imgHint =0, rplSubImg =0;
+
+	void UpdHint(), setHintImg(Img img, int h);
+	void btnHintPrev(WP), btnHintNext(WP);
+	void btnHintScreen(WP), btnHintInput(WP), btnHintClose(WP);
+	void btnHowToBack(WP), btnLesson(WP);
+
+	struct Subtitle  // for replay lessons
+	{
+		std::string txt;
+		float beg, end;  // time
+		int hintImg;
+		Subtitle(float beginTime, float endTime, int imgId, std::string text)
+			:txt(text), beg(beginTime), end(endTime), hintImg(imgId)
+		{	}
+	};
+	std::list<Subtitle> rplSubtitles;
+
+
+	//  🏁 New Game
 	///---------------------------------------------------
 	Btn btNewGameCar =0;
 	void btnNewGame(WP), btnNewGameStart(WP);
 
-	//  split
+	//  👥 split screen
 	void btnNumPlayers(WP);
 	Txt valLocPlayers =0;
 	Ck ckSplitVert;
 	void chkStartOrd(WP);
 
 
-	//  🚗 [Car] list  (all Car = Vehicle)
-	int iCurCar = 0;  // current
-	Ogre::String sListCar;
-
-	Mli2 carList =0;
-	void listCarChng(Mli2, size_t);
-	void btnCarView1(WP), btnCarView2(WP);
-
-	void changeCar(), changeTrack();
-
-	//  [Car] stats
-	const static int iCarSt = 10, iDrvSt = 3;
-	Img barCarSt[iCarSt], barCarSpeed =0;
-	Txt txCarStTxt[iCarSt], txCarStVals[iCarSt],
-		txCarSpeed =0, txCarType =0, txCarYear =0,
-		txCarRating =0, txCarDiff =0, txCarWidth =0,
-		txCarAuthor =0, txTrackAuthor =0,
-		txTrkDrivab[iDrvSt] = {0,0,0};
-	Img imgTrkDrivab[iDrvSt] = {0,0,0};
-	Tab tbPlr =0, tbPlr2 =0;
-
-	void UpdCarStats(bool car), UpdDrivability(std::string trk, bool track_user);
-
-	Img imgCar =0;  Ed carDesc =0;
-	Cmb cmbBoost =0, cmbFlip =0, cmbDamage =0, cmbRewind =0;
-	void comboBoost(CMB), comboFlip(CMB), comboDamage(CMB), comboRewind(CMB);
-
-
-	///  🏆 championships & challenges
+	///  🏆 Championships, Challenges
 	///-----------------------------------------------------------------------------------------------------------------
+
 	Btn btStTut =0, btStChamp =0, btStChall =0;
 	Img imgTut =0, imgChamp =0, imgChall =0;
 	//  tabs
@@ -427,14 +435,14 @@ public:
 	//void tabTutType(Tab, size_t);
 	void tabChampType(Tab, size_t), tabChallType(Tab, size_t);
 
-	//  stages
+	//  🏞️ stages
 	Ed edChInfo =0, edChDesc =0;  WP panCh =0;
 	Txt txtCh =0, valCh =0, txtChP[3] ={0,0,0}, valChP[3] ={0,0,0};  // stages info, pass/progress
 
 	void btnStageNext(WP), btnStagePrev(WP);  Txt valStageNum =0;
 	void StageListAdd(int n, Ogre::String name, int laps, Ogre::String progress);
 
-	//  xml  [1]= reversed  L= challenge
+	//  📄 xml  [1]= reversed  L= challenge
 	ProgressXml progress[2];
 	ProgressLXml progressL[2];
 
@@ -448,11 +456,12 @@ public:
 	const static Ogre::String StrPrize(int i/*0 none..3 gold*/), strPrize[4],clrPrize[4];
 	const static int ciAddPos[3];  const static float cfSubPoints[3];
 
-	//  common
+	//  📃 lists
 	Mli2 liStages =0, liNetEnd =0;  void listStageChng(Mli2, size_t);
 	Mli2 liChamps =0;  void listChampChng(Mli2, size_t);
 	Mli2 liChalls =0;  void listChallChng(Mli2, size_t);
 
+	//  🪟 windows
 	void btnChampStart(WP), btnChampEndClose(WP), btnChampStageBack(WP), btnChampStageStart(WP);
 	void btnChallStart(WP), btnChallEndClose(WP), btnChallStageBack(WP), btnChallStageStart(WP);
 	void btnChRestart(WP);  Btn btChRestart =0;
@@ -480,7 +489,7 @@ public:
 	bool isChallGui();  void BackFromChs();
 
 
-	//  🛠️ _Tools_
+	//  🛠️ _Tools_  ----
 	void ToolGhosts(),ToolGhostsConv(), ToolTestTrkGhosts();
 
 	//  ⛓️ key util
@@ -492,8 +501,7 @@ public:
 	std::string GetRplListDir();
 
 
-
-	///  👥 multiplayer game
+	///  👥 Multiplayer game
 	///-----------------------------------------------------------------------------------------------------------------
 /*
 	void rebuildGameList(), rebuildPlayerList();
@@ -546,7 +554,6 @@ public:
 	Ed edNetNick =0,       edNetLocalPort =0;  void evEdNetNick(Ed),       evEdNetLocalPort(Ed);
 	Ed edNetServerPort =0, edNetServerIP =0;   void evEdNetServerPort(Ed), evEdNetServerIP(Ed);
 */
-	GuiPopup* popup =0;  // msg with edits
 
 	//  🔗 open urls
 	void btnWelcome(WP), btnWebsite(WP), btnWiki(WP), btnWikiInput(WP);

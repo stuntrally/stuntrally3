@@ -20,7 +20,7 @@ using namespace MyGUI;
 
 ///______________________________________________________________________________________________
 ///
-///  load championship or challenge track
+///  load 🏆 championship or 🥇 challenge track
 ///______________________________________________________________________________________________
 void App::Ch_NewGame()
 {
@@ -34,7 +34,7 @@ void App::Ch_NewGame()
 	int iChall = pSet->game.chall_num;
 	if (iChall >= 0)
 	{
-		///  challenge stage
+		///  🥇 challenge stage
 		int p = pSet->game.champ_rev ? 1 : 0;
 		ProgressChall& pc = gui->progressL[p].chs[iChall];
 		Chall& chl = data->chall->all[iChall];
@@ -78,7 +78,7 @@ void App::Ch_NewGame()
 	}
 	else if (iChamp >= 0)
 	{
-		///  championship stage
+		///  🏆 championship stage
 		int p = pSet->game.champ_rev ? 1 : 0;
 		ProgressChamp& pc = gui->progress[p].chs[iChamp];
 		const Champ& ch = data->champs->all[iChamp];
@@ -104,7 +104,7 @@ void App::Ch_NewGame()
 	}
 }
 
-///  car time mul
+///  ⏱️ car time mul
 //-----------------------------------------------------------------------------------------------
 float App::GetCarTimeMul(const string& car, const string& sim_mode)
 {
@@ -119,7 +119,7 @@ float App::GetCarTimeMul(const string& car, const string& sim_mode)
 	return carMul;
 }
 
-///  compute race position,  basing on car and track time
+///  🏁 compute race position,  basing on car and track time
 //-----------------------------------------------------------------------------------------------
 
 int App::GetRacePos(float timeCur, float timeTrk, float carTimeMul, bool coldStart, float* pPoints)
@@ -144,8 +144,8 @@ int App::GetRacePos(float timeCur, float timeTrk, float carTimeMul, bool coldSta
 }
 
 
-///______________________________________________________________________________________________
-///  Load  championships.xml, progress.xml (once)
+//-----------------------------------------------------------------------------------------------
+///  📄 Load  championships.xml, progress.xml (once)
 //-----------------------------------------------------------------------------------------------
 void CGui::Ch_XmlLoad()
 {
@@ -175,7 +175,7 @@ void CGui::Ch_XmlLoad()
 	#endif
 	
 
-///  Champs  ---------------------------
+/// 🏆 Champs  ---------------------------
 	ProgressXml oldprog[2];
 	oldprog[0].LoadXml(PATHMANAGER::UserConfigDir() + "/progress.xml");
 	oldprog[1].LoadXml(PATHMANAGER::UserConfigDir() + "/progress_rev.xml");
@@ -233,7 +233,7 @@ void CGui::Ch_XmlLoad()
 		LogO("|| ERROR: champs and progress sizes differ !");
 
 
-///  Challenges  ---------------------------
+/// 🥇 Challenges  ---------------------------
 	ProgressLXml oldpr[2];
 	oldpr[0].LoadXml(PATHMANAGER::UserConfigDir() + "/progressL.xml");
 	oldpr[1].LoadXml(PATHMANAGER::UserConfigDir() + "/progressL_rev.xml");
@@ -297,7 +297,7 @@ void CGui::Ch_XmlLoad()
 }
 
 
-///  upd tutor,champ,chall gui vis
+///  🪟 upd Gui vis  tutor champ chall
 //-----------------------------------------------------------------------------------------------
 void CGui::UpdChampTabVis()
 {
@@ -336,7 +336,7 @@ void CGui::btnChampInfo(WP)
 }
 
 
-///  add item in stages list
+///  📃 Stages list  add item
 //-----------------------------------------------------------------------------------------------
 void CGui::StageListAdd(int n, String name, int laps, String progress)
 {
@@ -358,7 +358,7 @@ void CGui::StageListAdd(int n, String name, int laps, String progress)
 	liStages->setSubItemNameAt(6,l, progress);
 }
 
-///  Stages list  sel changed,  update Track info
+///  📃 Stages list  sel changed,  update Track info
 //-----------------------------------------------------------------------------------------------
 void CGui::listStageChng(MyGUI::MultiList2* li, size_t pos)
 {
@@ -411,7 +411,7 @@ void CGui::Ch_LoadEnd()
 	}
 }
 
-//  Stages gui tab
+//  Stages gui tab  <  >
 void CGui::btnStageNext(WP)
 {
 	size_t id = liStages->getIndexSelected(), all = liStages->getItemCount();
@@ -434,7 +434,7 @@ void CGui::btnStagePrev(WP)
 }
 
 
-//  restart progress curtrack
+//  ❌ restart progress curtrack
 void CGui::btnChRestart(WP)
 {
 	int p = pSet->game.champ_rev ? 1 : 0;
