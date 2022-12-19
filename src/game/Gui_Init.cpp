@@ -24,7 +24,7 @@ using namespace MyGUI;
 using namespace std;
 
 
-///  Gui Init
+///  🎛️ Gui Init
 //---------------------------------------------------------------------------------------------------------------------
 
 void CGui::InitGui()
@@ -60,7 +60,7 @@ void CGui::InitGui()
 	Load("Game_Help");  Load("Game_Options");  Load("Game_Replay");  Load("Game_Tweak");
 
 
-	//  wnds
+	//  🪟 windows
 	app->mWndMain = fWnd("MainMenuWnd");  app->mWndRace = fWnd("RaceMenuWnd");
 	app->mWndGame = fWnd("GameWnd");  app->mWndReplays = fWnd("ReplaysWnd");
 	app->mWndHelp = fWnd("HelpWnd");  app->mWndOpts = fWnd("OptionsWnd");
@@ -146,7 +146,7 @@ void CGui::InitGui()
 	{	Btn("BtnLesson"+toStr(i), btnLesson);  }
 
 
-	///  Sliders
+	///  🎚️ Sliders
 	//------------------------------------------------------------------------
 
 	//  Hud view sizes  ----
@@ -190,7 +190,7 @@ void CGui::InitGui()
 		sv->strMap[2] = TR("#{ReflMode_full}");
 						sv->Init("ReflMode",	&pSet->refl_mode,   0,2);  Sev(ReflMode);  sv->DefaultI(1);
 
-	//  Sound
+	//  🔉 Sound
 	sv= &svVolMaster;	sv->Init("VolMaster",	&pSet->vol_master, 0.f, 2.0f);  sv->DefaultF(1.55f);  Sev(VolMaster);
 	ck= &ckReverb;		ck->Init("ChkReverb",   &pSet->snd_reverb);
 
@@ -209,7 +209,7 @@ void CGui::InitGui()
 	ck= &ckSndChkWr;	ck->Init("SndChkWr",    &pSet->snd_chkwr);
 
 
-	//  car color
+	//  🎨 car color
 	float f;  // temp
 	sv= &svCarClrH;		sv->Init("CarClrH",     &f, 0.f, 1.f);  Sev(CarClr);
 	sv= &svCarClrS;		sv->Init("CarClrS",     &f, 0.f, 1.f);  Sev(CarClr);
@@ -244,7 +244,7 @@ void CGui::InitGui()
 	graphSSS->setWidth(3.5f);
 
 
-	///  View Checks
+	///  ✅ View Checks
 	//------------------------------------------------------------------------
 	ck= &ckReverse;		ck->Init("ReverseOn",	&pSet->gui.trackreverse);  Cev(Reverse);
 
@@ -252,7 +252,7 @@ void CGui::InitGui()
 	ck= &ckParticles;	ck->Init("ParticlesOn", &pSet->particles);   Cev(ParTrl);
 	ck= &ckTrails;		ck->Init("TrailsOn",    &pSet->trails);      Cev(ParTrl);
 
-	//  Hud  ----
+	//  ⏱️ Hud  ----
 	ck= &ckDigits;		ck->Init("Digits",      &pSet->show_digits);   Cev(HudShow);
 	ck= &ckGauges;		ck->Init("Gauges",      &pSet->show_gauges);   Cev(HudShow);
 
@@ -266,7 +266,7 @@ void CGui::InitGui()
 	ck= &ckMiniTer;		ck->Init("MiniTer",     &pSet->mini_terrain);  Cev(MiniUpd);
 	ck= &ckMiniBorder;	ck->Init("MiniBorder",  &pSet->mini_border);   Cev(MiniUpd);
 
-	//  camera
+	//  🎥 camera
 	ck= &ckCamInfo;		ck->Init("CamInfo",     &pSet->show_cam);   Cev(HudShow);
 	ck= &ckCamTilt;		ck->Init("CamTilt",     &pSet->cam_tilt);
 	ck= &ckCamLoop;		ck->Init("CamLoop",     &pSet->cam_loop_chng);
@@ -296,7 +296,7 @@ void CGui::InitGui()
 	ck= &ckOppSort;		ck->Init("OppSort",     &pSet->opplist_sort);
 
 
-	//  dbg,other
+	//  📈 Fps,dbg,other
 	ck= &ckFps;			ck->Init("Fps",			&pSet->show_fps);
 	app->bckFps->setVisible(pSet->show_fps);
 	app->txFps->setVisible(pSet->show_fps);
@@ -336,7 +336,7 @@ void CGui::InitGui()
 	SldUpd_TireSet();
 
 
-	//  game  ------------------------------------------------------------
+	//  Game  ------------------------------------------------------------
 	ck= &ckVegetCollis;		ck->Init("VegetCollis",		&pSet->gui.collis_veget);
 	ck= &ckCarCollis;		ck->Init("CarCollis",		&pSet->gui.collis_cars);
 	ck= &ckRoadWCollis;		ck->Init("RoadWCollis",		&pSet->gui.collis_roadw);
@@ -390,7 +390,7 @@ void CGui::InitGui()
 	Btn("mph", radMph);	 bRmph = btn;  bRmph->setStateSelected( pSet->show_mph);
 
 
-	//  startup
+	//  Startup
 	ck= &ckStartInMain;	ck->Init("StartInMain", &pSet->startInMain);
 	ck= &ckAutoStart;	ck->Init("AutoStart",   &pSet->autostart);
 	ck= &ckEscQuits;	ck->Init("EscQuits",    &pSet->escquit);
@@ -420,7 +420,7 @@ void CGui::InitGui()
 	// sv= &svHDRBloomOrig;	sv->Init("HDRBloomOrig",	&pSet->hdrBloomorig);  sv->DefaultF(0.34f);
 
 
-	//  replays  ------------------------------------------------------------
+	//  📽️ Replays  ------------------------------------------------------------
 	Btn("RplLoad",   btnRplLoad);    Btn("RplSave",   btnRplSave);
 	Btn("RplDelete", btnRplDelete);  Btn("RplRename", btnRplRename);
 	//  settings
@@ -473,7 +473,7 @@ void CGui::InitGui()
 	updReplaysList();
 
 
-	///  Car
+	///  🚗 Car
 	//------------------------------------------------------------
 	Tbi tbc = fTbi("CarClrs");
 	const int clrBtn = data->colors->v.size(), clrRow = data->colors->perRow, sx = data->colors->imgSize;
@@ -521,7 +521,7 @@ void CGui::InitGui()
 	ck= &ckSplitVert;	ck->Init("chkSplitVertically",  &pSet->split_vertically);
 
 
-	///  Multiplayer
+	///  👥 Multiplayer
 	//------------------------------------------------------------------------
 	int c=0;
 /*	tabsNet = fTab("SubTabNet");
@@ -597,7 +597,7 @@ void CGui::InitGui()
 	ck= &ckTE_Reference;	ck->Init("TE_Reference",	&pSet->te_reference);  //Cev(TEupd);
 
 
-	///  tweak, car edit
+	///  🔧 Tweak, car edit
 	//------------------------------------------------------------
 /*	for (i=0; i < ciEdCar; ++i)
 		edCar[i] = fEd("EdCar"+toStr(i));
@@ -649,7 +649,7 @@ void CGui::InitGui()
 	InitInputGui();
 
 
-	///  cars list
+	///  📃 cars list
 	//------------------------------------------------------------------------
 	Tbi carTab = fTbi("TabCar");
 	Mli2 li = carTab->createWidget<MultiList2>("MultiListBox",16,48,600,110, Align::Left | Align::VStretch);
@@ -711,7 +711,7 @@ void CGui::InitGui()
 	{	Btn("NewGame"+toStr(i), btnNewGame);  if (i==1)  btNewGameCar = btn;  }
 
 
-	//  championships
+	//  🏆 Championships
 	//------------------------------------------------------------------------
 	app->mWndRaceBtns[1]->setVisible(pSet->difficulty < 4);  // tutorials
 
@@ -862,7 +862,7 @@ void CGui::InitGui()
 	liNetEnd = li;
 */
 
-	//  open url btns  -------------
+	//  🌍 open url btns  -------------
 	Btn("OpenWelcome", btnWelcome);  Btn("OpenWebsite", btnWebsite);   Btn("OpenSources", btnSources);
 	Btn("OpenForum",   btnForum);    Btn("OpenDonations", btnDonations);
 	//  wiki

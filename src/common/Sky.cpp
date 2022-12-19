@@ -321,7 +321,7 @@ void CScene::CreateWeather()
 }
 void CScene::DestroyWeather()
 {
-	LogO("---- destroy weather");
+	LogO("D--- destroy weather");
 	if (pr)  {  app->mSceneMgr->destroyParticleSystem(pr);   pr=0;  }
 	if (pr2) {  app->mSceneMgr->destroyParticleSystem(pr2);  pr2=0;  }
 }

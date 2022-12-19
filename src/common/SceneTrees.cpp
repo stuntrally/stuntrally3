@@ -43,7 +43,7 @@ using namespace Ogre;
 
 void CScene::DestroyTrees()
 {
-	LogO("D--- destroy trees");
+	LogO("D--- destroy Trees");
 
 	SceneManager *mgr = app->mSceneMgr;
 	for (auto node : vegetNodes)

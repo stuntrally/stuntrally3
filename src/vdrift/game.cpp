@@ -86,7 +86,7 @@ void GAME::ReloadSimData()  /// New
 	LoadAllSurfaces();
 	LoadSusp();
 
-	LogO("* * * Simulation: "+pSet->game.sim_mode+". Loaded: "+toStr(tires.size()) +" tires, "+ toStr(surfaces.size()) +" surfaces, "+ toStr(suspS.size()) +"="+ toStr(suspD.size()) +" suspensions.");
+	LogO("**** Simulation: "+pSet->game.sim_mode+". Loaded: "+toStr(tires.size()) +" tires, "+ toStr(surfaces.size()) +" surfaces, "+ toStr(suspS.size()) +"="+ toStr(suspD.size()) +" suspensions.");
 }
 
 

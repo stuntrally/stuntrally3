@@ -174,7 +174,7 @@ void App::CreateTerrain()
 
 void App::DestroyTerrain()
 {
-	LogO("---- destroy Terrain");
+	LogO("D--- destroy Terrain");
 
 	Root *root = mGraphicsSystem->getRoot();
 	Hlms *hlmsPbs = root->getHlmsManager()->getHlms( HLMS_PBS );

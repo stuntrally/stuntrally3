@@ -273,7 +273,7 @@ void App::LoadCleanUp()  // 1 first
 	{
 		if (resTrk != "")
 			ResourceGroupManager::getSingleton().removeResourceLocation(resTrk);
-		LogO("------  Loading track: "+pSet->game.track);
+		LogO(">>>>----  Loading track: "+pSet->game.track);
 		resTrk = gcom->TrkDir() + "objects";  // for roadDensity.png
 		ResourceGroupManager::getSingleton().addResourceLocation(resTrk, "FileSystem");
 	}

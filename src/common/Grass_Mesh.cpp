@@ -362,7 +362,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 
 void Grass::Destroy()  // full
 {
-	LogO("D--- Destroy Grass");
+	LogO("D--- destroy Grass");
 	for (size_t i=0; i < gds.size(); ++i)
 	{
 		GrassData& gd = gds[i];
