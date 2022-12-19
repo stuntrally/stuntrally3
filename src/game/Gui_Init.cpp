@@ -172,11 +172,11 @@ void CGui::InitGui()
 	valGraphsType->setCaption(toStr(pSet->graphs_type));
 
 
-	//  Options  ----
+	//  ✨ Options  ----
 	sv= &svParticles;	sv->Init("Particles",	&pSet->particles_len, 0.f, 4.f, 2.f);  sv->DefaultF(1.5f);
 	sv= &svTrails;		sv->Init("Trails",		&pSet->trails_len,    0.f, 4.f, 2.f);  sv->DefaultF(3.f);
 
-	//  reflection
+	//  🔮 reflection
 	sv= &svReflSkip;	sv->Init("ReflSkip",	&pSet->refl_skip,    0,1000, 2.f);  sv->DefaultI(0);
 	sv= &svReflFaces;	sv->Init("ReflFaces",	&pSet->refl_faces,   1,6);  sv->DefaultI(1);
 	sv= &svReflSize;

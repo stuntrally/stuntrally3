@@ -101,57 +101,40 @@ bool BaseApp::isTweak()
 
 
 //-------------------------------------------------------------------------------------
-//  🎛️ input events  ⌨️ key 🖱️ mouse  // window
+//  🎛️ input events  🖱️ mouse
 //-------------------------------------------------------------------------------------
-/*
-void BaseApp::keyReleased(const SDL_KeyboardEvent& arg)
-{
-	mInputCtrl->keyReleased(arg);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->keyReleased(arg);
-
-	if (bAssignKey)  return;
-
-	if (mGui && (isFocGui || isTweak()))
-	{
-		// OIS::KeyCode kc = mInputWrapper->sdl2OISKeyCode(arg.keysym.sym);
-		// MyGUI::InputManager::getInstance().injectKeyRelease(MyGUI::KeyCode::Enum(kc));
-	}
-}*/
-
-//  Mouse events
-//-------------------------------------------------------------------------------------
-
 void BaseApp::mouseMoved(const SDL_Event &arg)
 {
+	static int xm = 0, ym = 0;  // old abs
 	int mx = 0, my = 0, mz = 0;  // abs
-	int rx = 0, ry = 0, rz = 0;  // rel
+	int rx = 0, ry = 0;  // rel
 
 	if (arg.type == SDL_MOUSEMOTION)
 	{
 		mInputCtrl->mouseMoved(arg.motion);
 		for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->mouseMoved(arg.motion);
 
-		mx = arg.motion.x;	rx = arg.motion.xrel;
-		my = arg.motion.y;	ry = arg.motion.yrel;
+		xm = mx = arg.motion.x;  rx = arg.motion.xrel;
+		ym = my = arg.motion.y;  ry = arg.motion.yrel;
 	}
 	else if (arg.type == SDL_MOUSEWHEEL)
 	{
-		mz = arg.wheel.y;  rz = mz;
+		mz = arg.wheel.y;
 	}
 
 	if (bAssignKey)  return;
 
 	if (IsFocGui() && mGui)
 	{
-		MyGUI::InputManager::getInstance().injectMouseMove(mx, my, mz);
+		MyGUI::InputManager::getInstance().injectMouseMove(xm, ym, mz/*?*/);
 		return;
 	}
 
-	///  🎥 Follow Camera Controls
+	///  🎥 Follow Camera Controls  ----
 	int i = 0;  //Log("cam: "+toStr(iCurCam));
 	for (auto it = carModels.begin(); it != carModels.end(); ++it,++i)
 		if (i == iCurCam && (*it)->fCam)
-			(*it)->fCam->Move( mbLeft, mbRight, mbMiddle, shift, rx, ry, rz );
+			(*it)->fCam->Move( mbLeft, mbRight, mbMiddle, shift, rx, ry, mz );
 }
 
 void BaseApp::mousePressed( const SDL_MouseButtonEvent& arg, Uint8 id )
@@ -189,6 +172,7 @@ void BaseApp::mouseReleased( const SDL_MouseButtonEvent& arg, Uint8 id )
 	else if (id == SDL_BUTTON_MIDDLE)	mbMiddle = false;
 }
 
+//  text
 void BaseApp::textInput(const SDL_TextInputEvent &arg)
 {
 	const char* text = &arg.text[0];
@@ -200,6 +184,7 @@ void BaseApp::textInput(const SDL_TextInputEvent &arg)
 			MyGUI::KeyCode::None, *it);
 }
 
+//  joy 🕹️
 void BaseApp::joyAxisMoved(const SDL_JoyAxisEvent &arg, int axis )
 {
 	mInputCtrl->axisMoved(arg, axis);
@@ -220,10 +205,10 @@ void BaseApp::joyButtonReleased(const SDL_JoyButtonEvent &evt, int button)
 
 
 #if 0
-//  mouse cursor
+//  todo: mouse cursor
 //-------------------------------------------------------
 void BaseApp::showMouse()
-{	
+{
 	mInputWrapper->setMouseVisible(true);
 }
 void BaseApp::hideMouse()

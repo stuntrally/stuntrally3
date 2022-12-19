@@ -60,7 +60,7 @@ hlms hud/line unlit : hud_base
 
 hlms circle_minimap unlit : hud_base
 {
-
+	// diffuse_map  road.png
 }
 
 
@@ -147,4 +147,52 @@ hlms pacenote unlit
 	// fog_override true  // no fog
 
 	diffuse_map pacenotes.png
+}
+
+
+
+//  graph  ---------------------------------
+hlms graphB unlit : hud_base  //?
+{
+	ambient 0 0 0
+	diffuse 0 0 0
+	specular 0 0 0
+
+	depth_check off
+	depth_write off
+	//scene_blend alpha_blend
+	cull_hardware none
+}
+hlms graph1 : graphB {  emissive 0.0 1.0 1.0  }
+hlms graph2 : graphB {  emissive 0.0 1.0 0.0  }
+hlms graph3 : graphB {  emissive 1.0 1.0 0.0  }
+hlms graph4 : graphB {  emissive 1.0 0.5 0.0  }
+hlms graph5 : graphB {  emissive 1.0 0.0 0.0  }
+
+hlms graphA0 : graphB {  emissive 0.9 1.0 1.0  }
+hlms graphA1 : graphB {  emissive 0.8 1.0 1.0  }
+hlms graphA2 : graphB {  emissive 0.6 1.0 1.0  }
+hlms graphA3 : graphB {  emissive 0.4 1.0 1.0  }
+hlms graphA4 : graphB {  emissive 0.2 0.8 1.0  }
+hlms graphA5 : graphB {  emissive 0.2 0.6 1.0  }
+hlms graphA6 : graphB {  emissive 0.2 0.4 1.0  }
+hlms graphA7 : graphB {  emissive 0.2 0.2 1.0  }
+
+hlms graphB0 : graphB {  emissive 1.0 1.0 0.9  }
+hlms graphB1 : graphB {  emissive 1.0 1.0 0.6  }
+hlms graphB2 : graphB {  emissive 1.0 1.0 0.3  }
+hlms graphB3 : graphB {  emissive 1.0 1.0 0.0  }
+hlms graphB4 : graphB {  emissive 1.0 0.8 0.0  }
+hlms graphB5 : graphB {  emissive 1.0 0.6 0.0  }
+hlms graphB6 : graphB {  emissive 1.0 0.4 0.0  }
+hlms graphB7 : graphB {  emissive 1.0 0.2 0.0  }
+
+hlms graphBack unlit : hud_base
+{
+	// diffuse vertexcolour
+}
+
+hlms graphGrid unlit : hud_base
+{
+	// diffuse vertexcolour
 }

@@ -233,7 +233,7 @@
 					<Property key="FontName" value="font.big"/>
 					<Property key="Alpha" value="0.5"/>
 				</Widget>
-				<Widget type="ImageBox" skin="ImageBox" position="4 500 341 85">
+				<Widget type="ImageBox" skin="ImageBox" position="8 496 341 85">
 					<Property key="ImageTexture" value="ogre-logo.png"/>
 					<UserString key="tip" value="ogre3d.org"/>
 					<Property key="Alpha" value="0.7"/>
