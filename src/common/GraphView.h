@@ -59,7 +59,7 @@ protected:
 	std::vector<float> vals;  // values buffer
 	int iCurX = 0;  // cur id to insert new val
 	bool buffered =0, manualUpd =0;
-	bool ok = 0;
+	bool attached = 0;
 	
 	//float rmin, rmax, range;  // SetRange
 	//bool autoMin, autoMax;  float timeUpdAuto; //?

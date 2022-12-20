@@ -62,7 +62,7 @@ void App::newPoses(float time)  // time only for camera update
 		//  play  get data from replay / ghost
 		///-----------------------------------------------------------------------
 		if (bGhost)
-		{	///>>  track's ghost
+		{	///>>  🏞️👻 track's ghost
 			if (carM->isGhostTrk())
 			{
 				TrackFrame tf;       // par: sec after, 1st lap
@@ -93,7 +93,7 @@ void App::newPoses(float time)  // time only for camera update
 					}else
 						pi.whRot[w] = Axes::toOgreW(tf.rot * carM->qFixWh[w%2]);
 				}
-			}else  ///>>  ghost
+			}else  ///>>  👻 ghost
 			{
 				ReplayFrame2 gf;
 				float ti = std::min((float)rewTime, ghPlay.GetTimeLength());
@@ -108,7 +108,7 @@ void App::newPoses(float time)  // time only for camera update
 				}
 			}
 		}
-		else  ///>>  replay
+		else  ///>>  📽️ replay
 		if (bRplPlay)
 		{
 			#ifdef DEBUG
@@ -136,7 +136,7 @@ void App::newPoses(float time)  // time only for camera update
 		pi.bNew = true;
 		
 
-		//<<  rewind
+		//<<  ⏪ rewind
 		///-----------------------------------------------------------------------
 		if (!bRplPlay && !pGame->pause && !bGhost && pCar)
 		if (pCar->bRewind && pSet->game.rewind_type > 0)
@@ -177,7 +177,7 @@ void App::newPoses(float time)  // time only for camera update
 			rewind.AddFrame(fr, c);  // rec rewind
 		}
 		
-		//<<  record  save data
+		//<<  👻 record  save data
 		///-----------------------------------------------------------------------
 		if (pSet->rpl_rec && !bRplPlay && !pGame->pause && !bGhost && pCar)
 		{
@@ -210,13 +210,13 @@ void App::newPoses(float time)  // time only for camera update
 		///-----------------------------------------------------------------------
 		
 
-		//  checkpoints, lap start
+		//  🏁 checkpoints, lap start
 		//-----------------------------------------------------------------------
 		if (bGhost && !gui->bLesson)   // dont check for ghost
 			carM->bWrongChk = false;
 		else
 		{
-			///  arrow update  --------------------------------------
+			///  🔝 arrow update  --------------------------------------
 			SplineRoad* road = scn->road;
 			if (pSet->check_arrow && carM->cType == CarModel::CT_LOCAL
 			  && !bRplPlay && hud->arrow.node && road && road->mChks.size()>0)
@@ -245,7 +245,7 @@ void App::newPoses(float time)  // time only for camera update
 				int ncs = road->mChks.size();
 				if (ncs > 0)
 				{
-					//  Finish  --------------------------------------
+					//  🏁 Finish  --------------------------------------
 					if (locar && !bRplPlay &&
 						(carM->bInSt && carM->iNumChks == ncs && carM->iCurChk != -1))
 					{
@@ -320,7 +320,7 @@ void App::newPoses(float time)  // time only for camera update
 						}
 					}
 					
-					//  checkpoints  --------------------------------------
+					//  🏁 checkpoints  --------------------------------------
 					for (int i=0; i < ncs; ++i)
 					{
 						const CheckSphere& cs = road->mChks[i];
@@ -329,7 +329,7 @@ void App::newPoses(float time)  // time only for camera update
 						{
 							carM->iInChk = i;
 							
-							//\  loop camera change
+							//\  ➰🎥 loop camera change
 							if (pSet->cam_loop_chng && carM->fCam &&
 								cs.loop && (carM->iLoopChk == -1 || carM->iLoopChk != i) &&
 								pCar->dynamics.vtype != V_Sphere)
@@ -389,13 +389,13 @@ void App::newPoses(float time)  // time only for camera update
 		{
 			int qn = (iCurPoses[c] + 1) % CarPosCnt;  // next index in queue
 			carPoses[qn][c] = pi;
-			//  update camera
+			//  🎥 update camera
 			if (carM->fCam)
 				carM->fCam->update(time, pi, &carPoses[qn][c], &pGame->collision,
 					!bRplPlay && pSet->cam_bounce, carM->vType);
 			iCurPoses[c] = qn;  // atomic, set new index in queue
 			
-			///))  upd sound camera
+			///))  🔉🎥 upd sound camera
 			if (c == 0 && pGame->snd)
 			{
 				Vector3 x,y,z;
@@ -427,7 +427,7 @@ void App::updatePoses(float time)
 			PROFILER.endBlock(".updPos ");
 			return;  }
 		
-		///  ghosts visibility  . . .
+		///  👻 ghosts visibility  . . .
 		//  hide when empty or near car
 		bool bGhostCar = carM->cType == (isGhost2nd ? CarModel::CT_GHOST2 : CarModel::CT_GHOST),  // show only actual
 			bGhTrkVis = carM->isGhostTrk() && ghTrk.GetTimeLength()>0 && pSet->rpl_trackghost,
@@ -465,14 +465,14 @@ void App::updatePoses(float time)
 		}	}
 
 		
-		//  update car pos
+		//  🚗💫 update car pos  ----
 		int q = iCurPoses[c];
 		int cc = (c + iRplCarOfs) % carModels.size();  // replay offset, camera from other car
 		int qq = iCurPoses[cc];
 		PosInfo& pi = carPoses[q][c], &pic = carPoses[qq][cc];
 		carM->Update(carPoses[q][c], carPoses[qq][cc], time);
 
-		if (mCubeCamera && c == 0)  // refl
+		if (mCubeCamera && c == 0)  // 🔮 reflection
 		{	mCubeCamera->setPosition(carM->pMainNode->getPosition());// carPoses[q][c].pos);
 			// mCubeCamera->setVisibilityFlags( RV_MaskReflect /*32*/ );
 			// mCubeCamera->setOrientation(carM->pMainNode->getOrientation());
@@ -491,7 +491,7 @@ void App::updatePoses(float time)
 		}*/
 	}
 	
-	///  Replay info
+	///  📽️ Replay info
 	if (bRplPlay && !pGame->cars.empty())
 	{
 		double pos = pGame->timer.GetPlayerTime(0);
@@ -507,7 +507,7 @@ void App::updatePoses(float time)
 			carM->ResetChecks();
 
 
-		//  lessons  >> >
+		//  👈 lessons  >> >
 		if (gui->bLesson)
 		{
 			if (v > 0.98f && !isFocGui)  // end, back to gui
@@ -532,7 +532,7 @@ void App::updatePoses(float time)
 	}	
 	
 	
-	///  objects - dynamic (props)  -------------------------------------------------------------
+	///  📦 objects - dynamic (props)  -------------------------------------------------------------
 	for (int i=0; i < scn->sc->objects.size(); ++i)
 	{
 		Object& o = scn->sc->objects[i];

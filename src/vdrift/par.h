@@ -7,30 +7,30 @@
 struct SParams
 {
 	float
-//  GAME
+//  ⏪ GAME
 	 rewindSpeed
 	,rewindCooldown  // time in sec
 
-//  damage factors
+//  🔨 damage factors
 	,dmgFromHit, dmgFromScrap    // reduced
 	,dmgFromHit2, dmgFromScrap2  // normal
 	,dmgPow2
 
-//  start pos, next car distance
+//  🏁 start pos, next car distance
 	,startNextDist
 
 //  HUD
-//  time in sec
+//  ⏱️ time in sec
 	,timeShowChkWarn
 	,timeWonMsg
 	,fadeLapResults
 
-//  chk beam size
+//  📍 chk beam size
 	,chkBeamSx, chkBeamSy
-//  ghost
+//  👻 ghost
 	,ghostHideTime
 
-//  camera bounce sim
+//  🎥 camera bounce sim
 	,camBncF, camBncFo, camBncFof
 	,camBncFHit,camBncFHitY
 	,camBncSpring, camBncDamp
@@ -39,7 +39,7 @@ struct SParams
 //  take back time in rewind (for track's ghosts)
 	bool backTime;
 
-	//  ctor, init values
+	//  🌟 ctor, init values
 	SParams();
 };
 

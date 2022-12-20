@@ -14,12 +14,9 @@ using namespace Ogre;
 using namespace MyGUI;
 
 
-//  ctor
+//  🌟 ctor
 GraphView::GraphView(SceneManager* pSceneMgr, Ogre::Window* pWindow, Gui* pGui)
 	:mSceneMgr(pSceneMgr), mWindow(pWindow), mGui(pGui)
-	,moLine(0),moBack(0),moGrid(0), node(0), iCurX(0)
-	,txt(0), txPosX(0.f), txH(0), txAlignY(-2)
-	,buffered(0), manualUpd(0)
 {	}
 
 //  same as in graph1..5 materials
@@ -30,7 +27,7 @@ const Colour GraphView::graphClr[GraphView::iGraphClrs] = {
 	Colour(1.0, 0.5, 0.0),
 	Colour(1.0, 0.0, 0.0),
 
-	Colour(1.0, 1.0, 1.0),
+	Colour(0.9, 0.9, 0.9),
 	Colour(0.8, 1.0, 1.0),
 	Colour(0.6, 1.0, 1.0),
 	Colour(0.4, 1.0, 1.0),
@@ -49,7 +46,7 @@ const Colour GraphView::graphClr[GraphView::iGraphClrs] = {
 	Colour(1.0, 0.2, 0.0) };
 
 
-//  Create
+//  🆕 Create
 //----------------------------------------------------------------------------------------
 void GraphView::Create(int length, String sMtr, float backAlpha, bool buffered1)
 {
@@ -61,18 +58,17 @@ void GraphView::Create(int length, String sMtr, float backAlpha, bool buffered1)
 	//  graph line  ----------------------
 	if (length > 1)  // at least 2, use 1 for text only
 	{
-	#if 0
 		moLine = new HudRenderable(sMtr, mSceneMgr,
 			OT_LINE_STRIP,
 			false, false, RV_Hud, RQG_Hud3, length + 1);
 
-		moLine->begin();  // fill 0s
+		/*moLine->begin();  // fill 0s?
 		for (int i=0; i < length +1; ++i)
 			moLine->position(i*0.01f,0,0);
 		moLine->end();/**/
 
-		node->attachObject(moLine);
-	#endif
+		attached = 0;
+		// node->attachObject(moLine);  // after 1st update
 	}
 
 	//  backgr rect  ----------------------
@@ -90,7 +86,8 @@ void GraphView::Create(int length, String sMtr, float backAlpha, bool buffered1)
 	}
 }
 
-//  Grid lines  == ||
+
+//  🪟 Grid lines  == ||
 //----------------------------------------------------------------------------------------
 void GraphView::CreateGrid(int numH, int numV, /*char clr,*/ float clr, float alpha)
 {
@@ -134,7 +131,7 @@ void GraphView::CreateGrid(int numH, int numV, /*char clr,*/ float clr, float al
 // gui tab [big]= edit pos,size,value,text,range,etc. save in graphs.xml
 
 
-//  Create title text
+//  🔤 Create title text
 //----------------------------------------------------------------------------------------
 void GraphView::CreateTitle(String title, char clr, float posX, char alignY, int fontHeight, int numLines, bool shadow)
 {
@@ -144,7 +141,8 @@ void GraphView::CreateTitle(String title, char clr, float posX, char alignY, int
 	txPosX = posX;  txH = fontHeight;  txAlignY = alignY;
 
 	txt = mGui->createWidget<TextBox>("TextBox",
-		100,100, 360,txH*numLines, Align::Center, "Back", "GrTx"+toStr(cntr));
+		100,100, 360,txH*numLines +20,  //?
+		Align::Center, "Back", "GrTx"+toStr(cntr));
 
 	if (shadow)
 	{	txt->setTextShadow(true);
@@ -162,7 +160,7 @@ void GraphView::UpdTitle(String title)
 	txt->setCaption(title);
 }
 
-//  Set Size
+//  🗜️ Set Size
 //----------------------------------------------------------------------------------------
 void GraphView::SetSize(float posX,float posY,float sizeX,float sizeY)  // [0..1]  0,0 is left bottom
 {
@@ -173,7 +171,7 @@ void GraphView::SetSize(float posX,float posY,float sizeX,float sizeY)  // [0..1
 
 	//  set title text pos
 	if (!txt || !mWindow)  return;
-	int wx = mWindow->getWidth(), wy = mWindow->getHeight();
+	int wx = mWindow->getWidth(), wy = mWindow->getHeight() +20;  //?
 	int x = (posX + txPosX*sizeX) * wx;  float pszY = posY + sizeY;
 	switch (txAlignY)
 	{
@@ -188,10 +186,14 @@ void GraphView::SetSize(float posX,float posY,float sizeX,float sizeY)  // [0..1
 }
 //----------------------------------------------------------------------------------------
 
-//  Destroy
+//  💥 Destroy
 void GraphView::Destroy()
 {
 	manualUpd = false;
+	// if (moLine)  moLine->end();  //?
+	// if (moGrid)  moGrid->end();  //-
+	// if (moBack)  moBack->end();  //-
+
 	if (mGui && txt)  {  mGui->destroyWidget(txt);  txt = 0;  }
 	if (moLine) {	delete moLine;  moLine = 0;  }
 	if (moBack) {	delete moBack;  moBack = 0;  }
@@ -207,7 +209,7 @@ void GraphView::SetVisible(bool visible)
 }
 
 
-//  Add value  (into buffer)
+//  💫 Add value  (into buffer)
 //------------------------------------------------------------------
 void GraphView::AddVal(float val)
 {
@@ -219,7 +221,7 @@ void GraphView::AddVal(float val)
 	++iCurX;  if (iCurX >= vals.size())  iCurX = 0;
 }
 
-//  Update  (on screen)
+//  💫 Update  (on screen)
 //------------------------------------------------------------------
 void GraphView::SetUpdate()
 {
@@ -232,7 +234,7 @@ void GraphView::Update()
 	manualUpd = false;
 	
 	size_t size = vals.size();  //todo: mutex lock..
-	int i = (iCurX-1+size) % size;  // vals id
+	int i = iCurX % size;  // vals id
 	float fx = 0.f, fAdd = 1.f / size;  // screen x
 
 	moLine->begin();
@@ -240,11 +242,15 @@ void GraphView::Update()
 	
 	for (size_t n=0; n < size; ++n)
 	{
+		moLine->position(fx, vals[i], 0.f);
+
 		++i;  if (i >= size)  i = 0;
 		fx += fAdd;
-
-		moLine->position(fx, vals[i], 0.f);
-		//mo->colour(ColourValue(1,1,0));
 	}
 	moLine->end();
+
+	if (!attached)  // after first full update
+	{	attached = 1;
+		node->attachObject(moLine);
+	}
 }

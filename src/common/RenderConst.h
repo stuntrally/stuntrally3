@@ -24,7 +24,7 @@
 const Ogre::uint8
 	RQ_7        = 70,
 	RQ_8        = 80,
-	RQ_OVERLAY  = 100,
+	RQ_OVERLAY  = 200,
 
 	RQG_Sky          = 5,
 	RQG_Terrain      = 11,
@@ -45,9 +45,9 @@ const Ogre::uint8
 	RQG_Weather      = RQ_8 +5,
 	RQG_CarGhost     = RQ_8 +7,
 
-	RQG_Hud1         = RQ_OVERLAY -5,	// 95
-	RQG_Hud2         = RQ_OVERLAY -2,
-	RQG_Hud3         = RQ_OVERLAY -1;	// 99
+	RQG_Hud1         = RQ_OVERLAY +1,
+	RQG_Hud2         = RQ_OVERLAY +2,
+	RQG_Hud3         = RQ_OVERLAY +3;
 
 
 //  Visibility Flags used   search for setVisibility

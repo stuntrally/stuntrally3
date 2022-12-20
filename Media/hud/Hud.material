@@ -151,7 +151,8 @@ hlms pacenote unlit
 
 
 
-//  graph  ---------------------------------
+//  graphs
+//---------------------------------------------------------------------------
 hlms graphB unlit : hud_base
 {
 	ambient 0 0 0
@@ -160,14 +161,16 @@ hlms graphB unlit : hud_base
 
 	depth_check off
 	depth_write off
-	//scene_blend alpha_blend
+	scene_blend alpha_blend
 	cull_mode none
 }
+hlms graph0  unlit : graphB {  diffuse 1.0 1.0 1.0  }
 hlms graph1  unlit : graphB {  diffuse 0.0 1.0 1.0  }
 hlms graph2  unlit : graphB {  diffuse 0.0 1.0 0.0  }
 hlms graph3  unlit : graphB {  diffuse 1.0 1.0 0.0  }
 hlms graph4  unlit : graphB {  diffuse 1.0 0.5 0.0  }
 hlms graph5  unlit : graphB {  diffuse 1.0 0.0 0.0  }
+hlms graph6  unlit : graphB {  diffuse 1.0 1.0 1.0  }
 
 hlms graphA0 unlit : graphB {  diffuse 0.9 1.0 1.0  }
 hlms graphA1 unlit : graphB {  diffuse 0.8 1.0 1.0  }
@@ -187,12 +190,5 @@ hlms graphB5 unlit : graphB {  diffuse 1.0 0.6 0.0  }
 hlms graphB6 unlit : graphB {  diffuse 1.0 0.4 0.0  }
 hlms graphB7 unlit : graphB {  diffuse 1.0 0.2 0.0  }
 
-hlms graphBack unlit : hud_base
-{
-	diffuse 0 0 0
-}
-hlms graphGrid unlit : hud_base
-{
-	diffuse 1 1 1
-	// diffuse vertexcolour
-}
+hlms graphBack unlit : hud_base {  diffuse 0 0 0  }
+hlms graphGrid unlit : hud_base {  diffuse 1 1 1  }

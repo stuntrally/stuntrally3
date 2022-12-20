@@ -59,6 +59,7 @@ HudRenderable::HudRenderable(
     setUseIdentityProjection(true);
     setUseIdentityView(true);
     setVisibilityFlags(vis);
+    setCastShadows(false);
 
     Aabb aabb( Aabb::BOX_INFINITE );
     mObjectData.mLocalAabb->setFromAabb( aabb, mObjectData.mIndex );
@@ -168,7 +169,7 @@ void HudRenderable::createBuffers(const int count)
         vertexBuffers, ib, mOper );
 
     mVaoPerLod[0].push_back( vao );
-    mVaoPerLod[1].push_back( vao );  // same for shadow-
+    // mVaoPerLod[1].push_back( vao );  // same for shadow-
 }
 
 
@@ -235,6 +236,7 @@ const LightList &HudRenderable::getLights() const
 
 void HudRenderable::getRenderOperation( v1::RenderOperation &op, bool casterPass )
 {
+    //op = mOper;
     OGRE_EXCEPT( Exception::ERR_NOT_IMPLEMENTED, "", "HudRenderable::getRenderOperation" );
 }
 
@@ -245,5 +247,6 @@ void HudRenderable::getWorldTransforms( Matrix4 *xform ) const
 
 bool HudRenderable::getCastsShadows() const
 {
+    //return false;
     OGRE_EXCEPT( Exception::ERR_NOT_IMPLEMENTED, "", "HudRenderable::getCastsShadows" );
 }

@@ -65,7 +65,7 @@ void App::CreateGraphs()
 
 	switch (pSet->graphs_type)
 	{
-	case Gh_Fps:  /// fps
+	case Gh_Fps:  //  📊 Fps
 		for (i=0; i < 2; ++i)
 		{
 			gv = new GraphView(scm,mWindow,mGui);
@@ -81,7 +81,7 @@ void App::CreateGraphs()
 			graphs.push_back(gv);
 		}	break;
 
-	case Gh_CarAccelG:  /// car accel
+	case Gh_CarAccelG:  //  🚗 car accel
 		for (i=0; i < 3; ++i)
 		{
 			gv = new GraphView(scm,mWindow,mGui);
@@ -101,7 +101,7 @@ void App::CreateGraphs()
 			graphs.push_back(gv);
 		}	break;
 		
-	case Gh_CamBounce:   /// cam bounce
+	case Gh_CamBounce:   //  🎥 cam bounce
 		for (i=0; i < 3; ++i)
 		{
 			gv = new GraphView(scm,mWindow,mGui);
@@ -121,7 +121,7 @@ void App::CreateGraphs()
 			graphs.push_back(gv);
 		}	break;
 
-	case Gh_BulletHit:  /// bullet hit
+	case Gh_BulletHit:  //  ✨ bullet hit
 		for (i=0; i < 6; ++i)
 		{
 			gv = new GraphView(scm,mWindow,mGui);
@@ -129,12 +129,12 @@ void App::CreateGraphs()
 			gv->Create(256/*len*/, "graph"+toStr(c+1), i==0||i==2 ? 0.52f : 0.f/*alpha*/);
 			switch (i)
 			{
-				case 0:  gv->CreateTitle("norm vel",	c, 0.0f, -2, 24);  break;
+				case 0:  gv->CreateTitle("norm vel",	 c, 0.0f, -2, 24);  break;
 				case 1:  gv->CreateTitle("Car Hit force",c, 0.15f,-2, 24);  break;
-				case 2:  gv->CreateTitle("N snd",		c, 0.0f, -2, 24);  break;
-				case 3:  gv->CreateTitle("scrap",		c, 0.1f, -2, 24);  break;
-				case 4:  gv->CreateTitle("screech",		c, 0.2f, -2, 24);  break;
-				case 5:  gv->CreateTitle("damage factor",c, 0.35f, -2, 24);  break;
+				case 2:  gv->CreateTitle("N snd",		 c, 0.0f, -2, 24);  break;
+				case 3:  gv->CreateTitle("scrap",		 c, 0.1f, -2, 24);  break;
+				case 4:  gv->CreateTitle("screech",		 c, 0.2f, -2, 24);  break;
+				case 5:  gv->CreateTitle("damage factor",c, 0.35f,-2, 24);  break;
 			}
 			if (i < 2 || i==5)
 						gv->SetSize(0.f, 0.5f,  0.4f, 0.15f);
@@ -144,7 +144,7 @@ void App::CreateGraphs()
 			graphs.push_back(gv);
 		}	break;
 
-	case Gh_Sound:  /// sound
+	case Gh_Sound:  //  🔉 sound
 		for (i=0; i < 5; ++i)
 		{
 			gv = new GraphView(scm,mWindow,mGui);
@@ -166,7 +166,7 @@ void App::CreateGraphs()
 			graphs.push_back(gv);
 		}	break;
 		
-	case Gh_Checks:  /// checkpoints
+	case Gh_Checks:  //  🏁 checkpoints
 		for (i=0; i < 2; ++i)
 		{
 			gv = new GraphView(scm,mWindow,mGui);
@@ -183,8 +183,8 @@ void App::CreateGraphs()
 			graphs.push_back(gv);
 		}	break;
 		
-	case Gh_TireSlips:  /// tire
-	case Gh_Suspension:	 /// susp
+	case Gh_TireSlips:   //  ⚫ tire
+	case Gh_Suspension:	 //  🪜 susp
 		for (i=0; i < nWh * 2; ++i)
 		{
 			gv = new GraphView(scm,mWindow,mGui);
@@ -209,7 +209,7 @@ void App::CreateGraphs()
 		}	break;
 
 
-	case Gh_TireEdit:  /// tires edit pacejka
+	case Gh_TireEdit:  //  ⚫📉 tires edit pacejka
 		for (j=0; j < 4; ++j)  // lat,long x2 for ref
 		for (i=0; i < TireNG; ++i)
 		{
@@ -235,7 +235,7 @@ void App::CreateGraphs()
 		tireEdit = true;
 		break;
 
-	case Gh_Tires4Edit:  /// all tires pacejka vis,edit
+	case Gh_Tires4Edit:  //  ⚫📉4 all tires pacejka vis,edit
 		for (i=0; i < nWh * 2; ++i)
 		{
 			gv = new GraphView(scm,mWindow,mGui);
@@ -259,7 +259,7 @@ void App::CreateGraphs()
 		break;
 	
 
-	case Gh_TorqueCurve:  /// torque curves, gears
+	case Gh_TorqueCurve:  //  📈 torque curves, gears
 		for (w=0; w < 6*2; ++w)
 		{
 			i = w % 6;  n = w / 6;
@@ -279,7 +279,7 @@ void App::CreateGraphs()
 			graphs.push_back(gv);
 		}	break;
 		
-	case Gh_Engine:  /// engine torque, power
+	case Gh_Engine:  //  📈 engine torque, power
 		for (i=0; i < 2; ++i)
 		{
 			gv = new GraphView(scm,mWindow,mGui);
@@ -297,7 +297,7 @@ void App::CreateGraphs()
 			graphs.push_back(gv);
 		}	break;
 		
-	case Gh_Clutch:
+	case Gh_Clutch:  //  clutch
 		for (i=0; i < 4; ++i)
 		{
 			gv = new GraphView(scm,mWindow,mGui);
@@ -320,7 +320,7 @@ void App::CreateGraphs()
 			graphs.push_back(gv);
 		}	break;
 
-	case Gh_Diffs:
+	case Gh_Diffs:  //  diffs
 		for (i=0; i < 3*2; ++i)
 		{	n = i/3;  c = i%3;
 			gv = new GraphView(scm,mWindow,mGui);
@@ -346,7 +346,7 @@ void App::CreateGraphs()
 		break;
 	}
 
-	if (tireEdit)
+	if (tireEdit)  // ⚫📉
 	{
 		//  edit vals area
 		gv = new GraphView(scm,mWindow,mGui);
@@ -373,7 +373,7 @@ void App::GraphsNewVals()				// Game
 	size_t gsi = graphs.size();
 	switch (pSet->graphs_type)
 	{
-	case Gh_Sound:  /// sound  vol,pan, wave L,R
+	case Gh_Sound:  //  🔉 sound
 	if (gsi >= 5)
 	{
 		SoundBaseMgr* snd = pGame->snd->sound_mgr;
@@ -411,7 +411,7 @@ void App::GraphsNewVals()				// Game
 		graphs[3]->SetVisible(info);  graphs[4]->SetVisible(info);
 	}	break;
 
-	case Gh_Checks:  /// checkpoints
+	case Gh_Checks:  //  🏁 checkpoints
 		if (gsi >= 2 && !carModels.empty())
 		{
 			CarModel* cm = carModels[0];
@@ -429,11 +429,11 @@ void App::GraphsNewVals()				// Game
 				) );
 		}	break;
 		
-	case Gh_Fps:  /// fps
+	case Gh_Fps:  //  📊 Fps
 	if (gsi >= 2)
 	{
 		const FrameStats *st = mGraphicsSystem->getRoot()->getFrameStats();
-		const float fps = st->getAvgFps();
+		const float fps = st->getFps(); //getAvgFps();
 		graphs[0]->AddVal(fps /60.f*0.5f);  // 60 fps in middle
 		//graphs[1]->AddVal(1000.f/PROFILER.getAvgDuration(" frameSt",quickprof::MILLISECONDS) /60.f*0.2f);
 		graphs[1]->AddVal(fLastFrameDT==0.f ? 1.f : (1.f/fLastFrameDT/60.f*0.5f));
@@ -462,9 +462,9 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 
 	switch (pApp->pSet->graphs_type)
 	{
-	case Gh_BulletHit:  /// bullet hit  force,normvel, sndnum,scrap,screech
+	case Gh_BulletHit:  //  ✨ bullet hit
 		if (gsi >= 6)
-		{
+		{	// force, normvel,  sndnum, scrap, screech
 			const CARDYNAMICS& cd = dynamics;
 			pApp->graphs[0]->AddVal(std::min(1.f, cd.fHitForce * 2.f));
 			pApp->graphs[1]->AddVal(std::min(1.f, cd.fHitForce2));
@@ -475,7 +475,7 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 		}
 		break;
 
-	case Gh_CarAccelG:  /// car accel x,y,z
+	case Gh_CarAccelG:  //  🚗 car accel x,y,z
 		if (gsi >= 3)
 		{
 			MATHVECTOR<Dbl,3> v = dynamics.body.GetForce();
@@ -486,7 +486,7 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 					v[i]/m *0.63f /9.81f/3.f + (i==2 ? 0.f : 0.5f) ) )));
 		}	break;
 
-	case Gh_CamBounce:  /// cam bounce x,y,z
+	case Gh_CamBounce:  //  🎥 camera bounce x,y,z
 		if (gsi >= 3)
 		{
 			const MATHVECTOR<Dbl,3> v = dynamics.cam_body.GetPosition();
@@ -495,7 +495,7 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 					(float)v[i] * 3.f + 0.5f)));
 		}	break;
 		
-	case Gh_TireSlips:  /// tire slide,slip
+	case Gh_TireSlips:  //  ⚫ tire slide,slip
 		if (gsi >= nWh*2)
 		for (int i=0; i < nWh; ++i)
 		{
@@ -504,7 +504,7 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 			pApp->graphs[i+nWh]->AddVal(dynamics.wheel[i].slips.slipratio * 0.1f +0.5f);
 		}	break;
 		
-	case Gh_Suspension:  /// suspension
+	case Gh_Suspension:  ///  🪜 suspension
 		if (gsi >= nWh*2)
 		for (int i=0; i < nWh; ++i)
 		{
@@ -514,7 +514,7 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 			pApp->graphs[i]->AddVal(susp.GetDisplacementPercent());
 		}	break;
 
-	case Gh_TorqueCurve:  /// torque curves, gears
+	case Gh_TorqueCurve:  ///  📈 torque curves, gears
 	//. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 	{	static int ii = 0;  ++ii;  // skip upd cntr
 		if (ii >= 1/*! 10*/ && gsi >= 6*2)
@@ -583,7 +583,7 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 	}	}	break;
 
 		
-	case Gh_Engine:  /// engine torque, power
+	case Gh_Engine:  //  📈 engine torque, power
 	{	static int ii = 0;  ++ii;  // skip upd cntr
 		if (ii >= 10 && gsi >= 2)
 		{	ii = 0;
@@ -609,7 +609,7 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 	}	}	break;
 
 	
-	case Gh_Clutch:  /// clutch,rpm,gears
+	case Gh_Clutch:  //  clutch,rpm,gears
 		if (gsi >= 4)
 		{
 			const CARENGINE& eng = dynamics.engine;
@@ -635,7 +635,7 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 		}	break;
 
 
-	case Gh_Diffs:  /// differentials
+	case Gh_Diffs:  //  differentials
 		if (gsi >= 6)
 		for (int i=0; i < 3*2; ++i)
 		{
@@ -657,7 +657,7 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 		}	break;
 		
 
-	case Gh_TireEdit:  /// tire pacejka
+	case Gh_TireEdit:  //  ⚫📉 tire pacejka
 	//. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 	{	static int ii = 0;  ++ii;  // skip upd cntr
 		const int im = pApp->iUpdTireGr > 0 ? 2 : 8;  // faster when editing val
@@ -751,7 +751,7 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 	}	tireEdit = true;
 	break;
 	
-	case Gh_Tires4Edit:  /// all tires pacejka vis, edit
+	case Gh_Tires4Edit:  //  ⚫📉4 all tires pacejka vis, edit
 	//. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 	if (gsi >= nWh * 2)
 	{	static int ii = 0;  ++ii;  // skip upd cntr

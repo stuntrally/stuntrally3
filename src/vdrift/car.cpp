@@ -42,13 +42,13 @@ void CAR::SetNumWheels(int n)
 	sounds.SetNumWheels(n);
 }
 
-///  dtor
+///  💥 dtor
 CAR::~CAR()
 {
 	sounds.Destroy();
 }
 
-
+//  📄 Load .car  custom params
 //--------------------------------------------------------------------------------------------------------------------------
 bool CAR::Load(class App* pApp1,
 	CONFIGFILE & cf,
@@ -155,16 +155,17 @@ bool CAR::Load(class App* pApp1,
 }
 
 
+//  💫 Update
 //--------------------------------------------------------------------------------------------------------------------------
 void CAR::Update(double dt)
 {
 	dynamics.Update();
 	
-	UpdateSounds(dt);  // and damage
+	UpdateSounds(dt);  // 🔉 and 🔨 damage
 	
-	///  graphs new values  .-_/\_.-
-	//; if (pApp->pSet->show_graphs && id == 0)  // for 1st car
-		// GraphsNewVals(dt);  // implementation in Hud_Graphs.cpp
+	///  📉 graphs new values  .-_/\_.-
+	if (pApp->pSet->show_graphs && id == 0)  // for 1st car
+		GraphsNewVals(dt);  // implementation in Hud_Graphs.cpp
 }
 
 
@@ -240,7 +241,7 @@ void CAR::HandleInputs(const std::vector <float> & inputs, float dt)
 	//if (inputs[CARINPUT::TCS_TOGGLE])	dynamics.SetTCS(!dynamics.GetTCSEnabled());
 
 	
-	//  Camera
+	//  🎥 Camera
 	iCamNext = -inputs[CARINPUT::PREV_CAM] + inputs[CARINPUT::NEXT_CAM];
 	
 	bLastChkOld = bLastChk;
@@ -253,7 +254,7 @@ void CAR::HandleInputs(const std::vector <float> & inputs, float dt)
 		ResetPos(false);  // goto last checkpoint
 	
 
-	///  Rewind  with cooldown
+	///  ⏪ Rewind  with cooldown
 	bool bRew = inputs[CARINPUT::REWIND] > 0.2f;
 	if (timeRew > 0.f)
 		timeRew -= dt;
