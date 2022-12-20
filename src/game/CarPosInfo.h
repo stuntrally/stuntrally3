@@ -19,9 +19,9 @@ class CAR;
 struct PosInfo
 {
 	bool bNew;  //  new posinfo available for Update
-	//  car
+	//  🚗 car
 	Ogre::Vector3 pos, carY;
-	//  wheel
+	//  ⚫ wheel
 	const static int W = MAX_WHEELS;
 	Ogre::Vector3 whPos[W];
 	Ogre::Quaternion rot, whRot[W];
@@ -32,18 +32,18 @@ struct PosInfo
 	float fboost,steer, percent;  char braking;
 	float hov_roll/*= sph_yaw for O*/, hov_throttle;
 
-	//  fluids
+	//  💧 fluids
 	float whH[W],whAngVel[W], speed, whSteerAng[W];  int whP[W];
 	
-	//  hit sparks
+	//  ✨ hit sparks
 	float fHitTime, /*?fHitForce,*/fParIntens,fParVel;
 	Ogre::Vector3 vHitPos,vHitNorm;  // world hit data
 	
-	//  camera view
+	//  🎥 camera view
 	Ogre::Vector3 camPos;  Ogre::Quaternion camRot;
 	Ogre::Vector3 camOfs;  // hit bounce offset
 
-	//  ctor
+	//  🌟 ctor
 	PosInfo();
 	
 	//  copy

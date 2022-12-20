@@ -3,23 +3,19 @@
 #include "HudRenderable.h"
 #include "Replay.h"
 #include "cardefs.h"
-// #include "CarModel.h"
 // #include "CarReflection.h"
 
 // #include "MessageBox.h"
 // #include "MessageBoxStyle.h"
-// #include "GraphView.h"
 #include <OgreVector3.h>
 
 // #include "networkcallbacks.hpp"
 // #include <thread>
-// #include <MyGUI.h>
 //#include <OgreOverlayElement.h>
 // #include <OgreOverlay.h>
 
 
 namespace Ogre {  class SceneNode;  class SceneManager;  class Viewport;  class ManualObject;  class Item;  }
-// namespace MyGUI  {  class MultiList2;  class Slider;  }
 class GraphView;  class App;  class SETTINGS;  class CGui;
 class SplineRoad;  class CarModel;  class HudRenderable;
 
@@ -41,34 +37,34 @@ public:
 		float px[4],py[4];  // points, rotation
 	};
 
-	///  HUD  ------------
+	///  ⏱️ HUD  ------------
 	class Hud  // for 1 viewport/player
 	{
 	public:
-		//  times bar
+		//  ⏱️ times bar
 		Img bckTimes =0;
 		Txt txTimTxt =0, txTimes =0;
 		Ogre::String sTimes, sLap;
-		//  lap results
+		//  🏁 lap results
 		Txt txLapTxt =0, txLap =0;  Img bckLap =0;
 		//  opponents list  columns: trk %, dist m, nick
 		// Txt txOpp[3]={0,0,0};  Img bckOpp =0;
 		int xOpp =0, yOpp =0, lastOppH = -1;
 
-		//  wrong check warning, win place
+		//  ❌ wrong check warning, 🥇 win place
 		Txt txWarn =0,  txPlace =0;
 		Img bckWarn =0, bckPlace =0;
 		//  start countdown
 		Txt txCountdown =0;
 
-		//  gauges
+		//  ⏲️ gauges
 		HudRenderable* moGauges =0;
 		Ogre::SceneNode *ndGauges =0;
 		//  gear, vel
 		Txt txVel =0, txGear =0, txAbs =0, txTcs =0;
 		Img bckVel =0, bckGear =0;
 
-		//  damage %, rewind time, boost fuel
+		//  🔨 damage %, rewind time, boost fuel
 		float dmgBlink = 0.f, dmgOld = 0.f;
 		Img imgDamage =0;
 		Txt txDamage =0,  txRewind =0,  txBFuel =0;
@@ -78,10 +74,10 @@ public:
 		//Img imgSteer =0, barSteer =0,  barThrottle =0, barBrake =0;
 		//Txt txtOther =0;  //barHandBrake = 0, barBoost = 0, barRewind =0;
 
-		//  current camera name
+		//  🎥 current camera name
 		Txt txCam =0;
 
-		//  miniap
+		//  🌍 minimap
 		HudRenderable *moMap =0;  Ogre::SceneNode *ndMap =0;
 		//  all info for this car's minimap
 		std::vector<SMiniPos> vMiniPos;  // const size: 6
@@ -103,10 +99,10 @@ public:
 	//  one for all cars on all viewports
 	//; Ogre::SceneNode* ndPos =0;  Ogre::ManualObject* moPos =0;
 
-	//  chat messages
+	//  💬 chat messages
 	Txt txMsg =0;  Img bckMsg =0;
 	
-	//  camera move info
+	//  🎥 camera move info
 	Txt txCamInfo =0;
 	//  car debug texts  todo...
 	// Txt txDbgCar =0, txDbgTxt =0, txDbgExt =0;
@@ -123,11 +119,11 @@ public:
 	Ogre::Overlay *ovCarDbg =0, *ovCarDbgTxt =0, *ovCarDbgExt =0;/**/
 
 
-	///  next checkpoint arrow 3d
+	///  🔝 arrow to next checkpoint 3d
 	struct Arrow
 	{
 		Ogre::Item* it =0;
-		Ogre::SceneNode* node =0, *nodeRot =0;  // checkpoint arrow
+		Ogre::SceneNode* node =0, *nodeRot =0;
 		Ogre::Quaternion qStart, qEnd, qCur;  // smooth animation
 
 		void Create(Ogre::SceneManager* mgr, SETTINGS* pSet);
@@ -142,13 +138,13 @@ public:
 
 	//------------------------------------------
 
-	//  init
+	//  🆕 init
 	void Create(), Destroy();
 
-	//  show, size
+	//  🗜️ show, size
 	void Size(), Show(bool hideAll=false); //, ShowVp(bool vp);
 
-	///  update
+	///  💫 update
 	void Update(int carId, float time);
 	//  update internal
 	void UpdPosElems(int cnt, int cntC, int carId),
@@ -163,7 +159,7 @@ public:
 		 UpdDebug(CAR* pCar, CarModel* pCarM);
 
 
-	//  util create
+	//  ⛓️ util create
 	Ogre::ManualObject* Create2D(const Ogre::String& mat, Ogre::SceneManager* sceneMgr,
 		Ogre::Real size, bool dyn /*= false*/, bool clr /*= false*/,
 		Ogre::Real mul, Ogre::Vector2 ofs,

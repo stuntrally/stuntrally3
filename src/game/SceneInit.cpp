@@ -43,7 +43,7 @@ using namespace Ogre;
 using namespace std;
 
 
-//  Load Scene Data
+//  📄 Load Scene Data
 //-------------------------------------------------------------------------------------
 void App::LoadData()
 {
@@ -174,7 +174,7 @@ void App::LoadData()
 
 
 //---------------------------------------------------------------------------------------------------------------
-///  New Game
+///  🏁 New Game
 //---------------------------------------------------------------------------------------------------------------
 void App::NewGame(bool force)
 {
@@ -239,7 +239,8 @@ void App::NewGame(bool force)
 /* *  Loading steps (in this order)  * */
 //---------------------------------------------------------------------------------------------------------------
 
-void App::LoadCleanUp()  // 1 first
+//  💥 Cleanup  1
+void App::LoadCleanUp()
 {
 	LogO("DD-- LoadCleanUp ------DD");
 	updMouse();
@@ -338,7 +339,8 @@ void App::LoadCleanUp()  // 1 first
 
 //---------------------------------------------------------------------------------------------------------------
 
-void App::LoadGame()  // 2
+//  🚀 Game  2
+void App::LoadGame()
 {
 	//  viewports
 	// int numRplViews = std::max(1, std::min( int(replay.header.numPlayers), pSet->rpl_numViews ));
@@ -382,7 +384,7 @@ void App::LoadGame()  // 2
 	pGame->ProcessNewSettings();
 
 		
-	///  init car models
+	///  🚗 init car models
 	///--------------------------------------------
 	//  will create vdrift cars, actual car loading will be done later in LoadCar()
 	//  this is just here because vdrift car has to be created first
@@ -433,7 +435,7 @@ void App::LoadGame()  // 2
 		}*/
 	}
 
-	///  ghost car - last in carModels
+	///  👻 ghost car - last in carModels
 	///--------------------------------------------
 	ghPlay.Clear();
 	if (!bRplPlay/*|| pSet->rpl_show_ghost)*/ && pSet->rpl_ghost /*&& !mClient*/)
@@ -458,7 +460,7 @@ void App::LoadGame()  // 2
 			carModels.push_back(c);
 		}
 	}
-	///  track's ghost  . . .
+	///  🏞️👻 track's ghost  . . .
 	///--------------------------------------------
 	ghTrk.Clear();  vTimeAtChks.clear();
 	bool deny = gui->pChall && !gui->pChall->trk_ghost;
@@ -486,14 +488,15 @@ void App::LoadGame()  // 2
 //---------------------------------------------------------------------------------------------------------------
 
 
+//  Scene
 void App::LoadScene()  // 3
 {
-	//  sun, fog, weather, sky
+	//  ⛅ sun, fog, weather, sky
 	if (dstTrk)
 		scn->CreateAllAtmo();
 
 	if (dstTrk)
-		scn->CreateEmitters();
+		scn->CreateEmitters();  // 🔥
 
 
 	//  water RTT
@@ -507,7 +510,7 @@ void App::LoadScene()  // 3
 		// ignore missing compositors
 	}*/
 
-	//  fluids
+	//  💧 Fluids
 	if (dstTrk)
 		scn->CreateFluids();
 
@@ -521,17 +524,18 @@ void App::LoadScene()  // 3
 	// sh::Factory::getInstance().setTextureAlias("SkyReflection", skyTex);
 	
 
-	//  checkpoint arrow
+	//  🔝 checkpoint arrow
 	bool deny = gui->pChall && !gui->pChall->chk_arr;
 	if (!bHideHudArr && !deny)
 		hud->arrow.Create(mSceneMgr, pSet);
 }
 
 
+//  🚗 Cars  4
 //---------------------------------------------------------------------------------------------------------------
-void App::LoadCar()  // 4
+void App::LoadCar()
 {
-	//  Create all cars
+	//  🚗 Create all cars
 	for (int i=0; i < carModels.size(); ++i)
 	{
 		CarModel* c = carModels[i];
@@ -559,7 +563,7 @@ void App::LoadCar()  // 4
 		pGame->bResetObj = true;
 	
 	
-	///  Init Replay  header, once
+	///  📽️ Init Replay  header, once
 	///=================----------------
 	ReplayHeader2& rh = replay.header, &gh = ghost.header;
 	if (!bRplPlay)
@@ -576,6 +580,7 @@ void App::LoadCar()  // 4
 	}
 	rewind.Clear();
 	
+	//  👻 ghost header
 	ghost.InitHeader(pSet->game.track.c_str(), pSet->game.track_user, !bRplPlay);
 	gh.numPlayers = 1;  // ghost always 1 car
 	ghost.Clear();  ghost.ClearCars();
@@ -608,8 +613,8 @@ void App::LoadCar()  // 4
 }
 //---------------------------------------------------------------------------------------------------------------
 
-
-void App::LoadTerrain()  // 5
+//  ⛰️ Terrain  5
+void App::LoadTerrain()
 {
 	if (dstTrk)
 	{
@@ -622,7 +627,8 @@ void App::LoadTerrain()  // 5
 	// 	carModels[c]->terrain = scn->terrain;
 }
 
-void App::LoadRoad()  // 6
+//  🛣️ Road  6
+void App::LoadRoad()
 {
 	CreateRoads();   // dstTrk inside
 		
@@ -642,7 +648,7 @@ void App::LoadRoad()  // 6
 	}	}
 
 
-	///  Run track's ghost
+	///  🏞️👻 Run track's ghost
 	//  to get times at checkpoints
 	fLastTime = 1.f;
 	if (!scn->road || ghTrk.GetTimeLength() < 1.f)  return;
@@ -673,13 +679,15 @@ void App::LoadRoad()  // 6
 	}
 }
 
-void App::LoadObjects()  // 7
+//  📦 Objects  7
+void App::LoadObjects()
 {
 	if (dstTrk)
 		CreateObjects();
 }
 
-void App::LoadTrees()  // 8
+//  🌳🪨 Vegetation  8
+void App::LoadTrees()
 {
 	if (dstTrk)
 	{
@@ -708,7 +716,7 @@ void App::LoadTrees()  // 8
 	}	}*/
 }
 
-
+//  ⏱️ HUD etc
 void App::LoadMisc()  // 9 last
 {
 	bool rev = pSet->game.trackreverse;	
@@ -804,7 +812,7 @@ void App::NewGameDoLoad()
 
 
 //---------------------------------------------------------------------------------------------------------------
-///  Road  * * * * * * * 
+///  🛣️ Road  * * * * * * * 
 //---------------------------------------------------------------------------------------------------------------
 
 void App::CreateRoads()

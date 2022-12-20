@@ -1,16 +1,12 @@
 #pragma once
-// #include <Ogre.h>
-// #include <OgreVector2.h>
-#include <OgreVector3.h>
-// #include <OgreQuaternion.h>
-// #include <OgreVector4.h>
-#include <OgreMatrix4.h>
-#include <OgrePrerequisites.h>
-#include <OgreColourValue.h>
 #include "mathvector.h"
 #include "quaternion.h"
 #include "cardefs.h"
 #include "CarPosInfo.h"
+#include <OgreVector3.h>
+#include <OgreMatrix4.h>
+#include <OgrePrerequisites.h>
+#include <OgreColourValue.h>
 
 namespace Ogre {  class HlmsPbsDatablock;
 	class SceneNode;  class Camera;  class SceneManager;  //class Terra;  
@@ -114,7 +110,7 @@ public:
 	std::string sDirname;  // dir name of car (e.g. ES)
 	Ogre::String resGrpId, mtrId;  // resource group name, material suffix
 	std::string resCar;  // path to car textures
-	//  color
+	//  🎨 color
 	Ogre::ColourValue color;  // for minimap pos tri color  //float hue, sat, val;
 	Ogre::HlmsPbsDatablock *db =0;
 	void ChangeClr();  //  Apply new color
@@ -159,7 +155,7 @@ public:
 	void ResetChecks(bool bDist=false), UpdNextCheck(), ShowNextChk(bool visible);
 	Ogre::String sChkMtr;  bool bChkUpd = true;
 
-	//  for loop camera change
+	//  ➰🎥 for loop camera change
 	int iLoopChk = -1, iLoopLastCam = -1;
 	//  cam,chk old states
 	int iCamNextOld = 0;  bool bLastChkOld = 0;
@@ -188,17 +184,17 @@ public:
 	Ogre::SceneNode* ndNextChk =0;  // beam
 	Ogre::Item* itNextChk =0;
 
-	//  track surface for wheels
+	//  ⛰️ track surface for wheels
 	void UpdWhTerMtr();
 	Ogre::String txtDbgSurf;
 	
 
-	//  to destroy
+	//  💥 to destroy
 	std::vector<Ogre::SceneNode*> vDelNd;		void ToDel(Ogre::SceneNode* nd);
 	std::vector<Ogre::Item*> vDelIt;			void ToDel(Ogre::Item* it);
 	std::vector<Ogre::ParticleSystem*> vDelPar;	void ToDel(Ogre::ParticleSystem* par);
 
-	//  brake state
+	//  🔴 brake state
 	bool bBraking = true;
 	void UpdateBraking();
 };

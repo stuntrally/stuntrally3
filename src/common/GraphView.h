@@ -12,12 +12,12 @@ class HudRenderable;
 class GraphView
 {
 public:
-	//  ctor
+	//  🌟 ctor
 	GraphView(Ogre::SceneManager* pSceneMgr,
 		Ogre::Window* pWindow=0,
 		MyGUI::Gui* pGui=0);
 
-	//  Create
+	//  🆕 Create
 	void Create(int length,			// values buffer length
 				Ogre::String sMtr,	// material for line
 				float backAlpha,	// background transparency 0..1
@@ -57,8 +57,9 @@ public:
 
 protected:
 	std::vector<float> vals;  // values buffer
-	int iCurX;  // cur id to insert new val
-	bool buffered, manualUpd;
+	int iCurX = 0;  // cur id to insert new val
+	bool buffered =0, manualUpd =0;
+	bool ok = 0;
 	
 	//float rmin, rmax, range;  // SetRange
 	//bool autoMin, autoMax;  float timeUpdAuto; //?
@@ -75,5 +76,6 @@ protected:
 	// void moSetup(Ogre::ManualObject* mo, bool dynamic, Ogre::uint8 RQG);  // helper
 
 	MyGUI::TextBox* txt =0;
-	float txPosX;  int txH, txAlignY;  // title text pos, height
+	float txPosX = 0.f;
+	int txH = 0, txAlignY = -2;  // title text pos, height
 };

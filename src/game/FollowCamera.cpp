@@ -38,7 +38,7 @@ static float GetAngle(float x, float y)
 		return (y < 0.f) ? atan2f(-y, x) : (-atan2f(y, x));
 }
 
-///  Update
+///  💫 Update
 //-----------------------------------------------------------------------------------------------------
 
 void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLLISION_WORLD* world, bool bounce, bool sphere)
@@ -74,7 +74,7 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 	#endif
 	}
 
-	///  Camera Tilt from terrain/road slope under car
+	///  ⛰️ Camera Tilt from terrain/road slope under car
 	//-------------------------------------------------------------------------------------------
 	const float			//  params  . . .
 		Rdist = 1.f,     // dist from car to ray (front or back)
@@ -302,7 +302,7 @@ void FollowCamera::Apply(const PosInfo& posIn)
 }
 
 
-///  mouse Move
+///  🖱️ mouse Move
 //-----------------------------------------------------------------------------------------------------
 
 void FollowCamera::Move( bool mbLeft, bool mbRight, bool mbMiddle, bool shift, Real mx, Real my, Real mz )
@@ -550,7 +550,7 @@ CameraAngle::CameraAngle()
 
 
 
-///  Load from xml
+///  📄 Load from xml
 //-----------------------------------------------------------------------------------------------------
 bool FollowCamera::loadCameras()
 {
@@ -610,7 +610,7 @@ bool FollowCamera::loadCameras()
 }
 
 
-//  update format texts, from translations
+//  🔤 update format texts, from translations
 //-----------------------------------------------------------------------------------------------------
 void FollowCamera::updFmtTxt()
 {

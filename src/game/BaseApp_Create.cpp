@@ -86,7 +86,7 @@ void BaseApp::Run(bool showDialog)
 }
 */
 
-//  ctor
+//  🌟 ctor
 //-------------------------------------------------------------------------------------
 BaseApp::BaseApp()
 	// :mMasterClient(), mClient()

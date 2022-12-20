@@ -49,7 +49,7 @@ void CarModel::setVisible(bool vis)
 	UpdParsTrails(vis);
 }
 
-void CarModel::UpdNextCheck()
+void CarModel::UpdNextCheck()  // 📍
 {
 	updTimes = true;
 	if (cType != CarModel::CT_LOCAL)  return;
@@ -179,7 +179,7 @@ void CarModel::UpdTrackPercent()
 
 
 //-------------------------------------------------------------------------------------------------------
-//  Update
+//  💫 Update
 //-------------------------------------------------------------------------------------------------------
 void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 {	
@@ -231,11 +231,11 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		ndSph->setScale(Vector3::UNIT_SCALE * 1.7 *2/0.6f);  //par
 	}
 
-	//  set camera view
+	//  🎥 set camera view
 	if (fCam)
 	{	fCam->Apply(posInfoCam);
 		
-		///~~  camera in fluid fog, detect and compute
+		///~~  💧🎥 camera in fluid fog, detect and compute
 		iCamFluid = -1;  fCamFl = 0.f;  // none
 		const size_t sf = sc->fluids.size();
 		if (sf > 0 && pSet->game.local_players == 1)
@@ -271,7 +271,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		angCarY = q.getYaw().valueDegrees() + 90.f;
 	}
 	
-	//  brake state
+	//  🔴 brake state
 	#ifndef CAR_PRV
 	bool braking = posInfo.braking > 0;
 	if (bBraking != braking)
@@ -282,10 +282,10 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	#endif
 	
 
-	//  update particle emitters
+	//  ✨ update particle emitters
 	if (pSet->particles && pCar)
 	{
-		//  boost
+		//  💨 boost
 		for (i=0; i < PAR_BOOST; ++i)  if (parBoost[i])
 		{
 			/// <><> damage reduce
@@ -294,7 +294,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 			ParticleEmitter* pe = parBoost[i]->getEmitter(0);
 			pe->setEmissionRate(emitB);
 		}
-		//  spaceship thrusters
+		//  🔥 spaceship thrusters
 		for (i=0; i < PAR_THRUST*2; ++i)  if (parThrust[i])
 		{
 			float dmg = 1.f - 0.5f * pCar->dynamics.fDamage*0.01f;
@@ -304,7 +304,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		}
 	}
 
-	//  world hit
+	//  ✨ world hit
 	if (parHit)
 	{	ParticleEmitter* pe = parHit->getEmitter(0);
 		if (posInfo.fHitTime > 0.f && pSet->particles)
@@ -318,7 +318,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 			pe->setEmissionRate(0.f);
 	}
 
-	//  wheels  ------------------------------------------------------------------------
+	//  ⚫💭 wheels  ------------------------------------------------------------------------
 	const float trlH = 0.90f;
 
 	for (w=0; w < numWheels; ++w)
@@ -378,7 +378,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		if (!ghPar)
 		{	emitD = 0.f;  emitM = 0.f;  emitS = 0.f;  }
 
-		///  emit particles
+		///  💭 emit particles
 		Vector3 vpos = posInfo.whPos[w];
 		if (pSet->particles)
 		{
@@ -405,7 +405,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 				pe->setDirection(-posInfo.carY);	pe->setEmissionRate(emitD);
 			}
 
-			//  fluids .::.
+			//  💧 fluids .::.
 			ps = par[PAR_Water][w];
 			int idPar = posInfo.whP[w];
 			if (ps)  //  Water ~
@@ -518,7 +518,7 @@ void CarModel::UpdateKeys()
 		
 	bLastChkOld = pCar->bLastChk;
 
-	///  change Cameras  ---------------------------------
+	///  🎥 change Cameras  ---------------------------------
 	//if (!pApp->isFocGui)
 	int iC = pCar->iCamNext;  // iRplCarOfs..
 	if (iC != 0 && iCamNextOld == 0)

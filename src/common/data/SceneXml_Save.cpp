@@ -26,7 +26,7 @@ bool Scene::SaveXml(String file)
 	root.InsertEndChild(ver);
 
 
-	TiXmlElement car("car");
+	TiXmlElement car("car");  // 🚗
 		car.SetAttribute("tires",	asphalt ? "1":"0");
 		if (damageMul != 1.f)
 			car.SetAttribute("damage",	toStrC( damageMul ));
@@ -42,7 +42,7 @@ bool Scene::SaveXml(String file)
 	root.InsertEndChild(car);
 
 
-	TiXmlElement st("start");
+	TiXmlElement st("start");  // 🏁
 		string s = toStr(startPos[0][0])+" "+toStr(startPos[0][1])+" "+toStr(startPos[0][2]);
 		st.SetAttribute("pos",	s.c_str());
 
@@ -57,13 +57,13 @@ bool Scene::SaveXml(String file)
 	root.InsertEndChild(st);
 
 
-	TiXmlElement snd("sound");
+	TiXmlElement snd("sound");  // 🔉
 		snd.SetAttribute("ambient",		sAmbient.c_str());
 		snd.SetAttribute("reverbs",		sReverbs.c_str());
 	root.InsertEndChild(snd);
 	
 
-	TiXmlElement sky("sky");
+	TiXmlElement sky("sky");  // ⛅
 		sky.SetAttribute("material",	skyMtr.c_str());
 		if (rainEmit > 0 && rainName != "")
 		{	sky.SetAttribute("rainName",	rainName.c_str());
@@ -79,14 +79,14 @@ bool Scene::SaveXml(String file)
 			sky.SetAttribute("skyYaw",	toStrC( skyYaw ));
 	root.InsertEndChild(sky);
 
-	TiXmlElement fog("fog");
+	TiXmlElement fog("fog");  // 🌫️
 		fog.SetAttribute("color",		fogClr.Save().c_str() );
 		fog.SetAttribute("color2",		fogClr2.Save().c_str() );
 		fog.SetAttribute("linStart",	toStrC( fogStart ));
 		fog.SetAttribute("linEnd",		toStrC( fogEnd ));
 	root.InsertEndChild(fog);
 
-	TiXmlElement fogH("fogH");
+	TiXmlElement fogH("fogH");  // 🌫️
 		fogH.SetAttribute("color",		fogClrH.Save().c_str() );
 		fogH.SetAttribute("height",		toStrC( fogHeight ));
 		fogH.SetAttribute("dens",		toStrC( fogHDensity ));
@@ -96,7 +96,7 @@ bool Scene::SaveXml(String file)
 			fogH.SetAttribute("dmg",	toStrC( fHDamage ));
 	root.InsertEndChild(fogH);
 
-	TiXmlElement li("light");
+	TiXmlElement li("light");  // 💡
 		li.SetAttribute("pitch",		toStrC( ldPitch ));
 		li.SetAttribute("yaw",			toStrC( ldYaw ));
 		li.SetAttribute("ambient",		lAmb.Save().c_str() );
@@ -105,7 +105,7 @@ bool Scene::SaveXml(String file)
 	root.InsertEndChild(li);
 	
 
-	TiXmlElement fls("fluids");
+	TiXmlElement fls("fluids");  // 💧
 		for (int i=0; i < fluids.size(); ++i)
 		{
 			const FluidBox* fb = &fluids[i];
@@ -120,7 +120,7 @@ bool Scene::SaveXml(String file)
 	root.InsertEndChild(fls);
 
 
-	TiXmlElement ter("terrain");
+	TiXmlElement ter("terrain");  // ⛰️
 		ter.SetAttribute("size",		toStrC( td.iVertsX ));
 		ter.SetAttribute("triangle",	toStrC( td.fTriangleSize ));
 		ter.SetAttribute("errNorm",		fToStr( td.errorNorm, 2,4 ).c_str());
@@ -149,7 +149,7 @@ bool Scene::SaveXml(String file)
 				tex.SetAttribute("mud",		toStrC( l->mud ));   \
 				tex.SetAttribute("smoke",	toStrC( l->smoke )); \
 				tex.SetAttribute("tclr",	l->tclr.Save().c_str() );
-			setDmst();
+			setDmst();  // ⚫💭
 			if (l->fDamage > 0.f)
 				tex.SetAttribute("dmg",	toStrC( l->fDamage ));
 
@@ -188,7 +188,7 @@ bool Scene::SaveXml(String file)
 			ter.InsertEndChild(tex);
 		}
 		
-		TiXmlElement par("par");
+		TiXmlElement par("par");  // ⚫💭
 			par.SetAttribute("dust",	sParDust.c_str());
 			par.SetAttribute("mud",		sParMud.c_str());
 			par.SetAttribute("smoke",	sParSmoke.c_str());
@@ -197,7 +197,7 @@ bool Scene::SaveXml(String file)
 	root.InsertEndChild(ter);
 	
 
-	TiXmlElement pgd("paged");
+	TiXmlElement pgd("paged");  // 🌳🪨 vegetation
 		pgd.SetAttribute("densGrass",	toStrC( densGrass ));
 		pgd.SetAttribute("densTrees",	toStrC( densTrees ));
 		//  grass
@@ -212,7 +212,7 @@ bool Scene::SaveXml(String file)
 		pgd.SetAttribute("trRdDist",	toStrC( trRdDist  ));
 
 		int i;
-		for (int i=0; i < ciNumGrLay; ++i)
+		for (int i=0; i < ciNumGrLay; ++i)  // 🌿
 		{
 			const SGrassLayer& g = grLayersAll[i];
 			TiXmlElement grl("grass");
@@ -255,7 +255,7 @@ bool Scene::SaveXml(String file)
 			pgd.InsertEndChild(gch);
 		}
 
-		for (i=0; i < ciNumPgLay; ++i)
+		for (i=0; i < ciNumPgLay; ++i)  // 🌳🪨
 		{
 			const PagedLayer& l = pgLayersAll[i];
 			TiXmlElement pgl("layer");
@@ -280,13 +280,13 @@ bool Scene::SaveXml(String file)
 	root.InsertEndChild(pgd);
 
 
-	TiXmlElement cam("cam");
+	TiXmlElement cam("cam");  // 🎥
 		cam.SetAttribute("pos",		toStrC( camPos ));
 		cam.SetAttribute("dir",		toStrC( camDir ));
 	root.InsertEndChild(cam);
 
 
-	TiXmlElement objs("objects");
+	TiXmlElement objs("objects");  // 📦
 		for (i=0; i < objects.size(); ++i)
 		{
 			const Object* o = &objects[i];
@@ -306,7 +306,7 @@ bool Scene::SaveXml(String file)
 	root.InsertEndChild(objs);
 
 
-	TiXmlElement emts("emitters");
+	TiXmlElement emts("emitters");  // 🔥
 		for (i=0; i < emitters.size(); ++i)
 		{
 			const SEmitter* e = &emitters[i];

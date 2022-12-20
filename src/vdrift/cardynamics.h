@@ -153,7 +153,7 @@ public:
 	LINEARFRAME cam_body;
 	MATHVECTOR<Dbl,3> cam_force;
 
-	///  buoyancy
+	///  🌊 buoyancy
 	std::vector<float> whH;  // wheel submerge 0..1
 	std::vector<int> whP;  // fluid particles id
 	std::vector<float> whDmg;  // damage from fluid

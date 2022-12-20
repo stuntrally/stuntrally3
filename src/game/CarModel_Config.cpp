@@ -179,14 +179,14 @@ void CarModel::LoadConfig(const string & pathCar)
 	cf.GetParam("model_ofs.interior-z", interiorOffset[2]);
 	cf.GetParam("model_ofs.rot_fix", bRotFix);
 
-	//~  boost offset
+	//~  💨 boost offset
 	cf.GetParam("model_ofs.boost-x", boostOffset[0]);
 	cf.GetParam("model_ofs.boost-y", boostOffset[1]);
 	cf.GetParam("model_ofs.boost-z", boostOffset[2]);
 	cf.GetParam("model_ofs.boost-size-z", boostSizeZ);
 	cf.GetParam("model_ofs.boost-name", sBoostParName);
 	
-	//  thruster  spaceship hover  max 4 pairs
+	//  🔥 thruster  spaceship hover  max 4 pairs
 	int i;
 	for (i=0; i < PAR_THRUST; ++i)
 	{
@@ -200,7 +200,7 @@ void CarModel::LoadConfig(const string & pathCar)
 	}
 	
 
-	//~  brake flares
+	//~  🔴 brake flares
 	float pos[3];  bool ok=true;  i=0;
 	while (ok)
 	{	ok = cf.GetParam("flares.brake-pos"+toStr(i), pos);  ++i;
@@ -223,7 +223,7 @@ void CarModel::LoadConfig(const string & pathCar)
 		has2exhausts = false;
 
 
-	//- load cameras pos
+	//- 🎥 load cameras pos
 	cf.GetParamE("driver.view-position", pos);
 	driver_view[0]=pos[1]; driver_view[1]=-pos[0]; driver_view[2]=pos[2];
 	
@@ -238,7 +238,7 @@ void CarModel::LoadConfig(const string & pathCar)
 	cf.GetParam("driver.dist", camDist);
 
 
-	//  tire params
+	//  ⚫ tire params
 	float val;
 	bool both = cf.GetParam("tire-both.radius", val);
 
@@ -258,7 +258,7 @@ void CarModel::LoadConfig(const string & pathCar)
 		whWidth[wl] = width;  whWidth[wr] = width;
 	}
 	
-	//  wheel pos
+	//  ⚫ wheel pos
 	//  for track's ghost or garage view
 	int version = 2;
 	cf.GetParam("version", version);

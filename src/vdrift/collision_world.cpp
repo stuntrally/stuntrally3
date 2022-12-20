@@ -262,6 +262,8 @@ btRigidBody* COLLISION_WORLD::AddRigidBody(const btRigidBody::btRigidBodyConstru
 }
 
 
+//  Callback
+//--------------------------------------------------------------------------------------------------------------------------------
 struct MyRayResultCallback : public btCollisionWorld::RayResultCallback
 {
 	MyRayResultCallback(const btVector3 & rayFromWorld, const btVector3 & rayToWorld,

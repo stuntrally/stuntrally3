@@ -44,7 +44,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("secEd");		if (a)  secEdited = s2i(a);
 	}
 	
- 	///  car setup
+ 	///  🚗 car setup
  	e = root->FirstChildElement("car");
 	if (e)
 	{	a = e->Attribute("tires");		if (a)  asphalt = s2i(a) > 0;
@@ -56,7 +56,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("noWrongChks"); if (a)  noWrongChks = s2i(a) > 0;
 	}
 
-	///  car start
+	///  🏁 car start
 	e = root->FirstChildElement("start");
 	if (e)
 	{	a = e->Attribute("pos");		if (a)  {  Vector3 v = s2v(a);   startPos[0] = MATHVECTOR<float,3>(v.x,v.y,v.z);    }
@@ -65,7 +65,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("rot2");		if (a)  {  Vector4 v = s2v4(a);  startRot[1] = QUATERNION<float>(v.x,v.y,v.z,v.w);  }
 	}
 
-	///  sound
+	///  🔉 sound
 	e = root->FirstChildElement("sound");
 	if (e)
 	{	a = e->Attribute("ambient");	if (a)  sAmbient = string(a);
@@ -73,7 +73,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		UpdRevSet();
 	}
 
-	///  sky
+	///  ⛅ sky
 	e = root->FirstChildElement("sky");
 	if (e)
 	{	a = e->Attribute("material");	if (a)  skyMtr = String(a);
@@ -84,7 +84,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("windAmt");	if (a)  windAmt = s2r(a);
 		a = e->Attribute("skyYaw");		if (a)  skyYaw = s2r(a);
 	}
-	///  fog
+	///  🌫️ fog
 	e = root->FirstChildElement("fog");
 	if (e)
 	{	a = e->Attribute("linStart");	if (a)  fogStart = s2r(a);
@@ -92,7 +92,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("color");		if (a)  fogClr.Load(a);
 		a = e->Attribute("color2");		if (a)  fogClr2.Load(a);  else  fogClr2 = fogClr;
 	}
-	///  fog H
+	///  🌫️ fog H
 	e = root->FirstChildElement("fogH");
 	if (e)
 	{	a = e->Attribute("color");		if (a)  fogClrH.Load(a);
@@ -103,7 +103,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("dmg");		if (a)  fHDamage = s2r(a);
 	}
 
-	///  light
+	///  💡 light
 	e = root->FirstChildElement("light");
 	if (e)
 	{	a = e->Attribute("pitch");		if (a)  ldPitch = s2r(a);
@@ -115,7 +115,7 @@ bool Scene::LoadXml(String file, bool bTer)
 	}
 	
 	
-	///  fluids
+	///  💧 fluids
 	e = root->FirstChildElement("fluids");
 	if (e)
 	{	u = e->FirstChildElement("fluid");
@@ -134,7 +134,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		}
 	}
 	
-	///  terrain
+	///  ⛰️ terrain
 	e = root->FirstChildElement("terrain");
 	if (e)
 	{	a = e->Attribute("size");		if (a)  td.iVertsX = s2i(a);
@@ -165,7 +165,7 @@ bool Scene::LoadXml(String file, bool bTer)
 			a = u->Attribute("scale");	if (a)  l->tiling = s2r(a);
 			a = u->Attribute("surf");	if (a)  l->surfName = String(a);
 
-			a = u->Attribute("dust");	if (a)  l->dust = s2r(a);
+			a = u->Attribute("dust");	if (a)  l->dust = s2r(a);  // ⚫💭
 			a = u->Attribute("dustS");	if (a)  l->dustS = s2r(a);
 			a = u->Attribute("mud");	if (a)  l->mud = s2r(a);
 			a = u->Attribute("smoke");	if (a)  l->smoke = s2r(a);
@@ -201,7 +201,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		}
 		td.UpdLayers();
 
-		u = e->FirstChildElement("par");
+		u = e->FirstChildElement("par");  // ⚫💭
 		if (u)
 		{	a = u->Attribute("dust");	if (a)  sParDust = String(a);
 			a = u->Attribute("mud");	if (a)  sParMud = String(a);
@@ -209,7 +209,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		}
 	}
 	
-	///  paged
+	///  🌳🪨 vegetation
  	e = root->FirstChildElement("paged");
 	if (e)
 	{	a = e->Attribute("densTrees");		if (a)  densTrees = s2r(a);
@@ -224,6 +224,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("trDistImp");		if (a)  trDistImp = s2r(a);
 		a = e->Attribute("trRdDist");		if (a)  trRdDist = s2i(a);
 
+		//  🌿 grass
 		int grl = 0;
 		u = e->FirstChildElement("grass");
 		while (u)
@@ -286,7 +287,7 @@ bool Scene::LoadXml(String file, bool bTer)
 			u = u->NextSiblingElement("gchan");
 		}
 		
-		///  veget
+		///  🌳🪨 vegetation
 		int pgl = 0;
 		u = e->FirstChildElement("layer");
 		while (u)
@@ -315,14 +316,14 @@ bool Scene::LoadXml(String file, bool bTer)
 		UpdPgLayers();
 	}
 	
- 	///  camera
+ 	///  🎥 camera
  	e = root->FirstChildElement("cam");
 	if (e)
 	{	a = e->Attribute("pos");		if (a)  camPos = s2v(a);
 		a = e->Attribute("dir");		if (a)  camDir = s2v(a);
 	}
 	
-	///  objects
+	///  📦 objects
 	e = root->FirstChildElement("objects");
 	if (e)
 	{	u = e->FirstChildElement("o");
@@ -339,7 +340,7 @@ bool Scene::LoadXml(String file, bool bTer)
 			u = u->NextSiblingElement("o");
 	}	}
 
-	///  emitters
+	///  🔥 emitters
 	e = root->FirstChildElement("emitters");
 	if (e)
 	{	u = e->FirstChildElement("e");
