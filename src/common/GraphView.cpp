@@ -4,6 +4,7 @@
 #include "GraphView.h"
 #include "HudRenderable.h"
 
+#include <OgreCommon.h>
 #include <OgreSceneManager.h>
 #include <OgreWindow.h>
 #include <OgreSceneNode.h>
@@ -52,30 +53,33 @@ const Colour GraphView::graphClr[GraphView::iGraphClrs] = {
 //----------------------------------------------------------------------------------------
 void GraphView::Create(int length, String sMtr, float backAlpha, bool buffered1)
 {
-	vals.resize(length);  iCurX = 0;  //size-1
+	vals.resize(length+1);
+	iCurX = 0;  //size-1
 	buffered = buffered1;  manualUpd = buffered;//
 	node = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	
 	//  graph line  ----------------------
 	if (length > 1)  // at least 2, use 1 for text only
 	{
-		// fixme
-		/*moLine = new HudRenderable(sMtr, mSceneMgr, false, );
-		moSetup(moLine, true, RQG_Hud3);
-		moLine->estimateVertexCount(length);
+	#if 0
+		moLine = new HudRenderable(sMtr, mSceneMgr,
+			OT_LINE_STRIP,
+			false, false, RV_Hud, RQG_Hud3, length + 1);
 
-		moLine->begin(sMtr, RenderOperation::OT_LINE_STRIP);
-		float s = 0.5f, asp = 1.f;
-		moLine->position(0,0, 0);
-		moLine->position(1,0, 0);
-		moLine->end();
-		node->attachObject(moLine);*/
+		moLine->begin();  // fill 0s
+		for (int i=0; i < length +1; ++i)
+			moLine->position(i*0.01f,0,0);
+		moLine->end();/**/
+
+		node->attachObject(moLine);
+	#endif
 	}
 
 	//  backgr rect  ----------------------
 	if (backAlpha > 0.01f)
 	{
-		moBack = new HudRenderable("graphBack", mSceneMgr, true, RV_Hud, RQG_Hud1, 1);
+		moBack = new HudRenderable("graphBack", mSceneMgr,
+			OT_TRIANGLE_LIST, false, true, RV_Hud, RQG_Hud1, 1);
 		moBack->begin();
 		moBack->position(0,0, 0);  moBack->color(0,0,0, backAlpha);
 		moBack->position(1,0, 0);  moBack->color(0,0,0, backAlpha);
@@ -92,42 +96,38 @@ void GraphView::CreateGrid(int numH, int numV, /*char clr,*/ float clr, float al
 {
 	if (!node)  return;
 	if (numH <= 0 && numV <= 0)  return;
-	return;  // fixme
+	// return;  // fixme
 	
-	/*int l = 0;
-	// count.. ++l;
-	moGrid = new HudRenderable("graphGrid", mSceneMgr, true, RV_Hud, RQG_Hud2, l);
-	// moSetup(moGrid, false, RQG_Hud2);
-	//moGrid->estimateVertexCount((numH+numV)*2);
+	const float ya = 1.f / numH, xa = 1.f / numV;
+	float x,y;
+
+	int count = 0;  //  count lines  // = numH + numV
+	if (numH > 0)  for (y = 0.f; y <= 1.f; y += ya)  ++count;
+	if (numV > 0)  for (x = 0.f; x <= 1.f; x += xa)  ++count;
+
+	moGrid = new HudRenderable("graphGrid", mSceneMgr,
+		OT_LINE_LIST, false, true, RV_Hud, RQG_Hud2, count);
 
 	//const Colour& gc = graphClr[clr];
 	//ColourValue c(gc.red, gc.green, gc.blue, alpha);
-	ColourValue c(clr, clr, clr, alpha);
 
-	moGrid->begin("graphGrid", RenderOperation::OT_LINE_LIST);
+	moGrid->begin();
+	float a = sqrt(alpha);  //?-
 
-	if (numH > 0)
-	{
-		float ya = 1.f / numH;
-		//for (float y = ya; y <= 1.f-ya; y += ya)
-		for (float y = 0.f; y <= 1.f; y += ya)
+	if (numH > 0)  //  fill
+		for (y = 0.f; y <= 1.f; y += ya)
 		{
-			moGrid->position(0,y, 0);  moGrid->color(c);
-			moGrid->position(1,y, 0);  moGrid->color(c);
+			moGrid->position(0,y, 0);  moGrid->color(clr, clr, clr, a);
+			moGrid->position(1,y, 0);  moGrid->color(clr, clr, clr, a);
 		}
-	}
 	if (numV > 0)
-	{
-		float xa = 1.f / numV;
-		//for (float x = xa; x <= 1.f-xa; y += xa)
-		for (float x = 0.f; x <= 1.f; x += xa)
+		for (x = 0.f; x <= 1.f; x += xa)
 		{
-			moGrid->position(x,0, 0);  moGrid->colour(c);
-			moGrid->position(x,1, 0);  moGrid->colour(c);
+			moGrid->position(x,0, 0);  moGrid->color(clr, clr, clr, a);
+			moGrid->position(x,1, 0);  moGrid->color(clr, clr, clr, a);
 		}
-	}
 	moGrid->end();
-	node->attachObject(moGrid);*/
+	node->attachObject(moGrid);
 }
 
 /// todo: auto val range, auto grid lines, value texts..
@@ -232,18 +232,19 @@ void GraphView::Update()
 	manualUpd = false;
 	
 	size_t size = vals.size();  //todo: mutex lock..
-	int i = iCurX % size;  // vals id
+	int i = (iCurX-1+size) % size;  // vals id
 	float fx = 0.f, fAdd = 1.f / size;  // screen x
 
-	/*moLine->begin();
+	moLine->begin();
 	moLine->position(fx, vals[i], 0.f);  // line start
+	
 	for (size_t n=0; n < size; ++n)
 	{
-		moLine->position(fx, vals[i], 0.f);
-		//mo->colour(ColourValue(1,1,0));
-
 		++i;  if (i >= size)  i = 0;
 		fx += fAdd;
+
+		moLine->position(fx, vals[i], 0.f);
+		//mo->colour(ColourValue(1,1,0));
 	}
-	moLine->end();*/
+	moLine->end();
 }

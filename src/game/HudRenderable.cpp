@@ -1,4 +1,7 @@
+#include "OgreCommon.h"
+#include "half.hpp"
 #include "pch.h"
+#include "Def_Str.h"
 #include "HudRenderable.h"
 #include <OgreRoot.h>
 #include <OgreSceneManager.h>
@@ -10,19 +13,49 @@
 using namespace Ogre;
 
 
+//  🌟 ctor
 //-----------------------------------------------------------------------------------
 HudRenderable::HudRenderable(
     const String& material, SceneManager* mgr,
-    bool colors,
+    Ogre::OperationType oper, bool hasUV, bool colors,
     uint32 vis, uint8 rndQue,
-    int faces)
+    int count)  // of lines or faces(quads)
 
     : MovableObject(
         Id::generateNewId<MovableObject>(),
         &mgr->_getEntityMemoryManager( SCENE_DYNAMIC ),
         mgr, rndQue)
     , Renderable()
+    , sMtr(material), mOper(oper)
+    , bUV(hasUV), bColors(colors)
 {
+    switch (oper)
+    {
+    case OT_LINE_LIST:   //  no UV, lines count (2verts per line)
+        iVertCount = count * 2;  // lines count * 2 verts
+        iFace      = 2;
+        iIndCount  = count * iFace;
+        break;
+    case OT_LINE_STRIP:  //  no UV
+        iVertCount = count;  // lines count + 1 vert
+        iFace      = 0;  // no index buffer
+        iIndCount  = 0;
+        break;
+    case OT_TRIANGLE_LIST:  //  count faces (2tris), has tex UV
+        iVertCount = count * 4;  // 4 verts per face
+        iFace      = 6;  // 6 indices per face
+        iIndCount  = count * iFace;
+        break;
+    default:
+        LogO("HudRenderable ERROR: Unsupported operation type! For material: " + material);
+        break;
+    }
+    //  log info  ----
+    LogO("HudRenderable: New  material: " + material + "  " +
+        (oper == OT_TRIANGLE_LIST ? "Tri_List" :
+         oper == OT_LINE_LIST ? "Line_List" : "Line_Strip") +
+        "  count: " + toStr(count));
+
     setUseIdentityProjection(true);
     setUseIdentityView(true);
     setVisibilityFlags(vis);
@@ -33,7 +66,7 @@ HudRenderable::HudRenderable(
     mObjectData.mLocalRadius[mObjectData.mIndex] = std::numeric_limits<Real>::max();
     mObjectData.mWorldRadius[mObjectData.mIndex] = std::numeric_limits<Real>::max();
 
-    createBuffers(colors, faces);
+    createBuffers(count);
 
     mRenderables.push_back( this );
 
@@ -42,84 +75,85 @@ HudRenderable::HudRenderable(
     setDatablock( db );
 }
 
+//  💥 dtor
 //-----------------------------------------------------------------------------------
 HudRenderable::~HudRenderable()
 {
-    destroy();
+    destroy();  //
     
     VaoManager *mgr = mManager->getDestinationRenderSystem()->getVaoManager();
 
-    auto itor = mVaoPerLod[0].begin();
-    auto end = mVaoPerLod[0].end();
-    while( itor != end )
+    for (auto itor = mVaoPerLod[0].begin();
+        itor != mVaoPerLod[0].end(); ++itor)
     {
         VertexArrayObject *vao = *itor;
 
-        const auto &vertexBuffers = vao->getVertexBuffers();
-        auto itBuffers = vertexBuffers.begin();
-        auto enBuffers = vertexBuffers.end();
+        const auto &vbs = vao->getVertexBuffers();
+        for (auto it = vbs.begin(); it != vbs.end(); ++it)
+            mgr->destroyVertexBuffer( *it );  // vb
 
-        while( itBuffers != enBuffers )
-        {
-            mgr->destroyVertexBuffer( *itBuffers );
-            ++itBuffers;
-        }
-
-        if( vao->getIndexBuffer() )
+        if (vao->getIndexBuffer())  // ib
             mgr->destroyIndexBuffer( vao->getIndexBuffer() );
+        
         mgr->destroyVertexArrayObject( vao );
-        ++itor;
     }
 }
 
+//  🆕 Create
 //-----------------------------------------------------------------------------------
-void HudRenderable::createBuffers(bool colors, const int faces)
+void HudRenderable::createBuffers(const int count)
 {
-    //  Index buffer  -------
-    const int face = 6;
-    const uint16 c_indexData[face] = {
-        0,1,3, 2,3,0  };
-
-    uint16 *indices = reinterpret_cast<uint16 *>(
-        OGRE_MALLOC_SIMD( sizeof( uint16 ) * face * faces, MEMCATEGORY_GEOMETRY ) );
-
-    for (int f = 0; f < faces; ++f)
-    for (int i = 0; i < face; ++i)
-        indices[f * 6 + i] = c_indexData[i] + f * 4;
-    
-
     VaoManager *mgr = mManager->getDestinationRenderSystem()->getVaoManager();
-    
     IndexBufferPacked *ib = 0;
-    try
-    {
-        ib = mgr->createIndexBuffer(
-            IndexBufferPacked::IT_16BIT, face * faces,
-            BT_IMMUTABLE, indices, true );
-    }
-    catch( Exception &e )
-    {
-        OGRE_FREE_SIMD( ib, MEMCATEGORY_GEOMETRY );
-        ib = 0;  throw e;
-    }
 
+    //  Index buffer  -------
+    if (iFace > 0)
+    {
+        uint16 *indices = reinterpret_cast<uint16 *>(
+            OGRE_MALLOC_SIMD( sizeof( uint16 ) * iFace * count, MEMCATEGORY_GEOMETRY ) );
+
+        if (mOper == OT_TRIANGLE_LIST)
+        {
+            const uint16 c_indexData[/*iFace*/ 6] = {
+                0,1,3, 2,3,0  };
+
+            for (int f = 0; f < count; ++f)
+            for (int i = 0; i < iFace; ++i)
+                indices[f * iFace + i] = c_indexData[i] + f * 4;
+        }
+        else if (mOper == OT_LINE_LIST)
+        {
+            for (int f = 0; f < count; ++f)
+            for (int i = 0; i < 2; ++i)
+                indices[f * 2 + i] = i + f * 2;
+        }
+        
+        try
+        {   ib = mgr->createIndexBuffer(
+                IndexBufferPacked::IT_16BIT, iFace * count,
+                BT_IMMUTABLE, indices, true );
+        }
+        catch( Exception &e )
+        {
+            OGRE_FREE_SIMD( ib, MEMCATEGORY_GEOMETRY );
+            ib = 0;  throw e;
+        }
+    }
 
     //  Vertex declaration
     VertexElement2Vec vertexElements;
     vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );
-    vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES ) );
-    if (colors)
+    if (bUV)
+        vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES ) );
+    if (bColors)
         vertexElements.push_back( VertexElement2( VET_FLOAT4, VES_DIFFUSE ) );
 
 
     //  Vertex buffer  -------
-    const int verts = faces * 4;
-
     vb = 0;
     try
-    {
-        vb = mgr->createVertexBuffer(
-            vertexElements, verts, BT_DYNAMIC_PERSISTENT, 0, false );
+    {   vb = mgr->createVertexBuffer(
+            vertexElements, iVertCount, BT_DYNAMIC_PERSISTENT, 0, false );
     }
     catch( Exception &e )
     {
@@ -131,37 +165,52 @@ void HudRenderable::createBuffers(bool colors, const int faces)
     VertexBufferPackedVec vertexBuffers;
     vertexBuffers.push_back( vb );
     VertexArrayObject *vao = mgr->createVertexArrayObject(
-        vertexBuffers, ib, OT_TRIANGLE_LIST );
+        vertexBuffers, ib, mOper );
 
     mVaoPerLod[0].push_back( vao );
     mVaoPerLod[1].push_back( vao );  // same for shadow-
 }
 
 
+//  💫 Update
 //-----------------------------------------------------------------------------------
 //  maps all verts
 void HudRenderable::begin()
 {
     vp = reinterpret_cast<float * RESTRICT_ALIAS>(
         vb->map( 0, vb->getNumElements() ) );
+    iVertCur = 0;
 }
 void HudRenderable::position(float x, float y, float z)
 {
+    if (iVertCur >= iVertCount)  return;
+
     vp[0] = x;  vp[1] = y;  vp[2] = z;
     vp += 3;
+    ++iVertCur;
 }
 void HudRenderable::textureCoord(float u, float v)
 {
+    if (!bUV)  return;
+
     vp[0] = u;  vp[1] = v;
     vp += 2;
 }
 void HudRenderable::color(float r, float g, float b, float a)
 {
+    if (!bColors)  return;
+
     vp[0] = r;  vp[1] = g;  vp[2] = b;  vp[3] = a;
     vp += 4;
 }
 void HudRenderable::end()
 {
+    //  check if same count as in ctor
+    if (iVertCur != iVertCount)
+        LogO("HudRenderable ERROR: Wrong vertices count: " +
+            toStr(iVertCur) + " expected: " + toStr(iVertCount) +
+            "  material: " + sMtr);
+
     vb->unmap( UO_KEEP_PERSISTENT );
 }
 

@@ -133,7 +133,14 @@ void App::update( float dt )
 		hud->Update(-1, dt);
 	
 
-		//  car pos
+		///  📉 graphs update  -._/\_-.
+		if (pSet->show_graphs && graphs.size() > 0)
+		{
+			GraphsNewVals();
+			UpdateGraphs();
+		}
+
+		//  🚗 Car poses
 		if (pGame && iLoad1stFrames == -2)
 		{
 			updatePoses(dt);
@@ -153,7 +160,7 @@ void App::update( float dt )
 		}
 
 		
-		//  keys up/dn, for gui lists  ------------
+		//  📃 keys up/dn, for gui lists  ------------
 		static float fUp = 0.f, fDn = 0.f, fPgUp = 0.f, fPgDn = 0.f;
 		const float rpt = -0.15f;  // ms delay
 		if (isFocGui && !isTweak() &&
@@ -169,7 +176,7 @@ void App::update( float dt )
 			if (fDn   > 0.f) {  gui->LNext( d);   fDn = rpt;  }
 			if (fPgUp > 0.f) {  gui->LNext(-pg);  fPgUp = rpt;  }
 			if (fPgDn > 0.f) {  gui->LNext( pg);  fPgDn = rpt;  }
-		}/**/
+		}
 
 
 		if (pSet->particles)
@@ -209,7 +216,7 @@ void App::update( float dt )
 		}
 
 
-		//  Keys  params  ----
+		//  🔧 Keys  params  ----
 		float mul = shift ? 0.2f : ctrl ? 3.f : 1.f;
 		int d = right ? 1 : left ? -1 : 0;
 		if (d && scn->atmo)
@@ -244,7 +251,8 @@ void App::update( float dt )
 			atmo->setPreset(p);
 		}	}
 
-		//  Light  sun dir  ----
+
+		//  🌞 Light  sun dir  ----
 		bool any = false;
 		d = mKeys[0] - mKeys[1];
 		if (d)
@@ -264,7 +272,8 @@ void App::update( float dt )
 		if (any)
 			scn->UpdSun();
 
-		///  Terrain  ----
+
+		///  ⛰️ Terrain  ----
 		if (mTerra && mGraphicsSystem->getRenderWindow()->isVisible() )
 		{
 			// Force update the shadow map every frame to avoid the feeling we're "cheating" the
@@ -274,7 +283,6 @@ void App::update( float dt )
 			mTerra->update( !sun ? -Vector3::UNIT_Y :
 				sun->getDerivedDirectionUpdated(), lightEpsilon );
 		}
-
 	}
 
 	updFpsText();

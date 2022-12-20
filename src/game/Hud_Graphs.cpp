@@ -14,8 +14,10 @@
 #include "GraphView.h"
 // #include "SplitScreen.h"
 #include "CarModel.h"
+#include "GraphicsSystem.h"
 #include <OgreSceneManager.h>
 #include <OgreWindow.h>
+#include <OgreFrameStats.h>
 using namespace Ogre;
 // using namespace MyGUI;
 
@@ -30,6 +32,7 @@ void App::UpdateGraphs()
 
 void App::DestroyGraphs()
 {
+	LogO("D--- destroy Graphs");
 	for (int i=0; i < graphs.size(); ++i)
 	{
 		graphs[i]->Destroy();
@@ -53,6 +56,7 @@ const static String TireVar[2] = {"variable Load", "variable camber"};
 
 void App::CreateGraphs()
 {
+	LogO("C--- Create Graphs");
 	if (!graphs.empty())  return;
 	SceneManager* scm = mSceneMgr;
 	bool tireEdit = false;
@@ -358,6 +362,7 @@ void App::CreateGraphs()
 		gv->SetVisible(pSet->show_graphs);
 		graphs.push_back(gv);
 	}
+	LogO("C--- Create Graphs done");
 }
 
 
@@ -411,6 +416,7 @@ void App::GraphsNewVals()				// Game
 		{
 			CarModel* cm = carModels[0];
 			int ncs = scn->road->mChks.size();
+			if (scn->pace)
 			graphs[0]->UpdTitle("Pacenotes\n"
 				"#E0F0FF cur "+toStr(scn->pace->iCur)+"  all "+toStr(scn->pace->iAll)+"  st "+toStr(scn->pace->iStart));
 			graphs[1]->UpdTitle("\nCheckpoints  #F0F0D0 in "+iToStr(cm->iInChk,2)+" "+
@@ -426,8 +432,8 @@ void App::GraphsNewVals()				// Game
 	case Gh_Fps:  /// fps
 	if (gsi >= 2)
 	{
-		// const RenderTarget::FrameStats& stats = mWindow->getStatistics();
-		int fps = 60; //stats.lastFPS;
+		const FrameStats *st = mGraphicsSystem->getRoot()->getFrameStats();
+		const float fps = st->getAvgFps();
 		graphs[0]->AddVal(fps /60.f*0.5f);  // 60 fps in middle
 		//graphs[1]->AddVal(1000.f/PROFILER.getAvgDuration(" frameSt",quickprof::MILLISECONDS) /60.f*0.2f);
 		graphs[1]->AddVal(fLastFrameDT==0.f ? 1.f : (1.f/fLastFrameDT/60.f*0.5f));
@@ -445,6 +451,7 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 {	
 	size_t gsi = pApp->graphs.size();
 	bool tireEdit = false;
+	// if (!pApp || gsi == 0)  return;
 
 	//  TE range
 	//const Dbl fMAX = 9000.0, max_y = 80.0, max_x = 1.0;

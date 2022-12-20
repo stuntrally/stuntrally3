@@ -170,10 +170,6 @@ void App::LoadData()
 		pGame->collision.world->getDebugDrawer()->setDebugMode(
 			1 /*0xfe/*8+(1<<13)*/);
 	}
-	
-	//  load
-	if (pSet->autostart)
-		NewGame();
 }
 
 
@@ -245,6 +241,7 @@ void App::NewGame(bool force)
 
 void App::LoadCleanUp()  // 1 first
 {
+	LogO("DD-- LoadCleanUp ------DD");
 	updMouse();
 	
 	if (dstTrk)

@@ -51,8 +51,7 @@ void CHud::Create()
 	if (hud[0].txVel || hud[0].txTimes)
 		LogO("Create Hud: exists !");
 
-	// app->CreateGraphs();
-		
+
 	//  minimap from road img
 	int plr = 1; //app->mSplitMgr->mNumViewports;  // pSet->game.local_players;
 	//; LogO("C--- Create Hud  plrs="+toStr(plr));
@@ -120,17 +119,19 @@ void CHud::Create()
 		UpdMiniTer();
 	#endif
 		
-		float fHudSize = pSet->size_minimap * 1.f; //app->mSplitMgr->mDims[c].avgsize;
+		const int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight() +10;  //+? why
+		const float asp = float(wx) / float(wy);
+
+		/*float fHudSize = pSet->size_minimap * 1.f; //app->mSplitMgr->mDims[c].avgsize;
 		h.ndMap = rt->createChildSceneNode();
 		h.moMap = new HudRenderable(sMat, scm, true, RV_Hud,RQG_Hud1, 1);
 		h.ndMap->attachObject(h.moMap);
-		const int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight() +10;  //+? why
-		const float asp = float(wx) / float(wy);
-		h.ndMap->setVisible(pSet->trackmap);
+		h.ndMap->setVisible(pSet->trackmap);*/
 
 		//  ⏲️ gauges  backgr  -----------
 		String st = toStr(pSet->gauges_type);
-		h.moGauges = new HudRenderable("hud_"+st, scm, false, RV_Hud,RQG_Hud1, 4);
+		h.moGauges = new HudRenderable("hud_"+st, scm,
+			OT_TRIANGLE_LIST, true, false, RV_Hud,RQG_Hud1, 4);  // todo: rpm
 			//Create2D("hud_"+st, scm, 1.f, true,false, 0.f,Vector2(0.f,0.5f), RV_Hud,RQG_Hud1, 2);
 		h.ndGauges = rt->createChildSceneNode();  h.ndGauges->attachObject(h.moGauges);  //h.ndGauges->setVisible(false);
 
@@ -139,7 +140,7 @@ void CHud::Create()
 		// h.ndNeedles = rt->createChildSceneNode();  h.ndNeedles->attachObject(h.moNeedles);  //h.ndNeedles->setVisible(false);
 
 		//  gear  text  -----------
-		h.parent = app->mGui->createWidget<Widget>("", 0,0,	wx, wy, //+?
+		h.parent = app->mGui->createWidget<Widget>("", 0,0,	wx, wy,
 			Align::Left,"Back","main"+s);
 
 		if (cm->vType == V_Car)
@@ -452,11 +453,13 @@ void CHud::Create()
 	}
 #endif
 
-	Show();  //_
+	// Show();  //_
 	app->bSizeHUD = true;
-	Size();
+	// Size();
 	
 	LogO(":::* Time Create Hud: "+fToStr(ti.getMilliseconds(),0,3)+" ms");
+
+	app->CreateGraphs();  //
 }
 
 
@@ -474,6 +477,7 @@ CHud::Hud::Hud()
 
 void CHud::Destroy()
 {
+	LogO("D--- Destroy Hud");
 	SceneManager* scm = app->mSceneMgr;
 	int i,c;
 	for (c=0; c < hud.size(); ++c)

@@ -242,8 +242,8 @@ void GAME::PickTireRef(std::string name)
 	if (id == -1)
 	{	id = 0;  LogO("Warning: Reference tire not found: "+ name);  }
 	tire_ref_id = id;
-	/*if (!cars.empty())
-		cars.begin()->GraphsNewVals(0.1);*/
+	// if (!cars.empty())  //?
+	// 	cars.begin()->GraphsNewVals(0.1);
 }
 
 

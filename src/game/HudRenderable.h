@@ -1,4 +1,5 @@
 #pragma once
+#include "OgreCommon.h"
 #include <OgreMovableObject.h>
 #include <OgreRenderable.h>
 // #include <OgreVertexBufferPacked.h>
@@ -9,12 +10,23 @@ class HudRenderable final
     : public Ogre::MovableObject, public Ogre::Renderable
 {
 public:
+    //  🌟 ctor, see cpp for details
     HudRenderable(
         const Ogre::String& material, Ogre::SceneManager* mgr,
-        bool colors,
+        Ogre::OperationType oper, bool hasUV, bool colors,
         Ogre::uint32 vis, Ogre::uint8 rndQue,
-        int faces);
+        int count);
     ~HudRenderable() override;
+
+    //  for checks
+    Ogre::OperationType mOper = Ogre::OT_TRIANGLE_LIST;
+    bool bUV = false, bColors = false;
+    Ogre::String sMtr;
+
+    int iVertCount = 0, iVertCur = 0;  // total, current
+    int iIndCount = 0;  // indices
+    int iFace = 0;  // indices per face/line
+
 
     //  from MovableObject
     const Ogre::String &getMovableType() const override;
@@ -26,9 +38,9 @@ public:
     bool getCastsShadows() const override;
 
 
-    //  update
+    //  💫 Update
     Ogre::VertexBufferPacked *vb = 0;
-    void createBuffers(bool colors=false, const int faces=1);
+    void createBuffers(const int count);
     void destroy();
 
     //  ManualObject syntax, update all verts

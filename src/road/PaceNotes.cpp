@@ -28,22 +28,17 @@ using namespace MyGUI;
 
 //  🌟 ctor  ---------
 PaceNote::PaceNote()
-	:nd(0), bb(0),bc(0), txt(0), text(0)
-	,pos(0,0,0), use(1), id(0)
-	,size(4.f,4.f), clr(0,0,0,0), ofs(0,0), uv(0,0)
-	,start(0), jump(0), vel(0.f)
+	:pos(0,0,0), size(4.f,4.f), clr(0,0,0,0), ofs(0,0), uv(0,0)
 {	}
 PaceNote::PaceNote(int i, int t, Vector3 p,  //id,use, pos
 		float sx,float sy,  float r,float g,float b,float a,  //size, clr
 		float ox,float oy, float u,float v)  //ofs:dir,bar width, tex uv
-	:nd(0), bb(0),bc(0), txt(0), text(0)
-	,pos(p), use(t), id(i)
-	,size(sx,sy), clr(r,g,b,a), ofs(ox,oy), uv(u,v)
-	,start(0), jump(0), vel(0.f)
+	:pos(p), size(sx,sy), clr(r,g,b,a), ofs(ox,oy), uv(u,v)
+	,use(t), id(i), start(0), jump(0), vel(0.f)
 {	}
 
 
-//  Create
+//  🆕 Create  ---------
 void PaceNotes::Create(PaceNote& n)
 {
 	if (n.use == 1)
@@ -73,18 +68,7 @@ void PaceNotes::Create(PaceNote& n)
 	}
 }
 
-void PaceNotes::Update(PaceNote& n)
-{
-	n.bc->setColour(ColourValue(n.clr.x, n.clr.y, n.clr.z, n.clr.w));
-	n.bb->setCustomParameter(0, Vector4(n.ofs.x, n.ofs.y, n.uv.x, n.uv.y));  // params, uv ofs
-	UpdateTxt(n);
-}
-void PaceNotes::UpdateTxt(PaceNote& n)
-{	if (n.txt && n.vel > 0.f)
-		n.txt->setCaption(fToStr(n.vel * (pSet->show_mph ? 2.23693629f : 3.6f),0,3));
-}
-
-//  Destroy
+//  💥 Destroy
 void PaceNotes::Destroy(PaceNote& n)
 {
 	if (n.txt){  mGui->destroyWidget(n.txt);  n.txt = 0;  }
@@ -103,7 +87,19 @@ void PaceNotes::Destroy()
 }
 
 
-//  update visibility  ---------
+//  💫 Update
+void PaceNotes::Update(PaceNote& n)
+{
+	n.bc->setColour(ColourValue(n.clr.x, n.clr.y, n.clr.z, n.clr.w));
+	n.bb->setCustomParameter(0, Vector4(n.ofs.x, n.ofs.y, n.uv.x, n.uv.y));  // params, uv ofs
+	UpdateTxt(n);
+}
+void PaceNotes::UpdateTxt(PaceNote& n)
+{	if (n.txt && n.vel > 0.f)
+		n.txt->setCaption(fToStr(n.vel * (pSet->show_mph ? 2.23693629f : 3.6f),0,3));
+}
+
+//  💫 update visibility  ---------
 void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 {
 	const Real dd = pSet->pace_dist, dd2 = dd*dd;
@@ -207,11 +203,8 @@ void PaceNotes::updTxt(PaceNote& n, bool vis)
 
 
 //  🌟 ctor  ---------
-PaceNotes::PaceNotes(SETTINGS* pset) :pSet(pset)
-	,mSceneMgr(0),mCamera(0),mTerrain(0),mGui(0),mWindow(0)
-	,ii(0), iStart(0),iAll(1), iDir(1), iCur(0)
-	,carVel(140.f/3.6f)  // for ed
-	,rewind(0)
+PaceNotes::PaceNotes(SETTINGS* pset)
+	:pSet(pset)
 {	}
 
 //  setup
