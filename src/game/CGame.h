@@ -35,8 +35,8 @@ class App : public BaseApp,	public ICS::ChannelListener
 	//  input  temp  ----
 	int mKeys[4] = {0,0,0,0};  // sun adj
 	int param = 0;  // to adjust
-	bool left = false, right = false;  // home,end
-	bool pgup = false, pgdown = false, up = false, down = false;  // arrows for gui lists
+	bool pgup = false, pgdown = false;
+	bool up = false, down = false;  // arrows for gui lists
 
 	//  📈 Fps overlay
 	void updDebugText();
@@ -236,6 +236,7 @@ public:
 	const static int TireNG;
 	int iEdTire = 0, iTireLoad = 0, iUpdTireGr = 0;
 	int iCurLat = 0, iCurLong = 0, iCurAlign = 0;
+	bool updateTireEdit();
 
 	///  car perf test
 	bool bPerfTest = 0;

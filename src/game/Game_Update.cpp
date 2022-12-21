@@ -35,6 +35,7 @@
 #include <MyGUI_ImageBox.h>
 #include <MyGUI_TabControl.h>
 #include <MyGUI_TextBox.h>
+#include <MyGUI_Window.h>
 #include <string>
 using namespace Ogre;
 using namespace std;
@@ -253,27 +254,31 @@ void App::update( float dt )
 			atmo->setPreset(p);
 		}	}
 
+		//  ⚫📉
+		bool tireEd = updateTireEdit();
 
 		//  🌞 Light  sun dir  ----
-		bool any = false;
-		d = mKeys[0] - mKeys[1];
-		if (d)
-		{	any = true;
-			sc->ldPitch += d * mul * 20.f * dt;
-			sc->ldPitch = std::max( 0.f, std::min( sc->ldPitch, 180.f ) );
-		}
-		d = mKeys[2] - mKeys[3];
-		if (d)
-		{	any = true;
-			sc->ldYaw += d * mul * 30.f * dt;
-			sc->ldYaw = fmodf( sc->ldYaw, 360.f );
-			if( sc->ldYaw < 0.f )
-				sc->ldYaw = 360.f + sc->ldYaw;
-		}
 		auto sun = scn->sun;
-		if (any)
-			scn->UpdSun();
-
+		if (!tireEd)
+		{
+			bool any = false;
+			d = mKeys[0] - mKeys[1];
+			if (d)
+			{	any = true;
+				sc->ldPitch += d * mul * 20.f * dt;
+				sc->ldPitch = std::max( 0.f, std::min( sc->ldPitch, 180.f ) );
+			}
+			d = mKeys[2] - mKeys[3];
+			if (d)
+			{	any = true;
+				sc->ldYaw += d * mul * 30.f * dt;
+				sc->ldYaw = fmodf( sc->ldYaw, 360.f );
+				if( sc->ldYaw < 0.f )
+					sc->ldYaw = 360.f + sc->ldYaw;
+			}
+			if (any)
+				scn->UpdSun();
+		}
 
 		///  ⛰️ Terrain  ----
 		if (mTerra && mGraphicsSystem->getRenderWindow()->isVisible() )
@@ -289,4 +294,58 @@ void App::update( float dt )
 
 	updFpsText();
 	updDebugText();
+}
+
+
+//  ⚫📉 Tire Edit keys
+//...................................................................
+bool App::updateTireEdit()
+{
+	bool edit =
+		(pSet->graphs_type == Gh_TireEdit ||
+		 pSet->graphs_type == Gh_Tires4Edit) &&
+		carModels.size() > 0 && !mWndTweak->getVisible();
+
+	if (!edit)  return edit;
+
+	int k = (mKeys[2] ? -1 : 0)
+		  + (mKeys[3] ?  1 : 0);
+	if (!k)  return edit;
+
+	double mul = shift ? 0.2 : (ctrl ? 4.0 : 1.0);
+	mul *= 0.005;  // par
+
+	CARDYNAMICS& cd = carModels[0]->pCar->dynamics;
+	CARTIRE* tire = cd.GetTire(FRONT_LEFT);
+	if (iEdTire == 1)  // longit |
+	{
+		Dbl& val = tire->longitudinal[iCurLong];  // modify 1st
+		val += mul*k * (1 + abs(val));
+		for (int i=1; i<4; ++i)
+			cd.GetTire(WHEEL_POSITION(i))->longitudinal[iCurLong] = val;  // copy for rest
+	}
+	else if (iEdTire == 0)  // lateral --
+	{
+		Dbl& val = tire->lateral[iCurLat];
+		val += mul*k * (1 + abs(val));
+		for (int i=1; i<4; ++i)
+			cd.GetTire(WHEEL_POSITION(i))->lateral[iCurLat] = val;
+	}
+	else  // align o
+	{
+		Dbl& val = tire->aligning[iCurAlign];
+		val += mul*k * (1 + abs(val));
+		for (int i=1; i<4; ++i)
+			cd.GetTire(WHEEL_POSITION(i))->aligning[iCurAlign] = val;
+	}
+
+	//  update hat, 1st
+	tire->CalculateSigmaHatAlphaHat();
+	for (int i=1; i<4; ++i)  // copy for rest
+	{	cd.GetTire(WHEEL_POSITION(i))->sigma_hat = tire->sigma_hat;
+		cd.GetTire(WHEEL_POSITION(i))->alpha_hat = tire->alpha_hat;
+	}
+	iUpdTireGr = 1;
+
+	return edit;
 }

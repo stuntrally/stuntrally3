@@ -45,8 +45,8 @@ void App::keyReleased( const SDL_KeyboardEvent &arg )
 
 	case key(DOWN):  down = false;   break;
 	case key(UP):    up   = false;   break;
-	case key(HOME):  left  = false;   break;  // params
-	case key(END):   right = false;   break;
+	// case key(HOME):  left  = false;   break;  // params
+	// case key(END):   right = false;   break;
 	case key(PAGEDOWN):  pgdown = false;   break;
 	case key(PAGEUP):    pgup   = false;   break;
 
@@ -100,8 +100,8 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 	case key(DOWN):  down  = true;   break;  // for gui lists
 	case key(UP):    up    = true;   break;
-	case key(HOME):  left  = true;  break;  // params
-	case key(END):   right = true;  break;
+	// case key(HOME):  left  = true;  break;  // params
+	// case key(END):   right = true;  break;
 	case key(PAGEDOWN):  /*++param;*/  pgdown = true;  break;
 	case key(PAGEUP):    /*--param;*/  pgup   = true;  break;
 
