@@ -14,7 +14,8 @@
 
 #include "CarModel.h"
 #include "CInput.h"
-// #include "Road.h"
+#include "Grass.h"
+#include "Road.h"
 // #include "SplitScreen.h"
 // #include "WaterRTT.h"
 // #include "MultiList2.h"
@@ -31,13 +32,9 @@ using namespace std;
 //  🌟 ctor
 //-----------------------------------------------
 App::App()
-	: fLastFrameDT(0.001f)
-	// , mIblQuality( IblHigh )  // 45 fps-  // par
-	// , mIblQuality( IblMedium )
-	// , mIblQuality( MipmapsLowest )  // very low, no mips-
-	// ,mThread()
-	// ,iEdTire(0), iTireLoad(0), iCurLat(0),iCurLong(0),iCurAlign(0), iUpdTireGr(0)
-	// ,bPerfTest(0),iPerfTestStage(PT_StartWait)
+	// : mIblQuality( IblHigh )  // 45 fps-  // par
+	// : mIblQuality( IblMedium )
+	// : mIblQuality( MipmapsLowest )  // very low, no mips-
 {
 	frm.resize(MAX_CARS);
 	for (int i=0; i < MAX_CARS; ++i)
@@ -45,9 +42,6 @@ App::App()
 
 	Axes::Init();
 
-	resCar = "";  resTrk = "";  resDrv = "";
-	oldTrack = "";  oldTrkUser = false;
-	
 	// Load();  later in createScene01
 }
 
@@ -77,45 +71,49 @@ App::~App()
 	delete input;
 }
 
-
+//  💥 Destroy  LoadCleanUp()
+//----------------------------------------------------------------------------------
 void App::destroyScene()
 {
-	LogO("---- destroyScene");
+	LogO("DD-- destroyScene ------DD");
 	
 	delete dbgdraw;  dbgdraw = 0;
 	
 	// scn->mWaterRTT->destroy();
 	
-	DestroyObjects(true);
+	DestroyGraphs();
+	hud->Destroy();
+	hud->arrow.Destroy(mSceneMgr);
 	
-	// for (int i=0; i < graphs.size(); ++i)
-	// 	delete graphs[i];
-
 	// for (int i=0; i<4; ++i)
 		// pSet->cam_view[i] = carsCamNum[i];
 
-	// Delete all cars
+	//  Delete all cars
 	for (auto& car : carModels)
 	 	delete car;
-
-	// carModels.clear();
+	carModels.clear();
 	//carPoses.clear();
 	
 	// gcom->mToolTip = 0;  //?
 
-	scn->DestroyRoads();
-
+	scn->DelRoadDens();
+	scn->grass->Destroy();
 	scn->DestroyTrees();
+	DestroyObjects(true);
+	scn->DestroyRoads();
+	scn->DestroyTerrain();  //DestroyTerrain();
+	scn->DestroyFluids();
+	scn->DestroyEmitters(true);
+	scn->DestroyAllAtmo();
+
+	scn->DestroyTrail();
 
 	if (pGame)
 		pGame->End();
 	
 	// delete[] blendMtr;  blendMtr = 0;
 
-
 	// BaseApp::destroyScene();
-
-	DestroyTerrain();
 
 	LogO(">>>>>>>> Destroy SR ----");
 	Destroy();
@@ -123,8 +121,8 @@ void App::destroyScene()
 }
 
 
-//  💫 simulation  2nd thread
-//---------------------------------------------------------------------------------------------------------------
+//  💫 Simulation  2nd thread
+//----------------------------------------------------------------------------------
 void App::UpdThr()
 {
 	Ogre::Timer gtim;
