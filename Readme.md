@@ -1,13 +1,14 @@
 ## Description
 
-Early port of latest [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.7 using latest [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0.  
+WIP Port and continuation of latest [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.7 using latest [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0.  
 
-Already playable and with GUI.
+Already playable Single Player modes. GUI works. No SR Track Editor yet.
 
-[Roadmap here](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap#sr_3), Help and contributing is welcome.
+For details see [Roadmap](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap#sr_3) with missing features and todo. Help and contributing is welcome.
 
-Forum: [SR topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18515), [Ogre topic](https://forums.ogre3d.org/viewtopic.php?t=96576).
+Progress posts on [SR forum](https://forum.freegamedev.net/viewtopic.php?f=81&t=18515). Dev questions in [Ogre topic](https://forums.ogre3d.org/viewtopic.php?t=96576).
 
+----
 
 ## Building
 
@@ -41,7 +42,7 @@ See [CMakeLists.txt](/CMakeLists.txt) and adjust if needed, it has some of my se
 sr3 - with this repo
    bin - output binaries
       Debug
-      Release - has StuntRally3, ogre.cfg, Ogre.log, MyGUI.log, plugins.cfg, resources2.cfg
+      Release - has StuntRally3, plugins.cfg, resources2.cfg
       RelWithDebInfo
    Media
       tracks - has Test1-Flat, Test3-Bumps
@@ -55,5 +56,5 @@ Ogre
       OgreMain/include/ - has Ogre*.h
    ogre-next-deps
 
-/home/user/.config/stuntrally3 - has current game.cfg
+/home/user/.config/stuntrally3 - has current game.cfg, ogre.cfg, Ogre.log, MyGUI.log
 ```
