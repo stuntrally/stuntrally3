@@ -179,7 +179,7 @@ void CGui::InitGuiCar()
 
 	///  🔧 Tweak, car edit
 	//------------------------------------------------------------
-/*	for (i=0; i < ciEdCar; ++i)
+	for (i=0; i < ciEdCar; ++i)
 		edCar[i] = fEd("EdCar"+toStr(i));
 	edPerfTest = fEd("TweakPerfTest");
 	tabEdCar = fTab("TabEdCar");  Tev(tabEdCar, CarEdChng);  tabEdCar->setIndexSelected(pSet->car_ed_tab);
@@ -223,5 +223,4 @@ void CGui::InitGuiCar()
 	cmb->removeAllItems();
 	for (i=0; i < TRACKSURFACE::NumTypes; ++i)
 		cmb->addItem(csTRKsurf[i]);
-*/
 }

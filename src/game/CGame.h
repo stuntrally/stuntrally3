@@ -162,7 +162,7 @@ public:
 	// bool isTweakTab();
 	BtOgre::DebugDrawer *dbgdraw = 0;  /// blt dbg
 
-	float fLastFrameDT = 0.01f;
+	float fLastFrameDT = 0.001f;
 	// virtual bool frameStart(Ogre::Real time);  //;void DoNetworking();
 	// virtual bool frameEnd(Ogre::Real time);
 
@@ -232,11 +232,13 @@ public:
 	void CreateGraphs(), DestroyGraphs();
 	void UpdateGraphs(), GraphsNewVals();
 
-	///* tire edit */
+	///  ⚫📉 tire edit
 	const static int TireNG;
-	int iEdTire, iTireLoad, iCurLat,iCurLong,iCurAlign, iUpdTireGr;
+	int iEdTire = 0, iTireLoad = 0, iUpdTireGr = 0;
+	int iCurLat = 0, iCurLong = 0, iCurAlign = 0;
 
 	///  car perf test
-	// bool bPerfTest;  EPerfTest iPerfTestStage;
-	// void PerfLogVel(class CAR* pCar, float time);
+	bool bPerfTest = 0;
+	EPerfTest iPerfTestStage = PT_StartWait;
+	void PerfLogVel(class CAR* pCar, float time);
 };

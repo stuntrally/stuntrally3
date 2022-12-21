@@ -221,7 +221,7 @@ void App::update( float dt )
 		//  🔧 Keys  params  ----
 		float mul = shift ? 0.2f : ctrl ? 3.f : 1.f;
 		int d = right ? 1 : left ? -1 : 0;
-		if (d && scn->atmo)
+		if (0 && d && scn->atmo)  // todo on gui-
 		{
 			SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
 			Atmosphere2Npr *atmo = static_cast<Atmosphere2Npr*>( sceneManager->getAtmosphere() );

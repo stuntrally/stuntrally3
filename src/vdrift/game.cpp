@@ -371,7 +371,7 @@ void GAME::End()
 	delete snd_lap;  delete snd_lapbest;
 	delete snd_stage;  delete snd_fail;
 	for (int i=0; i < 3; ++i)
-	delete snd_win[i];
+		delete snd_win[i];
 	
 	delete snd;  snd = 0;
 

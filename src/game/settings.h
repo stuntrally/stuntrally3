@@ -7,15 +7,17 @@
 
 
 enum eGraphType  {
-	Gh_Fps=0, Gh_CarAccelG,
-	Gh_CamBounce, Gh_BulletHit,
-	Gh_Sound,
-	Gh_Checks,
-	Gh_Suspension,
-	Gh_TireSlips,
-	Gh_TireEdit, Gh_Tires4Edit,
+	Gh_Fps=0,   // 📊
+	Gh_CarAccelG,  // 🚗
+	Gh_CamBounce,  // 🎥
+	Gh_BulletHit,  // ✨
+	Gh_Sound,   // 🔉
+	Gh_Checks,  // 🏁
+	Gh_Suspension, // 🪜
+	Gh_TireSlips,  // ⚫
+	Gh_TireEdit, Gh_Tires4Edit, // ⚫📉
 	Gh_Diffs,
-	Gh_TorqueCurve, Gh_Engine,
+	Gh_TorqueCurve, Gh_Engine,  // 📈
 	Gh_Clutch,
 	Gh_ALL  };  // total count
 const static std::string csGraphNames[Gh_ALL] = {

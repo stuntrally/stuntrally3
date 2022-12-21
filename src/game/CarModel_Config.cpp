@@ -5,6 +5,7 @@
 #include "mathvector.h"
 #include "game.h"
 #include "CGame.h"
+#include "CGui.h"
 #include "CScene.h"
 #include "SceneXml.h"
 #include "CarModel.h"
@@ -100,19 +101,19 @@ void CarModel::Load(int startId, bool loop)
 	// 	sDispName = TR("#{Player}") + toStr(iIndex+1);
 	
 
-	///  load config .car
-	// string pathCar;
-	// pApp->gui->GetCarPath(&pathCar, 0, 0, sDirname, pApp->mClient.get() != 0);  // force orig for newtorked games
-	std::string file = sDirname + ".car",
-		pathCar  = PATHMANAGER::CarSim()  + "/" + pSet->game.sim_mode + "/cars/" + file;
+	///  📄 load config .car
+	string pathCar;
+	bool force = 0; //; pApp->mClient.get() != 0;  // force orig for newtorked games
+	pApp->gui->GetCarPath(&pathCar, 0, 0, sDirname, force);
+
 	LoadConfig(pathCar);
 
 	
-	///  Create CAR (dynamic)
+	///  🆕 Create CAR (dynamic)
 	if (!isGhost())  // ghost has pCar, dont create
 	{
 		if (startId == -1)  startId = iIndex;
-		// /*if (pSet->game.start_order == 1)  //;
+		if (pSet->game.start_order == 1)
 		{	//  reverse start order
 			int numCars = //pApp->mClient ? pApp->mClient->getPeerCount()+1 :  // networked
 				pSet->game.local_players;  // splitscreen

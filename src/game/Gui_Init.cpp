@@ -75,7 +75,7 @@ void CGui::InitGui()
 
 	app->mWndNetEnd = fWnd("WndNetEnd");  app->mWndNetEnd->setVisible(false);
 	app->mWndTweak = fWnd("WndTweak");    app->mWndTweak->setVisible(false);
-	app->mWndTweak->setPosition(0,40);
+	app->mWndTweak->setPosition(0,90);
 
 
 	//  for find defines
@@ -266,7 +266,7 @@ void CGui::InitGui()
 
 
 	//  📈 Fps,dbg,other  ------------------------------------------------------------
-	ck= &ckFps;			ck->Init("Fps",			&pSet->show_fps);
+	ck= &ckFps;			ck->Init("Fps",			&pSet->show_fps);  Cev(HudShow);
 	app->bckFps->setVisible(pSet->show_fps);
 	app->txFps->setVisible(pSet->show_fps);
 	ck= &ckWireframe;	ck->Init("Wireframe",   &app->mbWireFrame);  Cev(Wireframe);

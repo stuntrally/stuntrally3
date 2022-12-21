@@ -481,9 +481,15 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 			MATHVECTOR<Dbl,3> v = dynamics.body.GetForce();
 			(-dynamics.Orientation()).RotateVector(v);
 			float m = dynamics.body.GetMass();
-			for (int i=0; i < 3; ++i)
+			float xy = sqrt(v[0]*v[0] + v[1]*v[1]);
+			
+			pApp->graphs[0]->AddVal( std::max(0.f, std::min(1.f, float(
+				xy/m *0.63f /9.81f/3.f + (1==2 ? 0.f : 0.5f) ) )));
+			pApp->graphs[2]->AddVal( std::max(0.f, std::min(1.f, float(
+				v[2]/m *0.63f /9.81f/3.f + (2==2 ? 0.f : 1.f) ) )));
+			/*for (int i=0; i < 3; ++i)  // old x,y,z
 				pApp->graphs[i]->AddVal( std::max(0.f, std::min(1.f, float(
-					v[i]/m *0.63f /9.81f/3.f + (i==2 ? 0.f : 0.5f) ) )));
+					v[i]/m *0.63f /9.81f/3.f + (i==2 ? 0.f : 0.5f) ) )));*/
 		}	break;
 
 	case Gh_CamBounce:  //  🎥 camera bounce x,y,z

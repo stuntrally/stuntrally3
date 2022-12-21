@@ -259,7 +259,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(Z):  gui->TweakToggle();   return;
 	}
 
-	///  Tire edit
+	///  ⚫📉 Tire edit
 	if (pSet->graphs_type == Gh_TireEdit || pSet->graphs_type == Gh_Tires4Edit && !tweak)
 	{
 		int& iCL = iEdTire==1 ? iCurLong : (iEdTire==0 ? iCurLat : iCurAlign);
@@ -302,13 +302,13 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				if (editFocus)
 					break;
 				if (rpl && mWndRpl)
-				{	bRplWnd = !bRplWnd;  return;  }  // replay controls
+				{	bRplWnd = !bRplWnd;  return;  }  // 📽️ replay controls
 
 				if (mWndHowTo->getVisible())
 				{	pSet->iMenu = MN1_Race;  gui->toggleGui(false);  return;  }
-				else if (mWndChampStage->getVisible())	// back from champs stage wnd
+				else if (mWndChampStage->getVisible())	// 🏆 back from champs stage wnd
 				{	gui->btnChampStageBack(0);  return;  }
-				else if (mWndChallStage->getVisible())	// chall
+				else if (mWndChallStage->getVisible())	// 🥇 chall
 				{	gui->btnChallStageBack(0);  return;  }
 
 				switch (pSet->iMenu)
@@ -327,20 +327,20 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				gui->toggleGui(false);
 				return;
 
-			case key(P):	// replay play/pause
+			case key(P):	// 📽️ replay play/pause
 				if (rpl)
 				{	bRplPause = !bRplPause;  gui->UpdRplPlayBtn();
 					return;  }
 				break;
 
-			case key(K):	// replay car ofs
+			case key(K):	// 📽️ replay car ofs
 				if (rpl) {  --iRplCarOfs;  return;  }
 				break;
 			case key(L):
 				if (rpl) {  ++iRplCarOfs;  return;  }
 				break;
 				
-			case key(F):	// focus on find edit
+			case key(F):	//  🔍 focus on find edit
 				if (ctrl && gcom->edTrkFind && (pSet->dev_keys || isFocGui && trkTab))
 				{
 					if (wf == gcom->edTrkFind)  // ctrl-F  twice to toggle filtering
@@ -353,7 +353,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				}	break;
 			
 			
-			#ifdef REVERB_BROWSER
+			#ifdef REVERB_BROWSER  // 🔉
 			case key(1):
 			{	--ii;  int s = pGame->snd->sound_mgr->mapReverbs.size();  if (ii < 0)  ii += s;
 				auto it = pGame->snd->sound_mgr->mapReverbs.begin();
@@ -369,31 +369,31 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			#endif
 
 
-			case key(F6):	//  Arrow
+			case key(F6):	//  🔝 Arrow
 				if (shift)	gui->ckBeam.Invert(); else
 				if (ctrl)	gui->ckArrow.Invert();
 				else		gui->ckTrailShow.Invert();
 				return;
 
-			case key(F7):	//  Times
+			case key(F7):	//  ⏱️ Times
 				if (alt)	gui->ckCarDbgBars.Invert(); else
 				if (shift)	gui->ckOpponents.Invert(); else
 				if (!ctrl)	gui->ckTimes.Invert();
 				return;
 
-			case key(F8):	//  Minimap
+			case key(F8):	//  🌍 Minimap
 				if (alt)	gui->ckPaceShow.Invert(); else
 				if (!shift)	gui->ckMinimap.Invert();
 				return;
 
-			case key(F9):	//  car dbg
+			case key(F9):	//  ⚫ car dbg
 				if (ctrl)	gui->ckTireVis.Invert(); else
 				if (alt)	gui->ckCarDbgSurf.Invert(); else
 				if (shift)	gui->ckCarDbgTxt.Invert();
 				else		gui->ckGraphs.Invert();
 				return;
 
-			case key(F11):	//  Fps, profiler times
+			case key(F11):	//  📈 Fps, profiler times
 				if (shift)	gui->ckProfilerTxt.Invert(); else
 				if (!ctrl)	gui->ckFps.Invert();
 				break;
@@ -407,13 +407,13 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 
 			case key(KP_ENTER):
-			case key(RETURN):		///  close champ wnds
+			case key(RETURN):		//  🏆 close champ wnds
 				if (mWndChampStage->getVisible())
 					gui->btnChampStageStart(0);
-				else				///  chall
+				else				//  🥇 chall
 				if (mWndChallStage->getVisible())
 					gui->btnChallStageStart(0);
-				else				//  New game  after up/dn
+				else				//  🏁 New game  after up/dn
 				if (isFocGui)
 					switch (pSet->iMenu)
 					{
@@ -435,7 +435,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				/*if (mClient && !isFocGui)  // show/hide players net wnd
 				{	mWndNetEnd->setVisible(!mWndNetEnd->getVisible());  return;  }
 				else*/
-				if (!isFocGui)  // show last lap results
+				if (!isFocGui)  // 🏁 show last lap results
 				{	
 					for (int i=0; i < carModels.size(); ++i)
 					{	CarModel* cm = carModels[i];
@@ -443,13 +443,13 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				}	}
 				break;
 
-			case key(SPACE):		//  toggle reversed
+			case key(SPACE):		//  ◀️ toggle reversed
 				if (isFocGui && mWndGame->getVisible() &&
 					mWndTabsGame->getIndexSelected())
 					gui->ckReverse.Invert();
 				break;
 			
-			case key(INSERT):		// toggle fullscreen preview
+			case key(INSERT):		//  🖼️ toggle fullscreen preview
 				if (gcom->imgPrv[2]->getVisible())
 				{	gcom->imgPrv[2]->setVisible(false);
 					gcom->imgTer[2]->setVisible(true);  gcom->imgMini[2]->setVisible(true);
@@ -489,8 +489,8 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 	#define action(a) (channel->getNumber() == a)
 	int mnu = pSet->iMenu;
 
-	//  change tabs
-	//  tweak
+	//  Change Tabs
+	//  🔧 Tweak
 	if (mWndTweak->getVisible())
 	{
 		TabPtr tab = gui->tabTweak;
@@ -509,7 +509,7 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 			MyGUI::InputManager::getInstance().resetKeyFocusWidget();
 			MyGUI::InputManager::getInstance().setKeyFocusWidget(gui->edCar[tab->getIndexSelected()]);  }
 	}
-	//  change gui tabs
+	//  change Gui tabs
 	else if (isFocGui && !(mnu == MN1_Main || mnu == MN1_Race))
 	{
 		MyGUI::TabPtr tab = 0;  MyGUI::TabControl* sub = 0;
@@ -550,7 +550,7 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 			{	tab->setIndexSelected(i);  gui->tabMainMenu(tab,i);  return;  }
 		}
 	}
-	//  change graphs type
+	//  📉 change Graphs type
 	else if (!isFocGui && pSet->show_graphs)
 	{
 		int& v = (int&)pSet->graphs_type;  int vo = v;
