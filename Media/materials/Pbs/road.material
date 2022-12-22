@@ -45,13 +45,13 @@ hlms trailRoad pbs
 	//depth_write off
 	cull_mode none
 	// fog_override true
-	// twoside true
+	twoside true
 	// receives_shadows false
 
 	// diffuse_map  white.png
-	ambient 1 1 1
-	diffuse 0 0 0
-	specular 0 0 0 //32
+	// ambient 1 1 1
+	diffuse 0 1 0
+	specular 0 0 0
 }
 
 

@@ -41,17 +41,17 @@ PaceNote::PaceNote(int i, int t, Vector3 p,  //id,use, pos
 //  🆕 Create  ---------
 void PaceNotes::Create(PaceNote& n)
 {
-	if (n.use == 1)
-		LogO("PP "+toStr(n.id)+(n.start?" ST":""));
+	// if (n.use == 1)
+	// 	LogO("PP "+toStr(n.id)+(n.start?" ST":""));
 	++ii;
 	n.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	n.bb = mSceneMgr->createBillboardSet(/*"P-"+toStr(ii),*/ 2);
 	n.bb->setDefaultDimensions(n.size.x, n.size.y);
 
-	// n.bb->setRenderQueueGroup(RQG_CarParticles);
-	// n.bb->setVisibilityFlags(RV_Car);  // fixme
+	// n.bb->setRenderQueueGroup(RQG_Hud1); //RQG_CarParticles);  // fixme?
+	n.bb->setVisibilityFlags(RV_Car);  // not in reflection
 
-	// n.bb->setCustomParameter(2, Vector4(n.ofs.x, n.ofs.y, n.uv.x, n.uv.y));  // params, uv ofs
+	// n.bb->setCustomParameter(2, Vector4(n.ofs.x, n.ofs.y, n.uv.x, n.uv.y));  // todo: params, uv ofs
 	n.bc = n.bb->createBillboard(Vector3(0,0,0), ColourValue(n.clr.x, n.clr.y, n.clr.z, n.clr.w));
 
 	n.bb->setDatablockOrMaterialName("pacenote", "Essential");

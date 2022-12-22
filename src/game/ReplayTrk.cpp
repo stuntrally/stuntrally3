@@ -109,7 +109,7 @@ bool TrackGhost::LoadFile(std::string file, bool bLog)
 	fi.read(buf, ciTrkHdrSize);
 	memcpy(&header, buf, sizeof(TrackHeader));
 	
-	if (bLog)  LogO(">- Load trk ghost --  file: "+file);
+	if (bLog)  LogO(">--- Load trk ghost --  file: "+file);
 
 	Clear();
 	
@@ -124,7 +124,7 @@ bool TrackGhost::LoadFile(std::string file, bool bLog)
 		if (i > 0 && fr.time <= frames[i-1].time)
 		{
 			#ifdef LOG_RPL
-				if (bLog)  LogO(">- Load trk ghost  BAD frame time  id:"+toStr(i)
+				if (bLog)  LogO(">--- Load trk ghost  BAD frame time  id:"+toStr(i)
 					+"  t-1:"+fToStr(frames[i-1].time,5,7)+" >= t:"+fToStr(fr.time,5,7));
 			#endif
 		}else
@@ -135,7 +135,7 @@ bool TrackGhost::LoadFile(std::string file, bool bLog)
     fi.close();
  
     #ifdef LOG_RPL
-		if (bLog)  LogO(">- Load trk ghost   first: "+fToStr(frames[0].time,5,7)
+		if (bLog)  LogO(">--- Load trk ghost   first: "+fToStr(frames[0].time,5,7)
 			+"  time: "+fToStr(GetTimeLength(),2,5)+"  frames: "+toStr(frames.size()));
 	#endif
 

@@ -5,7 +5,7 @@
 #include "SceneXml.h"
 // #include "WaterRTT.h"
 #include "Road.h"
-// #include "PaceNotes.h"
+#include "PaceNotes.h"
 #include "Grass.h"
 #include "CGame.h"
 
@@ -49,14 +49,14 @@ void CScene::DestroyRoads()
 	rdCur = 0;
 	road = 0;
 }
-/*
+
 void CScene::DestroyPace()
 {
 	if (pace)
 	{	pace->Destroy();
 		delete pace;  pace = 0;
 	}
-}*/
+}
 void CScene::DestroyTrail()
 {
 	if (trail)

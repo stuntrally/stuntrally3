@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
-#include <Ogre.h>
+// #include <Ogre.h>
+#include <OgreVector2.h>
+#include <OgreVector3.h>
+#include <OgreVector4.h>
 
 namespace Ogre {  class SceneManager;  class SceneNode;  class Terra;  class Camera;  class Window;
 	namespace v1  {  class BillboardSet;  class Billboard;  }  }
