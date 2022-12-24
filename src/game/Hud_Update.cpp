@@ -132,9 +132,6 @@ void CHud::UpdPosElems(int cnt, int cntC, int carId)
 		float vel=0.f, rpm=0.f, clutch=1.f;  int gear=1;
 		GetCarVals(c,&vel,&rpm,&clutch,&gear);
 
-		if (!app->carModels[c]->vType == V_Car)
-			rpm = -1.f;  // hide rpm gauge
-		
 		//  update all mini pos tri
 		for (int i=0; i < cnt; ++i)
 			UpdRotElems(c, i, vel, rpm);
@@ -212,7 +209,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 	float angrmp = rpm*sc_rpm[ig] + rmin[ig];
 	float vsc = pSet->show_mph ? vsc_mph[ig] : vsc_kmh[ig];
 	float angvel = fabs(vel)*vsc + vmin[ig];
-	float angrot = app->carModels[c]->angCarY;
+	float angrot = app->carModels[b]->angCarY;
 	if (bRot && bZoom && !main)
 		angrot -= angBase-180.f;
 
@@ -249,8 +246,8 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 	}
 	    
     //  rpm,vel needles
-    float r = 0.55f, v = 0.85f;
-    bool bRpm = rpm >= 0.f;
+    const float r = 0.55f, v = 0.85f;
+	const bool bRpm = app->carModels[c]->hasRpm();
 
 	//  rpm,vel gauges backgr
 	HudRenderable* hr = h.moGauges;
@@ -259,7 +256,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 		Real o = pSet->show_mph ? 0.5f : 0.f;
 	
 		hr->begin();
-		// if (bRpm)
+		if (bRpm)
 		for (p=0; p < 4; ++p)
 		{	hr->position(
 				h.vcRpm.x + tp[p][0]*h.fScale*r,
@@ -274,7 +271,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 		}
 
 		//  needles
-		// if (bRpm)
+		if (bRpm)
 		for (p=0; p < 4; ++p)
 		{	hr->position(
 				h.vcRpm.x + rx[p]*r,
@@ -287,7 +284,6 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 				h.vcVel.y + vy[p]*v, 0);
 			hr->textureCoord(tn[p][0], tn[p][1]);
 		}
-
 		hr->end();
 	}
 

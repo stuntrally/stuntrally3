@@ -130,9 +130,10 @@ void CHud::Create()
 
 		//  ⏲️ gauges  backgr  -----------
 		String st = toStr(pSet->gauges_type);
+		int q = cm->hasRpm() ? 4 : 2;
+
 		h.moGauges = new HudRenderable("hud_"+st, scm,
-			OT_TRIANGLE_LIST, true, false, RV_Hud,RQG_Hud1, 4);  // todo: rpm
-			//Create2D("hud_"+st, scm, 1.f, true,false, 0.f,Vector2(0.f,0.5f), RV_Hud,RQG_Hud1, 2);
+			OT_TRIANGLE_LIST, true, false, RV_Hud,RQG_Hud1, q);
 		h.ndGauges = rt->createChildSceneNode();  h.ndGauges->attachObject(h.moGauges);  //h.ndGauges->setVisible(false);
 
 		//  gauges  needles
