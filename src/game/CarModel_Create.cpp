@@ -103,13 +103,12 @@ void CarModel::ToDel(ParticleSystem* par){	vDelPar.push_back(par);  }
 //  log mesh stats
 void CarModel::LogMeshInfo(const Item* ent, const String& name, int mul)
 {
-	return; //;
 	const MeshPtr& msh = ent->getMesh();
 	int tris=0, subs = msh->getNumSubMeshes();
 	for (int i=0; i < subs; ++i)
 	{
 		SubMesh* sm = msh->getSubMesh(i);
-		tris += sm->mVao[0].size();  //? indexData->indexCount;
+		tris += sm->mVao[0][0]->getPrimitiveCount();
 	}
 	all_tris += tris * mul;  //wheels x4
 	all_subs += subs * mul;
@@ -334,8 +333,8 @@ void CarModel::Create()
 			if (bLogInfo && w==0)  LogMeshInfo(eBrake, name, 4);
 		}
 	}
-	// if (bLogInfo)  // all
-	// 	LogO("MESH info:  "+sDirname+"\t ALL sub: "+toStr(all_subs)+"  tri: "+fToStr(all_tris/1000.f,1,4)+"k");
+	if (bLogInfo)  // all
+		LogO("MESH info:  "+sDirname+"\t ALL sub: "+toStr(all_subs)+"  tri: "+fToStr(all_tris/1000.f,1,4)+"k");
 	
 	
 	///  🔴 brake flares  ++ ++

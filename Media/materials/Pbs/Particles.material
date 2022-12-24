@@ -69,16 +69,13 @@ hlms flare1 unlit
 
 hlms TireTrail unlit
 {
-	emissive 1 1 1
-	// ambient 0 0 0
-	// diffuse 0 0 0 1
+	diffuse 1 1 1
 	scene_blend alpha_blend
+
 	depth_write off
 	depth_bias 3
 	cull_mode none
-	// vertex_colour true  // 
-	diffuse_map trail.png
-	//alphaMap trail.png
+	// diffuse_map trail.png  // todo: alpha borders
 	//diffuse_address_mode mirror  // 2d texture not supported
 }
 
@@ -145,4 +142,31 @@ hlms FluidWater unlit
 	scene_blend alpha_blend
 	alpha_rejection greater 64
 	depth_write	off
+}
+
+hlms FluidWaterPbs pbs  // meh try
+{
+	diffuse_map fluid-water.png
+	scene_blend alpha_blend
+	alpha_rejection greater 64
+	depth_write	off
+
+	// cull_mode none
+	transparency 0.9
+	transparency_mode transparent
+	two_sided true
+
+	workflow specular_fresnel
+	// workflow specular_ogre
+	// workflow metallic
+	// fresnel 3
+	fresnel_coeff 0.1 0.1 0.1
+	// fresnel_coeff 1 1 1
+	
+	diffuse   0 0 0
+	specular  0 0 0
+	// diffuse		0.5 0.5 0.5
+	// specular	0.1 0.1 0.1
+	roughness 0.3
+	metalness 0.7
 }
