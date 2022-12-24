@@ -157,17 +157,15 @@ hlms pacenote pbs
 //  trail racing line  ~~--~-~--
 hlms trailRoad unlit
 {
-	// scene_blend alpha_blend
-
 	depth_bias 3
 	// depth_check off
 	//depth_write off
 	cull_mode none
 	// twoside true
+	// scene_blend alpha_blend
 
-	// diffuse_map  white.png
-	// ambient 1 1 1
-	diffuse 1 1 1
+	// diffuse 1 1 1
+	diffuse 0.8 0.8 0.8  // par?
 	specular 0 0 0
 }
 

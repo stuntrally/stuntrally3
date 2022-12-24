@@ -23,27 +23,28 @@
 */
 const Ogre::uint8
 	RQ_7        = 70,
-	RQ_8        = 80,
+	RQ_GlassV2  = 80,
+	RQ_GlassV1  = 105,
 	RQ_OVERLAY  = 200,
 
 	RQG_Sky          = 5,
 	RQG_Terrain      = 11,
 	
-	RQG_BatchOpaque  = 50,
+	//RQG_BatchOpaque  = 50,
 	RQG_Road         = RQ_7,
 
 	RQG_RoadBlend    = RQ_7 +1,
 	RQG_BatchAlpha   = RQ_7 +4,  // veget transparent
 	RQG_Fluid        = RQ_7 +5,
-	RQG_RoadMarkers  = RQ_7 +6,
+	RQG_RoadMarkers  = RQ_7 +6,  // ed
 
-	RQG_CarGlass     = RQ_7 +7,
-	RQG_CarTrails    = RQ_8,    // trails after glass
-	RQG_PipeGlass    = RQ_8 +2,  // glass pipe road`
-	RQG_CarParticles = RQ_8 +3,  // particles after trails
+	RQG_CarGlass     = RQ_GlassV2,  // v2
+	RQG_CarTrails    = RQ_GlassV1,      // v1 trails after glass
+	RQG_PipeGlass    = RQ_GlassV2 +2,   // v2 glass pipe road`
+	RQG_CarParticles = RQ_GlassV1 +3,   // v1 particles after trails
 
-	RQG_Weather      = RQ_8 +5,
-	RQG_CarGhost     = RQ_8 +7,
+	RQG_Weather      = RQ_GlassV1 +5,   // v1 particles rain etc
+	RQG_CarGhost     = RQ_GlassV2 +7,   // meh-
 
 	RQG_Hud1         = RQ_OVERLAY +1,
 	RQG_Hud2         = RQ_OVERLAY +2,

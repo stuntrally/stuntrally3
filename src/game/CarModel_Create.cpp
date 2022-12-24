@@ -247,7 +247,7 @@ void CarModel::Create()
 	
 	//  var
 	Vector3 vPofs(0,0,0);
-	Aabb bodyBox;  uint8 g = RQG_CarGhost;
+	Aabb bodyBox;
 	all_subs=0;  all_tris=0;  //stats
 	
 	if (bRotFix)
@@ -454,7 +454,6 @@ void CarModel::Create()
 				if (!ndWhE[w])
 				{	ndWhE[w] = ndRoot->createChildSceneNode();  ToDel(ndWhE[w]);  }
 
-			#if 0  // fixme trails alpha..
 				if (!whTrail[w])
 				{	NameValuePairList params;
 					params["numberOfChains"] = "1";
@@ -464,6 +463,7 @@ void CarModel::Create()
 						"RibbonTrail", &mSceneMgr->_getEntityMemoryManager(SCENE_DYNAMIC), &params);
 					whTrail[w]->setInitialColour(0, 0.1,0.1,0.1, 0);
 					whTrail[w]->setFaceCamera(false,Vector3::UNIT_Y);
+					whTrail[w]->setRenderQueueGroup(RQG_CarTrails);
 					ndRoot->attachObject(whTrail[w]);
 					whTrail[w]->setDatablockOrMaterialName("TireTrail", "Popular");  //?
 					whTrail[w]->setCastShadows(false);
@@ -473,8 +473,7 @@ void CarModel::Create()
 				whTrail[w]->setInitialColour(0, 0.1f,0.1f,0.1f, 0);
 				whTrail[w]->setColourChange(0, 0.0,0.0,0.0, /*fade*/0.08f * 1.f / pSet->trails_len);
 				whTrail[w]->setInitialWidth(0, 0.f);
-			#endif
 		}	}
-		// UpdParsTrails();  //?
+		UpdParsTrails();
 	}
 }
