@@ -3,6 +3,7 @@
 #include "RenderConst.h"
 #include "CData.h"
 #include "SceneXml.h"
+#include "Axes.h"
 #include "BltObjects.h"
 #include "ShapeData.h"
 
@@ -78,7 +79,7 @@ void CScene::CreateTrees()
 
 	Real tws = sc->td.fTerWorldSize * 0.5f;
 	//  pos0 - original  pos - with offset
-	Vector3 pos0 = Vector3::ZERO, pos = Vector3::ZERO;  Radian yaw;
+	Vector3 pos0 = Vector3::ZERO, pos = Vector3::ZERO;  Real yaw;
 
 	SETTINGS* pSet = app->pSet;
 	#ifdef SR_EDITOR
@@ -147,13 +148,13 @@ void CScene::CreateTrees()
 			int cnt = fTrees * 6000 * pg.dens;
 			for (int i = 0; i < cnt; ++i)
 			{
-				#if 0  ///  for new objects - test shapes
-					int ii = l*cnt+i;
-					yaw = Degree((ii*30)%360);  // grid
-					pos.z = -100 +(ii / 12) * 10;  pos.x = -100 +(ii % 12) * 10;
+				#if 0  ///  test shapes, new objects
+					int ii = i; // l*cnt+i;
+					yaw = (ii * 5) % 360;  // grid
+					pos.z = -100 +(ii / 9) * 10;  pos.x = -100 +(ii % 9) * 10;
 					Real scl = pg.minScale;
 				#else
-					yaw = Degree(rnd.rand(360.0));
+					yaw = rnd.rand(360.0);
 					pos.x = getTerPos();  pos.z = getTerPos();
 					Real scl = rnd.rand() * (pg.maxScale - pg.minScale) + pg.minScale;
 				#endif
@@ -161,10 +162,11 @@ void CScene::CreateTrees()
 				bool add = true;
 
 				//  offset mesh  pos, rotY, scl
-				Vector2 vo;  float yr = -yaw.valueRadians();
-				float cyr = cos(yr), syr = sin(yr);
-				vo.x = ofs.x * cyr - ofs.y * syr;  // ofs x,y for pos x,z
-				vo.y = ofs.x * syr + ofs.y * cyr;
+				const float yr = Degree(yaw).valueRadians();
+				const float cyr = cos(yr), syr = sin(yr);
+				Vector2 vo(
+					ofs.x * cyr - ofs.y * syr,  // ofs x,y for pos x,z
+					ofs.x * syr + ofs.y * cyr);
 				pos.x += vo.x * scl;  pos.z += vo.y * scl;
 				
 
@@ -253,12 +255,12 @@ void CScene::CreateTrees()
 				node->attachObject( item );
 				node->scale( scl * Vector3::UNIT_SCALE );
 				if (big)
-					pos.y -= 0.52f;
+					pos.y -= 0.52f;  // par
 				// pos.y += std::min( item->getLocalAabb().getMinimum().y, Real(0.0f) ) * -0.1f + lay.down;  //par
 				// todo: ter h in few +-xz, get lowest ..
 				node->setPosition( pos );
 
-				Degree a( Math::RangeRandom(0, 360.f) );
+				Degree a( yaw );
 				Quaternion q;  q.FromAngleAxis( a, Vector3::UNIT_Y );
 				if (0) // todo: par pg.tilt ..
 				{
@@ -270,8 +272,6 @@ void CScene::CreateTrees()
 				vegetNodes.push_back(node);
 				//  ****************************
 				
-				// node->scale( s, s, s );
-				// treeLoader->addTree(ent, pos0, yaw, scl);
 				++pg.cnt;  ++cntAll;  // count stats
 					
 				
@@ -290,7 +290,7 @@ void CScene::CreateTrees()
 					Vector3 pos = pos0;  // restore original place
 					Vector3 ofs = shp->offset;
 					//  offset shape  pos, rotY, scl
-					Vector2 vo;  float yr = -yaw.valueRadians();
+					Vector2 vo;  float yr = Degree(yaw).valueRadians();
 					float cyr = cos(yr), syr = sin(yr);
 					vo.x = ofs.x * cyr - ofs.y * syr;
 					vo.y = ofs.x * syr + ofs.y * cyr;
@@ -320,10 +320,10 @@ void CScene::CreateTrees()
 				}
 				else  // use trimesh  . . . . . . . . . . . . 
 				{
-				#if 0
 					const BltShape* shp = !col ? &data->objs->defPars : &col->shapes[0];
 					Vector3 pc(pos0.x, pos.y, pos0.z);
-					Quaternion q;  q.FromAngleAxis(yaw, Vector3::UNIT_Y);
+					Quaternion q;  q.FromAngleAxis(Degree(yaw), Vector3::UNIT_Y);
+
 					Matrix4 tre;  tre.makeTransform(pc, scl*Vector3::UNIT_SCALE, q);
 					BtOgre::StaticMeshToShapeConverter converter(item, tre);
 					btCollisionShape* shape = converter.createTrimesh();
@@ -339,7 +339,6 @@ void CScene::CreateTrees()
 					app->pGame->collision.world->addCollisionObject(bco);
 					app->pGame->collision.shapes.push_back(shape);
 					++cntshp;
-				#endif
 				}
 				#endif
 			}

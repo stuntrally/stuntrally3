@@ -30,8 +30,6 @@
 #include <OgreItem.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
-// #include <OgreRenderWindow.h>
-// #include <OgreSubEntity.h>
 #include <OgreCamera.h>
 // #include <MyGUI.h>
 // #include <MyGUI_InputManager.h>
@@ -171,7 +169,7 @@ void App::CreateObjects()
 			Vector3 posO = Axes::toOgre(o.pos);
 			Quaternion rotO = Axes::toOgreW(o.rot);
 
-			Matrix4 tre;  tre.makeTransform(posO,o.scale, rotO);
+			Matrix4 tre;  tre.makeTransform(posO, o.scale, rotO);
 			BtOgre::StaticMeshToShapeConverter converter(o.it, tre);
 			btCollisionShape* shape = converter.createTrimesh();  //=new x2 todo:del?...
 			shape->setUserPointer((void*)SU_ObjectStatic);  // mark

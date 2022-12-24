@@ -199,6 +199,8 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab)
 int CGui::LNext(Mli2 lp, int rel, int ofs)
 {
 	int cnt = (int)lp->getItemCount();
+	if (cnt==1 || abs(rel) >= cnt)
+	{	lp->setIndexSelected(0);  return 1;  }
 	if (cnt==0 || abs(rel) >= cnt)  return 0;
 
 	int i = (int)lp->getIndexSelected();

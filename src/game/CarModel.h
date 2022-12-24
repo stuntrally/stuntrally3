@@ -40,6 +40,7 @@ public:
 	bool isGhost()    const {  return cType >= CT_GHOST;  }
 	bool isGhostTrk() const {  return cType == CT_TRACK;  }
 	void SetNumWheels(int n);
+	bool hasRpm()     const {  return vType == V_Car;  }
 	
 	//  🌟 ctor  ----
 	CarModel(int index, int colorId, eCarType type, const std::string& name,
