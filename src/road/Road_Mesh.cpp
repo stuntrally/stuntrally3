@@ -43,6 +43,9 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	if (MeshManager::getSingleton().getByName(sMesh))
 		LogR("Mesh exists !!!" + sMesh);
 
+	//LogO("RD mesh: "+sMesh+" "+sMtrName);
+	bool trail = IsTrail();
+
  	Aabb aabox;
  	MeshPtr mesh = MeshManager::getSingleton().createManual(sMesh, "General");
 		//ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME );
@@ -57,11 +60,13 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	// Vertex declaration
 	uint vertSize = 0;
 	VertexElement2Vec vertexElements;
-	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );  vertSize += 3;
-	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_NORMAL ) );    vertSize += 3;
-	vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  vertSize += 2;
-	// vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  vertSize += 2;  //2nd uv-
 	bool hasClr = clr.size() > 0;
+	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );  vertSize += 3;
+	if (!trail)
+	{	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_NORMAL ) );    vertSize += 3;
+		vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  vertSize += 2;
+	}
+	// vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  vertSize += 2;  //2nd uv-
 	if (hasClr)
 	{	vertexElements.push_back( VertexElement2( VET_FLOAT4, VES_DIFFUSE ) );  vertSize += 4;  }
 
@@ -73,6 +78,12 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 		OGRE_MALLOC_SIMD( sizeof( float ) * vertSize * vertCnt, MEMCATEGORY_GEOMETRY ) );
 	
 	uint a = 0;
+	if (trail)
+	for (uint i=0; i < vertCnt; ++i)
+	{
+		vertices[a++] = pos[i].x;   vertices[a++] = pos[i].y;   vertices[a++] = pos[i].z;  aabox.merge(pos[i]);
+		vertices[a++] = clr[i].x;   vertices[a++] = clr[i].y;   vertices[a++] = clr[i].z;   vertices[a++] = clr[i].w;
+	}else
 	if (hasClr)
 	for (uint i=0; i < vertCnt; ++i)
 	{
@@ -179,14 +190,15 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 		true, 0, 0,
 		v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC ).first);*/
  	m1->importV2(mesh.get());
-	m1->buildTangentVectors();
+	if (!trail)
+		m1->buildTangentVectors();
 	mesh = MeshManager::getSingleton().createByImportingV1(s2, "General", m1.get(), false,false,false);
 	MeshManager::getSingleton().remove(sMesh);  // not needed
 
 
 	//  add mesh to scene
 	//---------------------------------------------------------
-	Item *it = mSceneMgr->createItem(s2, "General", SCENE_STATIC );
+	Item *it = mSceneMgr->createItem(s2, "General", SCENE_STATIC );	
 	// Item *it = mSceneMgr->createItem( mesh, SCENE_STATIC );
 	SceneNode* node = mSceneMgr->getRootSceneNode( SCENE_STATIC )->createChildSceneNode( SCENE_STATIC );
 	node->attachObject(it);
@@ -194,13 +206,14 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	it->setVisibilityFlags(RV_Road);
 
 	//  wrap tex  ----
-	pGame->app->scn->SetTexWrap(it);
-	HlmsPbsDatablock *datablock =
-		static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
+	if (!trail)
+		pGame->app->scn->SetTexWrap(it);
 
 	//  replace alpha  ----
 	if (alpha)
 	{
+		HlmsPbsDatablock *datablock =
+			static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
 		TextureGpu *diffTex = datablock->getDiffuseTexture(),
 			*normTex = datablock->getTexture(PBSM_NORMAL);
 		const String sAlpha = "roadAlpha2.png", sFlat = "flat_n.png",

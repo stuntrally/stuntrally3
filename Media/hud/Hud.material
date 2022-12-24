@@ -134,10 +134,15 @@ hlms Arrow pbs
 	// two_sided true
 }
 
-hlms pacenote unlit
+hlms pacenote pbs
 {
-    diffuse  1 1 1
+    diffuse  0 0 0
     specular 0.1 0.1 0.1
+
+	workflow metallic
+	fresnel_coeff 0.1 0.1 0.1
+	roughness 0.2
+	metalness 0.6
 
 	// depth_write off
 	//depth_check off
@@ -147,6 +152,23 @@ hlms pacenote unlit
 	// fog_override true  // no fog
 
 	diffuse_map pacenotes.png
+}
+
+//  trail racing line  ~~--~-~--
+hlms trailRoad unlit
+{
+	// scene_blend alpha_blend
+
+	depth_bias 3
+	// depth_check off
+	//depth_write off
+	cull_mode none
+	// twoside true
+
+	// diffuse_map  white.png
+	// ambient 1 1 1
+	diffuse 1 1 1
+	specular 0 0 0
 }
 
 

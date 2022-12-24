@@ -1,11 +1,14 @@
 #include "pch.h"
+#include "Def_Str.h"
+#include "CScene.h"
+#include "SceneXml.h"
+#include "CData.h"
+#include "settings.h"
 #include "CHud.h"
 #include "CGui.h"
 #include "GuiCom.h"
 #include "CGame.h"
-#include "GraphicsSystem.h"
-
-#include "game.h"  // snd
+#include "game.h"
 #include "SoundMgr.h"
 #include "CarPosInfo.h"
 #include "CarModel.h"
@@ -13,19 +16,14 @@
 #include "carcontrolmap_local.h"
 #include "CInput.h"
 #include "Road.h"
-
-#include "Def_Str.h"
-#include "CScene.h"
-#include "SceneXml.h"
-#include "CData.h"
-#include "settings.h"
+#include "PaceNotes.h"
+#include "GraphicsSystem.h"
 
 #include <OgreVector3.h>
 #include <OgreSceneManager.h>
 #include <OgreRoot.h>
 #include <OgreCamera.h>
 #include <OgreWindow.h>
-
 #include "Terra/Terra.h"
 #include <OgreAtmosphere2Npr.h>
 
@@ -216,6 +214,17 @@ void App::update( float dt )
 				}
 			}
 			//PROFILER.endBlock("g.road");
+		}
+
+		//[]()  pace upd vis  ~ ~ ~
+		if (scn->pace)
+		{	
+			const CarModel* cm = *carModels.begin();
+			Vector3 p = cm->pMainNode->getPosition();
+			float vel = bRplPlay ? frm[0].vel : cm->pCar->GetSpeedometer();
+			scn->pace->carVel = vel;
+			scn->pace->rewind = bRplPlay ? false : cm->pCar->bRewind;
+			scn->pace->UpdVis(p);
 		}
 
 

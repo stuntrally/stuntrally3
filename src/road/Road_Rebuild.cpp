@@ -318,8 +318,9 @@ void SplineRoad::BuildSeg(
 					
 					c = Vector4(brdg, pp, mP[seg].notReal ? 0.f : 1.f, h);
 				}else
-					c = (float(i)/il) * (mP[seg1].clr - mP[seg].clr) + mP[seg].clr;
-
+				{	c = (float(i)/il) * (mP[seg1].clr - mP[seg].clr) + mP[seg].clr;
+					c.w = 1.f;
+				}
 				Vector2 vtc(tcw * 1.f /**2p..*/,
 					rs.alpha ? tcL * 0.03f : tcL);  //** par = alpha tc!
 
@@ -578,7 +579,8 @@ void SplineRoad::createSeg_Meshes(
 	//  create Ogre Meshes
 	//-----------------------------------------
 	const String sEnd = toStr(idStr) + "_" + toStr(idRd);  ++idStr;
-	const String sMesh = "rd.mesh." + sEnd,
+	const String sMesh =
+		(!IsTrail() ? "road." : "trl.") + sEnd,
 		sMeshW = sMesh + "W", sMeshC = sMesh + "C", sMeshB = sMesh + "B";
 	const int lod = DL.lod;
 
@@ -674,12 +676,12 @@ void SplineRoad::createSeg_Meshes(
 		auto it = rs.road[lod].it;
 		// sr = AddMesh(mesh, sMesh, aabox, &it, &node, "."+sEnd);
 		it->setRenderQueueGroup(  // ?
-			IsTrail() ? /*RQG_RoadBlend :*/ RQG_Hud1 :
+			//IsTrail() ? RQG_RoadBlend /*: RQG_Hud1*/ :
 			pipeGlass || IsRiver() ? RQG_PipeGlass : RQG_Road);
 		if (IsTrail())
 			it->setVisibilityFlags(RV_Hud);
 
-		if (bCastShadow && !DS.onTer && !IsRiver())
+		if (bCastShadow && !DS.onTer && !IsRiver() && !IsTrail())
 			it->setCastShadows(true);
 	}
 #if 0  // fixme

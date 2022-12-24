@@ -6,18 +6,14 @@
 #include "SceneXml.h"
 #include "Axes.h"
 #include "CScene.h"
-
 // #include "SplineBase.h"
-#include <OgreCommon.h>
-#include <OgreVector3.h>
 #include "Grass.h"
-
 #include "GuiCom.h"
 #include "CGame.h"
 #include "CHud.h"
 #include "CGui.h"
 #include "game.h"
-// #include "PaceNotes.h"
+#include "PaceNotes.h"
 #include "SoundMgr.h"
 #include "SoundBaseMgr.h"
 #include "FollowCamera.h"
@@ -25,8 +21,8 @@
 // #include "SplitScreen.h"
 // #include "GraphView.h"
 //; #include "gameclient.hpp"
-// #include <MyGUI_OgrePlatform.h>
-// #include <MyGUI_PointerManager.h>
+#include <OgreCommon.h>
+#include <OgreVector3.h>
 #include <OgreSceneManager.h>
 #include <OgreParticleSystem.h>
 #include <OgreResourceGroupManager.h>
@@ -34,7 +30,6 @@
 #include <OgreMaterial.h>
 #include <OgreMaterialManager.h>
 #include <OgreTextureGpuManager.h>
-
 #include <MyGUI_TextBox.h>
 #include <MyGUI_Window.h>
 #include "MessageBox.h"
@@ -831,15 +826,15 @@ void App::CreateRoads()
 
 
 	//  pace ~ ~
-	// scn->DestroyPace();
-	//LogO("->-- DestroyTrail");
-	//scn->DestroyTrail();
-
-	/*if (!bHideHudPace)
+	LogO("->-- DestroyTrail");
+	scn->DestroyTrail();
+	/**
+	scn->DestroyPace();
+	if (!bHideHudPace)
 	{
 		scn->pace = new PaceNotes(pSet);
 		scn->pace->Setup(mSceneMgr, cam, scn->terrain, gui->mGui, mWindow);
-	}*/
+	}/**/
 
 
 	//  after road load we have iChk1 so set it for carModels
@@ -862,13 +857,13 @@ void App::CreateRoads()
 	
 
 	//  pace ~ ~
-	/*if (scn->pace)
+	/**if (scn->pace)
 	{
 		road->RebuildRoadPace();  //todo: load only..
 		scn->pace->Rebuild(road, scn->sc, pSet->game.trackreverse);
 	}*/
 
-	CreateTrail(cam);	
+	CreateTrail(cam);
 }
 
 
@@ -884,7 +879,7 @@ void App::CreateRoadsInt()
 	if (StringUtil::startsWith(fname,"road"))
 	{
 		int id = scn->roads.size();
-		LogO("~~~ Creating road " + toStr(id) + " from: " + fname);
+		LogO("~~~~ Creating road " + toStr(id) + " from: " + fname);
 		scn->road = new SplineRoad(pGame);
 		scn->road->Setup("", 0.7, scn->terrain, mSceneMgr, cam, id);
 		scn->road->LoadFile(path + fname);
@@ -902,7 +897,7 @@ void App::CreateRoadsInt()
 void App::CreateTrail(Camera* cam)
 {
 	// if (!pSet->trail_show)
-		return;  // fixme crash in replay--
+		// return;  // fixme crash in replay--
 	if (scn->trail)
 		scn->DestroyTrail();
 
@@ -1011,5 +1006,5 @@ void App::CreateTrail(Camera* cam)
 	scn->trail = tr;
 	bool vis = !pSet->trail_show || bHideHudTrail;
 	tr->SetVisTrail(!vis);
-	tr->SetVisTrail(false);
+	// tr->SetVisTrail(false);
 }
