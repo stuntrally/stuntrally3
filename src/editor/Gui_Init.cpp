@@ -546,7 +546,7 @@ void CGui::InitGui()
 	//------------------------------------------------------------------------------------------------------------
 
 	string sData = PATHMANAGER::Data();
-	String sMat = sData +"/materials/scene/";  // path
+	String sMat = sData +"/materials/Pbs/";  // path
 
 	
 	//---------------------  Game, Reverbs  ---------------------
@@ -699,10 +699,10 @@ void CGui::InitGui()
 	ComboBoxPtr cmbTwk;
 	Cmb(cmbTwk, "TweakMtr", comboTweakMtr);
 
-	GetMaterialsMat(sData +"/materials/water.mat");
-	GetMaterialsMat(sMat+"pipe.mat",false);
-	GetMaterialsMat(sMat+"road.mat",false);
-	GetMaterialsMat(sMat+"objects_static.mat",false);
+	GetMaterialsMat(sMat+"water.material");
+	GetMaterialsMat(sMat+"pipe.material",false);
+	GetMaterialsMat(sMat+"road.material",false);
+	GetMaterialsMat(sMat+"objects_static.material",false);
 
 	cmbTwk->addItem("");
 	for (u=0; u < vsMaterials.size(); ++u)

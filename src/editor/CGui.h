@@ -395,6 +395,6 @@ public:
 	bool Copy(Ogre::String file, Ogre::String to);
 
 	std::vector<Ogre::String> vsMaterials;
-	void GetMaterials(   Ogre::String filename, bool clear=true, Ogre::String type="material");  // ogre resource
-	void GetMaterialsMat(Ogre::String filename, bool clear=true, Ogre::String type="material");  // direct path+file
+	void GetMaterials(   Ogre::String filename, bool clear=true, Ogre::String type="hlms");  // ogre resource
+	void GetMaterialsMat(Ogre::String filename, bool clear=true, Ogre::String type="hlms");  // direct path+file
 };

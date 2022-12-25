@@ -19,7 +19,7 @@ Dependencies/*
 
 #  data
 *_tag.xml
-config
+#config
 #hud
 #gui
 tracks
@@ -27,7 +27,6 @@ cars
 #objects
 terrain
 #Media
-*.mat
 
 .DS_Store
 iOSDependencies
