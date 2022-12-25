@@ -21,9 +21,6 @@ using namespace std;
 using namespace Ogre;
 using namespace MyGUI;
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wswitch"
-
 #define key(a)  SDL_SCANCODE_##a
 
 
@@ -66,6 +63,7 @@ void App::keyReleased( const SDL_KeyboardEvent &arg )
 		GpuProgramManager::getSingleton().clearMicrocodeCache();
 		hlms->reloadFrom( hlms->getDataFolder() );
 	}   break;*/
+	default:  break;
 	}
 
 	if (mGui && (isFocGui || isTweak()))
@@ -109,6 +107,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	case key(KP_MINUS):     mKeys[1] = 1;  break;
 	case key(KP_MULTIPLY):  mKeys[2] = 1;  break;
 	case key(KP_DIVIDE):    mKeys[3] = 1;  break;
+	default:  break;
 	}
 
 
@@ -135,6 +134,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			case Menu_Options:  pSet->iMenu = MN_Options;  break;
 			}
 			gui->toggleGui(false);  return;
+		default:  break;
 	}	}
 
 	//  Race menu keys  ----
@@ -165,6 +165,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			case Race_Back:      pSet->iMenu = MN1_Main;  break;
 			}
 			gui->toggleGui(false);  return;
+		default:  break;
 	}	}
 
 
@@ -220,6 +221,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			case key(T):	gui->GuiShortcut(MN_Options, TABo_Settings);	return;  // T Settings
 			case key(O):	gui->GuiShortcut(MN_Options, TABo_Sound);	return;  // O Sound
 			case key(K):	gui->GuiShortcut(MN_Options, TABo_Tweak);  return;  // K Tweak
+			default:  break;
 		}
 	
 	//>--  dev shortcuts, alt-shift - start test tracks
@@ -241,6 +243,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 			case key(X):  t = "Test8-Objects";  break;		case key(C):  t = "TestC6-Temp";  break;
 			case key(V):  t = "TestC10-Pace";  break;
+			default:  break;
 		} 
 		if (!t.empty())
 		{
@@ -257,6 +260,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	switch (skey)
 	{
 		case key(Z):  gui->TweakToggle();   return;
+		default:  break;
 	}
 
 	///  ⚫📉 Tire edit
@@ -280,6 +284,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 			case key(PAGEDOWN):  case key(KP_3):   // next val
 				iCL = (iCL+1)%iCnt;  iUpdTireGr=1;  return;
+			default:  break;
 		}
 	}
 
@@ -464,6 +469,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 						gcom->imgPrv[2]->setVisible(true);  break;
 				}	}
 				break;
+			default:  break;
 		}
 	}
 
@@ -475,7 +481,6 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	}
 }
 #undef key
-#pragma GCC diagnostic pop
 
 
 //----------------------------------------------------------------------------------------

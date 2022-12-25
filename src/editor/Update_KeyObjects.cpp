@@ -12,12 +12,12 @@
 #include "CGui.h"
 #include "Road.h"
 #include "pathmanager.h"
-#include <OgreTerrain.h>
+// #include <OgreTerrain.h>
 #include <OgreSceneNode.h>
-#include <OgreRenderTexture.h>
-#include <OgreEntity.h>
-#include "../sdl4ogre/sdlinputwrapper.hpp"
-#include "../sdl4ogre/sdlcursormanager.hpp"
+// #include <OgreRenderTexture.h>
+// #include <OgreEntity.h>
+// #include "../sdl4ogre/sdlinputwrapper.hpp"
+// #include "../sdl4ogre/sdlcursormanager.hpp"
 using namespace MyGUI;
 using namespace Ogre;
 
@@ -51,6 +51,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 				iFlCur = scn->sc->fluids.size()-1;
 				bRecreateFluids = true;
 			}	break;
+			default:  break;
 		}
 		if (fls > 0)
 		switch (skey)
@@ -91,6 +92,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 				fb.name = dfl[fb.id].name;
 				bRecreateFluids = true;
 			}	break;
+			default:  break;
 		}
 	}
 
@@ -160,6 +162,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 
 				UpdObjSel();
 				break;
+			default:  break;
 		}
 		::Object* o = iObjCur == -1 ? &objNew :
 					((iObjCur >= 0 && objs > 0 && iObjCur < objs) ? &scn->sc->objects[iObjCur] : 0);
@@ -182,7 +185,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 			case key(KP_5):
 				if (iObjCur >= 0 && objs > 0)
 				{	::Object& o = scn->sc->objects[iObjCur];
-					mSceneMgr->destroyEntity(o.ent);
+					mSceneMgr->destroyItem(o.it);
 					mSceneMgr->destroySceneNode(o.nd);
 					
 					if (objs == 1)	scn->sc->objects.clear();
@@ -223,6 +226,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 					o->scale = Vector3::UNIT_SCALE * (ctrl ? 0.5f : 1.f);
 					o->nd->setScale(o->scale);  UpdObjPick();
 				}	break;
+			default:  break;
 		}
 	}
 
@@ -269,6 +273,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 				iEmtCur = std::max(0, std::min(iEmtCur, (int)scn->sc->emitters.size()-1));
 				bRecreateEmitters = true;
 				break;
+			default:  break;
 		}
 	}
 }

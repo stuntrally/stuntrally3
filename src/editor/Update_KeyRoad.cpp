@@ -22,6 +22,7 @@ void App::keyPressRoad(SDL_Scancode skey)
 		case key(2):  road->AddRoll( 1,angSnap,alt);  break;
 		case key(3):  road->AddYaw(-1,angSnap,alt);  break;
 		case key(4):  road->AddYaw( 1,angSnap,alt);  break;
+		default:  break;
 	}
 	int snap = 0;
 	switch (skey)
@@ -69,8 +70,8 @@ void App::keyPressRoad(SDL_Scancode skey)
 			else
 			{	road->newP.pos.x = road->posHit.x;
 				road->newP.pos.z = road->posHit.z;
-				if (!scn->sc->ter)
-					road->newP.pos.y = road->posHit.y;
+				// if (!scn->sc->ter)
+				road->newP.pos.y = road->posHit.y;
 				//road->newP.aType = AT_Both;
 				road->Insert(shift ? INS_Begin : ctrl ? INS_End : alt ? INS_CurPre : INS_Cur);
 			}	break;					  
@@ -140,6 +141,8 @@ void App::keyPressRoad(SDL_Scancode skey)
 				scn->road = scn->roads[scn->rdCur];
 				gui->SetGuiRoadFromXml();
 			}	break;
+
+		default:  break;
 	}
 	if (snap)
 	{	iSnap = (iSnap + (snap < 0 ? -1 + ciAngSnapsNum : 1)) % ciAngSnapsNum;  angSnap = crAngSnaps[iSnap];	}
