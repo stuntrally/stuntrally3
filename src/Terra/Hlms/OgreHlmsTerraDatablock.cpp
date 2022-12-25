@@ -26,8 +26,8 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 
-#include "Terra/Hlms/OgreHlmsTerraDatablock.h"
-#include "Terra/Hlms/OgreHlmsTerra.h"
+#include "OgreHlmsTerraDatablock.h"
+#include "OgreHlmsTerra.h"
 #include <OgreHlmsManager.h>
 #include <OgreTextureGpu.h>
 #include <OgreTextureGpuManager.h>

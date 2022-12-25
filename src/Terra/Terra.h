@@ -33,7 +33,7 @@ THE SOFTWARE.
 #include <OgreMovableObject.h>
 #include <OgreShaderParams.h>
 
-#include "Terra/TerrainCell.h"
+#include "TerrainCell.h"
 
 class Scene;
 

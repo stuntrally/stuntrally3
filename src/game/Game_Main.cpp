@@ -30,20 +30,20 @@ THE SOFTWARE.
 #include "CGame.h"
 
 #include <OgreRoot.h>
-#include "Compositor/OgreCompositorManager2.h"
+#include <Compositor/OgreCompositorManager2.h>
 #include <OgreConfigFile.h>
 #include <OgreWindow.h>
 
-#include "Compositor/OgreCompositorWorkspace.h"
+#include <Compositor/OgreCompositorWorkspace.h>
 #include <OgreArchiveManager.h>
 #include <OgreHlmsManager.h>
-#include "Terra/Hlms/OgreHlmsTerra.h"
-#include "Terra/TerraWorkspaceListener.h"
+#include "OgreHlmsTerra.h"
+#include "TerraWorkspaceListener.h"
 
 //Declares WinMain / main
 #include "MainEntryPointHelper.h"
-#include "System/Android/AndroidSystems.h"
-#include "System/MainEntryPoints.h"
+#include "AndroidSystems.h"
+#include "MainEntryPoints.h"
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE || OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
 	#include "OSX/macUtils.h"

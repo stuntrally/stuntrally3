@@ -24,7 +24,7 @@
 #include <OgreRoot.h>
 #include <OgreCamera.h>
 #include <OgreWindow.h>
-#include "Terra/Terra.h"
+#include "Terra.h"
 #include <OgreAtmosphere2Npr.h>
 
 #include "ICSInputControlSystem.h"

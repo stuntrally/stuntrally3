@@ -4,9 +4,9 @@
 #include <OgreVector4.h>
 #include "GraphicsSystem.h"
 
-#include "Terra/Hlms/OgreHlmsTerra.h"
-#include "Terra/Hlms/PbsListener/OgreHlmsPbsTerraShadows.h"
-#include "Terra/Terra.h"
+#include "OgreHlmsTerra.h"
+#include "OgreHlmsPbsTerraShadows.h"
+#include "Terra.h"
 
 #include <OgreHlmsTerraDatablock.h>
 #include <OgreTextureGpuManager.h>
@@ -118,6 +118,9 @@ void App::CreateTerrain()
 		tblock->setDetailMapOffsetScale( i, Vector4(0,0, sc,sc) );
 		tblock->setMetalness(i, 0.2);
 		tblock->setRoughness(i, 0.5);
+
+		// tblock->setTexture( TERRA_REFLECTION, tex );  // todo: ?
+		// tblock->setEmissive(0.5);  // todo:
 	}
 	// const HlmsSamplerblock *sam = tblock->getSamplerblock( TERRA_DETAIL0 );
 	// sam->setTexture()

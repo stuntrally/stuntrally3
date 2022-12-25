@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "common/Def_Str.h"
+#include "Def_Str.h"
 #include "CGame.h"
 #include "CInput.h"
 #include "ICSInputControlSystem.h"

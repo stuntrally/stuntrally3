@@ -29,12 +29,12 @@ THE SOFTWARE.
 #ifndef _OgreHlmsJsonTerra_H_
 #define _OgreHlmsJsonTerra_H_
 
-#include "Terra/Hlms/OgreHlmsTerraPrerequisites.h"
+#include "OgreHlmsTerraPrerequisites.h"
 
 #include <OgreHlmsJson.h>
 
 #if !OGRE_NO_JSON
-#    include "Terra/Hlms/OgreHlmsTerraDatablock.h"
+#    include "OgreHlmsTerraDatablock.h"
 
 #include <OgreHeaderPrefix.h>
 

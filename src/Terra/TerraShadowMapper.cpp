@@ -26,22 +26,22 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 
-#include "Terra/TerraShadowMapper.h"
+#include "TerraShadowMapper.h"
 
-#include "Terra/Terra.h"
+#include "Terra.h"
 
 #include <OgreTextureGpuManager.h>
 
 #include <OgreSceneManager.h>
-#include "Compositor/OgreCompositorManager2.h"
-#include "Compositor/OgreCompositorWorkspace.h"
-#include "Compositor/OgreCompositorChannel.h"
+#include <Compositor/OgreCompositorManager2.h>
+#include <Compositor/OgreCompositorWorkspace.h>
+#include <Compositor/OgreCompositorChannel.h>
 
 #include <OgreHlmsManager.h>
 #include <OgreHlmsCompute.h>
 #include <OgreHlmsComputeJob.h>
-#include "Vao/OgreConstBufferPacked.h"
-#include "Vao/OgreVaoManager.h"
+#include <Vao/OgreConstBufferPacked.h>
+#include <Vao/OgreVaoManager.h>
 #include <OgreRoot.h>
 
 #include <OgreLwString.h>

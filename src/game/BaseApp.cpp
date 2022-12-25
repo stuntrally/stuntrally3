@@ -228,7 +228,7 @@ void BaseApp::updMouse()
 
 	auto* inp = mGraphicsSystem->getInputHandler();
 	inp->setGrabMousePointer( pSet->mouse_capture && !gui );
-	inp->setMouseRelative( !gui );
+	inp->setMouseRelative( pSet->mouse_capture && !gui );
 	// inp->setMouseVisible( pSet->mouse_capture );
 	// mInputWrapper->setAllowGrab(pSet->mouse_capture);
 }

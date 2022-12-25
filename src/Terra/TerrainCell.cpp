@@ -26,11 +26,11 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 
-#include "Terra/TerrainCell.h"
-#include "Terra/Terra.h"
+#include "TerrainCell.h"
+#include "Terra.h"
 
-#include "Vao/OgreVaoManager.h"
-#include "Vao/OgreVertexArrayObject.h"
+#include <Vao/OgreVaoManager.h>
+#include <Vao/OgreVertexArrayObject.h>
 
 namespace Ogre
 {
@@ -66,6 +66,7 @@ namespace Ogre
 		assert( mVaoPerLod[VpNormal].empty() && "Already initialized!" );
 		m_vaoManager = vaoManager;
 		m_useSkirts = useSkirts;
+		//m_useSkirts = 0;  //** no skirts
 
 		//Setup bufferless vao
 		VertexBufferPackedVec vertexBuffers;

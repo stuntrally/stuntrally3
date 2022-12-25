@@ -26,10 +26,10 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 
-#include "Terra/TerraWorkspaceListener.h"
+#include "TerraWorkspaceListener.h"
 
-#include "Terra/Hlms/OgreHlmsTerra.h"
-#include "Terra/Terra.h"
+#include "OgreHlmsTerra.h"
+#include "Terra.h"
 
 #include "Compositor/OgreCompositorShadowNode.h"
 #include "Compositor/Pass/OgreCompositorPass.h"

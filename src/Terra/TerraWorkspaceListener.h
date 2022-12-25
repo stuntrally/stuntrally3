@@ -29,9 +29,9 @@ THE SOFTWARE.
 #ifndef _OgreTerraWorkspaceListener_H_
 #define _OgreTerraWorkspaceListener_H_
 
-#include "Terra/Hlms/OgreHlmsTerraPrerequisites.h"
+#include "OgreHlmsTerraPrerequisites.h"
 
-#include "Compositor/OgreCompositorWorkspaceListener.h"
+#include <Compositor/OgreCompositorWorkspaceListener.h>
 
 namespace Ogre
 {

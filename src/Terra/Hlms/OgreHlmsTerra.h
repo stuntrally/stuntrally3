@@ -28,7 +28,7 @@ THE SOFTWARE.
 #ifndef _OgreHlmsTerra_H_
 #define _OgreHlmsTerra_H_
 
-#include "Terra/Hlms/OgreHlmsTerraPrerequisites.h"
+#include "OgreHlmsTerraPrerequisites.h"
 
 #include <OgreHlmsPbs.h>
 

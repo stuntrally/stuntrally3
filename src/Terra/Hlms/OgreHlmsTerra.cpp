@@ -26,14 +26,14 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 
-#include "Terra/Hlms/OgreHlmsTerra.h"
-#include "Terra/Hlms/OgreHlmsTerraDatablock.h"
+#include "OgreHlmsTerra.h"
+#include "OgreHlmsTerraDatablock.h"
 
-#include "CommandBuffer/OgreCbShaderBuffer.h"
-#include "CommandBuffer/OgreCbTexture.h"
-#include "CommandBuffer/OgreCommandBuffer.h"
-#include "Compositor/OgreCompositorShadowNode.h"
-#include "Cubemaps/OgreParallaxCorrectedCubemap.h"
+#include <CommandBuffer/OgreCbShaderBuffer.h>
+#include <CommandBuffer/OgreCbTexture.h>
+#include <CommandBuffer/OgreCommandBuffer.h>
+#include <Compositor/OgreCompositorShadowNode.h>
+#include <Cubemaps/OgreParallaxCorrectedCubemap.h>
 #include <OgreAtmosphereComponent.h>
 #include <OgreCamera.h>
 #include <OgreForward3D.h>
@@ -46,18 +46,18 @@ THE SOFTWARE.
 #include <OgreRenderQueue.h>
 #include <OgreSceneManager.h>
 #include <OgreViewport.h>
-#include "Vao/OgreConstBufferPacked.h"
-#include "Vao/OgreVaoManager.h"
+#include <Vao/OgreConstBufferPacked.h>
+#include <Vao/OgreVaoManager.h>
 
 #if !OGRE_NO_JSON
-	#include "Terra/Hlms/OgreHlmsJsonTerra.h"
+	#include "OgreHlmsJsonTerra.h"
 #endif
 
 #ifdef OGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS
 	#include <OgrePlanarReflections.h>
 #endif
 
-#include "Terra/Terra.h"
+#include "Terra.h"
 
 namespace Ogre
 {
@@ -290,6 +290,7 @@ namespace Ogre
 		setProperty( PbsProperty::ReceiveShadows, 1 );
 
 		setProperty( "triplanar", 1 );
+		// setProperty( "emissive", 1 );
 
 		uint32 brdf = datablock->getBrdf();
 		if( (brdf & TerraBrdf::BRDF_MASK) == TerraBrdf::Default )
