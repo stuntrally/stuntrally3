@@ -18,7 +18,7 @@
 // #include "MultiList2.h"
 // #include "GraphView.h"
 
-// #include <OgreRenderWindow.h>
+// #include <OgreWindow.h>
 #include <OgreSceneNode.h>
 #include <OgreMaterialManager.h>
 #include <OgrePass.h>

@@ -7,9 +7,9 @@
 	#include "CApp.h"
 #else
 	#include "CGame.h"
+	#include "game.h"
 #endif
 #include "CScene.h"
-#include "game.h"
 #include "GraphicsSystem.h"
 
 #include <OgreCommon.h>
@@ -57,7 +57,12 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 
     //-----------------------------------------------------------------------------------
     bool partialMesh = false;
-	Root *root = pGame->app->mGraphicsSystem->getRoot();
+	Root *root =
+	#ifdef SR_EDITOR
+		pApp->mGraphicsSystem->getRoot();
+	#else
+		pGame->app->mGraphicsSystem->getRoot();
+	#endif
 	RenderSystem *renderSystem = root->getRenderSystem();
 	VaoManager *vaoManager = renderSystem->getVaoManager();
 
@@ -211,7 +216,11 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 
 	//  wrap tex  ----
 	if (!trail)
+	#ifdef SR_EDITOR
+		pApp->scn->SetTexWrap(it);
+	#else
 		pGame->app->scn->SetTexWrap(it);
+	#endif
 
 	//  replace alpha  ----
 	if (alpha)

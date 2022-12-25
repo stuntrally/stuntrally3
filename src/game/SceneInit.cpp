@@ -18,9 +18,11 @@
 #include "SoundBaseMgr.h"
 #include "FollowCamera.h"
 #include "CarModel.h"
+#include "BtOgreExtras.h"
 // #include "SplitScreen.h"
 // #include "GraphView.h"
 //; #include "gameclient.hpp"
+
 #include <OgreCommon.h>
 #include <OgreVector3.h>
 #include <OgreSceneManager.h>

@@ -15,7 +15,7 @@
 #include "TracksXml.h"
 
 // #include <OgreRoot.h>
-// #include <OgreRenderWindow.h>
+// #include <OgreWindow.h>
 #include <OgreOverlay.h>
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>
