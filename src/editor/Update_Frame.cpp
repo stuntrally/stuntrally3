@@ -1,25 +1,22 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/Gui_Def.h"
-#include "../ogre/common/GuiCom.h"
-#include "../ogre/common/CScene.h"
+#include "Def_Str.h"
+#include "Gui_Def.h"
+#include "GuiCom.h"
+#include "CScene.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../road/Road.h"
-#include "../road/PaceNotes.h"
-#include "../paged-geom/PagedGeometry.h"
-#include "../ogre/common/MultiList2.h"
-#include "../ogre/common/RenderBoxScene.h"
+#include "Road.h"
+#include "PaceNotes.h"
+#include "MultiList2.h"
+#include "RenderBoxScene.h"
+
 #include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
 //#include <LinearMath/btDefaultMotionState.h>
 //#include <BulletDynamics/Dynamics/btRigidBody.h>
-#include "../shiny/Main/Factory.hpp"
-#include "../sdl4ogre/sdlinputwrapper.hpp"
-#include "../paged-geom/GrassLoader.h"
 #include <MyGUI.h>
-#include <OgreTerrain.h>
-#include <OgreTerrainGroup.h>
+// #include <OgreTerrain.h>
+// #include <OgreTerrainGroup.h>
 #include <OgreParticleEmitter.h>
 #include <OgreParticleSystem.h>
 #include <OgreOverlay.h>

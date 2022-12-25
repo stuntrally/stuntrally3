@@ -3,7 +3,11 @@
 #include "RenderConst.h"
 #include "Road.h"
 
-#include "CGame.h"
+#ifdef SR_EDITOR
+	#include "CApp.h"
+#else
+	#include "CGame.h"
+#endif
 #include "CScene.h"
 #include "game.h"
 #include "GraphicsSystem.h"

@@ -235,7 +235,7 @@ void CarModel::Create()
 
 	///()  grass sphere test
 	/*#if 0
-	Entity* es = mSceneMgr->createEntity(sCarI+"s", "sphere.mesh");  ToDel(es);
+	Entity* es = mSceneMgr->createItem("sphere.mesh");  ToDel(es);
 	es->setRenderQueueGroup(RQG_CarGhost);
 	MaterialPtr mtr = MaterialManager::getSingleton().getByName("pipeGlass");
 	es->setMaterial(mtr);

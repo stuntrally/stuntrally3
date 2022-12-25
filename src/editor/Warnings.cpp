@@ -1,12 +1,12 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/data/SceneXml.h"
-#include "../ogre/common/CScene.h"
-#include "../ogre/common/Axes.h"
+#include "Def_Str.h"
+#include "SceneXml.h"
+#include "CScene.h"
+#include "Axes.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../road/Road.h"
+#include "Road.h"
 #include <OgreTerrain.h>
 #include <MyGUI_TextBox.h>
 #include <MyGUI_ImageBox.h>

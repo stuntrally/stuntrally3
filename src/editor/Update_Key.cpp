@@ -1,12 +1,12 @@
 #include "pch.h"
-#include "../ogre/common/Gui_Def.h"
-#include "../ogre/common/GuiCom.h"
+#include "Gui_Def.h"
+#include "GuiCom.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
 #include "CScene.h"
-#include "../road/Road.h"
-#include "../vdrift/pathmanager.h"
+#include "Road.h"
+#include "pathmanager.h"
 #include <OgreRenderTexture.h>
 #include <MyGUI.h>
 #include "../sdl4ogre/sdlinputwrapper.hpp"

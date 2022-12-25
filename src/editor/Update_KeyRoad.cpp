@@ -1,9 +1,9 @@
 #include "pch.h"
-#include "../ogre/common/CScene.h"
+#include "CScene.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../road/Road.h"
+#include "Road.h"
 using namespace Ogre;
 
 
