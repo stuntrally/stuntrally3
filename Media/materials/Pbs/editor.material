@@ -1,0 +1,150 @@
+hlms ed_base pbs
+{
+	// diffuse_map mud.png
+	// alpha_rejection greater 64
+	// depth_write off
+	// depth_check off
+	// scene_blend alpha_blend
+	// cull_mode none
+	// alpha_rejection none
+	workflow metallic
+	fresnel_coeff 0.1 0.1 0.1
+	roughness 0.1
+	metalness 0.8
+}
+
+//  editor spheres
+//------------------------------------------------------------
+hlms sphere_norm pbs : ed_base
+{
+	diffuse  0.35 0.6 0.85
+	specular 0.0 0.2 0.4
+	depth_bias 31
+    // receives_shadows false
+}
+
+hlms sphere_sel pbs : ed_base
+{
+	diffuse  0.8 0.4 0.0
+	specular 0.3 0.2 0.1
+	depth_bias 31
+}
+
+hlms sphere_chosen pbs : ed_base
+{
+	diffuse  0.4 0.4 0.8
+	specular 0.25 0.3 0.4
+	depth_bias 31
+}
+
+hlms sphere_rot pbs : ed_base
+{
+	diffuse  0.8 0.3 0.0
+	specular 0.4 0.2 0.1
+	depth_bias 3
+    receives_shadows true
+}
+
+hlms sphere_hit pbs : ed_base
+{
+	diffuse  0.3 0.6 0.0
+	specular 0.25 0.3 0.25
+	depth_bias 3
+}
+
+hlms sphere_check pbs : ed_base
+{
+	diffuse  0.5 0.5 0.7
+	specular 0.5 0.5 0.7 6
+	//lightingAlpha 0.5 0.25 0.2 0
+    depth_write off
+	depth_bias 6
+	// transparent true
+	scene_blend alpha_blend
+    two_sided true
+}
+
+hlms start_box pbs : ed_base
+{
+	// parent sphere_check
+	diffuse  0.1 0.1 0.15
+	specular 0.1 0.1 0.15
+}
+hlms end_box pbs : ed_base
+{
+	// parent sphere_check
+	diffuse  0.15 0.1 0.2
+	specular 0.12 0.1 0.15
+}
+
+//hlms body_realtime pbs : ed_base
+//{
+//	diffuse_map car_body_ed.png
+//	diffuse  0.3 0.3 0.3
+//	specular 0.7 0.7 0.7
+//	cull_mode none
+//}
+
+
+//  boxes
+//------------------------------------------------------------
+hlms fluid_box pbs : ed_base
+{
+	diffuse  0.3 0.5 0.7
+	specular 0.1 0.1 0.1
+	// transparent true
+	scene_blend alpha_blend
+	cull_mode none
+}
+
+hlms object_box pbs : ed_base
+{
+	diffuse  0.9 0.9 0.9
+	specular 0.1 0.1 0.1
+}
+
+hlms emitter_box pbs : ed_base
+{
+	diffuse  0.9 0.9 0.4
+	specular 0.1 0.1 0.0
+}
+
+
+//  terrain circle
+//------------------------------------------------------------
+hlms circle_deform pbs : ed_base
+{
+	diffuse_map ter_deform.png
+	diffuse  0.3 1.0 0.1
+	emissive 0.15 0.5 0.05
+	specular 0.25 0.3 0.25
+	depth_bias 3
+    // fog_en false
+}
+
+hlms circle_filter pbs : ed_base
+{
+	diffuse_map ter_smooth.png
+	diffuse  0.5 0.8 1.0
+	emissive 0.25 0.4 0.5
+	specular 0.1 0.2 0.3
+	depth_bias 3
+}
+
+hlms circle_smooth pbs : ed_base
+{
+	diffuse_map ter_smooth.png
+	diffuse 0.2 1.0 0.7
+	emissive 0.1 0.5 0.35
+	specular 0.15 0.3 0.25
+	depth_bias 3
+}
+
+hlms circle_height pbs : ed_base
+{
+	diffuse_map ter_deform.png
+	diffuse 0.6 1.0 0.6
+	emissive 0.3 0.5 0.3
+	specular 0.25 0.3 0.25
+	depth_bias 3
+}

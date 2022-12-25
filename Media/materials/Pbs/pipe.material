@@ -18,7 +18,7 @@ hlms pipe_base pbs  // not glass
     // specular 1 1 1 //24
     depth_bias 3
 	cull_mode none
-	twoside true
+	two_sided true
 
 	workflow metallic
 	fresnel_coeff 0.01
@@ -331,7 +331,7 @@ hlms pipe_wall_base pbs //: pipe_base
 {
 	depth_bias 3
 	cull_mode none
-	twoside true
+	two_sided true
 	// envMap ReflectionCube
 	// env_map true
 	// refl_amount 0.1

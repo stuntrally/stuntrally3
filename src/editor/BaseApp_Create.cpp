@@ -461,7 +461,7 @@ void BaseApp::baseInitGui()
 	// MyGUI::ResourceManager::getInstance().load("core.xml");
 
 	// PointerManager::getInstance().eventChangeMousePointer += newDelegate(this, &BaseApp::onCursorChange);
-	PointerManager::getInstance().setVisible(false);
+	//; PointerManager::getInstance().setVisible(false);
 	
 	//------------------------ lang
 	/*if (pSet->language == "")  // autodetect

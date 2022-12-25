@@ -161,7 +161,7 @@ hlms trailRoad unlit
 	// depth_check off
 	//depth_write off
 	cull_mode none
-	// twoside true
+	// two_sided true
 	// scene_blend alpha_blend
 
 	// diffuse 1 1 1

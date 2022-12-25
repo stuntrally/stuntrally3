@@ -9,8 +9,9 @@
 	// emissive    0 0 0
 
 	//Note: avoid values extremely close to zero  (0; 1] is physically correct.
-	// roughness	0.4
-	
+	// roughness 0.2
+	// metalness 0.2
+
 	// fresnel		1.33
 	//Fresnel as IOR (index of refraction), seperate per RGB component
 	//fresnel	1.33 1.33 1.2
@@ -18,28 +19,13 @@
 	//Directly set the "F0" term, instead of using IOR
 	//fresnel_coeff	0.1
 	//fresnel_coeff	0.1 0.1 0.2
+	//workflow specular_ogre specular_fresnel metallic
 	
 	//diffuse_map	Rocks_Diffuse.tga
 	//normal_map	Rocks_Normal.tga
 	//roughness_map	Rocks_Spec.tga
+	//metalness_map  grass_ground_s.jpg
 	//specular_map	Rocks_Diffuse.tga
 
 	//detail_weight_map	nm_up.png
 // }
-
-
-//  -----------------
-//hlms Ground pbs
-//{
-	//diffuse_map grass_ground_d.jpg
-	//workflow specular_ogre specular_fresnel metallic
-
-	// normal_map   grass_ground_n.jpg
-	// roughness_map  grass_ground_h.jpg
-	// metalness_map  grass_ground_s.jpg
-	// fresnel_coeff 0.01
-
-	//diffuse		0.7 0.7 0.7
-	// roughness 0.2
-	// metalness 0.2
-//}

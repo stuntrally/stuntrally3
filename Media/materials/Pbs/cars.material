@@ -738,7 +738,7 @@ hlms U8_body pbs : car_body
 	specular_map  U8_refl.png
 	metalness_map U8_refl.png
 	cull_mode none
-    //twoside true
+    //two_sided true
 	specular  0.4 0.5 0.6
 }
 hlms U8_glass pbs : car_glass

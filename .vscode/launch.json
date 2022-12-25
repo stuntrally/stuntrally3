@@ -9,14 +9,14 @@
 			"request": "launch",
 			"name": "game Debug lldb",
 			"args": [],
-			"program": "${workspaceFolder}/bin/Debug/StuntRally3",
+			"program": "${workspaceFolder}/bin/Debug/stuntrally3",
 			"cwd": "${workspaceFolder}/bin/Debug/"
 		},
 		// {
 		// 	"type": "gdb",
 		// 	"request": "launch",
 		// 	"name": "Debug gdb",
-		// 	"target": "${workspaceFolder}/bin/Debug/StuntRally3",
+		// 	"target": "${workspaceFolder}/bin/Debug/stuntrally3",
 		// 	"cwd": "${workspaceFolder}/bin/Debug/",
 		// 	"valuesFormatting": "parseText"
 		// },
@@ -25,7 +25,7 @@
 			"request": "launch",
 			"name": "game RelDeb lldb",
 			"args": [],
-			"program": "${workspaceFolder}/bin/RelWithDebInfo/StuntRally3",
+			"program": "${workspaceFolder}/bin/RelWithDebInfo/stuntrally3",
 			"cwd": "${workspaceFolder}/bin/RelWithDebInfo/"
 		},
 		{
