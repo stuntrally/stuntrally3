@@ -1,7 +1,11 @@
 #include "pch.h"
+#include "Def_Str.h"
 #include "RenderConst.h"
-#include "CGame.h"
-
+#ifndef SR_EDITOR
+	#include "CGame.h"
+#else
+	#include "CApp.h"
+#endif
 #include "GraphicsSystem.h"
 #include <OgreLogManager.h>
 

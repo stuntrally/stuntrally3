@@ -84,10 +84,13 @@ bool App::frameEnded(const FrameEvent& evt)
 
 	//  track events
 	if (eTrkEvent != TE_None)
-	{	switch (eTrkEvent)  {
+	{	switch (eTrkEvent)
+		{
 			case TE_Load:	LoadTrackEv();  break;
 			case TE_Save:	SaveTrackEv();  break;
-			case TE_Update: UpdateTrackEv();  break;  }
+			case TE_Update: UpdateTrackEv();  break;
+			default:  break;
+		}
 		eTrkEvent = TE_None;
 	}
 	

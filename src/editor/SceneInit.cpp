@@ -100,6 +100,9 @@ void App::createScene01()  // once, init
 	gui->InitGui();
 	
 
+	mGraphicsSystem->mWorkspace = SetupCompositor();
+
+
 	///__  All  #if 0  in Release !!!
 
 	///  _Tool_ scene  ...................
@@ -126,7 +129,7 @@ void App::createScene01()  // once, init
 		
 
 	//  load
-	if (pSet->autostart)
+	// if (pSet->autostart)
 		LoadTrack();
 
 	// if (!pSet->autostart)
@@ -144,6 +147,11 @@ void App::createScene01()  // once, init
 void App::destroyScene()
 {
 	scn->destroyScene();
+
+	if (mGui)  {
+		mGui->shutdown();	delete mGui;	mGui = 0;  }
+	if (mPlatform)  {
+		mPlatform->shutdown();	delete mPlatform;	mPlatform = 0;  }
 }
 
 

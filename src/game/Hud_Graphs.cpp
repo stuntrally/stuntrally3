@@ -341,9 +341,7 @@ void App::CreateGraphs()
 			graphs.push_back(gv);
 		}	break;
 		
-
-	default:
-		break;
+	default:  break;
 	}
 
 	if (tireEdit)  // ⚫📉
@@ -439,8 +437,7 @@ void App::GraphsNewVals()				// Game
 		graphs[1]->AddVal(fLastFrameDT==0.f ? 1.f : (1.f/fLastFrameDT/60.f*0.5f));
 	}	break;
 	
-	default:
-		break;
+	default:  break;
 	}
 }
 
@@ -856,8 +853,8 @@ void CAR::GraphsNewVals(double dt)		 // CAR
 			delete[]ft;
 			tireEdit = true;
 		}
-	}
-	break;
+	}	break;
+	default:  break;
 	}
 
 	if (tireEdit)

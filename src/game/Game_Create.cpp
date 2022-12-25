@@ -146,14 +146,14 @@ void App::createScene01()
 	mGraphicsSystem->mWorkspace = SetupCompositor();
 
 
-	SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
-	SceneNode *rootNode = sceneManager->getRootSceneNode( SCENE_STATIC );
+	// SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
+	// SceneNode *rootNode = sceneManager->getRootSceneNode( SCENE_STATIC );
 
 	LogManager::getSingleton().setLogDetail(LoggingLevel::LL_BOREME);
 
-	LogO("---- createScene");
-	RenderSystem *renderSystem = mGraphicsSystem->getRoot()->getRenderSystem();
-	renderSystem->setMetricsRecordingEnabled( true );
+	// LogO("---- createScene");
+	RenderSystem *rs = mGraphicsSystem->getRoot()->getRenderSystem();
+	rs->setMetricsRecordingEnabled( true );
 
 
 	//  camera  ------------------------------------------------

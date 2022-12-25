@@ -139,6 +139,7 @@ void App::updateBrushPrv(bool first)
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
 			*p++ = bR;  *p++ = bG;  *p++ = bB;  *p++ = bG > 32 ? 255 : 0;
 		}	break;
+	default:  break;
 	}
 	pbuf->unlock();
 #endif
@@ -215,6 +216,7 @@ void App::updBrush()
 			float c = powf( fabs(d), fP);
 			mBrushData[a] = c;
 		}	}	break;
+	default:  break;
 	}
 	
 	//  filter brush kernel  ------
