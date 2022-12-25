@@ -4,11 +4,11 @@
 #include "GuiCom.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../ogre/common/CScene.h"
-#include "../vdrift/pathmanager.h"
+#include "CScene.h"
+#include "pathmanager.h"
 #include "settings.h"
 #include <OgreRoot.h>
-#include <OgreRenderWindow.h>
+#include <OgreWindow.h>
 #include <OgreOverlay.h>
 #include <MyGUI_Gui.h>
 #include <MyGUI_Widget.h>

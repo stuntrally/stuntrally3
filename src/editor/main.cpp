@@ -1,13 +1,13 @@
 #include "pch.h"
- //#include "vld.h" // mem leaks +
-#include "../ogre/common/Def_Str.h"
+#include "Def_Str.h"
 #include "settings.h"
 #include "CApp.h"
-#include "../vdrift/pathmanager.h"
+#include "pathmanager.h"
+
 #include <OgrePlatform.h>
 #include <OgreRoot.h>
 #include <locale.h>
-#include <boost/filesystem.hpp>
+#include <filesystem>
 using namespace std;
 
 
@@ -18,7 +18,7 @@ void LoadDefaultSet(SETTINGS* settings, string setFile)
 	settings->Save(setFile);
 }
 
-
+/*
 //  . . . . . . . . . .  MAIN  . . . . . . . . . .
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 	int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hPrev, LPTSTR lpCmdLine, int nCmdShow)
@@ -103,3 +103,4 @@ void LoadDefaultSet(SETTINGS* settings, string setFile)
 
 	return 0;
 }
+*/

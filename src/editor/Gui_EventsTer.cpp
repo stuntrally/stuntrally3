@@ -1,20 +1,20 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/Gui_Def.h"
+#include "Def_Str.h"
+#include "Gui_Def.h"
 #include "settings.h"
 #include "CGui.h"
 #include "CApp.h"
-#include "../ogre/common/GuiCom.h"
-#include "../ogre/common/CScene.h"
-#include "../ogre/common/data/CData.h"
-#include "../road/Road.h"
-#include "../ogre/common/Slider.h"
-#include "../ogre/common/MultiList2.h"
-#include "../vdrift/pathmanager.h"
+#include "GuiCom.h"
+#include "CScene.h"
+#include "CData.h"
+#include "Road.h"
+#include "Slider.h"
+#include "MultiList2.h"
+#include "pathmanager.h"
+
 #include <fstream>
 #include <MyGUI.h>
-#include <OgreRenderTexture.h>
-#include "../shiny/Main/Factory.hpp"
+// #include <OgreRenderTexture.h>
 using namespace MyGUI;
 using namespace Ogre;
 
@@ -143,15 +143,15 @@ void CGui::tabHmap(Tab, size_t)
 
 void CGui::slTerErrorNorm(SV*sv)
 {
-	scn->UpdTerErr();
+	// scn->UpdTerErr();
 }
 
 //  upd ter sh par
 void CGui::slTerPar(SV*sv)
 {
-	app->mFactory->setSharedParameter("ter_scaleNormal", sh::makeProperty<sh::FloatValue>(new sh::FloatValue(1.f / sc->td.normScale)));
-	app->mFactory->setSharedParameter("ter_specular_pow", sh::makeProperty<sh::FloatValue>(new sh::FloatValue(sc->td.specularPow)));
-	app->mFactory->setSharedParameter("ter_specular_pow_em", sh::makeProperty<sh::FloatValue>(new sh::FloatValue(sc->td.specularPowEm)));
+	// ter_scaleNormal      1.f / sc->td.normScale
+	// ter_specular_pow     sc->td.specularPow
+	// ter_specular_pow_em  sc->td.specularPowEm
 }
 
 //  - - - -  Hmap tools  - - - -
@@ -375,7 +375,7 @@ void CGui::slTerGen(SV*)
 //  debug
 void CGui::chkDebugBlend(Ck*)
 {
-	app->mFactory->setGlobalSetting("debug_blend", b2s(bDebugBlend));
+	// app->mFactory->setGlobalSetting("debug_blend", b2s(bDebugBlend));
 	dbgLclr->setVisible(bDebugBlend);
 }
 
@@ -425,9 +425,9 @@ void CGui::comboTexNorm(Cmb cmb, size_t val)
 void CGui::slTerLay(SV*)
 {
 	//app->bTerUpdBlend = true;
-	scn->UpdLayerPars();
-	if (scn->angleRTT.rnd)  scn->angleRTT.rnd->update();
-	if (scn->blendRTT.rnd)  scn->blendRTT.rnd->update();
+	//; scn->UpdLayerPars();
+	// if (scn->angleRTT.rnd)  scn->angleRTT.rnd->update();
+	// if (scn->blendRTT.rnd)  scn->blendRTT.rnd->update();
 }
 void CGui::chkTerLNOnly(Ck*)
 {

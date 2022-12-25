@@ -1,13 +1,13 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/Gui_Def.h"
-#include "../ogre/common/GuiCom.h"
-#include "../ogre/common/CScene.h"
+#include "Def_Str.h"
+#include "Gui_Def.h"
+#include "GuiCom.h"
+#include "CScene.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../road/Road.h"
-#include "../ogre/common/MessageBox/MessageBox.h"
+#include "Road.h"
+#include "MessageBox/MessageBox.h"
 using namespace MyGUI;
 using namespace Ogre;
 
@@ -137,7 +137,8 @@ void CGui::btnCopyRoad(WP)
 	scn->road->LoadFile(from + "/road.xml");  // todo: other roads cmb?
 
 	SetGuiFromXmls();	scn->road->Rebuild(true);
-	scn->UpdPSSMMaterials();	scn->road->UpdAllMarkers();
+	// scn->UpdPSSMMaterials();
+	scn->road->UpdAllMarkers();
 }
 
 //  copy Road pars
@@ -165,7 +166,8 @@ void CGui::btnCopyRoadPars(WP)
 
 	SetGuiFromXmls();
 	scn->road->Rebuild(true);
-	scn->UpdPSSMMaterials();	scn->road->UpdAllMarkers();
+	// scn->UpdPSSMMaterials();
+	scn->road->UpdAllMarkers();
 }
 
 

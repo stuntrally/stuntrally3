@@ -10,7 +10,7 @@
 #include "settings_com.h"
 
 
-namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class RenderWindow;  class Viewport;  class Light;  }
+namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class Window;  class Viewport;  class Light;  }
 class Scene;  class CData;  class SplineRoad;
 class App;  class SETTINGS;
 

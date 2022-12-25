@@ -46,16 +46,16 @@
 #include <OgreRoot.h>
 #include <OgreViewport.h>
 #include <OgreSceneManager.h>
-#include <OgreRenderWindow.h>
+#include <OgreWindow.h>
 #include <OgreConfigFile.h>
 #include <OgreWindowEventUtilities.h>
 
-#include <OgreTerrain.h>
-#include <OgreTerrainGroup.h>
-#include <OgreTerrainQuadTreeNode.h>
-#include <OgreTerrainMaterialGeneratorA.h>
-#include <OgreTerrainPaging.h>
+// #include <OgreTerrain.h>
+// #include <OgreTerrainGroup.h>
+// #include <OgreTerrainQuadTreeNode.h>
+// #include <OgreTerrainMaterialGeneratorA.h>
+// #include <OgreTerrainPaging.h>
 
 //#include "btBulletDynamicsCommon.h"
 #include <MyGUI.h>
-#include <MyGUI_OgrePlatform.h>
+#include <MyGUI_Ogre2Platform.h>

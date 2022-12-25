@@ -1,6 +1,6 @@
 #pragma once
-#include "../vdrift/configfile.h"
-#include "../ogre/common/settings_com.h"
+#include "configfile.h"
+#include "settings_com.h"
 
 
 #define SET_VER  2701  // 2.7

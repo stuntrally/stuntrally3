@@ -1,22 +1,23 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
+#include "Def_Str.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../ogre/common/CScene.h"
-#include "../ogre/common/data/CData.h"
-#include "../ogre/common/data/PresetsXml.h"
-#include "../road/Road.h"
+#include "CScene.h"
+#include "CData.h"
+#include "PresetsXml.h"
+#include "Road.h"
 #include <fstream>
-#include "../ogre/common/Gui_Def.h"
-#include "../ogre/common/Slider.h"
-#include "../ogre/common/MultiList2.h"
+#include "Gui_Def.h"
+#include "Slider.h"
+#include "MultiList2.h"
 #include <OgreOverlay.h>
 #include <OgreOverlayElement.h>
 #include <OgreRectangle2D.h>
 #include <OgreSceneNode.h>
 #include <OgreCamera.h>
-#include <OgreRenderWindow.h>
+#include <OgreWindow.h>
+#include <OgreRectangle2D2.h>
 #include <MyGUI.h>
 using namespace MyGUI;
 using namespace Ogre;
@@ -307,7 +308,7 @@ void CGui::UpdRevDescr()
 //  Pacenotes
 void CGui::slUpd_Pace(SV*)
 {
-	scn->UpdPaceParams();
+	//; scn->UpdPaceParams();
 }
 
 void CGui::chkTrkReverse(Ck*)
@@ -336,9 +337,9 @@ void CGui::slSizeMinimap(SV*)
 	Real sz = pSet->size_minimap;  //int all = 0;
 	app->asp = float(app->mWindow->getWidth()) / float(app->mWindow->getHeight());
 	app->xm1 = 1-sz/app->asp;  app->ym1 = -1+sz;  app->xm2 = 1.0;  app->ym2 = -1.0;
-	for (int i=0; i < app->RT_Brush; ++i)  if (i != app->RT_Last)
+	/*for (int i=0; i < app->RT_Brush; ++i)  if (i != app->RT_Last)
 		if (app->rt[i].mini)
-			app->rt[i].mini->setCorners(app->xm1, app->ym1, app->xm2, app->ym2);
+			app->rt[i].mini->setCorners(app->xm1, app->ym1, app->xm2, app->ym2);*/
 }
 
 void CGui::chkMinimap(Ck*)
@@ -624,7 +625,7 @@ void CGui::listPickRd(Mli2 li, size_t pos)
 		listSurf(surfList, idSurf);
 	}
 	//  upd
-	app->scn->road->Rebuild(true);  scn->UpdPSSMMaterials();
+	app->scn->road->Rebuild(true);  //scn->UpdPSSMMaterials();
 	UpdSurfList();
 }
 

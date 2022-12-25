@@ -1,17 +1,18 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/RenderConst.h"
-#include "../ogre/common/CScene.h"
-#include "../ogre/common/Axes.h"
+#include "Def_Str.h"
+#include "RenderConst.h"
+#include "CScene.h"
+#include "Axes.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../road/Road.h"
+#include "Road.h"
 #include <Ogre.h>
+#include <OgreItem.h>
 using namespace Ogre;
 
 
-void App::CreateBox(SceneNode*& nd, Entity*& ent, String sMat, String sMesh, int x)
+void App::CreateBox(SceneNode*& nd, Item*& ent, String sMat, String sMesh, int x)
 {
 	if (nd)  return;
 	MaterialPtr mtr;
@@ -21,9 +22,9 @@ void App::CreateBox(SceneNode*& nd, Entity*& ent, String sMat, String sMesh, int
 		if (!mtr)  return;
 	}
 	nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	ent = mSceneMgr->createEntity(sMesh);
+	ent = mSceneMgr->createItem(sMesh);
 	ent->setVisibilityFlags(RV_Hud);  nd->setPosition(Vector3(x,0,0));
-		ent->setCastShadows(false);  if (!e)  ent->setMaterial(mtr);
+		ent->setCastShadows(false);  //; if (!e)  ent->setMaterial(mtr);
 		ent->setRenderQueueGroup(RQG_CarGhost);  // after road
 	nd->attachObject(ent);
 	nd->setVisible(false);

@@ -1,14 +1,14 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/Gui_Def.h"
-#include "../ogre/common/GuiCom.h"
-#include "../ogre/common/CScene.h"
+#include "Def_Str.h"
+#include "Gui_Def.h"
+#include "GuiCom.h"
+#include "CScene.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../road/Road.h"
+#include "Road.h"
 #include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
-#include "../sdl4ogre/sdlinputwrapper.hpp"
+// #include "../sdl4ogre/sdlinputwrapper.hpp"
 #include <OgreCamera.h>
 #include <OgreSceneNode.h>
 #include <OgreManualObject.h>
@@ -24,7 +24,8 @@
 using namespace Ogre;
 using namespace MyGUI;
 
-#define isKey(a)  mInputWrapper->isKeyDown(SDL_SCANCODE_##a)
+#define isKey(a)  0
+//mInputWrapper->isKeyDown(SDL_SCANCODE_##a)
 
 
 //  Road Point
@@ -89,8 +90,8 @@ void App::KeyTxtRoad(Real q)
 	rdVal[7]->setCaption(ter ? "" : toStr(sp.cols));  // column
 
 	rdTxt[12]->setVisible(vis);  rdKey[12]->setVisible(vis);  
-	rdTxt[12]->setCaption(toStr(sp.idWall)+" "+road->getWallMtrStr(ic));  // wall mtr
-	rdTxt[8]->setCaption(toStr(sp.idMtr)+" "+road->getMtrStr(ic));  // mtr
+	// rdTxt[12]->setCaption(toStr(sp.idWall)+" "+road->getWallMtrStr(ic));  // wall mtr
+	// rdTxt[8]->setCaption(toStr(sp.idMtr)+" "+road->getMtrStr(ic));  // mtr
 
 	rdVal[9]->setCaption( sp.chkR == 0.f ? "" : fToStr(sp.chkR,1,3)+"  "+ (sp.chk1st ? "#D0D0FF(1)":"") );
 

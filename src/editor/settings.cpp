@@ -1,7 +1,7 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
+#include "Def_Str.h"
 #include "settings.h"
-#include "../vdrift/tracksurface.h"
+#include "tracksurface.h"
 
 
 void SETTINGS::Load(std::string sfile)

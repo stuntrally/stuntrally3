@@ -1,20 +1,20 @@
 #include "pch.h"
 #include "enums.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/Gui_Def.h"
-#include "../ogre/common/RenderConst.h"
-#include "../ogre/common/GuiCom.h"
-#include "../ogre/common/CScene.h"
-#include "../vdrift/pathmanager.h"
+#include "Def_Str.h"
+#include "Gui_Def.h"
+#include "RenderConst.h"
+#include "GuiCom.h"
+#include "CScene.h"
+#include "pathmanager.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../road/Road.h"
-#include "../road/PaceNotes.h"
-#include "../ogre/common/MultiList2.h"
-#include "../sdl4ogre/sdlcursormanager.hpp"
-#include "../sdl4ogre/sdlinputwrapper.hpp"
-#include <OgreTerrain.h>
+#include "Road.h"
+#include "PaceNotes.h"
+#include "MultiList2.h"
+// #include "../sdl4ogre/sdlcursormanager.hpp"
+// #include "../sdl4ogre/sdlinputwrapper.hpp"
+// #include <OgreTerrain.h>
 #include <OgreOverlay.h>
 #include <OgreOverlayElement.h>
 #include <OgreCamera.h>
@@ -228,17 +228,17 @@ void App::UpdVisGui()
 	}
 
 	bool vis = g || !bMoveCam;
-	mInputWrapper->setMouseVisible(vis);
-	mInputWrapper->setMouseRelative(!vis);
-	mInputWrapper->setAllowGrab(pSet->mouse_capture);
-	mInputWrapper->setGrabPointer(!vis);
+	// mInputWrapper->setMouseVisible(vis);
+	// mInputWrapper->setMouseRelative(!vis);
+	// mInputWrapper->setAllowGrab(pSet->mouse_capture);
+	// mInputWrapper->setGrabPointer(!vis);
 
 	if (scn->road)  scn->road->SetTerHitVis(bEdit());
 	if (!g && gcom->mToolTip)  gcom->mToolTip->setVisible(false);
 
-	if (ovBrushPrv)
+	/*if (ovBrushPrv)
 	if (edMode >= ED_Road || bMoveCam)
-		ovBrushPrv->hide();  else  ovBrushPrv->show();
+		ovBrushPrv->hide();  else  ovBrushPrv->show();*/
 
 	for (int i=0; i < WND_ALL; ++i)
 		mWndMainPanels[i]->setVisible(pSet->inMenu == i);
@@ -280,15 +280,15 @@ void App::togPrvCam()
 	if (edMode == ED_PrvCam)  // leave
 	{
 		SetEdMode(edModeOld);
-		mViewport->setVisibilityMask(RV_MaskAll);
+		// mViewport->setVisibilityMask(RV_MaskAll);  //?
 		rt[RT_Last].ndMini->setVisible(false);
 		ndCar->setVisible(true);
 
-		scn->UpdateWaterRTT(mCamera);
+		// scn->UpdateWaterRTT(mCamera);
 		scn->UpdFog();  // restore fog, veget
 		if (oldV)  {  bTrGrUpd = true;  oldV = false;  }
 		pSet->bWeather = oldI;
-		scn->UpdTerErr();
+		// scn->UpdTerErr();
 
 		scn->sc->camPos = mCamera->getPosition();
 		scn->sc->camDir = mCamera->getDirection();
@@ -299,15 +299,15 @@ void App::togPrvCam()
 		edModeOld = edMode;
 		SetEdMode(ED_PrvCam);
 		bMoveCam = true;  UpdVisGui();
-		mViewport->setVisibilityMask(RV_MaskPrvCam);
+		// mViewport->setVisibilityMask(RV_MaskPrvCam);
 		rt[RT_Last].ndMini->setVisible(true);
 		ndCar->setVisible(false);
 
-		scn->UpdateWaterRTT(rt[RT_View].cam);
-		scn->UpdFog(true);  // on fog, veget, weather
+		// scn->UpdateWaterRTT(rt[RT_View].cam);
+		// scn->UpdFog(true);  // on fog, veget, weather
 		if (!pSet->bTrees)  {  bTrGrUpd = true;  oldV = true;  }
 		oldI = pSet->bWeather;  pSet->bWeather = false;
-		scn->mTerrainGlobals->setMaxPixelError(0.5f);  //hq ter
+		// scn->mTerrainGlobals->setMaxPixelError(0.5f);  //hq ter
 
 		mCamPosOld = mCamera->getPosition();
 		mCamDirOld = mCamera->getDirection();

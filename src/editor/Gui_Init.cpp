@@ -1,25 +1,26 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/Gui_Def.h"
-#include "../ogre/common/GuiCom.h"
-#include "../ogre/common/data/CData.h"
-#include "../ogre/common/data/TracksXml.h"
-#include "../ogre/common/data/PresetsXml.h"
+#include "Def_Str.h"
+#include "Gui_Def.h"
+#include "GuiCom.h"
+#include "CData.h"
+#include "TracksXml.h"
+#include "PresetsXml.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../vdrift/pathmanager.h"
-#include "../ogre/common/MultiList2.h"
-#include "../ogre/common/Slider.h"
-#include <boost/filesystem.hpp>
-#include "../sdl4ogre/sdlinputwrapper.hpp"
+#include "pathmanager.h"
+#include "MultiList2.h"
+#include "Slider.h"
+
+#include <filesystem>
 #include <MyGUI.h>
 #include <MyGUI_InputManager.h>
 #include <OgreTimer.h>
-#include <OgreRenderWindow.h>
-#include "../ogre/common/RenderBoxScene.h"
+// #include <OgreWindow.h>
+// #include "RenderBoxScene.h"
 using namespace MyGUI;
-using namespace Ogre;
+// using namespace Ogre;
+using Ogre::String;  using Ogre::StringUtil;
 using namespace std;
 
 
@@ -130,7 +131,7 @@ void CGui::InitGui()
 
 
 	//  center mouse pos
-	app->mInputWrapper->setMouseVisible(app->bGuiFocus || !app->bMoveCam);
+	// app->mInputWrapper->setMouseVisible(app->bGuiFocus || !app->bMoveCam);
 	gcom->GuiCenterMouse();
 	
 	//  hide all wnd  ---
@@ -773,10 +774,10 @@ void CGui::InitGui()
 	viewCanvas->setInheritsAlpha(false);
 	viewCanvas->setPointer("hand");
 	viewCanvas->setVisible(false);
-	viewBox->setCanvas(viewCanvas);
-	viewBox->setBackgroundColour(Colour(0.32,0.35,0.37,0.7));
-	viewBox->setAutoRotation(true);
-	viewBox->setMouseRotation(true);
+	// viewBox->setCanvas(viewCanvas);
+	// viewBox->setBackgroundColour(Colour(0.32,0.35,0.37,0.7));
+	// viewBox->setAutoRotation(true);
+	// viewBox->setMouseRotation(true);
 
 
 	bGI = true;  // gui inited, gui events can now save vals

@@ -3,7 +3,11 @@
 #include "Def_Str.h"
 #include "RenderConst.h"
 
-#include "CGame.h"
+#ifndef SR_EDITOR
+	#include "CGame.h"
+#else	
+	#include "CApp.h"
+#endif
 #include "game.h"
 #include "CScene.h"
 #include "SceneXml.h"

@@ -1,20 +1,20 @@
 #pragma once
 #include "BaseApp.h"
-#include "../vdrift/tracksurface.h"
-#include "../ogre/common/Gui_Def.h"
-#include "../ogre/common/SliderValue.h"
+#include "tracksurface.h"
+#include "Gui_Def.h"
+#include "SliderValue.h"
 
-#include <Ogre.h>
+// #include <Ogre.h>
 // #include <OgreCommon.h>
-// #include <OgreVector3.h>
-// #include <OgreString.h>
+#include <OgreVector3.h>
+#include <OgreString.h>
 
 #include <MyGUI_Types.h>
 #include <MyGUI_WidgetToolTip.h>
 #include <MyGUI_Enumerator.h>
 #include <MyGUI_WidgetDefines.h>  //EnumeratorWidgetPtr
 #include <MyGUI_Colour.h>
-#include "../ogre/common/MessageBox/MessageBoxStyle.h"
+#include "MessageBox/MessageBoxStyle.h"
 
 
 namespace wraps {	class RenderBoxScene;  }

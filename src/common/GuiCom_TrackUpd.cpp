@@ -24,7 +24,7 @@
 #include <OgreMaterialManager.h>
 #include <OgreSceneManager.h>
 // #include <OgreTerrain.h>
-// #include <OgreRenderWindow.h>
+// #include <OgreWindow.h>
 #include "Gui_Def.h"
 // #include <filesystem>
 #include <MyGUI_Window.h>

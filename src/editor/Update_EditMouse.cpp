@@ -1,15 +1,15 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/Gui_Def.h"
-#include "../ogre/common/GuiCom.h"
-#include "../ogre/common/CScene.h"
-#include "../ogre/common/Axes.h"
+#include "Def_Str.h"
+#include "Gui_Def.h"
+#include "GuiCom.h"
+#include "CScene.h"
+#include "Axes.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../road/Road.h"
+#include "Road.h"
+
 #include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
-#include "../sdl4ogre/sdlinputwrapper.hpp"
 #include <OgreCamera.h>
 #include <OgreSceneNode.h>
 #include <OgreManualObject.h>
