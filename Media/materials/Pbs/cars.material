@@ -964,9 +964,11 @@ hlms SX_wheel pbs : car_wheel
 //  ES  -------------------------------------------------
 hlms body_realtime pbs //: car_body
 {
-	diffuse_map  ES_body_white2.jpg
+	// for ed:
+	diffuse_map car_body_ed.png
+	// diffuse_map  ES_body_white2.jpg  //+
 	// normal_map   ES_normal.png
-	specular_map   ES_refl.png
+	// specular_map   ES_refl.png  //+
 	// roughness_map  ES_refl.png
 	// metalness_map  ES_refl.png
 

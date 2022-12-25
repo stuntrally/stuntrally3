@@ -33,6 +33,7 @@ void App::CreateBox(SceneNode*& nd, Item*& ent, String sMat, String sMesh, int x
 
 void App::UpdStartPos()
 {
+	return;  //;
 	CreateBox(ndCar, entCar, "", "car.mesh");
 	
 	CreateBox(ndStBox[0], entStBox[0], "start_box", "cube.mesh", 20000);

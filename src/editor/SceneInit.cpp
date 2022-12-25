@@ -14,6 +14,7 @@
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
 
+#include "GraphicsSystem.h"
 #include <OgreTimer.h>
 #include "Terra.h"
 // #include <OgreTerrainGroup.h>
@@ -61,6 +62,7 @@ void App::createScene01()  // once, init
 
 
 	//  camera
+	mWindow = mGraphicsSystem->getRenderWindow();
 	asp = float(mWindow->getWidth())/float(mWindow->getHeight());
 	mCamera->setFarClipDistance(pSet->view_distance*1.1f);
 	mCamera->setNearClipDistance(0.1f);
@@ -92,6 +94,8 @@ void App::createScene01()  // once, init
 		pSet->bMain = true;
 		
 	bGuiFocus = false/*true*/;  bMoveCam = true;  //*--
+
+	baseInitGui();
 
 	gui->InitGui();
 	
@@ -125,16 +129,16 @@ void App::createScene01()  // once, init
 	if (pSet->autostart)
 		LoadTrack();
 
-	if (!pSet->autostart)
+	// if (!pSet->autostart)
 	{	bGuiFocus = true;  UpdVisGui();	}
 
 	iObjTNew = 0;
 	//SetObjNewType(0);  //?white
 
 
-	gui->chkInputBar(0);  // upd vis
-	gui->chkCamPos(0);
-	gui->chkFps(0);
+	// gui->chkInputBar(0);  // upd vis
+	// gui->chkCamPos(0);
+	// gui->chkFps(0);
 }
 
 void App::destroyScene()

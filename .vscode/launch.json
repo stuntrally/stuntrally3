@@ -7,34 +7,42 @@
 		{
 			"type": "lldb",
 			"request": "launch",
-			"name": "Debug lldb",
+			"name": "game Debug lldb",
 			"args": [],
 			"program": "${workspaceFolder}/bin/Debug/StuntRally3",
 			"cwd": "${workspaceFolder}/bin/Debug/"
 		},
-		{
-			"type": "gdb",
-			"request": "launch",
-			"name": "Debug gdb",
-			"target": "${workspaceFolder}/bin/Debug/StuntRally3",
-			"cwd": "${workspaceFolder}/bin/Debug/",
-			"valuesFormatting": "parseText"
-		},
+		// {
+		// 	"type": "gdb",
+		// 	"request": "launch",
+		// 	"name": "Debug gdb",
+		// 	"target": "${workspaceFolder}/bin/Debug/StuntRally3",
+		// 	"cwd": "${workspaceFolder}/bin/Debug/",
+		// 	"valuesFormatting": "parseText"
+		// },
 		{
 			"type": "lldb",
 			"request": "launch",
-			"name": "RelWithDebInfo lldb",
+			"name": "game RelDeb lldb",
 			"args": [],
 			"program": "${workspaceFolder}/bin/RelWithDebInfo/StuntRally3",
 			"cwd": "${workspaceFolder}/bin/RelWithDebInfo/"
 		},
 		{
-			"type": "gdb",
+			"type": "lldb",
 			"request": "launch",
-			"name": "RelWithDebInfo gdb",
-			"target": "${workspaceFolder}/bin/RelWithDebInfo/StuntRally3",
-			"cwd": "${workspaceFolder}/bin/RelWithDebInfo/",
-			"valuesFormatting": "parseText"
-		}
+			"name": "editor Debug lldb",
+			"args": [],
+			"program": "${workspaceFolder}/bin/Debug/sr-editor3",
+			"cwd": "${workspaceFolder}/bin/Debug/"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "editor RelDeb lldb",
+			"args": [],
+			"program": "${workspaceFolder}/bin/RelWithDebInfo/sr-editor3",
+			"cwd": "${workspaceFolder}/bin/RelWithDebInfo/"
+		},
 	]
 }

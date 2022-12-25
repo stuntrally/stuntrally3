@@ -265,6 +265,7 @@ void CGui::toggleGui(bool toggle)
 //  bottom status bar
 void CGui::Status(String s, float r,float g,float b)
 {
+	if (!txtStatus)  return;
 	txtStatus->setCaption(TR(s));
 	txtStatus->setTextColour(Colour(r,g,b));
 	panStatus->setColour(Colour(r,g,b));
@@ -339,6 +340,7 @@ void CGui::GuiShortcut(WND_Types wnd, int tab, int subtab)
 		case WND_Edit:		mWndTabs = app->mWndTabsEdit;  subt = &vSubTabsEdit;  break;
 		case WND_Help:		mWndTabs = app->mWndTabsHelp;  subt = &vSubTabsHelp;  break;
 		case WND_Options:	mWndTabs = app->mWndTabsOpts;  subt = &vSubTabsOpts;  break;
+		default:  break;
 	}
 	if (wnd != WND_Edit)
 		app->mWndPick->setVisible(false);
