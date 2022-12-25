@@ -1,3 +1,4 @@
+#ifndef SR_EDITOR
 #include "pch.h"
 #include "par.h"
 #include "cardynamics.h"
@@ -358,3 +359,4 @@ char CARDYNAMICS::IsBraking() const
 	}
 	return 0;
 }
+#endif

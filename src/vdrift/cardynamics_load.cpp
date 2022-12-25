@@ -1,3 +1,4 @@
+#ifndef SR_EDITOR
 #include "pch.h"
 #include "par.h"
 #include "cardynamics.h"
@@ -907,3 +908,4 @@ void CARDYNAMICS::RemoveBlt()
 
 	actions.resize(0);
 }
+#endif

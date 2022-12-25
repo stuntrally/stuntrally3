@@ -19,7 +19,6 @@
 
 #include "cardefs.h"
 #include "collision_contact.h"
-#include "BtOgreExtras.h"
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
 #include "Buoyancy.h"

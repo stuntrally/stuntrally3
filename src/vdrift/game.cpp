@@ -1,3 +1,4 @@
+#ifndef SR_EDITOR
 #include "pch.h"
 #include "game.h"
 #include "car.h"
@@ -698,3 +699,4 @@ float GAME::GetSteerRange() const
 	range *= pSet->steer_range[/*track.asphalt*/0];
 	return range;
 }
+#endif

@@ -1,3 +1,4 @@
+#ifndef SR_EDITOR
 #include "pch.h"
 #include "par.h"
 #include "cardynamics.h"
@@ -876,3 +877,4 @@ void CARDYNAMICS::DoABS(int i, Dbl suspension_force)
 	if (abs_active[i])
 		brake[WHEEL_POSITION(i)].SetBrakeFactor(0.0);
 }
+#endif

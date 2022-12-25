@@ -1,3 +1,4 @@
+#ifndef SR_EDITOR
 #include "pch.h"
 #include "par.h"
 #include "car.h"
@@ -487,3 +488,4 @@ if (bSound)
 	if (dmg)
 		if (dynamics.fDamage > 100.f)  dynamics.fDamage = 100.f;
 }
+#endif

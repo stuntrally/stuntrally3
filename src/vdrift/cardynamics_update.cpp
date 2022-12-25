@@ -1,3 +1,4 @@
+#ifndef SR_EDITOR
 #include "pch.h"
 #include "par.h"
 #include "cardynamics.h"
@@ -881,3 +882,4 @@ void CARDYNAMICS::SimulateSphere(Dbl dt)
 	MATHVECTOR<Dbl,3> vd(dir[1], -dir[0], 0.f);
 	ApplyForce(vd * dot * -pmul * mul );
 }
+#endif

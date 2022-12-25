@@ -1,3 +1,4 @@
+#ifndef SR_EDITOR
 #include "pch.h"
 #include "par.h"
 #include "Def_Str.h"
@@ -519,3 +520,4 @@ void COLLISION_WORLD::Clear()
 
 	actions.resize(0);
 }
+#endif

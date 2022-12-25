@@ -1,3 +1,4 @@
+#ifndef SR_EDITOR
 #include "pch.h"
 #include "par.h"
 #include "car.h"
@@ -468,3 +469,4 @@ void CAR::SetPosRewind(const MATHVECTOR<float,3>& pos, const QUATERNION<float>& 
 	//  steer
 	//dynamics.SetSteering(steer);  last_steer = steer;
 }
+#endif

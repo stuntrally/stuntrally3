@@ -149,7 +149,6 @@ set( COMMON_SRC_DIRS
 
 	#  libs
 	./src/btOgre2
-	./src/oics
 	
 	#  sources
 	./src/common
@@ -165,75 +164,112 @@ set( COMMON_SRC_DIRS
 	./src/Terra
 	./src/Terra/Hlms
 	./src/Terra/Hlms/PbsListener
+	#  both game and ed  meh-
+	#./src/vdriftCommon
 	./src/sound
 	./src/vdrift
 )
 
+#  game
 set( GAME_SRC_DIRS ${COMMON_SRC_DIRS} )
 list( APPEND GAME_SRC_DIRS ./src/game )
+#list( APPEND GAME_SRC_DIRS ./src/sound )
+#list( APPEND GAME_SRC_DIRS ./src/vdrift )
+list( APPEND GAME_SRC_DIRS ./src/oics )  # libs
 
+#  editor
 set( EDITOR_SRC_DIRS ${COMMON_SRC_DIRS} )
 list( APPEND EDITOR_SRC_DIRS ./src/editor )
 
 
-##  Game
-##------------------------------------------------------------------------------------------------------
+#  exe list  game and editor
 if (BUILD_GAME)
-
-	#  fix 4  OpenAL  since conan failed
-	find_package( OpenAL REQUIRED )
-	include_directories( ${OPENAL_INCLUDE_DIR} )
-
-	find_package( Threads )
-
-
-	#  exe  ----
-	foreach( subdir ${GAME_SRC_DIRS} )
-		#message( STATUS ${subdir} )
-		add_recursive( ${subdir} GAME_SOURCES )
-	endforeach()
-
-	add_executable( ${GAME_EXE} WIN32 ${GAME_SOURCES} )
-
-	foreach( subdir ${GAME_SRC_DIRS} )
-		#message( STATUS ${subdir} )
-		target_include_directories( ${GAME_EXE} PRIVATE ${subdir} )
-	endforeach()
-
-	target_precompile_headers( ${GAME_EXE} PRIVATE src/game/pch.h )
-
-	target_link_libraries( ${GAME_EXE} ${CMAKE_THREAD_LIBS_INIT} )
-
-
-
-	#  fix 4  OpenAL
-	#message(STATUS "${OPENAL_INCLUDE_DIR} ${OPENAL_LIBRARY}")
-	target_link_libraries( ${GAME_EXE} "${OPENAL_LIBRARY}" )
-
-
-	target_compile_options(  ${GAME_EXE} PRIVATE -Wswitch )
-	target_compile_features( ${GAME_EXE} PRIVATE cxx_std_17 )
-
-
-	#  Linker  ----
-	target_link_libraries( ${GAME_EXE} ${OGRE_LIBRARIES} )
-
-	#  Fix 3  SDL
-	target_link_libraries( ${GAME_EXE} "-lSDL2" )
-
-
-	#  MyGui
-	# todo: windows ..
-	target_link_libraries( ${GAME_EXE} ${DIR_ONE_ABOVE}/mygui-next/build/lib/libMyGUI.Ogre2Platform.a )
-
-	add_library( libMyGUIEngine SHARED IMPORTED )
-	set_target_properties( libMyGUIEngine PROPERTIES IMPORTED_LOCATION ${DIR_ONE_ABOVE}/mygui-next/build/lib/libMyGUIEngine.so )
-	target_link_libraries( ${GAME_EXE} libMyGUIEngine )
-
-
-	#  end
-	message( STATUS "Libs: " ${LIBS} )
-	target_link_libraries( ${GAME_EXE} ${LIBS} )
-
+	list( APPEND EXE_LIST ${GAME_EXE} )
+endif()
+if (BUILD_EDITOR)
+	list( APPEND EXE_LIST ${EDITOR_EXE} )
 endif()
 
+
+
+#  fix 4  OpenAL  since conan failed  - common, meh
+find_package( OpenAL REQUIRED )
+include_directories( ${OPENAL_INCLUDE_DIR} )
+
+find_package( Threads )
+
+
+
+##  Game
+##------------------------------------------------------------------------------------------------------
+foreach( EXE ${EXE_LIST} )
+
+	message( STATUS "Configuring: " ${EXE} )
+
+	#  sources  ----
+	set( EXE_SOURCES "")
+
+	if ( ${EXE} STREQUAL ${EDITOR_EXE} )  # ed
+		set( SRC_DIRS ${EDITOR_SRC_DIRS} )
+	else()
+		set( SRC_DIRS ${GAME_SRC_DIRS} )
+	endif()
+
+	foreach( subdir ${SRC_DIRS} )
+		#message( STATUS ${subdir} )
+		add_recursive( ${subdir} EXE_SOURCES )
+	endforeach()
+
+	add_executable( ${EXE} WIN32 ${EXE_SOURCES} )
+
+	foreach( subdir ${SRC_DIRS} )
+		#message( STATUS ${subdir} )
+		target_include_directories( ${EXE} PRIVATE ${subdir} )
+	endforeach()
+
+
+	#  pch.h
+	if ( ${EXE} STREQUAL ${EDITOR_EXE} )  # ed
+	    set_target_properties( ${EXE} PROPERTIES COMPILE_FLAGS "-DSR_EDITOR" )
+		target_precompile_headers( ${EXE} PRIVATE src/editor/pch.h )
+	else()
+		target_precompile_headers( ${EXE} PRIVATE src/game/pch.h )
+	endif()
+
+	#  c++
+	target_compile_options(  ${EXE} PRIVATE -Wswitch )
+	target_compile_features( ${EXE} PRIVATE cxx_std_17 )
+
+
+	#  threads
+	target_link_libraries( ${EXE} ${CMAKE_THREAD_LIBS_INIT} )
+
+
+	#  OpenAL
+	target_link_libraries( ${EXE} "${OPENAL_LIBRARY}" )
+
+
+	#  Ogre  ----
+	target_link_libraries( ${EXE} ${OGRE_LIBRARIES} )
+
+	#  SDL
+	target_link_libraries( ${EXE} "-lSDL2" )
+
+
+	#  MyGui  ----   # todo: windows ..
+	target_link_libraries( ${EXE} ${DIR_ONE_ABOVE}/mygui-next/build/lib/libMyGUI.Ogre2Platform.a )
+
+	if ( ${EXE} STREQUAL ${GAME_EXE} )  # game, once
+		add_library( libMyGUIEngine SHARED IMPORTED )
+	endif()
+	set_target_properties( libMyGUIEngine PROPERTIES IMPORTED_LOCATION ${DIR_ONE_ABOVE}/mygui-next/build/lib/libMyGUIEngine.so )
+	target_link_libraries( ${EXE} libMyGUIEngine )
+
+
+	#  rest
+	#message( STATUS "Libs  " ${EXE} "  " ${LIBS} )
+	target_link_libraries( ${EXE} ${LIBS} )
+
+endforeach()
+
+message( STATUS "---------- SR end" )
