@@ -9,7 +9,7 @@
 #include "Road.h"
 #include "PaceNotes.h"
 #include "MultiList2.h"
-#include "RenderBoxScene.h"
+// #include "RenderBoxScene.h"
 
 #include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
 //#include <LinearMath/btDefaultMotionState.h>
@@ -76,11 +76,11 @@ void App::processMouse(double fDT)
 bool App::frameEnded(const FrameEvent& evt)
 {
 	//  show when in gui on generator subtab
-	if (ovTerPrv)
+	/*if (ovTerPrv)
 	if (bGuiFocus && mWndEdit &&
 		mWndEdit->getVisible() && mWndTabsEdit->getIndexSelected() == TAB_Terrain &&
-		gui->vSubTabsEdit.size() > TAB_Terrain && gui->vSubTabsEdit[TAB_Terrain]->getIndexSelected() == 2/**/)
-		ovTerPrv->show();  else  ovTerPrv->hide();
+		gui->vSubTabsEdit.size() > TAB_Terrain && gui->vSubTabsEdit[TAB_Terrain]->getIndexSelected() == 2)
+		ovTerPrv->show();  else  ovTerPrv->hide();*/
 
 	//  track events
 	if (eTrkEvent != TE_None)
@@ -92,7 +92,7 @@ bool App::frameEnded(const FrameEvent& evt)
 	}
 	
 	///  input
-	mInputWrapper->capture(false);
+	// mInputWrapper->capture(false);
 
 	//  road pick
 	SplineRoad* road = scn->road;
@@ -113,8 +113,8 @@ bool App::frameEnded(const FrameEvent& evt)
 	if (tu >= pSet->ter_skip)
 	if (bTerUpd)
 	{	bTerUpd = false;  tu = 0;
-		if (scn->mTerrainGroup)
-			scn->mTerrainGroup->update();
+		// if (scn->mTerrainGroup)
+		// 	scn->mTerrainGroup->update();
 	}	tu++;
 
 	if (bu >= pSet->ter_skip)
@@ -151,6 +151,7 @@ bool App::frameEnded(const FrameEvent& evt)
 		case ED_Height:
 			if (mbLeft) {  def = true;  height(road->posHit, dt, s);  }
 			break;
+		default:  break;
 		}
 	}
 
@@ -201,10 +202,10 @@ if (pSet->bTrees)
 #endif
 
 	///  paged  * * *  ? frameStarted
-	if (road)
+	/*if (road)
 	{	if (scn->grass)  scn->grass->update();
 		if (scn->trees)  scn->trees->update();
-	}
+	}*/
 
 
 	///  paged  Upd  * * *
@@ -240,15 +241,15 @@ if (pSet->bTrees)
 	{
 		scn->sc->camPos = mCamera->getPosition();
 		scn->sc->camDir = mCamera->getDirection();
-		if (rt[RT_View].tex)
-			rt[RT_View].tex->update();
+		// if (rt[RT_View].tex)
+		// 	rt[RT_View].tex->update();
 	}else{
 		static int ri = 0;
 		if (ri >= pSet->mini_skip)
 		{	ri = 0;
-			for (int i=0; i < RT_View; ++i)
-				if (rt[i].tex)
-					rt[i].tex->update();
+			// for (int i=0; i < RT_View; ++i)
+			// 	if (rt[i].tex)
+			// 		rt[i].tex->update();
 		}	ri++;
 	}
 	//LogO(toStr(evt.timeSinceLastFrame));
@@ -258,12 +259,13 @@ if (pSet->bTrees)
 
 
 //---------------------------------------------------------------------------------------------------------------
-bool App::frameStarted(const Ogre::FrameEvent& evt)
+// bool App::frameStarted(const Ogre::FrameEvent& evt)
+void App::update( float dt )
 {
-	BaseApp::frameStarted(evt);
+	// BaseApp::frameStarted(dt);
 
 	static Real time1 = 0.;
-	mDTime = evt.timeSinceLastFrame;
+	mDTime = dt;
 	
 	//  inc edit time
 	time1 += mDTime;
@@ -279,10 +281,10 @@ bool App::frameStarted(const Ogre::FrameEvent& evt)
 
 	//  update input
 	mRotX = 0; mRotY = 0;  mRotKX = 0; mRotKY = 0;  mTrans = Vector3::ZERO;
-	#define  isKey(a)  mInputWrapper->isKeyDown(SDL_SCANCODE_##a)
+	// #define  isKey(a)  mInputWrapper->isKeyDown(SDL_SCANCODE_##a)
 
 	//  Move,Rot camera
-	if (bCam())
+	/*if (bCam())
 	{
 		if (isKey(A))  mTrans.x -= 1;	if (isKey(D))  mTrans.x += 1;
 		if (isKey(W))  mTrans.z -= 1;	if (isKey(S))  mTrans.z += 1;
@@ -292,12 +294,12 @@ bool App::frameStarted(const Ogre::FrameEvent& evt)
 		if (isKey(UP)   ||isKey(KP_8))  mRotKY += 1;
 		if (isKey(RIGHT)||isKey(KP_6))  mRotKX -= 1;
 		if (isKey(LEFT) ||isKey(KP_4))  mRotKX += 1;
-	}
+	}*/
 
 	   // key modifiers
-	  alt = mInputWrapper->isModifierHeld(SDL_Keymod(KMOD_ALT));
-	 ctrl = mInputWrapper->isModifierHeld(SDL_Keymod(KMOD_CTRL));
-	shift = mInputWrapper->isModifierHeld(SDL_Keymod(KMOD_SHIFT));
+	//   alt = mInputWrapper->isModifierHeld(SDL_Keymod(KMOD_ALT));
+	//  ctrl = mInputWrapper->isModifierHeld(SDL_Keymod(KMOD_CTRL));
+	// shift = mInputWrapper->isModifierHeld(SDL_Keymod(KMOD_SHIFT));
 
 	 // speed multiplers
 	moveMul = 1;  rotMul = 1;
@@ -348,25 +350,25 @@ bool App::frameStarted(const Ogre::FrameEvent& evt)
 		gui->viewCanvas->setVisible(vis);
 	}
 	if (gui->tiViewUpd >= 0.f)
-		gui->tiViewUpd += evt.timeSinceLastFrame;
+		gui->tiViewUpd += dt;
 
 	if (gui->tiViewUpd > 0.0f)  //par delay 0.1
 	{	gui->tiViewUpd = -1.f;
 
-		gui->viewBox->clearScene();
+		/*gui->viewBox->clearScene();
 		if (!gui->viewMesh.empty() && ResourceGroupManager::getSingleton().resourceExistsInAnyGroup(gui->viewMesh))
 		{	gui->viewSc = gui->viewBox->injectObject(gui->viewMesh);
 			gui->updVegetInfo();
-	}	}
+	}*/	}
 	
 	
 	//  Update rain/snow - depends on camera
 	scn->UpdateWeather(mCamera, pSet->bWeather ? 0.f : 1.f);
 
 	// update shader time
-	mTimer += evt.timeSinceLastFrame;
-	mFactory->setSharedParameter("windTimer", sh::makeProperty <sh::FloatValue>(new sh::FloatValue(mTimer)));
-	mFactory->setSharedParameter("waterTimer", sh::makeProperty <sh::FloatValue>(new sh::FloatValue(mTimer)));
+	// mTimer += evt.timeSinceLastFrame;
+	// mFactory->setSharedParameter("windTimer", sh::makeProperty <sh::FloatValue>(new sh::FloatValue(mTimer)));
+	// mFactory->setSharedParameter("waterTimer", sh::makeProperty <sh::FloatValue>(new sh::FloatValue(mTimer)));
 	
 	/*if (ndCar && road)  ///()  grass sphere test
 	{
@@ -390,12 +392,10 @@ bool App::frameStarted(const Ogre::FrameEvent& evt)
 	
 	///  simulate objects
 	if (edMode == ED_Objects && objSim /*&& bEdit()*/)
-		BltUpdate(evt.timeSinceLastFrame);
+		BltUpdate(dt);
 	
 	UpdObjNewNode();
 
 
 	bFirstRenderFrame = false;
-	
-	return true;
 }

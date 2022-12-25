@@ -1,20 +1,15 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
+#include "Def_Str.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../sdl4ogre/sdlinputwrapper.hpp"
-#include <boost/filesystem.hpp>
+
+#include <filesystem>
 #include <Ogre.h>
 #include <MyGUI_TextBox.h>
 #ifndef _WIN32
 #include <dirent.h>
 #endif
-
-#if OGRE_VERSION_MAJOR >= 13
-#include <OgreDeprecated.h>
-#endif
-
 using namespace Ogre;
 
 
@@ -113,16 +108,16 @@ void CGui::GetMaterialsMat(String filename, bool clear, String type)
 
 ///  system file, dir
 //-----------------------------------------------------------------------------------------------------------
-namespace bfs = boost::filesystem;
+namespace fs = std::filesystem;
 
 
 bool CGui::Rename(String from, String to)
 {
 	try
-	{	if (bfs::exists(from.c_str()))
-			bfs::rename(from.c_str(), to.c_str());
+	{	if (fs::exists(from.c_str()))
+			fs::rename(from.c_str(), to.c_str());
 	}
-	catch (const bfs::filesystem_error & ex)
+	catch (const fs::filesystem_error & ex)
 	{
 		String s = "Error: Renaming file " + from + " to " + to + " failed ! \n" + ex.what();
 		strFSerrors += "\n" + s;
@@ -135,9 +130,9 @@ bool CGui::Rename(String from, String to)
 bool CGui::Delete(String file)
 {
 	try
-	{	bfs::remove(file.c_str());
+	{	fs::remove(file.c_str());
 	}
-	catch (const bfs::filesystem_error & ex)
+	catch (const fs::filesystem_error & ex)
 	{
 		String s = "Error: Deleting file " + file + " failed ! \n" + ex.what();
 		strFSerrors += "\n" + s;
@@ -150,9 +145,9 @@ bool CGui::Delete(String file)
 bool CGui::DeleteDir(String dir)
 {
 	try
-	{	bfs::remove_all(dir.c_str());
+	{	fs::remove_all(dir.c_str());
 	}
-	catch (const bfs::filesystem_error & ex)
+	catch (const fs::filesystem_error & ex)
 	{
 		String s = "Error: Deleting directory " + dir + " failed ! \n" + ex.what();
 		strFSerrors += "\n" + s;
@@ -165,9 +160,9 @@ bool CGui::DeleteDir(String dir)
 bool CGui::CreateDir(String dir)
 {
 	try
-	{	bfs::create_directory(dir.c_str());
+	{	fs::create_directory(dir.c_str());
 	}
-	catch (const bfs::filesystem_error & ex)
+	catch (const fs::filesystem_error & ex)
 	{
 		String s = "Error: Creating directory " + dir + " failed ! \n" + ex.what();
 		strFSerrors += "\n" + s;
@@ -180,13 +175,13 @@ bool CGui::CreateDir(String dir)
 bool CGui::Copy(String file, String to)
 {
 	try
-	{	if (bfs::exists(to.c_str()))
-			bfs::remove(to.c_str());
+	{	if (fs::exists(to.c_str()))
+			fs::remove(to.c_str());
 
-		if (bfs::exists(file.c_str()))
-			bfs::copy_file(file.c_str(), to.c_str());
+		if (fs::exists(file.c_str()))
+			fs::copy_file(file.c_str(), to.c_str());
 	}
-	catch (const bfs::filesystem_error & ex)
+	catch (const fs::filesystem_error & ex)
 	{
 		String s = "Error: Copying file " + file + " to " + to + " failed ! \n" + ex.what();
 		strFSerrors += "\n" + s;
@@ -202,13 +197,14 @@ void App::UpdWndTitle()
 	String s = String("SR Editor  track: ") + pSet->gui.track;
 	if (pSet->gui.track_user)  s += "  *user*";
 
-	SDL_SetWindowTitle(mSDLWindow, s.c_str());
+	//; SDL_SetWindowTitle(mSDLWindow, s.c_str());
 }
 
 
 //  key,mb info  ==================
 void App::UpdKeyBar(Real dt)
 {
+	/*
 	// TODO: This is definitely not bullet-proof.
 	const int Kmax = SDL_SCANCODE_SLEEP;  // last key
 	static float tkey[Kmax+1] = {0.f,};  // key delay time
@@ -259,4 +255,5 @@ void App::UpdKeyBar(Real dt)
 	if (mzd > 0)  {  ss += "#D0D8FFWheel up";  --mzd;  }
 	if (mzd < 0)  {  ss += "#D0D8FFWheel down";  ++mzd;  }
 	txInput->setCaption(ss);
+	*/
 }

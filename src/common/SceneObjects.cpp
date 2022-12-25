@@ -6,11 +6,11 @@
 #include "Axes.h"
 #include "pathmanager.h"
 #include "BtOgreGP.h"
-// #include "Road.h"
 #include "ShapeData.h"
 #ifdef SR_EDITOR
 	#include "CApp.h"
 	#include "CGui.h"
+	#include "Road.h"
 #else
 	#include "CGame.h"
 	#include "game.h"
@@ -308,7 +308,8 @@ void App::UpdObjPick()
 	if (!bObjects)  return;
 	
 	const Object& o = scn->sc->objects[iObjCur];
-	const AxisAlignedBox& ab = o.nd->getAttachedObject(0)->getBoundingBox();
+	//;
+	/*const AxisAlignedBox& ab = o.nd->getAttachedObject(0)->getBoundingBox();
 	Vector3 s = o.scale * ab.getSize();  // * sel obj's node aabb
 
 	Vector3 posO = Axes::toOgre(o.pos);
@@ -319,7 +320,7 @@ void App::UpdObjPick()
 
 	ndObjBox->setPosition(posO);
 	ndObjBox->setOrientation(rotO);
-	ndObjBox->setScale(s);
+	ndObjBox->setScale(s);*/
 }
 
 void App::PickObject()
@@ -346,10 +347,10 @@ void App::PickObject()
 		{
 			//LogO("RAY "+s+" "+fToStr((*it).distance,2,4)+"  n "+toStr(n)+"  nn "+toStr(nn));
 			int i = -1;
-			//  find obj with same ent name
-			for (int o=0; o < scn->sc->objects.size(); ++o)
+			//;  find obj with same ent name
+			/*for (int o=0; o < scn->sc->objects.size(); ++o)
 				if (s == scn->sc->objects[o].ent->getName())
-				{	i = o;  break;  }
+				{	i = o;  break;  }*/
 			
 			//  pick
 			if (i != -1)
@@ -386,7 +387,7 @@ void App::UpdObjSel()
 	int objs = scn->sc->objects.size();
 	for (int i=0; i < objs; ++i)
 	{	bool bSel = vObjSel.find(i) != vObjSel.end();
-		scn->sc->objects[i].ent->getSubEntity(0)->setCustomParameter(1, Vector4(bSel ? 1 : 0, 0,0,0));
+		//; scn->sc->objects[i].ent->getSubEntity(0)->setCustomParameter(1, Vector4(bSel ? 1 : 0, 0,0,0));
 	}
 }
 
@@ -473,11 +474,11 @@ void App::AddNewObj(bool getName)  //App..
 	}
 
 	//  create object
-	o.ent = mSceneMgr->createEntity("oE"+s, o.name + ".mesh");
-	o.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode("oN"+s);
+	o.it = mSceneMgr->createItem(o.name + ".mesh");
+	o.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	o.SetFromBlt();
 	o.nd->setScale(o.scale);
-	o.nd->attachObject(o.ent);  o.ent->setVisibilityFlags(RV_Vegetation);
+	o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Vegetation);
 
 	o.dyn = PATHMANAGER::FileExists(PATHMANAGER::Data()+"/objects/"+ o.name + ".bullet");
 	scn->sc->objects.push_back(o);
@@ -485,6 +486,7 @@ void App::AddNewObj(bool getName)  //App..
 
 
 //  change obj to insert
+#define ITEM_NONE -1  //?
 void CGui::listObjsChng(MyGUI::List* l, size_t t)
 {
 	//  unselect other
@@ -546,14 +548,14 @@ void App::SetObjNewType(int tnew)
 {
 	iObjTNew = tnew;
 	if (objNew.nd)	{	mSceneMgr->destroySceneNode(objNew.nd);  objNew.nd = 0;  }
-	if (objNew.ent)	{	mSceneMgr->destroyEntity(objNew.ent);  objNew.ent = 0;  }
+	if (objNew.it)	{	mSceneMgr->destroyItem(objNew.it);  objNew.it = 0;  }
 	
 	String name = vObjNames[iObjTNew];
 	objNew.dyn = PATHMANAGER::FileExists(PATHMANAGER::Data()+"/objects/"+ name + ".bullet");
 	if (objNew.dyn)  objNew.scale = Vector3::UNIT_SCALE;  // dyn no scale
-	objNew.ent = mSceneMgr->createEntity("-oE", name + ".mesh");
-	objNew.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode("-oN");
-	objNew.nd->attachObject(objNew.ent);  objNew.ent->setVisibilityFlags(RV_Vegetation);
+	objNew.it = mSceneMgr->createItem(name + ".mesh");
+	objNew.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+	objNew.nd->attachObject(objNew.it);  objNew.it->setVisibilityFlags(RV_Vegetation);
 	UpdObjNewNode();
 }
 

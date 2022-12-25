@@ -1,25 +1,23 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/data/CData.h"
-#include "../ogre/common/ShapeData.h"
-#include "../ogre/common/GuiCom.h"
-#include "../ogre/common/CScene.h"
+#include "Def_Str.h"
+#include "CData.h"
+#include "ShapeData.h"
+#include "GuiCom.h"
+#include "CScene.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../road/Road.h"
-#include "../road/PaceNotes.h"
-#include "../paged-geom/PagedGeometry.h"
-#include "../vdrift/pathmanager.h"
-#include "../ogre/common/RenderConst.h"
+#include "Road.h"
+#include "PaceNotes.h"
+#include "pathmanager.h"
+#include "RenderConst.h"
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
-#include "../shiny/Main/Factory.hpp"
 
 #include <OgreTimer.h>
-#include <OgreTerrain.h>
-#include <OgreTerrainGroup.h>
-#include <OgreRenderWindow.h>
+#include "Terra.h"
+// #include <OgreTerrainGroup.h>
+#include <OgreWindow.h>
 #include <OgreOverlay.h>
 #include <OgreOverlayElement.h>
 #include <OgreMeshManager.h>
@@ -28,33 +26,38 @@
 #include <OgreManualObject.h>
 #include <OgreViewport.h>
 #include <OgreMaterialManager.h>
-#include <OgreTextureManager.h>
+// #include <OgreTextureManager.h>
 #include <OgreResourceGroupManager.h>
 #include <OgreSceneNode.h>
-#include "../ogre/common/MessageBox/MessageBox.h"
-#include "../ogre/common/Instancing.h"
+#include "MessageBox.h"
+// #include "Instancing.h"
 using namespace Ogre;
 using namespace std;
 
 
 //  Create Scene
 //-------------------------------------------------------------------------------------
-void App::createScene()  // once, init
+void App::createScene01()  // once, init
 {
+	LogO(">>>>>>>> Init SR ed --------");
+	
+	//  SR cfg, xmls etc
+	Load();
+
 	//  prv tex
 	int k=1024;
-	prvView.Create(k,k,"PrvView");
-	prvRoad.Create(k,k,"PrvRoad");
-	 prvTer.Create(k,k,"PrvTer");
+	// prvView.Create(k,k,"PrvView");
+	// prvRoad.Create(k,k,"PrvRoad");
+	//  prvTer.Create(k,k,"PrvTer");
 
-	scn->roadDens.Create(k+1,k+1,"RoadDens");
+	/*scn->roadDens.Create(k+1,k+1,"RoadDens");
 	
 	///  ter lay tex
 	for (int i=0; i < 6; ++i)
 	{	String si = toStr(i);
 		scn->texLayD[i].SetName("layD"+si);
 		scn->texLayN[i].SetName("layN"+si);
-	}
+	}*/
 
 
 	//  camera
@@ -65,11 +68,11 @@ void App::createScene()  // once, init
 	//  cam pos from last set
 	mCamera->setPosition(Vector3(pSet->cam_x,pSet->cam_y,pSet->cam_z));
 	mCamera->setDirection(Vector3(pSet->cam_dx,pSet->cam_dy,pSet->cam_dz).normalisedCopy());
-	mViewport->setVisibilityMask(RV_MaskAll);  // hide prv cam rect
+	// mViewport->setVisibilityMask(RV_MaskAll);  // hide prv cam rect
 
 	//  tex fil
-	MaterialManager::getSingleton().setDefaultTextureFiltering(TFO_ANISOTROPIC);
-	MaterialManager::getSingleton().setDefaultAnisotropy(pSet->anisotropy);
+	// MaterialManager::getSingleton().setDefaultTextureFiltering(TFO_ANISOTROPIC);
+	// MaterialManager::getSingleton().setDefaultAnisotropy(pSet->anisotropy);
 
 	Ogre::Timer ti;
 
@@ -158,7 +161,7 @@ void App::NewCommon(bool onlyTerVeget)
 	if (!onlyTerVeget)
 		scn->DestroyWeather();
 
-	mSceneMgr->destroyAllStaticGeometry();
+	// mSceneMgr->destroyAllStaticGeometry();
 	
 	if (!onlyTerVeget)
 	{
@@ -176,9 +179,9 @@ void App::NewCommon(bool onlyTerVeget)
 	resTrk = gcom->TrkDir() + "objects";
 	ResourceGroupManager::getSingleton().addResourceLocation(resTrk, "FileSystem");
 
-	MeshManager::getSingleton().unloadUnreferencedResources();
-	sh::Factory::getInstance().unloadUnreferencedMaterials();
-	TextureManager::getSingleton().unloadUnreferencedResources();
+	// MeshManager::getSingleton().unloadUnreferencedResources();
+	// sh::Factory::getInstance().unloadUnreferencedMaterials();
+	// TextureManager::getSingleton().unloadUnreferencedResources();
 }
 
 ///  Load
@@ -202,7 +205,7 @@ void App::LoadTrackEv()
 	scn->sc->LoadXml(gcom->TrkDir()+"scene.xml");
 	
 	//  water RTT recreate
-	scn->UpdateWaterRTT(mCamera);
+	// scn->UpdateWaterRTT(mCamera);
 	
 	BltWorldInit();
 
@@ -216,20 +219,20 @@ void App::LoadTrackEv()
 
 
 	//  set sky tex name for water
-	sh::MaterialInstance* m = mFactory->getMaterialInstance(scn->sc->skyMtr);
-	std::string skyTex = sh::retrieveValue<sh::StringValue>(m->getProperty("texture"), 0).get();
-	sh::Factory::getInstance().setTextureAlias("SkyReflection", skyTex);
-	sh::Factory::getInstance().setTextureAlias("CubeReflection", "ReflectionCube");
+	// sh::MaterialInstance* m = mFactory->getMaterialInstance(scn->sc->skyMtr);
+	// std::string skyTex = sh::retrieveValue<sh::StringValue>(m->getProperty("texture"), 0).get();
+	// sh::Factory::getInstance().setTextureAlias("SkyReflection", skyTex);
+	// sh::Factory::getInstance().setTextureAlias("CubeReflection", "ReflectionCube");
 
 
 	bNewHmap = false;/**/
-	scn->CreateTerrain(bNewHmap, scn->sc->ter);
+	scn->CreateTerrain(bNewHmap);
 
 
 	//  road ~
 	CreateRoads();
 
-	scn->UpdPSSMMaterials();
+	// scn->UpdPSSMMaterials();
 	
 	//  pace ~ ~
 	scn->pace = new PaceNotes(pSet);
@@ -243,7 +246,7 @@ void App::LoadTrackEv()
 	
 	CreateObjects();
 	
-	if (pSet->bTrees && scn->sc->ter)
+	if (pSet->bTrees)
 		scn->CreateTrees();  // trees after objects so they aren't inside them
 
 
@@ -257,12 +260,12 @@ void App::LoadTrackEv()
 	//UpdStartPos();
 	UpdEditWnds();  //
 
-	try
+	/*try
 	{	TexturePtr tex = TextureManager::getSingleton().getByName("waterDepth.png");
 		if (tex)
 			tex->reload();
 	}catch(...)
-	{	}
+	{	}*/
 
 	gui->Status("#{Loaded}", 0.5,0.7,1.0);
 	
@@ -308,7 +311,7 @@ void App::UpdateTrackEv()
 	NewCommon(true);  // destroy only terrain and veget
 	
 	//CreateFluids();
-	scn->CreateTerrain(bNewHmap,true,false);/**/
+	scn->CreateTerrain(bNewHmap,true);/**/
 
 	//  road ~
 	for (auto r : scn->roads)
@@ -316,7 +319,7 @@ void App::UpdateTrackEv()
 		r->mTerrain = scn->terrain;
 		r->Rebuild(true);
 	}
-	scn->UpdPSSMMaterials();
+	// scn->UpdPSSMMaterials();
 
 	//CreateObjects();
 
@@ -337,9 +340,9 @@ void CGui::btnUpdateLayers(WP)
 		app->mSceneMgr->destroySceneNode(app->ndSky);
 	app->scn->DestroyTerrain();
 
-	app->scn->CreateTerrain(app->bNewHmap,true,false);
+	app->scn->CreateTerrain(app->bNewHmap,true);
 	scn->road->mTerrain = scn->terrain;
-	app->scn->updGrsTer();
+	// app->scn->updGrsTer();
 }
 
 void CGui::btnUpdateGrass(WP)  // TODO: grass only ...
@@ -381,7 +384,7 @@ void App::SaveTrackEv()
 	gui->CreateDir(dir);
 	gui->CreateDir(dir+"/objects");
 
-	if (scn->terrain)
+	/*if (scn->terrain)
 	{	float *fHmap = scn->terrain->getHeightData();
 		int size = scn->sc->td.iVertsX * scn->sc->td.iVertsY * sizeof(float);
 
@@ -390,7 +393,7 @@ void App::SaveTrackEv()
 		of.open(file.c_str(), std::ios_base::binary);
 		of.write((const char*)fHmap, size);
 		of.close();
-	}
+	}*/
 
 	int i = 0;  // all roads
 	for (auto r : scn->roads)
@@ -418,7 +421,7 @@ static Real fTcos[divs+4], fTsin[divs+4];
 
 void App::TerCircleInit()
 {
-	moTerC = mSceneMgr->createManualObject();
+	/*moTerC = mSceneMgr->createManualObject();
 	moTerC->setDynamic(true);
 	moTerC->setCastShadows(false);
 
@@ -441,19 +444,19 @@ void App::TerCircleInit()
 	moTerC->setRenderQueueGroup(RQG_Hud2);
 	moTerC->setVisibilityFlags(RV_Hud);
 	ndTerC = mSceneMgr->getRootSceneNode()->createChildSceneNode(Vector3(0,0,0));
-	ndTerC->attachObject(moTerC);  ndTerC->setVisible(false);
+	ndTerC->attachObject(moTerC);  ndTerC->setVisible(false);*/
 }
 
 
 void App::TerCircleUpd()
 {
-	if (!moTerC || !scn->terrain || !scn->road)  return;
+	/*if (!moTerC || !scn->terrain || !scn->road)  return;
 
 	bool edTer = bEdit() && (edMode < ED_Road) && scn->road->bHitTer;
 	ndTerC->setVisible(edTer);
 	if (!edTer)  return;
 	
-	Real rbr = mBrSize[curBr] * 0.5f * scn->sc->td.fTriangleSize * 0.8f/*?par*/;
+	Real rbr = mBrSize[curBr] * 0.5f * scn->sc->td.fTriangleSize * 0.8f; //par-
 
 	static ED_MODE edOld = ED_ALL;
 	if (edOld != edMode)
@@ -464,6 +467,7 @@ void App::TerCircleUpd()
 		case ED_Filter: moTerC->setMaterialName(0, "circle_filter");  break;
 		case ED_Smooth: moTerC->setMaterialName(0, "circle_smooth");  break;
 		case ED_Height: moTerC->setMaterialName(0, "circle_height");  break;
+		default:  break;
 		}
 	}
 	moTerC->beginUpdate(0);
@@ -477,7 +481,7 @@ void App::TerCircleUpd()
 		moTerC->position(p);  //moTerC->normal(0,1,0);
 		moTerC->textureCoord(d/2*dTc, d%2);
 	}
-	moTerC->end();
+	moTerC->end();*/
 }
 
 

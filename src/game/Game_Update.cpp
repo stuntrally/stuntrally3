@@ -18,6 +18,7 @@
 #include "Road.h"
 #include "PaceNotes.h"
 #include "GraphicsSystem.h"
+#include "BtOgreExtras.h"
 
 #include <OgreVector3.h>
 #include <OgreSceneManager.h>

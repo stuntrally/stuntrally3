@@ -115,6 +115,7 @@ public:
 	
 	//  🏔️ Blendmap, rtt
 	//-----------------------------------
+	void UpdBlendmap() { }  // todo:
 	// void CreateBlendTex(), UpdBlendmap(), UpdLayerPars();
 	// void UpdGrassDens(), UpdGrassPars();
 	

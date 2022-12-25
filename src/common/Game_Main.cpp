@@ -260,7 +260,11 @@ void MainEntryPoints::destroySystems( GameState *graphicsGameState,
 
 const char* MainEntryPoints::getWindowTitle()
 {
+#ifdef SR_EDITOR
+	return "Stunt Rally 3 Track Editor";
+#else
 	return "Stunt Rally 3";
+#endif
 }
 
 

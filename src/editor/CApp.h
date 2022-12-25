@@ -4,9 +4,10 @@
 #include "quaternion.h"
 #include "tracksurface.h"
 #include "SceneXml.h"  //Object-
-#include "PreviewTex.h"
+// #include "PreviewTex.h"
 
-#include <Ogre.h>  //!
+#include <SDL_keycode.h>
+#include <Ogre.h>
 // #include <OgreCommon.h>
 // #include <OgreVector3.h>
 // #include <OgreString.h>
@@ -20,22 +21,24 @@
 const int ciAngSnapsNum = 7;
 const Ogre::Real crAngSnaps[ciAngSnapsNum] = {0,5,15,30,45,90,180};
 
-namespace Ogre  {  class Rectangle2D;  class SceneNode;  class RenderTexture;  }
-namespace sh {  class Factory;  }
+namespace Ogre  {  class Rectangle2D;  class SceneNode;  class RenderTexture;  class Item;
+	class Terra;  class HlmsPbsTerraShadows;  }
 class CScene;  class CGui;  class CGuiCom;
+class GraphicsSystem;
 
 enum ED_OBJ {  EO_Move=0, EO_Rotate, EO_Scale  };
 
 
 class App : public BaseApp
-			// public sh::MaterialListener,
 			// public Ogre::RenderTargetListener
 {
 public:
-	App(class SETTINGS* pSet1);
+	App();
 	virtual ~App();
+	void Load(), LoadData();
+	void LoadDefaultSet(SETTINGS* settings, std::string setFile);
 
-	//class Instanced* inst;
+	GraphicsSystem* mGraphicsSystem =0;
 
 	CScene* scn =0;
 
@@ -62,7 +65,7 @@ public:
 	void UpdWndTitle(), SaveCam();
 
 
-	bool keyPressed(const SDL_KeyboardEvent &arg);
+	void keyPressed(const SDL_KeyboardEvent &arg) override;
 	void keyPressRoad(SDL_Scancode skey);
 	void keyPressObjects(SDL_Scancode skey);
 
@@ -70,12 +73,13 @@ public:
 	enum TrkEvent {  TE_None=0, TE_Load, TE_Save, TE_Update  }
 	eTrkEvent = TE_None;
 
-	virtual void createScene();
-	virtual void destroyScene();
+	void createScene01() override;
+	void destroyScene() override;
 
-	virtual bool frameStarted(const Ogre::FrameEvent& evt);
-	virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
-	virtual bool frameEnded(const Ogre::FrameEvent& evt);
+	void update( float timeSinceLast ) override;
+	// bool frameStarted(const Ogre::FrameEvent& evt);
+	bool frameRenderingQueued(const Ogre::FrameEvent& evt);
+	bool frameEnded(const Ogre::FrameEvent& evt);
 
 	void processMouse(double dt), UpdKeyBar(Ogre::Real dt);
 	Ogre::Vector3 vNew;
@@ -86,7 +90,7 @@ public:
 	void KeyTxtFluids(Ogre::Real q), KeyTxtObjects(), KeyTxtEmitters(Ogre::Real q);
 	
 
-	//  create  . . . . . . . . . . . . . . . . . . . . . . . . 
+	//  🆕 Create  . . . . . . . . . . . . . . . . . . . . . . . . 
 	bool bNewHmap =0, bTrGrUpd =0, bParticles =1;
 	Ogre::String resTrk;  void NewCommon(bool onlyTerVeget);
 
@@ -94,7 +98,7 @@ public:
 	void UpdObjPick(), PickObject(), ToggleObjSim();
 
 
-	///  rnd to tex  minimap  * * * * * * * * *	
+	///  🖼️ rnd to tex  minimap  * * * * * * * * *	
 	Ogre::SceneNode *ndPos =0;
 	Ogre::ManualObject* mpos =0;
 	Ogre::ManualObject* Create2D(const Ogre::String& mat, Ogre::Real s, bool dyn=false);
@@ -125,7 +129,7 @@ public:
 	void updateBrushPrv(bool first=false), updateTerPrv(bool first=false);
 
 	bool bUpdTerPrv =0;
-	Ogre::TextureGpu* brushPrvTex =0, terPrvTex =0;
+	Ogre::TextureGpu* brushPrvTex =0, *terPrvTex =0;
 	const static int BrPrvSize = 128, TerPrvSize = 256;
 
 
@@ -164,9 +168,18 @@ public:
 	float mBrSize[ED_ALL],mBrIntens[ED_ALL], mBrPow[ED_ALL];
 	float mBrFq[ED_ALL],mBrNOf[ED_ALL];  int mBrOct[ED_ALL];
 
-
 	//  brush deform
 	bool getEditRect(Ogre::Vector3& pos, Ogre::Rect& brushrect, Ogre::Rect& maprect, int size, int& cx, int& cy);
+
+
+	//  ⛰️ Terrain  ----
+	Ogre::String mtrName;
+	Ogre::Terra *mTerra = 0;
+	void CreateTerrain(), DestroyTerrain();
+
+	Ogre::SceneNode *nodeTerrain = 0;
+	//  listener to make PBS objects also be affected by terrain's shadows
+	Ogre::HlmsPbsTerraShadows *mHlmsPbsTerraShadows = 0;
 
 	//  terrain edit
 	void deform(Ogre::Vector3 &pos, float dtime, float brMul);
@@ -189,14 +202,14 @@ public:
 	void BltWorldInit(), BltWorldDestroy(), BltClear(), BltUpdate(float dt);
 
 
-	//  tools, road  -in base
+	//  🛠️ Tools, road  -in base
 	void SaveGrassDens(), SaveWaterDepth();
 	void AlignTerToRoad();
 	int iSnap = 0;  Ogre::Real angSnap = 0.f;
 	int iEnd = 0;  // edit: 0 scn->start 1 end
 
 
-	//  box cursors  car start,end,  fluids, objects, emitters
+	//  🚧 box cursors  car start,end,  fluids, objects, emitters
 	void UpdStartPos();
 	void CreateBox(Ogre::SceneNode*& nd, Ogre::Item*& ent, Ogre::String sMat, Ogre::String sMesh, int x=0);
 
@@ -205,12 +218,12 @@ public:
 	void togPrvCam();
 
 
-	//  [Fluids]
+	//  💧 Fluids
 	int iFlCur =0;  bool bRecreateFluids =0;
 	void UpdFluidBox(), UpdMtrWaterDepth();
 	
 
-	//  [Objects]  ----
+	//  📦 Objects  ----
 	ED_OBJ objEd = EO_Move;  // edit mode
 
 	int iObjCur = -1;  // picked id
@@ -232,7 +245,7 @@ public:
 	std::vector<Object> vObjCopy;  // copied objects
 
 
-	//  [Emitters]  ----
+	//  🔥 Emitters  ----
 	ED_OBJ emtEd = EO_Move;  // edit mode
 	int iEmtCur = -1;  // picked id
 	SEmitter emtNew;
@@ -245,7 +258,7 @@ public:
 	bool bRecreateEmitters = 0;
 
 
-	//  [Surfaces]
+	//  Surfaces  ----
 	std::vector <TRACKSURFACE> surfaces;  // all
 	std::map <std::string, int> surf_map;  // name to surface id
 	bool LoadAllSurfaces();

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "pathmanager.h"
+#include "settings.h"
 #include "CScene.h"
 #include "CData.h"
 #include "SceneXml.h"
@@ -7,8 +8,11 @@
 #include "Road.h"
 #include "PaceNotes.h"
 #include "Grass.h"
-#include "CGame.h"
-
+#ifndef SR_EDITOR
+	#include "CGame.h"
+#else
+	#include "CApp.h"
+#endif
 #include <OgreItem.h>
 #include <OgreHlmsPbsPrerequisites.h>
 #include <OgreHlmsPbsDatablock.h>

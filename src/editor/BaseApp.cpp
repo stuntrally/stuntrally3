@@ -1,14 +1,14 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
+#include "Def_Str.h"
 #include "BaseApp.h"
 #include "settings.h"
-#include "../road/Road.h"
+#include "Road.h"
 
 #include <OgreOverlayElement.h>
 #include <OgreCamera.h>
-#include <OgreRenderTarget.h>
-#include <OgreRenderWindow.h>
-#include <OgreTextureManager.h>
+// #include <OgreRenderTarget.h>
+// #include <OgreWindow.h>
+// #include <OgreTextureManager.h>
 #include <OgreMeshManager.h>
 #include <OgreSceneNode.h>
 #include <MyGUI_TextBox.h>
@@ -30,14 +30,14 @@ void BaseApp::updateStats()
 	}
 
 	//  Fps
-	const RenderTarget::FrameStats& stats = mWindow->getStatistics();
+	/*const RenderTarget::FrameStats& stats = mWindow->getStatistics();
 	size_t mem = TextureManager::getSingleton().getMemoryUsage() + MeshManager::getSingleton().getMemoryUsage();
 
 	txFps->setCaption(
 		"#E0F0FF"+(stats.lastFPS >= 200.f ? fToStr(stats.lastFPS,0,4)+"." : fToStr(stats.lastFPS,1,5))+
 		"#B0C0D0"+iToStr(int(stats.triangleCount/1000.f),4)+"k"+
 		" #C8E0FF"+iToStr(stats.batchCount,3)+
-		" #A0B0C8"+iToStr(mem/1024/1024,3)+"M" );
+		" #A0B0C8"+iToStr(mem/1024/1024,3)+"M" );*/
 }
 
 
@@ -73,6 +73,6 @@ bool BaseApp::frameEnded(const FrameEvent& evt)
 
 void BaseApp::UpdWireframe()
 {
-	mCamera->setPolygonMode(mbWireFrame ? PM_WIREFRAME : PM_SOLID);
-	if (ndSky)	ndSky->setVisible(!mbWireFrame);  // hide sky
+	// mCamera->setPolygonMode(mbWireFrame ? PM_WIREFRAME : PM_SOLID);
+	// if (ndSky)	ndSky->setVisible(!mbWireFrame);  // hide sky
 }

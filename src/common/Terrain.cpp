@@ -110,12 +110,14 @@ void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
 	
 	
 	   	//**  new  .. GetTerMtrIds() from blendmap ..
+	#ifndef SR_EDITOR
 		int size2 = wxy;
 		app->blendMtr.resize(size2);
 		// memset(app->blendMtr,0,size2);  // zero
 
 		app->blendMapSize = wx;
 		// sc->td.layersAll[0].surfId = 0;  //par ter mtr..
+	#endif
 	}
 
 
@@ -137,13 +139,13 @@ void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
 
 
 //  save ter hmap to mem (all editing would be lost)
-/*void CScene::copyTerHmap()
+void CScene::copyTerHmap()
 {
 	if (!terrain) return;
-	float *fHmap = terrain->getHeightData();
-	int size = sc->td.iVertsX * sc->td.iVertsY * sizeof(float);
-	memcpy(sc->td.hfHeight, fHmap, size);
-}*/
+	//; float *fHmap = terrain->getHeightData();
+	// int size = sc->td.iVertsX * sc->td.iVertsY * sizeof(float);
+	// memcpy(sc->td.hfHeight, fHmap, size);
+}
 
 
 //  Destroy

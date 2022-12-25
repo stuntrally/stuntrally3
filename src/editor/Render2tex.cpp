@@ -1,13 +1,13 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/RenderConst.h"
-#include "../ogre/common/GuiCom.h"
-#include "../ogre/common/CScene.h"
+#include "Def_Str.h"
+#include "RenderConst.h"
+#include "GuiCom.h"
+#include "CScene.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../road/Road.h"
-#include "../vdrift/pathmanager.h"
+#include "Road.h"
+#include "pathmanager.h"
 
 #include <btBulletCollisionCommon.h>
 #include <btBulletDynamicsCommon.h>
@@ -15,14 +15,14 @@
 
 #include <OgrePrerequisites.h>
 #include <OgreTimer.h>
-#include <OgreTerrain.h>
-#include <OgreRenderWindow.h>
+// #include <OgreTerrain.h>
+#include <OgreWindow.h>
 #include <OgreManualObject.h>
-#include <OgreHardwarePixelBuffer.h>
-#include <OgreRectangle2D.h>
+// #include <OgreHardwarePixelBuffer.h>
+#include <OgreRectangle2D2.h>
 #include <OgreCamera.h>
-#include <OgreTextureManager.h>
-#include <OgreRenderTexture.h>
+#include <OgreTextureGpuManager.h>
+// #include <OgreRenderTexture.h>
 #include <OgreViewport.h>
 #include <OgreMaterialManager.h>
 #include <OgreSceneNode.h>
@@ -35,6 +35,7 @@ using namespace Ogre;
 // . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 void App::Rnd2TexSetup()
 {
+#if 0
 	///  RT:  0 road minimap,  1 road for grass,  2 terrain minimap,  3 track preview full
 	const uint32 visMask[RT_Last] =
 		{ RV_Road, RV_Road+RV_Objects, RV_Terrain+RV_Objects, RV_MaskAll-RV_Hud };
@@ -46,7 +47,7 @@ void App::Rnd2TexSetup()
 	xm1 = 1-sz/asp, ym1 = -1+sz, xm2 = 1.0, ym2 = -1.0;
 	AxisAlignedBox aab;  aab.setInfinite();
 	
-	TexturePtr texture[RT_Last];
+	TextureGpu* texture[RT_Last];
 	for (int i=0; i < RT_ALL; ++i)
 	{
 		SRndTrg& r = rt[i];  bool full = i==RT_View;
@@ -55,13 +56,13 @@ void App::Rnd2TexSetup()
 		{
 			String sTex = "RttTex"+si, sCam = "RttCam"+si;
 
-			if (TextureManager::getSingleton().resourceExists(sTex))
-				TextureManager::getSingleton().remove(sTex);
+			if (TextureGpuManager::getSingleton().resourceExists(sTex))
+				TextureGpuManager::getSingleton().remove(sTex);
 			mSceneMgr->destroyCamera(sCam);  // dont destroy old - const tex sizes opt..
 			
 			///  rnd to tex - same dim as Hmap	// after track load
 			Real fDim = scn->sc->td.fTerWorldSize;  // world dim
-			texture[i] = TextureManager::getSingleton().createManual(
+			texture[i] = TextureGpuManager::getSingleton().createManual(
 				sTex, rgDef, TEX_TYPE_2D, dim[i], dim[i], 0,
 				i == RT_View || i == RT_Terrain ? PF_R8G8B8 : PF_R8G8B8A8, TU_RENDERTARGET);
 				  
@@ -126,6 +127,7 @@ void App::Rnd2TexSetup()
 	}
 	if (ndPos)   ndPos->setVisible(pSet->trackmap);
 	UpdMiniVis();
+#endif
 }
 
 void App::UpdMiniVis()
@@ -140,6 +142,7 @@ void App::UpdMiniVis()
 ///  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 void App::SaveGrassDens()
 {
+	#if 0
 	Ogre::Timer ti;
 
 	for (int i=0; i < RT_View; ++i)  //-1 preview camera manual
@@ -210,12 +213,13 @@ void App::SaveGrassDens()
 	rt[RT_Terrain].tex->writeContentsToFile(path + "/preview/terrain.jpg");
 
 	LogO(String("::: Time save prv : ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	#endif
 }
 
 
 ///  pre and post  rnd to tex
 //-----------------------------------------------------------------------------------------------------------
-void App::preRenderTargetUpdate(const RenderTargetEvent &evt)
+/*void App::preRenderTargetUpdate(const RenderTargetEvent &evt)
 {
 	const String& s = evt.source->getName();
 	int num = atoi(s.substr(s.length()-1, s.length()-1).c_str());
@@ -247,7 +251,7 @@ void App::postRenderTargetUpdate(const RenderTargetEvent &evt)
 	//mCamera->setNearClipDistance(0.1f);
 	//UpdPSSMMaterials();
 }
-
+*/
 
 ///  save water depth map
 //-----------------------------------------------------------------------------------------------------------
@@ -287,8 +291,8 @@ void App::SaveWaterDepth()
 			if (wx > fb.pos.x - sizex && wx < fb.pos.x + sizex &&
 				wz > fb.pos.z - sizez && wz < fb.pos.z + sizez)
 			{
-				float f = fb.pos.y - scn->terrain->getHeightAtTerrainPosition(fx,fz);
-				if (f > fa)  fa = f;
+				// float f = fb.pos.y - scn->terrain->getHeight(fx,fz);
+				// if (f > fa)  fa = f;
 			}
 		}		//par
 		fd = fa * 0.4f * 255.f;  // depth far  full at 2.5 m
@@ -297,10 +301,10 @@ void App::SaveWaterDepth()
 		ia = std::max(0, std::min(255, (int)fa ));  // clamp
 		id = std::max(0, std::min(255, (int)fd ));
 		
-		wd[a] = 0xFF000000 + /*0x01 */ ia + 0x0100 * id;  // write
+		// wd[a] = 0xFF000000 + /*0x01 */ ia + 0x0100 * id;  // write
 	}	}
 
-	Image im;  // save img
+	/*Image im;  // save img
 	im.loadDynamicImage((uchar*)wd, w,h,1, PF_BYTE_RGBA);
 	im.save(gcom->TrkDir()+"objects/waterDepth.png");
 	delete[] wd;
@@ -311,7 +315,7 @@ void App::SaveWaterDepth()
 		tex->reload();
 	else  // 1st fluid after start, refresh matdef ?..
 		TextureManager::getSingleton().load("waterDepth.png", rgDef);
-	} catch(...) {  }
+	} catch(...) {  }*/
 
 	LogO(String("::: Time WaterDepth: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
@@ -367,7 +371,7 @@ void App::AlignTerToRoad()
 	road->RebuildRoadInt(true);
 
 	//  terrain
-	float *fHmap = scn->terrain->getHeightData();
+	float *fHmap = 0; //; ! scn->terrain->getHeightData();
 	const int w = scn->sc->td.iVertsX, h = w;
 	const float fh = h-1, fw = w-1;
 
@@ -466,7 +470,7 @@ void App::AlignTerToRoad()
 
 
 	//  update terrain
-	scn->terrain->dirty();  //rect..
+	// scn->terrain->dirty();  //rect..
 	scn->UpdBlendmap();
 	bTerUpd = true;
 

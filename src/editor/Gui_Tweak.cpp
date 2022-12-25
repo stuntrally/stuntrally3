@@ -1,16 +1,15 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/Gui_Def.h"
-#include "../ogre/common/GuiCom.h"
-#include "../vdrift/pathmanager.h"
+#include "Def_Str.h"
+#include "Gui_Def.h"
+#include "GuiCom.h"
+#include "pathmanager.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../ogre/common/MultiList2.h"
-#include "../ogre/common/Slider.h"
-#include "../shiny/Main/Factory.hpp"
-#include <boost/algorithm/string.hpp>
-#include <boost/lexical_cast.hpp>
+#include "MultiList2.h"
+#include "Slider.h"
+// #include <boost/algorithm/string.hpp>
+// #include <boost/lexical_cast.hpp>
 #include <MyGUI.h>
 using namespace MyGUI;
 using namespace Ogre;
@@ -20,7 +19,7 @@ using namespace Ogre;
 //------------------------------------------------------------------------------------------------------------
 void CGui::CreateGUITweakMtr()
 {
-	ScrollView* view = app->mGui->findWidget<ScrollView>("TweakView",false);
+	/*ScrollView* view = app->mGui->findWidget<ScrollView>("TweakView",false);
 	if (!view)  return;
 	
 	//  clear last view
@@ -92,7 +91,7 @@ void CGui::CreateGUITweakMtr()
 	view->setCanvasSize(1300, y+1000);  //par-
 	view->setCanvasAlign(Align::Default);
 
-	gcom->doSizeGUI(view->getEnumerator());
+	gcom->doSizeGUI(view->getEnumerator());*/
 }
 
 //  gui change val events
@@ -124,7 +123,7 @@ void CGui::edTweak(EditPtr ed)
 //-----------------------------------------------------------------
 void CGui::TweakSetMtrPar(std::string name, float val)
 {
-	std::string prop = name.substr(0,name.length()-4);  // cut ending, eg :2.1
+	/*std::string prop = name.substr(0,name.length()-4);  // cut ending, eg :2.1
 	
 	int id = -1, size = 1;
 	if (name.substr(name.length()-2,1) == ".")  // more than 1 float
@@ -158,7 +157,7 @@ void CGui::TweakSetMtrPar(std::string name, float val)
 				mat->setProperty(prop, sh::makeProperty<sh::Vector4>(new sh::Vector4(v.mX, v.mY, v.mZ, v.mW)));
 			}	break;
 		}
-	}
+	}*/
 }
 
 //  pick material from combo

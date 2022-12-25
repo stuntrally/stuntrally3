@@ -1,20 +1,21 @@
 #include "pch.h"
-#include "../ogre/common/RenderConst.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/CScene.h"
+#include "RenderConst.h"
+#include "Def_Str.h"
+#include "CScene.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include <OgreTerrain.h>
-#include <OgreHardwarePixelBuffer.h>
+// #include <OgreTerrain.h>
+// #include <OgreHardwarePixelBuffer.h>
 //#include "../settings.h"
-#include <MyGUI.h>
 #include <OgreTimer.h>
 #include <OgreOverlay.h>
 #include <OgreOverlayElement.h>
-#include <OgreTextureManager.h>
-#include <OgreMaterialManager.h>
+// #include <OgreTextureManager.h>
+// #include <OgreMaterialManager.h>
 #include <OgreTechnique.h>
+#include "Terra.h"
+#include <MyGUI.h>
 using namespace Ogre;
 
 
@@ -58,6 +59,7 @@ static float GetAngle(float x, float y)
 //--------------------------------------------------------------------------------------------------------------------------
 void App::updateBrushPrv(bool first)
 {
+#if 0
 	if (!first && (!ovBrushPrv || edMode >= ED_Road /*|| bMoveCam/*|| !bEdit()*/))  return;
 	if (!pSet->brush_prv || !brushPrvTex)  return;
 
@@ -139,6 +141,7 @@ void App::updateBrushPrv(bool first)
 		}	break;
 	}
 	pbuf->unlock();
+#endif
 }
 
 ///  fill brush data (shape), after size change
@@ -258,7 +261,7 @@ void CGui::btnTerGenerate(WP wp)
 	if (n == "TerrainGenSub")  sub = true;/*else
 	if (n == "TerrainGenMul")  mul = true;*/
 
-	float* hfData = sc->td.hfHeight; //, *hfAng = sc->td.hfAngle;
+	float* hfData = &sc->td.hfHeight[0]; //, *hfAng = sc->td.hfAngle;
 	const int sx = sc->td.iVertsX;  // sx=sy
 	const float s = sx * 0.5f, s1 = 1.f/s;
 	const float ox = pSet->gen_ofsx, oy = pSet->gen_ofsy;
@@ -267,13 +270,13 @@ void CGui::btnTerGenerate(WP wp)
 	bool bRoad = pSet->gen_roadsm > 0.1f;
 	float rdPow = pSet->gen_roadsm;  //-
 	int r = 0;
-	Image imgRoad;
+	/*Image2 imgRoad;
 	if (bRoad)
 	{
 		try {	imgRoad.load(String("roadDensity.png"),"General");  }
 		catch(...) {	}
 		r = imgRoad.getWidth();
-	}
+	}*/
 
 	Ogre::Timer ti;
 
@@ -293,8 +296,8 @@ void CGui::btnTerGenerate(WP wp)
 		{
 			int mx = ( fx+1.f)*0.5f*r, my = (-fy+1.f)*0.5f*r;
 					
-			float cr = imgRoad.getColourAt(
-				std::max(0,std::min(r-1, mx)), std::max(0,std::min(r-1, my)), 0).r;
+			float cr = 0.f;//; imgRoad.getColourAt(
+				// std::max(0,std::min(r-1, mx)), std::max(0,std::min(r-1, my)), 0).r;
 
 			//c = c + std::max(0.f, std::min(1.f, 2*c-cr)) * pow(cr, rdPow);
 			c *= pow(cr, rdPow);
@@ -325,7 +328,7 @@ void CGui::btnTerGenerate(WP wp)
 //--------------------------------------------------------------------------------------------------------------------------
 void App::updateTerPrv(bool first)
 {
-	if (!first && !ovTerPrv)  return;
+	/*if (!first && !ovTerPrv)  return;
 	if (!terPrvTex)  return;
 
 	HardwarePixelBufferSharedPtr pbuf = terPrvTex->getBuffer();
@@ -352,7 +355,7 @@ void App::updateTerPrv(bool first)
 		uint8 bR = c * fR[i], bG = c * fG[i], bB = c * fB[i];
 		*p++ = bR;  *p++ = bG;  *p++ = bB;  *p++ = 255;//bG > 32 ? 255 : 0;
 	}
-	pbuf->unlock();
+	pbuf->unlock();*/
 }
 
 
@@ -417,11 +420,12 @@ bool App::getEditRect(Vector3& pos, Rect& rcBrush, Rect& rcMap, int size,  int& 
 //-----------------------------------------------------------------------------------------------
 void App::deform(Vector3 &pos, float dtime, float brMul)
 {
+	return;  //;
 	Rect rcBrush, rcMap;  int cx,cy;
 	if (!getEditRect(pos, rcBrush, rcMap, scn->sc->td.iTerSize, cx,cy))
 		return;
 	
-	float *fHmap = scn->terrain->getHeightData();
+	float *fHmap = 0; //; scn->terrain->getHeightData();
 	
 	float its = mBrIntens[curBr] * dtime * brMul;
 	int mapPos, brPos, jj = cy;
@@ -439,7 +443,7 @@ void App::deform(Vector3 &pos, float dtime, float brMul)
 			++mapPos;  ++brPos;
 		}
 	}
-	scn->terrain->dirtyRect(rcMap);
+	// scn->terrain->dirtyRect(rcMap);
 	scn->UpdBlendmap();
 	bTerUpd = true;
 }
@@ -449,11 +453,12 @@ void App::deform(Vector3 &pos, float dtime, float brMul)
 //-----------------------------------------------------------------------------------------------
 void App::height(Vector3 &pos, float dtime, float brMul)
 {
+	return;  //;
 	Rect rcBrush, rcMap;  int cx,cy;
 	if (!getEditRect(pos, rcBrush, rcMap, scn->sc->td.iTerSize, cx,cy))
 		return;
 	
-	float *fHmap = scn->terrain->getHeightData();
+	float *fHmap = 0; //; scn->terrain->getHeightData();
 		
 	float its = mBrIntens[curBr] * dtime * brMul;
 	int mapPos, brPos, jj = cy;
@@ -471,7 +476,7 @@ void App::height(Vector3 &pos, float dtime, float brMul)
 			++mapPos;  ++brPos;
 		}
 	}
-	scn->terrain->dirtyRect(rcMap);
+	// scn->terrain->dirtyRect(rcMap);
 	scn->UpdBlendmap();
 	bTerUpd = true;
 }
@@ -491,11 +496,12 @@ void App::smooth(Vector3 &pos, float dtime)
 
 void App::calcSmoothFactor(Vector3 &pos, float& avg, int& sample_count)
 {
+	return;  //;
 	Rect rcBrush, rcMap;  int cx,cy;
 	if (!getEditRect(pos, rcBrush, rcMap, scn->sc->td.iTerSize, cx,cy))
 		return;
 	
-	float *fHmap = scn->terrain->getHeightData();
+	float *fHmap = 0; //; scn->terrain->getHeightData();
 	int mapPos;
 
 	avg = 0.0f;  sample_count = 0;
@@ -514,11 +520,12 @@ void App::calcSmoothFactor(Vector3 &pos, float& avg, int& sample_count)
 //-----------------------------------------------------------------------------------------------
 void App::smoothTer(Vector3 &pos, float avg, float dtime)
 {
+	return;  //;
 	Rect rcBrush, rcMap;  int cx,cy;
 	if (!getEditRect(pos, rcBrush, rcMap, scn->sc->td.iTerSize, cx,cy))
 		return;
 	
-	float *fHmap = scn->terrain->getHeightData();
+	float *fHmap = 0; //; cn->terrain->getHeightData();
 	float mRatio = 1.f, brushPos;
 	int mapPos;
 	float mFactor = mBrIntens[curBr] * dtime * 0.1f;
@@ -539,7 +546,7 @@ void App::smoothTer(Vector3 &pos, float avg, float dtime)
 			brushPos += mRatio;
 		}
 	}
-	scn->terrain->dirtyRect(rcMap);
+	// scn->terrain->dirtyRect(rcMap);
 	scn->UpdBlendmap();
 	bTerUpd = true;
 }
@@ -549,11 +556,12 @@ void App::smoothTer(Vector3 &pos, float avg, float dtime)
 //-----------------------------------------------------------------------------------------------
 void App::filter(Vector3 &pos, float dtime, float brMul)
 {
+	return;  //;
 	Rect rcBrush, rcMap;  int cx,cy;
 	if (!getEditRect(pos, rcBrush, rcMap, scn->sc->td.iTerSize, cx,cy))
 		return;
 	
-	float *fHmap = scn->terrain->getHeightData();
+	float *fHmap = 0; //; scn->terrain->getHeightData();
 	
 	float its = mBrIntens[curBr] * dtime * std::min(1.f,brMul);  //mul >1 errors
 	int mapPos, brPos, jj = cy,
@@ -581,7 +589,7 @@ void App::filter(Vector3 &pos, float dtime, float brMul)
 		}
 	}
 
-	scn->terrain->dirtyRect(rcMap);
+	// scn->terrain->dirtyRect(rcMap);
 	scn->UpdBlendmap();
 	bTerUpd = true;
 }
@@ -593,7 +601,7 @@ void App::filter(Vector3 &pos, float dtime, float brMul)
 void App::createBrushPrv()
 {
 	//  brush
-	brushPrvTex = TextureManager::getSingleton().createManual(
+	/*brushPrvTex = TextureManager::getSingleton().createManual(
 		"BrushPrvTex", rgDef, TEX_TYPE_2D,
 		BrPrvSize,BrPrvSize,0, PF_BYTE_RGBA, TU_DYNAMIC);
 	 	
@@ -624,5 +632,5 @@ void App::createBrushPrv()
 	if (ovTerMtr)
 		ovTerMtr->setMaterialName("TerPrvMtr");
 
-	updateTerPrv(true);
+	updateTerPrv(true);*/
 }

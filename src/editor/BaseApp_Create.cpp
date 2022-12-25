@@ -1,32 +1,29 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
+#include "Def_Str.h"
 #include "settings.h"
 #include "BaseApp.h"
 #include "CApp.h" //
-#include "../vdrift/pathmanager.h"
-#include "../ogre/Localization.h"
+#include "pathmanager.h"
+// #include "Localization.h"
 
-#include <boost/thread.hpp>
-#include <boost/filesystem.hpp>
+#include <thread>
+#include <filesystem>
 #include <OgreConfigFile.h>
-#if OGRE_VERSION >= MYGUI_DEFINE_VERSION(1, 9, 0) 
 #include <OgreOverlaySystem.h>
-#endif
 #include <OgreOverlay.h>
 #include <OgreOverlayElement.h>
 #include <OgreOverlayManager.h>
 #include <OgreTimer.h>
-#include "../sdl4ogre/sdlinputwrapper.hpp"
-#include "../sdl4ogre/sdlcursormanager.hpp"
-#include "../sdl4ogre/sdlwindowhelper.hpp"
-#include "../ogre/common/PointerFix.h"
+// #include "PointerFix.h"
 #include <MyGUI_PointerManager.h>
 #include <MyGUI_Gui.h>
 #include <MyGUI_InputManager.h>
 #include <MyGUI_FactoryManager.h>
 #include <MyGUI_ImageBox.h>
 #include <MyGUI_TextBox.h>
-#include <OgreWindowEventUtilities.h>
+#include <MyGUI_Ogre2Platform.h>
+#include <SDL_events.h>
+// #include <OgreWindowEventUtilities.h>
 using namespace std;
 using namespace Ogre;
 using namespace MyGUI;
@@ -75,7 +72,7 @@ namespace
 }
 
 
-
+/*
 //  Camera
 //-------------------------------------------------------------------------------------
 void BaseApp::createCamera()
@@ -146,23 +143,24 @@ void BaseApp::Run( bool showDialog )
 
 	destroyScene();
 }
+*/
 
 //  dtor
 //-------------------------------------------------------------------------------------
 BaseApp::~BaseApp()
 {
-	delete mCursorManager;  mCursorManager = 0;
-	delete mInputWrapper;  mInputWrapper = 0;
+	// delete mCursorManager;  mCursorManager = 0;
+	// delete mInputWrapper;  mInputWrapper = 0;
 	
 	if (mGui)  {
 		mGui->shutdown();	delete mGui;	mGui = 0;  }
 	if (mPlatform)  {
 		mPlatform->shutdown();	delete mPlatform;	mPlatform = 0;  }
 
-	OGRE_DELETE mRoot;
+	// OGRE_DELETE mRoot;
 }
 
-
+#if 0
 //  config
 //-------------------------------------------------------------------------------------
 bool BaseApp::configure()
@@ -326,90 +324,79 @@ void BaseApp::setupResources()
 				PATHMANAGER::Data() + "/" + archName, typeName, secName);
 		}
 	}
-
-#if defined(OGRE_VERSION) && OGRE_VERSION >= 0x10C00
-	using namespace Ogre;
-    // create stubs for Ogre 1.12 core shaders (unused by stuntrally)
-    auto& gpm = HighLevelGpuProgramManager::getSingleton();
-    for(auto name : {"PointLight", "DirLight", "PointLightFinite", "DirLightFinite"})
-        gpm.createProgram("Ogre/ShadowExtrude"+String(name), "OgreInternal", "unified", GPT_VERTEX_PROGRAM);
-    gpm.createProgram("Ogre/ShadowBlendVP", "OgreInternal", "unified", GPT_VERTEX_PROGRAM);
-    gpm.createProgram("Ogre/ShadowBlendFP", "OgreInternal", "unified", GPT_FRAGMENT_PROGRAM);
-#endif
-#if defined(OGRE_MIN_VERSION)
-#if OGRE_MIN_VERSION(13, 3, 0)
-	auto& matm = MaterialManager::getSingleton();
-	for (auto name : {"Ogre/Debug/ShadowVolumes", "Ogre/StencilShadowVolumes", "Ogre/StencilShadowModulationPass", "Ogre/TextureShadowCaster"})
-	{
-		auto mat = matm.create(name, "OgreInternal");
-		mat->createTechnique()->createPass()->setVertexProgram("Ogre/ShadowBlendVP");
-	}
-#endif
-#endif
 }
 
 void BaseApp::loadResources()
 {
 	ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 }
-
+#endif
 
 //  key, mouse, window
 //-------------------------------------------------------------------------------------
 
-bool BaseApp::keyReleased( const SDL_KeyboardEvent &arg )
+/*void BaseApp::keyReleased( const SDL_KeyboardEvent &arg )
 {
 	//if (bGuiFocus)
-		MyGUI::InputManager::getInstance().injectKeyRelease(MyGUI::KeyCode::Enum(mInputWrapper->sdl2OISKeyCode(arg.keysym.sym)));
-	return true;
-}
+		// MyGUI::InputManager::getInstance().injectKeyRelease(
+		// 	MyGUI::KeyCode::Enum(mInputWrapper->sdl2OISKeyCode(arg.keysym.sym)));
+}*/
 
 void BaseApp::textInput(const SDL_TextInputEvent &arg)
 {
-	const char* text = &arg.text[0];
+	/*const char* text = &arg.text[0];
 	if (*text == '`')  return;
 	std::vector<unsigned long> unicode = utf8ToUnicode(string(text));
 	if (bGuiFocus)
 	for (auto it = unicode.begin(); it != unicode.end(); ++it)
-		MyGUI::InputManager::getInstance().injectKeyPress(MyGUI::KeyCode::None, *it);
+		MyGUI::InputManager::getInstance().injectKeyPress(MyGUI::KeyCode::None, *it);*/
 }
 
 
 //  Mouse
 //-------------------------------------------------------------------------------------
-bool BaseApp::mouseMoved( const SFO::MouseMotionEvent &arg )
+void BaseApp::mouseMoved( const SDL_Event &arg )
 {
-	mx += arg.xrel;  my += arg.yrel;
-	int dz = arg.zrel / 50;
-	if (dz != 0)
-		mz += dz > 0 ? 1 : -1;
+	static int xAbs = 0, yAbs = 0, whAbs = 0;  // abs
+	int xRel = 0, yRel = 0, whRel = 0;  // rel
+
+	if (arg.type == SDL_MOUSEMOTION)
+	{
+		xAbs = arg.motion.x;  xRel = arg.motion.xrel;
+		yAbs = arg.motion.y;  yRel = arg.motion.yrel;
+	}
+	else if (arg.type == SDL_MOUSEWHEEL)
+	{
+		whRel = arg.wheel.y;  whAbs += whRel;
+	}
+
 	//if (bGuiFocus)
-		MyGUI::InputManager::getInstance().injectMouseMove(arg.x, arg.y, arg.z);
-	return true;
+		MyGUI::InputManager::getInstance().injectMouseMove( xAbs, yAbs, whAbs );
 }
 
-bool BaseApp::mousePressed( const SDL_MouseButtonEvent &arg, Uint8 id )
+void BaseApp::mousePressed( const SDL_MouseButtonEvent &arg, Uint8 id )
 {
 	if (bGuiFocus)
-		MyGUI::InputManager::getInstance().injectMousePress(arg.x, arg.y, sdlButtonToMyGUI(id));
-	if (id == SDL_BUTTON_LEFT)			mbLeft = true;
+		MyGUI::InputManager::getInstance().injectMousePress(
+			arg.x, arg.y, sdlButtonToMyGUI(id));
+
+	if      (id == SDL_BUTTON_LEFT)		mbLeft = true;
 	else if (id == SDL_BUTTON_RIGHT)	mbRight = true;
 	else if (id == SDL_BUTTON_MIDDLE)	mbMiddle = true;
-	return true;
-
 }
 
-bool BaseApp::mouseReleased( const SDL_MouseButtonEvent &arg, Uint8 id )
+void BaseApp::mouseReleased( const SDL_MouseButtonEvent &arg, Uint8 id )
 {
 	//if (bGuiFocus)
-		MyGUI::InputManager::getInstance().injectMouseRelease(arg.x, arg.y, sdlButtonToMyGUI(id));
-	if (id == SDL_BUTTON_LEFT)			mbLeft = false;
+		MyGUI::InputManager::getInstance().injectMouseRelease(
+			arg.x, arg.y, sdlButtonToMyGUI(id));
+
+	if      (id == SDL_BUTTON_LEFT)		mbLeft = false;
 	else if (id == SDL_BUTTON_RIGHT)	mbRight = false;
 	else if (id == SDL_BUTTON_MIDDLE)	mbMiddle = false;
-	return true;
 }
 
-
+/*
 void BaseApp::onCursorChange(const string &name)
 {
 	if (!mCursorManager->cursorChanged(name))
@@ -452,7 +439,7 @@ void BaseApp::windowClosed()
 {
 	Root::getSingleton().queueEndRendering();
 }
-
+*/
 
 ///  base Init Gui
 //--------------------------------------------------------------------------------------------------------------
@@ -460,27 +447,30 @@ void BaseApp::baseInitGui()
 {
 	using namespace MyGUI;
 	//  Gui
-	mPlatform = new OgrePlatform();
+	mPlatform = new Ogre2Platform();
 
-	mPlatform->initialise(mWindow, mSceneMgr, "General", PATHMANAGER::UserConfigDir() + "/MyGUI.log");
+	mPlatform->initialise(
+		mWindow, mSceneMgr, // mGraphicsSystem->getSceneManager(),
+		"Essential",
+		PATHMANAGER::UserConfigDir() + "/MyGUI.log");
 	mGui = new Gui();
 
-	mGui->initialise("");
+	mGui->initialise("core.xml");
 
-	FactoryManager::getInstance().registerFactory<ResourceImageSetPointerFix>("Resource", "ResourceImageSetPointer");
-	MyGUI::ResourceManager::getInstance().load("core.xml");
+	// FactoryManager::getInstance().registerFactory<ResourceImageSetPointerFix>("Resource", "ResourceImageSetPointer");
+	// MyGUI::ResourceManager::getInstance().load("core.xml");
 
-	PointerManager::getInstance().eventChangeMousePointer += newDelegate(this, &BaseApp::onCursorChange);
+	// PointerManager::getInstance().eventChangeMousePointer += newDelegate(this, &BaseApp::onCursorChange);
 	PointerManager::getInstance().setVisible(false);
 	
 	//------------------------ lang
-	if (pSet->language == "")  // autodetect
+	/*if (pSet->language == "")  // autodetect
 	{	pSet->language = getSystemLanguage();
 		setlocale(LC_NUMERIC, "C");  }
 	
 	if (!boost::filesystem::exists(PATHMANAGER::Data() + "/gui/core_language_" + pSet->language + "_tag.xml"))
 		pSet->language = "en";  // use en if not found
-	
+	*/
 	LanguageManager::getInstance().setCurrentLanguage(pSet->language);
 	//------------------------
 

@@ -1,26 +1,29 @@
 #pragma once
-#include "../ogre/common/Gui_Def.h"
-#include <Ogre.h>
+#include "Gui_Def.h"
+#include "GameState.h"
+
+#include <Ogre.h>  //!
 // #include <OgreVector3.h>
 // #include <OgreString.h>
 // #include <OgreFrameListener.h>
-#include "../sdl4ogre/events.h"
+// #include "../sdl4ogre/events.h"
 #include "enums.h"
+
 struct SDL_Window;
-namespace SFO  {  class InputWrapper;  class SDLCursorManager;  }
-namespace MyGUI{  class OgreD3D11Platform;  class OgrePlatform;  }
-namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class RenderWindow;
+// namespace SFO  {  class InputWrapper;  class SDLCursorManager;  }
+namespace MyGUI{  class Ogre2Platform;  }
+namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class Window;
 	class Viewport;  class Camera;  class Overlay;  class OverlayElement;  }
 class SplineRoad;  class SETTINGS;
 	
 
-class BaseApp : public BGui,
-		public Ogre::FrameListener,
-		public SFO::KeyListener, public SFO::MouseListener, public SFO::WindowListener
+class BaseApp : public BGui, public GameState
+		// public Ogre::FrameListener,
+		// public SFO::KeyListener, public SFO::MouseListener, public SFO::WindowListener
 {
 public:
 	virtual ~BaseApp();
-	virtual void Run( bool showDialog );
+	// virtual void Run( bool showDialog );
 
 	friend class CGui;
 	friend class CGuiCom;
@@ -32,7 +35,7 @@ public:
 	Ogre::SceneNode* ndSky =0;  //- out to CScene?
 	
 	// stuff to be executed in App after BaseApp init
-	virtual void postInit() = 0;
+	// virtual void postInit() = 0;
 
 	bool mShutDown =0;
 protected:	
@@ -42,29 +45,39 @@ protected:
 	bool bFirstRenderFrame =1;
 	
 	///  create
-	virtual void createScene() = 0;
-	virtual void destroyScene() = 0;
+	// virtual void createScene() = 0;
+	// virtual void destroyScene() = 0;
 
-	void createCamera(), createFrameListener();
+	// void createCamera(), createFrameListener();
 	void setupResources(), loadResources();
 
 	///  frame events
-	virtual bool frameStarted(const Ogre::FrameEvent& evt);
-	virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
-	virtual bool frameEnded(const Ogre::FrameEvent& evt);
+	bool frameStarted(const Ogre::FrameEvent& evt);
+	bool frameRenderingQueued(const Ogre::FrameEvent& evt);
+	bool frameEnded(const Ogre::FrameEvent& evt);
 	
 	///  input events
-	virtual bool keyPressed( const SDL_KeyboardEvent &arg) =0;
-	bool keyReleased(const SDL_KeyboardEvent &arg);
-	bool mouseMoved( const SFO::MouseMotionEvent &arg );
-	bool mousePressed( const SDL_MouseButtonEvent &arg, Uint8 id );
-	bool mouseReleased(const SDL_MouseButtonEvent &arg, Uint8 id );
-	void textInput(const SDL_TextInputEvent &arg);
+	//Receives SDL_MOUSEMOTION and SDL_MOUSEWHEEL events
+	void mouseMoved( const SDL_Event &arg ) override;
+	void mousePressed( const SDL_MouseButtonEvent &arg, Ogre::uint8 id ) override;
+	void mouseReleased( const SDL_MouseButtonEvent &arg, Ogre::uint8 id ) override;
+
+	// void textEditing( const SDL_TextEditingEvent& arg ) override;
+	void textInput( const SDL_TextInputEvent& arg ) override;
+	// void keyPressed( const SDL_KeyboardEvent &arg ) override;
+	// void keyReleased (const SDL_KeyboardEvent &arg ) override;
+
+	// virtual bool keyPressed( const SDL_KeyboardEvent &arg) =0;
+	// bool keyReleased(const SDL_KeyboardEvent &arg);
+	// bool mouseMoved( const SFO::MouseMotionEvent &arg );
+	// bool mousePressed( const SDL_MouseButtonEvent &arg, Uint8 id );
+	// bool mouseReleased(const SDL_MouseButtonEvent &arg, Uint8 id );
+	// void textInput(const SDL_TextInputEvent &arg);
 
 	void onCursorChange(const std::string& name);
 
-	virtual void windowResized(int x, int y);
-	virtual void windowClosed();
+	// virtual void windowResized(int x, int y);
+	// virtual void windowClosed();
 
 	///  Ogre
 public:
@@ -72,15 +85,15 @@ public:
 protected:	
 	Ogre::SceneManager* mSceneMgr =0;
 	Ogre::Viewport* mViewport =0;
-	Ogre::RenderWindow* mWindow =0;
+	Ogre::Window* mWindow =0;
 	SDL_Window* mSDLWindow =0;
 	Ogre::Camera* mCamera =0;
 	Ogre::Vector3 mCamPosOld, mCamDirOld;
 
 
 	///  input
-	SFO::InputWrapper* mInputWrapper =0;
-	SFO::SDLCursorManager* mCursorManager =0;
+	// SFO::InputWrapper* mInputWrapper =0;
+	// SFO::SDLCursorManager* mCursorManager =0;
 
 	///  ovelay
 	Ogre::Overlay *ovBrushPrv =0, *ovTerPrv =0;
@@ -108,7 +121,7 @@ protected:
 	MyGUI::Gui* mGui =0;
 	void baseInitGui();
 
-	MyGUI::OgrePlatform* mPlatform;
+	MyGUI::Ogre2Platform* mPlatform;
 	Wnd mWndBrush =0, mWndCam =0, mWndStart =0,  // tool windows
 		mWndRoadCur =0, mWndRoadStats =0,
 		mWndFluids =0, mWndObjects =0, mWndParticles =0;

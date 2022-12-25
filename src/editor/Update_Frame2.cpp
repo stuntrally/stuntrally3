@@ -44,12 +44,12 @@ bool App::frameRenderingQueued(const FrameEvent& evt)
 			float p = -(angrot + ia) * d2r;
 			px[i] = psx*cosf(p);  py[i] =-psy*sinf(p);
 		}
-		if (mpos)
+		/*if (mpos)
 		{	mpos->beginUpdate(0);
 			mpos->position(px[0],py[0], 0);  mpos->textureCoord(0, 1);	mpos->position(px[1],py[1], 0);  mpos->textureCoord(1, 1);
 			mpos->position(px[3],py[3], 0);  mpos->textureCoord(0, 0);	mpos->position(px[2],py[2], 0);  mpos->textureCoord(1, 0);
 			mpos->end();
-	}	}
+	}*/	}
 	
 	//  status
 	if (fStFade > 0.f)
@@ -60,7 +60,8 @@ bool App::frameRenderingQueued(const FrameEvent& evt)
 			gui->panStatus->setVisible(false);
 	}
 
-	#define isKey(a)  mInputWrapper->isKeyDown(SDL_SCANCODE_##a)
+	#define isKey(a)  0
+	//mInputWrapper->isKeyDown(SDL_SCANCODE_##a)
 	const Real q = (shift ? 0.05 : ctrl ? 4.0 :1.0) * 20 * dt;
 
 

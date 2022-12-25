@@ -1,31 +1,33 @@
 #include "pch.h"
-#include "../ogre/common/Def_Str.h"
-#include "../ogre/common/RenderConst.h"
-#include "../ogre/common/data/CData.h"
-#include "../vdrift/pathmanager.h"
+#include "Def_Str.h"
+#include "RenderConst.h"
+#include "CData.h"
+#include "pathmanager.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "../ogre/common/GuiCom.h"
-#include "../ogre/common/CScene.h"
-#include "../ogre/common/Axes.h"
-#include "../road/Road.h"
-#include "../paged-geom/PagedGeometry.h"
-#include "../ogre/common/WaterRTT.h"
-#include "../ogre/common/RenderBoxScene.h"
+#include "GuiCom.h"
+#include "CScene.h"
+#include "Axes.h"
+#include "Road.h"
+// #include "WaterRTT.h"
+// #include "RenderBoxScene.h"
 #include "settings.h"
-#include "../shiny/Main/Factory.hpp"
-#include "../shiny/Platforms/Ogre/OgrePlatform.hpp"
-#include "../shiny/Platforms/Ogre/OgreMaterial.hpp"
-#include <OgreTerrainPaging.h>
-#include <OgreTerrainGroup.h>
+#include "GraphicsSystem.h"
+#include <string>
+#include <filesystem>
 using namespace Ogre;
+using namespace std;
+
+
+const Ogre::String App::csBrShape[BRS_ALL] =
+{ "Triangle", "Sinus", "Noise", "Noise2", "N-gon" };  // static
 
 
 //  ctor
 //----------------------------------------------------------------------------------------------------------------------
-App::App(SETTINGS* pSet1)
+App::App()
 {
-	pSet = pSet1;
+	// pSet = pSet1;
 	Axes::Init();
 	
 	mBrSize[0] = 16.f;	mBrSize[1] = 24.f;	mBrSize[2] = 16.f;	mBrSize[3] = 16.f;
@@ -36,6 +38,53 @@ App::App(SETTINGS* pSet1)
 	mBrOct[0] = 5;		mBrOct[1] = 5;		mBrOct[2] = 5;		mBrOct[3] = 5;
 	mBrShape[0] = BRS_Sinus;  mBrShape[1] = BRS_Sinus;
 	mBrShape[2] = BRS_Sinus;  mBrShape[3] = BRS_Sinus;
+}
+
+//  load settings from default file
+void App::LoadDefaultSet(SETTINGS* settings, string setFile)
+{
+	settings->Load(PATHMANAGER::GameConfigDir() + "/editor-default.cfg");
+	settings->Save(setFile);
+}
+
+void App::Load()
+{
+	
+	Ogre::Timer ti;
+	setlocale(LC_NUMERIC, "C");
+
+	//  Paths
+	PATHMANAGER::Init();
+	
+
+	///  Load Settings
+	//----------------------------------------------------------------
+	pSet = new SETTINGS();
+	string setFile = PATHMANAGER::SettingsFile();
+	
+	if (!PATHMANAGER::FileExists(setFile))
+	{
+		cerr << "Settings not found - loading defaults." << endl;
+		LoadDefaultSet(pSet,setFile);
+	}
+	pSet->Load(setFile);  // LOAD
+	if (pSet->version != SET_VER)  // loaded older, use default
+	{
+		cerr << "Settings found, but older version - loading defaults." << endl;
+		std::filesystem::rename(setFile, PATHMANAGER::UserConfigDir() + "/editor_old.cfg");
+		LoadDefaultSet(pSet,setFile);
+		pSet->Load(setFile);  // LOAD
+	}
+
+
+	//  paths
+	LogO(PATHMANAGER::info.str());
+
+
+	///  Game start
+	//----------------------------------------------------------------
+	LogO(">>>> Init editor ----");
+
 	mBrushData = new float[BrushMaxSize*BrushMaxSize];
 	updBrush();
 
@@ -47,30 +96,46 @@ App::App(SETTINGS* pSet1)
 	gcom->sc = scn->sc;
 
 	gui = new CGui(this);
-	gui->viewBox = new wraps::RenderBoxScene();
+	// gui->viewBox = new wraps::RenderBoxScene();
 	gui->gcom = gcom;
 	gui->sc = scn->sc;
 	gui->scn = scn;
 	gui->data = scn->data;
+
+	// pGame->app = this;
+	// sc = scn->sc;
+
+	// pGame->ReloadSimData();
+
+
+	mRoot = mGraphicsSystem->getRoot();
+	mCamera = mGraphicsSystem->getCamera();
+	mSceneMgr = mGraphicsSystem->getSceneManager();
+
+
+	LoadData();  /// loads data xmls
 }
 
-const Ogre::String App::csBrShape[BRS_ALL] =
-{ "Triangle", "Sinus", "Noise", "Noise2", "N-gon" };  // static
+void App::LoadData()
+{
+	Ogre::Timer ti;
 
+	//  data xmls
+	// pGame->ReloadSimData();  // need surfaces
+	
+	scn->data->Load(/*&pGame->surf_map*/0, 0);
+	scn->sc->pFluidsXml = scn->data->fluids;
+	scn->sc->pReverbsXml = scn->data->reverbs;
+
+}
 
 ///  material factory setup
 //---------------------------------------------------------------------------------------------------------------------------
-void App::postInit()
+/*void App::postInit()
 {
 	sh::OgrePlatform* platform = new sh::OgrePlatform("General", PATHMANAGER::Data() + "/" + "materials");
 	platform->setCacheFolder(PATHMANAGER::ShaderDir());
-	
-	mFactory = new sh::Factory(platform);
-	SetFactoryDefaults();
-
-	mFactory->setMaterialListener(this);
-}
-
+}*/
 
 App::~App()
 {
@@ -78,10 +143,10 @@ App::~App()
 
 	delete scn;
 
-	delete mFactory;  //!
+	// delete mFactory;  //!
 
-	gui->viewBox->destroy();
-	delete gui->viewBox;
+	// gui->viewBox->destroy();
+	// delete gui->viewBox;
 
 	BltWorldDestroy();
 	
@@ -98,7 +163,7 @@ App::~App()
 //---------------------------------------------------------------------------------------------------------------
 ManualObject* App::Create2D(const String& mat, Real s, bool dyn)
 {
-	ManualObject* m = mSceneMgr->createManualObject();
+	/*ManualObject* m = mSceneMgr->createManualObject();
 	m->setDynamic(dyn);
 	m->setUseIdentityProjection(true);
 	m->setUseIdentityView(true);
@@ -113,36 +178,6 @@ ManualObject* App::Create2D(const String& mat, Real s, bool dyn)
  
 	AxisAlignedBox aabInf;	aabInf.setInfinite();
 	m->setBoundingBox(aabInf);  // always visible
-	m->setRenderQueueGroup(RQG_Hud2);
-	return m;
-}
-
-
-void App::materialCreated(sh::MaterialInstance* m, const std::string& configuration, unsigned short lodIndex)
-{
-	Ogre::Technique* t = static_cast<sh::OgreMaterial*>(m->getMaterial())->getOgreTechniqueForConfiguration (configuration, lodIndex);
-
-	if (pSet->shadow_type == Sh_None)
-	{
-		t->setShadowCasterMaterial("");
-		return;
-	}
-
-	/*if (m->hasProperty("transparent") && m->hasProperty("cull_hardware") &&
-		sh::retrieveValue<sh::StringValue>(m->getProperty("cull_hardware"), 0).get() == "none")
-	{
-		// Crash !?
-		assert(!MaterialManager::getSingleton().getByName("PSSM/shadow_caster_nocull").isNull());
-		t->setShadowCasterMaterial("shadowcaster_nocull");
-	}*/
-
-	if (m->hasProperty("instancing") && sh::retrieveValue<sh::StringValue>(m->getProperty("instancing"), 0).get() == "true")
-	{
-		t->setShadowCasterMaterial("shadowcaster_instancing");
-	}
-
-	if (!m->hasProperty("transparent") || !sh::retrieveValue<sh::BooleanValue>(m->getProperty("transparent"), 0).get())
-	{
-		t->setShadowCasterMaterial("shadowcaster_noalpha");
-	}
+	m->setRenderQueueGroup(RQG_Hud2);*/
+	return 0;
 }
