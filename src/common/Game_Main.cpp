@@ -27,7 +27,11 @@ THE SOFTWARE.
 #include "pch.h"
 #include "GraphicsSystem.h"
 #include "pathmanager.h"
-#include "CGame.h"
+#ifdef SR_EDITOR
+	#include "CApp.h"
+#else
+	#include "CGame.h"
+#endif
 
 #include <OgreRoot.h>
 #include <Compositor/OgreCompositorManager2.h>

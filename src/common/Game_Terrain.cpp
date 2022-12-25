@@ -1,5 +1,9 @@
 #include "pch.h"
-#include "CGame.h"
+#ifndef SR_EDITOR
+	#include "CGame.h"
+#else
+	#include "CApp.h"
+#endif
 #include <OgrePrerequisites.h>
 #include <OgreVector4.h>
 #include "GraphicsSystem.h"
@@ -70,6 +74,8 @@ void App::CreateTerrain()
 	// tblock->setDiffuse(Vector3(1,0,0));
 
 	///  Layer Textures  ----
+	Scene* sc = scn->sc;
+
 	const Real fTer = sc->td.fTerWorldSize;  //= fTriangleSize * iTerSize;
 	int ls = sc->td.layers.size();
 	for (int i=0; i < ls; ++i)
