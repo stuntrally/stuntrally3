@@ -1,29 +1,3 @@
-/*
------------------------------------------------------------------------------
-This source file was part of OGRE (Object-oriented Graphics Rendering Engine)
-For the latest info, see http://www.ogre3d.org/
-
-Copyright (c) 2000-2021 Torus Knot Software Ltd
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
------------------------------------------------------------------------------
-*/
 #include "pch.h"
 #include "GraphicsSystem.h"
 #include "pathmanager.h"
@@ -32,7 +6,6 @@ THE SOFTWARE.
 #else
 	#include "CGame.h"
 #endif
-
 #include <OgreRoot.h>
 #include <Compositor/OgreCompositorManager2.h>
 #include <OgreConfigFile.h>
@@ -44,7 +17,7 @@ THE SOFTWARE.
 #include "OgreHlmsTerra.h"
 #include "TerraWorkspaceListener.h"
 
-//Declares WinMain / main
+//  declares WinMain / main
 #include "MainEntryPointHelper.h"
 #include "AndroidSystems.h"
 #include "MainEntryPoints.h"
@@ -72,29 +45,14 @@ class GameGraphicsSystem final : public GraphicsSystem
 		mTerraWorkspaceListener = 0;
 	}
 
+	//-----------------------------------------------------------------------------
 	CompositorWorkspace *setupCompositor() override
 	{
-		/*CompositorManager2 *compositorManager = mRoot->getCompositorManager2();
 
-		// pbs
-		CompositorWorkspace *workspace = compositorManager->addWorkspace(
-			mSceneManager, mRenderWindow->getTexture(), mCamera,
-			// "PbsMaterialsWorkspace", true );
-			"Tutorial_TerrainWorkspace", true );
-
-		if( !mTerraWorkspaceListener )
-		{
-			HlmsManager *hlmsManager = mRoot->getHlmsManager();
-			Hlms *hlms = hlmsManager->getHlms( HLMS_USER3 );
-			OGRE_ASSERT_HIGH( dynamic_cast<HlmsTerra *>( hlms ) );
-			mTerraWorkspaceListener = new TerraWorkspaceListener( static_cast<HlmsTerra *>( hlms ) );
-		}
-		workspace->addListener( mTerraWorkspaceListener );
-
-		return workspace;*/
 		return 0;
 	}
 
+	//-----------------------------------------------------------------------------
 	void setupResources() override
 	{
 		GraphicsSystem::setupResources();
@@ -102,12 +60,12 @@ class GameGraphicsSystem final : public GraphicsSystem
 		ConfigFile cf;
 		cf.load( AndroidSystems::openFile( mResourcePath + "resources2.cfg" ) );
 
-		String originalDataFolder = cf.getSetting( "DoNotUseAsResource", "Hlms", "" );
+		String orgDir = cf.getSetting( "Templates", "Hlms", "" );
 
-		if( originalDataFolder.empty() )
-			originalDataFolder = AndroidSystems::isAndroid() ? "/" : "./";
-		else if( *(originalDataFolder.end() - 1) != '/' )
-			originalDataFolder += "/";
+		if( orgDir.empty() )
+			orgDir = AndroidSystems::isAndroid() ? "/" : "./";
+		else if( *(orgDir.end() - 1) != '/' )
+			orgDir += "/";
 
 		const int count = 5;
 		const char *c_locations[count] =
@@ -122,11 +80,13 @@ class GameGraphicsSystem final : public GraphicsSystem
 
 		for( size_t i=0; i < count; ++i )
 		{
-			String dataFolder = originalDataFolder + c_locations[i];
+			String dataFolder = orgDir + c_locations[i];
 			addResourceLocation( dataFolder, getMediaReadArchiveType(), "General" );
 		}
 	}
 
+	//  🌠 Hlms
+	//-----------------------------------------------------------------------------
 	void registerHlms() override
 	{
 		GraphicsSystem::registerHlms();
@@ -134,71 +94,64 @@ class GameGraphicsSystem final : public GraphicsSystem
 		ConfigFile cf;
 		cf.load( AndroidSystems::openFile( mResourcePath + "resources2.cfg" ) );
 
-#if OGRE_PLATFORM == OGRE_PLATFORM_APPLE || OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
+	#if OGRE_PLATFORM == OGRE_PLATFORM_APPLE || OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
 		String rootHlmsFolder = macBundlePath() + '/' +
-			cf.getSetting( "DoNotUseAsResource", "Hlms", "" );
-#else
-		String rootHlmsFolder = mResourcePath +
-			cf.getSetting( "DoNotUseAsResource", "Hlms", "" );
-#endif
-		if( rootHlmsFolder.empty() )
-			rootHlmsFolder = AndroidSystems::isAndroid() ? "/" : "./";
-		else if( *(rootHlmsFolder.end() - 1) != '/' )
-			rootHlmsFolder += "/";
+			cf.getSetting( "Templates", "Hlms", "" );
+	#else
+		String rootDir = mResourcePath +
+			cf.getSetting( "Templates", "Hlms", "" );
+	#endif
+		if( rootDir.empty() )
+			rootDir = AndroidSystems::isAndroid() ? "/" : "./";
+		else if( *(rootDir.end() - 1) != '/' )
+			rootDir += "/";
 
-		RenderSystem *renderSystem = mRoot->getRenderSystem();
+		RenderSystem *rs = mRoot->getRenderSystem();
+		String name = rs->getName(), syntax = "GLSL";
+		if (name == "OpenGL ES 2.x Rendering Subsystem")  syntax = "GLSLES";
+		if (name == "Direct3D11 Rendering Subsystem")     syntax = "HLSL";
+		else if (name == "Metal Rendering Subsystem")     syntax = "Metal";
 
-		String shaderSyntax = "GLSL";
-		if (renderSystem->getName() == "OpenGL ES 2.x Rendering Subsystem")
-			shaderSyntax = "GLSLES";
-		if( renderSystem->getName() == "Direct3D11 Rendering Subsystem" )
-			shaderSyntax = "HLSL";
-		else if( renderSystem->getName() == "Metal Rendering Subsystem" )
-			shaderSyntax = "Metal";
-
-		String mainFolderPath;
-		StringVector libraryFoldersPaths;
-		StringVector::const_iterator libraryFolderPathIt;
-		StringVector::const_iterator libraryFolderPathEn;
+		String mainPath;  StringVector paths;
 
 		ArchiveManager &archiveManager = ArchiveManager::getSingleton();
-
 		HlmsManager *hlmsManager = mRoot->getHlmsManager();
-
 		{
-			//Create & Register HlmsTerra
-			//Get the path to all the subdirectories used by HlmsTerra
-			HlmsTerra::getDefaultPaths( mainFolderPath, libraryFoldersPaths );
-			Archive *archiveTerra = archiveManager.load( rootHlmsFolder + mainFolderPath,
-																getMediaReadArchiveType(), true );
-			ArchiveVec archiveTerraLibraryFolders;
-			libraryFolderPathIt = libraryFoldersPaths.begin();
-			libraryFolderPathEn = libraryFoldersPaths.end();
-			while( libraryFolderPathIt != libraryFolderPathEn )
+			//  Create & Register HlmsTerra
+			//  Get the path to all the subdirectories used by HlmsTerra
+			HlmsTerra::getDefaultPaths( mainPath, paths );
+			Archive* aTerra = archiveManager.load(
+				rootDir + mainPath, getMediaReadArchiveType(), true );
+
+			ArchiveVec dirs;
+			for (auto it = paths.begin(); it != paths.end(); ++it )
 			{
-				Archive *archiveLibrary = archiveManager.load(
-					rootHlmsFolder + *libraryFolderPathIt, getMediaReadArchiveType(), true );
-				archiveTerraLibraryFolders.push_back( archiveLibrary );
-				++libraryFolderPathIt;
+				Archive* aLib = archiveManager.load(
+					rootDir + *it, getMediaReadArchiveType(), true );
+				dirs.push_back( aLib );
 			}
 
-			//Create and register the terra Hlms
-			hlmsTerra = OGRE_NEW HlmsTerra( archiveTerra, &archiveTerraLibraryFolders );
+			//  Create and register the terra Hlms
+			hlmsTerra = OGRE_NEW HlmsTerra( aTerra, &dirs );
 			hlmsManager->registerHlms( hlmsTerra );
 		}
 
-		//Add Terra's piece files that customize the PBS implementation.
-		//These pieces are coded so that they will be activated when
-		//we set the HlmsPbsTerraShadows listener and there's an active Terra
-		//(see App::createScene01)
+		//  Add Terra's piece files that customize the PBS implementation.
+		//  These pieces are coded so that they will be activated when
+		//  we set the HlmsPbsTerraShadows listener and there's an active Terra
+		//  see App::createScene01
 		Hlms *hlmsPbs = hlmsManager->getHlms( HLMS_PBS );
-		Archive *archivePbs = hlmsPbs->getDataFolder();
-		ArchiveVec libraryPbs = hlmsPbs->getPiecesLibraryAsArchiveVec();
-		libraryPbs.push_back( ArchiveManager::getSingletonPtr()->load(
-									rootHlmsFolder + "Hlms/Terra/" + shaderSyntax + "/PbsTerraShadows",
-									getMediaReadArchiveType(), true ) );
-		hlmsPbs->reloadFrom( archivePbs, &libraryPbs );
+		Archive *aPbs = hlmsPbs->getDataFolder();
+		
+		ArchiveVec libPbs = hlmsPbs->getPiecesLibraryAsArchiveVec();
+		libPbs.push_back(
+			ArchiveManager::getSingletonPtr()->load(
+				rootDir + "Hlms/Terra/" + syntax + "/PbsTerraShadows",
+				getMediaReadArchiveType(), true ) );
+		hlmsPbs->reloadFrom( aPbs, &libPbs );
 	}
+	//-----------------------------------------------------------------------------
+
 
 public:
 	//  🌟 ctor  ----
@@ -220,10 +173,12 @@ public:
 
 
 //  🌟 main App ctor
-void MainEntryPoints::createSystems( GameState **outGraphicsGameState,
-										GraphicsSystem **outGraphicsSystem,
-										GameState **outLogicGameState,
-										LogicSystem **outLogicSystem )
+//-----------------------------------------------------------------------------
+void MainEntryPoints::createSystems(
+		GameState **outGraphicsGameState,
+		GraphicsSystem **outGraphicsSystem,
+		GameState **outLogicGameState,
+		LogicSystem **outLogicSystem)
 {
 	std::cout << "Init :: createSystems\n";
 	App *app = new App();
@@ -248,16 +203,19 @@ void MainEntryPoints::createSystems( GameState **outGraphicsGameState,
 	*outGraphicsSystem = graphicsSystem;
 }
 
-
-void MainEntryPoints::destroySystems( GameState *graphicsGameState,
-										GraphicsSystem *graphicsSystem,
-										GameState *logicGameState,
-										LogicSystem *logicSystem )
+//  💥 destroy
+void MainEntryPoints::destroySystems(
+		GameState *graphicsGameState,
+		GraphicsSystem *graphicsSystem,
+		GameState *logicGameState,
+		LogicSystem *logicSystem)
 {
 	delete graphicsSystem;
 	delete graphicsGameState;
 }
 
+
+//-----------------------------------------------------------------------------
 const char* MainEntryPoints::getWindowTitle()
 {
 #ifdef SR_EDITOR
@@ -267,8 +225,7 @@ const char* MainEntryPoints::getWindowTitle()
 #endif
 }
 
-
-//  main
+//  🚀 main
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 INT WINAPI WinMainApp( HINSTANCE hInst, HINSTANCE hPrevInstance, LPSTR strCmdLine, INT nCmdShow )
