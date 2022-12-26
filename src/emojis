@@ -1,43 +1,43 @@
- Scene              Scene elements        Atmosphere         HUD, Game          HUD2              Road
-                                                                                                  
- 🏞️ Track Scene     🚗 Vehicles Cars     💡 Light           ⏱️ HUD timer                         🛣️ Road
-                                                                                                  
- ⛰️ Terrain         ⚫💭 Tires wheels    🌫️ Fog             📍 Next chk beam   🔝↗️ Arrow         🧱 Wall bridge
-                                                                                                  
- 🏔️ Blendmap        ✨ Particles         🌦️🌧️ Weather       🔨 Damage                            🏛️ Column
-                                                                                                  
- 🌳🪨 Vegetation    🔥 Emitters          ⛅☁️ Sky clouds     🌍 Minimap         ⏲️ Gauges         ⭕ Pipe
-                                                                                                  
- 🌿 Grass           📦 Objects           🌞☀️ Sun            💨 Boost           ⏪ Rewind         ➰➿ Loop
-                                                                                                  
- 💧🌊 water Fluids                       🔮🪞 reflection    🚦 Pacenotes       🎗️ Trail          
-                                                                                                  
-                                         💎 refraction                                            
-                                                                                                  
-                                                                                                  
- Components       Game                   GUI            GUI Code        Code           Code2        
-                                                                                                    
- 🕹️🎮 Input       🏆 Champ-ionship       🪧 Menu        ✅ checks      🌟 ctor        📄 Config    
-                                                                                                    
- 🔉 Sound         🥇 Chall-enge          📃 List        🎚️ sliders     💥 dtor        ⛓️ utils     
-                                                                                                    
- 🎛️ GUI           🚀 Spaceship           🖥️ screen      🪟 windows     🆕🪄 Create    🌀 noise     
-                                                                                                     
- 🎥 Camera        🔘 Sphere              📈 Fps         🗜️ resize      ⏳ Loading     🔍 find      
-                                                                                                    
- 📽️ Replay        🏁 checkpoints start   📉 Graphs      🔧 Tweak       💫 Update      🔴 brakes    
-                                                                                                    
- 👻 Ghost         📐 Drivability         📝❔ Help      🔗 url         🟢 Ogre        💬 chat      
-                                                                                                    
- 👥 Multiplayer   🪜 suspension          📊⚙️ Options    🖱️ mouse       🎨🌈 Color     🚧 cursor    
-                                                                                                    
- 👈 Hints                                🛠️🛠 Tools      ⌨️ keys                                     
-                                                                                                    
-                                         🖼️ image prv    🔩 Setup                                   
+ _______           _______________    ____________      ___________        _______         ______          _________
+ Scene             Scene elements     Atmosphere        HUD, Game          HUD-2           Road            Vehicle  
+                                                                                                           
+ 🏞️ Track Scene    🏝️ scenery        💡 Light          ⏱️ HUD timer       🌍 Minimap      🛣️ Road         🚗 Vehicle car
+                                                                                                           
+ ⛰️ Terrain        💧🌊 Fluids       🌫️ Fog            📍 Next chk beam   ⏲️ Gauges       📏 Wall bridge  ⚫💭 Tire wheel
+                         water mud                                                                                  
+ 🏔️ Blendmap       ✨ Particles      🌦️🌧️ Weather      🔝↗️ Arrow          🚦 Pacenotes    🏛️🥛 Column     🪜 suspension
+                                          rain snow                                                        
+ 🌳🪨 Vegetation   🔥 Emitters       ⛅☁️ Sky clouds    🔨 Damage          🎗️ Trail        ⭕ Pipe         🔴 brake
+                                                                                                            
+ 🌿 Grass          📦 Objects        🌞☀️ Sun           💨 Boost                           ➰➿ Loop       🎨 color
+                                                                                                            
+                                      🌪️ wind           ⏪ Rewind                                          
+                                                                                                            
+                                                                                                            
+ ____________    ______              _____          _______          ______          ________      _______       ________
+ Components      Game                GUI            GUI-2            Code            Code-2        Tools         Render
+                                                                                                   
+ 🕹️🎮 Input      🏆 Champ-ionship    🪧 Menu        ✅ Checks       🌟 ctor         📄 Config     🛠️🛠 Tools    🔮🪞 reflection
+                                                         ck* chk*()                                      gui     
+ 🔉 Sound        🥇 Chall-enge       📃 List        🎚️ Sliders      💥 dtor         🔍 find       🔩 Setup      💎 refraction
+                                                         sl*                                             car     
+ 🎛️ GUI          🏁 Checkpoints      🖥️ screen      🪟 Windows      🆕🪄 Create     🌀 noise      ⛓️ utils      🟢 Ogre
+                       chk Start                         wnd*                                            code    
+ 🎥 Camera       📐 Drivability      📈 Fps         🗜️ Resize       ⏳ Loading      💬 chat       🔧 Tweak      🌠 Hlms shader
+                                                                                                       gui dev   
+ 📽️ Replay       🚀 Spaceship        📉 Graphs      🖱️ Mouse        💫 Update       🚧 cursor     🧰 _Tools_    🌒 shadow
+                                                      ⌨️ Keys                frame         ed             dev      
+ 👻 Ghost        🔘 Sphere           📝❔ Help      🔗 url          🔁🔄 Refresh    👆🥢 pick     🪛 param      
+                                                                           single         ed            // par    
+ 👥 Multiplayer                      📊⚙️ Options    🔤 text         🌈 Colors                      🧪 test       
+      network                                        🔠 font                                             code     
+ 👈 Hints                            🖼️ image prv                                                                
+                                                                                                                  
+                                                                                                                  
+                                                                                                                  
 
-
- 🗺️ 🌅 ⛲ 🌋 ⛈️ 🌪️ 🧊 🌴 🌲 🏝️    💻 🕑 ☢️   📂 🗒️ 📑    🪛 🔒 
+ 🗺️ 🌅 ⛲ 🌋 ⛈️ 🧊 🌴 🌲    💻 🕑 📂 🗒️ 📑 🔒 👤   🧵 🧹 ⛏️ 🧱
  
- ⚡ ❄️ 🌌 🪐 🌠 🎆 🎉   ⚠ ☑️ ✔️ ✖️ ➕ ➖ ❗ ❓ ❌   🔵 🔶 🟪 🔆 🔙 🔠 🔤
+ ⚡ ❄️ 🌌 🪐 🎆 🎉   ☢️ ⚠ ☑️ ✔️ ✖️ ➕ ➖ ❗ ❓ ❌   🔵 🔶 🟪 🔆 🔙   📡 🪣 ⛔ 
  
  
