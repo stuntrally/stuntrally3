@@ -55,7 +55,7 @@ static float GetAngle(float x, float y)
 }
 
 
-///  update brush preview texture
+///;  🖼️ update brush preview texture
 //--------------------------------------------------------------------------------------------------------------------------
 void App::updateBrushPrv(bool first)
 {
@@ -253,7 +253,7 @@ void App::updBrush()
 }
 
 
-///  Terrain  generate
+///  🔄🔁 Terrain  generate
 ///--------------------------------------------------------------------------------------------------------------------------
 void CGui::btnTerGenerate(WP wp)
 {
@@ -292,7 +292,7 @@ void CGui::btnTerGenerate(WP wp)
 		c = CScene::Noise(y*s1-oy, x*s1+ox, pSet->gen_freq, pSet->gen_oct, pSet->gen_persist) * 0.8f;
 		c = c >= 0.f ? powf(c, pSet->gen_pow) : -powf(-c, pSet->gen_pow);
 
-		//)  check if on road - uses roadDensity.png
+		//  check if on road - uses roadDensity.png
 		//  todo: smooth depends on -smooth grass dens par, own val?
 		if (bRoad)
 		{
@@ -326,7 +326,7 @@ void CGui::btnTerGenerate(WP wp)
 	app->bNewHmap = true;	app->UpdateTrack();
 }
 
-///  update terrain generator preview texture
+///;  🖼️ update terrain generator preview texture
 //--------------------------------------------------------------------------------------------------------------------------
 void App::updateTerPrv(bool first)
 {
@@ -532,14 +532,14 @@ void App::smoothTer(Vector3 &pos, float avg, float dtime)
 	int mapPos;
 	float mFactor = mBrIntens[curBr] * dtime * 0.1f;
 
-	for(int j = rcMap.top;j < rcMap.bottom;j++)
+	for (int j = rcMap.top; j < rcMap.bottom; ++j)
 	{
 		brushPos = (rcBrush.top + (int)((j - rcMap.top) * mRatio)) * BrushMaxSize;
 		brushPos += rcBrush.left;
 		//**/brushPos += cy * BrushMaxSize + cx;
 		mapPos = j * scn->sc->td.iTerSize + rcMap.left;
 
-		for(int i = rcMap.left;i < rcMap.right;i++)
+		for (int i = rcMap.left; i < rcMap.right; ++i)
 		{
 			float val = avg - fHmap[mapPos];
 			val = val * std::min(mBrushData[(int)brushPos] * mFactor, 1.0f);
@@ -590,7 +590,6 @@ void App::filter(Vector3 &pos, float dtime, float brMul)
 			++mapPos;  ++brPos;
 		}
 	}
-
 	// scn->terrain->dirtyRect(rcMap);
 	scn->UpdBlendmap();
 	bTerUpd = true;
@@ -598,7 +597,7 @@ void App::filter(Vector3 &pos, float dtime, float brMul)
 
 
 
-//  preview texture for brush and noise ter gen
+//;  🖼️ preview texture for brush and noise ter gen
 //--------------------------------------------------------------------------------------------------------------------------
 void App::createBrushPrv()
 {

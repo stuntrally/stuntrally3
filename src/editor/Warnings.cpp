@@ -40,7 +40,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 
 	if (road && road->getNumPoints() > 2)
 	{
-		///-  start  -------------
+		///-  🏁 start  -------------
 		int cnt = road->getNumPoints();
 		Vector3 stPos = Axes::toOgre(scn->sc->startPos[0]);  // todo: [1] too?
 		Quaternion q1 = Axes::toOgre(scn->sc->startRot[0]);
@@ -74,7 +74,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 		//Warn(TXT,"Start dir "+fToStr(vx.x,3,5)+" "+fToStr(vx.y,3,5)+" "+fToStr(vx.z,3,5));
 
 
-		//-  start pos  ----
+		//-  🏁 start pos  ----
 		float tws = 0.5f * sc->td.fTerWorldSize;
 		if (stPos.x < -tws || stPos.x > tws || stPos.z < -tws || stPos.z > tws)
 			Warn(ERR,"Car start outside track area  Whoa :o");
@@ -100,7 +100,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 		}/**/
 		
 		
-		//-  first chk  ----
+		//-  🔵 first chk  ----
 		if (iP1 < 0 || iP1 >= cnt)
 			Warn(ERR,"First checkpoint not set  (use ctrl-0)");
 		else
@@ -108,7 +108,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 			Warn(ERR,"First checkpoint not set  (use ctrl-0)");
 
 		
-		///-  road, checkpoints  -------------
+		///-  road, 🔵 checkpoints  -------------
 		int numChks = 0, iClosest=-1;  float stD = FLT_MAX;
 		bool mtrUsed[4]={0,0,0,0};
 		for (int i=0; i < road->mP.size(); ++i)
@@ -132,7 +132,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 			Warn(INFO,"Too few checkpoints (add more), count "+toStr(numChks));
 
 			
-		//-  road materials used  ----
+		//-  🛣️ road materials used  ----
 		int rdm = 0;
 		for (int i=0; i<4; ++i)
 			if (mtrUsed[i])  ++rdm;
@@ -143,7 +143,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 		if (rdm <= 1)  Warn(INFO,"Too few road materials used");
 		
 
-		//-  start width, height  ----
+		//-  🏁 start width, height  ----
 		float width = road->vStBoxDim.z, height = road->vStBoxDim.y;
 
 		float rdW = 100.f;
@@ -156,7 +156,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 			Warn(WARN,"Car start height small "+fToStr(height,0,2));
 
 
-		//-  rd, chk cnt  ----
+		//-  🔵 road, chk cnt  ----
 		float ratio = float(numChks)/cnt;
 		Warn(TXT,"Road points to checkpoints ratio: "+fToStr(ratio,2,4));
 		if (ratio < 1.f/10.f)  //par
@@ -164,7 +164,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 		else if (ratio < 1.f/5.f)  //par  1 chk for 5 points
 			Warn(WARN,"Very few checkpoints ratio, add more");
 		
-		//  road points too far
+		//-  🛣️ road points too far
 		float len = road->st.Length;
 		float ptLen = len/float(cnt);
 		Warn(TXT,"Road length: "+fToStr(len,0,4)+ " points to length ratio: "+fToStr(ptLen,2,4));
@@ -173,7 +173,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 		else if (ptLen > 60.f)
 			Warn(INFO,"Road points are far.");
 
-		//  big road, merge len
+		//-  🛣️ big road, merge len
 		if (cnt > 200 && road->g_MergeLen < 600.f)
 			Warn(INFO,"Road has over 200 points, use recommended merge length 600 or more.");
 		else if (cnt > 120 && road->g_MergeLen < 300.f)
@@ -182,7 +182,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 			Warn(INFO,"Road has over 50 points, use recommended merge length 80 or more.");
 	}
 	
-	///-  heightmap  -------------
+	///-  ⛰️ heightmap  -------------
 	int sz = sc->td.iVertsX * sc->td.iVertsX * sizeof(float) / 1024/1024;
 	if (sc->td.iVertsX > 2000)
 		Warn(ERR,"Using too big heightmap "+toStr(sc->td.iVertsX-1)+", file size is "+toStr(sz)+" MB");
@@ -193,7 +193,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 	if (sc->td.iVertsX < 200)
 		Warn(INFO,"Using too small heightmap "+toStr(sc->td.iVertsX-1));
 
-	//-  tri size  ----
+	//-  🔺 tri size  ----
 	if (sc->td.fTriangleSize < 0.9f)
 		Warn(INFO,"Terrain triangle size is small "+fToStr(sc->td.fTriangleSize,2,4));
 
@@ -201,7 +201,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 		Warn(INFO,"Terrain triangle size is big "+fToStr(sc->td.fTriangleSize,2,4)+", not recommended");
 
 		
-	///-  ter layers  -------------
+	///-  🏔️ ter layers  -------------
 	int lay = sc->td.layers.size();  //SetUsedStr
 	Warn(NOTE,"Terrain layers used: "+toStr(lay));
 	hqTerrain = lay >= 4;
@@ -210,15 +210,17 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 	if (lay <= 2)  Warn(INFO,"Too few terrain layers used");
 
 	
-	///-  vegetation  -------------
+	///-  🌳🪨 vegetation  -------------
+	//  layers  ----
 	int veg = sc->densTrees > 0.f ? sc->pgLayers.size() : 0;
 	Warn(NOTE,"Vegetation models used: "+toStr(veg));
 	hqVeget = veg >= 5;
 	if (hqVeget)   Warn(INFO,"HQ Vegetation");
-	if (veg >= 7)  Warn(WARN,"Too many models used, not recommended");
-	if (veg <= 2)  Warn(INFO,"Too few models used");
+	if (veg >= 8)  Warn(WARN,"Too many models used, not recommended");
+	if (veg <= 3)  Warn(INFO,"Too few models used");
 	
-	//-  density  ----
+	//  todo: total count > 2k < 7k ..
+	//  density  ----
 	if (sc->densTrees > 3.1f)
 		Warn(ERR,"Vegetation use is huge, trees density is "+fToStr(sc->densTrees,1,3));
 	else
@@ -228,7 +230,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 	if (sc->grDensSmooth > 10)
 		Warn(WARN,"Smooth grass density is high "+toStr(sc->grDensSmooth)+" saving will take long time");
 
-	//-  grass  ----
+	//-  🌿 grass  ----
 	int gr=0;
 	if (sc->densGrass > 0.01)  for (int i=0; i < sc->ciNumGrLay; ++i)  if (sc->grLayersAll[i].on)  ++gr;
 	Warn(NOTE,"Grass layers used: "+toStr(gr));
@@ -240,7 +242,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 	//..  page size small, dist big
 	
 
-	///-  quality (optym, fps drop)  --------
+	///-  quality (optim, fps drop)  --------
 	int hq=0;
 	if (hqTerrain) ++hq;  if (hqGrass) ++hq;  if (hqVeget) ++hq;  if (hqRoad) ++hq;
 	Warn(NOTE,"HQ Overall: "+toStr(hq));
@@ -251,7 +253,6 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 	else if (hq == 0)
 		Warn(INFO,"Low quality (ignore for deserts), try to add some layers/models/grasses");
 	
-	//..  scID light diff ?
 	//..  objects count
 	
 

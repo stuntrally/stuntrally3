@@ -1,43 +1,42 @@
+Various markers in sources for key sections, methods etc.  Also showing shortcut or hint in below/above line.
+
  _______           _______________    ____________      ___________        _______         ______          _________
  Scene             Scene elements     Atmosphere        HUD, Game          HUD-2           Road            Vehicle  
                                                                                                            
  🏞️ Track Scene    🏝️ scenery        💡 Light          ⏱️ HUD timer       🌍 Minimap      🛣️ Road         🚗 Vehicle car
                                                                                                            
  ⛰️ Terrain        💧🌊 Fluids       🌫️ Fog            📍 Next chk beam   ⏲️ Gauges       📏 Wall bridge  ⚫💭 Tire wheel
-                         water mud                                                                                  
- 🏔️ Blendmap       ✨ Particles      🌦️🌧️ Weather      🔝↗️ Arrow          🚦 Pacenotes    🏛️🥛 Column     🪜 suspension
-                                          rain snow                                                        
+                         water mud                                                                         🪜 suspension          
+ 🏔️ Blendmap       ✨ Particles      🌦️🌧️ Weather      🔝↗️ Arrow          🚦 Pacenotes    🏛️🥛 Column     
+                                          rain snow                                                        📈 engine
  🌳🪨 Vegetation   🔥 Emitters       ⛅☁️ Sky clouds    🔨 Damage          🎗️ Trail        ⭕ Pipe         🔴 brake
                                                                                                             
- 🌿 Grass          📦 Objects        🌞☀️ Sun           💨 Boost                           ➰➿ Loop       🎨 color
+ 🌿 Grass          📦 Objects        🌞☀️ Sun           💨 Boost           ❌ wrong chk    ➰➿ Loop       🎨 color
                                                                                                             
                                       🌪️ wind           ⏪ Rewind                                          
-                                                                                                            
                                                                                                             
  ____________    ______              _____          _______          ______          ________      _______       ________
  Components      Game                GUI            GUI-2            Code            Code-2        Tools         Render
                                                                                                    
  🕹️🎮 Input      🏆 Champ-ionship    🪧 Menu        ✅ Checks       🌟 ctor         📄 Config     🛠️🛠 Tools    🔮🪞 reflection
-                                                         ck* chk*()                                      gui     
- 🔉 Sound        🥇 Chall-enge       📃 List        🎚️ Sliders      💥 dtor         🔍 find       🔩 Setup      💎 refraction
-                                                         sl*                                             car     
- 🎛️ GUI          🏁 Checkpoints      🖥️ screen      🪟 Windows      🆕🪄 Create     🌀 noise      ⛓️ utils      🟢 Ogre
-                       chk Start                         wnd*                                            code    
- 🎥 Camera       📐 Drivability      📈 Fps         🗜️ Resize       ⏳ Loading      💬 chat       🔧 Tweak      🌠 Hlms shader
-                                                                                                       gui dev   
- 📽️ Replay       🚀 Spaceship        📉 Graphs      🖱️ Mouse        💫 Update       🚧 cursor     🧰 _Tools_    🌒 shadow
-                                                      ⌨️ Keys                frame         ed             dev      
- 👻 Ghost        🔘 Sphere           📝❔ Help      🔗 url          🔁🔄 Refresh    👆🥢 pick     🪛 param      
-                                                                           single         ed            // par    
- 👥 Multiplayer                      📊⚙️ Options    🔤 text         🌈 Colors                      🧪 test       
-      network                                        🔠 font                                             code     
- 👈 Hints                            🖼️ image prv                                                                
+                 🥇 Chall-enge       📃 List            ck* chk*()                                      gui     
+ 🔊🔉 Sound/s                                       🎚️ Sliders      💥 dtor         🔍 Find       🔩 Setup      💎 refraction
+         snd     🏁 Start    chk     🖥️ Screen          sl*                          💬 chat            car     
+ 🎛️ GUI          🔵 Checkpoints      📊⚙️ Options    🪟 Windows      🆕🪄 Create                   ⛓️ util-ity   🟢 Ogre
+         gui     📐 Drivability                          wnd*                        🧵 thread          code    
+ 🎥 Camera                           📈 Fps engine  🗜️ Resize       ⏳ Loading      🌀 noise      🔧 Tweak      🌠 Hlms shader
+         cam     🚀 Spaceship        📉 Graphs                                              ed         gui dev   
+ 📽️ Replay       🔘 Sphere                          🖱️ Mouse        💫 Update       👆🥢 pick     🧰 _Tools_    🌒 shadow
+         rpl     🏍️ Motorbike        📝 Help          ⌨️ Keys                frame    🚧 cursor           dev     
+ 👻 Ghost        🚌 Bus              ❔ tooltip     🔗 url          🔁🔄 Refresh                  🪛 param      
+                                                                           single                       // par   
+ 👥 Multiplayer  🏗️👷 Editor ed      🖼️ image prv   🔤 text         🌈 Colors                     🧪 test       
+      network                        📰 view         🔠 font                                              code   
+ 👈 Hints                            🔻 filter       🗺️ language                                                 
                                                                                                                   
                                                                                                                   
                                                                                                                   
-
- 🗺️ 🌅 ⛲ 🌋 ⛈️ 🧊 🌴 🌲    💻 🕑 📂 🗒️ 📑 🔒 👤   🧵 🧹 ⛏️ 🧱
+ 🌅⛲ ⛈️🌋 🧊 🌴🌲   💻🕑📂 🗒️📑 🔒👤   🧵 🧹 ⛏️ 🧱 
  
- ⚡ ❄️ 🌌 🪐 🎆 🎉   ☢️ ⚠ ☑️ ✔️ ✖️ ➕ ➖ ❗ ❓ ❌   🔵 🔶 🟪 🔆 🔙   📡 🪣 ⛔ 
- 
+ ⚡ ❄️ 🌌🪐 🎆🎉   ☢️ ⚠ ☑️ ✔️ ✖️ ➕➖ ❗❓   🔶🟪🔆 🔙   📡 🪣 ⛔ 
  

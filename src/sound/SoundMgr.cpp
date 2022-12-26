@@ -75,7 +75,7 @@ Sound* SoundMgr::createInstance(Ogre::String name, int car)
 	//  start looped
 	if (!inst->start_sound)
 	{	inst->setGain(0.f);
-		inst->start();
+		inst->start();  // 🔉
 	}
 	return inst;
 }

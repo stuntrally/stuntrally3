@@ -1,19 +1,19 @@
 #pragma once
 #include "SColor.h"
+#include "mathvector.h"
+#include "quaternion.h"
 // #include <Ogre.h>
 #include <OgreCommon.h>
 #include <OgreVector2.h>
 #include <OgreVector3.h>
 #include <OgreVector4.h>
 #include <OgreQuaternion.h>
-#include "mathvector.h"
-#include "quaternion.h"
 
 namespace Ogre {  class SceneNode;  class Item;  class ParticleSystem;  }
 namespace Forests {  class GrassLayer;  }
 
 
-struct TerLayer		// terrain texture layer
+struct TerLayer		//. 🏔️ terrain texture layer
 {
 	bool on, triplanar;  // for highest slopes
 	float tiling;   // scale, texture repeat
@@ -22,7 +22,7 @@ struct TerLayer		// terrain texture layer
 	float dust, mud, dustS, smoke;  // particles intensities, S size
 	SColor tclr;  Ogre::Vector4 tcl;  // trail color, rgba copy
 	
-	///  blendmap
+	///  🏔️ blendmap
 	//  min,max range and smooth range for terrain angle and height
 	float angMin,angMax,angSm, hMin,hMax,hSm;
 	bool nOnly;  // ignores above range
@@ -36,9 +36,8 @@ struct TerLayer		// terrain texture layer
 	TerLayer();
 };
 
-
 //  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-class TerData		///  Terrain
+class TerData		//  ⛰️ Terrain
 {
 public:	
 	//  height field
@@ -72,7 +71,7 @@ public:
 };
 
 
-class PagedLayer	// vegetation model
+class PagedLayer	//  🌳🪨 Vegetation model
 {
 public:
 	bool on;
@@ -86,8 +85,8 @@ public:
 	PagedLayer();
 };
 
-
-class SGrassLayer	// grass layer
+//  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+class SGrassLayer	//  🌿 Grass layer
 {
 public:
 	bool on;
@@ -100,7 +99,7 @@ public:
 	SGrassLayer();
 };
 
-class SGrassChannel  // grass channel
+class SGrassChannel  //. 🌿 grass channel
 {
 public:
 	//  min,max range and smooth range for terrain angle and height
@@ -110,8 +109,8 @@ public:
 	SGrassChannel();
 };
 
-
-class FluidBox		/// fluid box shape - water, mud, etc.
+//  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+class FluidBox		//  💧 fluid box shape - water, mud, etc.
 {
 public:
 	Ogre::Vector3 pos, rot, size;
@@ -128,7 +127,7 @@ public:
 };
 
 
-class Object		// object - mesh (static) or prop (dynamic)
+class Object		//  📦 object - mesh (static🪨) or prop (dynamic)
 {
 public:
 	MATHVECTOR<float,3> pos;
@@ -149,7 +148,7 @@ public:
 };
 
 
-class SEmitter		// particles
+class SEmitter		//  🔥 particles ⛅☢️
 {
 public:
 	std::string name;  // particle_system

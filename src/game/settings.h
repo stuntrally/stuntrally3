@@ -12,7 +12,7 @@ enum eGraphType  {
 	Gh_CamBounce,  // 🎥
 	Gh_BulletHit,  // ✨
 	Gh_Sound,   // 🔉
-	Gh_Checks,  // 🏁
+	Gh_Checks,  // 🔵
 	Gh_Suspension, // 🪜
 	Gh_TireSlips,  // ⚫
 	Gh_TireEdit, Gh_Tires4Edit, // ⚫📉

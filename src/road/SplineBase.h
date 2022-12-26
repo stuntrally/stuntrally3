@@ -1,8 +1,11 @@
 #pragma once
 #include <deque>
-#include <Ogre.h>
+#include <set>
+#include <OgreVector3.h>
+#include <OgreVector4.h>
+#include <OgreString.h>
 
-namespace Ogre {  class Terra;  class SceneNode;  }
+namespace Ogre {  class Terra;  class SceneNode;  class Camera;  class Terra;  }
 
 
 class TerUtil  //  helper
@@ -223,12 +226,12 @@ class SplineEditChk : public SplineEdit
 {
 public:
 	//  edit chks
-	void AddChkR(Ogre::Real relR, bool dontCheckR=false);  // change radius
-	void AddBoxW(Ogre::Real rel), AddBoxH(Ogre::Real rel);  // start dim
+	void AddChkR(Ogre::Real relR, bool dontCheckR=false);   // change radius
+	void AddBoxW(Ogre::Real rel), AddBoxH(Ogre::Real rel);  // 🏁 start dim
 	void Set1stChk();
 
 
-//  checkpoint spheres  ----
+	//  🔵 checkpoint spheres  ----
 	std::vector<CheckSphere> mChks;
 	Ogre::Vector3 vStBoxDim;   // start/finish box, half dimensions
 

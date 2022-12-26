@@ -228,11 +228,11 @@ void CGui::btnChallStageStart(WP)
 		app->mWndChallStage->setVisible(false);
 		app->mWndChallEnd->setVisible(true);
 		
-		///  sounds  //)
+		///  sounds  🔉
 		if (iChSnd < 0)
 			pGame->snd_fail->start();
 		else
-			pGame->snd_win[iChSnd]->start();  //)
+			pGame->snd_win[iChSnd]->start();
 		return;
 	}
 
@@ -353,11 +353,11 @@ void CGui::ChallengeAdvance(float timeCur/*total*/)
 	ChallFillStageInfo(true);  // cur track
 	app->mWndChallStage->setVisible(true);
 
-	//  sound  //)
+	//  sound  🔉
 	if (passed)
 		pGame->snd_stage->start();
 	else
-		pGame->snd_fail->start();  //)
+		pGame->snd_fail->start();
 
 
 	if (!last || (last && !passed))
@@ -462,7 +462,7 @@ void CGui::ChallengeAdvance(float timeCur/*total*/)
 	
 	ProgressLSave();
 
-	//  save which sound to play  //)
+	//  save which sound to play 🔉
 	if (!passed)
 		iChSnd = -1;
 	else

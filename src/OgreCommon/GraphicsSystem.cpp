@@ -764,7 +764,7 @@ void GraphicsSystem::registerHlms()
 {
 	ConfigFile cf;
 	cf.load( AndroidSystems::openFile( mResourcePath + "resources2.cfg" ) );
-	String cfgDir = cf.getSetting( "Templates", "Hlms", "" )
+	String cfgDir = cf.getSetting( "Templates", "Hlms", "" );
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE || OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
 	String rootDir = macBundlePath() + '/' + cfgDir;

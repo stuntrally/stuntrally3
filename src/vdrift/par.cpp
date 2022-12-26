@@ -5,7 +5,7 @@ SParams::SParams()
 {
 
 /// _Tool_  force go back time rewind
-	backTime = 1;  //0 !in release
+	backTime = 0;  //0 !in release
 
 //  GAME
 	rewindSpeed = 5.f;  // 5 secs in 1 sec

@@ -24,6 +24,7 @@
 // #include <OgreManualObject.h>
 // #include <OgreTechnique.h>
 // #include "RenderBoxScene.h"
+#include "BtOgreExtras.h"
 #include <thread>
 using namespace Ogre;
 using namespace std;

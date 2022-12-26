@@ -204,6 +204,7 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 			camRotFinal = qq * qy * Quaternion(Degree(-ca->mPitch - mATilt), Vector3(1,0,0));
 			manualOrient = true;
 		}	break;
+		default:  break;
 	}
 
 	if (!manualOrient)  // if !CAM_ExtAng
@@ -445,6 +446,7 @@ bool FollowCamera::updInfo(Real time)
 		,ca->mOffset.x, ca->mOffset.y, ca->mOffset.z, ca->mSpeed);	break;
 	case CAM_Car:    sprintf(ss, sFmt_Car.c_str()
 		,ca->mType, CAM_Str[ca->mType], ca->mOffset.z, ca->mOffset.x, ca->mOffset.y);	break;
+	default:  break;
 	}
 	return true;
 }

@@ -646,7 +646,7 @@ void App::LoadRoad()
 
 
 	///  🏞️👻 Run track's ghost
-	//  to get times at checkpoints
+	//  to get ⏱️ times at 🔵 checkpoints
 	fLastTime = 1.f;
 	if (!scn->road || ghTrk.GetTimeLength() < 1.f)  return;
 	int ncs = scn->road->mChks.size();
@@ -722,7 +722,7 @@ void App::LoadMisc()  // 9 last
 			pGame->timer.GetBestLap(0, rev), rev, 0);  // current
 	**/
 
-	// SetTexWrap( HLMS_UNLIT, "FluidWater", false );
+	// SetTexWrap( HLMS_UNLIT, "FluidWater", false );  //**
 
 
 	hud->Create();

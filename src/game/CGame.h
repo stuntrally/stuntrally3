@@ -151,7 +151,7 @@ public:
 	std::vector<ReplayFrame2> frm;  //size:16
 
 	bool isGhost2nd = 0;  // if present (ghost but from other car)
-	std::vector<float> vTimeAtChks;  // track ghost's times at road checkpoints
+	std::vector<float> vTimeAtChks;  // track ghost's ⏱️ times at road 🔵 checkpoints
 	float fLastTime = 1.f;  // trk ghost total time
 		
 

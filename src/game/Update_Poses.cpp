@@ -28,7 +28,7 @@
 using namespace Ogre;
 
 
-//  newPoses - Get new car pos from game
+//  🧵💫 newPoses - Get new car pos from game
 //  caution: called from GAME, 2nd thread, no Ogre stuff here
 /// Todo: move arrow update and ChampionshipAdvance to updatePoses ...
 //---------------------------------------------------------------------------------------------------------------
@@ -233,7 +233,7 @@ void App::newPoses(float time)  // time only for camera update
 			}
 			if (road && !carM->bGetStPos)
 			{
-				//  finish box dist
+				//  🏁 finish box dist
 				Vector4 carP(pi.pos.x,pi.pos.y,pi.pos.z,1);
 				carM->vStDist = carM0->matStPos * carP;  // start pos from 1st car always
 				carM->bInSt = abs(carM->vStDist.x) < road->vStBoxDim.x && 
@@ -275,25 +275,25 @@ void App::newPoses(float time)  // time only for camera update
 						bool chs = champ || chall;
 						
 						if (!chs)
-						{	if (newbest)
-								pGame->snd_lapbest->start();  //)
+						{	if (newbest)  // 🔉
+								pGame->snd_lapbest->start();
 							else
-								pGame->snd_lap->start();  //)
+								pGame->snd_lap->start();
 						}
 						ghost.Clear();
 						
 						carM->ResetChecks();
 						
-						//  restore boost fuel, each lap  ----
+						//  💨 restore boost fuel, each lap  ----
 						if (pSet->game.boost_type == 1 && carM->pCar)
 							carM->pCar->dynamics.boostFuel = carM->pCar->dynamics.boostFuelStart;
 
-						//  damage decrease, each lap  ---
+						//  🔨 damage decrease, each lap  ---
 						if (pSet->game.damage_dec > 0.f)
 							carM->pCar->dynamics.fDamage = std::max(0.f,
 								carM->pCar->dynamics.fDamage - pSet->game.damage_dec);
 
-						//  upd lap results ----
+						//  ⏱️ upd lap results ----
 						carM->updLap = false;
 						carM->fLapAlpha = 1.f;
 
@@ -302,13 +302,13 @@ void App::newPoses(float time)  // time only for camera update
 						if (finished /*&& !mClient*/)
 						{
 							if (!chs)
-							{
-								if (carM->iWonPlace == 0)	//  split screen winner places
+							{	//  split screen winner places
+								if (carM->iWonPlace == 0)
 								{
 									if (pSet->game.local_players > 1)
 									{
 										int n = std::min(2, std::max(0, 3 - carIdWin));
-										pGame->snd_win[n]->start();  //)
+										pGame->snd_win[n]->start();  // 🔉
 									}
 									carM->iWonPlace = carIdWin++;
 								}
@@ -320,7 +320,7 @@ void App::newPoses(float time)  // time only for camera update
 						}
 					}
 					
-					//  🏁 checkpoints  --------------------------------------
+					//  🔵 checkpoints  --------------------------------------
 					for (int i=0; i < ncs; ++i)
 					{
 						const CheckSphere& cs = road->mChks[i];
@@ -364,7 +364,7 @@ void App::newPoses(float time)  // time only for camera update
 										(inc * (i - scn->road->iChkId1) + (rev ? 0 : 1) + ncs) % ncs;
 
 								if (pSet->snd_chk && locar)
-									pGame->snd_chk->start();  //)
+									pGame->snd_chk->start();  // 🔉
 							}
 							else
 							if (carM->iInChk != carM->iCurChk && !bRplPlay &&
@@ -376,7 +376,7 @@ void App::newPoses(float time)  // time only for camera update
 								{	carM->iInWrChk = carM->iInChk;
 									
 									if (pSet->snd_chkwr && locar)
-										pGame->snd_chkwr->start();  //)
+										pGame->snd_chkwr->start();  // 🔉
 							}	}
 							break;
 						}
@@ -395,7 +395,7 @@ void App::newPoses(float time)  // time only for camera update
 					!bRplPlay && pSet->cam_bounce, carM->vType);
 			iCurPoses[c] = qn;  // atomic, set new index in queue
 			
-			///))  🔉🎥 upd sound camera
+			//))  🔉🎥 upd sound camera
 			if (c == 0 && pGame->snd)
 			{
 				Vector3 x,y,z;
@@ -409,7 +409,7 @@ void App::newPoses(float time)  // time only for camera update
 }
 
 
-//  updatePoses - Set car pos for Ogre nodes, update particles, trails
+//  💫 updatePoses - Set car pos for Ogre nodes, update particles, trails
 //---------------------------------------------------------------------------------------------------------------
 void App::updatePoses(float time)
 {

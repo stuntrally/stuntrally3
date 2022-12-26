@@ -282,11 +282,11 @@ void CGui::btnChampStageStart(WP)
 
 		app->mWndChampEnd->setVisible(true);
 
-		///  sound  //)
+		///  sound  🔉
 		if (iChSnd < 0)
 			pGame->snd_fail->start();
 		else
-			pGame->snd_win[iChSnd]->start();  //)
+			pGame->snd_win[iChSnd]->start();
 
 		return;
 	}
@@ -384,11 +384,11 @@ void CGui::ChampionshipAdvance(float timeCur)
 	ChampFillStageInfo(true);  // cur track
 	app->mWndChampStage->setVisible(true);
 
-	//  sound  //)
+	//  sound  🔉
 	if (passed)
 		pGame->snd_stage->start();
 	else
-		pGame->snd_fail->start();  //)
+		pGame->snd_fail->start();
 
 
 	if (!last || (last && !passed))
@@ -410,7 +410,7 @@ void CGui::ChampionshipAdvance(float timeCur)
 
 		ProgressSave();
 
-		//  save which sound to play  //)
+		//  save which sound to play 🔉
 		if (!passed)
 			iChSnd = -1;
 		else

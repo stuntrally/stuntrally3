@@ -25,13 +25,13 @@ void SplineMarkEd::Setup(
 	String sMarkerMeshFile, Real scale,
 	Terra* terrain, SceneManager* sceneMgr, Camera* camera, int idx)
 {
-	return;  // fixme
+	mTerrain = terrain;  mSceneMgr = sceneMgr;  mCamera = camera;
 	idRd = idx;
 	sMarkerMesh = sMarkerMeshFile;
 	fMarkerScale = scale;
-	mTerrain = terrain;  mSceneMgr = sceneMgr;  mCamera = camera;
 	
 	if (sMarkerMesh == "")  return;
+	// return;  // fixme ed
 
 	String name, si = toStr(idRd);
 	createMarker(si+"sphereSel",   "sphere_sel",   entSel, ndSel);
@@ -58,7 +58,7 @@ void SplineEdit::Mark::setVis(bool vis)
 }
 
 
-//  add marker
+//  🚧 add marker
 //-------------------------------------------------------------------------------------
 void SplineMarkEd::AddMarker(Vector3 pos)
 {
@@ -91,10 +91,8 @@ void SplineMarkEd::AddMarker(Vector3 pos)
 void SplineMarkEd::DestroyMarker(int id)
 {
 	Mark& m = vMarks[id];
-	mSceneMgr->destroyItem(m.it);
-	//mSceneMgr->destroyItem(m.entC);
-	mSceneMgr->destroySceneNode(m.nd);
-	//mSceneMgr->destroySceneNode(m.ndC);
+	if (m.it)  mSceneMgr->destroyItem(m.it);  m.it = 0;
+	if (m.nd)  mSceneMgr->destroySceneNode(m.nd);  m.nd = 0;
 }
 
 //  del last marker
@@ -124,7 +122,7 @@ void SplineMarkEd::DestroyMarkers()
 }
 
 
-//  Select
+//  👆🚧 Select
 //-------------------------------------------------------------------------------------
 void SplineRoad::SelectMarker(bool bHide)  // Mr Melect Sarker
 {
@@ -205,7 +203,7 @@ void SplineMarkEd::UpdAllMarkers()
 }
 
 
-//  util
+//  ⛓️ util
 //------------------------------------------------
 void SplineMarkEd::UpdRot()
 {
@@ -231,7 +229,7 @@ void SplineMarkEd::SetTerHitVis(bool visible)
 
 
 
-//  Checkpoints
+//  🔵 Checkpoints
 //--------------------------------------------------------------------------------------
 void SplineEditChk::AddChkR(Real relR, bool dontCheckR)    ///  ChkR
 {
@@ -282,7 +280,7 @@ void SplineEditChk::Set1stChk()
 }
 
 
-//  Set Checkpoints
+//  🔵 Set Checkpoints
 //--------------------------------------------------------------------------------------
 void SplineRoad::SetChecks()
 {

@@ -143,7 +143,7 @@ bool SoundBaseMgr::Init(std::string snd_device, bool reverb1)
 }
 
 
-//  Reverb
+//  🔊 Reverb
 //-----------------------------------------------------------------------------------
 void SoundBaseMgr::SetReverb(std::string name)
 {
@@ -171,7 +171,7 @@ void SoundBaseMgr::SetReverb(std::string name)
 }
 
 
-//  Create  --
+//  🆕 Create  --
 void SoundBaseMgr::CreateSources()
 {
 	if (!device)  return;
@@ -198,7 +198,7 @@ void SoundBaseMgr::CreateSources()
 	buffers_use = 0;  //)+ zero after all loaded
 }
 
-//  Destroy  --
+//  💥 Destroy  --
 void SoundBaseMgr::DestroySources(bool all)
 {
 	if (!device)  return;
@@ -218,7 +218,7 @@ void SoundBaseMgr::DestroySources(bool all)
 	hw_sources_use = 0;
 }
 
-//  Destroy
+//  💥 Destroy
 SoundBaseMgr::~SoundBaseMgr()
 {
 	if (device)
@@ -247,7 +247,7 @@ SoundBaseMgr::~SoundBaseMgr()
 }
 
 
-//  Update
+//  💫 Update
 //-----------------------------------------------------------------------------------
 void SoundBaseMgr::setCamera(Vector3 pos, Vector3 dir, Vector3 up, Vector3 vel)
 {
@@ -269,7 +269,7 @@ bool compareByAudibility(std::pair<int, float> a, std::pair<int, float> b)
 	return a.second > b.second;
 }
 
-//  called when camera moves
+//  💫 called when camera moves
 void SoundBaseMgr::recomputeAllSources()
 {
 	if (!device)  return;
@@ -287,12 +287,12 @@ void SoundBaseMgr::recomputeAllSources()
 	if (sources_use - 1 > hw_sources_num)
 		std::nth_element(src_audible, src_audible+hw_sources_num, src_audible+sources_use-1, compareByAudibility);
 
-	// retire out of range sources first
+	//  retire out of range sources first
 	for (i=0; i < sources_use; i++)
 		if (sources[src_audible[i].first]->hw_id != -1 && (i >= hw_sources_num || src_audible[i].second == 0))
 			retire(src_audible[i].first);
 
-	// assign new sources
+	//  assign new sources
 	for (i=0; i < std::min(sources_use, hw_sources_num); i++)
 	if (sources[src_audible[i].first]->hw_id == -1 && src_audible[i].second > 0)
 		for (int j=0; j < hw_sources_num; j++)
@@ -304,7 +304,7 @@ void SoundBaseMgr::recomputeAllSources()
 }
 
 
-//  recompute Source
+//  💫 recompute Source
 //---------------------------------------------------------------------------------------------------------------------------
 void SoundBaseMgr::recomputeSource(int id, int reason, float fl, Vector3* vec)
 {
@@ -381,7 +381,6 @@ void SoundBaseMgr::recomputeSource(int id, int reason, float fl, Vector3* vec)
 
 //  assign
 //-----------------------------------------------------------------------------------
-
 void SoundBaseMgr::assign(int id, int hw_id)
 {
 	if (!device)  return;

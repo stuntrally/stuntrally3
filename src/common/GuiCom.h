@@ -28,37 +28,37 @@ struct TrkL
 class CGuiCom : public BGui
 {
 public:
-	App* app;
-	SETTINGS* pSet;
-	Scene* sc;
-	MyGUI::Gui* mGui;
+	App* app =0;
+	SETTINGS* pSet =0;
+	Scene* sc =0;
+	MyGUI::Gui* mGui =0;
 	
 	CGuiCom(App* app1);
 
 	typedef std::list <std::string> strlist;
 
 
-	///  Gui common   --------------------------
+	///  🎛️ Gui Common   --------------------------
 
-	//  resize
+	//  🗜️ resize
 	void SizeGUI(), doSizeGUI(MyGUI::EnumeratorWidgetPtr);
 	float GetGuiMargin(int wy);
 	void setOrigPos(WP wp, const char* relToWnd);
-	void CreateFonts();
+	void CreateFonts();  // 🔠
 
-	//  tooltip
-	WP mToolTip;  Ed mToolTipTxt;
+	//  ❔ tooltip
+	WP mToolTip =0;  Ed mToolTipTxt =0;
 	void setToolTips(MyGUI::EnumeratorWidgetPtr widgets);
 	void notifyToolTip(WP sender, const MyGUI::ToolTipInfo& info);
 	void boundedMove(WP moving, const MyGUI::IntPoint& point);
 
 	//  language
-	bool bGuiReinit;  // lang change
+	bool bGuiReinit = 0;  // lang change
 	void comboLanguage(CMB);
 	std::map<std::string, MyGUI::UString> languages; // <short name, display name>
 
 	void UnfocusLists();
-	Btn bnQuit;  void btnQuit(WP);
+	Btn bnQuit =0;  void btnQuit(WP);
 
 	//  init
 	void GuiCenterMouse();
@@ -69,7 +69,7 @@ public:
 	MyGUI::TabPtr FindSubTab(WP tab);  // util
 	
 
-	///  [Graphics]
+	///  📊 Graphics  --------------------------
 	SlV(ViewDist);  SlV(Anisotropy);
 	SlV(TerDetail);  SlV(TerDist);  SV svRoadDist;
 	SV svTexSize, svTerMtr, svTerTripl;  // detail
@@ -98,17 +98,17 @@ public:
 	std::map<Ogre::String, Ogre::String> scnClr, scnN;
 
 
-	///  [Track]
+	///  🏞️ Track  --------------------------
 
 	//  selected track name, user
 	Ogre::String sListTrack;
-	bool bListTrackU;
+	bool bListTrackU = 0;
 	
 	void listTrackChng(Mli2, size_t);
 	void SortTrkList();
 	void TrackListUpd(bool resetNotFound=false);
 
-	Mli2 trkList;
+	Mli2 trkList =0;
 	Ed trkDesc[2], trkAdvice[2];  // description, advice
 	bool needSort(Mli2 li);
 
@@ -117,7 +117,7 @@ public:
 	Img imgTrkIco1 =0, imgTrkIco2 =0;
 	
 
-	//  st - road stats,dim  inf - tracks.ini ratings
+	//  📝 st - road stats,dim  inf - tracks.ini ratings
 	const static int InfTrk = 13, ImStTrk = 4,
 	#ifdef SR_EDITOR
 		StTrk = 9;
@@ -131,30 +131,31 @@ public:
 		float timeCur, bool reverse=false, int champ=0);
 	void ReadTrkStats();
 
-	//  track views
+	//  📰 track views
 	void btnTrkView1(WP), btnTrkView2(WP), btnTrkFilter(WP);
 	void ChangeTrackView();
 	void updTrkListDim();
 
 
-	//  columns, filters  ---
+	//  🔻 filter  ---
+	Txt txtTracksFAll =0, txtTracksFCur =0;
 	Ck ckTrkFilter;  void chkTrkFilter(Ck*);
-	Ck ckTrkColVis[COL_VIS];  void chkTrkColVis(Ck*);
 	SV svTrkFilMin[COL_FIL], svTrkFilMax[COL_FIL];  void slTrkFil(SV*);
+	
+	//  🏛️ columns
+	Ck ckTrkColVis[COL_VIS];  void chkTrkColVis(Ck*);
 	void ChkUpd_Col();
-	Txt txtTracksFAll, txtTracksFCur;
-
 	//  const list column widths
 	const static int colTrk[33], iClrsDiff = 9, iClrsRating = 7, iClrsLong = 11, iClrsSum = 10;
 	const static Ogre::String clrsDiff[iClrsDiff], clrsRating[iClrsRating], clrsLong[iClrsLong], clrsSum[iClrsSum];
 	const static Ogre::String getClrDiff(int), getClrRating(int), getClrLong(int), getClrSum(int);
 
 
-	//  track find
+	//  🔍 Find track
 	Ogre::String sTrkFind;
-	Ed edTrkFind;  void editTrkFind(Ed); 
+	Ed edTrkFind =0;  void editTrkFind(Ed); 
 
-	//  list fill
+	//  📃 List fill
 	strlist liTracks,liTracksUser;
 	std::list<TrkL> liTrk;
 	void FillTrackLists();
@@ -163,14 +164,14 @@ public:
 	void trkListNext(int rel);
 
 
-	///  [Screen]
-	Cmb resList;
+	///  🖥️ Screen  --------------------------
+	Cmb resList =0;
 	void InitGuiScreenRes(), ResizeOptWnd();
 
 	CK(VidFullscr);  CK(VidVSync);
 	void btnResChng(WP);
 	void comboGraphicsAll(CMB), comboRenderSystem(CMB);
 
-	//  util
+	//  🔗 util
 	void OpenBrowserUrl(std::string url);
 };

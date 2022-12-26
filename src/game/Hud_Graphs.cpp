@@ -166,7 +166,7 @@ void App::CreateGraphs()
 			graphs.push_back(gv);
 		}	break;
 		
-	case Gh_Checks:  //  🏁 checkpoints
+	case Gh_Checks:  //  🔵 checkpoints
 		for (i=0; i < 2; ++i)
 		{
 			gv = new GraphView(scm,mWindow,mGui);
@@ -409,7 +409,7 @@ void App::GraphsNewVals()				// Game
 		graphs[3]->SetVisible(info);  graphs[4]->SetVisible(info);
 	}	break;
 
-	case Gh_Checks:  //  🏁 checkpoints
+	case Gh_Checks:  //  🔵 checkpoints
 		if (gsi >= 2 && !carModels.empty())
 		{
 			CarModel* cm = carModels[0];

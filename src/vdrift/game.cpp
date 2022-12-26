@@ -556,9 +556,9 @@ bool GAME::NewGameDoLoadMisc(float pre_time)
 		timer.AddCar(cars[i]->GetCarType());
 	timer.AddCar("ghost");
 
-	//  sounds
+	//  sounds 🔊
 	LoadHudSounds();
-	snd->sound_mgr->CreateSources();  ///)
+	snd->sound_mgr->CreateSources();  //))
 	return true;
 }
 
@@ -576,9 +576,9 @@ void GAME::LeaveGame(bool dstTrk)
 		delete cars[i];
 	cars.clear();
 
-	//  sounds
+	//  sounds 🔊
 	if (snd && hadCars)
-		snd->sound_mgr->DestroySources(false);  ///)
+		snd->sound_mgr->DestroySources(false);  //))
 	
 	timer.Unload();
 

@@ -29,14 +29,7 @@ using namespace std;
 
 
 CGuiCom::CGuiCom(App* app1)
-	:app(app1), pSet(0), sc(0),	mGui(0)
-	,bGuiReinit(0)
-	,mToolTip(0), mToolTipTxt(0)
-	,bnQuit(0)
-	,trkList(0), imgTrkIco1(0),imgTrkIco2(0)
-	,bListTrackU(0)
-	,edTrkFind(0), resList(0)
-	,txtTracksFAll(0), txtTracksFCur(0)
+	:app(app1)
 {
 	pSet = app1->pSet;
 	sc = app1->scn->sc;
@@ -60,7 +53,7 @@ CGuiCom::CGuiCom(App* app1)
 		for (i=0; i < InfTrk; ++i){  infTrk[t][i] = 0;  imInfTrk[t][i] = 0;  }
 	}
 	
-	//  short scenery names  for user tracks
+	//  🏝️ short scenery names  for user tracks
 	//  and presets.xml  colors from  sc=".."
 	scnN["Jng"] = "Jungle";        scnN["JngD"]= "JungleDark";      scnN["Mos"] = "Moss";          
 	scnN["For"] = "Forest";        scnN["ForM"]= "ForestMntn";      scnN["ForY"]= "ForestYellow";
@@ -80,7 +73,7 @@ CGuiCom::CGuiCom(App* app1)
 	scnN["Sur"] = "Surreal";       scnN["Spc"] = "Space";           scnN["SuSp"] = "SurrealSpace";
 	scnN["Oth"] = "Other";         scnN["Blk"] = "BlackDesert";     scnN["Asp"] = "Asphalt";
 
-	//  🏞️ scenery 🌈 colors  for track names  *  *  * * * * ** ** ** *** *** ****
+	//  🏝️ scenery 🌈 colors  for track names  *  *  * * * * ** ** ** *** *** ****
 	scnClr["Jungle"]       = "#50FF50";  scnClr["JungleDark"]   = "#40C040";  scnClr["Moss"]         = "#70F0B0";
 	scnClr["Forest"]       = "#A0C000";  scnClr["ForestMntn"]   = "#A0C080";  scnClr["ForestYellow"] = "#C0C000";
 	scnClr["Finland"]      = "#A0E080";  scnClr["Mud"]          = "#A0A000";  scnClr["DesertMud"]    = "#B0B000";
@@ -220,7 +213,7 @@ void CGuiCom::setOrigPos(WP wp, const char* relToWnd)
 }
 
 
-///  Tooltips
+///  ❔ Tooltips
 //----------------------------------------------------------------------------------------------------------------
 void CGuiCom::GuiInitTooltip()
 {
@@ -321,7 +314,7 @@ void CGuiCom::boundedMove(Widget* moving, const IntPoint& point)
 }
 
 
-//  Languages combo
+//  🗺️ Languages combo
 //----------------------------------------------------------------------------------------------------------------
 void CGuiCom::GuiInitLang()
 {
@@ -374,7 +367,7 @@ void CGuiCom::comboLanguage(ComboBox* wp, size_t val)
 }
 
 
-///  create fonts
+///  🔠 create fonts
 //----------------------------------------------------------------------------------------------------------------
 void CGuiCom::CreateFonts()
 {

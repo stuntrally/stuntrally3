@@ -28,7 +28,7 @@ using namespace std;
 using namespace Ogre;
 
 
-//  Load
+//  🆕 Load
 //--------------------------------------------------------------------------------------------------------------------------
 bool CAR::LoadSounds(const std::string & carpath)
 {
@@ -39,7 +39,7 @@ bool CAR::LoadSounds(const std::string & carpath)
 	SoundMgr* snd = pGame->snd;
 	const string& eng = dynamics.engine.sound_name;
 	s.engine = snd->createInstance(eng,0);  s.engine->set2D(ss);
-	s.engine->setEngine(true);  s.engine->start();
+	s.engine->setEngine(true);  s.engine->start();  // 🔉
 
 	int i;  float fw = numWheels;
 	for (i = 0; i < numWheels; ++i)  // tires
@@ -114,6 +114,7 @@ void CAR::CARsounds::SetNumWheels(int n)
 	{	bumpvol[i]=0.f;  bumptime[i] = 5.f;  }
 }
 
+//  💥 destroy
 void CAR::CARsounds::Destroy()
 {
 	delete engine;
@@ -140,6 +141,7 @@ void CAR::CARsounds::Destroy()
 }
 
 
+//  🔊💫 Update Sounds
 //--------------------------------------------------------------------------------------------------------------------------
 void CAR::UpdateSounds(float dt)
 {
@@ -160,7 +162,7 @@ void CAR::UpdateSounds(float dt)
 	bool terminal = dynamics.fDamage >= 100.f;
 	float fDmg = pApp->scn->sc->damageMul;
 
-	//  replay play  ------------------------------------------
+	//  📽️ replay play  ------------------------------------------
 	if (pApp->bRplPlay)
 	{	dmg = false;
 
@@ -238,7 +240,7 @@ void CAR::UpdateSounds(float dt)
 			if (dynamics.whP[w] >= 1)  mud = true;
 		}
 
-		//  wheels in mud, spinning intensity
+		//  ⚫ wheels in mud, spinning intensity
 		float mudSpin = 0.f;
 		for (int w=0; w < numWheels; ++w)
 		{
@@ -259,7 +261,7 @@ void CAR::UpdateSounds(float dt)
 		}
 		fCarScrap = gain;
 
-		/// <><> Damage <><>
+		/// <><> 🔨 Damage <><>
 		if (dmg && !terminal)
 			if (reduced)
 				dynamics.fDamage += fDmg * fCarScrap * dt * dynamics.fHitDmgA * gPar.dmgFromScrap;
@@ -279,11 +281,10 @@ void CAR::UpdateSounds(float dt)
 	ep = Axes::toOgre(engPos);
 
 
-//))  update sounds
+//))  💫 update sounds 🔊  ---------------------------------------------------------------
 if (bSound)
-{	/**/	
-
-	///  engine  ====
+{
+	///  📈 engine  ====
 	float gain = 1.f;
 
 	if (dynamics.vtype >= V_Spaceship)
@@ -299,7 +300,7 @@ if (bSound)
 	s.engine->setGain(gain * dynamics.engine_vol_mul * pSet->vol_engine);
 
 
-	///  tires  oooo
+	///  ⚫ Tires  oooo
 	for (int i = 0; i < numWheels; ++i)
 	{
 		Vector3 wh;  wh = Axes::toOgre(whPos[i]);
@@ -334,7 +335,7 @@ if (bSound)
 		if (snd != s.gravel[i])   s.gravel[i]->setGain(0.f);
 
 
-		//  susp bump  ~~~
+		//  🪜 susp bump  ~~~
 		if (dynamics.vtype == V_Car)
 		{
 			suspbump[i].Update(suspVel[i], suspDisp[i], dt);
@@ -349,7 +350,7 @@ if (bSound)
 				{
 					s.bumpvol[i] = gain;
 					s.bumptime[i] = 0.f;
-					//tirebump[i]->start();
+					//tirebump[i]->start();  // 🔉
 					//LogO("bump "+toStr(i)+" "+fToStr(gain));
 				}
 			}
@@ -364,7 +365,7 @@ if (bSound)
 	}
 	
 
-	//  wind  ----
+	//  🌪️ wind  ----
 	gain = dynVel;
 	if (dynamics.vtype == V_Spaceship)   gain *= 0.7f;
 	//if (dynamics.sphere)  gain *= 0.9f;
@@ -375,12 +376,12 @@ if (bSound)
 	s.wind->setGain(gain * pSet->vol_env);
 	s.wind->setPosition(ep, ev);
 
-	//  boost
+	//  💨 boost
 	s.boost->setGain(boostVal * 0.55f * pSet->vol_engine);
 	s.boost->setPosition(ep, ev);  //back?-
 
 
-	//  fluids - hit  ~~~~
+	//  💧 fluids - hit  ~~~~
 	bool fluidHit = whH_all > 1.f;
 	//LogO(toStr(whH_all) + "  v "+ toStr(dynVel));
 
@@ -396,7 +397,7 @@ if (bSound)
 		{
 			snd->setGain(gain * pSet->vol_fl_splash * (mud ? 0.6f : 1.f));
 			snd->setPosition(ep, ev);
-			snd->start();
+			snd->start();  // 🔉
 		}
 
 		if (s.mud)  {  Sound* snd = s.mud;
@@ -404,12 +405,12 @@ if (bSound)
 		{
 			snd->setGain(gain * pSet->vol_fl_splash);
 			snd->setPosition(ep, ev);
-			snd->start();
+			snd->start();  // 🔉
 		}	}
 	}
 	s.fluidHitOld = fluidHit;
 
-	//  fluids - continuous
+	//  🌊 fluids - continuous
 	float velM = mud && whH_all > 0.1f ?
 		s.whMudSpin * 2.5f : 0.f;
 	s.mud_cont->setGain(std::min(1.f, velM) * pSet->vol_fl_cont * 0.85f);
@@ -422,10 +423,10 @@ if (bSound)
 	s.water_cont->setPitch(std::max(0.7f, std::min(1.3f, velW)));
 	s.water_cont->setPosition(ep, ev);
 }
-//))  sounds
+//))  sounds 🔊  ---------------------------------------------------------------
 	
 	
-	//  crash  ----
+	//  🔨 crash  ----
 	Vector3 hp;  hp = Axes::toOgre(hitPos);
 	{
 		crashdetection2.Update(-fHitForce, dt);
@@ -448,7 +449,7 @@ if (bSound)
 					s.crash[i]->setGain(gain * pSet->vol_car_crash);
 					if (hitp)
 					s.crash[i]->setPosition(hp, ev);
-					s.crash[i]->start();
+					s.crash[i]->start();  // 🔉
 				}
 				s.crashtime[i] = 0.f;
 				
@@ -471,7 +472,7 @@ if (bSound)
 			s.crashtime[i] += dt;
 	
 
-	//  crash scrap and screech
+	//  🔨 crash scrap and screech
 	if (bSound)
 	{
 		s.scrap->setGain(fCarScrap * pSet->vol_car_scrap);
@@ -484,7 +485,7 @@ if (bSound)
 	}
 
 
-	/// <><> Damage <><> 
+	/// <><> 🔨 Damage <><> 
 	if (dmg)
 		if (dynamics.fDamage > 100.f)  dynamics.fDamage = 100.f;
 }
