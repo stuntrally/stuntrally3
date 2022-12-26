@@ -61,7 +61,7 @@ void App::createScene01()  // once, init
 	}*/
 
 
-	//  camera
+	//  🎥 camera
 	mWindow = mGraphicsSystem->getRenderWindow();
 	asp = float(mWindow->getWidth())/float(mWindow->getHeight());
 	mCamera->setFarClipDistance(pSet->view_distance*1.1f);
@@ -79,7 +79,7 @@ void App::createScene01()  // once, init
 	Ogre::Timer ti;
 
 
-	//  data load xml
+	//  📄 data load xml
 	scn->data->Load();
 	scn->sc->pFluidsXml = scn->data->fluids;
 	scn->sc->pReverbsXml = scn->data->reverbs;
@@ -87,9 +87,10 @@ void App::createScene01()  // once, init
 	//  surfaces.cfg
 	LoadAllSurfaces();
 	
-	LogO(String("::: Time load xmls: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time load xmls: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 
-	//  gui  * * *
+
+	//  🎛️ Gui  * * *
 	if (pSet->startInMain)
 		pSet->bMain = true;
 		
@@ -290,7 +291,7 @@ void App::LoadTrackEv()
 	if (pSet->check_load)
 		gui->WarningsCheck(scn->sc, scn->road);
 
-	LogO(String("::: Time Load Track: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::> Time Load Track: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 
 

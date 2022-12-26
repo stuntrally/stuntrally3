@@ -202,7 +202,7 @@ void App::SaveGrassDens()
 	im.loadDynamicImage((uchar*)gd, w,h,1, PF_BYTE_RGBA);
 	im.save(gcom->TrkDir()+"objects/roadDensity.png");
 
-	LogO(String("::: Time road dens: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
+	LogO(String(":::* Time road dens: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
 	delete[] rd;  delete[] gd;  delete[] mask;
 
@@ -212,7 +212,7 @@ void App::SaveGrassDens()
 	rt[RT_Road   ].tex->writeContentsToFile(path + "/preview/road.png");
 	rt[RT_Terrain].tex->writeContentsToFile(path + "/preview/terrain.jpg");
 
-	LogO(String("::: Time save prv : ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time save prv : ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 	#endif
 }
 
@@ -317,7 +317,7 @@ void App::SaveWaterDepth()
 		TextureManager::getSingleton().load("waterDepth.png", rgDef);
 	} catch(...) {  }*/
 
-	LogO(String("::: Time WaterDepth: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time WaterDepth: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 
 
@@ -484,5 +484,5 @@ void App::AlignTerToRoad()
 	
 	// todo: ?restore road sel after load F5..
 
-	LogO(String("::: Time Ter Align: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time Ter Align: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }

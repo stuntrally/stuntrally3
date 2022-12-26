@@ -10,6 +10,8 @@
 #include "PaceNotes.h"
 #include "MultiList2.h"
 // #include "RenderBoxScene.h"
+#include "GraphicsSystem.h"
+#include "Terra.h"
 
 #include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
 //#include <LinearMath/btDefaultMotionState.h>
@@ -155,6 +157,17 @@ bool App::frameEnded(float dt)
 		}
 	}
 
+	///  ⛰️ Terrain  ----
+	if (mTerra && mGraphicsSystem->getRenderWindow()->isVisible() )
+	{
+		// Force update the shadow map every frame to avoid the feeling we're "cheating" the
+		// user in this sample with higher framerates than what he may encounter in many of
+		// his possible uses.
+		const float lightEpsilon = 0.0001f;  //** 0.0f slow
+		mTerra->update( !scn->sun ? -Vector3::UNIT_Y :
+			scn->sun->getDerivedDirectionUpdated(), lightEpsilon );
+	}
+
 #if 0
 if (pSet->bTrees)
 {
@@ -265,6 +278,7 @@ void App::update( float dt )
 	// BaseApp::frameStarted(dt);
 	frameRenderingQueued(dt);  //^
 
+	scn->UpdSun();
 
 	static Real time1 = 0.;
 	mDTime = dt;
@@ -283,27 +297,19 @@ void App::update( float dt )
 
 	//  update input
 	mRotX = 0; mRotY = 0;  mRotKX = 0; mRotKY = 0;  mTrans = Vector3::ZERO;
-	// #define  isKey(a)  mInputWrapper->isKeyDown(SDL_SCANCODE_##a)
 
-	//  Move,Rot camera
-	/*if (bCam())
+	//  camera Move,Rot
+	if (bCam())
 	{
-		if (isKey(A))  mTrans.x -= 1;	if (isKey(D))  mTrans.x += 1;
-		if (isKey(W))  mTrans.z -= 1;	if (isKey(S))  mTrans.z += 1;
-		if (isKey(Q))  mTrans.y -= 1;	if (isKey(E))  mTrans.y += 1;
+		mTrans.x = mKeys[3] - mKeys[2];  // A,D
+		mTrans.z = mKeys[1] - mKeys[0];  // W,S
+		mTrans.y = mKeys[5] - mKeys[4];  // Q,E
 		
-		if (isKey(DOWN) ||isKey(KP_2))  mRotKY -= 1;
-		if (isKey(UP)   ||isKey(KP_8))  mRotKY += 1;
-		if (isKey(RIGHT)||isKey(KP_6))  mRotKX -= 1;
-		if (isKey(LEFT) ||isKey(KP_4))  mRotKX += 1;
-	}*/
+		mRotKY = mKeys[6] - mKeys[7];  // ^,v
+		mRotKX = mKeys[8] - mKeys[9];  // <,>
+	}
 
-	   // key modifiers
-	//   alt = mInputWrapper->isModifierHeld(SDL_Keymod(KMOD_ALT));
-	//  ctrl = mInputWrapper->isModifierHeld(SDL_Keymod(KMOD_CTRL));
-	// shift = mInputWrapper->isModifierHeld(SDL_Keymod(KMOD_SHIFT));
-
-	 // speed multiplers
+	//  speed multiplers
 	moveMul = 1;  rotMul = 1;
 	if(shift){	moveMul *= 0.2;	 rotMul *= 0.4;	}  // 16 8, 4 3, 0.5 0.5
 	if(ctrl){	moveMul *= 4;	 rotMul *= 2.0;	}

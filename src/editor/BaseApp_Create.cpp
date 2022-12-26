@@ -291,7 +291,7 @@ bool BaseApp::setup()
 
 	createFrameListener();
 
-	LogO(String("::: Time Ogre Start: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time Ogre Start: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 
 	createScene();
 
@@ -352,22 +352,63 @@ void BaseApp::textInput(const SDL_TextInputEvent &arg)
 		MyGUI::InputManager::getInstance().injectKeyPress(MyGUI::KeyCode::None, *it);*/
 }
 
+//  ⌨️ Key Released
+//-------------------------------------------------------------------------------------
+#define key(a)  SDL_SCANCODE_##a
+void BaseApp::keyReleased( const SDL_KeyboardEvent &arg )
+{
+	switch (arg.keysym.scancode)
+	{
+	case key(LSHIFT):  case key(RSHIFT):  shift = false;  break;  // mods
+	case key(LCTRL):   case key(RCTRL):   ctrl = false;   break;
+	case key(LALT):    case key(RALT):    alt = false;    break;
+
+	case key(W):  mKeys[0] = 0;  break;  case key(S):  mKeys[1] = 0;  break;  // cam move
+	case key(A):  mKeys[2] = 0;  break;  case key(D):  mKeys[3] = 0;  break;
+	case key(Q):  mKeys[4] = 0;  break;  case key(E):  mKeys[5] = 0;  break;
+
+	case key(UP):     mKeys[6] = 0;  break;  case key(DOWN):   mKeys[7] = 0;  break;  // cam rot
+	case key(LEFT):   mKeys[8] = 0;  break;  case key(RIGHT):  mKeys[9] = 0;  break;
+	default:  break;
+	}
+}
+
+//  ⌨️ Key pressed
+//-------------------------------------------------------------------------------------
+void BaseApp::BaseKeyPressed(const SDL_KeyboardEvent &arg)
+{	
+	switch (arg.keysym.scancode)
+	{
+	case key(LSHIFT):  case key(RSHIFT):  shift = false;  break;  // mods
+	case key(LCTRL):   case key(RCTRL):   ctrl = false;   break;
+	case key(LALT):    case key(RALT):    alt = false;    break;
+
+	case key(W):  mKeys[0] = 1;  break;  case key(S):  mKeys[1] = 1;  break;  // cam move
+	case key(A):  mKeys[2] = 1;  break;  case key(D):  mKeys[3] = 1;  break;
+	case key(Q):  mKeys[4] = 1;  break;  case key(E):  mKeys[5] = 1;  break;
+
+	case key(UP):     mKeys[6] = 1;  break;  case key(DOWN):   mKeys[7] = 1;  break;  // cam rot
+	case key(LEFT):   mKeys[8] = 1;  break;  case key(RIGHT):  mKeys[9] = 1;  break;
+	default:  break;
+	}
+}
+#undef key
+
 
 //  Mouse
 //-------------------------------------------------------------------------------------
 void BaseApp::mouseMoved( const SDL_Event &arg )
 {
 	static int xAbs = 0, yAbs = 0, whAbs = 0;  // abs
-	int xRel = 0, yRel = 0, whRel = 0;  // rel
 
 	if (arg.type == SDL_MOUSEMOTION)
 	{
-		xAbs = arg.motion.x;  xRel = arg.motion.xrel;
-		yAbs = arg.motion.y;  yRel = arg.motion.yrel;
+		xAbs = arg.motion.x;  mx = arg.motion.xrel;
+		yAbs = arg.motion.y;  my = arg.motion.yrel;
 	}
 	else if (arg.type == SDL_MOUSEWHEEL)
 	{
-		whRel = arg.wheel.y;  whAbs += whRel;
+		mz = arg.wheel.y;  whAbs += mz;
 	}
 
 	//if (bGuiFocus)
@@ -463,14 +504,14 @@ void BaseApp::baseInitGui()
 	// PointerManager::getInstance().eventChangeMousePointer += newDelegate(this, &BaseApp::onCursorChange);
 	//; PointerManager::getInstance().setVisible(false);
 	
-	//------------------------ lang
+	//------------------------ language
 	/*if (pSet->language == "")  // autodetect
 	{	pSet->language = getSystemLanguage();
-		setlocale(LC_NUMERIC, "C");  }
+		setlocale(LC_NUMERIC, "C");  }*/
 	
-	if (!boost::filesystem::exists(PATHMANAGER::Data() + "/gui/core_language_" + pSet->language + "_tag.xml"))
+	if (!PATHMANAGER::FileExists(PATHMANAGER::Data() + "/gui/core_language_" + pSet->language + "_tag.xml"))
 		pSet->language = "en";  // use en if not found
-	*/
+	
 	LanguageManager::getInstance().setCurrentLanguage(pSet->language);
 	//------------------------
 

@@ -17,7 +17,7 @@ void SplineMarkEd::createMarker(String name, String mat, Item*& ent, SceneNode*&
 {
 	ent = mSceneMgr->createItem(/*name,*/ sMarkerMesh);
 	ent->setMaterialName(mat);  ent->setCastShadows(false);  ent->setVisibilityFlags(RV_Hud);
-	nd = mSceneMgr->getRootSceneNode(SCENE_STATIC)->createChildSceneNode(/*name*/);
+	nd = mSceneMgr->getRootSceneNode()->createChildSceneNode(/*name*/);
 	nd->attachObject(ent);  nd->setVisible(false);
 }
 
@@ -25,6 +25,7 @@ void SplineMarkEd::Setup(
 	String sMarkerMeshFile, Real scale,
 	Terra* terrain, SceneManager* sceneMgr, Camera* camera, int idx)
 {
+	return;  // fixme
 	idRd = idx;
 	sMarkerMesh = sMarkerMeshFile;
 	fMarkerScale = scale;
@@ -127,6 +128,7 @@ void SplineMarkEd::DestroyMarkers()
 //-------------------------------------------------------------------------------------
 void SplineRoad::SelectMarker(bool bHide)  // Mr Melect Sarker
 {
+	if (!ndRot)  return;
 	if (vMarks.empty())
 	{
 		ndChosen->setVisible(false);

@@ -782,7 +782,7 @@ void CGui::InitGui()
 
 	bGI = true;  // gui inited, gui events can now save vals
 
-	LogO(String("::: Time Init Gui: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time Init Gui: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 
 

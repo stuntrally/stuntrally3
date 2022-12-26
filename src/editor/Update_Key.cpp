@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "BaseApp.h"
 #include "Gui_Def.h"
 #include "GuiCom.h"
 #include "settings.h"
@@ -22,7 +23,9 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 {
 	SDL_Scancode skey = arg.keysym.scancode;
 	#define key(a)  SDL_SCANCODE_##a
-	
+
+	BaseKeyPressed(arg);
+
 	///  Preview camera  ---------------------
 	if (edMode == ED_PrvCam)
 	{
