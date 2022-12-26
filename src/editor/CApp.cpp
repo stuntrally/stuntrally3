@@ -60,7 +60,7 @@ void App::Load()
 	///  Load Settings
 	//----------------------------------------------------------------
 	pSet = new SETTINGS();
-	string setFile = PATHMANAGER::SettingsFile();
+	string setFile = PATHMANAGER::EditorSetFile();
 	
 	if (!PATHMANAGER::FileExists(setFile))
 	{

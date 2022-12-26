@@ -452,7 +452,7 @@ void BaseApp::baseInitGui()
 	mPlatform->initialise(
 		mWindow, mSceneMgr, // mGraphicsSystem->getSceneManager(),
 		"Essential",
-		PATHMANAGER::UserConfigDir() + "/MyGUI.log");
+		PATHMANAGER::UserConfigDir() + "/MyGUI_ed.log");
 	mGui = new Gui();
 
 	mGui->initialise("core.xml");

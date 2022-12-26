@@ -25,7 +25,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "game.in_main", bMain);		Param(c,w, "game.in_menu", inMenu);
 
 	//  game common
-	Param(c,w, "game.track", gui.track);				Param(c,w, "game.track_user", gui.track_user);
+	Param(c,w, "game.track", gui.track);			Param(c,w, "game.track_user", gui.track_user);
 	Param(c,w, "graph_veget.trees", gui.trees);
 
 	Param(c,w, "pacenotes.show", pace_show);		Param(c,w, "pacenotes.dist", pace_dist);
@@ -34,8 +34,8 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "pacenotes.trk_reverse", trk_reverse);
 
 
-	Param(c,w, "hud_show.trackmap", trackmap);			Param(c,w, "hud_size.minimap", size_minimap);
-	Param(c,w, "hud_show.mini_num", num_mini);			Param(c,w, "hud_show.brushpreview", brush_prv);
+	Param(c,w, "hud_show.trackmap", trackmap);		Param(c,w, "hud_size.minimap", size_minimap);
+	Param(c,w, "hud_show.mini_num", num_mini);		Param(c,w, "hud_show.brushpreview", brush_prv);
 	
 	Param(c,w, "misc.allow_save", allow_save);
 	Param(c,w, "misc.inputBar", inputBar);			Param(c,w, "misc.camPos", camPos);

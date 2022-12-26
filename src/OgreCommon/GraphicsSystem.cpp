@@ -164,16 +164,25 @@ void GraphicsSystem::initialize( const Ogre::String &windowTitle )
 #endif
 #endif
 
+	const Ogre::String cfgPath = 
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
-	const Ogre::String cfgPath = mLogCfgFolder + "ogre.cfg";
+	  #ifdef SR_EDITOR
+		mLogCfgFolder + "ogre_ed.cfg";
+	  #else
+		mLogCfgFolder + "ogre.cfg";
+	  #endif
 #else
-	const Ogre::String cfgPath = "";
+		"";
 #endif
 
 	const Ogre::AbiCookie abiCookie = Ogre::generateAbiCookie();
 	mRoot = OGRE_NEW Ogre::Root( &abiCookie, pluginsPath, cfgPath,
-									mLogCfgFolder + "Ogre.log",
-									windowTitle );
+	  #ifdef SR_EDITOR
+		mLogCfgFolder + "Ogre_ed.log",
+	  #else
+		mLogCfgFolder + "Ogre.log",
+	  #endif
+		windowTitle );
 
 	AndroidSystems::registerArchiveFactories();
 

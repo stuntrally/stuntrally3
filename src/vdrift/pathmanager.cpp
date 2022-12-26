@@ -208,8 +208,7 @@ void PATHMANAGER::Init(bool log_paths)
 	#endif
 	// Create cache dir
 	CreateDir(CacheDir());
-	CreateDir(CacheDir()+"/tracks");
-	// CreateDir(ShaderDir());
+	// CreateDir(ShadersDir());
 
 	// Print diagnostic info
 	if (log_paths)
