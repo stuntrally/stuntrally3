@@ -43,7 +43,7 @@ void BaseApp::updateStats()
 
 //  rendering
 //-------------------------------------------------------------------------------------
-bool BaseApp::frameStarted(const FrameEvent& evt)
+bool BaseApp::frameStarted()
 {	
 	updateStats();
 
@@ -53,7 +53,7 @@ bool BaseApp::frameStarted(const FrameEvent& evt)
 	return true;
 }
 
-bool BaseApp::frameRenderingQueued(const FrameEvent& evt)
+bool BaseApp::frameRenderingQueued()
 {
 	if (mWindow->isClosed())
 		return false;
@@ -64,7 +64,7 @@ bool BaseApp::frameRenderingQueued(const FrameEvent& evt)
 	return true;
 }
 
-bool BaseApp::frameEnded(const FrameEvent& evt)
+bool BaseApp::frameEnded()
 {
 	//(void)evt;
 	//updateStats();

@@ -213,7 +213,7 @@ void App::LoadTrackEv()
 	scn->DestroyPace();
 	
 
-	// load scene
+	//  🏞️ load scene
 	scn->sc->LoadXml(gcom->TrkDir()+"scene.xml");
 	
 	//  water RTT recreate
@@ -223,11 +223,14 @@ void App::LoadTrackEv()
 
 	UpdWndTitle();
 
+
+	//  ⛅ sun, fog, weather, sky
+	scn->CreateAllAtmo();
+
+	scn->CreateEmitters();  // 🔥
+
+	//  💧 Fluids
 	scn->CreateFluids();
-
-	scn->CreateWeather();
-
-	scn->CreateEmitters();
 
 
 	//  set sky tex name for water
@@ -237,16 +240,17 @@ void App::LoadTrackEv()
 	// sh::Factory::getInstance().setTextureAlias("CubeReflection", "ReflectionCube");
 
 
+	//  ⛰️ Terrain
 	bNewHmap = false;/**/
 	scn->CreateTerrain(bNewHmap);
 
 
-	//  road ~
+	//  🛣️ Road ~
 	CreateRoads();
 
 	// scn->UpdPSSMMaterials();
 	
-	//  pace ~ ~
+	//  🚦 pace ~ ~
 	scn->pace = new PaceNotes(pSet);
 	scn->pace->Setup(mSceneMgr, mCamera, scn->terrain, gui->mGui, mWindow);
 	
@@ -256,8 +260,10 @@ void App::LoadTrackEv()
 	//inst->Create(mSceneMgr,"sphere_inst.mesh");
 	
 	
+	//  📦 Objects
 	CreateObjects();
 	
+	//  🌳🪨 Vegetation
 	if (pSet->bTrees)
 		scn->CreateTrees();  // trees after objects so they aren't inside them
 

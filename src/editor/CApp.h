@@ -69,11 +69,12 @@ public:
 	void UpdVisGui(), UpdEditWnds();
 	void UpdWndTitle(), SaveCam();
 
-
+	//  🕹️ input
 	void keyPressed(const SDL_KeyboardEvent &arg) override;
 	void keyPressRoad(SDL_Scancode skey);
 	void keyPressObjects(SDL_Scancode skey);
 
+	//  ⏳ Loading
 	void LoadTrackEv(), SaveTrackEv(), UpdateTrackEv();
 	enum TrkEvent {  TE_None=0, TE_Load, TE_Save, TE_Update  }
 	eTrkEvent = TE_None;
@@ -81,15 +82,17 @@ public:
 	void createScene01() override;
 	void destroyScene() override;
 
-	void update( float timeSinceLast ) override;
+
+	//  💫 Update
+	void update(float dt) override;
 	// bool frameStarted(const Ogre::FrameEvent& evt);
-	bool frameRenderingQueued(const Ogre::FrameEvent& evt);
-	bool frameEnded(const Ogre::FrameEvent& evt);
+	bool frameRenderingQueued(float dt);
+	bool frameEnded(float dt);
 
 	void processMouse(double dt), UpdKeyBar(Ogre::Real dt);
 	Ogre::Vector3 vNew;
 	
-	//  Edit all  :
+	//  🛠️ Edit all  :
 	void EditMouse(),  MouseRoad(), MouseStart(), MouseFluids(), MouseEmitters(), MouseObjects();
 	void KeyTxtRoad(Ogre::Real q), KeyTxtTerrain(Ogre::Real q), KeyTxtStart(Ogre::Real q);
 	void KeyTxtFluids(Ogre::Real q), KeyTxtObjects(), KeyTxtEmitters(Ogre::Real q);
@@ -124,12 +127,12 @@ public:
 	// virtual void postRenderTargetUpdate(const Ogre::RenderTargetEvent &evt);
 	
 
-	//  terrain cursor, circle mesh
+	//  📍 terrain cursor, circle mesh
 	Ogre::ManualObject* moTerC =0;
 	Ogre::SceneNode* ndTerC =0;
 	void TerCircleInit(), TerCircleUpd();
 
-	//  brush preview tex
+	//  🖼️ brush preview tex
 	void createBrushPrv();
 	void updateBrushPrv(bool first=false), updateTerPrv(bool first=false);
 
@@ -138,7 +141,7 @@ public:
 	const static int BrPrvSize = 128, TerPrvSize = 256;
 
 
-	///<>  terrain edit, brush
+	///<>  ⛰️ terrain edit, brush
 	enum EBrShape
 	{   BRS_Triangle=0, BRS_Sinus, BRS_Noise, BRS_Noise2, BRS_Ngon, BRS_ALL
 	} mBrShape[ED_ALL];
@@ -195,7 +198,7 @@ public:
 	//  listener to make PBS objects also be affected by terrain's shadows
 	Ogre::HlmsPbsTerraShadows *mHlmsPbsTerraShadows = 0;
 
-	//  terrain edit
+	//  ⛰️ terrain edit
 	void deform(Ogre::Vector3 &pos, float dtime, float brMul);
 	void height(Ogre::Vector3 &pos, float dtime, float brMul);
 
@@ -206,7 +209,7 @@ public:
 	void filter(Ogre::Vector3 &pos, float dtime, float brMul);
 
 
-	///  bullet world, simulate
+	///  📦 bullet world, simulate
 	class btDiscreteDynamicsWorld* world =0;
 	class btDefaultCollisionConfiguration* config =0;
 	class btCollisionDispatcher* dispatcher =0;
@@ -272,7 +275,7 @@ public:
 	bool bRecreateEmitters = 0;
 
 
-	//  Surfaces  ----
+	//  ⚫ Surfaces  ----
 	std::vector <TRACKSURFACE> surfaces;  // all
 	std::map <std::string, int> surf_map;  // name to surface id
 	bool LoadAllSurfaces();

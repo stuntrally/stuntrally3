@@ -23,7 +23,7 @@ const Ogre::String App::csBrShape[BRS_ALL] =
 { "Triangle", "Sinus", "Noise", "Noise2", "N-gon" };  // static
 
 
-//  ctor
+//  🌟 ctor
 //----------------------------------------------------------------------------------------------------------------------
 App::App()
 {
@@ -47,6 +47,9 @@ void App::LoadDefaultSet(SETTINGS* settings, string setFile)
 	settings->Save(setFile);
 }
 
+
+//  🌟 Init SR editor
+//-----------------------------------------------------------------------------------------------------------------------------
 void App::Load()
 {
 	
@@ -129,21 +132,13 @@ void App::LoadData()
 
 }
 
-///  material factory setup
+//  💥 dtor
 //---------------------------------------------------------------------------------------------------------------------------
-/*void App::postInit()
-{
-	sh::OgrePlatform* platform = new sh::OgrePlatform("General", PATHMANAGER::Data() + "/" + "materials");
-	platform->setCacheFolder(PATHMANAGER::ShaderDir());
-}*/
-
 App::~App()
 {
 	DestroyObjects(false);
 
 	delete scn;
-
-	// delete mFactory;  //!
 
 	// gui->viewBox->destroy();
 	// delete gui->viewBox;

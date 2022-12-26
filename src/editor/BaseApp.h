@@ -52,9 +52,9 @@ protected:
 	void setupResources(), loadResources();
 
 	///  frame events
-	bool frameStarted(const Ogre::FrameEvent& evt);
-	bool frameRenderingQueued(const Ogre::FrameEvent& evt);
-	bool frameEnded(const Ogre::FrameEvent& evt);
+	bool frameStarted();
+	bool frameRenderingQueued();
+	bool frameEnded();
 	
 	///  input events
 	//Receives SDL_MOUSEMOTION and SDL_MOUSEWHEEL events

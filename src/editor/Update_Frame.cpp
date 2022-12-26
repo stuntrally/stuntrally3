@@ -15,8 +15,6 @@
 //#include <LinearMath/btDefaultMotionState.h>
 //#include <BulletDynamics/Dynamics/btRigidBody.h>
 #include <MyGUI.h>
-// #include <OgreTerrain.h>
-// #include <OgreTerrainGroup.h>
 #include <OgreParticleEmitter.h>
 #include <OgreParticleSystem.h>
 #include <OgreOverlay.h>
@@ -24,7 +22,7 @@
 using namespace Ogre;
 
 
-///  Mouse
+///  🖱️ Mouse
 //---------------------------------------------------------------------------------------------------------------
 void App::processMouse(double fDT)
 {
@@ -71,9 +69,9 @@ void App::processMouse(double fDT)
 
 
 //---------------------------------------------------------------------------------------------------------------
-//  frame events
+//  💫 frame events
 //---------------------------------------------------------------------------------------------------------------
-bool App::frameEnded(const FrameEvent& evt)
+bool App::frameEnded(float dt)
 {
 	//  show when in gui on generator subtab
 	/*if (ovTerPrv)
@@ -137,7 +135,6 @@ bool App::frameEnded(const FrameEvent& evt)
 
 	if (scn->terrain && road && bEdit() && road->bHitTer)
 	{
-		float dt = evt.timeSinceLastFrame;
 		Real s = shift ? 0.25 : ctrl ? 4.0 :1.0;
 		switch (edMode)
 		{
@@ -261,11 +258,13 @@ if (pSet->bTrees)
 }
 
 
+//  💫 Update
 //---------------------------------------------------------------------------------------------------------------
-// bool App::frameStarted(const Ogre::FrameEvent& evt)
 void App::update( float dt )
 {
 	// BaseApp::frameStarted(dt);
+	frameRenderingQueued(dt);  //^
+
 
 	static Real time1 = 0.;
 	mDTime = dt;
@@ -401,4 +400,7 @@ void App::update( float dt )
 
 
 	bFirstRenderFrame = false;
+
+
+	frameEnded(dt);  //^
 }

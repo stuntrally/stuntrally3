@@ -20,11 +20,10 @@ using namespace MyGUI;
 
 //  Update  input, info
 //---------------------------------------------------------------------------------------------------------------
-bool App::frameRenderingQueued(const FrameEvent& evt)
+bool App::frameRenderingQueued(float dt)
 {
-	if (!BaseApp::frameRenderingQueued(evt))
+	if (!BaseApp::frameRenderingQueued())
 		return false;
-	Real dt = evt.timeSinceLastFrame;
 
 	//  pos on minimap *
 	if (ndPos)
