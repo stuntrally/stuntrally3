@@ -27,7 +27,7 @@ public:
 	// void changeShadows(), UpdShaderParams(), UpdPaceParams(), UpdPSSMMaterials();
 	
 
-	///  Setup  scene.xml
+	///  📄 Setup  scene.xml
 	Scene* sc = 0;
 
 	//  const, xmls
@@ -41,7 +41,6 @@ public:
 	//  ⛅ Sky ~
 	Ogre::String sMeshSky;
 	Ogre::Item* itSky = 0;
-	// Ogre::ManualObject* moSky = 0;
 	Ogre::SceneNode* ndSky = 0;
 	void CreateSkyDome(Ogre::String sMater, float yaw);
 	void DestroySkyDome(), UpdSky();

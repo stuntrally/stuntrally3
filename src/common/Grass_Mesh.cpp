@@ -2,7 +2,6 @@
 #include "Grass.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
-
 #ifndef SR_EDITOR
 	#include "CGame.h"
 #else	
@@ -11,6 +10,7 @@
 #include "game.h"
 #include "CScene.h"
 #include "SceneXml.h"
+#include "settings.h"
 #include "GraphicsSystem.h"
 #include "Terra.h"
 

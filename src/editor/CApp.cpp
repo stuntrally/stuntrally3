@@ -136,6 +136,10 @@ void App::LoadData()
 //---------------------------------------------------------------------------------------------------------------------------
 App::~App()
 {
+	///+  save settings
+	pSet->Save(PATHMANAGER::EditorSetFile());
+	// fixme
+
 	DestroyObjects(false);
 
 	delete scn;

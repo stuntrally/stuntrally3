@@ -34,46 +34,6 @@ CHud::CHud(App* ap1)
 }
 
 
-///  HUD utilities
-
-ManualObject* CHud::Create2D(const String& mat, SceneManager* sceneMgr,
-	Real s,  // scale pos
-	bool dyn, bool clr,
-	Real mul, Vector2 ofs,
-	uint32 vis, uint8 rndQue,
-	int cnt)
-{
-	ManualObject* m = sceneMgr->createManualObject();
-	// m->setDynamic(dyn);
-	// m->setUseIdentityProjection(true);
-	// m->setUseIdentityView(true);
-	m->setCastShadows(false);
-
-	m->estimateVertexCount(cnt * 4);
-	m->begin(mat, /*cnt > 1*/ 1 ? OT_TRIANGLE_LIST : OT_TRIANGLE_STRIP);
-	const static Vector2 uv[4] = { Vector2(0.f,1.f),Vector2(1.f,1.f),Vector2(0.f,0.f),Vector2(1.f,0.f) };
-
-	for (int i=0; i < cnt; ++i)
-	{	m->position(-s,-s*asp, 0);  m->textureCoord(uv[0]*mul + ofs);  if (clr)  m->colour(0,1,0);
-		m->position( s,-s*asp, 0);  m->textureCoord(uv[1]*mul + ofs);  if (clr)  m->colour(0,0,0);
-		m->position(-s, s*asp, 0);  m->textureCoord(uv[2]*mul + ofs);  if (clr)  m->colour(1,1,0);
-		m->position( s, s*asp, 0);  m->textureCoord(uv[3]*mul + ofs);  if (clr)  m->colour(1,0,0);
-	}
-	// if (cnt > 1)
-	for (int i=0; i < cnt; ++i)
-	{	int n = i*4;
-		m->quad(n,n+1,n+3,n+2);
-	}
-	m->end();
- 
-	Aabb aab(Vector3(0,0,0), Vector3(1,1,1)*1000000);
-	m->setLocalAabb(aab);  // always visible
-	m->setVisibilityFlags(vis);
-	m->setRenderQueueGroup(rndQue);  //RQG_Hud2
-	return m;
-}
-
-
 //  HUD utils
 //---------------------------------------------------------------------------------------------------------------
 void CHud::UpdMiniTer()

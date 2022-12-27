@@ -9,6 +9,7 @@
 #include "CGui.h"
 #include "Road.h"
 #include "PaceNotes.h"
+#include "Grass.h"
 #include "pathmanager.h"
 #include "RenderConst.h"
 #include "btBulletCollisionCommon.h"
@@ -160,30 +161,29 @@ void App::destroyScene()
 ///  Load Track
 //---------------------------------------------------------------------------------------------------------------
 
-//  destroy
+//  💥 Destroy all
 void App::NewCommon(bool onlyTerVeget)
 {
-	//  destroy all
-	if (ndSky)
-		mSceneMgr->destroySceneNode(ndSky);
-		
-	//if (inst) {  delete inst;  inst=0;  }
+	scn->DestroyAllAtmo();  // 🌦️
 
+	//  🌳🪨  Vegetation
+	scn->DelRoadDens();
+	scn->grass->Destroy();  // 🌿
 	scn->DestroyTrees();
 
-	if (!onlyTerVeget)
-		scn->DestroyWeather();
+	// if (!onlyTerVeget)
+	// 	scn->DestroyAllAtmo(); // Weather();
 
 	// mSceneMgr->destroyAllStaticGeometry();
 	
 	if (!onlyTerVeget)
 	{
-		DestroyObjects(true);
-		scn->DestroyFluids();
-		scn->DestroyEmitters(true);
+		DestroyObjects(true);  // 📦
+		scn->DestroyFluids();  // 💧
+		scn->DestroyEmitters(true);  // 🔥
 	}
-		
-	scn->DestroyTerrain();
+	
+	scn->DestroyTerrain();  // ⛰️
 		
 	//world.Clear();
 
@@ -192,6 +192,7 @@ void App::NewCommon(bool onlyTerVeget)
 	resTrk = gcom->TrkDir() + "objects";
 	ResourceGroupManager::getSingleton().addResourceLocation(resTrk, "FileSystem");
 
+	// MinimizeMemory();  // todo:
 	// MeshManager::getSingleton().unloadUnreferencedResources();
 	// sh::Factory::getInstance().unloadUnreferencedMaterials();
 	// TextureManager::getSingleton().unloadUnreferencedResources();
@@ -249,16 +250,10 @@ void App::LoadTrackEv()
 	//  🛣️ Road ~
 	CreateRoads();
 
-	// scn->UpdPSSMMaterials();
 	
 	//  🚦 pace ~ ~
 	scn->pace = new PaceNotes(pSet);
 	scn->pace->Setup(mSceneMgr, mCamera, scn->terrain, gui->mGui, mWindow);
-	
-	
-	/// HW_Inst Test  * * *
-	//inst = new Instanced();
-	//inst->Create(mSceneMgr,"sphere_inst.mesh");
 	
 	
 	//  📦 Objects
@@ -266,7 +261,11 @@ void App::LoadTrackEv()
 	
 	//  🌳🪨 Vegetation
 	if (pSet->bTrees)
+	{
+		scn->LoadRoadDens();
 		scn->CreateTrees();  // trees after objects so they aren't inside them
+		scn->grass->Create();  // 🌿
+	}
 
 
 	//  updates after load
@@ -315,7 +314,7 @@ void App::CreateRoads()
 }
 
 
-///  Update
+///  🔁 Update
 //---------------------------------------------------------------------------------------------------------------
 void App::UpdateTrack()
 {
@@ -336,15 +335,15 @@ void App::UpdateTrackEv()
 	for (auto r : scn->roads)
 	{
 		r->mTerrain = scn->terrain;
-		r->Rebuild(true);
+		r->Rebuild(true);  // 🛣️
 	}
-	// scn->UpdPSSMMaterials();
 
 	//CreateObjects();
 
 	if (pSet->bTrees)
-		scn->CreateTrees();
-
+	{	scn->CreateTrees();
+		scn->grass->Create();  // 🌿
+	}
 	Rnd2TexSetup();
 
 	gui->Status("#{Updated}", 0.5,1.0,0.7);
@@ -355,8 +354,8 @@ void CGui::btnUpdateLayers(WP)
 {
 	if (!app->bNewHmap)
 		app->scn->copyTerHmap();
-	if (app->ndSky)
-		app->mSceneMgr->destroySceneNode(app->ndSky);
+	//? if (app->ndSky)
+	// 	app->mSceneMgr->destroySceneNode(app->ndSky);
 	app->scn->DestroyTerrain();
 
 	app->scn->CreateTerrain(app->bNewHmap,true);
@@ -364,22 +363,22 @@ void CGui::btnUpdateLayers(WP)
 	// app->scn->updGrsTer();
 }
 
-void CGui::btnUpdateGrass(WP)  // TODO: grass only ...
+void CGui::btnUpdateGrass(WP)
 {
-	scn->DestroyTrees();
+	scn->grass->Destroy();
 	if (pSet->bTrees)
-		scn->CreateTrees();
+		scn->grass->Create();  // 🌿
 }
 
 void CGui::btnUpdateVeget(WP)
 {
-	scn->DestroyTrees();
+	scn->DestroyTrees();  // 🌳🪨
 	if (pSet->bTrees)
 		scn->CreateTrees();
 }
 
 
-///  Save
+///  📄 Save
 //---------------------------------------------------------------------------------------------------------------
 void App::SaveTrack()
 {
@@ -431,7 +430,7 @@ void App::SaveTrackEv()
 }
 
 
-///  Ter Circle mesh   o
+///;  Ter Circle mesh   o
 //-------------------------------------------------------------------------------------
 const int divs = 90;
 const Real aAdd = 2 * 2*PI_d / divs, dTc = 2.f/(divs+1) *4;
@@ -482,10 +481,10 @@ void App::TerCircleUpd()
 	{	edOld = edMode;
 		switch (edMode)
 		{
-		case ED_Deform: moTerC->setMaterialName(0, "circle_deform");  break;
-		case ED_Filter: moTerC->setMaterialName(0, "circle_filter");  break;
-		case ED_Smooth: moTerC->setMaterialName(0, "circle_smooth");  break;
-		case ED_Height: moTerC->setMaterialName(0, "circle_height");  break;
+		case ED_Deform: moTerC->setDatablockOrMaterialName(0, "circle_deform");  break;
+		case ED_Filter: moTerC->setDatablockOrMaterialName(0, "circle_filter");  break;
+		case ED_Smooth: moTerC->setDatablockOrMaterialName(0, "circle_smooth");  break;
+		case ED_Height: moTerC->setDatablockOrMaterialName(0, "circle_height");  break;
 		default:  break;
 		}
 	}
@@ -505,7 +504,7 @@ void App::TerCircleUpd()
 
 
 //---------------------------------------------------------------------------------------------------------------
-///  Bullet world
+///  🆕 Bullet world
 //---------------------------------------------------------------------------------------------------------------
 void App::BltWorldInit()
 {
@@ -528,6 +527,7 @@ void App::BltWorldInit()
 	world->setForceUpdateAllAabbs(false);  //+
 }
 
+//  💥 Destroy
 void App::BltWorldDestroy()
 {
 	BltClear();
@@ -536,7 +536,7 @@ void App::BltWorldDestroy()
 	delete broadphase;  delete dispatcher;  delete config;
 }
 
-//  Clear - delete bullet pointers
+//  💥 Clear - delete bullet pointers
 void App::BltClear()
 {
 	if (world)
@@ -583,7 +583,7 @@ void App::BltClear()
 }
 
 
-//  update (simulate)
+//  💫 update (simulate)
 //-------------------------------------------------------------------------------------
 void App::BltUpdate(float dt)
 {

@@ -47,8 +47,8 @@ bool BaseApp::frameStarted()
 {	
 	updateStats();
 
-	if (ndSky)  ///o-
-		ndSky->setPosition(mCamera->getPosition());
+	//; if (scn->ndSky)  ///o-
+	// 	scn->ndSky->setPosition(mCamera->getPosition());
 
 	return true;
 }

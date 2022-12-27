@@ -8,6 +8,7 @@
 #include "CGui.h"
 #include "Road.h"
 #include "PaceNotes.h"
+#include "Grass.h"
 #include "MultiList2.h"
 // #include "RenderBoxScene.h"
 #include "GraphicsSystem.h"
@@ -214,22 +215,20 @@ if (pSet->bTrees)
 }
 #endif
 
-	///  paged  * * *  ? frameStarted
-	/*if (road)
-	{	if (scn->grass)  scn->grass->update();
-		if (scn->trees)  scn->trees->update();
-	}*/
 
-
-	///  paged  Upd  * * *
+	///  🌳🪨 vegetation toggle  upd 🔁 * * *
 	if (bTrGrUpd)
 	{	bTrGrUpd = false;
 		pSet->bTrees = !pSet->bTrees;
+
 		scn->RecreateTrees();
+		scn->grass->Destroy();
+		if (pSet->bTrees)
+			scn->grass->Create();  // 🌿
 	}
 	
 	
-	//  roads upd
+	//  🛣️ roads  upd 🔁
 	if (!scn->roads.empty())
 	{
 		SplineRoad* road1 = scn->roads[0];
@@ -249,7 +248,8 @@ if (pSet->bTrees)
 		}
 	}
 
-	///**  Render Targets update
+
+	///**  Render Targets update  //; fixme
 	if (edMode == ED_PrvCam)
 	{
 		scn->sc->camPos = mCamera->getPosition();
@@ -265,7 +265,7 @@ if (pSet->bTrees)
 			// 		rt[i].tex->update();
 		}	ri++;
 	}
-	//LogO(toStr(evt.timeSinceLastFrame));
+	//LogO(toStr(dt));
 
 	return true;
 }
@@ -330,6 +330,7 @@ void App::update( float dt )
 	gui->GuiUpdate();
 	
 	
+	//  💧 fluids  upd 🔁
 	if (bRecreateFluids)
 	{	bRecreateFluids = false;
 
@@ -338,6 +339,7 @@ void App::update( float dt )
 		UpdFluidBox();
 	}
 
+	//  🔥 emitters  upd 🔁
 	if (bRecreateEmitters)
 	{	bRecreateEmitters = false;
 
@@ -370,7 +372,7 @@ void App::update( float dt )
 	}*/	}
 	
 	
-	//  Update rain/snow - depends on camera
+	//  🌧️ Update rain/snow - depends on camera
 	scn->UpdateWeather(mCamera, pSet->bWeather ? 0.f : 1.f);
 
 	// update shader time

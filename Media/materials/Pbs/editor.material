@@ -15,6 +15,10 @@ hlms ed_base pbs
 
 //  editor spheres
 //------------------------------------------------------------
+hlms mtSCBLIGHT pbs : ed_base
+{
+	diffuse  0.5 0.5 0.5
+}
 hlms sphere_norm pbs : ed_base
 {
 	diffuse  0.35 0.6 0.85

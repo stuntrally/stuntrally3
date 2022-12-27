@@ -2,9 +2,10 @@
 #include "Def_Str.h"
 #include "SceneXml.h"
 #include "FluidsXml.h"
+#include "settings.h"
+#include "game.h"  // for surfaces map
 #include "tinyxml.h"
 #include "tinyxml2.h"
-#include "game.h"  // for surfaces map
 #include <OgreSceneNode.h>
 using namespace std;
 using namespace Ogre;

@@ -26,12 +26,12 @@ public:
 	SETTINGS* pSet =0;
 
 	bool bWindowResized =1;
-	Ogre::SceneNode* ndSky =0;  //- out to CScene?
 	
 	bool mShutDown =0;
 protected:	
-	bool mShowDialog =0;
-	bool setup(), configure();  void updateStats();
+	// bool mShowDialog =0;
+	// bool setup(), configure();
+	void updateStats();
 	
 	bool bFirstRenderFrame =1;
 	
@@ -42,7 +42,7 @@ protected:
 	// void createCamera(), createFrameListener();
 	// void setupResources(), loadResources();
 
-	///  update, frame events
+	///  💫 update, frame events
 	bool frameStarted();
 	bool frameRenderingQueued();
 	bool frameEnded();
@@ -74,11 +74,13 @@ protected:
 	void BaseKeyPressed( const SDL_KeyboardEvent &arg );
 	virtual void keyReleased (const SDL_KeyboardEvent &arg ) override;
 
+	//  input vars
 	bool alt =0, ctrl =0, shift =0;  // key modifiers
 	bool mbLeft =0, mbRight =0, mbMiddle =0;  // mouse buttons
 
 	Ogre::String  mDebugText;	// info texts
 	bool mbWireFrame =0;  void UpdWireframe();
+
 
 	///  🎥 camera upd
 	int mKeys[10] = {0,0,0,0,0,0, 0,0,0,0};  // cam arrows
@@ -107,6 +109,7 @@ protected:
 	std::vector<WP> vwGui;  // all widgets to destroy
 	Img bckFps =0, imgCur =0, bckInput =0;
 	Txt txFps =0, txCamPos =0, txInput =0;
+
 
 	///  🪧 main menu
 	Wnd mWndMain =0, mWndTrack =0, mWndEdit =0, mWndHelp =0, mWndOpts =0;  // menu, windows

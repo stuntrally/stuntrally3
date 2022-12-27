@@ -379,9 +379,9 @@ void BaseApp::BaseKeyPressed(const SDL_KeyboardEvent &arg)
 {	
 	switch (arg.keysym.scancode)
 	{
-	case key(LSHIFT):  case key(RSHIFT):  shift = false;  break;  // mods
-	case key(LCTRL):   case key(RCTRL):   ctrl = false;   break;
-	case key(LALT):    case key(RALT):    alt = false;    break;
+	case key(LSHIFT):  case key(RSHIFT):  shift = true;  break;  // mods
+	case key(LCTRL):   case key(RCTRL):   ctrl = true;   break;
+	case key(LALT):    case key(RALT):    alt = true;    break;
 
 	case key(W):  mKeys[0] = 1;  break;  case key(S):  mKeys[1] = 1;  break;  // cam move
 	case key(A):  mKeys[2] = 1;  break;  case key(D):  mKeys[3] = 1;  break;

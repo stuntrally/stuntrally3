@@ -95,8 +95,6 @@ void CScene::CreateFog()
 	LogO("C--- create Atmosphere");
 	auto *mgr = app->mSceneMgr;
 
-if (1)
-{
 	atmo = OGRE_NEW Atmosphere2Npr( app->mRoot->getRenderSystem()->getVaoManager() );
 
 	atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
@@ -105,7 +103,7 @@ if (1)
 	
 	OGRE_ASSERT_HIGH( dynamic_cast<Atmosphere2Npr*>( mgr->getAtmosphere() ) );
 	atmo = static_cast<Atmosphere2Npr*>( mgr->getAtmosphere() );
-}
+
 	UpdFog();
 }	
 
@@ -203,7 +201,8 @@ void CScene::CreateSkyDome(String sMater, float yaw)
 	Quaternion q;  q.FromAngleAxis(Degree(-yaw), Vector3::UNIT_Y);
 	ndSky->setOrientation(q);
 
-	//  change to mirror
+
+	//  tex change to mirror
 	Root *root = app->mRoot;
 	HlmsSamplerblock sampler;
 	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
