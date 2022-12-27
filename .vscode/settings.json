@@ -30,11 +30,13 @@
     "C_Cpp.formatting": "Disabled",
     "C_Cpp.errorSquiggles": "Disabled",
     "C_Cpp.intelliSenseEngine": "Disabled",
-    "clangd.arguments": [
-      "-clang-tidy-checks=-*,modernize-use-override",
-      "--suggest-missing-includes",
-      "--header-insertion=iwyu"
-    ],
+    // "cmake.configureArgs": [
+    //   "-DBUILD_EDITOR=ON",
+    // ],
+    // "clangd.arguments": [
+    //   "--checks='-*'",
+    //   "--header-insertion=iwyu",
+    // ],
     "python.pythonPath": "/usr/bin/python3",
     "editor.suggest.localityBonus": true,
     "editor.cursorWidth": 2,
