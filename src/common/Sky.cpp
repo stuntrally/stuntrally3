@@ -117,19 +117,29 @@ void CScene::DestroyFog()
 	atmo = 0;
 }
 
+//  🌫️ Fog set Atmo params  ------
 void CScene::UpdFog()
 {
 	if (!atmo || !sun)  return;
+	bool no = !app->pSet->bFog;
 	Atmosphere2Npr::Preset p = atmo->getPreset();
-	p.fogDensity = 2000.f / sc->fogEnd * 0.0004f;  //** par
+
+	p.fogDensity = no ? 0.000001f :
+		4000.f / sc->fogEnd * 0.0001f;  //** par
 	p.fogHcolor = sc->fogClrH.GetRGBA();
-	p.fogHparams = Vector4(sc->fogHeight - sc->fogHDensity,
-		1.f/sc->fogHDensity, 2000.f / sc->fogHEnd * 0.0004f, 0);
+	p.fogHparams = no ?	Vector4(
+		-10000.f,
+		0.001f,
+		0.000001f, 0)
+	: Vector4(
+		sc->fogHeight - sc->fogHDensity,
+		1.f/sc->fogHDensity,
+		2000.f / sc->fogHEnd * 0.0004f, 0);
 
 	p.densityCoeff = 0.27f;  //0.47f;
 	p.densityDiffusion = 0.75f;  //2.0f;
 	p.horizonLimit = 0.025f;
-	p.sunPower = 1.0f;
+	p.sunPower = 1.0f;  // par gui..
 	p.skyPower = 1.0f;
 	// p.skyColour = Vector3(0,0.5,1);// sc->fogClr2.GetRGB();
 	p.skyColour = sc->fogClr2.GetRGB1(); //Vector3(0.234f, 0.57f, 1.0f);
