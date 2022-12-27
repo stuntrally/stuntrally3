@@ -269,7 +269,7 @@ void CGui::InitGui()
 	ck= &ckFps;			ck->Init("Fps",			&pSet->show_fps);  Cev(HudShow);
 	app->bckFps->setVisible(pSet->show_fps);
 	app->txFps->setVisible(pSet->show_fps);
-	ck= &ckWireframe;	ck->Init("Wireframe",   &app->mbWireFrame);  Cev(Wireframe);
+	ck= &ckWireframe;	ck->Init("Wireframe",   &app->bWireFrame);  Cev(Wireframe);
 
 	ck= &ckProfilerTxt;	ck->Init("ProfilerTxt",  &pSet->profilerTxt);
 	ck= &ckBulletDebug;	ck->Init("BulletDebug",  &pSet->bltDebug);

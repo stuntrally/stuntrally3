@@ -42,14 +42,7 @@ public:
 	virtual ~App();
 	void Load(), LoadData();
 
-	GraphicsSystem* mGraphicsSystem =0;
-
 	CScene* scn =0;
-
-	//  materials
-	// sh::Factory* mFactory =0;
-	// void postInit(), SetFactoryDefaults();
-	// virtual void materialCreated(sh::MaterialInstance* m, const std::string& configuration, unsigned short lodIndex);
 
 
 	///  Gui

@@ -246,6 +246,7 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 
 			db->setTexture(PBSM_DETAIL0, sDiff);
 			db->setTexture(PBSM_DETAIL0_NM, sNorm);
+			//todo: PBSM_SPECULAR ?.. stretched
 		}
 	}
 	sd.it = it;

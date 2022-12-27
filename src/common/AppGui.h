@@ -6,7 +6,7 @@
 
 namespace MyGUI{  class Gui;  class Ogre2Platform;  }
 namespace Ogre {  class Root;  class SceneManager;  class Window;  class Camera;  }
-class SETTINGS;
+class GraphicsSystem;  class SETTINGS;
 
 
 //  Base application with:
@@ -26,6 +26,8 @@ public:
 	Ogre::SceneManager* mSceneMgr =0;
 	Ogre::Window* mWindow =0;
 	Ogre::Camera* mCamera =0;
+
+	GraphicsSystem* mGraphicsSystem =0;
 
 	//  🎛️ Gui  ----------------
 	MyGUI::Gui* mGui =0;

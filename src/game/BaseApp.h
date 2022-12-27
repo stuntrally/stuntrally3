@@ -35,8 +35,6 @@ public:
 	virtual ~BaseApp();
 	// virtual void Run(bool showDialog);
 
-	GraphicsSystem *mGraphicsSystem =0;
-
 
 	bool bLoading =0, bLoadingEnd =0, bSimulating =0;  int iLoad1stFrames =0;
 	
