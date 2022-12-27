@@ -1,9 +1,5 @@
 #pragma once
 #include "dbl.h"
-#include "settings.h"
-#include "pathmanager.h"
-#include "mathvector.h"
-#include "quaternion.h"
 #include "car.h"
 #include "collision_world.h"
 #include "collision_contact.h"
@@ -16,13 +12,14 @@
 #include <OgreTimer.h>
 #include <thread>
 
-class SoundMgr;  class Sound;
+class SoundMgr;  class Sound;  class App;  class SETTINGS;
 
 
 class GAME
 {
 public:
-	class App* app;
+	App* app =0;
+	SETTINGS* pSet =0;
 
 	GAME(SETTINGS* pSettings);
 
@@ -32,7 +29,7 @@ public:
 	bool OneLoop(double dt);
 
 	void ReloadSimData();
-	bool reloadSimNeed,reloadSimDone;  //for tweak tire save
+	bool reloadSimNeed = 0, reloadSimDone = 0;  //for tweak tire save
 	
 	bool InitializeSound();  void LoadHudSounds();
 	void End();
@@ -45,7 +42,7 @@ public:
 	void UpdateCarInputs(CAR& car);
 	void UpdateTimer();
 	
-	/// ---  new game  ========
+	/// ---  🆕 new game  ========
 	void LeaveGame(bool dstTrk);  // call in this order
 	bool NewGameDoLoadTrack();  // track
 	bool NewGameDoLoadMisc(float pre_time);  // timer,etc
@@ -61,29 +58,29 @@ public:
 
 //  vars
 
-	unsigned int frame, displayframe;  // physics, display frame counters
-	double clocktime, target_time;  // elapsed wall clock time
-	const double framerate;
-	float fps_min, fps_max;
+	unsigned int frame = 0, displayframe = 0;  // physics, display frame counters
+	double clocktime = 0.0, target_time = 0.0;  // elapsed wall clock time
+	const double framerate = 1.0 / 160.0;
+	float fps_min = 0.f, fps_max = 0.f;
 
-	bool benchmode, profilingmode, pause;
+	bool benchmode = 0, profilingmode = 0, pause = 0;
 
 
 	//  🚗 cars  ----
-	SETTINGS* pSet;
-
 	std::vector<CAR*> cars;
 	std::pair <CAR*, CARCONTROLMAP_LOCAL> controls;
 
 	COLLISION_WORLD collision;
-	bool bResetObj;
+	bool bResetObj = 0;
 	
 	TIMER timer;  // ⏱️
 
 
 	//  🔉 Sound  ----
-	SoundMgr* snd;
-	Sound* snd_chk, *snd_chkwr,  *snd_lap, *snd_lapbest,  *snd_stage, *snd_win[3], *snd_fail;
+	SoundMgr* snd =0;
+	Sound* snd_chk =0, *snd_chkwr =0,
+		*snd_lap =0, *snd_lapbest =0,
+		*snd_stage =0, *snd_win[3]={0,0,0}, *snd_fail =0;
 	void UpdHudSndVol();
 
 
@@ -94,7 +91,7 @@ public:
 	bool LoadTires();
 
 	//  ref graphs, tire edit
-	std::string tire_ref;  int tire_ref_id;
+	std::string tire_ref;  int tire_ref_id = 0;
 	void PickTireRef(std::string name);
 
 

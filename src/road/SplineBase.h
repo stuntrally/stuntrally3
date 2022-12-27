@@ -274,5 +274,5 @@ public:
 
 	int lastNdSel = -2, lastNdChosen = -2;
 	Ogre::SceneNode *ndSel =0, *ndChosen =0, *ndRot =0, *ndHit =0, *ndChk =0;
-	Ogre::Item     *entSel =0, *entChs =0, *entRot =0, *entHit =0, *entChk =0;
+	Ogre::Item     *itSel =0, *itChs =0, *itRot =0, *itHit =0, *itChk =0;
 };

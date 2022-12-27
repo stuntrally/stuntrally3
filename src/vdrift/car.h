@@ -6,20 +6,21 @@
 #include "crashdetection.h"
 
 namespace protocol {  struct CarStatePackage;  }
-class Sound;
+class Sound;  class GAME;  class App;  class CarModel;
 
 
 class CAR
 {
 public:
-	class GAME* pGame;
-	class App* pApp;
-	class CarModel* pCarM;
+	GAME* pGame =0;
+	App* pApp =0;
+	CarModel* pCarM =0;
+	SETTINGS* pSet =0;  // for sound vol
 
 	CAR();
 	~CAR();
 
-	int numWheels;
+	int numWheels = 0;
 	void SetNumWheels(int n);
 	
 	bool Load(class App* pApp1,
@@ -53,7 +54,7 @@ public:
 		return dynamics.GetWheelContact(wheel_index);
 	}
 
-	bool bRemoteCar;
+	bool bRemoteCar = 0;
 	void HandleInputs(const std::vector <float> & inputs, float dt);
 	
 
@@ -150,11 +151,12 @@ public:
 	// void UpdateCarState(const protocol::CarStatePackage& state);
 
 	///  new
-	int id;  // index of car (same as for carModels)
-	bool bResetPos;
+	int id = 0;  // index of car (same as for carModels)
+	bool bResetPos = 0;
 	void ResetPos(bool fromStart=true);
 	void SavePosAtCheck();
-	void SetPosRewind(const MATHVECTOR<float,3>& pos, const QUATERNION<float>& rot, const MATHVECTOR<float,3>& vel, const MATHVECTOR<float,3>& angvel);
+	void SetPosRewind(const MATHVECTOR<float,3>& pos, const QUATERNION<float>& rot,
+		const MATHVECTOR<float,3>& vel, const MATHVECTOR<float,3>& angvel);
 
 public:
 	CARDYNAMICS dynamics;
@@ -163,19 +165,19 @@ public:
 	CRASHDETECTION crashdetection2;
 
 
-	///  Sounds  ---------------
+	///  🔊 Sounds  ---------------
 	struct CARsounds
 	{
-		Sound* engine;
+		Sound* engine =0;
 		std::vector<Sound*> asphalt, grass, gravel, bump;  // tires
 		
 		std::vector<Sound*> crash;
 		std::vector<float> crashtime, bumptime, bumpvol;
 		
-		Sound* wind, *boost, *scrap,*screech;  // cont.
-		Sound* mud, *mud_cont,*water_cont;  // fluids
+		Sound* wind =0, *boost =0, *scrap =0,*screech =0;  // cont.
+		Sound* mud =0, *mud_cont =0,*water_cont =0;  // 💧 fluids
 		std::vector<Sound*> water;
-		bool fluidHitOld;  float whMudSpin;  ///new vars, for snd
+		bool fluidHitOld = 0;  float whMudSpin = 0.f;  ///new vars, for snd
 
 		CARsounds();
 		void SetNumWheels(int n);
@@ -183,13 +185,12 @@ public:
 	} sounds;
 	
 	//  internal variables that might change during driving (so, they need to be serialized)
-	float last_steer;
-	float trackPercentCopy;  // copy from CarModel for network
+	float last_steer = 0.f;
+	float trackPercentCopy = 0.f;  // copy from CarModel for network
 
 	std::string cartype;
-	class SETTINGS* pSet;  // for sound vol
 
-	float mz_nominalmax;  // the nominal maximum Mz force, used to scale force feedback
+	float mz_nominalmax = 10.f;  //- the nominal maximum Mz force, used to scale force feedback
 
 	void UpdateSounds(float dt);
 	bool LoadSounds(const std::string & carpath);
@@ -199,13 +200,14 @@ public:
 	void GraphsNewVals(double dt);
 	
 	
-	//  for new game reset  and goto last checkp.
+	//  for new game reset  and goto last checkpoint
 	MATHVECTOR<Dbl,3> posAtStart, posLastCheck;
 	QUATERNION<Dbl> rotAtStart, rotLastCheck;
-	float dmgLastCheck, sphYawAtStart;
+	float dmgLastCheck = 0.f, sphYawAtStart = 0.f;
 
 	//  car inputs (new)
-	int iCamNext;
-	bool bLastChk,bLastChkOld, bRewind,bRewindOld;
-	float timeRew;
+	int iCamNext = 0;
+	bool bLastChk =0, bLastChkOld =0;
+	bool bRewind =0, bRewindOld =0;
+	float timeRew = 0.f;
 };

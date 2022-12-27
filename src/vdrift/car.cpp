@@ -8,6 +8,7 @@
 #include "tracksurface.h"
 #include "configfile.h"
 #include "settings.h"
+#include "pathmanager.h"
 #include "Def_Str.h"
 #include "CData.h"
 #include "CScene.h"
@@ -24,13 +25,6 @@
 
 ///  🌟 ctor
 CAR::CAR()
-	:pSet(0), pApp(0), id(0), pCarM(0)
-	,last_steer(0)
-	,iCamNext(0), bLastChk(0),bLastChkOld(0)
-	,bRewind(0),bRewindOld(0),timeRew(0.f)
-	,trackPercentCopy(0), bRemoteCar(0)
-	,bResetPos(0)
-	,dmgLastCheck(0.f), sphYawAtStart(0.f)
 {
 	SetNumWheels(4);
 	//dynamics.pCar = this;

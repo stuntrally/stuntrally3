@@ -80,14 +80,12 @@ bool CAR::LoadSounds(const std::string & carpath)
 
 //  🌟 ctor
 CAR::CARsounds::CARsounds()
-	:fluidHitOld(0), whMudSpin(0.f)
 {
 	int i;
 	crashtime.resize(Ncrashsounds);
 	for (int i=0; i < Ncrashsounds; ++i)
 		crashtime[i] = 0.f;
 
-	engine = 0;
 	SetNumWheels(4);
 	for (i = 0; i < 4; ++i)  // tires
 	{	asphalt[i] = 0;  grass[i] = 0;  gravel[i] = 0;  bump[i] = 0;  }
@@ -96,14 +94,9 @@ CAR::CARsounds::CARsounds()
 	for (i = 0; i < Ncrashsounds; ++i)  // crashes
 		crash[i] = 0;
 
-	scrap = 0;  screech = 0;
-	wind = 0;  boost = 0;
-
 	water.resize(Nwatersounds);
 	for (i = 0; i < Nwatersounds; ++i)  // fluids
 		water[i] = 0;
-
-	mud = 0;  mud_cont = 0;  water_cont = 0;
 }
 
 void CAR::CARsounds::SetNumWheels(int n)

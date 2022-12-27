@@ -14,6 +14,7 @@
 #include "quickprof.h"
 #include "tracksurface.h"
 #include "forcefeedback.h"
+#include "pathmanager.h"
 
 #include "Def_Str.h"
 #include "SceneXml.h"
@@ -31,24 +32,14 @@ using namespace std;
 
 ///  🌟 ctor
 GAME::GAME(SETTINGS* pSettings)
-	:app(NULL), pSet(pSettings)
-	,frame(0), displayframe(0), clocktime(0), target_time(0)
+	:pSet(pSettings)
 	//,framerate(0.01f),  ///~  0.004+  o:0.01
-	,fps_min(0), fps_max(0)
-	,pause(false), profilingmode(false), benchmode(false)
-	,bResetObj(false)
 	,framerate(1.0 / pSettings->game_fq)
-	,tire_ref_id(0), reloadSimNeed(0),reloadSimDone(0)
-	,snd(0)
 {
 	controls.first = NULL;
 	//  sim settings
 	collision.fixedTimestep = 1.0 / pSettings->blt_fq;
 	collision.maxSubsteps = pSettings->blt_iter;
-	
-	snd_chk=0; snd_chkwr=0;  snd_lap=0; snd_lapbest=0;
-	snd_stage=0; snd_fail=0;
-	for (int i=0;i<3;++i)  snd_win[i]=0;
 }
 
 
@@ -348,7 +339,7 @@ void GAME::UpdHudSndVol()
 }
 
 
-//  do any necessary cleanup
+//  💥 do any necessary cleanup
 void GAME::End()
 {
 	if (benchmode)
@@ -367,7 +358,7 @@ void GAME::End()
 
 	LeaveGame(true);
 
-	//  hud sounds
+	//  hud sounds 🔊
 	delete snd_chk;  delete snd_chkwr;
 	delete snd_lap;  delete snd_lapbest;
 	delete snd_stage;  delete snd_fail;
@@ -496,13 +487,12 @@ void GAME::AdvanceGameLogic(double dt)
 			UpdateTimer();
 		}
 	}
-
 	UpdateForceFeedback(TickPeriod());
 }
 
 
-///  send inputs to the car, check for collisions, and so on
-//-----------------------------------------------------------
+///  🕹️ send inputs to the car, check for collisions, and so on
+//----------------------------------------------------------------
 void GAME::UpdateCar(CAR& car, double dt)
 {
 	car.Update(dt);
