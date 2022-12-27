@@ -124,13 +124,30 @@ namespace Ogre
 		inline Vector3 toYUpSignPreserving( Vector3 value ) const;
 
 	public:
-		Ogre::TextureGpu *m_blendMapTex;//, *m_blendRtt;
 		uint32 mHlmsTerraIndex;
+		//  extras by CryHam
+		//----------------------------------------
+		Ogre::TextureGpu *m_blendMapTex =0;//, *m_blendRtt;
 		bool bGenerateShadowMap;  //** ter
 		bool bNormalized;  // true: Hmap floats 0..1,  false: any, real heights
-		int iLodMax;
-		float fHMin, fHMax, fHRange;
+		int iLodMax;  //**
+		float fHMin, fHMax, fHRange;  //norm-
 		Scene* sc = 0;
+		
+		std::vector<float>& getHeightData()
+		{	return m_heightMap;  }
+		
+		//  upload hmap to gpu tex after edits
+		void dirtyRect(Rect rect);
+
+		void createBlendmap();
+		void SetBlendmapParams(Pass* pass);
+		void destroyBlendmap();
+
+		bool getHeightAt( Vector3 &vPos ) const;
+		float getAngle( float x, float z, float s) const;
+		Real getHeight( Real x, Real z ) const;
+		//----------------------------------------
 
 
 	protected:
@@ -144,8 +161,8 @@ namespace Ogre
 		void createHeightmapTexture(
 			std::vector<float> hfHeight, int row );
 
-		void createNormalTexture(), createBlendmap();
-		void destroyNormalTexture(), destroyBlendmap();
+		void createNormalTexture();
+		void destroyNormalTexture();
 
 		///	Automatically calculates the optimum skirt size (no gaps with
 		/// lowest overdraw possible).
@@ -236,10 +253,7 @@ namespace Ogre
 		@return
 			True if Y (or Z for Z-up) component was changed
 		*/
-		bool getHeightAt( Vector3 &vPos ) const;
-		Ogre::Real getHeight( Ogre::Real x, Ogre::Real z ) const;
-		float getAngle( float x, float z, float s) const;
-
+		
 		/// load must already have been called.
 		void setDatablock( HlmsDatablock *datablock );
 
