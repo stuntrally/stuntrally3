@@ -275,7 +275,7 @@ void CGui::InitGui()
 	ImgB(clrTrail,"ClrTrail",btnClrSetA);
 
 
-	///  [Terrain]
+	///  ⛰️ Terrain
 	//------------------------------------------------------------------------
 	imgTexDiff = fImg("TerImgDiff");
 	Tab(tabsHmap, "TabHMapSize", tabHmap);
@@ -311,7 +311,7 @@ void CGui::InitGui()
 	sv= &svTerGenHSm;	sv->Init("TerGenHSm",	&pSet->gen_terSmH,  0.f,  100.f, 2.f, 1,4);  sv->DefaultF(20.f);
 
 
-	///  [Layers]
+	///  🏔️ Layers
 	//------------------------------------------------------------------------
 	bool b;
 	ck= &ckTerLayOn;	ck->Init("TerLayOn",	&b);   Cev(TerLayOn);
@@ -338,7 +338,7 @@ void CGui::InitGui()
 	sv= &svTerLHSm;     sv->Init("TerLHSm",    &f, 0.f,  100.f, 2.f, 1,4);  sv->DefaultF(20.f);  Sev(TerLay);
 	Btn("TerLmoveL", btnTerLmoveL);  Btn("TerLmoveR", btnTerLmoveR);
 
-	//  noise
+	//  🌀 noise
 	ck= &ckTerLNOnly;   ck->Init("TerLNonly",  &b);   Cev(TerLNOnly);
 	sv= &svTerLNoise;   sv->Init("TerLNoise",  &f, 0.f,1.f);  sv->DefaultF(0.f);  Sev(TerLay);
 	sv= &svTerLNprev;   sv->Init("TerLNprev",  &f, 0.f,1.f);  sv->DefaultF(0.f);  Sev(TerLay);
@@ -358,7 +358,7 @@ void CGui::InitGui()
 	Btn("TerLNrandom", btnNrandom);
 	Btn("TerLNswap", btnNswap);
 	
-	//  particles
+	//  ⚫💭 particles
 	sv= &svLDust;   sv->Init("LDust",  &f, 0.f,1.f);  sv->DefaultF(0.f);
 	sv= &svLDustS;  sv->Init("LDustS", &f, 0.f,1.f);  sv->DefaultF(0.f);
 	sv= &svLMud;    sv->Init("LMud",   &f, 0.f,1.f);  sv->DefaultF(0.f);
@@ -376,7 +376,7 @@ void CGui::InitGui()
 	SldUpd_TerL();
 
 	
-	///  [Vegetation]
+	///  🌳🪨 Vegetation
 	//------------------------------------------------------------------------
 	sv= &svGrassDens;	sv->Init("GrassDens",	&sc->densGrass, 0.f, 1.f, 2.f, 3,5);  sv->DefaultF(0.2f);
 	sv= &svTreesDens;	sv->Init("TreesDens",	&sc->densTrees, 0.f, 3.f, 2.f, 2,4);  sv->DefaultF(0.3f);
@@ -416,7 +416,7 @@ void CGui::InitGui()
 	txVWmin = fTxt("LTrInfWmin");  txVWmax = fTxt("LTrInfWmax");
 	
 
-	///  Grass
+	///  🌿 Grass
 	//------------------------------------------------------------------------
 	Ed(GrSwayDistr, editTrGr);  Ed(GrSwayLen, editTrGr);  Ed(GrSwaySpd, editTrGr);
 
@@ -456,7 +456,7 @@ void CGui::InitGui()
 	SldUpd_GrL();
 
 	
-	///  [Road]
+	///  🛣️ Road
 	//------------------------------------------------------------------------
 	sv= &svRdTcMul; 	sv->Init("RdTcMul", 	&f, 0.001f,0.3f, 1.5f, 3,5);  sv->DefaultF(0.1f);
 	sv= &svRdTcMulW;	sv->Init("RdTcMulW",	&f, 0.005f,0.4f, 1.5f, 3,5);  sv->DefaultF(0.1f);
@@ -482,7 +482,7 @@ void CGui::InitGui()
 	Ed(RdSkirtLen, editRoad);  Ed(RdSkirtH, editRoad);
 	
 
-	///  [Game]  ------------------------------------
+	///  Game  ------------------------------------
 	sv= &svDamage;		sv->Init("DamageMul",	&sc->damageMul, 0.f,2.f, 1.f, 2,4);  sv->DefaultF(1.f);
 	sv= &svWind;		sv->Init("WindAmt",		&sc->windAmt,  -6.f,6.f, 1.0f, 2,5);  sv->DefaultF(0.f);
 	sv= &svGravity;		sv->Init("Gravity",		&sc->gravity,   2.f,20.f, 1.5f, 2,4);  sv->DefaultF(9.81f);
@@ -493,7 +493,7 @@ void CGui::InitGui()
 	txtEdInfo = fTxt("EdInfo");
 	
 	
-	///  [Pacenotes]  ------------------------------------
+	///  🚦 Pacenotes  ------------------------------------
 	sv= &svPaceShow;	sv->Init("PaceShow",	&pSet->pace_show,   0,5, 1.f);  sv->DefaultI(3);
 	sv= &svPaceDist;	sv->Init("PaceDist",	&pSet->pace_dist,   20.f,2000.f, 2.f, 0,3);  sv->DefaultF(600.f);
 
@@ -504,11 +504,11 @@ void CGui::InitGui()
 	ck= &ckTrkReverse;	ck->Init("ReverseOn",	&pSet->trk_reverse);  Cev(TrkReverse);
 	
 
-	///  [Surface]
+	///  Surface
 	ck= &ckRoad1Mtr;	ck->Init("Road1Mtr",	&sc->td.road1mtr);
 	
 
-	///  [Tools]  ------------------------------------
+	///  🛠️ Tools  ------------------------------------
 	Btn("TrackCopySel", btnTrkCopySel);
 	valTrkCpySel = fTxt("TrkCopySelName");
 
@@ -528,7 +528,7 @@ void CGui::InitGui()
 	sv= &svAlignSmooth;		sv->Init("AlignSmooth",		&pSet->al_smooth, 0.f,6.f, 1.f, 1,3);  sv->DefaultF(3.f);
 
 	
-	///  [Warnings]  ------------------------------------
+	///  ⚠ Warnings  ------------------------------------
 	edWarn = fEd("Warnings");
 	txWarn = mGui->createWidget<TextBox>("TextBox", 300,20, 360,32, Align::Default, "Back");
 	txWarn->setTextShadow(true);  txWarn->setTextShadowColour(Colour::Black);
@@ -542,14 +542,15 @@ void CGui::InitGui()
 	ck= &ckCheckLoad;	ck->Init("CheckLoad",	&pSet->check_load);
 	
 
-	///  Fill Combo boxes  . . . . . . .
+
+	///  📃 Fill Combo boxes  . . . . . . .
 	//------------------------------------------------------------------------------------------------------------
 
 	string sData = PATHMANAGER::Data();
 	String sMat = sData +"/materials/Pbs/";  // path
 
 	
-	//---------------------  Game, Reverbs  ---------------------
+	//---------------------  🔊 Game, Reverbs  ---------------------
 	txtRevebDescr = fTxt("txtRevebDescr");
 	Cmb(cmbReverbs, "CmbReverbs", comboReverbs);
 
@@ -557,7 +558,7 @@ void CGui::InitGui()
 		cmbReverbs->addItem(data->reverbs->revs[u].name);
 
 
-	//---------------------  Weather  ---------------------
+	//---------------------  🌧️ Weather  ---------------------
 	Cmb(cmbRain1, "Rain1Cmb", comboRain1);  cmbRain1->addItem("");
 	Cmb(cmbRain2, "Rain2Cmb", comboRain2);  cmbRain2->addItem("");
 
@@ -567,14 +568,14 @@ void CGui::InitGui()
 		cmbRain1->addItem(s);  cmbRain2->addItem(s);
 	}	
 
-	//---------------------  Emitters  ---------------------
+	//---------------------  🔥 Emitters  ---------------------
 	GetMaterials("emitters.particle", true, "particle_system");
 	app->vEmtNames.clear();
 	for (u=0; u < vsMaterials.size(); ++u)
 		app->vEmtNames.push_back(vsMaterials[u]);
 
 
-	//---------------------  Terrain  ---------------------
+	//---------------------  ⛰️ Terrain  ---------------------
 	Cmb(cmbTexNorm, "TexNormal", comboTexNorm);  cmbTexNorm->addItem("flat_n.png");
 
 	strlist li;
@@ -600,7 +601,7 @@ void CGui::InitGui()
 		cmbSurface->addItem(app->surfaces[u].name);
 	
 
-	//---------------------  Grass  ---------------------
+	//---------------------  🌿 Grass  ---------------------
 	PATHMANAGER::DirList(sData + "/grass", li);
 	for (auto q : li)
 	{
@@ -609,7 +610,7 @@ void CGui::InitGui()
 	}
 
 
-	//---------------------  Objects  ---------------------
+	//---------------------  📦 Objects  ---------------------
 	app->vObjNames.clear();  strlist lo;
 	PATHMANAGER::DirList(sData + "/objects2", lo);
 	PATHMANAGER::DirList(sData + "/objects", lo);
@@ -633,7 +634,7 @@ void CGui::InitGui()
 			objListDyn->addItem("#A0E0FF"+name);  // dynamic
 	}
 	
-	//  buildings, group categories, more with same prefix  ----
+	//  🏢 buildings  group categories  more with same prefix  ----
 	app->vBuildings.clear();
 	objListCat->removeAllItems();
 
@@ -687,7 +688,7 @@ void CGui::InitGui()
 	AddPath("/objects0");
 
 
-	//---------------------  Surfaces  ---------------------
+	//---------------------  ⚫💭 Surfaces  ---------------------
 	surfList = fLi("SurfList");  Lev(surfList, Surf);
 	for (n=0; n < 4; ++n)  surfList->addItem("#80FF00"+TR("#{Layer} ")+toStr(n));
 	for (n=0; n < 4; ++n)  surfList->addItem("#FFB020"+TR("#{Road} ")+toStr(n));
@@ -695,7 +696,7 @@ void CGui::InitGui()
 	surfList->setIndexSelected(0);
 	
 	
-	//---------------------  Tweak  ---------------------
+	//---------------------  🔧 Tweak  ---------------------
 	ComboBoxPtr cmbTwk;
 	Cmb(cmbTwk, "TweakMtr", comboTweakMtr);
 
@@ -711,7 +712,7 @@ void CGui::InitGui()
 	cmbTwk->setIndexSelected( cmbTwk->findItemIndexWith(pSet->tweak_mtr) );
 
 	
-	///  [Pick window]
+	///  👆 Pick window
 	///------------------------------------------------------------------------------------------------------------
 	//  Pick btns
 	Btn("PickSky", btnPickSky);      btn->eventMouseWheel += newDelegate(this, &CGui::wheelSky);  btnSky = btn;
@@ -738,7 +739,7 @@ void CGui::InitGui()
 
 	
 
-	///  [Track]
+	///  🏞️ Track
 	//------------------------------------------------------------------------
 	gcom->sListTrack = pSet->gui.track;  //! set last
 	gcom->bListTrackU = pSet->gui.track_user;
@@ -767,7 +768,7 @@ void CGui::InitGui()
 	CreateGUITweakMtr();
 	
 
-	///  3d view []  (veget models, objects)
+	///  🧊 3d view []  (veget models, objects)
 	//--------------------------------------------
 	//rndCanvas = mGUI->findWidget<Canvas>("CanVeget");  //?
 	viewCanvas = app->mWndEdit->createWidget<Canvas>("Canvas", GetViewSize(), Align::Stretch);
@@ -793,11 +794,11 @@ IntCoord CGui::GetViewSize()
 }
 
 
-///  Fill Pick Lists
+///  📃 Fill Pick Lists
 ///------------------------------------------------------------------------------------------------------------
 void CGui::FillPickLists()
 {
-	///  Sky Mtr  --------
+	///  ⛅ Sky Mtr  --------
 	Mli2 lp;  int l,u;
 	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
 	liSky = lp;  lp->eventListChangePosition += newDelegate(this, &CGui::listPickSky);
@@ -821,7 +822,7 @@ void CGui::FillPickLists()
 		lp->setSubItemNameAt(2,l, c+ fToStr( s.ldPitch, 0,2));
 	}
 
-	///  Terrain  Tex Diff  --------
+	///  🏔️ Terrain layers  Tex Diff  --------
 	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
 	liTex = lp;  lp->eventListChangePosition += newDelegate(this, &CGui::listPickTex);
 	lp->setColour(Colour(0.8,0.9,0.7));  lp->setInheritsAlpha(false);
@@ -847,7 +848,7 @@ void CGui::FillPickLists()
 			lp->setSubItemNameAt(3,l, (t.triplanar ? "#E0E0E01" : "#6565650"));
 	}	}
 
-	///  Grass  --------
+	///  🌿 Grass  --------------------------------
 	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
 	liGrs = lp;  lp->eventListChangePosition += newDelegate(this, &CGui::listPickGrs);
 	lp->setColour(Colour(0.7,0.9,0.7));  lp->setInheritsAlpha(false);
@@ -872,7 +873,7 @@ void CGui::FillPickLists()
 			lp->setSubItemNameAt(3,l, c+ fToStr(t.maxSy, 1,3));
 	}	}
 
-	///  Veget  --------------------------------
+	///  🌳🪨 Vegetation  --------------------------------
 	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
 	liVeg = lp;  lp->eventListChangePosition += newDelegate(this, &CGui::listPickVeg);
 	lp->setColour(Colour(0.7,0.9,0.9));  lp->setInheritsAlpha(false);
@@ -897,7 +898,7 @@ void CGui::FillPickLists()
 			//lp->setSubItemNameAt(3,l, c+ fToStr(t.maxTerAng, 0,2));
 	}
 
-	///  Road  --------------------------------
+	///  🛣️ Road  --------------------------------
 	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
 	liRd = lp;  lp->eventListChangePosition += newDelegate(this, &CGui::listPickRd);
 	lp->setColour(Colour(0.9,0.8,0.7));  lp->setInheritsAlpha(false);
