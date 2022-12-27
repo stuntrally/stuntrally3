@@ -13,12 +13,12 @@ using namespace Ogre;
 
 //  Setup
 //---------------------------------------------------------------------------------------------------------------
-void SplineMarkEd::createMarker(String name, String mat, Item*& ent, SceneNode*& nd)
+void SplineMarkEd::createMarker(String name, String mat, Item*& it, SceneNode*& nd)
 {
-	ent = mSceneMgr->createItem(/*name,*/ sMarkerMesh);
-	ent->setMaterialName(mat);  ent->setCastShadows(false);  ent->setVisibilityFlags(RV_Hud);
+	it = mSceneMgr->createItem(/*name,*/ sMarkerMesh);
+	it->setDatablockOrMaterialName(mat);  it->setCastShadows(false);  it->setVisibilityFlags(RV_Hud);
 	nd = mSceneMgr->getRootSceneNode()->createChildSceneNode(/*name*/);
-	nd->attachObject(ent);  nd->setVisible(false);
+	nd->attachObject(it);  nd->setVisible(false);
 }
 
 void SplineMarkEd::Setup(
@@ -34,15 +34,15 @@ void SplineMarkEd::Setup(
 	// return;  // fixme ed
 
 	String name, si = toStr(idRd);
-	createMarker(si+"sphereSel",   "sphere_sel",   entSel, ndSel);
-	createMarker(si+"sphereChosen","sphere_chosen",entChs, ndChosen);
-	createMarker(si+"sphereHit",   "sphere_hit",   entHit, ndHit);
-	createMarker(si+"sphereRot",   "sphere_rot",   entRot, ndRot);
-	createMarker(si+"sphereCheck", "sphere_check", entChk, ndChk);
+	createMarker(si+"sphereSel",   "sphere_sel",   itSel, ndSel);
+	createMarker(si+"sphereChosen","sphere_chosen",itChs, ndChosen);
+	createMarker(si+"sphereHit",   "sphere_hit",   itHit, ndHit);
+	createMarker(si+"sphereRot",   "sphere_rot",   itRot, ndRot);
+	createMarker(si+"sphereCheck", "sphere_check", itChk, ndChk);
 
 	ndHit->setScale(/*fMarkerScale **/ fScHit * Vector3::UNIT_SCALE);
 	ndRot->setScale(fMarkerScale * fScRot * Vector3::UNIT_SCALE);
-	// entChk->setRenderQueueGroup(RQG_RoadMarkers);  // after road
+	// itChk->setRenderQueueGroup(RQG_RoadMarkers);  // after road
 }
 
 
@@ -66,8 +66,8 @@ void SplineMarkEd::AddMarker(Vector3 pos)
 	Item* it;//, *entC;
 	SceneNode* nd;//, *ndC;
 
-	it = mSceneMgr->createItem(sMarkerMesh);
-	it->setMaterialName("sphere_norm");  it->setCastShadows(false);
+	it = mSceneMgr->createItem(sMarkerMesh, "General", SCENE_STATIC);
+	it->setDatablockOrMaterialName("sphere_norm");  it->setCastShadows(false);
 	it->setVisibilityFlags(RV_Hud);
 	
 	nd = mSceneMgr->getRootSceneNode(SCENE_STATIC)->createChildSceneNode(SCENE_STATIC);

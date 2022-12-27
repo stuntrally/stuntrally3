@@ -641,7 +641,7 @@ void SplineRoad::DelSel()
 }
 
 
-///  Pick marker
+///  👆 Pick marker
 //---------------------------------------------------------------------------------------------------------------
 void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,  bool bRay, bool bAddH, bool bHide)
 {

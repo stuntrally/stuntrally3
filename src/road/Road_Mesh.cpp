@@ -2,7 +2,6 @@
 #include "Def_Str.h"
 #include "RenderConst.h"
 #include "Road.h"
-
 #ifdef SR_EDITOR
 	#include "CApp.h"
 #else
@@ -30,7 +29,8 @@ using namespace Ogre;
 
 #define USE_UMA_SHARED_BUFFERS 1
 
-//  Create Mesh
+
+//  🏗️ Create Mesh
 //---------------------------------------------------------
 
 void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
@@ -225,27 +225,27 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	//  replace alpha  ----
 	if (alpha)
 	{
-		HlmsPbsDatablock *datablock =
+		HlmsPbsDatablock *db =
 			static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
-		TextureGpu *diffTex = datablock->getDiffuseTexture(),
-			*normTex = datablock->getTexture(PBSM_NORMAL);
+		const TextureGpu *diffTex = db->getDiffuseTexture(),
+			*normTex = db->getTexture(PBSM_NORMAL);
 		const String sAlpha = "roadAlpha2.png", sFlat = "flat_n.png",
 			sDiff = diffTex->getNameStr(), sNorm = normTex->getNameStr();
 
 		if (sDiff != sAlpha)  // once
 		{
 			//LogO("RD mtr: "+ sMtrName+" tex: "+sDiff+" norm: "+sNorm);
-			datablock->setTexture(PBSM_DIFFUSE, sAlpha);  // same for all
-			datablock->setTexture(PBSM_NORMAL, sFlat);
+			db->setTexture(PBSM_DIFFUSE, sAlpha);  // same for all
+			db->setTexture(PBSM_NORMAL, sFlat);
 
-			datablock->setDetailMapBlendMode(0, PBSM_BLEND_MULTIPLY);  //PBSM_BLEND_NORMAL_NON_PREMUL);
-			datablock->setTexture(PBSM_DETAIL_WEIGHT, "roadAlpha2y.png");  //"HeightmapBlendmap.png");
-			datablock->setDetailMapWeight(0, 1.0);
+			db->setDetailMapBlendMode(0, PBSM_BLEND_MULTIPLY);  //PBSM_BLEND_NORMAL_NON_PREMUL);
+			db->setTexture(PBSM_DETAIL_WEIGHT, "roadAlpha2y.png");  //"HeightmapBlendmap.png");
+			db->setDetailMapWeight(0, 1.0);
 			const Real v = 33.3;  // 1.f / 0.03 = alpha tc in rebuild
-			datablock->setDetailMapOffsetScale(0, Vector4(0,0, 1,v));
+			db->setDetailMapOffsetScale(0, Vector4(0,0, 1,v));
 
-			datablock->setTexture(PBSM_DETAIL0, sDiff);
-			datablock->setTexture(PBSM_DETAIL0_NM, sNorm);
+			db->setTexture(PBSM_DETAIL0, sDiff);
+			db->setTexture(PBSM_DETAIL0_NM, sNorm);
 		}
 	}
 	sd.it = it;
@@ -257,7 +257,7 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 }
 
 
-//  add triangle to bullet
+//  🔺 add triangle to bullet
 //---------------------------------------------------------
 void SplineRoad::addTri(int f1, int f2, int f3, int i)
 {
@@ -282,7 +282,7 @@ void SplineRoad::addTri(int f1, int f2, int f3, int i)
 }
 
 
-///  Destroy
+///  💥 Destroy
 //---------------------------------------------------------
 
 void SplineRoad::Destroy()  // full
@@ -293,11 +293,11 @@ void SplineRoad::Destroy()  // full
 	if (ndRot)	mSceneMgr->destroySceneNode(ndRot);
 	if (ndHit)	mSceneMgr->destroySceneNode(ndHit);
 	if (ndChk)	mSceneMgr->destroySceneNode(ndChk);
-	if (entSel)  mSceneMgr->destroyItem(entSel);
-	if (entChs)  mSceneMgr->destroyItem(entChs);
-	if (entRot)  mSceneMgr->destroyItem(entRot);
-	if (entHit)  mSceneMgr->destroyItem(entHit);
-	if (entChk)  mSceneMgr->destroyItem(entChk);
+	if (itSel)  mSceneMgr->destroyItem(itSel);
+	if (itChs)  mSceneMgr->destroyItem(itChs);
+	if (itRot)  mSceneMgr->destroyItem(itRot);
+	if (itHit)  mSceneMgr->destroyItem(itHit);
+	if (itChk)  mSceneMgr->destroyItem(itChk);
 	DestroyMarkers();
 	DestroyRoad();
 }

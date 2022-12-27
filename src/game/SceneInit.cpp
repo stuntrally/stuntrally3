@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "pathmanager.h"
 #include "Road.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
@@ -297,20 +298,21 @@ void App::LoadCleanUp()
 	if (dstTrk)
 	{
 		scn->DelRoadDens();
-		scn->grass->Destroy();
-		scn->DestroyTrees();
-		DestroyObjects(true);
-		scn->DestroyRoads();
-		scn->DestroyTerrain();
+		scn->grass->Destroy();  // 🌿
+		scn->DestroyTrees();    // 🌳🪨
+
+		DestroyObjects(true);   // 📦
+		scn->DestroyRoads();    // 🛣️
+		scn->DestroyTerrain();  // ⛰️
 		//^ cars
-		scn->DestroyFluids();
-		scn->DestroyEmitters(true);
-		scn->DestroyAllAtmo();
+		scn->DestroyFluids();   // 💧
+		scn->DestroyEmitters(true);  // 🔥
+		scn->DestroyAllAtmo();  // 🌦️
 	}
 	scn->DestroyTrail();
 
 
-	///  destroy all
+	///  destroy all  shouldn't be needed..
 	LogO("#### Destroy All ----");
 	if (dstTrk)
 	{	// destroy all scenenodes
@@ -689,9 +691,7 @@ void App::LoadTrees()
 	if (dstTrk)
 	{
 		scn->LoadRoadDens();
-
-		scn->grass->Create();  // split step
-
+		scn->grass->Create();  // 🌿
 		scn->CreateTrees();
 	}	
 		

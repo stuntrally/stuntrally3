@@ -9,6 +9,7 @@
 
 //  SR
 #include "settings.h"
+#include "pathmanager.h"
 #include "CGame.h"
 #include "game.h"
 #include "CScene.h"

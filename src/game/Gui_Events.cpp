@@ -4,6 +4,7 @@
 #include "GuiCom.h"
 #include "CScene.h"
 #include "settings.h"
+#include "pathmanager.h"
 #include "game.h"
 // #include "PaceNotes.h"
 #include "Road.h"

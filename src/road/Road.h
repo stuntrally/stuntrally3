@@ -73,49 +73,51 @@ public:
 	#endif
 	void Defaults();
 	
-	//  types
+	//  🛣️📏🏛️ types
 	RoadType type = RD_Road;
-	bool IsRoad()    // all: road, _ter, pipe, bridge wall, column etc
+	bool IsRoad()    // all: 🛣️road, ⛰️_ter, ⭕pipe, 📏bridge wall, 🏛️column etc
 	{	return type == RD_Road;  }
-	bool IsRiver()   // just road,  no wall, no column, no _ter materials
+	bool IsRiver()   // just 🛣️road,  no wall, no column, no _ter materials
 	{	return type == RD_River;  }
-	bool IsDecor()   // just wall,  for platforms and decorations
+	bool IsDecor()   // just 📏wall,  for platforms and decorations  //todo:
 	{	return type == RD_Decor;  }
 	
-	bool IsTrail()   // just road (like river), but has colors per vertex
+	bool IsTrail()   // just 🎗️road (like river), but has colors per vertex
 	{	return type == RD_Trail;  }
 	int trailSegId;  // for current road trace only
 
-	bool HasRoad()
+	bool HasRoad()  // 🛣️
 	{	return !IsDecor();  }
-	bool HasWall(bool onTer)
+	bool HasWall(bool onTer)  // 📏
 	{	return (IsRoad() && !onTer) || IsDecor();  }
-	bool HasColumns()
+	bool HasColumns()  // 🏛️
 	{	return IsRoad();  }
 
 
 	//  File
 	bool LoadFile(Ogre::String fname, bool build = true), SaveFile(Ogre::String fname);
 	
-	//  Rebuild
+	//  🔁 Rebuild
 	bool RebuildRoadInt(bool editorAlign = false, bool edBulletFull = false);
 	void RebuildRoadPace();  ///  Rebuild road only for pacenotes, after RebuildRoadInt
 	void Destroy(), DestroyRoad(), DestroySeg(int id);
 
 
-	//  Update
+	//  💫 Update
 	void UpdLodVis(float fBias = 1.f, bool bFull = false);
 	void UpdLodVisMarks(Ogre::Real distSq, bool vis = false), HideMarks();
 	void SetForRnd(Ogre::String sMtr), UnsetForRnd();
 	void SetVisTrail(bool vis);
 
+
+	//  👆 Pick
 	void Pick(Ogre::Camera* mCamera, Ogre::Real mx, Ogre::Real my,
 			bool bRay = true, bool bAddH = false, bool bHide = false);
 	void SelectMarker(bool bHide = false);
 	void ToggleMerge();
 
 
-	//  Insert  -------
+	//  🛠️ Edit  -------
 	void Insert(eIns ins);
 	void Delete(), DelSel();
 
@@ -129,7 +131,7 @@ public:
 	
 
 private:
-///  ***  MESH  ****
+///  ***  🏗️ MESH  ****
 //---------------------------------------------------------------------------------------
 
 	void CreateMesh( SegData& sd, Ogre::String sMesh,
@@ -145,7 +147,7 @@ private:
 
 	const std::vector<Ogre::Vector3>*  at_pos =0;
 
-	//  add triangle, with index check
+	//  🔺 add triangle, with index check
 	void addTri(int f1, int f2, int f3, int i);
 
 	int at_size, at_ilBt;
@@ -170,7 +172,7 @@ private:
 	void PrepassRange(DataRoad& DR);
 	void PrepassAngles(DataRoad& DR);
 
-	struct DataLod0   // at Lod 0
+	struct DataLod0   // 🟤 at Lod 0
 	{
 		std::vector<int>            v0_iL;  // length steps
 		std::vector<Ogre::Real>     v0_tc;  // tex coords
@@ -183,7 +185,7 @@ private:
 	void SetChecks();  // Init  1st in file load, 2nd time for N
 
 
-	struct DataLod   // for current Lod
+	struct DataLod   // 🟫 for current Lod
 	{
 		//>  data at cur lod
 		std::vector<int>  v_iL, v_iW;  // num Length and Width steps for each seg
@@ -205,7 +207,7 @@ private:
 		bool isLod0 = true, isPace = false;
 	};
 	
-	struct StatsLod   // stats for current Lod
+	struct StatsLod   // 🗒️ stats for current Lod
 	{	//#  stats
 		Ogre::Real roadLen = 0.f, rdOnT = 0.f, rdPipe = 0.f, rdOnPipe = 0.f;
 		Ogre::Real avgWidth = 0.f, stMaxH = FLT_MIN, stMinH = FLT_MAX;
@@ -219,7 +221,7 @@ private:
 		int lod, bool editorAlign);
 
 
-	struct DataLodMesh   // mesh data for lod  (from merged segs)
+	struct DataLodMesh   // 🟫🟫 mesh data for lod  (from merged segs)
 	{
 		//>  W-wall  C-column  B-blend
 		std::vector<Ogre::Vector4>  clr0/*empty*/, clr, clrB;
@@ -231,7 +233,7 @@ private:
 		void Clear();
 	};
 
-public:  ///  pacenotes prepass data
+public:  ///  🚦 pacenotes prepass data
 	struct PaceM
 	{
 		Ogre::Vector3 pos, pos2;
@@ -254,7 +256,7 @@ private:
 	};
 	
 
-	//  Build Segment Geometry  ----
+	//  🆕 Build Segment Geometry  ----
 	void BuildSeg(
 		const DataRoad& DR,
 		const DataLod0& DL0, DataLod& DL, StatsLod& ST,
@@ -290,7 +292,7 @@ public:
 	std::deque<RoadSeg> vSegs;
 
 
-///  params, from xml
+///  📄 params, from xml
 	//  materials
 	Ogre::String  sMtrPipe[MTRs];  // use SetMtrPipe to set
 	bool bMtrPipeGlass[MTRs];  // glass in mtr name
@@ -331,7 +333,7 @@ public:
 	float ed_Wadd = 0.f, ed_Wmul = 1.f;  // const added width and width multipler for whole road
 
 
-	//  stats  ----
+	//  🗒️ stats  ----
 	struct Stats  // for info only
 	{
 		int iMrgSegs = 0, segsMrg = 0;
