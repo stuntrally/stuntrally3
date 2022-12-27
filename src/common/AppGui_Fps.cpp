@@ -1,12 +1,11 @@
 #include "pch.h"
 #include "AppGui.h"
 #include "Def_Str.h"
-#include "GraphicsSystem.h"
 
 #include <OgreRoot.h>
 #include <OgreFrameStats.h>
 #include <OgreTextureGpuManager.h>
-#include "Vao/OgreVaoManager.h"
+#include <Vao/OgreVaoManager.h>
 
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>
@@ -14,7 +13,7 @@ using namespace Ogre;
 using namespace MyGUI;
 
 
-//  Fps, stat colors 🌈
+//  🌈 Fps, stat colors
 //-----------------------------------------------------------------------------------
 const int iClrVal = 8;
 const String sClrVal[iClrVal] =  // long
@@ -93,7 +92,7 @@ void AppGui::CreateFpsBar()
 }
 
 
-//  util  GPU RAM mem
+//  ⛓️ util  GPU RAM mem
 //-----------------------------------------------------------------------------------
 float AppGui::GetGPUmem()
 {

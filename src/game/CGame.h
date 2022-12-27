@@ -38,17 +38,15 @@ class App : public BaseApp,	public ICS::ChannelListener
 	bool pgup = false, pgdown = false;
 	bool up = false, down = false;  // arrows for gui lists
 
-	//  📈 Fps overlay
+	//  overlay-
 	void updDebugText();
-	void updFpsText();  float getGPUmem();
-
 	bool mDisplayOverlay = 0;  //remove..
 	Ogre::v1::TextAreaOverlayElement *mDebugText =0, *mDebugTextShadow =0;
 	void CreateDebugTextOverlay();
 
 
 public:
-	void InitGui();//, DestroyGui();
+	void InitGui();
 
 	//  SR
 	void Init(), Load();

@@ -14,6 +14,8 @@ using namespace MyGUI;
 using namespace std;
 
 
+//  🌟🆕 init Gui
+//----------------------------------------------------------------
 void AppGui::InitGuiCom()
 {
 	if (mPlatform)
@@ -58,9 +60,19 @@ void AppGui::InitGuiCom()
 	CreateFpsBar();
 }
 
+//  💥 destroy
+void AppGui::DestroyGui()
+{
+	LogO("D::# Destroy MyGui");
+	if (mGui)
+	{	mGui->shutdown();  delete mGui;  mGui = 0;  }
+	if (mPlatform)
+	{	mPlatform->shutdown();  delete mPlatform;  mPlatform = 0;  }
+}
 
 
-//  load settings from default file
+//  📄 load settings from default file
+//----------------------------------------------------------------
 void AppGui::LoadDefaultSet(SETTINGS* settings, string setFile)
 {
 #ifdef SR_EDITOR
@@ -77,8 +89,7 @@ void AppGui::LoadDefaultSet(SETTINGS* settings, string setFile)
 #endif
 }
 
-
-///  Load Settings .cfg
+///  📄 Load Settings .cfg
 //----------------------------------------------------------------
 void AppGui::LoadSettings()
 {

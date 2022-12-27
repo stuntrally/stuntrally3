@@ -129,7 +129,6 @@ public:
 	Ogre::Window* getWindow()  {  return mWindow;  }
 	
 	void baseInitGui(), baseSizeGui();
-	void DestroyGui();
 
 	//  ⏳ Loading  backgr, bar
 	Img imgBack =0, bckLoad =0, bckLoadBar =0, barLoad =0, imgLoad =0;

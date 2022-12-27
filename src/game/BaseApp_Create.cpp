@@ -27,7 +27,7 @@ using namespace Ogre;
 using namespace MyGUI;
 
 
-//  Create
+//  🕹️🆕 Create
 //-------------------------------------------------------------------------------------
 void BaseApp::CreateInputs()
 {
@@ -39,13 +39,13 @@ void BaseApp::CreateInputs()
 	std::string file = PATHMANAGER::UserConfigDir() + "/input.xml";
 	mInputCtrl = new ICS::InputControlSystem(file, true, mInputBindListner, NULL, 100);
 
-	for (int j=0; j<SDL_NumJoysticks(); ++j)
+	for (int j=0; j < SDL_NumJoysticks(); ++j)
 		mInputCtrl->addJoystick(j);
 	for (int i=0; i<4; ++i)
 	{
 		file = PATHMANAGER::UserConfigDir() + "/input_p" + toStr(i) + ".xml";
 		mInputCtrlPlayer[i] = new ICS::InputControlSystem(file, true, mInputBindListner, NULL, 100);
-		for (int j=0; j<SDL_NumJoysticks(); ++j)
+		for (int j=0; j < SDL_NumJoysticks(); ++j)
 			mInputCtrlPlayer[i]->addJoystick(j);
 	}
 
@@ -56,9 +56,9 @@ void BaseApp::CreateInputs()
 	// mRoot->addFrameListener(this);
 }
 
-//  Run
+//  OLD Run
 //-------------------------------------------------------------------------------------
-/*
+#if 0
 void BaseApp::Run(bool showDialog)
 {
 	mShowDialog = showDialog;
@@ -72,7 +72,7 @@ void BaseApp::Run(bool showDialog)
 		while (1)
 		{
 			WindowEventUtilities::messagePump();
-			long min_fps = 1000000.0 / std::max(10.f, pSet->limit_fps_val);
+			long min_fps = 1000000.0 / std::max(10.f, pSet->limit_fps_val);  // todo?
 			if (tim.getMicroseconds() > min_fps)
 			{
 				tim.reset();
@@ -85,7 +85,8 @@ void BaseApp::Run(bool showDialog)
 
 	destroyScene();
 }
-*/
+#endif
+
 
 //  🌟 ctor
 //-------------------------------------------------------------------------------------
@@ -116,22 +117,13 @@ BaseApp::~BaseApp()
 	}
 
 /*	delete mCursorManager;
-
-	#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-		mRoot->unloadPlugin("RenderSystem_Direct3D9");
-		//mRoot->unloadPlugin("RenderSystem_Direct3D11");
-	#endif
-	mRoot->unloadPlugin("RenderSystem_GL");
-*/
-	// OGRE_DELETE mRoot;
-
-	// SDL_SetWindowFullscreen(mSDLWindow, 0);
-	// SDL_DestroyWindow(mSDLWindow);
+	//mRoot->unloadPlugin("RenderSystem_Direct3D11");
+	mRoot->unloadPlugin("RenderSystem_GL");*/
 }
 
-#if 0
 
-//  config
+#if 0
+//  OLD config
 //-------------------------------------------------------------------------------------
 bool BaseApp::configure()
 {
@@ -179,6 +171,7 @@ bool BaseApp::configure()
 	params.insert(std::make_pair("FSAA", toStr(pSet->fsaa)));
 	params.insert(std::make_pair("vsync", pSet->vsync ? "true" : "false"));
 
+
 	int pos_x = SDL_WINDOWPOS_UNDEFINED,
 		pos_y = SDL_WINDOWPOS_UNDEFINED;
 
@@ -204,7 +197,7 @@ bool BaseApp::configure()
 		SDL_WINDOW_SHOWN | (pSet->fullscreen ? SDL_WINDOW_FULLSCREEN : 0) | SDL_WINDOW_RESIZABLE);
 
 	SFO::SDLWindowHelper helper(mSDLWindow, pSet->windowx, pSet->windowy, "Stunt Rally", pSet->fullscreen, params);
-	helper.setWindowIcon("stuntrally.png");
+	helper.setWindowIcon("stuntrally.png");  // todo:
 	mWindow = helper.getWindow();
 
 	return true;
@@ -253,6 +246,7 @@ bool BaseApp::setup()
     mRoot->loadPlugin(PATHMANAGER::OgrePluginDir() + "/Codec_FreeImage" + D_SUFFIX);  // for jpg screenshots
 #endif
 
+
 	#ifdef _DEBUG
 	LogManager::getSingleton().setMinLogLevel(LML_TRIVIAL);  // all
 	#endif
@@ -263,13 +257,6 @@ bool BaseApp::setup()
 		return false;
 
 
-	mSceneMgr = mRoot->createSceneManager("DefaultSceneManager");
-
-	#if OGRE_VERSION >= MYGUI_DEFINE_VERSION(1, 9, 0) 
-	OverlaySystem* pOverlaySystem = new OverlaySystem();
-	mSceneMgr->addRenderQueueListener(pOverlaySystem);
-	#endif
-
 	mSplitMgr = new SplitScr(mSceneMgr, mWindow, pSet);
 
 	createViewports();  // calls mSplitMgr->Align();
@@ -278,40 +265,6 @@ bool BaseApp::setup()
 
 		LogO(String(":::* Time setup vp: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
-
-	//  Gui
-	baseInitGui();
-
-		LogO(String(":::* Time setup gui: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
-
-	createResourceListener();
-
-
-	LogO("*** createFrameListener ***");
-	createFrameListener();
-
-		LogO(String(":::* Time createFrameListener: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
-
-	LogO("*** createScene ***");
-	createScene();
-
-		LogO(String(":::* Time createScene: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
-
-	LogO("*** recreateCompositor, does nothing ***");
-	recreateCompositor();
-
-	LogO("*** end setup ***");
-
-
-	///  material factory setup
-	sh::OgrePlatform* platform = new sh::OgrePlatform("General", PATHMANAGER::Data() + "/materials");
-	platform->setCacheFolder(PATHMANAGER::ShaderDir());
-
-	mFactory = new sh::Factory(platform);
-
-	postInit();
-
-		LogO(String(":::* Time post, mat factory: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
 	loadResources();
 
@@ -322,11 +275,8 @@ bool BaseApp::setup()
 	return true;
 }
 
-void BaseApp::destroyScene()
-{
-}
 
-//  Resources
+// todo:  Resources
 //-------------------------------------------------------------------------------------
 void BaseApp::setupResources()
 {
@@ -352,16 +302,6 @@ void BaseApp::setupResources()
 			ResourceGroupManager::getSingleton().addResourceLocation(
 				PATHMANAGER::Data() + "/" + archName, typeName, secName);
 	}	}
-}
-
-void BaseApp::createResourceListener()
-{
-}
-void BaseApp::loadResources()
-{
-	LoadingOn();
-	ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
-	LoadingOff();
 }
 #endif
 
@@ -492,14 +432,4 @@ void BaseApp::baseSizeGui()
 	imgLoad->setCoord(-oix, -oiy, six, siy);
 	if (imgBack)
 	imgBack->setCoord(-oix, -oiy, six, siy);
-}
-
-
-void BaseApp::DestroyGui()
-{
-	LogO("D::# Destroy MyGui");
-	if (mGui)
-	{	mGui->shutdown();  delete mGui;  mGui = 0;  }
-	if (mPlatform)
-	{	mPlatform->shutdown();  delete mPlatform;  mPlatform = 0;  }
 }

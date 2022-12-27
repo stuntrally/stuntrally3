@@ -35,4 +35,5 @@ public:
 
 	//  🆕 Init  ----------------
 	void InitGuiCom();
+	void DestroyGui();
 };
