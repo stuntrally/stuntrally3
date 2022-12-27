@@ -217,9 +217,9 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	//  wrap tex  ----
 	if (!trail)
 	#ifdef SR_EDITOR
-		pApp->scn->SetTexWrap(it);
+		pApp->SetTexWrap(it);
 	#else
-		pGame->app->scn->SetTexWrap(it);
+		pGame->app->SetTexWrap(it);
 	#endif
 
 	//  replace alpha  ----

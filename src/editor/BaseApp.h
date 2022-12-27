@@ -69,7 +69,6 @@ protected:
 	bool mbLeft =0, mbRight =0, mbMiddle =0;  // mouse buttons
 
 	Ogre::String  mDebugText;	// info texts
-	bool mbWireFrame =0;  void UpdWireframe();
 
 
 	///  🎥 camera upd

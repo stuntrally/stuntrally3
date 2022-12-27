@@ -130,7 +130,7 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 	Item *item =0;
 	try
 	{	item = mSceneMgr->createItem( sDirname + sMesh, sCarI, SCENE_DYNAMIC );
-		pApp->scn->SetTexWrap(item);
+		pApp->SetTexWrap(item);
 
 		//**  set reflection cube
 		assert( dynamic_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() ) );
@@ -312,7 +312,7 @@ void CarModel::Create()
 		{
 			String name = sDirname + sMesh;
 			Item* eWh = mSceneMgr->createItem(sDirname + sMesh, res);  ToDel(eWh);
-			pApp->scn->SetTexWrap(eWh);
+			pApp->SetTexWrap(eWh);
 			// if (ghost)  {  eWh->setRenderQueueGroup(g);  eWh->setCastShadows(false);  }
 			ndWh[w]->attachObject(eWh);  eWh->setVisibilityFlags(RV_Car);
 			if (bLogInfo && (w==0 || w==2))  LogMeshInfo(eWh, name, 2);

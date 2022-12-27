@@ -98,9 +98,6 @@ public:
 
 	void MinimizeMemory();  // mtr,tex, reduce mem, each track load
 	// void setTightMemoryBudget(), setRelaxedMemoryBudget();
-	//  utils
-	void SetTexWrap(Ogre::HlmsTypes type, Ogre::String name, bool wrap);
-	void SetWireframe(Ogre::HlmsTypes type, bool wire);
 
 
 public:

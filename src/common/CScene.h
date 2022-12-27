@@ -157,7 +157,4 @@ public:
 		if (x > xb)  return (xb-x)/s+1;
 		return 0.f;
 	}
-
-	//  util
-	void SetTexWrap(Ogre::Item* it, bool wrap = true);
 };

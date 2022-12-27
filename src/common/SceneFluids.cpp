@@ -82,7 +82,7 @@ void CScene::CreateFluids()
 		
 		item->setDatablock( sMtr );  item->setCastShadows( false );
 		item->setRenderQueueGroup( RQG_Fluid );  item->setVisibilityFlags( RV_Terrain );
-		SetTexWrap(item);
+		app->SetTexWrap(item);
 		
 		SceneNode* node = rootNode->createChildSceneNode( SCENE_STATIC );
 		node->setPosition( fb.pos );  //, Quaternion(Degree(fb.rot.x),Vector3::UNIT_Y)

@@ -24,10 +24,10 @@ Various markers in sources for key sections, methods etc.  Also showing short-cu
  🎛️ GUI  gui       🔵 Checkpoint chk   📊⚙️ Options    🪟 Window wnd*   🆕🪄 Create                                      💡 Light
                    📐 Drivability                                                       🧵 thread    🧰 _Tool_ dev      🌒 shadow
  🎥 Camera  cam                        📈 Fps         🗜️ Resize        💫 Update        🌀 noise     🪛 param // par    🌠 Hlms shader
- 📽️ Replay  rpl    🚀 Spaceship        📉 Graphs      🔗 url                per frame          ed    🧪 test  src       
-                   🔘 Sphere                          🖱️ Mouse         🔁 Refresh       👆🥢 pick                       
- 👻 Ghost  gho     🏍️ Motorbike        📝 Help         ⌨️ Keys                 single    🚧 cursor                        
- 👈 Hint           🚌 Bus              ❔ tooltip                      🌈 Colors  clr                                    
+ 📽️ Replay  rpl    🚀 Spaceship        📉 Graphs      🔗 url                per frame                🧪 test  src       
+                   🔘 Sphere                          🖱️ Mouse         🔁 Refresh       👆 pick  ed                     
+ 👻 Ghost  gho     🏍️ Motorbike        📝 Help         ⌨️ Keys                 single    🚧 cursor                       
+ 👈 Hint           🚌 Bus              ❔ tooltip                      🌈 Colors  clr   📍 marker                       
        lesson                                          🗺️ language     🔺 triangle tri                                   
  👥 Split-screen   🏗️👷 Editor ed      🖼️ image prv   🔤 text                                                            
  📡 Multi-player                       📰 View  gui    🔠 font                                                           

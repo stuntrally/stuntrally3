@@ -350,7 +350,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	it->setCastShadows(false);  //**
 	it->setVisibilityFlags(RV_VegetGrass);
 	it->setRenderQueueGroup(RQG_BatchAlpha);
-	scn->SetTexWrap(it, false);
+	scn->app->SetTexWrap(it, false);
 
 	sd.it = it;
 	sd.node = node;

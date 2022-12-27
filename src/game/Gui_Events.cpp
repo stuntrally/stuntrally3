@@ -331,12 +331,7 @@ void CGui::slCountdownTime(SL)
 
 void CGui::chkWireframe(Ck*)
 {
-	bool b = app->mbWireFrame;
-	
-	app->SetWireframe( HLMS_PBS, b );  // 3d all
-	// SetWireframe( HLMS_UNLIT, b );  // 2d particles, Gui
-	app->SetWireframe( HLMS_USER3, b );  // terrain
-	
+	app->SetWireframe();
 	// if (app->ndSky)
 	// 	app->ndSky->setVisible(!b);  // hide sky-
 }

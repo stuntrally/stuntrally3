@@ -77,22 +77,3 @@ void CScene::destroyScene()
 	// DestroyTrees();
 	// DestroyWeather();
 }
-
-
-//  util
-void CScene::SetTexWrap(Ogre::Item* it, bool wrap)
-{
-	//  wrap tex  ----
-	HlmsSamplerblock sampler;
-	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
-	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
-	sampler.mMaxAnisotropy = app->pSet->anisotropy;
-	auto w = wrap ? TAM_WRAP : TAM_CLAMP;
-	sampler.mU = w;  sampler.mV = w;  sampler.mW = w;
-
-	assert( dynamic_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() ) );
-	HlmsPbsDatablock *datablock =
-		static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
-	for (int n=0; n < NUM_PBSM_SOURCES; ++n)
-		datablock->setSamplerblock( PBSM_DIFFUSE + n, sampler );
-}

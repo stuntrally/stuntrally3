@@ -242,7 +242,7 @@ void CScene::CreateTrees()
 				bool alpha = file == "crystal2.mesh" || file == "crystal2.mesh";  // todo: par in xml
 				item->setRenderQueueGroup( alpha ? RQG_BatchAlpha : RQG_Road );
 				item->setVisibilityFlags( RV_Vegetation );
-				SetTexWrap(item);
+				app->SetTexWrap(item);
 
 				auto s4 = file.substr(0,4), s3 = file.substr(0,3);
 				bool big = s4 == "palm" || s4 == "tree" || s4 == "jung" || s4 == "pine" ||

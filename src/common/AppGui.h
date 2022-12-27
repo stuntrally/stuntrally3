@@ -1,6 +1,8 @@
 #pragma once
 #include "Gui_Def.h"
 #include <string>
+#include <OgreString.h>
+#include <OgreHlmsCommon.h>
 
 namespace MyGUI{  class Gui;  class Ogre2Platform;  }
 namespace Ogre {  class Root;  class SceneManager;  class Window;  class Camera;  }
@@ -9,6 +11,7 @@ class SETTINGS;
 
 //  Base application with:
 //  Ogre, MyGui, settings, Fps bar
+
 class AppGui : public BGui
 {
 public:
@@ -16,6 +19,7 @@ public:
 	SETTINGS* pSet =0;
 	void LoadDefaultSet(SETTINGS* settings, std::string setFile);
 	void LoadSettings();
+
 
 	//  🟢 Ogre  ----------------
 	Ogre::Root *mRoot =0;
@@ -27,11 +31,21 @@ public:
 	MyGUI::Gui* mGui =0;
 	MyGUI::Ogre2Platform* mPlatform =0;
 
+
 	//  📈 Fps bar  ----------------
 	Img bckFps =0;
 	Txt txFps =0;
 	void UpdFpsText(), CreateFpsBar();
 	float GetGPUmem();
+
+	//  ⛓️ utils  wireframe
+	bool bWireframe = 0;
+	void SetWireframe();
+	void SetWireframe(Ogre::HlmsTypes type, bool wire);
+	//  tex wrap
+	void SetTexWrap(Ogre::HlmsTypes type, Ogre::String name, bool wrap = true);
+	void SetTexWrap(Ogre::Item* it, bool wrap = true);
+
 
 	//  🆕 Init  ----------------
 	void InitGuiCom();
