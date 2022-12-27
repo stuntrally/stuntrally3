@@ -42,7 +42,7 @@ public:
 	///-----------------------------------------------------------------------------------------------------------------	
 	
 	bool bGI = false;  // gui inited  set values
-	void InitGui(), GuiUpdate();
+	void InitGui(), InitGuiLists(), GuiUpdate();
 	void UpdGuiAfterPreset(), FillPickLists();
 
 	Txt valTrk[2] ={0,0};

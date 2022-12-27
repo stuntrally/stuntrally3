@@ -182,7 +182,7 @@ bool BaseApp::configure()
 	int pos_x = SDL_WINDOWPOS_UNDEFINED,
 		pos_y = SDL_WINDOWPOS_UNDEFINED;
 
-#if 0  /// _tool_ rearrange window pos for local netw testing
+#if 0  /// 🧰 _Tool_ rearrange window pos for local netw testing
 	SDL_Rect screen;
 	if (SDL_GetDisplayBounds(/*pSet.screen_id*/0, &screen) != 0)
 		LogO("SDL_GetDisplayBounds errror");

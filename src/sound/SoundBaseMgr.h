@@ -5,7 +5,7 @@
 #include <AL/efx.h>
 class SoundBase;  struct REVERB_PRESET;
 
-//#define REVERB_BROWSER  // _tool_  keys 1,2: change prev,next reverb preset
+//#define REVERB_BROWSER  // 🧰 _Tool_  keys 1,2: change prev,next reverb preset
 
 
 class SoundBaseMgr

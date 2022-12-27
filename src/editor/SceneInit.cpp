@@ -63,7 +63,6 @@ void App::createScene01()  // once, init
 
 
 	//  🎥 camera
-	mWindow = mGraphicsSystem->getRenderWindow();
 	asp = float(mWindow->getWidth())/float(mWindow->getHeight());
 	mCamera->setFarClipDistance(pSet->view_distance*1.1f);
 	mCamera->setNearClipDistance(0.1f);
@@ -97,15 +96,15 @@ void App::createScene01()  // once, init
 		
 	bGuiFocus = false/*true*/;  bMoveCam = true;  //*--
 
+	InitGuiCom();
 	baseInitGui();
-
 	gui->InitGui();
 	
 
 	mGraphicsSystem->mWorkspace = SetupCompositor();
 
 
-	///__  All  #if 0  in Release !!!
+	///__🧰  All  #if 0  in Release !!!
 
 	///  _Tool_ scene  ...................
 	#if 0
@@ -113,7 +112,7 @@ void App::createScene01()  // once, init
 	exit(0);
 	#endif
 	
-	///  _Tool_	warnings  ................
+	///  _Tool_ warnings  ................
 	///  takes some time
 	#if 0
 	gui->ToolTracksWarnings();
@@ -124,7 +123,7 @@ void App::createScene01()  // once, init
 	TerCircleInit();
 	createBrushPrv();
 	
-	///  _Tool_ brushes prv  .............
+	///  🧰 _Tool_ brushes prv  .............
 	#if 0
 	gui->ToolBrushesPrv();
 	#endif

@@ -57,7 +57,7 @@ void CGui::InitGui()
 	Load("Editor_Utils");  Load("Editor_Tools");  Load("Editor_Help");  Load("Editor_Options");
 
 
-	//  wnds main
+	//  🪟 main windows
 	app->mWndMain = fWnd("MainMenuWnd");
 	app->mWndTrack = fWnd("TrackWnd");  app->mWndEdit = fWnd("EditorWnd");
 	app->mWndOpts = fWnd("OptionsWnd"); app->mWndHelp = fWnd("HelpWnd");
@@ -140,14 +140,14 @@ void CGui::InitGui()
 	app->mWndBrush->setVisible(false);
 	
 
-	#if 0  ///0 _tool_ fix video capture cursor
+	#if 0  ///0 _tool_ fix video capture cursor-
 	imgCur = mGui->createWidget<ImageBox>("ImageBox", 100,100, 32,32, Align::Default, "Pointer");
 	imgCur->setImageTexture("pointer.png");
 	imgCur->setVisible(true);
 	#endif
 
 
-	//  tool window texts  ----------------------
+	//  🛠️ tool window texts  ----------------------
 	int i;
 	for (i=0; i < RD_TXT/*MAX*/; ++i)
 	{	String s = toStr(i);
@@ -165,7 +165,7 @@ void CGui::InitGui()
 	panStatus = fWP("panStatus");  txtStatus = fTxt("txtStatus");
 
 
-	///  brush presets   o o o o o o o o 
+	///  ⛰️ brush presets   o o o o o o
 	ScrollView* scv = mGui->findWidget<ScrollView>("svBrushes");
 	int j=0, n=0;  const int z = 128;
 	for (i=0; i < app->brSetsNum; ++i,++n)
@@ -203,7 +203,7 @@ void CGui::InitGui()
 
 	float f=0.f;  i=0;  // temp vars
 	
-	///  Color tool wnd  ----
+	///  🎨 Color tool wnd  ----
 	wndColor = fWnd("ColorWnd");											 //0.165
 	sv= &svHue;		sv->Init("clrHue",	&f, 0.f,1.f, 1.f, 3,5);  sv->DefaultF(0.53f);  Sev(UpdClr);
 	sv= &svSat;		sv->Init("clrSat",	&f, 0.f,1.f, 1.f, 3,5);  sv->DefaultF(0.1f);  Sev(UpdClr);
@@ -213,11 +213,8 @@ void CGui::InitGui()
 	sv= &svNeg;		sv->Init("clrNeg",	&f, 0.f,1.f, 1.f, 3,5);  sv->DefaultF(0.f);   Sev(UpdClr);
 
 
-	///  [Settings]
+	///  📊 Settings
 	//------------------------------------------------------------------------
-	sv= &svCamSpeed;	sv->Init("CamSpeed",	&pSet->cam_speed, 0.1f,4.f);  sv->DefaultF(0.9f);
-	sv= &svCamInert;	sv->Init("CamInert",	&pSet->cam_inert, 0.f, 1.f);  sv->DefaultF(0.4f);
-
 	ck= &ckMinimap;		ck->Init("Minimap",		&pSet->trackmap);  Cev(Minimap);
 	sv= &svSizeMinimap;	sv->Init("SizeMinimap",	&pSet->size_minimap, 0.15f,2.f);  sv->DefaultF(0.55f);  Sev(SizeMinimap);
 
@@ -232,12 +229,15 @@ void CGui::InitGui()
 	ck= &ckInputBar;	ck->Init("InputBar",	&pSet->inputBar);  Cev(InputBar);
 	ck= &ckAllowSave;	ck->Init("AllowSave",	&pSet->allow_save);
 
-	//  set camera btns
+	//  🎥 Camera set btns
 	Btn("CamView1", btnSetCam);  Btn("CamView2", btnSetCam);
 	Btn("CamView3", btnSetCam);  Btn("CamView4", btnSetCam);
 	Btn("CamTop",   btnSetCam);
 	Btn("CamLeft",  btnSetCam);  Btn("CamRight", btnSetCam);
 	Btn("CamFront", btnSetCam);  Btn("CamBack",  btnSetCam);
+
+	sv= &svCamSpeed;	sv->Init("CamSpeed",	&pSet->cam_speed, 0.1f,4.f);  sv->DefaultF(0.9f);
+	sv= &svCamInert;	sv->Init("CamInert",	&pSet->cam_inert, 0.f, 1.f);  sv->DefaultF(0.4f);
 
 	//  startup
 	ck= &ckStartInMain;	ck->Init("StartInMain", &pSet->startInMain);
@@ -248,14 +248,14 @@ void CGui::InitGui()
 	ck= &ckScreenPng;   ck->Init("ScreenPng",   &pSet->screen_png);
 	
 
-	///  [Sun]
+	///  🌞 Sun
 	//------------------------------------------------------------------------
 	sv= &svSkyYaw;		sv->Init("SkyYaw",		&sc->skyYaw,  -180.f,180.f, 1.f, 1,4);  sv->DefaultF(0.f);  Sev(UpdSky);
 	sv= &svSunPitch;	sv->Init("SunPitch",	&sc->ldPitch,    0.f,90.f,  1.f, 1,4);  sv->DefaultF(54.f);    Sev(UpdSun);
 	sv= &svSunYaw;		sv->Init("SunYaw",		&sc->ldYaw,   -180.f,180.f, 1.f, 1,4);  sv->DefaultF(-123.f);  Sev(UpdSun);
 	sv= &svRain1Rate;	sv->Init("Rain1Rate",	&sc->rainEmit,   0.f,6000.f);  sv->DefaultF(1000.f);
 	sv= &svRain2Rate;	sv->Init("Rain2Rate",	&sc->rain2Emit,  0.f,6000.f);  sv->DefaultF(1000.f);
-	//  fog
+	//  🌫️ Fog
 	sv= &svFogStart;	sv->Init("FogStart",	&sc->fogStart,   0.f,2000.f, 2.f, 0,3);  sv->DefaultF(100.f);  Sev(UpdFog);
 	sv= &svFogEnd;		sv->Init("FogEnd",		&sc->fogEnd,     0.f,2000.f, 2.f, 0,3);  sv->DefaultF(600.f);  Sev(UpdFog);
 	sv= &svFogHStart;	sv->Init("FogHStart",	&sc->fogHStart,  0.f,2000.f, 2.f, 0,3);  sv->DefaultF(0.f);    Sev(UpdFog);
@@ -267,7 +267,7 @@ void CGui::InitGui()
 	ck= &ckFog;			ck->Init("FogDisable",		&pSet->bFog);  Cev(Fog);
 	ck= &ckWeather;		ck->Init("WeatherDisable",	&pSet->bWeather);
 
-	//  clr imgs
+	//  🎨 clr imgs
 	ImgB(clrAmb,  "ClrAmb",  btnClrSet);  ImgB(clrDiff, "ClrDiff",  btnClrSet);
 	ImgB(clrSpec, "ClrSpec", btnClrSet);
 	ImgB(clrFog,  "ClrFog",  btnClrSetA); ImgB(clrFog2, "ClrFog2",  btnClrSetA);
@@ -432,7 +432,7 @@ void CGui::InitGui()
 	sv= &svGrChHMax;	sv->Init("GrChMaxH",	&f,  0.f,120.f, 1.f, 1,4);  sv->DefaultF( 200.f);
 	sv= &svGrChHSm;		sv->Init("GrChSmH",		&f,  0.f,60.f,  2.f, 1,4);  sv->DefaultF(20.f);
 	sv= &svGrChRdPow;	sv->Init("GrChRdPow",	&f, -8.f, 8.f,  1.f, 1,4);  sv->DefaultF(0.f);
-	//  noise
+	//  🌀 noise  // todo:
 	sv= &svGrChNoise;	sv->Init("GrChNoise",	&f, 0.f,2.f,   1.f, 1,4);   sv->DefaultF(0.f);
 	sv= &svGrChNfreq;	sv->Init("GrChNFreq",	&f, 1.f,300.f, 2.f, 1,3);   sv->DefaultF(30.f);
 	sv= &svGrChNoct;	sv->Init("GrChNOct",	&i, 1,5);                   sv->DefaultI(3);
@@ -482,7 +482,7 @@ void CGui::InitGui()
 	Ed(RdSkirtLen, editRoad);  Ed(RdSkirtH, editRoad);
 	
 
-	///  Game  ------------------------------------
+	///  🎮 Game  ------------------------------------
 	sv= &svDamage;		sv->Init("DamageMul",	&sc->damageMul, 0.f,2.f, 1.f, 2,4);  sv->DefaultF(1.f);
 	sv= &svWind;		sv->Init("WindAmt",		&sc->windAmt,  -6.f,6.f, 1.0f, 2,5);  sv->DefaultF(0.f);
 	sv= &svGravity;		sv->Init("Gravity",		&sc->gravity,   2.f,20.f, 1.5f, 2,4);  sv->DefaultF(9.81f);
@@ -542,202 +542,9 @@ void CGui::InitGui()
 	ck= &ckCheckLoad;	ck->Init("CheckLoad",	&pSet->check_load);
 	
 
-
 	///  📃 Fill Combo boxes  . . . . . . .
-	//------------------------------------------------------------------------------------------------------------
+	InitGuiLists();
 
-	string sData = PATHMANAGER::Data();
-	String sMat = sData +"/materials/Pbs/";  // path
-
-	
-	//---------------------  🔊 Game, Reverbs  ---------------------
-	txtRevebDescr = fTxt("txtRevebDescr");
-	Cmb(cmbReverbs, "CmbReverbs", comboReverbs);
-
-	for (u=0; u < data->reverbs->revs.size(); ++u)
-		cmbReverbs->addItem(data->reverbs->revs[u].name);
-
-
-	//---------------------  🌧️ Weather  ---------------------
-	Cmb(cmbRain1, "Rain1Cmb", comboRain1);  cmbRain1->addItem("");
-	Cmb(cmbRain2, "Rain2Cmb", comboRain2);  cmbRain2->addItem("");
-
-	GetMaterials("weather.particle", true, "particle_system");
-	for (u=0; u < vsMaterials.size(); ++u)
-	{	const String& s = vsMaterials[u];
-		cmbRain1->addItem(s);  cmbRain2->addItem(s);
-	}	
-
-	//---------------------  🔥 Emitters  ---------------------
-	GetMaterials("emitters.particle", true, "particle_system");
-	app->vEmtNames.clear();
-	for (u=0; u < vsMaterials.size(); ++u)
-		app->vEmtNames.push_back(vsMaterials[u]);
-
-
-	//---------------------  ⛰️ Terrain  ---------------------
-	Cmb(cmbTexNorm, "TexNormal", comboTexNorm);  cmbTexNorm->addItem("flat_n.png");
-
-	strlist li;
-	PATHMANAGER::DirList(sData + (pSet->tex_size > 0 ? "/terrain" : "/terrain_s"), li);
-	for (auto q : li)
-	{
-		if (StringUtil::match(q, "*_n.*", false))
-			cmbTexNorm->addItem(q);
-		//else
-		//if (StringUtil::match(*q, "*_d.*", false))  //_T
-		//	cmbTexDiff->addItem(*q);
-	}
-	
-	//  particles
-	GetMaterials("tires.particle", true, "particle_system");
-	for (u=0; u < vsMaterials.size(); ++u)
-	{	const String& s = vsMaterials[u];
-		cmbParDust->addItem(s);  cmbParMud->addItem(s);  cmbParSmoke->addItem(s);
-	}
-	
-	//  surfaces
-	for (u=0; u < app->surfaces.size(); ++u)
-		cmbSurface->addItem(app->surfaces[u].name);
-	
-
-	//---------------------  🌿 Grass  ---------------------
-	PATHMANAGER::DirList(sData + "/grass", li);
-	for (auto q : li)
-	{
-		if (StringUtil::startsWith(q, "grClr", false))
-			cmbGrassClr->addItem(q);
-	}
-
-
-	//---------------------  📦 Objects  ---------------------
-	app->vObjNames.clear();  strlist lo;
-	PATHMANAGER::DirList(sData + "/objects2", lo);
-	PATHMANAGER::DirList(sData + "/objects", lo);
-	for (auto q : lo)
-		if (StringUtil::endsWith(q, ".mesh"))
-		{	string name = q.substr(0, q.length()-5);  //no .ext
-			if (name != "sphere")
-				app->vObjNames.push_back(name);
-		}
-	
-	objListDyn = fLi("ObjListDyn");  Lev(objListDyn, ObjsChng);
-	objListSt  = fLi("ObjListSt");   Lev(objListSt,  ObjsChng);
-	objListBld = fLi("ObjListBld");  Lev(objListBld, ObjsChng);
-	objListCat = fLi("ObjListCat");  Lev(objListCat, ObjsCatChng);
-	objPan = fWP("objPan");
-
-
-	for (u=0; u < app->vObjNames.size(); ++u)
-	{	const string& name = app->vObjNames[u];
-		if (name != "sphere" && PATHMANAGER::FileExists(sData+"/objects/"+ name + ".bullet"))
-			objListDyn->addItem("#A0E0FF"+name);  // dynamic
-	}
-	
-	//  🏢 buildings  group categories  more with same prefix  ----
-	app->vBuildings.clear();
-	objListCat->removeAllItems();
-
-	auto AddPath = [&](auto path)
-	{
-		std::map<string, int> cats;  // yeah cats are fun
-		int b0 = app->vBuildings.size();
-		lo.clear();
-		PATHMANAGER::DirList(sData + path, lo);
-
-		for (auto q : lo)
-			if (StringUtil::endsWith(q,".mesh"))
-			{	string name = q.substr(0, q.length()-5);  //no .ext
-				if (name != "sphere" && !PATHMANAGER::FileExists(sData+"/objects/"+ name + ".bullet"))
-				{	// no dynamic
-
-					// auto id = name.find('_') ?..
-					string cat = name.substr(0,4);
-					++cats[cat];
-					app->vBuildings.push_back(name);
-					app->vObjNames.push_back(name);  // in -,=
-			}	}
-		//  get cats  ----
-		for (auto it : cats)
-		{
-			string cat = it.first;  int n = it.second;
-			//LogO(cat+" "+toStr(n));
-			if (n > 1)  // add category (> 1 Bld with this prefix)
-				objListCat->addItem("#F0B0B0"+cat);
-		}
-		//  push Bld back to Obj list (if <= 1, rare cat)
-		for (u = b0; u < app->vBuildings.size(); ++u)
-		{
-			const string& name = app->vBuildings[u];
-			string cat = name.substr(0,4);
-			if (cats[cat] <= 1)
-				objListSt->addItem("#D0D0C8"+name);
-		}
-		{	int il = objListCat->findItemIndexWith("#E09090"+pSet->objGroup);
-			objListCat->setIndexSelected(il);
-			listObjsCatChng(objListCat, il);
-		}
-	};
-	AddPath("/objects");
-	AddPath("/objects2");
-	objListCat->addItem("#FFB060---- "+TR("#{ObjRocks}"));
-	AddPath("/rocks");
-	objListCat->addItem("#C0C8C0---- City");
-	AddPath("/objectsC");
-	objListCat->addItem("#E0E0A0---- 0 A.D.");
-	AddPath("/objects0");
-
-
-	//---------------------  ⚫💭 Surfaces  ---------------------
-	surfList = fLi("SurfList");  Lev(surfList, Surf);
-	for (n=0; n < 4; ++n)  surfList->addItem("#80FF00"+TR("#{Layer} ")+toStr(n));
-	for (n=0; n < 4; ++n)  surfList->addItem("#FFB020"+TR("#{Road} ")+toStr(n));
-	for (n=0; n < 4; ++n)  surfList->addItem("#FFFF80"+TR("#{Pipe} ")+toStr(n));
-	surfList->setIndexSelected(0);
-	
-	
-	//---------------------  🔧 Tweak  ---------------------
-	ComboBoxPtr cmbTwk;
-	Cmb(cmbTwk, "TweakMtr", comboTweakMtr);
-
-	GetMaterialsMat(sMat+"water.material");
-	GetMaterialsMat(sMat+"pipe.material",false);
-	GetMaterialsMat(sMat+"road.material",false);
-	GetMaterialsMat(sMat+"objects_static.material",false);
-
-	cmbTwk->addItem("");
-	for (u=0; u < vsMaterials.size(); ++u)
-		cmbTwk->addItem(vsMaterials[u]);
-
-	cmbTwk->setIndexSelected( cmbTwk->findItemIndexWith(pSet->tweak_mtr) );
-
-	
-	///  👆 Pick window
-	///------------------------------------------------------------------------------------------------------------
-	//  Pick btns
-	Btn("PickSky", btnPickSky);      btn->eventMouseWheel += newDelegate(this, &CGui::wheelSky);  btnSky = btn;
-	Btn("PickTex", btnPickTex);      btn->eventMouseWheel += newDelegate(this, &CGui::wheelTex);  btnTexDiff = btn;
-	Btn("PickGrass", btnPickGrass);  btn->eventMouseWheel += newDelegate(this, &CGui::wheelGrs);  btnGrassMtr = btn;
-	Btn("PickVeget", btnPickVeget);  btn->eventMouseWheel += newDelegate(this, &CGui::wheelVeg);  btnVeget = btn;
-	
-	auto btnWhRd = [&](){  btn->eventMouseWheel += newDelegate(this, &CGui::wheelRd);  };
-	for (n=0; n < 4; ++n)
-	{	Btn(toStr(n)+"RdMtr",  btnPickRoad);  btnRoad[n] = btn;  btnWhRd();
-		Btn(toStr(n)+"RdMtrP", btnPickPipe);  btnPipe[n] = btn;  btnWhRd();
-	}
-	Btn("0RdMtrW",  btnPickRoadW);    btnRoadW = btn;    btnWhRd();
-	Btn("0RdMtrPW", btnPickPipeW);    btnPipeW = btn;    btnWhRd();
-	Btn("0RdMtrC",  btnPickRoadCol);  btnRoadCol = btn;  btnWhRd();
-
-	ck= &ckPickSetPar;	ck->Init("PickSetPar",	&pSet->pick_setpar);
-	panPick = fWP("PanelPick");
-
-	FillPickLists();
-
-    //TrackListUpd(true);  //upd
-	//listTrackChng(trkList,0);
-
-	
 
 	///  🏞️ Track
 	//------------------------------------------------------------------------
@@ -791,137 +598,4 @@ IntCoord CGui::GetViewSize()
 {
 	IntCoord ic = app->mWndEdit->getClientCoord();
 	return IntCoord(ic.width*0.63f, ic.height*0.45f, ic.width*0.34f, ic.height*0.45f);
-}
-
-
-///  📃 Fill Pick Lists
-///------------------------------------------------------------------------------------------------------------
-void CGui::FillPickLists()
-{
-	///  ⛅ Sky Mtr  --------
-	Mli2 lp;  int l,u;
-	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
-	liSky = lp;  lp->eventListChangePosition += newDelegate(this, &CGui::listPickSky);
-	lp->setColour(Colour(0.7,0.85,1.0));  lp->setInheritsAlpha(false);
-	const int rt = 22, sl = 21;
-	
-	lp->removeAllColumns();  lp->removeAllItems();
-	lp->addColumn("#90C0F0", 15);
-	lp->addColumn("#E0F0FF"+TR("#{Sky}"), 200);
-	lp->addColumn("#E0F0FF"+TR("#{Pitch}"), 60);
-	lp->addColumn(" ", sl);
-	liPickX[P_Sky] = 0.45f;  liPickW[P_Sky] = 280;
-
-	for (u=0; u < data->pre->sky.size(); ++u)
-	{	const PSky& s = data->pre->sky[u];
-		String c = s.clr;
-		lp->addItem(c, 0);
-		l = lp->getItemCount()-1;
-
-		lp->setSubItemNameAt(1,l, c+ s.mtr);
-		lp->setSubItemNameAt(2,l, c+ fToStr( s.ldPitch, 0,2));
-	}
-
-	///  🏔️ Terrain layers  Tex Diff  --------
-	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
-	liTex = lp;  lp->eventListChangePosition += newDelegate(this, &CGui::listPickTex);
-	lp->setColour(Colour(0.8,0.9,0.7));  lp->setInheritsAlpha(false);
-	
-	lp->removeAllColumns();  lp->removeAllItems();
-	lp->addColumn("#90C0F0*", rt);
-	lp->addColumn("#E0FFE0"+TR("#{Diffuse}"), 190);
-	lp->addColumn("#80E0E0"+TR("#{Scale}"), 40);
-	lp->addColumn("#80FF80|", 27);
-	lp->addColumn(" ", sl);
-	liPickX[P_Tex] = 0.45f;  liPickW[P_Tex] = 330;
-
-	for (u=0; u < data->pre->ter.size(); ++u)
-	{	const PTer& t = data->pre->ter[u];
-		String c = gcom->scnClr[gcom->scnN[t.sc]];  if (c.empty())  c = "#000000";
-		lp->addItem(
-			t.rate ? gcom->getClrRating(t.rate) + toStr(t.rate) : c, 0);
-		l = lp->getItemCount()-1;
-
-		lp->setSubItemNameAt(1,l, c+ t.texFile.substr(0, t.texFile.length()-2));  // no _d
-		if (t.rate)
-		{	lp->setSubItemNameAt(2,l, gcom->getClrLong(t.tiling * 0.15f) + fToStr(t.tiling, 0,2));
-			lp->setSubItemNameAt(3,l, (t.triplanar ? "#E0E0E01" : "#6565650"));
-	}	}
-
-	///  🌿 Grass  --------------------------------
-	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
-	liGrs = lp;  lp->eventListChangePosition += newDelegate(this, &CGui::listPickGrs);
-	lp->setColour(Colour(0.7,0.9,0.7));  lp->setInheritsAlpha(false);
-	
-	lp->removeAllColumns();  lp->removeAllItems();
-	lp->addColumn("#90C0F0*", rt);
-	lp->addColumn("#E0FFE0"+TR("#{GrMaterial}"), 152);
-	lp->addColumn("#D0FFD0-", 41);  lp->addColumn("#C0F0C0|", 41);
-	lp->addColumn(" ", sl);
-	liPickX[P_Grs] = 0.36f;  liPickW[P_Grs] = 310;
-
-	for (u=0; u < data->pre->gr.size(); ++u)
-	{	const PGrass& t = data->pre->gr[u];
-		String c = gcom->scnClr[gcom->scnN[t.sc]];  if (c.empty())  c = "#000000";
-		lp->addItem(
-			t.rate ? gcom->getClrRating(t.rate) + toStr(t.rate) : c, 0);
-		l = lp->getItemCount()-1;
-
-		lp->setSubItemNameAt(1,l, c+ t.mtr);
-		if (t.rate)
-		{	lp->setSubItemNameAt(2,l, c+ fToStr(t.maxSx, 1,3));
-			lp->setSubItemNameAt(3,l, c+ fToStr(t.maxSy, 1,3));
-	}	}
-
-	///  🌳🪨 Vegetation  --------------------------------
-	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
-	liVeg = lp;  lp->eventListChangePosition += newDelegate(this, &CGui::listPickVeg);
-	lp->setColour(Colour(0.7,0.9,0.9));  lp->setInheritsAlpha(false);
-	
-	lp->removeAllColumns();  lp->removeAllItems();
-	lp->addColumn("#90C0F0*", rt);
-	lp->addColumn("#E0FFE0"+TR("#{Model}"), 207);
-	lp->addColumn("#80E0E0"+TR("#{Scale}"), 40);
-	lp->addColumn(" ", sl);
-	liPickX[P_Veg] = 0.36f;  liPickW[P_Veg] = 320;
-
-	for (u=0; u < data->pre->veg.size(); ++u)
-	{	const PVeget& t = data->pre->veg[u];
-		String c = gcom->scnClr[gcom->scnN[t.sc]];  if (c.empty())  c = "#000000";
-		lp->addItem(
-			t.rate ? gcom->getClrRating(t.rate) + toStr(t.rate) : c, 0);
-		l = lp->getItemCount()-1;
-
-		lp->setSubItemNameAt(1,l, c+ t.name);
-		if (t.rate)
-			lp->setSubItemNameAt(2,l, c+ fToStr(t.maxScale, 1,3));
-			//lp->setSubItemNameAt(3,l, c+ fToStr(t.maxTerAng, 0,2));
-	}
-
-	///  🛣️ Road  --------------------------------
-	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
-	liRd = lp;  lp->eventListChangePosition += newDelegate(this, &CGui::listPickRd);
-	lp->setColour(Colour(0.9,0.8,0.7));  lp->setInheritsAlpha(false);
-	
-	lp->removeAllColumns();  lp->removeAllItems();
-	lp->addColumn("#90C0F0*", rt);
-	lp->addColumn("#FFE0D0"+TR("#{GrMaterial}"), 257);
-	//lp->addColumn("#80E0E0"+TR("#{Surface}"), 80);
-	lp->addColumn(" ", sl);
-	liPickX[P_Rd] = 0.36f;  liPickW[P_Rd] = 320;
-
-	for (u=0; u < data->pre->rd.size(); ++u)
-	{	const PRoad& t = data->pre->rd[u];
-		String c = gcom->scnClr[gcom->scnN[t.sc]];  if (c.empty())  c = "#000000";
-		lp->addItem(
-			t.rate ? gcom->getClrRating(t.rate) + toStr(t.rate) : c, 0);
-		l = lp->getItemCount()-1;
-
-		lp->setSubItemNameAt(1,l, c+ t.mtr);
-		/*String su = t.surfName;  if (su.substr(0,4)=="road")  su = su.substr(4, su.length());
-		if (t.rate && t.mtr.substr(0,5) != "River")
-			lp->setSubItemNameAt(2,l, c+ su);*/
-	}
-	
-	// todo: auto groups chks gui? to filter pick lists
 }

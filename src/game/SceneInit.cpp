@@ -79,7 +79,7 @@ void App::LoadData()
 	//  data xmls
 	pGame->ReloadSimData();  // need surfaces
 	
-	///  _Tool_ check champs and challs  ............
+	///  🧰 _Tool_ check champs and challs  ............
 	bool check = 0;
 	scn->data->Load(&pGame->surf_map, check);
 	scn->sc->pFluidsXml = scn->data->fluids;
@@ -124,7 +124,7 @@ void App::LoadData()
 	#endif
 	
 
-	///  _Tool_ ghosts times .......
+	///  🧰 _Tool_ ghosts times .......
 	#if 0
 	gui->ToolGhosts();  exit(0);
 	#endif
