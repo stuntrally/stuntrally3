@@ -9,7 +9,6 @@
 #include "CScene.h"
 #include "Axes.h"
 #include "Road.h"
-// #include "WaterRTT.h"
 // #include "RenderBoxScene.h"
 #include "settings.h"
 #include "GraphicsSystem.h"
@@ -24,7 +23,7 @@ const Ogre::String App::csBrShape[BRS_ALL] =
 
 
 //  🌟 ctor
-//----------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
 App::App()
 {
 	// pSet = pSet1;
@@ -40,58 +39,23 @@ App::App()
 	mBrShape[2] = BRS_Sinus;  mBrShape[3] = BRS_Sinus;
 }
 
-//  load settings from default file
-void App::LoadDefaultSet(SETTINGS* settings, string setFile)
-{
-	settings->Load(PATHMANAGER::GameConfigDir() + "/editor-default.cfg");
-	settings->Save(setFile);
-}
 
-
-//  🌟 Init SR editor
-//-----------------------------------------------------------------------------------------------------------------------------
+//  🌟🌟 Init SR editor
+//------------------------------------------------------------------------------------
 void App::Load()
 {
-	
 	Ogre::Timer ti;
-	setlocale(LC_NUMERIC, "C");
 
-	//  Paths
-	PATHMANAGER::Init();
-	
-
-	///  Load Settings
-	//----------------------------------------------------------------
-	pSet = new SETTINGS();
-	string setFile = PATHMANAGER::EditorSetFile();
-	
-	if (!PATHMANAGER::FileExists(setFile))
-	{
-		cerr << "Settings not found - loading defaults." << endl;
-		LoadDefaultSet(pSet,setFile);
-	}
-	pSet->Load(setFile);  // LOAD
-	if (pSet->version != SET_VER)  // loaded older, use default
-	{
-		cerr << "Settings found, but older version - loading defaults." << endl;
-		std::filesystem::rename(setFile, PATHMANAGER::UserConfigDir() + "/editor_old.cfg");
-		LoadDefaultSet(pSet,setFile);
-		pSet->Load(setFile);  // LOAD
-	}
+	LoadSettings();
 
 
-	//  paths
-	LogO(PATHMANAGER::info.str());
-
-
-	///  Game start
-	//----------------------------------------------------------------
 	LogO(">>>> Init editor ----");
 
 	mBrushData = new float[BrushMaxSize*BrushMaxSize];
 	updBrush();
 
-	///  new
+	
+	///  new  ----
 	scn = new CScene(this);
 
 	gcom = new CGuiCom(this);
@@ -112,8 +76,9 @@ void App::Load()
 
 
 	mRoot = mGraphicsSystem->getRoot();
-	mCamera = mGraphicsSystem->getCamera();
+	mWindow = mGraphicsSystem->getRenderWindow();
 	mSceneMgr = mGraphicsSystem->getSceneManager();
+	mCamera = mGraphicsSystem->getCamera();
 
 
 	LoadData();  /// loads data xmls
@@ -121,7 +86,7 @@ void App::Load()
 
 void App::LoadData()
 {
-	Ogre::Timer ti;
+	// Ogre::Timer ti;
 
 	//  data xmls
 	// pGame->ReloadSimData();  // need surfaces
@@ -132,12 +97,12 @@ void App::LoadData()
 
 }
 
-//  💥 dtor
-//---------------------------------------------------------------------------------------------------------------------------
+//  💥💥 dtor
+//------------------------------------------------------------------------------------
 App::~App()
 {
 	///+  save settings
-	pSet->Save(PATHMANAGER::EditorSetFile());
+	pSet->Save(PATHMANAGER::SettingsFile(1));
 	// fixme
 
 	DestroyObjects(false);
@@ -159,7 +124,7 @@ App::~App()
 	
 
 //  util
-//---------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
 ManualObject* App::Create2D(const String& mat, Real s, bool dyn)
 {
 	/*ManualObject* m = mSceneMgr->createManualObject();

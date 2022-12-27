@@ -369,7 +369,7 @@ void GAME::End()
 
 
 	///+  save settings first incase later deinits cause crashes
-	pSet->Save(PATHMANAGER::SettingsFile());
+	pSet->Save(PATHMANAGER::SettingsFile(0));
 
 	collision.Clear();
 }

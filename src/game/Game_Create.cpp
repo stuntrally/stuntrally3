@@ -9,7 +9,6 @@
 
 //  SR
 #include "settings.h"
-#include "pathmanager.h"
 #include "CGame.h"
 #include "game.h"
 #include "CScene.h"
@@ -24,53 +23,13 @@ using namespace Ogre;
 using namespace std;
 
 
-//  load settings from default file
-void App::LoadDefaultSet(SETTINGS* settings, string setFile)
-{
-	settings->Load(PATHMANAGER::GameConfigDir() + "/game-default.cfg");
-	settings->Save(setFile);
-
-	//  delete old keys.xml too
-	string sKeys = PATHMANAGER::UserConfigDir() + "/keys.xml";
-	if (std::filesystem::exists(sKeys))
-		std::filesystem::rename(sKeys, PATHMANAGER::UserConfigDir() + "/keys_old.xml");
-}
-
-
-//  🌟 Init SR game
+//  🌟🌟 Init SR game
 //-----------------------------------------------------------------------------------------------------------------------------
 void App::Load()
 {
-
 	Ogre::Timer ti;
-	setlocale(LC_NUMERIC, "C");
 
-	//  Paths
-	PATHMANAGER::Init();
-	
-
-	///  Load Settings
-	//----------------------------------------------------------------
-	pSet = new SETTINGS();
-	string setFile = PATHMANAGER::SettingsFile();
-	
-	if (!PATHMANAGER::FileExists(setFile))
-	{
-		cerr << "Settings not found - loading defaults." << endl;
-		LoadDefaultSet(pSet,setFile);
-	}
-	pSet->Load(setFile);  // LOAD
-	if (pSet->version != SET_VER)  // loaded older, use default
-	{
-		cerr << "Settings found, but older version - loading defaults." << endl;
-		std::filesystem::rename(setFile, PATHMANAGER::UserConfigDir() + "/game_old.cfg");
-		LoadDefaultSet(pSet,setFile);
-		pSet->Load(setFile);  // LOAD
-	}
-
-
-	//  paths
-	LogO(PATHMANAGER::info.str());
+	LoadSettings();
 
 
 	///  Game start
@@ -82,7 +41,7 @@ void App::Load()
 	pGame->Start();
 
 
-	///  new
+	///  new  ----
 	scn = new CScene(this);
 	data = scn->data;
 	hud = new CHud(this);
@@ -104,8 +63,9 @@ void App::Load()
 
 
 	mRoot = mGraphicsSystem->getRoot();
-	mCamera = mGraphicsSystem->getCamera();
+	mWindow = mGraphicsSystem->getRenderWindow();
 	mSceneMgr = mGraphicsSystem->getSceneManager();
+	mCamera = mGraphicsSystem->getCamera();
 
 
 	LoadData();  /// loads data xmls
@@ -113,7 +73,7 @@ void App::Load()
 	mThread = new thread(&App::UpdThr, this);
 }
 
-//  💥
+//  💥💥
 void App::Destroy()
 {
 	DestroyGui();
@@ -138,7 +98,9 @@ void App::createScene01()
 	
 	CreateInputs();
 
+
 	//  Gui Init
+	InitGuiCom();
 	baseInitGui();
 	gui->mGui = mGui;
 	gui->InitGui();
@@ -146,24 +108,9 @@ void App::createScene01()
 
 	mGraphicsSystem->mWorkspace = SetupCompositor();
 
-
-	// SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
-	// SceneNode *rootNode = sceneManager->getRootSceneNode( SCENE_STATIC );
-
-	LogManager::getSingleton().setLogDetail(LoggingLevel::LL_BOREME);
-
-	// LogO("---- createScene");
-	RenderSystem *rs = mGraphicsSystem->getRoot()->getRenderSystem();
-	rs->setMetricsRecordingEnabled( true );
-
-
-	//  camera  ------------------------------------------------
-	mGraphicsSystem->getCamera()->setFarClipDistance( 20000.f );  // par far
-	// mGraphicsSystem->getCamera()->setFarClipDistance( pSet->view_distance );  // par far
-
-	// Vector3 camPos(10.f, 11.f, 16.f);
-	// mGraphicsSystem->getCamera()->setPosition( camPos );
-	// mGraphicsSystem->getCamera()->lookAt( camPos + Vector3(0.f, -1.6f, -2.f) );
+	//  camera
+	mCamera->setFarClipDistance( 20000.f );
+	//mCamera->setFarClipDistance( pSet->view_distance );  // par far
 
 
 	LogO(">>>>>>>> Init SR done ----");

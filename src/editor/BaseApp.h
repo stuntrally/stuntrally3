@@ -1,5 +1,6 @@
 #pragma once
 #include "Gui_Def.h"
+#include "AppGui.h"
 #include "GameState.h"
 
 #include <OgreVector3.h>
@@ -7,13 +8,11 @@
 #include "enums.h"
 
 struct SDL_Window;
-namespace MyGUI{  class Ogre2Platform;  }
-namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class Window;
-	class Viewport;  class Camera;  class Overlay;  class OverlayElement;  }
-class SplineRoad;  class SETTINGS;
+namespace Ogre {  class SceneNode;  class Overlay;  class OverlayElement;  }
+class SplineRoad;
 	
 
-class BaseApp : public BGui, public GameState
+class BaseApp : public AppGui, public GameState
 {
 public:
 	virtual ~BaseApp();
@@ -22,8 +21,6 @@ public:
 	friend class CGui;
 	friend class CGuiCom;
 	friend class CScene;
-
-	SETTINGS* pSet =0;
 
 	bool bWindowResized =1;
 	
@@ -51,15 +48,8 @@ protected:
 	// virtual void windowResized(int x, int y);
 	// virtual void windowClosed();
 
-	///  🟢 Ogre  ----------------
-public:
-	Ogre::Root *mRoot =0;
 protected:	
-	Ogre::SceneManager* mSceneMgr =0;
-	Ogre::Viewport* mViewport =0;
-	Ogre::Window* mWindow =0;
 	SDL_Window* mSDLWindow =0;
-	Ogre::Camera* mCamera =0;
 	Ogre::Vector3 mCamPosOld, mCamDirOld;
 
 
@@ -97,18 +87,16 @@ protected:
 
 	///  🎛️ Gui  ..........................
 	bool bGuiFocus =0;  // gui shown
-	MyGUI::Gui* mGui =0;
 	void baseInitGui();
 
-	MyGUI::Ogre2Platform* mPlatform;
 	Wnd mWndBrush =0, mWndCam =0, mWndStart =0,  // tool windows
 		mWndRoadCur =0, mWndRoadStats =0,
 		mWndFluids =0, mWndObjects =0, mWndParticles =0;
 
 	//MyGUI::VectorWidgetPtr
 	std::vector<WP> vwGui;  // all widgets to destroy
-	Img bckFps =0, imgCur =0, bckInput =0;
-	Txt txFps =0, txCamPos =0, txInput =0;
+	Img imgCur =0, bckInput =0;
+	Txt txCamPos =0, txInput =0;
 
 
 	///  🪧 main menu

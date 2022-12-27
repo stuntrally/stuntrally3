@@ -11,6 +11,7 @@
 using namespace std;
 
 
+/*
 //  load settings from default file
 void LoadDefaultSet(SETTINGS* settings, string setFile)
 {
@@ -18,7 +19,6 @@ void LoadDefaultSet(SETTINGS* settings, string setFile)
 	settings->Save(setFile);
 }
 
-/*
 //  . . . . . . . . . .  MAIN  . . . . . . . . . .
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 	int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hPrev, LPTSTR lpCmdLine, int nCmdShow)

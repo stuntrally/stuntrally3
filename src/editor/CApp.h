@@ -41,7 +41,6 @@ public:
 	App();
 	virtual ~App();
 	void Load(), LoadData();
-	void LoadDefaultSet(SETTINGS* settings, std::string setFile);
 
 	GraphicsSystem* mGraphicsSystem =0;
 

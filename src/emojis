@@ -22,7 +22,7 @@ Various markers in sources for key sections, methods etc.  Also showing short-cu
  🔉 sound  snd                                        🎚️ Slider  sl*                    🔍 Find      🔧 Tweak  gui dev   
                    🏁 Start  finish    🖥️ Screen                       ⏳ Loading       💬 chat      ⛓️ util-ity  src   🟢 Ogre
  🎛️ GUI  gui       🔵 Checkpoint chk   📊⚙️ Options    🪟 Window wnd*   🆕🪄 Create                                      💡 Light
-                   📐 Drivability                                                       🧵 thread    🧰 _Tools_ dev      🌒 shadow
+                   📐 Drivability                                                       🧵 thread    🧰 _Tool_ dev      🌒 shadow
  🎥 Camera  cam                        📈 Fps         🗜️ Resize        💫 Update        🌀 noise     🪛 param // par    🌠 Hlms shader
  📽️ Replay  rpl    🚀 Spaceship        📉 Graphs      🔗 url                per frame          ed    🧪 test  src       
                    🔘 Sphere                          🖱️ Mouse         🔁 Refresh       👆🥢 pick                       

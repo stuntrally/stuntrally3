@@ -277,6 +277,9 @@ void App::update( float dt )
 {
 	// BaseApp::frameStarted(dt);
 	frameRenderingQueued(dt);  //^
+	
+	UpdFpsText();
+
 
 	scn->UpdSun();
 

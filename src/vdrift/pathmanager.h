@@ -28,9 +28,10 @@ public:
 	static std::string CacheDir() {        return cache_dir;  }
 	static std::string ShadersDir() {      return cache_dir + "/shaders";  }
 
-	static std::string SettingsFile() {    return user_config + "/game.cfg";  }
-	static std::string EditorSetFile() {   return user_config + "/editor.cfg";  }
-
+	static std::string SettingsFile(bool ed, bool old=false)
+	{
+		return user_config +"/"+ (ed ? "editor" : "game") + (old ? "_old" : "") + ".cfg";
+	}
 	static std::string Data() {            return game_data; }
 	static std::string DataUser() {        return user_data + "/data";  }
 	static std::string Tracks() {          return game_data + "/tracks";  }

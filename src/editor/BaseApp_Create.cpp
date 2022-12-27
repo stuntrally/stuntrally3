@@ -486,47 +486,9 @@ void BaseApp::windowClosed()
 //--------------------------------------------------------------------------------------------------------------
 void BaseApp::baseInitGui()
 {
-	using namespace MyGUI;
-	//  Gui
-	mPlatform = new Ogre2Platform();
-
-	mPlatform->initialise(
-		mWindow, mSceneMgr, // mGraphicsSystem->getSceneManager(),
-		"Essential",
-		PATHMANAGER::UserConfigDir() + "/MyGUI_ed.log");
-	mGui = new Gui();
-
-	mGui->initialise("core.xml");
-
-	// FactoryManager::getInstance().registerFactory<ResourceImageSetPointerFix>("Resource", "ResourceImageSetPointer");
-	// MyGUI::ResourceManager::getInstance().load("core.xml");
-
-	// PointerManager::getInstance().eventChangeMousePointer += newDelegate(this, &BaseApp::onCursorChange);
-	//; PointerManager::getInstance().setVisible(false);
-	
-	//------------------------ language
-	/*if (pSet->language == "")  // autodetect
-	{	pSet->language = getSystemLanguage();
-		setlocale(LC_NUMERIC, "C");  }*/
-	
-	if (!PATHMANAGER::FileExists(PATHMANAGER::Data() + "/gui/core_language_" + pSet->language + "_tag.xml"))
-		pSet->language = "en";  // use en if not found
-	
-	LanguageManager::getInstance().setCurrentLanguage(pSet->language);
-	//------------------------
-
 
 	///  create widgets
 	//------------------------------------------------
-	//  Fps
-	bckFps = mGui->createWidget<ImageBox>("ImageBox",
-		0,0, 212,25, Align::Default, "Pointer", "FpsB");
-	bckFps->setImageTexture("back_fps.png");
-
-	txFps = bckFps->createWidget<TextBox>("TextBox",
-		1,1, 212,25, Align::Default, "FpsT");
-	txFps->setFontName("hud.fps");  bckFps->setVisible(false);
-
 	//  Cam Pos
 	txCamPos = mGui->createWidget<TextBox>("TextBox",
 		208,2, 600,40, Align::Default, "Pointer", "CamT");

@@ -51,7 +51,6 @@ public:
 	void InitGui();//, DestroyGui();
 
 	//  SR
-	void LoadDefaultSet(SETTINGS* settings, std::string setFile);
 	void Init(), Load();
 	void Destroy();
 
@@ -119,11 +118,6 @@ public:
 	
 	GAME* pGame =0;
 
-	//  🟢 Ogre base
-	Ogre::Root* mRoot =0;
-	Ogre::Camera* mCamera =0;
-	Ogre::SceneManager* mSceneMgr =0;
-	
 
 	///  🚗 Cars pos Game data  ----------------
 	//  new positions info for every CarModel

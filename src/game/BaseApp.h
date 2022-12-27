@@ -1,5 +1,6 @@
 #pragma once
 #include "Gui_Def.h"
+#include "AppGui.h"
 #include "GameState.h"
 // #include <OgreFrameListener.h>
 // #include <OgreWindowEventUtilities.h>
@@ -10,7 +11,6 @@
 #include <SDL_keycode.h>
 
 namespace ICS {  class InputControlSystem;  class DetectingBindingListener;  }
-namespace MyGUI{  class Ogre2Platform;  }
 namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class Window;  }
 // class MasterClient;  class P2PGameClient;
 class CarModel;  class SETTINGS;  class GraphicsSystem;
@@ -27,7 +27,7 @@ enum LobbyState  {  DISCONNECTED, HOSTING, JOINED  };
 
 
 
-class BaseApp : public BGui, public GameState
+class BaseApp : public AppGui, public GameState
 	// public Ogre::FrameListener, public SFO::WindowListener
 {
 public:
@@ -50,8 +50,6 @@ public:
 	///  effects
 	// void recreateCompositor();
 	// bool AnyEffectEnabled();
-
-	SETTINGS* pSet =0;
 
 	//  wnd, hud, upl
 	bool bWindowResized =1, bSizeHUD =1, bRecreateHUD =0;
@@ -78,10 +76,6 @@ public:
 	// void onCursorChange(const std::string& name);
 
 
-	///  🟢 Ogre
-	Ogre::Root* mRoot =0;
-	Ogre::SceneManager* mSceneMgr =0;
-	Ogre::Window* mWindow =0;
 	// SDL_Window* mSDLWindow =0;
 
 	// virtual void windowResized (int x, int y);
@@ -134,16 +128,11 @@ public:
 	bool isTweak();
 	Ogre::Window* getWindow()  {  return mWindow;  }
 	
-	MyGUI::Gui* mGui =0;
-	MyGUI::Ogre2Platform* mPlatform =0;
 	void baseInitGui(), baseSizeGui();
 	void DestroyGui();
 
-	Img bckFps =0, imgBack =0;
-	Txt txFps =0;
-
 	//  ⏳ Loading  backgr, bar
-	Img bckLoad =0, bckLoadBar =0, barLoad =0, imgLoad =0;
+	Img imgBack =0, bckLoad =0, bckLoadBar =0, barLoad =0, imgLoad =0;
 	Txt txLoadBig =0, txLoad =0;
 	int barSizeX =0, barSizeY =0;
 	void SetLoadingBar(float pecent);

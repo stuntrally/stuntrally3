@@ -24,6 +24,7 @@
 // #include "PointerFix.h"
 #include "ICSInputControlSystem.h"
 using namespace Ogre;
+using namespace MyGUI;
 
 
 //  Create
@@ -404,64 +405,7 @@ void BaseApp::LoadingOff()
 //--------------------------------------------------------------------------------------------------------------
 void BaseApp::baseInitGui()
 {
-	mWindow = mGraphicsSystem->getRenderWindow();
-
-	if (mPlatform)
-		return;
-	LogO("C::# Init MyGui");
-
-	using namespace MyGUI;
-	//  Gui
-	mPlatform = new Ogre2Platform();
-	mPlatform->initialise(
-		mWindow, mGraphicsSystem->getSceneManager(),
-		"Essential",
-		PATHMANAGER::UserConfigDir() + "/MyGUI.log");
-
 	// mGraphicsSystem->mWorkspace = setupCompositor();
-
-
-	mGui = new Gui();
-	mGui->initialise("core.xml");
-
-	// MyGUI::LanguageManager::getInstance().setCurrentLanguage("en");
-
-	// FactoryManager::getInstance().registerFactory<ResourceImageSetPointerFix>("Resource", "ResourceImageSetPointer");
-	// MyGUI::ResourceManager::getInstance().load("core.xml");
-
-	// PointerManager::getInstance().eventChangeMousePointer +=	MyGUI::newDelegate(this, &BaseApp::onCursorChange);
-	// PointerManager::getInstance().setVisible(false);
-
-		
-	//------------------------ lang
-	/*if (pSet->language == "")  // autodetect
-	{	pSet->language = getSystemLanguage();
-		setlocale(LC_NUMERIC, "C");  }*/
-	
-	if (!PATHMANAGER::FileExists(PATHMANAGER::Data() + "/gui/core_language_" + pSet->language + "_tag.xml"))
-		pSet->language = "en";  // use en if not found
-		
-	MyGUI::LanguageManager::getInstance().setCurrentLanguage(pSet->language);
-	//------------------------
-
-		
-	// mPlatform->getRenderManagerPtr()->setSceneManager(mSplitMgr->mGuiSceneMgr);
-	// mPlatform->getRenderManagerPtr()->setActiveViewport(mSplitMgr->mNumViewports);
-
-
-	///  create widgets
-	//------------------------------------------------
-	//  Fps
-	bckFps = mGui->createWidget<ImageBox>("ImageBox",
-		0,0, 234,78, Align::Default, "Main");
-	bckFps->setImageTexture("back_fps.png");
-	bckFps->setAlpha(0.9f);  bckFps->setVisible(false);
-
-	txFps = mGui->createWidget<TextBox>("TextBox",
-		6,3, 226,78, Align::Default, "ToolTip");
-	txFps->setFontName("hud.fps");  //txFps->setAlpha(1.f);
-	txFps->setTextShadow(true);  txFps->setTextShadowColour(Colour::Black);
-
 
 	//  loading
 	bckLoad = mGui->createWidget<ImageBox>("ImageBox",
