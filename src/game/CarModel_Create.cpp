@@ -233,12 +233,11 @@ void CarModel::Create()
 	}
 
 
-	///()  grass sphere test
+	///() 🟢🌿 grass sphere test
 	/*#if 0
-	Entity* es = mSceneMgr->createItem("sphere.mesh");  ToDel(es);
+	Item* es = mSceneMgr->createItem("sphere.mesh");  ToDel(es);
 	es->setRenderQueueGroup(RQG_CarGhost);
-	MaterialPtr mtr = MaterialManager::getSingleton().getByName("pipeGlass");
-	es->setMaterial(mtr);
+	es->setDatablockOrMaterialName("pipeGlass");
 	ndSph = ndRoot->createChildSceneNode();  ToDel(ndSph);
 	ndSph->attachObject(es);
 	#endif*/

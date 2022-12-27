@@ -125,7 +125,6 @@ public:
 	bool IsFocGuiInput()  {  return isFocGui || isFocRpl;  }
 	bool IsFocGui();
 	bool isTweak();
-	Ogre::Window* getWindow()  {  return mWindow;  }
 	
 	void baseInitGui(), baseSizeGui();
 

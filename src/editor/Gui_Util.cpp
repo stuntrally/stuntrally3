@@ -202,7 +202,7 @@ void App::SetEdMode(ED_MODE newMode)
 }
 
 
-//  wnd vis
+//  🪟 wnd vis
 //-----------------------------------------------
 void App::UpdVisGui()
 {
@@ -274,7 +274,7 @@ void CGui::Status(String s, float r,float g,float b)
 }
 
 
-///  Preview Camera mode  - - - - - - - - - - - - - - - - - - - - - - - -
+///  🖼️ Preview Camera mode  - - - - - - - - - - - - - - - - - - - - - - - -
 void App::togPrvCam()
 {
 	static bool oldV = false, oldI = false;
@@ -319,7 +319,7 @@ void App::togPrvCam()
 }
 
 
-//  Gui Shortcut  alt-letters
+//  🎛️⌨️ Gui Shortcut  alt-letters
 //.......................................................................................
 void CGui::GuiShortcut(WND_Types wnd, int tab, int subtab)
 {
@@ -392,7 +392,7 @@ void CGui::NumTabNext(int rel)
 }
 
 
-///  Update (frame start)  .,.,.,.,..,.,.,.,..,.,.,.,..,.,.,.,.
+///  💫 Update (frame start)  .,.,.,.,..,.,.,.,..,.,.,.,..,.,.,.,.
 void CGui::GuiUpdate()
 {
 	gcom->UnfocusLists();
@@ -421,7 +421,7 @@ void CGui::GuiUpdate()
 		app->bWindowResized = true;
 	}
 
-	//  sort trk list
+	//  📃 sort trk list
 	gcom->SortTrkList();
 
 
@@ -437,11 +437,10 @@ void CGui::GuiUpdate()
 		//slSizeMinimap(0);
 		//LoadTrack();  // shouldnt be needed ...
 	}
-
 }
 
 
-///  Color tool window
+///  🎨 Color tool window
 //...............................................................................
 void CGui::btnClrSet(WP w)
 {

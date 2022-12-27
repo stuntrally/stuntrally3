@@ -253,17 +253,16 @@ public:
 	void Setup(Ogre::String sMarkerMeshFile, Ogre::Real scale,
 		Ogre::Terra* terrain, Ogre::SceneManager* sceneMgr,  Ogre::Camera* camera, int idx);
 	
-	void createMarker(Ogre::String name, Ogre::String mat,
-		Ogre::Item*& ent, Ogre::SceneNode*& nd);
+	void createMarker(Ogre::String mat, Ogre::Item*& it, Ogre::SceneNode*& nd);
 
-	//  control markers  -------
+	//  📍 control markers  -------
 	void AddMarker(Ogre::Vector3 pos);
 	void DestroyMarker(int id), DelLastMarker(), UpdAllMarkers(), DestroyMarkers();
 	//  util
 	void SetTerHitVis(bool visible), UpdRot();
 
 
-//  ogre vars
+	//  🟢 Ogre vars
 	Ogre::SceneManager* mSceneMgr =0;
 	Ogre::Camera* mCamera =0;
 

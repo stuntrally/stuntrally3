@@ -130,19 +130,20 @@ void App::createScene01()  // once, init
 		
 
 	//  load
-	// if (pSet->autostart)
+	if (pSet->autostart)
 		LoadTrack();
 
-	// if (!pSet->autostart)
-	{	bGuiFocus = true;  UpdVisGui();	}
-
+	if (!pSet->autostart)
+	{	bGuiFocus = true;
+		UpdVisGui();
+	}
 	iObjTNew = 0;
 	//SetObjNewType(0);  //?white
 
 
-	// gui->chkInputBar(0);  // upd vis
-	// gui->chkCamPos(0);
-	// gui->chkFps(0);
+	gui->chkInputBar(0);  // upd vis
+	gui->chkCamPos(0);
+	gui->chkFps(0);
 }
 
 void App::destroyScene()
@@ -293,7 +294,7 @@ void App::LoadTrackEv()
 }
 
 
-void App::CreateRoads()
+void App::CreateRoads()  // 🛣️
 {
 	strlist lr;  string path = gcom->TrkDir();
 	PATHMANAGER::DirList(path, lr, "xml");
@@ -304,7 +305,10 @@ void App::CreateRoads()
 		int id = scn->roads.size();
 		LogO("~~~ Creating road " + toStr(id) + " from: " + fname);
 		scn->road = new SplineRoad(this);
-		scn->road->Setup("sphere.mesh", pSet->road_sphr, scn->terrain, mSceneMgr, mCamera, id);
+		scn->road->Setup(
+			"sphere.mesh",
+			// "sphere1k.mesh", // todo: hq lods
+			pSet->road_sphr, scn->terrain, mSceneMgr, mCamera, id);
 		scn->road->LoadFile(path + fname);
 		scn->roads.push_back(scn->road);
 	}

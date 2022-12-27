@@ -7,10 +7,10 @@
 // #include "PreviewTex.h"
 
 #include <SDL_keycode.h>
-#include <Ogre.h>
-// #include <OgreCommon.h>
-// #include <OgreVector3.h>
-// #include <OgreString.h>
+// #include <Ogre.h>
+#include <OgreCommon.h>
+#include <OgreVector3.h>
+#include <OgreString.h>
 // #include <OgreRenderTargetListener.h>
 // #include <OgreShadowCameraSetup.h>
 // #include <OgreTexture.h>

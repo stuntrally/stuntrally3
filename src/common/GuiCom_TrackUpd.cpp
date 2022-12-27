@@ -38,7 +38,7 @@ using namespace Ogre;
 using namespace std;
 
 
-//  sort	 . . . . . . . . . . . . . . . . . . . . . . 
+//  📃 sort  . . . . . . . . . . . . . . . . . . . . . . 
 //-----------------------------------------------------------------------------------------------------------
 bool TrkSort(const TrkL& t1, const TrkL& t2)
 {
@@ -85,8 +85,8 @@ bool TrkSort(const TrkL& t1, const TrkL& t2)
 	return t1.name < t2.name;
 }
 
+//  📃 Fill gui track list
 //  done every list sort column change or find edit text change
-//  fills gui track list
 //-----------------------------------------------------------------------------------------------------------
 void CGuiCom::TrackListUpd(bool resetNotFound)
 {
@@ -191,7 +191,7 @@ void CGuiCom::SortTrkList()
 }
 
 
-//  events  . . . . . . . . . . . . . . . . . . . . . . . . . 
+//  🔁 events  . . . . . . . . . . . . . . . . . . . . . . . . . 
 //-----------------------------------------------------------------------------------------------------------
 
 //  list changed position
@@ -245,7 +245,8 @@ void CGuiCom::trkListNext(int rel)
 }
 #endif
 
-//  find edit changed text
+
+//  🔍 find edit changed text
 void CGuiCom::editTrkFind(EditPtr ed)
 {
 	String s = ed->getCaption();
@@ -273,7 +274,7 @@ void CGui::edRplFind(EditPtr ed)
 #endif
 
 
-//  view change
+//  📰 view change
 //-----------------------------------------------------------------------------------------------------------
 #ifndef SR_EDITOR
 void CGui::btnCarView1(WP) {  pSet->cars_view = 0;  gcom->updTrkListDim();  }
@@ -318,10 +319,10 @@ void CGuiCom::chkTrkFilter(Ck* ck)
 }
 
 
-//  adjust list size, columns
+//  📃🗜️ adjust list size, 🏛️ columns
 void CGuiCom::updTrkListDim()
 {
-	//  tracks list
+	//  🏞️ tracks list
 	//-------------------------------
 	if (!trkList)  return;
 	bool full = pSet->tracks_view;  int fi = full?1:0;
@@ -355,7 +356,7 @@ void CGuiCom::updTrkListDim()
 	#endif
 		trkList->setVisible(true);
 
-	//  car list
+	//  🚗 car list
 	//-------------------------------
 	#ifndef SR_EDITOR
 	full = pSet->cars_view;

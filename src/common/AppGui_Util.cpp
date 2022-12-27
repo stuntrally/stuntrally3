@@ -41,8 +41,7 @@ void AppGui::SetWireframe(Ogre::HlmsTypes type, bool wire)
 		// String name = itor->second.name;
 		// if( !StringUtil::endsWith(name, "_TrueTypeFont", false))  // Gui font
 		auto db = it->second.datablock;
-		if (db)
-			db->setMacroblock( mb );
+		if (db)  db->setMacroblock( mb );
 	}
 }
 
@@ -51,37 +50,37 @@ void AppGui::SetWireframe(Ogre::HlmsTypes type, bool wire)
 //-----------------------------------------------------------------------------------
 void AppGui::SetTexWrap(Ogre::HlmsTypes type, Ogre::String name, bool wrap)
 {
-	HlmsSamplerblock sampler;
-	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
-	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
-	sampler.mMaxAnisotropy = pSet->anisotropy;
+	HlmsSamplerblock sb;
+	sb.mMinFilter = FO_ANISOTROPIC;  sb.mMagFilter = FO_ANISOTROPIC;
+	sb.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
+	sb.mMaxAnisotropy = pSet->anisotropy;
 	auto w = wrap ? TAM_WRAP : TAM_CLAMP;
-	sampler.mU = w;  sampler.mV = w;  sampler.mW = w;
+	sb.mU = w;  sb.mV = w;  sb.mW = w;
 
 	Hlms *hlms = mRoot->getHlmsManager()->getHlms( type );
 	if (type == HLMS_PBS)
 	{	HlmsPbsDatablock *db = static_cast<HlmsPbsDatablock*>(hlms->getDatablock( name ));
-		if (db)  db->setSamplerblock( PBSM_DIFFUSE, sampler );
+		if (db)  db->setSamplerblock( PBSM_DIFFUSE, sb );
 	}
 	else if (type == HLMS_UNLIT)
 	{	HlmsUnlitDatablock *db = static_cast<HlmsUnlitDatablock*>(hlms->getDatablock( name ));
-		if (db)  db->setSamplerblock( PBSM_DIFFUSE, sampler );
+		if (db)  db->setSamplerblock( PBSM_DIFFUSE, sb );
 	}
 }
 
 void AppGui::SetTexWrap(Ogre::Item* it, bool wrap)
 {
-	//  wrap tex  ----
-	HlmsSamplerblock sampler;
-	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
-	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
-	sampler.mMaxAnisotropy = pSet->anisotropy;
+	HlmsSamplerblock sb;
+	sb.mMinFilter = FO_ANISOTROPIC;  sb.mMagFilter = FO_ANISOTROPIC;
+	sb.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
+	sb.mMaxAnisotropy = pSet->anisotropy;
 	auto w = wrap ? TAM_WRAP : TAM_CLAMP;
-	sampler.mU = w;  sampler.mV = w;  sampler.mW = w;
+	sb.mU = w;  sb.mV = w;  sb.mW = w;
 
 	assert( dynamic_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() ) );
-	HlmsPbsDatablock *datablock =
+	HlmsPbsDatablock *db =
 		static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
-	for (int n=0; n < NUM_PBSM_SOURCES; ++n)
-		datablock->setSamplerblock( PBSM_DIFFUSE + n, sampler );
+	
+	for (int n=0; n < NUM_PBSM_SOURCES; ++n)  // all
+		db->setSamplerblock( PBSM_DIFFUSE + n, sb );
 }

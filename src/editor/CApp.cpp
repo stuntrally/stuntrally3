@@ -102,8 +102,9 @@ void App::LoadData()
 App::~App()
 {
 	///+  save settings
+	SaveCam();
 	pSet->Save(PATHMANAGER::SettingsFile(1));
-	// fixme
+	// fixme..
 
 	DestroyObjects(false);
 
