@@ -422,12 +422,12 @@ bool App::getEditRect(Vector3& pos, Rect& rcBrush, Rect& rcMap, int size,  int& 
 //-----------------------------------------------------------------------------------------------
 void App::deform(Vector3 &pos, float dtime, float brMul)
 {
-	return;  //;
 	Rect rcBrush, rcMap;  int cx,cy;
 	if (!getEditRect(pos, rcBrush, rcMap, scn->sc->td.iTerSize, cx,cy))
 		return;
+	// LogO(iToStr(rcMap.top)+" "+iToStr(rcMap.bottom)+" "+iToStr(rcMap.left)+" "+iToStr(rcMap.right));
 	
-	float *fHmap = 0; //; scn->terrain->getHeightData();
+	auto& fHmap = scn->terrain->getHeightData();
 	
 	float its = mBrIntens[curBr] * dtime * brMul;
 	int mapPos, brPos, jj = cy;
@@ -445,7 +445,7 @@ void App::deform(Vector3 &pos, float dtime, float brMul)
 			++mapPos;  ++brPos;
 		}
 	}
-	// scn->terrain->dirtyRect(rcMap);
+	scn->terrain->dirtyRect(rcMap);
 	scn->UpdBlendmap();
 	bTerUpd = true;
 }
@@ -455,12 +455,11 @@ void App::deform(Vector3 &pos, float dtime, float brMul)
 //-----------------------------------------------------------------------------------------------
 void App::height(Vector3 &pos, float dtime, float brMul)
 {
-	return;  //;
 	Rect rcBrush, rcMap;  int cx,cy;
 	if (!getEditRect(pos, rcBrush, rcMap, scn->sc->td.iTerSize, cx,cy))
 		return;
 	
-	float *fHmap = 0; //; scn->terrain->getHeightData();
+	auto& fHmap = scn->terrain->getHeightData();
 		
 	float its = mBrIntens[curBr] * dtime * brMul;
 	int mapPos, brPos, jj = cy;
@@ -478,7 +477,7 @@ void App::height(Vector3 &pos, float dtime, float brMul)
 			++mapPos;  ++brPos;
 		}
 	}
-	// scn->terrain->dirtyRect(rcMap);
+	scn->terrain->dirtyRect(rcMap);
 	scn->UpdBlendmap();
 	bTerUpd = true;
 }
@@ -498,17 +497,16 @@ void App::smooth(Vector3 &pos, float dtime)
 
 void App::calcSmoothFactor(Vector3 &pos, float& avg, int& sample_count)
 {
-	return;  //;
 	Rect rcBrush, rcMap;  int cx,cy;
 	if (!getEditRect(pos, rcBrush, rcMap, scn->sc->td.iTerSize, cx,cy))
 		return;
 	
-	float *fHmap = 0; //; scn->terrain->getHeightData();
+	auto& fHmap = scn->terrain->getHeightData();
 	int mapPos;
 
 	avg = 0.0f;  sample_count = 0;
 	
-	for (int j = rcMap.top;j < rcMap.bottom; ++j)
+	for (int j = rcMap.top; j < rcMap.bottom; ++j)
 	{
 		mapPos = j * scn->sc->td.iTerSize + rcMap.left;
 		for (int i = rcMap.left;i < rcMap.right; ++i)
@@ -522,12 +520,11 @@ void App::calcSmoothFactor(Vector3 &pos, float& avg, int& sample_count)
 //-----------------------------------------------------------------------------------------------
 void App::smoothTer(Vector3 &pos, float avg, float dtime)
 {
-	return;  //;
 	Rect rcBrush, rcMap;  int cx,cy;
 	if (!getEditRect(pos, rcBrush, rcMap, scn->sc->td.iTerSize, cx,cy))
 		return;
 	
-	float *fHmap = 0; //; cn->terrain->getHeightData();
+	auto& fHmap = scn->terrain->getHeightData();
 	float mRatio = 1.f, brushPos;
 	int mapPos;
 	float mFactor = mBrIntens[curBr] * dtime * 0.1f;
@@ -548,7 +545,7 @@ void App::smoothTer(Vector3 &pos, float avg, float dtime)
 			brushPos += mRatio;
 		}
 	}
-	// scn->terrain->dirtyRect(rcMap);
+	scn->terrain->dirtyRect(rcMap);
 	scn->UpdBlendmap();
 	bTerUpd = true;
 }
@@ -558,12 +555,11 @@ void App::smoothTer(Vector3 &pos, float avg, float dtime)
 //-----------------------------------------------------------------------------------------------
 void App::filter(Vector3 &pos, float dtime, float brMul)
 {
-	return;  //;
 	Rect rcBrush, rcMap;  int cx,cy;
 	if (!getEditRect(pos, rcBrush, rcMap, scn->sc->td.iTerSize, cx,cy))
 		return;
 	
-	float *fHmap = 0; //; scn->terrain->getHeightData();
+	auto& fHmap = scn->terrain->getHeightData();
 	
 	float its = mBrIntens[curBr] * dtime * std::min(1.f,brMul);  //mul >1 errors
 	int mapPos, brPos, jj = cy,
@@ -590,7 +586,7 @@ void App::filter(Vector3 &pos, float dtime, float brMul)
 			++mapPos;  ++brPos;
 		}
 	}
-	// scn->terrain->dirtyRect(rcMap);
+	scn->terrain->dirtyRect(rcMap);
 	scn->UpdBlendmap();
 	bTerUpd = true;
 }

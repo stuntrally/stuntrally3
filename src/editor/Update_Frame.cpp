@@ -103,10 +103,27 @@ bool App::frameEnded(float dt)
 	if (road)
 	{
 		const MyGUI::IntPoint& mp = MyGUI::InputManager::getInstance().getMousePosition();
-		Real mx = Real(mp.left)/mWindow->getWidth(), my = Real(mp.top)/mWindow->getHeight();
+		Real mx = Real(mp.left) / mWindow->getWidth(),
+			 my = Real(mp.top) / mWindow->getHeight();
 		bool setpos = edMode >= ED_Road || !brLockPos,
 			hide = !(edMode == ED_Road && bEdit());
-		road->Pick(mCamera, mx, my,  setpos, edMode == ED_Road, hide);
+		//; road->Pick(mCamera, mx, my,  setpos, edMode == ED_Road, hide);
+
+		//*****************  temp Ter brush pos  ********************
+		road->bHitTer = true;
+		road->ndHit->setVisible(1);
+		road->posHit = Vector3(
+			( my-0.5f) * scn->sc->td.fTerWorldSize, 0,
+			(-mx+0.5f) * scn->sc->td.fTerWorldSize );
+			
+		/*Vector3 pos = posHit;
+		//if (iChosen == -1)  // for new
+		if (!newP.onTer && bAddH)
+			pos.y = newP.pos.y;
+		ndHit->setPosition(pos);*/
+		road->mTerrain->getHeightAt(road->posHit);
+		road->ndHit->setPosition(road->posHit);
+		// LogO(fToStr(road->posHit.x)+" "+fToStr(road->posHit.y)+" "+fToStr(road->posHit.z));
 	}
 
 	EditMouse();  // edit
