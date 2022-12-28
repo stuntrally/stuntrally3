@@ -134,6 +134,9 @@ namespace Ogre
 		float fHMin, fHMax, fHRange;  //norm-
 		Scene* sc = 0;
 		
+		int getSize()
+		{	return m_iWidth;  }
+
 		std::vector<float>& getHeightData()
 		{	return m_heightMap;  }
 		

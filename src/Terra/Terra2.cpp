@@ -89,8 +89,7 @@ namespace Ogre
 		tex->stopMapRegion();
 		tex->upload( texBox, m_heightMapTex, 0, 0, 0 );
 
-		mgr->removeStagingTexture( tex );
-		tex = 0;
+		mgr->removeStagingTexture( tex );  tex = 0;
 	}
 
 	//  💫 Update Height
@@ -114,8 +113,7 @@ namespace Ogre
 		tex->stopMapRegion();
 		tex->upload( texBox, m_heightMapTex, 0, 0, 0 );
 
-		mgr->removeStagingTexture( tex );
-		tex = 0;
+		mgr->removeStagingTexture( tex );  tex = 0;
 	}
 
 

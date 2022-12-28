@@ -115,12 +115,7 @@ bool App::frameEnded(float dt)
 		road->posHit = Vector3(
 			( my-0.5f) * scn->sc->td.fTerWorldSize, 0,
 			(-mx+0.5f) * scn->sc->td.fTerWorldSize );
-			
-		/*Vector3 pos = posHit;
-		//if (iChosen == -1)  // for new
-		if (!newP.onTer && bAddH)
-			pos.y = newP.pos.y;
-		ndHit->setPosition(pos);*/
+
 		road->mTerrain->getHeightAt(road->posHit);
 		road->ndHit->setPosition(road->posHit);
 		// LogO(fToStr(road->posHit.x)+" "+fToStr(road->posHit.y)+" "+fToStr(road->posHit.z));
