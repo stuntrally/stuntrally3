@@ -144,7 +144,7 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 		
 
 		//-  🏁 start width, height  ----
-		float width = road->vStBoxDim.z, height = road->vStBoxDim.y;
+		float width = road->vStartBoxDim.z, height = road->vStartBoxDim.y;
 
 		float rdW = 100.f;
 		if (iClosest >= 0)  {  rdW = road->mP[iClosest].width;

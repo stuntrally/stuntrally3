@@ -273,8 +273,8 @@ void App::KeyTxtStart(Real q)
 	Txt *stTxt = gui->stTxt;
 	Vector3 p;  if (ndCar)  p = ndCar->getPosition();
 	stTxt[0]->setCaption("");
-	stTxt[1]->setCaption(TR("#{Road_Width} ") +fToStr(road->vStBoxDim.z,1,4));
-	stTxt[2]->setCaption(TR("#{Road_Height} ")+fToStr(road->vStBoxDim.y,1,4));
+	stTxt[1]->setCaption(TR("#{Road_Width} ") +fToStr(road->vStartBoxDim.z,1,4));
+	stTxt[2]->setCaption(TR("#{Road_Height} ")+fToStr(road->vStartBoxDim.y,1,4));
 	stTxt[3]->setCaption(TR("#{Road_Dir}  ") +(road->iDir == 1 ? "+1" : "-1") );
 	stTxt[4]->setCaption(TR(road->isLooped ? "" : iEnd ? "#{FogEnd}" : "#{FogStart}"));
 

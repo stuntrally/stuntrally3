@@ -269,12 +269,12 @@ void CGui::InitGui()
 	ck= &ckFps;			ck->Init("Fps",			&pSet->show_fps);  Cev(HudShow);
 	app->bckFps->setVisible(pSet->show_fps);
 	app->txFps->setVisible(pSet->show_fps);
-	ck= &ckWireframe;	ck->Init("Wireframe",   &app->bWireFrame);  Cev(Wireframe);
+	ck= &ckWireframe;	ck->Init("Wireframe",   &app->bWireframe);  Cev(Wireframe);
 
-	ck= &ckProfilerTxt;	ck->Init("ProfilerTxt",  &pSet->profilerTxt);
-	ck= &ckBulletDebug;	ck->Init("BulletDebug",  &pSet->bltDebug);
-	ck= &ckBltProfTxt;	ck->Init("BltProfTxt",   &pSet->bltProfilerTxt);
-	ck= &ckSoundInfo;	ck->Init("SoundInfo",    &pSet->sounds_info);
+	ck= &ckProfilerTxt;	ck->Init("ProfilerTxt", &pSet->profilerTxt);
+	ck= &ckBulletDebug;	ck->Init("BulletDebug", &pSet->bltDebug);
+	ck= &ckBltProfTxt;	ck->Init("BltProfTxt",  &pSet->bltProfilerTxt);
+	ck= &ckSoundInfo;	ck->Init("SoundInfo",   &pSet->sounds_info);
 
 	ck= &ckCarDbgBars;	ck->Init("CarDbgBars",  &pSet->car_dbgbars);   Cev(HudShow);
 	ck= &ckCarDbgTxt;	ck->Init("CarDbgTxt",   &pSet->car_dbgtxt);    Cev(HudShow);

@@ -250,11 +250,11 @@ void SplineEditChk::AddChkR(Real relR, bool dontCheckR)    ///  ChkR
 
 void SplineEditChk::AddBoxW(Real rel)
 {
-	vStBoxDim.z = std::max(6.f, vStBoxDim.z + rel);
+	vStartBoxDim.z = std::max(6.f, vStartBoxDim.z + rel);
 }
 void SplineEditChk::AddBoxH(Real rel)
 {
-	vStBoxDim.y = std::max(5.f, vStBoxDim.y + rel);
+	vStartBoxDim.y = std::max(5.f, vStartBoxDim.y + rel);
 }
 
 void SplineEditChk::Set1stChk()

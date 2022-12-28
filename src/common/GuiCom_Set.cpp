@@ -3,9 +3,8 @@
 #include "Gui_Def.h"
 #include "GuiCom.h"
 #include "CScene.h"
-// #include "WaterRTT.h"
-#include "Road.h"
 #include "pathmanager.h"
+#include "settings.h"
 #ifndef SR_EDITOR
 	#include "game.h"
 	#include "CGame.h"
@@ -16,6 +15,8 @@
 	#include "CGui.h"
 	#include "settings.h"
 #endif
+#include "Road.h"
+// #include "WaterRTT.h"
 #include <OgreRoot.h>
 #include <OgreMaterialManager.h>
 #include <OgreSceneManager.h>
@@ -80,14 +81,14 @@ void CGuiCom::comboGraphicsAll(ComboBoxPtr cmb, size_t val)
 		s.shadow_type = Sh_Depth;  s.shadow_size = 3;  s.shadow_count = 2;  s.shadow_dist = 1600;
 		s.gui.trees = 1.5f;  s.grass = 1.f;  s.trees_dist = 1.f;  s.grass_dist = 2.f;	break;
 
-	case 6:  // Ultra  -------------
+	case 6:  // Highest  -------------
 		s.anisotropy = 8;  s.view_distance = 16000;  s.terdetail = 0.9f;  s.terdist = 800.f;  s.road_dist = 2.4;
 		s.tex_size = 1;  s.ter_mtr = 2;  s.ter_tripl = 2;
 		// s.water_reflect = 1;  s.water_refract = 1;  s.water_rttsize = 1;
 		s.shadow_type = Sh_Depth;  s.shadow_size = 3;  s.shadow_count = 3;  s.shadow_dist = 2400;
 		s.gui.trees = 2.f;  s.grass = 2.f;  s.trees_dist = 2.f;  s.grass_dist = 3.f;	break;
 
-	case 7:  // Impossible  -------------
+	case 7:  // Ultra max  -------------
 		s.anisotropy = 8;  s.view_distance = 20000;  s.terdetail = 0.8f;  s.terdist = 1000.f;  s.road_dist = 3.0;
 		s.tex_size = 1;  s.ter_mtr = 2;  s.ter_tripl = 2;
 		// s.water_reflect = 1;  s.water_refract = 1;  s.water_rttsize = 2;
@@ -132,11 +133,11 @@ void CGuiCom::comboGraphicsAll(ComboBoxPtr cmb, size_t val)
 		s.particles_len = 1.5f;  s.trails_len = 3.f;
 		s.refl_mode = 1;  s.refl_skip = 0;  s.refl_faces = 1;  s.refl_size = 1;  s.refl_dist = 300.f;  break;
 
-	case 6:  // Ultra  -------------
+	case 6:  // Highest  -------------
 		s.particles_len = 1.5f;  s.trails_len = 4.f;
 		s.refl_mode = 1;  s.refl_skip = 0;  s.refl_faces = 1;  s.refl_size = 1;  s.refl_dist = 400.f;  break;
 
-	case 7:  // Impossible  -------------
+	case 7:  // Ultra max  -------------
 		s.particles_len = 1.5f;  s.trails_len = 4.f;
 		s.refl_mode = 1;  s.refl_skip = 0;  s.refl_faces = 1;  s.refl_size = 2;  s.refl_dist = 500.f;  break;
 	}
@@ -163,10 +164,10 @@ void CGuiCom::comboGraphicsAll(ComboBoxPtr cmb, size_t val)
 	case 5:  // Very High  -------------
 		s.trackmap = 1;  s.brush_prv = 1;	s.ter_skip = 1;  s.mini_skip = 2;  break;
 
-	case 6:  // Ultra  -------------
+	case 6:  // Highest  -------------
 		s.trackmap = 1;  s.brush_prv = 1;	s.ter_skip = 1;  s.mini_skip = 1;  break;
 
-	case 7:  // Impossible  -------------
+	case 7:  // Ultra max  -------------
 		s.trackmap = 1;  s.brush_prv = 1;	s.ter_skip = 1;  s.mini_skip = 1;  break;
 	}
 #endif

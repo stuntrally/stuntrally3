@@ -83,7 +83,7 @@ void CHud::Arrow::Update(CarModel* carM, float time)
 	node->setPosition(arrowPos);
 	
 	// animate
-	bool bFirstFrame = carM->bGetStPos;
+	bool bFirstFrame = carM->bGetStart;
 	if (bFirstFrame) // 1st frame: dont animate
 		qCur = qEnd;
 	else

@@ -419,7 +419,7 @@ void App::GraphsNewVals()				// Game
 				"#E0F0FF cur "+toStr(scn->pace->iCur)+"  all "+toStr(scn->pace->iAll)+"  st "+toStr(scn->pace->iStart));
 			graphs[1]->UpdTitle("\nCheckpoints  #F0F0D0 in "+iToStr(cm->iInChk,2)+" "+
 				" | "+ (cm->iInChk >= 0 ? toStr( (cm->iInChk - scn->road->iChkId1 + ncs) % ncs ) : "")+
-				(cm->bInSt?" inSt":"")+"\n"+
+				(cm->bInStart?" inSt":"")+"\n"+
 				" cur "+iToStr(cm->iCurChk,2)+" next "+iToStr(cm->iNextChk,2)+
 				" all "+iToStr(cm->iNumChks,2)+"="+toStr(ncs)+" 1st "+toStr(scn->road->iChkId1)+"\n"+
 				(!scn->trail ? "No trail" :

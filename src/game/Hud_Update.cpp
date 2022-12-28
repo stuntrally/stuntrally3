@@ -8,6 +8,7 @@
 #include "CScene.h"
 
 #include "game.h"
+#include "settings.h"
 #include "quickprof.h"
 #include "Road.h"
 #include "CGame.h"

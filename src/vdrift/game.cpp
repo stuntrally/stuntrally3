@@ -15,6 +15,7 @@
 #include "tracksurface.h"
 #include "forcefeedback.h"
 #include "pathmanager.h"
+#include "settings.h"
 
 #include "Def_Str.h"
 #include "SceneXml.h"

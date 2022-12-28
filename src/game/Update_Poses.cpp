@@ -223,22 +223,22 @@ void App::newPoses(float time)  // time only for camera update
 		  		hud->arrow.UpdateChk(road, carM, pi.pos);
 			
 			//----------------------------------------------------------------------------
-			if (carM->bGetStPos)  // get finish, end box
-			{	carM->bGetStPos = false;
+			if (carM->bGetStart)  // get finish, end box
+			{	carM->bGetStart = false;
 				int st = !road || road->isLooped ? 0 : pSet->game.trackreverse ? 0 : 1;
-				carM->matStPos.makeInverseTransform(
+				carM->matStart.makeInverseTransform(
 					Axes::toOgre(scn->sc->startPos[st]), Vector3::UNIT_SCALE,
 					Axes::toOgre(scn->sc->startRot[st]));
 				carM->ResetChecks();
 			}
-			if (road && !carM->bGetStPos)
+			if (road && !carM->bGetStart)
 			{
-				//  🏁 finish box dist
+				//  🏁 finish/start box dist
 				Vector4 carP(pi.pos.x,pi.pos.y,pi.pos.z,1);
-				carM->vStDist = carM0->matStPos * carP;  // start pos from 1st car always
-				carM->bInSt = abs(carM->vStDist.x) < road->vStBoxDim.x && 
-					abs(carM->vStDist.y) < road->vStBoxDim.y && 
-					abs(carM->vStDist.z) < road->vStBoxDim.z;
+				carM->vStartDist = carM0->matStart * carP;  // start pos from 1st car always
+				carM->bInStart = abs(carM->vStartDist.x) < road->vStartBoxDim.x && 
+					abs(carM->vStartDist.y) < road->vStartBoxDim.y && 
+					abs(carM->vStartDist.z) < road->vStartBoxDim.z;
 							
 				carM->iInChk = -1;  carM->bWrongChk = false;
 				bool locar = carM->cType == CarModel::CT_LOCAL;
@@ -247,7 +247,7 @@ void App::newPoses(float time)  // time only for camera update
 				{
 					//  🏁 Finish  --------------------------------------
 					if (locar && !bRplPlay &&
-						(carM->bInSt && carM->iNumChks == ncs && carM->iCurChk != -1))
+						(carM->bInStart && carM->iNumChks == ncs && carM->iCurChk != -1))
 					{
 						///  Lap
 						bool finished = (pGame->timer.GetCurrentLap(c) >= pSet->game.num_laps)
@@ -370,10 +370,10 @@ void App::newPoses(float time)  // time only for camera update
 							if (carM->iInChk != carM->iCurChk && !bRplPlay &&
 								!scn->sc->noWrongChks)  // denies
 							{
-								carM->bWrongChk = true;
+								carM->bWrongChk = true;  // ❌
 								
-								if (carM->iInWrChk != carM->iInChk)
-								{	carM->iInWrChk = carM->iInChk;
+								if (carM->iInWrongChk != carM->iInChk)
+								{	carM->iInWrongChk = carM->iInChk;
 									
 									if (pSet->snd_chkwr && locar)
 										pGame->snd_chkwr->start();  // 🔉
@@ -438,20 +438,20 @@ void App::updatePoses(float time)
 		if (carM->isGhost())  // for all
 		{
 			bool loading = iLoad1stFrames >= 0;  // show during load ?..
-			bool curVisible = carM->mbVisible;
+			bool curVisible = carM->bVisible;
 			bool newVisible = bGhostVis && bGhostCar /**/&& !bGhostEnd/**/ || bGhTrkVis;
 			
 			if (loading)
 				carM->setVisible(true);  //!carM->isGhost());
 			else
 			{	//  hide ghost when close to player
-				float d = carM->pMainNode->getPosition().squaredDistance(playerCar->pMainNode->getPosition());
+				float d = carM->ndMain->getPosition().squaredDistance(playerCar->ndMain->getPosition());
 				if (d < pSet->ghoHideDist * pSet->ghoHideDist)
 					newVisible = false;
 
 				if (carM->isGhostTrk() && cgh >= 0)  // hide track's ghost when near ghost
 				{
-					float d = carM->pMainNode->getPosition().squaredDistance(carModels[cgh]->pMainNode->getPosition());
+					float d = carM->ndMain->getPosition().squaredDistance(carModels[cgh]->ndMain->getPosition());
 					if (d < pSet->ghoHideDistTrk * pSet->ghoHideDistTrk)
 						newVisible = false;
 				}
@@ -473,7 +473,7 @@ void App::updatePoses(float time)
 		carM->Update(carPoses[q][c], carPoses[qq][cc], time);
 
 		if (mCubeCamera && c == 0)  // 🔮 reflection
-		{	mCubeCamera->setPosition(carM->pMainNode->getPosition());// carPoses[q][c].pos);
+		{	mCubeCamera->setPosition(carM->ndMain->getPosition());// carPoses[q][c].pos);
 			// mCubeCamera->setVisibilityFlags( RV_MaskReflect /*32*/ );
 			// mCubeCamera->setOrientation(carM->pMainNode->getOrientation());
 		}

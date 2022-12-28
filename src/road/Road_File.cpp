@@ -46,7 +46,7 @@ void SplineRoad::Defaults()
 	
 	g_ColNSides = 4; g_ColRadius = 2.f;
 
-	iDir = -1;  vStBoxDim = Vector3(1.5f, 5,12);  // /long |height -width
+	iDir = -1;  vStartBoxDim = Vector3(1.5f, 5,12);  // /long |height -width
 	iChkId1 = 0;  iChkId1Rev = 0;
 }
 
@@ -255,7 +255,7 @@ bool SplineRoad::LoadFile(String fname, bool build)
 		a = n->Attribute("colR");   if (a)  g_ColRadius = s2r(a);
 		a = n->Attribute("wsPm");   if (a)  g_P_iw_mul = s2r(a);
 		a = n->Attribute("lsPm");   if (a)  g_P_il_mul = s2r(a);
-		a = n->Attribute("stBox");  if (a)  vStBoxDim = s2v(a);
+		a = n->Attribute("stBox");  if (a)  vStartBoxDim = s2v(a);
 		a = n->Attribute("iDir");   if (a)  iDir = s2i(a);
 		a = n->Attribute("iChk1");  if (a)  iP1 = s2i(a);
 	}
@@ -387,7 +387,7 @@ bool SplineRoad::SaveFile(String fname)
 		geo.SetAttribute("colR",	toStrC( g_ColRadius ));
 		geo.SetAttribute("wsPm",	toStrC( g_P_iw_mul ));
 		geo.SetAttribute("lsPm",	toStrC( g_P_il_mul ));
-		geo.SetAttribute("stBox",	toStrC( vStBoxDim ));
+		geo.SetAttribute("stBox",	toStrC( vStartBoxDim ));
 		geo.SetAttribute("iDir",	toStrC( iDir ));
 		geo.SetAttribute("iChk1",	toStrC( iP1 ));
 	root.InsertEndChild(geo);

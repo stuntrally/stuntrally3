@@ -100,7 +100,7 @@ void App::createScene01()
 
 
 	//  Gui Init
-	InitGuiCom();
+	InitAppGui();
 	baseInitGui();
 	gui->mGui = mGui;
 	gui->InitGui();

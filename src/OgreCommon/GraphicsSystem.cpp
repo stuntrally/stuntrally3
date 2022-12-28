@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "Def_Str.h"
 #include "GraphicsSystem.h"
 #include "GameState.h"
 #if OGRE_PLATFORM != OGRE_PLATFORM_APPLE_IOS
@@ -758,7 +759,7 @@ void GraphicsSystem::setupResources()
 	}
 }
 
-//  🪄 Hlms shaders
+//  🌠 Hlms shaders
 //--------------------------------------------------------------------------------------------------------------------------------
 void GraphicsSystem::registerHlms()
 {
@@ -911,17 +912,6 @@ void GraphicsSystem::createCamera()
 //--------------------------------------------------------------------------------------------------------------------------------
 CompositorWorkspace* GraphicsSystem::setupCompositor()
 {
-	/*CompositorManager2 *compositorManager = mRoot->getCompositorManager2();
-
-	const String workspaceName( "Demo Workspace" );
-	if( !compositorManager->hasWorkspaceDefinition( workspaceName ) )
-	{
-		compositorManager->createBasicWorkspaceDef( workspaceName, mBackgroundColour,
-													IdString() );
-	}
-
-	return compositorManager->addWorkspace( mSceneManager, mRenderWindow->getTexture(), mCamera,
-											workspaceName, true );*/
 	return 0;    
 }
 
@@ -979,6 +969,7 @@ void GraphicsSystem::stopCompositor()
 {
 	if( mWorkspace )
 	{
+		LogO("#### stop Compositor");
 		CompositorManager2 *compositorManager = mRoot->getCompositorManager2();
 		compositorManager->removeWorkspace( mWorkspace );
 		mWorkspace = 0;
@@ -988,13 +979,14 @@ void GraphicsSystem::stopCompositor()
 //-----------------------------------------------------------------------------------
 void GraphicsSystem::restartCompositor()
 {
+	LogO("#### restart Compositor");
 	stopCompositor();
 	mWorkspace = setupCompositor();
 }
 
 
 //--------------------------------------------------------------------------------------------------------------------------------
-//  🪄 Game Entities
+//  Game Entities
 //--------------------------------------------------------------------------------------------------------------------------------
 struct GameEntityCmp
 {

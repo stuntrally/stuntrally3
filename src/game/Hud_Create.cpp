@@ -8,6 +8,7 @@
 // #include "CGui.h"
 // #include "GuiCom.h"
 #include "game.h"
+#include "settings.h"
 #include "Road.h"
 #include "CarModel.h"
 #include "GraphicsSystem.h"

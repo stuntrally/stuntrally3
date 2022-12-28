@@ -5,6 +5,7 @@
 #include "CScene.h"
 #include "Axes.h"
 #include "pathmanager.h"
+#include "settings.h"
 #include "BtOgreGP.h"
 #include "ShapeData.h"
 #ifdef SR_EDITOR
@@ -294,8 +295,8 @@ void App::ResetObjects()
 void App::UpdObjPick()
 {
 	bool st = edMode == ED_Start && !bMoveCam;
-	if (ndStBox[0])  ndStBox[0]->setVisible(st);
-	if (ndStBox[1])  ndStBox[1]->setVisible(st && !scn->road->isLooped);  // end separate
+	if (ndStartBox[0])  ndStartBox[0]->setVisible(st);
+	if (ndStartBox[1])  ndStartBox[1]->setVisible(st && !scn->road->isLooped);  // end separate
 
 
 	int objs = scn->sc->objects.size();

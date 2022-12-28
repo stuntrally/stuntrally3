@@ -16,7 +16,7 @@ using namespace std;
 
 //  🌟🆕 init Gui
 //----------------------------------------------------------------
-void AppGui::InitGuiCom()
+void AppGui::InitAppGui()
 {
 	if (mPlatform)
 		return;

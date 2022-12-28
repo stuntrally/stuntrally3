@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "Def_Str.h"
 #include "CGame.h"
 #include "GraphicsSystem.h"
 #include <OgreLogManager.h>
