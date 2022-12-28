@@ -143,10 +143,10 @@ void App::UpdateEnd(float dt)
 
 	TerCircleUpd();
 	
-	bool def = false;  // deformed
+	bool deformed = false;
 	static bool defOld = false;
 	
-	float gd = scn->sc->densGrass;  // grass dens changed
+	float grsDens = scn->sc->densGrass;  // grass dens changed
 	static float gdOld = scn->sc->densGrass;
 
 	///<>  ⛰️ Edit Terrain, brushes
@@ -156,17 +156,17 @@ void App::UpdateEnd(float dt)
 		switch (edMode)
 		{
 		case ED_Deform:
-			if (mbLeft) {  def = true;  deform(road->posHit, dt, s);  }else
-			if (mbRight){  def = true;  deform(road->posHit, dt,-s);  }
+			if (mbLeft) {  deformed = true;  deform(road->posHit, dt, s);  }else
+			if (mbRight){  deformed = true;  deform(road->posHit, dt,-s);  }
 			break;
 		case ED_Filter:
-			if (mbLeft) {  def = true;  filter(road->posHit, dt, s);  }
+			if (mbLeft) {  deformed = true;  filter(road->posHit, dt, s);  }
 			break;
 		case ED_Smooth:
-			if (mbLeft) {  def = true;  smooth(road->posHit, dt);  }
+			if (mbLeft) {  deformed = true;  smooth(road->posHit, dt);  }
 			break;
 		case ED_Height:
-			if (mbLeft) {  def = true;  height(road->posHit, dt, s);  }
+			if (mbLeft) {  deformed = true;  height(road->posHit, dt, s);  }
 			break;
 		default:  break;
 		}
@@ -183,56 +183,34 @@ void App::UpdateEnd(float dt)
 			scn->sun->getDerivedDirectionUpdated(), lightEpsilon );
 	}
 
-#if 0
-if (pSet->bTrees)
-{
-	///  upd grass
-	if (gd != gdOld)
-	{
-		Real fGrass = pSet->grass * scn->sc->densGrass * 3.0f;
-		for (int i=0; i < scn->sc->ciNumGrLay; ++i)
-		{
-			const SGrassLayer* gr = &scn->sc->grLayersAll[i];
-			if (gr->on)
-			{
-				Forests::GrassLayer *l = gr->grl;
-				if (l)
-				{	l->setDensity(gr->dens * fGrass);
-					scn->grass->reloadGeometry();
-				}
-			}
-		}
-	}
 
-	if (!def && defOld)  // upd grass after terrain deform  // todo..
+	//  🌿 upd grass after terrain deform
+	if (0 && pSet->bTrees)  // todo ..
 	{
-		scn->UpdGrassDens();
-		//if (grd.rnd)
-		//	grd.rnd->update();
-
-		for (int i=0; i < scn->sc->ciNumGrLay; ++i)
+		///  upd grass
+		if (grsDens != gdOld)
 		{
-			const SGrassLayer* gr = &scn->sc->grLayersAll[i];
-			if (gr->on)
-			{
-				Forests::GrassLayer *l = gr->grl;
-				if (l)
-				{	l->setDensityMap(scn->grassDensRTex, Forests::MapChannel(std::min(3,i)));  // l->chan);
-					//l->applyShader();
-					scn->grass->reloadGeometry();
-				}
-			}
+			scn->grass->Destroy();
+			scn->grass->Create();
 		}
+
+		if (!deformed && defOld)
+		{
+			// scn->UpdGrassDens();  // upd..?
+			//if (grd.rnd)
+			//	grd.rnd->update();
+
+			scn->grass->Destroy();
+			scn->grass->Create();
+		}
+		defOld = deformed;
+		gdOld = grsDens;
 	}
-	defOld = def;
-	gdOld = gd;
-}
-#endif
 
 
 	///  🌳🪨 vegetation toggle  upd 🔁 * * *
-	if (bTrGrUpd)
-	{	bTrGrUpd = false;
+	if (bVegetGrsUpd)
+	{	bVegetGrsUpd = false;
 		pSet->bTrees = !pSet->bTrees;
 
 		scn->RecreateTrees();

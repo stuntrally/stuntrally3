@@ -1,9 +1,5 @@
 #include "pch.h"
-#ifndef SR_EDITOR
-	#include "CGame.h"
-#else
-	#include "CApp.h"
-#endif
+#include "AppGui.h"
 #include <OgrePrerequisites.h>
 #include <OgreVector4.h>
 #include "GraphicsSystem.h"
@@ -32,7 +28,7 @@ using namespace Ogre;
 
 //  Terrain
 //-----------------------------------------------------------------------------------------------------------------------------
-void App::CreateTerrain()
+void AppGui::CreateTerrain()
 {
 	if (mTerra) return;
 	Root *root = mGraphicsSystem->getRoot();
@@ -181,7 +177,7 @@ void App::CreateTerrain()
 }
 
 
-void App::DestroyTerrain()
+void AppGui::DestroyTerrain()
 {
 	LogO("D--- destroy Terrain");
 

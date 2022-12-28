@@ -339,7 +339,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		}	break;
 
 		//  toggle fog, veget, weather, particles
-		case key(V):  bTrGrUpd = true;  break;
+		case key(V):  bVegetGrsUpd = true;  break;
 		case key(G):  gui->ckFog.Invert();  break;
 		case key(I):  gui->ckWeather.Invert();  break;
 		case key(P):  bParticles = !bParticles;  bRecreateEmitters = true;  break;

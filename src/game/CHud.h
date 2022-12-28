@@ -25,7 +25,6 @@ class CHud : public BGui
 public:
 	App* app =0;
 	SETTINGS* pSet =0;
-	//CGui* gui =0;
 	
 	CHud(App* ap1);
 		

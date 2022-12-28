@@ -287,7 +287,7 @@ void App::togPrvCam()
 
 		// scn->UpdateWaterRTT(mCamera);
 		scn->UpdFog();  // restore fog, veget
-		if (oldV)  {  bTrGrUpd = true;  oldV = false;  }
+		if (oldV)  {  bVegetGrsUpd = true;  oldV = false;  }
 		pSet->bWeather = oldI;
 		// scn->UpdTerErr();
 
@@ -306,7 +306,7 @@ void App::togPrvCam()
 
 		// scn->UpdateWaterRTT(rt[RT_View].cam);
 		// scn->UpdFog(true);  // on fog, veget, weather
-		if (!pSet->bTrees)  {  bTrGrUpd = true;  oldV = true;  }
+		if (!pSet->bTrees)  {  bVegetGrsUpd = true;  oldV = true;  }
 		oldI = pSet->bWeather;  pSet->bWeather = false;
 		// scn->mTerrainGlobals->setMaxPixelError(0.5f);  //hq ter
 

@@ -37,12 +37,6 @@ public:
 	virtual ~App();
 	void Load(), LoadData();
 
-	CScene* scn =0;
-
-
-	///  Gui
-	CGui* gui =0;
-	CGuiCom* gcom =0;
 
 	// PreviewTex prvView,prvRoad,prvTer;  // track tab
 
@@ -85,7 +79,7 @@ public:
 	
 
 	//  🆕 Create  . . . . . . . . . . . . . . . . . . . . . . . . 
-	bool bNewHmap =0, bTrGrUpd =0, bParticles =1;
+	bool bNewHmap =0, bVegetGrsUpd =0, bParticles =1;
 	Ogre::String resTrk;  void NewCommon(bool onlyTerVeget);
 
 	void CreateObjects(), DestroyObjects(bool clear), ResetObjects();
@@ -165,16 +159,7 @@ public:
 	bool getEditRect(Ogre::Vector3& pos, Ogre::Rect& brushrect, Ogre::Rect& maprect, int size, int& cx, int& cy);
 
 
-	//  ⛰️ Terrain  ----
-	Ogre::String mtrName;
-	Ogre::Terra *mTerra = 0;
-	void CreateTerrain(), DestroyTerrain();
-
-	Ogre::SceneNode *nodeTerrain = 0;
-	//  listener to make PBS objects also be affected by terrain's shadows
-	Ogre::HlmsPbsTerraShadows *mHlmsPbsTerraShadows = 0;
-
-	//  ⛰️ terrain edit
+	//  ⛰️ Terrain edit ----
 	void deform(Ogre::Vector3 &pos, float dtime, float brMul);
 	void height(Ogre::Vector3 &pos, float dtime, float brMul);
 

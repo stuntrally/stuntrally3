@@ -56,31 +56,10 @@ public:
 	void keyReleased( const SDL_KeyboardEvent &arg ) override;
 
 
-	//  ⛰️ Terrain  ----
-	Ogre::Terra *mTerra = 0;
-	void CreateTerrain(), DestroyTerrain();
-
-	Ogre::String mtrName;
-	Ogre::SceneNode *nodeTerrain = 0;
-	//  listener to make PBS objects also be affected by terrain's shadows
-	Ogre::HlmsPbsTerraShadows *mHlmsPbsTerraShadows = 0;
-
-	//  mtr ids, from ter  . . . 
-	int blendMapSize =513;
+	//  🏔️ mtr ids, from ter  . . . 
+	int blendMapSize = 513;
 	std::vector<char> blendMtr;
 	//; void GetTerMtrIds();  // todo:
-
-
-	//  ⛓️ Util  ----
-	template <typename T, size_t MaxNumTextures>
-	void unloadTexturesFromUnusedMaterials( Ogre::HlmsDatablock *datablock,
-											std::set<Ogre::TextureGpu *> &usedTex,
-											std::set<Ogre::TextureGpu *> &unusedTex );
-	void unloadTexturesFromUnusedMaterials();
-	void unloadUnusedTextures();
-
-	void MinimizeMemory();  // mtr,tex, reduce mem, each track load
-	// void setTightMemoryBudget(), setRelaxedMemoryBudget();
 
 
 public:
@@ -90,7 +69,6 @@ public:
 	void ShutDown();
 
 	//  scene data
-	CScene* scn =0;
 	CData* data =0;
 	Scene* sc = 0;
 	
@@ -178,9 +156,6 @@ public:
 
 	//  🎛️ Gui
 	//-----------------------------------------------------------------
-	CGui* gui =0;
-	CGuiCom* gcom =0;
-
 	// PreviewTex prvView,prvRoad,prvTer;  // track tab
 	// PreviewTex prvStCh;  // champ,chall stage view
 

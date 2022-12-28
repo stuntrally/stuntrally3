@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Def_Str.h"
-#include "CGame.h"
+#include "AppGui.h"
 #include "GraphicsSystem.h"
 #include <OgreLogManager.h>
 
@@ -18,7 +18,7 @@
 #include <OgreGpuProgramManager.h>
 #include <OgreTextureGpuManager.h>
 #include <OgrePixelFormatGpuUtils.h>
-#include "Vao/OgreVaoManager.h"
+#include <Vao/OgreVaoManager.h>
 
 using namespace Ogre;
 using namespace std;
@@ -27,9 +27,10 @@ using namespace std;
 //  util
 //-----------------------------------------------------------------------------------
 template <typename T, size_t MaxNumTextures>
-void App::unloadTexturesFromUnusedMaterials( HlmsDatablock *datablock,
-											std::set<TextureGpu *> &usedTex,
-											std::set<TextureGpu *> &unusedTex )
+void AppGui::unloadTexturesFromUnusedMaterials(
+	HlmsDatablock* datablock,
+	std::set<TextureGpu*> &usedTex,
+	std::set<TextureGpu*> &unusedTex )
 {
 	OGRE_ASSERT_HIGH( dynamic_cast<T *>( datablock ) );
 	T *derivedDatablock = static_cast<T *>( datablock );
@@ -50,7 +51,7 @@ void App::unloadTexturesFromUnusedMaterials( HlmsDatablock *datablock,
 	}
 }
 //-----------------------------------------------------------------------------------
-void App::unloadTexturesFromUnusedMaterials()
+void AppGui::unloadTexturesFromUnusedMaterials()
 {
 	Root *root = mGraphicsSystem->getRoot();
 	HlmsManager *hlmsManager = root->getHlmsManager();
@@ -104,7 +105,7 @@ void App::unloadTexturesFromUnusedMaterials()
 }
 
 //-----------------------------------------------------------------------------------
-void App::unloadUnusedTextures()
+void AppGui::unloadUnusedTextures()
 {
 	RenderSystem *renderSystem = mGraphicsSystem->getRoot()->getRenderSystem();
 
@@ -151,7 +152,7 @@ void App::unloadUnusedTextures()
 }
 
 //-----------------------------------------------------------------------------------
-void App::MinimizeMemory()
+void AppGui::MinimizeMemory()
 {
 	LogO("#### MinimizeMemory");
 	// setTightMemoryBudget();
@@ -169,7 +170,7 @@ void App::MinimizeMemory()
 
 #if 0
 //-----------------------------------------------------------------------------------
-void App::setTightMemoryBudget()
+void AppGui::setTightMemoryBudget()
 {
 	Root *root = mGraphicsSystem->getRoot();
 	RenderSystem *renderSystem = root->getRenderSystem();
@@ -186,7 +187,7 @@ void App::setTightMemoryBudget()
 	mTightMemoryBudget = true;
 }
 //-----------------------------------------------------------------------------------
-void App::setRelaxedMemoryBudget()
+void AppGui::setRelaxedMemoryBudget()
 {
 	Root *root = mGraphicsSystem->getRoot();
 	RenderSystem *renderSystem = root->getRenderSystem();
