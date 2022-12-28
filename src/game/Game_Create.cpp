@@ -108,9 +108,7 @@ void App::createScene01()
 
 	mGraphicsSystem->mWorkspace = SetupCompositor();
 
-	//  camera
-	mCamera->setFarClipDistance( 20000.f );
-	//mCamera->setFarClipDistance( pSet->view_distance );  // par far
+	mCamera->setFarClipDistance( pSet->view_distance );
 
 
 	LogO(">>>>>>>> Init SR done ----");

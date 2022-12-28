@@ -13,6 +13,7 @@
 	#include "CGame.h"
 	#include "settings.h"
 #endif
+#include <OgreCommon.h>
 #include <OgreRoot.h>
 #include <OgreSceneNode.h>
 #include <OgreCamera.h>
@@ -155,13 +156,16 @@ void CScene::UpdFog()
 
 //  ⛅ Sky dome
 //-------------------------------------------------------------------------------------
-// void CScene::CreateSkyDome(String sMater, float sc, float yaw)
+void CScene::UpdSkyScale()
+{
+	if (!ndSky)  return;
+	Vector3 scale = app->pSet->view_distance * Vector3::UNIT_SCALE * 0.7f;
+	ndSky->setScale(scale);
+}
 void CScene::CreateSkyDome(String sMater, float yaw)
 {
 	if (itSky)  return;
 	LogO("C--- create SkyDome");
-	Vector3 scale = 15000 * Vector3::UNIT_SCALE;
-	// Vector3 scale = pSet->view_distance * Vector3::UNIT_SCALE * 0.7f;
 	
 	auto *mgr = app->mSceneMgr;
 	ManualObject* m = mgr->createManualObject();
@@ -201,13 +205,14 @@ void CScene::CreateSkyDome(String sMater, float yaw)
 
 	sMeshSky = "skymesh";
 	MeshPtr mesh = m->convertToMesh(sMeshSky, "General", false);
-
-	itSky = app->mSceneMgr->createItem( mesh, SCENE_STATIC );
+	auto dyn = SCENE_DYNAMIC; // SCENE_STATIC;  // todo: sky in postprocess shader..
+	itSky = app->mSceneMgr->createItem( mesh, dyn );
 	itSky->setCastShadows(false);
 	itSky->setVisibilityFlags(RV_Sky);
-	ndSky = app->mSceneMgr->getRootSceneNode( SCENE_STATIC )->createChildSceneNode( SCENE_STATIC );
+	// Aabb aabb( Aabb::BOX_INFINITE );  itSky->setLocalAabb(aabb);  // meh-
+	ndSky = app->mSceneMgr->getRootSceneNode( dyn )->createChildSceneNode( dyn );
 	ndSky->attachObject(itSky);
-	ndSky->setScale(scale);
+	UpdSkyScale();
 	Quaternion q;  q.FromAngleAxis(Degree(-yaw), Vector3::UNIT_Y);
 	ndSky->setOrientation(q);
 

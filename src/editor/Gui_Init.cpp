@@ -57,7 +57,7 @@ void CGui::InitGui()
 	Load("Editor_Utils");  Load("Editor_Tools");  Load("Editor_Help");  Load("Editor_Options");
 
 
-	//  🪟 main windows
+	//  🪟 main windows  ----
 	app->mWndMain = fWnd("MainMenuWnd");
 	app->mWndTrack = fWnd("TrackWnd");  app->mWndEdit = fWnd("EditorWnd");
 	app->mWndOpts = fWnd("OptionsWnd"); app->mWndHelp = fWnd("HelpWnd");
@@ -65,17 +65,18 @@ void CGui::InitGui()
 	app->mWndPick = fWnd("PickWnd");
 	app->mWndTrkFilt = fWnd("TrackFilterWnd");
 
-	//  wnds ed
-	app->mWndCam =   fWnd("CamWnd");    app->mWndCam->setPosition(0,64);
-	app->mWndStart = fWnd("StartWnd");  app->mWndStart->setPosition(0,64);
-	app->mWndBrush = fWnd("BrushWnd");  app->mWndBrush->setPosition(0,64);
+	//  tool wnds edit  ----
+	const int y = 96;
+	app->mWndCam =   fWnd("CamWnd");    app->mWndCam->setPosition(0,y);
+	app->mWndStart = fWnd("StartWnd");  app->mWndStart->setPosition(0,y);
+	app->mWndBrush = fWnd("BrushWnd");  app->mWndBrush->setPosition(0,y);
 
-	app->mWndRoadCur =   fWnd("RoadCur");    app->mWndRoadCur->setPosition(0,40);
-	app->mWndRoadStats = fWnd("RoadStats");  app->mWndRoadStats->setPosition(0,390);
+	app->mWndRoadCur =   fWnd("RoadCur");    app->mWndRoadCur->setPosition(0,y);
+	app->mWndRoadStats = fWnd("RoadStats");  app->mWndRoadStats->setPosition(0,y+380);
 
-	app->mWndFluids =    fWnd("FluidsWnd");   app->mWndFluids->setPosition(0,64);
-	app->mWndObjects =   fWnd("ObjectsWnd");  app->mWndObjects->setPosition(0,64);
-	app->mWndParticles = fWnd("ParticlesWnd"); app->mWndParticles->setPosition(0,64);
+	app->mWndFluids =    fWnd("FluidsWnd");   app->mWndFluids->setPosition(0,y);
+	app->mWndObjects =   fWnd("ObjectsWnd");  app->mWndObjects->setPosition(0,y);
+	app->mWndParticles = fWnd("ParticlesWnd"); app->mWndParticles->setPosition(0,y);
 
 
 	//  for find defines
@@ -83,7 +84,7 @@ void CGui::InitGui()
 	Sl* sl;  SV* sv;  Ck* ck;
 
 	
-	//  Tabs
+	//  Tabs  --------
 	TabPtr tab,sub;
 	fTabW("TabWndTrack"); app->mWndTabsTrack = tab;
 	fTabW("TabWndEdit");  app->mWndTabsEdit = tab;
@@ -568,8 +569,8 @@ void CGui::InitGui()
 
 	Btn("OpenEdTut", btnEdTut);
 
-    //  load = new game
-    for (i=0; i <= 2; ++i)
+    //  New game  ----
+    for (i=0; i <= 1; ++i)
     {	Btn("NewGame"+toStr(i), btnNewGame);  }
 
 	CreateGUITweakMtr();

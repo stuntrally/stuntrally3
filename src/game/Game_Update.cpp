@@ -40,6 +40,7 @@ using namespace Ogre;
 using namespace std;
 
 
+//-----------------------------------------------------------------------------------------------------------------------------
 //  💫 Update  frame
 //-----------------------------------------------------------------------------------------------------------------------------
 void App::update( float dt )
@@ -58,7 +59,11 @@ void App::update( float dt )
 		mInputCtrlPlayer[i]->update(dt);
 
 
-	scn->UpdSun();
+	scn->UpdSun();  // ⛅
+
+	if (scn->ndSky)
+		scn->ndSky->setPosition(mCamera->getPosition());
+
 
 	//  ⏳ Loading steps --------
 	if (bLoading)

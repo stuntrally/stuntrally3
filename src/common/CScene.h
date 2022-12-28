@@ -42,7 +42,7 @@ public:
 	Ogre::String sMeshSky;
 	Ogre::Item* itSky = 0;
 	Ogre::SceneNode* ndSky = 0;
-	void CreateSkyDome(Ogre::String sMater, float yaw);
+	void CreateSkyDome(Ogre::String sMater, float yaw), UpdSkyScale();
 	void DestroySkyDome(), UpdSky();
 
 	//  🌞 Sun *

@@ -20,11 +20,8 @@ using namespace MyGUI;
 
 //  Update  input, info
 //---------------------------------------------------------------------------------------------------------------
-bool App::frameRenderingQueued(float dt)
+void App::UpdateKey(float dt)
 {
-	if (!BaseApp::frameRenderingQueued())
-		return false;
-
 	//  pos on minimap *
 	if (ndPos)
 	{	Real w = scn->sc->td.fTerWorldSize;
@@ -43,7 +40,7 @@ bool App::frameRenderingQueued(float dt)
 			float p = -(angrot + ia) * d2r;
 			px[i] = psx*cosf(p);  py[i] =-psy*sinf(p);
 		}
-		/*if (mpos)
+		/*if (mpos)  // fixme
 		{	mpos->beginUpdate(0);
 			mpos->position(px[0],py[0], 0);  mpos->textureCoord(0, 1);	mpos->position(px[1],py[1], 0);  mpos->textureCoord(1, 1);
 			mpos->position(px[3],py[3], 0);  mpos->textureCoord(0, 0);	mpos->position(px[2],py[2], 0);  mpos->textureCoord(1, 0);
@@ -68,8 +65,7 @@ bool App::frameRenderingQueued(float dt)
 	if (pSet->inputBar)
 		UpdKeyBar(dt);
 
-	//  keys up/dn - trklist
-
+	//  keys up/dn - trklist  todo
 	WP wf = MyGUI::InputManager::getInstance().getKeyFocusWidget();
 	static float dirU = 0.f,dirD = 0.f;
 	if (bGuiFocus && wf != (WP)gcom->trkDesc[0])
@@ -136,5 +132,4 @@ bool App::frameRenderingQueued(float dt)
 			++i;
 		}
 	}
-	return true;
 }

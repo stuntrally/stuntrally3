@@ -28,7 +28,7 @@ using namespace MyGUI;
 //mInputWrapper->isKeyDown(SDL_SCANCODE_##a)
 
 
-//  Road Point
+//  🛣️📍 Road Point
 //---------------------------------------------------------------------------------------------------------------
 void App::KeyTxtRoad(Real q)
 {
@@ -81,27 +81,27 @@ void App::KeyTxtRoad(Real q)
 	rdVal[5]->setCaption(fToStr(angSnap,0,1));
 													// .old, mark
 	rdImg[6]->setVisible(!sp.onPipe);  rdImg[7]->setVisible(sp.onPipe);
-	rdTxt[6]->setCaption(sp.onPipe ? TR("#{Road_OnPipe}") : TR("#{Road_Pipe}"));
+	rdTxt[6]->setCaption(sp.onPipe ? TR("#{Road_OnPipe}") : TR("#{Road_Pipe}"));  // ⭕
 	rdTxt[6]->setTextColour(sp.onPipe ? MyGUI::Colour(1.0,0.45,0.2) : MyGUI::Colour(0.86,0.86,0));
 	rdVal[6]->setCaption(sp.pipe==0.f ? "" : fToStr(sp.pipe,2,4));
 	
 	bool vis = !ter && !sp.isnt();
 	rdTxt[7]->setVisible(vis);	rdVal[7]->setVisible(vis);  rdKey[7]->setVisible(vis);
-	rdVal[7]->setCaption(ter ? "" : toStr(sp.cols));  // column
+	rdVal[7]->setCaption(ter ? "" : toStr(sp.cols));  // 🏛️ column
 
 	rdTxt[12]->setVisible(vis);  rdKey[12]->setVisible(vis);  
-	// rdTxt[12]->setCaption(toStr(sp.idWall)+" "+road->getWallMtrStr(ic));  // wall mtr
+	// rdTxt[12]->setCaption(toStr(sp.idWall)+" "+road->getWallMtrStr(ic));  // 📏 wall mtr
 	// rdTxt[8]->setCaption(toStr(sp.idMtr)+" "+road->getMtrStr(ic));  // mtr
 
 	rdVal[9]->setCaption( sp.chkR == 0.f ? "" : fToStr(sp.chkR,1,3)+"  "+ (sp.chk1st ? "#D0D0FF(1)":"") );
 
-	const static String sLoop[LoopTypes]={"","Loop Straight","Side Loop","Barrel Loop",
+	const static String sLoop[LoopTypes]={"","Loop Straight","Side Loop","Barrel Loop",  // ➰➿
 		"Loop 2 in 1","Double Loops","Frenzy Loop","Ramp","View Only"};  //todo: transl?
 	rdTxt[10]->setCaption(TR(sLoop[sp.loop]));
 	rdVal[10]->setCaption(!sp.notReal ? "" : TR("#{Road_NotReal}"));
 	rdImg[10]->setVisible(!sp.notReal);  rdImg[11]->setVisible(sp.notReal);
 
-	//  status
+	//  status sel or cur
 	if (road->vSel.size() > 0)  s = TR("#{Road_sel}")+": "+toStr(road->vSel.size());
 	else  s = fToStr(road->iChosen+1,0,2)+"/"+toStr(road->vSegs.size());
 	rdVal[11]->setCaption(s);
@@ -115,7 +115,7 @@ void App::KeyTxtRoad(Real q)
 	rdTxt[13]->setCaption(road->isLooped ? "": TR("#{Road_NotLooped}"));
 
 
-	//  road stats  --------------------------------
+	//  🗒️ road stats  --------------------------------
 	if (mWndRoadStats && mWndRoadStats->getVisible())
 	{
 		static bool first = true;
@@ -180,7 +180,7 @@ void App::KeyTxtRoad(Real q)
 }
 
 
-///  Terrain  Brush
+///  ⛰️ Terrain  Brush
 //--------------------------------------------------------------------------------------------------------------------------------
 void App::KeyTxtTerrain(Real q)
 {
@@ -265,7 +265,7 @@ void App::KeyTxtTerrain(Real q)
 }
 
 
-//  Start box
+//  🏁 Start box
 //----------------------------------------------------------------
 void App::KeyTxtStart(Real q)
 {
@@ -287,7 +287,7 @@ void App::KeyTxtStart(Real q)
 }
 
 
-///  Fluids
+///  💧 Fluids
 //----------------------------------------------------------------
 void App::KeyTxtFluids(Real q)
 {
@@ -321,7 +321,7 @@ void App::KeyTxtFluids(Real q)
 }
 
 
-///  Objects
+///  📦 Objects
 //----------------------------------------------------------------
 void App::KeyTxtObjects()
 {
@@ -355,7 +355,7 @@ void App::KeyTxtObjects()
 }
 
 
-///  Emitters
+///  🔥 Emitters
 //----------------------------------------------------------------
 void App::KeyTxtEmitters(Real q)
 {

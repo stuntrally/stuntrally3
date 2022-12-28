@@ -560,7 +560,7 @@ void CGui::btnPickRoadCol(WP wp)
 }
 
 
-//  Pick window show
+//  🪟📃👆 Pick window show
 //----------------------------------------------------
 void CGui::PickShow(EPick n, bool toggleVis)
 {
@@ -585,7 +585,7 @@ void CGui::PickShow(EPick n, bool toggleVis)
 }
 
 
-///  Road  -------------------------------------------------
+///  🛣️ Road  -------------------------------------------------
 void CGui::listPickRd(Mli2 li, size_t pos)
 {
 	if (pos==ITEM_NONE || pos > data->pre->rd.size())
@@ -632,7 +632,7 @@ void CGui::listPickRd(Mli2 li, size_t pos)
 }
 
 
-///  Sky Mtr  ----------------------------------------------------
+///  ⛅ Sky Mtr  ----------------------------------------------------
 void CGui::listPickSky(Mli2 li, size_t pos)
 {
 	if (pos==ITEM_NONE || pos >= data->pre->sky.size())
@@ -652,10 +652,14 @@ void CGui::listPickSky(Mli2 li, size_t pos)
 	}
 	//  upd img
 	btnSky->setCaption(s);
-	app->UpdateTrack();
+	
+	// app->UpdateTrack();
+	scn->DestroyAllAtmo();
+	scn->CreateAllAtmo();
 }
 
-///  Tex Diff  ----------------------------------------------------
+
+///  🏔️ Tex Diff  ----------------------------------------------------
 void CGui::listPickTex(Mli2 li, size_t pos)
 {
 	if (pos==ITEM_NONE || pos >= data->pre->ter.size())
@@ -699,7 +703,8 @@ void CGui::listPickTex(Mli2 li, size_t pos)
 	UpdSurfList();
 }
 
-///  Grass  -------------------------------------------------------
+
+///  🌿 Grass  -------------------------------------------------------
 void CGui::listPickGrs(Mli2 li, size_t pos)
 {
 	if (pos==ITEM_NONE || pos >= data->pre->gr.size())
@@ -727,7 +732,8 @@ void CGui::listPickGrs(Mli2 li, size_t pos)
 	imgGrass->setImageTexture(s + ".png");  // same mtr name as tex
 }
 
-///  Veget Model  -------------------------------------------------
+
+///  🌳🪨 Veget Model  -------------------------------------------------
 void CGui::listPickVeg(Mli2 li, size_t pos)
 {
 	if (pos==ITEM_NONE || pos >= data->pre->veg.size())

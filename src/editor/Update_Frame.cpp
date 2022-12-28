@@ -74,7 +74,7 @@ void App::processMouse(double fDT)
 //---------------------------------------------------------------------------------------------------------------
 //  💫 frame events
 //---------------------------------------------------------------------------------------------------------------
-bool App::frameEnded(float dt)
+void App::UpdateEnd(float dt)
 {
 	//  show when in gui on generator subtab
 	/*if (ovTerPrv)
@@ -280,22 +280,30 @@ if (pSet->bTrees)
 		}	ri++;
 	}
 	//LogO(toStr(dt));
-
-	return true;
 }
 
 
-//  💫 Update
-//---------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------
+//  💫 Update  frame
+//-----------------------------------------------------------------------------------------------------------------------------
 void App::update( float dt )
 {
-	// BaseApp::frameStarted(dt);
-	frameRenderingQueued(dt);  //^
+	if (mShutDown)
+	{
+		mGraphicsSystem->setQuit();
+		return;
+	}
+
+	UpdateKey(dt);  // key edits etc
 	
 	UpdFpsText();
 
 
-	scn->UpdSun();
+	scn->UpdSun();  // ⛅
+
+	if (scn->ndSky)
+		scn->ndSky->setPosition(mCamera->getPosition());
+
 
 	static Real time1 = 0.;
 	mDTime = dt;
@@ -427,5 +435,5 @@ void App::update( float dt )
 	bFirstRenderFrame = false;
 
 
-	frameEnded(dt);  //^
+	UpdateEnd(dt);  //^
 }
