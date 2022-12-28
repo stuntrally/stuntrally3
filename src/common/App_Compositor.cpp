@@ -7,33 +7,30 @@
 	#include "CApp.h"
 #endif
 #include "GraphicsSystem.h"
-#include <OgreLogManager.h>
 
-#include <OgreSceneManager.h>
 #include <OgreRoot.h>
 #include <OgreCamera.h>
 #include <OgreWindow.h>
+#include <OgreSceneManager.h>
 
 #include <OgreTextureGpuManager.h>
-#include <OgrePixelFormatGpuUtils.h>
+// #include <OgrePixelFormatGpuUtils.h>
 #include <OgreHlmsPbs.h>
 #include <OgreHlmsManager.h>
 
 // #include <OgreAtmosphere2Npr.h>
-#include "Compositor/OgreCompositorManager2.h"
-#include "Compositor/OgreCompositorNodeDef.h"
-#include "Compositor/OgreCompositorWorkspaceDef.h"
-#include "Compositor/Pass/PassIblSpecular/OgreCompositorPassIblSpecularDef.h"
-
-#include <MyGUI.h>
-#include <MyGUI_Ogre2Platform.h>
+#include <Compositor/OgreCompositorManager2.h>
+#include <Compositor/OgreCompositorNodeDef.h>
+#include <Compositor/OgreCompositorWorkspaceDef.h>
+#include <Compositor/Pass/PassIblSpecular/OgreCompositorPassIblSpecularDef.h>
 using namespace Ogre;
 
 
+//  🪄 Setup Compositor
 //-----------------------------------------------------------------------------------
-CompositorWorkspace *App::SetupCompositor()
+CompositorWorkspace* AppGui::SetupCompositor()
 {
-	LogO("#### setupCompositor");
+	LogO("#### setup Compositor");
 	// We first create the Cubemap workspace and pass it to the final workspace
 	// that does the real rendering.
 	//
@@ -42,21 +39,17 @@ CompositorWorkspace *App::SetupCompositor()
 	// or just pass a PF_NULL texture that works as a dud and barely consumes any memory.
 	// See Tutorial_Terrain for an example of PF_NULL dud.
 
-	Root *root = mGraphicsSystem->getRoot();
-	SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
-	Window *renderWindow = mGraphicsSystem->getRenderWindow();
-	Camera *camera = mGraphicsSystem->getCamera();
-	CompositorManager2 *compositorManager = root->getCompositorManager2();
-
+	auto* rndSys = mRoot->getRenderSystem();
+	auto* mgr = mRoot->getCompositorManager2();
 	if( mWorkspace )
 	{
-		compositorManager->removeWorkspace( mWorkspace );
+		mgr->removeWorkspace( mWorkspace );
 		mWorkspace = 0;
-		LogO("#### setupCompositor rem workspace");
+		LogO("#### setup Compositor rem workspace");
 	}
 
 	uint32 iblSpecularFlag = 0;
-	if( root->getRenderSystem()->getCapabilities()->hasCapability( RSC_COMPUTE_PROGRAM ) &&
+	if( rndSys->getCapabilities()->hasCapability( RSC_COMPUTE_PROGRAM ) &&
 		mIblQuality != MipmapsLowest )
 	{
 		iblSpecularFlag = TextureFlags::Uav | TextureFlags::Reinterpretable;
@@ -65,12 +58,12 @@ CompositorWorkspace *App::SetupCompositor()
 	// A RenderTarget created with AllowAutomipmaps means the compositor still needs to
 	// explicitly generate the mipmaps by calling generate_mipmaps. It's just an API
 	// hint to tell the GPU we will be using the mipmaps auto generation routines.
-	TextureGpuManager *textureManager = root->getRenderSystem()->getTextureGpuManager();
-	mCubemapReflTex = textureManager->createOrRetrieveTexture( "DynamicCubemap",
+	TextureGpuManager *textureManager = rndSys->getTextureGpuManager();
+	mCubeReflTex = textureManager->createOrRetrieveTexture( "DynamicCubemap",
 		GpuPageOutStrategy::Discard,
 		TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps | iblSpecularFlag,
 		TextureTypes::TypeCube );
-	mCubemapReflTex->scheduleTransitionTo( GpuResidency::OnStorage );
+	mCubeReflTex->scheduleTransitionTo( GpuResidency::OnStorage );
 
 	uint32 resolution = 512u;
 	if( mIblQuality == MipmapsLowest || mIblQuality == IblMedium)
@@ -79,28 +72,28 @@ CompositorWorkspace *App::SetupCompositor()
 		resolution = 256u;
 	else
 		resolution = 512u;
-	mCubemapReflTex->setResolution( resolution, resolution );
-	mCubemapReflTex->setNumMipmaps( PixelFormatGpuUtils::getMaxMipmapCount( resolution ) );
+	mCubeReflTex->setResolution( resolution, resolution );
+	mCubeReflTex->setNumMipmaps( PixelFormatGpuUtils::getMaxMipmapCount( resolution ) );
 	if( mIblQuality != MipmapsLowest )
 	{
-		// Limit max mipmap to 16x16 .. 
-		// mDynamicCubemap->setNumMipmaps( mDynamicCubemap->getNumMipmaps() - 4u );
-		mCubemapReflTex->setNumMipmaps( mCubemapReflTex->getNumMipmaps() - 2u );  // -4u
-		// mDynamicCubemap->setNumMipmaps( mDynamicCubemap->getNumMipmaps() /*- 1u*/ );
+		// Limit max mipmap to 16x16 .. //** par
+		// mCubeReflTex->setNumMipmaps( mDynamicCubemap->getNumMipmaps() - 4u );
+		mCubeReflTex->setNumMipmaps( mCubeReflTex->getNumMipmaps() - 2u );  // -4u
+		// mCubeReflTex->setNumMipmaps( mDynamicCubemap->getNumMipmaps() /*- 1u*/ );
 	}
-	mCubemapReflTex->setPixelFormat( PFG_RGBA8_UNORM_SRGB );
-	mCubemapReflTex->scheduleTransitionTo( GpuResidency::Resident );
+	mCubeReflTex->setPixelFormat( PFG_RGBA8_UNORM_SRGB );
+	mCubeReflTex->scheduleTransitionTo( GpuResidency::Resident );
 
 
-	Ogre::HlmsManager *hlmsManager = mGraphicsSystem->getRoot()->getHlmsManager();
-	assert( dynamic_cast<Ogre::HlmsPbs *>( hlmsManager->getHlms( Ogre::HLMS_PBS ) ) );
-	Ogre::HlmsPbs *hlmsPbs = static_cast<Ogre::HlmsPbs *>( hlmsManager->getHlms( Ogre::HLMS_PBS ) );
-	hlmsPbs->resetIblSpecMipmap( 0u );
+	HlmsManager *hlmsMgr = mRoot->getHlmsManager();
+	assert( dynamic_cast<HlmsPbs *>( hlmsMgr->getHlms( HLMS_PBS ) ) );
+	HlmsPbs *hlmsPbs = static_cast<HlmsPbs *>( hlmsMgr->getHlms( HLMS_PBS ) );
+	hlmsPbs->resetIblSpecMipmap( 0u );  //..
 
-	// Create the camera used to render to our cubemap
+	//  Create camera used to render to cubemap reflections
 	if( !mCubeCamera )
 	{
-		mCubeCamera = sceneManager->createCamera( "CubeMapCamera", true, true );
+		mCubeCamera = mSceneMgr->createCamera( "CubemapCam", true, true );
 		mCubeCamera->setFOVy( Degree(90) );  mCubeCamera->setAspectRatio( 1 );
 		mCubeCamera->setFixedYawAxis( false );
 		mCubeCamera->setPosition( 0, 1.0, 0 );  // upd in car
@@ -115,11 +108,12 @@ CompositorWorkspace *App::SetupCompositor()
 		// mCubeCamera->setCastShadows(true);
 	}
 
-	// No need to tie RenderWindow's use of MSAA with cubemap's MSAA. Could never use MSAA for cubemap.
-	const IdString cubemapRendererNode = /*renderWindow->getSampleDescription().isMultisample()
-		? "CubemapRendererNodeMsaa" :*/ "CubemapRendererNode";
+	//  No need to tie RenderWindow's use of MSAA with cubemap's MSAA
+	const IdString idCubeNode =
+		//mWindow->getSampleDescription().isMultisample() ? "CubemapNodeMsaa" :
+		"CubemapNode";  // never use MSAA for cubemap.
 	{
-		CompositorNodeDef *nodeDef = compositorManager->getNodeDefinitionNonConst( cubemapRendererNode );
+		CompositorNodeDef *nodeDef = mgr->getNodeDefinitionNonConst( idCubeNode );
 		const CompositorPassDefVec &passes =
 			nodeDef->getTargetPass( nodeDef->getNumTargetPasses() - 1u )->getCompositorPasses();
 
@@ -132,36 +126,34 @@ CompositorWorkspace *App::SetupCompositor()
 	}
 
 
-	//  Setup the cubemap's compositor
-	CompositorChannelVec cubemapExternalChannels( 1 );
-	cubemapExternalChannels[0] = mCubemapReflTex;
+	//  Cubemap's compositor channels  ----
+	CompositorChannelVec cubeExt( 1 );
+	cubeExt[0] = mCubeReflTex;
 
-	const Ogre::String workspaceName( "Tutorial_DynamicCubemap_cubemap" );  // created from code
-	if( !compositorManager->hasWorkspaceDefinition( workspaceName ) )
+	const String name( "SR3_ReflCubemap" );  // created from code
+	if( !mgr->hasWorkspaceDefinition( name ) )
 	{
-		CompositorWorkspaceDef *workspaceDef = compositorManager->addWorkspaceDefinition( workspaceName );
-		workspaceDef->connectExternal( 0, cubemapRendererNode, 0 );
+		auto* w = mgr->addWorkspaceDefinition( name );
+		w->connectExternal( 0, idCubeNode, 0 );
 	}
 
-	mWorkspace = compositorManager->addWorkspace(
-		sceneManager, cubemapExternalChannels, mCubeCamera,
-		workspaceName, true );
+	mWorkspace = mgr->addWorkspace(
+		mSceneMgr, cubeExt, mCubeCamera, name, true );
 
 
-	//  Now setup the regular Render window
-	CompositorChannelVec externalChannels( 2 );
-	externalChannels[0] = renderWindow->getTexture();
-	externalChannels[1] = mCubemapReflTex;
+	//  Render window external channels  ----
+	CompositorChannelVec ext( 2 );
+	ext[0] = mWindow->getTexture();
+	ext[1] = mCubeReflTex;
 
 	
 	//  Gui, add MyGUI pass
-	CompositorNodeDef * def = compositorManager->getNodeDefinitionNonConst("Tutorial_TerrainRenderingNode");
-	CompositorTargetDef *tar = def->getTargetPass(0);
-	tar->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
+	CompositorNodeDef* node = mgr->getNodeDefinitionNonConst("SR3_Render");
+	CompositorTargetDef* target = node->getTargetPass(0);
+	target->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
 	
 
-	CompositorWorkspace* wrk = compositorManager->addWorkspace(
-		sceneManager, externalChannels, camera,
-		"Tutorial_TerrainWorkspace", true );  // in .compositor
+	auto* wrk = mgr->addWorkspace(
+		mSceneMgr, ext, mCamera, "SR3_Workspace", true );  // in .compositor
 	return wrk;
 }

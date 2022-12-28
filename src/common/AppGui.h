@@ -5,9 +5,15 @@
 #include <OgreHlmsCommon.h>
 
 namespace MyGUI{  class Gui;  class Ogre2Platform;  }
-namespace Ogre {  class Root;  class SceneManager;  class Window;  class Camera;  }
+namespace Ogre {  class Root;  class SceneManager;  class Window;  class Camera;
+	class TextureGpu;  class CompositorWorkspace;  }
 class GraphicsSystem;  class SETTINGS;
 
+//  cube reflections, car etc
+enum IblQuality
+{
+	MipmapsLowest, IblLow, IblMedium, IblHigh
+};
 
 //  Base application with:
 //  Ogre, MyGui, settings, Fps bar
@@ -22,7 +28,7 @@ public:
 
 
 	//  🟢 Ogre  ----------------
-	Ogre::Root *mRoot =0;
+	Ogre::Root* mRoot =0;
 	Ogre::SceneManager* mSceneMgr =0;
 	Ogre::Window* mWindow =0;
 	Ogre::Camera* mCamera =0;
@@ -40,6 +46,7 @@ public:
 	void UpdFpsText(), CreateFpsBar();
 	float GetGPUmem();
 
+
 	//  ⛓️ utils  wireframe
 	bool bWireframe = 0;
 	void SetWireframe();
@@ -50,6 +57,17 @@ public:
 
 
 	//  🆕 Init  ----------------
-	void InitGuiCom();
+	void InitAppGui();
 	void DestroyGui();
+
+
+	//  🔮 reflection cubemap  ----------------
+	Ogre::Camera* mCubeCamera = 0;
+	Ogre::TextureGpu* mCubeReflTex = 0;
+
+	IblQuality mIblQuality = IblLow;  // par in ctor
+	Ogre::CompositorWorkspace* mWorkspace = 0;
+	Ogre::CompositorWorkspace* SetupCompositor();
+
+	
 };

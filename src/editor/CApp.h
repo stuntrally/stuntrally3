@@ -28,11 +28,6 @@ class GraphicsSystem;
 
 enum ED_OBJ {  EO_Move=0, EO_Rotate, EO_Scale  };
 
-enum IblQuality  // car reflections
-{
-	MipmapsLowest, IblLow, IblMedium, IblHigh
-};
-
 
 class App : public BaseApp
 			// public Ogre::RenderTargetListener
@@ -172,15 +167,6 @@ public:
 	bool getEditRect(Ogre::Vector3& pos, Ogre::Rect& brushrect, Ogre::Rect& maprect, int size, int& cx, int& cy);
 
 
-	//  🔮 reflection cubemap  ----
-	Ogre::Camera *mCubeCamera = 0;
-	Ogre::TextureGpu *mCubemapReflTex = 0;
-
-	IblQuality mIblQuality = IblLow;  // par in ctor
-	Ogre::CompositorWorkspace *mWorkspace = 0;
-	Ogre::CompositorWorkspace *SetupCompositor();
-
-
 	//  ⛰️ Terrain  ----
 	Ogre::String mtrName;
 	Ogre::Terra *mTerra = 0;
@@ -222,8 +208,8 @@ public:
 	void UpdStartPos();
 	void CreateBox(Ogre::SceneNode*& nd, Ogre::Item*& ent, Ogre::String sMat, Ogre::String sMesh, int x=0);
 
-	Ogre::SceneNode* ndCar =0, *ndStBox[2] ={0,0},  *ndFluidBox =0, *ndObjBox =0, *ndEmtBox =0;
-	Ogre::Item*    entCar =0,*entStBox[2]={0,0}, *entFluidBox =0,*entObjBox =0,*entEmtBox =0;
+	Ogre::SceneNode* ndCar =0, *ndStartBox[2]={0,0},  *ndFluidBox =0, *ndObjBox =0, *ndEmtBox =0;
+	Ogre::Item*      itCar =0, *itStartBox[2]={0,0},  *itFluidBox =0, *itObjBox =0, *itEmtBox =0;
 	void togPrvCam();
 
 

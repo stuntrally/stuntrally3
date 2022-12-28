@@ -1,5 +1,4 @@
 #pragma once
-#include "settings.h"
 // #include "Gui_Def.h"
 #include "BaseApp.h"
 #include "Replay.h"
@@ -19,14 +18,7 @@ namespace Ogre {  class SceneNode;  class SceneManager;  class TextureGpu;  clas
 	class Terra;  class HlmsPbsTerraShadows;  class HlmsDatablock;  }
 namespace BtOgre  {  class DebugDrawer;  }
 class Scene;  class CScene;  class CData;  class CInput;  class GraphView;
-class SETTINGS;  class GAME;  class CHud;  class CGui;  class CGuiCom;
-namespace MyGUI {  class Gui;  class Ogre2Platform;  }
-
-
-enum IblQuality  // car reflections
-{
-	MipmapsLowest, IblLow, IblMedium, IblHigh
-};
+class GAME;  class CHud;  class CGui;  class CGuiCom;
 
 
 class App : public BaseApp,	public ICS::ChannelListener
@@ -62,15 +54,6 @@ public:
 	//  events
 	void keyPressed( const SDL_KeyboardEvent &arg ) override;
 	void keyReleased( const SDL_KeyboardEvent &arg ) override;
-
-
-	//  🔮 reflection cubemap  ----
-	Ogre::Camera *mCubeCamera = 0;
-	Ogre::TextureGpu *mCubemapReflTex = 0;
-
-	IblQuality mIblQuality = IblLow;  // par in ctor
-	Ogre::CompositorWorkspace *mWorkspace = 0;
-	Ogre::CompositorWorkspace *SetupCompositor();
 
 
 	//  ⛰️ Terrain  ----
