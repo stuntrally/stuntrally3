@@ -34,14 +34,14 @@ void App::CreateBox(SceneNode*& nd, Item*& ent, String sMat, String sMesh, int x
 void App::UpdStartPos()
 {
 	return;  //;
-	CreateBox(ndCar, entCar, "", "car.mesh");
+	CreateBox(ndCar, itCar, "", "car.mesh");
 	
-	CreateBox(ndStBox[0], entStBox[0], "start_box", "cube.mesh", 20000);
-	CreateBox(ndStBox[1], entStBox[1], "end_box", "cube.mesh", 20000);
+	CreateBox(ndStartBox[0], itStartBox[0], "start_box", "cube.mesh", 20000);
+	CreateBox(ndStartBox[1], itStartBox[1], "end_box", "cube.mesh", 20000);
 
-	CreateBox(ndFluidBox, entFluidBox, "fluid_box", "box_fluids.mesh");
-	CreateBox(ndObjBox, entObjBox, "object_box", "box_obj.mesh");
-	CreateBox(ndEmtBox, entEmtBox, "emitter_box", "box_obj.mesh");
+	CreateBox(ndFluidBox, itFluidBox, "fluid_box", "box_fluids.mesh");
+	CreateBox(ndObjBox, itObjBox, "object_box", "box_obj.mesh");
+	CreateBox(ndEmtBox, itEmtBox, "emitter_box", "box_obj.mesh");
 
 	//  start, end boxes
 	for (int i=0; i < 2; ++i)
@@ -53,11 +53,11 @@ void App::UpdStartPos()
 			ndCar->setPosition(p1);  ndCar->setOrientation(q1);
 			ndCar->setVisible(scn->road);  // hide before load
 		}
-		ndStBox[i]->setPosition(p1);  ndStBox[i]->setOrientation(q1);
+		ndStartBox[i]->setPosition(p1);  ndStartBox[i]->setOrientation(q1);
 
 		if (scn->road)
-			ndStBox[i]->setScale(Vector3(1, scn->road->vStBoxDim.y, scn->road->vStBoxDim.z));
+			ndStartBox[i]->setScale(Vector3(1, scn->road->vStartBoxDim.y, scn->road->vStartBoxDim.z));
 	
-		ndStBox[i]->setVisible(edMode == ED_Start && bEdit());
+		ndStartBox[i]->setVisible(edMode == ED_Start && bEdit());
 	}
 }

@@ -23,6 +23,7 @@
 // #include "SplitScreen.h"
 // #include "GraphView.h"
 //; #include "gameclient.hpp"
+#include "Terra.h"
 
 #include <OgreCommon.h>
 #include <OgreVector3.h>
@@ -398,7 +399,7 @@ void App::LoadGame()
 		CarModel::eCarType et = CarModel::CT_LOCAL;
 		int startId = i;
 		std::string carName = pSet->game.car[std::min(3,i)], nick = "";
-		/*if (mClient)
+		/*if (mClient)  // 📡
 		{
 			// Various places assume carModels[0] is local
 			// so we swap 0 and local's id but preserve starting position
@@ -413,7 +414,7 @@ void App::LoadGame()
 			else  nick = mClient->getPeer(startId).name;
 		}*/
 		Camera* cam = mCamera;
-		// Camera* cam = 0;
+		// Camera* cam = 0;  //; ?
 		// if (et == CarModel::CT_LOCAL && camIt != mSplitMgr->mCameras.end())
 		// {	cam = *camIt;  ++camIt;  }
 
@@ -423,11 +424,11 @@ void App::LoadGame()
 		bool loop = //rd.getNumPoints() < 2 ? false :
 					!rd.isLooped && pSet->game.trackreverse ? true : false;
 		
-		CarModel* car = new CarModel(i, i, et, carName, mSceneMgr, pSet, pGame, scn->sc, cam, this);
+		CarModel* car = new CarModel(i, i, et, carName, cam, this);
 		car->Load(startId, loop);
 		carModels.push_back(car);
 		
-		/*if (nick != "")  // set remote nickname
+		/*if (nick != "")  // set remote nickname // 📡
 		{	car->sDispName = nick;
 			if (i != 0)  // not for local
 				car->pNickTxt = hud->CreateNickText(i, car->sDispName);
@@ -445,7 +446,7 @@ void App::LoadGame()
 		
 		//  always because ghplay can appear during play after best lap
 		// 1st ghost = orgCar
-		CarModel* c = new CarModel(i, 4, CarModel::CT_GHOST, orgCar, mSceneMgr, pSet, pGame, scn->sc, 0, this);
+		CarModel* c = new CarModel(i, 4, CarModel::CT_GHOST, orgCar, 0, this);
 		c->Load(-1, false);
 		c->pCar = (*carModels.begin())->pCar;  // based on 1st car
 		carModels.push_back(c);
@@ -453,7 +454,7 @@ void App::LoadGame()
 		//  2st ghost - other car
 		if (isGhost2nd)
 		{
-			CarModel* c = new CarModel(i, 4, CarModel::CT_GHOST2, ghCar, mSceneMgr, pSet, pGame, scn->sc, 0, this);
+			CarModel* c = new CarModel(i, 4, CarModel::CT_GHOST2, ghCar, 0, this);
 			c->Load(-1, false);
 			c->pCar = (*carModels.begin())->pCar;
 			carModels.push_back(c);
@@ -469,7 +470,7 @@ void App::LoadGame()
 		std::string file = PATHMANAGER::TrkGhosts()+"/"+ pSet->game.track + sRev + ".gho";
 		if (ghTrk.LoadFile(file))
 		{
-			CarModel* c = new CarModel(i, 5, CarModel::CT_TRACK, "ES", mSceneMgr, pSet, pGame, scn->sc, 0, this);
+			CarModel* c = new CarModel(i, 5, CarModel::CT_TRACK, "ES", 0, this);
 			c->Load(-1, false);
 			c->pCar = (*carModels.begin())->pCar;  // based on 1st car
 			carModels.push_back(c);
@@ -477,7 +478,7 @@ void App::LoadGame()
 
 	float pretime = /*mClient ? 2.0f :*/ pSet->game.pre_time;  // same for all multi players
 	if (bRplPlay)  pretime = 0.f;
-	/*if (mClient)
+	/*if (mClient)  // 📡
 	{	pGame->timer.waiting = true;  //+
 		pGame->timer.end_sim = false;
 	}*/
@@ -503,11 +504,8 @@ void App::LoadScene()  // 3
 
 	/// generate materials
 	// setupCompositor();
-	/*try {
-		refreshCompositor();
-	} catch (InvalidParametersException &e) {
-		// ignore missing compositors
-	}*/
+	// refreshCompositor();
+
 
 	//  💧 Fluids
 	if (dstTrk)
@@ -516,12 +514,6 @@ void App::LoadScene()  // 3
 	if (dstTrk)
 		pGame->collision.world->setGravity(btVector3(0.0, 0.0, -scn->sc->gravity));
 
-
-	//  set sky tex name for water
-	// sh::MaterialInstance* m = mFactory->getMaterialInstance(scn->sc->skyMtr);
-	// std::string skyTex = sh::retrieveValue<sh::StringValue>(m->getProperty("texture"), 0).get();
-	// sh::Factory::getInstance().setTextureAlias("SkyReflection", skyTex);
-	
 
 	//  🔝 checkpoint arrow
 	bool deny = gui->pChall && !gui->pChall->chk_arr;
@@ -541,18 +533,18 @@ void App::LoadCar()
 		c->Create();
 
 		///  challenge off abs,tcs
-		/*if (gui->pChall && c->pCar)
+		if (gui->pChall && c->pCar)
 		{
 			if (!gui->pChall->abs)  c->pCar->dynamics.SetABS(false);
 			if (!gui->pChall->tcs)  c->pCar->dynamics.SetTCS(false);
-		}*/
+		}
 
 		//  restore which cam view
 		if (c->fCam && carsCamNum[i] != 0)
 		{
 			c->fCam->setCamera(carsCamNum[i] -1);
 			
-			// int visMask = c->fCam->ca->mHideGlass ? RV_MaskAll-RV_CarGlass : RV_MaskAll;
+			//; int visMask = c->fCam->ca->mHideGlass ? RV_MaskAll-RV_CarGlass : RV_MaskAll;
 			// for (auto vp : mSplitMgr->mViewports)
 			// 	vp->setVisibilityMask(visMask);
 		}
@@ -563,7 +555,7 @@ void App::LoadCar()
 	
 	
 	///  📽️ Init Replay  header, once
-	///=================----------------
+	///----------------------------------
 	ReplayHeader2& rh = replay.header, &gh = ghost.header;
 	if (!bRplPlay)
 	{
@@ -611,6 +603,7 @@ void App::LoadCar()
 	}
 }
 //---------------------------------------------------------------------------------------------------------------
+
 
 //  ⛰️ Terrain  5
 void App::LoadTerrain()
@@ -696,7 +689,7 @@ void App::LoadTrees()
 	}	
 		
 	//  check for cars inside terrain ___
-	/*if (scn->terrain)
+	if (scn->terrain)
 	for (int i=0; i < carModels.size(); ++i)
 	{
 		CAR* car = carModels[i]->pCar;
@@ -704,13 +697,14 @@ void App::LoadTrees()
 		{
 			MATHVECTOR<float,3> pos = car->posAtStart;
 			Vector3 stPos(pos[0],pos[2],-pos[1]);
-			float yt = scn->terrain->getHeight(stPos), yd = stPos.y - yt - 0.5f;
+			float yt = scn->terrain->getHeight(stPos.x, stPos.z),
+				yd = stPos.y - yt - 0.5f;
 			//todo: either sweep test car body, or world->CastRay x4 at wheels -for bridges, pipes
 			//pGame->collision.world->;  //car->dynamics.chassis
 			if (yd < 0.f)
 				pos[2] += -yd + (pSet->game.sim_mode == "easy" ? -0.1f : 0.9f);
 			car->SetPosition1(pos);
-	}	}*/
+	}	}
 }
 
 //  ⏱️ HUD etc

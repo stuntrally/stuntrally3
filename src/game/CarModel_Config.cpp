@@ -18,14 +18,16 @@ using namespace std;
 
 //  🌟 ctor
 //------------------------------------------------------------------------------------------------------
-CarModel::CarModel(int index, int colorId, eCarType type, const string& name,
-	SceneManager* sceneMgr, SETTINGS* set, GAME* game, Scene* s,
+CarModel::CarModel(int index, int colorId,
+	eCarType type, const string& name,
 	Camera* cam, App* app)
 
-	:mSceneMgr(sceneMgr), pSet(set), pGame(game)
-	,sc(s), mCamera(cam), pApp(app)
-	,iIndex(index), iColor(colorId % 6), sDirname(name), cType(type), vType(V_Car)
-	
+	:pApp(app), mCamera(cam)
+
+	,iIndex(index), iColor(colorId % 6)
+	,sDirname(name)
+	,cType(type), vType(V_Car)
+
 	,color(0,1,0)
 	,sChkMtr("checkpoint_normal")
 {
@@ -43,6 +45,12 @@ CarModel::CarModel(int index, int colorId, eCarType type, const string& name,
 	qFixWh[1].Rotate(  PI_d,0,0,1);
 
 	Defaults();
+
+	pSet = app->pSet;
+	pGame = app->pGame;
+	sc = app->sc;
+	mSceneMgr = app->mSceneMgr;
+	terrain = app->mTerra;
 }
 
 void CarModel::SetNumWheels(int n)
@@ -78,6 +86,7 @@ void CarModel::Defaults()
 	for (w=0; w < numWheels; ++w)
 	{
 		whRadius[w] = 0.3f;  whWidth[w] = 0.2f;
+		whTemp[w] = 0.f;
 	}
 	manualExhaustPos = false;  has2exhausts = false;
 
@@ -85,8 +94,8 @@ void CarModel::Defaults()
 	for (w=0; w < 2; ++w)
 		posSph[w] = Vector3::ZERO;
 
-	matStPos = Matrix4::IDENTITY;
-	vStDist = Vector4(0,0,0,0);
+	matStart = Matrix4::IDENTITY;
+	vStartDist = Vector4(0,0,0,0);
 }
 
 
@@ -121,10 +130,9 @@ void CarModel::Load(int startId, bool loop)
 		}
 		int i = pSet->game.collis_cars ? startId : 0;  // offset when cars collide
 
-		//  start pos
+		//  🏁 start pos
 		auto st = pApp->scn->sc->GetStart(i, loop);
-		MATHVECTOR<float,3> pos = st.first;
-		QUATERNION<float> rot = st.second;
+		auto pos = st.first;  auto rot = st.second;
 		
 		vStartPos = Vector3(pos[0], pos[2], -pos[1]);
 		if (pSet->game.trackreverse)

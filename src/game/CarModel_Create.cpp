@@ -137,13 +137,13 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 		HlmsPbsDatablock *pDb =
 			static_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() );
 		if (!body)
-			pDb->setTexture( PBSM_REFLECTION, pApp->mCubemapReflTex );
+			pDb->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
 		else
 		{	//  clone,  set car color
 			static int id = 0;  ++id;
 			db = static_cast<HlmsPbsDatablock *>(
 				pDb->clone( "CarBody" + sCarI + toStr(id) ) );
-			db->setTexture( PBSM_REFLECTION, pApp->mCubemapReflTex );
+			db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
 			item->getSubItem(0)->setDatablock( db );
 			ChangeClr();
 		}
@@ -196,8 +196,8 @@ void CarModel::Create()
 
 
 	SceneNode* ndRoot = mSceneMgr->getRootSceneNode();
-	pMainNode = ndRoot->createChildSceneNode();  ToDel(pMainNode);
-	SceneNode* ndCar = pMainNode->createChildSceneNode();  ToDel(ndCar);
+	ndMain = ndRoot->createChildSceneNode();  ToDel(ndMain);
+	SceneNode* ndCar = ndMain->createChildSceneNode();  ToDel(ndCar);
 
 	//  🎥 --------  Follow Camera   --------
 	if (mCamera && pCar)
@@ -219,7 +219,7 @@ void CarModel::Create()
 	}	}
 	
 
-	//  📍 next checkpoint marker beam
+	//  🥛 next checkpoint marker beam
 	bool deny = pApp->gui->pChall && !pApp->gui->pChall->chk_beam;
 	if (cType == CT_LOCAL && !deny && !pApp->bHideHudBeam)
 	{
@@ -233,7 +233,7 @@ void CarModel::Create()
 	}
 
 
-	///() 🟢🌿 grass sphere test
+	//  🟢🌿 grass sphere test
 	/*#if 0
 	Item* es = mSceneMgr->createItem("sphere.mesh");  ToDel(es);
 	es->setRenderQueueGroup(RQG_CarGhost);
@@ -320,7 +320,7 @@ void CarModel::Create()
 			assert( dynamic_cast<HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() ) );
 			HlmsPbsDatablock *datablock =
 				static_cast<HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() );
-			datablock->setTexture( PBSM_REFLECTION, pApp->mCubemapReflTex );
+			datablock->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
 		}		
 		if (FileExists(sCar + "_brake.mesh") && !ghostTrk)
 		{
@@ -390,7 +390,7 @@ void CarModel::Create()
 						//Vector3(1.9 /*back*/, 0.1 /*up*/, 0.6 * (i==0 ? 1 : -1)/*sides*/
 					vp.z *= boostSizeZ;
 					vp += Vector3(boostOffset[0],boostOffset[1],boostOffset[2]);
-					SceneNode* nb = pMainNode->createChildSceneNode(SCENE_DYNAMIC, bcenter+vp);  ToDel(nb);
+					SceneNode* nb = ndMain->createChildSceneNode(SCENE_DYNAMIC, bcenter+vp);  ToDel(nb);
 					nb->attachObject(parBoost[i]);
 				}else
 				{	// use exhaust pos values from car file
@@ -402,7 +402,7 @@ void CarModel::Create()
 					else
 						pos = Vector3(exhaustPos[0], exhaustPos[1], -exhaustPos[2]);
 
-					SceneNode* nb = pMainNode->createChildSceneNode(SCENE_DYNAMIC, pos);  ToDel(nb);
+					SceneNode* nb = ndMain->createChildSceneNode(SCENE_DYNAMIC, pos);  ToDel(nb);
 					nb->attachObject(parBoost[i]); 
 				}
 				parBoost[i]->getEmitter(0)->setEmissionRate(0);
@@ -424,7 +424,7 @@ void CarModel::Create()
 
 					Vector3 vp = Vector3(thrusterOfs[w][0],thrusterOfs[w][1],
 						thrusterOfs[w][2] + (i-1)*2*thrusterSizeZ[w]);
-					SceneNode* nb = pMainNode->createChildSceneNode(SCENE_DYNAMIC, vp);  ToDel(nb);
+					SceneNode* nb = ndMain->createChildSceneNode(SCENE_DYNAMIC, vp);  ToDel(nb);
 					nb->attachObject(parThrust[ii]);
 					parThrust[ii]->getEmitter(0)->setEmissionRate(0);
 		}	}	}

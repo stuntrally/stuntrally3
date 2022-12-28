@@ -5,13 +5,13 @@
 #include "CarModel.h"
 #include "pathmanager.h"
 #include "mathvector.h"
+#include "settings.h"
 #include "game.h"
 #include "SceneXml.h"
 #include "CScene.h"
 #include "CGame.h"
 // #include "SplitScreen.h"
 #include "FollowCamera.h"
-// #include "CarReflection.h"
 #include "Road.h"
 
 #include <OgreRoot.h>
@@ -25,19 +25,20 @@
 #include <OgreRibbonTrail.h>
 #include <OgreBillboardSet.h>
 #include <OgreSceneNode.h>
-#include <OgreTechnique.h>
-#include <OgreViewport.h>
+// #include <OgreTechnique.h>
+// #include <OgreViewport.h>
 #include <OgreHlmsPbsDatablock.h>
+#include "Terra.h"
 // #include <MyGUI_TextBox.h>
 using namespace Ogre;
 
 
 void CarModel::setVisible(bool vis)
 {
-	mbVisible = vis;
+	bVisible = vis;
 	hideTime = 0.f;
 
-	pMainNode->setVisible(vis);
+	ndMain->setVisible(vis);
 	if (brakes)
 		brakes->setVisible(bBraking && vis);
 
@@ -126,7 +127,7 @@ void CarModel::UpdTrackPercent()
 	float perc = 0.f;
 	if (road && !road->mChks.empty() && !isGhost())
 	{
-		const Vector3& car = pMainNode->getPosition(), next = road->mChks[iNextChk].pos,
+		const Vector3& car = ndMain->getPosition(), next = road->mChks[iNextChk].pos,
 			start = vStartPos, curr = road->mChks[std::max(0,iCurChk)].pos;
 		bool bRev = pSet->game.trackreverse;
 		Real firstD = bRev ? distLast : distFirst;
@@ -209,19 +210,19 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	/// dont get anything from pCar or car.dynamics here
 	/// all must be read from posInfo (it is filled from vdrift car or from replay)
 	
-	if (!pMainNode)  return;
+	if (!ndMain)  return;
 
 	//  set car pos and rot
-	pMainNode->setPosition(posInfo.pos);
+	ndMain->setPosition(posInfo.pos);
 	if (vType == V_Sphere)
-		pMainNode->setOrientation(Quaternion(Quaternion(Degree(-posInfo.hov_roll),Vector3::UNIT_Y)));
+		ndMain->setOrientation(Quaternion(Quaternion(Degree(-posInfo.hov_roll),Vector3::UNIT_Y)));
 	else
 	if (vType == V_Spaceship)  // roll  vis only
-		pMainNode->setOrientation(posInfo.rot * Quaternion(Degree(posInfo.hov_roll),Vector3::UNIT_X));
+		ndMain->setOrientation(posInfo.rot * Quaternion(Degree(posInfo.hov_roll),Vector3::UNIT_X));
 	else
-		pMainNode->setOrientation(posInfo.rot);
+		ndMain->setOrientation(posInfo.rot);
 	
-	///()  grass sphere pos
+	//  🟢🌿 grass sphere pos
 	Vector3 vx(1,0,0);  // car x dir
 	vx = posInfo.rot * vx * 1.1;  //par
 	posSph[0] = posInfo.pos + vx;  posSph[0].y += 0.5f;
@@ -319,8 +320,6 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	}
 
 	//  ⚫💭 wheels  ------------------------------------------------------------------------
-	const float trlH = 0.90f;
-
 	for (w=0; w < numWheels; ++w)
 	{
 		float wR = whRadius[w];
@@ -348,15 +347,15 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		float whVel = posInfo.whVel[w] * 3.6f;  //kmh
 		float slide = posInfo.whSlide[w], squeal = posInfo.whSqueal[w];
 			//LogO(" slide:"+fToStr(slide,3,5)+" squeal:"+fToStr(squeal,3,5));
-		float onGr = slide < 0.f ? 0.f : 1.f;
+		float onGr = slide < 0.f ? 0.f : 1.f;  // ground
 
-		//  wheel temp
+		//  ⚫🌡️ wheel temp
 		whTemp[w] += std::min(12.f, std::max(0.f, squeal*8 - slide*2 + squeal*slide*2)*time);
 		whTemp[w] = std::min(1.5f, whTemp[w]);  ///*
 		whTemp[w] -= time*7.f;  if (whTemp[w] < 0.f)  whTemp[w] = 0.f;
 			//LogO(toStr(w)+" wht "+fToStr(wht[w],3,5));
 
-		///  emit rates +
+		///  ✨ emit rates +
 		Real sq = squeal* std::min(1.f, whTemp[w]), l = pSet->particles_len * onGr;
 		Real emitS = sq * (whVel * 30) * l * 0.45f;  ///*
 		Real emitM = slide < 1.4f ? 0.f :  (8.f * sq * std::min(5.f, slide) * l);
@@ -377,6 +376,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		bool ghPar = !(ghost && !pSet->rpl_ghostpar);
 		if (!ghPar)
 		{	emitD = 0.f;  emitM = 0.f;  emitS = 0.f;  }
+
 
 		///  💭 emit particles
 		Vector3 vpos = posInfo.whPos[w];
@@ -444,13 +444,16 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 			}
 		}
 
-		//  update trails h+
+		//  🎗️ update trails h+
 		if (pSet->trails)
 		{	if (ndWhE[w])
-			{	Vector3 vp = vpos + posInfo.carY * wR*trlH;
+			{
+				//  upd pos
+				const float trlH = 0.90f;
+				Vector3 vp = vpos + posInfo.carY * wR*trlH;
 				// vp.y += 0.5f;  //test
-				// if (terrain && whMtr > 0)
-					//; fixme vp.y = terrain->getHeightAtWorldPosition(vp) + 0.02f;  // 0.05f
+				if (terrain && whMtr > 0)
+					vp.y = terrain->getHeight(vp.x, vp.z) + 0.02f;  // 0.05f
 					//if (/*whOnRoad[w]*/whMtr > 0 && road)  // on road, add ofs
 					//	vp.y += road->fHeight;	}/**/
 				ndWhE[w]->setPosition(vp);
@@ -460,6 +463,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 			float ac = pipe ? 0.f : /*own par..*/lay.smoke < 0.5f ? 0.14f : 0.f;
 			float al = (ac + 0.6f * std::min(1.f, 0.7f * whTemp[w]) ) * onGr;  // par+
 			// al = 1.f;  // test
+			
 			if (whTrail[w])
 			{	whTrail[w]->setInitialColour(0,
 				lay.tcl.x, lay.tcl.y, lay.tcl.z, lay.tcl.w * al/**/);
@@ -469,34 +473,35 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		}
 	}
 	
-	//  blendmap
+	//  ⚫📉  surf info
 	UpdWhTerMtr();
 	
-	//  update brake meshes orientation
+	
+	//  ⚫🔴  update brake disc meshes orientation
 	for (w=0; w < numWheels; ++w)
+	if (ndBrake[w])
 	{
-		if (ndBrake[w])
-		{
-			ndBrake[w]->setPosition(ndWh[w]->getPosition());
-			ndBrake[w]->setOrientation( pMainNode->getOrientation() );
+		ndBrake[w]->setPosition(ndWh[w]->getPosition());
+		ndBrake[w]->setOrientation( ndMain->getOrientation() );
+		
+		// this transformation code is just so the brake mesh can have the same alignment as the wheel mesh
+		ndBrake[w]->yaw(Degree(-90), Node::TS_LOCAL);
+		if (w%2 == 1)
+			ndBrake[w]->setScale(-1, 1, 1);
 			
-			// this transformation code is just so the brake mesh can have the same alignment as the wheel mesh
-			ndBrake[w]->yaw(Degree(-90), Node::TS_LOCAL);
-			if (w%2 == 1)
-				ndBrake[w]->setScale(-1, 1, 1);
-				
-			ndBrake[w]->pitch(Degree(180), Node::TS_LOCAL);
-			
-			if (w < 2)  // turn only front wheels
-				ndBrake[w]->yaw(-Degree(posInfo.whSteerAng[w]));
-		}
+		ndBrake[w]->pitch(Degree(180), Node::TS_LOCAL);
+		
+		if (w < 2)  // turn only front wheels
+			ndBrake[w]->yaw(-Degree(posInfo.whSteerAng[w]));
 	}
 	
 	if (iFirst <= 10)  ++iFirst;  //par
 	
-	UpdateKeys();
+	UpdKeysCam();  // 🎥
 }
 
+
+//  🎥 Camera
 //-------------------------------------------------------------------------------------------------------
 void CarModel::First()
 {
@@ -508,11 +513,11 @@ void CarModel::First()
 		whTrail[w]->setInitialWidth(0, 0.f);
 }
 
-void CarModel::UpdateKeys()
+void CarModel::UpdKeysCam()
 {
 	if (!pCar)  return;
 
-	///  goto last checkp - reset cam
+	///  🔵 goto last checkp - reset cam 🎥
 	if (pCar->bLastChk && !bLastChkOld)
 		First();
 		
@@ -546,17 +551,15 @@ void CarModel::UpdateKeys()
 
 
 
-//-------------------------------------------------------------------------------------------------------
 //  utility
 //-------------------------------------------------------------------------------------------------------
-
 void CarModel::UpdateBraking()
 {
 	if (brakes)
-		brakes->setVisible(bBraking && mbVisible);
+		brakes->setVisible(bBraking && bVisible);
 }
 
-
+//  ✨ upd particles
 void CarModel::UpdParsTrails(bool visible)
 {
 	bool vis = visible && pSet->particles;
@@ -578,7 +581,7 @@ void CarModel::UpdParsTrails(bool visible)
 }
 
 
-///  just to display info on wheel surfaces
+///  ⚫📉  to display info on wheel surfaces
 //-------------------------------------------------------------------------------------------------------
 void CarModel::UpdWhTerMtr()
 {
@@ -603,7 +606,7 @@ void CarModel::UpdWhTerMtr()
 		const TRACKSURFACE* tsu = cd.GetWheelContact(WHEEL_POSITION(i)).GetSurfacePtr();
 		//pCar->dynamics.bTerrain = true;
 
-		#if 0
+		#if 0  // fixme
 		if (pSet->car_dbgsurf)  // dbg info surf  -------
 		{
 		//TerLayer& lay = /*mtr == 0 ? sc->td.layerRoad :*/ sc->td.layersAll[ sc->td.layers[ std::min((int)sc->td.layers.size()-1, mtr-1) ] ];
@@ -625,10 +628,9 @@ void CarModel::UpdWhTerMtr()
 }
 
 
-//  utils
+//  🎨 color
 //-------------------------------------------------------------------------------------------------------
-
-void CarModel::ChangeClr()  // todo:
+void CarModel::ChangeClr()
 {
 	int i = iColor;
 	float h = pSet->gui.car_hue[i],

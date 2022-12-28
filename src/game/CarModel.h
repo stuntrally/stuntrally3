@@ -7,32 +7,36 @@
 #include <OgreMatrix4.h>
 #include <OgrePrerequisites.h>
 #include <OgreColourValue.h>
+#include <vector>
+#include <string>
 
 namespace Ogre {  class HlmsPbsDatablock;
-	class SceneNode;  class Camera;  class SceneManager;  //class Terra;  
-	class ParticleSystem;  class Item;  //class ManualObject;  class AxisAlignedBox;  
+	class SceneNode;  class Camera;  class SceneManager;
+	class ParticleSystem;  class Item;  class Terra;
 	namespace v1 {  class RibbonTrail;  class BillboardSet;  }  }
 namespace MyGUI {  class TextBox;  }
-class SETTINGS;  class GAME;  class CAR;  // vdrift
-class Scene;  class App;  class FollowCamera;  //class CarReflection;
+class SETTINGS;  class GAME;  class CAR;
+class Scene;  class App;  class FollowCamera;
 
 
-//  CarModel is the "Ogre" part of a vehicle.
-//  It is used to put meshes together, particle emitters, etc.
-
+//  CarModel is the "Ogre" part of a Vehicle.
+//  It is used to put meshes together, particle emitters, game logic etc.
+//------------------------------------------------------------------------------------------------
 class CarModel
 {
 public:
-	/// -------------------- Car Types ---------------------------
-	//              Source          Physics (VDrift car)    Camera
-	// CT_LOCAL:    Local player    yes	                    yes
-	// CT_REMOTE:   Network	        yes	                    no
-	// CT_REPLAY:   Replay file     no                      yes
-	// CT_GHOST:	Ghost file		no						no
-	// CT_GHOST2:	other car's ghost file
-	// CT_TRACK:	track's ghost file
+	// 🚗 Car Type |  Source          | 🎥 Camera  | 🔨 Physics (VDrift CAR)
+	//-------------+------------------+------------+------------
+	// CT_LOCAL:   | 👥 Local player  | yes        | yes
+	// CT_REMOTE:  | 📡 Network       | no         | yes
+	// CT_REPLAY:  | 📽️ Replay file   | yes        | no 
+	// CT_GHOST:   | 👻 Ghost file    | no         | no 
 
-	enum eCarType {  CT_LOCAL=0, CT_REMOTE, CT_REPLAY,  CT_GHOST, CT_GHOST2, CT_TRACK };
+	// CT_GHOST2:  | 🚗👻 other car's ghost file .rpl
+	// CT_TRACK:   | 🏞️👻 track's ghost file .gho
+
+	enum eCarType
+	{	CT_LOCAL=0, CT_REMOTE, CT_REPLAY,  CT_GHOST, CT_GHOST2, CT_TRACK };
 	eCarType    cType = CT_LOCAL;
 	VehicleType vType = V_Car;
 	int numWheels = 4;
@@ -42,9 +46,10 @@ public:
 	void SetNumWheels(int n);
 	bool hasRpm()     const {  return vType == V_Car;  }
 	
+
 	//  🌟 ctor  ----
-	CarModel(int index, int colorId, eCarType type, const std::string& name,
-		Ogre::SceneManager* sceneMgr, SETTINGS* set, GAME* game, Scene* sc,
+	CarModel(int index, int colorId,
+		eCarType type, const std::string& name,
 		Ogre::Camera* cam, App* app);
 	~CarModel();
 	
@@ -55,6 +60,7 @@ public:
 	//  🟢 Ogre
 	Ogre::Camera* mCamera =0;
 	Ogre::SceneManager* mSceneMgr =0;
+	Ogre::Terra* terrain =0;
 
 
 	Ogre::String sDispName;  // diplay name in opponents list (nick for CT_REMOTE)
@@ -64,34 +70,42 @@ public:
 	float fLapAlpha = 1.f;
 	
 	
-	///  📄 config  --------
+	///  📄 Config  ------------------------------------------------
 	void LoadConfig(const std::string & pathCar), Defaults();
+	void Load(int startId, bool loop);  // create game CAR
 
-	//  model params  from .car
-	float driver_view[3], hood_view[3], ground_view[3];  // mounted cameras
-	float interiorOffset[3], boostOffset[3], boostSizeZ;
-	float thrusterOfs[PAR_THRUST][3], thrusterSizeZ[PAR_THRUST];
+	//  🚗 model params  from .car
+	float interiorOffset[3];
+	//  🎥 mounted cameras
+	float driver_view[3], hood_view[3], ground_view[3];
 
-	std::vector<Ogre::Vector3> brakePos;  // brake flares
+	//  🔴 brake flares
+	std::vector<Ogre::Vector3> brakePos;
 	float brakeSize = 0.2f;
 	Ogre::ColourValue brakeClr;
 	
+	//  💨🔥 boost
+	float boostOffset[3], boostSizeZ;
+	float thrusterOfs[PAR_THRUST][3], thrusterSizeZ[PAR_THRUST];
 	std::string sBoostParName, sThrusterPar[PAR_THRUST];
-	bool bRotFix;
 
-	std::vector<float> whRadius, whWidth;  // for tire trails
+	// ⚫💭 for tire trails
+	std::vector<float> whRadius, whWidth;
 	std::vector<MATHVECTOR<float,3> > whPos;
 	QUATERNION<float> qFixWh[2];
-	float maxangle = 26.f;  //steer
 
-	//  exhaust position for boost particles
+	float maxangle = 26.f;  // steer
+	bool bRotFix =0;
+
+	//  💨 exhaust position for boost particles-
 	bool manualExhaustPos;  // if true, use values below, if false, guess from bounding box
 	bool has2exhausts;  // car has 2nd exhaust, if true, mirror exhaust 1 for position
 	float exhaustPos[3];  // position of first exhaust
 	
 
-	///  🆕 Create  --------
-	void Load(int startId, bool loop), Create(), /*CreateReflection(),*/ Destroy();
+	///  🆕 Create  ------------------------
+	void Create(), Destroy();  // CreateReflection()
+
 	void CreatePart(Ogre::SceneNode* ndCar, Ogre::Vector3 vPofs,
 		Ogre::String sCar2, Ogre::String sCarI, Ogre::String sMesh, Ogre::String sEnt,
 		bool ghost, Ogre::uint32 visFlags,
@@ -103,16 +117,17 @@ public:
 	
 	//  💫 Update  --------
 	void Update(PosInfo& posInfo, PosInfo& posInfoCam, float time);
-	void UpdateKeys();  // for camera X,C, last chk F12
+	void UpdKeysCam();  // for camera X,C, last chk 0
 
 
 	//  resource  --------
-	int iIndex = 0, iColor = 0;  // car id, color id
+	int iIndex = 0;  // car id
 	std::string sDirname;  // dir name of car (e.g. ES)
 	Ogre::String resGrpId, mtrId;  // resource group name, material suffix
 	std::string resCar;  // path to car textures
 	//  🎨 color
-	Ogre::ColourValue color;  // for minimap pos tri color  //float hue, sat, val;
+	int iColor = 0;  // color id
+	Ogre::ColourValue color;  // for minimap pos tri color
 	Ogre::HlmsPbsDatablock *db =0;
 	void ChangeClr();  //  Apply new color
 		
@@ -128,33 +143,35 @@ public:
 
 
 	//  🚗 Main node  --------
-	Ogre::SceneNode* pMainNode =0, *ndSph =0;
-	Ogre::Vector3 posSph[2];
-	Ogre::v1::BillboardSet* brakes =0;
-	std::vector<Ogre::Light*> lights;
+	Ogre::SceneNode* ndMain =0, *ndSph =0;
+	Ogre::Vector3 posSph[2];  // 🟢🌿 grass sphere
+
+	std::vector<Ogre::Light*> lights;  // 💡
 	
-	void setVisible(bool visible);  // hide/show
-	bool mbVisible = true;  float hideTime = 1.f;
+	//  hide/show
+	void setVisible(bool visible);
+	bool bVisible = true;  float hideTime = 1.f;
 		
-	//  VDrift car
+	//  🚗 VDrift car
 	CAR* pCar =0;  // all need this set (even ghost, has it from 1st car)
 	
 	
-	///  🏁 Checkpoint  --------
-	//  vars, start pos, lap
-	bool bGetStPos = true;  Ogre::Matrix4 matStPos;  Ogre::Vector4 vStDist;
+	///  🔵 Checkpoints  --------
 	int iInChk = -1, iCurChk = -1,
-		iNextChk = 0, iNumChks = 0,  // cur checkpoint -1 at start
-		iInWrChk = -1,
-		iWonPlace = 0, iWonPlaceOld = 0;
+		iNextChk = 0, iNumChks = 0;  // cur checkpoint -1 at start
+	int iWonPlace = 0, iWonPlaceOld = 0;  // 👥🥇
+	bool bWrongChk = 0;  int iInWrongChk = -1;  // ❌
+	float fChkTime = 0.f, timeAtCurChk = 0.f;
+	
+	//  🏁 start/finish pos
+	bool bInStart = 0, bGetStart = true;
+	Ogre::Matrix4 matStart;  Ogre::Vector4 vStartDist;
 	float iWonMsgTime = 0.f;
-	bool bInSt = 0, bWrongChk = 0;  float fChkTime = 0.f;
-	float timeAtCurChk = 0.f;
-
-	//bool Checkpoint(const PosInfo& posInfo, class SplineRoad* road);  // update
 	Ogre::Vector3 vStartPos;
+
 	void ResetChecks(bool bDist=false), UpdNextCheck(), ShowNextChk(bool visible);
 	Ogre::String sChkMtr;  bool bChkUpd = true;
+
 
 	//  ➰🎥 for loop camera change
 	int iLoopChk = -1, iLoopLastCam = -1;
@@ -165,7 +182,8 @@ public:
 	float angCarY = 0.f;  // car yaw angle for minimap
 	float distFirst = 1.f, distLast = 1.f, distTotal = 10.f;  // checks const distances set at start
 
-	float trackPercent = 0.f;  // % of track driven
+	//  % of track driven
+	float trackPercent = 0.f;
 	void UpdTrackPercent();
 
 	
@@ -182,20 +200,23 @@ public:
 
 	//  ⚫ Wheels, Nodes  --------
 	std::vector<Ogre::SceneNode*> ndWh, ndWhE, ndBrake;
-	Ogre::SceneNode* ndNextChk =0;  // beam
-	Ogre::Item* itNextChk =0;
-
+	
 	//  ⛰️ track surface for wheels
 	void UpdWhTerMtr();
 	Ogre::String txtDbgSurf;
-	
+
+	//  🥛 next chk beam
+	Ogre::SceneNode* ndNextChk =0;
+	Ogre::Item* itNextChk =0;
+
 
 	//  💥 to destroy
 	std::vector<Ogre::SceneNode*> vDelNd;		void ToDel(Ogre::SceneNode* nd);
 	std::vector<Ogre::Item*> vDelIt;			void ToDel(Ogre::Item* it);
 	std::vector<Ogre::ParticleSystem*> vDelPar;	void ToDel(Ogre::ParticleSystem* par);
 
-	//  🔴 brake state
+	//  🔴 brake flares
+	Ogre::v1::BillboardSet* brakes =0;
 	bool bBraking = true;
 	void UpdateBraking();
 };

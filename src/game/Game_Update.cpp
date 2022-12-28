@@ -221,7 +221,7 @@ void App::update( float dt )
 		if (scn->pace)
 		{	
 			const CarModel* cm = *carModels.begin();
-			Vector3 p = cm->pMainNode->getPosition();
+			Vector3 p = cm->ndMain->getPosition();
 			float vel = bRplPlay ? frm[0].vel : cm->pCar->GetSpeedometer();
 			scn->pace->carVel = vel;
 			scn->pace->rewind = bRplPlay ? false : cm->pCar->bRewind;
