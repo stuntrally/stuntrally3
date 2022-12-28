@@ -337,7 +337,7 @@ void CGui::slSizeMinimap(SV*)
 {
 	Real sz = pSet->size_minimap;  //int all = 0;
 	app->asp = float(app->mWindow->getWidth()) / float(app->mWindow->getHeight());
-	app->xm1 = 1-sz/app->asp;  app->ym1 = -1+sz;  app->xm2 = 1.0;  app->ym2 = -1.0;
+	app->xm1 = 1.f - sz / app->asp;  app->ym1 = -1.f + sz;  app->xm2 = 1.f;  app->ym2 = -1.f;
 	/*for (int i=0; i < app->RT_Brush; ++i)  if (i != app->RT_Last)
 		if (app->rt[i].mini)
 			app->rt[i].mini->setCorners(app->xm1, app->ym1, app->xm2, app->ym2);*/
@@ -569,7 +569,8 @@ void CGui::PickShow(EPick n, bool toggleVis)
 	liRd->setVisible(n == P_Rd);
 	panPick->setPosition(liPickW[n], 0);
 
-	const int wx = pSet->windowx, wy = pSet->windowy;  ///  pick dim
+	const int wx = app->mWindow->getWidth(),
+			  wy = app->mWindow->getHeight();  ///  pick dim
 	app->mWndPick->setCoord(wx * liPickX[n], 12.f, liPickW[n], 0.95f*wy);
 	
 	if (n == P_Rd)  //  upd pick road

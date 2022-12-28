@@ -404,8 +404,7 @@ void CHud::Create()
 	}
 
 	///  ⚫ tire vis circles  + + + +
-	asp = float(pSet->windowx) / float(pSet->windowy);
-	// asp = float(app->mWindow->getWidth())/float(app->mWindow->getHeight());
+	asp = float(app->mWindow->getWidth()) / float(app->mWindow->getHeight());
 
 #if 0
 	if (pSet->car_tirevis)

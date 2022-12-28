@@ -79,9 +79,9 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 	// 					sv->Init("ShadowSize",	&pSet->shadow_size, 0,ciShadowSizesNum-1);   sv->DefaultI(3);
 	sv= &svShadowDist;	sv->Init("ShadowDist",	&pSet->shadow_dist, 20.f,5000.f, 3.f, 0,3, 1.f," m");  sv->DefaultF(1300.f);
 
-	BtnC("Apply", btnShadows);
-	BtnC("ApplyShaders", btnShaders);
-	BtnC("ApplyShadersWater", btnShaders);
+	// BtnC("Apply", btnShadows);
+	// BtnC("ApplyShaders", btnShaders);
+	// BtnC("ApplyShadersWater", btnShaders);
 	
 	//  🌊 water  // todo:
 	// ck= &ckWaterReflect; ck->Init("WaterReflection", &pSet->water_reflect);  CevC(Water);

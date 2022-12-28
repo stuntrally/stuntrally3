@@ -519,7 +519,7 @@ void CGui::InitGui()
 
 
 	//  🏁 New Game  ----
-	for (i=0; i <= 3; ++i)
+	for (i=0; i <= 2; ++i)
 	{	Btn("NewGame"+toStr(i), btnNewGame);  if (i==1)  btNewGameCar = btn;  }
 
 

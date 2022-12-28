@@ -11,10 +11,6 @@
 #include <OgreHlmsDatablock.h>
 #include <OgreHlmsUnlitDatablock.h>
 #include <OgreHlmsManager.h>
-// #include <OgreGpuProgramManager.h>
-// #include <OgreTextureGpuManager.h>
-// #include <OgrePixelFormatGpuUtils.h>
-// #include <Vao/OgreVaoManager.h>
 using namespace Ogre;
 
 

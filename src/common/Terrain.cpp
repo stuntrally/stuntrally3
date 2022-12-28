@@ -23,7 +23,7 @@
 using namespace Ogre;
 
 
-///  Setup Terrain
+///  OLD  Setup Terrain
 //---------------------------------------------------------------------------------------------------------------
 /*void CScene::SetupTerrain()
 {
@@ -141,7 +141,7 @@ void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
 //  save ter hmap to mem (all editing would be lost)
 void CScene::copyTerHmap()
 {
-	if (!terrain) return;
+	if (!terrain)  return;
 	//; float *fHmap = terrain->getHeightData();
 	// int size = sc->td.iVertsX * sc->td.iVertsY * sizeof(float);
 	// memcpy(sc->td.hfHeight, fHmap, size);
@@ -155,11 +155,8 @@ void CScene::DestroyTerrain()
 	{
 		texLayD[i].Destroy();
 		texLayN[i].Destroy();
-	}
+	}*/
 	terrain = 0;
-	if (mTerrainGroup)
-		mTerrainGroup->removeAllTerrains();
-	*/
 	app->DestroyTerrain();
 }
 

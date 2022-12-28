@@ -98,7 +98,7 @@ bool App::frameEnded(float dt)
 	///  input
 	// mInputWrapper->capture(false);
 
-	//  road pick
+	//  🛣️📍 Road Pick
 	SplineRoad* road = scn->road;
 	if (road)
 	{
@@ -107,7 +107,7 @@ bool App::frameEnded(float dt)
 			 my = Real(mp.top) / mWindow->getHeight();
 		bool setpos = edMode >= ED_Road || !brLockPos,
 			hide = !(edMode == ED_Road && bEdit());
-		//; road->Pick(mCamera, mx, my,  setpos, edMode == ED_Road, hide);
+		road->Pick(mCamera, mx, my,  setpos, edMode == ED_Road, hide);
 
 		//*****************  temp Ter brush pos  ********************
 		road->bHitTer = true;
@@ -141,13 +141,15 @@ bool App::frameEnded(float dt)
 	}	bu++;
 
 
-	///<>  Edit Ter
 	TerCircleUpd();
-	bool def = false;
+	
+	bool def = false;  // deformed
 	static bool defOld = false;
-	float gd = scn->sc->densGrass;
+	
+	float gd = scn->sc->densGrass;  // grass dens changed
 	static float gdOld = scn->sc->densGrass;
 
+	///<>  ⛰️ Edit Terrain, brushes
 	if (scn->terrain && road && bEdit() && road->bHitTer)
 	{
 		Real s = shift ? 0.25 : ctrl ? 4.0 :1.0;
@@ -202,7 +204,7 @@ if (pSet->bTrees)
 		}
 	}
 
-	if (!def && defOld)
+	if (!def && defOld)  // upd grass after terrain deform  // todo..
 	{
 		scn->UpdGrassDens();
 		//if (grd.rnd)

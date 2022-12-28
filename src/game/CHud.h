@@ -159,12 +159,7 @@ public:
 		 UpdDebug(CAR* pCar, CarModel* pCarM);
 
 
-	//  ⛓️ util create
-	Ogre::ManualObject* Create2D(const Ogre::String& mat, Ogre::SceneManager* sceneMgr,
-		Ogre::Real size, bool dyn /*= false*/, bool clr /*= false*/,
-		Ogre::Real mul, Ogre::Vector2 ofs,
-		Ogre::uint32 vis, Ogre::uint8 rndQue, int cnt = 1);
-
+	//  ⛓️ util
 	// Txt CreateNickText(int carId, Ogre::String text);
 	Ogre::Vector3 projectPoint(const Ogre::Camera* cam, const Ogre::Vector3& pos);  // 2d xy, z - out info
 
