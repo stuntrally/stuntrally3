@@ -23,7 +23,6 @@ using namespace std;
 
 ///  📃 Gui Init Lists
 //----------------------------------------------------------------------------------------------------------------------
-
 void CGui::InitGuiLists() 
 {
 	///  Fill Combo boxes  . . . . . . .
@@ -62,7 +61,7 @@ void CGui::InitGuiLists()
 	Cmb(cmbTexNorm, "TexNormal", comboTexNorm);  cmbTexNorm->addItem("flat_n.png");
 
 	strlist li;
-	PATHMANAGER::DirList(sData + (pSet->tex_size > 0 ? "/terrain" : "/terrain_s"), li);
+	PATHMANAGER::DirList(sData + "/terrain", li);
 	for (auto q : li)
 	{
 		if (StringUtil::match(q, "*_n.*", false))
@@ -226,6 +225,7 @@ void CGui::InitGuiLists()
 ///------------------------------------------------------------------------------------------------------------
 void CGui::FillPickLists()
 {
+
 	///  ⛅ Sky Mtr  --------
 	Mli2 lp;  int l,u;
 	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
@@ -249,6 +249,7 @@ void CGui::FillPickLists()
 		lp->setSubItemNameAt(1,l, c+ s.mtr);
 		lp->setSubItemNameAt(2,l, c+ fToStr( s.ldPitch, 0,2));
 	}
+
 
 	///  🏔️ Terrain layers  Tex Diff  --------
 	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
@@ -276,6 +277,7 @@ void CGui::FillPickLists()
 			lp->setSubItemNameAt(3,l, (t.triplanar ? "#E0E0E01" : "#6565650"));
 	}	}
 
+
 	///  🌿 Grass  --------------------------------
 	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
 	liGrs = lp;  lp->eventListChangePosition += newDelegate(this, &CGui::listPickGrs);
@@ -301,6 +303,7 @@ void CGui::FillPickLists()
 			lp->setSubItemNameAt(3,l, c+ fToStr(t.maxSy, 1,3));
 	}	}
 
+
 	///  🌳🪨 Vegetation  --------------------------------
 	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);
 	liVeg = lp;  lp->eventListChangePosition += newDelegate(this, &CGui::listPickVeg);
@@ -325,6 +328,7 @@ void CGui::FillPickLists()
 			lp->setSubItemNameAt(2,l, c+ fToStr(t.maxScale, 1,3));
 			//lp->setSubItemNameAt(3,l, c+ fToStr(t.maxTerAng, 0,2));
 	}
+
 
 	///  🛣️ Road  --------------------------------
 	lp = app->mWndPick->createWidget<MultiList2>("MultiListBox",8,8,400,800, Align::Left | Align::VStretch);

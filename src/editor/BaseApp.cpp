@@ -29,27 +29,3 @@ void BaseApp::updateStats()
 		txCamPos->setCaption(s);
 	}
 }
-
-
-//  rendering
-//-------------------------------------------------------------------------------------
-bool BaseApp::frameStarted()
-{	
-	updateStats();
-
-	//; if (scn->ndSky)  ///o-
-	// 	scn->ndSky->setPosition(mCamera->getPosition());
-
-	return true;
-}
-
-bool BaseApp::frameRenderingQueued()
-{
-	if (mWindow->isClosed())
-		return false;
-
-	if (mShutDown)
-		return false;
-
-	return true;
-}

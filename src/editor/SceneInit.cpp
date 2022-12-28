@@ -46,7 +46,7 @@ void App::createScene01()  // once, init
 	//  SR cfg, xmls etc
 	Load();
 
-	//  prv tex
+	//  🖼️ prv tex  todo
 	int k=1024;
 	// prvView.Create(k,k,"PrvView");
 	// prvRoad.Create(k,k,"PrvRoad");
@@ -63,21 +63,17 @@ void App::createScene01()  // once, init
 
 
 	//  🎥 camera
-	asp = float(mWindow->getWidth())/float(mWindow->getHeight());
-	mCamera->setFarClipDistance(pSet->view_distance*1.1f);
+	asp = float(mWindow->getWidth()) / float(mWindow->getHeight());
+	mCamera->setFarClipDistance(pSet->view_distance);
 	mCamera->setNearClipDistance(0.1f);
 
 	//  cam pos from last set
-	mCamera->setPosition(Vector3(pSet->cam_x,pSet->cam_y,pSet->cam_z));
-	mCamera->setDirection(Vector3(pSet->cam_dx,pSet->cam_dy,pSet->cam_dz).normalisedCopy());
+	mCamera->setPosition(Vector3(pSet->cam_x, pSet->cam_y, pSet->cam_z));
+	mCamera->setDirection(Vector3(pSet->cam_dx, pSet->cam_dy, pSet->cam_dz).normalisedCopy());
 	// mViewport->setVisibilityMask(RV_MaskAll);  // hide prv cam rect
 
-	//  tex fil
-	// MaterialManager::getSingleton().setDefaultTextureFiltering(TFO_ANISOTROPIC);
-	// MaterialManager::getSingleton().setDefaultAnisotropy(pSet->anisotropy);
 
 	Ogre::Timer ti;
-
 
 	//  📄 data load xml
 	scn->data->Load();
@@ -164,15 +160,13 @@ void App::destroyScene()
 //  💥 Destroy all
 void App::NewCommon(bool onlyTerVeget)
 {
-	scn->DestroyAllAtmo();  // 🌦️
+	if (!onlyTerVeget)
+		scn->DestroyAllAtmo();  // 🌦️
 
 	//  🌳🪨  Vegetation
 	scn->DelRoadDens();
 	scn->grass->Destroy();  // 🌿
 	scn->DestroyTrees();
-
-	// if (!onlyTerVeget)
-	// 	scn->DestroyAllAtmo(); // Weather();
 
 	// mSceneMgr->destroyAllStaticGeometry();
 	

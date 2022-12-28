@@ -39,11 +39,6 @@ protected:
 	// void createCamera(), createFrameListener();
 	// void setupResources(), loadResources();
 
-	///  💫 update, frame events
-	bool frameStarted();
-	bool frameRenderingQueued();
-	bool frameEnded();
-	
 	void onCursorChange(const std::string& name);
 	// virtual void windowResized(int x, int y);
 	// virtual void windowClosed();

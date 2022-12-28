@@ -247,7 +247,7 @@ void App::postRenderTargetUpdate(const RenderTargetEvent &evt)
 	}
 
 	//  restore shadows splits todo...
-	//mCamera->setFarClipDistance(pSet->view_distance*1.1f);
+	//mCamera->setFarClipDistance(pSet->view_distance);
 	//mCamera->setNearClipDistance(0.1f);
 	//UpdPSSMMaterials();
 }
