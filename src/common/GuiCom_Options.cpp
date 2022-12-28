@@ -5,6 +5,7 @@
 #include "CScene.h"
 #include "Road.h"
 #include "pathmanager.h"
+#include "settings.h"
 #ifndef SR_EDITOR
 	#include "game.h"
 	#include "CGame.h"
@@ -15,8 +16,7 @@
 #endif
 #include "Slider.h"
 // #include "WaterRTT.h"
-// #include "sdlinputwrapper.hpp"
-// #include <OgreTerrain.h>
+// #include "Terra.h"
 #include <OgreCamera.h>
 // #include <OgreMaterialManager.h>
 // #include <OgreSceneNode.h>
@@ -27,7 +27,7 @@ using namespace std;
 
 
 
-///  Gui Init  [Graphics]
+///  🎛️ Gui Init  📊 Graphics
 //----------------------------------------------------------------------------------------------------------------
 
 void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
@@ -37,36 +37,31 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 
 	BtnC("Quit", btnQuit);  bnQuit = btn;
 	
-	//  detail
+	//  geometry detail far
 	sv= &svTerDetail;	sv->Init("TerDetail",	&pSet->terdetail,	0.f,4.f, 1.5f);  SevC(TerDetail);  sv->DefaultF(1.f);
-	sv= &svTerDist;		sv->Init("TerDist",		&pSet->terdist, 0.f,2000.f, 2.f, 0,3, 1.f," m");
-																				SevC(TerDist);  sv->DefaultI(500.f);
 	sv= &svRoadDist;	sv->Init("RoadDist",	&pSet->road_dist,	0.f,4.f, 2.f, 2,5);  sv->DefaultF(1.6f);
-
-	//  textures
-	CmbC(cmb, "TexFiltering", comboTexFilter);
-	cmb->removeAllItems();
-	cmb->addItem(TR("#{Bilinear}"));
-	cmb->addItem(TR("#{Trilinear}"));
-	cmb->addItem(TR("#{Anisotropic}"));
-	cmb->setIndexSelected(pSet->tex_filt);  comboTexFilter(cmb, pSet->tex_filt);
-
 	sv= &svViewDist;	sv->Init("ViewDist",	&pSet->view_distance, 50.f,20000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
 																				SevC(ViewDist);  sv->DefaultF(8000.f);
-	sv= &svAnisotropy;	sv->Init("Anisotropy",	&pSet->anisotropy,	0,16);		SevC(Anisotropy);  sv->DefaultI(4);
-	sv= &svTexSize;
-		sv->strMap[0] = TR("#{Small}");  sv->strMap[1] = TR("#{Big}");
-						sv->Init("TexSize",		&pSet->tex_size,	0,1);	sv->DefaultI(1);
-	//  terrain
-	sv= &svTerMtr;
-		sv->strMap[0] = TR("#{GraphicsAll_Lowest}");	sv->strMap[1] = TR("#{GraphicsAll_Medium}");
-		sv->strMap[2] = TR("#{GraphicsAll_High}");		sv->strMap[3] = "Parallax-";
-						sv->Init("TerMtr",		&pSet->ter_mtr,		0,3);	sv->DefaultI(2);
-	sv= &svTerTripl;
-		sv->strMap[0] = TR("#{None}");  sv->strMap[1] = TR("#{max} 2");  sv->strMap[2] = TR("#{Any}");
-						sv->Init("TerTripl",	&pSet->ter_tripl,	0,2);	sv->DefaultF(1);
 
-	//  trees/grass
+	//  🖼️ textures filtering
+	CmbC(cmb, "TexFiltering", comboTexFilter);
+	cmb->removeAllItems();
+	cmb->addItem(TR("#{Bilinear}"));     cmb->addItem(TR("#{Trilinear}"));
+	cmb->addItem(TR("#{Anisotropic}"));  cmb->addItem(TR("#{Anisotropic} #{RplAll}"));
+	cmb->setIndexSelected(pSet->tex_filt);  comboTexFilter(cmb, pSet->tex_filt);
+
+	sv= &svAnisotropy;	sv->Init("Anisotropy",	&pSet->anisotropy,	0,16);		SevC(Anisotropy);  sv->DefaultI(4);
+
+	//  ⛰️ terrain
+	/*sv= &svTerMtr;
+		sv->strMap[0] = TR("#{GraphicsAll_Lowest}");	sv->strMap[1] = TR("#{GraphicsAll_Medium}");
+		sv->strMap[2] = TR("#{GraphicsAll_High}");		//sv->strMap[3] = "Parallax-";
+						sv->Init("TerMtr",		&pSet->ter_mtr,		0,2);	sv->DefaultI(2);*/
+	/*sv= &svTerTripl;
+		sv->strMap[0] = TR("#{None}");  sv->strMap[1] = TR("#{max} 2");  sv->strMap[2] = TR("#{Any}");
+						sv->Init("TerTripl",	&pSet->ter_tripl,	0,2);	sv->DefaultF(1);*/
+
+	//  🌳🪨 veget  🌿 grass
 	sv= &svTrees;		sv->Init("Trees",		&pSet->gui.trees,	0.f,4.f, 2.f);   sv->DefaultF(1.5f);
 	sv= &svGrass;		sv->Init("Grass",		&pSet->grass,		0.f,4.f, 2.f);   sv->DefaultF(1.f);
 	sv= &svTreesDist;	sv->Init("TreesDist",   &pSet->trees_dist,	0.5f,7.f, 2.f);  sv->DefaultF(1.f);
@@ -74,7 +69,7 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 	BtnC("TrGrReset",  btnTrGrReset);
 
 
-	//  shadows
+	//  🌒 shadows  // todo:
 	sv= &svShadowType;
 		sv->strMap[0] = TR("#{None}");	sv->strMap[1] = "Depth";	sv->strMap[2] = "Soft-";
 						sv->Init("ShadowType",	&pSet->shadow_type,  0,1);  sv->DefaultI(1);
@@ -88,7 +83,7 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 	BtnC("ApplyShaders", btnShaders);
 	BtnC("ApplyShadersWater", btnShaders);
 	
-	//  water
+	//  🌊 water  // todo:
 	// ck= &ckWaterReflect; ck->Init("WaterReflection", &pSet->water_reflect);  CevC(Water);
 	// ck= &ckWaterRefract; ck->Init("WaterRefraction", &pSet->water_refract);  CevC(Water);
 	// sv= &svWaterSize;
@@ -102,14 +97,14 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 		cmb->addItem(TR("#{GraphicsAll_Lowest}"));  cmb->addItem(TR("#{GraphicsAll_Low}"));
 		cmb->addItem(TR("#{GraphicsAll_Medium}"));  cmb->addItem(TR("#{GraphicsAll_High}"));
 		cmb->addItem(TR("#{GraphicsAll_Higher}"));  cmb->addItem(TR("#{GraphicsAll_VeryHigh}"));
-		cmb->addItem(TR("#{GraphicsAll_Ultra}"));   cmb->addItem(TR("#{GraphicsAll_Impossible}"));
+		cmb->addItem(TR("#{GraphicsAll_Highest}")); cmb->addItem(TR("#{GraphicsAll_Ultra}"));
 		cmb->setIndexSelected(pSet->preset);
 	}
 	
-	//  video
-	ck= &ckLimitFps;   ck->Init("LimitFpsOn", &pSet->limit_fps);
-	sv= &svLimitFps;   sv->Init("LimitFps",   &pSet->limit_fps_val,	20.f,144.f);  sv->DefaultF(60.f);
-	sv= &svLimitSleep; sv->Init("LimitSleep", &pSet->limit_sleep,  -2,20, 1.5f);  sv->DefaultI(-1);
+	//  video  // todo?
+	// ck= &ckLimitFps;   ck->Init("LimitFpsOn", &pSet->limit_fps);
+	// sv= &svLimitFps;   sv->Init("LimitFps",   &pSet->limit_fps_val,	20.f,144.f);  sv->DefaultF(60.f);
+	// sv= &svLimitSleep; sv->Init("LimitSleep", &pSet->limit_sleep,  -2,20, 1.5f);  sv->DefaultI(-1);
 	
 	//  screen
 	/*CmbC(cmb, "CmbAntiAliasing", cmbAntiAliasing);
@@ -161,13 +156,7 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 
 void CGuiCom::comboTexFilter(CMB)
 {
-	/*pSet->tex_filt = val;
-	TextureFilterOptions tfo;
-	switch (val)  {
-		case 0:	 tfo = TFO_BILINEAR;	break;
-		case 1:	 tfo = TFO_TRILINEAR;	break;
-		case 2:	 tfo = TFO_ANISOTROPIC;	break;	}
-	MaterialManager::getSingleton().setDefaultTextureFiltering(tfo);*/
+	pSet->tex_filt = val;
 }
 
 void CGuiCom::slAnisotropy(SV*)
@@ -184,13 +173,15 @@ void CGuiCom::slViewDist(SV* sv)
 	#ifndef SR_EDITOR
 		// app->mSplitMgr->UpdateCamDist();  // game, for all cams
 	#else
-		app->mCamera->setFarClipDistance(pSet->view_distance*1.1f);
+		app->mCamera->setFarClipDistance(pSet->view_distance);
 	#endif
 }
 
 void CGuiCom::slTerDetail(SV*)
 {
 	// app->scn->UpdTerErr();
+	// todo
+	// app->mTerra->iLodMax = pSet->terdetail
 }
 
 void CGuiCom::slTerDist(SV*)

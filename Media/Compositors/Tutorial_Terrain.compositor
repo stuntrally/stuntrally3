@@ -27,7 +27,7 @@ abstract target cubemap_target
 
 }
 
-compositor_node CubemapRendererNode
+compositor_node CubemapNode
 {
 	in 0 cubemap
 
@@ -50,7 +50,7 @@ compositor_node CubemapRendererNode
 
 // MSAA Cubemaps do not exist. Therefore we have to manually define the RTV (RenderTextureView)
 // To render to a temporary MSAA surface and tell Ogre to resolve the MSAA contents into a cubemap
-compositor_node CubemapRendererNodeMsaa
+compositor_node CubemapNodeMsaa
 {
 	in 0 cubemap
 
@@ -84,7 +84,7 @@ compositor_node CubemapRendererNodeMsaa
 
 
 //  render
-compositor_node Tutorial_TerrainRenderingNode
+compositor_node SR3_Render
 {
 	in 0 rt_renderwindow
 	in 1 demo_dynamic_cubemap
@@ -115,7 +115,7 @@ compositor_node Tutorial_TerrainRenderingNode
 			expose demo_dynamic_cubemap
 
 			overlays	on
-			shadows		Tutorial_TerrainShadowNode
+			shadows		SR3_Shadows
 		}
 
 		// pass custom MYGUI
@@ -127,7 +127,7 @@ compositor_node Tutorial_TerrainRenderingNode
 
 
 //  shadows
-compositor_node_shadow Tutorial_TerrainShadowNode
+compositor_node_shadow SR3_Shadows
 {
 	technique pssm
 
@@ -160,10 +160,10 @@ compositor_node_shadow Tutorial_TerrainShadowNode
 
 
 //  workspace
-workspace Tutorial_TerrainWorkspace
+workspace SR3_Workspace
 {
 	// Render Window on channel #0
-	connect_external 0 Tutorial_TerrainRenderingNode 0
+	connect_external 0 SR3_Render 0
 	// Cubemap on channel #1
-	connect_external 1 Tutorial_TerrainRenderingNode 1
+	connect_external 1 SR3_Render 1
 }

@@ -17,27 +17,26 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "misc.mouse_capture", mouse_capture);
 	Param(c,w, "misc.screenshot_png", screen_png);
 
-	//  video
-	Param(c,w, "video.windowx", windowx);			Param(c,w, "video.windowy", windowy);
-	Param(c,w, "video.fullscreen", fullscreen);		Param(c,w, "video.vsync", vsync);
+	//  video  // todo..
+	// Param(c,w, "video.windowx", windowx);			Param(c,w, "video.windowy", windowy);
+	// Param(c,w, "video.fullscreen", fullscreen);		Param(c,w, "video.vsync", vsync);
 
 	// Param(c,w, "video.fsaa", fsaa);
 	// Param(c,w, "video.buffer", buffer);				Param(c,w, "video.rendersystem", rendersystem);
 
-	Param(c,w, "video.limit_fps", limit_fps);
-	Param(c,w, "video.limit_fps_val", limit_fps_val);	Param(c,w, "video.limit_sleep", limit_sleep);
+	// Param(c,w, "video.limit_fps", limit_fps);
+	// Param(c,w, "video.limit_fps_val", limit_fps_val);	Param(c,w, "video.limit_sleep", limit_sleep);
 
 
 	//  graphics  ----
 	Param(c,w, "graph_detail.preset", preset);
-	// Param(c,w, "graph_shadow.lightmap_size", lightmap_size);
 	
-	Param(c,w, "graph_detail.anisotropy", anisotropy);
-	Param(c,w, "graph_detail.tex_filter", tex_filt);		Param(c,w, "graph_detail.tex_size", tex_size);
-	Param(c,w, "graph_detail.ter_mtr", ter_mtr);			Param(c,w, "graph_detail.ter_tripl", ter_tripl);
+	Param(c,w, "graph_detail.anisotropy", anisotropy);		Param(c,w, "graph_detail.tex_filter", tex_filt);
+	// Param(c,w, "graph_detail.ter_mtr", ter_mtr);			Param(c,w, "graph_detail.ter_tripl", ter_tripl);
 	
-	Param(c,w, "graph_detail.view_dist", view_distance);	Param(c,w, "graph_detail.ter_detail", terdetail);
-	Param(c,w, "graph_detail.ter_dist", terdist);			Param(c,w, "graph_detail.road_dist", road_dist);
+	Param(c,w, "graph_detail.view_dist", view_distance);
+	Param(c,w, "graph_detail.ter_detail", terdetail);
+	Param(c,w, "graph_detail.road_dist", road_dist);
 	
 	//  water
 	// Param(c,w, "graph_reflect.water_reflect", water_reflect); Param(c,w, "graph_reflect.water_refract", water_refract);
@@ -50,7 +49,6 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	//  veget
 	Param(c,w, "graph_veget.grass", grass);
 	Param(c,w, "graph_veget.trees_dist", trees_dist);		Param(c,w, "graph_veget.grass_dist", grass_dist);
-	// Param(c,w, "graph_veget.use_imposters", use_impostors); Param(c,w, "graph_veget.imposters_only", impostors_only);
 
 
 	//  hud
@@ -101,22 +99,15 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 
 
 SETcom::SETcom()   ///  Defaults
-	//  menu
-	//  video
-	// :buffer("FBO"), fsaa(0)
-	// ,rendersystem("Default")
 
 	//  graphics
-	:preset(4)
-	// ,horizon(0), lightmap_size(0) //-
-
-	,tex_filt(2), anisotropy(4), view_distance(2000.f)
-	,terdetail(1.f), terdist(300.f), road_dist(1.f)
-	,tex_size(1), ter_mtr(2), ter_tripl(0)
+	:view_distance(2000.f)
+	,terdetail(1.f), road_dist(1.f)
+	// ,tex_size(1), ter_mtr(2), ter_tripl(0)
 
 	// ,water_reflect(0), water_refract(0), water_rttsize(0)
 	,shadow_type(Sh_Depth), shadow_size(2), shadow_count(3), shadow_dist(1000.f)
-	// ,use_impostors(true), impostors_only(false)
+	// ,horizon(0)
 {
 
 	int i,v;
@@ -126,7 +117,7 @@ SETcom::SETcom()   ///  Defaults
 	}
 }
 
-//  tracks list columns  --
+//  🏞️📃🏛️ tracks list views columns  --
 const bool SETcom::colVisDef[2][COL_VIS] =
 	{{0,0,1, 0,0,0, 1,1, 0,0,0,0,0,0,0,0,0,0,0},
 	 {1,0,1, 1,1,1, 1,1, 1,1,1,1,1,1,1,1,1,1,1}};

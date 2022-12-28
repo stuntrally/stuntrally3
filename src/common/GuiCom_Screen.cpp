@@ -44,8 +44,8 @@ void CGuiCom::btnResChng(WP)
 
 	StringVector wh = StringUtil::split(mode," x");  // only resolution
 	int w = s2i(wh[0]), h = s2i(wh[1]);
-	pSet->windowx = w;
-	pSet->windowy = h;
+	// pSet->windowx = w;
+	// pSet->windowy = h;
 
 	/*Uint32 flags = SDL_GetWindowFlags(app->mSDLWindow);
 	if (flags & SDL_WINDOW_MAXIMIZED)  // Can't change size of a maximized window
@@ -92,8 +92,8 @@ int clrAspect(float asp, String* sa)
 void CGuiCom::InitGuiScreenRes()
 {
 	Ck* ck;
-	ck= &ckVidFullscr;  ck->Init("FullScreen", &pSet->fullscreen);  CevC(VidFullscr);
-	ck= &ckVidVSync;	ck->Init("VSync",      &pSet->vsync);		CevC(VidVSync);
+	// ck= &ckVidFullscr;  ck->Init("FullScreen", &pSet->fullscreen);  CevC(VidFullscr);
+	// ck= &ckVidVSync;	ck->Init("VSync",      &pSet->vsync);		CevC(VidVSync);
 
 	//  video resolutions combobox
 	resList = fCmb("ResList");
@@ -141,8 +141,8 @@ void CGuiCom::InitGuiScreenRes()
 		if (modeSel != "")
 			resList->setIndexSelected(resList->findItemIndexWith(modeSel));
 	}
-	Btn btn;
-	BtnC("ResChange",btnResChng);
+	// Btn btn;
+	// BtnC("ResChange",btnResChng);
 }
 
 //  gui margin

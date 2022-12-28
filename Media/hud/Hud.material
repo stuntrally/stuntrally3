@@ -64,7 +64,7 @@ hlms circle_minimap unlit : hud_base
 }
 
 
-//  3d  next checkpoint  beam
+//  🥛 3d  next checkpoint  beam
 //---------------------------------------------------------------------------
 hlms checkpoint pbs
 {
@@ -115,7 +115,7 @@ hlms checkpoint_finish pbs : checkpoint
 }
 
 
-//  3d  arrow  to next chk
+//  🔝 3d  Arrow  to next chk
 hlms Arrow pbs
 {
     diffuse  0.0 0.0 0.0
@@ -134,15 +134,16 @@ hlms Arrow pbs
 	// two_sided true
 }
 
-hlms pacenote pbs
+//  🚦 3d-  road Pacenote signs
+hlms pacenote unlit
 {
-    diffuse  0 0 0
+    diffuse  0 1 0
     specular 0.1 0.1 0.1
 
-	workflow metallic
-	fresnel_coeff 0.1 0.1 0.1
-	roughness 0.2
-	metalness 0.6
+	// workflow metallic
+	// fresnel_coeff 0.1 0.1 0.1
+	// roughness 0.2
+	// metalness 0.6
 
 	// depth_write off
 	//depth_check off
@@ -154,7 +155,7 @@ hlms pacenote pbs
 	diffuse_map pacenotes.png
 }
 
-//  trail racing line  ~~--~-~--
+//  🎗️ 3d  Trail  Racing line  ~~--
 hlms trailRoad unlit
 {
 	depth_bias 3
@@ -171,7 +172,7 @@ hlms trailRoad unlit
 
 
 
-//  graphs
+//  📉 graphs
 //---------------------------------------------------------------------------
 hlms graphB unlit : hud_base
 {
