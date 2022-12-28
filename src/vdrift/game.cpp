@@ -470,10 +470,10 @@ void GAME::AdvanceGameLogic(double dt)
 					cd.inFluidsWh[w].clear();
 			}
 
-			/*if (bResetObj)
+			if (bResetObj)
 			{	bResetObj = false;
 				app->ResetObjects();
-			}*/
+			}
 
 			if (dt > 0.0)
 				collision.Update(dt, pSet->bltProfilerTxt);

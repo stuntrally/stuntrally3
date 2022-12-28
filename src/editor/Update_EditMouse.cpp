@@ -25,7 +25,7 @@ using namespace MyGUI;
 
 
 //---------------------------------------------------------------------------------------------------------------
-///  Mouse
+///  🖱️ Mouse
 //---------------------------------------------------------------------------------------------------------------
 void App::EditMouse()
 {
@@ -53,13 +53,10 @@ void App::EditMouse()
 	bool mbAny = mbLeft || mbMiddle || mbRight;
 	if (edMode == ED_Objects && mbAny)
 		MouseObjects();
-
-	// if (edMode == ED_Particles && mbAny)
-	// 	MouseEmitters();
 }
 
 
-///  edit Road  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+///  🛣️ edit Road  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 void App::MouseRoad()
 {
 	const Real fMove(0.03f), fRot(10.f);  //par speed
@@ -89,7 +86,7 @@ void App::MouseRoad()
 }
 
 
-///  edit Start pos	 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+///  🏁 edit Start pos	 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 void App::MouseStart()
 {
 	const Real fMove(0.02f), fRot(0.05f);  //par speed
@@ -148,7 +145,7 @@ void App::MouseStart()
 }
 
 
-///  edit Fluids . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+///  💧 edit Fluids . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 void App::MouseFluids()
 {
 	FluidBox& fb = scn->sc->fluids[iFlCur];
@@ -200,7 +197,7 @@ void App::MouseFluids()
 }
 
 
-///  edit Emitters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+///  🔥 edit Emitters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 void App::MouseEmitters()
 {
 	SEmitter& em = scn->sc->emitters[iEmtCur];
@@ -252,7 +249,7 @@ void App::MouseEmitters()
 }
 
 
-///  edit Objects . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+///  📦 edit Objects . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 void App::MouseObjects()
 {
 	const Real fMove(0.02f), fRot(1.5f), fScale(0.02f);  //par speed

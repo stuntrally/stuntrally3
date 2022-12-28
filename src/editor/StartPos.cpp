@@ -3,37 +3,37 @@
 #include "RenderConst.h"
 #include "CScene.h"
 #include "Axes.h"
-#include "settings.h"
 #include "CApp.h"
-#include "CGui.h"
 #include "Road.h"
-#include <Ogre.h>
+
+#include <OgreSceneManager.h>
+#include <OgreSceneNode.h>
 #include <OgreItem.h>
 using namespace Ogre;
 
 
-void App::CreateBox(SceneNode*& nd, Item*& ent, String sMat, String sMesh, int x)
+//  🆕🚧 Create cursor
+void App::CreateBox(SceneNode*& nd, Item*& it, String sMat, String sMesh, int x)
 {
 	if (nd)  return;
+	LogO("---- creating cursor: " + sMat +" "+ sMesh);
 	MaterialPtr mtr;
-	bool e = sMat.empty();
-	if (!e)
-	{	mtr = MaterialManager::getSingleton().getByName(sMat);
-		if (!mtr)  return;
-	}
 	nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	ent = mSceneMgr->createItem(sMesh);
-	ent->setVisibilityFlags(RV_Hud);  nd->setPosition(Vector3(x,0,0));
-		ent->setCastShadows(false);  //; if (!e)  ent->setMaterial(mtr);
-		ent->setRenderQueueGroup(RQG_CarGhost);  // after road
-	nd->attachObject(ent);
+	it = mSceneMgr->createItem(sMesh);
+	it->setVisibilityFlags(RV_Hud);
+	it->setCastShadows(false);
+	if (!sMat.empty())
+		it->setDatablockOrMaterialName(sMat);
+	it->setRenderQueueGroup(RQG_CarGhost);  // after road
+	
+	nd->setPosition(Vector3(x,0,0));
+	nd->attachObject(it);
 	nd->setVisible(false);
 }
 
-
-void App::UpdStartPos()
+//  🧊🚧  Init 3d cursor meshes
+void App::CreateCursors()
 {
-	return;  //;
 	CreateBox(ndCar, itCar, "", "car.mesh");
 	
 	CreateBox(ndStartBox[0], itStartBox[0], "start_box", "cube.mesh", 20000);
@@ -42,8 +42,12 @@ void App::UpdStartPos()
 	CreateBox(ndFluidBox, itFluidBox, "fluid_box", "box_fluids.mesh");
 	CreateBox(ndObjBox, itObjBox, "object_box", "box_obj.mesh");
 	CreateBox(ndEmtBox, itEmtBox, "emitter_box", "box_obj.mesh");
+}
 
-	//  start, end boxes
+
+//  🔁🏁 upd start, end boxes
+void App::UpdStartPos()
+{
 	for (int i=0; i < 2; ++i)
 	{
 		Vector3 p1 = Axes::toOgre(scn->sc->startPos[i]);

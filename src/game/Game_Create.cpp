@@ -94,9 +94,13 @@ void App::createScene01()
 	LogO(">>>>>>>> Init SR --------");
 	
 	//  SR cfg, xmls etc
+	Ogre::Timer ti;
+
 	Load();
 	
 	CreateInputs();
+
+	LogO(String(":::* Time load xmls: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 
 
 	//  Gui Init
@@ -107,7 +111,6 @@ void App::createScene01()
 
 
 	mGraphicsSystem->mWorkspace = SetupCompositor();
-
 	mCamera->setFarClipDistance( pSet->view_distance );
 
 

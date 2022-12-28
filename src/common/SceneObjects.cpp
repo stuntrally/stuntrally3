@@ -99,7 +99,7 @@ public:
 };
 
 
-//  Create
+//  🆕 Create
 //-------------------------------------------------------------------------------------------------------
 void App::CreateObjects()
 {
@@ -166,7 +166,7 @@ void App::CreateObjects()
 		//  add to bullet world (in game)
 		if (!o.dyn)
 		{
-			///  static  . . . . . . . . . . . . 
+			///  🏢 static  . . . . . . . . . . . . 
 			Vector3 posO = Axes::toOgre(o.pos);
 			Quaternion rotO = Axes::toOgreW(o.rot);
 
@@ -189,7 +189,7 @@ void App::CreateObjects()
 			pGame->collision.shapes.push_back(shape);
 			#endif
 		}
-		else  ///  dynamic  . . . . . . . . . . . . 
+		else  ///  📦 dynamic  . . . . . . . . . . . . 
 		{
 			// .bullet load
 			fileLoader->mTrOfs.setOrigin(btVector3(o.pos[0],o.pos[1],o.pos[2]));
@@ -230,7 +230,7 @@ void App::CreateObjects()
 }
 
 
-///  destroy
+///  💥 destroy
 void App::DestroyObjects(bool clear)
 {
 	for (int i=0; i < scn->sc->objects.size(); ++i)
@@ -288,7 +288,7 @@ void App::ResetObjects()
 }
 
 
-//  Pick
+//  👆 Pick
 //-------------------------------------------------------------------------------------------------------
 
 #ifdef SR_EDITOR
@@ -309,19 +309,18 @@ void App::UpdObjPick()
 	if (!bObjects)  return;
 	
 	const Object& o = scn->sc->objects[iObjCur];
-	//;
-	/*const AxisAlignedBox& ab = o.nd->getAttachedObject(0)->getBoundingBox();
+	const Aabb& ab = o.nd->getAttachedObject(0)->getLocalAabb();
 	Vector3 s = o.scale * ab.getSize();  // * sel obj's node aabb
 
 	Vector3 posO = Axes::toOgre(o.pos);
 	Quaternion rotO = Axes::toOgreW(o.rot);
 
-	Vector3 scaledCenter = ab.getCenter() * o.scale;
-	posO += (rotO * scaledCenter);
+	// Vector3 scaledCenter = ab.getCenter() * o.scale;
+	// posO += (rotO * scaledCenter);
 
 	ndObjBox->setPosition(posO);
 	ndObjBox->setOrientation(rotO);
-	ndObjBox->setScale(s);*/
+	ndObjBox->setScale(s);
 }
 
 void App::PickObject()

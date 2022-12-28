@@ -971,18 +971,19 @@ hlms body_realtime pbs //: car_body
 	// specular_map   ES_refl.png  //+
 	// roughness_map  ES_refl.png
 	// metalness_map  ES_refl.png
+	cull_mode none  //! for ed..
 
 	// workflow metallic
 	fresnel_coeff 0.1 0.1 0.1
 	// fresnel_coeff 1 1 1
 
-	diffuse 0.5 0.4 0
-	specular 0.3 0.15 0.02
+	diffuse  0.3 0.3 0.3
+	specular 0.5 0.5 0.5
 	// specular 0.9 0.9 0.9
 	// roughness 0.5
 	// metalness 0.1
-	roughness 0.6
-	metalness 0.1
+	roughness 0.4
+	metalness 0.8
 }
 
 hlms ES_interior pbs : car_interior
