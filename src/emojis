@@ -6,7 +6,7 @@ Various markers in sources for key sections, methods etc.  Also showing short-cu
  🏝️ scenery        💧🌊 Fluids       🌞 Sun            ⏱️ HUD timer       🌍 Minimap      🛣️ Road         🚗 Vehicle car
  🏞️ Track Scene          water mud   ⛅ Sky clouds                         ⏲️ Gauges                       ⚫💭 Tire wheel
             scn    ✨ Particles                        🥛 Next chk beam                    📏 Wall bridge  🪜 suspension
- ⛰️ Terrain        🔥 Emitters       🌫️ Fog            🔝 Arrow           🚦 Pacenotes    🏛️ Column        
+ ⛰️ Terrain        🔥 Emitters       🌫️ Fog            🔝 Arrow           🚦 Pacenotes    🏛️ Column  col   
  🏔️ Blendmap                         🌦️🌧️ Weather                         🎗️ Trail                         📈 engine
                    📦 Objects  obj       rain snow     🔨 Damage          ❌ wrong chk     ⭕ Pipe         🔴 brake 
  🌳🪨 Veget-ation  🏢 buildings      🌪️ wind           💨 Boost                           ➰➿ Loop       

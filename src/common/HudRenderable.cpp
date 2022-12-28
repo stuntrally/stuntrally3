@@ -16,160 +16,163 @@ using namespace Ogre;
 //  🌟 ctor
 //-----------------------------------------------------------------------------------
 HudRenderable::HudRenderable(
-    const String& material, SceneManager* mgr,
-    Ogre::OperationType oper, bool hasUV, bool colors,
-    uint32 vis, uint8 rndQue,
-    int count)  // of lines or faces(quads)
+	const String& material, SceneManager* mgr,
+	Ogre::OperationType oper, bool hasUV, bool colors,
+	uint32 vis, uint8 rndQue,
+	int count,  // of lines or faces(quads)
+	bool is3D)
 
-    : MovableObject(
-        Id::generateNewId<MovableObject>(),
-        &mgr->_getEntityMemoryManager( SCENE_DYNAMIC ),
-        mgr, rndQue)
-    , Renderable()
-    , sMtr(material), mOper(oper)
-    , bUV(hasUV), bColors(colors)
+	: MovableObject(
+		Id::generateNewId<MovableObject>(),
+		&mgr->_getEntityMemoryManager( SCENE_DYNAMIC ),
+		mgr, rndQue)
+	, Renderable()
+	, sMtr(material), mOper(oper)
+	, bUV(hasUV), bColors(colors), b3D(is3D)
 {
-    switch (oper)
-    {
-    case OT_LINE_LIST:   //  no UV, lines count (2verts per line)
-        iVertCount = count * 2;  // lines count * 2 verts
-        iFace      = 2;
-        iIndCount  = count * iFace;
-        break;
-    case OT_LINE_STRIP:  //  no UV
-        iVertCount = count;  // lines count + 1 vert
-        iFace      = 0;  // no index buffer
-        iIndCount  = 0;
-        break;
-    case OT_TRIANGLE_LIST:  //  count faces (2tris), has tex UV
-        iVertCount = count * 4;  // 4 verts per face
-        iFace      = 6;  // 6 indices per face
-        iIndCount  = count * iFace;
-        break;
-    default:
-        LogO("HudRenderable ERROR: Unsupported operation type! For material: " + material);
-        break;
-    }
-    //  log info  ----
-    LogO("HudRenderable: New  material: " + material + "  " +
-        (oper == OT_TRIANGLE_LIST ? "Tri_List" :
-         oper == OT_LINE_LIST ? "Line_List" : "Line_Strip") +
-        "  count: " + toStr(count));
+	switch (oper)
+	{
+	case OT_LINE_LIST:   //  no UV, lines count (2verts per line)
+		iVertCount = count * 2;  // lines count * 2 verts
+		iFace      = 2;
+		iIndCount  = count * iFace;
+		break;
+	case OT_LINE_STRIP:  //  no UV
+		iVertCount = count;  // lines count + 1 vert
+		iFace      = 0;  // no index buffer
+		iIndCount  = 0;
+		break;
+	case OT_TRIANGLE_LIST:  //  count faces (2tris), has tex UV
+		iVertCount = count * 4;  // 4 verts per face
+		iFace      = 6;  // 6 indices per face
+		iIndCount  = count * iFace;
+		break;
+	default:
+		LogO("HudRenderable ERROR: Unsupported operation type! For material: " + material);
+		break;
+	}
+	//  log info  ----
+	LogO("HudRenderable: New  material: " + material + "  " +
+		(oper == OT_TRIANGLE_LIST ? "Tri_List" :
+		 oper == OT_LINE_LIST ? "Line_List" : "Line_Strip") +
+		"  count: " + toStr(count));
 
-    setUseIdentityProjection(true);
-    setUseIdentityView(true);
-    setVisibilityFlags(vis);
-    setCastShadows(false);
+	if (!is3D)
+	{	setUseIdentityProjection(true);
+		setUseIdentityView(true);
+	}
+	setVisibilityFlags(vis);
+	setCastShadows(false);
 
-    Aabb aabb( Aabb::BOX_INFINITE );
-    mObjectData.mLocalAabb->setFromAabb( aabb, mObjectData.mIndex );
-    mObjectData.mWorldAabb->setFromAabb( aabb, mObjectData.mIndex );
-    mObjectData.mLocalRadius[mObjectData.mIndex] = std::numeric_limits<Real>::max();
-    mObjectData.mWorldRadius[mObjectData.mIndex] = std::numeric_limits<Real>::max();
+	Aabb aabb( Aabb::BOX_INFINITE );
+	mObjectData.mLocalAabb->setFromAabb( aabb, mObjectData.mIndex );
+	mObjectData.mWorldAabb->setFromAabb( aabb, mObjectData.mIndex );
+	mObjectData.mLocalRadius[mObjectData.mIndex] = std::numeric_limits<Real>::max();
+	mObjectData.mWorldRadius[mObjectData.mIndex] = std::numeric_limits<Real>::max();
 
-    createBuffers(count);
+	createBuffers(count);
 
-    mRenderables.push_back( this );
+	mRenderables.push_back( this );
 
-    auto hlms = Root::getSingleton().getHlmsManager()->getHlms( HLMS_UNLIT );
-    auto db = hlms->getDatablock( material );
-    setDatablock( db );
+	auto hlms = Root::getSingleton().getHlmsManager()->getHlms( HLMS_UNLIT );
+	auto db = hlms->getDatablock( material );
+	setDatablock( db );
 }
 
 //  💥 dtor
 //-----------------------------------------------------------------------------------
 HudRenderable::~HudRenderable()
 {
-    destroy();  //
-    
-    VaoManager *mgr = mManager->getDestinationRenderSystem()->getVaoManager();
+	destroy();  //
+	
+	VaoManager *mgr = mManager->getDestinationRenderSystem()->getVaoManager();
 
-    for (auto itor = mVaoPerLod[0].begin();
-        itor != mVaoPerLod[0].end(); ++itor)
-    {
-        VertexArrayObject *vao = *itor;
+	for (auto itor = mVaoPerLod[0].begin();
+		itor != mVaoPerLod[0].end(); ++itor)
+	{
+		VertexArrayObject *vao = *itor;
 
-        const auto &vbs = vao->getVertexBuffers();
-        for (auto it = vbs.begin(); it != vbs.end(); ++it)
-            mgr->destroyVertexBuffer( *it );  // vb
+		const auto &vbs = vao->getVertexBuffers();
+		for (auto it = vbs.begin(); it != vbs.end(); ++it)
+			mgr->destroyVertexBuffer( *it );  // vb
 
-        if (vao->getIndexBuffer())  // ib
-            mgr->destroyIndexBuffer( vao->getIndexBuffer() );
-        
-        mgr->destroyVertexArrayObject( vao );
-    }
+		if (vao->getIndexBuffer())  // ib
+			mgr->destroyIndexBuffer( vao->getIndexBuffer() );
+		
+		mgr->destroyVertexArrayObject( vao );
+	}
 }
 
 //  🆕 Create
 //-----------------------------------------------------------------------------------
 void HudRenderable::createBuffers(const int count)
 {
-    VaoManager *mgr = mManager->getDestinationRenderSystem()->getVaoManager();
-    IndexBufferPacked *ib = 0;
+	VaoManager *mgr = mManager->getDestinationRenderSystem()->getVaoManager();
+	IndexBufferPacked *ib = 0;
 
-    //  Index buffer  -------
-    if (iFace > 0)
-    {
-        uint16 *indices = reinterpret_cast<uint16 *>(
-            OGRE_MALLOC_SIMD( sizeof( uint16 ) * iFace * count, MEMCATEGORY_GEOMETRY ) );
+	//  Index buffer  -------
+	if (iFace > 0)
+	{
+		uint16 *indices = reinterpret_cast<uint16 *>(
+			OGRE_MALLOC_SIMD( sizeof( uint16 ) * iFace * count, MEMCATEGORY_GEOMETRY ) );
 
-        if (mOper == OT_TRIANGLE_LIST)
-        {
-            const uint16 c_indexData[/*iFace*/ 6] = {
-                0,1,3, 2,3,0  };
+		if (mOper == OT_TRIANGLE_LIST)
+		{
+			const uint16 c_indexData[/*iFace*/ 6] = {
+				0,1,3, 2,3,0  };
 
-            for (int f = 0; f < count; ++f)
-            for (int i = 0; i < iFace; ++i)
-                indices[f * iFace + i] = c_indexData[i] + f * 4;
-        }
-        else if (mOper == OT_LINE_LIST)
-        {
-            for (int f = 0; f < count; ++f)
-            for (int i = 0; i < 2; ++i)
-                indices[f * 2 + i] = i + f * 2;
-        }
-        
-        try
-        {   ib = mgr->createIndexBuffer(
-                IndexBufferPacked::IT_16BIT, iFace * count,
-                BT_IMMUTABLE, indices, true );
-        }
-        catch( Exception &e )
-        {
-            OGRE_FREE_SIMD( ib, MEMCATEGORY_GEOMETRY );
-            ib = 0;  throw e;
-        }
-    }
+			for (int f = 0; f < count; ++f)
+			for (int i = 0; i < iFace; ++i)
+				indices[f * iFace + i] = c_indexData[i] + f * 4;
+		}
+		else if (mOper == OT_LINE_LIST)
+		{
+			for (int f = 0; f < count; ++f)
+			for (int i = 0; i < 2; ++i)
+				indices[f * 2 + i] = i + f * 2;
+		}
+		
+		try
+		{	ib = mgr->createIndexBuffer(
+				IndexBufferPacked::IT_16BIT, iFace * count,
+				BT_IMMUTABLE, indices, true );
+		}
+		catch( Exception &e )
+		{
+			OGRE_FREE_SIMD( ib, MEMCATEGORY_GEOMETRY );
+			ib = 0;  throw e;
+		}
+	}
 
-    //  Vertex declaration
-    VertexElement2Vec vertexElements;
-    vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );
-    if (bUV)
-        vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES ) );
-    if (bColors)
-        vertexElements.push_back( VertexElement2( VET_FLOAT4, VES_DIFFUSE ) );
+	//  Vertex declaration
+	VertexElement2Vec vertexElements;
+	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );
+	if (bUV)
+		vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES ) );
+	if (bColors)
+		vertexElements.push_back( VertexElement2( VET_FLOAT4, VES_DIFFUSE ) );
 
 
-    //  Vertex buffer  -------
-    vb = 0;
-    try
-    {   vb = mgr->createVertexBuffer(
-            vertexElements, iVertCount, BT_DYNAMIC_PERSISTENT, 0, false );
-    }
-    catch( Exception &e )
-    {
-        OGRE_FREE_SIMD( vb, MEMCATEGORY_GEOMETRY );
-        vb = 0;  throw e;
-    }
-    
-    //  Vao
-    VertexBufferPackedVec vertexBuffers;
-    vertexBuffers.push_back( vb );
-    VertexArrayObject *vao = mgr->createVertexArrayObject(
-        vertexBuffers, ib, mOper );
+	//  Vertex buffer  -------
+	vb = 0;
+	try
+	{	vb = mgr->createVertexBuffer(
+			vertexElements, iVertCount, BT_DYNAMIC_PERSISTENT, 0, false );
+	}
+	catch( Exception &e )
+	{
+		OGRE_FREE_SIMD( vb, MEMCATEGORY_GEOMETRY );
+		vb = 0;  throw e;
+	}
+	
+	//  Vao
+	VertexBufferPackedVec vertexBuffers;
+	vertexBuffers.push_back( vb );
+	VertexArrayObject *vao = mgr->createVertexArrayObject(
+		vertexBuffers, ib, mOper );
 
-    mVaoPerLod[0].push_back( vao );
-    // mVaoPerLod[1].push_back( vao );  // same for shadow-
+	mVaoPerLod[0].push_back( vao );
+	// mVaoPerLod[1].push_back( vao );  // same for shadow-
 }
 
 
@@ -178,50 +181,50 @@ void HudRenderable::createBuffers(const int count)
 //  maps all verts
 void HudRenderable::begin()
 {
-    vp = reinterpret_cast<float * RESTRICT_ALIAS>(
-        vb->map( 0, vb->getNumElements() ) );
-    iVertCur = 0;
+	vp = reinterpret_cast<float * RESTRICT_ALIAS>(
+		vb->map( 0, vb->getNumElements() ) );
+	iVertCur = 0;
 }
 void HudRenderable::position(float x, float y, float z)
 {
-    if (iVertCur >= iVertCount)  return;
+	if (iVertCur >= iVertCount)  return;
 
-    vp[0] = x;  vp[1] = y;  vp[2] = z;
-    vp += 3;
-    ++iVertCur;
+	vp[0] = x;  vp[1] = y;  vp[2] = z;
+	vp += 3;
+	++iVertCur;
 }
 void HudRenderable::textureCoord(float u, float v)
 {
-    if (!bUV)  return;
+	if (!bUV)  return;
 
-    vp[0] = u;  vp[1] = v;
-    vp += 2;
+	vp[0] = u;  vp[1] = v;
+	vp += 2;
 }
 void HudRenderable::color(float r, float g, float b, float a)
 {
-    if (!bColors)  return;
+	if (!bColors)  return;
 
-    vp[0] = r;  vp[1] = g;  vp[2] = b;  vp[3] = a;
-    vp += 4;
+	vp[0] = r;  vp[1] = g;  vp[2] = b;  vp[3] = a;
+	vp += 4;
 }
 void HudRenderable::end()
 {
-    //  check if same count as in ctor
-    if (iVertCur != iVertCount)
-        LogO("HudRenderable ERROR: Wrong vertices count: " +
-            toStr(iVertCur) + " expected: " + toStr(iVertCount) +
-            "  material: " + sMtr);
+	//  check if same count as in ctor
+	if (iVertCur != iVertCount)
+		LogO("HudRenderable ERROR: Wrong vertices count: " +
+			toStr(iVertCur) + " expected: " + toStr(iVertCount) +
+			"  material: " + sMtr);
 
-    vb->unmap( UO_KEEP_PERSISTENT );
+	vb->unmap( UO_KEEP_PERSISTENT );
 }
 
 
 //-----------------------------------------------------------------------------------
 void HudRenderable::destroy()
 {
-    //  Permanently unmap persistent mapped buffers
-    if( vb && vb->getMappingState() != MS_UNMAPPED )
-        vb->unmap( UO_UNMAP_ALL );
+	//  Permanently unmap persistent mapped buffers
+	if( vb && vb->getMappingState() != MS_UNMAPPED )
+		vb->unmap( UO_UNMAP_ALL );
 }
 
 
@@ -231,22 +234,22 @@ const String &HudRenderable::getMovableType() const
 
 const LightList &HudRenderable::getLights() const
 {
-    return queryLights();  // from MovableObject base
+	return queryLights();  // from MovableObject base
 }
 
 void HudRenderable::getRenderOperation( v1::RenderOperation &op, bool casterPass )
 {
-    //op = mOper;
-    OGRE_EXCEPT( Exception::ERR_NOT_IMPLEMENTED, "", "HudRenderable::getRenderOperation" );
+	//op = mOper;
+	OGRE_EXCEPT( Exception::ERR_NOT_IMPLEMENTED, "", "HudRenderable::getRenderOperation" );
 }
 
 void HudRenderable::getWorldTransforms( Matrix4 *xform ) const
 {
-    OGRE_EXCEPT( Exception::ERR_NOT_IMPLEMENTED, "", "HudRenderable::getWorldTransforms" );
+	OGRE_EXCEPT( Exception::ERR_NOT_IMPLEMENTED, "", "HudRenderable::getWorldTransforms" );
 }
 
 bool HudRenderable::getCastsShadows() const
 {
-    //return false;
-    OGRE_EXCEPT( Exception::ERR_NOT_IMPLEMENTED, "", "HudRenderable::getCastsShadows" );
+	//return false;
+	OGRE_EXCEPT( Exception::ERR_NOT_IMPLEMENTED, "", "HudRenderable::getCastsShadows" );
 }

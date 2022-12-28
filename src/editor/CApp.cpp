@@ -122,27 +122,3 @@ App::~App()
 	delete gcom;
 	delete gui;
 }
-	
-
-//  util
-//------------------------------------------------------------------------------------
-ManualObject* App::Create2D(const String& mat, Real s, bool dyn)
-{
-	/*ManualObject* m = mSceneMgr->createManualObject();
-	m->setDynamic(dyn);
-	m->setUseIdentityProjection(true);
-	m->setUseIdentityView(true);
-	m->setCastShadows(false);
-	m->estimateVertexCount(4);
-	m->begin(mat, RenderOperation::OT_TRIANGLE_STRIP);
-	m->position(-s,-s*asp, 0);  m->textureCoord(0, 1);
-	m->position( s,-s*asp, 0);  m->textureCoord(1, 1);
-	m->position(-s, s*asp, 0);  m->textureCoord(0, 0);
-	m->position( s, s*asp, 0);  m->textureCoord(1, 0);
-	m->end();
- 
-	AxisAlignedBox aabInf;	aabInf.setInfinite();
-	m->setBoundingBox(aabInf);  // always visible
-	m->setRenderQueueGroup(RQG_Hud2);*/
-	return 0;
-}

@@ -24,7 +24,7 @@ const Ogre::Real crAngSnaps[ciAngSnapsNum] = {0,5,15,30,45,90,180};
 namespace Ogre  {  class Rectangle2D;  class SceneNode;  class RenderTexture;  class Item;
 	class Terra;  class HlmsPbsTerraShadows;  }
 class CScene;  class CGui;  class CGuiCom;
-class GraphicsSystem;
+class GraphicsSystem;  class HudRenderable;
 
 enum ED_OBJ {  EO_Move=0, EO_Rotate, EO_Scale  };
 
@@ -72,9 +72,8 @@ public:
 
 	//  💫 Update
 	void update(float dt) override;
-	// bool frameStarted(const Ogre::FrameEvent& evt);
-	bool frameRenderingQueued(float dt);
-	bool frameEnded(float dt);
+	void UpdateKey(float dt);
+	void UpdateEnd(float dt);
 
 	void processMouse(double dt), UpdKeyBar(Ogre::Real dt);
 	Ogre::Vector3 vNew;
@@ -94,10 +93,9 @@ public:
 
 
 	///  🖼️ rnd to tex  minimap  * * * * * * * * *	
-	Ogre::SceneNode *ndPos =0;
-	Ogre::ManualObject* mpos =0;
-	Ogre::ManualObject* Create2D(const Ogre::String& mat, Ogre::Real s, bool dyn=false);
-	Ogre::Real asp =4.f/3.f, xm1 =-1.f, ym1 =1.f, xm2 =1.f, ym2 =-1.f;
+	HudRenderable* mpos =0;
+	Ogre::SceneNode *ndPos =0;  // dims
+	Ogre::Real asp = 4.f/3.f, xm1 = -1.f, ym1 = 1.f, xm2 = 1.f, ym2 = -1.f;
 
 	enum ERnd2Tex
 	{	RT_Road=0, RT_Grass, RT_Terrain, RT_View, RT_Last, RT_Brush, RT_ALL  };
@@ -115,7 +113,7 @@ public:
 	
 
 	//  📍 terrain cursor, circle mesh
-	Ogre::ManualObject* moTerC =0;
+	HudRenderable* moTerC =0;
 	Ogre::SceneNode* ndTerC =0;
 	void TerCircleInit(), TerCircleUpd();
 
