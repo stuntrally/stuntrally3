@@ -2,6 +2,7 @@
 #include "AppGui.h"
 #include "settings.h"
 
+#include <OgreCommon.h>
 #include <OgreRoot.h>
 #include <OgreItem.h>
 #include <OgreHlms.h>
@@ -46,16 +47,12 @@ void AppGui::SetWireframe(Ogre::HlmsTypes type, bool wire)
 }
 
 
-//  ⛓️ util  wrap texture
+//  ⛓️ util  wrap texture filtering
 //-----------------------------------------------------------------------------------
 void AppGui::SetTexWrap(Ogre::HlmsTypes type, Ogre::String name, bool wrap)
 {
 	HlmsSamplerblock sb;
-	sb.mMinFilter = FO_ANISOTROPIC;  sb.mMagFilter = FO_ANISOTROPIC;
-	sb.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
-	sb.mMaxAnisotropy = pSet->anisotropy;
-	auto w = wrap ? TAM_WRAP : TAM_CLAMP;
-	sb.mU = w;  sb.mV = w;  sb.mW = w;
+	InitTexFilters(&sb, wrap);
 
 	Hlms *hlms = mRoot->getHlmsManager()->getHlms( type );
 	if (type == HLMS_PBS)
@@ -71,11 +68,7 @@ void AppGui::SetTexWrap(Ogre::HlmsTypes type, Ogre::String name, bool wrap)
 void AppGui::SetTexWrap(Ogre::Item* it, bool wrap)
 {
 	HlmsSamplerblock sb;
-	sb.mMinFilter = FO_ANISOTROPIC;  sb.mMagFilter = FO_ANISOTROPIC;
-	sb.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
-	sb.mMaxAnisotropy = pSet->anisotropy;
-	auto w = wrap ? TAM_WRAP : TAM_CLAMP;
-	sb.mU = w;  sb.mV = w;  sb.mW = w;
+	InitTexFilters(&sb, wrap);
 
 	assert( dynamic_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() ) );
 	HlmsPbsDatablock *db =
@@ -83,4 +76,23 @@ void AppGui::SetTexWrap(Ogre::Item* it, bool wrap)
 	
 	for (int n=0; n < NUM_PBSM_SOURCES; ++n)  // all
 		db->setSamplerblock( PBSM_DIFFUSE + n, sb );
+}
+
+void AppGui::InitTexFilters(HlmsSamplerblock* sb, bool wrap)
+{
+	FilterOptions mia, mip;
+	switch (pSet->tex_filt)
+	{
+	case 3:  mia = FO_ANISOTROPIC;  mip = FO_ANISOTROPIC;  break;  // full anisotropic
+	case 2:  mia = FO_ANISOTROPIC;  mip = FO_LINEAR;  break;  // anisotropic
+	case 1:  mia = FO_LINEAR;  mip = FO_LINEAR;  break;  // trilinear
+	case 0:  mia = FO_LINEAR;  mip = FO_POINT;  break;  // bilinear
+	}
+	sb->mMinFilter = mia;  sb->mMagFilter = mia;
+	sb->mMipFilter = mip;
+
+	sb->mMaxAnisotropy = pSet->anisotropy;
+
+	auto w = wrap ? TAM_WRAP : TAM_CLAMP;
+	sb->mU = w;  sb->mV = w;  sb->mW = w;
 }

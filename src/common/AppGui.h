@@ -6,7 +6,7 @@
 
 namespace MyGUI{  class Gui;  class Ogre2Platform;  }
 namespace Ogre {  class Root;  class SceneManager;  class Window;  class Camera;
-	class TextureGpu;  class CompositorWorkspace;  }
+	class TextureGpu;  class CompositorWorkspace;  class HlmsSamplerblock;  }
 class GraphicsSystem;  class SETTINGS;
 
 //  cube reflections, car etc
@@ -54,6 +54,7 @@ public:
 	//  tex wrap
 	void SetTexWrap(Ogre::HlmsTypes type, Ogre::String name, bool wrap = true);
 	void SetTexWrap(Ogre::Item* it, bool wrap = true);
+	void InitTexFilters(Ogre::HlmsSamplerblock* sb, bool wrap = true);
 
 
 	//  🆕 Init  ----------------
@@ -61,11 +62,11 @@ public:
 	void DestroyGui();
 
 
-	//  🔮 reflection cubemap  ----------------
+	//  🔮 Reflection Cubemap  ----------------
 	Ogre::Camera* mCubeCamera = 0;
 	Ogre::TextureGpu* mCubeReflTex = 0;
 
-	IblQuality mIblQuality = IblLow;  // par in ctor
+	IblQuality mIblQuality = IblLow;  // par in ctor-
 	Ogre::CompositorWorkspace* mWorkspace = 0;
 	Ogre::CompositorWorkspace* SetupCompositor();
 
