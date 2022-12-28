@@ -184,7 +184,7 @@ namespace Ogre
 				{
 					m_shadowMapTex->setPixelFormat( c_formats[i] );
 					format = c_formats[i];
-					LogO("Terrain shadowmap texture format: " + toStr(format));
+					LogO("Terrain shadowmap format (17): " + toStr(format));
 					break;
 				}
 			}

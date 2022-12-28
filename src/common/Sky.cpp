@@ -56,7 +56,7 @@ void CScene::DestroyAllAtmo()
 //-------------------------------------------------------------------------------------
 void CScene::CreateSun()
 {
-	LogO("C--- create sun");
+	LogO("C--- create Sun");
 	auto *mgr = app->mSceneMgr;
 	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 	
@@ -305,7 +305,7 @@ void CScene::UpdFog(bool bForce)
 //-------------------------------------------------------------------------------------
 void CScene::CreateWeather()
 {
-	LogO("C--- create weather");
+	LogO("C--- create Weather");
 	if (!pr && !sc->rainName.empty())
 	{	try
 		{	pr = app->mSceneMgr->createParticleSystem(sc->rainName);

@@ -38,13 +38,14 @@ String cvsI(int v, int grn, int red, int width=4)
 //-----------------------------------------------------------------------------------
 void AppGui::UpdFpsText()
 {
-	RenderSystem *rs = mRoot->getRenderSystem();
-	const RenderingMetrics& rm = rs->getMetrics();  //** fps
+	const RenderSystem *rs = mRoot->getRenderSystem();
+	const RenderingMetrics& rm = rs->getMetrics();
 	const FrameStats *st = mRoot->getFrameStats();
 
-	const float fps = st->getAvgFps(), tris = rm.mFaceCount/1000000.f, mem = GetGPUmem();
+	const float fps = st->getAvgFps(),  //st->getFps(),
+		tris = rm.mFaceCount/1000000.f, mem = GetGPUmem();
 	const int draw = rm.mDrawCount,
-		inst = rm.mInstanceCount, vgt = 0,//scn->cntAll,
+		inst = rm.mInstanceCount, vgt = 0, //scn->cntAll,
 		gui = MyGUI::Ogre2RenderManager::getInstance().getBatchCount();
 
 	String txt;

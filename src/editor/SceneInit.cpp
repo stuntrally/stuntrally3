@@ -44,10 +44,19 @@ void App::createScene01()  // once, init
 	LogO(">>>>>>>> Init SR ed --------");
 	
 	//  SR cfg, xmls etc
+	Ogre::Timer ti;
+
 	Load();
+	LoadAllSurfaces();
+
+	scn->sc->pFluidsXml = scn->data->fluids;
+	scn->sc->pReverbsXml = scn->data->reverbs;
+
+	LogO(String(":::* Time load xmls: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+
 
 	//  🖼️ prv tex  todo
-	int k=1024;
+	// int k=1024;
 	// prvView.Create(k,k,"PrvView");
 	// prvRoad.Create(k,k,"PrvRoad");
 	//  prvTer.Create(k,k,"PrvTer");
@@ -73,17 +82,9 @@ void App::createScene01()  // once, init
 	// mViewport->setVisibilityMask(RV_MaskAll);  // hide prv cam rect
 
 
-	Ogre::Timer ti;
-
-	//  📄 data load xml
-	scn->data->Load();
-	scn->sc->pFluidsXml = scn->data->fluids;
-	scn->sc->pReverbsXml = scn->data->reverbs;
-	
-	//  surfaces.cfg
-	LoadAllSurfaces();
-	
-	LogO(String(":::* Time load xmls: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	//  🚧 cursors
+	CreateCursors();
+	TerCircleInit();
 
 
 	//  🎛️ Gui  * * *
@@ -98,10 +99,12 @@ void App::createScene01()  // once, init
 	
 
 	mGraphicsSystem->mWorkspace = SetupCompositor();
+	mCamera->setFarClipDistance( pSet->view_distance );
+
+	createBrushPrv();
 
 
-	///__🧰  All  #if 0  in Release !!!
-
+	///  🧰  All  #if 0  in Release !!!
 	///  _Tool_ scene  ...................
 	#if 0
 	gui->ToolSceneXml();
@@ -115,17 +118,13 @@ void App::createScene01()  // once, init
 	exit(0);
 	#endif
 	
-
-	TerCircleInit();
-	createBrushPrv();
-	
 	///  🧰 _Tool_ brushes prv  .............
 	#if 0
 	gui->ToolBrushesPrv();
 	#endif
 		
 
-	//  load
+	//  🏞️ Load Track
 	if (pSet->autostart)
 		LoadTrack();
 
@@ -269,7 +268,7 @@ void App::LoadTrackEv()
 	
 	Rnd2TexSetup();
 	//UpdVisGui();
-	//UpdStartPos();
+	UpdStartPos();
 	UpdEditWnds();  //
 
 	/*try

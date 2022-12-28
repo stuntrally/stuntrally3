@@ -59,7 +59,7 @@ namespace Ogre
 		TextureBox texBox = tex->mapRegion(
 			m_iWidth, m_iHeight, 1u, 1u, fmt );
 
-		LogO("Ter Hmap dim " + iToStr(m_iWidth)+" x "+ iToStr(m_iHeight)+"  "+ iToStr(row));
+		LogO("Terrain Hmap dim " + iToStr(m_iWidth)+" x "+ iToStr(m_iHeight)+"  "+ iToStr(row));
 		
 		// simple, exact
 		if (m_iHeight == row)

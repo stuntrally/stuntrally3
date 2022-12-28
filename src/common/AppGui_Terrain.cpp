@@ -26,30 +26,29 @@
 using namespace Ogre;
 
 
-//  Terrain
+//  ⛰️ Terrain
 //-----------------------------------------------------------------------------------------------------------------------------
 void AppGui::CreateTerrain()
 {
 	if (mTerra) return;
-	Root *root = mGraphicsSystem->getRoot();
 	SceneManager *mgr = mGraphicsSystem->getSceneManager();
 	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 	
-	HlmsManager *hlmsManager = root->getHlmsManager();
-	HlmsDatablock *datablock = 0;
+	HlmsManager *hlmsMgr = mRoot->getHlmsManager();
+	HlmsDatablock *db = 0;
 
-	LogO("---- new Terra json mat");
+	LogO("C--T Terrain create mat");
 
 #if 0  // default .json
 	mtrName = "TerraExampleMaterial";  // from .json
 	// mGraphicsSystem->hlmsTerra->loadMaterial( "FileName for logging", defaultResourceGroupForLoadingTextures, jsonString, "" );
 #else
 	mtrName = "TerraExampleMaterial2";
-	datablock = mGraphicsSystem->hlmsTerra->createDatablock(
+	db = mGraphicsSystem->hlmsTerra->createDatablock(
 		mtrName.c_str(), mtrName.c_str(),
 		HlmsMacroblock(), HlmsBlendblock(), HlmsParamVec() );
 	assert( dynamic_cast<HlmsTerraDatablock *>( datablock ) );
-	HlmsTerraDatablock *tblock = static_cast<HlmsTerraDatablock *>( datablock );
+	HlmsTerraDatablock *tdb = static_cast<HlmsTerraDatablock *>( db );
 	
 	//  tex filtering
 	HlmsSamplerblock sampler;
@@ -57,10 +56,10 @@ void AppGui::CreateTerrain()
 	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
 	sampler.mMaxAnisotropy = pSet->anisotropy;
 	sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
-	TextureGpuManager *texMgr = root->getRenderSystem()->getTextureGpuManager();
+	TextureGpuManager *texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
 
 
-	tblock->setBrdf(TerraBrdf::BlinnPhongLegacyMath);
+	tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);
 	// tblock->setBrdf(TerraBrdf::BlinnPhongSeparateDiffuseFresnel);  //** no fresnel-?
 	// tblock->setBrdf(TerraBrdf::CookTorranceSeparateDiffuseFresnel);  //** no fresnel-?
 	// tblock->setBrdf(TerraBrdf::CookTorrance);
@@ -94,14 +93,14 @@ void AppGui::CreateTerrain()
 		auto tex = texMgr->createOrRetrieveTexture(d_d,
 			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 		if (tex)
-		{	tblock->setTexture( TERRA_DETAIL0 + i, tex );
-			tblock->setSamplerblock( TERRA_DETAIL0 + i, sampler );
+		{	tdb->setTexture( TERRA_DETAIL0 + i, tex );
+			tdb->setSamplerblock( TERRA_DETAIL0 + i, sampler );
 		}
 		tex = texMgr->createOrRetrieveTexture(n_n,
 			GpuPageOutStrategy::Discard, CommonTextureTypes::NormalMap, "General" );
 		if (tex)
-		{	tblock->setTexture( TERRA_DETAIL0_NM + i, tex );
-			tblock->setSamplerblock( TERRA_DETAIL0_NM + i, sampler );
+		{	tdb->setTexture( TERRA_DETAIL0_NM + i, tex );
+			tdb->setSamplerblock( TERRA_DETAIL0_NM + i, sampler );
 		}
 		/*n_h = d_s = "white.png";  // todo: _r _m terrain textures..
 		tex = texMgr->createOrRetrieveTexture(n_h,
@@ -117,9 +116,9 @@ void AppGui::CreateTerrain()
 			tblock->setSamplerblock( TERRA_DETAIL_METALNESS0 + i, sampler );
 		}*/
 		Real sc = fTer / l.tiling;
-		tblock->setDetailMapOffsetScale( i, Vector4(0,0, sc,sc) );
-		tblock->setMetalness(i, 0.2);
-		tblock->setRoughness(i, 0.5);
+		tdb->setDetailMapOffsetScale( i, Vector4(0,0, sc,sc) );
+		tdb->setMetalness(i, 0.2);
+		tdb->setRoughness(i, 0.5);
 
 		// tblock->setTexture( TERRA_REFLECTION, tex );  // todo: ?
 		// tblock->setEmissive(0.5);  // todo:
@@ -131,23 +130,23 @@ void AppGui::CreateTerrain()
 
 #endif
 
-	LogO("---- new Terra");
+	LogO("---T Terrain create");
 
 	mTerra = new Terra( Id::generateNewId<MovableObject>(),
 						&mgr->_getEntityMemoryManager( SCENE_STATIC ),
-						mgr, RQG_Terrain, root->getCompositorManager2(),
+						mgr, RQG_Terrain, mRoot->getCompositorManager2(),
 						mGraphicsSystem->getCamera(), false );
 	// mTerra->setCustomSkirtMinHeight(0.8f); //?-
 	mTerra->setCastShadows( false );
 	mTerra->sc = scn->sc;
 	scn->terrain = mTerra;
 
-	LogO("---- Terra load");
 
 	//  Heightmap  ------------------------------------------------
+	LogO("---T Terrain Hmap load");
 	Real sizeXZ = sc->td.fTriangleSize * (sc->td.iVertsX-1);  //sc->td.fTerWorldSize;
 	float ofs = sc->td.fTriangleSize;  // ofs fix, 1025 to 1024 verts etc
-	LogO("Ter size: " + toStr(sc->td.iVertsX));// +" "+ toStr((sc->td.iVertsX)*sizeof(float))
+	// LogO("Ter size: " + toStr(sc->td.iVertsX));// +" "+ toStr((sc->td.iVertsX)*sizeof(float))
 
 	bool any = !mTerra->bNormalized;
 	mTerra->load(
@@ -159,27 +158,29 @@ void AppGui::CreateTerrain()
 		false, false);
 
 	// if (mTerra->m_blendMapTex)
-	tblock->setTexture( TERRA_DETAIL_WEIGHT, mTerra->m_blendMapTex );  //**
+	tdb->setTexture( TERRA_DETAIL_WEIGHT, mTerra->m_blendMapTex );  //**
+
 
 	SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
 	node->attachObject( mTerra );
 
-	LogO("---- Terra attach");
+	db = hlmsMgr->getDatablock( mtrName );
+	mTerra->setDatablock( db );
 
-	datablock = hlmsManager->getDatablock( mtrName );
-	mTerra->setDatablock( datablock );
-
+	LogO("---T Terrain shadows");
 	mHlmsPbsTerraShadows = new HlmsPbsTerraShadows();
 	mHlmsPbsTerraShadows->setTerra( mTerra );
-	//Set the PBS listener so regular objects also receive terrain shadows
-	Hlms *hlmsPbs = root->getHlmsManager()->getHlms( HLMS_PBS );
+	
+	//  Set the PBS listener so regular objects also receive terrain shadows
+	Hlms *hlmsPbs = mRoot->getHlmsManager()->getHlms( HLMS_PBS );
 	hlmsPbs->setListener( mHlmsPbsTerraShadows );
+	LogO("C--T Terrain created");
 }
 
 
 void AppGui::DestroyTerrain()
 {
-	LogO("D--- destroy Terrain");
+	LogO("D--T destroy Terrain");
 
 	Root *root = mGraphicsSystem->getRoot();
 	Hlms *hlmsPbs = root->getHlmsManager()->getHlms( HLMS_PBS );

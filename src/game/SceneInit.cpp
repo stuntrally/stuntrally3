@@ -140,13 +140,13 @@ void App::LoadData()
 	gui->ToolTestTrkGhosts();  exit(0);
 	#endif
 
-	///  _Tool_ presets .......
+	///  🧰 _Tool_ presets .......
 	#if 0
 	gui->ToolPresets();  exit(0);
 	#endif
 
 
-	//  gui  * * *
+	//  Gui  * * *
 	if (pSet->startInMain)
 		pSet->iMenu = MN1_Main;
 
