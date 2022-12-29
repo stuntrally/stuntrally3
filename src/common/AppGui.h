@@ -4,6 +4,10 @@
 #include <OgreString.h>
 #include <OgreHlmsCommon.h>
 
+#include <SDL_keycode.h>
+#include <MyGUI_KeyCode.h>
+#include <MyGUI_MouseButton.h>
+
 namespace MyGUI{  class Gui;  class Ogre2Platform;  }
 namespace Ogre {  class Root;  class SceneManager;  class Window;  class Camera;
 	class TextureGpu;  class CompositorWorkspace;  class HlmsSamplerblock;
@@ -38,7 +42,9 @@ public:
 
 	GraphicsSystem* mGraphicsSystem =0;
 
+	//  🏞️ Scene
 	CScene* scn =0;
+
 
 	//  🎛️ Gui  ----------------
 	MyGUI::Gui* mGui =0;
@@ -46,6 +52,14 @@ public:
 
 	CGui* gui =0;
 	CGuiCom* gcom =0;
+
+	//  Gui input utils  ----
+	MyGUI::MouseButton sdlButtonToMyGUI(int button);
+	std::vector<unsigned long> utf8ToUnicode(const std::string& utf8);
+
+	MyGUI::KeyCode SDL2toGUIKey(SDL_Keycode code);
+	void SetupKeysForGUI();
+	std::unordered_map<SDL_Keycode, MyGUI::KeyCode> mKeyMap;
 
 
 	//  📈 Fps bar  ----------------

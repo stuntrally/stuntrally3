@@ -24,21 +24,21 @@ class App;  class SETTINGS;  class CScene;  class Scene;  class CData;  class CG
 class CGui : public BGui
 {
 public:
+	CGui(App* app1);
+
 	App* app =0;  SETTINGS* pSet =0;
 	CScene* scn =0;  Scene* sc =0;  CData* data =0;
 	MyGUI::Gui* mGui =0;  CGuiCom* gcom =0;
 
-	CGui(App* app1);
-
 	typedef std::list<std::string> strlist;
 
 
-	//  main menu
+	//  🪧 main menu
 	void InitMainMenu();
 	void btnMainMenu(WP);  void tabMainMenu(Tab tab, size_t id);
 
 
-	///  Gui
+	///  🎛️ Gui
 	///-----------------------------------------------------------------------------------------------------------------	
 	
 	bool bGI = false;  // gui inited  set values
@@ -54,26 +54,25 @@ public:
 	void btnEdTut(WP);
 
 
-	//  ed
-	void Status(Ogre::String s, float r,float g,float b);
+	//  👷 ed gui, status
+	void Status(Ogre::String s, float r,float g,float b);  // load, save etc
 	void SetGuiFromXmls(), SetGuiRoadFromXml();  // update gui controls
-	bool noBlendUpd = 0;
 
 	///  mode, status
 	Img imgCam =0, imgEdit =0, imgGui =0;
 	WP panStatus =0;  Txt txtStatus =0;
 
-
-	//  clr
+	//  used str clr
 	const static MyGUI::Colour sUsedClr[8];
 	void SetUsedStr(Txt valUsed, int cnt, int yellowAt);
 	
-	//  _Tools_
+
+	//  🧰 _Tools_
 	void ToolTexAlpha(), ToolSceneXml(),
 		ToolTracksWarnings(), ToolBrushesPrv(), ToolPresets();
 	
 
-	//  tool windows texts  ----
+	//  🪟🛠️ tool windows texts  ----
 	const static int
 		BR_TXT=9, RD_TXT=14, RDS_TXT=11,  //  brush, road, road stats
 		ST_TXT=6, FL_TXT=6, OBJ_TXT=6,  //  start, fluids, objects
@@ -88,7 +87,7 @@ public:
 	Img brImg =0, rdImg[RD_TXT];  Tab wndTabs =0;
 
 
-	//  [settings]
+	//  ⚙️ Settings  ----
 	Ck ckAutoStart, ckEscQuits;  // startup
 	Ck ckStartInMain, ckOgreDialog, ckMouseCapture, ckScreenPng;
 
@@ -102,19 +101,19 @@ public:
 	CK(Fps);  CK(Wireframe);  Ck ckAllowSave;
 	CK(InputBar);  CK(CamPos);
 
-	//  top view
+	//  🔝 top view
 	void toggleTopView();
 	bool bTopView = 0, oldFog = 0;
 	Ogre::Vector3 oldPos,oldRot;
 
 
-	//  Color tool wnd  ----
+	//  🎨 Color tool wnd  ----
 	Wnd wndColor =0;  WP wpClrSet =0;
 	SV svHue,svSat,svVal, svAlp,svNeg;
 	void btnClrSet(WP), btnClrSetA(WP), slUpdClr(SV*);
 	
 
-	//  [Sky]  ----
+	//  🌦️🌫️ Sky  ----
 	Btn btnSky =0;  // pick
 	Cmb cmbRain1 =0, cmbRain2 =0;
 	void comboSky(CMB), comboRain1(CMB),comboRain2(CMB);
@@ -151,7 +150,7 @@ public:
 	
 	void btnBrushPreset(WP);
 	
-	//  Ter Generator
+	//  ⛰️🌀 Ter Generator
 	SV svTerGenScale, svTerGenOfsX, svTerGenOfsY;
 	SV svTerGenFreq, svTerGenOct, svTerGenPers, svTerGenPow;
 	SV svTerGenMul, svTerGenOfsH, svTerGenRoadSm;
@@ -160,7 +159,7 @@ public:
 	void slTerGen(SV*);
 	
 	
-	//  Ter Layer  ----
+	//  ⛰️ Ter Layer  ----
 	int idTerLay = 0;  // help var
 	void SldUpd_TerL();
 
@@ -177,18 +176,19 @@ public:
 	Ck ckTexNormAuto;  bool bTexNormAuto =1;  // auto norm tex name
 	void btnTerLmoveL(WP),btnTerLmoveR(WP);
 
-	//  Ter blendmap
+	//  🏔️ Ter blendmap
 	SV svTerLScale;
 	SV svTerLAngMin, svTerLHMin, svTerLAngSm;
 	SV svTerLAngMax, svTerLHMax, svTerLHSm;
-	//  noise
+	//  🌀 noise
 	SV svTerLNoise, svTerLNprev, svTerLNnext2, svTerLDmg;
 	SV svTerLN_Freq[2], svTerLN_Oct[2], svTerLN_Pers[2], svTerLN_Pow[2];
 	void slTerLay(SV*), SldUpd_TerLNvis();
 
 	CK(TerLNOnly);  CK(TerLayTripl);
-	CK(DebugBlend);  bool bDebugBlend =0;
+	CK(DebugBlend);
 	Img dbgLclr =0;
+	bool bDebugBlend =0, noBlendUpd = 0;
 
 	//  noise btns
 	Btn bRn1 =0, bRn2 =0;
@@ -196,7 +196,7 @@ public:
 	void btnNrandom(WP), btnNswap(WP);
 
 	
-	//  Ter Particles
+	//  ⚫💭 Ter Particles
 	SV svLDust, svLDustS, svLMud, svLSmoke;  Img clrTrail =0;
 	void SldUpd_Surf();
 	Cmb cmbParDust =0, cmbParMud =0, cmbParSmoke =0;  void comboParDust(CMB);
@@ -207,7 +207,7 @@ public:
 	Txt txtSuRollDrag =0, txtSuFrict =0, txtSurfType =0;
 	
 
-	///  [Vegetation]  --------------------
+	///  🌳🪨🌿  Vegetation  --------------------
 	//  global params
 	SV svGrassDens, svTreesDens;
 	Ed edGrPage =0, edGrDist =0;
@@ -228,7 +228,7 @@ public:
 	float tiViewUpd =0;
 	void Upd3DView(Ogre::String mesh);
 	
-	///  models (paged layers)  --------
+	///  🌳🪨  models layers  --------
 	int idPgLay =0;  // help var
 	void SldUpd_PgL();
 
@@ -244,7 +244,7 @@ public:
 	SV svLTrMaxTerAng;
 	SV svLTrMinTerH, svLTrMaxTerH, svLTrFlDepth;
 
-	///  grass layers  --------
+	///  🌿 grass layers  --------
 	int idGrLay =0;  // help var
 	void SldUpd_GrL();
 
@@ -266,12 +266,12 @@ public:
 	void SldUpd_GrChan();
 	Tab tabsGrChan =0;  void tabGrChan(TAB);
 
-	SV svGrChAngMin, svGrChAngMax, svGrChAngSm;  // ter angle,height
+	SV svGrChAngMin, svGrChAngMax, svGrChAngSm;  // 🏔️ ter angle,height
 	SV svGrChHMin, svGrChHMax, svGrChHSm, svGrChRdPow;
-	SV svGrChNoise, svGrChNfreq, svGrChNoct, svGrChNpers, svGrChNpow;
+	SV svGrChNoise, svGrChNfreq, svGrChNoct, svGrChNpers, svGrChNpow;  // 🌀 noise todo
 	
 	
-	//  [Road]  ----
+	//  🛣️ Road  ----
 	//  materials, pick
 	enum {  RdPk_Road, RdPk_Pipe, RdPk_Wall, RdPk_PipeW, RdPk_Col
 	}	idRdType = RdPk_Road;
@@ -290,7 +290,7 @@ public:
 	void editRoad(Ed);
 
 	
-	//  [Surfaces]  ----
+	//  ⚫💭 Surfaces  ----
 	int idSurf = 0;  // help var
 	struct TerLayer* GetTerRdLay();
 
@@ -299,7 +299,7 @@ public:
 	Ck ckRoad1Mtr;
 
 	
-	//  [Game]  ----
+	//  🚗 Game  ----
 	SV svDamage, svWind, svGravity;
 	CK(DenyReversed);  CK(TiresAsphalt);  CK(TerrainEmissive);
 	CK(NoWrongChks);
@@ -311,20 +311,20 @@ public:
 	Txt txtEdInfo =0;  void UpdEdInfo();
 	
 
-	//  [Pacenotes]  ----
+	//  🚦 Pacenotes  ----
 	SV svPaceShow, svPaceDist, svPaceSize, svPaceNear, svPaceAlpha;
 	void slUpd_Pace(SV*);
 	CK(TrkReverse);
 
 
-	//  [Objects]  ----
+	//  📦 Objects  ----
 	//  gui lists
 	Li objListDyn =0, objListSt =0, objListBld =0, objListCat =0;
 	void listObjsChng(Li, size_t), listObjsNext(int rel);
 	void listObjsCatChng(Li, size_t);
 	
 
-	//  [Tools]  ----
+	//  🛠️ Tools  ----
 	//  copy
 	Txt valTrkCpySel;
 	void btnTrkCopySel(WP);  bool ChkTrkCopy();
@@ -340,7 +340,7 @@ public:
 	SV svAlignWidthAdd, svAlignWidthMul, svAlignSmooth;
 
 
-	//  [Warnings]  ----
+	//  ⚠ Warnings  ----
 	Ed edWarn =0;  Txt txWarn =0;
 	Img imgWarn =0, imgInfo =0;
 	void WarningsCheck(const class Scene* sc, const SplineRoad* road);
@@ -355,12 +355,12 @@ public:
 	Ck ckCheckSave, ckCheckLoad;
 
 
-	//  [Tweak]  ----
+	//  🔧 Tweak  ----
 	void CreateGUITweakMtr(), slTweak(SL),edTweak(Ed);
 	void TweakSetMtrPar(std::string name, float val);  void comboTweakMtr(CMB);
 
 
-	//  [Pick]  ----
+	//  👆 Pick  ----
 	Ck ckPickSetPar;  WP panPick =0;
 	Mli2 liSky =0, liTex =0, liGrs =0, liVeg =0, liRd =0;
 	enum EPick { P_Sky=0, P_Tex, P_Grs, P_Veg, P_Rd, P_All };
@@ -376,7 +376,7 @@ public:
 
 
 
-	///  [Track]  ----
+	///  🏞️ Track  ----
 	Ogre::String sCopyTrack;  int bCopyTrackU = 0;  // for copy tools
 	Ogre::String PathCopyTrk(int user=-1);
 	Ogre::String GetListTrk();
@@ -389,7 +389,7 @@ public:
 	Ed trkName =0;  void editTrkDescr(Ed), editTrkAdvice(Ed);
 	
 
-	//  system, utils
+	//  ⛓️ system, utils, mtr
 	Ogre::String strFSerrors;
 	bool Rename(Ogre::String from, Ogre::String to);
 	bool Delete(Ogre::String file), DeleteDir(Ogre::String dir);

@@ -104,11 +104,6 @@ public:
 	// void textEditing( const SDL_TextEditingEvent& arg ) override;
 	void textInput( const SDL_TextInputEvent& arg ) override;
 
-	//  util  sdl2 to gui keys
-	MyGUI::KeyCode SDL2toGUIKey(SDL_Keycode code);
-	void SetupKeysForGUI();
-	std::unordered_map<SDL_Keycode, MyGUI::KeyCode> mKeyMap;
-
 	// virtual void keyPressed( const SDL_KeyboardEvent &arg ) override;  // in App
 	// virtual void keyReleased(const SDL_KeyboardEvent &arg ) override;
 

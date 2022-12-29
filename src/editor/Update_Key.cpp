@@ -254,7 +254,8 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	//  GUI  keys in edits  ---------------------
 	if (bGuiFocus && mGui && !alt && !ctrl)
 	{
-		// InputManager::getInstance().injectKeyPress(KeyCode::Enum(mInputWrapper->sdl2OISKeyCode(arg.keysym.sym)), 0);
+		MyGUI::KeyCode kc = SDL2toGUIKey(arg.keysym.sym);
+		MyGUI::InputManager::getInstance().injectKeyPress(kc);
 		return;
 	}
 
@@ -295,58 +296,60 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	keyPressObjects(skey);
 
 
-	///  Common Keys  ************************************************************************************************************
+	///  Common Keys
+	//************************************************************************************************************
 	if (alt)
-	switch (skey)
+	switch (skey)    //  alt-  Shortcuts  🎛️
 	{
-		case key(Q):  gui->GuiShortcut(WND_Track, 1);  return;  // Q Track
-		case key(O):  gui->GuiShortcut(WND_Track, 2);  return;  // O Tools
+		case key(Q):  gui->GuiShortcut(WND_Track, 1);  return;  // Q Track  🏞️
+		case key(O):  gui->GuiShortcut(WND_Track, 2);  return;  // O Tools  🛠️
 
-		case key(W):  gui->GuiShortcut(WND_Track, 3);  return;  // W Game
-		case key(P):  gui->GuiShortcut(WND_Track, 4);  return;  // P Pacenotes
-		case key(J):  gui->GuiShortcut(WND_Track, 5);  return;  // J Warnings
+		case key(W):  gui->GuiShortcut(WND_Track, 3);  return;  // W Game  🚗
+		case key(P):  gui->GuiShortcut(WND_Track, 4);  return;  // P Pacenotes  🚦
+		case key(J):  gui->GuiShortcut(WND_Track, 5);  return;  // J Warnings  ⚠
 
-		case key(S):  gui->GuiShortcut(WND_Edit, TAB_Sun);       return;  // S Sun
-		case key(H):  gui->GuiShortcut(WND_Edit, TAB_Terrain);   return;  // H Heightmap
+		case key(S):  gui->GuiShortcut(WND_Edit, TAB_Sun);       return;  // S Sun  🌦️
+		case key(H):  gui->GuiShortcut(WND_Edit, TAB_Terrain);   return;  // H Heightmap  ⛰️
 		 case key(D): gui->GuiShortcut(WND_Edit, TAB_Terrain,1); return;  //  D -Brushes
 
-		case key(T):  gui->GuiShortcut(WND_Edit, TAB_Layers);    return;  // T Layers (Terrain)
+		case key(T):  gui->GuiShortcut(WND_Edit, TAB_Layers);    return;  // T Layers (Terrain)  🏔️
 		 case key(B): gui->GuiShortcut(WND_Edit, TAB_Layers,0);  return;  //  B -Blendmap
 
-		case key(G):  gui->GuiShortcut(WND_Edit, TAB_Grass);     return;  // G Grasses
+		case key(G):  gui->GuiShortcut(WND_Edit, TAB_Grass);     return;  // G Grasses  🌿
 		 case key(F): gui->GuiShortcut(WND_Edit, TAB_Grass,2);   return;  //  F -Channels
 
-		case key(V):  gui->GuiShortcut(WND_Edit, TAB_Veget);     return;  // V Vegetation
+		case key(V):  gui->GuiShortcut(WND_Edit, TAB_Veget);     return;  // V Vegetation  🌳🪨
 		 case key(M): gui->GuiShortcut(WND_Edit, TAB_Veget,1);   return;  //  M -Models
 
-		case key(U):  gui->GuiShortcut(WND_Edit, TAB_Surface);   return;  // U Surfaces
-		case key(R):  gui->GuiShortcut(WND_Edit, TAB_Road);      return;  // R Road
-		case key(X):  gui->GuiShortcut(WND_Edit, TAB_Objects);   return;  // X Objects
+		case key(U):  gui->GuiShortcut(WND_Edit, TAB_Surface);   return;  // U Surfaces  ⚫💭
+		case key(R):  gui->GuiShortcut(WND_Edit, TAB_Road);      return;  // R Road  🛣️
+		case key(X):  gui->GuiShortcut(WND_Edit, TAB_Objects);   return;  // X Objects  📦
 
-		case key(C):  gui->GuiShortcut(WND_Options, 1);	  return;  // C Screen
-		case key(A):  gui->GuiShortcut(WND_Options, 2);   return;  // A Graphics
+		case key(C):  gui->GuiShortcut(WND_Options, 1);	  return;  // C Screen  🖥️
+		case key(A):  gui->GuiShortcut(WND_Options, 2);   return;  // A Graphics  📊
 
-		case key(E):  gui->GuiShortcut(WND_Options, 3);   return;  // E View /Settings
-		case key(K):  gui->GuiShortcut(WND_Options, 4);   return;  // K Tweak
+		case key(E):  gui->GuiShortcut(WND_Options, 3);   return;  // E View /Settings  ⚙️
+		case key(K):  gui->GuiShortcut(WND_Options, 4);   return;  // K Tweak  🔧
 		
-		case key(I):  gui->GuiShortcut(WND_Help, 1);  return;  // I Input/help
+		case key(I):  gui->GuiShortcut(WND_Help, 1);  return;  // I Input/help  📝
 		default:  break;
 	}
-	else
-	switch (skey)
+	//............................................................................................................
+	else switch (skey)
 	{
-		case key(TAB):	//  Camera / Edit mode
+		case key(TAB):	//  🎥 Camera / Edit mode
 		if (!bGuiFocus && !alt)  {
-			bMoveCam = !bMoveCam;  UpdVisGui();  UpdFluidBox();  UpdObjPick();
+			bMoveCam = !bMoveCam;
+			UpdVisGui();  UpdFluidBox();  UpdObjPick();
 		}	break;
 
-		//  toggle fog, veget, weather, particles
+		//  ✅ toggle fog, veget, weather, particles
 		case key(V):  bVegetGrsUpd = true;  break;
 		case key(G):  gui->ckFog.Invert();  break;
 		case key(I):  gui->ckWeather.Invert();  break;
 		case key(P):  bParticles = !bParticles;  bRecreateEmitters = true;  break;
 
-		//  terrain
+		//  ⛰️ terrain
 		case key(D):  if (bEdit()){  SetEdMode(ED_Deform);  curBr = 0;  updBrush();  UpdEditWnds();  }	break;
 		case key(S):  if (bEdit()){  SetEdMode(ED_Smooth);  curBr = 1;  updBrush();  UpdEditWnds();  }	break;
 		case key(E):  if (bEdit()){  SetEdMode(ED_Height);  curBr = 2;  updBrush();  UpdEditWnds();  }	break;
@@ -363,32 +366,34 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				return;
 			}	break;
 
-		//  road
+		//  🛣️ road
 		case key(R):  if (bEdit()){  SetEdMode(ED_Road);	UpdEditWnds();  }	break;
 		case key(B):  if (road)  {  road->UpdPointsH();  road->Rebuild(true);  }  break;
 		case key(T):  if (edMode == ED_Road && mWndRoadStats)
 						mWndRoadStats->setVisible(!mWndRoadStats->getVisible());  break;
 		case key(M):  if (edMode == ED_Road && road)  road->ToggleMerge();  break;
 
-		//  start pos
+		//  🏁 start pos
 		case key(Q):  if (bEdit()){  SetEdMode(ED_Start);  UpdEditWnds();  }   break;
 		case key(SPACE):
 			if (edMode == ED_Start && road)  road->iDir *= -1;  break;
 		case key(KP_ENTER):  case key(RETURN):
 			if (edMode == ED_Start)  iEnd = 1 - iEnd;  UpdStartPos();  break;
-		
-		//  prv cam
+
+
+		//  🖼️🎥 prv cam
 		case key(F7):  togPrvCam();  break;
 
-		//  fluids
+
+		//  💧 fluids
 		case key(W):  if (bEdit()){  SetEdMode(ED_Fluids);  UpdEditWnds();  }   break;
 		//case key(F10):  SaveWaterDepth();   break;
 
-		//  objects
+		//  📦 objects
 		case key(C):  if (edMode == ED_Objects)  {  objSim = !objSim;  ToggleObjSim();  }  break;
 		case key(X):  if (bEdit()){  SetEdMode(ED_Objects);  UpdEditWnds();  }   break;
 
-		//  particles
+		//  🔥 particles
 		case key(A):  if (bEdit()){  SetEdMode(ED_Particles);  UpdEditWnds();  }   break;
 		default:  break;
 	}

@@ -23,6 +23,7 @@ using namespace Ogre;
 using namespace std;
 
 
+//  🌟 ctor
 CGui::CGui(App* app1)
 {
 	app = app1;
@@ -45,7 +46,7 @@ CGui::~CGui()
 }
 
 
-//  Main menu
+//  🪧 Main menu
 //----------------------------------------------------------------------------------------------------------------
 void CGui::InitMainMenu()
 {
@@ -100,6 +101,7 @@ void CGui::InitMainMenu()
 }
 
 
+//  🔁 btn main
 void CGui::btnMainMenu(WP wp)
 {
 	for (int i=0; i < ciMainBtns; ++i)
@@ -163,7 +165,7 @@ void CGui::tabMainMenu(Tab tab, size_t id)
 }
 
 
-//  Game Simulation change  Race menu
+//  🔁⚫ Game Simulation change  Race menu
 //---------------------------------------------------------
 void CGui::comboSim(Cmb cmb, size_t val)
 {
@@ -182,7 +184,7 @@ void CGui::comboSim(Cmb cmb, size_t val)
 }
 
 
-//  Game Difficulty change  Race menu
+//  🔁🚦 Game Difficulty change  Race menu
 //----------------------------------------------------------------------------------------------------------------
 void CGui::comboDiff(Cmb cmb, size_t val)
 {

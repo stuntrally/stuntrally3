@@ -23,79 +23,17 @@
 #include <MyGUI_TextBox.h>
 #include <MyGUI_Ogre2Platform.h>
 #include <SDL_events.h>
-// #include <OgreWindowEventUtilities.h>
 using namespace std;
 using namespace Ogre;
 using namespace MyGUI;
 
-namespace
-{
-	std::vector<unsigned long> utf8ToUnicode(const string& utf8)
-	{
-		std::vector<unsigned long> unicode;
-		size_t i = 0;
-		while (i < utf8.size())
-		{
-			unsigned long uni;  size_t todo;
-			unsigned char ch = utf8[i++];
-
-				 if (ch <= 0x7F){	uni = ch;	todo = 0;	}
-			else if (ch <= 0xBF){	throw logic_error("not a UTF-8 string");	}
-			else if (ch <= 0xDF){	uni = ch&0x1F;	todo = 1;	}
-			else if (ch <= 0xEF){	uni = ch&0x0F;	todo = 2;	}
-			else if (ch <= 0xF7){	uni = ch&0x07;	todo = 3;	}
-			else				{	throw logic_error("not a UTF-8 string");	}
-
-			for (size_t j = 0; j < todo; ++j)
-			{
-				if (i == utf8.size())	throw logic_error("not a UTF-8 string");
-				unsigned char ch = utf8[i++];
-				if (ch < 0x80 || ch > 0xBF)  throw logic_error("not a UTF-8 string");
-				uni <<= 6;
-				uni += ch & 0x3F;
-			}
-			if (uni >= 0xD800 && uni <= 0xDFFF)  throw logic_error("not a UTF-8 string");
-			if (uni > 0x10FFFF)  throw logic_error("not a UTF-8 string");
-			unicode.push_back(uni);
-		}
-		return unicode;
-	}
-
-	MyGUI::MouseButton sdlButtonToMyGUI(Uint8 button)
-	{
-		//  The right button is the second button, according to MyGUI
-		if (button == SDL_BUTTON_RIGHT)  button = SDL_BUTTON_MIDDLE;
-		else if (button == SDL_BUTTON_MIDDLE)  button = SDL_BUTTON_RIGHT;
-		//  MyGUI's buttons are 0 indexed
-		return MyGUI::MouseButton::Enum(button - 1);
-	}
-}
 
 
 /*
-//  Camera
-//-------------------------------------------------------------------------------------
-void BaseApp::createCamera()
-{
-	mCamera = mSceneMgr->createCamera("Cam");
-	mCamera->setPosition(Vector3(0,00,100));
-	mCamera->lookAt(Vector3(0,0,0));
-	mCamera->setNearClipDistance(0.5f);
-
-	mViewport = mWindow->addViewport(mCamera);
-	//mViewport->setBackgroundColour(ColourValue(0.5,0.65,0.8));  //`
-	mViewport->setBackgroundColour(ColourValue(0.2,0.3,0.4));  //`
-	Real asp = Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight());
-	mCamera->setAspectRatio(asp);
-}
-
-
 //  Frame
 //-------------------------------------------------------------------------------------
 void BaseApp::createFrameListener()
 {
-	Ogre::LogManager::getSingletonPtr()->logMessage("*** Initializing ***");
-
 	OverlayManager& ovr = OverlayManager::getSingleton();
 	//  overlays-
 	ovBrushPrv = ovr.getByName("Editor/BrushPrvOverlay");
@@ -103,16 +41,7 @@ void BaseApp::createFrameListener()
 	ovTerPrv = ovr.getByName("Editor/TerPrvOverlay");  ovTerPrv->hide();
 	ovTerMtr = ovr.getOverlayElement("Editor/TerPrvPanel");
 
-	//  input
-	mInputWrapper = new SFO::InputWrapper(mSDLWindow, mWindow);
-	mInputWrapper->setMouseEventCallback(this);
-	mInputWrapper->setKeyboardEventCallback(this);
-	mInputWrapper->setWindowEventCallback(this);
-	mCursorManager = new SFO::SDLCursorManager();
 	onCursorChange(MyGUI::PointerManager::getInstance().getDefaultPointer());
-	mCursorManager->setEnabled(true);
-
-	mRoot->addFrameListener(this);
 }
 
 
@@ -138,7 +67,7 @@ void BaseApp::Run( bool showDialog )
 					break;
 			}else
 			if (pSet->limit_sleep >= 0)
-				boost::this_thread::sleep(boost::posix_time::milliseconds(pSet->limit_sleep));
+				sleep(milliseconds(pSet->limit_sleep));
 	}	}
 
 	destroyScene();
@@ -336,21 +265,15 @@ void BaseApp::loadResources()
 //  key, mouse, window
 //-------------------------------------------------------------------------------------
 
-/*void BaseApp::keyReleased( const SDL_KeyboardEvent &arg )
-{
-	//if (bGuiFocus)
-		// MyGUI::InputManager::getInstance().injectKeyRelease(
-		// 	MyGUI::KeyCode::Enum(mInputWrapper->sdl2OISKeyCode(arg.keysym.sym)));
-}*/
-
 void BaseApp::textInput(const SDL_TextInputEvent &arg)
 {
-	/*const char* text = &arg.text[0];
-	if (*text == '`')  return;
-	std::vector<unsigned long> unicode = utf8ToUnicode(string(text));
+	const char* text = &arg.text[0];
+	auto unicode = utf8ToUnicode(std::string(text));
+
 	if (bGuiFocus)
 	for (auto it = unicode.begin(); it != unicode.end(); ++it)
-		MyGUI::InputManager::getInstance().injectKeyPress(MyGUI::KeyCode::None, *it);*/
+		MyGUI::InputManager::getInstance().injectKeyPress(
+			MyGUI::KeyCode::None, *it);
 }
 
 //  ⌨️ Key Released
@@ -366,6 +289,12 @@ void BaseApp::keyReleased( const SDL_KeyboardEvent &arg )
 	case key(LCTRL):   case key(RCTRL):   ctrl = false;   break;
 	case key(LALT):    case key(RALT):    alt = false;    break;
 	default:  break;
+	}
+
+	if (bGuiFocus)
+	{
+		MyGUI::KeyCode kc = SDL2toGUIKey(arg.keysym.sym);
+		MyGUI::InputManager::getInstance().injectKeyRelease(kc);
 	}
 }
 
@@ -386,7 +315,7 @@ void BaseApp::BaseKeyPressed(const SDL_KeyboardEvent &arg)
 #undef key
 
 
-//  Mouse
+//  🖱️ Mouse
 //-------------------------------------------------------------------------------------
 void BaseApp::mouseMoved( const SDL_Event &arg )
 {
@@ -473,13 +402,11 @@ void BaseApp::windowClosed()
 }
 */
 
+
 ///  base Init Gui
-//--------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
 void BaseApp::baseInitGui()
 {
-
-	///  create widgets
-	//------------------------------------------------
 	//  Cam Pos
 	txCamPos = mGui->createWidget<TextBox>("TextBox",
 		208,2, 600,40, Align::Default, "Pointer", "CamT");

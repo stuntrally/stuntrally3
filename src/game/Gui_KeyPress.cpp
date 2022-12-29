@@ -194,41 +194,42 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	}
 
 
+	//************************************************************************************************************
 	//  shortcut keys for gui access (alt-Q,C,S,G,V,.. )
 	if (alt && !shift)
-		switch (skey)
+		switch (skey)     //  alt- Shortcuts  🎛️
 		{
-			case key(Q):	gui->GuiShortcut(MN_Single, TAB_Track); return;  // Q Track
-			case key(C):	gui->GuiShortcut(MN_Single, TAB_Car);	return;  // C Car
+			case key(Q):	gui->GuiShortcut(MN_Single, TAB_Track); return;  // Q Track  🏞️
+			case key(C):	gui->GuiShortcut(MN_Single, TAB_Car);	return;  // C Car  🚗
 
-			case key(W):	gui->GuiShortcut(MN_Single, TAB_Setup); return;  // W Setup
-			case key(G):	gui->GuiShortcut(MN_Single, TAB_Split);	return;  // G SplitScreen
+			case key(W):	gui->GuiShortcut(MN_Single, TAB_Setup); return;  // W Setup  🔩
+			case key(G):	gui->GuiShortcut(MN_Single, TAB_Split);	return;  // G SplitScreen  👥
 
 			case key(J):	gui->GuiShortcut(MN_Tutorial, TAB_Champs);	return;  // J Tutorials
-			case key(H):	gui->GuiShortcut(MN_Champ,    TAB_Champs);	return;  // H Champs
-			case key(L):	gui->GuiShortcut(MN_Chall,    TAB_Champs);	return;  // L Challenges
+			case key(H):	gui->GuiShortcut(MN_Champ,    TAB_Champs);	return;  // H Champs  🏆
+			case key(L):	gui->GuiShortcut(MN_Chall,    TAB_Champs);	return;  // L Challs  🥇
 
-			case key(U):	gui->GuiShortcut(MN_Single,   TAB_Multi);	return;  // U Multiplayer
-			case key(R):	gui->GuiShortcut(MN_Replays,  1);	return;		  // R Replays
+			case key(U):	gui->GuiShortcut(MN_Single,   TAB_Multi);	return;  // U Multiplayer  📡
+			case key(R):	gui->GuiShortcut(MN_Replays,  1);	return;		     // R Replays  📽️
 
-			case key(S):	gui->GuiShortcut(MN_Options, TABo_Screen);	return;  // S Screen
-			case key(I):	gui->GuiShortcut(MN_Options, TABo_Input);	return;  // I Input
-			case key(V):	gui->GuiShortcut(MN_Options, TABo_View);	return;  // V View
+			case key(S):	gui->GuiShortcut(MN_Options, TABo_Screen);	return;  // S Screen  🖥️
+			case key(I):	gui->GuiShortcut(MN_Options, TABo_Input);	return;  // I Input  🕹️
+			case key(V):	gui->GuiShortcut(MN_Options, TABo_View);	return;  // V View  ⏱️
 
-			case key(A):	gui->GuiShortcut(MN_Options, TABo_Graphics);	return;  // A Graphics
-			// case key(E):	gui->GuiShortcut(MN_Options, TABo_Graphics,2);	return;  // E -Effects
+			case key(A):	gui->GuiShortcut(MN_Options, TABo_Graphics);	return;  // A Graphics  📊
+			//case key(E):	gui->GuiShortcut(MN_Options, TABo_Graphics,2);	return;  // E -Effects
 
-			case key(T):	gui->GuiShortcut(MN_Options, TABo_Settings);	return;  // T Settings
-			case key(O):	gui->GuiShortcut(MN_Options, TABo_Sound);	return;  // O Sound
-			case key(K):	gui->GuiShortcut(MN_Options, TABo_Tweak);  return;  // K Tweak
+			case key(T):	gui->GuiShortcut(MN_Options, TABo_Settings);	return;  // T Settings  ⚙️
+			case key(O):	gui->GuiShortcut(MN_Options, TABo_Sound);	return;  // O Sound  🔊
+			case key(K):	gui->GuiShortcut(MN_Options, TABo_Tweak);  return;  // K Tweak  🔧
 			default:  break;
 		}
-	
+	//............................................................................................................
 	//>--  dev shortcuts, alt-shift - start test tracks
 	if (pSet->dev_keys && alt && shift /*&& !mClient*/)
 	{
 		string t;
-		switch (skey)
+		switch (skey)    //  alt- shift-  Tracks  🏞️
 		{
 			case key(1):  t = "Test2-Asphalt";  break;		case key(2):  t = "TestC9-Jumps";  break;
 			case key(3):  t = "Test3-Bumps";  break;		case key(4):  t = "TestC4-Ow";  break;
@@ -253,6 +254,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			NewGame();  return;
 		}
 	}
+	//............................................................................................................
 
 
 	//  alt-Z  Tweak  (alt-shift-Z  save & reload)

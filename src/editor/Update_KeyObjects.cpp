@@ -12,12 +12,7 @@
 #include "CGui.h"
 #include "Road.h"
 #include "pathmanager.h"
-// #include <OgreTerrain.h>
 #include <OgreSceneNode.h>
-// #include <OgreRenderTexture.h>
-// #include <OgreEntity.h>
-// #include "../sdl4ogre/sdlinputwrapper.hpp"
-// #include "../sdl4ogre/sdlcursormanager.hpp"
 using namespace MyGUI;
 using namespace Ogre;
 
@@ -33,7 +28,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 	SplineRoad* road = scn->road;
 
 	
-	//  Fluids  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+	//  💧 Fluids  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 	if (edMode == ED_Fluids && edit)
 	{	int fls = scn->sc->fluids.size();
 		const std::vector<FluidParams>& dfl = scn->data->fluids->fls;
@@ -96,7 +91,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 		}
 	}
 
-	//  Objects  | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+	//  📦 Objects  | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 	if (edMode == ED_Objects && edit)
 	{	int objs = scn->sc->objects.size(), objAll = vObjNames.size();
 		switch (skey)
@@ -230,7 +225,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 		}
 	}
 
-	//  Emitters  : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
+	//  🔥 Emitters  : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
 	if (edMode == ED_Particles && edit)
 	{	int emts = scn->sc->emitters.size();
 		switch (skey)

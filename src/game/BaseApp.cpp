@@ -21,49 +21,6 @@
 using namespace Ogre;
 
 
-namespace
-{
-	std::vector<unsigned long> utf8ToUnicode(const std::string& utf8)
-	{
-		std::vector<unsigned long> unicode;
-		size_t i = 0;
-		while (i < utf8.size())
-		{
-			unsigned long uni;  size_t todo;
-			unsigned char ch = utf8[i++];
-
-				 if (ch <= 0x7F){	uni = ch;	todo = 0;	}
-			else if (ch <= 0xBF){	throw std::logic_error("not a UTF-8 string");	}
-			else if (ch <= 0xDF){	uni = ch&0x1F;	todo = 1;	}
-			else if (ch <= 0xEF){	uni = ch&0x0F;	todo = 2;	}
-			else if (ch <= 0xF7){	uni = ch&0x07;	todo = 3;	}
-			else				{	throw std::logic_error("not a UTF-8 string");	}
-
-			for (size_t j = 0; j < todo; ++j)
-			{
-				if (i == utf8.size())	throw std::logic_error("not a UTF-8 string");
-				unsigned char ch = utf8[i++];
-				if (ch < 0x80 || ch > 0xBF)  throw std::logic_error("not a UTF-8 string");
-				uni <<= 6;
-				uni += ch & 0x3F;
-			}
-			if (uni >= 0xD800 && uni <= 0xDFFF)  throw std::logic_error("not a UTF-8 string");
-			if (uni > 0x10FFFF)  throw std::logic_error("not a UTF-8 string");
-			unicode.push_back(uni);
-		}
-		return unicode;
-	}
-
-	MyGUI::MouseButton sdlButtonToMyGUI(Uint8 button)
-	{
-		//  The right button is the second button, according to MyGUI
-		if (button == SDL_BUTTON_RIGHT)  button = SDL_BUTTON_MIDDLE;
-		else if (button == SDL_BUTTON_MIDDLE)  button = SDL_BUTTON_RIGHT;
-		//  MyGUI's buttons are 0 indexed
-		return MyGUI::MouseButton::Enum(button - 1);
-	}
-}
-
 #if 0
 //  rendering
 bool BaseApp::frameRenderingQueued(const FrameEvent& evt)
@@ -180,7 +137,7 @@ void BaseApp::mouseReleased( const SDL_MouseButtonEvent& arg, Uint8 id )
 void BaseApp::textInput(const SDL_TextInputEvent &arg)
 {
 	const char* text = &arg.text[0];
-	std::vector<unsigned long> unicode = utf8ToUnicode(std::string(text));
+	auto unicode = utf8ToUnicode(std::string(text));
 
 	if (isFocGui || isTweak())
 	for (auto it = unicode.begin(); it != unicode.end(); ++it)
@@ -275,42 +232,3 @@ void BaseApp::windowClosed()
 	Root::getSingleton().queueEndRendering();
 }
 #endif
-
-
-//  util
-//-----------------------------------------------------------------------------------------------------------
-MyGUI::KeyCode BaseApp::SDL2toGUIKey(SDL_Keycode code)
-{
-	MyGUI::KeyCode kc = MyGUI::KeyCode::None;
-
-	auto key = mKeyMap.find(code);
-	if (key != mKeyMap.end())
-		kc = key->second;
-
-	return kc;
-}
-
-void BaseApp::SetupKeysForGUI()
-{
-	mKeyMap.clear();
-
-	mKeyMap[SDLK_HOME] = MyGUI::KeyCode::Home;
-	mKeyMap[SDLK_END] = MyGUI::KeyCode::End;
-	mKeyMap[SDLK_PAGEUP] = MyGUI::KeyCode::PageUp;
-	mKeyMap[SDLK_PAGEDOWN] = MyGUI::KeyCode::PageDown;
-	mKeyMap[SDLK_UP] = MyGUI::KeyCode::ArrowUp;
-	mKeyMap[SDLK_DOWN] = MyGUI::KeyCode::ArrowDown;
-	mKeyMap[SDLK_LEFT] = MyGUI::KeyCode::ArrowLeft;
-	mKeyMap[SDLK_RIGHT] = MyGUI::KeyCode::ArrowRight;
-
-	mKeyMap[SDLK_DELETE] = MyGUI::KeyCode::Delete;
-    mKeyMap[SDLK_BACKSPACE] = MyGUI::KeyCode::Backspace;
-	mKeyMap[SDLK_SPACE] = MyGUI::KeyCode::Space;
-    mKeyMap[SDLK_ESCAPE] = MyGUI::KeyCode::Escape;
-	mKeyMap[SDLK_INSERT] = MyGUI::KeyCode::Insert;
-	mKeyMap[SDLK_RETURN] = MyGUI::KeyCode::Return;
-	// mKeyMap[SDLK_KP_0] = MyGUI::KeyCode::Numpad0;
-	// mKeyMap[SDLK_KP_ENTER] = MyGUI::KeyCode::NumpadEnter;
-
-	// Don't need more, rest comes in textInput
-}

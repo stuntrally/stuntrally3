@@ -2,11 +2,14 @@
 
 WIP Port and continuation of latest [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.7 using latest [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0.  
 
-Already playable Single Player modes. GUI works. No SR Track Editor yet.
+Already playable game in Single Player modes.  
+WIP SR3 Track Editor.
 
 For details see [Roadmap](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap#sr_3) with missing features and todo. Help and contributing is welcome.
 
 Progress posts on [SR forum](https://forum.freegamedev.net/viewtopic.php?f=81&t=18515). Dev questions in [Ogre topic](https://forums.ogre3d.org/viewtopic.php?t=96576).
+
+Note: sources have emojis, [this file](/src/emojis) has all, with quick components guide etc.
 
 ----
 

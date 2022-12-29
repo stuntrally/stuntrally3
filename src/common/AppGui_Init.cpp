@@ -21,6 +21,7 @@ void AppGui::InitAppGui()
 	if (mPlatform)
 		return;
 	LogO("C::# Init MyGui");
+	SetupKeysForGUI();
 
 	//  Gui
 	mPlatform = new Ogre2Platform();

@@ -31,7 +31,6 @@ using namespace MyGUI;
 //-------------------------------------------------------------------------------------
 void BaseApp::CreateInputs()
 {
-	SetupKeysForGUI();
 	// mCursorManager = new SFO::SDLCursorManager();
 	// onCursorChange(MyGUI::PointerManager::getInstance().getDefaultPointer());
 	// mCursorManager->setEnabled(true);
