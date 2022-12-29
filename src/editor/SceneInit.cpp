@@ -15,10 +15,14 @@
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
 
+#include "enums.h"
+#include "HudRenderable.h"
 #include "GraphicsSystem.h"
 #include <OgreTimer.h>
 #include "Terra.h"
 // #include <OgreTerrainGroup.h>
+#include <OgreCommon.h>
+#include <OgreHlmsCommon.h>
 #include <OgreWindow.h>
 #include <OgreOverlay.h>
 #include <OgreOverlayElement.h>
@@ -32,6 +36,7 @@
 #include <OgreResourceGroupManager.h>
 #include <OgreSceneNode.h>
 #include "MessageBox.h"
+#include <cmath>
 // #include "Instancing.h"
 using namespace Ogre;
 using namespace std;
@@ -426,76 +431,78 @@ void App::SaveTrackEv()
 }
 
 
-///;  Ter Circle mesh   o
+///  ⛰️📍  Ter Circle  edit cursor   o
 //-------------------------------------------------------------------------------------
 const int divs = 90;
-const Real aAdd = 2 * 2*PI_d / divs, dTc = 2.f/(divs+1) *4;
+const Real aAdd = 2*PI_d / (divs), dTc = 4.f / (divs);
 static Real fTcos[divs+4], fTsin[divs+4];
+
+const static String csTerC[ED_Filter+1] = {
+	"circle_deform", "circle_smooth", "circle_height", "circle_filter"};
 
 
 void App::TerCircleInit()
 {
-	/*moTerC = mSceneMgr->createManualObject();
-	moTerC->setDynamic(true);
-	moTerC->setCastShadows(false);
-
-	moTerC->estimateVertexCount(divs+2);
-	moTerC->estimateIndexCount(divs+2);
-	moTerC->begin("circle_deform", RenderOperation::OT_TRIANGLE_STRIP);
-
 	for (int d = 0; d < divs+2; ++d)
 	{
-		Real a = d/2 * aAdd;	fTcos[d] = cosf(a);  fTsin[d] = sinf(a);
-		Real r = (d % 2 == 0) ? 1.f : 0.9f;
-		Real x = r * fTcos[d], z = r * fTsin[d];
-		moTerC->position(x,0,z);  //moTerC->normal(0,1,0);
-		moTerC->textureCoord(d/2*dTc, d%2);
+		Real a = d * aAdd;
+		fTcos[d] = cosf(a);  fTsin[d] = sinf(a);
 	}
-	moTerC->end();
- 
-	AxisAlignedBox aab;  aab.setInfinite();
-	moTerC->setBoundingBox(aab);  // always visible
-	moTerC->setRenderQueueGroup(RQG_Hud2);
-	moTerC->setVisibilityFlags(RV_Hud);
-	ndTerC = mSceneMgr->getRootSceneNode()->createChildSceneNode(Vector3(0,0,0));
-	ndTerC->attachObject(moTerC);  ndTerC->setVisible(false);*/
 }
 
-
-void App::TerCircleUpd()
+//  ⛰️📍💫  Update mesh  o
+//-------------------------------------------------------------------------------------
+void App::TerCircleUpd(float dt)
 {
-	/*if (!moTerC || !scn->terrain || !scn->road)  return;
+	if (!scn->terrain || !scn->road)  return;
 
-	bool edTer = bEdit() && (edMode < ED_Road) && scn->road->bHitTer;
-	ndTerC->setVisible(edTer);
+	int e = edMode;
+	bool ed = scn->road->bHitTer && bEdit();
+	// road->ndHit->setVisible(ed);
+	auto& nd = ndTerC[e];
+	auto& mo = moTerC[e];
+	
+	//  upd vis all
+	for (int i=0; i <= ED_Filter; ++i)
+	if (ndTerC[i])
+		ndTerC[i]->setVisible(e == i && ed);
+	
+	bool edTer = e <= ED_Filter && ed;
 	if (!edTer)  return;
 	
 	Real rbr = mBrSize[curBr] * 0.5f * scn->sc->td.fTriangleSize * 0.8f; //par-
 
-	static ED_MODE edOld = ED_ALL;
-	if (edOld != edMode)
-	{	edOld = edMode;
-		switch (edMode)
-		{
-		case ED_Deform: moTerC->setDatablockOrMaterialName(0, "circle_deform");  break;
-		case ED_Filter: moTerC->setDatablockOrMaterialName(0, "circle_filter");  break;
-		case ED_Smooth: moTerC->setDatablockOrMaterialName(0, "circle_smooth");  break;
-		case ED_Height: moTerC->setDatablockOrMaterialName(0, "circle_height");  break;
-		default:  break;
-		}
+	if (!mo)
+	{	mo = new HudRenderable(csTerC[e], mSceneMgr,
+			OT_TRIANGLE_LIST, true, false, RV_Hud,RQG_Hud2, divs, true);
+		SetTexWrap(HLMS_UNLIT, csTerC[e]);
 	}
-	moTerC->beginUpdate(0);
-	for (int d = 0; d < divs+2; ++d)
+	
+	//  anim tc rot
+	static Real ani = 0.f;
+	ani += 0.2f * dt;
+	if (ani > 40*M_PI)  ani -= 40*M_PI;
+
+	mo->begin();
+	for (int k = 0; k < 4; ++k)
+	for (int d = 0; d < divs; ++d)
 	{
-		Real a = d/2 * aAdd;
-		Real r = ((d % 2 == 0) ? 1.0f : 0.95f) * rbr;
-		Real x = r * fTcos[d], z = r * fTsin[d];
-		Vector3 p(x,0,z);  p += scn->road->posHit;
-		p.y = scn->terrain->getHeightAtWorldPosition(p) + 0.3f;
-		moTerC->position(p);  //moTerC->normal(0,1,0);
-		moTerC->textureCoord(d/2*dTc, d%2);
+		Real r = (d % 2 == 0 ? 1.0f : 0.97f) * rbr;
+		Real x = r * fTcos[d] + scn->road->posHit.x,
+			 z = r * fTsin[d] + scn->road->posHit.z;
+
+		Vector3 p(x, 0.f, z);
+		scn->terrain->getHeightAt(p);
+		p.y += 0.3f;
+		mo->position(p.x, p.y, p.z);
+		mo->textureCoord( (d/2 * dTc + ani)*2, d % 2);
 	}
-	moTerC->end();*/
+	mo->end();
+ 
+	if (!nd)
+	{	nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+		nd->attachObject(mo);  nd->setVisible(true);
+	}
 }
 
 

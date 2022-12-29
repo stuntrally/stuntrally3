@@ -129,41 +129,40 @@ hlms emitter_box pbs : ed_base
 }
 
 
-//  ⛰️ terrain  edit circle
+//  ⛰️📍 terrain  edit circle  o
 //------------------------------------------------------------
-hlms circle_deform pbs : ed_base
+hlms circle_deform unlit
 {
 	diffuse_map ter_deform.png
-	diffuse  0.3 1.0 0.1
-	emissive 0.15 0.5 0.05
-	specular 0.25 0.3 0.25
+	diffuse  0.2 0.8 0.0
 	depth_bias 3
+	cull_mode none
     // fog_en false
 }
 
-hlms circle_filter pbs : ed_base
+hlms circle_height unlit
 {
-	diffuse_map ter_smooth.png
-	diffuse  0.5 0.8 1.0
-	emissive 0.25 0.4 0.5
-	specular 0.1 0.2 0.3
+	diffuse_map ter_height.png
+	diffuse 0.5 1.0 0.5
+	// emissive 0.3 0.5 0.3
+	// specular 0.25 0.3 0.25
 	depth_bias 3
+	cull_mode none
 }
 
-hlms circle_smooth pbs : ed_base
+hlms circle_smooth unlit
 {
 	diffuse_map ter_smooth.png
-	diffuse 0.2 1.0 0.7
-	emissive 0.1 0.5 0.35
-	specular 0.15 0.3 0.25
+	diffuse 0.0 0.9 0.8
 	depth_bias 3
+	cull_mode none
 }
 
-hlms circle_height pbs : ed_base
+hlms circle_filter unlit
 {
-	diffuse_map ter_deform.png
-	diffuse 0.6 1.0 0.6
-	emissive 0.3 0.5 0.3
-	specular 0.25 0.3 0.25
+	diffuse_map ter_filter.png
+	diffuse  0.4 0.7 1.0
 	depth_bias 3
+	cull_mode none
 }
+

@@ -130,7 +130,7 @@ void App::UpdateEnd(float dt)
 	}	bu++;
 
 
-	TerCircleUpd();
+	TerCircleUpd(dt);
 	
 	bool deformed = false;
 	static bool defOld = false;

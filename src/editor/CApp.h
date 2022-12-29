@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseApp.h"
+#include "enums.h"
 #include "mathvector.h"
 #include "quaternion.h"
 #include "tracksurface.h"
@@ -106,10 +107,10 @@ public:
 	// virtual void postRenderTargetUpdate(const Ogre::RenderTargetEvent &evt);
 	
 
-	//  📍 terrain cursor, circle mesh
-	HudRenderable* moTerC =0;
-	Ogre::SceneNode* ndTerC =0;
-	void TerCircleInit(), TerCircleUpd();
+	//  ⛰️📍 terrain cursor, circle mesh  o
+	HudRenderable*   moTerC[ED_Filter+1] ={0,0,0,0};
+	Ogre::SceneNode* ndTerC[ED_Filter+1] ={0,0,0,0};
+	void TerCircleInit(), TerCircleUpd(float dt);
 
 	//  🖼️ brush preview tex
 	void createBrushPrv();

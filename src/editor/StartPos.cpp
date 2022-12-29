@@ -16,7 +16,7 @@ using namespace Ogre;
 void App::CreateBox(SceneNode*& nd, Item*& it, String sMat, String sMesh, int x)
 {
 	if (nd)  return;
-	LogO("---- creating cursor: " + sMat +" "+ sMesh);
+	// LogO("---- create cursor: " + sMat +" "+ sMesh);
 	MaterialPtr mtr;
 	nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	it = mSceneMgr->createItem(sMesh);
@@ -34,6 +34,7 @@ void App::CreateBox(SceneNode*& nd, Item*& it, String sMat, String sMesh, int x)
 //  🧊🚧  Init 3d cursor meshes
 void App::CreateCursors()
 {
+	LogO("C--- create Cursors");
 	CreateBox(ndCar, itCar, "", "car.mesh");
 	
 	CreateBox(ndStartBox[0], itStartBox[0], "start_box", "cube.mesh", 20000);
