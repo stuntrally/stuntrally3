@@ -38,9 +38,6 @@ void CGui::InitGui()
 	if (!mGui)  return;
 	Ogre::Timer ti;
 
-	//  fonts
-	gcom->CreateFonts();
-
 	//  new widgets
 	FactoryManager::getInstance().registerFactory<MultiList2>("Widget");
 	FactoryManager::getInstance().registerFactory<Slider>("Widget");
@@ -117,7 +114,7 @@ void CGui::InitGui()
 		vSubTabsOpts.push_back(sub);
 	}
 
-	///  Gui common init  ---
+	///  🎛️ Gui common init  ---
 	InitMainMenu();
 	gcom->GuiInitTooltip();
 	gcom->GuiInitLang();
