@@ -111,19 +111,22 @@ public:
 
 
 	//  👆 Pick
+#ifdef SR_EDITOR
 	void Pick(Ogre::Camera* mCamera, Ogre::Real mx, Ogre::Real my,
 			bool bRay = true, bool bAddH = false, bool bHide = false);
+#endif
 	void SelectMarker(bool bHide = false);
 	void ToggleMerge();
 
 
 	//  🛠️ Edit  -------
 	void Insert(eIns ins);
+#ifdef SR_EDITOR
 	void Delete(), DelSel();
 
 	bool CopySel();
 	void Paste(bool reverse = false);
-
+#endif
 
 	//  other
 	// const Ogre::String& getMtrStr(int seg);  const Ogre::String& getWallMtrStr(int seg);

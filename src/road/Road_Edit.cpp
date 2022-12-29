@@ -2,7 +2,11 @@
 #include "Def_Str.h"
 #include "dbl.h"
 #include "Road.h"
-
+#ifdef SR_EDITOR
+	#include "CApp.h"
+#else
+	#include "CGame.h"
+#endif
 #include "Terra.h"
 #include <OgreCamera.h>
 #include <OgreVector3.h>
@@ -59,6 +63,8 @@ void SplineEdit::Rebuild(bool full)
 		iDirtyId = iChosen;
 }
 
+#ifdef SR_EDITOR  //  ed
+//-----------------------------------------------------------------------------------------------------------------------------------------
 
 //  add/rem  select
 void SplineEdit::SelAddPoint()
@@ -90,9 +96,10 @@ int SplineEdit::GetSelCnt()
 }
 
 
-
 //  Move point
 ///-------------------------------------------------------------------------------------
+#endif
+
 void SplineEdit::Move1(int id, Vector3 relPos)
 {
 	Vector3 pos = getPos(id) + relPos;
@@ -101,6 +108,16 @@ void SplineEdit::Move1(int id, Vector3 relPos)
 	setPos(id, pos);
 	vMarks[id].setPos(pos);  // upd marker
 }
+
+Real SplineEdit::getTerH(const Vector3& p)
+{
+	Vector3 pos = p;
+	if (mTerrain)
+		mTerrain->getHeightAt(pos);
+	return pos.y;
+}
+
+#ifdef SR_EDITOR  //  ed
 
 void SplineEdit::Move(Vector3 relPos)
 {
@@ -146,15 +163,6 @@ void SplineEdit::UpdPointsH()
 		vMarks[id].setPos(pos);  // upd marker
 	}
 }
-
-Real SplineEdit::getTerH(const Vector3& p)
-{
-	Vector3 pos = p;
-	if (mTerrain)
-		mTerrain->getHeightAt(pos);
-	return pos.y;
-}
-
 
 
 ///  Edit Selected
@@ -442,6 +450,8 @@ void SplineEdit::AngZero()   ///  Angles set 0
 
 	Move(Vector3::ZERO);
 }
+#endif
+//-----------------------------------------------------------------------------------------------------------------------------------------
 
 
 //---------------------------------------------------------------------------------------------------------------
@@ -545,6 +555,9 @@ void SplineRoad::Insert(eIns ins)
 		UpdAllMarkers();/**/
 	Rebuild(/*true*/);
 }
+
+#ifdef SR_EDITOR
+//-----------------------------------------------------------------------------------------------------------------------------------------
 
 ///  Delete point
 ///-------------------------------------------------------------------------------------
@@ -713,7 +726,7 @@ void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,
 		}
 	}
 
-	ndHit->setVisible(bHitTer);
+	ndHit->setVisible(bHitTer && pApp->bEdit() );
 	if (bHitTer)
 	{
 		Vector3 pos = posHit;
@@ -723,3 +736,6 @@ void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,
 		ndHit->setPosition(pos);
 	}
 }
+
+#endif
+//-----------------------------------------------------------------------------------------------------------------------------------------

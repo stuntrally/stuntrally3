@@ -153,6 +153,7 @@ public:
 	void PrevPoint(),NextPoint(), FirstPoint(),LastPoint();
 	void CopyNewPoint();  // set new point params from chosen
 
+#ifdef SR_EDITOR
 	void SelAddPoint();  // toggle sel
 	void SelClear(),SelAll();
 	int GetSelCnt();  // select many
@@ -165,10 +166,11 @@ public:
 
 	void ToggleOnPipe(bool old=false);  // extras
 	void ChgLoopType(int rel), ToggleNotReal();
-
+#endif
 
 	///  Edit  ====
 	void Move1(int id, Ogre::Vector3 relPos);
+#ifdef SR_EDITOR
 	void Move(Ogre::Vector3 relPos);  // 1 or sel
 	void Scale1(int id, Ogre::Real posMul, Ogre::Real hMul);
 
@@ -184,6 +186,7 @@ public:
 	void RotateSel(Ogre::Real relA, Ogre::Vector3 axis, int addYawRoll);
 	void ScaleSel(Ogre::Real posMul);
 	void MirrorSel(bool alt);  // reverse order of points
+#endif
 
 	
 protected:	
