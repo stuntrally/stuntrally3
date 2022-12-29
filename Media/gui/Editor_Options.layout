@@ -538,7 +538,7 @@
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="368 94 356 24" name="Wireframe">
 							<Property key="TextColour" value="0.7 0.8 0.9"/>
-							<Property key="Caption" value="#{Wireframe} Ctrl-F11"/>
+							<Property key="Caption" value="#{Wireframe} F10"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="368 126 356 24" name="CamPos">
 							<Property key="Caption" value="#{EdCamPos}"/>

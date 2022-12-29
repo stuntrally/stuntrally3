@@ -113,7 +113,7 @@ void CGuiCom::GuiCenterMouse()
 
 void CGuiCom::btnQuit(WP)
 {
-	app->mShutDown = true;
+	app->Quit();
 }
 
 //  unfocus lists (would have double up/dn key input)

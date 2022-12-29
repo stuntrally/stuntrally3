@@ -84,7 +84,6 @@ public:
 	void newPoses(float time), newPerfTest(float time);  // vdrift
 	void updatePoses(float time);  // ogre
 	void UpdThr();
-	bool mShutDown = false;
 	std::thread* mThread =0;  // 2nd thread for simulation
 
 

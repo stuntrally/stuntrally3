@@ -173,7 +173,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	if (skey == key(ESCAPE))
 	{
 		if (pSet->escquit && !bAssignKey)
-			mShutDown = true;  // quit
+			Quit();
 		else
 			if (mWndHowTo->getVisible())
 			{	pSet->iMenu = MN1_Race;  gui->toggleGui(false);	}

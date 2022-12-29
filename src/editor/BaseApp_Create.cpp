@@ -145,19 +145,20 @@ void BaseApp::Run( bool showDialog )
 }
 */
 
-//  dtor
+//  🌟 ctor
 //-------------------------------------------------------------------------------------
+BaseApp::BaseApp()
+{
+	for (int k=0; k < SDL_NUM_SCANCODES; ++k)
+		iKeys[k] = false;
+}
+
+//  💥 dtor
 BaseApp::~BaseApp()
 {
 	// delete mCursorManager;  mCursorManager = 0;
-	// delete mInputWrapper;  mInputWrapper = 0;
 	
-	if (mGui)  {
-		mGui->shutdown();	delete mGui;	mGui = 0;  }
-	if (mPlatform)  {
-		mPlatform->shutdown();	delete mPlatform;	mPlatform = 0;  }
-
-	// OGRE_DELETE mRoot;
+	DestroyGui();
 }
 
 #if 0
@@ -357,18 +358,13 @@ void BaseApp::textInput(const SDL_TextInputEvent &arg)
 #define key(a)  SDL_SCANCODE_##a
 void BaseApp::keyReleased( const SDL_KeyboardEvent &arg )
 {
-	switch (arg.keysym.scancode)
+	auto k = arg.keysym.scancode;
+	iKeys[k] = 0;
+	switch (k)
 	{
 	case key(LSHIFT):  case key(RSHIFT):  shift = false;  break;  // mods
 	case key(LCTRL):   case key(RCTRL):   ctrl = false;   break;
 	case key(LALT):    case key(RALT):    alt = false;    break;
-
-	case key(W):  mKeys[0] = 0;  break;  case key(S):  mKeys[1] = 0;  break;  // cam move
-	case key(A):  mKeys[2] = 0;  break;  case key(D):  mKeys[3] = 0;  break;
-	case key(Q):  mKeys[4] = 0;  break;  case key(E):  mKeys[5] = 0;  break;
-
-	case key(UP):     mKeys[6] = 0;  break;  case key(DOWN):   mKeys[7] = 0;  break;  // cam rot
-	case key(LEFT):   mKeys[8] = 0;  break;  case key(RIGHT):  mKeys[9] = 0;  break;
 	default:  break;
 	}
 }
@@ -377,18 +373,13 @@ void BaseApp::keyReleased( const SDL_KeyboardEvent &arg )
 //-------------------------------------------------------------------------------------
 void BaseApp::BaseKeyPressed(const SDL_KeyboardEvent &arg)
 {	
-	switch (arg.keysym.scancode)
+	auto k = arg.keysym.scancode;
+	iKeys[k] = 1;
+	switch (k)
 	{
 	case key(LSHIFT):  case key(RSHIFT):  shift = true;  break;  // mods
 	case key(LCTRL):   case key(RCTRL):   ctrl = true;   break;
 	case key(LALT):    case key(RALT):    alt = true;    break;
-
-	case key(W):  mKeys[0] = 1;  break;  case key(S):  mKeys[1] = 1;  break;  // cam move
-	case key(A):  mKeys[2] = 1;  break;  case key(D):  mKeys[3] = 1;  break;
-	case key(Q):  mKeys[4] = 1;  break;  case key(E):  mKeys[5] = 1;  break;
-
-	case key(UP):     mKeys[6] = 1;  break;  case key(DOWN):   mKeys[7] = 1;  break;  // cam rot
-	case key(LEFT):   mKeys[8] = 1;  break;  case key(RIGHT):  mKeys[9] = 1;  break;
 	default:  break;
 	}
 }

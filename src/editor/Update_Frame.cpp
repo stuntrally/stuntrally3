@@ -255,12 +255,6 @@ void App::UpdateEnd(float dt)
 //-----------------------------------------------------------------------------------------------------------------------------
 void App::update( float dt )
 {
-	if (mShutDown)
-	{
-		mGraphicsSystem->setQuit();
-		return;
-	}
-
 	UpdateKey(dt);  // key edits etc
 	
 	UpdFpsText();
@@ -287,19 +281,20 @@ void App::update( float dt )
 	if (mDTime > 0.1f)  mDTime = 0.1f;  //min 5fps
 
 
-	//  update input
-	mRotX = 0; mRotY = 0;  mRotKX = 0; mRotKY = 0;  mTrans = Vector3::ZERO;
-
+	//  update input  ----
 	//  camera Move,Rot
+	#define isKey(a)  IsKey(SDL_SCANCODE_##a)
+	mRotX = 0; mRotY = 0;  mRotKX = 0; mRotKY = 0;  mTrans = Vector3::ZERO;
 	if (bCam())
 	{
-		mTrans.x = mKeys[3] - mKeys[2];  // A,D
-		mTrans.z = mKeys[1] - mKeys[0];  // W,S
-		mTrans.y = mKeys[5] - mKeys[4];  // Q,E
+		mTrans.x = isKey(D) - isKey(A);  // cam move
+		mTrans.z = isKey(S) - isKey(W);
+		mTrans.y = isKey(E) - isKey(Q);
 		
-		mRotKY = mKeys[6] - mKeys[7];  // ^,v
-		mRotKX = mKeys[8] - mKeys[9];  // <,>
+		mRotKY = isKey(UP)   - isKey(DOWN);  // cam rot
+		mRotKX = isKey(LEFT) - isKey(RIGHT);
 	}
+	#undef isKey
 
 	//  speed multiplers
 	moveMul = 1;  rotMul = 1;

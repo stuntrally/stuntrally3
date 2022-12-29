@@ -80,6 +80,7 @@ public:
 	//  🆕 Init  ----------------
 	void InitAppGui();
 	void DestroyGui();
+	void Quit();
 
 
 	//  🔮 Reflection Cubemap  ----------------

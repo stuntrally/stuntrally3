@@ -47,11 +47,6 @@ void App::update( float dt )
 {
 	fLastFrameDT = dt;
 
-	if (mShutDown)
-	{
-		mGraphicsSystem->setQuit();
-		return;
-	}
 
 	//  🕹️ Input upd  ----
 	mInputCtrl->update(dt);

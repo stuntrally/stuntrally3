@@ -24,6 +24,11 @@ using namespace Ogre;
 using namespace std;
 
 
+void AppGui::Quit()
+{
+	mGraphicsSystem->setQuit();
+}
+
 //  util
 //-----------------------------------------------------------------------------------
 template <typename T, size_t MaxNumTextures>

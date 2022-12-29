@@ -8,7 +8,6 @@
 #include "CGui.h"
 #include "Road.h"
 #include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
-// #include "../sdl4ogre/sdlinputwrapper.hpp"
 #include <OgreCamera.h>
 #include <OgreSceneNode.h>
 #include <OgreManualObject.h>
@@ -24,8 +23,7 @@
 using namespace Ogre;
 using namespace MyGUI;
 
-#define isKey(a)  0
-//mInputWrapper->isKeyDown(SDL_SCANCODE_##a)
+#define isKey(a)  IsKey(SDL_SCANCODE_##a)
 
 
 //  🛣️📍 Road Point
@@ -386,3 +384,5 @@ void App::KeyTxtEmitters(Real q)
 		if (emts > 0)  {  iEmtCur = (iEmtCur-mz+emts)%emts;  UpdEmtBox();  }
 	}
 }
+
+#undef isKey

@@ -197,7 +197,7 @@ public:
 
 
 	//  💧 Fluids
-	int iFlCur =0;  bool bRecreateFluids =0;
+	int iFlCur =0;  bool bRecreateFluids =0;  // todo: only one
 	void UpdFluidBox(), UpdMtrWaterDepth();
 	
 

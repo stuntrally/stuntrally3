@@ -642,10 +642,6 @@
 							<Property key="TextColour" value="0.6 0.75 0.9"/>
 							<Property key="Caption" value="K,L  /  #{InputFluidsTileY}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="12 214 464 20">
-							<Property key="TextColour" value="0.4 0.7 1.0"/>
-							<Property key="Caption" value="#{InputFluidsUpdate}"/>
-						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="396 44 332 20">
 							<Property key="TextColour" value="0.8 0.8 0.9"/>

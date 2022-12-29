@@ -56,16 +56,14 @@ void App::UpdateKey(float dt)
 			gui->panStatus->setVisible(false);
 	}
 
-	#define isKey(a)  0
-	//mInputWrapper->isKeyDown(SDL_SCANCODE_##a)
-	const Real q = (shift ? 0.05 : ctrl ? 4.0 :1.0) * 20 * dt;
-
-
 	//  key,mb info  ==================
 	if (pSet->inputBar)
 		UpdKeyBar(dt);
 
 	//  keys up/dn - trklist  todo
+	#define isKey(a)  IsKey(SDL_SCANCODE_##a)
+	const Real q = (shift ? 0.05 : ctrl ? 4.0 :1.0) * 20 * dt;
+
 	WP wf = MyGUI::InputManager::getInstance().getKeyFocusWidget();
 	static float dirU = 0.f,dirD = 0.f;
 	if (bGuiFocus && wf != (WP)gcom->trkDesc[0])
@@ -76,6 +74,7 @@ void App::UpdateKey(float dt)
 		if (dirU > 0.0f) {  gcom->trkListNext( d);  dirU = -0.2f;  }
 		if (dirD > 0.0f) {  gcom->trkListNext(-d);  dirD = -0.2f;  }
 	}
+	#undef isKey
 
 	
 	///  Update Info texts  and edit by key continuous 

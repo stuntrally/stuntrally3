@@ -127,9 +127,8 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	{
 		case key(ESCAPE): //  quit
 			if (pSet->escquit)
-			{
-				mShutDown = true;
-			}	return;
+				Quit();
+			return;
 
 		case key(F1):  case key(GRAVE):
 			if (ctrl)  // context help (show for cur mode)
@@ -226,10 +225,13 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
    			break;
 
 
-		//  Fps, WireFrame  F11
+		//  Fps, WireFrame  F11, F10
 		case key(F11):
-			if (ctrl)  gui->ckWireframe.Invert();  else  gui->ckFps.Invert();
-			return;
+			gui->ckFps.Invert();  return;
+
+		case key(F10):
+			gui->ckWireframe.Invert();  return;
+
 
 		//  Show Stats  ctrl-I
 		case key(I):
@@ -380,7 +382,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 		//  fluids
 		case key(W):  if (bEdit()){  SetEdMode(ED_Fluids);  UpdEditWnds();  }   break;
-		case key(F10):  SaveWaterDepth();   break;
+		//case key(F10):  SaveWaterDepth();   break;
 
 		//  objects
 		case key(C):  if (edMode == ED_Objects)  {  objSim = !objSim;  ToggleObjSim();  }  break;

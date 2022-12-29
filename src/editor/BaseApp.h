@@ -6,6 +6,7 @@
 #include <OgreVector3.h>
 #include <OgreString.h>
 #include "enums.h"
+#include "SDL_scancode.h"
 
 struct SDL_Window;
 namespace Ogre {  class SceneNode;  class Overlay;  class OverlayElement;  }
@@ -15,6 +16,7 @@ class SplineRoad;
 class BaseApp : public AppGui, public GameState
 {
 public:
+	BaseApp();
 	virtual ~BaseApp();
 	// virtual void Run( bool showDialog );
 
@@ -24,7 +26,6 @@ public:
 
 	bool bWindowResized =1;
 	
-	bool mShutDown =0;
 protected:	
 	// bool mShowDialog =0;
 	// bool setup(), configure();
@@ -58,6 +59,9 @@ protected:
 	void textInput( const SDL_TextInputEvent& arg ) override;
 	void BaseKeyPressed( const SDL_KeyboardEvent &arg );
 	virtual void keyReleased (const SDL_KeyboardEvent &arg ) override;
+	
+	int iKeys[SDL_NUM_SCANCODES] = {0,};  // all keys state
+	int IsKey(SDL_Scancode key) {  return iKeys[key];  }
 
 	//  input vars
 	bool alt =0, ctrl =0, shift =0;  // key modifiers

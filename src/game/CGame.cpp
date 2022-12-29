@@ -24,6 +24,7 @@
 // #include <OgreManualObject.h>
 // #include <OgreTechnique.h>
 // #include "RenderBoxScene.h"
+#include "GraphicsSystem.h"
 #include "BtOgreExtras.h"
 #include <thread>
 using namespace Ogre;
@@ -50,7 +51,7 @@ App::App()
 //-----------------------------------------------
 void App::ShutDown()
 {
-	mShutDown = true;
+	Quit();
 	if (mThread->joinable())
 		mThread->join();
 	delete mThread;
@@ -133,19 +134,19 @@ void App::UpdThr()
 	//#endif
 	gtim.reset();
 
-	while (!mShutDown)
+	while (!mGraphicsSystem->getQuit())
 	{
 		///  step Game  **
 
 		double dt = double(gtim.getMicroseconds()) * 0.000001;
 		gtim.reset();
 		
-		if (!bLoading && !mShutDown && pGame)
+		if (!bLoading && !mGraphicsSystem->getQuit() && pGame)
 		{
 			bSimulating = true;
 			bool ret = pGame->OneLoop(dt);
 			if (!ret)
-				mShutDown = true;  //ShutDown();
+				mGraphicsSystem->setQuit();
 
 			// DoNetworking();
 			bSimulating = false;
