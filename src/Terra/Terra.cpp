@@ -72,6 +72,7 @@ namespace Ogre
 		return value * Ogre::Quaternion( Ogre::Radian( Ogre::Math::HALF_PI ), Ogre::Vector3::UNIT_X );
 	}*/
 
+	//  🌟 ctor
 	Terra::Terra( IdType id, ObjectMemoryManager *objectMemoryManager, SceneManager *sceneManager,
 				  uint8 renderQueueId, CompositorManager2 *compositorManager, Camera *camera,
 				  bool zUp ) :
@@ -92,17 +93,18 @@ namespace Ogre
 		m_basePixelDimension( 256u ),
 		m_currentCell( 0u ),
 
-		m_heightMapTex( 0 ),
-		m_normalMapTex( 0 ),
-		m_blendMapTex( 0 ),
-
 		m_prevLightDir( Vector3::ZERO ),
 		m_shadowMapper( 0 ),
 		m_sharedResources( 0 ),
 		m_compositorManager( compositorManager ),
 		m_camera( camera ),
-		mHlmsTerraIndex( std::numeric_limits<uint32>::max() )
-		
+		mHlmsTerraIndex( std::numeric_limits<uint32>::max() ),
+
+		m_heightMapTex( 0 )
+
+		,normalmap( this )
+		,blendmap( this )
+
 		,bGenerateShadowMap( 0 )  //** ter par
 		,bNormalized( 0 )
 		,fHMin(-100.f), fHMax(100.f)
@@ -110,6 +112,8 @@ namespace Ogre
 	{
 		fHRange = fHMax - fHMin;
 	}
+
+	//  💥 dtor
 	//-----------------------------------------------------------------------------------
 	Terra::~Terra()
 	{
@@ -128,9 +132,9 @@ namespace Ogre
 			m_shadowMapper = 0;
 		}
 
-		destroyBlendmap();
-		destroyNormalTexture();
-		destroyHeightmapTexture();
+		blendmap.Destroy();  //*
+		normalmap.Destroy();
+		destroyHeightmapTex();
 		
 		m_terrainCells[0].clear();
 		m_terrainCells[1].clear();
@@ -164,19 +168,22 @@ namespace Ogre
 			std::swap( value.y, value.z );
 		return value;
 	}
+
+
+	//  💥 Destroy Heightmap
 	//-----------------------------------------------------------------------------------
-	void Terra::destroyHeightmapTexture()
+	void Terra::destroyHeightmapTex()
 	{
 		if( m_heightMapTex )
 		{
-			TextureGpuManager *textureManager =
+			TextureGpuManager *mgr =
 					mManager->getDestinationRenderSystem()->getTextureGpuManager();
-			textureManager->destroyTexture( m_heightMapTex );
+			mgr->destroyTexture( m_heightMapTex );
 			m_heightMapTex = 0;
 		}
 	}
 
-
+	//  🆕 Create Heightmap
 	//-----------------------------------------------------------------------------------
 	void Terra::createHeightmap(
 			int width, int height, std::vector<float> hfHeight, int row,
@@ -196,8 +203,8 @@ namespace Ogre
 		m_xzRelativeSize = m_xzDimensions / Vector2( static_cast<Real>(m_iWidth),
 													 static_cast<Real>(m_iHeight) );
 
-		createNormalTexture();
-		createBlendmap();
+		normalmap.Create();  //*
+		blendmap.Create();
 
 		m_prevLightDir = Vector3::ZERO;
 
@@ -211,84 +218,110 @@ namespace Ogre
 	}
 
 
-	//  Normal
+	//  🆕 Create Normalmap
 	//-----------------------------------------------------------------------------------
-	void Terra::createNormalTexture()
+	void Terra::Normalmap::Create()
 	{
-		destroyNormalTexture();
+		Destroy();
 
 		TextureGpuManager *textureManager =
-			mManager->getDestinationRenderSystem()->getTextureGpuManager();
-		m_normalMapTex = textureManager->createTexture(
-			"NormalMapTex_" + StringConverter::toString( getId() ), GpuPageOutStrategy::SaveToSystemRam,
+			pTerra->mManager->getDestinationRenderSystem()->getTextureGpuManager();
+		texture = textureManager->createTexture(
+			"NormalMapTex_" + StringConverter::toString( pTerra->getId() ),
+			GpuPageOutStrategy::SaveToSystemRam,
 			TextureFlags::ManualTexture, TextureTypes::Type2D );
 		
-		m_normalMapTex->setResolution( m_heightMapTex->getWidth(), m_heightMapTex->getHeight() );
-		m_normalMapTex->setNumMipmaps( PixelFormatGpuUtils::getMaxMipmapCount(
-			m_normalMapTex->getWidth(), m_normalMapTex->getHeight() ) );
+		texture->setResolution( pTerra->m_heightMapTex->getWidth(),
+								pTerra->m_heightMapTex->getHeight() );
+		texture->setNumMipmaps( PixelFormatGpuUtils::getMaxMipmapCount(
+			texture->getWidth(), texture->getHeight() ) );
 		if( textureManager->checkSupport(
 				PFG_R10G10B10A2_UNORM, TextureTypes::Type2D,
 				TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps ) )
 		{
-			m_normalMapTex->setPixelFormat( PFG_R10G10B10A2_UNORM );
+			texture->setPixelFormat( PFG_R10G10B10A2_UNORM );
 		}else{
-			m_normalMapTex->setPixelFormat( PFG_RGBA8_UNORM );
+			texture->setPixelFormat( PFG_RGBA8_UNORM );
 		}
-		m_normalMapTex->scheduleTransitionTo( GpuResidency::Resident );
+		texture->scheduleTransitionTo( GpuResidency::Resident );
 
 		Ogre::TextureGpu *tmpRtt = TerraSharedResources::getTempTexture(
-			"TMP NormalMapTex_", getId(), m_sharedResources, TerraSharedResources::TmpNormalMap,
-			m_normalMapTex, TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps );
+			"TMP NormalMapTex_", pTerra->getId(), pTerra->m_sharedResources, TerraSharedResources::TmpNormalMap,
+			texture, TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps );
 
 		MaterialPtr normalMapperMat = MaterialManager::getSingleton().load(
 			"Terra/GpuNormalMapper",
 			ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ).staticCast<Material>();
 		Pass *pass = normalMapperMat->getTechnique(0)->getPass(0);
 		TextureUnitState *texUnit = pass->getTextureUnitState(0);
-		texUnit->setTexture( m_heightMapTex );
+		texUnit->setTexture( pTerra->m_heightMapTex );
 
 		// Normalize vScale for better precision in the shader math
 		const Vector3 vScale =
-			Vector3( m_xzRelativeSize.x, m_heightUnormScaled, m_xzRelativeSize.y ).normalisedCopy();
+			Vector3( pTerra->m_xzRelativeSize.x, pTerra->m_heightUnormScaled,
+					 pTerra->m_xzRelativeSize.y ).normalisedCopy();
 
 		GpuProgramParametersSharedPtr psParams = pass->getFragmentProgramParameters();
 		psParams->setNamedConstant( "heightMapResolution", Vector4(
-			static_cast<Real>( m_iWidth ), static_cast<Real>( m_iHeight ), 1, 1 ) );
+			static_cast<Real>( pTerra->m_iWidth ),
+			static_cast<Real>( pTerra->m_iHeight ), 1, 1 ) );
 		psParams->setNamedConstant( "vScale", vScale );
 
 		CompositorChannelVec finalTargetChannels( 1, CompositorChannel() );
 		finalTargetChannels[0] = tmpRtt;
 
-		Camera *dummyCamera = mManager->createCamera( "TerraDummyCamera" );
 
-		const IdString workspaceName = m_heightMapTex->getPixelFormat() == PFG_R16_UINT
+		camera = pTerra->mManager->createCamera( "TerraDummyCamera" );
+
+		const IdString workspaceName = pTerra->m_heightMapTex->getPixelFormat() == PFG_R16_UINT
 			? "Terra/GpuNormalMapperWorkspaceU16" : "Terra/GpuNormalMapperWorkspace";
-		CompositorWorkspace *workspace = m_compositorManager->addWorkspace(
-			mManager, finalTargetChannels, dummyCamera, workspaceName, false );
+		workspace = pTerra->m_compositorManager->addWorkspace(
+			pTerra->mManager, finalTargetChannels, camera, workspaceName, false );
 		workspace->_beginUpdate( true );
 		workspace->_update();
 		workspace->_endUpdate( true );
 
-		m_compositorManager->removeWorkspace( workspace );
-		mManager->destroyCamera( dummyCamera );
+		#ifndef SR_EDITOR  // todo: game no upd ..
+		// m_compositorManager->removeWorkspace( wrkNormalmap );
+		// mManager->destroyCamera( camNormalmap );
+		#endif
 
-		for( uint8 i = 0u; i < m_normalMapTex->getNumMipmaps(); ++i )
+		for( uint8 i = 0u; i < texture->getNumMipmaps(); ++i )
 		{
-			tmpRtt->copyTo( m_normalMapTex, m_normalMapTex->getEmptyBox( i ), i,
+			tmpRtt->copyTo( texture, texture->getEmptyBox( i ), i,
 							tmpRtt->getEmptyBox( i ), i );
 		}
 
 		// TerraSharedResources::destroyTempTexture( m_sharedResources, tmpRtt );
 	}
+
+	//  💫 Update Normalmap
 	//-----------------------------------------------------------------------------------
-	void Terra::destroyNormalTexture()
+	void Terra::Normalmap::Update()
 	{
-		if( m_normalMapTex )
-		{
-			TextureGpuManager *textureManager =
-					mManager->getDestinationRenderSystem()->getTextureGpuManager();
-			textureManager->destroyTexture( m_normalMapTex );
-			m_normalMapTex = 0;
+		if (!workspace)  return;
+		workspace->_beginUpdate( true );
+		workspace->_update();
+		workspace->_endUpdate( true );
+	}
+
+	//  💥 Destroy Normalmap
+	//-----------------------------------------------------------------------------------
+	void Terra::Normalmap::Destroy()
+	{
+		if (workspace)
+		{	pTerra->m_compositorManager->removeWorkspace( workspace );
+			workspace = 0;
+		}
+		if (camera)
+		{	pTerra->mManager->destroyCamera( camera );
+			camera = 0;
+		}
+		if( texture )
+		{	TextureGpuManager *mgr =
+				pTerra->mManager->getDestinationRenderSystem()->getTextureGpuManager();
+			mgr->destroyTexture( texture );
+			texture = 0;
 		}
 	}
 
@@ -463,6 +496,8 @@ namespace Ogre
 			m_shadowMapper->_setSharedResources( sharedResources );
 	}
 
+
+	//  💫 update
 	//-----------------------------------------------------------------------------------
 	void Terra::update( const Vector3 &lightDir, float lightEpsilon )
 	{

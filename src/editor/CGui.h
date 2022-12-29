@@ -133,14 +133,16 @@ public:
 	CK(Fog);  Ck ckWeather;
 
 	
-	///  [Terrain]  --------------------
-	//  Ter HMap
+	///  ⛰️ Terrain  --------------------
+	//  HMap
 	Tab tabsHmap =0;  void tabHmap(TAB);
 	void updTabHmap();  int getHMapSizeTab();
+	Txt valHmapMB =0;
 	
-	//  Ter HMap
+	//  tri size
 	SlV(TerTriSize);  int UpdTxtTerSize(float mul=1.f);
-	SV svTerErrorNorm;  void slTerErrorNorm(SV*);
+	//  ext
+	// SV svTerErrorNorm;  void slTerErrorNorm(SV*);
 	SV svTerNormScale, svTerSpecPow, svTerSpecPowEm;  void slTerPar(SV*);
 	
 	Ogre::String getHMapNew();

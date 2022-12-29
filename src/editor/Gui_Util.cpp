@@ -63,7 +63,7 @@ void CGui::SetGuiFromXmls()
 	//-----------------------------------------------
 	updTabHmap();
 	svTerTriSize.Upd();
-	svTerErrorNorm.Upd();  svTerNormScale.Upd();
+	svTerNormScale.Upd();
 	svTerSpecPow.Upd();  svTerSpecPowEm.Upd();
 	
 	tabTerLayer(tabsTerLayers, idTerLay);

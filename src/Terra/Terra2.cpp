@@ -27,12 +27,12 @@
 namespace Ogre
 {
 
-	//  🆕 Create Height
+	//  🆕 Create Heightmap once
 	//-----------------------------------------------------------------------------------
 	void Terra::createHeightmapTexture(
 		std::vector<float> hfHeight, int row)
 	{
-		destroyHeightmapTexture();
+		destroyHeightmapTex();
 
 		TextureGpuManager *mgr =
 			mManager->getDestinationRenderSystem()->getTextureGpuManager();
@@ -92,7 +92,8 @@ namespace Ogre
 		mgr->removeStagingTexture( tex );  tex = 0;
 	}
 
-	//  💫 Update Height
+
+	//  💫 Update Heightmap, full, rect ignored
 	//-----------------------------------------------------------------------------------
 	void Terra::dirtyRect(Rect rect)
 	{
@@ -114,67 +115,92 @@ namespace Ogre
 		tex->upload( texBox, m_heightMapTex, 0, 0, 0 );
 
 		mgr->removeStagingTexture( tex );  tex = 0;
+
+		normalmap.Update();
 	}
 
 
-	//**  🏔️ Blendmap  * * *
+	//  🆕🏔️ Create Blendmap  * * *
 	//-----------------------------------------------------------------------------------
-	void Terra::createBlendmap()
+	Terra::Normalmap::Normalmap(Terra* terra)
+		: pTerra(terra)
+	{	}
+	Terra::Blendmap::Blendmap(Terra* terra)
+		: pTerra(terra)
+	{	}
+
+	void Terra::Blendmap::Create()
 	{
-		destroyBlendmap();
+		Destroy();
 
 		TextureGpuManager *textureManager =
-			mManager->getDestinationRenderSystem()->getTextureGpuManager();
-		m_blendMapTex = textureManager->createTexture(
-			"BlendMapTex_" + StringConverter::toString( getId() ), GpuPageOutStrategy::SaveToSystemRam,
+			pTerra->mManager->getDestinationRenderSystem()->getTextureGpuManager();
+		texture = textureManager->createTexture(
+			"BlendMapTex_" + StringConverter::toString( pTerra->getId() ),
+			GpuPageOutStrategy::SaveToSystemRam,
 			TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps,
 			TextureTypes::Type2DArray, "General" );
 		
-		m_blendMapTex->setResolution( m_heightMapTex->getWidth(), m_heightMapTex->getHeight() );
-		m_blendMapTex->setNumMipmaps( PixelFormatGpuUtils::getMaxMipmapCount(
-			m_blendMapTex->getWidth(), m_blendMapTex->getHeight() ) );
+		texture->setResolution( pTerra->m_heightMapTex->getWidth(), pTerra->m_heightMapTex->getHeight() );
+		texture->setNumMipmaps( PixelFormatGpuUtils::getMaxMipmapCount(
+			texture->getWidth(), texture->getHeight() ) );
 
-		m_blendMapTex->setPixelFormat( PFG_RGBA8_UNORM );
-		m_blendMapTex->scheduleTransitionTo( GpuResidency::Resident );
+		texture->setPixelFormat( PFG_RGBA8_UNORM );
+		texture->scheduleTransitionTo( GpuResidency::Resident );
 
 		MaterialPtr blendMapperMat = MaterialManager::getSingleton().load(
 			"Terra/GpuBlendMapper",
 			ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ).staticCast<Material>();
-		Pass *pass = blendMapperMat->getTechnique(0)->getPass(0);
+		pass = blendMapperMat->getTechnique(0)->getPass(0);
+		
 		TextureUnitState *texUnit = pass->getTextureUnitState(0);
-		texUnit->setTexture( m_heightMapTex );
+		texUnit->setTexture( pTerra->m_heightMapTex );
 		texUnit = pass->getTextureUnitState(1);  // n
-		texUnit->setTexture( m_normalMapTex );
+		texUnit->setTexture( pTerra->normalmap.texture );
 
-		SetBlendmapParams(pass);
+		SetParams();
 
-		Camera *dummyCamera = mManager->createCamera( "TerraDummyCamera2" );
+		camera = pTerra->mManager->createCamera( "TerraDummyCamera2" );
 
 		const IdString workspaceName = "Terra/GpuBlendMapperWorkspace";
-		CompositorWorkspace *workspace = m_compositorManager->addWorkspace(
-			mManager, m_blendMapTex/*finalTargetChannels*/, dummyCamera, workspaceName, false );
+		workspace = pTerra->m_compositorManager->addWorkspace(
+			pTerra->mManager, texture/*finalTargetChannels*/, camera, workspaceName, false );
 		workspace->_beginUpdate( true );
 		workspace->_update();
 		workspace->_endUpdate( true );
 
-		m_compositorManager->removeWorkspace( workspace );
-		mManager->destroyCamera( dummyCamera );
+		#ifndef SR_EDITOR  // game no upd
+		//	pTerra->m_compositorManager->removeWorkspace( workspace );
+		//	pTerra->mManager->destroyCamera( dummyCamera );
+		#endif
 
-		// m_blendMapTex->writeContentsToFile("blendmapRTT.png", 0, 1);  //** ter test blendmap
+		// texture->writeContentsToFile("blendmapRTT.png", 0, 1);  //** ter test blendmap
 	}
 
-
-	//**  🏔️  Blendmap Params  * * *
+	//  🏔️💫  Update Blendmap (render tex)
 	//-----------------------------------------------------------------------------------
-	void Terra::SetBlendmapParams(Pass* pass)
+	void Terra::Blendmap::Update()
+	{
+		if (!workspace)  return;
+		SetParams();
+		workspace->_beginUpdate( true );
+		workspace->_update();
+		workspace->_endUpdate( true );
+	}
+
+	//  🏔️💫📄  Update Blendmap Params  * * *
+	//-----------------------------------------------------------------------------------
+	void Terra::Blendmap::SetParams()
 	{
 		// Normalize vScale for better precision in the shader math
 		const Vector3 vScale =
-			Vector3( m_xzRelativeSize.x, m_heightUnormScaled, m_xzRelativeSize.y ).normalisedCopy();
+			Vector3( pTerra->m_xzRelativeSize.x, pTerra->m_heightUnormScaled,
+					 pTerra->m_xzRelativeSize.y ).normalisedCopy();
 
 		GpuProgramParametersSharedPtr psParams = pass->getFragmentProgramParameters();
 		psParams->setNamedConstant( "heightMapResolution",
-			Vector4( static_cast<Real>( m_iWidth ), static_cast<Real>( m_iHeight ), 1, 1 ) );
+			Vector4( static_cast<Real>( pTerra->m_iWidth ),
+					 static_cast<Real>( pTerra->m_iHeight ), 1, 1 ) );
 		psParams->setNamedConstant( "vScale", vScale );
 		// psParams->setNamedConstant( "vLayers", Vector4(1.f, 1.f, 1.f, 0.f) );
 
@@ -192,10 +218,11 @@ namespace Ogre
 		for (i=0; i < 2; ++i)
 		{	Nnext2[i]=0.f;  Nfreq2[i]=0.f; Noct2[i]=0.f; Npers2[i]=0.f; Npow2[i]=0.f;  }
 		
-		int nl = std::min(4, (int)sc->td.layers.size());
+		const auto& td = pTerra->sc->td;
+		int nl = std::min(4, (int)td.layers.size());
 		for (i=0; i < nl; ++i)
 		{	//  range
-			const TerLayer& l = sc->td.layersAll[sc->td.layers[i]];
+			const TerLayer& l = td.layersAll[td.layers[i]];
 			Hmin[i] = l.hMin;	Hmax[i] = l.hMax;	Hsmt[i] = l.hSm;
 			Amin[i] = l.angMin;	Amax[i] = l.angMax;	Asmt[i] = l.angSm;
 			//  noise
@@ -216,18 +243,28 @@ namespace Ogre
 		Set3("Nnext", Nnext);  Set3("Nprev", Nprev);  Set2("Nnext2", Nnext2);
 		Set3("Nfreq", Nfreq);  Set3("Noct", Noct);  Set3("Npers", Npers);  Set3("Npow", Npow);
 		Set2("Nfreq2", Nfreq2);  Set2("Noct2", Noct2);  Set2("Npers2", Npers2);  Set2("Npow2", Npow2);
-		Set1("terrainWorldSize", sc->td.fTerWorldSize);
+		Set1("terrainWorldSize", td.fTerWorldSize);
 	}
 
+	//  🏔️💥  Destroy Blendmap
 	//-----------------------------------------------------------------------------------
-	void Terra::destroyBlendmap()
+	void Terra::Blendmap::Destroy()
 	{
-		if( m_blendMapTex )
-		{
-			TextureGpuManager *textureManager =
-					mManager->getDestinationRenderSystem()->getTextureGpuManager();
-			textureManager->destroyTexture( m_blendMapTex );
-			m_blendMapTex = 0;
+		if (workspace)
+		{	pTerra->m_compositorManager->removeWorkspace( workspace );
+			workspace = 0;
+		}
+		if (camera)
+		{	pTerra->mManager->destroyCamera( camera );
+			camera = 0;
+		}
+		pass = 0;
+
+		if (texture)
+		{	TextureGpuManager *mgr =
+				pTerra->mManager->getDestinationRenderSystem()->getTextureGpuManager();
+			mgr->destroyTexture( texture );
+			texture = 0;
 		}
 	}
 

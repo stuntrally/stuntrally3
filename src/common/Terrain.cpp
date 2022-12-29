@@ -20,6 +20,7 @@
 #include <OgreTimer.h>
 
 #include "Grass.h"
+#include "Terra.h"
 using namespace Ogre;
 
 
@@ -158,6 +159,13 @@ void CScene::DestroyTerrain()
 	}*/
 	terrain = 0;
 	app->DestroyTerrain();
+}
+
+
+void CScene::UpdBlendmap()
+{
+	if (terrain)
+		terrain->blendmap.Update();
 }
 
 

@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------
-This source file is part of OGRE-Next
+This source was part of OGRE-Next
 	(Object-oriented Graphics Rendering Engine)
 For the latest info, see http://www.ogre3d.org/
 
@@ -24,6 +24,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -----------------------------------------------------------------------------
+Modified by CryHam
 */
 
 #ifndef _OgreTerra_H_
@@ -98,11 +99,10 @@ namespace Ogre
 		std::vector<TerrainCell*>  m_collectedCells[2];
 		size_t                     m_currentCell;
 
-		Ogre::TextureGpu*   m_heightMapTex;
-		Ogre::TextureGpu*   m_normalMapTex;
+		TextureGpu*   m_heightMapTex;
 
-		Vector3             m_prevLightDir;
-		ShadowMapper        *m_shadowMapper;
+		Vector3       m_prevLightDir;
+		ShadowMapper  *m_shadowMapper;
 
 		TerraSharedResources *m_sharedResources;
 
@@ -125,9 +125,10 @@ namespace Ogre
 
 	public:
 		uint32 mHlmsTerraIndex;
-		//  extras by CryHam
-		//----------------------------------------
-		Ogre::TextureGpu *m_blendMapTex =0;//, *m_blendRtt;
+
+		//--------------------------------------------------------------------------------
+		//begin  extras by CryHam
+
 		bool bGenerateShadowMap;  //** ter
 		bool bNormalized;  // true: Hmap floats 0..1,  false: any, real heights
 		int iLodMax;  //**
@@ -140,21 +141,51 @@ namespace Ogre
 		std::vector<float>& getHeightData()
 		{	return m_heightMap;  }
 		
-		//  upload hmap to gpu tex after edits
+		//  upload hmap to gpu tex after edits, rect ignored
 		void dirtyRect(Rect rect);
-
-		void createBlendmap();
-		void SetBlendmapParams(Pass* pass);
-		void destroyBlendmap();
 
 		bool getHeightAt( Vector3 &vPos ) const;
 		float getAngle( float x, float z, float s) const;
 		Real getHeight( Real x, Real z ) const;
+
+		//----------------------------------------
+		struct Blendmap
+		{
+			Terra* pTerra = 0;
+			Blendmap(Terra* terra);
+
+			TextureGpu* texture =0;//, *m_blendRtt;
+			Pass* pass =0;
+			Camera* camera =0;
+			CompositorWorkspace* workspace =0;
+
+			void Create();
+			void SetParams(), Update();
+			void Destroy();
+		}
+		blendmap;
 		//----------------------------------------
 
-
 	protected:
-		void destroyHeightmapTexture();
+		struct Normalmap
+		{
+			Terra* pTerra = 0;
+			Normalmap(Terra* terra);
+
+			TextureGpu* texture =0;
+			Camera* camera =0;
+			CompositorWorkspace* workspace =0;
+
+			void Create();
+			void Update();
+			void Destroy();
+		}
+		normalmap;
+
+		//end  extras by CryHam
+		//--------------------------------------------------------------------------------
+
+		void destroyHeightmapTex();
 
 		/// Creates the Ogre texture based on heightmap float array.
 		void createHeightmap(
@@ -164,15 +195,9 @@ namespace Ogre
 		void createHeightmapTexture(
 			std::vector<float> hfHeight, int row );
 
-		void createNormalTexture();
-		void destroyNormalTexture();
-
-		///	Automatically calculates the optimum skirt size (no gaps with
-		/// lowest overdraw possible).
-		///	This is done by taking the heighest delta between two adjacent
-		/// pixels in a 4x4 block.
-		///	This calculation may not be perfect, as the block search should
-		/// get bigger for higher LODs.
+		///	Automatically calculates the optimum skirt size (no gaps with lowest overdraw possible).
+		///	This is done by taking the heighest delta between two adjacent pixels in a 4x4 block.
+		///	This calculation may not be perfect, as the block search should get bigger for higher LODs.
 		void calculateOptimumSkirtSize();
 
 		inline GridPoint worldToGrid( const Vector3 &vPos ) const;
@@ -185,6 +210,7 @@ namespace Ogre
 		void optimizeCellsAndAdd();
 
 	public:
+		//  ctor
 		Terra( IdType id, ObjectMemoryManager *objectMemoryManager, SceneManager *sceneManager,
 			   uint8 renderQueueId, CompositorManager2 *compositorManager, Camera *camera, bool zUp );
 		~Terra() override;
@@ -273,8 +299,8 @@ namespace Ogre
 
 		const ShadowMapper* getShadowMapper() const { return m_shadowMapper; }
 
-		Ogre::TextureGpu* getHeightMapTex() const   { return m_heightMapTex; }
-		Ogre::TextureGpu* getNormalMapTex() const   { return m_normalMapTex; }
+		TextureGpu* getHeightMapTex() const   { return m_heightMapTex; }
+		TextureGpu* getNormalMapTex() const   { return normalmap.texture; }
 		TextureGpu* _getShadowMapTex() const;
 
 		// These are always in Y-up space

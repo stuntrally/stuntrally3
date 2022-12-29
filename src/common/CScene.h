@@ -114,8 +114,7 @@ public:
 	
 	//  🏔️ Blendmap, rtt
 	//-----------------------------------
-	void UpdBlendmap() { }  // todo:
-	// void CreateBlendTex(), UpdBlendmap(), UpdLayerPars();
+	void UpdBlendmap();
 	// void UpdGrassDens(), UpdGrassPars();
 	
 	//  tex, mtr names

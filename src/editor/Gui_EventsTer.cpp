@@ -119,6 +119,8 @@ int CGui::UpdTxtTerSize(float mul)
 	int size = getHMapSizeTab() * mul;
 	float res = sc->td.fTriangleSize * size;  // result size
 	svTerTriSize.setText(fToStr(res,0,3));
+	
+	valHmapMB->setCaption(toStr(4*size*size/1000000)+" MiB");  // floats
 	return size;
 }
 
@@ -126,14 +128,16 @@ int CGui::UpdTxtTerSize(float mul)
 void CGui::updTabHmap()
 {
 	static std::map<int,int> h;
-	if (h.empty()) {  h[128]=0; h[256]=1; h[512]=2; h[1024]=3; h[2048]=4;  }
-	tabsHmap->setIndexSelected( h[ sc->td.iTerSize- 1] );
+	if (h.empty())
+	{	h[128]=0; h[256]=1; h[512]=2; h[1024]=3; h[2048]=4; h[4096]=5; h[8192]=6;  }
+	tabsHmap->setIndexSelected( h[ sc->td.iTerSize - 1] );
 	tabHmap(0,0);
 }
 int CGui::getHMapSizeTab()
 {
 	static std::map<int,int> h;
-	if (h.empty()) {  h[0]=128; h[1]=256; h[2]=512; h[3]=1024; h[4]=2048;  }
+	if (h.empty())
+	{	h[0]=128; h[1]=256; h[2]=512; h[3]=1024; h[4]=2048; h[5]=4096; h[6]=8192;  }
 	return h[ tabsHmap->getIndexSelected() ];
 }
 void CGui::tabHmap(Tab, size_t)
@@ -141,10 +145,6 @@ void CGui::tabHmap(Tab, size_t)
 	UpdTxtTerSize();
 }
 
-void CGui::slTerErrorNorm(SV*sv)
-{
-	// scn->UpdTerErr();
-}
 
 //  upd ter sh par
 void CGui::slTerPar(SV*sv)
@@ -424,7 +424,7 @@ void CGui::comboTexNorm(Cmb cmb, size_t val)
 //  Terrain BlendMap
 void CGui::slTerLay(SV*)
 {
-	//app->bTerUpdBlend = true;
+	app->bTerUpdBlend = true;
 	//; scn->UpdLayerPars();
 	// if (scn->angleRTT.rnd)  scn->angleRTT.rnd->update();
 	// if (scn->blendRTT.rnd)  scn->blendRTT.rnd->update();

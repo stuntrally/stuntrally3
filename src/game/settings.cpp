@@ -202,7 +202,7 @@ SETTINGS::SETTINGS()   ///  Defaults
 	,champ_type(0),chall_type(0), champ_info(1)
 	,car_ed_tab(0),tweak_tab(0)
 	//  graphics
-	, bFog(0)
+	,bFog(1)
 	,refl_skip(200), refl_faces(1), refl_size(0), refl_dist(500.f), refl_mode(1)
 	,particles(true), trails(true), particles_len(1.f), trails_len(1.f), boost_fov(true)
 

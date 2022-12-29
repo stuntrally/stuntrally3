@@ -158,7 +158,7 @@ void AppGui::CreateTerrain()
 		false, false);
 
 	// if (mTerra->m_blendMapTex)
-	tdb->setTexture( TERRA_DETAIL_WEIGHT, mTerra->m_blendMapTex );  //**
+	tdb->setTexture( TERRA_DETAIL_WEIGHT, mTerra->blendmap.texture );  //**
 
 
 	SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );

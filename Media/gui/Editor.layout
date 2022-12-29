@@ -361,19 +361,25 @@
 							<Property key="SmoothShow" value="false"/>
 							<UserString key="tip" value="#{TipTerVertCount}"/>
 							<Widget type="TabItem" skin="" position="2 24 334 -8">
-								<Property key="Caption" value="#308090128"/>
+								<Property key="Caption" value="#2060A0128"/>
 							</Widget>
 							<Widget type="TabItem" skin="" position="2 24 334 -8">
-								<Property key="Caption" value="#30A060256"/>
+								<Property key="Caption" value="#30A0A0256"/>
 							</Widget>
 							<Widget type="TabItem" skin="" position="2 24 334 -8">
-								<Property key="Caption" value="#70FF40512"/>
+								<Property key="Caption" value="#40FF40512"/>
 							</Widget>
 							<Widget type="TabItem" skin="" position="2 24 334 -8">
-								<Property key="Caption" value="#F0F0401024"/>
+								<Property key="Caption" value="#F0F040 1k "/>
 							</Widget>
 							<Widget type="TabItem" skin="" position="2 24 334 -8">
-								<Property key="Caption" value="#8020202048"/>
+								<Property key="Caption" value="#FF8020 2k "/>
+							</Widget>
+							<Widget type="TabItem" skin="" position="2 24 334 -8">
+								<Property key="Caption" value="#502020 4k "/>
+							</Widget>
+							<Widget type="TabItem" skin="" position="2 24 334 -8">
+								<Property key="Caption" value="#300000 8k "/>
 							</Widget>
 						</Widget>
 						<Widget type="ProgressBar" skin="ProgressBarFill" position="200 37 340 21">
@@ -382,21 +388,9 @@
 							<Property key="Enabled" value="false"/>
 							<UserString key="tip" value="#{TipTerVertCount}"/>
 						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="32 178 200 24">
-							<Property key="Caption" value="#{TerrainError} %"/>
-							<Property key="TextColour" value="0.6 0.7 0.5"/>
-							<UserString key="tip" value="#{TipTerErrorNorm}"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="232 173 56 24" name="TerErrorNormEdit">
-							<Property key="Colour" value="0.6 0.7 0.5"/>
-							<Property key="TextColour" value="0.8 0.9 0.7"/>
-							<UserString key="tip" value="#{TipTerErrorNorm}"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="300 176 300 16" name="TerErrorNorm">
-							<Property key="Colour" value="0.8 0.9 0.7"/>
-							<UserString key="tip" value="#{TipTerErrorNorm}"/>
-						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="632 38 100 24" name="TerHmapMB">
+							<Property key="TextColour" value="0.8 0.8 0.8"/>
+						</Widget>						
 
 						<Widget type="TextBox" skin="TextBox" position="612 236 90 24">
 							<Property key="Caption" value="#{Light}"/>

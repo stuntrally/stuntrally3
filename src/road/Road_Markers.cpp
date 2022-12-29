@@ -29,7 +29,7 @@ void SplineMarkEd::Setup(
 	createMarker("sphere_rot",   itRot, ndRot);
 	createMarker("sphere_check", itChk, ndChk);
 
-	ndHit->setScale(fMarkerScale * 4.f* fScHit * Vector3::UNIT_SCALE);
+	ndHit->setScale(fMarkerScale * fScHit * Vector3::UNIT_SCALE);
 	ndRot->setScale(fMarkerScale * fScRot * Vector3::UNIT_SCALE);
 	itChk->setRenderQueueGroup(RQG_RoadMarkers);  // after road
 }
