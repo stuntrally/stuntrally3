@@ -470,7 +470,10 @@ void App::TerCircleUpd(float dt)
 	bool edTer = e <= ED_Filter && ed;
 	if (!edTer)  return;
 	
-	Real rbr = mBrSize[curBr] * 0.5f * scn->sc->td.fTriangleSize * 0.8f; //par-
+	Real radius = mBrSize[curBr] * 0.5f * scn->sc->td.fTriangleSize * 0.8f;  // par-
+	//  scale with distance, to be same on screen
+	Real scale = std::min(0.1f, 0.001f * scn->road->fHitDist ) * 8.f;  // par
+	scn->road->ndHit->setScale(Vector3::UNIT_SCALE * scale * 0.8f * pSet->road_sphr);
 
 	if (!mo)
 	{	mo = new HudRenderable(csTerC[e], mSceneMgr,
@@ -487,7 +490,7 @@ void App::TerCircleUpd(float dt)
 	for (int k = 0; k < 4; ++k)
 	for (int d = 0; d < divs; ++d)
 	{
-		Real r = (d % 2 == 0 ? 1.0f : 0.97f) * rbr;
+		Real r = (d % 2 == 0 ? radius : radius - scale);
 		Real x = r * fTcos[d] + scn->road->posHit.x,
 			 z = r * fTsin[d] + scn->road->posHit.z;
 

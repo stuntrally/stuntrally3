@@ -723,6 +723,9 @@ void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,
 			// 	ok = false;
 			bHitTer = true;
 			posHit = posTer;
+			
+			auto d = pos - posHit;
+			fHitDist = d.length();
 		}
 	}
 

@@ -281,6 +281,7 @@ private:
 	friend class CGui;
 public:
 	Ogre::Vector3 posHit;  bool bHitTer = false;  // mouse pos on terrain
+	float fHitDist = 10.f;
 	
 	int iOldHide = -1, idStr = 0;  // upd var
 
