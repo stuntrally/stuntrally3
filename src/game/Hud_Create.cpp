@@ -109,7 +109,7 @@ void CHud::Create()
 		scX = 1.f / size;  scY = 1.f / size;
 
 		//  🌍 change minimap image  -----------
-		String sMat = "circle_minimap";
+		String sMat = "minimap";
 	#if 0
 		/*MaterialPtr mm = MaterialManager::getSingleton().getByName(sMat);
 		Pass* pass = mm->getTechnique(0)->getPass(0);
@@ -129,17 +129,14 @@ void CHud::Create()
 		h.ndMap->attachObject(h.moMap);
 		h.ndMap->setVisible(pSet->trackmap);*/
 
-		//  ⏲️ gauges  backgr  -----------
+
+		//  ⏲️ gauges  -----------
 		String st = toStr(pSet->gauges_type);
 		int q = cm->hasRpm() ? 4 : 2;
 
 		h.moGauges = new HudRenderable("hud_"+st, scm,
 			OT_TRIANGLE_LIST, true, false, RV_Hud,RQG_Hud1, q);
 		h.ndGauges = rt->createChildSceneNode();  h.ndGauges->attachObject(h.moGauges);  //h.ndGauges->setVisible(false);
-
-		//  gauges  needles
-		// h.moNeedles = Create2D("hud_"+st,scm, 1.f, true,false, 0.f,Vector2(0.5f,0.5f), RV_Hud,RQG_Hud3, 2);
-		// h.ndNeedles = rt->createChildSceneNode();  h.ndNeedles->attachObject(h.moNeedles);  //h.ndNeedles->setVisible(false);
 
 		//  gear  text  -----------
 		h.parent = app->mGui->createWidget<Widget>("", 0,0,	wx, wy,
@@ -255,20 +252,20 @@ void CHud::Create()
 			"\n#70D070"+TR("#{Track}") +
 			"\n#C0C030"+TR("#{TBPosition}") +
 			"\n#F0C050"+TR("#{TBPoints}") +
-			"\n#C8A898"+TR("#{Progress}%") );/**/
+			"\n#C8A898"+TR("#{Progress}") );/*%*/
 
 		h.txTimes = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 230,260, Align::Left, "Tim"+s);
+			0,y, 240,260, Align::Left, "Tim"+s);
 		h.txTimes->setInheritsAlpha(false);
-		// h.txTimes->setFontName("hud.times");
-		h.txTimes->setFontName("DigGearSeg");  //?
-		h.txTimes->setFontHeight(32);
+		h.txTimes->setFontName("hud.times");
+		// h.txTimes->setFontName("DigGearSeg");  //-
+		// h.txTimes->setFontHeight(32);
 		h.txTimes->setTextShadow(true);
 
 
 		///  🏁 lap results  ----------------------
 		h.bckLap = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 340,210, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
+			0,y, 360,210, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
 		h.bckLap->setColour(Colour(0.4,0.4,0.4));
 		h.bckLap->setAlpha(0.5f);
 		h.bckLap->setImageTexture("back_times.png");

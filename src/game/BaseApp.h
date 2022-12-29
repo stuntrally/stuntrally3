@@ -124,7 +124,7 @@ public:
 	//  ⏳ Loading  backgr, bar
 	Img imgBack =0, bckLoad =0, bckLoadBar =0, barLoad =0, imgLoad =0;
 	Txt txLoadBig =0, txLoad =0;
-	int barSizeX =0, barSizeY =0;
+	int barSizeX =0, barSizeY =0, barHeight =0;
 	void SetLoadingBar(float pecent);
 
 

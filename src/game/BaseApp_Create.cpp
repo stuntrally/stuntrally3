@@ -347,31 +347,31 @@ void BaseApp::baseInitGui()
 	// mGraphicsSystem->mWorkspace = setupCompositor();
 
 	//  loading
+	barSizeX = 580;  barHeight = 200;
 	bckLoad = mGui->createWidget<ImageBox>("ImageBox",
-		100,100, 500,110, Align::Default, "Pointer", "LoadBck");
+		100,100, barSizeX +20,barHeight, Align::Default, "Pointer", "LoadBck");
 	bckLoad->setImageTexture("loading_back.jpg");
 
-	barSizeX = 480;
 	bckLoadBar = bckLoad->createWidget<ImageBox>("ImageBox",
-		10,43, 480,26, Align::Default, "LoadBckBar");
+		10,60, barSizeX,26, Align::Default, "LoadBckBar");
 	bckLoadBar->setImageTexture("loading_bar2.jpg");
 	bckLoadBar->setColour(Colour(0.5,0.5,0.5,1));
 
 	barSizeY = 22;
 	barLoad = bckLoadBar->createWidget<ImageBox>("ImageBox",
-		0,2, 30,22, Align::Default, "LoadBar");
+		0,2, 40,22, Align::Default, "LoadBar");
 	barLoad->setImageTexture("loading_bar1.jpg");
 
 
 	txLoadBig = bckLoad->createWidget<TextBox>("TextBox",
-		10,8, 400,30, Align::Default, "LoadTbig");
-	txLoadBig->setFontName("hud.text");
+		10,8, barSizeX,40, Align::Default, "LoadTbig");
+	txLoadBig->setFontName("font.big");
 	txLoadBig->setTextColour(Colour(0.7,0.83,1));
 	txLoadBig->setCaption(TR("#{LoadingDesc}"));
 
 	txLoad = bckLoad->createWidget<TextBox>("TextBox",
-		10,77, 400,24, Align::Default, "LoadT");
-	txLoad->setFontName("hud.text");
+		10,96, barSizeX,40, Align::Default, "LoadT");
+	txLoad->setFontName("font.big");
 	txLoad->setTextColour(Colour(0.65,0.78,1));
 	txLoad->setCaption(TR("#{Initializing}..."));
 
@@ -409,7 +409,7 @@ void BaseApp::SetLoadingBar(float pecent)
 void BaseApp::baseSizeGui()
 {
 	int sx = mWindow->getWidth(), sy = mWindow->getHeight() +30; //?
-	bckLoad->setPosition(sx/2 - 250/*200*/, sy - 140);
+	bckLoad->setPosition(sx/2 - barSizeX/2, sy - barHeight-20);
 
 	//imgBack->setCoord(0,0, sx, sy);
 	//return;

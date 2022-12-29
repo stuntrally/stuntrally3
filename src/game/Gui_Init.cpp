@@ -57,12 +57,13 @@ void CGui::InitGui()
 	Load("Game_Help");  Load("Game_Options");  Load("Game_Replay");  Load("Game_Tweak");
 
 
-	//  🪟 windows
+	//  🪟 main windows  ----
 	app->mWndMain = fWnd("MainMenuWnd");  app->mWndRace = fWnd("RaceMenuWnd");
 	app->mWndGame = fWnd("GameWnd");  app->mWndReplays = fWnd("ReplaysWnd");
 	app->mWndHelp = fWnd("HelpWnd");  app->mWndOpts = fWnd("OptionsWnd");
 	app->mWndHowTo = fWnd("HowToPlayWnd");
 
+	//  dialog wnds  ----
 	app->mWndTrkFilt = fWnd("TrackFilterWnd");  app->mWndWelcome = fWnd("WelcomeWnd");
 
 	app->mWndChampStage = fWnd("WndChampStage");  app->mWndChampStage->setVisible(false);
@@ -80,7 +81,7 @@ void CGui::InitGui()
 	Slider* sl;  SV* sv;  Ck* ck;
 
 
-	//  Tabs
+	//  Tabs  --------
 	Tab tab,sub;
 	fTabW("TabWndGame");    app->mWndTabsGame = tab;
 	fTabW("TabWndReplays"); app->mWndTabsRpl = tab;
@@ -105,13 +106,13 @@ void CGui::InitGui()
 		app->mWndTabsGame->setIndexSelected(TAB_Champs);
 
 
-	//  replay
+	//  replay  ----
 	app->mWndRpl = fWnd("RplControlsWnd");
 	app->mWndRplTxt = fWnd("RplLessonTextWnd");
 	rplSubText = fEd("RplLessonText");  rplSubImg = fImg("RplLessonImg");
 
 
-	///  Gui common init  ---
+	///  🎛️ Gui common init  ---
 	InitMainMenu();
 	gcom->GuiInitTooltip();
 	gcom->GuiInitLang();
@@ -427,7 +428,7 @@ void CGui::InitGui()
 	InitGuiCar();
 
 
-	///  👥 Multiplayer
+	///  📡 Multiplayer net
 	//------------------------------------------------------------------------
 	int c=0;
 /*	tabsNet = fTab("SubTabNet");
@@ -502,7 +503,7 @@ void CGui::InitGui()
 
 	gcom->GuiInitTrack();
 
-	//  netw panel cover
+	//  multi panel cover
 	Tbi trkTab = fTbi("TabTrack");
 	trkTab->setColour(Colour(0.8f,0.96f,1.f));
 	const IntCoord& tc = trkTab->getCoord();
@@ -524,7 +525,7 @@ void CGui::InitGui()
 	InitGuiChamps();
 
 
-	//  netw end list  ------
+	//  📡 multi end list  ------
 /*	Btn("btnNetEndClose", btnNetEndClose);
 
 	li = app->mWndNetEnd->createWidget<MultiList2>("MultiListBox",4,42,632,360, Align::Left | Align::VStretch);

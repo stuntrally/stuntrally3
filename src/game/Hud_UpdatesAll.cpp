@@ -422,7 +422,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 				(cur ? String("  ") + (diff > 0.f ? "#80E0FF+" : "#60FF60-")+
 				 	fToStr(fabs(diff), 1,3) : "")+
 				h.sTimes+
-				"\n#E0B090" + fToStr(pCarM->trackPercent,0,1)/*+"%"*/ );
+				"\n#E0B090" + fToStr(pCarM->trackPercent,0,1)+"%"/**/ );
 
 		if (h.txLap)
 		{

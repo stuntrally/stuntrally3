@@ -25,7 +25,7 @@
 	<!-- Hud text -->
 	<Resource type="ResourceTrueTypeFont" name="hud.text">
 		<Property key="Source" value="DejaVuLGCSans.ttf"/>
-		<Property key="Size" value="30"/>
+		<Property key="Size" value="42"/>
 		<Property key="Resolution" value="50"/>
 		<Property key="Antialias" value="false"/>
 		<Property key="TabWidth" value="8"/>
@@ -47,7 +47,7 @@
 	<!-- Hud Text  Big  Times -->
 	<Resource type="ResourceTrueTypeFont" name="hud.times">
 		<Property key="Source" value="LiberationSans-BoldItalic.ttf"/>
-		<Property key="Size" value="38"/>
+		<Property key="Size" value="42"/>
 		<Property key="Resolution" value="50"/>
 		<Property key="Antialias" value="false"/>
 		<Property key="TabWidth" value="8"/>
