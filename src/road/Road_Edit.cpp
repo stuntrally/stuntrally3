@@ -641,28 +641,32 @@ void SplineRoad::DelSel()
 }
 
 
-///  👆 Pick marker
+///  👆📍 Pick marker
 //---------------------------------------------------------------------------------------------------------------
-void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,  bool bRay, bool bAddH, bool bHide)
+void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,
+	bool bRay, bool bAddH, bool bHide)
 {
 	iSelPoint = -1;
 	//if (vMarkNodes.size() != getNumPoints())
 	//	return;  // assert
 	
-	Ray ray = mCamera->getCameraToViewportRay(mx,my);  // 0..1
-	const Vector3& pos = mCamera->getDerivedPosition(), dir = ray.getDirection();
+	const Ray ray = mCamera->getCameraToViewportRay(mx,my);  // 0..1
+	Vector3 pos = mCamera->getDerivedPosition();
+	const Vector3 dir = ray.getDirection();
+
 	const Plane& pl = mCamera->getFrustumPlane(FRUSTUM_PLANE_NEAR);
 	Real plDist = FLT_MAX;
 	const Real sphR = 2.4f;  //par
 
 	for (int i=0; i < (int)getNumPoints(); ++i)
 	{
-		// ray to sphere dist
+		//  ray to sphere dist
 		const Vector3& posSph = getPos(i);
 		const Vector3 ps = pos - posSph;
 		Vector3 crs = ps.crossProduct(dir);
 		Real dist = crs.length() / dir.length();
-		// dist to camera
+		
+		//  dist to camera
 		Real plD = pl.getDistance(posSph);
 
 		if (dist < sphR &&
@@ -682,21 +686,40 @@ void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,  bool bRay, bool bAddH,
 		for (size_t i=0; i < vMarks.size(); ++i)
 			vMarks[i].setVis(!bHide);
 	}
+
+
+	//  ⛰️📍 Terrain hit pos, ray step  --------
+	if (!bRay || !ndHit || !mTerrain)  return;
+	bHitTer = false;
 	
-	//;  ray terrain hit pos
-	/*if (bRay && ndHit && mTerrain)
+	const Real minStep = 0.001f, maxDist = 9000.f;  // par?
+	Real dist = 0.f, step = 10.f;
+	bool ok = true;
+	while (dist < maxDist && step > minStep && ok)
 	{
-		std::pair<bool, Vector3> p = mTerrain->rayIntersects(ray);
-		bHitTer = p.first;  //ndHit->setVisible(bHitTer);
-		posHit = p.second;
+		Vector3 posTer = pos + dir * (dist + step),
+			pos1 = posTer;
+		mTerrain->getHeightAt( posTer );
+		bool hit = pos1.y < posTer.y;
 		
-		if (bHitTer)
-		{
-			Vector3 pos = posHit;
-			//if (iChosen == -1)  // for new
-			if (!newP.onTer && bAddH)
-				pos.y = newP.pos.y;
-			ndHit->setPosition(pos);
+		if (!hit)
+			dist += step;  // move forward
+		if (hit)
+		{	step *= 0.1f;  // lower step, don't move
+			// if (posTer.y - pos1.y <= step)
+			// 	ok = false;
+			bHitTer = true;
+			posHit = posTer;
 		}
-	}*/
+	}
+
+	ndHit->setVisible(bHitTer);
+	if (bHitTer)
+	{
+		Vector3 pos = posHit;
+		//if (iChosen == -1)  // for new
+		if (!newP.onTer && bAddH)
+			pos.y = newP.pos.y;
+		ndHit->setPosition(pos);
+	}
 }

@@ -98,7 +98,7 @@ void App::UpdateEnd(float dt)
 	///  input
 	// mInputWrapper->capture(false);
 
-	//  🛣️📍 Road Pick
+	//  🛣️📍 Road Pick  --------
 	SplineRoad* road = scn->road;
 	if (road)
 	{
@@ -108,17 +108,6 @@ void App::UpdateEnd(float dt)
 		bool setpos = edMode >= ED_Road || !brLockPos,
 			hide = !(edMode == ED_Road && bEdit());
 		road->Pick(mCamera, mx, my,  setpos, edMode == ED_Road, hide);
-
-		//*****************  temp Ter brush pos  ********************
-		road->bHitTer = true;
-		road->ndHit->setVisible(1);
-		road->posHit = Vector3(
-			( my-0.5f) * scn->sc->td.fTerWorldSize, 0,
-			(-mx+0.5f) * scn->sc->td.fTerWorldSize );
-
-		road->mTerrain->getHeightAt(road->posHit);
-		road->ndHit->setPosition(road->posHit);
-		// LogO(fToStr(road->posHit.x)+" "+fToStr(road->posHit.y)+" "+fToStr(road->posHit.z));
 	}
 
 	EditMouse();  // edit

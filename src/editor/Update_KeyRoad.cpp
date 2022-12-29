@@ -68,10 +68,7 @@ void App::keyPressRoad(SDL_Scancode skey)
 			else if (!ctrl && shift && !alt)	road->Paste();
 			else if ( ctrl && shift && !alt)	road->Paste(true);
 			else
-			{	road->newP.pos.x = road->posHit.x;
-				road->newP.pos.z = road->posHit.z;
-				// if (!scn->sc->ter)
-				road->newP.pos.y = road->posHit.y;
+			{	road->newP.pos = road->posHit;
 				//road->newP.aType = AT_Both;
 				road->Insert(shift ? INS_Begin : ctrl ? INS_End : alt ? INS_CurPre : INS_Cur);
 			}	break;					  

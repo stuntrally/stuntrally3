@@ -277,7 +277,7 @@ private:
 	friend class App;
 	friend class CGui;
 public:
-	Ogre::Vector3 posHit;  bool bHitTer = false;
+	Ogre::Vector3 posHit;  bool bHitTer = false;  // mouse pos on terrain
 	
 	int iOldHide = -1, idStr = 0;  // upd var
 

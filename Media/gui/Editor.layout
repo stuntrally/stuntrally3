@@ -356,7 +356,7 @@
 							<Property key="TextColour" value="0.7 1 0.8"/>
 							<UserString key="tip" value="#{TipNewTerrainFlat}"/>
 						</Widget>
-						<Widget type="TabControl" skin="TabControl" position="200 38 340 20" name="TabHMapSize">
+						<Widget type="TabControl" skin="TabControl" position="200 38 300 20" name="TabHMapSize">
 							<Property key="Colour" value="0.7 0.9 1"/>
 							<Property key="SmoothShow" value="false"/>
 							<UserString key="tip" value="#{TipTerVertCount}"/>
@@ -376,20 +376,21 @@
 								<Property key="Caption" value="#FF8020 2k "/>
 							</Widget>
 							<Widget type="TabItem" skin="" position="2 24 334 -8">
-								<Property key="Caption" value="#502020 4k "/>
+								<Property key="Caption" value="#801010 4k "/>
 							</Widget>
-							<Widget type="TabItem" skin="" position="2 24 334 -8">
+							<!-- <Widget type="TabItem" skin="" position="2 24 334 -8">
 								<Property key="Caption" value="#300000 8k "/>
-							</Widget>
+							</Widget> NO-->
 						</Widget>
-						<Widget type="ProgressBar" skin="ProgressBarFill" position="200 37 340 21">
+						<Widget type="ProgressBar" skin="ProgressBarFill" position="200 37 300 21">
 							<Property key="Colour" value="0.2 0.9 0.3"/>
 							<Property key="Alpha" value="0.3"/>
 							<Property key="Enabled" value="false"/>
 							<UserString key="tip" value="#{TipTerVertCount}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="632 38 100 24" name="TerHmapMB">
-							<Property key="TextColour" value="0.8 0.8 0.8"/>
+						<Widget type="TextBox" skin="TextBox" position="532 38 100 24" name="TerHmapMB">
+							<Property key="TextColour" value="0.7 0.7 0.7"/>
+							<UserString key="tip" value="#{RplFileSize}"/>
 						</Widget>						
 
 						<Widget type="TextBox" skin="TextBox" position="612 236 90 24">
