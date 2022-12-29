@@ -105,8 +105,8 @@ void App::createScene01()
 
 	//  Gui Init
 	InitAppGui();
+	gcom->CreateFonts();
 	baseInitGui();
-	gui->mGui = mGui;
 	gui->InitGui();
 
 

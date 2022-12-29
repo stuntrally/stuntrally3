@@ -42,9 +42,6 @@ void CGui::InitGui()
 	Ogre::Timer ti;
 	int i;
 
-	//  fonts
-	gcom->CreateFonts();
-
 	//  new widgets
 	FactoryManager::getInstance().registerFactory<MultiList2>("Widget");
 	FactoryManager::getInstance().registerFactory<Slider>("Widget");

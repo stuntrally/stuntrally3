@@ -98,7 +98,9 @@ void App::createScene01()  // once, init
 		
 	bGuiFocus = false/*true*/;  bMoveCam = true;  //*--
 
+	//  Gui Init
 	InitAppGui();
+	gcom->CreateFonts();
 	baseInitGui();
 	gui->InitGui();
 	

@@ -29,12 +29,11 @@ using namespace std;
 
 void CGui::InitGui() 
 {
+	LogO(Ogre::String(":::# Init Gui ----"));
 	mGui = app->mGui;
 	gcom->mGui = mGui;
-	SliderValue::pGUI = mGui;
-	SliderValue::bGI = &bGI;
-	Check::pGUI = mGui;
-	Check::bGI = &bGI;
+	Check::pGUI = mGui;  SliderValue::pGUI = mGui;
+	Check::bGI = &bGI;   SliderValue::bGI = &bGI;
 
 	if (!mGui)  return;
 	Ogre::Timer ti;
