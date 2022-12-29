@@ -200,16 +200,21 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 		v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC ).first);*/
  	m1->importV2(mesh.get());
 	if (!trail)
-		m1->buildTangentVectors();
+		m1->buildTangentVectors();  // todo: slow in ed, 24 Fps
 	mesh = MeshManager::getSingleton().createByImportingV1(s2, "General", m1.get(), false,false,false);
 	MeshManager::getSingleton().remove(sMesh);  // not needed
 
 
 	//  add mesh to scene
 	//---------------------------------------------------------
-	Item *it = mSceneMgr->createItem(s2, "General", SCENE_STATIC );	
-	// Item *it = mSceneMgr->createItem( mesh, SCENE_STATIC );
-	SceneNode* node = mSceneMgr->getRootSceneNode( SCENE_STATIC )->createChildSceneNode( SCENE_STATIC );
+	auto dyn = SCENE_STATIC;
+#ifdef SR_EDITOR
+	dyn = SCENE_DYNAMIC;
+#endif
+// 
+	Item *it = mSceneMgr->createItem(s2, "General", dyn );
+	// Item *it = mSceneMgr->createItem( mesh, dyn );
+	SceneNode* node = mSceneMgr->getRootSceneNode( dyn )->createChildSceneNode( dyn );
 	node->attachObject(it);
 	it->setVisible(false);  it->setCastShadows(false);//-
 	it->setVisibilityFlags(RV_Road);

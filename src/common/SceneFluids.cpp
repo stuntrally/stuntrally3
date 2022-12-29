@@ -41,15 +41,18 @@
 using namespace Ogre;
 
 
-///  create Fluid areas  . . . . . . . 
+///  🆕 create Fluid areas  . . . . . . . 
 //----------------------------------------------------------------------------------------------------------------------
 void CScene::CreateFluids()
 {
+	LogO("C--- create Fluids");
+	auto dyn = SCENE_STATIC;
 #ifdef SR_EDITOR
+	dyn = SCENE_DYNAMIC;
 	app->UpdFluidBox();
 #endif
 	if (!mNdFluidsRoot)
-		mNdFluidsRoot = app->mSceneMgr->getRootSceneNode()->createChildSceneNode(SCENE_STATIC/*"FluidsRootNode"*/);
+		mNdFluidsRoot = app->mSceneMgr->getRootSceneNode()->createChildSceneNode( dyn );
 			
 	for (int i=0; i < sc->fluids.size(); ++i)
 	{
@@ -75,16 +78,16 @@ void CScene::CreateFluids()
 		// meshV1->unload();  //
 
 		SceneManager *mgr = app->mSceneMgr;
-		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
+		SceneNode *rootNode = mgr->getRootSceneNode( dyn );
 
-		Item* item = mgr->createItem( mesh, SCENE_STATIC );
+		Item* item = mgr->createItem( mesh, dyn );
 		String sMtr = fb.id == -1 ? "" : data->fluids->fls[fb.id].material;  //"Water"+toStr(1+fb.type)
 		
 		item->setDatablock( sMtr );  item->setCastShadows( false );
 		item->setRenderQueueGroup( RQG_Fluid );  item->setVisibilityFlags( RV_Terrain );
 		app->SetTexWrap(item);
 		
-		SceneNode* node = rootNode->createChildSceneNode( SCENE_STATIC );
+		SceneNode* node = rootNode->createChildSceneNode( dyn );
 		node->setPosition( fb.pos );  //, Quaternion(Degree(fb.rot.x),Vector3::UNIT_Y)
 		node->attachObject( item );
 		
@@ -97,6 +100,8 @@ void CScene::CreateFluids()
 	}		
 }
 
+//  bullet
+//----------------------------------------------------------------------------------------------------------------------
 void CScene::CreateBltFluids()
 {
 	for (int i=0; i < sc->fluids.size(); ++i)
@@ -189,13 +194,15 @@ void CScene::CreateBltFluids()
 #endif
 }
 
+//  💥 destroy
+//----------------------------------------------------------------------------------------------------------------------
 void CScene::DestroyFluids()
 {
+	LogO("D--- destroy Fluids");
 	for (int i=0; i < vFlNd.size(); ++i)
 	{
-		vFlNd[i]->detachAllObjects();
-		app->mSceneMgr->destroyItem(vFlIt[i]);
 		app->mSceneMgr->destroySceneNode(vFlNd[i]);
+		app->mSceneMgr->destroyItem(vFlIt[i]);
 		v1::MeshManager::getSingleton().remove(vFlSMesh[i]);
 		MeshManager::getSingleton().remove(vFlSMesh2[i]);
 	}
@@ -203,6 +210,8 @@ void CScene::DestroyFluids()
 	vFlSMesh.clear();  vFlSMesh2.clear();
 }
 
+
+//  🚧 ed cursor
 #ifdef SR_EDITOR
 void App::UpdFluidBox()
 {
