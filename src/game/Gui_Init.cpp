@@ -225,9 +225,9 @@ void CGui::InitGui()
 	ck= &ckCamBnc;		ck->Init("CamBounce",   &pSet->cam_bounce);
 	sv= &svCamBnc;		sv->Init("CamBnc",		&pSet->cam_bnc_mul, 0.f, 2.f);
 
-	// sv= &svFov;			sv->Init("Fov",			&pSet->fov_min,   50.f, 180.f, 1.f, 1,4);  sv->DefaultF(90.f);
-	// sv= &svFovBoost;	sv->Init("FovBoost",	&pSet->fov_boost,  0.f, 15.f, 1.f, 1,4);  sv->DefaultF(5.f);
-	// sv= &svFovSm;		sv->Init("FovSm",		&pSet->fov_smooth, 0.f, 15.f, 1.5f);  sv->DefaultF(5.f);
+	sv= &svFov;			sv->Init("Fov",			&pSet->fov_min,   50.f, 180.f, 1.f, 1,4);  sv->DefaultF(90.f);
+	sv= &svFovBoost;	sv->Init("FovBoost",	&pSet->fov_boost,  0.f, 15.f, 1.f, 1,4);  sv->DefaultF(5.f);
+	sv= &svFovSm;		sv->Init("FovSm",		&pSet->fov_smooth, 0.f, 15.f, 1.5f);  sv->DefaultF(5.f);
 
 	//  🚦 pacenotes
 	ck= &ckPaceShow;	ck->Init("ChkPace",		&pSet->pace_show);
@@ -328,9 +328,10 @@ void CGui::InitGui()
 	Btn("btnPlayers1", btnNumPlayers);	Btn("btnPlayers2", btnNumPlayers);
 	Btn("btnPlayers3", btnNumPlayers);	Btn("btnPlayers4", btnNumPlayers);
 
-	tbPlr  = fTab("SubTabPlayer");   Tev(tbPlr, Player);
-	tbPlr2 = fTab("SubTabPlayer2");  Tev(tbPlr2, Player);
+	tbPlr[0] = fTab("SubTabPlayer");   Tev(tbPlr[0], Player);
+	tbPlr[1] = fTab("SubTabPlayer2");  Tev(tbPlr[1], Player);
 	ck= &ckSplitVert;	ck->Init("chkSplitVertically",  &pSet->split_vertically);
+	btnNumPlayers(0);  // hide tabs
 
 	Chk("chkStartOrderRev", chkStartOrd, pSet->gui.start_order);
 	valLocPlayers = fTxt("valLocPlayers");

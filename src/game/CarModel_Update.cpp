@@ -15,6 +15,7 @@
 #include "Road.h"
 
 #include <OgreRoot.h>
+#include <OgreMath.h>
 #include <OgreEntity.h>
 #include <OgreItem.h>
 // #include <OgreManualObject2.h>
@@ -184,15 +185,14 @@ void CarModel::UpdTrackPercent()
 //-------------------------------------------------------------------------------------------------------
 void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 {	
-	// pReflect->camPosition = pMainNode->getPosition();
 	int w,i;
 	
-	//  upd chk mtr
+	//  🔵 upd chk mtr
 	if (bChkUpd && itNextChk)
 		itNextChk->setDatablockOrMaterialName(sChkMtr);
 
 
-	//  stop/resume par sys
+	//  ✨ stop/resume par sys
 	float fa = pGame->pause ? 0.f : 1.f;
 	for (w=0; w < numWheels; ++w)
 	{
@@ -212,7 +212,8 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	
 	if (!ndMain)  return;
 
-	//  set car pos and rot
+
+	//  🚗 set car pos and rot
 	ndMain->setPosition(posInfo.pos);
 	if (vType == V_Sphere)
 		ndMain->setOrientation(Quaternion(Quaternion(Degree(-posInfo.hov_roll),Vector3::UNIT_Y)));
@@ -222,6 +223,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	else
 		ndMain->setOrientation(posInfo.rot);
 	
+
 	//  🟢🌿 grass sphere pos
 	Vector3 vx(1,0,0);  // car x dir
 	vx = posInfo.rot * vx * 1.1;  //par
@@ -235,7 +237,12 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	//  🎥 set camera view
 	if (fCam)
 	{	fCam->Apply(posInfoCam);
+
+		if (pCar && pSet->boost_fov)  // not here?-
+		 	mCamera->setFOVy(Degree( 0.5f * (
+				pSet->fov_min + pSet->fov_boost * pCar->dynamics.fBoostFov)));
 		
+
 		///~~  💧🎥 camera in fluid fog, detect and compute
 		iCamFluid = -1;  fCamFl = 0.f;  // none
 		const size_t sf = sc->fluids.size();
@@ -264,7 +271,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 			}
 	}	}
 
-	//  upd rotY for minimap
+	//  🌍 upd rotY for minimap
 	if (vType == V_Sphere)
 		angCarY = posInfo.hov_roll * 180.f / PI_d + 180.f;
 	else
