@@ -121,7 +121,7 @@ public:
 	void CreateCar(), CreateRoads(), CreateRoadsInt(), CreateTrail(Ogre::Camera* cam);
 	void CreateObjects(), DestroyObjects(bool clear), ResetObjects();
 
-	void NewGame(bool force=false);
+	void NewGame(bool force=false, bool perfTest=false);
 	void NewGameDoLoad();
 
 	void LoadData();

@@ -175,8 +175,10 @@ void App::LoadData()
 //---------------------------------------------------------------------------------------------------------------
 ///  🏁 New Game
 //---------------------------------------------------------------------------------------------------------------
-void App::NewGame(bool force)
+void App::NewGame(bool force, bool perfTest)
 {
+	bPerfTest = perfTest;
+
 	//  actual loading isn't done here
 	isFocGui = false;
 	if (gui->bGI)
@@ -727,7 +729,7 @@ void App::LoadMisc()  // 9 last
 	for (auto car : carModels)
 	{	car->First();
 		if (car->fCam)
-		{	//; car->fCam->mTerrain = scn->mTerrainGroup;
+		{	//; car->fCam->mTerrain = scn->mTerrainGroup;  //?
 			//car->fCam->mWorld = &(pGame->collision);
 	}	}
 	
@@ -822,7 +824,7 @@ void App::CreateRoads()
 
 
 	//  🚦 pace ~ ~
-	LogO("->-- DestroyTrail");
+	LogO("D--~ destroy Trail");
 	scn->DestroyTrail();
 	/**
 	scn->DestroyPace();
@@ -857,7 +859,7 @@ void App::CreateRoads()
 	{
 		road->RebuildRoadPace();  //todo: load only..
 		scn->pace->Rebuild(road, scn->sc, pSet->game.trackreverse);
-	}*/
+	}/**/
 
 	CreateTrail(cam);
 }
@@ -875,7 +877,7 @@ void App::CreateRoadsInt()
 	if (StringUtil::startsWith(fname,"road"))
 	{
 		int id = scn->roads.size();
-		LogO("~~~~ Creating road " + toStr(id) + " from: " + fname);
+		LogO("C~~R Creating road " + toStr(id) + " from: " + fname);
 		scn->road = new SplineRoad(pGame);
 		scn->road->Setup("", 0.7, scn->terrain, mSceneMgr, cam, id);
 		scn->road->LoadFile(path + fname);
@@ -910,7 +912,7 @@ void App::CreateTrail(Camera* cam)
 		frames = gho.getNumFrames();
 	}
 	if (frames == 0 || !scn->terrain)  return;
-	LogO("->-- CreateTrail");
+	LogO("C--~ CreateTrail");
 
 
 	//  setup trail road

@@ -249,7 +249,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		if (!t.empty())
 		{
 			gui->BackFromChs();
-			pSet->gui.track = t;  // bPerfTest = false;
+			pSet->gui.track = t;  bPerfTest = false;
 			pSet->gui.track_user = false;
 			NewGame();  return;
 		}
@@ -589,20 +589,20 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 		}
 	}
 
-	//  new game - Reload   not in multiplayer
+	//  🏁  New game - Reload   not in multiplayer
 	if (action(A_RestartGame) /*&& !mClient*/)
 	{
-		/*bPerfTest = ctrl;  // ctrl-F5 start perf test
-		if (bPerfTest)
+		if (ctrl)  // ctrl-F5 start perf test
 		{	gui->BackFromChs();
 			pSet->gui.track = "Test10-FlatPerf";
 			pSet->gui.track_user = false;
 		}
-		iPerfTestStage = PT_StartWait;*/
-		NewGame(shift);  return;
+		iPerfTestStage = PT_StartWait;
+		NewGame(shift, ctrl);
+		return;
 	}
 
-	//  new game - fast (same track & cars)
+	//  🏁🔁  Reset game - fast (same track & cars)
 	if (action(A_ResetGame) /*&& !mClient*/)
 	{
 		for (int c=0; c < carModels.size(); ++c)

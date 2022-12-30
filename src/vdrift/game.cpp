@@ -426,8 +426,8 @@ void GAME::Tick(double deltat)
 	bool sim = app->iLoad1stFrames == -2 && (!timer.waiting || timer.end_sim);
 
 	//  speed up perf test
-	//; if (app && app->bPerfTest)
-		// deltat *= settings->perf_speed;
+	if (app && app->bPerfTest)
+		deltat *= pSet->perf_speed;
 	
 	target_time += deltat;
 	double tickperriod = TickPeriod();
@@ -522,7 +522,7 @@ void GAME::UpdateCarInputs(CAR & car)
 	carinputs = controls.second.ProcessInput(
 		app->input->mPlayerInputState[id], car.id,
 		carspeed, sss_eff, sss_velf,  app->mInputCtrlPlayer[id]->mbOneAxisThrottleBrake,
-		forceBrake/*, app->bPerfTest, app->iPerfTestStage*/);
+		forceBrake, app->bPerfTest, app->iPerfTestStage);
 	app->input->mPlayerInputStateMutex.unlock();
 
 	car.HandleInputs(carinputs, TickPeriod());
@@ -594,7 +594,7 @@ CAR* GAME::LoadCar(const string& pathCar, const string& carname,
 		start_pos, start_rot,  collision,
 		pSet->abs, pSet->tcs,  isRemote, idCar, false))
 	{
-		LogO("-==- Error: loading CAR: "+carname);
+		LogO("-==- Error! loading CAR: "+carname);
 		return NULL;
 	}
 	else
@@ -677,7 +677,7 @@ void GAME::UpdateForceFeedback(float dt)
 
 void GAME::UpdateTimer()
 {
-	//; if (app->iLoad1stFrames == -2)  // ended loading
+	if (app->iLoad1stFrames == -2)  // ended loading
 		timer.Tick(TickPeriod());
 	//timer.DebugPrint(info_output);
 }

@@ -55,8 +55,8 @@ void App::newPoses(float time)  // time only for camera update
 
 		//  car perf test  logic
 		//--------------------------------
-		// if (bPerfTest && c==0)
-		// 	newPerfTest(time);
+		if (bPerfTest && c==0)
+			newPerfTest(time);
 
 
 		//  play  get data from replay / ghost
