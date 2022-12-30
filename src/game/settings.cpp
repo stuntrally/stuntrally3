@@ -42,7 +42,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 		Param(c,w, s+"clr_sat", gui.car_sat[i]);	Param(c,w, s+"clr_metal", gui.car_metal[i]);
 		Param(c,w, s+"clr_val", gui.car_val[i]);	Param(c,w, s+"clr_rough", gui.car_rough[i]);
 	}
-	//todo: this for all 4 cars..
+	// todo: this for all 4 cars
 	Param(c,w, "car1.autotrans", autoshift);
 	Param(c,w, "car1.autorear", autorear);		Param(c,w, "car1.autorear_inv", rear_inv);
 	for (int i=0; i <= 1; ++i)
@@ -107,8 +107,8 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "hud_size.gauges_type", gauges_type);	//Param(c,w, "hud_size.gauges_layout", gauges_layout);
 	//  cam
 	Param(c,w, "hud_size.cam_loop_chng", cam_loop_chng); Param(c,w, "hud_size.cam_in_loop", cam_in_loop);
-	// Param(c,w, "hud_size.fov", fov_min);				Param(c,w, "hud_size.fov_boost", fov_boost);
-	// Param(c,w, "hud_size.fov_smooth", fov_smooth);
+	Param(c,w, "hud_size.fov", fov_min);				Param(c,w, "hud_size.fov_boost", fov_boost);
+	Param(c,w, "hud_size.fov_smooth", fov_smooth);
 	Param(c,w, "hud_size.cam_bounce", cam_bounce);		Param(c,w, "hud_size.cam_bnc_mul", cam_bnc_mul);
 	//  pacenotes
 	Param(c,w, "pacenotes.show", pace_show);		Param(c,w, "pacenotes.dist", pace_dist);
@@ -174,85 +174,8 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "video_eff.hdr", hdr);					Param(c,w, "video_eff.hdr_p1", hdrParam1);*/
 }
 
-SETTINGS::SETTINGS()   ///  Defaults
-	:version(100)  // old
-	//  hud
-	,show_gauges(1), trackmap(1)
-	,show_cam(1), show_times(0), show_digits(1)
-	// ,show_opponents(1), opplist_sort(true)
-	, cam_tilt(1)
-	,car_dbgtxt(0), car_dbgbars(0), car_dbgsurf(0), show_graphs(0)
-	,car_dbgtxtclr(0), car_dbgtxtcnt(0), car_tirevis(0), sounds_info(0)
-
-	,size_gauges(0.18), size_minimap(0.2), size_minipos(0.1), zoom_minimap(1.0)
-	,mini_zoomed(0), mini_rotated(1), mini_terrain(0), mini_border(1)
-	,check_arrow(0),size_arrow(0.2), check_beam(1)
-	,gauges_type(1),gauges_layout(1), graphs_type(Gh_Fps)
-	//  cam
-	,cam_loop_chng(1), cam_in_loop(1)
-	// ,fov_min(90.f), fov_boost(5.f), fov_smooth(5.f)
-	,cam_bounce(1), cam_bnc_mul(1.f)
-	//  pace
-	,pace_show(1), pace_next(4)
-	,pace_dist(200.f), pace_size(1.f), pace_near(1.f), pace_alpha(1.f)
-	,trail_show(1)
-
-	//  gui
-	,cars_view(0), cars_sort(1), cars_sortup(1)
-	,champ_type(0),chall_type(0), champ_info(1)
-	,car_ed_tab(0),tweak_tab(0)
-	//  graphics
-	,bFog(1)
-	,refl_skip(200), refl_faces(1), refl_size(0), refl_dist(500.f), refl_mode(1)
-	,particles(true), trails(true), particles_len(1.f), trails_len(1.f), boost_fov(true)
-
-	//  car
-	,autoshift(1), autorear(1), rear_inv(1), show_mph(0)
-	//  misc
-	,rpl_rec(0)
-	,dev_keys(0), dev_no_prvs(0)
-	,split_vertically(true)
-	//  misc
-	,bltDebug(0), bltLines(0),  bltProfilerTxt(0), profilerTxt(0)
-	,loadingbackground(true), show_welcome(true)
-	//  network
-	// ,nickname("Player"), netGameName("Default Game")
-	// ,master_server_address("")
-	// ,master_server_port(protocol::DEFAULT_PORT)
-	// ,local_port(protocol::DEFAULT_PORT)
-	// ,connect_address("localhost")
-	// ,connect_port(protocol::DEFAULT_PORT)
-	//  replay
-	,rpl_ghost(1), rpl_bestonly(1), rpl_trackghost(1)
-	,rpl_ghostpar(0), rpl_ghostrewind(1), rpl_ghostother(1)
-	,rpl_listview(0), rpl_listghosts(0), rpl_numViews(4)
-	,ghoHideDist(5.f), ghoHideDistTrk(5.f)
-	//  sim
-	,game_fq(82.f), blt_fq(160.f), blt_iter(24), dyn_iter(30)
-	,thread_sleep(5), perf_speed(100000)//, gui_sleep(1)
-	//  graphs
-	,tc_r(6000.f), tc_xr(1.f)
-	,te_yf(8000.f), te_xf_pow(1.f), te_xfy(160.f), te_xfx(12.f)
-	,te_reference(0), te_common(1)
-
-	//  sound
-	,vol_master(1.f), vol_engine(0.6f), vol_tires(1.f), vol_env(1.f), vol_susp(1.f)
-	,vol_fl_splash(1.f),vol_fl_cont(1.f), vol_car_crash(1.f),vol_car_scrap(1.f)
-	,vol_hud(1.f), snd_chk(0), snd_chkwr(1)
-	,snd_device(""), snd_reverb(1)
-	//  effects
-	//..
-	//  not in gui
-	/*,net_local_plr(-1)*/
+SETTINGS::SETTINGS()
 {
-	//  car setup  (update in game-default.cfg)
-	abs[0] = 0;  abs[1] = 0;
-	tcs[0] = 0;  tcs[1] = 0;
-	sss_effect[0] = 0.f;  sss_effect[1] = 0.85f;
-	sss_velfactor[0] = 1.f;  sss_velfactor[1] = 1.f;
-	steer_range[0] = 1.0;  steer_range[1] = 0.7;
-	steer_sim[0] = 0.51;  steer_sim[1] = 0.81;
-
 	cam_view.resize(4);
 	for (int i=0; i < 4; ++i)
 		cam_view[i] = 9;
@@ -260,19 +183,6 @@ SETTINGS::SETTINGS()   ///  Defaults
 
 
 SETTINGS::GameSet::GameSet()
-	:track("Test1-Flat"), track_user(false)
-	,trees(1.f)  // common
-	,trackreverse(false)
-	//  game setup
-	,local_players(1), num_laps(2)
-	,sim_mode("normal")
-	,collis_veget(true), collis_cars(false), collis_roadw(false), dyn_objects(true)
-	,boost_type(3), flip_type(2), damage_type(1), rewind_type(1), damage_dec(0.4f)
-	,rpl_rec(1)
-	//  champ
-	,champ_num(-1), chall_num(-1)
-	,champ_rev(false)
-	,pre_time(2.f), start_order(0)
 {
 	car_hue.resize(6);  car_sat.resize(6);  car_val.resize(6);
 	car_gloss.resize(6);  car_metal.resize(6);  car_rough.resize(6);
@@ -283,7 +193,7 @@ SETTINGS::GameSet::GameSet()
 	//  cars
 	for (int i=0; i < 6; ++i)
 	{	if (i < 4)  car[i] = "HI";
-		car_hue[i] = 0.4f+0.2f*i;  car_sat[i] = 1.f;  car_val[i] = 1.f;
+		car_hue[i] = 0.4f + 0.2f*i;  car_sat[i] = 1.f;  car_val[i] = 1.f;
 		car_gloss[i] = 0.5f;  car_metal[i] = 0.5f;  car_rough[i] = 0.5f;
 	}
 }

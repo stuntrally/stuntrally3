@@ -16,7 +16,7 @@
 #include "Buoyancy.h"
 
 
-// executed as last function(after integration) in bullet singlestepsimulation
+//  executed as last function(after integration) in bullet singlestepsimulation
 void CARDYNAMICS::updateAction(btCollisionWorld * collisionWorld, btScalar dt)
 {
 	SynchronizeBody();  // get velocity, position orientation after dt
@@ -42,7 +42,7 @@ void CARDYNAMICS::Update()
 	UpdateBuoyancy();
 }
 
-///................................................ Buoyancy ................................................
+///  🌊 Buoyancy ................................................................................................
 void CARDYNAMICS::UpdateBuoyancy()
 {
 	if (!pScene || (pScene->fluids.size() == 0) || !pFluids)  return;
@@ -102,7 +102,7 @@ void CARDYNAMICS::UpdateBuoyancy()
 		}	
 	}
 
-	///  wheel spin force (for mud)
+	///  ⚫💧 wheel spin force (for mud)
 	//_______________________________________________________
 	for (int w=0; w < numWheels; ++w)
 	{
@@ -161,7 +161,8 @@ void CARDYNAMICS::UpdateBuoyancy()
 
 }
 
-/// print debug info to the given ostream.  set p1, p2, etc if debug info part 1, and/or part 2, etc is desired
+///  🗒️ print debug info to the given ostream.
+///  set p1, p2, etc if debug info part 1, and/or part 2, etc is desired
 ///..........................................................................................................
 void CARDYNAMICS::DebugPrint( std::ostream & out, bool p1, bool p2, bool p3, bool p4 )
 {
@@ -337,9 +338,10 @@ void CARDYNAMICS::DebugPrint( std::ostream & out, bool p1, bool p2, bool p3, boo
 			}*/
 		}
 }
+
+
+//  💫 Update  🚗 car
 ///..........................................................................................................
-
-
 void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 {
 	body.Integrate1(dt);
@@ -412,7 +414,7 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 		ApplyForce(v);
 	}
 
-	///***  manual car flip over  ----------------------------
+	///***  ^ manual car flip over  ----------------------------
 	if ((doFlip > 0.01f || doFlip < -0.01f) &&
 		pSet->game.flip_type > 0 && fDamage < 100.f)
 	{
@@ -434,7 +436,7 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 		}
 	}
 
-	///***  boost  -------------------------------------------
+	///***  💨 boost  -------------------------------------------
 	if (vtype != V_Sphere &&
 		doBoost > 0.01f && pSet->game.boost_type > 0)
 	{
@@ -457,9 +459,9 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 	}else
 		boostVal = 0.f;
 	
-	//; fBoostFov += (boostVal - fBoostFov) * pSet->fov_smooth * 0.0001f;
-		
-	//  add fuel over time
+	fBoostFov += (boostVal - fBoostFov) * pSet->fov_smooth * 0.0001f;
+	
+	//  💨 add fuel over time
 	if (pSet->game.boost_type == 2 && pGame->timer.pretime < 0.001f && fDamage < 100.f)
 	{
 		boostFuel += dt * pSet->game.boost_add_sec;
@@ -468,11 +470,11 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 	///***  --------------------------------------------------
 	
 	
-	///  hover
+	///  🚀 Spaceship
 	if (vtype == V_Spaceship)
 		SimulateSpaceship(dt);
 	else
-	///  sphere
+	///  🔘 Sphere
 	if (vtype == V_Sphere)
 		SimulateSphere(dt);
 	
@@ -515,7 +517,7 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 }
 
 
-///  Tick  (one Simulation step)
+///  💫 Tick  (one Simulation step)
 //---------------------------------------------------------------------------------
 void CARDYNAMICS::Tick(Dbl dt)
 {
@@ -638,7 +640,7 @@ void CARDYNAMICS::UpdateMass()
 }
 
 
-///  HOVER Spaceship
+///  🚀 Spaceship hover
 ///..........................................................................................................
 void CARDYNAMICS::SimulateSpaceship(Dbl dt)
 {
@@ -738,7 +740,7 @@ void CARDYNAMICS::SimulateSpaceship(Dbl dt)
 	ApplyForce(sv * ss);
 
 	
-	//  align straight torque
+	//  align straight torque |
 	MATHVECTOR <float,3> n = ct.GetNormal();  // ground
 	MATHVECTOR <float,3> n2 = ct2.GetNormal();
 	if (!(d > 0.f && d < rlen))  n = MATHVECTOR <float,3>(0,0,1);  // in air
@@ -792,7 +794,7 @@ void CARDYNAMICS::SimulateSpaceship(Dbl dt)
 }
 
 
-///  SPHERE
+///  🔘 Sphere
 ///..........................................................................................................
 void CARDYNAMICS::SimulateSphere(Dbl dt)
 {

@@ -303,7 +303,7 @@ void App::CreateRoads()  // 🛣️
 	if (StringUtil::startsWith(fname,"road"))
 	{
 		int id = scn->roads.size();
-		LogO("~~~ Creating road " + toStr(id) + " from: " + fname);
+		LogO("~~~R create road " + toStr(id) + " from: " + fname);
 		scn->road = new SplineRoad(this);
 		scn->road->Setup(
 			"sphere.mesh",

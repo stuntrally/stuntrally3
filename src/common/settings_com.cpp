@@ -99,17 +99,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 
 
 SETcom::SETcom()   ///  Defaults
-
-	//  graphics
-	:view_distance(2000.f)
-	,terdetail(1.f), road_dist(1.f)
-	// ,tex_size(1), ter_mtr(2), ter_tripl(0)
-
-	// ,water_reflect(0), water_refract(0), water_rttsize(0)
-	,shadow_type(Sh_Depth), shadow_size(2), shadow_count(3), shadow_dist(1000.f)
-	// ,horizon(0)
 {
-
 	int i,v;
 	for (v=0; v < 2; ++v)
 	{	for (i=0; i < COL_FIL; ++i)  col_fil[v][i] = colFilDef[v][i];

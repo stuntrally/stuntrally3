@@ -36,7 +36,8 @@ public:
 	float view_distance = 20000.f, terdetail = 1.f, road_dist = 2.f;  // detail
 	
 	// bool water_reflect, water_refract;  int water_rttsize;  // water
-	float shadow_dist;  int shadow_size, shadow_count, shadow_type; // 🌒
+	int shadow_size = 2, shadow_count = 3, shadow_type = Sh_Depth; // 🌒
+	float shadow_dist = 1000.f;
 
 	float grass =1.f, trees_dist =1.f, grass_dist =1.f;  // trees in gui. 🌳🪨 🌿
 

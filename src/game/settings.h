@@ -43,91 +43,97 @@ class SETTINGS : public SETcom
 {
 public:
 //------------------------------------------
-	int version;  // file version =
+	int version =100;  // file version =
 
-	//  menu
+	//  🪧 menu
 	int iMenu;  // EMenu,
 	int yMain =0, yRace =0;  // kbd up/dn cursors
 	int difficulty =0;
 
-	//  show
-	bool show_gauges, show_digits,
-		trackmap, mini_zoomed, mini_rotated, mini_terrain, mini_border,
-		check_beam, check_arrow,
-		show_times, show_opponents, opplist_sort,
-		show_cam, cam_tilt,
-		car_dbgbars, car_dbgtxt, car_dbgsurf,
-		car_tirevis, show_graphs,
+	//  ✅ show
+	bool show_gauges =1, show_digits =1, // ⏲️
+		//  🌍 minimap
+		trackmap =1, mini_zoomed =1, mini_rotated =1,
+		mini_terrain =1, mini_border =1,
+		check_beam =1, check_arrow =0,  // 🥛🔝
+		show_times =1,  // ⏱️
+		show_opponents =0, opplist_sort =0,
+		car_dbgbars =0, car_dbgtxt =0, car_dbgsurf =0,  // 🗒️
+		car_tirevis =0, show_graphs =0,  // 📉
 		ch_all =0;  // show all champs/challs
+	//  🎚️ sizes
+	float size_gauges = 0.19f, size_minimap = 0.2f;
+	float size_minipos = 0.1f, size_arrow = 0.2f, zoom_minimap = 4.f;
+	int gauges_type = 1; //, gauges_layout = 1;
 
-	float size_gauges, size_minimap, size_minipos, size_arrow, zoom_minimap;
-	int gauges_type, gauges_layout;
-	//  cam
-	// float fov_min, fov_boost, fov_smooth;  // todo:
-	bool cam_loop_chng;  int cam_in_loop;
-	bool cam_bounce;  float cam_bnc_mul;
-	//  pacenotes
-	bool pace_show;  int pace_next;
-	float pace_dist, pace_size, pace_near, pace_alpha;
-	bool trail_show;
+	//  🎥 camera
+	bool show_cam =1, cam_tilt =1;  // info
+	bool cam_loop_chng =1;  int cam_in_loop = 1;
+	bool cam_bounce =1;  float cam_bnc_mul = 1.f;
+	float fov_min = 90.f, fov_boost = 5.f, fov_smooth = 5.f;  // fov
+	//  🚦 pacenotes
+	bool pace_show =1;  int pace_next = 4;
+	float pace_dist = 200.f, pace_size = 1.f, pace_near = 1.f, pace_alpha = 1.f;
+	bool trail_show =1;
 
-	eGraphType graphs_type;
-	int car_dbgtxtclr, car_dbgtxtcnt;
-	bool sounds_info;
-	//  gui
-	bool cars_sortup;  int cars_view, cars_sort;
-	int champ_type, chall_type;
-	bool champ_info;
-	int car_ed_tab, tweak_tab;
+	eGraphType graphs_type = Gh_Fps;
+	int car_dbgtxtclr = 0, car_dbgtxtcnt = 0;
+	bool sounds_info =0;
+	//  🎛️ gui
+	bool cars_sortup =1;  int cars_view = 0, cars_sort = 1;
+	int champ_type = 0, chall_type = 0;
+	bool champ_info =1;
+	int car_ed_tab = 0, tweak_tab = 0;
 
 
-	//  graphics
-	bool bFog;
-	int refl_skip, refl_faces, refl_size;  float refl_dist;
+	//  📊 graphics
+	bool bFog =1;  // always on
+	int refl_skip = 2, refl_faces = 2, refl_size = 0;  float refl_dist = 500;
 	int refl_mode;  // 0 static, 1 single, 2 full
 
-	bool particles, trails;
-	float particles_len, trails_len;
-	bool boost_fov;
+	bool particles =1, trails =1;
+	float particles_len = 1.5f, trails_len = 1.f;
+	bool boost_fov =1;
 
 
 	//---------------  car setup
-	bool abs[2], tcs[2],  // [2] = 0 gravel 1 asphalt
-		autoshift, autorear, rear_inv, show_mph;
-	float sss_effect[2], sss_velfactor[2];
+	bool abs[2] = {0,0}, tcs[2] = {0,0},  // [2] = 0 gravel 1 asphalt
+		autoshift = 1, autorear = 1, rear_inv = 1, show_mph = 0;
+	float sss_effect[2] = {0.574f, 0.65f},
+		sss_velfactor[2] = {0.626f, 0.734f};
 	//  steering range multipliers
-	float steer_range[2],  // gravel/asphalt
-		steer_sim[2];  // simulation modes  0 easy 1 normal
+	float steer_range[2] = {1.0, 0.76},  // gravel/asphalt
+			steer_sim[2] = {0.65, 0.90};  // simulation modes  0 easy 1 normal
 	std::vector<int> cam_view;  //[4]
 
 	//---------------  game config
 	class GameSet
 	{
 	public:
-		std::string track;  bool track_user;
-		float trees;  // common
+		std::string track{"Test1-Flat"};  bool track_user =0;
+		float trees = 1.5f;  // common
 
-		bool trackreverse;
+		bool trackreverse =0;
 		std::vector<std::string> car;  //[4] local players
 		std::vector<float> car_hue, car_sat, car_val,
 			car_gloss, car_metal, car_rough;  //[6] also for ghosts
 
-		int local_players, num_laps;  // split
+		int local_players = 1, num_laps = 2;  // split
 		//  game setup
-		std::string sim_mode;
-		bool collis_veget, collis_cars, collis_roadw, dyn_objects;
-		int boost_type, flip_type, damage_type, rewind_type;
-		float damage_dec;
+		std::string sim_mode{"normal"};
+		bool collis_veget =1, collis_cars =0, collis_roadw =0, dyn_objects =1;
+		int boost_type = 3, flip_type = 2, damage_type = 1, rewind_type = 1;
+		float damage_dec = 0.4f;
 
-		float boost_power, boost_max, boost_min, boost_per_km, boost_add_sec;
+		float boost_power =1.f, boost_max =6.f, boost_min =2.f, boost_per_km =1.f, boost_add_sec =0.1f;
 		void BoostDefault();
 
-		bool rpl_rec;
+		bool rpl_rec =1;
 		//  champ
-		int champ_num, chall_num;  // -1 none
-		bool champ_rev;
+		int champ_num = -1, chall_num = -1;  // -1 none
+		bool champ_rev =0;
 
-		float pre_time;  int start_order;
+		float pre_time = 2.f;  int start_order = 0;
 
 		GameSet();
 	}  game,  // current game, changed only on new game start
@@ -135,52 +141,52 @@ public:
 	//---------------
 
 
-	//  misc
-	bool dev_keys, dev_no_prvs;  // dev
-	bool split_vertically;
+	//  ⚙️ startup, other
+	bool dev_keys = 0, dev_no_prvs = 0;  // dev
+	bool split_vertically = 1;
 
-	//  startup, other
-	bool bltDebug, bltLines, bltProfilerTxt, profilerTxt;
-	bool loadingbackground, show_welcome;
+	bool bltDebug = 0, bltLines = 0, bltProfilerTxt = 0, profilerTxt = 0;
+	bool loadingbackground = 1, show_welcome = 1;
 
-	//  sound
-	float vol_master, vol_hud,
-		vol_engine, vol_tires, vol_susp, vol_env,
-		vol_fl_splash,vol_fl_cont, vol_car_crash,vol_car_scrap;
-	bool snd_chk, snd_chkwr;  // play hud
-	bool snd_reverb;  std::string snd_device;
+	//  🔊 sound
+	float vol_master = 1.f, vol_hud = 1.f,
+		vol_engine = 0.6f, vol_tires =1.f, vol_susp =1.f, vol_env =1.f,
+		vol_fl_splash =1.f, vol_fl_cont =1.f,
+		vol_car_crash =1.f, vol_car_scrap =1.f;
+	bool snd_chk = 0, snd_chkwr = 1;  // play hud
+	bool snd_reverb = 1;  std::string snd_device;
 
-	//  sim freq (1/interval timestep)
-	float game_fq, blt_fq,  perf_speed;
-	int blt_iter, dyn_iter,  thread_sleep;//, gui_sleep;
+	//  💫 sim freq (1/interval timestep)
+	float game_fq = 160.f, blt_fq = 160.f,  perf_speed = 100000.f;
+	int blt_iter = 24, dyn_iter = 60,  thread_sleep = 5; //, gui_sleep;
 
-	//  graphs vis
-	float tc_r, tc_xr;  // tire circles max
-	float te_yf, te_xfx, te_xfy, te_xf_pow;  // tire edit max
-	bool te_reference, te_common;
+	//  ⚫📉 tire graphs vis
+	float tc_r = 6000.f, tc_xr = 1.f;  // tire circles max
+	float te_yf = 8000.f, te_xfx = 12.f, te_xfy = 160.f, te_xf_pow = 1.f;  // tire edit max
+	bool te_reference = 0, te_common = 1;
 
 
 	//  effects
-	// bool all_effects;
+	// bool all_effects =0;
 	// bool hdr, bloom, ssao;  // todo: 1st
 	// bool soft_particles, god_rays, motion_blur;  // todo: 2nd
 	// float bloom_int, bloom_orig, blur_intensity;
 
-	//  replay
-	bool rpl_rec, rpl_ghost, rpl_bestonly;
-	bool rpl_ghostother, rpl_trackghost;
-	bool rpl_ghostpar, rpl_ghostrewind, rpl_listghosts;
-	bool rpl_hideHudAids;
-	int rpl_listview, rpl_numViews;
-	float ghoHideDist, ghoHideDistTrk;  // ghost hide dist, when close
+	//  📽️ replay
+	bool rpl_rec = 1, rpl_ghost = 1, rpl_bestonly = 1;
+	bool rpl_ghostother = 1, rpl_trackghost = 1;
+	bool rpl_ghostpar = 0, rpl_ghostrewind = 1, rpl_listghosts = 0;
+	bool rpl_hideHudAids = 0;
+	int rpl_listview = 0, rpl_numViews = 4;
+	float ghoHideDist = 5.f, ghoHideDistTrk = 5.f;  // ghost hide dist, when close
 
-	//  network
-	// std::string nickname, netGameName;
-	// std::string master_server_address, connect_address;
-	// int master_server_port, local_port, connect_port;
+	//  📡 network
+	// std::string nickname{"Player"}, netGameName{"Default Game"};
+	// std::string master_server_address{""}, connect_address{"localhost"};
+	// int master_server_port = protocol::DEFAULT_PORT,
+	//	local_port = protocol::DEFAULT_PORT, connect_port = protocol::DEFAULT_PORT;
 
-	// not in gui
-	// int net_local_plr;
+	// int net_local_plr = -1;  // not in gui
 
 
 //------------------------------------------

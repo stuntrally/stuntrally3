@@ -20,25 +20,23 @@ const char CAM_Str[CAM_ALL][10] =
 	{"Follow", "Free", "Arena", "Car", "ExtAng" };
 
 
-class CameraAngle
+class CameraView
 {
 public:
-	CamTypes  mType;  Ogre::String  mName;
-	Ogre::Real  mDist, mSpeed, mSpeedRot, mOfsMul;
-	Ogre::Radian  mYaw, mPitch;
-	Ogre::Vector3 mOffset;
-	int mMain, mHideGlass;
-
-	CameraAngle();
+	CamTypes  mType = CAM_Follow;
+	Ogre::String  mName{"Follow Default"};
+	Ogre::Real  mDist = 7.f, mSpeed = 10.f, mSpeedRot = 10.f, mOfsMul = 1.f;
+	Ogre::Radian  mYaw{0.f}, mPitch{7.f};
+	Ogre::Vector3 mOffset{0, 1.2f, 0.f};
+	int mMain = 0, mHideGlass = 0;
 };
 
 
 namespace Ogre {  class TerrainGroup;  class Camera;  class OverlayElement;  class SceneNode;  }
 struct PosInfo;  class SETTINGS;
-
+class COLLISION_WORLD;  class btRigidBody;
 
 //#define CAM_TILT_DBG  // show wheels in ray hit poses
-class COLLISION_WORLD;
 
 
 class FollowCamera
@@ -47,53 +45,63 @@ public:
 	FollowCamera(Ogre::Camera* cam, SETTINGS* pSet1);
 	~FollowCamera();
 
-	SETTINGS* pSet;
+	SETTINGS* pSet =0;
 
-	//  ogre
-	Ogre::Camera* mCamera;
-	Ogre::TerrainGroup* mTerrain;
-	class btRigidBody* chassis;
+	//  🟢 Ogre
+	Ogre::Camera* mCamera =0;
+	Ogre::TerrainGroup* mTerrain =0;
+	class btRigidBody* chassis =0;
 
-	///  state vars
-	Ogre::Vector3 mLook, mPosNodeOld;  Ogre::Real mVel;
+	///  state vars  ----
+	Ogre::Vector3 mLook, mPosNodeOld;
+
 	Ogre::Quaternion qq;  // for ext cam
-	Ogre::Radian mAPitch,mAYaw, mATilt;  // for arena cam, smoothing
-	Ogre::Vector3 camPosFinal;  Ogre::Real mDistReduce;  //float dbgLen;
+	Ogre::Radian mAPitch, mAYaw, mATilt;  // angles for arena cam, smoothing
+
+	Ogre::Vector3 camPosFinal;  // final for mCamera
 	Ogre::Quaternion camRotFinal;
+
+	Ogre::Real mVel =0.f;
+	Ogre::Real mDistReduce =0.f;  //float dbgLen;
 
 	#ifdef CAM_TILT_DBG
 		Ogre::Vector3 posHit[4];
 	#endif
 
-	///  update, simulates camera
+	///  💫 update, simulates camera  ----
 	void update(Ogre::Real time, const PosInfo& posInPrev, PosInfo* posOut, COLLISION_WORLD* world, bool bounce, bool sphere);
 	
-	char ss[512];  // move info string with values
-	bool updInfo(Ogre::Real time = 0);
-	Ogre::String sName;  bool updName;
-
 	//  apply, sets mCamera's pos and rot
 	void Apply(const PosInfo& posIn);
 
+	//  🖱️ mouse move
 	void Move( bool mbLeft, bool mbRight, bool mbMiddle, bool shift, Ogre::Real mx, Ogre::Real my, Ogre::Real mz );
-	Ogre::Real fMoveTime;
+	Ogre::Real fMoveTime = 0.f;
 
 
-	//  Camera Angles
-	CameraAngle* ca;
-	int miCount, miCurrent;
-	std::vector<CameraAngle*> mCameraAngles;
+	//  ❔ move info string with values  ----
+	char ss[512] = {0,};
+	bool updInfo(Ogre::Real time = 0);
+	Ogre::String sName;  bool updName = 0;
+
+	//  info text formats
+	Ogre::String sFmt_Follow, sFmt_Free, sFmt_ExtAng, sFmt_Arena, sFmt_Car;
+	void updFmtTxt();
+
+
+	//  🎥🎥 Cameras, Views  --------
+	CameraView* ca =0;
+	int miCount = 0, miCurrent = 0;
+	std::vector<CameraView*> mViews;
+	
 	//  first (after change, reset etc)
-	bool first;  int iFirst;  void First();
+	bool first = 1;  int iFirst = 0;  void First();
+
 
 	bool loadCameras();  void saveCamera(), Destroy();
-	void updAngle(), incCur(int dir);
+	void updView(), incCur(int dir);
 	void Next(bool bPrev = false, bool bMainOnly = false);
 	void setCamera(int ang);
 	
 	bool TypeCar() {  return ca && ca->mType == CAM_Car;  }
-	
-	//  info text formats
-	Ogre::String sFmt_Follow, sFmt_Free, sFmt_ExtAng, sFmt_Arena, sFmt_Car;
-	void updFmtTxt();
 };

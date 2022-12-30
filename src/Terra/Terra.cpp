@@ -271,7 +271,7 @@ namespace Ogre
 		finalTargetChannels[0] = tmpRtt;
 
 
-		camera = pTerra->mManager->createCamera( "TerraDummyCamera" );
+		camera = pTerra->mManager->createCamera( "CamTerraNormal" );
 
 		const IdString workspaceName = pTerra->m_heightMapTex->getPixelFormat() == PFG_R16_UINT
 			? "Terra/GpuNormalMapperWorkspaceU16" : "Terra/GpuNormalMapperWorkspace";

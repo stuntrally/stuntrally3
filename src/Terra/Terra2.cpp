@@ -160,7 +160,7 @@ namespace Ogre
 
 		SetParams();
 
-		camera = pTerra->mManager->createCamera( "TerraDummyCamera2" );
+		camera = pTerra->mManager->createCamera( "CamTerraBlend" );
 
 		const IdString workspaceName = "Terra/GpuBlendMapperWorkspace";
 		workspace = pTerra->m_compositorManager->addWorkspace(
@@ -171,7 +171,7 @@ namespace Ogre
 
 		#ifndef SR_EDITOR  // game no upd
 		//	pTerra->m_compositorManager->removeWorkspace( workspace );
-		//	pTerra->mManager->destroyCamera( dummyCamera );
+		//	pTerra->mManager->destroyCamera( camera );
 		#endif
 
 		// texture->writeContentsToFile("blendmapRTT.png", 0, 1);  //** ter test blendmap

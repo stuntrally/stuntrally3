@@ -207,7 +207,7 @@ void CarModel::Create()
 		fCam->loadCameras();
 		
 		//  set in-car camera position to driver position
-		for (auto cam : fCam->mCameraAngles)
+		for (auto cam : fCam->mViews)
 		{
 			cam->mDist *= camDist;
 			if (cam->mName == "Car driver")

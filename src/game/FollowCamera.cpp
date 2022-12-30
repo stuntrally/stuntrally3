@@ -40,7 +40,6 @@ static float GetAngle(float x, float y)
 
 ///  💫 Update
 //-----------------------------------------------------------------------------------------------------
-
 void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLLISION_WORLD* world, bool bounce, bool sphere)
 {
 	if (!ca || !posOut)  return;
@@ -305,7 +304,6 @@ void FollowCamera::Apply(const PosInfo& posIn)
 
 ///  🖱️ mouse Move
 //-----------------------------------------------------------------------------------------------------
-
 void FollowCamera::Move( bool mbLeft, bool mbRight, bool mbMiddle, bool shift, Real mx, Real my, Real mz )
 {
 	if (!ca)  return;
@@ -365,9 +363,9 @@ void FollowCamera::Move( bool mbLeft, bool mbRight, bool mbMiddle, bool shift, R
 				ca->mDist  *= 1.0 - mx * 0.4;
 		}
 		if (mbRight)
-		if (shift)	ca->mOffset += Vector3(mx, 0, my);
-		else		ca->mOffset += Vector3(0, -my, 0);
-
+		{	if (shift)	ca->mOffset += Vector3(mx, 0, my);
+			else		ca->mOffset += Vector3(0, -my, 0);
+		}
 		ca->mDist  *= 1.0 - mzH * 0.1;
 		return;
 	}
@@ -456,12 +454,12 @@ bool FollowCamera::updInfo(Real time)
 ///  Cameras
 ///-----------------------------------------------------------------------------------------------------
 
-void FollowCamera::updAngle()
+void FollowCamera::updView()
 {
 	if (miCount <= 0)  return;
 	miCurrent = std::max(0, std::min(miCount-1, miCurrent));
 
-	CameraAngle* c = mCameraAngles[miCurrent];
+	CameraView* c = mViews[miCurrent];
 	if (ca->mType != c->mType)	First();  // changed type, reset
 	*ca = *c;  // copy
 	mDistReduce = 0.f;  //reset
@@ -473,7 +471,7 @@ void FollowCamera::updAngle()
 
 void FollowCamera::saveCamera()
 {
-	CameraAngle* c = mCameraAngles[miCurrent];
+	CameraView* c = mViews[miCurrent];
 	c->mName = ca->mName;	c->mType = ca->mType;  c->mSpeed = ca->mSpeed;
 	c->mYaw = ca->mYaw;		c->mPitch = ca->mPitch;
 	c->mDist = ca->mDist;	c->mOffset = ca->mOffset;
@@ -494,15 +492,15 @@ void FollowCamera::Next(bool bPrev, bool bMainOnly)
 	int dir = bPrev ? -1 : 1;
 	if (!bMainOnly)  // all
 	{
-		incCur(dir);  updAngle();  return;
+		incCur(dir);  updView();  return;
 	}else
 	{	int cnt = 0, old = miCurrent;
 		while (cnt < miCount)
 		{
 			cnt++;  incCur(dir);
-			CameraAngle* c = mCameraAngles[miCurrent];
+			CameraView* c = mViews[miCurrent];
 			if (c->mMain > 0)
-			{	updAngle();  return;  }
+			{	updView();  return;  }
 		}
 		miCurrent = old;
 	}
@@ -510,20 +508,17 @@ void FollowCamera::Next(bool bPrev, bool bMainOnly)
 
 void FollowCamera::setCamera(int ang)
 {
-	miCurrent = ang;  updAngle();
+	miCurrent = ang;  updView();
 }
 
 
 //  🌟 ctor  ----
 
-FollowCamera::FollowCamera(Camera* cam,	SETTINGS* pSet1) :
-	first(true), iFirst(0), ca(0), updName(0),
-	mCamera(cam), mTerrain(0), chassis(0), pSet(pSet1),
-	mLook(Vector3::ZERO), mPosNodeOld(Vector3::ZERO), mVel(0),
-	mAPitch(0.f),mAYaw(0.f), mATilt(0.f), mDistReduce(0.f)
+FollowCamera::FollowCamera(Camera* cam,	SETTINGS* pSet1)
+	:mCamera(cam), pSet(pSet1)
 { 
-	ca = new CameraAngle();
-	ss[0]=0;
+	ca = new CameraView();
+	ss[0] = 0;
 }
 
 void FollowCamera::First()
@@ -539,17 +534,10 @@ FollowCamera::~FollowCamera()
 
 void FollowCamera::Destroy()
 {
-	for (std::vector<CameraAngle*>::iterator it = mCameraAngles.begin(); it != mCameraAngles.end(); ++it)
-		delete *it;
-	mCameraAngles.clear();
+	for (auto v : mViews)
+		delete v;
+	mViews.clear();
 }
-
-CameraAngle::CameraAngle()
-	:mType(CAM_Follow), mName("Follow Default"), mMain(0)
-	,mDist(7), mSpeed(10), mSpeedRot(10), mOfsMul(1)
-	,mYaw(0), mPitch(7),  mOffset(0,1.2,0), mHideGlass(0)
-{	}
-
 
 
 ///  📄 Load from xml
@@ -566,16 +554,16 @@ bool FollowCamera::loadCameras()
 	if (e == XML_SUCCESS)
 	{
 		XMLElement* root = doc.RootElement();
-		if (!root) {  /*mErrorDialog->show(String("Error loading Cameras !!"), false );  return false;*/  }
+		if (!root) {  /*LogO("Error loading Cameras !";  return false;*/  }
 		XMLElement* cam = root->FirstChildElement("Camera");
-		if (!cam) {  /*mErrorDialog->show(String("Error loading Camera !!"), false );  return false;*/  }
+		if (!cam) {  /*LogO("Error loading Camera !");  return false;*/  }
 		
 		while (cam)
 		{
-			CameraAngle* c = new CameraAngle();  const char* a = 0;
+			CameraView* c = new CameraView();  const char* a = 0;
 			c->mName = cam->Attribute("name");
 			c->mType = (CamTypes)s2i(cam->Attribute("type"));
-			c->mYaw = Degree(0);  c->mPitch = Degree(0);  c->mDist = 10;  c->mSpeed = 10;
+			c->mYaw = Degree(0);  c->mPitch = Degree(0);  c->mDist = 10.f;  c->mSpeed = 10.f;
 
 			a = cam->Attribute("default");	if (a)  if (s2i(a)==1)  miCurrent = miCount;
 			a = cam->Attribute("on");		if (a)  c->mMain = s2i(a)-1;
@@ -590,24 +578,24 @@ bool FollowCamera::loadCameras()
 			a = cam->Attribute("bounce");	if (a)  c->mOfsMul = s2r(a);
 
 			if (c->mMain >= 0)  {
-				mCameraAngles.push_back(c);  miCount++;  }
+				mViews.push_back(c);  miCount++;  }
 			else
 				delete c;
 			cam = cam->NextSiblingElement("Camera");
 		}
 	}
 	
-	miCount = mCameraAngles.size();
+	miCount = mViews.size();
 	if (miCount == 0)
 	{
-		CameraAngle* c = new CameraAngle();  c->mName = "Follow Default";
-		c->mType = CAM_Follow;  c->mYaw = Degree(0);  c->mPitch = Degree(14);
-		c->mDist = 9;  c->mOffset = Vector3(0,2,0);  c->mSpeed = 15;
-		mCameraAngles.push_back(c);
+		CameraView* c = new CameraView();  c->mName = "Follow Default";
+		c->mType = CAM_Follow;  c->mYaw = Degree(0.f);  c->mPitch = Degree(14.f);
+		c->mDist = 9.f;  c->mOffset = Vector3(0.f, 2.f, 0.f);  c->mSpeed = 15.f;
+		mViews.push_back(c);
 		miCount++;
 	}
 
-	updAngle();  updFmtTxt();
+	updView();  updFmtTxt();
 	return true;
 }
 

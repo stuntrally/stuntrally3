@@ -77,7 +77,8 @@ public:
 		Txt txCam =0;
 
 		//  🌍 minimap
-		HudRenderable *moMap =0;  Ogre::SceneNode *ndMap =0;
+		HudRenderable *moMap =0;
+		Ogre::SceneNode *ndMap =0;
 		//  all info for this car's minimap
 		std::vector<SMiniPos> vMiniPos;  // const size: 6
 		
