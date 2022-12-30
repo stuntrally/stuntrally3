@@ -123,7 +123,7 @@ public:
 	int iCurCar = 0;  // current
 	Ogre::String sListCar;
 	Img imgCar =0;  Ed carDesc =0;
-	Tab tbPlr =0, tbPlr2 =0;
+	Tab tbPlr[2] = {0,0};
 
 	Mli2 carList =0;
 	void listCarChng(Mli2, size_t);

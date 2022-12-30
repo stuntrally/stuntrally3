@@ -16,7 +16,7 @@
 #include "CGame.h"  //+ replay
 // #include "CarModel.h"  //+ camera pos
 #include "FollowCamera.h"  //+ camera pos
-// #include "PaceNotes.h"  //+ pace reset
+#include "PaceNotes.h"  //+ pace reset
 // #include "protocol.hpp"
 #include "SoundMgr.h"
 #include "tobullet.h"
@@ -418,8 +418,8 @@ void CAR::ResetPos(bool fromStart)
 
 		dynamics.boostFuel = dynamics.boostFuelStart;  // restore boost fuel
 		dynamics.fDamage = 0.f;  // clear damage
-		//; if (pApp->scn->pace)
-			// pApp->scn->pace->Reset();  //
+		if (pApp->scn->pace)
+			pApp->scn->pace->Reset();  //
 	}else
 		dynamics.fDamage = dmgLastCheck;
 

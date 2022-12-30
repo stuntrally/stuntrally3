@@ -124,7 +124,7 @@ void CGui::tabPlayer(Tab, size_t id)
 			listCarChng(carList, i);
 	}	}
 	carList->setVisible(plr);
-	tbPlr->setIndexSelected(id);  tbPlr2->setIndexSelected(id);
+	tbPlr[0]->setIndexSelected(id);  tbPlr[1]->setIndexSelected(id);
 
 	UpdCarClrSld(false);  // no car color change
 }
@@ -256,12 +256,19 @@ void CGui::radMph(WP wp){	radUpd(false);  }
 
 void CGui::btnNumPlayers(WP wp)
 {
-	if      (wp->getName() == "btnPlayers1")  pSet->gui.local_players = 1;
-	else if (wp->getName() == "btnPlayers2")  pSet->gui.local_players = 2;
-	else if (wp->getName() == "btnPlayers3")  pSet->gui.local_players = 3;
-	else if (wp->getName() == "btnPlayers4")  pSet->gui.local_players = 4;
+	auto& plr = pSet->gui.local_players;
+	if (wp)
+	{	if      (wp->getName() == "btnPlayers1")  plr = 1;
+		else if (wp->getName() == "btnPlayers2")  plr = 2;
+		else if (wp->getName() == "btnPlayers3")  plr = 3;
+		else if (wp->getName() == "btnPlayers4")  plr = 4;
+	}
 	if (valLocPlayers)
-		valLocPlayers->setCaption(toStr(pSet->gui.local_players));
+		valLocPlayers->setCaption(toStr(plr));
+
+	for (int t = 0; t < 2; ++t)  // hide tabs
+	for (int p = 1; p < (t == 0 ? 6 : 4); ++p)
+		tbPlr[t]->setButtonWidthAt(p, plr > p ? -1 : 1);
 }
 
 void CGui::chkStartOrd(WP wp)
