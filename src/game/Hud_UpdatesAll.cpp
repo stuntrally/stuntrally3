@@ -260,7 +260,7 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 	float vel=0.f, rpm=0.f, clutch=1.f;  int gear=1;
 	GetCarVals(carId,&vel,&rpm,&clutch,&gear);
 
-	///  gear, vel texts  -----------------------------
+	///  ⏲️ gear, vel texts  -----------------------------
 	if (h.txGear)
 	{
 		const static int gearCnt = 12;
@@ -295,7 +295,7 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 		h.txVel->setTextColour(Colour(m01(k*2.f), m01(0.5f+k*1.5f-k*k*2.5f), m01(1+k*0.8f-k*k*3.5f)));
 	}
 
-	//  boost fuel (time)  ------
+	//  💨 boost fuel (time)  ------
 	if (h.txBFuel && pCar && h.txBFuel->getVisible())
 	{
 		float f = 0.1f * std::min(10.f, pCar->dynamics.boostFuel);
@@ -305,7 +305,7 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 		h.txBFuel->setCaption(fToStr(pCar->dynamics.boostFuel,1,3));
 	}
 
-	//  damage %  ------
+	//  🔨 damage %  ------
 	if (h.txDamage && pCar && h.txDamage->getVisible())
 	{
 		float d = std::min(100.f, Math::Floor(pCar->dynamics.fDamage));
@@ -340,7 +340,7 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 }
 
 
-//  Times etc
+//  ⏱️ Times etc
 //-------------------------------------------------------------------------------------------------------------------
 void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 {
@@ -378,7 +378,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 		//!- if (pCarM->updTimes || pCarM->updLap)
 		{	pCarM->updTimes = false;
 
-			//  track time, points
+			//  ⏱️ track time, points
 			float last = tim.GetLastLap(carId), best = tim.GetBestLap(carId, pSet->game.trackreverse);
 			float timeCur = last < 0.1f ? best : last;
 			float timeTrk = app->data->tracks->times[pSet->game.track];
@@ -446,7 +446,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 		}
 	}
 
-	//  checkpoint warning  --------
+	//  ❌ checkpoint warning  --------
 	if (app->scn->road && h.bckWarn && pCarM)
 	{
 		/* checks debug *
@@ -467,7 +467,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 		h.bckWarn->setVisible(show && pSet->show_times);
 	}
 
-	//  race countdown  ------
+	//  🏁 race countdown  ------
 	if (h.txCountdown)
 	{
 		bool vis = app->pGame->timer.pretime > 0.f && !app->pGame->timer.waiting;
@@ -476,7 +476,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 		h.txCountdown->setVisible(vis);
 	}
 
-	//  camera cur  ------
+	//  🎥 camera cur  ------
 	if (h.txCam)
 	{	FollowCamera* cam = pCarM->fCam;
 		if (cam && cam->updName)

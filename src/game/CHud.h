@@ -95,9 +95,10 @@ public:
 
 	///  global hud  ---------
 
-	//  car pos tris on minimap
+	//  🌍🔺 car pos tris on minimap
 	//  one for all cars on all viewports
-	//; Ogre::SceneNode* ndPos =0;  Ogre::ManualObject* moPos =0;
+	HudRenderable* moPos =0;
+	Ogre::SceneNode* ndPos =0;
 
 	//  💬 chat messages
 	Txt txMsg =0;  Img bckMsg =0;

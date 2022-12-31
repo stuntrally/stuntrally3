@@ -87,9 +87,11 @@ void CHud::Create()
 	//  car pos tris (form all cars on all viewports)
 	SceneNode* rt = scm->getRootSceneNode();
 	// asp = 1.f;  //_temp
-	// moPos = Create2D("hud/CarPos", scm, 0.f, true,true, 1.f,Vector2(1,1), RV_Hud,RQG_Hud3, plr * 6);
-	// ndPos = rt->createChildSceneNode();
-	// ndPos->attachObject(moPos);
+	moPos = new HudRenderable("hud/CarPos", scm,
+		// 0.f, true,true, 1.f,Vector2(1,1), RV_Hud,RQG_Hud3, plr * 6);
+		OT_TRIANGLE_LIST, true,true, RV_Hud,RQG_Hud1, plr * 3);
+	ndPos = rt->createChildSceneNode();
+	ndPos->attachObject(moPos);
 
 
 	//  for each car
@@ -485,7 +487,6 @@ void CHud::Destroy()
 		
 		Dest2(h.ndMap)  delete h.moMap;
 		Dest2(h.ndGauges)  delete h.moGauges;
-		// Dest2(h.moNeedles,h.ndNeedles)
 
 		#define Dest(w)  \
 			if (w) {  app->mGui->destroyWidget(w);  w = 0;  }
@@ -507,7 +508,7 @@ void CHud::Destroy()
 		Dest(h.txPlace)  Dest(h.bckPlace)
 		Dest(h.txCountdown)
 	}
-	// Dest2(moPos, ndPos)
+	Dest2(ndPos)  delete moPos;
 	Dest(txMsg)  Dest(bckMsg)
 	Dest(txCamInfo)
 	

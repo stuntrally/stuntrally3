@@ -144,7 +144,7 @@ void App::CreateGraphs()
 			graphs.push_back(gv);
 		}	break;
 
-	case Gh_Sound:  //  🔉 sound
+	case Gh_Sound:  //  🔊 sounds
 		for (i=0; i < 5; ++i)
 		{
 			gv = new GraphView(scm,mWindow,mGui);
@@ -371,7 +371,7 @@ void App::GraphsNewVals()				// Game
 	size_t gsi = graphs.size();
 	switch (pSet->graphs_type)
 	{
-	case Gh_Sound:  //  🔉 sound
+	case Gh_Sound:  //  🔊 sounds
 	if (gsi >= 5)
 	{
 		SoundBaseMgr* snd = pGame->snd->sound_mgr;

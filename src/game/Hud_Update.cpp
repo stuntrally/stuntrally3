@@ -35,7 +35,7 @@ using namespace Ogre;
 
 
 ///---------------------------------------------------------------------------------------------------------------
-//  Update HUD
+//  ⏱️💫 Update HUD
 ///---------------------------------------------------------------------------------------------------------------
 void CHud::Update(int carId, float time)
 {
@@ -118,7 +118,7 @@ void CHud::Update(int carId, float time)
 
 
 //---------------------------------------------------------------------------------------------------------------
-///  Update HUD minimap poses, man obj vertices, etc
+///  ⏲️🌍🔺 Update HUD minimap poses, man obj vertices, etc
 //---------------------------------------------------------------------------------------------------------------
 void CHud::UpdPosElems(int cnt, int cntC, int carId)
 {
@@ -138,13 +138,13 @@ void CHud::UpdPosElems(int cnt, int cntC, int carId)
 			UpdRotElems(c, i, vel, rpm);
 	}
 
-#if 0
-	///  all minimap car pos-es rot
+
+	///  🌍🔺 all minimap car pos-es rot
 	const static Real tc[4][2] = {{0,1}, {1,1}, {0,0}, {1,0}};
 	const float z = pSet->size_minipos;  // tri size
 	
 	if (carId == -1 && moPos)
-	{	moPos->beginUpdate(0);
+	{	moPos->begin();
 
 		const int plr = 1;  //; app->mSplitMgr->mNumViewports;
 		for (int v = 0; v < plr; ++v)  // all viewports
@@ -164,22 +164,16 @@ void CHud::UpdPosElems(int cnt, int cntC, int carId)
 					float y = pos.y + (sp.y + sp.py[p]*z)*sc*asp;
 					moPos->position(x, y, 0);
 					moPos->textureCoord(tc[p][0], tc[p][1]);
-					moPos->colour(clr);
+					moPos->color(clr.r, clr.g, clr.b, clr.a);
 		}	}	}
 		
-		int ii = plr * cntC;
-		for (int i=0; i < ii; ++i)
-		{	int n = i*4;
-			moPos->quad(n,n+1,n+3,n+2);
-		}
 		moPos->end();
 	}
-#endif
 }
 
 //---------------------------------------------------------------------------------------------------------------
 ///  Update HUD rotated elems - for carId, in baseCarId's space
-///  rpm,vel gauges  and minimap triangles
+///  ⏲️ rpm,vel gauges  and 🌍🔺 minimap triangles
 //---------------------------------------------------------------------------------------------------------------
 void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 {
@@ -246,7 +240,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 		else{  cx[i] =       cp*z;  cy[i] =      -sp*z-1.f;  }
 	}
 	    
-    //  rpm,vel needles
+    //  ⏲️ rpm,vel needles
     const float r = 0.55f, v = 0.85f;
 	const bool bRpm = app->carModels[c]->hasRpm();
 
@@ -306,7 +300,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 			for (p=0; p < 4; ++p)
 			{	h.moMap->position(tp[p][0],tp[p][1], 0);
 				h.moMap->textureCoord(tc[p][0], tc[p][1]);
-				// h.moMap->color(tc[p][0],tc[p][1], 0);
+				// h.moMap->textureCoord(tc[p][0],tc[p][1], 0);  // uv2
 			}
 		else
 		{	Vector2 mp(-app->carPoses[qb][b].pos[2], app->carPoses[qb][b].pos[0]);
@@ -315,13 +309,13 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 			for (p=0; p < 4; ++p)
 			{	h.moMap->position(tp[p][0],tp[p][1], 0);
 				h.moMap->textureCoord(cx[p]+xc, -cy[p]-yc);
-				// h.moMap->color(tc[p][0],tc[p][1], 1);
+				// h.moMap->textureCoord(tc[p][0],tc[p][1], 1);  // uv2
 		}	}
 		h.moMap->end();
 	}
 
-#if 0		
-	///  minimap car pos  x,y = -1..1
+
+	///  🌍🔺 minimap car pos  x,y = -1..1
 	Vector2 mp(-app->carPoses[qc][c].pos[2], app->carPoses[qc][c].pos[0]);
 
 	//  other cars in player's car view space
@@ -357,10 +351,10 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 	
 	//  visible
 	int cg = app->isGhost2nd && !app->bRplPlay &&
-		app->carModels[c]->eType == CarModel::CT_GHOST &&
+		app->carModels[c]->cType == CarModel::CT_GHOST &&
 		c < app->carModels.size()-1 ? 1 : 0;
 
-	bool hide = !app->carModels[c+cg]->mbVisible;
+	bool hide = !app->carModels[c+cg]->bVisible;
 	if (hide)
 	{	h.vMiniPos[c].x = -100.f;
 		h.vMiniPos[c].y = 0.f;
@@ -372,5 +366,4 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 	{	h.vMiniPos[c].x = xp;
 		h.vMiniPos[c].y = yp;
 	}
-#endif
 }
