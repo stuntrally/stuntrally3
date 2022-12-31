@@ -288,7 +288,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 		hr->end();
 	}
 
-#if 0		
+
 	//---------------------------------------------------------------------------------------------------------------
 	///  minimap car pos-es rot
 	for (p=0; p < 4; ++p)
@@ -297,16 +297,17 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 		h.vMiniPos[c].py[p] = py[p];
 	}
 	
-	//  minimap circle/rect rot
+	//  🌍 minimap  circle/rect rot
 	int qb = app->iCurPoses[b], qc = app->iCurPoses[c];
 	if (h.moMap && pSet->trackmap && main)
 	{
-		h.moMap->beginUpdate(0);
+		h.moMap->begin();
 		if (!bZoom)
 			for (p=0; p < 4; ++p)
 			{	h.moMap->position(tp[p][0],tp[p][1], 0);
 				h.moMap->textureCoord(tc[p][0], tc[p][1]);
-				h.moMap->colour(tc[p][0],tc[p][1], 0);  }
+				// h.moMap->color(tc[p][0],tc[p][1], 0);
+			}
 		else
 		{	Vector2 mp(-app->carPoses[qb][b].pos[2], app->carPoses[qb][b].pos[0]);
 			float xc =  (mp.x - minX)*scX,
@@ -314,11 +315,12 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 			for (p=0; p < 4; ++p)
 			{	h.moMap->position(tp[p][0],tp[p][1], 0);
 				h.moMap->textureCoord(cx[p]+xc, -cy[p]-yc);
-				h.moMap->colour(tc[p][0],tc[p][1], 1);  }
-		}
+				// h.moMap->color(tc[p][0],tc[p][1], 1);
+		}	}
 		h.moMap->end();
 	}
 
+#if 0		
 	///  minimap car pos  x,y = -1..1
 	Vector2 mp(-app->carPoses[qc][c].pos[2], app->carPoses[qc][c].pos[0]);
 

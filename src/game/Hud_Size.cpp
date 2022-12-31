@@ -47,7 +47,7 @@ void CHud::Size()
 		Hud& h = hud[c];
 		// const SplitScr::VPDims& dim = app->mSplitMgr->mDims[c];
 		VPDims dim;
-		//  gauges
+		//  ⏲️ gauges
 		Real xcRpm=0.f,ycRpm=0.f,xcRpmL=0.f, xcVel=0.f,ycVel=0.f, ygMax=0.f, xBFuel=0.f;  // -1..1
 		// if (h.ndGauges)
 		{
@@ -65,17 +65,17 @@ void CHud::Size()
 			h.updGauges = true;
 		}
 		
-		//  minimap
+		//  🌍 minimap
 		Real sc = pSet->size_minimap * dim.avgsize;
 		const Real marg = 1.3f; //1.05f;  // from border
 		Real fMiniX = dim.left + sc * marg;  //(dim.right - sc * marg);
 		Real fMiniY =-dim.bottom + sc*asp * marg;  //-dim.top - sc*asp * marg;
 		Real miniTopY = fMiniY + sc*asp;
 
-		/*if (h.ndMap)
+		if (h.ndMap)
 		{	h.ndMap->setScale(sc, sc*asp,1);
 			h.ndMap->setPosition(Vector3(fMiniX,fMiniY,0.f));
-		}*/
+		}
 	
 		//  current viewport max x,y in pixels
 		int xMin = (dim.left+1.f)*0.5f*wx, xMax = (dim.right +1.f)*0.5f*wx,

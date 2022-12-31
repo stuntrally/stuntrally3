@@ -6,7 +6,7 @@
 #include "CGame.h"
 #include "CHud.h"
 // #include "CGui.h"
-// #include "GuiCom.h"
+#include "GuiCom.h"
 #include "game.h"
 #include "settings.h"
 #include "Road.h"
@@ -58,19 +58,17 @@ void CHud::Create()
 	//; LogO("C--- Create Hud  plrs="+toStr(plr));
 	asp = 1.f;
 
-#if 0
 	///  reload mini textures
 	ResourceGroupManager& resMgr = ResourceGroupManager::getSingleton();
 	TextureGpuManager *texMgr = app->mGraphicsSystem->mRoot->getRenderSystem()->getTextureGpuManager();
 
-	String path = "";/*app->bRplPlay ? 
+	String path = app->bRplPlay ? 
 		app->gcom->PathListTrkPrv(app->replay.header.track_user, app->replay.header.track) :
-		app->gcom->PathListTrkPrv(pSet->game.track_user, pSet->game.track);*/
+		app->gcom->PathListTrkPrv(pSet->game.track_user, pSet->game.track);
 	const String sRoad = "road.png", sTer = "terrain.jpg", sGrp = "TrkMini";
 	resMgr.addResourceLocation(path, "FileSystem", sGrp);  // add for this track
 	resMgr.unloadResourceGroup(sGrp);
 	resMgr.initialiseResourceGroup(sGrp,false);
-#endif
 
 	Scene* sc = app->scn->sc;
 	// {	try {  texMgr.unload(sRoad);  texMgr.load(sRoad, sGrp, TEX_TYPE_2D, MIP_UNLIMITED);  }  catch(...) {  }
@@ -109,7 +107,7 @@ void CHud::Create()
 		scX = 1.f / size;  scY = 1.f / size;
 
 		//  🌍 change minimap image  -----------
-		String sMat = "minimap";
+		String sMini = "hud/minimap";
 	#if 0
 		/*MaterialPtr mm = MaterialManager::getSingleton().getByName(sMat);
 		Pass* pass = mm->getTechnique(0)->getPass(0);
@@ -123,11 +121,11 @@ void CHud::Create()
 		const int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight() +10;  //+? why
 		const float asp = float(wx) / float(wy);
 
-		/*float fHudSize = pSet->size_minimap * 1.f; //app->mSplitMgr->mDims[c].avgsize;
-		h.ndMap = rt->createChildSceneNode();
-		h.moMap = new HudRenderable(sMat, scm, true, RV_Hud,RQG_Hud1, 1);
-		h.ndMap->attachObject(h.moMap);
-		h.ndMap->setVisible(pSet->trackmap);*/
+		//float fHudSize = pSet->size_minimap * 1.f; //app->mSplitMgr->mDims[c].avgsize;
+		h.moMap = new HudRenderable(sMini, scm,
+			OT_TRIANGLE_LIST, true, false, RV_Hud,RQG_Hud1, 1);
+		h.ndMap = rt->createChildSceneNode();  h.ndMap->attachObject(h.moMap);
+		// h.ndMap->setVisible(pSet->trackmap);
 
 
 		//  ⏲️ gauges  -----------
@@ -138,7 +136,8 @@ void CHud::Create()
 			OT_TRIANGLE_LIST, true, false, RV_Hud,RQG_Hud1, q);
 		h.ndGauges = rt->createChildSceneNode();  h.ndGauges->attachObject(h.moGauges);  //h.ndGauges->setVisible(false);
 
-		//  gear  text  -----------
+
+		//  gear  text  ----
 		h.parent = app->mGui->createWidget<Widget>("", 0,0,	wx, wy,
 			Align::Left,"Back","main"+s);
 
@@ -156,7 +155,7 @@ void CHud::Create()
 			h.txGear->setTextShadowColour(Colour::Black);  h.txGear->setTextShadow(true);
 		}
 		
-		//  vel  km/h
+		//  vel  km/h  ----
 		h.bckVel = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 160+24,72+12, Align::Left, "IVel"+s);
 		h.bckVel->setImageTexture("background2.jpg");
@@ -391,7 +390,7 @@ void CHud::Create()
 
 
 	///  tex
-	// resMgr.removeResourceLocation(path, sGrp);
+	resMgr.removeResourceLocation(path, sGrp);
 	
 	//-  cars need update
 	for (int i=0; i < app->carModels.size(); ++i)

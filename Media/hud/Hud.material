@@ -36,9 +36,15 @@ hlms hud_5 unlit : hud_base
 }
 
 
-//  minimap
-hlms hud/Minimap unlit : hud_base
+//  🌍  minimap
+hlms hud/minimap unlit
 {
+    diffuse  1 1 1
+	scene_blend alpha_blend
+	cull_mode none
+
+	diffuse_map road.png
+	// diffuse_map terrain.jpg
 }
 
 hlms hud/CarPos unlit : hud_base
@@ -137,8 +143,8 @@ hlms Arrow pbs
 //  🚦 3d-  road Pacenote signs
 hlms pacenote unlit
 {
-    diffuse  0 1 0
-    specular 0.1 0.1 0.1
+    diffuse  1 1 1
+    // specular 0.1 0.1 0.1
 
 	// workflow metallic
 	// fresnel_coeff 0.1 0.1 0.1
