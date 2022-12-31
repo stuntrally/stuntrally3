@@ -35,8 +35,8 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	// Param(c,w, "graph_detail.ter_mtr", ter_mtr);			Param(c,w, "graph_detail.ter_tripl", ter_tripl);
 	
 	Param(c,w, "graph_detail.view_dist", view_distance);
-	Param(c,w, "graph_detail.ter_detail", terdetail);
-	Param(c,w, "graph_detail.road_dist", road_dist);
+	Param(c,w, "graph_detail.lod_bias", lod_bias);
+	Param(c,w, "graph_detail.ter_detail", ter_detail);		Param(c,w, "graph_detail.road_dist", road_dist);
 	
 	//  water
 	// Param(c,w, "graph_reflect.water_reflect", water_reflect); Param(c,w, "graph_reflect.water_refract", water_refract);

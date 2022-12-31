@@ -32,8 +32,9 @@ public:
 
 	//  📊 Graphics  ----
 	int anisotropy = 4, tex_filt = 2;  // textures filtering 🖼️
-	//int ter_mtr, ter_tripl;  // terrain  // ⛰️
-	float view_distance = 20000.f, terdetail = 1.f, road_dist = 2.f;  // detail
+	//int ter_tripl;  // terrain  // ⛰️
+	float view_distance = 20000.f;
+	float lod_bias = 1.f, ter_detail = 1.f, road_dist = 2.f;  // detail
 	
 	// bool water_reflect, water_refract;  int water_rttsize;  // water
 	int shadow_size = 2, shadow_count = 3, shadow_type = Sh_Depth; // 🌒

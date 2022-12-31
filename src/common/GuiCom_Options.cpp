@@ -38,7 +38,8 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 	BtnC("Quit", btnQuit);  bnQuit = btn;
 	
 	//  geometry detail far
-	sv= &svTerDetail;	sv->Init("TerDetail",	&pSet->terdetail,	0.f,4.f, 1.5f);  SevC(TerDetail);  sv->DefaultF(1.f);
+	sv= &svLodBias;		sv->Init("LodBias",		&pSet->lod_bias,	0.f,4.f, 1.5f);  SevC(LodBias);  sv->DefaultF(1.f);
+	sv= &svTerDetail;	sv->Init("TerDetail",	&pSet->ter_detail,	0.f,4.f, 1.5f);  SevC(TerDetail);  sv->DefaultF(1.f);
 	sv= &svRoadDist;	sv->Init("RoadDist",	&pSet->road_dist,	0.f,4.f, 2.f, 2,5);  sv->DefaultF(1.6f);
 	sv= &svViewDist;	sv->Init("ViewDist",	&pSet->view_distance, 50.f,20000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
 																				SevC(ViewDist);  sv->DefaultF(8000.f);
@@ -161,7 +162,7 @@ void CGuiCom::comboTexFilter(CMB)
 
 void CGuiCom::slAnisotropy(SV*)
 {
-	// MaterialManager::getSingleton().setDefaultAnisotropy(pSet->anisotropy);
+	// todo: ugh
 }
 
 void CGuiCom::slViewDist(SV* sv)
@@ -172,15 +173,13 @@ void CGuiCom::slViewDist(SV* sv)
 
 void CGuiCom::slTerDetail(SV*)
 {
-	// app->scn->UpdTerErr();
-	// todo
+	// todo:
 	// app->mTerra->iLodMax = pSet->terdetail
 }
 
-void CGuiCom::slTerDist(SV*)
+void CGuiCom::slLodBias(SV*)
 {
-	// if (app->scn->mTerrainGlobals)
-	// 	app->scn->mTerrainGlobals->setCompositeMapDistance(pSet->terdist);
+	app->mCamera->setLodBias(pSet->lod_bias);
 }
 
 //  trees/grass

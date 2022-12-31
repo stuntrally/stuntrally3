@@ -906,33 +906,39 @@
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#80FFD0#{Detail}"/>
 						<Widget type="TextBox" skin="TextBox" position="32 50 172 24">
-							<Property key="Caption" value="#{TerHQDist}"/>
-							<Property key="Colour" value="0 0 0"/>
-							<Property key="TextColour" value="0.3 0.9 0.9"/>
+							<Property key="Caption" value="#{Vegetation}, #{Objects}"/>
+							<Property key="TextColour" value="0.6 0.9 0.3"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="280 50 320 18" name="TerDetail"/>
-						<Widget type="TextBox" skin="TextBox" position="210 50 60 24" name="TerDetailVal">
-							<Property key="TextColour" value="0.3 0.9 0.9"/>
+						<Widget type="Slider" skin="Slider" position="280 50 320 18" name="LodBias"/>
+						<Widget type="TextBox" skin="TextBox" position="210 50 60 24" name="LodBiasVal">
+							<Property key="TextColour" value="0.6 0.9 0.3"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 80 172 24">
 							<Property key="Caption" value="#{RoadQual}"/>
-							<Property key="Colour" value="0 0 0"/>
-							<Property key="TextColour" value="0.3 0.9 0.9"/>
+							<Property key="TextColour" value="0.9 0.6 0.3"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="280 80 320 18" name="RoadDist"/>
 						<Widget type="TextBox" skin="TextBox" position="210 80 60 24" name="RoadDistVal">
-							<Property key="TextColour" value="0.3 0.9 0.9"/>
+							<Property key="TextColour" value="0.9 0.6 0.3"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 110 172 24">
-							<Property key="Caption" value="#{ViewDist}"/>
-							<Property key="Colour" value="0 0 0"/>
-							<Property key="TextColour" value="0.5 1 0.8"/>
+							<Property key="Caption" value="#{TerHQDist}-"/>
+							<Property key="TextColour" value="0.3 0.9 0.3"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="ViewDist"/>
-						<Widget type="TextBox" skin="TextBox" position="210 110 60 24" name="ViewDistVal">
-							<Property key="TextColour" value="0.5 1 0.8"/>
+						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="TerDetail"/>
+						<Widget type="TextBox" skin="TextBox" position="210 110 60 24" name="TerDetailVal">
+							<Property key="TextColour" value="0.3 0.9 0.3"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 140 172 24">
+							<Property key="Caption" value="#{ViewDist}"/>
+							<Property key="TextColour" value="0.5 0.7 0.8"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 140 320 18" name="ViewDist"/>
+						<Widget type="TextBox" skin="TextBox" position="210 140 60 24" name="ViewDistVal">
+							<Property key="TextColour" value="0.5 0.7 0.8"/>
 						</Widget>
 					</Widget>
 

@@ -70,20 +70,19 @@ public:
 	
 
 	///  📊 Graphics  --------------------------
-	SlV(ViewDist);  SlV(Anisotropy);
-	SlV(TerDetail);  SlV(TerDist);  SV svRoadDist;
-	SV svTexSize, svTerMtr, svTerTripl;  // detail
+	SlV(ViewDist);  SlV(LodBias);   SlV(TerDetail);  SV svRoadDist;  // detail
 	SV svTrees, svGrass, svTreesDist, svGrassDist;  // veget
+
 	SV svShadowType, svShadowCount, svShadowSize, svShadowDist;  // shadow
 	SlV(WaterSize);
+	Ck ckWaterReflect, ckWaterRefract;  void chkWater(Ck*);  // water
 
-	Ck ckWaterReflect, ckWaterRefract;  void chkWater(Ck*);
-
-	void comboTexFilter(CMB), cmbAntiAliasing(CMB);
+	SlV(Anisotropy);  void comboTexFilter(CMB), cmbAntiAliasing(CMB);  // textures
+	// SV svTerTripl;
 	void btnShadows(WP), btnShaders(WP), btnTrGrReset(WP);
 	
-	Ck ckLimitFps;
-	SV svLimitFps,svLimitSleep;
+	// Ck ckLimitFps;
+	// SV svLimitFps,svLimitSleep;
 	
 
 	//  track path 

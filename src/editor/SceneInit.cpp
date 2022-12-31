@@ -81,7 +81,7 @@ void App::createScene01()  // once, init
 	mCamera->setFarClipDistance(pSet->view_distance);
 	mCamera->setNearClipDistance(0.1f);
 
-	//  cam pos from last set
+	//  set last cam pos
 	mCamera->setPosition(Vector3(pSet->cam_x, pSet->cam_y, pSet->cam_z));
 	mCamera->setDirection(Vector3(pSet->cam_dx, pSet->cam_dy, pSet->cam_dz).normalisedCopy());
 	// mViewport->setVisibilityMask(RV_MaskAll);  // hide prv cam rect
@@ -107,6 +107,7 @@ void App::createScene01()  // once, init
 
 	mGraphicsSystem->mWorkspace = SetupCompositor();
 	mCamera->setFarClipDistance( pSet->view_distance );
+	mCamera->setLodBias( pSet->lod_bias );
 
 	createBrushPrv();
 
@@ -181,9 +182,9 @@ void App::NewCommon(bool onlyTerVeget)
 		DestroyObjects(true);  // 📦
 		scn->DestroyFluids();  // 💧
 		scn->DestroyEmitters(true);  // 🔥
-	}
 	
-	scn->DestroyTerrain();  // ⛰️
+		scn->DestroyTerrain();  // ⛰️
+	}
 		
 	//world.Clear();
 
@@ -192,10 +193,8 @@ void App::NewCommon(bool onlyTerVeget)
 	resTrk = gcom->TrkDir() + "objects";
 	ResourceGroupManager::getSingleton().addResourceLocation(resTrk, "FileSystem");
 
-	// MinimizeMemory();  // todo:
-	// MeshManager::getSingleton().unloadUnreferencedResources();
-	// sh::Factory::getInstance().unloadUnreferencedMaterials();
-	// TextureManager::getSingleton().unloadUnreferencedResources();
+	if (!onlyTerVeget)
+		MinimizeMemory();
 }
 
 ///  Load
