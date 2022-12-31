@@ -230,6 +230,7 @@ void App::update( float dt )
 
 
 		//  🔧 Keys  params  ----
+		#if 0
 		float mul = shift ? 0.2f : ctrl ? 3.f : 1.f;
 		int d = right ? 1 : left ? -1 : 0;
 		if (0 && d && scn->atmo)  // todo on gui-
@@ -263,11 +264,13 @@ void App::update( float dt )
 			}
 			atmo->setPreset(p);
 		}	}
+		#endif
 
 		//  ⚫📉
 		bool tireEd = updateTireEdit();
 
 		//  🌞 Light  sun dir  ----
+		#if 0
 		auto sun = scn->sun;
 		if (!tireEd)
 		{
@@ -289,6 +292,7 @@ void App::update( float dt )
 			if (any)
 				scn->UpdSun();
 		}
+		#endif
 
 		///  ⛰️ Terrain  ----
 		if (mTerra && mGraphicsSystem->getRenderWindow()->isVisible() )
@@ -297,8 +301,8 @@ void App::update( float dt )
 			// user in this sample with higher framerates than what he may encounter in many of
 			// his possible uses.
 			const float lightEpsilon = 0.0001f;  //** 0.0f slow
-			mTerra->update( !sun ? -Vector3::UNIT_Y :
-				sun->getDerivedDirectionUpdated(), lightEpsilon );
+			mTerra->update( !scn->sun ? -Vector3::UNIT_Y :
+				scn->sun->getDerivedDirectionUpdated(), lightEpsilon );
 		}
 	}
 

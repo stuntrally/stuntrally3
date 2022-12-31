@@ -73,7 +73,7 @@ void CScene::CreateTrees()
 {
 	LogO("C--- CreateTrees");
 	Ogre::Timer ti;
-	cntAll = 0;
+	iVegetAll = 0;
 	// updGrsTer();
 
 
@@ -272,7 +272,7 @@ void CScene::CreateTrees()
 				vegetNodes.push_back(node);
 				//  ****************************
 				
-				++pg.cnt;  ++cntAll;  // count stats
+				++pg.cnt;  ++iVegetAll;  // count stats
 					
 				
 				///  add to bullet world
@@ -343,7 +343,7 @@ void CScene::CreateTrees()
 				#endif
 			}
 		}
-		LogO(String("***** Vegetation models count: ") + toStr(cntAll) + "  shapes: " + toStr(cntshp));
+		LogO(String("***** Vegetation models count: ") + toStr(iVegetAll) + "  shapes: " + toStr(cntshp));
 	}
 	LogO(String(":::* Time Trees: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }

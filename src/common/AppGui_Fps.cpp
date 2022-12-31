@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "AppGui.h"
 #include "Def_Str.h"
+#include "CScene.h"
 
 #include <OgreRoot.h>
 #include <OgreFrameStats.h>
@@ -45,7 +46,7 @@ void AppGui::UpdFpsText()
 	const float fps = st->getAvgFps(),  //st->getFps(),
 		tris = rm.mFaceCount/1000000.f, mem = GetGPUmem();
 	const int draw = rm.mDrawCount,
-		inst = rm.mInstanceCount, vgt = 0, //scn->cntAll,
+		inst = rm.mInstanceCount, vgt = scn->iVegetAll,
 		gui = MyGUI::Ogre2RenderManager::getInstance().getBatchCount();
 
 	String txt;

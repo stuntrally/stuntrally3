@@ -27,7 +27,7 @@ using namespace Ogre;
 
 
 //  ⛰️ Terrain
-//-----------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------
 void AppGui::CreateTerrain()
 {
 	if (mTerra) return;
@@ -39,11 +39,7 @@ void AppGui::CreateTerrain()
 
 	LogO("C--T Terrain create mat");
 
-#if 0  // default .json
-	mtrName = "TerraExampleMaterial";  // from .json
-	// mGraphicsSystem->hlmsTerra->loadMaterial( "FileName for logging", defaultResourceGroupForLoadingTextures, jsonString, "" );
-#else
-	mtrName = "TerraExampleMaterial2";
+	mtrName = "SR3_TerraMtr";
 	db = mGraphicsSystem->hlmsTerra->createDatablock(
 		mtrName.c_str(), mtrName.c_str(),
 		HlmsMacroblock(), HlmsBlendblock(), HlmsParamVec() );
@@ -51,15 +47,12 @@ void AppGui::CreateTerrain()
 	HlmsTerraDatablock *tdb = static_cast<HlmsTerraDatablock *>( db );
 	
 	//  tex filtering
-	HlmsSamplerblock sampler;
-	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
-	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
-	sampler.mMaxAnisotropy = pSet->anisotropy;
-	sampler.mU = TAM_WRAP;  sampler.mV = TAM_WRAP;  sampler.mW = TAM_WRAP;
+	HlmsSamplerblock sb;
+	InitTexFilters(&sb);
 	TextureGpuManager *texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
 
 
-	tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);
+	tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);  // ?💡
 	// tblock->setBrdf(TerraBrdf::BlinnPhongSeparateDiffuseFresnel);  //** no fresnel-?
 	// tblock->setBrdf(TerraBrdf::CookTorranceSeparateDiffuseFresnel);  //** no fresnel-?
 	// tblock->setBrdf(TerraBrdf::CookTorrance);
@@ -68,7 +61,8 @@ void AppGui::CreateTerrain()
 	// tblock->setFresnel();
 	// tblock->setDiffuse(Vector3(1,0,0));
 
-	///  Layer Textures  ----
+
+	///  🏔️ Layer Textures  ------------------------------------------------
 	Scene* sc = scn->sc;
 
 	const Real fTer = sc->td.fTerWorldSize;  //= fTriangleSize * iTerSize;
@@ -82,7 +76,7 @@ void AppGui::CreateTerrain()
 		String path = PATHMANAGER::Data() + "/terrain/";
 		String d_d, d_s, n_n, n_h;
 		
-		///  diff
+		///  diffuse  ----
 		d_d = l.texFile;  // ends with _d
 		d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");
 		d_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");
@@ -94,14 +88,15 @@ void AppGui::CreateTerrain()
 			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 		if (tex)
 		{	tdb->setTexture( TERRA_DETAIL0 + i, tex );
-			tdb->setSamplerblock( TERRA_DETAIL0 + i, sampler );
+			tdb->setSamplerblock( TERRA_DETAIL0 + i, sb );
 		}
 		tex = texMgr->createOrRetrieveTexture(n_n,
 			GpuPageOutStrategy::Discard, CommonTextureTypes::NormalMap, "General" );
 		if (tex)
 		{	tdb->setTexture( TERRA_DETAIL0_NM + i, tex );
-			tdb->setSamplerblock( TERRA_DETAIL0_NM + i, sampler );
+			tdb->setSamplerblock( TERRA_DETAIL0_NM + i, sb );
 		}
+
 		/*n_h = d_s = "white.png";  // todo: _r _m terrain textures..
 		tex = texMgr->createOrRetrieveTexture(n_h,
 			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
@@ -120,16 +115,11 @@ void AppGui::CreateTerrain()
 		tdb->setMetalness(i, 0.2);
 		tdb->setRoughness(i, 0.5);
 
-		// tblock->setTexture( TERRA_REFLECTION, tex );  // todo: ?
-		// tblock->setEmissive(0.5);  // todo:
+		// tdb->setTexture( TERRA_REFLECTION, tex );  // todo: ?
+		// tdb->setEmissive(0.5);  // todo:
 	}
-	// const HlmsSamplerblock *sam = tblock->getSamplerblock( TERRA_DETAIL0 );
-	// sam->setTexture()
 
-	// tblock->setDetailTextureProperty();
-
-#endif
-
+	//  🆕 Create  ------------------------------------------------
 	LogO("---T Terrain create");
 
 	mTerra = new Terra( Id::generateNewId<MovableObject>(),
@@ -142,7 +132,7 @@ void AppGui::CreateTerrain()
 	scn->terrain = mTerra;
 
 
-	//  Heightmap  ------------------------------------------------
+	//  ⛰️ Heightmap  ------------------------------------------------
 	LogO("---T Terrain Hmap load");
 	Real sizeXZ = sc->td.fTriangleSize * (sc->td.iVertsX-1);  //sc->td.fTerWorldSize;
 	float ofs = sc->td.fTriangleSize;  // ofs fix, 1025 to 1024 verts etc
@@ -178,6 +168,7 @@ void AppGui::CreateTerrain()
 }
 
 
+//  💥 destroy  ------------------------------------------------
 void AppGui::DestroyTerrain()
 {
 	LogO("D--T destroy Terrain");

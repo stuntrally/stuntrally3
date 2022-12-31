@@ -1,10 +1,7 @@
 #pragma once
 // #include "PreviewTex.h"
-// #include <Ogre.h>
 // #include <OgreVector3.h>
-// #include <OgreVector4.h>
 #include <OgreString.h>
-// #include <OgreTexture.h>
 
 namespace Ogre  {  class Terra;  class Atmosphere2Npr;
 	class Light;  class SceneNode;  class Camera;  class SceneManager;
@@ -93,7 +90,7 @@ public:
 	void LoadRoadDens(), DelRoadDens();
 
 	void CreateTrees(), DestroyTrees(), RecreateTrees(); //, updGrsTer(), UpdCamera();
-	int cntAll = 0;
+	int iVegetAll = 0;  // for info
 	std::vector<Ogre::Item*> vegetItems;
 	std::vector<Ogre::SceneNode*> vegetNodes;
 	
