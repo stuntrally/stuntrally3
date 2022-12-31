@@ -8,7 +8,6 @@
 #include "CGui.h"
 #include "Road.h"
 
-#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
 #include <OgreCamera.h>
 #include <OgreSceneNode.h>
 #include <OgreManualObject.h>

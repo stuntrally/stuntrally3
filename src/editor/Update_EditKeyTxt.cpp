@@ -1,20 +1,10 @@
 #include "pch.h"
 #include "Def_Str.h"
-#include "Gui_Def.h"
-#include "GuiCom.h"
 #include "CScene.h"
-#include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
 #include "Road.h"
-#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
-#include <OgreCamera.h>
 #include <OgreSceneNode.h>
-#include <OgreManualObject.h>
-#include <OgreOverlay.h>
-#include <OgreOverlayElement.h>
-#include <OgreParticleSystem.h>
-#include <OgreParticleEmitter.h>
 #include <MyGUI_InputManager.h>
 #include <MyGUI_Widget.h>
 #include <MyGUI_TextBox.h>
@@ -238,10 +228,10 @@ void App::KeyTxtTerrain(Real q)
 	
 	//  edit  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 	if (mz != 0 && bEdit())
-		if (alt){			mBrPow[curBr]   *= 1.f - 0.4f*q*mz;  updBrush();  }
+	{	if (alt){			mBrPow[curBr]   *= 1.f - 0.4f*q*mz;  updBrush();  }
 		else if (!shift){	mBrSize[curBr]  *= 1.f - 0.4f*q*mz;  updBrush();  }
 		else				mBrIntens[curBr]*= 1.f - 0.4f*q*mz/0.05;
-
+	}
 	if (isKey(MINUS)){   mBrSize[curBr]  *= 1.f - 0.04f*q;  updBrush();  }
 	if (isKey(EQUALS)){  mBrSize[curBr]  *= 1.f + 0.04f*q;  updBrush();  }
 	if (isKey(LEFTBRACKET))   mBrIntens[curBr]*= 1.f - 0.04f*q;

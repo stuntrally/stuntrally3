@@ -1,7 +1,5 @@
 #include "pch.h"
 #include "Def_Str.h"
-#include "Gui_Def.h"
-#include "GuiCom.h"
 #include "CScene.h"
 #include "settings.h"
 #include "CApp.h"
@@ -9,19 +7,13 @@
 #include "Road.h"
 #include "PaceNotes.h"
 #include "Grass.h"
+
 #include "MultiList2.h"
 // #include "RenderBoxScene.h"
 #include "GraphicsSystem.h"
 #include "Terra.h"
-
-#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
-//#include <LinearMath/btDefaultMotionState.h>
-//#include <BulletDynamics/Dynamics/btRigidBody.h>
+#include <OgreSceneNode.h>
 #include <MyGUI.h>
-#include <OgreParticleEmitter.h>
-#include <OgreParticleSystem.h>
-#include <OgreOverlay.h>
-#include <OgreOverlayElement.h>
 using namespace Ogre;
 
 

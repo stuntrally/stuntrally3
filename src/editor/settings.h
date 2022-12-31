@@ -11,52 +11,57 @@ class SETTINGS : public SETcom
 public:
 ///  params
 //------------------------------------------
-	int version;  // file version =
+	int version = 100;  // file version =
 	
-	//  menu
-	bool bMain;  int inMenu;
+	//  🪧 menu
+	bool bMain =1;  int inMenu = 0;
 
-	//  show
-	bool trackmap, brush_prv;  int num_mini;
-	float size_minimap;
+	//  ✅ hud show
+	bool trackmap =1, brush_prv =1;  int num_mini =0;
+	float size_minimap = 0.5;
 
 	class GameSet
 	{
 	public:
-		std::string track;  bool track_user;
-		float trees;  // common
+		std::string track{"Isl6-Flooded"};
+		bool track_user =0;
+		float trees =1.5f;  // common
 	} gui;
 	
-	//  misc
-	bool allow_save, inputBar, camPos;
-	bool check_load, check_save;
+	//  ⚙️ misc
+	bool allow_save =0, inputBar =0, camPos =0;
+	bool check_load =0, check_save =1;
 
-	//  settings
-	bool bFog, bTrees, bWeather;
-	int ter_skip, mini_skip;  float road_sphr;
-	float cam_speed, cam_inert, cam_x,cam_y,cam_z, cam_dx,cam_dy,cam_dz;
+	//  ⚙️ settings
+	bool bFog =0, bTrees =0, bWeather =0;
+	int ter_skip = 4, mini_skip = 4;  float road_sphr = 2.5f;
+	//  🎥 camera
+	float cam_speed = 0.9f, cam_inert = 0.4f;
+	float cam_x = 0.f, cam_y = 50.f, cam_z = -120.f;
+	float cam_dx = 0.f, cam_dy = 0.f, cam_dz = 1.f;
 	
-	//  ter generate
-	float gen_scale, gen_ofsx,gen_ofsy, gen_freq, gen_persist, gen_pow;  int gen_oct;
-	float gen_mul, gen_ofsh, gen_roadsm;
-	float gen_terMinA,gen_terMaxA,gen_terSmA, gen_terMinH,gen_terMaxH,gen_terSmH;
+	//  ⛰️ ter generator
+	float gen_scale = 20.f, gen_ofsx = 0.f, gen_ofsy = 0.f;
+	float gen_freq = 0.73f, gen_persist = 0.4f, gen_pow = 1.f;  int gen_oct = 4;
+	float gen_mul = 1.f, gen_ofsh = 0.f, gen_roadsm = 0.f;
+	float gen_terMinA = 0.f, gen_terMaxA = 90.f, gen_terSmA = 10.f;
+	float gen_terMinH = -300.f, gen_terMaxH = 300.f, gen_terSmH = 10.f;
 
-	//  align ter
-	float al_w_mul, al_w_add, al_smooth;
+	//  ⛰️🛣️ align ter
+	float al_w_mul = 1.f, al_w_add = 8.f, al_smooth = 2.f;
 	
-	//  pacenotes
-	int pace_show;  float pace_dist, pace_size, pace_near, pace_alpha;
-	bool trk_reverse, show_mph;
+	//  🚦 pacenotes
+	int pace_show = 3;
+	float pace_dist = 1000.f, pace_size = 1.f, pace_near = 1.f, pace_alpha = 1.f;
+	bool trk_reverse =0, show_mph =0;
 
-	//  tweak
-	std::string tweak_mtr, objGroup;
-	//  pick
-	bool pick_setpar;
+	//  🔧 tweak
+	std::string tweak_mtr, objGroup{"rock"};
+	//  👆 pick
+	bool pick_setpar =1;
 
 	
 //------------------------------------------
-	SETTINGS();
-
 	template <typename T>
 	bool Param(CONFIGFILE & conf, bool write, std::string pname, T & value)
 	{

@@ -1,20 +1,12 @@
 #include "pch.h"
 #include "Def_Str.h"
-#include "Gui_Def.h"
-#include "GuiCom.h"
 #include "CScene.h"
 #include "Axes.h"
-#include "settings.h"
 #include "CApp.h"
-#include "CGui.h"
 #include "Road.h"
 
-#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
 #include <OgreCamera.h>
 #include <OgreSceneNode.h>
-#include <OgreManualObject.h>
-#include <OgreOverlay.h>
-#include <OgreOverlayElement.h>
 #include <MyGUI_InputManager.h>
 #include <MyGUI_Widget.h>
 #include <MyGUI_TextBox.h>
