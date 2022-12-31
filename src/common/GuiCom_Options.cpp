@@ -6,13 +6,10 @@
 #include "Road.h"
 #include "pathmanager.h"
 #include "settings.h"
+#include "App.h"
 #ifndef SR_EDITOR
 	#include "game.h"
-	#include "CGame.h"
 	// #include "SplitScreen.h"
-#else
-	#include "CApp.h"
-	#include "settings.h"
 #endif
 #include "Slider.h"
 // #include "WaterRTT.h"
@@ -29,7 +26,6 @@ using namespace std;
 
 ///  🎛️ Gui Init  📊 Graphics
 //----------------------------------------------------------------------------------------------------------------
-
 void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 {
 	Btn btn;  Cmb cmb;

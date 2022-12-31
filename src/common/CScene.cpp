@@ -8,11 +8,8 @@
 #include "Road.h"
 #include "PaceNotes.h"
 #include "Grass.h"
-#ifndef SR_EDITOR
-	#include "CGame.h"
-#else
-	#include "CApp.h"
-#endif
+#include "App.h"
+
 #include <OgreItem.h>
 #include <OgreHlmsPbsPrerequisites.h>
 #include <OgreHlmsPbsDatablock.h>

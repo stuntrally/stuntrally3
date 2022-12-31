@@ -1,16 +1,11 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "Gui_Def.h"
+#include "CGui.h"
 #include "GuiCom.h"
-#ifndef SR_EDITOR
-	#include "CGame.h"
-	// #include "SplitScreen.h"
-	#include "settings.h"
-#else
-	#include "CApp.h"
-	#include "settings.h"
-	#include "CGui.h"
-#endif
+#include "settings.h"
+#include "App.h"
+// #include "SplitScreen.h"
 #include <SDL_video.h>
 #include <OgreRoot.h>
 #include <OgreWindow.h>
@@ -158,7 +153,7 @@ float CGuiCom::GetGuiMargin(int wy)
 	return ym;
 }
 
-//  resize Options wnd
+//  🗜️🪟 resize Options wnd
 void CGuiCom::ResizeOptWnd()
 {
 	if (!app->mWndOpts)  return;

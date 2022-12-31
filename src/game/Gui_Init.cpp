@@ -324,7 +324,7 @@ void CGui::InitGui()
 	sv= &svBaddSec;	sv->Init("BaddSec",	&pSet->gui.boost_add_sec, 0.f, 1.f, 1.f, 2,4);  sv->DefaultF(0.1f);
 
 
-	//  Split screen  ------------------------------------------------------------
+	//  👥 Split screen  ------------------------------------------------------------
 	Btn("btnPlayers1", btnNumPlayers);	Btn("btnPlayers2", btnNumPlayers);
 	Btn("btnPlayers3", btnNumPlayers);	Btn("btnPlayers4", btnNumPlayers);
 
@@ -504,7 +504,7 @@ void CGui::InitGui()
 
 	gcom->GuiInitTrack();
 
-	//  multi panel cover
+	//  📡 multi panel cover
 	Tbi trkTab = fTbi("TabTrack");
 	trkTab->setColour(Colour(0.8f,0.96f,1.f));
 	const IntCoord& tc = trkTab->getCoord();

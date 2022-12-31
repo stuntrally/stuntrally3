@@ -4,15 +4,10 @@
 #include "GuiCom.h"
 #include "CScene.h"
 #include "pathmanager.h"
-#ifndef SR_EDITOR
-	#include "CGame.h"
-	#include "CGui.h"
-	#include "settings.h"
-#else
-	#include "CApp.h"
-	#include "CGui.h"
-	#include "settings.h"
-#endif
+#include "App.h"
+
+#include "CGui.h"
+#include "settings.h"
 #include <OgreWindow.h>
 #include <MyGUI_InputManager.h>
 #include <MyGUI_Widget.h>
