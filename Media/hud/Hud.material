@@ -47,9 +47,12 @@ hlms hud/minimap unlit
 	// diffuse_map terrain.jpg
 }
 
-hlms hud/CarPos unlit : hud_base
+hlms hud/CarPos unlit
 {
-	// diffuse vertexcolour
+    diffuse  1 1 1
+	scene_blend alpha_blend
+	cull_mode none
+
 	diffuse_map carpos0.png
 }
 

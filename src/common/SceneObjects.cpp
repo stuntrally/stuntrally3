@@ -40,7 +40,7 @@ using namespace std;
 
 
 
-///  📦 Objects  ... .. . . .
+///  🎳📦 Objects  ... .. . . .
 //----------------------------------------------------------------------------------------------------------------------
 class BulletWorldOffset : public btBulletWorldImporter
 {
@@ -413,7 +413,7 @@ Vector3 App::GetObjPos0()
 }
 
 
-///  toggle objects simulation (bullet world)
+///  🎳 toggle objects simulation (bullet world)
 //-------------------------------------------------------------------------------------------------------
 void App::ToggleObjSim()
 {
@@ -453,7 +453,7 @@ void App::ToggleObjSim()
 }
 
 
-///  add new object
+///  🆕 add new object
 void App::AddNewObj(bool getName)  //App..
 {
 	::Object o = objNew;
@@ -525,7 +525,7 @@ void CGui::listObjsNext(int rel)
 }
 
 
-//  change category, fill buildings list
+//  change category, fill 🏢 buildings list
 void CGui::listObjsCatChng(Li li, size_t id)
 {
 	if (id == ITEM_NONE || id >= li->getItemCount())  id = 0;

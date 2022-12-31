@@ -137,7 +137,7 @@ public:
 
 	Ogre::SceneNode* nd = 0;  // ogre
 	Ogre::Item* it = 0;
-	class btDefaultMotionState* ms = 0;  // bullet
+	class btDefaultMotionState* ms = 0;  // 🎳 bullet
 	class btCollisionObject* co = 0;
 	class btRigidBody* rb = 0;
 	bool dyn;

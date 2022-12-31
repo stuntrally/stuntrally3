@@ -116,7 +116,7 @@ void CGui::InitGuiLists()
 			objListDyn->addItem("#A0E0FF"+name);  // dynamic
 	}
 	
-	//  🏢 buildings  group categories  more with same prefix  ----
+	//  🏢 buildings  group cat-egories  more with same prefix  ----
 	app->vBuildings.clear();
 	objListCat->removeAllItems();
 

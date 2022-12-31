@@ -12,9 +12,7 @@
 *
 * =====================================================================================
 */
-
 #pragma once
-
 #include <btBulletDynamicsCommon.h>
 #include <OgreSceneNode.h>
 #include <OgreSimpleRenderable.h>
@@ -27,6 +25,7 @@
 #include <OgreHlms.h>
 #include <OgreHlmsUnlit.h>
 #include <OgreLogManager.h>
+
 
 namespace BtOgre
 {

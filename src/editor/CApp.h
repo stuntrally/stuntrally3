@@ -171,7 +171,7 @@ public:
 	void filter(Ogre::Vector3 &pos, float dtime, float brMul);
 
 
-	///  📦 bullet world, simulate
+	///  🎳 bullet world, simulate
 	class btDiscreteDynamicsWorld* world =0;
 	class btDefaultCollisionConfiguration* config =0;
 	class btCollisionDispatcher* dispatcher =0;

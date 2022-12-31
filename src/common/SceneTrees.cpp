@@ -275,7 +275,7 @@ void CScene::CreateTrees()
 				++pg.cnt;  ++iVegetAll;  // count stats
 					
 				
-				///  add to bullet world
+				///  🎳 add to bullet world
 				#ifndef SR_EDITOR  //  in Game
 				int cc = col ? col->shapes.size() : 0;
 				//  not found in xml or specified, 1 shape
@@ -318,7 +318,7 @@ void CScene::CreateTrees()
 					app->pGame->collision.shapes.push_back(bshp);
 					++cntshp;
 				}
-				else  // use trimesh  . . . . . . . . . . . . 
+				else  // 🪨 use trimesh  . . . . . . . . . . . . 
 				{
 					const BltShape* shp = !col ? &data->objs->defPars : &col->shapes[0];
 					Vector3 pc(pos0.x, pos.y, pos0.z);

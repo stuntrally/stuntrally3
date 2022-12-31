@@ -15,7 +15,7 @@
 
 #include <OgrePrerequisites.h>
 #include <OgreTimer.h>
-// #include <OgreTerrain.h>
+#include "Terra.h"
 #include <OgreWindow.h>
 #include <OgreManualObject.h>
 // #include <OgreHardwarePixelBuffer.h>
@@ -359,19 +359,20 @@ struct RayResult : public btCollisionWorld::RayResultCallback
 	}
 };
 
+//  ⛰️🛣️  Align
 void App::AlignTerToRoad()
 {
 	SplineRoad* road = scn->road;
 	if (road->vSel.empty())  return;
 	Ogre::Timer ti;
 
-	///  create bullet road for selected segments
+	///  create 🎳 bullet road for selected segments
 	road->ed_Wmul = pSet->al_w_mul;
 	road->ed_Wadd = pSet->al_w_add;
 	road->RebuildRoadInt(true);
 
 	//  terrain
-	float *fHmap = 0; //; ! scn->terrain->getHeightData();
+	std::vector<float>& fHmap = mTerra->getHeightData();
 	const int w = scn->sc->td.iVertsX, h = w;
 	const float fh = h-1, fw = w-1;
 
@@ -383,7 +384,7 @@ void App::AlignTerToRoad()
 	int x,y,a;
 	float v,k, fx,fz, wx,wz;
 	
-	///  ray casts  -----------
+	///  🎯 ray casts  -----------
 	for (y = 0; y < h; ++y) {  a = y*w;
 	for (x = 0; x < w; ++x, ++a)
 	{
@@ -470,7 +471,7 @@ void App::AlignTerToRoad()
 
 
 	//  update terrain
-	// scn->terrain->dirty();  //rect..
+	scn->terrain->dirtyRect(Rect(0,0,1,1));
 	scn->UpdBlendmap();
 	bTerUpd = true;
 

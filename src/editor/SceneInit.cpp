@@ -511,7 +511,7 @@ void App::TerCircleUpd(float dt)
 
 
 //---------------------------------------------------------------------------------------------------------------
-///  🆕 Bullet world
+///  🎳🆕 Bullet world
 //---------------------------------------------------------------------------------------------------------------
 void App::BltWorldInit()
 {
@@ -534,7 +534,7 @@ void App::BltWorldInit()
 	world->setForceUpdateAllAabbs(false);  //+
 }
 
-//  💥 Destroy
+//  🎳💥 Destroy
 void App::BltWorldDestroy()
 {
 	BltClear();
@@ -543,7 +543,7 @@ void App::BltWorldDestroy()
 	delete broadphase;  delete dispatcher;  delete config;
 }
 
-//  💥 Clear - delete bullet pointers
+//  🎳💥 Clear - delete bullet pointers
 void App::BltClear()
 {
 	if (world)
@@ -590,7 +590,7 @@ void App::BltClear()
 }
 
 
-//  💫 update (simulate)
+//  🎳💫 update (simulate)
 //-------------------------------------------------------------------------------------
 void App::BltUpdate(float dt)
 {

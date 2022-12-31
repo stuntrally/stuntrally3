@@ -169,7 +169,7 @@ void CScene::UpdBlendmap()
 }
 
 
-//  Bullet Terrain
+//  🎳 Bullet Terrain
 //---------------------------------------------------------------------------------------------------------------
 void CScene::CreateBltTerrain()
 {
@@ -198,6 +198,7 @@ void CScene::CreateBltTerrain()
 	#else
 		app->world->addCollisionObject(col);
 	#endif
+	
 	
 	#ifndef SR_EDITOR
 	///  border planes []
