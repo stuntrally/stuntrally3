@@ -297,7 +297,7 @@ void App::LoadCleanUp()
 	carModels.clear();  //carPoses.clear();
 
 
-	LogO("#### Destroy All track ----");
+	LogO("DD## Destroy All track --DD");
 	if (dstTrk)
 	{
 		scn->DelRoadDens();
@@ -335,7 +335,7 @@ void App::LoadCleanUp()
 
 	MinimizeMemory();  // todo: car refl ?
 
-	// SetupCompositor();  //? twice
+	SetupCompositor();  //? twice
 }
 
 
@@ -721,7 +721,7 @@ void App::LoadMisc()  // 9 last
 	// SetTexWrap( HLMS_UNLIT, "FluidWater", false );  //**
 
 
-	hud->Create();
+	hud->Create();  //!-
 	hud->Show();
 	//- hud->Show(true);  // hide
 	

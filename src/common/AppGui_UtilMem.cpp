@@ -159,7 +159,7 @@ void AppGui::unloadUnusedTextures()
 //-----------------------------------------------------------------------------------
 void AppGui::MinimizeMemory()
 {
-	LogO("#### MinimizeMemory");
+	LogO("DD== MinimizeMemory ====DD");
 	// setTightMemoryBudget();
 	unloadTexturesFromUnusedMaterials();
 	unloadUnusedTextures();

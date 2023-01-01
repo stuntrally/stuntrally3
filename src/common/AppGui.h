@@ -102,7 +102,7 @@ public:
 	Ogre::TextureGpu* mCubeReflTex = 0;
 
 	IblQuality mIblQuality = IblLow;  // par in ctor-
-	Ogre::CompositorWorkspace* mWorkspace = 0;
+	std::vector<Ogre::CompositorWorkspace*> mWorkspaces;
 	Ogre::CompositorWorkspace* SetupCompositor();
 
 

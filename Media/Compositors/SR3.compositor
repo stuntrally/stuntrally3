@@ -11,6 +11,7 @@ abstract target cubemap_target
 		store
 		{
 			//We only care about the contents of the colour target
+			// colour	store
 			depth			dont_care
 			stencil			dont_care
 		}
@@ -93,28 +94,56 @@ compositor_node SR3_Render
 	{
 		pass clear
 		{
+			execution_mask			0x01
+			//Don't be affected by the modifier, apply to the whole screen
+			viewport_modifier_mask	0x00
+
+			// Only write to the MSAA surface (don't resolve!)
+			// because overlays due to a legacy problem break the pass
+			// thus if we resolve now, we'll resolve twice
+			store
+			{
+				colour	store
+				depth	store
+				stencil	store
+			}
+			
 			colour_value  0.02 0.015 0.03 1
 		}
 
 		pass render_scene
 		{
-			load
-			{
-				all			  clear
-				clear_colour  0.01 0.01 0.02 1
-			}
+			//Get executed in all eyes
+			execution_mask			0xff
+			//Be affected by the modifier, so we render just to a portion of the screen.
+			viewport_modifier_mask	0xff
+
+			// load
+			// {
+			// 	all			  clear
+			// 	clear_colour  0.01 0.01 0.02 1
+			// }
+
+			// Only write to the MSAA surface (don't resolve!) (see clear pass)
 			store
 			{
-				colour	store_or_resolve
-				depth	dont_care
-				stencil	dont_care
+				colour	store
+				depth	store
+				stencil	store
 			}
+			// store
+			// {
+			// 	colour	store
+			// 	// colour	store_or_resolve
+			// 	depth	dont_care
+			// 	stencil	dont_care
+			// }
 
 			// Our materials in this pass will be using this cubemap,
 			// so we need to expose it to the pass.
 			expose demo_dynamic_cubemap
 
-			overlays	on
+			overlays	off
 			shadows		SR3_Shadows
 		}
 

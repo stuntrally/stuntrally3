@@ -1,11 +1,8 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
-#ifndef SR_EDITOR
-	#include "CGame.h"
-#else
-	#include "CApp.h"
-#endif
+#include "settings.h"
+#include "App.h"
 #include "GraphicsSystem.h"
 
 #include <OgreRoot.h>
@@ -21,6 +18,7 @@
 // #include <OgreAtmosphere2Npr.h>
 #include <Compositor/OgreCompositorManager2.h>
 #include <Compositor/OgreCompositorNodeDef.h>
+#include <Compositor/OgreCompositorWorkspace.h>
 #include <Compositor/OgreCompositorWorkspaceDef.h>
 #include <Compositor/Pass/PassIblSpecular/OgreCompositorPassIblSpecularDef.h>
 using namespace Ogre;
@@ -30,7 +28,7 @@ using namespace Ogre;
 //-----------------------------------------------------------------------------------
 CompositorWorkspace* AppGui::SetupCompositor()
 {
-	LogO("#### setup Compositor");
+	LogO("C### setup Compositor");
 	// We first create the Cubemap workspace and pass it to the final workspace
 	// that does the real rendering.
 	//
@@ -40,14 +38,24 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	// See Tutorial_Terrain for an example of PF_NULL dud.
 
 	auto* rndSys = mRoot->getRenderSystem();
+	auto* texMgr = rndSys->getTextureGpuManager();
 	auto* mgr = mRoot->getCompositorManager2();
-	if( mWorkspace )
+	
+	//  destroy old
+	LogO("D### setup Compositor rem workspaces: "+ toStr(mWorkspaces.size()));
+	for (auto ws : mWorkspaces)
 	{
-		mgr->removeWorkspace( mWorkspace );
-		mWorkspace = 0;
-		LogO("#### setup Compositor rem workspace");
+		// LogO("D### setup Compositor rem workspace");
+		mgr->removeWorkspace( ws );
+		// ws = 0;
 	}
+	mWorkspaces.clear();
 
+
+	// A RenderTarget created with AllowAutomipmaps means the compositor still needs to
+	// explicitly generate the mipmaps by calling generate_mipmaps.
+
+	//  🔮 cube Reflection
 	uint32 iblSpecularFlag = 0;
 	if( rndSys->getCapabilities()->hasCapability( RSC_COMPUTE_PROGRAM ) &&
 		mIblQuality != MipmapsLowest )
@@ -55,17 +63,13 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		iblSpecularFlag = TextureFlags::Uav | TextureFlags::Reinterpretable;
 	}
 
-	// A RenderTarget created with AllowAutomipmaps means the compositor still needs to
-	// explicitly generate the mipmaps by calling generate_mipmaps. It's just an API
-	// hint to tell the GPU we will be using the mipmaps auto generation routines.
-	TextureGpuManager *textureManager = rndSys->getTextureGpuManager();
-	mCubeReflTex = textureManager->createOrRetrieveTexture( "DynamicCubemap",
+	mCubeReflTex = texMgr->createOrRetrieveTexture( "DynamicCubemap",
 		GpuPageOutStrategy::Discard,
 		TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps | iblSpecularFlag,
 		TextureTypes::TypeCube );
 	mCubeReflTex->scheduleTransitionTo( GpuResidency::OnStorage );
 
-	uint32 resolution = 512u;
+	uint32 resolution = 512u;  //?
 	if( mIblQuality == MipmapsLowest || mIblQuality == IblMedium)
 		resolution = 1024u;
 	else if( mIblQuality == IblLow )
@@ -126,7 +130,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	}
 
 
-	//  Cubemap's compositor channels  ----
+	//  🔮 Cubemap's compositor channels  ----
 	CompositorChannelVec cubeExt( 1 );
 	cubeExt[0] = mCubeReflTex;
 
@@ -137,8 +141,9 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		w->connectExternal( 0, idCubeNode, 0 );
 	}
 
-	mWorkspace = mgr->addWorkspace(
+	auto* mWorkspace = mgr->addWorkspace(
 		mSceneMgr, cubeExt, mCubeCamera, name, true );
+	mWorkspaces.push_back(mWorkspace);  //+?
 
 
 	//  Render window external channels  ----
@@ -147,13 +152,59 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	ext[1] = mCubeReflTex;
 
 	
-	//  Gui, add MyGUI pass
+	//  🎛️ Gui, add MyGUI pass
 	CompositorNodeDef* node = mgr->getNodeDefinitionNonConst("SR3_Render");
 	CompositorTargetDef* target = node->getTargetPass(0);
 	target->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
 	
 
-	auto* wrk = mgr->addWorkspace(
-		mSceneMgr, ext, mCamera, "SR3_Workspace", true );  // in .compositor
-	return wrk;
+	//  game
+	const IdString wsName( "SR3_Workspace" );
+#ifndef SR_EDITOR
+	if (pSet->game.local_players > 1)
+	{
+		//  VR setup  ---- ---- ---- ----
+		Camera* mCamera2 = mSceneMgr->createCamera( "Camera2" );
+
+		mCamera2->setPosition( Vector3( 0, 51, 115 ) );
+		// Look back along -Z
+		mCamera2->lookAt( Vector3( 0, 0, 0 ) );
+		mCamera2->setNearClipDistance( 0.2f );
+		mCamera2->setFarClipDistance( 1000.0f );
+		mCamera2->setAutoAspectRatio( true );
+
+
+		Vector4 dims; //OffsetScale;
+
+		Camera* mEyeCameras[2] = {mCamera, mCamera2 };  // temp
+
+		dims = Vector4( 0.0f, 0.0f, 0.5f, 1.0f );
+		CompositorWorkspace* mEyeWs[2];
+		mEyeWs[0] =
+			mgr->addWorkspace( mSceneMgr, ext,
+				mEyeCameras[0], wsName,
+				true, -1, 0, 0,
+				dims, 0x01, 0x01 );
+
+		dims = Vector4( 0.5f, 0.0f, 0.5f, 1.0f );
+		mEyeWs[1] =
+			mgr->addWorkspace( mSceneMgr, ext, 
+				mEyeCameras[1], wsName,
+				true, -1, 0, 0,
+				dims, 0x02, 0x02 );
+
+		mWorkspaces.push_back(mEyeWs[0]);
+		mWorkspaces.push_back(mEyeWs[1]);
+
+		LogO("C### Split Created workspaces: "+toStr(mWorkspaces.size()));
+		return mEyeWs[0];
+	}
+	else  // single view
+#endif
+	{
+		auto ws = mgr->addWorkspace( mSceneMgr, ext, mCamera, wsName, true );  // in .compositor
+		mWorkspaces.push_back(ws);
+		LogO("C### Single Created workspaces: "+toStr(mWorkspaces.size()));
+		return ws;
+	}
 }
