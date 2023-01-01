@@ -89,7 +89,7 @@ void CHud::Create()
 	// asp = 1.f;  //_temp
 	moPos = new HudRenderable("hud/CarPos", scm,
 		// 0.f, true,true, 1.f,Vector2(1,1), RV_Hud,RQG_Hud3, plr * 6);
-		OT_TRIANGLE_LIST, true,true, RV_Hud,RQG_Hud1, plr * 3);
+		OT_TRIANGLE_LIST, true,true, RV_Hud,RQG_Hud1, plr * 2);
 	ndPos = rt->createChildSceneNode();
 	ndPos->attachObject(moPos);
 
@@ -340,7 +340,6 @@ void CHud::Create()
 		h.txCountdown->setFontName("DigGear");  h.txCountdown->setTextShadow(true);
 		h.txCountdown->setTextColour(Colour(0.8,0.9,1));  h.txCountdown->setTextAlign(Align::Center);
 
-	#if 0
 		//  abs, tcs
 		h.txAbs = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 120,60, Align::Left, "AbsT"+s);
@@ -351,7 +350,6 @@ void CHud::Create()
 			0,y, 120,60, Align::Left, "TcsT"+s);
 		h.txTcs->setFontName("hud.text");  h.txTcs->setTextShadow(true);
 		h.txTcs->setCaption("TCS");  h.txTcs->setTextColour(Colour(0.6,1,1));
-	#endif
 
 		//  🎥 camera name
 		h.txCam = h.parent->createWidget<TextBox>("TextBox",
@@ -476,7 +474,7 @@ CHud::Hud::Hud()
 
 void CHud::Destroy()
 {
-	LogO("D--- Destroy Hud");
+	LogO("D--- Destroy Hud ");
 	SceneManager* scm = app->mSceneMgr;
 	int i,c;
 	for (c=0; c < hud.size(); ++c)
@@ -507,6 +505,7 @@ void CHud::Destroy()
 		Dest(h.txWarn)  Dest(h.bckWarn)
 		Dest(h.txPlace)  Dest(h.bckPlace)
 		Dest(h.txCountdown)
+		Dest(h.parent)
 	}
 	Dest2(ndPos)  delete moPos;
 	Dest(txMsg)  Dest(bckMsg)

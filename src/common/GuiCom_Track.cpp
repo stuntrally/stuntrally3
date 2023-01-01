@@ -4,20 +4,18 @@
 #include "GuiCom.h"
 #include "Road.h"
 #include "pathmanager.h"
+#include "settings.h"
+
 #include "SceneXml.h"
 #include "TracksXml.h"
 #include "CData.h"
 #include "CScene.h"
+#include "CGui.h"
+#include "App.h"
 #ifndef SR_EDITOR
 	#include "game.h"
-	#include "CGame.h"
 	#include "CHud.h"
-	#include "CGui.h"
 	// #include "SplitScreen.h"
-#else
-	#include "CApp.h"
-	#include "CGui.h"
-	#include "settings.h"
 #endif
 #include "MultiList2.h"
 #include <OgreRoot.h>
@@ -41,7 +39,7 @@ using namespace std;
 ///  * * * *  CONST  * * * *
 //-----------------------------------------------------------------------------------------------------------
 
-//  track difficulties colors from value
+//  🌈📐 track difficulties colors from value
 const String CGuiCom::clrsDiff[CGuiCom::iClrsDiff] =  // difficulty
 	{"#60C0FF", "#00FF00", "#60FF00", "#C0FF00", "#FFFF00", "#FFC000", "#FF6000", "#FF4040", "#FF7090"};
 const String CGuiCom::clrsRating[CGuiCom::iClrsRating] =  // rating
@@ -103,7 +101,7 @@ String CGuiCom::GetSceneryColor(String name, String* sc)
 //-----------------------------------------------------------------------------------------------------------
 
 
-//  Add tracks list item
+//  📃➕ Add tracks list item
 void CGuiCom::AddTrkL(std::string name, int user, const TrackInfo* ti)
 {
 	String sc, c = GetSceneryColor(name, &sc);
@@ -165,7 +163,7 @@ void CGuiCom::initMiniPos(int i)
 }
 
 
-//  Gui Init [Track] once
+//  🆕 Gui Init 🏞️ Track once
 //-----------------------------------------------------------------------------------------------------------
 void CGuiCom::GuiInitTrack()
 {
@@ -176,7 +174,7 @@ void CGuiCom::GuiInitTrack()
    	li->eventListChangePosition += newDelegate(this, &CGuiCom::listTrackChng);
    	li->setVisible(false);
 	
-	//  preview images
+	//  🖼️ preview images
 	#ifdef SR_EDITOR  // game in Gui_Init
 	imgPrv[0] = fImg("TrackImg0");   imgPrv[0]->setImageTexture("PrvView");
 	imgTer[0] = fImg("TrkTerImg0");  imgTer[0]->setImageTexture("PrvTer");
@@ -184,7 +182,7 @@ void CGuiCom::GuiInitTrack()
 	initMiniPos(0);
 	#endif
 
-	//  stats text
+	//  🗒️ stats text
 	int i;
 	for (i=0; i < StTrk; ++i)     stTrk[0][i] = fTxt("st"+toStr(i));
 	for (i=0; i < ImStTrk; ++i) imStTrk[0][i] = fImg("ist"+toStr(i));
@@ -201,7 +199,7 @@ void CGuiCom::GuiInitTrack()
 	txtTracksFAll = fTxt("TracksFAll");
 	txtTracksFCur = fTxt("TracksFCur");
 	
-	//  columns  ----
+	//  🏞️🏛️ columns  ----
 	li->removeAllColumns();  int c=0;
 	li->addColumn("#C0E0C0""id", colTrk[c++]);  // prefix
 	li->addColumn("#D0FFD0"+TR("#{Name}"), colTrk[c++]);  // full
@@ -227,7 +225,7 @@ void CGuiCom::GuiInitTrack()
 	li->addColumn("#FFA0A0""l", colTrk[c++]);	// longn
 	li->addColumn(" ", colTrk[c++]);
 	
-	//  columns, filters  ---
+	//  🔻 columns, filters  ---
 	for (i=0; i < COL_VIS; ++i)
 	{
 		ck= &ckTrkColVis[i];  ck->Init("col"+toStr(i), &pSet->col_vis[pSet->tracks_view][i]);  CevC(TrkColVis);
@@ -258,7 +256,7 @@ void CGuiCom::ChkUpd_Col()
 }
 
 
-//  done once to fill tracks list from dirs
+//  🏞️📃 done once to fill tracks list from dirs
 //-----------------------------------------------------------------------------------------------------------
 void CGuiCom::FillTrackLists()
 {
@@ -305,7 +303,7 @@ void CGuiCom::FillTrackLists()
 }
 
 
-///  . .  util tracks stats  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+///  . .  🏞️🗒️ util tracks stats  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 //----------------------------------------------------------------------------------------------------------------
 
 void CGuiCom::ReadTrkStats()
@@ -313,21 +311,20 @@ void CGuiCom::ReadTrkStats()
 	String sRd = PathListTrk() + "/road.xml";
 	String sSc = PathListTrk() + "/scene.xml";
 
-	Scene* sc = new Scene();  sc->LoadXml(sSc);  // fails to defaults
+	Scene sc;  sc.LoadXml(sSc);  // fails to defaults
 #ifndef SR_EDITOR  // game
 	SplineRoad rd(app->pGame);  rd.LoadFile(sRd,false);  // load
 
 	TIMER tim;  tim.Load(PATHMANAGER::Records()+"/"+ pSet->gui.sim_mode+"/"+ sListTrack+".txt", 0.f);
 	tim.AddCar(app->gui->sListCar);
 
-	bool reverse = sc->denyReversed ? false : pSet->gui.trackreverse;
-	app->gui->ckReverse.setVisible(!sc->denyReversed);  //
-	UpdGuiRdStats(&rd,sc, sListTrack, tim.GetBestLap(0, reverse), reverse, 0);
+	bool reverse = sc.denyReversed ? false : pSet->gui.trackreverse;
+	app->gui->ckReverse.setVisible(!sc.denyReversed);  //
+	UpdGuiRdStats(&rd,&sc, sListTrack, tim.GetBestLap(0, reverse), reverse, 0);
 #else
 	SplineRoad rd(app);  rd.LoadFile(sRd,false);  // load
-	UpdGuiRdStats(&rd,sc, sListTrack, 0.f, false, 0);
+	UpdGuiRdStats(&rd,&sc, sListTrack, 0.f, false, 0);
 #endif
-	delete sc;
 }
 
 #ifndef SR_EDITOR  // game
@@ -458,8 +455,8 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 		imInfTrk[ch][10]->setAlpha(0.2f + 0.8f * ti.rating / 6.f);
 
 		#ifndef SR_EDITOR
-		// if (app->gui->txTrackAuthor)
-			// app->gui->txTrackAuthor->setCaption(ti.author=="CH" ? "CryHam" : ti.author);
+		if (app->gui->txTrackAuthor)
+			app->gui->txTrackAuthor->setCaption(ti.author=="CH" ? "CryHam" : ti.author);
 		#endif
 	}
 
@@ -468,7 +465,7 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 	std::string unit = mph ? TR(" #{UnitMph}") : TR(" #{UnitKmh}");
 	m = pSet->show_mph ? 2.23693629f : 3.6f;
 
-	//  track time
+	//  ⏱️ track time
 	float carMul = app->GetCarTimeMul(pSet->gui.car[0], pSet->gui.sim_mode);
 	float timeTrk = app->scn->data->tracks->times[sTrack];
 	bool noTrk = timeTrk < 2.f;
@@ -499,12 +496,12 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 	if (app->gui->trkName)  //
 		app->gui->trkName->setCaption(sTrack.c_str());
 #endif
-  	//  advice, descr
+  	//  advice, descr 👈
 	if (trkDesc[ch])     trkDesc[ch]->setCaption(rd->sTxtDescr);
 	if (trkAdvice[ch]) trkAdvice[ch]->setCaption(rd->sTxtAdvice);
 
 	
-	//  preview images
+	//  🖼️ preview images
 	//---------------------------------------------------------------------------
 #ifndef SR_EDITOR
 	if (pSet->dev_no_prvs)  return;

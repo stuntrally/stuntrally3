@@ -23,7 +23,7 @@ using namespace Ogre;
 using namespace MyGUI;
 
 
-///  HUD resize
+///  🗜️ HUD resize
 //---------------------------------------------------------------------------------------------------------------
 struct VPDims
 {	Ogre::Real top,left, width,height, right,bottom, avgsize;
@@ -82,77 +82,76 @@ void CHud::Size()
 			yMin = (dim.top +1.f)*0.5f*wy, yMax = (dim.bottom+1.f)*0.5f*wy;
 		int my = (1.f-ygMax)*0.5f*wy;  // gauge bottom y
 
-		//  gear, vel
+		if (!h.txVel)  continue;
+
 		//  positioning, min yMax - dont go below viewport bottom
-		if (h.txVel)
-		{
-			int vv = pSet->gauges_type > 0 ? -45 : 40;
-			int gx = (xcRpm+1.f)*0.5f*wx - 10, gy = (-ycRpm+1.f)*0.5f*wy +22;
-			int gxL=(xcRpmL+1.f)*0.5f*wx - 10;
-			int vx = (xcVel+1.f)*0.5f*wx + vv, vy = std::min(yMax -91, my - 15);
-			int bx =(xBFuel+1.f)*0.5f*wx - 10, by = std::min(yMax -36, my + 5);
-				vx = std::min(vx, xMax -100);
-				bx = std::min(bx, xMax -180);  // not too near to vel
+		int vv = pSet->gauges_type > 0 ? -45 : 40;
+		int gx = (xcRpm+1.f)*0.5f*wx - 10, gy = (-ycRpm+1.f)*0.5f*wy +22;
+		int gxL=(xcRpmL+1.f)*0.5f*wx - 10;
+		int vx = (xcVel+1.f)*0.5f*wx + vv, vy = std::min(yMax -91, my - 15);
+		int bx =(xBFuel+1.f)*0.5f*wx - 10, by = std::min(yMax -36, my + 5);
+			vx = std::min(vx, xMax -100);
+			bx = std::min(bx, xMax -180);  // not too near to vel
 
-			if (h.txGear)  h.txGear->setPosition(gx,gy +10);
-			if (h.bckGear) h.bckGear->setPosition(gx-12,gy +10);
+		//  ⏲️ gear, vel
+		if (h.txGear)  h.txGear->setPosition(gx,gy +10);
+		if (h.bckGear) h.bckGear->setPosition(gx-12,gy +10);
 
-			if (h.bckVel)  h.bckVel->setPosition(vx-32,vy-6);
-			h.txVel->setPosition(vx,vy);  //h.bckVel
+		if (h.bckVel)  h.bckVel->setPosition(vx-32,vy-6);
+		h.txVel->setPosition(vx,vy);  //h.bckVel
 
-			#if 0
-			h.txRewind ->setPosition(bx,   by);
-			h.icoRewind->setPosition(bx+50,by-5);
-			#endif
+		#if 0
+		h.txRewind ->setPosition(bx,   by);
+		h.icoRewind->setPosition(bx+50,by-5);
+		#endif
 
-			if (h.txDamage)
-			{	h.txDamage ->setPosition(gxL-83-72, gy+10-5);
-				h.icoDamage->setPosition(gxL-83+57, gy+10-5);
-				h.imgDamage->setPosition(gxL-83-26, gy+10-7);
-			}
-			if (h.txBFuel)
-			{	h.txBFuel ->setPosition(gxL-83-74, gy-60);
-				h.icoBFuel->setPosition(gxL-83+57, gy-60);
-				//h.icoBInf->setPosition(gxL-83+14,gy-60-5+2);
-			}
-
-			//  times
-			bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 /*|| app->mClient*/;
-			int w = 160, tx = xMin + 40, ty = yMin + 55;  //40
-			h.bckTimes->setPosition(tx-20,ty);
-			//tx = 24;  ty = (hasLaps ? 16 : 4);
-			h.txTimTxt->setPosition(tx,ty);
-			h.txTimes->setPosition(tx+w,ty);
-
-			//  lap result
-			int lx = xMax - 360, ly = ty;
-			h.bckLap->setPosition(lx-14,ly-8);
-			h.txLapTxt->setPosition(lx,ly);
-			h.txLap->setPosition(lx+w,ly);
-		/*		
-			//  opp list
-			//int ox = itx + 5, oy = (ycRpm+1.f)*0.5f*wy - 10;
-			int ox = xMin + 40, oy = (-miniTopY+1.f)*0.5f*wy - 5;  //par
-			h.xOpp = ox;  h.yOpp = oy;
-			h.lastOppH = -1;
-			//h.bckOpp->setPosition(ox,oy -2);  //h.bckOpp->setSize(230, plr*25 +4);
-			//for (int n=0; n<3; ++n)
-			//	h.txOpp[n]->setPosition(n*65+5,0);
-		*/
-			//  warn,win
-			int ox = (xMax-xMin)/2 + xMin - 200;  int oy = yMin + 15;
-			h.bckWarn->setPosition(ox,oy);
-			h.bckPlace->setPosition(ox,oy + 40);
-			
-			h.txCountdown->setPosition((xMax-xMin)/2 -100, (yMax-yMin)/2 -60);
-
-			//  camera info
-			if (h.txCam)
-				h.txCam->setPosition(xMax-260,yMax-10);
-			//  abs,tcs
-			// h.txAbs->setPosition(xMin+160,yMax-30);
-			// h.txTcs->setPosition(xMin+220,yMax-30);
+		if (h.txDamage)  // 🔨
+		{	h.txDamage ->setPosition(gxL-83-72, gy+10-5);
+			h.icoDamage->setPosition(gxL-83+57, gy+10-5);
+			h.imgDamage->setPosition(gxL-83-26, gy+10-7);
 		}
+		if (h.txBFuel)  // 💨
+		{	h.txBFuel ->setPosition(gxL-83-74, gy-60);
+			h.icoBFuel->setPosition(gxL-83+57, gy-60);
+			//h.icoBInf->setPosition(gxL-83+14,gy-60-5+2);
+		}
+
+		//  ⏱️ Times
+		bool hasLaps = pSet->game.local_players > 1 || pSet->game.champ_num >= 0 /*|| app->mClient*/;
+		int w = 160, tx = xMin + 40, ty = yMin + 55;  //40
+		h.bckTimes->setPosition(tx-20,ty);
+		//tx = 24;  ty = (hasLaps ? 16 : 4);
+		h.txTimTxt->setPosition(tx,ty);
+		h.txTimes->setPosition(tx+w,ty);
+
+		//  🏁 lap result
+		int lx = xMax - 360, ly = ty;
+		h.bckLap->setPosition(lx-14,ly-8);
+		h.txLapTxt->setPosition(lx,ly);
+		h.txLap->setPosition(lx+w,ly);
+	/*		
+		//  opp list
+		//int ox = itx + 5, oy = (ycRpm+1.f)*0.5f*wy - 10;
+		int ox = xMin + 40, oy = (-miniTopY+1.f)*0.5f*wy - 5;  //par
+		h.xOpp = ox;  h.yOpp = oy;
+		h.lastOppH = -1;
+		//h.bckOpp->setPosition(ox,oy -2);  //h.bckOpp->setSize(230, plr*25 +4);
+		//for (int n=0; n<3; ++n)
+		//	h.txOpp[n]->setPosition(n*65+5,0);
+	*/
+		//  ❌ warn  🥇 win
+		int ox = (xMax-xMin)/2 + xMin - 200;  int oy = yMin + 15;
+		h.bckWarn->setPosition(ox,oy);
+		h.bckPlace->setPosition(ox,oy + 40);
+		
+		h.txCountdown->setPosition((xMax-xMin)/2 -100, (yMax-yMin)/2 -60);
+
+		//  🎥 camera info
+		if (h.txCam)
+			h.txCam->setPosition(xMax-260,yMax-10);
+		//  abs,tcs
+		h.txAbs->setPosition(xMin+160,yMax-30);
+		h.txTcs->setPosition(xMin+220,yMax-30);
 	}
 	if (txCamInfo)
 	{	txCamInfo->setPosition(270,wy-100);
@@ -161,7 +160,7 @@ void CHud::Size()
 }
 
 
-//  HUD show/hide
+//  🔁 HUD show/hide
 //---------------------------------------------------------------------------------------------------------------
 void CHud::Show(bool hideAll)
 {
@@ -187,7 +186,6 @@ void CHud::Show(bool hideAll)
 		return;
 	}
 
-	//  this goes each frame..
 	bool show = pSet->car_dbgbars;
 	/*if (ovCarDbg){  if (show)  ovCarDbg->show();  else  ovCarDbg->hide();  }
 	show = pSet->car_dbgtxt || pSet->bltProfilerTxt || pSet->profilerTxt;
@@ -243,7 +241,9 @@ void CHud::Show(bool hideAll)
 	//; if (ndPos)  ndPos->setVisible(pSet->trackmap);
 	
 	app->updMouse();
-	if (app->mWndRpl && !app->bLoading)  // replay ctrls
+	
+	//  📽️ replay ctrls
+	if (app->mWndRpl && !app->bLoading)
 		app->mWndRpl->setVisible(app->bRplPlay && app->bRplWnd);
 	//  lesson replay  >> >
 	if (app->mWndRplTxt && !app->bLoading && app->gui->bLesson)
