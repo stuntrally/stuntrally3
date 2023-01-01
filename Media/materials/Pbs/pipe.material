@@ -36,19 +36,25 @@ hlms pipe_glass pbs
 
     // scene_blend alpha_blend
     depth_write off
+    // depth_test off
     depth_bias 3
 
 	workflow metallic
-	fresnel_coeff 0.1 0.1 0.1
-	roughness 0.3
-	metalness 0.7
+	// fresnel_coeff 0.9 0.9 0.9
+	roughness 0.5
+	metalness 0.99
 
-	cull_mode none
+	cull_mode anticlockwise
+	//+ cull_mode clockwise  // 2nd, cloned in code
+
 	// transparency 1.0
 	transparency_mode transparent
 	two_sided true
 
-	// receives_shadows true
+	// reflection demo_dynamic_cubemap //?
+	use_alpha_from_textures off
+
+	receives_shadows false
     // refl_amount 0.1  // only used when fresnel off
 
     // transparent false  // for shadowcaster
@@ -77,31 +83,27 @@ hlms pipe_glass pbs
 
 hlms pipeGlass pbs : pipe_glass
 {
-	ambient  0.35 0.48 0.55
-	// diffuse  0.76 0.82 0.90
-	diffuse  0.76 0.82 0.90
-	specular 0.4 0.5 0.6  //?
-	transparency 1.0
+	diffuse  0.6 0.82 0.98 0.2
+	specular 0.4 0.7 1.0
+	transparency 0.99
 	diffuse_map  roadGlassC_dirt.png
 	// specular_map roadGlass_spec1l.png
-	normal_map   normal_3.jpg
-	// bump_scale 0.1
+	normal_map   normal_2.png
 }
 
 hlms pipeGlassCyan pbs : pipe_glass
 {
-	ambient  0.34 0.71 0.71
-	diffuse  0.5 0.67 0.73
+	// diffuse  0.5 0.87 0.93
+	diffuse  0.0 0.9 0.9
 	specular 0.4 1 1
 	transparency 0.97
 	diffuse_map  roadGlassC_dirt2.png
 	// specular_map roadGlass_spec2h.png
-	normal_map   normal_2.png
+	normal_map   normal_1.png
 }
 
 hlms pipeGlassBlue pbs : pipe_glass
 {
-	ambient  0.30 0.47 0.57
 	diffuse  0.46 0.61 0.72
 	specular 0.3 0.6 1
 	transparency 0.95
@@ -112,7 +114,6 @@ hlms pipeGlassBlue pbs : pipe_glass
 
 hlms pipeGlassGreen	pbs : pipe_glass
 {
-	ambient  0.45 0.46 0.2
 	diffuse  0.35 0.6 0.1
 	specular 0.4 1 0.4
 	transparency 0.95
@@ -123,7 +124,6 @@ hlms pipeGlassGreen	pbs : pipe_glass
 
 hlms pipeGlassRed pbs : pipe_glass
 {
-	ambient  0.8 0.4 0.3
 	diffuse  0.6 0.3 0.2
 	specular 1 0.3 0.2
 	transparency 0.95
@@ -134,7 +134,6 @@ hlms pipeGlassRed pbs : pipe_glass
 
 hlms pipeGlassOrange pbs : pipe_glass
 {
-	ambient  0.6 0.35 0.1
 	diffuse  0.8 0.35 0.1
 	specular 1 0.6 0.2
 	transparency 0.97
@@ -146,7 +145,6 @@ hlms pipeGlassOrange pbs : pipe_glass
 
 hlms pipeGlassBlueD pbs : pipe_glass
 {
-	ambient  0.0 0.0 0.47
 	diffuse  0.5 1.0 1.0
 	specular 0.2 0.2 0.6
 	transparency 0.92
@@ -157,7 +155,6 @@ hlms pipeGlassBlueD pbs : pipe_glass
 
 hlms pipeGlassWhiteB pbs : pipe_glass
 {
-	ambient  0.0 0.0 0.47
 	diffuse  1.5 2.0 3.0
 	specular 0.9 0.9 0.9
 	transparency 0.98
@@ -169,9 +166,9 @@ hlms pipeGlassWhiteB pbs : pipe_glass
 
 hlms pipeGlassWhiteV pbs : pipe_glass
 {
-	ambient  0.35 0.0 0.33
 	diffuse  1.5 2.0 3.0
 	specular 0.7 0.7 1
+	emissive 0.1 0.1 0.2
 	transparency 0.98
 	diffuse_map  roadGlassC_dirt2.png
 	// specular_map roadGlass_spec2h.png
@@ -182,9 +179,9 @@ hlms pipeGlassWhiteV pbs : pipe_glass
 
 hlms pipeGlassViolet pbs : pipe_glass
 {
-	ambient  0.4 0.4 0.6
 	diffuse  0.6 0.5 0.9
 	specular 0.7 0.5 1
+	emissive 0.1 0.1 0.2
 	transparency 0.96
 	diffuse_map  roadGlassD.png
 	// specular_map roadGlass_spec2h.png
@@ -193,7 +190,6 @@ hlms pipeGlassViolet pbs : pipe_glass
 
 hlms pipeGlassYellow pbs : pipe_glass
 {
-	ambient  0.9 0.75 0.1
 	diffuse  1.0 1.0 0.1
 	specular 1 1 0.2
 	transparency 0.97
@@ -205,7 +201,6 @@ hlms pipeGlassYellow pbs : pipe_glass
 
 hlms pipeGlassCrystal pbs : pipe_glass
 {
-	ambient  0.0 0.1 0.2
 	diffuse  0.2 0.5 0.7
 	specular 0.2 0.6 1
 	transparency 0.98
@@ -219,7 +214,6 @@ hlms pipeGlassCrystal pbs : pipe_glass
 
 hlms pipeGlassAlien pbs : pipe_glass
 {
-	ambient  0.35 0.48 0.55
 	diffuse  0.76 0.82 0.90
 	specular 0.4 0.7 1
 	transparency 0.97
@@ -231,7 +225,6 @@ hlms pipeGlassAlien pbs : pipe_glass
 
 hlms pipeGlassAlienBlue pbs : pipe_glass
 {
-	ambient  0.0 0.34 0.87
 	diffuse  0.0 0.31 0.82
 	specular 0.0 0.2 0.5
 	transparency 0.95
@@ -243,7 +236,6 @@ hlms pipeGlassAlienBlue pbs : pipe_glass
 
 hlms pipeGlassAlienGreen pbs : pipe_glass
 {
-	ambient  0.25 0.96 0.3
 	diffuse  0.25 0.8 0.2
 	specular 0.3 0.9 0.3
 	transparency 0.95
@@ -255,7 +247,6 @@ hlms pipeGlassAlienGreen pbs : pipe_glass
 
 hlms pipeGlassAlienLime pbs : pipe_glass
 {
-	ambient  0.7 0.95 0.1
 	diffuse  0.5 1.0 0.0
 	specular 0.6 0.9 0.2
 	transparency 0.96
@@ -272,7 +263,6 @@ hlms pipeGlassAlienLime pbs : pipe_glass
 hlms pipeAsphalt pbs : pipe_base
 {
 	diffuse_map  roadAsphalt.jpg
-	ambient  1.0 1.0 1.0
 	diffuse  0.6 0.6 0.6
 	specular 0.3 0.3 0.25 //24
 	depth_bias 3
@@ -283,7 +273,6 @@ hlms pipeAsphalt pbs : pipe_base
 hlms pipeAsphaltRed pbs : pipe_base
 {
 	diffuse_map  roadAsphalt.jpg
-	ambient  1.0 0.8 0.7
 	diffuse  1.0 0.6 0.5
 	specular 0.4 0.35 0.3 //24
 	depth_bias 3
@@ -295,7 +284,6 @@ hlms pipeAsphaltRed pbs : pipe_base
 hlms pipeMetal pbs : pipe_base
 {
 	diffuse_map  metal_pipe.png
-	ambient  1.0 1.0 1.0
 	diffuse  1.0 1.0 1.0
 	specular 0.3 0.3 0.3 //16
 	//specular_map metal_pipe_spec.png
@@ -309,7 +297,6 @@ hlms pipeMetal pbs : pipe_base
 hlms pipeMetalOrn pbs : pipeMetal
 {
 	diffuse_map  metal_pipe.png
-	ambient  1.2 1.0 0.8
 	diffuse  1.2 1.0 0.8
 	specular 0.5 0.3 0.4 //16
 	// bump_scale 0.2
@@ -317,7 +304,6 @@ hlms pipeMetalOrn pbs : pipeMetal
 
 hlms pipeMetalBlue pbs : pipeMetal
 {
-	ambient  0.8 0.9 1.0
 	diffuse  0.8 0.9 1.0
 	specular 0.2 0.3 0.4 //24
 	// bump_scale 0.05
@@ -336,7 +322,6 @@ hlms pipe_wall_base pbs //: pipe_base
 	// env_map true
 	// refl_amount 0.1
 
-	ambient  0.94 0.96 0.98
 	diffuse  0.4 0.46 0.5
 	specular 0.25 0.267 0.28 //1 //x4
 	
@@ -355,7 +340,6 @@ hlms pipe_wall pbs : pipe_wall_base  // default
 //  wall
 hlms wall_base pbs //: pipe_wall_base
 {
-	ambient  0.9 0.96 0.98
 	diffuse  0.6 0.66 0.7
 	specular 0.24 0.267 0.28 //4
 	cull_mode clockwise

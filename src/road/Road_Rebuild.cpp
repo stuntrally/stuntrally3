@@ -27,11 +27,11 @@ using std::vector;  using std::min;  using std::max;
 //  2-1	 6-5   2--1--0
 //  | 0--7 |   3     7
 //  3______4   4__5__6
-//  front wall indices
+//  📏 front wall indices
 const static int WFid[6][3] = {{2,1,0},{3,2,0},{5,4,7},{6,5,7}, {7,3,0},{4,3,7}};
 
 struct stWiPntW {  Real x,y, uv, nx,ny;  };  // wall width points
-const static int ciwW = 7;  // wall  width steps - types..
+const static int ciwW = 7;  // wall  width steps  // todo: types..
 const static stWiPntW wiPntW[ciwW+1][4] = {  // section shape
 	//  normal road                     //  pipe wall                                                         //  wall decor
 	{{-0.5f, -0.0f, 0.0f,  1.0f, 0.0f}, {-0.28f, 0.68f,0.0f, -1.0f, 0.0f}, {-0.14f, 1.5f, 0.0f, -1.0f, 0.0f}, { 0.5f,  0.0f, 0.0f,  0.0f,-1.0f}},
@@ -64,7 +64,7 @@ void SplineRoad::BuildSeg(
 	DS.onTer = mP[seg].onTer && mP[seg1].onTer;
 
 
-	///  jump front wall, ends in air
+	///  📏 jump front wall, ends in air
 	//  0,1 for geometry, 2,1 for pacenotes
 	//  Test on tracks:  iDir<0: jumps, CrossJumps  iDir>0: Mars, Platforms
 	DS.jfw0 = iDir < 0 ?
@@ -134,7 +134,7 @@ void SplineRoad::BuildSeg(
 
 	
 	//  seg params  -----------------
-	const int iwC = g_ColNSides;  // column  polygon steps
+	const int iwC = g_ColNSides;  // 🏛️ column  polygon steps
 				
 	//  steps len
 	const int il = DL.v_iL[seg];
@@ -357,7 +357,7 @@ void SplineRoad::BuildSeg(
 			}
 			
 
-			///  wall ]
+			///  📏 wall ]
 			//------------------------------------------------------------------------------------
 			Real uv = 0.f;  // tc
 			bool onP = mP[seg].onPipe==2;
@@ -393,7 +393,7 @@ void SplineRoad::BuildSeg(
 			}
 			
 			
-			///  columns |
+			///  🏛️ columns |
 			//------------------------------------------------------------------------------------
 			if (HasColumns() && !DS.onTer && mP[seg].cols > 0)
 			if (i == il/2)  // middle-
@@ -590,7 +590,8 @@ void SplineRoad::createSeg_Meshes(
 
 	if (HasRoad())
 	{
-		CreateMesh(rs.road[lod], sMesh, rs.sMtrRd, rs.alpha,
+		CreateMesh(rs.road[lod], sMesh,
+			rs.sMtrRd, rs.alpha, pipeGlass,
 			DLM.pos, DLM.norm, DLM.clr, DLM.tcs, idx);
 	}
 
@@ -604,7 +605,7 @@ void SplineRoad::createSeg_Meshes(
 	//*=*/wall = 0;  cols = 0;  // test
 
 
-	///  wall ]
+	///  📏 wall ]
 	//------------------------------------------------------------------------------------
 	if (wall)
 	{
@@ -640,14 +641,15 @@ void SplineRoad::createSeg_Meshes(
 		{
 			rs.sMtrWall = !pipeGlass ? sMtrWall : sMtrWallPipe;
 
-			CreateMesh(rs.wall[lod], sMesh+"W", rs.sMtrWall, false,
+			CreateMesh(rs.wall[lod], sMesh+"W",
+				rs.sMtrWall, false, false,
 				DLM.posW, DLM.normW, DLM.clr0, DLM.tcsW, idx);
 			rs.wall[lod].it->setCastShadows(true);
 		}
 	}
 	
 	
-	///  columns |
+	///  🏛️ columns |
 	//------------------------------------------------------------------------------------
 	const int iwC = g_ColNSides;
 	if (cols)
@@ -665,19 +667,25 @@ void SplineRoad::createSeg_Meshes(
 		vSegs[DS.seg].nTri[DL.lod] += idx.size()/3;
 
 		/*if (!DLM.posC.empty())
-			CreateMesh(rs.col, sMesh+"C", sMtrCol, false,
+			CreateMesh(rs.col, sMesh+"C",
+				sMtrCol, false, false,
 				DLM.posC, DLM.normC, DLM.clr0, DLM.tcsC, idx);*/
 	}
 	
 
-	//  road
+	//  🛣️ road  vis, que  ----
 	if (HasRoad())
 	{
-		auto it = rs.road[lod].it;
+		auto it = rs.road[lod].it,
+			it2 = rs.road[lod].it2;
 		// sr = AddMesh(mesh, sMesh, aabox, &it, &node, "."+sEnd);
-		it->setRenderQueueGroup(  // ?
-			//IsTrail() ? RQG_RoadBlend /*: RQG_Hud1*/ :
-			pipeGlass || IsRiver() ? RQG_PipeGlass : RQG_Road);
+		auto que = 
+			//IsTrail() ? RQG_RoadBlend /*: RQG_Hud1*/ : // ?
+			pipeGlass || IsRiver() ? RQG_PipeGlass : RQG_Road;
+		it->setRenderQueueGroup(que);
+		if (it2)
+			it2->setRenderQueueGroup(que);
+
 		if (IsTrail())
 			it->setVisibilityFlags(RV_Hud);
 
@@ -692,7 +700,7 @@ void SplineRoad::createSeg_Meshes(
 		if (bCastShadow)
 			itC->setCastShadows(true);
 	}
-//#if 0  // fixme
+//#if 0  // not with mesh
 	if (DS.hasBlend)
 	{
 		AddMesh(meshB, sMeshB, aabox, &itB, &nodeB, "B."+sEnd);
@@ -704,7 +712,7 @@ void SplineRoad::createSeg_Meshes(
 }
 
 
-//  Create Bullet Collision
+//  🎳 Create Bullet Collision
 //----------------------------------------------------------------------------------------------------------------------------
 void SplineRoad::createSeg_Collision(
 	const DataLodMesh& DLM,
@@ -751,7 +759,7 @@ void SplineRoad::createSeg_Collision(
 	#endif
 
 	
-	//  Wall  ]
+	//  📏 Wall  ]
 	#ifndef SR_EDITOR  // in Game
 	bool wall = !DLM.posW.empty();
 	if (wall)

@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "Road.h"
+#ifndef SR_EDITOR
+	#include "game.h"
+#endif
 #include "tinyxml.h"
 #include "tinyxml2.h"
 
@@ -16,15 +19,18 @@ using namespace tinyxml2;
 //  🌟 ctor
 //---------------------------------------------------------------------------------------------------------------
 #ifdef SR_EDITOR
-SplineRoad::SplineRoad(App* papp) : pApp(papp)
+SplineRoad::SplineRoad(App* papp)
+	: pApp(papp)
 #else
-SplineRoad::SplineRoad(GAME* pgame) : pGame(pgame)
+SplineRoad::SplineRoad(GAME* pgame)
+	: pGame(pgame), pApp(pgame->app)
 #endif
 {
 	Defaults();
 	st.Reset();
 	iOldHide = -1;
 }
+
 void SplineRoad::Defaults()
 {
 	type = RD_Road;  trailSegId = -1;
@@ -90,7 +96,7 @@ void SplineRoad::UpdLodVis(float fBias, bool bFull)
 		for (size_t p=0; p < rs.lpos.size(); ++p)
 			d = std::min(d, pl.getDistance( rs.lpos[p] ));
 		
-		//  set 1 mesh visible
+		//  set 1 item/mesh visible
 		for (int i=0; i < LODs; ++i)
 		{
 			bool vis;
@@ -114,6 +120,7 @@ void SplineRoad::UpdLodVis(float fBias, bool bFull)
 			#endif*/
 			
 			if (rs.road[i].it)  rs.road[i].it->setVisible(vis);
+			if (rs.road[i].it2)  rs.road[i].it2->setVisible(vis);
 			if (rs.wall[i].it)  rs.wall[i].it->setVisible(vis);
 			if (rs.blend[i].it) rs.blend[i].it->setVisible(vis);
 			//if (rs.col.ent && i==0)
@@ -159,6 +166,10 @@ void SplineRoad::SetForRnd(String sMtr)
 			{	rs.road[i].it->setVisible(i==0);
 				rs.road[i].it->setMaterial(mat);
 			}
+			if (rs.road[i].it2)
+			{	rs.road[i].it2->setVisible(i==0);
+				rs.road[i].it2->setMaterial(mat);
+			}
 			if (rs.wall[i].it)
 				rs.wall[i].it->setVisible(false);
 			if (rs.blend[i].it)
@@ -180,6 +191,8 @@ void SplineRoad::UnsetForRnd()
 		{
 			if (rs.road[i].it)
 				rs.road[i].it->setMaterial(mat);
+			if (rs.road[i].it2)
+				rs.road[i].it2->setMaterial(mat);
 			// wall auto in updLodVis
 		}
 		if (rs.col.it)

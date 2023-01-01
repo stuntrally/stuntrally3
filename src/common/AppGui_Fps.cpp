@@ -52,7 +52,7 @@ void AppGui::UpdFpsText()
 	String txt;
 	txt += cvsF( fps,  59.f, 30.f, fps >= 100.f ? 0 : 1,4) + "  ";
 	txt += cvsF( tris, 1.f, 3.f, 2,4) + "m ";  //txt += "v " + toStr( rm.mVertexCount/1000 ) + "  ";
-	txt += cvsI( draw, 50, 180, 3) + "\n";
+	txt += cvsI( draw, 50, 300, 3) + "\n";
 
 	txt += "#A0C0A0 Vgt ";
 	txt += cvsI( inst, 1000, 8000, 5) + " ";  //txt += "b " + toStr( rm.mBatchCount, 0);

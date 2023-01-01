@@ -2,16 +2,16 @@
 #include "Def_Str.h"
 #include "RenderConst.h"
 #include "Road.h"
-#ifdef SR_EDITOR
-	#include "CApp.h"
+#include "App.h"
+#ifndef SR_EDITOR
 #else
-	#include "CGame.h"
 	#include "game.h"
 #endif
 #include "CScene.h"
 #include "GraphicsSystem.h"
 
 #include <OgreCommon.h>
+#include <OgreHlmsManager.h>
 #include <OgreHlmsPbs.h>
 #include <OgreHlmsPbsDatablock.h>
 #include <OgreHlmsPbsPrerequisites.h>
@@ -19,22 +19,21 @@
 #include <OgreException.h>
 #include <OgreItem.h>
 #include <OgreSceneNode.h>
+#include <OgreMesh.h>
 #include <OgreMesh2.h>
 #include <OgreSubMesh2.h>
 #include <OgreSceneManager.h>
 #include <OgreMeshManager2.h>
 #include <Vao/OgreVaoManager.h>
-#include <OgreMesh.h>
 using namespace Ogre;
 
 #define USE_UMA_SHARED_BUFFERS 1
 
 
 //  🏗️ Create Mesh
-//---------------------------------------------------------
-
+//---------------------------------------------------------------------------------------------------------------------------------
 void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
-	Ogre::String sMtrName, bool alpha,
+	Ogre::String sMtrName, bool alpha, bool pipeGlass,
 	const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
 	const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,
 	const std::vector<Ogre::uint16>& idx)
@@ -57,13 +56,7 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 
     //-----------------------------------------------------------------------------------
     bool partialMesh = false;
-	Root *root =
-	#ifdef SR_EDITOR
-		pApp->mGraphicsSystem->getRoot();
-	#else
-		pGame->app->mGraphicsSystem->getRoot();
-	#endif
-	RenderSystem *renderSystem = root->getRenderSystem();
+	RenderSystem *renderSystem = pApp->mRoot->getRenderSystem();
 	VaoManager *vaoManager = renderSystem->getVaoManager();
 
 	// Vertex declaration
@@ -209,25 +202,52 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	//---------------------------------------------------------
 	auto dyn = SCENE_STATIC;
 #ifdef SR_EDITOR
-	dyn = SCENE_DYNAMIC;
+	dyn = SCENE_DYNAMIC;  // ed a bit faster?
 #endif
 // 
+	Item *it2 = 0;
 	Item *it = mSceneMgr->createItem(s2, "General", dyn );
 	// Item *it = mSceneMgr->createItem( mesh, dyn );
+
 	SceneNode* node = mSceneMgr->getRootSceneNode( dyn )->createChildSceneNode( dyn );
 	node->attachObject(it);
 	it->setVisible(false);  it->setCastShadows(false);//-
 	it->setVisibilityFlags(RV_Road);
 
+	//  ⭕ pipe glass 2nd item
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	if (pipeGlass)
+	{	it2 = mSceneMgr->createItem(s2, "General", dyn);
+		
+		String sMtr2 = sMtrName + "2";
+		auto hlms = pApp->mRoot->getHlmsManager()->getHlms( HLMS_PBS );
+		if (!hlms->getDatablock(sMtr2))
+		{	//  clone if not already
+			LogO(sMtr2);
+			HlmsDatablock *db2 = it2->getSubItem(0)->getDatablock()->clone(sMtr2);
+			HlmsMacroblock mb;  // = db2->getMacroblock();
+			mb.mDepthBiasConstant = 3.f;  //.. mDepthBiasSlopeScale
+			// mb.mDepthCheck = false;
+			mb.mDepthWrite = false;
+			mb.mCullMode = CULL_CLOCKWISE;  // set opposite cull
+			db2->setMacroblock(mb);
+			it2->setDatablock(db2);
+		}
+		it2->setDatablockOrMaterialName(sMtr2);
+
+		node->attachObject(it2);
+		it2->setVisible(false);  it2->setCastShadows(false);//-
+		it2->setVisibilityFlags(RV_Road);
+	}
+
 	//  wrap tex  ----
 	if (!trail)
-	#ifdef SR_EDITOR
-		pApp->SetTexWrap(it);
-	#else
-		pGame->app->SetTexWrap(it);
-	#endif
+	{
+		pApp->SetTexWrap(it);  if (it2)  pApp->SetTexWrap(it2);
+	}
 
-	//  replace alpha  ----
+	//  replace onTer alpha  ----
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	if (alpha)
 	{
 		HlmsPbsDatablock *db =
@@ -244,7 +264,7 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 			db->setTexture(PBSM_NORMAL, sFlat);
 
 			db->setDetailMapBlendMode(0, PBSM_BLEND_MULTIPLY);  //PBSM_BLEND_NORMAL_NON_PREMUL);
-			db->setTexture(PBSM_DETAIL_WEIGHT, "roadAlpha2y.png");  //"HeightmapBlendmap.png");
+			db->setTexture(PBSM_DETAIL_WEIGHT, "roadAlpha2y.png");
 			db->setDetailMapWeight(0, 1.0);
 			const Real v = 33.3;  // 1.f / 0.03 = alpha tc in rebuild
 			db->setDetailMapOffsetScale(0, Vector4(0,0, 1,v));
@@ -254,13 +274,14 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 			//todo: PBSM_SPECULAR ?.. stretched
 		}
 	}
-	sd.it = it;
+	sd.it = it;  sd.it2 = it2;
 	sd.node = node;
 	sd.smesh = sMesh;
 	// sd.mesh = mesh;  sd.mesh1 = m1;
 
 	//LogO(sMesh + " " + datablock->getName().getReleaseText());  // hash
 }
+//---------------------------------------------------------------------------------------------------------------------------------
 
 
 //  🔺 add triangle to bullet
@@ -289,9 +310,8 @@ void SplineRoad::addTri(int f1, int f2, int f3, int i)
 
 
 ///  💥 Destroy
-//---------------------------------------------------------
-
-void SplineRoad::Destroy()  // full
+//-----------------------------------------------------------------------------------
+void SplineRoad::Destroy()  // full and markers
 {
 	LogO("---- Destroy Road");
 	if (ndSel)	mSceneMgr->destroySceneNode(ndSel);
@@ -308,6 +328,7 @@ void SplineRoad::Destroy()  // full
 	DestroyRoad();
 }
 
+//  one seg
 void SplineRoad::DestroySeg(int id)
 {
 	//LogO("DestroySeg" + toStr(id));
@@ -338,6 +359,8 @@ try
 			// LogO("---- Destroy Road seg " + rs.road[l].smesh);
 			mSceneMgr->destroySceneNode(rs.road[l].node);
 			mSceneMgr->destroyItem(rs.road[l].it);
+			if (rs.road[l].it2)
+				mSceneMgr->destroyItem(rs.road[l].it2);
 
 			String sMesh = rs.road[l].smesh, s1 = sMesh+"v1", s2 = sMesh+"v2";
 			// MeshManager::getSingleton().remove(sMesh);
@@ -362,6 +385,7 @@ catch (Exception ex)
 }
 
 
+//  all segs
 void SplineRoad::DestroyRoad()
 {
 	

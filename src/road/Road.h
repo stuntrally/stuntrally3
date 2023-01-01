@@ -32,7 +32,7 @@ class btTriangleMesh;
 struct SegData
 {
 	//  ogre resources for 1 segment
-	Ogre::SceneNode* node =0;  Ogre::Item* it =0;
+	Ogre::SceneNode* node =0;  Ogre::Item* it =0, *it2 =0;
 	Ogre::String smesh;
 	// Ogre::MeshPtr mesh;  Ogre::v1::MeshPtr mesh1;
 };
@@ -64,11 +64,11 @@ enum RoadType
 class SplineRoad : public SplineMarkEd
 {
 public:
+	class App* pApp =0;  ///*
 	#ifdef SR_EDITOR
-		class App* pApp;  ///*
 		SplineRoad(App* papp);
 	#else
-		class GAME* pGame;  ///*
+		class GAME* pGame =0;
 		SplineRoad(GAME* pgame);
 	#endif
 	void Defaults();
@@ -138,7 +138,7 @@ private:
 //---------------------------------------------------------------------------------------
 
 	void CreateMesh( SegData& sd, Ogre::String sMesh,
-		Ogre::String sMtrName, bool alpha,
+		Ogre::String sMtrName, bool alpha, bool pipeGlass,
 		const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
 		const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,
 		const std::vector<Ogre::uint16>& idx);
