@@ -43,7 +43,7 @@ void App::Ch_NewGame()
 		gui->pChall = &chl;  // set
 		
 		pSet->game.track = trk.name;  pSet->game.track_user = 0;
-		pSet->game.trackreverse = pSet->game.champ_rev ? !trk.reversed : trk.reversed;
+		pSet->game.track_reversed = pSet->game.champ_rev ? !trk.reversed : trk.reversed;
 		pSet->game.num_laps = trk.laps;
 
 		pSet->game.sim_mode = chl.sim_mode;
@@ -85,7 +85,7 @@ void App::Ch_NewGame()
 		if (pc.curTrack >= ch.trks.size())  pc.curTrack = 0;  // restart
 		const ChampTrack& trk = ch.trks[pc.curTrack];
 		pSet->game.track = trk.name;  pSet->game.track_user = 0;
-		pSet->game.trackreverse = pSet->game.champ_rev ? !trk.reversed : trk.reversed;
+		pSet->game.track_reversed = pSet->game.champ_rev ? !trk.reversed : trk.reversed;
 		pSet->game.num_laps = trk.laps;
 
 		pSet->game.boost_type = 1;  // from trk.?

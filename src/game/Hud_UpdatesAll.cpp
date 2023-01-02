@@ -348,8 +348,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 	if (pSet->show_times && pCar)
 	{
 		TIMER& tim = app->pGame->timer;
-		bool hasLaps = pSet->game.local_players > 1 ||
-			pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 /*|| app->mClient*/;
+		bool hasLaps = pSet->game.hasLaps();
 		if (hasLaps)
 		{	//  place
 			if (pCarM->iWonPlace > 0 && h.txPlace)
@@ -379,7 +378,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 		{	pCarM->updTimes = false;
 
 			//  ⏱️ track time, points
-			float last = tim.GetLastLap(carId), best = tim.GetBestLap(carId, pSet->game.trackreverse);
+			float last = tim.GetLastLap(carId), best = tim.GetBestLap(carId, pSet->game.track_reversed);
 			float timeCur = last < 0.1f ? best : last;
 			float timeTrk = app->data->tracks->times[pSet->game.track];
 			bool b = timeTrk > 0.f && timeCur > 0.f;

@@ -109,32 +109,36 @@ public:
 	class GameSet
 	{
 	public:
-		std::string track{"Test1-Flat"};  bool track_user =0;
-		float trees = 1.5f;  // common
+		std::string track{"Test1-Flat"};  bool track_user =0;  // 🏞️
+		bool track_reversed =0;
+		float trees = 1.5f;  // 🌳🪨 veget common
 
-		bool trackreverse =0;
 		std::vector<std::string> car;  //[4] local players
 		std::vector<float> car_hue, car_sat, car_val,
 			car_gloss, car_metal, car_rough;  //[6] also for ghosts
 
-		int local_players = 1, num_laps = 2;  // split
-		//  game setup
+		int local_players = 1, num_laps = 2;  // 👥 split
+		//  🔨 game setup
 		std::string sim_mode{"normal"};
 		bool collis_veget =1, collis_cars =0, collis_roadw =0, dyn_objects =1;
 		int boost_type = 3, flip_type = 2, damage_type = 1, rewind_type = 1;
 		float damage_dec = 0.4f;
-
 		float boost_power =1.f, boost_max =6.f, boost_min =2.f, boost_per_km =1.f, boost_add_sec =0.1f;
-		void BoostDefault();
+		void BoostDefault();  // 💨
 
-		bool rpl_rec =1;
-		//  champ
+		bool rpl_rec =1;  // 📽️
+		//  🏆 champ
 		int champ_num = -1, chall_num = -1;  // -1 none
 		bool champ_rev =0;
 
 		float pre_time = 2.f;  int start_order = 0;
 
+		//  ctor
 		GameSet();
+		bool hasLaps()
+		{	return local_players > 1 || /*|| app->mClient*/
+			champ_num >= 0 || chall_num >= 0;
+		}
 	}  game,  // current game, changed only on new game start
 		gui;  // gui only config
 	//---------------

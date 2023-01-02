@@ -225,7 +225,7 @@ void App::newPoses(float time)  // time only for camera update
 			//----------------------------------------------------------------------------
 			if (carM->bGetStart)  // get finish, end box
 			{	carM->bGetStart = false;
-				int st = !road || road->isLooped ? 0 : pSet->game.trackreverse ? 0 : 1;
+				int st = !road || road->isLooped ? 0 : pSet->game.track_reversed ? 0 : 1;
 				carM->matStart.makeInverseTransform(
 					Axes::toOgre(scn->sc->startPos[st]), Vector3::UNIT_SCALE,
 					Axes::toOgre(scn->sc->startRot[st]));
@@ -251,12 +251,12 @@ void App::newPoses(float time)  // time only for camera update
 					{
 						///  Lap
 						bool finished = (pGame->timer.GetCurrentLap(c) >= pSet->game.num_laps)
-										&& (/*mClient ||*/ pSet->game.local_players > 1);  // multiplay or split
-						bool best = finished ? false :  // dont inc laps when race over (in multiplayer or splitscreen mode)
-							pGame->timer.Lap(c, !finished, pSet->game.trackreverse);  //,boost_type?
+							&& (/*mClient ||*/ pSet->game.local_players > 1);  // 📡 networked or 👥 splitscreen
+						bool best = finished ? false :  // dont inc laps when race over (in ^)
+							pGame->timer.Lap(c, !finished, pSet->game.track_reversed);  //,boost_type?
 						double timeCur = pGame->timer.GetPlayerTimeTot(c);
 
-						//  Network notification, send: car id, lap time  ----
+						//  /📡 Network notification, send: car id, lap time  ----
 						//; if (mClient && c == 0 && !finished)
 						// 	mClient->lap(pGame->timer.GetCurrentLap(c), pGame->timer.GetLastLap(c));
 
@@ -302,7 +302,7 @@ void App::newPoses(float time)  // time only for camera update
 						if (finished /*&& !mClient*/)
 						{
 							if (!chs)
-							{	//  split screen winner places
+							{	//  👥 splitscreen winner places
 								if (carM->iWonPlace == 0)
 								{
 									if (pSet->game.local_players > 1)
@@ -349,7 +349,7 @@ void App::newPoses(float time)  // time only for camera update
 							{
 								carM->iCurChk = i;  carM->iNumChks++;
 								carM->timeAtCurChk = pGame->timer.GetPlayerTime(c);
-								bool rev = pSet->game.trackreverse;
+								bool rev = pSet->game.track_reversed;
 								int inc = (rev ? -1 : 1) * road->iDir;
 								
 								carM->iNextChk = (carM->iCurChk + inc + ncs) % ncs;

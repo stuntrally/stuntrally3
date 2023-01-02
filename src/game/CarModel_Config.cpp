@@ -124,8 +124,9 @@ void CarModel::Load(int startId, bool loop)
 		if (startId == -1)  startId = iIndex;
 		if (pSet->game.start_order == 1)
 		{	//  reverse start order
-			int numCars = //pApp->mClient ? pApp->mClient->getPeerCount()+1 :  // networked
-				pSet->game.local_players;  // splitscreen
+			int numCars =
+				//pApp->mClient ? pApp->mClient->getPeerCount()+1 :  // 📡 networked
+				pSet->game.local_players;  // 👥 splitscreen
 			startId = numCars-1 - startId;
 		}
 		int i = pSet->game.collis_cars ? startId : 0;  // offset when cars collide
@@ -135,7 +136,7 @@ void CarModel::Load(int startId, bool loop)
 		auto pos = st.first;  auto rot = st.second;
 		
 		vStartPos = Vector3(pos[0], pos[2], -pos[1]);
-		if (pSet->game.trackreverse)
+		if (pSet->game.track_reversed)
 		{	rot.Rotate(PI_d, 0,0,1);  rot[0] = -rot[0];  rot[1] = -rot[1];  }
 
 		pCar = pGame->LoadCar(pathCar, sDirname, pos, rot, true, cType == CT_REMOTE, iIndex);

@@ -61,18 +61,16 @@ void CarModel::UpdNextCheck()  // 📍
 	Vector3 p;
 	if (iNumChks == pApp->scn->road->mChks.size() && iCurChk != -1)
 	{
-		bool hasLaps = pSet->game.local_players > 1 ||
-			pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 /*|| pApp->mClient*/;
 		int lap = pGame->timer.GetCurrentLap(iIndex) + 1, laps = pSet->game.num_laps;
 		String smtr = "checkpoint_lap";
-		if (hasLaps)
+		if (pSet->game.hasLaps())
 			if (lap == laps - 1)   smtr = "checkpoint_lastlap";
 			else if (lap == laps)  smtr = "checkpoint_finish";
 		p = vStartPos;  // finish
 		sChkMtr = smtr;
 		bChkUpd = true;
-	}else{
-		p = pApp->scn->road->mChks[iNextChk].pos;
+	}else
+	{	p = pApp->scn->road->mChks[iNextChk].pos;
 		sChkMtr = "checkpoint_normal";
 		bChkUpd = true;
 	}
@@ -98,7 +96,7 @@ void CarModel::ResetChecks(bool bDist)  // needs to be done after road load!
 	if (!pApp || !pApp->scn->road)  return;
 	
 	const SplineRoad* road = pApp->scn->road;
-	iNextChk = pSet->game.trackreverse ? road->iChkId1Rev : road->iChkId1;
+	iNextChk = pSet->game.track_reversed ? road->iChkId1Rev : road->iChkId1;
 	UpdNextCheck();
 
 	//LogO("ResetChecks");
@@ -130,7 +128,7 @@ void CarModel::UpdTrackPercent()
 	{
 		const Vector3& car = ndMain->getPosition(), next = road->mChks[iNextChk].pos,
 			start = vStartPos, curr = road->mChks[std::max(0,iCurChk)].pos;
-		bool bRev = pSet->game.trackreverse;
+		bool bRev = pSet->game.track_reversed;
 		Real firstD = bRev ? distLast : distFirst;
 		Real nextR = road->mChks[iNextChk].r;  // chk .r radius to tweak when entering chk..
 
@@ -536,8 +534,9 @@ void CarModel::UpdKeysCam()
 	if (iC != 0 && iCamNextOld == 0)
 	{
 		//  with ctrl - change current camera car index  (mouse move camera for many players)
+		auto plr = pSet->game.local_players;
 		if (pApp->ctrl && iIndex == 0)
-			pApp->iCurCam = (pApp->iCurCam + iC + pSet->game.local_players) % pSet->game.local_players;
+			pApp->iCurCam = (pApp->iCurCam + iC + plr) % plr;
 		else
 		{
 			// int visMask = 255;

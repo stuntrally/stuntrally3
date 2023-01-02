@@ -238,8 +238,6 @@ void CHud::Create()
 		h.bckTimes->setColour(Colour(0.1,0.1,0.1));
 		h.bckTimes->setAlpha(0.3f);
 		h.bckTimes->setImageTexture("back_times.png");
-		bool hasLaps = pSet->game.local_players > 1 ||
-			pSet->game.champ_num >= 0 || pSet->game.chall_num >= 0 /*|| app->mClient*/;
 
 		h.txTimTxt = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 170,260, Align::Left, "TimT"+s);
@@ -247,8 +245,8 @@ void CHud::Create()
 		h.txTimTxt->setFontHeight(32);
 		h.txTimTxt->setTextShadowColour(Colour::Black);  h.txTimTxt->setTextShadow(true);
 		h.txTimTxt->setInheritsAlpha(false);
-		h.txTimTxt->setCaption(
-			(hasLaps ? String("#90D0C0")+TR("#{TBLap}") : "")+
+		h.txTimTxt->setCaption(	(pSet->game.hasLaps()
+			? String("#90D0C0")+TR("#{TBLap}") : "")+
 			"\n#A0E0E0"+TR("#{TBTime}") +
 			"\n#70D070"+TR("#{Track}") +
 			"\n#C0C030"+TR("#{TBPosition}") +

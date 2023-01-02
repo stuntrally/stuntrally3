@@ -95,7 +95,7 @@ void CGui::btnRplLoadFile(std::string file)
 		pSet->game = pSet->gui;
 		pSet->game.track = trk;  pSet->game.track_user = usr;
 		pSet->game.sim_mode = h.sim_mode;  //?
-		pSet->game.trackreverse = file.find("_r") != string::npos;
+		pSet->game.track_reversed = file.find("_r") != string::npos;
 
 		pSet->game.trees = h.trees;
 		pSet->game.local_players = h.numPlayers;

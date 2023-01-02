@@ -516,7 +516,7 @@ void CGui::btnLesson(WP wp)
 	file = PATHMANAGER::Lessons() + "/" + file + ".rpl";
 	bLesson = true;  //`
 	btnRplLoadFile(file);
-	pSet->game.trackreverse = file.find('b') != string::npos;  //app->replay.header.reverse;
+	pSet->game.track_reversed = file.find('b') != string::npos;  //app->replay.header.reverse;
 	
 	rplSubText->setCaption("");  app->mWndRplTxt->setVisible(false);
 	//  hud setup, restore ..

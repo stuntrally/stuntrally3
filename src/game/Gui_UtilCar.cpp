@@ -134,7 +134,7 @@ string ghostFile(SETTINGS* pSet, string sim_mode, string car)
 	return PATHMANAGER::Ghosts()+"/" +sim_mode+"/"
 		+ pSet->game.track
 		+ (pSet->game.track_user ? "_u" : "")
-		+ (pSet->game.trackreverse ? "_r" : "")
+		+ (pSet->game.track_reversed ? "_r" : "")
 		+ "_" + car + ".rpl";
 }
 

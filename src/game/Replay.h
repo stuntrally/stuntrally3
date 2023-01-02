@@ -42,7 +42,7 @@ struct ReplayHeader2
 
 	std::vector<std::string> nicks;  // multiplayer nicks
 	//std::vector<float> hue,sat,val,gloss,refl;  // cars colors?
-	//char trackreverse;  // todo:
+	//char track_reversed;  // todo:
 
 	ReplayHeader2();
 	void Default(), SetHead();
