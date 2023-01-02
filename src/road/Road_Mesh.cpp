@@ -252,8 +252,12 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	{
 		HlmsPbsDatablock *db =
 			static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
+		if (db)
+		{
 		const TextureGpu *diffTex = db->getDiffuseTexture(),
 			*normTex = db->getTexture(PBSM_NORMAL);
+		if (diffTex && normTex)
+		{
 		const String sAlpha = "roadAlpha2.png", sFlat = "flat_n.png",
 			sDiff = diffTex->getNameStr(), sNorm = normTex->getNameStr();
 
@@ -272,8 +276,8 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 			db->setTexture(PBSM_DETAIL0, sDiff);
 			db->setTexture(PBSM_DETAIL0_NM, sNorm);
 			//todo: PBSM_SPECULAR ?.. stretched
-		}
-	}
+		}	}
+	}	}
 	sd.it = it;  sd.it2 = it2;
 	sd.node = node;
 	sd.smesh = sMesh;
@@ -313,7 +317,7 @@ void SplineRoad::addTri(int f1, int f2, int f3, int i)
 //-----------------------------------------------------------------------------------
 void SplineRoad::Destroy()  // full and markers
 {
-	LogO("---- Destroy Road");
+	LogO("D--- destroy Road");
 	if (ndSel)	mSceneMgr->destroySceneNode(ndSel);
 	if (ndChosen)	mSceneMgr->destroySceneNode(ndChosen);
 	if (ndRot)	mSceneMgr->destroySceneNode(ndRot);

@@ -500,9 +500,9 @@ void SplineRoad::SetMtrPipe(int i, String sMtr)
 
 void SplineRoad::updMtrRoadTer()
 {
-	auto& mm = MaterialManager::getSingleton();
+	HlmsManager* hlms = pApp->mRoot->getHlmsManager();
 	for (int i=0; i < MTRs; ++i)
-		bMtrRoadTer[i] = 1; // fixme  (bool)mm.getByName(sMtrRoad[i] + "_ter");
+		bMtrRoadTer[i] = hlms->getDatablockNoDefault( sMtrRoad[i] + "_ter" );
 }
 
 
