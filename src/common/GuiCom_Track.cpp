@@ -318,7 +318,7 @@ void CGuiCom::ReadTrkStats()
 	TIMER tim;  tim.Load(PATHMANAGER::Records()+"/"+ pSet->gui.sim_mode+"/"+ sListTrack+".txt", 0.f);
 	tim.AddCar(app->gui->sListCar);
 
-	bool reverse = sc.denyReversed ? false : pSet->gui.trackreverse;
+	bool reverse = sc.denyReversed ? false : pSet->gui.track_reversed;
 	app->gui->ckReverse.setVisible(!sc.denyReversed);  //
 	UpdGuiRdStats(&rd,&sc, sListTrack, tim.GetBestLap(0, reverse), reverse, 0);
 #else

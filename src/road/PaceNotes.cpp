@@ -153,9 +153,11 @@ void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 		auto add = [&](const PaceNote& pc)
 		{
 			float dist = mCamera->getPosition().distance(pc.pos);
+			dist = std::max(0.f, dist - 5.f / pSet->pace_near);
 			float fade = std::min(1.f,  // close fade
 				pSet->pace_near * dist * 0.03f);
 			float a = pc.clr.w * pSet->pace_alpha * fade;
+			// oc.type  sharp turns: blink, a = 1
 
 			for (int y=-1; y <= 1; y+=2)  // 4 verts
 			for (int x=-1; x <= 1; x+=2)
@@ -167,7 +169,7 @@ void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 				int iu = pc.ofs.x > 0.f ? (x+1)/2 : (1-x)/2, iv = (y+1)/2;
 				Real u = pc.uv.x + iu * 0.125f,
 					 v = pc.uv.y + iv * 0.125f;
-				hr->textureCoord(u, v);
+				hr->texUV(u, v);
 
 				hr->color(pc.clr.x, pc.clr.y, pc.clr.z, a);
 			}

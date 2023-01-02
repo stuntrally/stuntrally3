@@ -9,15 +9,6 @@ namespace Ogre {  class VertexBufferPacked;  }
 class HudRenderable final
 	: public Ogre::MovableObject, public Ogre::Renderable
 {
-public:
-	//  🌟 ctor, see cpp for details
-	HudRenderable(
-		const Ogre::String& material, Ogre::SceneManager* mgr,
-		Ogre::OperationType oper, bool hasUV, bool colors,
-		Ogre::uint32 vis, Ogre::uint8 rndQue,
-		int count, bool is3D = false);
-	~HudRenderable() override;
-
 	//  for checks
 	Ogre::OperationType mOper = Ogre::OT_TRIANGLE_LIST;
 	bool bUV = false, bColors = false, b3D = false;
@@ -27,6 +18,14 @@ public:
 	int iIndCount = 0;  // indices
 	int iFace = 0;  // indices per face/line
 
+public:
+	//  🌟 ctor, see cpp for details
+	HudRenderable(
+		const Ogre::String& material, Ogre::SceneManager* mgr,
+		Ogre::OperationType oper, bool hasUV, bool colors,
+		Ogre::uint32 vis, Ogre::uint8 rndQue,
+		int count, bool is3D = false);
+	~HudRenderable() override;
 
 	//  from MovableObject
 	const Ogre::String &getMovableType() const override;
@@ -47,7 +46,7 @@ public:
 	float *RESTRICT_ALIAS vp = 0;
 	void begin();
 	void position(float x, float y, float z);
-	void textureCoord(float u, float v);
+	void texUV(float u, float v);
 	void color(float r, float g, float b, float a);
 	void end();
 };

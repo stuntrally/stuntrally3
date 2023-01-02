@@ -193,7 +193,7 @@ void HudRenderable::position(float x, float y, float z)
 	vp += 3;
 	++iVertCur;
 }
-void HudRenderable::textureCoord(float u, float v)
+void HudRenderable::texUV(float u, float v)
 {
 	if (!bUV)  return;
 

@@ -163,7 +163,7 @@ void CHud::UpdPosElems(int cnt, int cntC, int carId)
 					float x = pos.x + (sp.x + sp.px[p]*z)*sc;
 					float y = pos.y + (sp.y + sp.py[p]*z)*sc*asp;
 					moPos->position(x, y, 0);
-					moPos->textureCoord(tc[p][0], tc[p][1]);
+					moPos->texUV(tc[p][0], tc[p][1]);
 					moPos->color(clr.r, clr.g, clr.b, clr.a);
 		}	}	}
 		
@@ -256,13 +256,13 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 		{	hr->position(
 				h.vcRpm.x + tp[p][0]*h.fScale*r,
 				h.vcRpm.y + tp[p][1]*h.fScale*asp*r, 0);
-			hr->textureCoord(tc[p][0]*0.5f, tc[p][1]*0.5f + 0.5f);
+			hr->texUV(tc[p][0]*0.5f, tc[p][1]*0.5f + 0.5f);
 		}
 		for (p=0; p < 4; ++p)
 		{	hr->position(
 				h.vcVel.x + tp[p][0]*h.fScale*v,
 				h.vcVel.y + tp[p][1]*h.fScale*asp*v, 0);
-			hr->textureCoord(tc[p][0]*0.5f+o, tc[p][1]*0.5f);
+			hr->texUV(tc[p][0]*0.5f+o, tc[p][1]*0.5f);
 		}
 
 		//  needles
@@ -271,13 +271,13 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 		{	hr->position(
 				h.vcRpm.x + rx[p]*r,
 				h.vcRpm.y + ry[p]*r, 0);
-			hr->textureCoord(tn[p][0], tn[p][1]);
+			hr->texUV(tn[p][0], tn[p][1]);
 		}
 		for (p=0; p < 4; ++p)
 		{	hr->position(
 				h.vcVel.x + vx[p]*v,
 				h.vcVel.y + vy[p]*v, 0);
-			hr->textureCoord(tn[p][0], tn[p][1]);
+			hr->texUV(tn[p][0], tn[p][1]);
 		}
 		hr->end();
 	}
@@ -299,7 +299,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 		if (!bZoom)
 			for (p=0; p < 4; ++p)
 			{	h.moMap->position(tp[p][0],tp[p][1], 0);
-				h.moMap->textureCoord(tc[p][0], tc[p][1]);
+				h.moMap->texUV(tc[p][0], tc[p][1]);
 				// h.moMap->textureCoord(tc[p][0],tc[p][1], 0);  // uv2
 			}
 		else
@@ -308,7 +308,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 				  yc = -(mp.y - minY)*scY+1.f;
 			for (p=0; p < 4; ++p)
 			{	h.moMap->position(tp[p][0],tp[p][1], 0);
-				h.moMap->textureCoord(cx[p]+xc, -cy[p]-yc);
+				h.moMap->texUV(cx[p]+xc, -cy[p]-yc);
 				// h.moMap->textureCoord(tc[p][0],tc[p][1], 1);  // uv2
 		}	}
 		h.moMap->end();
