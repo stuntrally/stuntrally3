@@ -148,8 +148,11 @@ hlms pacenote unlit
 {
     diffuse  1 1 1
 	// depth_bias 3
+	depth_write off
+	depth_check off
 	cull_mode none
 	scene_blend alpha_blend
+	alpha_rejection greater 64
 	// fog_override true  // no fog-
 	diffuse_map pacenotes.png
 }

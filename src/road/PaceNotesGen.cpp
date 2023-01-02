@@ -498,7 +498,7 @@ void PaceNotes::Rebuild(SplineRoad* road, Scene* sc, bool reversed)
 			}
 			
 			//  pos marks . .
-			#ifdef SR_EDITOR  // ed
+			#ifdef SR_EDITOR_no  // ed
 			if (i%6==0)  //par
 			{
 				PaceNote o(9000+i,5, pos, useX,useX, 0.5,1,1,1,  // ADD dbg

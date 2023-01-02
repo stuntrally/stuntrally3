@@ -360,6 +360,7 @@ struct RayResult : public btCollisionWorld::RayResultCallback
 };
 
 //  ⛰️🛣️  Align
+///  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 void App::AlignTerToRoad()
 {
 	SplineRoad* road = scn->road;
@@ -373,7 +374,8 @@ void App::AlignTerToRoad()
 
 	//  terrain
 	std::vector<float>& fHmap = mTerra->getHeightData();
-	const int w = scn->sc->td.iVertsX, h = w;
+	const int w = mTerra->getSize(), h = w;
+	// const int w = scn->sc->td.iVertsX - 1 /*!*/, h = w;
 	const float fh = h-1, fw = w-1;
 
 	float *rd = new float[w*h];  // road depth
@@ -381,25 +383,25 @@ void App::AlignTerToRoad()
 
 	const float ws = scn->sc->td.fTerWorldSize;
 	const float Len = 400;  // max ray length
-	int x,y,a;
+	int x,y,a,b;
 	float v,k, fx,fz, wx,wz;
 	
 	///  🎯 ray casts  -----------
-	for (y = 0; y < h; ++y) {  a = y*w;
-	for (x = 0; x < w; ++x, ++a)
+	for (y = 0; y < h; ++y) {  a = y*w;  b = (h-1-y)*w;
+	for (x = 0; x < w; ++x, ++a,++b)
 	{
 		//  pos 0..1
 		fx = float(x)/fh;  fz = float(y)/fw;
 		//  pos on ter  -terSize..terSize
 		wx = (fx-0.5f) * ws;  wz = (fz-0.5f) * ws;
 
-		btVector3 from(wx,wz,Len), to(wx,wz,-Len);  // x -z y
+		btVector3 from(wx,wz, Len*0.8f), to(wx,wz, -Len*1.1f);  // x -z y
 		RayResult rayRes(from, to);
 		world->rayTest(from, to, rayRes);
 
 		//  terrain height if not hit
-		rh[a] = rayRes.hasHit();
-		rd[a] = rayRes.hasHit() ? rayRes.m_hitPointWorld.getZ() : fHmap[a];
+		rh[b] = rayRes.hasHit();
+		rd[b] = rayRes.hasHit() ? rayRes.m_hitPointWorld.getZ() : fHmap[b];
 	}	}
 
 	//  smooth edges, road-terrain border
@@ -477,8 +479,8 @@ void App::AlignTerToRoad()
 
 
 	//  put sel segs on terrain
-	for (auto i : scn->road->vSel)
-		scn->road->mP[i].onTer = true;
+	/*for (auto i : scn->road->vSel)  // fixme
+		scn->road->mP[i].onTer = true;/**/
 
 	//  restore orig road width
 	scn->road->Rebuild(true);
