@@ -52,7 +52,6 @@ public:
 	
 	//  🚦 pacenotes
 	int pace_show = 3;
-	float pace_dist = 1000.f, pace_size = 1.f, pace_near = 1.f, pace_alpha = 1.f;
 	bool trk_reverse =0, show_mph =0;
 
 	//  🔧 tweak

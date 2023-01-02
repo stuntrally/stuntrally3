@@ -89,7 +89,7 @@ void CHud::Create()
 	// asp = 1.f;  //_temp
 	moPos = new HudRenderable("hud/CarPos", scm,
 		// 0.f, true,true, 1.f,Vector2(1,1), RV_Hud,RQG_Hud3, plr * 6);
-		OT_TRIANGLE_LIST, true,true, RV_Hud,RQG_Hud1, plr * 2);
+		OT_TRIANGLE_LIST, true,true, RV_Hud,RQG_Hud1, plr * 2);  // ?
 	ndPos = rt->createChildSceneNode();
 	ndPos->attachObject(moPos);
 

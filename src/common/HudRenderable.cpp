@@ -48,11 +48,11 @@ HudRenderable::HudRenderable(
 		iIndCount  = count * iFace;
 		break;
 	default:
-		LogO("HudRenderable ERROR: Unsupported operation type! For material: " + material);
+		LogO("HudR ERROR: Unsupported operation type! For material: " + material);
 		break;
 	}
 	//  log info  ----
-	LogO("HudRenderable: New  material: " + material + "  " +
+	LogO("HudR New  material: " + material + "  " +
 		(oper == OT_TRIANGLE_LIST ? "Tri_List" :
 		 oper == OT_LINE_LIST ? "Line_List" : "Line_Strip") +
 		"  count: " + toStr(count));
@@ -211,9 +211,9 @@ void HudRenderable::end()
 {
 	//  check if same count as in ctor
 	if (iVertCur != iVertCount)
-		LogO("HudRenderable ERROR: Wrong vertices count: " +
+		LogO("HudR Error: Wrong vertices: " +
 			toStr(iVertCur) + " expected: " + toStr(iVertCount) +
-			"  material: " + sMtr);
+			"  mtr: " + sMtr);
 
 	vb->unmap( UO_KEEP_PERSISTENT );
 }

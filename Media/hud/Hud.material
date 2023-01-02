@@ -143,40 +143,25 @@ hlms Arrow pbs
 	// two_sided true
 }
 
-//  🚦 3d-  road Pacenote signs
+//  🚦 3d  road Pacenote signs
 hlms pacenote unlit
 {
     diffuse  1 1 1
-    // specular 0.1 0.1 0.1
-
-	// workflow metallic
-	// fresnel_coeff 0.1 0.1 0.1
-	// roughness 0.2
-	// metalness 0.6
-
-	// depth_write off
-	//depth_check off
 	// depth_bias 3
-		
+	cull_mode none
 	scene_blend alpha_blend
-	// fog_override true  // no fog
-
+	// fog_override true  // no fog-
 	diffuse_map pacenotes.png
 }
 
 //  🎗️ 3d  Trail  Racing line  ~~--
 hlms trailRoad unlit
 {
-	depth_bias 3
-	// depth_check off
-	//depth_write off
-	cull_mode none
-	// two_sided true
-	// scene_blend alpha_blend
-
 	// diffuse 1 1 1
 	diffuse 0.8 0.8 0.8  // par?
-	specular 0 0 0
+	depth_bias 3
+	cull_mode none
+	// scene_blend alpha_blend
 }
 
 

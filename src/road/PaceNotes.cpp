@@ -9,7 +9,9 @@
 	#include "CGame.h"
 	#include "settings.h"
 #endif
+#include "HudRenderable.h"
 #include <OgreTimer.h>
+#include <OgreVector3.h>
 #include <OgreCamera.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
@@ -27,9 +29,9 @@ using namespace MyGUI;
 
 
 //  🌟 ctor  ---------
-PaceNote::PaceNote()
-	:pos(0,0,0), size(4.f,4.f), clr(0,0,0,0), ofs(0,0), uv(0,0)
-{	}
+// PaceNote::PaceNote()
+// 	:pos(0,0,0), size(4.f,4.f), clr(0,0,0,0), ofs(0,0), uv(0,0)
+// {	}
 PaceNote::PaceNote(int i, int t, Vector3 p,  //id,use, pos
 		float sx,float sy,  float r,float g,float b,float a,  //size, clr
 		float ox,float oy, float u,float v)  //ofs:dir,bar width, tex uv
@@ -38,27 +40,12 @@ PaceNote::PaceNote(int i, int t, Vector3 p,  //id,use, pos
 {	}
 
 
-//  🆕 Create  ---------
+//  🆕 Create 1  ---------
 void PaceNotes::Create(PaceNote& n)
 {
 	// if (n.use == 1)
 	// 	LogO("PP "+toStr(n.id)+(n.start?" ST":""));
 	++ii;
-	n.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	n.bb = mSceneMgr->createBillboardSet(/*"P-"+toStr(ii),*/ 2);
-	n.bb->setDefaultDimensions(n.size.x, n.size.y);
-
-	// n.bb->setRenderQueueGroup(RQG_Hud1); //RQG_CarParticles);  // fixme?
-	n.bb->setVisibilityFlags(RV_Car);  // not in reflection
-
-	// n.bb->setCustomParameter(2, Vector4(n.ofs.x, n.ofs.y, n.uv.x, n.uv.y));  // todo: params, uv ofs
-	n.bc = n.bb->createBillboard(Vector3(0,0,0), ColourValue(n.clr.x, n.clr.y, n.clr.z, n.clr.w));
-
-	n.bb->setDatablockOrMaterialName("pacenote", "Essential");
-	n.nd->attachObject(n.bb);
-	n.nd->setPosition(n.pos);
-	n.nd->setVisible(false);
-
 	if (n.text)
 	{	n.txt = mGui->createWidget<TextBox>("TextBox",
 			100,100, 120,64, Align::Center, "Back", "jvel"+toStr(ii));
@@ -68,38 +55,26 @@ void PaceNotes::Create(PaceNote& n)
 	}
 }
 
-//  💥 Destroy
+//  💥 Destroy 1
 void PaceNotes::Destroy(PaceNote& n)
 {
 	if (n.txt){  mGui->destroyWidget(n.txt);  n.txt = 0;  }
-	mSceneMgr->destroyBillboardSet(n.bb);  n.bb = 0;
-	mSceneMgr->destroySceneNode(n.nd);  n.nd = 0;
-}
-
-//  all
-void PaceNotes::Destroy()
-{
-	for (size_t i=0; i < vPN.size(); ++i)
-		Destroy(vPN[i]);
-	vPN.clear();
-	vPS.clear();
-	ii = 0;
 }
 
 
-//  💫 Update
+//  💫 Update 1
 void PaceNotes::Update(PaceNote& n)
 {
-	n.bc->setColour(ColourValue(n.clr.x, n.clr.y, n.clr.z, n.clr.w));
-	n.bb->setCustomParameter(0, Vector4(n.ofs.x, n.ofs.y, n.uv.x, n.uv.y));  // params, uv ofs
 	UpdateTxt(n);
 }
 void PaceNotes::UpdateTxt(PaceNote& n)
-{	if (n.txt && n.vel > 0.f)
+{
+	if (n.txt && n.vel > 0.f)
 		n.txt->setCaption(fToStr(n.vel * (pSet->show_mph ? 2.23693629f : 3.6f),0,3));
 }
 
-//  💫 update visibility  ---------
+
+//  💫 update geometry, visibility  ---------
 void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 {
 	const Real dd = pSet->pace_dist, dd2 = dd*dd;
@@ -108,7 +83,7 @@ void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 #ifndef SR_EDITOR
 	//  game  ----
 	const int rng = pSet->pace_next;  // vis next count
-	const Real radiusA = 15.f*15.f;  //par pace sphere radius
+	const Real radiusA = 9.f*9.f;  //par 15 pace sphere radius
 
 	s = vPS.size();
 	for (i=0; i < s; ++i)
@@ -137,7 +112,7 @@ void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 		}	}
 		
 		if (p.txt)  updTxt(p, vis);
-		p.nd->setVisible(vis);
+		p.vis = vis;
 	}
 #else  //  ed  ----
 	
@@ -145,10 +120,9 @@ void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 	if (hide)
 	{	for (i=0; i < s; ++i)
 		{	PaceNote& p = vPN[i];
-			p.nd->setVisible(false);
+			p.vis = false;
 			if (p.txt)  p.txt->setVisible(false);
 		}
-		return;
 	}
 	const Vector3& c = mCamera->getPosition();
 	for (i=0; i < s; ++i)
@@ -162,12 +136,87 @@ void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 		vis &= vnear;
 
 		if (p.txt)  updTxt(p, vis);
-		p.nd->setVisible(vis);
+		p.vis = vis;
 	}
 #endif
+
+	//  upd geom verts
+	//..........................................................
+	if (!hr)  return;
+	if (!hide)
+	{
+		Vector3 vx = pSet->pace_size * mCamera->getRight(),
+				vy = pSet->pace_size * mCamera->getUp();
+
+		hr->begin();
+
+		auto add = [&](const PaceNote& pc)
+		{
+			float dist = mCamera->getPosition().distance(pc.pos);
+			float fade = std::min(1.f,  // close fade
+				pSet->pace_near * dist * 0.03f);
+			float a = pc.clr.w * pSet->pace_alpha * fade;
+
+			for (int y=-1; y <= 1; y+=2)  // 4 verts
+			for (int x=-1; x <= 1; x+=2)
+			{
+				Vector3 p = pc.pos + vx * x * pc.size.x -
+									 vy * y * pc.size.y;
+				hr->position(p.x, p.y, p.z);
+
+				int iu = pc.ofs.x > 0.f ? (x+1)/2 : (1-x)/2, iv = (y+1)/2;
+				Real u = pc.uv.x + iu * 0.125f,
+					 v = pc.uv.y + iv * 0.125f;
+				hr->textureCoord(u, v);
+
+				hr->color(pc.clr.x, pc.clr.y, pc.clr.z, a);
+			}
+		};
+
+	#ifdef SR_EDITOR  // ed all
+		for (i=0; i < s; ++i)
+			add(vPN[i]);
+	
+	#else  // game count
+		i = 0;  int cnt = 0;
+		while (i < s && cnt < count)
+		{
+			const PaceNote& pc = vPS[i];
+			if (pc.vis)
+			{
+				add(pc);
+				++cnt;
+			}
+			++i;
+		}
+	#endif
+		hr->end();
+	}
+	ndHR->setVisible(!hide);
 }
 
-//  kmh/mph change
+
+//  🆕 create hudrend
+//----------------------------------------
+void PaceNotes::CreateHR()
+{
+#ifdef SR_EDITOR
+	count = vPN.size();
+#else
+	count = std::min((int)vPN.size(), pSet->pace_next);
+#endif
+	hr = new HudRenderable(
+		"pacenote", mSceneMgr,
+		OT_TRIANGLE_LIST, true,true, RV_Car,RQG_Hud1,
+		count, true);  // RQG_CarParticles
+
+	SceneNode* rt = mSceneMgr->getRootSceneNode();
+	ndHR = rt->createChildSceneNode();
+	ndHR->attachObject(hr);
+}
+
+
+//  kmh/mph change  --------
 void PaceNotes::UpdTxt()
 {
 	int i, s = vPS.size();
@@ -175,7 +224,7 @@ void PaceNotes::UpdTxt()
 		UpdateTxt(vPS[i]);
 }
 
-//  text pos upd  3d to 2d
+//  🔤 text pos upd  3d to 2d
 void PaceNotes::updTxt(PaceNote& n, bool vis)
 {
 	if (!vis || !mCamera->isVisible(n.pos))
@@ -202,12 +251,7 @@ void PaceNotes::updTxt(PaceNote& n, bool vis)
 }
 
 
-//  🌟 ctor  ---------
-PaceNotes::PaceNotes(SETTINGS* pset)
-	:pSet(pset)
-{	}
-
-//  setup
+//  setup  ---------
 void PaceNotes::Setup(SceneManager* sceneMgr, Camera* camera,
 	Terra* terrain, MyGUI::Gui* gui, Ogre::Window* window)
 {
@@ -217,4 +261,28 @@ void PaceNotes::Setup(SceneManager* sceneMgr, Camera* camera,
 void PaceNotes::SetupTer(Terra* terrain)
 {
 	mTerrain = terrain;
+}
+
+
+//  🌟 ctor  ---------
+PaceNotes::PaceNotes(SETTINGS* pset)
+	:pSet(pset)
+{	}
+
+//  💥 destroy all  ---------
+void PaceNotes::Destroy()
+{
+	for (size_t i=0; i < vPN.size(); ++i)
+		Destroy(vPN[i]);
+	vPN.clear();
+	vPS.clear();
+	ii = 0;
+
+	delete hr;  hr = 0;
+}
+
+//  💥 dtor
+PaceNotes::~PaceNotes()
+{
+	Destroy();
 }

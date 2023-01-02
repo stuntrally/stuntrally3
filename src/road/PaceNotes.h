@@ -1,4 +1,5 @@
 #pragma once
+#include "HudRenderable.h"
 #include <vector>
 // #include <Ogre.h>
 #include <OgreVector2.h>
@@ -27,10 +28,7 @@ enum PaceTypes                 // 90     // 180    // 270
 
 struct PaceNote  // 🚦 one
 {
-	//  ogre
-	Ogre::SceneNode* nd =0;
-	Ogre::v1::BillboardSet* bb =0;
-	Ogre::v1::Billboard* bc =0;
+	bool vis = false;  // visible in game, set in UpdVis
 	MyGUI::TextBox* txt =0;  // text for jmp vel
 
 	//  data
@@ -47,9 +45,10 @@ struct PaceNote  // 🚦 one
 	float vel = 0.f;  // for jump
 	bool text = 0;
 
-	PaceNote();
+	// PaceNote();
 	PaceNote(int i,int t, Ogre::Vector3 p, float sx,float sy,
-		float r,float g,float b,float a, float ox,float oy, float u,float v);
+		float r,float g,float b,float a,
+		float ox,float oy, float u,float v);
 };
 
 
@@ -58,6 +57,7 @@ class PaceNotes  // 🚦 All
 public:
 	SETTINGS* pSet =0;  ///*
 	PaceNotes(SETTINGS* pset);
+	~PaceNotes();
 	//void Defaults();
 
 	//  🌟 Setup, call this on Init
@@ -67,6 +67,7 @@ public:
 
 	//  🆕 Rebuild
 	void Rebuild(SplineRoad* road, Scene* sc, bool reversed);
+	void CreateHR();
 	void Destroy(), Destroy(PaceNote& n);
 	void Create(PaceNote& n);
 	void Update(PaceNote& n), UpdateTxt(PaceNote& n), UpdTxt();
@@ -85,7 +86,12 @@ private:
 	Ogre::Window* mWindow =0;
 	
 	//  all notes
-	std::vector<PaceNote> vPN,  // all incl. debug
+	HudRenderable* hr =0;
+	Ogre::SceneNode* ndHR =0;
+	int count = 4;  //par
+	
+	std::vector<PaceNote>
+		vPN,  // all incl. debug
 		vPS;  // game, signs only, sorted by id
 	int ii = 0;  // id for names
 public:

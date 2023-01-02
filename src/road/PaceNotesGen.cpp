@@ -39,9 +39,9 @@ void PaceNotes::Rebuild(SplineRoad* road, Scene* sc, bool reversed)
 		use1X=1.4f, use1A=1.f, useX=0.9f, useA=0.7f,
 
 #ifdef SR_EDITOR
-	#define USED
-	#define BARS
-	signX = 4.f;  // ed
+	// #define USED
+	// #define BARS
+	signX = 2.f;  // ed 4
 #else
 	signX = 2.f;  // game
 #endif
@@ -554,7 +554,7 @@ void PaceNotes::Rebuild(SplineRoad* road, Scene* sc, bool reversed)
 			}
 		}
 		if (fa > 0.f)
-		{	p.pos.y += fa;  p.nd->setPosition(p.pos);  }
+		{	p.pos.y += fa;  /*p.nd->setPosition(p.pos);*/  }
 	}
 
 
@@ -577,6 +577,8 @@ void PaceNotes::Rebuild(SplineRoad* road, Scene* sc, bool reversed)
 	Reset();
 	#endif
 
+	CreateHR();
+	
 	LogO(String(":::* Time PaceNotes Rebuild2: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 

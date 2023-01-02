@@ -28,6 +28,8 @@ public:
 	
 	//  hud
 	bool show_fps =0;  // 📈
+	//  🚦 pacenotes
+	float pace_dist = 200.f, pace_size = 1.f, pace_near = 1.f, pace_alpha = 1.f;
 
 
 	//  📊 Graphics  ----
@@ -36,11 +38,14 @@ public:
 	float view_distance = 20000.f;
 	float lod_bias = 1.f, ter_detail = 1.f, road_dist = 2.f;  // detail
 	
-	// bool water_reflect, water_refract;  int water_rttsize;  // water
-	int shadow_size = 2, shadow_count = 3, shadow_type = Sh_Depth; // 🌒
+	//  🌊 water
+	// bool water_reflect, water_refract;  int water_rttsize;
+	//  🌒 shadow
+	int shadow_size = 2, shadow_count = 3, shadow_type = Sh_Depth;
 	float shadow_dist = 1000.f;
 
-	float grass =1.f, trees_dist =1.f, grass_dist =1.f;  // trees in gui. 🌳🪨 🌿
+	//  🌳🪨 🌿
+	float grass =1.f, trees_dist =1.f, grass_dist =1.f;  // trees in gui.
 
 	//  graphics other
 	int preset = 4;  // last set, info only

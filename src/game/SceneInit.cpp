@@ -826,7 +826,7 @@ void App::CreateRoads()
 	//  🚦 pace ~ ~
 	LogO("D--~ destroy Trail");
 	scn->DestroyTrail();
-	/**
+
 	scn->DestroyPace();
 	if (!bHideHudPace)
 	{
@@ -855,7 +855,7 @@ void App::CreateRoads()
 	
 
 	//  pace ~ ~
-	/**if (scn->pace)
+	if (scn->pace)
 	{
 		road->RebuildRoadPace();  //todo: load only..
 		scn->pace->Rebuild(road, scn->sc, pSet->game.trackreverse);

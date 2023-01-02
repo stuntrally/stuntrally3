@@ -132,6 +132,7 @@ void App::update( float dt )
 			hud->Size();
 		}
 		hud->Update(0, dt);
+		// hud->Update(1, dt);  //?
 		hud->Update(-1, dt);
 	
 
@@ -217,7 +218,7 @@ void App::update( float dt )
 			//PROFILER.endBlock("g.road");
 		}
 
-		//[]()  pace upd vis  ~ ~ ~
+		//  🚦 pace upd vis  ~ ~ ~
 		if (scn->pace)
 		{	
 			const CarModel* cm = *carModels.begin();

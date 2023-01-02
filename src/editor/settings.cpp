@@ -30,9 +30,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_veget.trees", gui.trees);
 
 	//  🚦 pacenotes
-	Param(c,w, "pacenotes.show", pace_show);		Param(c,w, "pacenotes.dist", pace_dist);
-	Param(c,w, "pacenotes.size", pace_size);
-	Param(c,w, "pacenotes.near", pace_near);		Param(c,w, "pacenotes.alpha", pace_alpha);
+	Param(c,w, "pacenotes.show", pace_show);
 	Param(c,w, "pacenotes.trk_reverse", trk_reverse);
 
 

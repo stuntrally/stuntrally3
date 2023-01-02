@@ -6,10 +6,10 @@
 
 void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 {
-	//  menu
+	//  🪧 menu
 	Param(c,w, "game.start_in_main", startInMain);
 	
-	//  misc
+	//  ⚙️ misc
 	Param(c,w, "misc.autostart", autostart);		Param(c,w, "misc.ogredialog", ogre_dialog);
 	Param(c,w, "misc.escquit", escquit);
 	
@@ -17,7 +17,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "misc.mouse_capture", mouse_capture);
 	Param(c,w, "misc.screenshot_png", screen_png);
 
-	//  video  // todo..
+	//  🖥️ video  // todo..
 	// Param(c,w, "video.windowx", windowx);			Param(c,w, "video.windowy", windowy);
 	// Param(c,w, "video.fullscreen", fullscreen);		Param(c,w, "video.vsync", vsync);
 
@@ -28,7 +28,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	// Param(c,w, "video.limit_fps_val", limit_fps_val);	Param(c,w, "video.limit_sleep", limit_sleep);
 
 
-	//  graphics  ----
+	//  📊 graphics  ----
 	Param(c,w, "graph_detail.preset", preset);
 	
 	Param(c,w, "graph_detail.anisotropy", anisotropy);		Param(c,w, "graph_detail.tex_filter", tex_filt);
@@ -38,27 +38,31 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_detail.lod_bias", lod_bias);
 	Param(c,w, "graph_detail.ter_detail", ter_detail);		Param(c,w, "graph_detail.road_dist", road_dist);
 	
-	//  water
+	//  🌊 water
 	// Param(c,w, "graph_reflect.water_reflect", water_reflect); Param(c,w, "graph_reflect.water_refract", water_refract);
 	// Param(c,w, "graph_reflect.water_rttsize", water_rttsize);
 	
-	//  shadow
+	//  🌒 shadow
 	Param(c,w, "graph_shadow.dist", shadow_dist);			Param(c,w, "graph_shadow.size", shadow_size);
 	Param(c,w, "graph_shadow.count",shadow_count);			Param(c,w, "graph_shadow.type", shadow_type);
 
-	//  veget
+	//  🌳🪨🌿 veget
 	Param(c,w, "graph_veget.grass", grass);
 	Param(c,w, "graph_veget.trees_dist", trees_dist);		Param(c,w, "graph_veget.grass_dist", grass_dist);
 
 
-	//  hud
+	//  📈 hud
 	Param(c,w, "hud_show.fps", show_fps);
+	//  🚦 pacenotes
+	Param(c,w, "pacenotes.dist", pace_dist);		Param(c,w, "pacenotes.alpha", pace_alpha);
+	Param(c,w, "pacenotes.size", pace_size);		Param(c,w, "pacenotes.near", pace_near);
 
-	//  gui tracks  ---
+
+	//  🏞️📃 gui tracks  ---
 	Param(c,w, "gui_tracks.view", tracks_view);		Param(c,w, "gui_tracks.filter", tracks_filter);
 	Param(c,w, "gui_tracks.sort", tracks_sort);		Param(c,w, "gui_tracks.sortup", tracks_sortup);
 
-	//  columns, filters
+	//  🏛️🔻 columns, filters
 	std::string s;
 	int i,v,ii,a;
 	

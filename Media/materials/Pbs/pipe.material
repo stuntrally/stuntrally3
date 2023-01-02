@@ -168,7 +168,7 @@ hlms pipeGlassWhiteV pbs : pipe_glass
 {
 	diffuse  1.5 2.0 3.0
 	specular 0.7 0.7 1
-	emissive 0.1 0.1 0.2
+	// emissive 0.1 0.1 0.2
 	transparency 0.98
 	diffuse_map  roadGlassC_dirt2.png
 	// specular_map roadGlass_spec2h.png
@@ -181,7 +181,7 @@ hlms pipeGlassViolet pbs : pipe_glass
 {
 	diffuse  0.6 0.5 0.9
 	specular 0.7 0.5 1
-	emissive 0.1 0.1 0.2
+	// emissive 0.1 0.1 0.2
 	transparency 0.96
 	diffuse_map  roadGlassD.png
 	// specular_map roadGlass_spec2h.png

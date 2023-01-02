@@ -23,6 +23,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 	SerializeCommon(w,c);
 
+	//  🪧 menu
 	Param(c,w, "game.menu", iMenu);  Param(c,w, "game.ymain", yMain);  Param(c,w, "game.yrace", yRace);
 	Param(c,w, "game.difficulty", difficulty);
 
@@ -31,7 +32,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_veget.trees", gui.trees);
 
 
-	//  cars
+	//  🚗 cars
 	for (int i=0; i < 6; ++i)
 	{
 		char ss[64];  sprintf(ss, "car%d.", i+1);   std::string s = ss;
@@ -55,7 +56,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "car1.steer_sim_easy", steer_sim[0]);
 	Param(c,w, "car1.steer_sim_normal", steer_sim[1]);
 
-	//  game
+	//  🚗 game
 	Param(c,w, "game.pre_time", gui.pre_time);			Param(c,w, "game.chall_num", gui.chall_num);  //rem-
 	Param(c,w, "game.champ_num", gui.champ_num);		Param(c,w, "game.champ_rev", gui.champ_rev);
 	Param(c,w, "game.ch_all", ch_all);
@@ -75,49 +76,46 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "game.local_players", gui.local_players); Param(c,w, "game.num_laps", gui.num_laps);
 	Param(c,w, "game.start_order", gui.start_order);	Param(c,w, "game.split_vertically", split_vertically);
 
-	//  graphs
+	//  📉 graphs
 	Param(c,w, "graphs.tc_r", tc_r);			Param(c,w, "graphs.tc_xr", tc_xr);
 	Param(c,w, "graphs.te_yf", te_yf);			Param(c,w, "graphs.te_xf_pow", te_xf_pow);
 	Param(c,w, "graphs.te_xfx", te_xfx);		Param(c,w, "graphs.te_xfy", te_xfy);
 	Param(c,w, "graphs.te_reference", te_reference);	Param(c,w, "graphs.te_common", te_common);
 
 
-	//  hud
+	//  ✅ hud
 	Param(c,w, "hud_show.mph", show_mph);
-	Param(c,w, "hud_show.gauges", show_gauges);			Param(c,w, "hud_show.show_digits", show_digits);
-	Param(c,w, "hud_show.trackmap", trackmap);			Param(c,w, "hud_show.times", show_times);
-	Param(c,w, "hud_show.caminfo", show_cam);			Param(c,w, "hud_show.cam_tilt", cam_tilt);
-	Param(c,w, "hud_show.car_dbgtxt", car_dbgtxt);		Param(c,w, "hud_show.show_cardbg", car_dbgbars);
-	Param(c,w, "hud_show.car_dbgsurf", car_dbgsurf);	Param(c,w, "hud_show.car_tirevis", car_tirevis);
-	Param(c,w, "hud_show.car_dbgtxtclr", car_dbgtxtclr); Param(c,w, "hud_show.car_dbgtxtcnt", car_dbgtxtcnt);
-	Param(c,w, "hud_show.check_arrow", check_arrow);	Param(c,w, "hud_show.check_beam", check_beam);
-	Param(c,w, "hud_show.opponents", show_opponents);	Param(c,w, "hud_show.opplist_sort", opplist_sort);
-	Param(c,w, "hud_show.graphs", show_graphs);			Param(c,w, "hud_show.graphs_type", (int&)graphs_type);
-	//  gui
+	Param(c,w, "hud_show.gauges", show_gauges);				Param(c,w, "hud_show.show_digits", show_digits);
+	Param(c,w, "hud_show.trackmap", trackmap);				Param(c,w, "hud_show.times", show_times);
+	Param(c,w, "hud_show.caminfo", show_cam);				Param(c,w, "hud_show.cam_tilt", cam_tilt);
+	Param(c,w, "hud_show.car_dbgtxt", car_dbgtxt);			Param(c,w, "hud_show.show_cardbg", car_dbgbars);
+	Param(c,w, "hud_show.car_dbgsurf", car_dbgsurf);		Param(c,w, "hud_show.car_tirevis", car_tirevis);
+	Param(c,w, "hud_show.car_dbgtxtclr", car_dbgtxtclr);	Param(c,w, "hud_show.car_dbgtxtcnt", car_dbgtxtcnt);
+	Param(c,w, "hud_show.check_arrow", check_arrow);		Param(c,w, "hud_show.check_beam", check_beam);
+	Param(c,w, "hud_show.opponents", show_opponents);		Param(c,w, "hud_show.opplist_sort", opplist_sort);
+	Param(c,w, "hud_show.graphs", show_graphs);				Param(c,w, "hud_show.graphs_type", (int&)graphs_type);
+	//  🎛️ gui
 	Param(c,w, "gui.cars_view", cars_view);			Param(c,w, "gui.cars_sort", cars_sort);
 	Param(c,w, "gui.car_ed_tab", car_ed_tab);		Param(c,w, "gui.tweak_tab", tweak_tab);
 	Param(c,w, "gui.champ_tab", champ_type);
 	Param(c,w, "gui.chall_tab", chall_type);		Param(c,w, "gui.champ_info", champ_info);
-	//  hud size
+	//  🎚️ hud size
 	Param(c,w, "hud_size.gauges", size_gauges);			Param(c,w, "hud_size.arrow", size_arrow);
 	Param(c,w, "hud_size.minimap", size_minimap);		Param(c,w, "hud_size.minipos", size_minipos);
 	Param(c,w, "hud_size.mini_zoom", zoom_minimap);		Param(c,w, "hud_size.mini_zoomed", mini_zoomed);
 	Param(c,w, "hud_size.mini_rotated", mini_rotated);	Param(c,w, "hud_size.mini_terrain", mini_terrain);
 	Param(c,w, "hud_size.mini_border", mini_border);
 	Param(c,w, "hud_size.gauges_type", gauges_type);	//Param(c,w, "hud_size.gauges_layout", gauges_layout);
-	//  cam
-	Param(c,w, "hud_size.cam_loop_chng", cam_loop_chng); Param(c,w, "hud_size.cam_in_loop", cam_in_loop);
-	Param(c,w, "hud_size.fov", fov_min);				Param(c,w, "hud_size.fov_boost", fov_boost);
+	//  🎥 camera
+	Param(c,w, "hud_size.cam_loop_chng", cam_loop_chng);	Param(c,w, "hud_size.cam_in_loop", cam_in_loop);
+	Param(c,w, "hud_size.fov", fov_min);					Param(c,w, "hud_size.fov_boost", fov_boost);
 	Param(c,w, "hud_size.fov_smooth", fov_smooth);
-	Param(c,w, "hud_size.cam_bounce", cam_bounce);		Param(c,w, "hud_size.cam_bnc_mul", cam_bnc_mul);
-	//  pacenotes
-	Param(c,w, "pacenotes.show", pace_show);		Param(c,w, "pacenotes.dist", pace_dist);
-	Param(c,w, "pacenotes.size", pace_size);		Param(c,w, "pacenotes.near", pace_near);
-	Param(c,w, "pacenotes.next", pace_next);		Param(c,w, "pacenotes.alpha", pace_alpha);
-	Param(c,w, "pacenotes.trail", trail_show);
+	Param(c,w, "hud_size.cam_bounce", cam_bounce);			Param(c,w, "hud_size.cam_bnc_mul", cam_bnc_mul);
+	//  🚦 pacenotes
+	Param(c,w, "pacenotes.show", pace_show);	Param(c,w, "pacenotes.trail", trail_show);
 
 
-	//  graphics
+	//  📈 graphics
 	Param(c,w, "graph_par.particles", particles);			Param(c,w, "graph_par.trails", trails);
 	Param(c,w, "graph_par.particles_len", particles_len);	Param(c,w, "graph_par.trail_len", trails_len);
 
@@ -125,7 +123,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_reflect.map_size", refl_size);		Param(c,w, "graph_reflect.dist", refl_dist);
 	Param(c,w, "graph_reflect.mode", refl_mode);
 
-	//  misc
+	//  ⚙️ misc
 	Param(c,w, "misc.version", version);
 	Param(c,w, "misc.bulletDebug", bltDebug);		Param(c,w, "misc.bulletLines", bltLines);
 	Param(c,w, "misc.profilerTxt", profilerTxt);	Param(c,w, "misc.bulletProfilerTxt", bltProfilerTxt);
@@ -133,13 +131,13 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 	Param(c,w, "misc.show_welcome", show_welcome);	Param(c,w, "misc.loadingback", loadingbackground);
 
-	//  network
+	//  📡 network
 	// Param(c,w, "network.master_server_address", master_server_address);	Param(c,w, "network.nickname", nickname);
 	// Param(c,w, "network.master_server_port", master_server_port);		Param(c,w, "network.local_port", local_port);
 	// Param(c,w, "network.connect_address", connect_address);				Param(c,w, "network.game_name", netGameName);
 	// Param(c,w, "network.connect_port", connect_port);
 
-	//  replay
+	//  📽️ replay
 	Param(c,w, "replay.record", rpl_rec);			Param(c,w, "replay.ghost", rpl_ghost);
 	Param(c,w, "replay.bestonly", rpl_bestonly);	Param(c,w, "replay.trackghost", rpl_trackghost);
 	Param(c,w, "replay.listview", rpl_listview);	Param(c,w, "replay.listghosts", rpl_listghosts);
@@ -147,14 +145,14 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "replay.num_views", rpl_numViews);	Param(c,w, "replay.ghostrewind", rpl_ghostrewind);
 	Param(c,w, "replay.ghoHideDist", ghoHideDist);	Param(c,w, "replay.ghoHideDistTrk", ghoHideDistTrk);
 
-	//  sim
+	//  🎳 sim
 	Param(c,w, "sim.game_freq", game_fq);			Param(c,w, "sim.dynamics_iter", dyn_iter);
 	Param(c,w, "sim.bullet_freq", blt_fq);			Param(c,w, "sim.bullet_iter", blt_iter);
 	Param(c,w, "sim.thread_sleep", thread_sleep);	Param(c,w, "sim.perf_speed", perf_speed);
 	//Param(c,w, "sim.gui_sleep", gui_sleep);
 
 
-	//  sound
+	//  🔊 sound
 	Param(c,w, "sound.device", snd_device);			Param(c,w, "sound.reverb", snd_reverb);
 	Param(c,w, "sound.volume", vol_master);			Param(c,w, "sound.vol_engine", vol_engine);
 	Param(c,w, "sound.vol_tires", vol_tires);		Param(c,w, "sound.vol_env", vol_env);
