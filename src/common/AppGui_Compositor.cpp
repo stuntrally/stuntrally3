@@ -24,8 +24,9 @@
 using namespace Ogre;
 
 
+//-----------------------------------------------------------------------------------------
 //  🪄 Setup Compositor
-//-----------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
 CompositorWorkspace* AppGui::SetupCompositor()
 {
 	LogO("C### setup Compositor");
@@ -156,55 +157,176 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	CompositorNodeDef* node = mgr->getNodeDefinitionNonConst("SR3_Render");
 	CompositorTargetDef* target = node->getTargetPass(0);
 	target->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
+	// todo on separate node fullscreen..
 	
 
-	//  game
+	SetupViewsWorkspace();
+}
+
+//-----------------------------------------------------------------------------------------
+//  Viewports
+//-----------------------------------------------------------------------------------------
+void AppGui::SetupViewsWorkspace()
+{
 	const IdString wsName( "SR3_Workspace" );
-#ifndef SR_EDITOR
-	if (pSet->game.local_players > 1)
+
+#ifndef SR_EDITOR  // game
+	DestroyCameras();
+	const int views = pSet->game.local_players;
+	bool vr_mode = pSet->game.vr_mode;
+#else
+	const int views = 1;  // ed
+	bool vr_mode = pSet->vr_mode;
+#endif
+
+	if (vr_mode)
 	{
-		//  VR setup  ---- ---- ---- ----
-		Camera* mCamera2 = mSceneMgr->createCamera( "Camera2" );
+		//  👀 VR mode  ---- ----
+		//.................................................................................
+		auto cam1 = CreateCamera( "EyeL" );
+		auto cam2 = CreateCamera( "EyeR" );
 
-		mCamera2->setPosition( Vector3( 0, 51, 115 ) );
-		// Look back along -Z
-		mCamera2->lookAt( Vector3( 0, 0, 0 ) );
-		mCamera2->setNearClipDistance( 0.2f );
-		mCamera2->setFarClipDistance( 1000.0f );
-		mCamera2->setAutoAspectRatio( true );
-
-
-		Vector4 dims; //OffsetScale;
-
-		Camera* mEyeCameras[2] = {mCamera, mCamera2 };  // temp
-
-		dims = Vector4( 0.0f, 0.0f, 0.5f, 1.0f );
-		CompositorWorkspace* mEyeWs[2];
-		mEyeWs[0] =
-			mgr->addWorkspace( mSceneMgr, ext,
-				mEyeCameras[0], wsName,
+		Vector4 dims = Vector4( 0.0f, 0.0f, 0.5f, 1.0f );  // offset, scale
+		CompositorWorkspace* ws1,*ws2;
+		ws1 = mgr->addWorkspace( mSceneMgr, ext,
+				cam1, wsName,
 				true, -1, 0, 0,
 				dims, 0x01, 0x01 );
 
 		dims = Vector4( 0.5f, 0.0f, 0.5f, 1.0f );
-		mEyeWs[1] =
-			mgr->addWorkspace( mSceneMgr, ext, 
-				mEyeCameras[1], wsName,
+		ws2 = mgr->addWorkspace( mSceneMgr, ext, 
+				cam2, wsName,
 				true, -1, 0, 0,
 				dims, 0x02, 0x02 );
 
-		mWorkspaces.push_back(mEyeWs[0]);
-		mWorkspaces.push_back(mEyeWs[1]);
+		mWorkspaces.push_back(ws1);
+		mWorkspaces.push_back(ws2);
 
-		LogO("C### Split Created workspaces: "+toStr(mWorkspaces.size()));
-		return mEyeWs[0];
+		LogO("C### Created VR workspaces: "+toStr(mWorkspaces.size()));
+		return ws1;
 	}
-	else  // single view
-#endif
+
+#ifndef SR_EDITOR
+	//  👥 splitscreen   ---- ---- ---- ----
+	//.....................................................................................
+	else if (views > 1)
 	{
-		auto ws = mgr->addWorkspace( mSceneMgr, ext, mCamera, wsName, true );  // in .compositor
+		for (int i = 0; i < 4; ++i)
+			mDims[i].Default();
+
+		for (int i = 0; i < views; ++i)
+		{
+			bool f1 = i > 0;
+			auto cam = CreateCamera( "Player" + toStr(i) );
+
+			//  set dimensions for the viewports
+			float dims[4];  // left,top, width,height
+			#define dim_(l,t,w,h)  {  dims[0]=l;  dims[1]=t;  dims[2]=w;  dims[3]=h;  }
+
+			if (views == 1)
+			{
+				dim_(0.0, 0.0, 1.0, 1.0);
+			}
+			else if (views == 2)
+			{
+				if (!pSet->split_vertically)
+				{	if (i == 0)	dim_(0.0, 0.0, 1.0, 0.5)
+					else		dim_(0.0, 0.5, 1.0, 0.5)
+				}else{
+					if (i == 0) dim_(0.0, 0.0, 0.5, 1.0)
+					else		dim_(0.5, 0.0, 0.5, 1.0)	}
+			}
+			else if (views == 3)
+			{
+				if (!pSet->split_vertically)
+				{
+					if (i == 0)			dim_(0.0, 0.0, 0.5, 0.5)
+					else if (i == 1)	dim_(0.5, 0.0, 0.5, 0.5)
+					else if (i == 2)	dim_(0.0, 0.5, 1.0, 0.5)
+				}else{
+					if (i == 0)			dim_(0.0, 0.0, 0.5, 1.0)
+					else if (i == 1)	dim_(0.5, 0.0, 0.5, 0.5)
+					else if (i == 2)	dim_(0.5, 0.5, 0.5, 0.5)
+				}
+			}
+			else if (views == 4)
+			{
+				if (i == 0)			dim_(0.0, 0.0, 0.5, 0.5)
+				else if (i == 1)	dim_(0.5, 0.0, 0.5, 0.5)
+				else if (i == 2)	dim_(0.0, 0.5, 0.5, 0.5)
+				else if (i == 3)	dim_(0.5, 0.5, 0.5, 0.5)
+			}else
+			{
+				LogO("ERROR: Unsupported number of viewports: " + toStr(views));
+				// return;
+			}
+			#undef dim_
+
+			// save dims (for later use by Hud)
+			// for (int d=0; d<4; ++d)
+			{
+				mDims[i].left = dims[0]*2-1;  mDims[i].top = dims[1]*2-1;
+				mDims[i].width = dims[2]*2;  mDims[i].height = dims[3]*2;
+				mDims[i].right = mDims[i].left + mDims[i].width;
+				mDims[i].bottom = mDims[i].top + mDims[i].height;
+				mDims[i].avgsize = (mDims[i].width + mDims[i].height) * 0.25f;
+			}
+
+			CompositorWorkspace* w =
+				mgr->addWorkspace( mSceneMgr, ext,
+					cam, wsName,
+					true, -1, 0, 0,
+					Vector4(dims[0], dims[1], dims[2], dims[3]),
+					f1 ? 0x02 : 0x01, f1 ? 0x02 : 0x01 );
+
+			mWorkspaces.push_back(w);
+		}
+
+		LogO("C### Created Split workspaces: "+toStr(mWorkspaces.size()));
+		return mWorkspaces[0];
+	}
+#endif
+	else  // 🖥️ single view
+	//.....................................................................................
+	{
+		auto cam = CreateCamera( "Player" );
+		mCameras.push_back(cam);
+		mCamera = cam;
+
+		auto ws = mgr->addWorkspace( mSceneMgr, ext, cam, wsName, true );  // in .compositor
 		mWorkspaces.push_back(ws);
-		LogO("C### Single Created workspaces: "+toStr(mWorkspaces.size()));
+		LogO("C### Created Single workspaces: "+toStr(mWorkspaces.size()));
 		return ws;
 	}
+}
+
+//  💥🎥 destroy camera
+void AppGui::DestroyCameras()
+{
+	LogO("D### destroy Cameras");
+	// for (auto cam : mCameras)
+		// mSceneMgr->destroyCamera(cam);
+	// mSceneMgr->destroyAllCameras();
+	mCameras.clear();
+}
+
+//  🆕🎥 create camera
+Camera* AppGui::CreateCamera(String name)
+{
+	Camera* cam = mSceneMgr->findCameraNoThrow( name );
+	if (cam)
+		return cam;
+
+	// if (mSceneMgr->getCamera( name );
+	cam = mSceneMgr->createCamera( name );
+
+	cam->setPosition( Vector3(0, 51, 115) );  // whatever
+	cam->lookAt( Vector3(0, 0, 0) );
+	cam->setNearClipDistance( 0.1f );
+	cam->setFarClipDistance( pSet->view_distance );
+	cam->setAutoAspectRatio( true );
+	cam->setLodBias( pSet->lod_bias );
+
+	mCameras.push_back(cam);
+	return cam;
 }

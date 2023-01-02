@@ -898,6 +898,9 @@ void GraphicsSystem::chooseSceneManager()
 //--------------------------------------------------------------------------------------------------------------------------------
 void GraphicsSystem::createCamera()
 {
+#ifndef SR_EDITOR
+	return;  //! game does not
+#endif	// ed
 	mCamera = mSceneManager->createCamera( "Main Camera" );
 
 	// Position it at 500 in Z direction

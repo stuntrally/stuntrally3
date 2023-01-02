@@ -31,9 +31,9 @@ protected:
 	SdlInputHandler     *mInputHandler;
 #endif
 
-	Ogre::Window                *mRenderWindow;
-	Ogre::SceneManager          *mSceneManager;
-	Ogre::Camera                *mCamera;
+	Ogre::Window                *mRenderWindow =0;
+	Ogre::SceneManager          *mSceneManager =0;
+	Ogre::Camera                *mCamera =0;
 public:
 	Ogre::Root                  *mRoot;
 	Ogre::CompositorWorkspace   *mWorkspace;

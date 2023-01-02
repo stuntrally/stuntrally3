@@ -102,8 +102,26 @@ public:
 	Ogre::TextureGpu* mCubeReflTex = 0;
 
 	IblQuality mIblQuality = IblLow;  // par in ctor-
-	std::vector<Ogre::CompositorWorkspace*> mWorkspaces;
 	Ogre::CompositorWorkspace* SetupCompositor();
+	void SetupViewsWorkspace();
+
+	//  👥 split screen
+	std::vector<Ogre::Camera*> mCameras;  // for each player [4]
+	Ogre::Camera* CreateCamera(Ogre::String name);
+	void DestroyCameras();
+	
+	// dimensions for the viewport of each player [4]
+	struct VPDims
+	{
+		Ogre::Real top,left, width,height, right,bottom, avgsize;
+		void Default()
+		{	top=0.f; left=0.f;  width=1.f; height=1.f;
+			right=1.f; bottom=1.f;  avgsize=1.f;
+		}
+		VPDims()
+		{	Default();  }
+	} mDims[4];
+	std::vector<Ogre::CompositorWorkspace*> mWorkspaces;
 
 
 	//  ⛰️ Terrain  ----------------

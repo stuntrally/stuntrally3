@@ -32,7 +32,7 @@ void App::updDebugText()
 		txt += "R terrain wireframe\n";
 		txt += "K next Sky\n\n";
 		
-		Vector3 camPos = mGraphicsSystem->getCamera()->getPosition();
+		Vector3 camPos = mCamera->getPosition();
 		txt += "\n\nPos:  " + fToStr( camPos.x, 1) +"  "+ fToStr( camPos.y, 1) +"  "+ fToStr( camPos.z, 1) + "\n\n";
 		txt += "\n- + Pitch  " + fToStr( sc->ldPitch, 1,4 );
 		txt += "\n/ * Yaw    " + fToStr( sc->ldYaw, 1,4 );

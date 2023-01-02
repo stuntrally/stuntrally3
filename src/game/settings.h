@@ -117,6 +117,7 @@ public:
 		std::vector<float> car_hue, car_sat, car_val,
 			car_gloss, car_metal, car_rough;  //[6] also for ghosts
 
+		bool vr_mode =0;  // copy in game from pSet->
 		int local_players = 1, num_laps = 2;  // 👥 split
 		//  🔨 game setup
 		std::string sim_mode{"normal"};

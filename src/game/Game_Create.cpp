@@ -65,7 +65,7 @@ void App::Load()
 	mRoot = mGraphicsSystem->getRoot();
 	mWindow = mGraphicsSystem->getRenderWindow();
 	mSceneMgr = mGraphicsSystem->getSceneManager();
-	mCamera = mGraphicsSystem->getCamera();
+	// mCamera = mGraphicsSystem->getCamera();
 
 
 	LoadData();  /// loads data xmls
@@ -111,8 +111,8 @@ void App::createScene01()
 
 
 	mGraphicsSystem->mWorkspace = SetupCompositor();
-	mCamera->setFarClipDistance( pSet->view_distance );
-	mCamera->setLodBias( pSet->lod_bias );
+	// mCamera->setFarClipDistance( pSet->view_distance );
+	// mCamera->setLodBias( pSet->lod_bias );
 
 
 	LogO(">>>>>>>> Init SR done ----");

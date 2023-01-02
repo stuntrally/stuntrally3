@@ -125,7 +125,7 @@ void AppGui::CreateTerrain()
 	mTerra = new Terra( Id::generateNewId<MovableObject>(),
 						&mgr->_getEntityMemoryManager( SCENE_STATIC ),
 						mgr, RQG_Terrain, mRoot->getCompositorManager2(),
-						mGraphicsSystem->getCamera(), false );
+						mCamera, false );
 	// mTerra->setCustomSkirtMinHeight(0.8f); //?-
 	mTerra->setCastShadows( false );
 	mTerra->sc = scn->sc;

@@ -78,8 +78,9 @@ void App::createScene01()  // once, init
 
 	//  🎥 camera
 	asp = float(mWindow->getWidth()) / float(mWindow->getHeight());
-	mCamera->setFarClipDistance(pSet->view_distance);
 	mCamera->setNearClipDistance(0.1f);
+	mCamera->setFarClipDistance(pSet->view_distance);
+	mCamera->setLodBias(pSet->lod_bias);
 
 	//  set last cam pos
 	mCamera->setPosition(Vector3(pSet->cam_x, pSet->cam_y, pSet->cam_z));
@@ -106,8 +107,8 @@ void App::createScene01()  // once, init
 	
 
 	mGraphicsSystem->mWorkspace = SetupCompositor();
-	mCamera->setFarClipDistance( pSet->view_distance );
-	mCamera->setLodBias( pSet->lod_bias );
+	// mCamera->setFarClipDistance( pSet->view_distance );
+	// mCamera->setLodBias( pSet->lod_bias );
 
 	createBrushPrv();
 
@@ -499,7 +500,7 @@ void App::TerCircleUpd(float dt)
 		scn->terrain->getHeightAt(p);
 		p.y += 0.3f;
 		mo->position(p.x, p.y, p.z);
-		mo->textureCoord( (d/2 * dTc + ani)*2, d % 2);
+		mo->texUV( (d/2 * dTc + ani)*2, d % 2);
 	}
 	mo->end();
  

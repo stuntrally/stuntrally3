@@ -183,7 +183,7 @@ void App::update( float dt )
 
 
 		if (pSet->particles)
-			scn->UpdateWeather(mGraphicsSystem->getCamera());  //, 1.f/dt
+			scn->UpdateWeather(mCamera);  //, 1.f/dt
 		
 
 		//**  bullet bebug draw
@@ -245,7 +245,6 @@ void App::update( float dt )
 			float mul1 = 1.f + 0.01f * mul * d;  //par
 			switch (param)
 			{
-			// mCamera->setLodBias(0.1);  //** todo: par
 			// p.fogHcolor.xyz  fogHparams.xy
 			case 0:  p.fogDensity *= mul1;  break;
 			case 1:  p.densityCoeff *= mul1;  break;
