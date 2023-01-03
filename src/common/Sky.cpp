@@ -70,6 +70,7 @@ void CScene::CreateSun()
 
 	// sun->setPowerScale( 1.f );  // should be 1 with HDR
 	sun->setPowerScale( Math::PI );  //** par! no HDR, * 2.5?  1.5 2 3* 4
+	
 	UpdSun();
 }
 
@@ -265,14 +266,15 @@ void CScene::UpdSun()
 	}
 	sun->setDirection(dir);
 
-	sun->setPowerScale( Math::PI );
-	sun->setDiffuseColour( sc->lDiff.GetClr() * 2.2f );
-	sun->setSpecularColour(sc->lSpec.GetClr() * 0.75f );
+	sun->setPowerScale( Math::PI );  // 💡 Light
+	float bright = app->pSet->bright, contrast = app->pSet->contrast;
+	sun->setDiffuseColour( sc->lDiff.GetClr() * 2.2f  * bright * contrast);
+	sun->setSpecularColour(sc->lSpec.GetClr() * 0.75f * bright * contrast);
 
 	//  ambient
 	app->mSceneMgr->setAmbientLight(
-		sc->lAmb.GetClr() * 1.2f,
-		sc->lAmb.GetClr() * 1.2f,
+		sc->lAmb.GetClr() * 1.2f * bright / contrast,
+		sc->lAmb.GetClr() * 1.2f * bright / contrast,
 		// ColourValue( 1.f, 0.f, 0.f ) * 0.1f,
 		// ColourValue( 0.f, 1.f, 0.f ) * 0.1f,
 		-dir);
@@ -361,12 +363,3 @@ void CScene::UpdateWeather(Camera* cam, float lastFPS, float emitMul)
 		pe->setEmissionRate(emitMul * sc->rain2Emit);
 	}
 }
-
-/*
-void CScene::UpdPaceParams()  // pacenotes
-{
-	app->mFactory->setSharedParameter("paceParams", sh::makeProperty<sh::Vector4>(new sh::Vector4(
-		app->pSet->pace_size, 5.f / app->pSet->pace_near,
-		0.03f * app->pSet->pace_near, app->pSet->pace_alpha)));
-}
-*/
