@@ -180,6 +180,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		//.................................................................................
 		auto cam1 = CreateCamera( "EyeL" );
 		auto cam2 = CreateCamera( "EyeR" );
+		mCamera = cam1;
 
 		Vector4 dims = Vector4( 0.0f, 0.0f, 0.5f, 1.0f );  // offset, scale
 		CompositorWorkspace* ws1,*ws2;
@@ -213,6 +214,8 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		{
 			bool f1 = i > 0;
 			auto cam = CreateCamera( "Player" + toStr(i) );
+			if (i==0)
+				mCamera = cam;
 
 			//  set dimensions for the viewports
 			float dims[4];  // left,top, width,height
@@ -285,7 +288,6 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	//.....................................................................................
 	{
 		auto cam = CreateCamera( "Player" );
-		mCameras.push_back(cam);
 		mCamera = cam;
 
 		auto ws = mgr->addWorkspace( mSceneMgr, ext, cam, wsName, true );  // in .compositor
@@ -311,7 +313,10 @@ Camera* AppGui::CreateCamera(String name)
 {
 	Camera* cam = mSceneMgr->findCameraNoThrow( name );
 	if (cam)
+	{
+		mCameras.push_back(cam);
 		return cam;
+	}
 
 	// if (mSceneMgr->getCamera( name );
 	cam = mSceneMgr->createCamera( name );

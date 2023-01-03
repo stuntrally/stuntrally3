@@ -143,7 +143,8 @@ void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 	//  upd geom verts
 	//..........................................................
 	if (!hr)  return;
-	if (!hide)
+	bool vis = !hide && pSet->pace_show;
+	if (vis)
 	{
 		Vector3 vx = pSet->pace_size * mCamera->getRight(),
 				vy = pSet->pace_size * mCamera->getUp();
@@ -194,7 +195,7 @@ void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 	#endif
 		hr->end();
 	}
-	ndHR->setVisible(!hide);
+	ndHR->setVisible(vis);
 }
 
 
