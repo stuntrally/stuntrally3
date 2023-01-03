@@ -40,6 +40,11 @@
 							<Property key="TextColour" value="0.6 0.8 1"/>
 							<Property key="FontName" value="font.big"/>
 						</Widget>
+						<Widget type="Button" skin="CheckBox" position="464 156 190 24" name="VRmode">
+							<Property key="Caption" value="#{VRmode}"/>
+							<Property key="TextColour" value="0.6 0.8 1"/>
+							<Property key="FontName" value="font.big"/>
+						</Widget>
 						<Widget type="ComboBox" skin="ComboBox" position="164 92 190 32" name="ResList">
 							<Property key="Static" value="true"/>
 							<Property key="ReadOnly" value="true"/>

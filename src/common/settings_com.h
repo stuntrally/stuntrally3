@@ -27,6 +27,7 @@ public:
 	// bool limit_fps =0;  float limit_fps_val = 60.f;  int limit_sleep = -1;
 	
 	//  hud
+	bool vr_mode = 0;  // forces 1 player
 	bool show_fps =0;  // 📈
 	//  🚦 pacenotes
 	float pace_dist = 200.f, pace_size = 1.f, pace_near = 1.f, pace_alpha = 1.f;

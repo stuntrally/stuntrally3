@@ -199,10 +199,15 @@ void App::NewGame(bool force, bool perfTest)
 	
 	if (!newGameRpl)  // if from replay, dont
 	{
-		pSet->game = pSet->gui;  // copy game config from gui
+		///* 👥 copy game config from gui *
+		pSet->game = pSet->gui;
+		//  👀 set VR, only 1 player
+		pSet->game.vr_mode = pSet->vr_mode;
+		if (pSet->game.vr_mode)
+			pSet->game.local_players = 1;
 		Ch_NewGame();
 
-		/*if (mClient && mLobbyState != HOSTING)  // all but host
+		/*if (mClient && mLobbyState != HOSTING)  // 📡 all but host
 			gui->updateGameSet();  // override gameset params for networked game (from host gameset)
 		if (mClient)  // for all, including host
 			pSet->game.local_players = 1;*/
@@ -374,7 +379,7 @@ void App::LoadGame()
 		// pGame->track.asphalt = scn->sc->asphalt;  //*
 		// pGame->track.sDefaultTire = scn->sc->asphalt ? "asphalt" : "gravel";  //*
 		if (scn->sc->denyReversed)
-			pSet->game.trackreverse = false;
+			pSet->game.track_reversed = false;
 
 		pGame->NewGameDoLoadTrack();
 	}
@@ -390,10 +395,9 @@ void App::LoadGame()
 	///--------------------------------------------
 	//  will create vdrift cars, actual car loading will be done later in LoadCar()
 	//  this is just here because vdrift car has to be created first
-	auto camIt = mCamera;
 	
 	int numCars = /*mClient ? mClient->getPeerCount()+1 :*/
-		pSet->game.local_players;  // networked or splitscreen
+		pSet->game.local_players;  // 📡 networked or 👥 splitscreen
 	int i;
 	for (i = 0; i < numCars; ++i)
 	{
@@ -415,16 +419,13 @@ void App::LoadGame()
 			if (i == 0)  nick = pSet->nickname;
 			else  nick = mClient->getPeer(startId).name;
 		}*/
-		Camera* cam = mCamera;
-		// Camera* cam = 0;  //; ?
-		// if (et == CarModel::CT_LOCAL && camIt != mSplitMgr->mCameras.end())
-		// {	cam = *camIt;  ++camIt;  }
+		Camera* cam = mCameras[i];  // 🎥
 
 		//  need road looped here
 		String sRd = gcom->PathListTrk() + "/road.xml";
 		SplineRoad rd(pGame);  rd.LoadFile(sRd,false);
 		bool loop = //rd.getNumPoints() < 2 ? false :
-					!rd.isLooped && pSet->game.trackreverse ? true : false;
+			!rd.isLooped && pSet->game.track_reversed ? true : false;
 		
 		CarModel* car = new CarModel(i, i, et, carName, cam, this);
 		car->Load(startId, loop);
@@ -468,7 +469,7 @@ void App::LoadGame()
 	bool deny = gui->pChall && !gui->pChall->trk_ghost;
 	if (!bRplPlay /*&& pSet->rpl_trackghost- && !mClient*/ && !pSet->game.track_user && !deny)
 	{
-		std::string sRev = pSet->game.trackreverse ? "_r" : "";
+		std::string sRev = pSet->game.track_reversed ? "_r" : "";
 		std::string file = PATHMANAGER::TrkGhosts()+"/"+ pSet->game.track + sRev + ".gho";
 		if (ghTrk.LoadFile(file))
 		{
@@ -563,7 +564,7 @@ void App::LoadCar()
 	{
 		replay.InitHeader(pSet->game.track.c_str(), pSet->game.track_user, !bRplPlay);
 		rh.numPlayers = /*mClient ? (int)mClient->getPeerCount()+1 :*/
-			pSet->game.local_players;  // networked or splitscreen
+			pSet->game.local_players;  // 📡 networked or 👥 splitscreen
 		replay.Clear();  replay.ClearCars();  // upd num plr
 		rh.trees = pSet->game.trees;
 
@@ -584,7 +585,7 @@ void App::LoadCar()
 
 	//  fill other cars (names, nicks, colors)
 	int p, pp = pSet->game.local_players;
-	//; if (mClient)  // networked, 0 is local car
+	//; if (mClient)  // // 📡 networked, 0 is local car
 		// pp = (int)mClient->getPeerCount()+1;
 
 	if (!bRplPlay)
@@ -712,7 +713,7 @@ void App::LoadTrees()
 //  ⏱️ HUD etc
 void App::LoadMisc()  // 9 last
 {
-	bool rev = pSet->game.trackreverse;	
+	bool rev = pSet->game.track_reversed;	
 	/**if (pGame && !pGame->cars.empty())  //todo: move this into gui track tab chg evt, for cur game type
 		gcom->UpdGuiRdStats(scn->road, scn->sc, gcom->sListTrack,
 			pGame->timer.GetBestLap(0, rev), rev, 0);  // current
@@ -812,7 +813,7 @@ void App::CreateRoads()
 {
 	///  road  ~ ~ ~
 	SplineRoad*& road = scn->road;
-	Camera* cam = mCamera; //*mSplitMgr->mCameras.begin();
+	Camera* cam = mCameras[0];
 
 	//  road
 	if (dstTrk)
@@ -858,7 +859,7 @@ void App::CreateRoads()
 	if (scn->pace)
 	{
 		road->RebuildRoadPace();  //todo: load only..
-		scn->pace->Rebuild(road, scn->sc, pSet->game.trackreverse);
+		scn->pace->Rebuild(road, scn->sc, pSet->game.track_reversed);
 	}/**/
 
 	CreateTrail(cam);
@@ -867,7 +868,7 @@ void App::CreateRoads()
 
 void App::CreateRoadsInt()
 {
-	Camera* cam = mCamera; //*mSplitMgr->mCameras.begin();
+	Camera* cam = mCameras[0]; //*mSplitMgr->mCameras.begin();
 
 	//  get all road*.xml
 	strlist lr;  string path = gcom->TrkDir();
@@ -903,7 +904,7 @@ void App::CreateTrail(Camera* cam)
 	TrackGhost gho;
 	int frames = 0;
 
-	string sRev = pSet->game.trackreverse ? "_r" : "";
+	string sRev = pSet->game.track_reversed ? "_r" : "";
 	string file = PATHMANAGER::TrkGhosts()+"/"+ pSet->game.track + sRev + ".gho";
 	if (!PATHMANAGER::FileExists(file))
 		LogO("Trail trk gho not found: "+file);
@@ -937,9 +938,9 @@ void App::CreateTrail(Camera* cam)
 
 
 	//  chk vars
-	int iNextChk = pSet->game.trackreverse ? scn->road->iChkId1Rev : scn->road->iChkId1;
+	int iNextChk = pSet->game.track_reversed ? scn->road->iChkId1Rev : scn->road->iChkId1;
 	int iCk = 1;
-	const bool rev = pSet->game.trackreverse;
+	const bool rev = pSet->game.track_reversed;
 	const int inc = (rev ? -1 : 1) * scn->road->iDir;
 	const int ncs = scn->road->mChks.size();
 

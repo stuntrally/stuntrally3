@@ -506,6 +506,7 @@
 	<Tag name="Video">Video</Tag>
 	<Tag name="Resolution">Resolution</Tag>
 	<Tag name="Fullscreen">Fullscreen</Tag>
+	<Tag name="VRmode">VR Mode</Tag>
 	<Tag name="Complex">Complex</Tag>
 	<Tag name="Simple">Simple</Tag>
 	<!--  Screen  info  -->

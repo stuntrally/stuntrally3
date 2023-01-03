@@ -164,6 +164,7 @@ public:
 
 
 	///  🖥️ Screen  --------------------------
+	Ck ckVRmode;
 	Cmb resList =0;
 	void InitGuiScreenRes(), ResizeOptWnd();
 

@@ -103,7 +103,9 @@ void CGuiCom::GuiInitGraphics()  // also called on preset change with bGI true
 	// sv= &svLimitFps;   sv->Init("LimitFps",   &pSet->limit_fps_val,	20.f,144.f);  sv->DefaultF(60.f);
 	// sv= &svLimitSleep; sv->Init("LimitSleep", &pSet->limit_sleep,  -2,20, 1.5f);  sv->DefaultI(-1);
 	
-	//  screen
+	//  🖥️ screen
+	ck= &ckVRmode;  ck->Init("VRmode", &pSet->vr_mode);
+
 	/*CmbC(cmb, "CmbAntiAliasing", cmbAntiAliasing);
 	int si=0;
 	if (cmb)
@@ -164,7 +166,8 @@ void CGuiCom::slAnisotropy(SV*)
 void CGuiCom::slViewDist(SV* sv)
 {
 	app->scn->UpdSkyScale();
-	app->mCamera->setFarClipDistance(pSet->view_distance);
+	for (auto cam : app->mCameras)
+		cam->setFarClipDistance(pSet->view_distance);
 }
 
 void CGuiCom::slTerDetail(SV*)
@@ -175,7 +178,8 @@ void CGuiCom::slTerDetail(SV*)
 
 void CGuiCom::slLodBias(SV*)
 {
-	app->mCamera->setLodBias(pSet->lod_bias);
+	for (auto cam : app->mCameras)
+		cam->setLodBias(pSet->lod_bias);
 }
 
 //  trees/grass
