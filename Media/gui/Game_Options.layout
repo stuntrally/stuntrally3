@@ -41,7 +41,7 @@
 							<Property key="FontName" value="font.big"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="464 156 190 24" name="VRmode">
-							<Property key="Caption" value="#{VRmode}"/>
+							<Property key="Caption" value="#{VRmode} *"/>
 							<Property key="TextColour" value="0.6 0.8 1"/>
 							<Property key="FontName" value="font.big"/>
 						</Widget>
@@ -114,6 +114,27 @@
 						<Widget type="TextBox" skin="TextBox" position="582 488 136 24">
 							<Property key="Caption" value="*#{NeedRestart}"/>
 							<Property key="TextColour" value="0.7 1 0.5"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 336 248 24">
+							<Property key="Caption" value="*#{Brightness}"/>
+							<Property key="TextColour" value="0.9 0.7 0.7"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 336 48 24" name="BrightVal">
+							<Property key="TextColour" value="0.9 0.7 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 336 216 16" name="Bright">
+							<Property key="Colour" value="0.9 0.7 0.7"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="32 366 248 24">
+							<Property key="Caption" value="*#{Contrast}"/>
+							<Property key="TextColour" value="0.9 0.5 0.5"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 366 48 24" name="ContrastVal">
+							<Property key="TextColour" value="0.9 0.5 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 366 216 16" name="Contrast">
+							<Property key="Colour" value="0.9 0.5 0.5"/>
 						</Widget>
 					<!-- 
 						<Widget type="Button" skin="CheckBox" position="32 176 292 26" name="LimitFpsOn">

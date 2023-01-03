@@ -172,6 +172,10 @@ public:
 	void btnResChng(WP);
 	void comboGraphicsAll(CMB), comboRenderSystem(CMB);
 
+	//  💡 Light  --------------------------
+	SV svBright, svContrast;
+
+
 	//  🔗 util
 	void OpenBrowserUrl(std::string url);
 };
