@@ -160,14 +160,9 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	// todo on separate node fullscreen..
 	
 
-	SetupViewsWorkspace();
-}
-
-//-----------------------------------------------------------------------------------------
-//  Viewports
-//-----------------------------------------------------------------------------------------
-void AppGui::SetupViewsWorkspace()
-{
+	//-----------------------------------------------------------------------------------------
+	//  Viewports
+	//-----------------------------------------------------------------------------------------
 	const IdString wsName( "SR3_Workspace" );
 
 #ifndef SR_EDITOR  // game
@@ -299,6 +294,7 @@ void AppGui::SetupViewsWorkspace()
 		return ws;
 	}
 }
+
 
 //  💥🎥 destroy camera
 void AppGui::DestroyCameras()

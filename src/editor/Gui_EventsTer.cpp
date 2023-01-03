@@ -164,7 +164,8 @@ String CGui::getHMapNew()
 void CGui::btnTerrainNew(WP)
 {
 	int size = UpdTxtTerSize();
-	sc->td.iVertsX = size+1;  sc->td.UpdVals();  // new hf
+	// sc->td.iVertsX = size+1;  sc->td.UpdVals();  // new hf
+	sc->td.iVertsX = size;  sc->td.UpdVals();  // new hf
 
 	float* hfData = new float[sc->td.iVertsX * sc->td.iVertsY];
 	int siz = sc->td.iVertsX * sc->td.iVertsY * sizeof(float);

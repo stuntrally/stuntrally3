@@ -21,7 +21,9 @@
 
 #include "Grass.h"
 #include "Terra.h"
+#include <filesystem>
 using namespace Ogre;
+namespace fs = std::filesystem;
 
 
 ///  OLD  Setup Terrain
@@ -91,29 +93,32 @@ void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
 	
 
 	///  --------  fill HeightField data --------
-	//Ogre::Timer ti;
-	// if (terLoad || bNewHmap)
+	Ogre::Timer ti;
+	if (terLoad || bNewHmap)
 	{
-		int wx = sc->td.iVertsX, wy = sc->td.iVertsY, wxy = wx * wy;  //wy=wx
-		sc->td.hfHeight.clear();
-		sc->td.hfHeight.resize(wxy);
-		const int size = wxy * sizeof(float);
+		String fname = app->gcom->TrkDir() + (/*bNewHmap ? "heightmap-new.f32" :*/ "heightmap.f32");
 
-		String name = app->gcom->TrkDir() + (/*bNewHmap ? "heightmap-new.f32" :*/ "heightmap.f32");
+		int fsize = fs::file_size(fname.c_str());
+		int size = fsize / 4;  // floats
+
+		sc->td.hfHeight.clear();
+		sc->td.hfHeight.resize(size);
+
+		int wx = sqrt(size), wy = wx;
+		// int wx = sc->td.iVertsX, wy = sc->td.iVertsY, wxy = wx * wy;  //wy=wx
 
 		//  load from f32 HMap +
 		{
 			std::ifstream fi;
-			fi.open(name.c_str(), std::ios_base::binary);
-			fi.read((char*)&sc->td.hfHeight[0], size);
+			fi.open(fname.c_str(), std::ios_base::binary);
+			fi.read((char*)&sc->td.hfHeight[0], fsize);
 			fi.close();
 		}
 	
 	
 	   	//**  new  .. GetTerMtrIds() from blendmap ..
 	#ifndef SR_EDITOR
-		int size2 = wxy;
-		app->blendMtr.resize(size2);
+		app->blendMtr.resize(size);
 		// memset(app->blendMtr,0,size2);  // zero
 
 		app->blendMapSize = wx;
@@ -124,7 +129,7 @@ void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
 
 	//; CreateBlendTex();  //+
 
-	//LogO(String(":::* Time Hmap: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();  // 4MB ~13ms
+	LogO(String(":::* Time Hmap: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();  // 4MB ~13ms
 
 	//; UpdBlendmap();
 

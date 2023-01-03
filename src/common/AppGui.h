@@ -103,7 +103,6 @@ public:
 
 	IblQuality mIblQuality = IblLow;  // par in ctor-
 	Ogre::CompositorWorkspace* SetupCompositor();
-	void SetupViewsWorkspace();
 
 	//  👥 split screen
 	std::vector<Ogre::Camera*> mCameras;  // for each player [4]
