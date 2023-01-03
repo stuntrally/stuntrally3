@@ -5,6 +5,7 @@
 #include "CarModel.h"
 #include "FollowCamera.h"
 #include "Road.h"
+#include "Cam.h"
 
 #include <OgreItem.h>
 #include <OgreSceneNode.h>
@@ -60,7 +61,7 @@ void CHud::Arrow::UpdateChk(SplineRoad* road, CarModel* carM, const Vector3& pos
 	
 		//  calc angle towards cam
 		Real angle = (qCur.zAxis().dotProduct(
-			carM->fCam->mCamera->getOrientation().zAxis()) + 1.f) / 2.f;
+			carM->fCam->cam->cam->getOrientation().zAxis()) + 1.f) / 2.f;
 
 		//  set color in material (red for wrong dir)
 		// Vector3 col1 = angle * Vector3(0.0, 1.0, 0.0) + (1-angle) * Vector3(1.0, 0.0, 0.0);
@@ -74,11 +75,11 @@ void CHud::Arrow::Update(CarModel* carM, float time)
 	// align checkpoint arrow,  move in front of camera
 	if (!node)  return;
 
-	FollowCamera* cam = carM->fCam;
+	Camera* cam = carM->fCam->cam->cam;
 
-	Vector3 pos = cam->mCamera->getPosition();
-	Vector3 dir = cam->mCamera->getDirection();  dir.normalise();
-	Vector3 up = cam->mCamera->getUp();  up.normalise();
+	Vector3 pos = cam->getPosition();
+	Vector3 dir = cam->getDirection();  dir.normalise();
+	Vector3 up = cam->getUp();  up.normalise();
 	Vector3 arrowPos = pos + 10.0f * dir + 3.5f*up;
 	node->setPosition(arrowPos);
 	

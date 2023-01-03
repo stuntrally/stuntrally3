@@ -236,8 +236,8 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	if (fCam)
 	{	fCam->Apply(posInfoCam);
 
-		if (pCar && pSet->boost_fov)  // not here?-
-		 	mCamera->setFOVy(Degree( 0.5f * (
+		if (pCar && cam && pSet->boost_fov)  // not here?-
+		 	cam->cam->setFOVy(Degree( 0.5f * (
 				pSet->fov_min + pSet->fov_boost * pCar->dynamics.fBoostFov)));
 		
 

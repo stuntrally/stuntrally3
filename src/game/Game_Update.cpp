@@ -109,17 +109,7 @@ void App::update( float dt )
 			//; bRecreateHUD = true;
 			
 			/*if (mSplitMgr)  //  reassign car cameras from new viewports
-			{	std::list<Camera*>::iterator it = mSplitMgr->mCameras.begin();
-				for (int i=0; i < carModels.size(); ++i)
-					if (carModels[i]->fCam && it != mSplitMgr->mCameras.end())
-					{	carModels[i]->fCam->mCamera = *it;  ++it;  }
-			}
-			if (!mSplitMgr->mCameras.empty())
-			{
-				Camera* cam1 = *mSplitMgr->mCameras.begin();
-				scn->mWaterRTT->setViewerCamera(cam1);
-				if (scn->grass)  scn->grass->setCamera(cam1);
-				if (scn->trees)  scn->trees->setCamera(cam1);
+			scn->mWaterRTT->setViewerCamera(cam1);
 			}*/
 			///gui->InitCarPrv();
 		}

@@ -22,8 +22,8 @@ void BaseApp::updateStats()
 	//  camera pos, rot
 	if (pSet->camPos)
 	{
-		const Vector3& pos = /*road ? road->posHit :*/ mCameras[0]->getDerivedPosition();
-		Vector3 dir = mCameras[0]->getDirection();  //const Quaternion& rot = mCameras[0]->getDerivedOrientation();
+		const Vector3& pos = /*road ? road->posHit :*/ mCamera->getDerivedPosition();
+		Vector3 dir = mCamera->getDirection();  //const Quaternion& rot = mCameras[0]->getDerivedOrientation();
 		String s =  TR("#{Obj_Pos}: ")+fToStr(pos.x,1)+" " + fToStr(pos.y,1) + " " + fToStr(pos.z,1)+
 				TR(", | #{Obj_Rot}: ")+fToStr(dir.x,2) + " "+fToStr(dir.y,2)+" "+fToStr(dir.z,2);
 		txCamPos->setCaption(s);

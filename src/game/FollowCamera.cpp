@@ -3,6 +3,7 @@
 #include "Def_Str.h"
 #include "FollowCamera.h"
 #include "settings.h"
+#include "Cam.h"
 
 #include "tinyxml2.h"
 #include "pathmanager.h"
@@ -294,11 +295,15 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 
 void FollowCamera::Apply(const PosInfo& posIn)
 {
-	//boost::this_thread::sleep(boost::posix_time::milliseconds(rand()%20));
-	if (!mCamera)  return;
-
-	mCamera->setPosition(posIn.camPos);
-	mCamera->setOrientation(posIn.camRot);
+	//sleep(milliseconds(rand()%20));  // test
+	if (!cam)  return;
+	if (cam->nd)
+	{	cam->nd->setPosition(posIn.camPos);
+		cam->nd->setOrientation(posIn.camRot);
+	}else
+	{	cam->cam->setPosition(posIn.camPos);
+		cam->cam->setOrientation(posIn.camRot);
+	}
 }
 
 
@@ -514,8 +519,8 @@ void FollowCamera::setCamera(int ang)
 
 //  🌟 ctor  ----
 
-FollowCamera::FollowCamera(Camera* cam,	SETTINGS* pSet1)
-	:mCamera(cam), pSet(pSet1)
+FollowCamera::FollowCamera(Cam* cam1, SETTINGS* pSet1)
+	:cam(cam1), pSet(pSet1)
 { 
 	ca = new CameraView();
 	ss[0] = 0;

@@ -3,6 +3,7 @@
 #include "quaternion.h"
 #include "cardefs.h"
 #include "CarPosInfo.h"
+
 #include <OgreVector3.h>
 #include <OgreMatrix4.h>
 #include <OgrePrerequisites.h>
@@ -16,7 +17,7 @@ namespace Ogre {  class HlmsPbsDatablock;
 	namespace v1 {  class RibbonTrail;  class BillboardSet;  }  }
 namespace MyGUI {  class TextBox;  }
 class SETTINGS;  class GAME;  class CAR;
-class Scene;  class App;  class FollowCamera;
+class Scene;  class App;  class FollowCamera;  struct Cam;
 
 
 //  CarModel is the "Ogre" part of a Vehicle.
@@ -50,15 +51,15 @@ public:
 	//  🌟 ctor  ----
 	CarModel(int index, int colorId,
 		eCarType type, const std::string& name,
-		Ogre::Camera* cam, App* app);
+		Cam* cam1, App* app);
 	~CarModel();
 	
 	App* pApp =0;
 	GAME* pGame =0;
 	SETTINGS* pSet =0;
 	Scene* sc =0;
+
 	//  🟢 Ogre
-	Ogre::Camera* mCamera =0;
 	Ogre::SceneManager* mSceneMgr =0;
 	Ogre::Terra* terrain =0;
 
@@ -130,9 +131,10 @@ public:
 	Ogre::ColourValue color;  // for minimap pos tri color
 	Ogre::HlmsPbsDatablock *db =0;
 	void ChangeClr();  //  Apply new color
-		
+	
 	
 	///  🎥 Camera, can be null  ----
+	Cam* cam =0;
 	FollowCamera* fCam =0;
 	int iCamFluid = -1;   // id to fluids[], -1 none
 	float fCamFl = 0.6f;  // factor, close to surface

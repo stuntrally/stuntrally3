@@ -1,5 +1,6 @@
 #pragma once
 #include "Gui_Def.h"
+#include "Cam.h"
 #include <string>
 #include <OgreString.h>
 #include <OgreHlmsCommon.h>
@@ -100,16 +101,23 @@ public:
 	//  🔮 Reflection Cubemap  ----------------
 	Ogre::Camera* mCubeCamera = 0;
 	Ogre::TextureGpu* mCubeReflTex = 0;
+	void CreateCubeReflect();
 
 	IblQuality mIblQuality = IblLow;  // par in ctor-
 	Ogre::CompositorWorkspace* SetupCompositor();
 
-	//  👥 split screen
-	std::vector<Ogre::Camera*> mCameras;  // for each player [4]
-	Ogre::Camera* CreateCamera(Ogre::String name);
+
+	//  👥 Split screen  ----------------
+
+	std::vector<Cam> mCamsAll, mCams;  // for each player [4]
+	Cam* findCam(Ogre::String name);
+
+	Cam* CreateCamera(Ogre::String name,
+		Ogre::SceneNode* node,  // creates for 0, attaches if not 0
+		Ogre::Vector3 pos, Ogre::Vector3 lookAt);
 	void DestroyCameras();
 	
-	// dimensions for the viewport of each player [4]
+	//  viewport dimensions, for each player [4]
 	struct VPDims
 	{
 		Ogre::Real top,left, width,height, right,bottom, avgsize;
@@ -120,6 +128,8 @@ public:
 		VPDims()
 		{	Default();  }
 	} mDims[4];
+
+	//  workspace, Ogre render setup  [4] + 1 for refl
 	std::vector<Ogre::CompositorWorkspace*> mWorkspaces;
 
 

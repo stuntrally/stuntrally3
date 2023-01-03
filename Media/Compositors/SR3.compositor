@@ -84,7 +84,8 @@ compositor_node CubemapNodeMsaa
 //------------------------------------------------------------------------------------
 
 
-//  render
+//  main render (split screen)
+
 compositor_node SR3_Render
 {
 	in 0 rt_renderwindow
@@ -94,11 +95,14 @@ compositor_node SR3_Render
 	{
 		pass clear
 		{
+			profiling_id "Clear all"
+
+			// executed on first view/eye
 			execution_mask			0x01
-			//Don't be affected by the modifier, apply to the whole screen
+			// affected by modifier, apply to the whole screen
 			viewport_modifier_mask	0x00
 
-			// Only write to the MSAA surface (don't resolve!)
+			// Only write to the MSAA surface, don't resolve!
 			// because overlays due to a legacy problem break the pass
 			// thus if we resolve now, we'll resolve twice
 			store
@@ -111,11 +115,14 @@ compositor_node SR3_Render
 			colour_value  0.02 0.015 0.03 1
 		}
 
+		//  view render  ----
 		pass render_scene
 		{
-			//Get executed in all eyes
+			profiling_id "view/eye specific"
+
+			// executed in all views/eyes
 			execution_mask			0xff
-			//Be affected by the modifier, so we render just to a portion of the screen.
+			// affected by modifier, so renders to a portion of screen
 			viewport_modifier_mask	0xff
 
 			// load
@@ -124,7 +131,7 @@ compositor_node SR3_Render
 			// 	clear_colour  0.01 0.01 0.02 1
 			// }
 
-			// Only write to the MSAA surface (don't resolve!) (see clear pass)
+			// Only write to the MSAA surface, don't resolve
 			store
 			{
 				colour	store
@@ -149,7 +156,18 @@ compositor_node SR3_Render
 
 		// pass custom MYGUI
 		// {
-			// provider?  added in code
+			// provider?  added in code..
+			// profiling_id "GUI"
+
+			// executed in the second eye
+			// execution_mask			0x02
+			// // not affected by the modifier, apply to the whole screen
+			// viewport_modifier_mask	0x00
+			
+			// rq_first	254
+			// rq_last		255
+			
+			// overlays	on
 		// }
 	}
 }

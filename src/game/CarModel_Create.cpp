@@ -200,9 +200,9 @@ void CarModel::Create()
 	SceneNode* ndCar = ndMain->createChildSceneNode();  ToDel(ndCar);
 
 	//  🎥 --------  Follow Camera   --------
-	if (mCamera && pCar)
+	if (cam && pCar)
 	{
-		fCam = new FollowCamera(mCamera, pSet);
+		fCam = new FollowCamera(cam, pSet);
 		fCam->chassis = pCar->dynamics.chassis;
 		fCam->loadCameras();
 		

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "Road.h"
+#include "Cam.h"
 #ifndef SR_EDITOR
 	#include "game.h"
 #endif
@@ -81,7 +82,7 @@ void SplineRoad::UpdLodVis(float fBias, bool bFull)
 	st.iVis = 0;  st.iTris = 0;
 	const Real fDist[LODs+1] = {-g_VisBehind, 40, 80, 140, g_VisDist};  //par gui bias..
 	
-	const Plane& pl = mCamera->getFrustumPlane(FRUSTUM_PLANE_NEAR);
+	const Plane& pl = mCamera->cam->getFrustumPlane(FRUSTUM_PLANE_NEAR);
 	for (size_t seg = 0; seg < vSegs.size(); ++seg)
 	{
 		#ifdef SR_EDITOR
@@ -136,7 +137,7 @@ void SplineRoad::UpdLodVisMarks(Real distSq, bool vis)
 	for (auto m:vMarks)
 	if (m.nd)
 	{
-		Real d = mCamera->getPosition().squaredDistance(m.nd->getPosition());
+		Real d = mCamera->cam->getPosition().squaredDistance(m.nd->getPosition());
 		m.nd->setVisible(vis && d < distSq);
 	}
 	#endif

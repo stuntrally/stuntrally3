@@ -124,7 +124,7 @@ void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 			if (p.txt)  p.txt->setVisible(false);
 		}
 	}
-	const Vector3& c = mCamera->getPosition();
+	const Vector3& c = cam->cam->getPosition();
 	for (i=0; i < s; ++i)
 	{
 		PaceNote& p = vPN[i];
@@ -146,14 +146,14 @@ void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 	bool vis = !hide && pSet->pace_show;
 	if (vis)
 	{
-		Vector3 vx = pSet->pace_size * mCamera->getRight(),
-				vy = pSet->pace_size * mCamera->getUp();
+		Vector3 vx = pSet->pace_size * cam->cam->getRight(),
+				vy = pSet->pace_size * cam->cam->getUp();
 
 		hr->begin();
 
 		auto add = [&](const PaceNote& pc)
 		{
-			float dist = mCamera->getPosition().distance(pc.pos);
+			float dist = cam->cam->getPosition().distance(pc.pos);
 			dist = std::max(0.f, dist - 5.f / pSet->pace_near);
 			float fade = std::min(1.f,  // close fade
 				pSet->pace_near * dist * 0.03f);
@@ -230,11 +230,11 @@ void PaceNotes::UpdTxt()
 //  🔤 text pos upd  3d to 2d
 void PaceNotes::updTxt(PaceNote& n, bool vis)
 {
-	if (!vis || !mCamera->isVisible(n.pos))
+	if (!vis || !cam->cam->isVisible(n.pos))
 	{	n.txt->setVisible(false);
 		return;
 	}
-	Vector3 pos2D = mCamera->getProjectionMatrix() * (mCamera->getViewMatrix() * n.pos);
+	Vector3 pos2D = cam->cam->getProjectionMatrix() * (cam->cam->getViewMatrix() * n.pos);
 	Real x =  pos2D.x * 0.5f + 0.5f;
 	Real y = -pos2D.y * 0.5f + 0.5f;
 
@@ -255,10 +255,10 @@ void PaceNotes::updTxt(PaceNote& n, bool vis)
 
 
 //  setup  ---------
-void PaceNotes::Setup(SceneManager* sceneMgr, Camera* camera,
+void PaceNotes::Setup(SceneManager* sceneMgr, Cam* camera,
 	Terra* terrain, MyGUI::Gui* gui, Ogre::Window* window)
 {
-	mSceneMgr = sceneMgr;  mCamera = camera;
+	mSceneMgr = sceneMgr;  cam = camera;
 	mTerrain = terrain;  mGui = gui;  mWindow = window;
 }
 void PaceNotes::SetupTer(Terra* terrain)

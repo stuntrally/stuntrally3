@@ -15,7 +15,7 @@ using namespace Ogre;
 //---------------------------------------------------------------------------------------------------------------
 void SplineMarkEd::Setup(
 	String sMarkerMeshFile, Real scale,
-	Terra* terrain, SceneManager* sceneMgr, Camera* camera, int idx)
+	Terra* terrain, SceneManager* sceneMgr, Cam* camera, int idx)
 {
 	mTerrain = terrain;  mSceneMgr = sceneMgr;  mCamera = camera;
 	idRd = idx;

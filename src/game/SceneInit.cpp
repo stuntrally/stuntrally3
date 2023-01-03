@@ -340,7 +340,7 @@ void App::LoadCleanUp()
 
 	MinimizeMemory();  // todo: car refl ?
 
-	SetupCompositor();  //? twice
+	SetupCompositor();  //+ ok
 }
 
 
@@ -419,7 +419,6 @@ void App::LoadGame()
 			if (i == 0)  nick = pSet->nickname;
 			else  nick = mClient->getPeer(startId).name;
 		}*/
-		Camera* cam = mCameras[i];  // 🎥
 
 		//  need road looped here
 		String sRd = gcom->PathListTrk() + "/road.xml";
@@ -427,7 +426,7 @@ void App::LoadGame()
 		bool loop = //rd.getNumPoints() < 2 ? false :
 			!rd.isLooped && pSet->game.track_reversed ? true : false;
 		
-		CarModel* car = new CarModel(i, i, et, carName, cam, this);
+		CarModel* car = new CarModel(i, i, et, carName, &mCams[i], this);
 		car->Load(startId, loop);
 		carModels.push_back(car);
 		
@@ -500,14 +499,6 @@ void App::LoadScene()  // 3
 
 	if (dstTrk)
 		scn->CreateEmitters();  // 🔥
-
-
-	//  water RTT
-	// scn->UpdateWaterRTT(mSplitMgr->mCameras.front());
-
-	/// generate materials
-	// setupCompositor();
-	// refreshCompositor();
 
 
 	//  💧 Fluids
@@ -813,7 +804,7 @@ void App::CreateRoads()
 {
 	///  road  ~ ~ ~
 	SplineRoad*& road = scn->road;
-	Camera* cam = mCameras[0];
+	Cam* cam = &mCams[0];  // todo: lod cam-
 
 	//  road
 	if (dstTrk)
@@ -868,7 +859,7 @@ void App::CreateRoads()
 
 void App::CreateRoadsInt()
 {
-	Camera* cam = mCameras[0]; //*mSplitMgr->mCameras.begin();
+	Cam* cam = &mCams[0];  // todo: lod cam-
 
 	//  get all road*.xml
 	strlist lr;  string path = gcom->TrkDir();
@@ -893,7 +884,7 @@ void App::CreateRoadsInt()
 ///  Trail ghost track  ~~--~-~--
 //---------------------------------------------------------------------------------------------------------------
 
-void App::CreateTrail(Camera* cam)
+void App::CreateTrail(Cam* cam)
 {
 	// if (!pSet->trail_show)
 		// return;  // fixme crash in replay--

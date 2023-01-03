@@ -10,6 +10,7 @@ namespace Ogre {  class SceneManager;  class SceneNode;  class Terra;  class Cam
 	namespace v1  {  class BillboardSet;  class Billboard;  }  }
 namespace MyGUI {  class TextBox;  class Gui;  }
 class SplineRoad;  class Scene;  class SETTINGS;
+struct Cam;
 
 #if 0
 enum PaceTypes                 // 90     // 180    // 270
@@ -61,7 +62,7 @@ public:
 	//void Defaults();
 
 	//  🌟 Setup, call this on Init
-	void Setup(Ogre::SceneManager* sceneMgr, Ogre::Camera* camera,
+	void Setup(Ogre::SceneManager* sceneMgr, Cam* camera,
 		Ogre::Terra* terrain, MyGUI::Gui* gui, Ogre::Window* window);
 	void SetupTer(Ogre::Terra* terrain);
 
@@ -80,10 +81,10 @@ public:
 private:
 	//  🟢 ogre vars
 	Ogre::SceneManager* mSceneMgr =0;
-	Ogre::Camera* mCamera =0;
 	Ogre::Terra* mTerrain =0;
 	MyGUI::Gui* mGui =0;
 	Ogre::Window* mWindow =0;
+	Cam* cam =0;
 	
 	//  all notes
 	HudRenderable* hr =0;

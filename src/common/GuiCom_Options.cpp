@@ -7,6 +7,7 @@
 #include "pathmanager.h"
 #include "settings.h"
 #include "App.h"
+#include "Cam.h"
 #ifndef SR_EDITOR
 	#include "game.h"
 	// #include "SplitScreen.h"

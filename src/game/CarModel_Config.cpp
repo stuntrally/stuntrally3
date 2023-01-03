@@ -20,9 +20,9 @@ using namespace std;
 //------------------------------------------------------------------------------------------------------
 CarModel::CarModel(int index, int colorId,
 	eCarType type, const string& name,
-	Camera* cam, App* app)
+	Cam* cam1, App* app)
 
-	:pApp(app), mCamera(cam)
+	:pApp(app), cam(cam1)
 
 	,iIndex(index), iColor(colorId % 6)
 	,sDirname(name)

@@ -1,8 +1,7 @@
 #pragma once
-#include <Ogre.h>
-// #include <OgreVector3.h>
-// #include <OgreQuaternion.h>
-// #include <OgreString.h>
+#include <OgreVector3.h>
+#include <OgreQuaternion.h>
+#include <OgreString.h>
 #include <vector>
 
 
@@ -33,7 +32,7 @@ public:
 
 
 namespace Ogre {  class TerrainGroup;  class Camera;  class OverlayElement;  class SceneNode;  }
-struct PosInfo;  class SETTINGS;
+struct PosInfo;  class SETTINGS;  struct Cam;
 class COLLISION_WORLD;  class btRigidBody;
 
 //#define CAM_TILT_DBG  // show wheels in ray hit poses
@@ -42,13 +41,13 @@ class COLLISION_WORLD;  class btRigidBody;
 class FollowCamera
 {
 public:
-	FollowCamera(Ogre::Camera* cam, SETTINGS* pSet1);
+	FollowCamera(Cam* cam1, SETTINGS* pSet1);
 	~FollowCamera();
 
 	SETTINGS* pSet =0;
+	Cam* cam =0;  // has camera and node
 
 	//  🟢 Ogre
-	Ogre::Camera* mCamera =0;
 	Ogre::TerrainGroup* mTerrain =0;
 	class btRigidBody* chassis =0;
 
