@@ -472,7 +472,7 @@ CHud::Hud::Hud()
 
 void CHud::Destroy()
 {
-	LogO("D--- Destroy Hud ");
+	LogO("D--- Destroy Hud");
 	SceneManager* scm = app->mSceneMgr;
 	int i,c;
 	for (c=0; c < hud.size(); ++c)

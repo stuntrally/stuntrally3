@@ -178,6 +178,7 @@ void HudRenderable::createBuffers(const int count)
 
 //  💫 Update
 //-----------------------------------------------------------------------------------
+
 //  maps all verts
 void HudRenderable::begin()
 {
@@ -185,6 +186,7 @@ void HudRenderable::begin()
 		vb->map( 0, vb->getNumElements() ) );
 	iVertCur = 0;
 }
+
 void HudRenderable::position(float x, float y, float z)
 {
 	if (iVertCur >= iVertCount)  return;
@@ -207,8 +209,18 @@ void HudRenderable::color(float r, float g, float b, float a)
 	vp[0] = r;  vp[1] = g;  vp[2] = b;  vp[3] = a;
 	vp += 4;
 }
+
+//  end map
 void HudRenderable::end()
 {
+	//  fill rest if needed, to not have garbage
+	if (iVertCur < iVertCount)
+	for (int i = iVertCur; i < iVertCount; ++i)
+	{
+		position(0.f, -1000.f, 0.f);  // whatever
+		if (bUV)  texUV(0.f, 0.f);
+		if (bColors)  color(0.f, 0.f, 0.f, 0.f);
+	}
 	//  check if same count as in ctor
 	if (iVertCur != iVertCount)
 		LogO("HudR Error: Wrong vertices: " +
