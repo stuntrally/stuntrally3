@@ -65,7 +65,8 @@ void AppGui::CreateTerrain()
 	///  🏔️ Layer Textures  ------------------------------------------------
 	Scene* sc = scn->sc;
 
-	const Real fTer = sc->td.fTerWorldSize;  //= fTriangleSize * iTerSize;
+	const Real fTer = sc->td.fTerWorldSize;
+	// const Real fTer = sc->td.fTriangleSize * sc->td.iVertsX;
 	int ls = sc->td.layers.size();
 	for (int i=0; i < ls; ++i)
 	{
@@ -135,18 +136,17 @@ void AppGui::CreateTerrain()
 
 	//  ⛰️ Heightmap  ------------------------------------------------
 	LogO("---T Terrain Hmap load");
-	Real sizeXZ = sc->td.fTriangleSize * (sc->td.iVertsX-1);  //sc->td.fTerWorldSize;
-	float ofs = sc->td.fTriangleSize;  // ofs fix, 1025 to 1024 verts etc
+	int size = sc->td.iVertsX;
+	Real sizeXZ = sc->td.fTriangleSize * size;  //sc->td.fTerWorldSize;
 	// LogO("Ter size: " + toStr(sc->td.iVertsX));// +" "+ toStr((sc->td.iVertsX)*sizeof(float))
 
 	bool any = !mTerra->bNormalized;
-	mTerra->load(
-		sc->td.iVertsX-1, sc->td.iVertsY-1, 
-		sc->td.hfHeight, sc->td.iVertsX,
-		Vector3( 0.f,    any ? 0.5f : 0.f, ofs ),  //** y why?
+	mTerra->load( size, size,
+		sc->td.hfHeight, sc->td.iVertsXold,
+		Vector3( 0.f,    any ? 0.5f : 0.f, sc->td.ofsZ ),  //** why y?
 		Vector3( sizeXZ, any ? 1.f : mTerra->fHRange, sizeXZ ),  //** ter norm scale..
 		// true, true);
-		false, false);
+		false, false);  // #ifdef SR_ED?
 
 	// if (mTerra->m_blendMapTex)
 	tdb->setTexture( TERRA_DETAIL_WEIGHT, mTerra->blendmap.texture );  //**

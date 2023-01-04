@@ -122,7 +122,8 @@ bool Scene::SaveXml(String file)
 
 
 	TiXmlElement ter("terrain");  // ⛰️
-		ter.SetAttribute("size",		toStrC( td.iVertsX ));
+		// ter.SetAttribute("size",		toStrC( td.iVertsX ));  // no, from filesize
+		ter.SetAttribute("ofsZ",		toStrC( td.ofsZ ));
 		ter.SetAttribute("triangle",	toStrC( td.fTriangleSize ));
 		ter.SetAttribute("errNorm",		fToStr( td.errorNorm, 2,4 ).c_str());
 		if (td.normScale != 1.f)

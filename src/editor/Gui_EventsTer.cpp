@@ -130,7 +130,7 @@ void CGui::updTabHmap()
 	static std::map<int,int> h;
 	if (h.empty())
 	{	h[128]=0; h[256]=1; h[512]=2; h[1024]=3; h[2048]=4; h[4096]=5; h[8192]=6;  }
-	tabsHmap->setIndexSelected( h[ sc->td.iTerSize - 1] );
+	tabsHmap->setIndexSelected( h[ sc->td.iVertsX ] );
 	tabHmap(0,0);
 }
 int CGui::getHMapSizeTab()
@@ -167,11 +167,11 @@ void CGui::btnTerrainNew(WP)
 	// sc->td.iVertsX = size+1;  sc->td.UpdVals();  // new hf
 	sc->td.iVertsX = size;  sc->td.UpdVals();  // new hf
 
-	float* hfData = new float[sc->td.iVertsX * sc->td.iVertsY];
-	int siz = sc->td.iVertsX * sc->td.iVertsY * sizeof(float);
+	float* hfData = new float[sc->td.iVertsX * sc->td.iVertsX];
+	int siz = sc->td.iVertsX * sc->td.iVertsX * sizeof(float);
 	
 	//  generate Hmap
-	for (int j=0; j < sc->td.iVertsY; ++j)
+	for (int j=0; j < sc->td.iVertsX; ++j)
 	{
 		int a = j * sc->td.iVertsX;
 		for (int i=0; i < sc->td.iVertsX; ++i,++a)
@@ -190,7 +190,7 @@ void CGui::btnTerrainNew(WP)
 //  Terrain  half  --------------------------------
 void CGui::btnTerrainHalf(WP)
 {
-	int halfSize = (sc->td.iVertsX-1) / 2 +1;
+	int halfSize = sc->td.iVertsX / 2;
 	float* hfData = new float[halfSize * halfSize];
 	int siz = halfSize * halfSize * sizeof(float);
 	
@@ -217,14 +217,14 @@ void CGui::btnTerrainHalf(WP)
 #if 1
 void CGui::btnTerrainDouble(WP)
 {
-	int dblSize = (sc->td.iVertsX-1) * 2 +1;
+	int dblSize = sc->td.iVertsX * 2, ofs4 = dblSize / 4;
 	float* hfData = new float[dblSize * dblSize];
 	int siz = dblSize * dblSize * sizeof(float);
 	
 	//  resize Hmap by half
 	for (int j=0; j < sc->td.iVertsX; ++j)
 	{
-		int a = (j +dblSize/4) * dblSize + dblSize/4, a2 = j * sc->td.iVertsX;
+		int a = (j + ofs4) * dblSize + ofs4, a2 = j * sc->td.iVertsX;
 		for (int i=0; i < sc->td.iVertsX; ++i,++a)
 		{	hfData[a] = sc->td.hfHeight[a2];  ++a2;  }
 	}
@@ -243,10 +243,11 @@ void CGui::btnTerrainDouble(WP)
 void CGui::btnTerrainDouble(WP)
 {
 	int size = getHMapSizeTab() / 2;
-	if (valTerTriSize){ valTerTriSize->setCaption(fToStr(sc->td.fTriangleSize * size,2,4));  }
+	if (valTerTriSize)
+		valTerTriSize->setCaption(fToStr(sc->td.fTriangleSize * size,2,4));
 
 	int oldSize = sc->td.iVertsX, osi = oldSize*oldSize,
-		newSize = (oldSize-1) * 2 +1;
+		newSize = oldSize * 2;
 	float scale = 1.f / 2.f / 2.f;
 	float* hfData = new float[si];
 	for (int i=0; i < si; ++i)  hfData[i] = 0.f;  // clear out
@@ -341,11 +342,11 @@ void CGui::btnScaleTerH(WP)
 	}
 
 	//  ter  ---
-	float* hfData = new float[sc->td.iVertsX * sc->td.iVertsY];
-	int siz = sc->td.iVertsX * sc->td.iVertsY * sizeof(float);
+	float* hfData = new float[sc->td.iVertsX * sc->td.iVertsX];
+	int siz = sc->td.iVertsX * sc->td.iVertsX * sizeof(float);
 	
 	//  generate Hmap
-	for (int j=0; j < sc->td.iVertsY; ++j)
+	for (int j=0; j < sc->td.iVertsX; ++j)
 	{
 		int a = j * sc->td.iVertsX;
 		for (i=0; i < sc->td.iVertsX; ++i,++a)

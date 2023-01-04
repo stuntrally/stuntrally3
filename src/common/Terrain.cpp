@@ -21,9 +21,7 @@
 
 #include "Grass.h"
 #include "Terra.h"
-#include <filesystem>
 using namespace Ogre;
-namespace fs = std::filesystem;
 
 
 ///  OLD  Setup Terrain
@@ -92,36 +90,32 @@ void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
 	// UpdLayerPars();
 	
 
-	///  --------  fill HeightField data --------
+	///  Load Heightmap data --------
 	Ogre::Timer ti;
 	if (terLoad || bNewHmap)
 	{
-		String fname = app->gcom->TrkDir() + (/*bNewHmap ? "heightmap-new.f32" :*/ "heightmap.f32");
+		String fname = app->gcom->TrkDir() + (bNewHmap ? "heightmap-new.f32" : "heightmap.f32");
 
-		int fsize = fs::file_size(fname.c_str());
-		int size = fsize / 4;  // floats
+		int fsize = sc->td.getFileSize(fname);
+		int size = fsize / sizeof(float);
 
 		sc->td.hfHeight.clear();
 		sc->td.hfHeight.resize(size);
 
-		int wx = sqrt(size), wy = wx;
-		// int wx = sc->td.iVertsX, wy = sc->td.iVertsY, wxy = wx * wy;  //wy=wx
-
-		//  load from f32 HMap +
+		//  load f32 HMap +
 		{
 			std::ifstream fi;
 			fi.open(fname.c_str(), std::ios_base::binary);
 			fi.read((char*)&sc->td.hfHeight[0], fsize);
 			fi.close();
 		}
-	
-	
+		
 	   	//**  new  .. GetTerMtrIds() from blendmap ..
 	#ifndef SR_EDITOR
 		app->blendMtr.resize(size);
 		// memset(app->blendMtr,0,size2);  // zero
 
-		app->blendMapSize = wx;
+		app->blendMapSize = sqrt(size);
 		// sc->td.layersAll[0].surfId = 0;  //par ter mtr..
 	#endif
 	}
@@ -149,7 +143,7 @@ void CScene::copyTerHmap()
 {
 	if (!terrain)  return;
 	//; float *fHmap = terrain->getHeightData();
-	// int size = sc->td.iVertsX * sc->td.iVertsY * sizeof(float);
+	// int size = sc->td.iVertsX * sc->td.iVertsX * sizeof(float);
 	// memcpy(sc->td.hfHeight, fHmap, size);
 }
 
@@ -179,7 +173,7 @@ void CScene::UpdBlendmap()
 void CScene::CreateBltTerrain()
 {
 	btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
-		sc->td.iVertsX, sc->td.iVertsY,
+		sc->td.iVertsXold, sc->td.iVertsXold,
 		&sc->td.hfHeight[0], sc->td.fTriangleSize,
 		-1300.f,1300.f, 2, PHY_FLOAT,false);  //par- max height
 	
@@ -196,7 +190,7 @@ void CScene::CreateBltTerrain()
 	col->setRestitution(0.0);
 	//col->setHitFraction(0.1f);
 	col->setCollisionFlags(col->getCollisionFlags() |
-		btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+		btCollisionObject::CF_STATIC_OBJECT /*| btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
 	#ifndef SR_EDITOR  // game
 		app->pGame->collision.world->addCollisionObject(col);
 		app->pGame->collision.shapes.push_back(hfShape);

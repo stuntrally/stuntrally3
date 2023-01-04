@@ -137,7 +137,8 @@ bool Scene::LoadXml(String file, bool bTer)
 	///  ⛰️ terrain
 	e = root->FirstChildElement("terrain");
 	if (e)
-	{	a = e->Attribute("size");		if (a)  td.iVertsX = s2i(a);  // got from hmap file size later
+	{	//a = e->Attribute("size");		if (a)  td.iVertsXold = s2i(a);  // got from hmap file size later
+		a = e->Attribute("ofsZ");		if (a)  td.ofsZ = s2r(a);
 		a = e->Attribute("triangle");	if (a)  td.fTriangleSize = s2r(a);
 		a = e->Attribute("errNorm");	if (a)  td.errorNorm = s2r(a);
 

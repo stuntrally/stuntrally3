@@ -3,6 +3,8 @@
 #include "SceneClasses.h"
 #include "Axes.h"
 #include <OgreSceneNode.h>
+#include <filesystem>
+namespace fs = std::filesystem;
 using namespace std;
 using namespace Ogre;
 
@@ -69,7 +71,7 @@ TerData::TerData()
 }
 void TerData::Default()
 {
-	iVertsX = 1025;  // 1024!..
+	iVertsX = 1024;
 	fTriangleSize = 1.f;  // scale
 	triplanarLayer1 = 8;  triplanarLayer2 = 8;  triplCnt = 0;  // off
 	errorNorm = 1.7;  normScale = 1.f;
@@ -111,9 +113,25 @@ TerLayer::TerLayer() :
 
 void TerData::UpdVals()
 {
-	iVertsY = iVertsX;  //square only-[]
-	iTerSize = iVertsX;
-	fTerWorldSize = (iTerSize-1)*fTriangleSize;
+	fTerWorldSize = iVertsX * fTriangleSize;
+}
+
+int TerData::getFileSize(std::string filename)
+{
+	int fsize = fs::file_size(filename);
+	int size = fsize / sizeof(float);
+	
+	iVertsX = sqrt(size);  // [] square ter only
+	iVertsXold = iVertsX;
+	
+	if (iVertsX % 2 == 1)
+	{
+		--iVertsX;  // 1025 to 1024 etc
+		//  set if hmap old, read from xml for new
+		ofsZ = fTriangleSize;
+	}
+	UpdVals();
+	return fsize;
 }
 
 

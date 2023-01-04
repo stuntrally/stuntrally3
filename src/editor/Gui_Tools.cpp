@@ -59,7 +59,7 @@ void CGui::btnCopyTerHmap(WP)
 	Copy(from + "/heightmap.f32", name);
 	
 	Scene sF;  sF.LoadXml(from + "/scene.xml");
-	sc->td.iVertsX = sF.td.iTerSize;  //  ter sizes
+	sc->td.getFileSize(from);  // sets sc->td.iVertsX
 	sc->td.fTriangleSize = sF.td.fTriangleSize;
 	sc->td.UpdVals();
 	app->bNewHmap = true;

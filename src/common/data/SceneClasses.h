@@ -42,9 +42,12 @@ class TerData		//  ⛰️ Terrain
 public:	
 	//  height field
 	std::vector<float> hfHeight;
+	int getFileSize(std::string filename);  // Inits iVertsX etc
 	
 	//  size
-	int iVertsX, iVertsY, iTerSize;  // size in vertices
+	int iVertsX,  // always 2^n  1024 etc
+		iVertsXold;  // 2^n + 1  1025 old SR, before convert
+	float ofsZ = 0.f;  // not 0, after convert
 	float fTriangleSize, fTerWorldSize;  // scale size
 	float errorNorm;  // terrain error % at default quality
 	void UpdVals();

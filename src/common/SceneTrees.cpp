@@ -100,7 +100,7 @@ void CScene::CreateTrees()
 		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 
 		tws = sc->td.fTerWorldSize;
-		int r = imgRoadSize, cntshp = 0, txy = sc->td.iVertsX*sc->td.iVertsY-1;
+		int r = imgRoadSize, cntshp = 0;
 
 		//  set random seed  /// add seed in scene.xml and in editor gui..
 		MTRand rnd((MTRand::uint32)1213);

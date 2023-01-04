@@ -123,8 +123,9 @@ void App::keyPressRoad(SDL_Scancode skey)
 			{	//  add new
 				SplineRoad* road = new SplineRoad(this);
 				int id = scn->roads.size();
+				Cam* cam = &mCams[0];  // todo: lod cam-
 				
-				road->Setup("sphere.mesh", pSet->road_sphr, scn->terrain, mSceneMgr, mCamera, id);
+				road->Setup("sphere.mesh", pSet->road_sphr, scn->terrain, mSceneMgr, cam, id);
 				road->Rebuild(true);  //road->RebuildRoadInt();
 				
 				scn->roads.push_back(road);

@@ -252,8 +252,9 @@ void App::LoadTrackEv()
 
 	
 	//  🚦 pace ~ ~
+	Cam* cam = &mCams[0];  // todo: lod cam-
 	scn->pace = new PaceNotes(pSet);
-	scn->pace->Setup(mSceneMgr, mCamera, scn->terrain, gui->mGui, mWindow);
+	scn->pace->Setup(mSceneMgr, cam, scn->terrain, gui->mGui, mWindow);
 	
 	
 	//  📦 Objects
@@ -304,11 +305,12 @@ void App::CreateRoads()  // 🛣️
 	{
 		int id = scn->roads.size();
 		LogO("~~~R create road " + toStr(id) + " from: " + fname);
+		Cam* cam = &mCams[0];  // todo: lod cam-
 		scn->road = new SplineRoad(this);
 		scn->road->Setup(
 			"sphere.mesh",
 			// "sphere1k.mesh", // todo: hq lods
-			pSet->road_sphr, scn->terrain, mSceneMgr, mCamera, id);
+			pSet->road_sphr, scn->terrain, mSceneMgr, cam, id);
 		scn->road->LoadFile(path + fname);
 		scn->roads.push_back(scn->road);
 	}
@@ -405,16 +407,16 @@ void App::SaveTrackEv()
 	gui->CreateDir(dir);
 	gui->CreateDir(dir+"/objects");
 
-	/*if (scn->terrain)
-	{	float *fHmap = scn->terrain->getHeightData();
-		int size = scn->sc->td.iVertsX * scn->sc->td.iVertsY * sizeof(float);
+	if (scn->terrain)
+	{	std::vector<float>& fHmap = scn->terrain->getHeightData();
+		int fsize = scn->sc->td.iVertsX * scn->sc->td.iVertsX * sizeof(float);
 
 		String file = dir+"heightmap.f32";
 		std::ofstream of;
 		of.open(file.c_str(), std::ios_base::binary);
-		of.write((const char*)fHmap, size);
+		of.write((const char*)&fHmap[0], fsize);
 		of.close();
-	}*/
+	}
 
 	int i = 0;  // all roads
 	for (auto r : scn->roads)
