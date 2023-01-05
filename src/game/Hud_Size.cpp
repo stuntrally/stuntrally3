@@ -228,7 +228,7 @@ void CHud::Show(bool hideAll)
 
 				h.ndGauges->setVisible(show);  //h.ndNeedles->setVisible(show);
 				
-				// h.ndMap->setVisible(pSet->trackmap);
+				h.ndMap->setVisible(pSet->trackmap);
 				h.txTimes->setVisible(times);  h.txTimTxt->setVisible(times);  h.bckTimes->setVisible(times);
 				h.txLap->setVisible(times);  h.txLapTxt->setVisible(times);  h.bckLap->setVisible(times);
 
@@ -238,7 +238,7 @@ void CHud::Show(bool hideAll)
 					h.txCam->setVisible(cam);
 		}	}
 	}
-	//; if (ndPos)  ndPos->setVisible(pSet->trackmap);
+	if (ndPos)  ndPos->setVisible(pSet->trackmap);
 	
 	app->updMouse();
 	

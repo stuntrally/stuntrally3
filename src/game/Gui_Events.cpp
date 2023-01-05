@@ -363,9 +363,12 @@ void CGui::chkBeam(Ck*)
 //  hud minimap
 void CGui::chkMinimap(Ck*)
 {
-	// for (int c=0; c < hud->hud.size(); ++c)
-	// 	if (hud->hud[c].ndMap)
-	// 		hud->hud[c].ndMap->setVisible(pSet->trackmap);
+	for (int c=0; c < hud->hud.size(); ++c)
+	{	if (hud->hud[c].ndMap)
+			hud->hud[c].ndMap->setVisible(pSet->trackmap);
+		if (hud->ndPos)
+			hud->ndPos->setVisible(pSet->trackmap);
+	}
 }
 
 void CGui::chkMiniUpd(Ck*)

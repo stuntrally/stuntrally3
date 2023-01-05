@@ -146,9 +146,9 @@ void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 	bool vis = !hide && pSet->pace_show;
 	if (vis)
 	{
-		Vector3 vx = pSet->pace_size * cam->cam->getRight(),
-				vy = pSet->pace_size * cam->cam->getUp();
-
+		const Real si = pSet->pace_size * 0.5f;
+		const Vector3 vx = si * cam->cam->getRight(),
+					  vy = si * cam->cam->getUp();
 		hr->begin();
 
 		auto add = [&](const PaceNote& pc)
