@@ -149,7 +149,8 @@ void App::CreateObjects()
 		bool no = !objExists[o.name];
 		if (no)  continue;  //- no spheres
 		try 
-		{	o.it = mSceneMgr->createItem(/*"oE"+s,*/ (no ? "sphere" : o.name) + ".mesh");
+		{	o.it = mSceneMgr->createItem((no ? "sphere" : o.name) + ".mesh");
+			o.it->setName("oE"+s);
 			SetTexWrap(o.it);
 		}
 		catch( Ogre::Exception& e )
@@ -157,7 +158,7 @@ void App::CreateObjects()
 			LogO(String("Create obj fail: ") + e.what());
 			continue;
 		}
-		o.nd = mSceneMgr->getRootSceneNode(Ogre::SCENE_DYNAMIC)->createChildSceneNode();
+		o.nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode();
 		o.SetFromBlt();
 		o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Objects);
 		o.nd->setScale(o.scale);
@@ -271,9 +272,7 @@ void App::DestroyObjects(bool clear)
 
 void App::ResetObjects()
 {
-	for (int i=0; i < scn->sc->objects.size(); ++i)
-	{
-		Object& o = scn->sc->objects[i];
+	for (Object& o : scn->sc->objects)
 		if (o.dyn && o.ms && o.tr1)
 		{
 			o.rb->clearForces();
@@ -284,7 +283,7 @@ void App::ResetObjects()
 			o.rb->setWorldTransform(*o.tr1);
 			o.ms->setWorldTransform(*o.tr1);
 			o.SetFromBlt();
-	}	}
+	}
 }
 
 
@@ -325,7 +324,8 @@ void App::UpdObjPick()
 
 void App::PickObject()
 {
-	if (scn->sc->objects.empty())  return;
+	const auto& objs = scn->sc->objects;
+	if (objs.empty())  return;
 
 	iObjCur = -1;
 	const MyGUI::IntPoint& mp = MyGUI::InputManager::getInstance().getMousePosition();
@@ -345,21 +345,21 @@ void App::PickObject()
 		const String& s = (*it).movable->getName();
 		if (StringUtil::startsWith(s,"oE",false))
 		{
-			//LogO("RAY "+s+" "+fToStr((*it).distance,2,4)+"  n "+toStr(n)+"  nn "+toStr(nn));
+			// LogO("RAY "+s+" "+fToStr((*it).distance,2,4));
 			int i = -1;
-			//;  find obj with same ent name
-			/*for (int o=0; o < scn->sc->objects.size(); ++o)
-				if (s == scn->sc->objects[o].ent->getName())
-				{	i = o;  break;  }*/
+			//  find obj with same name
+			for (int o=0; o < objs.size(); ++o)
+				if (s == objs[o].it->getName())
+				{	i = o;  break;  }
 			
 			//  pick
 			if (i != -1)
 			{
-				//AxisAlignedBox ab = sc->objects[i].ent->getBoundingBox();
+				//Aabb ab = objs[i].it->getLocalAabb();
 				//ab.getCenter();  ab.getSize();
 
 				//  closest to obj center
-				const Vector3 posSph = scn->sc->objects[i].nd->getPosition();
+				const Vector3 posSph = objs[i].nd->getPosition();
 				const Vector3 ps = pos - posSph;
 				Vector3 crs = ps.crossProduct(dir);
 				Real dC = crs.length() / dir.length();

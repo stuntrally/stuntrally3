@@ -194,6 +194,7 @@ void App::UpdateEnd(float dt)
 	{	bVegetGrsUpd = false;
 		pSet->bTrees = !pSet->bTrees;
 
+		scn->LoadRoadDens();
 		scn->RecreateTrees();
 		scn->grass->Destroy();
 		if (pSet->bTrees)

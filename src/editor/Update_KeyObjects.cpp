@@ -136,7 +136,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 			if (scn->road && scn->road->bHitTer)  // insert new
 			{
 				AddNewObj();
-				//iObjCur = scn->sc->objects.size()-1;  // auto select inserted-
+				//iObjCur = scn->sc->objects.size()-1;  //par? auto select inserted-
 				UpdObjPick();
 			}	break;
 
