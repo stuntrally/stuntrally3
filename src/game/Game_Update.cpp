@@ -172,8 +172,9 @@ void App::update( float dt )
 		}
 
 
+		//  🌧️ Update rain/snow - depends on camera
 		if (pSet->particles)
-			scn->UpdateWeather(mCamera);  //, 1.f/dt
+			scn->UpdateWeather(mCamera, 1.f/dt);
 		
 
 		//**  bullet bebug draw

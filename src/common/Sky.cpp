@@ -41,7 +41,7 @@ void CScene::CreateAllAtmo()
 	CreateSun();
 	CreateFog();
 	CreateWeather();
-	CreateSkyDome(sc->skyMtr, /*app->pSet->view_distance,*/ sc->skyYaw);
+	CreateSkyDome(sc->skyMtr, sc->skyYaw);
 }
 void CScene::DestroyAllAtmo()
 {
@@ -342,23 +342,33 @@ void CScene::DestroyWeather()
 	if (pr2) {  app->mSceneMgr->destroyParticleSystem(pr2);  pr2=0;  }
 }
 
-void CScene::UpdateWeather(Camera* cam, float lastFPS, float emitMul)
+//  💫🌧️ Update Weather
+void CScene::UpdateWeather(Camera* cam, float invDT, float emitMul)
 {
 	const Vector3& pos = cam->getPosition(), dir = cam->getDirection();
-	static Vector3 oldPos = Vector3::ZERO;
+	static Vector3 oldPos = pos, oldDir = dir;
 
-	Vector3 vel = (pos-oldPos) * lastFPS;  oldPos = pos;
-	Vector3 par = pos + dir * 12.f + vel * 0.6f;  //par move effect on emitter pos
+	Vector3 vel = (pos-oldPos) * invDT;
+	Vector3 rot = (dir-oldDir) * invDT;
+
+	//  try to predict where to emit
+	//  given movement and rotation speeds
+	Vector3 par = pos
+		+ (dir + 0.6f * rot) * 12.f  // in front
+		// + rot * 1.f  //par rot effect on emitter pos
+		+ vel * 0.2f;  //par move effect on emitter pos
+	
+	oldPos = pos;  oldDir = dir;
 
 	if (pr && sc->rainEmit > 0)
 	{
-		ParticleEmitter* pe = pr->getEmitter(0);
+		auto* pe = pr->getEmitter(0);
 		pe->setPosition(par);
 		pe->setEmissionRate(emitMul * sc->rainEmit);
 	}
 	if (pr2 && sc->rain2Emit > 0)
 	{
-		ParticleEmitter* pe = pr2->getEmitter(0);
+		auto* pe = pr2->getEmitter(0);
 		pe->setPosition(par);
 		pe->setEmissionRate(emitMul * sc->rain2Emit);
 	}

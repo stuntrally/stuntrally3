@@ -257,6 +257,9 @@ void App::update( float dt )
 	if (scn->ndSky)
 		scn->ndSky->setPosition(mCamera->getPosition());
 
+	if (mCubeCamera)  // refl
+		mCubeCamera->setPosition(mCamera->getPosition());
+
 
 	static Real time1 = 0.;
 	mDTime = dt;
@@ -352,7 +355,7 @@ void App::update( float dt )
 	
 	
 	//  🌧️ Update rain/snow - depends on camera
-	scn->UpdateWeather(mCamera, pSet->bWeather ? 0.f : 1.f);
+	scn->UpdateWeather(mCamera, 1.f/dt, pSet->bWeather ? 0.f : 1.f);
 
 	// update shader time
 	// mTimer += evt.timeSinceLastFrame;
