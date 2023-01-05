@@ -678,8 +678,8 @@ void App::LoadTrees()
 	if (dstTrk)
 	{
 		scn->LoadRoadDens();
-		scn->grass->Create();  // 🌿
 		scn->CreateTrees();
+		scn->grass->Create();  // 🌿
 	}	
 		
 	//  check for cars inside terrain ___

@@ -132,7 +132,7 @@ namespace Ogre
 		bool bGenerateShadowMap;  //** ter
 		bool bNormalized;  // true: Hmap floats 0..1,  false: any, real heights
 		int iLodMax;  //**
-		float fHMin, fHMax, fHRange;  //norm-
+		float fHMin, fHMax, fHRange;  //norm meh-
 		Scene* sc = 0;
 		
 		int getSize()
@@ -166,7 +166,10 @@ namespace Ogre
 		blendmap;
 		//----------------------------------------
 
+		void readBackHmap( std::vector<float>& hfHeight, int row );
 	protected:
+		void createHmapTex(const std::vector<float>& hfHeight, int row );
+
 		struct Normalmap
 		{
 			Terra* pTerra = 0;
@@ -192,8 +195,6 @@ namespace Ogre
 			int width, int height,
 			std::vector<float> hfHeight, int row,
 			bool bMinimizeMemoryConsumption, bool bLowResShadow );
-		void createHeightmapTexture(
-			std::vector<float> hfHeight, int row );
 
 		///	Automatically calculates the optimum skirt size (no gaps with lowest overdraw possible).
 		///	This is done by taking the heighest delta between two adjacent pixels in a 4x4 block.

@@ -137,14 +137,20 @@ void AppGui::CreateTerrain()
 	//  ⛰️ Heightmap  ------------------------------------------------
 	LogO("---T Terrain Hmap load");
 	int size = sc->td.iVertsX;
-	Real sizeXZ = sc->td.fTriangleSize * size;  //sc->td.fTerWorldSize;
+	Real tri = sc->td.fTriangleSize, sizeXZ = tri * size;  //sc->td.fTerWorldSize;
 	// LogO("Ter size: " + toStr(sc->td.iVertsX));// +" "+ toStr((sc->td.iVertsX)*sizeof(float))
 
 	bool any = !mTerra->bNormalized;
 	mTerra->load( size, size,
 		sc->td.hfHeight, sc->td.iVertsXold,
-		Vector3( 0.f,    any ? 0.5f : 0.f, sc->td.ofsZ ),  //** why y?
-		Vector3( sizeXZ, any ? 1.f : mTerra->fHRange, sizeXZ ),  //** ter norm scale..
+		Vector3(
+			0.f,
+			any ? 0.5f : 0.f,  //** why y?
+			sc->td.ofsZ ),
+		Vector3(
+			sizeXZ,
+			any ? 1.f : mTerra->fHRange,  //** ter norm scale..
+			sizeXZ ),
 		// true, true);
 		false, false);  // #ifdef SR_ED?
 

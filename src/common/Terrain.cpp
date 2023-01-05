@@ -185,7 +185,15 @@ void CScene::CreateBltTerrain()
 
 	btCollisionObject* col = new btCollisionObject();
 	col->setCollisionShape(hfShape);
-	//col->setWorldTransform(tr);
+
+	//  offset new hmaps, even 2^n
+	bool n = sc->td.iVertsXold == sc->td.iVertsX;
+	Real nofs = n ? 0.5f * sc->td.fTriangleSize : 0.f;
+
+	btVector3 ofs(-nofs, -nofs, 0.0);
+	btTransform tr;  tr.setIdentity();  tr.setOrigin(ofs);
+	col->setWorldTransform(tr);
+
 	col->setFriction(0.9);   //+
 	col->setRestitution(0.0);
 	//col->setHitFraction(0.1f);
@@ -211,7 +219,7 @@ void CScene::CreateBltTerrain()
 		shp->setUserPointer((void*)SU_Border);
 		
 		btTransform tr;  tr.setIdentity();
-		tr.setOrigin(vpl * -0.5 * sc->td.fTerWorldSize);
+		tr.setOrigin(vpl * -0.5 * sc->td.fTerWorldSize + ofs);
 
 		btCollisionObject* col = new btCollisionObject();
 		col->setCollisionShape(shp);

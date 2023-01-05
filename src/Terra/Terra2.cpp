@@ -29,8 +29,8 @@ namespace Ogre
 
 	//  🆕 Create Heightmap once
 	//-----------------------------------------------------------------------------------
-	void Terra::createHeightmapTexture(
-		std::vector<float> hfHeight, int row)
+	void Terra::createHmapTex(
+		const std::vector<float>& hfHeight, int row)
 	{
 		destroyHeightmapTex();
 
@@ -62,11 +62,8 @@ namespace Ogre
 		LogO("Terrain Hmap dim " + iToStr(m_iWidth)+" x "+ iToStr(m_iHeight)+"  "+ iToStr(row));
 		
 		// simple, exact
-		if (m_iHeight == row)
-		{
-			texBox.copyFrom( &hfHeight[0], m_iWidth, m_iHeight, row * m_iWidth * sizeof(float) );
-		}else
-		{   int a = 0;  // SR  Hmap  fix 1025 to 1024,  and flip
+
+		{   int a = 0;  // SR  Hmap  fix 1025 to 1024  and flip Y !!
 			if (bNormalized)
 			{
 				for (int y=0; y < m_iHeight; ++y)
@@ -92,6 +89,25 @@ namespace Ogre
 		mgr->removeStagingTexture( tex );  tex = 0;
 	}
 
+	void Terra::readBackHmap(  // flips back Y !!
+		std::vector<float>& hfHeight, int row)
+	{
+		int a=0;
+		if (bNormalized)
+		{
+			for (int y=0; y < m_iHeight; ++y)
+			for (int x=0; x < m_iWidth; ++x)
+			{
+				float h = m_heightMap[x + (m_iHeight-1-y) * row];
+				hfHeight[a++] = h * fHRange + fHMin;  //** ter norm scale
+			}
+		}else  // any floats
+		{
+			for (int y=0; y < m_iHeight; ++y)
+			for (int x=0; x < m_iWidth; ++x)
+				hfHeight[a++] = m_heightMap[x + (m_iHeight-1-y) * row];
+		}
+	}
 
 	//  💫 Update Heightmap, full, rect ignored
 	//-----------------------------------------------------------------------------------

@@ -243,7 +243,7 @@ void App::LoadTrackEv()
 
 
 	//  ⛰️ Terrain
-	bNewHmap = false;/**/
+	// bNewHmap = false;/**/
 	scn->CreateTerrain(bNewHmap);
 
 
@@ -407,14 +407,16 @@ void App::SaveTrackEv()
 	gui->CreateDir(dir);
 	gui->CreateDir(dir+"/objects");
 
-	if (scn->terrain)
-	{	std::vector<float>& fHmap = scn->terrain->getHeightData();
-		int fsize = scn->sc->td.iVertsX * scn->sc->td.iVertsX * sizeof(float);
+	if (scn->terrain)  // save Hmap
+	{
+		int size = scn->sc->td.iVertsX;
+		scn->terrain->readBackHmap(scn->sc->td.hfHeight, size);
+		int fsize = size * size * sizeof(float);
 
 		String file = dir+"heightmap.f32";
 		std::ofstream of;
 		of.open(file.c_str(), std::ios_base::binary);
-		of.write((const char*)&fHmap[0], fsize);
+		of.write((const char*)&scn->sc->td.hfHeight[0], fsize);
 		of.close();
 	}
 

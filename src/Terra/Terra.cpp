@@ -197,7 +197,7 @@ namespace Ogre
 
 		m_heightMap.resize( m_iWidth * m_iHeight );
 
-		createHeightmapTexture( hfHeight, row );
+		createHmapTex( hfHeight, row );
 
 		
 		m_xzRelativeSize = m_xzDimensions / Vector2( static_cast<Real>(m_iWidth),

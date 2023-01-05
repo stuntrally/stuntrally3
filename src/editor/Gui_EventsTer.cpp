@@ -214,7 +214,6 @@ void CGui::btnTerrainHalf(WP)
 }
 
 //  Terrain  double  --------------------------------
-#if 1
 void CGui::btnTerrainDouble(WP)
 {
 	int dblSize = sc->td.iVertsX * 2, ofs4 = dblSize / 4;
@@ -238,9 +237,10 @@ void CGui::btnTerrainDouble(WP)
 	updTabHmap();
 	app->bNewHmap = true;	app->UpdateTrack();
 }
-#else
+
+#if 0
 //  Terrain  resize ..  --------------------------------
-void CGui::btnTerrainDouble(WP)
+void CGui::btnTerrainResize(WP)
 {
 	int size = getHMapSizeTab() / 2;
 	if (valTerTriSize)
