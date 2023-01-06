@@ -50,6 +50,19 @@ void SplineRoad::RebuildRoadPace()
 
 bool SplineRoad::RebuildRoadInt(bool editorAlign, bool bulletFull)
 {
+	static int skip = 0;
+	bool full = iDirtyId == -1;
+	if (full)
+		skip = 0;
+	if (!full && !editorAlign && !bulletFull)
+	{
+		++skip;
+		if (skip < 12)  //par
+			return full;
+		else
+			skip = 0;
+	}
+
 
 	if (!rebuild && !(editorAlign || bulletFull))  return false;
 	rebuild = false;
@@ -66,7 +79,6 @@ bool SplineRoad::RebuildRoadInt(bool editorAlign, bool bulletFull)
 	
 		
 	//  full rebuild
-	bool full = iDirtyId == -1;
 	if (full)
 	{
 		DestroyRoad();

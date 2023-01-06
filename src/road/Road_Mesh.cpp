@@ -25,9 +25,11 @@
 #include <OgreSceneManager.h>
 #include <OgreMeshManager2.h>
 #include <Vao/OgreVaoManager.h>
+#include <Vao/OgreVertexElements.h>
 using namespace Ogre;
 
 #define USE_UMA_SHARED_BUFFERS 1
+#define V1tangents
 
 
 //  🏗️ Create Mesh
@@ -66,6 +68,10 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );  vertSize += 3;
 	if (!trail)
 	{	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_NORMAL ) );    vertSize += 3;
+	#ifndef V1tangents
+		vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_TANGENT ) );    vertSize += 3;
+		// vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_BINORMAL ) );    vertSize += 3;
+	#endif
 		vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  vertSize += 2;
 	}
 	// vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  vertSize += 2;  //2nd uv-
@@ -76,30 +82,34 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	//  vertex data  ------------------------------------------
 	uint vertCnt = pos.size();
 	vertSize *= sizeof( float );
-	float *vertices = reinterpret_cast<float *>(
+	float *v = reinterpret_cast<float *>(  // vertices
 		OGRE_MALLOC_SIMD( sizeof( float ) * vertSize * vertCnt, MEMCATEGORY_GEOMETRY ) );
 	
 	uint a = 0;
 	if (trail)
 	for (uint i=0; i < vertCnt; ++i)
 	{
-		vertices[a++] = pos[i].x;   vertices[a++] = pos[i].y;   vertices[a++] = pos[i].z;  aabox.merge(pos[i]);
-		vertices[a++] = clr[i].x;   vertices[a++] = clr[i].y;   vertices[a++] = clr[i].z;   vertices[a++] = clr[i].w;
+		v[a++] = pos[i].x;   v[a++] = pos[i].y;   v[a++] = pos[i].z;  aabox.merge(pos[i]);
+		v[a++] = clr[i].x;   v[a++] = clr[i].y;   v[a++] = clr[i].z;   v[a++] = clr[i].w;
 	}else
 	if (hasClr)
 	for (uint i=0; i < vertCnt; ++i)
 	{
-		vertices[a++] = pos[i].x;   vertices[a++] = pos[i].y;   vertices[a++] = pos[i].z;  aabox.merge(pos[i]);
-		vertices[a++] = norm[i].x;  vertices[a++] = norm[i].y;  vertices[a++] = norm[i].z;
-		vertices[a++] = tcs[i].x;   vertices[a++] = tcs[i].y;
-		vertices[a++] = clr[i].x;   vertices[a++] = clr[i].y;   vertices[a++] = clr[i].z;   vertices[a++] = clr[i].w;
+		v[a++] = pos[i].x;   v[a++] = pos[i].y;   v[a++] = pos[i].z;  aabox.merge(pos[i]);
+		v[a++] = norm[i].x;  v[a++] = norm[i].y;  v[a++] = norm[i].z;
+		v[a++] = tcs[i].x;   v[a++] = tcs[i].y;
+		v[a++] = clr[i].x;   v[a++] = clr[i].y;   v[a++] = clr[i].z;   v[a++] = clr[i].w;
 	}else
 	for (uint i=0; i < vertCnt; ++i)
 	{
-		vertices[a++] = pos[i].x;   vertices[a++] = pos[i].y;   vertices[a++] = pos[i].z;  aabox.merge(pos[i]);
-		vertices[a++] = norm[i].x;  vertices[a++] = norm[i].y;  vertices[a++] = norm[i].z;
-		vertices[a++] = tcs[i].x;   vertices[a++] = tcs[i].y;
-		// vertices[a++] = tcs[i].x;   vertices[a++] = tcs[i].y;  //2nd uv-
+		v[a++] = pos[i].x;   v[a++] = pos[i].y;   v[a++] = pos[i].z;  aabox.merge(pos[i]);
+		v[a++] = norm[i].x;  v[a++] = norm[i].y;  v[a++] = norm[i].z;
+	#ifndef V1tangents
+		v[a++] = norm[i].x;  v[a++] = norm[i].z;  v[a++] = norm[i].y;  // tangent-
+		// v[a++] = norm[i].z;  v[a++] = norm[i].y;  v[a++] = norm[i].x;  // binormal-
+	#endif
+		v[a++] = tcs[i].x;   v[a++] = tcs[i].y;
+		// v[a++] = tcs[i].x;   v[a++] = tcs[i].y;  //2nd uv-
 	}
 
 	VertexBufferPacked *vertexBuffer = 0;
@@ -110,11 +120,11 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 		if (caps && caps->hasCapability(RSC_UMA))
 		{
 			vertexBuffer = vaoManager->createVertexBuffer(
-				vertexElements, vertCnt, BT_DEFAULT_SHARED, &vertices[0], true );
+				vertexElements, vertCnt, BT_DEFAULT_SHARED, &v[0], true );
 		}else
 	#endif
 			vertexBuffer = vaoManager->createVertexBuffer(
-				vertexElements, vertCnt, partialMesh ? BT_DEFAULT : BT_IMMUTABLE, &vertices[0], true );
+				vertexElements, vertCnt, partialMesh ? BT_DEFAULT : BT_IMMUTABLE, &v[0], true );
 	}
 	catch (Exception &e)
 	{
@@ -175,7 +185,9 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	subMesh->mVao[VpNormal].push_back( vao );
 	subMesh->mVao[VpShadow].push_back( vao );  // same geometry for shadow casting
 
-	subMesh->arrangeEfficient(false, false, false);  // no?
+#ifndef SR_EDITOR
+	subMesh->arrangeEfficient(false, false, false);  // same-
+#endif
 
 
 	//  add mesh to scene
@@ -185,7 +197,8 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	mesh->_setBounds(aabox, false);  //?
 	mesh->_setBoundingSphereRadius((aabox.getMaximum() - aabox.getMinimum()).length() / 2.0);  
 
-	//  tangents-
+	//  tangents v1-
+#ifdef V1tangents
 	String s1 = sMesh+"v1", s2 = sMesh+"v2";
 	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create(s1, "General");
 	/*v1::MeshPtr m1 = static_cast<v1::MeshPtr>(v1::MeshManager::getSingleton().createOrRetrieve(s1, "General",
@@ -193,9 +206,10 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 		v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC ).first);*/
  	m1->importV2(mesh.get());
 	if (!trail)
-		m1->buildTangentVectors();  // todo: slow in ed, 24 Fps
+		m1->buildTangentVectors();  // todo: slow in ed, 24 Fps vs 38?-
 	mesh = MeshManager::getSingleton().createByImportingV1(s2, "General", m1.get(), false,false,false);
 	MeshManager::getSingleton().remove(sMesh);  // not needed
+#endif
 
 
 	//  add mesh to scene
@@ -206,8 +220,11 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 #endif
 // 
 	Item *it2 = 0;
+#ifdef V1tangents
 	Item *it = mSceneMgr->createItem(s2, "General", dyn );
-	// Item *it = mSceneMgr->createItem( mesh, dyn );
+#else
+	Item *it = mSceneMgr->createItem( mesh, dyn );
+#endif
 
 	SceneNode* node = mSceneMgr->getRootSceneNode( dyn )->createChildSceneNode( dyn );
 	node->attachObject(it);
@@ -217,7 +234,12 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	//  ⭕ pipe glass 2nd item
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	if (pipeGlass)
-	{	it2 = mSceneMgr->createItem(s2, "General", dyn);
+	{
+	#ifdef V1tangents
+		it2 = mSceneMgr->createItem(s2, "General", dyn );
+	#else
+		it2 = mSceneMgr->createItem( mesh, dyn );
+	#endif
 		
 		String sMtr2 = sMtrName + "2";
 		auto hlms = pApp->mRoot->getHlmsManager()->getHlms( HLMS_PBS );
@@ -227,9 +249,8 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 			HlmsDatablock *db2 = it2->getSubItem(0)->getDatablock()->clone(sMtr2);
 			HlmsMacroblock mb;  // = db2->getMacroblock();
 			mb.mDepthBiasConstant = 3.f;  //.. mDepthBiasSlopeScale
-			// mb.mDepthCheck = false;
 			mb.mDepthWrite = false;
-			mb.mCullMode = CULL_CLOCKWISE;  // set opposite cull
+			mb.mCullMode = CULL_ANTICLOCKWISE;  // set opposite cull
 			db2->setMacroblock(mb);
 			it2->setDatablock(db2);
 		}
@@ -276,6 +297,7 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 			db->setTexture(PBSM_DETAIL0, sDiff);
 			db->setTexture(PBSM_DETAIL0_NM, sNorm);
 			//todo: PBSM_SPECULAR ?.. stretched
+			// db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );  // todo: wet, etc +
 		}	}
 	}	}
 	sd.it = it;  sd.it2 = it2;

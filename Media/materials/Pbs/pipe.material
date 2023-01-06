@@ -36,7 +36,6 @@ hlms pipe_glass pbs
 
     // scene_blend alpha_blend
     depth_write off
-    // depth_test off
     depth_bias 3
 
 	workflow metallic
@@ -44,21 +43,16 @@ hlms pipe_glass pbs
 	roughness 0.5
 	metalness 0.99
 
-	cull_mode anticlockwise
-	//+ cull_mode clockwise  // 2nd, cloned in code
+	cull_mode clockwise
+	//+ cull_mode anticlockwise  // 2nd, cloned in code
 
 	// transparency 1.0
 	transparency_mode transparent
 	two_sided true
 
-	// reflection demo_dynamic_cubemap //?
-	use_alpha_from_textures off
+	use_alpha_from_textures off  //?
 
 	receives_shadows false
-    // refl_amount 0.1  // only used when fresnel off
-
-    // transparent false  // for shadowcaster
-    // diffuse_address_mode wrap
 
     // specular_alpha true
     // env_alpha 0 0 0 0
