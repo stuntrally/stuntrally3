@@ -333,6 +333,9 @@ void AppGui::CreateCubeReflect()
 	auto* texMgr = rndSys->getTextureGpuManager();
 	auto* mgr = mRoot->getCompositorManager2();
 
+	// mIblQuality = IblLow;  //par..
+	// mIblQuality = IblMedium;
+
 	// A RenderTarget created with AllowAutomipmaps means the compositor still needs to
 	// explicitly generate the mipmaps by calling generate_mipmaps.
 
@@ -342,6 +345,10 @@ void AppGui::CreateCubeReflect()
 	{
 		iblSpecularFlag = TextureFlags::Uav | TextureFlags::Reinterpretable;
 	}
+
+	/*TextureGpu* reflTex = texMgr->findTextureNoThrow("DynamicCubemap");
+	if (reflTex)
+		texMgr->destroyTexture(reflTex);*/
 
 	mCubeReflTex = texMgr->createOrRetrieveTexture( "DynamicCubemap",
 		GpuPageOutStrategy::Discard,
@@ -356,15 +363,17 @@ void AppGui::CreateCubeReflect()
 		resolution = 256u;
 	else
 		resolution = 512u;
+	
 	mCubeReflTex->setResolution( resolution, resolution );
-	mCubeReflTex->setNumMipmaps( PixelFormatGpuUtils::getMaxMipmapCount( resolution ) );
-	if( mIblQuality != MipmapsLowest )
-	{
-		// Limit max mipmap to 16x16 .. //** par
-		// mCubeReflTex->setNumMipmaps( mDynamicCubemap->getNumMipmaps() - 4u );
-		mCubeReflTex->setNumMipmaps( mCubeReflTex->getNumMipmaps() - 2u );  // -4u
-		// mCubeReflTex->setNumMipmaps( mDynamicCubemap->getNumMipmaps() /*- 1u*/ );
-	}
+
+	int mips = PixelFormatGpuUtils::getMaxMipmapCount( resolution );
+	auto curmips = mCubeReflTex->getNumMipmaps();
+	
+	// if (curmips != mips)
+	// if( mIblQuality != MipmapsLowest )
+		// mCubeReflTex->setNumMipmaps( mips );  // no change-
+		mCubeReflTex->setNumMipmaps( mips - 4u );  //par Limit max mipmap to 16x16
+	
 	mCubeReflTex->setPixelFormat( PFG_RGBA8_UNORM_SRGB );
 	mCubeReflTex->scheduleTransitionTo( GpuResidency::Resident );
 
@@ -372,9 +381,12 @@ void AppGui::CreateCubeReflect()
 	HlmsManager *hlmsMgr = mRoot->getHlmsManager();
 	assert( dynamic_cast<HlmsPbs *>( hlmsMgr->getHlms( HLMS_PBS ) ) );
 	HlmsPbs *hlmsPbs = static_cast<HlmsPbs *>( hlmsMgr->getHlms( HLMS_PBS ) );
-	hlmsPbs->resetIblSpecMipmap( 0u );  //..
+	// hlmsPbs->resetIblSpecMipmap( 0u );  // auto, no-
+	hlmsPbs->resetIblSpecMipmap( mips - 4u );  //+
 
 	//  Create camera used to render to cubemap reflections
+	if (mCubeCamera)
+	{	mSceneMgr->destroyCamera(mCubeCamera);  mCubeCamera = 0;  }
 	if( !mCubeCamera )
 	{
 		mCubeCamera = mSceneMgr->createCamera( "CubemapCam", true, true );
@@ -387,8 +399,8 @@ void AppGui::CreateCubeReflect()
 		mCubeCamera->setVisibilityFlags( RV_MaskReflect );
 		// mCubeCamera->setDefaultVisibilityFlags( RV_Sky);  //** set in cubemap_target
 		//? mCubeCamera->setVrData(VrData
+		// mCubeCamera->setFarClipDistance( 100 );  // todo: !
 		mCubeCamera->setFarClipDistance( pSet->view_distance );
-			// 20000 ); //300 );  // par  20000 needed for sky meh..
 		// mCubeCamera->setShadowRenderingDistance( 300 );  // par?-
 		// mCubeCamera->setCastShadows(true);
 	}
@@ -418,6 +430,7 @@ void AppGui::CreateCubeReflect()
 	const String name( "SR3_ReflCubemap" );  // created from code
 	if( !mgr->hasWorkspaceDefinition( name ) )
 	{
+		LogO("REFL ws add");
 		auto* w = mgr->addWorkspaceDefinition( name );
 		w->connectExternal( 0, idCubeNode, 0 );
 	}
