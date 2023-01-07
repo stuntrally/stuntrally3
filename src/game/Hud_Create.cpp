@@ -41,7 +41,7 @@ using namespace MyGUI;
 
 void CHud::Create()
 {
-	LogO("C--- Create Hud");
+	// LogO("C--- Create Hud");
 	//Destroy();  //
 	if (app->carModels.size() == 0)  return;
 
@@ -50,12 +50,12 @@ void CHud::Create()
 	SceneManager* scm = app->mSceneMgr;
 	// if (hud[0].moMap)//;
 	if (hud[0].txVel || hud[0].txTimes)
-		LogO("Create Hud: exists !");
+		LogO("C--! Create Hud: exists !");
 
 
 	//  minimap from road img
-	int plr = 1; //app->mSplitMgr->mNumViewports;  // pSet->game.local_players;
-	//; LogO("C--- Create Hud  plrs="+toStr(plr));
+	int plr = pSet->game.local_players;
+	LogO("C--- Create Hud  plrs="+toStr(plr));
 	asp = 1.f;
 
 	///  reload mini textures
@@ -87,19 +87,27 @@ void CHud::Create()
 	//  car pos tris (form all cars on all viewports)
 	SceneNode* rt = scm->getRootSceneNode();
 	// asp = 1.f;  //_temp
-	moPos = new HudRenderable("hud/CarPos", scm,
+	hrPos = new HudRenderable("hud/CarPos", scm,
 		// 0.f, true,true, 1.f,Vector2(1,1), RV_Hud,RQG_Hud3, plr * 6);
 		OT_TRIANGLE_LIST, true,true, RV_Hud,RQG_Hud1, plr * 2);  // ?
 	ndPos = rt->createChildSceneNode();
-	ndPos->attachObject(moPos);
+	ndPos->attachObject(hrPos);
 
 
 	//  for each car
+	//--------------------------------------------------------------------------------------------------------------
 	for (int c=0; c < plr; ++c)
 	{
 		String s = toStr(c);
 		Hud& h = hud[c];
 		CarModel* cm = app->carModels[c];
+
+		//  dims  ----
+		const int wx = app->mDims[c].width * app->mWindow->getWidth(),
+				 wy = app->mDims[c].height * app->mWindow->getHeight() +10;  //+? why
+		// const int wx = app->mWindow->getWidth(),
+		//		  wy = app->mWindow->getHeight() +10;  //+? why
+		const float asp = float(wx) / float(wy);
 
 		float t = sc->td.fTerWorldSize*0.5;
 		minX = -t;  minY = -t;  maxX = t;  maxY = t;
@@ -120,23 +128,21 @@ void CHud::Create()
 		UpdMiniTer();
 	#endif
 		
-		const int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight() +10;  //+? why
-		const float asp = float(wx) / float(wy);
-
 		//float fHudSize = pSet->size_minimap * 1.f; //app->mSplitMgr->mDims[c].avgsize;
-		h.moMap = new HudRenderable(sMini, scm,
+		h.hrMap = new HudRenderable(sMini, scm,
 			OT_TRIANGLE_LIST, true, false, RV_Hud,RQG_Hud1, 1);
-		h.ndMap = rt->createChildSceneNode();  h.ndMap->attachObject(h.moMap);
-		// h.ndMap->setVisible(pSet->trackmap);
+		h.ndMap = rt->createChildSceneNode();  h.ndMap->attachObject(h.hrMap);
+		h.ndMap->setVisible(pSet->trackmap);
 
 
 		//  ⏲️ gauges  -----------
 		String st = toStr(pSet->gauges_type);
 		int q = cm->hasRpm() ? 4 : 2;
 
-		h.moGauges = new HudRenderable("hud_"+st, scm,
+		h.hrGauges = new HudRenderable("hud_"+st, scm,
 			OT_TRIANGLE_LIST, true, false, RV_Hud,RQG_Hud1, q);
-		h.ndGauges = rt->createChildSceneNode();  h.ndGauges->attachObject(h.moGauges);  //h.ndGauges->setVisible(false);
+		h.ndGauges = rt->createChildSceneNode();  h.ndGauges->attachObject(h.hrGauges);
+		h.ndGauges->setVisible(pSet->show_gauges);
 
 
 		//  gear  text  ----
@@ -147,8 +153,8 @@ void CHud::Create()
 		{
 			h.bckGear = h.parent->createWidget<ImageBox>("ImageBox",
 				0,y, 65+14,90+12, Align::Left, "IGear"+s);
-			h.bckGear->setImageTexture("background2.jpg");
-			h.bckGear->setAlpha(0.6f);
+			h.bckGear->setImageTexture("back_gear.png");
+			h.bckGear->setAlpha(0.7f);  //par
 
 			h.txGear = h.parent->createWidget<TextBox>("TextBox",
 				0,y, 65,90, Align::Left, "Gear"+s);  h.txGear->setVisible(false);
@@ -160,8 +166,8 @@ void CHud::Create()
 		//  vel  km/h  ----
 		h.bckVel = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 160+24,72+12, Align::Left, "IVel"+s);
-		h.bckVel->setImageTexture("background2.jpg");
-		h.bckVel->setAlpha(0.6f);
+		h.bckVel->setImageTexture("back_gear.png");
+		h.bckVel->setAlpha(0.7f);
 		
 		// h.txVel = h.bckVel->createWidget<TextBox>("TextBox",
 			// 10,5, 360,96, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
@@ -236,7 +242,7 @@ void CHud::Create()
 		h.bckTimes = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 350,210, Align::Left, "TimP"+s);  h.bckTimes->setVisible(false);
 		h.bckTimes->setColour(Colour(0.1,0.1,0.1));
-		h.bckTimes->setAlpha(0.3f);
+		h.bckTimes->setAlpha(0.4f);  //par
 		h.bckTimes->setImageTexture("back_times.png");
 
 		h.txTimTxt = h.parent->createWidget<TextBox>("TextBox",
@@ -316,7 +322,7 @@ void CHud::Create()
 		h.bckWarn->setImageTexture("back_times.png");
 
 		h.txWarn = h.bckWarn->createWidget<TextBox>("TextBox",
-			0,0, 400,60, Align::Left, "WarnT"+s);
+			0,0, 500,60, Align::Left, "WarnT"+s);
 		h.txWarn->setFontName("hud.text");  h.txWarn->setTextShadow(true);
 		h.txWarn->setTextColour(Colour(1,0.3,0));  h.txWarn->setTextAlign(Align::Center);
 		h.txWarn->setCaption(TR("#{WrongChk}"));
@@ -478,11 +484,11 @@ void CHud::Destroy()
 	for (c=0; c < hud.size(); ++c)
 	{	Hud& h = hud[c];
 
-		#define Dest2(nd)  {  \
-			if (nd) {  scm->destroySceneNode(nd);  nd=0;  }  }
+		#define Dest2(nd)  {  if (nd) {  scm->destroySceneNode(nd);  nd=0;  }  }
+		#define Del(hr)  {  delete hr;  hr =0;  }
 		
-		Dest2(h.ndMap)  delete h.moMap;
-		Dest2(h.ndGauges)  delete h.moGauges;
+		Dest2(h.ndMap)  Del(h.hrMap)
+		Dest2(h.ndGauges)  Del(h.hrGauges)
 
 		#define Dest(w)  \
 			if (w) {  app->mGui->destroyWidget(w);  w = 0;  }
@@ -505,7 +511,7 @@ void CHud::Destroy()
 		Dest(h.txCountdown)
 		Dest(h.parent)
 	}
-	Dest2(ndPos)  delete moPos;
+	Dest2(ndPos)  Del(hrPos)
 	Dest(txMsg)  Dest(bckMsg)
 	Dest(txCamInfo)
 	

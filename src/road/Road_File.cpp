@@ -120,10 +120,10 @@ void SplineRoad::UpdLodVis(float fBias, bool bFull)
 			}
 			#endif*/
 			
-			if (rs.road[i].it)  rs.road[i].it->setVisible(vis);
+			if (rs.road[i].it)   rs.road[i].it->setVisible(vis);
 			if (rs.road[i].it2)  rs.road[i].it2->setVisible(vis);
-			if (rs.wall[i].it)  rs.wall[i].it->setVisible(vis);
-			if (rs.blend[i].it) rs.blend[i].it->setVisible(vis);
+			if (rs.wall[i].it)   rs.wall[i].it->setVisible(vis);
+			if (rs.blend[i].it)  rs.blend[i].it->setVisible(vis);
 			//if (rs.col.ent && i==0)
 			//	rs.col.ent->setVisible(vis);
 			if (vis) {  ++st.iVis;  st.iTris += rs.nTri[i];  }

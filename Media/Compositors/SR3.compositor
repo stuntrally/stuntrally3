@@ -1,4 +1,5 @@
 //  reflections
+//------------------------------------------------------------------------------------
 abstract target cubemap_target
 {
 	pass render_scene
@@ -81,11 +82,11 @@ compositor_node CubemapNodeMsaa
 		}
 	}
 }
+
+
 //------------------------------------------------------------------------------------
-
-
 //  main render (split screen)
-
+//------------------------------------------------------------------------------------
 compositor_node SR3_Render
 {
 	in 0 rt_renderwindow
@@ -150,8 +151,34 @@ compositor_node SR3_Render
 			// so we need to expose it to the pass.
 			expose demo_dynamic_cubemap
 
+			rq_last		100  // glass etc
+
 			overlays	off
 			shadows		SR3_Shadows
+		}
+
+		pass render_scene
+		{
+			profiling_id "HUD"
+
+			// executed in all eyes, not views
+			// execution_mask			0xff
+			// executed on first view/eye
+			execution_mask			0x01
+			// affected by modifier, apply to the whole screen
+			viewport_modifier_mask	0x00
+
+			store
+			{
+				colour	store
+				depth	store  //-
+				stencil	dont_care
+			}
+
+			rq_first	200
+			rq_last		230
+
+			overlays	off
 		}
 
 		// pass custom MYGUI
@@ -174,6 +201,7 @@ compositor_node SR3_Render
 
 
 //  shadows
+//------------------------------------------------------------------------------------
 compositor_node_shadow SR3_Shadows
 {
 	technique pssm
@@ -207,6 +235,7 @@ compositor_node_shadow SR3_Shadows
 
 
 //  workspace
+//------------------------------------------------------------------------------------
 workspace SR3_Workspace
 {
 	// Render Window on channel #0

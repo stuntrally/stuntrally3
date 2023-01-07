@@ -25,31 +25,23 @@ using namespace MyGUI;
 
 ///  🗜️ HUD resize
 //---------------------------------------------------------------------------------------------------------------
-struct VPDims
-{	Ogre::Real top,left, width,height, right,bottom, avgsize;
-	void Default() {  top=-1.f; left=-1.f;  width=2.f; height=2.f;  right=1.f; bottom=1.f;  avgsize=1.f;  }
-	VPDims() {  Default();  }
-} mDims[4];
-
-
 void CHud::Size()
 {
-	float wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
-	asp = wx/wy;
-
-	int cnt = 1; //; pSet->game.local_players;
+	int cnt = pSet->game.local_players;
 	#ifdef DEBUG
 	assert(cnt <= hud.size());
 	#endif
 	//  for each car
 	for (int c=0; c < cnt; ++c)
 	{
+		const auto& dim = app->mDims[c];
 		Hud& h = hud[c];
-		// const SplitScr::VPDims& dim = app->mSplitMgr->mDims[c];
-		VPDims dim;
+		float wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
+		asp = wx/wy;
+
 		//  ⏲️ gauges
-		Real xcRpm=0.f,ycRpm=0.f,xcRpmL=0.f, xcVel=0.f,ycVel=0.f, ygMax=0.f, xBFuel=0.f;  // -1..1
-		// if (h.ndGauges)
+		Real xcRpm=0.f,ycRpm=0.f, xcRpmL=0.f,
+			 xcVel=0.f,ycVel=0.f, ygMax=0.f, xBFuel=0.f;  // -1..1
 		{
 			Real sc = pSet->size_gauges * dim.avgsize;
 			Real spx = sc * 1.1f, spy = spx*asp;
@@ -62,7 +54,6 @@ void CHud::Size()
 			h.vcRpm = Vector2(xcRpm,ycRpm);  // store for updates
 			h.vcVel = Vector2(xcVel,ycVel);
 			h.fScale = sc;
-			h.updGauges = true;
 		}
 		
 		//  🌍 minimap
@@ -148,13 +139,13 @@ void CHud::Size()
 
 		//  🎥 camera info
 		if (h.txCam)
-			h.txCam->setPosition(xMax-260,yMax-10);
+			h.txCam->setPosition(xMax-260,yMax-30);
 		//  abs,tcs
 		h.txAbs->setPosition(xMin+160,yMax-30);
 		h.txTcs->setPosition(xMin+220,yMax-30);
 	}
 	if (txCamInfo)
-	{	txCamInfo->setPosition(270,wy-100);
+	{	txCamInfo->setPosition(270, app->mWindow->getHeight() -100);
 		bckMsg->setPosition(256,0);
 	}
 }
@@ -234,15 +225,14 @@ void CHud::Show(bool hideAll)
 
 				/*h.bckOpp->setVisible(opp);
 				h.txOpp[0]->setVisible(opp);  h.txOpp[1]->setVisible(opp);  h.txOpp[2]->setVisible(opp);*/
-				if (h.txCam)
-					h.txCam->setVisible(cam);
+				if (h.txCam)  h.txCam->setVisible(cam);
 		}	}
 	}
 	if (ndPos)  ndPos->setVisible(pSet->trackmap);
 	
 	app->updMouse();
 	
-	//  📽️ replay ctrls
+	//  📽️ replay controls
 	if (app->mWndRpl && !app->bLoading)
 		app->mWndRpl->setVisible(app->bRplPlay && app->bRplWnd);
 	//  lesson replay  >> >

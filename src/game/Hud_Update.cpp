@@ -143,14 +143,14 @@ void CHud::UpdPosElems(int cnt, int cntC, int carId)
 	const static Real tc[4][2] = {{0,1}, {1,1}, {0,0}, {1,0}};
 	const float z = pSet->size_minipos;  // tri size
 	
-	if (carId == -1 && moPos)
-	{	moPos->begin();
+	if (carId == -1 && hrPos)
+	{	hrPos->begin();
 
 		const int plr = 1;  //; app->mSplitMgr->mNumViewports;
 		for (int v = 0; v < plr; ++v)  // all viewports
 		{
 			const Hud& h = hud[v];
-			const float sc = pSet->size_minimap * 1.f;  //; app->mSplitMgr->mDims[v].avgsize;
+			const float sc = pSet->size_minimap * app->mDims[v].avgsize;
 			const Vector3& pos = h.ndMap->getPosition();
 			
 			for (c = 0; c < cntC; ++c)  // all mini pos for one car
@@ -162,12 +162,12 @@ void CHud::UpdPosElems(int cnt, int cntC, int carId)
 				{
 					float x = pos.x + (sp.x + sp.px[p]*z)*sc;
 					float y = pos.y + (sp.y + sp.py[p]*z)*sc*asp;
-					moPos->position(x, y, 0);
-					moPos->texUV(tc[p][0], tc[p][1]);
-					moPos->color(clr.r, clr.g, clr.b, clr.a);
+					hrPos->position(x, y, 0);
+					hrPos->texUV(tc[p][0], tc[p][1]);
+					hrPos->color(clr.r, clr.g, clr.b, clr.a);
 		}	}	}
 		
-		moPos->end();
+		hrPos->end();
 	}
 }
 
@@ -178,8 +178,8 @@ void CHud::UpdPosElems(int cnt, int cntC, int carId)
 void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 {
 	//if (carId == -1)  return;
-	int b = baseCarId, c = carId;
-	bool main = b == c;
+	int base = baseCarId, id = carId;
+	bool main = base == id;
 	// LogO(toStr(b)+" b "+toStr(c)+" c");
 	#ifdef DEBUG
 	assert(c >= 0);
@@ -189,7 +189,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 	assert(b < app->carModels.size());
 	assert(c < hud[b].vMiniPos.size());
 	#endif
-	float angBase = app->carModels[b]->angCarY;
+	float angBase = app->carModels[base]->angCarY;
 	
 	bool bZoom = pSet->mini_zoomed,
 		bRot = pSet->mini_rotated;
@@ -204,11 +204,11 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 	float angrmp = rpm*sc_rpm[ig] + rmin[ig];
 	float vsc = pSet->show_mph ? vsc_mph[ig] : vsc_kmh[ig];
 	float angvel = fabs(vel)*vsc + vmin[ig];
-	float angrot = app->carModels[b]->angCarY;
+	float angrot = app->carModels[base]->angCarY;
 	if (bRot && bZoom && !main)
 		angrot -= angBase-180.f;
 
-	Hud& h = hud[b];  int p;
+	Hud& h = hud[base];  int p;
 	float sx = 1.4f * h.fScale, sy = sx*asp;  // *par len
 
 	//  4 points, 2d pos
@@ -242,15 +242,16 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 	    
     //  ⏲️ rpm,vel needles
     const float r = 0.55f, v = 0.85f;
-	const bool bRpm = app->carModels[c]->hasRpm();
+	const bool bRpm = app->carModels[id]->hasRpm();
 
 	//  rpm,vel gauges backgr
-	HudRenderable* hr = h.moGauges;
-	if (main && /*h.updGauges &&*/ hr)
-	{	h.updGauges = false;
-		Real o = pSet->show_mph ? 0.5f : 0.f;
+	HudRenderable* hr = h.hrGauges;
+	if (main && hr)
+	{
+		Real ofs = pSet->show_mph ? 0.5f : 0.f;
 	
 		hr->begin();
+		//  backgr
 		if (bRpm)
 		for (p=0; p < 4; ++p)
 		{	hr->position(
@@ -262,7 +263,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 		{	hr->position(
 				h.vcVel.x + tp[p][0]*h.fScale*v,
 				h.vcVel.y + tp[p][1]*h.fScale*asp*v, 0);
-			hr->texUV(tc[p][0]*0.5f+o, tc[p][1]*0.5f);
+			hr->texUV(tc[p][0]*0.5f +ofs, tc[p][1]*0.5f);
 		}
 
 		//  needles
@@ -287,41 +288,41 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 	///  minimap car pos-es rot
 	for (p=0; p < 4; ++p)
 	{	
-		h.vMiniPos[c].px[p] = px[p];
-		h.vMiniPos[c].py[p] = py[p];
+		h.vMiniPos[id].px[p] = px[p];
+		h.vMiniPos[id].py[p] = py[p];
 	}
 	
 	//  🌍 minimap  circle/rect rot
-	int qb = app->iCurPoses[b], qc = app->iCurPoses[c];
-	if (h.moMap && pSet->trackmap && main)
+	int qb = app->iCurPoses[base], qc = app->iCurPoses[id];
+	if (h.hrMap && pSet->trackmap && main)
 	{
-		h.moMap->begin();
+		h.hrMap->begin();
 		if (!bZoom)
 			for (p=0; p < 4; ++p)
-			{	h.moMap->position(tp[p][0],tp[p][1], 0);
-				h.moMap->texUV(tc[p][0], tc[p][1]);
+			{	h.hrMap->position(tp[p][0],tp[p][1], 0);
+				h.hrMap->texUV(tc[p][0], tc[p][1]);
 				// h.moMap->textureCoord(tc[p][0],tc[p][1], 0);  // uv2
 			}
 		else
-		{	Vector2 mp(-app->carPoses[qb][b].pos[2], app->carPoses[qb][b].pos[0]);
+		{	Vector2 mp(-app->carPoses[qb][base].pos[2], app->carPoses[qb][base].pos[0]);
 			float xc =  (mp.x - minX)*scX,
 				  yc = -(mp.y - minY)*scY+1.f;
 			for (p=0; p < 4; ++p)
-			{	h.moMap->position(tp[p][0],tp[p][1], 0);
-				h.moMap->texUV(cx[p]+xc, -cy[p]-yc);
+			{	h.hrMap->position(tp[p][0],tp[p][1], 0);
+				h.hrMap->texUV(cx[p]+xc, -cy[p]-yc);
 				// h.moMap->textureCoord(tc[p][0],tc[p][1], 1);  // uv2
 		}	}
-		h.moMap->end();
+		h.hrMap->end();
 	}
 
 
 	///  🌍🔺 minimap car pos  x,y = -1..1
-	Vector2 mp(-app->carPoses[qc][c].pos[2], app->carPoses[qc][c].pos[0]);
+	Vector2 mp(-app->carPoses[qc][id].pos[2], app->carPoses[qc][id].pos[0]);
 
 	//  other cars in player's car view space
 	if (!main && bZoom)
 	{
-		Vector2 plr(-app->carPoses[qb][b].pos[2], app->carPoses[qb][b].pos[0]);
+		Vector2 plr(-app->carPoses[qb][base].pos[2], app->carPoses[qb][base].pos[0]);
 		mp -= plr;  mp *= pSet->zoom_minimap;
 
 		if (bRot)
@@ -351,19 +352,19 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 	
 	//  visible
 	int cg = app->isGhost2nd && !app->bRplPlay &&
-		app->carModels[c]->cType == CarModel::CT_GHOST &&
-		c < app->carModels.size()-1 ? 1 : 0;
+		app->carModels[id]->cType == CarModel::CT_GHOST &&
+		id < app->carModels.size()-1 ? 1 : 0;
 
-	bool hide = !app->carModels[c+cg]->bVisible;
+	bool hide = !app->carModels[id+cg]->bVisible;
 	if (hide)
-	{	h.vMiniPos[c].x = -100.f;
-		h.vMiniPos[c].y = 0.f;
+	{	h.vMiniPos[id].x = -100.f;
+		h.vMiniPos[id].y = 0.f;
 	}
 	else if (bZoom && main)
-	{	h.vMiniPos[c].x = 0.f;
-		h.vMiniPos[c].y = 0.f;
+	{	h.vMiniPos[id].x = 0.f;
+		h.vMiniPos[id].y = 0.f;
 	}else
-	{	h.vMiniPos[c].x = xp;
-		h.vMiniPos[c].y = yp;
+	{	h.vMiniPos[id].x = xp;
+		h.vMiniPos[id].y = yp;
 	}
 }

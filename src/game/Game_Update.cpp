@@ -121,8 +121,9 @@ void App::update( float dt )
 			
 			hud->Size();
 		}
-		hud->Update(0, dt);
-		// hud->Update(1, dt);  //?
+
+		for (int c = 0; c < carModels.size(); ++c)
+			hud->Update(c, dt);
 		hud->Update(-1, dt);
 	
 
