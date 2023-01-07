@@ -51,7 +51,7 @@ void App::EditMouse()
 ///  🛣️ edit Road  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 void App::MouseRoad()
 {
-	const Real fMove(0.03f), fRot(10.f);  //par speed
+	const Real fMove(0.2f), fRot(10.f);  //par speed
 	SplineRoad* road = scn->road;
 	const Real d = road->iChosen == -1 ? 30.f * fMove :
 		mCamera->getRealPosition().distance(road->getPos(road->iChosen)) * fMove;
@@ -81,8 +81,8 @@ void App::MouseRoad()
 ///  🏁 edit Start pos	 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 void App::MouseStart()
 {
-	const Real fMove(0.02f), fRot(0.05f);  //par speed
-	const Real d = mCamera->getRealPosition().distance(Axes::toOgre(scn->sc->startPos[iEnd])) * fMove;
+	const Real fMove(0.2f), fRot(2.f);  //par speed
+	const Real d = mCamera->getPosition().distance(Axes::toOgre(scn->sc->startPos[iEnd])) * fMove;
 	if (!alt)
 	{
 		if (mbLeft)
@@ -141,8 +141,8 @@ void App::MouseStart()
 void App::MouseFluids()
 {
 	FluidBox& fb = scn->sc->fluids[iFlCur];
-	const Real fMove(0.02f), fRot(1.5f);  //par speed
-	const Real d = mCamera->getRealPosition().distance(fb.pos) * fMove;
+	const Real fMove(0.2f);  //, fRot(20.f);  //par speed
+	const Real d = mCamera->getPosition().distance(fb.pos) * fMove;
 	if (!alt)
 	{
 		if (mbLeft)	// move on xz
@@ -193,8 +193,8 @@ void App::MouseFluids()
 void App::MouseEmitters()
 {
 	SEmitter& em = scn->sc->emitters[iEmtCur];
-	const Real fMove(0.02f), fRot(1.5f);  //par speed
-	const Real d = mCamera->getRealPosition().distance(em.pos) * fMove;
+	const Real fMove(0.2f), fRot(20.f);  //par speed
+	const Real d = mCamera->getPosition().distance(em.pos) * fMove;
 	if (emtEd == EO_Move)
 	{
 		if (mbLeft)	// move on xz
@@ -244,7 +244,7 @@ void App::MouseEmitters()
 ///  📦 edit Objects . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 void App::MouseObjects()
 {
-	const Real fMove(0.02f), fRot(1.5f), fScale(0.02f);  //par speed
+	const Real fMove(0.2f), fRot(20.f), fScale(0.02f);  //par speed
 	bool upd = false, sel = !vObjSel.empty();
 
 	//  rotate/scale selected
@@ -267,7 +267,7 @@ void App::MouseObjects()
 	{
 		Object& o = i == -1 ? objNew : scn->sc->objects[i];
 		bool upd1 = false;
-		const Real d = mCamera->getRealPosition().distance(Axes::toOgre(o.pos)) * fMove;
+		const Real d = mCamera->getPosition().distance(Axes::toOgre(o.pos)) * fMove;
 
 		switch (objEd)
 		{
