@@ -150,7 +150,7 @@ void CHud::UpdPosElems(int cnt, int cntC, int carId)
 		for (int v = 0; v < plr; ++v)  // all viewports
 		{
 			const Hud& h = hud[v];
-			const float sc = pSet->size_minimap * app->mDims[v].avgsize;
+			const float sc = pSet->size_minimap * app->mDims[v].avgsize1;
 			const Vector3& pos = h.ndMap->getPosition();
 			
 			for (c = 0; c < cntC; ++c)  // all mini pos for one car
@@ -301,7 +301,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 			for (p=0; p < 4; ++p)
 			{	h.hrMap->position(tp[p][0],tp[p][1], 0);
 				h.hrMap->texUV(tc[p][0], tc[p][1]);
-				// h.moMap->textureCoord(tc[p][0],tc[p][1], 0);  // uv2
+				// h.moMap->texUV(tc[p][0],tc[p][1], 0);  // uv2
 			}
 		else
 		{	Vector2 mp(-app->carPoses[qb][base].pos[2], app->carPoses[qb][base].pos[0]);
@@ -310,7 +310,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 			for (p=0; p < 4; ++p)
 			{	h.hrMap->position(tp[p][0],tp[p][1], 0);
 				h.hrMap->texUV(cx[p]+xc, -cy[p]-yc);
-				// h.moMap->textureCoord(tc[p][0],tc[p][1], 1);  // uv2
+				// h.moMap->texUV(tc[p][0],tc[p][1], 1);  // uv2
 		}	}
 		h.hrMap->end();
 	}

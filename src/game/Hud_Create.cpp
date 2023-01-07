@@ -103,10 +103,8 @@ void CHud::Create()
 		CarModel* cm = app->carModels[c];
 
 		//  dims  ----
-		const int wx = app->mDims[c].width * app->mWindow->getWidth(),
-				 wy = app->mDims[c].height * app->mWindow->getHeight() +10;  //+? why
-		// const int wx = app->mWindow->getWidth(),
-		//		  wy = app->mWindow->getHeight() +10;  //+? why
+		const int wx = app->mWindow->getWidth(),
+				  wy = app->mWindow->getHeight() +20;  //+? why
 		const float asp = float(wx) / float(wy);
 
 		float t = sc->td.fTerWorldSize*0.5;
@@ -128,7 +126,6 @@ void CHud::Create()
 		UpdMiniTer();
 	#endif
 		
-		//float fHudSize = pSet->size_minimap * 1.f; //app->mSplitMgr->mDims[c].avgsize;
 		h.hrMap = new HudRenderable(sMini, scm,
 			OT_TRIANGLE_LIST, true, false, RV_Hud,RQG_Hud1, 1);
 		h.ndMap = rt->createChildSceneNode();  h.ndMap->attachObject(h.hrMap);

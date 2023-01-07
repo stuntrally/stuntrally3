@@ -1,6 +1,7 @@
 #pragma once
 #include "Gui_Def.h"
 #include "Cam.h"
+#include "ViewDim.h"
 #include <string>
 #include <OgreString.h>
 #include <OgreHlmsCommon.h>
@@ -118,16 +119,7 @@ public:
 	void DestroyCameras();
 	
 	//  viewport dimensions, for each player [4]
-	struct VPDims
-	{
-		Ogre::Real top,left, width,height, right,bottom, avgsize;
-		void Default()
-		{	top=0.f; left=0.f;  width=1.f; height=1.f;
-			right=1.f; bottom=1.f;  avgsize=1.f;
-		}
-		VPDims()
-		{	Default();  }
-	} mDims[4];
+	ViewDim mDims[4];
 
 	//  workspace, Ogre render setup  [4] + 1 for refl
 	std::vector<Ogre::CompositorWorkspace*> mWorkspaces;

@@ -82,6 +82,8 @@ CompositorWorkspace* AppGui::SetupCompositor()
 
 	DestroyCameras();  // 💥🎥
 
+	for (int i = 0; i < 4; ++i)
+		mDims[i].Default();
 
 	//  Viewports
 	//-----------------------------------------------------------------------------------------
@@ -99,18 +101,18 @@ CompositorWorkspace* AppGui::SetupCompositor()
 			Vector3( eyeSide, 0.f,0.f), Vector3(eyeFocus *  eyeSide, 0.f, eyeZ) );
 		mCamera = camL->cam;
 
-		Vector4 dims = Vector4( 0.0f, 0.0f, 0.5f, 1.0f );  // offset, scale
 		CompositorWorkspace* ws1,*ws2;
 		ws1 = mgr->addWorkspace( mSceneMgr, ext,
 				camL->cam, wsName,
 				true, -1, 0, 0,
-				dims, 0x01, 0x01 );
+				Vector4( 0.0f, 0.0f, 0.5f, 1.0f ),
+				0x01, 0x01 );
 
-		dims = Vector4( 0.5f, 0.0f, 0.5f, 1.0f );
 		ws2 = mgr->addWorkspace( mSceneMgr, ext, 
 				camR->cam, wsName,
 				true, -1, 0, 0,
-				dims, 0x02, 0x02 );
+				Vector4( 0.5f, 0.0f, 0.5f, 1.0f ),
+				0x02, 0x02 );
 
 		mWorkspaces.push_back(ws1);
 		mWorkspaces.push_back(ws2);
@@ -124,74 +126,21 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	//.....................................................................................
 	else if (views > 1)
 	{
-		for (int i = 0; i < 4; ++i)
-			mDims[i].Default();
-
 		for (int i = 0; i < views; ++i)
 		{
 			bool f1 = i > 0;
 			auto c = CreateCamera( "Player" + toStr(i), 0, Vector3::ZERO, Vector3::NEGATIVE_UNIT_Z );
 			if (i==0)
 				mCamera = c->cam;
-
-			//  set dimensions for the viewports
-			float dims[4];  // left,top, width,height
-			#define dim_(l,t,w,h)  {  dims[0]=l;  dims[1]=t;  dims[2]=w;  dims[3]=h;  }
-
-			if (views == 1)
-			{
-				dim_(0.0, 0.0, 1.0, 1.0);
-			}
-			else if (views == 2)
-			{
-				if (!pSet->split_vertically)
-				{	if (i == 0)	dim_(0.0, 0.0, 1.0, 0.5)
-					else		dim_(0.0, 0.5, 1.0, 0.5)
-				}else{
-					if (i == 0) dim_(0.0, 0.0, 0.5, 1.0)
-					else		dim_(0.5, 0.0, 0.5, 1.0)	}
-			}
-			else if (views == 3)
-			{
-				if (!pSet->split_vertically)
-				{
-					if (i == 0)			dim_(0.0, 0.0, 0.5, 0.5)
-					else if (i == 1)	dim_(0.5, 0.0, 0.5, 0.5)
-					else if (i == 2)	dim_(0.0, 0.5, 1.0, 0.5)
-				}else{
-					if (i == 0)			dim_(0.0, 0.0, 0.5, 1.0)
-					else if (i == 1)	dim_(0.5, 0.0, 0.5, 0.5)
-					else if (i == 2)	dim_(0.5, 0.5, 0.5, 0.5)
-				}
-			}
-			else if (views == 4)
-			{
-				if (i == 0)			dim_(0.0, 0.0, 0.5, 0.5)
-				else if (i == 1)	dim_(0.5, 0.0, 0.5, 0.5)
-				else if (i == 2)	dim_(0.0, 0.5, 0.5, 0.5)
-				else if (i == 3)	dim_(0.5, 0.5, 0.5, 0.5)
-			}else
-			{
-				LogO("ERROR: Unsupported number of viewports: " + toStr(views));
-				// return;
-			}
-			#undef dim_
-
-			// save dims (for later use by Hud)
-			// for (int d=0; d<4; ++d)
-			{
-				mDims[i].left = dims[0]*2-1;  mDims[i].top = dims[1]*2-1;
-				mDims[i].width = dims[2]*2;  mDims[i].height = dims[3]*2;
-				mDims[i].right = mDims[i].left + mDims[i].width;
-				mDims[i].bottom = mDims[i].top + mDims[i].height;
-				mDims[i].avgsize = (mDims[i].width + mDims[i].height) * 0.25f;
-			}
+			
+			auto& d = mDims[i];
+			d.SetDim(views, !pSet->split_vertically, i);
 
 			CompositorWorkspace* w =
 				mgr->addWorkspace( mSceneMgr, ext,
 					c->cam, wsName,
 					true, -1, 0, 0,
-					Vector4(dims[0], dims[1], dims[2], dims[3]),
+					Vector4(d.left0, d.top0, d.width0, d.height0),
 					f1 ? 0x02 : 0x01, f1 ? 0x02 : 0x01 );
 
 			mWorkspaces.push_back(w);
@@ -204,7 +153,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	else  // 🖥️ single view
 	//.....................................................................................
 	{
-		auto c = CreateCamera( "Player", 0, Vector3(0,50,100), Vector3(0,0,0) );
+		auto c = CreateCamera( "Player", 0, Vector3(0,150,0), Vector3(0,0,0) );
 		mCamera = c->cam;
 
 		auto ws = mgr->addWorkspace( mSceneMgr, ext, c->cam, wsName, true );  // in .compositor
