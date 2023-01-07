@@ -466,7 +466,7 @@ void App::TerCircleUpd(float dt)
 	bool ed = scn->road->bHitTer && bEdit();
 	// road->ndHit->setVisible(ed);
 	auto& nd = ndTerC[e];
-	auto& mo = moTerC[e];
+	auto& mo = hrTerC[e];
 	
 	//  upd vis all
 	for (int i=0; i <= ED_Filter; ++i)

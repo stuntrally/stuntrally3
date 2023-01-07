@@ -977,12 +977,12 @@ hlms body_realtime pbs //: car_body
 	fresnel_coeff 0.1 0.1 0.1
 	// fresnel_coeff 1 1 1
 
-	diffuse  0.3 0.3 0.3
-	specular 0.5 0.5 0.5
+	diffuse  1 1 1
+	specular 1 1 1
 	// specular 0.9 0.9 0.9
 	// roughness 0.5
 	// metalness 0.1
-	roughness 0.4
+	roughness 0.3
 	metalness 0.8
 }
 

@@ -71,7 +71,7 @@ protected:
 	const static int iGraphClrs = 5+8+8;
 	const static MyGUI::Colour graphClr[iGraphClrs];  // text colors
 	
-	HudRenderable* moLine =0, *moBack =0, *moGrid =0;  //graph line, background, grid	
+	HudRenderable* hrLine =0, *hrBack =0, *hrGrid =0;  //graph line, background, grid	
 	Ogre::SceneNode* node =0;
 	// void moSetup(Ogre::ManualObject* mo, bool dynamic, Ogre::uint8 RQG);  // helper
 

@@ -123,13 +123,13 @@ void App::Rnd2TexSetup()
 		//  car pos tris (form all cars on all viewports)
 		SceneNode* rt = mSceneMgr->getRootSceneNode();
 		// mpos = Create2D("hud/CarPos", 0.2f, true);  // dot size
-		mpos = new HudRenderable("hud/CarPos", mSceneMgr,
+		hrPos = new HudRenderable("hud/CarPos", mSceneMgr,
 			OT_TRIANGLE_LIST, true,false, RV_Hud,RQG_Hud3, 1);
 		ndPos = rt->createChildSceneNode(SCENE_DYNAMIC,
 			Vector3(xm1+(xm2-xm1)/2, ym1+(ym2-ym1)/2, 0));
 		float fHudSize = 0.04f;
 		ndPos->scale(fHudSize, fHudSize, 1);
-		ndPos->attachObject(mpos);
+		ndPos->attachObject(hrPos);
 	}
 	if (ndPos)   ndPos->setVisible(pSet->trackmap);
 	UpdMiniVis();

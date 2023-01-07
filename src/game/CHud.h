@@ -57,7 +57,7 @@ public:
 		Txt txCountdown =0;
 
 		//  ⏲️ gauges
-		HudRenderable* moGauges =0;
+		HudRenderable* hrGauges =0;
 		Ogre::SceneNode *ndGauges =0;
 		//  gear, vel
 		Txt txVel =0, txGear =0, txAbs =0, txTcs =0;
@@ -77,14 +77,14 @@ public:
 		Txt txCam =0;
 
 		//  🌍 minimap
-		HudRenderable *moMap =0;
+		HudRenderable *hrMap =0;
 		Ogre::SceneNode *ndMap =0;
 		//  all info for this car's minimap
 		std::vector<SMiniPos> vMiniPos;  // const size: 6
 		
 		//  center position .
-		Ogre::Vector2 vcRpm, vcVel;  Ogre::Real fScale;
-		bool updGauges =0;
+		Ogre::Vector2 vcRpm, vcVel;  // -1..1
+		Ogre::Real fScale = 0.19f;
 
 		WP parent =0;
 		Hud();
@@ -97,7 +97,7 @@ public:
 
 	//  🌍🔺 car pos tris on minimap
 	//  one for all cars on all viewports
-	HudRenderable* moPos =0;
+	HudRenderable* hrPos =0;
 	Ogre::SceneNode* ndPos =0;
 
 	//  💬 chat messages

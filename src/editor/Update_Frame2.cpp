@@ -41,13 +41,13 @@ void App::UpdateKey(float dt)
 			px[i] = psx*cosf(p);
 			py[i] =-psy*sinf(p);
 		}
-		if (mpos)  // fixme
-		{	mpos->begin();
-			mpos->position(px[0],py[0], 0);  mpos->texUV(0, 1);
-			mpos->position(px[1],py[1], 0);  mpos->texUV(1, 1);
-			mpos->position(px[3],py[3], 0);  mpos->texUV(0, 0);
-			mpos->position(px[2],py[2], 0);  mpos->texUV(1, 0);
-			mpos->end();
+		if (hrPos)  // fixme
+		{	hrPos->begin();
+			hrPos->position(px[0],py[0], 0);  hrPos->texUV(0, 1);
+			hrPos->position(px[1],py[1], 0);  hrPos->texUV(1, 1);
+			hrPos->position(px[3],py[3], 0);  hrPos->texUV(0, 0);
+			hrPos->position(px[2],py[2], 0);  hrPos->texUV(1, 0);
+			hrPos->end();
 	}	}
 	
 	//  status

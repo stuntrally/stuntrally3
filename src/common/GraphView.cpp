@@ -58,7 +58,7 @@ void GraphView::Create(int length, String sMtr, float backAlpha, bool buffered1)
 	//  graph line  ----------------------
 	if (length > 1)  // at least 2, use 1 for text only
 	{
-		moLine = new HudRenderable(sMtr, mSceneMgr,
+		hrLine = new HudRenderable(sMtr, mSceneMgr,
 			OT_LINE_STRIP,
 			false, false, RV_Hud, RQG_Hud3, length + 1);
 
@@ -74,15 +74,15 @@ void GraphView::Create(int length, String sMtr, float backAlpha, bool buffered1)
 	//  backgr rect  ----------------------
 	if (backAlpha > 0.01f)
 	{
-		moBack = new HudRenderable("graphBack", mSceneMgr,
+		hrBack = new HudRenderable("graphBack", mSceneMgr,
 			OT_TRIANGLE_LIST, false, true, RV_Hud, RQG_Hud1, 1);
-		moBack->begin();
-		moBack->position(0,0, 0);  moBack->color(0,0,0, backAlpha);
-		moBack->position(1,0, 0);  moBack->color(0,0,0, backAlpha);
-		moBack->position(0,1, 0);  moBack->color(0,0,0, backAlpha);
-		moBack->position(1,1, 0);  moBack->color(0,0,0, backAlpha);
-		moBack->end();
-		node->attachObject(moBack);
+		hrBack->begin();
+		hrBack->position(0,0, 0);  hrBack->color(0,0,0, backAlpha);
+		hrBack->position(1,0, 0);  hrBack->color(0,0,0, backAlpha);
+		hrBack->position(0,1, 0);  hrBack->color(0,0,0, backAlpha);
+		hrBack->position(1,1, 0);  hrBack->color(0,0,0, backAlpha);
+		hrBack->end();
+		node->attachObject(hrBack);
 	}
 }
 
@@ -101,29 +101,29 @@ void GraphView::CreateGrid(int numH, int numV, /*char clr,*/ float clr, float al
 	if (numH > 0)  for (y = 0.f; y <= 1.f; y += ya)  ++count;
 	if (numV > 0)  for (x = 0.f; x <= 1.f; x += xa)  ++count;
 
-	moGrid = new HudRenderable("graphGrid", mSceneMgr,
+	hrGrid = new HudRenderable("graphGrid", mSceneMgr,
 		OT_LINE_LIST, false, true, RV_Hud, RQG_Hud2, count);
 
 	//const Colour& gc = graphClr[clr];
 	//ColourValue c(gc.red, gc.green, gc.blue, alpha);
 
-	moGrid->begin();
+	hrGrid->begin();
 	float a = sqrt(alpha);  //?-
 
 	if (numH > 0)  //  fill
 		for (y = 0.f; y <= 1.f; y += ya)
 		{
-			moGrid->position(0,y, 0);  moGrid->color(clr, clr, clr, a);
-			moGrid->position(1,y, 0);  moGrid->color(clr, clr, clr, a);
+			hrGrid->position(0,y, 0);  hrGrid->color(clr, clr, clr, a);
+			hrGrid->position(1,y, 0);  hrGrid->color(clr, clr, clr, a);
 		}
 	if (numV > 0)
 		for (x = 0.f; x <= 1.f; x += xa)
 		{
-			moGrid->position(x,0, 0);  moGrid->color(clr, clr, clr, a);
-			moGrid->position(x,1, 0);  moGrid->color(clr, clr, clr, a);
+			hrGrid->position(x,0, 0);  hrGrid->color(clr, clr, clr, a);
+			hrGrid->position(x,1, 0);  hrGrid->color(clr, clr, clr, a);
 		}
-	moGrid->end();
-	node->attachObject(moGrid);
+	hrGrid->end();
+	node->attachObject(hrGrid);
 }
 
 /// todo: auto val range, auto grid lines, value texts..
@@ -194,9 +194,9 @@ void GraphView::Destroy()
 	// if (moBack)  moBack->end();  //-
 
 	if (mGui && txt)  {  mGui->destroyWidget(txt);  txt = 0;  }
-	if (moLine) {	delete moLine;  moLine = 0;  }
-	if (moBack) {	delete moBack;  moBack = 0;  }
-	if (moGrid) {	delete moGrid;  moGrid = 0;  }
+	if (hrLine) {	delete hrLine;  hrLine = 0;  }
+	if (hrBack) {	delete hrBack;  hrBack = 0;  }
+	if (hrGrid) {	delete hrGrid;  hrGrid = 0;  }
 	if (node) {		mSceneMgr->destroySceneNode(node);  node = 0;  }
 }
 
@@ -228,7 +228,7 @@ void GraphView::SetUpdate()
 }
 void GraphView::Update()
 {
-	if (!node || !moLine)  return;
+	if (!node || !hrLine)  return;
 	if (buffered && !manualUpd)  return;
 	manualUpd = false;
 	
@@ -236,20 +236,20 @@ void GraphView::Update()
 	int i = iCurX % size;  // vals id
 	float fx = 0.f, fAdd = 1.f / size;  // screen x
 
-	moLine->begin();
-	moLine->position(fx, vals[i], 0.f);  // line start
+	hrLine->begin();
+	hrLine->position(fx, vals[i], 0.f);  // line start
 	
 	for (size_t n=0; n < size; ++n)
 	{
-		moLine->position(fx, vals[i], 0.f);
+		hrLine->position(fx, vals[i], 0.f);
 
 		++i;  if (i >= size)  i = 0;
 		fx += fAdd;
 	}
-	moLine->end();
+	hrLine->end();
 
 	if (!attached)  // after first full update
 	{	attached = 1;
-		node->attachObject(moLine);
+		node->attachObject(hrLine);
 	}
 }

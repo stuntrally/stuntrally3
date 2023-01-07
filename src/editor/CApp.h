@@ -88,7 +88,7 @@ public:
 
 
 	///  🖼️ rnd to tex  minimap  * * * * * * * * *	
-	HudRenderable* mpos =0;
+	HudRenderable* hrPos =0;
 	Ogre::SceneNode *ndPos =0;  // dims
 	Ogre::Real asp = 4.f/3.f, xm1 = -1.f, ym1 = 1.f, xm2 = 1.f, ym2 = -1.f;
 
@@ -108,7 +108,7 @@ public:
 	
 
 	//  ⛰️📍 terrain cursor, circle mesh  o
-	HudRenderable*   moTerC[ED_Filter+1] ={0,0,0,0};
+	HudRenderable*   hrTerC[ED_Filter+1] ={0,0,0,0};
 	Ogre::SceneNode* ndTerC[ED_Filter+1] ={0,0,0,0};
 	void TerCircleInit(), TerCircleUpd(float dt);
 
