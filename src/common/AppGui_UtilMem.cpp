@@ -81,15 +81,11 @@ void AppGui::unloadTexturesFromUnusedMaterials()
 				if( !StringUtil::endsWith(name, "_TrueTypeFont", false))  // Gui font
 				{
 				if( i == HLMS_PBS )
-				{
 					unloadTexturesFromUnusedMaterials<HlmsPbsDatablock, NUM_PBSM_TEXTURE_TYPES>(
 						itor->second.datablock, usedTex, unusedTex );
-				}
 				else if( i == HLMS_UNLIT )
-				{
 					unloadTexturesFromUnusedMaterials<HlmsUnlitDatablock, NUM_UNLIT_TEXTURE_TYPES>(
 						itor->second.datablock, usedTex, unusedTex );
-				}
 				}
 				++itor;
 			}
@@ -112,15 +108,11 @@ void AppGui::unloadTexturesFromUnusedMaterials()
 //-----------------------------------------------------------------------------------
 void AppGui::unloadUnusedTextures()
 {
-	RenderSystem *renderSystem = mGraphicsSystem->getRoot()->getRenderSystem();
+	RenderSystem *rs = mGraphicsSystem->getRoot()->getRenderSystem();
+	auto* textureGpuManager = rs->getTextureGpuManager();
 
-	auto* textureGpuManager = renderSystem->getTextureGpuManager();
-
-	const auto &entries = textureGpuManager->getEntries();
-
-	auto itor = entries.begin();
-	auto end = entries.end();
-	while( itor != end )
+	const auto &ents = textureGpuManager->getEntries();
+	for (auto itor = ents.begin(); itor != ents.end(); ++itor)
 	{
 		const TextureGpuManager::ResourceEntry &entry = itor->second;
 
@@ -140,19 +132,24 @@ void AppGui::unloadUnusedTextures()
 			++itListener;
 		}
 		String name = entry.texture->getNameStr();
-		if( StringUtil::endsWith(name, "_TrueTypeFont", false) ||  // Gui font
-			entry.texture->getTextureType() != TextureTypes::Type2D ||
-			!entry.texture->hasAutomaticBatching() || !entry.texture->isTexture() ||
-			entry.texture->isRenderToTexture() || entry.texture->isUav() )
+		if( name == "DynamicCubemap" ||
+			StringUtil::endsWith(name, "_TrueTypeFont", false)  // Gui font
+			|| entry.texture->getTextureType() != TextureTypes::Type2D //
+			|| !entry.texture->hasAutomaticBatching()  //
+			|| !entry.texture->isTexture()
+			|| entry.texture->isRenderToTexture()
+			|| entry.texture->isUav() //
+			)
 		{
 			// likely internal texture
-			// LogO("Skip: "+name);
+			//LogO("unload skip: "+name);
 			canBeUnloaded = false;
 		}
+		// else
+		// 	LogO("unload: "+name);
 
 		if( canBeUnloaded )
 			entry.texture->scheduleTransitionTo( GpuResidency::OnStorage );
-		++itor;
 	}
 }
 

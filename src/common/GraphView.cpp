@@ -93,7 +93,6 @@ void GraphView::CreateGrid(int numH, int numV, /*char clr,*/ float clr, float al
 {
 	if (!node)  return;
 	if (numH <= 0 && numV <= 0)  return;
-	// return;  // fixme
 	
 	const float ya = 1.f / numH, xa = 1.f / numV;
 	float x,y;

@@ -357,54 +357,58 @@ void SplineRoad::Destroy()  // full and markers
 //  one seg
 void SplineRoad::DestroySeg(int id)
 {
-	//LogO("DestroySeg" + toStr(id));
+	// LogO("DestroySeg" + toStr(id));
 	RoadSeg& rs = vSegs[id];
 	if (rs.empty)  return;
-try
-{
-	for (int l=0; l < LODs; ++l)
+	try
 	{
-		if (rs.wall[l].it)  // ] wall
-		{
-			mSceneMgr->destroySceneNode(rs.wall[l].node);
-			mSceneMgr->destroyItem(rs.wall[l].it);
+		auto mgr = mSceneMgr;
+		auto& ms = MeshManager::getSingleton();
+		auto& m1 = v1::MeshManager::getSingleton();
 
-			String sMesh = rs.wall[l].smesh, s1 = sMesh+"v1", s2 = sMesh+"v2";
-			MeshManager::getSingleton().remove(sMesh);
-			MeshManager::getSingleton().remove(s2);
-			v1::MeshManager::getSingleton().remove(s1);
-		}
-		if (rs.blend[l].it)  // > blend
+		for (int l=0; l < LODs; ++l)
 		{
-			mSceneMgr->destroySceneNode(rs.blend[l].node);
-			mSceneMgr->destroyItem(rs.blend[l].it);
-			MeshManager::getSingleton().remove(rs.blend[l].smesh);
+			{	// ] wall
+				auto& n = rs.wall[l].node;   if (n)  mgr->destroySceneNode(n);  n = 0;
+				auto& i = rs.wall[l].it;     if (i)  mgr->destroyItem(i);  i = 0;
+				auto& s = rs.wall[l].smesh;
+				if (!s.empty())
+				{	String s1 = s+"v1", s2 = s+"v2";
+					ms.remove(s);  s = "";
+					ms.remove(s2);
+					m1.remove(s1);
+			}	}
+			{	// > blend
+				auto& n = rs.blend[l].node;  if (n)  mgr->destroySceneNode(n);  n = 0;
+				auto& i = rs.blend[l].it;    if (i)  mgr->destroyItem(i);  i = 0;
+				auto& s = rs.blend[l].smesh;
+				if (!s.empty())  ms.remove(s);  s = "";
+			}
+			{	// - road
+				// LogO("---- Destroy Road seg " + rs.road[l].smesh);
+				auto& n = rs.road[l].node;  if (n)  mgr->destroySceneNode(n);  n = 0;
+				auto& i = rs.road[l].it;    if (i)  mgr->destroyItem(i);  i = 0;
+				auto& j = rs.road[l].it2;   if (j)  mgr->destroyItem(j);  j = 0;
+				auto& s = rs.road[l].smesh;
+				if (!s.empty())
+				{	String s1 = s+"v1", s2 = s+"v2";
+					s = "";
+					// ms.remove(s);  // already-
+					ms.remove(s2);
+					m1.remove(s1);
+			}	}
 		}
-		if (rs.road[l].it)  // - road
-		{
-			// LogO("---- Destroy Road seg " + rs.road[l].smesh);
-			mSceneMgr->destroySceneNode(rs.road[l].node);
-			mSceneMgr->destroyItem(rs.road[l].it);
-			if (rs.road[l].it2)
-				mSceneMgr->destroyItem(rs.road[l].it2);
-
-			String sMesh = rs.road[l].smesh, s1 = sMesh+"v1", s2 = sMesh+"v2";
-			// MeshManager::getSingleton().remove(sMesh);
-			MeshManager::getSingleton().remove(s2);
-			v1::MeshManager::getSingleton().remove(s1);
+		{	// | column
+			auto& n = rs.col.node;   if (n)  mgr->destroySceneNode(n);  n = 0;
+			auto& i = rs.col.it;     if (i)  mgr->destroyItem(i);  i = 0;
+			auto& s = rs.col.smesh;
+			if (!s.empty())  ms.remove(s);  s = "";
 		}
 	}
-	if (rs.col.it)  // | column
+	catch (Exception ex)
 	{
-		mSceneMgr->destroySceneNode(rs.col.node);
-		mSceneMgr->destroyItem(rs.col.it);
-		MeshManager::getSingleton().remove(rs.col.smesh);
+		LogO(String("# Error! road DestroySeg") + ex.what());
 	}
-}
-catch (Exception ex)
-{
-	LogO(String("# Error! road DestroySeg") + ex.what());
-}
 	// LogO("---- road Destroyed");
 	rs.empty = true;
 	rs.lpos.clear();

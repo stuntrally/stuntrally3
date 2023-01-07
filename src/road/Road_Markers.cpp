@@ -171,7 +171,7 @@ void SplineRoad::SelectMarker(bool bHide)  // Mr Melect Sarker
 //  Update all
 void SplineMarkEd::UpdAllMarkers()
 {
-	if (sMarkerMesh == "")  return;
+	if (sMarkerMesh.empty())  return;
 	for (int i=0; i < getNumPoints(); ++i)
 		Move1(i, Vector3::ZERO);  //-
 
