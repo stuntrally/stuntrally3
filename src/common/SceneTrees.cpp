@@ -20,7 +20,7 @@
 	// #include "SplitScreen.h"
 	#include "BtOgreGP.h"
 #endif
-#include "pathmanager.h"
+#include "paths.h"
 #include "MersenneTwister.h"
 
 // #include <filesystem>

@@ -1,7 +1,7 @@
 #include "pch.h"
 /// Big portions of this file are borrowed and adapted from Performous under GPL (https://performous.org)
 
-#include "pathmanager.h"
+#include "paths.h"
 #include <filesystem>
 #include <string>
 #include <fstream>
@@ -35,14 +35,14 @@ namespace
 
 
 //  static vars
-string PATHMANAGER::ogre_plugin, PATHMANAGER::home_dir,
-	PATHMANAGER::user_config, PATHMANAGER::game_config,
-	PATHMANAGER::user_data, PATHMANAGER::game_data,
-	PATHMANAGER::cache_dir;
-stringstream PATHMANAGER::info;
+string PATHS::ogre_plugin, PATHS::home_dir,
+	PATHS::user_config, PATHS::game_config,
+	PATHS::user_data, PATHS::game_data,
+	PATHS::cache_dir;
+stringstream PATHS::info;
 
 
-void PATHMANAGER::Init(bool log_paths)
+void PATHS::Init(bool log_paths)
 {
 	typedef vector<fs::path> Paths;
 
@@ -191,7 +191,7 @@ void PATHMANAGER::Init(bool log_paths)
 	//  Subdirs for each sim_mode
 	///--------------------------------------------------
 	list <string> li;
-	PATHMANAGER::DirList(PATHMANAGER::CarSim(), li);
+	PATHS::DirList(PATHS::CarSim(), li);
 	for (auto d : li)
 	{
 		CreateDir(Records()+"/"+d);
@@ -229,12 +229,12 @@ void PATHMANAGER::Init(bool log_paths)
 
 
 //  utils
-bool PATHMANAGER::FileExists(const string& filename)
+bool PATHS::FileExists(const string& filename)
 {
 	return fs::exists(filename);
 }
 
-bool PATHMANAGER::CreateDir(const string& path)
+bool PATHS::CreateDir(const string& path)
 {
 	try	{	fs::create_directories(path);	}
 	catch (...)
@@ -246,7 +246,7 @@ bool PATHMANAGER::CreateDir(const string& path)
 }
 
 
-bool PATHMANAGER::DirList(string dirpath, strlist& dirlist, string extension)
+bool PATHS::DirList(string dirpath, strlist& dirlist, string extension)
 {
 //------Folder listing code for POSIX
 #ifndef _WIN32
@@ -393,7 +393,7 @@ namespace
 
 
 //  open web browser with url
-void PATHMANAGER::OpenUrl(const string& url)
+void PATHS::OpenUrl(const string& url)
 {
 #ifdef WIN32
 	ShellExecuteA(0, 0, url.c_str(), 0, 0 , SW_SHOW);

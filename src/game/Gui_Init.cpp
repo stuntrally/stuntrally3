@@ -2,7 +2,7 @@
 #include "Def_Str.h"
 #include "Gui_Def.h"
 #include "GuiCom.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "game.h"
 #include "Road.h"
 #include "CGame.h"
@@ -489,7 +489,7 @@ void CGui::InitGui()
 
 	//  user dir
 	Ed edUserDir = fEd("EdUserDir");
-	edUserDir->setCaption(PATHMANAGER::UserConfigDir());
+	edUserDir->setCaption(PATHS::UserConfigDir());
 
 
 	///  🕹️ Input tab  -------

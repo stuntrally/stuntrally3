@@ -5,7 +5,7 @@
 #include "ChampsXml.h"
 #include "ChallengesXml.h"
 #include "GuiCom.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "game.h"
 #include "Road.h"
 #include "CGame.h"
@@ -177,8 +177,8 @@ void CGui::Ch_XmlLoad()
 
 /// 🏆 Champs  ---------------------------
 	ProgressXml oldprog[2];
-	oldprog[0].LoadXml(PATHMANAGER::UserConfigDir() + "/progress.xml");
-	oldprog[1].LoadXml(PATHMANAGER::UserConfigDir() + "/progress_rev.xml");
+	oldprog[0].LoadXml(PATHS::UserConfigDir() + "/progress.xml");
+	oldprog[1].LoadXml(PATHS::UserConfigDir() + "/progress_rev.xml");
 
 	int chs = data->champs->all.size();
 	
@@ -235,8 +235,8 @@ void CGui::Ch_XmlLoad()
 
 /// 🥇 Challenges  ---------------------------
 	ProgressLXml oldpr[2];
-	oldpr[0].LoadXml(PATHMANAGER::UserConfigDir() + "/progressL.xml");
-	oldpr[1].LoadXml(PATHMANAGER::UserConfigDir() + "/progressL_rev.xml");
+	oldpr[0].LoadXml(PATHS::UserConfigDir() + "/progressL.xml");
+	oldpr[1].LoadXml(PATHS::UserConfigDir() + "/progressL_rev.xml");
 
 	chs = data->chall->all.size();
 	

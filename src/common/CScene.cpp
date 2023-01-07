@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "pathmanager.h"
 #include "settings.h"
 #include "CScene.h"
 #include "CData.h"

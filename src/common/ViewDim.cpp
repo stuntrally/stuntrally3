@@ -24,7 +24,7 @@ void ViewDim::Upd1()
 	height1 = 2.f * height0 -1.f;
 	right1  = 2.f * right0  -1.f;
 	bottom1 = 2.f * bottom0 -1.f;
-	avgsize1= 2.f * avgsize0;
+	avgsize1= (width1 + height1) * 0.5f;
 }
 
 

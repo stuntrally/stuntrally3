@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "CScene.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "mathvector.h"
 #include "game.h"
 #include "SceneXml.h"
@@ -42,7 +42,7 @@
 // #include <MyGUI_TextBox.h>
 using namespace Ogre;
 using namespace std;
-#define  FileExists(s)  PATHMANAGER::FileExists(s)
+#define  FileExists(s)  PATHS::FileExists(s)
 
 
 //  💥 Destroy
@@ -174,7 +174,7 @@ void CarModel::Create()
 	String sCarI = "Car" + strI;
 	resGrpId = sCarI;
 
-	String sCars = PATHMANAGER::Cars() + "/" + sDirname;
+	String sCars = PATHS::Cars() + "/" + sDirname;
 	resCar = sCars + "/textures";
 	String rCar = resCar + "/" + sDirname;
 	String sCar = sCars + "/" + sDirname;

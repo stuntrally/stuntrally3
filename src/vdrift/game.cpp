@@ -14,7 +14,7 @@
 #include "quickprof.h"
 #include "tracksurface.h"
 #include "forcefeedback.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "settings.h"
 
 #include "Def_Str.h"
@@ -56,7 +56,7 @@ void GAME::Start()
 	profilingmode = true;
 
 
-	//settings->Load(PATHMANAGER::GetSettingsFile());
+	//settings->Load(PATHS::GetSettingsFile());
 
 	controls.second.Reset();
 
@@ -91,9 +91,9 @@ bool GAME::LoadAllSurfaces()
 	surf_map.clear();
 
 	string path, file = "/" + pSet->game.sim_mode + "/surfaces.cfg";
-	path = PATHMANAGER::CarSimU() + file;
-	if (!PATHMANAGER::FileExists(path))  // user or orig
-		path = PATHMANAGER::CarSim() + file;
+	path = PATHS::CarSimU() + file;
+	if (!PATHS::FileExists(path))  // user or orig
+		path = PATHS::CarSim() + file;
 	else
 		LogO("Note: Using user surfaces.");
 	
@@ -203,10 +203,10 @@ bool GAME::LoadTires()
 	//  load from both user and orig dirs
 	for (int u=0; u < 2; ++u)
 	{
-		string path = u == 1 ? PATHMANAGER::CarSimU() : PATHMANAGER::CarSim();
+		string path = u == 1 ? PATHS::CarSimU() : PATHS::CarSim();
 		path += "/" + pSet->game.sim_mode + "/tires";
 		list <string> li;
-		PATHMANAGER::DirList(path, li);
+		PATHS::DirList(path, li);
 
 		for (auto file : li)
 		{
@@ -247,9 +247,9 @@ bool GAME::LoadSusp()
 	suspS.clear();  suspS_map.clear();
 	suspD.clear();  suspD_map.clear();
 	
-	string path = PATHMANAGER::CarSim() + "/" + pSet->game.sim_mode + "/susp";
+	string path = PATHS::CarSim() + "/" + pSet->game.sim_mode + "/susp";
 	list <string> li;
-	PATHMANAGER::DirList(path, li);
+	PATHS::DirList(path, li);
 	for (auto file : li)
 	{
 		if (file.find(".susp") != string::npos)
@@ -290,7 +290,7 @@ bool GAME::InitializeSound()
 
 	//  sounds.cfg  ----
 	ifstream fi;
-	string path = PATHMANAGER::Sounds()+"/sounds.cfg";
+	string path = PATHS::Sounds()+"/sounds.cfg";
 	fi.open(path.c_str(), ios_base::binary);
 	if (!fi)
 	{	LogO("@  Can't load " + path);  return false;  }
@@ -370,7 +370,7 @@ void GAME::End()
 
 
 	///+  save settings first incase later deinits cause crashes
-	pSet->Save(PATHMANAGER::SettingsFile(0));
+	pSet->Save(PATHS::SettingsFile(0));
 
 	collision.Clear();
 }
@@ -540,7 +540,7 @@ bool GAME::NewGameDoLoadTrack()
 bool GAME::NewGameDoLoadMisc(float pre_time)
 {
 	//  load the timer
-	if (!timer.Load(PATHMANAGER::Records()+"/"+ pSet->game.sim_mode+"/"+ pSet->game.track+".txt", pre_time))
+	if (!timer.Load(PATHS::Records()+"/"+ pSet->game.sim_mode+"/"+ pSet->game.track+".txt", pre_time))
 		return false;
 
 	for (size_t i = 0; i < cars.size(); ++i)

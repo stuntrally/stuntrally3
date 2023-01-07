@@ -3,7 +3,7 @@
 #include "Gui_Def.h"
 #include "GuiCom.h"
 #include "CScene.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "App.h"
 
 #include "CGui.h"
@@ -30,8 +30,8 @@ CGuiCom::CGuiCom(App* app1)
 	sc = app1->scn->sc;
 	//mGui = app1->mGui;  set in GuiInit
 
-	pathTrk[0] = PATHMANAGER::Tracks() + "/";
-	pathTrk[1] = PATHMANAGER::TracksUser() + "/";
+	pathTrk[0] = PATHS::Tracks() + "/";
+	pathTrk[1] = PATHS::TracksUser() + "/";
 	
 	int t,i;
 	for (t=0; t < 3; ++t)

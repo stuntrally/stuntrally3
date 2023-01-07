@@ -5,7 +5,7 @@
 #include "GuiCom.h"
 #include "CScene.h"
 #include "SceneXml.h"
-#include "pathmanager.h"
+#include "paths.h"
 #ifdef SR_EDITOR
 	#include "CApp.h"
 	#include "settings.h"
@@ -46,17 +46,17 @@ using namespace Ogre;
 		di.layerList[i].worldSize = l.tiling;
 
 		//  combined rgb,a from 2 tex
-		String p = PATHMANAGER::Data() + (app->pSet->tex_size > 0 ? "/terrain/" : "/terrain_s/");
+		String p = PATHS::Data() + (app->pSet->tex_size > 0 ? "/terrain/" : "/terrain_s/");
 		String d_d, d_s, n_n, n_h;
 		
 		///  diff
 		d_d = l.texFile;  // ends with _d
 		d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");
 
-		if (!PATHMANAGER::FileExists(p+ d_d))
+		if (!PATHS::FileExists(p+ d_d))
 			texLayD[i].LoadTer(p+ "grass_green_d.jpg", p+ "grass_green_n.jpg", 0.f);
 		else
-		if (PATHMANAGER::FileExists(p+ d_s))
+		if (PATHS::FileExists(p+ d_s))
 			texLayD[i].LoadTer(p+ d_d, p+ d_s, 0.f);
 		else  // use _s from norm tex name
 		{	d_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");
@@ -66,7 +66,7 @@ using namespace Ogre;
 		n_n = l.texNorm;  // ends with _n
 		n_h = StringUtil::replaceAll(l.texNorm,"_n.","_h.");
 
-		if (PATHMANAGER::FileExists(p+ n_n))
+		if (PATHS::FileExists(p+ n_n))
 			texLayN[i].LoadTer(p+ n_n, p+ n_h, 1.f);
 		else
 			texLayN[i].LoadTer(p+ "flat_n.png", p+ n_h, 1.f);

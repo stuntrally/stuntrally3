@@ -4,7 +4,7 @@
 #include "TracksXml.h"
 #include "GuiCom.h"
 #include "CScene.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "game.h"
 #include "CGame.h"
 #include "CHud.h"
@@ -324,8 +324,8 @@ void CGui::btnChampEndClose(WP)
 ///  save progress and update it on gui
 void CGui::ProgressSave(bool upgGui)
 {
-	progress[0].SaveXml(PATHMANAGER::UserConfigDir() + "/progress.xml");
-	progress[1].SaveXml(PATHMANAGER::UserConfigDir() + "/progress_rev.xml");
+	progress[0].SaveXml(PATHS::UserConfigDir() + "/progress.xml");
+	progress[1].SaveXml(PATHS::UserConfigDir() + "/progress_rev.xml");
 	if (!upgGui)
 		return;
 	ChampsListUpdate();

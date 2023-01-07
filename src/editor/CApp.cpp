@@ -2,7 +2,7 @@
 #include "Def_Str.h"
 #include "RenderConst.h"
 #include "CData.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "CApp.h"
 #include "CGui.h"
 #include "GuiCom.h"
@@ -103,7 +103,7 @@ App::~App()
 {
 	///+  save settings
 	SaveCam();
-	pSet->Save(PATHMANAGER::SettingsFile(1));
+	pSet->Save(PATHS::SettingsFile(1));
 
 	DestroyObjects(false);
 

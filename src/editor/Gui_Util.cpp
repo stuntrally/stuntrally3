@@ -5,7 +5,7 @@
 #include "RenderConst.h"
 #include "GuiCom.h"
 #include "CScene.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
@@ -129,7 +129,7 @@ void CGui::btnNewGame(WP)
 
 void CGui::btnEdTut(WP)
 {
-	PATHMANAGER::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=editor");
+	PATHS::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=editor");
 }
 
 

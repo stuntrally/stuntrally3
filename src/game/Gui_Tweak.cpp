@@ -4,7 +4,7 @@
 #include "CData.h"
 #include "BltObjects.h"
 #include "CScene.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "game.h"
 #include "CGui.h"
 #include "CGame.h"
@@ -40,7 +40,7 @@ void CGui::TweakCarSave()
 	std::string path, pathUser, pathUserDir;
 	bool user = GetCarPath(&path, &pathUser, &pathUserDir, pSet->game.car[0]);
 	
-	PATHMANAGER::CreateDir(pathUserDir);
+	PATHS::CreateDir(pathUserDir);
 	std::ofstream fo(pathUser.c_str());
 	fo << text.c_str();
 	fo.close();
@@ -54,7 +54,7 @@ void CGui::TweakCarLoad()
 	std::string path, pathUser, pathUserDir;
 	bool user = GetCarPath(&path, &pathUser, &pathUserDir, pSet->game.car[0]);
 
-	if (!PATHMANAGER::FileExists(path))
+	if (!PATHS::FileExists(path))
 	{
 		for (int i=0; i < ciEdCar; ++i)
 			edCar[i]->setCaption("");
@@ -175,9 +175,9 @@ void CGui::btnTweakTireDelete(WP)
 	if (id==ITEM_NONE)  return;
 
 	string name = liTwkTiresUser->getItemNameAt(id).substr(7);
-	string path = PATHMANAGER::CarSimU() + "/" + pSet->game.sim_mode + "/tires/" + name + ".tire";
+	string path = PATHS::CarSimU() + "/" + pSet->game.sim_mode + "/tires/" + name + ".tire";
 
-	if (PATHMANAGER::FileExists(path))
+	if (PATHS::FileExists(path))
 	{	fs::remove(path);
 		txtTweakTire->setCaption(TR("#FF8080#{Delete}: "+name));
 		pGame->reloadSimNeed = true;  // to remove from list
@@ -318,8 +318,8 @@ void CGui::TweakColSave()
 	text = StringUtil::replaceAll(text, "##", "#");
 	//text = StringUtil::replaceAll(text, "#E5F4FF", "");  //!
 
-	std::string path = PATHMANAGER::DataUser() + "/trees";
-	PATHMANAGER::CreateDir(path);
+	std::string path = PATHS::DataUser() + "/trees";
+	PATHS::CreateDir(path);
 	path += "/collisions.xml";
 	std::ofstream fo(path.c_str());
 	fo << text.c_str();
@@ -341,9 +341,9 @@ void CGui::TweakColLoad()
 {
 	bool user = true;
 	std::string name = "/trees/collisions.xml",  // user
-		file = PATHMANAGER::DataUser() + name;
-	if (!PATHMANAGER::FileExists(file))  // original
-	{	file = PATHMANAGER::Data() + name;  user = false;  }
+		file = PATHS::DataUser() + name;
+	if (!PATHS::FileExists(file))  // original
+	{	file = PATHS::Data() + name;  user = false;  }
 
 	std::ifstream fi(file.c_str());
 	String text = "", s;
@@ -409,14 +409,14 @@ bool CGui::GetCarPath(std::string* pathCar,
 	std::string carname, bool forceOrig)
 {
 	std::string file = carname + ".car",
-		pathOrig  = PATHMANAGER::CarSim()  + "/" + pSet->game.sim_mode + "/cars/" + file,
-		pathUserD = PATHMANAGER::CarSimU() + "/" + pSet->game.sim_mode + "/cars/",
+		pathOrig  = PATHS::CarSim()  + "/" + pSet->game.sim_mode + "/cars/" + file,
+		pathUserD = PATHS::CarSimU() + "/" + pSet->game.sim_mode + "/cars/",
 		pathUser  = pathUserD + file;
 
 	if (pathSave)  *pathSave = pathUser;
 	if (pathSaveDir)  *pathSaveDir = pathUserD;
 	
-	if (!forceOrig && PATHMANAGER::FileExists(pathUser))
+	if (!forceOrig && PATHS::FileExists(pathUser))
 	{
 		*pathCar = pathUser;
 		return true;
@@ -497,10 +497,10 @@ void CGui::TweakTireSave()
 	const std::vector <Dbl>& a = tire->lateral, b = tire->longitudinal, c = tire->aligning;
 	
 	string name = edTweakTireSet->getCaption();
-	string pathUserT = PATHMANAGER::CarSimU() + "/" + pSet->game.sim_mode + "/tires/";
-	PATHMANAGER::CreateDir(pathUserT);
+	string pathUserT = PATHS::CarSimU() + "/" + pSet->game.sim_mode + "/tires/";
+	PATHS::CreateDir(pathUserT);
 	string file = pathUserT+"/"+name+".tire";
-	if (PATHMANAGER::FileExists(file))
+	if (PATHS::FileExists(file))
 	{
 		txtTweakTire->setCaption(TR("#FF3030#{AlreadyExists}."));
 		return;

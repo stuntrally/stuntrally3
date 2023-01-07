@@ -10,7 +10,7 @@
 #include "Road.h"
 #include "Slider.h"
 #include "MultiList2.h"
-#include "pathmanager.h"
+#include "paths.h"
 
 #include <fstream>
 #include <MyGUI.h>
@@ -558,7 +558,7 @@ bool App::LoadAllSurfaces()
 	surfaces.clear();
 	surf_map.clear();
 
-	std::string path = PATHMANAGER::CarSim() + "/normal/surfaces.cfg";
+	std::string path = PATHS::CarSim() + "/normal/surfaces.cfg";
 	CONFIGFILE param;
 	if (!param.Load(path))
 	{

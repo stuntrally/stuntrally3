@@ -1,6 +1,6 @@
 #include "AppGui.h"
 #include "Gui_Def.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "settings.h"
 
 #include <MyGUI_Gui.h>
@@ -29,9 +29,9 @@ void AppGui::InitAppGui()
 		mWindow, mSceneMgr,
 		"Essential",
 	#ifdef SR_EDITOR
-		PATHMANAGER::UserConfigDir() + "/MyGUI_ed.log");
+		PATHS::UserConfigDir() + "/MyGUI_ed.log");
 	#else
-		PATHMANAGER::UserConfigDir() + "/MyGUI.log");
+		PATHS::UserConfigDir() + "/MyGUI.log");
 	#endif
 
 	mGui = new Gui();
@@ -48,7 +48,7 @@ void AppGui::InitAppGui()
 	{	pSet->language = getSystemLanguage();
 		setlocale(LC_NUMERIC, "C");  }*/
 	
-	if (!PATHMANAGER::FileExists(PATHMANAGER::Data() + "/gui/core_language_" + pSet->language + "_tag.xml"))
+	if (!PATHS::FileExists(PATHS::Data() + "/gui/core_language_" + pSet->language + "_tag.xml"))
 		pSet->language = "en";  // use en if not found
 	
 	LanguageManager::getInstance().setCurrentLanguage(pSet->language);
@@ -77,16 +77,16 @@ void AppGui::DestroyGui()
 void AppGui::LoadDefaultSet(SETTINGS* settings, string setFile)
 {
 #ifdef SR_EDITOR
-	settings->Load(PATHMANAGER::GameConfigDir() + "/editor-default.cfg");
+	settings->Load(PATHS::GameConfigDir() + "/editor-default.cfg");
 	settings->Save(setFile);
 #else
-	settings->Load(PATHMANAGER::GameConfigDir() + "/game-default.cfg");
+	settings->Load(PATHS::GameConfigDir() + "/game-default.cfg");
 	settings->Save(setFile);
 
 	//  game delete old keys.xml too
-	string sKeys = PATHMANAGER::UserConfigDir() + "/keys.xml";
+	string sKeys = PATHS::UserConfigDir() + "/keys.xml";
 	if (filesystem::exists(sKeys))
-		filesystem::rename(sKeys, PATHMANAGER::UserConfigDir() + "/keys_old.xml");
+		filesystem::rename(sKeys, PATHS::UserConfigDir() + "/keys_old.xml");
 #endif
 }
 
@@ -96,17 +96,17 @@ void AppGui::LoadSettings()
 {
 	setlocale(LC_NUMERIC, "C");
 
-	PATHMANAGER::Init();  // Paths
+	PATHS::Init();  // Paths
 	
 	pSet = new SETTINGS();  // set
 
 #ifdef SR_EDITOR
-	string setFile = PATHMANAGER::SettingsFile(1), oldFile = PATHMANAGER::SettingsFile(1, 1);
+	string setFile = PATHS::SettingsFile(1), oldFile = PATHS::SettingsFile(1, 1);
 #else
-	string setFile = PATHMANAGER::SettingsFile(0), oldFile = PATHMANAGER::SettingsFile(0, 1);
+	string setFile = PATHS::SettingsFile(0), oldFile = PATHS::SettingsFile(0, 1);
 #endif
 	
-	if (!PATHMANAGER::FileExists(setFile))
+	if (!PATHS::FileExists(setFile))
 	{
 		cerr << "Settings not found - loading defaults." << endl;
 		LoadDefaultSet(pSet, setFile);
@@ -122,5 +122,5 @@ void AppGui::LoadSettings()
 		pSet->Load(setFile);  // Load
 	}
 
-	LogO(PATHMANAGER::info.str());  // log info
+	LogO(PATHS::info.str());  // log info
 }

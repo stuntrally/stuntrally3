@@ -8,7 +8,6 @@
 #include "CApp.h"
 #include "CGui.h"
 #include "Road.h"
-#include "pathmanager.h"
 #include "HudRenderable.h"
 
 #include <btBulletCollisionCommon.h>

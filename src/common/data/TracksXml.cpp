@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "TracksXml.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "ReplayTrk.h"  // check
 // #include "CHud.h"  // StrTime
 #include "tinyxml.h"
@@ -201,9 +201,9 @@ bool TracksXml::LoadIni(string file, bool check)
 			for (int r=0; r < 2; ++r)
 			{
 				string sRev = r==1 ? "_r" : "";
-				string file = PATHMANAGER::TrkGhosts()+"/"+ s + sRev + ".gho";
+				string file = PATHS::TrkGhosts()+"/"+ s + sRev + ".gho";
 				if (!ti.test && !ti.testC)
-				if (!PATHMANAGER::FileExists(file))
+				if (!PATHS::FileExists(file))
 				{	if (r==1)
 					{	if (s != "Des14-JumpCrazy")  //denyReversed)
 							LogO("!Rev Missing trk gho for: " + s);
@@ -225,7 +225,7 @@ bool TracksXml::LoadIni(string file, bool check)
 		
 		//  not in tracks.ini
 		strlist li;
-		PATHMANAGER::DirList(PATHMANAGER::Tracks(), li);
+		PATHS::DirList(PATHS::Tracks(), li);
 		for (auto s : li)
 		{
 			if (trkmap[s]==0 && s.find('-') != string::npos)

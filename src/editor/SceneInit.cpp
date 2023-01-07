@@ -10,7 +10,7 @@
 #include "Road.h"
 #include "PaceNotes.h"
 #include "Grass.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "RenderConst.h"
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
@@ -298,7 +298,7 @@ void App::LoadTrackEv()
 void App::CreateRoads()  // 🛣️
 {
 	strlist lr;  string path = gcom->TrkDir();
-	PATHMANAGER::DirList(path, lr, "xml");
+	PATHS::DirList(path, lr, "xml");
 	
 	for (auto fname:lr)
 	if (StringUtil::startsWith(fname,"road"))

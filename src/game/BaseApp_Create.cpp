@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "BaseApp.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "settings.h"
 
 #include "ICSInputControlSystem.h"
@@ -23,14 +23,14 @@ void BaseApp::CreateInputs()
 	// onCursorChange(MyGUI::PointerManager::getInstance().getDefaultPointer());
 	// mCursorManager->setEnabled(true);
 
-	std::string file = PATHMANAGER::UserConfigDir() + "/input.xml";
+	std::string file = PATHS::UserConfigDir() + "/input.xml";
 	mInputCtrl = new ICS::InputControlSystem(file, true, mInputBindListner, NULL, 100);
 
 	for (int j=0; j < SDL_NumJoysticks(); ++j)
 		mInputCtrl->addJoystick(j);
 	for (int i=0; i<4; ++i)
 	{
-		file = PATHMANAGER::UserConfigDir() + "/input_p" + toStr(i) + ".xml";
+		file = PATHS::UserConfigDir() + "/input_p" + toStr(i) + ".xml";
 		mInputCtrlPlayer[i] = new ICS::InputControlSystem(file, true, mInputBindListner, NULL, 100);
 		for (int j=0; j < SDL_NumJoysticks(); ++j)
 			mInputCtrlPlayer[i]->addJoystick(j);
@@ -58,11 +58,11 @@ BaseApp::~BaseApp()
 	DestroyGui();
 
 	//  save inputs
-	mInputCtrl->save(PATHMANAGER::UserConfigDir() + "/input.xml");
+	mInputCtrl->save(PATHS::UserConfigDir() + "/input.xml");
 	delete mInputCtrl;
 	for (int i=0; i<4; ++i)
 	{
-		mInputCtrlPlayer[i]->save(PATHMANAGER::UserConfigDir() + "/input_p" + toStr(i) + ".xml");
+		mInputCtrlPlayer[i]->save(PATHS::UserConfigDir() + "/input_p" + toStr(i) + ".xml");
 		delete mInputCtrlPlayer[i];
 	}
 }

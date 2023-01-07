@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "BltObjects.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "tinyxml2.h"
 using namespace tinyxml2;
 
@@ -35,9 +35,9 @@ bool BltObjects::LoadXml()
 	colsMapFind = colsMap.end();
 	
 	std::string name = "/trees/collisions.xml",  // user
-		file = PATHMANAGER::DataUser() + name;
-	if (!PATHMANAGER::FileExists(file))  // original
-		file = PATHMANAGER::Data() + name;
+		file = PATHS::DataUser() + name;
+	if (!PATHS::FileExists(file))  // original
+		file = PATHS::Data() + name;
 
 	XMLDocument doc;
 	XMLError e = doc.LoadFile(file.c_str());

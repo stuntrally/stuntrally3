@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Def_Str.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "CGame.h"
 #include "CGui.h"
 #include "CData.h"
@@ -112,10 +112,10 @@ void CGui::FillCarList()
 {
 	liCar.clear();
 	strlist li;
-	PATHMANAGER::DirList(PATHMANAGER::Cars(), li);
+	PATHS::DirList(PATHS::Cars(), li);
 	for (strlist::iterator i = li.begin(); i != li.end(); ++i)
 	{
-		if (PATHMANAGER::FileExists(PATHMANAGER::Cars() + "/" + *i + "/about.txt"))
+		if (PATHS::FileExists(PATHS::Cars() + "/" + *i + "/about.txt"))
 		{	String s = *i;
 			CarL c;  c.name = *i;  //c.pA = this;
 			int id = data->cars->carmap[*i];
@@ -131,7 +131,7 @@ void CGui::FillCarList()
 //
 string ghostFile(SETTINGS* pSet, string sim_mode, string car)
 {
-	return PATHMANAGER::Ghosts()+"/" +sim_mode+"/"
+	return PATHS::Ghosts()+"/" +sim_mode+"/"
 		+ pSet->game.track
 		+ (pSet->game.track_user ? "_u" : "")
 		+ (pSet->game.track_reversed ? "_r" : "")
@@ -143,7 +143,7 @@ const String& CGui::GetGhostFile(string* ghCar)
 	static String file;
 	string sim_mode = pSet->game.sim_mode, car = pSet->game.car[0];
 	file = ghostFile(pSet, sim_mode, car);
-	if (PATHMANAGER::FileExists(file))
+	if (PATHS::FileExists(file))
 		return file;
 	
 	if (!ghCar)
@@ -195,7 +195,7 @@ const String& CGui::GetGhostFile(string* ghCar)
 		const string& car = cars2[i];
 		file = ghostFile(pSet, sim_mode, car);
 
-		if (PATHMANAGER::FileExists(file))
+		if (PATHS::FileExists(file))
 		{	srch = false;  *ghCar = car;  }
 		++i;
 		if (i >= si)
@@ -211,8 +211,8 @@ const String& CGui::GetGhostFile(string* ghCar)
 string CGui::GetRplListDir()
 {
 	return (pSet->rpl_listghosts
-		? (PATHMANAGER::Ghosts() + "/" + pSet->gui.sim_mode)
-		: PATHMANAGER::Replays() );
+		? (PATHS::Ghosts() + "/" + pSet->gui.sim_mode)
+		: PATHS::Replays() );
 }
 
 
@@ -286,7 +286,7 @@ void CGui::UpdDrivability(std::string trk, bool user)
 //-----------------------------------------------------------------------------------------------------------
 void CGui::UpdCarStats(bool car)
 {
-	string path = PATHMANAGER::CarSim() + "/" + pSet->gui.sim_mode + "/cars/" + sListCar + "_stats.xml";
+	string path = PATHS::CarSim() + "/" + pSet->gui.sim_mode + "/cars/" + sListCar + "_stats.xml";
 	float f;
 	#define  vis(i,v)  \
 		{  txCarStTxt[i]->setVisible(v);  txCarStVals[i]->setVisible(v);  barCarSt[i]->setVisible(v);  }

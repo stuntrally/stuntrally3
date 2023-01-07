@@ -14,7 +14,7 @@
 #endif
 #include "SplineBase.h"
 #include "Road.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include <OgreTimer.h>
 #include <OgreSceneNode.h>
 #include <Terra.h>
@@ -345,8 +345,8 @@ void PaceNotes::Rebuild(SplineRoad* road, Scene* sc, bool reversed)
 	TrackGhost gho;
 	int num = 0;
 
-	string file = PATHMANAGER::TrkGhosts()+"/"+ track + sRev + ".gho";
-	if (!PATHMANAGER::FileExists(file))
+	string file = PATHS::TrkGhosts()+"/"+ track + sRev + ".gho";
+	if (!PATHS::FileExists(file))
 		LogO("Pace trk gho not found: "+file);
 	else
 	{	gho.LoadFile(file, false);

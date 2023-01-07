@@ -4,7 +4,7 @@
 #include "SceneXml.h"
 #include "CScene.h"
 #include "Axes.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "settings.h"
 #include "BtOgreGP.h"
 #include "ShapeData.h"
@@ -118,14 +118,14 @@ void App::CreateObjects()
 	{
 		o.second = false;
 		for (int d=0; d < dirCnt; ++d)
-			if (PATHMANAGER::FileExists(PATHMANAGER::Data() +"/"+ dirs[d] +"/"+ o.first + ".mesh"))
+			if (PATHS::FileExists(PATHS::Data() +"/"+ dirs[d] +"/"+ o.first + ".mesh"))
 			{	o.second = true;  break;  }
 
 		if (!o.second)
 			LogO("Warning: CreateObjects mesh doesn't exist: " + o.first + ".mesh");
 	}
 	for (auto& ob : objHasBlt)
-		ob.second = PATHMANAGER::FileExists(PATHMANAGER::Data() +"/"+ dirs[0] +"/"+ ob.first + ".bullet");
+		ob.second = PATHS::FileExists(PATHS::Data() +"/"+ dirs[0] +"/"+ ob.first + ".bullet");
 
 
 	//  loader
@@ -196,7 +196,7 @@ void App::CreateObjects()
 			fileLoader->mTrOfs.setOrigin(btVector3(o.pos[0],o.pos[1],o.pos[2]));
 			fileLoader->mTrOfs.setRotation(btQuaternion(o.rot[0],o.rot[1],o.rot[2],o.rot[3]));
 			//fileLoader->setVerboseMode(true);//
-			std::string file = PATHMANAGER::Data()+"/objects/"+o.name+".bullet";
+			std::string file = PATHS::Data()+"/objects/"+o.name+".bullet";
 
 			if (fileLoader->loadFile(file.c_str()))
 			{
@@ -480,7 +480,7 @@ void App::AddNewObj(bool getName)  //App..
 	o.nd->setScale(o.scale);
 	o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Vegetation);
 
-	o.dyn = PATHMANAGER::FileExists(PATHMANAGER::Data()+"/objects/"+ o.name + ".bullet");
+	o.dyn = PATHS::FileExists(PATHS::Data()+"/objects/"+ o.name + ".bullet");
 	scn->sc->objects.push_back(o);
 }
 
@@ -551,7 +551,7 @@ void App::SetObjNewType(int tnew)
 	if (objNew.it)	{	mSceneMgr->destroyItem(objNew.it);  objNew.it = 0;  }
 	
 	String name = vObjNames[iObjTNew];
-	objNew.dyn = PATHMANAGER::FileExists(PATHMANAGER::Data()+"/objects/"+ name + ".bullet");
+	objNew.dyn = PATHS::FileExists(PATHS::Data()+"/objects/"+ name + ".bullet");
 	if (objNew.dyn)  objNew.scale = Vector3::UNIT_SCALE;  // dyn no scale
 	objNew.it = mSceneMgr->createItem(name + ".mesh");
 	objNew.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();

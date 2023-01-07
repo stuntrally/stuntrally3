@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "Road.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
@@ -91,7 +91,7 @@ void App::LoadData()
 
 	//  user.xml
 	/*#if 0
-	userXml.LoadXml(PATHMANAGER::UserConfigDir() + "/user.xml");
+	userXml.LoadXml(PATHS::UserConfigDir() + "/user.xml");
 	for (int i=0; i < data->tracks->trks.size(); ++i)
 	{
 		const TrackInfo& ti = data->tracks->trks[i];
@@ -102,7 +102,7 @@ void App::LoadData()
 			userXml.trks.push_back(tu);
 			userXml.trkmap[ti.name] = userXml.trks.size();
 	}	}
-	userXml.SaveXml(PATHMANAGER::UserConfigDir() + "/user.xml");
+	userXml.SaveXml(PATHS::UserConfigDir() + "/user.xml");
 	#endif*/
 
 	//  rpl sizes
@@ -120,7 +120,7 @@ void App::LoadData()
 
 	///  rpl test-
 	#if 0
-	std::string file = PATHMANAGER::Ghosts() + "/normal/TestC4-ow_V2.rpl";
+	std::string file = PATHS::Ghosts() + "/normal/TestC4-ow_V2.rpl";
 	replay.LoadFile(file);  exit(0);
 	#endif
 	
@@ -218,7 +218,7 @@ void App::NewGame(bool force, bool perfTest)
 	dstTrk = force || oldTrack != pSet->game.track || oldTrkUser != pSet->gui.track_user;
 
 	///  check if track exist ..
-	if (!PATHMANAGER::FileExists(gcom->TrkDir()+"scene.xml"))
+	if (!PATHS::FileExists(gcom->TrkDir()+"scene.xml"))
 	{
 		bLoading = false;  iLoad1stFrames = -2;
 		LogO("TRACK doesn't exist !!");
@@ -469,7 +469,7 @@ void App::LoadGame()
 	if (!bRplPlay /*&& pSet->rpl_trackghost- && !mClient*/ && !pSet->game.track_user && !deny)
 	{
 		std::string sRev = pSet->game.track_reversed ? "_r" : "";
-		std::string file = PATHMANAGER::TrkGhosts()+"/"+ pSet->game.track + sRev + ".gho";
+		std::string file = PATHS::TrkGhosts()+"/"+ pSet->game.track + sRev + ".gho";
 		if (ghTrk.LoadFile(file))
 		{
 			CarModel* c = new CarModel(i, 5, CarModel::CT_TRACK, "ES", 0, this);
@@ -863,7 +863,7 @@ void App::CreateRoadsInt()
 
 	//  get all road*.xml
 	strlist lr;  string path = gcom->TrkDir();
-	PATHMANAGER::DirList(path, lr, "xml");
+	PATHS::DirList(path, lr, "xml");
 	
 	for (auto fname:lr)
 	if (StringUtil::startsWith(fname,"road"))
@@ -896,8 +896,8 @@ void App::CreateTrail(Cam* cam)
 	int frames = 0;
 
 	string sRev = pSet->game.track_reversed ? "_r" : "";
-	string file = PATHMANAGER::TrkGhosts()+"/"+ pSet->game.track + sRev + ".gho";
-	if (!PATHMANAGER::FileExists(file))
+	string file = PATHS::TrkGhosts()+"/"+ pSet->game.track + sRev + ".gho";
+	if (!PATHS::FileExists(file))
 		LogO("Trail trk gho not found: "+file);
 	else
 	{	gho.LoadFile(file, 0);

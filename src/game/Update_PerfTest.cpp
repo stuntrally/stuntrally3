@@ -6,7 +6,7 @@
 #include "SceneXml.h"
 #include "CScene.h"
 #include "game.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include <MyGUI_EditBox.h>
 #include <MyGUI_Window.h>
 #include <MyGUI_TabControl.h>
@@ -195,12 +195,12 @@ void App::newPerfTest(float time)
 					bool user = gui->GetCarPath(&path, &pathUser, &pathUserDir, pSet->game.car[0], orig || scn->sc->asphalt);
 					file = pCar->pCarM->sDirname + "_stats.xml";
 					if (orig)
-						path = PATHMANAGER::CarSim() + "/" + pSet->game.sim_mode + "/cars/" + file;
+						path = PATHS::CarSim() + "/" + pSet->game.sim_mode + "/cars/" + file;
 					else
 						path = pathUserDir + file;
 					
 					if (!orig)
-						PATHMANAGER::CreateDir(pathUserDir);
+						PATHS::CreateDir(pathUserDir);
 
 					TiXmlDocument xml;	TiXmlElement root("perf");
 					std::string s;

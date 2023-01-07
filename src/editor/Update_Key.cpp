@@ -7,7 +7,7 @@
 #include "CGui.h"
 #include "CScene.h"
 #include "Road.h"
-#include "pathmanager.h"
+#include "paths.h"
 // #include <OgreRenderTexture.h>
 #include <MyGUI.h>
 #include <SDL_events.h>
@@ -41,7 +41,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			}	break;
 
 			case key(F12):  // screenshot
-				// mWindow->writeContentsToTimestampedFile(PATHMANAGER::Screenshots() + "/", ".jpg");
+				// mWindow->writeContentsToTimestampedFile(PATHS::Screenshots() + "/", ".jpg");
 				return;
 			default:  break;
 		}
@@ -150,7 +150,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			return;
 
 		case key(F12):  //  screenshot
-			// mWindow->writeContentsToTimestampedFile(PATHMANAGER::Screenshots() + "/",
+			// mWindow->writeContentsToTimestampedFile(PATHS::Screenshots() + "/",
 			// 	pSet->screen_png ? ".png" : ".jpg");
 			return;
 

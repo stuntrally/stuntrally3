@@ -3,7 +3,7 @@
 #include "Def_Str.h"
 #include "Gui_Def.h"
 #include "settings.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "game.h"
 #include "Road.h"
 #include "CGame.h"
@@ -627,6 +627,6 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 	
 	//  Screen shot
 	/*if (action(A_Screenshot))
-		mWindow->writeContentsToTimestampedFile(PATHMANAGER::Screenshots() + "/",
+		mWindow->writeContentsToTimestampedFile(PATHS::Screenshots() + "/",
 			pSet->screen_png ? ".png" : ".jpg");*/	
 }

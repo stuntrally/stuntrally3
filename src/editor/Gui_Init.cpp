@@ -8,7 +8,6 @@
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "pathmanager.h"
 #include "MultiList2.h"
 #include "Slider.h"
 

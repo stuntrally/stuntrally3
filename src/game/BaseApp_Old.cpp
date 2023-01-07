@@ -3,7 +3,7 @@
 #if 0  // OLD reference  --------
 #include "Def_Str.h"
 #include "BaseApp.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "settings.h"
 
 // #include "Localization.h"
@@ -165,21 +165,21 @@ bool BaseApp::setup()
 	//  when show ogre dialog is on, load both rendersystems so user can select
 	if (pSet->ogre_dialog)
 	{
-		mRoot->loadPlugin(PATHMANAGER::OgrePluginDir() + "/RenderSystem_GL" + D_SUFFIX);
+		mRoot->loadPlugin(PATHS::OgrePluginDir() + "/RenderSystem_GL" + D_SUFFIX);
 		#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-		mRoot->loadPlugin(PATHMANAGER::OgrePluginDir() + "/RenderSystem_Direct3D9" + D_SUFFIX);
+		mRoot->loadPlugin(PATHS::OgrePluginDir() + "/RenderSystem_Direct3D9" + D_SUFFIX);
 		#endif
 	}else{
 		if (pSet->rendersystem == "OpenGL Rendering Subsystem")
-			mRoot->loadPlugin(PATHMANAGER::OgrePluginDir() + "/RenderSystem_GL" + D_SUFFIX);
+			mRoot->loadPlugin(PATHS::OgrePluginDir() + "/RenderSystem_GL" + D_SUFFIX);
 		else if (pSet->rendersystem == "Direct3D9 Rendering Subsystem")
-			mRoot->loadPlugin(PATHMANAGER::OgrePluginDir() + "/RenderSystem_Direct3D9" + D_SUFFIX);
+			mRoot->loadPlugin(PATHS::OgrePluginDir() + "/RenderSystem_Direct3D9" + D_SUFFIX);
 	}
 
-	mRoot->loadPlugin(PATHMANAGER::OgrePluginDir() + "/Plugin_ParticleFX" + D_SUFFIX);
+	mRoot->loadPlugin(PATHS::OgrePluginDir() + "/Plugin_ParticleFX" + D_SUFFIX);
 #if defined(OGRE_VERSION) && OGRE_VERSION >= 0x10B00
-    //mRoot->loadPlugin(PATHMANAGER::OgrePluginDir() + "/Codec_STBI" + D_SUFFIX);  // only png
-    mRoot->loadPlugin(PATHMANAGER::OgrePluginDir() + "/Codec_FreeImage" + D_SUFFIX);  // for jpg screenshots
+    //mRoot->loadPlugin(PATHS::OgrePluginDir() + "/Codec_STBI" + D_SUFFIX);  // only png
+    mRoot->loadPlugin(PATHS::OgrePluginDir() + "/Codec_FreeImage" + D_SUFFIX);  // for jpg screenshots
 #endif
 
 
@@ -218,7 +218,7 @@ void BaseApp::setupResources()
 {
 	// Load resource paths from config file
 	ConfigFile cf;
-	std::string s = PATHMANAGER::GameConfigDir() +
+	std::string s = PATHS::GameConfigDir() +
 		(pSet->tex_size > 0 ? "/resources.cfg" : "/resources_s.cfg");
 	cf.load(s);
 
@@ -236,7 +236,7 @@ void BaseApp::setupResources()
 			typeName = i->first;
 			archName = i->second;
 			ResourceGroupManager::getSingleton().addResourceLocation(
-				PATHMANAGER::Data() + "/" + archName, typeName, secName);
+				PATHS::Data() + "/" + archName, typeName, secName);
 	}	}
 }
 

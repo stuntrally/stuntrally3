@@ -2,7 +2,6 @@
 #include "Def_Str.h"
 #include "Gui_Def.h"
 #include "GuiCom.h"
-#include "pathmanager.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"

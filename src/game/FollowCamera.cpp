@@ -6,7 +6,7 @@
 #include "Cam.h"
 
 #include "tinyxml2.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "mathvector.h"
 // ray cast
 #include "collision_contact.h"
@@ -555,7 +555,7 @@ bool FollowCamera::loadCameras()
 	Destroy();
 
 	XMLDocument doc;
-	XMLError e = doc.LoadFile((PATHMANAGER::Cars() + "/cameras.xml").c_str());
+	XMLError e = doc.LoadFile((PATHS::Cars() + "/cameras.xml").c_str());
 	if (e == XML_SUCCESS)
 	{
 		XMLElement* root = doc.RootElement();

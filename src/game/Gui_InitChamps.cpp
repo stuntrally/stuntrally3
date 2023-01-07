@@ -5,7 +5,6 @@
 #include "GuiCom.h"
 #include "CGame.h"
 
-#include "pathmanager.h"
 #include "MultiList2.h"
 #include "Slider.h"
 #include "CData.h"

@@ -8,7 +8,7 @@
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "MultiList2.h"
 #include "Slider.h"
 
@@ -26,7 +26,7 @@ using namespace std;
 void CGui::InitGuiLists() 
 {
 	///  Fill Combo boxes  . . . . . . .
-	string sData = PATHMANAGER::Data();
+	string sData = PATHS::Data();
 	String sMat = sData +"/materials/Pbs/";  // path
 	int u,n;
 	Btn btn;  Ck* ck;
@@ -61,7 +61,7 @@ void CGui::InitGuiLists()
 	Cmb(cmbTexNorm, "TexNormal", comboTexNorm);  cmbTexNorm->addItem("flat_n.png");
 
 	strlist li;
-	PATHMANAGER::DirList(sData + "/terrain", li);
+	PATHS::DirList(sData + "/terrain", li);
 	for (auto q : li)
 	{
 		if (StringUtil::match(q, "*_n.*", false))
@@ -84,7 +84,7 @@ void CGui::InitGuiLists()
 	
 
 	//---------------------  🌿 Grass  ---------------------
-	PATHMANAGER::DirList(sData + "/grass", li);
+	PATHS::DirList(sData + "/grass", li);
 	for (auto q : li)
 	{
 		if (StringUtil::startsWith(q, "grClr", false))
@@ -94,8 +94,8 @@ void CGui::InitGuiLists()
 
 	//---------------------  📦 Objects  ---------------------
 	app->vObjNames.clear();  strlist lo;
-	PATHMANAGER::DirList(sData + "/objects2", lo);
-	PATHMANAGER::DirList(sData + "/objects", lo);
+	PATHS::DirList(sData + "/objects2", lo);
+	PATHS::DirList(sData + "/objects", lo);
 	for (auto q : lo)
 		if (StringUtil::endsWith(q, ".mesh"))
 		{	string name = q.substr(0, q.length()-5);  //no .ext
@@ -112,7 +112,7 @@ void CGui::InitGuiLists()
 
 	for (u=0; u < app->vObjNames.size(); ++u)
 	{	const string& name = app->vObjNames[u];
-		if (name != "sphere" && PATHMANAGER::FileExists(sData+"/objects/"+ name + ".bullet"))
+		if (name != "sphere" && PATHS::FileExists(sData+"/objects/"+ name + ".bullet"))
 			objListDyn->addItem("#A0E0FF"+name);  // dynamic
 	}
 	
@@ -125,12 +125,12 @@ void CGui::InitGuiLists()
 		std::map<string, int> cats;  // yeah cats are fun
 		int b0 = app->vBuildings.size();
 		lo.clear();
-		PATHMANAGER::DirList(sData + path, lo);
+		PATHS::DirList(sData + path, lo);
 
 		for (auto q : lo)
 			if (StringUtil::endsWith(q,".mesh"))
 			{	string name = q.substr(0, q.length()-5);  //no .ext
-				if (name != "sphere" && !PATHMANAGER::FileExists(sData+"/objects/"+ name + ".bullet"))
+				if (name != "sphere" && !PATHS::FileExists(sData+"/objects/"+ name + ".bullet"))
 				{	// no dynamic
 
 					// auto id = name.find('_') ?..

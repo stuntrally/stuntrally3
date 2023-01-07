@@ -11,9 +11,7 @@
 #include "CApp.h"
 #include "CGui.h"
 #include "Road.h"
-#include "pathmanager.h"
 #include <OgreSceneNode.h>
-using namespace MyGUI;
 using namespace Ogre;
 
 

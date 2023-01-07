@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "GraphicsSystem.h"
-#include "pathmanager.h"
+#include "paths.h"
 #ifdef SR_EDITOR
 	#include "CApp.h"
 #else
@@ -184,17 +184,17 @@ void MainEntryPoints::createSystems(
 	App *app = new App();
 
 	std::cout << "Init :: pathmanager\n";
-	PATHMANAGER::Init();
-	std::cout << PATHMANAGER::info.str();
+	PATHS::Init();
+	std::cout << PATHS::info.str();
 
 	std::cout << "Init :: new GraphicsSystem\n";
 
 	GameGraphicsSystem *graphicsSystem = new GameGraphicsSystem(
 		app,
-		PATHMANAGER::UserConfigDir()+"/",
-		PATHMANAGER::CacheDir()+"/",
+		PATHS::UserConfigDir()+"/",
+		PATHS::CacheDir()+"/",
 		String("./"),
-		// PATHMANAGER::GameConfigDir()+"/",  // todo: config/resources2.cfg
+		// PATHS::GameConfigDir()+"/",  // todo: config/resources2.cfg
 		String("./") );
 
 	app->mGraphicsSystem = graphicsSystem;

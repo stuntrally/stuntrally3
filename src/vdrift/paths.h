@@ -8,7 +8,7 @@
 
 typedef std::list <std::string> strlist;
 
-class PATHMANAGER
+class PATHS
 {
 private:
 	static std::string ogre_plugin, home_dir;

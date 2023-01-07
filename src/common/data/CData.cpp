@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CData.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "Def_Str.h"
 using Ogre::String;
 
@@ -82,32 +82,31 @@ bool CData::IsChallCar(const Chall* ch, std::string name)
 void CData::Load(std::map <std::string, int>* surf_map, bool check)
 {
 	//  common
-	fluids->LoadXml(PATHMANAGER::Data() + "/materials/fluids.xml", /**/surf_map);
+	fluids->LoadXml(PATHS::Data() + "/materials/fluids.xml", /**/surf_map);
 	LogO(String("**** Loaded Fluids: ") + toStr(fluids->fls.size()));
 
 	objs->LoadXml();  //  collisions.xml
 	LogO(String("**** Loaded Vegetation objects: ") + toStr(objs->colsMap.size()));
 	
-	std::string snd = PATHMANAGER::Sounds();
+	auto snd = PATHS::Sounds();
 	reverbs->LoadXml(snd + "/reverbs.xml");
 	LogO(String("**** Loaded Reverbs sets: ") + toStr(reverbs->revs.size()));
 
 	//  cars and tracks
-	std::string path = PATHMANAGER::GameConfigDir();
+	auto path = PATHS::GameConfigDir();
 	tracks->LoadIni(path + "/tracks.ini", check);
 	cars->LoadXml(path + "/cars.xml");
 	
-	#ifdef SR_EDITOR  // ed
+	#ifdef SR_EDITOR
+		//  ed
 		pre->LoadXml(path + "/presets.xml");
 		LogO(String("**** Loaded Presets  sky: ") + toStr(pre->sky.size())+
 			"  ter: " + toStr(pre->ter.size()) +
 			"  road: " + toStr(pre->rd.size()) +
 			"  grass: " + toStr(pre->gr.size()) +
 			"  veget: " + toStr(pre->veg.size()) );
-	#else	// game
-		colors->LoadIni(path + "/colors.ini");
-		LogO(String("**** Loaded Car Colors: ") + toStr(colors->v.size()));
-
+	#else
+		LoadColors();
 		champs->LoadXml(path + "/championships.xml", tracks, check);
 		LogO(String("**** Loaded Championships: ") + toStr(champs->all.size()));
 
@@ -135,6 +134,24 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 	}
 	#endif
 }
+
+#ifndef SR_EDITOR
+void CData::LoadColors()
+{
+	if (!colors)  return;
+	auto path = PATHS::GameConfigDir(),
+		 user = PATHS::UserConfigDir();
+	auto clr = "/colors.ini";
+
+	if (PATHS::FileExists(user + clr))
+	{	colors->LoadIni(user + clr);
+		LogO(String("**** Loaded user Car Colors: ") + toStr(colors->v.size()));
+	}else
+	{	colors->LoadIni(path + clr);
+		LogO(String("**** Loaded game Car Colors: ") + toStr(colors->v.size()));
+	}
+}
+#endif
 
 
 //  🌟 ctor

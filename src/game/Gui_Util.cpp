@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Def_Str.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "CGame.h"
 #include "CGui.h"
 #include "CData.h"
@@ -299,36 +299,36 @@ void CGui::btnWelcome(WP)
 }
 void CGui::btnWebsite(WP)
 {
-	PATHMANAGER::OpenUrl("https://stuntrally.tuxfamily.org/");
+	PATHS::OpenUrl("https://stuntrally.tuxfamily.org/");
 }
 void CGui::btnWiki(WP)
 {
-	PATHMANAGER::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=features");
+	PATHS::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=features");
 }
 void CGui::btnWikiInput(WP)
 {
-	PATHMANAGER::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=running#controllers");
+	PATHS::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=running#controllers");
 }
 
 void CGui::btnForum(WP)
 {
-	PATHMANAGER::OpenUrl("https://forum.freegamedev.net/viewforum.php?f=77");
+	PATHS::OpenUrl("https://forum.freegamedev.net/viewforum.php?f=77");
 }
 void CGui::btnSources(WP)
 {
-	PATHMANAGER::OpenUrl("https://github.com/stuntrally/stuntrally");
+	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally");
 }
 void CGui::btnEdTut(WP)
 {
-	PATHMANAGER::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=editor");
+	PATHS::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=editor");
 }
 void CGui::btnTransl(WP)
 {
-	PATHMANAGER::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=localization");
+	PATHS::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=localization");
 }
 void CGui::btnDonations(WP)
 {
-	PATHMANAGER::OpenUrl("https://cryham.tuxfamily.org/donate/");
+	PATHS::OpenUrl("https://cryham.tuxfamily.org/donate/");
 }
 
 
@@ -364,10 +364,10 @@ void CGui::FillHelpTxt()
 	}	};
 
 	auto PathMd = [&](string file, bool top)
-	{	path = PATHMANAGER::Data() +"/../"+ file;
-		if (!PATHMANAGER::FileExists(path))
-			path = PATHMANAGER::Data() +"/"+ file;
-		if (!PATHMANAGER::FileExists(path))
+	{	path = PATHS::Data() +"/../"+ file;
+		if (!PATHS::FileExists(path))
+			path = PATHS::Data() +"/"+ file;
+		if (!PATHS::FileExists(path))
 			LogO("Can't locate file: " + file);
 		ReadMd(top);
 	};
@@ -377,7 +377,7 @@ void CGui::FillHelpTxt()
 
 	ed = fEd("Credits");
 	if (ed)
-	{	string dir = PATHMANAGER::Data()+"/";
+	{	string dir = PATHS::Data()+"/";
 		String text = "", sep = "-------------------------------------------------------";
 
 		auto Sep = [&](String title)
@@ -399,7 +399,7 @@ void CGui::FillHelpTxt()
 		auto ReadTxts = [&](string path)
 		{
 			strlist lo;
-			PATHMANAGER::DirList(dir + path, lo, "txt");
+			PATHS::DirList(dir + path, lo, "txt");
 			
 			Sep(path);
 			for (auto p:lo)

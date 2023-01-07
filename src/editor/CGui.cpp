@@ -5,7 +5,6 @@
 #include "CApp.h"
 #include "CGui.h"
 #include "CScene.h"
-#include "pathmanager.h"
 #include "settings.h"
 #include <OgreRoot.h>
 #include <OgreWindow.h>

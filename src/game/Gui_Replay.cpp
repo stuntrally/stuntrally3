@@ -4,7 +4,7 @@
 #include "GuiCom.h"
 #include "CData.h"
 #include "TracksXml.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "game.h"
 #include "CGame.h"
 #include "CHud.h"
@@ -72,13 +72,13 @@ void CGui::btnRplLoadFile(std::string file)
 
 		//  check if cars, track exist
 		String er;  int p;
-		if (!h.track_user && !fs::exists(PATHMANAGER::Tracks()+"/"+trk))
+		if (!h.track_user && !fs::exists(PATHS::Tracks()+"/"+trk))
 			er += TR("#{Track}: ")+trk+TR(" - #{DoesntExist}.\n");
-		if (h.track_user && !fs::exists(PATHMANAGER::TracksUser()+"/"+trk))
+		if (h.track_user && !fs::exists(PATHS::TracksUser()+"/"+trk))
 			er += TR("#{Track} (#{TweakUser}): ")+trk+TR(" - #{DoesntExist}.\n");
 
 		for (p=0; p < h.numPlayers; ++p)
-			if (!fs::exists(PATHMANAGER::Cars()+"/"+h.cars[p]))
+			if (!fs::exists(PATHS::Cars()+"/"+h.cars[p]))
 				er += TR("#{Vehicle}: ")+h.cars[p]+TR(" - #{DoesntExist}.\n");
 
 		if (!er.empty())
@@ -114,9 +114,9 @@ void CGui::btnRplLoadFile(std::string file)
 void CGui::btnRplSave(WP)  // Save
 {
 	String edit = edRplName->getCaption();
-	String file = PATHMANAGER::Replays() + "/" + pSet->game.track + "_" + edit + ".rpl";
+	String file = PATHS::Replays() + "/" + pSet->game.track + "_" + edit + ".rpl";
 	///  save
-	if (PATHMANAGER::FileExists(file))
+	if (PATHS::FileExists(file))
 	{
 		Message::createMessageBox(
 			"Message", TR("#{Replay} - #{RplSave}"), TR("#{AlreadyExists}."),
@@ -258,7 +258,7 @@ void CGui::updReplaysList()
 	rplList->removeAllItems();
 
 	strlist li;
-	PATHMANAGER::DirList(GetRplListDir(), li, "rpl");
+	PATHS::DirList(GetRplListDir(), li, "rpl");
 	
 	for (auto i = li.begin(); i != li.end(); ++i)
 	if (StringUtil::endsWith(*i, ".rpl"))
@@ -311,8 +311,8 @@ void CGui::btnRplRename(WP)
 			MessageBoxStyle::IconInfo | MessageBoxStyle::Ok);
 		return;  }
 	
-	string file = PATHMANAGER::Replays() + "/" + name + ".rpl";
-	string fileNew = PATHMANAGER::Replays() + "/" + edit + ".rpl";
+	string file = PATHS::Replays() + "/" + name + ".rpl";
+	string fileNew = PATHS::Replays() + "/" + edit + ".rpl";
 
 	if (fs::exists(fileNew))
 	{	Message::createMessageBox(

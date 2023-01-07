@@ -8,7 +8,7 @@
 #include "tracksurface.h"
 #include "configfile.h"
 #include "settings.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "Def_Str.h"
 #include "CData.h"
 #include "CScene.h"
@@ -58,7 +58,7 @@ bool CAR::Load(class App* pApp1,
 
 	cartype = carname;
 	bRemoteCar = isRemote;  id = idCar;
-	std::string carpath = PATHMANAGER::Cars()+"/"+carname+"/";
+	std::string carpath = PATHS::Cars()+"/"+carname+"/";
 
 	//  get coordinate system version
 	int version = 2;

@@ -3,7 +3,6 @@
 #include "Gui_Def.h"
 #include "GuiCom.h"
 #include "CScene.h"
-#include "pathmanager.h"
 #include "settings.h"
 #ifndef SR_EDITOR
 	#include "game.h"

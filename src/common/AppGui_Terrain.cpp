@@ -19,7 +19,7 @@
 #include "settings.h"
 #include "ShapeData.h"
 #include "SceneXml.h"
-#include "pathmanager.h"
+#include "paths.h"
 
 #include "Def_Str.h"
 #include "RenderConst.h"
@@ -74,7 +74,7 @@ void AppGui::CreateTerrain()
 		// di.layerList[i].worldSize = l.tiling;
 
 		//  combined rgb,a from 2 tex
-		String path = PATHMANAGER::Data() + "/terrain/";
+		String path = PATHS::Data() + "/terrain/";
 		String d_d, d_s, n_n, n_h;
 		
 		///  diffuse  ----

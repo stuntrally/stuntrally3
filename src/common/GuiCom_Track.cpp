@@ -3,7 +3,7 @@
 #include "Gui_Def.h"
 #include "GuiCom.h"
 #include "Road.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "settings.h"
 
 #include "SceneXml.h"
@@ -263,8 +263,8 @@ void CGuiCom::FillTrackLists()
 	liTracks.clear();  liTracksUser.clear();
 	std::string chkfile = "/scene.xml";
 
-	PATHMANAGER::DirList(pathTrk[0], liTracks);
-	PATHMANAGER::DirList(pathTrk[1], liTracksUser);  //name duplicates
+	PATHS::DirList(pathTrk[0], liTracks);
+	PATHS::DirList(pathTrk[1], liTracksUser);  //name duplicates
 	if (liTracks.size() == 0)
 	{
 		LogO("Error: NO tracks !!!  in data/tracks/  crashing.");
@@ -276,7 +276,7 @@ void CGuiCom::FillTrackLists()
 	while (i != liTracks.end())
 	{
 		std::string s = pathTrk[0] + *i + chkfile;
-		if (!PATHMANAGER::FileExists(s))
+		if (!PATHS::FileExists(s))
 			i = liTracks.erase(i);
 		else  ++i;
 	}
@@ -285,7 +285,7 @@ void CGuiCom::FillTrackLists()
 	while (i != liTracksUser.end())
 	{
 		std::string s = pathTrk[1] + *i + chkfile;
-		if (!PATHMANAGER::FileExists(s))
+		if (!PATHS::FileExists(s))
 			i = liTracksUser.erase(i);
 		else  ++i;
 	}
@@ -315,7 +315,7 @@ void CGuiCom::ReadTrkStats()
 #ifndef SR_EDITOR  // game
 	SplineRoad rd(app->pGame);  rd.LoadFile(sRd,false);  // load
 
-	TIMER tim;  tim.Load(PATHMANAGER::Records()+"/"+ pSet->gui.sim_mode+"/"+ sListTrack+".txt", 0.f);
+	TIMER tim;  tim.Load(PATHS::Records()+"/"+ pSet->gui.sim_mode+"/"+ sListTrack+".txt", 0.f);
 	tim.AddCar(app->gui->sListCar);
 
 	bool reverse = sc.denyReversed ? false : pSet->gui.track_reversed;
@@ -336,7 +336,7 @@ void CGui::ReadTrkStatsChamp(String track, bool reverse)
 	Scene* sc = new Scene();  sc->LoadXml(sSc);  // fails to defaults
 	SplineRoad rd(pGame);  rd.LoadFile(sRd,false);  // load
 
-	TIMER tim;  tim.Load(PATHMANAGER::Records()+"/"+ pSet->gui.sim_mode+"/"+ track+".txt", 0.f);
+	TIMER tim;  tim.Load(PATHS::Records()+"/"+ pSet->gui.sim_mode+"/"+ track+".txt", 0.f);
 	tim.AddCar(sListCar);
 
 	gcom->UpdGuiRdStats(&rd,sc, track, tim.GetBestLap(0, reverse), reverse, 1);

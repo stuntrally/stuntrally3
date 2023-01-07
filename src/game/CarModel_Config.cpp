@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "dbl.h"
 #include "Def_Str.h"
-#include "pathmanager.h"
 #include "mathvector.h"
 #include "game.h"
 #include "CGame.h"
@@ -13,7 +12,6 @@
 
 using namespace Ogre;
 using namespace std;
-#define  FileExists(s)  PATHMANAGER::FileExists(s)
 
 
 //  🌟 ctor

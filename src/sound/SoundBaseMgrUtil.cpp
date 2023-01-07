@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Def_Str.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "SoundBase.h"
 #include "SoundBaseMgr.h"
 #include <AL/alc.h>
@@ -85,7 +85,7 @@ bool SoundBaseMgr::loadWAVFile(String file, ALuint buffer, int& outSamples)
 	//LogO("@  Loading WAV file "+file);
 
 	// create the Stream
-	std::string path = PATHMANAGER::Sounds()+"/"+file;
+	std::string path = PATHS::Sounds()+"/"+file;
 	std::ifstream fi;
 	fi.open(path.c_str(), std::ios_base::binary);
 	Ogre::FileStreamDataStream fd(&fi,false), *stream = &fd;
@@ -194,7 +194,7 @@ bool SoundBaseMgr::loadOGGFile(String file, ALuint buffer, int& outSamples)
 	outSamples = 0;
 	//LogO("Loading OGG file "+file);
 
-	String path = PATHMANAGER::Sounds()+"/"+file;
+	String path = PATHS::Sounds()+"/"+file;
 	FILE* fp = fopen(path.c_str(), "rb");
 	if (fp)
 	{
