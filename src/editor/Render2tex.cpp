@@ -1,3 +1,4 @@
+#include "OgreCommon.h"
 #include "pch.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
@@ -8,6 +9,7 @@
 #include "CGui.h"
 #include "Road.h"
 #include "pathmanager.h"
+#include "HudRenderable.h"
 
 #include <btBulletCollisionCommon.h>
 #include <btBulletDynamicsCommon.h>
@@ -35,6 +37,9 @@ using namespace Ogre;
 // . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 void App::Rnd2TexSetup()
 {
+	asp = float(mWindow->getWidth()) / float(mWindow->getHeight());
+	Real sz = pSet->size_minimap;
+	xm1 = 1-sz/asp, ym1 = -1+sz, xm2 = 1.0, ym2 = -1.0;
 #if 0
 	///  RT:  0 road minimap,  1 road for grass,  2 terrain minimap,  3 track preview full
 	const uint32 visMask[RT_Last] =
@@ -42,9 +47,6 @@ void App::Rnd2TexSetup()
 	const int dim[RT_Last] =  //1025: sc->td.iVertsX
 		{ 1024, 1025, 1024, 1024 };
 		
-	asp = float(mWindow->getWidth())/float(mWindow->getHeight());
-	Real sz = pSet->size_minimap;
-	xm1 = 1-sz/asp, ym1 = -1+sz, xm2 = 1.0, ym2 = -1.0;
 	AxisAlignedBox aab;  aab.setInfinite();
 	
 	TextureGpu* texture[RT_Last];
@@ -113,13 +115,17 @@ void App::Rnd2TexSetup()
 		r.mini->setRenderQueueGroup(RQG_Hud2);
 		r.mini->setVisibilityFlags(i == RT_Last ? RV_MaskPrvCam : RV_Hud);
 	}
+#endif
 
 	//  pos dot on minimap  . . . . . . . .
 	if (!ndPos)
-	{	mpos = Create2D("hud/CarPos", 0.2f, true);  // dot size
-		mpos->setVisibilityFlags(RV_Hud);
-		mpos->setRenderQueueGroup(RQG_Hud3 /*RENDER_QUEUE_OVERLAY+1*/);
-		ndPos = mSceneMgr->getRootSceneNode()->createChildSceneNode(
+	{
+		//  car pos tris (form all cars on all viewports)
+		SceneNode* rt = mSceneMgr->getRootSceneNode();
+		// mpos = Create2D("hud/CarPos", 0.2f, true);  // dot size
+		mpos = new HudRenderable("hud/CarPos", mSceneMgr,
+			OT_TRIANGLE_LIST, true,false, RV_Hud,RQG_Hud3, 1);
+		ndPos = rt->createChildSceneNode(SCENE_DYNAMIC,
 			Vector3(xm1+(xm2-xm1)/2, ym1+(ym2-ym1)/2, 0));
 		float fHudSize = 0.04f;
 		ndPos->scale(fHudSize, fHudSize, 1);
@@ -127,7 +133,6 @@ void App::Rnd2TexSetup()
 	}
 	if (ndPos)   ndPos->setVisible(pSet->trackmap);
 	UpdMiniVis();
-#endif
 }
 
 void App::UpdMiniVis()
@@ -479,8 +484,8 @@ void App::AlignTerToRoad()
 
 
 	//  put sel segs on terrain
-	/*for (auto i : scn->road->vSel)  // fixme
-		scn->road->mP[i].onTer = true;/**/
+	for (auto i : scn->road->vSel)
+		scn->road->mP[i].onTer = true;
 
 	//  restore orig road width
 	scn->road->Rebuild(true);

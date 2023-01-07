@@ -7,6 +7,7 @@
 #include "CApp.h"
 #include "CGui.h"
 #include "Road.h"
+#include "HudRenderable.h"
 
 #include <OgreCamera.h>
 #include <OgreSceneNode.h>
@@ -37,14 +38,17 @@ void App::UpdateKey(float dt)
 		{
 			float ia = 135.f + float(i)*90.f;
 			float p = -(angrot + ia) * d2r;
-			px[i] = psx*cosf(p);  py[i] =-psy*sinf(p);
+			px[i] = psx*cosf(p);
+			py[i] =-psy*sinf(p);
 		}
-		/*if (mpos)  // fixme
-		{	mpos->beginUpdate(0);
-			mpos->position(px[0],py[0], 0);  mpos->textureCoord(0, 1);	mpos->position(px[1],py[1], 0);  mpos->textureCoord(1, 1);
-			mpos->position(px[3],py[3], 0);  mpos->textureCoord(0, 0);	mpos->position(px[2],py[2], 0);  mpos->textureCoord(1, 0);
+		if (mpos)  // fixme
+		{	mpos->begin();
+			mpos->position(px[0],py[0], 0);  mpos->texUV(0, 1);
+			mpos->position(px[1],py[1], 0);  mpos->texUV(1, 1);
+			mpos->position(px[3],py[3], 0);  mpos->texUV(0, 0);
+			mpos->position(px[2],py[2], 0);  mpos->texUV(1, 0);
 			mpos->end();
-	}*/	}
+	}	}
 	
 	//  status
 	if (fStFade > 0.f)
@@ -119,7 +123,7 @@ void App::UpdateKey(float dt)
 	if (road && ti >= dti)
 	{	ti = 0;
 
-		Real dist = pSet->road_dist, dist2 = 200*200; //par
+		Real dist = pSet->road_dist, dist2 = 600*600; //par
 		bool prv = edMode == ED_PrvCam, ed = edMode == ED_Road && !bMoveCam;
 
 		int i = 0;

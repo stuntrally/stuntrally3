@@ -335,7 +335,7 @@ void CGui::slSizeRoadP(SV*)
 
 void CGui::slSizeMinimap(SV*)
 {
-	Real sz = pSet->size_minimap;  //int all = 0;
+	Real sz = pSet->size_minimap;
 	app->asp = float(app->mWindow->getWidth()) / float(app->mWindow->getHeight());
 	app->xm1 = 1.f - sz / app->asp;  app->ym1 = -1.f + sz;  app->xm2 = 1.f;  app->ym2 = -1.f;
 	/*for (int i=0; i < app->RT_Brush; ++i)  if (i != app->RT_Last)
