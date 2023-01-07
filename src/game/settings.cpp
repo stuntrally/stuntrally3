@@ -39,9 +39,9 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 		if (i < 4)
 		{	Param(c,w, s+"car", gui.car[i]);		Param(c,w, s+"camera", cam_view[i]);
 		}
-		Param(c,w, s+"clr_hue", gui.car_hue[i]);	Param(c,w, s+"clr_gloss", gui.car_gloss[i]);
-		Param(c,w, s+"clr_sat", gui.car_sat[i]);	Param(c,w, s+"clr_metal", gui.car_metal[i]);
-		Param(c,w, s+"clr_val", gui.car_val[i]);	Param(c,w, s+"clr_rough", gui.car_rough[i]);
+		Param(c,w, s+"clr_hue", gui.clr[i].hue);	Param(c,w, s+"clr_gloss", gui.clr[i].gloss);
+		Param(c,w, s+"clr_sat", gui.clr[i].sat);	Param(c,w, s+"clr_metal", gui.clr[i].metal);
+		Param(c,w, s+"clr_val", gui.clr[i].val);	Param(c,w, s+"clr_rough", gui.clr[i].rough);
 	}
 	// todo: this for all 4 cars
 	Param(c,w, "car1.autotrans", autoshift);
@@ -99,6 +99,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "gui.car_ed_tab", car_ed_tab);		Param(c,w, "gui.tweak_tab", tweak_tab);
 	Param(c,w, "gui.champ_tab", champ_type);
 	Param(c,w, "gui.chall_tab", chall_type);		Param(c,w, "gui.champ_info", champ_info);
+	Param(c,w, "gui.car_clr", car_clr);
 	//  🎚️ hud size
 	Param(c,w, "hud_size.gauges", size_gauges);			Param(c,w, "hud_size.arrow", size_arrow);
 	Param(c,w, "hud_size.minimap", size_minimap);		Param(c,w, "hud_size.minipos", size_minipos);
@@ -182,8 +183,7 @@ SETTINGS::SETTINGS()
 
 SETTINGS::GameSet::GameSet()
 {
-	car_hue.resize(6);  car_sat.resize(6);  car_val.resize(6);
-	car_gloss.resize(6);  car_metal.resize(6);  car_rough.resize(6);
+	clr.resize(6);
 	car.resize(4);
 
 	BoostDefault();
@@ -191,8 +191,12 @@ SETTINGS::GameSet::GameSet()
 	//  cars
 	for (int i=0; i < 6; ++i)
 	{	if (i < 4)  car[i] = "HI";
-		car_hue[i] = 0.4f + 0.2f*i;  car_sat[i] = 1.f;  car_val[i] = 1.f;
-		car_gloss[i] = 0.5f;  car_metal[i] = 0.5f;  car_rough[i] = 0.5f;
+		clr[i].hue = 0.4f + 0.2f*i;
+		clr[i].sat = 0.98f;
+		clr[i].val = 0.9f;
+		clr[i].gloss = 0.7f;
+		clr[i].metal = 0.9f;
+		clr[i].rough = 0.25f;
 	}
 }
 

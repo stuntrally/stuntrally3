@@ -89,9 +89,16 @@ public:
 	void slCarClr(SV*);
 	void SldUpd_CarClr();
 	void UpdCarClrSld(bool upd=true);
+
 	void SetCarClr(), UpdImgClr();
-	Img imgCarClr =0;
+
+	Img imgCarClr =0, imgCarClrCur =0;
 	void imgBtnCarClr(WP), btnCarClrRandom(WP);
+	Tbi tbCarClr =0;
+	std::vector<Img> imgsCarClr;
+	void UpdCarClrImgs(), UpdCarClrCur();
+	void btnCarClrSave(WP), btnCarClrLoad(WP), btnCarClrLoadDef(WP);
+	void btnCarClrAdd(WP), btnCarClrDel(WP);
 
 
 	//  🔩 Setup car  ----

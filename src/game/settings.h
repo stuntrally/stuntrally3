@@ -38,6 +38,12 @@ enum EMenu
 	MN_Single, MN_Tutorial, MN_Champ, MN_Chall,  // game, same window
 	MN_HowTo, MN_Replays, MN_Help, MN_Options  };  // other windows
 
+struct CarColor
+{
+	float hue = 0.35f, sat = 0.98f, val = 0.8f;
+	float gloss = 1.f, metal = 1.f, rough = 0.15f;
+};
+
 
 class SETTINGS : public SETcom
 {
@@ -82,7 +88,8 @@ public:
 	bool cars_sortup =1;  int cars_view = 0, cars_sort = 1;
 	int champ_type = 0, chall_type = 0;
 	bool champ_info =1;
-	int car_ed_tab = 0, tweak_tab = 0;
+	int car_ed_tab = 0, tweak_tab = 0;  // gui only
+	int car_clr = -1;  // colors.ini id
 
 
 	//  📊 graphics
@@ -114,8 +121,7 @@ public:
 		float trees = 1.5f;  // 🌳🪨 veget common
 
 		std::vector<std::string> car;  //[4] local players
-		std::vector<float> car_hue, car_sat, car_val,
-			car_gloss, car_metal, car_rough;  //[6] also for ghosts
+		std::vector<CarColor> clr;  //[6] also for ghosts 🎨
 
 		bool vr_mode =0;  // copy in game from pSet->
 		int local_players = 1, num_laps = 2;  // 👥 split

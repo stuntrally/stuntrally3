@@ -352,6 +352,31 @@ bool ColorsXml::LoadIni(string file)
 	return true;
 }
 
+bool ColorsXml::SaveIni(string file)
+{
+	ofstream f(file.c_str());
+	if (f.fail())  return false;
+	
+	f << "#  Gui  Car tab  buttons\n\n";
+	f << "perRow " << perRow << "\n";
+	f << "imgSize " << imgSize << "\n\n";
+
+	f << "#  car colors  hue,sat,val, gloss, metalness, roughness\n\n";
+	f << setprecision(3);
+	int i = 0;
+	for (const auto& c : v)
+	{
+		f << c.hue <<" "<< c.sat <<" "<< c.val <<" "<< c.gloss <<" "<< c.metal <<" "<< c.rough;
+
+		f << "\n";  ++i;
+		if (i % 5 == 0)  f << "\n";
+		if (i % perRow == 0)  f << "#------\n";
+	}
+	f.close();
+	return true;
+}
+
+
 
 ///  🔉 Load  reverbs.xml 📄
 //-------------------------------------------------------------------------------------

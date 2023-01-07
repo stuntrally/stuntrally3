@@ -27,7 +27,7 @@ public:
 	
 	void Load(std::map <std::string, int>* surf_map=0, bool check=false);  //
 	#ifndef SR_EDITOR
-		void LoadColors();
+		void LoadColors(bool forceOrig = false);
 	#endif
 
 	FluidsXml* fluids;	//  fluids params for car sim

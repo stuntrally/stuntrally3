@@ -638,22 +638,17 @@ void CarModel::UpdWhTerMtr()
 void CarModel::ChangeClr()
 {
 	int i = iColor;
-	float h = pSet->gui.car_hue[i],
-		s = pSet->gui.car_sat[i],
-		v = pSet->gui.car_val[i],
-		gloss = pSet->gui.car_gloss[i],
-		metal = pSet->gui.car_metal[i],
-		rough = pSet->gui.car_rough[i];
-	color.setHSB(1.f - h, s, v);  //set, mini pos clr
+	auto c = pSet->gui.clr[i];
+	color.setHSB(1.f - c.hue, c.sat, c.val);  //set, mini pos clr
 
 	if (!db)  return;
 	Vector3 clr(color.r, color.g, color.b);
-	db->setSpecular( clr * gloss );
-	db->setDiffuse( clr * (1.f - gloss) );
+	db->setSpecular( clr * c.gloss );  // ok~
+	db->setDiffuse( clr * (1.f - c.gloss) );
 	//db->setMetalness( metal );  //?
 	// db->setIndexOfRefraction( Vector3::UNIT_SCALE * (3.f-metal*3.f), false );
-	db->setFresnel( Vector3::UNIT_SCALE * (metal), false );
-	db->setRoughness( rough );
+	db->setFresnel( Vector3::UNIT_SCALE * c.metal, false );
+	db->setRoughness( c.rough );
 	// if (pNickTxt)
 	// 	pNickTxt->setTextColour(MyGUI::Colour(color.r, color.g, color.b));
 	

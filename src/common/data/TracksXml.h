@@ -1,8 +1,8 @@
 #pragma once
+#include "settings.h"  // CarColor
 #include <vector>
 #include <map>
 #include <string>
-
 namespace tinyxml2	{	class XMLElement;	}
 
 
@@ -114,13 +114,6 @@ public:
 
 //  🎨 car colors.ini  for Gui
 //--------------------------------------------------------------------
-class CarColor
-{
-public:
-	float hue, sat, val, gloss, metal, rough;
-};
-
-//  all colors
 class ColorsXml
 {
 public:
@@ -128,6 +121,7 @@ public:
 	int perRow = 12, imgSize = 18;  // gui params
 	
 	bool LoadIni(std::string file);
+	bool SaveIni(std::string file);
 };
 
 

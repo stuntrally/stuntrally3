@@ -4,8 +4,10 @@
 #include "GuiCom.h"
 #include "CScene.h"
 #include "settings.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "game.h"
+#include "CData.h"
+#include "TracksXml.h"
 // #include "PaceNotes.h"
 #include "Road.h"
 #include "CGame.h"
@@ -28,7 +30,7 @@ using namespace MyGUI;
 
 ///  Gui Events
 
-//    [Car]
+//   🚗 Car
 //---------------------------------------------------------------------
 void CGui::chkAbs(WP wp)
 {	if (pChall && !pChall->abs)  return;	ChkEv(abs[iTireSet]);	if (pGame)  pGame->ProcessNewSettings();	}
@@ -129,6 +131,7 @@ void CGui::tabPlayer(Tab, size_t id)
 	UpdCarClrSld(false);  // no car color change
 }
 
+
 //  🎨 car Color
 //---------------------------------------------------------------------
 //  3. apply new color to car/ghost
@@ -158,72 +161,167 @@ void CGui::UpdCarClrSld(bool upd)
 {
 	SldUpd_CarClr();
 	int i = iCurCar;
-	float h = pSet->gui.car_hue[i], s = pSet->gui.car_sat[i], v = pSet->gui.car_val[i];
 	
-	pSet->game.car_hue[i] = h;  // copy to apply
-	pSet->game.car_sat[i] = s;
-	pSet->game.car_val[i] = v;
-	pSet->game.car_gloss[i] = pSet->gui.car_gloss[i];
-	pSet->game.car_metal[i] = pSet->gui.car_metal[i];
-	pSet->game.car_rough[i] = pSet->gui.car_rough[i];
+	int c = pSet->car_clr;
+	bool ok = c >= 0 && c < data->colors->v.size() && c < imgsCarClr.size();
+	pSet->game.clr[i] = pSet->gui.clr[i];  // copy to apply
+	UpdCarClrCur();
 	if (upd)
 		SetCarClr();
 	UpdImgClr();
+}
+
+void CGui::UpdCarClrCur()
+{
+	int c = pSet->car_clr;
+	bool ok = c >= 0 && c < data->colors->v.size() && c < imgsCarClr.size();
+	imgCarClrCur->setVisible(ok);
+	if (!ok)  return;
+
+	Img i = imgsCarClr[c];
+	auto p = i->getPosition();
+	auto s = i->getSize();
+	imgCarClrCur->setCoord(p.left-3, p.top-3, s.width+6, s.height+6);
 }
 
 //  1. upd sld and pointers after tab change
 void CGui::SldUpd_CarClr()
 {
 	int i = iCurCar;
-	svCarClrH.UpdF(&pSet->gui.car_hue[i]);
-	svCarClrS.UpdF(&pSet->gui.car_sat[i]);
-	svCarClrV.UpdF(&pSet->gui.car_val[i]);
-	svCarClrGloss.UpdF(&pSet->gui.car_gloss[i]);
-	svCarClrMetal.UpdF(&pSet->gui.car_metal[i]);
-	svCarClrRough.UpdF(&pSet->gui.car_rough[i]);
+	svCarClrH.UpdF(&pSet->gui.clr[i].hue);
+	svCarClrS.UpdF(&pSet->gui.clr[i].sat);
+	svCarClrV.UpdF(&pSet->gui.clr[i].val);
+	svCarClrGloss.UpdF(&pSet->gui.clr[i].gloss);
+	svCarClrMetal.UpdF(&pSet->gui.clr[i].metal);
+	svCarClrRough.UpdF(&pSet->gui.clr[i].rough);
 }
 
 void CGui::slCarClr(SV*)
 {
 	SetCarClr();
 	UpdImgClr();
+	
+	//  upd data for ini save
+	int i = iCurCar;  // plr
+	int b = pSet->car_clr;  // btn
+	if (b >= 0 && b < data->colors->v.size())
+		data->colors->v[b] = pSet->gui.clr[i];
 }
 
 void CGui::UpdImgClr()
 {
 	int i = iCurCar;
-	float h = pSet->gui.car_hue[i], s = pSet->gui.car_sat[i], v = pSet->gui.car_val[i];
+	float h = pSet->gui.clr[i].hue, s = pSet->gui.clr[i].sat, v = pSet->gui.clr[i].val;
 	ColourValue c;  c.setHSB(1.f - h, s, v);
 	Colour cc(c.r, c.g, c.b);
 	imgCarClr->setColour(cc);
+	
+	i = pSet->car_clr;  // grid btn
+	if (i >= 0 && i < imgsCarClr.size())
+		imgsCarClr[i]->setColour(cc);
 }
 
-//  color buttons
+//  🎨 color buttons
+//---------------------------------------------------------------------
 void CGui::imgBtnCarClr(WP img)
 {
 	int i = iCurCar;
-	pSet->gui.car_hue[i] = s2r(img->getUserString("h"));
-	pSet->gui.car_sat[i] = s2r(img->getUserString("s"));
-	pSet->gui.car_val[i] = s2r(img->getUserString("v"));
-	pSet->gui.car_gloss[i]= s2r(img->getUserString("g"));
-	pSet->gui.car_metal[i] = s2r(img->getUserString("m"));
-	pSet->gui.car_rough[i] = s2r(img->getUserString("r"));
+	auto& c = pSet->car_clr;
+	c = s2i(img->getUserString("i"));
+	
+	if (c >= data->colors->v.size())  return;
+	pSet->gui.clr[i] = data->colors->v[c];
 	UpdCarClrSld();
 }
 void CGui::btnCarClrRandom(WP)
 {
 	int i = iCurCar;
-	pSet->gui.car_hue[i] = Math::UnitRandom();
-	pSet->gui.car_sat[i] = Math::UnitRandom();
-	pSet->gui.car_val[i] = Math::UnitRandom();
-	pSet->gui.car_gloss[i] = Math::UnitRandom();
-	pSet->gui.car_metal[i] = Math::RangeRandom(0.f,1.f);
-	pSet->gui.car_rough[i] = Math::RangeRandom(0.f,1.f);
+	pSet->car_clr = -1;  //-
+	pSet->gui.clr[i].hue = Math::UnitRandom();
+	pSet->gui.clr[i].sat = Math::UnitRandom();
+	pSet->gui.clr[i].val = Math::UnitRandom();
+	pSet->gui.clr[i].gloss = Math::UnitRandom();
+	pSet->gui.clr[i].metal = Math::RangeRandom(0.f,1.f);
+	pSet->gui.clr[i].rough = Math::RangeRandom(0.01f,0.5f);
 	UpdCarClrSld();
 }
 
+void CGui::btnCarClrSave(WP)
+{
+	auto user = PATHS::UserConfigDir() + "/colors.ini";
+	data->colors->SaveIni(user);
+}
+void CGui::btnCarClrLoadDef(WP)
+{
+	data->LoadColors(true);
+	UpdCarClrImgs();
+}
+void CGui::btnCarClrLoad(WP)
+{
+	data->LoadColors();
+	UpdCarClrImgs();
+}
 
-//  [Game]
+//  clr del -
+void CGui::btnCarClrDel(WP)
+{
+	auto& i = pSet->car_clr;
+	auto& v = data->colors->v;
+	if (i >= 0 && i < v.size())
+		v.erase(v.begin() + i);
+	if (i == v.size() && i > 0)
+		--i;
+	UpdCarClrImgs();
+}
+
+//  🎨 clr add +
+void CGui::btnCarClrAdd(WP)
+{
+	CarColor c = pSet->gui.clr[iCurCar];
+	auto i = pSet->car_clr;
+	auto& v = data->colors->v;
+	if (i >= 0 && i < v.size()-1)
+		v.insert(v.begin() + i + 1, c);
+	else
+		v.push_back(c);
+	// insert after car_clr?
+	UpdCarClrImgs();
+}
+
+void CGui::UpdCarClrImgs()
+{
+	const int clrBtn = data->colors->v.size(),
+		clrRow = data->colors->perRow, sx = data->colors->imgSize;
+	
+	for (auto img : imgsCarClr)
+		tbCarClr->_destroyChildWidget(img);
+	imgsCarClr.clear();
+	
+	for (int i=0; i < clrBtn; ++i)
+	{
+		int x = i % clrRow, y = i / clrRow;
+		Img img = tbCarClr->createWidget<ImageBox>("ImageBox",
+			12+x*sx, 102+y*sx, sx-1,sx-1, Align::Left, "carClr"+toStr(i));
+		img->setImageTexture("white.png");
+		gcom->setOrigPos(img, "GameWnd");
+
+		const CarColor& cl = data->colors->v[i];
+		float h = cl.hue, s = cl.sat, v = cl.val;
+		
+		Ogre::ColourValue c;  c.setHSB(1.f-h, s, v);
+		img->setColour(Colour(c.r,c.g,c.b));
+		img->eventMouseButtonClick += newDelegate(this, &CGui::imgBtnCarClr);
+
+		img->setUserString("i", toStr(i));
+		imgsCarClr.push_back(img);
+	}
+	if (bGI)  // resize
+		gcom->doSizeGUI(tbCarClr->getEnumerator());
+	UpdCarClrCur();
+}
+
+
+//  💨🔨 Game
 //---------------------------------------------------------------------
 
 void CGui::comboBoost(CMB)
@@ -279,7 +377,7 @@ void CGui::chkStartOrd(WP wp)
 }
 
 
-//  [Graphics]  options  (game only)
+//  📊 Graphics  options  (game only)
 //---------------------------------------------------------------------
 
 //  reflection
@@ -334,7 +432,7 @@ void CGui::slCountdownTime(SL)
 }
 
 
-//  [View]  . . . . . . . . . . . . . . . . . . . .    ---- checks ----    . . . . . . . . . . . . . . . . . . . .
+//  🌍 View  . . . . . . . . . . . . . . . . . . . .    ---- checks ----    . . . . . . . . . . . . . . . . . . . .
 
 void CGui::chkWireframe(Ck*)
 {
@@ -376,12 +474,13 @@ void CGui::chkMiniUpd(Ck*)
 	hud->UpdMiniTer();
 }
 
-//  pacenotes
+//  🚦 pacenotes
 void CGui::slUpd_Pace(SV*)
 {
 	// app->scn->UpdPaceParams();
 }
 
+//  🎗️ trail
 void CGui::chkTrailShow(Ck*)
 {
 	if (!app->scn->trail)  return;
@@ -434,7 +533,7 @@ void CGui::slEffUpd(SV*)
 }*/
 
 
-//  [Sound]
+//  🔊 Sound
 void CGui::slVolMaster(SV*)
 {
 	pGame->ProcessNewSettings();
@@ -516,7 +615,7 @@ void CGui::btnLesson(WP wp)
 		Add(16.f, 29.f, 24);
 		break;
 	}
-	file = PATHMANAGER::Lessons() + "/" + file + ".rpl";
+	file = PATHS::Lessons() + "/" + file + ".rpl";
 	bLesson = true;  //`
 	btnRplLoadFile(file);
 	pSet->game.track_reversed = file.find('b') != string::npos;  //app->replay.header.reverse;

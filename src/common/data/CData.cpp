@@ -136,15 +136,16 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 }
 
 #ifndef SR_EDITOR
-void CData::LoadColors()
+void CData::LoadColors(bool forceOrig)
 {
 	if (!colors)  return;
 	auto path = PATHS::GameConfigDir(),
 		 user = PATHS::UserConfigDir();
 	auto clr = "/colors.ini";
 
-	if (PATHS::FileExists(user + clr))
-	{	colors->LoadIni(user + clr);
+	if (PATHS::FileExists(user + clr) && !forceOrig)
+	{
+		colors->LoadIni(user + clr);
 		LogO(String("**** Loaded user Car Colors: ") + toStr(colors->v.size()));
 	}else
 	{	colors->LoadIni(path + clr);

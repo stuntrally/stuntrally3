@@ -4,7 +4,7 @@
 #include "TracksXml.h"
 #include "GuiCom.h"
 #include "CScene.h"
-#include "pathmanager.h"
+#include "paths.h"
 #include "game.h"
 #include "Road.h"
 #include "CGame.h"
@@ -272,8 +272,8 @@ void CGui::btnChallEndClose(WP)
 ///  save progressL and update it on gui
 void CGui::ProgressLSave(bool upgGui)
 {
-	progressL[0].SaveXml(PATHMANAGER::UserConfigDir() + "/progressL.xml");
-	progressL[1].SaveXml(PATHMANAGER::UserConfigDir() + "/progressL_rev.xml");
+	progressL[0].SaveXml(PATHS::UserConfigDir() + "/progressL.xml");
+	progressL[1].SaveXml(PATHS::UserConfigDir() + "/progressL_rev.xml");
 	if (!upgGui)
 		return;
 	ChallsListUpdate();
