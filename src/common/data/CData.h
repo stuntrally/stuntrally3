@@ -47,8 +47,8 @@ public:
 	#endif
 
 	//  📐 get drivability, vehicle on track fitness
-	float GetDrivability(std::string car, std::string trk, bool track_user);
 	#ifndef SR_EDITOR
+		float GetDrivability(std::string car, std::string trk, bool track_user);
 		bool IsChallCar(const Chall* ch, std::string name);
 	#endif
 };

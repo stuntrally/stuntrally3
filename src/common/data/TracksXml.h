@@ -76,6 +76,7 @@ public:
 	bool LoadXml(std::string file), SaveXml(std::string file);
 };*/
 
+#ifndef SR_EDITOR
 
 //  🚗 Car's additional info  (all Car = Vehicle)
 //  shown on gui [Car] tab, in detailed view
@@ -97,6 +98,7 @@ public:
 	//  time mul factors, for race postion, in sim modes
 	float easy = 0.96f, norm = 1.f;
 };
+
 
 //  all cars infos
 //.................................
@@ -123,6 +125,7 @@ public:
 	bool LoadIni(std::string file);
 	bool SaveIni(std::string file);
 };
+#endif
 
 
 //  🔉 Reverb presets on sceneries  ed combo

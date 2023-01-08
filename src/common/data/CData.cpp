@@ -15,6 +15,7 @@ using Ogre::String;
 	#include "ChallengesXml.h"
 #endif
 
+#ifndef SR_EDITOR  // game
 
 //  📐 get drivability, vehicle on track fitness
 float CData::GetDrivability(std::string car, std::string trk, bool track_user)
@@ -46,7 +47,6 @@ float CData::GetDrivability(std::string car, std::string trk, bool track_user)
 	return std::min(1.f, undrv);
 }
 
-#ifndef SR_EDITOR  // game
 bool CData::IsChallCar(const Chall* ch, std::string name)
 {
 	int i,s;
@@ -95,7 +95,6 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 	//  cars and tracks
 	auto path = PATHS::GameConfigDir();
 	tracks->LoadIni(path + "/tracks.ini", check);
-	cars->LoadXml(path + "/cars.xml");
 	
 	#ifdef SR_EDITOR
 		//  ed
@@ -106,7 +105,9 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 			"  grass: " + toStr(pre->gr.size()) +
 			"  veget: " + toStr(pre->veg.size()) );
 	#else
+		cars->LoadXml(path + "/cars.xml");
 		LoadColors();
+
 		champs->LoadXml(path + "/championships.xml", tracks, check);
 		LogO(String("**** Loaded Championships: ") + toStr(champs->all.size()));
 
@@ -163,11 +164,11 @@ CData::CData()
 	reverbs = new ReverbsXml();
 
 	tracks = new TracksXml();
-	cars = new CarsXml();
 
 	#ifdef SR_EDITOR
 		pre = new Presets();
 	#else
+		cars = new CarsXml();
 		colors = new ColorsXml();
 		champs = new ChampsXml();
 		chall = new ChallXml();
@@ -181,11 +182,11 @@ CData::~CData()
 	delete reverbs;
 
 	delete tracks;
-	delete cars;
 
 	#ifdef SR_EDITOR
 		delete pre;
 	#else
+		delete cars;
 		delete colors;
 		delete champs;
 		delete chall;
