@@ -431,6 +431,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 						{
 						case TAB_Track:	 gui->changeTrack();  gui->btnNewGame(0);  break;
 						case TAB_Car:	 gui->changeCar();    gui->btnNewGame(0);  break;
+						case TAB_Split:	 gui->btnNewGame(0);  break;
 						// case TAB_Multi:	 gui->chatSendMsg();  break;
 						case TAB_Champs:
 							if (gui->isChallGui())

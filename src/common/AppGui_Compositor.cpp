@@ -43,17 +43,20 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	}
 	mWorkspaces.clear();
 
+
+	//  🌒 shadows
+	bool esm = pSet->shadow_type == 2;
 	static bool first =	true;
-	if (first)
+	if (first && pSet->shadow_type > 0)
 	{
-	setupESM();
-	createPcfShadowNode();
-	createEsmShadowNodes();
+		if (esm)  setupESM();
+		createPcfShadowNode();
+		if (esm)  createEsmShadowNodes();  // fixme..
+		first = false;
 	}
-	first = false;
 
 
-	// 🔮 create Reflections  ----
+	//  🔮 create Reflections  ----
 	CreateCubeReflect();
 
 
@@ -89,28 +92,31 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	}
 
 
-	// todo: ..
-	assert( dynamic_cast<CompositorPassSceneDef *>( passes[1] ) );
-	CompositorPassSceneDef *ps = static_cast<CompositorPassSceneDef *>( passes[1] );
-	ps->mShadowNode = "ShadowMapFromCodeShadowNode";
-	// passSceneDef->mShadowNode = chooseEsmShadowNode();
+	//  🌒 shadows
+	assert( dynamic_cast<CompositorPassSceneDef *>(passes[1]) );
+	CompositorPassSceneDef* ps = static_cast<CompositorPassSceneDef *>(passes[1]);
+	
+	switch (pSet->shadow_type)
+	{
+	case 0:  break;  // none
+	case 1:  ps->mShadowNode = "ShadowMapFromCodeShadowNode";  break;
+	case 2:  ps->mShadowNode = chooseEsmShadowNode();  break;
+	}
+
 	// mGraphicsSystem->restartCompositor();
 	// createShadowMapDebugOverlays();
+
 	// mEnableForwardPlus;
+	// mLodCameraName ?
+
 #ifndef SR_EDITOR
-	ps->mVisibilityMask = 0x0000FFFFD;
-	ps->mLastRQ = 100;
-	// visibility_mask		0x0000FFFFD  // no hud
-	// fixme: breaks ed
-	// rq_last		110  // glass,par etc
+	//  game, Hud has own render
+	ps->mVisibilityMask = 0x000FFFFF - RV_Hud;
+	// ps->mLastRQ = RQ_OVERLAY; //RQG_CarGhost;  // no, hides pacenotes-
 #endif
 
-	// mFirstRQ mLastRQ
-	// mVisibilityMask
-	// mLodCameraName
 
-
-	//  Viewports
+	//  🖥️ Viewports
 	//-----------------------------------------------------------------------------------------
 	DestroyCameras();  // 💥🎥
 

@@ -380,24 +380,6 @@ void CGui::chkStartOrd(WP wp)
 //  📊 Graphics  options  (game only)
 //---------------------------------------------------------------------
 
-//  reflection
-void CGui::slReflDist(SV*)
-{
-	// app->recreateReflections();
-}
-void CGui::slReflMode(SV* sv)
-{
-	if (bGI)
-	switch (pSet->refl_mode)
-	{
-		case 0: sv->setTextClr(0.0, 1.0, 0.0);  break;
-		case 1: sv->setTextClr(1.0, 0.5, 0.0);  break;
-		case 2: sv->setTextClr(1.0, 0.0, 0.0);  break;
-	}
-	// app->recreateReflections();
-}
-
-
 void CGui::chkParTrl(Ck*)
 {		
 	for (auto* car : app->carModels)

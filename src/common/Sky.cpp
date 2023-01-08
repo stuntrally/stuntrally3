@@ -266,12 +266,12 @@ void CScene::UpdSun()
 	}
 	sun->setDirection(dir);
 
-	sun->setPowerScale( Math::PI );  // 💡 Light
+	sun->setPowerScale( Math::PI );  // 💡 brightness
 	float bright = app->pSet->bright, contrast = app->pSet->contrast;
 	sun->setDiffuseColour( sc->lDiff.GetClr() * 2.2f  * bright * contrast);
 	sun->setSpecularColour(sc->lSpec.GetClr() * 0.75f * bright * contrast);
 
-	//  ambient
+	//  🌒 ambient
 	app->mSceneMgr->setAmbientLight(
 		sc->lAmb.GetClr() * 1.2f * bright / contrast,
 		sc->lAmb.GetClr() * 1.2f * bright / contrast,

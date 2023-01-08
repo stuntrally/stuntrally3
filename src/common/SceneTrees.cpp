@@ -244,11 +244,13 @@ void CScene::CreateTrees()
 				item->setVisibilityFlags( RV_Vegetation );
 				app->SetTexWrap(item);
 
+				//  todo: par in xml * scale,aabb?
 				auto s4 = file.substr(0,4), s3 = file.substr(0,3);
 				bool big = s4 == "palm" || s4 == "tree" || s4 == "jung" || s4 == "pine" ||
 					s3 == "gum" || s3 == "fir" || s4 == "crys" || s4 == "shro";
-				item->setRenderingDistance(  // todo: par in xml * scale,aabb?
-					big ? i % 3 == 0 ? 1000.f : 600.f : 300.f );  // how far visible
+				Real dist =  // how far visible
+					big ? i % 3 == 0 ? 1000.f : 600.f : 300.f;
+				item->setRenderingDistance( dist * pSet->trees_dist );
 				vegetItems.push_back(item);
 
 				SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );

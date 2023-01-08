@@ -3,10 +3,11 @@
 #include "Gui_Def.h"
 #include "GuiCom.h"
 #include "CScene.h"
-#include "Road.h"
 #include "settings.h"
 #include "App.h"
 #include "Cam.h"
+#include "Road.h"
+#include "Grass.h"
 #ifndef SR_EDITOR
 	#include "game.h"
 	// #include "SplitScreen.h"
@@ -48,6 +49,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	cmb->setIndexSelected(pSet->tex_filt);  comboTexFilter(cmb, pSet->tex_filt);
 
 	sv= &svAnisotropy;	sv->Init("Anisotropy",	&pSet->anisotropy,	0,16);		SevC(Anisotropy);  sv->DefaultI(4);
+	// BtnC("ApplyShaders", btnShaders);
 
 	//  ⛰️ Terrain
 	/*sv= &svTerMtr;
@@ -59,34 +61,51 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 						sv->Init("TerTripl",	&pSet->ter_tripl,	0,2);	sv->DefaultF(1);*/
 
 	//  🌳🪨 Veget  🌿 grass
-	sv= &svTrees;		sv->Init("Trees",		&pSet->gui.trees,	0.f,4.f, 2.f);   sv->DefaultF(1.5f);
-	sv= &svGrass;		sv->Init("Grass",		&pSet->grass,		0.f,4.f, 2.f);   sv->DefaultF(1.f);
-	sv= &svTreesDist;	sv->Init("TreesDist",   &pSet->trees_dist,	0.5f,7.f, 2.f);  sv->DefaultF(1.f);
-	sv= &svGrassDist;	sv->Init("GrassDist",   &pSet->grass_dist,	0.5f,7.f, 2.f);  sv->DefaultF(2.f);
-	BtnC("TrGrReset",  btnTrGrReset);
+	sv= &svTrees;		sv->Init("Trees",		&pSet->gui.trees,	0.f, 8.f, 2.f);  sv->DefaultF(1.5f);
+	sv= &svGrass;		sv->Init("Grass",		&pSet->grass,		0.f, 8.f, 2.f);  sv->DefaultF(1.f);
+	sv= &svTreesDist;	sv->Init("TreesDist",   &pSet->trees_dist,	0.1f,8.f, 2.f);  sv->DefaultF(1.f);
+	sv= &svGrassDist;	sv->Init("GrassDist",   &pSet->grass_dist,	0.1f,8.f, 2.f);  sv->DefaultF(2.f);
+	BtnC("ApplyVeget",  btnVegetApply);   BtnC("VegetReset",  btnVegetReset);
 
 
-	//  🌒 Shadows  // todo:
+	//  🌒 Shadows
 	sv= &svShadowType;
 		sv->strMap[0] = TR("#{None}");	sv->strMap[1] = "Depth";	sv->strMap[2] = "Soft-";
-						sv->Init("ShadowType",	&pSet->shadow_type,  0,1);  sv->DefaultI(1);
-	sv= &svShadowCount;	sv->Init("ShadowCount",	&pSet->shadow_count, 1,3);  sv->DefaultI(2);
-	// sv= &svShadowSize;
-	// 	for (int i=0; i < ciShadowSizesNum; ++i)  sv->strMap[i] = toStr(ciShadowSizesA[i]);
-	// 					sv->Init("ShadowSize",	&pSet->shadow_size, 0,ciShadowSizesNum-1);   sv->DefaultI(3);
-	sv= &svShadowDist;	sv->Init("ShadowDist",	&pSet->shadow_dist, 20.f,5000.f, 3.f, 0,3, 1.f," m");  sv->DefaultF(1300.f);
+						sv->Init("ShadowType",	&pSet->shadow_type,  0,2);  sv->DefaultI(1);
+	sv= &svShadowCount;	sv->Init("ShadowCount",	&pSet->shadow_count, 1,4);  sv->DefaultI(3);
+	sv= &svShadowSize;
+		for (int i=0; i < NumTexSizes; ++i)  sv->strMap[i] = toStr(cTexSizes[i]);
+						sv->Init("ShadowSize",	&pSet->shadow_size, 0,NumTexSizes-1);   sv->DefaultI(4);
+	sv= &svShadowDist;	sv->Init("ShadowDist",	&pSet->shadow_dist, 20.f,5000.f, 3.f, 0,3, 1.f," m");  sv->DefaultF(1300.f);  // todo:
+	BtnC("ApplyShadows", btnShadowsApply);
 
-	// BtnC("Apply", btnShadows);
-	// BtnC("ApplyShaders", btnShaders);
-	// BtnC("ApplyShadersWater", btnShaders);
-	
+	//  💡 Lights
+	ck= &ckCarLights;        ck->Init("CarLights",          &pSet->car_lights);  //CevC(Lights);
+	ck= &ckCarLightsShadows; ck->Init("CarLightsShadows",   &pSet->car_light_shadows);
+
+	//  🔮 Reflection  // todo:
+	sv= &svReflSkip;	sv->Init("ReflSkip",	&pSet->refl_skip,    0,1000, 2.f);  sv->DefaultI(0);
+	sv= &svReflFaces;	sv->Init("ReflFaces",	&pSet->refl_faces,   1,6);  sv->DefaultI(1);
+	sv= &svReflSize;
+		// for (i=0; i < ciShadowSizesNum; ++i)  sv->strMap[i] = toStr(ciShadowSizesA[i]);
+		// 				sv->Init("ReflSize",	&pSet->refl_size,    0,ciShadowSizesNum-1);  sv->DefaultI(1.5f);
+
+	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->refl_dist,   20.f,1500.f, 2.f, 0,4, 1.f," m");
+																	SevC(ReflDist);  sv->DefaultF(300.f);
+	sv= &svReflMode;
+	sv->strMap[0] = TR("#{ReflMode_static}");  sv->strMap[1] = TR("#{ReflMode_single}");
+	sv->strMap[2] = TR("#{ReflMode_full}");
+	sv->Init("ReflMode",	&pSet->refl_mode,   0,2);  SevC(ReflMode);  sv->DefaultI(1);
+
 	//  🌊 Water  // todo:
 	// ck= &ckWaterReflect; ck->Init("WaterReflection", &pSet->water_reflect);  CevC(Water);
 	// ck= &ckWaterRefract; ck->Init("WaterRefraction", &pSet->water_refract);  CevC(Water);
 	// sv= &svWaterSize;
 		// for (int i=0; i <= 2; ++i)  sv->strMap[i] = toStr(ciShadowSizesA[i]);
 		// 				sv->Init("WaterSize",	&pSet->water_rttsize, 0.f,2.f);  sv->DefaultI(0);  SevC(WaterSize);
-	
+	// BtnC("ApplyShadersWater", btnShaders);
+
+
 	//  Presets
 	CmbC(cmb, "CmbGraphicsAll", comboGraphicsAll);
 	if (cmb)
@@ -106,7 +125,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	//  🖥️ Screen
 	ck= &ckVRmode;  ck->Init("VRmode", &pSet->vr_mode);
 
-	//  💡 Light
+	//  💡 brightness
 	float bright = 1.f, contrast = 1.f;
 	sv= &svBright;		sv->Init("Bright",		&pSet->bright,   0.2,3.f);  sv->DefaultF(1.f);
 	sv= &svContrast;	sv->Init("Contrast",	&pSet->contrast, 0.2,3.f);  sv->DefaultF(1.f);
@@ -168,10 +187,10 @@ void CGuiCom::slAnisotropy(SV*)
 	// todo: ugh
 }
 
-void CGuiCom::slViewDist(SV* sv)
+void CGuiCom::slViewDist(SV*)
 {
 	app->scn->UpdSkyScale();
-	for (auto c : app->mCams)
+	for (auto& c : app->mCams)
 		c.cam->setFarClipDistance(pSet->view_distance);
 }
 
@@ -183,12 +202,12 @@ void CGuiCom::slTerDetail(SV*)
 
 void CGuiCom::slLodBias(SV*)
 {
-	for (auto c : app->mCams)
+	for (auto& c : app->mCams)
 		c.cam->setLodBias(pSet->lod_bias);
 }
 
-//  trees/grass
-void CGuiCom::btnTrGrReset(WP wp)
+//  🌳🪨🌿 veget
+void CGuiCom::btnVegetReset(WP)
 {
 	svTrees.SetValueF(1.5f);
 	svGrass.SetValueF(1.f);
@@ -196,13 +215,52 @@ void CGuiCom::btnTrGrReset(WP wp)
 	svGrassDist.SetValueF(2.f);
 }
 
+void CGuiCom::btnVegetApply(WP)
+{
+#ifndef SR_EDITOR  // not in multi..
+	pSet->game.trees = pSet->gui.trees;
+#endif
+	// app->scn->LoadRoadDens();
+	app->scn->RecreateTrees();
+	
+	app->scn->grass->Destroy();
+#ifdef SR_EDITOR
+	if (pSet->bTrees)
+#endif
+		app->scn->grass->Create();
+}
 
-//  shadows
-void CGuiCom::btnShadows(WP){	/*app->scn->changeShadows();*/  }
-void CGuiCom::btnShaders(WP){	/*app->scn->changeShadows();*/  }
+
+//  🌒 shadows
+void CGuiCom::btnShadowsApply(WP)
+{
+	// app->scn->changeShadows();  // todo ..
+}
+
+void CGuiCom::btnShadersApply(WP)
+{
+	//app->scn->changeShadows();  //?
+}
+
+//  🔮 reflection
+void CGuiCom::slReflDist(SV*)
+{
+	// app->recreateReflections();  // todo ..
+}
+void CGuiCom::slReflMode(SV* sv)
+{
+	// if (app->gui->bGI)
+	/*switch (pSet->refl_mode)
+	{
+		case 0: sv->setTextClr(0.0, 1.0, 0.0);  break;
+		case 1: sv->setTextClr(1.0, 0.5, 0.0);  break;
+		case 2: sv->setTextClr(1.0, 0.0, 0.0);  break;
+	}*/
+	// app->recreateReflections();
+}
 
 
-//  water
+//  🌊 water
 void CGuiCom::chkWater(Ck*)
 {
 	// app->scn->mWaterRTT->setReflect(pSet->water_reflect);

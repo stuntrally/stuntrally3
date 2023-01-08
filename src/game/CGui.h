@@ -272,10 +272,6 @@ public:
 	/// 📊 Options  game only
 	///-----------------------------------------------------------------------------------------------------------------
 	
-	//  🔮 reflection
-	SV svReflSkip, svReflFaces, svReflSize;
-	SlV(ReflDist);  SlV(ReflMode);
-
 	//  🔉 Sound
 	SlV(VolMaster);  SlV(VolHud);
 	SV svVolEngine, svVolTires, svVolSusp, svVolEnv;

@@ -162,20 +162,6 @@ void CGui::InitGui()
 	sv= &svParticles;	sv->Init("Particles",	&pSet->particles_len, 0.f, 4.f, 2.f);  sv->DefaultF(1.5f);
 	sv= &svTrails;		sv->Init("Trails",		&pSet->trails_len,    0.f, 4.f, 2.f);  sv->DefaultF(3.f);
 
-	//  🔮 Reflection
-	sv= &svReflSkip;	sv->Init("ReflSkip",	&pSet->refl_skip,    0,1000, 2.f);  sv->DefaultI(0);
-	sv= &svReflFaces;	sv->Init("ReflFaces",	&pSet->refl_faces,   1,6);  sv->DefaultI(1);
-	sv= &svReflSize;
-		// for (i=0; i < ciShadowSizesNum; ++i)  sv->strMap[i] = toStr(ciShadowSizesA[i]);
-		// 				sv->Init("ReflSize",	&pSet->refl_size,    0,ciShadowSizesNum-1);  sv->DefaultI(1.5f);
-
-	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->refl_dist,   20.f,1500.f, 2.f, 0,4, 1.f," m");
-																	Sev(ReflDist);  sv->DefaultF(300.f);
-	sv= &svReflMode;
-		sv->strMap[0] = TR("#{ReflMode_static}");  sv->strMap[1] = TR("#{ReflMode_single}");
-		sv->strMap[2] = TR("#{ReflMode_full}");
-						sv->Init("ReflMode",	&pSet->refl_mode,   0,2);  Sev(ReflMode);  sv->DefaultI(1);
-
 	//  🔉 Sound  --------
 	sv= &svVolMaster;	sv->Init("VolMaster",	&pSet->vol_master, 0.f, 2.0f);  sv->DefaultF(1.55f);  Sev(VolMaster);
 	ck= &ckReverb;		ck->Init("ChkReverb",   &pSet->snd_reverb);
@@ -518,7 +504,7 @@ void CGui::InitGui()
 
 
 	//  🏁 New Game  ----
-	for (i=0; i <= 2; ++i)
+	for (i=0; i <= 3; ++i)
 	{	Btn("NewGame"+toStr(i), btnNewGame);  if (i==1)  btNewGameCar = btn;  }
 
 

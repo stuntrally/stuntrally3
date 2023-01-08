@@ -94,8 +94,6 @@ public:
 
 	//  📊 graphics
 	bool bFog =1;  // always on
-	int refl_skip = 2, refl_faces = 2, refl_size = 0;  float refl_dist = 500;
-	int refl_mode;  // 0 static, 1 single, 2 full
 
 	bool particles =1, trails =1;
 	float particles_len = 1.5f, trails_len = 1.f;

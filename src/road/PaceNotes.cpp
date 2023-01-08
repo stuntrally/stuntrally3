@@ -210,8 +210,8 @@ void PaceNotes::CreateHR()
 #endif
 	hr = new HudRenderable(
 		"pacenote", mSceneMgr,
-		OT_TRIANGLE_LIST, true,true, RV_Car,RQG_Hud1,
-		count, true);  // RQG_CarParticles
+		OT_TRIANGLE_LIST, true,true, RV_Car,RQ_OVERLAY,
+		count, true);
 
 	SceneNode* rt = mSceneMgr->getRootSceneNode();
 	ndHR = rt->createChildSceneNode();

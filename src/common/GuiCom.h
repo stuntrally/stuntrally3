@@ -52,7 +52,7 @@ public:
 	void notifyToolTip(WP sender, const MyGUI::ToolTipInfo& info);
 	void boundedMove(WP moving, const MyGUI::IntPoint& point);
 
-	//  language
+	//  🗺️ language
 	bool bGuiReinit = 0;  // lang change
 	void comboLanguage(CMB);
 	std::map<std::string, MyGUI::UString> languages; // <short name, display name>
@@ -60,7 +60,7 @@ public:
 	void UnfocusLists();
 	Btn bnQuit =0;  void btnQuit(WP);
 
-	//  init
+	//  🆕 init
 	void GuiCenterMouse();
 	void GuiInitTooltip(), GuiInitLang();
 	//  init tabs
@@ -70,17 +70,36 @@ public:
 	
 
 	///  📊 Graphics  --------------------------
-	SlV(ViewDist);  SlV(LodBias);   SlV(TerDetail);  SV svRoadDist;  // detail
-	SV svTrees, svGrass, svTreesDist, svGrassDist;  // veget
 
-	SV svShadowType, svShadowCount, svShadowSize, svShadowDist;  // shadow
-	SlV(WaterSize);
-	Ck ckWaterReflect, ckWaterRefract;  void chkWater(Ck*);  // water
-
-	SlV(Anisotropy);  void comboTexFilter(CMB), cmbAntiAliasing(CMB);  // textures
+	//  textures
+	SlV(Anisotropy);
+	void comboTexFilter(CMB), cmbAntiAliasing(CMB);
 	// SV svTerTripl;
-	void btnShadows(WP), btnShaders(WP), btnTrGrReset(WP);
-	
+	void btnShadersApply(WP);
+
+	//  geom detail
+	SlV(ViewDist);  SlV(LodBias);
+	SlV(TerDetail);  SV svRoadDist;
+
+	//  🌳🪨🌿 veget
+	SV svTrees, svGrass, svTreesDist, svGrassDist;
+	void btnVegetReset(WP), btnVegetApply(WP);
+
+	//  🌒 shadow
+	SV svShadowType, svShadowCount, svShadowSize, svShadowDist;
+	void btnShadowsApply(WP);
+
+	//  💡 lights
+	Ck ckCarLights, ckCarLightsShadows;
+
+	//  🔮 reflection
+	SV svReflSkip, svReflFaces, svReflSize;
+	SlV(ReflDist);  SlV(ReflMode);
+
+	//  🌊 water
+	SlV(WaterSize);
+	Ck ckWaterReflect, ckWaterRefract;  void chkWater(Ck*);
+
 	// Ck ckLimitFps;
 	// SV svLimitFps,svLimitSleep;
 	
@@ -97,7 +116,7 @@ public:
 	std::map<Ogre::String, Ogre::String> scnClr, scnN;
 
 
-	///  🏞️ Track  --------------------------
+	///  🏞️ Track  ----------------------------------------------------
 
 	//  selected track name, user
 	Ogre::String sListTrack;
@@ -116,7 +135,7 @@ public:
 	Img imgTrkIco1 =0, imgTrkIco2 =0;
 	
 
-	//  📝 st - road stats,dim  inf - tracks.ini ratings
+	//  📝 st- road stats, dim  inf- tracks.ini ratings
 	const static int InfTrk = 13, ImStTrk = 4,
 	#ifdef SR_EDITOR
 		StTrk = 9;

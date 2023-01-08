@@ -31,24 +31,35 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	//  📊 graphics  ----
 	Param(c,w, "graph_detail.preset", preset);
 	
+	//  textures
 	Param(c,w, "graph_detail.anisotropy", anisotropy);		Param(c,w, "graph_detail.tex_filter", tex_filt);
 	// Param(c,w, "graph_detail.ter_mtr", ter_mtr);			Param(c,w, "graph_detail.ter_tripl", ter_tripl);
 	
+	//  detail
 	Param(c,w, "graph_detail.view_dist", view_distance);
 	Param(c,w, "graph_detail.lod_bias", lod_bias);
 	Param(c,w, "graph_detail.ter_detail", ter_detail);		Param(c,w, "graph_detail.road_dist", road_dist);
 	
-	//  🌊 water
-	// Param(c,w, "graph_reflect.water_reflect", water_reflect); Param(c,w, "graph_reflect.water_refract", water_refract);
-	// Param(c,w, "graph_reflect.water_rttsize", water_rttsize);
-	
 	//  🌒 shadow
 	Param(c,w, "graph_shadow.dist", shadow_dist);			Param(c,w, "graph_shadow.size", shadow_size);
-	Param(c,w, "graph_shadow.count",shadow_count);			Param(c,w, "graph_shadow.type", shadow_type);
+	Param(c,w, "graph_shadow.count", shadow_count);			Param(c,w, "graph_shadow.type", shadow_type);
+	Param(c,w, "graph_shadow.filter", shadow_filter);
+	
+	//  💡 lights
+	Param(c,w, "graph_lights.car", car_lights);		Param(c,w, "graph_lights.car_shadows", car_light_shadows);
 
 	//  🌳🪨🌿 veget
 	Param(c,w, "graph_veget.grass", grass);
 	Param(c,w, "graph_veget.trees_dist", trees_dist);		Param(c,w, "graph_veget.grass_dist", grass_dist);
+
+	//  🔮 reflections
+	Param(c,w, "graph_reflect.skip_frames", refl_skip);		Param(c,w, "graph_reflect.faces_once", refl_faces);
+	Param(c,w, "graph_reflect.map_size", refl_size);		Param(c,w, "graph_reflect.dist", refl_dist);
+	Param(c,w, "graph_reflect.mode", refl_mode);
+
+	//  🌊 water
+	// Param(c,w, "graph_reflect.water_reflect", water_reflect); Param(c,w, "graph_reflect.water_refract", water_refract);
+	// Param(c,w, "graph_reflect.water_rttsize", water_rttsize);
 
 
 	//  📈 hud
@@ -101,7 +112,14 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 		}	}
 }
 
+//  util
+int SETcom::GetTexSize(int n)
+{
+	const int i = std::min(NumTexSizes-1, std::max(0, n));
+	return cTexSizes[i];
+}
 
+//  ctor
 SETcom::SETcom()   ///  Defaults
 {
 	int i,v;

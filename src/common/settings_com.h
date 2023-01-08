@@ -7,6 +7,10 @@ enum eShadowType
 const static int
 	COL_VIS = 19, COL_FIL = 14;
 
+const static int NumTexSizes = 6;
+const static int cTexSizes[NumTexSizes] = {
+	256, 512, 1024, 2048, 4096, 8192 };
+
 
 class SETcom
 {
@@ -25,34 +29,44 @@ public:
 	// std::string buffer, rendersystem;
 	//  limit
 	// bool limit_fps =0;  float limit_fps_val = 60.f;  int limit_sleep = -1;
-	//  💡 light
+	//  💡 brightness
 	float bright = 1.f, contrast = 1.f;
 	
 	//  hud
 	bool vr_mode = 0;  // 👀 forces 1 player
 	bool show_fps =0;  // 📈
+	
 	//  🚦 pacenotes
 	float pace_dist = 200.f, pace_size = 1.f, pace_near = 1.f, pace_alpha = 1.f;
 
 
 	//  📊 Graphics  ----
-	int anisotropy = 4, tex_filt = 2;  // textures filtering 🖼️
-	//int ter_tripl;  // terrain  // ⛰️
-	float view_distance = 20000.f;
-	float lod_bias = 1.f, ter_detail = 1.f, road_dist = 2.f;  // detail
-	
-	//  🌊 water
-	// bool water_reflect, water_refract;  int water_rttsize;
-	//  🌒 shadow
-	int shadow_size = 2, shadow_count = 3, shadow_type = Sh_Depth;
-	float shadow_dist = 1000.f;
+	int preset = 4;  // last set, info only
 
-	//  🌳🪨 🌿
+	//  🖼️ textures filtering
+	int anisotropy = 4, tex_filt = 2;
+	//int ter_tripl;  // terrain  // ⛰️
+
+	//  geom detail
+	float view_distance = 20000.f;
+	float lod_bias = 1.f, ter_detail = 1.f, road_dist = 2.f;
+	// int horizon;
+
+	//  🌳🪨🌿 veget
 	float grass =1.f, trees_dist =1.f, grass_dist =1.f;  // trees in gui.
 
-	//  graphics other
-	int preset = 4;  // last set, info only
-	// int horizon;
+	//  🌒 shadow
+	int shadow_size = 2, shadow_count = 3, shadow_type = Sh_Depth;
+	float shadow_dist = 1000.f;  int shadow_filter = 1;
+	//  💡 lights
+	bool car_lights =0, car_light_shadows =0;
+
+	//  🌊 water
+	// bool water_reflect, water_refract;  int water_rttsize;
+
+	//  🔮 reflections
+	int refl_skip = 2, refl_faces = 2, refl_size = 0;  float refl_dist = 500;
+	int refl_mode;  // 0 static, 1 single, 2 full
 
 
 	//  📰🔻 Tracks list  ----
@@ -70,6 +84,7 @@ public:
 
 //------------------------------------------
 	SETcom();
+	int GetTexSize(int n);
 
 	template <typename T>
 	bool Param(CONFIGFILE & conf, bool write, std::string pname, T & value)
