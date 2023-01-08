@@ -5,18 +5,17 @@
 #if OGRE_PLATFORM != OGRE_PLATFORM_APPLE_IOS
 	#include "SdlInputHandler.h"
 #endif
-#include "GameEntity.h"
-
-#include <OgreAbiUtils.h>
+#include <OgreLogManager.h>
 #include <OgreConfigFile.h>
 #include <OgreException.h>
 #include <OgreRoot.h>
-#include <OgreException.h>
-#include <OgreConfigFile.h>
-#include <OgreWindowEventUtilities.h>
 #include <OgreWindow.h>
+#include <OgreWindowEventUtilities.h>
+
 #include <OgreFileSystemLayer.h>
-#include <OgreLogManager.h>
+#include <OgreAbiUtils.h>
+#include <OgrePlatformInformation.h>
+#include "System/Android/AndroidSystems.h"
 
 #include <OgreCamera.h>
 #include <OgreItem.h>
@@ -26,19 +25,12 @@
 #include <OgreHlmsUnlit.h>
 #include <OgreHlmsPbs.h>
 #include <OgreHlmsManager.h>
-#include <OgreArchiveManager.h>
-#include <OgreHlmsDiskCache.h>
-
 #include <Compositor/OgreCompositorManager2.h>
 #include <OgreOverlaySystem.h>
 #include <OgreOverlayManager.h>
 
-#include <OgrePlatformInformation.h>
-#include "System/Android/AndroidSystems.h"
-
 #include <OgreAtmosphereComponent.h>
 #include "OgreAtmosphere2Npr.h"
-
 #include <fstream>
 
 #if OGRE_USE_SDL2
@@ -466,6 +458,7 @@ void GraphicsSystem::update( float timeSinceLast )
 }
 
 
+//  wnd event
 //--------------------------------------------------------------------------------------------------------------------------------
 #if OGRE_USE_SDL2
 void GraphicsSystem::handleWindowEvent( const SDL_Event& evt )
@@ -512,48 +505,8 @@ void GraphicsSystem::handleWindowEvent( const SDL_Event& evt )
 #endif
 
 
+//  📄 resources
 //--------------------------------------------------------------------------------------------------------------------------------
-void GraphicsSystem::processIncomingMessage( Mq::MessageId messageId, const void *data )
-{
-	switch( messageId )
-	{
-	case Mq::LOGICFRAME_FINISHED:
-		{
-			uint32 newIdx = *reinterpret_cast<const uint32*>( data );
-
-			if( newIdx != std::numeric_limits<uint32>::max() )
-			{
-				mAccumTimeSinceLastLogicFrame = 0;
-				//Tell the LogicSystem we're no longer using the index previous to the current one.
-				this->queueSendMessage( mLogicSystem, Mq::LOGICFRAME_FINISHED,
-										(mCurrentTransformIdx + NUM_GAME_ENTITY_BUFFERS - 1) %
-										NUM_GAME_ENTITY_BUFFERS );
-
-				assert( (mCurrentTransformIdx + 1) % NUM_GAME_ENTITY_BUFFERS == newIdx &&
-						"Graphics is receiving indices out of order!!!" );
-
-				//Get the new index the LogicSystem is telling us to use.
-				mCurrentTransformIdx = newIdx;
-			}
-		}
-		break;
-	case Mq::GAME_ENTITY_ADDED:
-		gameEntityAdded( reinterpret_cast<const GameEntityManager::CreatedGameEntity*>( data ) );
-		break;
-	case Mq::GAME_ENTITY_REMOVED:
-		gameEntityRemoved( *reinterpret_cast<GameEntity * const *>( data ) );
-		break;
-	case Mq::GAME_ENTITY_SCHEDULED_FOR_REMOVAL_SLOT:
-		//Acknowledge/notify back that we're done with this slot.
-		this->queueSendMessage( mLogicSystem, Mq::GAME_ENTITY_SCHEDULED_FOR_REMOVAL_SLOT,
-								*reinterpret_cast<const uint32*>( data ) );
-		break;
-	default:
-		break;
-	}
-}
-
-//-----------------------------------------------------------------------------------
 void GraphicsSystem::addResourceLocation( const String &archName, const String &typeName,
 											const String &secName )
 {
@@ -569,168 +522,7 @@ void GraphicsSystem::addResourceLocation( const String &archName, const String &
 #endif
 }
 
-
-//  📄 Cache
-//-----------------------------------------------------------------------------------
-void GraphicsSystem::loadTextureCache()
-{
-#if !OGRE_NO_JSON
-	ArchiveManager &archiveManager = ArchiveManager::getSingleton();
-	Archive *rwAccessFolderArchive =
-		archiveManager.load( mCacheFolder, "FileSystem", true );
-	try
-	{
-		const String filename = "textureMetadataCache.json";
-		if( rwAccessFolderArchive->exists( filename ) )
-		{
-			DataStreamPtr stream = rwAccessFolderArchive->open( filename );
-			std::vector<char> fileData;
-			fileData.resize( stream->size() + 1 );
-			if( !fileData.empty() )
-			{
-				stream->read( &fileData[0], stream->size() );
-				//Add null terminator just in case (to prevent bad input)
-				fileData.back() = '\0';
-				TextureGpuManager *textureManager =
-						mRoot->getRenderSystem()->getTextureGpuManager();
-				textureManager->importTextureMetadataCache( stream->getName(), &fileData[0], false );
-			}
-		}
-		else
-		{
-			LogManager::getSingleton().logMessage(
-						"[INFO] Texture cache not found at " + mCacheFolder +
-						"/textureMetadataCache.json" );
-		}
-	}
-	catch( Exception &e )
-	{
-		LogManager::getSingleton().logMessage( e.getFullDescription() );
-	}
-
-	archiveManager.unload( rwAccessFolderArchive );
-#endif
-}
-
-//-----------------------------------------------------------------------------------
-void GraphicsSystem::saveTextureCache()
-{
-	if( mRoot->getRenderSystem() )
-	{
-		TextureGpuManager *textureManager = mRoot->getRenderSystem()->getTextureGpuManager();
-		if( textureManager )
-		{
-			String jsonString;
-			textureManager->exportTextureMetadataCache( jsonString );
-			const String path = mCacheFolder + "/textureMetadataCache.json";
-			std::ofstream file( path.c_str(), std::ios::binary | std::ios::out );
-			if( file.is_open() )
-				file.write( jsonString.c_str(), static_cast<std::streamsize>( jsonString.size() ) );
-			file.close();
-		}
-	}
-}
-//-----------------------------------------------------------------------------------
-void GraphicsSystem::loadHlmsDiskCache()
-{
-	if( !mUseMicrocodeCache && !mUseHlmsDiskCache )
-		return;
-
-	HlmsManager *hlmsManager = mRoot->getHlmsManager();
-	HlmsDiskCache diskCache( hlmsManager );
-
-	ArchiveManager &archiveManager = ArchiveManager::getSingleton();
-
-	Archive *rwAccessFolderArchive =
-		archiveManager.load( mCacheFolder, "FileSystem", true );
-
-	if( mUseMicrocodeCache )
-	{
-		//Make sure the microcode cache is enabled.
-		GpuProgramManager::getSingleton().setSaveMicrocodesToCache( true );
-		const String filename = "microcodeCodeCache.cache";
-		if( rwAccessFolderArchive->exists( filename ) )
-		{
-			DataStreamPtr shaderCacheFile = rwAccessFolderArchive->open( filename );
-			GpuProgramManager::getSingleton().loadMicrocodeCache( shaderCacheFile );
-		}
-	}
-
-	if( mUseHlmsDiskCache )
-	{
-		for( size_t i=HLMS_LOW_LEVEL + 1u; i<HLMS_MAX; ++i )
-		{
-			Hlms *hlms = hlmsManager->getHlms( static_cast<HlmsTypes>( i ) );
-			if( hlms )
-			{
-				String filename = "hlmsDiskCache" +
-										StringConverter::toString( i ) + ".bin";
-
-				try
-				{
-					if( rwAccessFolderArchive->exists( filename ) )
-					{
-						DataStreamPtr diskCacheFile = rwAccessFolderArchive->open( filename );
-						diskCache.loadFrom( diskCacheFile );
-						diskCache.applyTo( hlms );
-					}
-				}
-				catch( Exception& )
-				{
-					LogManager::getSingleton().logMessage(
-						"Error loading cache from " + mCacheFolder + "/" +
-						filename + "! If you have issues, try deleting the file "
-						"and restarting the app" );
-				}
-			}
-		}
-	}
-	archiveManager.unload( mCacheFolder );
-}
-
-//--------------------------------------------------------------------------------------------------------------------------------
-void GraphicsSystem::saveHlmsDiskCache()
-{
-	if( mRoot->getRenderSystem() && GpuProgramManager::getSingletonPtr() &&
-		(mUseMicrocodeCache || mUseHlmsDiskCache) )
-	{
-		HlmsManager *hlmsManager = mRoot->getHlmsManager();
-		HlmsDiskCache diskCache( hlmsManager );
-
-		ArchiveManager &archiveManager = ArchiveManager::getSingleton();
-
-		Archive *rwAccessFolderArchive = archiveManager.load( mCacheFolder, "FileSystem", false );
-
-		if( mUseHlmsDiskCache )
-		{
-			for( size_t i=HLMS_LOW_LEVEL + 1u; i<HLMS_MAX; ++i )
-			{
-				Hlms *hlms = hlmsManager->getHlms( static_cast<HlmsTypes>( i ) );
-				if( hlms )
-				{
-					diskCache.copyFrom( hlms );
-
-					DataStreamPtr diskCacheFile =
-						rwAccessFolderArchive->create( "hlmsDiskCache" +
-							StringConverter::toString( i ) + ".bin" );
-					diskCache.saveTo( diskCacheFile );
-				}
-			}
-		}
-
-		if( GpuProgramManager::getSingleton().isCacheDirty() && mUseMicrocodeCache )
-		{
-			const String filename = "microcodeCodeCache.cache";
-			DataStreamPtr shaderCacheFile = rwAccessFolderArchive->create( filename );
-			GpuProgramManager::getSingleton().saveMicrocodeCache( shaderCacheFile );
-		}
-		archiveManager.unload( mCacheFolder );
-	}
-}
-
-
-//  📄 resources
-//--------------------------------------------------------------------------------------------------------------------------------
+//  📄 setup resources
 void GraphicsSystem::setupResources()
 {
 	// Load resource paths from config file
@@ -758,6 +550,36 @@ void GraphicsSystem::setupResources()
 		}
 	}
 }
+
+//  📄 load resources
+void GraphicsSystem::loadResources()
+{
+	registerHlms();
+
+	loadTextureCache();
+	loadHlmsDiskCache();
+
+	// Initialise, parse scripts etc
+	ResourceGroupManager::getSingleton().initialiseAllResourceGroups( true );
+
+	// Initialize resources for LTC area lights and accurate specular reflections (IBL)
+	Hlms *hlms = mRoot->getHlmsManager()->getHlms( HLMS_PBS );
+	OGRE_ASSERT_HIGH( dynamic_cast<HlmsPbs*>( hlms ) );
+	HlmsPbs *hlmsPbs = static_cast<HlmsPbs*>( hlms );
+	try
+	{
+		hlmsPbs->loadLtcMatrix();
+	}
+	catch( FileNotFoundException &e )
+	{
+		LogManager::getSingleton().logMessage( e.getFullDescription(), LML_CRITICAL );
+		LogManager::getSingleton().logMessage(
+			"WARNING: LTC matrix textures could not be loaded. Accurate specular IBL reflections "
+			"and LTC area lights won't be available or may not function properly!",
+			LML_CRITICAL );
+	}
+}
+
 
 //  🌠 Hlms shaders
 //--------------------------------------------------------------------------------------------------------------------------------
@@ -832,37 +654,6 @@ void GraphicsSystem::registerHlms()
 			hlmsPbs->setTextureBufferDefaultSize( 512 * 1024 );
 			hlmsUnlit->setTextureBufferDefaultSize( 512 * 1024 );
 		}
-	}
-}
-
-
-//  📄 resources
-//--------------------------------------------------------------------------------------------------------------------------------
-void GraphicsSystem::loadResources()
-{
-	registerHlms();
-
-	loadTextureCache();
-	loadHlmsDiskCache();
-
-	// Initialise, parse scripts etc
-	ResourceGroupManager::getSingleton().initialiseAllResourceGroups( true );
-
-	// Initialize resources for LTC area lights and accurate specular reflections (IBL)
-	Hlms *hlms = mRoot->getHlmsManager()->getHlms( HLMS_PBS );
-	OGRE_ASSERT_HIGH( dynamic_cast<HlmsPbs*>( hlms ) );
-	HlmsPbs *hlmsPbs = static_cast<HlmsPbs*>( hlms );
-	try
-	{
-		hlmsPbs->loadLtcMatrix();
-	}
-	catch( FileNotFoundException &e )
-	{
-		LogManager::getSingleton().logMessage( e.getFullDescription(), LML_CRITICAL );
-		LogManager::getSingleton().logMessage(
-			"WARNING: LTC matrix textures could not be loaded. Accurate specular IBL reflections "
-			"and LTC area lights won't be available or may not function properly!",
-			LML_CRITICAL );
 	}
 }
 
@@ -985,142 +776,4 @@ void GraphicsSystem::restartCompositor()
 	LogO("#### restart Compositor");
 	stopCompositor();
 	mWorkspace = setupCompositor();
-}
-
-
-//--------------------------------------------------------------------------------------------------------------------------------
-//  Game Entities
-//--------------------------------------------------------------------------------------------------------------------------------
-struct GameEntityCmp
-{
-	bool operator () ( const GameEntity *_l, const Matrix4 * RESTRICT_ALIAS _r ) const
-	{
-		const Transform &transform = _l->mSceneNode->_getTransform();
-		return &transform.mDerivedTransform[transform.mIndex] < _r;
-	}
-
-	bool operator () ( const Matrix4 * RESTRICT_ALIAS _r, const GameEntity *_l ) const
-	{
-		const Transform &transform = _l->mSceneNode->_getTransform();
-		return _r < &transform.mDerivedTransform[transform.mIndex];
-	}
-
-	bool operator () ( const GameEntity *_l, const GameEntity *_r ) const
-	{
-		const Transform &lTransform = _l->mSceneNode->_getTransform();
-		const Transform &rTransform = _r->mSceneNode->_getTransform();
-		return &lTransform.mDerivedTransform[lTransform.mIndex] <
-				&rTransform.mDerivedTransform[rTransform.mIndex];
-	}
-};
-
-//-----------------------------------------------------------------------------------
-void GraphicsSystem::gameEntityAdded( const GameEntityManager::CreatedGameEntity *cge )
-{
-	SceneNode *sceneNode = mSceneManager->getRootSceneNode( cge->gameEntity->mType )->
-			createChildSceneNode( cge->gameEntity->mType,
-									cge->initialTransform.vPos,
-									cge->initialTransform.qRot );
-
-	sceneNode->setScale( cge->initialTransform.vScale );
-
-	cge->gameEntity->mSceneNode = sceneNode;
-
-	if( cge->gameEntity->mMoDefinition->moType == MoTypeItem )
-	{
-		Item *item = mSceneManager->createItem( cge->gameEntity->mMoDefinition->meshName,
-												cge->gameEntity->mMoDefinition->resourceGroup,
-												cge->gameEntity->mType );
-
-		StringVector materialNames = cge->gameEntity->mMoDefinition->submeshMaterials;
-		size_t minMaterials = std::min( materialNames.size(), item->getNumSubItems() );
-
-		for( size_t i=0; i<minMaterials; ++i )
-		{
-			item->getSubItem( i )->setDatablockOrMaterialName(
-				materialNames[i], cge->gameEntity->mMoDefinition->resourceGroup );
-		}
-
-		cge->gameEntity->mMovableObject = item;
-	}
-
-	sceneNode->attachObject( cge->gameEntity->mMovableObject );
-
-	// Keep them sorted on how Ogre's internal memory manager assigned them memory,
-	// to avoid false cache sharing when we update the nodes concurrently.
-	const Transform &transform = sceneNode->_getTransform();
-	GameEntityVec::iterator itGameEntity = std::lower_bound(
-				mGameEntities[cge->gameEntity->mType].begin(),
-				mGameEntities[cge->gameEntity->mType].end(),
-				&transform.mDerivedTransform[transform.mIndex],
-				GameEntityCmp() );
-	mGameEntities[cge->gameEntity->mType].insert( itGameEntity, cge->gameEntity );
-}
-
-//-----------------------------------------------------------------------------------
-void GraphicsSystem::gameEntityRemoved( GameEntity *toRemove )
-{
-	const Transform &transform = toRemove->mSceneNode->_getTransform();
-	GameEntityVec::iterator itGameEntity = std::lower_bound(
-				mGameEntities[toRemove->mType].begin(),
-				mGameEntities[toRemove->mType].end(),
-				&transform.mDerivedTransform[transform.mIndex],
-				GameEntityCmp() );
-
-	assert( itGameEntity != mGameEntities[toRemove->mType].end() && *itGameEntity == toRemove );
-	mGameEntities[toRemove->mType].erase( itGameEntity );
-
-	toRemove->mSceneNode->getParentSceneNode()->removeAndDestroyChild( toRemove->mSceneNode );
-	toRemove->mSceneNode = 0;
-
-	assert( dynamic_cast<Item*>( toRemove->mMovableObject ) );
-
-	mSceneManager->destroyItem( static_cast<Item*>( toRemove->mMovableObject ) );
-	toRemove->mMovableObject = 0;
-}
-
-//-----------------------------------------------------------------------------------
-void GraphicsSystem::updateGameEntities( const GameEntityVec &gameEntities, float weight )
-{
-	mThreadGameEntityToUpdate   = &gameEntities;
-	mThreadWeight               = weight;
-
-	// Note: You could execute a non-blocking scalable task and do something else, you should
-	// wait for the task to finish right before calling renderOneFrame or before trying to
-	// execute another UserScalableTask (you would have to be careful, but it could work).
-	mSceneManager->executeUserScalableTask( this, true );
-}
-
-
-//  💫 update interpolate ..
-//-----------------------------------------------------------------------------------
-void GraphicsSystem::execute( size_t threadId, size_t numThreads )
-{
-	size_t currIdx = mCurrentTransformIdx;
-	size_t prevIdx = (mCurrentTransformIdx + NUM_GAME_ENTITY_BUFFERS - 1) % NUM_GAME_ENTITY_BUFFERS;
-
-	const size_t objsPerThread = (mThreadGameEntityToUpdate->size() + (numThreads - 1)) / numThreads;
-	const size_t toAdvance = std::min( threadId * objsPerThread, mThreadGameEntityToUpdate->size() );
-
-	auto itor = mThreadGameEntityToUpdate->begin() + toAdvance;
-	auto end  = mThreadGameEntityToUpdate->begin() +
-				std::min( toAdvance + objsPerThread, mThreadGameEntityToUpdate->size() );
-	while( itor != end )
-	{
-		GameEntity *gEnt = *itor;
-		Vector3 interpVec = Math::lerp( gEnt->mTransform[prevIdx]->vPos,
-										gEnt->mTransform[currIdx]->vPos, mThreadWeight );
-		gEnt->mSceneNode->setPosition( interpVec );
-
-		interpVec = Math::lerp( gEnt->mTransform[prevIdx]->vScale,
-								gEnt->mTransform[currIdx]->vScale, mThreadWeight );
-		gEnt->mSceneNode->setScale( interpVec );
-
-		Quaternion interpQ = Quaternion::nlerp( mThreadWeight,
-			gEnt->mTransform[prevIdx]->qRot,
-			gEnt->mTransform[currIdx]->qRot, true );
-		gEnt->mSceneNode->setOrientation( interpQ );
-
-		++itor;
-	}
 }
