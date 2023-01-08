@@ -25,8 +25,8 @@ abstract target cubemap_target
 		// visibility_mask		0x000000FF
 		overlays			off
 		camera_cubemap_reorient true
+		//shadows		SR3_Shadows
 	}
-
 }
 
 compositor_node CubemapNode
@@ -151,10 +151,12 @@ compositor_node SR3_Render
 			// so we need to expose it to the pass.
 			expose demo_dynamic_cubemap
 
-			rq_last		100  // glass etc
+			// in code: game, not ed
+			// visibility_mask		0x0000FFFFD  // no hud
+			// rq_last		110  // glass,par etc
 
-			overlays	off
-			shadows		SR3_Shadows
+			overlays	on
+			// shadows		SR3_Shadows
 		}
 
 		pass render_scene
@@ -172,8 +174,9 @@ compositor_node SR3_Render
 			{
 				colour	store
 				depth	store  //-
-				stencil	dont_care
+				stencil	store
 			}
+			visibility_mask		0x002  // RV_Hud
 
 			rq_first	200
 			rq_last		230

@@ -343,7 +343,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	// *it = mSceneMgr->createItem( mesh, SCENE_STATIC );
 	SceneNode* node = mSceneMgr->getRootSceneNode( SCENE_STATIC )->createChildSceneNode( SCENE_STATIC );
 	node->attachObject(it);
-	it->setCastShadows(false);  //**
+	it->setCastShadows(false);  //** ok
 	it->setVisibilityFlags(RV_VegetGrass);
 	it->setRenderQueueGroup(RQG_BatchAlpha);
 	scn->app->SetTexWrap(it, false);

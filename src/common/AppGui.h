@@ -13,6 +13,7 @@
 namespace MyGUI{  class Gui;  class Ogre2Platform;  }
 namespace Ogre {  class Root;  class SceneManager;  class Window;  class Camera;
 	class TextureGpu;  class CompositorWorkspace;  class HlmsSamplerblock;
+	namespace v1 {  class Overlay;  }
 	class Terra;  class HlmsPbsTerraShadows;  }
 class GraphicsSystem;  class SETTINGS;  class CScene;  class CGui;  class CGuiCom;
 
@@ -97,6 +98,22 @@ public:
 	void InitAppGui();
 	void DestroyGui();
 	void Quit();
+
+
+	//  🌒 Shadows ----------------
+	Ogre::v1::Overlay *mDebugOverlayPSSM =0;
+	Ogre::v1::Overlay *mDebugOverlaySpotlights =0;
+
+	void createPcfShadowNode();
+	void createEsmShadowNodes();
+	void setupESM();
+	Ogre::CompositorWorkspace *setupShadowCompositor();
+
+	const char *chooseEsmShadowNode();
+	void setupShadowNode( bool forEsm );
+
+	void createShadowMapDebugOverlays();
+	void destroyShadowMapDebugOverlays();
 
 
 	//  🔮 Reflection Cubemap  ----------------

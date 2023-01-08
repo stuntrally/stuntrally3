@@ -11,17 +11,15 @@
 #include <OgreVector3.h>
 #include <OgreWindow.h>
 #include <OgreSceneManager.h>
-
 #include <OgreTextureGpuManager.h>
-// #include <OgrePixelFormatGpuUtils.h>
+
 #include <OgreHlmsPbs.h>
 #include <OgreHlmsManager.h>
-
-// #include <OgreAtmosphere2Npr.h>
 #include <Compositor/OgreCompositorManager2.h>
 #include <Compositor/OgreCompositorNodeDef.h>
 #include <Compositor/OgreCompositorWorkspace.h>
 #include <Compositor/OgreCompositorWorkspaceDef.h>
+#include <Compositor/Pass/PassScene/OgreCompositorPassSceneDef.h>
 #include <Compositor/Pass/PassIblSpecular/OgreCompositorPassIblSpecularDef.h>
 using namespace Ogre;
 
@@ -44,6 +42,15 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		mgr->removeWorkspace( ws );
 	}
 	mWorkspaces.clear();
+
+	static bool first =	true;
+	if (first)
+	{
+	setupESM();
+	createPcfShadowNode();
+	createEsmShadowNodes();
+	}
+	first = false;
 
 
 	// 🔮 create Reflections  ----
@@ -70,6 +77,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	CompositorTargetDef* target = node->getTargetPass(0);
 	auto passes = target->getCompositorPasses();
 	CompositorPassDef* pass = passes.back();
+
 	if (pass->getType() != PASS_CUSTOM)
 	{
 		pass = target->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
@@ -80,13 +88,35 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		pass->mViewportModifierMask = 0x00;
 	}
 
+
+	// todo: ..
+	assert( dynamic_cast<CompositorPassSceneDef *>( passes[1] ) );
+	CompositorPassSceneDef *ps = static_cast<CompositorPassSceneDef *>( passes[1] );
+	ps->mShadowNode = "ShadowMapFromCodeShadowNode";
+	// passSceneDef->mShadowNode = chooseEsmShadowNode();
+	// mGraphicsSystem->restartCompositor();
+	// createShadowMapDebugOverlays();
+	// mEnableForwardPlus;
+#ifndef SR_EDITOR
+	ps->mVisibilityMask = 0x0000FFFFD;
+	ps->mLastRQ = 100;
+	// visibility_mask		0x0000FFFFD  // no hud
+	// fixme: breaks ed
+	// rq_last		110  // glass,par etc
+#endif
+
+	// mFirstRQ mLastRQ
+	// mVisibilityMask
+	// mLodCameraName
+
+
+	//  Viewports
+	//-----------------------------------------------------------------------------------------
 	DestroyCameras();  // 💥🎥
 
 	for (int i = 0; i < 4; ++i)
 		mDims[i].Default();
 
-	//  Viewports
-	//-----------------------------------------------------------------------------------------
 	const IdString wsName( "SR3_Workspace" );
 
 	if (vr_mode)
@@ -142,6 +172,9 @@ CompositorWorkspace* AppGui::SetupCompositor()
 					true, -1, 0, 0,
 					Vector4(d.left0, d.top0, d.width0, d.height0),
 					f1 ? 0x02 : 0x01, f1 ? 0x02 : 0x01 );
+			// CompositorTargetDef* target = w->getTargetPass(0);
+			// auto passes = target->getCompositorPasses();
+			// passes[1]->
 
 			mWorkspaces.push_back(w);
 		}
@@ -158,7 +191,10 @@ CompositorWorkspace* AppGui::SetupCompositor()
 
 		auto ws = mgr->addWorkspace( mSceneMgr, ext, c->cam, wsName, true );  // in .compositor
 		mWorkspaces.push_back(ws);
+		mGraphicsSystem->mWorkspace = ws;
 		LogO("C### Created Single workspaces: "+toStr(mWorkspaces.size()));
+
+		// createShadowMapDebugOverlays();
 		return ws;
 	}
 }
@@ -263,4 +299,25 @@ Cam* AppGui::CreateCamera(String name,
 	}
 
 	mCamera = mEyeCameras[0];
+#endif
+
+
+#if 0
+	if( arg.keysym.sym == SDLK_F5 )
+	{
+		Ogre::Hlms *hlms = mGraphicsSystem->getRoot()->getHlmsManager()->getHlms( Ogre::HLMS_PBS );
+
+		assert( dynamic_cast<Ogre::HlmsPbs *>( hlms ) );
+		Ogre::HlmsPbs *pbs = static_cast<Ogre::HlmsPbs *>( hlms );
+
+		Ogre::HlmsPbs::ShadowFilter nextFilter = static_cast<Ogre::HlmsPbs::ShadowFilter>(
+			( pbs->getShadowFilter() + 1u ) % Ogre::HlmsPbs::NumShadowFilter );
+
+		pbs->setShadowSettings( nextFilter );
+
+		if( nextFilter == Ogre::HlmsPbs::ExponentialShadowMaps )
+			setupShadowNode( true );
+		else
+			setupShadowNode( false );
+	}
 #endif

@@ -283,13 +283,14 @@ void CarModel::Create()
 		lightNode->attachObject( light );
 		light->setDiffuseColour( 1.f, 1.1f, 1.1f );
 		light->setSpecularColour( 1.f, 1.1f, 1.1f );
-		light->setPowerScale( Math::PI * 3 );
+		light->setPowerScale( Math::PI * 3 * 2 );
 		light->setType( Light::LT_SPOTLIGHT );
 		light->setDirection(
 			bRotFix ? Vector3( 0, -0.1, 1 ) : Vector3( -1, 0.1, 0 ) );
 		light->setAttenuationBasedOnRadius( 30.0f, 0.01f );
 		light->setSpotlightRange(Degree(5), Degree(40), 1.0f );  //par 5 30
-		light->setCastShadows(false);
+		light->setCastShadows(true);  //par
+		// light->setCastShadows(false);
 		lights.push_back(light);
 	}
 
