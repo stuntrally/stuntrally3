@@ -30,7 +30,7 @@ using namespace std;
 void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI true
 {
 	Btn btn;  Cmb cmb;
-	SV* sv;  Ck* ck;
+	SV* sv;  Ck* ck;  int i;
 
 	BtnC("Quit", btnQuit);  bnQuit = btn;
 	
@@ -74,8 +74,8 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 						sv->Init("ShadowType",	&pSet->shadow_type,  0,2);  sv->DefaultI(1);
 	sv= &svShadowCount;	sv->Init("ShadowCount",	&pSet->shadow_count, 1,4);  sv->DefaultI(3);
 	sv= &svShadowSize;
-		for (int i=0; i < NumTexSizes; ++i)  sv->strMap[i] = toStr(cTexSizes[i]);
-						sv->Init("ShadowSize",	&pSet->shadow_size, 0,NumTexSizes-1);   sv->DefaultI(4);
+		for (i=0; i < NumTexSizes; ++i)  sv->strMap[i] = toStr(cTexSizes[i]);
+						sv->Init("ShadowSize",	&pSet->shadow_size, 0,NumTexSizes-1);   sv->DefaultI(3);
 	sv= &svShadowDist;	sv->Init("ShadowDist",	&pSet->shadow_dist, 20.f,5000.f, 3.f, 0,3, 1.f," m");  sv->DefaultF(1300.f);  // todo:
 	BtnC("ApplyShadows", btnShadowsApply);
 
@@ -87,10 +87,10 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	sv= &svReflSkip;	sv->Init("ReflSkip",	&pSet->refl_skip,    0,1000, 2.f);  sv->DefaultI(0);
 	sv= &svReflFaces;	sv->Init("ReflFaces",	&pSet->refl_faces,   1,6);  sv->DefaultI(1);
 	sv= &svReflSize;
-		// for (i=0; i < ciShadowSizesNum; ++i)  sv->strMap[i] = toStr(ciShadowSizesA[i]);
-		// 				sv->Init("ReflSize",	&pSet->refl_size,    0,ciShadowSizesNum-1);  sv->DefaultI(1.5f);
+		for (i=0; i < NumTexSizes; ++i)  sv->strMap[i] = toStr(cTexSizes[i]);
+						sv->Init("ReflSize",	&pSet->refl_size,    0,NumTexSizes-1);  sv->DefaultI(1);
 
-	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->refl_dist,   20.f,1500.f, 2.f, 0,4, 1.f," m");
+	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->refl_dist,	20.f,1500.f, 2.f, 0,4, 1.f," m");
 																	SevC(ReflDist);  sv->DefaultF(300.f);
 	sv= &svReflMode;
 	sv->strMap[0] = TR("#{ReflMode_static}");  sv->strMap[1] = TR("#{ReflMode_single}");
@@ -101,8 +101,8 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	// ck= &ckWaterReflect; ck->Init("WaterReflection", &pSet->water_reflect);  CevC(Water);
 	// ck= &ckWaterRefract; ck->Init("WaterRefraction", &pSet->water_refract);  CevC(Water);
 	// sv= &svWaterSize;
-		// for (int i=0; i <= 2; ++i)  sv->strMap[i] = toStr(ciShadowSizesA[i]);
-		// 				sv->Init("WaterSize",	&pSet->water_rttsize, 0.f,2.f);  sv->DefaultI(0);  SevC(WaterSize);
+	// 	for (int i=0; i < NumTexSizes; ++i)  sv->strMap[i] = toStr(cTexSizes[i]);
+	// 					sv->Init("WaterSize",	&pSet->water_rttsize, 0,NumTexSizes-1;  sv->DefaultI(0);  SevC(WaterSize);
 	// BtnC("ApplyShadersWater", btnShaders);
 
 
@@ -219,15 +219,16 @@ void CGuiCom::btnVegetApply(WP)
 {
 #ifndef SR_EDITOR  // not in multi..
 	pSet->game.trees = pSet->gui.trees;
+#else  // ed
+	if (!pSet->bTrees)  return;
 #endif
-	// app->scn->LoadRoadDens();
-	app->scn->RecreateTrees();
+	if (!app->scn->imgRoadSize)
+		app->scn->LoadRoadDens();
+	app->scn->DestroyTrees();
+	app->scn->CreateTrees();
 	
 	app->scn->grass->Destroy();
-#ifdef SR_EDITOR
-	if (pSet->bTrees)
-#endif
-		app->scn->grass->Create();
+	app->scn->grass->Create();
 }
 
 

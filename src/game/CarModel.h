@@ -41,6 +41,7 @@ public:
 	eCarType    cType = CT_LOCAL;
 	VehicleType vType = V_Car;
 	int numWheels = 4;
+	int numLights = 0;  // front
 
 	bool isGhost()    const {  return cType >= CT_GHOST;  }
 	bool isGhostTrk() const {  return cType == CT_TRACK;  }
@@ -76,7 +77,7 @@ public:
 	void Load(int startId, bool loop);  // create game CAR
 
 	//  🚗 model params  from .car
-	float interiorOffset[3];
+	float interiorOfs[3];
 	//  🎥 mounted cameras
 	float driver_view[3], hood_view[3], ground_view[3];
 
@@ -86,13 +87,13 @@ public:
 	Ogre::ColourValue brakeClr;
 	
 	//  💨🔥 boost
-	float boostOffset[3], boostSizeZ;
+	float boostOfs[3], boostSizeZ;
 	float thrusterOfs[PAR_THRUST][3], thrusterSizeZ[PAR_THRUST];
 	std::string sBoostParName, sThrusterPar[PAR_THRUST];
 
 	// ⚫💭 for tire trails
 	std::vector<float> whRadius, whWidth;
-	std::vector<MATHVECTOR<float,3> > whPos;
+	std::vector<MATHVECTOR<float,3>> whPos;
 	QUATERNION<float> qFixWh[2];
 
 	float maxangle = 26.f;  // steer
@@ -217,8 +218,8 @@ public:
 	std::vector<Ogre::Item*> vDelIt;			void ToDel(Ogre::Item* it);
 	std::vector<Ogre::ParticleSystem*> vDelPar;	void ToDel(Ogre::ParticleSystem* par);
 
-	//  🔴 brake flares
-	Ogre::v1::BillboardSet* brakes =0;
+	//  🔴 brakes, front flares
+	Ogre::v1::BillboardSet* brakes =0, *flares =0;
 	bool bBraking = true;
 	void UpdateBraking();
 };

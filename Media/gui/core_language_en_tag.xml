@@ -635,7 +635,7 @@
 	<Tag name="Graphics">Graphics</Tag>
 	<Tag name="NeedNewGame">* need New Game</Tag>
 	<Tag name="RestartApply">Restart game, to apply *changes.</Tag>
-	<Tag name="ApplyShaders">Apply shaders</Tag>
+	<Tag name="Apply">Apply</Tag>
 
 	<!--  Graphics  Detail  -->
 	<Tag name="Materials">Materials</Tag>
@@ -660,8 +660,6 @@
 	<Tag name="DistMult">Distance mul</Tag>
 	<Tag name="GrassMult">Grass mul</Tag>
 	<Tag name="Reset">Reset</Tag>
-	<Tag name="UseImposters">Use Impostors</Tag>
-	<Tag name="ImpostorsOnly">Impostors Only (low quality)</Tag>
 
 	<!--  Graphics  reflections  -->
 	<Tag name="Reflections">Reflections</Tag>
@@ -685,8 +683,11 @@
 	<Tag name="TexSize">Texture size</Tag>
 	<Tag name="ShadowFilter">Filter</Tag>
 	<Tag name="Count">Count</Tag>
-	<Tag name="ApplyShadows">Apply Shadows</Tag>
 	<Tag name="LightmapSize">Lightmap size</Tag>
+
+	<!--  Graphics  lights  -->
+	<Tag name="Lights">Lights</Tag>
+	<Tag name="VehicleLights">Vehicle Lights</Tag>
 
 	<!--  Graphics  particles  -->
 	<Tag name="Particles">Particles</Tag>

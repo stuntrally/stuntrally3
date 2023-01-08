@@ -65,7 +65,7 @@ void CarModel::Defaults()
 	for (i=0; i < 3; ++i)
 	{
 		driver_view[i] = 0.f;  hood_view[i] = 0.f;  ground_view[i] = 0.f;
-		interiorOffset[i] = 0.f;  boostOffset[i] = 0.f;  exhaustPos[i] = 0.f;
+		interiorOfs[i] = 0.f;  boostOfs[i] = 0.f;  exhaustPos[i] = 0.f;
 	}
 	camDist = 1.f;
 	for (i=0; i < PAR_THRUST; ++i)
@@ -182,15 +182,15 @@ void CarModel::LoadConfig(const string & pathCar)
 
 
 	//-  custom interior model offset
-	cf.GetParam("model_ofs.interior-x", interiorOffset[0]);
-	cf.GetParam("model_ofs.interior-y", interiorOffset[1]);
-	cf.GetParam("model_ofs.interior-z", interiorOffset[2]);
+	cf.GetParam("model_ofs.interior-x", interiorOfs[0]);
+	cf.GetParam("model_ofs.interior-y", interiorOfs[1]);
+	cf.GetParam("model_ofs.interior-z", interiorOfs[2]);
 	cf.GetParam("model_ofs.rot_fix", bRotFix);
 
 	//~  💨 boost offset
-	cf.GetParam("model_ofs.boost-x", boostOffset[0]);
-	cf.GetParam("model_ofs.boost-y", boostOffset[1]);
-	cf.GetParam("model_ofs.boost-z", boostOffset[2]);
+	cf.GetParam("model_ofs.boost-x", boostOfs[0]);
+	cf.GetParam("model_ofs.boost-y", boostOfs[1]);
+	cf.GetParam("model_ofs.boost-z", boostOfs[2]);
 	cf.GetParam("model_ofs.boost-size-z", boostSizeZ);
 	cf.GetParam("model_ofs.boost-name", sBoostParName);
 	
