@@ -12,6 +12,10 @@ yaw   = 00.0
 yaw2  = 0.0
 
 [ flares ]
+front-pos0 = 0.0, 0.0, -0.0
+front-size = 2.1
+front-color = 0.8, 0.97, 1
+lights = 1
 brake-pos0 = 0.0,-0.0, -0.0
 brake-pos1 =-0.0,-0.0, -0.0
 brake-size = 0.46

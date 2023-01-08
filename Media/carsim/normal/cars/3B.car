@@ -12,6 +12,18 @@ pitch = 400.0
 yaw   = 500.0
 yaw2  = 2.0
 
+[ flares ]
+front-pos0 = 1.73,1.9, -0.03
+front-pos1 =-1.73,1.9, -0.03
+front-pos2 = 0.0, -0.38, 0.23
+front-size = 1.5
+front-color = 0.97, 1, 1
+lights = 3
+brake-pos0 = 0.28,-2.47, 0.36
+brake-pos1 =-0.28,-2.47, 0.36
+brake-size = 0.6
+brake-color = 1, 0, 0
+
 [ model_ofs ]
 rot_fix = on
 boost-x = 0.25

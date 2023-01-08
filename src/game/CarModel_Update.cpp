@@ -39,8 +39,8 @@ void CarModel::setVisible(bool vis)
 	hideTime = 0.f;
 
 	ndMain->setVisible(vis);
-	if (brakes)
-		brakes->setVisible(bBraking && vis);
+	if (bsBrakes)  bsBrakes->setVisible(bBraking && vis);
+	if (bsFlares)  bsFlares->setVisible(vis);
 
 	for (int w=0; w < numWheels; ++w)
 	{	ndWh[w]->setVisible(vis);
@@ -560,8 +560,8 @@ void CarModel::UpdKeysCam()
 //-------------------------------------------------------------------------------------------------------
 void CarModel::UpdateBraking()
 {
-	if (brakes)
-		brakes->setVisible(bBraking && bVisible);
+	if (bsBrakes)
+		bsBrakes->setVisible(bBraking && bVisible);
 }
 
 //  ✨ upd particles

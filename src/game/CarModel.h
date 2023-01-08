@@ -81,10 +81,14 @@ public:
 	//  🎥 mounted cameras
 	float driver_view[3], hood_view[3], ground_view[3];
 
-	//  🔴 brake flares
-	std::vector<Ogre::Vector3> brakePos;
-	float brakeSize = 0.2f;
-	Ogre::ColourValue brakeClr;
+	//  🔴 brake, front flares
+	struct FlareSet
+	{
+		std::vector<Ogre::Vector3> pos;
+		float size = 0.2f;
+		Ogre::ColourValue clr{1,1,1,1};
+	}
+	fsBrakes, fsFlares;
 	
 	//  💨🔥 boost
 	float boostOfs[3], boostSizeZ;
@@ -219,7 +223,7 @@ public:
 	std::vector<Ogre::ParticleSystem*> vDelPar;	void ToDel(Ogre::ParticleSystem* par);
 
 	//  🔴 brakes, front flares
-	Ogre::v1::BillboardSet* brakes =0, *flares =0;
+	Ogre::v1::BillboardSet* bsBrakes =0, *bsFlares =0;
 	bool bBraking = true;
 	void UpdateBraking();
 };

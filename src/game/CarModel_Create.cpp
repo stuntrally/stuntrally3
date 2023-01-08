@@ -12,26 +12,19 @@
 #include "FollowCamera.h"
 // #include "gameclient.hpp"
 
-#include <Ogre.h>
-// #include <OgreVector3.h>
-// #include <OgreException.h>
-// #include <OgreEntity.h>
+#include <OgreColourValue.h>
 #include <OgreItem.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
-
-// #include <OgreManualObject.h>
 #include <OgreSubMesh2.h>
 #include <OgreMesh2.h>
-
-// #include <OgreMaterialManager.h>
 // #include <OgreResourceGroupManager.h>
 
-// #include <OgreParticleSystem.h>
-// #include <OgreParticleEmitter.h>
-// #include <OgreParticleAffector.h>
-// #include <OgreRibbonTrail.h>
-// #include <OgreBillboardSet.h>
+#include <OgreParticleSystem.h>
+#include <OgreParticleEmitter.h>
+#include <OgreParticleAffector.h>
+#include <OgreRibbonTrail.h>
+#include <OgreBillboardSet.h>
 // #include <OgreBillboardChain.h>
 
 // #include <OgreHlmsPbs.h>
@@ -82,8 +75,10 @@ void CarModel::Destroy()
 	for (i=0; i < s; ++i)  mSceneMgr->destroySceneNode(vDelNd[i]);
 	vDelNd.clear();
 
-	if (brakes)  mSceneMgr->destroyBillboardSet(brakes);
-	brakes = 0;
+	if (bsBrakes)  mSceneMgr->destroyBillboardSet(bsBrakes);
+	bsBrakes = 0;
+	if (bsFlares)  mSceneMgr->destroyBillboardSet(bsFlares);
+	bsFlares = 0;
 
 	//  destroy resource group, will also destroy all resources in it
 	if (ResourceGroupManager::getSingleton().resourceGroupExists(resGrpId))
@@ -259,40 +254,49 @@ void CarModel::Create()
 	const String& res = resGrpId;
 	CreatePart(ndCar, vPofs, sCar, res, "_body.mesh",     "",  ghost, RV_Car,  &bodyBox,  bLogInfo, true);
 
-	vPofs = Vector3(interiorOffset[0],interiorOffset[1],interiorOffset[2]);  //x+ back y+ down z+ right
+	vPofs = Vector3(interiorOfs[0],interiorOfs[1],interiorOfs[2]);  //x+ back y+ down z+ right
 	// if (!ghostTrk)  //!ghost)
 	CreatePart(ndCar, vPofs, sCar, res, "_interior.mesh", "i", ghost, RV_Car,      0, bLogInfo);
 
 	vPofs = Vector3::ZERO;
 	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    "g", ghost, RV_CarGlass, 0, bLogInfo);
 	
-
-	if (vType == V_Sphere)  //; par temp-
+	bool sph = vType == V_Sphere;
+	if (sph)  //; par temp-
 		ndCar->setScale(2.f,2.f,2.f);
 
 
-	//  💡 car lights **  // par set..
-	if (0 && !ghost)
-	for (int i=0; i < 2; ++i)
+	//  💡 car lights  ----------------------
+	if (pSet->car_lights && !ghost)
 	{
-		Light* light = mSceneMgr->createLight();
-		SceneNode* lightNode = ndCar->createChildSceneNode( SCENE_DYNAMIC,
-			bRotFix ?
-			Vector3(i ? -0.6 : 0.6, 0.0, 1.1) :  //par
-			Vector3(-1.1, 0.0, i ? -0.6 : 0.6) );
-		lightNode->attachObject( light );
-		light->setDiffuseColour( 1.f, 1.1f, 1.1f );
-		light->setSpecularColour( 1.f, 1.1f, 1.1f );
-		light->setPowerScale( Math::PI * 3 * 2 );
-		light->setType( Light::LT_SPOTLIGHT );
-		light->setDirection(
-			bRotFix ? Vector3( 0, -0.1, 1 ) : Vector3( -1, 0.1, 0 ) );
-		light->setAttenuationBasedOnRadius( 30.0f, 0.01f );
-		light->setSpotlightRange(Degree(5), Degree(40), 1.0f );  //par 5 30
-		light->setCastShadows(true);  //par
-		// light->setCastShadows(false);
-		lights.push_back(light);
-	}
+		int cnt = fsFlares.pos.size();
+		const Real dirY = -0.1f, dirZ = 1.f;  //par-
+		LogO("c--- create car lights: " + toStr(numLights) + " flares: " + toStr(cnt));
+
+		for (int i=0; i < numLights; ++i)
+		if (i < cnt)
+		{
+			SceneNode* node = ndCar->createChildSceneNode( SCENE_DYNAMIC, fsFlares.pos[i] );
+			LogO(toStr(fsFlares.pos[i]));
+			Light* light = mSceneMgr->createLight();
+			node->attachObject( light );  ToDel(node);
+			light->setDiffuseColour(  1.f, 1.1f, 1.1f );  // clr
+			light->setSpecularColour( 1.f, 1.1f, 1.1f );
+
+			Real pwr = sph ? 3.f : 12.f / numLights; //par
+			light->setPowerScale( Math::PI * pwr );
+			light->setType( 
+				sph ? Light::LT_POINT  // lol
+				: Light::LT_SPOTLIGHT );
+			light->setDirection( bRotFix ?
+				Vector3( 0, dirY, dirZ ) :
+				Vector3( -dirZ, -dirY, 0 ) );
+			light->setAttenuationBasedOnRadius( 30.0f, 0.01f );
+			light->setSpotlightRange(Degree(5), Degree(40), 1.0f );  //par 5 30
+			
+			light->setCastShadows(pSet->car_light_shadows);
+			lights.push_back(light);
+	}	}
 
 
 	//  ⚫ wheels  ----------------------
@@ -318,10 +322,10 @@ void CarModel::Create()
 			if (bLogInfo && (w==0 || w==2))  LogMeshInfo(eWh, name, 2);
 
 			//**  set reflection cube
-			assert( dynamic_cast<HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() ) );
-			HlmsPbsDatablock *datablock =
-				static_cast<HlmsPbsDatablock *>( eWh->getSubItem( 0 )->getDatablock() );
-			datablock->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
+			assert( dynamic_cast<HlmsPbsDatablock *>( eWh->getSubItem(0)->getDatablock() ) );
+			HlmsPbsDatablock* db =
+				static_cast<HlmsPbsDatablock *>( eWh->getSubItem(0)->getDatablock() );
+			db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
 		}		
 		if (FileExists(sCar + "_brake.mesh") && !ghostTrk)
 		{
@@ -338,21 +342,39 @@ void CarModel::Create()
 	
 	
 	///  🔴 brake flares  ++ ++
-	if (pCar)
-	if (!brakePos.empty())
+	bool hasBrakes = !fsBrakes.pos.empty(),
+		 hasFlares = !fsFlares.pos.empty() && numLights > 0;
+	if (pCar && (hasBrakes|| hasFlares))
 	{
 		SceneNode* nd = ndCar->createChildSceneNode();  ToDel(nd);
-		brakes = mSceneMgr->createBillboardSet();
-		brakes->setDefaultDimensions(brakeSize, brakeSize);
-		// brakes->setRenderQueueGroup(RQG_CarTrails);
-		brakes->setVisibilityFlags(RV_Car);
+		if (hasBrakes)
+		{	bsBrakes = mSceneMgr->createBillboardSet();
+			auto s = fsBrakes.size;
+			bsBrakes->setDefaultDimensions(s, s);
+			// brakes->setRenderQueueGroup(RQG_CarTrails);
+			bsBrakes->setVisibilityFlags(RV_Car);
 
-		for (int i=0; i < brakePos.size(); ++i)
-			brakes->createBillboard(brakePos[i], brakeClr);
+			for (auto p : fsBrakes.pos)
+				bsBrakes->createBillboard(p, fsBrakes.clr);
 
-		brakes->setDatablockOrMaterialName("flare1", "Popular");
-		brakes->setVisible(false);
-		nd->attachObject(brakes);
+			bsBrakes->setDatablockOrMaterialName("flare1", "Popular");
+			bsBrakes->setVisible(false);
+			nd->attachObject(bsBrakes);
+		}
+		if (hasFlares)
+		{	bsFlares = mSceneMgr->createBillboardSet();
+			auto s = fsFlares.size;
+			bsFlares->setDefaultDimensions(s, s);
+			// bsFlares->setRenderQueueGroup(RQG_CarTrails);
+			bsFlares->setVisibilityFlags(RV_Car);
+
+			for (auto p : fsFlares.pos)
+				bsFlares->createBillboard(p, fsFlares.clr);
+
+			bsFlares->setDatablockOrMaterialName("flare1", "Popular");
+			bsFlares->setVisible(true);
+			nd->attachObject(bsFlares);
+		}
 	}
 	
 	if (!ghostTrk)
@@ -390,7 +412,7 @@ void CarModel::Create()
 						Vector3(bsize.x * 0.97, bsize.y * 0.65, bsize.z * 0.65 * (i==0 ? 1 : -1));
 						//Vector3(1.9 /*back*/, 0.1 /*up*/, 0.6 * (i==0 ? 1 : -1)/*sides*/
 					vp.z *= boostSizeZ;
-					vp += Vector3(boostOffset[0],boostOffset[1],boostOffset[2]);
+					vp += Vector3(boostOfs[0],boostOfs[1],boostOfs[2]);
 					SceneNode* nb = ndMain->createChildSceneNode(SCENE_DYNAMIC, bcenter+vp);  ToDel(nb);
 					nb->attachObject(parBoost[i]);
 				}else

@@ -74,9 +74,13 @@ void CarModel::Defaults()
 		thrusterSizeZ[i] = 0.f;
 		sThrusterPar[i] = "";
 	}
-	brakePos.clear();
-	brakeClr = ColourValue(1,0,0);
-	brakeSize = 0.f;
+	fsBrakes.pos.clear();
+	fsBrakes.clr = ColourValue(1,0,0);
+	fsBrakes.size = 0.2f;
+
+	fsFlares.pos.clear();
+	fsFlares.clr = ColourValue(0.98,1,1);
+	fsFlares.size = 1.2f;
 
 	bRotFix = false;
 	sBoostParName = "Boost";  boostSizeZ = 1.f;
@@ -209,15 +213,25 @@ void CarModel::LoadConfig(const string & pathCar)
 	
 
 	//~  🔴 brake flares
-	float pos[3];  bool ok=true;  i=0;
-	while (ok)
-	{	ok = cf.GetParam("flares.brake-pos"+toStr(i), pos);  ++i;
-		if (ok)  brakePos.push_back(bRotFix ? Vector3(-pos[0],pos[2],pos[1]) : Vector3(-pos[1],-pos[2],pos[0]));
+	cf.GetParam("flares.lights", numLights);
+	float pos[3];
+	for (int n=0; n < 2; ++n)
+	{
+		FlareSet& flr = n ? fsBrakes : fsFlares;
+		const string s = n ? "brake" : "front";
+		bool ok = true;  i=0;
+		while (ok)
+		{
+			ok = cf.GetParam("flares."+s+"-pos"+toStr(i), pos);
+			++i;
+			if (ok)  flr.pos.push_back( bRotFix ?
+				Vector3(-pos[0], pos[2],pos[1]) :
+				Vector3(-pos[1],-pos[2],pos[0]) );
+		}
+		cf.GetParam("flares."+s+"-color", pos);
+		flr.clr = ColourValue(pos[0],pos[1],pos[2]);
+		cf.GetParam("flares."+s+"-size", flr.size);
 	}
-	cf.GetParam("flares.brake-color", pos);
-	brakeClr = ColourValue(pos[0],pos[1],pos[2]);
-	cf.GetParam("flares.brake-size", brakeSize);
-	
 	
 	//-  custom exhaust pos for boost particles
 	if (cf.GetParam("model_ofs.exhaust-x", exhaustPos[0]))
