@@ -258,10 +258,17 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 
 	//  alt-Z  Tweak  (alt-shift-Z  save & reload)
-	if (pSet->dev_keys && alt)
+	if (pSet->dev_keys)
 	switch (skey)
 	{
-		case key(Z):  gui->TweakToggle();   return;
+		case key(Z):
+			if (alt)  gui->TweakToggle();   return;
+		case key(INSERT):  // save .car
+		case key(RETURN):
+			if (mWndTweak->getVisible() &&
+				gui->tabTweak->getIndexSelected() < 2)
+			{	gui->TweakCarSave();  return;  }
+			break;
 		default:  break;
 	}
 

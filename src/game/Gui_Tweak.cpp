@@ -37,11 +37,16 @@ void CGui::TweakCarSave()
 	text = StringUtil::replaceAll(text, "##", "#");
 	text = StringUtil::replaceAll(text, "#E5F4FF", "");  //!
 
-	std::string path, pathUser, pathUserDir;
+	std::string p, path, pathUser, pathUserDir;
 	bool user = GetCarPath(&path, &pathUser, &pathUserDir, pSet->game.car[0]);
 	
-	PATHS::CreateDir(pathUserDir);
-	std::ofstream fo(pathUser.c_str());
+	if (pSet->dev_keys)
+		p = path;  // save orig
+	else
+	{	p = pathUser;  // user
+		PATHS::CreateDir(pathUserDir);
+	}
+	std::ofstream fo(p.c_str());
 	fo << text.c_str();
 	fo.close();
 	
@@ -371,6 +376,7 @@ void CGui::TweakToggle()
 	//  window
 	bool vis = !app->mWndTweak->getVisible();
 	app->mWndTweak->setVisible(vis);
+	app->updMouse();
 
 	std::string path, pathUser, pathUserDir;
 	bool user = GetCarPath(&path, &pathUser, &pathUserDir, pSet->game.car[0]);
