@@ -335,19 +335,12 @@ void CGui::slSizeRoadP(SV*)
 
 void CGui::slSizeMinimap(SV*)
 {
-	Real sz = pSet->size_minimap;
-	app->asp = float(app->mWindow->getWidth()) / float(app->mWindow->getHeight());
-	app->xm1 = 1.f - sz / app->asp;  app->ym1 = -1.f + sz;  app->xm2 = 1.f;  app->ym2 = -1.f;
-	/*for (int i=0; i < app->RT_Brush; ++i)  if (i != app->RT_Last)
-		if (app->rt[i].mini)
-			app->rt[i].mini->setCorners(app->xm1, app->ym1, app->xm2, app->ym2);*/
+	app->UpdMiniSize();
 }
 
 void CGui::chkMinimap(Ck*)
 {
 	app->UpdMiniVis();
-	if (app->ndPos)
-		app->ndPos->setVisible(pSet->trackmap);
 }
 
 

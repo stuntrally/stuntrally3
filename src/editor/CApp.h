@@ -23,7 +23,7 @@ const int ciAngSnapsNum = 7;
 const Ogre::Real crAngSnaps[ciAngSnapsNum] = {0,5,15,30,45,90,180};
 
 namespace Ogre  {  class Rectangle2D;  class SceneNode;  class RenderTexture;  class Item;
-	class Terra;  class HlmsPbsTerraShadows;  }
+	class Terra;  class HlmsPbsTerraShadows;  class CompositorWorkspace;  }
 class CScene;  class CGui;  class CGuiCom;
 class GraphicsSystem;  class HudRenderable;
 
@@ -87,32 +87,37 @@ public:
 	void UpdObjPick(), PickObject(), ToggleObjSim();
 
 
-	///  🖼️ rnd to tex  minimap  * * * * * * * * *	
+	//  🌍 minimap  ----
 	HudRenderable* hrPos =0;
-	Ogre::SceneNode *ndPos =0;  // dims
+	Ogre::SceneNode* ndPos =0;  // dims
 	Ogre::Real asp = 4.f/3.f, xm1 = -1.f, ym1 = 1.f, xm2 = 1.f, ym2 = -1.f;
 
+	//  🖼️ rnd to tex  --------
 	enum ERnd2Tex
-	{	RT_Road=0, RT_Grass, RT_Terrain, RT_View, RT_Last, RT_Brush, RT_ALL  };
+	// {	RT_Road=0, RT_Grass, RT_Terrain, RT_View, RT_Last, RT_Brush, RT_ALL  };
+	{	RT_View=0, RT_Last, RT_ALL = RT_Last };
 	struct SRndTrg
 	{
-		Ogre::Camera* cam = 0;
-		Ogre::RenderTexture* tex = 0;
-		Ogre::Rectangle2D* mini = 0;
-		Ogre::SceneNode* ndMini = 0;
+		Ogre::Camera* cam =0;
+		Ogre::TextureGpu* tex =0, *rtt =0;
+		Ogre::CompositorWorkspace* ws =0;
+		//  mini rect
+		HudRenderable* hr =0;
+		Ogre::SceneNode* nd =0;
 	} rt[RT_ALL];
 
-	void Rnd2TexSetup(), UpdMiniVis();
+	void CreateRnd2Tex(), DestroyRnd2Tex(), UpdRnd2Tex();
+	void UpdMiniSize(), UpdMiniVis(), UpdMiniPos();
 	// virtual void preRenderTargetUpdate(const Ogre::RenderTargetEvent &evt);
 	// virtual void postRenderTargetUpdate(const Ogre::RenderTargetEvent &evt);
 	
 
-	//  ⛰️📍 terrain cursor, circle mesh  o
+	//  ⛰️📍 terrain cursor, circle mesh  o  ----
 	HudRenderable*   hrTerC[ED_Filter+1] ={0,0,0,0};
 	Ogre::SceneNode* ndTerC[ED_Filter+1] ={0,0,0,0};
 	void TerCircleInit(), TerCircleUpd(float dt);
 
-	//  🖼️ brush preview tex
+	//  🖼️ brush preview tex  ----
 	void createBrushPrv();
 	void updateBrushPrv(bool first=false), updateTerPrv(bool first=false);
 

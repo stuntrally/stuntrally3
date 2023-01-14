@@ -186,7 +186,9 @@ void App::NewCommon(bool onlyTerVeget)
 	
 		scn->DestroyTerrain();  // ⛰️
 	}
-		
+
+	DestroyRnd2Tex();  // 🖼️
+
 	//world.Clear();
 
 	if (resTrk != "")  ResourceGroupManager::getSingleton().removeResourceLocation(resTrk);
@@ -274,7 +276,8 @@ void App::LoadTrackEv()
 	gcom->ReadTrkStats();
 	gui->SetGuiFromXmls();  ///
 	
-	Rnd2TexSetup();
+	CreateRnd2Tex();  // 🖼️
+
 	//UpdVisGui();
 	UpdStartPos();
 	UpdEditWnds();  //
@@ -349,7 +352,7 @@ void App::UpdateTrackEv()
 	{	scn->CreateTrees();
 		scn->grass->Create();  // 🌿
 	}
-	Rnd2TexSetup();
+	//? Rnd2TexSetup();
 
 	gui->Status("#{Updated}", 0.5,1.0,0.7);
 }

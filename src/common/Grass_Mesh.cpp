@@ -145,6 +145,10 @@ void Grass::Create()
 
 						Vector2 uv(x, 1.f - y);
 						Vector3 n(0,1,0);  // todo: tilt^? bad for car lights
+						// Vector3 n( xl + xr, y * 0.f, zl + zr );
+						// Vector3 n( cosf(a+Math::HALF_PI), y*0.4f, sinf(a+Math::HALF_PI));  //..
+						// Vector3 n( cosf(a), y*0.4f, sinf(a));  //..
+						// n.normalise();
 						//Vector4 c(1,1,1,1);
 
 						pos.push_back(p);  norm.push_back(n);

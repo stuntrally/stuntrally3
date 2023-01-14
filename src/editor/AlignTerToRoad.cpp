@@ -15,8 +15,6 @@
 
 #include <OgrePrerequisites.h>
 #include <OgreTimer.h>
-#include <OgreWindow.h>
-#include <OgreCamera.h>
 #include "Terra.h"
 #include <OgreSceneNode.h>
 #include <OgreCommon.h>

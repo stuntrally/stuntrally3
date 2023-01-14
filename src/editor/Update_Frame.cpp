@@ -393,5 +393,7 @@ void App::update( float dt )
 	bFirstRenderFrame = false;
 
 
+	UpdRnd2Tex();  // * *
+
 	UpdateEnd(dt);  //^
 }

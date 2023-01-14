@@ -282,7 +282,7 @@ void App::togPrvCam()
 	{
 		SetEdMode(edModeOld);
 		// mViewport->setVisibilityMask(RV_MaskAll);  //?
-		rt[RT_Last].ndMini->setVisible(false);
+		// rt[RT_Last].ndMini->setVisible(false);
 		ndCar->setVisible(true);
 
 		// scn->UpdateWaterRTT(mCamera);
@@ -301,7 +301,7 @@ void App::togPrvCam()
 		SetEdMode(ED_PrvCam);
 		bMoveCam = true;  UpdVisGui();
 		// mViewport->setVisibilityMask(RV_MaskPrvCam);
-		rt[RT_Last].ndMini->setVisible(true);
+		// rt[RT_Last].ndMini->setVisible(true);
 		ndCar->setVisible(false);
 
 		// scn->UpdateWaterRTT(rt[RT_View].cam);

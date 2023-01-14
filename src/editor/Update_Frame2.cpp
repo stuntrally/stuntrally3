@@ -22,33 +22,7 @@ using namespace MyGUI;
 //---------------------------------------------------------------------------------------------------------------
 void App::UpdateKey(float dt)
 {
-	//  pos on minimap *
-	if (ndPos)
-	{	Real w = scn->sc->td.fTerWorldSize;
-		Real x = (0.5 - mCamera->getPosition().z / w);
-		Real y = (0.5 + mCamera->getPosition().x / w);
-		ndPos->setPosition(xm1+(xm2-xm1)*x, ym1+(ym2-ym1)*y, 0);
-		//--------------------------------
-		float angrot = mCamera->getOrientation().getYaw().valueDegrees();
-		float psx = 0.9f * pSet->size_minimap, psy = psx*asp;  // *par len
-
-		const static float d2r = PI_d/180.f;
-		static float px[4],py[4];
-		for (int i=0; i<4; i++)
-		{
-			float ia = 135.f + float(i)*90.f;
-			float p = -(angrot + ia) * d2r;
-			px[i] = psx*cosf(p);
-			py[i] =-psy*sinf(p);
-		}
-		if (hrPos)  // fixme
-		{	hrPos->begin();
-			hrPos->position(px[0],py[0], 0);  hrPos->texUV(0, 1);
-			hrPos->position(px[1],py[1], 0);  hrPos->texUV(1, 1);
-			hrPos->position(px[3],py[3], 0);  hrPos->texUV(0, 0);
-			hrPos->position(px[2],py[2], 0);  hrPos->texUV(1, 0);
-			hrPos->end();
-	}	}
+	UpdMiniPos();
 	
 	//  status
 	if (fStFade > 0.f)
