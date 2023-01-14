@@ -1,4 +1,52 @@
-//  reflections
+//  ed rtt
+//------------------------------------------------------------------------------------
+compositor_node RttNode
+{
+	in 0 rt_output
+
+	target rt_output
+	{
+		// visibility_mask 0xfffffffe
+
+		//  view render  ----
+		pass render_scene
+		{
+			profiling_id "rtt rnd"
+
+			load
+			{
+				all				clear
+				clear_colour	0 0 0 0  // test
+			}
+			store
+			{
+				// colour	store_or_resolve
+				colour	store
+				depth	store
+				stencil	store
+				// depth	dont_care
+				// stencil	dont_care
+			}
+
+			// expose demo_dynamic_cubemap
+
+			// in code: game, not ed
+			// visibility_mask 4  // ter
+			// visibility_mask 1  // road
+			// visibility_mask		0x0000FFFFD  // no hud
+			// rq_first  10  // ter
+			// rq_last	  12
+			rq_first  70  // road
+			rq_last	  72
+
+			overlays	off
+			// shadows		SR3_Shadows
+		}
+	}
+}
+
+
+//  cube reflections
 //------------------------------------------------------------------------------------
 abstract target cubemap_target
 {
