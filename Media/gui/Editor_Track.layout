@@ -17,14 +17,14 @@
 			</Widget>
 			<Widget type="TabItem" skin="" position="2 24 794 562" name="TabTrack">
 				<Property key="Caption" value="#D0E8FF#{Track}"/>
-				<Widget type="TextBox" skin="TextBox" position="176 470 60 24" name="TrackText">
+				<Widget type="TextBox" skin="TextBox" position="176 490 60 24" name="TrackText">
 					<Property key="InheritsAlpha" value="true"/>
 					<Property key="Colour" value="0 0 0"/>
 					<Property key="Caption" value="#{Track}"/>
 					<Property key="TextColour" value="0.4 1.0 0.5"/>
 					<UserString key="tip" value="#{TipTrkNameEditor}"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="368 498 140 32" name="NewGame0">
+				<Widget type="Button" skin="Button" position="368 518 140 32" name="NewGame0">
 					<Property key="Caption" value="#{LoadTrack}"/>
 					<Property key="Colour" value="0.6 1.0 0.3"/>
 					<Property key="TextColour" value="0.3 1 0.2"/>
@@ -394,7 +394,7 @@
 						<Property key="NeedMouse" value="false"/>
 					</Widget>
 				</Widget>
-				<Widget type="Button" skin="Button" position="526 505 150 25" name="TrackNew">
+				<Widget type="Button" skin="Button" position="526 525 150 25" name="TrackNew">
 					<Property key="Caption" value="#{NewDup}"/>
 					<Property key="Colour" value="0.8 1 0.5"/>
 					<Property key="TextColour" value="0.8 1 0.5"/>
@@ -406,20 +406,20 @@
 						<Property key="NeedMouse" value="false"/>
 					</Widget>
 				</Widget>
-				<Widget type="Button" skin="Button" position="369 467 140 24" name="TrackRename">
+				<Widget type="Button" skin="Button" position="369 487 140 24" name="TrackRename">
 					<Property key="Caption" value="#{Rename}"/>
 					<Property key="Colour" value="1 0.9 0.4"/>
 					<Property key="TextColour" value="1 0.9 0.4"/>
 					<UserString key="tip" value="#{TipRenameTrk}"/>
 				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="240 467 120 24" name="TrackName">
+				<Widget type="EditBox" skin="EditBox" position="240 487 120 24" name="TrackName">
 					<Property key="Colour" value="0.6 1 0.8"/>
 					<Property key="TextColour" value="0.6 1 0.8"/>
 					<Property key="MaxTextLength" value="20"/>
 					<Property key="FontName" value="font.small"/>
 					<UserString key="tip" value="#{TipTrkNameEditor}"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="692 505 87 24" name="TrackDelete">
+				<Widget type="Button" skin="Button" position="692 525 87 24" name="TrackDelete">
 					<Property key="Caption" value="#{Delete}"/>
 					<Property key="TextColour" value="1 0.6 0.3"/>
 					<Property key="Colour" value="1 0.6 0.3"/>
@@ -432,6 +432,7 @@
 					</Widget>
 				</Widget>
 			</Widget>
+
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#B0A0FF#{Tools}"/>
 				<Widget type="ImageBox" skin="ImageBox" position="660 32 64 64">
@@ -589,6 +590,7 @@
 					<Property key="TextColour" value="0.8 0.6 0.2"/>
 				</Widget>
 			</Widget>
+
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#C090B0#{Game}"/>
 				<Widget type="TextBox" skin="TextBox" position="32 60 268 24">
@@ -644,6 +646,7 @@
 					<Property key="TextColour" value="0.55 0.7 0.85"/>
 				</Widget>
 			</Widget>
+
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#C0C060#{Pacenotes}"/>
 				<Widget type="TabControl" skin="TabControl" position="16 24 760 506" name="SubTab">
@@ -720,6 +723,7 @@
 					</Widget>-->
 				</Widget>
 			</Widget>
+
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#E0A0A0#{Warnings}"/>
 				<Widget type="ImageBox" skin="ImageBox" position="660 32 64 64" name="ImgInfo">

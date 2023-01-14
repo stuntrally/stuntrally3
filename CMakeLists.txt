@@ -31,7 +31,7 @@ project( StuntRally3 )
 option(BUILD_GAME             "Build the game binary."    ON)
 option(BUILD_EDITOR           "Build the track editor."   ON)
 option(BUILD_MASTER_SERVER    "Build the game list master server."  OFF)
-option(BUILD_TRANSL_TOOL      "Build the tool for translation updating, it creates .pot"  ON)
+option(BUILD_TRANSL_TOOL      "Build the tool for translation updating, it creates .pot"  OFF)
 
 
 #  Linux prefers lower-case exe names
@@ -200,7 +200,7 @@ find_package( Threads )
 
 
 
-##  Game
+##  Executables
 ##------------------------------------------------------------------------------------------------------
 foreach( EXE ${EXE_LIST} )
 
