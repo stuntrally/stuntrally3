@@ -175,7 +175,7 @@ namespace Ogre
 			Terra* pTerra = 0;
 			Normalmap(Terra* terra);
 
-			TextureGpu* texture =0;
+			TextureGpu* texture =0, *rtt =0;
 			Camera* camera =0;
 			CompositorWorkspace* workspace =0;
 

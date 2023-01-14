@@ -341,8 +341,8 @@ struct MyRayResultCallback : public btCollisionWorld::RayResultCallback
 
 
 //--------------------------------------------------------------------------------------------------------------------------------
-//  Ray
-///-------------------------------------------------------------------------------------------------------------------------------
+//  🎯 cast Ray  for contact and surface
+//-------------------------------------------------------------------------------------------------------------------------------
 bool COLLISION_WORLD::CastRay(
 	const MATHVECTOR<float,3> & origin,
 	const MATHVECTOR<float,3> & direction, const float length,

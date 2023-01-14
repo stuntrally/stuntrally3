@@ -11,11 +11,11 @@
 #include <dirent.h>
 #endif
 using namespace Ogre;
+namespace fs = std::filesystem;
 
 
 ///  Get Materials
 //-----------------------------------------------------------------------------------------------------------
-
 void CGui::GetMaterials(String filename, bool clear, String type)
 {
 	if (clear)
@@ -34,7 +34,7 @@ void CGui::GetMaterials(String filename, bool clear, String type)
 					//LogO(line);
 					Ogre::vector<String>::type vec = StringUtil::split(line," \t:");
 					bool skipFirst = true;
-					for (Ogre::vector<String>::type::iterator it = vec.begin(); it < vec.end(); ++it)
+					for (auto it = vec.begin(); it < vec.end(); ++it)
 					{
 						if (skipFirst)
 						{	skipFirst = false;
@@ -52,9 +52,7 @@ void CGui::GetMaterials(String filename, bool clear, String type)
 			}	}
 		}catch (Exception &e)
 		{
-			std::stringstream msg;
-			msg << "Exception: FILE: " << __FILE__ << " LINE: " << __LINE__ << " DESC: " << e.getFullDescription() << std::endl;
-			LogO(msg.str());
+			LogO("!GetMaterials Exception! " + e.getFullDescription());
 	}	}
 	stream->close();
 }
@@ -96,9 +94,7 @@ void CGui::GetMaterialsMat(String filename, bool clear, String type)
 			}	}
 		}catch (Exception &e)
 		{
-			std::stringstream msg;
-			msg << "Exception: FILE: " << __FILE__ << " LINE: " << __LINE__ << " DESC: " << e.getFullDescription() << std::endl;
-			LogO(msg.str());
+			LogO("GetMaterialsMat Exception! " + e.getFullDescription());
 	}	}
 	else
 		LogO("GetMat, can't open: " + filename);
@@ -108,9 +104,6 @@ void CGui::GetMaterialsMat(String filename, bool clear, String type)
 
 ///  system file, dir
 //-----------------------------------------------------------------------------------------------------------
-namespace fs = std::filesystem;
-
-
 bool CGui::Rename(String from, String to)
 {
 	try

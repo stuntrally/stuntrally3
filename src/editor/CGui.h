@@ -390,7 +390,7 @@ public:
 	
 
 	//  ⛓️ system, utils, mtr
-	Ogre::String strFSerrors;
+	Ogre::String strFSerrors;  // not used..
 	bool Rename(Ogre::String from, Ogre::String to);
 	bool Delete(Ogre::String file), DeleteDir(Ogre::String dir);
 	bool CreateDir(Ogre::String dir);
