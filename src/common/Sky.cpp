@@ -126,6 +126,7 @@ void CScene::UpdFog()
 	bool no = !app->pSet->bFog;
 	Atmosphere2Npr::Preset p = atmo->getPreset();
 
+	p.fogStartDistance = sc->fogStart;
 	p.fogDensity = no ? 0.000001f :
 		4000.f / sc->fogEnd * 0.0001f;  //** par
 	p.fogHcolor = sc->fogClrH.GetRGBA();

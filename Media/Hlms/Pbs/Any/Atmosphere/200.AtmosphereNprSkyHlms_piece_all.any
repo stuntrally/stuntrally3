@@ -19,10 +19,10 @@
 		float4 packedParams2;
 		float4 packedParams3;
 
+		float fogStartDistance;
 		float fogDensity;
 		float fogBreakMinBrightness;
 		float fogBreakFalloff;
-		float padding0;
 		
 		float4 fogHcolor;
 		float4 fogHparams;

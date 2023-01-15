@@ -24,7 +24,7 @@
 @piece( applyFog )
     @property( hlms_fog && !emissive_map )
 
-        const float distToCamera = length( inPs.pos.xyz );
+        const float distToCamera = max( _h( 0.0 ), length( inPs.pos.xyz ) - atmoSettings.fogStartDistance );
 
         //**  height fog  first
         midf fogHWeight = midf_c( exp2( -distToCamera * atmoSettings.fogHparams.z ) );

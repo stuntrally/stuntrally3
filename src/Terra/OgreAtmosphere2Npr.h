@@ -72,6 +72,7 @@ namespace Ogre
             float         sunPower;      // For HDR (affects the sun on the sky)
             float         skyPower;      // For HDR (affects skyColour)
             Ogre::Vector3 skyColour;     // In range [0; 1]
+            
             /// Affects objects' fog (not sky)
             float fogDensity;
             /// Very bright objects (i.e. reflect lots of light)
@@ -99,7 +100,8 @@ namespace Ogre
             /// Value to send to SceneManager::setAmbientLight
             float envmapScale;
 
-            //  new
+            //  CryHam  new
+            float fogStartDistance;
             Ogre::Vector4 fogHcolor, fogHparams;
 
             Preset() :
@@ -112,6 +114,8 @@ namespace Ogre
                 sunPower( 1.0f ),
                 skyPower( 1.0f ),
                 skyColour( 0.334f, 0.57f, 1.0f ),
+                
+                fogStartDistance( 0.0f ),
                 fogDensity( 0.0001f ),
                 fogBreakMinBrightness( 0.25f ),
                 fogBreakFalloff( 0.1f ),

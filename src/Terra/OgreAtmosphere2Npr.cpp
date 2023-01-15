@@ -58,10 +58,10 @@ namespace Ogre
         float4 packedParams2;
         float4 packedParams3;
 
+   		float fogStartDistance;
         float fogDensity;
         float fogBreakMinBrightness;
         float fogBreakFalloff;
-        float padding;
         
         float4 fogHcolor;
         float4 fogHparams;
@@ -439,6 +439,8 @@ namespace Ogre
         atmoGpu.packedParams1 = packedParams1;
         atmoGpu.packedParams2 = packedParams2;
         atmoGpu.packedParams3 = packedParams3;
+
+        atmoGpu.fogStartDistance = mPreset.fogStartDistance;
         atmoGpu.fogDensity = mPreset.fogDensity;
         atmoGpu.fogBreakMinBrightness = mPreset.fogBreakMinBrightness * mPreset.fogBreakFalloff;
         atmoGpu.fogBreakFalloff = -mPreset.fogBreakFalloff;
@@ -578,6 +580,8 @@ namespace Ogre
         LERP_VALUE( sunPower );
         LERP_VALUE( skyPower );
         LERP_VALUE( skyColour );
+
+        LERP_VALUE( fogStartDistance );
         LERP_VALUE( fogDensity );
         LERP_VALUE( fogBreakMinBrightness );
         LERP_VALUE( fogBreakFalloff );
