@@ -1305,6 +1305,15 @@
 								<Widget type="TabItem" skin="" position="2 24 526 -14">
 									<Property key="Caption" value="#E07040 6"/>
 								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 526 -14">
+									<Property key="Caption" value="#D86030 7"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 526 -14">
+									<Property key="Caption" value="#D04020 8"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 526 -14">
+									<Property key="Caption" value="#C02020 9"/>
+								</Widget>
 							</Widget>
 							<Widget type="ProgressBar" skin="ProgressBarFill" position="0 0 528 24">
 								<Property key="Alpha" value="0.3"/>
@@ -1772,10 +1781,22 @@
 									<Property key="Caption" value="#8080C8 8"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#8060C0 9"/>
+									<Property key="Caption" value="#8070C0 9"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#8040B0 10"/>
+									<Property key="Caption" value="#8060B0 10"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#805090 11"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#804070 12"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#803050 13"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#602040 14"/>
 								</Widget>
 							</Widget>
 							<!--<Widget type="Widget" skin="PanelSkin" position="0 0 528 24">-->

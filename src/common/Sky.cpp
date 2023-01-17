@@ -128,8 +128,8 @@ void CScene::UpdFog()
 
 	p.fogStartDistance = sc->fogStart;
 	p.fogDensity = no ? 0.000001f :
-		// 4000.f / sc->fogEnd * 0.0001f;  //** par`
-		4000.f / (sc->fogEnd - sc->fogStart) * 0.0001f;  //** par`
+		4000.f / sc->fogEnd * 0.0001f;  //** par`
+		// 4000.f / (sc->fogEnd - sc->fogStart) * 0.0001f;  //** par`
 	p.fogHcolor = sc->fogClrH.GetRGBA();
 	p.fogHparams = no ?	Vector4(
 		-10000.f,
@@ -138,8 +138,8 @@ void CScene::UpdFog()
 	: Vector4(
 		sc->fogHeight - sc->fogHDensity,
 		1.f/sc->fogHDensity,
-		// 2000.f / sc->fogHEnd * 0.0004f,  //** par`
-		2000.f / (sc->fogHEnd - sc->fogHStart) * 0.0004f,  //** par`
+		2000.f / sc->fogHEnd * 0.0004f,  //** par`
+		// 2000.f / (sc->fogHEnd - sc->fogHStart) * 0.0004f,  //** par`
 		sc->fogHStart);
 	//sc->fogHeight, ok ? 1.f/sc->fogHDensity : 0.f,
 	//sc->fogHStart, 1.f/(sc->fogHEnd - sc->fogHStart);
