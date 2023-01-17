@@ -19,13 +19,15 @@
 		float4 packedParams2;
 		float4 packedParams3;
 
-		float fogStartDistance;
 		float fogDensity;
 		float fogBreakMinBrightness;
 		float fogBreakFalloff;
+		float fogStartDistance;  // new_
 		
 		float4 fogHcolor;
 		float4 fogHparams;
+		float4 fogColourSun;
+		float4 fogColourAway;
 	};
 
 	@property( syntax != metal )

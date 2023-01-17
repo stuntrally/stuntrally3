@@ -100,9 +100,11 @@ namespace Ogre
             /// Value to send to SceneManager::setAmbientLight
             float envmapScale;
 
-            //  CryHam  new
+            //  CryHam  new  ----
             float fogStartDistance;
             Ogre::Vector4 fogHcolor, fogHparams;
+            Ogre::Vector4 fogColourSun;
+            Ogre::Vector4 fogColourAway;
 
             Preset() :
                 time( 0.0f ),
@@ -115,7 +117,6 @@ namespace Ogre
                 skyPower( 1.0f ),
                 skyColour( 0.334f, 0.57f, 1.0f ),
                 
-                fogStartDistance( 0.0f ),
                 fogDensity( 0.0001f ),
                 fogBreakMinBrightness( 0.25f ),
                 fogBreakFalloff( 0.1f ),
@@ -124,7 +125,11 @@ namespace Ogre
                 linkedSceneAmbientLowerPower( 0.01f * Math::PI ),
                 envmapScale( 1.0f ),
                 
-                fogHcolor(0.5,0.75,1,1), fogHparams(11,0.2,0,0)
+                fogStartDistance( 0.0f ),
+                fogHcolor(0.5,0.75,1,1),
+                fogHparams(11,0.2,0,0),
+                fogColourSun( 0.99f, 0.99f, 0.98f, 1.f ),
+                fogColourAway( 0.74f, 0.87f, 1.0f, 1.f )
             {
             }
 

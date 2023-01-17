@@ -58,13 +58,15 @@ namespace Ogre
         float4 packedParams2;
         float4 packedParams3;
 
-   		float fogStartDistance;
         float fogDensity;
         float fogBreakMinBrightness;
         float fogBreakFalloff;
         
+   		float fogStartDistance;  // new_
         float4 fogHcolor;
         float4 fogHparams;
+        float4 fogColourSun;
+        float4 fogColourAway;
     };
 
     Atmosphere2Npr::Atmosphere2Npr( VaoManager *vaoManager ) :
@@ -447,6 +449,8 @@ namespace Ogre
 
         atmoGpu.fogHcolor = mPreset.fogHcolor;
         atmoGpu.fogHparams = mPreset.fogHparams;
+        atmoGpu.fogColourSun = mPreset.fogColourSun;
+        atmoGpu.fogColourAway = mPreset.fogColourAway;
 
         mHlmsBuffer->upload( &atmoGpu, 0u, sizeof( atmoGpu ) );
     }
@@ -580,11 +584,14 @@ namespace Ogre
         LERP_VALUE( sunPower );
         LERP_VALUE( skyPower );
         LERP_VALUE( skyColour );
+        LERP_VALUE( fogColourSun );
+        LERP_VALUE( fogColourAway );
 
-        LERP_VALUE( fogStartDistance );
         LERP_VALUE( fogDensity );
         LERP_VALUE( fogBreakMinBrightness );
         LERP_VALUE( fogBreakFalloff );
+        LERP_VALUE( fogStartDistance );
+
         LERP_VALUE( linkedLightPower );
         LERP_VALUE( linkedSceneAmbientUpperPower );
         LERP_VALUE( linkedSceneAmbientLowerPower );
