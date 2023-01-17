@@ -225,14 +225,36 @@ void CGui::UpdImgClr()
 //---------------------------------------------------------------------
 void CGui::imgBtnCarClr(WP img)
 {
-	int i = iCurCar;
 	auto& c = pSet->car_clr;
-	c = s2i(img->getUserString("i"));
+	auto i = s2i(img->getUserString("i"));
 	
-	if (c >= data->colors->v.size())  return;
-	pSet->gui.clr[i] = data->colors->v[c];
-	UpdCarClrSld();
+	auto& v = data->colors->v;
+	int si = v.size();
+	if (c >= si)  return;
+	if (i < 0 || i >= si)  return;
+
+	if (app->alt && c >= 0)  // todo: tip, info
+	{	//  swap
+		auto cc = v[c];
+		v[c] = v[i];  v[i] = cc;
+		UpdCarClrImgs();  return;
+	}
+	if (app->shift && c >= 0)
+	{	//  move cur
+		auto cc = v[c];
+		if (i >= 0 && i < v.size())
+			v.erase(v.begin() + c);
+		
+		v.insert(v.begin() + i, cc);
+		UpdCarClrImgs();  return;
+	}
+	//  click, set clr
+	{	c = i;
+		pSet->gui.clr[iCurCar] = v[c];
+		UpdCarClrSld();
+	}
 }
+
 void CGui::btnCarClrRandom(WP)
 {
 	int i = iCurCar;
@@ -313,6 +335,9 @@ void CGui::UpdCarClrImgs()
 		img->eventMouseButtonClick += newDelegate(this, &CGui::imgBtnCarClr);
 
 		img->setUserString("i", toStr(i));
+		img->setUserString("tip", TR("#{TipCarColor}"));
+		img->setNeedToolTip(true);
+		img->eventToolTip += newDelegate(gcom, &CGuiCom::notifyToolTip);
 		imgsCarClr.push_back(img);
 	}
 	if (bGI)  // resize

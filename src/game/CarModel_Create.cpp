@@ -358,9 +358,10 @@ void CarModel::Create()
 				bsBrakes->createBillboard(p, fsBrakes.clr);
 
 			bsBrakes->setDatablockOrMaterialName("flare1", "Popular");
-			bsBrakes->setVisible(false);
 			nd->attachObject(bsBrakes);
+			bsBrakes->setVisible(false);
 		}
+		//  front flares
 		if (hasFlares)
 		{	bsFlares = mSceneMgr->createBillboardSet();
 			auto s = fsFlares.size;
@@ -372,8 +373,8 @@ void CarModel::Create()
 				bsFlares->createBillboard(p, fsFlares.clr);
 
 			bsFlares->setDatablockOrMaterialName("flare1", "Popular");
-			bsFlares->setVisible(true);
 			nd->attachObject(bsFlares);
+			bsFlares->setVisible(pSet->car_lights);
 		}
 	}
 	

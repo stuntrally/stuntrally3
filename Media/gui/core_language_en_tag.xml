@@ -207,6 +207,7 @@
 	<Tag name="Negative">Negative (darken)</Tag>
 
 	<!--  TIP  Vehicle Color -->
+	<Tag name="TipCarColor">Click to apply color to vehicle, and select. Shift-Click move selected here. Alt-Click swap color with selected.</Tag>
 	<Tag name="TipChangeHue">Change car color (hue).</Tag>
 	<Tag name="TipChangeSat">Change car color saturation (white-black).</Tag>
 	<Tag name="TipChangeBright">Change car color brightness (dark-light).</Tag>

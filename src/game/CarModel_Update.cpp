@@ -39,8 +39,8 @@ void CarModel::setVisible(bool vis)
 	hideTime = 0.f;
 
 	ndMain->setVisible(vis);
-	if (bsBrakes)  bsBrakes->setVisible(bBraking && vis);
-	if (bsFlares)  bsFlares->setVisible(vis);
+	if (bsBrakes)  bsBrakes->setVisible(vis && bBraking);
+	if (bsFlares)  bsFlares->setVisible(vis && pSet->car_lights);
 
 	for (int w=0; w < numWheels; ++w)
 	{	ndWh[w]->setVisible(vis);

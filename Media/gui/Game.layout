@@ -874,38 +874,52 @@
 							</Widget>
 						</Widget>
 		
-						<Widget type="Button" skin="Button" position="12 52 306 28" name="CarClrRandom">
+						<Widget type="Button" skin="Button" position="12 48 306 28" name="CarClrRandom">
 							<Property key="Caption" value="#{CarClrRandom}"/>
 							<Property key="Colour" value="0.9 0.7 1.0"/>
 							<Property key="TextColour" value="0.9 0.9 1.0"/>
 						</Widget>
-						<Widget type="Button" skin="Button" position="12 362 156 28" name="CarClrLoad">
+
+						<Widget type="Button" skin="Button" position="12 352 156 28" name="CarClrDel">
+							<Property key="Caption" value="#{Delete}"/>
+							<Property key="Colour" value="1.0 0.6 0.6"/>
+							<Property key="TextColour" value="1.0 0.6 0.6"/>
+							<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+								<Property key="ImageCoord" value="256 384 128 128"/>
+								<Property key="Alpha" value="0.5"/>
+								<Property key="ImageTexture" value="gui_icons.png"/>
+								<Property key="NeedMouse" value="false"/>
+							</Widget>
+						</Widget>
+						<Widget type="Button" skin="Button" position="202 352 156 28" name="CarClrAdd">
+							<Property key="Caption" value="#{Add}"/>
+							<Property key="Colour" value="0.6 1.0 0.6"/>
+							<Property key="TextColour" value="0.6 1.0 0.6"/>
+							<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+								<Property key="ImageCoord" value="256 256 128 128"/>
+								<Property key="Alpha" value="0.7"/>
+								<Property key="ImageTexture" value="gui_icons.png"/>
+								<Property key="NeedMouse" value="false"/>
+							</Widget>
+						</Widget>
+
+						<Widget type="Button" skin="Button" position="12 392 156 28" name="CarClrLoad">
 							<Property key="Caption" value="#{RplLoad}"/>
 							<Property key="Colour" value="0.8 0.7 1.0"/>
 							<Property key="TextColour" value="0.9 0.9 1.0"/>
 						</Widget>
-						<Widget type="Button" skin="Button" position="12 402 156 28" name="CarClrLoadDef">
+						<Widget type="Button" skin="Button" position="202 392 156 28" name="CarClrSave">
+							<Property key="Caption" value="#{RplSave}"/>
+							<Property key="Colour" value="0.5 0.7 1.0"/>
+							<Property key="TextColour" value="0.5 0.8 1.0"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="12 432 156 28" name="CarClrLoadDef">
 							<Property key="Caption" value="#{RplLoad} defaults"/>
 							<Property key="Colour" value="0.8 0.4 0.4"/>
 							<Property key="TextColour" value="0.9 0.4 0.4"/>
 						</Widget>
 
-						<Widget type="Button" skin="Button" position="12 322 156 28" name="CarClrDel">
-							<Property key="Caption" value="#{Delete}"/>
-							<Property key="Colour" value="1.0 0.6 0.6"/>
-							<Property key="TextColour" value="1.0 0.6 0.6"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="202 322 156 28" name="CarClrAdd">
-							<Property key="Caption" value="#{Add}"/>
-							<Property key="Colour" value="0.6 1.0 0.6"/>
-							<Property key="TextColour" value="0.6 1.0 0.6"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="202 362 156 28" name="CarClrSave">
-							<Property key="Caption" value="#{RplSave}"/>
-							<Property key="Colour" value="0.5 0.7 1.0"/>
-							<Property key="TextColour" value="0.5 0.8 1.0"/>
-						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="650 130 52 52" name="ImgCarClrCur">
+						<Widget type="ImageBox" skin="ImageBox" position="650 40 52 52" name="ImgCarClrCur">
 							<Property key="ImageTexture" value="white.png"/>
 						</Widget>
 
