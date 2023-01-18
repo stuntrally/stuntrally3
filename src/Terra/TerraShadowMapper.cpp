@@ -196,10 +196,10 @@ namespace Ogre
 		if (!m_bGenerateShadowMap)
 		{
 			// todo: save/load from file, editor dynamic
-			StagingTexture *stagingTexture = textureManager->getStagingTexture(
+			StagingTexture *tex = textureManager->getStagingTexture(
 				width, height, 1u, 1u, format );
-			stagingTexture->startMapRegion();
-			TextureBox texBox = stagingTexture->mapRegion( width, height, 1u, 1u, format );
+			tex->startMapRegion();
+			TextureBox texBox = tex->mapRegion( width, height, 1u, 1u, format );
 
 			uint32* data = new uint32[width * height];
 			int a=0;
@@ -209,10 +209,10 @@ namespace Ogre
 				//data[a++] = 2000000000 + 2000000000 * sin(x*0.01) * cos(y*0.02);
 			texBox.copyFrom(data, width, height, width * sizeof(uint32) );
 
-			stagingTexture->stopMapRegion();
-			stagingTexture->upload( texBox, m_shadowMapTex, 0, 0, 0 );
-			textureManager->removeStagingTexture( stagingTexture );
-			stagingTexture = 0;
+			tex->stopMapRegion();
+			tex->upload( texBox, m_shadowMapTex, 0, 0, 0 );
+			textureManager->removeStagingTexture( tex );
+			tex = 0;
 			delete[] data;
 		}
 		//----

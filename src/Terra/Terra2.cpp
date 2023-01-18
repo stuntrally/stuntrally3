@@ -45,8 +45,7 @@ namespace Ogre
 		m_heightMapTex = mgr->createTexture(
 			"HeightMapTex" + StringConverter::toString( getId() ),
 			GpuPageOutStrategy::SaveToSystemRam,
-			TextureFlags::ManualTexture,
-			TextureTypes::Type2D );
+			TextureFlags::ManualTexture, TextureTypes::Type2D );
 		m_heightMapTex->setResolution( m_iWidth, m_iHeight );
 		m_heightMapTex->setPixelFormat( fmt );
 		m_heightMapTex->scheduleTransitionTo( GpuResidency::Resident );

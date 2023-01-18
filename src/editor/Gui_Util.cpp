@@ -236,9 +236,8 @@ void App::UpdVisGui()
 	if (scn->road)  scn->road->SetTerHitVis(bEdit());
 	if (!g && gcom->mToolTip)  gcom->mToolTip->setVisible(false);
 
-	/*if (ovBrushPrv)
-	if (edMode >= ED_Road || bMoveCam)
-		ovBrushPrv->hide();  else  ovBrushPrv->show();*/
+	if (ndBrush)
+		ndBrush->setVisible(edMode < ED_Road && !bMoveCam);
 
 	for (int i=0; i < WND_ALL; ++i)
 		mWndMainPanels[i]->setVisible(pSet->inMenu == i);

@@ -2,8 +2,15 @@
 //  rtt
 hlms ed_rtt unlit
 {
-	// diffuse_map  RttTex0
+	// diffuse_map  RttTex0  // set in cpp
 	diffuse 1 1 1
+	cull_mode none
+}
+
+hlms edBrush unlit
+{
+	// diffuse_map  BrushTex  // set in cpp
+	diffuse 1 0 1
 	cull_mode none
 }
 

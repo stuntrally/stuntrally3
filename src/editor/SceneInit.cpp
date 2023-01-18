@@ -110,7 +110,7 @@ void App::createScene01()  // once, init
 	// mCamera->setFarClipDistance( pSet->view_distance );
 	// mCamera->setLodBias( pSet->lod_bias );
 
-	createBrushPrv();
+	createPreviews();
 
 
 	///  🧰  All  #if 0  in Release !!!
@@ -337,6 +337,7 @@ void App::UpdateTrackEv()
 	NewCommon(true);  // destroy only terrain and veget
 	
 	//CreateFluids();
+	DestroyTerrain();
 	scn->CreateTerrain(bNewHmap,true);/**/
 
 	//  road ~
@@ -352,7 +353,8 @@ void App::UpdateTrackEv()
 	{	scn->CreateTrees();
 		scn->grass->Create();  // 🌿
 	}
-	//? Rnd2TexSetup();
+	DestroyRnd2Tex();
+	CreateRnd2Tex();  // if new hmap size
 
 	gui->Status("#{Updated}", 0.5,1.0,0.7);
 }

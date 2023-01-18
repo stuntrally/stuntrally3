@@ -77,10 +77,7 @@ protected:
 	Ogre::Real mRotX =0, mRotY =0,  mRotKX =0, mRotKY =0,  moveMul =0, rotMul =0;
 	Ogre::Vector3 mTrans;
 
-	///  overlay
-	Ogre::Overlay *ovBrushPrv =0, *ovTerPrv =0;
-	Ogre::OverlayElement *ovBrushMtr =0, *ovTerMtr =0;
-	float fStFade =0.f;
+	float fStFade =0.f;  // status
 
 
 	///  🎛️ Gui  ..........................

@@ -118,11 +118,13 @@ public:
 	void TerCircleInit(), TerCircleUpd(float dt);
 
 	//  🖼️ brush preview tex  ----
-	void createBrushPrv();
-	void updateBrushPrv(bool first=false), updateTerPrv(bool first=false);
+	HudRenderable* hrBrush =0, *hrTerGen =0;
+	Ogre::SceneNode* ndBrush =0, *ndTerGen =0;
+	void createPreviews();
+	void updateBrushPrv(bool first=false), updateTerGenPrv(bool first=false);
 
 	bool bUpdTerPrv =0;
-	Ogre::TextureGpu* brushPrvTex =0, *terPrvTex =0;
+	Ogre::TextureGpu* brPrvTex =0, *terPrvTex =0;
 	const static int BrPrvSize = 128, TerPrvSize = 256;
 
 

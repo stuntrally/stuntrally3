@@ -69,11 +69,12 @@ void App::processMouse(double fDT)
 void App::UpdateEnd(float dt)
 {
 	//  show when in gui on generator subtab
-	/*if (ovTerPrv)
-	if (bGuiFocus && mWndEdit &&
-		mWndEdit->getVisible() && mWndTabsEdit->getIndexSelected() == TAB_Terrain &&
-		gui->vSubTabsEdit.size() > TAB_Terrain && gui->vSubTabsEdit[TAB_Terrain]->getIndexSelected() == 2)
-		ovTerPrv->show();  else  ovTerPrv->hide();*/
+	if (ndTerGen)
+	{	bool vis = bGuiFocus && mWndEdit &&
+			mWndEdit->getVisible() && mWndTabsEdit->getIndexSelected() == TAB_Terrain &&
+			gui->vSubTabsEdit.size() > TAB_Terrain && gui->vSubTabsEdit[TAB_Terrain]->getIndexSelected() == 2;
+		ndTerGen->setVisible(vis);
+	}
 
 	//  track events
 	if (eTrkEvent != TE_None)
@@ -379,7 +380,7 @@ void App::update( float dt )
 	//  upd terrain generator preview
 	if (bUpdTerPrv)
 	{	bUpdTerPrv = false;
-		updateTerPrv();
+		updateTerGenPrv();
 	}
 
 	

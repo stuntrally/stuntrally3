@@ -5,16 +5,14 @@
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
-// #include <OgreTerrain.h>
-// #include <OgreHardwarePixelBuffer.h>
-//#include "../settings.h"
 #include <OgreTimer.h>
-#include <OgreOverlay.h>
-#include <OgreOverlayElement.h>
-// #include <OgreTextureManager.h>
-// #include <OgreMaterialManager.h>
-#include <OgreTechnique.h>
+#include "HudRenderable.h"
 #include "Terra.h"
+#include <OgreTextureGpuManager.h>
+#include <OgreHlmsUnlit.h>
+#include <OgrePixelFormatGpu.h>
+#include <OgreStagingTexture.h>
+#include <OgreHlmsPbsPrerequisites.h>
 #include <MyGUI.h>
 using namespace Ogre;
 
@@ -55,19 +53,23 @@ static float GetAngle(float x, float y)
 }
 
 
-///;  🖼️ update brush preview texture
+//  🖼️ update brush preview texture
 //--------------------------------------------------------------------------------------------------------------------------
 void App::updateBrushPrv(bool first)
 {
-#if 0
-	if (!first && (!ovBrushPrv || edMode >= ED_Road /*|| bMoveCam/*|| !bEdit()*/))  return;
-	if (!pSet->brush_prv || !brushPrvTex)  return;
+	if (!first && (edMode >= ED_Road /*|| bMoveCam/*|| !bEdit()*/))  return;
+	if (!pSet->brush_prv || !brPrvTex)  return;
 
-	//  Lock texture and fill pixel data
-	HardwarePixelBufferSharedPtr pbuf = brushPrvTex->getBuffer();
-	pbuf->lock(HardwareBuffer::HBL_DISCARD);
-	const PixelBox& pb = pbuf->getCurrentLock();
-	uint8* p = static_cast<uint8*>(pb.data);
+	// if (!first || !brPrvTex)  return;
+	auto* mgr =	mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
+
+	StagingTexture* tex = mgr->getStagingTexture(
+		BrPrvSize, BrPrvSize, 1u, 1u, PFG_RGBA8_UNORM );
+	tex->startMapRegion();
+	TextureBox texBox = tex->mapRegion(
+		BrPrvSize, BrPrvSize, 1u, 1u, PFG_RGBA8_UNORM );
+
+	uint8* data = new uint8[BrPrvSize * BrPrvSize * 4], *p = data;
 
 	const float fB = brClr[edMode][0]*255.f, fG = brClr[edMode][1]*255.f, fR = brClr[edMode][2]*255.f;
 
@@ -87,7 +89,8 @@ void App::updateBrushPrv(bool first)
 			c = std::max(0.f, c);
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			*p++ = bR;  *p++ = bG;  *p++ = bB;  *p++ = bG > 32 ? 255 : 0;
+			// *p++ = bR;  *p++ = bG;  *p++ = bB;  *p++ = bG > 32 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 32 ? 255 : 0;
 		}	break;
 
 	case BRS_Noise:
@@ -99,7 +102,7 @@ void App::updateBrushPrv(bool first)
 			float c = d * pow( fabs(CScene::Noise(x*s1+nof,y*s1+nof, fQ, oct, 0.5f)), fP*0.5f) * 0.9f;
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			*p++ = bR;  *p++ = bG;  *p++ = bB;  *p++ = bG > 32 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 32 ? 255 : 0;
 		}	break;
 
 	case BRS_Sinus:
@@ -111,7 +114,7 @@ void App::updateBrushPrv(bool first)
 			float c = powf( sinf(d * PI_d*0.5f), fP);
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			*p++ = bR;  *p++ = bG;  *p++ = bB;  *p++ = bG > 32 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 32 ? 255 : 0;
 		}	break;
 
 	case BRS_Ngon:
@@ -125,7 +128,7 @@ void App::updateBrushPrv(bool first)
     			fQ * powf( fabs(d / (-1.f+nof + cosf(PiN) / cosf( fmodf(k, 2*PiN) - PiN ) )),fP) ));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			*p++ = bR;  *p++ = bG;  *p++ = bB;  *p++ = bG > 32 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 32 ? 255 : 0;
 		}	break;
 
 	case BRS_Triangle:
@@ -137,15 +140,21 @@ void App::updateBrushPrv(bool first)
 			float c = powf( fabs(d), fP);
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			*p++ = bR;  *p++ = bG;  *p++ = bB;  *p++ = bG > 32 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 32 ? 255 : 0;
 		}	break;
 	default:  break;
 	}
-	pbuf->unlock();
-#endif
+
+	//  upload
+	texBox.copyFrom( data, BrPrvSize, BrPrvSize, BrPrvSize * 4 );
+
+	tex->stopMapRegion();
+	tex->upload( texBox, brPrvTex, 0, 0, 0 );
+	mgr->removeStagingTexture( tex );  tex = 0;
+	delete[] data;
 }
 
-///  fill brush data (shape), after size change
+//  fill brush data (shape), after size change
 //--------------------------------------------------------------------------------------------------------------------------
 void App::updBrush()
 {
@@ -326,17 +335,20 @@ void CGui::btnTerGenerate(WP wp)
 	app->bNewHmap = true;	app->UpdateTrack();
 }
 
-///;  🖼️ update terrain generator preview texture
+//  🖼️ update terrain generator preview texture
 //--------------------------------------------------------------------------------------------------------------------------
-void App::updateTerPrv(bool first)
+void App::updateTerGenPrv(bool first)
 {
-	/*if (!first && !ovTerPrv)  return;
-	if (!terPrvTex)  return;
+	// if (!first || !terPrvTex)  return;
+	auto* mgr =	mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
 
-	HardwarePixelBufferSharedPtr pbuf = terPrvTex->getBuffer();
-	pbuf->lock(HardwareBuffer::HBL_DISCARD);
-	const PixelBox& pb = pbuf->getCurrentLock();  using Ogre::uint8;
-	uint8* p = static_cast<uint8*>(pb.data);
+	StagingTexture* tex = mgr->getStagingTexture(
+		TerPrvSize, TerPrvSize, 1u, 1u, PFG_RGBA8_UNORM );
+	tex->startMapRegion();
+	TextureBox texBox = tex->mapRegion(
+		TerPrvSize, TerPrvSize, 1u, 1u, PFG_RGBA8_UNORM );
+
+	uint8* data = new uint8[TerPrvSize * TerPrvSize * 4], *p = data;
 
 	const static float fB[2] = { 90.f, 90.f}, fG[2] = {255.f,160.f}, fR[2] = { 90.f,255.f};
 
@@ -347,7 +359,8 @@ void App::updateTerPrv(bool first)
 	for (int x = 0; x < TerPrvSize; ++x)
 	{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
 
-		float c = CScene::Noise(x*s1-oy, y*s1+ox, pSet->gen_freq, pSet->gen_oct, pSet->gen_persist) * 0.8f;  // par fit
+		float c = CScene::Noise(x*s1-oy, y*s1+ox,
+			pSet->gen_freq, pSet->gen_oct, pSet->gen_persist) * 0.8f;  // par fit
 		bool b = c >= 0.f;
 		c = b ? powf(c, pSet->gen_pow) : -powf(-c, pSet->gen_pow);
 
@@ -355,9 +368,17 @@ void App::updateTerPrv(bool first)
 		//c *= pSet->gen_scale;  //no
 		
 		uint8 bR = c * fR[i], bG = c * fG[i], bB = c * fB[i];
-		*p++ = bR;  *p++ = bG;  *p++ = bB;  *p++ = 255;//bG > 32 ? 255 : 0;
+		// *p++ = bR;  *p++ = bG;  *p++ = bB;  *p++ = 255;//bG > 32 ? 255 : 0;
+		*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = 255;
 	}
-	pbuf->unlock();*/
+
+	//  upload
+	texBox.copyFrom( data, TerPrvSize, TerPrvSize, TerPrvSize * 4 );
+
+	tex->stopMapRegion();
+	tex->upload( texBox, terPrvTex, 0, 0, 0 );
+	mgr->removeStagingTexture( tex );  tex = 0;
+	delete[] data;
 }
 
 
@@ -593,41 +614,65 @@ void App::filter(Vector3 &pos, float dtime, float brMul)
 
 
 
-//;  🖼️ preview texture for brush and noise ter gen
+//  🖼️ previews  for brush and noise ter gen
 //--------------------------------------------------------------------------------------------------------------------------
-void App::createBrushPrv()
+void App::createPreviews()
 {
-	//  brush
-	/*brushPrvTex = TextureManager::getSingleton().createManual(
-		"BrushPrvTex", rgDef, TEX_TYPE_2D,
-		BrPrvSize,BrPrvSize,0, PF_BYTE_RGBA, TU_DYNAMIC);
-	 	
-	MaterialPtr mat = MaterialManager::getSingleton().create(
-		"BrushPrvMtr", rgDef);
-	 
-	Pass* pass = mat->getTechnique(0)->getPass(0);
-	pass->createTextureUnitState("BrushPrvTex");
-	pass->setSceneBlending(SBT_TRANSPARENT_ALPHA);
-
-	if (ovBrushMtr)
-		ovBrushMtr->setMaterialName("BrushPrvMtr");
-
-	updateBrushPrv(true);
+	LogO("C--- Create prv tex");
+	auto *mgr = mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
 	
-	//  ter gen
-	terPrvTex = TextureManager::getSingleton().createManual(
-		"TerPrvTex", rgDef, TEX_TYPE_2D,
-		TerPrvSize,TerPrvSize,0, PF_BYTE_RGBA, TU_DYNAMIC);
-	 	
-	mat = MaterialManager::getSingleton().create(
-		"TerPrvMtr", rgDef);
-	 
-	pass = mat->getTechnique(0)->getPass(0);
-	pass->createTextureUnitState("TerPrvTex");
-	pass->setSceneBlending(SBT_TRANSPARENT_ALPHA);
+	//  brush tex ----
+	brPrvTex = mgr->createTexture("BrushTex",
+		GpuPageOutStrategy::SaveToSystemRam,
+		TextureFlags::ManualTexture, TextureTypes::Type2D );
 
-	if (ovTerMtr)
-		ovTerMtr->setMaterialName("TerPrvMtr");
+	brPrvTex->setResolution( BrPrvSize, BrPrvSize );
+	brPrvTex->scheduleTransitionTo( GpuResidency::OnStorage );
+	brPrvTex->setPixelFormat( PFG_RGBA8_UNORM );
+	brPrvTex->scheduleTransitionTo( GpuResidency::Resident );
+	// "BrushPrvTex", rgDef, TEX_TYPE_2D,
+	// BrPrvSize,BrPrvSize,0, PF_BYTE_RGBA, TU_DYNAMIC);
+	
+	updateBrushPrv(true);
 
-	updateTerPrv(true);*/
+
+	//  ter gen tex ----
+	terPrvTex = mgr->createTexture("TerGenTex",
+		GpuPageOutStrategy::SaveToSystemRam,
+		TextureFlags::ManualTexture, TextureTypes::Type2D );
+
+	terPrvTex->setResolution( TerPrvSize, TerPrvSize );
+	terPrvTex->scheduleTransitionTo( GpuResidency::OnStorage );
+	terPrvTex->setPixelFormat( PFG_RGBA8_UNORM );
+	terPrvTex->scheduleTransitionTo( GpuResidency::Resident );
+
+	updateTerGenPrv(true);
+
+
+	//  rect prv ----
+	for (int i=0; i < 2; ++i)
+	{
+		String sMtr = i ? "edTerGen" : "edBrush";
+		const auto hlms = dynamic_cast<HlmsUnlit*>(mRoot->getHlmsManager()->getHlms(HLMS_UNLIT));
+		HlmsUnlitDatablock* db = dynamic_cast<HlmsUnlitDatablock*>(hlms->getDatablock(sMtr));
+		db->setTexture(PBSM_DIFFUSE, i ? terPrvTex : brPrvTex);
+
+		auto& hr = i ? hrTerGen : hrBrush;
+		hr = new HudRenderable(sMtr, mSceneMgr,
+			OT_TRIANGLE_LIST, true,false, RV_Hud,RQG_Hud1, 1);
+		
+		hr->begin();
+		auto s = pSet->size_minimap * (i ? 1.4f : 0.8f);  //par
+		Real x1 = -1.f, x2 = x1 + s / asp, y1 = -0.8f, y2 = y1 + s;
+		hr->position(x1,y1, 0.f);  hr->texUV(0.f, 1.f);
+		hr->position(x2,y1, 0.f);  hr->texUV(1.f, 1.f);
+		hr->position(x1,y2, 0.f);  hr->texUV(0.f, 0.f);
+		hr->position(x2,y2, 0.f);  hr->texUV(1.f, 0.f);
+		hr->end();
+
+		auto& nd = i ? ndTerGen : ndBrush;
+		nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+		nd->attachObject(hr);
+		nd->setVisible(false);
+	}
 }
