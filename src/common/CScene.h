@@ -9,6 +9,8 @@ namespace Ogre  {  class Terra;  class Atmosphere2Npr;
 class App;  class Scene;  class WaterRTT;  class CData;  class SplineRoad;  class PaceNotes;  class Grass;
 
 
+///  🟢 Ogre parts for a track/map
+//--------------------------------------------------------------------------------
 class CScene
 {
 public:

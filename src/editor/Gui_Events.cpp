@@ -237,6 +237,29 @@ void CGui::Upd3DView(String mesh)
 
 //  🛣️ Road
 //-----------------------------------------------------------------------------------------------------------
+void CGui::btnRoadsPrev(WP)
+{
+	app->RoadsNext(-1);
+}
+void CGui::btnRoadsNext(WP)
+{
+	app->RoadsNext(1);
+}
+void CGui::btnRoadsDel(WP)
+{
+	app->RoadsDel();
+}
+void CGui::btnRoadsAdd(WP)
+{
+	app->RoadsAdd();
+}
+
+void CGui::updRoadsTxt()
+{
+	int all = scn->roads.size();
+	if (txRoadsCur)
+		txRoadsCur->setCaption(TR("#{RplCurrent}: " + toStr(scn->rdCur+1) +"/"+ toStr(all)));
+}
 
 void CGui::editTrkDescr(Ed ed)
 {

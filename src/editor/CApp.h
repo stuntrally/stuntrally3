@@ -248,4 +248,7 @@ public:
 	std::vector <TRACKSURFACE> surfaces;  // all
 	std::map <std::string, int> surf_map;  // name to surface id
 	bool LoadAllSurfaces();
+
+	//  🛣️ Roads  ----
+	void RoadsNext(int add = 1), RoadsAdd(), RoadsDel();
 };

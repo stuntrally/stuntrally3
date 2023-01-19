@@ -40,7 +40,7 @@ void CGui::SetGuiFromXmls()
 	#define _Cmb(cmb, str)  cmb->setIndexSelected( cmb->findItemIndexWith(str) )
 	
 
-	//  [Sky]
+	//  ⛅ Sky
 	//-----------------------------------------------
 	btnSky->setCaption(sc->skyMtr);
 	String s = sc->skyMtr;  s = s.substr(4, s.length());  // sel on pick list
@@ -59,7 +59,7 @@ void CGui::SetGuiFromXmls()
 	_Cmb(cmbRain2, sc->rain2Name);
 	_Cmb(cmbReverbs, sc->sReverbs);  UpdRevDescr();
 	
-	//  [Terrain]
+	//  ⛰️ Terrain
 	//-----------------------------------------------
 	updTabHmap();
 	svTerTriSize.Upd();
@@ -70,7 +70,7 @@ void CGui::SetGuiFromXmls()
 	_Cmb(cmbParDust, sc->sParDust);	_Cmb(cmbParMud,  sc->sParMud);
 	_Cmb(cmbParSmoke,sc->sParSmoke);
 
-	//  [Vegetation]
+	//  🌳🪨🌿 Vegetation
 	//-----------------------------------------------
 	svGrassDens.Upd();  svTreesDens.Upd();
 	_Ed(TrPage, sc->trPage);  _Ed(TrDist, sc->trDist);
@@ -82,7 +82,7 @@ void CGui::SetGuiFromXmls()
 
 	SetGuiRoadFromXml();
 
-	//  [Game]
+	//  🚗 Game
 	//-----------------------------------------------
 	ckDenyReversed.Upd(&sc->denyReversed);
 	ckTiresAsphalt.Upd(&sc->asphalt);
@@ -91,7 +91,7 @@ void CGui::SetGuiFromXmls()
 	SldUpd_Game();
 	UpdEdInfo();
 	
-	//  [Surface]
+	//  ⚫💭 Surface
 	//-----------------------------------------------
 	UpdSurfList();
 	listSurf(surfList, idSurf);
@@ -101,7 +101,7 @@ void CGui::SetGuiFromXmls()
 
 void CGui::SetGuiRoadFromXml()
 {
-	//  [Road]
+	//  🛣️ Road
 	//-----------------------------------------------
 	SplineRoad* rd = scn->road;
 	for (int i=0; i < 4/*MTRs*/; ++i)
@@ -116,6 +116,7 @@ void CGui::SetGuiRoadFromXml()
 	_Ed(RdSkirtLen, rd->g_SkirtLen);  _Ed(RdSkirtH, rd->g_SkirtH);
 	SldUpd_Road();
 	ckRoad1Mtr.Upd();
+	
 }
 
 
@@ -133,7 +134,7 @@ void CGui::btnEdTut(WP)
 }
 
 
-//  Update  input, info
+//  🔁🪟 Update  input, info
 //-------------------------------------------------------------------------------
 //  tool wnds show/hide
 void App::UpdEditWnds()

@@ -453,6 +453,10 @@ void CGui::InitGui()
 	
 	///  🛣️ Road
 	//------------------------------------------------------------------------
+	txRoadsCur = fTxt("RoadsCur");
+	Btn("RoadsPrev", btnRoadsPrev);  Btn("RoadsNext", btnRoadsNext);
+	Btn("RoadsAdd", btnRoadsAdd);  Btn("RoadsDel", btnRoadsDel);
+
 	sv= &svRdTcMul; 	sv->Init("RdTcMul", 	&f, 0.001f,0.3f, 1.5f, 3,5);  sv->DefaultF(0.1f);
 	sv= &svRdTcMulW;	sv->Init("RdTcMulW",	&f, 0.005f,0.4f, 1.5f, 3,5);  sv->DefaultF(0.1f);
 	sv= &svRdTcMulP;	sv->Init("RdTcMulP",	&f, 0.005f,0.3f, 1.5f, 3,5);  sv->DefaultF(0.2f);
@@ -468,7 +472,7 @@ void CGui::InitGui()
 	sv= &svRdColR;		sv->Init("RdColR",		&f, 1.0f, 8.f, 1.5f, 2,4);  sv->DefaultF(2.f);
 
 	sv= &svRdMergeLen;	sv->Init("RdMergeLen",	&f, 60.f, 2400.f, 2.f, 0,3);  sv->DefaultF(800.f);
-	sv= &svRdLodPLen;	sv->Init("RdLodPLen",	&f, 10.f, 200.f, 2.f, 0,2);  sv->DefaultF(30.f);
+	sv= &svRdLodPLen;	sv->Init("RdLodPLen",	&f, 10.f, 200.f,  2.f, 0,2);  sv->DefaultF(30.f);
 	sv= &svRdVisDist;	sv->Init("RdVisDist",	&f, 100.f, 2400.f, 2.f, 0,3);  sv->DefaultF(600.f);
 	sv= &svRdVisBehind;	sv->Init("RdVisBehind",	&f, 100.f, 2400.f, 2.f, 0,3);  sv->DefaultF(600.f);
 	SldUpd_Road();
@@ -479,7 +483,7 @@ void CGui::InitGui()
 
 	///  🎮 Game  ------------------------------------
 	sv= &svDamage;		sv->Init("DamageMul",	&sc->damageMul, 0.f,2.f, 1.f, 2,4);  sv->DefaultF(1.f);
-	sv= &svWind;		sv->Init("WindAmt",		&sc->windAmt,  -6.f,6.f, 1.0f, 2,5);  sv->DefaultF(0.f);
+	sv= &svWind;		sv->Init("WindAmt",		&sc->windAmt,  -6.f,6.f, 1.f, 2,5);  sv->DefaultF(0.f);
 	sv= &svGravity;		sv->Init("Gravity",		&sc->gravity,   2.f,20.f, 1.5f, 2,4);  sv->DefaultF(9.81f);
 	ck= &ckDenyReversed;	ck->Init("DenyReversed",	&sc->denyReversed);
 	ck= &ckTiresAsphalt;	ck->Init("TiresAsphalt",	&sc->asphalt);

@@ -9,7 +9,6 @@ using namespace Ogre;
 
 //  Key Press Road
 //---------------------------------------------------------------------------------------------------------------
-
 void App::keyPressRoad(SDL_Scancode skey)
 {
 	#define key(a)  SDL_SCANCODE_##a
@@ -108,40 +107,59 @@ void App::keyPressRoad(SDL_Scancode skey)
 				scn->road->Rebuild(true);
 			}
 			else if (ctrl && shift)
-			{	//  del
-				auto& r = scn->roads;
-				if (r.size() > 1)  // not last
-				{
-					r[scn->rdCur]->Destroy();
-					r.erase(r.begin() + scn->rdCur);
-					
-					if (scn->rdCur >= r.size())
-						scn->rdCur = r.size()-1;
-					scn->road = r[scn->rdCur];
-			}	}
+				RoadsDel();
 			else if (ctrl)
-			{	//  add new
-				SplineRoad* road = new SplineRoad(this);
-				int id = scn->roads.size();
-				Cam* cam = &mCams[0];  // todo: lod cam-
-				
-				road->Setup("sphere.mesh", pSet->road_sphr, scn->terrain, mSceneMgr, cam, id);
-				road->Rebuild(true);  //road->RebuildRoadInt();
-				
-				scn->roads.push_back(road);
-				scn->road = road;
-				scn->rdCur = id;
-			}else
-			{	//  next
-				scn->road->HideMarks();
-				int id = scn->roads.size();
-				scn->rdCur = (scn->rdCur + (shift ? -1 : 1) + id) % id;
-				scn->road = scn->roads[scn->rdCur];
-				gui->SetGuiRoadFromXml();
-			}	break;
+				RoadsAdd();
+			else
+				RoadsNext(shift ? -1 : 1);
+			break;
 
 		default:  break;
 	}
 	if (snap)
 	{	iSnap = (iSnap + (snap < 0 ? -1 + ciAngSnapsNum : 1)) % ciAngSnapsNum;  angSnap = crAngSnaps[iSnap];	}
+}
+
+
+//  < >  next, prev
+void App::RoadsNext(int add)
+{
+	scn->road->HideMarks();
+	int id = scn->roads.size();
+	scn->rdCur = (scn->rdCur + add + id) % id;
+	scn->road = scn->roads[scn->rdCur];
+	gui->SetGuiRoadFromXml();
+	gui->updRoadsTxt();
+}
+
+//  ➕ add new
+void App::RoadsAdd()
+{
+	SplineRoad* road = new SplineRoad(this);
+	int id = scn->roads.size();
+	Cam* cam = &mCams[0];  // todo: lod cam-
+	
+	road->Setup("sphere.mesh", pSet->road_sphr, scn->terrain, mSceneMgr, cam, id);
+	road->Rebuild(true);  //road->RebuildRoadInt();
+	
+	scn->roads.push_back(road);
+	scn->road = road;
+	scn->rdCur = id;
+	gui->updRoadsTxt();
+}
+
+//  ➖ del
+void App::RoadsDel()
+{
+	auto& r = scn->roads;
+	if (r.size() > 1)  // not last
+	{
+		r[scn->rdCur]->Destroy();
+		r.erase(r.begin() + scn->rdCur);
+		
+		if (scn->rdCur >= r.size())
+			scn->rdCur = r.size()-1;
+		scn->road = r[scn->rdCur];
+	}
+	gui->updRoadsTxt();
 }

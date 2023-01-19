@@ -272,6 +272,10 @@ public:
 	
 	
 	//  🛣️ Road  ----
+	Txt txRoadsCur =0;
+	void btnRoadsPrev(WP), btnRoadsNext(WP), updRoadsTxt();
+	void btnRoadsDel(WP), btnRoadsAdd(WP);
+
 	//  materials, pick
 	enum {  RdPk_Road, RdPk_Pipe, RdPk_Wall, RdPk_PipeW, RdPk_Col
 	}	idRdType = RdPk_Road;

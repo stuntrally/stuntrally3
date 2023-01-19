@@ -10,7 +10,15 @@ hlms ed_rtt unlit
 hlms edBrush unlit
 {
 	// diffuse_map  BrushTex  // set in cpp
-	diffuse 1 0 1
+	diffuse 1 1 1
+	cull_mode none
+	scene_blend alpha_blend
+	alpha_rejection greater 2
+}
+hlms edTerGen unlit
+{
+	// diffuse_map  TerGenTex  // set in cpp
+	diffuse 1 1 1
 	cull_mode none
 }
 

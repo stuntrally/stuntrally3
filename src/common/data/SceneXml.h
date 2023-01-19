@@ -25,7 +25,7 @@ public:
 	Ogre::Vector3 camPos,camDir;
 
 
-	//  ⛅ Sky  ()
+	//  ⛅ Sky
 	Ogre::String skyMtr;  float skyYaw;
 	int  rainEmit,rain2Emit;  Ogre::String rainName,rain2Name;
 	//  🌞 Sun, Light

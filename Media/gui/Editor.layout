@@ -19,7 +19,7 @@
 <!-- ============================================================================================================================================= -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#FFFF80#{Sun}"/>
-				<Widget type="TabControl" skin="TabControl" position="16 24 760 506" name="SubTab">
+				<Widget type="TabControl" skin="TabControl" position="16 28 760 506" name="SubTab">
 					<Property key="InheritsAlpha" value="false"/>
 					<Property key="SmoothShow" value="false"/>
 					<Property key="Colour" value="0.7 0.9 1"/>
@@ -316,7 +316,47 @@
 <!-- ============================================================================================================================================= -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#A0D8A0#{Terrain}"/>
-				<Widget type="TabControl" skin="TabControl" position="16 24 760 506" name="SubTab">
+
+				<!--  < > Cur  -->
+				<Widget type="TextBox" skin="TextBox" position="600 8 168 24">
+					<Property key="Caption" value="#{RplCurrent}: 1/1"/>
+					<Property key="TextColour" value="0.8 1 0.8"/>
+					<UserString key="tip" value="#{Terrain}: #{RplCurrent} / #{RplAll}"/>
+				</Widget>
+				<Widget type="Button" skin="Button" position="500 4 36 24" name="TerPrev">
+					<Property key="Colour" value="0.6 1.0 0.6"/>
+					<Property key="TextColour" value="0.7 1.0 0.7"/>
+					<Property key="Caption" value="&lt;"/>
+					<UserString key="tip" value="#{TipTerLMove}"/>
+				</Widget>
+				<Widget type="Button" skin="Button" position="540 4 36 24" name="TerNext">
+					<Property key="Colour" value="0.6 1.0 0.6"/>
+					<Property key="TextColour" value="0.7 1.0 0.7"/>
+					<Property key="Caption" value="&gt;"/>
+					<UserString key="tip" value="#{TipTerLMove}"/>
+				</Widget>
+				<Widget type="Button" skin="Button" position="715 4 24 24" name="TersAdd">
+					<Property key="Colour" value="0.6 1.0 0.6"/>
+					<Property key="TextColour" value="0.7 1.0 0.7"/>
+					<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+						<Property key="ImageCoord" value="256 256 128 128"/>
+						<Property key="Alpha" value="0.7"/>
+						<Property key="ImageTexture" value="gui_icons.png"/>
+						<Property key="NeedMouse" value="false"/>
+					</Widget>
+				</Widget>
+				<Widget type="Button" skin="Button" position="740 4 24 24" name="TersDel">
+					<Property key="Colour" value="0.6 1.0 0.6"/>
+					<Property key="TextColour" value="0.7 1.0 0.7"/>
+					<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+						<Property key="ImageCoord" value="256 384 128 128"/>
+						<Property key="Alpha" value="0.5"/>
+						<Property key="ImageTexture" value="gui_icons.png"/>
+						<Property key="NeedMouse" value="false"/>
+					</Widget>
+				</Widget>
+
+				<Widget type="TabControl" skin="TabControl" position="16 28 760 506" name="SubTab">
 					<Property key="Colour" value="0.7 0.9 0.8"/>
 					<Property key="SmoothShow" value="false"/>
 					<UserString key="tip" value="#{TipTerLayers}"/>
@@ -378,9 +418,6 @@
 							<Widget type="TabItem" skin="" position="2 24 334 -8">
 								<Property key="Caption" value="#801010 4k "/>
 							</Widget>
-							<!-- <Widget type="TabItem" skin="" position="2 24 334 -8">
-								<Property key="Caption" value="#300000 8k "/>
-							</Widget> NO-->
 						</Widget>
 						<Widget type="ProgressBar" skin="ProgressBarFill" position="200 37 300 21">
 							<Property key="Colour" value="0.2 0.9 0.3"/>
@@ -736,18 +773,27 @@
 					<Property key="TextColour" value="0.5 1.0 0.2"/>
 					<Property key="Alpha" value="0.7"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="565 24 24 22" name="TerLmoveL">
-					<Property key="Colour" value="0.6 0.8 0.6"/>
-					<Property key="TextColour" value="0.2 0.5 0.2"/>
+
+				<!--  < > Move  -->
+				<Widget type="TextBox" skin="TextBox" position="632 28 100 24">
+					<Property key="Caption" value="#{TerrainMove}"/>
+					<Property key="TextColour" value="0.4 0.5 0.2"/>
+					<Property key="Colour" value="0.4 0.5 0.2"/>
+					<UserString key="tip" value="#{TipTerLayers}"/>
+				</Widget>
+				<Widget type="Button" skin="Button" position="560 24 24 24" name="TerLmoveL">
+					<Property key="Colour" value="0.6 0.8 0.4"/>
+					<Property key="TextColour" value="0.2 0.4 0.1"/>
 					<Property key="Caption" value="&lt;"/>
 					<UserString key="tip" value="#{TipTerLMove}"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="590 24 24 22" name="TerLmoveR">
-					<Property key="Colour" value="0.6 0.8 0.6"/>
-					<Property key="TextColour" value="0.2 0.5 0.2"/>
+				<Widget type="Button" skin="Button" position="590 24 24 24" name="TerLmoveR">
+					<Property key="Colour" value="0.6 0.8 0.4"/>
+					<Property key="TextColour" value="0.2 0.4 0.1"/>
 					<Property key="Caption" value="&gt;"/>
 					<UserString key="tip" value="#{TipTerLMove}"/>
 				</Widget>
+
 				<Widget type="TextBox" skin="TextBox" position="600 70 100 24" name="TerLayersAll">
 					<Property key="Caption" value="#{Used}: "/>
 					<Property key="TextColour" value="0.4 1 0.4"/>
@@ -1175,7 +1221,7 @@
 <!-- ============================================================================================================================================= -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#B0F040#{Grasses}"/>
-				<Widget type="TabControl" skin="TabControl" position="16 24 760 506" name="SubTab">
+				<Widget type="TabControl" skin="TabControl" position="16 28 760 506" name="SubTab">
 					<Property key="Colour" value="0.73 0.88 1"/>
 					<Property key="SmoothShow" value="false"/>
 					<Widget type="TabItem" skin="" position="2 24 754 478">
@@ -1669,7 +1715,7 @@
 <!-- ============================================================================================================================================= -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#80F0F0#{Vegetation}"/>
-				<Widget type="TabControl" skin="TabControl" position="16 24 760 506" name="SubTab">
+				<Widget type="TabControl" skin="TabControl" position="16 28 760 506" name="SubTab">
 					<Property key="Colour" value="0.73 0.88 1"/>
 					<Property key="SmoothShow" value="false"/>
 					<Widget type="TabItem" skin="" position="2 24 754 478">
@@ -1749,11 +1795,11 @@
 							<Property key="TextColour" value="0.6 1.0 1.0"/>
 							<Property key="Alpha" value="0.7"/>
 						</Widget>
-						<Widget type="Widget" skin="" position="136 12 534 24">
+						<Widget type="Widget" skin="" position="136 12 634 24">
 							<Widget type="TabControl" skin="TabControlIcon" position="0 0 616 24" name="LTrNumTab">
 								<Property key="Colour" value="0.6 0.8 0.8"/>
 								<Property key="Visible" value="true"/>
-								<Property key="ButtonWidth" value="60"/>
+								<Property key="ButtonWidth" value="70"/>
 								<Property key="SmoothShow" value="false"/>
 								<UserString key="tip" value="#{TipVegetGroups}"/>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
@@ -2203,7 +2249,45 @@
 <!-- ============================================================================================================================================= -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#FFB020#{Road}"/>
-				<Widget type="TabControl" skin="TabControl" position="16 24 752 496" name="SubTab">
+
+				<!--  < > Cur  -->
+				<Widget type="TextBox" skin="TextBox" position="600 8 168 24" name="RoadsCur">
+					<Property key="Caption" value="#{RplCurrent}: 1/1"/>
+					<Property key="TextColour" value="1.0 0.8 0.6"/>
+					<UserString key="tip" value="#{Road}: #{RplCurrent} / #{RplAll}"/>
+				</Widget>
+				<Widget type="Button" skin="Button" position="500 4 36 24" name="RoadsPrev">
+					<Property key="Colour" value="1.0 0.9 0.6"/>
+					<Property key="TextColour" value="1.0 0.9 0.7"/>
+					<Property key="Caption" value="&lt;"/>
+				</Widget>
+				<Widget type="Button" skin="Button" position="540 4 36 24" name="RoadsNext">
+					<Property key="Colour" value="1.0 0.9 0.6"/>
+					<Property key="TextColour" value="1.0 0.9 0.7"/>
+					<Property key="Caption" value="&gt;"/>
+				</Widget>
+				<Widget type="Button" skin="Button" position="715 4 24 24" name="RoadsAdd">
+					<Property key="Colour" value="1.0 0.9 0.6"/>
+					<Property key="TextColour" value="1.0 0.9 0.7"/>
+					<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+						<Property key="ImageCoord" value="256 256 128 128"/>
+						<Property key="Alpha" value="0.7"/>
+						<Property key="ImageTexture" value="gui_icons.png"/>
+						<Property key="NeedMouse" value="false"/>
+					</Widget>
+				</Widget>
+				<Widget type="Button" skin="Button" position="740 4 24 24" name="RoadsDel">
+					<Property key="Colour" value="1.0 0.9 0.6"/>
+					<Property key="TextColour" value="1.0 0.9 0.7"/>
+					<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+						<Property key="ImageCoord" value="256 384 128 128"/>
+						<Property key="Alpha" value="0.5"/>
+						<Property key="ImageTexture" value="gui_icons.png"/>
+						<Property key="NeedMouse" value="false"/>
+					</Widget>
+				</Widget>
+
+				<Widget type="TabControl" skin="TabControl" position="16 28 752 496" name="SubTab">
 					<Property key="ButtonAutoWidth" value="true"/>
 					<Property key="Colour" value="0.73 0.88 1"/>
 					<Property key="SmoothShow" value="false"/>
