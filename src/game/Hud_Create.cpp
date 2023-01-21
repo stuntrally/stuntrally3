@@ -107,7 +107,7 @@ void CHud::Create()
 				  wy = app->mWindow->getHeight() +20;  //+? why
 		const float asp = float(wx) / float(wy);
 
-		float t = sc->td.fTerWorldSize*0.5;
+		float t = sc->tds[0].fTerWorldSize*0.5;  // 1st ter-
 		minX = -t;  minY = -t;  maxX = t;  maxY = t;
 		
 		float fMapSizeX = maxX - minX, fMapSizeY = maxY - minY;  // map size

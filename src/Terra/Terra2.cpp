@@ -175,7 +175,7 @@ namespace Ogre
 
 		SetParams();
 
-		camera = pTerra->mManager->createCamera( "CamTerraBlend" );
+		camera = pTerra->mManager->createCamera( "CamTerraBlend" + toStr(pTerra->cnt) );
 
 		const IdString workspaceName = "Terra/GpuBlendMapperWorkspace";
 		workspace = pTerra->m_compositorManager->addWorkspace(
@@ -233,7 +233,7 @@ namespace Ogre
 		for (i=0; i < 2; ++i)
 		{	Nnext2[i]=0.f;  Nfreq2[i]=0.f; Noct2[i]=0.f; Npers2[i]=0.f; Npow2[i]=0.f;  }
 		
-		const auto& td = pTerra->sc->td;
+		const auto& td = pTerra->sc->tds[pTerra->cnt];  //
 		int nl = std::min(4, (int)td.layers.size());
 		for (i=0; i < nl; ++i)
 		{	//  range

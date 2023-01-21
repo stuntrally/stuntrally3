@@ -72,15 +72,15 @@ void App::AlignTerToRoad()
 	road->RebuildRoadInt(true);
 
 	//  terrain
-	std::vector<float>& fHmap = mTerra->getHeightData();
-	const int w = mTerra->getSize(), h = w;
+	std::vector<float>& fHmap = scn->ter->getHeightData();
+	const int w = scn->ter->getSize(), h = w;
 	// const int w = scn->sc->td.iVertsX - 1 /*!*/, h = w;
 	const float fh = h-1, fw = w-1;
 
 	float *rd = new float[w*h];  // road depth
 	bool  *rh = new bool[w*h];  // road hit
 
-	const float ws = scn->sc->td.fTerWorldSize;
+	const float ws = scn->sc->tds[0].fTerWorldSize;  // 1st ter-
 	const float Len = 400;  // max ray length
 	int x,y,a,b;
 	float v,k, fx,fz, wx,wz;
@@ -173,7 +173,7 @@ void App::AlignTerToRoad()
 
 
 	//  update terrain
-	scn->terrain->dirtyRect(Rect(0,0,1,1));
+	scn->ter->dirtyRect(Rect(0,0,1,1));
 	scn->UpdBlendmap();
 	bTerUpd = true;
 

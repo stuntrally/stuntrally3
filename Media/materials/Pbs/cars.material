@@ -383,7 +383,6 @@ hlms TW_body1 pbs // : car_body
 hlms TW_glass pbs : car_interior
 {
 	diffuse_map  white.png
-	ambient  0.0 0.0 0.0
 	diffuse  0.0 0.0 0.0
 	specular 0.3 0.3 0.3 //4
 	// fresnelScaleBiasPower 0.7 0.15 4
@@ -391,6 +390,7 @@ hlms TW_glass pbs : car_interior
 hlms TW_interior pbs : car_interior
 {
 	diffuse_map  TW_interior.png
+	diffuse  0.2 0.2 0.2  //-
 }
 
 hlms TW_wheel_front pbs : car_wheel
@@ -749,6 +749,7 @@ hlms U8_interior pbs : car_interior
 {
 	diffuse_map  U8_interior.png
 	specular_map  U8_interior_spec.png
+	cull_mode none
 	diffuse  0.2 0.2 0.2
 	specular 0.5 0.5 0.5  //4
 	// env_map false

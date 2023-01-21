@@ -29,13 +29,13 @@ using namespace Ogre;
 //-----------------------------------------------------------------------------------------
 CompositorWorkspace* AppGui::SetupCompositor()
 {
-	LogO("C### setup Compositor");
+	// LogO("C### setup Compositor");
 	auto* rndSys = mRoot->getRenderSystem();
 	auto* texMgr = rndSys->getTextureGpuManager();
 	auto* mgr = mRoot->getCompositorManager2();
 	
 	//  💥 destroy old
-	LogO("D### setup Compositor rem workspaces: "+ toStr(mWorkspaces.size()));
+	LogO("D### destroy Compositor, workspaces: "+ toStr(mWorkspaces.size()));
 	for (auto ws : mWorkspaces)
 	{
 		// LogO("D### setup Compositor rem workspace");

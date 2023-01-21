@@ -74,9 +74,9 @@ void TerData::Default()
 	iVertsX = 1024;
 	fTriangleSize = 1.f;  // scale
 	triplanarLayer1 = 8;  triplanarLayer2 = 8;  triplCnt = 0;  // off
-	errorNorm = 1.7;  normScale = 1.f;
-	emissive = false;  specularPow = 32.f;  specularPowEm = 2.f;
-	road1mtr = true;
+	// errorNorm = 1.7;  normScale = 1.f;  specularPow = 32.f;
+	emissive = false;  specularPowEm = 2.f;
+	// road1mtr = true;
 
 	for (int i=0; i < ciNumLay; ++i)
 	{	

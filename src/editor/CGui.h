@@ -18,7 +18,8 @@
 
 
 namespace wraps {	class RenderBoxScene;  }
-class App;  class SETTINGS;  class CScene;  class Scene;  class CData;  class CGuiCom;
+class App;  class SETTINGS;  class CGuiCom;
+class CScene;  class Scene;  class CData;  class TerData;
 
 
 class CGui : public BGui
@@ -31,6 +32,7 @@ public:
 	MyGUI::Gui* mGui =0;  CGuiCom* gcom =0;
 
 	typedef std::list<std::string> strlist;
+	TerData& td();
 
 
 	//  🪧 main menu
@@ -55,8 +57,9 @@ public:
 
 
 	//  👷 ed gui, status
-	void Status(Ogre::String s, float r,float g,float b);  // load, save etc
-	void SetGuiFromXmls(), SetGuiRoadFromXml();  // update gui controls
+	void Status(Ogre::String s, float r,float g,float b);  // load, save, etc
+	void SetGuiFromXmls();  // update all gui controls values
+	void SetGuiTerFromXml(), SetGuiRoadFromXml();
 
 	///  mode, status
 	Img imgCam =0, imgEdit =0, imgGui =0;
@@ -87,7 +90,7 @@ public:
 	Img brImg =0, rdImg[RD_TXT];  Tab wndTabs =0;
 
 
-	//  ⚙️ Settings  ----
+	//  ⚙️ Settings  --------------------
 	Ck ckAutoStart, ckEscQuits;  // startup
 	Ck ckStartInMain, ckOgreDialog, ckMouseCapture, ckScreenPng;
 
@@ -113,7 +116,7 @@ public:
 	void btnClrSet(WP), btnClrSetA(WP), slUpdClr(SV*);
 	
 
-	//  🌦️🌫️ Sky  ----
+	//  🌦️🌫️ Sky  --------------------
 	Btn btnSky =0;  // pick
 	Cmb cmbRain1 =0, cmbRain2 =0;
 	void comboSky(CMB), comboRain1(CMB),comboRain2(CMB);
@@ -132,7 +135,11 @@ public:
 	CK(Fog);  Ck ckWeather;
 
 	
-	///  ⛰️ Terrain  --------------------
+	///  ⛰️ Terrain  ----------------------------------------
+	Txt txTersCur =0;
+	void btnTersPrev(WP), btnTersNext(WP), updTersTxt();
+	void btnTersAdd(WP), btnTersDel(WP);
+
 	//  HMap
 	Tab tabsHmap =0;  void tabHmap(TAB);
 	void updTabHmap();  int getHMapSizeTab();
@@ -142,7 +149,7 @@ public:
 	SlV(TerTriSize);  int UpdTxtTerSize(float mul=1.f);
 	//  ext
 	// SV svTerErrorNorm;  void slTerErrorNorm(SV*);
-	SV svTerNormScale, svTerSpecPow, svTerSpecPowEm;  void slTerPar(SV*);
+	SV /*svTerNormScale, svTerSpecPow,*/ svTerSpecPowEm;  void slTerPar(SV*);
 	
 	Ogre::String getHMapNew();
 	void btnTerrainNew(WP), btnTerGenerate(WP);
@@ -159,7 +166,7 @@ public:
 	void slTerGen(SV*);
 	
 	
-	//  ⛰️ Ter Layer  ----
+	//  ⛰️ Ter Layer  --------------------
 	int idTerLay = 0;  // help var
 	void SldUpd_TerL();
 
@@ -207,7 +214,7 @@ public:
 	Txt txtSuRollDrag =0, txtSuFrict =0, txtSurfType =0;
 	
 
-	///  🌳🪨🌿  Vegetation  --------------------
+	///  🌳🪨🌿  Vegetation  ----------------------------------------
 	//  global params
 	SV svGrassDens, svTreesDens;
 	Ed edGrPage =0, edGrDist =0;
@@ -244,7 +251,7 @@ public:
 	SV svLTrMaxTerAng;
 	SV svLTrMinTerH, svLTrMaxTerH, svLTrFlDepth;
 
-	///  🌿 grass layers  --------
+	///  🌿 grass layers  --------------------
 	int idGrLay =0;  // help var
 	void SldUpd_GrL();
 
@@ -271,7 +278,7 @@ public:
 	SV svGrChNoise, svGrChNfreq, svGrChNoct, svGrChNpers, svGrChNpow;  // 🌀 noise todo
 	
 	
-	//  🛣️ Road  ----
+	//  🛣️ Road  --------------------
 	Txt txRoadsCur =0;
 	void btnRoadsPrev(WP), btnRoadsNext(WP), updRoadsTxt();
 	void btnRoadsDel(WP), btnRoadsAdd(WP);
@@ -294,7 +301,7 @@ public:
 	void editRoad(Ed);
 
 	
-	//  ⚫💭 Surfaces  ----
+	//  ⚫💭 Surfaces  --------------------
 	int idSurf = 0;  // help var
 	struct TerLayer* GetTerRdLay();
 
@@ -303,7 +310,7 @@ public:
 	Ck ckRoad1Mtr;
 
 	
-	//  🚗 Game  ----
+	//  🚗 Game  --------------------
 	SV svDamage, svWind, svGravity;
 	CK(DenyReversed);  CK(TiresAsphalt);  CK(TerrainEmissive);
 	CK(NoWrongChks);
@@ -328,7 +335,7 @@ public:
 	void listObjsCatChng(Li, size_t);
 	
 
-	//  🛠️ Tools  ----
+	//  🛠️ Tools  --------------------
 	//  copy
 	Txt valTrkCpySel;
 	void btnTrkCopySel(WP);  bool ChkTrkCopy();
@@ -344,7 +351,7 @@ public:
 	SV svAlignWidthAdd, svAlignWidthMul, svAlignSmooth;
 
 
-	//  ⚠ Warnings  ----
+	//  ⚠ Warnings  --------------------
 	Ed edWarn =0;  Txt txWarn =0;
 	Img imgWarn =0, imgInfo =0;
 	void WarningsCheck(const class Scene* sc, const SplineRoad* road);
@@ -364,7 +371,7 @@ public:
 	void TweakSetMtrPar(std::string name, float val);  void comboTweakMtr(CMB);
 
 
-	//  👆 Pick  ----
+	//  👆 Pick  --------------------
 	Ck ckPickSetPar;  WP panPick =0;
 	Mli2 liSky =0, liTex =0, liGrs =0, liVeg =0, liRd =0;
 	enum EPick { P_Sky=0, P_Tex, P_Grs, P_Veg, P_Rd, P_All };
@@ -380,7 +387,7 @@ public:
 
 
 
-	///  🏞️ Track  ----
+	///  🏞️ Track  --------------------
 	Ogre::String sCopyTrack;  int bCopyTrackU = 0;  // for copy tools
 	Ogre::String PathCopyTrk(int user=-1);
 	Ogre::String GetListTrk();

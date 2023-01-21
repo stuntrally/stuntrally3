@@ -380,9 +380,10 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 		{
 			float d = 0.5f * wheel_contact[w].GetDepth() / wheel[w].GetRadius();
 			int mtr = whTerMtr[w]-1;
-			if (d < 1.f && mtr >= 0 && mtr < pScene->td.layers.size())
+			auto& td = pScene->tds[0];  // 1st ter only-
+			if (d < 1.f && mtr >= 0 && mtr < td.layers.size())
 			{
-				const TerLayer& lay = pScene->td.layersAll[pScene->td.layers[mtr]];
+				const TerLayer& lay = td.layersAll[td.layers[mtr]];
 				if (lay.fDamage > 0.f)
 					fDamage += lay.fDamage * fRed * dt;
 		}	}

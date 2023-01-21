@@ -52,19 +52,19 @@ bool CGui::ChkTrkCopy()
 ///  copy Hmap
 void CGui::btnCopyTerHmap(WP)
 {
-	if (!ChkTrkCopy())  return;
+	/*if (!ChkTrkCopy())  return;
 
 	String from = PathCopyTrk(),
 		name = gcom->TrkDir() + "heightmap-new.f32";
 	Copy(from + "/heightmap.f32", name);
 	
 	Scene sF;  sF.LoadXml(from + "/scene.xml");
-	sc->td.getFileSize(from);  // sets sc->td.iVertsX
-	sc->td.fTriangleSize = sF.td.fTriangleSize;
-	sc->td.UpdVals();
+	td().getFileSize(from);  // sets sc->td.iVertsX
+	td().fTriangleSize = sF.tds[0].fTriangleSize;
+	td().UpdVals();
 	app->bNewHmap = true;
 	SetGuiFromXmls();	app->UpdateTrack();
-	if (scn->road)  scn->road->UpdAllMarkers();
+	if (scn->road)  scn->road->UpdAllMarkers();*/
 }
 
 //  copy Sun, etc.  can you copy a star
@@ -98,11 +98,11 @@ void CGui::btnCopyTerLayers(WP)
 	String from = PathCopyTrk();
 	Scene sF;  sF.LoadXml(from + "/scene.xml");
 
-	for (int i=0; i < sc->td.ciNumLay; ++i)
-		sc->td.layersAll[i] = sF.td.layersAll[i];
+	for (int i=0; i < td().ciNumLay; ++i)
+		td().layersAll[i] = sF.tds[0].layersAll[i];  // 1st ter-
 	sc->sParDust = sF.sParDust;  sc->sParMud = sF.sParMud;
 	sc->sParSmoke = sF.sParSmoke;
-	sc->td.UpdLayers();
+	td().UpdLayers();
 
 	SetGuiFromXmls();	app->UpdateTrack();
 }
@@ -235,7 +235,8 @@ void CGui::btnScaleAll(WP)
 	}
 
 	//  ter  ---
-	sc->td.fTriangleSize *= sf;  sc->td.UpdVals();
+	for (auto& td : sc->tds)
+	{	td.fTriangleSize *= sf;  td.UpdVals();  }
 	
 	SetGuiFromXmls();	app->UpdateTrack();
 	

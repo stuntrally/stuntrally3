@@ -369,7 +369,7 @@ bool COLLISION_WORLD::CastRay(
 		norm = ToMathVector<float>(res.m_hitNormalWorld);
 		dist = res.m_closestHitFraction * length;
 		col = res.m_collisionObject;
-		const TerData& td = pApp->scn->sc->td;
+		const TerData& td = pApp->scn->sc->tds[0];  // 1st ter!-
 
 		if (col->isStaticObject() /*&& (c->getCollisionFlags() & btCollisionObject::CF_NO_CONTACT_RESPONSE == 0)*/)
 		{
@@ -384,7 +384,7 @@ bool COLLISION_WORLD::CastRay(
 				case SU_Road:  // road
 				{					 
 					//LogO("RD "+toStr(mtr));
-					int id = td.layerRoad[td.road1mtr ? 0 : mtr].surfId;
+					int id = td.layerRoad[pApp->scn->sc->road1mtr ? 0 : mtr].surfId;
 					surf = &pApp->pGame->surfaces[id];
 
 					if (cd)

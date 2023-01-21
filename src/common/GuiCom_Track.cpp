@@ -384,7 +384,7 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 	
 	//  road stats
 	//---------------------------------------------------------------------------
-	stTrk[ch][1]->setCaption(fToStr(sc->td.fTerWorldSize*0.001f*m ,1,3) + km);
+	stTrk[ch][1]->setCaption(fToStr(sc->tds[0].fTerWorldSize*0.001f*m ,1,3) + km);  // 1st ter
 	if (!rd)  return;
 	float len = rd->st.Length;					//3,5
 	bool noRd = len < 0.1f;
@@ -527,7 +527,7 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 	{
 		if (!imgTer[id])  return;
 		int i = !rd->isLooped && reverse ? 1 : 0;
-		float t = sc->td.fTerWorldSize,  // todo: end too?
+		float t = sc->tds[0].fTerWorldSize,  // 1st ter  // todo: end too, if not looped
 			xp = sc->startPos[i][1]/t, yp = sc->startPos[i][0]/t;
 		
 		const IntSize& si = imgTer[id]->getSize(), st = imgMiniPos[id]->getSize();

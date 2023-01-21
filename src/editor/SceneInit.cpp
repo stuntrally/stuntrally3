@@ -20,7 +20,6 @@
 #include "GraphicsSystem.h"
 #include <OgreTimer.h>
 #include "Terra.h"
-// #include <OgreTerrainGroup.h>
 #include <OgreCommon.h>
 #include <OgreHlmsCommon.h>
 #include <OgreWindow.h>
@@ -66,14 +65,7 @@ void App::createScene01()  // once, init
 	// prvRoad.Create(k,k,"PrvRoad");
 	//  prvTer.Create(k,k,"PrvTer");
 
-	/*scn->roadDens.Create(k+1,k+1,"RoadDens");
-	
-	///  ter lay tex
-	for (int i=0; i < 6; ++i)
-	{	String si = toStr(i);
-		scn->texLayD[i].SetName("layD"+si);
-		scn->texLayN[i].SetName("layN"+si);
-	}*/
+	//scn->roadDens.Create(k+1,k+1,"RoadDens");  // var size..
 
 
 	//  🎥 camera
@@ -184,7 +176,7 @@ void App::NewCommon(bool onlyTerVeget)
 		scn->DestroyFluids();  // 💧
 		scn->DestroyEmitters(true);  // 🔥
 	
-		scn->DestroyTerrain();  // ⛰️
+		scn->DestroyTerrains();  // ⛰️
 	}
 
 	DestroyRnd2Tex();  // 🖼️
@@ -246,7 +238,7 @@ void App::LoadTrackEv()
 
 	//  ⛰️ Terrain
 	// bNewHmap = false;/**/
-	scn->CreateTerrain(bNewHmap);
+	scn->CreateTerrains(bNewHmap);
 
 
 	//  🛣️ Road ~
@@ -256,7 +248,7 @@ void App::LoadTrackEv()
 	//  🚦 pace ~ ~
 	Cam* cam = &mCams[0];  // todo: lod cam-
 	scn->pace = new PaceNotes(pSet);
-	scn->pace->Setup(mSceneMgr, cam, scn->terrain, gui->mGui, mWindow);
+	scn->pace->Setup(mSceneMgr, cam, scn->ter, gui->mGui, mWindow);
 	
 	
 	//  📦 Objects
@@ -313,7 +305,7 @@ void App::CreateRoads()  // 🛣️
 		scn->road->Setup(
 			"sphere.mesh",
 			// "sphere1k.mesh", // todo: hq lods
-			pSet->road_sphr, scn->terrain, mSceneMgr, cam, id);
+			pSet->road_sphr, scn->ter, mSceneMgr, cam, id);
 		scn->road->LoadFile(path + fname);
 		scn->roads.push_back(scn->road);
 	}
@@ -337,13 +329,13 @@ void App::UpdateTrackEv()
 	NewCommon(true);  // destroy only terrain and veget
 	
 	//CreateFluids();
-	DestroyTerrain();
-	scn->CreateTerrain(bNewHmap,true);/**/
+	scn->DestroyTerrains();
+	scn->CreateTerrains(bNewHmap,true);/**/
 
 	//  road ~
 	for (auto r : scn->roads)
 	{
-		r->mTerrain = scn->terrain;
+		r->mTerrain = scn->ter;
 		r->Rebuild(true);  // 🛣️
 	}
 
@@ -366,10 +358,10 @@ void CGui::btnUpdateLayers(WP)
 		app->scn->copyTerHmap();
 	//? if (app->ndSky)
 	// 	app->mSceneMgr->destroySceneNode(app->ndSky);
-	app->scn->DestroyTerrain();
+	app->scn->DestroyTerrain1(app->scn->terCur);
 
-	app->scn->CreateTerrain(app->bNewHmap,true);
-	scn->road->mTerrain = scn->terrain;
+	app->scn->CreateTerrain1(app->scn->terCur);//,app->bNewHmap,true);
+	scn->road->mTerrain = scn->ter;
 	// app->scn->updGrsTer();
 }
 
@@ -412,20 +404,24 @@ void App::SaveTrackEv()
 	gui->CreateDir(dir);
 	gui->CreateDir(dir+"/objects");
 
-	if (scn->terrain)  // save Hmap
+	//  all terrains, save Hmap
+	int i = 0;
+	for (auto ter : scn->ters)
 	{
-		int size = scn->sc->td.iVertsX;
-		scn->terrain->readBackHmap(scn->sc->td.hfHeight, size);
+		auto& td = scn->sc->tds[i];
+		int size = td.iVertsX;
+		ter->readBackHmap(td.hfHeight, size);
 		int fsize = size * size * sizeof(float);
 
-		String file = dir+"heightmap.f32";
+		String file = dir + "heightmap"
+			+ (i > 0 ? toStr(i+1) : "") + ".f32";
 		std::ofstream of;
 		of.open(file.c_str(), std::ios_base::binary);
-		of.write((const char*)&scn->sc->td.hfHeight[0], fsize);
-		of.close();
+		of.write((const char*)&td.hfHeight[0], fsize);
+		of.close();  ++i;
 	}
 
-	int i = 0;  // all roads
+	i = 0;  // all roads
 	for (auto r : scn->roads)
 	{
 		auto si = i==0 ? "" : toStr(i+1);  ++i;
@@ -465,7 +461,7 @@ void App::TerCircleInit()
 //-------------------------------------------------------------------------------------
 void App::TerCircleUpd(float dt)
 {
-	if (!scn->terrain || !scn->road)  return;
+	if (!scn->ter || !scn->road)  return;
 
 	int e = edMode;
 	bool ed = scn->road->bHitTer && bEdit();
@@ -481,7 +477,8 @@ void App::TerCircleUpd(float dt)
 	bool edTer = e <= ED_Filter && ed;
 	if (!edTer)  return;
 	
-	Real radius = mBrSize[curBr] * 0.5f * scn->sc->td.fTriangleSize * 0.8f;  // par-
+	Real radius = mBrSize[curBr] * 0.5f *
+		scn->sc->tds[scn->terCur].fTriangleSize * 0.8f;  // par-
 	//  scale with distance, to be same on screen
 	Real scale = std::min(0.1f, 0.001f * scn->road->fHitDist ) * 8.f;  // par
 	scn->road->ndHit->setScale(Vector3::UNIT_SCALE * scale * 0.8f * pSet->road_sphr);
@@ -506,7 +503,7 @@ void App::TerCircleUpd(float dt)
 			 z = r * fTsin[d] + scn->road->posHit.z;
 
 		Vector3 p(x, 0.f, z);
-		scn->terrain->getHeightAt(p);
+		scn->ter->getHeightAt(p);
 		p.y += 0.3f;
 		mo->position(p.x, p.y, p.z);
 		mo->texUV( (d/2 * dTc + ani)*2, d % 2);

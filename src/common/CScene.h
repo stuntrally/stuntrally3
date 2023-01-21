@@ -1,12 +1,16 @@
 #pragma once
 // #include "PreviewTex.h"
 // #include <OgreVector3.h>
+//#include "SceneClasses.h"
+#include <OgreVector3.h>
 #include <OgreString.h>
 
-namespace Ogre  {  class Terra;  class Atmosphere2Npr;
+namespace Ogre  {
+	class Terra;  class Atmosphere2Npr;  class HlmsPbsTerraShadows;
 	class Light;  class SceneNode;  class Camera;  class SceneManager;
 	class Viewport;  class Root;  class ParticleSystem;  }
-class App;  class Scene;  class WaterRTT;  class CData;  class SplineRoad;  class PaceNotes;  class Grass;
+class App;  class Scene;  /*class WaterRTT;*/  class CData;  class TerData;
+class SplineRoad;  class PaceNotes;  class Grass;
 
 
 ///  🟢 Ogre parts for a track/map
@@ -102,12 +106,24 @@ public:
 
 	///  ⛰️ Terrain
 	//-----------------------------------
-	// PreviewTex texLayD[6],texLayN[6];  // layers
-	void CreateTerrain(bool bNewHmap=false, bool terLoad=true);
-	void DestroyTerrain();
-	void CreateBltTerrain(), copyTerHmap();
+	int terCur = 0;  // cur
+	std::vector<Ogre::Terra*> ters;  // all terrains
 
-	Ogre::Terra* terrain = 0;
+	Ogre::Terra* ter = 0;  // \ cur for edit
+	TerData* td = 0;       // / set in TerNext
+	void TerNext(int add);
+
+	Ogre::Real getTerH(Ogre::Real x, Ogre::Real z);
+	bool getTerH(Ogre::Vector3& pos);  // sets y
+
+	//  listener to make PBS objects also be affected by terrain's shadows
+	Ogre::HlmsPbsTerraShadows* mHlmsPbsTerraShadows = 0;  // 1st ter only-
+
+	void CreateTerrain1(int n);
+	void CreateTerrains(bool bNewHmap=false, bool terLoad=true);
+	void CreateTerrain(int n, bool bNewHmap, bool terLoad);
+	void DestroyTerrain1(int n),DestroyTerrains();
+	void CreateBltTerrain(int n), copyTerHmap();
 	// void SetupTerrain(), UpdTerErr();
 
 	

@@ -128,12 +128,16 @@ namespace Ogre
 
 		//--------------------------------------------------------------------------------
 		//begin  extras by CryHam
+		Ogre::String mtrName;
+		Ogre::SceneNode* node = 0;
 
 		bool bGenerateShadowMap;  //** ter
 		bool bNormalized;  // true: Hmap floats 0..1,  false: any, real heights
 		int iLodMax;  //**
 		float fHMin, fHMax, fHRange;  //norm meh-
+		
 		Scene* sc = 0;
+		int cnt = 0;  // name counter, for many
 		
 		int getSize()
 		{	return m_iWidth;  }

@@ -80,106 +80,105 @@ using namespace Ogre;
 ///--------------------------------------------------------------------------------------------------------------
 //  Create Terrain
 ///--------------------------------------------------------------------------------------------------------------
-void CScene::CreateTerrain(bool bNewHmap, bool terLoad)
+void CScene::CreateTerrains(bool bNewHmap, bool terLoad)
+{
+	int all = sc->tds.size();
+	for (int i = 0; i < all; ++i)
+		CreateTerrain(i, bNewHmap, terLoad);
+}
+
+void CScene::CreateTerrain(int n, bool bNewHmap, bool terLoad)
 {
 	Ogre::Timer tm;
-	terrain = 0;
+	auto si = toStr(n+1);
 
-	
-	// UpdShaderParams();
-	// UpdLayerPars();
-	
 
 	///  Load Heightmap data --------
 	Ogre::Timer ti;
 	if (terLoad || bNewHmap)
 	{
-		String fname = app->gcom->TrkDir() + (bNewHmap ? "heightmap-new.f32" : "heightmap.f32");
+		String fname = app->gcom->TrkDir() + "heightmap" 
+			+ (bNewHmap ? "-new" : "")
+			+ (n > 0 ? si : "") + ".f32";
 
-		int fsize = sc->td.getFileSize(fname);
+		assert(n < sc->tds.size());
+		auto& td = sc->tds[n];
+		int fsize = td.getFileSize(fname);
 		int size = fsize / sizeof(float);
 
-		sc->td.hfHeight.clear();
-		sc->td.hfHeight.resize(size);
+		td.hfHeight.clear();
+		td.hfHeight.resize(size);  // flat 0
 
 		//  load f32 HMap +
+		if (PATHS::FileExists(fname))
 		{
 			std::ifstream fi;
 			fi.open(fname.c_str(), std::ios_base::binary);
-			fi.read((char*)&sc->td.hfHeight[0], fsize);
+			fi.read((char*)&td.hfHeight[0], fsize);
 			fi.close();
 		}
 		
 	   	//**  new  .. GetTerMtrIds() from blendmap ..
 	#ifndef SR_EDITOR
+	if (n==0)  // 1st ter only-
+	{
 		app->blendMtr.resize(size);
 		// memset(app->blendMtr,0,size2);  // zero
 
 		app->blendMapSize = sqrt(size);
 		// sc->td.layersAll[0].surfId = 0;  //par ter mtr..
+	}
 	#endif
 	}
 
 
 	//; CreateBlendTex();  //+
 
-	LogO(String(":::* Time Hmap: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();  // 4MB ~13ms
+	LogO(String(":::* Time")+si+" Hmap: " + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();  // 4MB ~13ms
 
 	//; UpdBlendmap();
 
 
-	app->CreateTerrain();
+	CreateTerrain1(n);
 
-	terrain = app->mTerra;  //set ptr
-	grass->terrain = app->mTerra;
+	// ter = mTerra;  //set ptr
+	if (n == 0)  // 1st ter only-
+		grass->terrain = ter;
 	grass->mSceneMgr = app->mSceneMgr;
 	
-	LogO(String(":::* Time Terrain: ") + fToStr(tm.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time")+si+" Terrain: " + fToStr(tm.getMilliseconds(),0,3) + " ms");
 }
 
 
-//  save ter hmap to mem (all editing would be lost)
+//?  save ter hmap to mem (all editing would be lost)
 void CScene::copyTerHmap()
 {
-	if (!terrain)  return;
+	if (!ter)  return;
 	//; float *fHmap = terrain->getHeightData();
 	// int size = sc->td.iVertsX * sc->td.iVertsX * sizeof(float);
 	// memcpy(sc->td.hfHeight, fHmap, size);
 }
 
-
-//  Destroy
-void CScene::DestroyTerrain()
-{
-	/*for (int i=0; i < 6; ++i)
-	{
-		texLayD[i].Destroy();
-		texLayN[i].Destroy();
-	}*/
-	terrain = 0;
-	app->DestroyTerrain();
-}
-
-
 void CScene::UpdBlendmap()
 {
-	if (terrain)
-		terrain->blendmap.Update();
+	if (ter)
+		ter->blendmap.Update();
 }
 
 
 //  🎳 Bullet Terrain
 //---------------------------------------------------------------------------------------------------------------
-void CScene::CreateBltTerrain()
+void CScene::CreateBltTerrain(int n)
 {
+	auto& td = sc->tds[n];
 	btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
-		sc->td.iVertsXold, sc->td.iVertsXold,
-		&sc->td.hfHeight[0], sc->td.fTriangleSize,
+		td.iVertsXold, td.iVertsXold,
+		&td.hfHeight[0], td.fTriangleSize,
 		-1300.f,1300.f, 2, PHY_FLOAT,false);  //par- max height
 	
 	hfShape->setUseDiamondSubdivision(true);
 
-	btVector3 scl(sc->td.fTriangleSize, sc->td.fTriangleSize, 1);
+	btVector3 scl(td.fTriangleSize, td.fTriangleSize, 1);
 	hfShape->setLocalScaling(scl);
 	hfShape->setUserPointer((void*)SU_Terrain);
 
@@ -187,10 +186,10 @@ void CScene::CreateBltTerrain()
 	col->setCollisionShape(hfShape);
 
 	//  offset new hmaps, even 2^n
-	bool n = sc->td.iVertsXold == sc->td.iVertsX;
-	Real nofs = n ? 0.5f * sc->td.fTriangleSize : 0.f;
+	bool of = td.iVertsXold == td.iVertsX;
+	Real xofs = of ? 0.5f * td.fTriangleSize : 0.f;
 
-	btVector3 ofs(-nofs, -nofs, 0.0);
+	btVector3 ofs(-xofs, -xofs, 0.0);
 	btTransform tr;  tr.setIdentity();  tr.setOrigin(ofs);
 	col->setWorldTransform(tr);
 
@@ -208,6 +207,7 @@ void CScene::CreateBltTerrain()
 	
 	
 	#ifndef SR_EDITOR
+	// todo: ed gui, chks all 4
 	///  border planes []
 	const float px[4] = {-1, 1, 0, 0};
 	const float py[4] = { 0, 0,-1, 1};
@@ -219,7 +219,7 @@ void CScene::CreateBltTerrain()
 		shp->setUserPointer((void*)SU_Border);
 		
 		btTransform tr;  tr.setIdentity();
-		tr.setOrigin(vpl * -0.5 * sc->td.fTerWorldSize + ofs);
+		tr.setOrigin(vpl * -0.5 * td.fTerWorldSize + ofs);
 
 		btCollisionObject* col = new btCollisionObject();
 		col->setCollisionShape(shp);

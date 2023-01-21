@@ -58,7 +58,7 @@ public:
 
 	//  🏔️ mtr ids, from ter  . . . 
 	int blendMapSize = 512;
-	std::vector<char> blendMtr;
+	std::vector<char> blendMtr;  // 1st ter only-  // todo
 	//; void GetTerMtrIds();  // todo:
 
 

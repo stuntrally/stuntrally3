@@ -8,6 +8,7 @@
 #include "quaternion.h"
 
 class GAME;  class ReverbsXml;  class FluidsXml;
+namespace tinyxml2 {  class XMLElement;  }
 
 
 ///  Scene setup xml
@@ -49,6 +50,7 @@ public:
 	float windAmt;  //, windDirYaw, windTurbulFreq,windTurbulAmp;
 	float damageMul;  // reduce car damage in loops
 	float gravity;  // 9.81
+	bool road1mtr;  // if true (default) road has only 1 surface type
 	
 
 	//  🔉 sound
@@ -64,7 +66,8 @@ public:
 	Ogre::String  sParDust, sParMud, sParSmoke;
 	
 	///  ⛰️ Terrain  ----
-	TerData td;
+	// TerData td;
+	std::vector<TerData> tds;
 
 	
 	///  🌳🪨  Vegetation params  --------
@@ -109,4 +112,5 @@ public:
 
 	GAME* pGame =0;  // for all surfaces by name
 	bool LoadXml(Ogre::String file, bool bTer = true), SaveXml(Ogre::String file);
+	bool LoadTerData(TerData& td, tinyxml2::XMLElement* e);//, SaveTerData(const TerData& td, XMLElement*& e);
 };

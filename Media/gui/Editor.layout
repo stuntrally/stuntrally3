@@ -318,18 +318,18 @@
 				<Property key="Caption" value="#A0D8A0#{Terrain}"/>
 
 				<!--  < > Cur  -->
-				<Widget type="TextBox" skin="TextBox" position="600 8 168 24">
+				<Widget type="TextBox" skin="TextBox" position="600 8 168 24" name="TersCur">
 					<Property key="Caption" value="#{RplCurrent}: 1/1"/>
 					<Property key="TextColour" value="0.8 1 0.8"/>
 					<UserString key="tip" value="#{Terrain}: #{RplCurrent} / #{RplAll}"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="500 4 36 24" name="TerPrev">
+				<Widget type="Button" skin="Button" position="500 4 36 24" name="TersPrev">
 					<Property key="Colour" value="0.6 1.0 0.6"/>
 					<Property key="TextColour" value="0.7 1.0 0.7"/>
 					<Property key="Caption" value="&lt;"/>
 					<UserString key="tip" value="#{TipTerLMove}"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="540 4 36 24" name="TerNext">
+				<Widget type="Button" skin="Button" position="540 4 36 24" name="TersNext">
 					<Property key="Colour" value="0.6 1.0 0.6"/>
 					<Property key="TextColour" value="0.7 1.0 0.7"/>
 					<Property key="Caption" value="&gt;"/>
@@ -430,7 +430,7 @@
 							<UserString key="tip" value="#{RplFileSize}"/>
 						</Widget>						
 
-						<Widget type="TextBox" skin="TextBox" position="612 236 90 24">
+						<!-- <Widget type="TextBox" skin="TextBox" position="612 236 90 24">
 							<Property key="Caption" value="#{Light}"/>
 							<Property key="TextColour" value="0.4 0.6 0.8"/>
 						</Widget>
@@ -459,7 +459,7 @@
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="300 266 300 16" name="TerSpecPow">
 							<Property key="Colour" value="0.7 0.9 1.0"/>
-						</Widget>
+						</Widget> -->
 
 						<Widget type="Button" skin="CheckBox" position="32 296 452 24" name="TerrainEmissive">
 							<Property key="Caption" value="#{TerrainEmissiveLight}"/>

@@ -2,6 +2,7 @@
 #include "RenderConst.h"
 #include "Def_Str.h"
 #include "CScene.h"
+#include "SceneClasses.h"
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
@@ -72,6 +73,7 @@ void App::updateBrushPrv(bool first)
 	uint8* data = new uint8[BrPrvSize * BrPrvSize * 4], *p = data;
 
 	const float fB = brClr[edMode][0]*255.f, fG = brClr[edMode][1]*255.f, fR = brClr[edMode][2]*255.f;
+	const float gp = 2.f;  // gamma srgb fix-
 
 	const float s = BrPrvSize * 0.5f, s1 = 1.f/s,
 		fP = mBrPow[curBr], fQ = mBrFq[curBr]*5.f, nof = mBrNOf[curBr];
@@ -86,11 +88,11 @@ void App::updateBrushPrv(bool first)
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
 			float c = d * (1.0-pow( fabs(CScene::Noise(x*s1+nof,y*s1+nof, fQ, oct, 0.5f)), fP*d)) * (1.5f-fP*0.1);
-			c = std::max(0.f, c);
+			c = std::max(0.f, pow(c, gp));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
 			// *p++ = bR;  *p++ = bG;  *p++ = bB;  *p++ = bG > 32 ? 255 : 0;
-			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 32 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 2 ? 255 : 0;
 		}	break;
 
 	case BRS_Noise:
@@ -100,9 +102,10 @@ void App::updateBrushPrv(bool first)
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
 			float c = d * pow( fabs(CScene::Noise(x*s1+nof,y*s1+nof, fQ, oct, 0.5f)), fP*0.5f) * 0.9f;
+			c = std::max(0.f, pow(c, gp));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 32 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 2 ? 255 : 0;
 		}	break;
 
 	case BRS_Sinus:
@@ -112,9 +115,10 @@ void App::updateBrushPrv(bool first)
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
 			float c = powf( sinf(d * PI_d*0.5f), fP);
+			c = std::max(0.f, pow(c, gp));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 32 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 2 ? 255 : 0;
 		}	break;
 
 	case BRS_Ngon:
@@ -126,9 +130,10 @@ void App::updateBrushPrv(bool first)
 
     		float c = std::max(0.f, std::min(1.f,
     			fQ * powf( fabs(d / (-1.f+nof + cosf(PiN) / cosf( fmodf(k, 2*PiN) - PiN ) )),fP) ));
+			c = std::max(0.f, pow(c, gp));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 32 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 2 ? 255 : 0;
 		}	break;
 
 	case BRS_Triangle:
@@ -138,9 +143,10 @@ void App::updateBrushPrv(bool first)
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
 			float c = powf( fabs(d), fP);
+			c = std::max(0.f, pow(c, gp));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 32 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 2 ? 255 : 0;
 		}	break;
 	default:  break;
 	}
@@ -270,10 +276,10 @@ void CGui::btnTerGenerate(WP wp)
 	bool add = false, sub = false;
 	if (n == "TerrainGenAdd")  add = true;  else
 	if (n == "TerrainGenSub")  sub = true;/*else
-	if (n == "TerrainGenMul")  mul = true;*/
+	if (n == "TerrainGenMul")  mul = true; ok */
 
-	float* hfData = &sc->td.hfHeight[0]; //, *hfAng = sc->td.hfAngle;
-	const int sx = sc->td.iVertsX;  // sx=sy
+	float* hfData = &td().hfHeight[0];
+	const int sx = td().iVertsX;
 	const float s = sx * 0.5f, s1 = 1.f/s;
 	const float ox = pSet->gen_ofsx, oy = pSet->gen_ofsy;
 
@@ -281,7 +287,7 @@ void CGui::btnTerGenerate(WP wp)
 	bool bRoad = pSet->gen_roadsm > 0.1f;
 	float rdPow = pSet->gen_roadsm;  //-
 	int r = 0;
-	/*Image2 imgRoad;
+	/*Image2 imgRoad;  // fixme outside road
 	if (bRoad)
 	{
 		try {	imgRoad.load(String("roadDensity.png"),"General");  }
@@ -387,8 +393,8 @@ void App::updateTerGenPrv(bool first)
 //-----------------------------------------------------------------------------------------------
 bool App::getEditRect(Vector3& pos, Rect& rcBrush, Rect& rcMap, int size,  int& cx, int& cy)
 {
-	float tws = scn->sc->td.fTerWorldSize;
-	int t = mTerra->getSize(); //scn->sc->td.iTerSize;
+	float tws = scn->td->fTerWorldSize;
+	int t = scn->ter->getSize(); //scn->sc->td.iTerSize;
 
 	//  world float to map int
 	int mapX = (pos.x + 0.5*tws)/tws*t, mapY = (pos.z + 0.5*tws)/tws*t;
@@ -443,12 +449,12 @@ bool App::getEditRect(Vector3& pos, Rect& rcBrush, Rect& rcMap, int size,  int& 
 //-----------------------------------------------------------------------------------------------
 void App::deform(Vector3 &pos, float dtime, float brMul)
 {
-	Rect rcBrush, rcMap;  int cx,cy, size = mTerra->getSize();
+	Rect rcBrush, rcMap;  int cx,cy, size = scn->ter->getSize();
 	if (!getEditRect(pos, rcBrush, rcMap, size, cx,cy))
 		return;
 	// LogO(iToStr(rcMap.top)+" "+iToStr(rcMap.bottom)+" "+iToStr(rcMap.left)+" "+iToStr(rcMap.right));
 	
-	auto& fHmap = scn->terrain->getHeightData();
+	auto& fHmap = scn->ter->getHeightData();
 	
 	float its = mBrIntens[curBr] * dtime * brMul;
 	int mapPos, brPos, jj = cy;
@@ -466,7 +472,7 @@ void App::deform(Vector3 &pos, float dtime, float brMul)
 			++mapPos;  ++brPos;
 		}
 	}
-	scn->terrain->dirtyRect(rcMap);
+	scn->ter->dirtyRect(rcMap);
 	scn->UpdBlendmap();
 	bTerUpd = true;
 }
@@ -476,11 +482,11 @@ void App::deform(Vector3 &pos, float dtime, float brMul)
 //-----------------------------------------------------------------------------------------------
 void App::height(Vector3 &pos, float dtime, float brMul)
 {
-	Rect rcBrush, rcMap;  int cx,cy, size = mTerra->getSize();
+	Rect rcBrush, rcMap;  int cx,cy, size = scn->ter->getSize();
 	if (!getEditRect(pos, rcBrush, rcMap, size, cx,cy))
 		return;
 	
-	auto& fHmap = scn->terrain->getHeightData();
+	auto& fHmap = scn->ter->getHeightData();
 		
 	float its = mBrIntens[curBr] * dtime * brMul;
 	int mapPos, brPos, jj = cy;
@@ -498,7 +504,7 @@ void App::height(Vector3 &pos, float dtime, float brMul)
 			++mapPos;  ++brPos;
 		}
 	}
-	scn->terrain->dirtyRect(rcMap);
+	scn->ter->dirtyRect(rcMap);
 	scn->UpdBlendmap();
 	bTerUpd = true;
 }
@@ -518,11 +524,11 @@ void App::smooth(Vector3 &pos, float dtime)
 
 void App::calcSmoothFactor(Vector3 &pos, float& avg, int& sample_count)
 {
-	Rect rcBrush, rcMap;  int cx,cy, size = mTerra->getSize();
+	Rect rcBrush, rcMap;  int cx,cy, size = scn->ter->getSize();
 	if (!getEditRect(pos, rcBrush, rcMap, size, cx,cy))
 		return;
 	
-	auto& fHmap = scn->terrain->getHeightData();
+	auto& fHmap = scn->ter->getHeightData();
 	int mapPos;
 
 	avg = 0.0f;  sample_count = 0;
@@ -541,11 +547,11 @@ void App::calcSmoothFactor(Vector3 &pos, float& avg, int& sample_count)
 //-----------------------------------------------------------------------------------------------
 void App::smoothTer(Vector3 &pos, float avg, float dtime)
 {
-	Rect rcBrush, rcMap;  int cx,cy, size = mTerra->getSize();
+	Rect rcBrush, rcMap;  int cx,cy, size = scn->ter->getSize();
 	if (!getEditRect(pos, rcBrush, rcMap, size, cx,cy))
 		return;
 	
-	auto& fHmap = scn->terrain->getHeightData();
+	auto& fHmap = scn->ter->getHeightData();
 	float mRatio = 1.f, brushPos;
 	int mapPos;
 	float mFactor = mBrIntens[curBr] * dtime * 0.1f;
@@ -566,7 +572,7 @@ void App::smoothTer(Vector3 &pos, float avg, float dtime)
 			brushPos += mRatio;
 		}
 	}
-	scn->terrain->dirtyRect(rcMap);
+	scn->ter->dirtyRect(rcMap);
 	scn->UpdBlendmap();
 	bTerUpd = true;
 }
@@ -576,11 +582,11 @@ void App::smoothTer(Vector3 &pos, float avg, float dtime)
 //-----------------------------------------------------------------------------------------------
 void App::filter(Vector3 &pos, float dtime, float brMul)
 {
-	Rect rcBrush, rcMap;  int cx,cy, size = mTerra->getSize();
+	Rect rcBrush, rcMap;  int cx,cy, size = scn->ter->getSize();
 	if (!getEditRect(pos, rcBrush, rcMap, size, cx,cy))
 		return;
 	
-	auto& fHmap = scn->terrain->getHeightData();
+	auto& fHmap = scn->ter->getHeightData();
 	
 	float its = mBrIntens[curBr] * dtime * std::min(1.f,brMul);  //mul >1 errors
 	int mapPos, brPos, jj = cy,
@@ -607,7 +613,7 @@ void App::filter(Vector3 &pos, float dtime, float brMul)
 			++mapPos;  ++brPos;
 		}
 	}
-	scn->terrain->dirtyRect(rcMap);
+	scn->ter->dirtyRect(rcMap);
 	scn->UpdBlendmap();
 	bTerUpd = true;
 }

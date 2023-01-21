@@ -19,15 +19,19 @@ using namespace MyGUI;
 using namespace Ogre;
 
 
-///  [Terrain]
+///  ⛰️ Terrain
 //-----------------------------------------------------------------------------------------------------------
+TerData& CGui::td()
+{
+	assert(!sc->tds.empty());
+	return sc->tds[scn->terCur];
+}
 
 ///  Change terrain texture layer, update values
-//
 void CGui::tabTerLayer(Tab wp, size_t id)
 {
 	idTerLay = id;  // help var
-	TerLayer* l = &sc->td.layersAll[idTerLay];
+	TerLayer* l = &td().layersAll[idTerLay];
 
 	noBlendUpd = true;
 	SldUpd_TerL();
@@ -64,10 +68,10 @@ void CGui::SldUpd_TerLNvis()
 {
 	//  upd vis of layer noise sliders
 	//  check for valid +1,-1,+2 layers
-	int ll = sc->td.layers.size();
+	int ll = td().layers.size();
 	int l1 = -1, last = 8, last_2 = 8,  nu = 0, ncl = 0;
 	for (int i=0; i < TerData::ciNumLay; ++i)
-	if (sc->td.layersAll[i].on)
+	if (td().layersAll[i].on)
 	{	++nu;
 		if (i==idTerLay)  ncl = nu;
 		if (nu==1)  l1 = i;
@@ -83,9 +87,11 @@ void CGui::SldUpd_TerLNvis()
 	dbgLclr->setColour(lc[ncl]);
 }
 
+//  all ter layer sliders
 void CGui::SldUpd_TerL()
 {
-	TerLayer* l = &sc->td.layersAll[idTerLay];
+	if (!bGI)  return;
+	TerLayer* l = &td().layersAll[idTerLay];
 	ckTerLayOn.Upd(&l->on);
 	svTerLScale.UpdF(&l->tiling);
 	ckTerLayTripl.Upd(&l->triplanar);
@@ -107,17 +113,20 @@ void CGui::SldUpd_TerL()
 	}
 }
 
-//  Tri size
+//  🔺 Tri size
 void CGui::slTerTriSize(SV* sv)
 {
-	sc->td.UpdVals();
+	if (!bGI)  return;
+	td().fTriangleSize = sv->getF();
+	td().UpdVals();
 	UpdTxtTerSize();
 }
 
 int CGui::UpdTxtTerSize(float mul)
 {
+	if (!bGI)  return 0;
 	int size = getHMapSizeTab() * mul;
-	float res = sc->td.fTriangleSize * size;  // result size
+	float res = td().fTriangleSize * size;  // result size
 	svTerTriSize.setText(fToStr(res,0,3));
 	
 	valHmapMB->setCaption(toStr(4*size*size/1000000)+" MiB");  // floats
@@ -127,10 +136,11 @@ int CGui::UpdTxtTerSize(float mul)
 //  HMap size tab
 void CGui::updTabHmap()
 {
+	if (!bGI)  return;
 	static std::map<int,int> h;
 	if (h.empty())
 	{	h[128]=0; h[256]=1; h[512]=2; h[1024]=3; h[2048]=4; h[4096]=5; h[8192]=6;  }
-	tabsHmap->setIndexSelected( h[ sc->td.iVertsX ] );
+	tabsHmap->setIndexSelected( h[ td().iVertsX ] );
 	tabHmap(0,0);
 }
 int CGui::getHMapSizeTab()
@@ -149,33 +159,34 @@ void CGui::tabHmap(Tab, size_t)
 //  upd ter sh par
 void CGui::slTerPar(SV*sv)
 {
-	// ter_scaleNormal      1.f / sc->td.normScale
-	// ter_specular_pow     sc->td.specularPow
-	// ter_specular_pow_em  sc->td.specularPowEm
+	// ter_scaleNormal      1.f / td().normScale
+	// ter_specular_pow     td().specularPow
+	// ter_specular_pow_em  td().specularPowEm
 }
 
-//  - - - -  Hmap tools  - - - -
 String CGui::getHMapNew()
 {
 	return gcom->TrkDir() + "heightmap-new.f32";
 }
 
+//  🛠️ Ter Hmap tools  - - - -
 //----------------------------------------------------------------------------------------------------------
 void CGui::btnTerrainNew(WP)
 {
 	int size = UpdTxtTerSize();
-	// sc->td.iVertsX = size+1;  sc->td.UpdVals();  // new hf
-	sc->td.iVertsX = size;  sc->td.UpdVals();  // new hf
 
-	float* hfData = new float[sc->td.iVertsX * sc->td.iVertsX];
-	int siz = sc->td.iVertsX * sc->td.iVertsX * sizeof(float);
+	// td().iVertsX = size+1;  td().UpdVals();  // new hf
+	td().iVertsX = size;  td().UpdVals();  // new hf
+
+	float* hfData = new float[td().iVertsX * td().iVertsX];
+	int siz = td().iVertsX * td().iVertsX * sizeof(float);
 	
 	//  generate Hmap
-	for (int j=0; j < sc->td.iVertsX; ++j)
+	for (int j=0; j < td().iVertsX; ++j)
 	{
-		int a = j * sc->td.iVertsX;
-		for (int i=0; i < sc->td.iVertsX; ++i,++a)
-			hfData[a] = 0.f;  //sc->td.getHeight(i,j);
+		int a = j * td().iVertsX;
+		for (int i=0; i < td().iVertsX; ++i,++a)
+			hfData[a] = 0.f;  //td().getHeight(i,j);
 	}
 	std::ofstream of;
 	of.open(getHMapNew().c_str(), std::ios_base::binary);
@@ -190,16 +201,16 @@ void CGui::btnTerrainNew(WP)
 //  Terrain  half  --------------------------------
 void CGui::btnTerrainHalf(WP)
 {
-	int halfSize = sc->td.iVertsX / 2;
+	int halfSize = td().iVertsX / 2;
 	float* hfData = new float[halfSize * halfSize];
 	int siz = halfSize * halfSize * sizeof(float);
 	
 	//  resize Hmap by half
 	for (int j=0; j < halfSize; ++j)
 	{
-		int a = j * halfSize, a2 = j*2 * sc->td.iVertsX;
+		int a = j * halfSize, a2 = j*2 * td().iVertsX;
 		for (int i=0; i < halfSize; ++i,++a)
-		{	hfData[a] = sc->td.hfHeight[a2];  a2+=2;  }
+		{	hfData[a] = td().hfHeight[a2];  a2+=2;  }
 	}
 	std::ofstream of;
 	of.open(getHMapNew().c_str(), std::ios_base::binary);
@@ -207,8 +218,8 @@ void CGui::btnTerrainHalf(WP)
 	of.close();
 	delete[] hfData;
 
-	sc->td.fTriangleSize *= 2.f;
-	sc->td.iVertsX = halfSize;  sc->td.UpdVals();
+	td().fTriangleSize *= 2.f;
+	td().iVertsX = halfSize;  td().UpdVals();
 	updTabHmap();  svTerTriSize.Upd();
 	app->bNewHmap = true;	app->UpdateTrack();
 }
@@ -216,16 +227,16 @@ void CGui::btnTerrainHalf(WP)
 //  Terrain  double  --------------------------------
 void CGui::btnTerrainDouble(WP)
 {
-	int dblSize = sc->td.iVertsX * 2, ofs4 = dblSize / 4;
+	int dblSize = td().iVertsX * 2, ofs4 = dblSize / 4;
 	float* hfData = new float[dblSize * dblSize];
 	int siz = dblSize * dblSize * sizeof(float);
 	
 	//  resize Hmap by half
-	for (int j=0; j < sc->td.iVertsX; ++j)
+	for (int j=0; j < td().iVertsX; ++j)
 	{
-		int a = (j + ofs4) * dblSize + ofs4, a2 = j * sc->td.iVertsX;
-		for (int i=0; i < sc->td.iVertsX; ++i,++a)
-		{	hfData[a] = sc->td.hfHeight[a2];  ++a2;  }
+		int a = (j + ofs4) * dblSize + ofs4, a2 = j * td().iVertsX;
+		for (int i=0; i < td().iVertsX; ++i,++a)
+		{	hfData[a] = td().hfHeight[a2];  ++a2;  }
 	}
 	std::ofstream of;
 	of.open(getHMapNew().c_str(), std::ios_base::binary);
@@ -233,7 +244,7 @@ void CGui::btnTerrainDouble(WP)
 	of.close();
 	delete[] hfData;
 
-	sc->td.iVertsX = dblSize;  sc->td.UpdVals();
+	td().iVertsX = dblSize;  td().UpdVals();
 	updTabHmap();
 	app->bNewHmap = true;	app->UpdateTrack();
 }
@@ -244,9 +255,9 @@ void CGui::btnTerrainResize(WP)
 {
 	int size = getHMapSizeTab() / 2;
 	if (valTerTriSize)
-		valTerTriSize->setCaption(fToStr(sc->td.fTriangleSize * size,2,4));
+		valTerTriSize->setCaption(fToStr(td().fTriangleSize * size,2,4));
 
-	int oldSize = sc->td.iVertsX, osi = oldSize*oldSize,
+	int oldSize = td().iVertsX, osi = oldSize*oldSize,
 		newSize = oldSize * 2;
 	float scale = 1.f / 2.f / 2.f;
 	float* hfData = new float[si];
@@ -262,7 +273,7 @@ void CGui::btnTerrainResize(WP)
 		{
 			x = y * oldSize + scale * i;
 			x = std::max(0, std::min(osi-1, x));
-			hfData[a] = sc->td.hfHeight[ x ];
+			hfData[a] = td().hfHeight[ x ];
 		}
 	}
 	std::ofstream of;
@@ -271,8 +282,8 @@ void CGui::btnTerrainResize(WP)
 	of.close();
 	delete[] hfData;
 	
-	sc->td.fTriangleSize * scale * 2.f;
-	sc->td.iVertsX = newSize;  sc->td.UpdVals();
+	td().fTriangleSize * scale * 2.f;
+	td().iVertsX = newSize;  td().UpdVals();
 	updTabHmap();  svTerTriSize.Upd();
 	app->bNewHmap = true;	app->UpdateTrack();  //SetGuiFromXmls();
 }
@@ -286,7 +297,7 @@ void CGui::btnTerrainMove(WP)
 	int mx = ex ? s2i(ex->getCaption()) : 0;
 	int my = ey ?-s2i(ey->getCaption()) : 0;
 	
-	int newSize = sc->td.iVertsX, si = newSize * newSize;
+	int newSize = td().iVertsX, si = newSize * newSize;
 	float* hfData = new float[si];
 	
 	//  resize
@@ -297,7 +308,7 @@ void CGui::btnTerrainMove(WP)
 		for (i=0; i < newSize; ++i,++a)
 		{
 			aa = std::max(0, std::min(si-1, (j-mx) * newSize + i+my));
-			hfData[a] = sc->td.hfHeight[aa];
+			hfData[a] = td().hfHeight[aa];
 		}
 	}
 	std::ofstream of;
@@ -307,7 +318,7 @@ void CGui::btnTerrainMove(WP)
 	delete[] hfData;
 	
 	app->scn->road->SelAll();
-	app->scn->road->Move(Vector3(my,0,mx) * -sc->td.fTriangleSize);
+	app->scn->road->Move(Vector3(my,0,mx) * -td().fTriangleSize);
 	app->scn->road->SelClear();
 	//start, objects-
 
@@ -342,15 +353,16 @@ void CGui::btnScaleTerH(WP)
 	}
 
 	//  ter  ---
-	float* hfData = new float[sc->td.iVertsX * sc->td.iVertsX];
-	int siz = sc->td.iVertsX * sc->td.iVertsX * sizeof(float);
+	int si = td().iVertsX * td().iVertsX;
+	float* hfData = new float[si];
+	int siz = si * sizeof(float);
 	
 	//  generate Hmap
-	for (int j=0; j < sc->td.iVertsX; ++j)
+	for (int j=0; j < td().iVertsX; ++j)
 	{
-		int a = j * sc->td.iVertsX;
-		for (i=0; i < sc->td.iVertsX; ++i,++a)
-			hfData[a] = sc->td.hfHeight[a] * sf;
+		int a = j * td().iVertsX;
+		for (i=0; i < td().iVertsX; ++i,++a)
+			hfData[a] = td().hfHeight[a] * sf;
 	}
 	std::ofstream of;
 	of.open(getHMapNew().c_str(), std::ios_base::binary);
@@ -382,21 +394,21 @@ void CGui::chkDebugBlend(Ck*)
 }
 
 
-///  Terrain layers  -----------------------------
+///  🏔️ Terrain layers  -----------------------------
 //
 void CGui::chkTerLayOn(Ck* ck)
 {
-	sc->td.UpdLayers();
-	if (sc->td.layers.size()==0)  // would crash, surf
+	td().UpdLayers();
+	if (td().layers.size()==0)  // would crash, surf
 	{
 		*ck->pBool = true;  // turn it back on
 		ck->Upd();
 	}
 
-	sc->td.UpdLayers();
+	td().UpdLayers();
 	updUsedTer();
 
-	//todo..  !! save hmap if changed
+	// todo! save hmap if changed
 	app->UpdateTrack();
 
 	SldUpd_TerLNvis();
@@ -405,22 +417,23 @@ void CGui::chkTerLayOn(Ck* ck)
 
 void CGui::updUsedTer()
 {
-	SetUsedStr(valTerLAll, sc->td.layers.size(), 3);
-	int t = sc->td.triplCnt;
+	if (!bGI)  return;
+	SetUsedStr(valTerLAll, td().layers.size(), 3);
+	int t = td().triplCnt;
 	valTriplAll->setCaption(TR("#{Used}") + ": " + toStr(t));
 	valTriplAll->setTextColour(sUsedClr[ t > 2 ? 6 : (t + 2)]);
 }
 
 void CGui::chkTerLayTripl(Ck*)
 {
-	sc->td.UpdLayers();
+	td().UpdLayers();
 	updUsedTer();
 }
 
 void CGui::comboTexNorm(Cmb cmb, size_t val)
 {
 	String s = cmb->getItemNameAt(val);
-	sc->td.layersAll[idTerLay].texNorm = s;
+	td().layersAll[idTerLay].texNorm = s;
 }
 
 //  Terrain BlendMap
@@ -441,11 +454,11 @@ void CGui::btnTerLmoveL(WP)  // -1
 {
 	if (idTerLay <= 0)  return;
 
-	TerLayer& t = sc->td.layersAll[idTerLay], st,
-			&t1 = sc->td.layersAll[idTerLay-1];
+	TerLayer& t = td().layersAll[idTerLay], st,
+			&t1 = td().layersAll[idTerLay-1];
 	st = t;  t = t1;  t1 = st;
 	
-	sc->td.UpdLayers();  NumTabNext(-1);
+	td().UpdLayers();  NumTabNext(-1);
 	app->scn->UpdBlendmap();
 }
 
@@ -453,11 +466,11 @@ void CGui::btnTerLmoveR(WP)  // +1
 {
 	if (idTerLay >= TerData::ciNumLay-1)  return;
 
-	TerLayer& t = sc->td.layersAll[idTerLay], st,
-			&t1 = sc->td.layersAll[idTerLay+1];
+	TerLayer& t = td().layersAll[idTerLay], st,
+			&t1 = td().layersAll[idTerLay+1];
 	st = t;  t = t1;  t1 = st;
 	
-	sc->td.UpdLayers();  NumTabNext(1);
+	td().UpdLayers();  NumTabNext(1);
 	app->scn->UpdBlendmap();
 }
 
@@ -476,7 +489,7 @@ void CGui::btnNpreset(WP wp)
 	String s = wp->getName();  //"TerLN_"
 	int i = s2i(s.substr(6));
 
-	TerLayer& t = sc->td.layersAll[idTerLay];
+	TerLayer& t = td().layersAll[idTerLay];
 	t.nFreq[l] = ns[i][0];
 	t.nOct[l]  = int(ns[i][1]);
 	t.nPers[l] = ns[i][2];
@@ -488,7 +501,7 @@ void CGui::btnNrandom(WP wp)
 {
 	int l = bRn2->getStateSelected() ? 1 : 0;
 
-	TerLayer& t = sc->td.layersAll[idTerLay];
+	TerLayer& t = td().layersAll[idTerLay];
 	t.nFreq[l] = Math::RangeRandom(20.f,70.f);
 	t.nOct[l]  = Math::RangeRandom(2.f,5.f);
 	t.nPers[l] = Math::RangeRandom(0.1f,0.7f);
@@ -500,7 +513,7 @@ void CGui::btnNrandom(WP wp)
 //  swap noise 1 and 2 params
 void CGui::btnNswap(WP wp)
 {
-	TerLayer& t = sc->td.layersAll[idTerLay];
+	TerLayer& t = td().layersAll[idTerLay];
 	std::swap(t.nFreq[0], t.nFreq[1]);
 	std::swap(t.nOct[0] , t.nOct[1] );
 	std::swap(t.nPers[0], t.nPers[1]);
@@ -510,7 +523,7 @@ void CGui::btnNswap(WP wp)
 }
 
 
-///  Terrain Particles  -----------------------------
+///  ⚫💭 Terrain Particles  -----------------------------
 //
 void CGui::comboParDust(Cmb cmb, size_t val)  // par type
 {
@@ -599,6 +612,5 @@ bool App::LoadAllSurfaces()
 		surfaces.push_back(surf);
 		surf_map[surf.name] = (int)surfaces.size();  //+1, 0 = not found
 	}
-
 	return true;
 }

@@ -61,12 +61,8 @@ void CGui::SetGuiFromXmls()
 	
 	//  ⛰️ Terrain
 	//-----------------------------------------------
-	updTabHmap();
-	svTerTriSize.Upd();
-	svTerNormScale.Upd();
-	svTerSpecPow.Upd();  svTerSpecPowEm.Upd();
-	
-	tabTerLayer(tabsTerLayers, idTerLay);
+	SetGuiTerFromXml();
+
 	_Cmb(cmbParDust, sc->sParDust);	_Cmb(cmbParMud,  sc->sParMud);
 	_Cmb(cmbParSmoke,sc->sParSmoke);
 
@@ -80,13 +76,15 @@ void CGui::SetGuiFromXmls()
 	tabGrLayers(tabsGrLayers, idGrLay);
 	tabPgLayers(tabsPgLayers, idPgLay);
 
+	//  🛣️ Road
+	//-----------------------------------------------
 	SetGuiRoadFromXml();
 
 	//  🚗 Game
 	//-----------------------------------------------
 	ckDenyReversed.Upd(&sc->denyReversed);
 	ckTiresAsphalt.Upd(&sc->asphalt);
-	ckTerrainEmissive.Upd(&sc->td.emissive);
+	// ckTerrainEmissive.Upd(&td().emissive);
 	ckNoWrongChks.Upd(&sc->noWrongChks);
 	SldUpd_Game();
 	UpdEdInfo();
@@ -99,10 +97,24 @@ void CGui::SetGuiFromXmls()
 	bGI = true;
 }
 
+//  ⛰️ Terrain
+//-----------------------------------------------
+void CGui::SetGuiTerFromXml()
+{
+	updTabHmap();
+	// svTerTriSize.Upd();  //?
+	UpdTxtTerSize();
+	// svTerNormScale.Upd();  svTerSpecPow.Upd();
+	svTerSpecPowEm.Upd();
+	
+	tabTerLayer(tabsTerLayers, idTerLay);
+	updTersTxt();
+}
+
+//  🛣️ Road
+//-----------------------------------------------
 void CGui::SetGuiRoadFromXml()
 {
-	//  🛣️ Road
-	//-----------------------------------------------
 	SplineRoad* rd = scn->road;
 	for (int i=0; i < 4/*MTRs*/; ++i)
 	{	btnRoad[i]->setCaption(rd->sMtrRoad[i]);
@@ -116,7 +128,7 @@ void CGui::SetGuiRoadFromXml()
 	_Ed(RdSkirtLen, rd->g_SkirtLen);  _Ed(RdSkirtH, rd->g_SkirtH);
 	SldUpd_Road();
 	ckRoad1Mtr.Upd();
-	
+	updRoadsTxt();
 }
 
 

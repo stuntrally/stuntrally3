@@ -1,46 +1,44 @@
 #include "pch.h"
+#include "Def_Str.h"
+#include "RenderConst.h"
+#include "App.h"
 #include "AppGui.h"
-#include <OgrePrerequisites.h>
-#include <OgreVector4.h>
-#include "GraphicsSystem.h"
-
-#include "OgreHlmsTerra.h"
-#include "OgreHlmsPbsTerraShadows.h"
-#include "Terra.h"
-
-#include <OgreHlmsTerraDatablock.h>
-#include <OgreTextureGpuManager.h>
-#include <OgreGpuResource.h>
-#include <OgreHlmsTerraPrerequisites.h>
-#include <OgreHlmsSamplerblock.h>
-
-//  SR
 #include "CScene.h"
 #include "settings.h"
 #include "ShapeData.h"
 #include "SceneXml.h"
 #include "paths.h"
 
-#include "Def_Str.h"
-#include "RenderConst.h"
+#include <OgrePrerequisites.h>
+#include <OgreVector4.h>
+#include "GraphicsSystem.h"
+#include "OgreHlmsTerra.h"
+#include "OgreHlmsPbsTerraShadows.h"
+#include "Terra.h"
+#include <OgreHlmsTerraDatablock.h>
+#include <OgreTextureGpuManager.h>
+#include <OgreGpuResource.h>
+#include <OgreHlmsTerraPrerequisites.h>
+#include <OgreHlmsSamplerblock.h>
 using namespace Ogre;
 
 
 //  ⛰️ Terrain
 //-----------------------------------------------------------------------------------------------
-void AppGui::CreateTerrain()
+void CScene::CreateTerrain1(int n)
 {
-	if (mTerra) return;
-	SceneManager *mgr = mGraphicsSystem->getSceneManager();
+	auto sn = toStr(n);
+	// if (mTerra)  return;
+	SceneManager *mgr = app->mGraphicsSystem->getSceneManager();
 	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 	
-	HlmsManager *hlmsMgr = mRoot->getHlmsManager();
+	HlmsManager *hlmsMgr = app->mRoot->getHlmsManager();
 	HlmsDatablock *db = 0;
 
-	LogO("C--T Terrain create mat");
+	LogO("C--T Terrain create mat " + sn);
 
-	mtrName = "SR3_TerraMtr";
-	db = mGraphicsSystem->hlmsTerra->createDatablock(
+	String mtrName = "SR3_TerraMtr" + sn;
+	db = app->mGraphicsSystem->hlmsTerra->createDatablock(
 		mtrName.c_str(), mtrName.c_str(),
 		HlmsMacroblock(), HlmsBlendblock(), HlmsParamVec() );
 	assert( dynamic_cast<HlmsTerraDatablock *>( datablock ) );
@@ -48,29 +46,28 @@ void AppGui::CreateTerrain()
 	
 	//  tex filtering
 	HlmsSamplerblock sb;
-	InitTexFilters(&sb);
-	TextureGpuManager *texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
+	app->InitTexFilters(&sb);
+	TextureGpuManager *texMgr = app->mRoot->getRenderSystem()->getTextureGpuManager();
 
 
-	tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);  // ?💡
-	// tblock->setBrdf(TerraBrdf::BlinnPhongSeparateDiffuseFresnel);  //** no fresnel-?
-	// tblock->setBrdf(TerraBrdf::CookTorranceSeparateDiffuseFresnel);  //** no fresnel-?
-	// tblock->setBrdf(TerraBrdf::CookTorrance);
-	// tblock->setBrdf(TerraBrdf::DefaultUncorrelated);
-	// tblock->setBrdf(TerraBrdf::DefaultSeparateDiffuseFresnel);
-	// tblock->setFresnel();
-	// tblock->setDiffuse(Vector3(1,0,0));
+	// tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);  // ?💡
+	// tdb->setBrdf(TerraBrdf::BlinnPhongSeparateDiffuseFresnel);  //** no fresnel-?
+	tdb->setBrdf(TerraBrdf::CookTorranceSeparateDiffuseFresnel);  //** no fresnel-?
+	// tdb->setBrdf(TerraBrdf::CookTorrance);  //+
+	// tdb->setBrdf(TerraBrdf::DefaultUncorrelated);  // dark-
+	// tdb->setBrdf(TerraBrdf::DefaultSeparateDiffuseFresnel);
+	// tdb->setFresnel();
+	// tdb->setDiffuse(Vector3(1,0,0));
 
 
 	///  🏔️ Layer Textures  ------------------------------------------------
-	Scene* sc = scn->sc;
-
-	const Real fTer = sc->td.fTerWorldSize;
-	// const Real fTer = sc->td.fTriangleSize * sc->td.iVertsX;
-	int ls = sc->td.layers.size();
+	const auto& td = sc->tds[n];
+	const Real fTer = td.fTerWorldSize;
+	// const Real fTer = td.fTriangleSize * td.iVertsX;
+	int ls = td.layers.size();
 	for (int i=0; i < ls; ++i)
 	{
-		TerLayer& l = sc->td.layersAll[sc->td.layers[i]];
+		const TerLayer& l = td.layersAll[td.layers[i]];
 		// di.layerList[i].worldSize = l.tiling;
 
 		//  combined rgb,a from 2 tex
@@ -122,31 +119,37 @@ void AppGui::CreateTerrain()
 
 
 	//  🆕 Create  ------------------------------------------------
-	LogO("---T Terrain create");
+	LogO("---T Terrain create " + sn);
 
-	mTerra = new Terra( Id::generateNewId<MovableObject>(),
+	auto* mTerra = new Terra( //si,
+						Id::generateNewId<MovableObject>(),
 						&mgr->_getEntityMemoryManager( SCENE_STATIC ),
-						mgr, RQG_Terrain, mRoot->getCompositorManager2(),
-						mCamera, false );
+						mgr, RQG_Terrain, app->mRoot->getCompositorManager2(),
+						app->mCamera, false );
+	mTerra->cnt = n;
+	mTerra->mtrName = mtrName;
 	// mTerra->setCustomSkirtMinHeight(0.8f); //?-
 	mTerra->setCastShadows( false );
-	mTerra->sc = scn->sc;
-	scn->terrain = mTerra;
+	mTerra->sc = sc; //scn->sc;
+	// scn->terrain = mTerra;
+	ters.push_back(mTerra);  //+
+	if (n == 0)  // 1st ter only
+		ter = mTerra;
 
 
 	//  ⛰️ Heightmap  ------------------------------------------------
 	LogO("---T Terrain Hmap load");
-	int size = sc->td.iVertsX;
-	Real tri = sc->td.fTriangleSize, sizeXZ = tri * size;  //sc->td.fTerWorldSize;
-	// LogO("Ter size: " + toStr(sc->td.iVertsX));// +" "+ toStr((sc->td.iVertsX)*sizeof(float))
+	int size = td.iVertsX;
+	Real tri = td.fTriangleSize, sizeXZ = tri * size;  //td.fTerWorldSize;
+	// LogO("Ter size: " + toStr(td.iVertsX));// +" "+ toStr((td.iVertsX)*sizeof(float))
 
 	bool any = !mTerra->bNormalized;
 	mTerra->load( size, size,
-		sc->td.hfHeight, sc->td.iVertsXold,
+		td.hfHeight, td.iVertsXold,
 		Vector3(
 			0.f,
 			any ? 0.5f : 0.f,  //** why y?
-			sc->td.ofsZ ),
+			td.ofsZ ),
 		Vector3(
 			sizeXZ,
 			any ? 1.f : mTerra->fHRange,  //** ter norm scale..
@@ -164,34 +167,81 @@ void AppGui::CreateTerrain()
 	db = hlmsMgr->getDatablock( mtrName );
 	mTerra->setDatablock( db );
 
-	LogO("---T Terrain shadows");
-	mHlmsPbsTerraShadows = new HlmsPbsTerraShadows();
-	mHlmsPbsTerraShadows->setTerra( mTerra );
-	
-	//  Set the PBS listener so regular objects also receive terrain shadows
-	Hlms *hlmsPbs = mRoot->getHlmsManager()->getHlms( HLMS_PBS );
-	hlmsPbs->setListener( mHlmsPbsTerraShadows );
-	LogO("C--T Terrain created");
+	//  shadows
+	if (!mHlmsPbsTerraShadows && n == 0)  // 1st ter only?-
+	{
+		LogO("---T Terrain shadows");
+		mHlmsPbsTerraShadows = new HlmsPbsTerraShadows();
+		mHlmsPbsTerraShadows->setTerra( mTerra );
+		
+		//  Set the PBS listener so regular objects also receive terrain shadows
+		Hlms *hlmsPbs = app->mRoot->getHlmsManager()->getHlms( HLMS_PBS );
+		hlmsPbs->setListener( mHlmsPbsTerraShadows );
+	}
+	LogO("C--T Terrain created " + sn);
 }
 
 
 //  💥 destroy  ------------------------------------------------
-void AppGui::DestroyTerrain()
+void CScene::DestroyTerrain1(int n)
 {
-	LogO("D--T destroy Terrain");
+	LogO("D--T destroy Terrain "+toStr(n+1));
 
-	Root *root = mGraphicsSystem->getRoot();
+	Root *root = app->mGraphicsSystem->getRoot();
 	Hlms *hlmsPbs = root->getHlmsManager()->getHlms( HLMS_PBS );
 
+	if (n == 0)  // 1st ter only-?
 	if( hlmsPbs->getListener() == mHlmsPbsTerraShadows )
 	{
 		hlmsPbs->setListener( 0 );
 		delete mHlmsPbsTerraShadows;  mHlmsPbsTerraShadows = 0;
 	}
-	delete mTerra;  mTerra = 0;
+	auto mtr = ter->mtrName;
 
-	if (!mtrName.empty())
-	{	mGraphicsSystem->hlmsTerra->destroyDatablock(mtrName);
-		mtrName = "";
+	delete ters[n];  ters[n] = 0;
+
+	if (!mtr.empty())
+	{	app->mGraphicsSystem->hlmsTerra->destroyDatablock(mtr);
+		// ter->mtrName = "";
 	}
+}
+
+//  💥 Destroy all
+void CScene::DestroyTerrains()
+{
+	for (int i=0; i < ters.size(); ++i)
+		DestroyTerrain1(i);
+	ters.clear();
+}
+
+//  ⛓️ util
+void CScene::TerNext(int add)
+{
+	int all = ters.size();
+	assert(all > 0);
+	terCur = (terCur + add + all) % all;
+	ter = ters[terCur];
+	td = &sc->tds[terCur];
+}
+
+//  ⛓️⛰️ util all Ter H
+Ogre::Real CScene::getTerH(Ogre::Real x, Ogre::Real z)
+{
+	for (auto ter : ters)
+	{
+		Vector3 p(x, 0.f, z);
+		if (ter->getHeightAt(p))
+			return p.y;
+	}
+	return 0.f;  //-
+}
+
+bool CScene::getTerH(Ogre::Vector3& pos)  // sets y
+{
+	for (auto ter : ters)
+	{
+		if (ter->getHeightAt(pos))
+			return true;
+	}
+	return false;
 }

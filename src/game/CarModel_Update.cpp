@@ -367,10 +367,10 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		Real sizeD = (0.8f + 0.6f * std::min(140.f, whVel) / 140.f) * (w < 2 ? 0.7f : 1.1f);
 
 		//  ter mtr factors
-		int mtr = std::max(0, std::min(whMtr-1, (int)(sc->td.layers.size()-1)));
-		int rd  = sc->td.road1mtr ? 0 : std::max(0, std::min(3, whRd));
+		int mtr = std::max(0, std::min(whMtr-1, (int)(sc->tds[0].layers.size()-1)));  // 1st ter!-
+		int rd  = sc->road1mtr ? 0 : std::max(0, std::min(3, whRd));
 
-		TerLayer& lay = whMtr==0 ? sc->td.layerRoad[rd] : sc->td.layersAll[sc->td.layers[mtr]];
+		TerLayer& lay = whMtr==0 ? sc->tds[0].layerRoad[rd] : sc->tds[0].layersAll[sc->tds[0].layers[mtr]];  // 1st ter!-
 		emitD *= lay.dust;  emitM *= lay.mud;  sizeD *= lay.dustS;  emitS *= lay.smoke;
 
 		if (pipe)  emitD = 0;  // no dust in pipes

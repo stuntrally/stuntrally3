@@ -48,7 +48,7 @@ CarModel::CarModel(int index, int colorId,
 	pGame = app->pGame;
 	sc = app->sc;
 	mSceneMgr = app->mSceneMgr;
-	terrain = app->mTerra;
+	terrain = app->scn->ters[0];  // 1st ter
 }
 
 void CarModel::SetNumWheels(int n)

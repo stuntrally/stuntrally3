@@ -31,8 +31,8 @@ bool Scene::SaveXml(String file)
 		car.SetAttribute("tires",	asphalt ? "1":"0");
 		if (damageMul != 1.f)
 			car.SetAttribute("damage",	toStrC( damageMul ));
-		if (!td.road1mtr)
-			car.SetAttribute("road1mtr", td.road1mtr ? "1":"0");
+		if (!road1mtr)
+			car.SetAttribute("road1mtr", road1mtr ? "1":"0");
 		if (noWrongChks)
 			car.SetAttribute("noWrongChks", noWrongChks ? "1":"0");
 
@@ -121,82 +121,88 @@ bool Scene::SaveXml(String file)
 	root.InsertEndChild(fls);
 
 
-	TiXmlElement ter("terrain");  // ⛰️
-		// ter.SetAttribute("size",		toStrC( td.iVertsX ));  // no, from filesize
-		ter.SetAttribute("ofsZ",		toStrC( td.ofsZ ));
-		ter.SetAttribute("triangle",	toStrC( td.fTriangleSize ));
-		ter.SetAttribute("errNorm",		fToStr( td.errorNorm, 2,4 ).c_str());
-		if (td.normScale != 1.f)
-			ter.SetAttribute("normSc",		toStrC( td.normScale ));
-		if (td.emissive)
-			ter.SetAttribute("emissive",	td.emissive ? 1 : 0);
-		if (td.specularPow != 32.f)
-			ter.SetAttribute("specPow",		toStrC( td.specularPow ));
-		if (td.specularPowEm != 2.f)
-			ter.SetAttribute("specPowEm",	toStrC( td.specularPowEm ));
+	TiXmlElement ters("terrains");  // ⛰️
+	for (int n = 0; n < tds.size(); ++n)
+	{
+		const auto& td = tds[n];
+		TiXmlElement ter("terrain");
+			// ter.SetAttribute("size",		toStrC( td.iVertsX ));  // no, from filesize
+			ter.SetAttribute("ofsZ",		toStrC( td.ofsZ ));
+			ter.SetAttribute("triangle",	toStrC( td.fTriangleSize ));
+			// ter.SetAttribute("errNorm",		fToStr( td.errorNorm, 2,4 ).c_str());
+			// if (td.normScale != 1.f)
+			// 	ter.SetAttribute("normSc",		toStrC( td.normScale ));
+			if (td.emissive)
+				ter.SetAttribute("emissive",	td.emissive ? 1 : 0);
+			// if (td.specularPow != 32.f)
+			// 	ter.SetAttribute("specPow",		toStrC( td.specularPow ));
+			if (td.specularPowEm != 2.f)
+				ter.SetAttribute("specPowEm",	toStrC( td.specularPowEm ));
 
-		const TerLayer* l;
-		for (int i=0; i < 6; ++i)
-		{
-			l = &td.layersAll[i];
-			TiXmlElement tex("texture");
-			tex.SetAttribute("on",		l->on ? 1 : 0);
-			tex.SetAttribute("file",	l->texFile.c_str());
-			tex.SetAttribute("fnorm",	l->texNorm.c_str());
-			tex.SetAttribute("scale",	toStrC( l->tiling ));
-			tex.SetAttribute("surf",	l->surfName.c_str());
-			#define setDmst()  \
-				tex.SetAttribute("dust",	toStrC( l->dust ));  \
-				tex.SetAttribute("dustS",	toStrC( l->dustS )); \
-				tex.SetAttribute("mud",		toStrC( l->mud ));   \
-				tex.SetAttribute("smoke",	toStrC( l->smoke )); \
-				tex.SetAttribute("tclr",	l->tclr.Save().c_str() );
-			setDmst();  // ⚫💭
-			if (l->fDamage > 0.f)
-				tex.SetAttribute("dmg",	toStrC( l->fDamage ));
+			const TerLayer* l;
+			for (int i=0; i < 6; ++i)
+			{
+				l = &td.layersAll[i];
+				TiXmlElement tex("texture");
+				tex.SetAttribute("on",		l->on ? 1 : 0);
+				tex.SetAttribute("file",	l->texFile.c_str());
+				tex.SetAttribute("fnorm",	l->texNorm.c_str());
+				tex.SetAttribute("scale",	toStrC( l->tiling ));
+				tex.SetAttribute("surf",	l->surfName.c_str());
+				#define setDmst()  \
+					tex.SetAttribute("dust",	toStrC( l->dust ));  \
+					tex.SetAttribute("dustS",	toStrC( l->dustS )); \
+					tex.SetAttribute("mud",		toStrC( l->mud ));   \
+					tex.SetAttribute("smoke",	toStrC( l->smoke )); \
+					tex.SetAttribute("tclr",	l->tclr.Save().c_str() );
+				setDmst();  // ⚫💭
+				if (l->fDamage > 0.f)
+					tex.SetAttribute("dmg",	toStrC( l->fDamage ));
 
-			tex.SetAttribute("angMin",	toStrC( l->angMin ));
-			tex.SetAttribute("angMax",	toStrC( l->angMax ));
-			tex.SetAttribute("angSm",	toStrC( l->angSm ));
-			tex.SetAttribute("hMin",	toStrC( l->hMin ));
-			tex.SetAttribute("hMax",	toStrC( l->hMax ));
-			tex.SetAttribute("hSm",		toStrC( l->hSm ));
+				tex.SetAttribute("angMin",	toStrC( l->angMin ));
+				tex.SetAttribute("angMax",	toStrC( l->angMax ));
+				tex.SetAttribute("angSm",	toStrC( l->angSm ));
+				tex.SetAttribute("hMin",	toStrC( l->hMin ));
+				tex.SetAttribute("hMax",	toStrC( l->hMax ));
+				tex.SetAttribute("hSm",		toStrC( l->hSm ));
 
-			tex.SetAttribute("nOn",		l->nOnly ? 1 : 0);
-			if (l->triplanar)  tex.SetAttribute("triplanar", 1);
+				tex.SetAttribute("nOn",		l->nOnly ? 1 : 0);
+				if (l->triplanar)  tex.SetAttribute("triplanar", 1);
 
-			tex.SetAttribute("noise",	toStrC( l->noise ));
-			tex.SetAttribute("n_1",		toStrC( l->nprev ));
-			tex.SetAttribute("n2",		toStrC( l->nnext2 ));
+				tex.SetAttribute("noise",	toStrC( l->noise ));
+				tex.SetAttribute("n_1",		toStrC( l->nprev ));
+				tex.SetAttribute("n2",		toStrC( l->nnext2 ));
 
-			TiXmlElement noi("noise");
-			for (int n=0; n < 2; ++n)
-			{	string sn = toStr(n), s;
-				s = "frq"+sn;  noi.SetAttribute(s.c_str(),  toStrC( l->nFreq[n] ));
-				s = "oct"+sn;  noi.SetAttribute(s.c_str(),  toStrC( l->nOct[n] ));
-				s = "prs"+sn;  noi.SetAttribute(s.c_str(),  toStrC( l->nPers[n] ));
-				s = "pow"+sn;  noi.SetAttribute(s.c_str(),  toStrC( l->nPow[n] ));
+				TiXmlElement noi("noise");
+				for (int n=0; n < 2; ++n)
+				{	string sn = toStr(n), s;
+					s = "frq"+sn;  noi.SetAttribute(s.c_str(),  toStrC( l->nFreq[n] ));
+					s = "oct"+sn;  noi.SetAttribute(s.c_str(),  toStrC( l->nOct[n] ));
+					s = "prs"+sn;  noi.SetAttribute(s.c_str(),  toStrC( l->nPers[n] ));
+					s = "pow"+sn;  noi.SetAttribute(s.c_str(),  toStrC( l->nPow[n] ));
+				}
+				tex.InsertEndChild(noi);
+				ter.InsertEndChild(tex);
 			}
-			tex.InsertEndChild(noi);
-			ter.InsertEndChild(tex);
-		}
-		for (int i=0; i < 4; ++i)
-		{
-			l = &td.layerRoad[i];
-			TiXmlElement tex("texture");
-			tex.SetAttribute("road",	toStrC(i+1));
-			tex.SetAttribute("surf",	l->surfName.c_str());
-			setDmst();
-			ter.InsertEndChild(tex);
-		}
-		
-		TiXmlElement par("par");  // ⚫💭
-			par.SetAttribute("dust",	sParDust.c_str());
-			par.SetAttribute("mud",		sParMud.c_str());
-			par.SetAttribute("smoke",	sParSmoke.c_str());
-		ter.InsertEndChild(par);
+			for (int i=0; i < 4; ++i)
+			{
+				l = &td.layerRoad[i];
+				TiXmlElement tex("texture");
+				tex.SetAttribute("road",	toStrC(i+1));
+				tex.SetAttribute("surf",	l->surfName.c_str());
+				setDmst();
+				ter.InsertEndChild(tex);
+			}
+			
+			TiXmlElement par("par");  // ⚫💭
+				par.SetAttribute("dust",	sParDust.c_str());
+				par.SetAttribute("mud",		sParMud.c_str());
+				par.SetAttribute("smoke",	sParSmoke.c_str());
+			ter.InsertEndChild(par);
 
-	root.InsertEndChild(ter);
+		ters.InsertEndChild(ter);
+	}
+	root.InsertEndChild(ters);
 	
 
 	TiXmlElement pgd("paged");  // 🌳🪨 vegetation

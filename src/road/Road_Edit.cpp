@@ -2,6 +2,7 @@
 #include "Def_Str.h"
 #include "dbl.h"
 #include "Road.h"
+#include "CScene.h"
 #ifdef SR_EDITOR
 	#include "CApp.h"
 #else
@@ -111,9 +112,8 @@ void SplineEdit::Move1(int id, Vector3 relPos)
 
 Real SplineEdit::getTerH(const Vector3& p)
 {
-	Vector3 pos = p;
-	if (mTerrain)
-		mTerrain->getHeightAt(pos);
+	Vector3 pos(p);
+	scn->getTerH(pos);
 	return pos.y;
 }
 
@@ -705,6 +705,7 @@ void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,
 	if (!bRay || !ndHit || !mTerrain)  return;
 	bHitTer = false;
 	
+	///  🎯 manual ray cast  -----------
 	const Real minStep = 0.001f, maxDist = 9000.f;  // par?
 	Real dist = 0.f, step = 10.f;
 	bool ok = true;

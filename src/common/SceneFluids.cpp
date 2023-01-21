@@ -115,7 +115,7 @@ void CScene::CreateBltFluids()
 		//tr.setRotation(btQuaternion(0, 0, fb.rot.x*PI_d/180.f));
 
 		btCollisionObject* bco = 0;
-		float t = sc->td.fTerWorldSize*0.5f;  // not bigger than terrain
+		float t = sc->tds[0].fTerWorldSize*0.5f;  // not bigger than terrain  // 1st ter!-
 		btScalar sx = std::min(t, fb.size.x*0.5f), sy = std::min(t, fb.size.z*0.5f), sz = fb.size.y*0.5f;
 		
 	if (0 && fp.solid)  /// test random ray jumps meh-

@@ -39,6 +39,7 @@ void Scene::Default()
 	fogClr = fogClr2 = fogClrH = SColor(0.73f, 0.86f, 1.0f, 1.f);
 	fogHeight = -300.f;  fogHDensity = 100.f;  fogHStart = 0;  fogHEnd = 400;
 	fHDamage = 0.f;
+	road1mtr = false;
 
 	ldPitch = 50.f;  ldYaw = 30.f;
 	lAmb  = SColor(0.16f, 0.0f, 0.45f);
@@ -46,7 +47,8 @@ void Scene::Default()
 
 	sParDust = "Dust";  sParMud = "Mud";  sParSmoke = "Smoke";
 
-	td.Default();
+	tds.clear();
+	// td.Default();
 
 	densTrees=0;  densGrass=0;  grDensSmooth=6;
 	grPage = 80;  grDist = 80;
@@ -128,6 +130,7 @@ void Scene::UpdateSurfId()
 	if (!pGame)  return;
 	//  update surfId from surfName
 	int i;
+	auto& td = tds[0];  // 1st ter
 	//  terrain
 	for (i=0; i < td.ciNumLay; ++i)
 	{

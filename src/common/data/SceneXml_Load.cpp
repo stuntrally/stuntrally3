@@ -1,9 +1,10 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "SceneXml.h"
+#include "SceneClasses.h"
 #include "FluidsXml.h"
-#include "tinyxml.h"
-#include "tinyxml2.h"
+#include <tinyxml.h>
+#include <tinyxml2.h>
 #include "game.h"  // for surfaces map
 #include <OgreSceneNode.h>
 using namespace std;
@@ -49,7 +50,7 @@ bool Scene::LoadXml(String file, bool bTer)
 	if (e)
 	{	a = e->Attribute("tires");		if (a)  asphalt = s2i(a) > 0;
 		a = e->Attribute("damage");		if (a)  damageMul = s2r(a);
-		a = e->Attribute("road1mtr");	if (a)  td.road1mtr = s2i(a) > 0;
+		a = e->Attribute("road1mtr");	if (a)  road1mtr = s2i(a) > 0;
 
 		a = e->Attribute("denyRev");	if (a)  denyReversed = s2i(a) > 0;
 		a = e->Attribute("gravity");	if (a)  gravity = s2r(a);
@@ -134,82 +135,32 @@ bool Scene::LoadXml(String file, bool bTer)
 		}
 	}
 	
+
 	///  ⛰️ terrain
-	e = root->FirstChildElement("terrain");
+	//  new, many
+	e = root->FirstChildElement("terrains");
 	if (e)
-	{	//a = e->Attribute("size");		if (a)  td.iVertsXold = s2i(a);  // got from hmap file size later
-		a = e->Attribute("ofsZ");		if (a)  td.ofsZ = s2r(a);
-		a = e->Attribute("triangle");	if (a)  td.fTriangleSize = s2r(a);
-		a = e->Attribute("errNorm");	if (a)  td.errorNorm = s2r(a);
-
-		a = e->Attribute("normSc");		if (a)  td.normScale = s2r(a);
-		a = e->Attribute("emissive");	if (a)  td.emissive = s2i(a)>0;
-		a = e->Attribute("specPow");	if (a)  td.specularPow = s2r(a);
-		a = e->Attribute("specPowEm");	if (a)  td.specularPowEm = s2r(a);
-		td.UpdVals();
-
-		int il = 0;
-		u = e->FirstChildElement("texture");
+	{
+		u = e->FirstChildElement("terrain");	
 		while (u)
 		{
-			int road = -1;
-			a = u->Attribute("road");	if (a)  road = s2i(a)-1;
-			bool ter = road == -1;
-			
-			TerLayer lay, *l = ter ? &lay : &td.layerRoad[road];
-			lay.nFreq[0] += (il-0.7f) * 4.f;  // default, can't be same, needs variation
-			lay.nFreq[1] += (il-0.5f) * 3.f;
-
-			a = u->Attribute("on");		if (a)  l->on = s2i(a)>0;  else  l->on = true;
-			a = u->Attribute("file");	if (a)  l->texFile = String(a);
-			a = u->Attribute("fnorm");	if (a)  l->texNorm = String(a);
-			a = u->Attribute("scale");	if (a)  l->tiling = s2r(a);
-			a = u->Attribute("surf");	if (a)  l->surfName = String(a);
-
-			a = u->Attribute("dust");	if (a)  l->dust = s2r(a);  // ⚫💭
-			a = u->Attribute("dustS");	if (a)  l->dustS = s2r(a);
-			a = u->Attribute("mud");	if (a)  l->mud = s2r(a);
-			a = u->Attribute("smoke");	if (a)  l->smoke = s2r(a);
-			a = u->Attribute("tclr");	if (a){ l->tclr.Load(a);  l->tcl = l->tclr.GetRGBA();  }
-			a = u->Attribute("dmg");	if (a)  l->fDamage = s2r(a);
-
-			a = u->Attribute("angMin");	if (a)  l->angMin = s2r(a);
-			a = u->Attribute("angMax");	if (a)  l->angMax = s2r(a);
-			a = u->Attribute("angSm");	if (a)  l->angSm = s2r(a);
-			a = u->Attribute("hMin");	if (a)  l->hMin = s2r(a);
-			a = u->Attribute("hMax");	if (a)  l->hMax = s2r(a);
-			a = u->Attribute("hSm");	if (a)  l->hSm = s2r(a);
-
-			a = u->Attribute("nOn");		if (a)  l->nOnly = s2i(a)>0;
-			a = u->Attribute("triplanar");	if (a)  l->triplanar = true;  else  l->triplanar = false;
-
-			a = u->Attribute("noise");	if (a)  l->noise = s2r(a);
-			a = u->Attribute("n_1");	if (a)  l->nprev = s2r(a);
-			a = u->Attribute("n2");		if (a)  l->nnext2 = s2r(a);
-
-			XMLElement* eNoi = u->FirstChildElement("noise");
-			if (eNoi)
-			for (int n=0; n < 2; ++n)
-			{	string sn = toStr(n), s;
-				s = "frq"+sn;  a = eNoi->Attribute(s.c_str());  if (a)  l->nFreq[n]= s2r(a);
-				s = "oct"+sn;  a = eNoi->Attribute(s.c_str());  if (a)  l->nOct[n] = s2i(a);
-				s = "prs"+sn;  a = eNoi->Attribute(s.c_str());  if (a)  l->nPers[n]= s2r(a);
-				s = "pow"+sn;  a = eNoi->Attribute(s.c_str());  if (a)  l->nPow[n] = s2r(a);
-			}
-			if (ter && il < td.ciNumLay)
-				td.layersAll[il++] = lay;
-			u = u->NextSiblingElement("texture");
-		}
-		td.UpdLayers();
-
-		u = e->FirstChildElement("par");  // ⚫💭
-		if (u)
-		{	a = u->Attribute("dust");	if (a)  sParDust = String(a);
-			a = u->Attribute("mud");	if (a)  sParMud = String(a);
-			a = u->Attribute("smoke");	if (a)  sParSmoke = String(a);
+			TerData td;
+			LoadTerData(td, u);
+			tds.push_back(td);
+			u = u->NextSiblingElement("terrain");
 		}
 	}
+
+	//  old 2.7, one
+	e = root->FirstChildElement("terrain");
+	if (e)
+	{
+		TerData td;
+		LoadTerData(td, e);
+		tds.push_back(td);
+	}
 	
+
 	///  🌳🪨 vegetation
  	e = root->FirstChildElement("paged");
 	if (e)
@@ -365,5 +316,87 @@ bool Scene::LoadXml(String file, bool bTer)
 
 	UpdateSurfId();
 	
+	return true;
+}
+
+
+//  Ter Data
+//  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+bool Scene::LoadTerData(TerData& td, XMLElement* e)
+{
+	XMLElement* u;
+	const char* a;
+
+	//a = e->Attribute("size");		if (a)  td.iVertsXold = s2i(a);  // got from hmap file size later
+	a = e->Attribute("ofsZ");		if (a)  td.ofsZ = s2r(a);
+	a = e->Attribute("triangle");	if (a)  td.fTriangleSize = s2r(a);
+	// a = e->Attribute("errNorm");	if (a)  td.errorNorm = s2r(a);
+
+	// a = e->Attribute("normSc");		if (a)  td.normScale = s2r(a);
+	a = e->Attribute("emissive");	if (a)  td.emissive = s2i(a)>0;
+	// a = e->Attribute("specPow");	if (a)  td.specularPow = s2r(a);
+	a = e->Attribute("specPowEm");	if (a)  td.specularPowEm = s2r(a);
+	td.UpdVals();
+
+	int il = 0;
+	u = e->FirstChildElement("texture");
+	while (u)
+	{
+		int road = -1;
+		a = u->Attribute("road");	if (a)  road = s2i(a)-1;
+		bool ter = road == -1;
+		
+		TerLayer lay, *l = ter ? &lay : &td.layerRoad[road];
+		lay.nFreq[0] += (il-0.7f) * 4.f;  // default, can't be same, needs variation
+		lay.nFreq[1] += (il-0.5f) * 3.f;
+
+		a = u->Attribute("on");		if (a)  l->on = s2i(a)>0;  else  l->on = true;
+		a = u->Attribute("file");	if (a)  l->texFile = String(a);
+		a = u->Attribute("fnorm");	if (a)  l->texNorm = String(a);
+		a = u->Attribute("scale");	if (a)  l->tiling = s2r(a);
+		a = u->Attribute("surf");	if (a)  l->surfName = String(a);
+
+		a = u->Attribute("dust");	if (a)  l->dust = s2r(a);  // ⚫💭
+		a = u->Attribute("dustS");	if (a)  l->dustS = s2r(a);
+		a = u->Attribute("mud");	if (a)  l->mud = s2r(a);
+		a = u->Attribute("smoke");	if (a)  l->smoke = s2r(a);
+		a = u->Attribute("tclr");	if (a){ l->tclr.Load(a);  l->tcl = l->tclr.GetRGBA();  }
+		a = u->Attribute("dmg");	if (a)  l->fDamage = s2r(a);
+
+		a = u->Attribute("angMin");	if (a)  l->angMin = s2r(a);  // 🏔️
+		a = u->Attribute("angMax");	if (a)  l->angMax = s2r(a);
+		a = u->Attribute("angSm");	if (a)  l->angSm = s2r(a);
+		a = u->Attribute("hMin");	if (a)  l->hMin = s2r(a);
+		a = u->Attribute("hMax");	if (a)  l->hMax = s2r(a);
+		a = u->Attribute("hSm");	if (a)  l->hSm = s2r(a);
+
+		a = u->Attribute("nOn");		if (a)  l->nOnly = s2i(a)>0;
+		a = u->Attribute("triplanar");	if (a)  l->triplanar = true;  else  l->triplanar = false;
+
+		a = u->Attribute("noise");	if (a)  l->noise = s2r(a);  // 🌀
+		a = u->Attribute("n_1");	if (a)  l->nprev = s2r(a);
+		a = u->Attribute("n2");		if (a)  l->nnext2 = s2r(a);
+
+		XMLElement* eNoi = u->FirstChildElement("noise");
+		if (eNoi)
+		for (int n=0; n < 2; ++n)
+		{	string sn = toStr(n), s;
+			s = "frq"+sn;  a = eNoi->Attribute(s.c_str());  if (a)  l->nFreq[n]= s2r(a);
+			s = "oct"+sn;  a = eNoi->Attribute(s.c_str());  if (a)  l->nOct[n] = s2i(a);
+			s = "prs"+sn;  a = eNoi->Attribute(s.c_str());  if (a)  l->nPers[n]= s2r(a);
+			s = "pow"+sn;  a = eNoi->Attribute(s.c_str());  if (a)  l->nPow[n] = s2r(a);
+		}
+		if (ter && il < td.ciNumLay)
+			td.layersAll[il++] = lay;
+		u = u->NextSiblingElement("texture");
+	}
+	td.UpdLayers();
+
+	u = e->FirstChildElement("par");  // ⚫💭
+	if (u)
+	{	a = u->Attribute("dust");	if (a)  sParDust = String(a);
+		a = u->Attribute("mud");	if (a)  sParMud = String(a);
+		a = u->Attribute("smoke");	if (a)  sParSmoke = String(a);
+	}
 	return true;
 }

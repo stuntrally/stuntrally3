@@ -132,7 +132,7 @@ void App::UpdateEnd(float dt)
 	static float gdOld = scn->sc->densGrass;
 
 	///<>  ⛰️ Edit Terrain, brushes
-	if (scn->terrain && road && bEdit() && road->bHitTer)
+	if (scn->ter && road && bEdit() && road->bHitTer)
 	{
 		Real s = shift ? 0.25 : ctrl ? 4.0 :1.0;
 		switch (edMode)
@@ -155,14 +155,13 @@ void App::UpdateEnd(float dt)
 	}
 
 	///  ⛰️ Terrain  ----
-	if (mTerra && mGraphicsSystem->getRenderWindow()->isVisible() )
+	if (mGraphicsSystem->getRenderWindow()->isVisible())
 	{
-		// Force update the shadow map every frame to avoid the feeling we're "cheating" the
-		// user in this sample with higher framerates than what he may encounter in many of
-		// his possible uses.
+		// Force update the shadow map every frame
 		const float lightEpsilon = 0.0001f;  //** 0.0f slow
-		mTerra->update( !scn->sun ? -Vector3::UNIT_Y :
-			scn->sun->getDerivedDirectionUpdated(), lightEpsilon );
+		for (auto ter : scn->ters)
+			ter->update( !scn->sun ? -Vector3::UNIT_Y :
+				scn->sun->getDerivedDirectionUpdated(), lightEpsilon );
 	}
 
 
@@ -216,7 +215,7 @@ void App::UpdateEnd(float dt)
 			bool full = road == road1 && fu;
 			if (full && scn->pace)  // pace, only for 1st
 			{
-				scn->pace->SetupTer(scn->terrain);
+				scn->pace->SetupTer(scn->ters[0]);  // 1st ter only-
 				road->RebuildRoadPace();
 				scn->pace->Rebuild(road, scn->sc, pSet->trk_reverse);
 			}

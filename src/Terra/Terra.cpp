@@ -226,7 +226,7 @@ namespace Ogre
 
 		TextureGpuManager *mgr = pTerra->mManager->getDestinationRenderSystem()->getTextureGpuManager();
 		texture = mgr->createTexture(
-			"NormalMapTex_" + StringConverter::toString( pTerra->getId() ),
+			"NormalMapTex_" + toStr( pTerra->getId() ),
 			GpuPageOutStrategy::SaveToSystemRam,
 			TextureFlags::ManualTexture, TextureTypes::Type2D );
 		
@@ -270,7 +270,7 @@ namespace Ogre
 		finalTargetChannels[0] = rtt;
 
 
-		camera = pTerra->mManager->createCamera( "CamTerraNormal" );
+		camera = pTerra->mManager->createCamera( "CamTerraNormal" + toStr(pTerra->cnt) );
 
 		const IdString workspaceName = pTerra->m_heightMapTex->getPixelFormat() == PFG_R16_UINT
 			? "Terra/GpuNormalMapperWorkspaceU16" : "Terra/GpuNormalMapperWorkspace";
@@ -874,7 +874,7 @@ namespace Ogre
 		else
 		{
 			TextureGpuManager *textureManager = baseTemplate->getTextureManager();
-			tmpRtt = textureManager->createTexture( texName + StringConverter::toString( id ),
+			tmpRtt = textureManager->createTexture( texName + toStr( id ),
 													GpuPageOutStrategy::Discard, flags,
 													TextureTypes::Type2D );
 			tmpRtt->copyParametersFrom( baseTemplate );

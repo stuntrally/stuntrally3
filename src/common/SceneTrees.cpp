@@ -76,8 +76,8 @@ void CScene::CreateTrees()
 	iVegetAll = 0;
 	// updGrsTer();
 
-
-	Real tws = sc->td.fTerWorldSize * 0.5f;
+	const auto& td = sc->tds[0];  // 1st ter only-  // todo: for all
+	Real tws = td.fTerWorldSize * 0.5f;
 	//  pos0 - original  pos - with offset
 	Vector3 pos0 = Vector3::ZERO, pos = Vector3::ZERO;  Real yaw;
 
@@ -93,18 +93,18 @@ void CScene::CreateTrees()
 	if (fTrees > 0.f)
 	{
 		//if (!pSet->impostors_only)
-		//<WindBatchPage>(sc->trDist * pSet->trees_dist, 0);
-		//<ImpostorPage>(sc->trDistImp * pSet->trees_dist, 0);
+		//sc->trDist * pSet->trees_dist, 0);
+		//sc->trDistImp * pSet->trees_dist, 0);
 		ResourceGroupManager& resMgr = ResourceGroupManager::getSingleton();
 		SceneManager *mgr = app->mSceneMgr;
 		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 
-		tws = sc->td.fTerWorldSize;
+		tws = td.fTerWorldSize;
 		int r = imgRoadSize, cntshp = 0;
 
-		//  set random seed  /// add seed in scene.xml and in editor gui..
+		//  set random seed  // add seed in scene.xml and in editor gui?
 		MTRand rnd((MTRand::uint32)1213);
-		#define getTerPos()		(rnd.rand()-0.5) * sc->td.fTerWorldSize
+		#define getTerPos()		(rnd.rand()-0.5) * td.fTerWorldSize
 
 		//  Tree Layers
 		for (size_t l=0; l < sc->pgLayers.size(); ++l)
@@ -208,14 +208,14 @@ void CScene::CreateTrees()
 
 
 				//  check ter angle  ------------
-				float ang = terrain->getAngle(pos.x, pos.z, sc->td.fTriangleSize);
+				float ang = ter->getAngle(pos.x, pos.z, td.fTriangleSize);
 				if (ang > pg.maxTerAng)
 					add = false;
 
 				if (!add)  continue;  //
 
 				//  check ter height  ------------
-				bool in = terrain->getHeightAt(pos);
+				bool in = ter->getHeightAt(pos);
 				// LogO(fToStr(pos.y));
 				if (!in)  add = false;  // outside
 				
@@ -299,7 +299,7 @@ void CScene::CreateTrees()
 					pos.x += vo.x * scl;  pos.z += vo.y * scl;
 
 					//  apply pos offset xyz, rotY, mul by scale
-					terrain->getHeightAt(pos);
+					ter->getHeightAt(pos);
 					btVector3 pc(pos.x, -pos.z, pos.y + ofs.z * scl);  // center
 					btTransform tr;  tr.setIdentity();  tr.setOrigin(pc);
 

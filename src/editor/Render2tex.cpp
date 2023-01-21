@@ -49,7 +49,7 @@ void App::CreateRnd2Tex()
 	auto* texMgr =mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
 	auto* mgr = mRoot->getCompositorManager2();
 
-	Real fDim = scn->sc->td.fTerWorldSize;  // world dim
+	Real fDim = scn->sc->tds[0].fTerWorldSize;  // world dim  // 1st ter
 
 	for (int i=0; i < RT_ALL; ++i)
 	{
@@ -255,7 +255,7 @@ void App::UpdMiniVis()
 void App::UpdMiniPos()
 {
 	if (ndPos)
-	{	Real w = scn->sc->td.fTerWorldSize;
+	{	Real w = scn->sc->tds[0].fTerWorldSize;  // 1st ter
 		Real x = (0.5 - mCamera->getPosition().z / w);
 		Real y = (0.5 + mCamera->getPosition().x / w);
 		Real s = pSet->size_minimap;
@@ -422,7 +422,7 @@ void App::SaveWaterDepth()
 		//  pos 0..1
 		float fx = float(y)/fh, fz = float(x)/fw;
 		//  pos on ter  -terSize..terSize
-		float w = scn->sc->td.fTerWorldSize;
+		float w = scn->sc->tds[0].fTerWorldSize;  // 1st ter
 		float wx = (fx-0.5f) * w, wz = -(fz-0.5f) * w;
 
 		fa = 0.f;  // fluid y pos

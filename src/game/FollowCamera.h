@@ -31,7 +31,7 @@ public:
 };
 
 
-namespace Ogre {  class TerrainGroup;  class Camera;  class OverlayElement;  class SceneNode;  }
+namespace Ogre {  class Camera;  class OverlayElement;  class SceneNode;  }
 struct PosInfo;  class SETTINGS;  struct Cam;
 class COLLISION_WORLD;  class btRigidBody;
 
@@ -48,7 +48,6 @@ public:
 	Cam* cam =0;  // has camera and node
 
 	//  🟢 Ogre
-	Ogre::TerrainGroup* mTerrain =0;
 	class btRigidBody* chassis =0;
 
 	///  state vars  ----

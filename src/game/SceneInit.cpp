@@ -46,28 +46,18 @@ using namespace std;
 //-------------------------------------------------------------------------------------
 void App::LoadData()
 {
-	//  prv tex
+	//  🖼️ prv tex  todo
 	/*int k = 1024;
 	prvView.Create(k,k,"PrvView");
 	prvRoad.Create(k,k,"PrvRoad");
 	 prvTer.Create(k,k,"PrvTer");
-	//  ch stage
+	//  chs stage
 	prvStCh.Create(k,k,"PrvStCh");
 	
-	scn->roadDens.Create(k+1,k+1,"RoadDens");
-	
-	///  ter lay tex
-	for (int i=0; i < 6; ++i)
-	{	String si = toStr(i);
-		scn->texLayD[i].SetName("layD"+si);
-		scn->texLayN[i].SetName("layN"+si);
-	}
+	scn->roadDens.Create(k+1,k+1,"RoadDens");  // var size..
 	
 	mLoadingBar->loadTex.Create(1920,1200,"LoadingTex");*/
 
-	//  tex fil
-	// MaterialManager::getSingleton().setDefaultTextureFiltering(TFO_ANISOTROPIC);
-	// MaterialManager::getSingleton().setDefaultAnisotropy(pSet->anisotropy);
 	
 	//  restore camNums
 	for (int i=0; i<4; ++i)
@@ -311,7 +301,7 @@ void App::LoadCleanUp()
 
 		DestroyObjects(true);   // 📦
 		scn->DestroyRoads();    // 🛣️
-		scn->DestroyTerrain();  // ⛰️
+		scn->DestroyTerrains();  // ⛰️
 		//^ cars
 		scn->DestroyFluids();   // 💧
 		scn->DestroyEmitters(true);  // 🔥
@@ -604,13 +594,13 @@ void App::LoadTerrain()
 {
 	if (dstTrk)
 	{
-		scn->CreateTerrain(false);  // common
+		scn->CreateTerrains(false);  // common
 		//; GetTerMtrIds();  // todo: get from blendmap tex ..
-		scn->CreateBltTerrain();  // todo: before cars..
+		scn->CreateBltTerrain(0);  // 1st ter only-  // todo: before cars..
 	}
 
 	//; for (int c=0; c < carModels.size(); ++c)
-	// 	carModels[c]->terrain = scn->terrain;
+	// 	carModels[c]->terrain = scn->ter;
 }
 
 //  🛣️ Road  6
@@ -683,7 +673,6 @@ void App::LoadTrees()
 	}	
 		
 	//  check for cars inside terrain ___
-	if (scn->terrain)
 	for (int i=0; i < carModels.size(); ++i)
 	{
 		CAR* car = carModels[i]->pCar;
@@ -691,7 +680,7 @@ void App::LoadTrees()
 		{
 			MATHVECTOR<float,3> pos = car->posAtStart;
 			Vector3 stPos(pos[0],pos[2],-pos[1]);
-			float yt = scn->terrain->getHeight(stPos.x, stPos.z),
+			float yt = scn->getTerH(stPos.x, stPos.z),
 				yd = stPos.y - yt - 0.5f;
 			//todo: either sweep test car body, or world->CastRay x4 at wheels -for bridges, pipes
 			//pGame->collision.world->;  //car->dynamics.chassis
@@ -721,7 +710,7 @@ void App::LoadMisc()  // 9 last
 	for (auto car : carModels)
 	{	car->First();
 		if (car->fCam)
-		{	//; car->fCam->mTerrain = scn->mTerrainGroup;  //?
+		{	//car->fCam->mTerrain = scn->ter;  //?
 			//car->fCam->mWorld = &(pGame->collision);
 	}	}
 	
@@ -823,8 +812,8 @@ void App::CreateRoads()
 	if (!bHideHudPace)
 	{
 		scn->pace = new PaceNotes(pSet);
-		scn->pace->Setup(mSceneMgr, cam, scn->terrain, gui->mGui, mWindow);
-	}/**/
+		scn->pace->Setup(mSceneMgr, cam, scn->ter, gui->mGui, mWindow);
+	}
 
 
 	//  after road load we have iChk1 so set it for carModels
@@ -840,18 +829,18 @@ void App::CreateRoads()
 
 		for (auto r : scn->roads)
 		{
-			r->mTerrain = scn->terrain;
+			r->scn = scn;
 			r->RebuildRoadInt();
 			r->SetChecks();  // 2nd, upd
 	}	}
 	
 
-	//  pace ~ ~
+	//  🚦 pace ~ ~
 	if (scn->pace)
 	{
 		road->RebuildRoadPace();  //todo: load only..
 		scn->pace->Rebuild(road, scn->sc, pSet->game.track_reversed);
-	}/**/
+	}
 
 	CreateTrail(cam);
 }
@@ -871,7 +860,7 @@ void App::CreateRoadsInt()
 		int id = scn->roads.size();
 		LogO("C~~R Creating road " + toStr(id) + " from: " + fname);
 		scn->road = new SplineRoad(pGame);
-		scn->road->Setup("", 0.7, scn->terrain, mSceneMgr, cam, id);
+		scn->road->Setup("", 0.7, scn, mSceneMgr, cam, id);
 		scn->road->LoadFile(path + fname);
 		scn->roads.push_back(scn->road);
 	}
@@ -903,13 +892,13 @@ void App::CreateTrail(Cam* cam)
 	{	gho.LoadFile(file, 0);
 		frames = gho.getNumFrames();
 	}
-	if (frames == 0 || !scn->terrain)  return;
+	if (frames == 0 || !scn->ter)  return;
 	LogO("C--~ CreateTrail");
 
 
 	//  setup trail road
 	SplineRoad* tr = new SplineRoad(pGame);
-	tr->Setup("", 0.7, scn->terrain, mSceneMgr, cam, 100);
+	tr->Setup("", 0.7, scn, mSceneMgr, cam, 100);
 	tr->sMtrRoad[0] = "trailRoad";  tr->bMtrRoadTer[0] = false;
 	tr->type = RD_Trail;  tr->isLooped = false;
 

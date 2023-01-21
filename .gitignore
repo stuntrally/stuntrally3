@@ -24,7 +24,7 @@ Dependencies/*
 #gui
 tracks
 cars
-road
+road/
 #objects
 terrain
 #Media

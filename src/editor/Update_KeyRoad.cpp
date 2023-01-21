@@ -122,11 +122,12 @@ void App::keyPressRoad(SDL_Scancode skey)
 
 
 //  < >  next, prev
+//--------------------------------------------------------
 void App::RoadsNext(int add)
 {
 	scn->road->HideMarks();
-	int id = scn->roads.size();
-	scn->rdCur = (scn->rdCur + add + id) % id;
+	int all = scn->roads.size();
+	scn->rdCur = (scn->rdCur + add + all) % all;
 	scn->road = scn->roads[scn->rdCur];
 	gui->SetGuiRoadFromXml();
 	gui->updRoadsTxt();
@@ -139,7 +140,7 @@ void App::RoadsAdd()
 	int id = scn->roads.size();
 	Cam* cam = &mCams[0];  // todo: lod cam-
 	
-	road->Setup("sphere.mesh", pSet->road_sphr, scn->terrain, mSceneMgr, cam, id);
+	road->Setup("sphere.mesh", pSet->road_sphr, scn->ter, mSceneMgr, cam, id);
 	road->Rebuild(true);  //road->RebuildRoadInt();
 	
 	scn->roads.push_back(road);

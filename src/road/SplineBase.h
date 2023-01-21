@@ -6,7 +6,7 @@
 #include <OgreString.h>
 
 namespace Ogre {  class Terra;  class SceneNode;  class Camera;  class Terra;  }
-struct Cam;
+struct Cam;  class CScene;
 
 
 class TerUtil  //  helper
@@ -141,8 +141,8 @@ protected:
 class SplineEdit : public SplineBase
 {
 public:
-	//  terrain helpers
-	Ogre::Terra* mTerrain =0;  // for on terrain, height snap
+	//  terrain helpers  ----
+	CScene* scn = 0;
 
 	Ogre::Real getTerH(const Ogre::Vector3& p);
 
@@ -255,7 +255,7 @@ class SplineMarkEd : public SplineEditChk
 public:
 	//  Setup, call this on Init
 	void Setup(Ogre::String sMarkerMeshFile, Ogre::Real scale,
-		Ogre::Terra* terrain, Ogre::SceneManager* sceneMgr,
+		CScene* scn1, Ogre::SceneManager* sceneMgr,
 		Cam* camera, int idx);
 	
 	void createMarker(Ogre::String mat, Ogre::Item*& it, Ogre::SceneNode*& nd);

@@ -158,7 +158,7 @@ void CGui::listPickRd(Mli2 li, size_t pos)
 	}	
 	//  preset
 	if (pSet->pick_setpar && p && idRdType == RdPk_Road)
-	{	TerLayer& l = scn->sc->td.layerRoad[idRdPick];
+	{	TerLayer& l = td().layerRoad[idRdPick];
 		l.surfName = p->surfName;
 		l.dust = p->dust;  l.dustS = p->dustS;
 		l.mud = p->mud;  l.tclr = p->tclr;
@@ -209,7 +209,7 @@ void CGui::listPickTex(Mli2 li, size_t pos)
 	s += ".jpg";
 
 	//  set
-	TerLayer& l = sc->td.layersAll[idTerLay];
+	TerLayer& l = td().layersAll[idTerLay];
 	l.texFile = s;
 	
 	//  auto norm

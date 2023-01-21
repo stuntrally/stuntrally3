@@ -75,9 +75,9 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 
 
 		//-  🏁 start pos  ----
-		float tws = 0.5f * sc->td.fTerWorldSize;
+		float tws = 0.5f * sc->tds[0].fTerWorldSize;  // 1st ter-
 		if (stPos.x < -tws || stPos.x > tws || stPos.z < -tws || stPos.z > tws)
-			Warn(ERR,"Car start outside track area  Whoa :o");
+			Warn(ERR,"Car start is outside Terrain 1 area  Whoa :o");
 		
 		/*if (scn->terrain)  // won't work in tool..
 		{	float yt = scn->terrain->getHeightAtWorldPosition(stPos), yd = stPos.y - yt - 0.5f;
@@ -182,33 +182,36 @@ void CGui::WarningsCheck(const Scene* sc, const SplineRoad* road)
 			Warn(INFO,"Road has over 50 points, use recommended merge length 80 or more.");
 	}
 	
-	///-  ⛰️ heightmap  -------------
-	int sz = sc->td.iVertsX * sc->td.iVertsX * sizeof(float) / 1024/1024;
-	if (sc->td.iVertsX > 2000)
-		Warn(ERR,"Using too big heightmap "+toStr(sc->td.iVertsX-1)+", file size is "+toStr(sz)+" MB");
-	else
-	if (sc->td.iVertsX > 1000)
-		Warn(INFO,"Using big heightmap "+toStr(sc->td.iVertsX-1)+", file size is "+toStr(sz)+" MB");
+	///-  ⛰️ heightmaps  -------------
+	int i=0;
+	for (const auto& td : sc->tds)
+	{
+		String st = "Terrain " + toStr(i)+ ": ";
+		int sz = td.iVertsX * td.iVertsX * sizeof(float) / 1024/1024;
+		if (td.iVertsX > 4000)
+			Warn(ERR, st+"using huge heightmap "+toStr(td.iVertsX-1)+", file size is "+toStr(sz)+" MB !!");
+		else if (td.iVertsX > 2000)
+			Warn(WARN, st+"using very big heightmap "+toStr(td.iVertsX-1)+", file size is "+toStr(sz)+" MB !");
 
-	if (sc->td.iVertsX < 200)
-		Warn(INFO,"Using too small heightmap "+toStr(sc->td.iVertsX-1));
+		// if (td.iVertsX < 200)
+		// 	Warn(INFO,"Using too small heightmap "+toStr(td.iVertsX-1));
 
-	//-  🔺 tri size  ----
-	if (sc->td.fTriangleSize < 0.9f)
-		Warn(INFO,"Terrain triangle size is small "+fToStr(sc->td.fTriangleSize,2,4));
+		//-  🔺 tri size  ----
+		if (td.fTriangleSize < 0.9f)
+			Warn(INFO, st+"triangle size is small "+fToStr(td.fTriangleSize,2,4));
 
-	if (sc->td.fTriangleSize > 1.9f)
-		Warn(INFO,"Terrain triangle size is big "+fToStr(sc->td.fTriangleSize,2,4)+", not recommended");
-
+		if (td.fTriangleSize > 1.7f)
+			Warn(INFO, st+"triangle size is big "+fToStr(td.fTriangleSize,2,4)+", not recommended");
 		
-	///-  🏔️ ter layers  -------------
-	int lay = sc->td.layers.size();  //SetUsedStr
-	Warn(NOTE,"Terrain layers used: "+toStr(lay));
-	hqTerrain = lay >= 4;
-	if (hqTerrain) Warn(INFO,"HQ Terrain");
-	if (lay >= 5)  Warn(ERR,"Too many terrain layers used, max 4 are supported.");
-	if (lay <= 2)  Warn(INFO,"Too few terrain layers used");
-
+		///-  🏔️ ter layers  -------------
+		int lay = td.layers.size();  //SetUsedStr
+		Warn(NOTE, st+" layers used: "+toStr(lay));
+		hqTerrain = lay >= 4;
+		if (hqTerrain) Warn(INFO,"HQ Terrain");
+		if (lay >= 5)  Warn(ERR,"Too many terrain layers used, max 4 are supported.");
+		if (lay <= 2)  Warn(INFO,"Too few terrain layers used");
+		++i;
+	}
 	
 	///-  🌳🪨 vegetation  -------------
 	//  layers  ----

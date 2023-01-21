@@ -273,11 +273,15 @@ void CGui::InitGui()
 
 	///  ⛰️ Terrain
 	//------------------------------------------------------------------------
+	txTersCur = fTxt("TersCur");
+	Btn("TersPrev", btnTersPrev);  Btn("TersNext", btnTersNext);
+	Btn("TersAdd", btnTersAdd);  Btn("TersDel", btnTersDel);
+
 	imgTexDiff = fImg("TerImgDiff");
 	Tab(tabsHmap, "TabHMapSize", tabHmap);  valHmapMB = fTxt("TerHmapMB");
-	sv= &svTerNormScale;  sv->Init("TerNormScale", &sc->td.normScale,  0.01f,3.f, 1.f, 1,3);  sv->DefaultF(1.f);  Sev(TerPar);
-	sv= &svTerSpecPow;    sv->Init("TerSpecPow",   &sc->td.specularPow,   0.2f,128.f,2.f, 1,4);  sv->DefaultF(32.f); Sev(TerPar);
-	sv= &svTerSpecPowEm;  sv->Init("TerSpecPowEm", &sc->td.specularPowEm, 0.5f,4.f,  1.f, 1,3);  sv->DefaultF(2.f);  Sev(TerPar);
+	// sv= &svTerNormScale;  sv->Init("TerNormScale", &sc->td.normScale,  0.01f,3.f, 1.f, 1,3);  sv->DefaultF(1.f);  Sev(TerPar);
+	// sv= &svTerSpecPow;    sv->Init("TerSpecPow",   &sc->td.specularPow,   0.2f,128.f,2.f, 1,4);  sv->DefaultF(32.f); Sev(TerPar);
+	// sv= &svTerSpecPowEm;  sv->Init("TerSpecPowEm", &sc->tds[0].specularPowEm, 0.5f,4.f,  1.f, 1,3);  sv->DefaultF(2.f);  Sev(TerPar);
 
 	Btn("TerrainNew", btnTerrainNew);
 	Btn("TerrainGenAdd", btnTerGenerate);  Btn("TerrainGenSub", btnTerGenerate);    Btn("TerrainGenMul", btnTerGenerate);
@@ -321,7 +325,7 @@ void CGui::InitGui()
 	dbgLclr = fImg("dbgTerLclr");
 
 	//  ter layer
-	sv= &svTerTriSize;	sv->Init("TerTriSize", &sc->td.fTriangleSize,  0.5f,3.f, 1.f);  sv->DefaultF(1.4f);  Sev(TerTriSize);
+	sv= &svTerTriSize;	sv->Init("TerTriSize", &f,  0.5f,3.f, 1.f);  sv->DefaultF(1.0f);  Sev(TerTriSize);
 	sv= &svTerLScale;	sv->Init("TerLScale",  &f, 6.0f, 72.f,  2.f);  sv->DefaultF(8.f);  //Sev(TerLay);
 	//  blendmap
 	sv= &svTerLAngMin;  sv->Init("TerLAngMin", &f, 0.f,  90.f,  1.f, 1,4);  sv->DefaultF(0.f);  Sev(TerLay);
@@ -358,7 +362,7 @@ void CGui::InitGui()
 	sv= &svLDustS;  sv->Init("LDustS", &f, 0.f,1.f);  sv->DefaultF(0.f);
 	sv= &svLMud;    sv->Init("LMud",   &f, 0.f,1.f);  sv->DefaultF(0.f);
 	sv= &svLSmoke;  sv->Init("LSmoke", &f, 0.f,1.f);  sv->DefaultF(0.f);
-	SldUpd_Surf();
+	// SldUpd_Surf();
 	Cmb(cmbParDust, "CmbParDust", comboParDust);
 	Cmb(cmbParMud,  "CmbParMud",  comboParDust);
 	Cmb(cmbParSmoke,"CmbParSmoke",comboParDust);
@@ -368,7 +372,7 @@ void CGui::InitGui()
 	txtSuBumpWave = fTxt("SuBumpWave");   txtSuFrict  = fTxt("SuFrict");
 	txtSuBumpAmp  = fTxt("SuBumpAmp");	  txtSurfTire = fTxt("SurfTire");
 	txtSuRollDrag = fTxt("SuRollDrag");	  txtSurfType = fTxt("SurfType");
-	SldUpd_TerL();
+	// SldUpd_TerL();  // no ter yet
 
 	
 	///  🌳🪨 Vegetation
@@ -487,7 +491,7 @@ void CGui::InitGui()
 	sv= &svGravity;		sv->Init("Gravity",		&sc->gravity,   2.f,20.f, 1.5f, 2,4);  sv->DefaultF(9.81f);
 	ck= &ckDenyReversed;	ck->Init("DenyReversed",	&sc->denyReversed);
 	ck= &ckTiresAsphalt;	ck->Init("TiresAsphalt",	&sc->asphalt);
-	ck= &ckTerrainEmissive;	ck->Init("TerrainEmissive",	&sc->td.emissive);
+	// ck= &ckTerrainEmissive;	ck->Init("TerrainEmissive",	&sc->td.emissive);
 	ck= &ckNoWrongChks;		ck->Init("NoWrongChks",		&sc->noWrongChks);
 	txtEdInfo = fTxt("EdInfo");
 	
@@ -504,7 +508,7 @@ void CGui::InitGui()
 	
 
 	///  Surface
-	ck= &ckRoad1Mtr;	ck->Init("Road1Mtr",	&sc->td.road1mtr);
+	ck= &ckRoad1Mtr;	ck->Init("Road1Mtr",	&sc->road1mtr);
 	
 
 	///  🛠️ Tools  ------------------------------------

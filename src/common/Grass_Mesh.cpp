@@ -44,8 +44,8 @@ void Grass::Create()
 		return;
 
 	const auto* sc = scn->sc;
-	const Real tws = sc->td.fTerWorldSize, hws = tws * 0.5f;  //par-
-	const Real mrg = 0.97f;
+	const Real tws = sc->tds[0].fTerWorldSize, hws = tws * 0.5f;  //par-
+	const Real mrg = 0.98f;
 
 	const Real fGrass = pSet->grass * sc->densGrass * 3.0f;  // std::min(pSet->grass, 
 	#ifdef SR_EDITOR

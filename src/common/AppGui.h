@@ -26,7 +26,7 @@ enum IblQuality
 //--------------------------------------------------------------------------------
 //  Base application with:
 //    Ogre, MyGui, settings, Fps bar, utils
-//    Reflection cube, Terrain
+//    Reflection cube
 //--------------------------------------------------------------------------------
 class AppGui : public BGui
 {
@@ -126,7 +126,6 @@ public:
 
 
 	//  👥 Split screen  ----------------
-
 	std::vector<Cam> mCamsAll, mCams;  // for each player [4]
 	Cam* findCam(Ogre::String name);
 
@@ -143,12 +142,6 @@ public:
 
 
 	//  ⛰️ Terrain  ----------------
-	Ogre::Terra* mTerra = 0;
-	void CreateTerrain(), DestroyTerrain();
-
-	Ogre::String mtrName;
-	Ogre::SceneNode* nodeTerrain = 0;
-	//  listener to make PBS objects also be affected by terrain's shadows
-	Ogre::HlmsPbsTerraShadows* mHlmsPbsTerraShadows = 0;
-	
+	// Ogre::String mtrName;
+	// Ogre::SceneNode* nodeTerrain = 0;
 };

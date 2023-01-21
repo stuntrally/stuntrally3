@@ -49,7 +49,7 @@ public:
 		iVertsXold;  // 2^n + 1  1025 old SR, before convert
 	float ofsZ = 0.f;  // not 0, after convert
 	float fTriangleSize, fTerWorldSize;  // scale size
-	float errorNorm;  // terrain error % at default quality
+	// float errorNorm;  // terrain error % at default quality
 	void UpdVals();
 
 	//  layers	
@@ -57,16 +57,17 @@ public:
 	TerLayer layersAll[ciNumLay];
 	std::vector<int> layers;  // active only (on)
 	
-	bool road1mtr;  // if true (default) road has only 1 surface type
+	// bool road1mtr;  // if true (default) road has only 1 surface type
 	TerLayer layerRoad[4];  // pipe[4]  //todo...
 	void UpdLayers();
 
 	//  which should have triplanar most (e.g. high slope mountains)
 	int triplanarLayer1, triplanarLayer2, triplCnt;
-	float normScale;  // scale terrain normals
+	// float normScale;  // scale terrain normals -not used-
 
 	bool emissive;  // emissive light from specular
-	float specularPow, specularPowEm;  // specular power (exponent)
+	// float specularPow;  // -not used-
+	float specularPowEm;  // specular power (exponent)
 	
 	//  methods
 	TerData();	void Default();

@@ -287,14 +287,15 @@ void App::update( float dt )
 		#endif
 
 		///  ⛰️ Terrain  ----
-		if (mTerra && mGraphicsSystem->getRenderWindow()->isVisible() )
+		if (mGraphicsSystem->getRenderWindow()->isVisible() )
 		{
+			const float lightEpsilon = 0.0001f;  //** 0.0f slow
+			for (auto ter : scn->ters)
 			// Force update the shadow map every frame to avoid the feeling we're "cheating" the
 			// user in this sample with higher framerates than what he may encounter in many of
 			// his possible uses.
-			const float lightEpsilon = 0.0001f;  //** 0.0f slow
-			mTerra->update( !scn->sun ? -Vector3::UNIT_Y :
-				scn->sun->getDerivedDirectionUpdated(), lightEpsilon );
+				ter->update( !scn->sun ? -Vector3::UNIT_Y :
+					scn->sun->getDerivedDirectionUpdated(), lightEpsilon );
 		}
 	}
 

@@ -11,6 +11,7 @@
 #include "Gui_Def.h"
 #include "Slider.h"
 #include "MultiList2.h"
+#include "Terra.h"
 #include <MyGUI.h>
 using namespace MyGUI;
 using namespace Ogre;
@@ -66,6 +67,56 @@ void CGui::chkFog(Ck*)
 {
 	scn->UpdFog();
 }
+
+
+///  ⛰️ Terrain
+//-----------------------------------------------------------------------------------------------------------
+void CGui::btnTersPrev(WP)
+{
+	scn->TerNext(-1);
+	SetGuiTerFromXml();
+}
+void CGui::btnTersNext(WP)
+{
+	scn->TerNext(1);
+	SetGuiTerFromXml();
+}
+void CGui::updTersTxt()
+{
+	int all = scn->ters.size();
+	if (txTersCur)
+		txTersCur->setCaption(TR("#{RplCurrent}: " + toStr(scn->terCur+1) +"/"+ toStr(all)));
+}
+
+void CGui::btnTersAdd(WP)
+{
+	// scn->ters.push_back();
+	int all = scn->ters.size();
+	TerData td;
+	scn->sc->tds.push_back(td);
+
+	scn->CreateTerrain1(all);
+	assert(scn->ters.size() == scn->sc->tds.size());
+	SetGuiTerFromXml();
+}
+void CGui::btnTersDel(WP)
+{
+	auto& t = scn->ters;
+	auto& td = scn->sc->tds;
+	if (t.size() > 1)  // not last?
+	{
+		delete t[scn->terCur];
+		t.erase(t.begin() + scn->terCur);
+		td.erase(td.begin() + scn->terCur);
+		
+		if (scn->terCur >= t.size())
+			scn->terCur = t.size()-1;  // over last
+		scn->TerNext(0);
+	}
+	assert(scn->ters.size() == scn->sc->tds.size());
+	SetGuiTerFromXml();  // updTersTxt();
+}
+
 
 
 //  🌳🪨🌿 Vegetation
@@ -245,13 +296,13 @@ void CGui::btnRoadsNext(WP)
 {
 	app->RoadsNext(1);
 }
-void CGui::btnRoadsDel(WP)
-{
-	app->RoadsDel();
-}
 void CGui::btnRoadsAdd(WP)
 {
 	app->RoadsAdd();
+}
+void CGui::btnRoadsDel(WP)
+{
+	app->RoadsDel();
 }
 
 void CGui::updRoadsTxt()
@@ -374,7 +425,7 @@ void App::SaveCam()
 void CGui::btnSetCam(WP wp)
 {
 	String s = wp->getName();
-	Real y0 = 20, xz = sc->td.fTerWorldSize*0.5f, r = 45.f * 0.5f*PI_d/180.f, yt = xz / Math::Tan(r);
+	Real y0 = 20, xz = td().fTerWorldSize*0.5f, r = 45.f * 0.5f*PI_d/180.f, yt = xz / Math::Tan(r);
 	Camera* cam = app->mCamera;
 
 		 if (s=="CamView1")	{	cam->setPosition(xz*0.8,60,0);  cam->setDirection(-1,-0.3,0);  }
@@ -404,7 +455,7 @@ void CGui::toggleTopView()
 		oldPos = cam->getPosition();
 		oldRot = cam->getDirection();
 		
-		Real xz = sc->td.fTerWorldSize*0.5f, r = 45.f * 0.5f*PI_d/180.f, yt = xz / Math::Tan(r);
+		Real xz = td().fTerWorldSize*0.5f, r = 45.f * 0.5f*PI_d/180.f, yt = xz / Math::Tan(r);
 		cam->setPosition(0,yt,0);  cam->setDirection(-0.0001,-1,0);
 
 		oldFog = pSet->bFog;
@@ -424,19 +475,22 @@ void CGui::toggleTopView()
 
 TerLayer* CGui::GetTerRdLay()
 {
+	if (sc->tds.empty())  return 0;
+	auto& td = sc->tds[0];  // 1st ter-
 	if (idSurf < 4)  //  terrain
-	{	if (idSurf >= sc->td.layers.size())  // could change by on/off ter layers
+	{	if (idSurf >= td.layers.size())  // could change by on/off ter layers
 		{	idSurf = 0;  if (surfList)  surfList->setIndexSelected(idSurf);  }
-		return &sc->td.layersAll[sc->td.layers[idSurf]];
+		return &td.layersAll[td.layers[idSurf]];
 	}
 	//  road
-	return  &sc->td.layerRoad[sc->td.road1mtr ? 0 : idSurf-4];
+	return  &td.layerRoad[sc->road1mtr ? 0 : idSurf-4];
 }
 
 void CGui::listSurf(Li, size_t id)
 {
 	if (id == ITEM_NONE) {  id = 0;  surfList->setIndexSelected(0);  }
-	if (id < 4 && id >= sc->td.layers.size()) {  id = 0;  surfList->setIndexSelected(id);  }  // more than used
+	auto& td = sc->tds[0];  // 1st ter-
+	if (id < 4 && id >= td.layers.size()) {  id = 0;  surfList->setIndexSelected(id);  }  // more than used
 	if (id >= 8) {  id = 4;  surfList->setIndexSelected(id);  }
 	//TODO: own pipe mtrs..
 
@@ -454,7 +508,9 @@ void CGui::listSurf(Li, size_t id)
 
 void CGui::SldUpd_Surf()
 {
+	if (!bGI)  return;
 	TerLayer* l = GetTerRdLay();
+	if (!l)  return;
 
 	svLDust.UpdF(&l->dust);  svLDustS.UpdF(&l->dustS);
 	svLMud.UpdF(&l->mud);    svLSmoke.UpdF(&l->smoke);
@@ -462,12 +518,14 @@ void CGui::SldUpd_Surf()
 
 void CGui::UpdSurfList()
 {
+	if (!bGI)  return;
 	if (!surfList || surfList->getItemCount() != 12)  return;
 
 	for (int n=0; n < 4; ++n)
 	{
-		String s = n >= app->scn->sc->td.layers.size() ? "" : StringUtil::replaceAll(
-			app->scn->sc->td.layersAll[app->scn->sc->td.layers[n]].texFile, "_d.jpg","");
+		auto& td = app->scn->sc->tds[0];  // 1st ter-
+		String s = n >= td.layers.size() ? "" : StringUtil::replaceAll(
+			td.layersAll[td.layers[n]].texFile, "_d.jpg","");
 		surfList->setItemNameAt(n  , "#80FF00"+TR("#{Layer} ")+toStr(n+1)+"  "+ s);
 		surfList->setItemNameAt(n+4, "#FFB020"+TR("#{Road} ") +toStr(n+1)+"  "+ app->scn->road->sMtrRoad[n]);
 		surfList->setItemNameAt(n+8, "#FFFF80"+TR("#{Pipe} ") +toStr(n+1)+"  "+ app->scn->road->sMtrPipe[n]);
