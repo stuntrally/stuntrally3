@@ -66,6 +66,14 @@ void Scene::Default()
 	camPos = Vector3(10.f,20.f,10.f);  camDir = Vector3(0.f,-0.3f,1.f);
 
 	fluids.clear();  objects.clear();  emitters.clear();  //
+
+	for (int i=0; i < 4; ++i)  // road surf
+	{
+		TerLayer& r = layerRoad[i];
+		r.dust = 0.f;  r.mud = 0.f;  // r.smoke = 1.f;
+		r.tclr = SColor(0.16f,0.5f,0.2f,0.7f);  r.tcl = r.tclr.GetRGBA();
+		r.fDamage = 0.f;
+	}
 }
 
 
@@ -145,14 +153,14 @@ void Scene::UpdateSurfId()
 	//  road
 	for (i=0; i < 4; ++i)
 	{
-		const std::string& s = td.layerRoad[i].surfName;
+		const std::string& s = layerRoad[i].surfName;
 		int id = pGame->surf_map[s]-1;
 		if (id == -1)
 		{	id = 0;
 			LogO("! Warning: Surface not found (road): "+s);
 		}
 		// road1mtr ?
-		td.layerRoad[i].surfId = id;
+		layerRoad[i].surfId = id;
 	}
 }
 

@@ -110,9 +110,9 @@ void SplineMarkEd::DestroyMarkers()
 }
 
 
-//  👆📍 Select
+//  👆📍 Select  // Mr Melect Sarker
 //-------------------------------------------------------------------------------------
-void SplineRoad::SelectMarker(bool bHide)  // Mr Melect Sarker
+void SplineRoad::SelectMarker(bool bHide)
 {
 	if (!ndRot)  return;
 	if (vMarks.empty())

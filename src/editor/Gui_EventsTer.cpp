@@ -21,6 +21,10 @@ using namespace Ogre;
 
 ///  ⛰️ Terrain
 //-----------------------------------------------------------------------------------------------------------
+bool CGui::notd()
+{
+	return sc->tds.empty();
+}
 TerData& CGui::td()
 {
 	assert(!sc->tds.empty());
@@ -90,7 +94,7 @@ void CGui::SldUpd_TerLNvis()
 //  all ter layer sliders
 void CGui::SldUpd_TerL()
 {
-	if (!bGI)  return;
+	if (notd())  return;
 	TerLayer* l = &td().layersAll[idTerLay];
 	ckTerLayOn.Upd(&l->on);
 	svTerLScale.UpdF(&l->tiling);
@@ -116,7 +120,7 @@ void CGui::SldUpd_TerL()
 //  🔺 Tri size
 void CGui::slTerTriSize(SV* sv)
 {
-	if (!bGI)  return;
+	if (notd())  return;
 	td().fTriangleSize = sv->getF();
 	td().UpdVals();
 	UpdTxtTerSize();
@@ -124,7 +128,7 @@ void CGui::slTerTriSize(SV* sv)
 
 int CGui::UpdTxtTerSize(float mul)
 {
-	if (!bGI)  return 0;
+	if (notd())  return 0;
 	int size = getHMapSizeTab() * mul;
 	float res = td().fTriangleSize * size;  // result size
 	svTerTriSize.setText(fToStr(res,0,3));
@@ -136,7 +140,7 @@ int CGui::UpdTxtTerSize(float mul)
 //  HMap size tab
 void CGui::updTabHmap()
 {
-	if (!bGI)  return;
+	if (notd())  return;
 	static std::map<int,int> h;
 	if (h.empty())
 	{	h[128]=0; h[256]=1; h[512]=2; h[1024]=3; h[2048]=4; h[4096]=5; h[8192]=6;  }
@@ -417,7 +421,7 @@ void CGui::chkTerLayOn(Ck* ck)
 
 void CGui::updUsedTer()
 {
-	if (!bGI)  return;
+	if (notd())  return;
 	SetUsedStr(valTerLAll, td().layers.size(), 3);
 	int t = td().triplCnt;
 	valTriplAll->setCaption(TR("#{Used}") + ": " + toStr(t));

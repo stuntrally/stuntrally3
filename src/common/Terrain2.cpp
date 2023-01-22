@@ -196,12 +196,17 @@ void CScene::DestroyTerrain1(int n)
 		hlmsPbs->setListener( 0 );
 		delete mHlmsPbsTerraShadows;  mHlmsPbsTerraShadows = 0;
 	}
-	auto mtr = ter->mtrName;
+	auto mtr = ters[n]->mtrName;
 
 	delete ters[n];  ters[n] = 0;
 
 	if (!mtr.empty())
-	{	app->mGraphicsSystem->hlmsTerra->destroyDatablock(mtr);
+	{
+		LogO("D--T Terrain dest mat " + toStr(n));
+		try
+		{	app->mGraphicsSystem->hlmsTerra->destroyDatablock(mtr);
+		}catch(...)
+		{	}
 		// ter->mtrName = "";
 	}
 }

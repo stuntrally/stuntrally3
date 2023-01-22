@@ -62,7 +62,6 @@ public:
 
 	//  🟢 Ogre
 	Ogre::SceneManager* mSceneMgr =0;
-	Ogre::Terra* terrain =0;
 
 
 	Ogre::String sDispName;  // diplay name in opponents list (nick for CT_REMOTE)

@@ -4,6 +4,7 @@
 #include "ShapeData.h"
 #include "dbl.h"
 #include "Road.h"
+#include "CScene.h"
 #ifndef SR_EDITOR
 	#include "game.h"
 	#include "CGame.h"
@@ -247,11 +248,11 @@ void SplineRoad::BuildSeg(
 			{	//  flat --
 				vP = vL0 + vw * (tcw - 0.5);
 				vN = vn;
-				yTer = mTerrain ? mTerrain->getHeight(vP.x, vP.z) : 0.f;
+				yTer = scn ? scn->getTerH(vP.x, vP.z) : 0.f;
 				if (onTer1)  //  onTerrain
 				{
 					vP.y = yTer + g_Height * ((w==0 || w==iw) ? 0.15f : 1.f);
-					vN = mTerrain ? TerUtil::GetNormalAt(mTerrain,
+					vN = scn ? TerUtil::GetNormalAt(scn->ters[0],  // 1st ter-
 						vP.x, vP.z, DL.fLenDim*0.5f /*0.5f*/) : Vector3::UNIT_Y;
 				}
 			}else
@@ -265,7 +266,7 @@ void SplineRoad::BuildSeg(
 				if (vN.y < 0.f)  vN.y = -vN.y;
 				if (trans)  //  transition from flat to pipe
 				{	vP += vw * (tcw - 0.5) * trp;  }
-				yTer = mTerrain ? mTerrain->getHeight(vP.x, vP.z) : 0.f;
+				yTer = scn ? scn->getTerH(vP.x, vP.z) : 0.f;
 			}
 			
 			//  skirt ends, gap patch_
@@ -416,7 +417,7 @@ void SplineRoad::BuildSeg(
 						vP.y += yy;
 					}
 					else  // bottom below ground
-					{	yy = (mTerrain ? mTerrain->getHeight(vP.x, vP.z) : 0.f) - 0.3f;
+					{	yy = (scn ? scn->getTerH(vP.x, vP.z) : 0.f) - 0.3f;
 						vP.y = yy;
 					}
 

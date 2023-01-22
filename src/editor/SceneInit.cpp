@@ -305,7 +305,7 @@ void App::CreateRoads()  // 🛣️
 		scn->road->Setup(
 			"sphere.mesh",
 			// "sphere1k.mesh", // todo: hq lods
-			pSet->road_sphr, scn->ter, mSceneMgr, cam, id);
+			pSet->road_sphr, scn, mSceneMgr, cam, id);
 		scn->road->LoadFile(path + fname);
 		scn->roads.push_back(scn->road);
 	}
@@ -335,7 +335,7 @@ void App::UpdateTrackEv()
 	//  road ~
 	for (auto r : scn->roads)
 	{
-		r->mTerrain = scn->ter;
+		r->scn = scn;
 		r->Rebuild(true);  // 🛣️
 	}
 
@@ -361,7 +361,7 @@ void CGui::btnUpdateLayers(WP)
 	app->scn->DestroyTerrain1(app->scn->terCur);
 
 	app->scn->CreateTerrain1(app->scn->terCur);//,app->bNewHmap,true);
-	scn->road->mTerrain = scn->ter;
+	scn->road->scn = scn;
 	// app->scn->updGrsTer();
 }
 

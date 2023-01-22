@@ -69,6 +69,9 @@ public:
 	// TerData td;
 	std::vector<TerData> tds;
 
+	//  🛣️ Road surfaces
+	TerLayer layerRoad[4];
+
 	
 	///  🌳🪨  Vegetation params  --------
 	float densTrees, densGrass;  int grDensSmooth;

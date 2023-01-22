@@ -369,7 +369,8 @@ bool COLLISION_WORLD::CastRay(
 		norm = ToMathVector<float>(res.m_hitNormalWorld);
 		dist = res.m_closestHitFraction * length;
 		col = res.m_collisionObject;
-		const TerData& td = pApp->scn->sc->tds[0];  // 1st ter!-
+		const auto& sc = pApp->scn->sc;
+		const TerData& td = sc->tds[0];  // 1st ter!-
 
 		if (col->isStaticObject() /*&& (c->getCollisionFlags() & btCollisionObject::CF_NO_CONTACT_RESPONSE == 0)*/)
 		{
@@ -384,7 +385,7 @@ bool COLLISION_WORLD::CastRay(
 				case SU_Road:  // road
 				{					 
 					//LogO("RD "+toStr(mtr));
-					int id = td.layerRoad[pApp->scn->sc->road1mtr ? 0 : mtr].surfId;
+					int id = sc->layerRoad[sc->road1mtr ? 0 : mtr].surfId;
 					surf = &pApp->pGame->surfaces[id];
 
 					if (cd)
@@ -393,7 +394,7 @@ bool COLLISION_WORLD::CastRay(
 
 				case SU_Pipe:  // pipe
 				{
-					int id = td.layerRoad[0].surfId;
+					int id = sc->layerRoad[0].surfId;  // todo own surf
 					surf = &pApp->pGame->surfaces[id];
 
 					if (cd)
@@ -408,7 +409,7 @@ bool COLLISION_WORLD::CastRay(
 					int mx = (pos[0] + 0.5*tws)/tws*t;  mx = std::max(0,std::min(t-1, mx));
 					int my = (pos[1] + 0.5*tws)/tws*t;  my = std::max(0,std::min(t-1, t-1-my));
 
-					int mtr = pApp->blendMtr[my*t + mx];
+					int mtr = pApp->blendMtr[my*t + mx];// todo: in each td
                     assert(mtr < td.layers.size());
 					int id = td.layersAll[td.layers[mtr]].surfId;
 					surf = &pApp->pGame->surfaces[id];
@@ -433,7 +434,7 @@ bool COLLISION_WORLD::CastRay(
 				
 				default:
 				{
-					int id = td.layerRoad[0].surfId;
+					int id = sc->layerRoad[0].surfId;  // todo objects surf?
 					surf = &pApp->pGame->surfaces[id];
 
 					if (cd)

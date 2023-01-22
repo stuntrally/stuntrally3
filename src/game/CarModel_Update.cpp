@@ -367,10 +367,11 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		Real sizeD = (0.8f + 0.6f * std::min(140.f, whVel) / 140.f) * (w < 2 ? 0.7f : 1.1f);
 
 		//  ter mtr factors
-		int mtr = std::max(0, std::min(whMtr-1, (int)(sc->tds[0].layers.size()-1)));  // 1st ter!-
+		const auto& td = sc->tds[0];
+		int mtr = std::max(0, std::min(whMtr-1, (int)(td.layers.size()-1)));  // 1st ter!-
 		int rd  = sc->road1mtr ? 0 : std::max(0, std::min(3, whRd));
 
-		TerLayer& lay = whMtr==0 ? sc->tds[0].layerRoad[rd] : sc->tds[0].layersAll[sc->tds[0].layers[mtr]];  // 1st ter!-
+		const TerLayer& lay = whMtr==0 ? sc->layerRoad[rd] : td.layersAll[td.layers[mtr]];  // 1st ter!-
 		emitD *= lay.dust;  emitM *= lay.mud;  sizeD *= lay.dustS;  emitS *= lay.smoke;
 
 		if (pipe)  emitD = 0;  // no dust in pipes
@@ -456,8 +457,8 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 				const float trlH = 0.90f;
 				Vector3 vp = vpos + posInfo.carY * wR*trlH;
 				// vp.y += 0.5f;  //test
-				if (terrain && whMtr > 0)
-					vp.y = terrain->getHeight(vp.x, vp.z) + 0.02f;  // 0.05f
+				if (!sc->tds.empty() && whMtr > 0)
+					vp.y = pApp->scn->getTerH(vp.x, vp.z) + 0.02f;  // 0.05f
 					//if (/*whOnRoad[w]*/whMtr > 0 && road)  // on road, add ofs
 					//	vp.y += road->fHeight;	}/**/
 				ndWhE[w]->setPosition(vp);
@@ -645,6 +646,11 @@ void CarModel::ChangeClr()
 	Vector3 clr(color.r, color.g, color.b);
 	db->setSpecular( clr * c.gloss );  // ok~
 	db->setDiffuse( clr * (1.f - c.gloss) );
+	db->setWorkflow(
+		SpecularWorkflow
+		// SpecularAsFresnelWorkflow
+		// MetallicWorkflow
+	);
 	//db->setMetalness( metal );  //?
 	// db->setIndexOfRefraction( Vector3::UNIT_SCALE * (3.f-metal*3.f), false );
 	db->setFresnel( Vector3::UNIT_SCALE * c.metal, false );

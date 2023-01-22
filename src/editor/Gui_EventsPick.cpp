@@ -158,7 +158,7 @@ void CGui::listPickRd(Mli2 li, size_t pos)
 	}	
 	//  preset
 	if (pSet->pick_setpar && p && idRdType == RdPk_Road)
-	{	TerLayer& l = td().layerRoad[idRdPick];
+	{	TerLayer& l = scn->sc->layerRoad[idRdPick];
 		l.surfName = p->surfName;
 		l.dust = p->dust;  l.dustS = p->dustS;
 		l.mud = p->mud;  l.tclr = p->tclr;

@@ -654,7 +654,7 @@ void SplineRoad::DelSel()
 }
 
 
-///  👆📍 Pick marker
+///  👆📍 Pick marker  // Mr Mick Parker
 //---------------------------------------------------------------------------------------------------------------
 void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,
 	bool bRay, bool bAddH, bool bHide)
@@ -702,7 +702,7 @@ void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,
 
 
 	//  ⛰️📍 Terrain hit pos, ray step  --------
-	if (!bRay || !ndHit || !mTerrain)  return;
+	if (!bRay || !ndHit || !scn)  return;
 	bHitTer = false;
 	
 	///  🎯 manual ray cast  -----------
@@ -713,7 +713,7 @@ void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,
 	{
 		Vector3 posTer = pos + dir * (dist + step),
 			pos1 = posTer;
-		mTerrain->getHeightAt( posTer );
+		scn->getTerH( posTer );
 		bool hit = pos1.y < posTer.y;
 		
 		if (!hit)

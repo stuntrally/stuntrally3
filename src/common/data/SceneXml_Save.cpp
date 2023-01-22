@@ -184,9 +184,9 @@ bool Scene::SaveXml(String file)
 				tex.InsertEndChild(noi);
 				ter.InsertEndChild(tex);
 			}
-			for (int i=0; i < 4; ++i)
+			for (int i=0; i < 4; ++i)  // not here
 			{
-				l = &td.layerRoad[i];
+				l = &layerRoad[i];
 				TiXmlElement tex("texture");
 				tex.SetAttribute("road",	toStrC(i+1));
 				tex.SetAttribute("surf",	l->surfName.c_str());

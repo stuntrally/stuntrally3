@@ -140,7 +140,7 @@ void App::RoadsAdd()
 	int id = scn->roads.size();
 	Cam* cam = &mCams[0];  // todo: lod cam-
 	
-	road->Setup("sphere.mesh", pSet->road_sphr, scn->ter, mSceneMgr, cam, id);
+	road->Setup("sphere.mesh", pSet->road_sphr, scn, mSceneMgr, cam, id);
 	road->Rebuild(true);  //road->RebuildRoadInt();
 	
 	scn->roads.push_back(road);

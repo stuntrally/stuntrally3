@@ -13,6 +13,16 @@ namespace Ogre {  class SceneNode;  class Item;  class ParticleSystem;  }
 namespace Forests {  class GrassLayer;  }
 
 
+/*struct RoadSurface  // todo ..
+{
+	float dust, mud, dustS, smoke;  // particles intensities, S size
+	SColor tclr;  Ogre::Vector4 tcl;  // trail color, rgba copy
+
+	//  surface params bind
+	std::string surfName;  int surfId;
+	RoadSurface();
+};*/
+
 struct TerLayer		//. 🏔️ terrain texture layer
 {
 	bool on, triplanar;  // for highest slopes
@@ -56,10 +66,7 @@ public:
 	const static int ciNumLay = 6;  // all, for edit
 	TerLayer layersAll[ciNumLay];
 	std::vector<int> layers;  // active only (on)
-	
-	// bool road1mtr;  // if true (default) road has only 1 surface type
-	TerLayer layerRoad[4];  // pipe[4]  //todo...
-	void UpdLayers();
+	void UpdLayers();  // tripl
 
 	//  which should have triplanar most (e.g. high slope mountains)
 	int triplanarLayer1, triplanarLayer2, triplCnt;

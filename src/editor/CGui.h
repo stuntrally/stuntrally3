@@ -33,6 +33,7 @@ public:
 
 	typedef std::list<std::string> strlist;
 	TerData& td();
+	bool notd();  // no tds yet, not loaded
 
 
 	//  🪧 main menu

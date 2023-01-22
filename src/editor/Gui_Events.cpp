@@ -424,6 +424,7 @@ void App::SaveCam()
 //  🎥 set predefined camera view
 void CGui::btnSetCam(WP wp)
 {
+	if (notd())  return;
 	String s = wp->getName();
 	Real y0 = 20, xz = td().fTerWorldSize*0.5f, r = 45.f * 0.5f*PI_d/180.f, yt = xz / Math::Tan(r);
 	Camera* cam = app->mCamera;
@@ -455,7 +456,8 @@ void CGui::toggleTopView()
 		oldPos = cam->getPosition();
 		oldRot = cam->getDirection();
 		
-		Real xz = td().fTerWorldSize*0.5f, r = 45.f * 0.5f*PI_d/180.f, yt = xz / Math::Tan(r);
+		Real xz = notd() ? 500.f : td().fTerWorldSize*0.5f,
+			r = 45.f * 0.5f*PI_d/180.f, yt = xz / Math::Tan(r);
 		cam->setPosition(0,yt,0);  cam->setDirection(-0.0001,-1,0);
 
 		oldFog = pSet->bFog;
@@ -483,7 +485,7 @@ TerLayer* CGui::GetTerRdLay()
 		return &td.layersAll[td.layers[idSurf]];
 	}
 	//  road
-	return  &td.layerRoad[sc->road1mtr ? 0 : idSurf-4];
+	return &scn->sc->layerRoad[sc->road1mtr ? 0 : idSurf-4];
 }
 
 void CGui::listSurf(Li, size_t id)

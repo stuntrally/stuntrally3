@@ -346,7 +346,7 @@ bool Scene::LoadTerData(TerData& td, XMLElement* e)
 		a = u->Attribute("road");	if (a)  road = s2i(a)-1;
 		bool ter = road == -1;
 		
-		TerLayer lay, *l = ter ? &lay : &td.layerRoad[road];
+		TerLayer lay, *l = ter ? &lay : &layerRoad[road];
 		lay.nFreq[0] += (il-0.7f) * 4.f;  // default, can't be same, needs variation
 		lay.nFreq[1] += (il-0.5f) * 3.f;
 
