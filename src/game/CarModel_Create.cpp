@@ -326,7 +326,7 @@ void CarModel::Create()
 			HlmsPbsDatablock* db =
 				static_cast<HlmsPbsDatablock *>( eWh->getSubItem(0)->getDatablock() );
 			db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
-		}		
+		}
 		if (FileExists(sCar + "_brake.mesh") && !ghostTrk)
 		{
 			String name = sDirname + "_brake.mesh";

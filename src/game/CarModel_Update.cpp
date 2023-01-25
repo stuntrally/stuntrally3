@@ -647,12 +647,14 @@ void CarModel::ChangeClr()
 	db->setSpecular( clr * c.gloss );  // ok~
 	db->setDiffuse( clr * (1.f - c.gloss) );
 	db->setWorkflow(
-		SpecularWorkflow
-		// SpecularAsFresnelWorkflow
-		// MetallicWorkflow
+		// HlmsPbsDatablock::SpecularWorkflow
+		HlmsPbsDatablock::SpecularAsFresnelWorkflow
+		// HlmsPbsDatablock::MetallicWorkflow
 	);
 	//db->setMetalness( metal );  //?
 	// db->setIndexOfRefraction( Vector3::UNIT_SCALE * (3.f-metal*3.f), false );
+	db->setClearCoat(c.metal);  // todo:
+	db->setClearCoatRoughness( 0.01f); //1.f - c.rough);
 	db->setFresnel( Vector3::UNIT_SCALE * c.metal, false );
 	db->setRoughness( c.rough );
 	// if (pNickTxt)

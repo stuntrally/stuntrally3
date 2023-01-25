@@ -315,11 +315,11 @@ void CHud::Create()
 
 		//  ❌ wrong chk warning  -----------
 		h.bckWarn = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 400,60, Align::Left, "WarnB"+s);  h.bckWarn->setVisible(false);
+			0,y, 500,60, Align::Left, "WarnB"+s);  h.bckWarn->setVisible(false);
 		h.bckWarn->setImageTexture("back_times.png");
 
 		h.txWarn = h.bckWarn->createWidget<TextBox>("TextBox",
-			0,0, 500,60, Align::Left, "WarnT"+s);
+			0,0, 500,60, Align::Center, "WarnT"+s);
 		h.txWarn->setFontName("hud.text");  h.txWarn->setTextShadow(true);
 		h.txWarn->setTextColour(Colour(1,0.3,0));  h.txWarn->setTextAlign(Align::Center);
 		h.txWarn->setCaption(TR("#{WrongChk}"));

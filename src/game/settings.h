@@ -42,6 +42,7 @@ struct CarColor
 {
 	float hue = 0.35f, sat = 0.98f, val = 0.8f;
 	float gloss = 1.f, metal = 1.f, rough = 0.15f;
+	float reflect = 1.f, fresnel = 1.f;
 };
 
 
