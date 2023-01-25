@@ -60,6 +60,11 @@ void Grass::Create()
 	// sc->grPage;  GrassPage(sc->grDist * pSet->grass_dist);  // global, not or per track ?
 	//gds.reserve(100);
 	const int r = scn->imgRoadSize;  //-1?
+	//  page size  100  from ter size
+	const Real pws = max(100.f, min(500.f, tws / 5.f));
+	LogO("Grass page: "+toStr(pws));
+	const Real hps = pws / 2.f;
+	const Real pws2 = pws * pws;
 
 	int id = 0;
 	//  Grass layers
@@ -70,10 +75,6 @@ void Grass::Create()
 		if (gr->on)
 		{
 			const SGrassChannel* ch = &scn->sc->grChan[gr->iChan];
-
-			const Real pws = 50.f;   // page size  100
-			const Real hps = pws / 2.f;
-			const Real pws2 = pws * pws;
 			int na = 0, pg = 0;  // stats
 
 			//  pages
