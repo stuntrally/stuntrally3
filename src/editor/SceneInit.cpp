@@ -68,18 +68,6 @@ void App::createScene01()  // once, init
 	//scn->roadDens.Create(k+1,k+1,"RoadDens");  // var size..
 
 
-	//  🎥 camera
-	asp = float(mWindow->getWidth()) / float(mWindow->getHeight());
-	mCamera->setNearClipDistance(0.1f);
-	mCamera->setFarClipDistance(pSet->view_distance);
-	mCamera->setLodBias(pSet->lod_bias);
-
-	//  set last cam pos
-	mCamera->setPosition(Vector3(pSet->cam_x, pSet->cam_y, pSet->cam_z));
-	mCamera->setDirection(Vector3(pSet->cam_dx, pSet->cam_dy, pSet->cam_dz).normalisedCopy());
-	// mViewport->setVisibilityMask(RV_MaskAll);  // hide prv cam rect
-
-
 	//  🚧 cursors
 	CreateCursors();
 	TerCircleInit();
@@ -101,6 +89,19 @@ void App::createScene01()  // once, init
 	mGraphicsSystem->mWorkspace = SetupCompositor();
 	// mCamera->setFarClipDistance( pSet->view_distance );
 	// mCamera->setLodBias( pSet->lod_bias );
+
+
+	//  🎥 camera
+	asp = float(mWindow->getWidth()) / float(mWindow->getHeight());
+	mCamera->setNearClipDistance(0.1f);
+	mCamera->setFarClipDistance(pSet->view_distance);
+	mCamera->setLodBias(pSet->lod_bias);
+
+	//  set last cam pos
+	mCamera->setPosition(Vector3(pSet->cam_x, pSet->cam_y, pSet->cam_z));
+	mCamera->setDirection(Vector3(pSet->cam_dx, pSet->cam_dy, pSet->cam_dz).normalisedCopy());
+	// mViewport->setVisibilityMask(RV_MaskAll);  // hide prv cam rect
+
 
 	createPreviews();
 
