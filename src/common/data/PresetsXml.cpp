@@ -42,7 +42,6 @@ const PVeget* Presets::GetVeget(std::string mesh)
 
 ///  Load Presets
 //--------------------------------------------------------------------------------------------------------------------------------------
-
 bool Presets::LoadXml(string file)
 {
 	XMLDocument doc;
@@ -90,6 +89,11 @@ bool Presets::LoadXml(string file)
 		a = e->Attribute("s");	if (a)  l.tiling = s2r(a);
 		a = e->Attribute("su");	if (a)  l.surfName = string(a);
 
+		a = e->Attribute("ro");	if (a)  l.rough = s2r(a);  // new
+		if (l.rough < 0.01)  l.rough = 0.01;
+		a = e->Attribute("me");	if (a)  l.metal = s2r(a);
+		a = e->Attribute("re");	if (a)  l.reflect = s2i(a)>0;
+
 		a = e->Attribute("sc");	if (a)  l.sc = String(a);
 		a = e->Attribute("z");	if (a)  l.scn = string(a);
 
@@ -115,6 +119,7 @@ bool Presets::LoadXml(string file)
 		a = e->Attribute("r");	if (a)  l.rate = s2i(a);
 		a = e->Attribute("m");	if (a)  l.mtr = String(a);
 		a = e->Attribute("su");	if (a)  l.surfName = string(a);
+		a = e->Attribute("re");	if (a)  l.reflect = s2i(a)>0;
 
 		a = e->Attribute("sc");	if (a)  l.sc = String(a);
 		a = e->Attribute("z");	if (a)  l.scn = string(a);
@@ -128,7 +133,7 @@ bool Presets::LoadXml(string file)
 		e = e->NextSiblingElement("r");
 	}
 		
-	///  ass
+	///  grass
 	e = root->FirstChildElement("g");
 	while (e)
 	{
@@ -173,6 +178,5 @@ bool Presets::LoadXml(string file)
 		veg.push_back(l);  iveg[l.name] = veg.size();
 		e = e->NextSiblingElement("v");
 	}
-
 	return true;
 }

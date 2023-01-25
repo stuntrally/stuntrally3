@@ -3,6 +3,8 @@
 #include "RenderConst.h"
 #include "Road.h"
 #include "App.h"
+#include "CData.h"
+#include "PresetsXml.h"
 #ifndef SR_EDITOR
 #else
 	#include "game.h"
@@ -297,7 +299,22 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 			db->setTexture(PBSM_DETAIL0, sDiff);
 			db->setTexture(PBSM_DETAIL0_NM, sNorm);
 			//todo: PBSM_SPECULAR ?.. stretched
-			// db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );  // todo: wet, etc +
+			// db->setFresnel(Vector3(1.f,1,1), false);
+			
+			//  refl from presets
+			auto s = sMtrName;
+			auto is = s.find_last_of('_');  // drop _ter
+			if (is != std::string::npos)
+				s = s.substr(0,is);
+			//LogO("PRE rd: "+s);
+			auto rd = pApp->scn->data->pre->GetRoad(s);
+			if (!rd)
+				LogO("Road mat error: not in presets: "+s);
+			else
+			if (rd->reflect)
+				db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );  // todo: wet, etc +
+
+			// it->getSubItem(0)->setDatablock( db );
 		}	}
 	}	}
 	sd.it = it;  sd.it2 = it2;

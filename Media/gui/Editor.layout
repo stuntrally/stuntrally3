@@ -327,13 +327,11 @@
 					<Property key="Colour" value="0.6 1.0 0.6"/>
 					<Property key="TextColour" value="0.7 1.0 0.7"/>
 					<Property key="Caption" value="&lt;"/>
-					<UserString key="tip" value="#{TipTerLMove}"/>
 				</Widget>
 				<Widget type="Button" skin="Button" position="540 4 36 24" name="TersNext">
 					<Property key="Colour" value="0.6 1.0 0.6"/>
 					<Property key="TextColour" value="0.7 1.0 0.7"/>
 					<Property key="Caption" value="&gt;"/>
-					<UserString key="tip" value="#{TipTerLMove}"/>
 				</Widget>
 				<Widget type="Button" skin="Button" position="715 4 24 24" name="TersAdd">
 					<Property key="Colour" value="0.6 1.0 0.6"/>

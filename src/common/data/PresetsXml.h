@@ -22,6 +22,8 @@ struct PTer
 	std::string surfName = "Default", scn;
 
 	float tiling = 8.f;  bool triplanar = false;
+	float rough = 0.4f, metal = 0.4f;
+	bool reflect = false;
 
 	float dust = 0.f, mud = 0.2f, dustS = 0.f;
 	SColor tclr = SColor(0.2f, 0.2f, 0.1f, 0.6f);  // trail
@@ -36,6 +38,7 @@ struct PRoad
 	int rate = 0;
 	Ogre::String mtr, sc;
 	std::string surfName, scn;
+	bool reflect = false;
 
 	float dust = 0.f, mud = 0.2f, dustS = 0.f;
 	SColor tclr = SColor(0.2f, 0.2f, 0.1f, 0.6f);  // trail
