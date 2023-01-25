@@ -444,9 +444,6 @@ void CGui::comboTexNorm(Cmb cmb, size_t val)
 void CGui::slTerLay(SV*)
 {
 	app->bTerUpdBlend = true;
-	//; scn->UpdLayerPars();
-	// if (scn->angleRTT.rnd)  scn->angleRTT.rnd->update();
-	// if (scn->blendRTT.rnd)  scn->blendRTT.rnd->update();
 }
 void CGui::chkTerLNOnly(Ck*)
 {
@@ -478,7 +475,8 @@ void CGui::btnTerLmoveR(WP)  // +1
 	app->scn->UpdBlendmap();
 }
 
-///  Noise preset buttons
+
+///  🌀 Noise preset buttons
 void CGui::radN1(WP) {  Radio2(bRn1, bRn2, bRn2->getStateSelected());  }
 void CGui::radN2(WP) {  Radio2(bRn1, bRn2, bRn2->getStateSelected());  }
 

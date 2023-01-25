@@ -8,6 +8,8 @@
 #include "ShapeData.h"
 #include "SceneXml.h"
 #include "paths.h"
+#include "CData.h"
+#include "PresetsXml.h"
 
 #include <OgrePrerequisites.h>
 #include <OgreVector4.h>
@@ -25,7 +27,7 @@ using namespace Ogre;
 
 //  ⛰️ Terrain
 //-----------------------------------------------------------------------------------------------
-void CScene::CreateTerrain1(int n)
+void CScene::CreateTerrain1(int n, bool upd)
 {
 	auto sn = toStr(n);
 	// if (mTerra)  return;
@@ -50,14 +52,16 @@ void CScene::CreateTerrain1(int n)
 	TextureGpuManager *texMgr = app->mRoot->getRenderSystem()->getTextureGpuManager();
 
 
-	// tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);  // ?💡
+	// tdb->setBrdf(TerraBrdf::Default);  //
+	tdb->setBrdf(TerraBrdf::BlinnPhong);  // +💡
+	// tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);  // +💡
+	// tdb->setBrdf(TerraBrdf::BlinnPhongFullLegacy);  //-
 	// tdb->setBrdf(TerraBrdf::BlinnPhongSeparateDiffuseFresnel);  //** no fresnel-?
-	tdb->setBrdf(TerraBrdf::CookTorranceSeparateDiffuseFresnel);  //** no fresnel-?
-	// tdb->setBrdf(TerraBrdf::CookTorrance);  //+
+	// tdb->setBrdf(TerraBrdf::CookTorranceSeparateDiffuseFresnel);  //** no fresnel-?
+	// tdb->setBrdf(TerraBrdf::CookTorrance);  //-+
 	// tdb->setBrdf(TerraBrdf::DefaultUncorrelated);  // dark-
-	// tdb->setBrdf(TerraBrdf::DefaultSeparateDiffuseFresnel);
-	// tdb->setFresnel();
-	// tdb->setDiffuse(Vector3(1,0,0));
+	// tdb->setBrdf(TerraBrdf::DefaultSeparateDiffuseFresnel);  //-
+	// tdb->setDiffuse(Vector3(1,1,1));
 
 
 	///  🏔️ Layer Textures  ------------------------------------------------
@@ -99,20 +103,18 @@ void CScene::CreateTerrain1(int n)
 		tex = texMgr->createOrRetrieveTexture(n_h,
 			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 		if (tex)
-		{	tblock->setTexture( TERRA_DETAIL_ROUGHNESS0 + i, tex );
-			tblock->setSamplerblock( TERRA_DETAIL_ROUGHNESS0 + i, sampler );
+		{	tdb->setTexture( TERRA_DETAIL_ROUGHNESS0 + i, tex );
+			tdb->setSamplerblock( TERRA_DETAIL_ROUGHNESS0 + i, sb );
 		}
 		tex = texMgr->createOrRetrieveTexture(d_s,
 			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 		if (tex)
-		{	tblock->setTexture( TERRA_DETAIL_METALNESS0 + i, tex );
-			tblock->setSamplerblock( TERRA_DETAIL_METALNESS0 + i, sampler );
+		{	tdb->setTexture( TERRA_DETAIL_METALNESS0 + i, tex );
+			tdb->setSamplerblock( TERRA_DETAIL_METALNESS0 + i, sb );
 		}*/
 		Real sc = fTer / l.tiling;
 		tdb->setDetailMapOffsetScale( i, Vector4(0,0, sc,sc) );
-		tdb->setMetalness(i, 0.2);
-		tdb->setRoughness(i, 0.5);
-
+		
 		// tdb->setTexture( TERRA_REFLECTION, tex );  // todo: ?
 		// tdb->setEmissive(0.5);  // todo:
 	}
@@ -130,12 +132,16 @@ void CScene::CreateTerrain1(int n)
 	mTerra->mtrName = mtrName;
 	// mTerra->setCustomSkirtMinHeight(0.8f); //?-
 	mTerra->setCastShadows( false );
-	mTerra->sc = sc; //scn->sc;
-	// scn->terrain = mTerra;
-	ters.push_back(mTerra);  //+
-	if (n == 0)  // 1st ter only
-		ter = mTerra;
+	mTerra->sc = sc;
 
+	if (upd)  //  ed update ter only
+		ters[n] = mTerra;
+	else
+	{	//  create all
+		ters.push_back(mTerra);  //+
+		if (n == 0)  // 1st ter only
+			ter = mTerra;
+	}
 
 	//  ⛰️ Heightmap  ------------------------------------------------
 	LogO("---T Terrain Hmap load");
@@ -233,6 +239,7 @@ void CScene::TerNext(int add)
 Ogre::Real CScene::getTerH(Ogre::Real x, Ogre::Real z)
 {
 	for (auto ter : ters)
+	if (ter)
 	{
 		Vector3 p(x, 0.f, z);
 		if (ter->getHeightAt(p))
@@ -244,9 +251,7 @@ Ogre::Real CScene::getTerH(Ogre::Real x, Ogre::Real z)
 bool CScene::getTerH(Ogre::Vector3& pos)  // sets y
 {
 	for (auto ter : ters)
-	{
-		if (ter->getHeightAt(pos))
+		if (ter &&ter->getHeightAt(pos))
 			return true;
-	}
 	return false;
 }

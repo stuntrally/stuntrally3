@@ -84,10 +84,10 @@ void CScene::CreateTerrains(bool bNewHmap, bool terLoad)
 {
 	int all = sc->tds.size();
 	for (int i = 0; i < all; ++i)
-		CreateTerrain(i, bNewHmap, terLoad);
+		CreateTerrain(i, false, bNewHmap, terLoad);
 }
 
-void CScene::CreateTerrain(int n, bool bNewHmap, bool terLoad)
+void CScene::CreateTerrain(int n, bool upd, bool bNewHmap, bool terLoad)
 {
 	Ogre::Timer tm;
 	auto si = toStr(n+1);
@@ -118,17 +118,17 @@ void CScene::CreateTerrain(int n, bool bNewHmap, bool terLoad)
 			fi.close();
 		}
 		
-	   	//**  new  .. GetTerMtrIds() from blendmap ..
-	#ifndef SR_EDITOR
-	if (n==0)  // 1st ter only-
-	{
-		app->blendMtr.resize(size);
-		// memset(app->blendMtr,0,size2);  // zero
+	   	//**  new  .. // todo GetTerMtrIds() from blendmap ..
+		#ifndef SR_EDITOR
+		if (n==0)  // 1st ter only-
+		{
+			app->blendMtr.resize(size);
+			// memset(app->blendMtr,0,size2);  // zero
 
-		app->blendMapSize = sqrt(size);
-		// sc->td.layersAll[0].surfId = 0;  //par ter mtr..
-	}
-	#endif
+			app->blendMapSize = sqrt(size);
+			// sc->td.layersAll[0].surfId = 0;  //par ter mtr..
+		}
+		#endif
 	}
 
 
@@ -139,7 +139,7 @@ void CScene::CreateTerrain(int n, bool bNewHmap, bool terLoad)
 	//; UpdBlendmap();
 
 
-	CreateTerrain1(n);
+	CreateTerrain1(n, upd);
 
 	// ter = mTerra;  //set ptr
 	if (n == 0)  // 1st ter only-

@@ -95,7 +95,7 @@ void CGui::btnTersAdd(WP)
 	TerData td;
 	scn->sc->tds.push_back(td);
 
-	scn->CreateTerrain1(all);
+	scn->CreateTerrain1(all, true);
 	assert(scn->ters.size() == scn->sc->tds.size());
 	SetGuiTerFromXml();
 }

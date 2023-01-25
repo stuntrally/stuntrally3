@@ -160,6 +160,7 @@ void App::UpdateEnd(float dt)
 		// Force update the shadow map every frame
 		const float lightEpsilon = 0.0001f;  //** 0.0f slow
 		for (auto ter : scn->ters)
+		if (ter)
 			ter->update( !scn->sun ? -Vector3::UNIT_Y :
 				scn->sun->getDerivedDirectionUpdated(), lightEpsilon );
 	}

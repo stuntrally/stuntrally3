@@ -291,9 +291,10 @@ void App::update( float dt )
 		{
 			const float lightEpsilon = 0.0001f;  //** 0.0f slow
 			for (auto ter : scn->ters)
-			// Force update the shadow map every frame to avoid the feeling we're "cheating" the
-			// user in this sample with higher framerates than what he may encounter in many of
-			// his possible uses.
+			if (ter)
+				// Force update the shadow map every frame to avoid the feeling we're "cheating" the
+				// user in this sample with higher framerates than what he may encounter in many of
+				// his possible uses.
 				ter->update( !scn->sun ? -Vector3::UNIT_Y :
 					scn->sun->getDerivedDirectionUpdated(), lightEpsilon );
 		}

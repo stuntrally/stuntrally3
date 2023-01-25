@@ -330,7 +330,7 @@ void App::UpdateTrackEv()
 	
 	//CreateFluids();
 	scn->DestroyTerrains();
-	scn->CreateTerrains(bNewHmap,true);/**/
+	scn->CreateTerrains(bNewHmap,true);
 
 	//  road ~
 	for (auto r : scn->roads)
@@ -338,7 +338,6 @@ void App::UpdateTrackEv()
 		r->scn = scn;
 		r->Rebuild(true);  // 🛣️
 	}
-
 	//CreateObjects();
 
 	if (pSet->bTrees)
@@ -351,6 +350,7 @@ void App::UpdateTrackEv()
 	gui->Status("#{Updated}", 0.5,1.0,0.7);
 }
 
+
 //  Update btns  ---
 void CGui::btnUpdateLayers(WP)
 {
@@ -358,9 +358,10 @@ void CGui::btnUpdateLayers(WP)
 		app->scn->copyTerHmap();
 	//? if (app->ndSky)
 	// 	app->mSceneMgr->destroySceneNode(app->ndSky);
-	app->scn->DestroyTerrain1(app->scn->terCur);
-
-	app->scn->CreateTerrain1(app->scn->terCur);//,app->bNewHmap,true);
+	scn->DestroyTerrains();
+	scn->CreateTerrains(false,true);  // 🏔️
+	// app->scn->DestroyTerrain1(app->scn->terCur);
+	// app->scn->CreateTerrain1(app->scn->terCur, false); //,app->bNewHmap,true);
 	scn->road->scn = scn;
 	// app->scn->updGrsTer();
 }
@@ -407,6 +408,7 @@ void App::SaveTrackEv()
 	//  all terrains, save Hmap
 	int i = 0;
 	for (auto ter : scn->ters)
+	if (ter)  //-
 	{
 		auto& td = scn->sc->tds[i];
 		int size = td.iVertsX;
