@@ -7,9 +7,9 @@ using Ogre::String;
 #include "FluidsXml.h"
 #include "BltObjects.h"
 #include "TracksXml.h"
+#include "PresetsXml.h"
 #ifdef SR_EDITOR
 	#include "SceneXml.h"
-	#include "PresetsXml.h"
 #else
 	#include "ChampsXml.h"
 	#include "ChallengesXml.h"
@@ -96,15 +96,14 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 	auto path = PATHS::GameConfigDir();
 	tracks->LoadIni(path + "/tracks.ini", check);
 	
-	#ifdef SR_EDITOR
-		//  ed
-		pre->LoadXml(path + "/presets.xml");
-		LogO(String("**** Loaded Presets  sky: ") + toStr(pre->sky.size())+
-			"  ter: " + toStr(pre->ter.size()) +
-			"  road: " + toStr(pre->rd.size()) +
-			"  grass: " + toStr(pre->gr.size()) +
-			"  veget: " + toStr(pre->veg.size()) );
-	#else
+	pre->LoadXml(path + "/presets.xml");
+	LogO(String("**** Loaded Presets  sky: ") + toStr(pre->sky.size())+
+		"  ter: " + toStr(pre->ter.size()) +
+		"  road: " + toStr(pre->rd.size()) +
+		"  grass: " + toStr(pre->gr.size()) +
+		"  veget: " + toStr(pre->veg.size()) );
+
+	#ifndef SR_EDITOR
 		cars->LoadXml(path + "/cars.xml");
 		LoadColors();
 
@@ -164,10 +163,9 @@ CData::CData()
 	reverbs = new ReverbsXml();
 
 	tracks = new TracksXml();
-
-	#ifdef SR_EDITOR
 		pre = new Presets();
-	#else
+
+	#ifndef SR_EDITOR
 		cars = new CarsXml();
 		colors = new ColorsXml();
 		champs = new ChampsXml();
@@ -182,10 +180,9 @@ CData::~CData()
 	delete reverbs;
 
 	delete tracks;
+	delete pre;
 
-	#ifdef SR_EDITOR
-		delete pre;
-	#else
+	#ifndef SR_EDITOR
 		delete cars;
 		delete colors;
 		delete champs;

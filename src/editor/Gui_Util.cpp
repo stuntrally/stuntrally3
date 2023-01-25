@@ -15,14 +15,18 @@
 // #include "../sdl4ogre/sdlcursormanager.hpp"
 // #include "../sdl4ogre/sdlinputwrapper.hpp"
 // #include <OgreTerrain.h>
-#include <OgreOverlay.h>
-#include <OgreOverlayElement.h>
+// #include <OgreOverlay.h>
+// #include <OgreOverlayElement.h>
 #include <OgreCamera.h>
 #include <OgreSceneNode.h>
-#include <OgreViewport.h>
+// #include <OgreViewport.h>
+#include <OgreGpuResource.h>
+#include <OgreTextureGpuManager.h>
 #include <MyGUI.h>
+#include <vector>
 using namespace MyGUI;
 using namespace Ogre;
+using namespace std;
 
 
 ///  Update all Gui controls
@@ -219,6 +223,19 @@ void App::SetEdMode(ED_MODE newMode)
 //-----------------------------------------------
 void App::UpdVisGui()
 {
+	static bool f1 = true;
+	if (bGuiFocus && f1)
+	{	f1 = false;
+		/**auto* rndSys = mRoot->getRenderSystem();
+		auto* texMgr = rndSys->getTextureGpuManager();
+		// preload tex?..
+		std::vector<string> vs{"gui_icons.png", "stuntrally-logo.jpg" };
+		for (auto s : vs)
+		{	auto* t = texMgr->createOrRetrieveTexture(s, GpuPageOutStrategy::SaveToSystemRam, TextureFlags::AllowAutomipmaps, TextureTypes::Type2D);
+			t->_setNextResidencyStatus(GpuResidency::OnSystemRam);
+			t->waitForData();
+		}*/
+	}
 	//  wnd
 	bool g = bGuiFocus;
 	bool notMain = g && !pSet->bMain;

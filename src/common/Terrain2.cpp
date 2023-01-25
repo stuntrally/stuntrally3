@@ -115,8 +115,18 @@ void CScene::CreateTerrain1(int n, bool upd)
 		Real sc = fTer / l.tiling;
 		tdb->setDetailMapOffsetScale( i, Vector4(0,0, sc,sc) );
 		
-		// tdb->setTexture( TERRA_REFLECTION, tex );  // todo: ?
-		// tdb->setEmissive(0.5);  // todo:
+		//  find mat params from presets
+		auto s = d_d;  s = s.substr(0, s.find_first_of('.'));
+		auto pt = data->pre->GetTer(s);
+		if (!pt)
+			LogO("Ter mtr error! not in presets: "+d_d);
+		else
+		{	tdb->setMetalness(i, pt->metal);
+			tdb->setRoughness(i, pt->rough);
+			if (pt->reflect)
+				tdb->setTexture( TERRA_REFLECTION, app->mCubeReflTex );  // par
+		}
+		// tdb->setEmissive(0.5);  // todo: lava..
 	}
 
 

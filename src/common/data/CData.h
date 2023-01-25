@@ -8,9 +8,9 @@ class ReverbsXml;
 
 class TracksXml;
 class CarsXml;
+class Presets;
 
 #ifdef SR_EDITOR
-	class Presets;
 #else
 	class ColorsXml;
 	class ChampsXml;
@@ -37,10 +37,9 @@ public:
 	TracksXml* tracks;  // tracks.ini info for Gui
 	CarsXml* cars;		// cars info for Gui
 	//UserXml* user;
+	Presets* pre;
 	
-	#ifdef SR_EDITOR	// ed only
-		Presets* pre;
-	#else				// game only
+	#ifndef SR_EDITOR	// game only
 		ColorsXml* colors;  // car colors.ini
 		ChampsXml* champs;  //ProgressXml progress[2];
 		ChallXml* chall;  //ProgressLXml progressL[2];
