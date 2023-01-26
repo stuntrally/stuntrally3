@@ -352,6 +352,7 @@ void GraphicsSystem::initialize( const String &windowTitle )
 	setupResources();
 	loadResources();
 	chooseSceneManager();
+
 	createCamera();  // camera 🎥
 	mWorkspace = setupCompositor();
 

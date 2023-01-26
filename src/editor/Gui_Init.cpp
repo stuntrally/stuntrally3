@@ -275,15 +275,16 @@ void CGui::InitGui()
 	//------------------------------------------------------------------------
 	txTersCur = fTxt("TersCur");
 	Btn("TersPrev", btnTersPrev);  Btn("TersNext", btnTersNext);
-	Btn("TersAdd", btnTersAdd);  Btn("TersDel", btnTersDel);
+	Btn("TersAdd",  btnTersAdd);   Btn("TersDel",  btnTersDel);
 
 	imgTexDiff = fImg("TerImgDiff");
 	Tab(tabsHmap, "TabHMapSize", tabHmap);  valHmapMB = fTxt("TerHmapMB");
+
 	// sv= &svTerNormScale;  sv->Init("TerNormScale", &sc->td.normScale,  0.01f,3.f, 1.f, 1,3);  sv->DefaultF(1.f);  Sev(TerPar);
 	// sv= &svTerSpecPow;    sv->Init("TerSpecPow",   &sc->td.specularPow,   0.2f,128.f,2.f, 1,4);  sv->DefaultF(32.f); Sev(TerPar);
 	// sv= &svTerSpecPowEm;  sv->Init("TerSpecPowEm", &sc->tds[0].specularPowEm, 0.5f,4.f,  1.f, 1,3);  sv->DefaultF(2.f);  Sev(TerPar);
 
-	Btn("TerrainNew", btnTerrainNew);
+	Btn("TerrainNew",    btnTerrainNew);   Btn("UpdateTerrain", btnUpdateLayers);
 	Btn("TerrainGenAdd", btnTerGenerate);  Btn("TerrainGenSub", btnTerGenerate);    Btn("TerrainGenMul", btnTerGenerate);
 	Btn("TerrainHalf",   btnTerrainHalf);  Btn("TerrainDouble", btnTerrainDouble);  Btn("TerrainMove",   btnTerrainMove);
 
@@ -325,7 +326,7 @@ void CGui::InitGui()
 	dbgLclr = fImg("dbgTerLclr");
 
 	//  ter layer
-	sv= &svTerTriSize;	sv->Init("TerTriSize", &f,  0.5f,3.f, 1.f);  sv->DefaultF(1.0f);  Sev(TerTriSize);
+	sv= &svTerTriSize;	sv->Init("TerTriSize", &f, 0.5f, 3.f,   1.f);  sv->DefaultF(1.0f);  Sev(TerTriSize);
 	sv= &svTerLScale;	sv->Init("TerLScale",  &f, 6.0f, 72.f,  2.f);  sv->DefaultF(8.f);  //Sev(TerLay);
 	//  blendmap
 	sv= &svTerLAngMin;  sv->Init("TerLAngMin", &f, 0.f,  90.f,  1.f, 1,4);  sv->DefaultF(0.f);  Sev(TerLay);

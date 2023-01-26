@@ -43,7 +43,7 @@ namespace Ogre
 		// Many Android GPUs don't support PFG_R16_UNORM so we scale it by hand,  // nope
 
 		m_heightMapTex = mgr->createTexture(
-			"HeightMapTex" + StringConverter::toString( getId() ),
+			"HeightMapTex" + toStr( getId() ),
 			GpuPageOutStrategy::SaveToSystemRam,
 			TextureFlags::ManualTexture, TextureTypes::Type2D );
 		m_heightMapTex->setResolution( m_iWidth, m_iHeight );

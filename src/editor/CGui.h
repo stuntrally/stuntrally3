@@ -152,7 +152,7 @@ public:
 	// SV svTerErrorNorm;  void slTerErrorNorm(SV*);
 	SV /*svTerNormScale, svTerSpecPow,*/ svTerSpecPowEm;  void slTerPar(SV*);
 	
-	Ogre::String getHMapNew();
+	void saveNewHmap(float* hfData, int size, bool bNew=true);  // to file
 	void btnTerrainNew(WP), btnTerGenerate(WP);
 	void btnTerrainHalf(WP), btnTerrainDouble(WP), btnTerrainMove(WP);  // tools
 	

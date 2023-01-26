@@ -134,10 +134,11 @@ void CScene::CreateTerrain1(int n, bool upd)
 	LogO("---T Terrain create " + sn);
 
 	auto* mTerra = new Terra( //si,
-						Id::generateNewId<MovableObject>(),
-						&mgr->_getEntityMemoryManager( SCENE_STATIC ),
-						mgr, RQG_Terrain, app->mRoot->getCompositorManager2(),
-						app->mCamera, false );
+		Id::generateNewId<MovableObject>(),
+		&mgr->_getEntityMemoryManager( SCENE_STATIC ),
+		mgr, RQG_Terrain, app->mRoot->getCompositorManager2(),
+		app->mCamera, false );
+	
 	mTerra->cnt = n;
 	mTerra->mtrName = mtrName;
 	// mTerra->setCustomSkirtMinHeight(0.8f); //?-

@@ -88,17 +88,45 @@ void CGui::updTersTxt()
 		txTersCur->setCaption(TR("#{RplCurrent}: " + toStr(scn->terCur+1) +"/"+ toStr(all)));
 }
 
+//  ➕ ter add  ---------------
 void CGui::btnTersAdd(WP)
 {
-	// scn->ters.push_back();
-	int all = scn->ters.size();
-	TerData td;
-	scn->sc->tds.push_back(td);
+	LogO("TERS: "+toStr(scn->ters.size())+" "+toStr(scn->sc->tds.size()));
 
-	scn->CreateTerrain1(all, true);
-	assert(scn->ters.size() == scn->sc->tds.size());
+	TerData t;  // new td
+	t.Default();
+
+	//  copy layers from cur
+	for (int l=0; l < TerData::ciNumLay; ++l)
+		t.layersAll[l] = td().layersAll[l];
+	t.UpdLayers();
+
+	//  hmap size from gui
+	int s = UpdTxtTerSize();
+	int size = s * s * sizeof(float);
+
+	//  flat Hmap
+	t.hfHeight.clear();
+	t.hfHeight.resize(s * s);
+	
+	++scn->terCur;  // inc cur
+	saveNewHmap(&t.hfHeight[0], size, false);
+
+	//  td setup
+	t.iVertsX = s;  t.iVertsXold = s;
+	t.fTriangleSize = 2.f;  t.UpdVals();
+	scn->sc->tds.push_back(t);  // add
+
+	//scn->CreateTerrain1(, false);  // no
+	// assert(scn->ters.size() == scn->sc->tds.size());
+
+	scn->DestroyTerrains();
+	scn->CreateTerrains(false,true);  // 🏔️
+
 	SetGuiTerFromXml();
 }
+
+//  ➖ ter del
 void CGui::btnTersDel(WP)
 {
 	auto& t = scn->ters;
@@ -118,10 +146,8 @@ void CGui::btnTersDel(WP)
 }
 
 
-
 //  🌳🪨🌿 Vegetation
 //-----------------------------------------------------------------------------------------------------------
-
 void CGui::editTrGr(Ed ed)
 {
 	Real r = s2r(ed->getCaption());

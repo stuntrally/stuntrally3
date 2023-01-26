@@ -112,6 +112,7 @@ public:
 	Ogre::Terra* ter = 0;  // \ cur for edit
 	TerData* td = 0;       // / set in TerNext
 	void TerNext(int add);
+	Ogre::String getHmap(int n, bool bNew);  // file name
 
 	Ogre::Real getTerH(Ogre::Real x, Ogre::Real z);
 	bool getTerH(Ogre::Vector3& pos);  // sets y

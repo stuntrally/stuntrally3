@@ -309,7 +309,7 @@ void CGui::btnTerGenerate(WP wp)
 
 		//  check if on road - uses roadDensity.png
 		//  todo: smooth depends on -smooth grass dens par, own val?
-		if (bRoad)
+		/*if (bRoad)
 		{
 			int mx = ( fx+1.f)*0.5f*r, my = (-fy+1.f)*0.5f*r;
 					
@@ -318,8 +318,8 @@ void CGui::btnTerGenerate(WP wp)
 
 			//c = c + std::max(0.f, std::min(1.f, 2*c-cr)) * pow(cr, rdPow);
 			c *= pow(cr, rdPow);
-		}
-		//FIXME: ter gen ang pars
+		}*/
+		// fixme: ter gen ang pars
 		//c *= app->linRange(hfAng[a],  pSet->gen_terMinA,pSet->gen_terMaxA, pSet->gen_terSmA);
 		c *= CScene::linRange(hfData[a], pSet->gen_terMinH,pSet->gen_terMaxH, pSet->gen_terSmH);
 
@@ -330,11 +330,8 @@ void CGui::btnTerGenerate(WP wp)
 
 	LogO(String(":::* Time Ter Gen: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
-	std::ofstream of;
-	of.open(getHMapNew().c_str(), std::ios_base::binary);
-	int siz = sx * sx * sizeof(float);
-	of.write((const char*)&hfData[0], siz);
-	of.close();
+	int size = sx * sx * sizeof(float);
+	saveNewHmap(hfData, size);
 
 	LogO(String(":::* Time Ter Gen save: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 

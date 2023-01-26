@@ -85,6 +85,16 @@ void CScene::CreateTerrains(bool bNewHmap, bool terLoad)
 	int all = sc->tds.size();
 	for (int i = 0; i < all; ++i)
 		CreateTerrain(i, false, bNewHmap, terLoad);
+	// ter = ters[0];
+}
+
+String CScene::getHmap(int n, bool bNew)
+{
+	String fname = app->gcom->TrkDir() + "heightmap" 
+		+ (n > 0 ? toStr(n+1) : "")
+		+ (bNew ? "-new" : "")
+		+ ".f32";
+	return fname;
 }
 
 void CScene::CreateTerrain(int n, bool upd, bool bNewHmap, bool terLoad)
@@ -97,20 +107,21 @@ void CScene::CreateTerrain(int n, bool upd, bool bNewHmap, bool terLoad)
 	Ogre::Timer ti;
 	if (terLoad || bNewHmap)
 	{
-		String fname = app->gcom->TrkDir() + "heightmap" 
-			+ (bNewHmap ? "-new" : "")
-			+ (n > 0 ? si : "") + ".f32";
+		String fname = getHmap(n, bNewHmap);
+		bool ex = PATHS::FileExists(fname);
+		if (!ex)
+			LogO("Terrains error! No hmap file: "+fname);
 
 		assert(n < sc->tds.size());
 		auto& td = sc->tds[n];
-		int fsize = td.getFileSize(fname);
+		int fsize = ex ? td.getFileSize(fname) : 512*512*4;  // anything const-
 		int size = fsize / sizeof(float);
 
 		td.hfHeight.clear();
 		td.hfHeight.resize(size);  // flat 0
 
 		//  load f32 HMap +
-		if (PATHS::FileExists(fname))
+		if (ex)
 		{
 			std::ifstream fi;
 			fi.open(fname.c_str(), std::ios_base::binary);

@@ -106,7 +106,7 @@ void CGui::SetGuiFromXmls()
 void CGui::SetGuiTerFromXml()
 {
 	updTabHmap();
-	// svTerTriSize.Upd();  //?
+	svTerTriSize.UpdF(&td().fTriangleSize);  //`
 	UpdTxtTerSize();
 	// svTerNormScale.Upd();  svTerSpecPow.Upd();
 	svTerSpecPowEm.Upd();

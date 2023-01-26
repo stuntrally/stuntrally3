@@ -83,7 +83,7 @@ float SliderValue::getF()
 	return *pFloat;
 }
 
-//  value changed, update slided and text
+//  value changed, update slider and text
 void SliderValue::Upd()
 {
 	if (!pFloat && !pInt)  return;
@@ -200,6 +200,8 @@ void SliderValue::setVisible(bool vis)
 void SliderValue::setText(String txt)
 {
 	if (text)  text->setCaption(txt);
+	else
+	if (edit)  edit->setCaption(txt);
 }
 void SliderValue::setTextClr(float r,float g,float b)
 {

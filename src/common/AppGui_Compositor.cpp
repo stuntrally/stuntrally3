@@ -93,8 +93,9 @@ CompositorWorkspace* AppGui::SetupCompositor()
 
 
 	//  🌒 shadows
-	assert( dynamic_cast<CompositorPassSceneDef *>(passes[1]) );
-	CompositorPassSceneDef* ps = static_cast<CompositorPassSceneDef *>(passes[1]);
+	const int is = 1;  // 1
+	assert( dynamic_cast<CompositorPassSceneDef *>(passes[is]) );
+	CompositorPassSceneDef* ps = static_cast<CompositorPassSceneDef *>(passes[is]);
 	
 	switch (pSet->shadow_type)
 	{

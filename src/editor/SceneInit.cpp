@@ -416,8 +416,7 @@ void App::SaveTrackEv()
 		ter->readBackHmap(td.hfHeight, size);
 		int fsize = size * size * sizeof(float);
 
-		String file = dir + "heightmap"
-			+ (i > 0 ? toStr(i+1) : "") + ".f32";
+		String file = dir + scn->getHmap(i, false);
 		std::ofstream of;
 		of.open(file.c_str(), std::ios_base::binary);
 		of.write((const char*)&td.hfHeight[0], fsize);
@@ -436,7 +435,10 @@ void App::SaveTrackEv()
 	SaveGrassDens();
 	SaveWaterDepth();
 
-	gui->Delete(gui->getHMapNew());
+	int all = scn->ters.size() + 1;
+	for (i=0; i < all; ++i)
+		gui->Delete(scn->getHmap(i, true));
+	
 	gui->Status("#{Saved}", 1,0.6,0.2);
 }
 

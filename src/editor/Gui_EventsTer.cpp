@@ -122,6 +122,7 @@ void CGui::slTerTriSize(SV* sv)
 {
 	if (notd())  return;
 	td().fTriangleSize = sv->getF();
+	LogO(fToStr(td().fTriangleSize));
 	td().UpdVals();
 	UpdTxtTerSize();
 }
@@ -133,7 +134,7 @@ int CGui::UpdTxtTerSize(float mul)
 	float res = td().fTriangleSize * size;  // result size
 	svTerTriSize.setText(fToStr(res,0,3));
 	
-	valHmapMB->setCaption(toStr(4*size*size/1000000)+" MiB");  // floats
+	valHmapMB->setCaption(toStr(size*size*4/1000000)+" MiB");  // floats
 	return size;
 }
 
@@ -168,34 +169,38 @@ void CGui::slTerPar(SV*sv)
 	// ter_specular_pow_em  td().specularPowEm
 }
 
-String CGui::getHMapNew()
+//  save new hmap
+void CGui::saveNewHmap(float* hfData, int size, bool bNew)
 {
-	return gcom->TrkDir() + "heightmap-new.f32";
+	auto file = scn->getHmap(scn->terCur, true);
+	// LogO("TER saveNewHmap  " + toStr(size) +"  "+ file);
+	std::ofstream of;
+	of.open(file.c_str(), std::ios_base::binary);
+	of.write((const char*)&hfData[0], size);
+	of.close();
 }
 
 //  🛠️ Ter Hmap tools  - - - -
 //----------------------------------------------------------------------------------------------------------
 void CGui::btnTerrainNew(WP)
 {
-	int size = UpdTxtTerSize();
+	int si = UpdTxtTerSize();
 
-	// td().iVertsX = size+1;  td().UpdVals();  // new hf
-	td().iVertsX = size;  td().UpdVals();  // new hf
+	auto& s = td().iVertsX;
+	s = si;  td().UpdVals();  // new hf
 
-	float* hfData = new float[td().iVertsX * td().iVertsX];
-	int siz = td().iVertsX * td().iVertsX * sizeof(float);
+	float* hfData = new float[s * s];
+	int size = s * s * sizeof(float);
 	
 	//  generate Hmap
-	for (int j=0; j < td().iVertsX; ++j)
+	for (int j=0; j < s; ++j)
 	{
-		int a = j * td().iVertsX;
-		for (int i=0; i < td().iVertsX; ++i,++a)
+		int a = j * s;
+		for (int i=0; i < s; ++i,++a)
 			hfData[a] = 0.f;  //td().getHeight(i,j);
 	}
-	std::ofstream of;
-	of.open(getHMapNew().c_str(), std::ios_base::binary);
-	of.write((const char*)&hfData[0], siz);
-	of.close();
+	// ++scn->terCur;
+	saveNewHmap(hfData, size);
 
 	delete[] hfData;
 	app->bNewHmap = true;	app->UpdateTrack();
@@ -205,25 +210,25 @@ void CGui::btnTerrainNew(WP)
 //  Terrain  half  --------------------------------
 void CGui::btnTerrainHalf(WP)
 {
-	int halfSize = td().iVertsX / 2;
-	float* hfData = new float[halfSize * halfSize];
-	int siz = halfSize * halfSize * sizeof(float);
+	int so = td().iVertsX;
+	int s = so / 2;
+	float* hfData = new float[s * s];
+	int size = s * s * sizeof(float);
 	
 	//  resize Hmap by half
-	for (int j=0; j < halfSize; ++j)
+	for (int j=0; j < s; ++j)
 	{
-		int a = j * halfSize, a2 = j*2 * td().iVertsX;
-		for (int i=0; i < halfSize; ++i,++a)
+		int a = j * s,
+			a2 = j*2 * so;
+		for (int i=0; i < s; ++i,++a)
 		{	hfData[a] = td().hfHeight[a2];  a2+=2;  }
 	}
-	std::ofstream of;
-	of.open(getHMapNew().c_str(), std::ios_base::binary);
-	of.write((const char*)&hfData[0], siz);
-	of.close();
+	saveNewHmap(hfData, size);
 	delete[] hfData;
 
 	td().fTriangleSize *= 2.f;
-	td().iVertsX = halfSize;  td().UpdVals();
+	td().iVertsX = s;  td().UpdVals();
+	
 	updTabHmap();  svTerTriSize.Upd();
 	app->bNewHmap = true;	app->UpdateTrack();
 }
@@ -231,24 +236,23 @@ void CGui::btnTerrainHalf(WP)
 //  Terrain  double  --------------------------------
 void CGui::btnTerrainDouble(WP)
 {
-	int dblSize = td().iVertsX * 2, ofs4 = dblSize / 4;
-	float* hfData = new float[dblSize * dblSize];
-	int siz = dblSize * dblSize * sizeof(float);
+	int so = td().iVertsX;
+	int s = so * 2, ofs4 = s / 4;
+	float* hfData = new float[s * s];
+	int size = s * s * sizeof(float);
 	
 	//  resize Hmap by half
-	for (int j=0; j < td().iVertsX; ++j)
+	for (int j=0; j < so; ++j)
 	{
-		int a = (j + ofs4) * dblSize + ofs4, a2 = j * td().iVertsX;
-		for (int i=0; i < td().iVertsX; ++i,++a)
+		int a = (j + ofs4) * s + ofs4,
+			a2 = j * so;
+		for (int i=0; i < so; ++i,++a)
 		{	hfData[a] = td().hfHeight[a2];  ++a2;  }
 	}
-	std::ofstream of;
-	of.open(getHMapNew().c_str(), std::ios_base::binary);
-	of.write((const char*)&hfData[0], siz);
-	of.close();
+	saveNewHmap(hfData, size);
 	delete[] hfData;
 
-	td().iVertsX = dblSize;  td().UpdVals();
+	td().iVertsX = s;  td().UpdVals();
 	updTabHmap();
 	app->bNewHmap = true;	app->UpdateTrack();
 }
@@ -301,24 +305,21 @@ void CGui::btnTerrainMove(WP)
 	int mx = ex ? s2i(ex->getCaption()) : 0;
 	int my = ey ?-s2i(ey->getCaption()) : 0;
 	
-	int newSize = td().iVertsX, si = newSize * newSize;
-	float* hfData = new float[si];
+	int s = td().iVertsX, size = s * s;
+	float* hfData = new float[size];
 	
 	//  resize
 	int i,j,a,aa;
-	for (j=0; j < newSize; ++j)
+	for (j=0; j < s; ++j)
 	{
-		a = j * newSize;
-		for (i=0; i < newSize; ++i,++a)
+		a = j * s;
+		for (i=0; i < s; ++i,++a)
 		{
-			aa = std::max(0, std::min(si-1, (j-mx) * newSize + i+my));
+			aa = std::max(0, std::min(size-1, (j-mx) * s + i+my));
 			hfData[a] = td().hfHeight[aa];
 		}
 	}
-	std::ofstream of;
-	of.open(getHMapNew().c_str(), std::ios_base::binary);
-	of.write((const char*)&hfData[0], si * sizeof(float));
-	of.close();
+	saveNewHmap(hfData, size);
 	delete[] hfData;
 	
 	app->scn->road->SelAll();
@@ -357,23 +358,20 @@ void CGui::btnScaleTerH(WP)
 	}
 
 	//  ter  ---
-	int si = td().iVertsX * td().iVertsX;
+	int si = td().iVertsX;
 	float* hfData = new float[si];
-	int siz = si * sizeof(float);
+	int size = si * si * sizeof(float);
 	
 	//  generate Hmap
-	for (int j=0; j < td().iVertsX; ++j)
+	for (int j=0; j < si; ++j)
 	{
-		int a = j * td().iVertsX;
-		for (i=0; i < td().iVertsX; ++i,++a)
+		int a = j * si;
+		for (i=0; i < si; ++i,++a)
 			hfData[a] = td().hfHeight[a] * sf;
 	}
-	std::ofstream of;
-	of.open(getHMapNew().c_str(), std::ios_base::binary);
-	of.write((const char*)&hfData[0], siz);
-	of.close();
-
+	saveNewHmap(hfData, size);
 	delete[] hfData;
+
 	app->bNewHmap = true;	app->UpdateTrack();
 
 	//  start,end pos
