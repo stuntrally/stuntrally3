@@ -240,6 +240,7 @@ void App::LoadTrackEv()
 	//  ⛰️ Terrain
 	// bNewHmap = false;/**/
 	scn->CreateTerrains(bNewHmap);
+	scn->TerNext(0);
 
 
 	//  🛣️ Road ~

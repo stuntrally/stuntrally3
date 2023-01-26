@@ -360,39 +360,11 @@
 					<UserString key="tip" value="#{TipTerLayers}"/>
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#C0E0C0#{Properties}"/>
+
 						<Widget type="TextBox" skin="TextBox" position="32 39 168 24">
 							<Property key="Caption" value="#{HeightmapSize}"/>
 							<Property key="TextColour" value="0.4 1 0.6"/>
 							<UserString key="tip" value="#{TipTerVertCount}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="32 72 168 24">
-							<Property key="Caption" value="#{TriSize} [#{UnitM}]"/>
-							<Property key="TextColour" value="0.4 1 0.7"/>
-							<UserString key="tip" value="#{TipTerTriSize}"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="272 73 460 18" name="TerTriSize">
-							<Property key="Colour" value="0.7 1 0.8"/>
-							<UserString key="tip" value="#{TipTerTriSize}"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="204 71 60 22" name="TerTriSizeEdit">
-							<Property key="TextColour" value="0.7 1 0.8"/>
-							<Property key="Colour" value="0.7 1 0.8"/>
-							<UserString key="tip" value="#{TipTerTriSize}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="32 108 168 22">
-							<Property key="Caption" value="#{TerrainSize} [#{UnitM}]:"/>
-							<Property key="TextColour" value="0.6 1 0.8"/>
-							<UserString key="tip" value="#{TipTerSize}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="204 108 96 24" name="TerTriSizeVal">
-							<Property key="TextColour" value="0.8 1 0.9"/>
-							<UserString key="tip" value="#{TipTerSize}"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="352 103 104 32" name="TerrainNew">
-							<Property key="Colour" value="0.2 1 0.5"/>
-							<Property key="Caption" value="#{NewTerrainFlat}"/>
-							<Property key="TextColour" value="0.7 1 0.8"/>
-							<UserString key="tip" value="#{TipNewTerrainFlat}"/>
 						</Widget>
 						<Widget type="TabControl" skin="TabControl" position="200 38 300 20" name="TabHMapSize">
 							<Property key="Colour" value="0.7 0.9 1"/>
@@ -428,6 +400,43 @@
 							<UserString key="tip" value="#{RplFileSize}"/>
 						</Widget>						
 
+						<Widget type="TextBox" skin="TextBox" position="32 72 168 24">
+							<Property key="Caption" value="#{TriSize} [#{UnitM}]"/>
+							<Property key="TextColour" value="0.4 1 0.7"/>
+							<UserString key="tip" value="#{TipTerTriSize}"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="272 73 460 18" name="TerTriSize">
+							<Property key="Colour" value="0.7 1 0.8"/>
+							<UserString key="tip" value="#{TipTerTriSize}"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="204 71 60 22" name="TerTriSizeEdit">
+							<Property key="TextColour" value="0.7 1 0.8"/>
+							<Property key="Colour" value="0.7 1 0.8"/>
+							<UserString key="tip" value="#{TipTerTriSize}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="32 108 168 22">
+							<Property key="Caption" value="#{TerrainSize} [#{UnitM}]:"/>
+							<Property key="TextColour" value="0.6 1 0.8"/>
+							<UserString key="tip" value="#{TipTerSize}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="204 108 96 24" name="TerTriSizeVal">
+							<Property key="TextColour" value="0.8 1 0.9"/>
+							<UserString key="tip" value="#{TipTerSize}"/>
+						</Widget>
+						
+						<Widget type="Button" skin="Button" position="352 103 104 32" name="TerrainNew">
+							<Property key="Colour" value="0.2 1 0.5"/>
+							<Property key="Caption" value="#{NewTerrainFlat}"/>
+							<Property key="TextColour" value="0.7 1 0.8"/>
+							<UserString key="tip" value="#{TipNewTerrainFlat}"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="624 103 124 32" name="UpdateTerrain">
+							<Property key="Caption" value="#{Update}"/>
+							<Property key="Colour" value="0.3 1.0 0.2"/>
+							<Property key="TextColour" value="0.3 1.0 0.2"/>
+							<Property key="Alpha" value="0.7"/>
+						</Widget>
+		
 						<!-- <Widget type="TextBox" skin="TextBox" position="612 236 90 24">
 							<Property key="Caption" value="#{Light}"/>
 							<Property key="TextColour" value="0.4 0.6 0.8"/>
@@ -765,6 +774,7 @@
 <!-- ============================================================================================================================================= -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#80FF00#{Layers}"/>
+
 				<Widget type="Button" skin="Button" position="524 164 124 36" name="UpdateLayers">
 					<Property key="Caption" value="#{Update}"/>
 					<Property key="Colour" value="0.5 1.0 0.2"/>

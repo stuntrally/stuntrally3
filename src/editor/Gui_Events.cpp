@@ -122,6 +122,7 @@ void CGui::btnTersAdd(WP)
 
 	scn->DestroyTerrains();
 	scn->CreateTerrains(false,true);  // 🏔️
+	scn->TerNext(0);
 
 	SetGuiTerFromXml();
 }

@@ -85,7 +85,6 @@ void CScene::CreateTerrains(bool bNewHmap, bool terLoad)
 	int all = sc->tds.size();
 	for (int i = 0; i < all; ++i)
 		CreateTerrain(i, false, bNewHmap, terLoad);
-	// ter = ters[0];
 }
 
 String CScene::getHmap(int n, bool bNew)
