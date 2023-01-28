@@ -44,6 +44,7 @@
 		#include "System/OSX/OSXUtils.h"
 	#endif
 #endif
+#include "paths.h"
 using namespace Ogre;
 
 
@@ -623,6 +624,7 @@ void GraphicsSystem::registerHlms()
 		}
 		hlmsUnlit = OGRE_NEW HlmsUnlit( ar, &dirs );
 		Root::getSingleton().getHlmsManager()->registerHlms( hlmsUnlit );
+		hlmsUnlit->setDebugOutputPath(true, false, PATHS::ShadersDir()+"/");
 	}
 
 	{	//  Create & Register HlmsPbs  ----
@@ -636,6 +638,7 @@ void GraphicsSystem::registerHlms()
 		}
 		hlmsPbs = OGRE_NEW HlmsPbs( ar, &dirs );
 		Root::getSingleton().getHlmsManager()->registerHlms( hlmsPbs );
+		hlmsPbs->setDebugOutputPath(true, false, PATHS::ShadersDir()+"/");
 	}
 
 

@@ -208,7 +208,7 @@ void PATHS::Init(bool log_paths)
 	#endif
 	// Create cache dir
 	CreateDir(CacheDir());
-	// CreateDir(ShadersDir());
+	CreateDir(ShadersDir());
 
 	// Print diagnostic info
 	if (log_paths)
