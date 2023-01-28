@@ -253,6 +253,7 @@ namespace Ogre
 		#define Set3(s,v)  psParams->setNamedConstant( s, Vector3(v[0], v[1], v[2]) )
 		#define Set2(s,v)  psParams->setNamedConstant( s, Vector2(v[0], v[1]) )
 		#define Set1(s,v)  psParams->setNamedConstant( s, v )
+
 		Set4("Hmin", Hmin);  Set4("Hmax", Hmax);  Set4("Hsmt", Hsmt);
 		Set4("Amin", Amin);  Set4("Amax", Amax);  Set4("Asmt", Asmt);  Set4("Nonly", Nonly);
 		Set3("Nnext", Nnext);  Set3("Nprev", Nprev);  Set2("Nnext2", Nnext2);

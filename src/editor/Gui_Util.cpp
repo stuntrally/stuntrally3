@@ -105,12 +105,14 @@ void CGui::SetGuiFromXmls()
 //-----------------------------------------------
 void CGui::SetGuiTerFromXml()
 {
+	// String fname = scn->getHmap(scn->terCur, false);//-
+	// td().getFileSize(fname);
 	updTabHmap();
 	svTerTriSize.UpdF(&td().fTriangleSize);  //`
 	UpdTxtTerSize();
 	// svTerNormScale.Upd();  svTerSpecPow.Upd();
-	svTerSpecPowEm.Upd();
-	
+	// svTerSpecPowEm.UpdF(&td().specularPowEm);
+
 	tabTerLayer(tabsTerLayers, idTerLay);
 	updTersTxt();
 }

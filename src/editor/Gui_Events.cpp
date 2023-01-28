@@ -91,7 +91,7 @@ void CGui::updTersTxt()
 //  ➕ ter add  ---------------
 void CGui::btnTersAdd(WP)
 {
-	LogO("TERS: "+toStr(scn->ters.size())+" "+toStr(scn->sc->tds.size()));
+	// LogO("TERS: "+toStr(scn->ters.size())+" "+toStr(scn->sc->tds.size()));
 
 	TerData t;  // new td
 	t.Default();

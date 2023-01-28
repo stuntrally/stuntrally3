@@ -417,7 +417,7 @@ void App::SaveTrackEv()
 		ter->readBackHmap(td.hfHeight, size);
 		int fsize = size * size * sizeof(float);
 
-		String file = dir + scn->getHmap(i, false);
+		String file = scn->getHmap(i, false);
 		std::ofstream of;
 		of.open(file.c_str(), std::ios_base::binary);
 		of.write((const char*)&td.hfHeight[0], fsize);
