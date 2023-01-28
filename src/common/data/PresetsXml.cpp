@@ -40,7 +40,7 @@ const PVeget* Presets::GetVeget(std::string mesh)
 }
 
 
-///  Load Presets
+///  📄 Load Presets
 //--------------------------------------------------------------------------------------------------------------------------------------
 bool Presets::LoadXml(string file)
 {
@@ -62,7 +62,8 @@ bool Presets::LoadXml(string file)
 	XMLElement* e;
 	const char* a;
 
-	///  sky
+
+	///  ⛅ sky
 	e = root->FirstChildElement("s");
 	while (e)
 	{
@@ -78,7 +79,7 @@ bool Presets::LoadXml(string file)
 		e = e->NextSiblingElement("s");
 	}
 
-	///  terrain
+	///  ⛰️ terrain
 	e = root->FirstChildElement("t");
 	while (e)
 	{
@@ -89,13 +90,12 @@ bool Presets::LoadXml(string file)
 		a = e->Attribute("s");	if (a)  l.tiling = s2r(a);
 		a = e->Attribute("su");	if (a)  l.surfName = string(a);
 
-		a = e->Attribute("ro");	if (a)  l.rough = s2r(a);  // new
+		a = e->Attribute("ro");	if (a)  l.rough = s2r(a);  // new 3.0
 		if (l.rough < 0.01)  l.rough = 0.01;
 		a = e->Attribute("me");	if (a)  l.metal = s2r(a);
 		a = e->Attribute("re");	if (a)  l.reflect = s2i(a)>0;
 
 		a = e->Attribute("sc");	if (a)  l.sc = String(a);
-		a = e->Attribute("z");	if (a)  l.scn = string(a);
 
 		a = e->Attribute("du");	if (a)  l.dust = s2r(a);
 		a = e->Attribute("ds");	if (a)  l.dustS = s2r(a);
@@ -111,7 +111,7 @@ bool Presets::LoadXml(string file)
 		e = e->NextSiblingElement("t");
 	}
 
-	///  road
+	///  🛣️ road
 	e = root->FirstChildElement("r");
 	while (e)
 	{
@@ -122,7 +122,6 @@ bool Presets::LoadXml(string file)
 		a = e->Attribute("re");	if (a)  l.reflect = s2i(a)>0;
 
 		a = e->Attribute("sc");	if (a)  l.sc = String(a);
-		a = e->Attribute("z");	if (a)  l.scn = string(a);
 
 		a = e->Attribute("du");	if (a)  l.dust = s2r(a);
 		a = e->Attribute("ds");	if (a)  l.dustS = s2r(a);
@@ -133,7 +132,7 @@ bool Presets::LoadXml(string file)
 		e = e->NextSiblingElement("r");
 	}
 		
-	///  grass
+	///  🌿 grass
 	e = root->FirstChildElement("g");
 	while (e)
 	{
@@ -143,7 +142,6 @@ bool Presets::LoadXml(string file)
 		a = e->Attribute("c");	if (a)  g.clr = String(a);
 
 		a = e->Attribute("sc");	if (a)  g.sc = String(a);
-		a = e->Attribute("z");	if (a)  g.scn = string(a);
 
 		a = e->Attribute("xa");	if (a)  g.minSx = s2r(a);
 		a = e->Attribute("xb");	if (a)  g.maxSx = s2r(a);
@@ -154,7 +152,7 @@ bool Presets::LoadXml(string file)
 		e = e->NextSiblingElement("g");
 	}
 	
-	///  veget
+	///  🌳🪨 veget
  	e = root->FirstChildElement("v");
 	while (e)
 	{
@@ -163,7 +161,6 @@ bool Presets::LoadXml(string file)
 		a = e->Attribute("p");	if (a)  l.name = String(a);
 
 		a = e->Attribute("sc");	if (a)  l.sc = String(a);
-		a = e->Attribute("z");	if (a)  l.scn = string(a);
 
 		a = e->Attribute("sa");	if (a)  l.minScale = s2r(a);
 		a = e->Attribute("sb");	if (a)  l.maxScale = s2r(a);

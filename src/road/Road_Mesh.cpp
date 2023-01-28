@@ -312,8 +312,7 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 				LogO("Road mat error: not in presets: "+s);
 			else
 			if (rd->reflect)
-				db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );  // todo: wet, etc +
-
+				db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );  // wet, etc+
 			// it->getSubItem(0)->setDatablock( db );
 		}	}
 	}	}

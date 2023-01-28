@@ -3,10 +3,10 @@
 #include <OgreString.h>
 
 
-//  Presets xml  for editor Pick lists
+//  Presets xml  for editor Pick lists and game materials
 //-----------------------------------------------------------
 
-///----  Sky
+//  ⛅ Sky  ----
 struct PSky
 {
 	int rate = 0;  // rating  for quality, popular
@@ -14,12 +14,12 @@ struct PSky
 	float ldYaw = 0.f, ldPitch = 0.f;  // sun dir
 };
 
-///----  Terrain layer
+//  ⛰️ Terrain layer ----
 struct PTer
 {
 	int rate = 0;
 	Ogre::String texFile, texNorm, sc;
-	std::string surfName = "Default", scn;
+	std::string surfName = "Default";
 
 	float tiling = 8.f;  bool triplanar = false;
 	float rough = 0.4f, metal = 0.4f;
@@ -32,19 +32,19 @@ struct PTer
 	float dmg = 0.f;
 };
 
-///----  Road
+//  🛣️ Road  ----
 struct PRoad
 {
 	int rate = 0;
 	Ogre::String mtr, sc;
-	std::string surfName, scn;
+	std::string surfName;
 	bool reflect = false;
 
 	float dust = 0.f, mud = 0.2f, dustS = 0.f;
 	SColor tclr = SColor(0.2f, 0.2f, 0.1f, 0.6f);  // trail
 };
 
-///----  Grass
+//  🌿 Grass  ----
 struct PGrass
 {
 	int rate = 0;
@@ -56,7 +56,7 @@ struct PGrass
 	float maxSx = 1.6f, maxSy = 1.6f;  // sizes
 };
 
-///----  Veget model
+//  🌳🪨 Veget model  ----
 struct PVeget
 {
 	int rate = 0;
@@ -72,7 +72,7 @@ struct PVeget
 };
 
 
-///  Presets xml  with common params setup
+///  📄 Presets xml  with common params
 //-----------------------------------------------------------
 class Presets
 {

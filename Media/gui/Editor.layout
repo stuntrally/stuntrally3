@@ -430,7 +430,7 @@
 							<Property key="TextColour" value="0.7 1 0.8"/>
 							<UserString key="tip" value="#{TipNewTerrainFlat}"/>
 						</Widget>
-						<Widget type="Button" skin="Button" position="624 103 124 32" name="UpdateTerrain">
+						<Widget type="Button" skin="Button" position="564 103 124 32" name="UpdateTerrain">
 							<Property key="Caption" value="#{Update}"/>
 							<Property key="Colour" value="0.3 1.0 0.2"/>
 							<Property key="TextColour" value="0.3 1.0 0.2"/>
@@ -775,7 +775,7 @@
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#80FF00#{Layers}"/>
 
-				<Widget type="Button" skin="Button" position="524 164 124 36" name="UpdateLayers">
+				<Widget type="Button" skin="Button" position="574 164 124 36" name="UpdateLayers">
 					<Property key="Caption" value="#{Update}"/>
 					<Property key="Colour" value="0.5 1.0 0.2"/>
 					<Property key="TextColour" value="0.5 1.0 0.2"/>
