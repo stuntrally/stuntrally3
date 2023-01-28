@@ -42,6 +42,9 @@ void CGui::InitGuiCar()
 	sv= &svCarClrMetal;	sv->Init("CarClrMetal", &f, 0.f,   1.0f, 1.f );  Sev(CarClr);
 	sv= &svCarClrRough;	sv->Init("CarClrRough", &f, 0.01f, 1.0f, 1.f );  Sev(CarClr);
 	imgCarClr = fImg("ImgCarClr");  imgCarClrCur = fImg("ImgCarClrCur");
+
+	ck= &ckCarClrAdj;  ck->Init("chkCarClrAdj", &pSet->carClrAdj);  Cev(CarClrAdj);
+	panCarClrAdj  = fWP("panelCarClrAdj");   panCarClrAdj->setVisible(pSet->carClrAdj);
 	UpdCarClrSld();
 
 

@@ -3,7 +3,7 @@
 #include "settings_com.h"
 
 
-#define SET_VER  3007  // 3.0
+#define SET_VER  3009  // 3.0
 
 
 enum eGraphType  {
@@ -156,6 +156,7 @@ public:
 
 	bool bltDebug = 0, bltLines = 0, bltProfilerTxt = 0, profilerTxt = 0;
 	bool loadingbackground = 1, show_welcome = 1;
+	bool carClrAdj = 0;
 
 	//  🔊 sound
 	float vol_master = 1.f, vol_hud = 1.f,

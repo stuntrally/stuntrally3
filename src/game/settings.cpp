@@ -127,6 +127,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "misc.dev_keys", dev_keys);			Param(c,w, "misc.dev_no_prvs", dev_no_prvs);
 
 	Param(c,w, "misc.show_welcome", show_welcome);	Param(c,w, "misc.loadingback", loadingbackground);
+	Param(c,w, "misc.carClrAdj", carClrAdj);
 
 	//  📡 network
 	// Param(c,w, "network.master_server_address", master_server_address);	Param(c,w, "network.nickname", nickname);

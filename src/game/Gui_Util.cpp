@@ -171,10 +171,11 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab)
 	int  cnt = tc->getItemCount();
 
 	if (t == tab && subtab == -1)  // cycle subpages if same tab
-	{	if (app->shift)
-			tc->setIndexSelected( (tc->getIndexSelected()-1+cnt) % cnt );
-		else
-			tc->setIndexSelected( (tc->getIndexSelected()+1) % cnt );
+	{
+		int i = (tc->getIndexSelected() +
+			(app->shift ? -1+cnt : 1) ) % cnt;
+		if (tc->getButtonWidthAt(i) > 10)  // if tab visible
+			tc->setIndexSelected(i);
 	}
 	if (subtab > -1)
 		tc->setIndexSelected( std::min(cnt-1, subtab) );

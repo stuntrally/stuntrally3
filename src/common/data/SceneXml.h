@@ -65,8 +65,7 @@ public:
 	//  ⚫💭  wheel particle types
 	Ogre::String  sParDust, sParMud, sParSmoke;
 	
-	///  ⛰️ Terrain  ----
-	// TerData td;
+	///  ⛰️ Terrains  ----
 	std::vector<TerData> tds;
 
 	//  🛣️ Road surfaces

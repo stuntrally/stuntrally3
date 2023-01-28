@@ -134,26 +134,33 @@ void CGui::tabPlayer(Tab, size_t id)
 
 //  🎨 car Color
 //---------------------------------------------------------------------
+void CGui::chkCarClrAdj(Ck*)
+{
+	bool vis = panCarClrAdj->getVisible();
+	panCarClrAdj->setVisible(!vis);
+}
+
 //  3. apply new color to car/ghost
 void CGui::SetCarClr()
 {
 	if (!bGI)  return;
 	
-	int s = app->carModels.size(), i;
+	auto& cm = app->carModels;
+	int s = cm.size(), i;
 	if (iCurCar == 4)  // ghost
 	{
 		for (i=0; i < s; ++i)
-			if (app->carModels[i]->isGhost() && !app->carModels[i]->isGhostTrk())
-				app->carModels[i]->ChangeClr();
+			if (cm[i]->isGhost() && !cm[i]->isGhostTrk())
+				cm[i]->ChangeClr();
 	}
 	else if (iCurCar == 5)  // track's ghost
 	{
 		for (i=0; i < s; ++i)
-			if (app->carModels[i]->isGhostTrk())
-				app->carModels[i]->ChangeClr();
+			if (cm[i]->isGhostTrk())
+				cm[i]->ChangeClr();
 	}else
 		if (iCurCar < s)  // player
-			app->carModels[iCurCar]->ChangeClr();
+			cm[iCurCar]->ChangeClr();
 }
 
 //  2. upd game set color and sliders
@@ -323,7 +330,8 @@ void CGui::UpdCarClrImgs()
 	{
 		int x = i % clrRow, y = i / clrRow;
 		Img img = tbCarClr->createWidget<ImageBox>("ImageBox",
-			12+x*sx, 102+y*sx, sx-1,sx-1, Align::Left, "carClr"+toStr(i));
+			// par pos
+			12+x*sx, 55+y*sx, sx-1,sx-1, Align::Left, "carClr"+toStr(i));
 		img->setImageTexture("white.png");
 		gcom->setOrigPos(img, "GameWnd");
 

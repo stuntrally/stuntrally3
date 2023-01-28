@@ -84,6 +84,9 @@ public:
 
 
 	///  🎨 Car color  ------
+	Ck ckCarClrAdj;  void chkCarClrAdj(Ck*);
+	WP panCarClrAdj =0;
+	
 	SV svCarClrH, svCarClrS, svCarClrV;
 	SV svCarClrGloss, svCarClrMetal, svCarClrRough;
 	void slCarClr(SV*);
@@ -96,6 +99,7 @@ public:
 	void imgBtnCarClr(WP), btnCarClrRandom(WP);
 	Tbi tbCarClr =0;
 	std::vector<Img> imgsCarClr;
+	
 	void UpdCarClrImgs(), UpdCarClrCur();
 	void btnCarClrSave(WP), btnCarClrLoad(WP), btnCarClrLoadDef(WP);
 	void btnCarClrAdd(WP), btnCarClrDel(WP);
