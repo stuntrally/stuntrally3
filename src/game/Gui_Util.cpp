@@ -199,9 +199,9 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab)
 int CGui::LNext(Mli2 lp, int rel, int ofs)
 {
 	int cnt = (int)lp->getItemCount();
+	if (cnt==0)  return 0;
 	if (cnt==1 || abs(rel) >= cnt)
 	{	lp->setIndexSelected(0);  return 1;  }
-	if (cnt==0 || abs(rel) >= cnt)  return 0;
 
 	int i = (int)lp->getIndexSelected();
 	//int i = std::max(0, std::min((int)cnt-1, i+rel ));
@@ -238,7 +238,10 @@ void CGui::LNext(int rel)
 	else
 	if (app->mWndGame->getVisible())
 		switch (app->mWndTabsGame->getIndexSelected())
-		{	case TAB_Track:  gcom->listTrackChng(gcom->trkList,  LNext(gcom->trkList, rel, 11));  return;
+		{
+			case TAB_Track:  if (gcom->trkList->getItemCount() == 0)  return;
+				gcom->listTrackChng(gcom->trkList,  LNext(gcom->trkList, rel, 11));  return;
+
 			case TAB_Car:	 listCarChng(carList, LNext(carList, rel, 5));  return;
 			case TAB_Champs:
 				if (isChallGui())

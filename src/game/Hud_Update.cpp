@@ -182,12 +182,12 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 	bool main = base == id;
 	// LogO(toStr(b)+" b "+toStr(c)+" c");
 	#ifdef DEBUG
-	assert(c >= 0);
-	assert(b >= 0);
-	assert(b < hud.size());  // only b
-	assert(c < app->carModels.size());
-	assert(b < app->carModels.size());
-	assert(c < hud[b].vMiniPos.size());
+	assert(id >= 0);
+	assert(base >= 0);
+	assert(base < hud.size());  // only b
+	assert(id < app->carModels.size());
+	assert(base < app->carModels.size());
+	assert(id < hud[base].vMiniPos.size());
 	#endif
 	float angBase = app->carModels[base]->angCarY;
 	

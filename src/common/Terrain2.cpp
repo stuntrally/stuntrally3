@@ -43,14 +43,13 @@ void CScene::CreateTerrain1(int n, bool upd)
 	db = app->mGraphicsSystem->hlmsTerra->createDatablock(
 		mtrName.c_str(), mtrName.c_str(),
 		HlmsMacroblock(), HlmsBlendblock(), HlmsParamVec() );
-	assert( dynamic_cast<HlmsTerraDatablock *>( datablock ) );
+	assert( dynamic_cast<HlmsTerraDatablock *>( db ) );
 	HlmsTerraDatablock *tdb = static_cast<HlmsTerraDatablock *>( db );
 	
 	//  tex filtering
 	HlmsSamplerblock sb;
 	app->InitTexFilters(&sb);
 	TextureGpuManager *texMgr = app->mRoot->getRenderSystem()->getTextureGpuManager();
-
 
 	// tdb->setBrdf(TerraBrdf::Default);  //
 	tdb->setBrdf(TerraBrdf::BlinnPhong);  // +💡
@@ -244,6 +243,9 @@ void CScene::TerNext(int add)
 	terCur = (terCur + add + all) % all;
 	ter = ters[terCur];
 	td = &sc->tds[terCur];
+
+	// String fname = getHmap(terCur, false);//-
+	// td->getFileSize(fname);
 }
 
 //  ⛓️⛰️ util all Ter H
