@@ -33,14 +33,14 @@
 	@property( syntax != metal )
 		CONST_BUFFER( AtmoSettingsBuf, @value(atmosky_npr) )
 		{
-			AtmoSettings atmoSettings;
+			AtmoSettings atmo;
 		};
 	@end
 @end
 
 @property( syntax == metal )
 	@piece( AtmosphereNprSkyDecl )
-		, constant AtmoSettings &atmoSettings [[buffer(CONST_SLOT_START+@value(atmosky_npr))]]
+		, constant AtmoSettings &atmo [[buffer(CONST_SLOT_START+@value(atmosky_npr))]]
 	@end
 @end
 
