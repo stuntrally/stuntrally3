@@ -7,11 +7,11 @@ using namespace Ogre;
 using namespace std;
 
 
-// void PaintsIni::Load(std::string sfile)
-// {
-// 	CONFIGFILE c;  c.Load(sfile);
-// 	Serialize(false, c);
-// }
+void PaintsIni::Load(std::string sfile)
+{
+	CONFIGFILE c;  c.Load(sfile);
+	Serialize(false, c);
+}
 void PaintsIni::Save(std::string sfile)
 {
 	CONFIGFILE c;  c.Load(sfile);
@@ -46,50 +46,35 @@ void PaintsIni::Serialize(bool w, CONFIGFILE & c)
 {
 	Param(c,w, "all.perRow", perRow);
 	Param(c,w, "all.imgSize", imgSize);
-	
-	int s = v.size();
-	for (int i=0; i < s; ++i)
+
+	auto str = [](int i)
 	{
 		std::ostringstream s;
 		s.width(3);  s.fill('0');
 		s << std::fixed << i << '.';
-		SerPaint(w,c, s.str(), v[i]);
-	}
-}
+		return s.str();
+	};
 
-
-//  🎨 Load car colors.ini 📄
-//--------------------------------------------------------------------------------------------------------------------------------------
-bool PaintsIni::LoadOld(string file)
-{
-	v.clear();
-
-	char s[256];
-
-	ifstream fs(file.c_str());
-	if (fs.fail())  return false;
-	
-	while (fs.good())
-	{
-		fs.getline(s,254);
-		
-		if (strlen(s) > 0 && s[0] != '#' && s[0] != '/' && s[0] != ' ')  //  comment
+	if (w)
+	{	//  write
+		int si = v.size();
+		for (int i=0; i < si; ++i)
 		{
-			string t = s;  //  params
-			     if (t.substr(0,6) == "perRow")   perRow =  s2i(t.substr(6));
-			else if (t.substr(0,7) == "imgSize")  imgSize = s2i(t.substr(7));
-			else
-			//  color, starting with digit
-			if (s[0] >= '0' && s[0] <= '9')
+			auto s = str(i);
+			SerPaint(w,c, s, v[i]);
+		}
+	}else  // read
+	{	v.clear();
+		for (int i=0; i < 200; ++i)  // max
+		{
+			auto s = str(i);
+			float f;
+			if (c.GetParam(s + "0hue", f))
 			{
-				CarPaint c;
-				sscanf(s, "%f %f %f %f %f %f",
-					&c.clr[0].hue, &c.clr[0].sat, &c.clr[0].val, &c.gloss, &c.metal, &c.rough);
-				if (c.metal > 1.f)  c.metal = 1.f;
-				if (c.rough > 1.f)  c.rough = 1.f;
-
-				v.push_back(c);
+				CarPaint p;
+				SerPaint(w,c, s, p);
+				v.push_back(p);
 			}
-	}	}
-	return true;
+		}
+	}
 }

@@ -11,9 +11,9 @@ void SETTINGS::Load(std::string sfile)
 	CONFIGFILE c;  c.Load(sfile);
 	Serialize(false, c);
 
-	String paint = StringUtil::replaceAll(sfile, "game", "paint");
+	String pfile = StringUtil::replaceAll(sfile, "game", "paint");
 
-	CONFIGFILE p;  p.Load(paint);
+	CONFIGFILE p;  p.Load(pfile);
 	SerPaints(false, p);
 }
 void SETTINGS::Save(std::string sfile)
@@ -23,9 +23,9 @@ void SETTINGS::Save(std::string sfile)
 	CONFIGFILE c;  c.Load(sfile);  version = SET_VER;
 	Serialize(true, c);  c.Write();
 
-	String paint = StringUtil::replaceAll(sfile, "game", "paint");
+	String pfile = StringUtil::replaceAll(sfile, "game", "paint");
 
-	CONFIGFILE p;  p.Load(paint);
+	CONFIGFILE p;  p.Load(pfile);
 	SerPaints(true, p);  p.Write();
 }
 

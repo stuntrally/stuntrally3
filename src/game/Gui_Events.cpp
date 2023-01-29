@@ -232,20 +232,24 @@ void CGui::tabPaintType(Tab, size_t)
 void CGui::chkPaintOne(Ck*)
 {
 	SetPaint();
+	UpdImgClr();
 }
 
 void CGui::UpdImgClr()
 {
 	int i = iCurCar;
-	auto& gc = pSet->gui.clr[i].clr[0];
-	float h = gc.hue, s = gc.sat, v = gc.val;
+	const auto& gc = pSet->gui.clr[i];
+	int t = gc.one_clr ? 0 : tbPaintType->getIndexSelected();
+	const auto& cl = gc.clr[t];
+	
+	float h = cl.hue, s = cl.sat, v = cl.val;
 	ColourValue c;  c.setHSB(1.f - h, s, v);
 	Colour cc(c.r, c.g, c.b);
 	imgPaint->setColour(cc);
 	
-	i = pSet->car_clr;  // grid btn
-	if (i >= 0 && i < imgsPaint.size())
-		imgsPaint[i]->setColour(cc);
+	int b = pSet->car_clr;  // grid btn
+	if (b >= 0 && b < imgsPaint.size())
+		imgsPaint[b]->setColour(cc);
 }
 
 //  🎨 color buttons
@@ -351,29 +355,29 @@ void CGui::btnPaintAdd(WP)
 void CGui::UpdPaintImgs()
 {
 	const auto* p = data->paints;
-	const int clrBtn = p->v.size(),
+	const int all = p->v.size(),
 		clrRow = p->perRow, sx = p->imgSize;
 	
 	for (auto img : imgsPaint)
 		tbPlrPaint->_destroyChildWidget(img);
 	imgsPaint.clear();
 	
-	for (int i=0; i < clrBtn; ++i)
+	for (int i=0; i < all; ++i)
 	{
 		const auto& cl = p->v[i];
 		int x = i % clrRow, y = i / clrRow,
 			px = 12+x*sx, py = 55+y*sx;  // par pos
 		
 		Img img = tbPlrPaint->createWidget<ImageBox>("ImageBox",
-			px,py, sx-1,sx-1, Align::Left, "Paint"+toStr(i));
-		img->setImageTexture("paint_ico.png");  img->setImageCoord(IntCoord(0,0,32,32));
+			px,py, sx-1,sx-1, Align::Left, "Paint" + toStr(i));
+		img->setImageTexture("paint_icons.png");  img->setImageCoord(IntCoord(0,0,32,32));
 		gcom->setOrigPos(img, "GameWnd");
 
 		//  shine  rough  *
 		int s1 = cl.rough * 2.5f * sx + 2;  s1 = min(64, s1);  // 32
 		Img img2 = img->createWidget<ImageBox>("ImageBox",
 			0,0, s1,s1, Align::Left);  img2->setNeedMouseFocus(false);
-		img2->setImageTexture("paint_ico.png");  img2->setImageCoord(IntCoord(32,0,32,32));
+		img2->setImageTexture("paint_icons.png");  img2->setImageCoord(IntCoord(32,0,32,32));
 		// img2->setAlpha(cl.gloss);
 		// if (!cl.one_clr)  // own spec
 		// 	img2->setColour(cl.clr[1]);

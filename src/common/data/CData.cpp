@@ -145,10 +145,10 @@ void CData::LoadPaints(bool forceOrig)
 
 	if (PATHS::FileExists(user + ini) && !forceOrig)
 	{
-		paints->LoadOld(user + ini);
+		paints->Load(user + ini);
 		LogO(String("**** Loaded user Paints: ") + toStr(paints->v.size()));
 	}else
-	{	paints->LoadOld(path + ini);
+	{	paints->Load(path + ini);
 		LogO(String("**** Loaded game Paints: ") + toStr(paints->v.size()));
 	}
 }

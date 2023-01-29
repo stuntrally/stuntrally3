@@ -195,13 +195,17 @@
 
 	<!--  Color  params  -->
 	<Tag name="Paint">Paint</Tag>
+
 	<Tag name="ColHue">Color - Hue</Tag>
 	<Tag name="ColSat">Saturation</Tag>
 	<Tag name="ColBright">Brightness</Tag>
+
 	<Tag name="ColGloss">Glossiness</Tag>
 	<Tag name="ColReflect">Reflection</Tag>
+
 	<Tag name="ColMetalness">Metalness</Tag>
 	<Tag name="ColRoughness">Roughness</Tag>
+	<Tag name="ColFresnel">Fresnel</Tag>
 
 	<Tag name="CarClrRandom">Random</Tag>
 	<Tag name="Adjust">Adjust</Tag>

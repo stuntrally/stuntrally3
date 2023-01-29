@@ -665,10 +665,10 @@ void CarModel::SetPaint()
 		// HlmsPbsDatablock::MetallicWorkflow
 	);
 	// db->setMetalness( gc.metal );  // only in metallic
-	db->setRoughness( gc.rough );
+	db->setRoughness( std::max(0.001f, gc.rough) );
 
 	db->setClearCoat( gc.clear_coat );
-	db->setClearCoatRoughness( std::max(0.01f, gc.clear_rough) );
+	db->setClearCoatRoughness( std::max(0.001f, gc.clear_rough) );
 	
 	db->setFresnel( Vector3::UNIT_SCALE * gc.fresnel, false );
 	// db->setIndexOfRefraction( Vector3::UNIT_SCALE * (3.f-gc.fresnel*3.f), false );
