@@ -2,12 +2,19 @@
 #include "settings.h"
 //#include "protocol.hpp"
 #include <stdio.h>
+#include <OgreString.h>
+using namespace Ogre;
 
 
 void SETTINGS::Load(std::string sfile)
 {
 	CONFIGFILE c;  c.Load(sfile);
 	Serialize(false, c);
+
+	String paint = StringUtil::replaceAll(sfile, "game", "paint");
+
+	CONFIGFILE p;  p.Load(paint);
+	SerPaints(false, p);
 }
 void SETTINGS::Save(std::string sfile)
 {
@@ -15,8 +22,29 @@ void SETTINGS::Save(std::string sfile)
 		// return;
 	CONFIGFILE c;  c.Load(sfile);  version = SET_VER;
 	Serialize(true, c);  c.Write();
+
+	String paint = StringUtil::replaceAll(sfile, "game", "paint");
+
+	CONFIGFILE p;  p.Load(paint);
+	SerPaints(true, p);  p.Write();
 }
 
+//  📄 paint.cfg
+void SETTINGS::SerPaints(bool wr, CONFIGFILE & cf)
+{
+	for (int i=0; i < 6; ++i)  // cars
+	{
+		char ss[64];
+		sprintf(ss, "car%d.", i+1);
+		const std::string s = ss;
+
+		auto& p = gui.clr[i];
+		PaintsIni::SerPaint(wr, cf, s, p);
+	}
+}
+
+
+//  📄 game.cfg
 void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 {
 	c.bFltFull = false;
@@ -39,14 +67,11 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 		if (i < 4)
 		{	Param(c,w, s+"car", gui.car[i]);		Param(c,w, s+"camera", cam_view[i]);
 		}
-		Param(c,w, s+"clr_hue", gui.clr[i].hue);	Param(c,w, s+"clr_gloss", gui.clr[i].gloss);
-		Param(c,w, s+"clr_sat", gui.clr[i].sat);	Param(c,w, s+"clr_metal", gui.clr[i].metal);
-		Param(c,w, s+"clr_val", gui.clr[i].val);	Param(c,w, s+"clr_rough", gui.clr[i].rough);
 	}
-	// todo: this for all 4 cars
+	// todo: this for all 4 cars-
 	Param(c,w, "car1.autotrans", autoshift);
 	Param(c,w, "car1.autorear", autorear);		Param(c,w, "car1.autorear_inv", rear_inv);
-	for (int i=0; i <= 1; ++i)
+	for (int i=0; i <= 1; ++i)  // steering
 	{	std::string s = i==1 ? "A":"";
 		Param(c,w, "car1.abs"+s, abs[i]);		Param(c,w, "car1.tcs"+s, tcs[i]);
 		Param(c,w, "car1.sss_effect"+s, sss_effect[i]);
@@ -127,7 +152,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "misc.dev_keys", dev_keys);			Param(c,w, "misc.dev_no_prvs", dev_no_prvs);
 
 	Param(c,w, "misc.show_welcome", show_welcome);	Param(c,w, "misc.loadingback", loadingbackground);
-	Param(c,w, "misc.carClrAdj", carClrAdj);
+	Param(c,w, "misc.paintAdj", paintAdj);
 
 	//  📡 network
 	// Param(c,w, "network.master_server_address", master_server_address);	Param(c,w, "network.nickname", nickname);
@@ -142,6 +167,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "replay.ghostpar", rpl_ghostpar);	Param(c,w, "replay.ghostother", rpl_ghostother);
 	Param(c,w, "replay.num_views", rpl_numViews);	Param(c,w, "replay.ghostrewind", rpl_ghostrewind);
 	Param(c,w, "replay.ghoHideDist", ghoHideDist);	Param(c,w, "replay.ghoHideDistTrk", ghoHideDistTrk);
+	Param(c,w, "replay.hideHudAids", rpl_hideHudAids);
 
 	//  🎳 sim
 	Param(c,w, "sim.game_freq", game_fq);			Param(c,w, "sim.dynamics_iter", dyn_iter);
@@ -185,16 +211,8 @@ SETTINGS::GameSet::GameSet()
 
 	BoostDefault();
 
-	//  cars
-	for (int i=0; i < 6; ++i)
-	{	if (i < 4)  car[i] = "HI";
-		clr[i].hue = 0.4f + 0.2f*i;
-		clr[i].sat = 0.98f;
-		clr[i].val = 0.9f;
-		clr[i].gloss = 0.7f;
-		clr[i].metal = 0.9f;
-		clr[i].rough = 0.25f;
-	}
+	for (int i=0; i < 4; ++i)
+		car[i] = "HI";
 }
 
 void SETTINGS::GameSet::BoostDefault()

@@ -83,26 +83,31 @@ public:
 	MyGUI::PolygonalSkin* graphVel =0,*graphVGrid =0, *graphSSS =0,*graphSGrid =0;
 
 
-	///  🎨 Car color  ------
-	Ck ckCarClrAdj;  void chkCarClrAdj(Ck*);
-	WP panCarClrAdj =0;
-	
-	SV svCarClrH, svCarClrS, svCarClrV;
-	SV svCarClrGloss, svCarClrMetal, svCarClrRough;
-	void slCarClr(SV*);
-	void SldUpd_CarClr();
-	void UpdCarClrSld(bool upd=true);
+	///  🎨 Car paint  ------
+	Ck ckPaintAdj;  void chkPaintAdj(Ck*);  // adjust panel
+	WP panPaintAdj =0;
 
-	void SetCarClr(), UpdImgClr();
+	Ck ckPaintOne;  void chkPaintOne(Ck*);
+	Tab tbPaintType =0;  void tabPaintType(Tab, size_t);
 
-	Img imgCarClr =0, imgCarClrCur =0;
-	void imgBtnCarClr(WP), btnCarClrRandom(WP);
-	Tbi tbCarClr =0;
-	std::vector<Img> imgsCarClr;
+	SV svPaintH, svPaintS, svPaintV;  // h s v sliders
+	SV svPaintGloss, svPaintMetal, svPaintRough;
+	SV svClearCoat, svClearCoatRough, svPaintFresnel;
 	
-	void UpdCarClrImgs(), UpdCarClrCur();
-	void btnCarClrSave(WP), btnCarClrLoad(WP), btnCarClrLoadDef(WP);
-	void btnCarClrAdd(WP), btnCarClrDel(WP);
+	void slPaint(SV*);  // any paint slider
+	void SldUpd_Paint();
+	void UpdPaintSld(bool upd=true);
+
+	void SetPaint(), UpdImgClr();
+
+	Img imgPaint =0, imgPaintCur =0;
+	void imgBtnPaint(WP), btnPaintRandom(WP);
+	Tbi tbPlrPaint =0;
+	std::vector<Img> imgsPaint;
+	
+	void UpdPaintImgs(), UpdPaintCur();
+	void btnPaintSave(WP), btnPaintLoad(WP), btnPaintLoadDef(WP);
+	void btnPaintAdd(WP), btnPaintDel(WP);
 
 
 	//  🔩 Setup car  ----

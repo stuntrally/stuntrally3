@@ -40,7 +40,7 @@ void CarModel::setVisible(bool vis)
 
 	ndMain->setVisible(vis);
 	if (bsBrakes)  bsBrakes->setVisible(vis && bBraking);
-	if (bsFlares)  bsFlares->setVisible(vis && pSet->car_lights);
+	if (bsFlares)  bsFlares->setVisible(vis && pSet->car_lights);  // todo fade from behind..
 
 	for (int w=0; w < numWheels; ++w)
 	{	ndWh[w]->setVisible(vis);
@@ -634,29 +634,45 @@ void CarModel::UpdWhTerMtr()
 }
 
 
-//  🎨 color
+//  🎨 paint
 //-------------------------------------------------------------------------------------------------------
-void CarModel::ChangeClr()
+void CarModel::SetPaint()
 {
 	int i = iColor;
-	auto c = pSet->gui.clr[i];
-	color.setHSB(1.f - c.hue, c.sat, c.val);  //set, mini pos clr
+	auto gc = pSet->gui.clr[i];
+	
+	ColourValue diff, spec;  //, fresn1, fresn2;
+	auto c = gc.clr[0];
+	diff.setHSB(1.f - c.hue, c.sat, c.val);
 
+	bool one = gc.one_clr;
+	if (one)
+		spec = diff;
+	else
+	{	c = gc.clr[1];
+		spec.setHSB(1.f - c.hue, c.sat, c.val);
+	}
+
+	color = diff;  // for mini pos clr
 	if (!db)  return;
-	Vector3 clr(color.r, color.g, color.b);
-	db->setSpecular( clr * c.gloss );  // ok~
-	db->setDiffuse( clr * (1.f - c.gloss) );
+
+	#define toV3(cv)  Vector3(cv.r, cv.g, cv.b)
+	db->setSpecular( toV3(spec) * (!one ? 1.f : gc.gloss) );  // ok~
+	db->setDiffuse(  toV3(diff) * (!one ? 1.f : (1.f - gc.gloss)) );
 	db->setWorkflow(
-		// HlmsPbsDatablock::SpecularWorkflow
-		HlmsPbsDatablock::SpecularAsFresnelWorkflow
+		HlmsPbsDatablock::SpecularWorkflow  // par?
+		// HlmsPbsDatablock::SpecularAsFresnelWorkflow
 		// HlmsPbsDatablock::MetallicWorkflow
 	);
-	//db->setMetalness( metal );  //?
-	// db->setIndexOfRefraction( Vector3::UNIT_SCALE * (3.f-metal*3.f), false );
-	db->setClearCoat(c.metal);  // todo:
-	db->setClearCoatRoughness( 0.01f); //1.f - c.rough);
-	db->setFresnel( Vector3::UNIT_SCALE * c.metal, false );
-	db->setRoughness( c.rough );
+	// db->setMetalness( gc.metal );  // only in metallic
+	db->setRoughness( gc.rough );
+
+	db->setClearCoat( gc.clear_coat );
+	db->setClearCoatRoughness( std::max(0.01f, gc.clear_rough) );
+	
+	db->setFresnel( Vector3::UNIT_SCALE * gc.fresnel, false );
+	// db->setIndexOfRefraction( Vector3::UNIT_SCALE * (3.f-gc.fresnel*3.f), false );
+	
 	// if (pNickTxt)
 	// 	pNickTxt->setTextColour(MyGUI::Colour(color.r, color.g, color.b));
 	

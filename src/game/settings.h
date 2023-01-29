@@ -1,6 +1,7 @@
 #pragma once
 #include "configfile.h"
 #include "settings_com.h"
+#include "paints.h"
 
 
 #define SET_VER  3009  // 3.0
@@ -36,13 +37,7 @@ const static std::string csGraphNames[Gh_ALL] = {
 enum EMenu
 {	MN1_Main, MN1_Race,  // small main menus
 	MN_Single, MN_Tutorial, MN_Champ, MN_Chall,  // game, same window
-	MN_HowTo, MN_Replays, MN_Help, MN_Options  };  // other windows
-
-struct CarColor
-{
-	float hue = 0.35f, sat = 0.98f, val = 0.8f;
-	float gloss = 1.f, metal = 1.f, rough = 0.15f;
-	float reflect = 1.f, fresnel = 1.f;
+	MN_HowTo, MN_Replays, MN_Help, MN_Options    // other windows
 };
 
 
@@ -120,7 +115,7 @@ public:
 		float trees = 1.5f;  // 🌳🪨 veget common
 
 		std::vector<std::string> car;  //[4] local players
-		std::vector<CarColor> clr;  //[6] also for ghosts 🎨
+		std::vector<CarPaint> clr;  //[6] also for ghosts 🎨  own paint.cfg
 
 		bool vr_mode =0;  // copy in game from pSet->
 		int local_players = 1, num_laps = 2;  // 👥 split
@@ -156,7 +151,7 @@ public:
 
 	bool bltDebug = 0, bltLines = 0, bltProfilerTxt = 0, profilerTxt = 0;
 	bool loadingbackground = 1, show_welcome = 1;
-	bool carClrAdj = 0;
+	bool paintAdj = 0;
 
 	//  🔊 sound
 	float vol_master = 1.f, vol_hud = 1.f,
@@ -212,5 +207,6 @@ public:
 			return conf.GetParam(pname, value);
 	}
 	void Serialize(bool write, CONFIGFILE & config);
+	void SerPaints(bool write, CONFIGFILE & config);
 	void Load(std::string sfile), Save(std::string sfile);
 };

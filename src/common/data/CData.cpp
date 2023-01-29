@@ -105,7 +105,7 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 
 	#ifndef SR_EDITOR
 		cars->LoadXml(path + "/cars.xml");
-		LoadColors();
+		LoadPaints();
 
 		champs->LoadXml(path + "/championships.xml", tracks, check);
 		LogO(String("**** Loaded Championships: ") + toStr(champs->all.size()));
@@ -136,20 +136,20 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 }
 
 #ifndef SR_EDITOR
-void CData::LoadColors(bool forceOrig)
+void CData::LoadPaints(bool forceOrig)
 {
-	if (!colors)  return;
+	if (!paints)  return;
 	auto path = PATHS::GameConfigDir(),
 		 user = PATHS::UserConfigDir();
-	auto clr = "/colors.ini";
+	auto ini = "/paints.ini";
 
-	if (PATHS::FileExists(user + clr) && !forceOrig)
+	if (PATHS::FileExists(user + ini) && !forceOrig)
 	{
-		colors->LoadIni(user + clr);
-		LogO(String("**** Loaded user Car Colors: ") + toStr(colors->v.size()));
+		paints->LoadOld(user + ini);
+		LogO(String("**** Loaded user Paints: ") + toStr(paints->v.size()));
 	}else
-	{	colors->LoadIni(path + clr);
-		LogO(String("**** Loaded game Car Colors: ") + toStr(colors->v.size()));
+	{	paints->LoadOld(path + ini);
+		LogO(String("**** Loaded game Paints: ") + toStr(paints->v.size()));
 	}
 }
 #endif
@@ -167,7 +167,7 @@ CData::CData()
 
 	#ifndef SR_EDITOR
 		cars = new CarsXml();
-		colors = new ColorsXml();
+		paints = new PaintsIni();
 		champs = new ChampsXml();
 		chall = new ChallXml();
 	#endif
@@ -184,7 +184,7 @@ CData::~CData()
 
 	#ifndef SR_EDITOR
 		delete cars;
-		delete colors;
+		delete paints;
 		delete champs;
 		delete chall;
 	#endif

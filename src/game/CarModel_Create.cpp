@@ -140,7 +140,7 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 				pDb->clone( "CarBody" + sCarI + toStr(id) ) );
 			db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
 			item->getSubItem(0)->setDatablock( db );
-			ChangeClr();
+			SetPaint();
 		}
 	}
 	catch (Ogre::Exception ex)

@@ -113,18 +113,6 @@ public:
 	bool LoadXml(std::string file);
 };
 
-
-//  🎨 car colors.ini  for Gui
-//--------------------------------------------------------------------
-class ColorsXml
-{
-public:
-	std::vector<CarColor> v;
-	int perRow = 12, imgSize = 18;  // gui params
-	
-	bool LoadIni(std::string file);
-	bool SaveIni(std::string file);
-};
 #endif
 
 

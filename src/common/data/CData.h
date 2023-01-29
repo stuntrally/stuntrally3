@@ -12,7 +12,7 @@ class Presets;
 
 #ifdef SR_EDITOR
 #else
-	class ColorsXml;
+	class PaintsIni;
 	class ChampsXml;
 	class ChallXml;
 	class Chall;
@@ -27,7 +27,7 @@ public:
 	
 	void Load(std::map <std::string, int>* surf_map=0, bool check=false);  //
 	#ifndef SR_EDITOR
-		void LoadColors(bool forceOrig = false);
+		void LoadPaints(bool forceOrig = false);
 	#endif
 
 	FluidsXml* fluids;	//  fluids params for car sim
@@ -40,7 +40,7 @@ public:
 	Presets* pre;
 	
 	#ifndef SR_EDITOR	// game only
-		ColorsXml* colors;  // car colors.ini
+		PaintsIni* paints;  // car colors.ini
 		ChampsXml* champs;  //ProgressXml progress[2];
 		ChallXml* chall;  //ProgressLXml progressL[2];
 	#endif

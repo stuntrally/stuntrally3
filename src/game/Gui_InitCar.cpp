@@ -32,20 +32,28 @@ void CGui::InitGuiCar()
 	//  for find defines
 	Btn btn, bchk;  Cmb cmb;
 	Slider* sl;  SV* sv;  Ck* ck;
-	int i;  float f;
+	int i;  float f;  bool b;
 
-	//  🎨 car color
-	sv= &svCarClrH;		sv->Init("CarClrH",     &f, 0.f, 1.f);  Sev(CarClr);
-	sv= &svCarClrS;		sv->Init("CarClrS",     &f, 0.f, 1.f);  Sev(CarClr);
-	sv= &svCarClrV;		sv->Init("CarClrV",     &f, 0.f, 1.f);  Sev(CarClr);
-	sv= &svCarClrGloss;	sv->Init("CarClrGloss", &f, 0.f,   1.3f, 1.5f);  Sev(CarClr);
-	sv= &svCarClrMetal;	sv->Init("CarClrMetal", &f, 0.f,   1.0f, 1.f );  Sev(CarClr);
-	sv= &svCarClrRough;	sv->Init("CarClrRough", &f, 0.01f, 1.0f, 1.f );  Sev(CarClr);
-	imgCarClr = fImg("ImgCarClr");  imgCarClrCur = fImg("ImgCarClrCur");
+	//  🎨 car paint
+	sv= &svPaintH;		sv->Init("PaintH",     &f, 0.f, 1.f);  Sev(Paint);
+	sv= &svPaintS;		sv->Init("PaintS",     &f, 0.f, 1.f);  Sev(Paint);
+	sv= &svPaintV;		sv->Init("PaintV",     &f, 0.f, 1.f);  Sev(Paint);
+	
+	sv= &svPaintGloss;	sv->Init("PaintGloss", &f, 0.f,   1.3f, 1.5f);  Sev(Paint);
+	sv= &svPaintMetal;	sv->Init("PaintMetal", &f, 0.f,   1.0f, 1.f );  Sev(Paint);
+	sv= &svPaintRough;	sv->Init("PaintRough", &f, 0.01f, 1.0f, 1.f );  Sev(Paint);
 
-	ck= &ckCarClrAdj;  ck->Init("chkCarClrAdj", &pSet->carClrAdj);  Cev(CarClrAdj);
-	panCarClrAdj  = fWP("panelCarClrAdj");   panCarClrAdj->setVisible(pSet->carClrAdj);
-	UpdCarClrSld();
+	sv= &svClearCoat;		sv->Init("PaintClearCoat",      &f, 0.0f, 1.0f, 1.f );  Sev(Paint);
+	sv= &svClearCoatRough;	sv->Init("PaintClearCoatRough", &f, 0.0f, 1.0f, 1.f );  Sev(Paint);
+	sv= &svPaintFresnel;	sv->Init("PaintFresnel",        &f, 0.0f, 1.0f, 1.f );  Sev(Paint);
+	imgPaint = fImg("ImgPaint");  imgPaintCur = fImg("ImgPaintCur");
+	
+	ck= &ckPaintOne;  ck->Init("PaintOne", &b);  Cev(PaintOne);
+	tbPaintType = fTab("PaintType");  Tev(tbPaintType, PaintType);
+
+	ck= &ckPaintAdj;  ck->Init("chkPaintAdj", &pSet->paintAdj);  Cev(PaintAdj);
+	panPaintAdj  = fWP("panelPaintAdj");   panPaintAdj->setVisible(pSet->paintAdj);
+	UpdPaintSld();
 
 
 	///  Car tab  vel graph  ~~~
@@ -91,11 +99,11 @@ void CGui::InitGuiCar()
 
 	///  🚗 Car
 	//------------------------------------------------------------
-	tbCarClr = fTbi("CarClrs");
-	UpdCarClrImgs();
-	Btn("CarClrRandom", btnCarClrRandom);
-	Btn("CarClrSave", btnCarClrSave);  Btn("CarClrAdd", btnCarClrAdd);  Btn("CarClrDel", btnCarClrDel);
-	Btn("CarClrLoad", btnCarClrLoad);  Btn("CarClrLoadDef", btnCarClrLoadDef);
+	tbPlrPaint = fTbi("PlrPaints");
+	UpdPaintImgs();
+	Btn("PaintRandom", btnPaintRandom);
+	Btn("PaintSave", btnPaintSave);  Btn("PaintAdd", btnPaintAdd);  Btn("PaintDel", btnPaintDel);
+	Btn("PaintLoad", btnPaintLoad);  Btn("PaintLoadDef", btnPaintLoadDef);
 
 	sv= &svNumLaps;  sv->Init("NumLaps",  &pSet->gui.num_laps, 1,10, 1.3f);  sv->DefaultI(2);
 

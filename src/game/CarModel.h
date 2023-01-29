@@ -130,11 +130,11 @@ public:
 	std::string sDirname;  // dir name of car (e.g. ES)
 	Ogre::String resGrpId, mtrId;  // resource group name, material suffix
 	std::string resCar;  // path to car textures
-	//  🎨 color
+	//  🎨 paint
 	int iColor = 0;  // color id
 	Ogre::ColourValue color;  // for minimap pos tri color
 	Ogre::HlmsPbsDatablock *db =0;
-	void ChangeClr();  //  Apply new color
+	void SetPaint();  //  Apply new color
 	
 	
 	///  🎥 Camera, can be null  ----

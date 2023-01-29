@@ -849,10 +849,10 @@
 					<Property key="Colour" value="0.75 0.83 0.9"/>
 					<Property key="SmoothShow" value="false"/>
 
-					<Widget type="TabItem" skin="" position="2 24 574 112" name="CarClrs">
-						<Property key="Caption" value="#90C0FF#{Color}"/>
+					<Widget type="TabItem" skin="" position="2 24 574 112" name="PlrPaints">
+						<Property key="Caption" value="#90C0FF#{Paint}"/>
 
-						<Widget type="TabControl" skin="TabControl" position="256 16 488 20" name="SubTabPlayer2">
+						<Widget type="TabControl" skin="TabControl" position="256 16 470 20" name="SubTabPlayer2">
 							<Property key="SmoothShow" value="false"/>
 							<Widget type="TabItem" skin="" position="2 24 542 -8">
 								<Property key="Caption" value="#A0D0FF#{Player} 1"/>
@@ -874,35 +874,31 @@
 							</Widget>
 						</Widget>
 		
-						<Widget type="ImageBox" skin="ImageBox" position="650 40 52 52" name="ImgCarClrCur">
+						<Widget type="ImageBox" skin="ImageBox" position="680 40 52 52" name="ImgPaintCur">
 							<Property key="ImageTexture" value="white.png"/>
 						</Widget>
 
-						<Widget type="Button" skin="CheckBox" position="400 55 88 22" name="chkCarClrAdj">
+						<Widget type="Button" skin="CheckBox" position="20 16 88 22" name="chkPaintAdj">
 							<Property key="Caption" value="#80E0F0#{Adjust}"/>
 							<Property key="TextColour" value="0.4 0.6 0.9"/>
 						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="650 40 52 52" name="ImgCarClr">
+						<Widget type="ImageBox" skin="ImageBox" position="680 40 52 52" name="ImgPaint">
 							<Property key="ImageTexture" value="white.png"/>
 						</Widget>
 
-						<Widget type="Widget" skin="PanelSkin" position="0 80 750 400" align="Stretch" name="panelCarClrAdj">
-							<Property key="Colour" value="1 1 1"/>
-							<Property key="Alpha" value="0.0"/>
+						<Widget type="Widget" skin="PanelEmpty" position="0 55 750 420" align="Stretch" name="panelPaintAdj">
 
-							<Widget type="Button" skin="Button" position="42 232 286 28" name="CarClrRandom">
+							<Widget type="Button" skin="Button" position="12 232 346 28" name="PaintRandom">
 								<Property key="Caption" value="#{CarClrRandom}"/>
 								<Property key="Colour" value="1.0 0.9 0.4"/>
 								<Property key="TextColour" value="1.0 0.9 0.4"/>
-								<Property key="InheritsAlpha" value="false"/>
 							</Widget>
 	
-							<!-- car color manage buttons -->
-							<Widget type="Button" skin="Button" position="12 272 156 28" name="CarClrDel">
+							<!-- manage buttons -->
+							<Widget type="Button" skin="Button" position="12 272 156 28" name="PaintDel">
 								<Property key="Caption" value="#{Delete}"/>
 								<Property key="Colour" value="1.0 0.6 0.6"/>
 								<Property key="TextColour" value="1.0 0.6 0.6"/>
-								<Property key="InheritsAlpha" value="false"/>
 								<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
 									<Property key="ImageCoord" value="256 384 128 128"/>
 									<Property key="Alpha" value="0.5"/>
@@ -910,7 +906,7 @@
 									<Property key="NeedMouse" value="false"/>
 								</Widget>
 							</Widget>
-							<Widget type="Button" skin="Button" position="202 272 156 28" name="CarClrAdd">
+							<Widget type="Button" skin="Button" position="202 272 156 28" name="PaintAdd">
 								<Property key="Caption" value="#{Add}"/>
 								<Property key="Colour" value="0.6 1.0 0.6"/>
 								<Property key="TextColour" value="0.6 1.0 0.6"/>
@@ -923,136 +919,181 @@
 								</Widget>
 							</Widget>
 
-							<Widget type="Button" skin="Button" position="12 312 156 28" name="CarClrLoad">
+							<Widget type="Button" skin="Button" position="12 312 156 28" name="PaintLoad">
 								<Property key="Caption" value="#{RplLoad}"/>
 								<Property key="Colour" value="0.8 0.7 1.0"/>
 								<Property key="TextColour" value="0.9 0.9 1.0"/>
-								<Property key="InheritsAlpha" value="false"/>
 							</Widget>
-							<Widget type="Button" skin="Button" position="202 312 156 28" name="CarClrSave">
+							<Widget type="Button" skin="Button" position="202 312 156 28" name="PaintSave">
 								<Property key="Caption" value="#{RplSave}"/>
 								<Property key="Colour" value="0.5 0.7 1.0"/>
 								<Property key="TextColour" value="0.5 0.8 1.0"/>
-								<Property key="InheritsAlpha" value="false"/>
 							</Widget>
-							<Widget type="Button" skin="Button" position="12 352 156 28" name="CarClrLoadDef">
+							<Widget type="Button" skin="Button" position="12 352 156 28" name="PaintLoadDef">
 								<Property key="Caption" value="#{RplLoad} defaults"/>
 								<Property key="Colour" value="0.8 0.4 0.4"/>
 								<Property key="TextColour" value="0.9 0.4 0.4"/>
-								<Property key="InheritsAlpha" value="false"/>
 							</Widget>
 
-							<!-- car color sliders -->
-							<Widget type="ImageBox" skin="ImageBox" position="408 32 392 8">
+							<!-- clr tabs -->
+							<Widget type="Button" skin="CheckBox" position="400 0 200 20" name="PaintOne">
+								<Property key="Caption" value="One color"/>
+								<Property key="TextColour" value="0.8 0.9 1"/>
+								<Property key="FontName" value="font.small"/>
+							</Widget>
+							<Widget type="TabControl" skin="TabControl" position="400 20 488 20" name="PaintType">
+								<Property key="SmoothShow" value="false"/>
+								<Property key="FontName" value="font.small"/>
+								<Widget type="TabItem" skin="" position="2 24 542 -8">
+									<Property key="Caption" value="#A0C0FFDiffuse"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 542 -8">
+									<Property key="Caption" value="#C0F0F0Specular"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 542 -8">
+									<Property key="Caption" value="#F0C060Fresnel1"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 542 -8">
+									<Property key="Caption" value="#60F060Fresnel2"/>
+								</Widget>
+							</Widget>
+
+							<!-- h s v -->
+							<Widget type="ImageBox" skin="ImageBox" position="408 42 392 8">
 								<Property key="ImageTexture" value="hue_bar.png"/>
-								<Property key="InheritsAlpha" value="false"/>
 							</Widget>
 
-							<Widget type="TextBox" skin="TextBox" position="400 10 98 22">
+							<!-- <Widget type="TextBox" skin="TextBox" position="400 30 98 22">
 								<Property key="Caption" value="#{ColHue}"/>
 								<Property key="TextColour" value="0.4 0.7 1.0"/>
-								<Property key="InheritsAlpha" value="false"/>
+								<UserString key="tip" value="#{TipChangeHue}"/>
+							</Widget> -->
+							<Widget type="Slider" skin="Slider" position="400 50 336 19" name="PaintH">
+								<Property key="Colour" value="0.6 0.8 1.0"/>
 								<UserString key="tip" value="#{TipChangeHue}"/>
 							</Widget>
-							<Widget type="Slider" skin="Slider" position="400 40 336 16" name="CarClrH">
-								<Property key="InheritsAlpha" value="false"/>
-								<UserString key="tip" value="#{TipChangeHue}"/>
-							</Widget>
-							<Widget type="TextBox" skin="TextBox" position="550 20 52 22" name="CarClrHVal">
+							<Widget type="TextBox" skin="TextBox" position="550 30 52 22" name="PaintHVal">
 								<Property key="TextColour" value="0.6 0.8 1.0"/>
 								<Property key="FontName" value="font.small"/>
-								<Property key="InheritsAlpha" value="false"/>
+								<Property key="Alpha" value="0.3"/>
 								<UserString key="tip" value="#{TipChangeHue}"/>
 							</Widget>
 
-							<Widget type="TextBox" skin="TextBox" position="400 60 98 22">
-								<Property key="TextColour" value="0.6 0.7 0.8"/>
+							<Widget type="TextBox" skin="TextBox" position="400 70 98 22">
+								<Property key="TextColour" value="0.4 0.7 1.0"/>
 								<Property key="Caption" value="#{ColSat}"/>
 								<Property key="FontName" value="font.small"/>
-								<Property key="InheritsAlpha" value="false"/>
 								<UserString key="tip" value="#{TipChangeSat}"/>
 							</Widget>
-							<Widget type="Slider" skin="Slider" position="400 80 334 14" name="CarClrS">
-								<Property key="InheritsAlpha" value="false"/>
+							<Widget type="Slider" skin="Slider" position="400 90 334 18" name="PaintS">
+								<Property key="Colour" value="0.8 0.9 1.0"/>
 								<UserString key="tip" value="#{TipChangeSat}"/>
 							</Widget>
-							<Widget type="TextBox" skin="TextBox" position="550 60 52 22" name="CarClrSVal">
-								<Property key="TextColour" value="0.7 0.8 0.9"/>
+							<Widget type="TextBox" skin="TextBox" position="550 70 52 22" name="PaintSVal">
+								<Property key="TextColour" value="0.4 0.7 1.0"/>
 								<Property key="FontName" value="font.small"/>
-								<Property key="InheritsAlpha" value="false"/>
 								<UserString key="tip" value="#{TipChangeSat}"/>
 							</Widget>
 
-							<Widget type="TextBox" skin="TextBox" position="400 100 98 22">
-								<Property key="TextColour" value="0.5 0.7 0.9"/>
+							<Widget type="TextBox" skin="TextBox" position="400 110 98 22">
+								<Property key="TextColour" value="0.7 0.8 1.0"/>
 								<Property key="Caption" value="#{ColBright}"/>
 								<Property key="FontName" value="font.small"/>
-								<Property key="InheritsAlpha" value="false"/>
 								<UserString key="tip" value="#{TipChangeBright}"/>
 							</Widget>
-							<Widget type="Slider" skin="Slider" position="400 120 334 14" name="CarClrV">
-								<Property key="InheritsAlpha" value="false"/>
+							<Widget type="Slider" skin="Slider" position="400 130 334 18" name="PaintV">
+								<Property key="Colour" value="0.4 0.5 0.6"/>
 								<UserString key="tip" value="#{TipChangeBright}"/>
 							</Widget>
-							<Widget type="TextBox" skin="TextBox" position="550 100 52 22" name="CarClrVVal">
-								<Property key="TextColour" value="0.65 0.8 0.95"/>
+							<Widget type="TextBox" skin="TextBox" position="550 110 52 22" name="PaintVVal">
+								<Property key="TextColour" value="0.7 0.8 1.0"/>
 								<Property key="FontName" value="font.small"/>
-								<Property key="InheritsAlpha" value="false"/>
 								<UserString key="tip" value="#{TipChangeBright}"/>
 							</Widget>
 
+							<!-- own -->
 							<Widget type="TextBox" skin="TextBox" position="400 160 88 22">
-								<Property key="TextColour" value="0.7 0.7 0.7"/>
-								<Property key="Caption" value="#{ColGloss}"/>
-								<Property key="FontName" value="font.small"/>
-								<Property key="InheritsAlpha" value="false"/>
-								<UserString key="tip" value="#{TipChangeGloss}"/>
-							</Widget>
-							<Widget type="Slider" skin="Slider" position="400 180 334 14" name="CarClrGloss">
-								<Property key="InheritsAlpha" value="false"/>
-								<UserString key="tip" value="#{TipChangeGloss}"/>
-							</Widget>
-							<Widget type="TextBox" skin="TextBox" position="550 160 52 22" name="CarClrGlossVal">
 								<Property key="TextColour" value="0.8 0.8 0.8"/>
-								<Property key="FontName" value="font.small"/>
-								<Property key="InheritsAlpha" value="false"/>
+								<Property key="Caption" value="#{ColGloss}"/>
+								<!-- <Property key="FontName" value="font.small"/> -->
+								<UserString key="tip" value="#{TipChangeGloss}"/>
+							</Widget>
+							<Widget type="Slider" skin="Slider" position="400 180 334 17" name="PaintGloss">
+								<Property key="TextColour" value="0.9 0.9 0.9"/>
+								<UserString key="tip" value="#{TipChangeGloss}"/>
+							</Widget>
+							<Widget type="TextBox" skin="TextBox" position="550 160 52 22" name="PaintGlossVal">
+								<Property key="TextColour" value="0.8 0.8 0.8"/>
+								<!-- <Property key="FontName" value="font.small"/> -->
 								<UserString key="tip" value="#{TipChangeGloss}"/>
 							</Widget>
 
+							<!-- pbs -->
 							<Widget type="TextBox" skin="TextBox" position="400 200 98 22">
-								<Property key="TextColour" value="0.6 0.6 0.9"/>
+								<Property key="TextColour" value="0.6 0.8 0.98"/>
 								<Property key="Caption" value="#{ColMetalness}"/>
 								<Property key="FontName" value="font.small"/>
-								<Property key="InheritsAlpha" value="false"/>
-								<!-- <UserString key="tip" value="#{TipChangeReflect}"/> -->
 							</Widget>
-							<Widget type="Slider" skin="Slider" position="400 220 334 14" name="CarClrMetal">
-								<Property key="InheritsAlpha" value="false"/>
-								<!-- <UserString key="tip" value="#{TipChangeReflect}"/> -->
+							<Widget type="Slider" skin="Slider" position="400 220 334 14" name="PaintMetal">
+								<Property key="Colour" value="0.6 0.8 0.98"/>
 							</Widget>
-							<Widget type="TextBox" skin="TextBox" position="550 200 52 22" name="CarClrMetalVal">
-								<Property key="TextColour" value="0.7 0.7 1.0"/>
+							<Widget type="TextBox" skin="TextBox" position="550 200 52 22" name="PaintMetalVal">
+								<Property key="TextColour" value="0.6 0.8 0.98"/>
 								<Property key="FontName" value="font.small"/>
-								<Property key="InheritsAlpha" value="false"/>
-								<!-- <UserString key="tip" value="#{TipChangeReflect}"/> -->
 							</Widget>
 
 							<Widget type="TextBox" skin="TextBox" position="400 240 98 22">
-								<Property key="TextColour" value="0.6 0.6 0.9"/>
+								<Property key="TextColour" value="0.5 0.5 1.0"/>
+								<Property key="Caption" value="#{ColRoughness}"/>
+								<!-- <Property key="FontName" value="font.small"/> -->
+							</Widget>
+							<Widget type="Slider" skin="Slider" position="400 260 334 17" name="PaintRough">
+								<Property key="Colour" value="0.6 0.6 1.0"/>
+							</Widget>
+							<Widget type="TextBox" skin="TextBox" position="550 240 52 22" name="PaintRoughVal">
+								<Property key="TextColour" value="0.5 0.5 1.0"/>
+								<!-- <Property key="FontName" value="font.small"/> -->
+							</Widget>
+
+							<!-- clr coat ext -->
+							<Widget type="TextBox" skin="TextBox" position="400 280 98 22">
+								<Property key="TextColour" value="1 1 1"/>
+								<Property key="Caption" value="#{ColReflect}"/>
+								<!-- <Property key="FontName" value="font.small"/> -->
+							</Widget>
+							<Widget type="Slider" skin="Slider" position="400 300 334 15" name="PaintClearCoat">
+								<Property key="Colour" value="1.0 1.0 1.0"/>
+							</Widget>
+							<Widget type="TextBox" skin="TextBox" position="550 280 52 22" name="PaintClearCoatVal">
+								<Property key="TextColour" value="1 1 1"/>
+								<!-- <Property key="FontName" value="font.small"/> -->
+							</Widget>
+
+							<Widget type="TextBox" skin="TextBox" position="400 320 98 22">
+								<Property key="TextColour" value="0.7 0.78 0.78"/>
 								<Property key="Caption" value="#{ColRoughness}"/>
 								<Property key="FontName" value="font.small"/>
-								<Property key="InheritsAlpha" value="false"/>
-								<!-- <UserString key="tip" value="#{TipChangeReflect}"/> -->
 							</Widget>
-							<Widget type="Slider" skin="Slider" position="400 260 334 14" name="CarClrRough">
-								<Property key="InheritsAlpha" value="false"/>
-								<!-- <UserString key="tip" value="#{TipChangeReflect}"/> -->
+							<Widget type="Slider" skin="Slider" position="400 340 334 15" name="PaintClearCoatRough">
+								<Property key="Colour" value="0.8 0.8 1.0"/>
 							</Widget>
-							<Widget type="TextBox" skin="TextBox" position="550 240 52 22" name="CarClrRoughVal">
-								<Property key="TextColour" value="0.7 0.7 1.0"/>
+							<Widget type="TextBox" skin="TextBox" position="550 320 52 22" name="PaintClearCoatRoughVal">
+								<Property key="TextColour" value="0.7 0.78 0.78"/>
 								<Property key="FontName" value="font.small"/>
-								<Property key="InheritsAlpha" value="false"/>
-								<!-- <UserString key="tip" value="#{TipChangeReflect}"/> -->
+							</Widget>
+
+							<!-- fresnel -->
+							<Widget type="TextBox" skin="TextBox" position="400 360 98 22">
+								<Property key="TextColour" value="0.3 0.9 0.9"/>
+								<Property key="Caption" value="#{ColFresnel}"/>
+								<!-- <Property key="FontName" value="font.small"/> -->
+							</Widget>
+							<Widget type="Slider" skin="Slider" position="400 380 334 18" name="PaintFresnel">
+								<Property key="Colour" value="0.5 1.0 1.0"/>
+							</Widget>
+							<Widget type="TextBox" skin="TextBox" position="550 360 52 22" name="PaintFresnelVal">
+								<Property key="TextColour" value="0.3 0.9 0.9"/>
+								<!-- <Property key="FontName" value="font.small"/> -->
 							</Widget>
 						</Widget>  <!-- panel -->
 					</Widget>

@@ -315,67 +315,6 @@ bool CarsXml::LoadXml(string file)
 	}
 	return true;
 }
-
-
-//  🎨 Load car colors.ini 📄
-//--------------------------------------------------------------------------------------------------------------------------------------
-bool ColorsXml::LoadIni(string file)
-{
-	v.clear();
-
-	char s[256];
-
-	ifstream fs(file.c_str());
-	if (fs.fail())  return false;
-	
-	while (fs.good())
-	{
-		fs.getline(s,254);
-		
-		if (strlen(s) > 0 && s[0] != '#' && s[0] != '/' && s[0] != ' ')  //  comment
-		{
-			string t = s;  //  params
-			     if (t.substr(0,6) == "perRow")   perRow =  s2i(t.substr(6));
-			else if (t.substr(0,7) == "imgSize")  imgSize = s2i(t.substr(7));
-			else
-			//  color, starting with digit
-			if (s[0] >= '0' && s[0] <= '9')
-			{
-				CarColor c;
-				sscanf(s, "%f %f %f %f %f %f",
-					&c.hue, &c.sat, &c.val, &c.gloss, &c.metal, &c.rough);
-				if (c.metal > 1.f)  c.metal = 1.f;
-				if (c.rough > 1.f)  c.rough = 1.f;
-
-				v.push_back(c);
-			}
-	}	}
-	return true;
-}
-
-bool ColorsXml::SaveIni(string file)
-{
-	ofstream f(file.c_str());
-	if (f.fail())  return false;
-	
-	f << "#  Gui  Car tab  buttons\n\n";
-	f << "perRow " << perRow << "\n";
-	f << "imgSize " << imgSize << "\n\n";
-
-	f << "#  car colors  hue,sat,val, gloss, metalness, roughness\n\n";
-	f << setprecision(3);
-	int i = 0;
-	for (const auto& c : v)
-	{
-		f << c.hue <<" "<< c.sat <<" "<< c.val <<" "<< c.gloss <<" "<< c.metal <<" "<< c.rough;
-
-		f << "\n";  ++i;
-		if (i % 5 == 0)  f << "\n";
-		if (i % perRow == 0)  f << "#------\n";
-	}
-	f.close();
-	return true;
-}
 #endif
 
 

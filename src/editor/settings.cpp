@@ -15,7 +15,7 @@ void SETTINGS::Save(std::string sfile)
 	Serialize(true, c);  c.Write();
 }
 
-
+//  📄 editor.cfg
 void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 {
 	c.bFltFull = false;
