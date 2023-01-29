@@ -274,8 +274,19 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(N): case key(COMMA):   mBrOct[curBr] = std::max(1, mBrOct[curBr]-1);  updBrush();  break;
 		case key(M): case key(PERIOD):  mBrOct[curBr] = std::min(7, mBrOct[curBr]+1);  updBrush();  break;
 
-		case key(KP_ENTER):
-		case key(RETURN):  brLockPos = !brLockPos;  break;
+		//  more ters  ------
+		case key(KP_ENTER):  case key(RETURN):
+			if (ctrl && shift)
+				gui->btnTersAdd(0);
+			else if (ctrl)
+				gui->btnTersDel(0);
+			else
+				scn->TerNext(shift ? -1 : 1);
+			break;
+
+		case key(KP_0):
+		case key(INSERT):  brLockPos = !brLockPos;  break;
+
 		case key(SPACE):  //  set brush height from terrain
 			if (edMode == ED_Height)
 			{	terSetH = road->posHit.y;  }
