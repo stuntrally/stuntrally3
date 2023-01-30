@@ -50,17 +50,16 @@ void SplineRoad::RebuildRoadPace()
 
 bool SplineRoad::RebuildRoadInt(bool editorAlign, bool bulletFull)
 {
-	static int skip = 0;
 	bool full = iDirtyId == -1;
 	if (full)
-		skip = 0;
+		iRebuildSkip = 0;
 	if (!full && !editorAlign && !bulletFull)
 	{
-		++skip;
-		if (skip < 12)  //par
+		++iRebuildSkip;
+		if (iRebuildSkip < 12)  //par
 			return full;
 		else
-			skip = 0;
+			iRebuildSkip = 0;
 	}
 
 

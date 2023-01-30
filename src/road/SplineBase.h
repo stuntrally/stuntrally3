@@ -203,7 +203,7 @@ protected:
 
 	//  rebuild, mark only  ----
 	bool rebuild = false;
-	int iDirtyId = -1;
+	int iDirtyId = -1, iRebuildSkip = 0;
 	void Rebuild(bool full = false);
 
 
