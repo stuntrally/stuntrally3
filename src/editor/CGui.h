@@ -133,7 +133,8 @@ public:
 	Img clrAmb =0, clrDiff =0, clrSpec =0;
 	Img clrFog =0, clrFog2 =0, clrFogH =0;
 
-	CK(Fog);  Ck ckWeather;
+	//  toggle vis
+	CK(Fog);  Ck ckWeather;  CK(Emitters);
 
 	
 	///  ⛰️ Terrain  ----------------------------------------

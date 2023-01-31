@@ -50,7 +50,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 	//  ⚙️ settings
 	Param(c,w, "set.fog", bFog);					Param(c,w, "set.trees", bTrees);
-	Param(c,w, "set.weather", bWeather);
+	Param(c,w, "set.weather", bWeather);			Param(c,w, "set.emitters", bEmitters);
 	Param(c,w, "set.cam_speed", cam_speed);			Param(c,w, "set.cam_inert", cam_inert);
 	Param(c,w, "set.ter_skip", ter_skip);			Param(c,w, "set.road_sphr", road_sphr);
 	Param(c,w, "set.mini_skip", mini_skip);

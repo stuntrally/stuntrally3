@@ -80,7 +80,7 @@ public:
 	
 
 	//  🆕 Create  . . . . . . . . . . . . . . . . . . . . . . . . 
-	bool bNewHmap =0, bVegetGrsUpd =0, bParticles =1;
+	bool bNewHmap =0, bVegetGrsUpd =0;
 	Ogre::String resTrk;  void NewCommon(bool onlyTerVeget);
 
 	void CreateObjects(), DestroyObjects(bool clear), ResetObjects();

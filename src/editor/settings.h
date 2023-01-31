@@ -33,7 +33,7 @@ public:
 	bool check_load =0, check_save =1;
 
 	//  ⚙️ settings
-	bool bFog =0, bTrees =0, bWeather =0;
+	bool bFog =0, bTrees =0, bWeather =0, bEmitters =0;
 	int ter_skip = 4, mini_skip = 4;  float road_sphr = 2.5f;
 	//  🎥 camera
 	float cam_speed = 0.9f, cam_inert = 0.4f;

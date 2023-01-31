@@ -391,7 +391,7 @@ void CGuiCom::CreateFonts()
 		//  create
 		ResourceTrueTypeFont* font = (ResourceTrueTypeFont*)FactoryManager::getInstance().createObject("Resource", "ResourceTrueTypeFont");
 
-		//  Loading from XML, data members are private in MyGUI 3.2.0
+		//  loading from xml
 		xml::Document doc;
 		xml::ElementPtr root = doc.createRoot("ResourceTrueTypeFont"), e;
 		root->addAttribute("name", name);

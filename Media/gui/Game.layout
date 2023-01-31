@@ -945,17 +945,17 @@
 								<Property key="SmoothShow" value="false"/>
 								<Property key="FontName" value="font.small"/>
 								<Widget type="TabItem" skin="" position="2 24 542 -8">
-									<Property key="Caption" value="#A0C0FFDiffuse"/>
+									<Property key="Caption" value="#A0C0FF#{Diffuse}"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 542 -8">
-									<Property key="Caption" value="#C0F0F0Specular"/>
+									<Property key="Caption" value="#C0F0F0#{Specular}"/>
+								</Widget>
+								<!-- <Widget type="TabItem" skin="" position="2 24 542 -8">
+									<Property key="Caption" value="#F0C060#{ColFresnel}1"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 542 -8">
-									<Property key="Caption" value="#F0C060Fresnel1"/>
-								</Widget>
-								<Widget type="TabItem" skin="" position="2 24 542 -8">
-									<Property key="Caption" value="#60F060Fresnel2"/>
-								</Widget>
+									<Property key="Caption" value="#60F060#{ColFresnel}2"/>
+								</Widget> -->
 							</Widget>
 
 							<!-- h s v -->
@@ -1033,13 +1033,16 @@
 								<Property key="TextColour" value="0.6 0.8 0.98"/>
 								<Property key="Caption" value="#{ColMetalness}"/>
 								<Property key="FontName" value="font.small"/>
+								<Property key="Alpha" value="0.05"/>
 							</Widget>
 							<Widget type="Slider" skin="Slider" position="400 220 334 14" name="PaintMetal">
 								<Property key="Colour" value="0.6 0.8 0.98"/>
+								<Property key="Alpha" value="0.1"/>
 							</Widget>
 							<Widget type="TextBox" skin="TextBox" position="550 200 52 22" name="PaintMetalVal">
 								<Property key="TextColour" value="0.6 0.8 0.98"/>
 								<Property key="FontName" value="font.small"/>
+								<Property key="Alpha" value="0.1"/>
 							</Widget>
 
 							<Widget type="TextBox" skin="TextBox" position="400 240 98 22">

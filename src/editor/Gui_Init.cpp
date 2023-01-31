@@ -249,19 +249,20 @@ void CGui::InitGui()
 	sv= &svSkyYaw;		sv->Init("SkyYaw",		&sc->skyYaw,  -180.f,180.f, 1.f, 1,4);  sv->DefaultF(0.f);  Sev(UpdSky);
 	sv= &svSunPitch;	sv->Init("SunPitch",	&sc->ldPitch,    0.f,90.f,  1.f, 1,4);  sv->DefaultF(54.f);    Sev(UpdSun);
 	sv= &svSunYaw;		sv->Init("SunYaw",		&sc->ldYaw,   -180.f,180.f, 1.f, 1,4);  sv->DefaultF(-123.f);  Sev(UpdSun);
-	sv= &svRain1Rate;	sv->Init("Rain1Rate",	&sc->rainEmit,   0.f,6000.f);  sv->DefaultF(1000.f);
-	sv= &svRain2Rate;	sv->Init("Rain2Rate",	&sc->rain2Emit,  0.f,6000.f);  sv->DefaultF(1000.f);
+	sv= &svRain1Rate;	sv->Init("Rain1Rate",	&sc->rainEmit,   0.f,8000.f, 1.5f);  sv->DefaultF(1000.f);
+	sv= &svRain2Rate;	sv->Init("Rain2Rate",	&sc->rain2Emit,  0.f,8000.f, 1.5f);  sv->DefaultF(1000.f);
 	//  🌫️ Fog
-	sv= &svFogStart;	sv->Init("FogStart",	&sc->fogStart,   0.f,2000.f, 2.f, 0,3);  sv->DefaultF(100.f);  Sev(UpdFog);
-	sv= &svFogEnd;		sv->Init("FogEnd",		&sc->fogEnd,     0.f,2000.f, 2.f, 0,3);  sv->DefaultF(600.f);  Sev(UpdFog);
+	sv= &svFogStart;	sv->Init("FogStart",	&sc->fogStart,   0.f,4000.f, 2.f, 0,3);  sv->DefaultF(100.f);  Sev(UpdFog);
+	sv= &svFogEnd;		sv->Init("FogEnd",		&sc->fogEnd,     0.f,4000.f, 2.f, 0,3);  sv->DefaultF(600.f);  Sev(UpdFog);
 	sv= &svFogHStart;	sv->Init("FogHStart",	&sc->fogHStart,  0.f,2000.f, 2.f, 0,3);  sv->DefaultF(0.f);    Sev(UpdFog);
 	sv= &svFogHEnd;		sv->Init("FogHEnd",		&sc->fogHEnd,    0.f,2000.f, 2.f, 0,3);  sv->DefaultF(60.f);   Sev(UpdFog);
 	sv= &svFogHeight;	sv->Init("FogHeight",	&sc->fogHeight, -200.f,200.f, 1.f, 1,4);  sv->DefaultF(-300.f);  Sev(UpdFog);
 	sv= &svFogHDensity;	sv->Init("FogHDensity",	&sc->fogHDensity,  0.f,200.f, 2.f, 1,4);  sv->DefaultF(60.f);  Sev(UpdFog);
 	sv= &svFogHDmg;		sv->Init("FogHDmg",		&sc->fHDamage,    0.f, 30.f, 1.5f, 1,3);  sv->DefaultF(0.f);
-
+	//  toggle vis
 	ck= &ckFog;			ck->Init("FogDisable",		&pSet->bFog);  Cev(Fog);
 	ck= &ckWeather;		ck->Init("WeatherDisable",	&pSet->bWeather);
+	ck= &ckEmitters;	ck->Init("EmittersDisable",	&pSet->bEmitters);  Cev(Emitters);
 
 	//  🎨 clr imgs
 	ImgB(clrAmb,  "ClrAmb",  btnClrSet);  ImgB(clrDiff, "ClrDiff",  btnClrSet);

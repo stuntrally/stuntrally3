@@ -24,6 +24,10 @@ using namespace Ogre;
 //----------------------------------------------------------------------------------------------------------------------
 void CScene::CreateEmitters()
 {
+#ifdef SR_EDITOR
+	if (!app->pSet->bEmitters)
+		return;
+#endif
 	LogO("C--- create Emitters");
 	SceneNode* rt = app->mSceneMgr->getRootSceneNode(SCENE_DYNAMIC);
 	for (int i=0; i < sc->emitters.size(); ++i)
@@ -83,7 +87,7 @@ void CScene::DestroyEmitters(bool clear)
 void App::UpdEmtBox()
 {
 	int emts = scn->sc->emitters.size();
-	bool vis = edMode == ED_Particles && emts > 0 && !bMoveCam && bParticles;
+	bool vis = edMode == ED_Particles && emts > 0 && !bMoveCam && pSet->bEmitters;
 	if (emts > 0)
 		iEmtCur = std::max(0, std::min(iEmtCur, emts-1));
 

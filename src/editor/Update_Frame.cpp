@@ -328,8 +328,7 @@ void App::update( float dt )
 	{	bRecreateEmitters = false;
 
 		scn->DestroyEmitters(false);
-		if (bParticles)
-			scn->CreateEmitters();
+		scn->CreateEmitters();
 		UpdEmtBox();
 	}
 

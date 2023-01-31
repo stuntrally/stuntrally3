@@ -62,10 +62,15 @@ void CGui::slUpdFog(SV*)
 	scn->UpdFog();
 }
 
-//  chk disable
+//  fog vis toggle
 void CGui::chkFog(Ck*)
 {
 	scn->UpdFog();
+}
+//  emitters vis toggle
+void CGui::chkEmitters(Ck*)
+{
+	app->bRecreateEmitters = true;
 }
 
 

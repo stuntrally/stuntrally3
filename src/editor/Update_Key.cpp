@@ -161,7 +161,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(F8):  // update
 			if (editGui)
 			switch (tab->getIndexSelected())
-			{	case TAB_Layers:  gui->btnUpdateLayers(0);  return;
+			{	case TAB_Layers: gui->btnUpdateLayers(0);  return;
 				case TAB_Grass:  gui->btnUpdateGrass(0);  return;
 				case TAB_Veget:  gui->btnUpdateVeget(0);  return;
 			}
@@ -358,7 +358,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(V):  bVegetGrsUpd = true;  break;
 		case key(G):  gui->ckFog.Invert();  break;
 		case key(I):  gui->ckWeather.Invert();  break;
-		case key(P):  bParticles = !bParticles;  bRecreateEmitters = true;  break;
+		case key(P):  gui->ckEmitters.Invert();  bRecreateEmitters = true;  break;
 
 		//  ⛰️ terrain
 		case key(D):  if (bEdit()){  SetEdMode(ED_Deform);  curBr = 0;  updBrush();  UpdEditWnds();  }	break;
