@@ -247,6 +247,7 @@
 <r sc="Blk"  m="roadJDarkD"           r="3" su="roadDesert"   re="0"  du="0.0" ds="0.1" md="0.0" tr="0.20 0.20 0.10 0.9" />
 <r sc="Blk"  m="roadJDarkDs"          r="2" su="roadGravel"   re="0"  du="0.0" ds="0.2" md="0.0" tr="0.50 0.44 0.30 0.1" />
 <r sc="For"  m="roadJungle"           r="4" su="roadForest"   re="0"  du="0.0" ds="0.2" md="0.2" tr="0.30 0.26 0.16 0.8" />
+<r sc="For"  m="roadJungleWet"        r="4" su="roadForest"   re="1"  du="0.0" ds="0.2" md="0.2" tr="0.30 0.26 0.16 0.8" />
 
 <r sc="Mos"  m="roadMoss"             r="3" su="roadJungle"   re="0"  du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.8" />
 <r sc="Mud"  m="roadMud"              r="3" su="roadGravel"   re="0"  du="0.0" ds="1.0" md="0.8" tr="0.21 0.13 0.00 0.8" />
