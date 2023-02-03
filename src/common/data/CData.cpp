@@ -95,6 +95,8 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 	//  cars and tracks
 	auto path = PATHS::GameConfigDir();
 	tracks->LoadIni(path + "/tracks.ini", check);
+	auto pUser = PATHS::UserConfigDir();
+	user->LoadXml(pUser + "/tracks.xml", tracks);
 	
 	pre->LoadXml(path + "/presets.xml");
 	LogO(String("**** Loaded Presets  sky: ") + toStr(pre->sky.size())+
@@ -162,8 +164,9 @@ CData::CData()
 	objs = new BltObjects();
 	reverbs = new ReverbsXml();
 
-	tracks = new TracksXml();
-		pre = new Presets();
+	tracks = new TracksIni();
+	  user = new UserXml();
+	   pre = new Presets();
 
 	#ifndef SR_EDITOR
 		cars = new CarsXml();
@@ -180,6 +183,7 @@ CData::~CData()
 	delete reverbs;
 
 	delete tracks;
+	delete user;
 	delete pre;
 
 	#ifndef SR_EDITOR

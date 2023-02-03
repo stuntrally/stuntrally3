@@ -22,7 +22,7 @@ ChampsXml::ChampsXml()
 
 //  Load champs
 //--------------------------------------------------------------------------------------------------------------------------------------
-bool ChampsXml::LoadXml(std::string file, TracksXml* trks, bool check)
+bool ChampsXml::LoadXml(std::string file, TracksIni* trks, bool check)
 {
 	XMLDocument doc;
 	XMLError e = doc.LoadFile(file.c_str());

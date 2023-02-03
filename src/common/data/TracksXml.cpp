@@ -24,9 +24,9 @@ string dt2s(const Date& dt)
 }
 
 
-///  User Load  ..not used
+///  User Load
 ///------------------------------------------------------------------------------------
-/*bool UserXml::LoadXml(string file)
+bool UserXml::LoadXml(string file, TracksIni* ini)
 {
 	XMLDocument doc;
 	XMLError e = doc.LoadFile(file.c_str());
@@ -38,21 +38,39 @@ string dt2s(const Date& dt)
 	//  clear
 	trks.clear();  trkmap.clear();
 
-	//  tracks
-	const char* a;  //int i=1;  //0 = none
-	XMLElement* eTrk = root->FirstChildElement("track");
-	while (eTrk)
+
+	//  fill all from tracks.ini
+	for (auto& trk : ini->trks)
 	{
 		UserTrkInfo t;
-		a = eTrk->Attribute("n");		if (a)  t.name = string(a);
-
-		a = eTrk->Attribute("date");	if (a)  t.last = s2dt(a);
-		a = eTrk->Attribute("rate");	if (a)  t.rating = s2i(a);
-		a = eTrk->Attribute("laps");	if (a)  t.laps = s2i(a);
+		t.name = trk.name;
 
 		trks.push_back(t);
-		trkmap[t.name] = trks.size();  //i++;
-		eTrk = eTrk->NextSiblingElement("track");
+		trkmap[t.name] = trks.size();
+	}
+
+	//  tracks
+	const char* a;  //int i=1;  //0 = none
+	XMLElement* eTrk = root->FirstChildElement("t");
+	while (eTrk)
+	{
+		UserTrkInfo n;
+		UserTrkInfo* t = &n;
+		
+		a = eTrk->Attribute("n");		if (a)  n.name = string(a);
+		int id = trkmap[n.name];
+		if (id > 0)  // found
+			t = &trks[id-1];  // upd
+
+		a = eTrk->Attribute("date");	if (a)  t->last = s2dt(a);
+		a = eTrk->Attribute("rate");	if (a)  t->rating = s2i(a);
+		a = eTrk->Attribute("laps");	if (a)  t->laps = s2i(a);
+		if (!id)  // add, custom
+		{
+			trks.push_back(n);
+			trkmap[n.name] = trks.size();
+		}
+		eTrk = eTrk->NextSiblingElement("t");
 	}
 	return true;
 }
@@ -63,9 +81,8 @@ bool UserXml::SaveXml(string file)
 {
 	TiXmlDocument xml;	TiXmlElement root("tracks");
 
-	for (int i=0; i < trks.size(); ++i)
+	for (const auto& t : trks)
 	{
-		const UserTrkInfo& t = trks[i];
 		TiXmlElement trk("t");
 		trk.SetAttribute("n",		t.name.c_str());
 
@@ -77,13 +94,13 @@ bool UserXml::SaveXml(string file)
 	}
 	xml.InsertEndChild(root);
 	return xml.SaveFile(file.c_str());
-}*/
+}
 
 
 //--------------------------------------------------------------------------------------------------------------------------------------
 //  🏞️ Load  tracks.ini 📄
 //--------------------------------------------------------------------------------------------------------------------------------------
-bool TracksXml::LoadIni(string file, bool check)
+bool TracksIni::LoadIni(string file, bool check)
 {
 	//  clear
 	trks.clear();  trkmap.clear();  times.clear();  cntAll = 0;

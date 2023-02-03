@@ -12,7 +12,7 @@ using namespace std;
 
 //  Load challenges
 //-------------------------------------------------------------------------------------------------------------
-bool ChallXml::LoadXml(std::string file, TracksXml* trks, bool check)
+bool ChallXml::LoadXml(std::string file, TracksIni* trks, bool check)
 {
 	XMLDocument doc;
 	XMLError e = doc.LoadFile(file.c_str());

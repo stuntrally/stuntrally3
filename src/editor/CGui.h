@@ -72,8 +72,8 @@ public:
 	
 
 	//  🧰 _Tools_
-	void ToolTexAlpha(), ToolSceneXml(),
-		ToolTracksWarnings(), ToolBrushesPrv(), ToolPresets();
+	void ToolSceneXml(), ToolTracksWarnings(),
+		ToolBrushesPrv(), ToolPresets();
 	
 
 	//  🪟🛠️ tool windows texts  ----

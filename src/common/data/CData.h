@@ -6,7 +6,8 @@ class FluidsXml;
 class BltObjects;
 class ReverbsXml;
 
-class TracksXml;
+class TracksIni;
+class UserXml;
 class CarsXml;
 class Presets;
 
@@ -30,19 +31,19 @@ public:
 		void LoadPaints(bool forceOrig = false);
 	#endif
 
-	FluidsXml* fluids;	//  fluids params for car sim
-	BltObjects* objs;	//  collisions.xml, for vegetation models
-	ReverbsXml* reverbs;  // reverb presets for sceneries, used in scene.xml
+	FluidsXml* fluids =0;	//  fluids params for car sim
+	BltObjects* objs =0;	//  collisions.xml, for vegetation models
+	ReverbsXml* reverbs =0;	// reverb presets for sceneries, used in scene.xml
 	
-	TracksXml* tracks;  // tracks.ini info for Gui
-	CarsXml* cars;		// cars info for Gui
-	//UserXml* user;
-	Presets* pre;
+	TracksIni* tracks =0;	// tracks.ini info for Gui
+	CarsXml* cars =0;		// cars info for Gui
+	UserXml* user =0;		// user tracks.xml
+	Presets* pre =0;		// data for scene resources, ed and game
 	
 	#ifndef SR_EDITOR	// game only
-		PaintsIni* paints;  // car colors.ini
-		ChampsXml* champs;  //ProgressXml progress[2];
-		ChallXml* chall;  //ProgressLXml progressL[2];
+		PaintsIni* paints =0;  // car colors.ini
+		ChampsXml* champs =0;  //ProgressXml progress[2];
+		ChallXml* chall =0;  //ProgressLXml progressL[2];
 	#endif
 
 	//  📐 get drivability, vehicle on track fitness

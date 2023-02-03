@@ -39,7 +39,7 @@ class ChampsXml
 public:
 	std::vector<Champ> all;
 	
-	bool LoadXml(std::string file, class TracksXml* times, bool check);
+	bool LoadXml(std::string file, class TracksIni* times, bool check);
 	ChampsXml();
 };
 

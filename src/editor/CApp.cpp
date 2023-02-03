@@ -9,6 +9,7 @@
 #include "CScene.h"
 #include "Axes.h"
 #include "Road.h"
+#include "TracksXml.h"
 // #include "RenderBoxScene.h"
 #include "settings.h"
 #include "GraphicsSystem.h"
@@ -104,6 +105,7 @@ App::~App()
 	///+  save settings
 	SaveCam();
 	pSet->Save(PATHS::SettingsFile(1));
+	scn->data->user->SaveXml(PATHS::UserConfigDir() + "/tracks.xml");
 
 	DestroyObjects(false);
 

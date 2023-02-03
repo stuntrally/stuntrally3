@@ -72,7 +72,7 @@ struct PVeget
 };
 
 
-///  📄 Presets xml  with common params
+///  📄 Presets xml  with common params  for ed and game
 //-----------------------------------------------------------
 class Presets
 {

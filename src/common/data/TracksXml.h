@@ -42,7 +42,7 @@ public:
 
 //  all tracks infos
 //.................................
-class TracksXml
+class TracksIni
 {
 public:
 	std::vector<TrackInfo> trks;
@@ -54,10 +54,10 @@ public:
 };
 
 
-//  user Track's info
-//  rating, stats todo: not used yet ..
+//  user's Tracks info
+//  rating, stats
 //-------------------------------------
-/*class UserTrkInfo
+class UserTrkInfo
 {
 public:
 	std::string name;
@@ -73,8 +73,9 @@ public:
 	std::vector<UserTrkInfo> trks;
 	std::map<std::string, int> trkmap;  // 0 if not found
 	
-	bool LoadXml(std::string file), SaveXml(std::string file);
-};*/
+	bool LoadXml(std::string file, TracksIni* ini), SaveXml(std::string file);
+};
+
 
 #ifndef SR_EDITOR
 
