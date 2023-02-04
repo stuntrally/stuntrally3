@@ -349,7 +349,7 @@ void App::PickObject()
 			int i = -1;
 			//  find obj with same name
 			for (int o=0; o < objs.size(); ++o)
-				if (s == objs[o].it->getName())
+				if (objs[o].it && s == objs[o].it->getName())
 				{	i = o;  break;  }
 			
 			//  pick
