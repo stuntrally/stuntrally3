@@ -144,6 +144,9 @@ public:
 	#endif
 	Txt stTrk[2][StTrk], infTrk[2][InfTrk];  // [2] 2nd set is for champs
 	Img imStTrk[2][ImStTrk], imInfTrk[2][InfTrk];
+	//  for user tracks.xml
+	SV svUserRate;  void slUserRate(SV*);  int iUserRate = 3;
+	Ck ckUserBookm;  void chkUserBookm(Ck*);  bool bUserBookm = false;
 
 	void UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const Ogre::String& sTrack,
 		float timeCur, bool reverse=false, int champ=0);

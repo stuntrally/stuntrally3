@@ -7,6 +7,7 @@
 #include "configfile.h"
 #include "cardefs.h"
 #include <math.h>
+
 #include "SoundMgr.h"
 #include "SoundBase.h"
 #include "SoundBaseMgr.h"
@@ -14,8 +15,11 @@
 #include "quickprof.h"
 #include "tracksurface.h"
 #include "forcefeedback.h"
+
 #include "paths.h"
 #include "settings.h"
+#include "CData.h"
+#include "TracksXml.h"
 
 #include "Def_Str.h"
 #include "SceneXml.h"
@@ -371,6 +375,7 @@ void GAME::End()
 
 	///+  save settings first incase later deinits cause crashes
 	pSet->Save(PATHS::SettingsFile(0));
+	app->scn->data->user->SaveXml(PATHS::UserConfigDir() + "/tracks.xml");
 
 	collision.Clear();
 }

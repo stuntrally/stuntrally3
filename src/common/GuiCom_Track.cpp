@@ -187,6 +187,11 @@ void CGuiCom::GuiInitTrack()
 	for (i=0; i < StTrk; ++i)     stTrk[0][i] = fTxt("st"+toStr(i));
 	for (i=0; i < ImStTrk; ++i) imStTrk[0][i] = fImg("ist"+toStr(i));
 	for (i=0; i < InfTrk; ++i){  infTrk[0][i] = fTxt("ti"+toStr(i));  imInfTrk[0][i] =  fImg("iti"+toStr(i));  }
+
+	SV* sv;  Ck* ck;
+	//  ⭐ user
+	sv= &svUserRate;  sv->Init("UserRate", &iUserRate, 0, 6);  sv->DefaultI(5);  SevC(UserRate);
+	ck= &ckUserBookm;  ck->Init("UserBookm", &bUserBookm);  CevC(UserBookm);
 		
 	EdC(edTrkFind, "TrkFind", editTrkFind);
 
@@ -194,7 +199,6 @@ void CGuiCom::GuiInitTrack()
 	BtnC("TrkView1", btnTrkView1);  imgTrkIco1 = fImg("TrkView2icons1");
 	BtnC("TrkView2", btnTrkView2);  imgTrkIco2 = fImg("TrkView2icons2");
 	BtnC("TrkFilter", btnTrkFilter);  BtnC("TrkFilterClose", btnTrkFilter);
-	SV* sv;  Ck* ck;
 	ck= &ckTrkFilter;  ck->Init("TracksFilter", &pSet->tracks_filter);  CevC(TrkFilter);
 	txtTracksFAll = fTxt("TracksFAll");
 	txtTracksFCur = fTxt("TracksFCur");
@@ -423,12 +427,13 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 	// if (app->gui->txTrackAuthor)
 	// 	app->gui->txTrackAuthor->setCaption("");  // user trks
 	#endif
-	
-	int id = app->scn->data->tracks->trkmap[sTrack];
+	auto& data = app->scn->data;
+
+	int id = data->tracks->trkmap[sTrack];
 	for (int i=0; i < InfTrk; ++i)
 		if (infTrk[ch][i])  infTrk[ch][i]->setCaption("");
 	if (id > 0)
-	{	const TrackInfo& ti = app->scn->data->tracks->trks[id-1];
+	{	const TrackInfo& ti = data->tracks->trks[id-1];
 
 		#define str0(v)  ((v)==0 ? "" : toStr(v))
 		#define inf(i,t,m)  infTrk[ch][i]->setCaption(str0(t));\
@@ -467,10 +472,10 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 
 	//  ⏱️ track time
 	float carMul = app->GetCarTimeMul(pSet->gui.car[0], pSet->gui.sim_mode);
-	float timeTrk = app->scn->data->tracks->times[sTrack];
+	float timeTrk = data->tracks->times[sTrack];
 	bool noTrk = timeTrk < 2.f;
 	std::string speedTrk = fToStr(len / timeTrk * m, 0,3) + unit;
-	float timeT = (/*place*/1 * app->scn->data->cars->magic * timeTrk + timeTrk) / carMul;
+	float timeT = (/*place*/1 * data->cars->magic * timeTrk + timeTrk) / carMul;
 	bool noTm = timeCur < 0.1f || !rd;
 	if (ch==1)  noTm = false;  // show track's not current
 
@@ -500,7 +505,16 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 	if (trkDesc[ch])     trkDesc[ch]->setCaption(rd->sTxtDescr);
 	if (trkAdvice[ch]) trkAdvice[ch]->setCaption(rd->sTxtAdvice);
 
-	
+
+	//  ⭐ user rate
+	int iu = data->user->trkmap[sListTrack];
+	if (iu)
+	{	auto& u = data->user->trks[iu-1];
+		iUserRate = u.rating;  svUserRate.Upd();
+		bUserBookm = u.bookm;  ckUserBookm.Upd();
+	}
+
+
 	//  🖼️ preview images
 	//---------------------------------------------------------------------------
 #ifndef SR_EDITOR
@@ -543,4 +557,23 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 		//static float a = 0.f;  a += 0.1f;  //test center
 		imgMiniRot[id]->setAngle(a);  // todo: crash after lang change bGI..
 	}
+}
+
+//  ⭐ user rate
+void CGuiCom::slUserRate(SV*)
+{
+	if (bListTrackU)  return;  //-
+	auto& data = app->scn->data;
+
+	int iu = data->user->trkmap[sListTrack];
+	if (!iu)  return;
+	auto& u = data->user->trks[iu-1];
+
+	u.rating = iUserRate;
+	u.bookm = bUserBookm;
+}
+
+void CGuiCom::chkUserBookm(Ck*)
+{
+	slUserRate(0);
 }

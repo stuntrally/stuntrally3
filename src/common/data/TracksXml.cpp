@@ -62,9 +62,10 @@ bool UserXml::LoadXml(string file, TracksIni* ini)
 		if (id > 0)  // found
 			t = &trks[id-1];  // upd
 
-		a = eTrk->Attribute("date");	if (a)  t->last = s2dt(a);
 		a = eTrk->Attribute("rate");	if (a)  t->rating = s2i(a);
-		a = eTrk->Attribute("laps");	if (a)  t->laps = s2i(a);
+		a = eTrk->Attribute("bokm");	if (a)  t->bookm = s2i(a);
+		// a = eTrk->Attribute("date");	if (a)  t->last = s2dt(a);
+		// a = eTrk->Attribute("laps");	if (a)  t->laps = s2i(a);
 		if (!id)  // add, custom
 		{
 			trks.push_back(n);
@@ -75,7 +76,7 @@ bool UserXml::LoadXml(string file, TracksIni* ini)
 	return true;
 }
 
-///  User Save
+///  ⭐ User Save
 ///------------------------------------------------------------------------------------
 bool UserXml::SaveXml(string file)
 {
@@ -86,9 +87,10 @@ bool UserXml::SaveXml(string file)
 		TiXmlElement trk("t");
 		trk.SetAttribute("n",		t.name.c_str());
 
-		trk.SetAttribute("date",	dt2s(t.last).c_str());
 		trk.SetAttribute("rate",	toStrC( t.rating ));
-		trk.SetAttribute("laps",	toStrC( t.laps ));
+		trk.SetAttribute("bokm",	toStrC( t.bookm ));
+		// trk.SetAttribute("date",	dt2s(t.last).c_str());
+		// trk.SetAttribute("laps",	toStrC( t.laps ));
 		
 		root.InsertEndChild(trk);
 	}

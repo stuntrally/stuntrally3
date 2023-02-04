@@ -40,7 +40,7 @@ public:
 	bool test =0, testC =0;  // starts with Test.. or TestC..
 };
 
-//  all tracks infos
+//  🏞️ all tracks infos
 //.................................
 class TracksIni
 {
@@ -54,7 +54,7 @@ public:
 };
 
 
-//  user's Tracks info
+//  ⭐ user's Tracks info
 //  rating, stats
 //-------------------------------------
 class UserTrkInfo
@@ -66,7 +66,7 @@ public:
 	int laps =0;
 };
 
-//  user xml (tracks)
+//  ⭐ user xml (tracks)
 class UserXml
 {
 public:
@@ -101,7 +101,7 @@ public:
 };
 
 
-//  all cars infos
+//  🚗 all cars infos
 //.................................
 class CarsXml
 {

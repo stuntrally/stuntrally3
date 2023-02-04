@@ -79,21 +79,6 @@ void App::LoadData()
 	//  championships.xml, progress.xml
 	gui->Ch_XmlLoad();
 
-	//  user.xml
-	/*#if 0
-	userXml.LoadXml(PATHS::UserConfigDir() + "/user.xml");
-	for (int i=0; i < data->tracks->trks.size(); ++i)
-	{
-		const TrackInfo& ti = data->tracks->trks[i];
-		if (userXml.trkmap[ti.name]==0)
-		{	// not found, add
-			UserTrkInfo tu;  tu.name = ti.name;
-
-			userXml.trks.push_back(tu);
-			userXml.trkmap[ti.name] = userXml.trks.size();
-	}	}
-	userXml.SaveXml(PATHS::UserConfigDir() + "/user.xml");
-	#endif*/
 
 	//  rpl sizes
 	ushort u(0x1020);

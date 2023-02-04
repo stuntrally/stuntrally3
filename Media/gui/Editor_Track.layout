@@ -322,6 +322,21 @@
 							<Property key="TextColour" value="0.8 0.8 1.0"/>
 							<UserString key="tip" value="#{sum}"/>
 						</Widget>
+
+						<!-- user xml -->
+						<Widget type="Button" skin="CheckBox" position="16 46 20 20" name="UserBookm">
+							<Property key="Caption" value=""/>
+							<Property key="TextColour" value="0.6 1 1"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="46 46 16 16" name="UserRateVal">
+							<Property key="Caption" value="5"/>
+							<Property key="TextColour" value="0.6 0.8 1"/>
+							<UserString key="tip" value="#{TipRating}"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="70 48 80 12" name="UserRate">
+							<Property key="Colour" value="0.6 1 1"/>
+							<UserString key="tip" value="#{TipRating}"/>
+						</Widget>
 					</Widget>
 				</Widget>
 
