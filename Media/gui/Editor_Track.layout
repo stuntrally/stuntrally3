@@ -324,18 +324,31 @@
 						</Widget>
 
 						<!-- user xml -->
-						<Widget type="Button" skin="CheckBox" position="16 46 20 20" name="UserBookm">
+						<Widget type="ImageBox" skin="ImageBox" position="2 44 20 20">
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="320 32 32 32"/>
+							<Property key="Alpha" value="0.7"/>
+							<UserString key="tip" value="#{user}: #{bookmark}"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="20 48 20 20" name="UserBookm">
 							<Property key="Caption" value=""/>
 							<Property key="TextColour" value="0.6 1 1"/>
+							<UserString key="tip" value="#{user}: #{bookmark}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="46 46 16 16" name="UserRateVal">
+						<Widget type="ImageBox" skin="ImageBox" position="40 44 20 20">
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="288 32 32 32"/>
+							<Property key="Alpha" value="0.6"/>
+							<UserString key="tip" value="#{user}: #{rating}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="64 46 16 16" name="UserRateVal">
 							<Property key="Caption" value="5"/>
 							<Property key="TextColour" value="0.6 0.8 1"/>
-							<UserString key="tip" value="#{TipRating}"/>
+							<UserString key="tip" value="#{user}: #{rating}"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="70 48 80 12" name="UserRate">
+						<Widget type="Slider" skin="Slider" position="82 48 80 12" name="UserRate">
 							<Property key="Colour" value="0.6 1 1"/>
-							<UserString key="tip" value="#{TipRating}"/>
+							<UserString key="tip" value="#{user}: #{rating}"/>
 						</Widget>
 					</Widget>
 				</Widget>
@@ -350,15 +363,20 @@
 					<Property key="ImageCoord" value="352 0 64 32"/>
 					<UserString key="tip" value="#{TrackDifficulties}"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="16 7 40 24" name="TrkView1">
-					<Property key="Caption" value="|"/>
+				<Widget type="Button" skin="Button" position="16 7 36 24" name="TrkView1">
+					<Property key="Caption" value="&lt;"/>
 					<Property key="Alpha" value="0.8"/>
 					<Property key="Colour" value="0.6 0.8 1.0"/>
 					<Property key="TextColour" value="0.45 0.58 0.8"/>
 					<UserString key="tip" value="#{TipTrkViewShort}"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="64 7 40 24" name="TrkView2">
-					<Property key="Caption" value="|||"/>
+				<Widget type="TextBox" skin="TextBox" position="55 12 18 24" name="TrkViewVal">
+					<Property key="Caption" value="0"/>
+					<Property key="TextColour" value="0.5 0.6 0.7"/>
+					<Property key="FontName" value="font.small"/>
+				</Widget>
+				<Widget type="Button" skin="Button" position="64 7 36 24" name="TrkView2">
+					<Property key="Caption" value="&gt;"/>
 					<Property key="Alpha" value="0.8"/>
 					<Property key="Colour" value="0.6 0.8 1.0"/>
 					<Property key="TextColour" value="0.45 0.58 0.8"/>

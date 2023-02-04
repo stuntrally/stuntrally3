@@ -5,7 +5,7 @@ enum eShadowType
 {	Sh_None=0, Sh_Depth, Sh_Soft  };
 
 const static int
-	COL_VIS = 19, COL_FIL = 14;
+	COL_VIS = 21, COL_FIL = 16;
 
 const static int NumTexSizes = 6;
 const static int cTexSizes[NumTexSizes] = {
@@ -71,15 +71,16 @@ public:
 
 	//  📰🔻 Tracks list  ----
 	//  view, sort column, filter on
+	const static int TrkViews = 3;
 	int tracks_view =0, tracks_sort =2;
 	bool tracks_sortup =1, tracks_filter =0;
 
 
-	bool col_vis[2][COL_VIS];  // visible columns for track views
+	bool col_vis[TrkViews][COL_VIS];  // visible columns for track views
 	int  col_fil[2][COL_FIL];  // filtering range for columns 0min-1max
 
-	const static bool colVisDef[2][COL_VIS];
-	const static char colFilDef[2][COL_FIL];
+	const static bool colVisDef[TrkViews][COL_VIS];  // view columns
+	const static char colFilDef[2][COL_FIL];  // min,max
 	
 
 //------------------------------------------

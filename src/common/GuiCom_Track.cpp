@@ -58,7 +58,7 @@ const String CGuiCom::getClrSum(int i)    {  return clrsSum   [std::min(iClrsSum
 //  * * * *  CONST  * * * *
 //  column widths in MultiList2,  track detailed
 const int wi = 15;            // id name nm   N  scn ver
-const int CGuiCom::colTrk[33] = {40, 90, 80, 25, 76, 25, wi, wi, wi, wi, wi, wi, wi, wi, wi, wi, wi, 22, 22, 24};
+const int CGuiCom::colTrk[35] = {40, 90, 80, 25, 76, 25, wi, wi, wi, wi, wi, wi, wi, wi, wi, wi, wi, 22, 22, wi, wi, 24};
 #ifndef SR_EDITOR
 const int CGui::colCar[16] = {34, 80, 27, wi, wi, wi, wi, 37, 45, 24};  // car
 const int CGui::colCh [16] = {16, 200, 120, 50, 80, 80, 60, 40};  // champs
@@ -102,7 +102,8 @@ String CGuiCom::GetSceneryColor(String name, String* sc)
 
 
 //  📃➕ Add tracks list item
-void CGuiCom::AddTrkL(std::string name, int user, const TrackInfo* ti)
+void CGuiCom::AddTrkL(std::string name, int user,
+	const TrackInfo* ti, const UserTrkInfo* ui)
 {
 	String sc, c = GetSceneryColor(name, &sc);
 	Mli2 li = trkList;
@@ -150,6 +151,10 @@ void CGuiCom::AddTrkL(std::string name, int user, const TrackInfo* ti)
 	li->setSubItemNameAt(16,l,toS("#C080FF",ti->frenzy));
 	li->setSubItemNameAt(17,l,toS(getClrSum(ti->sum/2), ti->sum));
 	li->setSubItemNameAt(18,l,toS(getClrLong(ti->longn), ti->longn));
+	if (ui)  {  // user
+	li->setSubItemNameAt(19,l,toS(getClrRating(ui->rating), ui->rating));
+	li->setSubItemNameAt(20,l,toS(getClrRating(ui->bookm ? 4 : 0), ui->bookm));
+	}
 	//li->setSubItemNameAt(18,l,clrsDiff[std::min(8, 5*ti->sum/10)]+" "+toStr(ti->sum));
 }
 
@@ -195,9 +200,11 @@ void CGuiCom::GuiInitTrack()
 		
 	EdC(edTrkFind, "TrkFind", editTrkFind);
 
-	ButtonPtr btn;
+	ButtonPtr btn;  // 📰 views
 	BtnC("TrkView1", btnTrkView1);  imgTrkIco1 = fImg("TrkView2icons1");
 	BtnC("TrkView2", btnTrkView2);  imgTrkIco2 = fImg("TrkView2icons2");
+	txtTrkViewVal = fTxt("TrkViewVal");
+	//  🔻 filter
 	BtnC("TrkFilter", btnTrkFilter);  BtnC("TrkFilterClose", btnTrkFilter);
 	ck= &ckTrkFilter;  ck->Init("TracksFilter", &pSet->tracks_filter);  CevC(TrkFilter);
 	txtTracksFAll = fTxt("TracksFAll");
@@ -226,7 +233,10 @@ void CGuiCom::GuiInitTrack()
 	li->addColumn("#C0C0C0""b", colTrk[c++]);   //  banked
 	li->addColumn("#C080FF""f", colTrk[c++]);   //  frenzy
 	li->addColumn("#C0C0F0""E", colTrk[c++]);   //  sum
-	li->addColumn("#FFA0A0""l", colTrk[c++]);	// longn
+	li->addColumn("#FFA0A0""l", colTrk[c++]);   // longn
+
+	li->addColumn("#FFFFA0""*", colTrk[c++]);   // user rate
+	li->addColumn("#A0FFFF""+", colTrk[c++]);   // user bookm
 	li->addColumn(" ", colTrk[c++]);
 	
 	//  🔻 columns, filters  ---
@@ -242,12 +252,12 @@ void CGuiCom::GuiInitTrack()
 		sv= &svTrkFilMax[i];  sv->Init("max"+si, &pSet->col_fil[1][i], a,b);  sv->DefaultI(b);  SevC(TrkFil);
 	}
 
-	FillTrackLists();  //once
+	FillTrackLists();  // once
 
 	li->mSortColumnIndex = pSet->tracks_sort;
 	li->mSortUp = pSet->tracks_sortup;
 
-    TrackListUpd(true);  //upd
+    TrackListUpd(true);  // upd
 	listTrackChng(trkList,0);  //-
 
 	ChangeTrackView();
@@ -295,13 +305,18 @@ void CGuiCom::FillTrackLists()
 	}
 
 	//  get info for track name, from data->tracks
+	const auto* data = app->scn->data;
 	liTrk.clear();
 	for (auto i = liTracks.begin(); i != liTracks.end(); ++i)
 	{
 		TrkL trl;  trl.name = *i;  //trl.pA = this;
-		int id = app->scn->data->tracks->trkmap[*i];
-		const TrackInfo* pTrk = id==0 ? 0 : &app->scn->data->tracks->trks[id-1];
-		trl.ti = pTrk;  // 0 if not in data->tracks
+
+		int id = data->tracks->trkmap[*i];
+		trl.ti = id==0 ? 0 : &data->tracks->trks[id-1];
+
+		id = data->user->trkmap[*i];
+		trl.ui = id==0 ? 0 : &data->user->trks[id-1];
+
 		liTrk.push_back(trl);
 	}
 }

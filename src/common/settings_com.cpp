@@ -77,8 +77,8 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	std::string s;
 	int i,v,ii,a;
 	
-	if (w)	//  write
-		for (v=0; v < 2; ++v)
+	if (w)	//  write  ----
+	{	for (v=0; v < TrkViews; ++v)
 		{
 			s = "";  ii = COL_VIS;
 			for (i=0; i < ii; ++i)
@@ -87,7 +87,9 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 				if (i < ii-1)  s += " ";
 			}
 			Param(c,w, "gui_tracks.columns"+iToStr(v), s);
-
+		}
+		for (v=0; v < 2; ++v)
+		{
 			s = "";  ii = COL_FIL;
 			for (i=0; i < ii; ++i)
 			{
@@ -96,20 +98,23 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 			}
 			Param(c,w, "gui_tracks.filters"+iToStr(v), s);
 		}
-	else	//  read
-		for (v=0; v < 2; ++v)
+	}else	//  read  ----
+	{
+		for (v=0; v < TrkViews; ++v)
 		{
 			if (Param(c,w, "gui_tracks.columns"+iToStr(v), s))
 			{	std::stringstream sc(s);
 				for (i=0; i < COL_VIS; ++i)
 				{	sc >> a;  col_vis[v][i] = a > 0;  }
-			}
-
+		}	}
+		for (v=0; v < 2; ++v)
+		{
 			if (Param(c,w, "gui_tracks.filters"+iToStr(v), s))
 			{	std::stringstream sf(s);
 				for (i=0; i < COL_FIL; ++i)
 				{	sf >> a;  col_fil[v][i] = a;  }
 		}	}
+	}
 }
 
 //  util
@@ -123,20 +128,21 @@ int SETcom::GetTexSize(int n)
 SETcom::SETcom()   ///  Defaults
 {
 	int i,v;
-	for (v=0; v < 2; ++v)
-	{	for (i=0; i < COL_FIL; ++i)  col_fil[v][i] = colFilDef[v][i];
+	for (v=0; v < TrkViews; ++v)
 		for (i=0; i < COL_VIS; ++i)  col_vis[v][i] = colVisDef[v][i];
-	}
+	for (v=0; v < 2; ++v)
+		for (i=0; i < COL_FIL; ++i)  col_fil[v][i] = colFilDef[v][i];
 }
 
 //  🏞️📃🏛️ tracks list views columns  --
-const bool SETcom::colVisDef[2][COL_VIS] =
-	{{0,0,1, 0,0,0, 1,1, 0,0,0,0,0,0,0,0,0,0,0},
-	 {1,0,1, 1,1,1, 1,1, 1,1,1,1,1,1,1,1,1,1,1}};
+const bool SETcom::colVisDef[TrkViews][COL_VIS] =
+	{{0,0,1, 0,0,0, 1,1, 0,0,0,0,0,0,0,0,0,0,0,0,0},
+	 {1,0,1, 1,1,1, 1,1, 1,1,1,1,1,1,1,1,1,1,1,0,0},
+	 {0,0,1, 0,0,0, 1,0, 0,0,0,0,0,0,0,0,0,0,0,1,1}};
 	
 const char SETcom::colFilDef[2][COL_FIL] =
 // ver diff rating  objects obstacles  fluids bumps  jumps loops pipes  banked frenzy  sum longn
-	// v  ! *   o c  w ~  J L P  b s  E l
-	{{01, 0,0,  0,0, 0,0, 0,0,0, 0,0, 0,0},
-	 {27, 6,6,  4,4, 5,5, 4,5,4, 5,5, 25,24}};
+	// v  ! *   o c  w ~  J L P  b s  E l    * +
+	{{01, 0,0,  0,0, 0,0, 0,0,0, 0,0, 0,0,   0,0},  // min
+	 {27, 6,6,  4,4, 5,5, 4,5,4, 5,5, 25,24, 6,1}}; // max
 	///^ up in next ver, also in *default.cfg

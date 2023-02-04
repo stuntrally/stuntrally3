@@ -104,14 +104,14 @@ void CGuiCom::TrackListUpd(bool resetNotFound)
 		for (auto i = liTrk2.begin(); i != liTrk2.end(); ++i)
 		{
 			String name = (*i).name, nlow = name;  StringUtil::toLowerCase(nlow);
-			const TrackInfo* ti = (*i).ti;
+			const auto* ti = (*i).ti;  const auto* ui = (*i).ui;
 			
 			if (!pSet->gui.track_user && name == pSet->gui.track)
 			{	bFound = true;  bListTrackU = 0;  }
 			
 			bool add = 0;
 			if (sTrkFind == "" || strstr(nlow.c_str(), sTrkFind.c_str()) != 0)
-			if (!ti || !pSet->tracks_filter ||  //  filtering
+			if (!pSet->tracks_filter || !ti || !ui ||  //  filtering
 				ti->ver      >= pSet->col_fil[0][0]  && ti->ver      <= pSet->col_fil[1][0]  &&
 				ti->diff     >= pSet->col_fil[0][1]  && ti->diff     <= pSet->col_fil[1][1]  &&
 				ti->rating   >= pSet->col_fil[0][2]  && ti->rating   <= pSet->col_fil[1][2]  &&
@@ -126,9 +126,12 @@ void CGuiCom::TrackListUpd(bool resetNotFound)
 				ti->banked   >= pSet->col_fil[0][10] && ti->banked   <= pSet->col_fil[1][10] &&
 				ti->frenzy   >= pSet->col_fil[0][11] && ti->frenzy   <= pSet->col_fil[1][11] &&
 				ti->sum      >= pSet->col_fil[0][12] && ti->sum      <= pSet->col_fil[1][12] &&
-				ti->longn    >= pSet->col_fil[0][13] && ti->longn    <= pSet->col_fil[1][13])
+				ti->longn    >= pSet->col_fil[0][13] && ti->longn    <= pSet->col_fil[1][13] &&
+
+				ui->rating   >= pSet->col_fil[0][14] && ui->rating   <= pSet->col_fil[1][14] &&
+				ui->bookm    >= pSet->col_fil[0][15] && ui->bookm    <= pSet->col_fil[1][15])
 			{
-				AddTrkL(name, 0, (*i).ti);
+				AddTrkL(name, 0, (*i).ti, (*i).ui);
 				if (!pSet->gui.track_user && name == pSet->gui.track)  {  si = ii;
 					trkList->setIndexSelected(si);  }
 				
@@ -148,7 +151,7 @@ void CGuiCom::TrackListUpd(bool resetNotFound)
 			String name = *i, nlow = name;  StringUtil::toLowerCase(nlow);
 			if (sTrkFind == "" || strstr(nlow.c_str(), sTrkFind.c_str()) != 0)
 			{
-				AddTrkL("*" + (*i) + "*", 1, 0);
+				AddTrkL("*" + (*i) + "*", 1, 0, 0);
 				if (pSet->gui.track_user && name == pSet->gui.track)  {  si = ii;
 					trkList->setIndexSelected(si);
 					bFound = true;  bListTrackU = 1;  }
@@ -280,14 +283,30 @@ void CGui::btnCarView1(WP) {  pSet->cars_view = 0;  gcom->updTrkListDim();  }
 void CGui::btnCarView2(WP) {  pSet->cars_view = 1;  gcom->updTrkListDim();  }
 #endif
 
-void CGuiCom::btnTrkView1(WP) {  pSet->tracks_view = 0;  ChangeTrackView();  }
-void CGuiCom::btnTrkView2(WP) {  pSet->tracks_view = 1;  ChangeTrackView();  }
-
+void CGuiCom::btnTrkView1(WP)
+{
+	addTrkView(-1);
+	ChangeTrackView();
+}
+void CGuiCom::btnTrkView2(WP)
+{
+	addTrkView(1);
+	ChangeTrackView();
+}
+void CGuiCom::addTrkView(int add)
+{
+	auto& v = pSet->tracks_view;
+	auto all = pSet->TrkViews;
+	v = (v + add + all) % all;
+}
 void CGuiCom::ChangeTrackView()
 {
-	bool full = pSet->tracks_view;
+	auto v = pSet->tracks_view;
+	bool full = v >= 1, det = v == 1;
+	if (txtTrkViewVal)
+		txtTrkViewVal->setCaption(toStr(v+1));
 
-	imgTrkIco1->setVisible(full);  imgTrkIco2->setVisible(full);
+	imgTrkIco1->setVisible(det);  imgTrkIco2->setVisible(det);
 	if (imgPrv[0])
 		imgPrv[0]->setVisible(!full);
 	trkDesc[0]->setVisible(!full);
@@ -324,7 +343,7 @@ void CGuiCom::updTrkListDim()
 	//  🏞️ tracks list
 	//-------------------------------
 	if (!trkList)  return;
-	bool full = pSet->tracks_view;  int fi = full?1:0;
+	int v = pSet->tracks_view;
 
 	int c, sum = 0, cnt = trkList->getColumnCount();
 	for (c=0; c < cnt-1; ++c)
@@ -336,7 +355,7 @@ void CGuiCom::updTrkListDim()
 	for (c=0; c < cnt; ++c)
 	{
 		float wf = float(colTrk[c]) / sum * 0.625/*width*/ * wi.width * 0.97/*frame*/;
-		int w = c==cnt-1 ? 18 :  pSet->col_vis[fi][c] ? wf : 0;
+		int w = c==cnt-1 ? 18 :  pSet->col_vis[v][c] ? wf : 0;
 		trkList->setColumnWidthAt(c, w);
 		sw += w;
 		if (c == 6)  wico = w;
@@ -358,7 +377,7 @@ void CGuiCom::updTrkListDim()
 	//  🚗 car list
 	//-------------------------------
 	#ifndef SR_EDITOR
-	full = pSet->cars_view;
+	bool full = pSet->cars_view;
 
 	sum = 0;  sw = 0;  cnt = app->gui->carList->getColumnCount();
 	for (c=0; c < cnt; ++c)  sum += app->gui->colCar[c];

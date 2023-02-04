@@ -32,7 +32,7 @@
 	</Widget>
 
 
-	<Widget type="Window" skin="WindowCS" position="2400 180 780 550" align="Left" layer="Popup" name="TrackFilterWnd">
+	<Widget type="Window" skin="WindowCS" position="2400 180 780 580" align="Left" layer="Popup" name="TrackFilterWnd">
 		<Property key="MinSize" value="500 400"/>
 		<Property key="Caption" value="#A0A0FF#{Track} - #{TerFilter}"/>
 		<Property key="Colour" value="0.7 0.7 0.9"/>
@@ -64,6 +64,7 @@
 			<Property key="NeedMouse" value="false"/>
 		</Widget>
 
+		<!-- name -->
 		<Widget type="Button" skin="CheckBox" position="12 10 140 24" name="col0">
 			<Property key="Caption" value="#C0E0C0 id"/>
 		</Widget>
@@ -84,6 +85,7 @@
 			<Property key="Caption" value="#C0E0F0 #{Version}"/>
 		</Widget>
 
+		<!-- diff rate -->
 		<Widget type="ImageBox" skin="ImageBox" position="0 192 32 32">
 			<Property key="ImageTexture" value="track_icons.png"/>
 			<Property key="ImageCoord" value="0 0 32 32"/>
@@ -187,6 +189,22 @@
 			<Property key="Caption" value="#FFA0A0#{long}"/>
 		</Widget>
 
+		<!-- user -->
+		<Widget type="ImageBox" skin="ImageBox" position="0 502 32 32">
+			<Property key="ImageTexture" value="track_icons.png"/>
+			<Property key="ImageCoord" value="288 32 32 32"/>
+		</Widget>
+		<Widget type="Button" skin="CheckBox" position="32 510 200 24" name="col19">
+			<Property key="Caption" value="#D0FFFF#{user}: #{rating} *"/>
+		</Widget>
+		<Widget type="ImageBox" skin="ImageBox" position="0 522 32 32">
+			<Property key="ImageTexture" value="track_icons.png"/>
+			<Property key="ImageCoord" value="320 32 32 32"/>
+		</Widget>
+		<Widget type="Button" skin="CheckBox" position="32 530 200 24" name="col20">
+			<Property key="Caption" value="#A0FFFF#{user}: #{bookmark}"/>
+		</Widget>
+
 		<Widget type="TextBox" skin="TextBox" position="340 130 60 20">
 			<Property key="Caption" value="#80E0E0#{min}"/>
 		</Widget>
@@ -219,6 +237,8 @@
 		<Widget type="Slider" skin="Slider" position="284 422 200 18" name="min11"/>
 		<Widget type="Slider" skin="Slider" position="284 452 200 20" name="min12"/>
 		<Widget type="Slider" skin="Slider" position="284 482 200 20" name="min13"/>
+		<Widget type="Slider" skin="Slider" position="284 512 200 20" name="min14"/>
+		<Widget type="Slider" skin="Slider" position="284 532 200 20" name="min15"/>
 
 		<Widget type="Slider" skin="Slider" position="554 162 200 20" name="max0"/>
 		<Widget type="Slider" skin="Slider" position="554 202 200 20" name="max1"/>
@@ -234,6 +254,8 @@
 		<Widget type="Slider" skin="Slider" position="554 422 200 18" name="max11"/>
 		<Widget type="Slider" skin="Slider" position="554 452 200 20" name="max12"/>
 		<Widget type="Slider" skin="Slider" position="554 482 200 20" name="max13"/>
+		<Widget type="Slider" skin="Slider" position="554 512 200 20" name="max14"/>
+		<Widget type="Slider" skin="Slider" position="554 532 200 20" name="max15"/>
 
 		<Widget type="TextBox" skin="TextBox" position="250 160 34 23" name="min0Val">
 			<Property key="TextColour" value="0.6 0.8 0.6"/>
@@ -277,6 +299,12 @@
 		<Widget type="TextBox" skin="TextBox" position="250 480 34 20" name="min13Val">
 			<Property key="TextColour" value="0.9 0.7 0.7"/>
 		</Widget>
+		<Widget type="TextBox" skin="TextBox" position="250 510 34 20" name="min14Val">
+			<Property key="TextColour" value="0.9 0.9 0.7"/>
+		</Widget>
+		<Widget type="TextBox" skin="TextBox" position="250 530 34 20" name="min15Val">
+			<Property key="TextColour" value="0.9 0.7 0.7"/>
+		</Widget>
 
 		<Widget type="TextBox" skin="TextBox" position="510 160 34 20" name="max0Val">
 			<Property key="TextColour" value="0.6 0.8 0.6"/>
@@ -318,6 +346,12 @@
 			<Property key="TextColour" value="0.8 0.8 1.0"/>
 		</Widget>
 		<Widget type="TextBox" skin="TextBox" position="510 480 34 20" name="max13Val">
+			<Property key="TextColour" value="1.0 0.8 0.8"/>
+		</Widget>
+		<Widget type="TextBox" skin="TextBox" position="510 510 34 20" name="max14Val">
+			<Property key="TextColour" value="1.0 1.0 0.8"/>
+		</Widget>
+		<Widget type="TextBox" skin="TextBox" position="510 530 34 20" name="max15Val">
 			<Property key="TextColour" value="1.0 0.8 0.8"/>
 		</Widget>
 	</Widget>

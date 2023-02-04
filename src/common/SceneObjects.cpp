@@ -340,7 +340,7 @@ void App::PickObject()
 
 	Real distC = 100000.f;
 	int io = -1;
-	for (RaySceneQueryResult::iterator it = res.begin(); it != res.end(); ++it)
+	for (auto it = res.begin(); it != res.end(); ++it)
 	{
 		const String& s = (*it).movable->getName();
 		if (StringUtil::startsWith(s,"oE",false))

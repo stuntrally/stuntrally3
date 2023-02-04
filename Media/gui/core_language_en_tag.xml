@@ -394,6 +394,8 @@
 	<Tag name="rating">rating</Tag>
 	<Tag name="objects">objects (dynamic)</Tag>
 	<Tag name="obstacles">obstacles (on road or in pipe)</Tag>
+	<Tag name="user">user</Tag>
+	<Tag name="bookmark">bookmark</Tag>
 	<!--  TIP  Track stats  -->
 	<Tag name="TrackBankAng">Road banking angles: average and maximum, in degrees.</Tag>	
 

@@ -13,6 +13,7 @@
 namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class Window;  class Viewport;  class Light;  }
 class Scene;  class CData;  class SplineRoad;
 class App;  class SETTINGS;
+class TrackInfo;  class UserTrkInfo;
 
 
 //  tracks,cars list items - with info for sorting
@@ -20,6 +21,7 @@ struct TrkL
 {
 	std::string name;
 	const class TrackInfo* ti;  // 0 means user trk
+	const class UserTrkInfo* ui;  // 0 means user trk
 	static int idSort;
 	TrkL();
 };
@@ -153,8 +155,9 @@ public:
 	void ReadTrkStats();
 
 	//  📰 track views
+	Txt txtTrkViewVal =0;
 	void btnTrkView1(WP), btnTrkView2(WP), btnTrkFilter(WP);
-	void ChangeTrackView();
+	void ChangeTrackView(), addTrkView(int add);
 	void updTrkListDim();
 
 
@@ -167,7 +170,7 @@ public:
 	Ck ckTrkColVis[COL_VIS];  void chkTrkColVis(Ck*);
 	void ChkUpd_Col();
 	//  const list column widths  and 🌈 value colors
-	const static int colTrk[33],  iClrsDiff = 9, iClrsRating = 7, iClrsLong = 11, iClrsSum = 10;
+	const static int colTrk[35],  iClrsDiff = 9, iClrsRating = 7, iClrsLong = 11, iClrsSum = 10;
 	const static Ogre::String clrsDiff[iClrsDiff], clrsRating[iClrsRating], clrsLong[iClrsLong], clrsSum[iClrsSum];
 	const static Ogre::String getClrDiff(int), getClrRating(int), getClrLong(int), getClrSum(int);
 
@@ -181,7 +184,7 @@ public:
 	std::list<TrkL> liTrk;
 	void FillTrackLists();
 
-	void AddTrkL(std::string name, int user, const class TrackInfo* ti);
+	void AddTrkL(std::string name, int user, const TrackInfo* ti, const UserTrkInfo* ui);
 	void trkListNext(int rel);
 
 
