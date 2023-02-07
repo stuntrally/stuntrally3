@@ -52,14 +52,14 @@ void CScene::CreateTerrain1(int n, bool upd)
 	TextureGpuManager *texMgr = app->mRoot->getRenderSystem()->getTextureGpuManager();
 
 	// tdb->setBrdf(TerraBrdf::Default);  //
-	tdb->setBrdf(TerraBrdf::BlinnPhong);  // +💡
-	// tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);  // +💡
-	// tdb->setBrdf(TerraBrdf::BlinnPhongFullLegacy);  //-
+	// tdb->setBrdf(TerraBrdf::BlinnPhong);  // +💡
+	tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);  // +💡 rough+
+	// tdb->setBrdf(TerraBrdf::BlinnPhongFullLegacy);  //- white
 	// tdb->setBrdf(TerraBrdf::BlinnPhongSeparateDiffuseFresnel);  //** no fresnel-?
-	// tdb->setBrdf(TerraBrdf::CookTorranceSeparateDiffuseFresnel);  //** no fresnel-?
-	// tdb->setBrdf(TerraBrdf::CookTorrance);  //-+
+	// tdb->setBrdf(TerraBrdf::CookTorranceSeparateDiffuseFresnel);  //** no specular?
+	// tdb->setBrdf(TerraBrdf::CookTorrance);  // dull tiny spec-+
 	// tdb->setBrdf(TerraBrdf::DefaultUncorrelated);  // dark-
-	// tdb->setBrdf(TerraBrdf::DefaultSeparateDiffuseFresnel);  //-
+	// tdb->setBrdf(TerraBrdf::DefaultSeparateDiffuseFresnel);  //- mirror?-
 	// tdb->setDiffuse(Vector3(1,1,1));
 
 
@@ -122,6 +122,8 @@ void CScene::CreateTerrain1(int n, bool upd)
 		else
 		{	tdb->setMetalness(i, pt->metal);
 			tdb->setRoughness(i, pt->rough);
+			LogO("* Ter lay: "+d_d+" met:"+fToStr(pt->metal)+
+				"  ro: "+fToStr(pt->rough)+(pt->reflect ? "  refl" : ""));
 			if (pt->reflect)
 				tdb->setTexture( TERRA_REFLECTION, app->mCubeReflTex );  // par
 		}
@@ -234,6 +236,7 @@ void CScene::DestroyTerrains()
 		DestroyTerrain1(i);
 	ters.clear();
 }
+
 
 //  ⛓️ util
 void CScene::TerNext(int add)

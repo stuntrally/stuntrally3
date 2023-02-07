@@ -134,7 +134,7 @@ int CGui::UpdTxtTerSize(float mul)
 	float res = td().fTriangleSize * size;  // result size
 	svTerTriSize.setText(fToStr(res,0,3));
 	
-	valHmapMB->setCaption(toStr(size*size*4/1000000)+" MiB");  // floats
+	valHmapMB->setCaption(toStr(size*size*4/1000000)+" MB");  // floats
 	return size;
 }
 

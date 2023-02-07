@@ -76,8 +76,10 @@ void CScene::CreateTrees()
 	iVegetAll = 0;
 	// updGrsTer();
 
-	const auto& td = sc->tds[0];  // 1st ter only-  // todo: for all
+	const auto* ter0 = ters[0];  // 1st ter only-
+	const auto& td = sc->tds[0];  // todo: for all
 	Real tws = td.fTerWorldSize * 0.5f;
+
 	//  pos0 - original  pos - with offset
 	Vector3 pos0 = Vector3::ZERO, pos = Vector3::ZERO;  Real yaw;
 
@@ -208,14 +210,14 @@ void CScene::CreateTrees()
 
 
 				//  check ter angle  ------------
-				float ang = ter->getAngle(pos.x, pos.z, td.fTriangleSize);
+				float ang = ter0->getAngle(pos.x, pos.z, td.fTriangleSize);
 				if (ang > pg.maxTerAng)
 					add = false;
 
 				if (!add)  continue;  //
 
 				//  check ter height  ------------
-				bool in = ter->getHeightAt(pos);
+				bool in = ter0->getHeightAt(pos);
 				// LogO(fToStr(pos.y));
 				if (!in)  add = false;  // outside
 				
@@ -299,7 +301,7 @@ void CScene::CreateTrees()
 					pos.x += vo.x * scl;  pos.z += vo.y * scl;
 
 					//  apply pos offset xyz, rotY, mul by scale
-					ter->getHeightAt(pos);
+					ter0->getHeightAt(pos);
 					btVector3 pc(pos.x, -pos.z, pos.y + ofs.z * scl);  // center
 					btTransform tr;  tr.setIdentity();  tr.setOrigin(pc);
 
