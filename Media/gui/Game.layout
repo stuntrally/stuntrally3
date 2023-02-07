@@ -46,6 +46,35 @@
 						<Property key="ImageTexture" value="carpos0.png"/>
 					</Widget>
 				</Widget>
+
+				<!-- user xml -->
+				<Widget type="ImageBox" skin="ImageBox" position="172 4 20 20">
+					<Property key="ImageTexture" value="track_icons.png"/>
+					<Property key="ImageCoord" value="320 32 32 32"/>
+					<Property key="Alpha" value="0.7"/>
+					<UserString key="tip" value="#{user}: #{bookmark}"/>
+				</Widget>
+				<Widget type="Button" skin="CheckBox" position="190 8 20 20" name="UserBookm">
+					<Property key="Caption" value=""/>
+					<Property key="TextColour" value="0.6 1 1"/>
+					<UserString key="tip" value="#{user}: #{bookmark}"/>
+				</Widget>
+				<Widget type="ImageBox" skin="ImageBox" position="210 4 20 20">
+					<Property key="ImageTexture" value="track_icons.png"/>
+					<Property key="ImageCoord" value="288 32 32 32"/>
+					<Property key="Alpha" value="0.6"/>
+					<UserString key="tip" value="#{user}: #{rating}"/>
+				</Widget>
+				<Widget type="TextBox" skin="TextBox" position="234 6 16 16" name="UserRateVal">
+					<Property key="Caption" value="5"/>
+					<Property key="TextColour" value="0.6 0.8 1"/>
+					<UserString key="tip" value="#{user}: #{rating}"/>
+				</Widget>
+				<Widget type="Slider" skin="Slider" position="252 8 90 12" name="UserRate">
+					<Property key="Colour" value="0.6 1 1"/>
+					<UserString key="tip" value="#{user}: #{rating}"/>
+				</Widget>
+
 				<Widget type="TextBox" skin="TextBox" position="528 528 88 20">
 					<Property key="Caption" value="#{Author}"/>
 					<Property key="TextColour" value="0.4 0.5 0.6"/>
@@ -336,33 +365,6 @@
 							<UserString key="tip" value="#{sum}"/>
 						</Widget>
 
-						<!-- user xml -->
-						<Widget type="ImageBox" skin="ImageBox" position="2 44 20 20">
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="320 32 32 32"/>
-							<Property key="Alpha" value="0.7"/>
-							<UserString key="tip" value="#{user}: #{bookmark}"/>
-						</Widget>
-						<Widget type="Button" skin="CheckBox" position="20 48 20 20" name="UserBookm">
-							<Property key="Caption" value=""/>
-							<Property key="TextColour" value="0.6 1 1"/>
-							<UserString key="tip" value="#{user}: #{bookmark}"/>
-						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="40 44 20 20">
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="288 32 32 32"/>
-							<Property key="Alpha" value="0.6"/>
-							<UserString key="tip" value="#{user}: #{rating}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="64 46 16 16" name="UserRateVal">
-							<Property key="Caption" value="5"/>
-							<Property key="TextColour" value="0.6 0.8 1"/>
-							<UserString key="tip" value="#{user}: #{rating}"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="82 48 80 12" name="UserRate">
-							<Property key="Colour" value="0.6 1 1"/>
-							<UserString key="tip" value="#{user}: #{rating}"/>
-						</Widget>
 					</Widget>
 				</Widget>
 

@@ -775,7 +775,6 @@ descr="Really short and circular tracks. 2 Laps on each.">
 		<t name="TestC2-PipeHalf"	laps="2"/>
 		<t name="TestC3-PipeBig"	laps="2"/>
 		<t name="TestC4-Ow"			laps="2"/>
-		<t name="TestC5-Egg"		laps="2"/>
 		<t name="TestC6-Temp"		laps="2"/>
 		<t name="TestC7-Oc"			laps="2"/>
 		<t name="TestC8-Align"		laps="2"/>

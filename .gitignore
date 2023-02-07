@@ -22,7 +22,7 @@ Dependencies/*
 #config
 #hud
 #gui
-tracks
+tracks*
 cars
 Media/road/
 #objects
