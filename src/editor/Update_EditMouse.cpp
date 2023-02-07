@@ -29,7 +29,7 @@ void App::EditMouse()
 	if (edMode == ED_Height)  ///  edit ter height val
 	{
 		if (mbRight)
-		{	Real ym = -vNew.y * 0.5f * moveMul;
+		{	Real ym = -vNew.y * 4.f * moveMul;
 			terSetH += ym;
 	}	}
 	

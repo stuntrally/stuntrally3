@@ -170,10 +170,11 @@ void CGui::slTerPar(SV*sv)
 }
 
 //  save new hmap
-void CGui::saveNewHmap(float* hfData, int size, bool bNew)
+void CGui::saveNewHmap(float* hfData, int size, int add, bool bNew)
 {
-	auto file = scn->getHmap(scn->terCur, true);
-	// LogO("TER saveNewHmap  " + toStr(size) +"  "+ file);
+	auto file = scn->getHmap(add ? scn->sc->tds.size() :  // if add, last
+		scn->terCur, bNew);
+	LogO("TER+ New Hmap  " + toStr(size) +"  "+ file);
 	std::ofstream of;
 	of.open(file.c_str(), std::ios_base::binary);
 	of.write((const char*)&hfData[0], size);

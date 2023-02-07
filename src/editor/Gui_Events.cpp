@@ -107,15 +107,15 @@ void CGui::btnTersAdd(WP)
 	t.UpdLayers();
 
 	//  hmap size from gui
-	int s = UpdTxtTerSize();
-	int size = s * s * sizeof(float);
+	int s = UpdTxtTerSize(), s2 = s * s;
+	int size = s2 * sizeof(float);
 
 	//  flat Hmap
 	t.hfHeight.clear();
-	t.hfHeight.resize(s * s);
+	t.hfHeight.resize(s2, app->terSetH);
 	
 	++scn->terCur;  // inc cur
-	saveNewHmap(&t.hfHeight[0], size, false);
+	saveNewHmap(&t.hfHeight[0], size, 1, false);
 
 	//  td setup
 	t.iVertsX = s;  t.iVertsXold = s;

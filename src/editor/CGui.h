@@ -153,7 +153,7 @@ public:
 	// SV svTerErrorNorm;  void slTerErrorNorm(SV*);
 	SV /*svTerNormScale, svTerSpecPow,*/ svTerSpecPowEm;  void slTerPar(SV*);
 	
-	void saveNewHmap(float* hfData, int size, bool bNew=true);  // to file
+	void saveNewHmap(float* hfData, int size, int add = 0, bool bNew=true);  // to file
 	void btnTerrainNew(WP), btnTerGenerate(WP);
 	void btnTerrainHalf(WP), btnTerrainDouble(WP), btnTerrainMove(WP);  // tools
 	
