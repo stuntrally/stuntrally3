@@ -225,7 +225,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
    			break;
 
 
-		//  Fps, WireFrame  F11, F10
+		//  📈 Fps, WireFrame  F11, F10
 		case key(F11):
 			gui->ckFps.Invert();  return;
 
@@ -260,19 +260,19 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	}
 
 
-	///  Road keys  * * * * * * * * * * * * * * *
+	///  🛣️ Road keys  * * * * * * * * * * * * * * *
 	if (bRoad)
 		keyPressRoad(skey);
 
 
-	//  ter brush shape
+	//  ⛰️ Ter brush shape
 	if (edMode < ED_Road && !alt && edit)
 	switch (skey)
 	{
 		case key(K):    if (ctrl)  {  mBrShape[curBr] = (EBrShape)((mBrShape[curBr]-1 + BRS_ALL) % BRS_ALL);  updBrush();  }  break;
 		case key(L):    if (ctrl)  {  mBrShape[curBr] = (EBrShape)((mBrShape[curBr]+1) % BRS_ALL);            updBrush();  }  break;
 		case key(N): case key(COMMA):   mBrOct[curBr] = std::max(1, mBrOct[curBr]-1);  updBrush();  break;
-		case key(M): case key(PERIOD):  mBrOct[curBr] = std::min(7, mBrOct[curBr]+1);  updBrush();  break;
+		case key(M): case key(PERIOD):  mBrOct[curBr] = std::min(9, mBrOct[curBr]+1);  updBrush();  break;
 
 		//  more ters  ------
 		case key(KP_ENTER):  case key(RETURN):

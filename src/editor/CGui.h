@@ -78,9 +78,9 @@ public:
 
 	//  🪟🛠️ tool windows texts  ----
 	const static int
-		BR_TXT=9, RD_TXT=14, RDS_TXT=11,  //  brush, road, road stats
-		ST_TXT=6, FL_TXT=6, OBJ_TXT=6,  //  start, fluids, objects
-		EMT_TXT=8;  //  emitters
+		BR_TXT = 10, RD_TXT = 14, RDS_TXT = 11,  //  brush, road, road stats
+		ST_TXT = 6, FL_TXT = 6, OBJ_TXT = 6,  //  start, fluids, objects
+		EMT_TXT = 8;  //  emitters
 
 	Txt	brTxt[BR_TXT], brVal[BR_TXT], brKey[BR_TXT],
 		rdTxt[RD_TXT], rdVal[RD_TXT], rdKey[RD_TXT],
@@ -157,7 +157,7 @@ public:
 	void btnTerrainNew(WP), btnTerGenerate(WP);
 	void btnTerrainHalf(WP), btnTerrainDouble(WP), btnTerrainMove(WP);  // tools
 	
-	void btnBrushPreset(WP);
+	void btnBrushPreset(WP), btnBrushRandom(WP);
 	
 	//  ⛰️🌀 Ter Generator
 	SV svTerGenScale, svTerGenOfsX, svTerGenOfsY;

@@ -23,6 +23,26 @@ const float App::brClr[4][3] = {
 	{0.3, 0.8, 0.1}, {0.2, 0.8, 0.6}, {0.6, 0.9, 0.6}, {0.4, 0.7, 1.0} };
 
 
+//  brush random
+void CGui::btnBrushRandom(WP)
+{
+	app->SetBrushRandom();
+}
+void App::SetBrushRandom()
+{
+	// mBrSize[curBr] = Math::RangeRandom(, );
+	// mBrIntens[curBr] = st.Intens;
+	mBrShape[curBr] = (EBrShape)(pow(Math::UnitRandom(), 0.3)*BRS_ALL);
+	mBrPow[curBr] = Math::RangeRandom(0.2, 6.0);
+	
+	mBrFq[curBr]  = pow(Math::RangeRandom(0.01, 1.0), 2.0);
+	mBrNOf[curBr] = Math::RangeRandom(-30.0, 30.0);
+	mBrOct[curBr] = Math::RangeRandom(1, 9);
+
+	updBrush();  UpdEditWnds();
+}
+
+//  brush preset
 void CGui::btnBrushPreset(WP img)
 {
 	int id = 0;

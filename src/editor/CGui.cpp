@@ -25,14 +25,14 @@ CGui::CGui(App* app1)
 	: app(app1), gcom(0)
 {	
 	int i;  // tool texts
-	for (i=0; i<BR_TXT; ++i){  brTxt[i]=0;  brVal[i]=0;  brKey[i]=0;  }
-	for (i=0; i<RD_TXT; ++i){  rdTxt[i]=0;  rdVal[i]=0;  rdKey[i]=0;  rdImg[i]=0;  }
-	for (i=0; i<RDS_TXT;++i){  rdTxtSt[i]=0;  rdValSt[i]=0;  }
+	for (i=0; i < BR_TXT; ++i){  brTxt[i]=0;  brVal[i]=0;  brKey[i]=0;  }
+	for (i=0; i < RD_TXT; ++i){  rdTxt[i]=0;  rdVal[i]=0;  rdKey[i]=0;  rdImg[i]=0;  }
+	for (i=0; i < RDS_TXT;++i){  rdTxtSt[i]=0;  rdValSt[i]=0;  }
 
-	for (i=0; i<ST_TXT; ++i)  stTxt[i]=0;
-	for (i=0; i<FL_TXT; ++i)  flTxt[i]=0;
-	for (i=0; i<OBJ_TXT;++i)  objTxt[i]=0;
-	for (i=0; i<EMT_TXT;++i)  emtTxt[i]=0;
+	for (i=0; i < ST_TXT; ++i)  stTxt[i]=0;
+	for (i=0; i < FL_TXT; ++i)  flTxt[i]=0;
+	for (i=0; i < OBJ_TXT;++i)  objTxt[i]=0;
+	for (i=0; i < EMT_TXT;++i)  emtTxt[i]=0;
 	
 	for (i=0; i < 4/*MTRs*/; ++i)  {  btnRoad[i]=0;  btnPipe[i]=0;  }
 	for (i=0; i < P_All; ++i)  {  liPickX[i] = 0.4f;  liPickW[i] = 300;  }

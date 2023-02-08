@@ -147,12 +147,23 @@ void CGui::InitGui()
 	int i;
 	for (i=0; i < RD_TXT/*MAX*/; ++i)
 	{	String s = toStr(i);
-		if (i<BR_TXT){  brTxt[i] = fTxt("brTxt"+s);  brVal[i] = fTxt("brVal"+s);  brKey[i] = fTxt("brKey"+s);  }
-		if (i<RD_TXT){  rdTxt[i] = fTxt("rdTxt"+s);  rdVal[i] = fTxt("rdVal"+s);  rdKey[i] = fTxt("rdKey"+s);  rdImg[i] = fImg("rdImg"+s);  }
-		if (i<RDS_TXT){ rdTxtSt[i] = fTxt("rdTxtSt"+s);  rdValSt[i] = fTxt("rdValSt"+s);  }
+		if (i < BR_TXT)  {
+			brTxt[i] = fTxt("brTxt"+s);
+			brVal[i] = fTxt("brVal"+s);
+			brKey[i] = fTxt("brKey"+s);  }
+		if (i < RD_TXT)  {
+			rdTxt[i] = fTxt("rdTxt"+s);
+			rdVal[i] = fTxt("rdVal"+s);
+			rdKey[i] = fTxt("rdKey"+s);
+			rdImg[i] = fImg("rdImg"+s);  }
+		if (i < RDS_TXT)  {
+			rdTxtSt[i] = fTxt("rdTxtSt"+s);
+			rdValSt[i] = fTxt("rdValSt"+s);  }
 
-		if (i<ST_TXT)   stTxt[i] = fTxt("stTxt"+s);    if (i<FL_TXT)  flTxt[i] = fTxt("flTxt"+s);
-		if (i<OBJ_TXT)  objTxt[i]= fTxt("objTxt"+s);  if (i<EMT_TXT)  emtTxt[i]= fTxt("emtTxt"+s);
+		if (i < ST_TXT)   stTxt[i] = fTxt("stTxt"+s);
+		if (i < FL_TXT)   flTxt[i] = fTxt("flTxt"+s);
+		if (i < OBJ_TXT)  objTxt[i]= fTxt("objTxt"+s);
+		if (i < EMT_TXT)  emtTxt[i]= fTxt("emtTxt"+s);
 	}
 
 
@@ -163,38 +174,39 @@ void CGui::InitGui()
 
 	///  ⛰️ brush presets   o o o o o o
 	ScrollView* scv = mGui->findWidget<ScrollView>("svBrushes");
-	int j=0, n=0;  const int z = 128;
-	for (i=0; i < app->brSetsNum; ++i,++n)
+	int yy=0, xx=0;  const int uv = 128;
+	for (i=0; i < app->brSetsNum; ++i,++xx)
 	{
-		const App::BrushSet& st = app->brSets[i];  const String s = toStr(i);
-		int x,y, xt,yt, sx, row1 = i-14;  // y,x for next lines
-		if (row1 < 0)  // top row
+		const auto& st = app->brSets[i];  const String s = toStr(i);
+		int x,y, xt,yt, sx; //, row1 = i-14;  // y,x for next lines
+		/*if (row1 < 0)  // top row
 		{	x = 10+ i*50;  y = 10;
 			xt = x + 20;  yt = y + 50;  sx = 48;
-		}else
-		{	if (st.newLine==1 && n > 0 || n > 9) {  n=0;  ++j;  }  // 1 new line
-			x = 20+ n*70;  y = 10+ j*70;
-			xt = x + 25;  yt = y + 55;  sx = 64;
-			if (st.newLine < 0)  n -= st.newLine;  // -1 empty x
+		}else*/
+		{	if (st.newLine==1 && xx > 0 || xx > 9) {  xx=0;  ++yy;  }  // 1 new line
+			x = 0+ xx*70;  y = 10+ yy*70;
+			xt = x + 15;  yt = y + 55;  sx = 56; //64;
+			if (st.newLine < 0)  xx -= st.newLine;  // -1 empty x
 		}
 		Img img = scv->createWidget<ImageBox>("ImageBox", x,y, sx,sx, Align::Default, "brI"+s);
 		img->eventMouseButtonClick += newDelegate(this, &CGui::btnBrushPreset);
 		img->setUserString("tip", st.name);  img->setNeedToolTip(true);
 		img->setImageTexture("brushes.png");
-		img->setImageCoord(IntCoord(i%16*z,i/16*z, z,z));
+		img->setImageCoord(IntCoord( i%16*uv, i/16*uv, uv,uv ));
 		if (!st.name.empty())  img->eventToolTip += newDelegate(gcom, &CGuiCom::notifyToolTip);
 		gcom->setOrigPos(img, "EditorWnd");
 		
-		Txt txt = scv->createWidget<TextBox>("TextBox", xt,yt, 40,22, Align::Default, "brT"+s);
+		Txt txt = scv->createWidget<TextBox>("TextBox", xt,yt, 60,22, Align::Default, "brT"+s);
 		txt->setCaption(fToStr(st.Size,0,2));
-			int edMode = st.edMode;
-			float fB = app->brClr[edMode][0], fG = app->brClr[edMode][1], fR = app->brClr[edMode][2];
-			float m = st.Size / 160.f + 0.4f;
-			#define mul(v,m)  min(1.f, max(0.f, v * m))
-		txt->setTextColour(Colour(mul(fB,m), mul(fG,m), mul(fR,m)) );
+		auto si = st.Size, in = st.Intens;
+		txt->setCaption(
+			gcom->getClrVal( si / 150.f * 17.f) + fToStr(si,0,2) + " "+ 
+			gcom->getClrVal( in / 60.f * 17.f) + fToStr(in,0,2));
+		txt->setFontHeight(st.Size /10 + 15);
 		gcom->setOrigPos(txt, "EditorWnd");
 	}
 	//scv->setCanvasSize(1020,j*90+300);
+	Btn("BrushRandom", btnBrushRandom);
 
 
 	float f=0.f;  i=0;  // temp vars

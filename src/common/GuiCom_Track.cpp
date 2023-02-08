@@ -40,15 +40,19 @@ using namespace std;
 //-----------------------------------------------------------------------------------------------------------
 
 //  🌈📐 track difficulties colors from value
+const String CGuiCom::clrsVal[CGuiCom::iClrsVal] =  // ed val
+	{"#0040FF", "#0080FF", "#30C0FF", "#00FFFF", "#00FF80", "#00FF00", "#60FF00", "#C0FF00", "#FFFF00",
+	 "#FFD000", "#FF9000", "#FF5000", "#FF2080", "#FF40C0", "#FF80FF", "#FFA0C0", "#D0D0D0", "#B0B0FF", "#8080FF", "#C040FF", "#FF4040", "#FF1010" };
 const String CGuiCom::clrsDiff[CGuiCom::iClrsDiff] =  // difficulty
 	{"#60C0FF", "#00FF00", "#60FF00", "#C0FF00", "#FFFF00", "#FFC000", "#FF6000", "#FF4040", "#FF7090"};
 const String CGuiCom::clrsRating[CGuiCom::iClrsRating] =  // rating
 	{"#808080", "#606060", "#7090A0", "#60C8D8", "#A0D0F0", "#D0E0FF", "#FCFEFF"};
 const String CGuiCom::clrsLong[CGuiCom::iClrsLong] =  // long
 	{"#E0D0D0", "#E8C0C0", "#F0B0B0", "#F8A0A0", "#FF9090", "#FF8080", "#F07070", "#F06060", "#E04040", "#D03030", "#D01818"};
-const String CGuiCom::clrsSum[CGuiCom::iClrsSum] =  // long
+const String CGuiCom::clrsSum[CGuiCom::iClrsSum] =  // sum sigma
 	{"#D0D0E0", "#C0C0E8", "#B0B0F0", "#A0A0F8", "#9090FF", "#8080F0", "#A070F0", "#A050FF", "#C080E0", "#C060C0"};
 
+const String CGuiCom::getClrVal(int i)    {  return clrsVal   [std::min(iClrsVal   -1,i)];  }
 const String CGuiCom::getClrDiff(int i)   {  return clrsDiff  [std::min(iClrsDiff  -1,i)];  }
 const String CGuiCom::getClrRating(int i) {  return clrsRating[std::min(iClrsRating-1,i)];  }
 const String CGuiCom::getClrLong(int i)   {  return clrsLong  [std::min(iClrsLong  -1,i)];  }

@@ -3,6 +3,7 @@
 #include "CScene.h"
 #include "CApp.h"
 #include "CGui.h"
+#include "GuiCom.h"
 #include "Road.h"
 #include <OgreSceneNode.h>
 #include <MyGUI_InputManager.h>
@@ -179,51 +180,55 @@ void App::KeyTxtTerrain(Real q)
 	if (first)  // once, static text
 	{	first = false;
 
-		brTxt[0]->setCaption(TR("#{Brush_Size}"));		brKey[0]->setCaption("- =");
-		brTxt[1]->setCaption(TR("#{Brush_Force}"));		brKey[1]->setCaption("[ ]");
-		brTxt[2]->setCaption(TR("#{Brush_Power}"));		brKey[2]->setCaption("K L");//; \'
-		brTxt[3]->setCaption(TR("#{Brush_Shape}"));		brKey[3]->setCaption("ctrl");//-K L
+		brTxt[0]->setCaption(TR("#{RplCurrent}"));		brKey[0]->setCaption("Enter");
+		brTxt[1]->setCaption(TR("#{Brush_Size}"));		brKey[1]->setCaption("- =");
+		brTxt[2]->setCaption(TR("#{Brush_Force}"));		brKey[2]->setCaption("[ ]");
+		brTxt[3]->setCaption(TR("#{Brush_Power}"));		brKey[3]->setCaption("K L");//; \'
+		brTxt[4]->setCaption(TR("#{Brush_Shape}"));		brKey[4]->setCaption("ctrl");//-K L
 
-		brTxt[4]->setCaption(TR("#{Brush_Freq}"));		brKey[4]->setCaption("O P");
-		brTxt[5]->setCaption(TR("#{Brush_Octaves}"));	brKey[5]->setCaption("N M");//, .
-		brTxt[6]->setCaption(TR("#{Brush_Offset}"));	brKey[6]->setCaption("9 0");
+		brTxt[5]->setCaption(TR("#{Brush_Freq}"));		brKey[5]->setCaption("O P");
+		brTxt[6]->setCaption(TR("#{Brush_Octaves}"));	brKey[6]->setCaption("N M");//, .
+		brTxt[7]->setCaption(TR("#{Brush_Offset}"));	brKey[7]->setCaption("9 0");
 	}
-	brVal[0]->setCaption(fToStr(mBrSize[curBr],1,4));
-	brVal[1]->setCaption(fToStr(mBrIntens[curBr],1,4));
-	brVal[2]->setCaption(fToStr(mBrPow[curBr],2,4));
-	brVal[3]->setCaption(TR("#{Brush_Shape"+csBrShape[mBrShape[curBr]]+"}"));
+	brVal[0]->setCaption(toStr(scn->terCur+1) +" / "+ toStr(scn->ters.size()));
+
+	auto si = mBrSize[curBr], in  = mBrIntens[curBr], pw = mBrPow[curBr];
+	brVal[1]->setCaption( gcom->getClrVal( si / 150.f * 17.f) + fToStr(si,1,4));
+	brVal[2]->setCaption( gcom->getClrVal( in / 60.f * 17.f) + fToStr(in,1,4));
+	brVal[3]->setCaption( gcom->getClrVal( powf(pw, 2.f) *1.f + 4.f) + fToStr(pw,2,4));
+	brVal[4]->setCaption(TR("#{Brush_Shape"+csBrShape[mBrShape[curBr]]+"}"));
 
 	bool brN = mBrShape[curBr] >= BRS_Noise;  int i;
-	for (i=4; i<=6; ++i)
+	for (i = 5; i <= 7; ++i)
 	{	brTxt[i]->setVisible(brN);  brVal[i]->setVisible(brN);  brKey[i]->setVisible(brN);	}
 
 	if (brN)
-	{	brVal[4]->setCaption(fToStr(mBrFq[curBr],2,4));
-		brVal[5]->setCaption(toStr(mBrOct[curBr]));
-		brVal[6]->setCaption(fToStr(mBrNOf[curBr],1,4));
+	{	brVal[5]->setCaption(fToStr(mBrFq[curBr],2,4));
+		brVal[6]->setCaption(toStr(mBrOct[curBr]));
+		brVal[7]->setCaption(fToStr(mBrNOf[curBr],1,4));
 	}
 
 	bool edH = edMode != ED_Height;
 	const static MyGUI::Colour clrEF[2] = {MyGUI::Colour(0.7,1.0,0.7), MyGUI::Colour(0.6,0.8,1.0)};
 	const MyGUI::Colour& clr = clrEF[!edH ? 0 : 1];
-	i=7;
+	i = 8;
 	{	brTxt[i]->setTextColour(clr);	brVal[i]->setTextColour(clr);  brKey[i]->setTextColour(clr);  }
 
 	if (edMode == ED_Filter)
 	{
-		brTxt[7]->setCaption(TR("#{Brush_Filter}"));	brKey[7]->setCaption("  1 2");
-		brVal[7]->setCaption(fToStr(mBrFilt,1,3));
+		brTxt[8]->setCaption(TR("#{Brush_Filter}"));	brKey[8]->setCaption("  1 2");
+		brVal[8]->setCaption(fToStr(mBrFilt,1,3));
 	}
 	else if (!edH && road && road->bHitTer)
 	{
-		brTxt[7]->setCaption(TR("#{Brush_Height}"));	brKey[7]->setCaption("RMB");
-		brVal[7]->setCaption(fToStr(terSetH,1,4));
+		brTxt[8]->setCaption(TR("#{Brush_Height}"));	brKey[8]->setCaption("RMB");
+		brVal[8]->setCaption(fToStr(terSetH,1,4));
 	}else
-	{	brTxt[7]->setCaption("");  brVal[7]->setCaption("");  brKey[7]->setCaption("");  }
+	{	brTxt[8]->setCaption("");  brVal[8]->setCaption("");  brKey[8]->setCaption("");  }
 	
-	brTxt[8]->setCaption(edH ? "" : TR("#{Brush_CurrentH}"));
-	brVal[8]->setCaption(edH ? "" : fToStr(road->posHit.y,1,4));
-	brKey[8]->setCaption(brLockPos ? TR("#{Lock}") : "");
+	brTxt[9]->setCaption(edH ? "" : TR("#{Brush_CurrentH}"));
+	brVal[9]->setCaption(edH ? "" : fToStr(road->posHit.y,1,4));
+	brKey[9]->setCaption(brLockPos ? TR("#{Lock}") : "");
 	
 	
 	//  edit  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .

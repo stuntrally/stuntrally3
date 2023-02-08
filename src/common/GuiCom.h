@@ -170,9 +170,11 @@ public:
 	Ck ckTrkColVis[COL_VIS];  void chkTrkColVis(Ck*);
 	void ChkUpd_Col();
 	//  const list column widths  and 🌈 value colors
-	const static int colTrk[35],  iClrsDiff = 9, iClrsRating = 7, iClrsLong = 11, iClrsSum = 10;
-	const static Ogre::String clrsDiff[iClrsDiff], clrsRating[iClrsRating], clrsLong[iClrsLong], clrsSum[iClrsSum];
-	const static Ogre::String getClrDiff(int), getClrRating(int), getClrLong(int), getClrSum(int);
+	const static int colTrk[35],
+		iClrsVal = 22, iClrsDiff = 9, iClrsRating = 7, iClrsLong = 11, iClrsSum = 10;
+	const static Ogre::String
+		clrsVal[iClrsVal], clrsDiff[iClrsDiff], clrsRating[iClrsRating], clrsLong[iClrsLong], clrsSum[iClrsSum],
+		getClrVal(int), getClrDiff(int), getClrRating(int), getClrLong(int), getClrSum(int);
 
 
 	//  🔍 Find track

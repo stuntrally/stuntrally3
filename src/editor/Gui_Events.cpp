@@ -90,7 +90,7 @@ void CGui::updTersTxt()
 {
 	int all = scn->ters.size();
 	if (txTersCur)
-		txTersCur->setCaption(TR("#{RplCurrent}: " + toStr(scn->terCur+1) +"/"+ toStr(all)));
+		txTersCur->setCaption(TR("#{RplCurrent}: " + toStr(scn->terCur+1) +" / "+ toStr(all)));
 }
 
 //  ➕ ter add  ---------------

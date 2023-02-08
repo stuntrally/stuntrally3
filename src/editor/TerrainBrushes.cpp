@@ -5,7 +5,7 @@
 //  Brush Presets data
 //---------------------------------------------------------------------------------------------------------------
 const App::BrushSet App::brSets[App::brSetsNum] = {
-	//ED_MODE,curBr,Size,Intens, Pow,  Freq,  Ofs, Oct, EBrShape,  Filter,HSet, newLine, Name
+//  ED_MODE, curBr, Size,Intens, Pow,  Freq,  Ofs, Oct, EBrShape,  Filter,HSet, newLine, Name
 //------  easy sinus
 	{ED_Deform,0,  16.f, 10.f,   2.f,  1.f,   0.f, 5,   BRS_Sinus,  -1.f,-0.01f, 0, "Small"},
 	{ED_Deform,0,  32.f, 20.f,   2.f,  1.f,   0.f, 5,   BRS_Sinus,  -1.f,-0.01f, 0, "Medium"},
@@ -17,7 +17,7 @@ const App::BrushSet App::brSets[App::brSetsNum] = {
 	{ED_Smooth,1,  22.f, 30.f,   2.f,  1.f,   0.f, 5,   BRS_Sinus,  -1.f,-0.01f, 0, "Smooth medium"},
 	{ED_Smooth,1,  16.f, 60.f,   2.f,  1.f,   0.f, 5,   BRS_Sinus,  -1.f,-0.01f, 0, "Smooth heavy"},
 																				 
-	{ED_Filter,3,  16.f, 40.f,   4.f,  1.f,   0.f, 5,   BRS_Sinus,   2.f,-0.01f, 0, "Filter small"},
+	{ED_Filter,3,  16.f, 40.f,   4.f,  1.f,   0.f, 5,   BRS_Sinus,   2.f,-0.01f, 1, "Filter small"},
 	{ED_Filter,3,  32.f, 20.f,   3.f,  1.f,   0.f, 5,   BRS_Sinus,   4.f,-0.01f, 0, "Filter big"},
 	{ED_Filter,3, 128.f, 20.f,   2.f,  1.f,   0.f, 5,   BRS_Sinus,   2.f,-0.01f, 0, "Filter huge"},
 
@@ -27,7 +27,7 @@ const App::BrushSet App::brSets[App::brSetsNum] = {
 	{ED_Deform,0,  48.f, 30.f,   0.05f,1.f,   0.f, 5,BRS_Triangle,  -1.f,-0.01f, 0, "Drop"},
 
 //------  noise	small  Oo
-	{ED_Deform,0,  30.f, 20.f,   1.f,  0.72f, 1.5f, 3,  BRS_Noise,  -1.f,-0.01f, 0, "Noise low"},
+	{ED_Deform,0,  30.f, 20.f,   1.f,  0.72f, 1.5f, 3,  BRS_Noise,  -1.f,-0.01f, 1, "Noise low"},
 	{ED_Deform,0,  48.f, 20.f,   2.f,  1.f,   2.5f, 5,  BRS_Noise,  -1.f,-0.01f, 0, "Noise normal"},
 	{ED_Deform,0,  24.f, 20.f,   4.f,  0.93f, 2.7f, 5,  BRS_Noise,  -1.f,-0.01f,-1, "Noise random"},
 //------  cracks down  xXx
@@ -91,7 +91,7 @@ const App::BrushSet App::brSets[App::brSetsNum] = {
 
 //------  row | or -
 	{ED_Deform,0,  32.f, 40.f,   7.9f, 1.f,  15.4f, 7,  BRS_Noise,  -1.f,-0.01f, 1, "Row| noised"},
-	{ED_Deform,0,  51.f, 20.f,  1.19f, 0.4f, -1.0f, 5,  BRS_Noise2, -1.f,-0.01f, 0, "Row| mirror"},
+	{ED_Deform,0,  51.f, 20.f,   1.19f,0.4f, -1.0f, 5,  BRS_Noise2, -1.f,-0.01f, 0, "Row| mirror"},
 	{ED_Deform,0,  81.f, 30.f,   0.58f,0.48f, 6.6f, 7,  BRS_Noise2, -1.f,-0.01f, 0, "Row| single crack"},
 
 	{ED_Deform,0,  20.f, 20.f,   0.69f,1.0f,  30.f, 4,  BRS_Noise2, -1.f,-0.01f, 0, "Row- sharp"},

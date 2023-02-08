@@ -490,8 +490,12 @@
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#40E040#{Brushes}"/>
-
-						<Widget type="ScrollView" skin="ScrollViewEmpty" position="0 5 750 488" name="svBrushes">
+						<Widget type="Button" skin="Button" position="0 5 96 30" name="BrushRandom">
+							<Property key="Colour" value="0.3 0.9 0.6"/>
+							<Property key="Caption" value="#{CarClrRandom}"/>
+							<Property key="TextColour" value="0.3 0.9 0.6"/>
+						</Widget>
+						<Widget type="ScrollView" skin="ScrollViewEmpty" position="20 5 750 488" name="svBrushes">
 							<Property key="CanvasSize" value="1200 1800"/>
 						</Widget>
 					</Widget>

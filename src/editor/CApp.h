@@ -148,7 +148,7 @@ public:
 	const static BrushSet brSets[brSetsNum];
 	const static float brClr[4][3];
 
-	void SetBrushPreset(int id);
+	void SetBrushPreset(int id), SetBrushRandom();
 	void updBrush();
 
 
