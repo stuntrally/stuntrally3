@@ -32,7 +32,7 @@
 		<Property key="Alpha" value="0.6"/>
 		<Property key="Snap" value="true"/>
 		<UserString key="NotSized" value="1"/> 
-		<!-- Size * -->
+		<!-- Current -->
 		<Widget type="TextBox" skin="TextBoxS" position="4 5 70 25" name="brTxt0">
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="TextColour" value="0.7 0.86 1.0"/>

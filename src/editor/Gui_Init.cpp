@@ -206,7 +206,7 @@ void CGui::InitGui()
 		gcom->setOrigPos(txt, "EditorWnd");
 	}
 	//scv->setCanvasSize(1020,j*90+300);
-	Btn("BrushRandom", btnBrushRandom);
+	Btn("BrushRandom", btnBrushRandom);  Btn("BrushRandom2", btnBrushRandom2);
 
 
 	float f=0.f;  i=0;  // temp vars

@@ -157,7 +157,7 @@ public:
 	void btnTerrainNew(WP), btnTerGenerate(WP);
 	void btnTerrainHalf(WP), btnTerrainDouble(WP), btnTerrainMove(WP);  // tools
 	
-	void btnBrushPreset(WP), btnBrushRandom(WP);
+	void btnBrushPreset(WP), btnBrushRandom(WP),btnBrushRandom2(WP);
 	
 	//  ⛰️🌀 Ter Generator
 	SV svTerGenScale, svTerGenOfsX, svTerGenOfsY;

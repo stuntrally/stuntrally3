@@ -26,13 +26,19 @@ const float App::brClr[4][3] = {
 //  brush random
 void CGui::btnBrushRandom(WP)
 {
-	app->SetBrushRandom();
+	app->SetBrushRandom(0);
 }
-void App::SetBrushRandom()
+void CGui::btnBrushRandom2(WP)
+{
+	app->SetBrushRandom(1);
+}
+void App::SetBrushRandom(int n)
 {
 	// mBrSize[curBr] = Math::RangeRandom(, );
 	// mBrIntens[curBr] = st.Intens;
-	mBrShape[curBr] = (EBrShape)(pow(Math::UnitRandom(), 0.3)*BRS_ALL);
+	float r = Math::UnitRandom();
+	mBrShape[curBr] = n ? (r > 0.5f ? BRS_Noise2 : BRS_Noise) :
+		(EBrShape)(Math::UnitRandom() * BRS_Noise);
 	mBrPow[curBr] = Math::RangeRandom(0.2, 6.0);
 	
 	mBrFq[curBr]  = pow(Math::RangeRandom(0.01, 1.0), 2.0);
