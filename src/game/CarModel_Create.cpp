@@ -262,8 +262,6 @@ void CarModel::Create()
 	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    "g", ghost, RV_CarGlass, 0, bLogInfo);
 	
 	bool sph = vType == V_Sphere;
-	if (sph)  //; par temp-
-		ndCar->setScale(2.f,2.f,2.f);
 
 
 	//  💡 car lights  ----------------------

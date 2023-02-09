@@ -369,18 +369,21 @@ hlms TW_body1 pbs // : car_body
 	diffuse_map   TW_body_red.png
 	specular_map  TW_body_red.png
 	metalness_map TW_refl.png
-	// diffuse 0.1 0.1 0.2  // fix mesh ..?
+	diffuse  0.1 0.1 0.1
 	specular 0.1 0.1 0.1
 	// fresnel 3.1
 	roughness 0.4
 	metalness 0.8
 }
-hlms TW_glass pbs : car_interior
+hlms TW_glass pbs //: car_interior
 {
-	diffuse_map  white.png
-	diffuse  0.0 0.0 0.0
+	diffuse_map  TW_glass.png
+	diffuse  0.1 0.1 0.1
 	specular 0.3 0.3 0.3 //4
-	// fresnelScaleBiasPower 0.7 0.15 4
+	fresnel 1.0
+	fresnel_coeff 0.4 0.4 0.4
+	roughness 0.1
+	metalness 0.9
 }
 hlms TW_interior pbs : car_interior
 {
@@ -572,7 +575,6 @@ hlms V3_interior pbs : car_interior
 {
 	diffuse_map  V3_interior.png
 	//specular_map  V3_interior_spec.png
-	ambient  0.8 0.8 0.8
 	diffuse  0.8 0.8 0.8
 	specular 1.0 1.0 1.0 //16
 	// refl_amount 0.05
@@ -592,17 +594,30 @@ hlms O_body1 pbs : car_body
 	diffuse_map  O_body_red.png
 	diffuse	  0.7 0.4 0.1
 }
-hlms O_glass pbs //: car_glass2
+// test refl
+hlms O_glass1 pbs //: car_glass
+{
+	diffuse	  0 0 0
+	specular  1 1 1
+	fresnel 1.0
+	fresnel_coeff 0.1 0.1 0.1
+	roughness 0.1
+	transparency 0.9
+	transparency_mode transparent
+}
+hlms O_glass pbs //: car_glass
 {
 	diffuse_map  O_glass.png
-	// diffuse	  0.0 0.0 0.0
-	// specular  0.0 0.0 0.0
-	workflow metallic
-	// fresnel 3.1
-	fresnel_coeff 0.3 0.3 0.3
-	// diffuse	  0.7 0.7 0.7
-	roughness 0.9
-	metalness 0.4
+	diffuse	  0.0 0.0 0.0
+	specular  0.6 0.6 0.6
+	// specular  1 1 1
+	// workflow metallic
+	// fresnel 1.0
+	fresnel_coeff 0.8 0.8 0.8
+	roughness 0.01
+	// metalness 0.9
+	transparency 0.99
+	transparency_mode transparent
 }
 
 //  O refl test  -------------------------------------------------
@@ -736,7 +751,7 @@ hlms U8_body pbs : car_body
     //two_sided true
 	specular  0.4 0.5 0.6
 }
-hlms U8_glass pbs : car_glass
+hlms U8_glass pbs : car_glass2
 {
 	diffuse_map  U8_glass.png
 }
