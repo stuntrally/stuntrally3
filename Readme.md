@@ -2,9 +2,9 @@
 
 WIP Port and continuation of latest [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.7 using latest [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0.  
 
-Already playable game in Single Player modes.  
-WIP SR3 Track Editor.
+Already playable game in Single Player modes. WIP SR3 Track Editor, most tracks looking good.  
 
+Changes and new features listed on top of [changelog](https://stuntrally.tuxfamily.org/wiki/doku.php?id=changelog).  
 For details see [Roadmap](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap#sr_3) with missing features and todo. Help and contributing is welcome.
 
 Progress posts on [SR forum](https://forum.freegamedev.net/viewtopic.php?f=81&t=18515). Dev questions in [Ogre topic](https://forums.ogre3d.org/viewtopic.php?t=96576).
@@ -37,7 +37,8 @@ Use Conan to get all deps (same as for original Stunt Rally), info on old [wiki 
 This is optional but recommended, especially on Windows.  
 See [CMakeLists.txt](/CMakeLists.txt) and adjust if needed, it has some of my setup fixes, for SDL2, OpenAL etc.  
 
-4. Have [SR tracks](https://github.com/stuntrally/tracks) repo inside `Media/tracks`, cloned or as link.
+4. Have [SR3 tracks](https://github.com/stuntrally/tracks3) repo inside `Media/tracks`, cloned or as link.  
+This is new *tracks3* repo with converted and some updated tracks. Old tracks loading works too.
 
 
 ### My folder tree
@@ -48,7 +49,7 @@ sr3 - with this repo
       Release - has StuntRally3, plugins.cfg, resources2.cfg
       RelWithDebInfo
    Media
-      tracks - has Test1-Flat, Test3-Bumps
+      tracks - has Test1-Flat, Test3-Bumps - cloned tracks3 repo (or old tracks)
 mygui-next
    build
       lib - has libMyGUI.Ogre2Platform.a, libMyGUIEngine.so.3.2.3
