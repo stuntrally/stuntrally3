@@ -34,8 +34,6 @@ void CGui::btnBrushRandom2(WP)
 }
 void App::SetBrushRandom(int n)
 {
-	// mBrSize[curBr] = Math::RangeRandom(, );
-	// mBrIntens[curBr] = st.Intens;
 	float r = Math::UnitRandom();
 	mBrShape[curBr] = n ? (r > 0.5f ? BRS_Noise2 : BRS_Noise) :
 		(EBrShape)(Math::UnitRandom() * BRS_Noise);
@@ -44,8 +42,11 @@ void App::SetBrushRandom(int n)
 	mBrFq[curBr]  = pow(Math::RangeRandom(0.01, 1.0), 2.0);
 	mBrNOf[curBr] = Math::RangeRandom(-30.0, 30.0);
 	mBrOct[curBr] = Math::RangeRandom(1, 9);
-
-	updBrush();  UpdEditWnds();
+	UpdBr();
+}
+void App::UpdBr()
+{
+	gui->SldUpdBr();  updBrush();  UpdEditWnds();
 }
 
 //  brush preset
@@ -60,11 +61,10 @@ void App::SetBrushPreset(int id)
 	const BrushSet& st = brSets[id];  // copy params
 	if (!shift)  SetEdMode(st.edMode);  curBr = st.curBr;
 	mBrSize[curBr] = st.Size;  mBrIntens[curBr] = st.Intens;  mBrShape[curBr] = st.shape;
-	mBrPow[curBr] = st.Pow;  mBrFq[curBr] = st.Fq;  mBrNOf[curBr] = st.NOf;  mBrOct[curBr] = st.Oct;
+	mBrPow[curBr] = st.Pow;  mBrFq[curBr] = st.Freq;  mBrNOf[curBr] = st.NOfs;  mBrOct[curBr] = st.Oct;
 	if (st.Filter > 0.f)  mBrFilt = st.Filter;
 	if (st.HSet != -0.01f)  terSetH = st.HSet;
-
-	updBrush();  UpdEditWnds();
+	UpdBr();
 }
 
 
@@ -190,9 +190,10 @@ void App::updateBrushPrv(bool first)
 //--------------------------------------------------------------------------------------------------------------------------
 void App::updBrush()
 {
+	//  ranges
 	if (mBrSize[curBr] < 2)  mBrSize[curBr] = 2;
 	if (mBrSize[curBr] > BrushMaxSize)  mBrSize[curBr] = BrushMaxSize;
-	if (mBrFq[curBr] < 0.1)  mBrFq[curBr] = 0.1;
+	if (mBrFq[curBr] < 0.01)  mBrFq[curBr] = 0.01;
 	if (mBrPow[curBr] < 0.02)  mBrPow[curBr] = 0.02;
 
 	int size = (int)mBrSize[curBr], a = 0;

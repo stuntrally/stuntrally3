@@ -266,7 +266,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 
 	//  ⛰️ Ter brush shape
-	if (edMode < ED_Road && !alt && edit)
+	if (edMode < ED_Road && !alt && edit/* && bEdit()*/)
 	switch (skey)
 	{
 		case key(K):    if (ctrl)  {  mBrShape[curBr] = (EBrShape)((mBrShape[curBr]-1 + BRS_ALL) % BRS_ALL);  updBrush();  }  break;
@@ -361,10 +361,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(P):  gui->ckEmitters.Invert();  bRecreateEmitters = true;  break;
 
 		//  ⛰️ terrain
-		case key(D):  if (bEdit()){  SetEdMode(ED_Deform);  curBr = 0;  updBrush();  UpdEditWnds();  }	break;
-		case key(S):  if (bEdit()){  SetEdMode(ED_Smooth);  curBr = 1;  updBrush();  UpdEditWnds();  }	break;
-		case key(E):  if (bEdit()){  SetEdMode(ED_Height);  curBr = 2;  updBrush();  UpdEditWnds();  }	break;
-		case key(F):  if (bEdit()){  SetEdMode(ED_Filter);  curBr = 3;  updBrush();  UpdEditWnds();  }
+		case key(D):  if (bEdit()){  SetEdMode(ED_Deform);  curBr = 0;  UpdBr();  }  break;
+		case key(S):  if (bEdit()){  SetEdMode(ED_Smooth);  curBr = 1;  UpdBr();  }  break;
+		case key(E):  if (bEdit()){  SetEdMode(ED_Height);  curBr = 2;  UpdBr();  }  break;
+		case key(F):  if (bEdit()){  SetEdMode(ED_Filter);  curBr = 3;  UpdBr();  }
 			else  //  focus on find edit  (global)
 			if (ctrl && gcom->edTrkFind /*&& bGuiFocus &&
 				!pSet->isMain && pSet->inMenu == WND_Edit && mWndTabsEdit->getIndexSelected() == 1*/)

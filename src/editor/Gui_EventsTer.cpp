@@ -19,6 +19,24 @@ using namespace MyGUI;
 using namespace Ogre;
 
 
+//  ter brush pars
+void CGui::slUpdBr(SV*)
+{
+	app->updBrush();
+}
+void CGui::SldUpdBr()
+{
+	if (!app)  return;
+	auto c = app->curBr;
+	svBrSize.UpdF(&app->mBrSize[c]);
+	svBrForce.UpdF(&app->mBrIntens[c]);
+	svBrPower.UpdF(&app->mBrPow[c]);
+	svBrShape.UpdI(&app->mBrShape[c]);
+	svBrFreq.UpdF(&app->mBrFq[c]);
+	svBrOct.UpdI(&app->mBrOct[c]);
+	svBrOfs.UpdF(&app->mBrNOf[c]);
+}
+
 ///  ⛰️ Terrain
 //-----------------------------------------------------------------------------------------------------------
 bool CGui::notd()

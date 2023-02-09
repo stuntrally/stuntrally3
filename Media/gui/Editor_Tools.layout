@@ -46,6 +46,7 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="TextColour" value="0.6 0.78 1.0"/>
 		</Widget>
+		
 		<!-- Size * -->
 		<Widget type="TextBox" skin="TextBoxS" position="4 35 70 25" name="brTxt1">
 			<Property key="InheritsAlpha" value="false"/>

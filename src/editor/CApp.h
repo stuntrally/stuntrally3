@@ -130,17 +130,17 @@ public:
 
 	///<>  ⛰️ terrain edit, brush
 	enum EBrShape
-	{   BRS_Triangle=0, BRS_Sinus, BRS_Ngon, BRS_Noise, BRS_Noise2, BRS_ALL
-	} mBrShape[ED_ALL];
+	{   BRS_Triangle=0, BRS_Sinus, BRS_Ngon, BRS_Noise, BRS_Noise2, BRS_ALL  };
+	int mBrShape[ED_ALL];  // EBrShape
 	const static Ogre::String csBrShape[BRS_ALL];
 
 	struct BrushSet  // brush preset ----
 	{
 		ED_MODE edMode;  int curBr;
-		float Size,Intens,Pow,Fq,NOf;
+		float Size,Intens,Pow, Freq,NOfs;
 		int Oct;  EBrShape shape;
-		float Filter,HSet;
-		signed char newLine;
+		float Filter, HSet;
+		char newLine;
 		Ogre::String name;
 	};
 
@@ -149,7 +149,7 @@ public:
 	const static float brClr[4][3];
 
 	void SetBrushPreset(int id), SetBrushRandom(int n);
-	void updBrush();
+	void updBrush(), UpdBr();
 
 
 	//  brush vars
