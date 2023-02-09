@@ -3,8 +3,8 @@ particle_system FluidMudSoft
 {
 	material			FluidMudSoft
 	quota				1500
-	particle_width		0.4
-	particle_height		0.4
+	particle_width		0.6
+	particle_height		0.6
 	cull_each			false
 	billboard_type		point
 	//renderer			billboard
@@ -128,9 +128,9 @@ particle_system FluidWater
 		height	0.7
 		depth	0.4  //h
 
-		colour				0.8 0.8 0.8  0.6
-		colour_range_start	0.8 0.8 0.8  0.4
-		colour_range_end	0.9 0.9 0.9  0.8
+		colour				1.0 1.0 1.0  0.8
+		colour_range_start	1.0 1.0 1.0  0.6
+		colour_range_end	1.0 1.0 1.0  1.0
 
 		velocity_min	1.5
 		velocity_max	3.0
