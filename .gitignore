@@ -42,3 +42,5 @@ AndroidDependencies/
 Build/
 EmscriptenDependencies
 EmscriptenBuild
+cmake-build-*/
+.idea/
