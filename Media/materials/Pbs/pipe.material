@@ -1,6 +1,5 @@
 hlms column pbs
 {
-    // ambient  1.0 1.0 1.0
     // diffuse  1.0 1.0 1.0 //1.0
     // specular 1 1 1 //24
     // depth_bias 3
@@ -13,7 +12,6 @@ hlms column pbs
 
 hlms pipe_base pbs  // not glass
 {
-    // ambient  1.0 1.0 1.0
     // diffuse  1.0 1.0 1.0 //1.0
     // specular 1 1 1 //24
     depth_bias 3
@@ -28,7 +26,6 @@ hlms pipe_base pbs  // not glass
 
 hlms pipe_glass pbs
 {
-    // ambient  1.0 1.0 1.0
     // diffuse  1.0 1.0 1.0 //1.0
     // specular 3 5 5 //24
     // emissive 0 0 0
@@ -352,7 +349,6 @@ hlms road_wall pbs : wall_base  // default-
 //  Jungle
 hlms road_wall_JDark pbs : wall_base
 {
-	ambient  0.4 0.47 0.38
 	diffuse  0.31 0.35 0.25
 	specular 0.25 0.26 0.24 //16
 	diffuse_map  brass_patina.jpg
@@ -362,7 +358,6 @@ hlms road_wall_JDark pbs : wall_base
 
 hlms road_wall_Jungle pbs : wall_base
 {
-	ambient  0.69 0.77 0.65
 	diffuse  0.54 0.61 0.48
 	specular 0.18 0.21 0.14 //8
 	diffuse_map  brass_patina.jpg
@@ -373,7 +368,6 @@ hlms road_wall_Jungle pbs : wall_base
 //  winter
 hlms road_wall_Winter pbs : wall_base
 {
-	ambient  0.97 0.99 1.0
 	diffuse  0.9 0.93 0.93
 	specular 0.6 0.6 0.6 //8
 	diffuse_map  concrete1w.jpg
@@ -384,7 +378,6 @@ hlms road_wall_Winter pbs : wall_base
 //  australia
 hlms road_wall_Red pbs : wall_base
 {
-	ambient  0.93 0.87 0.81
 	diffuse  0.678 0.61 0.59
 	specular 0.33 0.31 0.27 //16
 	//diffuse_map  concrete1w.jpg
@@ -397,7 +390,6 @@ hlms road_wall_Red pbs : wall_base
 //  desert
 hlms road_wall_Desert pbs : wall_base
 {
-	ambient  0.8 0.8 0.6
 	diffuse  0.6 0.6 0.4
 	specular 0.3 0.3 0.2 //16
 	diffuse_map  concrete1w.jpg
@@ -410,7 +402,6 @@ hlms road_wall_Desert pbs : wall_base
 
 hlms pipe_wall_JDark pbs : pipe_wall_base
 {
-	ambient  0.4 0.47 0.38
 	diffuse  0.31 0.35 0.25
 	specular 0.25 0.26 0.24 //16
 	diffuse_map  brass_patina.jpg
@@ -420,7 +411,6 @@ hlms pipe_wall_JDark pbs : pipe_wall_base
 
 hlms pipe_wall_Jungle pbs : pipe_wall_base
 {
-	ambient  0.69 0.77 0.65
 	diffuse  0.54 0.61 0.48
 	specular 0.18 0.21 0.14 //8
 	diffuse_map  brass_patina.jpg
@@ -431,7 +421,6 @@ hlms pipe_wall_Jungle pbs : pipe_wall_base
 //  australia
 hlms pipe_wall_Red pbs : pipe_wall_base
 {
-	ambient  1.0 0.47 0.40
 	diffuse  1.0 0.61 0.48
 	specular 0.68 0.34 0.24 //16
 	diffuse_map  brass_patina.jpg
@@ -441,7 +430,6 @@ hlms pipe_wall_Red pbs : pipe_wall_base
 
 hlms pipe_wall_Orange pbs : pipe_wall_base
 {
-	ambient  1.0 0.67 0.50
 	diffuse  1.0 0.81 0.68
 	specular 0.68 0.54 0.44 //16
 	diffuse_map  brass_patina.jpg
@@ -451,7 +439,6 @@ hlms pipe_wall_Orange pbs : pipe_wall_base
 
 hlms pipe_wall_Yellow pbs : pipe_wall_base
 {
-	ambient  0.9 0.9 0.3
 	diffuse  1.0 1.0 0.7
 	specular 0.8 0.8 0.7 //16
 	diffuse_map  brass_patina.jpg
@@ -461,7 +448,6 @@ hlms pipe_wall_Yellow pbs : pipe_wall_base
 
 hlms pipe_wall_Winter pbs : pipe_wall_base
 {
-	ambient  0.97 0.99 1.0
 	diffuse  0.9 0.93 0.93
 	specular 0.6 0.6 0.6 //8
 	diffuse_map  concrete1w.jpg
@@ -475,7 +461,6 @@ hlms pipe_wall_Winter pbs : pipe_wall_base
 
 hlms road_col pbs : column  // default
 {
-	ambient  0.78 0.80 0.80
 	diffuse  0.54 0.55 0.55
 	specular 0.25 0.25 0.25 //24
 	diffuse_map  concrete03.png
@@ -485,7 +470,6 @@ hlms road_col pbs : column  // default
 
 hlms road_col_Dark pbs : column
 {
-	ambient  0.44 0.44 0.40
 	diffuse  0.55 0.60 0.55
 	specular 0.35 0.36 0.35 //32
 	diffuse_map  brass_patina.jpg
@@ -494,7 +478,6 @@ hlms road_col_Dark pbs : column
 
 hlms road_col_Blue pbs : column
 {
-	ambient  0.50 0.65 0.80
 	diffuse  0.45 0.60 0.75
 	specular 0.2 0.35 0.5 //40
 	diffuse_map  brass_patina.jpg
@@ -504,7 +487,6 @@ hlms road_col_Blue pbs : column
 
 hlms road_col_Winter pbs : wall_base
 {
-	ambient  1.2 1.24 1.34
 	diffuse  1.0 1.14 1.24
 	specular 0.43 0.42 0.41 //8
 	diffuse_map  concrete03.png
@@ -514,7 +496,6 @@ hlms road_col_Winter pbs : wall_base
 
 hlms road_col_Red pbs : wall_base
 {
-	ambient  0.78 .70 0.68
 	diffuse  0.60 0.54 0.50
 	specular 0.30 0.30 0.29 //24
 	diffuse_map  concrete03.png
@@ -524,7 +505,6 @@ hlms road_col_Red pbs : wall_base
 
 hlms road_col_Desert pbs : wall_base
 {
-	ambient  0.59 0.59 0.35
 	diffuse  0.54 0.53 0.40
 	specular 0.30 0.30 0.29 //8
 	diffuse_map  concrete1w.jpg
@@ -536,7 +516,6 @@ hlms road_col_Desert pbs : wall_base
 //  crystal
 hlms road_wall_crystal pbs : wall_base
 {
-	ambient  0.9 0.9 0.9
 	diffuse  0.95 0.95 0.95
 	specular 0.21 0.21 0.61 //4
 	diffuse_map  crystal_wall.jpg
@@ -546,7 +525,6 @@ hlms road_wall_crystal pbs : wall_base
 
 hlms pipe_wall_crystal pbs : pipe_wall_base
 {
-	ambient  0.9 0.9 0.9
 	diffuse  0.95 0.95 0.95
 	specular 0.21 0.21 0.61 //4
 	diffuse_map  crystal_wall.jpg
@@ -556,7 +534,6 @@ hlms pipe_wall_crystal pbs : pipe_wall_base
 
 hlms road_col_crystal pbs
 {
-	ambient  0.9 0.9 0.9
 	diffuse  0.95 0.95 0.95
 	specular 0.21 0.21 0.61 //4
 	diffuse_map  crystal_wall.jpg
@@ -568,7 +545,6 @@ hlms road_col_crystal pbs
 //  Alien
 hlms road_wall_Alien pbs : wall_base
 {
-	ambient  0.8 0.8 0.8
 	diffuse  0.7 0.7 0.7
 	specular 0.18 0.21 0.14 //8
 	diffuse_map  alien_wall.jpg
@@ -578,7 +554,6 @@ hlms road_wall_Alien pbs : wall_base
 
 hlms pipe_wall_Alien pbs : pipe_wall_base
 {
-	ambient  0.8 0.8 0.8
 	diffuse  0.7 0.7 0.7
 	specular 0.18 0.21 0.14 //8
 	diffuse_map  alien_wall.jpg
@@ -588,7 +563,6 @@ hlms pipe_wall_Alien pbs : pipe_wall_base
 
 hlms road_col_Alien pbs : column
 {
-	ambient  0.8 0.8 0.8
 	diffuse  0.7 0.7 0.7
 	specular 0.35 0.36 0.35 //32
 	diffuse_map  alien_wall.jpg
@@ -601,7 +575,6 @@ hlms road_col_Alien pbs : column
 //  univ space
 hlms wall_space_diam pbs : wall_base
 {
-	ambient  1.1 1.1 1.1
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //24
 	diffuse_map  space_diam_d.jpg
@@ -615,7 +588,6 @@ hlms wallP_space_diam pbs : wall_space_diam
 
 hlms wall_space_dots pbs : wall_base
 {
-	ambient  1.1 1.1 1.1
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //24
 	diffuse_map  space_dots_d.jpg
@@ -628,7 +600,6 @@ hlms wallP_space_dots pbs : wall_space_dots
 }
 hlms wall_space_dots_orn pbs : wall_base
 {
-	ambient  0.9 0.7 0.5
 	diffuse  0.9 0.7 0.5
 	specular 0.9 0.7 0.5 //24
 	diffuse_map  space_dots_d.jpg
@@ -642,7 +613,6 @@ hlms wallP_space_dots_orn pbs : wall_space_dots_orn
 
 hlms wall_space_gray pbs : wall_base
 {
-	ambient  1.1 1.1 1.1
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //24
 	diffuse_map  space_gray_d.jpg
@@ -655,7 +625,6 @@ hlms wallP_space_gray pbs : wall_space_gray
 }
 hlms wall_space_grayblue pbs : wall_base
 {
-	ambient  0.6 0.9 1.1
 	diffuse  0.6 0.9 1.1
 	specular 0.9 0.9 0.9 //24
 	diffuse_map  space_gray_d.jpg
@@ -669,7 +638,6 @@ hlms wallP_space_grayblue pbs : wall_space_grayblue
 
 hlms wall_space_metal pbs : wall_base
 {
-	ambient  1.1 1.1 1.1
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //24
 	diffuse_map  space_metal_d.jpg
@@ -682,7 +650,6 @@ hlms wallP_space_metal pbs : wall_space_metal
 }
 hlms wall_space_metaldark pbs : wall_space_metal
 {
-	ambient  0.8 0.8 0.8
 	diffuse  0.8 0.8 0.8
 	specular 0.8 0.8 0.8 //24
 }
@@ -692,7 +659,6 @@ hlms wallP_space_metaldark pbs : wall_space_metaldark
 }
 hlms wall_space_x pbs : wall_base
 {
-	ambient  1.1 1.1 1.1
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //24
 	diffuse_map  space_x_d.jpg
@@ -707,7 +673,6 @@ hlms wallP_space_x pbs : wall_space_x
 //  univ metal
 hlms wall_metal_01 pbs : wall_base
 {
-	ambient  0.9 0.9 0.9
 	diffuse  0.9 0.9 0.9
 	specular 0.7 0.7 0.7 128
 	diffuse_map  metal_01_spec.jpg
@@ -720,7 +685,6 @@ hlms wallP_metal_01 pbs : wall_metal_01
 }
 hlms wall_metal_03_red pbs : wall_base
 {
-	ambient  1.1 1.1 1.1
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //24
 	diffuse_map  metal_03_red.jpg
@@ -733,7 +697,6 @@ hlms wallP_metal_03_red pbs : wall_metal_03_red
 }
 hlms wall_metal_03_gray pbs : wall_metal_03_red
 {
-	ambient  0.7 1.1 1.1
 	diffuse  0.7 1.1 1.1
 	specular 0.7 1 1 //24
 }
@@ -744,7 +707,6 @@ hlms wallP_metal_03_gray pbs : wall_metal_03_gray
 
 hlms wall_metal_03_green pbs : wall_base
 {
-	ambient  0.7 0.8 0.8
 	diffuse  0.7 0.8 0.8
 	specular 0.7 0.7 0.7 //24
 	diffuse_map  metal_03_green.jpg
@@ -757,7 +719,6 @@ hlms wallP_metal_03_green pbs : wall_metal_03_green
 }
 hlms wall_metal_03_yellow pbs : wall_metal_03_green
 {
-	ambient  1.1 0.7 0.7
 	diffuse  1.1 0.7 0.7
 	specular 1 1 0.7 //24
 }
@@ -768,7 +729,6 @@ hlms wallP_metal_03_yellow pbs : wall_metal_03_yellow
 
 hlms wall_metal_04_x pbs : wall_base
 {
-	ambient  1.1 1.1 1.1
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //24
 	diffuse_map  metal_04.jpg
@@ -781,7 +741,6 @@ hlms wallP_metal_04_x pbs : wall_metal_04_x
 }
 hlms wall_metal_04_x_viol pbs : wall_metal_04_x
 {
-	ambient  0.9 0.8 1.1
 	diffuse  0.9 0.8 1.1
 	specular 0.9 0.9 0.9 //24
 }
@@ -792,7 +751,6 @@ hlms wallP_metal_04_x_viol pbs : wall_metal_04_x_viol
 
 hlms wall_metal_05_bars pbs : wall_base
 {
-	ambient  1.1 1.1 1.1
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //24
 	diffuse_map  metal_05.jpg
@@ -806,7 +764,6 @@ hlms wallP_metal_05_bars pbs : wall_metal_05_bars
 
 hlms wall_metal_06_plates pbs : wall_base
 {
-	ambient  1.1 1.1 1.1
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //24
 	diffuse_map  metal_06.jpg
@@ -819,7 +776,6 @@ hlms wallP_metal_06_plates pbs : wall_metal_06_plates
 }
 hlms wall_metal_06_yellow pbs : wall_metal_06_plates
 {
-	ambient  0.9 0.9 0.5
 	diffuse  0.9 0.9 0.5
 	specular 0.9 0.9 0.5 //24
 }
@@ -830,7 +786,6 @@ hlms wallP_metal_06_yellow pbs : wall_metal_06_yellow
 
 hlms wall_metal_07_worn pbs : wall_base
 {
-	ambient  1.1 1.1 1.1
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //24
 	diffuse_map  metal_07.jpg
@@ -843,7 +798,6 @@ hlms wallP_metal_07_worn pbs : wall_metal_07_worn
 }
 hlms wall_metal_08_hex pbs : wall_base
 {
-	ambient  1.1 1.1 1.1
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //24
 	diffuse_map  metal_08.jpg
@@ -857,7 +811,6 @@ hlms wallP_metal_08_hex pbs : wall_metal_08_hex
 
 hlms wall_metal_12_dots pbs : wall_base
 {
-	ambient  1.1 1.1 1.1
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //24
 	diffuse_map  metal_12.jpg
@@ -871,7 +824,6 @@ hlms wallP_metal_12_dots pbs : wall_metal_12_dots
 }
 hlms wall_metal_12_blue pbs : wall_metal_12_dots
 {
-	ambient  0.4 0.7 1.1
 	diffuse  0.4 0.7 1.1
 	specular 0.7 0.8 1.0 //24
 }
@@ -881,7 +833,6 @@ hlms wallP_metal_12_blue pbs : wall_metal_12_blue
 }
 hlms wall_metal_12_cyan pbs : wall_metal_12_dots
 {
-	ambient  0.4 1.1 1.1
 	diffuse  0.4 1.1 1.1
 	specular 0.7 0.8 1.0 //24
 }
@@ -893,7 +844,6 @@ hlms wallP_metal_12_cyan pbs : wall_metal_12_cyan
 //  new 7'22
 hlms wall_metal_241_diam pbs : wall_base
 {
-	ambient  1.1 1.1 1.1
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //16
 	diffuse_map  metal_241.jpg
@@ -907,7 +857,6 @@ hlms wallP_metal_241_diam pbs : wall_metal_241_diam
 
 hlms wall_metal_212_scr pbs : wall_base
 {
-	ambient  1 1 1
 	diffuse  1 1 1
 	specular 1 1 1 //16
 	diffuse_map  metal_212.jpg
@@ -939,7 +888,6 @@ hlms wallP_metal_212_paint pbs : wall_metal_212_paint
 
 hlms wall_metal_213_rust pbs : wall_base
 {
-	ambient  1 1 1
 	diffuse  1 1 1
 	specular 1 1 1 //16
 	diffuse_map  metal_213.jpg
@@ -953,7 +901,6 @@ hlms wallP_metal_213_rust pbs : wall_metal_213_rust
 
 hlms wall_metal_4a_box pbs : wall_base
 {
-	ambient  1 1 1
 	diffuse  1 1 1
 	specular 1 1 1 //16
 	diffuse_map  metal_4a.jpg
@@ -968,7 +915,6 @@ hlms wallP_metal_4a_box pbs : wall_metal_4a_box
 
 hlms wall_metal_29_inst pbs : wall_base
 {
-	ambient  1 1 1
 	diffuse  1 1 1
 	specular 1 1 1 //16
 	diffuse_map  metal_29.jpg
@@ -983,7 +929,6 @@ hlms wallP_metal_29_inst pbs : wall_metal_29_inst
 
 hlms wall_metal_40_grid pbs : wall_base
 {
-	ambient  1 1 1
 	diffuse  1 1 1
 	specular 1 1 1 //16
 	diffuse_map  metal_40.png

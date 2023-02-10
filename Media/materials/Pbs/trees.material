@@ -4,7 +4,6 @@
 hlms gum_branch pbs
 {
     diffuse_map gum_branch.png
-    ambient 0.59 0.59 0.59
     diffuse 0.59 0.59 0.59
 
 	alpha_test greater 0.5
@@ -20,7 +19,6 @@ hlms gum_branch pbs
 hlms gum_bark pbs
 {
     diffuse_map gum_bark.png
-    ambient 0.8 0.8 0.8
     diffuse 0.64 0.64 0.64
     specular 0.12 0.12 0.12 //32
 
@@ -55,8 +53,6 @@ hlms Palm pbs
 	diffuse_map palm.png
 	normal_map  palm_norm.png
 	alpha_test greater 0.31
-
-	ambient 1.2 1.2 1.2
 	diffuse 0.4 0.4 0.4
 	specular 0.3 0.3 0.3 //21
 
@@ -131,8 +127,6 @@ hlms palm_plant pbs
 	diffuse_map palm_plant.png
 	normal_map  palm_plant_normal.png
 	specular_map palm_plant_spec.png
-
-	ambient 1.5 1.5 1.5
 	diffuse 1.5 1.5 1.5
 	specular 0.5 0.5 0.5 //32
 
@@ -146,7 +140,6 @@ hlms plant_tropical pbs
 	diffuse_map plant_tropical_m.png
 	normal_map  plant_tropical_norm_m.png
 	//specular_map palm_plant_spec.png
-	ambient 1.5 1.5 1.5
 	specular 0.57 0.6 0.5 //24
 
 	alpha_test greater 0.5
@@ -167,8 +160,6 @@ hlms cactus pbs
 	alpha_test greater 0.5
 	diffuse_map cactus.png
 	normal_map  cactus_norm.png
-
-	ambient 1.4 1.4 1.4
 	diffuse 1.0 1.0 1.0
 	specular 0.2 0.2 0.2 //32
 
@@ -189,7 +180,6 @@ hlms pine_base pbs
 
 	// diffuse_map white.png
 	//normal_map  pine_half_norm.png
-	ambient 1.2 1.2 1.2
 	diffuse 0.8 0.8 0.8
 	specular 0.5 0.5 0.5 //24
 
@@ -202,7 +192,6 @@ hlms pine1full pbs : pine_base
 {
 	diffuse_map pine_full.png
 	normal_map  pine_full_norm.png
-	ambient 1.2 1.22 1.22
 	diffuse 0.8 0.82 0.82
 	// specular 1.0 1.0 1.0 //32
 }
@@ -211,7 +200,6 @@ hlms pine2full pbs : pine_base
 {
 	diffuse_map pine_full.png
 	normal_map  pine_full_norm.png
-	ambient 1.2 1.21 1.21
 	diffuse 0.8 0.81 0.81
 	// specular 1.0 1.0 1.0 //16
 }
@@ -220,7 +208,6 @@ hlms pine3full pbs : pine_base
 {
 	diffuse_map pine_full.png
 	normal_map  pine_full_norm.png
-	ambient 1.2 1.21 1.21
 	diffuse 0.8 0.81 0.81
 	// specular 1.0 1.0 1.0 //24
 }
@@ -252,7 +239,6 @@ hlms pine1norm pbs : pine_base
 {
 	diffuse_map pine_norm_gr1.png
 	normal_map  pine_norm_norm.jpg
-	ambient 0.85 0.95 0.95
 	diffuse 0.6 0.65 0.6
 	specular 0.2 0.2 0.2 //8
 }
@@ -261,7 +247,6 @@ hlms pine2norm pbs : pine_base
 {
 	diffuse_map pine_norm_gr1.png
 	normal_map  pine_norm_norm.jpg
-	ambient 1.0 1.0 1.0
 	diffuse 0.6 0.6 0.6
 	specular 0.3 0.3 0.3 //8
 }
@@ -270,7 +255,6 @@ hlms pine3norm pbs : pine_base
 {
 	diffuse_map pine_norm_gr2.png
 	normal_map  pine_norm_norm.jpg
-	ambient 0.9 0.9 0.9
 	diffuse 0.5 0.5 0.5
 	specular 0.3 0.3 0.3 //16
 }
@@ -282,7 +266,6 @@ hlms pine3norm pbs : pine_base
 hlms gum_branch_alien pbs
 {
     diffuse_map  gum_branch_alien.png
-    ambient 1.0 1.2 0.9
     diffuse 1.0 1.2 0.9
     specular 0.12 0.12 0.12 //32
 
@@ -297,7 +280,6 @@ hlms gum_branch_alien pbs
 hlms gum_bark_alien pbs
 {
     diffuse_map  gum_bark_alien.png
-    ambient 0.8 0.8 0.8
     diffuse 0.64 0.64 0.64
     specular 0.12 0.12 0.12 //32
 
@@ -311,7 +293,6 @@ hlms jungle_tree_alien pbs
 	diffuse_map jungle_tree_alien.png
 	normal_map  jungle_tree_normal.png
 	//specular_map jungle_tree_spec.png
-    ambient 0.6 0.7 0.6
     diffuse 0.6 0.72 0.7
 	specular 0.4 0.4 0.4 //32
 
@@ -327,7 +308,6 @@ hlms shroom1_alien pbs
 {
 	diffuse_map shroom_alien.png
 	normal_map  shroom2_norm.png
-	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 32
 
@@ -340,7 +320,6 @@ hlms shroom2_alien pbs
 {
 	diffuse_map shroom_alien.png
 	normal_map  shroom2_norm.png
-	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 32
     
@@ -353,7 +332,6 @@ hlms shroom3_alien pbs
 {
 	diffuse_map shroom_alien.png
 	normal_map  shroom2_norm.png
-	ambient 1.0 1.0 1.0
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 32
     
@@ -385,7 +363,6 @@ hlms fern2_black pbs
 hlms gum_branch_black pbs
 {
     diffuse_map  gum_branch_alien.png
-    ambient 0.9 0.9 0.9
     diffuse 0.9 0.9 0.9
     specular 0.12 0.16 0.2 //32
     emissive 0.08 0.15 0.8
