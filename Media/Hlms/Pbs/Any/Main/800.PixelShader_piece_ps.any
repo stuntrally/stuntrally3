@@ -806,6 +806,37 @@
 				pixelData.normal = normalize( mul( TBN, pixelData.normal ) );
 			@end
 
+				@property( clear_coat )
+		float nn = abs(pixelData.normal.z);
+		// todo: params for color changing paints..
+		// pixelData.diffuse.xyz = 0.2f * lerp(
+		// 	lerp(float3( 0.0f, 0.2f, 0.2f ), float3( 0.1f, 0.05f, 0.1f ), nn * 4.f),
+		// 									 float3( 0.0f, 0.05f, 0.1f ), pow(nn, 3.f) );
+		// pixelData.diffuse.xyz = 0.3f * lerp(  // rainbow blu, orn, grn +
+		// 	lerp(float3( 0.0f, 1.0f, 0.0f ), float3( 1.0f, 1.0f, 0.0f ), nn * 4.f),
+		// 									 float3( 0.0f, 0.5f, 1.0f ), pow(nn, 3.f) );
+		// pixelData.diffuse.xyz = 0.4f * lerp(  // orn, pink, viol +
+		// 	lerp(float3( 0.0f, 0.05f, 0.6f ), float3( 0.3f, 0.05f, 0.5f ), nn * 4.f),
+		// 									 float3( 1.0f, 0.5f, 0.0f ), pow(nn, 5.f) );
+		// pixelData.diffuse.xyz = 0.3f * lerp(  // gray, grn, ylw `
+		// 	lerp(float3( 1.0f, 1.0f, 0.0f ), float3( 0.0f, 1.0f, 0.0f ), nn * 4.f),
+		// 									 float3( 0.4f, 0.4f, 0.4f ), pow(nn, 5.f) );
+		// pixelData.diffuse.xyz = 0.01f * lerp(  // dark brown, magenta `-
+		// 	lerp(float3( 0.0f, 0.0f, 0.5f ), float3( 0.3f, 0.0f, 0.5f ), nn * 4.f),
+		// 									 float3( 10.0f, 5.0f, 0.0f ), pow(nn, 5.f) );
+		// pixelData.diffuse.xyz = 0.05f * lerp(  // dark puprle red viol -
+		// 	lerp(float3( 0.0f, 0.0f, 0.5f ), float3( 0.5f, 0.0f, 0.0f ), nn * 2.f),
+		// 									 float3( 0.1f, 0.1f, 0.4f ), pow(nn, 2.f) );
+		// pixelData.diffuse.xyz = 0.04f * lerp(  // dark blue viol `
+		// 	lerp(float3( 0.5f, 0.0f, 0.1f ), float3( 0.1f, 0.0f, 0.5f ), nn * 2.f),
+		// 									 float3( 0.1f, 0.1f, 0.4f ), pow(nn, 2.f) );
+		// pixelData.diffuse.xyz = 0.3f * lerp(  // ylw, grn, blu ~
+		// 	lerp(float3( 0.0f, 0.2f, 1.0f ), float3( 0.0f, 1.0f, 0.0f ), nn * 2.f),
+		// 									 float3( 1.0f, 1.0f, 0.0f ), pow(nn, 2.f) );
+		// pixelData.specular.xyz = float3( 0.0f, 0.0f, 0.0f ); //pixelData.normal.xxx * 2.0f;  //-
+		// pixelData.specular.xyz = pixelData.diffuse.xyz;  // +
+				@end
+
 			@insertpiece( DoDirectionalShadowMaps )
 
 		@end @property( hlms_use_prepass )
@@ -927,6 +958,10 @@
 	@property( !hlms_render_depth_only )
 		@property( !hlms_prepass )
 			@property( hlms_normal || hlms_qtangent )
+
+				//  gamma
+				// finalColour.xyz = pow(finalColour, midf3_c(1.1f, 1.1f, 1.1f));
+
 				@property( !hw_gamma_write )
 					//Linear to Gamma space
 					outPs_colour0.xyz	= sqrt( finalColour );

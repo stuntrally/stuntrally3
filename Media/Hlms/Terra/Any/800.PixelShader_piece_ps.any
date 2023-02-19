@@ -224,8 +224,8 @@
 		@insertpiece( forwardPlusApplyDecalsNormal )
 
 		@property( normal_map )
-			pixelData.normal = normalize( mul( TBN, pixelData.normal ) );
-		@end
+				pixelData.normal = normalize( mul( TBN, pixelData.normal ) );
+			@end
 
 		@insertpiece( DoDirectionalShadowMaps )
 
@@ -373,6 +373,10 @@
 
 	@property( !hlms_render_depth_only )
 		@property( !hlms_prepass )
+
+			//  gamma
+			// finalColour.xyz = pow(finalColour, midf3_c(1.1f, 1.1f, 1.1f));
+
 			@property( !hw_gamma_write )
 				//Linear to Gamma space
 				outPs_colour0.xyz	= sqrt( finalColour );
