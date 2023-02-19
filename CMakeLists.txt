@@ -257,12 +257,18 @@ foreach( EXE ${EXE_LIST} )
 
 
 	#  MyGui  ----   # todo: windows ..
-	target_link_libraries( ${EXE} ${DIR_ONE_ABOVE}/mygui-next/build/lib/libMyGUI.Ogre2Platform.a )
+	if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+    	set(SUFFIX_D "_d")
+	else()
+		set(SUFFIX_D "")
+	endif()
+
+	target_link_libraries( ${EXE} ${DIR_ONE_ABOVE}/mygui-next/build/${CMAKE_BUILD_TYPE}/lib/libMyGUI.Ogre2Platform${SUFFIX_D}.a )
 
 	if ( ${EXE} STREQUAL ${GAME_EXE} )  # game, once
 		add_library( libMyGUIEngine SHARED IMPORTED )
 	endif()
-	set_target_properties( libMyGUIEngine PROPERTIES IMPORTED_LOCATION ${DIR_ONE_ABOVE}/mygui-next/build/lib/libMyGUIEngine.so )
+	set_target_properties( libMyGUIEngine PROPERTIES IMPORTED_LOCATION ${DIR_ONE_ABOVE}/mygui-next/build/${CMAKE_BUILD_TYPE}/lib/libMyGUIEngine${SUFFIX_D}.so )
 	target_link_libraries( ${EXE} libMyGUIEngine )
 
 
