@@ -320,8 +320,8 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(J):  gui->GuiShortcut(WND_Track, 5);  return;  // J Warnings  ⚠
 
 		case key(S):  gui->GuiShortcut(WND_Edit, TAB_Sun);       return;  // S Sun  🌦️
-		case key(H):  gui->GuiShortcut(WND_Edit, TAB_Terrain);   return;  // H Heightmap  ⛰️
-		 case key(D): gui->GuiShortcut(WND_Edit, TAB_Terrain,1); return;  //  D -Brushes
+		case key(D):  gui->GuiShortcut(WND_Edit, TAB_Terrain);   return;  // D Heightmap  ⛰️
+		 case key(H): gui->GuiShortcut(WND_Edit, TAB_Terrain,1); return;  //  H -Brushes
 
 		case key(T):  gui->GuiShortcut(WND_Edit, TAB_Layers);    return;  // T Layers (Terrain)  🏔️
 		 case key(B): gui->GuiShortcut(WND_Edit, TAB_Layers,0);  return;  //  B -Blendmap

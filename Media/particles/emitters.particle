@@ -298,9 +298,9 @@ particle_system Radioactive
 		height	232
 		depth	2  //h
 
-		colour				0.41 0.65 0.10  0.32
-		colour_range_start	0.32 0.51 0.05  0.21
-		colour_range_end	0.48 0.82 0.17  0.43
+		colour				0.18 0.36 0.04  0.32
+		colour_range_start	0.13 0.25 0.02  0.21
+		colour_range_end	0.21 0.41 0.07  0.41
 
 		emission_rate	200
 		velocity_min	0.6
@@ -311,8 +311,8 @@ particle_system Radioactive
 
     affector ColourFader
     {
-        red   -0.01
-        green -0.05
+        red   -0.015
+        green -0.04
         blue  0.0
         alpha 0.01
     }
@@ -354,9 +354,9 @@ particle_system AcidVapor1
 		height	12
 		depth	2  //h
 
-		colour				0.31 0.65 0.10  0.12
-		colour_range_start	0.22 0.51 0.05  0.11
-		colour_range_end	0.38 0.72 0.17  0.13
+		colour				0.13 0.32 0.04  0.15
+		colour_range_start	0.09 0.25 0.03  0.12
+		colour_range_end	0.16 0.36 0.06  0.17
 
 		emission_rate	20
 		velocity_min	0.6
@@ -404,9 +404,9 @@ particle_system AcidVapor2
 		height	12
 		depth	2  //h
 
-		colour				0.21 0.55 0.10  0.12
-		colour_range_start	0.12 0.41 0.05  0.11
-		colour_range_end	0.28 0.62 0.15  0.13
+		colour				0.11 0.27 0.05  0.12
+		colour_range_start	0.06 0.21 0.02  0.11
+		colour_range_end	0.14 0.31 0.07  0.13
 
 		emission_rate	20
 		velocity_min	0.6
@@ -459,9 +459,9 @@ particle_system AlienGlow
 		height	12
 		depth	2  //h
 
-		colour				0.31 0.65 0.20  0.12
-		colour_range_start	0.22 0.51 0.15  0.11
-		colour_range_end	0.38 0.72 0.27  0.13
+		colour				0.31 0.65 0.20  0.92
+		colour_range_start	0.22 0.51 0.15  0.91
+		colour_range_end	0.38 0.72 0.27  0.93
 
 		emission_rate	20
 		velocity_min	0.6
@@ -672,7 +672,7 @@ particle_system FireYellowRed
 
 		colour_range_start	0.32 0.25 0.0  0.5
 		colour				0.35 0.25 0.0  0.5
-		colour_range_end	0.41 0.32 0.02  0.5
+		colour_range_end	0.41 0.32 0.02 0.5
 
 		emission_rate	20
 		velocity_min	9.1
@@ -776,9 +776,9 @@ particle_system FireOrange
 		height	1
 		depth	0.4  //h
 
-		colour_range_start	0.32 0.11 0.0  0.1
+		colour_range_start	0.32 0.21 0.0  0.1
 		colour				0.31 0.25 0.0  0.2
-		colour_range_end	0.51 0.32 0.03  0.3
+		colour_range_end	0.51 0.32 0.03 0.3
 
 		emission_rate	20
 		velocity_min	4.6
@@ -789,7 +789,7 @@ particle_system FireOrange
 
     affector ColourFader
     {
-        red   -0.09
+        red   -0.07
         green -0.07
         blue  -0.05
         alpha -0.8
@@ -831,9 +831,9 @@ particle_system FireOrangeTiny
 		height	1
 		depth	0.4  //h
 
-		colour_range_start	0.52 0.21 0.0  0.1
-		colour				0.51 0.25 0.0  0.2
-		colour_range_end	0.91 0.52 0.0  0.3
+		colour_range_start	0.52 0.21 0.0  0.8
+		colour				0.51 0.25 0.0  0.9
+		colour_range_end	0.91 0.52 0.0  1.0
 
 		emission_rate	20
 		velocity_min	0.7
@@ -888,9 +888,9 @@ particle_system CraterLava1
 		height	1
 		depth	0.4  //h
 
-		colour_range_start	0.65 0.15 0.1  0.9
-		colour				0.75 0.31 0.1  0.9
-		colour_range_end	0.95 0.46 0.2  0.9
+		colour_range_start	0.77 0.15 0.02  1.0
+		colour				0.88 0.19 0.04  1.0
+		colour_range_end	0.99 0.26 0.05  1.0
 
 		emission_rate	20
 		velocity_min	4.6
@@ -914,7 +914,7 @@ particle_system CraterLava1
 	}
     affector ColourFader
     {
-        red   -0.2
+        red   -0.1
         green -0.2
         blue  -0.0
         alpha -0.0
@@ -948,9 +948,12 @@ particle_system CraterLava2
 		height	1
 		depth	0.4  //h
 
-		colour_range_start	0.45 0.05 0.05 0.9
-		colour				0.61 0.11 0.1  0.9
-		colour_range_end	0.65 0.36 0.1  0.9
+		// colour_range_start	0.45 0.05 0.05 0.9
+		// colour				0.61 0.11 0.1  0.9
+		// colour_range_end	0.65 0.36 0.1  0.9
+		colour_range_start	0.82 0.15 0.02  0.1
+		colour				0.92 0.27 0.04  0.2
+		colour_range_end	0.99 0.51 0.05  0.5
 
 		emission_rate	20
 		velocity_min	21.6
@@ -974,10 +977,10 @@ particle_system CraterLava2
 	}
     affector ColourFader
     {
-        red   0.15
-        green 0.1
-        blue  0.01
-        alpha 0.1
+        red   -0.12
+        green -0.18
+        blue   0.02
+        alpha -0.13
     }
 	affector Rotator
 	{
@@ -1003,8 +1006,8 @@ particle_system ElectricSparks
 	emitter Box
 	{
 		angle	30
-		colour_range_start  0.8 0.9 1
-		colour_range_end    0.4 0.4 1
+		colour_range_start  0.8 0.9 1 1
+		colour_range_end    0.4 0.4 1 1
 		velocity	4
 		velocity_min	2
 		velocity_max	8
@@ -1053,8 +1056,8 @@ particle_system Electricity
 		height	1
 		depth	0.4  //h
 
-		colour_range_start  0.5 0.8 1
-		colour_range_end    0.4 0.2 1
+		colour_range_start  0.5 0.8 1 1
+		colour_range_end    0.4 0.2 1 1
 		velocity	3
 		velocity_min	1
 		velocity_max	6

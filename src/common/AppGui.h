@@ -14,7 +14,9 @@ namespace MyGUI{  class Gui;  class Ogre2Platform;  }
 namespace Ogre {  class Root;  class SceneManager;  class Window;  class Camera;
 	class TextureGpu;  class CompositorWorkspace;  class HlmsSamplerblock;
 	namespace v1 {  class Overlay;  }
-	class Terra;  class HlmsPbsTerraShadows;  }
+	class Terra;  class HlmsPbsTerraShadows;
+	class PlanarReflections;  }
+class PlanarReflectionsWorkspaceListener;
 class GraphicsSystem;  class SETTINGS;  class CScene;  class CGui;  class CGuiCom;
 
 //  cube reflections, car etc
@@ -22,6 +24,7 @@ enum IblQuality
 {
 	MipmapsLowest, IblLow, IblMedium, IblHigh
 };
+
 
 //--------------------------------------------------------------------------------
 //  Base application with:
@@ -123,6 +126,12 @@ public:
 
 	IblQuality mIblQuality = IblLow;  // par in ctor-
 	Ogre::CompositorWorkspace* SetupCompositor();
+
+
+	//  🪞 planar reflect  water
+	Ogre::PlanarReflections *mPlanarReflections =0;
+	PlanarReflectionsWorkspaceListener *mWorkspaceListener =0;
+	void createReflectiveSurfaces();
 
 
 	//  👥 Split screen  ----------------
