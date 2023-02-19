@@ -21,9 +21,166 @@
 #include <Compositor/OgreCompositorWorkspaceDef.h>
 #include <Compositor/Pass/PassScene/OgreCompositorPassSceneDef.h>
 #include <Compositor/Pass/PassIblSpecular/OgreCompositorPassIblSpecularDef.h>
+#include <Compositor/OgreCompositorWorkspaceListener.h>
+
+#include <OgreItem.h>
+#include <OgreMesh.h>
+#include <OgreMeshManager.h>
+#include <OgreMesh2.h>
+#include <OgreMeshManager2.h>
+#include <OgreSceneManager.h>
+#include <OgreSceneNode.h>
+#include "OgrePlanarReflections.h"
+#include <Compositor/Pass/PassScene/OgreCompositorPassScene.h>
 using namespace Ogre;
 
 
+//  🪞 planar reflect  water
+class PlanarReflectionsWorkspaceListener : public Ogre::CompositorWorkspaceListener
+{
+	Ogre::PlanarReflections *mPlanarReflections;
+
+public:
+	PlanarReflectionsWorkspaceListener( Ogre::PlanarReflections *planarReflections ) :
+		mPlanarReflections( planarReflections )
+	{
+	}
+	virtual ~PlanarReflectionsWorkspaceListener() {}
+
+	virtual void workspacePreUpdate( Ogre::CompositorWorkspace *workspace )
+	{
+		mPlanarReflections->beginFrame();
+	}
+
+	virtual void passEarlyPreExecute( Ogre::CompositorPass *pass )
+	{
+		// Ignore non-scene passes
+		if( pass->getType() != Ogre::PASS_SCENE )
+			return;
+		assert( dynamic_cast<const Ogre::CompositorPassSceneDef *>( pass->getDefinition() ) );
+		const Ogre::CompositorPassSceneDef *passDef =
+			static_cast<const Ogre::CompositorPassSceneDef *>( pass->getDefinition() );
+
+		// Ignore scene passes that belong to a shadow node.
+		if( passDef->mShadowNodeRecalculation == Ogre::SHADOW_NODE_CASTER_PASS )
+			return;
+
+		// Ignore scene passes we haven't specifically tagged to receive reflections
+		if( passDef->mIdentifier != 25001 )
+			return;
+
+		Ogre::CompositorPassScene *passScene = static_cast<Ogre::CompositorPassScene *>( pass );
+		Ogre::Camera *camera = passScene->getCamera();
+
+		// Note: The Aspect Ratio must match that of the camera we're reflecting.
+		mPlanarReflections->update( camera, camera->getAspectRatio() );
+	}
+};
+
+
+//-----------------------------------------------------------------------------------
+void AppGui::createReflectiveSurfaces()
+{
+	Ogre::Root *root = mGraphicsSystem->getRoot();
+	Ogre::SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
+
+	bool useComputeMipmaps = false;
+#if !OGRE_NO_JSON
+	useComputeMipmaps =
+		root->getRenderSystem()->getCapabilities()->hasCapability( Ogre::RSC_COMPUTE_PROGRAM );
+#endif
+
+	// Setup PlanarReflections
+	mPlanarReflections =
+		new Ogre::PlanarReflections( sceneManager, root->getCompositorManager2(), 1.0, 0 );
+	mWorkspaceListener = new PlanarReflectionsWorkspaceListener( mPlanarReflections );
+	{
+		Ogre::CompositorWorkspace *workspace = mGraphicsSystem->getCompositorWorkspace();
+		workspace->addListener( mWorkspaceListener );
+	}
+
+	// The perfect mirror doesn't need mipmaps.
+	mPlanarReflections->setMaxActiveActors( 1u, "PlanarReflectionsReflectiveWorkspace", true, 512,
+											512, false, Ogre::PFG_RGBA8_UNORM_SRGB,
+											useComputeMipmaps );
+	// The rest of the reflections do.
+	mPlanarReflections->setMaxActiveActors( 2u, "PlanarReflectionsReflectiveWorkspace", true, 512,
+											512, true, Ogre::PFG_RGBA8_UNORM_SRGB,
+											useComputeMipmaps );
+	const Ogre::Vector2 mirrorSize( 10.0f, 10.0f );
+
+	// Create the plane mesh
+	// Note that we create the plane to look towards +Z; so that sceneNode->getOrientation
+	// matches the orientation for the PlanarReflectionActor
+	Ogre::v1::MeshPtr planeMeshV1 = Ogre::v1::MeshManager::getSingleton().createPlane(
+		"Plane Mirror Unlit", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+		Ogre::Plane( Ogre::Vector3::UNIT_Z, 0.0f ), mirrorSize.x, mirrorSize.y, 1, 1, true, 1, 1.0f,
+		1.0f, Ogre::Vector3::UNIT_Y, Ogre::v1::HardwareBuffer::HBU_STATIC,
+		Ogre::v1::HardwareBuffer::HBU_STATIC );
+	Ogre::MeshPtr planeMesh = Ogre::MeshManager::getSingleton().createByImportingV1(
+		"Plane Mirror Unlit", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+		planeMeshV1.get(), true, true, true );
+
+	//---------------------------------------------------------------------
+	// Setup mirror for Unlit.
+	//---------------------------------------------------------------------
+	Ogre::Item *item = sceneManager->createItem( planeMesh, Ogre::SCENE_DYNAMIC );
+	Ogre::SceneNode *sceneNode = sceneManager->getRootSceneNode( Ogre::SCENE_DYNAMIC )
+										->createChildSceneNode( Ogre::SCENE_DYNAMIC );
+	sceneNode->setPosition( 5, 5, 0 );
+	sceneNode->setOrientation(
+		Ogre::Quaternion( Ogre::Radian( -Ogre::Math::HALF_PI ), Ogre::Vector3::UNIT_Y ) );
+	sceneNode->attachObject( item );
+	// item->setCastShadows( false );
+	item->setVisibilityFlags( 1u );  // Do not render this plane during the reflection phase.
+
+	Ogre::PlanarReflectionActor *actor = mPlanarReflections->addActor( Ogre::PlanarReflectionActor(
+		sceneNode->getPosition(), mirrorSize, sceneNode->getOrientation() ) );
+
+	Ogre::Hlms *hlmsUnlit = root->getHlmsManager()->getHlms( Ogre::HLMS_UNLIT );
+
+	Ogre::HlmsMacroblock macroblock;
+	Ogre::HlmsBlendblock blendblock;
+	Ogre::String datablockName( "Mirror_Unlit" );
+	Ogre::HlmsUnlitDatablock *mirror =
+		static_cast<Ogre::HlmsUnlitDatablock *>( hlmsUnlit->createDatablock(
+			datablockName, datablockName, macroblock, blendblock, Ogre::HlmsParamVec() ) );
+	mPlanarReflections->reserve( 0, actor );
+	// Make sure it's always activated (i.e. always win against other actors)
+	// unless it's not visible by the camera.
+	actor->mActivationPriority = 0;
+	mirror->setTexture( 0, mPlanarReflections->getTexture( 0 ) );
+	mirror->setEnablePlanarReflection( 0, true );
+	item->setDatablock( mirror );
+
+	//---------------------------------------------------------------------
+	// Setup mirror for PBS.
+	//---------------------------------------------------------------------
+	Ogre::Hlms *hlms = root->getHlmsManager()->getHlms( Ogre::HLMS_PBS );
+	assert( dynamic_cast<Ogre::HlmsPbs *>( hlms ) );
+	Ogre::HlmsPbs *pbs = static_cast<Ogre::HlmsPbs *>( hlms );
+	// todo: rebuild ogre.... pbs->setPlanarReflections( mPlanarReflections );
+
+	item = sceneManager->createItem( planeMesh, Ogre::SCENE_DYNAMIC );
+	item->setDatablock( "GlassRoughness" );
+	sceneNode = sceneManager->getRootSceneNode( Ogre::SCENE_DYNAMIC )
+					->createChildSceneNode( Ogre::SCENE_DYNAMIC );
+	sceneNode->setPosition( -5, 2.5f, 0 );
+	sceneNode->setOrientation(
+		Ogre::Quaternion( Ogre::Radian( Ogre::Math::HALF_PI ), Ogre::Vector3::UNIT_Y ) );
+	sceneNode->setScale( Ogre::Vector3( 0.75f, 0.5f, 1.0f ) );
+	sceneNode->attachObject( item );
+
+	actor = mPlanarReflections->addActor( Ogre::PlanarReflectionActor(
+		sceneNode->getPosition(), mirrorSize * Ogre::Vector2( 0.75f, 0.5f ),
+		sceneNode->getOrientation() ) );
+
+	Ogre::PlanarReflections::TrackedRenderable trackedRenderable(
+		item->getSubItem( 0 ), item, Ogre::Vector3::UNIT_Z, Ogre::Vector3( 0, 0, 0 ) );
+	mPlanarReflections->addRenderable( trackedRenderable );
+}
+
+	
 //-----------------------------------------------------------------------------------------
 //  🪄 Setup Compositor
 //-----------------------------------------------------------------------------------------

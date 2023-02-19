@@ -1,4 +1,4 @@
-//  ed rtt
+//  🏗️ ed rtt
 //------------------------------------------------------------------------------------
 compositor_node RttNode
 {
@@ -46,7 +46,7 @@ compositor_node RttNode
 }
 
 
-//  cube reflections
+//  🔮 cube reflections
 //------------------------------------------------------------------------------------
 abstract target cubemap_target
 {
@@ -88,14 +88,12 @@ compositor_node CubemapNode
 	target tmpCubemap +Y : cubemap_target { }
 	target tmpCubemap -Y : cubemap_target { }
 	target tmpCubemap +Z : cubemap_target { }
-	target tmpCubemap -Z : cubemap_target
-	{
+	target tmpCubemap -Z : cubemap_target { 
 		pass ibl_specular
 		{
 			input tmpCubemap
 			output cubemap
-		}
-	}
+	}	}
 }
 
 // MSAA Cubemaps do not exist. Therefore we have to manually define the RTV (RenderTextureView)
@@ -121,19 +119,17 @@ compositor_node CubemapNodeMsaa
 	target mixedCubemapRtv +Y : cubemap_target { }
 	target mixedCubemapRtv -Y : cubemap_target { }
 	target mixedCubemapRtv +Z : cubemap_target { }
-	target mixedCubemapRtv -Z : cubemap_target
-	{
+	target mixedCubemapRtv -Z : cubemap_target {
 		pass ibl_specular
 		{
 			input tmpCubemap
 			output cubemap
-		}
-	}
+	}	}
 }
 
 
 //------------------------------------------------------------------------------------
-//  main render (split screen)
+//  🏞️  Main render  (👥 split screen)
 //------------------------------------------------------------------------------------
 compositor_node SR3_Render
 {
@@ -189,7 +185,7 @@ compositor_node SR3_Render
 			}
 			// store
 			// {
-			// 	colour	store
+			//	colour	store
 			// 	// colour	store_or_resolve
 			// 	depth	dont_care
 			// 	stencil	dont_care
@@ -199,6 +195,9 @@ compositor_node SR3_Render
 			// so we need to expose it to the pass.
 			expose demo_dynamic_cubemap
 
+			// planar reflections  used by C++ to identify this pass
+			identifier	25001
+
 			// in code: game, not ed
 			// visibility_mask		0x0000FFFFD  // no hud
 			// rq_last		110  // glass,par etc
@@ -207,6 +206,7 @@ compositor_node SR3_Render
 			// shadows		SR3_Shadows
 		}
 
+		//  restore  ----  for Hud, split
 		pass render_scene
 		{
 			profiling_id "HUD"
@@ -232,6 +232,7 @@ compositor_node SR3_Render
 			overlays	off
 		}
 
+
 		// pass custom MYGUI
 		// {
 			// provider?  added in code..
@@ -250,8 +251,46 @@ compositor_node SR3_Render
 	}
 }
 
+//  🪞 planar reflections  Water
+//------------------------------------------------------------------------------------
+compositor_node PlanarReflectionsReflectiveRenderingNode
+{
+	in 0 rt_renderwindow
 
-//  shadows
+	target rt_renderwindow
+	{
+		pass render_scene
+		{
+			load
+			{
+				all				clear
+				clear_colour	0.2 0.4 0.6 1
+			}
+			store
+			{
+				colour	store_or_resolve
+				depth	dont_care
+				stencil	dont_care
+			}
+
+			overlays		off
+			visibility_mask 0xfffffffe
+			shadows			PlanarReflectionsShadowNode
+
+			profiling_id "Reflective pass"
+		}
+
+		pass generate_mipmaps
+		{
+			mipmap_method compute_hq
+
+			profiling_id "Mipmap Generation (HQ)"
+		}
+	}
+}
+
+
+//  🌒 shadows
 //------------------------------------------------------------------------------------
 compositor_node_shadow SR3_Shadows
 {
