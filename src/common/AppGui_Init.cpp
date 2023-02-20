@@ -64,7 +64,7 @@ void AppGui::InitAppGui()
 //  💥 destroy
 void AppGui::DestroyGui()
 {
-	LogO("D::# Destroy MyGui");
+	//LogO("D::# Destroy MyGui");  // cant log
 	if (mGui)
 	{	mGui->shutdown();  delete mGui;  mGui = 0;  }
 	if (mPlatform)

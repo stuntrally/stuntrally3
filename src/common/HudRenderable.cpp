@@ -1,4 +1,5 @@
 #include "OgreCommon.h"
+#include "Vao/OgreBufferPacked.h"
 #include "half.hpp"
 #include "pch.h"
 #include "Def_Str.h"
@@ -182,6 +183,9 @@ void HudRenderable::createBuffers(const int count)
 //  maps all verts
 void HudRenderable::begin()
 {
+	if( !vb || vb->getMappingState() == MS_MAPPED )
+		return;
+
 	vp = reinterpret_cast<float * RESTRICT_ALIAS>(
 		vb->map( 0, vb->getNumElements() ) );
 	iVertCur = 0;
@@ -213,6 +217,9 @@ void HudRenderable::color(float r, float g, float b, float a)
 //  end map
 void HudRenderable::end()
 {
+	if( !vb || vb->getMappingState() == MS_UNMAPPED )
+		return;
+
 	//  fill rest if needed, to not have garbage
 	if (iVertCur < iVertCount)
 	for (int i = iVertCur; i < iVertCount; ++i)
