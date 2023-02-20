@@ -25,7 +25,6 @@ hlms ParSmoke unlit
 //	 depth_write off
 //	 receives_shadows false
 //	 alpha_rejection greater 2
-//	 ambient 0 0 0
 //	 diffuse 0 0 0
 //	 emissive 1 1 1
 //	 diffuse_address_mode clamp
@@ -115,7 +114,6 @@ hlms MarsDust unlit
 
 hlms FluidMud unlit
 {
-	 //ambient 1.6 1.6 1.6
 	 //diffuse 0.5 0.5 1.5
 	 //specular 1 1 0 32
 	 //emissive 0.3 0.3 0.3

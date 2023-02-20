@@ -529,9 +529,8 @@ void CarModel::UpdKeysCam()
 	bLastChkOld = pCar->bLastChk;
 
 	///  🎥 change Cameras  ---------------------------------
-	//if (!pApp->isFocGui)
 	int iC = pCar->iCamNext;  // iRplCarOfs..
-	if (iC != 0 && iCamNextOld == 0)
+	if (iC != 0 && iCamNextOld == 0 && !pApp->isFocGui)
 	{
 		//  with ctrl - change current camera car index  (mouse move camera for many players)
 		auto plr = pSet->game.local_players;
