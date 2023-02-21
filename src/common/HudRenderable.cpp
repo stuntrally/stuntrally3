@@ -183,8 +183,8 @@ void HudRenderable::createBuffers(const int count)
 //  maps all verts
 void HudRenderable::begin()
 {
-	if( !vb || vb->getMappingState() == MS_MAPPED )
-		return;
+	//if( !vb || vb->getMappingState() == MS_MAPPED )
+	//	return;
 
 	vp = reinterpret_cast<float * RESTRICT_ALIAS>(
 		vb->map( 0, vb->getNumElements() ) );
@@ -217,8 +217,8 @@ void HudRenderable::color(float r, float g, float b, float a)
 //  end map
 void HudRenderable::end()
 {
-	if( !vb || vb->getMappingState() == MS_UNMAPPED )
-		return;
+	//if( !vb || vb->getMappingState() == MS_UNMAPPED )
+	//	return;
 
 	//  fill rest if needed, to not have garbage
 	if (iVertCur < iVertCount)
