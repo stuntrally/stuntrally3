@@ -145,6 +145,7 @@ void App::createScene01()  // once, init
 
 void App::destroyScene()
 {
+	DestroyRnd2Tex();
 	scn->destroyScene();
 
 	if (mGui)  {

@@ -124,7 +124,7 @@ void CScene::CreateTerrain1(int n, bool upd)
 			tdb->setRoughness(i, pt->rough);
 			LogO("* Ter lay: "+d_d+" met:"+fToStr(pt->metal)+
 				"  ro: "+fToStr(pt->rough)+(pt->reflect ? "  refl" : ""));
-			if (pt->reflect)
+			if (pt->reflect && app->mCubeReflTex)
 				tdb->setTexture( TERRA_REFLECTION, app->mCubeReflTex );  // par
 		}
 		// tdb->setEmissive(0.5);  // todo: lava..

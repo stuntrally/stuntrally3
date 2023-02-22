@@ -134,6 +134,7 @@ class GameGraphicsSystem final : public GraphicsSystem
 			//  Create and register the terra Hlms
 			hlmsTerra = OGRE_NEW HlmsTerra( aTerra, &dirs );
 			hlmsManager->registerHlms( hlmsTerra );
+			hlmsTerra->setDebugOutputPath(true, false, PATHS::ShadersDir()+"/");
 		}
 
 		//  Add Terra's piece files that customize the PBS implementation.

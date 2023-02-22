@@ -214,13 +214,14 @@ CompositorWorkspace* AppGui::SetupCompositor()
 
 
 	//  🔮 create Reflections  ----
-	CreateCubeReflect();
+	CreateCubeReflect();  //
 
 
 	//  Render window external channels  ----
-	CompositorChannelVec ext( 2 );
+	CompositorChannelVec ext( mCubeReflTex ? 2 : 1 );
 	ext[0] = mWindow->getTexture();
-	ext[1] = mCubeReflTex;  // 🔮
+	if (mCubeReflTex)
+		ext[1] = mCubeReflTex;  // 🔮
 
 	
 #ifndef SR_EDITOR  // game

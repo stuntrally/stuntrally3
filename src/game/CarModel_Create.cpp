@@ -128,21 +128,23 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 		pApp->SetTexWrap(item);
 
 		//**  set reflection cube
-		assert( dynamic_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() ) );
-		HlmsPbsDatablock *pDb =
-			static_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() );
-		if (!body)
-			pDb->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
-		else
-		{	//  clone,  set car color
-			static int id = 0;  ++id;
-			db = static_cast<HlmsPbsDatablock *>(
-				pDb->clone( "CarBody" + sCarI + toStr(id) ) );
-			db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
-			item->getSubItem(0)->setDatablock( db );
-			SetPaint();
-		}
-	}
+		if (pApp->mCubeReflTex)
+		{
+			assert( dynamic_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() ) );
+			HlmsPbsDatablock *pDb =
+				static_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() );
+			if (!body)
+				pDb->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
+			else
+			{	//  clone,  set car color
+				static int id = 0;  ++id;
+				db = static_cast<HlmsPbsDatablock *>(
+					pDb->clone( "CarBody" + sCarI + toStr(id) ) );
+				db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
+				item->getSubItem(0)->setDatablock( db );
+				SetPaint();
+			}
+	}	}
 	catch (Ogre::Exception ex)
 	{
 		LogO(String("## CreatePart exc! ") + ex.what());
@@ -320,11 +322,13 @@ void CarModel::Create()
 			if (bLogInfo && (w==0 || w==2))  LogMeshInfo(eWh, name, 2);
 
 			//**  set reflection cube
-			assert( dynamic_cast<HlmsPbsDatablock *>( eWh->getSubItem(0)->getDatablock() ) );
-			HlmsPbsDatablock* db =
-				static_cast<HlmsPbsDatablock *>( eWh->getSubItem(0)->getDatablock() );
-			db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
-		}
+			if (pApp->mCubeReflTex)
+			{
+				assert( dynamic_cast<HlmsPbsDatablock *>( eWh->getSubItem(0)->getDatablock() ) );
+				HlmsPbsDatablock* db =
+					static_cast<HlmsPbsDatablock *>( eWh->getSubItem(0)->getDatablock() );
+				db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
+		}	}
 		if (FileExists(sCar + "_brake.mesh") && !ghostTrk)
 		{
 			String name = sDirname + "_brake.mesh";

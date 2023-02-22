@@ -164,7 +164,7 @@ void App::CreateRnd2Tex()
 		
 		hrPos = new HudRenderable("hud/CarPos", mSceneMgr,
 			OT_TRIANGLE_LIST, true,false, RV_Hud,RQG_Hud3, 1);
-		
+			
 		ndPos = rt->createChildSceneNode(SCENE_DYNAMIC);
 		ndPos->attachObject(hrPos);
 	}

@@ -67,6 +67,21 @@ void AppGui::UpdFpsText()
 	txt += "\n";/**/
 
 	txFps->setCaption(txt);
+
+#if 0  // Log Fps - Test, no gui, etc
+	static int i = 0;  ++i;
+	if (i > 30)  // interval
+	{	i = 0;
+		txt = "  Fps " + fToStr( fps, 1,4) + 
+			"  tri " + fToStr( tris, 2,4) +
+			"m  drw " + iToStr( draw, 5 ) +
+			"  inst " + iToStr( inst, 5 ) +
+			"  vgt " + iToStr( vgt, 5 ) + 
+			"  gui " + iToStr( gui, 2 ) +
+			"  mem " + fToStr( mem, 0,4) + "M";
+		LogO(txt);
+	}
+#endif
 }
 
 
