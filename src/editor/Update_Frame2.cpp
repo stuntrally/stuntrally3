@@ -37,25 +37,37 @@ void App::UpdateKey(float dt)
 	if (pSet->inputBar)
 		UpdKeyBar(dt);
 
-	//  keys up/dn - trklist  todo
+
+	//  📃 keys up/dn - for trk list
+	//------------------------------------------------------------------------
 	#define isKey(a)  IsKey(SDL_SCANCODE_##a)
-	const Real q = (shift ? 0.05 : ctrl ? 4.0 :1.0) * 20 * dt;
+	bool up   = isKey(UP)  ||isKey(KP_8);
+	bool down = isKey(DOWN)||isKey(KP_2);
+	bool pgup   = isKey(PAGEUP)  ||isKey(KP_9);
+	bool pgdown = isKey(PAGEDOWN)||isKey(KP_3);
+	#undef isKey
+
+	static float fUp = 0.f, fDn = 0.f, fPgUp = 0.f, fPgDn = 0.f;
+	const float rpt = -0.1f;  // -0.15 s delay
+	const int d = alt ? 16 : ctrl ? 4  : 1,
+	         pg = alt ? 64 : ctrl ? 32 : 8;
 
 	WP wf = MyGUI::InputManager::getInstance().getKeyFocusWidget();
-	static float dirU = 0.f,dirD = 0.f;
-	if (bGuiFocus && wf != (WP)gcom->trkDesc[0])
-	{	if (isKey(UP)  ||isKey(KP_8))  dirD += dt;  else
-		if (isKey(DOWN)||isKey(KP_2))  dirU += dt;  else
-		{	dirU = 0.f;  dirD = 0.f;  }
-		int d = ctrl ? 4 : 1;
-		if (dirU > 0.0f) {  gcom->trkListNext( d);  dirU = -0.2f;  }
-		if (dirD > 0.0f) {  gcom->trkListNext(-d);  dirD = -0.2f;  }
+	if (bGuiFocus && wf != (WP)gcom->trkDesc[0] && wf != (WP)gcom->trkAdvice[0])
+	{
+		if (down)  fDn += dt;  else  if (pgdown)  fPgDn += dt;  else
+		if (up)    fUp += dt;  else  if (pgup)    fPgUp += dt;  else
+		{	fUp = 0.f;  fDn = 0.f;  fPgUp = 0.f;  fPgDn = 0.f;  }
+		if (fUp   > 0.f) {  gcom->trkListNext(-d);  fUp = rpt;  }
+		if (fDn   > 0.f) {  gcom->trkListNext( d);  fDn = rpt;  }
+		if (fPgUp > 0.f) {  gcom->trkListNext(-pg);  fPgUp = rpt;  }
+		if (fPgDn > 0.f) {  gcom->trkListNext( pg);  fPgDn = rpt;  }
 	}
-	#undef isKey
 
 	
 	///  Update Info texts  and edit by key continuous 
 	///. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+	const Real q = (shift ? 0.05 : ctrl ? 4.0 :1.0) * 20 * dt;
 
 	SplineRoad* road = scn->road;
 	if (edMode == ED_Road && bEdit() && scn->road)

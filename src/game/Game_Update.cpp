@@ -154,18 +154,19 @@ void App::update( float dt )
 		}
 
 		
-		//  📃 keys up/dn, for gui lists  ------------
+		//  📃 keys up/dn, for gui lists
+		//------------------------------------------------------------------------
 		static float fUp = 0.f, fDn = 0.f, fPgUp = 0.f, fPgDn = 0.f;
-		const float rpt = -0.15f;  // ms delay
+		const float rpt = -0.1f;  // -0.15f s delay
+		const int d = alt ? 16 : ctrl ? 4  : 1,
+		         pg = alt ? 64 : ctrl ? 32 : 8;
+
 		if (isFocGui && !isTweak() &&
-			pSet->iMenu >= MN_Single &&
-			pSet->iMenu <= MN_Chall)
+			pSet->iMenu >= MN_Single && pSet->iMenu <= MN_Chall)
 		{
 			if (down)  fDn += dt;  else  if (pgdown)  fPgDn += dt;  else
 			if (up)    fUp += dt;  else  if (pgup)    fPgUp += dt;  else
 			{	fUp = 0.f;  fDn = 0.f;  fPgUp = 0.f;  fPgDn = 0.f;  }
-			int d  = alt ? 16 : ctrl ? 4  : 1,
-				pg = alt ? 64 : ctrl ? 32 : 8;
 			if (fUp   > 0.f) {  gui->LNext(-d);   fUp = rpt;  }
 			if (fDn   > 0.f) {  gui->LNext( d);   fDn = rpt;  }
 			if (fPgUp > 0.f) {  gui->LNext(-pg);  fPgUp = rpt;  }
