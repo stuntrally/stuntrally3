@@ -51,6 +51,16 @@ void CScene::CreateTerrain1(int n, bool upd)
 	app->InitTexFilters(&sb);
 	TextureGpuManager *texMgr = app->mRoot->getRenderSystem()->getTextureGpuManager();
 
+	const auto& td = sc->tds[n];
+	bool tripl = false;
+	// bool tripl = n == 0 && td.triplCnt > 0;  // test
+
+	if (tripl)  //`
+		tdb->setDetailTriplanarDiffuseEnabled(true);
+	// tdb->setDetailTriplanarNormalEnabled(true);  // fixme shader crash..
+	// tdb->setDetailTriplanarRoughnessEnabled(true);
+	// tdb->setDetailTriplanarMetalnessEnabled(true);
+
 	// tdb->setBrdf(TerraBrdf::Default);  //
 	// tdb->setBrdf(TerraBrdf::BlinnPhong);  // +💡
 	tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);  // +💡 rough+
@@ -64,7 +74,6 @@ void CScene::CreateTerrain1(int n, bool upd)
 
 
 	///  🏔️ Layer Textures  ------------------------------------------------
-	const auto& td = sc->tds[n];
 	const Real fTer = td.fTerWorldSize;
 	// const Real fTer = td.fTriangleSize * td.iVertsX;
 	int ls = td.layers.size();
@@ -111,7 +120,10 @@ void CScene::CreateTerrain1(int n, bool upd)
 		{	tdb->setTexture( TERRA_DETAIL_METALNESS0 + i, tex );
 			tdb->setSamplerblock( TERRA_DETAIL_METALNESS0 + i, sb );
 		}*/
-		Real sc = fTer / l.tiling;
+		Real sc = tripl ?
+			// fTer / l.tiling * 0.0005 :  //?? big
+			fTer / l.tiling * 0.002 :  //?? small
+			fTer / l.tiling;
 		tdb->setDetailMapOffsetScale( i, Vector4(0,0, sc,sc) );
 		
 		//  find mat params from presets
