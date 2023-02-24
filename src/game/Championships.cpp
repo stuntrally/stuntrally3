@@ -483,6 +483,6 @@ void CGui::ChampFillStageInfo(bool finished)
 	if (!finished)
 	{
 		String path = gcom->PathListTrkPrv(0, trk.name);
-		//; app->prvStCh.Load(path+"view.jpg");
+		app->prvStCh.Load(path+"view.jpg");
 	}
 }

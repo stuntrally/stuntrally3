@@ -44,7 +44,8 @@ void AppGui::UpdFpsText()
 	const FrameStats *st = mRoot->getFrameStats();
 
 	const float fps = st->getAvgFps(),  //st->getFps(),
-		tris = rm.mFaceCount/1000000.f, mem = GetGPUmem();
+		tris = rm.mFaceCount/1000000.f / 7.f,  //!  / 7 1+6cube
+		mem = GetGPUmem();
 	const int draw = rm.mDrawCount,
 		inst = rm.mInstanceCount, vgt = scn->iVegetAll,
 		gui = MyGUI::Ogre2RenderManager::getInstance().getBatchCount();

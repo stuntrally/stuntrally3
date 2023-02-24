@@ -60,10 +60,11 @@ void App::createScene01()  // once, init
 
 
 	//  🖼️ prv tex  todo
-	// int k=1024;
-	// prvView.Create(k,k,"PrvView");
-	// prvRoad.Create(k,k,"PrvRoad");
-	//  prvTer.Create(k,k,"PrvTer");
+	prvView.mgr = mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
+	int k = 1024;
+	prvView.Create(k,k,"PrvView");
+	prvRoad.Create(k,k,"PrvRoad");
+	 prvTer.Create(k,k,"PrvTer");
 
 	//scn->roadDens.Create(k+1,k+1,"RoadDens");  // var size..
 

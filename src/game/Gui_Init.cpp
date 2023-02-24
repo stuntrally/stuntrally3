@@ -484,7 +484,7 @@ void CGui::InitGui()
 
 	///  🏞️ Tracks list, text, chg btn
 	//------------------------------------------------------------------------
-
+	gcom->panTrkDesc[0] = fWP("panTrkDesc0");
 	gcom->trkDesc[0] = fEd("TrackDesc0");  gcom->trkAdvice[0] = fEd("TrackAdvice0");
 	gcom->sListTrack = pSet->gui.track;
 

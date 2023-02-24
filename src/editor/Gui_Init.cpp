@@ -584,6 +584,7 @@ void CGui::InitGui()
 	bCopyTrackU = 0;
 	
 	//  text desc
+	gcom->panTrkDesc[0] = fWP("panTrkDesc0");
 	Edt(gcom->trkDesc[0], "TrackDesc0", editTrkDescr);
 	Edt(gcom->trkAdvice[0], "TrackAdvice0", editTrkAdvice);
 	trkName = fEd("TrackName");

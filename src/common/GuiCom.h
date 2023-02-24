@@ -129,7 +129,8 @@ public:
 	void TrackListUpd(bool resetNotFound=false);
 
 	Mli2 trkList =0;
-	Ed trkDesc[2], trkAdvice[2];  // description, advice
+	WP panTrkDesc[2] ={0,0};
+	Ed trkDesc[2] ={0,0}, trkAdvice[2] ={0,0};  // description, advice
 	bool needSort(Mli2 li);
 
 	Img imgPrv[3], imgMini[3], imgTer[3];  // view,  mini: road, terrain, [2] is fullscr

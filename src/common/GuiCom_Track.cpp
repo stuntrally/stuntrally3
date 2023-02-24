@@ -143,7 +143,7 @@ void CGuiCom::AddTrkL(std::string name, int user,
 	li->setSubItemNameAt(6,l, toS(getClrDiff(ti->diff), ti->diff));
 	li->setSubItemNameAt(7,l, toS(getClrRating(ti->rating), ti->rating));
 	
-	//todo: rateuser* drivenlaps-
+	// todo: driven laps, date last-
 	li->setSubItemNameAt(8,l, toS("#D070A0",ti->objects));
 	li->setSubItemNameAt(9,l, toS("#C09060",ti->obstacles));
 	li->setSubItemNameAt(10,l,toS("#80C0FF",ti->fluids));
@@ -224,7 +224,7 @@ void CGuiCom::GuiInitTrack()
 	li->addColumn("#80FFC0"+TR("#{Scenery}"), colTrk[c++]);
 	li->addColumn("#80FF80""ver", colTrk[c++]);  // created- modified-
 
-	li->addColumn("#C0D0FF""!", colTrk[c++]);  //todo: rateuser, drivenlaps ..
+	li->addColumn("#C0D0FF""!", colTrk[c++]);   // diff
 	li->addColumn("#C0E0FF""*", colTrk[c++]);   // rating
 
 	li->addColumn("#FF80C0""o", colTrk[c++]);   // objects
@@ -545,9 +545,9 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 #endif
 	String path = PathListTrkPrv(any ? 0 : -1, sTrack);
 
-	// app->prvView.Load(path+"view.jpg");
-	// app->prvRoad.Load(path+"road.png");
-	// app->prvTer.Load(path+"terrain.jpg");
+	app->prvView.Load(path+"view.jpg");
+	app->prvRoad.Load(path+"road.png");
+	app->prvTer.Load(path+"terrain.jpg");
 
 
 	//  start pos on minimap

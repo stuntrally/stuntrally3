@@ -40,9 +40,7 @@ CGuiCom::CGuiCom(App* app1)
 		imgMiniPos[t] = 0;  imgMiniRot[t] = 0;
 	}
 	for (t=0; t < 2; ++t)
-	{	
-		trkDesc[t] = 0;  trkAdvice[t] = 0;
-
+	{
 		for (i=0; i < StTrk; ++i)     stTrk[t][i] = 0;
 		for (i=0; i < ImStTrk; ++i) imStTrk[t][i] = 0;
 		for (i=0; i < InfTrk; ++i){  infTrk[t][i] = 0;  imInfTrk[t][i] = 0;  }

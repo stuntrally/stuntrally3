@@ -28,6 +28,7 @@ void CGui::InitGuiChamps()
 	app->mWndRaceBtns[1]->setVisible(pSet->difficulty < 4);  // tutorials
 
 	//  track stats 2nd set
+	gcom->panTrkDesc[1] = fWP("panTrkDesc1");
 	gcom->trkDesc[1] = fEd("TrackDesc1");  gcom->trkAdvice[1] = fEd("TrackAdvice1");
 	valTrkNet = fTxt("TrackText");
 

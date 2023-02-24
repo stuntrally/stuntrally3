@@ -7,7 +7,7 @@
 #include "CarPosInfo.h"
 // #include "networkcallbacks.hpp"
 #include "ICSChannelListener.h"
-// #include "PreviewTex.h"
+#include "PreviewTex.h"
 #include <thread>
 //#include <OgreTextureGpu.h>
 #include <OgreHlmsDatablock.h>
@@ -155,8 +155,8 @@ public:
 
 	//  🎛️ Gui
 	//-----------------------------------------------------------------
-	// PreviewTex prvView,prvRoad,prvTer;  // track tab
-	// PreviewTex prvStCh;  // champ,chall stage view
+	PreviewTex prvView,prvRoad,prvTer;  // track tab
+	PreviewTex prvStCh;  // champ,chall stage view
 
 	bool bHideHudBeam  =0;  // hides beam when replay or no road
 	bool bHideHudArr   =0;	// hides arrow when replay,splitscreen

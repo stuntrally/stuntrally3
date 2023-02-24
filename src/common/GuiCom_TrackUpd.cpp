@@ -308,9 +308,8 @@ void CGuiCom::ChangeTrackView()
 
 	imgTrkIco1->setVisible(det);  imgTrkIco2->setVisible(det);
 	if (imgPrv[0])
-		imgPrv[0]->setVisible(!full);
-	trkDesc[0]->setVisible(!full);
-	trkAdvice[0]->setVisible(!full);
+		imgPrv[0]->setVisible(!det);
+	panTrkDesc[0]->setVisible(!det);
 
 	ChkUpd_Col();
 	updTrkListDim();  // change size, columns

@@ -5,7 +5,7 @@
 #include "quaternion.h"
 #include "tracksurface.h"
 #include "SceneXml.h"  //Object-
-// #include "PreviewTex.h"
+#include "PreviewTex.h"
 
 #include <SDL_keycode.h>
 // #include <Ogre.h>
@@ -39,7 +39,7 @@ public:
 	void Load(), LoadData();
 
 
-	// PreviewTex prvView,prvRoad,prvTer;  // track tab
+	PreviewTex prvView,prvRoad,prvTer;  // track tab
 
 	float mTimer =0.f;
 

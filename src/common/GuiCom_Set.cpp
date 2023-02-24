@@ -108,7 +108,7 @@ void CGuiCom::comboGraphicsAll(ComboBoxPtr cmb, size_t val)
 	s.rpl_rec   = val >= 1;
 	s.rpl_ghost = val >= 1;
 	
-	// s.all_effects = false;  // todo: broken  val >= 4;  // only bloom on Higher
+	// s.all_effects = false;
 	// s.bloom = val >= 3;
 	// s.softparticles = val >= 5;
 	// s.ssao = val >= 6;

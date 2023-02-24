@@ -47,14 +47,14 @@ using namespace std;
 void App::LoadData()
 {
 	//  🖼️ prv tex  todo
-	/*int k = 1024;
+	prvView.mgr = mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
+	int k = 1024;
 	prvView.Create(k,k,"PrvView");
 	prvRoad.Create(k,k,"PrvRoad");
 	 prvTer.Create(k,k,"PrvTer");
-	//  chs stage
-	prvStCh.Create(k,k,"PrvStCh");
+	prvStCh.Create(k,k,"PrvStCh");  // chs stage
 	
-	scn->roadDens.Create(k+1,k+1,"RoadDens");  // var size..
+	/*scn->roadDens.Create(k+1,k+1,"RoadDens");  // var size..
 	
 	mLoadingBar->loadTex.Create(1920,1200,"LoadingTex");*/
 
