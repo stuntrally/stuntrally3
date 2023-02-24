@@ -77,16 +77,16 @@ hlms roadJungleWet_ter pbs
 	specular_map roadAlpha2s.jpg
 	// specular_map roadAlpha2x.jpg
 	// specular_map roadAlpha2i.jpg
-	// diffuse  0.6 0.6 0.6
-	diffuse  1 1 1
+	diffuse  0.6 0.6 0.6
+	// diffuse  1 1 1
 	// specular 0.6 0.6 0.6
 	specular 1 1 1
 
 	depth_bias 3
 	scene_blend alpha_blend
 
-	// fresnel_coeff 0.4 0.4 0.4  // spec / refl color
-	fresnel_coeff 1 1 1  // spec / refl color
+	fresnel_coeff 0.1 0.1 0.1  // spec / refl color
+	// fresnel_coeff 1 1 1  // spec / refl color
 	fresnel	1.0
 	// workflow metallic
 	roughness 0.13
