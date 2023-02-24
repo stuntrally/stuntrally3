@@ -119,7 +119,7 @@ void main()
 @foreach( 4, n )
 	@property( detail_map@n )
 		vec3 detailCol@n = texture( textureMaps[@value(detail_map@n_idx)],
-								vec3( inPs.uv0.xy * 1.0 * material.detailOffsetScale[@value(currOffsetDetail)].zw +
+								vec3( inPs.uv0.xy * material.detailOffsetScale[@value(currOffsetDetail)].zw +
 										material.detailOffsetScale[@value(currOffsetDetail)].xy,
 										@value(detail_map@n_idx_slice) ) ).xyz;
 	@end @property( !detail_map@n )

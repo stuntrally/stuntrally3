@@ -46,7 +46,7 @@ THE SOFTWARE.
 #undef OGRE_HLMS_TEXTURE_BASE_MAX_TEX
 #undef OGRE_HLMS_CREATOR_CLASS
 
-#include <OgreHlmsTerraDatablock.cpp.inc>
+#include "OgreHlmsTerraDatablock.cpp.inc"
 
 namespace Ogre
 {
@@ -64,7 +64,11 @@ namespace Ogre
 		mkDg( 0.318309886f ),
 		mkDb( 0.318309886f ),  // Max Diffuse = 1 / PI
 		mShadowConstantBiasGpu( 0.0f ),
-		mBrdf( TerraBrdf::Default )
+        mBrdf( TerraBrdf::Default ),
+        mDetailTriplanarDiffuseEnabled( false ),
+        mDetailTriplanarNormalEnabled( false ),
+        mDetailTriplanarRoughnessEnabled( false ),
+        mDetailTriplanarMetalnessEnabled( false )
 	{
 		mShadowConstantBiasGpu = mShadowConstantBias = 0.01f;
 
@@ -254,6 +258,46 @@ namespace Ogre
 	{
 		return mBrdf;
 	}
+    //-----------------------------------------------------------------------------------
+    void HlmsTerraDatablock::setDetailTriplanarDiffuseEnabled( bool enabled )
+    {
+        if( mDetailTriplanarDiffuseEnabled != enabled )
+        {
+            mDetailTriplanarDiffuseEnabled = enabled;
+
+            flushRenderables();
+        }
+    }
+    //-----------------------------------------------------------------------------------
+    void HlmsTerraDatablock::setDetailTriplanarNormalEnabled( bool enabled )
+    {
+        if( mDetailTriplanarNormalEnabled != enabled )
+        {
+            mDetailTriplanarNormalEnabled = enabled;
+
+            flushRenderables();
+        }
+    }
+    //-----------------------------------------------------------------------------------
+    void HlmsTerraDatablock::setDetailTriplanarRoughnessEnabled( bool enabled )
+    {
+        if( mDetailTriplanarRoughnessEnabled != enabled )
+        {
+            mDetailTriplanarRoughnessEnabled = enabled;
+
+            flushRenderables();
+        }
+    }
+    //-----------------------------------------------------------------------------------
+    void HlmsTerraDatablock::setDetailTriplanarMetalnessEnabled( bool enabled )
+    {
+        if( mDetailTriplanarMetalnessEnabled != enabled )
+        {
+            mDetailTriplanarMetalnessEnabled = enabled;
+
+            flushRenderables();
+        }
+    }
 	//-----------------------------------------------------------------------------------
 	bool HlmsTerraDatablock::suggestUsingSRGB( TerraTextureTypes type ) const
 	{
