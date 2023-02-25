@@ -277,7 +277,8 @@ void CarModel::Create()
 		if (i < cnt)
 		{
 			SceneNode* node = ndCar->createChildSceneNode( SCENE_DYNAMIC, fsFlares.pos[i] );
-			LogO(toStr(fsFlares.pos[i]));
+			LogO(toStr(fsFlares.pos[i]));  //-
+			
 			Light* light = mSceneMgr->createLight();
 			node->attachObject( light );  ToDel(node);
 			light->setDiffuseColour(  1.f, 1.1f, 1.1f );  // clr

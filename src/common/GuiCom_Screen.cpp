@@ -167,9 +167,9 @@ void CGuiCom::ResizeOptWnd()
 
 #ifndef SR_EDITOR  // game
 	int xc = (wx - wy)*0.5f;
-	// imgPrv[2]->setCoord(xc, 0, wy, wy);  // fullscr prv
-	// imgTer[2]->setCoord(xc, 0, wy, wy);
-	// imgMini[2]->setCoord(xc, 0, wy, wy);  initMiniPos(2);
+	imgPrv[2]->setCoord(xc, 0, wy, wy);  // fullscr prv
+	imgTer[2]->setCoord(xc, 0, wy, wy);
+	imgMini[2]->setCoord(xc, 0, wy, wy);  initMiniPos(2);
 
 	app->mWndGame->setCoord(xm, ym, xo, yo);
 	app->mWndReplays->setCoord(xm, ym, xo, yo);

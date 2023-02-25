@@ -403,7 +403,7 @@ void CHud::Create()
 	///  ⚫ tire vis circles  + + + +
 	asp = float(app->mWindow->getWidth()) / float(app->mWindow->getHeight());
 
-#if 0
+#if 0  // todo
 	if (pSet->car_tirevis)
 	{	SceneNode* rt = scm->getRootSceneNode();
 		for (int i=0; i < 4; ++i)
@@ -436,20 +436,35 @@ void CHud::Create()
 #endif
 
 
-	//  dbg texts
-#if 0
-	OverlayManager& ovr = OverlayManager::getSingleton();
-	ovCarDbg = ovr.getByName("Car/Stats");
-	ovCarDbgTxt = ovr.getByName("Car/StatsTxt");
-	ovCarDbgExt = ovr.getByName("Car/StatsExt");
-	
-	for (int i=0; i < ov.size(); ++i)
-	{	String s = toStr(i+1);
-		ov[i].oL = ovr.getOverlayElement("L_"+s);	ov[i].oR = ovr.getOverlayElement("R_"+s);
-		ov[i].oS = ovr.getOverlayElement("S_"+s);	ov[i].oU = ovr.getOverlayElement("U_"+s);
-		ov[i].oX = ovr.getOverlayElement("X_"+s);
+	//  debug texts car  == == ==
+	auto DbgTxt = [](Txt txt)
+	{
+		txt->setFontName("hud.fps");  txt->setTextShadow(true);
+		txt->setTextColour(Colour(0.95,0.95,1.0));  txt->setTextShadowColour(Colour::Black);
+		//txt->setVisible(false);  //?
+	};
+	for (int i=0; i < 4; ++i)
+	{
+		auto txt = app->mGui->createWidget<TextBox>("TextBox",
+			i*270,80, 600,1100, Align::Left, "Back");
+		DbgTxt(txt);  txDbgCar[i] = txt;
 	}
-#endif
+
+	//  debug surfaces  ==
+	auto txt = app->mGui->createWidget<TextBox>("TextBox",
+		20,280, 800,300, Align::Left, "Back");
+	DbgTxt(txt);  txDbgSurf = txt;
+
+	//  profiler times  ::
+	txt = app->mGui->createWidget<TextBox>("TextBox",
+		280,80, 400,300, Align::Left, "Back");
+	DbgTxt(txt);  txDbgProfTim = txt;
+	
+	//  profiler bullet  ;;;
+	txt = app->mGui->createWidget<TextBox>("TextBox",
+		320,80, 1400,1000, Align::Left, "Back");
+	DbgTxt(txt);  txDbgProfBlt = txt;
+
 
 	// Show();  //_
 	app->bSizeHUD = true;
@@ -477,37 +492,46 @@ void CHud::Destroy()
 {
 	LogO("D--- Destroy Hud");
 	SceneManager* scm = app->mSceneMgr;
+
+	#define Dest2(nd)  {  if (nd) {  scm->destroySceneNode(nd);  nd=0;  }  }
+	#define Del(hr)  {  delete hr;  hr =0;  }
+	#define Dest(w)  if (w) {  app->mGui->destroyWidget(w);  w = 0;  }
+
 	int i,c;
 	for (c=0; c < hud.size(); ++c)
 	{	Hud& h = hud[c];
 
-		#define Dest2(nd)  {  if (nd) {  scm->destroySceneNode(nd);  nd=0;  }  }
-		#define Del(hr)  {  delete hr;  hr =0;  }
-		
+		//  🌍⏲️ map, gauges
 		Dest2(h.ndMap)  Del(h.hrMap)
 		Dest2(h.ndGauges)  Del(h.hrGauges)
-
-		#define Dest(w)  \
-			if (w) {  app->mGui->destroyWidget(w);  w = 0;  }
-			
+		//  vel, rpm,
 		Dest(h.txGear) Dest(h.bckGear)
 		Dest(h.txVel)  Dest(h.bckVel)
 		Dest(h.txAbs)  Dest(h.txTcs)  Dest(h.txCam)
-		
+		//  💨 boost
 		Dest(h.txBFuel)  Dest(h.txDamage)  Dest(h.txRewind)  Dest(h.imgDamage)
 		Dest(h.icoBFuel)  Dest(h.icoBInf)  Dest(h.icoDamage)  Dest(h.icoRewind)
 
 		// for (i=0; i < 3; ++i)  Dest(h.txOpp[i])
 		// Dest(h.bckOpp)
+		//  🏁 times, lap
 		Dest(h.txTimTxt)  Dest(h.txTimes)  Dest(h.bckTimes)
 		Dest(h.txLapTxt)  Dest(h.txLap)  Dest(h.bckLap)
 		h.sTimes = "";  h.sLap = "";
 		
+		//  ❌🥇 warn, msg plr
 		Dest(h.txWarn)  Dest(h.bckWarn)
 		Dest(h.txPlace)  Dest(h.bckPlace)
 		Dest(h.txCountdown)
 		Dest(h.parent)
 	}
+	//  🔧 debug
+	for (int i=0; i < 4; ++i)
+		Dest(txDbgCar[i]);
+	Dest(txDbgSurf);
+	Dest(txDbgProfTim);  Dest(txDbgProfBlt);
+
+	//  msg global
 	Dest2(ndPos)  Del(hrPos)
 	Dest(txMsg)  Dest(bckMsg)
 	Dest(txCamInfo)

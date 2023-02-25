@@ -34,7 +34,8 @@
 						<Property key="NeedMouse" value="false"/>
 					</Widget>
 				</Widget>
-				<Widget type="ImageBox" skin="ImageBox" position="174 15 336 336" name="TrackImg0">
+
+				<Widget type="ImageBox" skin="ImageBox" position="174 26 336 336" name="TrackImg0">
 					<UserString key="tip" value="#{TipTrackImg} #{TipClickMax}"/>
 				</Widget>
 				<Widget type="ImageBox" skin="ImageBox" position="526 270 252 252" name="TrkTerImg0">

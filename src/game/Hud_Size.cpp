@@ -148,6 +148,8 @@ void CHud::Size()
 	{	txCamInfo->setPosition(270, app->mWindow->getHeight() -100);
 		bckMsg->setPosition(256,0);
 	}
+	//  debug txt  === ===
+	//..
 }
 
 
@@ -157,9 +159,6 @@ void CHud::Show(bool hideAll)
 {
 	if (hideAll /*|| app->iLoad1stFrames > -1*/)  // still loading
 	{
-		/*if (ovCarDbg)  ovCarDbg->hide();
-		if (ovCarDbgTxt)  ovCarDbgTxt->hide();*/
-
 		app->bckFps->setVisible(false);
 		app->txFps->setVisible(false);
 		if (bckMsg)
@@ -177,8 +176,14 @@ void CHud::Show(bool hideAll)
 		return;
 	}
 
-	bool show = pSet->car_dbgbars;
-	/*if (ovCarDbg){  if (show)  ovCarDbg->show();  else  ovCarDbg->hide();  }
+	for (int i=0; i < 4; ++i)
+		txDbgCar[i]->setVisible(pSet->car_dbgtxt);
+	txDbgSurf->setVisible(pSet->car_dbgsurf);
+	
+	txDbgProfTim->setVisible(pSet->profilerTxt);
+	txDbgProfBlt->setVisible(pSet->bltProfilerTxt);
+	/*bool show = pSet->car_dbgbars;
+	if (ovCarDbg){  if (show)  ovCarDbg->show();  else  ovCarDbg->hide();  }
 	show = pSet->car_dbgtxt || pSet->bltProfilerTxt || pSet->profilerTxt;
 	if (ovCarDbgTxt){  if (show)  ovCarDbgTxt->show();  else  ovCarDbgTxt->hide();  }
 	show = pSet->car_dbgsurf;
@@ -196,7 +201,7 @@ void CHud::Show(bool hideAll)
 		bool bdmg = pSet->game.damage_type > 0;
 		txCamInfo->setVisible(cam);
 
-		show = pSet->show_gauges;
+		bool show = pSet->show_gauges;
 		for (int c=0; c < hud.size(); ++c)
 		{	Hud& h = hud[c];
 

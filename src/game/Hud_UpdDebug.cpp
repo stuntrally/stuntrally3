@@ -15,6 +15,7 @@
 // #include "CGui.h"
 // #include "SplitScreen.h"
 #include "FollowCamera.h"
+#include "CarModel.h"
 // #include "MultiList2.h"
 // #include "GraphView.h"
 
@@ -42,27 +43,31 @@ void CHud::UpdDebug(CAR* pCar, CarModel* pCarM)
 		UpdDbgTxtClr();
 	}*/
 
-#if 0
-	//  car debug text  --------
+
+	//  car debug text  === === === ===
 	static bool oldCarTxt = false;
-	if (pCar && ov[0].oU)
+	if (pCar && txDbgCar[0])
 	{
 		if (pSet->car_dbgtxt)
-		{	std::stringstream s1,s2,s3,s4;
-			pCar->DebugPrint(s1, true, false, false, false);  ov[0].oU->setCaption(s1.str());
-			pCar->DebugPrint(s2, false, true, false, false);  ov[1].oU->setCaption(s2.str());
-			pCar->DebugPrint(s3, false, false, true, false);  ov[2].oU->setCaption(s3.str());
-			pCar->DebugPrint(s4, false, false, false, true);  ov[3].oU->setCaption(s4.str());
+		{
+			for (int i=0; i < 4; ++i)
+			{
+				std::stringstream ss;
+				pCar->DebugPrint(ss, i==0, i==1, i==2, i==3);
+				txDbgCar[i]->setCaption(ss.str());
+			}
 		}else
 		if (pSet->car_dbgtxt != oldCarTxt)
-		{	ov[0].oU->setCaption(""); /*ovU[1]->setCaption(""); ovU[2]->setCaption(""); ovU[3]->setCaption("");*/	}
+		{
+			for (int i=0; i < 4; ++i)
+				txDbgCar[i]->setCaption("");
+		}
 	}
 	oldCarTxt = pSet->car_dbgtxt;
-#endif
+
 	
-#if 0
 	//  profiling times --------
-	if (pSet->profilerTxt && ov[1].oU)
+	if (pSet->profilerTxt && txDbgProfTim)
 	{
 		PROFILER.endCycle();
 		static int frame=0;  ++frame;
@@ -71,17 +76,17 @@ void CHud::UpdDebug(CAR* pCar, CarModel* pCarM)
 		{	frame = 0;
 			std::string sProf = PROFILER.getAvgSummary(quickprof::MILLISECONDS);
 			//sProf = "PROF "+fToStr(1000.f/PROFILER.getAvgDuration(" frameSt",quickprof::MILLISECONDS), 2,4);
-			ov[1].oU->setCaption(sProf);
+			txDbgProfTim->setCaption(sProf);
 		}
 		//if (newPosInfos.size() > 0)
 		//ov[3].oU->setCaption("carm: " + toStr(ap->carModels.size()) + " newp: " + toStr((*newPosInfos.begin()).pos));
 	}
-#endif
+
 
 #ifndef BT_NO_PROFILE
 	//  bullet profiling text  --------
 	static bool oldBltTxt = false;
-	if (ov[1].oU)
+	if (txDbgProfBlt)
 	{
 		if (pSet->bltProfilerTxt)
 		{
@@ -90,12 +95,12 @@ void CHud::UpdDebug(CAR* pCar, CarModel* pCarM)
 			{	cc = 0;
 				std::stringstream os;
 				bltDumpAll(os);
-				ov[1].oU->setCaption(os.str());
+				txDbgProfBlt->setCaption(os.str());
 			}
 		}
 		else
 		if (pSet->bltProfilerTxt != oldBltTxt)
-			ov[1].oU->setCaption("");
+			txDbgProfBlt->setCaption("");
 	}
 	oldBltTxt = pSet->bltProfilerTxt;
 #endif // BT_NO_PROFILE
@@ -156,7 +161,6 @@ void CHud::UpdDebug(CAR* pCar, CarModel* pCarM)
 
 
 	//  wheels ter mtr, surface info  ---------
-#if 0
 	if (pSet->car_dbgsurf && pCar)
 	{
 		String ss = pCarM->txtDbgSurf;
@@ -166,11 +170,9 @@ void CHud::UpdDebug(CAR* pCar, CarModel* pCarM)
 		for (int i=0; i < ap->pGame->track.tracksurfaces.size(); ++i)
 			ss += String(ap->pGame->track.tracksurfaces[i].name.c_str()) + "\n";/**/
 
-		//ovCarDbg->show();
-		if (ov[4].oX)  {  //ov[4].oL->setTop(400);
-			ov[4].oX->setCaption(ss);  }
+		if (txDbgCar[4])
+			txDbgCar[4]->setCaption(ss);
 	}
-#endif
 	
 #if 0
 	///  tire vis circles  + + + +

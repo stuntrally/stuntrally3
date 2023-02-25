@@ -290,7 +290,7 @@ void CARDYNAMICS::DebugPrint( std::ostream & out, bool p1, bool p2, bool p3, boo
 	if (p3)
 		if (cnt > 6)
 		{
-			out << "___Wheel___\n";
+			out << "\n\n___Wheel___\n";
 			for (w=0; w < numWheels; ++w)
 			{	out << sWh[w] << endl;	wheel[w].DebugPrint(out);  }
 		}

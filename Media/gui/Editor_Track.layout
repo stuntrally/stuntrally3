@@ -30,6 +30,7 @@
 					<Property key="TextColour" value="0.3 1 0.2"/>
 					<UserString key="tip" value="#{TipLoadTrkEditor}"/>
 				</Widget>
+				
 				<Widget type="ImageBox" skin="ImageBox" position="174 26 336 336" name="TrackImg0">
 					<UserString key="tip" value="#{TipTrkScreenEditor}"/>
 				</Widget>

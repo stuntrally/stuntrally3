@@ -118,7 +118,7 @@ void CHud::Update(int carId, float time)
 
 
 //---------------------------------------------------------------------------------------------------------------
-///  ⏲️🌍🔺 Update HUD minimap poses, man obj vertices, etc
+///  ⏲️🌍🔺 Update HUD minimap poses, vertices, etc
 //---------------------------------------------------------------------------------------------------------------
 void CHud::UpdPosElems(int cnt, int cntC, int carId)
 {

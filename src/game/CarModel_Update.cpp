@@ -12,6 +12,8 @@
 // #include "SplitScreen.h"
 #include "FollowCamera.h"
 #include "Road.h"
+// #include "GraphicsSystem.h"
+// #include <Compositor/OgreCompositorWorkspace.h>
 
 #include <OgreRoot.h>
 #include <OgreMath.h>
@@ -545,8 +547,12 @@ void CarModel::UpdKeysCam()
 			{	fCam->Next(iC < 0, false/*pApp->shift*/);
 				pApp->carsCamNum[iIndex] = fCam->miCurrent +1;  // save for pSet
 				
-				// visMask = fCam->ca->mHideGlass ? RV_MaskAll-RV_CarGlass : RV_MaskAll;
+				// uint32 visMask = fCam->ca->mHideGlass ? RV_MaskAll-RV_CarGlass : RV_MaskAll;
 				
+				// todo: hide glass in car ..
+		        // void addListener( CompositorWorkspaceListener *listener );  //? cd ..
+				// pApp->mGraphicsSystem->mWorkspace->setVisibilityMask(visMask);
+
 				// for (auto vp : pApp->mSplitMgr->mViewports)
 				// 	vp->setVisibilityMask(visMask);
 		}	}
@@ -611,24 +617,23 @@ void CarModel::UpdWhTerMtr()
 		const TRACKSURFACE* tsu = cd.GetWheelContact(WHEEL_POSITION(i)).GetSurfacePtr();
 		//pCar->dynamics.bTerrain = true;
 
-		#if 0  // fixme
 		if (pSet->car_dbgsurf)  // dbg info surf  -------
 		{
-		//TerLayer& lay = /*mtr == 0 ? sc->td.layerRoad :*/ sc->td.layersAll[ sc->td.layers[ std::min((int)sc->td.layers.size()-1, mtr-1) ] ];
-		txtDbgSurf += //"mx " + toStr(mx) + " my " + toStr(my) +
-			( iRd == 0	? ( "T" + toStr(cd.whTerMtr[i]) )  // Terrain/Pipe/Road
-						: ( (iRd==2 ? "P" : "R") + toStr(cd.whRoadMtr[i]) )  ) +
-			(!tsu ? "  --" : (
-				"  " + tsu->name + " " + csTRKsurf[tsu->type] + //" [" + lay.texFile + "] " +
-				"\n      "+ tsu->tireName + "\n     "+
-				" d= " + fToStr(d, 2,5) + "  dr " + fToStr(tsu->rollingDrag, 0,3) + " rr " + fToStr(tsu->rollingResist, 1,3) +
-				"  fr " + fToStr(tsu->friction, 2,4) +
-				"  ba " + fToStr(tsu->bumpAmplitude, 2,4) + " bw " + fToStr(tsu->bumpWaveLength, 2,4) +
-				"  b0 " + fToStr(tsu->tire->longitudinal[0], 3,5)
-				//,lay.dust, lay.mud, lay.dustS	//,lay.tclr.r, lay.tclr.g, lay.tclr.b, lay.tclr.a
-			)) + "\n";
+			// const auto& td = sc->tds[0];  // 1st ter only
+			// TerLayer& lay = /*mtr == 0 ? td.layerRoad :*/ td.layersAll[ td.layers[ std::min((int)td.layers.size()-1, mtr-1) ] ];
+			txtDbgSurf += //"mx " + toStr(mx) + " my " + toStr(my) +
+				( iRd == 0	? ( "T" + toStr(cd.whTerMtr[i]) )  // Terrain/Pipe/Road
+							: ( (iRd==2 ? "P" : "R") + toStr(cd.whRoadMtr[i]) )  ) +
+				(!tsu ? "  --" : (
+					"  " + tsu->name + " " + csTRKsurf[tsu->type] + //" [" + lay.texFile + "] " +
+					"\n      "+ tsu->tireName + "\n     "+
+					" d= " + fToStr(d, 2,5) + "  dr " + fToStr(tsu->rollingDrag, 0,3) + " rr " + fToStr(tsu->rollingResist, 1,3) +
+					"  fr " + fToStr(tsu->friction, 2,4) +
+					"  ba " + fToStr(tsu->bumpAmplitude, 2,4) + " bw " + fToStr(tsu->bumpWaveLength, 2,4) +
+					"  b0 " + fToStr(tsu->tire->longitudinal[0], 3,5)
+					//,lay.dust, lay.mud, lay.dustS	//,lay.tclr.r, lay.tclr.g, lay.tclr.b, lay.tclr.a
+				)) + "\n";
 		}
-		#endif
 	}
 }
 

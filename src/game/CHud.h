@@ -3,16 +3,14 @@
 #include "HudRenderable.h"
 #include "Replay.h"
 #include "cardefs.h"
-// #include "CarReflection.h"
 
 // #include "MessageBox.h"
 // #include "MessageBoxStyle.h"
 #include <OgreVector3.h>
+// #include <bullet/LinearMath/btQuickprof.h>  // only for bullet debug text
 
 // #include "networkcallbacks.hpp"
 // #include <thread>
-//#include <OgreOverlayElement.h>
-// #include <OgreOverlay.h>
 
 
 namespace Ogre {  class SceneNode;  class SceneManager;  class Viewport;  class ManualObject;  class Item;  }
@@ -93,7 +91,7 @@ public:
 	// todo: one for all^, in splitscreen
 
 
-	///  global hud  ---------
+	///  global Hud  ---------
 
 	//  🌍🔺 car pos tris on minimap
 	//  one for all cars on all viewports
@@ -105,19 +103,17 @@ public:
 	
 	//  🎥 camera move info
 	Txt txCamInfo =0;
-	//  car debug texts  todo...
-	// Txt txDbgCar =0, txDbgTxt =0, txDbgExt =0;
 
-	//; Ogre::SceneNode    *ndTireVis[4];
-	//; Ogre::ManualObject *moTireVis[4];
+	//  🔧 car debug texts
+	Txt txDbgCar[4] ={0,0,0,0}; //, txDbgTxt =0, txDbgExt =0;
+	Txt txDbgSurf =0, txDbgProfTim =0, txDbgProfBlt =0;
 
-	/*struct OvrDbg
-	{
-		Ogre::OverlayElement* oL=0,*oR=0,*oS=0, *oU=0,*oX=0;
-		OvrDbg();
-	};
+	//; Ogre::SceneNode *ndTireVis[4];
+	//; HudRenderable   *hrTireVis[4];  // todo
+
+	/*Ogre::OverlayElement* oL=0,*oR=0,*oS=0, *oU=0,*oX=0;
 	std::vector<OvrDbg> ov;
-	Ogre::Overlay *ovCarDbg =0, *ovCarDbgTxt =0, *ovCarDbgExt =0;/**/
+	Ogre::Overlay *ovCarDbg =0, *ovCarDbgTxt =0, *ovCarDbgExt =0;*/
 
 
 	///  🔝 arrow to next checkpoint 3d
