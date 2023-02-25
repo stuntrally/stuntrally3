@@ -255,19 +255,19 @@ void CGui::InitGui()
 	app->txFps->setVisible(pSet->show_fps);
 	ck= &ckWireframe;	ck->Init("Wireframe",   &app->bWireframe);  Cev(Wireframe);
 
-	ck= &ckProfilerTxt;	ck->Init("ProfilerTxt", &pSet->profilerTxt);
+	ck= &ckProfilerTxt;	ck->Init("ProfilerTxt", &pSet->profilerTxt);  Cev(HudShow);
 	ck= &ckBulletDebug;	ck->Init("BulletDebug", &pSet->bltDebug);
-	ck= &ckBltProfTxt;	ck->Init("BltProfTxt",  &pSet->bltProfilerTxt);
+	ck= &ckBltProfTxt;	ck->Init("BltProfTxt",  &pSet->bltProfilerTxt);  //-
 	ck= &ckSoundInfo;	ck->Init("SoundInfo",   &pSet->sounds_info);
 
-	ck= &ckCarDbgBars;	ck->Init("CarDbgBars",  &pSet->car_dbgbars);   Cev(HudShow);
+	ck= &ckCarDbgBars;	ck->Init("CarDbgBars",  &pSet->car_dbgbars);   Cev(HudShow);  //-
 	ck= &ckCarDbgTxt;	ck->Init("CarDbgTxt",   &pSet->car_dbgtxt);    Cev(HudShow);
 	ck= &ckCarDbgSurf;	ck->Init("CarDbgSurf",  &pSet->car_dbgsurf);   Cev(HudShow);
 
 	ck= &ckTireVis;		ck->Init("CarTireVis",  &pSet->car_tirevis);   Cev(HudCreate);
 	ck= &ckGraphs;		ck->Init("Graphs",		&pSet->show_graphs);   Cev(Graphs);
 
-	sv= &svDbgTxtClr;	sv->Init("DbgTxtClr",	&pSet->car_dbgtxtclr, 0, 1);
+	sv= &svDbgTxtClr;	sv->Init("DbgTxtClr",	&pSet->car_dbgtxtclr, 0, 1);  //-
 	sv= &svDbgTxtCnt;	sv->Init("DbgTxtCnt",	&pSet->car_dbgtxtcnt, 0, 8);
 
 

@@ -1,21 +1,15 @@
 //  base parts
-
 hlms car_body pbs
 {
 	// workflow metallic
 	workflow specular_fresnel
 	// workflow specular_ogre
 	
-	// fresnelScaleBiasPower 1.31 0.10 4
-	// specular 1.02 1.02 1.0
 	// fresnel 3.1
 	fresnel_coeff 0.3 0.3 0.3
 	// diffuse	  0.7 0.7 0.7
 	diffuse  0 0 0
-	// roughness 0.4
-	// metalness 0.6
-	// roughness 0.8
-	// metalness 0.6
+	// specular 1.0 1.0 1.0
 }
 
 hlms car_glass pbs
@@ -25,11 +19,11 @@ hlms car_glass pbs
 	roughness 0.1
 	metalness 0.9
 
-	cull_mode none
-	depth_write off
-	transparency 0.9
+	// cull_mode none
+	// depth_write off
+	transparency 0.5
 	transparency_mode transparent
-	two_sided true
+	// two_sided true
 
 	// diffuse_map  glass.png
 	// scene_blend alpha_blend
@@ -47,8 +41,9 @@ hlms car_glass pbs
 hlms car_glass2 pbs : car_glass  // 1 mesh, 2 sided
 {
 	// diffuse_map  glass.png
-	cull_mode none  //?
-	depth_write on
+	// cull_mode none  //-
+	// depth_write on
+	two_sided true
 }
 
 hlms car_interior pbs
@@ -205,23 +200,30 @@ hlms XZ_glass pbs : car_glass
 {
 	diffuse_map  XZ_glass.png
 }
-hlms XZ_interior pbs : car_interior
+hlms XZ_interior pbs //: car_interior
 {
 	diffuse_map   XZ_interior.png
 	specular_map  XZ_interior_refl.png
-	metalness_map XZ_interior_refl.png
-	diffuse  0.5 0.5 0.5
+	// metalness_map XZ_interior_refl.png
+	workflow specular_fresnel
+	diffuse  0.4 0.4 0.4
 	specular 0.9 0.9 0.9
+	fresnel 0.5
+	fresnel_coeff 0.5 0.5 0.5
+	roughness 0.25
+ 	// metalness 0.4
 }
-hlms XZ_wheel pbs : car_wheel
+hlms XZ_wheel pbs //: car_wheel
 {
 	diffuse_map   XZ_Tire.png
 	normal_map    XZ_Tire_norm.png
-	specular_map  XZ_Tire_spec.png
-	metalness_map XZ_Tire_refl.png
-	diffuse  0.2 0.2 0.2
-	specular 0.1 0.1 0.1
-	// fresnelScaleBiasPower 0.6 0.15 4
+	specular_map  XZ_Tire_refl.png
+	// metalness_map XZ_Tire_refl.png
+	diffuse  0.1 0.1 0.1
+	specular 0.4 0.4 0.4
+	fresnel 0.5
+	fresnel_coeff 0.5 0.5 0.5
+	roughness 0.1
 }
 hlms XZ_brake pbs : car_wheel
 {
@@ -272,7 +274,8 @@ hlms HR_body1 pbs : car_body
 }
 hlms HR_glass pbs : car_glass2
 {
-	diffuse_map  HR_glass.png
+	// diffuse_map  HR_glass.png
+	cull_mode none  //
 }
 hlms HR_interior pbs : car_interior
 {
@@ -308,7 +311,6 @@ hlms OT_wheel pbs : car_wheel
 	diffuse_map   OT_wheel.png
 	normal_map    flat_n.png
 	specular_map  OT_wheel_refl.png
-	// metalness_map OT_wheel_refl.png
 	diffuse  0.7 0.7 0.7
 	specular 0.5 0.5 0.5
 	roughness 0.8
@@ -327,6 +329,13 @@ hlms FR4_body pbs : car_body
 hlms FR4_glass pbs : car_glass2
 {
 	diffuse_map  FR4_glass.png
+	workflow specular_fresnel
+	fresnel_coeff 0.5 0.5 0.5
+
+	diffuse   0 0 0
+	specular  1 1 1
+	roughness 0.01
+	metalness 0.8
 }
 hlms FR4_interior pbs : car_interior
 {
@@ -429,20 +438,28 @@ hlms TU_body pbs : car_body
 	metalness_map TU_refl.png
 	specular 0.1 0.12 0.13
 }
-hlms TU_glass pbs : car_interior
+hlms TU_glass pbs
 {
-	diffuse_map  white.png
-	diffuse  0.0 0.09 0.1
-	specular 0.9 0.9 0.9
+	// diffuse_map  TU_glass.png
+	diffuse  0.01 0.01 0.01
+	specular 0.3 0.3 0.3
+	fresnel 0.8
+	fresnel_coeff 0.3 0.3 0.3
+	roughness 0.05
+	metalness 0.9
 }
 hlms TU_interior pbs
 {
 	diffuse_map   TU_interior.png
+	normal_map    flat_n.png
 	specular_map  TU_interior_spec.png
-	metalness_map TU_interior_refl.png
-	specular 0.9 0.9 0.9
+	// metalness_map TU_interior_refl.png
+	diffuse  0.5 0.5 0.5
+	specular 0.7 0.7 0.7
 	workflow specular_fresnel
-	fresnel_coeff 0.01 0.01 0.01
+	fresnel_coeff 0.4 0.4 0.4
+	roughness 0.15
+	metalness 0.9
 }
 
 hlms TU_wheel_front pbs : car_wheel
@@ -473,13 +490,17 @@ hlms SZ_glass pbs : car_glass2
 {
 	diffuse_map  SZ_glass.png
 }
-hlms SZ_interior pbs : car_interior
+hlms SZ_interior pbs //: car_interior
 {
 	diffuse_map   SZ_interior.png
 	specular_map  SZ_interior_spec.png
 	metalness_map SZ_interior_refl.png
-	diffuse  0.7 0.7 0.7
-	specular 0.5 0.5 0.5
+	diffuse  0.2 0.2 0.2
+	specular 0.3 0.3 0.3
+	workflow specular_fresnel
+	fresnel_coeff 0.2 0.2 0.2
+	roughness 0.15
+	metalness 0.9
 }
 hlms SZ_wheel pbs : car_wheel
 {
@@ -497,9 +518,17 @@ hlms FN_body pbs : car_body
 	metalness_map FN_refl.png
 	specular  0.2 0.4 0.0
 }
-hlms FN_glass pbs : car_glass2
+hlms FN_glass pbs : car_glass
 {
 	diffuse_map  FN_glass.png
+	workflow specular_fresnel
+	fresnel_coeff 0.5 0.5 0.5
+
+	diffuse   0 0 0
+	specular  1 1 1
+	roughness 0.01
+	metalness 0.8
+}
 }
 hlms FN_interior pbs : car_interior
 {
@@ -576,9 +605,9 @@ hlms V3_interior pbs : car_interior
 	diffuse  0.8 0.8 0.8
 	specular 1.0 1.0 1.0
 }
-hlms V3_glass pbs : car_body
+hlms V3_glass pbs : car_glass2
 {
-	diffuse_map  white.png
+	// diffuse_map  white.png
 	diffuse  0.1 0.2 0.2
 	specular 0.9 1 1
 }
@@ -650,13 +679,18 @@ hlms Y7_glass pbs : car_glass2
 {
 	diffuse_map  Y7_glass.png
 }
-hlms Y7_interior pbs : car_interior
+hlms Y7_interior pbs //: car_interior
 {
 	diffuse_map   Y7_interior.png
-	specular_map  Y7_interior_spec.png
-	metalness_map Y7_interior_refl.png
-	diffuse  0.6 0.6 0.6
+	specular_map  Y7_interior_refl.png
+	// metalness_map Y7_interior_refl.png
+	workflow specular_fresnel
+	diffuse  0.1 0.1 0.1
 	specular 0.3 0.3 0.3
+	fresnel 0.8
+	fresnel_coeff 0.3 0.3 0.3
+	roughness 0.25
+	metalness 0.9
 }
 hlms Y7_wheel pbs : car_wheel
 {
@@ -744,7 +778,7 @@ hlms U8_body pbs : car_body
     //two_sided true
 	specular  0.4 0.5 0.6
 }
-hlms U8_glass pbs : car_glass2
+hlms U8_glass pbs : car_glass
 {
 	diffuse_map  U8_glass.png
 }
@@ -798,24 +832,28 @@ hlms MO_wheel pbs : car_wheel
 //  3B  -------------------------------
 hlms 3B_body pbs : car_body
 {
-	diffuse_map  3B_body_red.png
+	// diffuse_map  3B_body_red.png
+	diffuse_map  3B_body_wh.jpg
 	// diffuse_map  3B_wheel.jpg
 	normal_map   3B_norm.jpg
-	specular_map 3B_wheel.jpg
+	// specular_map 3B_spec.jpg
 	// roughness_map 3B_spec.jpg
-	diffuse	 0.8 0.8 0.8
-	specular 0.9 0.9 0.3
+	diffuse	 1 1 1
+	// diffuse  0.8 0.8 0.8
+	specular 0.9 0.9 0.9
 }
-hlms 3B_interior pbs : car_body
+hlms 3B_interior pbs //: car_body
 {
 	diffuse_map  3B_body_red.png
 	normal_map   3B_norm.jpg
-	specular_map 3B_wheel.jpg
-	diffuse  0.3 0.3 0.3
-	specular 0.5 0.5 0.5
-	fresnel_coeff 0.6 0.6 0.06
-	roughness 0.8
-	metalness 0.8
+	specular_map 3B_spec.jpg
+	// roughness_map 3B_spec.jpg
+	diffuse  0.6 0.6 0.6
+	specular 0.3 0.3 0.3
+	fresnel 0.6
+	fresnel_coeff 0.2 0.2 0.2
+	roughness 0.45
+	// metalness 0.8
 }
 hlms 3B_wheel pbs //: car_wheel
 {
@@ -841,51 +879,64 @@ hlms BE_body pbs : car_body
 {
 	diffuse_map  BE_body_red.png
 	normal_map   BE_norm.jpg
+	emissive_map BE_emissive.jpg
 	// diffuse  0.9 0.3 0.0
-	specular  0.3 0.4 0.4
+	// specular  0.4 0.4 0.4
 }
-hlms BE_body_noclr pbs : car_interior
+
+hlms BE_body_noclr pbs //: car_interior
 {
 	diffuse_map  BE_body_red.png
 	normal_map   BE_norm.jpg
+	emissive_map BE_emissive.jpg
 	diffuse  0.9 0.9 0.9
 	specular 0.9 0.9 0.9
-	workflow metallic
-	fresnel_coeff 0.6 0.6 0.6
-	roughness 0.4
+	// workflow metallic
+	workflow specular_fresnel
+	fresnel 0.2
+	fresnel_coeff 0.2 0.2 0.2
+	// fresnel_coeff 0 0 0
+	roughness 0.1
 	metalness 0.9
 }
 hlms BE_interior pbs //: car_interior
 {
 	diffuse_map  BE_interior.jpg
 	normal_map   BE_interior_norm.jpg
-	diffuse  0.0 0.0 0.0
-	specular 0.1 0.1 0.1
+	diffuse  0.1 0.1 0.1
+	specular 0.2 0.2 0.2
 	// workflow metallic
+	workflow specular_fresnel
 	fresnel 0.5
 	fresnel_coeff 0.3 0.3 0.3
-	roughness 0.24
-	metalness 0.99
+	// fresnel_coeff 0 0 0
+	roughness 0.2
+	metalness 0.6
 }
+
 hlms BE_wheel pbs : car_wheel
 {
-	diffuse_map  BE_wheel.jpg
-	normal_map   BE_wheel_norm.jpg
-	specular_map   BE_wheel.jpg
-	metalness_map  BE_wheel.jpg
-	diffuse  0.9 0.9 0.9
+	diffuse_map   BE_wheel.jpg
+	normal_map    BE_wheel_norm.jpg
+	specular_map  BE_wheel.jpg
+	// roughness_map  BE_wheel_rough.png
+	//- metalness_map  BE_wheel_metallic.png
+
+	diffuse  0.5 0.5 0.5
 	specular 0.5 0.5 0.5
+	// workflow metallic
+	// // workflow specular_fresnel
+	// fresnel 0.2
+	// fresnel_coeff 0.2 0.2 0.2
+	// roughness 0.14
+	// metalness 0.99
 }
 
 
 //  SX  -------------------------------------------------
 hlms SX_body pbs //: car_body
 {
-	//diffuse_map  SX_body_violet.png
 	diffuse_map    SX_body_red.png
-	// specular_map   SX_body_red.png
-	// metalness_map  SX_body_red.png
-	// roughness_map  SX_body_red.png
 
 	workflow specular_fresnel
 	fresnel_coeff 1 1 1
@@ -904,7 +955,7 @@ hlms SX_exterior pbs //: car_interior
 	specular_map  SX_exterior.png
 	workflow specular_fresnel
 
-	diffuse   0.6 0.6 0.6
+	diffuse   0.4 0.4 0.4
 	specular  0.6 0.6 0.6
 	roughness 0.15
 	// metalness 0.6
@@ -917,8 +968,6 @@ hlms SX_exterior pbs //: car_interior
 hlms SX_interior pbs : car_interior
 {
 	diffuse_map  SX_interior.png
-	//normal_map   XZ_interior.png
-	//roughness_map  ES_interior.png
 	metalness_map  SX_interior.png
 
 	fresnel_coeff 0.1

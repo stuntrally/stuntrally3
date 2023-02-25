@@ -20,8 +20,8 @@ particle_system Adust
 		height	0.35
 		depth	0.45  //h
 
-		colour				1 0.78 0.55  0.7
 		colour_range_start	1 0.78 0.50  0.5
+		colour				1 0.78 0.55  0.7
 		colour_range_end	1 0.83 0.60  0.7
 
 		velocity_min	0.0
@@ -65,8 +65,8 @@ particle_system Dust
 		height	0.35
 		depth	0.45  //h
 
-		colour				1 0.95 0.75  0.8
 		colour_range_start	1 0.95 0.75  0.8
+		colour				1 0.95 0.75  0.8
 		colour_range_end	1 0.9  0.55  0.6
 
 		//emission_rate	20
@@ -111,8 +111,8 @@ particle_system DustSmall
 		height	0.35
 		depth	0.45  //h
 
-		colour				1 0.95 0.75  0.5
 		colour_range_start	1 0.95 0.75  0.4
+		colour				1 0.95 0.75  0.5
 		colour_range_end	1 0.9  0.55  0.6
 
 		//emission_rate	20
@@ -157,8 +157,8 @@ particle_system DustW
 		height	0.35
 		depth	0.45  //h
 
-		colour				0.84 0.84 0.75  0.65
 		colour_range_start	0.84 0.84 0.74  0.6
+		colour				0.84 0.84 0.75  0.65
 		colour_range_end	0.87 0.87 0.80  0.7
 
 		//emission_rate	20
@@ -203,8 +203,8 @@ particle_system DustAlien
 		height	0.35
 		depth	0.45  //h
 
-		colour				0.65 0.85 0.65  0.5
 		colour_range_start	0.65 0.85 0.65  0.4
+		colour				0.65 0.85 0.65  0.5
 		colour_range_end	0.45 0.8  0.45  0.6
 
 		//emission_rate	20
@@ -249,8 +249,8 @@ particle_system DustBlack
 		height	0.35
 		depth	0.45  //h
 
-		colour				0.11 0.11 0.12 0.7
 		colour_range_start	0.11 0.11 0.12 0.6
+		colour				0.11 0.11 0.12 0.7
 		colour_range_end	0.12 0.12 0.13 0.8
 
 		//emission_rate	20
@@ -297,8 +297,8 @@ particle_system Mud
 		height	0.5
 		depth	0.3  //h
 
-		colour				0.55 0.5 0.5  0.97
 		colour_range_start	0.55 0.4 0.5  0.95
+		colour				0.55 0.5 0.5  0.97
 		colour_range_end	0.65 0.55 0.5  1
 
 		//emission_rate	20
@@ -357,8 +357,8 @@ particle_system MudDark
 		height	0.5
 		depth	0.3  //h
 
-		colour				0.6 0.6 0.4  1
 		colour_range_start	0.5 0.5 0.3  0.9
+		colour				0.6 0.6 0.4  1
 		colour_range_end	0.7 0.7 0.5  1.0
 
 		//emission_rate	20
@@ -404,8 +404,8 @@ particle_system WetDust
 		height	0.4
 		depth	0.3  //h
 
-		colour				1.2 0.2 1.2  0.6
 		colour_range_start	1.2 0.2 1.2  0.5
+		colour				1.2 0.2 1.2  0.6
 		colour_range_end	1.3 0.3 1.2  0.7
 
 		//emission_rate	20
@@ -450,9 +450,9 @@ particle_system WetRoad
 		height	0.4
 		depth	0.3  //h
 
-		colour_range_start	0.9 0.9 0.9  0.6
-		colour				0.9 0.9 0.9  0.7
-		colour_range_end	0.9 0.9 0.9  0.85
+		colour_range_start	0.8 0.8 0.8  0.6
+		colour				0.8 0.8 0.8  0.7
+		colour_range_end	0.8 0.8 0.8  0.85
 
 		//emission_rate	20
 		velocity_min	1.1
@@ -470,7 +470,7 @@ particle_system WetRoad
 	}
 	affector LinearForce
 	{
-		force_vector	0 -4.0 0
+		force_vector	0 -3.0 0
 		force_application	add
 	}
 }
@@ -498,8 +498,8 @@ particle_system SnowDust
 		height	0.35
 		depth	0.45  //h
 
-		colour				0.94 0.95 0.95  0.7
 		colour_range_start	0.95 0.95 0.95  0.8
+		colour				0.94 0.95 0.95  0.7
 		colour_range_end	0.94 0.95 0.95  0.5
 
 		//emission_rate	20
@@ -544,8 +544,8 @@ particle_system SnowMud
 		height	0.5
 		depth	0.3  //h
 
-		colour				1 1 1  0.5
 		colour_range_start	1 1 1  0.8
+		colour				1 1 1  0.5
 		colour_range_end	0.95 0.95 1  0.5
 
 		//emission_rate	20
@@ -597,8 +597,8 @@ particle_system Smoke
 	    velocity_min 0.50
 	    velocity_max 0.80
 
-        colour 0.8 0.8 0.8 0.15
         colour_range_start 0.8 0.8 0.8 0.1
+        colour             0.8 0.8 0.8 0.15
         colour_range_end   0.8 0.8 0.8 0.2
     }
 
@@ -645,8 +645,8 @@ particle_system MarsDust
 		height	0.35
 		depth	0.45  //h
 
-		colour				0.7 0.2 0.1  0.5
 		colour_range_start	0.6 0.2 0.1  0.7
+		colour				0.7 0.2 0.1  0.5
 		colour_range_end	0.8 0.3 0.2  0.3
 
 		//emission_rate	20
@@ -705,8 +705,8 @@ particle_system MarsMud
 		height	0.4
 		depth	0.3  //h
 
-		colour				0.9 0.3 0.4 0.8
 		colour_range_start	0.9 0.3 0.4 0.7
+		colour				0.9 0.3 0.4 0.8
 		colour_range_end	1.0 0.4 0.5 0.9
 
 		//emission_rate	20

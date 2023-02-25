@@ -160,18 +160,17 @@ void CHud::UpdDebug(CAR* pCar, CarModel* pCarM)
 	}	}/**/
 
 
-	//  wheels ter mtr, surface info  ---------
+	//  wheels ter mtr, surfaces info  ---------
 	if (pSet->car_dbgsurf && pCar)
 	{
 		String ss = pCarM->txtDbgSurf;
 
-		//  surfaces  info
 		/*ss += "\n";
 		for (int i=0; i < ap->pGame->track.tracksurfaces.size(); ++i)
 			ss += String(ap->pGame->track.tracksurfaces[i].name.c_str()) + "\n";/**/
 
-		if (txDbgCar[4])
-			txDbgCar[4]->setCaption(ss);
+		if (txDbgSurf)
+			txDbgSurf->setCaption(ss);
 	}
 	
 #if 0

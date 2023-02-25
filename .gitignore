@@ -23,7 +23,7 @@ Dependencies/*
 #hud
 #gui
 tracks*
-cars
+#cars
 Media/road/
 #objects
 terrain
