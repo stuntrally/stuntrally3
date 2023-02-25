@@ -50,7 +50,7 @@ public:
 	float windAmt;  //, windDirYaw, windTurbulFreq,windTurbulAmp;
 	float damageMul;  // reduce car damage in loops
 	float gravity;  // 9.81
-	bool road1mtr;  // if true (default) road has only 1 surface type
+	bool road1mtr = 1;  // if true (default) road has only 1 surface type
 	
 
 	//  🔉 sound

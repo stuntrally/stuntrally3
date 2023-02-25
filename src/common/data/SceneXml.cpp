@@ -39,7 +39,7 @@ void Scene::Default()
 	fogClr = fogClr2 = fogClrH = SColor(0.73f, 0.86f, 1.0f, 1.f);
 	fogHeight = -300.f;  fogHDensity = 100.f;  fogHStart = 0;  fogHEnd = 400;
 	fHDamage = 0.f;
-	road1mtr = false;
+	road1mtr = true;
 
 	ldPitch = 50.f;  ldYaw = 30.f;
 	lAmb  = SColor(0.16f, 0.0f, 0.45f);
@@ -159,7 +159,6 @@ void Scene::UpdateSurfId()
 		{	id = 0;
 			LogO("! Warning: Surface not found (road): "+s);
 		}
-		// road1mtr ?
 		layerRoad[i].surfId = id;
 	}
 }

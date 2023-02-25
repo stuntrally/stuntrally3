@@ -31,7 +31,6 @@ void TerData::Default()
 	triplanarLayer1 = 8;  triplanarLayer2 = 8;  triplCnt = 0;  // off
 	// errorNorm = 1.7;  normScale = 1.f;  specularPow = 32.f;
 	emissive = false;  specularPowEm = 2.f;
-	// road1mtr = true;
 
 	for (int i=0; i < ciNumLay; ++i)
 	{	
