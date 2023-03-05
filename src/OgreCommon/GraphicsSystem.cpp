@@ -48,6 +48,10 @@
 using namespace Ogre;
 
 
+//**  Global, meh, against PBR
+//#define DISABLE_SRGB 1
+
+
 //  🌟 ctor
 //-----------------------------------------------------------------------------------
 GraphicsSystem::GraphicsSystem( GameState *gameState,
@@ -200,6 +204,18 @@ void GraphicsSystem::initialize( const String &windowTitle )
 		}
 	}
 
+	//  disable sRGB Gamma Conversion !
+#ifdef DISABLE_SRGB
+	itor = mRoot->getAvailableRenderers().begin();
+	endt = mRoot->getAvailableRenderers().end();
+	while( itor != endt )
+	{
+		RenderSystem *rs = *itor;
+		rs->setConfigOption( "sRGB Gamma Conversion", "No" );
+		++itor;
+	}
+#endif
+
 	//  vulkan, metal-
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
 	if(!mRoot->getRenderSystem())
@@ -350,6 +366,12 @@ void GraphicsSystem::initialize( const String &windowTitle )
 
 
 	//  📄 Resources  --------
+#ifdef DISABLE_SRGB
+	auto* rndSys = mRoot->getRenderSystem();
+	auto* texMgr = rndSys->getTextureGpuManager();
+	texMgr->mIgnoreSRgbPreference = false;
+#endif
+
 	setupResources();
 	loadResources();
 	chooseSceneManager();
