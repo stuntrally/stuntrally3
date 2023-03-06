@@ -76,7 +76,7 @@ public:
 	//  textures
 	SlV(Anisotropy);
 	void comboTexFilter(CMB), cmbAntiAliasing(CMB);
-	// SV svTerTripl;
+	SV svTerTripl;
 	void btnShadersApply(WP);
 
 	//  geom detail

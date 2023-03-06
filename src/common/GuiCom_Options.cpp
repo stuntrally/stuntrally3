@@ -56,9 +56,10 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 		sv->strMap[0] = TR("#{GraphicsAll_Lowest}");	sv->strMap[1] = TR("#{GraphicsAll_Medium}");
 		sv->strMap[2] = TR("#{GraphicsAll_High}");		//sv->strMap[3] = "Parallax-";
 						sv->Init("TerMtr",		&pSet->ter_mtr,		0,2);	sv->DefaultI(2);*/
-	/*sv= &svTerTripl;
-		sv->strMap[0] = TR("#{None}");  sv->strMap[1] = TR("#{max} 2");  sv->strMap[2] = TR("#{Any}");
-						sv->Init("TerTripl",	&pSet->ter_tripl,	0,2);	sv->DefaultF(1);*/
+	sv= &svTerTripl;
+		sv->strMap[0] = TR("0 #{None}");  //sv->strMap[1] = TR("#{max} 2");  sv->strMap[2] = TR("#{Any}");
+		sv->strMap[1] = TR("1 #{Diffuse}");  sv->strMap[2] = TR("2 #{Normal}");
+						sv->Init("TerTripl",	&pSet->ter_tripl,	0,2);	sv->DefaultI(1);
 
 	//  🌳🪨 Veget  🌿 grass
 	sv= &svTrees;		sv->Init("Trees",		&pSet->gui.trees,	0.f, 8.f, 2.f);  sv->DefaultF(1.5f);

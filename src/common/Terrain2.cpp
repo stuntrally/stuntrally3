@@ -52,14 +52,17 @@ void CScene::CreateTerrain1(int n, bool upd)
 	TextureGpuManager *texMgr = app->mRoot->getRenderSystem()->getTextureGpuManager();
 
 	const auto& td = sc->tds[n];
-	bool tripl = false;
-	// bool tripl = n == 0 && td.triplCnt > 0;  // test
+	// bool tripl = false;  // test
+	int ter_tripl = app->pSet->ter_tripl;
+	bool bTripl = ter_tripl && n == 0 && td.triplCnt > 0;
 
-	if (tripl)  //`
-		tdb->setDetailTriplanarDiffuseEnabled(true);
-	// tdb->setDetailTriplanarNormalEnabled(true);  // fixme shader crash..
-	// tdb->setDetailTriplanarRoughnessEnabled(true);
-	// tdb->setDetailTriplanarMetalnessEnabled(true);
+	if (bTripl)  //^
+	{	tdb->setDetailTriplanarDiffuseEnabled(true);
+		if (ter_tripl > 1)
+			tdb->setDetailTriplanarNormalEnabled(true);  // fixme shader crash..
+		// tdb->setDetailTriplanarRoughnessEnabled(true);  // no tex, not used
+		// tdb->setDetailTriplanarMetalnessEnabled(true);
+	}
 
 	// tdb->setBrdf(TerraBrdf::Default);  //
 	// tdb->setBrdf(TerraBrdf::BlinnPhong);  // +💡
@@ -120,7 +123,7 @@ void CScene::CreateTerrain1(int n, bool upd)
 		{	tdb->setTexture( TERRA_DETAIL_METALNESS0 + i, tex );
 			tdb->setSamplerblock( TERRA_DETAIL_METALNESS0 + i, sb );
 		}*/
-		Real sc = tripl ?
+		Real sc = bTripl ?
 			// fTer / l.tiling * 0.0005 :  //?? big
 			fTer / l.tiling * 0.002 :  //?? small
 			fTer / l.tiling;

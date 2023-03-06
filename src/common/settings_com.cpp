@@ -33,7 +33,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	
 	//  textures
 	Param(c,w, "graph_detail.anisotropy", anisotropy);		Param(c,w, "graph_detail.tex_filter", tex_filt);
-	// Param(c,w, "graph_detail.ter_mtr", ter_mtr);			Param(c,w, "graph_detail.ter_tripl", ter_tripl);
+	Param(c,w, "graph_detail.ter_tripl", ter_tripl);		// Param(c,w, "graph_detail.ter_mtr", ter_mtr);
 	
 	//  detail
 	Param(c,w, "graph_detail.view_dist", view_distance);
