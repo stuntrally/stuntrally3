@@ -129,7 +129,7 @@ public:
 
 
 	//  🪞 planar reflect  water
-	Ogre::PlanarReflections *mPlanarReflections =0;
+	Ogre::PlanarReflections *mPlanarRefl =0;
 	PlanarReflectionsWorkspaceListener *mWorkspaceListener =0;
 	void createReflectiveSurfaces();
 

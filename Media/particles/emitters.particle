@@ -19,8 +19,8 @@ particle_system Cloud1
 		height	232
 		depth	122  //h
 
-		colour				0.9 0.9 0.9  0.2
 		colour_range_start	0.9 0.9 0.9  0.1
+		colour				0.9 0.9 0.9  0.2
 		colour_range_end	0.9 0.9 0.9  0.3
 
 		emission_rate	200
@@ -75,8 +75,8 @@ particle_system Cloud2
 		height	232
 		depth	122  //h
 
-		colour				0.7 0.7 0.7  0.2
 		colour_range_start	0.7 0.7 0.7  0.1
+		colour				0.7 0.7 0.7  0.2
 		colour_range_end	0.7 0.7 0.7  0.3
 
 		emission_rate	200
@@ -130,8 +130,8 @@ particle_system Cloud3
 		height	232
 		depth	122  //h
 
-		colour				0.4 0.4 0.4  0.2
 		colour_range_start	0.4 0.4 0.4  0.1
+		colour				0.4 0.4 0.4  0.2
 		colour_range_end	0.4 0.4 0.4  0.3
 
 		emission_rate	200
@@ -185,8 +185,8 @@ particle_system Cloud4
 		height	232
 		depth	122  //h
 
-		colour				0.6 0.6 0.6  0.2
 		colour_range_start	0.6 0.6 0.6  0.1
+		colour				0.6 0.6 0.6  0.2
 		colour_range_end	0.6 0.6 0.6  0.3
 
 		emission_rate	200
@@ -240,8 +240,8 @@ particle_system Cloud5
 		height	132
 		depth	122  //h
 
-		colour				0.8 0.8 0.8  0.2
 		colour_range_start	0.8 0.8 0.8  0.1
+		colour				0.8 0.8 0.8  0.2
 		colour_range_end	0.8 0.8 0.8  0.3
 
 		emission_rate	200
@@ -298,8 +298,8 @@ particle_system Radioactive
 		height	232
 		depth	2  //h
 
-		colour				0.18 0.36 0.04  0.32
 		colour_range_start	0.13 0.25 0.02  0.21
+		colour				0.18 0.36 0.04  0.32
 		colour_range_end	0.21 0.41 0.07  0.41
 
 		emission_rate	200
@@ -354,9 +354,9 @@ particle_system AcidVapor1
 		height	12
 		depth	2  //h
 
-		colour				0.13 0.32 0.04  0.15
-		colour_range_start	0.09 0.25 0.03  0.12
-		colour_range_end	0.16 0.36 0.06  0.17
+		colour_range_start	0.03 0.18 0.01  0.20
+		colour				0.07 0.21 0.03  0.22
+		colour_range_end	0.10 0.25 0.05  0.25
 
 		emission_rate	20
 		velocity_min	0.6
@@ -367,9 +367,9 @@ particle_system AcidVapor1
 
     affector ColourFader
     {
-        red   -0.01
-        green -0.05
-        blue  0.0
+        red   -0.015
+        green -0.03
+        blue  -0.01
         alpha 0.01
     }
     affector Scaler
@@ -404,9 +404,9 @@ particle_system AcidVapor2
 		height	12
 		depth	2  //h
 
-		colour				0.11 0.27 0.05  0.12
-		colour_range_start	0.06 0.21 0.02  0.11
-		colour_range_end	0.14 0.31 0.07  0.13
+		colour_range_start	0.09 0.41 0.04  0.21
+		colour				0.17 0.53 0.05  0.42
+		colour_range_end	0.21 0.62 0.12  0.63
 
 		emission_rate	20
 		velocity_min	0.6
@@ -459,8 +459,8 @@ particle_system AlienGlow
 		height	12
 		depth	2  //h
 
-		colour				0.31 0.65 0.20  0.92
 		colour_range_start	0.22 0.51 0.15  0.91
+		colour				0.31 0.65 0.20  0.92
 		colour_range_end	0.38 0.72 0.27  0.93
 
 		emission_rate	20
@@ -516,8 +516,8 @@ particle_system SmokeBrown
 		height	32
 		depth	2  //h
 
-		colour				0.31 0.25 0.0  0.4
 		colour_range_start	0.22 0.11 0.0  0.3
+		colour				0.31 0.25 0.0  0.4
 		colour_range_end	0.41 0.22 0.0  0.5
 
 		emission_rate	20

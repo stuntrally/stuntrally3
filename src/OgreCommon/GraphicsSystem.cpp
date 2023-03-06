@@ -48,8 +48,8 @@
 using namespace Ogre;
 
 
-//**  Global, meh, against PBR
-//#define DISABLE_SRGB 1
+//**  Global, meh looks worse, too saturated, against PBR
+// #define DISABLE_SRGB 1
 
 
 //  🌟 ctor

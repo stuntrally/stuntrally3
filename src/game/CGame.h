@@ -137,7 +137,8 @@ public:
 
 	enum ELoadState
 	{	LS_CLEANUP=0, LS_GAME, LS_SCENE, LS_CAR,
-		LS_TERRAIN, LS_ROAD, LS_OBJECTS, LS_TREES, LS_MISC, LS_ALL  };
+		LS_TERRAIN, LS_ROAD, LS_OBJECTS, LS_TREES, LS_MISC,
+		LS_ALL  };
 	static Ogre::String cStrLoad[LS_ALL+1];
 	int curLoadState = 0;
 	std::map<int, std::string> loadingStates;

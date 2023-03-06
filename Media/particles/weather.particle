@@ -19,8 +19,8 @@ particle_system RainStorm
 		height	38
 		depth	22  //h
 
-		colour				0.25 0.25 0.25  0.2
 		colour_range_start	0.22 0.22 0.22  0.2
+		colour				0.25 0.25 0.25  0.2
 		colour_range_end	0.28 0.28 0.28  0.3
 
 		emission_rate	200
@@ -69,8 +69,8 @@ particle_system RainFastA
 		height	16
 		depth	12  //h
 
-		colour				0.8 0.8 0.8  0.4
 		colour_range_start	0.8 0.8 0.8  0.3
+		colour				0.8 0.8 0.8  0.4
 		colour_range_end	0.8 0.8 0.8  0.5
 
 		emission_rate	200
@@ -111,8 +111,8 @@ particle_system RainFast
 		height	16
 		depth	12  //h
 
-		colour				0.8 0.8 0.8  0.5
 		colour_range_start	0.8 0.8 0.8  0.6
+		colour				0.8 0.8 0.8  0.5
 		colour_range_end	0.8 0.8 0.8  0.4
 
 		emission_rate	200
@@ -153,8 +153,8 @@ particle_system RainFine
 		height	16
 		depth	12  //h
 
-		colour				0.8 0.8 0.8  0.5
 		colour_range_start	0.8 0.8 0.8  0.6
+		colour				0.8 0.8 0.8  0.5
 		colour_range_end	0.8 0.8 0.8  0.4
 
 		emission_rate	200
@@ -195,8 +195,8 @@ particle_system RainHeavy
 		height	22
 		depth	12  //h
 
-		colour				0.7 0.7 0.7  0.2
 		colour_range_start	0.7 0.7 0.7  0.3
+		colour				0.7 0.7 0.7  0.2
 		colour_range_end	0.7 0.7 0.7  0.1
 
 		emission_rate	200
@@ -238,8 +238,8 @@ particle_system Snow
 		height	18
 		depth	12  //h
 
-		colour				1 1 1  0.6
 		colour_range_start	1 1 1  0.7
+		colour				1 1 1  0.6
 		colour_range_end	1 1 1  0.5
 
 		emission_rate	20
@@ -287,8 +287,8 @@ particle_system SnowFine
 		height	18
 		depth	12  //h
 
-		colour				1 1 1  0.6
 		colour_range_start	1 1 1  0.7
+		colour				1 1 1  0.6
 		colour_range_end	1 1 1  0.5
 
 		emission_rate	20
@@ -328,8 +328,8 @@ particle_system SnowStorm
 		height	19
 		depth	11  //h
 
-		colour				1 1 1  0.6
 		colour_range_start	1 1 1  0.7
+		colour				1 1 1  0.6
 		colour_range_end	1 1 1  0.5
 
 		emission_rate	20
@@ -376,8 +376,8 @@ particle_system SnowStormFine
 		height	19
 		depth	11  //h
 
-		colour				1 1 1  0.6
 		colour_range_start	1 1 1  0.7
+		colour				1 1 1  0.6
 		colour_range_end	1 1 1  0.5
 
 		emission_rate	20
@@ -413,8 +413,8 @@ particle_system SandStormRed
 		height	18
 		depth	12  //h
 
-		colour				0.27 0.15 0.10  0.2
 		colour_range_start	0.21 0.11 0.07  0.1
+		colour				0.27 0.15 0.10  0.2
 		colour_range_end	0.32 0.19 0.13  0.3
 
 		emission_rate	200
@@ -451,8 +451,8 @@ particle_system SandStorm
 		height	18
 		depth	12  //h
 
-		colour				0.65 0.65 0.20  0.3
 		colour_range_start	0.61 0.62 0.15  0.2
+		colour				0.65 0.65 0.20  0.3
 		colour_range_end	0.69 0.68 0.27  0.4
 
 		emission_rate	200

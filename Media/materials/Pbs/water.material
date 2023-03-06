@@ -102,7 +102,7 @@ hlms Water_blue_dark pbs : Water   // Fin1-Lakes
 hlms Grease_jelly pbs //: Water   // Uni1-Magic
 {
     diffuse   0.46 0.33 0.66
-    specular  1.0 1.0 1.0
+    specular  0.7 0.7 1.0
 	diffuse_map  alien_mntn4_d.jpg
 	normal_map   adesert_mntn4_n.jpg
 
@@ -114,7 +114,7 @@ hlms Grease_jelly pbs //: Water   // Uni1-Magic
 hlms Blue_jelly pbs //: Water
 {
 	diffuse   0.1 0.18 0.46
-	specular  1.0 1.0 1.0
+	specular  0.5 0.7 1.0
 	diffuse_map  alien_mntn4_d.jpg
 	normal_map   adesert_mntn4_n.jpg
 
@@ -125,8 +125,8 @@ hlms Blue_jelly pbs //: Water
 
 hlms Acid_green pbs : Water   // green acid
 {
-    diffuse   0.23 0.35 0.12
-	specular  0.33 0.38 0.33
+    diffuse   0.19 0.35 0.07
+	specular  0.23 0.38 0.13
 }
 
 hlms Ice pbs //: BaseMud   // solid

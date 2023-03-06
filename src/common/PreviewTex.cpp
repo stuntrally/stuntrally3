@@ -91,18 +91,27 @@ bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8
 			prvTex->scheduleTransitionTo( GpuResidency::Resident );
 
 			///----
+			auto pf = PFG_RGBA8_UNORM_SRGB;
+			// auto pf = PFG_RGBA8_UNORM;
 			const TextureBox& imgData = img.getData(0);
 
 			StagingTexture* tex = mgr->getStagingTexture(
-				xSize, ySize, 1u, 1u, PFG_RGBA8_UNORM );
+				xSize, ySize, 1u, 1u, pf );
 			tex->startMapRegion();
 			TextureBox texBox = tex->mapRegion(
-				xSize, ySize, 1u, 1u, PFG_RGBA8_UNORM );
+				xSize, ySize, 1u, 1u, pf );
 
 			texBox.copyFrom( imgData );  // upload
 
 			tex->stopMapRegion();
-			tex->upload( texBox, prvTex, 0, 0, 0 );
+			try
+			{
+				tex->upload( texBox, prvTex, 0, 0, 0 );
+			}
+			catch (Exception e)
+			{
+				LogO(String("PrvTex can't upload ")/*+e.what()*/);
+			}
 			mgr->removeStagingTexture( tex );  tex = 0;
 
 
@@ -126,7 +135,7 @@ bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8
 
 bool PreviewTex::Load(String path, bool force)
 {
-	return Load(path, force, 100, 90, 80, 120);
+	return Load(path, force, 100, 60, 30, 60);
 }
 
 
@@ -152,7 +161,14 @@ void PreviewTex::Clear(const uint8 b, const uint8 g, const uint8 r, const uint8 
 	texBox.copyFrom( data, xSize, ySize, xSize * 4 );
 
 	tex->stopMapRegion();
-	tex->upload( texBox, prvTex, 0, 0, 0 );
+	try
+	{
+		tex->upload( texBox, prvTex, 0, 0, 0 );
+	}
+	catch (Exception e)
+	{
+		LogO(String("PrvTex can't upload ")/*+e.what()*/);
+	}
 	
 	mgr->removeStagingTexture( tex );  tex = 0;
 	delete[] data;

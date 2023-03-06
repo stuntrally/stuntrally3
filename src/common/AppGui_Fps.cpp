@@ -44,10 +44,10 @@ void AppGui::UpdFpsText()
 	const FrameStats *st = mRoot->getFrameStats();
 
 	const float fps = st->getAvgFps(),  //st->getFps(),
-		tris = rm.mFaceCount/1000000.f / 7.f,  //!  / 7 1+6cube
+		tris = rm.mFaceCount/1000000.f / 7.f,  //** !! div by / 7 1+6cube, wrong
 		mem = GetGPUmem();
-	const int draw = rm.mDrawCount,
-		inst = rm.mInstanceCount, vgt = scn->iVegetAll,
+	const int draw = rm.mDrawCount / 7,
+		inst = rm.mInstanceCount / 7, vgt = scn->iVegetAll,
 		gui = MyGUI::Ogre2RenderManager::getInstance().getBatchCount();
 
 	String txt;

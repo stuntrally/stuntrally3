@@ -86,6 +86,7 @@ void App::AlignTerToRoad()
 	float v,k, fx,fz, wx,wz;
 	
 	///  🎯 ray casts  -----------
+	Ogre::Timer t2;
 	for (y = 0; y < h; ++y) {  a = y*w;  b = (h-1-y)*w;
 	for (x = 0; x < w; ++x, ++a,++b)
 	{
@@ -103,6 +104,7 @@ void App::AlignTerToRoad()
 		rh[b] = hit;
 		rd[b] = hit ? rayRes.m_hitPointWorld.getZ() : fHmap[b];
 	}	}
+	LogO(String(":::* Time rays  Hmap: ")+toStr(w)+"  " + fToStr(t2.getMilliseconds(),0,3) + " ms");
 
 	//  smooth edges, road-terrain border
 	const float fv = pSet->al_smooth;

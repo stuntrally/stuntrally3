@@ -14,6 +14,7 @@
 #include <OgreTimer.h>
 #include <OgreWindow.h>
 // #include <OgreRectangle2D2.h>  //..
+#include <OgreImage2.h>
 #include <OgreCamera.h>
 #include <OgreTextureGpuManager.h>
 #include "Terra.h"
@@ -289,21 +290,24 @@ void App::UpdMiniPos()
 ///  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 void App::SaveGrassDens()
 {
-	#if 0  //;
 	Ogre::Timer ti;
 
-	for (int i=0; i < RT_View; ++i)  //-1 preview camera manual
+	/*for (int i=0; i < RT_View; ++i)  //-1 preview camera manual
 	{
 		if (!rt[i].tex)  return;
 		rt[i].tex->update();  // all have to exist
-	}
+	}*/
 
-	int w = rt[RT_Grass].tex->getWidth(), h = rt[RT_Grass].tex->getHeight();
+	int n = RT_View; // RT_Grass
+	int w = rt[n].tex->getWidth(), h = rt[n].tex->getHeight();
 	using Ogre::uint;
 	uint *rd = new uint[w*h];   // road render
 	uint *gd = new uint[w*h];   // grass dens
-	PixelBox pb_rd(w,h,1, PF_BYTE_RGBA, rd);
-	rt[RT_Grass].tex->copyContentsToMemory(pb_rd, RenderTarget::FB_FRONT);
+	// PixelBox pb_rd(w,h,1, PFG_RGBA8_UNORM, rd);
+	// rt[n].tex->copyContentsToMemory(pb_rd, RenderTarget::FB_FRONT);
+	TextureBox tb;
+	// rt[n].rtt->copyContentsToMemory(tb, 
+	// rt[n].tex->save
 
 	const int f = std::max(0, scn->sc->grDensSmooth);
 	float sum = 0.f;
@@ -345,9 +349,9 @@ void App::SaveGrassDens()
 	for (x = 0;  x <= f; ++x)	for (y=0; y < h; ++y)	gd[y*w+x] = v;  // | left
 	for (x=w-f-1; x < w; ++x)	for (y=0; y < h; ++y)	gd[y*w+x] = v;  // | right
 
-	Image im;  // for trees, before grass angle and height
-	im.loadDynamicImage((uchar*)gd, w,h,1, PF_BYTE_RGBA);
-	im.save(gcom->TrkDir()+"objects/roadDensity.png");
+	Image2 im;  // for trees, before grass angle and height
+	im.loadDynamicImage((uchar*)gd, w,h,1, TextureTypes::Type2D, PFG_RGBA8_UNORM, true);
+	im.save(gcom->TrkDir()+"objects/roadDensity.png", 0, 1);
 
 	LogO(String(":::* Time road dens: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
@@ -356,11 +360,10 @@ void App::SaveGrassDens()
 	//  road, terrain  ----------------
 	int user = pSet->allow_save ? pSet->gui.track_user : 1;
 	auto path = gcom->pathTrk[user] + pSet->gui.track;
-	rt[RT_Road   ].tex->writeContentsToFile(path + "/preview/road.png");
-	rt[RT_Terrain].tex->writeContentsToFile(path + "/preview/terrain.jpg");
+	// rt[RT_Road   ].tex->writeContentsToFile(path + "/preview/road.png");
+	// rt[RT_Terrain].tex->writeContentsToFile(path + "/preview/terrain.jpg");
 
 	LogO(String(":::* Time save prv : ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
-	#endif
 }
 
 
@@ -400,6 +403,7 @@ void App::postRenderTargetUpdate(const RenderTargetEvent &evt)
 //-----------------------------------------------------------------------------------------------------------
 void App::SaveWaterDepth()
 {
+	return;  //!
 	if (scn->sc->fluids.empty())
 	{
 		gui->Delete(gcom->TrkDir()+"objects/waterDepth.png");  // no tex if no fluids
@@ -447,13 +451,13 @@ void App::SaveWaterDepth()
 		// wd[a] = 0xFF000000 + /*0x01 */ ia + 0x0100 * id;  // write
 	}	}
 
-	/*Image im;  // save img
-	im.loadDynamicImage((uchar*)wd, w,h,1, PF_BYTE_RGBA);
-	im.save(gcom->TrkDir()+"objects/waterDepth.png");
+	Image2 im;  // save img
+	im.loadDynamicImage((uchar*)wd, w,h,1, TextureTypes::Type2D, PFG_RGBA8_UNORM, true);
+	im.save(gcom->TrkDir()+"objects/waterDepth.png", 0, 1);
 	delete[] wd;
 
-	try {
-	TexturePtr tex = TextureManager::getSingleton().getByName("waterDepth.png");
+	/*try {
+	TextureGpu* tex = TextureManager::getSingleton().getByName("waterDepth.png");
 	if (tex)
 		tex->reload();
 	else  // 1st fluid after start, refresh matdef ?..
