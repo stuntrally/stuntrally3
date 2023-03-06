@@ -65,13 +65,32 @@
 		}
 
 		@foreach( detail_maps_normal, n )@property( detail_map_nm@n )
-			#define SampleDetailMapNm@nSd( tex, sampler, uv, arrayIdx ) SampleDetailMapNm@nSdFn( tex, sampler, uv, arrayIdx, detailWeights, pixelData.worldSpaceNormal )
-			#define SampleDetailMapNm@nTp( tex, sampler, uv, arrayIdx ) SampleDetailMapNm@nTpFn( tex, sampler, uv, arrayIdx, detailWeights, pixelData.worldSpaceNormal )
-			#define SampleDetailMapNm@nFr( tex, sampler, uv, arrayIdx ) SampleDetailMapNm@nFrFn( tex, sampler, uv, arrayIdx, detailWeights, pixelData.worldSpaceNormal )
+			@property( syntax != glsl )
+				#define SampleDetailMapNm@nSd( tex, sampler, uv, arrayIdx ) SampleDetailMapNm@nSdFn( tex, sampler, uv, arrayIdx, detailWeights, pixelData.normal )
+				#define SampleDetailMapNm@nTp( tex, sampler, uv, arrayIdx ) SampleDetailMapNm@nTpFn( tex, sampler, uv, arrayIdx, detailWeights, pixelData.normal )
+				#define SampleDetailMapNm@nFr( tex, sampler, uv, arrayIdx ) SampleDetailMapNm@nFrFn( tex, sampler, uv, arrayIdx, detailWeights, pixelData.normal )
+			@else
+				#define SampleDetailMapNm@nSd( tex, sampler, uv, arrayIdx ) SampleDetailMapNm@nSdFn( tex, uv, arrayIdx, detailWeights, pixelData.normal )
+				#define SampleDetailMapNm@nTp( tex, sampler, uv, arrayIdx ) SampleDetailMapNm@nTpFn( tex, uv, arrayIdx, detailWeights, pixelData.normal )
+				#define SampleDetailMapNm@nFr( tex, sampler, uv, arrayIdx ) SampleDetailMapNm@nFrFn( tex, uv, arrayIdx, detailWeights, pixelData.normal )
+			@end
 
 			// Side view projection
-			midf3 SampleDetailMapNm@nSdFn( Texture2DArray tex, SamplerState smp, midf2 uv, uint arrayIdx, midf4 weights, midf3 normal )
-			{
+			midf3 SampleDetailMapNm@nSdFn(
+				@property( syntax == glsl )
+					sampler2DArray tex,
+				@end
+				@property( syntax == glslvk )
+					sampler2DArray tex, sampler smp,
+				@end
+				@property( syntax == hlsl )
+					Texture2DArray tex, SamplerState smp,
+				@end
+				@property( syntax == metal )
+					texture2d_array<midf> tex, sampler smp,
+				@end
+					midf2 uv, uint arrayIdx, midf4 weights, midf3 normal )
+ 			{
 				midf3 tangentNormal = getTSNormal( tex, smp, uv, arrayIdx ) * weights.@insertpiece( detail_swizzle@n );
 
 				if( normal.x >= _h( 0.0 ) )
@@ -86,7 +105,20 @@
 			}
 
 			// Top view projection
-			midf3 SampleDetailMapNm@nTpFn( Texture2DArray tex, SamplerState smp, midf2 uv, uint arrayIdx, midf4 weights, midf3 normal )
+			midf3 SampleDetailMapNm@nTpFn(
+				@property( syntax == glsl )
+					sampler2DArray tex,
+				@end
+				@property( syntax == glslvk )
+					sampler2DArray tex, sampler smp,
+				@end
+				@property( syntax == hlsl )
+					Texture2DArray tex, SamplerState smp,
+				@end
+				@property( syntax == metal )
+					texture2d_array<midf> tex, sampler smp,
+				@end
+					midf2 uv, uint arrayIdx, midf4 weights, midf3 normal )
 			{
 				midf3 tangentNormal = getTSNormal( tex, smp, uv, arrayIdx ) * weights.@insertpiece( detail_swizzle@n );
 				tangentNormal.y = -tangentNormal.y;
@@ -98,7 +130,20 @@
 			}
 
 			// Front view projection
-			midf3 SampleDetailMapNm@nFrFn( Texture2DArray tex, SamplerState smp, midf2 uv, uint arrayIdx, midf4 weights, midf3 normal )
+			midf3 SampleDetailMapNm@nFrFn(
+				@property( syntax == glsl )
+					sampler2DArray tex,
+				@end
+				@property( syntax == glslvk )
+					sampler2DArray tex, sampler smp,
+				@end
+				@property( syntax == hlsl )
+					Texture2DArray tex, SamplerState smp,
+				@end
+				@property( syntax == metal )
+					texture2d_array<midf> tex, sampler smp,
+				@end
+					midf2 uv, uint arrayIdx, midf4 weights, midf3 normal )
 			{
 				midf3 tangentNormal = getTSNormal( tex, smp, uv, arrayIdx ) * weights.@insertpiece( detail_swizzle@n );
 
@@ -156,20 +201,26 @@
 
 
 @piece( SampleAndApplyDetailNormalMapsTriplanar )
+	// pixelData.normal will becomputed via triplanar mapping, and will be in world space
+	// (later we convert it to view space)
+	pixelData.normal = pixelData.worldSpaceNormal;
 	@foreach( detail_maps_normal, n )@property( detail_map_nm@n )
 		pixelData.normal = SampleDetailMapNm@nSd( textureMaps@value( detail_map_nm@n_idx ),
 												  samplerState@value( detail_map_nm@n_sampler ),
-												  UV_DETAIL_NM@n( GetTriplanarUVSd( inPs.worldPos, pixelData.worldSpaceNormal )@insertpiece( offsetDetail@n ) ),
+												  UV_DETAIL_NM@n( GetTriplanarUVSd( inPs.worldPos, pixelData.normal )@insertpiece( offsetDetail@n ) ),
 												  texIndex_detailNormMapIdx@n ) * triplanarBlend.x +
 
 						   SampleDetailMapNm@nTp( textureMaps@value( detail_map_nm@n_idx ),
 												  samplerState@value( detail_map_nm@n_sampler ),
-												  UV_DETAIL_NM@n( GetTriplanarUVTp( inPs.worldPos, pixelData.worldSpaceNormal )@insertpiece( offsetDetail@n ) ),
+												  UV_DETAIL_NM@n( GetTriplanarUVTp( inPs.worldPos, pixelData.normal )@insertpiece( offsetDetail@n ) ),
 												  texIndex_detailNormMapIdx@n ) * triplanarBlend.y +
 
 						   SampleDetailMapNm@nFr( textureMaps@value( detail_map_nm@n_idx ),
 												  samplerState@value( detail_map_nm@n_sampler ),
-												  UV_DETAIL_NM@n( GetTriplanarUVFr( inPs.worldPos, pixelData.worldSpaceNormal )@insertpiece( offsetDetail@n ) ),
+												  UV_DETAIL_NM@n( GetTriplanarUVFr( inPs.worldPos, pixelData.normal )@insertpiece( offsetDetail@n ) ),
 												  texIndex_detailNormMapIdx@n ) * triplanarBlend.z;
+		pixelData.normal = normalize( pixelData.normal );
+		// pixelData.normal = _h(0.3333333) * pixelData.normal;
 	@end @end
+	pixelData.worldSpaceNormal = pixelData.normal;
 @end
