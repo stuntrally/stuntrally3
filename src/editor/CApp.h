@@ -95,7 +95,9 @@ public:
 	//  🖼️ rnd to tex  --------
 	enum ERnd2Tex
 	// {	RT_Road=0, RT_Grass, RT_Terrain, RT_View, RT_Last, RT_Brush, RT_ALL  };
-	{	RT_View=0, RT_Last, RT_ALL = RT_Last };
+	{	RT_View=0, RT_Grass,
+		RT_Last, RT_ALL = RT_Last
+	};
 	struct SRndTrg
 	{
 		Ogre::Camera* cam =0;

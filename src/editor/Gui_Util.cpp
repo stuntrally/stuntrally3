@@ -333,6 +333,7 @@ void App::togPrvCam()
 		bMoveCam = true;  UpdVisGui();
 		// mViewport->setVisibilityMask(RV_MaskPrvCam);
 		// rt[RT_Last].ndMini->setVisible(true);
+		// rt[RT_View].ws->setEnabled(1);
 		ndCar->setVisible(false);
 
 		// scn->UpdateWaterRTT(rt[RT_View].cam);

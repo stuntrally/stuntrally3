@@ -37,15 +37,15 @@ using namespace Ogre;
 void App::CreateRnd2Tex()
 {
 	///  RT:  0 road minimap,  1 road for grass,  2 terrain minimap,  3 track preview full
+	// todo: grass same dim as Hmap..
 	/*const uint32 visMask[RT_Last] =
 		{ RV_Road, RV_Road+RV_Objects, RV_Terrain+RV_Objects, RV_MaskAll-RV_Hud };
 	const int dim[RT_Last] =  //1025: sc->td.iVertsX
 		{ 1024, 1025, 1024, 1024 };*/
 	const uint32 visMask[RT_Last] =
-		{ RV_MaskAll-RV_Hud };
+		{ RV_MaskAll-RV_Hud, RV_MaskAll-RV_Hud };
 	const int dim[RT_Last] =
-		{ 1024 };  // test 1
-	// todo: same dim as Hmap..
+		{ 1024, 1024 };
 		
 	auto* texMgr =mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
 	auto* mgr = mRoot->getCompositorManager2();
@@ -54,7 +54,7 @@ void App::CreateRnd2Tex()
 
 	for (int i=0; i < RT_ALL; ++i)
 	{
-		SRndTrg& r = rt[i];  //bool full = i==RT_View;
+		auto& r = rt[i];  bool full = i==RT_View;
 		String si = toStr(i); //, sMtr = "road_mini_"+si;
 		if (i < RT_Last)
 		{
@@ -69,7 +69,10 @@ void App::CreateRnd2Tex()
 			r.tex->scheduleTransitionTo( GpuResidency::OnStorage );
 
 			// 	i == RT_View || i == RT_Terrain ? PF_R8G8B8 : PF_R8G8B8A8
-			r.tex->setPixelFormat( PFG_RGBA8_UNORM/*_SRGB*/ );
+			r.tex->setPixelFormat(
+				//? i == RT_View /*|| i == RT_Terrain*/ ? PFG_RGB8_UNORM : 
+				// PFG_RGBA8_UNORM );  // dark jpg, good prv
+				PFG_RGBA8_UNORM_SRGB );  // ok jpg, white prv, like old sr
 			r.tex->scheduleTransitionTo( GpuResidency::Resident );
 
 			auto flags = TextureFlags::RenderToTexture; // | TextureFlags::AllowAutomipmaps;
@@ -78,7 +81,7 @@ void App::CreateRnd2Tex()
 			r.rtt->copyParametersFrom( r.tex );
 			r.rtt->scheduleTransitionTo( GpuResidency::Resident );
 			// if( flags & TextureFlags::RenderToTexture )
-			r.rtt->_setDepthBufferDefaults( DepthBuffer::POOL_NO_DEPTH, false, PFG_UNKNOWN );
+			r.rtt->_setDepthBufferDefaults( DepthBuffer::POOL_DEFAULT, false, PFG_UNKNOWN );
 
 
 			//  🎥 Camera
@@ -89,12 +92,14 @@ void App::CreateRnd2Tex()
 				r.cam = mSceneMgr->createCamera( "RttCam" + si, true );
 				r.cam->setPosition(Vector3(0,1500,0));  //par- max height
 				r.cam->setOrientation(Quaternion(0.5,-0.5,0.5,0.5));  // top view
-				// r.cam->setNearClipDistance(0.5);
+				r.cam->setNearClipDistance(0.5);
 				// r.cam->setFarClipDistance(50000);  // r.cam->setUseRenderingDistance(true);
 				r.cam->setAspectRatio(1.0);
-				// if (!full)
-				r.cam->setProjectionType(PT_ORTHOGRAPHIC);
-				r.cam->setOrthoWindow(fDim, fDim);
+				if (!full)
+				{
+					r.cam->setProjectionType(PT_ORTHOGRAPHIC);
+					r.cam->setOrthoWindow(fDim, fDim);
+				}
 				// r.cam->setFOVy( Degree(90) );
 				// r.cam->setFixedYawAxis( false );
 				// r.cam->setShadowRenderingDistance( 300 );  // par-
@@ -111,14 +116,18 @@ void App::CreateRnd2Tex()
 			if( !mgr->hasWorkspaceDefinition( name ) )
 			{
 				auto* w = mgr->addWorkspaceDefinition( name );
-				w->connectExternal( 0, "RttNode", 0 );
+				w->connectExternal( 0,  // "SR3_Render" ?
+					full ? "RttViewNode" : "RttNode", 0 );
 			}
 
 			r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, true );
+			// r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, false );  // todo: manual update
 
 
 			//  🌍 Hud minimap rect 2d  ----
-			String sMtr = "ed_rtt";
+			if (!full)
+			{
+			String sMtr = "ed_Rtt_" + si;
 			const auto hlms = dynamic_cast<HlmsUnlit*>(mRoot->getHlmsManager()->getHlms(HLMS_UNLIT));
 			HlmsUnlitDatablock* db = dynamic_cast<HlmsUnlitDatablock*>(hlms->getDatablock(sMtr));
 			db->setTexture(PBSM_DIFFUSE, rt[0].tex);
@@ -153,7 +162,7 @@ void App::CreateRnd2Tex()
 			MaterialPtr brush_mt = getByName("BrushPrvMtr");
 			r.mini->setMaterial(i == RT_Brush ? brush_mt : mt);
 			r.mini->setVisibilityFlags(i == RT_Last ? RV_MaskPrvCam : RV_Hud);*/
-		}
+		}	}
 	}
 
 	//  🔺 pos tri on minimap  . . . . . . . .
@@ -180,13 +189,20 @@ void App::UpdRnd2Tex()
 	for (int i=0; i < RT_ALL; ++i)
 	if (i < RT_Last)
 	{
-		SRndTrg& r = rt[i];  //bool full = i==RT_View;
+		auto& r = rt[i];  bool full = i==RT_View;
 		if (!r.ws)  continue;
 
+		if (full)
+		{	// prv view same as cam
+			r.cam->setPosition(mCamera->getPosition());
+			r.cam->setOrientation(mCamera->getOrientation());
+		}
+
 		// r.ws->_beginUpdate( true );
-		// r.ws->_update();
+		//r.ws->_update();  // todo: upd when needed only, skip
 		// r.ws->_endUpdate( true );
 
+		//  this is each frame
 		for( uint8 i = 0u; i < r.tex->getNumMipmaps(); ++i )
 		{
 			r.rtt->copyTo( r.tex, r.tex->getEmptyBox( i ), i,

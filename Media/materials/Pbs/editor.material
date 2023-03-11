@@ -1,12 +1,29 @@
 
-//  rtt
-hlms ed_rtt unlit
+//  ed rtt road,view,ter etc
+hlms ed_Rtt_0 unlit
 {
 	// diffuse_map  RttTex0  // set in cpp
 	diffuse 1 1 1
 	cull_mode none
 }
+hlms ed_Rtt_1 unlit
+{
+	diffuse 1 1 1
+	cull_mode none
+}
+hlms ed_Rtt_2 unlit
+{
+	diffuse 1 1 1
+	cull_mode none
+}
+hlms ed_Rtt_3 unlit
+{
+	diffuse 1 1 1
+	cull_mode none
+}
 
+
+//  ⛰️ Terrain prv img
 hlms edBrush unlit
 {
 	// diffuse_map  BrushTex  // set in cpp
