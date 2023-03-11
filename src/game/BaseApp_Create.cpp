@@ -13,6 +13,7 @@
 #include <MyGUI_Ogre2Platform.h>
 using namespace Ogre;
 using namespace MyGUI;
+// #define TEST_LOAD  // preview cams, no loading backgr
 
 
 //  🕹️🆕 Create
@@ -73,8 +74,10 @@ BaseApp::~BaseApp()
 void BaseApp::LoadingOn()
 {
 	if (!imgLoad)  return;
+#ifndef TEST_LOAD
 	imgLoad->setVisible(true);
 	imgBack->setVisible(true);
+#endif
 	bckLoad->setVisible(true);
 #if 0
 	mSplitMgr->SetBackground(ColourValue(0.15,0.165,0.18));
@@ -144,13 +147,20 @@ void BaseApp::baseInitGui()
 		imgBack = mGui->createWidget<ImageBox>("ImageBox",
 			0,0, 800,600, Align::Default, "Back","ImgBack");
 		imgBack->setImageTexture("background2.jpg");
+		#ifdef TEST_LOAD
+		imgBack->setVisible(false);  //-
+		#endif
 	}
 
 	///  loading background img
 	imgLoad = mGui->createWidget<ImageBox>("ImageBox",
 		0,0, 800,600, Align::Default, "Back", "ImgLoad");
 	imgLoad->setImageTexture("background2.png");
+	#ifdef TEST_LOAD
+	imgLoad->setVisible(false);  //-
+	#else
 	imgLoad->setVisible(true);
+	#endif
 
 
 	LogO("---- baseSizeGui");

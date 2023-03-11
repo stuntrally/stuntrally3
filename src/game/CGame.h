@@ -133,12 +133,15 @@ public:
 	
 	//  ⏳ Loading  states  ----------------
 	bool bLoading = 0, bLoadingEnd = 0, bSimulating = 0;  int iLoad1stFrames = 0;
-	void LoadCleanUp(), LoadGame(), LoadScene(), LoadCar(), LoadTerrain(), LoadRoad(), LoadObjects(), LoadTrees(), LoadMisc();
+	void LoadCleanUp(), LoadGame(), LoadScene(), LoadCar(),
+		LoadTerrain(), LoadRoad(), LoadObjects(), LoadTrees(), 
+		LoadView(int c), LoadMisc();
 
 	enum ELoadState
 	{	LS_CLEANUP=0, LS_GAME, LS_SCENE, LS_CAR,
-		LS_TERRAIN, LS_ROAD, LS_OBJECTS, LS_TREES, LS_MISC,
-		LS_ALL  };
+		LS_TERRAIN, LS_ROAD, LS_OBJECTS, LS_TREES,
+		LS_VIEW0, LS_VIEW1, LS_VIEW2, LS_VIEW3, LS_VIEW4, LS_VIEW5, LS_VIEW6, LS_VIEW7, LS_VIEW8,
+		LS_MISC, LS_ALL  };
 	static Ogre::String cStrLoad[LS_ALL+1];
 	int curLoadState = 0;
 	std::map<int, std::string> loadingStates;

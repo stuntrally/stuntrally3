@@ -46,6 +46,10 @@ using namespace std;
 void App::update( float dt )
 {
 	fLastFrameDT = dt;
+	#if 1
+	if (dt > 0.02)  // test big dt
+		LogO("dt "+fToStr(dt,3,5));
+	#endif
 
 
 	//  🕹️ Input upd  ----
@@ -66,26 +70,29 @@ void App::update( float dt )
 		NewGameDoLoad();
 		// PROFILER.endBlock(" frameSt");
 		// return;  //?
-	}else 
+	}//else   //!
+	
 	{
 		///  loading end  ------
-		const int iFr = 3;
-		if (iLoad1stFrames >= 0)
-		{	++iLoad1stFrames;
-			if (iLoad1stFrames == iFr)
-			{
-				// LoadingOff();  // hide loading overlay
-				// mSplitMgr->mGuiViewport->setClearEveryFrame(true, FBT_DEPTH);
-				gui->Ch_LoadEnd();
-				bLoadingEnd = true;
-				iLoad1stFrames = -1;  // for refl
-			}
-		}else if (iLoad1stFrames >= -1)
+		if (!bLoading)
 		{
-			--iLoad1stFrames;  // -2 end
-			LoadingOff();  // hide loading overlay
+			const int iFr = 3;
+			if (iLoad1stFrames >= 0)
+			{	++iLoad1stFrames;
+				if (iLoad1stFrames == iFr)
+				{
+					// LoadingOff();  // hide loading overlay
+					// mSplitMgr->mGuiViewport->setClearEveryFrame(true, FBT_DEPTH);
+					gui->Ch_LoadEnd();
+					bLoadingEnd = true;
+					iLoad1stFrames = -1;  // for refl
+				}
+			}else if (iLoad1stFrames >= -1)
+			{
+				--iLoad1stFrames;  // -2 end
+				LoadingOff();  // hide loading overlay
+			}
 		}
-
 
 		///  🎛️ Gui  --------
 		if (gui)
@@ -161,7 +168,7 @@ void App::update( float dt )
 		const int d = alt ? 16 : ctrl ? 4  : 1,
 		         pg = alt ? 64 : ctrl ? 32 : 8;
 
-		if (isFocGui && !isTweak() &&
+		if (isFocGui && !isTweak() && !bLoading &&
 			pSet->iMenu >= MN_Single && pSet->iMenu <= MN_Chall)
 		{
 			if (down)  fDn += dt;  else  if (pgdown)  fPgDn += dt;  else
@@ -212,7 +219,7 @@ void App::update( float dt )
 		}
 
 		//  🚦 pace upd vis  ~ ~ ~
-		if (scn->pace)
+		if (scn->pace && !bLoading && !carModels.empty())
 		{	
 			const CarModel* cm = *carModels.begin();
 			Vector3 p = cm->ndMain->getPosition();
@@ -224,7 +231,7 @@ void App::update( float dt )
 
 
 		//  🔧 Keys  params  ----
-		#if 0
+		#if 0  // todo: move to ed gui
 		float mul = shift ? 0.2f : ctrl ? 3.f : 1.f;
 		int d = right ? 1 : left ? -1 : 0;
 		if (0 && d && scn->atmo)  // todo on gui-
@@ -261,31 +268,6 @@ void App::update( float dt )
 
 		//  ⚫📉
 		bool tireEd = updateTireEdit();
-
-		//  🌞 Light  sun dir  ----
-		#if 0
-		auto sun = scn->sun;
-		if (!tireEd)
-		{
-			bool any = false;
-			d = mKeys[0] - mKeys[1];
-			if (d)
-			{	any = true;
-				sc->ldPitch += d * mul * 20.f * dt;
-				sc->ldPitch = std::max( 0.f, std::min( sc->ldPitch, 180.f ) );
-			}
-			d = mKeys[2] - mKeys[3];
-			if (d)
-			{	any = true;
-				sc->ldYaw += d * mul * 30.f * dt;
-				sc->ldYaw = fmodf( sc->ldYaw, 360.f );
-				if( sc->ldYaw < 0.f )
-					sc->ldYaw = 360.f + sc->ldYaw;
-			}
-			if (any)
-				scn->UpdSun();
-		}
-		#endif
 
 		///  ⛰️ Terrain  ----
 		if (mGraphicsSystem->getRenderWindow()->isVisible() )

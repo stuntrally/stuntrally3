@@ -125,7 +125,7 @@ void CarModel::UpdTrackPercent()
 	const SplineRoad* road = pApp->scn->road;
 	
 	float perc = 0.f;
-	if (road && !road->mChks.empty() && !isGhost())
+	if (road && !road->mChks.empty() && !isGhost() && ndMain)
 	{
 		const Vector3& car = ndMain->getPosition(), next = road->mChks[iNextChk].pos,
 			start = vStartPos, curr = road->mChks[std::max(0,iCurChk)].pos;

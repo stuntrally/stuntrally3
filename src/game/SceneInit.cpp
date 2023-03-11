@@ -26,6 +26,7 @@
 #include "Terra.h"
 
 #include <OgreCommon.h>
+#include <OgreQuaternion.h>
 #include <OgreVector3.h>
 #include <OgreSceneManager.h>
 #include <OgreParticleSystem.h>
@@ -675,8 +676,44 @@ void App::LoadTrees()
 	}	}
 }
 
-//  ⏱️ HUD etc
-void App::LoadMisc()  // 9 last
+//  🎥 Preload Views
+//  look around, to see and
+//  Preload all resources, ensure visible
+void App::LoadView(int c)
+{
+	Quaternion q;  Vector3 p;  // stat pos-
+	auto* ter = scn->ter;
+	float t = sc->tds[0].fTerWorldSize*0.3;  // *0.5
+	
+	if (c == 8)
+	{	//  top view full
+		q.FromAngleAxis(Degree(-90), Vector3::UNIT_Z);
+		p.y = ter->getHeight(p.x, p.z) + t*4;
+	}
+	else if (c < 4)
+	{	//  rotate around, middle of track
+		q.FromAngleAxis(Degree(90 * c), Vector3::UNIT_Y);
+		p.y = ter->getHeight(0.f, 0.f) + 10.f;
+	}else //if (c < 8)
+	{	//  top view, 4 corners
+		q.FromAngleAxis(Degree(-90), Vector3::UNIT_X);
+		p.x = (c-4)/2 ? -t : t;
+		p.z = (c-4)%2 ? -t : t;
+		p.y = ter->getHeight(p.x, p.z) + t*2;  //par hmax-
+	}
+	LogO(String("Preload cam: ")+toStr(c)+"  pos "+toStr(p));//-
+	mCamera->setPosition(p);
+	mCamera->setOrientation(q);
+
+	mCamera->setFarClipDistance(100000.f);
+	mCamera->setLodBias(3.0f);
+	// ter->update(Vector3::UNIT_Z);
+
+	// Threads::Sleep( 1000 );  // test
+}
+
+//  ⏱️ HUD etc  10 last
+void App::LoadMisc()
 {
 	bool rev = pSet->game.track_reversed;	
 	/**if (pGame && !pGame->cars.empty())  //todo: move this into gui track tab chg evt, for cur game type
@@ -711,12 +748,16 @@ void App::LoadMisc()  // 9 last
 
 //  Performs a single loading step.  Actual loading procedure that gets called every frame during load.
 //---------------------------------------------------------------------------------------------------------------
-String App::cStrLoad[LS_ALL+1] = 
-	{"LS_CLEANUP","LS_GAME","LS_SCENE","LS_CAR","LS_TER","LS_ROAD","LS_OBJS","LS_TREES","LS_MISC","LS_ALL"};
+String App::cStrLoad[LS_ALL+1] = {
+	"#{LS_CLEANUP}","#{LS_GAME}","#{LS_SCENE}","#{LS_CAR}",
+	"#{LS_TER}","#{LS_ROAD}","#{LS_OBJS}","#{LS_TREES}",
+	"0", "1", "2", "3", "4", "5", "6", "7", "8",
+	"#{LS_MISC}","#{LS_ALL}"};
 
 void App::NewGameDoLoad()
 {
-	if (curLoadState == LS_ALL)
+	auto& cur = curLoadState;
+	if (cur == LS_ALL)
 	{
 		//  Loading finished
 		bLoading = false;
@@ -746,27 +787,41 @@ void App::NewGameDoLoad()
 
 	//  Do the next loading step
 	int perc = 0;
-	switch (curLoadState)
+	int c = cur - LS_VIEW0;
+	switch (cur)
 	{
-		case LS_CLEANUP:	LoadCleanUp();	perc = 3;	break;
-		case LS_GAME:		LoadGame();		perc = 10;	break;
-		case LS_SCENE:		LoadScene();	perc = 20;	break;
-		case LS_CAR:		LoadCar();		perc = 30;	break;
+		case LS_CLEANUP:	LoadCleanUp();	perc = 2;	break;  // 💥
+		case LS_GAME:		LoadGame();		perc = 8;	break;  // 
+		case LS_SCENE:		LoadScene();	perc = 13;	break;  // ⛅🔥
+		case LS_CAR:		LoadCar();		perc = 20;	break;  // 🚗🚗
 
-		case LS_TERRAIN:	LoadTerrain();	perc = 40;	break;
-		case LS_ROAD:		LoadRoad();		perc = 50;	break;
-		case LS_OBJECTS:	LoadObjects();	perc = 60;	break;
-		case LS_TREES:		LoadTrees();	perc = 70;	break;
+		case LS_TERRAIN:	LoadTerrain();	perc = 32;	break;  // ⛰️🏔️⛰️
+		case LS_ROAD:		LoadRoad();		perc = 45;	break;  // 🛣️📏🏛️⭕
+		case LS_OBJECTS:	LoadObjects();	perc = 63;	break;  // 📦🏢
+		case LS_TREES:		LoadTrees();	perc = 75;	break;
 
-		case LS_MISC:		LoadMisc();		perc = 80;	break;
+		case LS_VIEW0: case LS_VIEW1: case LS_VIEW2: case LS_VIEW3:  // 🎥
+		case LS_VIEW4: case LS_VIEW5: case LS_VIEW6: case LS_VIEW7: case LS_VIEW8:
+		{
+			LoadView(c);
+			// perc = 75.f + (90.f-75.f) * c / 9.f;
+			perc = 85;
+		}	break;
+		// todo: show cars, particles, gui
+
+		case LS_MISC:		LoadMisc();		perc = 90;	break;  // ⏱️
 	}
 
 	//  Update bar,txt
-	txLoad->setCaption(TR("#{"+cStrLoad[curLoadState]+"}"));
 	SetLoadingBar(perc);
 
 	//  next loading step
-	++curLoadState;
+	++cur;
+	//  show next already
+	if (cur >= LS_VIEW0 && cur >= LS_VIEW8)
+		txLoad->setCaption(TR("#{LS_SCENE} ") + toStr(c));
+	else
+		txLoad->setCaption(TR(cStrLoad[cur]));
 }
 
 
