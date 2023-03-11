@@ -86,6 +86,23 @@ bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8
 
 			if (!prvTex)
 				Create(img.getWidth(), img.getHeight(), sName);
+
+			//**  convert sRGB, fixes bad white clr
+			// todo in shader.. very SLOW <1s
+			Ogre::Timer ti;
+			auto fmt = img.getPixelFormat();
+			const TextureBox& tb = img.getData(0);
+			for (int y=0; y < ySize; ++y)
+			for (int x=0; x < xSize; ++x)
+			{
+				auto c = tb.getColourAt(x,y, 0,fmt);
+				img.setColourAt( ColourValue(
+					PixelFormatGpuUtils::fromSRGB(c.r),
+					PixelFormatGpuUtils::fromSRGB(c.g),
+					PixelFormatGpuUtils::fromSRGB(c.b),
+					c.a), x,y, 0,0);
+			}
+			LogO(String("::: Time prv sRGB: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 				
 			//LogO("PRV: "+toStr(img.getWidth())+" "+toStr(img.getHeight())+"  "+path);
 			prvTex->scheduleTransitionTo( GpuResidency::Resident );
