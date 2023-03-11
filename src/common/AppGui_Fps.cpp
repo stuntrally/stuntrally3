@@ -44,19 +44,20 @@ void AppGui::UpdFpsText()
 	const FrameStats *st = mRoot->getFrameStats();
 
 	const float fps = st->getAvgFps(),  //st->getFps(),
-		tris = rm.mFaceCount/1000000.f / 7.f,  //** !! div by / 7 1+6cube, wrong
+		tris = rm.mFaceCount/1000000.f / 7.f,  //** !! div / 7  ~= 1 + 6 cube, wrong
 		mem = GetGPUmem();
-	const int draw = rm.mDrawCount / 7,
-		inst = rm.mInstanceCount / 7, vgt = scn->iVegetAll,
+	const int draw = rm.mDrawCount,  // div / 7
+		inst = rm.mInstanceCount,  // div / 7
+		vgt = scn->iVegetAll,
 		gui = MyGUI::Ogre2RenderManager::getInstance().getBatchCount();
 
 	String txt;
 	txt += cvsF( fps,  59.f, 30.f, fps >= 100.f ? 0 : 1,4) + "  ";
-	txt += cvsF( tris, 1.f, 3.f, 2,4) + "m ";  //txt += "v " + toStr( rm.mVertexCount/1000 ) + "  ";
-	txt += cvsI( draw, 50, 300, 3) + "\n";
+	txt += cvsF( tris, 1.f *1, 3.f *1, 2,4) + "m ";  //txt += "v " + toStr( rm.mVertexCount/1000 ) + "  ";
+	txt += cvsI( draw, 50 *5, 300 *5, 3) + "\n";
 
 	txt += "#A0C0A0 Vgt ";
-	txt += cvsI( inst, 1000, 8000, 5) + " ";  //txt += "b " + toStr( rm.mBatchCount, 0);
+	txt += cvsI( inst, 1000 *2, 8000 *2, 5) + " ";  //txt += "b " + toStr( rm.mBatchCount, 0);
 	txt += cvsI( vgt, 3000, 15000, 5) + "\n";
 
 	txt += "#B0B0B0 Gui " + cvsI( gui, 5, 30, 2) + " ";
