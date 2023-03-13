@@ -491,8 +491,9 @@ namespace Ogre
 		if (m_shadowWorkspace)
 			m_shadowWorkspace->_update();
 		
+		//^^ todo:  ed save shadowmap
 		// if (m_bGenerateShadowMap)
-			// m_shadowMapTex->writeContentsToFile("shadowmap.png",0,0);  //** ter
+		// 	m_shadowMapTex->writeContentsToFile("shadowmap.png",0,0);  //** ter
 
 		if( m_minimizeMemoryConsumption )
 			destroyCompositorWorkspace();

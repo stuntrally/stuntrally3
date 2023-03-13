@@ -105,7 +105,7 @@ namespace Ogre
 		,normalmap( this )
 		,blendmap( this )
 
-		,bGenerateShadowMap( 0 )  //** ter par
+		,bGenerateShadowMap( 0 )  //** ter par  //^^ todo: 1 in ed
 		,bNormalized( 0 )
 		,fHMin(-100.f), fHMax(100.f)
 		,iLodMax( 4 )  // 5 lq, max lods .. 0 hq, all lod0

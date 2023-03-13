@@ -189,6 +189,7 @@ namespace Ogre
 		//	pTerra->mManager->destroyCamera( camera );
 		#endif
 
+		//^^ todo:  for GetTerMtrIds  tire ter surf ..
 		// texture->writeContentsToFile("blendmapRTT.png", 0, 1);  //** ter test blendmap
 	}
 
