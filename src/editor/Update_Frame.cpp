@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "enums.h"
 #include "Def_Str.h"
 #include "CScene.h"
 #include "settings.h"
@@ -332,7 +333,7 @@ void App::update( float dt )
 	{	bRecreateEmitters = false;
 
 		scn->DestroyEmitters(false);
-		scn->CreateEmitters();
+		scn->CreateEmitters(edMode == ED_PrvCam);
 		UpdEmtBox();
 	}
 
@@ -360,7 +361,7 @@ void App::update( float dt )
 	
 	
 	//  🌧️ Update rain/snow - depends on camera
-	scn->UpdateWeather(mCamera, 1.f/dt, pSet->bWeather ? 0.f : 1.f);
+	scn->UpdateWeather(mCamera, 1.f/dt, !pSet->bWeather ? 0.f : 1.f);
 
 	// update shader time
 	// mTimer += evt.timeSinceLastFrame;

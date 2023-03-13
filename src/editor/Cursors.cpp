@@ -3,6 +3,7 @@
 #include "RenderConst.h"
 #include "CScene.h"
 #include "Axes.h"
+#include "CGui.h"
 #include "CApp.h"
 #include "Road.h"
 
@@ -47,7 +48,7 @@ void App::CreateCursors()
 
 
 //  🔁🏁 upd start, end boxes
-void App::UpdStartPos()
+void App::UpdStartPos(bool vis)
 {
 	for (int i=0; i < 2; ++i)
 	{
@@ -56,13 +57,14 @@ void App::UpdStartPos()
 		if (i == iEnd)
 		{
 			ndCar->setPosition(p1);  ndCar->setOrientation(q1);
-			ndCar->setVisible(scn->road);  // hide before load
-		}
+			ndCar->setVisible(vis && gui->bGI && scn->road);  // hide before load
+		}else
+			ndCar->setVisible(vis);
 		ndStartBox[i]->setPosition(p1);  ndStartBox[i]->setOrientation(q1);
 
 		if (scn->road)
 			ndStartBox[i]->setScale(Vector3(1, scn->road->vStartBoxDim.y, scn->road->vStartBoxDim.z));
 	
-		ndStartBox[i]->setVisible(edMode == ED_Start && bEdit());
+		ndStartBox[i]->setVisible(vis && edMode == ED_Start && bEdit());
 	}
 }

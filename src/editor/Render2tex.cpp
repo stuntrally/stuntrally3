@@ -240,6 +240,12 @@ void App::DestroyRnd2Tex()
 		delete r.hr;  r.hr = 0;
 		if (r.nd)  {  mSceneMgr->destroySceneNode( r.nd );  r.nd = 0;  }
 	}
+
+	delete hrBck;  hrBck = 0;
+	if (ndBck)  {  mSceneMgr->destroySceneNode( ndBck );  ndBck = 0;  }
+
+	delete hrPos;  hrPos = 0;
+	if (ndPos)  {  mSceneMgr->destroySceneNode( ndPos );  ndPos = 0;  }
 }
 
 //  🗜️ minimap resize
