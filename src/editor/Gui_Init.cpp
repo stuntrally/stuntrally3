@@ -286,9 +286,9 @@ void CGui::InitGui()
 	sv= &svFogHDensity;	sv->Init("FogHDensity",	&sc->fogHDensity,  0.f,200.f, 2.f, 1,4);  sv->DefaultF(60.f);  Sev(UpdFog);
 	sv= &svFogHDmg;		sv->Init("FogHDmg",		&sc->fHDamage,    0.f, 30.f, 1.5f, 1,3);  sv->DefaultF(0.f);
 	//  toggle vis
-	ck= &ckFog;			ck->Init("FogDisable",		&pSet->bFog);  Cev(Fog);
-	ck= &ckWeather;		ck->Init("WeatherDisable",	&pSet->bWeather);
-	ck= &ckEmitters;	ck->Init("EmittersDisable",	&pSet->bEmitters);  Cev(Emitters);
+	ck= &ckFog;			ck->Init("FogEnable",		&pSet->bFog);  Cev(Fog);
+	ck= &ckWeather;		ck->Init("WeatherEnable",	&pSet->bWeather);
+	ck= &ckEmitters;	ck->Init("EmittersEnable",	&pSet->bEmitters);  Cev(Emitters);
 
 	//  🎨 clr imgs
 	ImgB(clrAmb,  "ClrAmb",  btnClrSet);  ImgB(clrDiff, "ClrDiff",  btnClrSet);

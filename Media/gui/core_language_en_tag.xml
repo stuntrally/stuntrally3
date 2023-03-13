@@ -961,7 +961,7 @@
 	<Tag name="FogEnd">end</Tag>
 
 	<!--  Editor  Weather  -->
-	<Tag name="DisableEdit">Disable for edit</Tag>
+	<Tag name="DisableEdit">Disable/enable for editing.</Tag>
 	<Tag name="Weather">Weather</Tag>
 	<Tag name="set1">set1</Tag>
 	<Tag name="set2">set2</Tag>
@@ -1650,13 +1650,11 @@
 	<Tag name="TipFogEndDist">Fog end distance [meters].</Tag>
 	<Tag name="TipFogHStart">Height fog start height [meters] at which fog starts getting denser for smooth distance.</Tag>
 	<Tag name="TipFogHSmooth">Height fog smooth distance [meters].</Tag>
-	<Tag name="TipDisableFog">Disable fog when editing road from distance.</Tag>
 
 	<!--  TIP  Weather  -->
 	<Tag name="TipRainSnow1">Set 1 Rain/Snow type</Tag>
 	<Tag name="TipRainSnow2">Set 2 Rain/Snow type</Tag>
 	<Tag name="TipRainSnowInt">Rain/Snow intensity (eg. 1000)</Tag> 
-	<Tag name="TipDisableWeather">Disable weather particles.</Tag>
 
 
 	<!--  TIP  Terrain  -->

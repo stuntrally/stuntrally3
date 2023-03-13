@@ -22,10 +22,10 @@ using namespace Ogre;
 
 ///  🔥 create particle Emitters  : : : : : : : : 
 //----------------------------------------------------------------------------------------------------------------------
-void CScene::CreateEmitters()
+void CScene::CreateEmitters(bool force)
 {
 #ifdef SR_EDITOR
-	if (!app->pSet->bEmitters)
+	if (!app->pSet->bEmitters && !force)
 		return;
 #endif
 	LogO("C--- create Emitters");

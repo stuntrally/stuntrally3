@@ -193,7 +193,7 @@ void App::UpdEditWnds()
 	if (mWndParticles) mWndParticles->setVisible(edMode == ED_Particles);
 	UpdEmtBox();
 
-	UpdStartPos();  // StBox visible
+	UpdStartPos(edMode != ED_PrvCam);  // StBox visible
 	UpdVisGui();  //br prv..
 
 	UpdMtrWaterDepth();
@@ -313,12 +313,14 @@ void App::togPrvCam()
 	{
 		SetEdMode(edModeOld);
 		// mViewport->setVisibilityMask(RV_MaskAll);  //?
-		ndCar->setVisible(true);
 
 		// scn->UpdateWaterRTT(mCamera);
-		scn->UpdFog();  // restore fog, veget
+		//----  restore: Fog, Veget, weather, emitters
+		scn->UpdFog();
 		if (oldV)  {  bVegetGrsUpd = true;  oldV = false;  }
 		pSet->bWeather = oldI;
+		if (!pSet->bEmitters)
+			scn->DestroyEmitters(false);
 
 		scn->sc->camPos = mCamera->getPosition();
 		scn->sc->camDir = mCamera->getDirection();
@@ -328,17 +330,19 @@ void App::togPrvCam()
 	{
 		edModeOld = edMode;
 		SetEdMode(ED_PrvCam);
-		bMoveCam = true;  UpdVisGui();
+		bMoveCam = true;  // will hide cursors
+		UpdVisGui();
 		// mViewport->setVisibilityMask(RV_MaskPrvCam);  //?-
-		// rt[RT_View].ws->setEnabled(1);  //?
-		ndCar->setVisible(false);  // hide cursors..
-		//?.. *ndStartBox[2]={0,0},  *ndFluidBox =0, *ndObjBox =0, *ndEmtBox =0;
+		// rt[RT_View].ws->setEnabled(1);  //? render only now
 
 		// scn->UpdateWaterRTT(rt[RT_View].cam);
-		// scn->UpdFog(true);  // on fog, veget, weather, emitters ..
-		if (!pSet->bTrees)  {  bVegetGrsUpd = true;  oldV = true;  }
-		oldI = pSet->bWeather;  pSet->bWeather = false;
 		// scn->mTerrainGlobals->setMaxPixelError(0.5f);  //hq ter ..
+
+		//----  force on: Fog, Veget, Weather, Emitters
+		scn->UpdFog(true);
+		if (!pSet->bTrees)  {  bVegetGrsUpd = true;  oldV = true;  }
+		oldI = pSet->bWeather;  pSet->bWeather = true;
+		bRecreateEmitters = true;
 
 		mCamPosOld = mCamera->getPosition();
 		mCamDirOld = mCamera->getDirection();

@@ -120,18 +120,18 @@ void CScene::DestroyFog()
 }
 
 //  🌫️ Fog set Atmo params  ------
-void CScene::UpdFog()
+void CScene::UpdFog(bool force)
 {
 	if (!atmo || !sun)  return;
-	bool no = !app->pSet->bFog;
+	bool fog = app->pSet->bFog || force;
 	Atmosphere2Npr::Preset p = atmo->getPreset();
 
 	p.fogStartDistance = sc->fogStart;
-	p.fogDensity = no ? 0.000001f :
+	p.fogDensity = !fog ? 0.000001f :
 		4000.f / sc->fogEnd * 0.0001f;  //** par`
-		// 4000.f / (sc->fogEnd - sc->fogStart) * 0.0001f;  //** par`
+		// 4000.f / (sc->fogEnd - sc->fogStart) * 0.0001f;  //** par-
 	p.fogHcolor = sc->fogClrH.GetRGBA();
-	p.fogHparams = no ?	Vector4(
+	p.fogHparams = !fog ? Vector4(
 		-10000.f,
 		0.001f,
 		0.000001f, 0)

@@ -134,12 +134,12 @@ void App::CreateRnd2Tex()
 				OT_TRIANGLE_LIST,
 				true, false, RV_Hud, RQG_Hud2, 1);
 
-			r.hr->begin();  Real a = 0.3f;
+			/*r.hr->begin();  Real a = 0.3f;
 			r.hr->position(a,0, 0);  r.hr->texUV(0,1);
 			r.hr->position(1,0, 0);  r.hr->texUV(1,1);
 			r.hr->position(a,1, 0);  r.hr->texUV(0,0);
 			r.hr->position(1,1, 0);  r.hr->texUV(1,0);
-			r.hr->end();
+			r.hr->end();*/
 
 			r.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 			r.nd->attachObject(r.hr);
@@ -192,7 +192,7 @@ void App::CreateRnd2Tex()
 		ndPos->attachObject(hrPos);
 	}
 	UpdMiniVis();
-	UpdMiniSize();
+	UpdMiniSize();  // assert in Debug map twice-
 }
 
 

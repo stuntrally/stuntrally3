@@ -55,7 +55,7 @@ public:
 
 	//  🌫️ Fog / Atmo
 	Ogre::Atmosphere2Npr* atmo = 0;
-	void CreateFog(), DestroyFog(), UpdFog(/*bool bForce=false*/);
+	void CreateFog(), DestroyFog(), UpdFog(bool force=false);
 	
 	//  🌧️ Weather :  rain, snow
 	Ogre::ParticleSystem *pr = 0, *pr2 = 0;
@@ -64,7 +64,7 @@ public:
 
 
 	//  🔥 Emitters
-	void CreateEmitters(), DestroyEmitters(bool clear);
+	void CreateEmitters(bool force=false), DestroyEmitters(bool clear);
 
 
 	//  💧 Fluids  water, mud

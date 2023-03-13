@@ -125,14 +125,15 @@
 							<Property key="Caption" value="#{Weather}"/>
 							<Property key="TextColour" value="0.7 0.85 1"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="500 316 400 24" name="WeatherDisable">
-							<Property key="Caption" value="#{DisableEdit} - #{Weather} (I)"/>
+						<Widget type="Button" skin="CheckBox" position="500 316 400 24" name="WeatherEnable">
+							<Property key="Caption" value="#{Weather} (I)"/>
 							<Property key="TextColour" value="0.5 0.8 0.8"/>
-							<UserString key="tip" value="#{TipDisableWeather}"/>
+							<UserString key="tip" value="#{DisableEdit}"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="500 276 400 24" name="EmittersDisable">
-							<Property key="Caption" value="#{DisableEdit} - #{Particles} (P)"/>
+						<Widget type="Button" skin="CheckBox" position="500 276 400 24" name="EmittersEnable">
+							<Property key="Caption" value="#{Particles} (P)"/>
 							<Property key="TextColour" value="0.8 0.8 0.5"/>
+							<UserString key="tip" value="#{DisableEdit}"/>
 						</Widget>
 						<Widget type="ComboBox" skin="ComboBox" position="188 344 148 24" name="Rain1Cmb">
 							<Property key="Colour" value="0.7 1 1"/>
@@ -191,10 +192,10 @@
 							<Property key="Caption" value="#{FogHeight}"/>
 							<Property key="TextColour" value="0.7 0.85 1"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="500 32 400 24" name="FogDisable">
-							<Property key="Caption" value="#{DisableEdit} - #{Fog} (G)"/>
+						<Widget type="Button" skin="CheckBox" position="500 32 400 24" name="FogEnable">
+							<Property key="Caption" value="#{Fog} (G)"/>
 							<Property key="TextColour" value="0.7 0.75 0.8"/>
-							<UserString key="tip" value="#{TipDisableFog}"/>
+							<UserString key="tip" value="#{DisableEdit}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="44 36 104 24">
 							<Property key="Caption" value="#{Color}1"/>
