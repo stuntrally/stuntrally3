@@ -876,7 +876,7 @@ void CARDYNAMICS::RemoveBlt()
 	for (i = rigids.size()-1; i >= 0; i--)
 	{
 		btRigidBody* body = rigids[i];
-		if (body && body->getMotionState())
+		if (body)
 			delete body->getMotionState();
 
 		world->world->removeRigidBody(body);

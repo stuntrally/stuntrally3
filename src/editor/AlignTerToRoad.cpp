@@ -166,7 +166,7 @@ void App::AlignTerToRoad()
 			delete obj->getCollisionShape();  //?
 			
 			btRigidBody* body = btRigidBody::upcast(obj);
-			if (body && body->getMotionState())
+			if (body)
 				delete body->getMotionState();
 
 			world->removeCollisionObject(obj);

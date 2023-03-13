@@ -430,7 +430,7 @@ void App::ToggleObjSim()
 			delete obj->getCollisionShape();
 			
 			btRigidBody* body = btRigidBody::upcast(obj);
-			if (body && body->getMotionState())
+			if (body)
 				delete body->getMotionState();
 
 			if (obj->getUserPointer() != (void*)111)

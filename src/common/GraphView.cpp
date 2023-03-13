@@ -194,9 +194,9 @@ void GraphView::Destroy()
 	// if (moBack)  moBack->end();  //-
 
 	if (mGui && txt)  {  mGui->destroyWidget(txt);  txt = 0;  }
-	if (hrLine) {	delete hrLine;  hrLine = 0;  }
-	if (hrBack) {	delete hrBack;  hrBack = 0;  }
-	if (hrGrid) {	delete hrGrid;  hrGrid = 0;  }
+	delete hrLine;  hrLine = 0;
+	delete hrBack;  hrBack = 0;
+	delete hrGrid;  hrGrid = 0;
 	if (node) {		mSceneMgr->destroySceneNode(node);  node = 0;  }
 }
 

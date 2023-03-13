@@ -488,7 +488,7 @@ void COLLISION_WORLD::Clear()
 	{
 		btCollisionObject* obj = world->getCollisionObjectArray()[i];
 		btRigidBody* body = btRigidBody::upcast(obj);
-		if (body && body->getMotionState())
+		if (body)
 			delete body->getMotionState();
 
 		world->removeCollisionObject(obj);
