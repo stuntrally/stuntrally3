@@ -60,6 +60,7 @@ public:
 	void LoadTrackEv(), SaveTrackEv(), UpdateTrackEv();
 	enum TrkEvent {  TE_None=0, TE_Load, TE_Save, TE_Update  }
 	eTrkEvent = TE_None;
+	int iUpdEvent = 0;
 
 	void createScene01() override;
 	void destroyScene() override;
@@ -95,8 +96,7 @@ public:
 	//  🖼️ rnd to tex  --------
 	enum ERnd2Tex
 	// {	RT_Road=0, RT_Grass, RT_Terrain, RT_View, RT_Last, RT_Brush, RT_ALL  };
-	{	RT_View=0, RT_Grass,
-		RT_Last, RT_ALL = RT_Last
+	{	RT_Grass, RT_View, RT_ALL
 	};
 	struct SRndTrg
 	{
@@ -107,6 +107,8 @@ public:
 		HudRenderable* hr =0;
 		Ogre::SceneNode* nd =0;
 	} rt[RT_ALL];
+	HudRenderable* hrBck =0;  // bck cover prv cam-
+	Ogre::SceneNode* ndBck =0;
 
 	void CreateRnd2Tex(), DestroyRnd2Tex(), UpdRnd2Tex();
 	void UpdMiniSize(), UpdMiniVis(), UpdMiniPos();

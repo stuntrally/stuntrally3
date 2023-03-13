@@ -228,9 +228,9 @@ void App::UpdVisGui()
 	static bool f1 = true;
 	if (bGuiFocus && f1)
 	{	f1 = false;
-		/**auto* rndSys = mRoot->getRenderSystem();
+		// todo: preload tex?..
+		/** auto* rndSys = mRoot->getRenderSystem();
 		auto* texMgr = rndSys->getTextureGpuManager();
-		// preload tex?..
 		std::vector<string> vs{"gui_icons.png", "stuntrally-logo.jpg" };
 		for (auto s : vs)
 		{	auto* t = texMgr->createOrRetrieveTexture(s, GpuPageOutStrategy::SaveToSystemRam, TextureFlags::AllowAutomipmaps, TextureTypes::Type2D);
@@ -313,14 +313,12 @@ void App::togPrvCam()
 	{
 		SetEdMode(edModeOld);
 		// mViewport->setVisibilityMask(RV_MaskAll);  //?
-		// rt[RT_Last].ndMini->setVisible(false);
 		ndCar->setVisible(true);
 
 		// scn->UpdateWaterRTT(mCamera);
 		scn->UpdFog();  // restore fog, veget
 		if (oldV)  {  bVegetGrsUpd = true;  oldV = false;  }
 		pSet->bWeather = oldI;
-		// scn->UpdTerErr();
 
 		scn->sc->camPos = mCamera->getPosition();
 		scn->sc->camDir = mCamera->getDirection();
@@ -331,16 +329,16 @@ void App::togPrvCam()
 		edModeOld = edMode;
 		SetEdMode(ED_PrvCam);
 		bMoveCam = true;  UpdVisGui();
-		// mViewport->setVisibilityMask(RV_MaskPrvCam);
-		// rt[RT_Last].ndMini->setVisible(true);
-		// rt[RT_View].ws->setEnabled(1);
-		ndCar->setVisible(false);
+		// mViewport->setVisibilityMask(RV_MaskPrvCam);  //?-
+		// rt[RT_View].ws->setEnabled(1);  //?
+		ndCar->setVisible(false);  // hide cursors..
+		//?.. *ndStartBox[2]={0,0},  *ndFluidBox =0, *ndObjBox =0, *ndEmtBox =0;
 
 		// scn->UpdateWaterRTT(rt[RT_View].cam);
-		// scn->UpdFog(true);  // on fog, veget, weather
+		// scn->UpdFog(true);  // on fog, veget, weather, emitters ..
 		if (!pSet->bTrees)  {  bVegetGrsUpd = true;  oldV = true;  }
 		oldI = pSet->bWeather;  pSet->bWeather = false;
-		// scn->mTerrainGlobals->setMaxPixelError(0.5f);  //hq ter
+		// scn->mTerrainGlobals->setMaxPixelError(0.5f);  //hq ter ..
 
 		mCamPosOld = mCamera->getPosition();
 		mCamDirOld = mCamera->getDirection();
@@ -348,6 +346,9 @@ void App::togPrvCam()
 		mCamera->setDirection(scn->sc->camDir);
 	}
 	UpdEditWnds();
+	
+	UpdMiniVis();
+	UpdMiniSize();
 }
 
 

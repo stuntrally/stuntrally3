@@ -11,7 +11,7 @@ compositor_node RttNode
 		//  view render  ----
 		pass render_scene
 		{
-			profiling_id "rtt rnd"
+			profiling_id "rtt rnd road"
 
 			load
 			{
@@ -41,6 +41,47 @@ compositor_node RttNode
 
 			overlays	off
 			// shadows		SR3_Shadows
+		}
+	}
+}
+
+//  🏗️ ed rtt  cam view  normal all
+compositor_node RttViewNode
+{
+	in 0 rt_output
+
+	target rt_output
+	{
+		// visibility_mask 0xfffffffe
+
+		//  view render  ----
+		pass render_scene
+		{
+			profiling_id "rtt rnd view"
+
+			load
+			{
+				all				clear
+				clear_colour	0 0 0 0  // test
+			}
+			store
+			{
+				// colour	store_or_resolve
+				colour	store
+				depth	store
+				stencil	store
+				// depth	dont_care
+				// stencil	dont_care
+			}
+
+			// expose demo_dynamic_cubemap
+
+			// visibility_mask		0x0000FFFFD  // no hud
+			rq_first  0
+			rq_last	  199  // before RQ_OVERLAY
+
+			overlays	off
+			shadows		SR3_Shadows
 		}
 	}
 }
@@ -195,7 +236,7 @@ compositor_node SR3_Render
 			// so we need to expose it to the pass.
 			expose demo_dynamic_cubemap
 
-			// planar reflections  used by C++ to identify this pass
+			// todo: planar reflections  used by C++ to identify this pass
 			identifier	25001
 
 			// in code: game, not ed

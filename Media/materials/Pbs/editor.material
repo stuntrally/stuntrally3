@@ -21,6 +21,11 @@ hlms ed_Rtt_3 unlit
 	diffuse 1 1 1
 	cull_mode none
 }
+hlms ed_Bck unlit
+{
+	diffuse 0.05 0.1 0.2
+	cull_mode none
+}
 
 
 //  ⛰️ Terrain prv img

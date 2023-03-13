@@ -42,9 +42,9 @@ void App::CreateRnd2Tex()
 		{ RV_Road, RV_Road+RV_Objects, RV_Terrain+RV_Objects, RV_MaskAll-RV_Hud };
 	const int dim[RT_Last] =  //1025: sc->td.iVertsX
 		{ 1024, 1025, 1024, 1024 };*/
-	const uint32 visMask[RT_Last] =
+	const uint32 visMask[RT_ALL] =
 		{ RV_MaskAll-RV_Hud, RV_MaskAll-RV_Hud };
-	const int dim[RT_Last] =
+	const int dim[RT_ALL] =
 		{ 1024, 1024 };
 		
 	auto* texMgr =mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
@@ -56,7 +56,6 @@ void App::CreateRnd2Tex()
 	{
 		auto& r = rt[i];  bool full = i==RT_View;
 		String si = toStr(i); //, sMtr = "road_mini_"+si;
-		if (i < RT_Last)
 		{
 			//  🖼️ Texture & RTT
 			r.tex = texMgr->createTexture( "EdTex" + si,
@@ -68,9 +67,8 @@ void App::CreateRnd2Tex()
 			// r.tex->setNumMipmaps( mips );
 			r.tex->scheduleTransitionTo( GpuResidency::OnStorage );
 
-			// 	i == RT_View || i == RT_Terrain ? PF_R8G8B8 : PF_R8G8B8A8
 			r.tex->setPixelFormat(
-				//? i == RT_View /*|| i == RT_Terrain*/ ? PFG_RGB8_UNORM : 
+				//- i == RT_View /*|| i == RT_Terrain*/ ? PFG_RGB8_UNORM : 
 				// PFG_RGBA8_UNORM );  // dark jpg, good prv
 				PFG_RGBA8_UNORM_SRGB );  // ok jpg, white prv, like old sr
 			r.tex->scheduleTransitionTo( GpuResidency::Resident );
@@ -96,7 +94,7 @@ void App::CreateRnd2Tex()
 				// r.cam->setFarClipDistance(50000);  // r.cam->setUseRenderingDistance(true);
 				r.cam->setAspectRatio(1.0);
 				if (!full)
-				{
+				{	// top view ortho
 					r.cam->setProjectionType(PT_ORTHOGRAPHIC);
 					r.cam->setOrthoWindow(fDim, fDim);
 				}
@@ -125,12 +123,11 @@ void App::CreateRnd2Tex()
 
 
 			//  🌍 Hud minimap rect 2d  ----
-			if (!full)
 			{
 			String sMtr = "ed_Rtt_" + si;
 			const auto hlms = dynamic_cast<HlmsUnlit*>(mRoot->getHlmsManager()->getHlms(HLMS_UNLIT));
-			HlmsUnlitDatablock* db = dynamic_cast<HlmsUnlitDatablock*>(hlms->getDatablock(sMtr));
-			db->setTexture(PBSM_DIFFUSE, rt[0].tex);
+			auto* db = dynamic_cast<HlmsUnlitDatablock*>(hlms->getDatablock(sMtr));
+			db->setTexture(PBSM_DIFFUSE, rt[i].tex);
 
 			// String sMtr = "circle_smooth";
 			r.hr = new HudRenderable(sMtr, mSceneMgr,
@@ -165,6 +162,22 @@ void App::CreateRnd2Tex()
 		}	}
 	}
 
+	//  backgr cover prv cam meh-
+	hrBck = new HudRenderable("ed_Bck", mSceneMgr,
+		OT_TRIANGLE_LIST,
+		false, false, RV_Hud, RQG_Hud1, 1);
+
+	hrBck->begin();
+	hrBck->position(-1,-1, 0);
+	hrBck->position( 1,-1, 0);
+	hrBck->position(-1, 1, 0);
+	hrBck->position( 1, 1, 0);
+	hrBck->end();
+	
+	ndBck = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+	ndBck->attachObject(hrBck);
+	ndBck->setVisible(true);
+
 	//  🔺 pos tri on minimap  . . . . . . . .
 	if (!ndPos)
 	{
@@ -187,7 +200,6 @@ void App::CreateRnd2Tex()
 void App::UpdRnd2Tex()
 {
 	for (int i=0; i < RT_ALL; ++i)
-	if (i < RT_Last)
 	{
 		auto& r = rt[i];  bool full = i==RT_View;
 		if (!r.ws)  continue;
@@ -199,7 +211,7 @@ void App::UpdRnd2Tex()
 		}
 
 		// r.ws->_beginUpdate( true );
-		//r.ws->_update();  // todo: upd when needed only, skip
+		// r.ws->_update();  // todo: upd when needed only, skip
 		// r.ws->_endUpdate( true );
 
 		//  this is each frame
@@ -219,7 +231,6 @@ void App::DestroyRnd2Tex()
 	auto* cmpMgr = mRoot->getCompositorManager2();
 
 	for (int i=0; i < RT_ALL; ++i)
-	if (i < RT_Last)
 	{
 		SRndTrg& r = rt[i];
 		if (r.ws)  {  cmpMgr->removeWorkspace( r.ws );  r.ws = 0;  }
@@ -239,13 +250,12 @@ void App::UpdMiniSize()
 	Real s = pSet->size_minimap;
 
 	for (int i=0; i < RT_ALL; ++i)
-	if (i < RT_Last)
 	{
-		SRndTrg& r = rt[i];
+		auto& r = rt[i];  bool full = i==RT_View;
 		if (!r.hr)  continue;
 
 		r.hr->begin();
-		auto s = pSet->size_minimap;
+		auto s = full ? 2.f : pSet->size_minimap;
 		Real x = 1.f - s / asp, y = -1.f + s;
 		r.hr->position(x,  -1.f, 0.f);  r.hr->texUV(0.f, 1.f);
 		r.hr->position(1.f,-1.f, 0.f);  r.hr->texUV(1.f, 1.f);
@@ -261,11 +271,19 @@ void App::UpdMiniSize()
 
 void App::UpdMiniVis()
 {
+	bool full = edMode == ED_PrvCam;
 	for (int i=0; i < RT_ALL; ++i)
-		if (rt[i].nd)
-			rt[i].nd->setVisible(pSet->trackmap);// && (i == pSet->num_mini));
-	if (ndPos)  ndPos->setVisible(pSet->trackmap);
+	{
+		bool vis = 
+			full ? (i == RT_View) :
+			(pSet->trackmap && (i == RT_Grass));
+			// && (i == pSet->num_mini));
+		if (rt[i].nd)  rt[i].nd->setVisible(vis);
+	}
+	if (ndBck)  ndBck->setVisible(full);
+	if (ndPos)  ndPos->setVisible(pSet->trackmap && !full);
 }
+
 
 //  🔺 pos,rot on minimap
 //--------------------------------
@@ -306,6 +324,12 @@ void App::UpdMiniPos()
 ///  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 void App::SaveGrassDens()
 {
+	//^^ todo:  SaveGrassDens
+	if (!rt[RT_Grass].tex)  return;
+	// rt[RT_Grass].ws->_update();  // all have to exist
+	rt[RT_Grass].tex->writeContentsToFile("roadDens.png", 0, 0);
+	return;
+
 	Ogre::Timer ti;
 
 	/*for (int i=0; i < RT_View; ++i)  //-1 preview camera manual
