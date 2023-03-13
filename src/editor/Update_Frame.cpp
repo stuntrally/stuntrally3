@@ -78,15 +78,19 @@ void App::UpdateEnd(float dt)
 
 	//  track events
 	if (eTrkEvent != TE_None)
-	{	switch (eTrkEvent)
-		{
-			case TE_Load:	LoadTrackEv();  break;
-			case TE_Save:	SaveTrackEv();  break;
-			case TE_Update: UpdateTrackEv();  break;
-			default:  break;
-		}
-		eTrkEvent = TE_None;
-	}
+	{
+		if (iUpdEvent == 0)
+			iUpdEvent++;  // skip frame to show status
+		else
+		{	switch (eTrkEvent)
+			{
+				case TE_Load:	LoadTrackEv();  break;
+				case TE_Save:	SaveTrackEv();  break;
+				case TE_Update: UpdateTrackEv();  break;
+				default:  break;
+			}
+			eTrkEvent = TE_None;
+	}	}
 	
 	///  input
 	// mInputWrapper->capture(false);

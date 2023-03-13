@@ -199,7 +199,7 @@ void App::NewCommon(bool onlyTerVeget)
 //---------------------------------------------------------------------------------------------------------------
 void App::LoadTrack()
 {
-	eTrkEvent = TE_Load;
+	eTrkEvent = TE_Load;  iUpdEvent = 0;
 	gui->Status("#{Loading}...", 0.3,0.6,1.0);
 }
 void App::LoadTrackEv()
@@ -274,6 +274,8 @@ void App::LoadTrackEv()
 	
 	CreateRnd2Tex();  // 🖼️
 
+	// createReflectiveSurfaces();
+	
 	//UpdVisGui();
 	UpdStartPos();
 	UpdEditWnds();  //
@@ -322,7 +324,7 @@ void App::CreateRoads()  // 🛣️
 //---------------------------------------------------------------------------------------------------------------
 void App::UpdateTrack()
 {
-	eTrkEvent = TE_Update;
+	eTrkEvent = TE_Update;  iUpdEvent = 0;
 	gui->Status("#{Updating}...", 0.2,1.0,0.5);
 }
 void App::UpdateTrackEv()
@@ -396,7 +398,7 @@ void App::SaveTrack()
 			MyGUI::MessageBoxStyle::IconWarning | MyGUI::MessageBoxStyle::Ok);
 		return;
 	}
-	eTrkEvent = TE_Save;
+	eTrkEvent = TE_Save;  iUpdEvent = 0;
 	gui->Status("#{Saving}...", 1,0.4,0.1);
 
 	if (pSet->check_save)
@@ -436,7 +438,7 @@ void App::SaveTrackEv()
 	scn->sc->SaveXml(dir+"scene.xml");
 
 	SaveGrassDens();
-	SaveWaterDepth();
+	// SaveWaterDepth();  //-
 
 	int all = scn->ters.size() + 1;
 	for (i=0; i < all; ++i)
