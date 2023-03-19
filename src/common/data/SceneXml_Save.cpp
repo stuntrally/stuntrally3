@@ -129,15 +129,22 @@ bool Scene::SaveXml(String file)
 			// ter.SetAttribute("size",		toStrC( td.iVertsX ));  // no, from filesize
 			ter.SetAttribute("ofsZ",		toStrC( td.ofsZ ));
 			ter.SetAttribute("triangle",	toStrC( td.fTriangleSize ));
-			// ter.SetAttribute("errNorm",		fToStr( td.errorNorm, 2,4 ).c_str());
-			// if (td.normScale != 1.f)
-			// 	ter.SetAttribute("normSc",		toStrC( td.normScale ));
+			if (td.posX != 0.f)  ter.SetAttribute("posX",	toStrC( td.posX ));
+			if (td.posZ != 0.f)  ter.SetAttribute("posZ",	toStrC( td.posZ ));
+
 			if (td.emissive)
 				ter.SetAttribute("emissive",	td.emissive ? 1 : 0);
 			// if (td.specularPow != 32.f)
 			// 	ter.SetAttribute("specPow",		toStrC( td.specularPow ));
 			if (td.specularPowEm != 2.f)
 				ter.SetAttribute("specPowEm",	toStrC( td.specularPowEm ));
+
+			if (td.iHorizon)	ter.SetAttribute("horiz",	toStrC( td.iHorizon ));
+			if (!td.collis)		ter.SetAttribute("collis",	td.collis ? 1 : 0 );
+			if (!td.bL)		ter.SetAttribute("bL",	td.bL ? 1 : 0 );
+			if (!td.bR)		ter.SetAttribute("bR",	td.bR ? 1 : 0 );
+			if (!td.bF)		ter.SetAttribute("bF",	td.bF ? 1 : 0 );
+			if (!td.bB)		ter.SetAttribute("bB",	td.bB ? 1 : 0 );
 
 			const TerLayer* l;
 			for (int i=0; i < 6; ++i)

@@ -27,10 +27,13 @@ TerData::TerData()
 void TerData::Default()
 {
 	iVertsX = 1024;  iVertsXold = 1024;
+	ofsZ = 0.f;  posX = 0.f;  posZ = 0.f;
 	fTriangleSize = 1.f;  // scale
 	triplanarLayer1 = 8;  triplanarLayer2 = 8;  triplCnt = 0;  // off
 	// errorNorm = 1.7;  normScale = 1.f;  specularPow = 32.f;
 	emissive = false;  specularPowEm = 2.f;
+	iHorizon = 0;  collis = true;
+	bL=1; bR=1; bF=1; bB=1;
 
 	for (int i=0; i < ciNumLay; ++i)
 	{	

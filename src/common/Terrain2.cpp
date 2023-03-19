@@ -59,7 +59,7 @@ void CScene::CreateTerrain1(int n, bool upd)
 	if (bTripl)  //^
 	{	tdb->setDetailTriplanarDiffuseEnabled(true);
 		if (ter_tripl > 1)
-			tdb->setDetailTriplanarNormalEnabled(true);  // fixme shader crash..
+			tdb->setDetailTriplanarNormalEnabled(true);  // fixme black spots..
 		// tdb->setDetailTriplanarRoughnessEnabled(true);  // no tex, not used
 		// tdb->setDetailTriplanarMetalnessEnabled(true);
 	}
@@ -180,9 +180,9 @@ void CScene::CreateTerrain1(int n, bool upd)
 	mTerra->load( size, size,
 		td.hfHeight, td.iVertsXold,
 		Vector3(
-			0.f,
+			td.posX,
 			any ? 0.5f : 0.f,  //** why y?
-			td.ofsZ ),
+			td.posZ + td.ofsZ ),
 		Vector3(
 			sizeXZ,
 			any ? 1.f : mTerra->fHRange,  //** ter norm scale..

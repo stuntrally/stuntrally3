@@ -582,7 +582,7 @@ void App::LoadTerrain()
 	{
 		scn->CreateTerrains(false);  // common
 		//; GetTerMtrIds();  // todo: get from blendmap tex ..
-		scn->CreateBltTerrain(0);  // 1st ter only-  // todo: before cars..
+		scn->CreateBltTerrains();  // 1st ter only-  // todo: before cars..
 	}
 
 	//; for (int c=0; c < carModels.size(); ++c)

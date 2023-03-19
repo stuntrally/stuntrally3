@@ -178,69 +178,73 @@ void CScene::UpdBlendmap()
 
 //  🎳 Bullet Terrain
 //---------------------------------------------------------------------------------------------------------------
-void CScene::CreateBltTerrain(int n)
+void CScene::CreateBltTerrains()
 {
-	auto& td = sc->tds[n];
-	btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
-		td.iVertsXold, td.iVertsXold,
-		&td.hfHeight[0], td.fTriangleSize,
-		-1300.f,1300.f, 2, PHY_FLOAT,false);  //par- max height
-	
-	hfShape->setUseDiamondSubdivision(true);
-
-	btVector3 scl(td.fTriangleSize, td.fTriangleSize, 1);
-	hfShape->setLocalScaling(scl);
-	hfShape->setUserPointer((void*)SU_Terrain);
-
-	btCollisionObject* col = new btCollisionObject();
-	col->setCollisionShape(hfShape);
-
-	//  offset new hmaps, even 2^n
-	bool of = td.iVertsXold == td.iVertsX;
-	Real xofs = of ? 0.5f * td.fTriangleSize : 0.f;
-
-	btVector3 ofs(-xofs, -xofs, 0.0);
-	btTransform tr;  tr.setIdentity();  tr.setOrigin(ofs);
-	col->setWorldTransform(tr);
-
-	col->setFriction(0.9);   //+
-	col->setRestitution(0.0);
-	//col->setHitFraction(0.1f);
-	col->setCollisionFlags(col->getCollisionFlags() |
-		btCollisionObject::CF_STATIC_OBJECT /*| btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
-	#ifndef SR_EDITOR  // game
-		app->pGame->collision.world->addCollisionObject(col);
-		app->pGame->collision.shapes.push_back(hfShape);
-	#else
-		app->world->addCollisionObject(col);
-	#endif
-	
-	
-	#ifndef SR_EDITOR
-	// todo: ed gui, chks all 4
-	///  border planes []
-	const float px[4] = {-1, 1, 0, 0};
-	const float py[4] = { 0, 0,-1, 1};
-
-	for (int i=0; i < 4; ++i)
+	for (const auto& td : sc->tds)
+	if (td.collis)
 	{
-		btVector3 vpl(px[i], py[i], 0);
-		btCollisionShape* shp = new btStaticPlaneShape(vpl,0);
-		shp->setUserPointer((void*)SU_Border);
+		btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
+			td.iVertsXold, td.iVertsXold,
+			&td.hfHeight[0], td.fTriangleSize,
+			-1300.f,1300.f, 2, PHY_FLOAT,false);  //par- max height
 		
-		btTransform tr;  tr.setIdentity();
-		tr.setOrigin(vpl * -0.5 * td.fTerWorldSize + ofs);
+		hfShape->setUseDiamondSubdivision(true);
+
+		btVector3 scl(td.fTriangleSize, td.fTriangleSize, 1);
+		hfShape->setLocalScaling(scl);
+		hfShape->setUserPointer((void*)SU_Terrain);
 
 		btCollisionObject* col = new btCollisionObject();
-		col->setCollisionShape(shp);
-		col->setWorldTransform(tr);
-		col->setFriction(0.3);   //+
-		col->setRestitution(0.0);
-		col->setCollisionFlags(col->getCollisionFlags() |
-			btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+		col->setCollisionShape(hfShape);
 
-		app->pGame->collision.world->addCollisionObject(col);
-		app->pGame->collision.shapes.push_back(shp);
+		//  offset new hmaps, even 2^n
+		bool of = td.iVertsXold == td.iVertsX;
+		Real xofs = of ? 0.5f * td.fTriangleSize : 0.f;
+
+		btVector3 ofs(-xofs, -xofs, 0.0);
+		btTransform tr;  tr.setIdentity();  tr.setOrigin(ofs);
+		col->setWorldTransform(tr);
+
+		col->setFriction(0.9);   //+
+		col->setRestitution(0.0);
+		//col->setHitFraction(0.1f);
+		col->setCollisionFlags(col->getCollisionFlags() |
+			btCollisionObject::CF_STATIC_OBJECT /*| btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+		#ifndef SR_EDITOR  // game
+			app->pGame->collision.world->addCollisionObject(col);
+			app->pGame->collision.shapes.push_back(hfShape);
+		#else
+			app->world->addCollisionObject(col);
+		#endif
+		
+		
+		#ifndef SR_EDITOR
+		///  border planes []
+		const float px[4] = {-1, 1, 0, 0};
+		const float py[4] = { 0, 0,-1, 1};
+		const bool b[4] = {td.bL, td.bL, td.bF, td.bB};  // disable chks
+
+		for (int i=0; i < 4; ++i)
+		if (b[i])
+		{
+			btVector3 vpl(px[i], py[i], 0);
+			btCollisionShape* shp = new btStaticPlaneShape(vpl,0);
+			shp->setUserPointer((void*)SU_Border);
+			
+			btTransform tr;  tr.setIdentity();
+			tr.setOrigin(vpl * -0.49 * td.fTerWorldSize + ofs);  //par 0.5-
+
+			btCollisionObject* col = new btCollisionObject();
+			col->setCollisionShape(shp);
+			col->setWorldTransform(tr);
+			col->setFriction(0.3);   //+
+			col->setRestitution(0.0);
+			col->setCollisionFlags(col->getCollisionFlags() |
+				btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+
+			app->pGame->collision.world->addCollisionObject(col);
+			app->pGame->collision.shapes.push_back(shp);
+		}
+		#endif
 	}
-	#endif
 }

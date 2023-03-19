@@ -330,12 +330,19 @@ bool Scene::LoadTerData(TerData& td, XMLElement* e)
 	//a = e->Attribute("size");		if (a)  td.iVertsXold = s2i(a);  // got from hmap file size later
 	a = e->Attribute("ofsZ");		if (a)  td.ofsZ = s2r(a);
 	a = e->Attribute("triangle");	if (a)  td.fTriangleSize = s2r(a);
-	// a = e->Attribute("errNorm");	if (a)  td.errorNorm = s2r(a);
+	a = e->Attribute("posX");		if (a)  td.posX = s2r(a);
+	a = e->Attribute("posZ");		if (a)  td.posZ = s2r(a);
 
-	// a = e->Attribute("normSc");		if (a)  td.normScale = s2r(a);
 	a = e->Attribute("emissive");	if (a)  td.emissive = s2i(a)>0;
 	// a = e->Attribute("specPow");	if (a)  td.specularPow = s2r(a);
 	a = e->Attribute("specPowEm");	if (a)  td.specularPowEm = s2r(a);
+
+	a = e->Attribute("horiz");		if (a)  td.iHorizon = s2i(a);
+	a = e->Attribute("collis");		if (a)  td.collis = s2i(a)>0;
+	a = e->Attribute("bL");		if (a)  td.bL = s2i(a)>0;
+	a = e->Attribute("bR");		if (a)  td.bR = s2i(a)>0;
+	a = e->Attribute("bF");		if (a)  td.bF = s2i(a)>0;
+	a = e->Attribute("bB");		if (a)  td.bB = s2i(a)>0;
 	td.UpdVals();
 
 	int il = 0;

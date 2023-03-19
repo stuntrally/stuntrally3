@@ -121,7 +121,7 @@ public:
 	Ogre::SceneNode* ndTerC[ED_Filter+1] ={0,0,0,0};
 	void TerCircleInit(), TerCircleUpd(float dt);
 
-	//  🖼️ brush preview tex  ----
+	//  🖼️ brush, ter gen  preview tex  ----
 	HudRenderable* hrBrush =0, *hrTerGen =0;
 	Ogre::SceneNode* ndBrush =0, *ndTerGen =0;
 	void createPreviews();

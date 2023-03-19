@@ -56,20 +56,23 @@ public:
 	std::vector<float> hfHeight;
 	int getFileSize(std::string filename);  // Inits iVertsX etc
 	
-	//  size
+	//  🗜️ size
 	int iVertsX = 512,  // always 2^n  1024 etc
 		iVertsXold = 512;  // 2^n + 1  1025 old SR 2.7, before convert
-	float ofsZ = 0.f;  // not 0, after convert
 	float fTriangleSize = 1.f, fTerWorldSize = 512.f;  // scale size
-	// float errorNorm;  // terrain error % at default quality
 	void UpdVals();
 
-	//  layers	
+	//  pos
+	float ofsZ = 0.f;  // not 0, after convert
+	float posX = 0.f, posZ = 0.f;  // move, not 1st ter, etc
+
+	//  🏔️ layers	
 	const static int ciNumLay = 6;  // all, for edit
 	TerLayer layersAll[ciNumLay];
 	std::vector<int> layers;  // active only (on)
 	void UpdLayers();  // tripl
 
+	//  📊 graphics options
 	//  which should have triplanar most (e.g. high slope mountains)
 	int triplanarLayer1 = 8, triplanarLayer2 = 8, triplCnt = 0;  // off
 	// float normScale;  // scale terrain normals -not used-
@@ -77,6 +80,11 @@ public:
 	bool emissive = false;  // emissive light from specular
 	// float specularPow;  // -not used-
 	float specularPowEm = 2.f;  // specular power (exponent)
+
+	int iHorizon = 0;  // 0 off, 1st, 2nd
+	//  🎳 physics
+	bool collis = true;  // game, physics
+	bool bL=1,bR=1,bF=1,bB=1;  // border planes < > ^ v
 	
 	//  methods
 	TerData();	void Default();

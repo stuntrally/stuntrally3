@@ -445,7 +445,7 @@ void App::ToggleObjSim()
 	else  // on sim
 	{
 		//  Create blt world
-		scn->CreateBltTerrain(0);  //par // 1st ter only-
+		scn->CreateBltTerrains();
 		scn->road->RebuildRoadInt(false,true);
 	}
 	CreateObjects();
