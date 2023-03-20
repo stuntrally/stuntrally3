@@ -39,7 +39,7 @@ void CGui::SldUpdBr()
 
 ///  ⛰️ Terrain
 //-----------------------------------------------------------------------------------------------------------
-bool CGui::notd()
+bool CGui::notd()  // no td yet
 {
 	return sc->tds.empty();
 }
@@ -134,6 +134,51 @@ void CGui::SldUpd_TerL()
 		svTerLN_Pow[i].UpdF(&l->nPow[i]);
 	}
 }
+
+//  Ter properties, size
+//----------------------------------------------------------------------------------------------------------
+void CGui::slTerHoriz(SV* sv)
+{
+	if (notd())  return;
+	td().iHorizon = sv->getF();
+}
+void CGui::slTerPosX(SV* sv)
+{
+	if (notd())  return;
+	td().posX = sv->getF();
+}
+void CGui::slTerPosZ(SV* sv)
+{
+	if (notd())  return;
+	td().posZ = sv->getF();
+}
+
+void CGui::chkTerCollis(Ck* ck)
+{
+	if (notd())  return;
+	// td().collis = *ck->pBool;
+}
+void CGui::chkTerBL(Ck* ck)
+{
+	if (notd())  return;
+	// td().bL = sv->getF();
+}
+void CGui::chkTerBR(Ck* ck)
+{
+	if (notd())  return;
+	// td().bR = sv->getF();
+}
+void CGui::chkTerBF(Ck* ck)
+{
+	if (notd())  return;
+	// td().bF = sv->getF();
+}
+void CGui::chkTerBB(Ck* ck)
+{
+	if (notd())  return;
+	// td().bB = sv->getF();
+}
+
 
 //  🔺 Tri size
 void CGui::slTerTriSize(SV* sv)

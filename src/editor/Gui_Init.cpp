@@ -209,6 +209,7 @@ void CGui::InitGui()
 	Btn("BrushRandom", btnBrushRandom);  Btn("BrushRandom2", btnBrushRandom2);
 
 	float f=0.f;  i=0;  // temp vars
+	bool b;
 	//  brush params
 	sv= &svBrSize;	sv->Init("BrSize",	&f, 2.f,BrushMaxSize, 2.f, 1,4);  sv->DefaultF(20.f);  //Sev(UpdBr);
 	sv= &svBrForce;	sv->Init("BrForce",	&f, 0.1f,100.f, 1.f, 1,4);  sv->DefaultF(20.f);
@@ -311,6 +312,19 @@ void CGui::InitGui()
 	// sv= &svTerSpecPow;    sv->Init("TerSpecPow",   &sc->td.specularPow,   0.2f,128.f,2.f, 1,4);  sv->DefaultF(32.f); Sev(TerPar);
 	// sv= &svTerSpecPowEm;  sv->Init("TerSpecPowEm", &f, 0.5f,4.f,  1.f, 1,3);  sv->DefaultF(2.f);  Sev(TerPar);
 
+	//  horiz, collis
+	sv= &svTerHoriz;	sv->Init("TerHoriz",	&i,    0, 2);  sv->DefaultI(0);  Sev(TerHoriz);
+	ck= &ckTerCollis;	ck->Init("TerCollis",	&b);   Cev(TerCollis);
+	//  pos
+	sv= &svTerPosX;	sv->Init("TerPosX",	&f, -2000.f,2000.f, 1.f, 2,5);  sv->DefaultF(0.f);  Sev(TerPosX);
+	sv= &svTerPosZ;	sv->Init("TerPosZ",	&f, -2000.f,2000.f, 1.f, 2,5);  sv->DefaultF(0.f);  Sev(TerPosZ);
+	//  borders
+	ck= &ckTerBL;	ck->Init("TerBL",	&b);   Cev(TerBL);
+	ck= &ckTerBR;	ck->Init("TerBR",	&b);   Cev(TerBR);
+	ck= &ckTerBF;	ck->Init("TerBF",	&b);   Cev(TerBF);
+	ck= &ckTerBB;	ck->Init("TerBB",	&b);   Cev(TerBB);
+
+
 	Btn("TerrainNew",    btnTerrainNew);   Btn("UpdateTerrain", btnUpdateLayers);
 	Btn("TerrainGenAdd", btnTerGenerate);  Btn("TerrainGenSub", btnTerGenerate);    Btn("TerrainGenMul", btnTerGenerate);
 	Btn("TerrainHalf",   btnTerrainHalf);  Btn("TerrainDouble", btnTerrainDouble);  Btn("TerrainMove",   btnTerrainMove);
@@ -340,7 +354,6 @@ void CGui::InitGui()
 
 	///  🏔️ Layers
 	//------------------------------------------------------------------------
-	bool b;
 	ck= &ckTerLayOn;	ck->Init("TerLayOn",	&b);   Cev(TerLayOn);
 	valTerLAll = fTxt("TerLayersAll");
 	valTriplAll = fTxt("TerTriplAll");

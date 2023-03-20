@@ -153,6 +153,10 @@ public:
 	// SV svTerErrorNorm;  void slTerErrorNorm(SV*);
 	SV /*svTerNormScale, svTerSpecPow,*/ svTerSpecPowEm;  void slTerPar(SV*);
 	
+	SlV(TerHoriz);  SlV(TerPosX);  SlV(TerPosZ);
+	//  collis, borders
+	CK(TerCollis);  CK(TerBL); CK(TerBR); CK(TerBF); CK(TerBB);
+
 	void saveNewHmap(float* hfData, int size, int add = 0, bool bNew=true);  // to file
 	void btnTerrainNew(WP), btnTerGenerate(WP);
 	void btnTerrainHalf(WP), btnTerrainDouble(WP), btnTerrainMove(WP);  // tools

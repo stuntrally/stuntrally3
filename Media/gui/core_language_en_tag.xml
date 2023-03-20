@@ -986,6 +986,11 @@
 	<Tag name="Substract">Substract</Tag>
 	<Tag name="Multiply">Multiply</Tag>
 
+	<!--  Terrain  properties  -->
+	<Tag name="Collision">Collision</Tag>
+	<Tag name="Border">Border</Tag>
+	<Tag name="Horizon">Horizon</Tag>
+
 	<!--  Terrain  advanced light  -->
 	<Tag name="NormalsScale">Normals scale</Tag>
 	<Tag name="TerrainEmissiveLight">Terrain has emissive light</Tag>

@@ -73,7 +73,8 @@ void App::UpdateEnd(float dt)
 	if (ndTerGen)
 	{	bool vis = bGuiFocus && mWndEdit &&
 			mWndEdit->getVisible() && mWndTabsEdit->getIndexSelected() == TAB_Terrain &&
-			gui->vSubTabsEdit.size() > TAB_Terrain && gui->vSubTabsEdit[TAB_Terrain]->getIndexSelected() == 3;
+			gui->vSubTabsEdit.size() > TAB_Terrain &&
+			gui->vSubTabsEdit[TAB_Terrain]->getIndexSelected() == 4;  // tab
 		ndTerGen->setVisible(vis);
 	}
 
