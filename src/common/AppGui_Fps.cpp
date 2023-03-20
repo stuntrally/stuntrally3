@@ -7,6 +7,7 @@
 #include <OgreFrameStats.h>
 #include <OgreTextureGpuManager.h>
 #include <Vao/OgreVaoManager.h>
+#include <Compositor/OgreCompositorManager2.h>
 
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>
@@ -39,28 +40,31 @@ String cvsI(int v, int grn, int red, int width=4)
 //-----------------------------------------------------------------------------------
 void AppGui::UpdFpsText()
 {
-	const RenderSystem *rs = mRoot->getRenderSystem();
+	const auto *rs = mRoot->getRenderSystem();
 	const RenderingMetrics& rm = rs->getMetrics();
 	const FrameStats *st = mRoot->getFrameStats();
+	const auto *cmp = mRoot->getCompositorManager2();
 
 	const float fps = st->getAvgFps(),  //st->getFps(),
-		tris = rm.mFaceCount/1000000.f / 7.f,  //** !! div / 7  ~= 1 + 6 cube, wrong
+		tris = rm.mFaceCount/1000000.f,  // / 7.f,  //** !! div / 7  ~= 1 + 6 cube, wrong
 		mem = GetGPUmem();
 	const int draw = rm.mDrawCount,  // div / 7
 		inst = rm.mInstanceCount,  // div / 7
 		vgt = scn->iVegetAll,
-		gui = MyGUI::Ogre2RenderManager::getInstance().getBatchCount();
+		gui = MyGUI::Ogre2RenderManager::getInstance().getBatchCount(),
+		ws = cmp->getNumWorkspaces();
 
 	String txt;
 	txt += cvsF( fps,  59.f, 30.f, fps >= 100.f ? 0 : 1,4) + "  ";
-	txt += cvsF( tris, 1.f *1, 3.f *1, 2,4) + "m ";  //txt += "v " + toStr( rm.mVertexCount/1000 ) + "  ";
+	txt += cvsF( tris, 1.f *7, 3.f *7, 2,4) + "m ";  //txt += "v " + toStr( rm.mVertexCount/1000 ) + "  ";
 	txt += cvsI( draw, 50 *5, 300 *5, 3) + "\n";
 
-	txt += "#A0C0A0 Vgt ";
+	txt += "#A0C0A0 i ";
 	txt += cvsI( inst, 1000 *2, 8000 *2, 5) + " ";  //txt += "b " + toStr( rm.mBatchCount, 0);
 	txt += cvsI( vgt, 3000, 15000, 5) + "\n";
 
-	txt += "#B0B0B0 Gui " + cvsI( gui, 5, 30, 2) + " ";
+	txt += "#B0B0B0 G " + cvsI( gui, 8, 41, 2);
+	txt += "#9090F0 w " + cvsI( ws, 8, 40, 1) + " ";
 	txt += cvsF( mem,  500.f, 1300.f, 0,4) + "M\n";
 
 	//  test colors
