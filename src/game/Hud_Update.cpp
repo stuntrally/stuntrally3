@@ -305,11 +305,15 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 			}
 		else
 		{	Vector2 mp(-app->carPoses[qb][base].pos[2], app->carPoses[qb][base].pos[0]);
-			float xc =  (mp.x - minX)*scX,
-				  yc = -(mp.y - minY)*scY+1.f;
+			float t = app->sc->tds[0].fTerWorldSize;  // 1st ter-
+			float t2 = t * 0.5;
+			float xc =  (mp.x + t2) / t,
+				  yc = -(mp.y + t2) / t + 1.f;
+			
 			for (p=0; p < 4; ++p)
 			{	h.hrMap->position(tp[p][0],tp[p][1], 0);
-				h.hrMap->texUV(cx[p]+xc, -cy[p]-yc);
+				float u = cx[p] +xc, v = -cy[p] -yc;
+				h.hrMap->texUV(u, v);
 				// h.moMap->texUV(tc[p][0],tc[p][1], 1);  // uv2
 		}	}
 		h.hrMap->end();

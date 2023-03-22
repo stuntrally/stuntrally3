@@ -752,7 +752,7 @@ String App::cStrLoad[LS_ALL+1] = {
 	"#{LS_CLEANUP}","#{LS_GAME}","#{LS_SCENE}","#{LS_CAR}",
 	"#{LS_TER}","#{LS_ROAD}","#{LS_OBJS}","#{LS_TREES}",
 	"0", "1", "2", "3", "4", "5", "6", "7", "8",
-	"#{LS_MISC}","#{LS_ALL}"};
+	"#{LS_MISC}","#{LS_MISC}"};
 
 void App::NewGameDoLoad()
 {
@@ -818,7 +818,7 @@ void App::NewGameDoLoad()
 	//  next loading step
 	++cur;
 	//  show next already
-	if (cur >= LS_VIEW0 && cur >= LS_VIEW8)
+	if (cur >= LS_VIEW0 && cur <= LS_VIEW8)
 		txLoad->setCaption(TR("#{LS_SCENE} ") + toStr(c));
 	else
 		txLoad->setCaption(TR(cStrLoad[cur]));
