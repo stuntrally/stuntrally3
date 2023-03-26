@@ -429,7 +429,101 @@ particle_system WetDust
 	}
 }
 
-//  Wet Road water dust
+
+//  Gravel
+particle_system Gravel
+{
+	material			Gravel
+	quota				1000
+	particle_width		0.5
+	particle_height		0.5
+	cull_each			false
+	billboard_type		point
+	//renderer			billboard
+    //sorted			true
+
+	emitter Box
+	{
+		angle	10
+		position	0 0.2 0
+		direction	0 1 0
+		width	0.4
+		height	0.4
+		depth	0.3  //h
+
+		colour_range_start	0.9 0.9 0.9  0.6
+		colour				0.9 0.9 0.9  0.8
+		colour_range_end	1.0 1.0 1.0  0.9
+
+		//emission_rate	20
+		velocity_min	1.1
+		velocity_max	2.8
+		time_to_live_min	0.5
+		time_to_live_max	1
+	}
+
+	affector Rotator
+	{
+		rotation_range_start 0
+		rotation_range_end 360
+		rotation_speed_range_start -20
+		rotation_speed_range_end 20
+	}
+	affector LinearForce
+	{
+		force_vector	0 -4.0 0
+		force_application	add
+	}
+}
+
+//  Dirt
+particle_system Dirt
+{
+	material			Dirt
+	quota				1000
+	particle_width		0.5
+	particle_height		0.5
+	cull_each			false
+	billboard_type		point
+	//renderer			billboard
+    //sorted			true
+
+	emitter Box
+	{
+		angle	10
+		position	0 0.2 0
+		direction	0 1 0
+		width	0.4
+		height	0.4
+		depth	0.3  //h
+
+		colour_range_start	0.8 0.8 0.8  0.5
+		colour				0.8 0.8 0.8  0.6
+		colour_range_end	0.9 0.9 0.9  0.7
+
+		//emission_rate	20
+		velocity_min	1.1
+		velocity_max	2.8
+		time_to_live_min	0.5
+		time_to_live_max	1
+	}
+
+	affector Rotator
+	{
+		rotation_range_start 0
+		rotation_range_end 360
+		rotation_speed_range_start -20
+		rotation_speed_range_end 20
+	}
+	affector LinearForce
+	{
+		force_vector	0 -4.0 0
+		force_application	add
+	}
+}
+
+
+//  Wet Road water dust  * * * *
 particle_system WetRoad
 {
 	material			FluidWater
@@ -450,9 +544,9 @@ particle_system WetRoad
 		height	0.4
 		depth	0.3  //h
 
-		colour_range_start	0.8 0.8 0.8  0.6
-		colour				0.8 0.8 0.8  0.7
-		colour_range_end	0.8 0.8 0.8  0.85
+		colour_range_start	0.7 0.7 0.7  0.5
+		colour				0.7 0.7 0.7  0.6
+		colour_range_end	0.7 0.7 0.7  0.75
 
 		//emission_rate	20
 		velocity_min	1.1
