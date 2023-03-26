@@ -819,7 +819,7 @@ void App::NewGameDoLoad()
 	++cur;
 	//  show next already
 	if (cur >= LS_VIEW0 && cur <= LS_VIEW8)
-		txLoad->setCaption(TR("#{LS_SCENE} ") + toStr(c));
+		txLoad->setCaption(TR("#{LS_SCENE} ") /*+ toStr(c+1)*/);
 	else
 		txLoad->setCaption(TR(cStrLoad[cur]));
 }
