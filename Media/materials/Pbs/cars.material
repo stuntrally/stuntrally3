@@ -15,9 +15,9 @@ hlms car_body pbs
 hlms car_glass pbs
 {
 	// fresnel 3.1
-	fresnel_coeff 0.7 0.7 0.7
-	roughness 0.1
-	metalness 0.9
+	fresnel_coeff 0.6 0.6 0.6
+	roughness 0.01
+	metalness 0.7
 
 	// cull_mode none
 	// depth_write off

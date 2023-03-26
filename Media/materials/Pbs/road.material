@@ -7,12 +7,12 @@ hlms road pbs  // bridges
 
 	// specular_map roadAsphalt_spec.jpg
 	// workflow metallic
-	roughness 0.5
+	//roughness 0.1
 	// metalness 0.3
 
-	fresnel	1.0
+	//fresnel	0.0
 	// fresnel	1.33 1.33 1.2
-	//fresnel_coeff 0.3 0.3 0.3
+	// fresnel_coeff 0.3 0.3 0.3
 	// diffuse  1.0 0.0 0.0
 	// specular 0.0 0.0 0.5
 }
@@ -22,13 +22,12 @@ hlms road_terrain pbs
 	depth_bias 3
 	scene_blend alpha_blend
 
-	fresnel	0.0
-	fresnel_coeff 0.01 0.01 0.01
-	// fresnel_coeff 1 1 1  // spec / refl color
+	// fresnel	0.0
+	// fresnel_coeff 0.01 0.01 0.01
 
 	// workflow metallic
-	roughness 0.7
-	metalness 0.2
+	// roughness 0.2
+	// metalness 0.2
 	// diffuse  0.0 0.7 0.7
 	// specular 0.0 0.3 0.0
 }
@@ -43,7 +42,7 @@ hlms roadJungle pbs : road
 	diffuse  0.7 0.7 0.7
 	specular 0.3 0.3 0.25
 }
-hlms roadJungle_ter pbs //: road_terrain
+hlms roadJungle_ter pbs : road_terrain
 {
 	diffuse_map  roadJungle.jpg
 	// normal_map   rdGravel_norm.jpg
@@ -52,9 +51,6 @@ hlms roadJungle_ter pbs //: road_terrain
 	diffuse  1 1 1
 	specular 0.6 0.6 0.6
 	// specular 1 1 1
-
-	depth_bias 3
-	scene_blend alpha_blend
 
 	fresnel 1.0
 	fresnel_coeff 0.4 0.4 0.4
@@ -69,27 +65,17 @@ hlms roadJungleWet pbs : road
 	diffuse  0.7 0.7 0.7
 	specular 0.3 0.3 0.25
 }
-hlms roadJungleWet_ter pbs
+hlms roadJungleWet_ter pbs : road_terrain
 {
 	diffuse_map  roadJungle.jpg
 	normal_map   normal_1s.png
-	// normal_map flat_n.png
 	specular_map roadAlpha2s.jpg
-	// specular_map roadAlpha2x.jpg
-	// specular_map roadAlpha2i.jpg
 	diffuse  0.6 0.6 0.6
-	// diffuse  1 1 1
-	// specular 0.6 0.6 0.6
 	specular 1 1 1
 
-	depth_bias 3
-	scene_blend alpha_blend
-
-	fresnel_coeff 0.1 0.1 0.1  // spec / refl color
-	// fresnel_coeff 1 1 1  // spec / refl color
+	roughness 0.03
 	fresnel	1.0
-	// workflow metallic
-	roughness 0.13
+	fresnel_coeff 0.1 0.1 0.1  // refl color
 }
 
 
@@ -107,6 +93,28 @@ hlms roadJDark_ter pbs : road_terrain
 	specular_map roadAlpha2i.jpg
 	diffuse  0.70 0.60 0.80
 	specular 0.43 0.43 0.40
+}
+
+hlms roadJDarkWet pbs : road
+{
+	diffuse_map  roadJDark.jpg
+	diffuse  0.7 0.7 0.7
+	specular 0.3 0.3 0.25
+}
+hlms roadJDarkWet_ter pbs : road_terrain
+{
+	diffuse_map  roadJDark.jpg
+	// normal_map   normal_2.png
+	// specular_map roadAlpha2i.jpg
+	normal_map   normal_1s.png
+	specular_map roadAlpha2s.jpg
+	diffuse  0.70 0.60 0.80
+	// specular 0.43 0.43 0.40
+	specular 1 1 1
+
+	roughness 0.03
+	fresnel	1.0
+	fresnel_coeff 0.2 0.2 0.2  // refl color
 }
 
 hlms roadJDarkD pbs : road
@@ -295,7 +303,6 @@ hlms roadSandMagic pbs : road
 	diffuse  0.32 0.42 0.92
 	specular 0.3 0.6 1.0 
 	// refl_amount 0.15
-	// bump_scale 0.3
 	//specular_map roadAsphalt_spec2.jpg
 }
 hlms roadSandMagic_ter pbs : road_terrain
@@ -305,56 +312,46 @@ hlms roadSandMagic_ter pbs : road_terrain
 	diffuse  0.32 0.42 0.92
 	specular 0.3 0.6 1.0 
 	// refl_amount 0.15
-	// bump_scale 0.3
 }
 
 //  Mirror  ----
-hlms roadMagicMirror pbs //: road
+hlms roadMagicMirror pbs : road
 {
 	diffuse_map  roadSandSet.jpg
 	// normal_map  roadMetal2_norm.jpg
 	normal_map flat_n.png
 	// normal_map   normal_1s.png
 
-	// diffuse  0.6 0.6 0.6
-	// specular 0.6 0.6 0.6
 	// diffuse  1 1 1
 	// specular 1 1 1
-	diffuse  0.32 0.42 0.82
+	diffuse  0.032 0.042 0.082
 	specular 0.24 0.18 0.76
 	// specular 0.3 0.6 1.0
-	// refl_amount 0.45
-	// bump_scale 0.3
-	//specular_map roadAsphalt_spec2.jpg
-	depth_bias 3
-	// fresnel 1.5
-	fresnel_coeff 1 1 1  // spec / refl color
-	// workflow metallic
-	roughness 0.15
-	// metalness 0.95
 
+	//specular_map roadAsphalt_spec2.jpg
 	// specular_map roadAlpha2s.jpg
 	// specular_map roadAlpha2x.jpg
 	// specular_map roadAlpha2i.jpg
+	
+	fresnel 1.0
+	fresnel_coeff 1 1 1  // refl color
+	// workflow metallic
+	roughness 0.01
+	metalness 0.95
 }
 hlms roadMagicMirror_ter pbs : road_terrain
 {
 	diffuse_map  roadSandSet.jpg
-	diffuse  0.32 0.42 0.82
+	diffuse  0.032 0.042 0.082
 	specular 0.2 0.2 0.3
-	// refl_amount 0.3
-	// bump_scale 0.3
 	// normal_map   normal_2.png
 	normal_map  normal_1.png
 	// normal_map rdGravel_norm.jpg
 
-	depth_bias 3
-	scene_blend alpha_blend
-
-	// fresnel 1.5
-	fresnel_coeff 1 1 1  // spec / refl color
+	fresnel 1.0
+	fresnel_coeff 0.2 0.2 0.2  // refl color
 	// workflow metallic
-	roughness 0.15
+	roughness 0.015
 	metalness 0.95
 }
 
@@ -367,9 +364,8 @@ hlms roadCrystal pbs : road
 	diffuse_map  rdGravel.jpg
 	normal_map   rdGravel_norm.jpg
 	// refl_amount 0.5
-	// bump_scale 0.2
 }
-hlms roadCrystal_ter pbs //: road_terrain
+hlms roadCrystal_ter pbs : road_terrain
 {
 	diffuse  0.4 0.7 1.0
 	// specular 0.05 0.4 0.8
@@ -378,13 +374,10 @@ hlms roadCrystal_ter pbs //: road_terrain
 	normal_map  normal_1.png
 	// normal_map rdGravel_norm.jpg
 
-	depth_bias 3
-	scene_blend alpha_blend
-
-	// fresnel 1.5
-	fresnel_coeff 1 1 1  // spec / refl color
+	fresnel 1.0
+	fresnel_coeff 1 1 1  // refl color
 	// workflow metallic
-	roughness 0.15
+	roughness 0.05
 	metalness 0.95
 }
 
@@ -405,47 +398,99 @@ hlms roadMud_ter pbs : road_terrain
 	specular 0.3 0.3 0.3
 }
 
+hlms roadMudWet pbs : road
+{
+	diffuse_map  roadMud.jpg
+	roadAsphalt_spec2.jpg
+	diffuse  0.7 0.7 0.7
+	specular 0.3 0.3 0.2
+}
+hlms roadMudWet_ter pbs : road_terrain
+{
+	diffuse_map  roadMud.jpg
+	normal_map   normal_2.png
+	// normal_map   normal_1s.png
+	specular_map roadAlpha2s.jpg
+	diffuse  0.7 0.7 0.7
+	specular 0.7 0.7 0.6
+
+	roughness 0.07
+	fresnel	1.0
+	fresnel_coeff 0.3 0.3 0.2  // refl color
+}
+
 
 //  Ice winter  ----
 hlms roadIce pbs : road
 {
 	diffuse_map  roadSnow.jpg
 	normal_map   normal_1.png
-	// specular_map roadAsphalt_spec2.jpg
-	diffuse  0.9 0.9 0.9
-	specular 1.0 1.02 1.02
-	// refl_amount 0.15
-	// bump_scale 0.15
+	specular_map roadAsphalt_spec2.jpg
+	// specular_map roadAlpha2.jpg
+	diffuse  0.5 0.5 0.5
+	specular 0.5 0.52 0.52
+
+	roughness 0.02
+	fresnel	1.0
+	fresnel_coeff 0.29 0.3 0.3  // refl color
 }
 hlms roadIce_ter pbs : road_terrain
 {
 	diffuse_map  roadSnow.jpg
 	// normal_map  normal_1.png
-	// normal_map  roadDesert_n.jpg
 	normal_map   normal_1s.png
+	// specular_map roadAlpha2s.jpg
 	specular_map roadAlpha2.jpg
 	diffuse  0.6 0.6 0.6
-	specular 0.6 0.62 0.62 
-	// reflection_map DynamicCubemap
-	// reflection_map demo_dynamic_cubemap
-	// refl_amount 0.15
-	// bump_scale 0.3
+	specular 0.5 0.51 0.51
+
+	roughness 0.01
+	fresnel	1.0
+	fresnel_coeff 0.29 0.3 0.3  // refl color
+	// workflow metallic
 }
 
 //  Snow Winter
 hlms roadSnow pbs : road
 {
 	diffuse_map  roadSnow.jpg
+	// normal_map   roadDesert_n.jpg
 	// specular_map roadAsphalt_spec2.jpg
-	diffuse  0.9 0.85 0.85
-	specular 0.7 0.72 0.72
+	roughness_map  roadSnow.jpg
+	diffuse  1.5 1.4 1.4
+	specular 0.5 0.5 0.5
 }
 hlms roadSnow_ter pbs : road_terrain
 {
 	diffuse_map  roadSnow.jpg
-	normal_map   normal_1.png
-	diffuse  0.9 0.85 0.85
-	specular 0.6 0.62 0.62
+	normal_map   roadDesert_n.jpg
+	// normal_map   normal_1.png
+	diffuse  1.5 1.4 1.4
+	specular 0.5 0.5 0.5
+}
+
+hlms roadSnowWet pbs : road
+{
+	diffuse_map  roadSnow.jpg
+	// specular_map roadAsphalt_spec2.jpg
+	// normal_map   roadDesert_n.jpg
+	// normal_map   normal_1.png
+	diffuse  1.5 1.4 1.4
+	specular 0.5 0.5 0.5
+}
+hlms roadSnowWet_ter pbs : road_terrain
+{
+	diffuse_map  roadSnow.jpg
+	// normal_map   normal_1s.png
+	normal_map   roadDesert_n.jpg
+	specular_map roadAlpha2s.jpg
+	// specular_map roadAlpha2.jpg
+	diffuse  0.75 0.7 0.65
+	specular 0.55 0.5 0.45
+
+	roughness 0.02
+	fresnel	1.0
+	fresnel_coeff 0.45 0.4 0.4  // refl color
 }
 
 hlms roadSnowGrn pbs : road
@@ -458,10 +503,15 @@ hlms roadSnowGrn pbs : road
 hlms roadSnowGrn_ter pbs : road_terrain
 {
 	diffuse_map  roadSnowGrn.jpg
-	normal_map   normal_1.png
-	// specular_map roadSnowGrn.jpg
-	diffuse  0.8 0.8 0.8
-	specular 0.6 0.62 0.62
+	// normal_map   normal_1.png
+	normal_map   normal_1s.png
+	specular_map roadAlpha2x.jpg
+	diffuse  0.7 0.7 0.7
+	specular 0.8 0.82 0.82
+
+	roughness 0.03
+	fresnel	1.0
+	fresnel_coeff 0.5 0.5 0.5  // refl color
 }
 
 
@@ -494,7 +544,6 @@ hlms roadDesert_ter pbs : road_terrain
 	normal_map   roadDesert_n.jpg
 	diffuse  0.95 0.87 0.72
 	specular 0.16 0.14 0.12
-	// bump_scale 0.7
 }
 
 hlms roadDesertOrn pbs : road
@@ -509,7 +558,6 @@ hlms roadDesertOrn_ter pbs : road_terrain
 	normal_map   roadDesert_n.jpg
 	diffuse  0.90 0.8 0.6
 	specular 0.16 0.14 0.12
-	// bump_scale 0.5
 }
 
 
@@ -526,8 +574,7 @@ hlms roadDesertBlack_ter pbs : road_terrain
 	diffuse_map  roadDesertBlack.jpg
 	normal_map   roadDesert_n.jpg
 	diffuse  1.0 1.0 1.0
-	specular 0.10 0.10 0.10 //22
-	// bump_scale 0.7
+	specular 0.10 0.10 0.10
 }
 
 
@@ -547,7 +594,27 @@ hlms roadSavannah_ter pbs : road_terrain
 	diffuse  0.8 0.8 0.8
 	specular 0.3 0.3 0.28
 }
-	
+
+hlms roadSavannahWet pbs : road
+{
+	diffuse_map  roadSavannah.jpg
+	// specular_map roadAsphalt_spec2.jpg
+	diffuse  0.8 0.8 0.8
+	specular 0.3 0.3 0.28
+}
+hlms roadSavannahWet_ter pbs : road_terrain
+{
+	diffuse_map  roadSavannah.jpg
+	normal_map   normal_1.png
+	specular_map roadAlpha2s.jpg
+	diffuse  0.7 0.7 0.7
+	specular 0.7 0.7 0.6
+
+	roughness 0.07
+	fresnel	1.0
+	fresnel_coeff 0.3 0.3 0.3  // refl color
+}
+
 
 //  Australia
 hlms roadAdesert pbs : road
@@ -563,7 +630,6 @@ hlms roadAdesert_ter pbs : road_terrain
 	normal_map   roadDesert_n.jpg
 	diffuse  0.80 0.80 0.74
 	specular 0.32 0.32 0.32
-	// bump_scale 0.8
 }
 
 hlms roadAdesertDark pbs : road
@@ -578,7 +644,6 @@ hlms roadAdesertDark_ter pbs : road_terrain
 	normal_map   roadDesert_n.jpg
 	diffuse  0.77 0.67 0.71
 	specular 0.32 0.32 0.32
-	// bump_scale 0.6
 }
 
 
@@ -634,7 +699,6 @@ hlms roadMars pbs : road
 	normal_map   roadMars_norm.jpg
 	diffuse  0.75 0.65 0.75
 	specular 0.36 0.32 0.3
-	// bump_scale 0.6
 }
 hlms roadMars_ter pbs : road_terrain
 {
@@ -642,7 +706,6 @@ hlms roadMars_ter pbs : road_terrain
 	normal_map   roadMars_norm.jpg
 	diffuse  0.80 0.80 0.74
 	specular 0.32 0.32 0.32
-	// bump_scale 0.6
 }
 
 // RoadFunny
@@ -675,6 +738,26 @@ hlms roadMoss_ter pbs : road_terrain
 	normal_map   normal_1.png
 	diffuse  0.6 0.6 0.6
 	specular 0.15 0.24 0.25
+}
+
+hlms roadMossWet pbs : road
+{
+	diffuse_map  roadMoss.jpg
+	diffuse  0.5 0.5 0.5
+	specular 0.15 0.24 0.25
+}
+hlms roadMossWet_ter pbs : road_terrain
+{
+	diffuse_map  roadMoss.jpg
+	normal_map   normal_1.png
+	specular_map roadAlpha2s.jpg
+	diffuse  0.6 0.6 0.6
+	// specular 0.15 0.24 0.25
+	specular 0.6 0.6 0.6
+
+	roughness 0.03
+	fresnel	1.0
+	fresnel_coeff 0.7 0.7 0.7  // refl color
 }
 
 
@@ -719,7 +802,6 @@ hlms roadAlienStone_ter pbs : road_terrain
 	normal_map   normal_2.png
 	diffuse  0.537 0.586 0.489
 	specular 0.3 0.3 0.3
-	// bump_scale 1
 }
 
 
@@ -738,6 +820,26 @@ hlms roadNdirt_ter pbs : road_terrain
 	specular 0.2 0.2 0.2
 }
 
+hlms roadNdirtWet pbs : road
+{
+	diffuse_map  rdDirt.jpg
+	diffuse  0.7 0.7 0.7
+	specular 0.2 0.2 0.2
+}
+hlms roadNdirtWet_ter pbs : road_terrain
+{
+	diffuse_map  rdDirt.jpg
+	normal_map   rdDirt_norm.jpg
+	specular_map roadAlpha2s.jpg
+	diffuse  0.6 0.6 0.6
+	specular 0.5 0.5 0.5
+
+	roughness 0.03
+	fresnel	1.0
+	fresnel_coeff 0.3 0.3 0.3  // refl color
+}
+
+
 hlms roadNgravel pbs : road
 {
 	diffuse_map  roadAsphalt.jpg
@@ -754,53 +856,83 @@ hlms roadNgravel_ter pbs : road_terrain
 	specular 0.5 0.5 0.5
 }
 
+hlms roadNgravelWet pbs : road
+{
+	diffuse_map  roadAsphalt.jpg
+	// specular_map roadAsphalt_spec.jpg
+	diffuse  0.8 0.8 0.8
+	specular 0.6 0.6 0.6
+}
+hlms roadNgravelWet_ter pbs : road_terrain
+{
+	diffuse_map  rdGravel.jpg
+	normal_map   rdGravel_norm.jpg
+	specular_map roadAlpha2s.jpg
+	diffuse  0.6 0.6 0.6
+	// specular 0.5 0.5 0.5
+	specular 1 1 1
+
+	// workflow metallic
+	roughness 0.015
+	metalness 0.95
+
+	fresnel	1.0
+	fresnel_coeff 0.4 0.4 0.4  // refl color
+}
+
 
 //  Metal_1
-hlms roadMetal1 pbs //: road
+hlms roadMetal1 pbs : road
 {
 	diffuse_map  roadMetal1.jpg
 	normal_map   roadMetal1_norm.jpg
-	// specular_map roadAsphalt_spec.jpg
+	specular_map roadAsphalt_spec.jpg
 	diffuse  0.5 0.5 0.5
 	specular 1 1 1
-	// bump_scale 0.1
-	roughness 0.15
+
+	roughness 0.015
 	//metalness 0.3
-	// fresnel	1.0
+	fresnel	1.0
 	fresnel_coeff 0.9 0.9 0.9
 }
-hlms roadMetal1_ter pbs //: road
+hlms roadMetal1_ter pbs : road
 {
 	diffuse_map  roadMetal1.jpg
+	normal_map   roadMetal2_norm.jpg
+	// normal_map   normal_1s.png
 	// normal_map   flat_n.png
-	// normal_map   roadMetal1_norm.jpg
-	normal_map   normal_1s.png
-	// specular_map roadAsphalt_spec.jpg
+	specular_map roadAlpha2s.jpg
+	// roughness_map roadSnowGrn.jpg
 	diffuse  0.5 0.5 0.5
-	specular 1 1 1
-	// bump_scale 0.17
-	roughness 0.15
-	//metalness 0.3
-	// fresnel	1.0
-	fresnel_coeff 0.9 0.9 0.9
+	specular 0.5 0.5 0.5
+
+	depth_bias 3
+	// scene_blend alpha_blend
+
+	// workflow metallic
+	roughness 0.015
+	metalness 0.95
+
+	fresnel	1.0
+	fresnel_coeff 0.2 0.2 0.2  // refl color
 }
 
 
 //  Metal_2
-hlms roadMetal2 pbs //: road
+hlms roadMetal2 pbs : road
 {
 	diffuse_map  roadMetal2.jpg
 	normal_map   roadMetal2_norm.jpg
-	// specular_map roadAsphalt_spec.jpg
+	specular_map roadAsphalt_spec.jpg
 	diffuse  0.7 0.7 0.7
 	specular 0.8 0.8 0.8
-	// bump_scale 0.04
+
 	roughness 0.15
 	//metalness 0.3
-	// fresnel	1.0
+	fresnel	1.0
 	fresnel_coeff 0.9 0.9 0.9
 }
-hlms roadMetal2_ter pbs //: road
+hlms roadMetal2_ter pbs : road
 {
 	diffuse_map  roadMetal2.jpg
 	// normal_map   flat_n.png
@@ -808,8 +940,7 @@ hlms roadMetal2_ter pbs //: road
 	// specular_map roadAsphalt_spec.jpg
 	diffuse  0.7 0.7 0.7
 	specular 0.8 0.8 0.8
-	// bump_scale 0.18
-	// refl_amount 0.2
+
 	roughness 0.05
 	//metalness 0.3
 	fresnel	1.0
@@ -817,52 +948,49 @@ hlms roadMetal2_ter pbs //: road
 }
 
 //  Asphalt_Space
-hlms roadAsphaltSpace pbs //: road
+hlms roadAsphaltSpace pbs : road
 {
 	diffuse_map  roadAsphaltSpace1.jpg
 	normal_map   roadAsphaltSpace_norm.jpg
-	// specular_map roadAsphalt_spec.jpg
+	specular_map roadAsphalt_spec.jpg
 	diffuse  0.7 0.7 0.7
 	specular 0.5 0.5 0.5
-	// bump_scale 0.04
-	// refl_amount 0.04
+
 	roughness 0.15
 	//metalness 0.3
-	// fresnel	1.0
+	fresnel	1.0
 	fresnel_coeff 0.9 0.9 0.9
 }
-hlms roadAsphaltSpace_ter pbs //: road
+hlms roadAsphaltSpace_ter pbs : road
 {
 	diffuse_map  roadAsphaltSpace1.jpg
 	normal_map   roadAsphaltSpace_norm.jpg
 	// specular_map roadAsphalt_spec.jpg
 	diffuse  0.7 0.7 0.7
 	specular 0.5 0.5 0.5
-	// bump_scale 0.14
-	// refl_amount 0.1
+
 	roughness 0.1
 	//metalness 0.3
-	// fresnel	1.0
+	fresnel	1.0
 	fresnel_coeff 0.9 0.9 0.9
 }
 
 //  Asphalt_Space
-hlms roadAsphaltSpaceBlue pbs //: road
+hlms roadAsphaltSpaceBlue pbs : road
 {
 	diffuse_map  roadAsphaltSpace1.jpg
 	// normal_map   roadAsphaltSpace_norm.jpg
 	normal_map   roadMetal2_norm.jpg
-	// specular_map roadAsphalt_spec.jpg
+	specular_map roadAsphalt_spec.jpg
 	diffuse  0.7 0.7 0.85
 	specular 0.5 0.5 0.65
-	// bump_scale 0.04
-	// refl_amount 0.08
+
 	roughness 0.15
 	//metalness 0.3
-	// fresnel	1.0
+	fresnel	1.0
 	fresnel_coeff 0.9 0.9 0.9
 }
-hlms roadAsphaltSpaceBlue_ter pbs //: road
+hlms roadAsphaltSpaceBlue_ter pbs : road
 {
 	diffuse_map  roadAsphaltSpace1.jpg
 	// normal_map   flat_n.png
@@ -871,10 +999,9 @@ hlms roadAsphaltSpaceBlue_ter pbs //: road
 	// specular_map roadAsphalt_spec.jpg
 	diffuse  0.7 0.7 0.85
 	specular 0.5 0.5 0.65
-	// bump_scale 0.14
-	// refl_amount 0.15
+
 	roughness 0.2
-	//metalness 0.3
-	// fresnel	1.0
+	// metalness 0.3
+	fresnel	1.0
 	fresnel_coeff 0.9 0.9 0.9
 }

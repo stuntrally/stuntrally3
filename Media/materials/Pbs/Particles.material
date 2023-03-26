@@ -109,6 +109,25 @@ hlms MarsDust unlit
 }
 
 
+//  road dust from tires new
+//-----------------------
+hlms Gravel unlit
+{
+	 diffuse_map gravel.png
+	 scene_blend alpha_blend
+	 alpha_rejection greater 64
+	 depth_write off
+}
+
+hlms Dirt unlit
+{
+	 diffuse_map dirt.png
+	 scene_blend alpha_blend
+	 alpha_rejection greater 64
+	 depth_write off
+}
+
+
 //  car fluid, from tires
 //-----------------------
 

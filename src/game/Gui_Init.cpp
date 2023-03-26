@@ -347,12 +347,6 @@ void CGui::InitGui()
 
 	// ck= &ckSSAO;		ck->Init("SSAO",		&pSet->ssao);  Cev(EffUpdShd);
 	// ck= &ckSoftPar;		ck->Init("SoftParticles",&pSet->softparticles);  Cev(EffUpdShd);
-	// ck= &ckGodRays;		ck->Init("GodRays",		&pSet->godrays);  Cev(EffUpdShd);
-
-	//  hdr
-	// ck= &ckHDR;				ck->Init("HDR",				&pSet->hdr);  Cev(EffUpd);
-	// sv= &svHDRBloomInt;		sv->Init("HDRBloomInt",		&pSet->hdrBloomint);   sv->DefaultF(0.81f);
-	// sv= &svHDRBloomOrig;	sv->Init("HDRBloomOrig",	&pSet->hdrBloomorig);  sv->DefaultF(0.34f);
 
 
 	//  📽️ Replays  ------------------------------------------------------------
