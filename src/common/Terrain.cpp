@@ -183,6 +183,7 @@ void CScene::CreateBltTerrains()
 	for (const auto& td : sc->tds)
 	if (td.collis)
 	{
+		btVector3 pos(td.posX, -td.posZ, 0.f);
 		btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
 			td.iVertsXold, td.iVertsXold,
 			&td.hfHeight[0], td.fTriangleSize,
@@ -202,14 +203,14 @@ void CScene::CreateBltTerrains()
 		Real xofs = of ? 0.5f * td.fTriangleSize : 0.f;
 
 		btVector3 ofs(-xofs, -xofs, 0.0);
-		btTransform tr;  tr.setIdentity();  tr.setOrigin(ofs);
+		btTransform tr;  tr.setIdentity();  tr.setOrigin(pos + ofs);
 		col->setWorldTransform(tr);
 
 		col->setFriction(0.9);   //+
 		col->setRestitution(0.0);
 		//col->setHitFraction(0.1f);
 		col->setCollisionFlags(col->getCollisionFlags() |
-			btCollisionObject::CF_STATIC_OBJECT /*| btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+			btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
 		#ifndef SR_EDITOR  // game
 			app->pGame->collision.world->addCollisionObject(col);
 			app->pGame->collision.shapes.push_back(hfShape);
@@ -222,7 +223,7 @@ void CScene::CreateBltTerrains()
 		///  border planes []
 		const float px[4] = {-1, 1, 0, 0};
 		const float py[4] = { 0, 0,-1, 1};
-		const bool b[4] = {td.bL, td.bL, td.bF, td.bB};  // disable chks
+		const bool b[4] = {td.bL, td.bR, td.bF, td.bB};  // disable chks
 
 		for (int i=0; i < 4; ++i)
 		if (b[i])
@@ -232,7 +233,7 @@ void CScene::CreateBltTerrains()
 			shp->setUserPointer((void*)SU_Border);
 			
 			btTransform tr;  tr.setIdentity();
-			tr.setOrigin(vpl * -0.49 * td.fTerWorldSize + ofs);  //par 0.5-
+			tr.setOrigin(pos + vpl * -0.49 * td.fTerWorldSize + ofs);  //par 0.5-
 
 			btCollisionObject* col = new btCollisionObject();
 			col->setCollisionShape(shp);
