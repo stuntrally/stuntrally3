@@ -48,12 +48,13 @@ Good to check if they work before continuing.
 
 4. Get **MyGui-Next**, my fork of MyGui on branch `ogre3`.  
 I follow its build guide [here](https://github.com/cryham/mygui-next/tree/ogre3).  
-It needs to have set:  
+It needs to have set (should be by default):  
     - MYGUI_RENDERSYSTEM: 8 - Ogre 3.x
     - MYGUI_USE_FREETYPE: yes
-    - all MYGUI_BUILD*: no, CMAKE_BUILD_TYPE: RelWithDebInfo
-    - MYGUI_STATIC: no, MYGUI_DONT_USE_OBSOLETE: no
-We need Release build config dir, and possibly Debug too.  
+    - all MYGUI_BUILD*: no
+    - MYGUI_STATIC: no, MYGUI_DONT_USE_OBSOLETE: no  
+
+We need Release build, and possibly Debug too.  
 ```
 git clone https://github.com/cryham/mygui-next --branch ogre3 --single-branch
 cd mygui-next
