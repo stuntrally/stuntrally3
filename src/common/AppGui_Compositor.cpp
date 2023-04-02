@@ -73,7 +73,8 @@ public:
 		Camera *camera = passScene->getCamera();
 
 		// Note: The Aspect Ratio must match that of the camera we're reflecting.
-		mPlanarReflections->update( camera, camera->getAspectRatio() );
+		mPlanarReflections->update( camera, camera->getAutoAspectRatio()
+			? pass->getViewportAspectRatio( 0u ) : camera->getAspectRatio() );
 	}
 };
 

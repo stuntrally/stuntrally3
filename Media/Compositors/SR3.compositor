@@ -314,9 +314,9 @@ compositor_node PlanarReflectionsReflectiveRenderingNode
 				stencil	dont_care
 			}
 
-			overlays		off
-			visibility_mask 0xfffffffe
-			shadows			PlanarReflectionsShadowNode
+			overlays		 off
+			visibility_mask  0xfffffffe
+			//shadows  SR3_Shadows
 
 			profiling_id "Reflective pass"
 		}
@@ -328,6 +328,17 @@ compositor_node PlanarReflectionsReflectiveRenderingNode
 			profiling_id "Mipmap Generation (HQ)"
 		}
 	}
+}
+
+
+// workspace PlanarReflectionStandardsWorkspace
+// {
+// 	connect_output PlanarReflectionsStandardRenderingNode 0
+// }
+
+workspace PlanarReflectionsReflectiveWorkspace
+{
+	connect_output PlanarReflectionsReflectiveRenderingNode 0
 }
 
 
