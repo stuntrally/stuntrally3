@@ -144,7 +144,7 @@ void CScene::CreateTerrain(int n, bool upd, bool bNewHmap, bool terLoad)
 
 	//; CreateBlendTex();  //+
 
-	LogO(String(":::* Time")+si+" Hmap: " + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();  // 4MB ~13ms
+	LogO(String(":::* Time ter-")+si+" Hmap: " + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();  // 4MB ~13ms
 
 	//; UpdBlendmap();
 
@@ -156,7 +156,7 @@ void CScene::CreateTerrain(int n, bool upd, bool bNewHmap, bool terLoad)
 		grass->terrain = ter;
 	grass->mSceneMgr = app->mSceneMgr;
 	
-	LogO(String(":::* Time")+si+" Terrain: " + fToStr(tm.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time ter-")+si+" Ter: " + fToStr(tm.getMilliseconds(),0,3) + " ms");
 }
 
 

@@ -110,7 +110,7 @@ int MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 	 		inputHandler->setGrabMousePointer( true );
 	 		inputHandler->setMouseRelative( true );
 		}
-	 		inputHandler->setMouseVisible( false );
+ 		inputHandler->setMouseVisible( false );
 	#endif
 
 		Ogre::Timer timer;

@@ -11,6 +11,7 @@
 #include "Slider.h"
 #include "MultiList2.h"
 #include "paths.h"
+#include "Terra.h"
 
 #include <fstream>
 #include <MyGUI.h>
@@ -137,46 +138,58 @@ void CGui::SldUpd_TerL()
 
 //  Ter properties, size
 //----------------------------------------------------------------------------------------------------------
+
+//  one ter
+void CGui::SldUpd_Ter()
+{
+	if (notd())  return;
+	auto& t = td();
+
+	//  horiz, collis
+	svTerHoriz.UpdI(&t.iHorizon);
+	ckTerCollis.Upd(&t.collis);
+	//  pos
+	svTerPosX.UpdF(&t.posX);
+	svTerPosZ.UpdF(&t.posZ);
+	//  borders
+	ckTerBL.Upd(&t.bL);
+	ckTerBR.Upd(&t.bR);
+	ckTerBF.Upd(&t.bF);
+	ckTerBB.Upd(&t.bB);
+}
+
 void CGui::slTerHoriz(SV* sv)
 {
 	if (notd())  return;
-	td().iHorizon = sv->getF();
+	// td().iHorizon = sv->getF();
 }
 void CGui::slTerPosX(SV* sv)
 {
 	if (notd())  return;
-	td().posX = sv->getF();
+	// scn->ter->SetPos(td().posX, td().posZ);
+	// upd ?..
 }
 void CGui::slTerPosZ(SV* sv)
 {
 	if (notd())  return;
-	td().posZ = sv->getF();
+	// scn->ter->SetPos(td().posX, td().posZ);
 }
 
 void CGui::chkTerCollis(Ck* ck)
 {
-	if (notd())  return;
-	// td().collis = *ck->pBool;
 }
 void CGui::chkTerBL(Ck* ck)
 {
-	if (notd())  return;
-	// td().bL = sv->getF();
+	// todo: upd visible border planes
 }
 void CGui::chkTerBR(Ck* ck)
 {
-	if (notd())  return;
-	// td().bR = sv->getF();
 }
 void CGui::chkTerBF(Ck* ck)
 {
-	if (notd())  return;
-	// td().bF = sv->getF();
 }
 void CGui::chkTerBB(Ck* ck)
 {
-	if (notd())  return;
-	// td().bB = sv->getF();
 }
 
 

@@ -156,6 +156,7 @@ public:
 	SlV(TerHoriz);  SlV(TerPosX);  SlV(TerPosZ);
 	//  collis, borders
 	CK(TerCollis);  CK(TerBL); CK(TerBR); CK(TerBF); CK(TerBB);
+	void SldUpd_Ter();
 
 	void saveNewHmap(float* hfData, int size, int add = 0, bool bNew=true);  // to file
 	void btnTerrainNew(WP), btnTerGenerate(WP);

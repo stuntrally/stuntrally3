@@ -10,9 +10,11 @@
 #include "paths.h"
 #include "CData.h"
 #include "PresetsXml.h"
+#include "CGui.h"
 
 #include <OgrePrerequisites.h>
 #include <OgreVector4.h>
+#include <OgreCommon.h>
 #include "GraphicsSystem.h"
 #include "OgreHlmsTerra.h"
 #include "OgreHlmsPbsTerraShadows.h"
@@ -32,7 +34,6 @@ void CScene::CreateTerrain1(int n, bool upd)
 	auto sn = toStr(n);
 	// if (mTerra)  return;
 	SceneManager *mgr = app->mGraphicsSystem->getSceneManager();
-	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 	
 	HlmsManager *hlmsMgr = app->mRoot->getHlmsManager();
 	HlmsDatablock *db = 0;
@@ -147,11 +148,18 @@ void CScene::CreateTerrain1(int n, bool upd)
 
 
 	//  🆕 Create  ------------------------------------------------
-	LogO("---T Terrain create " + sn);
+	auto id = Id::generateNewId<MovableObject>();
+	LogO("---T Terrain create " + sn + "  id " + toStr(id));
+
+#ifdef SR_EDITOR
+	auto dyn = SCENE_DYNAMIC;  // ed can move ter- rem?
+#else
+	auto dyn = SCENE_STATIC;
+#endif
 
 	auto* mTerra = new Terra( //si,
-		Id::generateNewId<MovableObject>(),
-		&mgr->_getEntityMemoryManager( SCENE_STATIC ),
+		id,
+		&mgr->_getEntityMemoryManager( dyn ),
 		mgr, RQG_Terrain, app->mRoot->getCompositorManager2(),
 		app->mCamera, false );
 	
@@ -194,8 +202,9 @@ void CScene::CreateTerrain1(int n, bool upd)
 	tdb->setTexture( TERRA_DETAIL_WEIGHT, mTerra->blendmap.texture );  //**
 
 
-	SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
-	node->attachObject( mTerra );
+	SceneNode *rootNode = mgr->getRootSceneNode( dyn );
+	mTerra->node = rootNode->createChildSceneNode( dyn );
+	mTerra->node->attachObject( mTerra );
 
 	db = hlmsMgr->getDatablock( mtrName );
 	mTerra->setDatablock( db );
@@ -262,6 +271,9 @@ void CScene::TerNext(int add)
 	ter = ters[terCur];
 	td = &sc->tds[terCur];
 
+#ifdef SR_EDITOR
+	app->gui->SldUpd_Ter();
+#endif
 	// String fname = getHmap(terCur, false);//-
 	// td->getFileSize(fname);
 }
@@ -282,7 +294,13 @@ Ogre::Real CScene::getTerH(Ogre::Real x, Ogre::Real z)
 bool CScene::getTerH(Ogre::Vector3& pos)  // sets y
 {
 	for (auto ter : ters)
-		if (ter &&ter->getHeightAt(pos))
+	{
+		Vector3 p = pos;
+		if (ter && ter->getHeightAt(p))
+		{
+			pos = p;
 			return true;
+		}
+	}
 	return false;
 }
