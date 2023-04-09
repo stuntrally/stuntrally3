@@ -30,8 +30,7 @@
 #include <Vao/OgreVertexElements.h>
 using namespace Ogre;
 
-#define USE_UMA_SHARED_BUFFERS 1
-#define V1tangents
+// #define V1tangents  // todo: compute tangents ..
 
 
 //  🏗️ Create Mesh
@@ -86,49 +85,47 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	//  vertex data  ------------------------------------------
 	uint vertCnt = pos.size();
 	vertSize *= sizeof( float );
+	uint size = vertSize * vertCnt;
 	float *v = reinterpret_cast<float *>(  // vertices
-		OGRE_MALLOC_SIMD( sizeof( float ) * vertSize * vertCnt, MEMCATEGORY_GEOMETRY ) );
+		OGRE_MALLOC_SIMD( size, MEMCATEGORY_GEOMETRY ) );
 	
 	uint a = 0;
 	if (trail)
-	for (uint i=0; i < vertCnt; ++i)
-	{
-		v[a++] = pos[i].x;   v[a++] = pos[i].y;   v[a++] = pos[i].z;  aabox.merge(pos[i]);
-		v[a++] = clr[i].x;   v[a++] = clr[i].y;   v[a++] = clr[i].z;   v[a++] = clr[i].w;
-	}else
-	if (hasClr)
-	for (uint i=0; i < vertCnt; ++i)
-	{
-		v[a++] = pos[i].x;   v[a++] = pos[i].y;   v[a++] = pos[i].z;  aabox.merge(pos[i]);
-		v[a++] = norm[i].x;  v[a++] = norm[i].y;  v[a++] = norm[i].z;
-		v[a++] = tcs[i].x;   v[a++] = tcs[i].y;
-		v[a++] = clr[i].x;   v[a++] = clr[i].y;   v[a++] = clr[i].z;   v[a++] = clr[i].w;
-	}else
-	for (uint i=0; i < vertCnt; ++i)
-	{
-		v[a++] = pos[i].x;   v[a++] = pos[i].y;   v[a++] = pos[i].z;  aabox.merge(pos[i]);
-		v[a++] = norm[i].x;  v[a++] = norm[i].y;  v[a++] = norm[i].z;
-	#ifndef V1tangents
-		v[a++] = norm[i].x;  v[a++] = norm[i].z;  v[a++] = norm[i].y;  // tangent-
-		// v[a++] = norm[i].z;  v[a++] = norm[i].y;  v[a++] = norm[i].x;  // binormal-
-	#endif
-		v[a++] = tcs[i].x;   v[a++] = tcs[i].y;
-		// v[a++] = tcs[i].x;   v[a++] = tcs[i].y;  //2nd uv-
-	}
+		for (uint i=0; i < vertCnt; ++i)
+		{
+			v[a++] = pos[i].x;  v[a++] = pos[i].y;  v[a++] = pos[i].z;  aabox.merge( pos[i] );
+			v[a++] = clr[i].x;  v[a++] = clr[i].y;  v[a++] = clr[i].z;  v[a++] = clr[i].w;
+		}
+	else if (hasClr)
+		for (uint i=0; i < vertCnt; ++i)
+		{
+			v[a++] = pos[i].x;   v[a++] = pos[i].y;   v[a++] = pos[i].z;  aabox.merge( pos[i] );
+			v[a++] = norm[i].x;  v[a++] = norm[i].y;  v[a++] = norm[i].z;
+		#ifndef V1tangents
+			v[a++] = norm[i].x;  v[a++] = norm[i].z;  v[a++] = norm[i].y;  // tangent-
+			//v[a++] = norm[i].z;  v[a++] = norm[i].y;  v[a++] = norm[i].x;  // binormal-
+		#endif
+			v[a++] = tcs[i].x;  v[a++] = tcs[i].y;
+			v[a++] = clr[i].x;  v[a++] = clr[i].y;  v[a++] = clr[i].z;  v[a++] = clr[i].w;
+		}
+	else
+		for (uint i=0; i < vertCnt; ++i)
+		{
+			v[a++] = pos[i].x;   v[a++] = pos[i].y;   v[a++] = pos[i].z;  aabox.merge( pos[i] );
+			v[a++] = norm[i].x;  v[a++] = norm[i].y;  v[a++] = norm[i].z;
+		#ifndef V1tangents
+			v[a++] = norm[i].x;  v[a++] = norm[i].z;  v[a++] = norm[i].y;  // tangent-
+			// v[a++] = norm[i].z;  v[a++] = norm[i].y;  v[a++] = norm[i].x;  // binormal-
+		#endif
+			v[a++] = tcs[i].x;  v[a++] = tcs[i].y;
+			// v[a++] = tcs[i].x;   v[a++] = tcs[i].y;  //2nd uv-
+		}
 
 	VertexBufferPacked *vertexBuffer = 0;
 	try
 	{
-	#if USE_UMA_SHARED_BUFFERS
-		const RenderSystemCapabilities *caps = renderSystem->getCapabilities();
-		if (caps && caps->hasCapability(RSC_UMA))
-		{
-			vertexBuffer = vaoManager->createVertexBuffer(
-				vertexElements, vertCnt, BT_DEFAULT_SHARED, &v[0], true );
-		}else
-	#endif
-			vertexBuffer = vaoManager->createVertexBuffer(
-				vertexElements, vertCnt, partialMesh ? BT_DEFAULT : BT_IMMUTABLE, &v[0], true );
+		vertexBuffer = vaoManager->createVertexBuffer(
+			vertexElements, vertCnt, partialMesh ? BT_DEFAULT : BT_IMMUTABLE, &v[0], true );
 	}
 	catch (Exception &e)
 	{
@@ -159,18 +156,10 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 
 	try
 	{
-	#ifdef USE_UMA_SHARED_BUFFERS
-		const RenderSystemCapabilities *caps = renderSystem->getCapabilities();
-		if(caps && caps->hasCapability(RSC_UMA))
-		{
-			indexBuffer = vaoManager->createIndexBuffer(
-				IndexBufferPacked::IT_16BIT, idxCnt, BT_DEFAULT_SHARED, indices, true );
-		}else
-	#endif
-			indexBuffer = vaoManager->createIndexBuffer(
-				IndexBufferPacked::IT_16BIT, idxCnt, BT_IMMUTABLE, indices, true );
+		indexBuffer = vaoManager->createIndexBuffer(
+			IndexBufferPacked::IT_16BIT, idxCnt, BT_IMMUTABLE, indices, true );
 	}
-	catch( Exception &e )
+	catch (Exception &e)
 	{
 		// When keepAsShadow = true, the memory will be freed when the index buffer is destroyed.
 		// However if for some weird reason there is an exception raised, the memory will
