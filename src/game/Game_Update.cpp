@@ -229,6 +229,8 @@ void App::update( float dt )
 			scn->pace->UpdVis(p);
 		}
 
+		UpdCubeRefl();  // 🔮💫
+
 
 		//  🔧 Keys  params  ----
 		#if 0  // todo: move to ed gui

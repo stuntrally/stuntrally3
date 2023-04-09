@@ -122,7 +122,9 @@ public:
 	//  🔮 Reflection Cubemap  ----------------
 	Ogre::Camera* mCubeCamera = 0;
 	Ogre::TextureGpu* mCubeReflTex = 0;
-	void CreateCubeReflect();
+	Ogre::CompositorWorkspace* wsCubeRefl = 0;
+	int iReflSkip =0;
+	void CreateCubeReflect(), UpdCubeRefl();
 
 	IblQuality mIblQuality = IblLow;  // par in ctor-
 	Ogre::CompositorWorkspace* SetupCompositor();
@@ -146,7 +148,7 @@ public:
 	//  viewport dimensions, for each player [4]
 	ViewDim mDims[4];
 
-	//  workspace, Ogre render setup  [4] + 1 for refl
+	//  workspace, Ogre render setup   players [4] + 1 for Refl cube
 	std::vector<Ogre::CompositorWorkspace*> mWorkspaces;
 
 

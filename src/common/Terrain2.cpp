@@ -56,6 +56,7 @@ void CScene::CreateTerrain1(int n, bool upd)
 	// bool tripl = false;  // test
 	int ter_tripl = app->pSet->ter_tripl;
 	bool bTripl = ter_tripl && n == 0 && td.triplCnt > 0;
+	LogO("C--T Terrain tripl layers: " + toStr(td.triplCnt));
 
 	if (bTripl)  //^
 	{	tdb->setDetailTriplanarDiffuseEnabled(true);

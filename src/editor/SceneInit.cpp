@@ -274,7 +274,7 @@ void App::LoadTrackEv()
 	
 	CreateRnd2Tex();  // 🖼️
 
-	// createReflectiveSurfaces();
+	// createReflectiveSurfaces();  // todo: water ...
 	
 	//UpdVisGui();
 	UpdStartPos();
@@ -362,12 +362,8 @@ void CGui::btnUpdateLayers(WP)
 {
 	if (!app->bNewHmap)
 		app->scn->copyTerHmap();
-	//? if (app->ndSky)
-	// 	app->mSceneMgr->destroySceneNode(app->ndSky);
 	scn->DestroyTerrains();
 	scn->CreateTerrains(false,true);  // 🏔️
-	// app->scn->DestroyTerrain1(app->scn->terCur);
-	// app->scn->CreateTerrain1(app->scn->terCur, false); //,app->bNewHmap,true);
 	scn->road->scn = scn;
 	// app->scn->updGrsTer();
 }

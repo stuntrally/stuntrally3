@@ -84,19 +84,21 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	ck= &ckCarLights;        ck->Init("CarLights",          &pSet->car_lights);  //CevC(Lights);
 	ck= &ckCarLightsShadows; ck->Init("CarLightsShadows",   &pSet->car_light_shadows);
 
+
 	//  🔮 Reflection  // todo:
-	sv= &svReflSkip;	sv->Init("ReflSkip",	&pSet->refl_skip,    0,1000, 2.f);  sv->DefaultI(0);
+	sv= &svReflSkip;	sv->Init("ReflSkip",	&pSet->refl_skip,    0,1000, 4.f);  sv->DefaultI(0);
 	sv= &svReflFaces;	sv->Init("ReflFaces",	&pSet->refl_faces,   1,6);  sv->DefaultI(1);
 	sv= &svReflSize;
-		for (i=0; i < NumTexSizes; ++i)  sv->strMap[i] = toStr(cTexSizes[i]);
-						sv->Init("ReflSize",	&pSet->refl_size,    0,NumTexSizes-1);  sv->DefaultI(1);
+		for (i=0; i < NumTexSizes; ++i)  sv->strMap[i] = toStr(cTexSizes[i]);  //v way too big
+						sv->Init("ReflSize",	&pSet->refl_size,    0,NumTexSizes-1, 2.f);  sv->DefaultI(0);
 
-	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->refl_dist,	20.f,1500.f, 2.f, 0,4, 1.f," m");
+	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->refl_dist,	20.f,30000.f, 2.f, 0,4, 1.f," m");
 																	SevC(ReflDist);  sv->DefaultF(300.f);
-	sv= &svReflMode;
+	BtnC("ApplyRefl", btnReflApply);
+	/*sv= &svReflMode;  // todo: 1 cube refl for each car..
 	sv->strMap[0] = TR("#{ReflMode_static}");  sv->strMap[1] = TR("#{ReflMode_single}");
 	sv->strMap[2] = TR("#{ReflMode_full}");
-	sv->Init("ReflMode",	&pSet->refl_mode,   0,2);  SevC(ReflMode);  sv->DefaultI(1);
+	sv->Init("ReflMode",	&pSet->refl_mode,   0,2);  SevC(ReflMode);  sv->DefaultI(1);*/
 
 	//  🌊 Water  // todo:
 	// ck= &ckWaterReflect; ck->Init("WaterReflection", &pSet->water_reflect);  CevC(Water);
@@ -244,6 +246,7 @@ void CGuiCom::btnShadersApply(WP)
 	//app->scn->changeShadows();  //?
 }
 
+
 //  🔮 reflection
 void CGuiCom::slReflDist(SV*)
 {
@@ -259,6 +262,11 @@ void CGuiCom::slReflMode(SV* sv)
 		case 2: sv->setTextClr(1.0, 0.0, 0.0);  break;
 	}*/
 	// app->recreateReflections();
+}
+
+void CGuiCom::btnReflApply(WP)
+{
+	app->CreateCubeReflect();
 }
 
 

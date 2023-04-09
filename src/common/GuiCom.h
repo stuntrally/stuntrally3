@@ -97,6 +97,7 @@ public:
 	//  🔮 reflection
 	SV svReflSkip, svReflFaces, svReflSize;
 	SlV(ReflDist);  SlV(ReflMode);
+	void btnReflApply(WP);
 
 	//  🌊 water
 	SlV(WaterSize);

@@ -229,6 +229,8 @@ void App::UpdateEnd(float dt)
 		}
 	}
 
+	
+	UpdCubeRefl();  // 🔮💫
 
 	///**  Render Targets update  //; fixme
 	if (edMode == ED_PrvCam)
