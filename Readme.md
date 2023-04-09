@@ -103,8 +103,8 @@ make -j5
 
 9. If it succeeds, go into one of:  
 `sr3/bin/RelWithDebInfo` - if used `cmake ../`  
-`sr3/bin/Debug` - if used `cmake ../ -DCMAKE_BUILD_TYPE="Debug"`  
 `sr3/bin/Release` - if used `cmake ../ -DCMAKE_BUILD_TYPE="Release"`  
+`sr3/bin/Debug` - if used `cmake ../ -DCMAKE_BUILD_TYPE="Debug"`  
 and start the executable:  
 `./sr-editor3` - for SR3 Track Editor  
 `./stuntrally3` - for SR3 game  
@@ -115,14 +115,16 @@ it has current logs and configs (_ed for SR3 Track Editor, without for SR3 game)
 ```
 editor.cfg - editor options
 game.cfg - game options
+
 Ogre.log - log from game
 Ogre_ed.log - log from editor
+
 ogre.cfg - Ogre start window, Render Systems setup
 ogre_ed.cfg - same, for editor
+
 MyGUI.log - MyGui logs from game and editor
 MyGUI_ed.log
 ```
-(ed - for editor).
 
 ----
 ### My folder tree
@@ -131,7 +133,7 @@ dev - root folder
    sr3 - has this repo
       bin - output binaries
          Debug
-         Release - has StuntRally3, plugins.cfg, resources2.cfg
+         Release - has stuntrally3, sr3-editor, plugins.cfg, resources2.cfg
          RelWithDebInfo
       Media
          tracks - has Test1-Flat, Test3-Bumps - cloned tracks3 repo (or old tracks)
