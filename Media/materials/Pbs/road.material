@@ -325,7 +325,7 @@ hlms roadMagicMirror pbs : road
 	// diffuse  1 1 1
 	// specular 1 1 1
 	diffuse  0.032 0.042 0.082
-	specular 0.24 0.18 0.76
+	specular 0.34 0.28 0.5
 	// specular 0.3 0.6 1.0
 
 	//specular_map roadAsphalt_spec2.jpg
@@ -343,7 +343,7 @@ hlms roadMagicMirror_ter pbs : road_terrain
 {
 	diffuse_map  roadSandSet.jpg
 	diffuse  0.032 0.042 0.082
-	specular 0.2 0.2 0.3
+	specular 0.2 0.2 0.23
 	// normal_map   normal_2.png
 	normal_map  normal_1.png
 	// normal_map rdGravel_norm.jpg
@@ -358,27 +358,33 @@ hlms roadMagicMirror_ter pbs : road_terrain
 //  Crystals
 hlms roadCrystal pbs : road
 {
-	diffuse  0.4 0.8 1.4
-	specular 1 1 1
-	// 0.05 0.25 0.5
+	diffuse  0.2 0.6 1.0
+	specular 0.1 0.25 0.5
 	diffuse_map  rdGravel.jpg
-	normal_map   rdGravel_norm.jpg
-	// refl_amount 0.5
+	// normal_map   rdGravel_norm.jpg
+	// normal_map  roadMetal2_norm.jpg
+	// normal_map flat_n.png
+	normal_map   normal_1s.png
+
+	fresnel 1.0
+	fresnel_coeff 0.9 0.9 0.95  // refl color
+	// workflow metallic
+	roughness 0.005
+	metalness 0.98
 }
 hlms roadCrystal_ter pbs : road_terrain
 {
-	diffuse  0.4 0.7 1.0
-	// specular 0.05 0.4 0.8
-	specular 0.1 0.2 0.3
-	diffuse_map  rdGravel.jpg
+	diffuse  0.1 0.5 1.0
+	specular 0.05 0.1 0.2
+	diffuse_map rdGravel.jpg
 	normal_map  normal_1.png
 	// normal_map rdGravel_norm.jpg
 
 	fresnel 1.0
-	fresnel_coeff 1 1 1  // refl color
+	fresnel_coeff 0.2 0.2 0.2  // refl color
 	// workflow metallic
-	roughness 0.05
-	metalness 0.95
+	roughness 0.005
+	metalness 0.98
 }
 
 
