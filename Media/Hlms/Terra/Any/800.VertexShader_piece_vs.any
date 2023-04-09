@@ -101,13 +101,15 @@
 	float skirtHeight = uintBitsToFloat( cellData.numVertsPerLine.w );
 	if( isSkirt )
 	{
-		if( worldPos.y <= skirtHeight )
-			worldPos.y = worldPos.y - skirtHeight;
-		else
-			worldPos.y = skirtHeight;
+		// worldPos.y -= 0.01;  // normalized!-
+		worldPos.y -= 20.0;  // m  floats
+		// if( worldPos.y <= skirtHeight )
+		// 	worldPos.y = worldPos.y - skirtHeight;
+		// else
+		// 	worldPos.y = skirtHeight;
 	}
 @end
-	worldPos.xz = float2( uVertexPos.xy );
+	worldPos.xz = float2( uVertexPos.xy );	
 	worldPos.xyz = worldPos.xyz * cellData.scale.xyz + cellData.pos.xyz;
 
 	@property( z_up )
