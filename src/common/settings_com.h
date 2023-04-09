@@ -65,7 +65,8 @@ public:
 	// bool water_reflect, water_refract;  int water_rttsize;
 
 	//  🔮 reflections
-	int refl_skip = 2, refl_faces = 2, refl_size = 0;  float refl_dist = 500;
+	int refl_skip = 2, refl_faces = 2, refl_size = 0, refl_ibl = 32;
+	float refl_dist = 500, refl_lod = 1.f;
 	int refl_mode;  // 0 static, 1 single, 2 full
 
 

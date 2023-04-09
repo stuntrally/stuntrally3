@@ -126,7 +126,6 @@ public:
 	int iReflSkip =0;
 	void CreateCubeReflect(), UpdCubeRefl();
 
-	IblQuality mIblQuality = IblLow;  // par in ctor-
 	Ogre::CompositorWorkspace* SetupCompositor();
 
 

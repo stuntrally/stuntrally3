@@ -20,54 +20,45 @@
 using namespace Ogre;
 
 
-//  🔮 create cube Reflections tex,workspace
+//  🔮 re/create cube Reflections tex,workspace
 //-----------------------------------------------------------------------------------------
 void AppGui::CreateCubeReflect()
 {
 	auto* rndSys = mRoot->getRenderSystem();
 	auto* texMgr = rndSys->getTextureGpuManager();
 	auto* mgr = mRoot->getCompositorManager2();
+	bool lowest = false;  // todo: par?
 
-	// mIblQuality = IblLow;  //par..
-	// mIblQuality = IblMedium;
-
-	// A RenderTarget created with AllowAutomipmaps means the compositor still needs to
-	// explicitly generate the mipmaps by calling generate_mipmaps.
-
+	//  A RenderTarget created with AllowAutomipmaps means the compositor still needs to
+	//  explicitly generate the mipmaps by calling generate_mipmaps
 	uint32 iblSpecularFlag = 0;
-	if( rndSys->getCapabilities()->hasCapability( RSC_COMPUTE_PROGRAM ) &&
-		mIblQuality != MipmapsLowest )
+	if( rndSys->getCapabilities()->hasCapability( RSC_COMPUTE_PROGRAM )
+		&& !lowest )
 	{
 		iblSpecularFlag = TextureFlags::Uav | TextureFlags::Reinterpretable;
 	}
 
 	/*TextureGpu* reflTex = texMgr->findTextureNoThrow("DynamicCubemap");
 	if (reflTex)
-		texMgr->destroyTexture(reflTex);*/
+		texMgr->destroyTexture(reflTex);*/  //?-
 
+	//  🖼️ create rtt tex
 	mCubeReflTex = texMgr->createOrRetrieveTexture( "DynamicCubemap",
 		GpuPageOutStrategy::Discard,
 		TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps | iblSpecularFlag,
 		TextureTypes::TypeCube );
 	mCubeReflTex->scheduleTransitionTo( GpuResidency::OnStorage );
 
-	uint32 resolution = 512u;  //?
-	if( mIblQuality == MipmapsLowest || mIblQuality == IblMedium)
-		resolution = 1024u;
-	else if( mIblQuality == IblLow )
-		resolution = 256u;
-	else
-		resolution = 512u;
-	
-	mCubeReflTex->setResolution( resolution, resolution );
+	uint32 size = cTexSizes[pSet->refl_size];  // from set
+	mCubeReflTex->setResolution( size, size );
 
-	int mips = PixelFormatGpuUtils::getMaxMipmapCount( resolution );
+	int mips = PixelFormatGpuUtils::getMaxMipmapCount( size );
 	auto curmips = mCubeReflTex->getNumMipmaps();
 	
 	// if (curmips != mips)
-	// if( mIblQuality != MipmapsLowest )
+	// if( !lowest )
 		// mCubeReflTex->setNumMipmaps( mips );  // no change-
-		mCubeReflTex->setNumMipmaps( mips - 4u );  //par Limit max mipmap to 16x16
+	mCubeReflTex->setNumMipmaps( mips - 4u );  //par Limit max mipmap to 16x16
 	
 	mCubeReflTex->setPixelFormat( PFG_RGBA8_UNORM_SRGB );
 	mCubeReflTex->scheduleTransitionTo( GpuResidency::Resident );
@@ -79,42 +70,65 @@ void AppGui::CreateCubeReflect()
 	// hlmsPbs->resetIblSpecMipmap( 0u );  // auto, no-
 	hlmsPbs->resetIblSpecMipmap( mips - 4u );  //+
 
-	//  Create camera used to render to cubemap reflections
+
+	//  🎥 create camera  used to render to cubemap
 	if (mCubeCamera)
 	{	mSceneMgr->destroyCamera(mCubeCamera);  mCubeCamera = 0;  }
-	if( !mCubeCamera )
-	{
-		mCubeCamera = mSceneMgr->createCamera( "CubemapCam", true, true );
-		mCubeCamera->setFOVy( Degree(90) );  mCubeCamera->setAspectRatio( 1 );
-		mCubeCamera->setFixedYawAxis( false );
-		mCubeCamera->setPosition( 0, 1.0, 0 );  // upd in car
-		mCubeCamera->setNearClipDistance( 0.1 );
-		// mCubeCamera->setUseRenderingDistance(true);
-		// mCubeCamera->_setRenderedRqs(0, 200);
-		mCubeCamera->setVisibilityFlags( RV_MaskReflect );
-		// mCubeCamera->setDefaultVisibilityFlags( RV_Sky);  //** set in cubemap_target
-		//? mCubeCamera->setVrData(VrData
-		// mCubeCamera->setFarClipDistance( 100 );  // todo: !
-		mCubeCamera->setFarClipDistance( pSet->view_distance );
-		// mCubeCamera->setShadowRenderingDistance( 300 );  // par?-
-		// mCubeCamera->setCastShadows(true);
-	}
 
+	mCubeCamera = mSceneMgr->createCamera( "CubemapCam", true, true );
+	mCubeCamera->setFOVy( Degree(90) );  mCubeCamera->setAspectRatio( 1 );
+	mCubeCamera->setFixedYawAxis( false );
+	mCubeCamera->setPosition( 0, 1.0, 0 );  // upd in car
+	mCubeCamera->setNearClipDistance( 0.1 );
+	
+	// mCubeCamera->setUseRenderingDistance(true);
+	// mCubeCamera->_setRenderedRqs(0, 200);
+	mCubeCamera->setVisibilityFlags( RV_MaskReflect );
+	// mCubeCamera->setDefaultVisibilityFlags( RV_Sky );  //** set in cubemap_target
+	//? mCubeCamera->setVrData(VrData
+
+	//  📊 graphics params 1 :
+	// mCubeCamera->setFarClipDistance( pSet->view_distance );
+	mCubeCamera->setFarClipDistance( pSet->refl_dist );  // todo: 2nd sky!
+	mCubeCamera->setLodBias( pSet->refl_lod );  // par..
+	// mCubeCamera->setShadowRenderingDistance( 300 );  // par ?-
+	// mCubeCamera->setCastShadows(true);
+
+
+	//  🪄 node def
 	//  No need to tie RenderWindow's use of MSAA with cubemap's MSAA
 	const IdString idCubeNode =
 		//mWindow->getSampleDescription().isMultisample() ? "CubemapNodeMsaa" :
-		"CubemapNode";  // never use MSAA for cubemap.
-	{
-		CompositorNodeDef *nodeDef = mgr->getNodeDefinitionNonConst( idCubeNode );
-		const CompositorPassDefVec &passes =
-			nodeDef->getTargetPass( nodeDef->getNumTargetPasses() - 1u )->getCompositorPasses();
+		"CubemapNode";  // never use MSAA for cubemap
 
-		OGRE_ASSERT_HIGH( dynamic_cast<CompositorPassIblSpecularDef *>( passes.back() ) );
-		CompositorPassIblSpecularDef *iblSpecPassDef =
-			static_cast<CompositorPassIblSpecularDef *>( passes.back() );
-		iblSpecPassDef->mForceMipmapFallback = mIblQuality == MipmapsLowest;
-		iblSpecPassDef->mSamplesPerIteration = mIblQuality == IblLow ? 32.0f : mIblQuality == IblMedium ? 16.f : 128.0f;
-		iblSpecPassDef->mSamplesSingleIterationFallback = iblSpecPassDef->mSamplesPerIteration;
+	CompositorNodeDef *nodeDef = mgr->getNodeDefinitionNonConst( idCubeNode );
+	const CompositorPassDefVec &passes =
+		nodeDef->getTargetPass( nodeDef->getNumTargetPasses() - 1u )->getCompositorPasses();
+
+	OGRE_ASSERT_HIGH( dynamic_cast<CompositorPassIblSpecularDef *>( passes.back() ) );
+	CompositorPassIblSpecularDef *iblPassDef =
+		static_cast<CompositorPassIblSpecularDef *>( passes.back() );
+	
+	//  📊 graphics params 2 :
+	iblPassDef->mForceMipmapFallback = lowest; //mIblQuality == MipmapsLowest;  // todo: par?
+	float ibl = 1u << size_t(pSet->refl_ibl);
+	LogO("IBL: "+fToStr(ibl));
+	iblPassDef->mSamplesPerIteration = ibl;  // mIblQuality == IblLow ? 32.0f : 128.0f;
+	iblPassDef->mSamplesSingleIterationFallback = iblPassDef->mSamplesPerIteration;
+
+
+	//  face skip mask  ----
+	const size_t num = nodeDef->getNumTargetPasses();
+	assert( num == 6u && "Target face passes not 6" );
+	// LogO("Refl target passes: "+toStr(numTargetPasses));
+
+	for (size_t faceIdx = 0u; faceIdx < num; ++faceIdx)
+	{
+		const auto* targetDef = nodeDef->getTargetPass( faceIdx );
+		const auto& passDefs = targetDef->getCompositorPasses();
+
+		for (auto* passDef : passDefs)
+			passDef->mExecutionMask = 1u << faceIdx;
 	}
 
 
@@ -130,7 +144,48 @@ void AppGui::CreateCubeReflect()
 		w->connectExternal( 0, idCubeNode, 0 );
 	}
 
-	auto* mWorkspace = mgr->addWorkspace(
-		mSceneMgr, chan, mCubeCamera, name, true );
-	mWorkspaces.push_back(mWorkspace);  //+
+	auto* ws = mgr->addWorkspace(
+		mSceneMgr, chan, mCubeCamera, name, false );  // manual update
+	mWorkspaces.push_back(ws);  //+ to destroy
+
+	wsCubeRefl = ws;
+	iReflSkip = 0;
+}
+
+
+//  🔮💫 update  each frame try
+void AppGui::UpdCubeRefl()
+{
+	if (!wsCubeRefl)  return;
+
+	//  skip whole update
+	if (iReflSkip++ < pSet->refl_skip)
+		return;
+	iReflSkip = 0;
+
+
+	//  upd faces mask  ----
+	static uint8_t iFace = 0;
+	uint8_t mask = 0;
+
+	auto addFace = [&]()
+	{
+		if (iFace >= 6)
+			iFace = 0;
+		mask += 1u << iFace;
+		++iFace;
+	};
+
+	if (pSet->refl_faces == 6)
+		wsCubeRefl->setExecutionMask( 0xFF );
+	else
+	{	for (int i=0; i < pSet->refl_faces; ++i)
+			addFace();
+		wsCubeRefl->setExecutionMask(mask);
+	}
+
+	//  update, render cube face(s)
+	wsCubeRefl->_beginUpdate( true );
+	wsCubeRefl->_update();
+	wsCubeRefl->_endUpdate( true );
 }

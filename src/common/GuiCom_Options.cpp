@@ -86,14 +86,16 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 
 	//  🔮 Reflection  // todo:
-	sv= &svReflSkip;	sv->Init("ReflSkip",	&pSet->refl_skip,    0,1000, 4.f);  sv->DefaultI(0);
+	sv= &svReflSkip;	sv->Init("ReflSkip",	&pSet->refl_skip,    0,1000, 2.f);  sv->DefaultI(0);
 	sv= &svReflFaces;	sv->Init("ReflFaces",	&pSet->refl_faces,   1,6);  sv->DefaultI(1);
 	sv= &svReflSize;
 		for (i=0; i < NumTexSizes; ++i)  sv->strMap[i] = toStr(cTexSizes[i]);  //v way too big
 						sv->Init("ReflSize",	&pSet->refl_size,    0,NumTexSizes-1, 2.f);  sv->DefaultI(0);
 
-	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->refl_dist,	20.f,30000.f, 2.f, 0,4, 1.f," m");
+	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->refl_dist,	20.f,30000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
 																	SevC(ReflDist);  sv->DefaultF(300.f);
+	sv= &svReflIbl;		sv->Init("ReflIbl",		&pSet->refl_ibl,	0,8, 2.f);  SevC(ReflIbl);  sv->DefaultI(5);
+	sv= &svReflLod;		sv->Init("ReflLod",		&pSet->refl_lod,	0.f,4.f, 1.5f);  SevC(ReflLod);  sv->DefaultF(1.f);
 	BtnC("ApplyRefl", btnReflApply);
 	/*sv= &svReflMode;  // todo: 1 cube refl for each car..
 	sv->strMap[0] = TR("#{ReflMode_static}");  sv->strMap[1] = TR("#{ReflMode_single}");
@@ -243,25 +245,24 @@ void CGuiCom::btnShadowsApply(WP)
 
 void CGuiCom::btnShadersApply(WP)
 {
-	//app->scn->changeShadows();  //?
 }
 
 
 //  🔮 reflection
 void CGuiCom::slReflDist(SV*)
 {
-	// app->recreateReflections();  // todo ..
+	app->mCubeCamera->setFarClipDistance( pSet->refl_dist );
+	// todo: 2nd sky scale
 }
 void CGuiCom::slReflMode(SV* sv)
 {
-	// if (app->gui->bGI)
-	/*switch (pSet->refl_mode)
-	{
-		case 0: sv->setTextClr(0.0, 1.0, 0.0);  break;
-		case 1: sv->setTextClr(1.0, 0.5, 0.0);  break;
-		case 2: sv->setTextClr(1.0, 0.0, 0.0);  break;
-	}*/
-	// app->recreateReflections();
+}
+void CGuiCom::slReflIbl(SV* sv)
+{
+}
+void CGuiCom::slReflLod(SV* sv)
+{
+	app->mCubeCamera->setLodBias( pSet->refl_lod );
 }
 
 void CGuiCom::btnReflApply(WP)
@@ -270,7 +271,7 @@ void CGuiCom::btnReflApply(WP)
 }
 
 
-//  🌊 water
+//  🌊 water  todo
 void CGuiCom::chkWater(Ck*)
 {
 	// app->scn->mWaterRTT->setReflect(pSet->water_reflect);

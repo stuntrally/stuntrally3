@@ -55,6 +55,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	//  🔮 reflections
 	Param(c,w, "graph_reflect.skip_frames", refl_skip);		Param(c,w, "graph_reflect.faces_once", refl_faces);
 	Param(c,w, "graph_reflect.map_size", refl_size);		Param(c,w, "graph_reflect.dist", refl_dist);
+	Param(c,w, "graph_reflect.lod", refl_lod);				Param(c,w, "graph_reflect.ibl", refl_ibl);
 	Param(c,w, "graph_reflect.mode", refl_mode);
 
 	//  🌊 water

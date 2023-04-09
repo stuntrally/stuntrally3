@@ -816,8 +816,15 @@
 						</Widget>
 					</Widget>
 
+					<!-- Reflect Cube -->
 					<Widget type="TabItem" skin="" position="2 24 694 272">
-						<Property key="Caption" value="#FFD8B0#{Reflections}-"/>
+						<Property key="Caption" value="#FFD8B0#{Reflections}"/>
+						<Widget type="Button" skin="Button" position="32 230 200 26" layer="Back" name="ApplyRefl">
+							<Property key="Caption" value="#{Apply}"/>
+							<Property key="Colour" value="1.0 0.9 0.7"/>
+							<Property key="TextColour" value="1.0 0.9 0.7"/>
+						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="268 52 12 16">
 							<Property key="Caption" value="#00FF00+"/>
 							<Property key="Alpha" value="0.6"/>
@@ -828,47 +835,62 @@
 							<Property key="TextColour" value="1 0.8 0.4"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="280 50 320 18" name="ReflSkip"/>
+						<Widget type="TextBox" skin="TextBox" position="210 50 60 24" name="ReflSkipVal">
+							<Property key="TextColour" value="1 0.8 0.4"/>
+						</Widget>
+
+						<Widget type="Slider" skin="Slider" position="280 80 320 18" name="ReflSize"/>
 						<Widget type="TextBox" skin="TextBox" position="32 80 176 24">
-							<Property key="Caption" value="#{MapSize}*"/>
+							<Property key="Caption" value="#{MapSize}"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="1 0.8 0.2"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="280 80 320 18" name="ReflSize"/>
+						<Widget type="TextBox" skin="TextBox" position="210 80 60 24" name="ReflSizeVal">
+							<Property key="TextColour" value="1 0.8 0.2"/>
+						</Widget>
+						
+						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="ReflFaces"/>
 						<Widget type="TextBox" skin="TextBox" position="32 110 176 24">
 							<Property key="Caption" value="#{FacesOnce}"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="1.0 0.6 0.4"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="ReflFaces"/>
-						<Widget type="TextBox" skin="TextBox" position="32 140 176 24">
-							<Property key="Caption" value="#{Distance}*"/>
-							<Property key="Colour" value="0 0 0"/>
-							<Property key="TextColour" value="0.9 0.5 0.5"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="280 140 320 18" name="ReflDist"/>
-						<Widget type="Slider" skin="Slider" position="280 170 320 18" name="ReflMode"/>
-						<Widget type="TextBox" skin="TextBox" position="32 170 176 24">
-							<Property key="Caption" value="#{ReflMode}"/>
-							<Property key="Colour" value="0 0 0"/>
-							<Property key="TextColour" value="1.0 0.6 0.4"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="210 50 60 24" name="ReflSkipVal">
-							<Property key="TextColour" value="1 0.8 0.4"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="210 80 60 24" name="ReflSizeVal">
-							<Property key="TextColour" value="1 0.8 0.2"/>
-						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="210 110 60 24" name="ReflFacesVal">
 							<Property key="TextColour" value="1.0 0.6 0.4"/>
+						</Widget>
+
+						<Widget type="Slider" skin="Slider" position="280 140 320 18" name="ReflDist"/>
+						<Widget type="TextBox" skin="TextBox" position="32 140 176 24">
+							<Property key="Caption" value="#{Distance}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.9 0.5 0.5"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="210 140 60 24" name="ReflDistVal">
 							<Property key="TextColour" value="0.9 0.5 0.5"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="210 170 60 24" name="ReflModeVal">
+
+						<Widget type="Slider" skin="Slider" position="280 170 320 18" name="ReflIbl"/>
+						<Widget type="TextBox" skin="TextBox" position="32 170 176 24">
+							<Property key="Caption" value="#{IblSamples}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="1.0 0.6 0.4"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="210 170 60 24" name="ReflIblVal">
 							<Property key="TextColour" value="0.9 0.5 0.5"/>
+						</Widget>
+
+						<Widget type="Slider" skin="Slider" position="280 200 320 18" name="ReflLod"/>
+						<Widget type="TextBox" skin="TextBox" position="32 200 176 24">
+							<Property key="Caption" value="#{Detail}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="1.0 0.6 0.7"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="210 200 60 24" name="ReflLodVal">
+							<Property key="TextColour" value="0.9 0.5 0.7"/>
 						</Widget>
 					</Widget>
 
+					<!-- Water -->
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#60B0FF#{Water}-"/>
 						<Widget type="Button" skin="Button" position="32 150 200 26" layer="Back" name="ApplyShadersWater">

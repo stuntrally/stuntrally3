@@ -34,9 +34,6 @@ using namespace std;
 //  🌟 ctor
 //-----------------------------------------------
 App::App()
-	// : mIblQuality( IblHigh )  // 45 fps-  // par
-	// : mIblQuality( IblMedium )
-	// : mIblQuality( MipmapsLowest )  // very low, no mips-
 {
 	frm.resize(MAX_CARS);
 	for (int i=0; i < MAX_CARS; ++i)

@@ -675,6 +675,7 @@
 	<Tag name="FrameSkip">Frames skip</Tag>
 	<Tag name="MapSize">Map size</Tag>
 	<Tag name="FacesOnce">Faces at once</Tag>
+	<Tag name="IblSamples">IBL samples</Tag>
 	<Tag name="ReflMode">Mode</Tag>
 	<Tag name="ReflMode_static">Static</Tag>
 	<Tag name="ReflMode_single">Single</Tag>
