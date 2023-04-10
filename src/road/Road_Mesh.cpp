@@ -30,7 +30,7 @@
 #include <Vao/OgreVertexElements.h>
 using namespace Ogre;
 
-// #define V1tangents  // todo: compute tangents ..
+#define V1tangents  // todo: compute tangents ..
 
 
 //  🏗️ Create Mesh
@@ -194,9 +194,6 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 #ifdef V1tangents
 	String s1 = sMesh+"v1", s2 = sMesh+"v2";
 	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create(s1, "General");
-	/*v1::MeshPtr m1 = static_cast<v1::MeshPtr>(v1::MeshManager::getSingleton().createOrRetrieve(s1, "General",
-		true, 0, 0,
-		v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC ).first);*/
 	m1->setVertexBufferPolicy( v1::HardwareBuffer::HBU_STATIC, false );  // true may decrease loading time..
 	m1->setIndexBufferPolicy( v1::HardwareBuffer::HBU_STATIC, false );
  	m1->importV2(mesh.get());

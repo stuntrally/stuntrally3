@@ -143,6 +143,8 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 				db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
 				item->getSubItem(0)->setDatablock( db );
 				SetPaint();
+
+				//db->setBrdf(PbsBrdf::DefaultHasDiffuseFresnel);  // ogre 2.4 mirror
 			}
 	}	}
 	catch (Ogre::Exception ex)

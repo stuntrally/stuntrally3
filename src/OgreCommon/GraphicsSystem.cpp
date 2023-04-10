@@ -5,6 +5,7 @@
 #if OGRE_PLATFORM != OGRE_PLATFORM_APPLE_IOS
 	#include "SdlInputHandler.h"
 #endif
+#include "HlmsPbs2.h"
 #include <OgreLogManager.h>
 #include <OgreConfigFile.h>
 #include <OgreException.h>
@@ -23,7 +24,7 @@
 #include <OgreGpuProgramManager.h>
 
 #include <OgreHlmsUnlit.h>
-#include <OgreHlmsPbs.h>
+// #include <OgreHlmsPbs.h>
 #include <OgreHlmsManager.h>
 #include <Compositor/OgreCompositorManager2.h>
 #include <OgreOverlaySystem.h>
@@ -588,11 +589,11 @@ void GraphicsSystem::loadResources()
 
 	// Initialize resources for LTC area lights and accurate specular reflections (IBL)
 	Hlms *hlms = mRoot->getHlmsManager()->getHlms( HLMS_PBS );
-	OGRE_ASSERT_HIGH( dynamic_cast<HlmsPbs*>( hlms ) );
-	HlmsPbs *hlmsPbs = static_cast<HlmsPbs*>( hlms );
+	OGRE_ASSERT_HIGH( dynamic_cast<HlmsPbs2*>( hlms ) );
+	HlmsPbs2 *hlmsPbs2 = static_cast<HlmsPbs2*>( hlms );
 	try
 	{
-		hlmsPbs->loadLtcMatrix();
+		hlmsPbs2->loadLtcMatrix();
 	}
 	catch( FileNotFoundException &e )
 	{
@@ -625,7 +626,8 @@ void GraphicsSystem::registerHlms()
 		rootDir += "/";
 
 	//  At this point rootHlmsFolder should be a valid path to the Hlms data folder
-	HlmsUnlit *hlmsUnlit = 0;  HlmsPbs *hlmsPbs = 0;
+	HlmsUnlit *hlmsUnlit = 0;
+	HlmsPbs2 *hlmsPbs2 = 0;
 
 	//  For retrieval of the paths to the different folders needed
 	String mainPath;  StringVector paths;
@@ -649,8 +651,8 @@ void GraphicsSystem::registerHlms()
 		hlmsUnlit->setDebugOutputPath(true, false, PATHS::ShadersDir()+"/");
 	}
 
-	{	//  Create & Register HlmsPbs  ----
-		HlmsPbs::getDefaultPaths( mainPath, paths );
+	{	//  Create & Register HlmsPbs2  ----
+		HlmsPbs2::getDefaultPaths( mainPath, paths );
 		Archive* ar = mgr.load( rootDir + mainPath, type, true );
 		ArchiveVec dirs;
 		for (auto it = paths.begin(); it != paths.end(); ++it)
@@ -658,9 +660,9 @@ void GraphicsSystem::registerHlms()
 			Archive* lib = mgr.load( rootDir + *it, type, true );
 			dirs.push_back( lib );
 		}
-		hlmsPbs = OGRE_NEW HlmsPbs( ar, &dirs );
-		Root::getSingleton().getHlmsManager()->registerHlms( hlmsPbs );
-		hlmsPbs->setDebugOutputPath(true, false, PATHS::ShadersDir()+"/");
+		hlmsPbs2 = OGRE_NEW HlmsPbs2( ar, &dirs );
+		Root::getSingleton().getHlmsManager()->registerHlms( hlmsPbs2 );
+		hlmsPbs2->setDebugOutputPath(true, false, PATHS::ShadersDir()+"/");
 	}
 
 
@@ -677,7 +679,7 @@ void GraphicsSystem::registerHlms()
 
 		if( !support )
 		{
-			hlmsPbs->setTextureBufferDefaultSize( 512 * 1024 );
+			hlmsPbs2->setTextureBufferDefaultSize( 512 * 1024 );
 			hlmsUnlit->setTextureBufferDefaultSize( 512 * 1024 );
 		}
 	}

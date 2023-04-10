@@ -32,9 +32,6 @@
 #include "Terra.h"
 #include <OgreCommon.h>
 #include <OgreVector3.h>
-#include <OgreHlmsPbs.h>
-#include <OgreHlmsPbsDatablock.h>
-#include <OgreHlmsPbsPrerequisites.h>
 using namespace Ogre;
 
 

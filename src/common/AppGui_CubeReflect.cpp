@@ -9,7 +9,7 @@
 #include <OgreWindow.h>
 
 #include <OgreTextureGpuManager.h>
-#include <OgreHlmsPbs.h>
+#include "HlmsPbs2.h"
 #include <OgreHlmsManager.h>
 
 #include <Compositor/OgreCompositorManager2.h>
@@ -63,12 +63,12 @@ void AppGui::CreateCubeReflect()
 	mCubeReflTex->setPixelFormat( PFG_RGBA8_UNORM_SRGB );
 	mCubeReflTex->scheduleTransitionTo( GpuResidency::Resident );
 
-
+	//  ibl mips
 	HlmsManager *hlmsMgr = mRoot->getHlmsManager();
-	assert( dynamic_cast<HlmsPbs *>( hlmsMgr->getHlms( HLMS_PBS ) ) );
-	HlmsPbs *hlmsPbs = static_cast<HlmsPbs *>( hlmsMgr->getHlms( HLMS_PBS ) );
-	// hlmsPbs->resetIblSpecMipmap( 0u );  // auto, no-
-	hlmsPbs->resetIblSpecMipmap( mips - 4u );  //+
+	assert( dynamic_cast<HlmsPbs2 *>( hlmsMgr->getHlms( HLMS_PBS ) ) );
+	HlmsPbs2 *hlmsPbs2 = static_cast<HlmsPbs2 *>( hlmsMgr->getHlms( HLMS_PBS ) );
+	// hlmsPbs2->resetIblSpecMipmap( 0u );  // auto, no-
+	hlmsPbs2->resetIblSpecMipmap( mips - 4u );  //+
 
 
 	//  🎥 create camera  used to render to cubemap

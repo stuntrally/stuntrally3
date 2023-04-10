@@ -36,8 +36,6 @@
 #include <OgreMesh2.h>
 #include <OgreMeshManager2.h>
 #include <OgreManualObject2.h>
-#include <OgreHlmsPbsPrerequisites.h>
-#include <OgreHlmsPbsDatablock.h>
 using namespace Ogre;
 
 

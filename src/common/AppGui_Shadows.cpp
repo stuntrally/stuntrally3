@@ -9,7 +9,7 @@
 #include <OgreOverlayManager.h>
 
 #include <OgreHlmsManager.h>
-#include <OgreHlmsPbs.h>
+#include "HlmsPbs2.h"
 #include <OgreHlmsUnlitDatablock.h>
 #include <OgreHlmsCompute.h>
 
@@ -276,8 +276,8 @@ void AppGui::registerHlms() override
 	GraphicsSystem::registerHlms();
 	Root *root = getRoot();
 	Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_PBS );
-	assert( dynamic_cast<HlmsPbs *>( hlms ) );
-	HlmsPbs *pbs = static_cast<HlmsPbs *>( hlms );
+	assert( dynamic_cast<HlmsPbs2 *>( hlms ) );
+	HlmsPbs2 *pbs = static_cast<HlmsPbs2 *>( hlms );
 	if( pbs )
 		pbs->setStaticBranchingLights( true );
 }
@@ -358,8 +358,8 @@ void AppGui::createShadowMapDebugOverlays()
 	bool isUsingEsm = false;
 	{
 		Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_PBS );
-		assert( dynamic_cast<HlmsPbs *>( hlms ) );
-		HlmsPbs *pbs = static_cast<HlmsPbs *>( hlms );
+		assert( dynamic_cast<HlmsPbs2 *>( hlms ) );
+		HlmsPbs2 *pbs = static_cast<HlmsPbs2 *>( hlms );
 		isUsingEsm = pbs->getShadowFilter() == HlmsPbs::ExponentialShadowMaps;
 	}
 

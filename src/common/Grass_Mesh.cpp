@@ -11,8 +11,6 @@
 #include "Terra.h"
 
 #include <OgreCommon.h>
-#include <OgreHlmsPbsDatablock.h>
-#include <OgreHlmsPbsPrerequisites.h>
 #include <OgreImage2.h>
 #include <OgreMeshManager.h>
 #include <OgreLogManager.h>

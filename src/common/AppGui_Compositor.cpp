@@ -13,7 +13,7 @@
 #include <OgreSceneManager.h>
 #include <OgreTextureGpuManager.h>
 
-#include <OgreHlmsPbs.h>
+#include "HlmsPbs2.h"
 #include <OgreHlmsManager.h>
 #include <Compositor/OgreCompositorManager2.h>
 #include <Compositor/OgreCompositorNodeDef.h>
@@ -90,49 +90,51 @@ void AppGui::createReflectiveSurfaces()
 		root->getRenderSystem()->getCapabilities()->hasCapability( RSC_COMPUTE_PROGRAM );
 #endif
 
-	// Setup PlanarReflections
-	mPlanarRefl =
-		new PlanarReflections( mSceneMgr, root->getCompositorManager2(), 1.0, 0 );
+	//  Setup PlanarReflections
+	mPlanarRefl = new PlanarReflections( mSceneMgr, root->getCompositorManager2(), 1.0, 0 );
 	mWorkspaceListener = new PlanarReflectionsWorkspaceListener( mPlanarRefl );
 	{
 		CompositorWorkspace *workspace = mGraphicsSystem->getCompositorWorkspace();
 		workspace->addListener( mWorkspaceListener );
 	}
 
-	//  The perfect mirror doesn't need mipmaps.
+	//  The perfect mirror doesn't need mipmaps
 	uint32 si = 512;
-	mPlanarRefl->setMaxActiveActors( 1u, "PlanarReflectionsReflectiveWorkspace",
-		true, si, si, false, PFG_RGBA8_UNORM_SRGB, useComputeMipmaps );
+	// mPlanarRefl->setMaxActiveActors( 1u, "PlanarReflectionsReflectiveWorkspace",
+	// 	true, si, si, false, PFG_RGBA8_UNORM_SRGB, useComputeMipmaps );
 	
 	// The rest of the reflections do.
 	mPlanarRefl->setMaxActiveActors( 2u, "PlanarReflectionsReflectiveWorkspace",
 		true, si, si, true, PFG_RGBA8_UNORM_SRGB, useComputeMipmaps );
-	const Vector2 mirrorSize( 400.0f, 400.0f );
-
+	
+	const Vector2 mirrorSize( 4000.0f, 4000.0f );
 	// Create the plane mesh
 	// Note that we create the plane to look towards +Z; so that sceneNode->getOrientation
 	// matches the orientation for the PlanarReflectionActor
 	v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
 		"Plane Mirror Unlit", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 		Plane( Vector3::UNIT_Z, 0.0f ),
+		// Plane( Vector3::UNIT_Y, 0.0f ),
 		mirrorSize.x, mirrorSize.y, 1, 1, true, 1, 1.0f,
-		1.0f, Vector3::UNIT_Y, v1::HardwareBuffer::HBU_STATIC,
-		v1::HardwareBuffer::HBU_STATIC );
+		1.0f, Vector3::UNIT_Y,
+		// 1.0f, Vector3::UNIT_X,
+		v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 	MeshPtr planeMesh = MeshManager::getSingleton().createByImportingV1(
 		"Plane Mirror Unlit", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 		planeMeshV1.get(), true, true, true );
 
 
-	// Setup mirror for Unlit.
+	//  Setup mirror for Unlit
 	//---------------------------------------------------------------------
 	Item *item;
 	SceneNode *nd;
 	PlanarReflectionActor *actor;
 
-	item = mSceneMgr->createItem( planeMesh, SCENE_DYNAMIC );
+	/**item = mSceneMgr->createItem( planeMesh, SCENE_DYNAMIC );
 	nd = mSceneMgr->getRootSceneNode( SCENE_DYNAMIC )->createChildSceneNode( SCENE_DYNAMIC );
-	nd->setPosition( 50, 5, 0 );
-	nd->setOrientation(	Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_Y ) );  //-
+	nd->setPosition( 500, 5, 0 );
+	nd->setOrientation(	Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_Z ) );  // ?
+	// nd->setOrientation(	Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_Y ) );  // z
 	nd->attachObject( item );
 	item->setCastShadows( false );
 	item->setVisibilityFlags( 1u );  // Do not render this plane during the reflection phase.
@@ -157,19 +159,22 @@ void AppGui::createReflectiveSurfaces()
 	item->setDatablock( mirror );/**/
 
 
-	//  Setup mirror for PBS.
+	//  Setup mirror for PBS
 	//---------------------------------------------------------------------
 	Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_PBS );
-	assert( dynamic_cast<HlmsPbs *>( hlms ) );
-	HlmsPbs *pbs = static_cast<HlmsPbs *>( hlms );
+	assert( dynamic_cast<HlmsPbs2 *>( hlms ) );
+	HlmsPbs2 *pbs = static_cast<HlmsPbs2 *>( hlms );
 	pbs->setPlanarReflections( mPlanarRefl );
 
 	item = mSceneMgr->createItem( planeMesh, SCENE_DYNAMIC );
 	item->setDatablock( "GlassRoughness" );
+	item->setCastShadows(false);
+
 	nd = mSceneMgr->getRootSceneNode( SCENE_DYNAMIC )->createChildSceneNode( SCENE_DYNAMIC );
-	nd->setPosition( -50, 2.5f, 0 );
-	nd->setOrientation( Quaternion( Radian( Math::HALF_PI ), Vector3::UNIT_Y ) );
-	nd->setScale( Vector3( 0.75f, 0.5f, 1.0f ) );
+	nd->setPosition( -0, -9.f, 0 );  // -13.5f
+	// nd->setOrientation( Quaternion( Radian( Math::HALF_PI ), Vector3::UNIT_Y ) );  // z-
+	nd->setOrientation( Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_X ) );  // ?_
+	// nd->setScale( Vector3( 1.f, 1.f, 1.f ) );
 	nd->attachObject( item );
 
 	actor = mPlanarRefl->addActor( PlanarReflectionActor(
@@ -178,7 +183,8 @@ void AppGui::createReflectiveSurfaces()
 
 	PlanarReflections::TrackedRenderable trackedRenderable(
 		item->getSubItem( 0 ), item,
-		Vector3::UNIT_Z, Vector3( 0, 0, 0 ) );
+		Vector3::UNIT_Z, Vector3( 0, 0, 0 ) );  // z
+		// Vector3::UNIT_Y, Vector3( 0, 0, 0 ) );  // ?
 	mPlanarRefl->addRenderable( trackedRenderable );
 }
 
@@ -469,13 +475,13 @@ Cam* AppGui::CreateCamera(String name,
 #endif
 
 
-#if 0
+#if 0	// todo: shadow filter..
 	if( arg.keysym.sym == SDLK_F5 )
 	{
 		Ogre::Hlms *hlms = mGraphicsSystem->getRoot()->getHlmsManager()->getHlms( Ogre::HLMS_PBS );
 
-		assert( dynamic_cast<Ogre::HlmsPbs *>( hlms ) );
-		Ogre::HlmsPbs *pbs = static_cast<Ogre::HlmsPbs *>( hlms );
+		assert( dynamic_cast<HlmsPbs2 *>( hlms ) );
+		HlmsPbs2 *pbs = static_cast<HlmsPbs2 *>( hlms );
 
 		Ogre::HlmsPbs::ShadowFilter nextFilter = static_cast<Ogre::HlmsPbs::ShadowFilter>(
 			( pbs->getShadowFilter() + 1u ) % Ogre::HlmsPbs::NumShadowFilter );
