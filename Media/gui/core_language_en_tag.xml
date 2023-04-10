@@ -1249,6 +1249,7 @@
 	<Tag name="MinimapAndSize">Minimap, size</Tag>
 	<!--  Editor  Settings update  -->
 	<Tag name="RoadPointSize">Road points size</Tag>
+	<Tag name="RoadUpdSkip">Road update skip</Tag>
 	<Tag name="TerUpdSkip">Terrain update skip</Tag>
 	<Tag name="MinimapUpdSkip">Minimap update skip</Tag>
 

@@ -2,6 +2,8 @@
 #include "Def_Str.h"
 #include "dbl.h"
 #include "Road.h"
+#include "App.h"
+#include "settings.h"
 #include <OgreTimer.h>
 using namespace Ogre;
 using std::vector;  using std::min;  using std::max;
@@ -56,7 +58,7 @@ bool SplineRoad::RebuildRoadInt(bool editorAlign, bool bulletFull)
 	if (!full && !editorAlign && !bulletFull)
 	{
 		++iRebuildSkip;
-		if (iRebuildSkip < 12)  //par
+		if (iRebuildSkip < pApp->pSet->road_skip)  //par
 			return full;
 		else
 			iRebuildSkip = 0;

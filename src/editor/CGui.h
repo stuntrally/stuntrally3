@@ -97,7 +97,7 @@ public:
 
 	SlV(SizeMinimap);  SlV(SizeRoadP);
 	SV svCamSpeed, svCamInert;
-	SV svTerUpd, svMiniUpd;
+	SV svTerUpd, svMiniUpd, svRoadUpd;
 
 	CK(Minimap);
 	void btnSetCam(WP);

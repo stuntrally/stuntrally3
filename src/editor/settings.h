@@ -34,7 +34,9 @@ public:
 
 	//  ⚙️ settings
 	bool bFog =0, bTrees =0, bWeather =0, bEmitters =0;
-	int ter_skip = 4, mini_skip = 4;  float road_sphr = 2.5f;
+	int ter_skip = 4, mini_skip = 4;
+	int road_skip = 12;  float road_sphr = 2.5f;
+	
 	//  🎥 camera
 	float cam_speed = 0.9f, cam_inert = 0.4f;
 	float cam_x = 0.f, cam_y = 50.f, cam_z = -120.f;

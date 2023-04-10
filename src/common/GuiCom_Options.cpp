@@ -90,7 +90,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	sv= &svReflFaces;	sv->Init("ReflFaces",	&pSet->refl_faces,   1,6);  sv->DefaultI(1);
 	sv= &svReflSize;
 		for (i=0; i < NumTexSizes; ++i)  sv->strMap[i] = toStr(cTexSizes[i]);  //v way too big
-						sv->Init("ReflSize",	&pSet->refl_size,    0,NumTexSizes-1, 2.f);  sv->DefaultI(0);
+						sv->Init("ReflSize",	&pSet->refl_size,    0,NumTexSizes-1 -1, 2.f);  sv->DefaultI(0);
 
 	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->refl_dist,	20.f,30000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
 																	SevC(ReflDist);  sv->DefaultF(300.f);

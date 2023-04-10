@@ -246,6 +246,7 @@ void CGui::InitGui()
 
 	sv= &svTerUpd;		sv->Init("TerUpd",		&pSet->ter_skip,  0, 20);  sv->DefaultI(1);
 	sv= &svMiniUpd;		sv->Init("MiniUpd",		&pSet->mini_skip, 0, 20);  sv->DefaultI(4);
+	sv= &svRoadUpd;		sv->Init("RoadUpd",		&pSet->road_skip, 0, 30);  sv->DefaultI(8);
 
 	ck= &ckFps;			ck->Init("Fps",			&pSet->show_fps);  Cev(Fps);
 	ck= &ckWireframe;	ck->Init("Wireframe",	&app->bWireframe);  Cev(Wireframe);
