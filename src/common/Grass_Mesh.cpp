@@ -31,8 +31,6 @@
 using namespace Ogre;
 using namespace std;
 
-#define USE_UMA_SHARED_BUFFERS 1
-
 
 //  Create  Grass
 //---------------------------------------------------------
@@ -250,16 +248,8 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	VertexBufferPacked *vertexBuffer = 0;
 	try
 	{
-	#if USE_UMA_SHARED_BUFFERS
-		const RenderSystemCapabilities *caps = renderSystem->getCapabilities();
-		if (caps && caps->hasCapability(RSC_UMA))
-		{
-			vertexBuffer = vaoManager->createVertexBuffer(
-				vertexElements, vertCnt, BT_DEFAULT_SHARED, &vertices[0], true );
-		}else
-	#endif
-			vertexBuffer = vaoManager->createVertexBuffer(
-				vertexElements, vertCnt, partialMesh ? BT_DEFAULT : BT_IMMUTABLE, &vertices[0], true );
+		vertexBuffer = vaoManager->createVertexBuffer(
+			vertexElements, vertCnt, partialMesh ? BT_DEFAULT : BT_IMMUTABLE, &vertices[0], true );
 	}
 	catch (Exception &e)
 	{
@@ -290,16 +280,8 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 
 	try
 	{
-	#ifdef USE_UMA_SHARED_BUFFERS
-		const RenderSystemCapabilities *caps = renderSystem->getCapabilities();
-		if(caps && caps->hasCapability(RSC_UMA))
-		{
-			indexBuffer = vaoManager->createIndexBuffer(
-				IndexBufferPacked::IT_16BIT, idxCnt, BT_DEFAULT_SHARED, indices, true );
-		}else
-	#endif
-			indexBuffer = vaoManager->createIndexBuffer(
-				IndexBufferPacked::IT_16BIT, idxCnt, BT_IMMUTABLE, indices, true );
+		indexBuffer = vaoManager->createIndexBuffer(
+			IndexBufferPacked::IT_16BIT, idxCnt, BT_IMMUTABLE, indices, true );
 	}
 	catch( Exception &e )
 	{
