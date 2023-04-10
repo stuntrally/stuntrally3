@@ -53,6 +53,7 @@ void SplineRoad::RebuildRoadPace()
 bool SplineRoad::RebuildRoadInt(bool editorAlign, bool bulletFull)
 {
 	bool full = iDirtyId == -1;
+#ifdef SR_EDITOR
 	if (full)
 		iRebuildSkip = 0;
 	if (!full && !editorAlign && !bulletFull)
@@ -63,7 +64,7 @@ bool SplineRoad::RebuildRoadInt(bool editorAlign, bool bulletFull)
 		else
 			iRebuildSkip = 0;
 	}
-
+#endif
 
 	if (!rebuild && !(editorAlign || bulletFull))  return false;
 	rebuild = false;
