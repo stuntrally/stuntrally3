@@ -56,7 +56,7 @@ void CScene::CreateTerrain1(int n, bool upd)
 	// bool tripl = false;  // test
 	int ter_tripl = app->pSet->ter_tripl;
 	bool bTripl = ter_tripl && n == 0 && td.triplCnt > 0;
-	LogO("C--T Terrain tripl layers: " + toStr(td.triplCnt));
+	LogO("C--T Terrain tripl layers: " + toStr(td.triplCnt)+" on: "+toStr(bTripl)+" gfx: "+toStr(ter_tripl));
 
 	if (bTripl)  //^
 	{	tdb->setDetailTriplanarDiffuseEnabled(true);
@@ -210,7 +210,8 @@ void CScene::CreateTerrain1(int n, bool upd)
 	db = hlmsMgr->getDatablock( mtrName );
 	mTerra->setDatablock( db );
 
-	//  shadows
+
+	//  terra shadows,  hlms listener
 	if (!mHlmsPbsTerraShadows && n == 0)  // 1st ter only?-
 	{
 		LogO("---T Terrain shadows");

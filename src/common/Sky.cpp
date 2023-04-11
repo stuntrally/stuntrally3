@@ -32,6 +32,7 @@
 
 #include <OgreAtmosphereComponent.h>
 #include <OgreAtmosphere2Npr.h>
+#include "OgreHlmsPbsTerraShadows.h"
 using namespace Ogre;
 
 
@@ -263,7 +264,7 @@ void CScene::UpdSky()
 }
 
 //  upd sun
-void CScene::UpdSun()
+void CScene::UpdSun(float dt)
 {
 	if (!sun)  return;
 	Vector3 dir = SplineRoad::GetRot(sc->ldYaw - sc->skyYaw, -sc->ldPitch);
@@ -290,6 +291,9 @@ void CScene::UpdSun()
 		// 0.8f, 0x0 );  // env? EnvFeatures_DiffuseGiFromReflectionProbe
 		// -dir + Ogre::Vector3::UNIT_Y * 0.2f );
 
+	//  inc time for  wind anim etc
+	if (mHlmsPbsTerraShadows && dt > 0.f)
+		mHlmsPbsTerraShadows->globalTime += dt;
 }
 
 

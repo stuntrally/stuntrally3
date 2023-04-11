@@ -46,6 +46,8 @@ namespace Ogre
 #endif
 
 	public:
+		float globalTime = 0.f;
+
 		HlmsPbsTerraShadows();
 		virtual ~HlmsPbsTerraShadows();
 

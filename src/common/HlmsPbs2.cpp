@@ -13,26 +13,33 @@ HlmsPbs2::~HlmsPbs2()
 }
 
 
-// const size_t magic1234 = 1234;
+const size_t magic123 = 123;
 
 void HlmsPbs2::calculateHashForPreCreate( Renderable *renderable, PiecesMap *inOutPieces )
 {
 	HlmsPbs::calculateHashForPreCreate( renderable, inOutPieces );
 	
-	LogO("calc for: " + renderable->getDatablockOrMaterialName());
-	// if (renderable && renderable->getMaterial())
-	// 	LogO("calc for: "+renderable->getMaterial()->getName());
-		// logs.push_back("calc for: "+renderable->getMaterial()->getName());
-	
+	const auto& mtr = renderable->getDatablockOrMaterialName();
+    //LogO("calc for: " + mtr);
+    
+    if (mtr.find("grass") != std::string::npos)
+		setProperty( "grass", 1 );
+
+    // if (mtr.find("road") != std::string::npos)
+	// 	setProperty( "road", 1 );
+
+
 	const auto &paramMap = renderable->getCustomParameters();
-	/*auto itor = paramMap.find( magic1234 );
+	auto itor = paramMap.find( magic123 );
 	if( itor != paramMap.end() )
 	{
-		setProperty( "BlaBlah", (int)itor->second.x );
-	}*/
+		setProperty( "selected_glow", (int)itor->second.x );
+	}
 }
 
 // void HlmsPbs2::calculateHashForPreCaster  //too?
+
+// createDatablockImpl
 
 
 /*
@@ -88,3 +95,18 @@ if( hlms->getType() == Ogre::HLMS_PBS )
 // HlmsTextureManager::dumpMemoryUsage
 
 //hlmsPbs->setParallaxCorrectedCubemap( mParallaxCorrectedCubemap );
+/*
+@insertpiece( custom_vs_attributes )
+@insertpiece( custom_vs_uniformDeclaration )
+@insertpiece( PassStructDecl )
+@insertpiece( custom_vs_uniformStructDeclaration )
+@insertpiece( custom_vs_posMaterialLoad )
+@insertpiece( custom_vs_preTransform )  //+
+@insertpiece( custom_vs_preExecution )
+
+@insertpiece( custom_ps_uniformDeclaration )
+@insertpiece( custom_ps_functions )
+@insertpiece( custom_ps_preExecution )
+@insertpiece( custom_ps_posMaterialLoad )
+@piece( custom_ps_preLights )
+*/

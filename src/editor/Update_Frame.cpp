@@ -262,7 +262,7 @@ void App::update( float dt )
 	UpdFpsText();
 
 
-	scn->UpdSun();  // ⛅
+	scn->UpdSun(dt);  // ⛅
 
 	if (scn->ndSky)
 		scn->ndSky->setPosition(mCamera->getPosition());

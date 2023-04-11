@@ -37,6 +37,7 @@ THE SOFTWARE.
 #include <OgreHlmsPbs.h>
 #include <OgreHlmsManager.h>
 #include <OgreRoot.h>
+#include "Def_Str.h"
 
 namespace Ogre
 {
@@ -140,6 +141,11 @@ namespace Ogre
 			*passBufferPtr++ = invHeight;
 			*passBufferPtr++ = terrainXZInvDim.y;
 			*passBufferPtr++ = 1.0f;
+
+			*passBufferPtr++ = globalTime;
+			*passBufferPtr++ = 0.f;
+			*passBufferPtr++ = 0.f;
+			*passBufferPtr++ = 0.f;
 		}
 		return passBufferPtr;
 	}

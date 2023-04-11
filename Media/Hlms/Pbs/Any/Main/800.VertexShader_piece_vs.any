@@ -265,6 +265,23 @@
 			// We need worldNorm for normal offset bias
 			midf3 worldNorm = mul( inputNormal, toMidf3x3( worldMat ) ).xyz;
 		@end
+
+		//**  grass wind
+		@property( grass && !hlms_shadowcaster )
+			// worldPos.xz += (_h(1.0) - inVs_uv0.y) * (
+			// 	_h(0.2) * sin(passBuf.globalTime.x * _h(1.2)));
+			midf2 oldpos = worldPos.xz;
+			if (inVs_uv0.y == 0.0f)  // top
+			{
+				float time = passBuf.globalTime.x; // * _h(1.2);
+				float freq = 3.2;
+				float offset1 = sin(time + oldpos.x * 2.427 * freq) * sin(time + oldpos.y * 3.427 * freq);
+				float offset2 = cos(time + oldpos.y * 2.534 * freq) * cos(time + oldpos.x * 3.534 * freq);
+				// float4 grassDirection = float4(1.0, 0.0, 0.0, 0.0);
+				// worldPos.xz += grassDirection * offset1 + grassDirection.zyxw * offset2;
+				worldPos.xz += float2(offset1, offset2) * 0.4;
+			}
+		@end
 	@end
 
 	@insertpiece( PoseTransform )

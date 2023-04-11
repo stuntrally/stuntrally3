@@ -51,7 +51,7 @@ public:
 	//  🌞 Sun *
 	Ogre::Light* sun = 0;
 	Ogre::SceneNode *ndSun = 0;
-	void CreateSun(), DestroySun(), UpdSun();
+	void CreateSun(), DestroySun(), UpdSun(float dt=0.f);
 
 	//  🌫️ Fog / Atmo
 	Ogre::Atmosphere2Npr* atmo = 0;

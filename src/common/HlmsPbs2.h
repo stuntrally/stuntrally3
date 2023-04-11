@@ -13,5 +13,9 @@ public:
 	void calculateHashForPreCreate( Ogre::Renderable *renderable, Ogre::PiecesMap *inOutPieces ) override;
 	// void calculateHashForPreCaster( Ogre::Renderable *renderable, Ogre::PiecesMap *inOutPieces ) override;
 
+	// HlmsDatablock *createDatablockImpl( IdString datablockName, const HlmsMacroblock *macroblock,
+	// 									const HlmsBlendblock *blendblock,
+	// 									const HlmsParamVec   &paramVec ) override;
+
 	std::vector<Ogre::String> logs;
 };
