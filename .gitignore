@@ -44,3 +44,5 @@ EmscriptenDependencies
 EmscriptenBuild
 cmake-build-*/
 .idea/
+_build
+CMakeUserPresets.json
