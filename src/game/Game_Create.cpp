@@ -126,28 +126,12 @@ void App::createScene01()
 
 //-----------------------------------------------------------------------------------
 /*
-	good scn +
-Aln Cry Atm  Aus Blk Can Des  Fin For Grc  Jng Mos  Mud Sav  Spc Stn Sur  Wnt
-
-	bad scn -  // fixme look
-Mrs- all  Tox- all  Uni- all  Vlc emis
+	bad look, add emissive:  Tox  Uni  Vlc
 -62 Tropic  -75 HighPeaks  tripl  60 Aus3-Canyon  ter spec-
-clr:
+	clr:
 103 Des SandStorm  65 Vlc1-Dark  66 Isl5-Shore  121 Isl-StuntIsl
 110 Atm5-Twister  186 Sur4-BlueWinter  
 
-	bad cars
-3B uv,clr  ES n,gls  OT TW wh-  U8 O gls-
-
-	low fps
-167 Taiga  grass trees
-191 SandyMountain
-	border 60fps
-128 Beauty
- 62 Tropic
- 84 JungleCanyons
- 54 Grc Long
-114 Fin Lakes
- 14 Cross
-
+	bad veh look:
+ES n,gls  BV blk inter  U8 floor
 */

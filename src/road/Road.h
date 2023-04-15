@@ -129,7 +129,7 @@ public:
 #endif
 
 	//  other
-	// const Ogre::String& getMtrStr(int seg);  const Ogre::String& getWallMtrStr(int seg);
+	const Ogre::String& getMtrStr(int seg);  const Ogre::String& getWallMtrStr(int seg);
 	bool isPipe(int seg);
 	
 

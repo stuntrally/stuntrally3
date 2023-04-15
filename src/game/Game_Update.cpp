@@ -58,7 +58,7 @@ void App::update( float dt )
 		mInputCtrlPlayer[i]->update(dt);
 
 
-	scn->UpdSun();  // ⛅
+	scn->UpdSun(dt);  // ⛅
 
 	if (scn->ndSky)
 		scn->ndSky->setPosition(mCamera->getPosition());

@@ -79,8 +79,8 @@ void App::KeyTxtRoad(Real q)
 	rdVal[7]->setCaption(ter ? "" : toStr(sp.cols));  // 🏛️ column
 
 	rdTxt[12]->setVisible(vis);  rdKey[12]->setVisible(vis);  
-	// rdTxt[12]->setCaption(toStr(sp.idWall)+" "+road->getWallMtrStr(ic));  // 📏 wall mtr
-	// rdTxt[8]->setCaption(toStr(sp.idMtr)+" "+road->getMtrStr(ic));  // mtr
+	rdTxt[12]->setCaption(toStr(sp.idWall)+" "+road->getWallMtrStr(ic));  // 📏 wall mtr
+	rdTxt[8]->setCaption(toStr(sp.idMtr)+" "+road->getMtrStr(ic));  // mtr
 
 	rdVal[9]->setCaption( sp.chkR == 0.f ? "" : fToStr(sp.chkR,1,3)+"  "+ (sp.chk1st ? "#D0D0FF(1)":"") );
 
