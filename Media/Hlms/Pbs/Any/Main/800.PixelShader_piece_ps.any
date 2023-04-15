@@ -799,17 +799,20 @@
 			@end
 
 				@property( clear_coat )
-		float nn = abs(pixelData.normal.z);
+		// float nn = abs(pixelData.normal.z);
 		// todo: params for color changing paints..
-		// pixelData.diffuse.xyz = 0.2f * lerp(
+		// pixelData.diffuse.xyz = 0.2f * lerp(  // dark red, magenta, blue `
 		// 	lerp(float3( 0.0f, 0.2f, 0.2f ), float3( 0.1f, 0.05f, 0.1f ), nn * 4.f),
 		// 									 float3( 0.0f, 0.05f, 0.1f ), pow(nn, 3.f) );
-		// pixelData.diffuse.xyz = 0.3f * lerp(  // rainbow blu, orn, grn +
+		// pixelData.diffuse.xyz = 0.25f * lerp(  // rainbow blu, orn, grn +
 		// 	lerp(float3( 0.0f, 1.0f, 0.0f ), float3( 1.0f, 1.0f, 0.0f ), nn * 4.f),
 		// 									 float3( 0.0f, 0.5f, 1.0f ), pow(nn, 3.f) );
 		// pixelData.diffuse.xyz = 0.4f * lerp(  // orn, pink, viol +
 		// 	lerp(float3( 0.0f, 0.05f, 0.6f ), float3( 0.3f, 0.05f, 0.5f ), nn * 4.f),
 		// 									 float3( 1.0f, 0.5f, 0.0f ), pow(nn, 5.f) );
+		// pixelData.diffuse.xyz = 0.3f * lerp(  // ylw, grn, blu ~
+		// 	lerp(float3( 0.0f, 0.2f, 1.0f ), float3( 0.0f, 1.0f, 0.0f ), nn * 2.f),
+		// 									 float3( 1.0f, 1.0f, 0.0f ), pow(nn, 2.f) );
 		// pixelData.diffuse.xyz = 0.3f * lerp(  // gray, grn, ylw `
 		// 	lerp(float3( 1.0f, 1.0f, 0.0f ), float3( 0.0f, 1.0f, 0.0f ), nn * 4.f),
 		// 									 float3( 0.4f, 0.4f, 0.4f ), pow(nn, 5.f) );
@@ -822,9 +825,6 @@
 		// pixelData.diffuse.xyz = 0.04f * lerp(  // dark blue viol `
 		// 	lerp(float3( 0.5f, 0.0f, 0.1f ), float3( 0.1f, 0.0f, 0.5f ), nn * 2.f),
 		// 									 float3( 0.1f, 0.1f, 0.4f ), pow(nn, 2.f) );
-		// pixelData.diffuse.xyz = 0.3f * lerp(  // ylw, grn, blu ~
-		// 	lerp(float3( 0.0f, 0.2f, 1.0f ), float3( 0.0f, 1.0f, 0.0f ), nn * 2.f),
-		// 									 float3( 1.0f, 1.0f, 0.0f ), pow(nn, 2.f) );
 		// pixelData.specular.xyz = float3( 0.0f, 0.0f, 0.0f ); //pixelData.normal.xxx * 2.0f;  //-
 		// pixelData.specular.xyz = pixelData.diffuse.xyz;  // +
 				@end
@@ -940,6 +940,12 @@
 			@end
 
 			@insertpiece( applyRefractions )
+
+
+			// property( selected_glow )
+			// property( grass && !hlms_shadowcaster )
+			//	finalColour.xyz += float3(0.2, 0.6, 1.0) * (_h(0.7) + _h(0.3) * sin(passBuf.globalTime.x * _h(0.3)) );
+			// end
 
 			@insertpiece( applyFog )
 

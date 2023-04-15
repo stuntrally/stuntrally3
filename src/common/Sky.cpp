@@ -276,7 +276,7 @@ void CScene::UpdSun(float dt)
 	}
 	sun->setDirection(dir);
 
-	sun->setPowerScale( Math::PI );  // 💡 brightness
+	sun->setPowerScale( Math::PI );  // 💡 brightness simple
 	float bright = app->pSet->bright, contrast = app->pSet->contrast;
 	sun->setDiffuseColour( sc->lDiff.GetClr() * 2.2f  * bright * contrast);
 	sun->setSpecularColour(sc->lSpec.GetClr() * 0.75f * bright * contrast);
@@ -291,7 +291,7 @@ void CScene::UpdSun(float dt)
 		// 0.8f, 0x0 );  // env? EnvFeatures_DiffuseGiFromReflectionProbe
 		// -dir + Ogre::Vector3::UNIT_Y * 0.2f );
 
-	//  inc time for  wind anim etc
+	//  🌪️ inc time for  wind anim etc
 	if (mHlmsPbsTerraShadows && dt > 0.f)
 		mHlmsPbsTerraShadows->globalTime += dt;
 }
