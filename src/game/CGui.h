@@ -84,8 +84,9 @@ public:
 
 
 	///  🎨 Car paint  ------
-	Ck ckPaintAdj;  void chkPaintAdj(Ck*);  // adjust panel
-	WP panPaintAdj =0, panPaintHSV =0, panPaintChg =0;
+	CK(PaintAdj);  // adjust panel
+	WP panPaintAdj =0, panPaintHSV =0, panPaintMix =0;
+	CK(PaintNewLine);
 
 	SV svPaintType;  //void chkPaintOne(Ck*);
 	Tab tbColorType =0;  void tabColorType(Tab, size_t);
@@ -96,7 +97,7 @@ public:
 	SV svPaint1Mul, svPaint2Mul, svPaint3Mul;
 	
 	void slPaint(SV*);  // any paint slider
-	void SldUpd_Paint();
+	void SldUpd_Paint(), UpdPaints();
 	void UpdPaintSld(bool upd=true);
 
 	void SetPaint(), UpdImgClr();

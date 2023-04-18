@@ -9,6 +9,8 @@ enum CPtype
 };
 struct CarPaint
 {
+	bool new_line = false;  // for gui
+
 	int type = CP_OneClr;
 
 	struct Clr
@@ -28,6 +30,7 @@ struct CarPaint
 		paintMul2nd = 4.f,
 		paintPow3rd = 3.f;
 };
+const int MaxPaints = 300;  // par max ini
 
 
 //  🎨 paints.ini  palette for Gui

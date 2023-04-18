@@ -52,18 +52,19 @@ void CGui::InitGuiCar()
 	sv= &svClearCoatRough;	sv->Init("PaintClearCoatRough", &f, 0.0f, 1.0f, 1.f );  Sev(Paint);
 	sv= &svPaintFresnel;	sv->Init("PaintFresnel",        &f, 0.0f, 1.0f, 1.f );  Sev(Paint);
 	imgPaint = fImg("ImgPaint");  imgPaintCur = fImg("ImgPaintCur");
-	txPaintRgb = fTxt("PaintRgb");
+	txPaintRgb = fTxt("txPaintRgb");
 	
 	sv= &svPaintType;	sv->strMap[0] = "1 color";  // todo: TR("{..}");
 	sv->strMap[1] = "Diff, Spec 2 colors";	sv->strMap[2] = "Changing 3 colors";
 							sv->Init("PaintType",  &i, CP_OneClr, CP_3Clrs );  Sev(Paint);
 	// ck= &ckPaintOne;  ck->Init("PaintOne", &b);  Cev(PaintOne);
 	tbColorType = fTab("ColorType");  Tev(tbColorType, ColorType);
+	ck= &ckPaintNewLine;  ck->Init("chkPaintNewLine", &b);  Cev(PaintNewLine);
 
 	ck= &ckPaintAdj;  ck->Init("chkPaintAdj", &pSet->paintAdj);  Cev(PaintAdj);
 	panPaintAdj = fWP("panPaintAdj");   panPaintAdj->setVisible(pSet->paintAdj);
 	panPaintHSV = fWP("panPaintHSV");   //panPaintHSV->setVisible(1);
-	panPaintChg = fWP("panPaintChg");
+	panPaintMix = fWP("panPaintMix");
 	UpdPaintSld();
 
 

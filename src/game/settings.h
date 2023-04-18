@@ -85,7 +85,7 @@ public:
 	int champ_type = 0, chall_type = 0;
 	bool champ_info =1;
 	int car_ed_tab = 0, tweak_tab = 0;  // gui only
-	int car_clr = -1;  // colors.ini id
+	int car_clr = -1;  // paints.ini id
 
 
 	//  📊 graphics

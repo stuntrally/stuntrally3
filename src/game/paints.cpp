@@ -20,6 +20,9 @@ void PaintsIni::Save(std::string sfile)
 
 void PaintsIni::SerPaint(bool wr, CONFIGFILE & cf, const std::string s, CarPaint& p)
 {
+	// if (p.new_line || !wr)
+	Param(cf,wr, s+"new_line", p.new_line);
+	
 	Param(cf,wr, s+"type", p.type);
 	int n = 3;
 	switch (p.type)
@@ -76,7 +79,7 @@ void PaintsIni::Serialize(bool w, CONFIGFILE & c)
 		}
 	}else  // read
 	{	v.clear();
-		for (int i=0; i < 200; ++i)  // max
+		for (int i=0; i < MaxPaints; ++i)
 		{
 			auto s = str(i);
 			float f;
