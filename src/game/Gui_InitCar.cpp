@@ -40,12 +40,11 @@ void CGui::InitGuiCar()
 	sv= &svPaintS;		sv->Init("PaintS",     &f, 0.f, 1.f);  Sev(Paint);
 	sv= &svPaintV;		sv->Init("PaintV",     &f, 0.f, 1.f);  Sev(Paint);
 
-	sv= &svPaint1Mul;	sv->Init("Paint1Mul",  &f, 0.f,   2.f);  Sev(Paint);
-	sv= &svPaint2Mul;	sv->Init("Paint2Mul",  &f, 0.f,   6.f);  Sev(Paint);
-	sv= &svPaint3Mul;	sv->Init("Paint3Mul",  &f, 0.f,   6.f);  Sev(Paint);
+	sv= &svPaint1Mul;	sv->Init("Paint1Mul",  &f, 0.f,  0.8f, 2.f);  Sev(Paint);
+	sv= &svPaint2Mul;	sv->Init("Paint2Mul",  &f, 0.f,  6.f);  Sev(Paint);
+	sv= &svPaint3Mul;	sv->Init("Paint3Mul",  &f, 0.f,  6.f);  Sev(Paint);
 	
 	sv= &svPaintGloss;	sv->Init("PaintGloss", &f, 0.f,   1.3f, 1.5f);  Sev(Paint);
-	// sv= &svPaintMetal;	sv->Init("PaintMetal", &f, 0.f,   1.0f, 1.f );  Sev(Paint);
 	sv= &svPaintRough;	sv->Init("PaintRough", &f, 0.01f, 1.0f, 1.f );  Sev(Paint);
 
 	sv= &svClearCoat;		sv->Init("PaintClearCoat",      &f, 0.0f, 1.0f, 1.f );  Sev(Paint);

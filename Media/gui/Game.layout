@@ -931,35 +931,35 @@
 
 						<Widget type="Widget" skin="PanelEmpty" position="0 55 750 420" align="Stretch" name="panPaintAdj">
 
-							<Widget type="Button" skin="Button" position="12 252 346 28" name="PaintRandom">
+							<Widget type="Button" skin="Button" position="12 282 346 28" name="PaintRandom">
 								<Property key="Caption" value="#{CarClrRandom}"/>
 								<Property key="Colour" value="1.0 0.9 0.4"/>
 								<Property key="TextColour" value="1.0 0.9 0.4"/>
 							</Widget>
 
-							<Widget type="Button" skin="CheckBox" position="222 378 240 24" name="chkPaintNewLine">
+							<Widget type="Button" skin="CheckBox" position="232 400 240 24" name="chkPaintNewLine">
 								<Property key="Caption" value="#{NewLine}"/>
 								<Property key="TextColour" value="0.6 0.7 0.8"/>
 							</Widget>
 	
-							<!-- manage buttons -->
-							<Widget type="Button" skin="Button" position="12 292 156 28" name="PaintDel">
+							<!-- Del Add  manage buttons -->
+							<Widget type="Button" skin="Button" position="12 322 156 28" name="PaintDel">
 								<Property key="Caption" value="#{Delete}"/>
 								<Property key="Colour" value="1.0 0.6 0.6"/>
 								<Property key="TextColour" value="1.0 0.6 0.6"/>
-								<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+								<Widget type="ImageBox" skin="ImageBox" position="0 2 24 24">
 									<Property key="ImageCoord" value="256 384 128 128"/>
 									<Property key="Alpha" value="0.5"/>
 									<Property key="ImageTexture" value="gui_icons.png"/>
 									<Property key="NeedMouse" value="false"/>
 								</Widget>
 							</Widget>
-							<Widget type="Button" skin="Button" position="202 292 156 28" name="PaintAdd">
+							<Widget type="Button" skin="Button" position="202 322 156 28" name="PaintAdd">
 								<Property key="Caption" value="#{Add}"/>
 								<Property key="Colour" value="0.6 1.0 0.6"/>
 								<Property key="TextColour" value="0.6 1.0 0.6"/>
 								<Property key="InheritsAlpha" value="false"/>
-								<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+								<Widget type="ImageBox" skin="ImageBox" position="0 2 24 24">
 									<Property key="ImageCoord" value="256 256 128 128"/>
 									<Property key="Alpha" value="0.7"/>
 									<Property key="ImageTexture" value="gui_icons.png"/>
@@ -967,20 +967,34 @@
 								</Widget>
 							</Widget>
 
-							<Widget type="Button" skin="Button" position="12 332 156 28" name="PaintLoad">
+							<!-- Load Save -->
+							<Widget type="Button" skin="Button" position="12 362 156 28" name="PaintLoad">
 								<Property key="Caption" value="#{RplLoad}"/>
 								<Property key="Colour" value="0.8 0.7 1.0"/>
-								<Property key="TextColour" value="0.9 0.9 1.0"/>
+								<Property key="TextColour" value="0.7 0.7 1.0"/>
+								<Widget type="ImageBox" skin="ImageBox" position="0 2 24 24">
+									<Property key="ImageCoord" value="512 384 128 128"/>
+									<Property key="Alpha" value="0.7"/>
+									<Property key="ImageTexture" value="gui_icons.png"/>
+									<Property key="NeedMouse" value="false"/>
+								</Widget>
 							</Widget>
-							<Widget type="Button" skin="Button" position="202 332 156 28" name="PaintSave">
+							<Widget type="Button" skin="Button" position="202 362 156 28" name="PaintSave">
 								<Property key="Caption" value="#{RplSave}"/>
 								<Property key="Colour" value="0.5 0.7 1.0"/>
 								<Property key="TextColour" value="0.6 0.8 1.0"/>
+								<Widget type="ImageBox" skin="ImageBox" position="0 4 20 20">
+									<Property key="ImageCoord" value="0 768 128 128"/>
+									<Property key="Colour" value="0.5 0.7 1.0"/>
+									<Property key="Alpha" value="0.6"/>
+									<Property key="ImageTexture" value="gui_icons.png"/>
+									<Property key="NeedMouse" value="false"/>
+								</Widget>
 							</Widget>
-							<Widget type="Button" skin="Button" position="12 372 156 28" name="PaintLoadDef">
-								<Property key="Caption" value="#{RplLoad} defaults"/>
-								<Property key="Colour" value="0.8 0.4 0.4"/>
-								<Property key="TextColour" value="0.9 0.4 0.4"/>
+							<Widget type="Button" skin="Button" position="12 396 156 28" name="PaintLoadDef">
+								<Property key="Caption" value="#{RplLoad}: #{Reset}"/>
+								<Property key="Colour" value="0.8 0.3 0.3"/>
+								<Property key="TextColour" value="0.9 0.3 0.3"/>
 							</Widget>
 
 
@@ -1027,7 +1041,7 @@
 									<Property key="TextColour" value="0.4 0.7 1.0"/>
 								</Widget>
 								<Widget type="Slider" skin="Slider" position="0 40 336 19" name="Paint1Mul">
-									<Property key="Colour" value="0.6 0.8 1.0"/>
+									<Property key="Colour" value="0.5 0.7 0.9"/>
 								</Widget>
 								<Widget type="TextBox" skin="TextBox" position="150 20 52 22" name="Paint1MulVal">
 									<Property key="TextColour" value="0.6 0.8 1.0"/>
@@ -1040,7 +1054,7 @@
 									<Property key="FontName" value="font.small"/>
 								</Widget>
 								<Widget type="Slider" skin="Slider" position="0 80 334 18" name="Paint2Mul">
-									<Property key="Colour" value="0.8 0.9 1.0"/>
+									<Property key="Colour" value="0.6 0.8 1.0"/>
 								</Widget>
 								<Widget type="TextBox" skin="TextBox" position="150 60 52 22" name="Paint2MulVal">
 									<Property key="TextColour" value="0.4 0.7 1.0"/>
@@ -1053,7 +1067,7 @@
 									<Property key="FontName" value="font.small"/>
 								</Widget>
 								<Widget type="Slider" skin="Slider" position="0 120 334 18" name="Paint3Mul">
-									<Property key="Colour" value="0.4 0.5 0.6"/>
+									<Property key="Colour" value="0.8 0.9 1.0"/>
 								</Widget>
 								<Widget type="TextBox" skin="TextBox" position="150 100 52 22" name="Paint3MulVal">
 									<Property key="TextColour" value="0.7 0.8 1.0"/>

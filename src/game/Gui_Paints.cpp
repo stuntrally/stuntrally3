@@ -285,7 +285,7 @@ void CGui::UpdPaintImgs()
 	auto AddImg = [&](WP wp,
 		int px,int py, int sx,int sy,
 		int u, bool focus,
-		const CarPaint::Clr* clr)
+		const CarPaint::Clr* clr, float mul=1.f)
 	{
 		Img img = wp->createWidget<ImageBox>("ImageBox",
 			px,py, sx-1,sx-1, Align::Left);
@@ -297,7 +297,7 @@ void CGui::UpdPaintImgs()
 		
 		if (clr)
 		{	Ogre::ColourValue c;
-			c.setHSB(1.f-clr->hue, clr->sat, clr->val);
+			c.setHSB(1.f-clr->hue, clr->sat, clr->val * mul);
 			img->setColour(Colour(c.r,c.g,c.b));
 		}
 		return img;
@@ -319,22 +319,23 @@ void CGui::UpdPaintImgs()
 		switch (cl.type)
 		{
 		case CP_OneClr:
-		{
 			img = AddImg(tab, px,py, sx-1,sx-1, 0, 1, &cl.clr[0]);
-		}	break;
+			break;
+		
 		case CP_DiffSpec:
 		{
+			int p2 =  8 *sx/32, s2 = 24 *sx/32;
 			img = AddImg(tab, px,py, sx-1,sx-1, 0, 1, &cl.clr[0]);
-			int p2 = sx/2, s2 = 2*sx/3;
-			im2 = AddImg(img, p2, 0, sx-1,sx-1, 0, 0, &cl.clr[1]);
+			im2 = AddImg(img, p2, 0, sx-1,sx-1, 3, 0, &cl.clr[1]);
 		}	break;
+		
 		case CP_3Clrs:
-		{
-			img = AddImg(tab, px,py, sx-1,sx-1, 0, 1, &cl.paints[2]);
-			int p2 = 10*sx/32, s2 = 22*sx/32;
-			int p3 = 20*sx/32, s3 = 12*sx/32;
-			im2 = AddImg(img, p2,p2, s2,s2, 0, 0, &cl.paints[1]);
-			im3 = AddImg(img, p3,p3, s3,s3, 0, 0, &cl.paints[0]);
+		{	int p2 =  0 *sx/32, s2 = 33 *sx/32;
+			int p3 = 14 *sx/32, s3 = 20 *sx/32;
+			float m = min(1.f, cl.paintMulAll / 0.3f);
+			img = AddImg(tab, px,py, sx-1,sx-1, 0, 1, &cl.paints[2], m);
+			im2 = AddImg(img, p2,p2, s2,s2, 3, 0, &cl.paints[1]);
+			im3 = AddImg(img, p3,p3, s3,s3, 3, 0, &cl.paints[0]);
 		}	break;
 		}
 		

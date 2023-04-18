@@ -211,6 +211,9 @@
 	<Tag name="Adjust">Adjust</Tag>
 	<Tag name="Transparency">Transparency</Tag>
 	<Tag name="Negative">Negative (darken)</Tag>
+	
+	<!--  Color  extras  -->
+	<Tag name="NewLine">New line</Tag>
 
 	<!--  TIP  Vehicle Color -->
 	<Tag name="TipCarColor">Click to apply color to vehicle, and select. Shift-Click move selected here. Alt-Click swap color with selected.</Tag>
