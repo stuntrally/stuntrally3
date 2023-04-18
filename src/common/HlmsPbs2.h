@@ -2,6 +2,7 @@
 #include <OgreHlms.h>
 #include <OgreHlmsPbs.h>
 #include <OgreArchive.h>
+// #include <OgreHlmsPbsDatablock.h>
 
 
 class HlmsPbs2 : public Ogre::HlmsPbs
@@ -25,3 +26,17 @@ public:
 		const Ogre::HlmsParamVec   &paramVec ) override;
 */
 };
+
+/*
+class HlmsPbsDatablock2 : public Ogre::HlmsPbsDatablock
+{
+	friend class HlmsPbs2;
+
+public:
+	HlmsPbsDatablock2(
+		Ogre::IdString name, HlmsPbs2 *creator,
+		const Ogre::HlmsMacroblock *macroblock,
+		const Ogre::HlmsBlendblock *blendblock,
+		const Ogre::HlmsParamVec &params );
+};
+*/

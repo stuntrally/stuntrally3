@@ -117,7 +117,7 @@ public:
 	Ogre::Real getTerH(Ogre::Real x, Ogre::Real z);
 	bool getTerH(Ogre::Vector3& pos);  // sets y
 
-	//  listener to make PBS objects also be affected by terrain's shadows
+	//  HlmsListener  to make PBS objects also be affected by terrain's shadows
 	Ogre::HlmsPbsTerraShadows* mHlmsPbsTerraShadows = 0;  // 1st ter only-
 
 	void CreateTerrain1(int n, bool upd);

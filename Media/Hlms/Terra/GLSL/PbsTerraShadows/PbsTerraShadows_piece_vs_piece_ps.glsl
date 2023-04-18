@@ -6,11 +6,13 @@
 
 /// Extra per-pass global data we need for applying our
 /// shadows to regular objects, passed to all PBS shaders.
+//? undefpiece( custom_passBuffer )
 @piece( custom_passBuffer )
     vec4 terraOrigin; //Normalized. i.e. -terrainOrigin / terrainDimensions
     //.xz = terrain 1.0 / XZ dimensions.
     //.y  = 1.0 / terrainHeight;
     vec4 invTerraBounds;
+	vec4 globalTime;
 @end
 
 /// Add the shadows' texture to the vertex shader

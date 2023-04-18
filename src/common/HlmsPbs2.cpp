@@ -48,8 +48,17 @@ void HlmsPbs2::calculateHashForPreCaster(
 		setProperty( "grass", 1 );
 }
 
-
-// createDatablockImpl
+//  createDatablockImpl
+/*
+HlmsDatablock* HlmsPbs2::createDatablockImpl(
+	IdString datablockName,
+	const HlmsMacroblock *macroblock,
+	const HlmsBlendblock *blendblock,
+	const HlmsParamVec &paramVec )
+{
+    return OGRE_NEW HlmsPbsDatablock2( datablockName, this, macroblock, blendblock, paramVec );
+}
+*/
 
 
 /*
