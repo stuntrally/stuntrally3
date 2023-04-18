@@ -17,6 +17,7 @@
 
 #include <OgreRoot.h>
 #include <OgreMath.h>
+#include <OgreVector4.h>
 #include <OgreEntity.h>
 #include <OgreItem.h>
 // #include <OgreManualObject2.h>
@@ -31,6 +32,7 @@
 // #include <OgreViewport.h>
 #include <OgreHlmsPbsDatablock.h>
 #include "Terra.h"
+#include "OgreHlmsPbsTerraShadows.h"
 // #include <MyGUI_TextBox.h>
 using namespace Ogre;
 
@@ -649,7 +651,7 @@ void CarModel::SetPaint()
 	auto c = gc.clr[0];
 	diff.setHSB(1.f - c.hue, c.sat, c.val);
 
-	bool one = gc.one_clr;
+	bool one = gc.type == CP_OneClr;
 	if (one)
 		spec = diff;
 	else
@@ -663,7 +665,7 @@ void CarModel::SetPaint()
 	#define toV3(cv)  Vector3(cv.r, cv.g, cv.b)
 	db->setSpecular( toV3(spec) * (!one ? 1.f : gc.gloss) );  // ok~
 	db->setDiffuse(  toV3(diff) * (!one ? 1.f : (1.f - gc.gloss)) );
-	db->setWorkflow(
+	db->setWorkflow(  // once?
 		HlmsPbsDatablock::SpecularWorkflow  // par?
 		// HlmsPbsDatablock::SpecularAsFresnelWorkflow
 		// HlmsPbsDatablock::MetallicWorkflow
@@ -676,6 +678,26 @@ void CarModel::SetPaint()
 	
 	db->setFresnel( Vector3::UNIT_SCALE * gc.fresnel, false );
 	// db->setIndexOfRefraction( Vector3::UNIT_SCALE * (3.f-gc.fresnel*3.f), false );
+
+
+	//  color changing 3 paints
+	auto* pars = pApp->scn->mHlmsPbsTerraShadows;  // todo: in db..
+	if (pars)
+	{
+		bool clr3 = gc.type == CP_3Clrs;
+		if (!clr3)
+			pars->paintMul = Vector4::ZERO;
+		else
+		{	pars->paintMul = Vector4(gc.paintMulAll, gc.paintMul2nd, gc.paintPow3rd, 1.f);
+
+			for (int i=0; i < 3; ++i)
+			{
+				const auto& c = gc.paints[i];
+				ColourValue p;
+				p.setHSB(1.f - c.hue, c.sat, c.val);
+				pars->paint[i] = Vector4(p.r, p.g, p.b, 1.f);
+			}
+	}	}
 	
 	// if (pNickTxt)
 	// 	pNickTxt->setTextColour(MyGUI::Colour(color.r, color.g, color.b));

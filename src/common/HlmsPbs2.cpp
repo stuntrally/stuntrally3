@@ -48,6 +48,7 @@ void HlmsPbs2::calculateHashForPreCaster(
 		setProperty( "grass", 1 );
 }
 
+
 //  createDatablockImpl
 /*
 HlmsDatablock* HlmsPbs2::createDatablockImpl(
@@ -59,6 +60,11 @@ HlmsDatablock* HlmsPbs2::createDatablockImpl(
     return OGRE_NEW HlmsPbsDatablock2( datablockName, this, macroblock, blendblock, paramVec );
 }
 */
+
+void HlmsPbsDatablock2::uploadToConstBuffer( char *dstPtr, Ogre::uint8 dirtyFlags )
+{
+	
+}
 
 
 /*

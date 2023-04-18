@@ -119,8 +119,10 @@ namespace Ogre
 												   bool casterPass, bool dualParaboloid,
 												   SceneManager *sceneManager ) const
 	{
-		return (!casterPass && mTerra) ? 32u : 0u;
+		return (!casterPass && mTerra) ? (2 + 1 + 4) * 16u : 0u;
+		// return (!casterPass && mTerra) ? 32u : 0u;
 	}
+
 	//-----------------------------------------------------------------------------------
 	float* HlmsPbsTerraShadows::preparePassBuffer( const CompositorShadowNode *shadowNode,
 												   bool casterPass, bool dualParaboloid,
@@ -129,9 +131,11 @@ namespace Ogre
 	{
 		if( !casterPass && mTerra )
 		{
+			//  2 terra shadows
 			const float invHeight = 1.0f / mTerra->getHeightMul();
 			const Vector3 &terrainOrigin = mTerra->getTerrainOriginRaw();
 			const Vector2 &terrainXZInvDim = mTerra->getXZInvDimensions();
+			
 			*passBufferPtr++ = -terrainOrigin.x * terrainXZInvDim.x;
 			*passBufferPtr++ = -terrainOrigin.y * invHeight;
 			*passBufferPtr++ = -terrainOrigin.z * terrainXZInvDim.y;
@@ -142,13 +146,27 @@ namespace Ogre
 			*passBufferPtr++ = terrainXZInvDim.y;
 			*passBufferPtr++ = 1.0f;
 
+			//  1 grass
 			*passBufferPtr++ = globalTime;
+			*passBufferPtr++ = 0.f;  // todo grass sphere pos..
 			*passBufferPtr++ = 0.f;
 			*passBufferPtr++ = 0.f;
-			*passBufferPtr++ = 0.f;
+
+			//  4 paints
+			for (int i=0; i < 3; ++i)
+			{	*passBufferPtr++ = paint[i].x;
+				*passBufferPtr++ = paint[i].y;
+				*passBufferPtr++ = paint[i].z;
+				*passBufferPtr++ = paint[i].w;
+			}
+			*passBufferPtr++ = paintMul.x;
+			*passBufferPtr++ = paintMul.y;
+			*passBufferPtr++ = paintMul.z;
+			*passBufferPtr++ = paintMul.w;
 		}
 		return passBufferPtr;
 	}
+
 	//-----------------------------------------------------------------------------------
 	void HlmsPbsTerraShadows::hlmsTypeChanged( bool casterPass, CommandBuffer *commandBuffer,
 											   const HlmsDatablock *datablock, size_t texUnit )

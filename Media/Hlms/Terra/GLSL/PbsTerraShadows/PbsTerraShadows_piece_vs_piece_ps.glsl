@@ -13,6 +13,14 @@
     //.y  = 1.0 / terrainHeight;
     vec4 invTerraBounds;
 	vec4 globalTime;
+	
+	//  extra vehicle paint changing colors
+	@property( clear_coat )
+		vec4 paint1;
+		vec4 paint2;
+		vec4 paint3;
+		vec4 paintMul;
+	@end
 @end
 
 /// Add the shadows' texture to the vertex shader

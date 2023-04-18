@@ -197,19 +197,27 @@ void CGui::SldUpd_Paint()
 {
 	int i = iCurCar;
 	auto& gc = pSet->gui.clr[i];
-	int t = tbPaintType->getIndexSelected();
-	svPaintH.UpdF(&gc.clr[t].hue);
-	svPaintS.UpdF(&gc.clr[t].sat);
-	svPaintV.UpdF(&gc.clr[t].val);
+	int t = tbColorType->getIndexSelected();
+	bool clr3 = t == 5;  // clr chg mix
+	if (!clr3)
+	{
+		auto& c = t >= 2 ? gc.paints[t-2] : gc.clr[t];
+		svPaintH.UpdF(&c.hue);  svPaintS.UpdF(&c.sat);  svPaintV.UpdF(&c.val);
+	}
+	panPaintHSV->setVisible(!clr3);
+	panPaintChg->setVisible(clr3);
+	svPaint1Mul.UpdF(&gc.paintMulAll);
+	svPaint2Mul.UpdF(&gc.paintMul2nd);
+	svPaint3Mul.UpdF(&gc.paintPow3rd);
 	
+	svPaintGloss.setVisible(t == 0);
 	svPaintGloss.UpdF(&gc.gloss);
-	svPaintMetal.UpdF(&gc.metal);
 	svPaintRough.UpdF(&gc.rough);
 
 	svClearCoat.UpdF(&gc.clear_coat);
 	svClearCoatRough.UpdF(&gc.clear_rough);
 	svPaintFresnel.UpdF(&gc.fresnel);
-	ckPaintOne.Upd(&gc.one_clr);
+	svPaintType.UpdI(&gc.type);
 }
 
 void CGui::slPaint(SV*)
@@ -224,14 +232,9 @@ void CGui::slPaint(SV*)
 		data->paints->v[b] = pSet->gui.clr[i];
 }
 
-void CGui::tabPaintType(Tab, size_t)
+void CGui::tabColorType(Tab, size_t)
 {
 	SldUpd_Paint();
-	UpdImgClr();
-}
-void CGui::chkPaintOne(Ck*)
-{
-	SetPaint();
 	UpdImgClr();
 }
 
@@ -239,13 +242,15 @@ void CGui::UpdImgClr()
 {
 	int i = iCurCar;
 	const auto& gc = pSet->gui.clr[i];
-	int t = gc.one_clr ? 0 : tbPaintType->getIndexSelected();
-	const auto& cl = gc.clr[t];
+	int t = gc.type == CP_OneClr ? 0 : tbColorType->getIndexSelected();
+	const auto& cl = t >= 2 ? gc.paints[t-2] : gc.clr[t];
 	
 	float h = cl.hue, s = cl.sat, v = cl.val;
 	ColourValue c;  c.setHSB(1.f - h, s, v);
 	Colour cc(c.r, c.g, c.b);
 	imgPaint->setColour(cc);
+	//rem-
+	txPaintRgb->setCaption(fToStr(c.r)+" "+fToStr(c.g)+" "+fToStr(c.b));  // rgb info-
 	
 	int b = pSet->car_clr;  // grid btn
 	if (b >= 0 && b < imgsPaint.size())
@@ -292,13 +297,15 @@ void CGui::btnPaintRandom(WP)
 	pSet->car_clr = -1;  //-
 	auto& gc = pSet->gui.clr[i];
 
-	gc.one_clr = 1;  //
-	gc.clr[0].hue = Math::UnitRandom();
-	gc.clr[0].sat = Math::UnitRandom();
-	gc.clr[0].val = Math::UnitRandom();
-	
+	gc.type = Math::RangeRandom(0.f,3.f);
+	for (int c = 0; c < 5; ++c)
+	{
+		auto& cl = c >= 2 ? gc.paints[c-2] : gc.clr[c];
+		cl.hue = Math::UnitRandom();
+		cl.sat = Math::UnitRandom();
+		cl.val = Math::UnitRandom();
+	}
 	gc.gloss = Math::UnitRandom();
-	gc.metal = Math::RangeRandom(0.f,1.f);
 	gc.rough = Math::RangeRandom(0.01f,0.5f);
 	
 	gc.clear_coat = Math::RangeRandom(0.2f,1.f);

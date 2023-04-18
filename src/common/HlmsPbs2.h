@@ -2,7 +2,7 @@
 #include <OgreHlms.h>
 #include <OgreHlmsPbs.h>
 #include <OgreArchive.h>
-// #include <OgreHlmsPbsDatablock.h>
+#include <OgreHlmsPbsDatablock.h>
 
 
 class HlmsPbs2 : public Ogre::HlmsPbs
@@ -27,7 +27,7 @@ public:
 */
 };
 
-/*
+//  not used
 class HlmsPbsDatablock2 : public Ogre::HlmsPbsDatablock
 {
 	friend class HlmsPbs2;
@@ -38,5 +38,7 @@ public:
 		const Ogre::HlmsMacroblock *macroblock,
 		const Ogre::HlmsBlendblock *blendblock,
 		const Ogre::HlmsParamVec &params );
+
+    //  what we send to the GPU (to send more)
+	void uploadToConstBuffer( char *dstPtr, Ogre::uint8 dirtyFlags ) override;
 };
-*/

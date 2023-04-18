@@ -20,11 +20,17 @@ void PaintsIni::Save(std::string sfile)
 
 void PaintsIni::SerPaint(bool wr, CONFIGFILE & cf, const std::string s, CarPaint& p)
 {
-	Param(cf,wr, s+"one_clr", p.one_clr);
-	int cn = p.one_clr ? 1 : 2;
-	for (int c = 0; c < cn; ++c)  // clrs
+	Param(cf,wr, s+"type", p.type);
+	int n = 3;
+	switch (p.type)
 	{
-		auto& cl = p.clr[c];
+	case CP_OneClr:    n = 1;  break;
+	case CP_DiffSpec:  n = 2;  break;
+	}
+
+	for (int c = 0; c < n; ++c)  // clrs
+	{
+		auto& cl = n == 3 ? p.paints[c] : p.clr[c];
 		const auto sc = s + toStr(c);
 		Param(cf,wr, sc+"hue", cl.hue);
 		Param(cf,wr, sc+"sat", cl.sat);
@@ -32,12 +38,17 @@ void PaintsIni::SerPaint(bool wr, CONFIGFILE & cf, const std::string s, CarPaint
 	}
 
 	Param(cf,wr, s+"gloss", p.gloss);
-	Param(cf,wr, s+"metal", p.metal);
 	Param(cf,wr, s+"rough", p.rough);
 
 	Param(cf,wr, s+"clear_coat",  p.clear_coat);
 	Param(cf,wr, s+"clear_rough", p.clear_rough);
 	Param(cf,wr, s+"fresnel", p.fresnel);
+	
+	if (n==3)
+	{	Param(cf,wr, s+"p1all", p.paintMulAll);
+		Param(cf,wr, s+"p2mul", p.paintMul2nd);
+		Param(cf,wr, s+"p3pow", p.paintPow3rd);
+	}
 }
 
 

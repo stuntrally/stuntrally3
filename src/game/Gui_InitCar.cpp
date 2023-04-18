@@ -4,6 +4,7 @@
 #include "GuiCom.h"
 #include "paths.h"
 #include "game.h"
+#include "paints.h"
 #include "Road.h"
 #include "CGame.h"
 #include "CHud.h"
@@ -38,21 +39,31 @@ void CGui::InitGuiCar()
 	sv= &svPaintH;		sv->Init("PaintH",     &f, 0.f, 1.f);  Sev(Paint);
 	sv= &svPaintS;		sv->Init("PaintS",     &f, 0.f, 1.f);  Sev(Paint);
 	sv= &svPaintV;		sv->Init("PaintV",     &f, 0.f, 1.f);  Sev(Paint);
+
+	sv= &svPaint1Mul;	sv->Init("Paint1Mul",  &f, 0.f,   2.f);  Sev(Paint);
+	sv= &svPaint2Mul;	sv->Init("Paint2Mul",  &f, 0.f,   6.f);  Sev(Paint);
+	sv= &svPaint3Mul;	sv->Init("Paint3Mul",  &f, 0.f,   6.f);  Sev(Paint);
 	
 	sv= &svPaintGloss;	sv->Init("PaintGloss", &f, 0.f,   1.3f, 1.5f);  Sev(Paint);
-	sv= &svPaintMetal;	sv->Init("PaintMetal", &f, 0.f,   1.0f, 1.f );  Sev(Paint);
+	// sv= &svPaintMetal;	sv->Init("PaintMetal", &f, 0.f,   1.0f, 1.f );  Sev(Paint);
 	sv= &svPaintRough;	sv->Init("PaintRough", &f, 0.01f, 1.0f, 1.f );  Sev(Paint);
 
 	sv= &svClearCoat;		sv->Init("PaintClearCoat",      &f, 0.0f, 1.0f, 1.f );  Sev(Paint);
 	sv= &svClearCoatRough;	sv->Init("PaintClearCoatRough", &f, 0.0f, 1.0f, 1.f );  Sev(Paint);
 	sv= &svPaintFresnel;	sv->Init("PaintFresnel",        &f, 0.0f, 1.0f, 1.f );  Sev(Paint);
 	imgPaint = fImg("ImgPaint");  imgPaintCur = fImg("ImgPaintCur");
+	txPaintRgb = fTxt("PaintRgb");
 	
-	ck= &ckPaintOne;  ck->Init("PaintOne", &b);  Cev(PaintOne);
-	tbPaintType = fTab("PaintType");  Tev(tbPaintType, PaintType);
+	sv= &svPaintType;	sv->strMap[0] = "1 color";  // todo: TR("{..}");
+	sv->strMap[1] = "Diff, Spec 2 colors";	sv->strMap[2] = "Changing 3 colors";
+							sv->Init("PaintType",  &i, CP_OneClr, CP_3Clrs );  Sev(Paint);
+	// ck= &ckPaintOne;  ck->Init("PaintOne", &b);  Cev(PaintOne);
+	tbColorType = fTab("ColorType");  Tev(tbColorType, ColorType);
 
 	ck= &ckPaintAdj;  ck->Init("chkPaintAdj", &pSet->paintAdj);  Cev(PaintAdj);
-	panPaintAdj  = fWP("panelPaintAdj");   panPaintAdj->setVisible(pSet->paintAdj);
+	panPaintAdj = fWP("panPaintAdj");   panPaintAdj->setVisible(pSet->paintAdj);
+	panPaintHSV = fWP("panPaintHSV");   //panPaintHSV->setVisible(1);
+	panPaintChg = fWP("panPaintChg");
 	UpdPaintSld();
 
 

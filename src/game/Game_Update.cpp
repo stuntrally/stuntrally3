@@ -46,8 +46,8 @@ using namespace std;
 void App::update( float dt )
 {
 	fLastFrameDT = dt;
-	#if 1
-	if (dt > 0.02)  // test big dt
+	#if 0
+	if (dt > 0.02)  //** test big dt
 		LogO("dt "+fToStr(dt,3,5));
 	#endif
 

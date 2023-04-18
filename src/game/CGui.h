@@ -85,14 +85,15 @@ public:
 
 	///  🎨 Car paint  ------
 	Ck ckPaintAdj;  void chkPaintAdj(Ck*);  // adjust panel
-	WP panPaintAdj =0;
+	WP panPaintAdj =0, panPaintHSV =0, panPaintChg =0;
 
-	Ck ckPaintOne;  void chkPaintOne(Ck*);
-	Tab tbPaintType =0;  void tabPaintType(Tab, size_t);
+	SV svPaintType;  //void chkPaintOne(Ck*);
+	Tab tbColorType =0;  void tabColorType(Tab, size_t);
 
 	SV svPaintH, svPaintS, svPaintV;  // h s v sliders
-	SV svPaintGloss, svPaintMetal, svPaintRough;
+	SV svPaintGloss, /*svPaintMetal,*/ svPaintRough;
 	SV svClearCoat, svClearCoatRough, svPaintFresnel;
+	SV svPaint1Mul, svPaint2Mul, svPaint3Mul;
 	
 	void slPaint(SV*);  // any paint slider
 	void SldUpd_Paint();
@@ -100,6 +101,7 @@ public:
 
 	void SetPaint(), UpdImgClr();
 
+	Txt txPaintRgb =0;
 	Img imgPaint =0, imgPaintCur =0;
 	void imgBtnPaint(WP), btnPaintRandom(WP);
 	Tbi tbPlrPaint =0;
