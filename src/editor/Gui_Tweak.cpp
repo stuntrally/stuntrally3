@@ -18,7 +18,7 @@ using namespace Ogre;
 //------------------------------------------------------------------------------------------------------------
 void CGui::CreateGUITweakMtr()
 {
-	/*ScrollView* view = app->mGui->findWidget<ScrollView>("TweakView",false);
+	/*ScrollView* view = fScv("TweakView");
 	if (!view)  return;
 	
 	//  clear last view

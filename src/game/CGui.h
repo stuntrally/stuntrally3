@@ -88,12 +88,12 @@ public:
 	WP panPaintAdj =0, panPaintHSV =0, panPaintMix =0;
 	CK(PaintNewLine);
 
-	SV svPaintType;  //void chkPaintOne(Ck*);
+	SV svPaintType, svPaintRate;
 	Tab tbColorType =0;  void tabColorType(Tab, size_t);
 
 	SV svPaintH, svPaintS, svPaintV;  // h s v sliders
-	SV svPaintGloss, /*svPaintMetal,*/ svPaintRough;
-	SV svClearCoat, svClearCoatRough, svPaintFresnel;
+	SV svPaintGloss, svPaintRough, svPaintFresnel;  // pbs
+	SV svClearCoat, svClearCoatRough;  // refl
 	SV svPaint1Mul, svPaint2Mul, svPaint3Mul;
 	
 	void slPaint(SV*);  // any paint slider
@@ -105,7 +105,7 @@ public:
 	Txt txPaintRgb =0;
 	Img imgPaint =0, imgPaintCur =0;
 	void imgBtnPaint(WP), btnPaintRandom(WP);
-	Tbi tbPlrPaint =0;
+	Tbi tbPlrPaint =0;  Scv scvPaints =0;
 	std::vector<Img> imgsPaint;
 	
 	void UpdPaintImgs(), UpdPaintCur();

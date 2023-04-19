@@ -53,6 +53,7 @@ public:
 
 #define fTxt(s)  mGui->findWidget<TextBox>(s,false)
 #define fImg(s)  mGui->findWidget<ImageBox>(s)
+#define fScv(s)  mGui->findWidget<ScrollView>(s)
 
 #define fEd(s)   mGui->findWidget<EditBox>(s)
 #define fCmb(s)  mGui->findWidget<ComboBox>(s)

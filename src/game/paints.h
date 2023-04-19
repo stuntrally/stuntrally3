@@ -9,8 +9,6 @@ enum CPtype
 };
 struct CarPaint
 {
-	bool new_line = false;  // for gui
-
 	int type = CP_OneClr;
 
 	struct Clr
@@ -18,10 +16,10 @@ struct CarPaint
 	} clr[2];  //  diff, spec
 	
 	float gloss = 0.9f,  // mix:  0 all diff .. 1 all spec
-		rough = 0.25f,
-		clear_coat = 1.f,
+		rough = 0.25f,  // roughness
+		clear_coat = 1.f,  // reflection
 		clear_rough = 0.01f,
-		fresnel = 1.f;
+		fresnel = 1.f;  // metalness
 
 	//  3 fresnel paints (color changing) CP_3Clrs
 	Clr paints[3];
@@ -29,8 +27,11 @@ struct CarPaint
 		paintMulAll = 0.2f,
 		paintMul2nd = 4.f,
 		paintPow3rd = 3.f;
+
+	bool new_line = false;  // for gui
+	int rate = 0;  // user rating / bookmark
 };
-const int MaxPaints = 300;  // par max ini
+const int MaxPaints = 500;  // par max ini
 
 
 //  🎨 paints.ini  palette for Gui

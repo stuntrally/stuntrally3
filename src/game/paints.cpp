@@ -20,8 +20,8 @@ void PaintsIni::Save(std::string sfile)
 
 void PaintsIni::SerPaint(bool wr, CONFIGFILE & cf, const std::string s, CarPaint& p)
 {
-	// if (p.new_line || !wr)
 	Param(cf,wr, s+"new_line", p.new_line);
+	Param(cf,wr, s+"rate", p.rate);
 	
 	Param(cf,wr, s+"type", p.type);
 	int n = 3;

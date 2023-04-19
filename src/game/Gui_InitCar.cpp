@@ -50,8 +50,10 @@ void CGui::InitGuiCar()
 	sv= &svClearCoat;		sv->Init("PaintClearCoat",      &f, 0.0f, 1.0f, 1.f );  Sev(Paint);
 	sv= &svClearCoatRough;	sv->Init("PaintClearCoatRough", &f, 0.0f, 1.0f, 1.f );  Sev(Paint);
 	sv= &svPaintFresnel;	sv->Init("PaintFresnel",        &f, 0.0f, 1.0f, 1.f );  Sev(Paint);
+
 	imgPaint = fImg("ImgPaint");  imgPaintCur = fImg("ImgPaintCur");
 	txPaintRgb = fTxt("txPaintRgb");
+	sv= &svPaintRate;	sv->Init("PaintRate", &i, 0, 3);  Sev(Paint);
 	
 	sv= &svPaintType;	sv->strMap[0] = "1 color";  // todo: TR("{..}");
 	sv->strMap[1] = "Diff, Spec 2 colors";	sv->strMap[2] = "Changing 3 colors";
@@ -111,6 +113,7 @@ void CGui::InitGuiCar()
 	///  🚗 Car
 	//------------------------------------------------------------
 	tbPlrPaint = fTbi("PlrPaints");
+	scvPaints = fScv("scvPaints");
 	UpdPaintImgs();
 	Btn("PaintRandom", btnPaintRandom);
 	Btn("PaintSave", btnPaintSave);  Btn("PaintAdd", btnPaintAdd);  Btn("PaintDel", btnPaintDel);

@@ -102,7 +102,9 @@ void CGui::SldUpd_Paint()
 	svPaint1Mul.UpdF(&gc.paintMulAll);
 	svPaint2Mul.UpdF(&gc.paintMul2nd);
 	svPaint3Mul.UpdF(&gc.paintPow3rd);
+	//  gui
 	ckPaintNewLine.Upd(&gc.new_line);
+	svPaintRate.UpdI(&gc.rate);
 	
 	//  pbs params
 	svPaintGloss.setVisible(t == 0);
@@ -147,6 +149,7 @@ void CGui::UpdImgClr()
 	ColourValue c;  c.setHSB(1.f - cl.hue, cl.sat, cl.val);
 	Colour cc(c.r, c.g, c.b);
 	imgPaint->setColour(cc);
+	// todo: 3clr,2 etc..  3d view render sphere
 
 	txPaintRgb->setCaption("RGB: "+fToStr(c.r)+" "+fToStr(c.g)+" "+fToStr(c.b));  // rgb info-
 	
@@ -155,7 +158,8 @@ void CGui::UpdImgClr()
 	// 	imgsPaint[b]->setColour(cc);
 }
 
-//  🎨 Paint buttons
+
+//  🎨 Paint button click
 //---------------------------------------------------------------------
 void CGui::imgBtnPaint(WP img)
 {
@@ -196,6 +200,7 @@ void CGui::btnPaintRandom(WP)
 	auto& gc = pSet->gui.clr[i];
 
 	// gc.type = Math::RangeRandom(0.f,3.f);  //no chg
+	gc.rate = 0;
 	for (int c = 0; c < 5; ++c)
 	{
 		auto& cl = c >= 2 ? gc.paints[c-2] : gc.clr[c];
@@ -276,19 +281,21 @@ void CGui::UpdPaintImgs()
 		clrRow = p->perRow, sx = p->imgSize;
 	
 	//  destroy old
-	auto* tab = tbPlrPaint;
+	auto* scv = scvPaints;
 	for (auto img : imgsPaint)
-		tab->_destroyChildWidget(img);
+		mGui->destroyWidget(img);
 	imgsPaint.clear();
 	
 	//  add clr img  --------
 	auto AddImg = [&](WP wp,
+		int rate, bool first,
 		int px,int py, int sx,int sy,
 		int u, bool focus,
 		const CarPaint::Clr* clr, float mul=1.f)
 	{
 		Img img = wp->createWidget<ImageBox>("ImageBox",
-			px,py, sx-1,sx-1, Align::Left);
+			px, !first ? py : py +(6-rate)/2,
+			sx-1 +rate, sx-1 +rate, Align::Left);
 		img->setImageTexture("paint_icons.png");
 		img->setImageCoord(IntCoord( u*32,0, 32,32 ));
 		
@@ -304,44 +311,42 @@ void CGui::UpdPaintImgs()
 	};
 
 	//  Grid palette  --------------------
-	int x = 0, y = 0;
+	int x = 0, y = 0, x0 = 5, y0 = 5;
+	int px = x0, py = y0, rmax = 0;  // pos
 	for (int i=0; i < all; ++i)
 	{
 		const auto& cl = p->v[i];
+		const int r = cl.rate * 6;
+		rmax = max(rmax, r);
 
-		//  pos
-		const int px = 12 + x*sx, py = 55 + y*sx;  // par ofs
-		++x;  if (x >= clrRow || cl.new_line)
-		{	x = 0;  ++y;  }
-		
 		//  create clr img 1..3
 		Img img = 0, im2 = 0, im3 = 0;
 		switch (cl.type)
 		{
 		case CP_OneClr:
-			img = AddImg(tab, px,py, sx-1,sx-1, 0, 1, &cl.clr[0]);
+			img = AddImg(scv, r,1, px,py, sx-1,sx-1, 0, 1, &cl.clr[0]);
 			break;
 		
 		case CP_DiffSpec:
 		{
 			int p2 =  8 *sx/32, s2 = 24 *sx/32;
-			img = AddImg(tab, px,py, sx-1,sx-1, 0, 1, &cl.clr[0]);
-			im2 = AddImg(img, p2, 0, sx-1,sx-1, 3, 0, &cl.clr[1]);
+			img = AddImg(scv, r,1, px,py, sx-1,sx-1, 0, 1, &cl.clr[0]);
+			im2 = AddImg(img, r,0, p2, 0, sx-1,sx-1, 3, 0, &cl.clr[1]);
 		}	break;
 		
 		case CP_3Clrs:
 		{	int p2 =  0 *sx/32, s2 = 33 *sx/32;
 			int p3 = 14 *sx/32, s3 = 20 *sx/32;
 			float m = min(1.f, cl.paintMulAll / 0.3f);
-			img = AddImg(tab, px,py, sx-1,sx-1, 0, 1, &cl.paints[2], m);
-			im2 = AddImg(img, p2,p2, s2,s2, 3, 0, &cl.paints[1]);
-			im3 = AddImg(img, p3,p3, s3,s3, 3, 0, &cl.paints[0]);
+			img = AddImg(scv, r,1, px,py, sx-1,sx-1, 0, 1, &cl.paints[2], m);
+			im2 = AddImg(img, r,0, p2,p2, s2,s2, 3, 0, &cl.paints[1]);
+			im3 = AddImg(img, r,0, p3,p3, s3,s3, 3, 0, &cl.paints[0]);
 		}	break;
 		}
 		
 		//  shine  rough  * `
 		int s1 = cl.rough * 2.5f * sx + 2;  s1 = min(64, s1);  // 32
-		im2 = AddImg(img, 0,0, s1,s1, 1, 0, 0);
+		im2 = AddImg(img, r,0, 0,0, s1,s1, 1, 0, 0);
 		
 		float a = cl.gloss * cl.clear_coat * 2.f;  a = min(1.f, a);
 		im2->setAlpha(a);
@@ -360,6 +365,14 @@ void CGui::UpdPaintImgs()
 		img->eventToolTip += newDelegate(gcom, &CGuiCom::notifyToolTip);
 		
 		imgsPaint.push_back(img);
+
+
+		//  inc pos
+		++x;  px += sx + r;
+		if (x >= clrRow || cl.new_line)
+		{	x = 0;  px = x0;
+			++y;  py += sx + 6 + 2*rmax/3;  rmax = 0;
+		}
 	}
 	if (bGI)  // resize
 		gcom->doSizeGUI(tbPlrPaint->getEnumerator());
