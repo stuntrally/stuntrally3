@@ -28,12 +28,12 @@ void HlmsPbs2::calculateHashForPreCreate(
 	// 	setProperty( "road", 1 );
 
     //  todo:
-	const auto &paramMap = rnd->getCustomParameters();
+	/*const auto &paramMap = rnd->getCustomParameters();
 	auto itor = paramMap.find( selected_glow );
 	if( itor != paramMap.end() )
 	{
 		setProperty( "selected_glow", (int)itor->second.x );
-	}
+	}*/
 }
 
 void HlmsPbs2::calculateHashForPreCaster(

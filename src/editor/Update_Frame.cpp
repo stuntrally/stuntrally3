@@ -218,6 +218,8 @@ void App::UpdateEnd(float dt)
 		{
 			road->bCastShadow = pSet->shadow_type >= Sh_Depth;
 			bool fu = road->RebuildRoadInt();
+			if (fu)
+				scn->grid.Create();
 			
 			bool full = road == road1 && fu;
 			if (full && scn->pace)  // pace, only for 1st

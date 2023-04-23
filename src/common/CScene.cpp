@@ -48,6 +48,8 @@ void CScene::DestroyRoads()
 	roads.clear();
 	rdCur = 0;
 	road = 0;
+	
+	grid.Destroy();
 }
 
 void CScene::DestroyPace()

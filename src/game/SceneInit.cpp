@@ -676,7 +676,7 @@ void App::LoadTrees()
 	}	}
 }
 
-//  🎥 Preload Views
+//  🎥 Preload Views  9
 //  look around, to see and
 //  Preload all resources, ensure visible
 void App::LoadView(int c)
@@ -862,8 +862,6 @@ void App::CreateRoads()
 
 	if (dstTrk)
 	{
-		// scn->UpdPSSMMaterials();  ///+~-
-
 		road->bCastShadow = pSet->shadow_type >= Sh_Depth;
 		road->bRoadWFullCol = pSet->gui.collis_roadw;
 
@@ -872,7 +870,9 @@ void App::CreateRoads()
 			r->scn = scn;
 			r->RebuildRoadInt();
 			r->SetChecks();  // 2nd, upd
-	}	}
+		}
+		scn->grid.Create();
+	}
 	
 
 	//  🚦 pace ~ ~

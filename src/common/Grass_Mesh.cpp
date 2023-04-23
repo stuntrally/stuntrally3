@@ -206,8 +206,8 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
     //-----------------------------------------------------------------------------------
     bool partialMesh = false;
 	Root *root = scn->app->mGraphicsSystem->getRoot();
-	RenderSystem *renderSystem = root->getRenderSystem();
-	VaoManager *vaoManager = renderSystem->getVaoManager();
+	RenderSystem *rs = root->getRenderSystem();
+	VaoManager *vaoManager = rs->getVaoManager();
 
 	// Vertex declaration
 	uint vertSize = 0;
@@ -268,6 +268,9 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	IndexBufferPacked *indexBuffer = 0;
 
 	uint idxCnt = idx.size();
+	if (idxCnt >= 65530)
+		LogO("Grass!  Index out of 16bit! "+toStr(idxCnt));
+
 	uint idxSize = sizeof( uint16 ) * idxCnt;
 	uint16 *indices = reinterpret_cast<uint16 *>(
 		OGRE_MALLOC_SIMD( idxSize, MEMCATEGORY_GEOMETRY ) );

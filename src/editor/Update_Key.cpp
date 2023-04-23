@@ -381,7 +381,8 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 		//  🛣️ road
 		case key(R):  if (bEdit()){  SetEdMode(ED_Road);	UpdEditWnds();  }	break;
-		case key(B):  if (road)  {  road->UpdPointsH();  road->Rebuild(true);  }  break;
+		case key(B):  if (road)  {  road->UpdPointsH();
+						scn->grid.Destroy();  road->Rebuild(true);  }  break;
 		case key(T):  if (edMode == ED_Road && mWndRoadStats)
 						mWndRoadStats->setVisible(!mWndRoadStats->getVisible());  break;
 		case key(M):  if (edMode == ED_Road && road)  road->ToggleMerge();  break;

@@ -1,7 +1,9 @@
 #pragma once
 // #include "PreviewTex.h"
-// #include <OgreVector3.h>
 //#include "SceneClasses.h"
+#include "Road.h"
+// #include "Reflect.h"
+#include "Grid.h"
 #include <OgreVector3.h>
 #include <OgreString.h>
 
@@ -27,7 +29,7 @@ public:
 
 
 	//  Shadows-
-	// void changeShadows(), UpdShaderParams(), UpdPaceParams(), UpdPSSMMaterials();
+	// void changeShadows(), UpdShaderParams(), UpdPaceParams();
 	
 
 	///  📄 Setup  scene.xml
@@ -75,6 +77,8 @@ public:
 	Ogre::SceneNode* mNdFluidsRoot =0;
 	void CreateFluids(), DestroyFluids(), CreateBltFluids();
 
+	// FluidReflect refl;
+
 	// WaterRTT* mWaterRTT;  // todo:
 	// void UpdateWaterRTT(Ogre::Camera* cam);
 
@@ -84,6 +88,8 @@ public:
 	int rdCur = 0;  // cur
 	std::vector<SplineRoad*> roads;
 	SplineRoad* road = 0;  // main
+	
+	GridMtrs grid;
 
 	SplineRoad* trail = 0;  // driving aids
 	PaceNotes* pace = 0;

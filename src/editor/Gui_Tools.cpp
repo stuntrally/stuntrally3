@@ -137,7 +137,6 @@ void CGui::btnCopyRoad(WP)
 	scn->road->LoadFile(from + "/road.xml");  // todo: other roads cmb?
 
 	SetGuiFromXmls();	scn->road->Rebuild(true);
-	// scn->UpdPSSMMaterials();
 	scn->road->UpdAllMarkers();
 }
 
@@ -166,7 +165,6 @@ void CGui::btnCopyRoadPars(WP)
 
 	SetGuiFromXmls();
 	scn->road->Rebuild(true);
-	// scn->UpdPSSMMaterials();
 	scn->road->UpdAllMarkers();
 }
 

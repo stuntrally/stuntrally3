@@ -24,15 +24,17 @@ class btTriangleMesh;
 #define LogR(a)  //LogO(String("~ Road  ") + a)
 #endif
 
-#define  LODs  4  // LODs each segment has
-#define  MTRs  4  // road materials to choose
+#define  LODs  4  // LODs each segment has (>? slider)
+#define  MTRs  4  // road materials to choose (> add gui)
 #define  LoopTypes  9  // for pace notes
 
 
+//  Road seg data  ---------------------------------------
 struct SegData
 {
-	//  ogre resources for 1 segment
-	Ogre::SceneNode* node =0;  Ogre::Item* it =0, *it2 =0;
+	//  🟢 Ogre resources for 1 segment
+	Ogre::SceneNode* node =0;
+	Ogre::Item* it =0, *it2 =0;
 	Ogre::String smesh;
 	// Ogre::MeshPtr mesh;  Ogre::v1::MeshPtr mesh1;
 };
@@ -61,6 +63,7 @@ enum RoadType
 {	RD_Road, RD_River, RD_Decor, RD_Trail, RD_ALL  };
 
 
+//  Spline Road  ---------------------------------------
 class SplineRoad : public SplineMarkEd
 {
 public:
@@ -288,7 +291,7 @@ public:
 	bool bMerge;
 	float fLodBias = 1.f;     // upd par, detail
 	
-	bool bCastShadow = 0;    // true for depth shadows
+	bool bCastShadow = 0;    // true for (depth) shadows
 	bool bRoadWFullCol = 0;  // road wall full collision (all triangles, or just side)
 
 

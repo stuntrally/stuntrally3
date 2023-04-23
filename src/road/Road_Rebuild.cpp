@@ -4,6 +4,7 @@
 #include "ShapeData.h"
 #include "dbl.h"
 #include "Road.h"
+#include "Grid.h"
 #include "CScene.h"
 #ifndef SR_EDITOR
 	#include "game.h"
@@ -314,7 +315,7 @@ void SplineRoad::BuildSeg(
 					Real brdg = min(1.f, std::abs(vP.y - yTer) * 0.4f);  //par ] height diff mul
 					Real h = max(0.f, 1.f - std::abs(vP.y - yTer) / 30.f);  // for grass dens tex
 					
-					bool onP = mP[seg].onPipe > 0;  // FIXME: on pipe road prv
+					bool onP = mP[seg].onPipe > 0;  // fixme: on pipe road prv
 					float pp = fPipe;//*0.5f + (onP ? 0.5f : 0.f);  // put onP in pipe
 					
 					c = Vector4(brdg, pp, mP[seg].notReal ? 0.f : 1.f, h);
@@ -591,6 +592,12 @@ void SplineRoad::createSeg_Meshes(
 
 	if (HasRoad())
 	{
+		/*LogO("RD lod "+toStr(lod)+
+			"  pos "+toStr(DLM.pos.size())+
+			"  norm "+toStr(DLM.norm.size())+
+			"  clr "+toStr(DLM.clr.size())+
+			"  tcs "+toStr(DLM.tcs.size())+
+			"  idx "+toStr(idx.size()) );*/
 		CreateMesh(rs.road[lod], sMesh,
 			rs.sMtrRd, rs.alpha, pipeGlass,
 			DLM.pos, DLM.norm, DLM.clr, DLM.tcs, idx);
@@ -667,10 +674,19 @@ void SplineRoad::createSeg_Meshes(
 		}					
 		vSegs[DS.seg].nTri[DL.lod] += idx.size()/3;
 
-		/*if (!DLM.posC.empty())
-			CreateMesh(rs.col, sMesh+"C",
-				sMtrCol, false, false,
-				DLM.posC, DLM.normC, DLM.clr0, DLM.tcsC, idx);*/
+		if (!DLM.posC.empty())
+		{
+			GridCellLods::pApp = pApp;
+			GridMtr mtr;  mtr.name = sMtrCol;
+			
+			pApp->scn->grid.AddMesh(
+				lod,
+				DLM.posC[0],  //wip
+				mtr,
+				DLM.posC, DLM.normC, DLM.clr0, DLM.tcsC, idx);
+			/*CreateMesh(rs.col, sMesh+"C",
+				sMtrCol, false, false,*/
+		}
 	}
 	
 

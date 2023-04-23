@@ -77,7 +77,7 @@ void CGui::btnPickPipe(WP wp)
 	// int id = atoi(sn.c_str())-1;  if (id < 0 || id >= MTRs)  return;
 
 	// String s = cmb->getItemNameAt(val);
-	// app->scn->road->SetMtrPipe(id, s);  app->scn->road->Rebuild(true);  scn->UpdPSSMMaterials();
+	// app->scn->road->SetMtrPipe(id, s);  app->scn->road->Rebuild(true);
 	// UpdSurfList();
 }
 
@@ -165,7 +165,7 @@ void CGui::listPickRd(Mli2 li, size_t pos)
 		listSurf(surfList, idSurf);
 	}
 	//  upd
-	app->scn->road->Rebuild(true);  //scn->UpdPSSMMaterials();
+	app->scn->road->Rebuild(true);
 	UpdSurfList();
 }
 
