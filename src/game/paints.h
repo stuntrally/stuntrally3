@@ -31,7 +31,7 @@ struct CarPaint
 	bool new_line = false;  // for gui
 	int rate = 0;  // user rating / bookmark
 };
-const int MaxPaints = 500;  // par max ini
+const int MaxPaints = 990;  // par max ini
 
 
 //  🎨 paints.ini  palette for Gui
