@@ -16,7 +16,6 @@ namespace Ogre {  class Root;  class SceneManager;  class Window;  class Camera;
 	namespace v1 {  class Overlay;  }
 	class Terra;  class HlmsPbsTerraShadows;
 	class PlanarReflections;  }
-class PlanarReflectionsWorkspaceListener;
 class GraphicsSystem;  class SETTINGS;  class CScene;  class CGui;  class CGuiCom;
 
 //  cube reflections, car etc
@@ -127,12 +126,6 @@ public:
 	void CreateCubeReflect(), UpdCubeRefl();
 
 	Ogre::CompositorWorkspace* SetupCompositor();
-
-
-	//  🪞 planar reflect  water
-	Ogre::PlanarReflections *mPlanarRefl =0;
-	PlanarReflectionsWorkspaceListener *mWorkspaceListener =0;
-	void createReflectiveSurfaces();
 
 
 	//  👥 Split screen  ----------------

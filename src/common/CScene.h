@@ -2,7 +2,7 @@
 // #include "PreviewTex.h"
 //#include "SceneClasses.h"
 #include "Road.h"
-// #include "Reflect.h"
+#include "Reflect.h"
 #include "Grid.h"
 #include <OgreVector3.h>
 #include <OgreString.h>
@@ -77,7 +77,7 @@ public:
 	Ogre::SceneNode* mNdFluidsRoot =0;
 	void CreateFluids(), DestroyFluids(), CreateBltFluids();
 
-	// FluidReflect refl;
+	FluidReflect refl;
 
 	// WaterRTT* mWaterRTT;  // todo:
 	// void UpdateWaterRTT(Ogre::Camera* cam);

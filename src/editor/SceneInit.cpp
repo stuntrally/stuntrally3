@@ -10,6 +10,7 @@
 #include "Road.h"
 #include "PaceNotes.h"
 #include "Grass.h"
+#include "Reflect.h"
 #include "paths.h"
 #include "RenderConst.h"
 #include "btBulletCollisionCommon.h"
@@ -211,7 +212,10 @@ void App::LoadTrackEv()
 
 	scn->DestroyRoads();
 	scn->DestroyPace();
-	
+
+	scn->refl.app = this;
+	scn->refl.DestroyReflect();	
+
 
 	//  🏞️ load scene
 	scn->sc->LoadXml(gcom->TrkDir()+"scene.xml");
@@ -275,7 +279,8 @@ void App::LoadTrackEv()
 	
 	CreateRnd2Tex();  // 🖼️
 
-	// createReflectiveSurfaces();  // todo: water ...
+	// scn->refl.CreateReflect();  // todo: water ...
+
 
 	//UpdVisGui();
 	UpdStartPos();

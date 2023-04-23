@@ -1,0 +1,202 @@
+#include "pch.h"
+#include "Reflect.h"
+#include "Def_Str.h"
+#include "RenderConst.h"
+#include "settings.h"
+#include "App.h"
+#include "Cam.h"
+#include "GraphicsSystem.h"
+
+#include <OgreRoot.h>
+#include <OgreCamera.h>
+#include <OgreVector3.h>
+#include <OgreWindow.h>
+#include <OgreSceneManager.h>
+// #include <OgreTextureGpuManager.h>
+
+#include "HlmsPbs2.h"
+#include <OgreHlmsManager.h>
+#include <Compositor/OgreCompositorManager2.h>
+#include <Compositor/OgreCompositorNodeDef.h>
+#include <Compositor/OgreCompositorNode.h>
+#include <Compositor/OgreCompositorWorkspace.h>
+// #include <Compositor/OgreCompositorWorkspaceDef.h>
+#include <Compositor/OgreCompositorWorkspaceListener.h>
+#include <Compositor/Pass/PassScene/OgreCompositorPassSceneDef.h>
+
+#include <OgreItem.h>
+#include <OgreMesh.h>
+#include <OgreMeshManager.h>
+#include <OgreMesh2.h>
+#include <OgreMeshManager2.h>
+#include <OgreSceneManager.h>
+#include <OgreSceneNode.h>
+#include "OgrePlanarReflections.h"
+#include <Compositor/Pass/PassScene/OgreCompositorPassScene.h>
+using namespace Ogre;
+
+
+void ReflectListener::workspacePreUpdate( CompositorWorkspace *workspace )
+{
+	mPlanarReflections->beginFrame();
+	// LogO("ws pre: "+toStr(workspace->getId()));
+}
+
+//-----------------------------------------------------------------------------------
+void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
+{
+	//  Ignore non-scene passes (clear etc)
+	if (pass->getType() != PASS_SCENE)
+		return;
+
+	assert( dynamic_cast<const CompositorPassSceneDef *>( pass->getDefinition() ) );
+	const CompositorPassSceneDef *passDef =
+		static_cast<const CompositorPassSceneDef *>( pass->getDefinition() );
+
+	LogO("ws pass: "+passDef->mProfilingId);  //toStr(pass->getParentNode()->getId() ));
+	// mTerra->setSkirt
+
+	//  Ignore scene passes that belong to a shadow node.
+	if (passDef->mShadowNodeRecalculation == SHADOW_NODE_CASTER_PASS)
+		return;
+
+	//  Ignore scene passes we haven't specifically tagged to receive reflections
+	if (passDef->mIdentifier != 25001)
+		return;
+
+	CompositorPassScene *passScene = static_cast<CompositorPassScene *>( pass );
+	Camera *camera = passScene->getCamera();
+
+	//  The Aspect Ratio must match that of the camera we're reflecting.
+	mPlanarReflections->update( camera, camera->getAutoAspectRatio()
+		? pass->getViewportAspectRatio( 0u ) : camera->getAspectRatio() );
+}
+
+
+//-----------------------------------------------------------------------------------
+void FluidReflect::DestroyReflect()
+{
+	if (nd)	{	app->mSceneMgr->destroySceneNode(nd);  nd = 0;  }
+	if (item){	app->mSceneMgr->destroyItem(item);  item = 0;  }
+	if (!sMesh.empty())
+	{	MeshManager::getSingleton().remove(sMesh);
+	v1::MeshManager::getSingleton().remove(sMesh);  sMesh = "";  }
+
+	CompositorWorkspace *workspace = app->mGraphicsSystem->getCompositorWorkspace();
+	if (mWorkspaceListener)
+		workspace->removeListener( mWorkspaceListener );
+	delete mWorkspaceListener;  mWorkspaceListener = 0;
+
+	delete mPlanarRefl;  mPlanarRefl = 0;
+}
+
+//-----------------------------------------------------------------------------------
+void FluidReflect::CreateReflect()
+{
+	Root *root = app->mGraphicsSystem->getRoot();
+
+	bool useComputeMipmaps = false;
+#if !OGRE_NO_JSON
+	useComputeMipmaps =
+		root->getRenderSystem()->getCapabilities()->hasCapability( RSC_COMPUTE_PROGRAM );
+#endif
+
+	//  Setup PlanarReflections
+	mPlanarRefl = new PlanarReflections( app->mSceneMgr, root->getCompositorManager2(), 1.0, 0 );
+	mWorkspaceListener = new ReflectListener( mPlanarRefl );
+	{
+		CompositorWorkspace *workspace = app->mGraphicsSystem->getCompositorWorkspace();
+		workspace->addListener( mWorkspaceListener );
+	}
+
+	uint32 si = 1024; //512;  // par
+	// mPlanarRefl->setMaxActiveActors( 1u, "PlanarReflectionsReflectiveWorkspace",
+	// 	true, si, si, false, PFG_RGBA8_UNORM_SRGB, useComputeMipmaps );  // no mipmaps
+	
+	// The rest of the reflections do
+	mPlanarRefl->setMaxActiveActors( 2u, "PlanarReflectionsReflectiveWorkspace",
+		true, si, si, true, PFG_RGBA8_UNORM_SRGB, useComputeMipmaps );
+	
+	const Vector2 mirrorSize( 4000.0f, 4000.0f );
+	// Create the plane mesh
+	// Note that we create the plane to look towards +Z; so that sceneNode->getOrientation
+	// matches the orientation for the PlanarReflectionActor
+	v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
+		"PlaneMirror", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+		Plane( Vector3::UNIT_Z, 0.0f ),
+		// Plane( Vector3::UNIT_Y, 0.0f ),  // org |
+		mirrorSize.x, mirrorSize.y, 1, 1, true, 1, 1.0f,
+		1.0f, Vector3::UNIT_Y,
+		// 1.0f, Vector3::UNIT_X,  // org |
+		v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
+	sMesh = "PlaneMirror";
+	MeshPtr planeMesh = MeshManager::getSingleton().createByImportingV1(
+		sMesh, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+		// planeMeshV1.get(), true, true, true );
+		planeMeshV1.get(), false, false, false );
+
+
+	//  Setup mirror for Unlit
+	//---------------------------------------------------------------------
+	/**item = mSceneMgr->createItem( planeMesh, SCENE_DYNAMIC );
+	nd = mSceneMgr->getRootSceneNode( SCENE_DYNAMIC )->createChildSceneNode( SCENE_DYNAMIC );
+	nd->setPosition( 500, 5, 0 );
+	nd->setOrientation(	Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_Z ) );  // ?
+	// nd->setOrientation(	Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_Y ) );  // z
+	nd->attachObject( item );
+	item->setCastShadows( false );
+	item->setVisibilityFlags( 1u );  // Do not render this plane during the reflection phase.
+
+	actor = mPlanarRefl->addActor( PlanarReflectionActor(
+		nd->getPosition(), mirrorSize, nd->getOrientation() ) );
+
+	Hlms *hlmsUnlit = root->getHlmsManager()->getHlms( HLMS_UNLIT );
+
+	HlmsMacroblock macroblock;
+	HlmsBlendblock blendblock;
+	String datablockName( "Mirror_Unlit" );
+	HlmsUnlitDatablock *mirror =
+		static_cast<HlmsUnlitDatablock *>( hlmsUnlit->createDatablock(
+			datablockName, datablockName, macroblock, blendblock, HlmsParamVec() ) );
+	mPlanarRefl->reserve( 0, actor );
+	// Make sure it's always activated (i.e. always win against other actors)
+	// unless it's not visible by the camera.
+	actor->mActivationPriority = 0;
+	mirror->setTexture( 0, mPlanarRefl->getTexture( 0 ) );
+	mirror->setEnablePlanarReflection( 0, true );
+	item->setDatablock( mirror );/**/
+
+
+	//  Setup mirror for PBS
+	//---------------------------------------------------------------------
+	Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_PBS );
+	assert( dynamic_cast<HlmsPbs2 *>( hlms ) );
+	HlmsPbs2 *pbs = static_cast<HlmsPbs2 *>( hlms );
+	pbs->setPlanarReflections( mPlanarRefl );
+
+	item = app->mSceneMgr->createItem( planeMesh, SCENE_DYNAMIC );
+	item->setDatablock( "GlassRoughness" );
+	item->setCastShadows(false);
+
+	nd = app->mSceneMgr->getRootSceneNode( SCENE_DYNAMIC )->createChildSceneNode( SCENE_DYNAMIC );
+	nd->setPosition( -0, -9.f, 0 );  // -13.5f
+	// nd->setOrientation( Quaternion( Radian( Math::HALF_PI ), Vector3::UNIT_Y ) );  // z-
+	nd->setOrientation( Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_X ) );  // ?_
+	// nd->setScale( Vector3( 1.f, 1.f, 1.f ) );
+	nd->attachObject( item );
+
+
+	actor = mPlanarRefl->addActor( PlanarReflectionActor(
+		nd->getPosition(), mirrorSize * Vector2( 0.75f, 0.5f ),
+		nd->getOrientation() ) );
+
+	PlanarReflections::TrackedRenderable tracked(
+		item->getSubItem( 0 ), item,
+		Vector3::UNIT_Z, Vector3( 0, 0, 0 ) );  // z
+		// Vector3::UNIT_Y, Vector3( 0, 0, 0 ) );  // ?
+	mPlanarRefl->addRenderable( tracked );
+	
+	// mPlanarRefl->removeRenderable( tracked );
+	// mPlanarRefl->removeActor( actor );
+}
+
