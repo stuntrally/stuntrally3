@@ -11,7 +11,7 @@ compositor_node RttNode
 		//  view render  ----
 		pass render_scene
 		{
-			profiling_id "rtt rnd road"
+			profiling_id "RTT road"
 
 			load
 			{
@@ -57,7 +57,7 @@ compositor_node RttViewNode
 		//  view render  ----
 		pass render_scene
 		{
-			profiling_id "rtt rnd view"
+			profiling_id "RTT view all"
 
 			load
 			{
@@ -93,6 +93,8 @@ abstract target cubemap_target
 {
 	pass render_scene
 	{
+		profiling_id "Cube Reflection"
+
 		load
 		{
 			all				clear
@@ -204,7 +206,7 @@ compositor_node SR3_Render
 		//  view render  ----
 		pass render_scene
 		{
-			profiling_id "view/eye specific"
+			profiling_id "Main view"
 
 			// executed in all views/eyes
 			execution_mask			0xff
@@ -236,7 +238,7 @@ compositor_node SR3_Render
 			// so we need to expose it to the pass.
 			expose demo_dynamic_cubemap
 
-			// todo: planar reflections  used by C++ to identify this pass
+			//  used in planar ReflectListener
 			identifier	25001
 
 			// in code: game, not ed
@@ -292,6 +294,7 @@ compositor_node SR3_Render
 	}
 }
 
+
 //  🪞 planar reflections  Water
 //------------------------------------------------------------------------------------
 compositor_node PlanarReflectionsReflectiveRenderingNode
@@ -302,6 +305,8 @@ compositor_node PlanarReflectionsReflectiveRenderingNode
 	{
 		pass render_scene
 		{
+			profiling_id "Planar Reflection"
+
 			load
 			{
 				all				clear
@@ -317,24 +322,16 @@ compositor_node PlanarReflectionsReflectiveRenderingNode
 			overlays		 off
 			visibility_mask  0xfffffffe
 			//shadows  SR3_Shadows
-
-			profiling_id "Reflective pass"
 		}
 
 		pass generate_mipmaps
 		{
+			profiling_id "Planar Reflect Mipmaps"
+		
 			mipmap_method compute_hq
-
-			profiling_id "Mipmap Generation (HQ)"
 		}
 	}
 }
-
-
-// workspace PlanarReflectionStandardsWorkspace
-// {
-// 	connect_output PlanarReflectionsStandardRenderingNode 0
-// }
 
 workspace PlanarReflectionsReflectiveWorkspace
 {
@@ -370,6 +367,7 @@ compositor_node_shadow SR3_Shadows
 		{
 			pass render_scene
 			{
+				profiling_id "Shadows unused"
 			}
 		}
 	}

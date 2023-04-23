@@ -1,8 +1,0 @@
-hlms GlassRoughness pbs
-{
-	diffuse 0.5 0.7 1.0
-	diffuse_map crystal_wall.jpg
-	normal_map  normal_1s.png
-	roughness	1
-	roughness_map	GlassRoughness.png
-}

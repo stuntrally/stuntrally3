@@ -1,3 +1,25 @@
+//  todo:
+hlms GlassRoughness pbs
+{
+	// diffuse 0.5 0.7 1.0
+	diffuse 0.0 0.02 0.04
+	// specular 0.1 0.3 0.6   // refl color
+	specular 0.15 0.3 0.5   // refl color
+
+	// diffuse_map crystal_wall.jpg  //+
+	// diffuse_map  ycrystals_med_d.jpg
+	// specular_map ycrystals_med_d.jpg  //~
+	// normal_map  flat_n.png  // no?-
+
+	fresnel 1.0  //?
+	fresnel_coeff 0.05 0.2 0.4
+	roughness	0.01
+
+	// roughness	1.0
+	// roughness_map  ycrystals_med_s.jpg
+	// roughness_map  GlassRoughness.png
+}
+
 
 //  Base  Water
 //--------------------------------------------------------
