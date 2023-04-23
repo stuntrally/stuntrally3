@@ -145,7 +145,7 @@ void BaseApp::baseInitGui()
 	if (!(!pSet->loadingbackground && pSet->autostart))
 	{
 		imgBack = mGui->createWidget<ImageBox>("ImageBox",
-			0,0, 800,600, Align::Default, "Back","ImgBack");
+			0,0, 800,600, Align::Default, "ToolTip","ImgBack");
 		imgBack->setImageTexture("background2.jpg");
 		#ifdef TEST_LOAD
 		imgBack->setVisible(false);  //-
@@ -154,7 +154,7 @@ void BaseApp::baseInitGui()
 
 	///  loading background img
 	imgLoad = mGui->createWidget<ImageBox>("ImageBox",
-		0,0, 800,600, Align::Default, "Back", "ImgLoad");
+		0,0, 800,600, Align::Default, "Pointer", "ImgLoad");
 	imgLoad->setImageTexture("background2.png");
 	#ifdef TEST_LOAD
 	imgLoad->setVisible(false);  //-

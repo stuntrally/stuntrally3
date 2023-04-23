@@ -689,6 +689,9 @@ void App::LoadView(int c)
 	{	//  top view full
 		q.FromAngleAxis(Degree(-90), Vector3::UNIT_Z);
 		p.y = ter->getHeight(p.x, p.z) + t*4;
+		
+		isFocGui = false;  // hide back gui
+		gui->toggleGui(false);
 	}
 	else if (c < 4)
 	{	//  rotate around, middle of track
@@ -700,6 +703,9 @@ void App::LoadView(int c)
 		p.x = (c-4)/2 ? -t : t;
 		p.z = (c-4)%2 ? -t : t;
 		p.y = ter->getHeight(p.x, p.z) + t*2;  //par hmax-
+
+		isFocGui = true;  // show gui, to load tex
+		gui->toggleGui(false);
 	}
 	LogO(String("Preload cam: ")+toStr(c)+"  pos "+toStr(p));//-
 	mCamera->setPosition(p);
@@ -871,7 +877,7 @@ void App::CreateRoads()
 			r->RebuildRoadInt();
 			r->SetChecks();  // 2nd, upd
 		}
-		scn->grid.Create();
+		scn->grid.Create();  
 	}
 	
 
