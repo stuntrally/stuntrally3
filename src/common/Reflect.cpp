@@ -53,7 +53,7 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 	const CompositorPassSceneDef *passDef =
 		static_cast<const CompositorPassSceneDef *>( pass->getDefinition() );
 
-	LogO("ws pass: "+passDef->mProfilingId);  //toStr(pass->getParentNode()->getId() ));
+	// LogO("ws pass: "+passDef->mProfilingId);  //toStr(pass->getParentNode()->getId() ));
 	// mTerra->setSkirt
 
 	//  Ignore scene passes that belong to a shadow node.
@@ -118,16 +118,14 @@ void FluidReflect::CreateReflect()
 		true, si, si, true, PFG_RGBA8_UNORM_SRGB, useComputeMipmaps );
 	
 	const Vector2 mirrorSize( 4000.0f, 4000.0f );
-	// Create the plane mesh
-	// Note that we create the plane to look towards +Z; so that sceneNode->getOrientation
-	// matches the orientation for the PlanarReflectionActor
+	//  Create the plane mesh
+	//  Note that we create the plane to look towards +Z; so that sceneNode->getOrientation
+	//  matches the orientation for the PlanarReflectionActor
 	v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
 		"PlaneMirror", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-		Plane( Vector3::UNIT_Z, 0.0f ),
-		// Plane( Vector3::UNIT_Y, 0.0f ),  // org |
+		Plane( Vector3::UNIT_Z, 0.0f ),  // z|
 		mirrorSize.x, mirrorSize.y, 1, 1, true, 1, 1.0f,
-		1.0f, Vector3::UNIT_Y,
-		// 1.0f, Vector3::UNIT_X,  // org |
+		1.0f, Vector3::UNIT_Y,  // z|
 		v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 	sMesh = "PlaneMirror";
 	MeshPtr planeMesh = MeshManager::getSingleton().createByImportingV1(
@@ -175,28 +173,30 @@ void FluidReflect::CreateReflect()
 	pbs->setPlanarReflections( mPlanarRefl );
 
 	item = app->mSceneMgr->createItem( planeMesh, SCENE_DYNAMIC );
-	item->setDatablock( "GlassRoughness" );
+	item->setDatablock( "WaterReflect" );
 	item->setCastShadows(false);
 
 	nd = app->mSceneMgr->getRootSceneNode( SCENE_DYNAMIC )->createChildSceneNode( SCENE_DYNAMIC );
 	nd->setPosition( -0, -9.f, 0 );  // -13.5f
-	// nd->setOrientation( Quaternion( Radian( Math::HALF_PI ), Vector3::UNIT_Y ) );  // z-
+	// nd->setPosition( -5, 2.5f, 0 );  // z|
+	// nd->setOrientation( Quaternion( Radian( Math::HALF_PI ), Vector3::UNIT_Y ) );  // z|
 	nd->setOrientation( Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_X ) );  // ?_
 	// nd->setScale( Vector3( 1.f, 1.f, 1.f ) );
+	// nd->setScale( Vector3( 0.75f, 0.5f, 1.0f ) );  // z| ?
 	nd->attachObject( item );
 
 
 	actor = mPlanarRefl->addActor( PlanarReflectionActor(
-		nd->getPosition(), mirrorSize * Vector2( 0.75f, 0.5f ),
+		nd->getPosition(), mirrorSize, // * Vector2( 0.75f, 0.5f ), // z| ?
 		nd->getOrientation() ) );
 
 	PlanarReflections::TrackedRenderable tracked(
 		item->getSubItem( 0 ), item,
-		Vector3::UNIT_Z, Vector3( 0, 0, 0 ) );  // z
-		// Vector3::UNIT_Y, Vector3( 0, 0, 0 ) );  // ?
+		Vector3::UNIT_Z, Vector3( 0, 0, 0 ) );  // z|
+		// Vector3::UNIT_Y, Vector3( 0, 0, 0 ) );  // ?-
 	mPlanarRefl->addRenderable( tracked );
 	
-	// mPlanarRefl->removeRenderable( tracked );
+	// mPlanarRefl->removeRenderable( tracked );  // ?
 	// mPlanarRefl->removeActor( actor );
 }
 

@@ -1,10 +1,10 @@
 //  todo:
-hlms GlassRoughness pbs
+hlms WaterReflect pbs
 {
 	// diffuse 0.5 0.7 1.0
 	diffuse 0.0 0.02 0.04
 	// specular 0.1 0.3 0.6   // refl color
-	specular 0.15 0.3 0.5   // refl color
+	specular 0.17 0.35 0.5   // refl color
 
 	// diffuse_map crystal_wall.jpg  //+
 	// diffuse_map  ycrystals_med_d.jpg

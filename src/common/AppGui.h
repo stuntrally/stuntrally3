@@ -122,7 +122,7 @@ public:
 	Ogre::Camera* mCubeCamera = 0;
 	Ogre::TextureGpu* mCubeReflTex = 0;
 	Ogre::CompositorWorkspace* wsCubeRefl = 0;
-	int iReflSkip =0;
+	int iReflSkip =0, iReflStart =0;
 	void CreateCubeReflect(), UpdCubeRefl();
 
 	Ogre::CompositorWorkspace* SetupCompositor();

@@ -24,6 +24,7 @@ using namespace Ogre;
 //-----------------------------------------------------------------------------------------
 void AppGui::CreateCubeReflect()
 {
+	iReflStart = 0;
 	auto* rndSys = mRoot->getRenderSystem();
 	auto* texMgr = rndSys->getTextureGpuManager();
 	auto* mgr = mRoot->getCompositorManager2();
@@ -157,6 +158,8 @@ void AppGui::CreateCubeReflect()
 void AppGui::UpdCubeRefl()
 {
 	if (!wsCubeRefl)  return;
+	++iReflStart;
+	if (iReflStart < 4)  return;  //? crash in cullPhase01 w/o
 
 	//  skip whole update
 	if (iReflSkip++ < pSet->refl_skip)

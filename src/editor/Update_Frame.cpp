@@ -231,7 +231,7 @@ void App::UpdateEnd(float dt)
 		}
 	}
 
-	
+
 	UpdCubeRefl();  // 🔮💫
 
 	///**  Render Targets update  //; fixme
