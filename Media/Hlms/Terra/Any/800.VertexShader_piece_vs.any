@@ -102,7 +102,7 @@
 	if( isSkirt )
 	{
 		// worldPos.y -= 0.01;  // normalized!-
-		worldPos.y -= 20.0;  // m  floats
+		worldPos.y -= 5.0;  //** par  20.0 m  floats
 		// if( worldPos.y <= skirtHeight )
 		// 	worldPos.y = worldPos.y - skirtHeight;
 		// else
