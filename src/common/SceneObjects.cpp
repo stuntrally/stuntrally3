@@ -386,8 +386,9 @@ void App::UpdObjSel()
 {
 	int objs = scn->sc->objects.size();
 	for (int i=0; i < objs; ++i)
-	{	bool bSel = vObjSel.find(i) != vObjSel.end();
-		//; scn->sc->objects[i].ent->getSubEntity(0)->setCustomParameter(1, Vector4(bSel ? 1 : 0, 0,0,0));
+	{
+		bool bSel = vObjSel.find(i) != vObjSel.end();  //; todo: ..?
+		scn->sc->objects[i].it->getSubItem(0)->setCustomParameter(123, Vector4(bSel ? 1 : 0, 0,0,0));
 	}
 }
 

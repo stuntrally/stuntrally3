@@ -4,7 +4,6 @@
 using namespace Ogre;
 
 
-
 void GridCellMesh::Clear()
 {
 	pos.clear();  norm.clear();
@@ -49,6 +48,8 @@ void GridCells::AddMesh(int lod,
 	{
 		s = "Grid: add  ";
 		GridCellMesh& m = (*it).second.lods[lod];
+		uint16 o = m.pos.size();  // max 64k!
+
 		#define add(a,b)  a.insert(a.end(), b.begin(), b.end())
 		// LogO("a " + toStr(m.pos.size())+" + " + toStr(pos.size()));
 		add(m.pos, pos);
@@ -57,8 +58,6 @@ void GridCells::AddMesh(int lod,
 		add(m.tcs, tcs);
 
 		//  ofset idx, by current size
-		uint16 o = m.pos.size();  // max 64k!
-
 		std::vector<uint16> ofs;
 		ofs.reserve(idx.size());
 

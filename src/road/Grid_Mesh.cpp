@@ -126,6 +126,7 @@ void GridCellLods::Create()
 		for (uint i=0; i < vertCnt; ++i)
 		{
 			v[a++] = pos[i].x;   v[a++] = pos[i].y;   v[a++] = pos[i].z;  aabox.merge( pos[i] );
+			// LogO(toStr(i)+" "+toStr(pos[i]));
 			v[a++] = norm[i].x;  v[a++] = norm[i].y;  v[a++] = norm[i].z;
 		#ifndef V1tangents
 			v[a++] = norm[i].x;  v[a++] = norm[i].z;  v[a++] = norm[i].y;  // tangent-
@@ -182,7 +183,7 @@ void GridCellLods::Create()
 	memcpy( indices, &idx[0],  idxSize);
 	
 	// for (uint i=0; i < idxCnt; ++i)
-	// 	LogO(toStr(indices[i]));
+	// 	LogO(toStr(i)+" "+toStr(indices[i]));
 
 	try
 	{
