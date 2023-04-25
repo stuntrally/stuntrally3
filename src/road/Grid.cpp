@@ -2,6 +2,7 @@
 #include "Def_Str.h"
 // #include <Ogre.h>
 using namespace Ogre;
+using namespace std;
 
 
 void GridCellMesh::Clear()
@@ -19,12 +20,13 @@ void GridCells::Clear()
 	cells.clear();
 }
 
+//  world pos to grid cell index
 GridPos GridCells::From(Vector3 worldPos)
 {
-#if 1
+#if 0  // test no cells
 	return GridPos(0,0,0);
 #else
-	return GridPos(
+	return make_tuple(
 		worldPos.x / fCellSize,
 		worldPos.y / fCellSize,
 		worldPos.z / fCellSize);
@@ -40,6 +42,8 @@ void GridCells::AddMesh(int lod,
 	const std::vector<uint16>& idx)
 {
 	GridPos gpos = From(worldPos);
+	// short x,y,z;  tie(x,y,z) = gpos;
+	// LogO("G  x "+toStr(x)+" y "+toStr(y)+" z "+toStr(z));
 	// cells.insert_or_assign(gpos, );
 
 	String s;
@@ -66,8 +70,7 @@ void GridCells::AddMesh(int lod,
 
 		add(m.idx, ofs);
 		#undef add
-	}
-	else
+	}else
 	{
 		s = "Grid: new  ";
 		GridCellMesh m;
@@ -75,9 +78,10 @@ void GridCells::AddMesh(int lod,
 		m.tcs = tcs;  m.idx = idx;
 
 		GridCellLods gcl;
+		gcl.gpos = gpos;
 		gcl.mtr = mtr;
 		gcl.lods[lod] = m;
-		cells[gpos] = gcl;  // insert new
+		cells[gpos] = gcl;  // new
 	}
 	// LogO(s + mtr.name+"  pos "+toStr(pos.size())+" idx "+toStr(idx.size())+"  wp "+toStr(worldPos));
 }
@@ -85,6 +89,7 @@ void GridCells::AddMesh(int lod,
 
 void GridCells::Create()
 {
+	LogO("C:## Grid + cells: "+toStr(cells.size()));
 	for (auto& c : cells)
 		c.second.Create();
 }
@@ -97,7 +102,7 @@ void GridCells::Destroy()
 }
 
 
-//  whole grid, all mtrs
+//  whole grid, all materials
 // . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 void GridMtrs::Clear()
 {	
@@ -122,25 +127,34 @@ void GridMtrs::AddMesh(
 	}else
 	{
 		GridCells cells;
+		// cells.fCellSize = 10.f;  // par-
+
 		s = "Grid# new  ";
 		cells.AddMesh(lod, worldPos, mtr,
 			pos, norm, clr, tcs, idx);
 		mtrs[mtr] = cells;  // new
 	}
-	LogO(s + mtr.name +" lod "+toStr(lod)+"  pos "+toStr(pos.size())+" idx "+toStr(idx.size())+"  wp "+toStr(worldPos));
+	LogO(s + mtr.name +" lod "+toStr(lod)+"  pos "+toStr(pos.size())+
+		"  clr "+toStr(clr.size())+" idx "+toStr(idx.size())+"  wp "+toStr(worldPos));
 }
 
 
 void GridMtrs::Create()
 {
-	LogO("C:## Grid +Create ##");
+	LogO("C:## Grid + Create ##");
+	LogO("C::+ Grid = mtrs: "+toStr(mtrs.size()));
+	int meshes = 0;
+	for (auto& m : mtrs)
+		meshes += m.second.cells.size();
+	LogO("C::+ Grid = meshes: "+toStr(meshes));
+
 	for (auto& m : mtrs)
 		m.second.Create();
 }
 
 void GridMtrs::Destroy()
 {
-	LogO("D:## Grid -Destroy ##");
+	LogO("D:## Grid - Destroy ##");
 	for (auto& m : mtrs)
 		m.second.Destroy();
 	mtrs.clear();

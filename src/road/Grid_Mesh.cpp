@@ -25,6 +25,7 @@
 #include <Vao/OgreVaoManager.h>
 #include <Vao/OgreVertexElements.h>
 using namespace Ogre;
+using namespace std;
 
 #define V1tangents  // todo: compute tangents ..
 
@@ -59,12 +60,15 @@ void GridCellLods::Create()
 	if (it)
 	{	LogO("Grid!! Create sMesh != ");  return;  }
 	
-	int ii = 0;  ++ii;
-	sMesh = "gd"+toStr(ii);
+	//  cell mesh name
+	++ii;
+	short x,y,z;  tie(x,y,z) = gpos;
+	sMesh = "Gx"+toStr(x)+",y"+toStr(y)+",z"+toStr(z)+","+toStr(ii)+","+sMtrName;
+
 	if (MeshManager::getSingleton().getByName(sMesh))
 		LogO("Mesh exists !!!" + sMesh);
 
-	LogO("Grid mesh: "+sMesh+"  mtr: "+sMtrName+"  pos "+toStr(pos.size()));
+	LogO("Grid mesh: "+sMesh+/*"  mtr: "+sMtrName+*/"  pos "+toStr(pos.size())+"  idx "+toStr(idx.size()));
 	bool trail = 0; //IsTrail();
 
  	Aabb aabox;  Real b = 1000.f;
@@ -172,7 +176,6 @@ void GridCellLods::Create()
 	uint idxCnt = idx.size();
 	if (idxCnt >= 65530)
 		LogO("Grid!  Index out of 16bit!");
-	LogO("Grid mesh_ pos "+toStr(pos.size())+"  idx "+toStr(idxCnt));
 	
 	uint idxSize = sizeof( uint16 ) * idxCnt;
 	uint16 *indices = reinterpret_cast<uint16 *>(
@@ -254,7 +257,6 @@ void GridCellLods::Create()
 	it->setVisible(true);  it->setCastShadows(true);//-
 	it->setVisibilityFlags(RV_Road);
 	it->setRenderQueueGroup(RQG_Road);
-	LogO("Grid ok");
 
 	//  ⭕ pipe glass 2nd item
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -350,7 +352,7 @@ void GridCellLods::Create()
 
 void GridCellLods::Destroy()
 {
-	LogO("Destroy Grid Cell " + mtr.name);
+	// LogO("Destroy Grid Cell " + mtr.name);
 	if (!it || !pApp)  return;
 	try
 	{

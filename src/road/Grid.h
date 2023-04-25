@@ -1,6 +1,7 @@
 #pragma once
 #include "Road.h"
 #include <vector>
+#include <tuple>
 #include <OgreVector3.h>
 #include <OgreVector4.h>
 #include <OgreVector4.h>
@@ -14,9 +15,16 @@ typedef std::tuple<short,short,short> GridPos;
 struct GridMtr
 {
 	Ogre::String name;  // ogre datablock / material name
-	// bool alpha;
-	// bool pipeGlass;
-	
+	bool alpha =0;
+	bool pipeGlass =0;
+	int que =10;
+	bool shadows =1;
+
+	GridMtr()
+	{	}
+	GridMtr(Ogre::String name1, bool alpha1=0, bool pipeGlass1=0)
+		:name(name1), alpha(alpha1), pipeGlass(pipeGlass1)
+	{	}
 };
 
 static bool operator<(const GridMtr& a, const GridMtr& b)
@@ -30,8 +38,7 @@ static bool operator<(const GridMtr& a, const GridMtr& b)
 struct GridCellMesh  // data
 {
 	//  one mtr  1 seg mesh
-	//  any of: road, pipe,  wall column,  blend road
-	//Ogre::String mtr;
+	//  any of: column  // todo: road, pipe, wall, blend road
 
 	std::vector<Ogre::Vector3>  pos, norm;
 	std::vector<Ogre::Vector2>  tcs;
@@ -49,6 +56,8 @@ struct GridCellLods  // ogre mesh
 {
 	GridCellMesh lods[LODs];
 	GridMtr mtr;
+	GridPos gpos;
+	int ii = 0;  // mesh counter
 
 	static App* pApp;  ///*
 
@@ -67,12 +76,9 @@ struct GridCellLods  // ogre mesh
 //---------------------------------------------------------
 struct GridCells
 {
-	//std::vector<std::vector<std::vector<GridCellLods>>> g3;  //?
-	// GridCellLods g[10][10][10];
-	//std::vector<GridCellLods> g1;  //1d  y*x* + x* + *
 	std::map<GridPos, GridCellLods> cells;
 	
-	GridPos From(Ogre::Vector3 worldPos);
+	GridPos From(Ogre::Vector3 worldPos);  // world pos to grid cell index
 	Ogre::Real fCellSize = 100.f;  // par
 	
 	void Clear();
@@ -89,12 +95,10 @@ struct GridCells
 
 
 ///  ***  GRID  🏗️ MESH   🏛️ Columns  WIP  ****
-//   whole grid, all mtrs
+//   whole grid, all materials
 //---------------------------------------------------------
 struct GridMtrs
 {
-	// std::vector<GridCells> mtrs;
-	// std::map<Ogre::String, int> mtrMap;
 	std::map<GridMtr, GridCells> mtrs;
 	
 	void Clear();

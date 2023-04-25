@@ -25,6 +25,10 @@
 using namespace Ogre;
 using std::vector;  using std::min;  using std::max;
 
+// #define USE_GRID_R
+// #define USE_GRID_W
+
+
 //  road       decor
 //  2-1	 6-5   2--1--0
 //  | 0--7 |   3     7
@@ -598,9 +602,17 @@ void SplineRoad::createSeg_Meshes(
 			"  clr "+toStr(DLM.clr.size())+
 			"  tcs "+toStr(DLM.tcs.size())+
 			"  idx "+toStr(idx.size()) );*/
+	#ifdef USE_GRID_R  //-
+		pApp->scn->grid.AddMesh(
+			lod,
+			DLM.pos[0],  //wip
+			GridMtr(rs.sMtrRd),
+			DLM.pos, DLM.norm, DLM.clr, DLM.tcs, idx);
+	#else
 		CreateMesh(rs.road[lod], sMesh,
 			rs.sMtrRd, rs.alpha, pipeGlass,
 			DLM.pos, DLM.norm, DLM.clr, DLM.tcs, idx);
+	#endif
 	}
 
 	bool cols = !DLM.posC.empty() && DL.isLod0;  // cols have no lods
@@ -649,10 +661,18 @@ void SplineRoad::createSeg_Meshes(
 		{
 			rs.sMtrWall = !pipeGlass ? sMtrWall : sMtrWallPipe;
 
+		#ifdef USE_GRID_W
+			pApp->scn->grid.AddMesh(
+				lod,
+				DLM.posW[0],  //wip
+				GridMtr(rs.sMtrWall),
+				DLM.posW, DLM.normW, DLM.clr0, DLM.tcsW, idx);
+		#else
 			CreateMesh(rs.wall[lod], sMesh+"W",
 				rs.sMtrWall, false, false,
 				DLM.posW, DLM.normW, DLM.clr0, DLM.tcsW, idx);
 			rs.wall[lod].it->setCastShadows(true);
+		#endif
 		}
 	}
 	
@@ -677,12 +697,11 @@ void SplineRoad::createSeg_Meshes(
 		if (!DLM.posC.empty())
 		{
 			GridCellLods::pApp = pApp;
-			GridMtr mtr;  mtr.name = sMtrCol;
 			
 			pApp->scn->grid.AddMesh(
 				lod,
 				DLM.posC[0],  //wip
-				mtr,
+				GridMtr(sMtrCol),
 				DLM.posC, DLM.normC, DLM.clr0, DLM.tcsC, idx);
 			/*CreateMesh(rs.col, sMesh+"C",
 				sMtrCol, false, false,*/
@@ -695,6 +714,8 @@ void SplineRoad::createSeg_Meshes(
 	{
 		auto it = rs.road[lod].it,
 			it2 = rs.road[lod].it2;
+		if (it)
+		{
 		// sr = AddMesh(mesh, sMesh, aabox, &it, &node, "."+sEnd);
 		auto que = 
 			//IsTrail() ? RQG_RoadBlend /*: RQG_Hud1*/ : // ?
@@ -708,7 +729,7 @@ void SplineRoad::createSeg_Meshes(
 
 		if (bCastShadow && !DS.onTer && !IsRiver() && !IsTrail())
 			it->setCastShadows(true);
-	}
+	}	}
 #if 0  // fixme
 	if (cols)
 	{
