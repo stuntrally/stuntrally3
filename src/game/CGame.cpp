@@ -16,6 +16,7 @@
 #include "CInput.h"
 #include "Grass.h"
 #include "Road.h"
+#include "SoundMgr.h"
 // #include "SplitScreen.h"
 // #include "WaterRTT.h"
 // #include "MultiList2.h"
@@ -138,7 +139,7 @@ void App::UpdThr()
 		double dt = double(gtim.getMicroseconds()) * 0.000001;
 		gtim.reset();
 		
-		if (!bLoading && !mGraphicsSystem->getQuit() && pGame)
+		if (!isFocGui && !bLoading && !mGraphicsSystem->getQuit() && pGame)
 		{
 			bSimulating = true;
 			bool ret = pGame->OneLoop(dt);

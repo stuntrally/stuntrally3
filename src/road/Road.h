@@ -109,7 +109,7 @@ public:
 	//  💫 Update
 	void UpdLodVis(float fBias = 1.f, bool bFull = false);
 	void UpdLodVisMarks(Ogre::Real distSq, bool vis = false), HideMarks();
-	void SetForRnd(Ogre::String sMtr), UnsetForRnd();
+	// void SetForRnd(Ogre::String sMtr), UnsetForRnd();  // unsed ..
 	void SetVisTrail(bool vis);
 
 

@@ -692,6 +692,8 @@ void App::LoadView(int c)
 		
 		isFocGui = false;  // hide back gui
 		gui->toggleGui(false);
+
+		carModels[0]->SetPaint();  // wip 1st ...
 	}
 	else if (c < 4)
 	{	//  rotate around, middle of track

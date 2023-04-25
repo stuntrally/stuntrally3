@@ -154,7 +154,7 @@ void SplineRoad::HideMarks()
 }
 
 ///  set lod0 for  render to tex   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-void SplineRoad::SetForRnd(String sMtr)
+/*void SplineRoad::SetForRnd(String sMtr)  // unsed ..
 {
 	MaterialPtr mat = MaterialManager::getSingleton().getByName(sMtr);
 	for (auto& rs : vSegs)
@@ -180,7 +180,7 @@ void SplineRoad::SetForRnd(String sMtr)
 			rs.col.it->setVisible(false);
 	}
 }
-void SplineRoad::UnsetForRnd()
+void SplineRoad::UnsetForRnd()  // unsed ..
 {
 	for (auto& rs : vSegs)
 	{
@@ -199,7 +199,7 @@ void SplineRoad::UnsetForRnd()
 		if (rs.col.it)
 			rs.col.it->setVisible(true);
 	}
-}
+}*/
 void SplineRoad::SetVisTrail(bool vis)
 {
 	for (auto& rs : vSegs)
@@ -207,7 +207,8 @@ void SplineRoad::SetVisTrail(bool vis)
 		if (rs.empty)  continue;
 
 		for (int i=0; i < LODs; ++i)
-			rs.road[i].it->setVisible(vis);
+			if (rs.road[i].it)
+				rs.road[i].it->setVisible(vis);
 	}
 }
 

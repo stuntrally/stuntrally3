@@ -62,7 +62,7 @@ void Grass::Create()
 	const Real hps = pws / 2.f;
 	const Real pws2 = pws * pws;
 
-	int id = 0;
+	int id = 0, all = 0, mtr = 0;
 	//  Grass layers
 	const SGrassLayer* g0 = &sc->grLayersAll[0];
 	for (int i=0; i < sc->ciNumGrLay; ++i)
@@ -72,6 +72,7 @@ void Grass::Create()
 		{
 			const SGrassChannel* ch = &scn->sc->grChan[gr->iChan];
 			int na = 0, pg = 0;  // stats
+			++mtr;  //-
 
 			//  pages
 			for (Real yy = -hws; yy < hws; yy += pws)
@@ -164,7 +165,7 @@ void Grass::Create()
 					
 					gd.node->setPosition(Vector3(xp, yp, zp));
 					gd.it->setRenderingDistance( 100.f * pSet->grass_dist );  //par
-					gds.push_back(gd);
+					gds.push_back(gd);  ++all;
 				}
 			}	// pages
 
@@ -177,6 +178,8 @@ void Grass::Create()
 		}
 	}
 
+	LogO(String("C::+ Grass = mtr: ") + toStr(mtr));
+	LogO(String("C::+ Grass = meshes: ") + toStr(all));
 	LogManager::getSingleton().setLogDetail(LoggingLevel::LL_BOREME);
 	LogO(String(":::* Time Grass: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 }

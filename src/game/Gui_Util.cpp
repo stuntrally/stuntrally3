@@ -6,6 +6,8 @@
 #include "CData.h"
 #include "TracksXml.h"
 #include "GuiCom.h"
+#include "game.h"
+#include "SoundMgr.h"
 
 #include "MultiList2.h"
 #include <OgreTimer.h>
@@ -61,6 +63,10 @@ void CGui::toggleGui(bool toggle)
 	Ogre::Timer ti;
 	if (toggle)
 		app->isFocGui = !app->isFocGui;
+	
+	// if (pGame && pGame->snd)
+	pGame->snd->setMasterVolume(app->isFocGui ? 0.0 : pSet->vol_master);
+
 	const bool gui = app->isFocGui;
 	const int mnu = pSet->iMenu;
 
