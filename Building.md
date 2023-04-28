@@ -56,10 +56,10 @@ First install Ogre dependencies, as in [here](https://github.com/OGRECave/ogre-n
 - Now **build Ogre** again. So, in all existing / needed configurations (3 folders above),  
   start `make -j6` or `ninja`, depends on what was used.  
   This will take less time than first time.  
-  _If you want a full reabuild, do `make clean` or `ninja clean` before._
+  _If you want a full rebuild, do `make clean` or `ninja clean` before._
 
-- _Note:_ I'm not sure how to do this quicker (set both ON before 1st build).
-  It would need setting TRUE in `Ogre/ogre-next/CMakeLists.txt` in line with:
+- _Note:_ I'm not sure how to do this quicker (set both ON before 1st build).  
+  It would need setting TRUE in `Ogre/ogre-next/CMakeLists.txt` at end of line with:
   ```
   option( OGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS "Component to use planar reflections, can be used by both HlmsPbs & HlmsUnlit" TRUE )
   ```
