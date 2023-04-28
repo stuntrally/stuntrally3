@@ -11,8 +11,9 @@ void SETTINGS::Load(std::string sfile)
 }
 void SETTINGS::Save(std::string sfile)
 {
-	CONFIGFILE c;  c.Load(sfile);  version = SET_VER;
-	Serialize(true, c);  c.Write();
+	CONFIGFILE c;  //c.Load(sfile);
+	version = SET_VER;
+	Serialize(true, c);  c.Write(sfile);
 }
 
 //  📄 editor.cfg

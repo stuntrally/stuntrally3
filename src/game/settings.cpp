@@ -20,13 +20,14 @@ void SETTINGS::Save(std::string sfile)
 {
 	//; if (net_local_plr > 0)  // save only for host for many local games
 		// return;
-	CONFIGFILE c;  c.Load(sfile);  version = SET_VER;
-	Serialize(true, c);  c.Write();
+	CONFIGFILE c;  //c.Load(sfile);
+	version = SET_VER;
+	Serialize(true, c);  c.Write(sfile);
 
 	String pfile = StringUtil::replaceAll(sfile, "game", "paint");
 
-	CONFIGFILE p;  p.Load(pfile);
-	SerPaints(true, p);  p.Write();
+	CONFIGFILE p;  //p.Load(pfile);
+	SerPaints(true, p);  p.Write(sfile);
 }
 
 //  📄 paint.cfg

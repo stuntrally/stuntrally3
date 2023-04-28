@@ -464,15 +464,15 @@ bool CONFIGFILE::SetParam(string param, string invar)
 	return true;
 }
 
-bool CONFIGFILE::Write(bool with_brackets)
+bool CONFIGFILE::Write()
 {
-	return Write(with_brackets, filename);
+	return Write(filename);
 }
 
-bool CONFIGFILE::Write(bool with_brackets, string save_as)
+bool CONFIGFILE::Write(string fname)
 {
 	ofstream f;
-	f.open(save_as.c_str());
+	f.open(fname.c_str());
 	
 	if (!f)  return false;
 
@@ -500,10 +500,7 @@ bool CONFIGFILE::Write(bool with_brackets, string save_as)
 				f << endl;
 				cursection = cur.section;
 				
-				if (with_brackets)
-					f << "[ " << cur.section << " ]" << endl;
-				else
-					f << cur.section << endl;
+				f << "[ " << cur.section << " ]" << endl;
 			}
 			f << cur.name << " = " << cur.val_s << endl;
 		}
@@ -511,11 +508,6 @@ bool CONFIGFILE::Write(bool with_brackets, string save_as)
 	
 	f.close();
 	return true;
-}
-
-bool CONFIGFILE::Write()
-{
-	return Write(true);
 }
 
 bool CONFIGFILE::ClearParam(string param)

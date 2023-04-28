@@ -155,7 +155,7 @@ void BaseApp::baseInitGui()
 	///  loading background img
 	imgLoad = mGui->createWidget<ImageBox>("ImageBox",
 		0,0, 800,600, Align::Default, "Pointer", "ImgLoad");
-	imgLoad->setImageTexture("background2.png");
+	// imgLoad->setImageTexture("background2.jpg");
 	#ifdef TEST_LOAD
 	imgLoad->setVisible(false);  //-
 	#else

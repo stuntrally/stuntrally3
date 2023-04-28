@@ -124,6 +124,5 @@ public:
 	void GetParamList(std::list <std::string> & paramlistoutput, std::string section) const;
 	
 	bool Write();
-	bool Write(bool with_brackets);
-	bool Write(bool with_brackets, std::string save_as);
+	bool Write(std::string fname);
 };

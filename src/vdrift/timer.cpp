@@ -23,7 +23,7 @@ void TIMER::Unload()
 {
 	if (loaded)
 	{
-		trackrecords.Write(true, trackrecordsfile);
+		trackrecords.Write(trackrecordsfile);
 		//std::cout << "Writing records to: " << trackrecordsfile << endl;
 	}
 	trackrecords.Clear();
@@ -77,7 +77,7 @@ bool TIMER::Lap(const int carId, const bool countit, bool bTrackReverse)
 
 	car[carId].Lap(countit);
 	if (loaded)
-		trackrecords.Write(true, trackrecordsfile);
+		trackrecords.Write(trackrecordsfile);
 
 	return newbest;
 }
