@@ -4,7 +4,7 @@
 #include "paints.h"
 
 
-#define SET_VER  3009  // 3.0
+#define SET_VER  3012  // 3.0
 
 
 enum eGraphType  {
