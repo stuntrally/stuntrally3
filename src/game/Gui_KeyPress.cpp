@@ -459,10 +459,12 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				break;
 
 			case key(SPACE):		//  ◀️ toggle reversed
-				if (isFocGui && mWndGame->getVisible() &&
-					mWndTabsGame->getIndexSelected())
-					gui->ckReverse.Invert();
-				break;
+				if (isFocGui && mWndGame->getVisible())
+				switch (mWndTabsGame->getIndexSelected())
+				{
+				case TAB_Track:  gui->ckReverse.Invert();  break;
+				case TAB_Setup:  gui->ckPaintNewLine.Invert();  break;
+				}	break;
 			
 			case key(INSERT):		//  🖼️ toggle fullscreen preview
 				if (gcom->imgPrv[2]->getVisible())

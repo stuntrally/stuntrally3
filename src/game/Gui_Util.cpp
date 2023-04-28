@@ -257,6 +257,15 @@ void CGui::LNext(int rel)
 				return;
 			case TAB_Stages: listStageChng(liStages, LNext(liStages, rel, 8));  return;
 			case TAB_Stage:	 if (rel > 0)  btnStageNext(0);  else  btnStagePrev(0);  return;
+
+			case TAB_Setup:  // Paints
+				auto& c = pSet->car_clr;
+				auto& v = data->paints->v;
+				int si = v.size();
+				c = (c + rel + si) % si;
+				pSet->gui.clr[iCurCar] = v[c];
+				UpdPaintSld();
+				return;
 		}
 }
 
