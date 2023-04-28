@@ -330,7 +330,31 @@
 	<Tag name="SC_BlackDesert">BlackDesert</Tag>
 	<Tag name="SC_SurrealSpace">SurrealSpace</Tag>
 	<Tag name="SC_GreeceRocky">GreeceRocky</Tag>
-	
+
+	<!--  Vehicle Paint names  -->
+	<Tag name="P_Red">Red</Tag>
+	<Tag name="P_Orange">Orange</Tag>
+	<Tag name="P_Yellow">Yellow</Tag>
+	<Tag name="P_Lime">Lime</Tag>
+	<Tag name="P_Green">Green</Tag>
+	<Tag name="P_Olive">Olive</Tag>
+	<Tag name="P_SkyBlue">SkyBlue</Tag>
+	<Tag name="P_Blue">Blue</Tag>
+	<Tag name="P_Cyan">Cyan</Tag>
+	<Tag name="P_Teal">Teal</Tag>
+	<Tag name="P_Violet">Violet</Tag>
+	<Tag name="P_Magenta">Magenta</Tag>
+	<Tag name="P_Brown">Brown</Tag>
+
+	<Tag name="P_Black">Black</Tag>
+	<Tag name="P_White">White</Tag>
+	<Tag name="P_Mix">Mix</Tag>
+	<Tag name="P_Neon">Neon</Tag>
+	<Tag name="P_Ice">Ice</Tag>
+	<Tag name="P_Fire">Fire</Tag>
+	<Tag name="P_Rainbow">Rainbow</Tag>
+	<Tag name="P_Silver">Silver</Tag>
+
 
 <!--  ..............................................................................................  -->
 

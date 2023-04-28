@@ -10,6 +10,7 @@ namespace Ogre
 class App;
 
 
+//---------------------------------------
 typedef std::tuple<short,short,short> GridPos;
 
 struct GridMtr

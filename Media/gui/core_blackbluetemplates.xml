@@ -434,7 +434,7 @@
         <Widget type="Widget" skin="PanelEmpty" position="8 8 47 47" name="Root">
             <UserString key="LE_TargetWidgetType" value="ScrollView"/>
             <Widget type="Widget" skin="PanelEmpty" position="0 0 32 32" align="Stretch" name="Client"/>
-            <Widget type="ScrollBar" skin="ScrollBarV" position="32 0 15 32" align="Right VStretch" name="VScroll"/>
+            <Widget type="ScrollBar" skin="ScrollBarV" position="12 0 35 32" align="Right VStretch" name="VScroll"/>
             <Widget type="ScrollBar" skin="ScrollBarH" position="0 32 32 15" align="HStretch Bottom" name="HScroll"/>
         </Widget>
     </Resource>

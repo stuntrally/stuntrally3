@@ -28,7 +28,8 @@ struct CarPaint
 		paintMul2nd = 4.f,
 		paintPow3rd = 3.f;
 
-	bool new_line = false;  // for gui
+	std::string group;  // gui txt title
+	bool new_line = false;  // gui
 	int rate = 0;  // user rating / bookmark
 };
 const int MaxPaints = 990;  // par max ini

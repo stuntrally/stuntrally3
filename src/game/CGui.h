@@ -107,6 +107,7 @@ public:
 	void imgBtnPaint(WP), btnPaintRandom(WP);
 	Tbi tbPlrPaint =0;  Scv scvPaints =0;
 	std::vector<Img> imgsPaint;
+	std::vector<Txt> txtsPaint;
 	
 	void UpdPaintImgs(), UpdPaintCur();
 	void btnPaintSave(WP), btnPaintLoad(WP), btnPaintLoadDef(WP);

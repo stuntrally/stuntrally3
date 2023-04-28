@@ -172,18 +172,31 @@ void CGui::imgBtnPaint(WP img)
 	if (i < 0 || i >= si)  return;
 
 	if (app->alt && c >= 0)  // todo: tip, info
-	{	//  swap
+	{
+		auto cnl = v[c].new_line, inl = v[i].new_line;
+		auto cgr = v[c].group, igr = v[i].group;
+
+		//  swap
 		auto cc = v[c];
 		v[c] = v[i];  v[i] = cc;
+
+		v[c].new_line = cnl;  v[i].new_line = inl;
+		v[c].group = cgr;  v[i].group = igr;
 		UpdPaintImgs();  return;
 	}
 	if (app->shift && c >= 0)
-	{	//  move cur
+	{
+		auto cnl = v[c].new_line, inl = v[i].new_line;
+		auto cgr = v[c].group, igr = v[i].group;
+
+		//  move cur
 		auto cc = v[c];
 		if (i >= 0 && i < v.size())
 			v.erase(v.begin() + c);
-		
 		v.insert(v.begin() + i, cc);
+
+		v[c].new_line = cnl;  v[i].new_line = inl;
+		v[c].group = cgr;  v[i].group = igr;
 		UpdPaintImgs();  return;
 	}
 	//  click, set clr
@@ -205,15 +218,15 @@ void CGui::btnPaintRandom(WP)
 	{
 		auto& cl = c >= 2 ? gc.paints[c-2] : gc.clr[c];
 		cl.hue = Math::UnitRandom();
-		cl.sat = Math::UnitRandom();
-		cl.val = Math::UnitRandom();
+		cl.sat = powf(Math::UnitRandom(), 0.5f);
+		cl.val = powf(Math::UnitRandom(), 0.5f);
 	}
-	gc.gloss = Math::UnitRandom();
+	gc.gloss = powf(Math::UnitRandom(), 0.5f);
 	gc.rough = Math::RangeRandom(0.01f,0.5f);
 	
-	gc.clear_coat = Math::RangeRandom(0.f,0.6f);
-	gc.clear_rough = Math::RangeRandom(0.01f,0.12f);
-	gc.fresnel = Math::RangeRandom(0.f,1.f);
+	gc.clear_coat = Math::RangeRandom(0.05f, 0.6f);
+	gc.clear_rough = Math::RangeRandom(0.01f, 0.12f);
+	gc.fresnel = powf(Math::RangeRandom(0.f,1.f), 0.4f);
 
 	gc.paintMulAll = Math::RangeRandom(0.05f, 0.3f);
 	gc.paintMul2nd = Math::RangeRandom(2.f,4.f);
@@ -286,6 +299,10 @@ void CGui::UpdPaintImgs()
 		mGui->destroyWidget(img);
 	imgsPaint.clear();
 	
+	for (auto txt : txtsPaint)
+		mGui->destroyWidget(txt);
+	txtsPaint.clear();
+	
 	//  add clr img  --------
 	auto AddImg = [&](WP wp,
 		int rate, bool first,
@@ -313,13 +330,36 @@ void CGui::UpdPaintImgs()
 	//  Grid palette  --------------------
 	int x = 0, y = 0, x0 = 5, y0 = 5;
 	int px = x0, py = y0, rmax = 0;  // pos
+	auto inc_y = [&]()
+	{
+		x = 0;  px = x0;
+		++y;  py += sx + 6 + 2*rmax/3;  rmax = 0;
+	};
 	for (int i=0; i < all; ++i)
 	{
 		const auto& cl = p->v[i];
 		const int r = cl.rate * 6;
 		rmax = max(rmax, r);
 
-		//  create clr img 1..3
+		//  group text  ----
+		if (!cl.group.empty())
+		{
+			Txt txt = scv->createWidget<TextBox>("TextBox",
+				px, py+6,
+				320, sx, Align::Left);
+
+			auto s = StringUtil::replaceAll(cl.group, "@", "#");
+			txt->setCaption(TR(s));
+			// txt->setFontName("font.big");
+			
+			gcom->setOrigPos(txt, "GameWnd");
+			txt->setNeedMouseFocus(false);
+
+			txtsPaint.push_back(txt);
+			inc_y();
+		}
+
+		//  create clr img 1..3  ------
 		Img img = 0, im2 = 0, im3 = 0;
 		switch (cl.type)
 		{
@@ -344,7 +384,7 @@ void CGui::UpdPaintImgs()
 		}	break;
 		}
 		
-		//  shine  rough  * `
+		//  shine  rough  * `  ----
 		int s1 = cl.rough * 2.5f * sx + 2;  s1 = min(64, s1);  // 32
 		im2 = AddImg(img, r,0, 0,0, s1,s1, 1, 0, 0);
 		
@@ -357,22 +397,21 @@ void CGui::UpdPaintImgs()
 		a = 1.f - cl.rough * 0.5f;
 		// img->setAlpha(a);  // *
 		
+		//  gui main  ----
 		img->eventMouseButtonClick += newDelegate(this, &CGui::imgBtnPaint);
 
 		img->setUserString("i", toStr(i));
-		img->setUserString("tip", TR("#{TipCarColor}"));
+		img->setUserString("tip", toStr(i)+"\n"+TR("#{TipCarColor}"));
 		img->setNeedToolTip(true);
 		img->eventToolTip += newDelegate(gcom, &CGuiCom::notifyToolTip);
 		
 		imgsPaint.push_back(img);
 
 
-		//  inc pos
+		//  inc pos  ---
 		++x;  px += sx + r;
 		if (x >= clrRow || cl.new_line)
-		{	x = 0;  px = x0;
-			++y;  py += sx + 6 + 2*rmax/3;  rmax = 0;
-		}
+			inc_y();
 	}
 	if (bGI)  // resize
 		gcom->doSizeGUI(tbPlrPaint->getEnumerator());

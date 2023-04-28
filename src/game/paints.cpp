@@ -1,5 +1,7 @@
 #include "pch.h"
+#include "Def_Str.h"
 #include "paints.h"
+#include <fstream>
 #include <stdio.h>
 #include <iostream>
 #include <OgreString.h>
@@ -14,14 +16,19 @@ void PaintsIni::Load(std::string sfile)
 }
 void PaintsIni::Save(std::string sfile)
 {
-	CONFIGFILE c;  c.Load(sfile);
+#if 1
+	CONFIGFILE c;  c.Load(sfile);//-
 	Serialize(true, c);  c.Write();
+#else
+	ofstream
+#endif
 }
 
 void PaintsIni::SerPaint(bool wr, CONFIGFILE & cf, const std::string s, CarPaint& p)
 {
 	Param(cf,wr, s+"new_line", p.new_line);
 	Param(cf,wr, s+"rate", p.rate);
+	Param(cf,wr, s+"group", p.group);
 	
 	Param(cf,wr, s+"type", p.type);
 	int n = 3;
@@ -75,8 +82,10 @@ void PaintsIni::Serialize(bool w, CONFIGFILE & c)
 		for (int i=0; i < si; ++i)
 		{
 			auto s = str(i);
+			// LogO("save P: "+s);
 			SerPaint(w,c, s, v[i]);
 		}
+		// LogO("save P cnt: " + toStr(v.size()));
 	}else  // read
 	{	v.clear();
 		for (int i=0; i < MaxPaints; ++i)
@@ -88,6 +97,7 @@ void PaintsIni::Serialize(bool w, CONFIGFILE & c)
 				CarPaint p;
 				SerPaint(w,c, s, p);
 				v.push_back(p);
+				// LogO("read P cnt: " + toStr(i)+" "+toStr(v.size()));
 			}
 		}
 	}
