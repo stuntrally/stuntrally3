@@ -90,6 +90,7 @@ public:
 
 	SV svPaintType, svPaintRate;
 	Tab tbColorType =0;  void tabColorType(Tab, size_t);
+	void slPaintType(SV*), slPaintRate(SV*);
 
 	SV svPaintH, svPaintS, svPaintV;  // h s v sliders
 	SV svPaintGloss, svPaintRough, svPaintFresnel;  // pbs
@@ -105,6 +106,8 @@ public:
 	Txt txPaintRgb =0;
 	Img imgPaint =0, imgPaintCur =0;
 	void imgBtnPaint(WP), btnPaintRandom(WP);
+	// Btn btPaintRandom =0;
+
 	Tbi tbPlrPaint =0;  Scv scvPaints =0;
 	std::vector<Img> imgsPaint;
 	std::vector<Txt> txtsPaint;

@@ -463,7 +463,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				switch (mWndTabsGame->getIndexSelected())
 				{
 				case TAB_Track:  gui->ckReverse.Invert();  break;
-				case TAB_Setup:  gui->ckPaintNewLine.Invert();  break;
+				case TAB_Setup:
+					if (pSet->paintAdj)
+						gui->ckPaintNewLine.Invert();
+					else  gui->btnPaintRandom(0);  break;
 				}	break;
 			
 			case key(INSERT):		//  🖼️ toggle fullscreen preview

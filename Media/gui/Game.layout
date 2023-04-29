@@ -923,35 +923,29 @@
 
 						<Widget type="Widget" skin="PanelEmpty" position="0 55 750 420" align="Stretch" name="panPaintAdj">
 
-							<Widget type="Button" skin="Button" position="12 282 346 28" name="PaintRandom">
-								<Property key="Caption" value="#{CarClrRandom}"/>
-								<Property key="Colour" value="1.0 0.9 0.4"/>
-								<Property key="TextColour" value="1.0 0.9 0.4"/>
-							</Widget>
-
 							<Widget type="Button" skin="CheckBox" position="232 400 240 24" name="chkPaintNewLine">
 								<Property key="Caption" value="#{NewLine}"/>
 								<Property key="TextColour" value="0.6 0.7 0.8"/>
 							</Widget>
 	
 							<!-- Del Add  manage buttons -->
-							<Widget type="Button" skin="Button" position="12 322 156 28" name="PaintDel">
+							<Widget type="Button" skin="Button" position="12 328 156 24" name="PaintDel">
 								<Property key="Caption" value="#{Delete}"/>
 								<Property key="Colour" value="1.0 0.6 0.6"/>
 								<Property key="TextColour" value="1.0 0.6 0.6"/>
-								<Widget type="ImageBox" skin="ImageBox" position="0 2 24 24">
+								<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
 									<Property key="ImageCoord" value="256 384 128 128"/>
 									<Property key="Alpha" value="0.5"/>
 									<Property key="ImageTexture" value="gui_icons.png"/>
 									<Property key="NeedMouse" value="false"/>
 								</Widget>
 							</Widget>
-							<Widget type="Button" skin="Button" position="202 322 156 28" name="PaintAdd">
+							<Widget type="Button" skin="Button" position="202 328 156 24" name="PaintAdd">
 								<Property key="Caption" value="#{Add}"/>
 								<Property key="Colour" value="0.6 1.0 0.6"/>
 								<Property key="TextColour" value="0.6 1.0 0.6"/>
 								<Property key="InheritsAlpha" value="false"/>
-								<Widget type="ImageBox" skin="ImageBox" position="0 2 24 24">
+								<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
 									<Property key="ImageCoord" value="256 256 128 128"/>
 									<Property key="Alpha" value="0.7"/>
 									<Property key="ImageTexture" value="gui_icons.png"/>
@@ -960,22 +954,22 @@
 							</Widget>
 
 							<!-- Load Save -->
-							<Widget type="Button" skin="Button" position="12 362 156 28" name="PaintLoad">
+							<Widget type="Button" skin="Button" position="12 362 156 24" name="PaintLoad">
 								<Property key="Caption" value="#{RplLoad}"/>
 								<Property key="Colour" value="0.8 0.7 1.0"/>
 								<Property key="TextColour" value="0.7 0.7 1.0"/>
-								<Widget type="ImageBox" skin="ImageBox" position="0 2 24 24">
+								<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
 									<Property key="ImageCoord" value="512 384 128 128"/>
 									<Property key="Alpha" value="0.7"/>
 									<Property key="ImageTexture" value="gui_icons.png"/>
 									<Property key="NeedMouse" value="false"/>
 								</Widget>
 							</Widget>
-							<Widget type="Button" skin="Button" position="202 362 156 28" name="PaintSave">
+							<Widget type="Button" skin="Button" position="202 362 156 24" name="PaintSave">
 								<Property key="Caption" value="#{RplSave}"/>
 								<Property key="Colour" value="0.5 0.7 1.0"/>
 								<Property key="TextColour" value="0.6 0.8 1.0"/>
-								<Widget type="ImageBox" skin="ImageBox" position="0 4 20 20">
+								<Widget type="ImageBox" skin="ImageBox" position="0 2 20 20">
 									<Property key="ImageCoord" value="0 768 128 128"/>
 									<Property key="Colour" value="0.5 0.7 1.0"/>
 									<Property key="Alpha" value="0.6"/>
@@ -983,7 +977,7 @@
 									<Property key="NeedMouse" value="false"/>
 								</Widget>
 							</Widget>
-							<Widget type="Button" skin="Button" position="12 396 156 28" name="PaintLoadDef">
+							<Widget type="Button" skin="Button" position="12 396 156 24" name="PaintLoadDef">
 								<Property key="Caption" value="#{RplLoad}: #{Reset}"/>
 								<Property key="Colour" value="0.8 0.3 0.3"/>
 								<Property key="TextColour" value="0.9 0.3 0.3"/>
@@ -1021,7 +1015,7 @@
 									<Property key="Caption" value="#60F0F0 3"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 542 -8">
-									<Property key="Caption" value="#6060F0 Mix"/>
+									<Property key="Caption" value="#6060F0 #{P_Mix}"/>
 								</Widget>
 							</Widget>
 
@@ -1136,15 +1130,15 @@
 								<Widget type="TextBox" skin="TextBox" position="0 150 88 22">
 									<Property key="TextColour" value="0.9 0.7 0.5"/>
 									<Property key="Caption" value="#{ColGloss}"/>
-									<UserString key="tip" value="#{TipChangeGloss}"/>
+									<UserString key="tip" value="0 #{Diffuse}.. 1 #{Specular} - #{TipChangeGloss}"/>
 								</Widget>
 								<Widget type="Slider" skin="Slider" position="0 170 334 17" name="PaintGloss">
 									<Property key="TextColour" value="0.9 0.8 0.7"/>
-									<UserString key="tip" value="#{TipChangeGloss}"/>
+									<UserString key="tip" value="0 #{Diffuse}.. 1 #{Specular} - #{TipChangeGloss}"/>
 								</Widget>
 								<Widget type="TextBox" skin="TextBox" position="150 150 52 22" name="PaintGlossVal">
 									<Property key="TextColour" value="0.9 0.8 0.7"/>
-									<UserString key="tip" value="#{TipChangeGloss}"/>
+									<UserString key="tip" value="0 #{Diffuse}.. 1 #{Specular} - #{TipChangeGloss}"/>
 								</Widget>
 							</Widget>
 
@@ -1153,48 +1147,60 @@
 							<Widget type="TextBox" skin="TextBox" position="400 240 98 22">
 								<Property key="TextColour" value="0.5 0.5 1.0"/>
 								<Property key="Caption" value="#{ColRoughness}"/>
+								<UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/>
 							</Widget>
 							<Widget type="Slider" skin="Slider" position="400 260 334 17" name="PaintRough">
 								<Property key="Colour" value="0.6 0.6 1.0"/>
+								<UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/>
 							</Widget>
 							<Widget type="TextBox" skin="TextBox" position="550 240 52 22" name="PaintRoughVal">
 								<Property key="TextColour" value="0.5 0.5 1.0"/>
+								<UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/>
 							</Widget>
 
 							<!-- clear coat -->
 							<Widget type="TextBox" skin="TextBox" position="400 280 98 22">
 								<Property key="TextColour" value="1 1 1"/>
 								<Property key="Caption" value="#{ColReflect}"/>
+								<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
 							</Widget>
 							<Widget type="Slider" skin="Slider" position="400 300 334 15" name="PaintClearCoat">
 								<Property key="Colour" value="1.0 1.0 1.0"/>
+								<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
 							</Widget>
 							<Widget type="TextBox" skin="TextBox" position="550 280 52 22" name="PaintClearCoatVal">
 								<Property key="TextColour" value="1 1 1"/>
+								<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
 							</Widget>
 
 							<Widget type="TextBox" skin="TextBox" position="400 320 98 22">
 								<Property key="TextColour" value="0.7 0.78 0.78"/>
 								<Property key="Caption" value="#{ColRoughness}"/>
+								<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
 							</Widget>
 							<Widget type="Slider" skin="Slider" position="400 340 334 15" name="PaintClearCoatRough">
 								<Property key="Colour" value="0.8 0.8 1.0"/>
+								<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
 							</Widget>
 							<Widget type="TextBox" skin="TextBox" position="550 320 52 22" name="PaintClearCoatRoughVal">
 								<Property key="TextColour" value="0.7 0.78 0.78"/>
 								<Property key="FontName" value="font.small"/>
+								<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
 							</Widget>
 
 							<!-- fresnel -->
 							<Widget type="TextBox" skin="TextBox" position="400 360 98 22">
 								<Property key="TextColour" value="0.5 0.9 0.9"/>
 								<Property key="Caption" value="#{ColMetalness}"/>
+								<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
 							</Widget>
 							<Widget type="Slider" skin="Slider" position="400 380 334 18" name="PaintFresnel">
 								<Property key="Colour" value="0.5 1.0 1.0"/>
+								<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
 							</Widget>
 							<Widget type="TextBox" skin="TextBox" position="550 360 52 22" name="PaintFresnelVal">
 								<Property key="TextColour" value="0.5 0.9 0.9"/>
+								<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
 							</Widget>
 						</Widget>  <!-- panel -->
 
@@ -1216,8 +1222,21 @@
 							<UserString key="tip" value="#{user}: #{rating}"/>
 						</Widget>
 
+						<!-- Random -->
+						<Widget type="Button" skin="Button" position="12 352 346 24" name="PaintRandom">
+							<Property key="Caption" value="#{CarClrRandom}"/>
+							<Property key="Colour" value="1.0 0.9 0.2"/>
+							<Property key="TextColour" value="1.0 0.9 0.2"/>
+							<Widget type="ImageBox" skin="ImageBox" position="2 2 20 20">
+								<Property key="ImageCoord" value="640 128 128 128"/>
+								<Property key="Alpha" value="0.7"/>
+								<Property key="ImageTexture" value="gui_icons.png"/>
+								<Property key="NeedMouse" value="false"/>
+							</Widget>
+						</Widget>
+
 						<!--  Paints palette  -->
-						<Widget type="ScrollView" skin="ScrollViewEmpty" position="10 55 380 270" layer="Popup" name="scvPaints">
+						<Widget type="ScrollView" skin="ScrollViewEmpty" position="10 45 355 300" layer="Popup" name="scvPaints">
 							<Property key="CanvasSize" value="1600 7400"/>
 							<Widget type="ImageBox" skin="ImageBox" position="680 40 52 52" name="ImgPaintCur">
 								<Property key="ImageTexture" value="white.png"/>

@@ -195,6 +195,9 @@
 
 	<!--  Color  params  -->
 	<Tag name="Paint">Paint</Tag>
+	<Tag name="P_1color">1 color, simple</Tag>
+	<Tag name="P_2colors">2 colors</Tag>
+	<Tag name="P_3colors">3 colors, changing</Tag>
 
 	<Tag name="ColHue">Color - Hue</Tag>
 	<Tag name="ColSat">Saturation</Tag>
@@ -206,13 +209,14 @@
 	<Tag name="ColMetalness">Metalness</Tag>
 	<Tag name="ColRoughness">Roughness</Tag>
 	<Tag name="ColFresnel">Fresnel</Tag>
+	<Tag name="ColClearCoat">Clear coat</Tag>
 
-	<Tag name="CarClrRandom">Random</Tag>
-	<Tag name="Adjust">Adjust</Tag>
+	<!--  Color  extras  -->
 	<Tag name="Transparency">Transparency</Tag>
 	<Tag name="Negative">Negative (darken)</Tag>
 	
-	<!--  Color  extras  -->
+	<Tag name="CarClrRandom">Random</Tag>
+	<Tag name="Adjust">Adjust</Tag>
 	<Tag name="NewLine">New line</Tag>
 
 	<!--  TIP  Vehicle Color -->
@@ -220,8 +224,10 @@
 	<Tag name="TipChangeHue">Change car color (hue).</Tag>
 	<Tag name="TipChangeSat">Change car color saturation (white-black).</Tag>
 	<Tag name="TipChangeBright">Change car color brightness (dark-light).</Tag>
+	
 	<Tag name="TipChangeGloss">Change car color glossiness (matte-shiny).</Tag>
 	<Tag name="TipChangeReflect">Change car color reflectiveness (matte-mirror).</Tag>
+
 
 	<!--  MAIN  Vehicle basic stats  -->
 	<Tag name="Author">Author(s)</Tag>
@@ -543,6 +549,7 @@
 	<Tag name="Resolution">Resolution</Tag>
 	<Tag name="Fullscreen">Fullscreen</Tag>
 	<Tag name="VRmode">VR Mode</Tag>
+	
 	<Tag name="Complex">Complex</Tag>
 	<Tag name="Simple">Simple</Tag>
 	<!--  Screen  info  -->

@@ -53,12 +53,12 @@ void CGui::InitGuiCar()
 
 	imgPaint = fImg("ImgPaint");  imgPaintCur = fImg("ImgPaintCur");
 	txPaintRgb = fTxt("txPaintRgb");
-	sv= &svPaintRate;	sv->Init("PaintRate", &i, 0, 3);  Sev(Paint);
+	sv= &svPaintRate;	sv->Init("PaintRate", &i, 0, 3);  Sev(PaintRate);
 	
-	sv= &svPaintType;	sv->strMap[0] = "1 color";  // todo: TR("{..}");
-	sv->strMap[1] = "Diff, Spec 2 colors";	sv->strMap[2] = "Changing 3 colors";
-							sv->Init("PaintType",  &i, CP_OneClr, CP_3Clrs );  Sev(Paint);
-	// ck= &ckPaintOne;  ck->Init("PaintOne", &b);  Cev(PaintOne);
+	sv= &svPaintType;	sv->strMap[0] = TR("#{P_1color}");
+	sv->strMap[1] = TR("#{P_2colors}");  sv->strMap[2] = TR("#{P_3colors}");
+						sv->Init("PaintType",  &i, CP_OneClr, CP_3Clrs );  Sev(PaintType);
+
 	tbColorType = fTab("ColorType");  Tev(tbColorType, ColorType);
 	ck= &ckPaintNewLine;  ck->Init("chkPaintNewLine", &b);  Cev(PaintNewLine);
 
@@ -115,7 +115,7 @@ void CGui::InitGuiCar()
 	tbPlrPaint = fTbi("PlrPaints");
 	scvPaints = fScv("scvPaints");
 	UpdPaintImgs();
-	Btn("PaintRandom", btnPaintRandom);
+	Btn("PaintRandom", btnPaintRandom);  //btPaintRandom = btn;
 	Btn("PaintSave", btnPaintSave);  Btn("PaintAdd", btnPaintAdd);  Btn("PaintDel", btnPaintDel);
 	Btn("PaintLoad", btnPaintLoad);  Btn("PaintLoadDef", btnPaintLoadDef);
 

@@ -11,6 +11,7 @@
 #include "CGame.h"
 #include "CarModel.h"
 
+#include <OgreMath.h>
 #include <MyGUI.h>
 using namespace std;
 using namespace Ogre;
@@ -23,6 +24,7 @@ void CGui::chkPaintAdj(Ck*)
 {
 	bool vis = panPaintAdj->getVisible();
 	panPaintAdj->setVisible(!vis);
+	// btPaintRandom->setAlpha(vis ? 1.f : 0.5f);
 }
 
 //  3. apply new color to car/ghost
@@ -117,6 +119,22 @@ void CGui::SldUpd_Paint()
 	svPaintType.UpdI(&gc.type);
 }
 
+void CGui::slPaintType(SV*)
+{
+	//  set visible tab
+	auto& gc = pSet->gui.clr[iCurCar];
+	const int typ = gc.type;
+	const bool clr3 = typ == CP_3Clrs;
+	int i = clr3 ? 2 : 0;
+	tbColorType->setIndexSelected(i);
+	tabColorType(tbColorType, i);
+	
+	SldUpd_Paint();
+	SetPaint();
+	UpdImgClr();
+	UpdPaints();
+}
+
 void CGui::slPaint(SV*)
 {
 	SetPaint();
@@ -141,9 +159,19 @@ void CGui::tabColorType(Tab, size_t)
 
 void CGui::UpdImgClr()
 {
-	int i = iCurCar;
+	const int i = iCurCar;
 	const auto& gc = pSet->gui.clr[i];
-	int t = gc.type == CP_OneClr ? 0 : tbColorType->getIndexSelected();
+	const int tb = tbColorType->getIndexSelected();
+	
+	const auto tp = gc.type;
+	
+	const bool vis = !(tp == CP_3Clrs && tb == 5);
+	imgPaint->setVisible(vis);
+	txPaintRgb->setVisible(vis);
+	if (!vis)  return;
+	
+	//  clr
+	const int t = tp == CP_OneClr ? 0 : tb;
 	const auto& cl = t >= 2 ? gc.paints[t-2] : gc.clr[t];
 	
 	ColourValue c;  c.setHSB(1.f - cl.hue, cl.sat, cl.val);
@@ -180,7 +208,7 @@ void CGui::imgBtnPaint(WP img)
 		auto cc = v[c];
 		v[c] = v[i];  v[i] = cc;
 
-		v[c].new_line = cnl;  v[i].new_line = inl;
+		v[c].new_line = cnl;  v[i].new_line = inl;  // fixme
 		v[c].group = cgr;  v[i].group = igr;
 		UpdPaintImgs();  return;
 	}
@@ -195,7 +223,7 @@ void CGui::imgBtnPaint(WP img)
 			v.erase(v.begin() + c);
 		v.insert(v.begin() + i, cc);
 
-		v[c].new_line = cnl;  v[i].new_line = inl;
+		v[c].new_line = cnl;  v[i].new_line = inl;  // fixme
 		v[c].group = cgr;  v[i].group = igr;
 		UpdPaintImgs();  return;
 	}
@@ -206,11 +234,29 @@ void CGui::imgBtnPaint(WP img)
 	}
 }
 
+
+//  🌀 Random Paint
+//---------------------------------------------------------------------
 void CGui::btnPaintRandom(WP)
 {
 	int i = iCurCar;
-	pSet->car_clr = -1;  //-
 	auto& gc = pSet->gui.clr[i];
+
+	//  🎨 pick random from list
+	if (!pSet->paintAdj)
+	{	
+		auto& v = data->paints->v;
+		int si = v.size() - 1;
+		pSet->car_clr = Math::RangeRandom(0, si);
+		pSet->gui.clr[i] = v[pSet->car_clr];
+		// UpdPaintSld();
+		SetPaint();
+		// UpdImgClr();
+		UpdPaintSld();
+		return;
+	}
+	//  🌈 randomize values, adjust
+	pSet->car_clr = -1;  //-
 
 	// gc.type = Math::RangeRandom(0.f,3.f);  //no chg
 	gc.rate = 0;
@@ -218,7 +264,7 @@ void CGui::btnPaintRandom(WP)
 	{
 		auto& cl = c >= 2 ? gc.paints[c-2] : gc.clr[c];
 		cl.hue = Math::UnitRandom();
-		cl.sat = powf(Math::UnitRandom(), 0.5f);
+		cl.sat = powf(Math::UnitRandom(), 0.3f);
 		cl.val = powf(Math::UnitRandom(), 0.5f);
 	}
 	gc.gloss = powf(Math::UnitRandom(), 0.5f);
@@ -234,6 +280,8 @@ void CGui::btnPaintRandom(WP)
 	UpdPaintSld();
 }
 
+
+//  save, load
 void CGui::btnPaintSave(WP)
 {
 	auto user = PATHS::UserConfigDir() + "/paints.ini";
@@ -247,6 +295,14 @@ void CGui::btnPaintLoadDef(WP)
 void CGui::btnPaintLoad(WP)
 {
 	data->LoadPaints();
+	UpdPaintImgs();
+}
+
+//  upd all
+void CGui::slPaintRate(SV*)
+{
+	// todo: drag freezes
+	UpdPaints();
 	UpdPaintImgs();
 }
 
@@ -285,10 +341,11 @@ void CGui::btnPaintAdd(WP)
 }
 
 
-//  🎨 Upd All Paints palette
+//  🔁🎨 Upd All Paints palette
 //---------------------------------------------------------------------
 void CGui::UpdPaintImgs()
 {
+	Ogre::Timer ti;
 	const auto* p = data->paints;
 	const int all = p->v.size(),
 		clrRow = p->perRow, sx = p->imgSize;
@@ -417,4 +474,5 @@ void CGui::UpdPaintImgs()
 		gcom->doSizeGUI(tbPlrPaint->getEnumerator());
 	
 	UpdPaintCur();
+	LogO(String("::: Time upd Paints: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
