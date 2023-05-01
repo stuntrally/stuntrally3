@@ -9,6 +9,7 @@
 #include <vector>
 #include <MyGUI_KeyCode.h>
 #include <SDL_keycode.h>
+#include <SDL_joystick.h>
 
 namespace ICS {  class InputControlSystem;  class DetectingBindingListener;  }
 namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class Window;  }
@@ -84,7 +85,7 @@ public:
 	//------------------------------------------------------------
 	ICS::InputControlSystem* mInputCtrl =0;
 	ICS::InputControlSystem* mInputCtrlPlayer[4] ={0,};
-	// std::vector<SDL_Joystick*> mJoysticks;
+	std::vector<SDL_Joystick*> mJoysticks;
 	
 	// this is set to true when the user is asked to assign a new key
 	bool bAssignKey =0;

@@ -18,6 +18,7 @@
 
 #include <list>
 #include <filesystem>
+#include <SDL_joystick.h>
 
 using namespace Ogre;
 using namespace std;
@@ -31,6 +32,24 @@ void App::Load()
 
 	LoadSettings();
 
+	//  Enable joystick events
+	LogO("C::J Init open joysticks ----");
+
+	SDL_JoystickEventState(SDL_ENABLE);
+	//  Open all available joysticks.  TODO: open them when they are required-
+	for (int i=0; i<SDL_NumJoysticks(); ++i)
+	{
+		SDL_Joystick* js = SDL_JoystickOpen(i);
+		if (js)
+		{
+			mJoysticks.push_back(js);
+			const char* s = SDL_JoystickName(js);
+			int axes = SDL_JoystickNumAxes(js);
+			int btns = SDL_JoystickNumButtons(js);
+			//SDL_JoystickNumBalls SDL_JoystickNumHats
+			LogO(String("<Joystick> name: ")+s+"  axes: "+toStr(axes)+"  buttons: "+toStr(btns));
+		}
+	}
 
 	///  Game start
 	//----------------------------------------------------------------
@@ -77,6 +96,12 @@ void App::Load()
 void App::Destroy()
 {
 	DestroyGui();
+
+	//  close joysticks
+	LogO("D::J Close joysticks");
+	for (auto* js : mJoysticks)
+		SDL_JoystickClose(js);
+	mJoysticks.clear();
 
 	delete pGame;
 	delete pSet;
