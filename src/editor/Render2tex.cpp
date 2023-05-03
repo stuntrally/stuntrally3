@@ -336,10 +336,10 @@ void App::SaveGrassDens()
 	if (!rt[RT_RoadDens].tex)  return;
 	// rt[RT_RoadDens].ws->_update();  // all have to exist
 	//  save
-	rt[RT_RoadDens].tex->writeContentsToFile(
-		path+"/objects/roadDensity.png", 0, 0);
-	// rt[RT_RoadPrv].tex->writeContentsToFile(
-	// 	path+"/preview/road.png", 0, 0);
+	rt[RT_RoadDens].tex->writeContentsToFile(path+"/objects/roadDensity.png", 0, 0);
+	rt[RT_RoadPrv ].tex->writeContentsToFile(path+"/preview/road.png", 0, 0);
+	rt[RT_Terrain ].tex->writeContentsToFile(path+"/preview/terrain.jpg", 0, 0);
+	// todo: add fluids, objects..
 	
 return;  // todo: smooth roadDens?
 
