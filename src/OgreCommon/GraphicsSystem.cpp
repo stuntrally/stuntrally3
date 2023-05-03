@@ -5,7 +5,7 @@
 #if OGRE_PLATFORM != OGRE_PLATFORM_APPLE_IOS
 	#include "SdlInputHandler.h"
 #endif
-#include "HlmsPbs2.h"
+#include "HlmsPbs2.h"  // our
 #include <OgreLogManager.h>
 #include <OgreConfigFile.h>
 #include <OgreException.h>
@@ -626,7 +626,7 @@ void GraphicsSystem::registerHlms()
 		rootDir += "/";
 
 	//  At this point rootHlmsFolder should be a valid path to the Hlms data folder
-	HlmsUnlit *hlmsUnlit = 0;
+	HlmsUnlit2 *hlmsUnlit2 = 0;  // our
 	HlmsPbs2 *hlmsPbs2 = 0;
 
 	//  For retrieval of the paths to the different folders needed
@@ -635,8 +635,8 @@ void GraphicsSystem::registerHlms()
 	ArchiveManager& mgr = ArchiveManager::getSingleton();
 	const String& type = getMediaReadArchiveType();
 	
-	{	//  Create & Register HlmsUnlit  ----
-		//  Get the path to all the subdirectories used by HlmsUnlit
+	{	//  Create & Register HlmsUnlit2  ----
+		//  Get the path to all the subdirectories used by HlmsUnlit2
 		HlmsUnlit::getDefaultPaths( mainPath, paths );
 		Archive* ar = mgr.load( rootDir + mainPath, type, true );
 
@@ -646,9 +646,9 @@ void GraphicsSystem::registerHlms()
 			Archive* lib = mgr.load( rootDir + *it, type, true );
 			dirs.push_back( lib );
 		}
-		hlmsUnlit = OGRE_NEW HlmsUnlit( ar, &dirs );
-		Root::getSingleton().getHlmsManager()->registerHlms( hlmsUnlit );
-		hlmsUnlit->setDebugOutputPath(true, false, PATHS::ShadersDir()+"/");
+		hlmsUnlit2 = OGRE_NEW HlmsUnlit2( ar, &dirs );
+		Root::getSingleton().getHlmsManager()->registerHlms( hlmsUnlit2 );
+		hlmsUnlit2->setDebugOutputPath(true, false, PATHS::ShadersDir()+"/");
 	}
 
 	{	//  Create & Register HlmsPbs2  ----
@@ -680,7 +680,7 @@ void GraphicsSystem::registerHlms()
 		if( !support )
 		{
 			hlmsPbs2->setTextureBufferDefaultSize( 512 * 1024 );
-			hlmsUnlit->setTextureBufferDefaultSize( 512 * 1024 );
+			hlmsUnlit2->setTextureBufferDefaultSize( 512 * 1024 );
 		}
 	}
 }

@@ -36,21 +36,21 @@ using namespace Ogre;
 // . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 void App::CreateRnd2Tex()
 {
-	///  RT:  0 road minimap,  1 road for grass,  2 terrain minimap,  3 track preview full
 	// todo: grass same dim as Hmap..
 	/*const uint32 visMask[RT_Last] =
 		{ RV_Road, RV_Road+RV_Objects, RV_Terrain+RV_Objects, RV_MaskAll-RV_Hud };
 	const int dim[RT_Last] =  //1025: sc->td.iVertsX
 		{ 1024, 1025, 1024, 1024 };*/
-	const uint32 visMask[RT_ALL] =
-		{ RV_MaskAll-RV_Hud, RV_MaskAll-RV_Hud };
-	const int dim[RT_ALL] =
-		{ 1024, 1024 };
+	const char* strWs[RT_ALL] = {
+		"Rtt_RoadDens",
+		"Rtt_RoadPreview",
+		"Rtt_Terrain",
+		"Rtt_View"};
 		
 	auto* texMgr =mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
 	auto* mgr = mRoot->getCompositorManager2();
 
-	Real fDim = scn->sc->tds[0].fTerWorldSize;  // world dim  // 1st ter
+	Real tws = scn->sc->tds[0].fTerWorldSize;  // world dim  // 1st ter
 
 	for (int i=0; i < RT_ALL; ++i)
 	{
@@ -61,7 +61,9 @@ void App::CreateRnd2Tex()
 			r.tex = texMgr->createTexture( "EdTex" + si,
 				GpuPageOutStrategy::SaveToSystemRam,
 				TextureFlags::ManualTexture, TextureTypes::Type2D );
-			uint32 res = dim[i];
+			uint32 res =
+				i == RT_View ? 1024 :  // preview const
+				tws > 1200.f ? 2048 : 1024;  // bigger with ter size
 			r.tex->setResolution(res, res);
 			// int mips = PixelFormatGpuUtils::getMaxMipmapCount( res );
 			// r.tex->setNumMipmaps( mips );
@@ -96,7 +98,7 @@ void App::CreateRnd2Tex()
 				if (!full)
 				{	// top view ortho
 					r.cam->setProjectionType(PT_ORTHOGRAPHIC);
-					r.cam->setOrthoWindow(fDim, fDim);
+					r.cam->setOrthoWindow(tws, tws);
 				}
 				// r.cam->setFOVy( Degree(90) );
 				// r.cam->setFixedYawAxis( false );
@@ -114,8 +116,7 @@ void App::CreateRnd2Tex()
 			if( !mgr->hasWorkspaceDefinition( name ) )
 			{
 				auto* w = mgr->addWorkspaceDefinition( name );
-				w->connectExternal( 0,  // "SR3_Render" ?
-					full ? "RttViewNode" : "RttNode", 0 );
+				w->connectExternal( 0, strWs[i], 0 );
 			}
 
 			r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, true );
@@ -281,9 +282,8 @@ void App::UpdMiniVis()
 	for (int i=0; i < RT_ALL; ++i)
 	{
 		bool vis = 
-			full ? (i == RT_View) :
-			(pSet->trackmap && (i == RT_Grass));
-			// && (i == pSet->num_mini));
+			full ? i == RT_View :
+			pSet->trackmap && i == pSet->num_mini;
 		if (rt[i].nd)  rt[i].nd->setVisible(vis);
 	}
 	if (ndBck)  ndBck->setVisible(full);
@@ -331,9 +331,10 @@ void App::UpdMiniPos()
 void App::SaveGrassDens()
 {
 	//^^ todo:  SaveGrassDens
-	if (!rt[RT_Grass].tex)  return;
-	// rt[RT_Grass].ws->_update();  // all have to exist
-	rt[RT_Grass].tex->writeContentsToFile("roadDens.png", 0, 0);
+	if (!rt[RT_RoadDens].tex)  return;
+	// rt[RT_RoadDens].ws->_update();  // all have to exist
+	rt[RT_RoadDens].tex->writeContentsToFile(  //"roadDens.png", 0, 0);
+		gcom->TrkDir()+"objects/roadDensity.png", 0, 0);
 	return;
 
 	Ogre::Timer ti;
@@ -344,7 +345,7 @@ void App::SaveGrassDens()
 		rt[i].tex->update();  // all have to exist
 	}*/
 
-	int n = RT_View; // RT_Grass
+	int n = RT_View; // RT_RoadDens
 	int w = rt[n].tex->getWidth(), h = rt[n].tex->getHeight();
 	using Ogre::uint;
 	uint *rd = new uint[w*h];   // road render

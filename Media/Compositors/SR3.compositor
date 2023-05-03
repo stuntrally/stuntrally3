@@ -1,60 +1,108 @@
-//  🏗️ ed rtt
+//  🏗️ ed rtt  for roadDensity.png
 //------------------------------------------------------------------------------------
-compositor_node RttNode
+compositor_node Rtt_RoadDens
 {
 	in 0 rt_output
 
 	target rt_output
 	{
-		// visibility_mask 0xfffffffe
-
-		//  view render  ----
 		pass render_scene
 		{
-			profiling_id "RTT road"
+			profiling_id "RTT road dens"
 
 			load
 			{
 				all				clear
-				clear_colour	0 0 0 0  // test
+				clear_colour	1 0 0 1  // red
 			}
 			store
 			{
-				// colour	store_or_resolve
 				colour	store
 				depth	store
 				stencil	store
-				// depth	dont_care
-				// stencil	dont_care
 			}
-
-			// expose demo_dynamic_cubemap
-
-			// in code: game, not ed
-			// visibility_mask 4  // ter
-			// visibility_mask 1  // road
-			// visibility_mask		0x0000FFFFD  // no hud
-			// rq_first  10  // ter
-			// rq_last	  12
+			visibility_mask 0x400  // RV_EdRoadDens  1024
+			
 			rq_first  70  // road
 			rq_last	  72
 
 			overlays	off
-			// shadows		SR3_Shadows
 		}
 	}
 }
 
-//  🏗️ ed rtt  cam view  normal all
-compositor_node RttViewNode
+//  🏗️ ed rtt  for road.png minimap preview
+//------------------------------------------------------------------------------------
+compositor_node Rtt_RoadPreview
 {
 	in 0 rt_output
 
 	target rt_output
 	{
-		// visibility_mask 0xfffffffe
+		pass render_scene
+		{
+			profiling_id "RTT road clr"
 
-		//  view render  ----
+			load
+			{
+				all				clear
+				clear_colour	0 0 0 0  // alpha
+			}
+			store
+			{
+				colour	store
+				depth	store
+				stencil	store
+			}
+			visibility_mask 0x400  // RV_EdRoadDens  1024
+			
+			rq_first  70  // road
+			rq_last	  72
+
+			overlays	off
+		}
+	}
+}
+
+//  🏗️ ed rtt  for terrain.jpg minimap preview
+compositor_node Rtt_Terrain
+{
+	in 0 rt_output
+
+	target rt_output
+	{
+		pass render_scene
+		{
+			profiling_id "RTT terrain"
+
+			load
+			{
+				all				clear
+				clear_colour	0 0 0 1
+			}
+			store
+			{
+				colour	store
+				depth	store
+				stencil	store
+			}
+			visibility_mask 4  // RV_Terrain ..
+			
+			rq_first  11  // terrain
+			rq_last	  16
+
+			overlays	off
+		}
+	}
+}
+
+//  🏗️ ed rtt  cam preview  normal all
+compositor_node Rtt_View
+{
+	in 0 rt_output
+
+	target rt_output
+	{
 		pass render_scene
 		{
 			profiling_id "RTT view all"
@@ -62,20 +110,14 @@ compositor_node RttViewNode
 			load
 			{
 				all				clear
-				clear_colour	0 0 0 0  // test
+				clear_colour	0 0 0 0
 			}
 			store
 			{
-				// colour	store_or_resolve
 				colour	store
 				depth	store
 				stencil	store
-				// depth	dont_care
-				// stencil	dont_care
 			}
-
-			// expose demo_dynamic_cubemap
-
 			// visibility_mask		0x0000FFFFD  // no hud
 			rq_first  0
 			rq_last	  199  // before RQ_OVERLAY
@@ -242,6 +284,7 @@ compositor_node SR3_Render
 			identifier	25001
 
 			// in code: game, not ed
+			visibility_mask	 0x3FF  // no 1024 ed
 			// visibility_mask		0x0000FFFFD  // no hud
 			// rq_last		110  // glass,par etc
 

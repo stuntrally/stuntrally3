@@ -324,7 +324,8 @@ void SplineRoad::BuildSeg(
 					
 					c = Vector4(brdg, pp, mP[seg].notReal ? 0.f : 1.f, h);
 				}else
-				{	c = (float(i)/il) * (mP[seg1].clr - mP[seg].clr) + mP[seg].clr;
+				{	//  trail clr
+					c = (float(i)/il) * (mP[seg1].clr - mP[seg].clr) + mP[seg].clr;
 					c.w = 1.f;
 				}
 				Vector2 vtc(tcw * 1.f /**2p..*/,
@@ -609,7 +610,7 @@ void SplineRoad::createSeg_Meshes(
 			GridMtr(rs.sMtrRd),
 			DLM.pos, DLM.norm, DLM.clr, DLM.tcs, idx);
 	#else
-		CreateMesh(rs.road[lod], sMesh,
+		CreateMesh( lod, rs.road[lod], sMesh,
 			rs.sMtrRd, rs.alpha, pipeGlass,
 			DLM.pos, DLM.norm, DLM.clr, DLM.tcs, idx);
 	#endif
@@ -620,7 +621,7 @@ void SplineRoad::createSeg_Meshes(
 	{
 		meshB = MeshManager::getSingleton().createManual(sMeshB,"General");
 		sm = meshB->createSubMesh();
-		CreateMesh(sm, aabox, DLM.posB,DLM.normB,DLM.clrB,DLM.tcsB, idxB, rs.sMtrB);
+		CreateMesh( -1, sm, aabox, DLM.posB,DLM.normB,DLM.clrB,DLM.tcsB, idxB, rs.sMtrB);
 	}*/
 	//*=*/wall = 0;  cols = 0;  // test
 
@@ -668,7 +669,7 @@ void SplineRoad::createSeg_Meshes(
 				GridMtr(rs.sMtrWall),
 				DLM.posW, DLM.normW, DLM.clr0, DLM.tcsW, idx);
 		#else
-			CreateMesh(rs.wall[lod], sMesh+"W",
+			CreateMesh( -1, rs.wall[lod], sMesh+"W",
 				rs.sMtrWall, false, false,
 				DLM.posW, DLM.normW, DLM.clr0, DLM.tcsW, idx);
 			rs.wall[lod].it->setCastShadows(true);
@@ -703,7 +704,7 @@ void SplineRoad::createSeg_Meshes(
 				DLM.posC[0],  //wip
 				GridMtr(sMtrCol),
 				DLM.posC, DLM.normC, DLM.clr0, DLM.tcsC, idx);
-			/*CreateMesh(rs.col, sMesh+"C",
+			/*CreateMesh( -1, rs.col, sMesh+"C",
 				sMtrCol, false, false,*/
 		}
 	}

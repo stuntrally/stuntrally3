@@ -114,7 +114,7 @@ void App::UpdateEnd(float dt)
 
 	///<>  Ter upd	- - -
 	static int tu = 0, bu = 0;
-	if (tu >= pSet->ter_skip)
+	if (tu >= pSet->ter_skip)  //; restore mini rtt skip
 	if (bTerUpd)
 	{	bTerUpd = false;  tu = 0;
 		// if (scn->mTerrainGroup)

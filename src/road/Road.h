@@ -34,7 +34,8 @@ struct SegData
 {
 	//  🟢 Ogre resources for 1 segment
 	Ogre::SceneNode* node =0;
-	Ogre::Item* it =0, *it2 =0;
+	Ogre::Item* it =0, *it2 =0,
+		*it4d =0;  // ed for road dens
 	Ogre::String smesh;
 	// Ogre::MeshPtr mesh;  Ogre::v1::MeshPtr mesh1;
 };
@@ -140,7 +141,7 @@ private:
 ///  ***  🏗️ MESH  ****
 //---------------------------------------------------------------------------------------
 
-	void CreateMesh( SegData& sd, Ogre::String sMesh,
+	void CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 		Ogre::String sMtrName, bool alpha, bool pipeGlass,
 		const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
 		const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,

@@ -35,7 +35,7 @@ using namespace Ogre;
 
 //  🏗️ Create Mesh
 //---------------------------------------------------------------------------------------------------------------------------------
-void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
+void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 	Ogre::String sMtrName, bool alpha, bool pipeGlass,
 	const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
 	const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,
@@ -193,7 +193,7 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	mesh->_setBounds(aabox, false);  //?
 	mesh->_setBoundingSphereRadius((aabox.getMaximum() - aabox.getMinimum()).length() / 2.0);  
 
-	//  tangents v1-
+	//  tangents  v2 to v1 to v2 meh-
 #ifdef V1tangents
 	String s1 = sMesh+"v1", s2 = sMesh+"v2";
 	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create(s1, "General");
@@ -202,7 +202,8 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
  	m1->importV2(mesh.get());
 	if (!trail)
 		m1->buildTangentVectors();  // todo: slow in ed, 24 Fps vs 38?-
-	mesh = MeshManager::getSingleton().createByImportingV1(s2, "General", m1.get(), false,false,false);
+	mesh = MeshManager::getSingleton().createByImportingV1(
+		s2, "General", m1.get(), false,false,false);
 	MeshManager::getSingleton().remove(sMesh);  // not needed
 #endif
 
@@ -214,9 +215,9 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	dyn = SCENE_DYNAMIC;  // ed a bit faster?
 #endif
 // 
-	Item *it2 = 0;
+	Item *it2 =0, *it4d =0;
 #ifdef V1tangents
-	Item *it = mSceneMgr->createItem(s2, "General", dyn );
+	Item *it = mSceneMgr->createItem( s2, "General", dyn );
 #else
 	Item *it = mSceneMgr->createItem( mesh, dyn );
 #endif
@@ -226,12 +227,32 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 	it->setVisible(false);  it->setCastShadows(false);//-
 	it->setVisibilityFlags(RV_Road);
 
+
+	//  ed road for rtt dens
+	//---------------------------------------------------------
+#ifdef SR_EDITOR
+	if (lod == 0)
+	{
+		// LogO("LOD 0 ed "+toStr(clr.size()));
+		#ifdef V1tangents
+			it4d = mSceneMgr->createItem( s2, "General", dyn );
+		#else
+			it4d = mSceneMgr->createItem( mesh, dyn );
+		#endif
+		it4d->setRenderQueueGroup(RQG_Road);
+		it4d->setVisibilityFlags(RV_EdRoadDens);
+		it4d->setCastShadows(false);
+		it4d->setDatablockOrMaterialName("ed_RoadDens");
+		node->attachObject(it4d);
+	}
+#endif
+
 	//  ⭕ pipe glass 2nd item
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	if (pipeGlass)
 	{
 	#ifdef V1tangents
-		it2 = mSceneMgr->createItem(s2, "General", dyn );
+		it2 = mSceneMgr->createItem( s2, "General", dyn );
 	#else
 		it2 = mSceneMgr->createItem( mesh, dyn );
 	#endif
@@ -292,9 +313,8 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 				// db->setFresnel(Vector3(1.f,1,1), false);
 		}	}
 	}
-	if (db)
+	if (db)  //  set reflection, from presets  ----
 	{
-		//  refl from presets
 		auto s = sMtrName;
 		auto is = s.find_last_of('_');  // drop _ter
 		if (is != std::string::npos)
@@ -307,7 +327,8 @@ void SplineRoad::CreateMesh( SegData& sd, Ogre::String sMesh,
 			db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );  // wet, etc+
 		// it->getSubItem(0)->setDatablock( db );
 	}
-	sd.it = it;  sd.it2 = it2;
+
+	sd.it = it;  sd.it2 = it2;  sd.it4d = it4d;
 	sd.node = node;
 	sd.smesh = sMesh;
 	// sd.mesh = mesh;  sd.mesh1 = m1;
@@ -396,6 +417,9 @@ void SplineRoad::DestroySeg(int id)
 				auto& n = rs.road[l].node;  if (n)  mgr->destroySceneNode(n);  n = 0;
 				auto& i = rs.road[l].it;    if (i)  mgr->destroyItem(i);  i = 0;
 				auto& j = rs.road[l].it2;   if (j)  mgr->destroyItem(j);  j = 0;
+			#ifdef SR_EDITOR
+				auto& d = rs.road[l].it4d;  if (d)  mgr->destroyItem(d);  d = 0;
+			#endif
 				auto& s = rs.road[l].smesh;
 				if (!s.empty())
 				{	String s1 = s+"v1", s2 = s+"v2";

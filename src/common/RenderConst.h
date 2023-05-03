@@ -73,4 +73,6 @@ const Ogre::uint32
 	RV_WaterRefract = RV_Terrain + RV_Vegetation + RV_Road + RV_Objects + RV_Car,
 
 	RV_MaskAll      = 511,
-	RV_MaskPrvCam   = 512;
+	RV_MaskPrvCam   = 512,
+	
+	RV_EdRoadDens   = 1024;
