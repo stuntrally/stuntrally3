@@ -104,12 +104,15 @@ void Grass::Create()
 						continue;  // outside ter
 
 					//  check if on road - uses roadDensity.png
-					const int xrd = (0.5 * xn + 0.5) * r;  // 0..1
-					const int yrd = (0.5 * zn + 0.5) * r;
+					const int xrd = (0.5 + 0.5 * xn) * r;  // 0..1
+					const int yrd = (0.5 - 0.5 * zn) * r;
 					float cr = scn->imgRoad->getColourAt(  // slow
-						xrd, yrd, 0).r;
-					if (cr < 0.35f)  //par
+						yrd, xrd, 0).r;
+					if (cr < 0.65f)  //par gui ..
+					// if (cr < 0.05f)  //par
 						continue;
+					// if (cr < Math::UnitRandom())  // todo: smooth..
+					// 	continue;
 
 					//  ter h
 					Real h = terrain->getHeight(xw, zw);  // /2 par..

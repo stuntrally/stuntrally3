@@ -99,7 +99,7 @@ void CScene::CreateTrees()
 		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 
 		tws = td.fTerWorldSize;
-		int r = imgRoadSize, cntshp = 0;
+		const int r = imgRoadSize;  int cntshp = 0;
 
 		//  set random seed  // add seed in scene.xml and in editor gui?
 		MTRand rnd((MTRand::uint32)1213);
@@ -172,8 +172,8 @@ void CScene::CreateTrees()
 				//  check if on road - uses roadDensity.png
 				if (imgRoad && r > 0)  //  ----------------
 				{
-				int mx = (pos.x + 0.5*tws)/tws*r,
-					my = (pos.z + 0.5*tws)/tws*r;
+				int mx = (0.5*tws + pos.x)/tws*r,
+					my = (0.5*tws - pos.z)/tws*r;
 
 					int c = sc->trRdDist + pg.addRdist;
 					int d = c;
@@ -187,8 +187,8 @@ void CScene::CreateTrees()
 					for (ii = -d; ii <= d; ++ii)
 					{
 						float cr = imgRoad->getColourAt(
-							std::max(0,std::min(r-1, mx+ii)),
-							std::max(0,std::min(r-1, my+jj)), 0).r;
+							std::max(0,std::min(r-1, my+ii)),
+							std::max(0,std::min(r-1, mx+jj)), 0).r;
 						
 						if (cr < 0.75f)  //par-
 						{
@@ -371,34 +371,3 @@ void CScene::DelRoadDens()
 	imgRoadSize = 0;
 	delete imgRoad;  imgRoad = 0;
 }
-
-#if 0  // old--
-	// sc min, max, dens, down
-	"jungle_tree-lod8.mesh",
-		3.0f, 5.0f, 20.f, -0.1f, 500, 0 ));  //  -v2 -l 10 -d 100 -p 11 jungle_tree.mesh
-	"palm2-lod8.mesh",
-		7.5f,12.5f, 18.f, -0.1f, 500, 0 ));  //  -v2 -l 8 -d 200 -p 10 palm2.mesh
-
-	"plant_tropical-lod6.mesh",
-		4.5f, 7.5f, 20.f, -0.1f, 300, 0 ));  //  -v2 -l 6 -d 200 -p 15 plant_tropical.mesh
-	"fern-lod6.mesh",
-		0.6f, 1.0f, 55.f, 0.0f, 400, 0 ));  //  -v2 -l 6 -d 200 -p 15 fern.mesh
-	"fern2-lod6.mesh",
-		0.8f, 1.2f, 30.f, 0.0f, 300, 0 ));  //  -v2 -l 8 -d 200 -p 10 palm2.mesh
-
-	"rock02brown2flat.mesh",
-		1.1f, 5.0f, 5.0f, 0.0f, 300, 1 ));  //  -v2 -l 6 -d 200 -p 15 rock*.mesh
-	"rock25dark2Harsh2.mesh",
-		0.6f, 3.0f, 5.0f, 0.0f, 400, 1 ));
-	"rock30grayGreen.mesh",
-		2.1f, 6.0f, 5.0f, 0.0f, 400, 1 ));
-	"rock37brGr1tall.mesh",
-		1.1f, 3.0f, 5.0f, 0.0f, 300, 1 ));
-	"rock18black3.mesh",
-		1.6f,7.f, 5.f ));
-	"rock_B02.mesh",
-		0.5f,2.f, 5.f ));
-
-	"pine2_tall_norm-lod9.mesh",
-		2.5f,4.f, 10.f ));  //  -v2 -l 9 -d 100 -p 9 pine2_tall_norm.mesh
-#endif
