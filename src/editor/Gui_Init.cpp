@@ -242,11 +242,18 @@ void CGui::InitGui()
 	ck= &ckMinimap;		ck->Init("Minimap",		&pSet->trackmap);  Cev(Minimap);
 	sv= &svSizeMinimap;	sv->Init("SizeMinimap",	&pSet->size_minimap, 0.15f,2.f);  sv->DefaultF(0.55f);  Sev(SizeMinimap);
 
-	sv= &svSizeRoadP;	sv->Init("SizeRoadP",	&pSet->road_sphr, 0.1f,12.f);  sv->DefaultF(2.f);  Sev(SizeRoadP);
+	sv->strMap[App::RT_RoadDens] = "Road Density";
+	sv->strMap[App::RT_RoadPrv ] = "Road Preview";
+	sv->strMap[App::RT_Terrain ] = "Terrain Preview";
+	sv->strMap[App::RT_View    ] = "View camera";
+	sv->strMap[App::RT_ALL     ] = "ALL";
+	sv= &svMiniNum;		sv->Init("MiniNum",		&pSet->num_mini,  0, App::RT_ALL-1);  sv->DefaultI(1);  Sev(MiniNum);
 
-	sv= &svTerUpd;		sv->Init("TerUpd",		&pSet->ter_skip,  0, 20);  sv->DefaultI(1);
-	sv= &svMiniUpd;		sv->Init("MiniUpd",		&pSet->mini_skip, 0, 20);  sv->DefaultI(4);
+	// sv= &svTerUpd;		sv->Init("TerUpd",		&pSet->ter_skip,  0, 20);  sv->DefaultI(1);  //; todo: restore
+	// sv= &svMiniUpd;		sv->Init("MiniUpd",		&pSet->mini_skip, 0, 20);  sv->DefaultI(4);
+
 	sv= &svRoadUpd;		sv->Init("RoadUpd",		&pSet->road_skip, 0, 30);  sv->DefaultI(8);
+	sv= &svSizeRoadP;	sv->Init("SizeRoadP",	&pSet->road_sphr, 0.1f,12.f);  sv->DefaultF(2.f);  Sev(SizeRoadP);
 
 	ck= &ckFps;			ck->Init("Fps",			&pSet->show_fps);  Cev(Fps);
 	ck= &ckWireframe;	ck->Init("Wireframe",	&app->bWireframe);  Cev(Wireframe);

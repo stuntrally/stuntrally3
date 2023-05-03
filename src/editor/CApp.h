@@ -93,10 +93,13 @@ public:
 	Ogre::SceneNode* ndPos =0;  // dims
 	Ogre::Real asp = 4.f/3.f, xm1 = -1.f, ym1 = 1.f, xm2 = 1.f, ym2 = -1.f;
 
-	//  🖼️ rnd to tex  --------
+	//  🖼️ rtt  render to texture  --------
 	enum ERnd2Tex
-	// {	RT_Road=0, RT_Grass, RT_Terrain, RT_View, RT_Last, RT_Brush, RT_ALL  };
-	{	RT_Grass, RT_View, RT_ALL
+	{	RT_RoadDens, // roadDensity.png  road (on terrain) map to exclude grass
+		RT_RoadPrv,  // road.png     minimap road preview, colors
+		RT_Terrain,  // terrain.png  minimap terrain
+		RT_View,     // view.jpg  preview camera, track view
+		RT_ALL
 	};
 	struct SRndTrg
 	{
@@ -112,8 +115,6 @@ public:
 
 	void CreateRnd2Tex(), DestroyRnd2Tex(), UpdRnd2Tex();
 	void UpdMiniSize(), UpdMiniVis(), UpdMiniPos();
-	// virtual void preRenderTargetUpdate(const Ogre::RenderTargetEvent &evt);
-	// virtual void postRenderTargetUpdate(const Ogre::RenderTargetEvent &evt);
 	
 
 	//  ⛰️📍 terrain cursor, circle mesh  o  ----

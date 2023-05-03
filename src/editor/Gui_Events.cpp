@@ -432,6 +432,11 @@ void CGui::slSizeRoadP(SV*)
 		app->scn->road->UpdAllMarkers();  }
 }
 
+void CGui::slMiniNum(SV*)
+{
+	app->UpdMiniVis();
+}
+
 void CGui::slSizeMinimap(SV*)
 {
 	app->UpdMiniSize();

@@ -1482,21 +1482,21 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="352 76 204 24">
-							<Property key="Caption" value="#{Wind}, #{GrassSway}"/>
+							<Property key="Caption" value="#{Wind}, #{GrassSway}-!"/>
 							<Property key="TextColour" value="0.6 1 0.4"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="392 108 112 24">
-							<Property key="Caption" value="#{distribution}"/>
+							<Property key="Caption" value="#{distribution}-"/>
 							<Property key="TextColour" value="0.6 0.9 0.3"/>
 							<UserString key="tip" value="#{TipGrassSwayDistr}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="392 132 112 24">
-							<Property key="Caption" value="#{length}"/>
+							<Property key="Caption" value="#{length}-"/>
 							<Property key="TextColour" value="0.6 0.9 0.3"/>
 							<UserString key="tip" value="#{TipGrassSwayLen}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="392 156 112 24">
-							<Property key="Caption" value="#{speed}"/>
+							<Property key="Caption" value="#{speed}-"/>
 							<Property key="TextColour" value="0.6 0.9 0.3"/>
 							<UserString key="tip" value="#{TipGrassSwaySpd}"/>
 						</Widget>
@@ -1517,7 +1517,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="352 220 156 24">
-							<Property key="Caption" value="#{GrDensSmooth}"/>
+							<Property key="Caption" value="#{GrDensSmooth}-!"/>
 							<Property key="TextColour" value="0.75 0.95 0.45"/>
 							<UserString key="tip" value="#{TipGrDensSmooth}"/>
 						</Widget>

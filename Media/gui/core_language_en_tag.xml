@@ -1281,6 +1281,7 @@
 	<Tag name="CamSpeed">Camera speed</Tag>
 	<Tag name="CamInertia">Camera inertia</Tag>
 	<Tag name="MinimapAndSize">Minimap, size</Tag>
+	<Tag name="MiniType">Minimap type</Tag>
 	<!--  Editor  Settings update  -->
 	<Tag name="RoadPointSize">Road points size</Tag>
 	<Tag name="RoadUpdSkip">Road update skip</Tag>

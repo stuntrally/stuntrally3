@@ -95,7 +95,7 @@ public:
 	Ck ckAutoStart, ckEscQuits;  // startup
 	Ck ckStartInMain, ckOgreDialog, ckMouseCapture, ckScreenPng;
 
-	SlV(SizeMinimap);  SlV(SizeRoadP);
+	SlV(SizeMinimap);  SlV(MiniNum);  SlV(SizeRoadP);
 	SV svCamSpeed, svCamInert;
 	SV svTerUpd, svMiniUpd, svRoadUpd;
 

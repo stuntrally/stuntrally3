@@ -604,7 +604,19 @@
 
 						<Widget type="TextBox" skin="TextBox" position="32 92 196 24">
 							<Property key="TextColour" value="0.4 0.7 0.4"/>
-							<Property key="Caption" value="#{MinimapUpdSkip}"/>
+							<Property key="Caption" value="#{MiniType}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="236 92 60 24" name="MiniNumVal">
+							<Property key="TextColour" value="0.4 0.7 0.4"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="302 92 320 16" name="MiniNum">
+							<Property key="Colour" value="0.4 0.7 0.4"/>
+						</Widget>
+
+						<!-- 
+						<Widget type="TextBox" skin="TextBox" position="32 92 196 24">
+							<Property key="TextColour" value="0.4 0.7 0.4"/>
+							<Property key="Caption" value="#{MinimapUpdSkip}-"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="236 92 60 24" name="MiniUpdVal">
 							<Property key="TextColour" value="0.4 0.7 0.4"/>
@@ -614,7 +626,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 122 196 24">
-							<Property key="Caption" value="#{TerUpdSkip}"/>
+							<Property key="Caption" value="#{TerUpdSkip}-"/>
 							<Property key="TextColour" value="0.5 0.8 0.3"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="236 122 60 24" name="TerUpdVal">
@@ -622,7 +634,7 @@
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="302 122 320 16" name="TerUpd">
 							<Property key="Colour" value="0.4 0.9 0.4"/>
-						</Widget>
+						</Widget> -->
 
 						<Widget type="TextBox" skin="TextBox" position="32 172 196 24">
 							<Property key="Caption" value="#{RoadUpdSkip}"/>
