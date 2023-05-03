@@ -3,11 +3,38 @@
 using namespace Ogre;
 
 
-HlmsPbs2::HlmsPbs2( Ogre::Archive *dataFolder, Ogre::ArchiveVec *libraryFolders )
-	:HlmsPbs(dataFolder, libraryFolders )
+//  our Unlit
+//----------------------------------------------------------------
+HlmsUnlit2::HlmsUnlit2( Archive *dataFolder, ArchiveVec *libraryFolders )
+	:HlmsUnlit( dataFolder, libraryFolders )
+{
+}
+HlmsUnlit2::~HlmsUnlit2()
 {
 }
 
+void HlmsUnlit2::calculateHashForPreCreate(
+	Renderable *rnd, PiecesMap *inOut )
+{
+	HlmsUnlit::calculateHashForPreCreate( rnd, inOut );
+	
+	const auto& mtr = rnd->getDatablockOrMaterialName();
+	// LogO("- calc unlit: " + mtr);   // on every item
+	
+	if (mtr == "ed_RoadDens")
+		setProperty( "ed_RoadDens", 1 );
+	else
+	if (mtr == "ed_RoadPreview")
+		setProperty( "ed_RoadPreview", 1 );
+}
+
+
+//  our Pbs
+//----------------------------------------------------------------
+HlmsPbs2::HlmsPbs2( Archive *dataFolder, ArchiveVec *libraryFolders )
+	:HlmsPbs( dataFolder, libraryFolders )
+{
+}
 HlmsPbs2::~HlmsPbs2()
 {
 }
@@ -19,15 +46,16 @@ void HlmsPbs2::calculateHashForPreCreate(
 	HlmsPbs::calculateHashForPreCreate( rnd, inOut );
 	
 	const auto& mtr = rnd->getDatablockOrMaterialName();
-	// LogO("- calc for: " + mtr);   // on every item
+	// LogO("- calc pbs: " + mtr);   // on every item
 	
-	if (mtr.find("grass") != std::string::npos)
+	if (mtr.substr(0,5) == "grass")
 		setProperty( "grass", 1 );
 
 	// if (mtr.find("road") != std::string::npos)
+	// if (mtr.substr(0,4) == "road")
 	// 	setProperty( "road", 1 );
 
-    //  todo:
+    //  todo: road segs sel
 	/*const auto &paramMap = rnd->getCustomParameters();
 	auto itor = paramMap.find( selected_glow );
 	if( itor != paramMap.end() )
@@ -37,19 +65,20 @@ void HlmsPbs2::calculateHashForPreCreate(
 }
 
 void HlmsPbs2::calculateHashForPreCaster(
-	Ogre::Renderable *rnd, Ogre::PiecesMap *inOut )
+	Renderable *rnd, PiecesMap *inOut )
 {
     HlmsPbs::calculateHashForPreCaster( rnd, inOut );
 
 	const auto& mtr = rnd->getDatablockOrMaterialName();
 	// LogO("- cast for: " + mtr);   // on every item
 
-	if (mtr.find("grass") != std::string::npos)
+	if (mtr.substr(0,5) == "grass")
 		setProperty( "grass", 1 );
 }
 
 
 //  createDatablockImpl
+//----------------------------------------------------------------
 /*
 HlmsDatablock* HlmsPbs2::createDatablockImpl(
 	IdString datablockName,
@@ -61,12 +90,14 @@ HlmsDatablock* HlmsPbs2::createDatablockImpl(
 }
 */
 
-void HlmsPbsDatablock2::uploadToConstBuffer( char *dstPtr, Ogre::uint8 dirtyFlags )
+void HlmsPbsDatablock2::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
 {
 	
 }
 
 
+// todo: Notes
+//----------------------------------------------------------------
 /*
 const size_t c_geometryShaderMagicValue = 123456;
 
@@ -100,7 +131,7 @@ void MyHlmsPbs::calculateHashForPreCreate( Renderable *renderable, PiecesMap *in
 
 HlmsDatablock *datablock = renderableA->getDatablock();
 Hlms *hlms = datablock->getCreator();
-if( hlms->getType() == Ogre::HLMS_PBS )
+if( hlms->getType() == HLMS_PBS )
 {
 	assert( dynamic_cast<MyHlmsPbs*>( hlms ) );
 	MyHlmsPbs *myHlmsPbs = static_cast<MyHlmsPbs*>( hlms );

@@ -1,10 +1,35 @@
 #pragma once
 #include <OgreHlms.h>
 #include <OgreHlmsPbs.h>
+#include <OgreHlmsUnlit.h>
 #include <OgreArchive.h>
 #include <OgreHlmsPbsDatablock.h>
 
+//  HLMS overrides for SR3, used instead of default Pbs and Unlit
 
+
+//  our Unlit  ----------------
+class HlmsUnlit2 : public Ogre::HlmsUnlit
+{
+public:
+	HlmsUnlit2( Ogre::Archive *dataFolder, Ogre::ArchiveVec *libraryFolders );
+	~HlmsUnlit2() override;
+	
+	void calculateHashForPreCreate(
+		Ogre::Renderable *renderable, Ogre::PiecesMap *inOutPieces ) override;
+
+	// void calculateHashForPreCaster(
+	// 	 Ogre::Renderable *renderable, Ogre::PiecesMap *inOutPieces ) override;
+/*
+	Ogre::HlmsDatablock *createDatablockImpl(
+		Ogre::IdString datablockName,
+		const Ogre::HlmsMacroblock *macroblock,
+		const Ogre::HlmsBlendblock *blendblock,
+		const Ogre::HlmsParamVec   &paramVec ) override;
+*/
+};
+
+//  our Pbs  ----------------
 class HlmsPbs2 : public Ogre::HlmsPbs
 {
 public:
@@ -27,7 +52,7 @@ public:
 */
 };
 
-//  not used
+//  not used - our datablock  ----------------
 class HlmsPbsDatablock2 : public Ogre::HlmsPbsDatablock
 {
 	friend class HlmsPbs2;

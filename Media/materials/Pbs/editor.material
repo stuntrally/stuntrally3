@@ -1,5 +1,25 @@
+//  ed rtt road
+hlms ed_RoadDens unlit
+{
+	diffuse 1 1 1
+	diffuse_map white.png
+	cull_mode none
+}
+hlms ed_RoadPreview unlit
+{
+	diffuse 1 1 1
+	diffuse_map white.png
+	cull_mode none
+}
 
 //  ed rtt road,view,ter etc
+hlms ed_Rtt_pbs pbs
+{
+	// diffuse_map  RttTex0  // set in cpp
+	diffuse 1 1 1
+	cull_mode none
+}
+
 hlms ed_Rtt_0 unlit
 {
 	// diffuse_map  RttTex0  // set in cpp
