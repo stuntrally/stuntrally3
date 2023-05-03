@@ -215,7 +215,7 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 	dyn = SCENE_DYNAMIC;  // ed a bit faster?
 #endif
 // 
-	Item *it2 =0, *it4d =0;
+	Item *it2 =0, *it34[2] ={0,0};
 #ifdef V1tangents
 	Item *it = mSceneMgr->createItem( s2, "General", dyn );
 #else
@@ -228,22 +228,24 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 	it->setVisibilityFlags(RV_Road);
 
 
-	//  ed road for rtt dens
+	//  ed road for mini and density
 	//---------------------------------------------------------
 #ifdef SR_EDITOR
 	if (lod == 0)
+	for (int i=0; i<2; ++i)
 	{
 		// LogO("LOD 0 ed "+toStr(clr.size()));
+		auto*& it = it34[i];
 		#ifdef V1tangents
-			it4d = mSceneMgr->createItem( s2, "General", dyn );
+			it = mSceneMgr->createItem( s2, "General", dyn );
 		#else
-			it4d = mSceneMgr->createItem( mesh, dyn );
+			it = mSceneMgr->createItem( mesh, dyn );
 		#endif
-		it4d->setRenderQueueGroup(RQG_Road);
-		it4d->setVisibilityFlags(RV_EdRoadDens);
-		it4d->setCastShadows(false);
-		it4d->setDatablockOrMaterialName("ed_RoadDens");
-		node->attachObject(it4d);
+		it->setRenderQueueGroup(RQG_Road);
+		it->setVisibilityFlags(i ? RV_EdRoadPreview : RV_EdRoadDens);
+		it->setCastShadows(false);
+		it->setDatablockOrMaterialName(i ? "ed_RoadPreview" : "ed_RoadDens");
+		node->attachObject(it);
 	}
 #endif
 
@@ -328,7 +330,8 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 		// it->getSubItem(0)->setDatablock( db );
 	}
 
-	sd.it = it;  sd.it2 = it2;  sd.it4d = it4d;
+	sd.it = it;  sd.it2 = it2;
+	sd.it3r = it34[0];  sd.it4d = it34[1];
 	sd.node = node;
 	sd.smesh = sMesh;
 	// sd.mesh = mesh;  sd.mesh1 = m1;
@@ -414,13 +417,15 @@ void SplineRoad::DestroySeg(int id)
 			}
 			{	// - road
 				// LogO("---- Destroy Road seg " + rs.road[l].smesh);
-				auto& n = rs.road[l].node;  if (n)  mgr->destroySceneNode(n);  n = 0;
-				auto& i = rs.road[l].it;    if (i)  mgr->destroyItem(i);  i = 0;
-				auto& j = rs.road[l].it2;   if (j)  mgr->destroyItem(j);  j = 0;
+				auto& rd = rs.road[l];
+				auto& n = rd.node;  if (n)  mgr->destroySceneNode(n);  n = 0;
+				auto& i = rd.it;    if (i)  mgr->destroyItem(i);  i = 0;
+				auto& j = rd.it2;   if (j)  mgr->destroyItem(j);  j = 0;
 			#ifdef SR_EDITOR
-				auto& d = rs.road[l].it4d;  if (d)  mgr->destroyItem(d);  d = 0;
+				auto& r = rd.it3r;  if (r)  mgr->destroyItem(r);  r = 0;
+				auto& d = rd.it4d;  if (d)  mgr->destroyItem(d);  d = 0;
 			#endif
-				auto& s = rs.road[l].smesh;
+				auto& s = rd.smesh;
 				if (!s.empty())
 				{	String s1 = s+"v1", s2 = s+"v2";
 					s = "";

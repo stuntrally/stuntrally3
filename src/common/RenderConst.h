@@ -75,4 +75,5 @@ const Ogre::uint32
 	RV_MaskAll      = 511,
 	RV_MaskPrvCam   = 512,
 	
-	RV_EdRoadDens   = 1024;
+	RV_EdRoadDens    = 1024,
+	RV_EdRoadPreview = 2048;

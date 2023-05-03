@@ -1,4 +1,6 @@
-//  🏗️ ed rtt  for roadDensity.png
+//  start of  Editor only
+
+//  🏗️ ed rtt 0  for roadDensity.png
 //------------------------------------------------------------------------------------
 compositor_node Rtt_RoadDens
 {
@@ -8,7 +10,7 @@ compositor_node Rtt_RoadDens
 	{
 		pass render_scene
 		{
-			profiling_id "RTT road dens"
+			profiling_id "RTT 0 road dens"
 
 			load
 			{
@@ -31,7 +33,7 @@ compositor_node Rtt_RoadDens
 	}
 }
 
-//  🏗️ ed rtt  for road.png minimap preview
+//  🏗️ ed rtt 1  for road.png minimap preview
 //------------------------------------------------------------------------------------
 compositor_node Rtt_RoadPreview
 {
@@ -41,7 +43,7 @@ compositor_node Rtt_RoadPreview
 	{
 		pass render_scene
 		{
-			profiling_id "RTT road clr"
+			profiling_id "RTT 1 road prv"
 
 			load
 			{
@@ -54,7 +56,7 @@ compositor_node Rtt_RoadPreview
 				depth	store
 				stencil	store
 			}
-			visibility_mask 0x400  // RV_EdRoadDens  1024
+			visibility_mask 0x800  // RV_EdRoadPreview  2048
 			
 			rq_first  70  // road
 			rq_last	  72
@@ -64,7 +66,7 @@ compositor_node Rtt_RoadPreview
 	}
 }
 
-//  🏗️ ed rtt  for terrain.jpg minimap preview
+//  🏗️ ed rtt 2  for terrain.jpg minimap preview
 compositor_node Rtt_Terrain
 {
 	in 0 rt_output
@@ -73,12 +75,12 @@ compositor_node Rtt_Terrain
 	{
 		pass render_scene
 		{
-			profiling_id "RTT terrain"
+			profiling_id "RTT 2 terrain"
 
 			load
 			{
 				all				clear
-				clear_colour	0 0 0 1
+				clear_colour	0 0 0 1  // black
 			}
 			store
 			{
@@ -96,7 +98,7 @@ compositor_node Rtt_Terrain
 	}
 }
 
-//  🏗️ ed rtt  cam preview  normal all
+//  🏗️ ed rtt 3  cam preview  normal all
 compositor_node Rtt_View
 {
 	in 0 rt_output
@@ -105,12 +107,12 @@ compositor_node Rtt_View
 	{
 		pass render_scene
 		{
-			profiling_id "RTT view all"
+			profiling_id "RTT 3 view all"
 
 			load
 			{
 				all				clear
-				clear_colour	0 0 0 0
+				clear_colour	0 0 0 1  // black
 			}
 			store
 			{
@@ -124,9 +126,11 @@ compositor_node Rtt_View
 
 			overlays	off
 			shadows		SR3_Shadows
+			// todo: use that from code, not SR3_Shadows from here
 		}
 	}
 }
+//  end of  Editor only
 
 
 //  🔮 cube reflections
@@ -140,11 +144,11 @@ abstract target cubemap_target
 		load
 		{
 			all				clear
-			clear_colour	1 1 0 1  // test yellow
+			// clear_colour	1 1 0 1  // test yellow
+			clear_colour	0.2 0.4 0.8 1  // skyblue-
 		}
 		store
 		{
-			//We only care about the contents of the colour target
 			// colour	store
 			depth			dont_care
 			stencil			dont_care
@@ -152,13 +156,13 @@ abstract target cubemap_target
 
 		expose cubemap
 
-		visibility_mask		0x0000012D
-		// visibility_mask		0x010
-		// 301
-		// visibility_mask		0x000000FF
+		visibility_mask		0x0000012D  // ..
+
 		overlays			off
 		camera_cubemap_reorient true
-		//shadows		SR3_Shadows
+		// shadows		SR3_Shadows
+		// ^ crashes ..
+		// todo: use that from code, not SR3_Shadows from here
 	}
 }
 
@@ -181,6 +185,7 @@ compositor_node CubemapNode
 	}	}
 }
 
+//  not used
 // MSAA Cubemaps do not exist. Therefore we have to manually define the RTV (RenderTextureView)
 // To render to a temporary MSAA surface and tell Ogre to resolve the MSAA contents into a cubemap
 compositor_node CubemapNodeMsaa
@@ -227,14 +232,12 @@ compositor_node SR3_Render
 		{
 			profiling_id "Clear all"
 
-			// executed on first view/eye
+			//  executed on first view/eye
 			execution_mask			0x01
-			// affected by modifier, apply to the whole screen
+			//  affected by modifier, apply to the whole screen
 			viewport_modifier_mask	0x00
 
-			// Only write to the MSAA surface, don't resolve!
-			// because overlays due to a legacy problem break the pass
-			// thus if we resolve now, we'll resolve twice
+			//  Only write to MSAA surface, don't resolve, overlays legacy problem
 			store
 			{
 				colour	store
@@ -250,9 +253,9 @@ compositor_node SR3_Render
 		{
 			profiling_id "Main view"
 
-			// executed in all views/eyes
+			//  executed in all views/eyes
 			execution_mask			0xff
-			// affected by modifier, so renders to a portion of screen
+			//  affected by modifier, so renders to a portion of screen
 			viewport_modifier_mask	0xff
 
 			// load
@@ -261,7 +264,7 @@ compositor_node SR3_Render
 			// 	clear_colour  0.01 0.01 0.02 1
 			// }
 
-			// Only write to the MSAA surface, don't resolve
+			//  Only write to the MSAA surface, don't resolve
 			store
 			{
 				colour	store
@@ -276,8 +279,7 @@ compositor_node SR3_Render
 			// 	stencil	dont_care
 			// }
 
-			// Our materials in this pass will be using this cubemap,
-			// so we need to expose it to the pass.
+			//  materials in this pass will be using this cubemap
 			expose demo_dynamic_cubemap
 
 			//  used in planar ReflectListener
@@ -291,6 +293,7 @@ compositor_node SR3_Render
 			overlays	on
 			// shadows		SR3_Shadows
 		}
+
 
 		//  restore  ----  for Hud, split
 		pass render_scene
@@ -321,7 +324,7 @@ compositor_node SR3_Render
 
 		// pass custom MYGUI
 		// {
-			// provider?  added in code..
+			// // provider?  _added in code_
 			// profiling_id "GUI"
 
 			// executed in the second eye
@@ -382,7 +385,7 @@ workspace PlanarReflectionsReflectiveWorkspace
 }
 
 
-//  🌒 shadows
+//  🌒 shadows  .. drop
 //------------------------------------------------------------------------------------
 compositor_node_shadow SR3_Shadows
 {

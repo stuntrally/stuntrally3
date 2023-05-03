@@ -35,7 +35,7 @@ struct SegData
 	//  🟢 Ogre resources for 1 segment
 	Ogre::SceneNode* node =0;
 	Ogre::Item* it =0, *it2 =0,
-		*it4d =0;  // ed for road dens
+		*it3r = 0, *it4d =0;  // ed for road mini and density
 	Ogre::String smesh;
 	// Ogre::MeshPtr mesh;  Ogre::v1::MeshPtr mesh1;
 };

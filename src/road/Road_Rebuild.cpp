@@ -312,17 +312,19 @@ void SplineRoad::BuildSeg(
 			}else if (vis)// && HasRoad())
 			{
 				Vector4 c;
-				///  color  for minimap preview
-				//  ---~~~====~~~---
+				///  color  for minimap preview  ---~~~====~~~---
 				if (!IsTrail())
 				{
 					Real brdg = min(1.f, std::abs(vP.y - yTer) * 0.4f);  //par ] height diff mul
 					Real h = max(0.f, 1.f - std::abs(vP.y - yTer) / 30.f);  // for grass dens tex
 					
-					bool onP = mP[seg].onPipe > 0;  // fixme: on pipe road prv
-					float pp = fPipe;//*0.5f + (onP ? 0.5f : 0.f);  // put onP in pipe
+					bool onP = mP[seg].onPipe > 0;
+					// float pp = fPipe;  //-
+					float pp = fPipe*0.5f + (onP ? 0.5f : 0.f);  // put onP in pipe
 					
-					c = Vector4(brdg, pp, mP[seg].notReal ? 0.f : 1.f, h);
+					c = Vector4(brdg, pp,
+						std::abs(vN.y), h);  // n
+						//mP[seg].notReal ? 0.f : 1.f, h);  // fixme?
 				}else
 				{	//  trail clr
 					c = (float(i)/il) * (mP[seg1].clr - mP[seg].clr) + mP[seg].clr;

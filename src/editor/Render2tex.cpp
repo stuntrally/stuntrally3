@@ -330,12 +330,18 @@ void App::UpdMiniPos()
 ///  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 void App::SaveGrassDens()
 {
-	//^^ todo:  SaveGrassDens
+	int user = pSet->allow_save ? pSet->gui.track_user : 1;
+	auto path = gcom->pathTrk[user] + pSet->gui.track;
+
 	if (!rt[RT_RoadDens].tex)  return;
 	// rt[RT_RoadDens].ws->_update();  // all have to exist
-	rt[RT_RoadDens].tex->writeContentsToFile(  //"roadDens.png", 0, 0);
-		gcom->TrkDir()+"objects/roadDensity.png", 0, 0);
-	return;
+	//  save
+	rt[RT_RoadDens].tex->writeContentsToFile(
+		path+"/objects/roadDensity.png", 0, 0);
+	// rt[RT_RoadPrv].tex->writeContentsToFile(
+	// 	path+"/preview/road.png", 0, 0);
+	
+return;  // todo: smooth roadDens?
 
 	Ogre::Timer ti;
 
@@ -405,8 +411,6 @@ void App::SaveGrassDens()
 	delete[] rd;  delete[] gd;  delete[] mask;
 
 	//  road, terrain  ----------------
-	int user = pSet->allow_save ? pSet->gui.track_user : 1;
-	auto path = gcom->pathTrk[user] + pSet->gui.track;
 	// rt[RT_Road   ].tex->writeContentsToFile(path + "/preview/road.png");
 	// rt[RT_Terrain].tex->writeContentsToFile(path + "/preview/terrain.jpg");
 

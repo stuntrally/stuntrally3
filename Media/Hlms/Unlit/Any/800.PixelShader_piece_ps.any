@@ -101,6 +101,44 @@
 		@end
 	@end
 
+
+//  ED RTT road  ------------
+	@property( ed_RoadDens )
+		// diffuseCol = midf4_c(1.0 - diffuseCol.w, 0.0, 0.0, 1.0);  //-?
+		// diffuseCol = midf4_c(diffuseCol.x, 0.0, 0.0, 1.0);
+		diffuseCol = midf4_c(0.0, diffuseCol.z, 0.0, 1.0);
+	@end
+	
+	@property( ed_RoadPreview )
+
+		float bridge = diffuseCol.x, pipe = diffuseCol.y;
+		float norm = diffuseCol.z;
+
+		float onP = pipe > 0.5 ? 1.0 : 0.0;  // get onP from pipe
+		pipe = pipe > 0.5 ? min(1.0, (pipe - 0.5) * 3.5) : pipe * 2.0;
+														//\par
+		float pwr = lerp(lerp(8.0, 8.0, bridge), 4.0, pipe);
+		float ter = lerp(lerp(1.0, 0.0, bridge), 0.0, pipe);
+		float clrLi = 1.0 - lerp( 1.0-lerp(pow(norm, pwr), pow(norm, pwr), pipe),
+			pow(1.0 - 2.0*acos(norm)/3.141592654, pwr), ter);
+		// float clrLi = ambient + diffuse * matDif.rgb;
+		
+		///  color  for minimap preview  ---~~~====~~~---
+		float3 clr =
+			lerp(
+				lerp(float3(1.0, 1.0, 1.0) * clrLi,           // gray
+					 float3(0.0, 0.8, 1.0) * (0.4 + 0.7*clrLi)  // cyan
+					,bridge),
+				lerp(float3(1.0, 0.8, 0.0),                         // yellow
+					 float3(1.0, 0.4, 0.0), onP) * (0.2 + 1.0*clrLi)  // orange
+			,pipe);
+			
+		// diffuseCol = midf4_c(pow(clr.rgb, midf3_c(1.1f, 1.1f, 1.1f)), 1.0);
+		diffuseCol = midf4_c(clr.rgb, 1.0);
+	@end
+//  ED RTT  ------------
+
+
 	//  gamma
 	// diffuseCol.xyz = pow(diffuseCol.xyz, midf3_c(1.1f, 1.1f, 1.1f));
 
