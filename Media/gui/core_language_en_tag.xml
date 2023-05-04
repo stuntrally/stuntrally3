@@ -1253,6 +1253,11 @@
 	<Tag name="AlignWidthAdd">Width add</Tag>
 	<Tag name="AlignWidthMul">Width multiply</Tag>
 	<Tag name="AlignSmooth">Smooth size</Tag>
+	
+	<Tag name="AlignHorizonToTerrain">Align horizon to terrain</Tag>
+	<Tag name="AH_BaseTer">Base Terrain</Tag>
+	<Tag name="AH_Border">Border</Tag>
+	<Tag name="AH_Below">Below</Tag>
 
 
 	<!--  Editor Game setup  -->

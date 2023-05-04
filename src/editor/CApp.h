@@ -195,7 +195,7 @@ public:
 
 	//  🛠️ Tools, road  -in base
 	void SaveGrassDens(), SaveWaterDepth();
-	void AlignTerToRoad();
+	void AlignTerToRoad(), AlignHorizonToTer();
 	int iSnap = 0;  Ogre::Real angSnap = 0.f;
 	int iEnd = 0;  // edit: 0 scn->start 1 end
 

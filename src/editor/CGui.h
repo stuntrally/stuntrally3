@@ -158,9 +158,14 @@ public:
 	CK(TerCollis);  CK(TerBL); CK(TerBR); CK(TerBF); CK(TerBB);
 	void SldUpd_Ter();
 
+	//  hmap
 	void saveNewHmap(float* hfData, int size, int add = 0, bool bNew=true);  // to file
 	void btnTerrainNew(WP), btnTerGenerate(WP);
-	void btnTerrainHalf(WP), btnTerrainDouble(WP), btnTerrainMove(WP);  // tools
+	//  tools
+	void btnTerrainHalf(WP), btnTerrainDouble(WP), btnTerrainMove(WP);
+
+	void btnAlignTerToRoad(WP), btnAlignHorizonToTer(WP);
+	SV svAH_BaseTer, svAH_Border, svAH_Below;
 	
 	void btnBrushPreset(WP), btnBrushRandom(WP),btnBrushRandom2(WP);
 

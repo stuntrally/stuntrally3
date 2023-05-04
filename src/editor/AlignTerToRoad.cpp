@@ -191,3 +191,61 @@ void App::AlignTerToRoad()
 
 	LogO(String(":::* Time Ter Align: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
+
+
+//  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+//  ⛰️🏞️  Align Horiz to ter
+//-----------------------------------------------------------------------------------------------------------
+void App::AlignHorizonToTer()
+{
+	// Ogre::Timer ti;
+
+	//  base ter  ----
+	const int base = pSet->ah_base_ter;
+	if (scn->terCur == base || base >= scn->ters.size())
+	{
+		LogO("Align Horiz: base ter == current, or out range");
+		return;
+	}
+	auto* baseTer = scn->ters[base];
+	// const int Bw = baseTer->getSize();
+	// const float Bfw = Bw-1;
+	const float Bws = scn->sc->tds[base].fTerWorldSize;
+
+	const float Hgap = pSet->ah_below;  // m  ter above horiz
+
+	//  cur ter  ----
+	std::vector<float>& fHmap = scn->ter->getHeightData();
+	const int w = scn->ter->getSize();
+	const float fw = w-1;
+	const float ws = scn->sc->tds[scn->terCur].fTerWorldSize;
+
+	///-------------
+	int x,y,a;
+	for (y = 0; y < w; ++y) {  a = y*w;
+	for (x = 0; x < w; ++x, ++a)
+	{
+		const float fx = float(x)/fw, fz = float(y)/fw;  // cur  pos 0..1
+		const float wx = (fx-0.5f) * ws, wz = (fz-0.5f) * ws;  // pos on ter  -terSize..terSize
+
+		// const float Bfx = float(x)/Bfw, Bfz = float(y)/Bfw;  // base
+		// const float Bwx = (Bfx-0.5f) * Bws, Bwz = (Bfz-0.5f) * Bws;
+
+		// float bL = wx - Bws, // todo: smooth border ...
+
+		Vector3 p(wx, 0.f, wz);
+		bool b = baseTer->getHeightAt(p);
+		if (b)  // inside base ter
+		{
+			float h = fHmap[a];
+			if (h > p.y - Hgap)
+				fHmap[a] = p.y - Hgap;
+		}
+
+	}	}
+
+	//  update cur terrain
+	scn->ter->dirtyRect(Rect(0,0,1,1));
+	scn->UpdBlendmap();
+	bTerUpd = true;
+}

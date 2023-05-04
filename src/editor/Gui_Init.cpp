@@ -242,12 +242,10 @@ void CGui::InitGui()
 	ck= &ckMinimap;		ck->Init("Minimap",		&pSet->trackmap);  Cev(Minimap);
 	sv= &svSizeMinimap;	sv->Init("SizeMinimap",	&pSet->size_minimap, 0.15f,2.f);  sv->DefaultF(0.55f);  Sev(SizeMinimap);
 
-	sv->strMap[App::RT_RoadDens] = "Road Density";
-	sv->strMap[App::RT_RoadPrv ] = "Road Preview";
-	sv->strMap[App::RT_Terrain ] = "Terrain Preview";
-	sv->strMap[App::RT_View    ] = "View camera";
-	sv->strMap[App::RT_ALL     ] = "ALL";
-	sv= &svMiniNum;		sv->Init("MiniNum",		&pSet->num_mini,  0, App::RT_ALL-1);  sv->DefaultI(1);  Sev(MiniNum);
+	sv= &svMiniNum;		sv->strMap[App::RT_ALL     ] = "ALL";
+	sv->strMap[App::RT_RoadDens] = "Road Density";		sv->strMap[App::RT_RoadPrv ] = "Road Preview";
+	sv->strMap[App::RT_Terrain ] = "Terrain Preview";	sv->strMap[App::RT_View    ] = "View camera";
+						sv->Init("MiniNum",		&pSet->num_mini,  0, App::RT_ALL-1);  sv->DefaultI(1);  Sev(MiniNum);
 
 	// sv= &svTerUpd;		sv->Init("TerUpd",		&pSet->ter_skip,  0, 20);  sv->DefaultI(1);  //; todo: restore
 	// sv= &svMiniUpd;		sv->Init("MiniUpd",		&pSet->mini_skip, 0, 20);  sv->DefaultI(4);
@@ -339,6 +337,13 @@ void CGui::InitGui()
 	Btn("TerrainGenAdd", btnTerGenerate);  Btn("TerrainGenSub", btnTerGenerate);    Btn("TerrainGenMul", btnTerGenerate);
 	Btn("TerrainHalf",   btnTerrainHalf);  Btn("TerrainDouble", btnTerrainDouble);  Btn("TerrainMove",   btnTerrainMove);
 
+	//  align
+	Btn("AlignTerrain",  btnAlignTerToRoad);  Btn("AlignHorizon",  btnAlignHorizonToTer);
+	
+	sv= &svAH_BaseTer;	sv->Init("AH_BaseTer",	&pSet->ah_base_ter, 0,8);  sv->DefaultI(0);
+	sv= &svAH_Border;	sv->Init("AH_Border",	&pSet->ah_border, 0.f,160.f, 2.f, 2,4);  sv->DefaultF(10.f);
+	sv= &svAH_Below;	sv->Init("AH_Below",	&pSet->ah_below, 0.f,160.f, 2.f, 2,4);  sv->DefaultF(10.f);
+	
 
 	///  generator  . . . . . . .
 	sv= &svTerGenScale;	sv->Init("TerGenScale",	&pSet->gen_scale, 0.f,160.f, 2.f, 2,4);  sv->DefaultF(52.f);

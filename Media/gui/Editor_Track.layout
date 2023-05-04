@@ -567,65 +567,37 @@
 					<Property key="Caption" value="#{Particles}"/>
 				</Widget>
 
-				<Widget type="TextBox" skin="TextBox" position="168 188 128 24">
+				<Widget type="TextBox" skin="TextBox" position="168 198 128 24">
 					<Property key="Caption" value="#{ScaleMul}"/>
 					<Property key="TextColour" value="0.4 0.6 0.4"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="40 210 116 24" name="ScaleAll">
+				<Widget type="Button" skin="Button" position="40 220 116 24" name="ScaleAll">
 					<Property key="TextColour" value="0.7 1 0.8"/>
 					<Property key="Colour" value="0.7 1 0.8"/>
 					<Property key="Caption" value="#{ScaleAll}"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="40 248 116 24" name="ScaleTerH">
+				<Widget type="Button" skin="Button" position="40 258 116 24" name="ScaleTerH">
 					<Property key="TextColour" value="0.3 1 0.3"/>
 					<Property key="Colour" value="0.3 1 0.3"/>
 					<Property key="Caption" value="#{ScaleTerHeight}"/>
 				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="168 210 50 24" name="ScaleAllMulEdit">
+				<Widget type="EditBox" skin="EditBox" position="168 220 50 24" name="ScaleAllMulEdit">
 					<Property key="Colour" value="0.7 1 0.8"/>
 					<Property key="TextColour" value="0.7 1 0.8"/>
 					<Property key="Caption" value="1.0"/>
 				</Widget>
-				<Widget type="Slider" skin="Slider" position="234 214 260 16" name="ScaleAllMul">
+				<Widget type="Slider" skin="Slider" position="234 224 260 16" name="ScaleAllMul">
 					<Property key="Colour" value="0.8 1 0.8"/>
 				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="168 248 50 24" name="ScaleTerHMulEdit">
+				<Widget type="EditBox" skin="EditBox" position="168 258 50 24" name="ScaleTerHMulEdit">
 					<Property key="Colour" value="0.3 1 0.3"/>
 					<Property key="TextColour" value="0.3 1 0.3"/>
 					<Property key="Caption" value="1.0"/>
 				</Widget>
-				<Widget type="Slider" skin="Slider" position="234 252 260 16" name="ScaleTerHMul">
+				<Widget type="Slider" skin="Slider" position="234 262 260 16" name="ScaleTerHMul">
 					<Property key="Colour" value="0.5 1 0.5"/>
 				</Widget>
 
-				<Widget type="TextBox" skin="TextBox" position="32 310 376 24">
-					<Property key="Caption" value="#{AlignTerrainToRoad}"/>
-					<Property key="TextColour" value="1.0 0.66 0.7"/>
-				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="32 340 144 24">
-					<Property key="Caption" value="#{AlignWidthAdd}"/>
-					<Property key="TextColour" value="0.8 0.5 0.5"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="248 340 320 18" name="AlignWidthAdd"/>
-				<Widget type="TextBox" skin="TextBox" position="180 340 60 24" name="AlignWidthAddVal">
-					<Property key="TextColour" value="0.8 0.5 0.5"/>
-				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="32 370 144 24">
-					<Property key="Caption" value="#{AlignWidthMul}"/>
-					<Property key="TextColour" value="0.8 0.5 0.4"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="248 370 320 18" name="AlignWidthMul"/>
-				<Widget type="TextBox" skin="TextBox" position="180 370 60 24" name="AlignWidthMulVal">
-					<Property key="TextColour" value="0.8 0.5 0.4"/>
-				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="32 400 144 24">
-					<Property key="Caption" value="#{AlignSmooth}"/>
-					<Property key="TextColour" value="0.8 0.6 0.2"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="248 400 320 18" name="AlignSmooth"/>
-				<Widget type="TextBox" skin="TextBox" position="180 400 60 24" name="AlignSmoothVal">
-					<Property key="TextColour" value="0.8 0.6 0.2"/>
-				</Widget>
 			</Widget>
 
 			<Widget type="TabItem" skin="" position="2 24 794 562">

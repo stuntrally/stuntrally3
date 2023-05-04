@@ -257,8 +257,18 @@ void CGui::saveNewHmap(float* hfData, int size, int add, bool bNew)
 	of.close();
 }
 
+
 //  🛠️ Ter Hmap tools  - - - -
 //----------------------------------------------------------------------------------------------------------
+void CGui::btnAlignTerToRoad(WP)
+{
+	app->AlignTerToRoad();
+}
+void CGui::btnAlignHorizonToTer(WP)
+{
+	app->AlignHorizonToTer();
+}
+
 void CGui::btnTerrainNew(WP)
 {
 	int si = UpdTxtTerSize();
@@ -373,6 +383,7 @@ void CGui::btnTerrainResize(WP)
 	app->bNewHmap = true;	app->UpdateTrack();  //SetGuiFromXmls();
 }
 #endif
+
 
 //  Terrain  move  --------------------------------
 void CGui::btnTerrainMove(WP)

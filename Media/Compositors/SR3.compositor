@@ -120,7 +120,7 @@ compositor_node Rtt_View
 				depth	store
 				stencil	store
 			}
-			// visibility_mask		0x0000FFFFD  // no hud
+			visibility_mask	 0x3FF  // normal
 			rq_first  0
 			rq_last	  199  // before RQ_OVERLAY
 
