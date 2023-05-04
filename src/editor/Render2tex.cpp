@@ -90,14 +90,16 @@ void App::CreateRnd2Tex()
 			if( !r.cam )
 			{
 				r.cam = mSceneMgr->createCamera( "RttCam" + si, true );
-				r.cam->setPosition(Vector3(0,1500,0));  //par- max height
-				r.cam->setOrientation(Quaternion(0.5,-0.5,0.5,0.5));  // top view
+				bool btm = i == RT_RoadDens;
+				r.cam->setPosition(Vector3(0, btm ? -1500 : 1500, 0));  //par- max height
+				r.cam->setOrientation( btm ?
+					Quaternion(Degree(180), Vector3(1,0,0)) * Quaternion(0.5,-0.5,0.5,0.5) :  // bottom
+					Quaternion(0.5,-0.5,0.5,0.5));  // top view
 				r.cam->setNearClipDistance(0.5);
 				// r.cam->setFarClipDistance(50000);  // r.cam->setUseRenderingDistance(true);
 				r.cam->setAspectRatio(1.0);
-				if (!full)
-				{	// top view ortho
-					r.cam->setProjectionType(PT_ORTHOGRAPHIC);
+				if (!full)  // ortho proj
+				{	r.cam->setProjectionType(PT_ORTHOGRAPHIC);
 					r.cam->setOrthoWindow(tws, tws);
 				}
 				// r.cam->setFOVy( Degree(90) );

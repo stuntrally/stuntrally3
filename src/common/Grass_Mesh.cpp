@@ -105,7 +105,7 @@ void Grass::Create()
 
 					//  check if on road - uses roadDensity.png
 					const int xrd = (0.5 + 0.5 * xn) * r;  // 0..1
-					const int yrd = (0.5 - 0.5 * zn) * r;
+					const int yrd = (0.5 + 0.5 * zn) * r;
 					float cr = scn->imgRoad->getColourAt(  // slow
 						yrd, xrd, 0).r;
 					if (cr < 0.65f)  //par gui ..

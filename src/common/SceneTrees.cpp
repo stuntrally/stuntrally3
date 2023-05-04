@@ -173,7 +173,7 @@ void CScene::CreateTrees()
 				if (imgRoad && r > 0)  //  ----------------
 				{
 				int mx = (0.5*tws + pos.x)/tws*r,
-					my = (0.5*tws - pos.z)/tws*r;
+					my = (0.5*tws + pos.z)/tws*r;
 
 					int c = sc->trRdDist + pg.addRdist;
 					int d = c;
@@ -186,11 +186,11 @@ void CScene::CreateTrees()
 					for (jj = -d; jj <= d; ++jj)
 					for (ii = -d; ii <= d; ++ii)
 					{
-						float cr = imgRoad->getColourAt(
+						float cr = imgRoad->getColourAt(  // todo: slow!
 							std::max(0,std::min(r-1, my+ii)),
 							std::max(0,std::min(r-1, mx+jj)), 0).r;
 						
-						if (cr < 0.75f)  //par-
+						if (cr < 0.95f)  //par-
 						{
 							rr = abs(ii)+abs(jj);
 							//rr = sqrt(float(ii*ii+jj*jj));  // much slower
