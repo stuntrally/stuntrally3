@@ -145,5 +145,5 @@ const char SETcom::colFilDef[2][COL_FIL] =
 // ver diff rating  objects obstacles  fluids bumps  jumps loops pipes  banked frenzy  sum longn
 	// v  ! *   o c  w ~  J L P  b s  E l    * +
 	{{01, 0,0,  0,0, 0,0, 0,0,0, 0,0, 0,0,   0,0},  // min
-	 {27, 6,6,  4,4, 5,5, 4,5,4, 5,5, 25,24, 6,1}}; // max
+	 {30, 6,6,  4,4, 5,5, 4,5,4, 5,5, 25,24, 6,1}}; // max
 	///^ up in next ver, also in *default.cfg
