@@ -98,29 +98,33 @@ String CScene::getHmap(int n, bool bNew)
 
 void CScene::CreateTerrain(int n, bool upd, bool bNewHmap, bool terLoad)
 {
+	assert(n < sc->tds.size());
 	Ogre::Timer tm;
 	auto si = toStr(n+1);
+	auto& td = sc->tds[n];
 
+#ifndef SR_EDITOR  // ed all
+	if (td.iHorizon > app->pSet->horizons)
+		return;
+#endif
 
 	///  Load Heightmap data --------
 	Ogre::Timer ti;
 	if (terLoad || bNewHmap)
 	{
 		String fname = getHmap(n, bNewHmap);
-		bool ex = PATHS::FileExists(fname);
-		if (!ex)
+		bool exists = PATHS::FileExists(fname);
+		if (!exists)
 			LogO("Terrains error! No hmap file: "+fname);
 
-		assert(n < sc->tds.size());
-		auto& td = sc->tds[n];
-		int fsize = ex ? td.getFileSize(fname) : 512*512*4;  // anything const-
+		int fsize = exists ? td.getFileSize(fname) : 512*512*4;  // anything const-
 		int size = fsize / sizeof(float);
 
 		td.hfHeight.clear();
 		td.hfHeight.resize(size);  // flat 0
 
 		//  load f32 HMap +
-		if (ex)
+		if (exists)
 		{
 			std::ifstream fi;
 			fi.open(fname.c_str(), std::ios_base::binary);
@@ -180,8 +184,24 @@ void CScene::UpdBlendmap()
 //---------------------------------------------------------------------------------------------------------------
 void CScene::CreateBltTerrains()
 {
+	int iLastHoriz = 0;
 	for (const auto& td : sc->tds)
-	if (td.collis)
+		if (td.iHorizon > iLastHoriz)
+			iLastHoriz = td.iHorizon;
+		
+	//  can drive outside regular terrains 0
+	auto max_horiz = app->pSet->horizons;
+	bool drive_horiz =
+	#ifdef SR_EDITOR
+		false;
+	#else
+		app->pSet->game.drive_horiz;
+	#endif
+
+
+	for (const auto& td : sc->tds)
+	if (td.iHorizon <= max_horiz &&
+		(td.collis || td.iHorizon > 0 && drive_horiz))
 	{
 		btVector3 pos(td.posX, -td.posZ, 0.f);
 		btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
@@ -225,8 +245,13 @@ void CScene::CreateBltTerrains()
 		const float py[4] = { 0, 0,-1, 1};
 		const bool b[4] = {td.bL, td.bR, td.bF, td.bB};  // disable chks
 
+		//  last horiz all []
+		bool last = drive_horiz && td.iHorizon == iLastHoriz;
+		bool skip = drive_horiz && td.iHorizon == 0;  // regular ters
+
+		if (!skip || last)
 		for (int i=0; i < 4; ++i)
-		if (b[i])
+		if (b[i] || last)
 		{
 			btVector3 vpl(px[i], py[i], 0);
 			btCollisionShape* shp = new btStaticPlaneShape(vpl,0);

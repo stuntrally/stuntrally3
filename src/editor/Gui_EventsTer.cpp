@@ -208,7 +208,7 @@ int CGui::UpdTxtTerSize(float mul)
 	if (notd())  return 0;
 	int size = getHMapSizeTab() * mul;
 	float res = td().fTriangleSize * size;  // result size
-	svTerTriSize.setText(fToStr(res,0,3));
+	svTerTriSize.setText(fToStr(res*0.001f,2,4));
 	
 	valHmapMB->setCaption(toStr(size*size*4/1000000)+" MB");  // floats
 	return size;

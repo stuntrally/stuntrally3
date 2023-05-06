@@ -81,7 +81,7 @@ public:
 
 	//  geom detail
 	SlV(ViewDist);  SlV(LodBias);
-	SlV(TerDetail);  SV svRoadDist;
+	SlV(TerDetail);  SV svRoadDist, svHorizons;
 
 	//  🌳🪨🌿 veget
 	SV svTrees, svGrass, svTreesDist, svGrassDist;

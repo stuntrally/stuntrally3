@@ -422,7 +422,7 @@
 							<UserString key="tip" value="#{TipTerTriSize}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="32 108 168 22">
-							<Property key="Caption" value="#{TerrainSize} [#{UnitM}]:"/>
+							<Property key="Caption" value="#{TerrainSize} [#{UnitKm}]:"/>
 							<Property key="TextColour" value="0.6 1 0.8"/>
 							<UserString key="tip" value="#{TipTerSize}"/>
 						</Widget>
@@ -457,13 +457,13 @@
 
 						<Widget type="TextBox" skin="TextBox" position="32 80 120 24">
 							<Property key="Caption" value="#{Horizon}"/>
-							<Property key="TextColour" value="0.3 0.8 1.0"/>
+							<Property key="TextColour" value="0.3 0.7 1.0"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="160 80 60 24" name="TerHorizVal">
-							<Property key="TextColour" value="0.3 0.8 1.0"/>
+							<Property key="TextColour" value="0.3 0.7 1.0"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="228 80 240 16" name="TerHoriz">
-							<Property key="TextColour" value="0.3 0.8 1.0"/>
+							<Property key="TextColour" value="0.3 0.7 1.0"/>
 						</Widget>
 
 						<!-- borders -->

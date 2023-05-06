@@ -39,6 +39,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_detail.view_dist", view_distance);
 	Param(c,w, "graph_detail.lod_bias", lod_bias);
 	Param(c,w, "graph_detail.ter_detail", ter_detail);		Param(c,w, "graph_detail.road_dist", road_dist);
+	Param(c,w, "graph_detail.horizons", horizons);
 	
 	//  🌒 shadow
 	Param(c,w, "graph_shadow.dist", shadow_dist);			Param(c,w, "graph_shadow.size", shadow_size);
@@ -59,8 +60,8 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_reflect.mode", refl_mode);
 
 	//  🌊 water
-	// Param(c,w, "graph_reflect.water_reflect", water_reflect); Param(c,w, "graph_reflect.water_refract", water_refract);
-	// Param(c,w, "graph_reflect.water_rttsize", water_rttsize);
+	Param(c,w, "graph_reflect.water_reflect", water_reflect); Param(c,w, "graph_reflect.water_refract", water_refract);
+	Param(c,w, "graph_reflect.water_rttsize", water_rttsize);
 
 
 	//  📈 hud

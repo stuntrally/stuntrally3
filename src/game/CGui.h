@@ -355,7 +355,7 @@ public:
 
 
 	//  🔨 Game  setup  ----
-	Ck ckVegetCollis, ckCarCollis, ckRoadWCollis, ckDynamicObjs;
+	Ck ckVegetCollis, ckCarCollis, ckRoadWCollis, ckDynamicObjs, ckDriveOnHoriz;
 	SV svNumLaps;  SLV(RplNumViewports);  //-
 	SV svDamageDec;
 	SV svBmin,svBmax,svBpow,svBperKm,svBaddSec;

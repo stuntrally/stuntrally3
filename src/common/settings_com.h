@@ -50,7 +50,7 @@ public:
 	//  geom detail
 	float view_distance = 20000.f;
 	float lod_bias = 1.f, ter_detail = 1.f, road_dist = 2.f;
-	// int horizon;
+	int horizons = 3;
 
 	//  🌳🪨🌿 veget
 	float grass =1.f, trees_dist =1.f, grass_dist =1.f;  // trees in gui.
@@ -62,7 +62,7 @@ public:
 	bool car_lights =0, car_light_shadows =0;
 
 	//  🌊 water
-	// bool water_reflect, water_refract;  int water_rttsize;
+	bool water_reflect, water_refract;  int water_rttsize;
 
 	//  🔮 reflections
 	int refl_skip = 2, refl_faces = 2, refl_size = 0, refl_ibl = 32;

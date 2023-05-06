@@ -40,6 +40,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	sv= &svRoadDist;	sv->Init("RoadDist",	&pSet->road_dist,	0.f,4.f, 2.f, 2,5);  sv->DefaultF(1.6f);
 	sv= &svViewDist;	sv->Init("ViewDist",	&pSet->view_distance, 50.f,30000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
 																				SevC(ViewDist);  sv->DefaultF(8000.f);
+	sv= &svHorizons;	sv->Init("Horizons",	&pSet->horizons,	0,3);  sv->DefaultI(3);
 
 	//  🖼️ Textures filtering
 	CmbC(cmb, "TexFiltering", comboTexFilter);

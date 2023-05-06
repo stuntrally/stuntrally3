@@ -1329,7 +1329,27 @@
 					</Widget>
 
 					<Widget type="TabItem" skin="" position="2 24 342 272">
-						<Property key="Caption" value="#60B0F0#{Boost}"/>
+						<Property key="Caption" value="#D0D080#{Collision}"/>
+						<Widget type="Button" skin="CheckBox" position="24 30 324 24" name="VegetCollis">
+							<Property key="Caption" value="#{VegetCol}"/>
+							<Property key="TextColour" value="0.5 1.0 0.5"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="24 70 320 24" name="DynamicObjects">
+							<Property key="Caption" value="#{DynamicObjects}"/>
+							<Property key="TextColour" value="0.9 0.9 0.6"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="24 110 324 24" name="RoadWCollis">
+							<Property key="Caption" value="#{RoadWallFullCollis}"/>
+							<Property key="TextColour" value="0.5 0.6 0.7"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="24 150 324 24" name="DriveOnHorizons">
+							<Property key="Caption" value="#{DriveOnHorizons}"/>
+							<Property key="TextColour" value="0.4 0.7 1.0"/>
+						</Widget>
+					</Widget>
+
+					<Widget type="TabItem" skin="" position="2 24 342 272">
+						<Property key="Caption" value="#50A0E0#{Boost}"/>
 						<Widget type="ImageBox" skin="ImageBox" position="624 24 80 80">
 							<Property key="ImageCoord" value="512 0 128 128"/>
 							<Property key="Alpha" value="0.8"/>
@@ -1392,7 +1412,7 @@
 					</Widget>
 
 					<Widget type="TabItem" skin="" position="2 24 746 476">
-						<Property key="Caption" value="#C8D0D8#{Gearbox}"/>
+						<Property key="Caption" value="#D8E0E8#{Gearbox}"/>
 						<Widget type="ImageBox" skin="ImageBox" position="624 24 80 80">
 							<Property key="ImageCoord" value="128 512 128 128"/>
 							<Property key="Alpha" value="1.0"/>
@@ -1416,7 +1436,7 @@
 					</Widget>
 
 					<Widget type="TabItem" skin="" position="2 24 746 476" name="TabTrack">
-						<Property key="Caption" value="#80E0E0#{InputMapSteering}"/>
+						<Property key="Caption" value="#80F0F0#{InputMapSteering}"/>
 						<Widget type="ImageBox" skin="ImageBox" position="624 24 80 80">
 							<Property key="ImageCoord" value="128 384 128 128"/>
 							<Property key="Alpha" value="1.0"/>
@@ -1567,22 +1587,6 @@
 				<Widget type="Button" skin="CheckBox" position="24 308 344 25" name="chkStartOrderRev">
 					<Property key="Caption" value="#{ReverseStartOrder}"/>
 					<Property key="TextColour" value="0.6 0.76 0.9"/>
-				</Widget>
-
-				<Widget type="Button" skin="CheckBox" position="24 420 324 24" name="VegetCollis">
-					<Property key="Caption" value="#{VegetCol}"/>
-					<Property key="FontName" value="font.small"/>
-					<Property key="TextColour" value="0.6 0.75 0.9"/>
-				</Widget>
-				<Widget type="Button" skin="CheckBox" position="24 384 320 24" name="DynamicObjects">
-					<Property key="Caption" value="#{DynamicObjects}"/>
-					<Property key="FontName" value="font.small"/>
-					<Property key="TextColour" value="0.6 0.8 1.0"/>
-				</Widget>
-				<Widget type="Button" skin="CheckBox" position="24 456 324 24" name="RoadWCollis">
-					<Property key="Caption" value="#{RoadWallFullCollis}"/>
-					<Property key="FontName" value="font.small"/>
-					<Property key="TextColour" value="0.5 0.6 0.7"/>
 				</Widget>
 
 				<Widget type="Button" skin="Button" position="84 100 80 30" name="btnPlayers1">

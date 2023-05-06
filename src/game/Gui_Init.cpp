@@ -276,6 +276,7 @@ void CGui::InitGui()
 	ck= &ckCarCollis;		ck->Init("CarCollis",		&pSet->gui.collis_cars);
 	ck= &ckRoadWCollis;		ck->Init("RoadWCollis",		&pSet->gui.collis_roadw);
 	ck= &ckDynamicObjs;		ck->Init("DynamicObjects",	&pSet->gui.dyn_objects);
+	ck= &ckDriveOnHoriz;	ck->Init("DriveOnHorizons",	&pSet->gui.drive_horiz);
 
 	Cmb(cmb, "CmbBoost", comboBoost);	cmbBoost = cmb;
 		cmb->removeAllItems();

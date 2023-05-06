@@ -482,6 +482,7 @@
 	<Tag name="CarCollis">Cars collision</Tag>
 	<Tag name="RoadWallFullCollis">Road wall full collision</Tag>
 	<Tag name="DynamicObjects">Dynamic Objects</Tag>
+	<Tag name="DriveOnHorizons">Allow driving outside map, on horizons</Tag>
 
 
 	<!--  Game  Damage  -->
