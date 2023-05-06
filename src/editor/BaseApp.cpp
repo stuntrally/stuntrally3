@@ -139,8 +139,8 @@ void BaseApp::baseInitGui()
 
 	txCamPos = bckCamPos->createWidget<TextBox>("TextBox",
 		16,8, 600,80, Align::Default, "CamT");
-	txCamPos->setFontName("hud.fps");
-	txCamPos->setTextShadow(true);  txCamPos->setVisible(pSet->camPos);
+	txCamPos->setFontName("hud.fps");  txCamPos->setTextShadow(true);
+	bckCamPos->setVisible(pSet->camPos);
 
 	//  Input bar
 	bckInput = mGui->createWidget<ImageBox>("ImageBox",
@@ -150,6 +150,6 @@ void BaseApp::baseInitGui()
 	txInput = bckInput->createWidget<TextBox>("TextBox",
 		40,8, 630,60, Align::Default, "InpT");
 	txInput->setFontName("hud.text");
-	txInput->setFontHeight(40);
-	txInput->setTextShadow(true);  bckInput->setVisible(pSet->inputBar);
+	txInput->setFontHeight(40);  txInput->setTextShadow(true);
+	bckInput->setVisible(pSet->inputBar);
 }

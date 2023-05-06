@@ -7,6 +7,7 @@
 #include <filesystem>
 #include <Ogre.h>
 #include <MyGUI_TextBox.h>
+#include <SDL_keyboard.h>
 #ifndef _WIN32
 #include <dirent.h>
 #endif
@@ -190,30 +191,28 @@ void App::UpdWndTitle()
 	String s = String("SR Editor  track: ") + pSet->gui.track;
 	if (pSet->gui.track_user)  s += "  *user*";
 
-	//; SDL_SetWindowTitle(mSDLWindow, s.c_str());
+	SDL_SetWindowTitle(mSDLWindow, s.c_str());  // fixme?
 }
 
 
-//  key,mb info  ==================
+//  keys, mouse btn  input info bar  ====================================
 void App::UpdKeyBar(Real dt)
 {
-	/*
-	// TODO: This is definitely not bullet-proof.
 	const int Kmax = SDL_SCANCODE_SLEEP;  // last key
 	static float tkey[Kmax+1] = {0.f,};  // key delay time
 	int i;
-	static bool first=true;
+	static bool first = true;
 	if (first)
-	{	first=false;
-		for (i=Kmax; i > 0; --i)  tkey[i] = 0.f;
+	{	first = false;
+		for (i = Kmax; i > 0; --i)  tkey[i] = 0.f;
 	}
 	String ss = "   ";
 	//  pressed
-	for (i=Kmax; i > 0; --i)
-		if (mInputWrapper->isKeyDown(SDL_Scancode(i)))
-			tkey[i] = 0.2f;  // min time to display
+	for (i = Kmax; i > 0; --i)
+		if (IsKey(SDL_Scancode(i)))
+			tkey[i] = 0.2f;  // par  min time to display
 
-	//  modif
+	//  modifiers
 	const static int
 		lc = SDL_SCANCODE_LCTRL,  rc = SDL_SCANCODE_RCTRL,
 		la = SDL_SCANCODE_LALT,   ra = SDL_SCANCODE_RALT,
@@ -232,7 +231,7 @@ void App::UpdKeyBar(Real dt)
 	for (i=Kmax; i > 0; --i)
 	{
 		if (tkey[i] > 0.f)
-		{	tkey[i] -= dt;  //dec time
+		{	tkey[i] -= dt;  // dec time
 			if (i!=lc && i!=la && i!=ls && i!=rc && i!=ra && i!=rs)
 			{
 				String s = String(SDL_GetKeyName(SDL_GetKeyFromScancode(static_cast<SDL_Scancode>(i))));
@@ -248,5 +247,4 @@ void App::UpdKeyBar(Real dt)
 	if (mzd > 0)  {  ss += "#D0D8FFWheel up";  --mzd;  }
 	if (mzd < 0)  {  ss += "#D0D8FFWheel down";  ++mzd;  }
 	txInput->setCaption(ss);
-	*/
 }

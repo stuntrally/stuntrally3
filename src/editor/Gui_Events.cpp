@@ -418,7 +418,7 @@ void CGui::chkTrkReverse(Ck*)
 
 //  ⚙️ Settings  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-void CGui::chkCamPos(Ck*){     app->txCamPos->setVisible(pSet->camPos);  }
+void CGui::chkCamPos(Ck*){     app->bckCamPos->setVisible(pSet->camPos);  }
 void CGui::chkInputBar(Ck*){   app->bckInput->setVisible(pSet->inputBar);  }
 
 void CGui::chkFps(Ck*){        app->bckFps->setVisible(pSet->show_fps);
