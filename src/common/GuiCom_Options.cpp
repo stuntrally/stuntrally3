@@ -104,11 +104,11 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	sv->Init("ReflMode",	&pSet->refl_mode,   0,2);  SevC(ReflMode);  sv->DefaultI(1);*/
 
 	//  🌊 Water  // todo:
-	// ck= &ckWaterReflect; ck->Init("WaterReflection", &pSet->water_reflect);  CevC(Water);
-	// ck= &ckWaterRefract; ck->Init("WaterRefraction", &pSet->water_refract);  CevC(Water);
-	// sv= &svWaterSize;
-	// 	for (int i=0; i < NumTexSizes; ++i)  sv->strMap[i] = toStr(cTexSizes[i]);
-	// 					sv->Init("WaterSize",	&pSet->water_rttsize, 0,NumTexSizes-1;  sv->DefaultI(0);  SevC(WaterSize);
+	ck= &ckWaterReflect; ck->Init("WaterReflection", &pSet->water_reflect);  CevC(Water);
+	ck= &ckWaterRefract; ck->Init("WaterRefraction", &pSet->water_refract);  CevC(Water);
+	sv= &svWaterSize;
+		for (int i=0; i < NumTexSizes; ++i)  sv->strMap[i] = toStr(cTexSizes[i]);
+						sv->Init("WaterSize",	&pSet->water_rttsize, 0,NumTexSizes-1);  sv->DefaultI(0);  SevC(WaterSize);
 	// BtnC("ApplyShadersWater", btnShaders);
 
 

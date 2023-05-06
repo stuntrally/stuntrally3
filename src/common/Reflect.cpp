@@ -54,7 +54,6 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 		static_cast<const CompositorPassSceneDef *>( pass->getDefinition() );
 
 	// LogO("ws pass: "+passDef->mProfilingId);  //toStr(pass->getParentNode()->getId() ));
-	// mTerra->setSkirt
 
 	//  Ignore scene passes that belong to a shadow node.
 	if (passDef->mShadowNodeRecalculation == SHADOW_NODE_CASTER_PASS)
@@ -63,9 +62,9 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 	//  Ignore scene passes we haven't specifically tagged to receive reflections
 	if (passDef->mIdentifier != 25001)
 		return;
-
 	CompositorPassScene *passScene = static_cast<CompositorPassScene *>( pass );
 	Camera *camera = passScene->getCamera();
+	// camera->setLodBias(0.1f);  // how for refl?
 
 	//  The Aspect Ratio must match that of the camera we're reflecting.
 	mPlanarReflections->update( camera, camera->getAutoAspectRatio()
@@ -109,29 +108,29 @@ void FluidReflect::CreateReflect()
 		workspace->addListener( mWorkspaceListener );
 	}
 
-	uint32 si = 1024; //512;  // par
-	// mPlanarRefl->setMaxActiveActors( 1u, "PlanarReflectionsReflectiveWorkspace",
+	uint32 size = app->pSet->GetTexSize(app->pSet->water_reflect);
+	// mPlanarRefl->setMaxActiveActors( 1u, "PlanarReflections",
 	// 	true, si, si, false, PFG_RGBA8_UNORM_SRGB, useComputeMipmaps );  // no mipmaps
 	
 	// The rest of the reflections do
-	mPlanarRefl->setMaxActiveActors( 2u, "PlanarReflectionsReflectiveWorkspace",
-		true, si, si, true, PFG_RGBA8_UNORM_SRGB, useComputeMipmaps );
+	mPlanarRefl->setMaxActiveActors( 2u, "PlanarReflections",
+		true, size, size, true, PFG_RGBA8_UNORM_SRGB, useComputeMipmaps );
 	
-	const Vector2 mirrorSize( 4000.0f, 4000.0f );
+	const Vector2 mirrorSize( 40.0f, 40.0f );
 	//  Create the plane mesh
 	//  Note that we create the plane to look towards +Z; so that sceneNode->getOrientation
 	//  matches the orientation for the PlanarReflectionActor
 	v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
 		"PlaneMirror", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 		Plane( Vector3::UNIT_Z, 0.0f ),  // z|
-		mirrorSize.x, mirrorSize.y, 1, 1, true, 1, 1.0f,
-		1.0f, Vector3::UNIT_Y,  // z|
+		mirrorSize.x, mirrorSize.y, 100, 100, true, 1,
+		120.f, 120.f, Vector3::UNIT_Y,  // z|
 		v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 	sMesh = "PlaneMirror";
 	MeshPtr planeMesh = MeshManager::getSingleton().createByImportingV1(
 		sMesh, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 		// planeMeshV1.get(), true, true, true );
-		planeMeshV1.get(), false, false, false );
+		planeMeshV1.get(), false, false, true, false );
 
 
 	//  Setup mirror for Unlit
@@ -175,9 +174,10 @@ void FluidReflect::CreateReflect()
 	item = app->mSceneMgr->createItem( planeMesh, SCENE_DYNAMIC );
 	item->setDatablock( "WaterReflect" );
 	item->setCastShadows(false);
+	app->SetTexWrap(item, true);
 
 	nd = app->mSceneMgr->getRootSceneNode( SCENE_DYNAMIC )->createChildSceneNode( SCENE_DYNAMIC );
-	nd->setPosition( -0, -9.f, 0 );  // -13.5f
+	nd->setPosition( -0, -17.f, 0 );  // -13.5f
 	// nd->setPosition( -5, 2.5f, 0 );  // z|
 	// nd->setOrientation( Quaternion( Radian( Math::HALF_PI ), Vector3::UNIT_Y ) );  // z|
 	nd->setOrientation( Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_X ) );  // ?_

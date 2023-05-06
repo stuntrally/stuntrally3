@@ -156,7 +156,8 @@ abstract target cubemap_target
 
 		expose cubemap
 
-		visibility_mask		0x0000012D  // ..
+		visibility_mask		0x0000012D  // 1 rd 4 ter 8 vgt 32 sky 256 obj
+		// visibility_mask		0x0000016D  // + 64 grass
 
 		overlays			off
 		camera_cubemap_reorient true
@@ -343,7 +344,7 @@ compositor_node SR3_Render
 
 //  🪞 planar reflections  Water
 //------------------------------------------------------------------------------------
-compositor_node PlanarReflectionsReflectiveRenderingNode
+compositor_node PlanarReflectNode
 {
 	in 0 rt_renderwindow
 
@@ -365,8 +366,9 @@ compositor_node PlanarReflectionsReflectiveRenderingNode
 				stencil	dont_care
 			}
 
+			// visibility_mask  0xfffffffe
+			visibility_mask	 0x3FF  // no 1024 ed
 			overlays		 off
-			visibility_mask  0xfffffffe
 			//shadows  SR3_Shadows
 		}
 
@@ -379,13 +381,13 @@ compositor_node PlanarReflectionsReflectiveRenderingNode
 	}
 }
 
-workspace PlanarReflectionsReflectiveWorkspace
+workspace PlanarReflections
 {
-	connect_output PlanarReflectionsReflectiveRenderingNode 0
+	connect_output PlanarReflectNode 0
 }
 
 
-//  🌒 shadows  .. drop
+//  🌒 shadows  - for ed prv cam .. drop?
 //------------------------------------------------------------------------------------
 compositor_node_shadow SR3_Shadows
 {
