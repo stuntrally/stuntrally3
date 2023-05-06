@@ -29,7 +29,6 @@ public:
 protected:	
 	// bool mShowDialog =0;
 	// bool setup(), configure();
-	void updateStats();
 	
 	bool bFirstRenderFrame =1;
 	
@@ -90,7 +89,7 @@ protected:
 
 	//MyGUI::VectorWidgetPtr
 	std::vector<WP> vwGui;  // all widgets to destroy
-	Img imgCur =0, bckInput =0;
+	Img imgCur =0, bckInput =0, bckCamPos =0;
 	Txt txCamPos =0, txInput =0;
 
 
