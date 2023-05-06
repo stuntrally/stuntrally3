@@ -699,11 +699,12 @@
 							<Property key="TextColour" value="0.7 0.8 0.9"/>
 							<Property key="Caption" value="#{Wireframe} F10"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="368 126 356 24" name="CamPos">
+
+						<Widget type="Button" skin="CheckBox" position="368 158 356 24" name="CamPos">
 							<Property key="Caption" value="#{EdCamPos}"/>
 							<Property key="TextColour" value="0.55 0.6 0.65"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="368 158 356 24" name="InputBar">
+						<Widget type="Button" skin="CheckBox" position="368 190 356 24" name="InputBar">
 							<Property key="Caption" value="#{EdInputBar}"/>
 							<Property key="TextColour" value="0.65 0.7 0.75"/>
 						</Widget>

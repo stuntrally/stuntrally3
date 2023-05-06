@@ -41,12 +41,15 @@ void App::processMouse(double fDT)
 		vInp = Vector3(mx, my, 0)*sens;  mx = 0;  my = 0;
 		vNew += (vInp-vNew) * fSmooth;
 
-		if (mbMiddle){	mTrans.z += vInpC.y * 1.6f;  }  //zoom
-		if (mbRight){	mTrans.x += vInpC.x;  mTrans.y -= vInpC.y;  }  //pan
-		if (mbLeft){	mRotX -= vInpC.x;  mRotY -= vInpC.y;  }  //rot
+		if (mbMiddle){	mTrans.z += vInpC.y * 1.6f;  }  // zoom
+		if (mbRight){	mTrans.x += vInpC.x;  mTrans.y -= vInpC.y;  }  // pan
+		if (mbLeft){	mRotX -= vInpC.x;  mRotY -= vInpC.y;  }  // rot
 
 		Real cs = pSet->cam_speed;  Degree cr(pSet->cam_speed);
-		Real fMove = 100*cs;  //par speed
+		auto& tds = scn->sc->tds;
+		Real fMove = !tds.empty()
+			? tds[scn->terCur].fTerWorldSize * 0.15f * cs  // par dynamic
+			: 100*cs;  // gui par..
 		Degree fRot = 300*cr, fkRot = 160*cr;
 
 		Radian inYaw = rotMul * ivDT * (fRot* mRotX + fkRot* mRotKX);
@@ -327,7 +330,7 @@ void App::update( float dt )
 	}
 	#undef isKey
 
-	//  speed multiplers
+	//  speed multipliers
 	moveMul = 1;  rotMul = 1;
 	if(shift){  moveMul *= 0.2;  rotMul *= 0.4;  }  // 16 8, 4 3, 0.5 0.5
 	if(ctrl) {  moveMul *= 4;    rotMul *= 2.0;  }

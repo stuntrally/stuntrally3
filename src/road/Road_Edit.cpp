@@ -657,7 +657,7 @@ void SplineRoad::DelSel()
 ///  👆📍 Pick marker  // Mr Mick Parker
 //---------------------------------------------------------------------------------------------------------------
 void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,
-	bool bRay, bool bAddH, bool bHide)
+	bool bRay, bool bAddH, bool bHide, Real terSize)
 {
 	iSelPoint = -1;
 	//if (vMarkNodes.size() != getNumPoints())
@@ -706,8 +706,8 @@ void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,
 	bHitTer = false;
 	
 	///  🎯 manual ray cast  -----------
-	const Real minStep = 0.001f, maxDist = 9000.f;  // par?
-	Real dist = 0.f, step = 10.f;
+	const Real minStep = 0.001f, maxDist = terSize * 1.5f;  // par?
+	Real dist = 0.f, step = terSize * 0.001f;
 	bool ok = true;
 	while (dist < maxDist && step > minStep && ok)
 	{
