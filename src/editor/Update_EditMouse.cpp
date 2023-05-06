@@ -244,7 +244,7 @@ void App::MouseEmitters()
 ///  📦 edit Objects . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 void App::MouseObjects()
 {
-	const Real fMove(0.2f), fRot(20.f), fScale(0.02f);  //par speed
+	const Real fMove(0.2f), fRot(20.f), fScale(0.01f);  //par speed
 	bool upd = false, sel = !vObjSel.empty();
 
 	//  rotate/scale selected
@@ -311,8 +311,8 @@ void App::MouseObjects()
 
 			case EO_Scale:
 			{
-				float vm = (vNew.y - vNew.x) * d * moveMul;
-				float sc = 1.f - vm * fScale;
+				float vm = (vNew.y + vNew.x) * d * moveMul;
+				float sc = 1.f + vm * fScale;  // todo: is fps dependent
 		
 				if (sel)  // scale selected
 				{
