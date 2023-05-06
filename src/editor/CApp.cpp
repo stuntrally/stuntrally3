@@ -30,14 +30,14 @@ App::App()
 	// pSet = pSet1;
 	Axes::Init();
 	
-	mBrSize[0] = 16.f;	mBrSize[1] = 24.f;	mBrSize[2] = 16.f;	mBrSize[3] = 16.f;
-	mBrIntens[0] = 20.f;mBrIntens[1] = 20.f;mBrIntens[2] = 20.f;mBrIntens[3] = 20.f;
-	mBrPow[0] = 2.f;	mBrPow[1] = 2.f;	mBrPow[2] = 2.f;	mBrPow[3] = 2.f;
-	mBrFq[0] = 1.f;		mBrFq[1] = 1.f;		mBrFq[2] = 1.f;		mBrFq[3] = 1.f;
-	mBrNOf[0] = 0.f;	mBrNOf[1] = 0.f;	mBrNOf[2] = 0.f;	mBrNOf[3] = 0.f;
-	mBrOct[0] = 5;		mBrOct[1] = 5;		mBrOct[2] = 5;		mBrOct[3] = 5;
-	mBrShape[0] = BRS_Sinus;  mBrShape[1] = BRS_Sinus;
-	mBrShape[2] = BRS_Sinus;  mBrShape[3] = BRS_Sinus;
+	br[0].size = 16.f;   br[1].size = 24.f;   br[2].size = 16.f;   br[3].size = 16.f;
+	br[0].intens = 20.f; br[1].intens = 20.f; br[2].intens = 20.f; br[3].intens = 20.f;
+	br[0].power = 2.f;   br[1].power = 2.f;   br[2].power = 2.f;   br[3].power = 2.f;
+	br[0].freq = 1.f;    br[1].freq = 1.f;    br[2].freq = 1.f;    br[3].freq = 1.f;
+	br[0].nofs = 0.f;    br[1].nofs = 0.f;    br[2].nofs = 0.f;    br[3].nofs = 0.f;
+	br[0].octaves = 5;   br[1].octaves = 5;	  br[2].octaves = 5;   br[3].octaves = 5;
+	br[0].shape = BRS_Sinus;  br[1].shape = BRS_Sinus;
+	br[2].shape = BRS_Sinus;  br[3].shape = BRS_Sinus;
 }
 
 

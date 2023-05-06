@@ -68,6 +68,7 @@ public:
 
 	//  💫 Update
 	void update(float dt) override;
+	void UpdCamPos();
 	void UpdateKey(float dt);
 	void UpdateEnd(float dt);
 
@@ -136,7 +137,6 @@ public:
 	///<>  ⛰️ terrain edit, brush
 	enum EBrShape
 	{   BRS_Triangle=0, BRS_Sinus, BRS_Ngon, BRS_Noise, BRS_Noise2, BRS_ALL  };
-	int mBrShape[ED_ALL];  // EBrShape
 	const static Ogre::String csBrShape[BRS_ALL];
 
 	struct BrushSet  // brush preset ----
@@ -165,8 +165,11 @@ public:
 
 	//  params
 	float terSetH = 10.f,  mBrFilt = 2.f, mBrFiltOld = 1.f;
-	float mBrSize[ED_ALL],mBrIntens[ED_ALL], mBrPow[ED_ALL];
-	float mBrFq[ED_ALL],mBrNOf[ED_ALL];  int mBrOct[ED_ALL];
+	struct BrushParams
+	{
+		float size, intens, power, freq, nofs;
+		int octaves, shape;  // EBrShape
+	} br[ED_ALL];
 
 	//  brush deform
 	bool getEditRect(Ogre::Vector3& pos, Ogre::Rect& brushrect, Ogre::Rect& maprect, int size, int& cx, int& cy);

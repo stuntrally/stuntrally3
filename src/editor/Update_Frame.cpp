@@ -63,6 +63,28 @@ void App::processMouse(double fDT)
 	}
 }
 
+//  Cam pos etc
+//------------------------------------------------------------------------
+void App::UpdCamPos()
+{
+	if (!pSet->camPos || !txCamPos)  return;
+
+	const auto& pos = mCamera->getDerivedPosition();
+	auto dir = mCamera->getDerivedDirection();
+		
+	String s = TR("#{Camera}: ")+fToStr(pos.x,1,5)+" " + fToStr(pos.y,1,5) + " " + fToStr(pos.z,1,5);
+		//+ TR("\n#C0E0F0 #{Obj_Rot}: ")+fToStr(dir.x,2) + " "+fToStr(dir.y,2)+" "+fToStr(dir.z,2);
+
+	if (scn->road && scn->road->bHitTer)
+	{
+		const auto& hit = scn->road->posHit;
+		s += TR("\n#C0FFC0#{Terrain}: ")+fToStr(hit.x,1,5)+" " + fToStr(hit.y,1,5) + " " + fToStr(hit.z,1,5);
+		auto dist = pos.distance(hit);
+		s += TR("\n#D0FFD0#{Distance}: ")+fToStr(dist,1,5);
+	}
+	txCamPos->setCaption(s);
+}
+
 
 //---------------------------------------------------------------------------------------------------------------
 //  💫 frame events
@@ -106,7 +128,8 @@ void App::UpdateEnd(float dt)
 			 my = Real(mp.top) / mWindow->getHeight();
 		bool setpos = edMode >= ED_Road || !brLockPos,
 			hide = !(edMode == ED_Road && bEdit());
-		road->Pick(mCamera, mx, my,  setpos, edMode == ED_Road, hide);
+		road->Pick(mCamera, mx, my,  setpos, edMode == ED_Road, hide, 
+			scn->sc->tds[scn->terCur].fTerWorldSize);
 	}
 
 	EditMouse();  // edit
@@ -262,6 +285,7 @@ void App::update( float dt )
 	UpdateKey(dt);  // key edits etc
 	
 	UpdFpsText();
+	UpdCamPos();
 
 
 	scn->UpdSun(dt);  // ⛅

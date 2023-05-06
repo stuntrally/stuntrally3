@@ -29,13 +29,13 @@ void CGui::SldUpdBr()
 {
 	if (!app)  return;
 	auto c = app->curBr;
-	svBrSize.UpdF(&app->mBrSize[c]);
-	svBrForce.UpdF(&app->mBrIntens[c]);
-	svBrPower.UpdF(&app->mBrPow[c]);
-	svBrShape.UpdI(&app->mBrShape[c]);
-	svBrFreq.UpdF(&app->mBrFq[c]);
-	svBrOct.UpdI(&app->mBrOct[c]);
-	svBrOfs.UpdF(&app->mBrNOf[c]);
+	svBrSize.UpdF(&app->br[c].size);
+	svBrForce.UpdF(&app->br[c].intens);
+	svBrPower.UpdF(&app->br[c].power);
+	svBrShape.UpdI(&app->br[c].shape);
+	svBrFreq.UpdF(&app->br[c].freq);
+	svBrOct.UpdI(&app->br[c].octaves);
+	svBrOfs.UpdF(&app->br[c].nofs);
 }
 
 ///  ⛰️ Terrain

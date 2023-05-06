@@ -192,20 +192,20 @@ void App::KeyTxtTerrain(Real q)
 	}
 	brVal[0]->setCaption(toStr(scn->terCur+1) +" / "+ toStr(scn->ters.size()));
 
-	auto si = mBrSize[curBr], in  = mBrIntens[curBr], pw = mBrPow[curBr];
+	auto si = br[curBr].size, in  = br[curBr].intens, pw = br[curBr].power;
 	brVal[1]->setCaption( gcom->getClrVal( si / 150.f * 17.f) + fToStr(si,1,4));
 	brVal[2]->setCaption( gcom->getClrVal( in / 60.f * 17.f) + fToStr(in,1,4));
 	brVal[3]->setCaption( gcom->getClrVal( powf(pw, 2.f) *1.f + 4.f) + fToStr(pw,2,4));
-	brVal[4]->setCaption(TR("#{Brush_Shape"+csBrShape[mBrShape[curBr]]+"}"));
+	brVal[4]->setCaption(TR("#{Brush_Shape"+csBrShape[br[curBr].shape]+"}"));
 
-	bool brN = mBrShape[curBr] >= BRS_Noise;  int i;
+	bool brN = br[curBr].shape >= BRS_Noise;  int i;
 	for (i = 5; i <= 7; ++i)
 	{	brTxt[i]->setVisible(brN);  brVal[i]->setVisible(brN);  brKey[i]->setVisible(brN);	}
 
 	if (brN)
-	{	brVal[5]->setCaption(fToStr(mBrFq[curBr],2,4));
-		brVal[6]->setCaption(toStr(mBrOct[curBr]));
-		brVal[7]->setCaption(fToStr(mBrNOf[curBr],1,4));
+	{	brVal[5]->setCaption(fToStr(br[curBr].freq,2,4));
+		brVal[6]->setCaption(toStr(br[curBr].octaves));
+		brVal[7]->setCaption(fToStr(br[curBr].nofs,1,4));
 	}
 
 	bool edH = edMode != ED_Height;
@@ -233,28 +233,28 @@ void App::KeyTxtTerrain(Real q)
 	
 	//  edit  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 	if (mz != 0 && bEdit())
-	{	if (alt){			mBrPow[curBr]   *= 1.f - 0.4f*q*mz;  updBrush();  }
-		else if (!shift){	mBrSize[curBr]  *= 1.f - 0.4f*q*mz;  updBrush();  }
-		else				mBrIntens[curBr]*= 1.f - 0.4f*q*mz/0.05;
+	{	if (alt){			br[curBr].power  *= 1.f - 0.4f*q*mz;  updBrush();  }
+		else if (!shift){	br[curBr].size   *= 1.f - 0.4f*q*mz;  updBrush();  }
+		else				br[curBr].intens *= 1.f - 0.4f*q*mz/0.05;
 	}
-	if (isKey(MINUS)){   mBrSize[curBr]  *= 1.f - 0.04f*q;  updBrush();  }
-	if (isKey(EQUALS)){  mBrSize[curBr]  *= 1.f + 0.04f*q;  updBrush();  }
-	if (isKey(LEFTBRACKET))   mBrIntens[curBr]*= 1.f - 0.04f*q;
-	if (isKey(RIGHTBRACKET))  mBrIntens[curBr]*= 1.f + 0.04f*q;
+	if (isKey(MINUS)){   br[curBr].size  *= 1.f - 0.04f*q;  updBrush();  }
+	if (isKey(EQUALS)){  br[curBr].size  *= 1.f + 0.04f*q;  updBrush();  }
+	if (isKey(LEFTBRACKET))   br[curBr].intens  *= 1.f - 0.04f*q;
+	if (isKey(RIGHTBRACKET))  br[curBr].intens  *= 1.f + 0.04f*q;
 	if (isKey(SEMICOLON)  || (!ctrl && isKey(K)))
-					{	mBrPow[curBr]   *= 1.f - 0.04f*q;  updBrush();  }
+					{	br[curBr].power   *= 1.f - 0.04f*q;  updBrush();  }
 	if (isKey(APOSTROPHE) || (!ctrl && isKey(L)))
-					{	mBrPow[curBr]   *= 1.f + 0.04f*q;  updBrush();  }
+					{	br[curBr].power   *= 1.f + 0.04f*q;  updBrush();  }
 
-	if (isKey(O)){		mBrFq[curBr]    *= 1.f - 0.04f*q;  updBrush();  }
-	if (isKey(P)){		mBrFq[curBr]    *= 1.f + 0.04f*q;  updBrush();  }
-	if (isKey(9)){		mBrNOf[curBr]   -= 0.3f*q;		   updBrush();  }
-	if (isKey(0)){		mBrNOf[curBr]   += 0.3f*q;		   updBrush();  }
+	if (isKey(O)){		br[curBr].freq    *= 1.f - 0.04f*q;  updBrush();  }
+	if (isKey(P)){		br[curBr].freq    *= 1.f + 0.04f*q;  updBrush();  }
+	if (isKey(9)){		br[curBr].nofs   -= 0.3f*q;		   updBrush();  }
+	if (isKey(0)){		br[curBr].nofs   += 0.3f*q;		   updBrush();  }
 
 	if (isKey(1)){		mBrFilt         *= 1.f - 0.04f*q;  updBrush();  }
 	if (isKey(2)){		mBrFilt         *= 1.f + 0.04f*q;  updBrush();  }
 	
-	if (mBrIntens[curBr] < 0.1f)  mBrIntens[curBr] = 0.1;  // rest in updBrush
+	if (br[curBr].intens < 0.1f)  br[curBr].intens = 0.1;  // rest in updBrush
 }
 
 

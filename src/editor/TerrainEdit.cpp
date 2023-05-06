@@ -35,13 +35,13 @@ void CGui::btnBrushRandom2(WP)
 void App::SetBrushRandom(int n)
 {
 	float r = Math::UnitRandom();
-	mBrShape[curBr] = n ? (r > 0.5f ? BRS_Noise2 : BRS_Noise) :
+	br[curBr].shape = n ? (r > 0.5f ? BRS_Noise2 : BRS_Noise) :
 		(EBrShape)(Math::UnitRandom() * BRS_Noise);
-	mBrPow[curBr] = Math::RangeRandom(0.2, 6.0);
+	br[curBr].power = Math::RangeRandom(0.2, 6.0);
 	
-	mBrFq[curBr]  = pow(Math::RangeRandom(0.01, 1.0), 2.0);
-	mBrNOf[curBr] = Math::RangeRandom(-30.0, 30.0);
-	mBrOct[curBr] = Math::RangeRandom(1, 9);
+	br[curBr].freq  = pow(Math::RangeRandom(0.01, 1.0), 2.0);
+	br[curBr].nofs = Math::RangeRandom(-30.0, 30.0);
+	br[curBr].octaves = Math::RangeRandom(1, 9);
 	UpdBr();
 }
 void App::UpdBr()
@@ -60,8 +60,9 @@ void App::SetBrushPreset(int id)
 {
 	const BrushSet& st = brSets[id];  // copy params
 	if (!shift)  SetEdMode(st.edMode);  curBr = st.curBr;
-	mBrSize[curBr] = st.Size;  mBrIntens[curBr] = st.Intens;  mBrShape[curBr] = st.shape;
-	mBrPow[curBr] = st.Pow;  mBrFq[curBr] = st.Freq;  mBrNOf[curBr] = st.NOfs;  mBrOct[curBr] = st.Oct;
+	br[curBr].size = st.Size;  br[curBr].intens = st.Intens;  br[curBr].shape = st.shape;
+	br[curBr].power = st.Pow;  br[curBr].freq = st.Freq;
+	br[curBr].nofs = st.NOfs;  br[curBr].octaves = st.Oct;
 	if (st.Filter > 0.f)  mBrFilt = st.Filter;
 	if (st.HSet != -0.01f)  terSetH = st.HSet;
 	UpdBr();
@@ -102,10 +103,10 @@ void App::updateBrushPrv(bool first)
 	const float gp = 2.f;  // gamma srgb fix-
 
 	const float s = BrPrvSize * 0.5f, s1 = 1.f/s,
-		fP = mBrPow[curBr], fQ = mBrFq[curBr]*5.f, nof = mBrNOf[curBr];
-	int oct = mBrOct[curBr];	const float PiN = PI_d/oct;
+		fP = br[curBr].power, fQ = br[curBr].freq*5.f, nof = br[curBr].nofs;
+	int oct = br[curBr].octaves;  const float PiN = PI_d/oct;
 
-	switch (mBrShape[curBr])
+	switch (br[curBr].shape)
 	{
 	case BRS_Noise2:
 		for (size_t y = 0; y < BrPrvSize; ++y)
@@ -191,17 +192,17 @@ void App::updateBrushPrv(bool first)
 void App::updBrush()
 {
 	//  ranges
-	if (mBrSize[curBr] < 2)  mBrSize[curBr] = 2;
-	if (mBrSize[curBr] > BrushMaxSize)  mBrSize[curBr] = BrushMaxSize;
-	if (mBrFq[curBr] < 0.01)  mBrFq[curBr] = 0.01;
-	if (mBrPow[curBr] < 0.02)  mBrPow[curBr] = 0.02;
+	if (br[curBr].size < 2)  br[curBr].size = 2;
+	if (br[curBr].size > BrushMaxSize)  br[curBr].size = BrushMaxSize;
+	if (br[curBr].freq < 0.01)  br[curBr].freq = 0.01;
+	if (br[curBr].power < 0.02)  br[curBr].power = 0.02;
 
-	int size = (int)mBrSize[curBr], a = 0;
+	int size = (int)br[curBr].size, a = 0;
 	float s = size * 0.5f, s1 = 1.f/s,
-		fP = mBrPow[curBr], fQ = mBrFq[curBr]*5.f, nof = mBrNOf[curBr];
-	int oct = mBrOct[curBr];	const float PiN = PI_d/oct;
+		fP = br[curBr].power, fQ = br[curBr].freq*5.f, nof = br[curBr].nofs;
+	int oct = br[curBr].octaves;  const float PiN = PI_d/oct;
 
-	switch (mBrShape[curBr])
+	switch (br[curBr].shape)
 	{
 	case BRS_Noise2:
 		for (int y = 0; y < size; ++y) {  a = y * BrushMaxSize;
@@ -424,7 +425,7 @@ bool App::getEditRect(Vector3& pos, Rect& rcBrush, Rect& rcMap, int size,  int& 
 	int mapX = (pos.x + 0.5*tws)/tws*t, mapY = (pos.z + 0.5*tws)/tws*t;
 	mapX = std::max(0,std::min(t-1, mapX)), mapY = std::max(0,std::min(t-1, mapY));
 
-	int brS = (int)mBrSize[curBr];
+	int brS = (int)br[curBr].size;
 	float hBr = brS * 0.5f;
 	rcMap = Rect(mapX-hBr, mapY-hBr, mapX+hBr, mapY+hBr);
 	rcBrush = Rect(0,0, brS,brS);
@@ -480,7 +481,7 @@ void App::deform(Vector3 &pos, float dtime, float brMul)
 	
 	auto& fHmap = scn->ter->getHeightData();
 	
-	float its = mBrIntens[curBr] * dtime * brMul;
+	float its = br[curBr].intens * dtime * brMul;
 	int mapPos, brPos, jj = cy;
 	
 	for (int j = rcMap.top; j < rcMap.bottom; ++j,++jj)
@@ -512,7 +513,7 @@ void App::height(Vector3 &pos, float dtime, float brMul)
 	
 	auto& fHmap = scn->ter->getHeightData();
 		
-	float its = mBrIntens[curBr] * dtime * brMul;
+	float its = br[curBr].intens * dtime * brMul;
 	int mapPos, brPos, jj = cy;
 	
 	for (int j = rcMap.top; j < rcMap.bottom; ++j,++jj)
@@ -578,7 +579,7 @@ void App::smoothTer(Vector3 &pos, float avg, float dtime)
 	auto& fHmap = scn->ter->getHeightData();
 	float mRatio = 1.f, brushPos;
 	int mapPos;
-	float mFactor = mBrIntens[curBr] * dtime * 0.1f;
+	float mFactor = br[curBr].intens * dtime * 0.1f;
 
 	for (int j = rcMap.top; j < rcMap.bottom; ++j)
 	{
@@ -612,7 +613,7 @@ void App::filter(Vector3 &pos, float dtime, float brMul)
 	
 	auto& fHmap = scn->ter->getHeightData();
 	
-	float its = mBrIntens[curBr] * dtime * std::min(1.f,brMul);  //mul >1 errors
+	float its = br[curBr].intens * dtime * std::min(1.f,brMul);  //mul >1 errors
 	int mapPos, brPos, jj = cy,
 		ter = size, ter2 = ter*ter, ter1 = ter+1;
 

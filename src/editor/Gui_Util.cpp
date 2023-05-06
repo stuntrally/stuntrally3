@@ -142,7 +142,7 @@ void CGui::btnNewGame(WP)
 {
 	if (trkName)  trkName->setCaption(gcom->sListTrack);
 	pSet->gui.track = gcom->sListTrack;
-	pSet->gui.track_user = gcom->bListTrackU;  //UpdWndTitle();//? load
+	pSet->gui.track_user = gcom->bListTrackU;
 	app->LoadTrack();
 }
 

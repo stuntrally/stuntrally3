@@ -271,10 +271,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	if (edMode < ED_Road && !alt && edit/* && bEdit()*/)
 	switch (skey)
 	{
-		case key(K):    if (ctrl)  {  mBrShape[curBr] = (EBrShape)((mBrShape[curBr]-1 + BRS_ALL) % BRS_ALL);  updBrush();  }  break;
-		case key(L):    if (ctrl)  {  mBrShape[curBr] = (EBrShape)((mBrShape[curBr]+1) % BRS_ALL);            updBrush();  }  break;
-		case key(N): case key(COMMA):   mBrOct[curBr] = std::max(1, mBrOct[curBr]-1);  updBrush();  break;
-		case key(M): case key(PERIOD):  mBrOct[curBr] = std::min(9, mBrOct[curBr]+1);  updBrush();  break;
+		case key(K):    if (ctrl)  {  br[curBr].shape = (EBrShape)((br[curBr].shape-1 + BRS_ALL) % BRS_ALL);  updBrush();  }  break;
+		case key(L):    if (ctrl)  {  br[curBr].shape = (EBrShape)((br[curBr].shape+1) % BRS_ALL);            updBrush();  }  break;
+		case key(N): case key(COMMA):   br[curBr].octaves = std::max(1, br[curBr].octaves-1);  updBrush();  break;
+		case key(M): case key(PERIOD):  br[curBr].octaves = std::min(9, br[curBr].octaves+1);  updBrush();  break;
 
 		//  more ters  ------
 		case key(KP_ENTER):  case key(RETURN):
