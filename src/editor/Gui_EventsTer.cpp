@@ -479,7 +479,7 @@ void CGui::slTerGen(SV*)
 //  debug
 void CGui::chkDebugBlend(Ck*)
 {
-	// app->mFactory->setGlobalSetting("debug_blend", b2s(bDebugBlend));
+	//; app->mFactory->setGlobalSetting("debug_blend", b2s(bDebugBlend));
 	dbgLclr->setVisible(bDebugBlend);
 }
 

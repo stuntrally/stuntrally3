@@ -169,10 +169,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			}
 			UpdateTrack();  return;  // default full
 
-		case key(F9):  // blendmap
-			gui->ckDebugBlend.Invert();
-			bTerUpdBlend = true;
-			return;
+		// case key(F9):  //; blendmap
+		// 	gui->ckDebugBlend.Invert();
+		// 	bTerUpdBlend = true;
+		// 	return;
 
 
 		//  prev num tab (layers,grasses,models)

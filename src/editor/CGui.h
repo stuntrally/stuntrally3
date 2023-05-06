@@ -234,8 +234,8 @@ public:
 	///  🌳🪨🌿  Vegetation  ----------------------------------------
 	//  global params
 	SV svGrassDens, svTreesDens;
-	Ed edGrPage =0, edGrDist =0;
-	Ed edTrPage =0, edTrDist =0, edTrImpDist =0;
+	// Ed edGrPage =0, edGrDist =0;
+	// Ed edTrPage =0, edTrDist =0, edTrImpDist =0;
 	//  grass
 	Ed edGrSwayDistr =0, edGrSwayLen =0, edGrSwaySpd =0;
 	void editTrGr(Ed);
@@ -264,7 +264,7 @@ public:
 	SV svLTrDens;
 	SV svLTrRdDist, svLTrRdDistMax;
 	SV svLTrMinSc,  svLTrMaxSc;  void slLTrSc(SV*);
-	SV svLTrWindFx, svLTrWindFy;
+	// SV svLTrWindFx, svLTrWindFy;
 	SV svLTrMaxTerAng;
 	SV svLTrMinTerH, svLTrMaxTerH, svLTrFlDepth;
 
@@ -282,7 +282,7 @@ public:
 	SV svGrMinY, svGrMaxY;
 
 	void comboGrassMtr(CMB);
-	Cmb cmbGrassClr =0;  void comboGrassClr(CMB);
+	// Cmb cmbGrassClr =0;  void comboGrassClr(CMB);
 	Img imgGrass =0, imgGrClr =0;
 
 	///  grass channels  --------

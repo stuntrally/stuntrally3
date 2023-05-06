@@ -378,7 +378,7 @@ void CGui::InitGui()
 
 	ck= &ckTexNormAuto;	ck->Init("TexNormAuto",	&bTexNormAuto);
 	ck= &ckTerLayTripl;	ck->Init("TerLayTripl",	&b);   Cev(TerLayTripl);
-	ck= &ckDebugBlend;	ck->Init("DebugBlend",  &bDebugBlend);  Cev(DebugBlend);
+	//; ck= &ckDebugBlend;	ck->Init("DebugBlend",  &bDebugBlend);  Cev(DebugBlend);  // todo:
 	dbgLclr = fImg("dbgTerLclr");
 
 	sv= &svTerTriSize;	sv->Init("TerTriSize", &f, 0.4f, 20.f,  1.5f);  sv->DefaultF(1.0f);  Sev(TerTriSize);
@@ -438,10 +438,10 @@ void CGui::InitGui()
 	sv= &svGrassDens;	sv->Init("GrassDens",	&sc->densGrass, 0.f, 1.f, 2.f, 3,5);  sv->DefaultF(0.2f);
 	sv= &svTreesDens;	sv->Init("TreesDens",	&sc->densTrees, 0.f, 3.f, 2.f, 2,4);  sv->DefaultF(0.3f);
 
-	Ed(GrPage, editTrGr);  Ed(GrDist, editTrGr);
-	Ed(TrPage, editTrGr);  Ed(TrDist, editTrGr);  Ed(TrImpDist, editTrGr);
+	//? Ed(GrPage, editTrGr);  Ed(GrDist, editTrGr);
+	//- Ed(TrPage, editTrGr);  Ed(TrDist, editTrGr);  Ed(TrImpDist, editTrGr);
 	
-	sv= &svTrRdDist;	sv->Init("TrRdDist",	&sc->trRdDist,     0,6);   sv->DefaultI(1);
+	sv= &svTrRdDist;	sv->Init("TrRdDist",	&sc->trRdDist,     0,6);   sv->DefaultI(1);  /// todo: restore!
 	sv= &svGrDensSmooth;sv->Init("GrDensSmooth",&sc->grDensSmooth, 0,10);  sv->DefaultI(3);
 
 	//  veget models
@@ -458,8 +458,8 @@ void CGui::InitGui()
 	sv= &svLTrMinSc;	sv->Init("LTrMinSc",	 &f, 0.f,4.f, 3.f, 3,5);  sv->DefaultF(0.7f);  Sev(LTrSc);
 	sv= &svLTrMaxSc;	sv->Init("LTrMaxSc",	 &f, 0.f,4.f, 3.f, 3,5);  sv->DefaultF(1.2f);  Sev(LTrSc);
 	
-	sv= &svLTrWindFx;	sv->Init("LTrWindFx",	 &f, 0.f,12.f, 3.f, 3,5);  sv->DefaultF(0.5f);
-	sv= &svLTrWindFy;	sv->Init("LTrWindFy",	 &f, 0.f,0.4f, 3.f, 3,5);  sv->DefaultF(0.06f);
+	// sv= &svLTrWindFx;	sv->Init("LTrWindFx",	 &f, 0.f,12.f, 3.f, 3,5);  sv->DefaultF(0.5f);   /// todo: wind from presets.xml
+	// sv= &svLTrWindFy;	sv->Init("LTrWindFy",	 &f, 0.f,0.4f, 3.f, 3,5);  sv->DefaultF(0.06f);  /// and  global gui params
 	
 	sv= &svLTrMaxTerAng;sv->Init("LTrMaxTerAng", &f, 0.f,90.f, 2.f, 1,4);  sv->DefaultF(30.f);
 
@@ -478,7 +478,7 @@ void CGui::InitGui()
 	Ed(GrSwayDistr, editTrGr);  Ed(GrSwayLen, editTrGr);  Ed(GrSwaySpd, editTrGr);
 
 	imgGrass = fImg("ImgGrass");  imgGrClr = fImg("ImgGrClr");
-	Cmb(cmbGrassClr, "CmbGrClr", comboGrassClr);
+	//; Cmb(cmbGrassClr, "CmbGrClr", comboGrassClr);
 
 	//  grass channels
 	sv= &svGrChAngMin;	sv->Init("GrChMinA",	&f, 0.f,90.f, 1.f, 1,4);  sv->DefaultF(30.f);

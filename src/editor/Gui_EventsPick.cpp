@@ -294,8 +294,8 @@ void CGui::listPickVeg(Mli2 li, size_t pos)
 	if (pSet->pick_setpar && p)
 	{	l.minScale = p->minScale;  svLTrMinSc.Upd();
 		l.maxScale = p->maxScale;  svLTrMaxSc.Upd();
-		l.windFx = p->windFx;  svLTrWindFx.Upd();
-		l.windFy = p->windFy;  svLTrWindFy.Upd();
+		// l.windFx = p->windFx;  svLTrWindFx.Upd();
+		// l.windFy = p->windFy;  svLTrWindFy.Upd();
 		l.maxTerAng = p->maxTerAng;  svLTrMaxTerAng.Upd();
 		l.maxDepth = p->maxDepth;  svLTrFlDepth.Upd();
 		l.addRdist = p->addRdist;  svLTrRdDist.Upd();

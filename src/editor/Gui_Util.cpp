@@ -73,8 +73,8 @@ void CGui::SetGuiFromXmls()
 	//  🌳🪨🌿 Vegetation
 	//-----------------------------------------------
 	svGrassDens.Upd();  svTreesDens.Upd();
-	_Ed(TrPage, sc->trPage);  _Ed(TrDist, sc->trDist);
-	_Ed(GrPage, sc->grPage);  _Ed(GrDist, sc->grDist);  _Ed(TrImpDist, sc->trDistImp);
+	// _Ed(TrPage, sc->trPage);  _Ed(TrDist, sc->trDist);
+	// _Ed(GrPage, sc->grPage);  _Ed(GrDist, sc->grDist);  _Ed(TrImpDist, sc->trDistImp);
 	svTrRdDist.Upd();  svGrDensSmooth.Upd();
 
 	tabGrLayers(tabsGrLayers, idGrLay);

@@ -84,12 +84,12 @@ void CGui::InitGuiLists()
 	
 
 	//---------------------  🌿 Grass  ---------------------
-	PATHS::DirList(sData + "/grass", li);
+	/*PATHS::DirList(sData + "/grass", li);
 	for (auto q : li)
 	{
 		if (StringUtil::startsWith(q, "grClr", false))
 			cmbGrassClr->addItem(q);
-	}
+	}*/
 
 
 	//---------------------  📦 Objects  ---------------------

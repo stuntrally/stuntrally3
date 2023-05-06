@@ -163,22 +163,22 @@ void CGui::editTrGr(Ed ed)
 	String n = ed->getName();
 	SGrassLayer* gr = &sc->grLayersAll[idGrLay], *g0 = &sc->grLayersAll[0];
 
-	     if (n=="GrPage")  sc->grPage = r;   else if (n=="GrDist")  sc->grDist = r;
-	else if (n=="TrPage")  sc->trPage = r;   else if (n=="TrDist")  sc->trDist = r;
-	else if (n=="TrImpDist")  sc->trDistImp = r;
+	//      if (n=="GrPage")  sc->grPage = r;   else if (n=="GrDist")  sc->grDist = r;
+	// else if (n=="TrPage")  sc->trPage = r;   else if (n=="TrDist")  sc->trDist = r;
+	// else if (n=="TrImpDist")  sc->trDistImp = r;
 
-	else if (n=="GrSwayDistr")  g0->swayDistr = r;
+	     if (n=="GrSwayDistr")  g0->swayDistr = r;
 	else if (n=="GrSwayLen")  g0->swayLen = r;
 	else if (n=="GrSwaySpd")  g0->swaySpeed = r;
 }
 
-void CGui::comboGrassClr(Cmb cmb, size_t val)
+/*void CGui::comboGrassClr(Cmb cmb, size_t val)  //; restore?
 {
 	String s = cmb->getItemNameAt(val);
 	SGrassLayer* gr = &sc->grLayersAll[idGrLay];
 	gr->colorMap = s;
 	imgGrClr->setImageTexture(gr->colorMap);
-}
+}*/
 
 
 ///  🌿 Grass layers  ----------------------------------------------------------
@@ -205,7 +205,7 @@ void CGui::tabGrLayers(Tab wp, size_t id)
 	for (int i=0; i < liGrs->getItemCount(); ++i)  // upd pick
 		if (liGrs->getSubItemNameAt(1,i).substr(7) == gr->material)
 			liGrs->setIndexSelected(i);
-	_Cmb(cmbGrassClr, gr->colorMap);
+	// _Cmb(cmbGrassClr, gr->colorMap);
 
 	_Ed(GrSwayDistr, g0->swayDistr);
 	_Ed(GrSwayLen, g0->swayLen);
@@ -299,8 +299,8 @@ void CGui::SldUpd_PgL()
 	svLTrMinSc.UpdF(&lay.minScale);
 	svLTrMaxSc.UpdF(&lay.maxScale);
 
-	svLTrWindFx.UpdF(&lay.windFx);
-	svLTrWindFy.UpdF(&lay.windFy);
+	// svLTrWindFx.UpdF(&lay.windFx);
+	// svLTrWindFy.UpdF(&lay.windFy);
 
 	svLTrMaxTerAng.UpdF(&lay.maxTerAng);
 	svLTrMinTerH.UpdF(&lay.minTerH);
@@ -344,7 +344,7 @@ void CGui::updRoadsTxt()
 {
 	int all = scn->roads.size();
 	if (txRoadsCur)
-		txRoadsCur->setCaption(TR("#{RplCurrent}: " + toStr(scn->rdCur+1) +"/"+ toStr(all)));
+		txRoadsCur->setCaption(TR("#{RplCurrent}: " + toStr(scn->rdCur+1) +" / "+ toStr(all)));
 }
 
 void CGui::editTrkDescr(Ed ed)
