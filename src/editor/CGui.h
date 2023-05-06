@@ -138,7 +138,7 @@ public:
 
 	
 	///  ⛰️ Terrain  ----------------------------------------
-	Txt txTersCur =0;
+	Txt txTersCur =0, txTersCur2 =0;
 	void btnTersPrev(WP), btnTersNext(WP), updTersTxt();
 	void btnTersAdd(WP), btnTersDel(WP);
 

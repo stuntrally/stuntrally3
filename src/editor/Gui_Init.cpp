@@ -308,9 +308,10 @@ void CGui::InitGui()
 
 	///  ⛰️ Terrain
 	//------------------------------------------------------------------------
-	txTersCur = fTxt("TersCur");
-	Btn("TersPrev", btnTersPrev);  Btn("TersNext", btnTersNext);
-	Btn("TersAdd",  btnTersAdd);   Btn("TersDel",  btnTersDel);
+	txTersCur = fTxt("TersCur");  txTersCur2 = fTxt("TersCur2");
+	Btn("TersPrev",  btnTersPrev);  Btn("TersNext",  btnTersNext);
+	Btn("TersPrev2", btnTersPrev);  Btn("TersNext2", btnTersNext);
+	Btn("TersAdd",   btnTersAdd);   Btn("TersDel",   btnTersDel);
 
 	imgTexDiff = fImg("TerImgDiff");
 	Tab(tabsHmap, "TabHMapSize", tabHmap);  valHmapMB = fTxt("TerHmapMB");

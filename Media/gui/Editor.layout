@@ -1049,6 +1049,23 @@
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#80FF00#{Layers}"/>
 
+				<!--  < > Cur2  -->
+				<Widget type="TextBox" skin="TextBox" position="600 8 168 24" name="TersCur2">
+					<Property key="Caption" value="#{RplCurrent}: 1/1"/>
+					<Property key="TextColour" value="0.8 1 0.8"/>
+					<UserString key="tip" value="#{Terrain}: #{RplCurrent} / #{RplAll}"/>
+				</Widget>
+				<Widget type="Button" skin="Button" position="500 4 36 24" name="TersPrev2">
+					<Property key="Colour" value="0.6 1.0 0.6"/>
+					<Property key="TextColour" value="0.7 1.0 0.7"/>
+					<Property key="Caption" value="&lt;"/>
+				</Widget>
+				<Widget type="Button" skin="Button" position="540 4 36 24" name="TersNext2">
+					<Property key="Colour" value="0.6 1.0 0.6"/>
+					<Property key="TextColour" value="0.7 1.0 0.7"/>
+					<Property key="Caption" value="&gt;"/>
+				</Widget>
+
 				<Widget type="Button" skin="Button" position="574 164 124 36" name="UpdateLayers">
 					<Property key="Caption" value="#{Update}"/>
 					<Property key="Colour" value="0.5 1.0 0.2"/>

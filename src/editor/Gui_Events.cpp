@@ -86,12 +86,15 @@ void CGui::btnTersNext(WP)
 	scn->TerNext(1);
 	SetGuiTerFromXml();
 }
+
 void CGui::updTersTxt()
 {
 	int all = scn->ters.size();
-	if (txTersCur)
-		txTersCur->setCaption(TR("#{RplCurrent}: " + toStr(scn->terCur+1) +" / "+ toStr(all)));
+	auto s = TR("#{RplCurrent}: " + toStr(scn->terCur+1) +" / "+ toStr(all));
+	if (txTersCur)  txTersCur->setCaption(s);
+	if (txTersCur2)  txTersCur2->setCaption(s);
 }
+
 
 //  ➕ ter add  ---------------
 void CGui::btnTersAdd(WP)
