@@ -74,14 +74,17 @@ public:
 	float GetGPUmem();
 
 
-	//  ⛓️ Utils  wireframe  ----
+	//  ⛓️ Utils  ----------------
+	//  wireframe
 	bool bWireframe = 0;
 	void SetWireframe();
 	void SetWireframe(Ogre::HlmsTypes type, bool wire);
-	//  tex wrap  ----
+	//  tex wrap
 	void SetTexWrap(Ogre::HlmsTypes type, Ogre::String name, bool wrap = true);
 	void SetTexWrap(Ogre::Item* it, bool wrap = true);
 	void InitTexFilters(Ogre::HlmsSamplerblock* sb, bool wrap = true);
+	//  select
+	void UpdSelectGlow(Ogre::Renderable *rend, bool selected);
 
 	//  unload tex, gpu mem  ----
 	template <typename T, size_t MaxNumTextures>

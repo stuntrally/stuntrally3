@@ -925,10 +925,12 @@
 			@insertpiece( applyRefractions )
 
 
-			// property( selected_glow )
-			// property( grass && !hlms_shadowcaster )
-			//	finalColour.xyz += float3(0.2, 0.6, 1.0) * (_h(0.7) + _h(0.3) * sin(passBuf.globalTime.x * _h(0.3)) );
-			// end
+			//**  ed Selected Glow  **
+			@property( selected_glow && !hlms_shadowcaster )
+				finalColour.xyz += float3(0.2, 0.5, 0.8)
+					* (_h(0.5) + _h(0.2) * sin(passBuf.globalTime.x * _h(3.5)) );
+			@end
+
 
 			@insertpiece( applyFog )
 
@@ -940,7 +942,7 @@
 		@property( !hlms_prepass )
 			@property( hlms_normal || hlms_qtangent )
 
-				//  gamma
+				//**  gamma  --
 				// finalColour.xyz = pow(finalColour, midf3_c(1.1f, 1.1f, 1.1f));
 
 				@property( !hw_gamma_write )

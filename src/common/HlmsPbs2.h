@@ -38,6 +38,11 @@ public:
 	
 	const static size_t selected_glow = 123;
 
+	void CalculateHashFor( Ogre::Renderable *renderable, Ogre::uint32 &outHash, Ogre::uint32 &outCasterHash )
+	{
+        calculateHashFor( renderable, outHash, outCasterHash );
+	}
+
 	void calculateHashForPreCreate(
 		Ogre::Renderable *renderable, Ogre::PiecesMap *inOutPieces ) override;
 

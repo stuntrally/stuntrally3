@@ -266,7 +266,7 @@
 			midf3 worldNorm = mul( inputNormal, toMidf3x3( worldMat ) ).xyz;
 		@end
 
-		//**  grass wind
+		//**  Grass Wind  **
 		@property( grass && !hlms_shadowcaster )
 			// worldPos.xz += (_h(1.0) - inVs_uv0.y) * (
 			// 	_h(0.2) * sin(passBuf.globalTime.x * _h(1.2)));

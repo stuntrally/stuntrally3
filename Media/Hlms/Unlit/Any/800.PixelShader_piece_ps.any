@@ -138,7 +138,7 @@
 //  ED RTT  ------------
 
 
-	//  gamma
+	//**  gamma  --
 	// diffuseCol.xyz = pow(diffuseCol.xyz, midf3_c(1.1f, 1.1f, 1.1f));
 
 	@insertpiece( custom_ps_preLights )

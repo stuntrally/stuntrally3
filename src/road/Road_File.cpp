@@ -2,6 +2,7 @@
 #include "Def_Str.h"
 #include "Road.h"
 #include "Cam.h"
+#include "App.h"
 #ifndef SR_EDITOR
 	#include "game.h"
 #endif
@@ -98,6 +99,7 @@ void SplineRoad::UpdLodVis(float fBias, bool bFull)
 			d = std::min(d, pl.getDistance( rs.lpos[p] ));
 		
 		//  set 1 item/mesh visible
+		// todo:  drop .. use grid mesh with lods
 		for (int i=0; i < LODs; ++i)
 		{
 			bool vis;
@@ -110,15 +112,13 @@ void SplineRoad::UpdLodVis(float fBias, bool bFull)
 			/*if (bMerge)  vis = rs.mrgLod == i;  // vis mrg test-
 			else  vis = i == 3;/**/  // check lod 0
 			
-			/*#ifdef SR_EDITOR
-			if (vis)  //;  road mark selected segments, vSel, SELECTED_GLOW, isSelected in main.shader
+			#ifdef SR_EDITOR
+			if (vis)  // todo: not each frame..
 			{
-				if (rs.road[i].ent)
-					rs.road[i].ent->getSubEntity(0)->setCustomParameter(1, Vector4(bSel ? 1 : 0, 0,0,0));
-				if (rs.blend[i].ent)
-					rs.blend[i].ent->getSubEntity(0)->setCustomParameter(1, Vector4(bSel ? 1 : 0, 0,0,0));
+				auto* rend = rs.road[i].it->getSubItem(0);
+				pApp->UpdSelectGlow(rend, bSel);
 			}
-			#endif*/
+			#endif
 			
 			if (rs.road[i].it)   rs.road[i].it->setVisible(vis);
 			if (rs.road[i].it2)  rs.road[i].it2->setVisible(vis);

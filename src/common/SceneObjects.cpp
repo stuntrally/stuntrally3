@@ -387,8 +387,9 @@ void App::UpdObjSel()
 	int objs = scn->sc->objects.size();
 	for (int i=0; i < objs; ++i)
 	{
-		bool bSel = vObjSel.find(i) != vObjSel.end();  //; todo: ..?
-		scn->sc->objects[i].it->getSubItem(0)->setCustomParameter(123, Vector4(bSel ? 1 : 0, 0,0,0));
+		bool bSel = vObjSel.find(i) != vObjSel.end();
+		auto* rend = scn->sc->objects[i].it->getSubItem(0);
+		UpdSelectGlow(rend, bSel);
 	}
 }
 

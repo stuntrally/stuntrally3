@@ -395,7 +395,7 @@
 	@property( !hlms_render_depth_only )
 		@property( !hlms_prepass )
 
-			//  gamma
+			//**  gamma  --
 			// finalColour.xyz = pow(finalColour, midf3_c(1.1f, 1.1f, 1.1f));
 
 			@property( !hw_gamma_write )

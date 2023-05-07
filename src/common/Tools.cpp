@@ -237,7 +237,7 @@ void CGui::ToolSceneXml()
 				if (l.maxScale > 4.f)
 					LogO("All: " + trk + "  scale > 4  model  "   + s + "  val " + fToStr(l.maxScale,2,4));
 				
-				//  rescale for pagedgeom
+				//  rescale ..
 				/**if (s.substr(0,3)=="fir")
 				{
 					lay.minScale *= 10.f;  lay.maxScale *= 10.f;

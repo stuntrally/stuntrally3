@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "AppGui.h"
 #include "settings.h"
+#include "HlmsPbs2.h"
 
 #include <OgreCommon.h>
 #include <OgreRoot.h>
@@ -93,6 +94,22 @@ void AppGui::InitTexFilters(HlmsSamplerblock* sb, bool wrap)
 
 	auto w = wrap ? TAM_WRAP : TAM_CLAMP;
 	sb->mU = w;  sb->mV = w;  sb->mW = w;
+}
+
+void AppGui::UpdSelectGlow(Ogre::Renderable *rend, bool selected)
+{
+	rend->setCustomParameter(HlmsPbs2::selected_glow, Vector4(selected ? 1 : 0, 0,0,0));
+
+	HlmsDatablock *datablock = rend->getDatablock();
+	Hlms *hlms = datablock->getCreator();
+	if( hlms->getType() == HLMS_PBS )
+	{
+		assert( dynamic_cast<MyHlmsPbs*>( hlms ) );
+		HlmsPbs2 *myHlmsPbs = static_cast<HlmsPbs2*>( hlms );
+		uint32 hash, casterHash;
+		myHlmsPbs->CalculateHashFor( rend, hash, casterHash );
+		rend->_setHlmsHashes( hash, casterHash );
+	}
 }
 
 

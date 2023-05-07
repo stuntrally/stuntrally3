@@ -55,13 +55,13 @@ void HlmsPbs2::calculateHashForPreCreate(
 	// if (mtr.substr(0,4) == "road")
 	// 	setProperty( "road", 1 );
 
-    //  todo: road segs sel
-	/*const auto &paramMap = rnd->getCustomParameters();
+#ifdef SR_EDITOR
+    //  selected glow  for ed road segs, objects
+	const auto &paramMap = rnd->getCustomParameters();
 	auto itor = paramMap.find( selected_glow );
 	if( itor != paramMap.end() )
-	{
 		setProperty( "selected_glow", (int)itor->second.x );
-	}*/
+#endif
 }
 
 void HlmsPbs2::calculateHashForPreCaster(
