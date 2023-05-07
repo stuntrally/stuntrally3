@@ -266,10 +266,12 @@ void App::UpdMiniSize()
 		r.hr->begin();
 		auto s = full ? 2.f : pSet->size_minimap;
 		Real x = 1.f - s / asp, y = -1.f + s;
-		r.hr->position(x,  -1.f, 0.f);  r.hr->texUV(0.f, 1.f);
-		r.hr->position(1.f,-1.f, 0.f);  r.hr->texUV(1.f, 1.f);
-		r.hr->position(x,     y, 0.f);  r.hr->texUV(0.f, 0.f);
-		r.hr->position(1.f,   y, 0.f);  r.hr->texUV(1.f, 0.f);
+		Real x0 = i==RT_RoadDens ? 1.f : 0.f,
+			 x1 = i==RT_RoadDens ? 0.f : 1.f;
+		r.hr->position(x,  -1.f, 0.f);  r.hr->texUV(x0, 1.f);
+		r.hr->position(1.f,-1.f, 0.f);  r.hr->texUV(x1, 1.f);
+		r.hr->position(x,     y, 0.f);  r.hr->texUV(x0, 0.f);
+		r.hr->position(1.f,   y, 0.f);  r.hr->texUV(x1, 0.f);
 		r.hr->end();
 	}
 

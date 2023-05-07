@@ -23,9 +23,11 @@ compositor_node Rtt_RoadDens
 				depth	store
 				stencil	store
 			}
-			visibility_mask 0x400  // RV_EdRoadDens  1024
+			//  todo: depth only?  add RV_Objects but black,  add smooth outline? ..
+			visibility_mask 0x00504  // RV_EdRoadDens  1024, + RV_Objects
+			// visibility_mask 0x400  // RV_EdRoadDens  1024
 			
-			rq_first  70  // road
+			rq_first  1  // road, objects
 			rq_last	  72
 
 			overlays	off
@@ -88,9 +90,9 @@ compositor_node Rtt_Terrain
 				depth	store
 				stencil	store
 			}
-			visibility_mask 4  // RV_Terrain ..
+			visibility_mask 0x00104  // RV_Terrain & Fluids, + RV_Objects
 			
-			rq_first  11  // terrain
+			rq_first  1  // terrain, objects
 			rq_last	  16
 
 			overlays	off
