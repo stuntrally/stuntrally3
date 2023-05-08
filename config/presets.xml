@@ -197,23 +197,26 @@ common:  sc - "short scenery name" (name color)
 <t sc="Stn"  t="stones_brown_d"     n="stones_brown_n"     s="9.44"  r="1" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.41 0.41 0.38 0.7"  aa="0"  ab="22" />
 
 <t sc="Wet"  t="---- Winter ----"   r="0" />      <!-- 🌨 -->
-<t sc="Wnt"  t="snow1_d"            n="snow1_n"            s="10.66" r="1" su="SnowMedium"     ro="0.4" me="0.3" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="15" />
-<t sc="Wnt"  t="snow2_d"            n="snow2_n"            s="8.48"  r="1" su="SnowMedium"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.4" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
-<t sc="Wnt"  t="snow2ice_d"         n="snow2_n"            s="14.93" r="1" su="SnowMedium"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.4" ds="0.6" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
-<t sc="Wnt"  t="snow_bumpy_d"       n="snow_bumpy_n"       s="8.97"  r="2" su="SnowDeep"       ro="0.4" me="0.3" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
+<t sc="Wnt"  t="snow1_d"            n="snow1_n"            s="10.66" r="1" su="SnowMedium"     ro="0.0" me="0.8" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="15" />
+<t sc="Wnt"  t="snow2_d"            n="snow2_n"            s="8.48"  r="1" su="SnowMedium"     ro="0.0" me="0.8" re="0"  tp="0"  du="0.4" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
+<t sc="Wnt"  t="snow2ice_d"         n="snow2_n"            s="14.93" r="1" su="SnowMedium"     ro="0.0" me="0.8" re="0"  tp="0"  du="0.4" ds="0.6" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
+<t sc="Wnt"  t="snow_bumpy_d"       n="snow_bumpy_n"       s="8.97"  r="2" su="SnowDeep"       ro="0.1" me="0.8" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
 
-<t sc="Wet"  t="snow_grass2_d"      n="snow_grass2_n"      s="10.58" r="2" su="SnowWet"        ro="0.4" me="0.3" re="0"  tp="0"  du="0.1" ds="0.8" md="0.7" tr="0.25 0.40 0.25 0.6"  aa="0"  ab="20" />
-<t sc="Wet"  t="snow_grass3_d"      n="snow_grass3_n"      s="8.08"  r="3" su="SnowWet"        ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
-<t sc="Wet"  t="snow_grass_d"       n="snow_grass_n"       s="9.50"  r="4" su="SnowWet"        ro="0.4" me="0.3" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="20" />
-<t sc="Wnt"  t="snow_mntn2_d"       n="snow_mntn2_n"       s="21.00" r="3" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="1.0" tr="0.20 0.20 0.00 1.0"  aa="59" ab="90" />
-<t sc="Wnt"  t="snow_mntn_d"        n="snow_mntn_n"        s="51.00" r="2" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="1.0" tr="0.20 0.20 0.00 1.0"  aa="21" ab="90" />
-<t sc="Wnt"  t="snow_mud_d"         n="snow_mud_n"         s="9.50"  r="3" su="SnowWet"        ro="0.4" me="0.3" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="20" />
-<t sc="Wnt"  t="snow_rough_d"       n="snow_rough_n"       s="12.14" r="2" su="SnowDeep"       ro="0.4" me="0.3" re="0"  tp="0"  du="0.4" ds="0.6" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="11" ab="90" />
+<t sc="Wet"  t="snow_grass2_d"      n="snow_grass2_n"      s="10.58" r="2" su="SnowWet"        ro="0.1" me="0.8" re="0"  tp="0"  du="0.1" ds="0.8" md="0.7" tr="0.25 0.40 0.25 0.6"  aa="0"  ab="20" />
+<t sc="Wet"  t="snow_grass3_d"      n="snow_grass3_n"      s="8.08"  r="3" su="SnowWet"        ro="0.1" me="0.8" re="0"  tp="0"  du="0.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
+<t sc="Wet"  t="snow_grass_d"       n="snow_grass_n"       s="9.50"  r="4" su="SnowWet"        ro="0.1" me="0.8" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="20" />
+<t sc="Wnt"  t="snow_mntn2_d"       n="snow_mntn2_n"       s="21.00" r="3" su="Rocks"          ro="0.0" me="0.8" re="0"  tp="0"  du="0.0" ds="0.2" md="1.0" tr="0.20 0.20 0.00 1.0"  aa="59" ab="90" />
+<t sc="Wnt"  t="snow_mntn_d"        n="snow_mntn_n"        s="51.00" r="2" su="Rocks"          ro="0.0" me="0.8" re="0"  tp="1"  du="0.0" ds="0.2" md="1.0" tr="0.20 0.20 0.00 1.0"  aa="21" ab="90" />
+<t sc="Wnt"  t="snow_mud_d"         n="snow_mud_n"         s="9.50"  r="3" su="SnowWet"        ro="0.3" me="0.8" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="20" />
+<t sc="Wnt"  t="snow_rough_d"       n="snow_rough_n"       s="12.14" r="2" su="SnowDeep"       ro="0.3" me="0.8" re="0"  tp="0"  du="0.4" ds="0.6" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="11" ab="90" />
 
 <t sc="Spc"  t="---- Space floor ------"  r="0" />  <!-- 🌌 -->
 <t sc="Spc"  t="space_x_d"          n="space_x_n"          s="12.0"  r="1" su="Metal"          ro="0.2" me="0.6" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
 <t sc="Spc"  t="space_diam_d"       n="space_diam_n"       s="12.0"  r="1" su="Metal"          ro="0.0" me="0.7" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Spc"  t="space_g_concrete_d" n="space_gray_n"       s="12.0"  r="1" su="Asphalt"        ro="0.8" me="0.1" re="0"  tp="0"  du="0.0" ds="0.0" md="0.0" tr="0.06 0.06 0.06 0.7"  aa="0"  ab="22" />
 <t sc="Spc"  t="space_gray_d"       n="space_gray_n"       s="12.0"  r="2" su="Metal"          ro="0.4" me="0.6" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+
+<t sc="Spc"  t="space_m_concrete_d" n="space_metal_n"      s="12.0"  r="2" su="Asphalt"        ro="0.9" me="0.1" re="0"  tp="0"  du="0.0" ds="0.0" md="0.0" tr="0.06 0.06 0.06 0.7"  aa="0"  ab="22" />
 <t sc="Spc"  t="space_metal_d"      n="space_metal_n"      s="12.0"  r="2" su="Metal"          ro="0.3" me="0.9" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
 <t sc="Spc"  t="space_dots_d"       n="space_dots_n"       s="12.0"  r="1" su="Metal"          ro="0.1" me="0.8" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
 <t sc="Spc"  t="space_octagons_d"   n="space_octagons_n"   s="12.0"  r="1" su="Metal"          ro="0.3" me="0.6" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />

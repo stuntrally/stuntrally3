@@ -548,8 +548,10 @@ hlms roadDesert_ter pbs : road_terrain
 {
 	diffuse_map  roadDesert.jpg
 	normal_map   roadDesert_n.jpg
-	diffuse  0.95 0.87 0.72
-	specular 0.16 0.14 0.12
+	diffuse  1.05 0.97 0.82
+	specular 0.16 0.14 1.12
+	fresnel 0.01
+	fresnel_coeff 0.01 0.01 0.01
 }
 
 hlms roadDesertOrn pbs : road

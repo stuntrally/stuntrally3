@@ -116,7 +116,7 @@ void FluidReflect::CreateReflect()
 	mPlanarRefl->setMaxActiveActors( 2u, "PlanarReflections",
 		true, size, size, true, PFG_RGBA8_UNORM_SRGB, useComputeMipmaps );
 	
-	const Vector2 mirrorSize( 40.0f, 40.0f );
+	const Vector2 mirrorSize( 4000.0f, 4000.0f );
 	//  Create the plane mesh
 	//  Note that we create the plane to look towards +Z; so that sceneNode->getOrientation
 	//  matches the orientation for the PlanarReflectionActor
