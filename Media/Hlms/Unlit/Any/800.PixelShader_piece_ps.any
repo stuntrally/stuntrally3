@@ -104,8 +104,7 @@
 
 //  ED RTT road  ------------
 	@property( ed_RoadDens )
-		// diffuseCol = midf4_c(1.0 - diffuseCol.w, 0.0, 0.0, 1.0);  //-?
-		diffuseCol = midf4_c(diffuseCol.x, 0.0, 0.0, 1.0);
+		diffuseCol = midf4_c(1.0 - diffuseCol.w, 0.0, 0.0, 1.0);
 	@end
 	
 	@property( ed_RoadPreview )
