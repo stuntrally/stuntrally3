@@ -50,23 +50,6 @@ hlms pipe_glass pbs
 	use_alpha_from_textures off  //?
 
 	receives_shadows false
-
-    // specular_alpha true
-    // env_alpha 0 0 0 0
-
-    // pass  // todo: glass mat
-	// {
-	// 	cull_mode clockwise
-	// 	scene_blend $scene_blend
-	// 	transparent_sorting force
-	// }
-	// pass
-	// {
-	// 	cull_mode anticlockwise
-	// 	scene_blend $scene_blend
-	// 	alpha_rejection $alpha_rejection
-	// 	transparent_sorting force
-	// }
 }
 
 
@@ -309,12 +292,9 @@ hlms pipe_wall_base pbs //: pipe_base
 	depth_bias 3
 	cull_mode none
 	two_sided true
-	// envMap ReflectionCube
-	// env_map true
-	// refl_amount 0.1
 
-	diffuse  0.4 0.46 0.5
-	specular 0.25 0.267 0.28 //1 //x4
+	// diffuse  0.4 0.46 0.5
+	// specular 0.25 0.267 0.28 //1 //x4
 	
 	workflow metallic
 	fresnel_coeff 0.1 0.1 0.1
@@ -331,8 +311,8 @@ hlms pipe_wall pbs : pipe_wall_base  // default
 //  wall
 hlms wall_base pbs //: pipe_wall_base
 {
-	diffuse  0.6 0.66 0.7
-	specular 0.24 0.267 0.28 //4
+	// diffuse  0.6 0.66 0.7
+	// specular 0.24 0.267 0.28 //4
 	cull_mode clockwise
 
 	fresnel_coeff 0.01
@@ -465,7 +445,6 @@ hlms road_col pbs : column  // default
 	specular 0.25 0.25 0.25
 	diffuse_map  concrete03.png
 	normal_map   brass_patina_n.png
-	// bump_scale 4
 }
 
 hlms road_col_Dark pbs : column
@@ -482,7 +461,6 @@ hlms road_col_Blue pbs : column
 	specular 0.2 0.35 0.5
 	diffuse_map  brass_patina.jpg
 	normal_map   normal_2.png
-	// bump_scale 2
 }
 
 hlms road_col_Winter pbs : wall_base
@@ -491,7 +469,6 @@ hlms road_col_Winter pbs : wall_base
 	specular 0.43 0.42 0.41
 	diffuse_map  concrete03.png
 	normal_map   concrete_norm.jpg
-	// bump_scale 2.0
 }
 
 hlms road_col_Red pbs : wall_base
@@ -500,7 +477,6 @@ hlms road_col_Red pbs : wall_base
 	specular 0.30 0.30 0.29
 	diffuse_map  concrete03.png
 	normal_map   concrete_norm.jpg
-	// bump_scale 2.0
 }
 
 hlms road_col_Desert pbs : wall_base
@@ -509,7 +485,6 @@ hlms road_col_Desert pbs : wall_base
 	specular 0.30 0.30 0.29
 	diffuse_map  concrete1w.jpg
 	normal_map   normal_1.png
-	// bump_scale 2.0
 }
 
 
@@ -520,7 +495,6 @@ hlms road_wall_crystal pbs : wall_base
 	specular 0.21 0.21 0.61
 	diffuse_map  crystal_wall.jpg
 	normal_map   normal_1.png
-	// bump_scale 1.5
 }
 
 hlms pipe_wall_crystal pbs : pipe_wall_base
@@ -529,7 +503,6 @@ hlms pipe_wall_crystal pbs : pipe_wall_base
 	specular 0.21 0.21 0.61
 	diffuse_map  crystal_wall.jpg
 	normal_map   normal_1.png
-	// bump_scale 1.5
 }
 
 hlms road_col_crystal pbs
@@ -538,7 +511,6 @@ hlms road_col_crystal pbs
 	specular 0.21 0.21 0.61
 	diffuse_map  crystal_wall.jpg
 	normal_map   normal_1.png
-	// bump_scale 1.2
 }
 
 
@@ -549,7 +521,6 @@ hlms road_wall_Alien pbs : wall_base
 	specular 0.18 0.21 0.14
 	diffuse_map  alien_wall.jpg
 	normal_map   normal_1.png
-	// bump_scale 2.0
 }
 
 hlms pipe_wall_Alien pbs : pipe_wall_base
@@ -558,7 +529,6 @@ hlms pipe_wall_Alien pbs : pipe_wall_base
 	specular 0.18 0.21 0.14
 	diffuse_map  alien_wall.jpg
 	normal_map   normal_1.png
-	// bump_scale 2.0
 }
 
 hlms road_col_Alien pbs : column
