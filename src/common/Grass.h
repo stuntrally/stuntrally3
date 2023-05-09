@@ -47,9 +47,9 @@ private:
 	void CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName,
 		const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
 		const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,
-		const std::vector<Ogre::uint16>& idx);
+		const std::vector<Ogre::uint32>& idx);
 
-	std::vector<Ogre::uint16> idx;  // mesh indices
+	std::vector<Ogre::uint32> idx;  // mesh indices
 
 	//  add triangle, with index check
 	void addTri(int f1, int f2, int f3, int i);

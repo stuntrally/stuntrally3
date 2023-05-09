@@ -56,8 +56,9 @@ void Grass::Create()
 	// sc->grPage;  GrassPage(sc->grDist * pSet->grass_dist);  // global, not or per track ?
 	//gds.reserve(100);
 	const int r = scn->imgRoadSize;  //-1?
-	//  page size  100  from ter size
+	//  page size  from ter size
 	const Real pws = max(100.f, min(500.f, tws / 5.f));
+	// const Real pws = 100.f;  // test
 	LogO("Grass page: "+toStr(pws));
 	const Real hps = pws / 2.f;
 	const Real pws2 = pws * pws;
@@ -86,7 +87,7 @@ void Grass::Create()
 				std::vector<Ogre::Vector3> pos, norm;
 				std::vector<Ogre::Vector2> tcs;
 				std::vector<Ogre::Vector4> clr; //-
-				std::vector<Ogre::uint16> idx;
+				std::vector<Ogre::uint32> idx;
 				++id;  ++pg;
 				
 				//  page y pos
@@ -95,7 +96,12 @@ void Grass::Create()
 
 				//  density  par
 				const int nn = gr->dens * fGrass * 2.0f * pws2;
-				int ix = 0;
+				uint32 ix = 0;
+
+				const size_t ps = nn * 8, is = nn * 6;
+				pos.reserve(ps);  norm.reserve(ps);  tcs.reserve(ps);
+				idx.reserve(is);
+
 				for (int n = 0; n < nn; ++n)
 				{
 					const Real xl = Math::RangeRandom(-hps, hps);  // local pos
@@ -105,6 +111,15 @@ void Grass::Create()
 					if (xn <= -mrg || zn <= -mrg ||
 						xn >=  mrg || zn >=  mrg)
 						continue;  // outside ter
+
+					//  ter ang
+					Real at = terrain->getAngle(xw, zw, 1.f);
+					if (at < ch->angMin - ch->angSm/2.f || at > ch->angMax + ch->angSm/2.f)
+						continue;  // todo smooth ..
+					//  ter h
+					Real h = terrain->getHeight(xw, zw);  // /2 par..
+					if (h < ch->hMin - ch->hSm/2.f || h > ch->hMax + ch->hSm)  // linRange-
+						continue;
 
 					//  check if on road - uses roadDensity.png
 					const int xrd = (0.5 + 0.5 * xn) * r;  // 0..1
@@ -117,15 +132,6 @@ void Grass::Create()
 						continue;
 					// if (cr < Math::UnitRandom())  // todo: smooth..
 					// 	continue;
-
-					//  ter h
-					Real h = terrain->getHeight(xw, zw);  // /2 par..
-					if (h < ch->hMin - ch->hSm/2.f || h > ch->hMax + ch->hSm)  // linRange-
-						continue;
-					//  ang
-					Real at = terrain->getAngle(xw, zw, 1.f);
-					if (at < ch->angMin - ch->angSm/2.f || at > ch->angMax + ch->angSm/2.f)
-						continue;  // todo smooth ..
 
 
 					//  add new  grass x
@@ -159,6 +165,7 @@ void Grass::Create()
 						pos.push_back(p);  norm.push_back(n);
 						tcs.push_back(uv);  //clr.push_back(c);
 					}
+					//  todo: no idx, generate in geom/verter shader?!
 					idx.push_back(ix+1);  idx.push_back(ix+3);  idx.push_back(ix+0);  // |\ |
 					idx.push_back(ix+3);  idx.push_back(ix+2);  idx.push_back(ix+0);  // | \|
 					ix += 4;
@@ -198,7 +205,7 @@ void Grass::Create()
 void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName,
 	const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
 	const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,
-	const std::vector<Ogre::uint16>& idx)
+	const std::vector<Ogre::uint32>& idx)
 {
 	size_t i, si = pos.size();
 	if (si == 0)
@@ -278,11 +285,11 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	IndexBufferPacked *indexBuffer = 0;
 
 	uint idxCnt = idx.size();
-	if (idxCnt >= 65530)
-		LogO("Grass!  Index out of 16bit! "+toStr(idxCnt));
+	// if (idxCnt >= 65530)
+	// 	LogO("Grass!  Index out of 16bit! "+toStr(idxCnt));
 
-	uint idxSize = sizeof( uint16 ) * idxCnt;
-	uint16 *indices = reinterpret_cast<uint16 *>(
+	uint idxSize = sizeof( uint32 ) * idxCnt;
+	uint32 *indices = reinterpret_cast<uint32 *>(
 		OGRE_MALLOC_SIMD( idxSize, MEMCATEGORY_GEOMETRY ) );
 	
 	// for (uint i=0; i < idxCnt; ++i)
@@ -292,7 +299,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	try
 	{
 		indexBuffer = vaoManager->createIndexBuffer(
-			IndexBufferPacked::IT_16BIT, idxCnt, BT_IMMUTABLE, indices, true );
+			IndexBufferPacked::IT_32BIT, idxCnt, BT_IMMUTABLE, indices, true );
 	}
 	catch( Exception &e )
 	{

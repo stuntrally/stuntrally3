@@ -150,6 +150,7 @@ void CScene::CreateTrees()
 
 			//  num trees  ----------------------------------------------------------------
 			int cnt = fTrees * 6000 * pg.dens;
+			
 			for (int i = 0; i < cnt; ++i)
 			{
 				#if 0  ///  test shapes, new objects
@@ -165,6 +166,7 @@ void CScene::CreateTrees()
 				pos0 = pos;  // store original place
 				bool add = true;
 
+
 				//  offset mesh  pos, rotY, scl
 				const float yr = Degree(yaw).valueRadians();
 				const float cyr = cos(yr), syr = sin(yr);
@@ -172,7 +174,30 @@ void CScene::CreateTrees()
 					ofs.x * cyr - ofs.y * syr,  // ofs x,y for pos x,z
 					ofs.x * syr + ofs.y * cyr);
 				pos.x += vo.x * scl;  pos.z += vo.y * scl;
+
+
+				//  check ter angle  ------------
+				float ang = ter0->getAngle(pos.x, pos.z, td.fTriangleSize);
+				if (ang > pg.maxTerAng)
+					add = false;
+
+				if (!add)  continue;  //
+
+				//  check ter height  ------------
+				bool in = ter0->getHeightAt(pos);
+				// LogO(fToStr(pos.y));
+				if (!in)  add = false;  // outside
 				
+				if (pos.y < pg.minTerH || pos.y > pg.maxTerH)
+					add = false;
+				
+				if (!add)  continue;  //
+				
+				//  check if in fluids  ------------
+				float fa = sc->GetDepthInFluids(pos);
+				if (fa > pg.maxDepth)
+					add = false;
+
 
 				//  check if on road - uses roadDensity.png
 				if (imgRoad && r > 0)  //  ----------------
@@ -212,29 +237,6 @@ void CScene::CreateTrees()
 						add = false;
 				}
 				if (!add)  continue;  //
-
-
-				//  check ter angle  ------------
-				float ang = ter0->getAngle(pos.x, pos.z, td.fTriangleSize);
-				if (ang > pg.maxTerAng)
-					add = false;
-
-				if (!add)  continue;  //
-
-				//  check ter height  ------------
-				bool in = ter0->getHeightAt(pos);
-				// LogO(fToStr(pos.y));
-				if (!in)  add = false;  // outside
-				
-				if (pos.y < pg.minTerH || pos.y > pg.maxTerH)
-					add = false;
-				
-				if (!add)  continue;  //
-				
-				//  check if in fluids  ------------
-				float fa = sc->GetDepthInFluids(pos);
-				if (fa > pg.maxDepth)
-					add = false;
 
 				//  check if outside of terrain?
 				// if (pos.x < 

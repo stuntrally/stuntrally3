@@ -61,7 +61,7 @@ void AppGui::UpdFpsText(float dt)
 
 	String txt;  bool h = fps >= 100.f;
 	txt += cvsF( fps,  59.f, 30.f, h ? 0 : 1, h ? 3 : 4) + "  ";
-	txt += cvsF( tris, 6.f, 12.f, 2,4) + "m ";  //txt += "v " + toStr( rm.mVertexCount/1000 ) + "  ";
+	txt += cvsF( tris, 5.f, 10.f, 2,4) + "m ";  //txt += "v " + toStr( rm.mVertexCount/1000 ) + "  ";
 	txt += cvsI( draw, 150, 1200, 3) + "\n";
 
 	txt += "#A0C0A0 i ";
@@ -70,7 +70,7 @@ void AppGui::UpdFpsText(float dt)
 
 	txt += "#B0B0B0G " + cvsI( gui, 8, 41, 2);
 	txt += "#9090F0 w " + cvsI( ws, 8, 16, 2) + " ";
-	txt += cvsF( mem,  500.f, 1300.f, 0,4) + "M\n";
+	txt += cvsF( mem,  600.f, 1700.f, 0,4) + "M\n";
 
 	//  test colors
 	/*for (int i = 15; i < 60; i+=5)

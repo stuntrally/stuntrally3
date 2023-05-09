@@ -257,6 +257,8 @@ void SplineRoad::BuildSeg(
 				if (onTer1)  //  onTerrain
 				{
 					vP.y = yTer + g_Height * ((w==0 || w==iw) ? 0.15f : 1.f);
+						// * (seg % 2 == 0 ? 1.f : 0.5f);  // a bit better crossings? test on Hole
+						// * ((seg % 3) * 0.3f);
 					vN = scn ? TerUtil::GetNormalAt(scn->ters[0],  // 1st ter-
 						vP.x, vP.z, DL.fLenDim*0.5f /*0.5f*/) : Vector3::UNIT_Y;
 				}
@@ -727,8 +729,8 @@ void SplineRoad::createSeg_Meshes(
 		if (it2)
 			it2->setRenderQueueGroup(que);
 
-		if (IsTrail())
-			it->setVisibilityFlags(RV_Hud);
+		// if (IsTrail())
+		// 	it->setVisibilityFlags(RV_Hud);
 
 		if (bCastShadow && !DS.onTer && !IsRiver() && !IsTrail())
 			it->setCastShadows(true);
@@ -792,7 +794,7 @@ void SplineRoad::createSeg_Collision(
 		bco->setUserPointer((void*)111);  // mark road
 	#else
 	if (IsRiver())
-	{	FluidBox& fb = pGame->app->scn->sc->fluids[0];  /// todo: .. depth in river how
+	{	FluidBox& fb = pGame->app->scn->sc->fluids[0];  /// todo: .. depth buffer, in rivers
 		bco->setUserPointer(new ShapeData(ST_Fluid, 0, &fb));  ///~~
 	}
 		pGame->collision.world->addCollisionObject(bco);
