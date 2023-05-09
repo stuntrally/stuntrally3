@@ -92,8 +92,8 @@ compositor_node Rtt_Terrain
 			}
 			visibility_mask 0x00104  // RV_Terrain & Fluids, + RV_Objects
 			
-			rq_first  1  // terrain, objects
-			rq_last	  16
+			rq_first  1    // terrain, objects
+			rq_last	  76   // RQG_Fluid too
 
 			overlays	off
 		}
