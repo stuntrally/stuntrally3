@@ -169,10 +169,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			}
 			UpdateTrack();  return;  // default full
 
-		// case key(F9):  //; blendmap
-		// 	gui->ckDebugBlend.Invert();
-		// 	bTerUpdBlend = true;
-		// 	return;
+		case key(F9):  //; blendmap
+			gui->ckDebugBlend.Invert();
+			bTerUpdBlend = true;
+			return;
 
 
 		//  prev num tab (layers,grasses,models)
@@ -235,19 +235,25 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			gui->ckWireframe.Invert();  return;
 
 
-		//  Show Stats  ctrl-I
-		case key(I):
-   			if (ctrl) {  gui->ckInputBar.Invert();  return;  }
-			break;
-
 		//  Top view  alt-Z
 		case key(Z):
 			if (alt)  {  gui->toggleTopView();  return;  }
 			break;
 
+
+		//  Input bar  ctrl-I
+		case key(I):
+   			if (ctrl) {  gui->ckInputBar.Invert();  return;  }
+			break;
+
+		//  Cam pos  ctrl-C
+		case key(C):
+   			if (ctrl) {  gui->ckCamPos.Invert();  return;  }
+			break;
+
 		//  load next track  F6
 		case key(F6):
-			if (pSet->check_load)
+			// if (pSet->check_load)
 			{	gui->iLoadNext = shift ? -1 : 1;  return;  }
 			break;
 		default:  break;

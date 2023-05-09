@@ -1298,7 +1298,7 @@
 	<Tag name="TrackAutoLoad">Auto Load track</Tag>
 	<Tag name="AutoUpdateBlendmap">Auto update blendmap (slow for big size brushes)</Tag>
 	<!--  Editor  Settings extras  -->
-	<Tag name="EdCamPos">Camera position</Tag>
+	<Tag name="EdCamPos">Camera position bar  Ctrl-C</Tag>
 	<Tag name="EdInputBar">Input bar  Ctrl-I</Tag>
 	<Tag name="AllowSaveOrigTrk">Allow saving original tracks</Tag>
 	
