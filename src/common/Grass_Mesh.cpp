@@ -63,6 +63,10 @@ void Grass::Create()
 	const Real pws2 = pws * pws;
 
 	int id = 0, all = 0, mtr = 0;
+	TextureBox tb;
+	if (scn->imgRoad)
+		tb = scn->imgRoad->getData(0);
+
 	//  Grass layers
 	const SGrassLayer* g0 = &sc->grLayersAll[0];
 	for (int i=0; i < sc->ciNumGrLay; ++i)
@@ -88,7 +92,6 @@ void Grass::Create()
 				//  page y pos
 				const Real xp = xx + hps, zp = yy + hps;  // world pos
 				const Real yp = terrain->getHeight(xp, zp);
-				//? TextureBox tb = scn->imgRoad->getData(0);
 
 				//  density  par
 				const int nn = gr->dens * fGrass * 2.0f * pws2;
@@ -106,8 +109,9 @@ void Grass::Create()
 					//  check if on road - uses roadDensity.png
 					const int xrd = (0.5 + 0.5 * xn) * r;  // 0..1
 					const int yrd = (0.5 + 0.5 * zn) * r;
-					float cr = scn->imgRoad->getColourAt(  // slow
-						yrd, xrd, 0).r;
+					const float cr = tb.getColourAt(
+						yrd, xrd, 0, Ogre::PFG_RGBA8_UNORM_SRGB ).r;
+
 					if (cr < 0.65f)  //par gui ..
 					// if (cr < 0.05f)  //par
 						continue;

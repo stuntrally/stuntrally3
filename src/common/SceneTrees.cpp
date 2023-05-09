@@ -28,6 +28,7 @@
 #include <Ogre.h>
 #include <OgreItem.h>
 #include <OgreImage2.h>
+#include <OgrePixelFormatGpu.h>
 
 #include "Terra.h"
 #include <OgreCommon.h>
@@ -104,6 +105,10 @@ void CScene::CreateTrees()
 		//  set random seed  // add seed in scene.xml and in editor gui?
 		MTRand rnd((MTRand::uint32)1213);
 		#define getTerPos()		(rnd.rand()-0.5) * td.fTerWorldSize
+
+		TextureBox tb;
+		if (imgRoad)
+			tb = imgRoad->getData(0);
 
 		//  Tree Layers
 		for (size_t l=0; l < sc->pgLayers.size(); ++l)
@@ -186,11 +191,14 @@ void CScene::CreateTrees()
 					for (jj = -d; jj <= d; ++jj)
 					for (ii = -d; ii <= d; ++ii)
 					{
-						float cr = imgRoad->getColourAt(  // todo: slow!
-							std::max(0,std::min(r-1, my+ii)),
-							std::max(0,std::min(r-1, mx+jj)), 0).r;
+						const int
+							xx = std::max(0,std::min(r-1, my+ii)),
+							yy = std::max(0,std::min(r-1, mx+jj));
+
+						const float cr = tb.getColourAt(
+							xx, yy, 0, Ogre::PFG_RGBA8_UNORM_SRGB ).r;
 						
-						if (cr < 0.95f)  //par-
+						if (cr < 0.75f)  //par-
 						{
 							rr = abs(ii)+abs(jj);
 							//rr = sqrt(float(ii*ii+jj*jj));  // much slower
