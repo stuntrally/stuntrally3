@@ -25,7 +25,7 @@ void App::CreateBox(SceneNode*& nd, Item*& it, String sMat, String sMesh, int x)
 	it->setCastShadows(false);
 	if (!sMat.empty())
 		it->setDatablockOrMaterialName(sMat);
-	it->setRenderQueueGroup(RQG_CarGhost);  // after road
+	it->setRenderQueueGroup(RQG_Ghost);  // after road
 	
 	nd->setPosition(Vector3(x,0,0));
 	nd->attachObject(it);

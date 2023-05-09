@@ -6,7 +6,7 @@
 
 //  Render Queue Groups used  //search for setRenderQueueGroup
 //------------------------------------------------------------------------
-/*	By default, movables will be assigned the following render queue ID:\n
+/*	Default, movables queue ID:
 	Decal            0
 	Light            0-5
 	Item             10
@@ -14,8 +14,8 @@
 	v1::Entity       110
 	v1::Rectangle2D  110
 	ParticleSystem   110
-	.. more unlisted
-	By default, the render queues have the following mode set: \n
+	..
+	Default, queues mode:
 	0-99     FAST
 	100-199  V1_FAST
 	200-224  FAST
@@ -44,7 +44,7 @@ const Ogre::uint8
 	RQG_CarParticles = RQ_GlassV1 +3,   // v1 particles after trails
 
 	RQG_Weather      = RQ_GlassV1 +5,   // v1 particles rain etc
-	RQG_CarGhost     = RQ_GlassV2 +7,   // meh-
+	RQG_Ghost        = RQ_GlassV2 +7,   // markers, debug
 
 	RQG_Hud1         = RQ_OVERLAY +1,
 	RQG_Hud2         = RQ_OVERLAY +2,
@@ -55,11 +55,11 @@ const Ogre::uint8
 //------------------------------------------------------------------------
 const Ogre::uint32
 	RV_Road         = 1,   // road only, for road textures
-	RV_Hud          = 2,   // hud and markers
-	RV_Terrain      = 4,   // terrain and fluids, for terrain texture
-	RV_Vegetation   = 8,   // vegetation, paged geom
-	RV_VegetGrass   = 64,  // grass, paged geom
-	RV_Objects      = 256, // all objects (static meshes and props)
+	RV_Hud          = 2,   // hud  and markers
+	RV_Terrain      = 4,   // terrain  and  fluids  for ed terrain.jpg texture
+	RV_Vegetation   = 8,   // vegetation
+	RV_VegetGrass   = 64,  // grass
+	RV_Objects      = 256, // all objects  (static meshes, buildings and dynamic props)
 	RV_Sky          = 32,  // sky, editor only
   
 	RV_Car          = 128, // car,interior, tires  in game, (hide in reflection render)
@@ -68,7 +68,7 @@ const Ogre::uint32
 
 	//  vis masks
 	RV_MaskReflect  = RV_Sky + RV_Road + RV_Terrain + RV_Vegetation + RV_Objects,  // hide 2: hud, car,glass,tires
-
+	//  most as  visibility_mask  in SR3.compositor
 	RV_WaterReflect = RV_Terrain + RV_Vegetation + RV_Road /*+ RV_Objects /*+ RV_Car*/,
 	RV_WaterRefract = RV_Terrain + RV_Vegetation + RV_Road + RV_Objects + RV_Car,
 
