@@ -2079,7 +2079,7 @@
 						</Widget> -->
 
 						<Widget type="TextBox" skin="TextBox" position="352 184 156 24">
-							<Property key="Caption" value="#{TreeRoadDist}-!"/>
+							<Property key="Caption" value="#{TreeRoadDist}"/>
 							<Property key="TextColour" value="0.9 0.7 0.4"/>
 							<UserString key="tip" value="#{TipModelRoadDist}"/>
 						</Widget>

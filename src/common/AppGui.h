@@ -70,7 +70,8 @@ public:
 	//  📈 Fps bar  ----------------
 	Img bckFps =0;
 	Txt txFps =0;
-	void UpdFpsText(), CreateFpsBar();
+	float timFps = 0.f;
+	void UpdFpsText(float dt), CreateFpsBar();
 	float GetGPUmem();
 
 

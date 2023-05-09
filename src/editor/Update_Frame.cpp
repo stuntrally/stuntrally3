@@ -287,7 +287,7 @@ void App::update( float dt )
 {
 	UpdateKey(dt);  // key edits etc
 	
-	UpdFpsText();
+	UpdFpsText(dt);
 	UpdCamPos();
 
 

@@ -38,8 +38,13 @@ String cvsI(int v, int grn, int red, int width=4)
 
 //  💫📈 upd Fps stats
 //-----------------------------------------------------------------------------------
-void AppGui::UpdFpsText()
+void AppGui::UpdFpsText(float dt)
 {
+	timFps += dt;
+	if (timFps < 0.2f)  // 5 fps
+		return;
+	timFps = 0.f;
+
 	const auto *rs = mRoot->getRenderSystem();
 	const RenderingMetrics& rm = rs->getMetrics();
 	const FrameStats *st = mRoot->getFrameStats();

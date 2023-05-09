@@ -285,7 +285,7 @@ void App::update( float dt )
 		}
 	}
 
-	UpdFpsText();
+	UpdFpsText(dt);
 	updDebugText();
 }
 
