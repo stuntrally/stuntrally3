@@ -499,7 +499,7 @@ void App::deform(Vector3 &pos, float dtime, float brMul)
 	}
 	scn->ter->dirtyRect(rcMap);
 	scn->UpdBlendmap();
-	bTerUpd = true;
+	// bTerUpd = true;
 }
 
 

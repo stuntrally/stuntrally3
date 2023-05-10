@@ -216,7 +216,7 @@ namespace Ogre
 
 	public:
 		//  ctor
-		Terra( IdType id, ObjectMemoryManager *objectMemoryManager, SceneManager *sceneManager,
+		Terra( int n, IdType id, ObjectMemoryManager *objectMemoryManager, SceneManager *sceneManager,
 			   uint8 renderQueueId, CompositorManager2 *compositorManager, Camera *camera, bool zUp );
 		~Terra() override;
 
@@ -226,7 +226,7 @@ namespace Ogre
 		/// This function is only useful if you load/have multiple Terras at once.
 		///
 		/// @see    TerraSharedResources
-		void setSharedResources( TerraSharedResources *sharedResources );
+		// void setSharedResources( TerraSharedResources *sharedResources );
 
 		/// How low should the skirt be. Normally you should let this value untouched and let
 		/// calculateOptimumSkirtSize do its thing for best performance/quality ratio.
@@ -356,27 +356,29 @@ namespace Ogre
 			delete sharedResources;
 		@endcode
 	*/
+	
+	
 	struct TerraSharedResources
 	{
-		enum TemporaryUsages
+		/*enum TemporaryUsages
 		{
 			TmpNormalMap,
 			TmpBlendMap,
 			NumStaticTmpTextures,
 			TmpShadows = NumStaticTmpTextures,
 			NumTemporaryUsages
-		};
+		};*/
 
-		TextureGpu *textures[NumTemporaryUsages];
+		// TextureGpu *textures[NumTemporaryUsages];
 
-		TerraSharedResources();
-		~TerraSharedResources();
+		// TerraSharedResources();
+		// ~TerraSharedResources();
 
 		/// Destroys all textures in the cache
-		void freeAllMemory();
+		// void freeAllMemory();
 
 		/// Destroys all textures that are only used during heightmap load
-		void freeStaticMemory();
+		// void freeStaticMemory();
 
 		/**
 		@brief getTempTexture
@@ -399,8 +401,9 @@ namespace Ogre
 			A valid ptr
 		*/
 		static TextureGpu *getTempTexture( const char *texName, IdType id,
-										   TerraSharedResources *sharedResources,
-										   TemporaryUsages temporaryUsage, TextureGpu *baseTemplate,
+										//    TerraSharedResources *sharedResources,
+										//    TemporaryUsages temporaryUsage,
+										   TextureGpu *baseTemplate,
 										   uint32 flags );
 		/**
 		@brief destroyTempTexture
@@ -409,7 +412,7 @@ namespace Ogre
 		@param sharedResources
 		@param tmpRtt
 		*/
-		static void destroyTempTexture( TerraSharedResources *sharedResources, TextureGpu *tmpRtt );
+		static void destroyTempTexture( /*TerraSharedResources *sharedResources,*/ TextureGpu *tmpRtt );
 	};
 }
 

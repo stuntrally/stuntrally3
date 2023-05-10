@@ -175,8 +175,10 @@ void CScene::copyTerHmap()
 
 void CScene::UpdBlendmap()
 {
-	if (ter)
-		ter->blendmap.Update();
+	// if (ter)
+	// 	ter->blendmap.Update();
+	if (ters[terCur])
+		ters[terCur]->blendmap.Update();
 }
 
 

@@ -122,6 +122,9 @@ compositor_node Rtt_View
 				depth	store
 				stencil	store
 			}
+			//  fixme no refl?  used in planar ReflectListener
+			// identifier	25001
+
 			visibility_mask	 0x3FF  // normal
 			rq_first  0
 			rq_last	  199  // before RQ_OVERLAY

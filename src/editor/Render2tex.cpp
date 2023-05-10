@@ -121,7 +121,7 @@ void App::CreateRnd2Tex()
 				w->connectExternal( 0, strWs[i], 0 );
 			}
 
-			r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, true );
+			r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, true );  //! slower
 			// r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, false );  // todo: manual update
 
 
@@ -213,15 +213,15 @@ void App::UpdRnd2Tex()
 			r.cam->setOrientation(mCamera->getOrientation());
 		}
 
-		// r.ws->_beginUpdate( true );
+		// r.ws->_beginUpdate(true);
 		// r.ws->_update();  // todo: upd when needed only, skip
-		// r.ws->_endUpdate( true );
+		// r.ws->_endUpdate(true);
 
 		//  this is each frame
-		for( uint8 i = 0u; i < r.tex->getNumMipmaps(); ++i )
+		for (uint8 i = 0u; i < r.tex->getNumMipmaps(); ++i)
 		{
-			r.rtt->copyTo( r.tex, r.tex->getEmptyBox( i ), i,
-				r.rtt->getEmptyBox( i ), i );
+			r.rtt->copyTo( r.tex, r.tex->getEmptyBox(i), i,
+				r.rtt->getEmptyBox(i), i );
 		}
 		// r.tex->writeContentsToFile(PATHS::TracksUser()+"/rtt.png", 0,0);
 	}
@@ -413,10 +413,6 @@ return;  // todo: smooth roadDens?
 	LogO(String(":::* Time road dens: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  ti.reset();
 
 	delete[] rd;  delete[] gd;  delete[] mask;
-
-	//  road, terrain  ----------------
-	// rt[RT_Road   ].tex->writeContentsToFile(path + "/preview/road.png");
-	// rt[RT_Terrain].tex->writeContentsToFile(path + "/preview/terrain.jpg");
 
 	LogO(String(":::* Time save prv : ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }

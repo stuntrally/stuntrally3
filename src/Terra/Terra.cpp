@@ -73,10 +73,12 @@ namespace Ogre
 	}*/
 
 	//  🌟 ctor
-	Terra::Terra( IdType id, ObjectMemoryManager *objectMemoryManager, SceneManager *sceneManager,
-				  uint8 renderQueueId, CompositorManager2 *compositorManager, Camera *camera,
-				  bool zUp ) :
-		MovableObject( id, objectMemoryManager, sceneManager, renderQueueId ),
+	Terra::Terra( int n,
+			IdType id, ObjectMemoryManager *objectMemoryManager, SceneManager *sceneManager,
+			uint8 renderQueueId, CompositorManager2 *compositorManager, Camera *camera,
+			bool zUp ) :
+		MovableObject( IdType(n)/*id*/, objectMemoryManager, sceneManager, renderQueueId ),
+		cnt(n),
 		m_iWidth( 0u ),
 		m_iHeight( 0u ),
 		m_depthWidthRatio( 1.0f ),
@@ -95,7 +97,7 @@ namespace Ogre
 
 		m_prevLightDir( Vector3::ZERO ),
 		m_shadowMapper( 0 ),
-		m_sharedResources( 0 ),
+		// m_sharedResources( 0 ),
 		m_compositorManager( compositorManager ),
 		m_camera( camera ),
 		mHlmsTerraIndex( std::numeric_limits<uint32>::max() ),
@@ -210,7 +212,7 @@ namespace Ogre
 
 		delete m_shadowMapper;
 		m_shadowMapper = new ShadowMapper( mManager, m_compositorManager, bGenerateShadowMap );
-		m_shadowMapper->_setSharedResources( m_sharedResources );
+		// m_shadowMapper->_setSharedResources( m_sharedResources );
 		m_shadowMapper->setMinimizeMemoryConsumption( bMinimizeMemory );
 		m_shadowMapper->createShadowMap( getId(), m_heightMapTex, bLowResShadow );
 
@@ -244,15 +246,21 @@ namespace Ogre
 		}
 		texture->scheduleTransitionTo( GpuResidency::Resident );
 
+		auto ss = "TMP NormalMapTex_"+toStr(pTerra->cnt);
 		rtt = TerraSharedResources::getTempTexture(
-			"TMP NormalMapTex_", pTerra->getId(), pTerra->m_sharedResources, TerraSharedResources::TmpNormalMap,
+			ss.c_str(), pTerra->getId(),
+			// pTerra->m_sharedResources,
+			// TerraSharedResources::TmpNormalMap +pTerra->cnt,
 			texture, TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps );
 
 		MaterialPtr normalMapperMat = MaterialManager::getSingleton().load(
-			"Terra/GpuNormalMapper",
+			// "Terra/GpuNormalMapper",
+			"Terra/GpuNormalMapper"+toStr(pTerra->cnt),
 			ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ).staticCast<Material>();
 		Pass *pass = normalMapperMat->getTechnique(0)->getPass(0);
 		TextureUnitState *texUnit = pass->getTextureUnitState(0);
+
+		// LogO("TER norm new:" + toStr(pTerra->cnt));
 		texUnit->setTexture( pTerra->m_heightMapTex );
 
 		// Normalize vScale for better precision in the shader math
@@ -272,8 +280,10 @@ namespace Ogre
 
 		camera = pTerra->mManager->createCamera( "CamTerraNormal" + toStr(pTerra->cnt) );
 
-		const IdString workspaceName = pTerra->m_heightMapTex->getPixelFormat() == PFG_R16_UINT
-			? "Terra/GpuNormalMapperWorkspaceU16" : "Terra/GpuNormalMapperWorkspace";
+		const IdString workspaceName = /*pTerra->m_heightMapTex->getPixelFormat() == PFG_R16_UINT
+			? "Terra/GpuNormalMapperWorkspaceU16" :*/
+			// "Terra/GpuNormalMapperWorkspace";
+			"Terra/GpuNormalMapperWorkspace"+toStr(pTerra->cnt);
 		workspace = pTerra->m_compositorManager->addWorkspace(
 			pTerra->mManager, finalTargetChannels, camera, workspaceName, false );
 
@@ -292,14 +302,14 @@ namespace Ogre
 	void Terra::Normalmap::Update()
 	{
 		if (!workspace)  return;
-		workspace->_beginUpdate( true );
+		workspace->_beginUpdate(true);
 		workspace->_update();
-		workspace->_endUpdate( true );
+		workspace->_endUpdate(true);
 
-		for( uint8 i = 0u; i < texture->getNumMipmaps(); ++i )
+		for (uint8 i = 0u; i < texture->getNumMipmaps(); ++i)
 		{
-			rtt->copyTo( texture, texture->getEmptyBox( i ), i,
-				rtt->getEmptyBox( i ), i );
+			rtt->copyTo( texture, texture->getEmptyBox(i), i,
+				rtt->getEmptyBox(i), i );
 		}
 	}
 
@@ -491,12 +501,12 @@ namespace Ogre
 		m_collectedCells[0].clear();
 	}
 	//-----------------------------------------------------------------------------------
-	void Terra::setSharedResources( TerraSharedResources *sharedResources )
+	/*void Terra::setSharedResources( TerraSharedResources *sharedResources )
 	{
 		m_sharedResources = sharedResources;
 		if( m_shadowMapper )
 			m_shadowMapper->_setSharedResources( sharedResources );
-	}
+	}*/
 
 
 	//  💫 update
@@ -822,8 +832,10 @@ namespace Ogre
 		std::swap( m_savedState.m_camera, m_camera );
 	}
 
+
+
 	//-----------------------------------------------------------------------------------
-	TerraSharedResources::TerraSharedResources()
+	/*TerraSharedResources::TerraSharedResources()
 	{
 		memset( textures, 0, sizeof( textures ) );
 	}
@@ -859,20 +871,20 @@ namespace Ogre
 				textures[i] = 0;
 			}
 		}
-	}
+	}*/
 
 	//-----------------------------------------------------------------------------------
 	TextureGpu *TerraSharedResources::getTempTexture( const char *texName, IdType id,
-													  TerraSharedResources *sharedResources,
-													  TemporaryUsages temporaryUsage,
+													//   TerraSharedResources *sharedResources,
+													//   TemporaryUsages temporaryUsage,
 													  TextureGpu *baseTemplate, uint32 flags )
 	{
 		TextureGpu *tmpRtt = 0;
 
-		if( sharedResources && sharedResources->textures[temporaryUsage] )
+		/**if( sharedResources && sharedResources->textures[temporaryUsage] )
 			tmpRtt = sharedResources->textures[temporaryUsage];
 		else
-		{
+		{*/
 			TextureGpuManager *textureManager = baseTemplate->getTextureManager();
 			tmpRtt = textureManager->createTexture( texName + toStr( id ),
 													GpuPageOutStrategy::Discard, flags,
@@ -882,17 +894,17 @@ namespace Ogre
 			if( flags & TextureFlags::RenderToTexture )
 				tmpRtt->_setDepthBufferDefaults( DepthBuffer::POOL_NO_DEPTH, false, PFG_UNKNOWN );
 
-			if( sharedResources )
+			/*if( sharedResources )
 				sharedResources->textures[temporaryUsage] = tmpRtt;
-		}
+		}*/
 		return tmpRtt;
 	}
 
 	//-----------------------------------------------------------------------------------
-	void TerraSharedResources::destroyTempTexture( TerraSharedResources *sharedResources,
+	void TerraSharedResources::destroyTempTexture( //TerraSharedResources *sharedResources,
 												   TextureGpu *tmpRtt )
 	{
-		if( !sharedResources )
+		// if( !sharedResources )
 		{
 			TextureGpuManager *textureManager = tmpRtt->getTextureManager();
 			textureManager->destroyTexture( tmpRtt );

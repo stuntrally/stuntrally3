@@ -1,12 +1,8 @@
-
 compositor_node Terra/GpuBlendMapper
 {
 	in 0 rt_output
-
-	// rtv rt_output
-	// {
-	// 	slice 1  // draw to slice 1
-	// }
+	rtv rt_output
+	{	slice 1  }  // draw to slice 1
 
 	target rt_output
 	{
@@ -14,14 +10,143 @@ compositor_node Terra/GpuBlendMapper
 		{
 			material Terra/GpuBlendMapper
 		}
-
 		pass generate_mipmaps
-		{
-		}
+		{	}
 	}
 }
-
 workspace Terra/GpuBlendMapperWorkspace
 {
 	connect_output Terra/GpuBlendMapper 0
+}
+
+
+compositor_node Terra/GpuBlendMapper0
+{
+	in 0 rt_output
+	rtv rt_output
+	{	slice 1  }
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			material Terra/GpuBlendMapper0
+		}
+		pass generate_mipmaps
+		{	}
+	}
+}
+workspace Terra/GpuBlendMapperWorkspace0
+{
+	connect_output Terra/GpuBlendMapper0 0
+}
+
+
+compositor_node Terra/GpuBlendMapper1
+{
+	in 0 rt_output
+	rtv rt_output
+	{	slice 1  }
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			material Terra/GpuBlendMapper1
+		}
+		pass generate_mipmaps
+		{	}
+	}
+}
+workspace Terra/GpuBlendMapperWorkspace1
+{
+	connect_output Terra/GpuBlendMapper1 0
+}
+
+
+compositor_node Terra/GpuBlendMapper2
+{
+	in 0 rt_output
+	rtv rt_output
+	{	slice 1  }
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			material Terra/GpuBlendMapper2
+		}
+		pass generate_mipmaps
+		{	}
+	}
+}
+workspace Terra/GpuBlendMapperWorkspace2
+{
+	connect_output Terra/GpuBlendMapper2 0
+}
+
+
+compositor_node Terra/GpuBlendMapper3
+{
+	in 0 rt_output
+	rtv rt_output
+	{	slice 1  }
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			material Terra/GpuBlendMapper3
+		}
+		pass generate_mipmaps
+		{	}
+	}
+}
+workspace Terra/GpuBlendMapperWorkspace3
+{
+	connect_output Terra/GpuBlendMapper3 0
+}
+
+
+compositor_node Terra/GpuBlendMapper4
+{
+	in 0 rt_output
+	rtv rt_output
+	{	slice 1  }
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			material Terra/GpuBlendMapper4
+		}
+		pass generate_mipmaps
+		{	}
+	}
+}
+workspace Terra/GpuBlendMapperWorkspace4
+{
+	connect_output Terra/GpuBlendMapper4 0
+}
+
+
+compositor_node Terra/GpuBlendMapper5
+{
+	in 0 rt_output
+	rtv rt_output
+	{	slice 1  }
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			material Terra/GpuBlendMapper5
+		}
+		pass generate_mipmaps
+		{	}
+	}
+}
+workspace Terra/GpuBlendMapperWorkspace5
+{
+	connect_output Terra/GpuBlendMapper5 0
 }

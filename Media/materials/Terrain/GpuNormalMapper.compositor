@@ -8,19 +8,17 @@ compositor_node Terra/GpuNormalMapper
 		{
 			material Terra/GpuNormalMapper
 		}
-
 		pass generate_mipmaps
-		{
-		}
+		{	}
 	}
 }
-
 workspace Terra/GpuNormalMapperWorkspace
 {
 	connect_output Terra/GpuNormalMapper 0
 }
 
-compositor_node Terra/GpuNormalMapperU16
+
+compositor_node Terra/GpuNormalMapper0
 {
 	in 0 rt_output
 
@@ -28,16 +26,113 @@ compositor_node Terra/GpuNormalMapperU16
 	{
 		pass render_quad
 		{
-			material Terra/GpuNormalMapperU16
+			material Terra/GpuNormalMapper0
 		}
-
 		pass generate_mipmaps
-		{
-		}
+		{	}
 	}
 }
-
-workspace Terra/GpuNormalMapperWorkspaceU16
+workspace Terra/GpuNormalMapperWorkspace0
 {
-	connect_output Terra/GpuNormalMapperU16 0
+	connect_output Terra/GpuNormalMapper0 0
+}
+
+
+compositor_node Terra/GpuNormalMapper1
+{
+	in 0 rt_output
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			material Terra/GpuNormalMapper1
+		}
+		pass generate_mipmaps
+		{	}
+	}
+}
+workspace Terra/GpuNormalMapperWorkspace1
+{
+	connect_output Terra/GpuNormalMapper1 0
+}
+
+
+compositor_node Terra/GpuNormalMapper2
+{
+	in 0 rt_output
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			material Terra/GpuNormalMapper2
+		}
+		pass generate_mipmaps
+		{	}
+	}
+}
+workspace Terra/GpuNormalMapperWorkspace2
+{
+	connect_output Terra/GpuNormalMapper2 0
+}
+
+
+compositor_node Terra/GpuNormalMapper3
+{
+	in 0 rt_output
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			material Terra/GpuNormalMapper3
+		}
+		pass generate_mipmaps
+		{	}
+	}
+}
+workspace Terra/GpuNormalMapperWorkspace3
+{
+	connect_output Terra/GpuNormalMapper3 0
+}
+
+
+compositor_node Terra/GpuNormalMapper4
+{
+	in 0 rt_output
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			material Terra/GpuNormalMapper4
+		}
+		pass generate_mipmaps
+		{	}
+	}
+}
+workspace Terra/GpuNormalMapperWorkspace4
+{
+	connect_output Terra/GpuNormalMapper4 0
+}
+
+
+compositor_node Terra/GpuNormalMapper5
+{
+	in 0 rt_output
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			material Terra/GpuNormalMapper5
+		}
+		pass generate_mipmaps
+		{	}
+	}
+}
+workspace Terra/GpuNormalMapperWorkspace5
+{
+	connect_output Terra/GpuNormalMapper5 0
 }

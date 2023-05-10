@@ -127,7 +127,7 @@ void CScene::CreateTerrain1(int n, bool upd)
 		}*/
 		Real sc = bTripl ?
 			// fTer / l.tiling * 0.0005 :  //?? big
-			fTer / l.tiling * 0.002 :  //?? small
+			fTer / l.tiling * 0.002 :  //** fixme!  ?? small
 			fTer / l.tiling;
 		tdb->setDetailMapOffsetScale( i, Vector4(0,0, sc,sc) );
 		
@@ -137,7 +137,7 @@ void CScene::CreateTerrain1(int n, bool upd)
 		if (!pt)
 			LogO("Ter mtr error! not in presets: "+d_d);
 		else
-		{	tdb->setMetalness(i, pt->metal);
+		{	tdb->setMetalness(i, pt->metal);  // fresnel, specular ?..
 			tdb->setRoughness(i, pt->rough);
 			LogO("* Ter lay: "+d_d+" met:"+fToStr(pt->metal)+
 				"  ro: "+fToStr(pt->rough)+(pt->reflect ? "  refl" : ""));
@@ -150,7 +150,7 @@ void CScene::CreateTerrain1(int n, bool upd)
 
 	//  🆕 Create  ------------------------------------------------
 	auto id = Id::generateNewId<MovableObject>();
-	LogO("---T Terrain create " + sn + "  id " + toStr(id));
+	LogO("---T Terrain create " + sn + "  id " + toStr(id) + "  n " + toStr(n));
 
 #ifdef SR_EDITOR
 	auto dyn = SCENE_DYNAMIC;  // ed can move ter- rem?
@@ -159,12 +159,11 @@ void CScene::CreateTerrain1(int n, bool upd)
 #endif
 
 	auto* mTerra = new Terra( //si,
-		id,
+		n, id,
 		&mgr->_getEntityMemoryManager( dyn ),
 		mgr, RQG_Terrain, app->mRoot->getCompositorManager2(),
 		app->mCamera, false );
 	
-	mTerra->cnt = n;
 	mTerra->mtrName = mtrName;
 	// mTerra->setCustomSkirtMinHeight(0.8f); //?-
 	mTerra->setCastShadows( false );

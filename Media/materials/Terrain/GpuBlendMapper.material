@@ -26,6 +26,7 @@ fragment_program Terra/GpuBlendMapper_ps_Metal metal
 	shader_reflection_pair_hint Ogre/Compositor/Quad_vs
 }
 
+
 fragment_program Terra/GpuBlendMapper_ps unified
 {
 	delegate Terra/GpuBlendMapper_ps_GLSL
@@ -40,36 +41,178 @@ fragment_program Terra/GpuBlendMapper_ps unified
 	}
 }
 
+
 material Terra/GpuBlendMapper
-{
-    technique
-    {
-		pass
+{	technique
+    {	pass
 		{
 			depth_check off
 			depth_write off
-
 			cull_hardware none
 
 			vertex_program_ref Ogre/Compositor/Quad_vs
-			{
-			}
+			{	}
 			fragment_program_ref Terra/GpuBlendMapper_ps
-			{
-			}
+			{	}
 
 			texture_unit heightMap
 			{
 				tex_address_mode clamp
 				filtering none
 			}
-
 			texture_unit normalMap1
 			{
 				tex_address_mode clamp
 				filtering none
 			}
-		}
-	}
-}
+}	}	}
 
+material Terra/GpuBlendMapper0
+{	technique
+    {	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref Terra/GpuBlendMapper_ps
+			{	}
+
+			texture_unit heightMap
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+			texture_unit normalMap1
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+}	}	}
+
+material Terra/GpuBlendMapper1
+{	technique
+    {	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref Terra/GpuBlendMapper_ps
+			{	}
+
+			texture_unit heightMap
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+			texture_unit normalMap1
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+}	}	}
+
+material Terra/GpuBlendMapper2
+{	technique
+    {	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref Terra/GpuBlendMapper_ps
+			{	}
+
+			texture_unit heightMap
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+			texture_unit normalMap1
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+}	}	}
+
+material Terra/GpuBlendMapper3
+{	technique
+    {	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref Terra/GpuBlendMapper_ps
+			{	}
+
+			texture_unit heightMap
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+			texture_unit normalMap1
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+}	}	}
+
+material Terra/GpuBlendMapper4
+{	technique
+    {	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref Terra/GpuBlendMapper_ps
+			{	}
+
+			texture_unit heightMap
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+			texture_unit normalMap1
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+}	}	}
+
+material Terra/GpuBlendMapper5
+{	technique
+    {	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref Terra/GpuBlendMapper_ps
+			{	}
+
+			texture_unit heightMap
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+			texture_unit normalMap1
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+}	}	}

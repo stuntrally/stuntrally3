@@ -148,10 +148,10 @@ namespace Ogre
 	{
 		Destroy();
 
-		TextureGpuManager *textureManager =
-			pTerra->mManager->getDestinationRenderSystem()->getTextureGpuManager();
-		texture = textureManager->createTexture(
-			"BlendMapTex_" + StringConverter::toString( pTerra->getId() ),
+		TextureGpuManager *mgr = pTerra->mManager->getDestinationRenderSystem()->getTextureGpuManager();
+		texture = mgr->createTexture(
+			// "BlendMapTex_" + toStr( pTerra->getId() ),
+			"BlendMapTex_" + toStr(pTerra->cnt),
 			GpuPageOutStrategy::SaveToSystemRam,
 			TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps,
 			TextureTypes::Type2DArray, "General" );
@@ -163,10 +163,14 @@ namespace Ogre
 		texture->setPixelFormat( PFG_RGBA8_UNORM );
 		texture->scheduleTransitionTo( GpuResidency::Resident );
 
-		MaterialPtr blendMapperMat = MaterialManager::getSingleton().load(
-			"Terra/GpuBlendMapper",
+		LogO("TER ble ws new:" + toStr(pTerra->cnt));
+		MaterialPtr blendMat = MaterialManager::getSingleton().load(
+			// "Terra/GpuBlendMapper",
+			"Terra/GpuBlendMapper"+toStr(pTerra->cnt),
 			ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ).staticCast<Material>();
-		pass = blendMapperMat->getTechnique(0)->getPass(0);
+		// MaterialPtr blendMat2 = blendMat->clone("MtrBle" + toStr(pTerra->cnt));
+		// pass = blendMat2->getTechnique(0)->getPass(0);  // no-
+		pass = blendMat->getTechnique(0)->getPass(0);
 		
 		TextureUnitState *texUnit = pass->getTextureUnitState(0);
 		texUnit->setTexture( pTerra->m_heightMapTex );
@@ -177,14 +181,16 @@ namespace Ogre
 
 		camera = pTerra->mManager->createCamera( "CamTerraBlend" + toStr(pTerra->cnt) );
 
-		const IdString workspaceName = "Terra/GpuBlendMapperWorkspace";
+		// const IdString workspaceName = "Terra/GpuBlendMapperWorkspace";
+		const IdString workspaceName = "Terra/GpuBlendMapperWorkspace"+toStr(pTerra->cnt);
 		workspace = pTerra->m_compositorManager->addWorkspace(
 			pTerra->mManager, texture/*finalTargetChannels*/, camera, workspaceName, false );
-		workspace->_beginUpdate( true );
-		workspace->_update();
-		workspace->_endUpdate( true );
 
-		#ifndef SR_EDITOR  // game no upd
+		workspace->_beginUpdate(true);  //+?
+		workspace->_update();
+		workspace->_endUpdate(true);
+
+		#ifndef SR_EDITOR  // todo: game no upd, destroy rtt
 		//	pTerra->m_compositorManager->removeWorkspace( workspace );
 		//	pTerra->mManager->destroyCamera( camera );
 		#endif
@@ -199,9 +205,10 @@ namespace Ogre
 	{
 		if (!workspace)  return;
 		SetParams();
-		workspace->_beginUpdate( true );
+		workspace->_beginUpdate(true);
 		workspace->_update();
-		workspace->_endUpdate( true );
+		workspace->_endUpdate(true);
+		SetParams();
 	}
 
 	//  🏔️💫📄  Update Blendmap Params  * * *
@@ -234,7 +241,7 @@ namespace Ogre
 		for (i=0; i < 2; ++i)
 		{	Nnext2[i]=0.f;  Nfreq2[i]=0.f; Noct2[i]=0.f; Npers2[i]=0.f; Npow2[i]=0.f;  }
 		
-		const auto& td = pTerra->sc->tds[pTerra->cnt];  //
+		const auto& td = pTerra->sc->tds[pTerra->cnt];
 		int nl = std::min(4, (int)td.layers.size());
 		for (i=0; i < nl; ++i)
 		{	//  range
@@ -261,6 +268,7 @@ namespace Ogre
 		Set3("Nfreq", Nfreq);  Set3("Noct", Noct);  Set3("Npers", Npers);  Set3("Npow", Npow);
 		Set2("Nfreq2", Nfreq2);  Set2("Noct2", Noct2);  Set2("Npers2", Npers2);  Set2("Npow2", Npow2);
 		Set1("terrainWorldSize", td.fTerWorldSize);
+		// psParams.reset();  //?
 	}
 
 	//  🏔️💥  Destroy Blendmap

@@ -26,6 +26,7 @@ fragment_program Terra/GpuNormalMapper_ps_Metal metal
 	shader_reflection_pair_hint Ogre/Compositor/Quad_vs
 }
 
+
 fragment_program Terra/GpuNormalMapper_ps unified
 {
 	delegate Terra/GpuNormalMapper_ps_GLSL
@@ -40,70 +41,136 @@ fragment_program Terra/GpuNormalMapper_ps unified
 	}
 }
 
+
 material Terra/GpuNormalMapper
-{
-    technique
-    {
-		pass
+{	technique
+    {	pass
 		{
 			depth_check off
 			depth_write off
-
 			cull_hardware none
 
 			vertex_program_ref Ogre/Compositor/Quad_vs
-			{
-			}
-
+			{	}
 			fragment_program_ref Terra/GpuNormalMapper_ps
-			{
-			}
-
+			{	}
 			texture_unit heightMap
 			{
 				tex_address_mode clamp
 				filtering none
 			}
-		}
-	}
-}
+}	}	}
 
-
-fragment_program Terra/GpuNormalMapperU16_ps unified : Terra/GpuNormalMapper_ps
-{
-	preprocessor_defines USE_UINT=1
-
-	default_params
-	{
-		param_named heightMapResolution float2 128 128
-		param_named vScale float3 1.0 1.0 1.0
-	}
-}
-
-material Terra/GpuNormalMapperU16
-{
-	technique
-	{
-		pass
+material Terra/GpuNormalMapper0
+{	technique
+    {	pass
 		{
 			depth_check off
 			depth_write off
-
 			cull_hardware none
 
 			vertex_program_ref Ogre/Compositor/Quad_vs
-			{
-			}
-
-			fragment_program_ref Terra/GpuNormalMapperU16_ps
-			{
-			}
-
+			{	}
+			fragment_program_ref Terra/GpuNormalMapper_ps
+			{	}
 			texture_unit heightMap
 			{
 				tex_address_mode clamp
 				filtering none
 			}
-		}
-	}
-}
+}	}	}
+
+material Terra/GpuNormalMapper1
+{	technique
+    {	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref Terra/GpuNormalMapper_ps
+			{	}
+			texture_unit heightMap
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+}	}	}
+
+material Terra/GpuNormalMapper2
+{	technique
+    {	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref Terra/GpuNormalMapper_ps
+			{	}
+			texture_unit heightMap
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+}	}	}
+
+material Terra/GpuNormalMapper3
+{	technique
+    {	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref Terra/GpuNormalMapper_ps
+			{	}
+			texture_unit heightMap
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+}	}	}
+
+material Terra/GpuNormalMapper4
+{	technique
+    {	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref Terra/GpuNormalMapper_ps
+			{	}
+			texture_unit heightMap
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+}	}	}
+
+material Terra/GpuNormalMapper5
+{	technique
+    {	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref Terra/GpuNormalMapper_ps
+			{	}
+			texture_unit heightMap
+			{
+				tex_address_mode clamp
+				filtering none
+			}
+}	}	}
