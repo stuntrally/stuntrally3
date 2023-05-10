@@ -60,7 +60,6 @@ namespace Ogre
 		IdType m_terraId;
 		bool m_minimizeMemoryConsumption;
 		bool m_lowResShadow;
-		TerraSharedResources *m_sharedResources;
 
 		//Ogre stuff
 		SceneManager            *m_sceneManager;

@@ -104,8 +104,6 @@ namespace Ogre
 		Vector3       m_prevLightDir;
 		ShadowMapper  *m_shadowMapper;
 
-		TerraSharedResources *m_sharedResources;
-
 		/// When rendering shadows we want to override the data calculated by update
 		/// but only temporarily, for later restoring it.
 		SavedState m_savedState;
@@ -216,7 +214,7 @@ namespace Ogre
 
 	public:
 		//  ctor
-		Terra( int n, IdType id, ObjectMemoryManager *objectMemoryManager, SceneManager *sceneManager,
+		Terra( int n, ObjectMemoryManager *objectMemoryManager, SceneManager *sceneManager,
 			   uint8 renderQueueId, CompositorManager2 *compositorManager, Camera *camera, bool zUp );
 		~Terra() override;
 
@@ -360,26 +358,6 @@ namespace Ogre
 	
 	struct TerraSharedResources
 	{
-		/*enum TemporaryUsages
-		{
-			TmpNormalMap,
-			TmpBlendMap,
-			NumStaticTmpTextures,
-			TmpShadows = NumStaticTmpTextures,
-			NumTemporaryUsages
-		};*/
-
-		// TextureGpu *textures[NumTemporaryUsages];
-
-		// TerraSharedResources();
-		// ~TerraSharedResources();
-
-		/// Destroys all textures in the cache
-		// void freeAllMemory();
-
-		/// Destroys all textures that are only used during heightmap load
-		// void freeStaticMemory();
-
 		/**
 		@brief getTempTexture
 			Retrieves a cached texture to be shared with all Terras.
@@ -401,8 +379,6 @@ namespace Ogre
 			A valid ptr
 		*/
 		static TextureGpu *getTempTexture( const char *texName, IdType id,
-										//    TerraSharedResources *sharedResources,
-										//    TemporaryUsages temporaryUsage,
 										   TextureGpu *baseTemplate,
 										   uint32 flags );
 		/**
@@ -412,7 +388,7 @@ namespace Ogre
 		@param sharedResources
 		@param tmpRtt
 		*/
-		static void destroyTempTexture( /*TerraSharedResources *sharedResources,*/ TextureGpu *tmpRtt );
+		static void destroyTempTexture( TextureGpu *tmpRtt );
 	};
 }
 

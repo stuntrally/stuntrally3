@@ -149,8 +149,7 @@ void CScene::CreateTerrain1(int n, bool upd)
 
 
 	//  🆕 Create  ------------------------------------------------
-	auto id = Id::generateNewId<MovableObject>();
-	LogO("---T Terrain create " + sn + "  id " + toStr(id) + "  n " + toStr(n));
+	LogO("---T Terrain create " + sn + "  n " + toStr(n));
 
 #ifdef SR_EDITOR
 	auto dyn = SCENE_DYNAMIC;  // ed can move ter- rem?
@@ -159,8 +158,7 @@ void CScene::CreateTerrain1(int n, bool upd)
 #endif
 
 	auto* mTerra = new Terra( //si,
-		n, id,
-		&mgr->_getEntityMemoryManager( dyn ),
+		n, &mgr->_getEntityMemoryManager( dyn ),
 		mgr, RQG_Terrain, app->mRoot->getCompositorManager2(),
 		app->mCamera, false );
 	
@@ -273,6 +271,7 @@ void CScene::TerNext(int add)
 	td = &sc->tds[terCur];
 
 #ifdef SR_EDITOR
+	app->gui->updTersTxt();
 	app->gui->SldUpd_Ter();
 #endif
 	// String fname = getHmap(terCur, false);//-

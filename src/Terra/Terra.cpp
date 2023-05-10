@@ -67,17 +67,12 @@ namespace Ogre
 		return value;
 	}
 
-	/*inline Ogre::Quaternion ZupToYup( Ogre::Quaternion value )
-	{
-		return value * Ogre::Quaternion( Ogre::Radian( Ogre::Math::HALF_PI ), Ogre::Vector3::UNIT_X );
-	}*/
-
 	//  🌟 ctor
 	Terra::Terra( int n,
-			IdType id, ObjectMemoryManager *objectMemoryManager, SceneManager *sceneManager,
+			ObjectMemoryManager *objectMemoryManager, SceneManager *sceneManager,
 			uint8 renderQueueId, CompositorManager2 *compositorManager, Camera *camera,
 			bool zUp ) :
-		MovableObject( IdType(n)/*id*/, objectMemoryManager, sceneManager, renderQueueId ),
+		MovableObject( IdType(n), objectMemoryManager, sceneManager, renderQueueId ),
 		cnt(n),
 		m_iWidth( 0u ),
 		m_iHeight( 0u ),
@@ -97,7 +92,6 @@ namespace Ogre
 
 		m_prevLightDir( Vector3::ZERO ),
 		m_shadowMapper( 0 ),
-		// m_sharedResources( 0 ),
 		m_compositorManager( compositorManager ),
 		m_camera( camera ),
 		mHlmsTerraIndex( std::numeric_limits<uint32>::max() ),
@@ -212,7 +206,6 @@ namespace Ogre
 
 		delete m_shadowMapper;
 		m_shadowMapper = new ShadowMapper( mManager, m_compositorManager, bGenerateShadowMap );
-		// m_shadowMapper->_setSharedResources( m_sharedResources );
 		m_shadowMapper->setMinimizeMemoryConsumption( bMinimizeMemory );
 		m_shadowMapper->createShadowMap( getId(), m_heightMapTex, bLowResShadow );
 
@@ -246,21 +239,18 @@ namespace Ogre
 		}
 		texture->scheduleTransitionTo( GpuResidency::Resident );
 
-		auto ss = "TMP NormalMapTex_"+toStr(pTerra->cnt);
+		auto si = toStr(pTerra->cnt);
+		auto name = "Rtt_NormalMapTex_" + si;
 		rtt = TerraSharedResources::getTempTexture(
-			ss.c_str(), pTerra->getId(),
-			// pTerra->m_sharedResources,
-			// TerraSharedResources::TmpNormalMap +pTerra->cnt,
+			name.c_str(), pTerra->getId(),
 			texture, TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps );
 
 		MaterialPtr normalMapperMat = MaterialManager::getSingleton().load(
-			// "Terra/GpuNormalMapper",
-			"Terra/GpuNormalMapper"+toStr(pTerra->cnt),
+			"Terra/GpuNormalMapper" + si,
 			ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ).staticCast<Material>();
 		Pass *pass = normalMapperMat->getTechnique(0)->getPass(0);
 		TextureUnitState *texUnit = pass->getTextureUnitState(0);
 
-		// LogO("TER norm new:" + toStr(pTerra->cnt));
 		texUnit->setTexture( pTerra->m_heightMapTex );
 
 		// Normalize vScale for better precision in the shader math
@@ -278,12 +268,9 @@ namespace Ogre
 		finalTargetChannels[0] = rtt;
 
 
-		camera = pTerra->mManager->createCamera( "CamTerraNormal" + toStr(pTerra->cnt) );
+		camera = pTerra->mManager->createCamera( "CamTerraNormal" + si );
 
-		const IdString workspaceName = /*pTerra->m_heightMapTex->getPixelFormat() == PFG_R16_UINT
-			? "Terra/GpuNormalMapperWorkspaceU16" :*/
-			// "Terra/GpuNormalMapperWorkspace";
-			"Terra/GpuNormalMapperWorkspace"+toStr(pTerra->cnt);
+		const IdString workspaceName = "Terra/GpuNormalMapperWorkspace" + si;
 		workspace = pTerra->m_compositorManager->addWorkspace(
 			pTerra->mManager, finalTargetChannels, camera, workspaceName, false );
 
@@ -292,9 +279,8 @@ namespace Ogre
 		#ifndef SR_EDITOR  // todo: game no upd ..
 		// m_compositorManager->removeWorkspace( workspace );
 		// mManager->destroyCamera( camera );
-		#endif
-
 		// TerraSharedResources::destroyTempTexture( m_sharedResources, rtt );
+		#endif
 	}
 
 	//  💫 Update Normalmap
@@ -500,13 +486,6 @@ namespace Ogre
 
 		m_collectedCells[0].clear();
 	}
-	//-----------------------------------------------------------------------------------
-	/*void Terra::setSharedResources( TerraSharedResources *sharedResources )
-	{
-		m_sharedResources = sharedResources;
-		if( m_shadowMapper )
-			m_shadowMapper->_setSharedResources( sharedResources );
-	}*/
 
 
 	//  💫 update
@@ -833,81 +812,26 @@ namespace Ogre
 	}
 
 
-
-	//-----------------------------------------------------------------------------------
-	/*TerraSharedResources::TerraSharedResources()
-	{
-		memset( textures, 0, sizeof( textures ) );
-	}
-	TerraSharedResources::~TerraSharedResources()
-	{
-		freeAllMemory();
-	}
-
-	//-----------------------------------------------------------------------------------
-	void TerraSharedResources::freeAllMemory()
-	{
-		freeStaticMemory();
-
-		for( size_t i = NumStaticTmpTextures; i < NumTemporaryUsages; ++i )
-		{
-			if( textures[i] )
-			{
-				TextureGpuManager *textureManager = textures[i]->getTextureManager();
-				textureManager->destroyTexture( textures[i] );
-				textures[i] = 0;
-			}
-		}
-	}
-	//-----------------------------------------------------------------------------------
-	void TerraSharedResources::freeStaticMemory()
-	{
-		for( size_t i = 0u; i < NumStaticTmpTextures; ++i )
-		{
-			if( textures[i] )
-			{
-				TextureGpuManager *textureManager = textures[i]->getTextureManager();
-				textureManager->destroyTexture( textures[i] );
-				textures[i] = 0;
-			}
-		}
-	}*/
-
 	//-----------------------------------------------------------------------------------
 	TextureGpu *TerraSharedResources::getTempTexture( const char *texName, IdType id,
-													//   TerraSharedResources *sharedResources,
-													//   TemporaryUsages temporaryUsage,
 													  TextureGpu *baseTemplate, uint32 flags )
 	{
-		TextureGpu *tmpRtt = 0;
+		TextureGpuManager *mgr = baseTemplate->getTextureManager();
+		TextureGpu *tmpRtt = mgr->createTexture( texName + toStr( id ),
+												GpuPageOutStrategy::Discard, flags,
+												TextureTypes::Type2D );
+		tmpRtt->copyParametersFrom( baseTemplate );
+		tmpRtt->scheduleTransitionTo( GpuResidency::Resident );
+		if( flags & TextureFlags::RenderToTexture )
+			tmpRtt->_setDepthBufferDefaults( DepthBuffer::POOL_NO_DEPTH, false, PFG_UNKNOWN );
 
-		/**if( sharedResources && sharedResources->textures[temporaryUsage] )
-			tmpRtt = sharedResources->textures[temporaryUsage];
-		else
-		{*/
-			TextureGpuManager *textureManager = baseTemplate->getTextureManager();
-			tmpRtt = textureManager->createTexture( texName + toStr( id ),
-													GpuPageOutStrategy::Discard, flags,
-													TextureTypes::Type2D );
-			tmpRtt->copyParametersFrom( baseTemplate );
-			tmpRtt->scheduleTransitionTo( GpuResidency::Resident );
-			if( flags & TextureFlags::RenderToTexture )
-				tmpRtt->_setDepthBufferDefaults( DepthBuffer::POOL_NO_DEPTH, false, PFG_UNKNOWN );
-
-			/*if( sharedResources )
-				sharedResources->textures[temporaryUsage] = tmpRtt;
-		}*/
 		return tmpRtt;
 	}
 
 	//-----------------------------------------------------------------------------------
-	void TerraSharedResources::destroyTempTexture( //TerraSharedResources *sharedResources,
-												   TextureGpu *tmpRtt )
+	void TerraSharedResources::destroyTempTexture( TextureGpu *tmpRtt )
 	{
-		// if( !sharedResources )
-		{
-			TextureGpuManager *textureManager = tmpRtt->getTextureManager();
-			textureManager->destroyTexture( tmpRtt );
-		}
+		TextureGpuManager *mgr = tmpRtt->getTextureManager();
+		mgr->destroyTexture( tmpRtt );
 	}
 }

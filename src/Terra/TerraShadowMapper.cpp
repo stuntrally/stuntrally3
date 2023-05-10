@@ -65,7 +65,6 @@ namespace Ogre
 		m_terraId( std::numeric_limits<IdType>::max() ),
 		m_minimizeMemoryConsumption( false ),
 		m_lowResShadow( false ),
-		m_sharedResources( 0 ),
 		m_sceneManager( sceneManager ),
 		m_compositorManager( compositorManager ),
 		m_bGenerateShadowMap( bGenerateShadowMap )
@@ -86,17 +85,15 @@ namespace Ogre
 		OGRE_ASSERT_LOW( !m_tmpGaussianFilterTex );
 
 		m_tmpGaussianFilterTex = TerraSharedResources::getTempTexture(
-			"Terra tmpGaussianFilter", m_terraId, m_sharedResources, TerraSharedResources::TmpShadows,
+			"Terra tmpGaussianFilter", m_terraId,
 			m_shadowMapTex, TextureFlags::Uav );
-
-		const bool bUseU16 = m_heightMapTex->getPixelFormat() == PFG_R16_UINT;
 
 		CompositorChannelVec finalTarget( 2, CompositorChannel() );
 		finalTarget[0] = m_shadowMapTex;
 		finalTarget[1] = m_tmpGaussianFilterTex;
 		m_shadowWorkspace = m_compositorManager->addWorkspace(
 			m_sceneManager, finalTarget, 0,
-			bUseU16 ? "Terra/ShadowGeneratorWorkspaceU16" : "Terra/ShadowGeneratorWorkspace", false );
+			"Terra/ShadowGeneratorWorkspace", false );
 	}
 	//-----------------------------------------------------------------------------------
 	void ShadowMapper::destroyCompositorWorkspace()
@@ -109,7 +106,7 @@ namespace Ogre
 
 		if( m_tmpGaussianFilterTex )
 		{
-			TerraSharedResources::destroyTempTexture( m_sharedResources, m_tmpGaussianFilterTex );
+			TerraSharedResources::destroyTempTexture( m_tmpGaussianFilterTex );
 			m_tmpGaussianFilterTex = 0;
 		}
 	}
@@ -138,17 +135,6 @@ namespace Ogre
 		HlmsManager *hlmsManager = Root::getSingleton().getHlmsManager();
 		HlmsCompute *hlmsCompute = hlmsManager->getComputeHlms();
 		m_shadowJob = hlmsCompute->findComputeJob( "Terra/ShadowGenerator" );
-		const bool bUseU16 = heightMapTex->getPixelFormat() == PFG_R16_UINT;
-		if( bUseU16 )
-		{
-			HlmsComputeJob *jobU16 = hlmsCompute->findComputeJobNoThrow( "Terra/ShadowGeneratorU16" );
-			if( !jobU16 )
-			{
-				jobU16 = m_shadowJob->clone( "Terra/ShadowGeneratorU16" );
-				jobU16->setProperty( "terra_use_uint", 1 );
-			}
-			m_shadowJob = jobU16;
-		}
 
 		//TODO: Mipmaps
 		TextureGpuManager *textureManager =
@@ -516,17 +502,7 @@ namespace Ogre
 		job = hlmsCompute->findComputeJob( "Terra/GaussianBlurV" );
 		setGaussianFilterParams( job, kernelRadius, gaussianDeviationFactor );
 	}
-	//-----------------------------------------------------------------------------------
-	void ShadowMapper::_setSharedResources( TerraSharedResources *sharedResources )
-	{
-		const bool bRecreateWorkspace = m_shadowWorkspace != 0;
-		destroyCompositorWorkspace();
 
-		m_sharedResources = sharedResources;
-
-		if( bRecreateWorkspace )
-			createCompositorWorkspace();
-	}
 	//-----------------------------------------------------------------------------------
 	void ShadowMapper::setMinimizeMemoryConsumption( bool bMinimizeMemoryConsumption )
 	{
