@@ -99,7 +99,7 @@ void CGui::btnCopyTerLayers(WP)
 	Scene sF;  sF.LoadXml(from + "/scene.xml");
 
 	for (int i=0; i < td().ciNumLay; ++i)
-		td().layersAll[i] = sF.tds[0].layersAll[i];  // 1st ter-
+		td().layersAll[i] = sF.tds[0].layersAll[i];  // 1st ter- todo: slider..
 	sc->sParDust = sF.sParDust;  sc->sParMud = sF.sParMud;
 	sc->sParSmoke = sF.sParSmoke;
 	td().UpdLayers();

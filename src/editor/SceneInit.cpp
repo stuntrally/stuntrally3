@@ -371,6 +371,7 @@ void CGui::btnUpdateLayers(WP)
 	scn->DestroyTerrains();
 	scn->CreateTerrains(false,true);  // 🏔️
 	scn->road->scn = scn;
+	scn->TerNext(0);
 	// app->scn->updGrsTer();
 }
 
@@ -489,11 +490,12 @@ void App::TerCircleUpd(float dt)
 	bool edTer = e <= ED_Filter && ed;
 	if (!edTer)  return;
 	
-	Real radius = br[curBr].size * 0.5f *
-		scn->sc->tds[scn->terCur].fTriangleSize * 0.8f;  // par-
+	const Real radius = br[curBr].size * 0.5f *
+		scn->sc->tds[scn->terCur].fTriangleSize;  // par-
 	//  scale with distance, to be same on screen
-	Real scale = std::min(0.1f, 0.001f * scn->road->fHitDist ) * 8.f;  // par
-	scn->road->ndHit->setScale(Vector3::UNIT_SCALE * scale * 0.8f * pSet->road_sphr);
+	const Real dist = std::min(3000.f, scn->road->fHitDist );
+	scn->road->ndHit->setScale(Vector3::UNIT_SCALE * dist * pSet->road_sphr * 0.01f);  // par
+	const Real Radd = std::max(0.01f, dist * 0.02f);  // par..
 
 	if (!mo)
 	{	mo = new HudRenderable(csTerC[e], mSceneMgr,
@@ -510,8 +512,8 @@ void App::TerCircleUpd(float dt)
 	for (int k = 0; k < 4; ++k)
 	for (int d = 0; d < divs; ++d)
 	{
-		Real r = (d % 2 == 0 ? radius : radius - scale);
-		Real x = r * fTcos[d] + scn->road->posHit.x,
+		const Real r = (d % 2 == 0 ? radius : radius - Radd);
+		const Real x = r * fTcos[d] + scn->road->posHit.x,
 			 z = r * fTsin[d] + scn->road->posHit.z;
 
 		Vector3 p(x, 0.f, z);
