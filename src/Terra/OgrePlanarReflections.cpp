@@ -27,27 +27,27 @@ THE SOFTWARE.
 */
 
 #include "OgrePlanarReflections.h"
+#include "Def_Str.h"
 
-#include "Compositor/OgreCompositorManager2.h"
-#include "Compositor/OgreCompositorWorkspace.h"
-#include "Math/Array/OgreBooleanMask.h"
-#include "OgreCamera.h"
-#include "OgreHlms.h"
-#include "OgreHlmsDatablock.h"
-#include "OgreLogManager.h"
-#include "OgrePixelFormatGpuUtils.h"
-#include "OgreSceneManager.h"
-#include "OgreTextureGpuManager.h"
+#include <Compositor/OgreCompositorManager2.h>
+#include <Compositor/OgreCompositorWorkspace.h>
+#include <Math/Array/OgreBooleanMask.h>
+#include <OgreCamera.h>
+#include <OgreHlms.h>
+#include <OgreHlmsDatablock.h>
+#include <OgreLogManager.h>
+#include <OgrePixelFormatGpuUtils.h>
+#include <OgreSceneManager.h>
+#include <OgreTextureGpuManager.h>
+
 
 namespace Ogre
 {
-    // clang-format off
-    static const Ogre::Matrix4 PROJECTIONCLIPSPACE2DTOIMAGESPACE_PERSPECTIVE(
+    static const Ogre::Matrix4 PROJECTION(  // clip space 2d to image space
             0.5,    0,    0,  0.5,
             0,   -0.5,    0,  0.5,
             0,      0,    1,    0,
             0,      0,    0,    1 );
-    // clang-format on
 
     PlanarReflections::PlanarReflections( SceneManager *sceneManager,
                                           CompositorManager2 *compositorManager, Real maxDistance,
@@ -70,6 +70,7 @@ namespace Ogre
         mDummyActor()
     {
     }
+
     //-----------------------------------------------------------------------------------
     PlanarReflections::~PlanarReflections()
     {
@@ -81,56 +82,55 @@ namespace Ogre
             mCapacityActorsSoA = 0;
         }
 
-        TextureGpuManager *textureGpuManager =
-            mSceneManager->getDestinationRenderSystem()->getTextureGpuManager();
+        TextureGpuManager *texMgr = mSceneManager->getDestinationRenderSystem()->getTextureGpuManager();
 
-        ActiveActorDataVec::const_iterator itor = mActiveActorData.begin();
-        ActiveActorDataVec::const_iterator end = mActiveActorData.end();
-
+        auto itor = mActiveActorData.begin();
+        auto end = mActiveActorData.end();
         while( itor != end )
         {
             mCompositorManager->removeWorkspace( itor->workspace );
             mSceneManager->destroyCamera( itor->reflectionCamera );
-            textureGpuManager->destroyTexture( itor->reflectionTexture );
+            texMgr->destroyTexture( itor->reflectionTexture );
             ++itor;
         }
-
         mActiveActorData.clear();
     }
+
     //-----------------------------------------------------------------------------------
     void PlanarReflections::setMaxDistance( Real maxDistance )
     {
         mMaxSqDistance = maxDistance * maxDistance;
         mInvMaxDistance = Real( 1.0 ) / maxDistance;
     }
+
+
+    //-----------------------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
     void PlanarReflections::setMaxActiveActors( uint8 maxActiveActors, IdString workspaceName,
                                                 bool useAccurateLighting, uint32 width, uint32 height,
                                                 bool withMipmaps, PixelFormatGpu pixelFormat,
                                                 bool mipmapMethodCompute )
     {
+        TextureGpuManager *texMgr = mSceneManager->getDestinationRenderSystem()->getTextureGpuManager();
+
         if( maxActiveActors < mMaxActiveActors )
         {
-            TextureGpuManager *textureGpuManager =
-                mSceneManager->getDestinationRenderSystem()->getTextureGpuManager();
-
             // Shrinking
-            ActiveActorDataVec::const_iterator itor = mActiveActorData.begin() + maxActiveActors;
-            ActiveActorDataVec::const_iterator end = mActiveActorData.end();
-
+            auto itor = mActiveActorData.begin() + maxActiveActors;
+            auto end = mActiveActorData.end();
             while( itor != end )
             {
                 mCompositorManager->removeWorkspace( itor->workspace );
                 mSceneManager->destroyCamera( itor->reflectionCamera );
-                textureGpuManager->destroyTexture( itor->reflectionTexture );
+                texMgr->destroyTexture( itor->reflectionTexture );
                 if( itor->isReserved )
                 {
                     const size_t slotIdx = size_t( itor - mActiveActorData.begin() );
-                    PlanarReflectionActorVec::iterator itActor = mActors.begin();
-                    PlanarReflectionActorVec::iterator enActor = mActors.end();
+                    auto itActor = mActors.begin();
+                    auto enActor = mActors.end();
 
-                    while( itActor != enActor && ( !( *itActor )->hasReservation() ||
-                                                   ( *itActor )->mCurrentBoundSlot != slotIdx ) )
+                    while (itActor != enActor && (!(*itActor)->hasReservation() ||
+                                                  (*itActor)->mCurrentBoundSlot != slotIdx))
                     {
                         ++itActor;
                     }
@@ -139,10 +139,9 @@ namespace Ogre
                             "Slot was reserved but we couldn't find "
                             "any Actor that had that reservation" );
 
-                    ( *itActor )->mHasReservation = false;
-                    ( *itActor )->mCurrentBoundSlot = 0xFF;
+                    (*itActor)->mHasReservation = false;
+                    (*itActor)->mCurrentBoundSlot = 0xFF;
                 }
-
                 ++itor;
             }
 
@@ -150,10 +149,10 @@ namespace Ogre
 
             // Recalculate mMaxNumMipmaps
             mMaxNumMipmaps = 0u;
+
             itor = mActiveActorData.begin() + maxActiveActors;
             end = mActiveActorData.end();
-
-            while( itor != end )
+            while (itor != end)
             {
                 mMaxNumMipmaps = std::max( itor->reflectionTexture->getNumMipmaps(), mMaxNumMipmaps );
                 ++itor;
@@ -191,9 +190,7 @@ namespace Ogre
                 else
                     pixelFormat = PixelFormatGpuUtils::getEquivalentLinear( pixelFormat );
 
-                TextureGpuManager *textureGpuManager =
-                    mSceneManager->getDestinationRenderSystem()->getTextureGpuManager();
-                actorData.reflectionTexture = textureGpuManager->createTexture(
+                actorData.reflectionTexture = texMgr->createTexture(
                     "PlanarReflections #" + StringConverter::toString( uniqueId ),
                     GpuPageOutStrategy::Discard, textureFlags, TextureTypes::Type2D );
                 actorData.reflectionTexture->setResolution( width, height );
@@ -205,6 +202,9 @@ namespace Ogre
 
                 CompositorChannelVec channels;
                 channels.push_back( actorData.reflectionTexture );
+
+        		//  add Workspace
+    			LogO("++++ WS add:  Planar Reflect, all: "+toStr(mCompositorManager->getNumWorkspaces()));
                 actorData.workspace = mCompositorManager->addWorkspace(
                     mSceneManager, channels, actorData.reflectionCamera, workspaceName, false, 0 );
                 actorData.isReserved = false;
@@ -212,6 +212,8 @@ namespace Ogre
             }
         }
     }
+
+    //-----------------------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
     PlanarReflectionActor *PlanarReflections::addActor( const PlanarReflectionActor &actorRef )
     {
@@ -238,18 +240,16 @@ namespace Ogre
 
             mActors.pop_back();
 
-            PlanarReflectionActorVec::const_iterator itor = mActors.begin();
-            PlanarReflectionActorVec::const_iterator end = mActors.end();
-
+            auto itor = mActors.begin();
+            auto end = mActors.end();
             while( itor != end )
             {
                 const size_t i = size_t( itor - mActors.begin() );
-                ( *itor )->mIndex = i % ARRAY_PACKED_REALS;
-                ( *itor )->mActorPlane = mActorsSoA + ( i / ARRAY_PACKED_REALS );
-                ( *itor )->updateArrayActorPlane();
+                (*itor)->mIndex = i % ARRAY_PACKED_REALS;
+                (*itor)->mActorPlane = mActorsSoA + ( i / ARRAY_PACKED_REALS );
+                (*itor)->updateArrayActorPlane();
                 ++itor;
             }
-
             mActors.push_back( actor );
         }
 
@@ -260,11 +260,11 @@ namespace Ogre
 
         return actor;
     }
+
     //-----------------------------------------------------------------------------------
     void PlanarReflections::destroyActor( PlanarReflectionActor *actor )
     {
-        PlanarReflectionActorVec::iterator itor = std::find( mActors.begin(), mActors.end(), actor );
-
+        auto itor = std::find( mActors.begin(), mActors.end(), actor );
         if( itor == mActors.end() )
         {
             OGRE_EXCEPT( Exception::ERR_ITEM_NOT_FOUND,
@@ -272,30 +272,29 @@ namespace Ogre
                          "or was already destroyed!",
                          "PlanarReflections::destroyActor" );
         }
-
         if( actor->hasReservation() )
         {
             assert( actor->mCurrentBoundSlot < mActiveActorData.size() );
             mActiveActorData[actor->mCurrentBoundSlot].isReserved = false;
         }
-
         delete actor;
 
         efficientVectorRemove( mActors, itor );
     }
+
     //-----------------------------------------------------------------------------------
     void PlanarReflections::destroyAllActors()
     {
-        PlanarReflectionActorVec::iterator itor = mActors.begin();
-        PlanarReflectionActorVec::iterator end = mActors.end();
+        auto itor = mActors.begin();
+        auto end = mActors.end();
 
         while( itor != end )
             delete *itor++;
 
         mActors.clear();
 
-        ActiveActorDataVec::iterator itData = mActiveActorData.begin();
-        ActiveActorDataVec::iterator enData = mActiveActorData.end();
+        auto itData = mActiveActorData.begin();
+        auto enData = mActiveActorData.end();
 
         while( itData != enData )
         {
@@ -303,6 +302,7 @@ namespace Ogre
             ++itData;
         }
     }
+    
     //-----------------------------------------------------------------------------------
     void PlanarReflections::reserve( uint8 activeActorSlot, PlanarReflectionActor *actor )
     {
@@ -315,6 +315,7 @@ namespace Ogre
         actor->mHasReservation = true;
         actor->mCurrentBoundSlot = activeActorSlot;
     }
+
     //-----------------------------------------------------------------------------------
     void PlanarReflections::releaseReservation( PlanarReflectionActor *actor )
     {
@@ -328,14 +329,16 @@ namespace Ogre
         actor->mHasReservation = false;
         actor->mCurrentBoundSlot = 0xFF;
     }
+
+
+    //-----------------------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
     void PlanarReflections::updateFlushedRenderables()
     {
         mUpdatingRenderablesHlms = true;
 
-        TrackedRenderableArray::iterator itor = mTrackedRenderables.begin();
-        TrackedRenderableArray::iterator end = mTrackedRenderables.end();
-
+        auto itor = mTrackedRenderables.begin();
+        auto end = mTrackedRenderables.end();
         while( itor != end )
         {
             TrackedRenderable &trackedRenderable = *itor;
@@ -369,12 +372,11 @@ namespace Ogre
                         LML_CRITICAL );
                 }
             }
-
             ++itor;
         }
-
         mUpdatingRenderablesHlms = false;
     }
+
     //-----------------------------------------------------------------------------------
     void PlanarReflections::addRenderable( const TrackedRenderable &trackedRenderable )
     {
@@ -383,11 +385,12 @@ namespace Ogre
         mTrackedRenderables.push_back( trackedRenderable );
         _notifyRenderableFlushedHlmsDatablock( trackedRenderable.renderable );
     }
+
     //-----------------------------------------------------------------------------------
     void PlanarReflections::removeRenderable( Renderable *renderable )
     {
-        TrackedRenderableArray::iterator itor = mTrackedRenderables.begin();
-        TrackedRenderableArray::iterator end = mTrackedRenderables.end();
+        auto itor = mTrackedRenderables.begin();
+        auto end = mTrackedRenderables.end();
 
         while( itor != end && itor->renderable != renderable )
             ++itor;
@@ -407,6 +410,7 @@ namespace Ogre
             efficientVectorRemove( mTrackedRenderables, itor );
         }
     }
+
     //-----------------------------------------------------------------------------------
     void PlanarReflections::_notifyRenderableFlushedHlmsDatablock( Renderable *renderable )
     {
@@ -416,6 +420,7 @@ namespace Ogre
             mAnyPendingFlushRenderable = true;
         }
     }
+
     //-----------------------------------------------------------------------------------
     void PlanarReflections::beginFrame()
     {
@@ -424,6 +429,7 @@ namespace Ogre
 
         mActiveActors.clear();
     }
+
     //-----------------------------------------------------------------------------------
     struct OrderPlanarReflectionActorsByDistanceToPoint
     {
@@ -439,11 +445,16 @@ namespace Ogre
             return _l->mActivationPriority < _r->mActivationPriority;
         }
     };
+
     static bool OrderPlanarReflectionActorsByBindingSlot( const PlanarReflectionActor *_l,
                                                           const PlanarReflectionActor *_r )
     {
         return _l->getCurrentBoundSlot() < _r->getCurrentBoundSlot();
     };
+
+
+    //-----------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------
     void PlanarReflections::update( Camera *camera, Real aspectRatio )
     {
         /*if( mLockCamera && camera != mLockCamera )
@@ -661,9 +672,9 @@ namespace Ogre
 
         {
             uint8 nextFreeActorData = 0;
-            PlanarReflectionActorVec::iterator itor = mActiveActors.begin();
-            PlanarReflectionActorVec::iterator end = mActiveActors.end();
-
+            
+            auto itor = mActiveActors.begin();
+            auto end = mActiveActors.end();
             while( itor != end )
             {
                 PlanarReflectionActor *actor = *itor;
@@ -730,8 +741,8 @@ namespace Ogre
             }
         }
 
-        TrackedRenderableArray::const_iterator itTracked = mTrackedRenderables.begin();
-        TrackedRenderableArray::const_iterator enTracked = mTrackedRenderables.end();
+        auto itTracked = mTrackedRenderables.begin();
+        auto enTracked = mTrackedRenderables.end();
 
         while( itTracked != enTracked )
         {
@@ -750,14 +761,12 @@ namespace Ogre
                 Real bestCosAngle = -1;
                 Real bestSqDistance = std::numeric_limits<Real>::max();
 
-                PlanarReflectionActorVec::const_iterator itor = mActiveActors.begin();
-                PlanarReflectionActorVec::const_iterator end = mActiveActors.end();
-
+                auto itor = mActiveActors.begin();
+                auto end = mActiveActors.end();
                 while( itor != end )
                 {
                     PlanarReflectionActor *actor = *itor;
                     const Real cosAngle = actor->getNormal().dotProduct( reflNormal );
-
                     const Real cos20 = 0.939692621f;
 
                     if( cosAngle >= cos20 &&
@@ -771,7 +780,6 @@ namespace Ogre
                             bestSqDistance = sqDistance;
                         }
                     }
-
                     ++itor;
                 }
 
@@ -780,15 +788,13 @@ namespace Ogre
                     itTracked->renderable->mCustomParameter = ( UseActiveActor | bestActorIdx );
                     itTracked->renderable->_setHlmsHashes( itTracked->hlmsHashes[1],
                                                            itTracked->renderable->getHlmsCasterHash() );
-                }
-                else
+                }else
                 {
                     itTracked->renderable->mCustomParameter = InactiveActor;
                     itTracked->renderable->_setHlmsHashes( itTracked->hlmsHashes[0],
                                                            itTracked->renderable->getHlmsCasterHash() );
                 }
             }
-
             ++itTracked;
         }
 
@@ -809,8 +815,9 @@ namespace Ogre
         // which for all purposes we need, it's the same as:
         //   0, 1, 2, 3, 4
         size_t lastIdx = std::numeric_limits<size_t>::max();
-        PlanarReflectionActorVec::iterator itActor = mActiveActors.begin();
-        PlanarReflectionActorVec::iterator enActor = mActiveActors.end();
+
+        auto itActor = mActiveActors.begin();
+        auto enActor = mActiveActors.end();
         while( itActor != enActor )
         {
             if( lastIdx + 1u != ( *itActor )->mCurrentBoundSlot )
@@ -822,33 +829,32 @@ namespace Ogre
                 enActor = mActiveActors.end();
                 lastIdx += size_t( diff );
             }
-
             ++lastIdx;
             ++itActor;
         }
 
+        auto itor = mActiveActorData.begin();
+        auto end = mActiveActorData.end();
+        while( itor != end )
         {
-            ActiveActorDataVec::const_iterator itor = mActiveActorData.begin();
-            ActiveActorDataVec::const_iterator end = mActiveActorData.end();
-
-            while( itor != end )
+            const ActiveActorData &actorData = *itor;
+            if( actorData.workspace->getEnabled() )
             {
-                const ActiveActorData &actorData = *itor;
-                if( actorData.workspace->getEnabled() )
-                {
-                    actorData.workspace->_update();
-                    actorData.workspace->setEnabled( false );
-                }
-
-                ++itor;
+                actorData.workspace->_update();
+                actorData.workspace->setEnabled( false );
             }
+            ++itor;
         }
     }
+
     //-----------------------------------------------------------------------------------
     size_t PlanarReflections::getConstBufferSize() const
     {
         return ( 4u * mMaxActiveActors + 4u * 4u + 4u ) * sizeof( float );
     }
+
+
+    //-----------------------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
     void PlanarReflections::fillConstBufferData( TextureGpu *renderTarget, const Camera *camera,
                                                  const Matrix4 &projectionMatrix,
@@ -858,32 +864,28 @@ namespace Ogre
         Matrix3 viewMat3x3;
         viewMatrix.extract3x3Matrix( viewMat3x3 );
 
-        PlanarReflectionActorVec::const_iterator itor = mActiveActors.begin();
-        PlanarReflectionActorVec::const_iterator end = mActiveActors.end();
-
-        while( itor != end )
+        auto itor = mActiveActors.begin();
+        auto end = mActiveActors.end();
+        while (itor != end)
         {
-            const Plane &plane = ( *itor )->mPlane;
-
             // We need to send the plane data for PBS (which will
             // be processed in pixel shader)in view space.
+            const Plane &plane = (*itor)->mPlane;
             const Vector3 viewSpacePointInPlane = viewMatrix * ( plane.normal * -plane.d );
             const Vector3 viewSpaceNormal = viewMat3x3 * plane.normal;
 
             Plane planeVS( viewSpaceNormal, viewSpacePointInPlane );
-
             *passBufferPtr++ = static_cast<float>( planeVS.normal.x );
             *passBufferPtr++ = static_cast<float>( planeVS.normal.y );
             *passBufferPtr++ = static_cast<float>( planeVS.normal.z );
             *passBufferPtr++ = static_cast<float>( planeVS.d );
-
             ++itor;
         }
 
         memset( passBufferPtr, 0, ( mMaxActiveActors - mActiveActors.size() ) * 4u * sizeof( float ) );
         passBufferPtr += ( mMaxActiveActors - mActiveActors.size() ) * 4u;
 
-        Matrix4 reflProjMat = PROJECTIONCLIPSPACE2DTOIMAGESPACE_PERSPECTIVE * projectionMatrix;
+        Matrix4 reflProjMat = PROJECTION * projectionMatrix;
         for( size_t i = 0; i < 16; ++i )
             *passBufferPtr++ = (float)reflProjMat[0][i];
 
@@ -892,6 +894,8 @@ namespace Ogre
         *passBufferPtr++ = 1.0f;
         *passBufferPtr++ = 1.0f;
     }
+
+
     //-----------------------------------------------------------------------------------
     TextureGpu *PlanarReflections::getTexture( uint8 actorIdx ) const
     {
@@ -899,6 +903,7 @@ namespace Ogre
             return 0;
         return mActiveActorData[actorIdx].reflectionTexture;
     }
+
     //-----------------------------------------------------------------------------------
     bool PlanarReflections::cameraMatches( const Camera *camera )
     {
@@ -906,23 +911,25 @@ namespace Ogre
                mLastCameraPos == camera->getDerivedPosition() &&
                mLastCameraRot == camera->getDerivedOrientation();
     }
+
     //-----------------------------------------------------------------------------------
-    bool PlanarReflections::_isUpdatingRenderablesHlms() const { return mUpdatingRenderablesHlms; }
-    //-----------------------------------------------------------------------------------
+    bool PlanarReflections::_isUpdatingRenderablesHlms() const
+    {   return mUpdatingRenderablesHlms;  }
+
     bool PlanarReflections::hasPlanarReflections( const Renderable *renderable ) const
     {
         return renderable->mCustomParameter & UseActiveActor ||
                renderable->mCustomParameter == FlushPending ||
                renderable->mCustomParameter == InactiveActor;
     }
-    //-----------------------------------------------------------------------------------
+
     bool PlanarReflections::hasFlushPending( const Renderable *renderable ) const
     {
         return renderable->mCustomParameter == FlushPending;
     }
-    //-----------------------------------------------------------------------------------
+
     bool PlanarReflections::hasActiveActor( const Renderable *renderable ) const
     {
         return ( renderable->mCustomParameter & UseActiveActor ) != 0;
     }
-}  // namespace Ogre
+}

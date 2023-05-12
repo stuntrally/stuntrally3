@@ -113,9 +113,7 @@ namespace Ogre
 
     protected:
         typedef FastArray<TrackedRenderable> TrackedRenderableArray;
-
         typedef vector<ActiveActorData>::type ActiveActorDataVec;
-
         typedef vector<PlanarReflectionActor *>::type PlanarReflectionActorVec;
 
         PlanarReflectionActorVec mActors;

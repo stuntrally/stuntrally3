@@ -91,6 +91,9 @@ namespace Ogre
 		CompositorChannelVec finalTarget( 2, CompositorChannel() );
 		finalTarget[0] = m_shadowMapTex;
 		finalTarget[1] = m_tmpGaussianFilterTex;
+
+		//  add Workspace
+		LogO("++++ WS add:  Ter Shadowmap, all: "+toStr(m_compositorManager->getNumWorkspaces()));
 		m_shadowWorkspace = m_compositorManager->addWorkspace(
 			m_sceneManager, finalTarget, 0,
 			"Terra/ShadowGeneratorWorkspace", false );

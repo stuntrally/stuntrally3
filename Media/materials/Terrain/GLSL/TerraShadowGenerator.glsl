@@ -11,11 +11,7 @@ layout(std140) uniform;
 layout( vulkan( ogre_u0 ) vk_comma @insertpiece(uav0_pf_type) )
 uniform restrict writeonly image2D shadowMap;
 
-@property( !terra_use_uint )
-	vulkan_layout( ogre_t0 ) uniform texture2D heightMap;
-@else
-	vulkan_layout( ogre_t0 ) uniform utexture2D heightMap;
-@end
+vulkan_layout( ogre_t0 ) uniform texture2D heightMap;
 
 layout( local_size_x = @value( threads_per_group_x ),
         local_size_y = @value( threads_per_group_y ),
@@ -63,11 +59,7 @@ vec2 calcShadow( ivec2 xyPos, vec2 prevHeight )
 	prevHeight.x -= heightDelta;
 	prevHeight.y = prevHeight.y * 0.985 - heightDelta; //Used for the penumbra region
 
-	float currHeight = float( texelFetch( heightMap, xyPos << int( resolutionShift ), 0 ).x );
-
-	//@property( terra_use_uint )
-		currHeight /= 65535.0f;
-	//@end
+	float currHeight = float( texelFetch( heightMap, xyPos << int( resolutionShift ), 0 ).x ); //** ? + 71.f;
 
 	//float shadowValue = smoothstep( prevHeight.y, prevHeight.x, clamp( currHeight, prevHeight.y, prevHeight.x ) );
 	float shadowValue = smoothstep( prevHeight.y, prevHeight.x, currHeight + 0.001 );
@@ -129,7 +121,8 @@ void main()
 	}
 }
 
-	// Bresenham's line algorithm (http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#C.2B.2B)
+
+// Bresenham's line algorithm (http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#C.2B.2B)
 //	const bool steep = (fabs(y1 - y0) > fabs(x1 - x0));
 //	if(steep)
 //	{

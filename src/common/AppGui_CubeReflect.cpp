@@ -140,11 +140,12 @@ void AppGui::CreateCubeReflect()
 	const String name( "SR3_ReflCubemap" );  // created from code
 	if( !mgr->hasWorkspaceDefinition( name ) )
 	{
-		LogO("REFL ws add");
 		auto* w = mgr->addWorkspaceDefinition( name );
 		w->connectExternal( 0, idCubeNode, 0 );
 	}
 
+	//  add Workspace
+	LogO("++++ WS add:  Reflect Cube, all: "+toStr(mgr->getNumWorkspaces()));
 	auto* ws = mgr->addWorkspace(
 		mSceneMgr, chan, mCubeCamera, name, false );  // manual update
 	mWorkspaces.push_back(ws);  //+ to destroy

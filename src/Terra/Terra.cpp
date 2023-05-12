@@ -219,9 +219,10 @@ namespace Ogre
 	{
 		Destroy();
 
-		TextureGpuManager *mgr = pTerra->mManager->getDestinationRenderSystem()->getTextureGpuManager();
-		texture = mgr->createTexture(
-			"NormalMapTex_" + toStr( pTerra->getId() ),
+		auto sceneMgr = pTerra->mManager;
+		TextureGpuManager *texMgr = sceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
+		texture = texMgr->createTexture(
+			"NormalMapTex_" + toStr(pTerra->cnt), //pTerra->getId() ),
 			GpuPageOutStrategy::SaveToSystemRam,
 			TextureFlags::ManualTexture, TextureTypes::Type2D );
 		
@@ -229,7 +230,7 @@ namespace Ogre
 								pTerra->m_heightMapTex->getHeight() );
 		texture->setNumMipmaps( PixelFormatGpuUtils::getMaxMipmapCount(
 			texture->getWidth(), texture->getHeight() ) );
-		if( mgr->checkSupport(
+		if( texMgr->checkSupport(
 			PFG_R10G10B10A2_UNORM, TextureTypes::Type2D,
 			TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps ) )
 		{
@@ -268,11 +269,15 @@ namespace Ogre
 		finalTargetChannels[0] = rtt;
 
 
-		camera = pTerra->mManager->createCamera( "CamTerraNormal" + si );
+		camera = sceneMgr->createCamera( "CamTerraNormal" + si );
 
+		auto mgr = pTerra->m_compositorManager;
 		const IdString workspaceName = "Terra/GpuNormalMapperWorkspace" + si;
-		workspace = pTerra->m_compositorManager->addWorkspace(
-			pTerra->mManager, finalTargetChannels, camera, workspaceName, false );
+
+		//  add Workspace
+		LogO("++++ WS add:  Ter Normals "+si+", all: "+toStr(mgr->getNumWorkspaces()));
+		workspace = mgr->addWorkspace(
+			sceneMgr, finalTargetChannels, camera, workspaceName, false );
 
 		Update();
 

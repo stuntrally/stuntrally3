@@ -148,10 +148,11 @@ namespace Ogre
 	{
 		Destroy();
 
-		TextureGpuManager *mgr = pTerra->mManager->getDestinationRenderSystem()->getTextureGpuManager();
-		texture = mgr->createTexture(
-			// "BlendMapTex_" + toStr( pTerra->getId() ),
-			"BlendMapTex_" + toStr(pTerra->cnt),
+		auto sceneMgr = pTerra->mManager;
+		TextureGpuManager *texMgr = sceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
+		auto si = toStr(pTerra->cnt);
+		texture = texMgr->createTexture(
+			"BlendMapTex_" + si,
 			GpuPageOutStrategy::SaveToSystemRam,
 			TextureFlags::RenderToTexture | TextureFlags::AllowAutomipmaps,
 			TextureTypes::Type2DArray, "General" );
@@ -163,12 +164,11 @@ namespace Ogre
 		texture->setPixelFormat( PFG_RGBA8_UNORM );
 		texture->scheduleTransitionTo( GpuResidency::Resident );
 
-		LogO("TER ble ws new:" + toStr(pTerra->cnt));
+		LogO("TER ble ws new:" + si);
 		MaterialPtr blendMat = MaterialManager::getSingleton().load(
-			// "Terra/GpuBlendMapper",
-			"Terra/GpuBlendMapper"+toStr(pTerra->cnt),
+			"Terra/GpuBlendMapper" + si,
 			ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ).staticCast<Material>();
-		// MaterialPtr blendMat2 = blendMat->clone("MtrBle" + toStr(pTerra->cnt));
+		// MaterialPtr blendMat2 = blendMat->clone("MtrBle" + si);
 		// pass = blendMat2->getTechnique(0)->getPass(0);  // no-
 		pass = blendMat->getTechnique(0)->getPass(0);
 		
@@ -179,12 +179,15 @@ namespace Ogre
 
 		SetParams();
 
-		camera = pTerra->mManager->createCamera( "CamTerraBlend" + toStr(pTerra->cnt) );
+		camera = sceneMgr->createCamera( "CamTerraBlend" + si );
 
-		// const IdString workspaceName = "Terra/GpuBlendMapperWorkspace";
-		const IdString workspaceName = "Terra/GpuBlendMapperWorkspace"+toStr(pTerra->cnt);
+		auto mgr = pTerra->m_compositorManager;
+		const IdString workspaceName = "Terra/GpuBlendMapperWorkspace" + si;
+
+		//  add Workspace
+		LogO("++++ WS add:  Ter Blendmap "+si+", all: "+toStr(mgr->getNumWorkspaces()));
 		workspace = pTerra->m_compositorManager->addWorkspace(
-			pTerra->mManager, texture/*finalTargetChannels*/, camera, workspaceName, false );
+			sceneMgr, texture/*finalTargetChannels*/, camera, workspaceName, false );
 
 		workspace->_beginUpdate(true);  //+?
 		workspace->_update();
@@ -192,7 +195,7 @@ namespace Ogre
 
 		#ifndef SR_EDITOR  // todo: game no upd, destroy rtt
 		//	pTerra->m_compositorManager->removeWorkspace( workspace );
-		//	pTerra->mManager->destroyCamera( camera );
+		//	sceneMgr->destroyCamera( camera );
 		#endif
 
 		//^^ todo:  for GetTerMtrIds  tire ter surf ..

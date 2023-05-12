@@ -104,6 +104,8 @@ void FluidReflect::CreateReflect()
 	mPlanarRefl = new PlanarReflections( app->mSceneMgr, root->getCompositorManager2(), 1.0, 0 );
 	mWorkspaceListener = new ReflectListener( mPlanarRefl );
 	{
+		// app->mWorkspaces
+		LogO("---- WS add Listener");
 		CompositorWorkspace *workspace = app->mGraphicsSystem->getCompositorWorkspace();
 		workspace->addListener( mWorkspaceListener );
 	}
@@ -123,7 +125,8 @@ void FluidReflect::CreateReflect()
 	v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
 		"PlaneMirror", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 		Plane( Vector3::UNIT_Z, 0.0f ),  // z|
-		mirrorSize.x, mirrorSize.y, 100, 100, true, 1,
+		mirrorSize.x, mirrorSize.y,
+		30, 30, true, 1,  // par from size
 		120.f, 120.f, Vector3::UNIT_Y,  // z|
 		v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 	sMesh = "PlaneMirror";
@@ -132,36 +135,6 @@ void FluidReflect::CreateReflect()
 		// planeMeshV1.get(), true, true, true );
 		planeMeshV1.get(), false, false, true, false );
 
-
-	//  Setup mirror for Unlit
-	//---------------------------------------------------------------------
-	/**item = mSceneMgr->createItem( planeMesh, SCENE_DYNAMIC );
-	nd = mSceneMgr->getRootSceneNode( SCENE_DYNAMIC )->createChildSceneNode( SCENE_DYNAMIC );
-	nd->setPosition( 500, 5, 0 );
-	nd->setOrientation(	Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_Z ) );  // ?
-	// nd->setOrientation(	Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_Y ) );  // z
-	nd->attachObject( item );
-	item->setCastShadows( false );
-	item->setVisibilityFlags( 1u );  // Do not render this plane during the reflection phase.
-
-	actor = mPlanarRefl->addActor( PlanarReflectionActor(
-		nd->getPosition(), mirrorSize, nd->getOrientation() ) );
-
-	Hlms *hlmsUnlit = root->getHlmsManager()->getHlms( HLMS_UNLIT );
-
-	HlmsMacroblock macroblock;
-	HlmsBlendblock blendblock;
-	String datablockName( "Mirror_Unlit" );
-	HlmsUnlitDatablock *mirror =
-		static_cast<HlmsUnlitDatablock *>( hlmsUnlit->createDatablock(
-			datablockName, datablockName, macroblock, blendblock, HlmsParamVec() ) );
-	mPlanarRefl->reserve( 0, actor );
-	// Make sure it's always activated (i.e. always win against other actors)
-	// unless it's not visible by the camera.
-	actor->mActivationPriority = 0;
-	mirror->setTexture( 0, mPlanarRefl->getTexture( 0 ) );
-	mirror->setEnablePlanarReflection( 0, true );
-	item->setDatablock( mirror );/**/
 
 
 	//  Setup mirror for PBS

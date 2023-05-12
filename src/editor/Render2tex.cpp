@@ -119,8 +119,11 @@ void App::CreateRnd2Tex()
 			{
 				auto* w = mgr->addWorkspaceDefinition( name );
 				w->connectExternal( 0, strWs[i], 0 );
-			}
+			}else
+				LogO("Workspace already exists: "+name);
 
+			//  add Workspace
+			LogO(String("++++ WS add:  Ed ")+strWs[i]+", all: "+toStr(mgr->getNumWorkspaces()));
 			r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, true );  //! slower
 			// r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, false );  // todo: manual update
 
@@ -147,21 +150,6 @@ void App::CreateRnd2Tex()
 			r.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 			r.nd->attachObject(r.hr);
 			r.nd->setVisible(false);//pSet->trackmap);
-		/*
-			if (i == RT_View)
-			{	mt->getTextureUnitState(0)->setTexture(texture[0]);
-				mt->getTextureUnitState(1)->setTexture(texture[2]);
-			}else if (i < RT_Last)
-				mt->getTextureUnitState(0)->setTexture(texture[i]);
-			else if (i == RT_Last)
-				mt->getTextureUnitState(0)->setTexture(texture[3]);
-	
-			if (i == RT_Last)  r.mini->setCorners(-1/asp, 1, 1/asp, -1);  // fullscr,square
-			else  r.mini->setCorners(xm1, ym1, xm2, ym2);  //+i*sz*all
-
-			MaterialPtr brush_mt = getByName("BrushPrvMtr");
-			r.mini->setMaterial(i == RT_Brush ? brush_mt : mt);
-			r.mini->setVisibilityFlags(i == RT_Last ? RV_MaskPrvCam : RV_Hud);*/
 		}	}
 	}
 

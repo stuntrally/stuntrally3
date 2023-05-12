@@ -150,13 +150,16 @@ CompositorWorkspace* AppGui::SetupCompositor()
 			Vector3( eyeSide, 0.f,0.f), Vector3(eyeFocus *  eyeSide, 0.f, eyeZ) );
 		mCamera = camL->cam;
 
+		//  add Workspace
 		CompositorWorkspace* ws1,*ws2;
+		LogO("++++ WS add:  VR Eye L, all: "+toStr(mgr->getNumWorkspaces()));
 		ws1 = mgr->addWorkspace( mSceneMgr, ext,
 				camL->cam, wsName,
 				true, -1, 0, 0,
 				Vector4( 0.0f, 0.0f, 0.5f, 1.0f ),
 				0x01, 0x01 );
 
+		LogO("++++ WS add:  VR Eye R, all: "+toStr(mgr->getNumWorkspaces()));
 		ws2 = mgr->addWorkspace( mSceneMgr, ext, 
 				camR->cam, wsName,
 				true, -1, 0, 0,
@@ -185,6 +188,8 @@ CompositorWorkspace* AppGui::SetupCompositor()
 			auto& d = mDims[i];
 			d.SetDim(views, !pSet->split_vertically, i);
 
+			//  add Workspace
+			LogO("++++ WS add:  Split Screen "+toStr(i)+", all: "+toStr(mgr->getNumWorkspaces()));
 			CompositorWorkspace* w =
 				mgr->addWorkspace( mSceneMgr, ext,
 					c->cam, wsName,
@@ -198,7 +203,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 			mWorkspaces.push_back(w);
 		}
 
-		LogO("C### Created Split workspaces: "+toStr(mWorkspaces.size()));
+		// LogO("C### Created Split workspaces: "+toStr(mWorkspaces.size()));
 		return mWorkspaces[0];
 	}
 #endif
@@ -208,11 +213,13 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		auto c = CreateCamera( "Player", 0, Vector3(0,150,0), Vector3(0,0,0) );
 		mCamera = c->cam;
 
+		//  add Workspace
+		LogO("++++ WS add:  Main, all: "+toStr(mgr->getNumWorkspaces()));
 		auto ws = mgr->addWorkspace( mSceneMgr, ext, c->cam, wsName, true );  // in .compositor
 		// ws->addListener(listener);
 		mWorkspaces.push_back(ws);
 		mGraphicsSystem->mWorkspace = ws;
-		LogO("C### Created Single workspaces: "+toStr(mWorkspaces.size()));
+		// LogO("C### Created Single workspaces: "+toStr(mWorkspaces.size()));
 
 		// createShadowMapDebugOverlays();
 		return ws;

@@ -263,6 +263,8 @@ CompositorWorkspace *AppGui::setupShadowCompositor()
 		createEsmShadowNodes();
 	}
 
+	//  add Workspace
+	LogO("++++ WS add:  Shadows, all: "+toStr(mgr->getNumWorkspaces()));
 	auto* mWorkspace = mgr->addWorkspace(
 		mSceneMgr, mWindow->getTexture(),
 		mCamera, "ShadowMapFromCodeWorkspace", true );
