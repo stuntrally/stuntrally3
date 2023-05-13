@@ -37,6 +37,7 @@ Modified by CryHam
 #include "TerrainCell.h"
 
 class Scene;
+class App;
 
 
 namespace Ogre
@@ -127,15 +128,16 @@ namespace Ogre
 		//--------------------------------------------------------------------------------
 		//begin  extras by CryHam
 		Ogre::String mtrName;
-		Ogre::SceneNode* node = 0;
+		Ogre::SceneNode* node =0;
 
 		bool bGenerateShadowMap;  //** ter
 		bool bNormalized;  // true: Hmap floats 0..1,  false: any, real heights
 		int iLodMax;  //**
 		float fHMin, fHMax, fHRange;  //norm meh-
 		
-		Scene* sc = 0;
-		int cnt = 0;  // name counter, for many
+		App* app =0;
+		Scene* sc =0;
+		int cnt = 0;  // name counter, for many, Id
 		
 		int getSize()
 		{	return m_iWidth;  }
@@ -153,7 +155,7 @@ namespace Ogre
 		//----------------------------------------
 		struct Blendmap
 		{
-			Terra* pTerra = 0;
+			Terra* pTerra =0;
 			Blendmap(Terra* terra);
 
 			TextureGpu* texture =0;//, *m_blendRtt;
@@ -174,7 +176,7 @@ namespace Ogre
 
 		struct Normalmap
 		{
-			Terra* pTerra = 0;
+			Terra* pTerra =0;
 			Normalmap(Terra* terra);
 
 			TextureGpu* texture =0, *rtt =0;
@@ -213,9 +215,10 @@ namespace Ogre
 		void optimizeCellsAndAdd();
 
 	public:
-		//  ctor
-		Terra( int n, ObjectMemoryManager *objectMemoryManager, SceneManager *sceneManager,
-			   uint8 renderQueueId, CompositorManager2 *compositorManager, Camera *camera, bool zUp );
+		//  🌟 ctor
+		Terra( App* app1, Scene* sc1, int n,
+				ObjectMemoryManager *objectMemoryManager, SceneManager *sceneManager,
+				uint8 renderQueueId, CompositorManager2 *compositorManager, Camera *camera, bool zUp );
 		~Terra() override;
 
 		/// Sets shared resources for minimizing memory consumption wasted on temporary

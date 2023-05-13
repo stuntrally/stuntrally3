@@ -86,6 +86,7 @@ public:
 	void InitTexFilters(Ogre::HlmsSamplerblock* sb, bool wrap = true);
 	//  select
 	void UpdSelectGlow(Ogre::Renderable *rend, bool selected);
+	void BarrierResolve(Ogre::TextureGpu* tex);  // fix rtt for vulkan
 
 	//  unload tex, gpu mem  ----
 	template <typename T, size_t MaxNumTextures>

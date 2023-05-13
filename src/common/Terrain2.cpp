@@ -157,15 +157,16 @@ void CScene::CreateTerrain1(int n, bool upd)
 	auto dyn = SCENE_STATIC;
 #endif
 
-	auto* mTerra = new Terra( //si,
-		n, &mgr->_getEntityMemoryManager( dyn ),
-		mgr, RQG_Terrain, app->mRoot->getCompositorManager2(),
+	auto* mTerra = new Terra(
+		app, sc, n,
+		&mgr->_getEntityMemoryManager( dyn ),
+		mgr, RQG_Terrain,
+		app->mRoot->getCompositorManager2(),
 		app->mCamera, false );
 	
 	mTerra->mtrName = mtrName;
 	// mTerra->setCustomSkirtMinHeight(0.8f); //?-
 	mTerra->setCastShadows( false );
-	mTerra->sc = sc;
 
 	if (upd)  //  ed update ter only
 		ters[n] = mTerra;

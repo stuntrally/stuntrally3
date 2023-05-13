@@ -22,6 +22,7 @@
 #include "Def_Str.h"
 #include "CScene.h"
 #include "SceneXml.h"
+#include "App.h"
 
 
 namespace Ogre
@@ -196,6 +197,8 @@ namespace Ogre
 		//	pTerra->m_compositorManager->removeWorkspace( workspace );
 		//	sceneMgr->destroyCamera( camera );
 		#endif
+
+		pTerra->app->BarrierResolve(texture);
 
 		//^^ todo:  for GetTerMtrIds  tire ter surf ..
 		// texture->writeContentsToFile("blendmapRTT.png", 0, 1);  //** ter test blendmap

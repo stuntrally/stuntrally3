@@ -68,11 +68,14 @@ namespace Ogre
 	}
 
 	//  🌟 ctor
-	Terra::Terra( int n,
+	Terra::Terra(
+			App* app1, Scene* sc1, int n,
 			ObjectMemoryManager *objectMemoryManager, SceneManager *sceneManager,
-			uint8 renderQueueId, CompositorManager2 *compositorManager, Camera *camera,
+			uint8 renderQueueId,
+			CompositorManager2 *compositorManager, Camera *camera,
 			bool zUp ) :
 		MovableObject( IdType(n), objectMemoryManager, sceneManager, renderQueueId ),
+		app(app1), sc(sc1),
 		cnt(n),
 		m_iWidth( 0u ),
 		m_iHeight( 0u ),

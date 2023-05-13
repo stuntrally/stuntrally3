@@ -28,7 +28,7 @@ void AppGui::SetWireframe()
 	SetWireframe( HLMS_USER3, b );  // terrain
 }
 
-void AppGui::SetWireframe(Ogre::HlmsTypes type, bool wire)
+void AppGui::SetWireframe(HlmsTypes type, bool wire)
 {
 	HlmsMacroblock mb;
 	mb.mPolygonMode = wire ? PM_WIREFRAME : PM_SOLID;
@@ -48,7 +48,7 @@ void AppGui::SetWireframe(Ogre::HlmsTypes type, bool wire)
 
 //  ⛓️ util  wrap Texture filtering
 //-----------------------------------------------------------------------------------
-void AppGui::SetTexWrap(Ogre::HlmsTypes type, Ogre::String name, bool wrap)
+void AppGui::SetTexWrap(HlmsTypes type, String name, bool wrap)
 {
 	HlmsSamplerblock sb;
 	InitTexFilters(&sb, wrap);
@@ -64,7 +64,7 @@ void AppGui::SetTexWrap(Ogre::HlmsTypes type, Ogre::String name, bool wrap)
 	}
 }
 
-void AppGui::SetTexWrap(Ogre::Item* it, bool wrap)
+void AppGui::SetTexWrap(Item* it, bool wrap)
 {
 	HlmsSamplerblock sb;
 	InitTexFilters(&sb, wrap);
@@ -96,7 +96,7 @@ void AppGui::InitTexFilters(HlmsSamplerblock* sb, bool wrap)
 	sb->mU = w;  sb->mV = w;  sb->mW = w;
 }
 
-void AppGui::UpdSelectGlow(Ogre::Renderable *rend, bool selected)
+void AppGui::UpdSelectGlow(Renderable *rend, bool selected)
 {
 	rend->setCustomParameter(HlmsPbs2::selected_glow, Vector4(selected ? 1 : 0, 0,0,0));
 
@@ -110,6 +110,18 @@ void AppGui::UpdSelectGlow(Ogre::Renderable *rend, bool selected)
 		myHlmsPbs->CalculateHashFor( rend, hash, casterHash );
 		rend->_setHlmsHashes( hash, casterHash );
 	}
+}
+
+//  fix rtt for vulkan
+void AppGui::BarrierResolve(TextureGpu* tex)
+{
+	RenderSystem *rs = mSceneMgr->getDestinationRenderSystem();
+	rs->endCopyEncoder();
+	BarrierSolver &barrierSolver = rs->getBarrierSolver();
+	ResourceTransitionArray resTrans;
+	barrierSolver.resolveTransition( resTrans, tex, ResourceLayout::Texture,
+									ResourceAccess::Read, 1u << GPT_FRAGMENT_PROGRAM );
+	rs->executeResourceTransition( resTrans );
 }
 
 

@@ -150,6 +150,8 @@ void App::CreateRnd2Tex()
 			r.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 			r.nd->attachObject(r.hr);
 			r.nd->setVisible(false);//pSet->trackmap);
+
+			BarrierResolve(r.tex);
 		}	}
 	}
 
