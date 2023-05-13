@@ -63,12 +63,12 @@ void GridCellLods::Create()
 	//  cell mesh name
 	++ii;
 	short x,y,z;  tie(x,y,z) = gpos;
-	sMesh = "Gx"+toStr(x)+",y"+toStr(y)+",z"+toStr(z)+","+toStr(ii)+","+sMtrName;
+	sMesh = "Gx"+iToStr(x,2)+",y"+iToStr(y,2)+",z"+iToStr(z,2)+","+iToStr(ii,2)+","+sMtrName;
 
 	if (MeshManager::getSingleton().getByName(sMesh))
 		LogO("Mesh exists !!!" + sMesh);
 
-	LogO("Grid mesh: "+sMesh+/*"  mtr: "+sMtrName+*/"  pos "+toStr(pos.size())+"  idx "+toStr(idx.size()));
+	LogO("Grid mesh: "+sMesh+/*"  mtr: "+sMtrName+*/"  pos "+iToStr(pos.size(),2)+"  idx "+iToStr(idx.size(),2));
 	bool trail = 0; //IsTrail();
 
  	Aabb aabox;  Real b = 1000.f;

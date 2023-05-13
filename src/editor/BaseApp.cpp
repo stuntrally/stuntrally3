@@ -134,7 +134,7 @@ void BaseApp::baseInitGui()
 {
 	//  Cam Pos
 	bckCamPos = mGui->createWidget<ImageBox>("ImageBox",
-		248,22, 616,96, Align::Default, "Pointer", "CamB");
+		248,22, 616,96, Align::Default, "Overlapped", "CamB");
 	bckCamPos->setImageTexture("back_times.png");
 
 	txCamPos = bckCamPos->createWidget<TextBox>("TextBox",

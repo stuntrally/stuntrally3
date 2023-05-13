@@ -164,7 +164,6 @@ namespace Ogre
 		texture->setPixelFormat( PFG_RGBA8_UNORM );
 		texture->scheduleTransitionTo( GpuResidency::Resident );
 
-		LogO("TER ble ws new:" + si);
 		MaterialPtr blendMat = MaterialManager::getSingleton().load(
 			"Terra/GpuBlendMapper" + si,
 			ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ).staticCast<Material>();
