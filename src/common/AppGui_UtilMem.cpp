@@ -167,7 +167,11 @@ void AppGui::MinimizeMemory()
 	Root *root = mGraphicsSystem->getRoot();
 	RenderSystem *renderSystem = root->getRenderSystem();
 	VaoManager *vaoManager = renderSystem->getVaoManager();
-	vaoManager->cleanupEmptyPools();
+	try
+	{	vaoManager->cleanupEmptyPools();
+	}
+	catch( UnimplementedException & )
+	{	}	// Ignore. Vulkan doesn't implement this (yet?).
 }
 
 #if 0

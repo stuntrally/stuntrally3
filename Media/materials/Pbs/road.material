@@ -392,7 +392,7 @@ hlms roadCrystal_ter pbs : road_terrain
 hlms roadMud pbs : road
 {
 	diffuse_map  roadMud.jpg
-	z roadAsphalt_spec2.jpg
+	specular_map roadAsphalt_spec2.jpg
 	diffuse  0.7 0.7 0.7
 	specular 0.3 0.3 0.2
 }
@@ -407,7 +407,7 @@ hlms roadMud_ter pbs : road_terrain
 hlms roadMudWet pbs : road
 {
 	diffuse_map  roadMud.jpg
-	roadAsphalt_spec2.jpg
+	specular_map roadAsphalt_spec2.jpg
 	diffuse  0.7 0.7 0.7
 	specular 0.3 0.3 0.2
 }

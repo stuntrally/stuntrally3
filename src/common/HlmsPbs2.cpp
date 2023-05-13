@@ -133,8 +133,8 @@ HlmsDatablock *datablock = renderableA->getDatablock();
 Hlms *hlms = datablock->getCreator();
 if( hlms->getType() == HLMS_PBS )
 {
-	assert( dynamic_cast<MyHlmsPbs*>( hlms ) );
-	MyHlmsPbs *myHlmsPbs = static_cast<MyHlmsPbs*>( hlms );
+	assert( dynamic_cast<HlmsPbs2*>( hlms ) );
+	MyHlmsPbs *myHlmsPbs = static_cast<HlmsPbs2*>( hlms );
 	uint32 hash, casterHash;
 	myHlmsPbs->calculateHashFor( renderableA, hash, casterHash );
 	renderableA->_setHlmsHashes( hash, casterHash );

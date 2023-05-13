@@ -104,7 +104,7 @@ void AppGui::UpdSelectGlow(Ogre::Renderable *rend, bool selected)
 	Hlms *hlms = datablock->getCreator();
 	if( hlms->getType() == HLMS_PBS )
 	{
-		assert( dynamic_cast<MyHlmsPbs*>( hlms ) );
+		assert( dynamic_cast<HlmsPbs2*>( hlms ) );
 		HlmsPbs2 *myHlmsPbs = static_cast<HlmsPbs2*>( hlms );
 		uint32 hash, casterHash;
 		myHlmsPbs->CalculateHashFor( rend, hash, casterHash );

@@ -36,7 +36,7 @@ public:
 	HlmsPbs2( Ogre::Archive *dataFolder, Ogre::ArchiveVec *libraryFolders );
 	~HlmsPbs2() override;
 	
-	const static size_t selected_glow = 123;
+	constexpr static size_t selected_glow = 123;
 
 	void CalculateHashFor( Ogre::Renderable *renderable, Ogre::uint32 &outHash, Ogre::uint32 &outCasterHash )
 	{
