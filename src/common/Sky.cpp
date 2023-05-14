@@ -121,10 +121,10 @@ void CScene::DestroyFog()
 }
 
 //  🌫️ Fog set Atmo params  ------
-void CScene::UpdFog(bool force)
+void CScene::UpdFog(bool on, bool off)
 {
 	if (!atmo || !sun)  return;
-	bool fog = app->pSet->bFog || force;
+	bool fog = off ? false : app->pSet->bFog || on;
 	Atmosphere2Npr::Preset p = atmo->getPreset();
 
 	p.fogStartDistance = sc->fogStart;

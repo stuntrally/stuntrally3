@@ -36,16 +36,7 @@ using namespace Ogre;
 // . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 void App::CreateRnd2Tex()
 {
-	// todo: grass same dim as Hmap..
-	/*const uint32 visMask[RT_Last] =
-		{ RV_Road, RV_Road+RV_Objects, RV_Terrain+RV_Objects, RV_MaskAll-RV_Hud };
-	const int dim[RT_Last] =  //1025: sc->td.iVertsX
-		{ 1024, 1025, 1024, 1024 };*/
-	const char* strWs[RT_ALL] = {
-		"Rtt_RoadDens",
-		"Rtt_RoadPreview",
-		"Rtt_Terrain",
-		"Rtt_View"};
+	const char* strWs[RT_ALL] = {"Rtt_RoadDens", "Rtt_RoadPreview", "Rtt_Terrain", "Rtt_View"};
 		
 	auto* texMgr =mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
 	auto* mgr = mRoot->getCompositorManager2();
@@ -63,16 +54,15 @@ void App::CreateRnd2Tex()
 				TextureFlags::ManualTexture, TextureTypes::Type2D );
 			uint32 res =
 				i == RT_View ? 1024 :  // preview const
-				tws > 1200.f ? 2048 : 1024;  // bigger with ter size
+				tws > 1200.f ? 2048 : 1024;  // bigger with ter size  // todo: fix previews..
 			r.tex->setResolution(res, res);
 			// int mips = PixelFormatGpuUtils::getMaxMipmapCount( res );
 			// r.tex->setNumMipmaps( mips );
 			r.tex->scheduleTransitionTo( GpuResidency::OnStorage );
 
 			r.tex->setPixelFormat(
-				//- i == RT_View /*|| i == RT_Terrain*/ ? PFG_RGB8_UNORM : 
 				// PFG_RGBA8_UNORM );  // dark jpg, good prv
-				PFG_RGBA8_UNORM_SRGB );  // ok jpg, white prv, like old sr
+				PFG_RGBA8_UNORM_SRGB );  // ok jpg, white prv, like old SR
 			r.tex->scheduleTransitionTo( GpuResidency::Resident );
 
 			auto flags = TextureFlags::RenderToTexture; // | TextureFlags::AllowAutomipmaps;
@@ -122,11 +112,17 @@ void App::CreateRnd2Tex()
 			}else
 				LogO("Workspace already exists: "+name);
 
+		// #define MANUAL_RTT_UPD  // todo:
 			//  add Workspace
 			LogO(String("++++ WS add:  Ed ")+strWs[i]+", all: "+toStr(mgr->getNumWorkspaces()));
+		#ifndef MANUAL_RTT_UPD
 			r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, true );  //! slower
-			// r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, false );  // todo: manual update
-
+		#else
+			r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, false );  // todo: manual update
+			r.ws->_beginUpdate(true);
+			r.ws->_update();  // todo: upd when needed only, skip
+			r.ws->_endUpdate(true);
+		#endif
 
 			//  🌍 Hud minimap rect 2d  ----
 			{
@@ -149,7 +145,7 @@ void App::CreateRnd2Tex()
 
 			r.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 			r.nd->attachObject(r.hr);
-			r.nd->setVisible(false);//pSet->trackmap);
+			r.nd->setVisible(false);  // pSet->trackmap);
 
 			BarrierResolve(r.tex);
 		}	}
@@ -188,6 +184,13 @@ void App::CreateRnd2Tex()
 	UpdMiniSize();  // assert in Debug map twice-
 }
 
+void App::AddListenerRnd2Tex()
+{
+	if (scn->refl.mWsListener)
+	for (int i=0; i < RT_ALL; ++i)
+		rt[i].ws->addListener(scn->refl.mWsListener);  // prv cam refl y?..
+}
+
 
 //  💫 update
 void App::UpdRnd2Tex()
@@ -203,10 +206,12 @@ void App::UpdRnd2Tex()
 			r.cam->setOrientation(mCamera->getOrientation());
 		}
 
-		// r.ws->_beginUpdate(true);
-		// r.ws->_update();  // todo: upd when needed only, skip
-		// r.ws->_endUpdate(true);
-
+	#ifdef MANUAL_RTT_UPD
+		r.ws->_beginUpdate(true);
+		r.ws->_update();  // todo: upd when needed only, skip
+		r.ws->_endUpdate(true);
+	#endif
+	
 		//  this is each frame
 		for (uint8 i = 0u; i < r.tex->getNumMipmaps(); ++i)
 		{

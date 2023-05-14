@@ -114,7 +114,7 @@ public:
 	HudRenderable* hrBck =0;  // bck cover prv cam-
 	Ogre::SceneNode* ndBck =0;
 
-	void CreateRnd2Tex(), DestroyRnd2Tex(), UpdRnd2Tex();
+	void CreateRnd2Tex(), DestroyRnd2Tex(), UpdRnd2Tex(), AddListenerRnd2Tex();
 	void UpdMiniSize(), UpdMiniVis(), UpdMiniPos();
 	
 
