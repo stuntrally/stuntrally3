@@ -107,9 +107,8 @@ namespace Ogre
     //-----------------------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
     void PlanarReflections::setMaxActiveActors( uint8 maxActiveActors, IdString workspaceName,
-                                                bool useAccurateLighting, uint32 width, uint32 height,
-                                                bool withMipmaps, PixelFormatGpu pixelFormat,
-                                                bool mipmapMethodCompute )
+        bool useAccurateLighting, uint32 width, uint32 height, bool withMipmaps, PixelFormatGpu pixelFormat,
+        bool mipmapMethodCompute/*, Ogre::CompositorWorkspaceListener* mWsListener*/ )
     {
         TextureGpuManager *texMgr = mSceneManager->getDestinationRenderSystem()->getTextureGpuManager();
 
@@ -172,9 +171,10 @@ namespace Ogre
                 ActiveActorData actorData;
                 const size_t uniqueId = Id::generateNewId<PlanarReflections>();
                 String cameraName = "PlanarReflectionActor #" + StringConverter::toString( uniqueId );
-                actorData.reflectionCamera =
-                    mSceneManager->createCamera( cameraName, useAccurateLighting );
+                actorData.reflectionCamera = mSceneManager->createCamera( cameraName, useAccurateLighting );
                 actorData.reflectionCamera->setAutoAspectRatio( false );
+                // actorData.reflectionCamera->setLodBias(0.2);  // par  +
+                // actorData.reflectionCamera->setFarClipDistance(100);
 
                 uint32 textureFlags = TextureFlags::RenderToTexture;
                 textureFlags |= ( withMipmaps && mipmapMethodCompute ) ? TextureFlags::Uav
@@ -209,6 +209,8 @@ namespace Ogre
                     mSceneManager, channels, actorData.reflectionCamera, workspaceName, false, 0 );
                 actorData.isReserved = false;
                 mActiveActorData.push_back( actorData );
+                // if (mWsListener)
+                //     actorData.workspace->addListener(mWsListener);  //? for camera lod, vis dist etc
             }
         }
     }

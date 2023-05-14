@@ -44,6 +44,7 @@ namespace Ogre
     /** \addtogroup Material
      *  @{
      */
+    class CompositorWorkspaceListener;
 
     struct ActiveActorData
     {
@@ -196,7 +197,8 @@ namespace Ogre
         */
         void setMaxActiveActors( uint8 maxActiveActors, IdString workspaceName, bool useAccurateLighting,
                                  uint32 width, uint32 height, bool withMipmaps,
-                                 PixelFormatGpu pixelFormat, bool mipmapMethodCompute );
+                                 PixelFormatGpu pixelFormat, bool mipmapMethodCompute/*,
+                                 Ogre::CompositorWorkspaceListener* mWsListener*/ );
 
         /** Adds an actor plane that other objects can use as source for reflections if they're
             close enough to it (and aligned enough to the normal).

@@ -11,7 +11,7 @@ namespace Ogre  {
 	class Terra;  class Atmosphere2Npr;  class HlmsPbsTerraShadows;
 	class Light;  class SceneNode;  class Camera;  class SceneManager;
 	class Viewport;  class Root;  class ParticleSystem;  }
-class App;  class Scene;  /*class WaterRTT;*/  class CData;  class TerData;
+class App;  class Scene;  class CData;  class TerData;
 class SplineRoad;  class PaceNotes;  class Grass;
 
 
@@ -57,7 +57,7 @@ public:
 
 	//  🌫️ Fog / Atmo
 	Ogre::Atmosphere2Npr* atmo = 0;
-	void CreateFog(), DestroyFog(), UpdFog(bool force=false);
+	void CreateFog(), DestroyFog(), UpdFog(bool force_on =false, bool force_off =false);
 	
 	//  🌧️ Weather :  rain, snow
 	Ogre::ParticleSystem *pr = 0, *pr2 = 0;
@@ -77,7 +77,7 @@ public:
 	Ogre::SceneNode* mNdFluidsRoot =0;
 	void CreateFluids(), DestroyFluids(), CreateBltFluids();
 
-	FluidReflect refl;
+	FluidsReflect refl;
 
 	// WaterRTT* mWaterRTT;  // todo:
 	// void UpdateWaterRTT(Ogre::Camera* cam);
@@ -142,25 +142,8 @@ public:
 	//  tex, mtr names
 	const static Ogre::String sHmap, sAng,sAngMat,
 		sBlend,sBlendMat, sGrassDens,sGrassDensMat;
-
-	// Ogre::TexturePtr heightTex, angleRTex, blendRTex;  // height, angles, blend
-	// Ogre::TexturePtr grassDensRTex;  // grass density and channels
-	// PreviewTex roadDens;
-
-	/*struct RenderToTex  // rtt common
-	{
-		Ogre::RenderTexture* rnd;  Ogre::Texture* tex;
-		Ogre::SceneManager* scm;  Ogre::Camera* cam;  Ogre::Viewport* vp;
-		Ogre::Rectangle2D* rect;  Ogre::SceneNode* nd;
-
-		void Null()
-		{	rnd = 0;  tex = 0;  scm = 0;  cam = 0;  vp = 0;  rect = 0;  nd = 0;   }
-		RenderToTex()
-		{	Null();   }
-
-		void Setup(Ogre::Root* rt, Ogre::String sName, Ogre::TexturePtr pTex, Ogre::String sMtr);
-	};
-	RenderToTex blendRTT, angleRTT, grassDensRTT;*/
+	
+	// todo: grassDensRTT;
 
 
 	//  🌀 noise  -------

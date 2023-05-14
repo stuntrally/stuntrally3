@@ -8,37 +8,45 @@ namespace Ogre  {
 class AppGui;
 
 
-//  🪞 planar reflect  water
+//  🪞 planar reflect  ws listener
 class ReflectListener : public Ogre::CompositorWorkspaceListener
 {
-	Ogre::PlanarReflections *mPlanarReflections;
+	AppGui* app =0;
+	Ogre::PlanarReflections *mPlanarRefl;
 
 public:
-	ReflectListener( Ogre::PlanarReflections *p ) :
-		mPlanarReflections( p )
-	{
-	}
-	virtual ~ReflectListener() {}
+	ReflectListener( AppGui* app1, Ogre::PlanarReflections *p )
+		:app(app1), mPlanarRefl( p )
+	{	}
+	virtual ~ReflectListener()
+	{	}
 
-	virtual void workspacePreUpdate( Ogre::CompositorWorkspace *workspace );
-
-	virtual void passEarlyPreExecute( Ogre::CompositorPass *pass );
+	void workspacePreUpdate( Ogre::CompositorWorkspace *workspace ) override;
+	void passEarlyPreExecute( Ogre::CompositorPass *pass ) override;
 };
 
 
-//  🪞 planar reflect  water/mud etc
-class FluidReflect
+//  🌊 Fluids  water,mud etc
+class FluidsReflect
 {
 public:
 	AppGui* app =0;
+
+	//  🟢 meshes etc
+	// class FluidRefl
+	// {
 	Ogre::Item *item =0;
 	Ogre::SceneNode *nd =0;
 	Ogre::String sMesh;
 	Ogre::PlanarReflectionActor *actor =0;
+	// };
+	// std::vector<FluidRefl> fluids;
 
+	void CreateFluids(), DestroyFluids();
+
+	//  🪞 RTT, setup
 	Ogre::PlanarReflections *mPlanarRefl =0;
-	ReflectListener *mWorkspaceListener =0;
-
-	void CreateReflect(), DestroyReflect();
+	ReflectListener *mWsListener =0;
+	
+	void CreateRTT(), DestroyRTT();
 };
-

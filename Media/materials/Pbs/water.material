@@ -15,7 +15,6 @@ hlms WaterReflect pbs
 	// specular_map ycrystals_med_d.jpg  //~
 	// specular_map snow1_d.jpg
 	
-	// normal_map  flat_n.png  // no?-
 	normal_map	normal_1.png  //`
 	// normal_map	normal_2.png  //-`
 	// normal_map  jungle_mntn_n.jpg

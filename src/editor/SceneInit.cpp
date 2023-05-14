@@ -36,6 +36,7 @@
 // #include <OgreTextureManager.h>
 #include <OgreResourceGroupManager.h>
 #include <OgreSceneNode.h>
+#include <Compositor/OgreCompositorWorkspace.h>
 #include "MessageBox.h"
 #include <cmath>
 // #include "Instancing.h"
@@ -125,7 +126,7 @@ void App::createScene01()  // once, init
 	
 	///  🧰 _Tool_ brushes prv  .............
 	#if 0
-	gui->ToolBrushesPrv();
+	ToolBrushesPrv();
 	#endif
 		
 
@@ -214,7 +215,8 @@ void App::LoadTrackEv()
 	scn->DestroyPace();
 
 	scn->refl.app = this;
-	scn->refl.DestroyReflect();	
+	scn->refl.DestroyFluids();	
+	scn->refl.DestroyRTT();
 
 
 	//  🏞️ load scene
@@ -233,8 +235,16 @@ void App::LoadTrackEv()
 
 	scn->CreateEmitters();  // 🔥
 
+
+	CreateRnd2Tex();  // 🖼️
+
 	//  💧 Fluids
 	scn->CreateFluids();
+
+	scn->refl.CreateRTT();
+	scn->refl.CreateFluids();  // todo: water ...
+
+	AddListenerRnd2Tex();
 
 
 	//  set sky tex name for water
@@ -277,11 +287,6 @@ void App::LoadTrackEv()
 	gcom->ReadTrkStats();
 	gui->SetGuiFromXmls();  ///
 	
-	CreateRnd2Tex();  // 🖼️
-
-	// scn->refl.CreateReflect();  // todo: water ...
-
-
 	//UpdVisGui();
 	UpdStartPos();
 	UpdEditWnds();  //

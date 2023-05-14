@@ -11,6 +11,7 @@ compositor_node Rtt_RoadDens
 		pass render_scene
 		{
 			profiling_id "RTT 0 road dens"
+			identifier	11100
 
 			load
 			{
@@ -46,6 +47,7 @@ compositor_node Rtt_RoadPreview
 		pass render_scene
 		{
 			profiling_id "RTT 1 road prv"
+			identifier	11101
 
 			load
 			{
@@ -78,6 +80,7 @@ compositor_node Rtt_Terrain
 		pass render_scene
 		{
 			profiling_id "RTT 2 terrain"
+			identifier	11102
 
 			load
 			{
@@ -110,6 +113,7 @@ compositor_node Rtt_View
 		pass render_scene
 		{
 			profiling_id "RTT 3 view all"
+			identifier	11103
 
 			load
 			{
@@ -122,8 +126,6 @@ compositor_node Rtt_View
 				depth	store
 				stencil	store
 			}
-			//  fixme no refl?  used in planar ReflectListener
-			// identifier	25001
 
 			visibility_mask	 0x3FF  // normal
 			rq_first  0
@@ -145,6 +147,7 @@ abstract target cubemap_target
 	pass render_scene
 	{
 		profiling_id "Cube Reflection"
+		identifier	33306
 
 		load
 		{
@@ -258,6 +261,7 @@ compositor_node SR3_Render
 		pass render_scene
 		{
 			profiling_id "Main view"
+			identifier	22201
 
 			//  executed in all views/eyes
 			execution_mask			0xff
@@ -287,9 +291,6 @@ compositor_node SR3_Render
 
 			//  materials in this pass will be using this cubemap
 			expose demo_dynamic_cubemap
-
-			//  used in planar ReflectListener
-			identifier	25001
 
 			// in code: game, not ed
 			visibility_mask	 0x3FF  // no 1024 ed
