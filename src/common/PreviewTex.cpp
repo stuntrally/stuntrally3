@@ -87,22 +87,25 @@ bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8
 			if (!prvTex)
 				Create(img.getWidth(), img.getHeight(), sName);
 
-			//**  convert sRGB, fixes bad white clr
-			// todo in shader.. very SLOW <1s
-			Ogre::Timer ti;
-			auto fmt = img.getPixelFormat();
-			const TextureBox& tb = img.getData(0);
-			for (int y=0; y < ySize; ++y)
-			for (int x=0; x < xSize; ++x)
+			//**  convert sRGB, fixes bad white clr  // todo- in shader, slow
+			// Ogre::Timer ti;
+			auto fmt = img.getPixelFormat();  // LogO(toStr(fmt)+" fmt prv");
+			if (fmt == PFG_RGBA8_UNORM)
 			{
-				auto c = tb.getColourAt(x,y, 0,fmt);
-				img.setColourAt( ColourValue(
-					PixelFormatGpuUtils::fromSRGB(c.r),
-					PixelFormatGpuUtils::fromSRGB(c.g),
-					PixelFormatGpuUtils::fromSRGB(c.b),
-					c.a), x,y, 0,0);
+				uint8* buf = (uint8*)img.getRawBuffer();
+				uint p = 0; //, a = img.getBytesPerRow(0);
+				for (int y=0; y < ySize; ++y)
+				for (int x=0; x < xSize; ++x)
+				{
+					uint8 r = buf[p], g = buf[p+1], b = buf[p+2];
+					r = 255.f * PixelFormatGpuUtils::fromSRGB(r / 255.f);
+					g = 255.f * PixelFormatGpuUtils::fromSRGB(g / 255.f);
+					b = 255.f * PixelFormatGpuUtils::fromSRGB(b / 255.f);
+					buf[p] = r;  buf[p+1] = g;  buf[p+2] = b;
+					p += 4;  // a
+				}
 			}
-			LogO(String("::: Time prv sRGB: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+			// LogO(String("::: Time prv sRGB: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  // 44 ms  6 Fps
 				
 			//LogO("PRV: "+toStr(img.getWidth())+" "+toStr(img.getHeight())+"  "+path);
 			prvTex->scheduleTransitionTo( GpuResidency::Resident );
@@ -192,6 +195,7 @@ void PreviewTex::Clear(const uint8 b, const uint8 g, const uint8 r, const uint8 
 }
 
 
+//-------------------------------------------------------------------------------------------------------
 //  utility for terrain textures
 //  copies other texture's r channel to this texture's alpha
 //  note: both must be same size
