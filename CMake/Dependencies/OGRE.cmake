@@ -110,7 +110,7 @@ macro( setupPluginFileFromTemplate BUILD_TYPE OGRE_USE_SCENE_FORMAT OGRE_USE_PLA
 		findPluginAndSetPath( ${BUILD_TYPE} OGRE_PLUGIN_RS_D3D11	RenderSystem_Direct3D11 )
 		findPluginAndSetPath( ${BUILD_TYPE} OGRE_PLUGIN_RS_GL3PLUS	RenderSystem_GL3Plus )
 		findPluginAndSetPath( ${BUILD_TYPE} OGRE_PLUGIN_RS_PARTICLE	Plugin_ParticleFX )
-		### findPluginAndSetPath( ${BUILD_TYPE} OGRE_PLUGIN_RS_VULKAN	RenderSystem_Vulkan )
+		findPluginAndSetPath( ${BUILD_TYPE} OGRE_PLUGIN_RS_VULKAN	RenderSystem_Vulkan )
 
 		if( ${BUILD_TYPE} STREQUAL "Debug" )
 			configure_file( ${CMAKE_SOURCE_DIR}/CMake/Templates/Plugins.cfg.in
@@ -175,7 +175,7 @@ macro( setupPluginFileFromTemplate BUILD_TYPE OGRE_USE_SCENE_FORMAT OGRE_USE_PLA
 		unset( OGRE_PLUGIN_RS_D3D11 )
 		unset( OGRE_PLUGIN_RS_GL3PLUS )
 		unset( OGRE_PLUGIN_RS_PARTICLE )
-		### unset( OGRE_PLUGIN_RS_VULKAN )
+		unset( OGRE_PLUGIN_RS_VULKAN )
 	endif()
 
 	unset( OGRE_BUILD_TYPE_MATCHES )
