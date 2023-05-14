@@ -126,8 +126,10 @@ public:
 	//  🖼️ brush, ter gen  preview tex  ----
 	HudRenderable* hrBrush =0, *hrTerGen =0;
 	Ogre::SceneNode* ndBrush =0, *ndTerGen =0;
-	void createPreviews();
-	void updateBrushPrv(bool first=false), updateTerGenPrv(bool first=false);
+	
+	void CreatePreviews(), updBrushData(Ogre::uint8* data);
+	void UpdBrushPrv(bool first=false), UpdTerGenPrv(bool first=false);
+	void ToolBrushesPrv();
 
 	bool bUpdTerPrv =0;
 	Ogre::TextureGpu* brPrvTex =0, *terPrvTex =0;
@@ -153,7 +155,7 @@ public:
 	const static BrushSet brSets[brSetsNum];
 	const static float brClr[4][3];
 
-	void SetBrushPreset(int id), SetBrushRandom(int n);
+	void SetBrushPreset(int id, bool upd =1), SetBrushRandom(int n);
 	void updBrush(), UpdBr();
 
 

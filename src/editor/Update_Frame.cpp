@@ -418,7 +418,7 @@ void App::update( float dt )
 	//  upd terrain generator preview
 	if (bUpdTerPrv)
 	{	bUpdTerPrv = false;
-		updateTerGenPrv();
+		UpdTerGenPrv();
 	}
 
 	

@@ -22,6 +22,7 @@
 #endif
 #include <OgreTimer.h>
 #include <OgreResourceGroupManager.h>
+#include <OgreStagingTexture.h>
 #include <MyGUI_ComboBox.h>
 using namespace Ogre;
 using namespace std;
@@ -58,44 +59,45 @@ void CGui::ToolTracksWarnings()
 }
 
 
-///  _Tool_ brushes prv  ......................................................
-//  update all Brushes png
-void CGui::ToolBrushesPrv()
+//  update all Brushes prv png  ......................................................
+// todo: brush presets in xml, auto upd
+void App::ToolBrushesPrv()
 {
-/*	Image im;
-	for (int i=0; i < app->brSetsNum; ++i)
-	{
-		app->SetBrushPreset(i);
-		app->brushPrvTex->convertToImage(im);
-		im.save("data/editor/brush"+toStr(i)+".png");
-		// todo: ?brush presets in xml, auto upd prvs-
-	}
+	Ogre::Timer ti;
+	const uint si = 2048;  // 16 * 128  BrPrvSize
+	uint32* data = new uint32[BrPrvSize * BrPrvSize];
 
-	#if 1
-	///---- combine all images into one ----
-	const int ii = 86;
-	Image ir;  ir.load("brushes-e.png","General");
-	for (int i=0; i <= ii; ++i)
-	{
-		String s = "brush" + toStr(i) + ".png";
-		im.load(s,"General");
+	Image2 im;
+	im.createEmptyImage(si, si, 1, TextureTypes::Type2D, PFG_RGBA8_UNORM);
+	uint32* big = (uint32*)im.getRawBuffer();
+	memset(big, 0, si*si);
 
-		PixelBox pb = im.getPixelBox();
-		int xx = pb.getWidth(), yy = pb.getHeight();
+	uint u = 0, v = 0;
+	for (int i=0; i < brSetsNum; ++i)
+	{
+		SetBrushPreset(i, 0);
+		updBrushData((uint8*)data);
 		
-		//void * pb.data
-		int a = (i%16)*128, b = (i/16)*128;
-		int x,y;  ColourValue c;
-		for (y = 0; y < yy; ++y)
-		for (x = 0; x < xx; ++x)
+		//  store prv in big
+		uint a = 0;
+		for (uint y=0; y < BrPrvSize; ++y)
 		{
-			c = im.getColourAt(x,y,0);
-			ir.setColourAt(c,a+x,b+y,0);
+			uint b = u + (v + y) * si;
+			for (uint x=0; x < BrPrvSize; ++x)
+				big[b++] = data[a++];
 		}
+		u += BrPrvSize;  // next u,v prv pos
+		if (u >= si)
+		{	u = 0;  v += BrPrvSize;
+			if (v >= si)
+			{	LogO("!No more room for brushes on size: "+toStr(si));
+				break;  // max 256
+		}	}
 	}
-	ir.save("brushes.png");
-	#endif
-*/
+
+	im.save("brushes.png", 0, 0);
+	delete[] data;
+	LogO(String("::: Time ALL brush: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  // < 1s
 }
 
 

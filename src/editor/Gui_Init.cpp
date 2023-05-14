@@ -173,6 +173,7 @@ void CGui::InitGui()
 
 
 	///  ⛰️ brush presets   o o o o o o
+	//------------------------------------------------------------------------
 	ScrollView* scv = fScv("svBrushes");
 	int yy=0, xx=0;  const int uv = 128;
 	for (i=0; i < app->brSetsNum; ++i,++xx)

@@ -26,9 +26,7 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 
-#ifndef _OgreHlmsPbsTerraShadows_
-#define _OgreHlmsPbsTerraShadows_
-
+#pragma once
 #include <OgreVector4.h>
 #include <OgreGpuProgram.h>
 #include <OgreHlmsListener.h>
@@ -85,5 +83,3 @@ namespace Ogre
 		static const IdString TerraEnabled;
 	};
 }
-
-#endif

@@ -56,7 +56,7 @@ void CGui::btnBrushPreset(WP img)
 	sscanf(img->getName().c_str(), "brI%d", &id);
 	app->SetBrushPreset(id);
 }
-void App::SetBrushPreset(int id)
+void App::SetBrushPreset(int id, bool upd)
 {
 	const BrushSet& st = brSets[id];  // copy params
 	if (!shift)  SetEdMode(st.edMode);  curBr = st.curBr;
@@ -65,7 +65,7 @@ void App::SetBrushPreset(int id)
 	br[curBr].nofs = st.NOfs;  br[curBr].octaves = st.Oct;
 	if (st.Filter > 0.f)  mBrFilt = st.Filter;
 	if (st.HSet != -0.01f)  terSetH = st.HSet;
-	UpdBr();
+	if (upd)  UpdBr();
 }
 
 
@@ -83,7 +83,7 @@ static float GetAngle(float x, float y)
 
 //  🖼️ update brush preview texture
 //--------------------------------------------------------------------------------------------------------------------------
-void App::updateBrushPrv(bool first)
+void App::UpdBrushPrv(bool first)
 {
 	if (!first && (edMode >= ED_Road /*|| bMoveCam/*|| !bEdit()*/))  return;
 	if (!pSet->brush_prv || !brPrvTex)  return;
@@ -97,14 +97,28 @@ void App::updateBrushPrv(bool first)
 	TextureBox texBox = tex->mapRegion(
 		BrPrvSize, BrPrvSize, 1u, 1u, PFG_RGBA8_UNORM );
 
-	uint8* data = new uint8[BrPrvSize * BrPrvSize * 4], *p = data;
+	uint8* data = new uint8[BrPrvSize * BrPrvSize * 4];
+	updBrushData(data);
+
+	//  upload
+	texBox.copyFrom( data, BrPrvSize, BrPrvSize, BrPrvSize * 4 );
+
+	tex->stopMapRegion();
+	tex->upload( texBox, brPrvTex, 0, 0, 0 );
+	mgr->removeStagingTexture( tex );  tex = 0;
+	delete[] data;
+}
+
+void App::updBrushData(uint8* data)
+{
+	uint8* p = data;
 
 	const float fB = brClr[edMode][0]*255.f, fG = brClr[edMode][1]*255.f, fR = brClr[edMode][2]*255.f;
-	const float gp = 2.f;  // gamma srgb fix-
+	const float gp = 2.f;  // 2.4 gamma srgb fix-
 
 	const float s = BrPrvSize * 0.5f, s1 = 1.f/s,
 		fP = br[curBr].power, fQ = br[curBr].freq*5.f, nof = br[curBr].nofs;
-	int oct = br[curBr].octaves;  const float PiN = PI_d/oct;
+	const int oct = br[curBr].octaves;  const float PiN = PI_d/oct;
 
 	switch (br[curBr].shape)
 	{
@@ -177,14 +191,6 @@ void App::updateBrushPrv(bool first)
 		}	break;
 	default:  break;
 	}
-
-	//  upload
-	texBox.copyFrom( data, BrPrvSize, BrPrvSize, BrPrvSize * 4 );
-
-	tex->stopMapRegion();
-	tex->upload( texBox, brPrvTex, 0, 0, 0 );
-	mgr->removeStagingTexture( tex );  tex = 0;
-	delete[] data;
 }
 
 //  fill brush data (shape), after size change
@@ -292,7 +298,7 @@ void App::updBrush()
 			pBrFmask[m] *= fm;
 	}
 	
-	updateBrushPrv();  // upd skip..
+	UpdBrushPrv();  // upd skip..
 }
 
 
@@ -368,7 +374,7 @@ void CGui::btnTerGenerate(WP wp)
 
 //  🖼️ update terrain generator preview texture
 //--------------------------------------------------------------------------------------------------------------------------
-void App::updateTerGenPrv(bool first)
+void App::UpdTerGenPrv(bool first)
 {
 	// if (!first || !terPrvTex)  return;
 	auto* mgr =	mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
@@ -647,7 +653,7 @@ void App::filter(Vector3 &pos, float dtime, float brMul)
 
 //  🖼️ previews  for brush and noise ter gen
 //--------------------------------------------------------------------------------------------------------------------------
-void App::createPreviews()
+void App::CreatePreviews()
 {
 	LogO("C--- Create prv tex");
 	auto *mgr = mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
@@ -664,7 +670,7 @@ void App::createPreviews()
 	// "BrushPrvTex", rgDef, TEX_TYPE_2D,
 	// BrPrvSize,BrPrvSize,0, PF_BYTE_RGBA, TU_DYNAMIC);
 	
-	updateBrushPrv(true);
+	UpdBrushPrv(true);
 
 
 	//  ter gen tex ----
@@ -677,7 +683,7 @@ void App::createPreviews()
 	terPrvTex->setPixelFormat( PFG_RGBA8_UNORM );
 	terPrvTex->scheduleTransitionTo( GpuResidency::Resident );
 
-	updateTerGenPrv(true);
+	UpdTerGenPrv(true);
 
 
 	//  rect prv ----
