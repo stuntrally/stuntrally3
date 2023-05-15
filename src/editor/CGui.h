@@ -169,6 +169,11 @@ public:
 	//  brushes  o o o o
 	Scv scvBrushes =0;  void UpdBrushes();
 	std::vector<Img> brImgs;  std::vector<Txt> brTxts;
+	WP panBrushAdj =0;
+	Ck ckBrushAdj;
+	Ck ckBrushNewLine;
+	void btnBrushAdd(WP), btnBrushDel(WP);
+	void btnBrushesSave(WP), btnBrushesLoad(WP), btnBrushesLoadDef(WP);
 	void btnBrushPreset(WP), btnBrushRandom(WP),btnBrushRandom2(WP);
 
 	//  brush pars

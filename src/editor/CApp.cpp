@@ -19,10 +19,6 @@ using namespace Ogre;
 using namespace std;
 
 
-const Ogre::String App::csBrShape[BRS_ALL] =
-{ "Triangle", "Sinus", "N-gon", "Noise", "Noise2" };  // static
-
-
 //  🌟 ctor
 //------------------------------------------------------------------------------------
 App::App()

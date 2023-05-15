@@ -59,48 +59,6 @@ void CGui::ToolTracksWarnings()
 }
 
 
-//  update all Brushes prv png  ......................................................
-// todo: brush presets in xml, auto upd
-void App::ToolBrushesPrv()
-{
-	Ogre::Timer ti;
-	const uint si = 2048;  // 16 * 128  BrPrvSize
-	uint32* data = new uint32[BrPrvSize * BrPrvSize];
-
-	Image2 im;
-	im.createEmptyImage(si, si, 1, TextureTypes::Type2D, PFG_RGBA8_UNORM);
-	uint32* big = (uint32*)im.getRawBuffer();
-	memset(big, 0, si*si);
-
-	uint u = 0, v = 0;
-	for (int i=0; i < brSetsNum; ++i)
-	{
-		SetBrushPreset(i, 0);
-		updBrushData((uint8*)data);
-		
-		//  store prv in big
-		uint a = 0;
-		for (uint y=0; y < BrPrvSize; ++y)
-		{
-			uint b = u + (v + y) * si;
-			for (uint x=0; x < BrPrvSize; ++x)
-				big[b++] = data[a++];
-		}
-		u += BrPrvSize;  // next u,v prv pos
-		if (u >= si)
-		{	u = 0;  v += BrPrvSize;
-			if (v >= si)
-			{	LogO("!No more room for brushes on size: "+toStr(si));
-				break;  // max 256
-		}	}
-	}
-
-	im.save(PATHS::UserConfigDir()+"/brushes.png", 0, 0);
-	delete[] data;
-	LogO(String("::: Time ALL brush: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  // < 1s
-}
-
-
 ///............................................................................................................................
 ///  _Tool_ scene
 ///  check/resave all tracks scene.xml 

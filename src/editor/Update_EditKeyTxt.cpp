@@ -196,7 +196,7 @@ void App::KeyTxtTerrain(Real q)
 	brVal[1]->setCaption( gcom->getClrVal( si / 150.f * 17.f) + fToStr(si,1,4));
 	brVal[2]->setCaption( gcom->getClrVal( in / 60.f * 17.f) + fToStr(in,1,4));
 	brVal[3]->setCaption( gcom->getClrVal( powf(pw, 2.f) *1.f + 4.f) + fToStr(pw,2,4));
-	brVal[4]->setCaption(TR("#{Brush_Shape"+csBrShape[br[curBr].shape]+"}"));
+	brVal[4]->setCaption(TR("#{Brush_Shape"+BrushesIni::csBrShape[br[curBr].shape]+"}"));
 
 	bool brN = br[curBr].shape >= BRS_Noise;  int i;
 	for (i = 5; i <= 7; ++i)

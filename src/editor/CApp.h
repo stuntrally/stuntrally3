@@ -6,6 +6,7 @@
 #include "tracksurface.h"
 #include "SceneXml.h"  //Object-
 #include "PreviewTex.h"
+#include "brushes.h"
 
 #include <SDL_keycode.h>
 // #include <Ogre.h>
@@ -137,22 +138,10 @@ public:
 
 
 	///<>  ⛰️ terrain edit, brush
-	enum EBrShape
-	{   BRS_Triangle=0, BRS_Sinus, BRS_Ngon, BRS_Noise, BRS_Noise2, BRS_ALL  };
-	const static Ogre::String csBrShape[BRS_ALL];
-
-	struct BrushSet  // brush preset ----
-	{
-		ED_MODE edMode;  int curBr;
-		float Size,Intens,Pow, Freq,NOfs;
-		int Oct;  EBrShape shape;
-		float Filter, HSet;
-		char newLine;
-		Ogre::String name;
-	};
-
-	const static int brSetsNum = 87;
-	const static BrushSet brSets[brSetsNum];
+	BrushesIni brSets;
+	// std::vector<BrushSet> brSets;
+	// const static int brSetsNum = 87;
+	// const static BrushSet brSets[brSetsNum];
 	const static float brClr[4][3];
 
 	void SetBrushPreset(int id, bool upd =1), SetBrushRandom(int n);

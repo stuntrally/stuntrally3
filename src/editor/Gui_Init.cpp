@@ -187,9 +187,9 @@ void CGui::InitGui()
 	sv= &svBrForce;	sv->Init("BrForce",	&f, 0.1f,100.f, 1.f, 1,4);  sv->DefaultF(20.f);
 	sv= &svBrPower;	sv->Init("BrPower",	&f, 0.02f,10.f, 4.f, 2,4);  sv->DefaultF(1.5f);  Sev(UpdBr);
 	sv= &svBrShape;
-	for (i=0; i < app->BRS_ALL; ++i)
-		sv->strMap[i] = app->csBrShape[i];
-					sv->Init("BrShape",	&i, 0,app->BRS_ALL-1, 1);  sv->DefaultI(app->BRS_Noise);  Sev(UpdBr);
+	for (i=0; i < BRS_ALL; ++i)
+		sv->strMap[i] = csBrShape[i];
+					sv->Init("BrShape",	&i, 0,BRS_ALL-1, 1);  sv->DefaultI(BRS_Noise);  Sev(UpdBr);
 	sv= &svBrFreq;	sv->Init("BrFreq",	&f, 0.01f,2.f, 2.f, 2,4);  sv->DefaultF(0.2f);  Sev(UpdBr);
 	sv= &svBrOct;	sv->Init("BrOct",	&i, 1,9, 1.f);  sv->DefaultI(3);  Sev(UpdBr);
 	sv= &svBrOfs;	sv->Init("BrOfs",	&f, -30.f,30.f, 1.f, 2,4);  sv->DefaultF(2.f);  Sev(UpdBr);

@@ -58,8 +58,8 @@ void CGui::btnBrushPreset(WP img)
 }
 void App::SetBrushPreset(int id, bool upd)
 {
-	const BrushSet& st = brSets[id];  // copy params
-	if (!shift)  SetEdMode(st.edMode);  curBr = st.curBr;
+	const BrushSet& st = brSets.v[id];  // copy params
+	if (!shift)  SetEdMode((ED_MODE)st.edMode);  curBr = st.curBr;
 	br[curBr].size = st.Size;  br[curBr].intens = st.Intens;  br[curBr].shape = st.shape;
 	br[curBr].power = st.Pow;  br[curBr].freq = st.Freq;
 	br[curBr].nofs = st.NOfs;  br[curBr].octaves = st.Oct;

@@ -360,7 +360,7 @@
 				</Widget>
 
 				<Widget type="TabControl" skin="TabControl" position="16 28 760 506" name="SubTab">
-					<Property key="Colour" value="0.7 1.0 0.7"/>
+					<Property key="Colour" value="0.8 1.0 0.8"/>
 					<Property key="SmoothShow" value="false"/>
 					<UserString key="tip" value="#{TipTerLayers}"/>
 					<Widget type="TabItem" skin="" position="2 24 754 478">
@@ -447,9 +447,9 @@
 
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 754 478">
-						<Property key="Caption" value="#D0D090#{Properties}"/>
+						<Property key="Caption" value="#C0C090#{Properties}"/>
 	
-						<!-- horizon, physics -->
+						<!-- horizon, collision -->
 						<Widget type="Button" skin="CheckBox" position="32 36 452 24" name="TerCollis">
 							<Property key="Caption" value="#{Collision}"/>
 							<Property key="TextColour" value="0.9 0.9 0.9"/>
@@ -469,28 +469,28 @@
 						<!-- borders -->
 						<Widget type="TextBox" skin="TextBox" position="32 126 140 24">
 							<Property key="Caption" value="#{Border}"/>
-							<Property key="TextColour" value="1.0 1.0 0.6"/>
+							<Property key="TextColour" value="1.0 0.6 0.8"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="182 146 90 24" name="TerBL">
 							<Property key="Caption" value="#{Left}"/>
-							<Property key="TextColour" value="0.9 0.9 0.6"/>
+							<Property key="TextColour" value="0.9 0.6 0.7"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="382 146 90 24" name="TerBR">
 							<Property key="Caption" value="#{Right}"/>
-							<Property key="TextColour" value="0.9 0.9 0.6"/>
+							<Property key="TextColour" value="0.9 0.6 0.7"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="282 126 90 24" name="TerBF">
 							<Property key="Caption" value="#{Front}"/>
-							<Property key="TextColour" value="0.9 0.9 0.6"/>
+							<Property key="TextColour" value="0.9 0.6 0.7"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="282 166 90 24" name="TerBB">
 							<Property key="Caption" value="#{Back}"/>
-							<Property key="TextColour" value="0.9 0.9 0.6"/>
+							<Property key="TextColour" value="0.9 0.6 0.7"/>
 						</Widget>
 
 						<!-- ter pos -->
 						<Widget type="TextBox" skin="TextBox" position="32 210 140 24">
-							<Property key="Caption" value="#{TerrainMove}"/>
+							<Property key="Caption" value="#{TerrainMove}-"/>
 							<Property key="TextColour" value="0.7 1.0 0.7"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="182 214 20 24">
@@ -551,11 +551,11 @@
 						</Widget> -->
 
 						<Widget type="Button" skin="CheckBox" position="32 396 452 24" name="TerrainEmissive">
-							<Property key="Caption" value="#{TerrainEmissiveLight}"/>
+							<Property key="Caption" value="#{TerrainEmissiveLight} -"/>
 							<Property key="TextColour" value="0.7 0.7 0.9"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="32 426 200 24">
-							<Property key="Caption" value="#{SpecularPowerEm}"/>
+							<Property key="Caption" value="#{SpecularPowerEm} -"/>
 							<Property key="TextColour" value="0.6 0.75 0.9"/>
 						</Widget>
 						<Widget type="EditBox" skin="EditBox" position="236 423 56 24" name="TerSpecPowEmEdit">
@@ -570,23 +570,96 @@
 					<!-- Brushes -->
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#40E040#{Brushes}"/>
-						<Widget type="ScrollView" skin="ScrollViewEmpty" position="5 5 750 488" name="svBrushes">
-							<Property key="CanvasSize" value="1200 1800"/>
+						<Widget type="ScrollView" skin="ScrollViewEmpty" position="5 5 630 488" name="svBrushes">
+							<Property key="CanvasSize" value="1400 1800"/>
+						</Widget>
+
+						<!-- adjust -->
+						<Widget type="Button" skin="CheckBox" position="640 16 88 22" name="chkBrushAdj">
+							<Property key="Caption" value="#80E0F0#{Adjust}"/>
+							<Property key="TextColour" value="0.4 0.6 0.9"/>
+						</Widget>
+						<!-- <Widget type="ImageBox" skin="ImageBox" position="680 40 52 52" name="ImgPaint">
+							<Property key="ImageTexture" value="white.png"/>
+						</Widget> -->
+
+						<Widget type="Widget" skin="PanelEmpty" position="640 55 140 520" align="Stretch" name="panBrushAdj">
+
+							<Widget type="Button" skin="CheckBox" position="0 100 140 24" name="chkBrushNewLine">
+								<Property key="Caption" value="#{NewLine}"/>
+								<Property key="TextColour" value="0.6 0.7 0.8"/>
+							</Widget>
+	
+							<!-- Del Add  manage buttons -->
+							<Widget type="Button" skin="Button" position="0 228 126 24" name="BrushAdd">
+								<Property key="Caption" value="#{Add}"/>
+								<Property key="Colour" value="0.6 1.0 0.6"/>
+								<Property key="TextColour" value="0.6 1.0 0.6"/>
+								<Property key="InheritsAlpha" value="false"/>
+								<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+									<Property key="ImageCoord" value="256 256 128 128"/>
+									<Property key="Alpha" value="0.7"/>
+									<Property key="ImageTexture" value="gui_icons.png"/>
+									<Property key="NeedMouse" value="false"/>
+								</Widget>
+							</Widget>
+							<Widget type="Button" skin="Button" position="0 258 126 24" name="BrushDel">
+								<Property key="Caption" value="#{Delete}"/>
+								<Property key="Colour" value="1.0 0.6 0.6"/>
+								<Property key="TextColour" value="1.0 0.6 0.6"/>
+								<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+									<Property key="ImageCoord" value="256 384 128 128"/>
+									<Property key="Alpha" value="0.5"/>
+									<Property key="ImageTexture" value="gui_icons.png"/>
+									<Property key="NeedMouse" value="false"/>
+								</Widget>
+							</Widget>
+
+							<!-- Load Save -->
+							<Widget type="Button" skin="Button" position="0 332 126 24" name="BrushesSave">
+								<Property key="Caption" value="#{RplSave}"/>
+								<Property key="Colour" value="0.5 0.7 1.0"/>
+								<Property key="TextColour" value="0.6 0.8 1.0"/>
+								<Widget type="ImageBox" skin="ImageBox" position="0 2 20 20">
+									<Property key="ImageCoord" value="0 768 128 128"/>
+									<Property key="Colour" value="0.5 0.7 1.0"/>
+									<Property key="Alpha" value="0.6"/>
+									<Property key="ImageTexture" value="gui_icons.png"/>
+									<Property key="NeedMouse" value="false"/>
+								</Widget>
+							</Widget>
+							<Widget type="Button" skin="Button" position="0 362 126 24" name="BrushesLoad">
+								<Property key="Caption" value="#{RplLoad}"/>
+								<Property key="Colour" value="0.8 0.7 1.0"/>
+								<Property key="TextColour" value="0.7 0.7 1.0"/>
+								<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+									<Property key="ImageCoord" value="512 384 128 128"/>
+									<Property key="Alpha" value="0.7"/>
+									<Property key="ImageTexture" value="gui_icons.png"/>
+									<Property key="NeedMouse" value="false"/>
+								</Widget>
+							</Widget>
+							<Widget type="Button" skin="Button" position="0 396 126 24" name="BrushesLoadDef">
+								<Property key="Caption" value="#{RplLoad}: #{Reset}"/>
+								<Property key="Colour" value="0.8 0.3 0.3"/>
+								<Property key="TextColour" value="0.9 0.3 0.3"/>
+							</Widget>
+
 						</Widget>
 					</Widget>
 
 					<!-- Brush Params -->
 					<Widget type="TabItem" skin="" position="2 24 754 478">
-						<Property key="Caption" value="#407040#{InputBrushParams}"/>
-						<Widget type="Button" skin="Button" position="160 20 126 30" name="BrushRandom">
-							<Property key="Colour" value="0.6 0.9 0.3"/>
-							<Property key="Caption" value="#{CarClrRandom}"/>
-							<Property key="TextColour" value="0.3 0.9 0.3"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="20 20 126 30" name="BrushRandom2">
-							<Property key="Colour" value="0.6 1.0 0.7"/>
+						<Property key="Caption" value="#608060#{InputBrushParams}"/>
+						<Widget type="Button" skin="Button" position="20 20 156 30" name="BrushRandom2">
+							<Property key="Colour" value="0.6 1.0 0.8"/>
 							<Property key="Caption" value="#{CarClrRandom} #{TerLNoise}"/>
 							<Property key="TextColour" value="0.3 1.0 0.7"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="200 20 156 30" name="BrushRandom">
+							<Property key="Colour" value="0.6 1.0 0.3"/>
+							<Property key="Caption" value="#{CarClrRandom}"/>
+							<Property key="TextColour" value="0.3 0.9 0.3"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="16 105 128 24">
@@ -694,7 +767,7 @@
 
 					<!-- Ter Generator -->
 					<Widget type="TabItem" skin="" position="2 24 754 478">
-						<Property key="Caption" value="#40D080#{Generator}"/>
+						<Property key="Caption" value="#40D080#{Generator}-"/>
 						<Widget type="Widget" skin="PanelSkin" position="0 45 750 436">
 							<Property key="Colour" value="0.141 0.322 0.146"/>
 							<Property key="Alpha" value="0.2"/>
@@ -933,14 +1006,14 @@
 						<Widget type="Button" skin="Button" position="32 40 128 24" name="TerrainHalf">
 							<Property key="Colour" value="0.2 0.7 0.1"/>
 							<Property key="Alpha" value="0.8"/>
-							<Property key="Caption" value="#{TerrainHalf}"/>
+							<Property key="Caption" value="#{TerrainHalf} -"/>
 							<Property key="TextColour" value="0.2 0.7 0.1"/>
 							<UserString key="tip" value="#{TipTerrainHalf}"/>
 						</Widget>
 						<Widget type="Button" skin="Button" position="32 80 128 24" name="TerrainDouble">
 							<Property key="Colour" value="0.2 0.7 0.1"/>
 							<Property key="Alpha" value="0.8"/>
-							<Property key="Caption" value="#{TerrainDouble}"/>
+							<Property key="Caption" value="#{TerrainDouble} -"/>
 							<Property key="TextColour" value="0.2 0.7 0.1"/>
 							<UserString key="tip" value="#{TipTerrainDouble}"/>
 						</Widget>
@@ -949,7 +1022,7 @@
 						<Widget type="Button" skin="Button" position="232 40 128 24" name="TerrainMove">
 							<Property key="Colour" value="0.2 0.7 0.1"/>
 							<Property key="Alpha" value="0.8"/>
-							<Property key="Caption" value="#{TerrainMove}"/>
+							<Property key="Caption" value="#{TerrainMove} -"/>
 							<Property key="TextColour" value="0.2 0.7 0.1"/>
 							<UserString key="tip" value="#{TipTerrainMove}"/>
 						</Widget>
@@ -989,7 +1062,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 260 144 24">
-							<Property key="Caption" value="#{AH_Border}"/>
+							<Property key="Caption" value="#{Border}"/>
 							<Property key="TextColour" value="0.4 0.6 0.7"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="248 260 320 18" name="AH_Border"/>
@@ -2599,7 +2672,7 @@
 					<Property key="Colour" value="0.73 0.88 1"/>
 					<Property key="SmoothShow" value="false"/>
 					<Widget type="TabItem" skin="" position="2 24 746 468">
-						<Property key="Caption" value="#C0F0F0#{Road}"/>
+						<Property key="Caption" value="#A0F0F0#{Road}"/>
 						<Widget type="TextBox" skin="TextBox" position="60 32 284 24">
 							<Property key="Caption" value="#{RoadMaterials}"/>
 							<Property key="TextColour" value="0.5 1 1"/>
@@ -2675,8 +2748,9 @@
 							<Property key="Colour" value="0.6 0.7 0.7"/>
 						</Widget>
 					</Widget>
+
 					<Widget type="TabItem" skin="" position="2 24 746 468">
-						<Property key="Caption" value="#F0F0C0#{Pipe}"/>
+						<Property key="Caption" value="#F0F060#{Pipe}"/>
 						<Widget type="TextBox" skin="TextBox" position="60 32 268 24">
 							<Property key="Caption" value="#{PipeMaterials}"/>
 							<Property key="TextColour" value="1 1 0.5"/>
@@ -2753,6 +2827,7 @@
 						</Widget>
 					</Widget>
 
+					<!-- Column -->
 					<Widget type="TabItem" skin="" position="2 24 746 468">
 						<Property key="Caption" value="#B0B0C8#{Column}"/>
 						<Widget type="TextBox" skin="TextBox" position="36 32 244 24">
@@ -2799,6 +2874,8 @@
 							<Property key="Colour" value="0.8 0.8 1.0"/>
 						</Widget>
 					</Widget>
+
+					<!-- geom detail -->
 					<Widget type="TabItem" skin="" position="2 24 746 468">
 						<Property key="Caption" value="#B09070#{Detail}"/>
 
@@ -2881,6 +2958,7 @@
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
 						</Widget>
 					</Widget>
+
 					<Widget type="TabItem" skin="" position="2 24 746 468">
 						<Property key="Caption" value="#80B070#{Advanced}"/>
 						<Widget type="TextBox" skin="TextBox" position="36 32 312 24">
