@@ -68,7 +68,7 @@ void CGui::ToolSceneXml()
 	//Ogre::Timer ti;
 	LogO("ALL tracks scene ---------");
 	std::map<string, int> noCol,minSc;
-	ResourceGroupManager& rg = ResourceGroupManager::getSingleton();
+	auto& rg = ResourceGroupManager::getSingleton();
 
 	int i,n;
 	for (auto trkinf : data->tracks->trks)

@@ -50,7 +50,7 @@ void CScene::CreateTerrain1(int n, bool upd)
 	//  tex filtering
 	HlmsSamplerblock sb;
 	app->InitTexFilters(&sb);
-	TextureGpuManager *texMgr = app->mRoot->getRenderSystem()->getTextureGpuManager();
+	auto* texMgr = app->mRoot->getRenderSystem()->getTextureGpuManager();
 
 	const auto& td = sc->tds[n];
 	// bool tripl = false;  // test

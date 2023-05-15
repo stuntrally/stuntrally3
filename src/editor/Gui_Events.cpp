@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "enums.h"
 #include "Def_Str.h"
 #include "settings.h"
 #include "CApp.h"
@@ -115,7 +116,7 @@ void CGui::btnTersAdd(WP)
 
 	//  flat Hmap
 	t.hfHeight.clear();
-	t.hfHeight.resize(s2, app->terSetH);
+	t.hfHeight.resize(s2, app->br[ED_Height].height);
 	
 	++scn->terCur;  // inc cur
 	saveNewHmap(&t.hfHeight[0], size, 1, false);

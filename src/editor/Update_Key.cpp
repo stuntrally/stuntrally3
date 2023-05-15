@@ -277,10 +277,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	if (edMode < ED_Road && !alt && edit/* && bEdit()*/)
 	switch (skey)
 	{
-		case key(K):    if (ctrl)  {  br[curBr].shape = (EBrShape)((br[curBr].shape-1 + BRS_ALL) % BRS_ALL);  updBrush();  }  break;
-		case key(L):    if (ctrl)  {  br[curBr].shape = (EBrShape)((br[curBr].shape+1) % BRS_ALL);            updBrush();  }  break;
-		case key(N): case key(COMMA):   br[curBr].octaves = std::max(1, br[curBr].octaves-1);  updBrush();  break;
-		case key(M): case key(PERIOD):  br[curBr].octaves = std::min(9, br[curBr].octaves+1);  updBrush();  break;
+		case key(K):    if (ctrl)  {  curBr().shape = (EBrShape)((curBr().shape-1 + BRS_ALL) % BRS_ALL);  updBrush();  }  break;
+		case key(L):    if (ctrl)  {  curBr().shape = (EBrShape)((curBr().shape+1) % BRS_ALL);            updBrush();  }  break;
+		case key(N): case key(COMMA):   curBr().octaves = std::max(1, curBr().octaves-1);  updBrush();  break;
+		case key(M): case key(PERIOD):  curBr().octaves = std::min(9, curBr().octaves+1);  updBrush();  break;
 
 		//  more ters  ------
 		case key(KP_ENTER):  case key(RETURN):
@@ -297,7 +297,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 		case key(SPACE):  //  set brush height from terrain
 			if (edMode == ED_Height)
-			{	terSetH = road->posHit.y;  }
+			{	curBr().height = road->posHit.y;  }
 			break;
 		default:  break;
 	}
@@ -369,10 +369,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(P):  gui->ckEmitters.Invert();  bRecreateEmitters = true;  break;
 
 		//  ⛰️ terrain
-		case key(D):  if (bEdit()){  SetEdMode(ED_Deform);  curBr = 0;  UpdBr();  }  break;
-		case key(S):  if (bEdit()){  SetEdMode(ED_Smooth);  curBr = 1;  UpdBr();  }  break;
-		case key(E):  if (bEdit()){  SetEdMode(ED_Height);  curBr = 2;  UpdBr();  }  break;
-		case key(F):  if (bEdit()){  SetEdMode(ED_Filter);  curBr = 3;  UpdBr();  }
+		case key(D):  if (bEdit()){  SetEdMode(ED_Deform);  UpdBr();  }  break;
+		case key(S):  if (bEdit()){  SetEdMode(ED_Smooth);  UpdBr();  }  break;
+		case key(E):  if (bEdit()){  SetEdMode(ED_Height);  UpdBr();  }  break;
+		case key(F):  if (bEdit()){  SetEdMode(ED_Filter);  UpdBr();  }
 			else  //  focus on find edit  (global)
 			if (ctrl && gcom->edTrkFind /*&& bGuiFocus &&
 				!pSet->isMain && pSet->inMenu == WND_Edit && mWndTabsEdit->getIndexSelected() == 1*/)

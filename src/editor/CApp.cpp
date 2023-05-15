@@ -23,17 +23,16 @@ using namespace std;
 //------------------------------------------------------------------------------------
 App::App()
 {
-	// pSet = pSet1;
 	Axes::Init();
 	
 	br[0].size = 16.f;   br[1].size = 24.f;   br[2].size = 16.f;   br[3].size = 16.f;
-	br[0].intens = 20.f; br[1].intens = 20.f; br[2].intens = 20.f; br[3].intens = 20.f;
-	br[0].power = 2.f;   br[1].power = 2.f;   br[2].power = 2.f;   br[3].power = 2.f;
-	br[0].freq = 1.f;    br[1].freq = 1.f;    br[2].freq = 1.f;    br[3].freq = 1.f;
-	br[0].nofs = 0.f;    br[1].nofs = 0.f;    br[2].nofs = 0.f;    br[3].nofs = 0.f;
-	br[0].octaves = 5;   br[1].octaves = 5;	  br[2].octaves = 5;   br[3].octaves = 5;
-	br[0].shape = BRS_Sinus;  br[1].shape = BRS_Sinus;
-	br[2].shape = BRS_Sinus;  br[3].shape = BRS_Sinus;
+	for (int i=0; i<4; ++i)
+	{
+		br[i].intens = 20.f;  br[i].power = 2.f;
+		br[i].freq = 1.f;  br[i].octaves = 5;  br[i].offset = 0.f;
+		br[i].shape = BRS_Sinus;
+		br[i].height = 10.f;  br[i].filter = 2.f;
+	}
 }
 
 

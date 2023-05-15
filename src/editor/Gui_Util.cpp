@@ -218,6 +218,8 @@ void App::SetEdMode(ED_MODE newMode)
 		SaveWaterDepth();  // update, on exit from Fluids editing
 
 	edMode = newMode;
+	if (edMode >= ED_Deform && edMode <= ED_Filter)
+		iCurBr = edMode;
 }
 
 

@@ -10,11 +10,11 @@ extern const Ogre::String csBrShape[BRS_ALL];
 ///<>  ⛰️ terrain edit, brush setup
 struct BrushSet
 {
-	/*ED_MODE*/int edMode;  int curBr;
-	float Size,Intens,Pow, Freq,NOfs;
-	int Oct;  /*EBrShape*/int shape;
-	float Filter, HSet;
-	int newLine;
+	/*ED_MODE*/int edMode;
+	float size,intens,power, freq,offset;
+	int octaves;  /*EBrShape*/int shape;
+	float filter, height;
+	int newLine;  // gui
 	Ogre::String name;
 };
 const int MaxBrushes = 255;  // par max ini

@@ -30,7 +30,7 @@ void App::EditMouse()
 	{
 		if (mbRight)
 		{	Real ym = -vNew.y * 4.f * moveMul;
-			terSetH += ym;
+			curBr().height += ym;
 	}	}
 	
 	if (edMode == ED_Start /*&&	vStartPos.size() >= 4 && vStartRot.size() >= 4*/)

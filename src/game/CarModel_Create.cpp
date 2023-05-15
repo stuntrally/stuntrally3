@@ -185,7 +185,7 @@ void CarModel::Create()
 
 	//  Resource locations -----------------------------------------
 	/// Add a resource group for this car
-	ResourceGroupManager& resMgr = ResourceGroupManager::getSingleton();
+	auto& resMgr = ResourceGroupManager::getSingleton();
 	resMgr.createResourceGroup(resGrpId);
 	resMgr.addResourceLocation(sCars, "FileSystem", resGrpId);
 	resMgr.addResourceLocation(sCars + "/textures", "FileSystem", resGrpId);

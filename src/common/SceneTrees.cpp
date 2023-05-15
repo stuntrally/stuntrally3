@@ -95,7 +95,7 @@ void CScene::CreateTrees()
 		//if (!pSet->impostors_only)
 		//sc->trDist * pSet->trees_dist, 0);
 		//sc->trDistImp * pSet->trees_dist, 0);
-		ResourceGroupManager& resMgr = ResourceGroupManager::getSingleton();
+		auto& resMgr = ResourceGroupManager::getSingleton();
 		SceneManager *mgr = app->mSceneMgr;
 		SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 

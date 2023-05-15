@@ -170,17 +170,17 @@ void App::UpdateEnd(float dt)
 		switch (edMode)
 		{
 		case ED_Deform:
-			if (mbLeft) {  deformed = true;  deform(road->posHit, dt, s);  }else
-			if (mbRight){  deformed = true;  deform(road->posHit, dt,-s);  }
+			if (mbLeft) {  deformed = true;  Deform(road->posHit, dt, s);  }else
+			if (mbRight){  deformed = true;  Deform(road->posHit, dt,-s);  }
 			break;
 		case ED_Filter:
-			if (mbLeft) {  deformed = true;  filter(road->posHit, dt, s);  }
+			if (mbLeft) {  deformed = true;  Filter(road->posHit, dt, s);  }
 			break;
 		case ED_Smooth:
-			if (mbLeft) {  deformed = true;  smooth(road->posHit, dt);  }
+			if (mbLeft) {  deformed = true;  Smooth(road->posHit, dt);  }
 			break;
 		case ED_Height:
-			if (mbLeft) {  deformed = true;  height(road->posHit, dt, s);  }
+			if (mbLeft) {  deformed = true;  Height(road->posHit, dt, s);  }
 			break;
 		default:  break;
 		}

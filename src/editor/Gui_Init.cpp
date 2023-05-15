@@ -171,16 +171,21 @@ void CGui::InitGui()
 	imgCam  = fImg("modeCam");  imgEdit = fImg("modeEdit");  imgGui  = fImg("modeGui");
 	panStatus = fWP("panStatus");  txtStatus = fTxt("txtStatus");
 
+	static float f=0.f;  i=0;  // temp vars
+	static bool b=0;
+
 
 	///  ⛰️ brush presets   o o o o o o
 	//------------------------------------------------------------------------
 	scvBrushes = fScv("svBrushes");
-	UpdBrushes();
+	btnBrushesLoadDef(0);
 	//scv->setCanvasSize(1020,j*90+300);
-	Btn("BrushRandom", btnBrushRandom);  Btn("BrushRandom2", btnBrushRandom2);
+	panBrushAdj = fWP("panBrushAdj");  panBrushAdj->setVisible(pSet->br_adjust);
+	ck= &ckBrushAdj;		ck->Init("chkBrushAdj",		&pSet->br_adjust);  Cev(BrushAdj);
+	Btn("BrushAdd", btnBrushAdd);  Btn("BrushDel", btnBrushDel);
+	Btn("BrushesSave", btnBrushesSave);  Btn("BrushesLoad", btnBrushesLoad);  Btn("BrushesLoadDef", btnBrushesLoadDef);
 
-	static float f=0.f;  i=0;  // temp vars
-	static bool b=0;
+	Btn("BrushRandom", btnBrushRandom);  Btn("BrushRandom2", btnBrushRandom2);
 
 	//  brush params
 	sv= &svBrSize;	sv->Init("BrSize",	&f, 2.f,BrushMaxSize, 2.f, 1,4);  sv->DefaultF(20.f);  //Sev(UpdBr);
@@ -188,14 +193,15 @@ void CGui::InitGui()
 	sv= &svBrPower;	sv->Init("BrPower",	&f, 0.02f,10.f, 4.f, 2,4);  sv->DefaultF(1.5f);  Sev(UpdBr);
 	sv= &svBrShape;
 	for (i=0; i < BRS_ALL; ++i)
-		sv->strMap[i] = csBrShape[i];
+		sv->strMap[i] = BrushesIni::csBrShape[i];
 					sv->Init("BrShape",	&i, 0,BRS_ALL-1, 1);  sv->DefaultI(BRS_Noise);  Sev(UpdBr);
 	sv= &svBrFreq;	sv->Init("BrFreq",	&f, 0.01f,2.f, 2.f, 2,4);  sv->DefaultF(0.2f);  Sev(UpdBr);
 	sv= &svBrOct;	sv->Init("BrOct",	&i, 1,9, 1.f);  sv->DefaultI(3);  Sev(UpdBr);
 	sv= &svBrOfs;	sv->Init("BrOfs",	&f, -30.f,30.f, 1.f, 2,4);  sv->DefaultF(2.f);  Sev(UpdBr);
+	sv= &svBrSetH;	sv->Init("BrSetH",	&f, -100.f,500.f, 2.f, 2,5);  sv->DefaultF(0.f);  Sev(UpdBr);
+	sv= &svBrFilt;	sv->Init("BrFilt",	&f, 0.1f,8.f, 1.5f, 2,4);  sv->DefaultF(2.f);
+	sv= &svBrNewLine;  sv->Init("BrNewLine",	&i, -2,1, 1.f);  sv->DefaultI(0);  Sev(BrNewLine);
 	SldUpdBr();
-	sv= &svBrSetH;	sv->Init("BrSetH",	&app->terSetH, -100.f,500.f, 2.f, 2,5);  sv->DefaultF(0.f);
-	sv= &svBrFilt;	sv->Init("BrFilt",	&app->mBrFilt, 0.1f,8.f, 1.5f, 2,4);  sv->DefaultF(2.f);
 
 
 	///  🎨 Color tool wnd  ----

@@ -15,28 +15,9 @@
 
 #include <fstream>
 #include <MyGUI.h>
-// #include <OgreRenderTexture.h>
 using namespace MyGUI;
 using namespace Ogre;
 
-
-//  ter brush pars
-void CGui::slUpdBr(SV*)
-{
-	app->updBrush();
-}
-void CGui::SldUpdBr()
-{
-	if (!app)  return;
-	auto c = app->curBr;
-	svBrSize.UpdF(&app->br[c].size);
-	svBrForce.UpdF(&app->br[c].intens);
-	svBrPower.UpdF(&app->br[c].power);
-	svBrShape.UpdI(&app->br[c].shape);
-	svBrFreq.UpdF(&app->br[c].freq);
-	svBrOct.UpdI(&app->br[c].octaves);
-	svBrOfs.UpdF(&app->br[c].nofs);
-}
 
 ///  ⛰️ Terrain
 //-----------------------------------------------------------------------------------------------------------

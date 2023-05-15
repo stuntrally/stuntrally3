@@ -192,20 +192,20 @@ void App::KeyTxtTerrain(Real q)
 	}
 	brVal[0]->setCaption(toStr(scn->terCur+1) +" / "+ toStr(scn->ters.size()));
 
-	auto si = br[curBr].size, in  = br[curBr].intens, pw = br[curBr].power;
+	auto si = curBr().size, in  = curBr().intens, pw = curBr().power;
 	brVal[1]->setCaption( gcom->getClrVal( si / 150.f * 17.f) + fToStr(si,1,4));
 	brVal[2]->setCaption( gcom->getClrVal( in / 60.f * 17.f) + fToStr(in,1,4));
 	brVal[3]->setCaption( gcom->getClrVal( powf(pw, 2.f) *1.f + 4.f) + fToStr(pw,2,4));
-	brVal[4]->setCaption(TR("#{Brush_Shape"+BrushesIni::csBrShape[br[curBr].shape]+"}"));
+	brVal[4]->setCaption(TR("#{Brush_Shape"+BrushesIni::csBrShape[curBr().shape]+"}"));
 
-	bool brN = br[curBr].shape >= BRS_Noise;  int i;
+	bool brN = curBr().shape >= BRS_Noise;  int i;
 	for (i = 5; i <= 7; ++i)
 	{	brTxt[i]->setVisible(brN);  brVal[i]->setVisible(brN);  brKey[i]->setVisible(brN);	}
 
 	if (brN)
-	{	brVal[5]->setCaption(fToStr(br[curBr].freq,2,4));
-		brVal[6]->setCaption(toStr(br[curBr].octaves));
-		brVal[7]->setCaption(fToStr(br[curBr].nofs,1,4));
+	{	brVal[5]->setCaption(fToStr(curBr().freq,2,4));
+		brVal[6]->setCaption(toStr(curBr().octaves));
+		brVal[7]->setCaption(fToStr(curBr().offset,1,4));
 	}
 
 	bool edH = edMode != ED_Height;
@@ -217,12 +217,12 @@ void App::KeyTxtTerrain(Real q)
 	if (edMode == ED_Filter)
 	{
 		brTxt[8]->setCaption(TR("#{Brush_Filter}"));	brKey[8]->setCaption("  1 2");
-		brVal[8]->setCaption(fToStr(mBrFilt,1,3));
+		brVal[8]->setCaption(fToStr(curBr().filter,1,3));
 	}
 	else if (!edH && road && road->bHitTer)
 	{
 		brTxt[8]->setCaption(TR("#{Brush_Height}"));	brKey[8]->setCaption("RMB");
-		brVal[8]->setCaption(fToStr(terSetH,1,4));
+		brVal[8]->setCaption(fToStr(curBr().height,1,4));
 	}else
 	{	brTxt[8]->setCaption("");  brVal[8]->setCaption("");  brKey[8]->setCaption("");  }
 	
@@ -233,28 +233,28 @@ void App::KeyTxtTerrain(Real q)
 	
 	//  edit  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 	if (mz != 0 && bEdit())
-	{	if (alt){			br[curBr].power  *= 1.f - 0.4f*q*mz;  updBrush();  }
-		else if (!shift){	br[curBr].size   *= 1.f - 0.4f*q*mz;  updBrush();  }
-		else				br[curBr].intens *= 1.f - 0.4f*q*mz/0.05;
+	{	if (alt){			curBr().power  *= 1.f - 0.4f*q*mz;  updBrush();  }
+		else if (!shift){	curBr().size   *= 1.f - 0.4f*q*mz;  updBrush();  }
+		else				curBr().intens *= 1.f - 0.4f*q*mz/0.05;
 	}
-	if (isKey(MINUS)){   br[curBr].size  *= 1.f - 0.04f*q;  updBrush();  }
-	if (isKey(EQUALS)){  br[curBr].size  *= 1.f + 0.04f*q;  updBrush();  }
-	if (isKey(LEFTBRACKET))   br[curBr].intens  *= 1.f - 0.04f*q;
-	if (isKey(RIGHTBRACKET))  br[curBr].intens  *= 1.f + 0.04f*q;
+	if (isKey(MINUS)){   curBr().size  *= 1.f - 0.04f*q;  updBrush();  }
+	if (isKey(EQUALS)){  curBr().size  *= 1.f + 0.04f*q;  updBrush();  }
+	if (isKey(LEFTBRACKET))   curBr().intens  *= 1.f - 0.04f*q;
+	if (isKey(RIGHTBRACKET))  curBr().intens  *= 1.f + 0.04f*q;
 	if (isKey(SEMICOLON)  || (!ctrl && isKey(K)))
-					{	br[curBr].power   *= 1.f - 0.04f*q;  updBrush();  }
+					{	curBr().power   *= 1.f - 0.04f*q;  updBrush();  }
 	if (isKey(APOSTROPHE) || (!ctrl && isKey(L)))
-					{	br[curBr].power   *= 1.f + 0.04f*q;  updBrush();  }
+					{	curBr().power   *= 1.f + 0.04f*q;  updBrush();  }
 
-	if (isKey(O)){		br[curBr].freq    *= 1.f - 0.04f*q;  updBrush();  }
-	if (isKey(P)){		br[curBr].freq    *= 1.f + 0.04f*q;  updBrush();  }
-	if (isKey(9)){		br[curBr].nofs   -= 0.3f*q;		   updBrush();  }
-	if (isKey(0)){		br[curBr].nofs   += 0.3f*q;		   updBrush();  }
+	if (isKey(O)){		curBr().freq    *= 1.f - 0.04f*q;  updBrush();  }
+	if (isKey(P)){		curBr().freq    *= 1.f + 0.04f*q;  updBrush();  }
+	if (isKey(9)){		curBr().offset  -= 0.3f*q;		   updBrush();  }
+	if (isKey(0)){		curBr().offset  += 0.3f*q;		   updBrush();  }
 
-	if (isKey(1)){		mBrFilt         *= 1.f - 0.04f*q;  updBrush();  }
-	if (isKey(2)){		mBrFilt         *= 1.f + 0.04f*q;  updBrush();  }
+	if (isKey(1)){		curBr().filter  *= 1.f - 0.04f*q;  updBrush();  }
+	if (isKey(2)){		curBr().filter  *= 1.f + 0.04f*q;  updBrush();  }
 	
-	if (br[curBr].intens < 0.1f)  br[curBr].intens = 0.1;  // rest in updBrush
+	if (curBr().intens < 0.1f)  curBr().intens = 0.1;  // rest in updBrush
 }
 
 

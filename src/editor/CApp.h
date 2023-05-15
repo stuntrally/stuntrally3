@@ -149,32 +149,27 @@ public:
 
 
 	//  brush vars
-	int curBr = 0;
 	bool bTerUpd =0, bTerUpdBlend =0;  char sBrushTest[512] ={0,};
 	float* pBrFmask =0, *mBrushData =0;
 	bool brLockPos =0;
 
 	//  params
-	float terSetH = 10.f,  mBrFilt = 2.f, mBrFiltOld = 1.f;
-	struct BrushParams
-	{
-		float size, intens, power, freq, nofs;
-		int octaves, shape;  // EBrShape
-	} br[ED_ALL];
-
-	//  brush deform
-	bool getEditRect(Ogre::Vector3& pos, Ogre::Rect& brushrect, Ogre::Rect& maprect, int size, int& cx, int& cy);
+	float mBrFiltOld = 1.f;
+	BrushSet br[ED_Filter+1];  // [4]
+	int iCurBr = 0;
+	BrushSet& curBr() {  return br[iCurBr];  }
 
 
 	//  ⛰️ Terrain edit ----
-	void deform(Ogre::Vector3 &pos, float dtime, float brMul);
-	void height(Ogre::Vector3 &pos, float dtime, float brMul);
+	bool GetEditRect(Ogre::Vector3& pos, Ogre::Rect& brushrect, Ogre::Rect& maprect, int size, int& cx, int& cy);
+	void Deform(Ogre::Vector3 &pos, float dtime, float brMul);
+	void Height(Ogre::Vector3 &pos, float dtime, float brMul);
 
-	void smooth(Ogre::Vector3 &pos, float dtime);
-	void smoothTer(Ogre::Vector3 &pos, float avg, float dtime);
-	void calcSmoothFactor(Ogre::Vector3 &pos, float& avg, int& sample_count);
+	void Smooth(Ogre::Vector3 &pos, float dtime);
+	void SmoothTer(Ogre::Vector3 &pos, float avg, float dtime);
+	void CalcSmoothFactor(Ogre::Vector3 &pos, float& avg, int& sample_count);
 
-	void filter(Ogre::Vector3 &pos, float dtime, float brMul);
+	void Filter(Ogre::Vector3 &pos, float dtime, float brMul);
 
 
 	///  🎳 bullet world, simulate

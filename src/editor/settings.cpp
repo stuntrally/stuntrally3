@@ -70,6 +70,8 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	//  ⛰️🛣️ align ter
 	Param(c,w, "teralign.w_mul", al_w_mul);			Param(c,w, "teralign.smooth", al_smooth);
 	Param(c,w, "teralign.w_add", al_w_add);
+	
+	Param(c,w, "brush.adjust", br_adjust);
 
 	//  🔧 tweak
 	Param(c,w, "tweak.mtr", tweak_mtr);

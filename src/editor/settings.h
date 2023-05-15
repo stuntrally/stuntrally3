@@ -51,8 +51,8 @@ public:
 
 	//  ⛰️🛣️ align ter
 	float al_w_mul = 1.f, al_w_add = 8.f, al_smooth = 2.f;
-	int ah_base_ter = 0;
-	float ah_below = 10.f, ah_border = 10.f;
+	int ah_base_ter = 0;  float ah_below = 10.f, ah_border = 10.f;  // not saved..
+	bool br_adjust =0;
 	
 	//  🚦 pacenotes
 	int pace_show = 3;

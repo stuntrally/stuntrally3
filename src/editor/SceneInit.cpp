@@ -495,7 +495,7 @@ void App::TerCircleUpd(float dt)
 	bool edTer = e <= ED_Filter && ed;
 	if (!edTer)  return;
 	
-	const Real radius = br[curBr].size * 0.5f *
+	const Real radius = curBr().size * 0.5f *
 		scn->sc->tds[scn->terCur].fTriangleSize;  // par-
 	//  scale with distance, to be same on screen
 	const Real dist = std::min(3000.f, scn->road->fHitDist );
