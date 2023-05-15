@@ -95,7 +95,7 @@ void App::ToolBrushesPrv()
 		}	}
 	}
 
-	im.save("brushes.png", 0, 0);
+	im.save(PATHS::UserConfigDir()+"/brushes.png", 0, 0);
 	delete[] data;
 	LogO(String("::: Time ALL brush: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  // < 1s
 }

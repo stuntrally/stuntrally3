@@ -174,38 +174,8 @@ void CGui::InitGui()
 
 	///  ⛰️ brush presets   o o o o o o
 	//------------------------------------------------------------------------
-	ScrollView* scv = fScv("svBrushes");
-	int yy=0, xx=0;  const int uv = 128;
-	for (i=0; i < app->brSetsNum; ++i,++xx)
-	{
-		const auto& st = app->brSets[i];  const String s = toStr(i);
-		int x,y, xt,yt, sx; //, row1 = i-14;  // y,x for next lines
-		/*if (row1 < 0)  // top row
-		{	x = 10+ i*50;  y = 10;
-			xt = x + 20;  yt = y + 50;  sx = 48;
-		}else*/
-		{	if (st.newLine==1 && xx > 0 || xx > 9) {  xx=0;  ++yy;  }  // 1 new line
-			x = 0+ xx*70;  y = 10+ yy*70;
-			xt = x + 15;  yt = y + 55;  sx = 56; //64;
-			if (st.newLine < 0)  xx -= st.newLine;  // -1 empty x
-		}
-		Img img = scv->createWidget<ImageBox>("ImageBox", x,y, sx,sx, Align::Default, "brI"+s);
-		img->eventMouseButtonClick += newDelegate(this, &CGui::btnBrushPreset);
-		img->setUserString("tip", st.name);  img->setNeedToolTip(true);
-		img->setImageTexture("brushes.png");
-		img->setImageCoord(IntCoord( i%16*uv, i/16*uv, uv,uv ));
-		if (!st.name.empty())  img->eventToolTip += newDelegate(gcom, &CGuiCom::notifyToolTip);
-		gcom->setOrigPos(img, "EditorWnd");
-		
-		Txt txt = scv->createWidget<TextBox>("TextBox", xt,yt, 60,22, Align::Default, "brT"+s);
-		txt->setCaption(fToStr(st.Size,0,2));
-		auto si = st.Size, in = st.Intens;
-		txt->setCaption(
-			gcom->getClrVal( si / 150.f * 17.f) + fToStr(si,0,2) + " "+ 
-			gcom->getClrVal( in / 60.f * 17.f) + fToStr(in,0,2));
-		txt->setFontHeight(st.Size /10 + 15);
-		gcom->setOrigPos(txt, "EditorWnd");
-	}
+	scvBrushes = fScv("svBrushes");
+	UpdBrushes();
 	//scv->setCanvasSize(1020,j*90+300);
 	Btn("BrushRandom", btnBrushRandom);  Btn("BrushRandom2", btnBrushRandom2);
 

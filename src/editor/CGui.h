@@ -157,7 +157,7 @@ public:
 	CK(TerCollis);  CK(TerBL); CK(TerBR); CK(TerBF); CK(TerBB);
 	void SldUpd_Ter();
 
-	//  hmap
+	//  Hmap
 	void saveNewHmap(float* hfData, int size, int add = 0, bool bNew=true);  // to file
 	void btnTerrainNew(WP), btnTerGenerate(WP);
 	//  tools
@@ -166,6 +166,9 @@ public:
 	void btnAlignTerToRoad(WP), btnAlignHorizonToTer(WP);
 	SV svAH_BaseTer, svAH_Border, svAH_Below;
 	
+	//  brushes  o o o o
+	Scv scvBrushes =0;  void UpdBrushes();
+	std::vector<Img> brImgs;  std::vector<Txt> brTxts;
 	void btnBrushPreset(WP), btnBrushRandom(WP),btnBrushRandom2(WP);
 
 	//  brush pars
