@@ -68,6 +68,8 @@ void App::createScene01()  // once, init
 	prvView.Create(k,k,"PrvView");
 	prvRoad.Create(k,k,"PrvRoad");
 	 prvTer.Create(k,k,"PrvTer");
+	
+	prvBrushes.Create(2*k,2*k,"PrvBrushes");
 
 	//scn->roadDens.Create(k+1,k+1,"RoadDens");  // var size..
 

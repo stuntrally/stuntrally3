@@ -572,6 +572,13 @@
 						<Property key="Caption" value="#40E040#{Brushes}"/>
 						<Widget type="ScrollView" skin="ScrollViewEmpty" position="5 5 630 488" name="svBrushes">
 							<Property key="CanvasSize" value="1400 1800"/>
+
+							<Widget type="ImageBox" skin="ImageBox" position="6 6 52 52" layer="Back" name="imgBrCur">
+								<Property key="ImageTexture" value="paint_icons.png"/>
+								<Property key="ImageCoord" value="64 0 32 32"/>
+								<Property key="Alpha" value="0.6"/>
+								<Property key="NeedMouse" value="false"/>
+							</Widget>
 						</Widget>
 
 						<!-- adjust -->

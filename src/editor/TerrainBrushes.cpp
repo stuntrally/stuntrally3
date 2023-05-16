@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "paths.h"
+#include "brushes.h"
 #include "CGui.h"
 #include "GuiCom.h"
 #include "App.h"
@@ -19,9 +20,8 @@ const Ogre::String BrushesIni::csBrShape[BRS_ALL] =
 { "Triangle", "Sinus", "N-gon", "Noise", "Noise2" };  // static
 
 
-//  update all Brushes prv png  ......................................................
-// todo: brush presets in xml, auto upd
-void App::ToolBrushesPrv()
+//  🖌️🖼️ generate all Brushes prv png  ......................................................
+void App::GenBrushesPrv()
 {
 	Ogre::Timer ti;
 	const uint si = 2048;  // 16 * 128  BrPrvSize
@@ -57,12 +57,15 @@ void App::ToolBrushesPrv()
 
 	im.save(PATHS::UserConfigDir()+"/brushes.png", 0, 0);
 	delete[] data;
+
+	prvBrushes.Load(PATHS::UserConfigDir()+"/brushes.png",1);
+
 	LogO(String("::: Time ALL brush: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  // < 1s
 }
 
 
 
-///  ⛰️ upd Gui  brush presets   o o o o o o
+///  🖌️🎨 upd Gui  brush presets   o o o o o o
 //--------------------------------------------------------------------------------------------------------------------------
 void CGui::UpdBrushesImgs()
 {
@@ -78,11 +81,11 @@ void CGui::UpdBrushesImgs()
 	brTxts.clear();
 
 	//  add user png dir
-	auto& resMgr = ResourceGroupManager::getSingleton();
-	resMgr.addResourceLocation(PATHS::GameConfigDir(), "FileSystem", "Popular");
+	// auto& resMgr = ResourceGroupManager::getSingleton();
+	// resMgr.addResourceLocation(PATHS::GameConfigDir(), "FileSystem", "Popular");
 
 	//  create
-	int yy=0, xx=0;  const int uv = 128;
+	int yy=0, xx=0;  const int uv = 128, s = 10;
 	for (int i=0; i < app->brSets.v.size(); ++i,++xx)
 	{
 		const auto& st = app->brSets.v[i];  const String s = toStr(i);
@@ -92,14 +95,14 @@ void CGui::UpdBrushesImgs()
 			xt = x + 20;  yt = y + 50;  sx = 48;
 		}else*/
 		{	if (st.newLine==1 && xx > 0 || xx > 9) {  xx=0;  ++yy;  }  // 1 new line
-			x = 0+ xx*70;  y = 10+ yy*70;
+			x = 0+ xx*70;  y = 0+ yy*70;
 			xt = x + 15;  yt = y + 55;  sx = 56; //64;
 			if (st.newLine < 0)  xx -= st.newLine;  // -1 empty x
 		}
 		Img img = scv->createWidget<ImageBox>("ImageBox", x,y, sx,sx, Align::Default, "brI"+s);
 		img->eventMouseButtonClick += newDelegate(this, &CGui::btnBrushPreset);
 		img->setUserString("tip", st.name);  img->setNeedToolTip(true);
-		img->setImageTexture("brushes.png");
+		img->setImageTexture("PrvBrushes"); //"brushes.png");
 		img->setImageCoord(IntCoord( i%16*uv, i/16*uv, uv,uv ));
 		if (!st.name.empty())  img->eventToolTip += newDelegate(gcom, &CGuiCom::notifyToolTip);
 		gcom->setOrigPos(img, "EditorWnd");
@@ -130,31 +133,53 @@ void CGui::slBrNewLine(SV*)
 	UpdBrushesImgs();
 }
 
+
+//  brush add +
 void CGui::btnBrushAdd(WP)
 {
-	app->brSets.v.push_back(app->curBr());
-	// ToolBrushesPrv();
+	BrushSet b = app->curBr();
+	auto i = iBrGui;
+	auto& v = app->brSets.v;
+	if (i >= 0 && i < v.size()-1)
+		v.insert(v.begin() + i + 1, b);
+	else
+		v.push_back(b);
+
+	app->GenBrushesPrv();
 	UpdBrushesImgs();
 }
+
+//  brush del -
 void CGui::btnBrushDel(WP)
 {
-	app->brSets.v.pop_back();
-	// ToolBrushesPrv();
+	auto& i = iBrGui;
+	auto& v = app->brSets.v;
+	if (i >= 0 && i < v.size())
+		v.erase(v.begin() + i);
+	
+	if (i == v.size() && i > 0)
+		--i;
+
+	app->GenBrushesPrv();
 	UpdBrushesImgs();
 }
+
 
 void CGui::btnBrushesSave(WP)
 {
 	app->brSets.Save(PATHS::UserConfigDir()+"/brushes.ini");
 }
-void CGui::btnBrushesLoad(WP)
+void CGui::btnBrushesLoad(WP wp)
 {
 	app->brSets.Load(PATHS::UserConfigDir()+"/brushes.ini");
+	if (wp)
+		app->GenBrushesPrv();
 	UpdBrushesImgs();
 }
 void CGui::btnBrushesLoadDef(WP)
 {
 	app->brSets.Load(PATHS::GameConfigDir()+"/brushes.ini");
+	app->GenBrushesPrv();
 	UpdBrushesImgs();
 }
 
@@ -186,15 +211,58 @@ void App::UpdBr()
 	gui->SldUpdBr();  updBrush();  UpdEditWnds();
 }
 
-//  brush preset
+
+//  🖌️🎨 Brush img click
+//---------------------------------------------------------------------
 void CGui::btnBrushPreset(WP img)
 {
-	int id = 0;
-	sscanf(img->getName().c_str(), "brI%d", &id);
-	iBrGui = id;
-	// todo: imgBrCur set pos..
-	app->SetBrushPreset(id);
+	int i = 0, c = iBrGui;
+	sscanf(img->getName().c_str(), "brI%d", &i);
+	auto& v = app->brSets.v;
+	int si = v.size();
+	if (c >= si)  c = 0;  //return;  }
+	if (i < 0 || i >= si)  return;
+	
+	//  img cur [] set pos
+	auto p = img->getPosition();
+	auto s = img->getSize();
+	imgBrCur->setCoord(p.left, p.top, s.width, s.height);
+
+	if (app->alt && c >= 0)
+	{
+		// auto cnl = v[c].new_line, inl = v[i].new_line;
+		// auto cgr = v[c].group, igr = v[i].group;
+
+		//  swap
+		auto cc = v[c];
+		v[c] = v[i];  v[i] = cc;
+
+		// v[c].new_line = cnl;  v[i].new_line = inl;  // fixme
+		// v[c].group = cgr;  v[i].group = igr;
+		UpdBrushesImgs();  return;
+	}
+	if (app->shift && c >= 0)
+	{
+		// auto cnl = v[c].new_line, inl = v[i].new_line;
+		// auto cgr = v[c].group, igr = v[i].group;
+
+		//  move cur
+		auto cc = v[c];
+		if (i >= 0 && i < v.size())
+			v.erase(v.begin() + c);
+		v.insert(v.begin() + i, cc);
+
+		// v[c].new_line = cnl;  v[i].new_line = inl;  // fixme
+		// v[c].group = cgr;  v[i].group = igr;
+		UpdBrushesImgs();  return;
+	}
+	//  click, set
+	iBrGui = i;
+	app->SetBrushPreset(i);
 }
+
+
+//  set brush preset
 void App::SetBrushPreset(int id, bool upd)
 {
 	const BrushSet& st = brSets.v[id];  // copy params

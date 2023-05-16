@@ -2,25 +2,25 @@
 #include "configfile.h"
 
 
-//  brush shapes, functions
+//  🖌️ brush shapes, functions
 enum EBrShape
 {   BRS_Triangle=0, BRS_Sinus, BRS_Ngon, BRS_Noise, BRS_Noise2, BRS_ALL  };
 extern const Ogre::String csBrShape[BRS_ALL];
 
-///<>  ⛰️ terrain edit, brush setup
+///<>  🖌️⛰️ terrain edit, brush setup
 struct BrushSet
 {
 	/*ED_MODE*/int edMode;
-	float size,intens,power, freq,offset;
-	int octaves;  /*EBrShape*/int shape;
-	float filter, height;
-	int newLine;  // gui
-	Ogre::String name;
+	float size, intens;  // edit
+	/*EBrShape*/int shape;  float power;  // funct
+	float freq, offset;  int octaves;  // 🌀 noise
+	float filter, height;  // special
+	int newLine;  Ogre::String name;  // for gui
 };
-const int MaxBrushes = 255;  // par max ini
+const int MaxBrushes = 255;  // par max ini, fit 2k prv tex
 
 
-//  🎨 Brushes.ini  palette for Gui
+//  🖌️📄 Brushes.ini  palette for Gui 🎨
 //--------------------------------------------------------------------
 class BrushesIni
 {

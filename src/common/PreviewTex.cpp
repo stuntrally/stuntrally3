@@ -63,6 +63,7 @@ bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8
 {
 	if (!PATHS::FileExists(path))
 	{
+		LogO("PreviewTex: doesn't exist: "+path);
 		Clear(b,g,r,a);
 		return false;
 	}

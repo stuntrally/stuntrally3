@@ -10,6 +10,7 @@
 #include "CGui.h"
 #include "MultiList2.h"
 #include "Slider.h"
+#include "paths.h"
 
 #include <filesystem>
 #include <MyGUI.h>
@@ -178,8 +179,16 @@ void CGui::InitGui()
 	///  ⛰️ brush presets   o o o o o o
 	//------------------------------------------------------------------------
 	scvBrushes = fScv("svBrushes");
-	btnBrushesLoadDef(0);
-	//scv->setCanvasSize(1020,j*90+300);
+	imgBrCur = fImg("imgBrCur");
+	
+	// btnBrushesLoadDef(0);
+	auto usrBr = PATHS::UserConfigDir()+"/brushes.ini";
+	if (!PATHS::FileExists(usrBr))
+		Copy(PATHS::GameConfigDir()+"/brushes.ini", usrBr);
+
+	app->prvBrushes.Load(PATHS::UserConfigDir()+"/brushes.png",1);
+	btnBrushesLoad(0);
+	
 	panBrushAdj = fWP("panBrushAdj");  panBrushAdj->setVisible(pSet->br_adjust);
 	ck= &ckBrushAdj;		ck->Init("chkBrushAdj",		&pSet->br_adjust);  Cev(BrushAdj);
 	Btn("BrushAdd", btnBrushAdd);  Btn("BrushDel", btnBrushDel);
@@ -220,7 +229,7 @@ void CGui::InitGui()
 	sv= &svSizeMinimap;	sv->Init("SizeMinimap",	&pSet->size_minimap, 0.15f,2.f);  sv->DefaultF(0.55f);  Sev(SizeMinimap);
 
 	sv= &svMiniNum;		sv->strMap[App::RT_ALL     ] = "ALL";
-	sv->strMap[App::RT_RoadDens] = "Road Density";		sv->strMap[App::RT_RoadPrv ] = "Road Preview";
+	sv->strMap[App::RT_RoadDens] = "Road Density";		sv->strMap[App::RT_RoadPrv ] = "Road Preview";  // todo: TR(..
 	sv->strMap[App::RT_Terrain ] = "Terrain Preview";	sv->strMap[App::RT_View    ] = "View camera";
 						sv->Init("MiniNum",		&pSet->num_mini,  0, App::RT_ALL-1);  sv->DefaultI(1);  Sev(MiniNum);
 

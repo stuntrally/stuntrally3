@@ -167,20 +167,21 @@ public:
 	SV svAH_BaseTer, svAH_Border, svAH_Below;
 	
 
-	//  brushes  o o o o
+	//  🖌️⛰️🎨 Brushes, ter edit  o o o o  --------------------
 	Scv scvBrushes =0;  void UpdBrushesImgs();
 	std::vector<Img> brImgs;  std::vector<Txt> brTxts;
-	WP panBrushAdj =0;  CK(BrushAdj);
-	int iBrGui =0;
 	
 	void btnBrushAdd(WP), btnBrushDel(WP);
 	void btnBrushesSave(WP), btnBrushesLoad(WP), btnBrushesLoadDef(WP);
 	void btnBrushPreset(WP), btnBrushRandom(WP),btnBrushRandom2(WP);
 
-	//  brush pars
+	//  🖌️ brush pars
 	SV svBrSize, svBrForce,  svBrPower, svBrShape;
 	SV svBrFreq, svBrOct, svBrOfs,  svBrSetH, svBrFilt, svBrNewLine;
 	void SldUpdBr(), slUpdBr(SV*), slBrNewLine(SV*);
+
+	int iBrGui =0;  Img imgBrCur =0;  // current []
+	WP panBrushAdj =0;  CK(BrushAdj);  // adjust panel
 
 
 	//  ⛰️🌀 Ter Generator

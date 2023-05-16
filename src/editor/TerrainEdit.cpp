@@ -64,6 +64,8 @@ void App::UpdBrushPrv(bool first)
 	delete[] data;
 }
 
+//  fill brush preview data
+//--------------------------------------------------------------------------------------------------------------------------
 void App::updBrushData(uint8* data)
 {
 	uint8* p = data;

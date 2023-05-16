@@ -187,7 +187,7 @@ void CGui::UpdImgClr()
 }
 
 
-//  🎨 Paint button click
+//  🎨 Paint img click
 //---------------------------------------------------------------------
 void CGui::imgBtnPaint(WP img)
 {
@@ -313,19 +313,6 @@ void CGui::chkPaintNewLine(Ck*)
 }
 
 
-//  paint del -
-void CGui::btnPaintDel(WP)
-{
-	auto& i = pSet->car_clr;
-	auto& v = data->paints->v;
-	if (i >= 0 && i < v.size())
-		v.erase(v.begin() + i);
-	
-	if (i == v.size() && i > 0)
-		--i;
-	UpdPaintImgs();
-}
-
 //  paint add +
 void CGui::btnPaintAdd(WP)
 {
@@ -336,7 +323,22 @@ void CGui::btnPaintAdd(WP)
 		v.insert(v.begin() + i + 1, c);
 	else
 		v.push_back(c);
+
 	// insert after car_clr?
+	UpdPaintImgs();
+}
+
+//  paint del -
+void CGui::btnPaintDel(WP)
+{
+	auto& i = pSet->car_clr;
+	auto& v = data->paints->v;
+	if (i >= 0 && i < v.size())
+		v.erase(v.begin() + i);
+	
+	if (i == v.size() && i > 0)
+		--i;
+
 	UpdPaintImgs();
 }
 

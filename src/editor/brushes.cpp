@@ -32,7 +32,7 @@ void BrushesIni::SerBrush(bool wr, CONFIGFILE & cf, const std::string s, BrushSe
 }
 
 
-//  📄 Brushes.ini
+//  🖌️📄 Brushes.ini
 void BrushesIni::Serialize(bool w, CONFIGFILE & c)
 {
 	Param(c,w, "all.perRow", perRow);
