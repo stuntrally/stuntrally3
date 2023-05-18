@@ -45,7 +45,7 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 
 	size_t i;
 	if (pos.empty())
-	{	LogO("Error:  Road CreateMesh 0 verts !");
+	{	LogO("Road CreateMesh 0 verts !");
 		return;
 	}
 	if (MeshManager::getSingleton().getByName(sMesh))

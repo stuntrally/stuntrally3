@@ -209,7 +209,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 {
 	size_t i, si = pos.size();
 	if (si == 0)
-	{	LogO("Error:  Grass CreateMesh 0 verts !");
+	{	LogO("Grass CreateMesh 0 verts");
 		return;
 	}
 	if (MeshManager::getSingleton().getByName(sMesh))

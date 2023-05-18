@@ -244,10 +244,10 @@ void App::LoadTrackEv()
 	//  💧 Fluids
 	scn->CreateFluids();
 
-	scn->refl.CreateRTT();
-	scn->refl.CreateFluids();  // todo: water ...
+	// scn->refl.CreateRTT();
+	// scn->refl.CreateFluids();  // todo: water ...
 
-	AddListenerRnd2Tex();
+	// AddListenerRnd2Tex();
 
 
 	//  set sky tex name for water

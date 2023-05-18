@@ -177,7 +177,8 @@ public:
 
 	//  🖌️ brush pars
 	SV svBrSize, svBrForce,  svBrPower, svBrShape;
-	SV svBrFreq, svBrOct, svBrOfs,  svBrSetH, svBrFilt,  svBrNewLn, svBrRate;
+	SV svBrFreq, svBrOct, svBrOfs,  svBrSetH, svBrFilt;
+	SV svBrNewLn, svBrRate, svBrZoom;
 	void SldUpdBr(), slUpdBr(SV*), slBrNewLine(SV*);
 
 	int iBrGui =0;  Img imgBrCur =0;  // current []

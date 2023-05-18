@@ -890,7 +890,7 @@
 					<Widget type="TabItem" skin="" position="2 24 574 112" name="PlrPaints">
 						<Property key="Caption" value="#90C0FF#{Paint}"/>
 
-						<Widget type="TabControl" skin="TabControl" position="256 16 470 20" name="SubTabPlayer2">
+						<Widget type="TabControl" skin="TabControl" position="336 16 390 20" name="SubTabPlayer2">
 							<Property key="SmoothShow" value="false"/>
 							<Widget type="TabItem" skin="" position="2 24 542 -8">
 								<Property key="Caption" value="#A0D0FF#{Player} 1"/>
@@ -912,17 +912,29 @@
 							</Widget>
 						</Widget>
 		
-						<!-- clr img rgb -->
-						<Widget type="Button" skin="CheckBox" position="20 16 88 22" name="chkPaintAdj">
+						<!-- Adjust -->
+						<Widget type="ImageBox" skin="ImageBox" position="10 12 20 20" layer="Back">
+							<Property key="ImageTexture" value="gui_icons.png"/>
+							<Property key="ImageCoord" value="0 896 128 128"/>
+							<Property key="Alpha" value="0.6"/>
+							<Property key="NeedMouse" value="false"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="40 16 88 22" name="chkPaintAdj">
 							<Property key="Caption" value="#80E0F0#{Adjust}"/>
 							<Property key="TextColour" value="0.4 0.6 0.9"/>
 						</Widget>
+						<!-- clr img rgb -->
 						<Widget type="ImageBox" skin="ImageBox" position="680 40 52 52" name="ImgPaint">
 							<Property key="ImageTexture" value="white.png"/>
 						</Widget>
 
 						<Widget type="Widget" skin="PanelEmpty" position="0 55 750 420" align="Stretch" name="panPaintAdj">
 
+							<Widget type="ImageBox" skin="ImageBox" position="202 400 20 20">
+								<Property key="ImageTexture" value="track_icons.png"/>
+								<Property key="ImageCoord" value="352 32 32 32"/>
+								<Property key="Alpha" value="0.6"/>
+							</Widget>
 							<Widget type="Button" skin="CheckBox" position="232 400 240 24" name="chkPaintNewLine">
 								<Property key="Caption" value="#{NewLine}"/>
 								<Property key="TextColour" value="0.6 0.7 0.8"/>
@@ -1206,18 +1218,18 @@
 
 
 						<!-- paint rate -->
-						<Widget type="ImageBox" skin="ImageBox" position="110 14 20 20">
+						<Widget type="ImageBox" skin="ImageBox" position="140 14 20 20">
 							<Property key="ImageTexture" value="track_icons.png"/>
 							<Property key="ImageCoord" value="288 32 32 32"/>
 							<Property key="Alpha" value="0.6"/>
 							<UserString key="tip" value="#{user}: #{rating}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="134 16 16 16" name="PaintRateVal">
+						<Widget type="TextBox" skin="TextBox" position="164 16 16 16" name="PaintRateVal">
 							<Property key="Caption" value="5"/>
 							<Property key="TextColour" value="0.6 0.8 1"/>
 							<UserString key="tip" value="#{user}: #{rating}"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="152 18 70 12" name="PaintRate">
+						<Widget type="Slider" skin="Slider" position="182 18 70 12" name="PaintRate">
 							<Property key="Colour" value="0.6 1 1"/>
 							<UserString key="tip" value="#{user}: #{rating}"/>
 						</Widget>

@@ -51,7 +51,7 @@ void GridCellLods::Create()
 
 	size_t i;//, si = pos.size();
 	if (pos.empty() || idx.empty())
-	{	LogO("Error:  Grid CreateMesh 0 verts !");
+	{	LogO("Grid CreateMesh 0 verts");
 		return;
 	}
 	

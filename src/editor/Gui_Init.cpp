@@ -180,8 +180,8 @@ void CGui::InitGui()
 	//------------------------------------------------------------------------
 	scvBrushes = fScv("svBrushes");  imgBrCur = fImg("imgBrCur");
 	
+	ck= &ckBrushAdj;  ck->Init("chkBrushAdj", &pSet->br_adjust);  Cev(BrushAdj);
 	panBrushAdj = fWP("panBrushAdj");  panBrushAdj->setVisible(pSet->br_adjust);
-	ck= &ckBrushAdj;		ck->Init("chkBrushAdj",		&pSet->br_adjust);  Cev(BrushAdj);
 	Btn("BrushAdd", btnBrushAdd);  Btn("BrushDel", btnBrushDel);
 	Btn("BrushesSave", btnBrushesSave);  Btn("BrushesLoad", btnBrushesLoad);  Btn("BrushesLoadDef", btnBrushesLoadDef);
 
@@ -189,8 +189,12 @@ void CGui::InitGui()
 
 	//  load bushes
 	auto usrBr = PATHS::UserConfigDir()+"/brushes.ini";
+	auto usrPrv = PATHS::UserConfigDir()+"/brushes.ini";
 	if (!PATHS::FileExists(usrBr))
 		Copy(PATHS::GameConfigDir()+"/brushes.ini", usrBr);
+	if (PATHS::FileExists(usrPrv))
+		Copy(PATHS::GameConfigDir()+"/brushes.ini", usrBr);
+	app->prvBrushes.Load(PATHS::UserConfigDir()+"/brushes.png",1);
 	btnBrushesLoad(0);
 	// GuiShortcut(WND_Edit, TAB_Terrain,2);  //test-
 
@@ -210,6 +214,7 @@ void CGui::InitGui()
 	
 	sv= &svBrNewLn; sv->Init("BrNewLn", &i, -2,1, 1.f);  sv->DefaultI(0);  Sev(BrNewLine);
 	sv= &svBrRate;  sv->Init("BrRate",	&i, 0,3, 1.f);  sv->DefaultI(0);  Sev(BrNewLine);
+	sv= &svBrZoom;	sv->Init("BrZoom",	&app->brSets.imgSize, 20,80, 1.f);  sv->DefaultI(18);  Sev(BrNewLine);
 	SldUpdBr();
 
 

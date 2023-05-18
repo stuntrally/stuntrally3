@@ -84,6 +84,7 @@ void CGui::UpdBrushesImgs()
 	//  create  --------
 	const auto& brs = app->brSets;
 	const int uv = App::BrIcoSize, all = brs.v.size();
+	const int sset = app->brSets.imgSize;
 
 	int yy=0, xx=0, ss=0;
 	for (int i=0; i < all; ++i)
@@ -91,14 +92,14 @@ void CGui::UpdBrushesImgs()
 		const auto& br = brs.v[i];
 		int xi,yi, xt,yt, si;
 
-		si = 40 + br.rate * 10;  // img size
+		si = sset + br.rate * 10;  // img size
 		if (si > ss)  ss = si;
 
-		if (br.newLine==1 && xx > 0 || xx >= brs.perRow * 50)
-		{	xx = 0;  yy += ss + 20;  ss = 0;  }  // 1 new line
+		if (br.newLine==1 && xx > 0 || xx >= brs.perRow * 45)  //-
+		{	xx = 0;  yy += ss + 10;  ss = 0;  }  // par 1 new line
 	
 		xi = xx;  yi = yy;
-		xt = xi + 15;  yt = yi + si + 5;
+		xt = xi + 15;  yt = yi + si + 0;
 		xx += si + 5;
 		
 		if (br.newLine < 0)
@@ -123,12 +124,15 @@ void CGui::UpdBrushesImgs()
 		Txt txt = scv->createWidget<TextBox>("TextBox", xt,yt, 60,22, Align::Default, "brT"+st);
 		txt->setCaption(fToStr(br.size,0,2));
 		txt->setCaption(str);
-		txt->setFontHeight(br.size / 15 + 10);
+		txt->setFontHeight(br.size / 16 + sset / 4/*12*/);
 		gcom->setOrigPos(txt, "EditorWnd");
 		brTxts.push_back(txt);
 	}
+	scv->setCanvasSize(1200, yy*2 + 100);  //-?
+
 	if (bGI)  // resize
 		gcom->doSizeGUI(scv->getEnumerator());
+
 	setBrCur();
 }
 
@@ -246,11 +250,10 @@ void CGui::btnBrushesLoad(WP wp)
 	app->brSets.Load(PATHS::UserConfigDir()+"/brushes.ini");
 	if (wp)
 		app->GenBrushesPrv();
-	else  // at start
-		app->prvBrushes.Load(PATHS::UserConfigDir()+"/brushes.png",1);
+	// else  // at start
+	// 	app->prvBrushes.Load(PATHS::UserConfigDir()+"/brushes.png",1);
 	
 	UpdBrushesImgs();
-	setBrCur();
 }
 void CGui::btnBrushesLoadDef(WP)
 {
