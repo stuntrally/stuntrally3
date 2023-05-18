@@ -177,11 +177,12 @@ public:
 
 	//  🖌️ brush pars
 	SV svBrSize, svBrForce,  svBrPower, svBrShape;
-	SV svBrFreq, svBrOct, svBrOfs,  svBrSetH, svBrFilt, svBrNewLine;
+	SV svBrFreq, svBrOct, svBrOfs,  svBrSetH, svBrFilt,  svBrNewLn, svBrRate;
 	void SldUpdBr(), slUpdBr(SV*), slBrNewLine(SV*);
 
 	int iBrGui =0;  Img imgBrCur =0;  // current []
 	WP panBrushAdj =0;  CK(BrushAdj);  // adjust panel
+	void setBrCur();
 
 
 	//  ⛰️🌀 Ter Generator

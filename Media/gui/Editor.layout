@@ -589,16 +589,28 @@
 
 						<Widget type="Widget" skin="PanelEmpty" position="640 55 140 520" align="Stretch" name="panBrushAdj">
 
-							<Widget type="TextBox" skin="TextBox" position="32 70 118 24">
+							<Widget type="TextBox" skin="TextBox" position="32 40 98 24">
 								<Property key="Caption" value="#{NewLine}"/>
 								<Property key="TextColour" value="0.5 0.7 0.9"/>
 							</Widget>
-							<Widget type="TextBox" skin="TextBox" position="0 70 32 24" name="BrNewLineVal">
+							<Widget type="TextBox" skin="TextBox" position="0 40 32 24" name="BrNewLnVal">
 								<Property key="TextColour" value="0.7 0.8 0.9"/>
 								<Property key="Colour" value="0.7 0.8 0.9"/>
 							</Widget>
-							<Widget type="Slider" skin="Slider" position="0 100 120 16" name="BrNewLine">
+							<Widget type="Slider" skin="Slider" position="0 60 110 16" name="BrNewLn">
 								<Property key="Colour" value="0.7 0.8 0.9"/>
+							</Widget>
+
+							<Widget type="TextBox" skin="TextBox" position="32 90 98 24">
+								<Property key="Caption" value="#{rating}"/>
+								<Property key="TextColour" value="0.6 0.8 1.0"/>
+							</Widget>
+							<Widget type="TextBox" skin="TextBox" position="0 90 32 24" name="BrRateVal">
+								<Property key="TextColour" value="0.7 0.8 0.9"/>
+								<Property key="Colour" value="0.6 0.8 1.0"/>
+							</Widget>
+							<Widget type="Slider" skin="Slider" position="0 110 110 16" name="BrRate">
+								<Property key="Colour" value="0.8 0.9 1.0"/>
 							</Widget>
 	
 							<!-- Del Add  manage buttons -->

@@ -41,9 +41,8 @@ static float GetAngle(float x, float y)
 void App::UpdBrushPrv(bool first)
 {
 	if (!first && (edMode >= ED_Road /*|| bMoveCam/*|| !bEdit()*/))  return;
-	if (!pSet->brush_prv || !brPrvTex)  return;
+	if (!pSet->brush_prv || !mSceneMgr)  return;
 
-	// if (!first || !brPrvTex)  return;
 	auto* mgr =	mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
 
 	StagingTexture* tex = mgr->getStagingTexture(
@@ -53,104 +52,113 @@ void App::UpdBrushPrv(bool first)
 		BrPrvSize, BrPrvSize, 1u, 1u, PFG_RGBA8_UNORM );
 
 	uint8* data = new uint8[BrPrvSize * BrPrvSize * 4];
-	updBrushData(data);
+	updBrushData(data, 0, 0);
 
 	//  upload
 	texBox.copyFrom( data, BrPrvSize, BrPrvSize, BrPrvSize * 4 );
 
 	tex->stopMapRegion();
-	tex->upload( texBox, brPrvTex, 0, 0, 0 );
+	tex->upload( texBox, prvBrush.prvTex, 0, 0, 0 );
 	mgr->removeStagingTexture( tex );  tex = 0;
 	delete[] data;
 }
 
-//  fill brush preview data
+
+//  Fill brush [preview] data
 //--------------------------------------------------------------------------------------------------------------------------
-void App::updBrushData(uint8* data)
+void App::updBrushData(uint8* data, int brId, bool all)
 {
 	uint8* p = data;
 
-	const float fB = brClr[edMode][0]*255.f, fG = brClr[edMode][1]*255.f, fR = brClr[edMode][2]*255.f;
-	const float gp = 2.f;  // 2.4 gamma srgb fix-
+	const auto& br = all ? brSets.v[brId] : curBr();
+	const int ed = all ? br.edMode : iCurBr;
+	
+	const int   Amin  = all ? 12 : 5;  // alpha cut off  // par
+	const float gamma = all ? 1.f : 2.4f;  // 2.4 srgb fix-
 
-	const float s = BrPrvSize * 0.5f, s1 = 1.f/s,
-		fP = curBr().power, fQ = curBr().freq*5.f, nof = curBr().offset;
-	const int oct = curBr().octaves;  const float PiN = PI_d/oct;
+	const float fB = brClr[ed][0] *255.f,
+				fG = brClr[ed][1] *255.f,
+				fR = brClr[ed][2] *255.f;
 
-	switch (curBr().shape)
+	const size_t size = all ? BrIcoSize : BrPrvSize;
+	const float s = size * 0.5f, s1 = 1.f/s,
+		fP = br.power, fQ = br.freq*5.f, nof = br.offset;
+	const int oct = br.octaves;  const float PiN = PI_d/oct;
+
+	switch (br.shape)
 	{
 	case BRS_Noise2:
-		for (size_t y = 0; y < BrPrvSize; ++y)
-		for (size_t x = 0; x < BrPrvSize; ++x)
+		for (size_t y = 0; y < size; ++y)
+		for (size_t x = 0; x < size; ++x)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
-			float c = d * (1.0-pow( fabs(CScene::Noise(x*s1+nof,y*s1+nof, fQ, oct, 0.5f)), fP*d)) * (1.5f-fP*0.1);
-			c = std::max(0.f, pow(c, gp));
+			float c = d * (1.f - pow( fabs(0.98f*CScene::Noise(x*s1+nof,y*s1+nof, fQ, oct, 0.5f)), fP*d)) * (1.5f-fP*0.1f);
+			c = std::max(0.f, pow(c, gamma));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
 			// *p++ = bR;  *p++ = bG;  *p++ = bB;  *p++ = bG > 32 ? 255 : 0;
-			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 2 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > Amin ? 255 : 0;
 		}	break;
 
 	case BRS_Noise:
-		for (size_t y = 0; y < BrPrvSize; ++y)
-		for (size_t x = 0; x < BrPrvSize; ++x)
+		for (size_t y = 0; y < size; ++y)
+		for (size_t x = 0; x < size; ++x)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
-			float c = d * pow( fabs(CScene::Noise(x*s1+nof,y*s1+nof, fQ, oct, 0.5f)), fP*0.5f) * 0.9f;
-			c = std::max(0.f, pow(c, gp));
+			float c = d * pow( fabs(0.98f*CScene::Noise(x*s1+nof,y*s1+nof, fQ, oct, 0.5f)), fP*0.5f) * 0.9f;
+			c = std::max(0.f, pow(c, gamma));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 2 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > Amin ? 255 : 0;
 		}	break;
 
 	case BRS_Sinus:
-		for (size_t y = 0; y < BrPrvSize; ++y)
-		for (size_t x = 0; x < BrPrvSize; ++x)
+		for (size_t y = 0; y < size; ++y)
+		for (size_t x = 0; x < size; ++x)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
 			float c = powf( sinf(d * PI_d*0.5f), fP);
-			c = std::max(0.f, pow(c, gp));
+			c = std::max(0.f, pow(c, gamma));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 2 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > Amin ? 255 : 0;
 		}	break;
 
 	case BRS_Ngon:
-		for (size_t y = 0; y < BrPrvSize; ++y)
-		for (size_t x = 0; x < BrPrvSize; ++x)
+		for (size_t y = 0; y < size; ++y)
+		for (size_t x = 0; x < size; ++x)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 			float k = GetAngle(fx,fy);  // 0..2Pi
 
     		float c = std::max(0.f, std::min(1.f,
     			fQ * powf( fabs(d / (-1.f+nof + cosf(PiN) / cosf( fmodf(k, 2*PiN) - PiN ) )),fP) ));
-			c = std::max(0.f, pow(c, gp));
+			c = std::max(0.f, pow(c, gamma));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 2 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > Amin ? 255 : 0;
 		}	break;
 
 	case BRS_Triangle:
-		for (size_t y = 0; y < BrPrvSize; ++y)
-		for (size_t x = 0; x < BrPrvSize; ++x)
+		for (size_t y = 0; y < size; ++y)
+		for (size_t x = 0; x < size; ++x)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
 			float c = powf( fabs(d), fP);
-			c = std::max(0.f, pow(c, gp));
+			c = std::max(0.f, pow(c, gamma));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > 2 ? 255 : 0;
+			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > Amin ? 255 : 0;
 		}	break;
 	default:  break;
 	}
 }
 
-//  fill brush data (shape), after size change
+//  Fill brush data (shape), after size change
 //--------------------------------------------------------------------------------------------------------------------------
 void App::updBrush()
 {
@@ -613,20 +621,8 @@ void App::Filter(Vector3 &pos, float dtime, float brMul)
 //--------------------------------------------------------------------------------------------------------------------------
 void App::CreatePreviews()
 {
-	LogO("C--- Create prv tex");
+	LogO("C--- Create previews tex");
 	auto *mgr = mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
-	
-	//  brush tex ----
-	brPrvTex = mgr->createTexture("BrushTex",
-		GpuPageOutStrategy::SaveToSystemRam,
-		TextureFlags::ManualTexture, TextureTypes::Type2D );
-
-	brPrvTex->setResolution( BrPrvSize, BrPrvSize );
-	brPrvTex->scheduleTransitionTo( GpuResidency::OnStorage );
-	brPrvTex->setPixelFormat( PFG_RGBA8_UNORM );
-	brPrvTex->scheduleTransitionTo( GpuResidency::Resident );
-	// "BrushPrvTex", rgDef, TEX_TYPE_2D,
-	// BrPrvSize,BrPrvSize,0, PF_BYTE_RGBA, TU_DYNAMIC);
 	
 	UpdBrushPrv(true);
 
@@ -650,7 +646,10 @@ void App::CreatePreviews()
 		String sMtr = i ? "edTerGen" : "edBrush";
 		const auto hlms = dynamic_cast<HlmsUnlit*>(mRoot->getHlmsManager()->getHlms(HLMS_UNLIT));
 		HlmsUnlitDatablock* db = dynamic_cast<HlmsUnlitDatablock*>(hlms->getDatablock(sMtr));
-		db->setTexture(PBSM_DIFFUSE, i ? terPrvTex : brPrvTex);
+		if (i)
+			db->setTexture(PBSM_DIFFUSE, terPrvTex);
+		else
+			db->setTexture(PBSM_DIFFUSE, "PrvBrush");
 
 		auto& hr = i ? hrTerGen : hrBrush;
 		hr = new HudRenderable(sMtr, mSceneMgr,

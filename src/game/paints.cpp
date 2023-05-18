@@ -81,6 +81,7 @@ void PaintsIni::Serialize(bool w, CONFIGFILE & c)
 		}
 	}else  // read
 	{	v.clear();
+		v.reserve(500);
 		for (int i=0; i < MaxPaints; ++i)
 		{
 			auto s = str(i);

@@ -24,8 +24,8 @@ public:
 	//  for terrain textures
 	bool LoadTer(Ogre::String rgb, Ogre::String a, float defA = 0.f);
 
+	Ogre::TextureGpu* prvTex =0;
 protected:
 	int xSize = 0, ySize = 0;
 	Ogre::String sName, curPath;
-	Ogre::TextureGpu* prvTex =0;
 };

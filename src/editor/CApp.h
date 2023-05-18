@@ -128,14 +128,16 @@ public:
 	HudRenderable* hrBrush =0, *hrTerGen =0;
 	Ogre::SceneNode* ndBrush =0, *ndTerGen =0;
 
-	PreviewTex prvBrushes;
-	void CreatePreviews(), updBrushData(Ogre::uint8* data);
+	PreviewTex prvBrushes, prvBrush;
+	void CreatePreviews();
+
+	void updBrushData(Ogre::uint8* data, int brId, bool all);
 	void UpdBrushPrv(bool first=false), UpdTerGenPrv(bool first=false);
 	void GenBrushesPrv();
 
 	bool bUpdTerPrv =0;
-	Ogre::TextureGpu* brPrvTex =0, *terPrvTex =0;
-	const static int BrPrvSize = 128, TerPrvSize = 256;
+	Ogre::TextureGpu *terPrvTex =0;
+	const static int BrPrvSize = 256, BrIcoSize = 128, TerPrvSize = 256;
 
 
 	///<>  🖌️⛰️ terrain edit, brush

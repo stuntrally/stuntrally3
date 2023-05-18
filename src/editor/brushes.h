@@ -10,12 +10,13 @@ extern const Ogre::String csBrShape[BRS_ALL];
 ///<>  🖌️⛰️ terrain edit, brush setup
 struct BrushSet
 {
-	/*ED_MODE*/int edMode;
-	float size, intens;  // edit
-	/*EBrShape*/int shape;  float power;  // funct
-	float freq, offset;  int octaves;  // 🌀 noise
-	float filter, height;  // special
-	int newLine;  Ogre::String name;  // for gui
+	/*ED_MODE*/int edMode =0;
+	float size = 20.f, intens = 20.f;  // edit
+	/*EBrShape*/int shape = BRS_Sinus;  float power = 1.f;  // funct
+	float freq = 0.2f, offset = 1.f;  int octaves = 3;  // 🌀 noise
+	float filter = 2.f, height = 10.f;  // special
+	int newLine = 0;  Ogre::String name;  // for gui
+	int rate = 0;
 };
 const int MaxBrushes = 255;  // par max ini, fit 2k prv tex
 
