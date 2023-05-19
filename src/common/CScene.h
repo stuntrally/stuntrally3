@@ -112,7 +112,7 @@ public:
 
 	///  ⛰️ Terrain
 	//-----------------------------------
-	int terCur = 0;  // cur
+	int terCur = 0, iNewHmap = 0;  // cur, ed -new
 	std::vector<Ogre::Terra*> ters;  // all terrains
 
 	Ogre::Terra* ter = 0;  // \ cur for edit
@@ -121,13 +121,14 @@ public:
 	Ogre::String getHmap(int n, bool bNew);  // file name
 
 	Ogre::Real getTerH(Ogre::Real x, Ogre::Real z);
-	bool getTerH(Ogre::Vector3& pos);  // sets y
+	bool getTerH(Ogre::Vector3& pos);  // sets y, all ters
+	bool getTerH(int id, Ogre::Vector3& pos);  // sets y, 1 ter
 
 	//  HlmsListener  to make PBS objects also be affected by terrain's shadows
 	Ogre::HlmsPbsTerraShadows* mHlmsPbsTerraShadows = 0;  // 1st ter only-
 
 	void CreateTerrain1(int n, bool upd);
-	void CreateTerrains(bool bNewHmap=false, bool terLoad=true);
+	void CreateTerrains(bool upd, bool bNewHmap/*=false*/, bool terLoad/*=true*/);
 	void CreateTerrain(int n, bool upd, bool bNewHmap, bool terLoad);
 	void DestroyTerrain1(int n), DestroyTerrains();
 	void CreateBltTerrains(), copyTerHmap();

@@ -58,7 +58,7 @@ public:
 	void keyPressObjects(SDL_Scancode skey);
 
 	//  ⏳ Loading
-	void LoadTrackEv(), SaveTrackEv(), UpdateTrackEv();
+	void LoadTrackEv(), SaveTrackEv(), UpdateTrackEv(), DelNewHmaps();
 	enum TrkEvent {  TE_None=0, TE_Load, TE_Save, TE_Update  }
 	eTrkEvent = TE_None;
 	int iUpdEvent = 0;
@@ -83,7 +83,7 @@ public:
 	
 
 	//  🆕 Create  . . . . . . . . . . . . . . . . . . . . . . . . 
-	bool bNewHmap =0, bVegetGrsUpd =0;
+	bool bVegetGrsUpd =0;
 	Ogre::String resTrk;  void NewCommon(bool onlyTerVeget);
 
 	void CreateObjects(), DestroyObjects(bool clear), ResetObjects();

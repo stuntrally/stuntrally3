@@ -201,16 +201,17 @@ void CScene::CreateTerrain1(int n, bool upd)
 	tdb->setTexture( TERRA_DETAIL_WEIGHT, mTerra->blendmap.texture );  //**
 
 
-	SceneNode *rootNode = mgr->getRootSceneNode( dyn );
-	mTerra->node = rootNode->createChildSceneNode( dyn );
-	mTerra->node->attachObject( mTerra );
-
 	db = hlmsMgr->getDatablock( mtrName );
 	mTerra->setDatablock( db );
 
+	SceneNode *rootNode = mgr->getRootSceneNode( dyn );
+	mTerra->node = rootNode->createChildSceneNode( dyn );
+	mTerra->node->attachObject( mTerra );
+	// mTerra->node->_getFullTransformUpdated();
+
 
 	//  terra shadows,  hlms listener
-	if (!mHlmsPbsTerraShadows && n == 0)  // 1st ter only?-
+	if (!mHlmsPbsTerraShadows && n == 0 /*&& !upd*/)  // 1st ter only?-
 	{
 		LogO("---T Terrain shadows");
 		mHlmsPbsTerraShadows = new HlmsPbsTerraShadows();
@@ -239,6 +240,10 @@ void CScene::DestroyTerrain1(int n)
 		delete mHlmsPbsTerraShadows;  mHlmsPbsTerraShadows = 0;
 	}
 	auto mtr = ters[n]->mtrName;
+
+	if (ters[n]->node)
+		app->mSceneMgr->destroySceneNode(ters[n]->node);
+	ters[n]->node = 0;
 
 	delete ters[n];  ters[n] = 0;
 
@@ -275,8 +280,6 @@ void CScene::TerNext(int add)
 	app->gui->updTersTxt();
 	app->gui->SldUpd_Ter();
 #endif
-	// String fname = getHmap(terCur, false);//-
-	// td->getFileSize(fname);
 }
 
 //  ⛓️⛰️ util all Ter H
@@ -292,6 +295,7 @@ Ogre::Real CScene::getTerH(Ogre::Real x, Ogre::Real z)
 	return 0.f;  //-
 }
 
+//  all ters
 bool CScene::getTerH(Ogre::Vector3& pos)  // sets y
 {
 	for (auto ter : ters)
@@ -299,9 +303,24 @@ bool CScene::getTerH(Ogre::Vector3& pos)  // sets y
 		Vector3 p = pos;
 		if (ter && ter->getHeightAt(p))
 		{
-			pos = p;
+			pos.y = p.y;
+			//pos = p;  //?
 			return true;
 		}
+	}
+	return false;
+}
+
+//  1 ter
+bool CScene::getTerH(int id, Ogre::Vector3& pos)  // sets y
+{
+	assert(id < ters.size());
+	Vector3 p = pos;
+	if (ters[id] && ters[id]->getHeightAt(p))
+	{
+		pos.y = p.y;
+		//pos = p;  //?
+		return true;
 	}
 	return false;
 }

@@ -49,7 +49,7 @@ void GridCellLods::Create()
 
 	// LogO("Road -- MESH mtr: "+sMtrName+"  cnt pos "+toStr(pos.size())+" idx "+toStr(idx.size()));
 
-	size_t i;//, si = pos.size();
+	size_t i; //, si = pos.size();
 	if (pos.empty() || idx.empty())
 	{	LogO("Grid CreateMesh 0 verts");
 		return;

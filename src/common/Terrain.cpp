@@ -80,19 +80,18 @@ using namespace Ogre;
 ///--------------------------------------------------------------------------------------------------------------
 //  Create Terrain
 ///--------------------------------------------------------------------------------------------------------------
-void CScene::CreateTerrains(bool bNewHmap, bool terLoad)
+void CScene::CreateTerrains(bool upd, bool bNewHmap, bool terLoad)
 {
 	int all = sc->tds.size();
 	for (int i = 0; i < all; ++i)
-		CreateTerrain(i, false, bNewHmap, terLoad);
+		CreateTerrain(i, upd, bNewHmap, terLoad);
 }
 
 String CScene::getHmap(int n, bool bNew)
 {
 	String fname = app->gcom->TrkDir() + "heightmap" 
 		+ (n > 0 ? toStr(n+1) : "")
-		+ (bNew ? "-new" : "")
-		+ ".f32";
+		+ (bNew ? "-new" : "") + ".f32";
 	return fname;
 }
 
@@ -109,14 +108,17 @@ void CScene::CreateTerrain(int n, bool upd, bool bNewHmap, bool terLoad)
 #endif
 
 	///  Load Heightmap data --------
+	bNewHmap = n == iNewHmap;
 	Ogre::Timer ti;
 	if (terLoad || bNewHmap)
 	{
 		String fname = getHmap(n, bNewHmap);
 		bool exists = PATHS::FileExists(fname);
 		if (!exists)
-			LogO("Terrains error! No hmap file: "+fname);
-
+		{	LogO("Terrains error! No hmap file: "+fname);
+			fname = getHmap(n, 0);
+			exists = PATHS::FileExists(fname);
+		}
 		int fsize = exists ? td.getFileSize(fname) : 512*512*4;  // anything const-
 		int size = fsize / sizeof(float);
 
@@ -153,7 +155,7 @@ void CScene::CreateTerrain(int n, bool upd, bool bNewHmap, bool terLoad)
 	//; UpdBlendmap();
 
 
-	CreateTerrain1(n, upd);
+	CreateTerrain1(n, 0);  //upd);
 
 	// ter = mTerra;  //set ptr
 	if (n == 0)  // 1st ter only-

@@ -236,6 +236,7 @@ void CGui::saveNewHmap(float* hfData, int size, int add, bool bNew)
 	of.open(file.c_str(), std::ios_base::binary);
 	of.write((const char*)&hfData[0], size);
 	of.close();
+	scn->iNewHmap = add ? -1 : scn->terCur;
 }
 
 
@@ -271,7 +272,7 @@ void CGui::btnTerrainNew(WP)
 	saveNewHmap(hfData, size);
 
 	delete[] hfData;
-	app->bNewHmap = true;	app->UpdateTrack();
+	app->UpdateTrack();
 }
 
 
@@ -298,7 +299,7 @@ void CGui::btnTerrainHalf(WP)
 	td().iVertsX = s;  td().UpdVals();
 	
 	updTabHmap();  svTerTriSize.Upd();
-	app->bNewHmap = true;	app->UpdateTrack();
+	app->UpdateTrack();
 }
 
 //  Terrain  double  --------------------------------
@@ -322,7 +323,7 @@ void CGui::btnTerrainDouble(WP)
 
 	td().iVertsX = s;  td().UpdVals();
 	updTabHmap();
-	app->bNewHmap = true;	app->UpdateTrack();
+	app->UpdateTrack();
 }
 
 #if 0
@@ -396,7 +397,7 @@ void CGui::btnTerrainMove(WP)
 	app->scn->road->SelClear();
 	//start, objects-
 
-	app->bNewHmap = true;	app->UpdateTrack();
+	app->UpdateTrack();
 }
 
 //  Terrain  height scale  --------------------------------
@@ -441,7 +442,7 @@ void CGui::btnScaleTerH(WP)
 	saveNewHmap(hfData, size);
 	delete[] hfData;
 
-	app->bNewHmap = true;	app->UpdateTrack();
+	app->UpdateTrack();
 
 	//  start,end pos
 	for (i=0; i < 2; ++i)

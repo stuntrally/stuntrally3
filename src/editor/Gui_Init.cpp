@@ -188,13 +188,15 @@ void CGui::InitGui()
 	Btn("BrushRandom", btnBrushRandom);  Btn("BrushRandom2", btnBrushRandom2);
 
 	//  load bushes
-	auto usrBr = PATHS::UserConfigDir()+"/brushes.ini";
-	auto usrPrv = PATHS::UserConfigDir()+"/brushes.ini";
+	auto usrB = PATHS::UserConfigDir()+"/brushes.", cfgB = PATHS::GameConfigDir()+"/brushes.";
+	auto usrBr = usrB+"ini", usrPrv = usrB+"png";
 	if (!PATHS::FileExists(usrBr))
-		Copy(PATHS::GameConfigDir()+"/brushes.ini", usrBr);
-	if (PATHS::FileExists(usrPrv))
-		Copy(PATHS::GameConfigDir()+"/brushes.ini", usrBr);
-	app->prvBrushes.Load(PATHS::UserConfigDir()+"/brushes.png",1);
+		Copy(cfgB+"ini", usrBr);
+	
+	if (!PATHS::FileExists(usrPrv))
+		Copy(cfgB+"png", usrPrv);
+	app->prvBrushes.Load(usrPrv,1);  // fixme.. doesnt show
+
 	btnBrushesLoad(0);
 	// GuiShortcut(WND_Edit, TAB_Terrain,2);  //test-
 

@@ -713,7 +713,7 @@ void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,
 	{
 		Vector3 posTer = pos + dir * (dist + step),
 			pos1 = posTer;
-		scn->getTerH( posTer );
+		scn->getTerH( scn->terCur, posTer );
 		bool hit = pos1.y < posTer.y;
 		
 		if (!hit)

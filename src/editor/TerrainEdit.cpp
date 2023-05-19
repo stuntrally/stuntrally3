@@ -286,12 +286,14 @@ void CGui::btnTerGenerate(WP wp)
 	//)  road test
 	bool bRoad = pSet->gen_roadsm > 0.1f;
 	float rdPow = pSet->gen_roadsm;  //-
-	int r = 0;
-	/*Image2 imgRoad;  // fixme outside road
+	/*int r = 0;
+	Image2 imgRoad;  // fixme outside road
 	if (bRoad)
 	{
-		try {	imgRoad.load(String("roadDensity.png"),"General");  }
-		catch(...) {	}
+		try
+		{	imgRoad.load(String("roadDensity.png"),"General");  }
+		catch(...)
+		{	}
 		r = imgRoad.getWidth();
 	}*/
 
@@ -312,7 +314,7 @@ void CGui::btnTerGenerate(WP wp)
 		/*if (bRoad)
 		{
 			int mx = ( fx+1.f)*0.5f*r, my = (-fy+1.f)*0.5f*r;
-					
+			
 			float cr = 0.f;//; imgRoad.getColourAt(
 				// std::max(0,std::min(r-1, mx)), std::max(0,std::min(r-1, my)), 0).r;
 
@@ -335,8 +337,9 @@ void CGui::btnTerGenerate(WP wp)
 
 	LogO(String(":::* Time Ter Gen save: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 
-	app->bNewHmap = true;	app->UpdateTrack();
+	app->UpdateTrack();
 }
+
 
 //  🖼️ update terrain generator preview texture
 //--------------------------------------------------------------------------------------------------------------------------
@@ -614,6 +617,8 @@ void App::Filter(Vector3 &pos, float dtime, float brMul)
 	scn->UpdBlendmap();
 	bTerUpd = true;
 }
+
+//  todo: more, erode, etc..
 
 
 

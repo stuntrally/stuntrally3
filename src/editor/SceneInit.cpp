@@ -211,6 +211,10 @@ void App::LoadTrack()
 void App::LoadTrackEv()
 {
 	Ogre::Timer ti;
+
+	DelNewHmaps();  // F5 Load drops any new
+	scn->iNewHmap = -1;  //
+
 	NewCommon(false);  // full destroy
 	iObjCur = -1;  iEmtCur = -1;
 
@@ -258,8 +262,7 @@ void App::LoadTrackEv()
 
 
 	//  ⛰️ Terrain
-	// bNewHmap = false;/**/
-	scn->CreateTerrains(bNewHmap);
+	scn->CreateTerrains(0,-1,1);
 	scn->TerNext(0);
 
 
@@ -343,14 +346,14 @@ void App::UpdateTrack()
 }
 void App::UpdateTrackEv()
 {
-	if (!bNewHmap)
-		scn->copyTerHmap();
+	// if (!bNewHmap)
+	// 	scn->copyTerHmap();
 
 	NewCommon(true);  // destroy only terrain and veget
 	
 	//CreateFluids();
 	scn->DestroyTerrains();
-	scn->CreateTerrains(bNewHmap,true);
+	scn->CreateTerrains(1,scn->iNewHmap,1);
 
 	//  road ~
 	for (auto r : scn->roads)
@@ -374,10 +377,10 @@ void App::UpdateTrackEv()
 //  Update btns  ---
 void CGui::btnUpdateLayers(WP)
 {
-	if (!app->bNewHmap)
-		app->scn->copyTerHmap();
+	// if (!app->bNewHmap)
+	// 	app->scn->copyTerHmap();
 	scn->DestroyTerrains();
-	scn->CreateTerrains(false,true);  // 🏔️
+	scn->CreateTerrains(1,0,1);  // 🏔️
 	scn->road->scn = scn;
 	scn->TerNext(0);
 	// app->scn->updGrsTer();
@@ -451,11 +454,16 @@ void App::SaveTrackEv()
 	SaveGrassDens();
 	// SaveWaterDepth();  //-
 
-	int all = scn->ters.size() + 1;
-	for (i=0; i < all; ++i)
-		gui->Delete(scn->getHmap(i, true));
-	
+	DelNewHmaps();
+
 	gui->Status("#{Saved}", 1,0.6,0.2);
+}
+
+void App::DelNewHmaps()
+{
+	int all = scn->ters.size() + 1;
+	for (int i=0; i < all; ++i)
+		gui->Delete(scn->getHmap(i, true));
 }
 
 
@@ -522,7 +530,7 @@ void App::TerCircleUpd(float dt)
 	{
 		const Real r = (d % 2 == 0 ? radius : radius - Radd);
 		const Real x = r * fTcos[d] + scn->road->posHit.x,
-			 z = r * fTsin[d] + scn->road->posHit.z;
+			z = r * fTsin[d] + scn->road->posHit.z;
 
 		Vector3 p(x, 0.f, z);
 		scn->ter->getHeightAt(p);

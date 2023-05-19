@@ -131,7 +131,7 @@ namespace Ogre
 		Ogre::SceneNode* node =0;
 
 		bool bGenerateShadowMap;  //** ter
-		bool bNormalized;  // true: Hmap floats 0..1,  false: any, real heights
+		bool bNormalized;  // true: Hmap floats 0..1 (broken),  false: any, real heights
 		int iLodMax;  //**
 		float fHMin, fHMax, fHRange;  //norm meh-
 		
