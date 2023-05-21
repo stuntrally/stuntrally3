@@ -100,6 +100,7 @@ namespace Ogre
 	{
 		destroyAllBuffers();
 	}
+	
 	//-----------------------------------------------------------------------------------
 	void HlmsTerra::_linkTerra( Terra *terra )
 	{
@@ -151,6 +152,7 @@ namespace Ogre
 			}
 		}
 	}
+
 	//-----------------------------------------------------------------------------------
 	void HlmsTerra::setDetailMapProperties( HlmsTerraDatablock *datablock, PiecesMap *inOutPieces )
 	{
@@ -187,6 +189,7 @@ namespace Ogre
 
 		setProperty( PbsProperty::FirstValidDetailMapNm, minNormalMap );
 	}
+
 	//-----------------------------------------------------------------------------------
 	void HlmsTerra::setTextureProperty( const char *propertyName, HlmsTerraDatablock *datablock,
 										TerraTextureTypes texType )
@@ -270,6 +273,10 @@ namespace Ogre
 
 		datablock->loadAllTextures();
 	}
+
+
+	//---------------------------------------------------------------------------------------------------------------------------
+	//  calculate Hash
 	//-----------------------------------------------------------------------------------
 	void HlmsTerra::calculateHashForPreCreate( Renderable *renderable, PiecesMap *inOutPieces )
 	{
@@ -295,7 +302,8 @@ namespace Ogre
 
 		setProperty( PbsProperty::ReceiveShadows, 1 );
 
-		// setProperty( "emissive_terrain", 1 );  // todo
+		// bool emis = datablock->getEmissive();
+		// setProperty( "emissive_terrain", emis ? 1 : 0 );  // todo:
 
 		uint32 brdf = datablock->getBrdf();
 		if( (brdf & TerraBrdf::BRDF_MASK) == TerraBrdf::Default )
@@ -359,12 +367,10 @@ namespace Ogre
 
 		if( usesNormalMap )
 		{
-			{
-				setProperty( PbsProperty::NormalSamplingFormat,
-							 static_cast<int32>( PbsProperty::NormalRgSnorm.mHash ) );
-				setProperty( PbsProperty::NormalRgSnorm,
-							 static_cast<int32>( PbsProperty::NormalRgSnorm.mHash ) );
-			}
+			setProperty( PbsProperty::NormalSamplingFormat,
+							static_cast<int32>( PbsProperty::NormalRgSnorm.mHash ) );
+			setProperty( PbsProperty::NormalRgSnorm,
+							static_cast<int32>( PbsProperty::NormalRgSnorm.mHash ) );
 		}
 
         if( datablock->getDetailTriplanarDiffuseEnabled() )
@@ -401,6 +407,8 @@ namespace Ogre
 		}
 #endif
 	}
+
+
 	//-----------------------------------------------------------------------------------
 	void HlmsTerra::calculateHashForPreCaster( Renderable *renderable, PiecesMap *inOutPieces )
 	{
@@ -411,6 +419,7 @@ namespace Ogre
 		TerrainCell *terrainCell = static_cast<TerrainCell *>( renderable );
 		setProperty( TerraProperty::ZUp, terrainCell->isZUp() );
 	}
+
 	//-----------------------------------------------------------------------------------
 	void HlmsTerra::notifyPropertiesMergedPreGenerationStep()
 	{
@@ -426,6 +435,7 @@ namespace Ogre
 				setTextureReg( PixelShader, "terrainShadows", texSlotsStart + 2 );
 		}
 	}
+
 	//-----------------------------------------------------------------------------------
 	void HlmsTerra::analyzeBarriers( BarrierSolver &barrierSolver,
 									 ResourceTransitionArray &resourceTransitions,
@@ -465,6 +475,8 @@ namespace Ogre
 			++itor;
 		}
 	}
+
+
 	//-----------------------------------------------------------------------------------
 	uint32 HlmsTerra::fillBuffersFor( const HlmsCache *cache, const QueuedRenderable &queuedRenderable,
 									  bool casterPass, uint32 lastCacheHash, uint32 lastTextureHash )
@@ -489,13 +501,16 @@ namespace Ogre
 		return fillBuffersFor( cache, queuedRenderable, casterPass, lastCacheHash, commandBuffer,
 							   false );
 	}
-	//-----------------------------------------------------------------------------------
+
+
+	//---------------------------------------------------------------------------------------------------------------------------
+	//  Fill command Buffers
+	//---------------------------------------------------------------------------------------------------------------------------
 	uint32 HlmsTerra::fillBuffersFor( const HlmsCache *cache, const QueuedRenderable &queuedRenderable,
 									  bool casterPass, uint32 lastCacheHash,
 									  CommandBuffer *commandBuffer, bool isV1 )
 	{
-		assert(
-			dynamic_cast<const HlmsTerraDatablock *>( queuedRenderable.renderable->getDatablock() ) );
+		assert( dynamic_cast<const HlmsTerraDatablock *>( queuedRenderable.renderable->getDatablock() ) );
 		const HlmsTerraDatablock *datablock =
 			static_cast<const HlmsTerraDatablock *>( queuedRenderable.renderable->getDatablock() );
 
@@ -759,6 +774,8 @@ namespace Ogre
 
 		return uint32( ( ( mCurrentMappedConstBuffer - mStartMappedConstBuffer ) >> 4u ) - 1u );
 	}
+
+
 	//-----------------------------------------------------------------------------------
 	void HlmsTerra::getDefaultPaths( String &outDataFolderPath, StringVector &outLibraryFoldersPaths )
 	{

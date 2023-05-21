@@ -72,10 +72,8 @@ namespace Ogre
 	{
 		mShadowConstantBiasGpu = mShadowConstantBias = 0.01f;
 
-		mRoughness[0] = mRoughness[1] = 1.0f;
-		mRoughness[2] = mRoughness[3] = 1.0f;
-		mMetalness[0] = mMetalness[1] = 1.0f;
-		mMetalness[2] = mMetalness[3] = 1.0f;
+		mRoughness[0] = mRoughness[1] = mRoughness[2] = mRoughness[3] = 1.0f;
+		mMetalness[0] = mMetalness[1] = mMetalness[2] = mMetalness[3] = 1.0f;
 
 		for( size_t i=0; i<4; ++i )
 			mDetailsOffsetScale[i] = Vector4( 0, 0, 1, 1 );
@@ -89,6 +87,8 @@ namespace Ogre
 		if( mAssignedPool )
 			static_cast<HlmsTerra*>(mCreator)->releaseSlot( this );
 	}
+
+
 	//-----------------------------------------------------------------------------------
 	void HlmsTerraDatablock::calculateHash()
 	{
@@ -135,6 +135,8 @@ namespace Ogre
 	{
 		static_cast<HlmsTerra*>(mCreator)->scheduleForUpdate( this );
 	}
+
+
 	//-----------------------------------------------------------------------------------
 	void HlmsTerraDatablock::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
 	{
@@ -164,6 +166,8 @@ namespace Ogre
 		memcpy( dstPtr, texIndices, sizeof( texIndices ) );
 		dstPtr += sizeof( texIndices );
 	}
+
+
 	//-----------------------------------------------------------------------------------
 	void HlmsTerraDatablock::setDiffuse( const Vector3 &diffuseColour )
 	{
@@ -178,6 +182,7 @@ namespace Ogre
 	{
 		return Vector3( mkDr, mkDg, mkDb ) * Ogre::Math::PI;
 	}
+
 	//-----------------------------------------------------------------------------------
 	void HlmsTerraDatablock::setRoughness( uint8 detailMapIdx, float roughness )
 	{
@@ -196,6 +201,7 @@ namespace Ogre
 	{
 		return mRoughness[detailMapIdx];
 	}
+
 	//-----------------------------------------------------------------------------------
 	void HlmsTerraDatablock::setMetalness( uint8 detailMapIdx, float metalness )
 	{
@@ -207,6 +213,8 @@ namespace Ogre
 	{
 		return mMetalness[detailMapIdx];
 	}
+
+
 	//-----------------------------------------------------------------------------------
 	void HlmsTerraDatablock::setDetailMapOffsetScale( uint8 detailMap, const Vector4 &offsetScale )
 	{
@@ -228,6 +236,8 @@ namespace Ogre
 		assert( detailMap < 8 );
 		return mDetailsOffsetScale[detailMap];
 	}
+
+
 	//-----------------------------------------------------------------------------------
 	void HlmsTerraDatablock::setAlphaTestThreshold( float threshold )
 	{
@@ -258,6 +268,8 @@ namespace Ogre
 	{
 		return mBrdf;
 	}
+
+	
     //-----------------------------------------------------------------------------------
     void HlmsTerraDatablock::setDetailTriplanarDiffuseEnabled( bool enabled )
     {
