@@ -112,7 +112,7 @@ public:
 
 	///  ⛰️ Terrain
 	//-----------------------------------
-	int terCur = 0, iNewHmap = 0;  // cur, ed -new
+	int terCur = 0, iNewHmap = -1;  // cur, ed -new
 	std::vector<Ogre::Terra*> ters;  // all terrains
 
 	Ogre::Terra* ter = 0;  // \ cur for edit

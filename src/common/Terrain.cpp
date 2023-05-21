@@ -113,7 +113,7 @@ void CScene::CreateTerrain(int n, bool terLoad)
 	if (terLoad || bNewHmap)
 	{
 	#ifndef SR_EDITOR  // game
-		String fname = getHmap(n, bNewHmap);
+		String fname = getHmap(n, 0);
 		bool exists = PATHS::FileExists(fname);
 		if (!exists)
 			LogO("Terrains error! No hmap file: "+fname);
