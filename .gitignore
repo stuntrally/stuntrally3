@@ -24,9 +24,9 @@ Dependencies/*
 #gui
 tracks*
 #cars
-Media/road/
+#Media/road/
 #objects
-terrain
+#terrain
 #Media
 
 .DS_Store

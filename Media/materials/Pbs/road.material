@@ -322,17 +322,9 @@ hlms roadMagicMirror pbs : road
 	normal_map flat_n.png
 	// normal_map   normal_1s.png
 
-	// diffuse  1 1 1
-	// specular 1 1 1
 	diffuse  0.032 0.042 0.082
 	specular 0.34 0.28 0.5
-	// specular 0.3 0.6 1.0
 
-	//specular_map roadAsphalt_spec2.jpg
-	// specular_map roadAlpha2s.jpg
-	// specular_map roadAlpha2x.jpg
-	// specular_map roadAlpha2i.jpg
-	
 	fresnel 1.0
 	fresnel_coeff 1 1 1  // refl color
 	// workflow metallic
@@ -361,9 +353,8 @@ hlms roadCrystal pbs : road
 	diffuse  0.2 0.6 1.0
 	specular 0.1 0.25 0.5
 	diffuse_map  rdGravel.jpg
-	// normal_map   rdGravel_norm.jpg
+	// normal_map  rdGravel_norm.jpg
 	// normal_map  roadMetal2_norm.jpg
-	// normal_map flat_n.png
 	normal_map   normal_1s.png
 
 	fresnel 1.0
