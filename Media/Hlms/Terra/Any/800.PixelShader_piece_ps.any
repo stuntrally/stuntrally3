@@ -146,7 +146,12 @@
 		@end
 	@end
 
-	pixelData.specular.xyz = midf3_c( 1.0f, 1.0f, 1.0f );
+	//**  emissive terrain
+	@property( emissive_terrain )
+		pixelData.specular.xyz = midf3_c( 0.1f, 0.1f, 0.1f );  // par
+	@else
+		pixelData.specular.xyz = midf3_c( 1.0f, 1.0f, 1.0f );
+	@end
 	midf metalness =	(metalness0 * detailWeights.x * midf_c( material.metalness.x ) +
 						 metalness1 * detailWeights.y * midf_c( material.metalness.y )) +
 						(metalness2 * detailWeights.z * midf_c( material.metalness.z ) +
@@ -397,6 +402,12 @@
 
 			//**  gamma  --
 			// finalColour.xyz = pow(finalColour, midf3_c(1.1f, 1.1f, 1.1f));
+
+			//**  emissive terrain
+			@property( emissive_terrain && !hlms_shadowcaster && hlms_lights_directional )
+				// material.kD.xyz  // par.. ++
+				finalColour += 4.0 * pow(metalness, 1.5) * light0Buf.lights[0].specular.xyz;
+			@end
 
 			@property( !hw_gamma_write )
 				//Linear to Gamma space

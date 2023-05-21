@@ -302,8 +302,8 @@ namespace Ogre
 
 		setProperty( PbsProperty::ReceiveShadows, 1 );
 
-		// bool emis = datablock->getEmissive();
-		// setProperty( "emissive_terrain", emis ? 1 : 0 );  // todo:
+		//**  new
+		setProperty( "emissive_terrain", datablock->bEmissive ? 1 : 0 );
 
 		uint32 brdf = datablock->getBrdf();
 		if( (brdf & TerraBrdf::BRDF_MASK) == TerraBrdf::Default )

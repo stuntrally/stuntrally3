@@ -298,9 +298,9 @@ particle_system Radioactive
 		height	232
 		depth	2  //h
 
-		colour_range_start	0.13 0.25 0.02  0.21
-		colour				0.18 0.36 0.04  0.32
-		colour_range_end	0.21 0.41 0.07  0.41
+		colour_range_start	0.07 0.21 0.01  0.21
+		colour				0.14 0.32 0.01  0.32
+		colour_range_end	0.21 0.41 0.02  0.41
 
 		emission_rate	200
 		velocity_min	0.6
@@ -516,9 +516,9 @@ particle_system SmokeBrown
 		height	32
 		depth	2  //h
 
-		colour_range_start	0.22 0.11 0.0  0.3
-		colour				0.31 0.25 0.0  0.4
-		colour_range_end	0.41 0.22 0.0  0.5
+		colour_range_start	0.02 0.01 0.0  0.2
+		colour				0.10 0.05 0.0  0.3
+		colour_range_end	0.15 0.10 0.0  0.4
 
 		emission_rate	20
 		velocity_min	3.6
@@ -529,8 +529,8 @@ particle_system SmokeBrown
 
     affector ColourFader
     {
-        red   -0.05
-        green -0.05
+        red   -0.02
+        green -0.02
         blue  -0.0
         alpha -0.1
     }
@@ -888,9 +888,9 @@ particle_system CraterLava1
 		height	1
 		depth	0.4  //h
 
-		colour_range_start	0.77 0.15 0.02  1.0
-		colour				0.88 0.19 0.04  1.0
-		colour_range_end	0.99 0.26 0.05  1.0
+		colour_range_start	0.77 0.15 0.01  1.0
+		colour				0.88 0.19 0.01  1.0
+		colour_range_end	0.99 0.26 0.02  1.0
 
 		emission_rate	20
 		velocity_min	4.6
@@ -915,7 +915,7 @@ particle_system CraterLava1
     affector ColourFader
     {
         red   -0.1
-        green -0.2
+        green -0.12
         blue  -0.0
         alpha -0.0
     }
@@ -951,9 +951,9 @@ particle_system CraterLava2
 		// colour_range_start	0.45 0.05 0.05 0.9
 		// colour				0.61 0.11 0.1  0.9
 		// colour_range_end	0.65 0.36 0.1  0.9
-		colour_range_start	0.82 0.15 0.02  0.1
-		colour				0.92 0.27 0.04  0.2
-		colour_range_end	0.99 0.51 0.05  0.5
+		colour_range_start	0.82 0.15 0.01  0.1
+		colour				0.92 0.27 0.01  0.2
+		colour_range_end	0.99 0.51 0.02  0.5
 
 		emission_rate	20
 		velocity_min	21.6
@@ -977,8 +977,8 @@ particle_system CraterLava2
 	}
     affector ColourFader
     {
-        red   -0.12
-        green -0.18
+        red   -0.10
+        green -0.12
         blue   0.02
         alpha -0.13
     }

@@ -149,7 +149,6 @@ public:
 	//  tri size
 	SlV(TerTriSize);  int UpdTxtTerSize(float mul=1.f);
 	//  ext
-	// SV svTerErrorNorm;  void slTerErrorNorm(SV*);
 	SV /*svTerNormScale, svTerSpecPow,*/ svTerSpecPowEm;  void slTerPar(SV*);
 	
 	SlV(TerHoriz);  SlV(TerPosX);  SlV(TerPosZ);

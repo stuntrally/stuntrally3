@@ -42,7 +42,7 @@ void App::CreateRnd2Tex()
 	auto* mgr = mRoot->getCompositorManager2();
 
 	scn->sc->tds[0].UpdVals();
-	Real tws = scn->sc->tds[0].fTerWorldSize;  // world dim  // 1st ter
+	Real tws = scn->sc->tds[0].fTerWorldSize * 0.5f;  // world dim  // 1st ter
 
 	for (int i=0; i < RT_ALL; ++i)
 	{

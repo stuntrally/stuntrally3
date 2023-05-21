@@ -65,6 +65,7 @@ void CScene::CreateTerrain1(int n)
 		// tdb->setDetailTriplanarRoughnessEnabled(true);  // no tex, not used
 		// tdb->setDetailTriplanarMetalnessEnabled(true);
 	}
+	tdb->bEmissive = td.emissive;
 
 	// tdb->setBrdf(TerraBrdf::Default);  //
 	// tdb->setBrdf(TerraBrdf::BlinnPhong);  // +💡
@@ -89,14 +90,13 @@ void CScene::CreateTerrain1(int n)
 
 		//  combined rgb,a from 2 tex
 		String path = PATHS::Data() + "/terrain/";
-		String d_d, d_s, n_n, n_h;
+		String d_d, d_s, d_r, n_n;
 		
 		///  diffuse  ----
 		d_d = l.texFile;  // ends with _d
-		d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");
-		d_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");
-		n_n = l.texNorm;  // ends with _n
-		n_h = StringUtil::replaceAll(l.texNorm,"_n.","_h.");
+		d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");  // _s
+		// d_r = StringUtil::replaceAll(l.texNorm,"_d.","_r.");  // _r  todo: ter rough tex
+		n_n = l.texNorm;  // _n
 
 
 		auto tex = texMgr->createOrRetrieveTexture(d_d,
@@ -112,19 +112,22 @@ void CScene::CreateTerrain1(int n)
 			tdb->setSamplerblock( TERRA_DETAIL0_NM + i, sb );
 		}
 
-		/*n_h = d_s = "white.png";  // todo: _r _m terrain textures..
-		tex = texMgr->createOrRetrieveTexture(n_h,
+		/** // todo: _r _m terrain textures..
+		tex = texMgr->createOrRetrieveTexture( "white.png", //d_r,
 			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 		if (tex)
 		{	tdb->setTexture( TERRA_DETAIL_ROUGHNESS0 + i, tex );
 			tdb->setSamplerblock( TERRA_DETAIL_ROUGHNESS0 + i, sb );
-		}
-		tex = texMgr->createOrRetrieveTexture(d_s,
-			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
-		if (tex)
-		{	tdb->setTexture( TERRA_DETAIL_METALNESS0 + i, tex );
-			tdb->setSamplerblock( TERRA_DETAIL_METALNESS0 + i, sb );
-		}*/
+		}/**/
+		if (PATHS::FileExists(path + d_s))  // for terrain_emissive
+		{
+			tex = texMgr->createOrRetrieveTexture(d_s,
+				GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
+			if (tex)
+			{	tdb->setTexture( TERRA_DETAIL_METALNESS0 + i, tex );
+				tdb->setSamplerblock( TERRA_DETAIL_METALNESS0 + i, sb );
+		}	}
+		
 		Real sc = bTripl ?
 			// fTer / l.tiling * 0.0005 :  //?? big
 			fTer / l.tiling * 0.002 :  //** fixme!  ?? small
@@ -144,7 +147,6 @@ void CScene::CreateTerrain1(int n)
 			if (pt->reflect && app->mCubeReflTex)
 				tdb->setTexture( TERRA_REFLECTION, app->mCubeReflTex );  // par
 		}
-		// tdb->setEmissive(0.5);  // todo: lava..
 	}
 
 

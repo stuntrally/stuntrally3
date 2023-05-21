@@ -173,6 +173,7 @@ namespace Ogre
 	protected:
 		float   mkDr, mkDg, mkDb;                   //kD
 		float   mShadowConstantBiasGpu;
+		
 		float   mRoughness[4];
 		float   mMetalness[4];
 		Vector4 mDetailsOffsetScale[4];
@@ -195,6 +196,8 @@ namespace Ogre
 		HlmsTerraDatablock( IdString name, HlmsTerra *creator, const HlmsMacroblock *macroblock,
 							const HlmsBlendblock *blendblock, const HlmsParamVec &params );
 		~HlmsTerraDatablock() override;
+
+		bool bEmissive =0;
 
 		/// Sets overall diffuse colour. The colour will be divided by PI for energy conservation.
 		void setDiffuse( const Vector3 &diffuseColour );

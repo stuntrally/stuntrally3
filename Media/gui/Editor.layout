@@ -551,11 +551,11 @@
 						</Widget> -->
 
 						<Widget type="Button" skin="CheckBox" position="32 396 452 24" name="TerrainEmissive">
-							<Property key="Caption" value="#{TerrainEmissiveLight} -"/>
+							<Property key="Caption" value="#{TerrainEmissiveLight}"/>
 							<Property key="TextColour" value="0.7 0.7 0.9"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="32 426 200 24">
-							<Property key="Caption" value="#{SpecularPowerEm} -"/>
+							<Property key="Caption" value="#{SpecularPowerEm}-"/>
 							<Property key="TextColour" value="0.6 0.75 0.9"/>
 						</Widget>
 						<Widget type="EditBox" skin="EditBox" position="236 423 56 24" name="TerSpecPowEmEdit">

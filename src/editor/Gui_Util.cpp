@@ -88,7 +88,7 @@ void CGui::SetGuiFromXmls()
 	//-----------------------------------------------
 	ckDenyReversed.Upd(&sc->denyReversed);
 	ckTiresAsphalt.Upd(&sc->asphalt);
-	// ckTerrainEmissive.Upd(&td().emissive);
+	ckTerrainEmissive.Upd(&td().emissive);
 	ckNoWrongChks.Upd(&sc->noWrongChks);
 	SldUpd_Game();
 	UpdEdInfo();
@@ -111,7 +111,7 @@ void CGui::SetGuiTerFromXml()
 	svTerTriSize.UpdF(&td().fTriangleSize);  //`
 	UpdTxtTerSize();
 	// svTerNormScale.Upd();  svTerSpecPow.Upd();
-	// svTerSpecPowEm.UpdF(&td().specularPowEm);
+	svTerSpecPowEm.UpdF(&td().specularPowEm);
 
 	tabTerLayer(tabsTerLayers, idTerLay);
 	updTersTxt();
