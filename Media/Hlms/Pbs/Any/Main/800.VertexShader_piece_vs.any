@@ -268,8 +268,6 @@
 
 		//**  Grass Wind  **
 		@property( grass && !hlms_shadowcaster )
-			// worldPos.xz += (_h(1.0) - inVs_uv0.y) * (
-			// 	_h(0.2) * sin(passBuf.globalTime.x * _h(1.2)));
 			midf2 pos = worldPos.xz;
 			if (inVs_uv0.y == 0.0f)  // top
 			{

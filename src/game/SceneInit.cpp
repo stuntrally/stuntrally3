@@ -580,7 +580,7 @@ void App::LoadTerrain()
 {
 	if (dstTrk)
 	{
-		scn->CreateTerrains(0, 0, 1);  // common
+		scn->CreateTerrains(1);  // common
 		//; GetTerMtrIds();  // todo: get from blendmap tex ..
 		scn->CreateBltTerrains();  // 1st ter only-  // todo: before cars..
 	}

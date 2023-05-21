@@ -26,6 +26,7 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 
+#include "Def_Str.h"
 #include "TerrainCell.h"
 #include "Terra.h"
 
@@ -66,7 +67,6 @@ namespace Ogre
 		assert( mVaoPerLod[VpNormal].empty() && "Already initialized!" );
 		m_vaoManager = vaoManager;
 		m_useSkirts = useSkirts;
-		//m_useSkirts = 0;  //** no skirts
 
 		//Setup bufferless vao
 		VertexBufferPackedVec vertexBuffers;
@@ -186,6 +186,9 @@ namespace Ogre
 		((float*RESTRICT_ALIAS)gpuPtr)[13] = m_parentTerra->m_heightUnormScaled;
 		((float*RESTRICT_ALIAS)gpuPtr)[14] = m_parentTerra->m_xzRelativeSize.y;
 		((float*RESTRICT_ALIAS)gpuPtr)[15] = m_parentTerra->m_invDepth;
+
+		// static float time = 0.f;  time += 0.1f;
+		// ((float*RESTRICT_ALIAS)gpuPtr)[16] = time;  // todo ..?
 	}
 	//-----------------------------------------------------------------------
 	const LightList& TerrainCell::getLights() const

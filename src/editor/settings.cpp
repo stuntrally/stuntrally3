@@ -68,8 +68,8 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "ter_gen.terMinH", gen_terMinH);		Param(c,w, "ter_gen.terMaxH",gen_terMaxH);	
 
 	//  ⛰️🛣️ align ter
-	Param(c,w, "teralign.w_mul", al_w_mul);			Param(c,w, "teralign.smooth", al_smooth);
-	Param(c,w, "teralign.w_add", al_w_add);
+	// Param(c,w, "teralign.w_mul", al_w_mul);
+	Param(c,w, "teralign.smooth", al_smooth);		Param(c,w, "teralign.w_add", al_w_add);
 	
 	Param(c,w, "brush.adjust", br_adjust);
 

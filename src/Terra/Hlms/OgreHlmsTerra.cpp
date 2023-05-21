@@ -295,7 +295,7 @@ namespace Ogre
 
 		setProperty( PbsProperty::ReceiveShadows, 1 );
 
-		// setProperty( "emissive", 1 );  // todo
+		// setProperty( "emissive_terrain", 1 );  // todo
 
 		uint32 brdf = datablock->getBrdf();
 		if( (brdf & TerraBrdf::BRDF_MASK) == TerraBrdf::Default )
@@ -328,9 +328,6 @@ namespace Ogre
 			setProperty( PbsProperty::NumSamplers,
 						 (int32)datablock->mSamplersDescSet->mSamplers.size() );
 		}
-
-		if( terrainCell->getParentTerra()->getHeightMapTex()->getPixelFormat() == PFG_R16_UINT )
-			setProperty( "terra_use_uint", 1 );
 
 		if( datablock->mTexturesDescSet )
 		{
@@ -704,7 +701,7 @@ namespace Ogre
 		const TerrainCell *terrainCell = static_cast<const TerrainCell*>( queuedRenderable.renderable );
 
 		terrainCell->uploadToGpu( currentMappedConstBuffer );
-		currentMappedConstBuffer += 16u;
+		currentMappedConstBuffer += 16u;  // todo: 20u ..
 
 		//---------------------------------------------------------------------------
 		//                          ---- PIXEL SHADER ----

@@ -427,7 +427,7 @@ void CGui::btnScaleTerH(WP)
 		o.SetFromBlt();
 	}
 
-	//  ter  ---
+	//  1st ter only  ---
 	int si = td().iVertsX;
 	float* hfData = new float[si];
 	int size = si * si * sizeof(float);

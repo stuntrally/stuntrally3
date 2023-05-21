@@ -38,7 +38,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	sv= &svLodBias;		sv->Init("LodBias",		&pSet->lod_bias,	0.f,4.f, 1.5f);  SevC(LodBias);  sv->DefaultF(1.f);
 	sv= &svTerDetail;	sv->Init("TerDetail",	&pSet->ter_detail,	0.f,4.f, 1.5f);  SevC(TerDetail);  sv->DefaultF(1.f);
 	sv= &svRoadDist;	sv->Init("RoadDist",	&pSet->road_dist,	0.f,4.f, 2.f, 2,5);  sv->DefaultF(1.6f);
-	sv= &svViewDist;	sv->Init("ViewDist",	&pSet->view_distance, 50.f,30000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
+	sv= &svViewDist;	sv->Init("ViewDist",	&pSet->view_distance, 50.f,40000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
 																				SevC(ViewDist);  sv->DefaultF(8000.f);
 	sv= &svHorizons;	sv->Init("Horizons",	&pSet->horizons,	0,3);  sv->DefaultI(3);
 
@@ -86,14 +86,14 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	ck= &ckCarLightsShadows; ck->Init("CarLightsShadows",   &pSet->car_light_shadows);
 
 
-	//  🔮 Reflection  // todo:
+	//  🔮 Reflection
 	sv= &svReflSkip;	sv->Init("ReflSkip",	&pSet->refl_skip,    0,1000, 2.f);  sv->DefaultI(0);
 	sv= &svReflFaces;	sv->Init("ReflFaces",	&pSet->refl_faces,   1,6);  sv->DefaultI(1);
 	sv= &svReflSize;
 		for (i=0; i < NumTexSizes; ++i)  sv->strMap[i] = toStr(cTexSizes[i]);  //v way too big
 						sv->Init("ReflSize",	&pSet->refl_size,    0,NumTexSizes-1 -1, 2.f);  sv->DefaultI(0);
 
-	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->refl_dist,	20.f,30000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
+	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->refl_dist,	20.f,40000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
 																	SevC(ReflDist);  sv->DefaultF(300.f);
 	sv= &svReflIbl;		sv->Init("ReflIbl",		&pSet->refl_ibl,	0,8, 2.f);  SevC(ReflIbl);  sv->DefaultI(5);
 	sv= &svReflLod;		sv->Init("ReflLod",		&pSet->refl_lod,	0.f,4.f, 1.5f);  SevC(ReflLod);  sv->DefaultF(1.f);

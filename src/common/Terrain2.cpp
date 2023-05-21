@@ -29,7 +29,7 @@ using namespace Ogre;
 
 //  ⛰️ Terrain
 //-----------------------------------------------------------------------------------------------
-void CScene::CreateTerrain1(int n, bool upd)
+void CScene::CreateTerrain1(int n)
 {
 	auto sn = toStr(n);
 	// if (mTerra)  return;
@@ -168,9 +168,9 @@ void CScene::CreateTerrain1(int n, bool upd)
 	// mTerra->setCustomSkirtMinHeight(0.8f); //?-
 	mTerra->setCastShadows( false );
 
-	if (upd)  //  ed update ter only
-		ters[n] = mTerra;
-	else
+	// if (upd)  //  ed update ter only
+	// 	ters[n] = mTerra;
+	// else
 	{	//  create all
 		ters.push_back(mTerra);  //+
 		if (n == 0)  // 1st ter only

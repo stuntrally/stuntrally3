@@ -247,12 +247,12 @@ void App::LoadTrackEv()
 
 	//  💧 Fluids
 	scn->CreateFluids();
+#if 0  // todo: water ...
+	scn->refl.CreateRTT();
+	AddListenerRnd2Tex();
 
-	// scn->refl.CreateRTT();
-	// scn->refl.CreateFluids();  // todo: water ...
-
-	// AddListenerRnd2Tex();
-
+	scn->refl.CreateFluids();
+#endif
 
 	//  set sky tex name for water
 	// sh::MaterialInstance* m = mFactory->getMaterialInstance(scn->sc->skyMtr);
@@ -262,7 +262,7 @@ void App::LoadTrackEv()
 
 
 	//  ⛰️ Terrain
-	scn->CreateTerrains(0,-1,1);
+	scn->CreateTerrains(1);
 	scn->TerNext(0);
 
 
@@ -353,7 +353,7 @@ void App::UpdateTrackEv()
 	
 	//CreateFluids();
 	scn->DestroyTerrains();
-	scn->CreateTerrains(1,scn->iNewHmap,1);
+	scn->CreateTerrains(1);
 
 	//  road ~
 	for (auto r : scn->roads)
@@ -380,7 +380,7 @@ void CGui::btnUpdateLayers(WP)
 	// if (!app->bNewHmap)
 	// 	app->scn->copyTerHmap();
 	scn->DestroyTerrains();
-	scn->CreateTerrains(1,0,1);  // 🏔️
+	scn->CreateTerrains(1);  // 🏔️
 	scn->road->scn = scn;
 	scn->TerNext(0);
 	// app->scn->updGrsTer();

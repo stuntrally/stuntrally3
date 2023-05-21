@@ -14,6 +14,7 @@
 using namespace Ogre;
 using Ogre::uint8;
 
+//#define CHANGE_SIZE  // fixme
 
 TextureGpuManager *PreviewTex::mgr = 0;
 
@@ -27,6 +28,11 @@ void PreviewTex::SetName(String texName)
 bool PreviewTex::Create(int x, int y, String texName)
 {
 	if (!mgr)  return false;
+#ifdef CHANGE_SIZE
+	// LogO(texName+" "+toStr(x)+" "+toStr(y));
+	if (prvTex)  // fixme
+		Destroy();
+#endif
 	xSize = x;  ySize = y;
 	sName = texName;
 	// prvTex = TextureManager::getSingleton().createManual(
@@ -85,9 +91,14 @@ bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8
 			Image2 img;
 			img.load(data, ext);
 
+			auto w = img.getWidth(), h = img.getHeight();
+		#ifdef CHANGE_SIZE
+			if (!(prvTex && w == xSize && h == ySize))  // fixme.. white?
+				Create(w, h, sName);
+		#else
 			if (!prvTex)
-				Create(img.getWidth(), img.getHeight(), sName);
-
+				Create(w, h, sName);
+		#endif
 			//**  convert sRGB, fixes bad white clr  // todo- in shader, slow
 			// Ogre::Timer ti;
 			auto fmt = img.getPixelFormat();  // LogO(toStr(fmt)+" fmt prv");

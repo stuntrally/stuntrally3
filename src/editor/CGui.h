@@ -164,7 +164,7 @@ public:
 	void btnTerrainHalf(WP), btnTerrainDouble(WP), btnTerrainMove(WP);
 
 	void btnAlignTerToRoad(WP), btnAlignHorizonToTer(WP);
-	SV svAH_BaseTer, svAH_Border, svAH_Below;
+	SV svAH_BaseTer, /*svAH_Border,*/ svAH_Below;
 	
 
 	//  🖌️⛰️🎨 Brushes, ter edit  o o o o  --------------------
@@ -377,7 +377,7 @@ public:
 	SV svScaleAllMul, svScaleTerHMul;
 	void btnScaleAll(WP), btnScaleTerH(WP);
 	//  align
-	SV svAlignWidthAdd, svAlignWidthMul, svAlignSmooth;
+	SV svAlignWidthAdd, /*svAlignWidthMul,*/ svAlignSmooth;
 
 
 	//  ⚠ Warnings  --------------------

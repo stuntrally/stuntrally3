@@ -127,9 +127,9 @@ public:
 	//  HlmsListener  to make PBS objects also be affected by terrain's shadows
 	Ogre::HlmsPbsTerraShadows* mHlmsPbsTerraShadows = 0;  // 1st ter only-
 
-	void CreateTerrain1(int n, bool upd);
-	void CreateTerrains(bool upd, bool bNewHmap/*=false*/, bool terLoad/*=true*/);
-	void CreateTerrain(int n, bool upd, bool bNewHmap, bool terLoad);
+	void CreateTerrain1(int n);
+	void CreateTerrains(bool terLoad/*=true*/);
+	void CreateTerrain(int n, bool terLoad);
 	void DestroyTerrain1(int n), DestroyTerrains();
 	void CreateBltTerrains(), copyTerHmap();
 	// void SetupTerrain(), UpdTerErr();

@@ -130,7 +130,7 @@ void CGui::btnTersAdd(WP)
 	// assert(scn->ters.size() == scn->sc->tds.size());
 
 	scn->DestroyTerrains();
-	scn->CreateTerrains(0,0,1);  // 🏔️
+	scn->CreateTerrains(1);  // 🏔️
 	scn->TerNext(0);
 
 	SetGuiTerFromXml();

@@ -41,6 +41,7 @@ void App::CreateRnd2Tex()
 	auto* texMgr =mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
 	auto* mgr = mRoot->getCompositorManager2();
 
+	scn->sc->tds[0].UpdVals();
 	Real tws = scn->sc->tds[0].fTerWorldSize;  // world dim  // 1st ter
 
 	for (int i=0; i < RT_ALL; ++i)
@@ -52,9 +53,11 @@ void App::CreateRnd2Tex()
 			r.tex = texMgr->createTexture( "EdTex" + si,
 				GpuPageOutStrategy::SaveToSystemRam,
 				TextureFlags::ManualTexture, TextureTypes::Type2D );
+			// const int mul = tws > 1200.f ? 2 : 1, div = mul == 1 ? 1 : 2;
 			uint32 res =
 				i == RT_View ? 1024 :  // preview const
-				tws > 1200.f ? 2048 : 1024;  // bigger with ter size  // todo: fix previews..
+				1024;  // todo: // mul * 1024;  // bigger with ter size  // todo: fix previews..
+			
 			r.tex->setResolution(res, res);
 			// int mips = PixelFormatGpuUtils::getMaxMipmapCount( res );
 			// r.tex->setNumMipmaps( mips );
@@ -91,13 +94,15 @@ void App::CreateRnd2Tex()
 				if (!full)  // ortho proj
 				{	r.cam->setProjectionType(PT_ORTHOGRAPHIC);
 					r.cam->setOrthoWindow(tws, tws);
+					// r.cam->setOrthoWindow(tws / div, tws / div);  // todo: ?
+					// LogO(" tws  "+toStr(tws));//+" mul "+toStr(mul)+" div "+toStr(div));
 				}
 				// r.cam->setFOVy( Degree(90) );
 				// r.cam->setFixedYawAxis( false );
 				// r.cam->setShadowRenderingDistance( 300 );  // par-
 				// r.cam->setCastShadows(false);
 				// rvp->setVisibilityMask(visMask[i]);  // in workspace..
-				// rvp->setShadowsEnabled(false);
+				// r.cam->setCastShadows(false);
 			}
 
 			//  🪄 Workspace  ----
@@ -112,7 +117,7 @@ void App::CreateRnd2Tex()
 			}else
 				LogO("Workspace already exists: "+name);
 
-		// #define MANUAL_RTT_UPD  // todo:
+		//#define MANUAL_RTT_UPD  // todo: terrain shadowed..?
 			//  add Workspace
 			LogO(String("++++ WS add:  Ed ")+strWs[i]+", all: "+toStr(mgr->getNumWorkspaces()));
 		#ifndef MANUAL_RTT_UPD

@@ -67,7 +67,7 @@ void App::AlignTerToRoad()
 	Ogre::Timer ti;
 
 	///  create 🎳 bullet road for selected segments
-	road->ed_Wmul = pSet->al_w_mul;
+	road->ed_Wmul = 1.f;  //pSet->al_w_mul;
 	road->ed_Wadd = pSet->al_w_add;
 	road->RebuildRoadInt(true);
 

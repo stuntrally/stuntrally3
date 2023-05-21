@@ -335,7 +335,7 @@ void CGui::InitGui()
 	Btn("AlignTerrain",  btnAlignTerToRoad);  Btn("AlignHorizon",  btnAlignHorizonToTer);
 	
 	sv= &svAH_BaseTer;	sv->Init("AH_BaseTer",	&pSet->ah_base_ter, 0,8);  sv->DefaultI(0);
-	sv= &svAH_Border;	sv->Init("AH_Border",	&pSet->ah_border, 0.f,160.f, 2.f, 2,4);  sv->DefaultF(10.f);
+	// sv= &svAH_Border;	sv->Init("AH_Border",	&pSet->ah_border, 0.f,160.f, 2.f, 2,4);  sv->DefaultF(10.f);
 	sv= &svAH_Below;	sv->Init("AH_Below",	&pSet->ah_below, 0.f,160.f, 2.f, 2,4);  sv->DefaultF(10.f);
 	
 
@@ -578,7 +578,7 @@ void CGui::InitGui()
 	Btn("ScaleAll",  btnScaleAll);  Btn("ScaleTerH", btnScaleTerH);
 
 	sv= &svAlignWidthAdd;	sv->Init("AlignWidthAdd",	&pSet->al_w_add,  0.f,20.f,1.f, 1,3);  sv->DefaultF(10.f);
-	sv= &svAlignWidthMul;	sv->Init("AlignWidthMul",	&pSet->al_w_mul,  1.f,4.f, 1.f, 2,4);  sv->DefaultF(1.f);
+	// sv= &svAlignWidthMul;	sv->Init("AlignWidthMul",	&pSet->al_w_mul,  1.f,4.f, 1.f, 2,4);  sv->DefaultF(1.f);
 	sv= &svAlignSmooth;		sv->Init("AlignSmooth",		&pSet->al_smooth, 0.f,6.f, 1.f, 1,3);  sv->DefaultF(3.f);
 
 	

@@ -80,11 +80,11 @@ using namespace Ogre;
 ///--------------------------------------------------------------------------------------------------------------
 //  Create Terrain
 ///--------------------------------------------------------------------------------------------------------------
-void CScene::CreateTerrains(bool upd, bool bNewHmap, bool terLoad)
+void CScene::CreateTerrains(bool terLoad)
 {
 	int all = sc->tds.size();
 	for (int i = 0; i < all; ++i)
-		CreateTerrain(i, upd, bNewHmap, terLoad);
+		CreateTerrain(i, terLoad);
 }
 
 String CScene::getHmap(int n, bool bNew)
@@ -95,7 +95,7 @@ String CScene::getHmap(int n, bool bNew)
 	return fname;
 }
 
-void CScene::CreateTerrain(int n, bool upd, bool bNewHmap, bool terLoad)
+void CScene::CreateTerrain(int n, bool terLoad)
 {
 	assert(n < sc->tds.size());
 	Ogre::Timer tm;
@@ -108,17 +108,23 @@ void CScene::CreateTerrain(int n, bool upd, bool bNewHmap, bool terLoad)
 #endif
 
 	///  Load Heightmap data --------
-	bNewHmap = n == iNewHmap;
+	bool bNewHmap = n == iNewHmap;
 	Ogre::Timer ti;
 	if (terLoad || bNewHmap)
 	{
+	#ifndef SR_EDITOR  // game
 		String fname = getHmap(n, bNewHmap);
 		bool exists = PATHS::FileExists(fname);
 		if (!exists)
-		{	LogO("Terrains error! No hmap file: "+fname);
-			fname = getHmap(n, 0);
+			LogO("Terrains error! No hmap file: "+fname);
+	#else  // ed
+		String fname = getHmap(n, bNewHmap);
+		bool exists = PATHS::FileExists(fname);
+		if (!exists)
+		{	fname = getHmap(n, 0);
 			exists = PATHS::FileExists(fname);
 		}
+	#endif
 		int fsize = exists ? td.getFileSize(fname) : 512*512*4;  // anything const-
 		int size = fsize / sizeof(float);
 
@@ -155,7 +161,7 @@ void CScene::CreateTerrain(int n, bool upd, bool bNewHmap, bool terLoad)
 	//; UpdBlendmap();
 
 
-	CreateTerrain1(n, 0);  //upd);
+	CreateTerrain1(n);
 
 	// ter = mTerra;  //set ptr
 	if (n == 0)  // 1st ter only-

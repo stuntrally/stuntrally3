@@ -829,7 +829,7 @@
 
 					<!-- Ter Generator -->
 					<Widget type="TabItem" skin="" position="2 24 754 478">
-						<Property key="Caption" value="#40D080#{Generator}-"/>
+						<Property key="Caption" value="#40D0A0#{Generator}"/>
 						<Widget type="Widget" skin="PanelSkin" position="0 45 750 436">
 							<Property key="Colour" value="0.141 0.322 0.146"/>
 							<Property key="Alpha" value="0.2"/>
@@ -1063,119 +1063,125 @@
 
 					<!-- Ter Tools -->
 					<Widget type="TabItem" skin="" position="2 24 754 478">
-						<Property key="Caption" value="#FFB060#{Tools}"/>
-						<!-- Hmap size -->
-						<Widget type="Button" skin="Button" position="32 40 128 24" name="TerrainHalf">
-							<Property key="Colour" value="0.2 0.7 0.1"/>
-							<Property key="Alpha" value="0.8"/>
-							<Property key="Caption" value="#{TerrainHalf} -"/>
-							<Property key="TextColour" value="0.2 0.7 0.1"/>
-							<UserString key="tip" value="#{TipTerrainHalf}"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="32 80 128 24" name="TerrainDouble">
-							<Property key="Colour" value="0.2 0.7 0.1"/>
-							<Property key="Alpha" value="0.8"/>
-							<Property key="Caption" value="#{TerrainDouble} -"/>
-							<Property key="TextColour" value="0.2 0.7 0.1"/>
-							<UserString key="tip" value="#{TipTerrainDouble}"/>
-						</Widget>
-
-						<!-- Move Hmap -->
-						<Widget type="Button" skin="Button" position="232 40 128 24" name="TerrainMove">
-							<Property key="Colour" value="0.2 0.7 0.1"/>
-							<Property key="Alpha" value="0.8"/>
-							<Property key="Caption" value="#{TerrainMove} -"/>
-							<Property key="TextColour" value="0.2 0.7 0.1"/>
-							<UserString key="tip" value="#{TipTerrainMove}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="392 44 20 24">
-							<Property key="Caption" value="x"/>
-							<Property key="TextColour" value="0.5 0.8 0.5"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="410 40 50 24" name="TerMoveX">
-							<Property key="Caption" value="0"/>
-							<Property key="Colour" value="0.6 0.9 0.6"/>
-							<Property key="TextColour" value="0.6 0.9 0.6"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="492 44 20 24">
-							<Property key="Caption" value="y"/>
-							<Property key="TextColour" value="0.5 0.8 0.5"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="510 40 50 24" name="TerMoveY">
-							<Property key="Caption" value="0"/>
-							<Property key="Colour" value="0.6 0.9 0.6"/>
-							<Property key="TextColour" value="0.6 0.9 0.6"/>
-						</Widget>
-
-						<!-- Align Horiz -->
-						<Widget type="Button" skin="Button" position="32 190 400 28" name="AlignHorizon">
-							<Property key="Colour" value="0.2 0.7 1.0"/>
-							<Property key="Caption" value="#{AlignHorizonToTerrain}"/>
-							<Property key="TextColour" value="0.2 0.7 1.0"/>
-							<!-- <UserString key="tip" value="#{AlignHorizonToTerrain}"/> -->
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="32 230 144 24">
-							<Property key="Caption" value="#{AH_BaseTer}"/>
-							<Property key="TextColour" value="0.6 0.8 1.0"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="248 230 320 18" name="AH_BaseTer"/>
-						<Widget type="TextBox" skin="TextBox" position="180 230 60 24" name="AH_BaseTerVal">
-							<Property key="TextColour" value="0.2 0.9 1.0"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="32 260 144 24">
-							<Property key="Caption" value="#{Border}"/>
-							<Property key="TextColour" value="0.4 0.6 0.7"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="248 260 320 18" name="AH_Border"/>
-						<Widget type="TextBox" skin="TextBox" position="180 260 60 24" name="AH_BorderVal">
-							<Property key="TextColour" value="0.4 0.6 0.7"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="32 290 144 24">
-							<Property key="Caption" value="#{AH_Below}"/>
-							<Property key="TextColour" value="0.2 0.5 0.7"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="248 290 320 18" name="AH_Below"/>
-						<Widget type="TextBox" skin="TextBox" position="180 290 60 24" name="AH_BelowVal">
-							<Property key="TextColour" value="0.2 0.5 0.7"/>
-						</Widget>
+						<Property key="Caption" value="#E0A050#{Tools}"/>
 
 						<!-- Align -->
-						<Widget type="Button" skin="Button" position="32 320 400 28" name="AlignTerrain">
+						<Widget type="Button" skin="Button" position="32 20 400 28" name="AlignTerrain">
 							<Property key="Colour" value="1.0 0.8 0.2"/>
 							<Property key="Caption" value="#{AlignTerrainToRoad}"/>
 							<Property key="TextColour" value="1.0 0.6 0.1"/>
 							<UserString key="tip" value="#{InputRoadAlignTerrain}"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="32 360 144 24">
+						<Widget type="TextBox" skin="TextBox" position="32 60 144 24">
 							<Property key="Caption" value="#{AlignWidthAdd}"/>
 							<Property key="TextColour" value="0.8 0.5 0.5"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="248 360 320 18" name="AlignWidthAdd"/>
-						<Widget type="TextBox" skin="TextBox" position="180 360 60 24" name="AlignWidthAddVal">
+						<Widget type="Slider" skin="Slider" position="248 60 320 18" name="AlignWidthAdd"/>
+						<Widget type="TextBox" skin="TextBox" position="180 60 60 24" name="AlignWidthAddVal">
 							<Property key="TextColour" value="0.8 0.5 0.5"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="32 390 144 24">
-							<Property key="Caption" value="#{AlignWidthMul}"/>
-							<Property key="TextColour" value="0.6 0.5 0.4"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="248 390 320 18" name="AlignWidthMul"/>
-						<Widget type="TextBox" skin="TextBox" position="180 390 60 24" name="AlignWidthMulVal">
-							<Property key="TextColour" value="0.6 0.5 0.4"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="32 420 144 24">
+						<Widget type="TextBox" skin="TextBox" position="32 90 144 24">
 							<Property key="Caption" value="#{AlignSmooth}"/>
 							<Property key="TextColour" value="0.8 0.6 0.2"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="248 420 320 18" name="AlignSmooth"/>
-						<Widget type="TextBox" skin="TextBox" position="180 420 60 24" name="AlignSmoothVal">
+						<Widget type="Slider" skin="Slider" position="248 90 320 18" name="AlignSmooth"/>
+						<Widget type="TextBox" skin="TextBox" position="180 90 60 24" name="AlignSmoothVal">
 							<Property key="TextColour" value="0.8 0.6 0.2"/>
 						</Widget>
 
+						<!-- <Widget type="TextBox" skin="TextBox" position="32 120 144 24">
+							<Property key="Caption" value="#{AlignWidthMul}"/>
+							<Property key="TextColour" value="0.6 0.5 0.4"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="248 120 320 18" name="AlignWidthMul"/>
+						<Widget type="TextBox" skin="TextBox" position="180 120 60 24" name="AlignWidthMulVal">
+							<Property key="TextColour" value="0.6 0.5 0.4"/>
+						</Widget> -->
+
+						<!-- Align Horiz -->
+						<Widget type="Button" skin="Button" position="32 170 400 28" name="AlignHorizon">
+							<Property key="Colour" value="0.2 0.7 1.0"/>
+							<Property key="Caption" value="#{AlignHorizonToTerrain}"/>
+							<Property key="TextColour" value="0.2 0.7 1.0"/>
+							<!-- <UserString key="tip" value="#{AlignHorizonToTerrain}"/> -->
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="32 210 144 24">
+							<Property key="Caption" value="#{AH_BaseTer}"/>
+							<Property key="TextColour" value="0.6 0.8 1.0"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="248 210 320 18" name="AH_BaseTer"/>
+						<Widget type="TextBox" skin="TextBox" position="180 210 60 24" name="AH_BaseTerVal">
+							<Property key="TextColour" value="0.2 0.9 1.0"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 240 144 24">
+							<Property key="Caption" value="#{AH_Below}"/>
+							<Property key="TextColour" value="0.2 0.5 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="248 240 320 18" name="AH_Below"/>
+						<Widget type="TextBox" skin="TextBox" position="180 240 60 24" name="AH_BelowVal">
+							<Property key="TextColour" value="0.2 0.5 0.7"/>
+						</Widget>
+
+						<!-- <Widget type="TextBox" skin="TextBox" position="32 270 144 24">
+							<Property key="Caption" value="#{Border}"/>
+							<Property key="TextColour" value="0.4 0.6 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="248 270 320 18" name="AH_Border"/>
+						<Widget type="TextBox" skin="TextBox" position="180 270 60 24" name="AH_BorderVal">
+							<Property key="TextColour" value="0.4 0.6 0.7"/>
+						</Widget> -->
+
+						
+						<!-- Hmap tools -->
+						<Widget type="TextBox" skin="TextBox" position="32 324 150 24">
+							<Property key="Caption" value="#{Advanced} - #{HeightmapSize}"/>
+							<Property key="TextColour" value="0.5 0.7 0.5"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="32 350 128 24" name="TerrainHalf">
+							<Property key="Colour" value="0.2 0.7 0.1"/>
+							<Property key="Alpha" value="0.8"/>
+							<Property key="Caption" value="#{TerrainHalf}"/>
+							<Property key="TextColour" value="0.2 0.7 0.1"/>
+							<UserString key="tip" value="#{TipTerrainHalf}"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="32 390 128 24" name="TerrainDouble">
+							<Property key="Colour" value="0.2 0.7 0.1"/>
+							<Property key="Alpha" value="0.8"/>
+							<Property key="Caption" value="#{TerrainDouble}"/>
+							<Property key="TextColour" value="0.2 0.7 0.1"/>
+							<UserString key="tip" value="#{TipTerrainDouble}"/>
+						</Widget>
+
+						<!-- Move Hmap -->
+						<Widget type="Button" skin="Button" position="232 350 128 24" name="TerrainMove">
+							<Property key="Colour" value="0.2 0.7 0.1"/>
+							<Property key="Alpha" value="0.8"/>
+							<Property key="Caption" value="#{TerrainMove}"/>
+							<Property key="TextColour" value="0.2 0.7 0.1"/>
+							<UserString key="tip" value="#{TipTerrainMove}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="392 354 20 24">
+							<Property key="Caption" value="x"/>
+							<Property key="TextColour" value="0.5 0.8 0.5"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="410 350 50 24" name="TerMoveX">
+							<Property key="Caption" value="0"/>
+							<Property key="Colour" value="0.6 0.9 0.6"/>
+							<Property key="TextColour" value="0.6 0.9 0.6"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="492 354 20 24">
+							<Property key="Caption" value="y"/>
+							<Property key="TextColour" value="0.5 0.8 0.5"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="510 350 50 24" name="TerMoveY">
+							<Property key="Caption" value="0"/>
+							<Property key="Colour" value="0.6 0.9 0.6"/>
+							<Property key="TextColour" value="0.6 0.9 0.6"/>
+						</Widget>
+					
 					</Widget>
 				</Widget>
 			</Widget>
