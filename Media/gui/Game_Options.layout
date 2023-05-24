@@ -898,7 +898,7 @@
 							<Property key="TextColour" value="0.75 0.85 1"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="32 140 176 24">
-							<Property key="Caption" value="#{Distance}-"/>
+							<Property key="Caption" value="#{Distance}"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.7 0.8 0.9"/>
 						</Widget>

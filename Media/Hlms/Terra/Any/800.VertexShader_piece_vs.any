@@ -101,6 +101,7 @@
 	float skirtHeight = uintBitsToFloat( cellData.numVertsPerLine.w );
 	if( isSkirt )
 	{
+		//**  relative skirt height
 		// worldPos.y -= 0.01;  // normalized!-
 		worldPos.y -= 5.0;  //** par  20.0 m  floats
 		// if( worldPos.y <= skirtHeight )

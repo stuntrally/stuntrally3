@@ -1,5 +1,6 @@
 #include "AppGui.h"
 #include "settings.h"
+#include "RenderConst.h"
 #include "GraphicsSystem.h"
 
 #include <OgreRoot.h>
@@ -91,7 +92,7 @@ void AppGui::createPcfShadowNode()
 	spv.push_back( sp );
 
 
-	if (pSet->car_lights)  // or 2 sun planets..
+	if (pSet->car_lights)  // or >1 sun planets..
 	{
 		//  light 2  dir, spot or point
 	#ifdef USE_STATIC_BRANCHING_FOR_SHADOWMAP_LIGHTS
@@ -145,9 +146,12 @@ void AppGui::createPcfShadowNode()
 		0,      // numStableSplits = 0,
 		VisibilityFlags::RESERVED_VISIBILITY_FLAGS,  // visibilityMask
 		1.5f,   // xyPadding = 1.5f,
-		0u,     // firstRq = 0u,
-		255u    // lastRq = 255u
+		RQG_Sky,  //0u,     // firstRq = 0u,
+		RQG_PipeGlass  //255u    // lastRq = 255u
 	);
+	mSceneMgr->setShadowDirectionalLightExtrusionDistance( pSet->shadow_dist );
+	mSceneMgr->setShadowFarDistance( pSet->shadow_dist );
+	// HlmsDatablock::mShadowConstantBias.
 }
 
 //  🆕 create ESM

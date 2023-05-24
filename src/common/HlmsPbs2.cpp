@@ -96,9 +96,12 @@ void HlmsPbsDatablock2::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
 }
 
 
-// todo: Notes
+
+#if 0
 //----------------------------------------------------------------
-/*
+//  todo: Notes
+//----------------------------------------------------------------
+
 const size_t c_geometryShaderMagicValue = 123456;
 
 renderableA->setCustomParameter( c_geometryShaderMagicValue, Vector4( 0.0f ) ); // Use GS Method A
@@ -139,29 +142,72 @@ if( hlms->getType() == HLMS_PBS )
 	myHlmsPbs->calculateHashFor( renderableA, hash, casterHash );
 	renderableA->_setHlmsHashes( hash, casterHash );
 }
-*/
 
 
 //  * * *  todo: try? ..
-// pbs->setOptimizationStrategy( ConstBufferPool::LowerGpuOverhead );
-// Hlms::setPrecisionMode with the following options:
-// PrecisionFull32
+pbs->setOptimizationStrategy( ConstBufferPool::LowerGpuOverhead );
+Hlms::setPrecisionMode with the following options:
+PrecisionFull32
 
-// HlmsTextureManager::dumpMemoryUsage
+HlmsTextureManager::dumpMemoryUsage
 
-//hlmsPbs->setParallaxCorrectedCubemap( mParallaxCorrectedCubemap );
-/*
-@insertpiece( custom_vs_attributes )
-@insertpiece( custom_vs_uniformDeclaration )
-@insertpiece( PassStructDecl )
-@insertpiece( custom_vs_uniformStructDeclaration )
-@insertpiece( custom_vs_posMaterialLoad )
-@insertpiece( custom_vs_preTransform )  //+
-@insertpiece( custom_vs_preExecution )
+hlmsPbs->setParallaxCorrectedCubemap( mParallaxCorrectedCubemap );
 
-@insertpiece( custom_ps_uniformDeclaration )
-@insertpiece( custom_ps_functions )
-@insertpiece( custom_ps_preExecution )
-@insertpiece( custom_ps_posMaterialLoad )
-@piece( custom_ps_preLights )
-*/
+HlmsPbsTerraShadows::preparePassBuffer  +
+
+Overload Hlms::preparePassHash or HlmsListener::preparePassHash to define a custom property that follows an entirely different shader path
+
+
+AtmoSettings atmo;
+
+
+Hlms implementation can be customized:
+2  through HlmsListener. This allows you to have access to the buffer pass to fill extra information; or bind extra buffers to the shader.
+3  Overload HlmsPbs. Useful for overriding only specific parts, or adding new functionality that requires storing extra information in a datablock (e.g. overload HlmsPbsDatablock to add more variables, and then overload HlmsPbs::createDatablockImpl to create these custom datablocks)
+4  Directly modify HlmsPbs, HlmsPbsDatablock and the template.
+
+
+custom_passBuffer 	can add extra info for pass buffer (only useful if the user is using HlmsListener or overloaded HlmsPbs).
+custom_materialBuffer  ..
+custom_VStoPS 	Piece where users can add more interpolants for passing data from the vertex to the pixel shader.
+|
+custom_vs_attributes 	Custom vertex shader attributes in the Vertex Shader (i.e. a special texcoord, etc).
+custom_vs_uniformDeclaration 	Data declaration (textures, texture buffers, uniform buffers) in the Vertex Shader.
+custom_vs_uniformStructDeclaration  ..
+custom_vs_posMaterialLoad  ..
+custom_vs_preTransform  ..
+custom_vs_preExecution 	Executed before Ogre's code from the Vertex Shader.
+custom_vs_posExecution 	Executed after all code from the Vertex Shader has been performed.
+|
+custom_ps_uniformDeclaration 	Same as custom_vs_uniformDeclaration, but for the Pixel Shader
+custom_ps_uniformStructDeclaration  ..
+custom_ps_preExecution 	Executed before Ogre's code from the Pixel Shader.
+custom_ps_posMaterialLoad 	Executed right after loading material data; and before anything else. May not get executed if there is no relevant material data (i.e. doesnt have normals or QTangents for lighting calculation)
+custom_ps_posSampleNormal  ..
+custom_ps_preLights 	Executed right before any light (i.e. to perform your own ambient / global illumination pass). All relevant texture data should be loaded by now.
+custom_ps_posExecution 	Executed after all code from the Pixel Shader has been performed.
+custom_ps_uv_modifier_macros 	PBS specific. Allows you to override the macros defined in Samples/Media/Hlms/Pbs/Any/UvModifierMacros_piece_ps.any so you can apply custom transformations to each UV. e.g. #undef UV_DIFFUSE #define UV_DIFFUSE( x ) ((x) * 2.0)
+custom_ps_functions 	Used to declare functions outside the main body of the shader
+custom_ps_pixelData 	Declare additional data in struct PixelData from Pixel Shader 
+
+
+custom_materialBuffer  +
+custom_ps_uniformStructDeclaration  +
+custom_ps_posSampleNormal  +
+custom_vs_preTransform  +
+
+custom_vs_attributes
+custom_vs_uniformDeclaration
+PassStructDecl
+custom_vs_uniformStructDeclaration +
+custom_vs_posMaterialLoad  +
+custom_vs_preTransform   +
+custom_vs_preExecution
+
+custom_ps_uniformDeclaration
+custom_ps_functions
+custom_ps_preExecution
+custom_ps_posMaterialLoad
+custom_ps_preLights
+
+#endif

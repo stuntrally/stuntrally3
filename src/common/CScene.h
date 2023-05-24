@@ -77,10 +77,7 @@ public:
 	Ogre::SceneNode* mNdFluidsRoot =0;
 	void CreateFluids(), DestroyFluids(), CreateBltFluids();
 
-	FluidsReflect refl;
-
-	// WaterRTT* mWaterRTT;  // todo:
-	// void UpdateWaterRTT(Ogre::Camera* cam);
+	FluidsReflect refl;  // water RTT
 
 
 	//  🛣️ Road
