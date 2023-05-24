@@ -29,6 +29,8 @@ const Ogre::uint8
 
 	RQG_Sky          = 5,
 	RQG_Terrain      = 11,
+	RQG_Horizon1     = 12,  // horiz after terrain to skip most depth
+	RQG_Horizon2     = 13,  // horiz after terrain to skip most depth
 	
 	//RQG_BatchOpaque  = 50,
 	RQG_Road         = RQ_7,

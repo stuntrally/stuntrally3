@@ -159,10 +159,17 @@ void CScene::CreateTerrain1(int n)
 	auto dyn = SCENE_STATIC;
 #endif
 
+	auto rqg = 
+#if 0  // test 1
+		RQG_Terrain
+#else
+		td.iHorizon>=2 ? RQG_Horizon2 :
+		td.iHorizon==1 ? RQG_Horizon1 : RQG_Terrain;
+#endif
 	auto* mTerra = new Terra(
 		app, sc, n,
 		&mgr->_getEntityMemoryManager( dyn ),
-		mgr, RQG_Terrain,
+		mgr, rqg,
 		app->mRoot->getCompositorManager2(),
 		app->mCamera, false );
 	
