@@ -92,7 +92,13 @@ HlmsDatablock* HlmsPbs2::createDatablockImpl(
 
 void HlmsPbsDatablock2::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
 {
-	
+	// .. send paint par
+/*
+	char* orgPtr = dstPtr;
+	Ogre::HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags);
+	dstPtr = orgPtr + Ogre::HlmsPbsDatablock::MaterialSizeInGpu;
+	memcpy( dstPtr, &mCustomParameter, sizeof( mCustomParameter) );
+*/
 }
 
 
@@ -191,23 +197,6 @@ custom_ps_functions 	Used to declare functions outside the main body of the shad
 custom_ps_pixelData 	Declare additional data in struct PixelData from Pixel Shader 
 
 
-custom_materialBuffer  +
-custom_ps_uniformStructDeclaration  +
-custom_ps_posSampleNormal  +
-custom_vs_preTransform  +
-
-custom_vs_attributes
-custom_vs_uniformDeclaration
 PassStructDecl
-custom_vs_uniformStructDeclaration +
-custom_vs_posMaterialLoad  +
-custom_vs_preTransform   +
-custom_vs_preExecution
-
-custom_ps_uniformDeclaration
-custom_ps_functions
-custom_ps_preExecution
-custom_ps_posMaterialLoad
-custom_ps_preLights
 
 #endif

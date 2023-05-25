@@ -14,7 +14,7 @@
     vec4 invTerraBounds;
 	vec4 globalTime;
 	
-	//  extra vehicle paint changing colors
+	//  extra vehicle paint changing colors  // todo: move .. to Pbs custom_passBuffer
 	@property( clear_coat )
 		vec4 paint1;
 		vec4 paint2;

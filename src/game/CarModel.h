@@ -80,7 +80,7 @@ public:
 	//  🎥 mounted cameras
 	float driver_view[3], hood_view[3], ground_view[3];
 
-	//  🔴 brake, front flares
+	//  🔴 brake, front light flares
 	struct FlareSet
 	{
 		std::vector<Ogre::Vector3> pos;

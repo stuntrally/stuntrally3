@@ -150,7 +150,7 @@ namespace Ogre
 
 			//  1 grass
 			*passBufferPtr++ = globalTime;
-			*passBufferPtr++ = 0.f;  // todo grass sphere pos..
+			*passBufferPtr++ = 0.f;  // todo grass sphere pos.. sway params, underwater fog
 			*passBufferPtr++ = 0.f;
 			*passBufferPtr++ = 0.f;
 
