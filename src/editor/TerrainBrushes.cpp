@@ -317,7 +317,8 @@ void CGui::SldUpdBr()
 	svBrPower.UpdF(&app->curBr().power);  svBrShape.UpdI(&app->curBr().shape);
 	svBrFreq.UpdF(&app->curBr().freq);    svBrOct.UpdI(&app->curBr().octaves);
 	svBrOfs.UpdF(&app->curBr().offset);
-	svBrSetH.UpdF(&app->curBr().height);  svBrFilt.UpdF(&app->curBr().filter);
+	// svBrSetH.UpdF(&app->curBr().height);
+	svBrFilt.UpdF(&app->curBr().filter);
 
 	svBrNewLn.UpdI(&app->brSets.v[iBrGui].newLine);
 	svBrRate.UpdI(&app->brSets.v[iBrGui].rate);

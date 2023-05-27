@@ -176,7 +176,7 @@ public:
 
 	//  🖌️ brush pars
 	SV svBrSize, svBrForce,  svBrPower, svBrShape;
-	SV svBrFreq, svBrOct, svBrOfs,  svBrSetH, svBrFilt;
+	SV svBrFreq, svBrOct, svBrOfs,  svBrTerH, svBrFilt;
 	SV svBrNewLn, svBrRate, svBrZoom;
 	void SldUpdBr(), slUpdBr(SV*), slBrNewLine(SV*);
 

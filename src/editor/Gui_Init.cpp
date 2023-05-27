@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "enums.h"
 #include "Def_Str.h"
 #include "Gui_Def.h"
 #include "GuiCom.h"
@@ -210,11 +211,13 @@ void CGui::InitGui()
 					sv->Init("BrShape",	&i, 0,BRS_ALL-1, 1);  sv->DefaultI(BRS_Noise);  Sev(UpdBr);
 	sv= &svBrFreq;	sv->Init("BrFreq",	&f, 0.01f,2.f, 3.f, 3,5);  sv->DefaultF(0.2f);  Sev(UpdBr);
 	sv= &svBrOct;	sv->Init("BrOct",	&i, 1,9, 1.f);  sv->DefaultI(3);  Sev(UpdBr);
-	sv= &svBrOfs;	sv->Init("BrOfs",	&f, -30.f,30.f, 1.f, 2,4);  sv->DefaultF(2.f);  Sev(UpdBr);
-	sv= &svBrSetH;	sv->Init("BrSetH",	&f, -100.f,500.f, 2.f, 2,5);  sv->DefaultF(0.f);  Sev(UpdBr);
+	sv= &svBrOfs;	sv->Init("BrOfs",	&f,-30.f,30.f, 1.f, 2,4);  sv->DefaultF(2.f);  Sev(UpdBr);
+
+	auto& brH = app->br[ED_Height];
+	sv= &svBrTerH;  sv->Init("BrTerH",  &brH.height, -600.f,1500.f,  1.f, 1,3);  sv->DefaultF(20.f);
 	sv= &svBrFilt;	sv->Init("BrFilt",	&f, 0.1f,8.f, 1.5f, 2,4);  sv->DefaultF(2.f);
 	
-	sv= &svBrNewLn; sv->Init("BrNewLn", &i, -2,1, 1.f);  sv->DefaultI(0);  Sev(BrNewLine);
+	sv= &svBrNewLn; sv->Init("BrNewLn", &i,-2,1, 1.f);  sv->DefaultI(0);  Sev(BrNewLine);
 	sv= &svBrRate;  sv->Init("BrRate",	&i, 0,3, 1.f);  sv->DefaultI(0);  Sev(BrNewLine);
 	sv= &svBrZoom;	sv->Init("BrZoom",	&app->brSets.imgSize, 20,80, 1.f);  sv->DefaultI(18);  Sev(BrNewLine);
 	SldUpdBr();
