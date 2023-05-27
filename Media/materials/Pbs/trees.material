@@ -37,10 +37,12 @@ hlms palm2 pbs
 	normal_map  palm2_normal.png
 	//? specular_map palm2_specular.png
 
-	fresnel_coeff 0.4
-	roughness 0.3
-	metalness 0.5
+	diffuse 0.9 0.9 0.9
 	specular 0.2 0.2 0.2
+	fresnel 0
+	fresnel_coeff 0
+	roughness 0.3
+	metalness 0.9
 	workflow specular_ogre
 	
 	alpha_test greater 0.5
@@ -53,12 +55,13 @@ hlms Palm pbs
 	diffuse_map palm.png
 	normal_map  palm_norm.png
 	alpha_test greater 0.31
-	diffuse 0.4 0.4 0.4
-	specular 0.3 0.3 0.3 //21
+	diffuse 0.9 0.9 0.9
+	specular 0.7 0.7 0.7
 
-	fresnel_coeff 0.1
+	fresnel 0
+	fresnel_coeff 0
 	roughness 0.3
-	metalness 0.1
+	metalness 0.8
 }
 
 
@@ -153,7 +156,6 @@ hlms plant_tropical pbs
 
 
 //  cactus
-
 hlms cactus pbs
 {
 	// tree_wind false

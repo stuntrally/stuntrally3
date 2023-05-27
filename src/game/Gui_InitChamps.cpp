@@ -51,7 +51,6 @@ void CGui::InitGuiChamps()
   		gcom->imgTer[i]->setImageTexture("PrvTer");
   		gcom->imgMini[i]->setImageTexture("PrvRoad");
 	}
-	gcom->imgPrv[0]->setVisible(pSet->tracks_view == 0);
 
 	//  track stats text
 	for (i=0; i < gcom->StTrk; ++i)    gcom->stTrk[1][i] = fTxt("2st"+toStr(i));

@@ -7,7 +7,8 @@ hlms base-tree pbs
     //diffuse 0.8 0.8 0.8
 
     diffuse_address_mode mirror
-    fresnel_coeff 0.1
+	fresnel 0
+	fresnel_coeff 0
     roughness 0.5
     metalness 0.1
 }
@@ -22,7 +23,8 @@ hlms base-twig pbs
 
     // cull_mode none
     // two_sided true
-    fresnel_coeff 0.1
+	fresnel 0
+	fresnel_coeff 0
     roughness 0.3
     metalness 0.2
 }

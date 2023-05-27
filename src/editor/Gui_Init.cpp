@@ -384,8 +384,8 @@ void CGui::InitGui()
 	sv= &svTerLAngMax;  sv->Init("TerLAngMax", &f, 0.f,  90.f,  1.f, 1,4);  sv->DefaultF(90.f);  Sev(TerLay);
 	sv= &svTerLAngSm;   sv->Init("TerLAngSm",  &f, 0.f,  90.f,  2.f, 1,4);  sv->DefaultF(20.f);  Sev(TerLay);
 
-	sv= &svTerLHMin;    sv->Init("TerLHMin",   &f,-150.f,150.f, 1.f, 0,2);  sv->DefaultF(-300.f);  Sev(TerLay);
-	sv= &svTerLHMax;    sv->Init("TerLHMax",   &f,-150.f,150.f, 1.f, 0,2);  sv->DefaultF( 300.f);  Sev(TerLay);
+	sv= &svTerLHMin;    sv->Init("TerLHMin",   &f,-500.f,950.f, 1.f, 0,2);  sv->DefaultF(-400.f);  Sev(TerLay);
+	sv= &svTerLHMax;    sv->Init("TerLHMax",   &f,-500.f,950.f, 1.f, 0,2);  sv->DefaultF( 900.f);  Sev(TerLay);
 	sv= &svTerLHSm;     sv->Init("TerLHSm",    &f, 0.f,  100.f, 2.f, 1,4);  sv->DefaultF(20.f);  Sev(TerLay);
 	Btn("TerLmoveL", btnTerLmoveL);  Btn("TerLmoveR", btnTerLmoveR);
 
