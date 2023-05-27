@@ -806,7 +806,7 @@
 							<Property key="Caption" value="#{TerHeight}"/>
 							<Property key="TextColour" value="0.6 0.8 0.6"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="128 354 60 24" name="BrTerHVal">
+						<Widget type="EditBox" skin="EditBox" position="128 354 60 24" name="BrTerHEdit">
 							<Property key="TextColour" value="0.6 0.8 0.6"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="208 357 440 16" name="BrTerH">
