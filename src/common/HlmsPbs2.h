@@ -56,8 +56,8 @@ class HlmsPbsDatablock2 : public Ogre::HlmsPbsDatablock
 public:
 
 	bool paint =0;  // body_paint
-	Ogre::Vector4 paintClr[3];
-	Ogre::Vector4 paintMul;
+	Ogre::Vector4 paintClr[3] = {Ogre::Vector4(0,0.5,1,0), Ogre::Vector4(0,1,0,0), Ogre::Vector4(1,0.5,0,0)};
+	Ogre::Vector4 paintMul = Ogre::Vector4(0.2,0.5,0.7,0);
 	
 	HlmsPbsDatablock2(
 		Ogre::IdString name, HlmsPbs2 *creator,

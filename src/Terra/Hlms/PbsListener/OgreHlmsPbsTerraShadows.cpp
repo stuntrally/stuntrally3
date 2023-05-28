@@ -121,7 +121,7 @@ namespace Ogre
 												   bool casterPass, bool dualParaboloid,
 												   SceneManager *sceneManager ) const
 	{
-		return (!casterPass && mTerra) ? (2 + 1 + 4) * 16u : 0u;
+		return (!casterPass && mTerra) ? (2 + 1 /*+ 4*/) * 16u : 0u;
 		// return (!casterPass && mTerra) ? 32u : 0u;
 	}
 

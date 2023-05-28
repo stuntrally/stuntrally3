@@ -143,7 +143,7 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 				LogO(pDb ? "db2 cast ok" : "db2 cast fail");
 				//  clone,  set car color
 				static int id = 0;  ++id;
-			#if 0  // no clone
+			#if 1  // no clone
 				db = pDb;
 			#else
 				db = static_cast<HlmsPbsDatablock2*>(
