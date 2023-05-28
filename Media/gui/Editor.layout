@@ -610,49 +610,59 @@
 								<Property key="TextColour" value="0.7 0.9 0.9"/>
 								<Property key="Colour" value="0.7 0.9 0.9"/>
 							</Widget>
-							<Widget type="Slider" skin="Slider" position="0 20 110 16" name="BrZoom">
+							<Widget type="Slider" skin="Slider" position="0 20 120 16" name="BrZoom">
 								<Property key="Colour" value="0.7 0.9 0.9"/>
 							</Widget>
 
-							<!-- new line -->
-							<Widget type="ImageBox" skin="ImageBox" position="18 60 20 20">
-								<Property key="ImageTexture" value="track_icons.png"/>
-								<Property key="ImageCoord" value="352 32 32 32"/>
-								<Property key="Alpha" value="0.6"/>
-							</Widget>
-							<Widget type="TextBox" skin="TextBox" position="40 60 98 24">
-								<Property key="Caption" value="#{NewLine}"/>
-								<Property key="TextColour" value="0.5 0.7 0.9"/>
-							</Widget>
-							<Widget type="TextBox" skin="TextBox" position="0 60 16 24" name="BrNewLnVal">
-								<Property key="TextColour" value="0.7 0.8 0.9"/>
-								<Property key="Colour" value="0.7 0.8 0.9"/>
-							</Widget>
-							<Widget type="Slider" skin="Slider" position="0 80 110 16" name="BrNewLn">
-								<Property key="Colour" value="0.7 0.8 0.9"/>
+							<!-- name -->
+							<Widget type="EditBox" skin="EditBox" position="0 50 126 24" name="BrName">
+								<Property key="FontName" value="font.small"/>
+								<Property key="TextColour" value="0.6 0.8 1.0"/>
+								<Property key="Colour" value="0.6 0.8 1.0"/>
 							</Widget>
 
 							<!-- rating -->
-							<Widget type="ImageBox" skin="ImageBox" position="18 110 20 20">
+							<Widget type="ImageBox" skin="ImageBox" position="18 90 20 20">
 								<Property key="ImageTexture" value="track_icons.png"/>
 								<Property key="ImageCoord" value="288 32 32 32"/>
 								<Property key="Alpha" value="0.6"/>
 								<UserString key="tip" value="#{user}: #{rating}"/>
 							</Widget>
-							<Widget type="TextBox" skin="TextBox" position="40 110 98 24">
+							<Widget type="TextBox" skin="TextBox" position="40 90 98 24">
+								<Property key="FontName" value="font.small"/>
 								<Property key="Caption" value="#{rating}"/>
 								<Property key="TextColour" value="0.6 0.8 1.0"/>
 							</Widget>
-							<Widget type="TextBox" skin="TextBox" position="0 110 16 24" name="BrRateVal">
+							<Widget type="TextBox" skin="TextBox" position="0 90 16 24" name="BrRateVal">
 								<Property key="TextColour" value="0.7 0.8 0.9"/>
 								<Property key="Colour" value="0.6 0.8 1.0"/>
 							</Widget>
-							<Widget type="Slider" skin="Slider" position="0 130 110 16" name="BrRate">
+							<Widget type="Slider" skin="Slider" position="0 110 120 16" name="BrRate">
 								<Property key="Colour" value="0.8 0.9 1.0"/>
 							</Widget>
-	
+
+							<!-- new line -->
+							<Widget type="ImageBox" skin="ImageBox" position="18 140 20 20">
+								<Property key="ImageTexture" value="track_icons.png"/>
+								<Property key="ImageCoord" value="352 32 32 32"/>
+								<Property key="Alpha" value="0.6"/>
+							</Widget>
+							<Widget type="TextBox" skin="TextBox" position="40 140 98 24">
+								<Property key="FontName" value="font.small"/>
+								<Property key="Caption" value="#{NewLine}"/>
+								<Property key="TextColour" value="0.5 0.7 0.9"/>
+							</Widget>
+							<Widget type="TextBox" skin="TextBox" position="0 140 16 24" name="BrNewLnVal">
+								<Property key="TextColour" value="0.7 0.8 0.9"/>
+								<Property key="Colour" value="0.7 0.8 0.9"/>
+							</Widget>
+							<Widget type="Slider" skin="Slider" position="0 160 120 16" name="BrNewLn">
+								<Property key="Colour" value="0.7 0.8 0.9"/>
+							</Widget>
+
+
 							<!-- Add Del  manage buttons -->
-							<Widget type="Button" skin="Button" position="0 258 116 24" name="BrushAdd">
+							<Widget type="Button" skin="Button" position="0 258 126 24" name="BrushAdd">
 								<Property key="Caption" value="#{Add}"/>
 								<Property key="Colour" value="0.6 1.0 0.6"/>
 								<Property key="TextColour" value="0.6 1.0 0.6"/>
@@ -664,7 +674,7 @@
 									<Property key="NeedMouse" value="false"/>
 								</Widget>
 							</Widget>
-							<Widget type="Button" skin="Button" position="0 288 116 24" name="BrushDel">
+							<Widget type="Button" skin="Button" position="0 288 126 24" name="BrushDel">
 								<Property key="Caption" value="#{Delete}"/>
 								<Property key="Colour" value="1.0 0.6 0.6"/>
 								<Property key="TextColour" value="1.0 0.6 0.6"/>
@@ -677,7 +687,7 @@
 							</Widget>
 
 							<!-- Load Save -->
-							<Widget type="Button" skin="Button" position="0 332 116 24" name="BrushesSave">
+							<Widget type="Button" skin="Button" position="0 332 126 24" name="BrushesSave">
 								<Property key="Caption" value="#{RplSave}"/>
 								<Property key="Colour" value="0.5 0.7 1.0"/>
 								<Property key="TextColour" value="0.6 0.8 1.0"/>
@@ -689,7 +699,7 @@
 									<Property key="NeedMouse" value="false"/>
 								</Widget>
 							</Widget>
-							<Widget type="Button" skin="Button" position="0 362 116 24" name="BrushesLoad">
+							<Widget type="Button" skin="Button" position="0 362 126 24" name="BrushesLoad">
 								<Property key="Caption" value="#{RplLoad}"/>
 								<Property key="Colour" value="0.8 0.7 1.0"/>
 								<Property key="TextColour" value="0.7 0.7 1.0"/>
@@ -700,7 +710,8 @@
 									<Property key="NeedMouse" value="false"/>
 								</Widget>
 							</Widget>
-							<Widget type="Button" skin="Button" position="0 396 116 24" name="BrushesLoadDef">
+
+							<Widget type="Button" skin="Button" position="0 406 126 24" name="BrushesLoadDef">
 								<Property key="Caption" value="#{RplLoad}: #{Reset}"/>
 								<Property key="Colour" value="0.8 0.3 0.3"/>
 								<Property key="TextColour" value="0.9 0.3 0.3"/>
@@ -713,9 +724,9 @@
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#608060#{InputBrushParams}"/>
 						<Widget type="Button" skin="Button" position="20 20 156 30" name="BrushRandom2">
-							<Property key="Colour" value="0.6 1.0 0.8"/>
+							<Property key="Colour" value="0.6 1.0 1.0"/>
 							<Property key="Caption" value="#{CarClrRandom} #{TerLNoise}"/>
-							<Property key="TextColour" value="0.3 1.0 0.7"/>
+							<Property key="TextColour" value="0.3 1.0 1.0"/>
 						</Widget>
 						<Widget type="Button" skin="Button" position="200 20 156 30" name="BrushRandom">
 							<Property key="Colour" value="0.6 1.0 0.3"/>
@@ -725,46 +736,46 @@
 
 						<Widget type="TextBox" skin="TextBox" position="16 105 128 24">
 							<Property key="Caption" value="#{Brush_Size}"/>
-							<Property key="TextColour" value="0.6 0.9 0.5"/>
+							<Property key="TextColour" value="0.4 0.6 1.0"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="128 105 60 24" name="BrSizeVal">
-							<Property key="TextColour" value="0.4 1.0 0.4"/>
+							<Property key="TextColour" value="0.4 0.6 1.0"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="208 105 440 16" name="BrSize">
-							<Property key="Colour" value="0.4 1.0 0.4"/>
+							<Property key="Colour" value="0.6 0.8 1.0"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="16 130 128 24">
 							<Property key="Caption" value="#{Brush_Force}"/>
-							<Property key="TextColour" value="0.5 1.0 0.8"/>
+							<Property key="TextColour" value="1.0 0.8 0.5"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="128 130 60 24" name="BrForceVal">
-							<Property key="TextColour" value="0.6 1.0 0.8"/>
+							<Property key="TextColour" value="1.0 0.8 0.7"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="208 130 440 16" name="BrForce">
-							<Property key="Colour" value="0.5 1.0 0.8"/>
+							<Property key="Colour" value="1.0 0.8 0.5"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="16 171 128 24">
 							<Property key="Caption" value="#{Brush_Power}"/>
-							<Property key="TextColour" value="0.3 0.9 0.5"/>
+							<Property key="TextColour" value="0.9 0.9 0.3"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="128 171 60 24" name="BrPowerVal">
-							<Property key="TextColour" value="0.4 1.0 0.6"/>
+							<Property key="TextColour" value="1.0 1.0 0.4"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="208 171 440 16" name="BrPower">
-							<Property key="Colour" value="0.3 0.9 0.5"/>
+							<Property key="Colour" value="0.9 0.9 0.3"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="16 196 128 24">
 							<Property key="Caption" value="#{Brush_Shape}"/>
-							<Property key="TextColour" value="0.5 0.9 0.8"/>
+							<Property key="TextColour" value="0.4 0.9 0.4"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="128 196 60 24" name="BrShapeVal">
-							<Property key="TextColour" value="0.5 1.0 0.9"/>
+							<Property key="TextColour" value="0.3 1.0 0.3"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="208 196 440 16" name="BrShape">
-							<Property key="Colour" value="0.5 0.9 0.8"/>
+							<Property key="Colour" value="0.4 0.9 0.4"/>
 						</Widget>
 
 						<!-- noise -->
@@ -781,49 +792,60 @@
 
 						<Widget type="TextBox" skin="TextBox" position="16 262 128 24">
 							<Property key="Caption" value="#{Brush_Octaves}"/>
-							<Property key="TextColour" value="0.5 0.8 0.6"/>
+							<Property key="TextColour" value="0.6 0.9 0.9"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="128 262 60 24" name="BrOctVal">
-							<Property key="TextColour" value="0.6 0.9 0.7"/>
+							<Property key="TextColour" value="0.6 0.9 0.9"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="208 262 440 16" name="BrOct">
-							<Property key="Colour" value="0.5 0.9 0.7"/>
+							<Property key="Colour" value="0.6 0.9 0.9"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="16 287 128 24">
-							<Property key="Caption" value="#{Brush_Offset}"/>
+							<Property key="Caption" value="#{Brush_Offset} X"/>
 							<Property key="TextColour" value="0.5 0.7 0.5"/>
 						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="128 284 60 24" name="BrOfsEdit">
+						<Widget type="EditBox" skin="EditBox" position="128 284 60 24" name="BrOfsXEdit">
 							<Property key="TextColour" value="0.6 0.8 0.6"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="208 287 440 16" name="BrOfs">
+						<Widget type="Slider" skin="Slider" position="208 287 440 16" name="BrOfsX">
 							<Property key="Colour" value="0.5 0.7 0.5"/>
 						</Widget>
 
+						<Widget type="TextBox" skin="TextBox" position="16 317 128 24">
+							<Property key="Caption" value="#{Brush_Offset} Y"/>
+							<Property key="TextColour" value="0.6 0.7 0.5"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="128 314 60 24" name="BrOfsYEdit">
+							<Property key="TextColour" value="0.7 0.8 0.6"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="208 317 440 16" name="BrOfsY">
+							<Property key="Colour" value="0.6 0.7 0.5"/>
+						</Widget>
+
 						<!-- set h -->
-						<Widget type="TextBox" skin="TextBox" position="16 357 128 24">
+						<Widget type="TextBox" skin="TextBox" position="16 367 128 24">
 							<Property key="Caption" value="#{TerHeight}"/>
-							<Property key="TextColour" value="0.6 0.8 0.6"/>
+							<Property key="TextColour" value="0.6 1.0 0.6"/>
 						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="128 354 60 24" name="BrTerHEdit">
-							<Property key="TextColour" value="0.6 0.8 0.6"/>
+						<Widget type="EditBox" skin="EditBox" position="128 364 60 24" name="BrTerHEdit">
+							<Property key="TextColour" value="0.6 1.0 0.6"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="208 357 440 16" name="BrTerH">
-							<Property key="TextColour" value="0.6 0.8 0.6"/>
+						<Widget type="Slider" skin="Slider" position="208 367 440 16" name="BrTerH">
+							<Property key="TextColour" value="0.6 1.0 0.6"/>
 						</Widget>
 
 						<!-- filter -->
-						<Widget type="TextBox" skin="TextBox" position="16 387 128 24">
+						<Widget type="TextBox" skin="TextBox" position="16 397 128 24">
 							<Property key="Caption" value="#{TerFilter}"/>
-							<Property key="TextColour" value="0.5 0.7 0.9"/>
+							<Property key="TextColour" value="0.5 0.7 1.0"/>
 						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="128 384 60 24" name="BrFiltEdit">
-							<Property key="TextColour" value="0.7 0.8 0.9"/>
-							<Property key="Colour" value="0.7 0.8 0.9"/>
+						<Widget type="EditBox" skin="EditBox" position="128 394 60 24" name="BrFiltEdit">
+							<Property key="TextColour" value="0.7 0.8 1.0"/>
+							<Property key="Colour" value="0.7 0.8 1.0"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="208 387 440 16" name="BrFilt">
-							<Property key="Colour" value="0.5 0.7 0.9"/>
+						<Widget type="Slider" skin="Slider" position="208 397 440 16" name="BrFilt">
+							<Property key="Colour" value="0.5 0.7 1.0"/>
 						</Widget>
 					</Widget>
 

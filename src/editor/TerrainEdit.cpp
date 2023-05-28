@@ -1,5 +1,6 @@
-#include "enums.h"
 #include "pch.h"
+#include "dbl.h"
+#include "enums.h"
 #include "RenderConst.h"
 #include "Def_Str.h"
 #include "CScene.h"
@@ -64,7 +65,7 @@ void App::UpdBrushPrv(bool first)
 }
 
 
-//  Fill brush [preview] data
+//  🖌️🖼️  Fill brush  preview image
 //--------------------------------------------------------------------------------------------------------------------------
 void App::updBrushData(uint8* data, int brId, bool all)
 {
@@ -73,8 +74,8 @@ void App::updBrushData(uint8* data, int brId, bool all)
 	const auto& br = all ? brSets.v[brId] : curBr();
 	const int ed = all ? br.edMode : iCurBr;
 	
-	const int   Amin  = all ? 12 : 5;  // alpha cut off  // par
-	const float gamma = all ? 1.f : 2.4f;  // 2.4 srgb fix-
+	const int   Amin  = all ? 32 : 5;  // alpha cut off  // par
+	const float gamma = all ? 0.8f : 2.4f;  //par 2.4 srgb fix-
 
 	const float fB = brClr[ed][0] *255.f,
 				fG = brClr[ed][1] *255.f,
@@ -82,7 +83,8 @@ void App::updBrushData(uint8* data, int brId, bool all)
 
 	const size_t size = all ? BrIcoSize : BrPrvSize;
 	const float s = size * 0.5f, s1 = 1.f/s,
-		fP = br.power, fQ = br.freq*5.f, nof = br.offset;
+		fP = br.power, fQ = br.freq*5.f,
+		ofx = br.offsetX, ofy = br.offsetY;
 	const int oct = br.octaves;  const float PiN = PI_d/oct;
 
 	switch (br.shape)
@@ -93,7 +95,8 @@ void App::updBrushData(uint8* data, int brId, bool all)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
-			float c = d * (1.f - pow( fabs(0.98f*CScene::Noise(x*s1+nof,y*s1+nof, fQ, oct, 0.5f)), fP*d)) * (1.5f-fP*0.1f);
+			float c = d * (1.f - pow( fabs(CScene::Noise(
+				x*s1 +ofx, y*s1 +ofy, fQ, oct, 0.5f)), fP*d)) * (1.3f - fP*0.1f);  // par max
 			c = std::max(0.f, pow(c, gamma));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
@@ -107,7 +110,8 @@ void App::updBrushData(uint8* data, int brId, bool all)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
-			float c = d * pow( fabs(0.98f*CScene::Noise(x*s1+nof,y*s1+nof, fQ, oct, 0.5f)), fP*0.5f) * 0.9f;
+			float c = d * pow( fabs(CScene::Noise(
+				x*s1 +ofx, y*s1 +ofy, fQ, oct, 0.5f)), fP*0.5f) * 0.8f;  // par max
 			c = std::max(0.f, pow(c, gamma));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
@@ -131,11 +135,12 @@ void App::updBrushData(uint8* data, int brId, bool all)
 		for (size_t y = 0; y < size; ++y)
 		for (size_t x = 0; x < size; ++x)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
+			fx = sinf(fx * ofy * Math::HALF_PI);  fy = sinf(fy * ofy * Math::HALF_PI);
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 			float k = GetAngle(fx,fy);  // 0..2Pi
 
     		float c = std::max(0.f, std::min(1.f,
-    			fQ * powf( fabs(d / (-1.f+nof + cosf(PiN) / cosf( fmodf(k, 2*PiN) - PiN ) )),fP) ));
+    			fQ * powf( fabs(d / (-1.f +ofx + cosf(PiN) / cosf( fmodf(k, 2*PiN) - PiN ) )),fP) ));
 			c = std::max(0.f, pow(c, gamma));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
@@ -158,7 +163,7 @@ void App::updBrushData(uint8* data, int brId, bool all)
 	}
 }
 
-//  Fill brush data (shape), after size change
+//  🖌️⛰️  Fill brush  shape data  after size change
 //--------------------------------------------------------------------------------------------------------------------------
 void App::updBrush()
 {
@@ -170,7 +175,8 @@ void App::updBrush()
 
 	int size = (int)curBr().size, a = 0;
 	float s = size * 0.5f, s1 = 1.f/s,
-		fP = curBr().power, fQ = curBr().freq*5.f, ofs = curBr().offset;
+		fP = curBr().power, fQ = curBr().freq*5.f,
+		ofx = curBr().offsetX, ofy = curBr().offsetY;
 	int oct = curBr().octaves;  const float PiN = PI_d/oct;
 
 	switch (curBr().shape)
@@ -181,7 +187,8 @@ void App::updBrush()
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
-			float c = d * (1.0-pow( fabs(CScene::Noise(x*s1+ofs,y*s1+ofs, fQ, oct, 0.5f)), fP*d)) * (1.5f-fP*0.1);
+			float c = d * (1.0-pow( fabs(CScene::Noise(
+				x*s1 +ofx, y*s1 +ofy, fQ, oct, 0.5f)), fP*d)) * (1.5f-fP*0.1);
 			c = std::max(0.f, c);
 			
 			mBrushData[a] = std::min(1.f, c );
@@ -194,7 +201,8 @@ void App::updBrush()
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
-			float c = d * pow( fabs(CScene::Noise(x*s1+ofs,y*s1+ofs, fQ, oct, 0.5f)), fP*0.5f);
+			float c = d * pow( fabs(CScene::Noise(
+				x*s1 +ofx, y*s1 +ofy, fQ, oct, 0.5f)), fP*0.5f);
 
 			mBrushData[a] = std::max(-1.f, std::min(1.f, c ));
 		}	}	break;
@@ -213,11 +221,12 @@ void App::updBrush()
 		for (int y = 0; y < size; ++y) {  a = y * BrushMaxSize;
 		for (int x = 0; x < size; ++x,++a)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
+			fx = sinf(fx * ofy * Math::HALF_PI);  fy = sinf(fy * ofy * Math::HALF_PI);
 			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 			float k = GetAngle(fx,fy);  // 0..2Pi
 
 			float c = std::max(0.f, std::min(1.f,
-				fQ * powf( fabs(d / (-1.f+ofs + cosf(PiN) / cosf( fmodf(k, 2*PiN) - PiN ) )),fP) ));
+				fQ * powf( fabs(d / (-1.f +ofx + cosf(PiN) / cosf( fmodf(k, 2*PiN) - PiN ) )),fP) ));
 			mBrushData[a] = c;
 		}	}	break;
 
@@ -263,7 +272,7 @@ void App::updBrush()
 		for (m = 0; m < mm; ++m)
 			pBrFmask[m] *= fm;
 	}
-	
+
 	UpdBrushPrv();  // upd skip..
 }
 

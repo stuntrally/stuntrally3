@@ -13,7 +13,8 @@ struct BrushSet
 	/*ED_MODE*/int edMode =0;
 	float size = 20.f, intens = 20.f;  // edit
 	/*EBrShape*/int shape = BRS_Sinus;  float power = 1.f;  // funct
-	float freq = 0.2f, offset = 1.f;  int octaves = 3;  // 🌀 noise
+	float freq = 0.2f;  int octaves = 3;  // 🌀 noise
+	float offsetX = 1.f, offsetY = 1.f;
 	float filter = 2.f, height = 10.f;  // special
 	int newLine = 0;  Ogre::String name;  // for gui
 	int rate = 0;
@@ -29,7 +30,7 @@ public:
 	const static Ogre::String csBrShape[BRS_ALL];
 
 	std::vector<BrushSet> v;
-	int perRow = 12, imgSize = 18;  // gui params
+	int perRow = 12, imgSize = 48;  // gui params
 	
 //------------------------------------------
 	template <typename T>

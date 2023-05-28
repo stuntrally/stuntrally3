@@ -205,7 +205,7 @@ void App::KeyTxtTerrain(Real q)
 	if (brN)
 	{	brVal[5]->setCaption(fToStr(curBr().freq,2,4));
 		brVal[6]->setCaption(toStr(curBr().octaves));
-		brVal[7]->setCaption(fToStr(curBr().offset,1,4));
+		brVal[7]->setCaption(fToStr(curBr().offsetX,1,4));
 	}
 
 	bool edH = edMode != ED_Height;
@@ -232,7 +232,8 @@ void App::KeyTxtTerrain(Real q)
 	
 	
 	//  edit  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-	if (mz != 0 && bEdit())
+	if (!bEdit())  return;
+	if (mz != 0)
 	{	if (alt){			curBr().power  *= 1.f - 0.4f*q*mz;  updBrush();  }
 		else if (!shift){	curBr().size   *= 1.f - 0.4f*q*mz;  updBrush();  }
 		else				curBr().intens *= 1.f - 0.4f*q*mz/0.05;
@@ -248,8 +249,11 @@ void App::KeyTxtTerrain(Real q)
 
 	if (isKey(O)){		curBr().freq    *= 1.f - 0.04f*q;  updBrush();  }
 	if (isKey(P)){		curBr().freq    *= 1.f + 0.04f*q;  updBrush();  }
-	if (isKey(9)){		curBr().offset  -= 0.3f*q;		   updBrush();  }
-	if (isKey(0)){		curBr().offset  += 0.3f*q;		   updBrush();  }
+
+	if (isKey(9)){		curBr().offsetX -= 0.3f*q;		   updBrush();  }
+	if (isKey(0)){		curBr().offsetX += 0.3f*q;		   updBrush();  }
+	if (isKey(K)){		curBr().offsetY -= 0.3f*q;		   updBrush();  }
+	if (isKey(L)){		curBr().offsetY += 0.3f*q;		   updBrush();  }
 
 	if (isKey(1)){		curBr().filter  *= 1.f - 0.04f*q;  updBrush();  }
 	if (isKey(2)){		curBr().filter  *= 1.f + 0.04f*q;  updBrush();  }

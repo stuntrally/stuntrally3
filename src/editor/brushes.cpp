@@ -25,7 +25,8 @@ void BrushesIni::SerBrush(bool wr, CONFIGFILE & cf, const std::string s, BrushSe
 {
 	Param(cf,wr, s+"ed",   p.edMode);
 	Param(cf,wr, s+"size", p.size);  Param(cf,wr, s+"int",  p.intens);  Param(cf,wr, s+"pow",  p.power);
-	Param(cf,wr, s+"freq", p.freq);  Param(cf,wr, s+"nofs", p.offset);    Param(cf,wr, s+"oct",  p.octaves);
+	Param(cf,wr, s+"freq", p.freq);  Param(cf,wr, s+"oct",  p.octaves);
+	Param(cf,wr, s+"ofsX", p.offsetX);  Param(cf,wr, s+"ofsY", p.offsetY);
 	Param(cf,wr, s+"shape",p.shape);
 	Param(cf,wr, s+"filt", p.filter);  Param(cf,wr, s+"hset", p.height);
 	Param(cf,wr, s+"newline", p.newLine);  Param(cf,wr, s+"name", p.name);  Param(cf,wr, s+"rate", p.rate);

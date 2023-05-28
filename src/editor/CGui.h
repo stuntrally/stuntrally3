@@ -176,9 +176,10 @@ public:
 
 	//  🖌️ brush pars
 	SV svBrSize, svBrForce,  svBrPower, svBrShape;
-	SV svBrFreq, svBrOct, svBrOfs,  svBrTerH, svBrFilt;
+	SV svBrFreq, svBrOct,  svBrOfsX, svBrOfsY,  svBrTerH, svBrFilt;
 	SV svBrNewLn, svBrRate, svBrZoom;
 	void SldUpdBr(), slUpdBr(SV*), slBrNewLine(SV*);
+	Ed edBrName =0;  void editBrName(Ed);
 
 	int iBrGui =0;  Img imgBrCur =0;  // current []
 	WP panBrushAdj =0;  CK(BrushAdj);  // adjust panel

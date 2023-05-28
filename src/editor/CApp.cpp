@@ -1,3 +1,4 @@
+#include "enums.h"
 #include "pch.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
@@ -25,11 +26,12 @@ App::App()
 {
 	Axes::Init();
 	
-	br[0].size = 16.f;   br[1].size = 24.f;   br[2].size = 16.f;   br[3].size = 16.f;
-	for (int i=0; i<4; ++i)
+	for (int i = ED_Deform; i <= ED_Filter; ++i)
 	{
+		br[i].size = 20.f;
 		br[i].intens = 20.f;  br[i].power = 2.f;
-		br[i].freq = 1.f;  br[i].octaves = 5;  br[i].offset = 0.f;
+		br[i].freq = 1.f;  br[i].octaves = 5;
+		br[i].offsetX = 0.f;  br[i].offsetY = 1.f;
 		br[i].shape = BRS_Sinus;
 		br[i].height = 10.f;  br[i].filter = 2.f;
 	}

@@ -117,14 +117,15 @@ void CGui::UpdBrushesImgs()
 		brImgs.push_back(img);
 		
 		auto sz = br.size, in = br.intens;
-		xt -= sz /13;
+		xt -= min(15.f, sz /13.f);
 		auto str = 
 			gcom->getClrVal( sz / 150.f * 17.f) + fToStr(sz,0,2) + " "+ 
 			gcom->getClrVal( in / 60.f * 17.f) + fToStr(in,0,2);
 		Txt txt = scv->createWidget<TextBox>("TextBox", xt,yt, 60,22, Align::Default, "brT"+st);
 		txt->setCaption(fToStr(br.size,0,2));
 		txt->setCaption(str);
-		txt->setFontHeight(br.size / 16 + sset / 4/*12*/);
+		auto ts = min(43.f, br.size / 16.f + sset / 4/*12*/);
+		txt->setFontHeight(ts);
 		gcom->setOrigPos(txt, "EditorWnd");
 		brTxts.push_back(txt);
 	}
@@ -209,6 +210,14 @@ void CGui::slBrNewLine(SV*)
 	UpdBrushesImgs();
 }
 
+void CGui::editBrName(Ed ed)
+{
+	auto i = iBrGui;
+	auto& v = app->brSets.v;
+	if (i >= 0 && i < v.size())
+		v[i].name = ed->getCaption();
+}
+
 
 //  brush add +
 void CGui::btnBrushAdd(WP)
@@ -279,9 +288,10 @@ void App::SetBrushRandom(int n)
 		(EBrShape)(Math::UnitRandom() * BRS_Noise);
 	curBr().power = Math::RangeRandom(0.2, 6.0);
 	
-	curBr().freq  = pow(Math::RangeRandom(0.01, 1.0), 2.0);
-	curBr().offset = Math::RangeRandom(-30.0, 30.0);
+	curBr().freq  = pow(Math::RangeRandom(0.2, 0.9), 2.0);
 	curBr().octaves = Math::RangeRandom(1, 9);
+	curBr().offsetX = Math::RangeRandom(-20.0, 20.0);
+	curBr().offsetY = Math::RangeRandom(-10.0, 10.0);
 	UpdBr();
 }
 
@@ -296,11 +306,15 @@ void App::SetBrushPreset(int id, bool upd)
 {
 	const BrushSet& st = brSets.v[id];  // copy params
 	if (!shift)  SetEdMode((ED_MODE)st.edMode);
+
 	curBr().size = st.size;  curBr().intens = st.intens;  curBr().shape = st.shape;
-	curBr().power = st.power;  curBr().freq = st.freq;
-	curBr().offset = st.offset;  curBr().octaves = st.octaves;
+	curBr().power = st.power;  curBr().freq = st.freq;  curBr().octaves = st.octaves;
+	curBr().offsetX = st.offsetX;  curBr().offsetY = st.offsetY;
+
 	if (st.filter > 0.f)  curBr().filter = st.filter;
 	if (st.height != -0.01f)  curBr().height = st.height;
+
+	// curBr().name = st.name;
 	curBr().newLine = st.newLine;
 	if (upd)  UpdBr();
 }
@@ -313,13 +327,14 @@ void CGui::slUpdBr(SV*)
 void CGui::SldUpdBr()
 {
 	if (!app)  return;
-	svBrSize.UpdF(&app->curBr().size);    svBrForce.UpdF(&app->curBr().intens);
-	svBrPower.UpdF(&app->curBr().power);  svBrShape.UpdI(&app->curBr().shape);
-	svBrFreq.UpdF(&app->curBr().freq);    svBrOct.UpdI(&app->curBr().octaves);
-	svBrOfs.UpdF(&app->curBr().offset);
+	svBrSize.UpdF(&app->curBr().size);     svBrForce.UpdF(&app->curBr().intens);
+	svBrPower.UpdF(&app->curBr().power);   svBrShape.UpdI(&app->curBr().shape);
+	svBrFreq.UpdF(&app->curBr().freq);     svBrOct.UpdI(&app->curBr().octaves);
+	svBrOfsX.UpdF(&app->curBr().offsetX);  svBrOfsY.UpdF(&app->curBr().offsetY);
 	// svBrSetH.UpdF(&app->curBr().height);
 	svBrFilt.UpdF(&app->curBr().filter);
 
-	svBrNewLn.UpdI(&app->brSets.v[iBrGui].newLine);
+	edBrName->setCaption(app->brSets.v[iBrGui].name);
 	svBrRate.UpdI(&app->brSets.v[iBrGui].rate);
+	svBrNewLn.UpdI(&app->brSets.v[iBrGui].newLine);
 }
