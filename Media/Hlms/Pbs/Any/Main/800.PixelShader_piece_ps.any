@@ -799,17 +799,26 @@
 			@end
 
 	//---- clr3 mix  color changing paints  ***
-			@property( body_paint )
-
-			if (passBuf.paintMul.x > _h( 0.0 ))
+			
+			if (material.userValue[0].w > _h( 0.0 ))  // all black
 			{
 				float nn = abs(pixelData.normal.z);
-				pixelData.diffuse.xyz =  passBuf.paintMul.x * lerp(
-					lerp(passBuf.paint3.xyz, passBuf.paint2.xyz,  nn * passBuf.paintMul.y),
-											 passBuf.paint1.xyz,  pow(nn, passBuf.paintMul.z) );
+				pixelData.diffuse.xyz =  material.userValue[0].w * lerp(
+					lerp(material.userValue[2].xyz,
+						material.userValue[1].xyz,  nn * material.userValue[1].w),
+						material.userValue[0].xyz,  pow(nn, material.userValue[2].w) );
 				pixelData.specular.xyz = pixelData.diffuse.xyz;
 			}
-			@end
+
+			// body_paint
+			// if (passBuf.paintMul.x > _h( 0.0 ))
+			// {
+			// 	float nn = abs(pixelData.normal.z);
+			// 	pixelData.diffuse.xyz =  passBuf.paintMul.x * lerp(
+			// 		lerp(passBuf.paint3.xyz, passBuf.paint2.xyz,  nn * passBuf.paintMul.y),
+			// 								 passBuf.paint1.xyz,  pow(nn, passBuf.paintMul.z) );
+			// 	pixelData.specular.xyz = pixelData.diffuse.xyz;
+			// }
 	//---- clr3 mix  ^^^
 	
 			@insertpiece( DoDirectionalShadowMaps )

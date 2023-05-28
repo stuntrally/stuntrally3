@@ -117,10 +117,25 @@ HlmsDatablock* HlmsPbs2::createDatablockImpl(
 //  💫 upload ConstBuffer
 void HlmsPbsDatablock2::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
 {
+    // float mUserValue[3][4];  // can be used in custom pieces
+	for (int i=0; i < 3; ++i)
+	{
+		mUserValue[i][0] = paintClr[i].x;
+		mUserValue[i][1] = paintClr[i].y;
+		mUserValue[i][2] = paintClr[i].z;
+	}
+	mUserValue[0][3] = paintMul.x;
+	mUserValue[1][3] = paintMul.y;
+	mUserValue[2][3] = paintMul.z;
+
+	LogO("paint db2 upload");
+	HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
+return;
+
 	// .. send paint par
 	char* orgPtr = dstPtr;
-	Ogre::HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
-	dstPtr = orgPtr + Ogre::HlmsPbsDatablock::MaterialSizeInGpu;
+	HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
+	dstPtr = orgPtr + HlmsPbsDatablock::MaterialSizeInGpu;
 	// memcpy( dstPtr, &mCustomParameter, sizeof( mCustomParameter) );
 
 	//  game copy paint params  ----

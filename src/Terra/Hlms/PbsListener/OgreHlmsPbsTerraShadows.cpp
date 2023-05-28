@@ -155,7 +155,7 @@ namespace Ogre
 			*passBufferPtr++ = 0.f;
 
 			//  4 paints
-			for (int i=0; i < 3; ++i)
+			/*for (int i=0; i < 3; ++i)
 			{	*passBufferPtr++ = paint[i].x;
 				*passBufferPtr++ = paint[i].y;
 				*passBufferPtr++ = paint[i].z;
@@ -164,7 +164,7 @@ namespace Ogre
 			*passBufferPtr++ = paintMul.x;
 			*passBufferPtr++ = paintMul.y;
 			*passBufferPtr++ = paintMul.z;
-			*passBufferPtr++ = paintMul.w;
+			*passBufferPtr++ = paintMul.w;*/
 		}
 		return passBufferPtr;
 	}
