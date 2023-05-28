@@ -30,9 +30,11 @@
 #include <OgreSceneNode.h>
 // #include <OgreTechnique.h>
 // #include <OgreViewport.h>
+
 #include <OgreHlmsPbsDatablock.h>
 #include "Terra.h"
 #include "OgreHlmsPbsTerraShadows.h"
+#include "HlmsPbs2.h"
 // #include <MyGUI_TextBox.h>
 using namespace Ogre;
 
@@ -676,29 +678,27 @@ void CarModel::SetPaint()
 	db->setClearCoat( gc.clear_coat );
 	db->setClearCoatRoughness( std::max(0.001f, gc.clear_rough) );
 	
-	db->setFresnel( Vector3::UNIT_SCALE * gc.fresnel, false );
 	// db->setIndexOfRefraction( Vector3::UNIT_SCALE * (3.f-gc.fresnel*3.f), false );
 
 
 	//  color changing 3 paints
-	auto* pars = pApp->scn->mHlmsPbsTerraShadows;  // todo: in db..
-	if (pars)
-	{
-		bool clr3 = gc.type == CP_3Clrs;
-		if (!clr3)
-			pars->paintMul = Vector4::ZERO;
-		else
-		{	pars->paintMul = Vector4(gc.paintMulAll, gc.paintMul2nd, gc.paintPow3rd, 1.f);
+	bool clr3 = gc.type == CP_3Clrs;
+	if (!clr3)
+		db->paintMul = Vector4::ZERO;
+	else
+	{	db->paintMul = Vector4(gc.paintMulAll, gc.paintMul2nd, gc.paintPow3rd, 1.f);
 
-			for (int i=0; i < 3; ++i)
-			{
-				const auto& c = gc.paints[i];
-				ColourValue p;
-				p.setHSB(1.f - c.hue, c.sat, c.val);
-				pars->paint[i] = Vector4(p.r, p.g, p.b, 1.f);
-			}
-	}	}
-	
+		for (int i=0; i < 3; ++i)
+		{
+			const auto& c = gc.paints[i];
+			ColourValue p;
+			p.setHSB(1.f - c.hue, c.sat, c.val);
+			db->paintClr[i] = Vector4(p.r, p.g, p.b, 1.f);
+		}
+	}
+
+	db->setFresnel( Vector3::UNIT_SCALE * gc.fresnel, false );
+
 	// if (pNickTxt)
 	// 	pNickTxt->setTextColour(MyGUI::Colour(color.r, color.g, color.b));
 	

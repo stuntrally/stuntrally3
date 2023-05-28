@@ -11,6 +11,7 @@
 #include "CarModel.h"
 #include "FollowCamera.h"
 // #include "gameclient.hpp"
+#include "HlmsPbs2.h"
 
 #include <OgreColourValue.h>
 #include <OgreItem.h>
@@ -130,16 +131,24 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 		//**  set reflection cube
 		if (pApp->mCubeReflTex)
 		{
-			assert( dynamic_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() ) );
-			HlmsPbsDatablock *pDb =
-				static_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() );
 			if (!body)
+			{
+				assert( dynamic_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() ) );
+				HlmsPbsDatablock* pDb = static_cast<HlmsPbsDatablock *>( item->getSubItem(0)->getDatablock() );
 				pDb->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
-			else
-			{	//  clone,  set car color
+			}else
+			{	//  body_paint db2
+				assert( dynamic_cast<HlmsPbsDatablock2 *>( item->getSubItem(0)->getDatablock() ) );
+				HlmsPbsDatablock2* pDb = dynamic_cast<HlmsPbsDatablock2 *>( item->getSubItem(0)->getDatablock() );
+				LogO(pDb ? "db2 cast ok" : "db2 cast fail");
+				//  clone,  set car color
 				static int id = 0;  ++id;
-				db = static_cast<HlmsPbsDatablock *>(
+			#if 0  // no clone
+				db = pDb;
+			#else
+				db = static_cast<HlmsPbsDatablock2*>(
 					pDb->clone( "CarBody" + sCarI + toStr(id) ) );
+			#endif
 				db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
 				item->getSubItem(0)->setDatablock( db );
 				SetPaint();

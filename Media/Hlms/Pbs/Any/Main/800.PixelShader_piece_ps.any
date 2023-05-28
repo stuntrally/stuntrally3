@@ -799,7 +799,7 @@
 			@end
 
 	//---- clr3 mix  color changing paints  ***
-			@property( clear_coat )
+			@property( body_paint )
 
 			if (passBuf.paintMul.x > _h( 0.0 ))
 			{
@@ -811,7 +811,7 @@
 			}
 			@end
 	//---- clr3 mix  ^^^
-
+	
 			@insertpiece( DoDirectionalShadowMaps )
 
 		@end @property( hlms_use_prepass )

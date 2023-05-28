@@ -70,6 +70,7 @@ hlms SphereTest pbs : car_body
 	diffuse_map  white.png
   	diffuse  0.3 0.3 0.3
 	specular 1 1 1
+	paint yes
 }
 
 hlms car_ghost pbs
@@ -97,6 +98,7 @@ hlms HI_body pbs //: car_body
 	specular	0.05 0.12 0.2
 	roughness 0.25
 	// metalness 0.5
+	paint yes
 }
 
 hlms HI_interior pbs //: car_interior
@@ -148,6 +150,7 @@ hlms S8_carpaint pbs : car_body
 	// metalness_map S8_refl.png
 	// diffuse	  0.0 0.3 0.5
 	specular  0.0 0.2 0.2
+	paint yes
 }
 hlms S8_glass pbs : car_glass
 {
@@ -195,6 +198,7 @@ hlms XZ_body1_material_ pbs
 	fresnel_coeff 1.0 1.0 1.0
 	roughness 0.35
  	// metalness 0.4
+	paint yes
 }
 hlms XZ_glass pbs : car_glass
 {
@@ -241,7 +245,7 @@ hlms LK4_body pbs : car_body
 	specular_map  LK4_refl.png
 	metalness_map LK4_refl.png
 	specular  0.4 0.37 0.23
-	
+	paint yes
 }
 hlms LK4_glass pbs : car_glass2
 {
@@ -271,6 +275,7 @@ hlms HR_body1 pbs : car_body
 	specular_map  HR_body_red.png
 	// metalness_map HR_refl.png
 	specular  0.06 0.17 0.02
+	paint yes
 }
 hlms HR_glass pbs : car_glass2
 {
@@ -296,6 +301,7 @@ hlms OT_body1234 pbs : car_body
 	specular_map  OT_refl.png
 	metalness_map OT_refl.png
 	specular  0.1 0.5 0.1
+	paint yes
 }
 hlms OT_glass pbs : car_glass2
 {
@@ -325,6 +331,7 @@ hlms FR4_body pbs : car_body
 	specular_map  FR4_refl.png
 	metalness_map FR4_refl.png
 	specular  0.3 0.4 0.4
+	paint yes
 }
 hlms FR4_glass pbs : car_glass2
 {
@@ -361,6 +368,7 @@ hlms UV__body pbs : car_body
 	specular_map  UV_body_red.png
 	metalness_map UV_refl.png
 	specular  0.3 0.2 0.5
+	paint yes
 }
 hlms UV_interior pbs : car_interior
 {
@@ -389,6 +397,7 @@ hlms TW_body1 pbs // : car_body
 	// fresnel 3.1
 	roughness 0.4
 	metalness 0.8
+	paint yes
 }
 hlms TW_glass pbs //: car_interior
 {
@@ -437,6 +446,7 @@ hlms TU_body pbs : car_body
 	specular_map  TU_body_red.png
 	metalness_map TU_refl.png
 	specular 0.1 0.12 0.13
+	paint yes
 }
 hlms TU_glass pbs
 {
@@ -485,6 +495,7 @@ hlms SZ_body pbs : car_body
 	specular_map  SZ_refl.png
 	metalness_map SZ_refl.png
 	specular  0.1 0.25 0.4
+	paint yes
 }
 hlms SZ_glass pbs : car_glass2
 {
@@ -517,6 +528,7 @@ hlms FN_body pbs : car_body
 	specular_map  FN_refl.png
 	metalness_map FN_refl.png
 	specular  0.2 0.4 0.0
+	paint yes
 }
 hlms FN_glass pbs : car_glass
 {
@@ -559,6 +571,7 @@ hlms V1_body1234 pbs : car_body
 	specular_map  V1_refl.png
 	metalness_map V1_refl.png
 	specular  0.0 0.1 0.6
+	paint yes
 }
 hlms V1_interior pbs : car_interior
 {
@@ -576,6 +589,7 @@ hlms V2_body pbs : car_body
 	metalness_map V2_refl.png
 	// diffuse	 0.4 0.8 0.6
 	specular 0.1 0.4 0.25
+	paint yes
 }
 hlms V2_interior pbs : car_interior
 {
@@ -597,6 +611,7 @@ hlms V3_body pbs : car_body
 	specular_map  V3_refl.png
 	metalness_map V3_refl.png
 	specular  0.1 0.3 0.6
+	paint yes
 }
 hlms V3_interior pbs : car_interior
 {
@@ -617,6 +632,7 @@ hlms O_body1 pbs : car_body
 {
 	diffuse_map  O_body_red.png
 	diffuse	  0.7 0.4 0.1
+	paint yes
 }
 // test refl
 hlms O_glass1 pbs //: car_glass
@@ -674,6 +690,7 @@ hlms Y7_body pbs //: car_body
 	fresnel_coeff 0.1 0.1 0.1
 	roughness 0.3
 	metalness 0.01
+	paint yes
 }
 hlms Y7_glass pbs : car_glass2
 {
@@ -718,6 +735,7 @@ hlms BV_body pbs : car_body
 	specular  0.6 0.6 0.0
 	roughness 0.5
 	metalness 0.3
+	paint yes
 }
 hlms BV_interior pbs : car_body
 {
@@ -749,6 +767,7 @@ hlms U6_body pbs : car_body
 	specular  0.1 0.4 0.4
 	roughness 0.6
 	metalness 0.6
+	paint yes
 }
 hlms U6_interior pbs : car_interior
 {
@@ -777,6 +796,7 @@ hlms U8_body pbs : car_body
 	cull_mode none
     //two_sided true
 	specular  0.4 0.5 0.6
+	paint yes
 }
 hlms U8_glass pbs : car_glass
 {
@@ -807,6 +827,7 @@ hlms MO_body pbs : car_body
 	diffuse_map  MO_body_red.png
 	cull_mode none
 	diffuse	  0.0 0.4 0.0
+	paint yes
 }
 hlms MO_interior pbs : car_interior
 {
@@ -841,6 +862,7 @@ hlms 3B_body pbs : car_body
 	diffuse	 1 1 1
 	// diffuse  0.8 0.8 0.8
 	specular 0.9 0.9 0.9
+	paint yes
 }
 hlms 3B_interior pbs //: car_body
 {
@@ -882,6 +904,7 @@ hlms BE_body pbs : car_body
 	emissive_map BE_emissive.jpg
 	// diffuse  0.9 0.3 0.0
 	// specular  0.4 0.4 0.4
+	paint yes
 }
 
 hlms BE_body_noclr pbs //: car_interior
@@ -945,6 +968,7 @@ hlms SX_body pbs //: car_body
 	specular  0.25 0.25 0.45
 	roughness 0.6
 	metalness 0.7
+	paint yes
 }
 
 hlms SX_exterior pbs //: car_interior
@@ -1032,6 +1056,7 @@ hlms body_realtime pbs //: car_body
 	// metalness 0.1
 	roughness 0.3
 	metalness 0.8
+	paint yes
 }
 
 hlms ES_interior pbs //: car_interior

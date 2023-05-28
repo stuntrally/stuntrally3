@@ -1,5 +1,9 @@
 #include "Def_Str.h"
 #include "HlmsPbs2.h"
+#include "App.h"
+#include "CScene.h"
+#include "OgreHlmsPbsTerraShadows.h"
+#include <OgreShaderPrimitives.h>
 using namespace Ogre;
 
 
@@ -51,6 +55,11 @@ void HlmsPbs2::calculateHashForPreCreate(
 	if (mtr.substr(0,5) == "grass")
 		setProperty( "grass", 1 );
 
+	if (mtr.find("body") != String::npos)
+	{
+		LogO("body_paint");
+		setProperty( "body_paint", 1 );
+	}
 	// if (mtr.find("road") != std::string::npos)
 	// if (mtr.substr(0,4) == "road")
 	// 	setProperty( "road", 1 );
@@ -74,31 +83,80 @@ void HlmsPbs2::calculateHashForPreCaster(
 
 	if (mtr.substr(0,5) == "grass")
 		setProperty( "grass", 1 );
+
+	if (mtr.find("body") != String::npos)
+	{
+		LogO("body_paint");
+		setProperty( "body_paint", 1 );
+	}
 }
 
 
-//  createDatablockImpl
+//  🆕 create Datablock2
 //----------------------------------------------------------------
-/*
 HlmsDatablock* HlmsPbs2::createDatablockImpl(
-	IdString datablockName,
-	const HlmsMacroblock *macroblock,
-	const HlmsBlendblock *blendblock,
-	const HlmsParamVec &paramVec )
+	IdString name,
+	const HlmsMacroblock *macro,
+	const HlmsBlendblock *blend,
+	const HlmsParamVec &params )
 {
-    return OGRE_NEW HlmsPbsDatablock2( datablockName, this, macroblock, blendblock, paramVec );
-}
-*/
+	String val;
+	if( Hlms::findParamInVec( params, "paint", val ) )
+	{
+		LogO("paint db2 new");
+		// LogO(name.getFriendlyText());  // hash-
+		// for (auto p : params)
+		//	LogO(p.second);
 
+		return OGRE_NEW HlmsPbsDatablock2( name, this, macro, blend, params );
+	}else
+		return OGRE_NEW HlmsPbsDatablock( name, this, macro, blend, params );
+}
+
+
+//  💫 upload ConstBuffer
 void HlmsPbsDatablock2::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
 {
 	// .. send paint par
-/*
 	char* orgPtr = dstPtr;
-	Ogre::HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags);
+	Ogre::HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
 	dstPtr = orgPtr + Ogre::HlmsPbsDatablock::MaterialSizeInGpu;
-	memcpy( dstPtr, &mCustomParameter, sizeof( mCustomParameter) );
-*/
+	// memcpy( dstPtr, &mCustomParameter, sizeof( mCustomParameter) );
+
+	//  game copy paint params  ----
+#ifndef SR_EDITOR
+	if (paint)
+	{
+		LogO("paint db2 upload");
+		size_t si_f4 = sizeof( float4 );
+		
+		for (int i=0; i < 3; ++i)
+		{
+			float4 par4 = paintClr[i];
+			memcpy( dstPtr, &par4, si_f4 );  dstPtr += si_f4;
+		}
+		float4 par4 = paintMul;
+		memcpy( dstPtr, &par4, si_f4 );  dstPtr += si_f4;
+	}
+#endif
+}
+
+//  🌟 ctor
+HlmsPbsDatablock2::HlmsPbsDatablock2(
+	IdString name, HlmsPbs2 *creator,
+	const HlmsMacroblock *macro, const HlmsBlendblock *blend,
+	const HlmsParamVec &params )
+	: HlmsPbsDatablock( name, creator, macro, blend, params )
+{
+	String val;
+	if( Hlms::findParamInVec( params, "paint", val ) )
+	{
+		LogO("paint db2 ctor, paint 1");
+		paint = 1;
+		//Vector3 v = StringConverter::parseVector3( val, Vector3::UNIT_SCALE );
+		// setDiffuse( v );
+		// scheduleConstBufferUpdate();
+	}
 }
 
 

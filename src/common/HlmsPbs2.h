@@ -17,17 +17,8 @@ public:
 	
 	void calculateHashForPreCreate(
 		Ogre::Renderable *renderable, Ogre::PiecesMap *inOutPieces ) override;
-
-	// void calculateHashForPreCaster(
-	// 	 Ogre::Renderable *renderable, Ogre::PiecesMap *inOutPieces ) override;
-/*
-	Ogre::HlmsDatablock *createDatablockImpl(
-		Ogre::IdString datablockName,
-		const Ogre::HlmsMacroblock *macroblock,
-		const Ogre::HlmsBlendblock *blendblock,
-		const Ogre::HlmsParamVec   &paramVec ) override;
-*/
 };
+
 
 //  our Pbs  ----------------
 class HlmsPbs2 : public Ogre::HlmsPbs
@@ -48,25 +39,30 @@ public:
 
 	void calculateHashForPreCaster(
 		 Ogre::Renderable *renderable, Ogre::PiecesMap *inOutPieces ) override;
-/*
+
 	Ogre::HlmsDatablock *createDatablockImpl(
-		Ogre::IdString datablockName,
-		const Ogre::HlmsMacroblock *macroblock,
-		const Ogre::HlmsBlendblock *blendblock,
-		const Ogre::HlmsParamVec   &paramVec ) override;
-*/
+		Ogre::IdString name,
+		const Ogre::HlmsMacroblock *macro,
+		const Ogre::HlmsBlendblock *blend,
+		const Ogre::HlmsParamVec &params ) override;
 };
 
-//  not used - our datablock  ----------------
+
+//  our datablock  ----------------
 class HlmsPbsDatablock2 : public Ogre::HlmsPbsDatablock
 {
 	friend class HlmsPbs2;
 
 public:
+
+	bool paint =0;  // body_paint
+	Ogre::Vector4 paintClr[3];
+	Ogre::Vector4 paintMul;
+	
 	HlmsPbsDatablock2(
 		Ogre::IdString name, HlmsPbs2 *creator,
-		const Ogre::HlmsMacroblock *macroblock,
-		const Ogre::HlmsBlendblock *blendblock,
+		const Ogre::HlmsMacroblock *macro,
+		const Ogre::HlmsBlendblock *blend,
 		const Ogre::HlmsParamVec &params );
 
     //  what we send to the GPU (to send more)

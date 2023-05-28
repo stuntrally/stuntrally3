@@ -626,8 +626,6 @@ void GraphicsSystem::registerHlms()
 		rootDir += "/";
 
 	//  At this point rootHlmsFolder should be a valid path to the Hlms data folder
-	HlmsUnlit2 *hlmsUnlit2 = 0;  // our
-	HlmsPbs2 *hlmsPbs2 = 0;
 
 	//  For retrieval of the paths to the different folders needed
 	String mainPath;  StringVector paths;

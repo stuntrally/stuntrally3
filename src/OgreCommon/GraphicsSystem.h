@@ -17,6 +17,10 @@
 namespace Ogre  {  class HlmsTerra;  }
 class SdlInputHandler;
 
+// class App;
+class HlmsUnlit2;  // our
+class HlmsPbs2;
+
 
 class GraphicsSystem : public BaseSystem, public Ogre::UniformScalableTask
 {
@@ -113,6 +117,10 @@ public:
 		Ogre::String pluginsPath = Ogre::String("./"),
 		Ogre::ColourValue backClr = Ogre::ColourValue( 0.15,0.165,0.18 ) );  // ignored, in .compositor
 	~GraphicsSystem() override;
+
+	// App* app =0;
+	HlmsUnlit2 *hlmsUnlit2 = 0;  // our
+	HlmsPbs2 *hlmsPbs2 = 0;
 
 	void _notifyLogicSystem( BaseSystem *logicSystem )      { mLogicSystem = logicSystem; }
 
