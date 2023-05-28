@@ -73,6 +73,7 @@ bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8
 		Clear(b,g,r,a);
 		return false;
 	}
+	LogO("PreviewTex: "+sName+" load: "+path);
 
 	if (curPath == path && !force)  // check if same
 		return false;

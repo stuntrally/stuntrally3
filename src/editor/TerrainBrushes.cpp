@@ -305,7 +305,7 @@ void App::UpdBr()
 void App::SetBrushPreset(int id, bool upd)
 {
 	const BrushSet& st = brSets.v[id];  // copy params
-	if (!shift)  SetEdMode((ED_MODE)st.edMode);
+	if (!ctrl)  SetEdMode((ED_MODE)st.edMode);
 
 	curBr().size = st.size;  curBr().intens = st.intens;  curBr().shape = st.shape;
 	curBr().power = st.power;  curBr().freq = st.freq;  curBr().octaves = st.octaves;

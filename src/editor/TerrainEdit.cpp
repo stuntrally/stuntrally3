@@ -18,6 +18,7 @@
 #include <OgreHlmsPbsPrerequisites.h>
 #include <MyGUI.h>
 using namespace Ogre;
+using namespace std;
 
 
 //  color factors for edit mode D,S,E,F
@@ -75,7 +76,8 @@ void App::updBrushData(uint8* data, int brId, bool all)
 	const int ed = all ? br.edMode : iCurBr;
 	
 	const int   Amin  = all ? 32 : 5;  // alpha cut off  // par
-	const float gamma = all ? 0.8f : 2.4f;  //par 2.4 srgb fix-
+	const float gamma = all ? 1.f : 2.1f;  //par srgb fix-
+	constexpr float Bri = 1.4f;  //par bright
 
 	const float fB = brClr[ed][0] *255.f,
 				fG = brClr[ed][1] *255.f,
@@ -93,14 +95,13 @@ void App::updBrushData(uint8* data, int brId, bool all)
 		for (size_t y = 0; y < size; ++y)
 		for (size_t x = 0; x < size; ++x)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
-			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
+			float d = max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
 			float c = d * (1.f - pow( fabs(CScene::Noise(
-				x*s1 +ofx, y*s1 +ofy, fQ, oct, 0.5f)), fP*d)) * (1.3f - fP*0.1f);  // par max
-			c = std::max(0.f, pow(c, gamma));
+				x*s1 +ofx, y*s1 +ofy, fQ, oct, 0.5f)), fP*d)) * (1.3f * Bri - fP*0.1f);  // par max
+			c = max(0.f, pow(c, gamma));
 			
-			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
-			// *p++ = bR;  *p++ = bG;  *p++ = bB;  *p++ = bG > 32 ? 255 : 0;
+			uint8 bR = min(255.f, max(0.f, c-1.f) * fG), bG = min(255.f, c * fG), bB = c * fB;
 			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > Amin ? 255 : 0;
 		}	break;
 
@@ -108,13 +109,13 @@ void App::updBrushData(uint8* data, int brId, bool all)
 		for (size_t y = 0; y < size; ++y)
 		for (size_t x = 0; x < size; ++x)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
-			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
+			float d = max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
 			float c = d * pow( fabs(CScene::Noise(
-				x*s1 +ofx, y*s1 +ofy, fQ, oct, 0.5f)), fP*0.5f) * 0.8f;  // par max
-			c = std::max(0.f, pow(c, gamma));
+				x*s1 +ofx, y*s1 +ofy, fQ, oct, 0.5f)), fP*0.5f) * 0.8f * Bri;  // par max
+			c = max(0.f, pow(c, gamma));
 			
-			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
+			uint8 bR = min(255.f, max(0.f, c-1.f) * fG), bG = min(255.f, c * fG), bB = c * fB;
 			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > Amin ? 255 : 0;
 		}	break;
 
@@ -122,10 +123,10 @@ void App::updBrushData(uint8* data, int brId, bool all)
 		for (size_t y = 0; y < size; ++y)
 		for (size_t x = 0; x < size; ++x)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
-			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
+			float d = max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
 			float c = powf( sinf(d * PI_d*0.5f), fP);
-			c = std::max(0.f, pow(c, gamma));
+			c = max(0.f, pow(c, gamma));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
 			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > Amin ? 255 : 0;
@@ -136,12 +137,12 @@ void App::updBrushData(uint8* data, int brId, bool all)
 		for (size_t x = 0; x < size; ++x)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
 			fx = sinf(fx * ofy * Math::HALF_PI);  fy = sinf(fy * ofy * Math::HALF_PI);
-			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
+			float d = max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 			float k = GetAngle(fx,fy);  // 0..2Pi
 
-    		float c = std::max(0.f, std::min(1.f,
+    		float c = max(0.f, min(1.f,
     			fQ * powf( fabs(d / (-1.f +ofx + cosf(PiN) / cosf( fmodf(k, 2*PiN) - PiN ) )),fP) ));
-			c = std::max(0.f, pow(c, gamma));
+			c = max(0.f, pow(c, gamma));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
 			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > Amin ? 255 : 0;
@@ -151,10 +152,10 @@ void App::updBrushData(uint8* data, int brId, bool all)
 		for (size_t y = 0; y < size; ++y)
 		for (size_t x = 0; x < size; ++x)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
-			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
+			float d = max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
 			float c = powf( fabs(d), fP);
-			c = std::max(0.f, pow(c, gamma));
+			c = max(0.f, pow(c, gamma));
 			
 			uint8 bR = c * fR, bG = c * fG, bB = c * fB;
 			*p++ = bB;  *p++ = bG;  *p++ = bR;  *p++ = bG > Amin ? 255 : 0;
@@ -185,13 +186,13 @@ void App::updBrush()
 		for (int y = 0; y < size; ++y) {  a = y * BrushMaxSize;
 		for (int x = 0; x < size; ++x,++a)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
-			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
+			float d = max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
 			float c = d * (1.0-pow( fabs(CScene::Noise(
 				x*s1 +ofx, y*s1 +ofy, fQ, oct, 0.5f)), fP*d)) * (1.5f-fP*0.1);
-			c = std::max(0.f, c);
+			c = max(0.f, c);
 			
-			mBrushData[a] = std::min(1.f, c );
+			mBrushData[a] = min(1.f, c );
 		}	}	break;
 
 
@@ -199,19 +200,19 @@ void App::updBrush()
 		for (int y = 0; y < size; ++y) {  a = y * BrushMaxSize;
 		for (int x = 0; x < size; ++x,++a)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
-			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
+			float d = max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 
 			float c = d * pow( fabs(CScene::Noise(
 				x*s1 +ofx, y*s1 +ofy, fQ, oct, 0.5f)), fP*0.5f);
 
-			mBrushData[a] = std::max(-1.f, std::min(1.f, c ));
+			mBrushData[a] = max(-1.f, min(1.f, c ));
 		}	}	break;
 
 	case BRS_Sinus:
 		for (int y = 0; y < size; ++y) {  a = y * BrushMaxSize;
 		for (int x = 0; x < size; ++x,++a)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
-			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
+			float d = max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 			
 			float c = powf( sinf(d * PI_d*0.5f), fP);
 			mBrushData[a] = c;
@@ -222,10 +223,10 @@ void App::updBrush()
 		for (int x = 0; x < size; ++x,++a)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
 			fx = sinf(fx * ofy * Math::HALF_PI);  fy = sinf(fy * ofy * Math::HALF_PI);
-			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
+			float d = max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 			float k = GetAngle(fx,fy);  // 0..2Pi
 
-			float c = std::max(0.f, std::min(1.f,
+			float c = max(0.f, min(1.f,
 				fQ * powf( fabs(d / (-1.f +ofx + cosf(PiN) / cosf( fmodf(k, 2*PiN) - PiN ) )),fP) ));
 			mBrushData[a] = c;
 		}	}	break;
@@ -234,7 +235,7 @@ void App::updBrush()
 		for (int y = 0; y < size; ++y) {  a = y * BrushMaxSize;
 		for (int x = 0; x < size; ++x,++a)
 		{	float fx = ((float)x - s)*s1, fy = ((float)y - s)*s1;  // -1..1
-			float d = std::max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
+			float d = max(0.f, 1.f - float(sqrt(fx*fx + fy*fy)));  // 0..1
 			
 			float c = powf( fabs(d), fP);
 			mBrushData[a] = c;
@@ -245,7 +246,7 @@ void App::updBrush()
 	//  filter brush kernel  ------
 	auto& mBrFilt = br[ED_Filter].filter;
 	if (mBrFilt != mBrFiltOld)
-	{	mBrFilt = std::max(0.f, std::min(8.f, mBrFilt));
+	{	mBrFilt = max(0.f, min(8.f, mBrFilt));
 		mBrFiltOld = mBrFilt;
 	
 		delete[] pBrFmask;  pBrFmask = 0;
@@ -264,7 +265,7 @@ void App::updBrush()
 			for (i = -f; i <= f; ++i, ++m)
 			{
 				float fi = float(i)/f;
-				float u = std::max(0.f, fd - sqrtf(fi*fi+fj*fj) );
+				float u = max(0.f, fd - sqrtf(fi*fi+fj*fj) );
 				pBrFmask[m] = u;  fm += u;
 			}
 		}
@@ -281,7 +282,7 @@ void App::updBrush()
 ///--------------------------------------------------------------------------------------------------------------------------
 void CGui::btnTerGenerate(WP wp)
 {
-	const std::string& n = wp->getName();
+	const string& n = wp->getName();
 	bool add = false, sub = false;
 	if (n == "TerrainGenAdd")  add = true;  else
 	if (n == "TerrainGenSub")  sub = true;/*else
@@ -325,9 +326,9 @@ void CGui::btnTerGenerate(WP wp)
 			int mx = ( fx+1.f)*0.5f*r, my = (-fy+1.f)*0.5f*r;
 			
 			float cr = 0.f;//; imgRoad.getColourAt(
-				// std::max(0,std::min(r-1, mx)), std::max(0,std::min(r-1, my)), 0).r;
+				// max(0,min(r-1, mx)), max(0,min(r-1, my)), 0).r;
 
-			//c = c + std::max(0.f, std::min(1.f, 2*c-cr)) * pow(cr, rdPow);
+			//c = c + max(0.f, min(1.f, 2*c-cr)) * pow(cr, rdPow);
 			c *= pow(cr, rdPow);
 		}*/
 		// fixme: ter gen ang pars
@@ -407,7 +408,7 @@ bool App::GetEditRect(Vector3& pos, Rect& rcBrush, Rect& rcMap, int size,  int& 
 
 	//  world float to map int
 	int mapX = (pos.x + 0.5*tws)/tws*t, mapY = (pos.z + 0.5*tws)/tws*t;
-	mapX = std::max(0,std::min(t-1, mapX)), mapY = std::max(0,std::min(t-1, mapY));
+	mapX = max(0,min(t-1, mapX)), mapY = max(0,min(t-1, mapY));
 
 	int brS = (int)curBr().size;
 	float hBr = brS * 0.5f;
@@ -472,7 +473,7 @@ void App::Deform(Vector3 &pos, float dtime, float brMul)
 	{
 		mapPos = j * size + rcMap.left;
 		brPos = jj * BrushMaxSize + cx;
-		//brPos = std::max(0, std::min(BrushMaxSize*BrushMaxSize-1, brPos ));
+		//brPos = max(0, min(BrushMaxSize*BrushMaxSize-1, brPos ));
 
 		for (int i = rcMap.left; i < rcMap.right; ++i)
 		{
@@ -575,7 +576,7 @@ void App::SmoothTer(Vector3 &pos, float avg, float dtime)
 		for (int i = rcMap.left; i < rcMap.right; ++i)
 		{
 			float val = avg - fHmap[mapPos];
-			val = val * std::min(mBrushData[(int)brushPos] * mFactor, 1.0f);
+			val = val * min(mBrushData[(int)brushPos] * mFactor, 1.0f);
 			fHmap[mapPos] += val;
 			++mapPos;
 			brushPos += mRatio;
@@ -597,7 +598,7 @@ void App::Filter(Vector3 &pos, float dtime, float brMul)
 	
 	auto& fHmap = scn->ter->getHeightData();
 	
-	float its = curBr().intens * dtime * std::min(1.f,brMul);  //mul >1 errors
+	float its = curBr().intens * dtime * min(1.f,brMul);  //mul >1 errors
 	int mapPos, brPos, jj = cy,
 		ter = size, ter2 = ter*ter, ter1 = ter+1;
 
