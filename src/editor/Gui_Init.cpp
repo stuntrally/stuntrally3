@@ -199,7 +199,7 @@ void CGui::InitGui()
 	app->prvBrushes.Load(usrPrv,1);  // fixme.. doesnt show
 
 	btnBrushesLoad(0);
-	// GuiShortcut(WND_Edit, TAB_Terrain,2);  //test-
+	// GuiShortcut(WND_Edit, TAB_Terrain,2);  // test, shows
 
 	//  🖌️ brush params
 	sv= &svBrSize;	sv->Init("BrSize",	&f, 2.f,BrushMaxSize, 2.f, 1,4);  sv->DefaultF(20.f);  //Sev(UpdBr);
@@ -219,9 +219,9 @@ void CGui::InitGui()
 	sv= &svBrFilt;	sv->Init("BrFilt",	&f, 0.1f,8.f, 1.5f, 2,4);  sv->DefaultF(2.f);
 	
 	//  brush list par
-	sv= &svBrZoom;	sv->Init("BrZoom",	&app->brSets.imgSize, 20,80, 1.f);  sv->DefaultI(18);  Sev(BrNewLine);
+	sv= &svBrZoom;	sv->Init("BrZoom",	&app->brSets.imgSize, 15,90, 1.f);  sv->DefaultI(48);  Sev(BrNewLine);
 	Edt(edBrName, "BrName", editBrName);
-	sv= &svBrRate;  sv->Init("BrRate",	&i, 0,3, 1.f);  sv->DefaultI(0);  Sev(BrNewLine);
+	sv= &svBrRate;  sv->Init("BrRate",	&i,-2,4, 1.f);  sv->DefaultI(0);  Sev(BrNewLine);
 	sv= &svBrNewLn; sv->Init("BrNewLn", &i,-2,1, 1.f);  sv->DefaultI(0);  Sev(BrNewLine);
 	SldUpdBr();
 

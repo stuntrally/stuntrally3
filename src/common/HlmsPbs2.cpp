@@ -57,7 +57,7 @@ void HlmsPbs2::calculateHashForPreCreate(
 
 	if (mtr.find("body") != String::npos)
 	{
-		LogO("body_paint");
+		// LogO("body_paint");
 		setProperty( "body_paint", 1 );
 	}
 	// if (mtr.find("road") != std::string::npos)
@@ -86,7 +86,7 @@ void HlmsPbs2::calculateHashForPreCaster(
 
 	if (mtr.find("body") != String::npos)
 	{
-		LogO("body_paint");
+		// LogO("body_paint");
 		setProperty( "body_paint", 1 );
 	}
 }
@@ -103,7 +103,7 @@ HlmsDatablock* HlmsPbs2::createDatablockImpl(
 	String val;
 	if( Hlms::findParamInVec( params, "paint", val ) )
 	{
-		LogO("paint db2 new");
+		// LogO("paint db2 new");
 		// LogO(name.getFriendlyText());  // hash-
 		// for (auto p : params)
 		//	LogO(p.second);
@@ -128,7 +128,7 @@ void HlmsPbsDatablock2::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
 	mUserValue[1][3] = paintMul.y;
 	mUserValue[2][3] = paintMul.z;
 
-	LogO("paint db2 upload");
+	// LogO("paint db2 upload");
 	HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
 return;
 
@@ -142,7 +142,7 @@ return;
 #ifndef SR_EDITOR
 	if (paint)
 	{
-		LogO("paint db2 upload");
+		// LogO("paint db2 upload");
 		size_t si_f4 = sizeof( float4 );
 		
 		for (int i=0; i < 3; ++i)
@@ -166,7 +166,7 @@ HlmsPbsDatablock2::HlmsPbsDatablock2(
 	String val;
 	if( Hlms::findParamInVec( params, "paint", val ) )
 	{
-		LogO("paint db2 ctor, paint 1");
+		// LogO("paint db2 ctor, paint 1");
 		paint = 1;
 		//Vector3 v = StringConverter::parseVector3( val, Vector3::UNIT_SCALE );
 		// setDiffuse( v );

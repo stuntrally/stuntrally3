@@ -8,6 +8,7 @@
 #include "settings.h"
 
 #include <OgreTimer.h>
+#include <OgreColourValue.h>
 #include <OgreResourceGroupManager.h>
 #include <OgreStagingTexture.h>
 #include <MyGUI_ComboBox.h>
@@ -81,7 +82,7 @@ void CGui::UpdBrushesImgs()
 		mGui->destroyWidget(txt);
 	brTxts.clear();
 
-	//  create  --------
+	//  create  ----------------
 	const auto& brs = app->brSets;
 	const int uv = App::BrIcoSize, all = brs.v.size();
 	const int sset = app->brSets.imgSize;
@@ -90,22 +91,38 @@ void CGui::UpdBrushesImgs()
 	for (int i=0; i < all; ++i)
 	{
 		const auto& br = brs.v[i];
+		const auto st = toStr(i);
 		int xi,yi, xt,yt, si;
 
-		si = sset + br.rate * 10;  // img size
+		auto r = br.rate;
+		si = sset + r * 10;  // img size
 		if (si > ss)  ss = si;
+		auto ts = min(22.f, br.size / 20.f + sset / 4/*12*/);  // txt size
 
-		if (br.newLine==1 && xx > 0 || xx >= brs.perRow * 45)  //-
+		if (br.newLine == 1 && xx > 0 || xx >= brs.perRow * 45)  //-
 		{	xx = 0;  yy += ss + 10;  ss = 0;  }  // par 1 new line
 	
-		xi = xx;  yi = yy;
+		//  title ^ group  ----
+		if (br.newLine == 1 || i == 0)
+		{
+			xt = xx + 5;  yt = yy + 0;
+			auto tt = sset *3/8 + r * 5;
+			Txt txt = scv->createWidget<TextBox>("TextBox", xt,yt, 260,22, Align::Default, "brTt"+st);
+			txt->setFontName("font.big");  txt->setFontHeight(tt);  txt->setTextShadow(1);
+			txt->setCaption(br.name);
+			ColourValue c;  c.setHSB(0.25f + r*0.08f, 0.5f + r*0.08f, 1.f);
+			txt->setTextColour(Colour(c.r, c.g, c.b));
+			gcom->setOrigPos(txt, "EditorWnd");
+			brTxts.push_back(txt);
+			yy += tt - 11;
+		}
+		xi = xx;  yi = yy - r * 5;
 		xt = xi + 15;  yt = yi + si + 0;
 		xx += si + 5;
-		
 		if (br.newLine < 0)
 			xx -= br.newLine * 60;  // -1 empty x
 
-		const auto st = toStr(i);
+		//  img []  prv  ----
 		Img img = scv->createWidget<ImageBox>("ImageBox", xi,yi, si,si, Align::Default, "brI"+st);
 		img->eventMouseButtonClick += newDelegate(this, &CGui::btnBrushPreset);
 		img->setUserString("tip", br.name);  img->setNeedToolTip(true);
@@ -121,10 +138,9 @@ void CGui::UpdBrushesImgs()
 		auto str = 
 			gcom->getClrVal( sz / 150.f * 17.f) + fToStr(sz,0,2) + " "+ 
 			gcom->getClrVal( in / 60.f * 17.f) + fToStr(in,0,2);
+		//  txt --  size, force  ----
 		Txt txt = scv->createWidget<TextBox>("TextBox", xt,yt, 60,22, Align::Default, "brT"+st);
-		txt->setCaption(fToStr(br.size,0,2));
 		txt->setCaption(str);
-		auto ts = min(43.f, br.size / 16.f + sset / 4/*12*/);
 		txt->setFontHeight(ts);
 		gcom->setOrigPos(txt, "EditorWnd");
 		brTxts.push_back(txt);
