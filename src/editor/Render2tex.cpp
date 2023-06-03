@@ -42,7 +42,7 @@ void App::CreateRnd2Tex()
 	auto* mgr = mRoot->getCompositorManager2();
 
 	scn->sc->tds[0].UpdVals();
-	Real tws = scn->sc->tds[0].fTerWorldSize * 0.5f;  // world dim  // 1st ter
+	Real tws = scn->sc->tds[0].fTerWorldSize;  // world dim  // 1st ter
 
 	for (int i=0; i < RT_ALL; ++i)
 	{
@@ -89,7 +89,7 @@ void App::CreateRnd2Tex()
 					Quaternion(Degree(180), Vector3(1,0,0)) * Quaternion(0.5,-0.5,0.5,0.5) :  // bottom
 					Quaternion(0.5,-0.5,0.5,0.5));  // top view
 				r.cam->setNearClipDistance(0.5);
-				// r.cam->setFarClipDistance(50000);  // r.cam->setUseRenderingDistance(true);
+				r.cam->setFarClipDistance(50000);  // r.cam->setUseRenderingDistance(true);
 				r.cam->setAspectRatio(1.0);
 				if (!full)  // ortho proj
 				{	r.cam->setProjectionType(PT_ORTHOGRAPHIC);

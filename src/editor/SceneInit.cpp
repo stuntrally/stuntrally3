@@ -243,8 +243,6 @@ void App::LoadTrackEv()
 	scn->CreateEmitters();  // 🔥
 
 
-	CreateRnd2Tex();  // 🖼️
-
 	//  💧 Fluids
 	scn->CreateFluids();
 #if 0  // todo: water ...
@@ -264,6 +262,9 @@ void App::LoadTrackEv()
 	//  ⛰️ Terrain
 	scn->CreateTerrains(1);
 	scn->TerNext(0);
+
+
+	CreateRnd2Tex();  // 🖼️ RTTs after ter, size
 
 
 	//  🛣️ Road ~
