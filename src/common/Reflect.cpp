@@ -58,12 +58,14 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 	// auto s = passDef->mProfilingId;
 	// LogO("ws pass: "+s);  //toStr(pass->getParentNode()->getId() ));
 
-// #define OFF_FOG  // todo: broken
+#define OFF_FOG  //
 
 #if defined(SR_EDITOR) && defined(OFF_FOG)
 	bool rtt = id >= 11100 && id < 11103;  // road, ter
 	if (rtt)
-		app->scn->UpdFog(0, 1);  //- off fog in RTTs
+	{	app->scn->UpdFog(0, 1);  //- off fog in RTTs
+		app->scn->UpdSun();
+	}
 #endif
 	//  Ignore shadows
 	if (passDef->mShadowNodeRecalculation == SHADOW_NODE_CASTER_PASS)
@@ -73,7 +75,8 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 	if (id != 22201 && id != 11103)  // main or prv cam
 		return;
 #if defined(SR_EDITOR) && defined(OFF_FOG)
-	// app->scn->UpdFog(0, 0);  //- on fog back  main or prv cam
+	app->scn->UpdFog(0, 0);  //- on fog back  main or prv cam
+	app->scn->UpdSun();
 #endif
 	
 	CompositorPassScene *passScene = static_cast<CompositorPassScene *>( pass );

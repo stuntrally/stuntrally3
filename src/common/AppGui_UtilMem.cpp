@@ -132,9 +132,9 @@ void AppGui::unloadUnusedTextures()
 			++itListener;
 		}
 		String name = entry.texture->getNameStr();
-		if( name == "DynamicCubemap" ||
-			name == "PrvBrushes" ||
-			StringUtil::endsWith(name, "_TrueTypeFont", false)  // Gui font
+		if( name == "DynamicCubemap"
+			|| name == "PrvBrushes"
+			|| StringUtil::endsWith(name, "_TrueTypeFont", false)  // Gui font
 			|| entry.texture->getTextureType() != TextureTypes::Type2D //
 			|| !entry.texture->hasAutomaticBatching()  //
 			|| !entry.texture->isTexture()

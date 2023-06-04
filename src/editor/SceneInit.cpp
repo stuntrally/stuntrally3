@@ -245,10 +245,8 @@ void App::LoadTrackEv()
 
 	//  💧 Fluids
 	scn->CreateFluids();
-#if 0  // todo: water ...
 	scn->refl.CreateRTT();
-	AddListenerRnd2Tex();
-
+#if 0  // todo: water ...
 	scn->refl.CreateFluids();
 #endif
 
@@ -265,6 +263,7 @@ void App::LoadTrackEv()
 
 
 	CreateRnd2Tex();  // 🖼️ RTTs after ter, size
+	AddListenerRnd2Tex();
 
 
 	//  🛣️ Road ~
