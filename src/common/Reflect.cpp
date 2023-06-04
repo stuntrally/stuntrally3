@@ -72,10 +72,11 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 		return;
 
 	//  Ignore passes not tagged to receive reflections
-	if (id != 22201 && id != 11103)  // main or prv cam
+	bool prvCam = id == 11103;
+	if (id != 22201 && !prvCam)  // main or prv cam
 		return;
 #if defined(SR_EDITOR) && defined(OFF_FOG)
-	app->scn->UpdFog(0, 0);  //- on fog back  main or prv cam
+	app->scn->UpdFog(prvCam, 0);  //- on fog back  main or prv cam
 	app->scn->UpdSun();
 #endif
 	
