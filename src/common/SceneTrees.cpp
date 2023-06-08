@@ -155,8 +155,8 @@ void CScene::CreateTrees()
 			{
 				#if 0  ///  test shapes, new objects
 					int ii = i; // l*cnt+i;
-					yaw = (ii * 5) % 360;  // grid
-					pos.z = -100 +(ii / 9) * 10;  pos.x = -100 +(ii % 9) * 10;
+					yaw = (ii * 15) % 360;  // grid
+					pos.z = -100 +(ii / 9) * 20;  pos.x = -100 +(ii % 9) * 20;
 					Real scl = pg.minScale;
 				#else
 					yaw = rnd.rand(360.0);
@@ -262,6 +262,17 @@ void CScene::CreateTrees()
 				item->setRenderingDistance( dist * pSet->trees_dist );
 				vegetItems.push_back(item);
 
+			#if 0  //  marker | test
+				Item *item2 = mgr->createItem( "ring_blue_stick.mesh",
+					ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
+				vegetItems.push_back(item2);
+
+				SceneNode *node2 = rootNode->createChildSceneNode( SCENE_STATIC );
+				node2->attachObject( item2 );
+				node2->setPosition( pos0 );
+				vegetNodes.push_back(node2);
+			#endif
+
 				SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
 				node->attachObject( item );
 				node->scale( scl * Vector3::UNIT_SCALE );
@@ -301,7 +312,8 @@ void CScene::CreateTrees()
 					Vector3 pos = pos0;  // restore original place
 					Vector3 ofs = shp->offset;
 					//  offset shape  pos, rotY, scl
-					Vector2 vo;  float yr = Degree(yaw).valueRadians();
+					Vector2 vo;  float yr = Degree(-yaw).valueRadians();
+					// LogO("veget shp  i "+toStr(i)+"  yr "+toStr(yr)+"  p "+toStr(pos0)+" ");
 					float cyr = cos(yr), syr = sin(yr);
 					vo.x = ofs.x * cyr - ofs.y * syr;
 					vo.y = ofs.x * syr + ofs.y * cyr;
