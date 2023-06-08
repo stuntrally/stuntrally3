@@ -20,19 +20,23 @@ recursive = False
 
 #  configs for Media subdirs
 #------------------------------
-#  objects0  0 A.D. buildings
-start_dir = media + 'objects0/'
-args = ' -v2 -e -t -ts 4 -O puqs '  # no lods
-# args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 600 -p 5 '  # + 2 lods meh-
+#  rocks/  hex*
+start_dir = media + 'rockshex/'
+args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 400 -p 12 '  # 3 lods
 
-#  objects2  satelite, hq
+#  objects0/  0 A.D. buildings
+#start_dir = media + 'objects0/'
+#args = ' -v2 -e -t -ts 4 -O puqs '  # no lods +
+# args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 600 -p 5 '  # 3 lods bad-
+
+#  objects2/  satelite, hq
 #start_dir = media + 'objects2/'
-#args = ' -v2 -e -t -ts 4 -O puqs -l 3 -d 600 -p 15 '  # + 3 lods far
+#args = ' -v2 -e -t -ts 4 -O puqs -l 3 -d 600 -p 15 '  # 4 lods far
 
-#  objectsC  alien,city
+#  objectsC/  alien,city,skyscraper
 #start_dir = media + 'objectsC/'
-#args = ' -v2 -e -t -ts 4 -O puqs '  # no lods
-# args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 600 -p 10 '  # - 2 lods far  still bad
+#args = ' -v2 -e -t -ts 4 -O puqs '  # no lods +
+# args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 600 -p 10 '  # 3 lods far bad-
 #------------------------------
 
 cnt = 0

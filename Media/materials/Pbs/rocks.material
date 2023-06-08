@@ -551,3 +551,68 @@ hlms rock46grayWhite2 pbs : rock_base
 	specular 0.3 0.3 0.3
 }
 //--------------------------------------------------------------------------------------------------------------
+
+
+//  hexrocks
+//------------------------------------------------------------------
+hlms hexrock_grey pbs : rock_base
+{
+	diffuse_map hexrock_grey.jpg
+	normal_map  hexrock_norm.jpg
+	specular_map hexrock_spec.jpg
+	// ambient 1.0 1.0 1.0
+	diffuse 0.8 0.8 0.8
+	specular 0.4 0.3 0.35 //24
+	// bump_scale 0.6
+}
+
+hlms hexrock_brown pbs : rock_base
+{
+	diffuse_map hexrock_brown.jpg
+	normal_map  hexrock_norm.jpg
+	specular_map hexrock_spec.jpg
+	// ambient 1.0 1.0 1.0
+	diffuse 0.9 0.9 0.9
+	specular 0.4 0.3 0.35 //24
+	// bump_scale 0.8
+}
+
+hlms hexrock_pink pbs : rock_base
+{
+	diffuse_map hexrock_pink.jpg
+	normal_map  hexrock_pink_norm.jpg
+	specular_map hexrock_pink_spec.jpg
+	// ambient 0.8 0.6 0.6
+	diffuse 1.15 0.9 1.1
+	specular 0.9 0.7 0.9 //26
+	// bump_scale 0.3
+	// refl_amount 0.9
+}
+
+hlms hexrock_crystal pbs : rock_base
+{
+	diffuse_map hexrock_crystal.jpg
+	normal_map  hexrock_crystal_norm.jpg
+	specular_map hexrock_crystal_spec.jpg
+	// reflMap hexrock_crystal_spec.jpg
+	// ambient 0.2 1.3 0.8
+	diffuse 0.8 1.8 1.04
+	specular 0.5 1.6 1.0 //12
+	// env_map true
+	// envMap ReflectionCube
+	// refl_amount 0.5
+}
+
+hlms hexrock_metal pbs : rock_base
+{
+	diffuse_map hexrock_metal.jpg
+	normal_map  hexrock_metal_norm.jpg
+	specular_map hexrock_metal_spec.jpg
+	// reflMap hexrock_metal_spec.jpg
+	// ambient 0.5 0.7 0.75
+	diffuse 1.05 1.1 0.95
+	specular 0.8 0.9 0.8 //20
+	// env_map true
+	// fresnel false
+	// refl_amount 0.1
+}
