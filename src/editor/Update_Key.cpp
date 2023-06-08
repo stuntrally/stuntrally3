@@ -366,7 +366,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(V):  bVegetGrsUpd = true;  break;
 		case key(G):  gui->ckFog.Invert();  break;
 		case key(I):  gui->ckWeather.Invert();  break;
-		case key(P):  gui->ckEmitters.Invert();  bRecreateEmitters = true;  break;
+		case key(P):  if (!bEdit()){  gui->ckEmitters.Invert();  bRecreateEmitters = true;  }  break;
 
 		//  ⛰️ terrain
 		case key(D):  if (bEdit()){  SetEdMode(ED_Deform);  UpdBr();  }  break;

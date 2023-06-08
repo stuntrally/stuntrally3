@@ -286,7 +286,7 @@ void CGui::InitGui()
 	sv= &svRain2Rate;	sv->Init("Rain2Rate",	&sc->rain2Emit,  0.f,8000.f, 1.5f);  sv->DefaultF(1000.f);
 	//  🌫️ Fog
 	sv= &svFogStart;	sv->Init("FogStart",	&sc->fogStart,   0.f,4000.f, 2.f, 0,3);  sv->DefaultF(100.f);  Sev(UpdFog);
-	sv= &svFogEnd;		sv->Init("FogEnd",		&sc->fogEnd,     0.f,4000.f, 2.f, 0,3);  sv->DefaultF(600.f);  Sev(UpdFog);
+	sv= &svFogEnd;		sv->Init("FogEnd",		&sc->fogEnd,     0.f,9000.f, 2.f, 0,3);  sv->DefaultF(600.f);  Sev(UpdFog);
 	sv= &svFogHStart;	sv->Init("FogHStart",	&sc->fogHStart,  0.f,2000.f, 2.f, 0,3);  sv->DefaultF(0.f);    Sev(UpdFog);
 	sv= &svFogHEnd;		sv->Init("FogHEnd",		&sc->fogHEnd,    0.f,2000.f, 2.f, 0,3);  sv->DefaultF(60.f);   Sev(UpdFog);
 	sv= &svFogHeight;	sv->Init("FogHeight",	&sc->fogHeight, -200.f,200.f, 1.f, 1,4);  sv->DefaultF(-300.f);  Sev(UpdFog);
@@ -389,7 +389,7 @@ void CGui::InitGui()
 
 	sv= &svTerLHMin;    sv->Init("TerLHMin",   &f,-500.f,950.f, 1.f, 0,2);  sv->DefaultF(-400.f);  Sev(TerLay);
 	sv= &svTerLHMax;    sv->Init("TerLHMax",   &f,-500.f,950.f, 1.f, 0,2);  sv->DefaultF( 900.f);  Sev(TerLay);
-	sv= &svTerLHSm;     sv->Init("TerLHSm",    &f, 0.f,  100.f, 2.f, 1,4);  sv->DefaultF(20.f);  Sev(TerLay);
+	sv= &svTerLHSm;     sv->Init("TerLHSm",    &f, 0.f,  400.f, 2.f, 1,4);  sv->DefaultF(20.f);  Sev(TerLay);
 	Btn("TerLmoveL", btnTerLmoveL);  Btn("TerLmoveR", btnTerLmoveR);
 
 	//  🌀 noise

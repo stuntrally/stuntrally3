@@ -17,6 +17,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
+			<!-- Sun -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#FFFF80#{Sun}"/>
 				<Widget type="TabControl" skin="TabControl" position="16 28 760 506" name="SubTab">
@@ -52,6 +53,7 @@
 							<UserString key="tip" value="#{TipSkyMats}"/>
 						</Widget>
 
+						<!-- sun dir -->
 						<Widget type="TextBox" skin="TextBox" position="100 52 84 25">
 							<Property key="Caption" value="#{Yaw}"/>
 							<Property key="TextColour" value="0.6 0.8 1"/>
@@ -93,6 +95,8 @@
 							<Property key="TextColour" value="0.9 0.9 0"/>
 							<UserString key="tip" value="#{TipSunDirYaw}"/>
 						</Widget>
+
+						<!-- Light -->
 						<Widget type="TextBox" skin="TextBox" position="80 176 192 24">
 							<Property key="Caption" value="#{Light}"/>
 							<Property key="TextColour" value="1 1 0.9"/>
@@ -125,6 +129,7 @@
 							<Property key="Caption" value="#{Weather}"/>
 							<Property key="TextColour" value="0.7 0.85 1"/>
 						</Widget>
+
 						<Widget type="Button" skin="CheckBox" position="500 316 400 24" name="WeatherEnable">
 							<Property key="Caption" value="#{Weather} (I)"/>
 							<Property key="TextColour" value="0.5 0.8 0.8"/>
@@ -135,6 +140,8 @@
 							<Property key="TextColour" value="0.8 0.8 0.5"/>
 							<UserString key="tip" value="#{DisableEdit}"/>
 						</Widget>
+
+						<!-- Rain -->
 						<Widget type="ComboBox" skin="ComboBox" position="188 344 148 24" name="Rain1Cmb">
 							<Property key="Colour" value="0.7 1 1"/>
 							<Property key="TextColour" value="0.7 1 1"/>
@@ -186,6 +193,8 @@
 							<UserString key="tip" value="#{TipRainSnowInt}"/>
 						</Widget>
 					</Widget>
+
+					<!-- Fog -->
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#C0E0FF#{Fog}"/>
 						<Widget type="TextBox" skin="TextBox" position="24 184 184 24">
@@ -213,32 +222,38 @@
 						<Widget type="ImageBox" skin="ImageBox" position="152 60 100 24" name="ClrFog2">
 							<Property key="ImageTexture" value="white.png"/>
 						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="44 104 104 24">
 							<Property key="Caption" value="#{FogStart}"/>
-							<Property key="TextColour" value="0.7 0.85 1"/>
+							<Property key="TextColour" value="0.5 0.75 1"/>
 							<UserString key="tip" value="#{TipFogStartDist}"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="216 104 420 16" name="FogStart">
-							<Property key="Colour" value="0.7 0.85 1"/>
+							<Property key="Colour" value="0.6 0.8 1"/>
 							<UserString key="tip" value="#{TipFogStartDist}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="152 104 64 24" name="FogStartVal">
-							<Property key="TextColour" value="0.7 0.85 1"/>
+						<Widget type="EditBox" skin="EditBox" position="152 100 56 24" name="FogStartEdit">
+							<Property key="Colour" value="0.6 0.8 1"/>
+							<Property key="TextColour" value="0.6 0.8 1"/>
 							<UserString key="tip" value="#{TipFogStartDist}"/>
 						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="44 128 104 24">
 							<Property key="Caption" value="#{FogEnd}"/>
-							<Property key="TextColour" value="0.7 0.9 1"/>
+							<Property key="TextColour" value="0.6 0.8 1"/>
 							<UserString key="tip" value="#{TipFogEndDist}"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="216 128 420 16" name="FogEnd">
-							<Property key="Colour" value="0.7 0.9 1"/>
+							<Property key="Colour" value="0.7 0.85 1"/>
 							<UserString key="tip" value="#{TipFogEndDist}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="152 128 64 24" name="FogEndVal">
-							<Property key="TextColour" value="0.7 0.9 1"/>
+						<Widget type="EditBox" skin="EditBox" position="152 124 56 24" name="FogEndEdit">
+							<Property key="Colour" value="0.7 0.85 1"/>
+							<Property key="TextColour" value="0.7 0.85 1"/>
 							<UserString key="tip" value="#{TipFogEndDist}"/>
 						</Widget>
+
+						<!-- Height Fog -->
 						<Widget type="TextBox" skin="TextBox" position="44 212 104 24">
 							<Property key="Caption" value="#{Color}"/>
 							<Property key="TextColour" value="0.8 0.9 1"/>
@@ -319,6 +334,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
+			<!-- Terrain -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#A0D8A0#{Terrain}"/>
 
@@ -1212,6 +1228,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
+			<!-- Layers -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#80FF00#{Layers}"/>
 
@@ -1432,7 +1449,7 @@
 							<Property key="TextColour" value="0.6 0.9 0.6"/>
 							<UserString key="tip" value="#{TipTerLHMin}"/>
 						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="144 100 50 24" name="TerLHMinEdit">
+						<Widget type="EditBox" skin="EditBox" position="144 100 56 24" name="TerLHMinEdit">
 							<Property key="TextColour" value="0.6 0.9 0.6"/>
 							<Property key="Colour" value="0.5 0.8 0.5"/>
 							<UserString key="tip" value="#{TipTerLHMin}"/>
@@ -1446,7 +1463,7 @@
 							<Property key="TextColour" value="0.6 0.9 0.6"/>
 							<UserString key="tip" value="#{TipTerLHMax}"/>
 						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="144 124 50 24" name="TerLHMaxEdit">
+						<Widget type="EditBox" skin="EditBox" position="144 124 56 24" name="TerLHMaxEdit">
 							<Property key="TextColour" value="0.6 0.9 0.6"/>
 							<Property key="Colour" value="0.5 0.8 0.5"/>
 							<UserString key="tip" value="#{TipTerLHMax}"/>
@@ -1460,7 +1477,7 @@
 							<Property key="TextColour" value="0.6 0.75 0.6"/>
 							<UserString key="tip" value="#{TipTerLHSm}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="144 152 56 24" name="TerLHSmVal">
+						<Widget type="EditBox" skin="EditBox" position="144 148 56 24" name="TerLHSmEdit">
 							<Property key="TextColour" value="0.6 0.75 0.6"/>
 							<UserString key="tip" value="#{TipTerLHSm}"/>
 						</Widget>
@@ -1688,6 +1705,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
+			<!-- Grasses -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#B0F040#{Grasses}"/>
 				<Widget type="TabControl" skin="TabControl" position="16 28 760 506" name="SubTab">
@@ -2184,6 +2202,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
+			<!-- Vegetation -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#80F0F0#{Vegetation}"/>
 				<Widget type="TabControl" skin="TabControl" position="16 28 760 506" name="SubTab">
@@ -2534,6 +2553,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
+			<!-- Surface -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#B0B060#{Surface}"/>
 
@@ -2719,6 +2739,7 @@
 			</Widget>
 			
 <!-- ============================================================================================================================================= -->
+			<!-- Road -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#FFB020#{Road}"/>
 
@@ -3348,6 +3369,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
+			<!-- Objects -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#D0D0D0#{Objects}"/>
 				<Widget type="TextBox" skin="TextBox" position="14 16 128 24">

@@ -53,6 +53,8 @@ void CScene::CreateEmitters(bool force)
 		nd->attachObject(ps);
 		em.nd = nd;  em.ps = ps;
 
+		em.par.x = s2r(ps->getParameter("particle_width"));  // store orig
+		em.par.y = s2r(ps->getParameter("particle_height"));
 		em.UpdEmitter();
 		ps->_update(em.upd);  //  started already 2 sec ago
 		ps->setSpeedFactor(em.stat ? 0.f : 1.f);  // static
@@ -62,6 +64,8 @@ void CScene::CreateEmitters(bool force)
 void SEmitter::UpdEmitter()
 {
 	if (!ps)  return;
+	ps->setParameter("particle_width",  toStr(parScale * par.x));
+	ps->setParameter("particle_height", toStr(parScale * par.y));
 	ps->getEmitter(0)->setParameter("width",  toStr(size.x));
 	ps->getEmitter(0)->setParameter("height", toStr(size.z));
 	ps->getEmitter(0)->setParameter("depth",  toStr(size.y));  // h
