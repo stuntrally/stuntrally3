@@ -114,8 +114,8 @@ hlms Water_sunset_cyan pbs : Water   // Isl13-Beauty
 
 hlms Water_shore pbs : Water   // Isl5-Shore
 {
-    diffuse   1.0 1.0 1.0
-    specular  0.8 0.8 0.9
+    diffuse   0.6 0.65 0.65
+    specular  0.5 0.55 0.6
 }
 
 hlms Water_dark pbs : Water   // Vlc1-Dark
@@ -163,25 +163,29 @@ hlms Acid_green pbs : Water   // green acid
 
 hlms Ice pbs //: BaseMud   // solid
 {
-    diffuse   0.8 0.94 0.95
-	specular  0.75 0.78 0.8
+    diffuse   0.63 0.64 0.65
+	specular  0.55 0.58 0.6
 
 	diffuse_map  snow2_d.jpg
 	normal_map   snow2_n.jpg
+	cull_mode none
 
-	fresnel_coeff 0.1
+	fresnel 0.0
+	fresnel_coeff 0.0
 	roughness 0.2
 	metalness 0.8
 }
 hlms Ice_cyan pbs //: BaseMud   // solid
 {
-    diffuse   0.8 0.94 0.95
-	specular  0.75 0.78 0.8
+    diffuse   0.6 0.64 0.65
+	specular  0.55 0.58 0.6
 
 	diffuse_map  snow2_s.jpg
 	normal_map   snow2_n.jpg
+	cull_mode none
 
-	fresnel_coeff 0.1
+	fresnel 0.0
+	fresnel_coeff 0.0
 	roughness 0.2
 	metalness 0.8
 }

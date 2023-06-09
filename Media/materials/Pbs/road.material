@@ -5,16 +5,16 @@ hlms road pbs  // bridges
 	depth_bias 3
 	// scene_blend alpha_blend
 
-	// specular_map roadAsphalt_spec.jpg
+	specular_map roadAsphalt_spec.jpg
 	// workflow metallic
-	//roughness 0.1
-	// metalness 0.3
+	roughness 0.4
+	metalness 0.1
 
-	//fresnel	0.0
+	fresnel	0.01
 	// fresnel	1.33 1.33 1.2
 	// fresnel_coeff 0.3 0.3 0.3
 	// diffuse  1.0 0.0 0.0
-	// specular 0.0 0.0 0.5
+	specular 0.3 0.3 0.3
 }
 //  on terrain  base  -------------
 hlms road_terrain pbs

@@ -296,7 +296,8 @@ hlms pipe_wall_base pbs //: pipe_base
 	// diffuse  0.4 0.46 0.5
 	// specular 0.25 0.267 0.28 //1 //x4
 	
-	workflow metallic
+	// workflow metallic
+	fresnel 0.1
 	fresnel_coeff 0.1 0.1 0.1
 	roughness 0.15
 	metalness 0.9
@@ -318,6 +319,19 @@ hlms wall_base pbs //: pipe_wall_base
 	fresnel_coeff 0.01
 	roughness 0.7
 	metalness 0.1
+}
+
+//  wall metal refl
+hlms wall_base_refl pbs
+{
+	// diffuse  0.6 0.66 0.7
+	// specular 0.24 0.267 0.28 //4
+	cull_mode clockwise
+
+	fresnel 1.0
+	fresnel_coeff 0.4 0.4 0.4
+	roughness 0.2
+	metalness 0.9
 }
 
 hlms road_wall pbs : wall_base  // default-
@@ -489,7 +503,7 @@ hlms road_col_Desert pbs : wall_base
 
 
 //  crystal
-hlms road_wall_crystal pbs : wall_base
+hlms road_wall_crystal pbs : wall_base_refl
 {
 	diffuse  0.95 0.95 0.95
 	specular 0.21 0.21 0.61
@@ -543,7 +557,7 @@ hlms road_col_Alien pbs : column
 //  universal  any road,pipe,wall,column  SR 2.7
 //--------------------------------------------------------------------------------------
 //  univ space
-hlms wall_space_diam pbs : wall_base
+hlms wall_space_diam pbs : wall_base_refl
 {
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1
@@ -556,7 +570,7 @@ hlms wallP_space_diam pbs : wall_space_diam
 	cull_mode none
 }
 
-hlms wall_space_dots pbs : wall_base
+hlms wall_space_dots pbs : wall_base_refl
 {
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1
@@ -568,7 +582,7 @@ hlms wallP_space_dots pbs : wall_space_dots
 {
 	cull_mode none
 }
-hlms wall_space_dots_orn pbs : wall_base
+hlms wall_space_dots_orn pbs : wall_base_refl
 {
 	diffuse  0.9 0.7 0.5
 	specular 0.9 0.7 0.5
@@ -581,7 +595,7 @@ hlms wallP_space_dots_orn pbs : wall_space_dots_orn
 	cull_mode none
 }
 
-hlms wall_space_gray pbs : wall_base
+hlms wall_space_gray pbs : wall_base_refl
 {
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1
@@ -593,7 +607,7 @@ hlms wallP_space_gray pbs : wall_space_gray
 {
 	cull_mode none
 }
-hlms wall_space_grayblue pbs : wall_base
+hlms wall_space_grayblue pbs : wall_base_refl
 {
 	diffuse  0.6 0.9 1.1
 	specular 0.9 0.9 0.9
@@ -606,7 +620,7 @@ hlms wallP_space_grayblue pbs : wall_space_grayblue
 	cull_mode none
 }
 
-hlms wall_space_metal pbs : wall_base
+hlms wall_space_metal pbs : wall_base_refl
 {
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1
@@ -627,7 +641,7 @@ hlms wallP_space_metaldark pbs : wall_space_metaldark
 {
 	cull_mode none
 }
-hlms wall_space_x pbs : wall_base
+hlms wall_space_x pbs : wall_base_refl
 {
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1
@@ -641,7 +655,7 @@ hlms wallP_space_x pbs : wall_space_x
 }
 
 //  univ metal
-hlms wall_metal_01 pbs : wall_base
+hlms wall_metal_01 pbs : wall_base_refl
 {
 	diffuse  0.9 0.9 0.9
 	specular 0.7 0.7 0.7 128
@@ -653,7 +667,7 @@ hlms wallP_metal_01 pbs : wall_metal_01
 {
 	cull_mode none
 }
-hlms wall_metal_03_red pbs : wall_base
+hlms wall_metal_03_red pbs : wall_base_refl
 {
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1
@@ -675,7 +689,7 @@ hlms wallP_metal_03_gray pbs : wall_metal_03_gray
 	cull_mode none
 }
 
-hlms wall_metal_03_green pbs : wall_base
+hlms wall_metal_03_green pbs : wall_base_refl
 {
 	diffuse  0.7 0.8 0.8
 	specular 0.7 0.7 0.7
@@ -697,7 +711,7 @@ hlms wallP_metal_03_yellow pbs : wall_metal_03_yellow
 	cull_mode none
 }
 
-hlms wall_metal_04_x pbs : wall_base
+hlms wall_metal_04_x pbs : wall_base_refl
 {
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1
@@ -719,7 +733,7 @@ hlms wallP_metal_04_x_viol pbs : wall_metal_04_x_viol
 	cull_mode none
 }
 
-hlms wall_metal_05_bars pbs : wall_base
+hlms wall_metal_05_bars pbs : wall_base_refl
 {
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1
@@ -732,7 +746,7 @@ hlms wallP_metal_05_bars pbs : wall_metal_05_bars
 	cull_mode none
 }
 
-hlms wall_metal_06_plates pbs : wall_base
+hlms wall_metal_06_plates pbs : wall_base_refl
 {
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1
@@ -754,7 +768,7 @@ hlms wallP_metal_06_yellow pbs : wall_metal_06_yellow
 	cull_mode none
 }
 
-hlms wall_metal_07_worn pbs : wall_base
+hlms wall_metal_07_worn pbs : wall_base_refl
 {
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1
@@ -766,7 +780,7 @@ hlms wallP_metal_07_worn pbs : wall_metal_07_worn
 {
 	cull_mode none
 }
-hlms wall_metal_08_hex pbs : wall_base
+hlms wall_metal_08_hex pbs : wall_base_refl
 {
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1
@@ -779,7 +793,7 @@ hlms wallP_metal_08_hex pbs : wall_metal_08_hex
 	cull_mode none
 }
 
-hlms wall_metal_12_dots pbs : wall_base
+hlms wall_metal_12_dots pbs : wall_base_refl
 {
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1
@@ -812,7 +826,7 @@ hlms wallP_metal_12_cyan pbs : wall_metal_12_cyan
 }
 
 //  new 7'22
-hlms wall_metal_241_diam pbs : wall_base
+hlms wall_metal_241_diam pbs : wall_base_refl
 {
 	diffuse  1.1 1.1 1.1
 	specular 1.1 1.1 1.1 //16
@@ -825,7 +839,7 @@ hlms wallP_metal_241_diam pbs : wall_metal_241_diam
 	cull_mode none
 }
 
-hlms wall_metal_212_scr pbs : wall_base
+hlms wall_metal_212_scr pbs : wall_base_refl
 {
 	diffuse  1 1 1
 	specular 1 1 1 //16
@@ -856,7 +870,7 @@ hlms wallP_metal_212_paint pbs : wall_metal_212_paint
 	cull_mode none
 }
 
-hlms wall_metal_213_rust pbs : wall_base
+hlms wall_metal_213_rust pbs : wall_base_refl
 {
 	diffuse  1 1 1
 	specular 1 1 1 //16
@@ -869,7 +883,7 @@ hlms wallP_metal_213_rust pbs : wall_metal_213_rust
 	cull_mode none
 }
 
-hlms wall_metal_4a_box pbs : wall_base
+hlms wall_metal_4a_box pbs : wall_base_refl
 {
 	diffuse  1 1 1
 	specular 1 1 1 //16
@@ -883,7 +897,7 @@ hlms wallP_metal_4a_box pbs : wall_metal_4a_box
 	cull_mode none
 }
 
-hlms wall_metal_29_inst pbs : wall_base
+hlms wall_metal_29_inst pbs : wall_base_refl
 {
 	diffuse  1 1 1
 	specular 1 1 1 //16
@@ -897,7 +911,7 @@ hlms wallP_metal_29_inst pbs : wall_metal_29_inst
 	cull_mode none
 }
 
-hlms wall_metal_40_grid pbs : wall_base
+hlms wall_metal_40_grid pbs : wall_base_refl
 {
 	diffuse  1 1 1
 	specular 1 1 1 //16

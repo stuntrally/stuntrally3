@@ -111,6 +111,7 @@ void CGui::SetGuiTerFromXml()
 	svTerTriSize.UpdF(&td().fTriangleSize);  //`
 	UpdTxtTerSize();
 	// svTerNormScale.Upd();  svTerSpecPow.Upd();
+	ckTerrainEmissive.Upd(&td().emissive);
 	svTerSpecPowEm.UpdF(&td().specularPowEm);
 
 	tabTerLayer(tabsTerLayers, idTerLay);
