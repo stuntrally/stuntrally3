@@ -128,11 +128,10 @@ void CScene::CreateTerrain1(int n)
 				tdb->setSamplerblock( TERRA_DETAIL_METALNESS0 + i, sb );
 		}	}
 		
-		Real sc = bTripl ?
-			// fTer / l.tiling * 0.0005 :  //?? big
-			fTer / l.tiling * 0.002 :  //** fixme!  ?? small
-			fTer / l.tiling;
-		tdb->setDetailMapOffsetScale( i, Vector4(0,0, sc,sc) );
+		// Real ofy = bTripl ? 0.499 : 0.0, ofx = bTripl ? 0.501 : 0.0,  // meh
+		Real of = bTripl ? 0.499 : 0.0,
+			sc = bTripl ? 1.f / l.tiling : fTer / l.tiling;
+		tdb->setDetailMapOffsetScale( i, Vector4(of,of, sc,sc) );
 		
 		//  find mat params from presets
 		auto s = d_d;  s = s.substr(0, s.find_first_of('.'));
