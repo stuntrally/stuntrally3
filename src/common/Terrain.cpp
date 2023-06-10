@@ -24,59 +24,6 @@
 using namespace Ogre;
 
 
-///  OLD  Setup Terrain
-//---------------------------------------------------------------------------------------------------------------
-/*void CScene::SetupTerrain()
-{
-	// UpdTerErr();
-
-	mTerrainGlobals->setLayerBlendMapSize(4);  // we use our own rtt, so reduce this
-	mTerrainGlobals->setLightMapDirection(sun->getDerivedDirection());
-	// mTerrainGlobals->setSkirtSize(1);  // low because in water reflect
-
-	// di.terrainSize = sc->td.iTerSize; // square []-
-	// di.worldSize = sc->td.fTerWorldSize;  //di.inputScale = td.Hmax;
-
-	///  layer textures
-	int ls = sc->td.layers.size();
-	di.layerList.resize(ls);
-	for (int i=0; i < ls; ++i)
-	{
-		TerLayer& l = sc->td.layersAll[sc->td.layers[i]];
-		di.layerList[i].worldSize = l.tiling;
-
-		//  combined rgb,a from 2 tex
-		String p = PATHS::Data() + (app->pSet->tex_size > 0 ? "/terrain/" : "/terrain_s/");
-		String d_d, d_s, n_n, n_h;
-		
-		///  diff
-		d_d = l.texFile;  // ends with _d
-		d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");
-
-		if (!PATHS::FileExists(p+ d_d))
-			texLayD[i].LoadTer(p+ "grass_green_d.jpg", p+ "grass_green_n.jpg", 0.f);
-		else
-		if (PATHS::FileExists(p+ d_s))
-			texLayD[i].LoadTer(p+ d_d, p+ d_s, 0.f);
-		else  // use _s from norm tex name
-		{	d_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");
-			texLayD[i].LoadTer(p+ d_d, p+ d_s, 0.f);
-		}
-		///  norm
-		n_n = l.texNorm;  // ends with _n
-		n_h = StringUtil::replaceAll(l.texNorm,"_n.","_h.");
-
-		if (PATHS::FileExists(p+ n_n))
-			texLayN[i].LoadTer(p+ n_n, p+ n_h, 1.f);
-		else
-			texLayN[i].LoadTer(p+ "flat_n.png", p+ n_h, 1.f);
-		
-		di.layerList[i].textureNames.push_back("layD"+toStr(i));
-		di.layerList[i].textureNames.push_back("layN"+toStr(i));
-	}
-}*/
-
-
 ///--------------------------------------------------------------------------------------------------------------
 //  Create Terrain
 ///--------------------------------------------------------------------------------------------------------------
@@ -240,7 +187,7 @@ void CScene::CreateBltTerrains()
 		col->setRestitution(0.0);
 		//col->setHitFraction(0.1f);
 		col->setCollisionFlags(col->getCollisionFlags() |
-			btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+			btCollisionObject::CF_STATIC_OBJECT /*| btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
 		#ifndef SR_EDITOR  // game
 			app->pGame->collision.world->addCollisionObject(col);
 			app->pGame->collision.shapes.push_back(hfShape);

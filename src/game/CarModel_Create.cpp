@@ -143,13 +143,13 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 				LogO(pDb ? "db2 cast ok" : "db2 cast fail");
 				//  clone,  set car color
 				static int id = 0;  ++id;
-			#if 1  // no clone
+			#if 1  // no clone  bad ghost, same car color
 				db = pDb;
-			#else
-				db = static_cast<HlmsPbsDatablock2*>(
-					pDb->clone( "CarBody" + sCarI + toStr(id) ) );
+			#else  // fixme  clone ..
+				db = static_cast<HlmsPbsDatablock2*>( pDb->clone( "CarBody" + sCarI + toStr(id) ) );
 			#endif
 				db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
+				//- HlmsPbsDatablock *db1 = static_cast<HlmsPbsDatablock *>(db);
 				item->getSubItem(0)->setDatablock( db );
 				SetPaint();
 
