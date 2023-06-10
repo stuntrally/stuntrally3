@@ -67,4 +67,6 @@ public:
 
     //  what we send to the GPU (to send more)
 	void uploadToConstBuffer( char *dstPtr, Ogre::uint8 dirtyFlags ) override;
+
+	void cloneImpl( HlmsDatablock *db ) const override;
 };

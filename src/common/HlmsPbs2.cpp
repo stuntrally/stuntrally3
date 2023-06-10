@@ -174,6 +174,17 @@ HlmsPbsDatablock2::HlmsPbsDatablock2(
 	}
 }
 
+//  clone
+void HlmsPbsDatablock2::cloneImpl( HlmsDatablock *db ) const
+{
+	HlmsPbsDatablock::cloneImpl( db );
+	HlmsPbsDatablock2 *db2 = static_cast<HlmsPbsDatablock2*>( db );
+
+	db2->paint = paint;
+	for (int i=0; i < 3; ++i)
+		db2->paintClr[i] = paintClr[i];
+	db2->paintMul = paintMul;
+}
 
 
 #if 0
