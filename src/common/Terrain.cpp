@@ -33,6 +33,10 @@ void CScene::CreateTerrains(bool terLoad)
 	for (int i = 0; i < all; ++i)
 		CreateTerrain(i, terLoad);
 }
+void CScene::updTerLod()
+{
+	app->scn->ters[0]->iLodMax = 6 - app->pSet->ter_detail;  //par..
+}
 
 String CScene::getHmap(int n, bool bNew)
 {

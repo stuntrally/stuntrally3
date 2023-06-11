@@ -49,7 +49,8 @@ public:
 
 	//  geom detail
 	float view_distance = 20000.f;
-	float lod_bias = 1.f, ter_detail = 1.f, road_dist = 2.f;
+	float lod_bias = 1.f, road_dist = 2.f;
+	int ter_detail = 2;
 	int horizons = 3;
 
 	//  🌳🪨🌿 veget

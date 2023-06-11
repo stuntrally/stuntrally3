@@ -128,8 +128,7 @@ public:
 	void CreateTerrains(bool terLoad/*=true*/);
 	void CreateTerrain(int n, bool terLoad);
 	void DestroyTerrain1(int n), DestroyTerrains();
-	void CreateBltTerrains(), copyTerHmap();
-	// void SetupTerrain(), UpdTerErr();
+	void CreateBltTerrains(), copyTerHmap(), updTerLod();
 
 	
 	//  🏔️ Blendmap, rtt

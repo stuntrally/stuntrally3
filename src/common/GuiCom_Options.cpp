@@ -14,7 +14,7 @@
 #endif
 #include "Slider.h"
 // #include "WaterRTT.h"
-// #include "Terra.h"
+#include "Terra.h"
 #include <OgreCamera.h>
 // #include <OgreMaterialManager.h>
 // #include <OgreSceneNode.h>
@@ -36,11 +36,12 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	
 	//  🧊 Detail, far geometry
 	sv= &svLodBias;		sv->Init("LodBias",		&pSet->lod_bias,	0.f,4.f, 1.5f);  SevC(LodBias);  sv->DefaultF(1.f);
-	sv= &svTerDetail;	sv->Init("TerDetail",	&pSet->ter_detail,	0.f,4.f, 1.5f);  SevC(TerDetail);  sv->DefaultF(1.f);
-	sv= &svRoadDist;	sv->Init("RoadDist",	&pSet->road_dist,	0.f,4.f, 2.f, 2,5);  sv->DefaultF(1.6f);
+	sv= &svTerDetail;	sv->Init("TerDetail",	&pSet->ter_detail,	0,5);  SevC(TerDetail);  sv->DefaultI(2);
+	sv= &svRoadDist;	sv->Init("RoadDist",	&pSet->road_dist,	0.f,5.f, 2.f, 2,5);  sv->DefaultF(1.6f);
 	sv= &svViewDist;	sv->Init("ViewDist",	&pSet->view_distance, 50.f,60000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
-																				SevC(ViewDist);  sv->DefaultF(8000.f);
+																			SevC(ViewDist);  sv->DefaultF(8000.f);
 	sv= &svHorizons;	sv->Init("Horizons",	&pSet->horizons,	0,3);  sv->DefaultI(3);
+
 
 	//  🖼️ Textures filtering
 	CmbC(cmb, "TexFiltering", comboTexFilter);
@@ -205,8 +206,7 @@ void CGuiCom::slViewDist(SV*)
 
 void CGuiCom::slTerDetail(SV*)
 {
-	// todo:
-	// app->mTerra->iLodMax = pSet->terdetail
+	app->scn->updTerLod();
 }
 
 void CGuiCom::slLodBias(SV*)
