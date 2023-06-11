@@ -53,14 +53,17 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	// BtnC("ApplyShaders", btnShaders);
 
 	//  ⛰️ Terrain
-	/*sv= &svTerMtr;
+	/*sv= &svTerMtr;  // drop-
 		sv->strMap[0] = TR("#{GraphicsAll_Lowest}");	sv->strMap[1] = TR("#{GraphicsAll_Medium}");
 		sv->strMap[2] = TR("#{GraphicsAll_High}");		//sv->strMap[3] = "Parallax-";
 						sv->Init("TerMtr",		&pSet->ter_mtr,		0,2);	sv->DefaultI(2);*/
-	sv= &svTerTripl;
+	auto triplMap = [&](){
 		sv->strMap[0] = TR("0 #{None}");  //sv->strMap[1] = TR("#{max} 2");  sv->strMap[2] = TR("#{Any}");
-		sv->strMap[1] = TR("1 #{Diffuse}");  sv->strMap[2] = TR("2 #{Normal}");
+		sv->strMap[1] = TR("1 #{Diffuse}");  sv->strMap[2] = TR("2 #{Normal}");  };
+	sv= &svTerTripl;	triplMap();
 						sv->Init("TerTripl",	&pSet->ter_tripl,	0,2);	sv->DefaultI(1);
+	sv= &svTriplHoriz;	sv->Init("TriplHoriz",	&pSet->tripl_horiz,	0,3);	sv->DefaultI(0);
+
 
 	//  🌳🪨 Veget  🌿 grass
 	sv= &svTrees;		sv->Init("Trees",		&pSet->gui.trees,	0.f, 8.f, 2.f);  sv->DefaultF(1.5f);

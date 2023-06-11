@@ -45,7 +45,7 @@ public:
 
 	//  🖼️ textures filtering
 	int anisotropy = 4, tex_filt = 2;
-	int ter_tripl;  // terrain  // ⛰️
+	int ter_tripl = 1, tripl_horiz = 0;  // terrain  // ⛰️
 
 	//  geom detail
 	float view_distance = 20000.f;

@@ -446,6 +446,7 @@
 							<Property key="TextColour" value="0.2 1 0.2"/>
 						</Widget>
 
+						<!-- Triplanar -->
 						<Widget type="TextBox" skin="TextBox" position="32 110 172 24">
 							<Property key="Caption" value="#{Triplanar}"/>
 							<Property key="Colour" value="0 0 0"/>
@@ -454,6 +455,16 @@
 						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="TerTripl"/>
 						<Widget type="TextBox" skin="TextBox" position="210 110 60 24" name="TerTriplVal">
 							<Property key="TextColour" value="0.6 0.9 0.6"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 140 176 24">
+							<Property key="Caption" value="#{Triplanar} - #{Horizon}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.6 0.8 0.9"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 140 320 18" name="TriplHoriz"/>
+						<Widget type="TextBox" skin="TextBox" position="210 140 60 24" name="TriplHorizVal">
+							<Property key="TextColour" value="0.6 0.8 0.9"/>
 						</Widget>
 						<!-- <Widget type="Button" skin="Button" position="32 120 200 26" layer="Back" name="ApplyShaders">
 							<Property key="Caption" value="#{Apply}"/>

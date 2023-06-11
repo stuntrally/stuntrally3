@@ -52,15 +52,16 @@ void CScene::CreateTerrain1(int n)
 	app->InitTexFilters(&sb);
 	auto* texMgr = app->mRoot->getRenderSystem()->getTextureGpuManager();
 
+	//  triplanar
 	const auto& td = sc->tds[n];
-	// bool tripl = false;  // test
-	int ter_tripl = app->pSet->ter_tripl;
-	bool bTripl = ter_tripl && n == 0 && td.triplCnt > 0;
-	LogO("C--T Terrain tripl layers: " + toStr(td.triplCnt)+" on: "+toStr(bTripl)+" gfx: "+toStr(ter_tripl));
+	bool terTripl = td.triplCnt > 0 &&  n <= app->pSet->tripl_horiz;  // 0 ter, 1 horiz, 2
+	int tex_tripl = app->pSet->ter_tripl;  // off, diff, norm
+	bool bTripl = tex_tripl > 0 && terTripl;
+	LogO("C--T Terrain tripl layers: " + toStr(td.triplCnt)+" ter: "+toStr(terTripl)+" tex: "+toStr(tex_tripl));
 
-	if (bTripl)  //^
+	if (bTripl)  //**
 	{	tdb->setDetailTriplanarDiffuseEnabled(true);
-		if (ter_tripl > 1)
+		if (tex_tripl > 1 && terTripl)
 			tdb->setDetailTriplanarNormalEnabled(true);  // fixme black spots..
 		// tdb->setDetailTriplanarRoughnessEnabled(true);  // no tex, not used
 		// tdb->setDetailTriplanarMetalnessEnabled(true);
