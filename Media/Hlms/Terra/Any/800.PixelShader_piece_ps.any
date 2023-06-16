@@ -142,7 +142,7 @@
 												  material.detailOffsetScale[@n].xy,
 												  texIndex_detailMetalnessIdx@n ).x;
 		@else
-			midf metalness@n = _h( 0 );
+			midf metalness@n = _h( 1.0 );  //*
 		@end
 	@end
 
@@ -150,15 +150,21 @@
 	@property( emissive_terrain )
 		pixelData.specular.xyz = midf3_c( 0.1f, 0.1f, 0.1f );  // par
 	@else
-		pixelData.specular.xyz = midf3_c( 1.0f, 1.0f, 1.0f );
+		// pixelData.specular.xyz = midf3_c( 1.0f, 1.0f, 1.0f );
+		// pixelData.specular.xyz = midf3_c( material.kS.xyz );  // no
+		pixelData.specular.xyz = min( pixelData.diffuse.xyz + midf3_c( 0.3f, 0.3f, 0.3f ), midf3_c( 1.0f, 1.0f, 1.0f ));
 	@end
+
 	midf metalness =	(metalness0 * detailWeights.x * midf_c( material.metalness.x ) +
 						 metalness1 * detailWeights.y * midf_c( material.metalness.y )) +
 						(metalness2 * detailWeights.z * midf_c( material.metalness.z ) +
 						 metalness3 * detailWeights.w * midf_c( material.metalness.w ));
+	pixelData.specular.xyz = pixelData.specular.xyz * metalness;  //** metalness as specular multiplier
 
-	pixelData.F0 = lerp( midf3_c( 0.03f, 0.03f, 0.03f ), pixelData.diffuse.xyz * _h( 3.14159f ), metalness );
-	pixelData.diffuse.xyz = pixelData.diffuse.xyz - pixelData.diffuse.xyz * metalness;
+	// pixelData.F0 = midf3_c( 0.03f, 0.03f, 0.03f );  //*
+	pixelData.F0 = lerp( midf3_c( 0.03f, 0.03f, 0.03f ),  // ?
+						pixelData.diffuse.xyz * _h( 3.14159f ), metalness );  //.x;
+	// pixelData.diffuse.xyz = pixelData.diffuse.xyz - pixelData.diffuse.xyz * metalness;  //* -
 @end
 
 @undefpiece( SampleRoughnessMap )
@@ -172,7 +178,7 @@
 												  material.detailOffsetScale[@n].xy,
 												  texIndex_detailRoughnessIdx@n ).x;
 		@else
-			midf roughness@n = _h( 0 );
+			midf roughness@n = _h( 1.0 );  //*
 		@end
 	@end
 

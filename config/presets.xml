@@ -34,7 +34,7 @@
 <s m="020_empty_orange"     c="#C0D8F8"   p="84"  y=" 13"  />
 <s m="100_kloppenheim_06"   c="#C0D8F8"   p="84"  y=" 13"  />
 -->
-<!--  skies, old  -->
+<!--  ⛅ skies, old  -->
 <s m="sky/day_blue"        c="#C0D8F8"   p="84"  y=" 13"  />
 <s m="sky/day_blue2"       c="#D0E0F8"   p="60"  y="-40"  />
 <s m="sky/day_clouds"      c="#B0C0D0"   p="33"  y="-40"  />
@@ -85,165 +85,168 @@
 
 <!--  ⛰️🏔️ Terrain textures  ================================================================================================================================
 common:  sc - "short scenery name" (name color)
-      t - diff tex  n - norm tex  (t,n filename no ext)
-      s - scale  r - rating 1..5  su - surface  ro - roughness  me - metalness  re - reflection
-      tp - triplanar   du - dust  ds - dust size  md - mud   tr - trail color   aa,ab - min,max ter angle  d - damage -->
+      t - diff tex   n - norm tex  (t,n filename no ext)
+      s - scale   r - rating 1..5   su - surface
+      ro - roughness 0..1   me - metalness 0..>1 as specular multiplier
+      re - reflection 0|1   tp - triplanar 0|1
+      du - dust  ds - dust size  md - mud   tr - trail color
+      aa,ab - min,max ter angle  d - damage -->
 
-<t sc="Aus"  t="---- Australia ------"  r="0" />
-<t sc="Aus"  t="adesert_cracks_d"   n="desert_cracks_n"    s="10.50" r="2" su="DesertFast"     ro="0.9" me="0.1" re="0"  tp="0"  du="0.6" ds="1.0" md="0.5" tr="0.48 0.30 0.20 0.8"  aa="13" ab="27" />
-<t sc="Aus"  t="adesert_mntn2_d"    n="desert_mntn2_n"     s="34.04" r="4" su="Rocks"          ro="0.9" me="0.1" re="0"  tp="1"  du="0.7" ds="1.0" md="0.4" tr="0.46 0.26 0.08 0.7"  aa="28" ab="90" />
-<t sc="Can"  t="adesert_mntn2o_d"   n="desert_mntn2_n"     s="30.41" r="3" su="Rocks"          ro="0.9" me="0.1" re="0"  tp="1"  du="0.0" ds="0.2" md="0.1" tr="0.30 0.20 0.15 0.7"  aa="28" ab="40" />
-<t sc="Aus"  t="adesert_mntn4_d"    n="adesert_mntn4_n"    s="20.29" r="2" su="DesertBumpy"    ro="0.9" me="0.1" re="0"  tp="0"  du="0.6" ds="1.0" md="0.5" tr="0.48 0.30 0.20 0.8"  aa="21" ab="40" />
-<t sc="Vlc"  t="adesert_mntn4v_d"   n="adesert_mntn4_n"    s="9.04"  r="1" su="DesertBumpy"    ro="0.9" me="0.1" re="0"  tp="0"  du="0.0" ds="0.1" md="0.2" tr="0.25 0.25 0.14 0.6"  aa="0"  ab="30" />
+<t sc="Aus"  t="---- Australia ------"  r="0" />  <!-- 🔴 -->
+<t sc="Aus"  t="adesert_cracks_d"   n="desert_cracks_n"    s="10.50" r="2" su="DesertFast"     ro="0.64" me="0.1" re="0"  tp="0"  du="0.6" ds="1.0" md="0.5" tr="0.48 0.30 0.20 0.8"  aa="13" ab="27" />
+<t sc="Aus"  t="adesert_mntn2_d"    n="desert_mntn2_n"     s="34.04" r="4" su="Rocks"          ro="0.34" me="0.2" re="0"  tp="1"  du="0.7" ds="1.0" md="0.4" tr="0.46 0.26 0.08 0.7"  aa="28" ab="90" />
+<t sc="Can"  t="adesert_mntn2o_d"   n="desert_mntn2_n"     s="30.41" r="3" su="Rocks"          ro="0.38" me="0.2" re="0"  tp="1"  du="0.0" ds="0.2" md="0.1" tr="0.30 0.20 0.15 0.7"  aa="28" ab="40" />
+<t sc="Aus"  t="adesert_mntn4_d"    n="adesert_mntn4_n"    s="20.29" r="2" su="DesertBumpy"    ro="0.22" me="0.3" re="0"  tp="0"  du="0.6" ds="1.0" md="0.5" tr="0.48 0.30 0.20 0.8"  aa="21" ab="40" />
+<t sc="Vlc"  t="adesert_mntn4v_d"   n="adesert_mntn4_n"    s="9.04"  r="1" su="DesertBumpy"    ro="0.24" me="0.1" re="0"  tp="0"  du="0.0" ds="0.1" md="0.2" tr="0.25 0.25 0.14 0.6"  aa="0"  ab="30" />
 
-<t sc="Aus"  t="adesert_mntn_d"     n="desert_mntn_n"      s="40.09" r="2" su="Rocks"          ro="0.9" me="0.1" re="0"  tp="1"  du="0.0" ds="0.2" md="1.0" tr="0.20 0.20 0.00 1.0"  aa="42" ab="90" />
-<t sc="Aus"  t="adesert_rocky_d"    n="desert_rocky_n"     s="7.07"  r="3" su="DesertBumpy"    ro="0.9" me="0.1" re="0"  tp="0"  du="0.8" ds="1.0" md="0.4" tr="0.48 0.26 0.08 0.7"  aa="0"  ab="8"  />
-<t sc="Aus"  t="adesert_sand2_d"    n="desert_sand2_n"     s="10.40" r="2" su="DesertBumpy"    ro="0.9" me="0.1" re="0"  tp="0"  du="0.5" ds="1.0" md="0.5" tr="0.42 0.26 0.08 0.8"  aa="10" ab="27" />
-<t sc="Mrs"  t="adesert_stone_d"    n="adesert_stone_n"    s="11.54" r="1" su="DesertFast"     ro="0.9" me="0.1" re="0"  tp="0"  du="0.5" ds="1.0" md="0.7" tr="0.25 0.10 0.08 0.8"  aa="0"  ab="18" />
-<t sc="Can"  t="amntn_dark_d"       n="mntn_dark_n"        s="31.78" r="3" su="Rocks"          ro="0.9" me="0.1" re="0"  tp="1"  du="0.0" ds="0.8" md="0.5" tr="0.20 0.10 0.10 0.5"  aa="42" ab="57" />
+<t sc="Aus"  t="adesert_mntn_d"     n="desert_mntn_n"      s="40.09" r="2" su="Rocks"          ro="0.33" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="1.0" tr="0.20 0.20 0.00 1.0"  aa="42" ab="90" />
+<t sc="Aus"  t="adesert_rocky_d"    n="desert_rocky_n"     s="7.07"  r="3" su="DesertBumpy"    ro="0.17" me="0.5" re="0"  tp="0"  du="0.8" ds="1.0" md="0.4" tr="0.48 0.26 0.08 0.7"  aa="0"  ab="8"  />
+<t sc="Aus"  t="adesert_sand2_d"    n="desert_sand2_n"     s="10.40" r="2" su="DesertBumpy"    ro="0.40" me="0.4" re="0"  tp="0"  du="0.5" ds="1.0" md="0.5" tr="0.42 0.26 0.08 0.8"  aa="10" ab="27" />
+<t sc="Mrs"  t="adesert_stone_d"    n="adesert_stone_n"    s="11.54" r="1" su="DesertFast"     ro="0.54" me="0.1" re="0"  tp="0"  du="0.5" ds="1.0" md="0.7" tr="0.25 0.10 0.08 0.8"  aa="0"  ab="18" />
+<t sc="Can"  t="amntn_dark_d"       n="mntn_dark_n"        s="31.78" r="3" su="Rocks"          ro="0.74" me="0.1" re="0"  tp="1"  du="0.0" ds="0.8" md="0.5" tr="0.20 0.10 0.10 0.5"  aa="42" ab="57" />
 
 <t sc="Des"  t="---- Desert ------" r="0" />      <!-- 🏜️ -->
-<t sc="Des"  t="desert_cracks_d"    n="desert_cracks_n"    s="9.09"  r="1" su="DesertFast"     ro="0.7" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.46 0.46 0.08 0.7"  aa="8"  ab="22" />
-<t sc="Vlc"  t="desert_crackso_d"   n="desert_cracks_n"    s="6.61"  r="1" su="DesertFast"     ro="0.7" me="0.3" re="0"  tp="0"  du="0.0" ds="0.0" md="0.1" tr="0.42 0.36 0.28 0.6"  aa="12" ab="25" />
-<t sc="Vlc"  t="desert_cracksv_d"   n="desert_cracks_n"    s="6.61"  r="2" su="DesertFast"     ro="0.7" me="0.3" re="0"  tp="0"  du="0.0" ds="0.0" md="0.1" tr="0.42 0.36 0.28 0.6"  aa="12" ab="25" />
-<t sc="Des"  t="desert_mntn2_d"     n="desert_mntn2_n"     s="41.30" r="2" su="Rocks"          ro="0.7" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="0.1" tr="0.20 0.20 0.00 1.0"  aa="44" ab="90" />
-<t sc="Des"  t="desert_mntn_d"      n="desert_mntn_n"      s="26.21" r="3" su="Rocks"          ro="0.7" me="0.3" re="0"  tp="1"  du="0.4" ds="1.0" md="0.7" tr="0.42 0.36 0.08 0.8"  aa="23" ab="44" />
+<t sc="Des"  t="desert_cracks_d"    n="desert_cracks_n"    s="9.09"  r="1" su="DesertFast"     ro="0.74" me="0.2" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.46 0.46 0.08 0.7"  aa="8"  ab="22" />
+<t sc="Vlc"  t="desert_crackso_d"   n="desert_cracks_n"    s="6.61"  r="1" su="DesertFast"     ro="0.64" me="0.1" re="0"  tp="0"  du="0.0" ds="0.0" md="0.1" tr="0.42 0.36 0.28 0.6"  aa="12" ab="25" />
+<t sc="Vlc"  t="desert_cracksv_d"   n="desert_cracks_n"    s="6.61"  r="2" su="DesertFast"     ro="0.55" me="0.3" re="0"  tp="0"  du="0.0" ds="0.0" md="0.1" tr="0.42 0.36 0.28 0.6"  aa="12" ab="25" />
+<t sc="Des"  t="desert_mntn2_d"     n="desert_mntn2_n"     s="41.30" r="2" su="Rocks"          ro="0.31" me="0.2" re="0"  tp="1"  du="0.0" ds="0.2" md="0.1" tr="0.20 0.20 0.00 1.0"  aa="44" ab="90" />
+<t sc="Des"  t="desert_mntn_d"      n="desert_mntn_n"      s="26.21" r="3" su="Rocks"          ro="0.28" me="0.2" re="0"  tp="1"  du="0.4" ds="1.0" md="0.7" tr="0.42 0.36 0.08 0.8"  aa="23" ab="44" />
 
-<t sc="Des"  t="desert_mud_d"       n="desert_mud_n"       s="17.81" r="2" su="DesertMud"      ro="0.6" me="0.3" re="0"  tp="0"  du="0.4" ds="1.0" md="0.7" tr="0.42 0.36 0.08 0.8"  aa="36" ab="90" />
-<t sc="Atm"  t="desert_mud_d"       n="desert_mud_n"       s="8.02"  r="1" su="GrassJungle"    ro="0.6" me="0.3" re="0"  tp="0"  du="0.2" ds="0.4" md="0.6" tr="0.12 0.16 0.08 0.8"  aa="19" ab="34" />
-<t sc="Des"  t="desert_rocky_d"     n="desert_rocky_n"     s="12.14" r="3" su="DesertBumpy"    ro="0.6" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.46 0.46 0.08 0.7"  aa="25" ab="31" />
+<t sc="Des"  t="desert_mud_d"       n="desert_mud_n"       s="17.81" r="2" su="DesertMud"      ro="0.21" me="0.7" re="0"  tp="0"  du="0.4" ds="1.0" md="0.7" tr="0.42 0.36 0.08 0.8"  aa="36" ab="90" />
+<t sc="Atm"  t="desert_mud_d"       n="desert_mud_n"       s="8.02"  r="1" su="GrassJungle"    ro="0.19" me="0.9" re="0"  tp="0"  du="0.2" ds="0.4" md="0.6" tr="0.12 0.16 0.08 0.8"  aa="19" ab="34" />
+<t sc="Des"  t="desert_rocky_d"     n="desert_rocky_n"     s="12.14" r="3" su="DesertBumpy"    ro="0.64" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.46 0.46 0.08 0.7"  aa="25" ab="31" />
 
-<t sc="Des"  t="desert_sand2_d"     n="desert_sand2_n"     s="16.21" r="4" su="DesertFast"    ro="0.96" me="0.1" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.48 0.46 0.08 0.7"  aa="15" ab="27" />
-<t sc="Des"  t="desert_sand_big_d"  n="desert_sand_big_n"  s="9.63"  r="4" su="DesertBumpy"    ro="0.9" me="0.1" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.48 0.46 0.08 0.7"  aa="15" ab="27" />
-<t sc="Uni"  t="desert_sand_bigx_d" n="desert_sand_big_n"  s="7.09"  r="2" su="DesertBumpy"    ro="0.8" me="0.1" re="0"  tp="0"  du="0.0" ds="0.2" md="0.0" tr="0.22 0.20 0.40 0.9"  aa="0"  ab="32" />
-<t sc="Des"  t="desert_sand_d"      n="desert_sand_n"      s="12.06" r="3" su="DesertFast"     ro="0.9" me="0.1" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.46 0.46 0.08 0.7"  aa="0"  ab="10" />
-<t sc="Isl"  t="desert_wet_d"       n="desert_wet_n"       s="8.78"  r="2" su="DesertFast"     ro="0.3" me="0.1" re="0"  tp="0"  du="0.5" ds="0.7" md="0.0" tr="0.50 0.50 0.20 0.7"  aa="0"  ab="13" />
+<t sc="Des"  t="desert_sand2_d"     n="desert_sand2_n"     s="16.21" r="4" su="DesertFast"     ro="0.46" me="0.5" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.48 0.46 0.08 0.7"  aa="15" ab="27" />
+<t sc="Des"  t="desert_sand_big_d"  n="desert_sand_big_n"  s="9.63"  r="4" su="DesertBumpy"    ro="0.37" me="0.4" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.48 0.46 0.08 0.7"  aa="15" ab="27" />
+<t sc="Uni"  t="desert_sand_bigx_d" n="desert_sand_big_n"  s="7.09"  r="2" su="DesertBumpy"    ro="0.52" me="0.9" re="0"  tp="0"  du="0.0" ds="0.2" md="0.0" tr="0.22 0.20 0.40 0.9"  aa="0"  ab="32" />
+<t sc="Des"  t="desert_sand_d"      n="desert_sand_n"      s="12.06" r="3" su="DesertFast"     ro="0.42" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.46 0.46 0.08 0.7"  aa="0"  ab="10" />
+<t sc="Isl"  t="desert_wet_d"       n="desert_wet_n"       s="8.78"  r="2" su="DesertFast"     ro="0.27" me="1.0" re="0"  tp="0"  du="0.5" ds="0.7" md="0.0" tr="0.50 0.50 0.20 0.7"  aa="0"  ab="13" />
 
 <t sc="JngD" t="---- Grass ------"  r="0" />      <!-- 🌿 -->
-<t sc="Atm"  t="grass_autumn_orn_d" n="grass_autumn_n"     s="5.72"  r="2" su="GrassForest"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.4" tr="0.48 0.42 0.20 0.7"  aa="0"  ab="11" />
-<t sc="Atm"  t="grass_autumn_red_d" n="grass_autumn_n"     s="6.10"  r="1" su="GrassForest"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.4" tr="0.44 0.42 0.20 0.7"  aa="0"  ab="12" />
+<t sc="Atm"  t="grass_autumn_orn_d" n="grass_autumn_n"     s="5.72"  r="2" su="GrassForest"    ro="0.22" me="0.7" re="0"  tp="0"  du="0.0" ds="0.2" md="0.4" tr="0.48 0.42 0.20 0.7"  aa="0"  ab="11" />
+<t sc="Atm"  t="grass_autumn_red_d" n="grass_autumn_n"     s="6.10"  r="1" su="GrassForest"    ro="0.26" me="0.6" re="0"  tp="0"  du="0.0" ds="0.2" md="0.4" tr="0.44 0.42 0.20 0.7"  aa="0"  ab="12" />
 
-<t sc="For"  t="grass_green2y_d"    n="grass_green2y_n"    s="10.13" r="5" su="GrassForest"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.8" tr="0.18 0.36 0.04 0.9"  aa="0"  ab="20" />
-<t sc="Jng"  t="grass_green_d"      n="grass_green_n"      s="9.43"  r="5" su="GrassJungle"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.4" tr="0.16 0.31 0.04 0.7"  aa="0"  ab="27" />
-<t sc="For"  t="grass_ground2y_d"   n="grass_ground_n"     s="9.10"  r="4" su="GrassForest"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.6" tr="0.15 0.20 0.10 0.9"  aa="17" ab="25" />
-<t sc="For"  t="grass_ground_d"     n="grass_ground_n"     s="9.04"  r="5" su="GrassForest"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.8" tr="0.22 0.20 0.04 0.9"  aa="0"  ab="25" />
+<t sc="For"  t="grass_green2y_d"    n="grass_green2y_n"    s="10.13" r="5" su="GrassForest"    ro="0.19" me="0.6" re="0"  tp="0"  du="0.0" ds="0.2" md="0.8" tr="0.18 0.36 0.04 0.9"  aa="0"  ab="20" />
+<t sc="Jng"  t="grass_green_d"      n="grass_green_n"      s="9.43"  r="5" su="GrassJungle"    ro="0.14" me="0.7" re="0"  tp="0"  du="0.0" ds="0.2" md="0.4" tr="0.16 0.31 0.04 0.7"  aa="0"  ab="27" />
+<t sc="For"  t="grass_ground2y_d"   n="grass_ground_n"     s="9.10"  r="4" su="GrassForest"    ro="0.21" me="0.5" re="0"  tp="0"  du="0.0" ds="0.2" md="0.6" tr="0.15 0.20 0.10 0.9"  aa="17" ab="25" />
+<t sc="For"  t="grass_ground_d"     n="grass_ground_n"     s="9.04"  r="5" su="GrassForest"    ro="0.17" me="0.6" re="0"  tp="0"  du="0.0" ds="0.2" md="0.8" tr="0.22 0.20 0.04 0.9"  aa="0"  ab="25" />
 
-<t sc="Jng"  t="grass_mix_d"        n="grass_mix_n"        s="8.02"  r="4" su="GrassJungle"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.8" tr="0.18 0.36 0.04 0.7"  aa="0"  ab="28" />
-<t sc="Atm"  t="grass_mix_ylw_d"    n="grass_mix_n"        s="7.81"  r="3" su="GrassForest"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.6" tr="0.42 0.46 0.08 0.7"  aa="14" ab="43" />
-<t sc="Jng"  t="grass_rocky_d"      n="grass_rocky_n"      s="10.81" r="4" su="DesertBumpy"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.6" tr="0.42 0.46 0.08 0.7"  aa="13" ab="36" />
+<t sc="Jng"  t="grass_mix_d"        n="grass_mix_n"        s="8.02"  r="4" su="GrassJungle"    ro="0.24" me="0.9" re="0"  tp="0"  du="0.0" ds="0.2" md="0.8" tr="0.18 0.36 0.04 0.7"  aa="0"  ab="28" />
+<t sc="Atm"  t="grass_mix_ylw_d"    n="grass_mix_n"        s="7.81"  r="3" su="GrassForest"    ro="0.34" me="0.8" re="0"  tp="0"  du="0.0" ds="0.2" md="0.6" tr="0.42 0.46 0.08 0.7"  aa="14" ab="43" />
+<t sc="Jng"  t="grass_rocky_d"      n="grass_rocky_n"      s="10.81" r="4" su="DesertBumpy"    ro="0.44" me="0.6" re="0"  tp="0"  du="0.0" ds="0.2" md="0.6" tr="0.42 0.46 0.08 0.7"  aa="13" ab="36" />
 
-<t sc="For"  t="---- Ground ------" r="0" />
-<t sc="Mud"  t="ground_dry2_d"      n="ground_dry2_n"      s="10.58" r="3" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="1.0" tr="0.15 0.15 0.05 0.8"  aa="0"  ab="13" />
-<t sc="Can"  t="ground_dry_d"       n="ground_dry_n"       s="8.97"  r="2" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.5" ds="0.5" md="0.0" tr="0.40 0.20 0.20 0.5"  aa="0"  ab="17" />
+<t sc="For"  t="---- Ground ------" r="0" />      <!-- 🌲 -->
+<t sc="Mud"  t="ground_dry2_d"      n="ground_dry2_n"      s="10.58" r="3" su="DesertFast"     ro="0.31" me="0.7" re="0"  tp="0"  du="0.0" ds="0.2" md="1.0" tr="0.15 0.15 0.05 0.8"  aa="0"  ab="13" />
+<t sc="Can"  t="ground_dry_d"       n="ground_dry_n"       s="8.97"  r="2" su="DesertFast"     ro="0.71" me="0.4" re="0"  tp="0"  du="0.5" ds="0.5" md="0.0" tr="0.40 0.20 0.20 0.5"  aa="0"  ab="17" />
 
-<t sc="Jng"  t="ground_ferns_d"     n="ground_ferns_n"     s="4.55"  r="1" su="GrassJungle"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="1.0" tr="0.09 0.23 0.04 0.8"  aa="0"  ab="90" />
-<t sc="Jng"  t="ground_leaves_d"    n="ground_leaves_n"    s="5.62"  r="1" su="GrassJungle"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.6" tr="0.32 0.40 0.08 0.7"  aa="16" ab="30" />
+<t sc="Jng"  t="ground_ferns_d"     n="ground_ferns_n"     s="4.55"  r="1" su="GrassJungle"    ro="0.14" me="0.9" re="0"  tp="0"  du="0.0" ds="0.2" md="1.0" tr="0.09 0.23 0.04 0.8"  aa="0"  ab="90" />
+<t sc="Jng"  t="ground_leaves_d"    n="ground_leaves_n"    s="5.62"  r="1" su="GrassJungle"    ro="0.10" me="0.9" re="0"  tp="0"  du="0.0" ds="0.2" md="0.6" tr="0.32 0.40 0.08 0.7"  aa="16" ab="30" />
 
-<t sc="Jng"  t="ground_mud2_d"      n="ground_mud2_n"      s="15.64" r="3" su="GrassJungleWet" ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="1.0" tr="0.42 0.26 0.08 0.8"  aa="32" ab="90" />
-<t sc="Jng"  t="ground_mud_d"       n="ground_mud_n"       s="7.43"  r="4" su="GrassJungleWet" ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.6" tr="0.30 0.26 0.10 0.7"  aa="19" ab="34" />
+<t sc="Jng"  t="ground_mud2_d"      n="ground_mud2_n"      s="15.64" r="3" su="GrassJungleWet" ro="0.16" me="1.0" re="0"  tp="0"  du="0.0" ds="0.2" md="1.0" tr="0.42 0.26 0.08 0.8"  aa="32" ab="90" />
+<t sc="Jng"  t="ground_mud_d"       n="ground_mud_n"       s="7.43"  r="4" su="GrassJungleWet" ro="0.10" me="1.0" re="0"  tp="0"  du="0.0" ds="0.2" md="0.6" tr="0.30 0.26 0.10 0.7"  aa="19" ab="34" />
 
-<t sc="Grc"  t="ground_white_d"     n="ground_white_n"     s="8.54"  r="2" su="DesertBumpy"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.3" ds="0.2" md="0.4" tr="0.36 0.40 0.28 0.7"  aa="0"  ab="18" />
-<t sc="Grc"  t="ground_yellow_d"    n="jungle_mntn_n"      s="8.91"  r="3" su="DesertBumpy"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.3" ds="0.2" md="0.4" tr="0.42 0.36 0.28 0.6"  aa="18" ab="30" />
+<t sc="Grc"  t="ground_white_d"     n="ground_white_n"     s="8.54"  r="2" su="DesertBumpy"    ro="0.34" me="0.3" re="0"  tp="0"  du="0.3" ds="0.2" md="0.4" tr="0.36 0.40 0.28 0.7"  aa="0"  ab="18" />
+<t sc="Grc"  t="ground_yellow_d"    n="jungle_mntn_n"      s="8.91"  r="3" su="DesertBumpy"    ro="0.31" me="0.3" re="0"  tp="0"  du="0.3" ds="0.2" md="0.4" tr="0.42 0.36 0.28 0.6"  aa="18" ab="30" />
 
 <t sc="Isl"  t="---- Sand ------"   r="0" />      <!-- 🏖️ -->
-<t sc="Isl"  t="island_sand2_d"     n="desert_sand2_n"     s="10.21" r="2" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.6" ds="0.7" md="0.0" tr="0.44 0.40 0.23 0.7"  aa="0"  ab="90" />
-<t sc="Isl"  t="island_sand_d"      n="desert_sand_n"      s="12.78" r="3" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.6" ds="0.7" md="0.0" tr="0.44 0.44 0.26 0.7"  aa="0"  ab="90" />
+<t sc="Isl"  t="island_sand2_d"     n="desert_sand2_n"     s="10.21" r="2" su="DesertFast"     ro="0.61" me="0.4" re="0"  tp="0"  du="0.6" ds="0.7" md="0.0" tr="0.44 0.40 0.23 0.7"  aa="0"  ab="90" />
+<t sc="Isl"  t="island_sand_d"      n="desert_sand_n"      s="12.78" r="3" su="DesertFast"     ro="0.51" me="0.5" re="0"  tp="0"  du="0.6" ds="0.7" md="0.0" tr="0.44 0.44 0.26 0.7"  aa="0"  ab="90" />
 
-<t sc="Grc"  t="island_sand2w_d"    n="desert_sand2_n"     s="10.21" r="3" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.6" ds="0.8" md="0.0" tr="0.52 0.52 0.5 0.7"   aa="0"  ab="90" />
-<t sc="Grc"  t="island_sandw_d"     n="desert_sand_n"      s="12.78" r="2" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.6" ds="0.8" md="0.0" tr="0.52 0.52 0.5 0.7"   aa="0"  ab="90" />
+<t sc="Grc"  t="island_sand2w_d"    n="desert_sand2_n"     s="10.21" r="3" su="DesertFast"     ro="0.65" me="0.3" re="0"  tp="0"  du="0.6" ds="0.8" md="0.0" tr="0.52 0.52 0.5 0.7"   aa="0"  ab="90" />
+<t sc="Grc"  t="island_sandw_d"     n="desert_sand_n"      s="12.78" r="2" su="DesertFast"     ro="0.55" me="0.4" re="0"  tp="0"  du="0.6" ds="0.8" md="0.0" tr="0.52 0.52 0.5 0.7"   aa="0"  ab="90" />
 
 <t sc="Vlc"  t="---- Volcanic ------"   r="0" />  <!-- 🌋 -->
-<t sc="Vlc"  t="ground_crackedo_d"  n="ground_cracked_n"   s="6.67"  r="2" su="DesertMud"      ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.0" md="0.1" tr="0.25 0.20 0.14 0.6"  aa="13" ab="26" />
-<t sc="Vlc"  t="ground_crackedv_d"  n="ground_cracked_n"   s="10.43" r="3" su="DesertBumpy"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.3" ds="0.2" md="0.4" tr="0.36 0.40 0.28 0.7"  aa="0"  ab="12" />
-<t sc="Vlc"  t="ground_cracks2v_d"  n="ground_cracks2_n"   s="6.93"  r="3" su="DesertBumpy"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.6" md="0.4" tr="0.22 0.22 0.04 0.1"  aa="0"  ab="20" />
-<t sc="Vlc"  t="ground_cracks2y_d"  n="ground_cracks2_n"   s="6.93"  r="2" su="DesertBumpy"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.6" md="0.4" tr="0.32 0.22 0.04 0.1"  aa="0"  ab="20" />
-<t sc="Vlc"  t="lava2_d"            n="ground_cracked_n"   s="14.55" r="1" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.0" md="0.5" tr="0.32 0.32 0.32 0.3"  aa="26" ab="45" />
-<t sc="Vlc"  t="lava_black_d"       n="lava_black_n"       s="5.87"  r="1" su="DesertMud"      ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.0" md="0.0" tr="0.25 0.20 0.14 0.6"  aa="0"  ab="9"  />
-<t sc="Vlc"  t="lava_d"             n="lava_n"             s="33.83" r="1" su="DesertRocks"    ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="0.0" tr="0.30 0.15 0.00 0.6"  aa="0"  ab="90" />
-<t sc="Mrs"  t="lava_mars_d"        n="lava_n"             s="32.00" r="1" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.3" ds="1.0" md="0.8" tr="0.15 0.06 0.03 0.9"  aa="64" ab="90" />
+<t sc="Vlc"  t="ground_crackedo_d"  n="ground_cracked_n"   s="6.67"  r="2" su="DesertMud"      ro="0.51" me="0.3" re="0"  tp="0"  du="0.0" ds="0.0" md="0.1" tr="0.25 0.20 0.14 0.6"  aa="13" ab="26" />
+<t sc="Vlc"  t="ground_crackedv_d"  n="ground_cracked_n"   s="10.43" r="3" su="DesertBumpy"    ro="0.41" me="0.6" re="0"  tp="0"  du="0.3" ds="0.2" md="0.4" tr="0.36 0.40 0.28 0.7"  aa="0"  ab="12" />
+<t sc="Vlc"  t="ground_cracks2v_d"  n="ground_cracks2_n"   s="6.93"  r="3" su="DesertBumpy"    ro="0.41" me="0.5" re="0"  tp="0"  du="0.0" ds="0.6" md="0.4" tr="0.22 0.22 0.04 0.1"  aa="0"  ab="20" />
+<t sc="Vlc"  t="ground_cracks2y_d"  n="ground_cracks2_n"   s="6.93"  r="2" su="DesertBumpy"    ro="0.45" me="0.5" re="0"  tp="0"  du="0.0" ds="0.6" md="0.4" tr="0.32 0.22 0.04 0.1"  aa="0"  ab="20" />
+<t sc="Vlc"  t="lava2_d"            n="ground_cracked_n"   s="14.55" r="1" su="Rocks"          ro="0.21" me="0.4" re="0"  tp="0"  du="0.0" ds="0.0" md="0.5" tr="0.32 0.32 0.32 0.3"  aa="26" ab="45" />
+<t sc="Vlc"  t="lava_black_d"       n="lava_black_n"       s="5.87"  r="1" su="DesertMud"      ro="0.25" me="0.6" re="0"  tp="0"  du="0.0" ds="0.0" md="0.0" tr="0.25 0.20 0.14 0.6"  aa="0"  ab="9"  />
+<t sc="Vlc"  t="lava_d"             n="lava_n"             s="33.83" r="1" su="DesertRocks"    ro="0.31" me="0.5" re="0"  tp="1"  du="0.0" ds="0.2" md="0.0" tr="0.30 0.15 0.00 0.6"  aa="0"  ab="90" />
+<t sc="Mrs"  t="lava_mars_d"        n="lava_n"             s="32.00" r="1" su="Rocks"          ro="0.41" me="0.4" re="0"  tp="1"  du="0.3" ds="1.0" md="0.8" tr="0.15 0.06 0.03 0.9"  aa="64" ab="90" />
 
 <t sc="ForM" t="---- Mountains ------"  r="0" />  <!-- ⛰️ -->
-<t sc="Jng"  t="jungle_mntn2_d"     n="jungle_mntn2_n"     s="26.69" r="4" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="0.0" tr="0.20 0.20 0.20 0.6"  aa="55" ab="90" />
-<t sc="Jng"  t="jungle_mntn_d"      n="jungle_mntn_n"      s="26.00" r="5" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="0.0" tr="0.20 0.20 0.20 0.6"  aa="42" ab="90" />
-<t sc="Uni"  t="jungle_mntnx_d"     n="jungle_mntn_n"      s="21.88" r="3" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="0.0" tr="0.32 0.31 0.80 0.9"  aa="39" ab="53" />
-<t sc="Jng"  t="jungle_stone_d"     n="jungle_stone_n"     s="26.00" r="3" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="0.0" tr="0.20 0.20 0.20 0.6"  aa="42" ab="90" />
+<t sc="Jng"  t="jungle_mntn2_d"     n="jungle_mntn2_n"     s="26.69" r="4" su="Rocks"          ro="0.77" me="0.4" re="0"  tp="1"  du="0.0" ds="0.2" md="0.0" tr="0.20 0.20 0.20 0.6"  aa="55" ab="90" />
+<t sc="Jng"  t="jungle_mntn_d"      n="jungle_mntn_n"      s="26.00" r="5" su="Rocks"          ro="0.74" me="0.4" re="0"  tp="1"  du="0.0" ds="0.2" md="0.0" tr="0.20 0.20 0.20 0.6"  aa="42" ab="90" />
+<t sc="Uni"  t="jungle_mntnx_d"     n="jungle_mntn_n"      s="21.88" r="3" su="Rocks"          ro="0.54" me="0.8" re="0"  tp="1"  du="0.0" ds="0.2" md="0.0" tr="0.32 0.31 0.80 0.9"  aa="39" ab="53" />
+<t sc="Jng"  t="jungle_stone_d"     n="jungle_stone_n"     s="26.00" r="3" su="Rocks"          ro="0.81" me="0.7" re="0"  tp="1"  du="0.0" ds="0.2" md="0.0" tr="0.20 0.20 0.20 0.6"  aa="42" ab="90" />
 
-<t sc="Vlc"  t="mntn_black_d"       n="mntn_black_n"       s="30.02" r="1" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.3" ds="0.2" md="0.5" tr="0.32 0.32 0.32 0.4"  aa="44" ab="90" />
-<t sc="For"  t="mntn_brown_d"       n="mntn_brown_n"       s="32.19" r="3" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="1.0" tr="0.23 0.23 0.10 0.8"  aa="52" ab="90" />
+<t sc="Vlc"  t="mntn_black_d"       n="mntn_black_n"       s="30.02" r="1" su="Rocks"          ro="0.73" me="0.4" re="0"  tp="1"  du="0.3" ds="0.2" md="0.5" tr="0.32 0.32 0.32 0.4"  aa="44" ab="90" />
+<t sc="For"  t="mntn_brown_d"       n="mntn_brown_n"       s="32.19" r="3" su="Rocks"          ro="0.86" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="1.0" tr="0.23 0.23 0.10 0.8"  aa="52" ab="90" />
 
-<t sc="Can"  t="mntn_canyon2o_d"    n="adesert_stone_n"    s="19.19" r="2" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.4" tr="0.48 0.26 0.08 0.7"  aa="30" ab="50" />
-<t sc="Can"  t="mntn_canyon_d"      n="mntn_canyon_n"      s="29.27" r="2" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.8" md="0.5" tr="0.20 0.10 0.10 0.5"  aa="50" ab="90" />
+<t sc="Can"  t="mntn_canyon2o_d"    n="adesert_stone_n"    s="19.19" r="2" su="Rocks"          ro="0.78" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.4" tr="0.48 0.26 0.08 0.7"  aa="30" ab="50" />
+<t sc="Can"  t="mntn_canyon_d"      n="mntn_canyon_n"      s="29.27" r="2" su="Rocks"          ro="0.72" me="0.3" re="0"  tp="1"  du="0.0" ds="0.8" md="0.5" tr="0.20 0.10 0.10 0.5"  aa="50" ab="90" />
 
-<t sc="Atm"  t="mntn_dark_d"        n="mntn_dark_n"        s="27.61" r="4" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.1" ds="0.2" md="0.3" tr="0.25 0.25 0.25 0.7"  aa="33" ab="90" />
-<t sc="Uni"  t="mntn_darkx_d"       n="mntn_dark_n"        s="33.83" r="3" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="0.0" tr="0.20 0.20 0.40 1.0"  aa="51" ab="90" />
-<t sc="For"  t="mntn_forest_d"      n="mntn_brown_n"       s="33.21" r="3" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="1.0" tr="0.20 0.20 0.00 1.0"  aa="63" ab="90" />
-<t sc="Sav"  t="mntn_gray_d"        n="mntn_dark_n"        s="31.19" r="4" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="0.8" tr="0.18 0.18 0.14 0.7"  aa="35" ab="50" />
-<t sc="Jng"  t="mntn_green_d"       n="mntn_green_n"       s="32.00" r="5" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="1.0" tr="0.32 0.32 0.32 1.0"  aa="31" ab="90" />
-<t sc="Wnt"  t="mntn_white_d"       n="jungle_stone_n"     s="30.60" r="3" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.0" md="1.0" tr="0.40 0.40 0.40 0.7"  aa="51" ab="90" />
-<t sc="Wnt"  t="mntn_white2_d"      n="jungle_stone_n"     s="46.13" r="1" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.2" ds="0.2" md="0.0" tr="0.40 0.40 0.40 0.6"  aa="42" ab="90" />
+<t sc="Atm"  t="mntn_dark_d"        n="mntn_dark_n"        s="27.61" r="4" su="Rocks"          ro="0.41" me="0.9" re="0"  tp="1"  du="0.1" ds="0.2" md="0.3" tr="0.25 0.25 0.25 0.7"  aa="33" ab="90" />
+<t sc="Uni"  t="mntn_darkx_d"       n="mntn_dark_n"        s="33.83" r="3" su="Rocks"          ro="0.36" me="0.9" re="0"  tp="1"  du="0.0" ds="0.2" md="0.0" tr="0.20 0.20 0.40 1.0"  aa="51" ab="90" />
+<t sc="For"  t="mntn_forest_d"      n="mntn_brown_n"       s="33.21" r="3" su="Rocks"          ro="0.74" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="1.0" tr="0.20 0.20 0.00 1.0"  aa="63" ab="90" />
+<t sc="Sav"  t="mntn_gray_d"        n="mntn_dark_n"        s="31.19" r="4" su="Rocks"          ro="0.64" me="0.5" re="0"  tp="1"  du="0.0" ds="0.2" md="0.8" tr="0.18 0.18 0.14 0.7"  aa="35" ab="50" />
+<t sc="Jng"  t="mntn_green_d"       n="mntn_green_n"       s="32.00" r="5" su="Rocks"          ro="0.24" me="0.5" re="0"  tp="1"  du="0.0" ds="0.2" md="1.0" tr="0.32 0.32 0.32 1.0"  aa="31" ab="90" />
+<t sc="Wnt"  t="mntn_white_d"       n="jungle_stone_n"     s="30.60" r="3" su="Rocks"          ro="0.86" me="0.2" re="0"  tp="1"  du="0.0" ds="0.0" md="1.0" tr="0.40 0.40 0.40 0.7"  aa="51" ab="90" />
+<t sc="Wnt"  t="mntn_white2_d"      n="jungle_stone_n"     s="46.13" r="1" su="Rocks"          ro="0.86" me="0.2" re="0"  tp="1"  du="0.2" ds="0.2" md="0.0" tr="0.40 0.40 0.40 0.6"  aa="42" ab="90" />
 
-<t sc="Uni"  t="mntn_x1_d"          n="mntn_x1_n"          s="26.04" r="3" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.0" ds="0.2" md="0.2" tr="0.32 0.31 0.50 0.9"  aa="28" ab="44" />
-<t sc="Uni"  t="mntn_x2_d"          n="mntn_x2_n"          s="12.78" r="1" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.0" tr="0.32 0.31 0.80 0.9"  aa="33" ab="43" />
-<t sc="Grc"  t="mntn_yellow_d"      n="jungle_stone_n"     s="42.53" r="2" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.3" ds="0.2" md="0.5" tr="0.32 0.32 0.32 0.4"  aa="33" ab="90" />
+<t sc="Uni"  t="mntn_x1_d"          n="mntn_x1_n"          s="26.04" r="3" su="Rocks"          ro="0.55" me="0.6" re="0"  tp="1"  du="0.0" ds="0.2" md="0.2" tr="0.32 0.31 0.50 0.9"  aa="28" ab="44" />
+<t sc="Uni"  t="mntn_x2_d"          n="mntn_x2_n"          s="12.78" r="1" su="Rocks"          ro="0.75" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.0" tr="0.32 0.31 0.80 0.9"  aa="33" ab="43" />
+<t sc="Grc"  t="mntn_yellow_d"      n="jungle_stone_n"     s="42.53" r="2" su="Rocks"          ro="0.64" me="0.3" re="0"  tp="1"  du="0.3" ds="0.2" md="0.5" tr="0.32 0.32 0.32 0.4"  aa="33" ab="90" />
 
 <t sc="Sav"  t="---- Savanna, Other ------"  r="0" />
-<t sc="Mos"  t="moss_ground_d"      n="grass_ground_n"     s="8.92"  r="2" su="GrassJungle"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.1" tr="0.13 0.20 0.13 0.8"  aa="17" ab="34" />
-<t sc="Mos"  t="moss_plants_d"      n="moss_plants_n"      s="9.01"  r="2" su="GrassJungle"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.1" tr="0.12 0.25 0.23 0.8"  aa="0"  ab="19" />
-<t sc="Sav"  t="savanna_dry_d"      n="savanna_dry_n"      s="7.30"  r="3" su="GrassForest"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.8" tr="0.38 0.36 0.04 0.7"  aa="0"  ab="21" />
-<t sc="Sav"  t="savanna_green_d"    n="savanna_green_n"    s="9.23"  r="4" su="GrassForest"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.6" tr="0.42 0.46 0.08 0.7"  aa="0"  ab="90" />
-<t sc="Sav"  t="savanna_yellow_d"   n="savanna_yellow_n"   s="10.50" r="3" su="GrassForest"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.4" tr="0.48 0.42 0.20 0.7"  aa="0"  ab="90" />
-<t sc="Stn"  t="stones_gray_d"      n="stones_gray_n"      s="10.3"  r="1" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
-<t sc="Stn"  t="stones_color_d"     n="stones_color_n"     s="9.89"  r="1" su="DesertBumpy"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.43 0.43 0.43 0.7"  aa="12" ab="32" />
-<t sc="Stn"  t="stones_brown_d"     n="stones_brown_n"     s="9.44"  r="1" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.41 0.41 0.38 0.7"  aa="0"  ab="22" />
+<t sc="Mos"  t="moss_ground_d"      n="grass_ground_n"     s="8.92"  r="2" su="GrassJungle"    ro="0.21" me="1.0" re="0"  tp="0"  du="0.0" ds="0.2" md="0.1" tr="0.13 0.20 0.13 0.8"  aa="17" ab="34" />
+<t sc="Mos"  t="moss_plants_d"      n="moss_plants_n"      s="9.01"  r="2" su="GrassJungle"    ro="0.31" me="1.0" re="0"  tp="0"  du="0.0" ds="0.2" md="0.1" tr="0.12 0.25 0.23 0.8"  aa="0"  ab="19" />
+<t sc="Sav"  t="savanna_dry_d"      n="savanna_dry_n"      s="7.30"  r="3" su="GrassForest"    ro="0.62" me="0.3" re="0"  tp="0"  du="0.0" ds="0.2" md="0.8" tr="0.38 0.36 0.04 0.7"  aa="0"  ab="21" />
+<t sc="Sav"  t="savanna_green_d"    n="savanna_green_n"    s="9.23"  r="4" su="GrassForest"    ro="0.72" me="0.4" re="0"  tp="0"  du="0.0" ds="0.2" md="0.6" tr="0.42 0.46 0.08 0.7"  aa="0"  ab="90" />
+<t sc="Sav"  t="savanna_yellow_d"   n="savanna_yellow_n"   s="10.50" r="3" su="GrassForest"    ro="0.52" me="0.5" re="0"  tp="0"  du="0.0" ds="0.2" md="0.4" tr="0.48 0.42 0.20 0.7"  aa="0"  ab="90" />
+<t sc="Stn"  t="stones_brown_d"     n="stones_brown_n"     s="9.44"  r="1" su="DesertFast"     ro="0.35" me="0.5" re="0"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.41 0.41 0.38 0.7"  aa="0"  ab="22" />
+<t sc="Stn"  t="stones_color_d"     n="stones_color_n"     s="9.89"  r="1" su="DesertBumpy"    ro="0.45" me="0.4" re="0"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.43 0.43 0.43 0.7"  aa="12" ab="32" />
+<t sc="Stn"  t="stones_gray_d"      n="stones_gray_n"      s="10.3"  r="1" su="DesertFast"     ro="0.62" me="0.3" re="0"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
 
 <t sc="Wet"  t="---- Winter ----"   r="0" />      <!-- 🌨 -->
-<t sc="Wnt"  t="snow1_d"            n="snow1_n"            s="10.66" r="1" su="SnowMedium"     ro="0.0" me="0.8" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="15" />
-<t sc="Wnt"  t="snow2_d"            n="snow2_n"            s="8.48"  r="1" su="SnowMedium"     ro="0.0" me="0.8" re="0"  tp="0"  du="0.4" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
-<t sc="Wnt"  t="snow2ice_d"         n="snow2_n"            s="14.93" r="1" su="SnowMedium"     ro="0.0" me="0.8" re="0"  tp="0"  du="0.4" ds="0.6" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
-<t sc="Wnt"  t="snow_bumpy_d"       n="snow_bumpy_n"       s="8.97"  r="2" su="SnowDeep"       ro="0.1" me="0.8" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
+<t sc="Wnt"  t="snow1_d"            n="snow1_n"            s="10.66" r="1" su="SnowMedium"     ro="0.71" me="0.9" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="15" />
+<t sc="Wnt"  t="snow2_d"            n="snow2_n"            s="8.48"  r="1" su="SnowMedium"     ro="0.81" me="0.9" re="0"  tp="0"  du="0.4" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
+<t sc="Wnt"  t="snow2ice_d"         n="snow2_n"            s="14.93" r="1" su="SnowMedium"     ro="0.25" me="0.9" re="0"  tp="0"  du="0.4" ds="0.6" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
+<t sc="Wnt"  t="snow_bumpy_d"       n="snow_bumpy_n"       s="8.97"  r="2" su="SnowDeep"       ro="0.61" me="0.9" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
 
-<t sc="Wet"  t="snow_grass2_d"      n="snow_grass2_n"      s="10.58" r="2" su="SnowWet"        ro="0.1" me="0.8" re="0"  tp="0"  du="0.1" ds="0.8" md="0.7" tr="0.25 0.40 0.25 0.6"  aa="0"  ab="20" />
-<t sc="Wet"  t="snow_grass3_d"      n="snow_grass3_n"      s="8.08"  r="3" su="SnowWet"        ro="0.1" me="0.8" re="0"  tp="0"  du="0.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
-<t sc="Wet"  t="snow_grass_d"       n="snow_grass_n"       s="9.50"  r="4" su="SnowWet"        ro="0.1" me="0.8" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="20" />
-<t sc="Wnt"  t="snow_mntn2_d"       n="snow_mntn2_n"       s="21.00" r="3" su="Rocks"          ro="0.0" me="0.8" re="0"  tp="0"  du="0.0" ds="0.2" md="1.0" tr="0.20 0.20 0.00 1.0"  aa="59" ab="90" />
-<t sc="Wnt"  t="snow_mntn_d"        n="snow_mntn_n"        s="51.00" r="2" su="Rocks"          ro="0.0" me="0.8" re="0"  tp="1"  du="0.0" ds="0.2" md="1.0" tr="0.20 0.20 0.00 1.0"  aa="21" ab="90" />
-<t sc="Wnt"  t="snow_mud_d"         n="snow_mud_n"         s="9.50"  r="3" su="SnowWet"        ro="0.3" me="0.8" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="20" />
-<t sc="Wnt"  t="snow_rough_d"       n="snow_rough_n"       s="12.14" r="2" su="SnowDeep"       ro="0.3" me="0.8" re="0"  tp="0"  du="0.4" ds="0.6" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="11" ab="90" />
+<t sc="Wet"  t="snow_grass2_d"      n="snow_grass2_n"      s="10.58" r="2" su="SnowWet"        ro="0.55" me="1.0" re="0"  tp="0"  du="0.1" ds="0.8" md="0.7" tr="0.25 0.40 0.25 0.6"  aa="0"  ab="20" />
+<t sc="Wet"  t="snow_grass3_d"      n="snow_grass3_n"      s="8.08"  r="3" su="SnowWet"        ro="0.65" me="1.0" re="0"  tp="0"  du="0.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="90" />
+<t sc="Wet"  t="snow_grass_d"       n="snow_grass_n"       s="9.50"  r="4" su="SnowWet"        ro="0.45" me="1.0" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="20" />
+<t sc="Wnt"  t="snow_mntn2_d"       n="snow_mntn2_n"       s="21.00" r="3" su="Rocks"          ro="0.27" me="0.9" re="0"  tp="0"  du="0.0" ds="0.2" md="1.0" tr="0.20 0.20 0.00 1.0"  aa="59" ab="90" />
+<t sc="Wnt"  t="snow_mntn_d"        n="snow_mntn_n"        s="51.00" r="2" su="Rocks"          ro="0.43" me="0.7" re="0"  tp="1"  du="0.0" ds="0.2" md="1.0" tr="0.20 0.20 0.00 1.0"  aa="21" ab="90" />
+<t sc="Wnt"  t="snow_mud_d"         n="snow_mud_n"         s="9.50"  r="3" su="SnowWet"        ro="0.13" me="1.0" re="0"  tp="0"  du="1.0" ds="0.8" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="0"  ab="20" />
+<t sc="Wnt"  t="snow_rough_d"       n="snow_rough_n"       s="12.14" r="2" su="SnowDeep"       ro="0.35" me="0.8" re="0"  tp="0"  du="0.4" ds="0.6" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="11" ab="90" />
 
 <t sc="Spc"  t="---- Space floor ------"  r="0" />  <!-- 🌌 -->
-<t sc="Spc"  t="space_x_d"          n="space_x_n"          s="12.0"  r="1" su="Metal"          ro="0.2" me="0.6" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
-<t sc="Spc"  t="space_diam_d"       n="space_diam_n"       s="12.0"  r="1" su="Metal"          ro="0.0" me="0.7" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
-<t sc="Spc"  t="space_g_concrete_d" n="space_gray_n"       s="12.0"  r="1" su="Asphalt"        ro="0.8" me="0.1" re="0"  tp="0"  du="0.0" ds="0.0" md="0.0" tr="0.06 0.06 0.06 0.7"  aa="0"  ab="22" />
-<t sc="Spc"  t="space_gray_d"       n="space_gray_n"       s="12.0"  r="2" su="Metal"          ro="0.4" me="0.6" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Spc"  t="space_x_d"          n="space_x_n"          s="12.0"  r="1" su="Metal"          ro="0.12" me="0.7" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Spc"  t="space_diam_d"       n="space_diam_n"       s="12.0"  r="1" su="Metal"          ro="0.22" me="0.6" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Spc"  t="space_g_concrete_d" n="space_gray_n"       s="12.0"  r="1" su="Asphalt"        ro="0.52" me="0.3" re="0"  tp="0"  du="0.0" ds="0.0" md="0.0" tr="0.06 0.06 0.06 0.7"  aa="0"  ab="22" />
+<t sc="Spc"  t="space_gray_d"       n="space_gray_n"       s="12.0"  r="2" su="Metal"          ro="0.42" me="0.7" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
 
-<t sc="Spc"  t="space_m_concrete_d" n="space_metal_n"      s="12.0"  r="2" su="Asphalt"        ro="0.9" me="0.1" re="0"  tp="0"  du="0.0" ds="0.0" md="0.0" tr="0.06 0.06 0.06 0.7"  aa="0"  ab="22" />
-<t sc="Spc"  t="space_metal_d"      n="space_metal_n"      s="12.0"  r="2" su="Metal"          ro="0.3" me="0.9" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
-<t sc="Spc"  t="space_dots_d"       n="space_dots_n"       s="12.0"  r="1" su="Metal"          ro="0.1" me="0.8" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
-<t sc="Spc"  t="space_octagons_d"   n="space_octagons_n"   s="12.0"  r="1" su="Metal"          ro="0.3" me="0.6" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Spc"  t="space_m_concrete_d" n="space_metal_n"      s="12.0"  r="2" su="Asphalt"        ro="0.69" me="0.5" re="0"  tp="0"  du="0.0" ds="0.0" md="0.0" tr="0.06 0.06 0.06 0.7"  aa="0"  ab="22" />
+<t sc="Spc"  t="space_metal_d"      n="space_metal_n"      s="12.0"  r="2" su="Metal"          ro="0.33" me="1.0" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Spc"  t="space_dots_d"       n="space_dots_n"       s="12.0"  r="1" su="Metal"          ro="0.26" me="0.9" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Spc"  t="space_octagons_d"   n="space_octagons_n"   s="12.0"  r="1" su="Metal"          ro="0.17" me="0.8" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
 
-<t sc="Cry"  t="ycrystals_fine_d"   n="ycrystals_fine_n"   s="17.15" r="3" su="SnowDeep"       ro="0.15" me="1.0" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.16 0.16 0.16 0.7"  aa="0"  ab="10" />
-<t sc="Cry"  t="ycrystals_med_d"    n="ycrystals_med_n"    s="12.59" r="2" su="SnowDeep"       ro="0.20" me="1.0" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.16 0.16 0.16 0.7"  aa="14" ab="31" />
-<t sc="Cry"  t="ycrystals_big_d"    n="ycrystals_big_n"    s="17.15" r="4" su="SnowDeep"       ro="0.25" me="1.0" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.16 0.16 0.16 0.7"  aa="38" ab="90" />
+<t sc="Cry"  t="ycrystals_big_d"    n="ycrystals_big_n"    s="17.15" r="4" su="SnowDeep"       ro="0.61" me="0.5" re="0"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.16 0.16 0.16 0.7"  aa="38" ab="90" />
+<t sc="Cry"  t="ycrystals_fine_d"   n="ycrystals_fine_n"   s="17.15" r="3" su="SnowDeep"       ro="0.48" me="1.5" re="0"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.16 0.16 0.16 0.7"  aa="0"  ab="10" />
+<t sc="Cry"  t="ycrystals_med_d"    n="ycrystals_med_n"    s="12.59" r="2" su="SnowDeep"       ro="0.37" me="1.2" re="0"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.16 0.16 0.16 0.7"  aa="14" ab="31" />
 
-<t sc="Aln"  t="---- Alien ------"  r="0" />
-<t sc="Aln"  t="alien_cracks_d"     n="desert_cracks_n"    s="9.09"  r="2" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.46 0.46 0.08 0.7"  aa="8"  ab="22" />
-<t sc="Aln"  t="alien_mntn_d"       n="desert_mntn_n"      s="26.21" r="3" su="Rocks"          ro="0.4" me="0.3" re="0"  tp="1"  du="0.4" ds="1.0" md="0.7" tr="0.42 0.36 0.08 0.8"  aa="23" ab="44" />
-<t sc="Stn"  t="alien_mntn4_d"      n="adesert_mntn4_n"    s="20.29" r="2" su="DesertBumpy"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.6" ds="1.0" md="0.5" tr="0.48 0.30 0.20 0.8"  aa="21" ab="40" />
-<t sc="Stn"  t="alien_stone_d"      n="adesert_stone_n"    s="11.54" r="2" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.5" ds="1.0" md="0.7" tr="0.25 0.10 0.08 0.8"  aa="0"  ab="18" />
-<t sc="Aln"  t="alien_sand2_d"      n="desert_sand2_n"     s="16.21" r="1" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.48 0.46 0.08 0.7"  aa="15" ab="27" />
-<t sc="Aln"  t="alien_sand_big_d"   n="desert_sand_big_n"  s="9.63"  r="2" su="DesertBumpy"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.48 0.46 0.08 0.7"  aa="15" ab="27" />
-<t sc="Aln"  t="alien_sand_d"       n="desert_sand_n"      s="12.06" r="1" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.46 0.46 0.08 0.7"  aa="0"  ab="10" />
+<t sc="Aln"  t="---- Alien ------"  r="0" />      <!-- 🟢 -->
+<t sc="Aln"  t="alien_cracks_d"     n="desert_cracks_n"    s="9.09"  r="2" su="DesertFast"     ro="0.64" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.46 0.46 0.08 0.7"  aa="8"  ab="22" />
+<t sc="Aln"  t="alien_mntn_d"       n="desert_mntn_n"      s="26.21" r="3" su="Rocks"          ro="0.74" me="0.5" re="0"  tp="1"  du="0.4" ds="1.0" md="0.7" tr="0.42 0.36 0.08 0.8"  aa="23" ab="44" />
+<t sc="Stn"  t="alien_mntn4_d"      n="adesert_mntn4_n"    s="20.29" r="2" su="DesertBumpy"    ro="0.54" me="0.6" re="0"  tp="0"  du="0.6" ds="1.0" md="0.5" tr="0.48 0.30 0.20 0.8"  aa="21" ab="40" />
+<t sc="Stn"  t="alien_stone_d"      n="adesert_stone_n"    s="11.54" r="2" su="DesertFast"     ro="0.44" me="0.7" re="0"  tp="0"  du="0.5" ds="1.0" md="0.7" tr="0.25 0.10 0.08 0.8"  aa="0"  ab="18" />
+<t sc="Aln"  t="alien_sand2_d"      n="desert_sand2_n"     s="16.21" r="1" su="DesertFast"     ro="0.37" me="0.4" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.48 0.46 0.08 0.7"  aa="15" ab="27" />
+<t sc="Aln"  t="alien_sand_big_d"   n="desert_sand_big_n"  s="9.63"  r="2" su="DesertBumpy"    ro="0.47" me="0.5" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.48 0.46 0.08 0.7"  aa="15" ab="27" />
+<t sc="Aln"  t="alien_sand_d"       n="desert_sand_n"      s="12.06" r="1" su="DesertFast"     ro="0.41" me="0.4" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.46 0.46 0.08 0.7"  aa="0"  ab="10" />
 
-<t sc="Stn"  t="---- Black ------"  r="0" />
-<t sc="Blk"  t="zdesert_sand2_d"    n="desert_sand2_n"     s="16.21" r="1" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.16 0.16 0.16 0.7"  aa="15" ab="27" />
-<t sc="Blk"  t="zdesert_sand_big_d" n="desert_sand_big_n"  s="9.63"  r="2" su="DesertBumpy"    ro="0.4" me="0.3" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.16 0.16 0.16 0.7"  aa="15" ab="27" />
-<t sc="Blk"  t="zdesert_sand_d"     n="desert_sand_n"      s="12.06" r="1" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.16 0.16 0.16 0.7"  aa="0"  ab="10" />
-<t sc="Blk"  t="zdesert_wet_d"      n="desert_wet_n"       s="8.78"  r="2" su="DesertFast"     ro="0.4" me="0.3" re="0"  tp="0"  du="0.5" ds="0.7" md="0.0" tr="0.20 0.20 0.20 0.7"  aa="0"  ab="13" />
-<t sc="Stn"  t="zAsphalt_d"         n="ground_cracks2_n"   s="10.14" r="0" su="Asphalt"        ro="0.4" me="0.3" re="0"  tp="0"  du="0.0" ds="0.6" md="0.0" tr="0.10 0.10 0.10 0.6"  aa="0" ab="90"  />
+<t sc="Stn"  t="---- Black ------"  r="0" />      <!-- ⚫ -->
+<t sc="Blk"  t="zdesert_sand2_d"    n="desert_sand2_n"     s="16.21" r="1" su="DesertFast"     ro="0.41" me="0.3" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.16 0.16 0.16 0.7"  aa="15" ab="27" />
+<t sc="Blk"  t="zdesert_sand_big_d" n="desert_sand_big_n"  s="9.63"  r="2" su="DesertBumpy"    ro="0.35" me="0.4" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.16 0.16 0.16 0.7"  aa="15" ab="27" />
+<t sc="Blk"  t="zdesert_sand_d"     n="desert_sand_n"      s="12.06" r="1" su="DesertFast"     ro="0.44" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.16 0.16 0.16 0.7"  aa="0"  ab="10" />
+<t sc="Blk"  t="zdesert_wet_d"      n="desert_wet_n"       s="8.78"  r="2" su="DesertFast"     ro="0.24" me="0.9" re="0"  tp="0"  du="0.5" ds="0.7" md="0.0" tr="0.20 0.20 0.20 0.7"  aa="0"  ab="13" />
+<t sc="Stn"  t="zAsphalt_d"         n="ground_cracks2_n"   s="10.14" r="0" su="Asphalt"        ro="0.45" me="0.7" re="0"  tp="0"  du="0.0" ds="0.6" md="0.0" tr="0.10 0.10 0.10 0.6"  aa="0" ab="90"  />
 
 
 <!--  🛣️ Roads  ================================================================================================================================
-      m - road material  rest same as for t (above) -->
+      m - road material   rest same as for t (above) -->
 
 <r sc="JngD" m="roadJDark"            r="4" su="roadJungle"   re="0"  du="0.0" ds="0.2" md="0.2" tr="0.40 0.36 0.16 0.8" />
 <r sc="JngD" m="roadJDarkWet"         r="3" su="roadJungle"   re="1"  du="0.0" ds="0.2" md="0.2" tr="0.40 0.36 0.16 0.8" />
@@ -311,7 +314,7 @@ common:  sc - "short scenery name" (name color)
 <r sc="Aln"  m="roadAlienStone"       r="1" su="roadForest"   re="0"  du="0.0" ds="0.2" md="0.0" tr="0.30 0.20 0.10 0.7" />
 <r sc="Blk"  m="roadDesertBlack"      r="1" su="roadDesert"   re="0"  du="0.4" ds="0.9" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
-<r sc="Wnt"  m="---- pipe glass ----" r="0" />  <!-- ⭕ -->
+<r sc="Wnt"  m="---- pipe glass ----" r="0" />  <!-- ⭕🥛 -->
 <!-- <r sc="Oth"  m="pipe_glass"           r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" /> -->
 <r sc="Oth"  m="pipeGlass"            r="3" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Grc"  m="pipeGlassCyan"        r="5" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -368,7 +371,7 @@ common:  sc - "short scenery name" (name color)
 <r sc="Cry"  m="road_col_crystal"     r="3" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Aln"  m="road_col_Alien"       r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
-<r sc="Wnt"  m="---- wall universal"  r="0" />  <!-- 🧱 -->
+<r sc="Wnt"  m="---- wall universal"  r="0" />  <!-- 🧱📏 -->
 <r sc="Spc"  m="wall_space_diam"      r="4" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Spc"  m="wall_space_dots"      r="3" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Can"  m="wall_space_dots_orn"  r="3" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -403,7 +406,7 @@ common:  sc - "short scenery name" (name color)
 <r sc="Spc"  m="wall_metal_29_inst"   r="3" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Spc"  m="wall_metal_40_grid"   r="3" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
-<r sc="Wnt"  m="---- pipe wall universal"  r="0" />   <!-- wallP meh  same but double sided -->
+<r sc="Wnt"  m="---- pipe wall universal"  r="0" />   <!-- ⭕📏🧱  wallP meh  same but double sided -->
 <r sc="Spc"  m="wallP_space_diam"      r="4" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Spc"  m="wallP_space_dots"      r="3" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Can"  m="wallP_space_dots_orn"  r="3" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -463,7 +466,8 @@ common:  sc - "short scenery name" (name color)
 
 
 <!--  🌿  Grasses  ================================================================================================================================
-      g - grass material  c - colormap .png  r - rating   xa,xb - min,max width  ya,yb - min,max height  -->
+      g - grass material  c - colormap .png (not used)   r - rating
+      xa,xb - min,max width  ya,yb - min,max height  -->
 
 <g sc="Sav"  g="grass12s"          c="grClrForest2"   r="4" xa="1.07" xb="2.69" ya="1.03" yb="1.67" />
 <g sc="Sav"  g="grass12w"          c="grClrJungle2"   r="2" xa="1.07" xb="2.25" ya="1.03" yb="1.87" />
@@ -502,7 +506,7 @@ common:  sc - "short scenery name" (name color)
 <g sc="Sav"  g="grassJungle"       c="grClrForest"    r="1" xa="1.58" xb="2.04" ya="1.41" yb="1.94" />
 <g sc="Des"  g="grassSavanna"      c="grClrJungle"    r="1" xa="1.18" xb="1.67" ya="1.79" yb="2.28" />
 
-<g sc="Can"  g="---- Red ----"     r="0" />   <!-- Australia -->
+<g sc="Can"  g="---- Red ----"     r="0" />   <!-- 🔴 -->
 <g sc="Can"  g="grassAustralia"    c="grClrAustralia" r="1" xa="0.70" xb="1.61" ya="0.56" yb="1.17" />
 <g sc="Can"  g="grass6s"           c="grClrWinter"    r="2" xa="1.00" xb="1.73" ya="1.09" yb="1.57" />
 <g sc="Can"  g="grass10"           c="grClrJungle"    r="2" xa="1.58" xb="1.93" ya="1.31" yb="1.55" />
@@ -514,7 +518,7 @@ common:  sc - "short scenery name" (name color)
 <g sc="Aus"  g="grass20p"          c="grClrJungle"    r="1" xa="1.22" xb="1.44" ya="2.15" yb="2.50" />
 <g sc="Aus"  g="grass6r"           c="grClrWinter"    r="2" xa="0.83" xb="1.06" ya="1.10" yb="1.27" />
 
-<g sc="Wnt"  g="---- Winter ----"  r="0" />   <!-- Winter -->
+<g sc="Wnt"  g="---- Winter ----"  r="0" />   <!-- 🌨 -->
 <g sc="Wnt"  g="grassWinter"       c="grClrWinter"    r="1" xa="0.79" xb="1.06" ya="0.43" yb="0.65" />
 <g sc="Wet"  g="grass7wg"          c="grClrJungle"    r="2" xa="1.28" xb="1.57" ya="2.00" yb="2.00" />
 <g sc="Wet"  g="grass7wy"          c="grClrJungle"    r="2" xa="1.28" xb="1.62" ya="1.51" yb="2.09" />
@@ -523,18 +527,18 @@ common:  sc - "short scenery name" (name color)
 <g sc="Wnt"  g="grass18w"          c="grClrWinter"    r="4" xa="1.11" xb="1.65" ya="1.11" yb="1.62" />
 <g sc="Wet"  g="grass18wg"         c="grClrWinter"    r="1" xa="1.35" xb="1.54" ya="1.32" yb="1.96" />
 
-<g sc="Cry"  g="---- Space ----"   r="0" />   <!-- Space -->
+<g sc="Cry"  g="---- Space ----"   r="0" />   <!-- 🌌 -->
 <g sc="Uni"  g="grassUnidentified" c="grClrSmall"     r="1" xa="2.09" xb="2.42" ya="1.60" yb="1.91" />
 <g sc="Uni"  g="grass11wg"         c="grClrAustralia" r="3" xa="2.42" xb="3.00" ya="1.84" yb="2.68" />
 <g sc="SuSp" g="grassX10b"         c="grClrWinter"    r="2" xa="2.80" xb="3.18" ya="3.25" yb="3.69" />
 <g sc="Sur"  g="grassX13p"         c="grClrJungle"    r="1" xa="2.50" xb="2.84" ya="2.32" yb="2.93" />
 <g sc="SuSp" g="grassXc"           c="grClrWinter"    r="3" xa="2.67" xb="3.23" ya="1.96" yb="2.26" />
 <g sc="Uni"  g="grassXv"           c="grClrWinter"    r="1" xa="2.86" xb="3.02" ya="2.86" yb="3.20" />
-
+                                              <!-- 🟢 -->
 <g sc="Aln"  g="grass4v-alien"     c="grClrDesert"    r="1" xa="1.82" xb="2.80" ya="1.22" yb="2.26" />
 <g sc="Aln"  g="grassX10b-alien"   c="grClrWinter"    r="1" xa="2.80" xb="3.18" ya="3.25" yb="3.69" />
 <g sc="Aln"  g="grassXc-alien"     c="grClrWinter"    r="1" xa="2.67" xb="3.23" ya="1.96" yb="2.26" />
-
+                                              <!-- ⚫ Black, emissive-->
 <g sc="Uni"  g="grassZ10"          c="grClrWinter"    r="2" xa="1.87" xb="2.23" ya="1.86" yb="2.26" />
 <g sc="Uni"  g="grassZ11"          c="grClrWinter"    r="3" xa="1.87" xb="2.23" ya="1.86" yb="2.26" />
 <g sc="Sur"  g="grassZ13p"         c="grClrWinter"    r="1" xa="1.87" xb="2.23" ya="1.86" yb="2.26" />
@@ -547,13 +551,13 @@ common:  sc - "short scenery name" (name color)
       p - .mesh name  r - rating  sa,sb - min,max scale
       wx,wy - wind fx,fy  ab - max ter angle  rd - min road dist  fd - max fluid depth -->
 
-<!--  Palms  Desert  -->
+<!--  Palms  🏜️ Desert  -->
 <v sc="For"  p="---- common ----"     r="0" />
 <v sc="Des"  p="cactus"               r="3" sa="0.40" sb="0.72"  wx="0.00" wy="0.000"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Des"  p="palm"                 r="2" sa="1.78" sb="2.74"  wx="0.60" wy="0.010"  ab="15.07" rd="1" fd="0.0" />
 <v sc="Des"  p="palm2"                r="4" sa="2.00" sb="3.31"  wx="0.30" wy="0.115"  ab="30.03" rd="1" fd="0.0" />
 
-<!--  Trees  Jng  old  -->
+<!--  Trees  🟢 Jng  old  -->
 <v sc="Jng"  p="tree.07"              r="2" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
 <v sc="Jng"  p="tree.07"              r="2" sa="2.45" sb="3.15"  wx="0.30" wy="0.004"  ab="38.18" rd="5" fd="0.0" />
 <v sc="Jng"  p="tree.09"              r="2" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
@@ -602,7 +606,7 @@ common:  sc - "short scenery name" (name color)
 
 
 <!--  🪨  Rocks 40x  ================  -->
-<!--  rocks  brown  For,Jng -->
+<!--  rocks  brown  🟤 For, ⚫ Jng -->
 <v sc="Stn"  p="=== ROCKS ==="        r="0" />
 <v sc="Jng"  p="rock01brown1up"       r="5" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="24" rd="2" fd="1.0" />
 <v sc="Mud"  p="rock02brown2flat"     r="3" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="24" rd="2" fd="1.0" />
@@ -619,13 +623,14 @@ common:  sc - "short scenery name" (name color)
 <v sc="Vlc"  p="rock15ironSpecks"     r="1" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="27" rd="2" fd="1.0" />
 <v sc="Vlc"  p="rock21triEdgeSpeck"   r="1" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 
-<!--  rocks  gray  Sav,For  -->
+<!--  rocks  gray  🪨 Sav, For  -->
 <v sc="Stn"  p="rock26grayBlue"       r="2" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Stn"  p="rock33grayBlue2"      r="2" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Stn"  p="rock34brGr2block"     r="3" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Stn"  p="rock37brGr1tall"      r="4" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Stn"  p="rock39brGr3edgy"      r="3" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
-<!--  rocks  white  Sav,Mos  -->
+
+<!--  rocks  white  ⚪ Sav, 🟢 Mos  -->
 <v sc="Mos"  p="rock17black2wh"       r="2" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Wnt"  p="rock20liGrayTall"     r="1" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="GrcR" p="rock06white1flat"     r="2" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
@@ -637,7 +642,7 @@ common:  sc - "short scenery name" (name color)
 <v sc="Wnt"  p="rock41grayWh"         r="2" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Wnt"  p="rock46grayWhite2"     r="1" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 
-<!--  rocks  orng,red  Can,Aus  -->
+<!--  rocks  orng,red  🟠 Can, 🔴 Aus  -->
 <v sc="Can"  p="rock03can1flat"       r="3" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Can"  p="rock04can2flat"       r="3" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Can"  p="rock05can3round"      r="1" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
@@ -658,7 +663,7 @@ common:  sc - "short scenery name" (name color)
 <v sc="Fin"  p="rock"                 r="1" sa="0.74" sb="1.10"  wx="0" wy="0"  ab="34.00" rd="1" fd="2.0" />
 <v sc="For"  p="rock_n3r"             r="1" sa="0.55" sb="0.96"  wx="0" wy="0"  ab="22.09" rd="1" fd="2.0" />
 
-<!--  rocks  black  -->
+<!--  rocks  ⚫ black  -->
 <v sc="VlcD" p="rock_B01"             r="2" sa="0.75" sb="1.26"  wx="0" wy="0"  ab="25.14" rd="1" fd="2.0" />
 <v sc="VlcD" p="rock_B02"             r="3" sa="0.51" sb="1.07"  wx="0" wy="0"  ab="19.70" rd="1" fd="2.0" />
 <v sc="VlcD" p="rock_B03"             r="3" sa="0.71" sb="1.27"  wx="0" wy="0"  ab="37.74" rd="1" fd="2.0" />
@@ -668,7 +673,7 @@ common:  sc - "short scenery name" (name color)
 <v sc="Vlc"  p="rock_G02"             r="2" sa="1.29" sb="2.37"  wx="0" wy="0"  ab="56.03" rd="1" fd="2.0" />
 <v sc="Vlc"  p="rock_G03"             r="2" sa="1.39" sb="2.27"  wx="0" wy="0"  ab="52.03" rd="1" fd="2.0" />
 
-<!--  rocks  red Mars  -->
+<!--  rocks  🔴 red Mars  -->
 <v sc="Mrs"  p="rock_R01"             r="1" sa="0.87" sb="1.15"  wx="0" wy="0"  ab="35.41" rd="1" fd="2.0" />
 <v sc="Mrs"  p="rock_R02"             r="1" sa="0.77" sb="1.25"  wx="0" wy="0"  ab="30.41" rd="1" fd="2.0" />
 <v sc="Mrs"  p="rock_R03"             r="1" sa="1.23" sb="1.61"  wx="0" wy="0"  ab="36.70" rd="1" fd="2.0" />
@@ -681,13 +686,13 @@ common:  sc - "short scenery name" (name color)
 <v sc="Mrs"  p="rock_R5"              r="1" sa="0.97" sb="1.67"  wx="0" wy="0"  ab="26.75" rd="1" fd="2.0" />
 <v sc="Mrs"  p="rock_R5f"             r="1" sa="1.90" sb="2.42"  wx="0" wy="0"  ab="33.65" rd="1" fd="2.0" />
 
-<!--  rocks  yellow Grc  -->
+<!--  rocks  🟡 yellow Grc  -->
 <v sc="Grc"  p="rock_Y01"             r="2" sa="0.79" sb="1.24"  wx="0" wy="0"  ab="46.00" rd="1" fd="2.0" />
 <v sc="Grc"  p="rock_Y02"             r="3" sa="0.79" sb="1.00"  wx="0" wy="0"  ab="11.92" rd="1" fd="2.0" />
 <v sc="Grc"  p="rock_Y03"             r="3" sa="0.84" sb="1.87"  wx="0" wy="0"  ab="50.00" rd="1" fd="2.0" />
 <v sc="Grc"  p="rock_n2-GYel"         r="2" sa="0.71" sb="1.26"  wx="0" wy="0"  ab="20.76" rd="1" fd="2.0" />
 
-<!--  rocks  Winter  -->
+<!--  rocks  🌨 Winter  -->
 <v sc="Wnt"  p="rock_W01"             r="1" sa="1.15" sb="2.23"  wx="0" wy="0"  ab="35.19" rd="1" fd="2.0" />
 <v sc="Wnt"  p="rock_W02"             r="3" sa="1.11" sb="2.03"  wx="0" wy="0"  ab="25.19" rd="1" fd="2.0" />
 <v sc="Wnt"  p="rock_W03"             r="3" sa="1.21" sb="2.41"  wx="0" wy="0"  ab="50.00" rd="1" fd="2.0" />
@@ -699,7 +704,7 @@ common:  sc - "short scenery name" (name color)
 
 <!--  🌳 Trees  🍁 Autumn  ================  -->
 <v sc="Atm"  p="---- Autumn ----"     r="0" />
-<v sc="Atms"  p="treeAYG-16birTallUp"  r="3" sa="1.14" sb="1.67"  wx="0.60" wy="0.010"  ab="20.95" rd="1" fd="0.0" />
+<v sc="Atm"  p="treeAYG-16birTallUp"  r="3" sa="1.14" sb="1.67"  wx="0.60" wy="0.010"  ab="20.95" rd="1" fd="0.0" />
 <v sc="Atm"  p="treeAOG-17birTall"    r="3" sa="1.18" sb="1.64"  wx="0.60" wy="0.010"  ab="40.79" rd="1" fd="0.0" />
 <v sc="Atm"  p="treeAYO-18mplTall"    r="4" sa="1.53" sb="2.29"  wx="0.70" wy="0.010"  ab="20.57" rd="1" fd="0.0" />
 <v sc="Atm"  p="treeAOY-27mplMed"     r="1" sa="0.92" sb="1.22"  wx="0.70" wy="0.010"  ab="38.44" rd="1" fd="0.0" />
@@ -751,7 +756,7 @@ common:  sc - "short scenery name" (name color)
 <v sc="Uni"  p="rock_n5v-W"           r="1" sa="1.05" sb="1.43"  wx="0" wy="0"  ab="15.33" rd="1" fd="2.0" />
 
 
-<!--  💎 Crystal, alien  ================  -->
+<!--  💎 Crystal  ================  -->
 <v sc="Cry"  p="---- Crystal ----"    r="0" />
 <v sc="Cry"  p="crystal1"             r="3" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal2"             r="2" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
@@ -761,6 +766,7 @@ common:  sc - "short scenery name" (name color)
 <v sc="Cry"  p="crystal_form2"        r="2" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal_form3"        r="4" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 
+<!--  🟢 Alien  ================  -->
 <v sc="Aln"  p="---- Alien  ----"     r="0" />
 <v sc="Aln"  p="gum_tree_alien"       r="2" sa="1.45" sb="2.22"  wx="0.30" wy="0.004"  ab="20.48" rd="1" fd="0.0" />
 <v sc="Aln"  p="jungle_tree_alien"    r="1" sa="1.61" sb="2.05"  wx="0.40" wy="0.002"  ab="29.26" rd="1" fd="0.0" />
@@ -773,6 +779,7 @@ common:  sc - "short scenery name" (name color)
 <v sc="Aln"  p="shroom1_2_alien"      r="2" sa="0.32" sb="0.49"  wx="0" wy="0"  ab="32.73" rd="1" fd="0.0" />
 <v sc="Aln"  p="shroom1_3_alien"      r="3" sa="0.20" sb="0.30"  wx="0" wy="0"  ab="21.33" rd="1" fd="0.0" />
 
+<!--  ⚫ Black, emissive  ================  -->
 <v sc="Blk"  p="gum_tree_black"       r="3" sa="1.45" sb="2.22"  wx="0.30" wy="0.004"  ab="20.48" rd="1" fd="0.0" />
 <v sc="Blk"  p="fern2_black"          r="2" sa="0.30" sb="0.44"  wx="0" wy="0"  ab="29.12" rd="1" fd="0.5" />
 

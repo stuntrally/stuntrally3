@@ -90,7 +90,7 @@ hlms roadJDark_ter pbs : road_terrain
 {
 	diffuse_map  roadJDark.jpg
 	normal_map   normal_2.png
-	specular_map roadAlpha2i.jpg
+	// specular_map roadAlpha2i.jpg
 	diffuse  0.70 0.60 0.80
 	specular 0.43 0.43 0.40
 }

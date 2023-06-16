@@ -71,7 +71,7 @@ void CScene::CreateTerrain1(int n)
 	// tdb->setBrdf(TerraBrdf::Default);  //
 	// tdb->setBrdf(TerraBrdf::BlinnPhong);  // +💡
 	tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);  // +💡 rough+
-	// tdb->setBrdf(TerraBrdf::BlinnPhongFullLegacy);  //- white
+	// tdb->setBrdf(TerraBrdf::BlinnPhongFullLegacy);  //- white bad
 	// tdb->setBrdf(TerraBrdf::BlinnPhongSeparateDiffuseFresnel);  //** no fresnel-?
 	// tdb->setBrdf(TerraBrdf::CookTorranceSeparateDiffuseFresnel);  //** no specular?
 	// tdb->setBrdf(TerraBrdf::CookTorrance);  // dull tiny spec-+
