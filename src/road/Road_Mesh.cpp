@@ -31,6 +31,7 @@
 using namespace Ogre;
 
 #define V1tangents  // todo: compute tangents ..
+// WARNING: Mesh2 instance 'road.6041_0' was defined as manually loaded, but no manual loader was provided. This Resource will be lost if it has to be reloaded.
 
 
 //  🏗️ Create Mesh
@@ -115,7 +116,7 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 			v[a++] = norm[i].x;  v[a++] = norm[i].y;  v[a++] = norm[i].z;
 		#ifndef V1tangents
 			v[a++] = norm[i].x;  v[a++] = norm[i].z;  v[a++] = norm[i].y;  // tangent-
-			// v[a++] = norm[i].z;  v[a++] = norm[i].y;  v[a++] = norm[i].x;  // binormal-
+			//v[a++] = norm[i].z;  v[a++] = norm[i].y;  v[a++] = norm[i].x;  // binormal-
 		#endif
 			v[a++] = tcs[i].x;  v[a++] = tcs[i].y;
 			// v[a++] = tcs[i].x;   v[a++] = tcs[i].y;  //2nd uv-
@@ -196,15 +197,27 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 	//  tangents  v2 to v1 to v2 meh-
 #ifdef V1tangents
 	String s1 = sMesh+"v1", s2 = sMesh+"v2";
-	v1::MeshPtr m1 = v1::MeshManager::getSingleton().create(s1, "General");
-	m1->setVertexBufferPolicy( v1::HardwareBuffer::HBU_STATIC, false );  // true may decrease loading time..
-	m1->setIndexBufferPolicy( v1::HardwareBuffer::HBU_STATIC, false );
- 	m1->importV2(mesh.get());
+
+	sd.mesh1 = v1::MeshManager::getSingleton().create(s1, "General");
+	sd.mesh1->setVertexBufferPolicy( v1::HardwareBuffer::HBU_STATIC, false );  // true may decrease loading time..
+	sd.mesh1->setIndexBufferPolicy( v1::HardwareBuffer::HBU_STATIC, false );
+
+ 	sd.mesh1->importV2(mesh.get());
+	MeshManager::getSingleton().remove(mesh);  // not needed
+	mesh.reset();
+
 	if (!trail)
-		m1->buildTangentVectors();  // todo: slow in ed, 24 Fps vs 38?-
-	mesh = MeshManager::getSingleton().createByImportingV1(
-		s2, "General", m1.get(), false,false,false);
-	MeshManager::getSingleton().remove(sMesh);  // not needed
+		sd.mesh1->buildTangentVectors();  // todo: slow in ed, 24,30 Fps  vs 60 Fps v2 only
+
+	sd.mesh = MeshManager::getSingleton().createManual(s2, "General", 0);  // todo: loader for device lost-
+	sd.mesh->importV1(sd.mesh1.get(), false,false,false);
+	// v1::MeshManager::getSingleton().remove(sd.mesh1);  // not needed
+	// sd.mesh1.reset();
+	//  old
+	// sd.mesh = MeshManager::getSingleton().createByImportingV1(
+	// 	s2, "General", sd.mesh1.get(), false,false,false);
+#else
+	sd.mesh = mesh;
 #endif
 
 
@@ -212,9 +225,9 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 	//---------------------------------------------------------
 	auto dyn = SCENE_STATIC;
 #ifdef SR_EDITOR
-	dyn = SCENE_DYNAMIC;  // ed a bit faster?
+	// dyn = SCENE_DYNAMIC;  // ed a bit faster?
 #endif
-// 
+
 	Item *it2 =0, *it34[2] ={0,0};
 #ifdef V1tangents
 	Item *it = mSceneMgr->createItem( s2, "General", dyn );
@@ -223,9 +236,9 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 #endif
 
 	SceneNode* node = mSceneMgr->getRootSceneNode( dyn )->createChildSceneNode( dyn );
-	node->attachObject(it);
 	it->setVisible(false);  it->setCastShadows(false);//-
 	it->setVisibilityFlags(RV_Road);
+	node->attachObject(it);
 
 
 	//  ed road for mini and density
@@ -333,8 +346,7 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 	sd.it = it;  sd.it2 = it2;
 	sd.it3r = it34[0];  sd.it4d = it34[1];
 	sd.node = node;
-	sd.smesh = sMesh;
-	// sd.mesh = mesh;  sd.mesh1 = m1;
+	// sd.mesh = mesh;  // sd.mesh1 = m1;
 
 	//LogO(sMesh + " " + datablock->getName().getReleaseText());  // hash
 }
@@ -400,20 +412,19 @@ void SplineRoad::DestroySeg(int id)
 		for (int l=0; l < LODs; ++l)
 		{
 			{	// ] wall
-				auto& n = rs.wall[l].node;   if (n)  mgr->destroySceneNode(n);  n = 0;
-				auto& i = rs.wall[l].it;     if (i)  mgr->destroyItem(i);  i = 0;
-				auto& s = rs.wall[l].smesh;
-				if (!s.empty())
-				{	String s1 = s+"v1", s2 = s+"v2";
-					ms.remove(s);  s = "";
-					ms.remove(s2);
-					m1.remove(s1);
-			}	}
+				auto& w = rs.wall[l];
+				auto& n = w.node;   if (n)  mgr->destroySceneNode(n);  n = 0;
+				auto& i = w.it;     if (i)  mgr->destroyItem(i);  i = 0;
+				if (w.mesh)  ms.remove(w.mesh);
+				w.mesh.reset();
+				if (w.mesh1)  m1.remove(w.mesh1);
+				w.mesh1.reset();
+			}
 			{	// > blend
-				auto& n = rs.blend[l].node;  if (n)  mgr->destroySceneNode(n);  n = 0;
-				auto& i = rs.blend[l].it;    if (i)  mgr->destroyItem(i);  i = 0;
-				auto& s = rs.blend[l].smesh;
-				if (!s.empty())  ms.remove(s);  s = "";
+				// auto& n = rs.blend[l].node;  if (n)  mgr->destroySceneNode(n);  n = 0;
+				// auto& i = rs.blend[l].it;    if (i)  mgr->destroyItem(i);  i = 0;
+				// auto& s = rs.blend[l].smesh;
+				// if (!s.empty())  ms.remove(s);  s = "";
 			}
 			{	// - road
 				// LogO("---- Destroy Road seg " + rs.road[l].smesh);
@@ -425,20 +436,11 @@ void SplineRoad::DestroySeg(int id)
 				auto& r = rd.it3r;  if (r)  mgr->destroyItem(r);  r = 0;
 				auto& d = rd.it4d;  if (d)  mgr->destroyItem(d);  d = 0;
 			#endif
-				auto& s = rd.smesh;
-				if (!s.empty())
-				{	String s1 = s+"v1", s2 = s+"v2";
-					s = "";
-					// ms.remove(s);  // already-
-					ms.remove(s2);
-					m1.remove(s1);
-			}	}
-		}
-		{	// | column
-			auto& n = rs.col.node;   if (n)  mgr->destroySceneNode(n);  n = 0;
-			auto& i = rs.col.it;     if (i)  mgr->destroyItem(i);  i = 0;
-			auto& s = rs.col.smesh;
-			if (!s.empty())  ms.remove(s);  s = "";
+				if (rd.mesh)  ms.remove(rd.mesh);
+				rd.mesh.reset();
+				if (rd.mesh1)  m1.remove(rd.mesh1);
+				rd.mesh1.reset();
+			}
 		}
 	}
 	catch (Exception ex)

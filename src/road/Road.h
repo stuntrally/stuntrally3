@@ -36,13 +36,13 @@ struct SegData
 	Ogre::SceneNode* node =0;
 	Ogre::Item* it =0, *it2 =0,
 		*it3r = 0, *it4d =0;  // ed for road mini and density
-	Ogre::String smesh;
-	// Ogre::MeshPtr mesh;  Ogre::v1::MeshPtr mesh1;
+	Ogre::MeshPtr mesh;
+	Ogre::v1::MeshPtr mesh1;
 };
 
 struct RoadSeg
 {
-	SegData road[LODs], wall[LODs], col, blend[LODs];
+	SegData road[LODs], wall[LODs];  //, col, blend[LODs];
 	Ogre::String sMtrRd,sMtrWall,sMtrB;
 	int mtrId = 0;
 	
@@ -79,7 +79,7 @@ public:
 	
 	//  🛣️📏🏛️ types
 	RoadType type = RD_Road;
-	bool IsRoad()    // all: 🛣️road, ⛰️_ter, ⭕pipe, 📏bridge wall, 🏛️column etc
+	bool IsRoad()    // all: 🛣️road, ⛰️_ter, ⭕pipe, 📏bridge wall, not 🏛️column etc
 	{	return type == RD_Road;  }
 	bool IsRiver()   // just 🛣️road,  no wall, no column, no _ter materials
 	{	return type == RD_River;  }
