@@ -10,9 +10,8 @@ hlms road pbs  // bridges
 	roughness 0.4
 	metalness 0.1
 
-	fresnel	0.01
-	// fresnel	1.33 1.33 1.2
-	// fresnel_coeff 0.3 0.3 0.3
+	fresnel	0.0
+	fresnel_coeff 0.3 0.3 0.3
 	// diffuse  1.0 0.0 0.0
 	specular 0.3 0.3 0.3
 }
@@ -21,15 +20,16 @@ hlms road_terrain pbs
 {
 	depth_bias 3
 	scene_blend alpha_blend
+	// specular_map roadAsphalt_spec2.jpg
 
-	// fresnel	0.0
-	// fresnel_coeff 0.01 0.01 0.01
+	fresnel	0.0
+	fresnel_coeff 0.01 0.01 0.01
 
 	// workflow metallic
-	// roughness 0.2
-	// metalness 0.2
+	roughness 0.5
+	metalness 0.1
 	// diffuse  0.0 0.7 0.7
-	// specular 0.0 0.3 0.0
+	specular 1 1 1
 }
 
 
@@ -328,8 +328,9 @@ hlms roadMagicMirror pbs : road
 	// normal_map  roadMetal2_norm.jpg
 	normal_map flat_n.png
 	// normal_map   normal_1s.png
+	specular_map roadAsphalt_spec3w.jpg
 
-	diffuse  0.032 0.042 0.082
+	diffuse  0.042 0.052 0.12
 	specular 0.34 0.28 0.5
 
 	fresnel 1.0
@@ -363,11 +364,12 @@ hlms roadCrystal pbs : road
 	// normal_map  rdGravel_norm.jpg
 	// normal_map  roadMetal2_norm.jpg
 	normal_map   normal_1s.png
+	specular_map roadAsphalt_spec3w.jpg
 
 	fresnel 1.0
 	fresnel_coeff 0.9 0.9 0.95  // refl color
 	// workflow metallic
-	roughness 0.005
+	roughness 0.15
 	metalness 0.98
 }
 hlms roadCrystal_ter pbs : road_terrain
@@ -379,9 +381,9 @@ hlms roadCrystal_ter pbs : road_terrain
 	// normal_map rdGravel_norm.jpg
 
 	fresnel 1.0
-	fresnel_coeff 0.2 0.2 0.2  // refl color
+	fresnel_coeff 0.82 0.84 0.86  // refl color
 	// workflow metallic
-	roughness 0.005
+	roughness 0.15
 	metalness 0.98
 }
 
@@ -399,7 +401,7 @@ hlms roadMud_ter pbs : road_terrain
 	diffuse_map  roadMud.jpg
 	normal_map   normal_2.png
 	diffuse  0.7 0.7 0.7
-	specular 0.3 0.3 0.3
+	specular 0.9 0.9 0.8
 }
 
 hlms roadMudWet pbs : road
@@ -546,10 +548,8 @@ hlms roadDesert_ter pbs : road_terrain
 {
 	diffuse_map  roadDesert.jpg
 	normal_map   roadDesert_n.jpg
-	diffuse  1.05 0.97 0.82
-	specular 0.16 0.14 1.12
-	fresnel 0.01
-	fresnel_coeff 0.01 0.01 0.01
+	diffuse  1.05 0.97 0.62
+	specular 0.16 0.14 0.12
 }
 
 hlms roadDesertOrn pbs : road
@@ -590,7 +590,7 @@ hlms roadSavannah pbs : road
 	diffuse_map  roadSavannah.jpg
 	// specular_map roadAsphalt_spec2.jpg
 	diffuse  0.8 0.8 0.8
-	specular 0.3 0.3 0.28
+	specular 0.8 0.8 0.8
 }
 hlms roadSavannah_ter pbs : road_terrain
 {
