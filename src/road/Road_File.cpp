@@ -113,7 +113,7 @@ void SplineRoad::UpdLodVis(float fBias, bool bFull)
 			else  vis = i == 3;/**/  // check lod 0
 			
 			#ifdef SR_EDITOR
-			if (vis)  // todo: not each frame..
+			if (vis && rs.road[i].it)  // todo: not each frame-
 			{
 				auto* rend = rs.road[i].it->getSubItem(0);
 				pApp->UpdSelectGlow(rend, bSel);

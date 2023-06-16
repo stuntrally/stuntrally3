@@ -61,7 +61,7 @@ void AppGui::UpdFpsText(float dt)
 
 	String txt;  bool h = fps >= 100.f;
 	txt += cvsF( fps,  59.f, 30.f, h ? 0 : 1, h ? 3 : 4) + "  ";
-	txt += cvsF( tris, 5.f, 10.f, 2,4) + "m ";  //txt += "v " + toStr( rm.mVertexCount/1000 ) + "  ";
+	txt += cvsF( tris, 4.f, 8.f, 2,4) + "m ";  //txt += "v " + toStr( rm.mVertexCount/1000 ) + "  ";
 	txt += cvsI( draw, 150, 1200, 3) + "\n";
 
 	txt += "#A0C0A0 i ";
