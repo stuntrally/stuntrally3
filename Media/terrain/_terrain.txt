@@ -87,3 +87,34 @@ space_octagons
 245 ycrystals_fine
 249 ycrystals_med
 124 ycrystals_big
+
+
+------
+From archives: "50 free textures"  2, 3
+Author: rubberduck
+License(s): CC-0
+
+https://opengameart.org/content/50-free-textures -2 -3
+
+024 ground_cracksv  ground_cracksy
+062 adesert_stone
+
+121 snow_1
+060 snow_2  snow_2ice
+059 snow_bumpy
+063 snow_rough
+snow_grass  from grass_green and snow_1
+snow_grass2 from grass_ground_d and snow_bumpy
+snow_mud    from desert_mud and snow_1
+
+------
+Author: Mysteryem (Submitted by qubodup)
+mysteryemwarzone2100textures
+License(s):  GPL 2.0   GPL 3.0   CC-BY-SA 3.0
+https://opengameart.org/content/29-grounds-and-walls-and-water-1024x1024
+
+snow_mntn  from violetRocks
+
+New:
+pink and white marble terrain based on CC0 textures from https://ambientcg.com
+pink crystals based original blue
