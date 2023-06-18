@@ -689,8 +689,8 @@ void GraphicsSystem::registerHlms()
 void GraphicsSystem::chooseSceneManager()
 {
 #if OGRE_DEBUG_MODE >= OGRE_DEBUG_HIGH
-	//Debugging multithreaded code is a PITA, disable it.
-	const size_t numThreads = 1;
+	// const size_t numThreads = 1;  //  Debugging multithreaded code is a PITA, disable it, or ..
+	const size_t numThreads = std::max<size_t>( 1, PlatformInformation::getNumLogicalCores() );  // Debug with high Fps
 #else
 	//getNumLogicalCores() may return 0 if couldn't detect
 	const size_t numThreads = std::max<size_t>( 1, PlatformInformation::getNumLogicalCores() );
