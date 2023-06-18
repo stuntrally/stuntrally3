@@ -83,26 +83,25 @@ void GridCellLods::Create()
 	VaoManager *vaoManager = rs->getVaoManager();
 
 	// Vertex declaration
-	uint vertSize = 0;
 	VertexElement2Vec vertexElements;
 	bool hasClr = 0; //clr.size() > 0;
-	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );  vertSize += 3;
+	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );
 	if (!trail)
-	{	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_NORMAL ) );    vertSize += 3;
+	{	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_NORMAL ) );
 	#ifndef V1tangents
-		vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_TANGENT ) );    vertSize += 3;
-		// vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_BINORMAL ) );    vertSize += 3;
+		vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_TANGENT ) );
+		// vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_BINORMAL ) );
 	#endif
-		vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  vertSize += 2;
+		vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );
 	}
-	// vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  vertSize += 2;  //2nd uv-
+	// vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  //2nd uv-
 	if (hasClr)
-	{	vertexElements.push_back( VertexElement2( VET_FLOAT4, VES_DIFFUSE ) );  vertSize += 4;  }
+		vertexElements.push_back( VertexElement2( VET_FLOAT4, VES_DIFFUSE ) );
 
 
 	//  vertex data  ------------------------------------------
 	uint vertCnt = pos.size();
-	vertSize *= sizeof( float );
+	uint vertSize = VaoManager::calculateVertexSize( vertexElements );
 	uint size = vertSize * vertCnt;
 	float *v = reinterpret_cast<float *>(  // vertices
 		OGRE_MALLOC_SIMD( size, MEMCATEGORY_GEOMETRY ) );
@@ -159,7 +158,7 @@ void GridCellLods::Create()
 	{
 		// we passed keepAsShadow = true to createVertexBuffer, thus Ogre will free the pointer
 		// if keepAsShadow = false, YOU need to free the pointer
-		OGRE_FREE_SIMD( vertexBuffer, MEMCATEGORY_GEOMETRY );
+		OGRE_FREE_SIMD( v, MEMCATEGORY_GEOMETRY );
 		vertexBuffer = 0;
 		throw e;
 	}
@@ -198,7 +197,7 @@ void GridCellLods::Create()
 		// When keepAsShadow = true, the memory will be freed when the index buffer is destroyed.
 		// However if for some weird reason there is an exception raised, the memory will
 		// not be freed, so it is up to us to do so.
-		OGRE_FREE_SIMD( indexBuffer, MEMCATEGORY_GEOMETRY );
+		OGRE_FREE_SIMD( indices, MEMCATEGORY_GEOMETRY );
 		indexBuffer = 0;
 		throw e;
 	}

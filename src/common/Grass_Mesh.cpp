@@ -227,19 +227,18 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	VaoManager *vaoManager = rs->getVaoManager();
 
 	// Vertex declaration
-	uint vertSize = 0;
 	VertexElement2Vec vertexElements;
-	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );  vertSize += 3;
-	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_NORMAL ) );    vertSize += 3;
-	vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );  vertSize += 2;
+	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_POSITION ) );
+	vertexElements.push_back( VertexElement2( VET_FLOAT3, VES_NORMAL ) );
+	vertexElements.push_back( VertexElement2( VET_FLOAT2, VES_TEXTURE_COORDINATES) );
 	bool hasClr = clr.size() > 0;
 	if (hasClr)
-	{	vertexElements.push_back( VertexElement2( VET_FLOAT4, VES_DIFFUSE ) );  vertSize += 4;  }
+		vertexElements.push_back( VertexElement2( VET_FLOAT4, VES_DIFFUSE ) );
 
 
 	//  vertex data  ------------------------------------------
 	uint vertCnt = pos.size();
-	vertSize *= sizeof( float );
+	uint vertSize = VaoManager::calculateVertexSize( vertexElements );
 	float *vertices = reinterpret_cast<float *>(
 		OGRE_MALLOC_SIMD( sizeof( float ) * vertSize * vertCnt, MEMCATEGORY_GEOMETRY ) );
 	
@@ -270,7 +269,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 	{
 		// we passed keepAsShadow = true to createVertexBuffer, thus Ogre will free the pointer
 		// if keepAsShadow = false, YOU need to free the pointer
-		OGRE_FREE_SIMD( vertexBuffer, MEMCATEGORY_GEOMETRY );
+		OGRE_FREE_SIMD( vertices, MEMCATEGORY_GEOMETRY );
 		vertexBuffer = 0;
 		throw e;
 	}
@@ -306,7 +305,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 		// When keepAsShadow = true, the memory will be freed when the index buffer is destroyed.
 		// However if for some weird reason there is an exception raised, the memory will
 		// not be freed, so it is up to us to do so.
-		OGRE_FREE_SIMD( indexBuffer, MEMCATEGORY_GEOMETRY );
+		OGRE_FREE_SIMD( indices, MEMCATEGORY_GEOMETRY );
 		indexBuffer = 0;
 		throw e;
 	}
