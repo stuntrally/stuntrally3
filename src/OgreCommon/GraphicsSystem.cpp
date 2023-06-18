@@ -471,7 +471,8 @@ void GraphicsSystem::update( float timeSinceLast )
 
 	BaseSystem::update( timeSinceLast );
 
-	if( mRenderWindow->isVisible() )
+	// renders inactive, but doesn't leak GPU MEM  // fixme?
+	// if( mRenderWindow->isVisible() )
 		mQuit |= !mRoot->renderOneFrame();
 
 	mAccumTimeSinceLastLogicFrame += timeSinceLast;

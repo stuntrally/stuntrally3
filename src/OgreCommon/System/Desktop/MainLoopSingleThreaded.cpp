@@ -142,13 +142,11 @@ int MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 			if( unitTest.getParams().isRecording() )
 				unitTest.notifyRecordingNewFrame( graphicsSystem );
 
-		#if 1  // renders inactive, but doesn't leak GPU MEM  // fixme?
 			if( !renderWindow->isVisible() )
 			{
 				// Don't burn CPU cycles unnecessary when we're minimized.
 				Ogre::Threads::Sleep( 500 );
 			}
-		#endif
 
 			Ogre::uint64 endTime = timer.getMicroseconds();
 			timeSinceLast = (endTime - startTime) / 1000000.0;
