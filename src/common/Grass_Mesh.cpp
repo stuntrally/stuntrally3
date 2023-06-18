@@ -328,6 +328,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 
 	mesh->_setBounds(aabox, false);  //?
 	mesh->_setBoundingSphereRadius((aabox.getMaximum() - aabox.getMinimum()).length() / 2.0);  
+	mesh->load();
 
 	//  tangents-
 /*	String s1 = sMesh+"v1", s2 = sMesh+"v2";

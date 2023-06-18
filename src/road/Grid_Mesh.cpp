@@ -222,6 +222,7 @@ void GridCellLods::Create()
 
 	mesh->_setBounds(aabox, false);  //?
 	mesh->_setBoundingSphereRadius((aabox.getMaximum() - aabox.getMinimum()).length() / 2.0);  
+	mesh->load();
 
 	//  tangents v1-
 #ifdef V1tangents

@@ -192,6 +192,7 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 
 	mesh->_setBounds(aabox, false);  //?
 	mesh->_setBoundingSphereRadius((aabox.getMaximum() - aabox.getMinimum()).length() / 2.0);  
+	mesh->load();
 
 	//  tangents  v2 to v1 to v2 meh-
 #ifdef V1tangents
