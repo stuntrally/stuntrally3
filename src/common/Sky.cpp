@@ -275,6 +275,7 @@ void CScene::UpdSun(float dt)
 		atmo->setLight(sun);
 	}
 	sun->setDirection(dir);
+	ndSun->_getFullTransformUpdated();
 
 	sun->setPowerScale( Math::PI );  // 💡 brightness simple
 	float bright = app->pSet->bright, contrast = app->pSet->contrast;
