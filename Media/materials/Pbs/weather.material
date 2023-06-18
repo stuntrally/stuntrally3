@@ -1,8 +1,8 @@
 hlms Base_particle unlit
 {
-	// alpha_rejection greater 64
 	depth_write	off
 	scene_blend	alpha_blend
+	alpha_rejection greater 64
 	// scene_blend	add  // test UpdateWeather
 }
 
@@ -71,4 +71,20 @@ hlms Fire3 unlit : Add_particle
 hlms Lava1 unlit : Add_particle
 {
     diffuse_map lava1.png
+}
+
+//  Bubble
+hlms FluidBubble unlit : Base_particle
+{
+	diffuse_map bubble.png
+}
+
+hlms FluidBubbleGrease unlit : Base_particle
+{
+	diffuse_map bubble-grease.png
+}
+
+hlms FluidJellyFall unlit : Base_particle
+{
+	diffuse_map fluid-jelly-waterfall.png
 }
