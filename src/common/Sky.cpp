@@ -152,8 +152,8 @@ void CScene::UpdFog(bool on, bool off)
 	p.skyPower = 1.0f;
 	// p.skyColour = Vector3(0,0.5,1);// sc->fogClr2.GetRGB();
 	p.skyColour = sc->fogClr2.GetRGB1(); //?- Vector3(0.234f, 0.57f, 1.0f);
-	p.fogColourSun = sc->fogClr.GetRGB1();
-	p.fogColourAway = sc->fogClr2.GetRGB1();
+	p.fogColourSun = sc->fogClr.GetRGB();
+	p.fogColourAway = sc->fogClr2.GetRGB();
 	
 	p.fogBreakMinBrightness = 0.25f;
 	p.fogBreakFalloff = 0.1f;
