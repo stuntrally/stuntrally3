@@ -32,6 +32,7 @@ compositor_node Rtt_RoadDens
 			rq_last	  72
 
 			overlays	off
+			enable_forward_plus false
 		}
 	}
 }
@@ -66,6 +67,7 @@ compositor_node Rtt_RoadPreview
 			rq_last	  72
 
 			overlays	off
+			enable_forward_plus false
 		}
 	}
 }
@@ -99,6 +101,7 @@ compositor_node Rtt_Terrain
 			rq_last	  76   // RQG_Fluid too
 
 			overlays	off
+			enable_forward_plus false
 		}
 	}
 }
