@@ -48,15 +48,30 @@
         midf fogWeight = midf_c( exp2( -distToCamera * atmo.fogDensity ) );  // amount
         fogWeight = lerp( _h(1.0), fogWeight, lumFogWeight );
         
-        // finalColour.xyz = lerp( inPs.fog.xyz, finalColour.xyz, fogWeight );  // atmo orig
-        finalColour.xyz = lerp( lerp( atmo.fogColourSun.xyz,
-                                      atmo.fogColourAway.xyz,
-                                        //   #define p_sunDir	midf3_c( atmo.packedParams2.xyz )
-                                      dot( pixelData.viewDir.xz, 
-                                        midf2_c( atmo.packedParams2.xy )
-                                       ) * 0.5 + 0.5 ),
-                                finalColour.xyz,
-                                fogWeight * atmo.fogColourSun.w );
+        // todo: fix fog dir looking down..
+        finalColour.xyz = lerp( inPs.fog.xyz, finalColour.xyz, fogWeight );  // atmo orig
+    	const midf3 camPosW = midf3_c( passBuf.view[3][0], passBuf.view[3][1], passBuf.view[3][2] );
+        const midf3 eyeDir = normalize(camPosW - inPs.pos.xyz);
+		//- float3 eyeDir = normalize(camPosObjSpace.xyz - posObjSpace.xyz);
+
+       	@property( hlms_lights_directional )
+            midf3 lightDirW = light0Buf.lights[0].position.xyz;
+        @else
+            midf3 lightDirW = midf3_c(1,0,0);
+        @end
+        float fogDir = dot( normalize(eyeDir.xz), normalize(lightDirW.xz) ) * _h(0.5) + _h(0.5);
+                                    //   #define p_sunDir	midf3_c( atmo.packedParams2.xyz )
+        // float fogDir = dot( pixelData.viewDir.xz, midf2_c( atmo.packedParams2.xy ) ) * 0.5 + 0.5;  // bad screen space-
+
+        midf4 fogColour = lerp( atmo.fogColourSun,
+                                atmo.fogColourAway,
+                                fogDir );
+        finalColour.xyz =
+            //camPosW * 10.0 + 0.001 *  // test
+            lerp( fogColour.xyz,
+                  finalColour.xyz,
+                  fogWeight );
+                //fogWeight * fogColour.w );  // todo: transparency
 
         // const midf fogHin = saturate( ( atmo.cameraDisplacement.y - atmo.fogHparams.x ) * atmo.fogHparams.y );
         // midf fogHinWeight = midf_c( exp2( -fogHin * atmo.fogHparams.z ) );

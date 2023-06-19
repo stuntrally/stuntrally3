@@ -243,8 +243,8 @@ hlms roadSandShore_ter pbs : road_terrain
 {
 	diffuse_map  roadSnow.jpg
 	normal_map   normal_1.png
-	diffuse 0.85 0.75 0.6
-	specular 0.31 0.32 0.33
+	diffuse 0.85 0.75 0.5
+	specular 0.32 0.32 0.30
 }
 
 //  Sand sunset
