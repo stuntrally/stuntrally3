@@ -31,7 +31,18 @@
 using namespace Ogre;
 
 #define V1tangents  // todo: compute tangents ..
-// WARNING: Mesh2 instance 'road.6041_0' was defined as manually loaded, but no manual loader was provided. This Resource will be lost if it has to be reloaded.
+
+
+//  todo: fake, just to shut up warnings
+class ManResLd : public ManualResourceLoader
+{
+	void prepareResource( Resource *resource ) override
+	{
+	}
+	void loadResource( Resource *resource ) override
+	{
+	}
+} gRoadManResLd;
 
 
 //  🏗️ Create Mesh
@@ -56,7 +67,7 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 	bool trail = IsTrail();
 
  	Aabb aabox;
- 	MeshPtr mesh = MeshManager::getSingleton().createManual(sMesh, "General");
+ 	MeshPtr mesh = MeshManager::getSingleton().createManual(sMesh, "General", &gRoadManResLd);
 		//ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME );
 	SubMesh* subMesh = mesh->createSubMesh();
 
@@ -209,7 +220,7 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 	if (!trail)
 		sd.mesh1->buildTangentVectors();  // todo: slow in ed, 24,30 Fps  vs 60 Fps v2 only
 
-	sd.mesh = MeshManager::getSingleton().createManual(s2, "General", 0);  // todo: loader for device lost-
+	sd.mesh = MeshManager::getSingleton().createManual(s2, "General", &gRoadManResLd);
 	sd.mesh->importV1(sd.mesh1.get(), false,false,false);
 	// v1::MeshManager::getSingleton().remove(sd.mesh1);  // not needed
 	// sd.mesh1.reset();

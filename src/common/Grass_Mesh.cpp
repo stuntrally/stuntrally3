@@ -30,6 +30,18 @@ using namespace Ogre;
 using namespace std;
 
 
+//  todo: fake, just to shut up warnings
+class ManResLd : public ManualResourceLoader
+{
+	void prepareResource( Resource *resource ) override
+	{
+	}
+	void loadResource( Resource *resource ) override
+	{
+	}
+} gGrassManResLd;
+
+
 //  Create  Grass
 //---------------------------------------------------------
 void Grass::Create()
@@ -216,8 +228,7 @@ void Grass::CreateMesh( GrassData& sd, Ogre::String sMesh, Ogre::String sMtrName
 		LogO("Mesh exists !!!" + sMesh);
 
  	Aabb aabox;
- 	MeshPtr mesh = MeshManager::getSingleton().createManual(sMesh, "General");
-		//ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME );
+ 	MeshPtr mesh = MeshManager::getSingleton().createManual(sMesh, "General", &gGrassManResLd);
 	SubMesh* subMesh = mesh->createSubMesh();
 
     //-----------------------------------------------------------------------------------

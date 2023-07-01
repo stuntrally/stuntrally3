@@ -30,6 +30,18 @@ using namespace std;
 #define V1tangents  // todo: compute tangents ..
 
 
+//  todo: fake, just to shut up warnings
+class ManResLd : public ManualResourceLoader
+{
+	void prepareResource( Resource *resource ) override
+	{
+	}
+	void loadResource( Resource *resource ) override
+	{
+	}
+} gGridManResLd;
+
+
 App* GridCellLods::pApp = 0;
 
 
@@ -73,8 +85,7 @@ void GridCellLods::Create()
 
  	Aabb aabox;  Real b = 1000.f;
 	aabox.setExtents(Vector3(-b,-b,-b), Vector3(b,b,b));
- 	MeshPtr mesh = MeshManager::getSingleton().createManual(sMesh, "General");
-		//ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME );
+ 	MeshPtr mesh = MeshManager::getSingleton().createManual(sMesh, "General", &gGridManResLd);
 	SubMesh* subMesh = mesh->createSubMesh();
 
     //-----------------------------------------------------------------------------------
