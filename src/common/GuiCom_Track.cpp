@@ -474,7 +474,7 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 
 		//  diff, rate
 		  infTrk[ch][9]->setCaption(ti.diff==0   ? "" : (getClrDiff(ti.diff) + toStr(ti.diff)));
-		imInfTrk[ch][9]->setAlpha(0.2f + 0.8f * ti.diff / 6.f);
+		imInfTrk[ch][9]->setAlpha(std::min(1.f, 0.2f + 0.8f * ti.diff / 6.f));
 		  infTrk[ch][10]->setCaption(ti.rating==0 ? "" : (getClrRating(ti.rating) + toStr(ti.rating)));
 		imInfTrk[ch][10]->setAlpha(0.2f + 0.8f * ti.rating / 6.f);
 

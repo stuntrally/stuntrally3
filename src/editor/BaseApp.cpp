@@ -134,21 +134,21 @@ void BaseApp::baseInitGui()
 {
 	//  Cam Pos
 	bckCamPos = mGui->createWidget<ImageBox>("ImageBox",
-		248,22, 616,96, Align::Default, "Overlapped", "CamB");
+		248,22, 426,96, Align::Default, "Overlapped", "CamB");
 	bckCamPos->setImageTexture("back_times.png");
 
 	txCamPos = bckCamPos->createWidget<TextBox>("TextBox",
-		16,8, 600,80, Align::Default, "CamT");
+		16,8, 410,80, Align::Default, "CamT");
 	txCamPos->setFontName("hud.fps");  txCamPos->setTextShadow(true);
 	bckCamPos->setVisible(pSet->camPos);
 
 	//  Input bar
 	bckInput = mGui->createWidget<ImageBox>("ImageBox",
-		0,0, 640,64, Align::Default, "Pointer", "InpB");
+		0,0, 540,64, Align::Default, "Pointer", "InpB");  // resized in updTrkListDim
 	bckInput->setImageTexture("back_times.png");  //menu.png");
 
 	txInput = bckInput->createWidget<TextBox>("TextBox",
-		40,8, 630,60, Align::Default, "InpT");
+		40,8, 1630,60, Align::Default, "InpT");
 	txInput->setFontName("hud.text");
 	txInput->setFontHeight(40);  txInput->setTextShadow(true);
 	bckInput->setVisible(pSet->inputBar);
