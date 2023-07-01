@@ -357,8 +357,12 @@ void App::update( float dt )
 	if (bRecreateFluids)
 	{	bRecreateFluids = false;
 
-		scn->DestroyFluids();
-		scn->CreateFluids();
+		scn->refl.DestroyFluids();
+		scn->refl.DestroyRTT();  //-
+
+		scn->refl.CreateRTT();
+		AddListenerRnd2Tex();
+		scn->refl.CreateFluids();
 		UpdFluidBox();
 	}
 

@@ -71,13 +71,7 @@ public:
 
 	//  💧 Fluids  water, mud
 	//-----------------------------------
-	std::vector<Ogre::String/*MeshPtr*/> vFlSMesh, vFlSMesh2;
-	std::vector<Ogre::Item*> vFlIt;
-	std::vector<Ogre::SceneNode*> vFlNd;
-	Ogre::SceneNode* mNdFluidsRoot =0;
-	void CreateFluids(), DestroyFluids(), CreateBltFluids();
-
-	FluidsReflect refl;  // water RTT
+	FluidsReflect refl;  // with RTT
 
 
 	//  🛣️ Road

@@ -5,17 +5,17 @@ namespace Ogre  {
 	class PlanarReflections;  class PlanarReflectionActor;
 	// class Terra;  class Atmosphere2Npr;  class HlmsPbsTerraShadows;
 	class Light;  class SceneNode;  class Camera;  class SceneManager;  }
-class AppGui;
+class App;
 
 
 //  🪞 planar reflect  ws listener
 class ReflectListener : public Ogre::CompositorWorkspaceListener
 {
-	AppGui* app =0;
+	App* app =0;
 	Ogre::PlanarReflections *mPlanarRefl;
 
 public:
-	ReflectListener( AppGui* app1, Ogre::PlanarReflections *p )
+	ReflectListener( App* app1, Ogre::PlanarReflections *p )
 		:app(app1), mPlanarRefl( p )
 	{	}
 	virtual ~ReflectListener()
@@ -30,22 +30,20 @@ public:
 class FluidsReflect
 {
 public:
-	AppGui* app =0;
+	App* app =0;
+	class btDiscreteDynamicsWorld* world =0;
 
-	//  🟢 meshes etc
-	// class FluidRefl
-	// {
-	Ogre::Item *item =0;
-	Ogre::SceneNode *nd =0;
-	Ogre::String sMesh;
-	Ogre::PlanarReflectionActor *actor =0;
-	// };
-	// std::vector<FluidRefl> fluids;
+	//  🟢 meshes etc per fluid
+	std::vector<Ogre::String/*MeshPtr*/> vsMesh, vsMesh2;
+	std::vector<Ogre::Item*> vIt;
+	std::vector<Ogre::SceneNode*> vNd;
+	std::vector<Ogre::PlanarReflectionActor*> vActors;
+	// std::vector<Ogre::PlanarReflections*> vPlRefl;  //-
 
-	void CreateFluids(), DestroyFluids();
+	void CreateFluids(), DestroyFluids(), CreateBltFluids();
 
 	//  🪞 RTT, setup
-	Ogre::PlanarReflections *mPlanarRefl =0;
+	Ogre::PlanarReflections* mPlanarRefl =0;
 	ReflectListener *mWsListener =0;
 	
 	void CreateRTT(), DestroyRTT();

@@ -35,6 +35,8 @@
 #include <OgreMaterial.h>
 #include <OgreMaterialManager.h>
 #include <OgreTextureGpuManager.h>
+#include <Compositor/OgreCompositorWorkspace.h>
+
 #include <MyGUI_TextBox.h>
 #include <MyGUI_Window.h>
 #include "MessageBox.h"
@@ -227,8 +229,12 @@ void App::LoadCleanUp()
 	LogO("DD-- LoadCleanUp ------DD");
 	updMouse();
 	
+	scn->refl.app = this;
 	if (dstTrk)
-	{	scn->DestroyFluids();
+	{
+		scn->refl.DestroyFluids();
+		scn->refl.DestroyRTT();
+
 		DestroyObjects(true);
 	}
 	
@@ -289,7 +295,8 @@ void App::LoadCleanUp()
 		scn->DestroyRoads();    // 🛣️
 		scn->DestroyTerrains();  // ⛰️
 		//^ cars
-		scn->DestroyFluids();   // 💧
+		scn->refl.DestroyFluids();   // 💧
+		scn->refl.DestroyRTT();      // 💧
 		scn->DestroyEmitters(true);  // 🔥
 		scn->DestroyAllAtmo();  // 🌦️
 	}
@@ -467,6 +474,13 @@ void App::LoadGame()
 
 
 //  Scene
+void App::AddListenerRnd2Tex()
+{
+	if (scn->refl.mWsListener)
+	for (auto* ws : mWorkspaces)
+		ws->addListener(scn->refl.mWsListener);
+}
+
 void App::LoadScene()  // 3
 {
 	//  ⛅ sun, fog, weather, sky
@@ -479,7 +493,11 @@ void App::LoadScene()  // 3
 
 	//  💧 Fluids
 	if (dstTrk)
-		scn->CreateFluids();
+	{
+		scn->refl.CreateRTT();
+		AddListenerRnd2Tex();
+		scn->refl.CreateFluids();
+	}
 
 	if (dstTrk)
 		pGame->collision.world->setGravity(btVector3(0.0, 0.0, -scn->sc->gravity));

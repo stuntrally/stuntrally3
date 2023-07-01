@@ -102,7 +102,8 @@ void App::destroyScene()
 	DestroyObjects(true);
 	scn->DestroyRoads();
 	scn->DestroyTerrains();
-	scn->DestroyFluids();
+	scn->refl.DestroyFluids();
+	scn->refl.DestroyRTT();
 	scn->DestroyEmitters(true);
 	scn->DestroyAllAtmo();
 

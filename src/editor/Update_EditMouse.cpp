@@ -151,13 +151,13 @@ void App::MouseFluids()
 			Vector3 vz = mCamera->getDirection();  vz.y = 0;  vz.normalise();
 			Vector3 vm = (-vNew.y * vz + vNew.x * vx) * d * moveMul;
 			fb.pos += vm;
-			scn->vFlNd[iFlCur]->setPosition(fb.pos);  UpdFluidBox();
+			scn->refl.vNd[iFlCur]->setPosition(fb.pos);  UpdFluidBox();
 		}
 		else if (mbRight)  // move y
 		{
 			Real ym = -vNew.y * d * moveMul;
 			fb.pos.y += ym;
-			scn->vFlNd[iFlCur]->setPosition(fb.pos);  UpdFluidBox();
+			scn->refl.vNd[iFlCur]->setPosition(fb.pos);  UpdFluidBox();
 		}
 		// rot not supported (bullet trigger isnt working, trees check & waterDepth is a lot simpler)
 		/*else if (mbMiddle)  // rot yaw

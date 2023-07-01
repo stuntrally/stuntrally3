@@ -36,6 +36,7 @@
 // #include <OgreTextureManager.h>
 #include <OgreResourceGroupManager.h>
 #include <OgreSceneNode.h>
+#include <OgreMeshManager2.h>
 #include <Compositor/OgreCompositorWorkspace.h>
 #include "MessageBox.h"
 #include <cmath>
@@ -182,7 +183,7 @@ void App::NewCommon(bool onlyTerVeget)
 	if (!onlyTerVeget)
 	{
 		DestroyObjects(true);  // 📦
-		scn->DestroyFluids();  // 💧
+		scn->refl.DestroyFluids();  // 💧
 		scn->DestroyEmitters(true);  // 🔥
 	
 		scn->DestroyTerrains();  // ⛰️
@@ -222,9 +223,15 @@ void App::LoadTrackEv()
 	scn->DestroyPace();
 
 	scn->refl.app = this;
-	scn->refl.DestroyFluids();	
+	scn->refl.DestroyFluids();	// 💧
 	scn->refl.DestroyRTT();
 
+	// mSceneMgr->destroyAllItems();
+	// mSceneMgr->destroyAllMovableObjects();
+	// MeshManager::getSingleton().destroyAllResourcePools();
+	// v1::MeshManager::getSingleton().destroyAllResourcePools();
+	// destroyAllVertexArrayObjects();
+	// mSceneMgr->_destroyAllCubemapProbes()
 
 	//  🏞️ load scene
 	scn->sc->LoadXml(gcom->TrkDir()+"scene.xml");
@@ -244,17 +251,12 @@ void App::LoadTrackEv()
 
 
 	//  💧 Fluids
-	scn->CreateFluids();
 	scn->refl.CreateRTT();
-#if 0  // todo: water ...
 	scn->refl.CreateFluids();
-#endif
 
 	//  set sky tex name for water
 	// sh::MaterialInstance* m = mFactory->getMaterialInstance(scn->sc->skyMtr);
 	// std::string skyTex = sh::retrieveValue<sh::StringValue>(m->getProperty("texture"), 0).get();
-	// sh::Factory::getInstance().setTextureAlias("SkyReflection", skyTex);
-	// sh::Factory::getInstance().setTextureAlias("CubeReflection", "ReflectionCube");
 
 
 	//  ⛰️ Terrain
@@ -351,7 +353,7 @@ void App::UpdateTrackEv()
 
 	NewCommon(true);  // destroy only terrain and veget
 	
-	//CreateFluids();
+	//CreateFluids2();
 	scn->DestroyTerrains();
 	scn->CreateTerrains(1);
 

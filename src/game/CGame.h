@@ -135,7 +135,8 @@ public:
 	bool bLoading = 0, bLoadingEnd = 0, bSimulating = 0;  int iLoad1stFrames = 0;
 	void LoadCleanUp(), LoadGame(), LoadScene(), LoadCar(),
 		LoadTerrain(), LoadRoad(), LoadObjects(), LoadTrees(), 
-		LoadView(int c), LoadMisc();
+		LoadView(int c), LoadMisc(),
+		AddListenerRnd2Tex();
 
 	enum ELoadState
 	{	LS_CLEANUP=0, LS_GAME, LS_SCENE, LS_CAR,

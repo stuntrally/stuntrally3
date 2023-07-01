@@ -5,8 +5,12 @@
 #include "settings.h"
 #include "App.h"
 #include "Cam.h"
+
 #include "CScene.h"
 #include "SceneXml.h"
+#include "FluidsXml.h"
+#include "CData.h"
+#include "ShapeData.h"
 #include "GraphicsSystem.h"
 
 #include <OgreRoot.h>
@@ -27,6 +31,7 @@
 #include <Compositor/Pass/PassScene/OgreCompositorPassSceneDef.h>
 
 #include <OgreItem.h>
+#include <OgreVector2.h>
 #include <OgreMesh.h>
 #include <OgreMeshManager.h>
 #include <OgreMesh2.h>
@@ -36,6 +41,14 @@
 #include "OgrePlanarReflections.h"
 #include <Compositor/Pass/PassScene/OgreCompositorPassScene.h>
 using namespace Ogre;
+
+#ifndef SR_EDITOR
+	#include "game.h"
+#endif
+#include <BulletCollision/CollisionDispatch/btCollisionObject.h>
+#include <BulletCollision/CollisionShapes/btBoxShape.h>
+#include <BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h>
+#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
 
 
 void ReflectListener::workspacePreUpdate( CompositorWorkspace *workspace )
@@ -92,6 +105,7 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 //-----------------------------------------------------------------------------------
 void FluidsReflect::DestroyRTT()
 {
+	LogO("C~~~ destroy Fluids RTT");
 	CompositorWorkspace *ws = app->mGraphicsSystem->getCompositorWorkspace();
 	if (mWsListener)
 		ws->removeListener( mWsListener );
@@ -102,17 +116,22 @@ void FluidsReflect::DestroyRTT()
 
 void FluidsReflect::CreateRTT()
 {
+	// return;  // todo: water ...
+	LogO("C~~~ create Fluids RTT");
+
 	Root *root = app->mGraphicsSystem->getRoot();
 	bool useCompute = false;
 #if !OGRE_NO_JSON
 	useCompute = root->getRenderSystem()->getCapabilities()->hasCapability( RSC_COMPUTE_PROGRAM );
 #endif
 
-	mPlanarRefl = new PlanarReflections( app->mSceneMgr, root->getCompositorManager2(), 1.0, 0 );
+	mPlanarRefl = new PlanarReflections( app->mSceneMgr, root->getCompositorManager2(),
+		500.0, 0 );  // par-
 	uint32 size = app->pSet->GetTexSize(app->pSet->water_reflect);
 	
-	mPlanarRefl->setMaxActiveActors( 1u, "PlanarReflections",
-		true, size, size, 0/*?mipmaps*/, PFG_RGBA8_UNORM_SRGB, useCompute /*, mWsListener*/ );
+	mPlanarRefl->setMaxActiveActors( 2u,  //par 1
+		"PlanarReflections", true,  //par?
+		size, size, 0/*?mipmaps*/, PFG_RGBA8_UNORM_SRGB, useCompute /*, mWsListener*/ );
 
 	
 	mWsListener = new ReflectListener( app, mPlanarRefl );
@@ -126,65 +145,232 @@ void FluidsReflect::CreateRTT()
 	Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_PBS );
 	assert( dynamic_cast<HlmsPbs2 *>( hlms ) );
 	HlmsPbs2 *pbs = static_cast<HlmsPbs2 *>( hlms );
-	pbs->setPlanarReflections( mPlanarRefl );
+	pbs->setPlanarReflections( mPlanarRefl );  // only one?
 }
 
 
-//  Setup PlanarReflections
-//-----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+///  🆕 create Fluid areas  . . . . . . . 
+//----------------------------------------------------------------------------------------------------------------------
 void FluidsReflect::CreateFluids()
 {
+	LogO("C~~~ create Fluids");
+	auto dyn = SCENE_STATIC;
+	auto* sc = app->scn->sc;
+#ifdef SR_EDITOR
+	dyn = SCENE_DYNAMIC;
+	app->UpdFluidBox();
+#endif
 
-	//  plane
-	const Vector2 mirrorSize( 4000.0f, 4000.0f );
-	//  so that node->getOrientation matches the orientation for the PlanarReflectionActor
-	v1::MeshPtr planeMeshV1 = v1::MeshManager::getSingleton().createPlane(
-		"PlaneMirror", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-		Plane( Vector3::UNIT_Z, 0.0f ),  // z|
-		mirrorSize.x, mirrorSize.y,
-		30, 30, true, 1,  // par from size
-		120.f, 120.f, Vector3::UNIT_Y,  // z|
-		v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
-	sMesh = "PlaneMirror";
-	MeshPtr planeMesh = MeshManager::getSingleton().createByImportingV1(
-		sMesh, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-		// planeMeshV1.get(), true, true, true );
-		planeMeshV1.get(), false, false, true, false );
+	for (int i=0; i < sc->fluids.size(); ++i)
+	{
+//  par ...
+#define ROT
+// bool reflect = i==0;  // one
+// bool reflect = 1;  // all
+bool reflect = 0;  // off
 
-	//  item, node
-	item = app->mSceneMgr->createItem( planeMesh, SCENE_DYNAMIC );
-	item->setDatablock( "WaterReflect" );
-	item->setCastShadows(false);
-	app->SetTexWrap(item, true);
+		FluidBox& fb = sc->fluids[i];
+		//  plane, mesh  ----
+		Plane p;  p.normal = Vector3::UNIT_Y;  p.d = 0;
+	#ifdef ROT
+		p.normal = Vector3::UNIT_Z;  // z|  ##
+	#endif
+		String sMesh = "WaterMesh"+toStr(i), sMesh2 = "WtrPlane"+toStr(i);
+		const Vector2 v2size(fb.size.x, fb.size.z),
+			uvTile(fb.tile.x*fb.size.x *6, 6* fb.tile.y*fb.size.z);  // par
 
-	nd = app->mSceneMgr->getRootSceneNode( SCENE_DYNAMIC )->createChildSceneNode( SCENE_DYNAMIC );
-	float h = -17.f;
-	if (!app->scn->sc->fluids.empty())
-		h = app->scn->sc->fluids[0].pos.y + 0.2f;  // 1st fluid
-	nd->setPosition( 0, h, 0 );
+		v1::MeshPtr meshV1 = v1::MeshManager::getSingleton().createPlane(
+			sMesh, rgDef,
+			p, v2size.x, v2size.y,
+			6,6, true, 1,  //par steps /fake  // 30 ##
+			uvTile.x, uvTile.y,
+		#ifdef ROT
+			Vector3::UNIT_Y,  // z|  ##
+		#else
+			Vector3::UNIT_Z,  // Z
+		#endif
+			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 
-	nd->setOrientation( Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_X ) );  // _
-	nd->attachObject( item );
+		meshV1->buildTangentVectors();
+		MeshPtr mesh = MeshManager::getSingleton().createByImportingV1(
+			sMesh2, rgDef,
+			meshV1.get(), false, false, true, false );
+			// meshV1.get(), true, true, true );  //-
+		
+		MeshManager::getSingleton().remove(sMesh);  // not needed
+		// meshV1->unload();  //
 
 
-	//  actor, tracked
-	actor = mPlanarRefl->addActor( PlanarReflectionActor(
-		nd->getPosition(), mirrorSize, nd->getOrientation() ));
+		//  item, node  ----
+		SceneManager *mgr = app->mSceneMgr;
+		SceneNode *rootNode = mgr->getRootSceneNode( dyn );
 
-	PlanarReflections::TrackedRenderable tracked(
-		item->getSubItem(0), item, Vector3::UNIT_Z, Vector3(0, 0, 0) );  // |
-	mPlanarRefl->addRenderable( tracked );
+		Item* item = mgr->createItem( mesh, dyn );
+		String sMtr = fb.id == -1 ? "" :
+			reflect ? "WaterReflect" :  // ##
+			app->scn->data->fluids->fls[fb.id].material;  //"Water"+toStr(1+fb.type)
+		
+		item->setDatablock( sMtr );  item->setCastShadows( false );
+		item->setRenderQueueGroup( RQG_Fluid );  item->setVisibilityFlags( RV_Terrain );
+		app->SetTexWrap(item);
+		
+		SceneNode* node = rootNode->createChildSceneNode( dyn );
+		node->setPosition( fb.pos );  //, Quaternion(Degree(fb.rot.x),Vector3::UNIT_Y)
+	#ifdef ROT
+		node->setOrientation( Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_X ) );  // ## _
+	#endif
+		node->attachObject( item );
+
+
+		//  actor, tracked  ----
+		PlanarReflectionActor* actor =0;
+		if (reflect && mPlanarRefl)
+		{
+			actor = mPlanarRefl->addActor( PlanarReflectionActor(
+				node->getPosition(), v2size, node->getOrientation() ));
+
+			PlanarReflections::TrackedRenderable tracked(
+				item->getSubItem(0), item,
+			#ifdef ROT
+				Vector3::UNIT_Z, 
+				//fb.pos);  //?
+				Vector3(0, 0, 0) );  // |  ## _
+			#else
+				Vector3::UNIT_Y, Vector3(0, 0, 0) );  // |
+			#endif
+			mPlanarRefl->addRenderable( tracked );
+		}
+
+		// mPlanarRefl->removeRenderable( tracked );  // ?
+		// mPlanarRefl->removeActor( actor );
+
+
+		//  add  ----
+		vActors.push_back(actor);
+		vsMesh.push_back(sMesh);  vsMesh2.push_back(sMesh2);
+		vIt.push_back(item);  vNd.push_back(node);
+	}
+
+	#ifndef SR_EDITOR  // game
+		CreateBltFluids();
+	#endif
+}
+
+//  💥 destroy
+//----------------------------------------------------------------------------------------------------------------------
+void FluidsReflect::DestroyFluids()
+{
+	LogO("D~~~ destroy Fluids");
+	if (mPlanarRefl)
+		mPlanarRefl->destroyAllActors();
 	
-	// mPlanarRefl->removeRenderable( tracked );  // ?
-	// mPlanarRefl->removeActor( actor );
+	for (int i=0; i < vNd.size(); ++i)
+	{
+		// removeActor( vActors[i] );
+		// mPlanarRefl->remov();
+
+		app->mSceneMgr->destroySceneNode(vNd[i]);
+		app->mSceneMgr->destroyItem(vIt[i]);
+		v1::MeshManager::getSingleton().remove(vsMesh[i]);
+		MeshManager::getSingleton().remove(vsMesh2[i]);
+	}
+	vNd.clear();  vIt.clear();
+	vsMesh.clear();  vsMesh2.clear();
 }
 
 
-void FluidsReflect::DestroyFluids()
+//  🎳 bullet
+//----------------------------------------------------------------------------------------------------------------------
+void FluidsReflect::CreateBltFluids()
 {
-	if (nd)	{	app->mSceneMgr->destroySceneNode(nd);  nd = 0;  }
-	if (item){	app->mSceneMgr->destroyItem(item);  item = 0;  }
-	if (!sMesh.empty())
-	{	MeshManager::getSingleton().remove(sMesh);
-	v1::MeshManager::getSingleton().remove(sMesh);  sMesh = "";  }
+	auto* sc = app->scn->sc;
+	for (int i=0; i < sc->fluids.size(); ++i)
+	{
+		FluidBox& fb = sc->fluids[i];
+		const FluidParams& fp = sc->pFluidsXml->fls[fb.id];
+
+		///  add bullet trigger box   . . . . . . . . .
+		btVector3 pc(fb.pos.x, -fb.pos.z, fb.pos.y -fb.size.y/2);  // center
+		btTransform tr;  tr.setIdentity();  tr.setOrigin(pc);
+		//tr.setRotation(btQuaternion(0, 0, fb.rot.x*PI_d/180.f));
+
+		btCollisionObject* bco = 0;
+		float t = sc->tds[0].fTerWorldSize*0.5f;  // not bigger than terrain  // 1st ter!-
+		btScalar sx = std::min(t, fb.size.x*0.5f), sy = std::min(t, fb.size.z*0.5f), sz = fb.size.y*0.5f;
+		
+	if (0 && fp.solid)  /// test random ray jumps meh-
+	{
+		const int size = 16;
+		float* hfHeight = new float[size*size];
+		int a = 0;
+		for (int y=0; y<size; ++y)
+		for (int x=0; x<size; ++x)
+			hfHeight[a++] = 0.f;
+		btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
+			size, size, hfHeight, 1.f,
+			-13.f,13.f, 2, PHY_FLOAT,false);  //par- max height
+		
+		hfShape->setUseDiamondSubdivision(true);
+
+		btVector3 scl(sx, sy, sz);
+		hfShape->setLocalScaling(scl);
+		
+		size_t id = SU_Fluid;  if (fp.solid)  id += fp.surf;
+		hfShape->setUserPointer((void*)id);
+
+		bco = new btCollisionObject();
+		bco->setActivationState(DISABLE_SIMULATION);
+		bco->setCollisionShape(hfShape);  bco->setWorldTransform(tr);
+		bco->setFriction(0.9);   //+
+		bco->setRestitution(0.0);  //bco->setHitFraction(0.1f);
+		bco->setCollisionFlags(bco->getCollisionFlags() |
+			btCollisionObject::CF_STATIC_OBJECT /*| btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+	
+		bco->setUserPointer(new ShapeData(ST_Fluid, 0, &fb));  ///~~
+	#ifndef SR_EDITOR
+		app->pGame->collision.world->addCollisionObject(bco);
+		app->pGame->collision.shapes.push_back(hfShape);
+		fb.cobj = bco;
+	#else
+		app->world->addCollisionObject(bco);
+	#endif
+
+	}else{
+
+		btCollisionShape* bshp = 0;
+		bshp = new btBoxShape(btVector3(sx,sy,sz));
+
+		//  solid surf
+		size_t id = SU_Fluid;  if (fp.solid)  id += fp.surf;
+		bshp->setUserPointer((void*)id);
+		bshp->setMargin(0.1f); //
+
+		bco = new btCollisionObject();
+		bco->setActivationState(DISABLE_SIMULATION);
+		bco->setCollisionShape(bshp);	bco->setWorldTransform(tr);
+
+		if (!fp.solid)  // fluid
+			bco->setCollisionFlags(bco->getCollisionFlags() |
+				btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_NO_CONTACT_RESPONSE/**/);
+		else  // solid
+		{	bco->setCollisionFlags(bco->getCollisionFlags() |
+				btCollisionObject::CF_STATIC_OBJECT);
+			bco->setFriction(0.6f);  bco->setRestitution(0.5f);  //par?..
+		}
+
+		bco->setUserPointer(new ShapeData(ST_Fluid, 0, &fb));  ///~~
+	#ifndef SR_EDITOR
+		app->pGame->collision.world->addCollisionObject(bco);
+		app->pGame->collision.shapes.push_back(bshp);
+		fb.cobj = bco;
+	#else
+		app->world->addCollisionObject(bco);
+	#endif
+	}
+		
+	}
+#ifdef SR_EDITOR
+	app->UpdObjPick();
+#endif
 }
