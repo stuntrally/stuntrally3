@@ -12,7 +12,7 @@ hlms road pbs  // bridges
 
 	fresnel	0.0
 	fresnel_coeff 0.3 0.3 0.3
-	// diffuse  1.0 0.0 0.0
+	// diffuse  1.0 1.0 1.0
 	specular 0.3 0.3 0.3
 }
 //  on terrain  base  -------------
@@ -28,7 +28,7 @@ hlms road_terrain pbs
 	// workflow metallic
 	roughness 0.5
 	metalness 0.1
-	// diffuse  0.0 0.7 0.7
+	// diffuse  0.7 0.7 0.7
 	specular 1 1 1
 }
 
@@ -335,7 +335,6 @@ hlms roadMagicMirror pbs : road
 
 	fresnel 1.0
 	fresnel_coeff 1 1 1  // refl color
-	// workflow metallic
 	roughness 0.01
 	metalness 0.95
 }
@@ -350,7 +349,6 @@ hlms roadMagicMirror_ter pbs : road_terrain
 
 	fresnel 1.0
 	fresnel_coeff 0.2 0.2 0.2  // refl color
-	// workflow metallic
 	roughness 0.015
 	metalness 0.95
 }
@@ -368,22 +366,20 @@ hlms roadCrystal pbs : road
 
 	fresnel 1.0
 	fresnel_coeff 0.9 0.9 0.95  // refl color
-	// workflow metallic
-	roughness 0.15
+	roughness 0.02
 	metalness 0.98
 }
 hlms roadCrystal_ter pbs : road_terrain
 {
-	diffuse  0.1 0.5 1.0
-	specular 0.05 0.1 0.2
+	diffuse  0.051 0.35 1.0
+	specular 0.11 0.31 0.52
 	diffuse_map rdGravel.jpg
 	normal_map  normal_1.png
 	// normal_map rdGravel_norm.jpg
 
 	fresnel 1.0
 	fresnel_coeff 0.82 0.84 0.86  // refl color
-	// workflow metallic
-	roughness 0.15
+	roughness 0.01
 	metalness 0.98
 }
 
@@ -453,7 +449,6 @@ hlms roadIce_ter pbs : road_terrain
 	roughness 0.01
 	fresnel	1.0
 	fresnel_coeff 0.29 0.3 0.3  // refl color
-	// workflow metallic
 }
 
 //  Snow Winter
@@ -878,7 +873,6 @@ hlms roadNgravelWet_ter pbs : road_terrain
 	// specular 0.5 0.5 0.5
 	specular 1 1 1
 
-	// workflow metallic
 	roughness 0.015
 	metalness 0.95
 
@@ -915,7 +909,6 @@ hlms roadMetal1_ter pbs : road
 	depth_bias 3
 	// scene_blend alpha_blend
 
-	// workflow metallic
 	roughness 0.015
 	metalness 0.95
 

@@ -52,6 +52,12 @@ void HlmsPbs2::calculateHashForPreCreate(
 	const auto& mtr = rnd->getDatablockOrMaterialName();
 	// LogO("- calc pbs: " + mtr);   // on every item
 	
+	if (mtr.substr(0,5) == "Water")
+		setProperty( "water", 1 );
+	else
+	if (mtr.substr(0,5) == "River")
+		setProperty( "river", 1 );
+	else
 	if (mtr.substr(0,5) == "grass")
 		setProperty( "grass", 1 );
 
@@ -135,7 +141,7 @@ return;
 	// .. send paint par
 	char* orgPtr = dstPtr;
 	HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
-	dstPtr = orgPtr + HlmsPbsDatablock::MaterialSizeInGpu;
+	dstPtr = orgPtr + HlmsPbsDatablock::MaterialSizeInGpu;  // can't change this ...
 	// memcpy( dstPtr, &mCustomParameter, sizeof( mCustomParameter) );
 
 	//  game copy paint params  ----
