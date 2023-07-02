@@ -34,7 +34,7 @@ hlms pipe_glass pbs
     depth_bias 3
 
 	// fresnel_coeff 0.9 0.9 0.9
-	roughness 0.15
+	roughness 0.45
 	metalness 0.99
 
 	cull_mode clockwise
@@ -238,7 +238,6 @@ hlms pipeAsphalt pbs : pipe_base
 	specular 0.3 0.3 0.25
 	depth_bias 3
 	cull_mode none
-	// receives_shadows false
 }
 
 hlms pipeAsphaltRed pbs : pipe_base
@@ -248,8 +247,37 @@ hlms pipeAsphaltRed pbs : pipe_base
 	specular 0.4 0.35 0.3
 	depth_bias 3
 	cull_mode none
-	// receives_shadows false
 }
+
+
+hlms pipeAsphaltSpace pbs : pipe_base
+{
+	diffuse_map roadAsphaltSpace1.jpg
+	normal_map roadAsphaltSpace_norm.jpg
+	specular_map roadAsphalt_spec.jpg
+	// ambient 0.95 0.95 0.95
+	diffuse 0.7 0.7 0.7
+	specular 0.5 0.5 0.5 6
+	bump_scale 0.04
+	depth_bias 3
+	// refl_amount 0.04
+	cull_mode none
+}
+
+hlms pipeAsphaltSpaceBlue pbs : pipe_base
+{
+	diffuse_map roadAsphaltSpace1.jpg
+	normal_map roadAsphaltSpace_norm.jpg
+	specular_map roadAsphalt_spec.jpg
+	// ambient 0.95 0.95 1.1
+	diffuse 0.7 0.7 0.85
+	specular 0.5 0.5 0.65 6
+	// bump_scale 0.04
+	depth_bias 3
+	// refl_amount 0.08
+	cull_mode none
+}
+
 
 //  pipe metal
 hlms pipeMetal pbs : pipe_base

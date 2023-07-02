@@ -308,27 +308,252 @@ hlms River_Blue_jelly pbs : Blue_jelly
 	// speed -3.05 -1.0
 }
 
+
+//  New
+//--------------------------------------------------------
+hlms Water_strange pbs : Water
+{
+    choppyness_scale 0.15 25
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.3 0.3
+    bump 1.5 0.08 0.12
+    fresnelMultiplier 1.1
+	
+	colour 0.49 0.69 0.78  0.0
+	reflectColour 0.81 0.93 1.49  0.9
+	refractColour 0.66 0.99 0.59  1.26
+	specColourAndPower 0.0 2.5 0.5  64
+
+    bump2SpecPowerMul 6.0 36 0.9
+    speed 1.0 1.0
+}
+
+hlms Water_strange2 pbs : Water
+{
+    choppyness_scale 0.15 25
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.3 0.3
+    bump 1.5 0.08 0.12
+
+    colour 0.42 0.97 0.39  0.0
+	reflectColour 0.98 0.09 0.97  0.9
+	refractColour 0.76 0.89 0.99  0.76
+	specColourAndPower 1.3 0.1 0.1  64
+
+    bump2SpecPowerMul 6.0 36 0.9
+    speed 0.6 1.0
+}
+
+hlms LavaHot pbs : Water  // lava dense fluid
+{
+    choppyness_scale 0.1 33
+    smallWaves_midWaves 0.15 0.1 0.22 0.12
+    bigWaves 0.553 0.435
+    bump 2.5 0.145 0.073
+    fresnelMultiplier 0.67
+
+    colour 0.847 0.314 0.195  1.0
+	reflectColour 1.45 1.46 0.48  0.44
+	refractColour 0.0 0.0 0.0  0.6
+	specColourAndPower 1.10 1.20 0.44  256
+
+    bump2SpecPowerMul 4.86 1.0 1.03
+    speed 0.478 1.0
+}
+
+
+hlms Water_pink pbs : Water  // pink
+{
+    choppyness_scale 0.15 25
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.3 0.3
+    bump 1.5 0.08 0.12
+
+    colour 0.99 0.39 0.94  0.0
+	reflectColour 0.94 0.89 0.91  0.9
+	refractColour 0.86 0.99 0.86  0.76
+	specColourAndPower 0.98 1.0 1.0  64
+
+    bump2SpecPowerMul 6.0 16 0.8
+    speed 1.0 1.0
+}
+
+hlms Pink_jelly pbs : Water
+{
+	WaterNormalMap water_nh.png
+	choppyness_scale 0.08 12
+	smallWaves_midWaves 0.25 0.3 0.5 0.15
+	bigWaves 0.5 0.5
+	bump 2 0.6 0.8
+
+	colour 0.87 0.1 0.86 0.86
+	reflectColour 0.9 0.3 0.6 1
+	refractColour 0.9 0.4 0.5 1.0
+	specColourAndPower 1.0 1.0 1.0 64
+
+	bump2SpecPowerMul 12.0 12 0.4
+	speed 0.08 1.0
+}
+
+hlms Oil pbs : Water
+{
+    WaterNormalMap water_nh.png
+    smallWaves_midWaves 0.025 0.15 0.06 0.1
+    choppyness_scale 0.03 7
+    bigWaves 0.68 0.67
+    bump 1.4 0.22 0.01
+
+    colour 0.04 0.04 0.05  1.0
+	reflectColour 0.1 0.2 0.3  0.57
+	refractColour 0.13 0.13 0.19  1.0
+	specColourAndPower 0.33 0.35 0.37  48
+
+    bump2SpecPowerMul 16.0 8 0.3
+    speed 0.03 1.0
+}
+
+hlms Liquid_gas pbs : Water
+{
+	choppyness_scale 0.025 5
+    smallWaves_midWaves 0.025 0.15 0.06 0.1
+    bigWaves 0.68 0.67
+    bump 1.2 0.22 0.01
+    fresnelMultiplier 1.4
+
+    colour 0.82 0.85 0.37  0.0
+    reflectColour 0.39 0.6 1.0  0.03
+    refractColour 0.76 0.99 0.96  0.016
+
+	specColourAndPower 0.09 0.2 0.2  12
+    bump2SpecPowerMul 16.0 8 0.3
+    speed 0.03 1.0
+}
+
+hlms Liquid_gas2 pbs : Water
+{
+	choppyness_scale 0.025 5
+    smallWaves_midWaves 0.025 0.15 0.06 0.1
+    bigWaves 0.68 0.67
+    bump 1.2 0.22 0.01
+
+    colour 0.72 0.69 0.37  0.1
+    reflectColour 0.39 0.6 1.0  0.03
+    refractColour 0.89 0.89 0.99  0.3
+
+	specColourAndPower 0.09 0.2 0.2  24
+    bump2SpecPowerMul 16.0 8 0.3
+    speed 0.03 1.0
+}
+
+hlms Liquid_gas_space pbs : Water
+{
+	choppyness_scale 0.025 5
+    smallWaves_midWaves 0.025 0.15 0.06 0.1
+    bigWaves 0.68 0.67
+    bump 1.2 0.22 0.01
+
+    colour 0.72 0.69 0.77  0.1
+    reflectColour 0.39 0.6 3.5  0.03
+    refractColour 0.89 0.89 0.99  0.3
+
+	specColourAndPower 0.09 0.2 0.2  24
+    bump2SpecPowerMul 16.0 8 0.3
+    speed 0.03 1.0
+}
+
+
+hlms Green_slime pbs : Water
+{
+	WaterNormalMap water_nh.png
+	choppyness_scale 0.08 24
+	smallWaves_midWaves 0.25 0.3 0.5 0.15
+	bigWaves 0.5 0.5
+	bump 2 0.6 0.8
+
+	colour 0.03 0.95 0.26 0.86
+	reflectColour 0.5 0.98 0.1 1
+	refractColour 0.1 0.7 0.5 1.0
+	specColourAndPower 1.0 1.0 1.0 64
+
+	bump2SpecPowerMul 12.0 12 0.4
+	speed 0.38 1.0
+}
+
+
+//  New  River
+//--------------------------------------------------------
 hlms River_Acid_green pbs : Acid_green  // green acid
 {
-    // speed -3.8 -1.0
+    speed -3.8 -1.0
 }
 
 hlms River_Ice pbs : Ice  // solid
 {
     diffuse 0.8 0.94 0.95  0.0
-    // speed -3.0 -1.0
+    speed -3.0 -1.0
 }
+
 hlms River_Ice_cyan pbs : Ice_cyan  // solid
 {
-    // speed -3.0 -1.0
+    speed -3.0 -1.0
 }
 
 hlms River_LavaOrn pbs : LavaOrn  // lava dense fluid
 {
-    // speed -0.478 -1.0
+    speed -0.478 -1.0
 }
 hlms River_LavaBlk pbs : LavaBlk  // lava solid
 {
-    // speed -0.15 -1.0
+    speed -0.15 -1.0
 }
 
+hlms River_pink pbs : Water_pink
+{
+    speed -3.0 -1.0
+}
+
+hlms River_strange pbs : Water_strange
+{
+    speed -3.0 -1.0
+}
+
+hlms River_strange2 pbs : Water_strange2
+{
+    speed -3.0 -1.0
+}
+
+hlms River_liquid_gas pbs : Liquid_gas
+{
+    speed -1.0 -1.0
+}
+
+hlms River_liquid_gas2 pbs : Liquid_gas2
+{
+    speed -1.0 -1.0
+}
+
+hlms River_liquid_gas_space pbs : Liquid_gas2
+{
+    speed -1.0 -1.0
+}
+
+
+hlms River_Pink_jelly pbs : Pink_jelly
+{
+	speed -3.05 -1.0
+}
+
+hlms River_Green_slime pbs : Green_slime
+{
+	speed -3.05 -1.0
+}
+
+hlms River_Oil pbs : Oil
+{
+	speed -2.05 -1.0
+}
+
+hlms River_LavaHot pbs : LavaHot
+{
+    speed -0.478 -1.0
+}
