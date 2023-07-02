@@ -11,8 +11,10 @@
 #include <OgreHlmsCommon.h>
 #include <OgreHlmsPbsDatablock.h>
 #include <MyGUI.h>
+#include <utility>
 using namespace MyGUI;
 using namespace Ogre;
+using namespace std;
 
 
 ///  gui tweak page, material properties  new PBS
@@ -22,8 +24,6 @@ using namespace Ogre;
 void CGui::listTweakMtr(Li li, size_t val)
 {
 	pSet->tweak_mtr = li->getItemNameAt(val);
-	auto hlms = Root::getSingleton().getHlmsManager()->getHlms( HLMS_PBS );
-	twk.db = (HlmsPbsDatablock2*) hlms->getDatablock( pSet->tweak_mtr );
 	updTweakMtr();
 }
 
@@ -59,6 +59,8 @@ void CGui::slTweakMtr(SV* sv)
 //  🔁🌈 set gui slider values
 void CGui::updTweakMtr()
 {
+	auto hlms = Root::getSingleton().getHlmsManager()->getHlms( HLMS_PBS );
+	twk.db = (HlmsPbsDatablock2*) hlms->getDatablock( pSet->tweak_mtr );
 	if (!twk.db)  return;
 	Vector3 v;  float f;
 
@@ -104,7 +106,7 @@ void CGui::updTweakMtr()
 
 #if 0
 	ColourValue diff, spec;  //, fresn1, fresn2;
-	auto c = gc.clr[0];
+	auto c = gc.add(0];
 	diff.setHSB(1.f - c.hue, c.sat, c.val);
 
 	db->setWorkflow(  // once?
@@ -117,3 +119,42 @@ void CGui::updTweakMtr()
 	// db->setIndexOfRefraction( Vector3::UNIT_SCALE * (3.f-gc.fresnel*3.f), false );
 	db->setFresnel( Vector3::UNIT_SCALE * gc.fresnel, false );
 #endif
+
+
+//  🌈 set gui slider values  Init  only for gui list
+void CGui::ClrTweakMtr()
+{
+	std::vector<pair<String,String>> clr;
+	#define add(a,b)  clr.push_back(make_pair(a,b))
+	add("base"  ,"#101010");
+	add("cyan"  ,"#00F0F0");  add("green" ,"#00F000");  add("jungle","#20FF00");
+	add("moss"  ,"#00FFA0");  add("blue"  ,"#1060F0");
+	add("red"   ,"#FF0808");  add("yellow","#F0F000");  add("desert","#F0E090");
+	add("orange","#FF9000");  add("lava"  ,"#FF4000");
+	add("white" ,"#FFFFFF");  add("ice"   ,"#F9F9F9");  add("snow"  ,"#EEEEEE");
+	add("viol"  ,"#8040FF");  add("pink"  ,"#FF40FF");
+	add("sunset","#F0C010");  add("alien" ,"#90F020");  add("space" ,"#90C0E0");
+	add("dark"  ,"#202020");  add("sand"  ,"#FFE0B0");  add("savan" ,"#A0F080");
+	add("stone" ,"#C0C0C0");  add("metal" ,"#6090C0");  add("gravel","#909090");
+	add("mud"   ,"#904020");  add("crysta","#2060C0");  add("marble","#F090D0");
+
+	add("glass" ,"#F0F8FF");  add("road"  ,"#904000");  add("pipe"  ,"#C0C000");
+	add("water" ,"#60A0FF");  add("river" ,"#80C0FF");  add("_ter"  ,"#403020");
+	add("house" ,"#A0C0D0");  add("balloon","#F0A040"); add("pyrami","#F0C010");
+
+	for (auto& mat : vsMaterials)
+	{
+		auto s = mat;
+		StringUtil::toLowerCase(s);
+		
+		String c;
+		for (auto it = clr.begin(); it != clr.end(); ++it)
+		{
+			if (s.find(it->first) != string::npos)
+			{
+				c = it->second;
+				break;
+		}	}
+		liTweakMtr->addItem(c + mat);
+	}
+}

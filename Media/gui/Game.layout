@@ -1078,7 +1078,8 @@
 
 								<!-- hue -->
 								<Widget type="ImageBox" skin="ImageBox" position="8 32 392 8">
-									<Property key="ImageTexture" value="hue_bar.png"/>
+									<Property key="ImageTexture" value="hue_bar2.png"/>
+									<Property key="ImageCoord" value="0 0 512 16"/>
 								</Widget>
 								<Widget type="TextBox" skin="TextBox" position="230 10 145 22" name="txPaintRgb">
 									<Property key="TextColour" value="0.7 0.85 1.0"/>

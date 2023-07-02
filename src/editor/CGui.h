@@ -20,6 +20,7 @@
 namespace wraps {	class RenderBoxScene;  }
 class App;  class SETTINGS;  class CGuiCom;
 class CScene;  class Scene;  class CData;  class TerData;
+class HlmsPbsDatablock2;
 
 
 class CGui : public BGui
@@ -395,10 +396,22 @@ public:
 	Ck ckCheckSave, ckCheckLoad;
 
 
-	//  🔧 Tweak  ----
-	void CreateGUITweakMtr(), slTweak(SL),edTweak(Ed);
-	void TweakSetMtrPar(std::string name, float val);  void comboTweakMtr(CMB);
-
+	//  🔧 Tweak  edit materials  --------------------
+	void InitGuiTweakMtr(), ClrTweakMtr();
+	Li liTweakMtr =0;  void listTweakMtr(Li, size_t);
+	void slTweakMtr(SV*), updTweakMtr();
+	struct TwkMtr
+	{
+		HlmsPbsDatablock2 *db =0;
+	#define SVf(n)  SV sv##n;  float f##n =0.f;
+		SVf(DiffR)  SVf(DiffG)  SVf(DiffB)
+		SVf(SpecR)  SVf(SpecG)  SVf(SpecB)
+		SVf(FresR)  SVf(FresG)  SVf(FresB)
+		// SVf(Fresnel)
+		SVf(Rough)
+		SVf(ClearCoat)  SVf(ClearRough)
+	#undef SVf
+	} twk;
 
 	//  👆 Pick  --------------------
 	Ck ckPickSetPar;  WP panPick =0;

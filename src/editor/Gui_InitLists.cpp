@@ -178,24 +178,27 @@ void CGui::InitGuiLists()
 	surfList->setIndexSelected(0);
 	
 	
-	//---------------------  🔧 Tweak  ---------------------
-	Li liMtr = fLi("TweakMtr");  Lev(liMtr, TweakMtr);
+	//---------------------  🔧 Tweak all materials  ---------------------
+	liTweakMtr = fLi("TweakMtr");  Lev(liTweakMtr, TweakMtr);
 
 	vsMaterials.clear();
-	vsMaterials.push_back("~~~~~~  Water  ~~~~~~");
+	vsMaterials.push_back("#0080FF  ~~~~  Water  ~~~~");
 	GetMaterialsMat(sMat+"water.material",false);
-	vsMaterials.push_back("---()()  Pipe  ()()---");
+	vsMaterials.push_back("#FFFF00    ---  o O   Pipe  O o  ---");
 	GetMaterialsMat(sMat+"pipe.material",false);
-	vsMaterials.push_back("---===  Road  ===---");
+	vsMaterials.push_back("#807010  -----===  Road  ===-----");
 	GetMaterialsMat(sMat+"road.material",false);
-	vsMaterials.push_back("----[]  objects static  []----");
+	vsMaterials.push_back("#808080  ----[]  objects static  []----");
 	GetMaterialsMat(sMat+"objects_static.material",false);
 
-	liMtr->addItem("");
-	for (u=0; u < vsMaterials.size(); ++u)
-		liMtr->addItem(vsMaterials[u]);
+	liTweakMtr->addItem("");
+	ClrTweakMtr();
 
-	liMtr->setIndexSelected( liMtr->findItemIndexWith(pSet->tweak_mtr) );
+	for (size_t i=0; i < liTweakMtr->getItemCount(); ++i)
+	if (StringUtil::endsWith(liTweakMtr->getItemNameAt(i), pSet->tweak_mtr))
+	{
+		liTweakMtr->setIndexSelected(i);  break;
+	}
 
 	
 	///  👆 Pick window
