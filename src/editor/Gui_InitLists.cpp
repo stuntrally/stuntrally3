@@ -179,19 +179,23 @@ void CGui::InitGuiLists()
 	
 	
 	//---------------------  🔧 Tweak  ---------------------
-	ComboBoxPtr cmbTwk;
-	Cmb(cmbTwk, "TweakMtr", comboTweakMtr);
+	Li liMtr = fLi("TweakMtr");  Lev(liMtr, TweakMtr);
 
-	GetMaterialsMat(sMat+"water.material");
+	vsMaterials.clear();
+	vsMaterials.push_back("~~~~~~  Water  ~~~~~~");
+	GetMaterialsMat(sMat+"water.material",false);
+	vsMaterials.push_back("---()()  Pipe  ()()---");
 	GetMaterialsMat(sMat+"pipe.material",false);
+	vsMaterials.push_back("---===  Road  ===---");
 	GetMaterialsMat(sMat+"road.material",false);
+	vsMaterials.push_back("----[]  objects static  []----");
 	GetMaterialsMat(sMat+"objects_static.material",false);
 
-	cmbTwk->addItem("");
+	liMtr->addItem("");
 	for (u=0; u < vsMaterials.size(); ++u)
-		cmbTwk->addItem(vsMaterials[u]);
+		liMtr->addItem(vsMaterials[u]);
 
-	cmbTwk->setIndexSelected( cmbTwk->findItemIndexWith(pSet->tweak_mtr) );
+	liMtr->setIndexSelected( liMtr->findItemIndexWith(pSet->tweak_mtr) );
 
 	
 	///  👆 Pick window

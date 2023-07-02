@@ -37,6 +37,8 @@ public:
 	float fmtValMul = 1.f;  // value multiplier
 	Ogre::String sSuffix;
 
+	Ogre::String sName;  // from Init
+
 
 	//  map with strings for all int values (if needed, fill it before init)
 	StrMap strMap;

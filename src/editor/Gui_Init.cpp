@@ -633,7 +633,7 @@ void CGui::InitGui()
     for (i=0; i <= 1; ++i)
     {	Btn("NewGame"+toStr(i), btnNewGame);  }
 
-	CreateGUITweakMtr();
+	InitGuiTweakMtr();
 	
 
 	///  🧊 3d view []  (veget models, objects)

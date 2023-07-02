@@ -177,6 +177,7 @@ void SliderValue::setValI(int i)
 //  Gui
 void SliderValue::initGui(String name)
 {
+	sName = name;
 	slider = pGUI->findWidget<Slider>(name, false);
 	if (!slider)  LogO("!! Error: GUI slider not found: "+name);  // will crash after
 
