@@ -32,6 +32,11 @@ void CGui::listTweakMtr(Li li, size_t val)
 	updTweakMtr();
 }
 
+void CGui::editMtrFind(Ed)
+{
+	FillTweakMtr();
+}
+
 
 //  🧰🎚️ init gui sliders
 //--------------------------------------------------
@@ -54,6 +59,10 @@ void CGui::InitGuiTweakMtr()
 	cmb->addItem("Specular");  cmb->addItem("SpecularAsFresnel");  cmb->addItem("Metallic");
 
 	twk.edInfo = fEd("MtrInfo");
+
+	Edt(edMtrFind, "MtrFind", editMtrFind);
+	InitClrTweakMtr();
+	FillTweakMtr();
 }
 
 //  🔁 update db mat value
@@ -74,6 +83,7 @@ void CGui::slTweakMtr(SV* sv)
 
 	else if (s=="BumpScale")   twk.db->setNormalMapWeight(twk.fBumpScale);
 }
+
 
 //  🔁🌈 set Gui, slider values
 //--------------------------------------------------
@@ -108,27 +118,29 @@ void CGui::updTweakMtr()
 	auto* sb = twk.db->getSamplerblock(0);
 	if (sb)
 	{
-	const static String sFil[5] = {"none","point","lin","anis"};  // FilterOptions
-	s << "Sampler:  min: " << sFil[sb->mMinFilter] << "  mag: " << sFil[sb->mMagFilter] << "  mip: " << sFil[sb->mMipFilter]
-	  << "  Aniso: " << sb->mMaxAnisotropy << endl;
-	const static String sWrap[5] = {"wrap","mirror","clamp","border"};  // TextureAddressingMode
-	s << "Texture wrap uvw:  " << sWrap[sb->mU] << ", " << sWrap[sb->mV] << ", " << sWrap[sb->mW] << endl;
-	
-	s << "Renderables:  " << twk.db->getLinkedRenderables().size() << "  Name:  " << twk.db->getNameStr() << endl;  // meh hash
-	s << endl;
+		const static String sFil[5] = {"none","point","lin","anis"};  // FilterOptions
+		s << "Sampler:  min: " << sFil[sb->mMinFilter] << "  mag: " << sFil[sb->mMagFilter] << "  mip: " << sFil[sb->mMipFilter]
+		<< "  Aniso: " << sb->mMaxAnisotropy << endl;
+
+		const static String sWrap[5] = {"wrap","mirror","clamp","border"};  // TextureAddressingMode
+		s << "Texture wrap uvw:  " << sWrap[sb->mU] << ", " << sWrap[sb->mV] << ", " << sWrap[sb->mW] << endl;
+		
+		s << "Renderables:  " << twk.db->getLinkedRenderables().size() << "  Name:  " << twk.db->getNameStr() << endl;  // meh hash
+		s << endl;
 	}
 
 	//auto* bb = twk.db->getBlendblock();
 	auto* mb = twk.db->getMacroblock();
 	if (mb)
 	{
-	// mb->mDepthClamp;  mDepthFunc
-	const static String sCull[4] = {"none","cw","ccw"};  // CullingMode
-	s << "Depth:  check " << mb->mDepthCheck << "  write " << mb->mDepthWrite << "  bias " << mb->mDepthBiasConstant
-	  << "  slope " << mb->mDepthBiasSlopeScale << "  Cull: " << sCull[mb->mCullMode] << endl;
+		// mb->mDepthClamp;  mDepthFunc
+		const static String sCull[4] = {"none","cw","ccw"};  // CullingMode
+		s << "Depth:  check " << mb->mDepthCheck << "  write " << mb->mDepthWrite << "  bias " << mb->mDepthBiasConstant
+		<< "  slope " << mb->mDepthBiasSlopeScale << "  Cull: " << sCull[mb->mCullMode] << endl;
 	}
 	s << "Two sided:  " << twk.db->getTwoSidedLighting()
 	  << "  receive shadows:  " << twk.db->getReceiveShadows() << endl;
+
 	const static String sTr[4]= {"none", "transp", "fade", "refract"};  // TransparencyModes
 	s << "Transparency:  " << twk.db->getTransparency() << "  mode: " << sTr[twk.db->getTransparencyMode()] << endl;
 
@@ -145,28 +157,58 @@ void CGui::updTweakMtr()
 	s << "Backgr Diff clr: " << twk.db->getBackgroundDiffuse() << endl;
 
 	s << "Detail offset,scale: " << twk.db->getDetailMapOffsetScale(0) << endl;
-	s << "Detail map weight: " << twk.db->getDetailMapWeight(0) << endl;
-	s << "Detail normal weight: " << twk.db->getDetailNormalWeight(0) << endl;
+	s << "Detail weights map: " << twk.db->getDetailMapWeight(0)
+	  << "  normal: " << twk.db->getDetailNormalWeight(0) << endl;
+	// twk.db->hasSeparateFresnel()
 	// s << ": " << twk.db->getDetailMapBlendMode() << endl;
-	// s << "IORefra: " << twk.db->getIndexOfRefraction() << endl;
-
+	
 	twk.edInfo->setCaption(s.str());
 }
 
-#if 0
-	ColourValue diff, spec;  //, fresn1, fresn2;
-	auto c = gc.add(0];
-	diff.setHSB(1.f - c.hue, c.sat, c.val);
 
-	// db->setMetalness( gc.metal );  // only in metallic
-#endif
-
-
-//  🌈 set gui slider values  Init  only for gui list
-//----------------------------------------------------------------------------------------------------
-void CGui::ClrTweakMtr()
+//  🔁📃 Upd Fill materials list
+//--------------------------------------------------
+void CGui::FillTweakMtr()
 {
-	std::vector<pair<String,String>> clr;
+	liTweakMtr->removeAllItems();
+	liTweakMtr->addItem("");
+
+	String srch = edMtrFind->getCaption();
+	StringUtil::toLowerCase(srch);
+
+	for (const auto& m : vsMaterials)
+	if (m != "road" && m != "road_terrain" && m != "column" && 
+		m != "pipe_base" && m != "pipe_glass")  // no base mtr
+	{
+		auto s = m;
+		StringUtil::toLowerCase(s);
+
+		if (srch.empty() || s.find(srch) != string::npos)  // find match
+		{
+			String c;
+			for (auto it = clrTweakMtr.begin(); it != clrTweakMtr.end(); ++it)
+			{
+				if (s.find(it->first) != string::npos)
+				{
+					c = it->second;
+					break;
+			}	}
+			liTweakMtr->addItem(c + m);
+	}	}
+
+	for (size_t i=0; i < liTweakMtr->getItemCount(); ++i)
+	if (StringUtil::endsWith(liTweakMtr->getItemNameAt(i), pSet->tweak_mtr))
+	{
+		liTweakMtr->setIndexSelected(i);  break;
+	}
+}
+
+
+//  🆕🌈 init mtr colors  only for gui list
+//--------------------------------------------------
+void CGui::InitClrTweakMtr()
+{
+	auto& clr = clrTweakMtr;
 	#define add(a,b)  clr.push_back(make_pair(a,b))
 	// add("base"  ,"#000000");
 	add("cyan"  ,"#00F0F0");  add("green" ,"#00F000");  add("jungle","#20FF00");
@@ -183,22 +225,37 @@ void CGui::ClrTweakMtr()
 	add("glass" ,"#F0F8FF");  add("road"  ,"#904000");  add("pipe"  ,"#C0C000");
 	add("water" ,"#60A0FF");  add("river" ,"#80C0FF");  add("_ter"  ,"#403020");
 	add("house" ,"#A0C0D0");  add("balloon","#F0A040"); add("pyrami","#F0C010");
+}
 
-	for (const auto& m : vsMaterials)
-	if (m != "road" && m != "road_terrain" && m != "column" && 
-		m != "pipe_base" && m != "pipe_glass")  // no base mtr
-	{
-		auto s = m;
-		StringUtil::toLowerCase(s);
-		
-		String c;
-		for (auto it = clr.begin(); it != clr.end(); ++it)
-		{
-			if (s.find(it->first) != string::npos)
-			{
-				c = it->second;
-				break;
-		}	}
-		liTweakMtr->addItem(c + m);
-	}
+//  🆕📃 Get all materials  once  for gui list
+//--------------------------------------------------
+void CGui::GetTweakMtr(String path)
+{
+	liTweakMtr = fLi("TweakMtr");  Lev(liTweakMtr, TweakMtr);
+
+	vsMaterials.clear();
+	vsMaterials.push_back("#0080FF  ~~~~  Water  ~~~~");
+	GetMaterialsMat(path+"water.material",0);
+	vsMaterials.push_back("#FFFF00    ---  o O   Pipe  O o  ---");
+	GetMaterialsMat(path+"pipe.material",0);
+	vsMaterials.push_back("#807010  -----===  Road  ===-----");
+	GetMaterialsMat(path+"road.material",0);
+
+	vsMaterials.push_back("#808080  ----[]  objects static  []----");
+	GetMaterialsMat(path+"objects_static.material",0);
+	vsMaterials.push_back("#808080  ----[]  objects static2  []----");
+	GetMaterialsMat(path+"objects_static2.material",0);
+	vsMaterials.push_back("#808080  ----x  objects dynamic  x----");
+	GetMaterialsMat(path+"objects_dynamic.material",0);
+
+	vsMaterials.push_back("#80FF80  --------Y  trees  Y--------");
+	GetMaterialsMat(path+"trees.material",0);
+	vsMaterials.push_back("#C0F080  --------Y  trees ch  Y--------");
+	GetMaterialsMat(path+"trees_ch.material",0);
+	vsMaterials.push_back("#80C080  --------Y  trees old  Y--------");
+	GetMaterialsMat(path+"trees_old.material",0);
+	vsMaterials.push_back("#C0C0C0  ----cc  rocks  cc----");
+	GetMaterialsMat(path+"rocks.material",0);
+
+	vsTweakMtrs = vsMaterials;
 }

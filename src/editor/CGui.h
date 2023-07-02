@@ -397,9 +397,13 @@ public:
 
 
 	//  🔧 Tweak  edit materials  --------------------
-	void InitGuiTweakMtr(), ClrTweakMtr();
+	void InitGuiTweakMtr(), InitClrTweakMtr();
+	void GetTweakMtr(Ogre::String path), FillTweakMtr();
 	Li liTweakMtr =0;  void listTweakMtr(Li, size_t);
+	std::vector<std::pair<Ogre::String,Ogre::String>> clrTweakMtr;
+
 	void slTweakMtr(SV*), updTweakMtr();
+	Ed edMtrFind =0;  void editMtrFind(Ed);
 	struct TwkMtr
 	{
 		HlmsPbsDatablock2 *db =0;
@@ -451,7 +455,7 @@ public:
 	bool CreateDir(Ogre::String dir);
 	bool Copy(Ogre::String file, Ogre::String to);
 
-	std::vector<Ogre::String> vsMaterials;
+	std::vector<Ogre::String> vsMaterials, vsTweakMtrs;
 	void GetMaterials(   Ogre::String filename, bool clear=true, Ogre::String type="hlms");  // ogre resource
 	void GetMaterialsMat(Ogre::String filename, bool clear=true, Ogre::String type="hlms");  // direct path+file
 };

@@ -217,7 +217,7 @@ hlms crystal_form1 pbs
 	normal_map   crystal_form1_n.jpg
 	specular_map crystal_form1.jpg
 
-	diffuse  1 0.7 1
+	diffuse  0.21 0.7 1
 	specular 1 0.7 1
 	// refl_amount 0.2
 

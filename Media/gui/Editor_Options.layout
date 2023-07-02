@@ -756,7 +756,20 @@
 					<Property key="Caption" value="#{MaterialProperties}"/>
 					<Property key="TextColour" value="0.5 0.7 0.9"/>
 				</Widget>
-				<Widget type="ListBox" skin="ListBox" position="626 4 164 550" name="TweakMtr">
+
+				<Widget type="ImageBox" skin="ImageBox" position="626 4 24 24">
+					<Property key="ImageCoord" value="256 128 128 128"/>
+					<Property key="Alpha" value="0.7"/>
+					<Property key="ImageTexture" value="gui_icons.png"/>
+				</Widget>
+				<Widget type="EditBox" skin="EditBox" position="650 4 128 24" name="MtrFind">
+					<Property key="Colour" value="0.7 0.8 0.9"/>
+					<Property key="MaxTextLength" value="20"/>
+					<Property key="TextColour" value="0.8 0.9 1.0"/>
+					<UserString key="tip" value="#{TipFind}"/>
+				</Widget>
+
+				<Widget type="ListBox" skin="ListBox" position="626 34 164 520" name="TweakMtr">
 					<Property key="Colour" value="0.8 0.9 1"/>
 					<Property key="Colour" value="0.5 0.7 0.9"/>
 					<Property key="Alpha" value="0.9"/>
