@@ -114,7 +114,7 @@ common:  sc - "short scenery name" (name color)
 
 <t sc="Des"  t="desert_mud_d"       n="desert_mud_n"       s="17.81" r="2" su="DesertMud"      ro="0.21" me="0.7" re="0"  tp="0"  du="0.4" ds="1.0" md="0.7" tr="0.42 0.36 0.08 0.8"  aa="36" ab="90" />
 <t sc="Atm"  t="desert_mud_d"       n="desert_mud_n"       s="8.02"  r="1" su="GrassJungle"    ro="0.19" me="0.9" re="0"  tp="0"  du="0.2" ds="0.4" md="0.6" tr="0.12 0.16 0.08 0.8"  aa="19" ab="34" />
-<t sc="Des"  t="desert_rocky_d"     n="desert_rocky_n"     s="12.14" r="3" su="DesertBumpy"    ro="0.64" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.46 0.46 0.08 0.7"  aa="25" ab="31" />
+<t sc="Des"  t="desert_rocky_d"     n="desert_rocky_n"     s="12.14" r="3" su="DesertBumpy"    ro="0.44" me="0.1" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.46 0.46 0.08 0.7"  aa="25" ab="31" />
 
 <t sc="Des"  t="desert_sand2_d"     n="desert_sand2_n"     s="16.21" r="4" su="DesertFast"     ro="0.46" me="0.5" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.48 0.46 0.08 0.7"  aa="15" ab="27" />
 <t sc="Des"  t="desert_sand_big_d"  n="desert_sand_big_n"  s="9.63"  r="4" su="DesertBumpy"    ro="0.37" me="0.4" re="0"  tp="0"  du="0.9" ds="1.0" md="0.1" tr="0.48 0.46 0.08 0.7"  aa="15" ab="27" />
@@ -161,7 +161,7 @@ common:  sc - "short scenery name" (name color)
 <t sc="Vlc"  t="ground_cracks2v_d"  n="ground_cracks2_n"   s="6.93"  r="3" su="DesertBumpy"    ro="0.41" me="0.5" re="0"  tp="0"  du="0.0" ds="0.6" md="0.4" tr="0.22 0.22 0.04 0.1"  aa="0"  ab="20" />
 <t sc="Vlc"  t="ground_cracks2y_d"  n="ground_cracks2_n"   s="6.93"  r="2" su="DesertBumpy"    ro="0.45" me="0.5" re="0"  tp="0"  du="0.0" ds="0.6" md="0.4" tr="0.32 0.22 0.04 0.1"  aa="0"  ab="20" />
 <t sc="Vlc"  t="lava2_d"            n="ground_cracked_n"   s="14.55" r="1" su="Rocks"          ro="0.21" me="0.4" re="0"  tp="0"  du="0.0" ds="0.0" md="0.5" tr="0.32 0.32 0.32 0.3"  aa="26" ab="45" />
-<t sc="Vlc"  t="lava_black_d"       n="lava_black_n"       s="5.87"  r="1" su="DesertMud"      ro="0.25" me="0.6" re="0"  tp="0"  du="0.0" ds="0.0" md="0.0" tr="0.25 0.20 0.14 0.6"  aa="0"  ab="9"  />
+<t sc="Vlc"  t="lava_black_d"       n="lava_black_n"       s="5.87"  r="1" su="DesertMud"      ro="0.65" me="0.1" re="0"  tp="0"  du="0.0" ds="0.0" md="0.0" tr="0.25 0.20 0.14 0.6"  aa="0"  ab="9"  />
 <t sc="Vlc"  t="lava_d"             n="lava_n"             s="33.83" r="1" su="DesertRocks"    ro="0.31" me="0.5" re="0"  tp="1"  du="0.0" ds="0.2" md="0.0" tr="0.30 0.15 0.00 0.6"  aa="0"  ab="90" />
 <t sc="Mrs"  t="lava_mars_d"        n="lava_n"             s="32.00" r="1" su="Rocks"          ro="0.41" me="0.4" re="0"  tp="1"  du="0.3" ds="1.0" md="0.8" tr="0.15 0.06 0.03 0.9"  aa="64" ab="90" />
 
@@ -224,9 +224,9 @@ common:  sc - "short scenery name" (name color)
 <t sc="Spc"  t="space_dots_d"       n="space_dots_n"       s="12.0"  r="1" su="Metal"          ro="0.26" me="0.9" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
 <t sc="Spc"  t="space_octagons_d"   n="space_octagons_n"   s="12.0"  r="1" su="Metal"          ro="0.17" me="0.8" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
 
-<t sc="Cry"  t="ycrystals_big_d"    n="ycrystals_big_n"    s="17.15" r="4" su="SnowDeep"       ro="0.61" me="0.5" re="0"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.16 0.16 0.16 0.7"  aa="38" ab="90" />
-<t sc="Cry"  t="ycrystals_fine_d"   n="ycrystals_fine_n"   s="17.15" r="3" su="SnowDeep"       ro="0.48" me="1.5" re="0"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.16 0.16 0.16 0.7"  aa="0"  ab="10" />
-<t sc="Cry"  t="ycrystals_med_d"    n="ycrystals_med_n"    s="12.59" r="2" su="SnowDeep"       ro="0.37" me="1.2" re="0"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.16 0.16 0.16 0.7"  aa="14" ab="31" />
+<t sc="Cry"  t="ycrystals_big_d"    n="ycrystals_big_n"    s="17.15" r="4" su="SnowDeep"       ro="0.61" me="0.5" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.16 0.16 0.16 0.7"  aa="38" ab="90" />
+<t sc="Cry"  t="ycrystals_fine_d"   n="ycrystals_fine_n"   s="17.15" r="3" su="SnowDeep"       ro="0.48" me="1.5" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.16 0.16 0.16 0.7"  aa="0"  ab="10" />
+<t sc="Cry"  t="ycrystals_med_d"    n="ycrystals_med_n"    s="12.59" r="2" su="SnowDeep"       ro="0.37" me="1.2" re="1"  tp="0"  du="0.0" ds="1.0" md="0.0" tr="0.16 0.16 0.16 0.7"  aa="14" ab="31" />
 
 <t sc="Aln"  t="---- Alien ------"  r="0" />      <!-- 🟢 -->
 <t sc="Aln"  t="alien_cracks_d"     n="desert_cracks_n"    s="9.09"  r="2" su="DesertFast"     ro="0.64" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.46 0.46 0.08 0.7"  aa="8"  ab="22" />
@@ -243,6 +243,16 @@ common:  sc - "short scenery name" (name color)
 <t sc="Blk"  t="zdesert_sand_d"     n="desert_sand_n"      s="12.06" r="1" su="DesertFast"     ro="0.44" me="0.3" re="0"  tp="0"  du="0.8" ds="1.0" md="0.1" tr="0.16 0.16 0.16 0.7"  aa="0"  ab="10" />
 <t sc="Blk"  t="zdesert_wet_d"      n="desert_wet_n"       s="8.78"  r="2" su="DesertFast"     ro="0.24" me="0.9" re="0"  tp="0"  du="0.5" ds="0.7" md="0.0" tr="0.20 0.20 0.20 0.7"  aa="0"  ab="13" />
 <t sc="Stn"  t="zAsphalt_d"         n="ground_cracks2_n"   s="10.14" r="0" su="Asphalt"        ro="0.45" me="0.7" re="0"  tp="0"  du="0.0" ds="0.6" md="0.0" tr="0.10 0.10 0.10 0.6"  aa="0" ab="90"  />
+
+<t sc="Mar"  t="---- Marble ------"  r="0" />      <!-- 🔲 -->
+<t sc="Oth"  t="mntn_marble_pink_d"     n="mntn_marble_n"       s="26.04" r="3" su="Rocks"          tp="1" du="0.0" ds="0.2" md="0.0" tr="0.40 0.20 0.20 0.5"  aa="28" ab="44" />
+<t sc="Oth"  t="mntn_marble_pink2_d"    n="mntn_marble2_n"      s="26.04" r="3" su="Rocks"          tp="1" du="0.0" ds="0.2" md="0.0" tr="0.40 0.20 0.20 0.5"  aa="28" ab="44" />
+<t sc="Oth"  t="mntn_marble_white_d"    n="mntn_marble_n"       s="26.04" r="3" su="Rocks"          tp="0" du="0.0" ds="0.2" md="0.0" tr="0.30 0.30 0.30 0.5"  aa="28" ab="44" />
+<t sc="Oth"  t="marble_ground_d"        n="marble_ground_n"     s="26.04" r="3" su="DesertFast"     tp="0" du="0.0" ds="0.2" md="0.0" tr="0.30 0.30 0.30 0.5"  aa="0" ab="25" />
+<t sc="Oth"  t="marble_ground2_d"       n="marble_ground_n"     s="26.04" r="3" su="DesertFast"     tp="0" du="0.0" ds="0.2" md="0.0" tr="0.40 0.20 0.20 0.5"  aa="0" ab="25" />
+<t sc="Cry"  t="ycrystals2_fine_d"      n="ycrystals_fine_n"    s="17.15" r="3" su="SnowDeep"       tp="0" du="0.0" ds="1.0" md="0.0" tr="0.26 0.1 0.23 0.8"  aa="0"  ab="10" />
+<t sc="Cry"  t="ycrystals2_med_d"       n="ycrystals_med_n"     s="12.59" r="2" su="SnowDeep"       tp="0" du="0.0" ds="1.0" md="0.0" tr="0.26 0.1 0.23 0.8"  aa="14" ab="31" />
+<t sc="Cry"  t="ycrystals2_big_d"       n="ycrystals_big_n"     s="17.15" r="4" su="SnowDeep"       tp="0" du="0.0" ds="1.0" md="0.0" tr="0.26 0.1 0.23 0.8"  aa="38" ab="90" />
 
 
 <!--  🛣️ Roads  ================================================================================================================================
@@ -314,6 +324,46 @@ common:  sc - "short scenery name" (name color)
 <r sc="Aln"  m="roadAlienStone"       r="1" su="roadForest"   re="0"  du="0.0" ds="0.2" md="0.0" tr="0.30 0.20 0.10 0.7" />
 <r sc="Blk"  m="roadDesertBlack"      r="1" su="roadDesert"   re="0"  du="0.4" ds="0.9" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
+<!--  new rbduck  SR 2.8 -->
+<r sc="Mos"  m="roadMoss2"             r="3" su="roadJungle"   du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.8" />
+<r sc="Oth"  m="roadMarbleStone"       r="1" su="roadForest"   du="0.0" ds="0.2" md="0.0" tr="0.56 0.50 0.50 0.7" />
+<r sc="GrcR" m="roadSandMarble"        r="1" su="roadGravel"   du="0.0" ds="0.2" md="0.0" tr="0.70 0.70 0.70 0.6" />
+<r sc="GrcR" m="roadSandMarblePink"    r="1" su="roadGravel"   du="0.0" ds="0.2" md="0.0" tr="0.75 0.65 0.70 0.6" />
+	
+<r sc="Oth"  m="roadInvisibleDesert"       r="3" su="roadDesert"   du="0.0" ds="0.0" md="0.0" tr="0.40 0.36 0.16 0.4" />
+<r sc="Oth"  m="roadInvisibleJungle"       r="3" su="roadJungle"   du="0.0" ds="0.0" md="0.0" tr="0.40 0.36 0.16 0.4" />
+<r sc="Oth"  m="roadInvisibleGravel"       r="3" su="roadGravel"   du="0.0" ds="0.0" md="0.0" tr="0.40 0.36 0.16 0.4" />
+<r sc="Oth"  m="roadInvisibleSnow"         r="3" su="roadSnow"     du="0.0" ds="0.0" md="0.0" tr="0.40 0.36 0.16 0.4" />
+<r sc="Oth"  m="roadInvisibleForest"       r="3" su="roadForest"   du="0.0" ds="0.0" md="0.0" tr="0.40 0.36 0.16 0.4" />
+
+<r sc="JngD" m="roadJDarkTransp"            r="4" su="roadJungle"   du="0.0" ds="0.2" md="0.2" tr="0.40 0.36 0.16 0.4" />
+<r sc="For"  m="roadJungleTransp"           r="4" su="roadForest"   du="0.0" ds="0.2" md="0.2" tr="0.30 0.26 0.16 0.4" />
+<r sc="Mos"  m="roadMossTransp"             r="3" su="roadJungle"   du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.4" />
+<r sc="Mud"  m="roadMudTransp"              r="3" su="roadGravel"   du="0.0" ds="1.0" md="0.8" tr="0.21 0.13 0.00 0.4" />
+<r sc="Wnt"  m="roadSnowTransp"             r="3" su="roadSnow"     du="0.4" ds="0.6" md="0.2" tr="0.60 0.60 0.60 0.3" />
+<r sc="Wet"  m="roadSnowGrnTransp"          r="3" su="roadSnow"     du="0.2" ds="0.5" md="0.2" tr="0.30 0.40 0.30 0.4" />
+<r sc="Wnt"  m="roadIceTransp"              r="2" su="roadSnow"     du="0.3" ds="0.6" md="0.2" tr="0.60 0.60 0.60 0.3" />
+<r sc="Fin"  m="roadNdirtTransp"            r="5" su="roadGravel"   du="0.0" ds="1.0" md="0.6" tr="0.13 0.13 0.13 0.4" />
+<r sc="Aln"  m="roadAlienDTransp"           r="2" su="roadDesert"   du="0.2" ds="0.9" md="0.0" tr="0.70 0.66 0.36 0.3" />
+<r sc="Aln"  m="roadAlienTransp"            r="1" su="roadJungle"   du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.4" />
+<r sc="GrcR" m="roadSandMarbleTransp"       r="1" su="roadGravel"   du="0.0" ds="0.2" md="0.0" tr="0.70 0.70 0.70 0.3" />
+<r sc="GrcR" m="roadSandMarblePinkTransp"   r="1" su="roadGravel"   du="0.0" ds="0.2" md="0.0" tr="0.75 0.65 0.70 0.3" />
+<r sc="Isl"  m="roadSandTransp"             r="2" su="roadGravel"   du="0.0" ds="0.2" md="0.0" tr="0.50 0.44 0.35 0.3" />
+<r sc="Des"  m="roadSand2Transp"            r="2" su="roadDesert"   du="0.2" ds="0.8" md="0.0" tr="0.50 0.46 0.26 0.4" />
+<r sc="Vlc"  m="roadSandDarkTransp"         r="2" su="roadGravel"   du="0.0" ds="0.2" md="0.0" tr="0.50 0.44 0.30 0.1" />
+<r sc="Isl"  m="roadSandSetTransp"          r="1" su="roadGravel"   du="0.6" ds="0.5" md="0.0" tr="0.48 0.32 0.22 0.3" />
+<r sc="GrcR" m="roadSandShoreTransp"        r="1" su="roadGravel"   du="0.0" ds="0.2" md="0.0" tr="0.20 0.13 0.06 0.3" />
+<r sc="Wnt"  m="roadSandWhiteTransp"        r="1" su="roadDesert"   du="0.3" ds="0.6" md="0.0" tr="0.70 0.70 0.70 0.3" />
+<r sc="Cry"  m="roadCrystalTransp"          r="3" su="roadDesert"   du="0.0" ds="0.0" md="0.0" tr="0.00 0.10 0.20 0.2" />
+<r sc="Cry"  m="roadCrystalCyanTransp"      r="3" su="roadDesert"   du="0.0" ds="0.0" md="0.0" tr="0.00 0.20 0.10 0.2" />
+<r sc="Cry"  m="roadCrystalPinkTransp"      r="3" su="roadDesert"   du="0.0" ds="0.0" md="0.0" tr="0.30 0.10 0.20 0.2" /> 
+<r sc="Des"  m="roadDesertTransp"           r="5" su="roadDesert"   du="0.2" ds="0.9" md="0.0" tr="0.70 0.66 0.36 0.4" />  
+<r sc="Blk"  m="roadDesertBlackTransp"      r="1" su="roadDesert"   du="0.2" ds="0.9" md="0.0" tr="0.10 0.10 0.10 0.4" />
+<r sc="Sav"  m="roadSavannahTransp"         r="2" su="roadGravel"   du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.4" />
+<r sc="Can"  m="roadCanyon1Transp"          r="3" su="roadForest"   du="0.0" ds="0.0" md="0.0" tr="0.09 0.19 0.15 0.4" />
+<r sc="Can"  m="roadCanyon2Transp"          r="3" su="roadForest"   du="0.0" ds="0.0" md="0.0" tr="0.30 0.20 0.10 0.3" />
+<r sc="Mrs"  m="roadMarsTransp"             r="3" su="roadForest"   du="0.1" ds="0.4" md="0.0" tr="0.042 0.593 0.540 0.7 0.0" />
+
 <r sc="Wnt"  m="---- pipe glass ----" r="0" />  <!-- ⭕🥛 -->
 <!-- <r sc="Oth"  m="pipe_glass"           r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" /> -->
 <r sc="Oth"  m="pipeGlass"            r="3" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -337,6 +387,8 @@ common:  sc - "short scenery name" (name color)
 
 <r sc="Oth"  m="pipeAsphalt"          r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Aus"  m="pipeAsphaltRed"       r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Oth"  m="pipeAsphaltSpace"     r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.40 0.40 0.20 0.8" />
+<r sc="Oth"  m="pipeAsphaltSpaceBlue" r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.40 0.40 0.20 0.8" />
 <r sc="Oth"  m="pipeMetal"            r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Can"  m="pipeMetalOrn"         r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Oth"  m="pipeMetalBlue"        r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -350,6 +402,7 @@ common:  sc - "short scenery name" (name color)
 <r sc="Des"  m="road_wall_Desert"     r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Cry"  m="road_wall_crystal"    r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Aln"  m="road_wall_Alien"      r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Blk"  m="road_wall_Black"      r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 <r sc="Oth"  m="pipe_wall"            r="3" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="JngD" m="pipe_wall_JDark"      r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -360,6 +413,7 @@ common:  sc - "short scenery name" (name color)
 <r sc="Wnt"  m="pipe_wall_Winter"     r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Cry"  m="pipe_wall_crystal"    r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Aln"  m="pipe_wall_Alien"      r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Blk"  m="pipe_wall_Black"      r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 <r sc="Wnt"  m="---- column ----"     r="0" />  <!-- 🏛️ -->
 <r sc="Oth"  m="road_col"             r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -370,6 +424,7 @@ common:  sc - "short scenery name" (name color)
 <r sc="Des"  m="road_col_Desert"      r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Cry"  m="road_col_crystal"     r="3" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Aln"  m="road_col_Alien"       r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Blk"  m="road_col_Black"       r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 <r sc="Wnt"  m="---- wall universal"  r="0" />  <!-- 🧱📏 -->
 <r sc="Spc"  m="wall_space_diam"      r="4" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -456,13 +511,24 @@ common:  sc - "short scenery name" (name color)
 <r sc="Vlc"  m="River_dark"           r="1" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="For"  m="River_blue_dark"      r="3" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
-<r sc="Uni"  m="River_Grease_jelly"   r="2" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Cry"  m="River_Blue_jelly"     r="2" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Tox"  m="River_Acid_green"     r="1" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Wnt"  m="River_Ice"            r="2" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Wnt"  m="River_Ice_cyan"       r="1" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Vlc"  m="River_LavaOrn"        r="2" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="VlcD" m="River_LavaBlk"        r="3" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />  
+<r sc="Sur"  m="River_pink"           r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Sur"  m="River_strange"        r="2" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Sur"  m="River_strange2"       r="2" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Vlc"  m="River_liquid_gas"     r="2" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Vlc"  m="River_liquid_gas2"    r="2" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Spc"  m="River_liquid_gas_space"  r="2" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+
+<r sc="Uni"  m="River_Grease_jelly"   r="2" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Cry"  m="River_Blue_jelly"     r="2" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Cry"  m="River_Pink_jelly"     r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Tox"  m="River_Green_slime"    r="2" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Blk"  m="River_Oil"            r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Tox"  m="River_Acid_green"     r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Wnt"  m="River_Ice"            r="2" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Wnt"  m="River_Ice_cyan"       r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Vlc"  m="River_LavaOrn"        r="2" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="VlcD" m="River_LavaBlk"        r="3" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />  
+<r sc="Vlc"  m="River_LavaHot"        r="2" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 
 <!--  🌿  Grasses  ================================================================================================================================

@@ -406,10 +406,12 @@ public:
 	#define SVf(n)  SV sv##n;  float f##n =0.f;
 		SVf(DiffR)  SVf(DiffG)  SVf(DiffB)
 		SVf(SpecR)  SVf(SpecG)  SVf(SpecB)
-		SVf(FresR)  SVf(FresG)  SVf(FresB)
-		// SVf(Fresnel)
-		SVf(Rough)
+		SVf(FresR)  SVf(FresG)  SVf(FresB)  //SVf(Fresnel)
+		SVf(Rough)  SVf(Metal)
 		SVf(ClearCoat)  SVf(ClearRough)
+		SVf(BumpScale)
+		Cmb cbWorkflow =0;
+		Ed edInfo =0;
 	#undef SVf
 	} twk;
 

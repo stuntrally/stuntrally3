@@ -768,11 +768,11 @@
 
 					<!-- Diff R -->
 					<Widget type="TextBox" skin="TextBox" position="0 0 118 20">
-						<Property key="TextColour" value="1.0 0.3 0.3"/>
+						<Property key="TextColour" value="1.0 0.4 0.4"/>
 						<Property key="Caption" value="#{Diffuse} #{P_Red}"/>
 					</Widget>
 					<Widget type="Slider" skin="Slider" position="200 0 350 17" name="DiffR">
-						<Property key="Colour" value="1.0 0.4 0.4"/>
+						<Property key="Colour" value="1.0 0.5 0.5"/>
 					</Widget>
 					<Widget type="EditBox" skin="EditBox" position="120 0 75 20" name="DiffREdit">
 						<Property key="TextColour" value="1.0 0.5 0.5"/>
@@ -800,7 +800,7 @@
 						<Property key="TextColour" value="0.3 0.6 1.0"/>
 					</Widget>
 
-					<!-- Spec R -->
+					<!-- Spec R  ***  -->
 					<Widget type="TextBox" skin="TextBox" position="0 70 118 20">
 						<Property key="TextColour" value="1.0 0.6 0.4"/>
 						<Property key="Caption" value="#{Specular} #{P_Red}"/>
@@ -828,24 +828,24 @@
 						<Property key="Caption" value="#{Specular} #{P_Blue}"/>
 					</Widget>
 					<Widget type="Slider" skin="Slider" position="200 110 350 17" name="SpecB">
-						<Property key="Colour" value="0.6 0.6 1.0"/>
+						<Property key="Colour" value="0.5 0.7 1.0"/>
 					</Widget>
 					<Widget type="EditBox" skin="EditBox" position="120 110 75 20" name="SpecBEdit">
-						<Property key="TextColour" value="0.5 0.5 1.0"/>
+						<Property key="TextColour" value="0.5 0.7 1.0"/>
 					</Widget>
 
-					<!-- Fresnel R ***  -->
+					<!-- Fresnel R  ***  -->
 					<Widget type="TextBox" skin="TextBox" position="0 140 118 20">
-						<Property key="TextColour" value="1.0 0.8 0.6"/>
+						<Property key="TextColour" value="1.0 0.9 0.6"/>
 						<Property key="Caption" value="#{ColFresnel} #{P_Red}"/>
 						<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
 					</Widget>
 					<Widget type="Slider" skin="Slider" position="200 140 350 18" name="FresR">
-						<Property key="Colour" value="1.0 0.8 0.6"/>
+						<Property key="Colour" value="1.0 0.9 0.6"/>
 						<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
 					</Widget>
 					<Widget type="EditBox" skin="EditBox" position="120 140 75 20" name="FresREdit">
-						<Property key="TextColour" value="1.0 0.8 0.6"/>
+						<Property key="TextColour" value="1.0 0.9 0.6"/>
 						<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
 					</Widget>
 					<!-- Fresnel G -->
@@ -877,51 +877,101 @@
 						<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
 					</Widget>
 
-					<!-- Rough ***  -->
+
+					<!-- Rough  ***  -->
 					<Widget type="TextBox" skin="TextBox" position="0 210 118 20">
-						<Property key="TextColour" value="0.7 0.7 1.0"/>
+						<Property key="TextColour" value="0.6 0.6 1.0"/>
 						<Property key="Caption" value="#{ColRoughness}"/>
 						<UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/>
 					</Widget>
 					<Widget type="Slider" skin="Slider" position="200 210 350 17" name="Rough">
-						<Property key="Colour" value="0.7 0.7 1.0"/>
+						<Property key="Colour" value="0.6 0.6 1.0"/>
 						<UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/>
 					</Widget>
 					<Widget type="EditBox" skin="EditBox" position="120 210 75 20" name="RoughEdit">
-						<Property key="TextColour" value="0.7 0.7 1.0"/>
+						<Property key="TextColour" value="0.6 0.6 1.0"/>
 						<UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/>
 					</Widget>
 
+					<!-- Metal  ***  -->
+					<Widget type="TextBox" skin="TextBox" position="0 230 118 20">
+						<Property key="TextColour" value="0.6 1.0 1.0"/>
+						<Property key="Caption" value="#{ColMetalness}"/>
+						<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 230 350 17" name="Metal">
+						<Property key="Colour" value="0.6 1.0 1.0"/>
+						<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 230 75 20" name="MetalEdit">
+						<Property key="TextColour" value="0.6 1.0 1.0"/>
+						<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
+					</Widget>
+
+
 					<!-- Clear coat -->
-					<Widget type="TextBox" skin="TextBox" position="0 240 118 20">
+					<Widget type="TextBox" skin="TextBox" position="0 260 118 20">
 						<Property key="TextColour" value="0.8 0.8 0.8"/>
 						<Property key="Caption" value="#{ColReflect}"/>
 						<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="200 240 350 15" name="ClearCoat">
+					<Widget type="Slider" skin="Slider" position="200 260 350 15" name="ClearCoat">
 						<Property key="TextColour" value="0.8 0.8 0.8"/>
 						<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="120 240 75 20" name="ClearCoatVal">
+					<Widget type="EditBox" skin="EditBox" position="120 260 75 20" name="ClearCoatVal">
 						<Property key="TextColour" value="0.8 0.8 0.8"/>
 						<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
 					</Widget>
 
 					<!-- Clear rough -->
-					<Widget type="TextBox" skin="TextBox" position="0 260 118 20">
+					<Widget type="TextBox" skin="TextBox" position="0 280 118 20">
 						<Property key="TextColour" value="0.7 0.7 0.7"/>
 						<Property key="Caption" value="#{ColRoughness}"/>
 						<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="200 260 350 15" name="ClearRough">
+					<Widget type="Slider" skin="Slider" position="200 280 350 15" name="ClearRough">
 						<Property key="TextColour" value="0.7 0.7 0.7"/>
 						<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="120 260 75 20" name="ClearRoughEdit">
+					<Widget type="EditBox" skin="EditBox" position="120 280 75 20" name="ClearRoughEdit">
 						<Property key="TextColour" value="0.7 0.7 0.7"/>
 						<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
 					</Widget>
 
+					<!-- Bump Scale -->
+					<Widget type="TextBox" skin="TextBox" position="0 310 118 20">
+						<Property key="TextColour" value="0.9 0.9 0.4"/>
+						<Property key="Caption" value="#{NormalsScale}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 310 350 15" name="BumpScale">
+						<Property key="TextColour" value="0.9 0.9 0.4"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 310 75 20" name="BumpScaleEdit">
+						<Property key="TextColour" value="1.0 1.0 0.4"/>
+					</Widget>
+
+					<!-- Workflow -->
+					<Widget type="TextBox" skin="TextBox" position="0 340 118 20">
+						<Property key="TextColour" value="0.5 0.7 0.9"/>
+						<Property key="Caption" value="PBS Workflow"/>
+					</Widget>
+					<Widget type="ComboBox" skin="ComboBox" position="120 340 250 20" name="Workflow">
+						<Property key="TextColour" value="0.7 0.85 1.0"/>
+						<Property key="Colour" value="0.6 0.8 1.0"/>
+						<Property key="Static" value="true"/>
+						<Property key="ReadOnly" value="true"/>
+					</Widget>
+
+					<!-- Info -->
+					<Widget type="EditBox" skin="EditBoxEmpty" position="120 370 475 360" name="MtrInfo">
+						<Property key="ReadOnly" value="true"/>
+						<Property key="MultiLine" value="true"/>
+						<Property key="WordWrap" value="true"/>
+						<Property key="TextColour" value="0.7 0.9 1.0"/>
+						<!-- <Property key="FontName" value="font.small"/> -->
+					</Widget>
+					
 				</Widget>
 			</Widget>
 

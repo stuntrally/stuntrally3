@@ -1,3 +1,4 @@
+#include "OgreHlmsPbsPrerequisites.h"
 #include "pch.h"
 #include "Def_Str.h"
 #include "Gui_Def.h"
@@ -23,12 +24,17 @@ using namespace std;
 //  👆 pick material from list
 void CGui::listTweakMtr(Li li, size_t val)
 {
-	pSet->tweak_mtr = li->getItemNameAt(val);
+	auto s = li->getItemNameAt(val);
+	if (!s.empty() && s[0] == '#')
+		s = s.substr(7);
+	
+	pSet->tweak_mtr = s;
 	updTweakMtr();
 }
 
 
-//  🎚️ init gui sliders
+//  🧰🎚️ init gui sliders
+//--------------------------------------------------
 void CGui::InitGuiTweakMtr()
 {
 	SV* sv;
@@ -38,11 +44,20 @@ void CGui::InitGuiTweakMtr()
 	TWK(SpecR, 0.f, 1.5f)  TWK(SpecG, 0.f, 1.5f)  TWK(SpecB, 0.f, 1.5f)
 	// TWK(Fresnel, 0.f, 1.5f)
 	TWK(FresR, 0.f, 1.5f)  TWK(FresG, 0.f, 1.5f)  TWK(FresB, 0.f, 1.5f)
-	TWK(Rough, 0.001f, 1.5f)
+
+	TWK(Rough, 0.001f, 1.5f)  TWK(Metal, 0.f, 1.5f)
 	TWK(ClearCoat, 0.f, 1.5f)  TWK(ClearRough, 0.001f, 1.5f)
+
+	TWK(BumpScale, 0.0f, 6.f)
+
+	auto cmb = fCmb("Workflow");  twk.cbWorkflow = cmb;
+	cmb->addItem("Specular");  cmb->addItem("SpecularAsFresnel");  cmb->addItem("Metallic");
+
+	twk.edInfo = fEd("MtrInfo");
 }
 
 //  🔁 update db mat value
+//--------------------------------------------------
 void CGui::slTweakMtr(SV* sv)
 {
 	if (!twk.db)  return;
@@ -51,84 +66,112 @@ void CGui::slTweakMtr(SV* sv)
 	     if (s=="DiffR" || s=="DiffG" || s=="DiffB")   twk.db->setDiffuse(Vector3(twk.fDiffR, twk.fDiffG, twk.fDiffB));
 	else if (s=="SpecR" || s=="SpecG" || s=="SpecB")   twk.db->setSpecular(Vector3(twk.fSpecR, twk.fSpecG, twk.fSpecB));
 	else if (s=="FresR" || s=="FresG" || s=="FresB")   twk.db->setFresnel(Vector3(twk.fFresR, twk.fFresG, twk.fFresB), true);
+
 	else if (s=="Rough")       twk.db->setRoughness(twk.fRough);
+	else if (s=="Metal")       twk.db->setMetalness(twk.fMetal);
 	else if (s=="ClearCoat")   twk.db->setClearCoat(twk.fClearCoat);
 	else if (s=="ClearRough")  twk.db->setClearCoatRoughness(twk.fClearRough);
+
+	else if (s=="BumpScale")   twk.db->setNormalMapWeight(twk.fBumpScale);
 }
 
-//  🔁🌈 set gui slider values
+//  🔁🌈 set Gui, slider values
+//--------------------------------------------------
 void CGui::updTweakMtr()
 {
 	auto hlms = Root::getSingleton().getHlmsManager()->getHlms( HLMS_PBS );
 	twk.db = (HlmsPbsDatablock2*) hlms->getDatablock( pSet->tweak_mtr );
 	if (!twk.db)  return;
-	Vector3 v;  float f;
+	Vector3 v;  float f;  int i;
 
 	v = twk.db->getDiffuse();   twk.fDiffR = v.x;  twk.fDiffG = v.y;  twk.fDiffB = v.z;  twk.svDiffR.Upd(); twk.svDiffG.Upd(); twk.svDiffB.Upd();
 	v = twk.db->getSpecular();  twk.fSpecR = v.x;  twk.fSpecG = v.y;  twk.fSpecB = v.z;  twk.svSpecR.Upd(); twk.svSpecG.Upd(); twk.svSpecB.Upd();
 	v = twk.db->getFresnel();   twk.fFresR = v.x;  twk.fFresG = v.y;  twk.fFresB = v.z;  twk.svFresR.Upd(); twk.svFresG.Upd(); twk.svFresB.Upd();
+
 	f = twk.db->getRoughness();  twk.fRough = f;  twk.svRough.Upd();
+	f = twk.db->getMetalness();  twk.fMetal = f;  twk.svMetal.Upd();
 	f = twk.db->getClearCoat();  twk.fClearCoat = f;  twk.svClearCoat.Upd();
 	f = twk.db->getClearCoatRoughness();  twk.fClearRough = f;  twk.svClearRough.Upd();
-	// twk.db->getDiffuseTexture()
-	// twk.db->getBackgroundDiffuse()  //-
 
-	// twk.db->getLinkedRenderables()  //?
-	// twk.db->getWorkflow()  //=
-	// twk.db->getUseEmissiveAsLightmap()
-	// twk.db->getEmissive()
-	// twk.db->getEmissiveTexture()
-	
-	// twk.db->getTwoSidedLighting()
-	// twk.db->getTransparency()
-	// twk.db->getTransparencyMode()
+	f = twk.db->getNormalMapWeight();  twk.fBumpScale = f;  twk.svBumpScale.Upd();
+	i = twk.db->getWorkflow();  twk.cbWorkflow->setIndexSelected(i);
 
-	// twk.db->getAlphaTest()
-	// twk.db->getAlphaTestThreshold()
-	// twk.db->getUseAlphaFromTextures()
+	//----------------------------------------------------------------------------------------------------
+	StringStream s;  // info only ..
+	auto* tex = twk.db->getDiffuseTexture();    if (tex)  s << "Diffuse:    " << tex->getNameStr() << endl;
+    tex = twk.db->getTexture(PBSM_NORMAL);      if (tex)  s << "Normal:    " << tex->getNameStr() << endl;
+    tex = twk.db->getTexture(PBSM_SPECULAR);    if (tex)  s << "Specular:  " << tex->getNameStr() << endl;
+    tex = twk.db->getTexture(PBSM_ROUGHNESS);   if (tex)  s << "Roughness: " << tex->getNameStr() << endl;
+    tex = twk.db->getTexture(PBSM_EMISSIVE);    if (tex)  s << "Emissive:   " << tex->getNameStr() << endl;
+    tex = twk.db->getTexture(PBSM_REFLECTION);  if (tex)  s << "Reflect:    " << tex->getNameStr() << endl;
 	
-	// twk.db->getNormalMapWeight()  //+
-	// twk.db->getMetalness()  //-
-	// twk.db->getRefractionStrength()
-	// twk.db->getReceiveShadows()
+	auto* sb = twk.db->getSamplerblock(0);
+	if (sb)
+	{
+	const static String sFil[5] = {"none","point","lin","anis"};  // FilterOptions
+	s << "Sampler:  min: " << sFil[sb->mMinFilter] << "  mag: " << sFil[sb->mMagFilter] << "  mip: " << sFil[sb->mMipFilter]
+	  << "  Aniso: " << sb->mMaxAnisotropy << endl;
+	const static String sWrap[5] = {"wrap","mirror","clamp","border"};  // TextureAddressingMode
+	s << "Texture wrap uvw:  " << sWrap[sb->mU] << ", " << sWrap[sb->mV] << ", " << sWrap[sb->mW] << endl;
 	
-	// twk.db->getNameStr()
-	// twk.db->getFilenameAndResourceGroup(
-	// twk.db->getBrdf()  //=
-	// twk.db->getCubemapProbe()  //-
-	
-	// twk.db->getDetailMapBlendMode()  //`
-	// twk.db->getDetailMapOffsetScale()
-	// twk.db->getDetailMapWeight()
-	// twk.db->getDetailNormalWeight()
+	s << "Renderables:  " << twk.db->getLinkedRenderables().size() << "  Name:  " << twk.db->getNameStr() << endl;  // meh hash
+	s << endl;
+	}
+
+	//auto* bb = twk.db->getBlendblock();
+	auto* mb = twk.db->getMacroblock();
+	if (mb)
+	{
+	// mb->mDepthClamp;  mDepthFunc
+	const static String sCull[4] = {"none","cw","ccw"};  // CullingMode
+	s << "Depth:  check " << mb->mDepthCheck << "  write " << mb->mDepthWrite << "  bias " << mb->mDepthBiasConstant
+	  << "  slope " << mb->mDepthBiasSlopeScale << "  Cull: " << sCull[mb->mCullMode] << endl;
+	}
+	s << "Two sided:  " << twk.db->getTwoSidedLighting()
+	  << "  receive shadows:  " << twk.db->getReceiveShadows() << endl;
+	const static String sTr[4]= {"none", "transp", "fade", "refract"};  // TransparencyModes
+	s << "Transparency:  " << twk.db->getTransparency() << "  mode: " << sTr[twk.db->getTransparencyMode()] << endl;
+
+	s << "Alpha test:  " << twk.db->getAlphaTest() << "  threshold: " << twk.db->getAlphaTestThreshold()
+	  << "  from tex:  " << twk.db->getUseAlphaFromTextures() << endl;
+	s << endl;
+
+	// twk.db->getFilenameAndResourceGroup(&fname, &grp);
+	s << "Brdf: " << twk.db->getBrdf()
+	  << "  Refract strength: " << twk.db->getRefractionStrength() << endl;
+	// s << "cubemap probe: " << (twk.db->getCubemapProbe() ? "yes" : "no") << endl;
+
+	s << "Emissive: " << twk.db->getEmissive() << "  as lightmap: " << twk.db->getUseEmissiveAsLightmap() << endl;
+	s << "Backgr Diff clr: " << twk.db->getBackgroundDiffuse() << endl;
+
+	s << "Detail offset,scale: " << twk.db->getDetailMapOffsetScale(0) << endl;
+	s << "Detail map weight: " << twk.db->getDetailMapWeight(0) << endl;
+	s << "Detail normal weight: " << twk.db->getDetailNormalWeight(0) << endl;
+	// s << ": " << twk.db->getDetailMapBlendMode() << endl;
+	// s << "IORefra: " << twk.db->getIndexOfRefraction() << endl;
+
+	twk.edInfo->setCaption(s.str());
 }
-
 
 #if 0
 	ColourValue diff, spec;  //, fresn1, fresn2;
 	auto c = gc.add(0];
 	diff.setHSB(1.f - c.hue, c.sat, c.val);
 
-	db->setWorkflow(  // once?
-		HlmsPbsDatablock::SpecularWorkflow  // par?
-		// HlmsPbsDatablock::SpecularAsFresnelWorkflow
-		// HlmsPbsDatablock::MetallicWorkflow
-	);
 	// db->setMetalness( gc.metal );  // only in metallic
-	
-	// db->setIndexOfRefraction( Vector3::UNIT_SCALE * (3.f-gc.fresnel*3.f), false );
-	db->setFresnel( Vector3::UNIT_SCALE * gc.fresnel, false );
 #endif
 
 
 //  🌈 set gui slider values  Init  only for gui list
+//----------------------------------------------------------------------------------------------------
 void CGui::ClrTweakMtr()
 {
 	std::vector<pair<String,String>> clr;
 	#define add(a,b)  clr.push_back(make_pair(a,b))
-	add("base"  ,"#101010");
+	// add("base"  ,"#000000");
 	add("cyan"  ,"#00F0F0");  add("green" ,"#00F000");  add("jungle","#20FF00");
 	add("moss"  ,"#00FFA0");  add("blue"  ,"#1060F0");
+	add("mud"   ,"#904020");  add("crysta","#2060C0");  add("marble","#F090D0");
 	add("red"   ,"#FF0808");  add("yellow","#F0F000");  add("desert","#F0E090");
 	add("orange","#FF9000");  add("lava"  ,"#FF4000");
 	add("white" ,"#FFFFFF");  add("ice"   ,"#F9F9F9");  add("snow"  ,"#EEEEEE");
@@ -136,15 +179,16 @@ void CGui::ClrTweakMtr()
 	add("sunset","#F0C010");  add("alien" ,"#90F020");  add("space" ,"#90C0E0");
 	add("dark"  ,"#202020");  add("sand"  ,"#FFE0B0");  add("savan" ,"#A0F080");
 	add("stone" ,"#C0C0C0");  add("metal" ,"#6090C0");  add("gravel","#909090");
-	add("mud"   ,"#904020");  add("crysta","#2060C0");  add("marble","#F090D0");
 
 	add("glass" ,"#F0F8FF");  add("road"  ,"#904000");  add("pipe"  ,"#C0C000");
 	add("water" ,"#60A0FF");  add("river" ,"#80C0FF");  add("_ter"  ,"#403020");
 	add("house" ,"#A0C0D0");  add("balloon","#F0A040"); add("pyrami","#F0C010");
 
-	for (auto& mat : vsMaterials)
+	for (const auto& m : vsMaterials)
+	if (m != "road" && m != "road_terrain" && m != "column" && 
+		m != "pipe_base" && m != "pipe_glass")  // no base mtr
 	{
-		auto s = mat;
+		auto s = m;
 		StringUtil::toLowerCase(s);
 		
 		String c;
@@ -155,6 +199,6 @@ void CGui::ClrTweakMtr()
 				c = it->second;
 				break;
 		}	}
-		liTweakMtr->addItem(c + mat);
+		liTweakMtr->addItem(c + m);
 	}
 }

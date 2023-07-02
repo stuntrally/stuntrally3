@@ -183,13 +183,27 @@ void CGui::InitGuiLists()
 
 	vsMaterials.clear();
 	vsMaterials.push_back("#0080FF  ~~~~  Water  ~~~~");
-	GetMaterialsMat(sMat+"water.material",false);
+	GetMaterialsMat(sMat+"water.material",0);
 	vsMaterials.push_back("#FFFF00    ---  o O   Pipe  O o  ---");
-	GetMaterialsMat(sMat+"pipe.material",false);
+	GetMaterialsMat(sMat+"pipe.material",0);
 	vsMaterials.push_back("#807010  -----===  Road  ===-----");
-	GetMaterialsMat(sMat+"road.material",false);
+	GetMaterialsMat(sMat+"road.material",0);
+
 	vsMaterials.push_back("#808080  ----[]  objects static  []----");
-	GetMaterialsMat(sMat+"objects_static.material",false);
+	GetMaterialsMat(sMat+"objects_static.material",0);
+	vsMaterials.push_back("#808080  ----[]  objects static2  []----");
+	GetMaterialsMat(sMat+"objects_static2.material",0);
+	vsMaterials.push_back("#808080  ----x  objects dynamic  x----");
+	GetMaterialsMat(sMat+"objects_dynamic.material",0);
+
+	vsMaterials.push_back("#80FF80  --------Y  trees  Y--------");
+	GetMaterialsMat(sMat+"trees.material",0);
+	vsMaterials.push_back("#C0F080  --------Y  trees ch  Y--------");
+	GetMaterialsMat(sMat+"trees_ch.material",0);
+	vsMaterials.push_back("#80C080  --------Y  trees old  Y--------");
+	GetMaterialsMat(sMat+"trees_old.material",0);
+	vsMaterials.push_back("#C0C0C0  ----cc  rocks  cc----");
+	GetMaterialsMat(sMat+"rocks.material",0);
 
 	liTweakMtr->addItem("");
 	ClrTweakMtr();
