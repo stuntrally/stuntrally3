@@ -580,6 +580,35 @@ hlms road_col_Alien pbs : column
 }
 
 
+//  Black
+hlms road_wall_Black pbs : wall_base
+{
+	diffuse  0.26 0.26 0.26
+	specular 0.3 0.28 0.3 32
+	diffuse_map brass_patina.jpg
+	normal_map normal_1.png
+	bump_scale 3.0
+}
+
+hlms pipe_wall_Black pbs : pipe_wall_base
+{
+	diffuse  0.26 0.26 0.26
+	specular 0.3 0.28 0.3 32
+	diffuseMap brass_patina.jpg
+	normal_map normal_1.png
+	bump_scale 3.0
+}
+
+hlms road_col_Black pbs : column
+{
+	diffuse  0.26 0.26 0.26
+	specular 0.3 0.28 0.3 32
+	diffuse_map brass_patina.jpg
+	normal_map normal_1.png
+	bump_scale 3.0
+}
+
+
 //  universal  any road,pipe,wall,column  SR 2.7
 //--------------------------------------------------------------------------------------
 //  univ space
