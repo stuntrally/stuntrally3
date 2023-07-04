@@ -101,7 +101,7 @@ void CScene::CreateFog()
 	atmo = OGRE_NEW Atmosphere2Npr( app->mRoot->getRenderSystem()->getVaoManager() );
 
 	atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
-	atmo->setLight( sun );
+	atmo->setLight( sun );  //-
 	atmo->setSky( mgr, true );
 	
 	OGRE_ASSERT_HIGH( dynamic_cast<Atmosphere2Npr*>( mgr->getAtmosphere() ) );

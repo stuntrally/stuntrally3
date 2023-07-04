@@ -198,8 +198,11 @@ void HlmsPbsDatablock2::cloneImpl( HlmsDatablock *db ) const
 
 #if 0
 //----------------------------------------------------------------
-//  todo: Notes
+///  todo: Notes  **Bookmarks**
 //----------------------------------------------------------------
+struct AtmoSettings  // fog params  UpdFog  each frame
+mHlmsBuffer->upload( &atmoGpu
+
 
 const size_t c_geometryShaderMagicValue = 123456;
 

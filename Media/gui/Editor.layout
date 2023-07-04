@@ -1383,11 +1383,11 @@
 					<UserString key="tip" value="#{TipTexTiling}"/>
 				</Widget>
 
-				<!-- <Widget type="Button" skin="CheckBox" position="400 216 124 20" name="DebugBlend">
+				<Widget type="Button" skin="CheckBox" position="400 216 124 20" name="DebugBlend">
 					<Property key="Caption" value="#{Test} F9"/>
 					<Property key="TextColour" value="0.6 0.8 0.4"/>
 					<UserString key="tip" value="#{TipTestBlendmap}"/>
-				</Widget> -->
+				</Widget>
 				<!--<Widget type="Button" skin="CheckBox" position="600 216 124 20" name="TestBle">
 					<Property key="Caption" value="#{Test}"/>
 					<Property key="TextColour" value="0.4 0.7 0.3"/>

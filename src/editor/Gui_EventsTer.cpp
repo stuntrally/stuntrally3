@@ -11,7 +11,10 @@
 #include "Slider.h"
 #include "MultiList2.h"
 #include "paths.h"
+
 #include "Terra.h"
+#include "GraphicsSystem.h"
+#include "OgreHlmsTerra.h"
 
 #include <fstream>
 #include <MyGUI.h>
@@ -461,7 +464,12 @@ void CGui::slTerGen(SV*)
 //  debug
 void CGui::chkDebugBlend(Ck*)
 {
-	//; app->mFactory->setGlobalSetting("debug_blend", b2s(bDebugBlend));
+	app->mGraphicsSystem->hlmsTerra->setDebugBlendmap(bDebugBlend);
+	// todo:
+	// app->scn->ter
+		// uint32 hash, casterHash;  // todo:
+		// CalculateHashFor( rend, hash, casterHash );
+		// _setHlmsHashes( hash, casterHash );
 	dbgLclr->setVisible(bDebugBlend);
 }
 

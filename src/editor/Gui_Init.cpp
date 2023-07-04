@@ -377,7 +377,7 @@ void CGui::InitGui()
 
 	ck= &ckTexNormAuto;	ck->Init("TexNormAuto",	&bTexNormAuto);
 	ck= &ckTerLayTripl;	ck->Init("TerLayTripl",	&b);   Cev(TerLayTripl);
-	//; ck= &ckDebugBlend;	ck->Init("DebugBlend",  &bDebugBlend);  Cev(DebugBlend);  // todo:
+	ck= &ckDebugBlend;	ck->Init("DebugBlend",  &bDebugBlend);  Cev(DebugBlend);  // todo:
 	dbgLclr = fImg("dbgTerLclr");
 
 	sv= &svTerTriSize;	sv->Init("TerTriSize", &f, 0.4f, 20.f,  1.5f);  sv->DefaultF(1.0f);  Sev(TerTriSize);

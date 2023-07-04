@@ -116,9 +116,15 @@
 	@end
 
 	@foreach( detail_maps_diffuse, n )
-		@property( !detail_map@n )midf3 detailCol@n = midf3_c( 0.0f, 0.0f, 0.0f );@end
+		@property( !detail_map@n )  midf3 detailCol@n = midf3_c( 0.0f, 0.0f, 0.0f );  @end
 	@end
 
+	@property( blendmap_test )
+		@property( detail_map0 )  detailCol0.xyz = midf3_c( 1.0f, 0.0f, 0.0f );  @end
+		@property( detail_map1 )  detailCol1.xyz = midf3_c( 0.0f, 1.0f, 0.0f );  @end
+		@property( detail_map2 )  detailCol2.xyz = midf3_c( 0.0f, 0.0f, 1.0f );  @end
+		@property( detail_map3 )  detailCol3.xyz = midf3_c( 0.5f, 0.5f, 0.5f );  @end
+	@end
 
 	@property( !detail_maps_diffuse && !detail_maps_normal )
 		midf4 detailWeights = midf4_c( 0.25f, 0.25f, 0.25f, 0.25f );
