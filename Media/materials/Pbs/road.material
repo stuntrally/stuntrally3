@@ -315,7 +315,7 @@ hlms roadSandMagic_ter pbs : road_terrain
 	normal_map   normal_2.png
 	diffuse  0.12 0.22 0.42
 	specular 0.15 0.1 0.2
-	roughness 0.3
+	roughness 0.01
 	metalness 1.0
 	fresnel	1.0
 	fresnel_coeff 0.1 0.4 1.0

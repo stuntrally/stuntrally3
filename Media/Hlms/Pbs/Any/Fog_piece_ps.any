@@ -22,9 +22,8 @@
     ///_
 
 @piece( applyFog )
-    @property( hlms_fog && !emissive_map )
-    //property( hlms_fog )
-        // todo if emissive_map allow hfog on sky
+    @property( hlms_fog && !sky )
+    //property( hlms_fog )  // todo: inside hfog on sky
 
         const float distToCameraH = length( inPs.pos.xyz );
 
@@ -38,7 +37,7 @@
                                     fogHWeight );
         finalColour.xyz = lerp( fogHclr, finalColour.xyz, heightMul );
     //end
-    //property( hlms_fog && !emissive_map )
+    //property( hlms_fog && !sky )
         //  distance fog
         const midf luminance = dot( finalColour.xyz, midf3_c( _h(0.212655), _h(0.715158), _h(0.072187) ) );
         const midf lumFogWeight = max( exp2(

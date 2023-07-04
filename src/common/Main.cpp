@@ -48,7 +48,6 @@ class GameGraphicsSystem final : public GraphicsSystem
 	//-----------------------------------------------------------------------------
 	CompositorWorkspace *setupCompositor() override
 	{
-
 		return 0;
 	}
 
@@ -74,7 +73,6 @@ class GameGraphicsSystem final : public GraphicsSystem
 			"materials/Terrain/GLSL",
 			"materials/Terrain/HLSL",
 			"materials/Terrain/Metal",
-			// "materials/Postprocessing/SceneAssets",
 			"materials/Pbs"
 		};
 

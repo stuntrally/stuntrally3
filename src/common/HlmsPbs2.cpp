@@ -60,6 +60,9 @@ void HlmsPbs2::calculateHashForPreCreate(
 	else
 	if (mtr.substr(0,5) == "grass")
 		setProperty( "grass", 1 );
+	else 
+	if (mtr.substr(0,4) == "sky/")
+		setProperty( "sky", 1 );
 
 	if (mtr.find("body") != String::npos)
 	{
