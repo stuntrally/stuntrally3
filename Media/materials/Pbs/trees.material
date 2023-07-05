@@ -182,19 +182,20 @@ hlms pine_base pbs
 
 	// diffuse_map white.png
 	//normal_map  pine_half_norm.png
-	diffuse 0.8 0.8 0.8
-	specular 0.5 0.5 0.5 //24
+	diffuse 1.0 1.0 1.0
+	specular 0.5 0.5 0.5
 
+	// fresnel 0.1
 	fresnel_coeff 0.1
-	roughness 0.2
-	metalness 0.4
+	roughness 0.1
+	metalness 0.2
 }
 
 hlms pine1full pbs : pine_base
 {
 	diffuse_map pine_full.png
 	normal_map  pine_full_norm.png
-	diffuse 0.8 0.82 0.82
+	// diffuse 0.8 0.82 0.82
 	// specular 1.0 1.0 1.0 //32
 }
 
@@ -202,7 +203,7 @@ hlms pine2full pbs : pine_base
 {
 	diffuse_map pine_full.png
 	normal_map  pine_full_norm.png
-	diffuse 0.8 0.81 0.81
+	// diffuse 0.8 0.81 0.81
 	// specular 1.0 1.0 1.0 //16
 }
 
@@ -210,7 +211,7 @@ hlms pine3full pbs : pine_base
 {
 	diffuse_map pine_full.png
 	normal_map  pine_full_norm.png
-	diffuse 0.8 0.81 0.81
+	// diffuse 0.8 0.81 0.81
 	// specular 1.0 1.0 1.0 //24
 }
 
@@ -241,24 +242,24 @@ hlms pine1norm pbs : pine_base
 {
 	diffuse_map pine_norm_gr1.png
 	normal_map  pine_norm_norm.jpg
-	diffuse 0.6 0.65 0.6
-	specular 0.2 0.2 0.2 //8
+	// diffuse 0.6 0.65 0.6
+	// specular 0.2 0.2 0.2 //8
 }
 
 hlms pine2norm pbs : pine_base
 {
 	diffuse_map pine_norm_gr1.png
 	normal_map  pine_norm_norm.jpg
-	diffuse 0.6 0.6 0.6
-	specular 0.3 0.3 0.3 //8
+	// diffuse 0.6 0.6 0.6
+	// specular 0.3 0.3 0.3 //8
 }
 
 hlms pine3norm pbs : pine_base
 {
 	diffuse_map pine_norm_gr2.png
 	normal_map  pine_norm_norm.jpg
-	diffuse 0.5 0.5 0.5
-	specular 0.3 0.3 0.3 //16
+	// diffuse 0.5 0.5 0.5
+	// specular 0.3 0.3 0.3 //16
 }
 
 

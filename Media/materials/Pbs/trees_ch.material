@@ -18,15 +18,16 @@ hlms base-twig pbs
 {
     alpha_test greater 0.5
     // diffuse_map twig21_0yo.png
-    diffuse 0.9 0.9 0.9
-    specular 0.2 0.2 0.2 //32
+    // diffuse 0.99 0.99 0.99
+    diffuse 1.1 1.1 1.1
+    specular 0.2 0.2 0.2
 
     // cull_mode none
     // two_sided true
 	fresnel 0
-	fresnel_coeff 0
-    roughness 0.3
-    metalness 0.2
+	fresnel_coeff 0 0 0
+    roughness 0.6
+    metalness 0.1
 }
 
 
@@ -102,6 +103,7 @@ hlms tree18tallupTrunk pbs : base-tree
 hlms tree18tallupTwig pbs : base-twig
 {
     diffuse_map twig26_2yo.png
+    // normal_map  roadMetal1_norm.jpg
 }
 
 hlms tree19twideTrunk pbs : base-tree
