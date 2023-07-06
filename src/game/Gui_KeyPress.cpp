@@ -226,7 +226,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		}
 	//............................................................................................................
 	//>--  dev shortcuts, alt-shift - start test tracks
-	if (pSet->dev_keys && alt && shift /*&& !mClient*/)
+	if (pSet->dev_keys && alt && shift && !mClient)
 	{
 		string t;
 		switch (skey)    //  alt- shift-  Tracks  🏞️
@@ -439,7 +439,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 						case TAB_Track:	 gui->changeTrack();  gui->btnNewGame(0);  break;
 						case TAB_Car:	 gui->changeCar();    gui->btnNewGame(0);  break;
 						case TAB_Split:	 gui->btnNewGame(0);  break;
-						// case TAB_Multi:	 gui->chatSendMsg();  break;
+						case TAB_Multi:	 gui->chatSendMsg();  break;
 						case TAB_Champs:
 							if (gui->isChallGui())
 								  gui->btnChallStart(0);
@@ -447,9 +447,9 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 						}	break;
 				}
 				else
-				/*if (mClient && !isFocGui)  // show/hide players net wnd
+				if (mClient && !isFocGui)  // show/hide players net wnd
 				{	mWndNetEnd->setVisible(!mWndNetEnd->getVisible());  return;  }
-				else*/
+				else
 				if (!isFocGui)  // 🏁 show last lap results
 				{	
 					for (int i=0; i < carModels.size(); ++i)
@@ -603,7 +603,7 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 	}
 
 	//  🏁  New game - Reload   not in multiplayer
-	if (action(A_RestartGame) /*&& !mClient*/)
+	if (action(A_RestartGame) && !mClient)
 	{
 		if (ctrl)  // ctrl-F5 start perf test
 		{	gui->BackFromChs();
@@ -616,7 +616,7 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 	}
 
 	//  🏁🔁  Reset game - fast (same track & cars)
-	if (action(A_ResetGame) /*&& !mClient*/)
+	if (action(A_ResetGame) && !mClient)
 	{
 		for (int c=0; c < carModels.size(); ++c)
 		{
@@ -632,7 +632,7 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 			cm->iWonMsgTime = 0.f;
 		}
 		pGame->timer.Reset(-1);
-		pGame->timer.pretime = /*mClient ? 2.0f :*/ pSet->game.pre_time;  // same for all multi players
+		pGame->timer.pretime = mClient ? 2.0f : pSet->game.pre_time;  // same for all multi players
 
 		carIdWin = 1;  //
 		ghost.Clear();  replay.Clear();

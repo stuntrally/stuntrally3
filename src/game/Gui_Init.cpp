@@ -413,7 +413,7 @@ void CGui::InitGui()
 	///  📡 Multiplayer net
 	//------------------------------------------------------------------------
 	int c=0;
-/*	tabsNet = fTab("SubTabNet");
+	tabsNet = fTab("SubTabNet");
 
 	//  server, games
 	listServers = fMli("MListServers");
@@ -466,7 +466,7 @@ void CGui::InitGui()
 	Edt(edNetServerIP,	"edNetServerIP",	evEdNetServerIP);	edNetServerIP->setCaption(	pSet->master_server_address);
 	Edt(edNetServerPort,"edNetServerPort",	evEdNetServerPort);	edNetServerPort->setCaption(toStr(pSet->master_server_port));
 	Edt(edNetLocalPort,	"edNetLocalPort",	evEdNetLocalPort);	edNetLocalPort->setCaption(	toStr(pSet->local_port));
-*/
+
 
 	//  user dir
 	Ed edUserDir = fEd("EdUserDir");
@@ -494,7 +494,7 @@ void CGui::InitGui()
 		"PanelSkin", 0,0,tc.width*0.66f,tc.height, Align::Default/*, "Popup", "panelNetTrack"*/);
 	wp->setColour(Colour(0.8f,0.96f,1.f));
 	wp->setAlpha(0.8f);  wp->setVisible(false);
-	// panNetTrack = wp;
+	panNetTrack = wp;
 	//<UserString key="RelativeTo" value="OptionsWnd"/>
 
 
@@ -508,9 +508,9 @@ void CGui::InitGui()
 
 
 	//  📡 multi end list  ------
-/*	Btn("btnNetEndClose", btnNetEndClose);
+	Btn("btnNetEndClose", btnNetEndClose);
 
-	li = app->mWndNetEnd->createWidget<MultiList2>("MultiListBox",4,42,632,360, Align::Left | Align::VStretch);
+	Mli2 li = app->mWndNetEnd->createWidget<MultiList2>("MultiListBox",4,42,632,360, Align::Left | Align::VStretch);
 	li->setInheritsAlpha(false);  li->setColour(Colour(0.8,0.9,1,1));
 	li->removeAllColumns();
 	li->addColumn("", 40);  //N
@@ -518,7 +518,7 @@ void CGui::InitGui()
 	li->addColumn(TR("#{TBTime}"), 120);	li->addColumn(TR("#{TBBest}"), 120);
 	li->addColumn(TR("#{TBLap}"), 60);
 	liNetEnd = li;
-*/
+
 
 	//  🔗 open url btns  -------------
 	Btn("OpenWelcome", btnWelcome);  Btn("OpenWebsite", btnWebsite);   Btn("OpenSources", btnSources);

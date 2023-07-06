@@ -13,11 +13,11 @@
 #include "Road.h"
 #include "CGame.h"
 #include "CHud.h"
-// #include "CGui.h"
+#include "CGui.h"
 // #include "SplitScreen.h"
 #include "FollowCamera.h"
 #include "CarModel.h"
-// #include "MultiList2.h"
+#include "MultiList2.h"
 // #include "GraphView.h"
 
 // #include <OgreWindow.h>
@@ -83,9 +83,8 @@ void CHud::GetCarVals(int id, float* vel, float* rpm, float* clutch, int* gear)
 
 //  Multiplayer
 //---------------------------------------------------------------------------------------------------------------
-void CHud::UpdMultiplayer(int cnt, float time)
+void CHud::UpdMultiplayer(CGui* gui, int cnt, float time)
 {
-#if 0
 	static float tm = 0.f;  tm += time;
 	if (tm < 0.2f)  // not every frame, each 0.2s
 		return;
@@ -99,7 +98,7 @@ void CHud::UpdMultiplayer(int cnt, float time)
 	//stable_sort(cms.begin(), cms.end(), SortWin);
 	
 	String msg = "";  int place = 1;  // assing places
-	for (std::list<CarModel*>::iterator it = cms.begin(); it != cms.end(); ++it)
+	for (auto it = cms.begin(); it != cms.end(); ++it)
 	{
 		CarModel* cm = *it;
 		bool end = app->pGame->timer.GetCurrentLap(cm->iIndex) >= pSet->game.num_laps;
@@ -157,7 +156,6 @@ void CHud::UpdMultiplayer(int cnt, float time)
 			li->setSubItemNameAt(5,l, clr+ toStr( app->pGame->timer.GetCurrentLap(cm->iIndex) ));
 	}	}
 	tm = 0.f;
-#endif
 }
 
 

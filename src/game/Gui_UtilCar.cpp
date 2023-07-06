@@ -8,7 +8,7 @@
 #include "GuiCom.h"
 
 #include "MultiList2.h"
-// #include "gameclient.hpp"
+#include "gameclient.hpp"
 #include <OgreTimer.h>
 #include <MyGUI.h>
 #include "tinyxml2.h"
@@ -226,7 +226,7 @@ void CGui::listCarChng(MultiList2* li, size_t)
 	sListCar = li->getItemNameAt(i).substr(7);
 
 	if (imgCar && !pSet->dev_no_prvs)  imgCar->setImageTexture(sListCar+".jpg");
-	// if (app->mClient)  app->mClient->updatePlayerInfo(pSet->nickname, sListCar);
+	if (app->mClient)  app->mClient->updatePlayerInfo(pSet->nickname, sListCar);
 	
 	//  car desc txt
 	String sd = String("#BFD3E5")+TR("#{CarDesc_"+sListCar+"}");

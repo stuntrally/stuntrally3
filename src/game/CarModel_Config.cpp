@@ -9,6 +9,7 @@
 #include "SceneXml.h"
 #include "CarModel.h"
 #include "FollowCamera.h"
+#include "gameclient.hpp"
 
 using namespace Ogre;
 using namespace std;
@@ -113,7 +114,7 @@ void CarModel::Load(int startId, bool loop)
 
 	///  📄 load config .car
 	string pathCar;
-	bool force = 0; //; pApp->mClient.get() != 0;  // force orig for newtorked games
+	bool force = pApp->mClient.get() != 0;  // force orig for newtorked games
 	pApp->gui->GetCarPath(&pathCar, 0, 0, sDirname, force);
 
 	LoadConfig(pathCar);
@@ -126,7 +127,7 @@ void CarModel::Load(int startId, bool loop)
 		if (pSet->game.start_order == 1)
 		{	//  reverse start order
 			int numCars =
-				//pApp->mClient ? pApp->mClient->getPeerCount()+1 :  // 📡 networked
+				pApp->mClient ? pApp->mClient->getPeerCount()+1 :  // 📡 networked
 				pSet->game.local_players;  // 👥 splitscreen
 			startId = numCars-1 - startId;
 		}

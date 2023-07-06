@@ -699,8 +699,8 @@ void CarModel::SetPaint()
 
 	db->setFresnel( Vector3::UNIT_SCALE * gc.fresnel, false );
 
-	// if (pNickTxt)
-	// 	pNickTxt->setTextColour(MyGUI::Colour(color.r, color.g, color.b));
+	if (pNickTxt)
+		pNickTxt->setTextColour(MyGUI::Colour(color.r, color.g, color.b));
 	
 	// opp list text and mini pos colors - auto in hud update
 }

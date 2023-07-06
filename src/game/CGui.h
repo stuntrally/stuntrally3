@@ -5,12 +5,14 @@
 #include "ChallengesXml.h"
 #include "CInput.h"
 
-// #include "networkcallbacks.hpp"
 #include "SliderValue.h"
 #include "MessageBoxStyle.h"
 #include <MyGUI_Enumerator.h>
 #include "ICSInputControlSystem.h"
-// #include <thread>
+#include <thread>
+#include "peerinfo.hpp"
+#include "networkcallbacks.hpp"
+#include <boost/thread/mutex.hpp>
 
 namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class RenderWindow;  class Viewport;  class Light;  }
 namespace MyGUI{  class MultiList2;  class Slider;  class Message;  class PolygonalSkin;  }
@@ -29,7 +31,7 @@ struct CarL
 
 class CGui : public BGui
 	, public ICS::DetectingBindingListener
-	//, public GameClientCallback, public MasterClientCallback
+	, public GameClientCallback, public MasterClientCallback
 {
 public:
 	App* app =0;  GAME* pGame =0;  SETTINGS* pSet =0;
@@ -522,20 +524,19 @@ public:
 
 	///  👥 Multiplayer game
 	///-----------------------------------------------------------------------------------------------------------------
-/*
 	void rebuildGameList(), rebuildPlayerList();
 	void updateGameInfo(), updateGameSet(), updateGameInfoGUI();
 	void setNetGuiHosting(bool enabled);
-	void gameListChanged(protocol::GameList list);
+	void gameListChanged(protocol::GameList list) override;
 
-	void peerConnected(PeerInfo peer), peerDisconnected(PeerInfo peer);
-	void peerInfo(PeerInfo peer);
-	void peerMessage(PeerInfo peer, std::string msg);
-	void peerState(PeerInfo peer, uint8_t state);
-	void gameInfo(protocol::GameInfo game);
-	void startRace(), returnToLobby();
-	void timeInfo(ClientID id, uint8_t lap, double time);
-	void error(std::string what);
+	void peerConnected(PeerInfo peer) override, peerDisconnected(PeerInfo peer) override;
+	void peerInfo(PeerInfo peer) override;
+	void peerMessage(PeerInfo peer, std::string msg) override;
+	void peerState(PeerInfo peer, uint8_t state) override;
+	void gameInfo(protocol::GameInfo game) override;
+	void startRace() override, returnToLobby() override;
+	void timeInfo(ClientID id, uint8_t lap, double time) override;
+	void error(std::string what) override;
 	void join(std::string host, std::string port, std::string password);
 	void uploadGameInfo();
 
@@ -572,7 +573,7 @@ public:
 	Ed edNetGameName =0,   edNetPassword =0;   void evEdNetGameName(Ed),   evEdNetPassword(Ed);
 	Ed edNetNick =0,       edNetLocalPort =0;  void evEdNetNick(Ed),       evEdNetLocalPort(Ed);
 	Ed edNetServerPort =0, edNetServerIP =0;   void evEdNetServerPort(Ed), evEdNetServerIP(Ed);
-*/
+
 
 	//  🔗 open urls
 	void btnWelcome(WP), btnWebsite(WP), btnWiki(WP), btnWikiInput(WP);

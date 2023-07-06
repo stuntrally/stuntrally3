@@ -23,16 +23,16 @@ void CGui::changeTrack()
 	pSet->gui.track = gcom->sListTrack;
 	pSet->gui.track_user = gcom->bListTrackU;
 							//_ only for host..
-	/*if (app->mMasterClient && valNetPassword->getVisible())
+	if (app->mMasterClient && valNetPassword->getVisible())
 	{	uploadGameInfo();
-		updateGameInfoGUI();  }*/
+		updateGameInfoGUI();  }
 }
 
 //  🏁 New Game
 void CGui::btnNewGame(WP wp)
 {
 	if (app->mWndGame->getVisible() &&
-		app->mWndTabsGame->getIndexSelected() < TAB_Champs  /*|| app->mClient*/)
+		app->mWndTabsGame->getIndexSelected() < TAB_Champs  || app->mClient)
 		BackFromChs();  /// champ, back to single race
 	
 	bool force = false;
@@ -191,12 +191,12 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab)
 }
 
 //  close netw end
-/*void CGui::btnNetEndClose(WP)
+void CGui::btnNetEndClose(WP)
 {
 	app->mWndNetEnd->setVisible(false);
 	app->isFocGui = true;  // show back gui
 	toggleGui(false);
-}*/
+}
 
 
 //  ⛓️ utility

@@ -169,7 +169,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			}
 			UpdateTrack();  return;  // default full
 
-		case key(F9):  //; blendmap
+		case key(F9):  // blendmap
 			gui->ckDebugBlend.Invert();
 			bTerUpdBlend = true;
 			return;

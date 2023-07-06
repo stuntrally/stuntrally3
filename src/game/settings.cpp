@@ -18,8 +18,8 @@ void SETTINGS::Load(std::string sfile)
 }
 void SETTINGS::Save(std::string sfile)
 {
-	//; if (net_local_plr > 0)  // save only for host for many local games
-		// return;
+	if (net_local_plr > 0)  // save only for host for many local games
+		return;
 	CONFIGFILE c;  //c.Load(sfile);
 	version = SET_VER;
 	Serialize(true, c);  c.Write(sfile);
@@ -157,10 +157,10 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "misc.paintAdj", paintAdj);
 
 	//  📡 network
-	// Param(c,w, "network.master_server_address", master_server_address);	Param(c,w, "network.nickname", nickname);
-	// Param(c,w, "network.master_server_port", master_server_port);		Param(c,w, "network.local_port", local_port);
-	// Param(c,w, "network.connect_address", connect_address);				Param(c,w, "network.game_name", netGameName);
-	// Param(c,w, "network.connect_port", connect_port);
+	Param(c,w, "network.master_server_address", master_server_address);	Param(c,w, "network.nickname", nickname);
+	Param(c,w, "network.master_server_port", master_server_port);		Param(c,w, "network.local_port", local_port);
+	Param(c,w, "network.connect_address", connect_address);				Param(c,w, "network.game_name", netGameName);
+	Param(c,w, "network.connect_port", connect_port);
 
 	//  📽️ replay
 	Param(c,w, "replay.record", rpl_rec);			Param(c,w, "replay.ghost", rpl_ghost);

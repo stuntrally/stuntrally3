@@ -146,9 +146,11 @@ public:
 		return vel;
 	}
 
-	// Networking
-	// protocol::CarStatePackage GetCarStatePackage() const;
-	// void UpdateCarState(const protocol::CarStatePackage& state);
+	//  📡 Networking
+#ifndef SR_EDITOR
+	protocol::CarStatePackage GetCarStatePackage() const;
+	void UpdateCarState(const protocol::CarStatePackage& state);
+#endif
 
 	///  new
 	int id = 0;  // index of car (same as for carModels)

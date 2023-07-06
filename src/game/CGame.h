@@ -108,12 +108,11 @@ public:
 	CHud* hud = 0;
 	bool bSizeHUD = true;
 
-	// bool isTweakTab();
+	bool isTweakTab();
 	BtOgre::DebugDrawer *dbgdraw = 0;  /// blt dbg
 
 	float fLastFrameDT = 0.001f;
-	// virtual bool frameStart(Ogre::Real time);  //;void DoNetworking();
-	// virtual bool frameEnd(Ogre::Real time);
+	void DoNetworking();
 
 
 	///  🆕 Create  . . . . . . . . . . . . . . . . . . . . . . . . 

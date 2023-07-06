@@ -22,7 +22,7 @@
 #include "BtOgreExtras.h"
 // #include "SplitScreen.h"
 // #include "GraphView.h"
-//; #include "gameclient.hpp"
+#include "gameclient.hpp"
 #include "Terra.h"
 
 #include <OgreCommon.h>
@@ -185,10 +185,10 @@ void App::NewGame(bool force, bool perfTest)
 			pSet->game.local_players = 1;
 		Ch_NewGame();
 
-		/*if (mClient && mLobbyState != HOSTING)  // 📡 all but host
+		if (mClient && mLobbyState != HOSTING)  // 📡 all but host
 			gui->updateGameSet();  // override gameset params for networked game (from host gameset)
 		if (mClient)  // for all, including host
-			pSet->game.local_players = 1;*/
+			pSet->game.local_players = 1;
 	}
 	newGameRpl = false;
 
@@ -379,8 +379,8 @@ void App::LoadGame()
 	//  will create vdrift cars, actual car loading will be done later in LoadCar()
 	//  this is just here because vdrift car has to be created first
 	
-	int numCars = /*mClient ? mClient->getPeerCount()+1 :*/
-		pSet->game.local_players;  // 📡 networked or 👥 splitscreen
+	int numCars = mClient ? mClient->getPeerCount()+1 :  // 📡 networked
+		pSet->game.local_players;  // or 👥 splitscreen
 	int i;
 	for (i = 0; i < numCars; ++i)
 	{
@@ -388,7 +388,7 @@ void App::LoadGame()
 		CarModel::eCarType et = CarModel::CT_LOCAL;
 		int startId = i;
 		std::string carName = pSet->game.car[std::min(3,i)], nick = "";
-		/*if (mClient)  // 📡
+		if (mClient)  // 📡
 		{
 			// Various places assume carModels[0] is local
 			// so we swap 0 and local's id but preserve starting position
@@ -401,7 +401,7 @@ void App::LoadGame()
 			//  get nick name
 			if (i == 0)  nick = pSet->nickname;
 			else  nick = mClient->getPeer(startId).name;
-		}*/
+		}
 
 		//  need road looped here
 		String sRd = gcom->PathListTrk() + "/road.xml";
@@ -413,17 +413,17 @@ void App::LoadGame()
 		car->Load(startId, loop);
 		carModels.push_back(car);
 		
-		/*if (nick != "")  // set remote nickname // 📡
+		if (nick != "")  // set remote nickname // 📡
 		{	car->sDispName = nick;
 			if (i != 0)  // not for local
 				car->pNickTxt = hud->CreateNickText(i, car->sDispName);
-		}*/
+		}
 	}
 
 	///  👻 ghost car - last in carModels
 	///--------------------------------------------
 	ghPlay.Clear();
-	if (!bRplPlay/*|| pSet->rpl_show_ghost)*/ && pSet->rpl_ghost /*&& !mClient*/)
+	if (!bRplPlay/*|| pSet->rpl_show_ghost)*/ && pSet->rpl_ghost && !mClient)
 	{
 		std::string ghCar = pSet->game.car[0], orgCar = ghCar;
 		ghPlay.LoadFile(gui->GetGhostFile(pSet->rpl_ghostother ? &ghCar : 0));
@@ -449,7 +449,7 @@ void App::LoadGame()
 	///--------------------------------------------
 	ghTrk.Clear();  vTimeAtChks.clear();
 	bool deny = gui->pChall && !gui->pChall->trk_ghost;
-	if (!bRplPlay /*&& pSet->rpl_trackghost- && !mClient*/ && !pSet->game.track_user && !deny)
+	if (!bRplPlay /*&& pSet->rpl_trackghost-*/ && !mClient && !pSet->game.track_user && !deny)
 	{
 		std::string sRev = pSet->game.track_reversed ? "_r" : "";
 		std::string file = PATHS::TrkGhosts()+"/"+ pSet->game.track + sRev + ".gho";
@@ -461,12 +461,12 @@ void App::LoadGame()
 			carModels.push_back(c);
 	}	}
 
-	float pretime = /*mClient ? 2.0f :*/ pSet->game.pre_time;  // same for all multi players
+	float pretime = mClient ? 2.0f : pSet->game.pre_time;  // same for all multi players
 	if (bRplPlay)  pretime = 0.f;
-	/*if (mClient)  // 📡
+	if (mClient)  // 📡
 	{	pGame->timer.waiting = true;  //+
 		pGame->timer.end_sim = false;
-	}*/
+	}
 
 	pGame->NewGameDoLoadMisc(pretime);
 }
@@ -548,12 +548,12 @@ void App::LoadCar()
 	if (!bRplPlay)
 	{
 		replay.InitHeader(pSet->game.track.c_str(), pSet->game.track_user, !bRplPlay);
-		rh.numPlayers = /*mClient ? (int)mClient->getPeerCount()+1 :*/
+		rh.numPlayers = mClient ? (int)mClient->getPeerCount()+1 :
 			pSet->game.local_players;  // 📡 networked or 👥 splitscreen
 		replay.Clear();  replay.ClearCars();  // upd num plr
 		rh.trees = pSet->game.trees;
 
-		rh.networked = 0; //; mClient ? 1 : 0;
+		rh.networked = mClient ? 1 : 0;
 		rh.num_laps = pSet->game.num_laps;
 		rh.sim_mode = pSet->game.sim_mode;
 	}
@@ -570,8 +570,8 @@ void App::LoadCar()
 
 	//  fill other cars (names, nicks, colors)
 	int p, pp = pSet->game.local_players;
-	//; if (mClient)  // // 📡 networked, 0 is local car
-		// pp = (int)mClient->getPeerCount()+1;
+	if (mClient)  // // 📡 networked, 0 is local car
+		pp = (int)mClient->getPeerCount()+1;
 
 	if (!bRplPlay)
 	for (p=0; p < pp; ++p)
@@ -587,7 +587,7 @@ void App::LoadCar()
 	{
 		CarModel* cm = carModels[p];
 		cm->sDispName = rh.nicks[p];
-		//; cm->pNickTxt = hud->CreateNickText(p, cm->sDispName);
+		cm->pNickTxt = hud->CreateNickText(p, cm->sDispName);
 	}
 }
 //---------------------------------------------------------------------------------------------------------------

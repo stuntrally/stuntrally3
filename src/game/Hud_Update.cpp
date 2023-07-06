@@ -76,8 +76,8 @@ void CHud::Update(int carId, float time)
 
 
 	///  multiplayer
-	// if (app->mClient)
-	// 	UpdMultiplayer(cnt, time);
+	if (app->mClient)
+		UpdMultiplayer(app->gui, cnt, time);
 
 
 	///  opponents list

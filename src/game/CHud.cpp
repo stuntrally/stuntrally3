@@ -24,7 +24,7 @@ using namespace Ogre;
 CHud::CHud(App* ap1)
 	:app(ap1)
 {
-	hud.resize(4);  //; ov.resize(5);
+	hud.resize(4);
 	
 	// for (int i=0; i < 4; ++i)
 	// {	ndTireVis[i]=0;  moTireVis[i]=0;  }
@@ -65,7 +65,7 @@ Vector3 CHud::projectPoint(const Camera* cam, const Vector3& pos)
 
 	return Vector3(x * app->mWindow->getWidth(), y * app->mWindow->getHeight(), out ? -1.f : 1.f);
 }
-/*
+
 using namespace MyGUI;
 TextBox* CHud::CreateNickText(int carId, String text)
 {
@@ -77,7 +77,7 @@ TextBox* CHud::CreateNickText(int carId, String text)
 	txt->setCaption(text);
 	return txt;
 }
-*/
+
 //  get color as text eg. #C0E0FF
 String CHud::StrClr(ColourValue c)
 {

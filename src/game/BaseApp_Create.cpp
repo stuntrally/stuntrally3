@@ -3,6 +3,8 @@
 #include "BaseApp.h"
 #include "paths.h"
 #include "settings.h"
+#include "masterclient.hpp"
+#include "gameclient.hpp"
 
 #include "ICSInputControlSystem.h"
 #include <OgreTimer.h>
@@ -48,7 +50,7 @@ void BaseApp::CreateInputs()
 //  🌟 ctor
 //-------------------------------------------------------------------------------------
 BaseApp::BaseApp()
-	// :mMasterClient(), mClient()
+	:mMasterClient(), mClient()
 {
 }
 

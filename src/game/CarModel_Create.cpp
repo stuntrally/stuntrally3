@@ -43,7 +43,7 @@ using namespace std;
 //------------------------------------------------------------------------------------------------------
 void CarModel::Destroy()
 {
-	// if (pNickTxt){  pApp->mGui->destroyWidget(pNickTxt);  pNickTxt = 0;  }
+	if (pNickTxt){  pApp->mGui->destroyWidget(pNickTxt);  pNickTxt = 0;  }
 	// itNextChk = 0;  ndNextChk = 0;
 	// pMainNode =0;  ndSph =0;
 

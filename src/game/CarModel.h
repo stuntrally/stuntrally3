@@ -66,7 +66,7 @@ public:
 
 
 	Ogre::String sDispName;  // diplay name in opponents list (nick for CT_REMOTE)
-	// MyGUI::TextBox* pNickTxt =0;  // multiplayer 3d nick above car
+	MyGUI::TextBox* pNickTxt =0;  // multiplayer 3d nick above car
 
 	bool updTimes = true, updLap = true;
 	float fLapAlpha = 1.f;

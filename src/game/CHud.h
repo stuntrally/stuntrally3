@@ -67,7 +67,7 @@ public:
 		Txt txDamage =0,  txRewind =0,  txBFuel =0;
 		Img icoDamage =0, icoRewind =0, icoBFuel =0, icoBInf =0;
 		
-		//  input bars
+		//  input bars  todo..
 		//Img imgSteer =0, barSteer =0,  barThrottle =0, barBrake =0;
 		//Txt txtOther =0;  //barHandBrake = 0, barBoost = 0, barRewind =0;
 
@@ -111,10 +111,6 @@ public:
 	//; Ogre::SceneNode *ndTireVis[4];
 	//; HudRenderable   *hrTireVis[4];  // todo
 
-	/*Ogre::OverlayElement* oL=0,*oR=0,*oS=0, *oU=0,*oX=0;
-	std::vector<OvrDbg> ov;
-	Ogre::Overlay *ovCarDbg =0, *ovCarDbgTxt =0, *ovCarDbgExt =0;*/
-
 
 	///  🔝 arrow to next checkpoint 3d
 	struct Arrow
@@ -148,7 +144,7 @@ public:
 		 UpdRotElems(int baseCarId, int carId, float vel, float rpm),  // rpm < 0.f to hide
 		 GetCarVals(int id, float* vel, float* rpm, float* clutch, int* gear),
 		 UpdMiniTer(), //UpdDbgTxtClr(),
-		 UpdMultiplayer(int cnt, float time),
+		 UpdMultiplayer(CGui* gui, int cnt, float time),
 		 UpdOpponents(Hud& h, int cnt, CarModel* pCarM),
 		 //UpdMotBlur(CAR* pCar, float time),
 		 UpdCarTexts(int carId, Hud& h, float time, CAR* pCar),
@@ -157,7 +153,7 @@ public:
 
 
 	//  ⛓️ util
-	// Txt CreateNickText(int carId, Ogre::String text);
+	Txt CreateNickText(int carId, Ogre::String text);
 	Ogre::Vector3 projectPoint(const Ogre::Camera* cam, const Ogre::Vector3& pos);  // 2d xy, z - out info
 
 	//  string utils

@@ -13,7 +13,7 @@
 #include "game.h"
 #include "quickprof.h"
 #include "dbl.h"
-// #include "gameclient.hpp"
+#include "gameclient.hpp"
 #include "SoundMgr.h"
 // #include "Slider.h"
 // #include "SplitScreen.h"
@@ -251,14 +251,14 @@ void App::newPoses(float time)  // time only for camera update
 					{
 						///  Lap
 						bool finished = (pGame->timer.GetCurrentLap(c) >= pSet->game.num_laps)
-							&& (/*mClient ||*/ pSet->game.local_players > 1);  // 📡 networked or 👥 splitscreen
+							&& (mClient || pSet->game.local_players > 1);  // 📡 networked or 👥 splitscreen
 						bool best = finished ? false :  // dont inc laps when race over (in ^)
 							pGame->timer.Lap(c, !finished, pSet->game.track_reversed);  //,boost_type?
 						double timeCur = pGame->timer.GetPlayerTimeTot(c);
 
 						//  /📡 Network notification, send: car id, lap time  ----
-						//; if (mClient && c == 0 && !finished)
-						// 	mClient->lap(pGame->timer.GetCurrentLap(c), pGame->timer.GetLastLap(c));
+						if (mClient && c == 0 && !finished)
+							mClient->lap(pGame->timer.GetCurrentLap(c), pGame->timer.GetLastLap(c));
 
 						///  new best lap, save ghost
 						bool newbest = false;
@@ -299,7 +299,7 @@ void App::newPoses(float time)  // time only for camera update
 
 						///  all laps
 						finished = pGame->timer.GetCurrentLap(c) >= pSet->game.num_laps;
-						if (finished /*&& !mClient*/)
+						if (finished && !mClient)
 						{
 							if (!chs)
 							{	//  👥 splitscreen winner places
@@ -385,7 +385,7 @@ void App::newPoses(float time)  // time only for camera update
 
 		
 		///  store new pos info in queue  _________
-		//if (!(isFocGui /*|| isTweakTab()) || mClient*/))  // dont if gui, but network always
+		if (!(isFocGui || isTweakTab()) || mClient)  // dont if gui, but network always
 		{
 			int qn = (iCurPoses[c] + 1) % CarPosCnt;  // next index in queue
 			carPoses[qn][c] = pi;
@@ -475,20 +475,20 @@ void App::updatePoses(float time)
 		if (mCubeCamera && c == 0)  // 🔮 reflection
 		{	mCubeCamera->setPosition(carM->ndMain->getPosition());// carPoses[q][c].pos);
 			// mCubeCamera->setVisibilityFlags( RV_MaskReflect /*32*/ );
-			// mCubeCamera->setOrientation(carM->pMainNode->getOrientation());
+			// mCubeCamera->setOrientation(carM->ndMain->getOrientation());
 		}
 
 
 		//  nick text pos upd  3d to 2d
-		/*if (carM->pNickTxt && carM->pMainNode)
+		if (carM->pNickTxt && carM->ndMain)
 		{
-			Camera* cam = playerCar->fCam->mCamera;  //above car 1m
-			Vector3 p = hud->projectPoint(cam, carM->pMainNode->getPosition() + Vector3(0,1.f,0));
-			p.x = p.x * mSplitMgr->mDims[0].width * 0.5f;  //1st viewport dims
-			p.y = p.y * mSplitMgr->mDims[0].height * 0.5f;
+			Camera* cam = playerCar->fCam->cam->cam;  //above car 1m
+			Vector3 p = hud->projectPoint(cam, carM->ndMain->getPosition() + Vector3(0,1.f,0));
+			p.x = p.x * mDims[0].width0 * 0.5f;  //1st viewport dims
+			p.y = p.y * mDims[0].height0 * 0.5f;
 			carM->pNickTxt->setPosition(p.x-40, p.y-16);  //center doesnt work
 			carM->pNickTxt->setVisible(p.z > 0.f);
-		}*/
+		}
 	}
 	
 	///  📽️ Replay info

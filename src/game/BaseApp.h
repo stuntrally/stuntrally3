@@ -10,10 +10,11 @@
 #include <MyGUI_KeyCode.h>
 #include <SDL_keycode.h>
 #include <SDL_joystick.h>
+#include <boost/scoped_ptr.hpp>
 
 namespace ICS {  class InputControlSystem;  class DetectingBindingListener;  }
 namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class Window;  }
-// class MasterClient;  class P2PGameClient;
+class MasterClient;  class P2PGameClient;
 class CarModel;  class SETTINGS;  class GraphicsSystem;
 
 
@@ -146,7 +147,7 @@ public:
 
 
 	///  👥 multiplayer  networking
-	// boost::scoped_ptr<MasterClient> mMasterClient;
-	// boost::scoped_ptr<P2PGameClient> mClient;
-	// LobbyState mLobbyState =DISCONNECTED;
+	boost::scoped_ptr<MasterClient> mMasterClient;
+	boost::scoped_ptr<P2PGameClient> mClient;
+	LobbyState mLobbyState = DISCONNECTED;
 };

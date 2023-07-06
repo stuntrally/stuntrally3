@@ -278,12 +278,12 @@ custom_vs_uniformDeclaration 	Data declaration (textures, texture buffers, unifo
 custom_vs_uniformStructDeclaration  ..
 custom_vs_posMaterialLoad  ..
 custom_vs_preTransform  ..
-custom_vs_preExecution 	Executed before Ogre's code from the Vertex Shader.
+custom_vs_preExecution 	Executed before Ogre code from the Vertex Shader.
 custom_vs_posExecution 	Executed after all code from the Vertex Shader has been performed.
 |
 custom_ps_uniformDeclaration 	Same as custom_vs_uniformDeclaration, but for the Pixel Shader
 custom_ps_uniformStructDeclaration  ..
-custom_ps_preExecution 	Executed before Ogre's code from the Pixel Shader.
+custom_ps_preExecution 	Executed before Ogre code from the Pixel Shader.
 custom_ps_posMaterialLoad 	Executed right after loading material data; and before anything else. May not get executed if there is no relevant material data (i.e. doesnt have normals or QTangents for lighting calculation)
 custom_ps_posSampleNormal  ..
 custom_ps_preLights 	Executed right before any light (i.e. to perform your own ambient / global illumination pass). All relevant texture data should be loaded by now.

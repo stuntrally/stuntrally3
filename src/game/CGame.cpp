@@ -3,33 +3,22 @@
 #include "CHud.h"
 #include "CGui.h"
 #include "GuiCom.h"
-#include "Def_Str.h"
-// #include "RenderConst.h"
-// #include "GuiCom.h"
-#include "CData.h"
+// #include "Def_Str.h"
+// #include "CData.h"
 #include "SceneXml.h"
 #include "CScene.h"
-#include "cardefs.h"
 #include "game.h"
 
 #include "CarModel.h"
-#include "CInput.h"
 #include "Grass.h"
-#include "Road.h"
-#include "SoundMgr.h"
-// #include "SplitScreen.h"
-// #include "WaterRTT.h"
-// #include "MultiList2.h"
+// #include "Road.h"
+// #include "SoundMgr.h"
 #include "Gui_Popup.h"
 #include "Axes.h"
-// #include <OgreManualObject.h>
-// #include <OgreTechnique.h>
 // #include "RenderBoxScene.h"
 #include "GraphicsSystem.h"
 #include "BtOgreExtras.h"
-#include <thread>
 using namespace Ogre;
-using namespace std;
 
 
 //  🌟 ctor
@@ -119,38 +108,4 @@ void App::destroyScene()
 	LogO(">>>>>>>> Destroy SR ----");
 	Destroy();
 	LogO(">>>>>>>> Destroy SR done ----");
-}
-
-
-//  💫 Simulation  2nd thread
-//----------------------------------------------------------------------------------
-void App::UpdThr()
-{
-	Ogre::Timer gtim;
-	//#ifdef _WIN32
-	//DWORD af = 2;
-	//gtim.setOption("QueryAffinityMask", &af);
-	//#endif
-	gtim.reset();
-
-	while (!mGraphicsSystem->getQuit())
-	{
-		///  step Game  **
-
-		double dt = double(gtim.getMicroseconds()) * 0.000001;
-		gtim.reset();
-		
-		if (!isFocGui && !bLoading && !mGraphicsSystem->getQuit() && pGame)
-		{
-			bSimulating = true;
-			bool ret = pGame->OneLoop(dt);
-			if (!ret)
-				mGraphicsSystem->setQuit();
-
-			// DoNetworking();
-			bSimulating = false;
-		}
-		this_thread::sleep_for(chrono::milliseconds(
-			pSet ? pSet->thread_sleep : 100));
-	}
 }

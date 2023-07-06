@@ -2,6 +2,7 @@
 #include "configfile.h"
 #include "settings_com.h"
 #include "paints.h"
+#include "protocol.hpp"
 
 
 #define SET_VER  3012  // 3.0
@@ -187,12 +188,12 @@ public:
 	float ghoHideDist = 5.f, ghoHideDistTrk = 5.f;  // ghost hide dist, when close
 
 	//  📡 network
-	// std::string nickname{"Player"}, netGameName{"Default Game"};
-	// std::string master_server_address{""}, connect_address{"localhost"};
-	// int master_server_port = protocol::DEFAULT_PORT,
-	//	local_port = protocol::DEFAULT_PORT, connect_port = protocol::DEFAULT_PORT;
+	std::string nickname{"Player"}, netGameName{"Default Game"};
+	std::string master_server_address{""}, connect_address{"localhost"};
+	int master_server_port = protocol::DEFAULT_PORT,
+		local_port = protocol::DEFAULT_PORT, connect_port = protocol::DEFAULT_PORT;
 
-	// int net_local_plr = -1;  // not in gui
+	int net_local_plr = -1;  // not in gui
 
 
 //------------------------------------------

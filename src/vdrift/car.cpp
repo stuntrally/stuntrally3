@@ -319,7 +319,9 @@ float CAR::GetTireSquealAmount(WHEEL_POSITION i, float* slide, float* s1, float*
 
 //  Network CAR data send/receive
 ///------------------------------------------------------------------------------------------------------------------------------
-/*protocol::CarStatePackage CAR::GetCarStatePackage() const
+#ifndef SR_EDITOR
+
+protocol::CarStatePackage CAR::GetCarStatePackage() const
 {
 	protocol::CarStatePackage csp;
 	csp.pos = ToMathVector<float>(dynamics.chassis->getCenterOfMassPosition());
@@ -365,7 +367,9 @@ void CAR::UpdateCarState(const protocol::CarStatePackage& state)
 	dynamics.doBoost = state.boost / 255.f;  // unpack from uint8
 	dynamics.SetBrake(state.brake / 255.f);
 	trackPercentCopy = state.trackPercent / 255.f * 100.f;
-}*/
+}
+#endif
+
 
 //------------------------------------------------------------------------------------------------------------------------------
 void CAR::SetPosition1(const MATHVECTOR<float,3> & pos)
