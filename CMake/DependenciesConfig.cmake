@@ -4,11 +4,12 @@ find_package(Threads REQUIRED)
 
 # Some pkg-config files are broken, that is why they are commented out
 
+#  fails
 #add_external_lib(
 #        Boost
-#        #boost/1.80.0
+#        boost/1.81.0
 #        REQUIRED
-#        FIND_PACKAGE_OPTIONS COMPONENTS system thread filesystem wave
+#        FIND_PACKAGE_OPTIONS COMPONENTS system thread
 #)
 
 #add_external_lib(
@@ -67,7 +68,7 @@ add_external_lib(
 #  todo: fix  Cannot load recipe.
 #add_external_lib(
 #        OpenAL
-#        openal/1.21.1
+#        openal/1.22.2
 #        REQUIRED
 #        PKG_CONFIG "openal >= 1.18"
 #        FIND_PACKAGE_OPTIONS CONFIG
@@ -98,7 +99,8 @@ add_external_lib(
 )
 
 
-set(LIBS #Boost::Boost
+set(LIBS
+        #Boost::Boost  #  fails
         #Threads::Threads
         #OGRE::OGRE
         Bullet::Bullet
@@ -106,10 +108,15 @@ set(LIBS #Boost::Boost
         #MyGUI::MyGUI
         VorbisFile::VorbisFile
         OGG::OGG
-        #OpenAL::OpenAL
-        #ENet::ENet
+        #OpenAL::OpenAL  #  fails
+        #ENet::ENet  #  fails
         tinyxml::tinyxml
         tinyxml2::tinyxml2
 )
 
 #set(SERVER_LIBS Boost::Boost ENet::ENet)
+
+
+find_package( ENet REQUIRED )
+
+find_package( Boost COMPONENTS system thread REQUIRED )

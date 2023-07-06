@@ -176,6 +176,8 @@ list( APPEND GAME_SRC_DIRS ./src/game )
 #list( APPEND GAME_SRC_DIRS ./src/sound )
 #list( APPEND GAME_SRC_DIRS ./src/vdrift )
 list( APPEND GAME_SRC_DIRS ./src/oics )  # libs
+list( APPEND GAME_SRC_DIRS ./src/network )
+
 
 #  editor
 set( EDITOR_SRC_DIRS ${COMMON_SRC_DIRS} )
@@ -198,6 +200,7 @@ include_directories( ${OPENAL_INCLUDE_DIR} )
 
 find_package( Threads )
 
+find_package( Boost COMPONENTS system thread REQUIRED )
 
 
 ##  Executables
@@ -220,12 +223,22 @@ foreach( EXE ${EXE_LIST} )
 		add_recursive( ${subdir} EXE_SOURCES )
 	endforeach()
 
+	#  exe  ----
 	add_executable( ${EXE} WIN32 ${EXE_SOURCES} )
 
+
+	#  add includes  ----
 	foreach( subdir ${SRC_DIRS} )
 		#message( STATUS ${subdir} )
 		target_include_directories( ${EXE} PRIVATE ${subdir} )
 	endforeach()
+
+	#  fix 5  ENet  since conan fails
+	# find_package( ENet REQUIRED )  # inside Dep..cmake
+	if ( ${EXE} STREQUAL ${GAME_EXE} )  # game, once
+		target_include_directories( ${EXE} PRIVATE ${ENet_INCLUDE_DIRS} )
+		target_include_directories( ${EXE} PRIVATE ${Boost_INCLUDE_DIRS} )
+	endif()
 
 
 	#  pch.h
@@ -241,6 +254,7 @@ foreach( EXE ${EXE_LIST} )
 	target_compile_features( ${EXE} PRIVATE cxx_std_17 )
 
 
+	#  add linker  ----
 	#  threads
 	target_link_libraries( ${EXE} ${CMAKE_THREAD_LIBS_INIT} )
 
@@ -271,6 +285,12 @@ foreach( EXE ${EXE_LIST} )
 	set_target_properties( libMyGUIEngine PROPERTIES IMPORTED_LOCATION ${DIR_ONE_ABOVE}/mygui-next/build/${CMAKE_BUILD_TYPE}/lib/libMyGUIEngine${SUFFIX_D}.so )
 	target_link_libraries( ${EXE} libMyGUIEngine )
 
+
+	#  ENet, boost  for networking  ----
+	if ( ${EXE} STREQUAL ${GAME_EXE} )  # game, once
+		target_link_libraries( ${EXE} ${Boost_LIBRARIES} )
+		target_link_libraries( ${EXE} ${ENet_LIBRARIES} )
+	endif()
 
 	#  rest
 	#message( STATUS "Libs  " ${EXE} "  " ${LIBS} )
