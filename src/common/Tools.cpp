@@ -39,7 +39,7 @@ using namespace MyGUI;
 void CGui::ToolTracksWarnings()
 {
 	Ogre::Timer ti;
-	LogO("ALL tracks warnings ---------\n");
+	LogO("))) ALL tracks warnings =========");
 	logWarn = true;
 
 	for (int i=0; i < data->tracks->trks.size(); ++i)
@@ -55,7 +55,7 @@ void CGui::ToolTracksWarnings()
 		WarningsCheck(&sc,&rd);
 	}
 	LogO(String("::: Time ALL tracks: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
-	LogO("ALL tracks warnings ---------");
+	LogO("))) ALL tracks warnings --------- End");
 }
 
 
@@ -66,7 +66,7 @@ void CGui::ToolTracksWarnings()
 void CGui::ToolSceneXml()
 {
 	//Ogre::Timer ti;
-	LogO("ALL tracks scene ---------");
+	LogO("))) ALL tracks scene =========");
 	std::map<string, int> noCol,minSc;
 	auto& rg = ResourceGroupManager::getSingleton();
 
@@ -213,7 +213,7 @@ void CGui::ToolSceneXml()
 	
 	
 	//LogO(String("::: Time ALL tracks: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
-	LogO("ALL tracks scene ---------");
+	LogO("))) ALL tracks scene --------- End");
 }
 
 
@@ -225,7 +225,7 @@ void CGui::ToolSceneXml()
 ///............................................................................................................................
 void CGui::ToolGhosts()
 {
-	LogO("ALL ghosts ---------");
+	LogO("))) ALL ghost times check =========");
 	using namespace std;
 	const string sim = 1 /**/ ? "normal" : "easy";
 	String msg="\n";  const float tMax = 10000.f;
@@ -305,7 +305,7 @@ void CGui::ToolGhosts()
 	#endif
 	}
 	LogO(msg);
-	//LogO("ALL ghosts ---------");
+	LogO("))) ALL ghosts --------- End");
 }
 
 ///............................................................................................................................
@@ -316,7 +316,7 @@ void CGui::ToolGhosts()
 ///............................................................................................................................
 void CGui::ToolGhostsConv()
 {
-	LogO("ALL ghosts Convert ---------");
+	LogO("))) ALL ghosts Convert =========");
 	Replay2 ghost;  TrackGhost trg;
 	for (int r=0; r < 2; ++r)
 	{
@@ -394,13 +394,14 @@ void CGui::ToolGhostsConv()
 				else		LogO("!!   Missing for track: " + track);
 		}
 	}
+	LogO("))) ALL ghosts Convert --------- End");
 }
 
 ///  _Tool_ check tracks ghosts
 ///............................................................................................................................
 void CGui::ToolTestTrkGhosts()
 {
-	LogO("ALL tracks ghosts Test ---------");
+	LogO("))) ALL tracks ghosts Test =========");
 	TrackGhost gho;
 	
 	//  foreach track
@@ -454,6 +455,7 @@ void CGui::ToolTestTrkGhosts()
 		}
 	}
 	LogO("!! Jumps on tracks:"+ss);
+	LogO("))) ALL tracks ghosts Test --------- End");
 }
 
 #endif

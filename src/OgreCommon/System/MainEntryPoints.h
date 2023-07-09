@@ -74,9 +74,21 @@ class LogicSystem;
 		controller, tweak the plist and storyboard files.
 		Or just modify GameViewController.mm instead.
 */
+
+//**  command line arguments
+struct Args
+{
+	std::vector<std::string> all;
+	bool has(const std::string& s);
+	void set(const std::string& s);  // debug test
+	bool Help();
+};
+
 class MainEntryPoints
 {
 public:
+	static Args args;
+
 	/** Creates the system for the helper functions in Common framework to use in
 		mainAppVarible & co.
 	@param outGraphicsGameState [out]

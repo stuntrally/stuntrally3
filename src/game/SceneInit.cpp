@@ -24,6 +24,7 @@
 // #include "GraphView.h"
 #include "gameclient.hpp"
 #include "Terra.h"
+#include "MainEntryPoints.h"
 
 #include <OgreCommon.h>
 #include <OgreQuaternion.h>
@@ -43,6 +44,28 @@
 using namespace MyGUI;
 using namespace Ogre;
 using namespace std;
+
+
+bool Args::Help()
+{
+	if (has("?") || has("help"))
+	{
+		cout << "StuntRally3  command line Arguments help  ----\n";
+		cout << "  ? or help - Displays this info.\n";
+		cout << "Results in Ogre.log or console, lines with )))\n";
+		cout << "  \n";
+		cout << "  check - Does a check for tracks.ini, championships.xml, challenges.xml, missing track ghosts, etc.\n";
+		cout << "  \n";
+		cout << "  convert - For new tracks. Convert ghosts to track's ghosts (less size and frames)\n";
+		cout << "     Put original ghosts into  data/ghosts/original/*_ES.rpl\n";
+		cout << "     ES car, normal sim, 1st lap, no boost, use rewind type: Go back time\n";
+		cout << "     Time should be like in tracks.ini or less (last T= )\n";
+		cout << "  \n";
+		cout << "  ghosts - Test all vehicles points on all tracks, from all user ghosts. Needs many.\n";
+		cout << "  trkghosts - Test all tracks ghosts, for sudden jumps, due to bad rewinds.\n";
+	}
+	return 0;
+}
 
 
 //  📄 Load Scene Data
@@ -70,11 +93,15 @@ void App::LoadData()
 	Ogre::Timer ti;
 
 
+	///  🧰 _Tool_ check tracks, champs, challs  ............
+	auto& args = MainEntryPoints::args;
+	// args.set("check");  // debug
+	bool check = args.has("check");
+
+
 	//  data xmls
 	pGame->ReloadSimData();  // need surfaces
 	
-	///  🧰 _Tool_ check champs and challs  ............
-	bool check = 0;
 	scn->data->Load(&pGame->surf_map, check);
 	scn->sc->pFluidsXml = scn->data->fluids;
 	scn->sc->pReverbsXml = scn->data->reverbs;
@@ -97,32 +124,33 @@ void App::LoadData()
 
 
 	///  rpl test-
+	bool quit = 0;
 	#if 0
 	std::string file = PATHS::Ghosts() + "/normal/TestC4-ow_V2.rpl";
-	replay.LoadFile(file);  exit(0);
+	replay.LoadFile(file);  quit = 1;
 	#endif
 	
 
-	///  🧰 _Tool_ ghosts times .......
-	#if 0
-	gui->ToolGhosts();  exit(0);
-	#endif
+	///  🧰 _Tool_ convert to track's ghosts ..............
+	// args.set("convert");  // test
+	if (args.has("convert"))
+	{	gui->ToolGhostsConv();  quit = 1;  }
 
-	///  _Tool_ convert to track's ghosts ..............
-	#if 0
-	gui->ToolGhostsConv();  exit(0);
-	#endif
+	///  🧰 _Tool_ ghosts times .......
+	if (args.has("ghosts"))
+	{	gui->ToolGhosts();  quit = 1;  }
 
 	///  _Tool_ test track's ghosts ..............
-	#if 0
-	gui->ToolTestTrkGhosts();  exit(0);
-	#endif
+	if (args.has("trkghosts"))
+	{	gui->ToolTestTrkGhosts();  quit = 1;  }
 
 	///  🧰 _Tool_ presets .......
-	#if 0
-	gui->ToolPresets();  exit(0);
-	#endif
+	// if (args.has("presets"))
+	// {	gui->ToolPresets();  quit = 1;  }
 
+	if (quit)
+		exit(0);
+	
 
 	//  Gui  * * *
 	if (pSet->startInMain)

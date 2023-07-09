@@ -86,8 +86,7 @@ namespace Ogre
     //-------------------------------------------------------------------------
     Atmosphere2Npr::~Atmosphere2Npr()
     {
-        std::map<Ogre::SceneManager *, Rectangle2D *>::const_iterator itor = mSkies.begin();
-        std::map<Ogre::SceneManager *, Rectangle2D *>::const_iterator endt = mSkies.end();
+        auto itor = mSkies.begin(), endt = mSkies.end();
 
         while( itor != endt )
         {
@@ -216,8 +215,7 @@ namespace Ogre
         hemiDir.normalise();
 
         const float envmapScale = mPreset.envmapScale;
-        std::map<Ogre::SceneManager *, Rectangle2D *>::const_iterator itor = mSkies.begin();
-        std::map<Ogre::SceneManager *, Rectangle2D *>::const_iterator endt = mSkies.end();
+        auto itor = mSkies.begin(), endt = mSkies.end();
 
         while( itor != endt )
         {
@@ -307,8 +305,7 @@ namespace Ogre
     {
         mPresets = presets;
 
-        PresetArray::const_iterator itor = mPresets.begin();
-        PresetArray::const_iterator endt = mPresets.end();
+        auto itor = mPresets.begin(), endt = mPresets.end();
 
         while( itor != endt )
         {

@@ -13,12 +13,14 @@
 #include "Reflect.h"
 #include "paths.h"
 #include "RenderConst.h"
+
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
-
 #include "enums.h"
 #include "HudRenderable.h"
 #include "GraphicsSystem.h"
+#include "MainEntryPoints.h"
+
 #include <OgreTimer.h>
 #include "Terra.h"
 #include "HlmsPbs2.h"
@@ -33,16 +35,31 @@
 #include <OgreManualObject.h>
 #include <OgreViewport.h>
 #include <OgreMaterialManager.h>
-// #include <OgreTextureManager.h>
 #include <OgreResourceGroupManager.h>
 #include <OgreSceneNode.h>
 #include <OgreMeshManager2.h>
 #include <Compositor/OgreCompositorWorkspace.h>
 #include "MessageBox.h"
 #include <cmath>
-// #include "Instancing.h"
 using namespace Ogre;
 using namespace std;
+
+
+bool Args::Help()
+{
+	if (has("?") || has("help"))
+	{
+		cout << "SR3-Editor  command line Arguments help  ----\n";
+		cout << "  ? or help - Displays this info\n";
+		cout << "Results in Ogre_ed.log or console, lines with )))\n";
+		cout << "  \n";
+		// todo: // fixme crash ter, load hmap only?
+		cout << "  sc or scene - Runs scene.xml checks for all tracks.\n";
+		cout << "  warn or warnings - Runs warnings checks for all tracks.\n";
+		return 1;
+	}
+	return 0;
+}
 
 
 //  Create Scene
@@ -114,25 +131,26 @@ void App::createScene01()  // once, init
 	CreatePreviews();
 
 
-	///  🧰  All  #if 0  in Release !!!
+	///  🧰  Command line arguments  ----
+	auto& args = MainEntryPoints::args;
+	// args.set("scene");  // debug
+
+	LogO("A--- Cmd Line Arguments: "+toStr(args.all.size()));
+	LogO("A--- exe path: "+args.all[0]);
+	bool quit = 0;
+
 	///  _Tool_ scene  ...................
-	#if 0
-	gui->ToolSceneXml();
-	exit(0);
-	#endif
-	
+	if (args.has("scene") || args.has("sc"))
+	{	gui->ToolSceneXml();  quit = 1;  }
+
 	///  _Tool_ warnings  ................
 	///  takes some time
-	#if 0
-	gui->ToolTracksWarnings();
-	exit(0);
-	#endif
-	
-	///  🧰 _Tool_ brushes prv  .............
-	#if 0
-	ToolBrushesPrv();
-	#endif
+	if (args.has("warnings") || args.has("warn"))
+	{	gui->ToolTracksWarnings();  quit = 1;  }
 		
+	if (quit)
+		exit(0);  //! destroy?..
+
 
 	//  🏞️ Load Track
 	if (pSet->autostart)

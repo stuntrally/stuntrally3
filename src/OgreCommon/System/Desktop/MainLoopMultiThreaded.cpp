@@ -45,6 +45,7 @@ THE SOFTWARE.
 #include "Threading/OgreBarrier.h"
 
 #include "Threading/OgreThreads.h"
+using namespace std;
 
 
 unsigned long renderThread( Ogre::ThreadHandle *threadHandle );
@@ -59,6 +60,26 @@ struct ThreadData
 	Ogre::Barrier   *barrier;
 };
 
+
+//**  cmd line args
+Args MainEntryPoints::args;
+
+bool Args::has(const string& s)
+{
+	for (const auto& a : all)
+		// if (a.find(s) != string::npos)  // s inside
+		if (a == s)  // exact
+			return true;
+
+	return false;
+}
+void Args::set(const string& s)
+{
+	all.clear();
+	all.push_back(s);
+}
+
+
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 INT WINAPI MainEntryPoints::mainAppMultiThreaded( HINSTANCE hInst, HINSTANCE hPrevInstance,
 														LPSTR strCmdLine, INT nCmdShow )
@@ -72,6 +93,14 @@ int MainEntryPoints::mainAppMultiThreaded( int argc, const char *argv[] )
 	LogicSystem *logicSystem = 0;
 
 	Ogre::Barrier barrier( 2 );
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+	args.all = vector<string>( __argv, __argv + __argc );
+#else
+	args.all = vector<string>( argv, argv + argc );
+#endif
+	if (args.Help())
+		return 0;
 
 	MainEntryPoints::createSystems( &graphicsGameState, &graphicsSystem,
 									&logicGameState, &logicSystem );
