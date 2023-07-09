@@ -44,7 +44,7 @@ void App::Load()
 	
 	if (args.all.size() > 1)
 	{
-		LogO("A--- Argument: "+args.all[1]);
+		LogO("A--- Argument1: "+args.all[1]);
 		num = Ogre::StringConverter::parseInt(args.all[1]);
 	}
 	if (num > 0)
@@ -128,6 +128,7 @@ void App::Destroy()
 
 	delete pGame;
 	delete pSet;
+	// fixme ..
 	// delete data;
 	// delete hud;
 	// rest in ~App()
@@ -171,15 +172,3 @@ void App::createScene01()
 	if (pSet->autostart)
 		NewGame();
 }
-
-//-----------------------------------------------------------------------------------
-/*
-	bad look, add emissive:  Tox  Uni  Vlc
--62 Tropic  -75 HighPeaks  tripl  60 Aus3-Canyon  ter spec-
-	clr:
-103 Des SandStorm  65 Vlc1-Dark  66 Isl5-Shore  121 Isl-StuntIsl
-110 Atm5-Twister  186 Sur4-BlueWinter  
-
-	bad veh look:
-ES n,gls  BV blk inter  U8 floor
-*/

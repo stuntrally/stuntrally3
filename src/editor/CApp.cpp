@@ -14,6 +14,7 @@
 // #include "RenderBoxScene.h"
 #include "settings.h"
 #include "GraphicsSystem.h"
+#include "MainEntryPoints.h"
 #include <string>
 #include <filesystem>
 using namespace Ogre;
@@ -45,6 +46,14 @@ void App::Load()
 	Ogre::Timer ti;
 
 	LoadSettings();
+
+
+	auto& args = MainEntryPoints::args;
+	LogO("A--- Cmd Line Arguments: "+toStr(args.all.size()));
+	LogO("A--- exe path: "+args.all[0]);
+	
+	if (args.all.size() > 1)
+		LogO("A--- Argument1: "+args.all[1]);
 
 
 	LogO(">>>> Init editor ----");
