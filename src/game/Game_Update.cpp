@@ -183,6 +183,10 @@ void App::update( float dt )
 		}
 
 
+		///  Gui updates from Networking
+		gui->UpdGuiNetw();
+
+
 		//  🌧️ Update rain/snow - depends on camera
 		if (pSet->particles)
 			scn->UpdateWeather(mCamera, 1.f/dt);
