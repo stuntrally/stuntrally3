@@ -105,7 +105,7 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 //-----------------------------------------------------------------------------------
 void FluidsReflect::DestroyRTT()
 {
-	LogO("C~~~ destroy Fluids RTT");
+	LogO("D~~~ destroy Fluids RTT");
 	CompositorWorkspace *ws = app->mGraphicsSystem->getCompositorWorkspace();
 	if (mWsListener)
 		ws->removeListener( mWsListener );
@@ -129,8 +129,9 @@ void FluidsReflect::CreateRTT()
 		500.0, 0 );  // par-
 	uint32 size = app->pSet->GetTexSize(app->pSet->water_reflect);
 	
-	mPlanarRefl->setMaxActiveActors( 2u,  //par 1
-		"PlanarReflections", true,  //par?
+	mPlanarRefl->setMaxActiveActors( 1u,  //par 1
+		"PlanarReflections",
+		false, //true,  //par?
 		size, size, 0/*?mipmaps*/, PFG_RGBA8_UNORM_SRGB, useCompute /*, mWsListener*/ );
 
 	
@@ -172,7 +173,7 @@ bool reflect = 0;  // off
 
 		FluidBox& fb = sc->fluids[i];
 		//  plane, mesh  ----
-		Plane p;  p.normal = Vector3::UNIT_Y;  p.d = 0;
+		Plane p;  p.normal = Vector3::UNIT_Y;  p.d = 0;  //0 |h
 	#ifdef ROT
 		p.normal = Vector3::UNIT_Z;  // z|  ##
 	#endif
@@ -185,7 +186,7 @@ bool reflect = 0;  // off
 			p, v2size.x, v2size.y,
 			6,6, true, 1,  //par steps /fake  // 30 ##
 			uvTile.x, uvTile.y,
-		#ifdef ROT
+		#ifdef ROT  // up vec for uv
 			Vector3::UNIT_Y,  // z|  ##
 		#else
 			Vector3::UNIT_Z,  // Z
@@ -227,6 +228,7 @@ bool reflect = 0;  // off
 		PlanarReflectionActor* actor =0;
 		if (reflect && mPlanarRefl)
 		{
+			// if (i==0)  //?
 			actor = mPlanarRefl->addActor( PlanarReflectionActor(
 				node->getPosition(), v2size, node->getOrientation() ));
 
@@ -237,7 +239,9 @@ bool reflect = 0;  // off
 				//fb.pos);  //?
 				Vector3(0, 0, 0) );  // |  ## _
 			#else
-				Vector3::UNIT_Y, Vector3(0, 0, 0) );  // |
+				Vector3::UNIT_Y,
+				// fb.pos);  //?
+				Vector3(0, 0, 0) );  // |
 			#endif
 			mPlanarRefl->addRenderable( tracked );
 		}

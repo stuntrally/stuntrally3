@@ -507,6 +507,12 @@
 			<Property key="TextColour" value="0.8 0.85 0.9"/>
 			<Property key="Caption" value=" O P"/>
 		</Widget>
+		<Widget type="TextBox" skin="TextBoxS" position="244 180 50 25" name="emtKey6">
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="TextColour" value="0.6 0.8 0.8"/>
+			<Property key="Caption" value="Enter"/>
+			<Property key="FontName" value="font.small"/>
+		</Widget>
 	</Widget>
 
 <!-- ============================================================================================================================================= -->

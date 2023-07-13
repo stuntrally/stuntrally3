@@ -113,6 +113,7 @@ void App::CreateRnd2Tex()
 			if( !mgr->hasWorkspaceDefinition( name ) )
 			{
 				auto* w = mgr->addWorkspaceDefinition( name );
+				// w->mEnableForwardPlus = false;
 				w->connectExternal( 0, strWs[i], 0 );
 			}else
 				LogO("Workspace already exists: "+name);
@@ -122,6 +123,7 @@ void App::CreateRnd2Tex()
 			LogO(String("++++ WS add:  Ed ")+strWs[i]+", all: "+toStr(mgr->getNumWorkspaces()));
 		#ifndef MANUAL_RTT_UPD
 			r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, true );  //! slower
+			// r.ws->setEnabled(false);
 		#else
 			r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, false );  // todo: manual update
 			r.ws->_beginUpdate(true);
@@ -200,6 +202,8 @@ void App::AddListenerRnd2Tex()
 //  💫 update
 void App::UpdRnd2Tex()
 {
+	static int ii = 0;
+	++ii;
 	for (int i=0; i < RT_ALL; ++i)
 	{
 		auto& r = rt[i];  bool full = i==RT_View;
@@ -212,9 +216,14 @@ void App::UpdRnd2Tex()
 		}
 
 	#ifdef MANUAL_RTT_UPD
+		// if (ii == 200)
+		// 	r.ws->setEnabled(0);
+		// if (ii > 1000)
+		// {
+		/*	ii = 0;
 		r.ws->_beginUpdate(true);
 		r.ws->_update();  // todo: upd when needed only, skip
-		r.ws->_endUpdate(true);
+		r.ws->_endUpdate(true);/**/
 	#endif
 	
 		//  this is each frame
@@ -224,6 +233,7 @@ void App::UpdRnd2Tex()
 				r.rtt->getEmptyBox(i), i );
 		}
 		// r.tex->writeContentsToFile(PATHS::TracksUser()+"/rtt.png", 0,0);
+		// }
 	}
 }
 
@@ -345,7 +355,7 @@ void App::SaveGrassDens()
 	rt[RT_Terrain ].tex->writeContentsToFile(path+"/preview/terrain.jpg", 0, 0);
 	// todo: add fluids, objects..
 	
-return;  // todo: smooth roadDens?
+return;  // todo: smooth roadDens? on gpu/compute
 
 	Ogre::Timer ti;
 
