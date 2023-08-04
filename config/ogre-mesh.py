@@ -3,7 +3,8 @@
 import sys
 import os
 
-# script to convert  .mesh files from v1 SR 2.7 to v2 SR 3.0  with lods
+#  script to convert  .mesh files
+#  from v1 SR 2.7 to v2 SR 3.0  with lods
 
 #  setup dirs  -----
 work_dir = '/home/ch/_sr/og3/Ogre/ogre-next/build/Release/bin/'
@@ -20,9 +21,13 @@ recursive = False
 
 #  configs for Media subdirs
 #------------------------------
-#  rocks/  hex*
-start_dir = media + 'rockshex/'
+#  objects3/  new obstacles, hq
+start_dir = media + 'objects3/'
 args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 400 -p 12 '  # 3 lods
+
+#  rocks/  hex*
+#start_dir = media + 'rockshex/'
+#args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 400 -p 12 '  # 3 lods
 
 #  objects0/  0 A.D. buildings
 #start_dir = media + 'objects0/'
