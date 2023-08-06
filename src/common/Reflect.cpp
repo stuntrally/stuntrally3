@@ -129,7 +129,11 @@ void FluidsReflect::CreateRTT()
 		500.0, 0 );  // par-
 	uint32 size = app->pSet->GetTexSize(app->pSet->water_reflect);
 	
-	mPlanarRefl->setMaxActiveActors( 1u,  //par 1
+	auto* sc = app->scn->sc;
+	int all = sc->fluids.size();
+	// int all = 3; //par max?
+	
+	mPlanarRefl->setMaxActiveActors( all,
 		"PlanarReflections",
 		false, //true,  //par?
 		size, size, 0/*?mipmaps*/, PFG_RGBA8_UNORM_SRGB, useCompute /*, mWsListener*/ );
@@ -168,16 +172,14 @@ void FluidsReflect::CreateFluids()
 //  par ...
 #define ROT
 // bool reflect = i==0;  // one
-// bool reflect = 1;  // all
-bool reflect = 0;  // off
+// bool reflect = 1;  // all  // todo  shader,materials..
+bool reflect = 0;  // off old
 
 		FluidBox& fb = sc->fluids[i];
 		//  plane, mesh  ----
-		Plane p;  p.normal = Vector3::UNIT_Y;  p.d = 0;  //0 |h
-	#ifdef ROT
-		p.normal = Vector3::UNIT_Z;  // z|  ##
-	#endif
-		String sMesh = "WaterMesh"+toStr(i), sMesh2 = "WtrPlane"+toStr(i);
+		Plane p(Vector3::UNIT_Z, 0.f);
+
+		String sMesh = "WtrMesh"+toStr(i), sMesh2 = "WtrPlane"+toStr(i);
 		const Vector2 v2size(fb.size.x, fb.size.z),
 			uvTile(fb.tile.x*fb.size.x *6, 6* fb.tile.y*fb.size.z);  // par
 
@@ -186,11 +188,7 @@ bool reflect = 0;  // off
 			p, v2size.x, v2size.y,
 			6,6, true, 1,  //par steps /fake  // 30 ##
 			uvTile.x, uvTile.y,
-		#ifdef ROT  // up vec for uv
-			Vector3::UNIT_Y,  // z|  ##
-		#else
-			Vector3::UNIT_Z,  // Z
-		#endif
+			Vector3::UNIT_Y,  // up vec for uv
 			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
 
 		meshV1->buildTangentVectors();
@@ -217,10 +215,8 @@ bool reflect = 0;  // off
 		app->SetTexWrap(item);
 		
 		SceneNode* node = rootNode->createChildSceneNode( dyn );
-		node->setPosition( fb.pos );  //, Quaternion(Degree(fb.rot.x),Vector3::UNIT_Y)
-	#ifdef ROT
-		node->setOrientation( Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_X ) );  // ## _
-	#endif
+		node->setPosition( fb.pos );
+		node->setOrientation( Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_X ) );  // _
 		node->attachObject( item );
 
 
@@ -228,25 +224,22 @@ bool reflect = 0;  // off
 		PlanarReflectionActor* actor =0;
 		if (reflect && mPlanarRefl)
 		{
-			// if (i==0)  //?
 			actor = mPlanarRefl->addActor( PlanarReflectionActor(
 				node->getPosition(), v2size, node->getOrientation() ));
+	        
+			if (0)  // i==0)  // par main big wtr only?
+			{
+				mPlanarRefl->reserve( i, actor );  // always win
+				actor->mActivationPriority = i;
+			}
 
 			PlanarReflections::TrackedRenderable tracked(
 				item->getSubItem(0), item,
-			#ifdef ROT
-				Vector3::UNIT_Z, 
-				//fb.pos);  //?
-				Vector3(0, 0, 0) );  // |  ## _
-			#else
-				Vector3::UNIT_Y,
-				// fb.pos);  //?
-				Vector3(0, 0, 0) );  // |
-			#endif
+				Vector3::UNIT_Z, Vector3(0, 0, 0) );
 			mPlanarRefl->addRenderable( tracked );
 		}
 
-		// mPlanarRefl->removeRenderable( tracked );  // ?
+		// mPlanarRefl->removeRenderable( tracked );  // todo ?
 		// mPlanarRefl->removeActor( actor );
 
 

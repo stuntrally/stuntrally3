@@ -118,7 +118,7 @@ void App::CreateRnd2Tex()
 			}else
 				LogO("Workspace already exists: "+name);
 
-		//#define MANUAL_RTT_UPD  // todo: terrain shadowed..?
+		// #define MANUAL_RTT_UPD  // todo: terrain shadowed..?
 			//  add Workspace
 			LogO(String("++++ WS add:  Ed ")+strWs[i]+", all: "+toStr(mgr->getNumWorkspaces()));
 		#ifndef MANUAL_RTT_UPD
@@ -126,9 +126,9 @@ void App::CreateRnd2Tex()
 			// r.ws->setEnabled(false);
 		#else
 			r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, false );  // todo: manual update
-			r.ws->_beginUpdate(true);
-			r.ws->_update();  // todo: upd when needed only, skip
-			r.ws->_endUpdate(true);
+			// r.ws->_beginUpdate(true);
+			// r.ws->_update();  // todo: upd when needed only, skip
+			// r.ws->_endUpdate(true);
 		#endif
 
 			//  🌍 Hud minimap rect 2d  ----
@@ -210,7 +210,7 @@ void App::UpdRnd2Tex()
 		if (!r.ws)  continue;
 
 		if (full)
-		{	// prv view same as cam
+		{	//  prv view same as cam
 			r.cam->setPosition(mCamera->getPosition());
 			r.cam->setOrientation(mCamera->getOrientation());
 		}
@@ -220,7 +220,7 @@ void App::UpdRnd2Tex()
 		// 	r.ws->setEnabled(0);
 		// if (ii > 1000)
 		// {
-		/*	ii = 0;
+		/*	ii = 0;*/
 		r.ws->_beginUpdate(true);
 		r.ws->_update();  // todo: upd when needed only, skip
 		r.ws->_endUpdate(true);/**/

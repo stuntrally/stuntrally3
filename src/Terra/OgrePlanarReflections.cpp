@@ -477,6 +477,14 @@ namespace Ogre
             mAnyPendingFlushRenderable = false;
         }
 
+        bool update = 1;  // todo  0.. pSet
+        static uint skip = 100;
+        ++skip;
+        if (skip > 2)  // par upd freq..
+        {   skip = 0;
+            update = 1;
+        }
+
         mActiveActors.clear();
 
         mLastAspectRatio = aspectRatio;
@@ -672,6 +680,7 @@ namespace Ogre
         const Quaternion camRot( camera->getDerivedOrientation() );
         Real nearPlane = camera->getNearClipDistance();
         Real farPlane = camera->getFarClipDistance();
+        // Real farPlane = 10.f;  //par, todo sky=
         Real focalLength = camera->getFocalLength();
         Radian fov = camera->getFOVy();
 
@@ -712,11 +721,15 @@ namespace Ogre
 
                 if( actorData )
                 {
-                    actorData->workspace->setEnabled( true );
+                    actorData->workspace->setEnabled( false );  //..
+
                     actorData->reflectionCamera->setPosition( camPos );
                     actorData->reflectionCamera->setOrientation( camRot );
+
                     actorData->reflectionCamera->setNearClipDistance( nearPlane );
                     actorData->reflectionCamera->setFarClipDistance( farPlane );
+                    actorData->reflectionCamera->setLodBias(0.1);  // par todo
+
                     actorData->reflectionCamera->setAspectRatio( aspectRatio );
                     actorData->reflectionCamera->setFocalLength( focalLength );
                     actorData->reflectionCamera->setFOVy( fov );
@@ -838,17 +851,23 @@ namespace Ogre
             ++itActor;
         }
 
-        auto itor = mActiveActorData.begin();
-        auto end = mActiveActorData.end();
-        while( itor != end )
+        if (update)
         {
-            const ActiveActorData &actorData = *itor;
-            if( actorData.workspace->getEnabled() )
+            auto itor = mActiveActorData.begin();
+            auto end = mActiveActorData.end();
+
+            while( itor != end )
             {
-                actorData.workspace->_update();
-                actorData.workspace->setEnabled( false );
+                const ActiveActorData &actorData = *itor;
+                // if( actorData.workspace->getEnabled() )
+                {
+                    actorData.workspace->_beginUpdate(1);
+                    actorData.workspace->_update();
+                    actorData.workspace->_endUpdate(1);
+                    // actorData.workspace->setEnabled( false );
+                }
+                ++itor;
             }
-            ++itor;
         }
     }
 
