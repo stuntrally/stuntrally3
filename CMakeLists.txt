@@ -9,6 +9,9 @@
 
 cmake_minimum_required( VERSION 3.16 )
 
+message(STATUS "Build DIR: ${CMAKE_BINARY_DIR}")
+
+
 #  Include path for additional CMake library finding scripts
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake/" ${CMAKE_MODULE_PATH})
 

@@ -14,7 +14,7 @@ syntax: glob
 
 .cache
 bin/*
-build/*
+build*/*
 Dependencies/*
 
 #  data
