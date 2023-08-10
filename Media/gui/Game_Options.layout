@@ -683,19 +683,25 @@
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#C0C0F0#{Graphics}"/>
 
-				<Widget type="TextBox" skin="TextBox" position="32 380 236 24">
-					<Property key="Caption" value="*#{NeedRestart}  - not yet, todo"/>
-					<Property key="TextColour" value="0.5 0.9 1"/>
-					<Property key="FontName" value="font.small"/>
-					<Property key="Alpha" value="0.7"/>
-				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="32 360 236 24">
+				<Widget type="TextBox" skin="TextBox" position="32 460 236 24">
 					<Property key="Caption" value="#{NeedNewGame}"/>
 					<Property key="TextColour" value="0.5 1 0.9"/>
 					<Property key="FontName" value="font.small"/>
 					<Property key="Alpha" value="0.7"/>
 				</Widget>
-				<Widget type="EditBox" skin="EditBoxEmpty" position="32 424 664 72">
+				<Widget type="TextBox" skin="TextBox" position="32 480 236 24">
+					<Property key="Caption" value="*#{NeedRestart}"/>
+					<Property key="TextColour" value="0.5 0.9 1"/>
+					<Property key="FontName" value="font.small"/>
+					<Property key="Alpha" value="0.7"/>
+				</Widget>
+				<Widget type="TextBox" skin="TextBox" position="32 500 236 24">
+					<Property key="Caption" value="- not yet done, ToDo"/>
+					<Property key="TextColour" value="0.5 1 0.9"/>
+					<Property key="FontName" value="font.small"/>
+					<Property key="Alpha" value="0.7"/>
+				</Widget>
+				<Widget type="EditBox" skin="EditBoxEmpty" position="32 524 664 72">
 					<Property key="ReadOnly" value="true"/>
 					<Property key="MultiLine" value="true"/>
 					<Property key="WordWrap" value="true"/>
@@ -704,7 +710,7 @@
 					<Property key="Alpha" value="0.6"/>
 					<Property key="Caption" value="#{GraphicsRightHQ}"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="276 360 160 32" name="NewGame2">
+				<Widget type="Button" skin="Button" position="276 460 160 32" name="NewGame2">
 					<Property key="Caption" value="#{NewGame}"/>
 					<Property key="Colour" value="0.6 1.0 0.3"/>
 					<Property key="TextColour" value="0.3 1 0.2"/>
@@ -717,7 +723,7 @@
 					</Widget>
 				</Widget>
 
-				<Widget type="TabControl" skin="TabControl" position="16 32 700 300" name="SubTab">
+				<Widget type="TabControl" skin="TabControl" position="16 32 700 400" name="SubTab">
 					<Property key="ButtonAutoWidth" value="true"/>
 					<Property key="Colour" value="0.73 1 0.98"/>
 					<Property key="SmoothShow" value="false"/>
@@ -725,7 +731,7 @@
 					<!-- Reflect Cube -->
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#FFD8B0#{Reflections}"/>
-						<Widget type="Button" skin="Button" position="32 230 200 26" layer="Back" name="ApplyRefl">
+						<Widget type="Button" skin="Button" position="32 240 200 26" layer="Back" name="ApplyRefl">
 							<Property key="Caption" value="#{Apply}"/>
 							<Property key="Colour" value="1.0 0.9 0.7"/>
 							<Property key="TextColour" value="1.0 0.9 0.7"/>
@@ -799,7 +805,7 @@
 					<!-- Water -->
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#60B0FF#{Water}"/>
-						<Widget type="Button" skin="Button" position="32 150 200 26" layer="Back" name="ApplyShadersWater">
+						<Widget type="Button" skin="Button" position="32 240 200 26" layer="Back" name="ApplyShadersWater">
 							<Property key="Caption" value="#{Apply}-"/>
 							<Property key="Colour" value="0.5 0.75 1.0"/>
 							<Property key="TextColour" value="0.5 0.75 1.0"/>
@@ -812,6 +818,7 @@
 							<Property key="Caption" value="#{WaterRefraction}-"/>
 							<Property key="TextColour" value="0.6 0.8 1"/>
 						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="32 110 164 24">
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="Caption" value="#{Size}"/>
@@ -820,6 +827,40 @@
 						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="WaterSize"/>
 						<Widget type="TextBox" skin="TextBox" position="210 110 60 24" name="WaterSizeVal">
 							<Property key="TextColour" value="0.7 0.85 1.0"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="268 142 12 16">
+							<Property key="Caption" value="#00FF00+"/>
+							<Property key="Alpha" value="0.6"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="32 140 176 24">
+							<Property key="Caption" value="#{FrameSkip}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.4 0.8 1"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 140 320 18" name="WaterSkip"/>
+						<Widget type="TextBox" skin="TextBox" position="210 140 60 24" name="WaterSkipVal">
+							<Property key="TextColour" value="0.4 0.8 1"/>
+						</Widget>
+
+						<Widget type="Slider" skin="Slider" position="280 170 320 18" name="WaterDist"/>
+						<Widget type="TextBox" skin="TextBox" position="32 170 176 24">
+							<Property key="Caption" value="#{Distance}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.5 0.5 0.9"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="210 170 60 24" name="WaterDistVal">
+							<Property key="TextColour" value="0.5 0.5 0.9"/>
+						</Widget>
+
+						<Widget type="Slider" skin="Slider" position="280 200 320 18" name="WaterLod"/>
+						<Widget type="TextBox" skin="TextBox" position="32 200 176 24">
+							<Property key="Caption" value="#{Detail}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.6 0.7 1.0"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="210 200 60 24" name="WaterLodVal">
+							<Property key="TextColour" value="0.5 0.7 0.9"/>
 						</Widget>
 					</Widget>
 
@@ -1043,7 +1084,7 @@
 							<Property key="TextColour" value="1 0.9 0"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="32 78 176 24" name="TrailsOn">
-							<Property key="Caption" value="#{TireTrails}*"/>
+							<Property key="Caption" value="#{TireTrails}*-"/>
 							<Property key="TextColour" value="1.0 0.8 0.6"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="210 50 60 24" name="ParticlesVal">
