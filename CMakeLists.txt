@@ -1,10 +1,10 @@
 
 # This assumes you used scripts to get and build latest Ogre-next from sources
 # And your Ogre source code is above, in ../Ogre/ogre-next and ../Ogre/ogre-next-deps
-# Tested on Linux.
-# Windows most likely broken and it probably needs Ogre inside Dependencies subdir here.
+# Tested on GNU/Linux, Debian 11.
+# Windows most likely broken and it probably needs Ogre inside Dependencies subdir here, can be linked.
 # see CMake/DependenciesConfig.cmake
-# Conan can be is used to get SR deps.
+# Conan is used to get SR deps, or not if using FORCE_SYSTEM_DEPENDENCIES.
 
 
 cmake_minimum_required( VERSION 3.16 )
