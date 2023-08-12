@@ -193,6 +193,9 @@ namespace Ogre
         /// [mAtmosphereSeaLevel; mAtmosphereSeaLevel + mAtmosphereHeight)
         float mAtmosphereHeight;
 
+        //**  new
+        float globalTime = 0.f;
+
     protected:
         MaterialPtr         mMaterial;
         Pass *ogre_nullable mPass;

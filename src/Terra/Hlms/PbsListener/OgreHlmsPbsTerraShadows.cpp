@@ -121,8 +121,7 @@ namespace Ogre
 												   bool casterPass, bool dualParaboloid,
 												   SceneManager *sceneManager ) const
 	{
-		return (!casterPass && mTerra) ? (2 + 1 /*+ 4*/) * 16u : 0u;
-		// return (!casterPass && mTerra) ? 32u : 0u;
+		return (!casterPass && mTerra) ? (2 /*+ 1 */) * 16u : 0u;
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -148,23 +147,6 @@ namespace Ogre
 			*passBufferPtr++ = terrainXZInvDim.y;
 			*passBufferPtr++ = 1.0f;
 
-			//  1 grass
-			*passBufferPtr++ = globalTime;
-			*passBufferPtr++ = 0.f;  // todo grass sphere pos.. sway params, underwater fog
-			*passBufferPtr++ = 0.f;
-			*passBufferPtr++ = 0.f;
-
-			//  4 paints
-			/*for (int i=0; i < 3; ++i)
-			{	*passBufferPtr++ = paint[i].x;
-				*passBufferPtr++ = paint[i].y;
-				*passBufferPtr++ = paint[i].z;
-				*passBufferPtr++ = paint[i].w;
-			}
-			*passBufferPtr++ = paintMul.x;
-			*passBufferPtr++ = paintMul.y;
-			*passBufferPtr++ = paintMul.z;
-			*passBufferPtr++ = paintMul.w;*/
 		}
 		return passBufferPtr;
 	}

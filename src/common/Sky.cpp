@@ -61,7 +61,7 @@ void CScene::CreateSun()
 	auto *mgr = app->mSceneMgr;
 	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 	
-	mgr->setForwardClustered( true, 16, 8, 24, 4, 0, 2, 2, 50 );  // for more lights
+	//mgr->setForwardClustered( true, 16, 8, 24, 4, 0, 2, 2, 50 );  // for more lights  //** higher CPU use, bad for debug
 
 	sun = mgr->createLight();
 	sun->setType( Light::LT_DIRECTIONAL );
@@ -172,9 +172,11 @@ void CScene::UpdSkyScale()
 	if (!ndSky)  return;
 	Vector3 scale = app->pSet->view_distance * Vector3::UNIT_SCALE * 0.7f;
 	ndSky->setScale(scale);
+	ndSky->_getFullTransformUpdated();
 }
 void CScene::CreateSkyDome(String sMater, float yaw)
 {
+	// return;  //** test no sky
 	if (itSky)  return;
 	LogO("C--- create SkyDome");
 	
@@ -223,9 +225,9 @@ void CScene::CreateSkyDome(String sMater, float yaw)
 	// Aabb aabb( Aabb::BOX_INFINITE );  itSky->setLocalAabb(aabb);  // meh-
 	ndSky = app->mSceneMgr->getRootSceneNode( dyn )->createChildSceneNode( dyn );
 	ndSky->attachObject(itSky);
-	UpdSkyScale();
 	Quaternion q;  q.FromAngleAxis(Degree(-yaw), Vector3::UNIT_Y);
 	ndSky->setOrientation(q);
+	UpdSkyScale();
 
 
 	//  tex change to mirror
@@ -258,8 +260,10 @@ void CScene::DestroySkyDome()
 //-------------------------------------------------------------------------------------
 void CScene::UpdSky()
 {
+	if (!ndSky)  return;
 	Quaternion q;  q.FromAngleAxis(Degree(-sc->skyYaw), Vector3::UNIT_Y);
 	ndSky->setOrientation(q);
+	ndSky->_getFullTransformUpdated();
 	UpdSun();  //in ed
 }
 
@@ -292,9 +296,9 @@ void CScene::UpdSun(float dt)
 		// 0.8f, 0x0 );  // env? EnvFeatures_DiffuseGiFromReflectionProbe
 		// -dir + Ogre::Vector3::UNIT_Y * 0.2f );
 
-	//  🌪️ inc time for  wind anim etc
-	if (mHlmsPbsTerraShadows && dt > 0.f)
-		mHlmsPbsTerraShadows->globalTime += dt;
+	//  🌪️ inc time for  water, grass wind, etc
+	if (dt > 0.f)
+		atmo->globalTime += dt;
 }
 
 

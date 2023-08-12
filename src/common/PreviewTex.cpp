@@ -134,11 +134,11 @@ bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8
 			TextureBox texBox = tex->mapRegion(
 				xSize, ySize, 1u, 1u, pf );
 
-			texBox.copyFrom( imgData );  // upload
-
 			tex->stopMapRegion();
+			if (imgData.width == texBox.width)
 			try
 			{
+				texBox.copyFrom( imgData );  // upload
 				tex->upload( texBox, prvTex, 0, 0, 0 );
 			}
 			catch (Exception e)

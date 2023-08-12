@@ -5,7 +5,8 @@
 @property( atmosky_npr )
 
 @piece( AtmosphereNprSkyStructDecl )
-	struct AtmoSettings
+
+	struct AtmoSettings  // same as AtmoSettingsGpu
 	{
 		float densityCoeff;
 		float lightDensity;
@@ -22,12 +23,20 @@
 		float fogDensity;
 		float fogBreakMinBrightness;
 		float fogBreakFalloff;
-		float fogStartDistance;  // new_
+
+		//  new, SR3 added, fog
+		float fogStartDistance;
 		
 		float4 fogHcolor;
 		float4 fogHparams;
 		float4 fogColourSun;
 		float4 fogColourAway;
+
+		//  new other
+		float globalTime;  // for water, grass, wind etc
+
+		float4 posSph0;  // grass, 2 collision spheres pos,r^2
+		float4 posSph1;  //    for 1 car only  // todo: splitscreen meh-
 	};
 
 	@property( syntax != metal )

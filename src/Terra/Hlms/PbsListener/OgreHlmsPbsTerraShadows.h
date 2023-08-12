@@ -45,10 +45,6 @@ namespace Ogre
 #endif
 
 	public:
-		//  extra
-		float globalTime = 0.f;
-		Vector4 paint[3], paintMul;  // wip not here, in pbs db2
-
 
 		HlmsPbsTerraShadows();
 		virtual ~HlmsPbsTerraShadows();

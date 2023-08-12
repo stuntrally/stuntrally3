@@ -44,7 +44,7 @@ THE SOFTWARE.
 
 namespace Ogre
 {
-    struct AtmoSettingsGpu
+    struct AtmoSettingsGpu  // same as AtmoSettings
     {
         float densityCoeff;
         float lightDensity;
@@ -62,11 +62,19 @@ namespace Ogre
         float fogBreakMinBrightness;
         float fogBreakFalloff;
         
-   		float fogStartDistance;  // new_
+		//  new, SR3 added, fog
+   		float fogStartDistance;
+
         float4 fogHcolor;
         float4 fogHparams;
         float4 fogColourSun;
         float4 fogColourAway;
+
+		//  new other
+		float globalTime;  // for water, grass, wind etc
+
+		float4 posSph0;  // grass, 2 collision spheres pos,r^2
+		float4 posSph1;  //    for 1 car only  // todo: splitscreen meh-
     };
 
     Atmosphere2Npr::Atmosphere2Npr( VaoManager *vaoManager ) :
@@ -448,6 +456,8 @@ namespace Ogre
         atmoGpu.fogHparams = mPreset.fogHparams;
         atmoGpu.fogColourSun = mPreset.fogColourSun;
         atmoGpu.fogColourAway = mPreset.fogColourAway;
+
+        atmoGpu.globalTime = globalTime;
 
         mHlmsBuffer->upload( &atmoGpu, 0u, sizeof( atmoGpu ) );
     }
