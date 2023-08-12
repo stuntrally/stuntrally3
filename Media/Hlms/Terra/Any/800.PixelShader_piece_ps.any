@@ -156,9 +156,9 @@
 	@property( emissive_terrain )
 		pixelData.specular.xyz = midf3_c( 0.1f, 0.1f, 0.1f );  // par
 	@else
-		// pixelData.specular.xyz = midf3_c( 1.0f, 1.0f, 1.0f );
+		pixelData.specular.xyz = midf3_c( 1.0f, 1.0f, 1.0f );
 		// pixelData.specular.xyz = midf3_c( material.kS.xyz );  // no
-		pixelData.specular.xyz = min( pixelData.diffuse.xyz + midf3_c( 0.3f, 0.3f, 0.3f ), midf3_c( 1.0f, 1.0f, 1.0f ));
+		// pixelData.specular.xyz = min( pixelData.diffuse.xyz + midf3_c( 0.3f, 0.3f, 0.3f ), midf3_c( 1.0f, 1.0f, 1.0f ));  //?
 	@end
 
 	midf metalness =	(metalness0 * detailWeights.x * midf_c( material.metalness.x ) +

@@ -274,12 +274,36 @@
 @end
 
 @piece( SampleDiffuseMap )
+
 	/// DIFFUSE MAP
 	@property( diffuse_map )
+
+		float2 UV = inPs.uv@value(uv_diffuse).xy;
+	//~~~~~~~ water begin
+	@property( water && !hlms_shadowcaster && hlms_lights_directional && !alpha_test)
+		float time = atmo.globalTime.x; // * _h(1.2);
+		// float freq = 0.2;  // par atmo..
+		// float offset1 = sin(time * 2.427 * freq) * sin(time * 3.427 * freq);
+		// float offset2 = cos(time * 2.534 * freq) * cos(time * 3.534 * freq);
+		// UV += float2(offset1, offset2) * 0.4;
+
+		// pixelData.diffuse = 0.5f* SampleDiffuse( textureMaps@value( diffuse_map_idx ),
+		// 								   samplerState@value(diffuse_map_sampler),
+		// 								   UV_DIFFUSE( UV ), texIndex_diffuseIdx );
+
+		// UV += float2(offset1, offset2) * 0.4;
+		// pixelData.diffuse += 0.5f* SampleDiffuse( textureMaps@value( diffuse_map_idx ),
+		// 								   samplerState@value(diffuse_map_sampler),
+		// 								   UV_DIFFUSE( UV ), texIndex_diffuseIdx );
+		pixelData.diffuse.xyzw = midf4_c( material.bgDiffuse.xyzw );
+	@else
+
 		pixelData.diffuse = SampleDiffuse( textureMaps@value( diffuse_map_idx ),
 										   samplerState@value(diffuse_map_sampler),
-										   UV_DIFFUSE( inPs.uv@value(uv_diffuse).xy ),
-										   texIndex_diffuseIdx );
+										   UV_DIFFUSE( UV ), texIndex_diffuseIdx );
+	@end
+	//~~~~~~~ water end
+
 	@else
 		/// If there are no diffuse maps, we must initialize it to some value.
 		pixelData.diffuse.xyzw = midf4_c( material.bgDiffuse.xyzw );
@@ -356,7 +380,6 @@
 										 max(pixelData.perceptualRoughness, pixelData.clearCoatPerceptualRoughness),
 										 pixelData.clearCoat);
 @end
-
 	@property( perceptual_roughness )
 		pixelData.roughness = max( pixelData.perceptualRoughness * pixelData.perceptualRoughness, _h( 0.001f ) );
 	@else
@@ -371,6 +394,7 @@
 		@piece( two_sided_flip_normal )* (gl_FrontFacing ? 1.0 : -1.0)@end
 	@end
 @end
+
 @piece( LoadNormalData )
 	@property( !normal_map )
 		// Geometric normal
@@ -389,10 +413,63 @@
 		midf3x3 TBN		= buildMidf3x3( vTangent, vBinormal, pixelData.geomNormal );
 
 		@property( normal_map_tex )
-			pixelData.normal = getTSNormal( textureMaps@value( normal_map_tex_idx ),
-											samplerState@value( normal_map_tex_sampler ),
-											UV_NORMAL( inPs.uv@value(uv_normal).xy ),
-											texIndex_normalIdx );
+
+
+			//~~~~~~~ water begin
+			@property( water && !hlms_shadowcaster && hlms_lights_directional && !alpha_test)
+
+				@piece( GetNorm )
+						getTSNormal( textureMaps@value( normal_map_tex_idx ),
+									samplerState@value( normal_map_tex_sampler ),
+									uv3, texIndex_normalIdx );
+				@end
+
+				#define WIND_DIR  float2(0.5, -0.8)
+				#define WIND_SPEED  0.6
+				
+				#define WAVE_CHOP   0.04  // 0.15
+				#define WAVE_SCALE  1  //1 3 25
+				
+				#define SMALL_WAVES_X  0.15
+				#define SMALL_WAVES_Y  0.1
+				#define MID_WAVES_X  0.2
+				#define MID_WAVES_Y  0.15
+				#define BIG_WAVES_X  0.3
+				#define BIG_WAVES_Y  0.3
+				
+				#define BUMP  1.0  // 1.5
+
+float2 windTime = WIND_DIR * time * WIND_SPEED,
+uv3 = UV * WAVE_SCALE * 0.05 + windTime * 0.04                                    + windTime * float2(-0.015,-0.005);  float3 normal0 = @insertpiece(GetNorm)
+uv3 = UV * WAVE_SCALE * 0.1  + windTime * 0.08 -(normal0.xy/normal0.zz)*WAVE_CHOP + windTime * float2(+0.020,+0.015);  float3 normal1 = @insertpiece(GetNorm)
+uv3 = UV * WAVE_SCALE * 0.25 + windTime * 0.07 -(normal1.xy/normal1.zz)*WAVE_CHOP + windTime * float2(-0.04, -0.03);   float3 normal2 = @insertpiece(GetNorm)
+uv3 = UV * WAVE_SCALE * 0.5  + windTime * 0.09 -(normal2.xy/normal2.zz)*WAVE_CHOP + windTime * float2(+0.03, +0.04);   float3 normal3 = @insertpiece(GetNorm)
+uv3 = UV * WAVE_SCALE * 1.0  + windTime * 0.4  -(normal3.xy/normal3.zz)*WAVE_CHOP + windTime * float2(-0.02, +0.1);    float3 normal4 = @insertpiece(GetNorm)
+uv3 = UV * WAVE_SCALE * 2.0  + windTime * 0.7  -(normal4.xy/normal4.zz)*WAVE_CHOP + windTime * float2(+0.1,  -0.06);   float3 normal5 = @insertpiece(GetNorm)
+
+				float3 n3 = normal0 * BIG_WAVES_X   + normal1 * BIG_WAVES_Y +
+							normal2 * MID_WAVES_X   + normal3 * MID_WAVES_Y +
+							normal4 * SMALL_WAVES_X + normal5 * SMALL_WAVES_Y;
+				// n3 = n3.xzy;  // green y^-
+				n3 = normalize( midf3_c( n3.x * BUMP, n3.y * BUMP, n3.z ));
+				pixelData.normal = n3;
+				// pixelData.diffuse.xyz = n3;  // test
+
+				// pixelData.diffuse.xyz = float3(0.02,0.03,0.04) + float3(0.01,0.04,0.07) * pixelData.normal.z;
+				// pixelData.diffuse.xyz = float3(0.3,0.5,0.7) - float3(0.1,0.4,0.7) * pixelData.normal.z * pixelData.normal.z;
+				// uv3 = UV;
+				// pixelData.normal = @insertpiece(GetNorm)
+				// pixelData.normal = midf3_c( 0.0, 0.0, 1.0 );
+				// pixelData.specular.xyz = float3(0.9,0.95,0.99) - float3(0.3,0.4,0.5) * pixelData.normal.z;
+
+				pixelData.perceptualRoughness = max(0.01, min(1.0,  0.01 - 2.24 * n3.x - 2.24 * n3.y));  //-?
+			@else
+				pixelData.normal = getTSNormal( textureMaps@value( normal_map_tex_idx ),
+												samplerState@value( normal_map_tex_sampler ),
+												UV_NORMAL( inPs.uv@value(uv_normal).xy ), texIndex_normalIdx );
+			@end
+			//~~~~~~~ water end
+
 		@else
 			pixelData.normal = midf3_c( 0.0, 0.0, 1.0 );
 		@end
@@ -937,7 +1014,7 @@
 			//**  ed Selected Glow  **
 			@property( selected_glow && !hlms_shadowcaster )
 				finalColour.xyz += float3(0.2, 0.5, 0.8)
-					* (_h(0.5) + _h(0.2) * sin(passBuf.globalTime.x * _h(3.5)) );
+					* (_h(0.5) + _h(0.2) * sin(atmo.globalTime.x * _h(3.5)) );
 			@end
 
 
