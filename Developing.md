@@ -3,8 +3,8 @@
 
 Guide for SR3 source code, Ogre-Next (links) and tools used.  
 Can be useful if you want to:
-- develop SR3
-- learn more about SR3 code
+- develop SR3, test or fix a bug
+- learn more about SR3 code, find something in it
 - learn about Ogre-Next used in SR3 or other libraries etc
 - fork SR3 code and start your own project (required GPLv3 or newer) based on it
 
@@ -88,23 +88,105 @@ Advanced extra tools, should be used when testing or developing new (bigger) thi
 
 # Stunt Rally 3
 
-This section is about our code, mostly written by CryHam.
+## config files
 
-## New
+[user] - means file is in user `.config/stuntrally3` dir, and saved by SR3.  
+Otherwise, means a static file in `config/` dir, manually edited.  
+(i) - means file has info about itself and syntax, written inside.
+
+Vehicles config
+- config/cars.xml - (i) list for Vehicles tab with manually set parameters
+- Media/cars/cameras.xml - (i) all follow camera views for game
+- Media/carsim/[mode]/* -  
+*.car - vehicle file (can edit directly in game Alt-Z),  
+*_stats.xml - vehicle performance test results (after Ctrl-F5)  
+.tire coeffs, suspension
+
+Game modes
+- championships.xml - (i) for Gui, tutorials too
+- challenges.xml - (i) with tracks list, pass conditions, game setup etc
+
+Game progress
+- progress.xml, progress_rev.xml - [user] progress for championships, _rev for reversed
+- progressL.xml, progressL_rev.xml - [user] same but for challenges
+
+Game config
+- input.xml and input_p[1..4].xml - [user] for game, common and player input bindings, Gui tab Input
+
+- paint.cfg - current vehicles paint setups
+- paints.ini - dynamic list for vehicles on Paints tab
+
+Common config
+- fluids.xml - (i) 
+- presets.xml - params for editor lists and game too
+- tracks.xml - [user] tracks bookmark and rating, from Gui Track tab
+
+Below * means: nothing or 2,3,4.. etc if more.
+- heightmap*.f32 - heightmap(s) for terrain(s). Format is raw 32 bit floats (4B for 1 height). Size always square: 512,1024,2048 etc.
+- road*.xml - file(s) for each road/river etc. Has many params and points.
+- scene.xml - 1 file for each track, with all editable params from Gui tabs in Track Editor.
+
+## emojis
+
+You can also get familiar with `src/emojis` file.  
+It lists many emojis used for indentifying code sections, variable blocks etc in sources.  
+Done for better orientation, grouping and cooler code in files, especially for big ones with many at once.  
+
+## subdirs
+
+SR3 code is in `src/` its subdirs are:
+- [btOgre2](https://github.com/Ybalrid/BtOgre2) - [lib] for visualisation of bullet debug lines in Ogre-Next (called Ogre 2.1 before)
+- common - files for both editor and game. Mainly for common Gui, scene (map / track) elements.
+Has also some MyGui classes a bit extended: `MultiList2.*, Slider*.*, Gui_Popup.*` and `GraphView.*` for game Graphs (Tweak F9).
+- common/data - has all data structures (mostly xml config files, list below).
+- editor - purely editor sources
+- game - purely game sources
+- network - game multiplayer code, mostly written by Tapio, has `DesignDoc.txt`. Also `master-server/` program for server game list (not used).
+- OgreCommon - [Ogre-Next] base application classes - slightly changed.
+- [oics](https://sourceforge.net/projects/oics/) - [lib] for input configurations, bindings and analog key inputs emulation.
+- Terra - terrain component, from [Ogre-Next] - modified.
+- sound - sound engine, based on [RoR]'s, using openal-soft
+- vdrift - SR simulation (based on old [VDrift] from about 2010) with a lot of changes and custom code,  
+Also has simulation for spaceships, sphere etc.
+
+
+## Ogre-Next
+
+SR has 
+
+## Modified
 
 Components completely new with Ogre-Next.
+
+### Atmosphere
+
+Only used for **fog** and its params.  
+It can produce sky atmosphere with sun, and no clouds. We don't use this.
+
+### Terra
+
+The terrain component. Very efficient. Has triplanar already.  
+Extended with old SR blendmap RTT and its noise.
+
+## Custom
 
 ### HlmsPbs2
 
 ### Compositor
 
-### Atmosphere
+## Changed from SR
 
-## Old
-
-Same in SR 2.x
+These have changed when porting to SR3 to use Ogre-Next.
 
 ### Road
+
+### Vegetation
+
+### Grass
+
+## Old SR
+
+Rest of code that was same in SR 2.x. Only small changes when porting to SR3.
 
 ### Simulation
 
