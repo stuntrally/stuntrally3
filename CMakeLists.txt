@@ -95,8 +95,6 @@ endif()
 
 
 #  deps  ----
-include( CMake/Bootstrap.cmake )
-include( CMake/Dependencies/OGRE.cmake )
 
 #  Check for dependencies
 include(DependenciesConfig)
@@ -112,7 +110,7 @@ message( STATUS ${DIR_ONE_ABOVE} )
 
 set( OGRE_NEXT_DIR ${DIR_ONE_ABOVE}/Ogre/ogre-next )
 
-#  Fix 1
+#  Fix 1  Ogre
 set( OGRE_SOURCE ${OGRE_NEXT_DIR}/ )
 
 if ( CMAKE_BUILD_TYPE STREQUAL "Debug" )
@@ -120,6 +118,8 @@ if ( CMAKE_BUILD_TYPE STREQUAL "Debug" )
 else()
 	set( OGRE_BINARIES ${OGRE_NEXT_DIR}/build/Release )
 endif()
+
+include( CMake/Dependencies/OGRE.cmake )
 
 
 #  This scripts will add all the cpp and h files from src and include folders
