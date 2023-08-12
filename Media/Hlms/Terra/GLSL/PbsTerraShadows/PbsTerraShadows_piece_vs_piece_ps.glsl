@@ -12,7 +12,6 @@
     //.xz = terrain 1.0 / XZ dimensions.
     //.y  = 1.0 / terrainHeight;
     vec4 invTerraBounds;
-	vec4 globalTime;
 @end
 
 /// Add the shadows' texture to the vertex shader
