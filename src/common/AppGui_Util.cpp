@@ -96,6 +96,7 @@ void AppGui::InitTexFilters(HlmsSamplerblock* sb, bool wrap)
 	sb->mU = w;  sb->mV = w;  sb->mW = w;
 }
 
+//  ed selected
 void AppGui::UpdSelectGlow(Renderable *rend, bool selected)
 {
 	rend->setCustomParameter(HlmsPbs2::selected_glow, Vector4(selected ? 1 : 0, 0,0,0));

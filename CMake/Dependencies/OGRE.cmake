@@ -238,7 +238,7 @@ if( ${OGRE_USE_NEW_NAME} )
 else()
 	set( OGRE_NEXT "Ogre" )
 endif()
-message( STATUS ${OGRE_NEXT} ${OGRE_USE_NEW_NAME} )
+message( STATUS ${OGRE_NEXT} " - " ${OGRE_USE_NEW_NAME} )
 
 # Ogre config
 include_directories( "${OGRE_SOURCE}/OgreMain/include" )

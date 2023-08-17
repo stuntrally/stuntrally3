@@ -216,12 +216,12 @@ CONST_BUFFER_STRUCT_BEGIN( PassBuffer, 0 )
 	@insertpiece( DeclVctUniform )
 	@insertpiece( DeclIrradianceFieldUniform )
 
-	//  extra vehicle paint changing colors
+	//  todo: extra vehicle paint changing colors
 	@property( body_paint )
-		vec4 paint1;
-		vec4 paint2;
-		vec4 paint3;
-		vec4 paintMul;
+		// float4 paint1;
+		// float4 paint2;
+		// float4 paint3;
+		// float4 paintMul;
 	@end
 	@insertpiece( custom_passBuffer )
 
