@@ -26,6 +26,7 @@
     //property( hlms_fog )  // todo: inside hfog on sky
 
         const float distToCameraH = length( inPs.pos.xyz );
+    	//const float camPosH =  passBuf.view[3][1];
 
         //**  height fog  first
         midf fogHWeight = midf_c( exp2( -distToCameraH * atmo.fogHparams.z ) );
@@ -36,6 +37,9 @@
                                     finalColour.xyz,
                                     fogHWeight );
         finalColour.xyz = lerp( fogHclr, finalColour.xyz, heightMul );
+        
+        //const midf insideMul = saturate( ( camPosH - atmo.fogHparams.x ) * atmo.fogHparams.y );  // amount H
+        //finalColour.xyz = lerp( fogHclr.zzz, finalColour.xyz, insideMul );
     //end
     //property( hlms_fog && !sky )
         //  distance fog

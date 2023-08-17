@@ -50,10 +50,10 @@ Is the engine used for rendering, managing scene, also loading resources, loggin
 ----
 ## HLMS, materials, shaders
 
-**HLMS** is the part in Ogre-Next responsible for generating shaders used in materials.  
+**HLMS** (High Level Material System) is the part in Ogre-Next responsible for generating shaders used in materials.  
 There is no shader graph editor, everything is in big text files.  
 
-- [HLMS doc](https://ogrecave.github.io/ogre-next/api/latest/hlms.html) - long read, explains all.
+- [HLMS doc](https://ogrecave.github.io/ogre-next/api/latest/hlms.html) - **long** read, explains all.
 - [HLMS shaders](https://ogrecave.github.io/ogre-next/api/latest/hlms.html#HlmsCreationOfShaders).
 - [Ogre wiki](https://wiki.ogre3d.org/Ogre+2.1+FAQ#I_m_writing_my_own_Hlms_implementation_or_just_want_to_know_more_about_it._Where_do_I_find_learning_material_resources_) - with links to old forum topics about common tasks.
 
@@ -156,7 +156,7 @@ Done for better orientation, grouping and cooler code in files, especially for b
 It is possible to search for all related to some component or aspect in sources,  
 by searching for an emoji, e.g. 💨 for game boost, ⛰️ for all terrain stuff, 🎯 for all ray casts made, etc.
 
-## subdirs
+## subdirs 📂
 
 SR3 code is in `src/` its subdirs are:
 - [lib] [btOgre2](https://github.com/Ybalrid/BtOgre2) - for visualisation of bullet debug lines in Ogre-Next (called Ogre 2.1 before)
@@ -168,7 +168,7 @@ Has also some MyGui classes a bit extended: `MultiList2.*, Slider*.*, Gui_Popup.
 - network - game multiplayer code, info in `DesignDoc.txt`. Also `master-server/`, small program for server game list (not used).
 - OgreCommon - [Ogre-Next] base application classes - slightly changed.
 - [lib] [oics](https://sourceforge.net/projects/oics/) - for input configurations, bindings and analog key inputs emulation.
-- Terra - terrain and other components, from [Ogre-Next] - modified (more info below).
+- Terra - terrain and other components, from [Ogre-Next] - quite modified (more info below).
 - sound - sound engine, based on [RoR]'s, using openal-soft
 - vdrift - SR simulation (based on old [VDrift] from about 2010) with a lot of changes and custom code,  
 Also has simulation for spaceships, sphere etc, and for `Buoyancy.*`.
@@ -188,7 +188,7 @@ Many key changes are marked with `//** `, searching it will find all modified pl
 
 Components completely new with Ogre-Next, included in SR3, and modified already.
 
-### Atmosphere
+### Atmosphere 🌫️
 
 Only used for **fog** and its params.  
 It can render sky atmosphere with sun (and no clouds). We don't use this. We could someday have dynamic sky shaders this way.  
@@ -197,15 +197,42 @@ Modified to not change light after its update. And added more params for shaders
 Our fog shader code is in: `Media/Hlms/Pbs/Any/Fog_piece_ps.any`  
 and is used in Pbs and Terra `.any` there `@insertpiece( applyFog )`.
 
-### Terra
+### Terra ⛰️
 
 The terrain component. Very efficient. Has triplanar already.  
-Extended with old SR blendmap RTT and its noise.  
+
+#### Comparison
+
+This **changed** completely from old Ogre. Now heightmaps are power of 2, e.g. 1024, not 1025 like old.  
+Old SR `heightmap.f32` are converted on 1st load in SR3. This also needs slight pos offset.  
+SR3 loads `heightmap.f32` and gets size (e.g. 1024) from file size (1024*1024*4 B).  
+
+#### Normalized
+
+Terra by design had _normalized float heights_ from 0.0 to 1.0 only.  
+We **don't** use that, changed it, since our Hmap and SR editor use any, real height values.  
+_ToDo:_  
+This **broke** `src/Terra/TerraShadowMapper.cpp` shadowmap generation (mostly for heights below 0).  
+and terrain shadowmap is disabled.  
+BTW it took way to long, 5 sec at start, possibly due to compute shader building.  
+It's this `if (!m_bGenerateShadowMap)` and `return;  //**  5 sec delay` below.  
+
+This also **broke** terrain page visibility. Likely decreasing Fps, no idea how much.  
+Made all visible in `Terra::isVisible` for `if (!bNormalized)`.  
+In ctor `Terra::Terra(` setting `bNormalized` to 1 does try to normalize Hmap.  
+
+#### Extended
+
+Terra Extended with old SR **blendmap** RTT and its noise.  
 Also with emissive layers, property: `emissive terrain`.  
+Changed skirt to be relative size below, not that default big to lowest point.
+_ToDo:_ Some holes can appear on horizon terrains. Should be highe for them.
 
-### PlanarReflection
 
-Modified to have more control and detail options for its camera.
+### PlanarReflection 🪞
+
+Used for water/fluids.  
+_ToDo_: Modified to have more control and detail options for its camera.
 
 ## Custom
 
@@ -230,19 +257,24 @@ These have changed when porting SR to SR3 to use Ogre-Next meshes etc.
 
 Original code made by CryHam for: roads, pipes, their transitions and bridge walls, columns.  
 Code inside:
-- Road_Prepass.cpp - needed before rebuild.
-- Road_Rebuild.cpp - main big code creating geometry vertices and meshes.
-- Grid.* - WIP new for paging grid and adding meshes together in cells, for less batches (draw calls).
+- Road_Prepass.cpp - needed computations before rebuild.
+- Road_Rebuild.cpp - main big code, creating geometry vertices and meshes.
+- Grid.* - WIP new for paging grid and adding meshes together in cells, for less batches (draw calls).  
+Now used for columns to gather more together.
 
-Creating mesh code was based on Ogre-Next: `/Samples/2.0/ApiUsage/DynamicGeometry/DynamicGeometryGameState.cpp`.  
+Creating **mesh** code was based on Ogre-Next: `/Samples/2.0/ApiUsage/DynamicGeometry/DynamicGeometryGameState.cpp`.  
 [Few posts](https://forums.ogre3d.org/viewtopic.php?p=554774#p554774) with info and issues (fixed).  
+
+**Glass pipes** rendering changed. Old Ogre had 2 passes with opposite culling.  
+New does not support passes [topic](https://forums.ogre3d.org/viewtopic.php?t=96902), and instead has:  
+2 nodes with same mesh, but clones datablock and sets opposite cull in it. Code in `pipe glass 2nd item` section of `Road_Mesh.cpp`.
 
 ### Vegetation 🌳🪨
 
 Means models for trees, rocks, plants etc.  
 It is not paged, does not have impostors (like it was in old SR with paged-geometry).  
 Simply uses Ogre-Next Items that will be automatically HW instanced, to reduce draw calls, also works with mesh LODs.  
-All models are placed after track load by code in `src/common/SceneTrees.cpp`.  
+All models are placed during track load by code in `src/common/SceneTrees.cpp`.  
 
 ### Grass 🌿
 
@@ -250,13 +282,14 @@ Currently done simplest way, has mesh pages, with vertices and indices.
 Quite inefficient to render and slow to create mesh.  
 Code in `Grass.h` and `Grass_Mesh.cpp`.  
 _ToDo_: add RTT for density map, read terrain height map in shader..  
+[old topic](https://forums.ogre3d.org/viewtopic.php?t=85626&start=25)  
 
 
 ## SR
 
 Rest of code that was same in SR 2.x. Only small changes when porting to SR3.
 
-### Simulation
+### Simulation 🚗
 
 Game code in `Update_Poses.cpp` gets data from VDrift simulation (on 2nd thread) calling `newPoses(`.  
 Rendering update calls `updatePoses(` to set vehicles (from carModels) to new poses.  
@@ -285,27 +318,33 @@ Some utility code `src/common/AppGui_Util.cpp` with few really basic things that
 Some links (few also in [post here](https://forums.ogre3d.org/viewtopic.php?p=554575#p554575)) with good info (may be somewhat random and really old):
 - [recent longer 2 replies](https://forums.ogre3d.org/viewtopic.php?p=555022#p555022)
 - [wiki links](https://wiki.ogre3d.org/Ogre+2.1+FAQ#I_m_writing_my_own_Hlms_implementation_or_just_want_to_know_more_about_it._Where_do_I_find_learning_material_resources_)
-- **[Easier way to communicate with hlms shader?](https://forums.ogre3d.org/viewtopic.php?f=25&t=83081)** - old, good with stuff below too
-- [Adding HLMS customisations per datablock](https://forums.ogre3d.org/viewtopic.php?t=84775)
+- [done] [Easier way to communicate with hlms shader?](https://forums.ogre3d.org/viewtopic.php?f=25&t=83081) - old, **good** with stuff below too
+- [done] [Adding HLMS customisations per datablock](https://forums.ogre3d.org/viewtopic.php?t=84775)
 - [done] [Adding Wind to Grass](https://forums.ogre3d.org/viewtopic.php?t=95892)
+- [done, old] [custom hlms wind and fog](https://spotcpp.com/creating-a-custom-hlms-to-add-support-for-wind-and-fog/)
 - [?Compositors, HLMS and depth buffers](https://forums.ogre3d.org/viewtopic.php?p=543364#p543364)
 - [done] [basic using in app](https://ogrecave.github.io/ogre-next/api/2.3/_using_ogre_in_your_app.html)
 
 ## HLMS extending 🌠
+
+Customizing [doc link](https://ogrecave.github.io/ogre-next/api/latest/hlms.html#HlmsCreationOfShadersCustomizing).
 
 From docs: Hlms implementation can be customized:
 - Through HlmsListener.  
 This allows you to have access to the buffer pass to fill extra information; or bind extra buffers to the shader.
 - Overload HlmsPbs.  
 Useful for overriding only specific parts, or adding new functionality that requires storing extra information in a datablock (e.g. overload HlmsPbsDatablock to add more variables, and then overload HlmsPbs::createDatablockImpl to create these custom datablocks)
-- Directly modify HlmsPbs, HlmsPbsDatablock and the template.
+- Directly modify HlmsPbs, HlmsPbsDatablock and the template (.any).
 
-SR3 does all above, we have HlmsPbs2.  
-Also a HLMS PBS listener, it's that default `hlmsPbs->setListener( mHlmsPbsTerraShadows );` from Terra, only one can be used.
+SR3 does all above, we have our `HlmsPbs2.  
+Also a HLMS PBS listener, it's that default `hlmsPbs->setListener( mHlmsPbsTerraShadows );` from Terra.  
+Done so objects also receive terrain shadows. Only one listener can be used.  
+
+And we have own `HlmsPbsDatablock2` with more stuff when needed for paint or fluids.
 
 ### Adding more uniforms
 
-Adding more params for all shaders. E.g. `globalTime` and our own fog stuff like `fogHparams`.  
+Adding more params **for all shaders**. E.g. `globalTime` and our own fog stuff like `fogHparams`.  
 Easiest to add new in `struct AtmoSettingsGpu` also `struct AtmoSettings` and then fill it in `Atmosphere2Npr::_update` (called each frame).  
 
 ### setProperty
@@ -348,7 +387,7 @@ Changes need `scheduleConstBufferUpdate()` to apply.
 
 ### Own HLMS
 
-The `HlmsPbs2` is not own, it replaces default `HlmsPbs` in Ogre-Next and reads all from same dirs as Pbs.  
+The modified `HlmsPbs2` replaces default `HlmsPbs` in Ogre-Next and reads all from same dirs as Pbs.  
 It gathers all above points.  
 
 Own HLMS should inherit from Pbs, and needs its own dirs with shaders (probably?).  
@@ -364,13 +403,24 @@ This assert triggering, means those were different:
 Other common assert: [mCachedTransformOutOfDate](https://ogrecave.github.io/ogre-next/api/latest/_ogre20_changes.html#AssersionCachedOutOfDate).  
 At end of [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822).
 
-Don't change node pos or rot from inside listeners.
+Don't change node pos or rot from inside listeners.  
 Or after call `_getFullTransformUpdated(` e.g. for `ndSky`, `light->getParentNode()->_`, camera etc.
-
-[Done] workspace->addListener( mWorkspaceListener ); so that PlanarReflectionsWorkspaceListener is updated,
-needs to be done to every workspace that can see the reflection (e.g. the cubemap workspaces).
 
 ### Workspaces 🪄
 
 Many compositor Workspaces are created from code (telling how to render stuff, also few extra for editor minimap RTT).  
 In `.log` lines with: `++++ WS add:`, in cpp code any `addWorkspace`.  
+
+`SR3.compositor` has definitions for most workspaces used. Only shadows are made in code.
+
+### Workspace Listener
+
+[Done] Do `workspace->addListener(` so that `PlanarReflWorkspaceListener` is updated, for every workspace that can see the reflection (e.g. the cubemap workspaces).  
+In code `AddListenerRnd2Tex()`, it's `ReflectListener`, `mWsListener` in `Reflect.h`.
+
+`ReflectListener::passEarlyPreExecute` does check which `render_pass` it is from `SR3.compositor` by `identifier` number.
+
+## ToDo
+
+Ogre-Next: Sky_Postprocess, ReconstructPosFromDepth, Refractions,  
+later: Sample_Hdr, Sample_Tutorial_SSAO, 

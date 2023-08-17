@@ -48,17 +48,22 @@
 	//org: float planarWeight = max( 1.0 - abs( distanceToPlanarReflPlane ) * passBuf.invMaxDistanceToPlanarRefl.x, 0.0 );
 	planarWeight = sqrt( planarWeight );
 	planarWeight = smoothstep( 0.0, 1.0, planarWeight );
+	
 	//Fade out if projecting pointInPlane failed (we landed outside the screen, we have no information)
 	float2 boundary = abs( planarReflUVs.xy - float2(0.5, 0.5) ) * 2.0;
 	float fadeOnBorder = 1.0 - saturate( (boundary.x - 0.975) * 40 );
 	fadeOnBorder *= 1.0 - saturate( (boundary.y - 0.975) * 40 );
 	fadeOnBorder = smoothstep( 0.0, 1.0, fadeOnBorder );
+	
 	planarWeight *= lerp( fadeOnBorder, 1.0, 1.0 - min( abs(distanceToPlanarReflPlane) * 1000.0, 1.0 ) );
 	//Fade out across a 20° tolerance between surface normal and reflection plane.
 	//	(x - cos20) / (1-cos20);
 	//	x/(1-cos20) - cos20/(1-cos20);
 	//	x * 16.581718739 - 15.581718739;
 	planarWeight *= saturate( dot( planarReflection.xyz, pixelData.normal.xyz ) * 16.581718739 - 15.581718739 );
+
+	// planarWeight *= pixelData.normal.z;  //-
+	
 	@property( hlms_use_ssr || vct_num_probes || ((envprobe_map && envprobe_map != target_envprobe_map) || parallax_correct_cubemaps) )
 		pixelData.envColourS = lerp( pixelData.envColourS, planarReflectionS, planarWeight );
 	@else

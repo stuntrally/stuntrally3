@@ -38,12 +38,11 @@ public:
 	std::vector<Ogre::Item*> vIt;
 	std::vector<Ogre::SceneNode*> vNd;
 	std::vector<Ogre::PlanarReflectionActor*> vActors;
-	// std::vector<Ogre::PlanarReflections*> vPlRefl;  //-
 
 	void CreateFluids(), DestroyFluids(), CreateBltFluids();
 
 	//  🪞 RTT, setup
-	Ogre::PlanarReflections* mPlanarRefl =0;
+	Ogre::PlanarReflections* mPlanarRefl =0;  // one system for all fluids
 	ReflectListener *mWsListener =0;
 	
 	void CreateRTT(), DestroyRTT();

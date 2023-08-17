@@ -151,7 +151,7 @@ void FluidsReflect::CreateRTT()
 	Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_PBS );
 	assert( dynamic_cast<HlmsPbs2 *>( hlms ) );
 	HlmsPbs2 *pbs = static_cast<HlmsPbs2 *>( hlms );
-	pbs->setPlanarReflections( mPlanarRefl );  // only one?
+	pbs->setPlanarReflections( mPlanarRefl );  // only one
 }
 
 
