@@ -101,7 +101,7 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 		float ax = cosf(angCarY)*Rdist, ay = sinf(angCarY)*Rdist;
 		//LogO("pos: "+fToStr(pos[0],2,4)+" "+fToStr(pos[1],2,4)+"  a: "+fToStr(angCarY,2,4)+"  dir: "+fToStr(ax,2,4)+" "+fToStr(ay,2,4));
 		
-		//  cast 2 rays - 2 times, average 2 angles
+		//  🎯 cast 2 rays - 2 times, average 2 angles
 		COLLISION_CONTACT ct0,ct1,ct20,ct21;
 		MATHVECTOR<float,3> ofs(ax*0.5f,ay*0.5f,0),ofs2(ax,ay,0);
 		world->CastRay(pos+ofs, dir, HMaxDepth,chassis, ct0,  0,0, true, true);
@@ -252,7 +252,7 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 		camRotFinal = q;
 	}
 	
-	//  cast ray from car to camera, reduce dist if hit
+	//  🎯 cast ray from car to camera, reduce dist if hit
 	//-------------------------------------------------------------------------------------------
 	Vector3 pp = camPosFinal;
 	if (bounce)

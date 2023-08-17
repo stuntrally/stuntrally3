@@ -135,8 +135,9 @@ void FluidsReflect::CreateRTT()
 	
 	mPlanarRefl->setMaxActiveActors( all,
 		"PlanarReflections",
-		false, //true,  //par?
-		size, size, 0/*?mipmaps*/, PFG_RGBA8_UNORM_SRGB, useCompute /*, mWsListener*/ );
+		// true,  // accurate-
+		false, //par?
+		size, size, 1/*?mipmaps*/, PFG_RGBA8_UNORM_SRGB, useCompute /*, mWsListener*/ );
 
 	
 	mWsListener = new ReflectListener( app, mPlanarRefl );
@@ -170,7 +171,6 @@ void FluidsReflect::CreateFluids()
 	for (int i=0; i < sc->fluids.size(); ++i)
 	{
 //  par ...
-#define ROT
 // bool reflect = i==0;  // one
 // bool reflect = 1;  // all  // todo  shader,materials..
 bool reflect = 0;  // off old
@@ -207,7 +207,7 @@ bool reflect = 0;  // off old
 
 		Item* item = mgr->createItem( mesh, dyn );
 		String sMtr = fb.id == -1 ? "" :
-			reflect ? "WaterReflect" :  // ##
+			/*1 || */reflect ? "WaterReflect" :  // ##
 			app->scn->data->fluids->fls[fb.id].material;  //"Water"+toStr(1+fb.type)
 		
 		item->setDatablock( sMtr );  item->setCastShadows( false );

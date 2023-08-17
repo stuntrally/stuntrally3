@@ -579,7 +579,7 @@ void CARDYNAMICS::UpdateWheelContacts()
 		MATHVECTOR<float,3> raystart = LocalToWorld(wheel[i].GetExtendedPosition());
 		raystart = raystart - raydir * wheel[i].GetRadius();// *0.5;  //*?!
 		float raylen = wheel[i].GetRayLength();
-		
+		// 🎯 wheel cast ray
 		world->CastRay( raystart, raydir, raylen, chassis, wheelContact, this,i, !pSet->game.collis_cars, false );
 	}
 }
@@ -663,7 +663,7 @@ void CARDYNAMICS::SimulateSpaceship(Dbl dt)
 	float dmg = fDamage > 50.f ? 1.f - (fDamage-50.f)*0.02f : 1.f;
 	float dmgE = 1.f - 0.2 * dmg;
 
-	//  cast ray down .
+	//  🎯 cast ray down .
 	COLLISION_CONTACT ct,ct2;
 	MATHVECTOR<Dbl,3> dn = GetDownVector();
 	Dbl ups = dn[2] < 0.0 ? 1.0 : -1.0;
@@ -814,7 +814,7 @@ void CARDYNAMICS::SimulateSphere(Dbl dt)
 	float dmg = fDamage > 50.f ? 1.f - (fDamage-50.f)*0.02f : 1.f;
 	float dmgE = 1.f - 0.1 * dmg;
 
-	//  ray,  only to check if in pipe
+	//  🎯 cast ray,  only to check if in pipe
 	/*const */Dbl len = hov.hAbove, rlen = hov.hRayLen;
 	COLLISION_CONTACT ct;
 	MATHVECTOR<Dbl,3> p = GetPosition();  // - dn * 0.1;  // v fluids as solids

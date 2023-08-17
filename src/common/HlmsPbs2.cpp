@@ -12,6 +12,7 @@ using namespace Ogre;
 HlmsUnlit2::HlmsUnlit2( Archive *dataFolder, ArchiveVec *libraryFolders )
 	:HlmsUnlit( dataFolder, libraryFolders )
 {
+	// mCurrentConstBufferSize
 }
 HlmsUnlit2::~HlmsUnlit2()
 {
@@ -139,9 +140,9 @@ void HlmsPbsDatablock2::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
 
 	// LogO("paint db2 upload");
 	HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
-return;
+return;  // !!
 
-	// .. send paint par
+	// todo .. send paint par
 	char* orgPtr = dstPtr;
 	HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
 	dstPtr = orgPtr + HlmsPbsDatablock::MaterialSizeInGpu;  // can't change this ...
@@ -152,15 +153,15 @@ return;
 	if (paint)
 	{
 		// LogO("paint db2 upload");
-		size_t si_f4 = sizeof( float4 );
+		size_t sf4 = sizeof( float4 );
 		
 		for (int i=0; i < 3; ++i)
 		{
 			float4 par4 = paintClr[i];
-			memcpy( dstPtr, &par4, si_f4 );  dstPtr += si_f4;
+			memcpy( dstPtr, &par4, sf4 );  dstPtr += sf4;
 		}
 		float4 par4 = paintMul;
-		memcpy( dstPtr, &par4, si_f4 );  dstPtr += si_f4;
+		memcpy( dstPtr, &par4, sf4 );  dstPtr += sf4;
 	}
 #endif
 }
@@ -200,9 +201,6 @@ void HlmsPbsDatablock2::cloneImpl( HlmsDatablock *db ) const
 //----------------------------------------------------------------
 ///  todo: Notes  **Bookmarks**
 //----------------------------------------------------------------
-struct AtmoSettings  // fog params  UpdFog  each frame
-mHlmsBuffer->upload( &atmoGpu
-
 
 const size_t c_geometryShaderMagicValue = 123456;
 
@@ -259,8 +257,6 @@ HlmsPbsTerraShadows::preparePassBuffer  +
 
 Overload Hlms::preparePassHash or HlmsListener::preparePassHash to define a custom property that follows an entirely different shader path
 
-
-AtmoSettings atmo;
 
 
 Hlms implementation can be customized:

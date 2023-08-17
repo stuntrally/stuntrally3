@@ -73,8 +73,8 @@ namespace Ogre
 		//  new other
 		float globalTime;  // for water, grass, wind etc
 
-		float4 posSph0;  // grass, 2 collision spheres pos,r^2
-		float4 posSph1;  //    for 1 car only  // todo: splitscreen meh-
+		// float4 posSph0;  // grass, 2 collision spheres pos,r^2
+		// float4 posSph1;  //    for 1 car only  // todo: splitscreen meh-
     };
 
     Atmosphere2Npr::Atmosphere2Npr( VaoManager *vaoManager ) :

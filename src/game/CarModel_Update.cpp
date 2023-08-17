@@ -698,6 +698,7 @@ void CarModel::SetPaint()
 	}
 
 	db->setFresnel( Vector3::UNIT_SCALE * gc.fresnel, false );
+	// or db->scheduleConstBufferUpdate();
 
 	if (pNickTxt)
 		pNickTxt->setTextColour(MyGUI::Colour(color.r, color.g, color.b));
