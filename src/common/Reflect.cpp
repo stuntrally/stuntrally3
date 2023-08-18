@@ -106,6 +106,13 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 void FluidsReflect::DestroyRTT()
 {
 	LogO("D~~~ destroy Fluids RTT");
+
+	Root *root = app->mGraphicsSystem->getRoot();
+	Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_PBS );
+	assert( dynamic_cast<HlmsPbs2 *>( hlms ) );
+	HlmsPbs2 *pbs = static_cast<HlmsPbs2 *>( hlms );
+	pbs->setPlanarReflections( 0 );  // off
+
 	CompositorWorkspace *ws = app->mGraphicsSystem->getCompositorWorkspace();
 	if (mWsListener)
 		ws->removeListener( mWsListener );
