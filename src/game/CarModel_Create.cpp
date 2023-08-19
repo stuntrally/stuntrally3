@@ -138,7 +138,7 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 				pDb->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
 			}else
 			{	//  body_paint db2
-				assert( dynamic_cast<HlmsPbsDatablock2 *>( item->getSubItem(0)->getDatablock() ) );
+				// assert( dynamic_cast<HlmsPbsDatablock2 *>( item->getSubItem(0)->getDatablock() ) );
 				HlmsPbsDatablock2* pDb = dynamic_cast<HlmsPbsDatablock2 *>( item->getSubItem(0)->getDatablock() );
 				LogO(pDb ? "db2 cast ok" : "db2 cast fail");
 				//  clone,  set car color

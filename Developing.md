@@ -324,6 +324,7 @@ Some links (few also in [post here](https://forums.ogre3d.org/viewtopic.php?p=55
 - [done] [Adding Wind to Grass](https://forums.ogre3d.org/viewtopic.php?t=95892)
 - [done, old] [custom hlms wind and fog](https://spotcpp.com/creating-a-custom-hlms-to-add-support-for-wind-and-fog/)
 - [?Compositors, HLMS and depth buffers](https://forums.ogre3d.org/viewtopic.php?p=543364#p543364)
+- [[Solved][2.1] Trying to create a new HLMS](https://forums.ogre3d.org/viewtopic.php?f=25&t=83763)
 - [done] [basic using in app](https://ogrecave.github.io/ogre-next/api/2.3/_using_ogre_in_your_app.html)
 
 ## HLMS shaders output
@@ -358,6 +359,8 @@ And we have own `HlmsPbsDatablock2` with more stuff when needed for paint or flu
 Adding more params for Pbs shaders and terrain. E.g. `globalTime` and our own height fog like `fogHparams`.  
 Easiest to add new in `struct AtmoSettingsGpu` also `struct AtmoSettings` and then fill it in `Atmosphere2Npr::_update` (called each frame).  
 _ToDo_: This is half working way. Not all have `atmo` struct.  
+
+_ToDo_: [topic](https://forums.ogre3d.org/viewtopic.php?p=535357#p535357) done through HlmsListener using `getPassBufferSize` and `preparePassBuffer`.
 
 ### setProperty
 
@@ -405,6 +408,8 @@ It gathers all above points.
 Own HLMS should inherit from Pbs, and needs its own dirs with shaders (probably?).  
 Also own name in `.material` for materials e.g. `hlms water_name pbs` that last `pbs`.  
 
+_ToDo_: [[Solved][2.1] Trying to create a new HLMS](https://forums.ogre3d.org/viewtopic.php?f=25&t=83763)
+
 Own HLMS could control more like `MaterialSizeInGpu` (it needs same size in `uploadToConstBuffer`).  
 This assert triggering, means those were different:  
 `assert( (size_t)( passBufferPtr - startupPtr ) * 4u == mapSize );`
@@ -426,6 +431,8 @@ Creating is in `.log` lines with: `++++ WS add:`, and in cpp code by any `addWor
 
 `SR3.compositor` has definitions for most workspaces used.  
 Only shadows are made completely by code in `src/common/AppGui_Shadows.cpp`, based on `Samples/2.0/ApiUsage/ShadowMapFromCode/ShadowMapFromCode.cpp`.
+
+Parts of [post](https://forums.ogre3d.org/viewtopic.php?p=553666#p553666) with info.
 
 ### Workspace Listener
 
