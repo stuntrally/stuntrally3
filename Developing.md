@@ -283,6 +283,7 @@ Quite inefficient to render and slow to create mesh.
 Code in `Grass.h` and `Grass_Mesh.cpp`.  
 _ToDo_: add RTT for density map, read terrain height map in shader..  
 [old topic](https://forums.ogre3d.org/viewtopic.php?t=85626&start=25)  
+[some info](https://forums.ogre3d.org/viewtopic.php?p=553666#p553666) (under "How should I add grass?") on how to do it better.  
 
 
 ## SR
@@ -325,6 +326,16 @@ Some links (few also in [post here](https://forums.ogre3d.org/viewtopic.php?p=55
 - [?Compositors, HLMS and depth buffers](https://forums.ogre3d.org/viewtopic.php?p=543364#p543364)
 - [done] [basic using in app](https://ogrecave.github.io/ogre-next/api/2.3/_using_ogre_in_your_app.html)
 
+## HLMS shaders output
+
+Shaders are saved to `/home/ch/.cache/stuntrally3/shaders`.  
+This is useful to know what finally ended in all shader's code (e.g. glsl) after HLMS did its preprocessor work.  
+Can be disabled, find all 3 `setDebugOutputPath` and set 1st arg to false, 2nd is for properties.  
+
+With 2nd arg true, properties are at top of each shader file,  
+this makes all compiling errors have wrong line numbers,  
+but at least one can get some idea of what kind of shader it was.
+
 ## HLMS extending 🌠
 
 Customizing [doc link](https://ogrecave.github.io/ogre-next/api/latest/hlms.html#HlmsCreationOfShadersCustomizing).
@@ -344,8 +355,9 @@ And we have own `HlmsPbsDatablock2` with more stuff when needed for paint or flu
 
 ### Adding more uniforms
 
-Adding more params **for all shaders**. E.g. `globalTime` and our own fog stuff like `fogHparams`.  
+Adding more params for Pbs shaders and terrain. E.g. `globalTime` and our own height fog like `fogHparams`.  
 Easiest to add new in `struct AtmoSettingsGpu` also `struct AtmoSettings` and then fill it in `Atmosphere2Npr::_update` (called each frame).  
+_ToDo_: This is half working way. Not all have `atmo` struct.  
 
 ### setProperty
 
@@ -408,14 +420,16 @@ Or after call `_getFullTransformUpdated(` e.g. for `ndSky`, `light->getParentNod
 
 ### Workspaces 🪄
 
+Workspace basically is the setup for rendering one view target, only like reflection, shadow, etc and lastly screen.  
 Many compositor Workspaces are created from code (telling how to render stuff, also few extra for editor minimap RTT).  
-In `.log` lines with: `++++ WS add:`, in cpp code any `addWorkspace`.  
+Creating is in `.log` lines with: `++++ WS add:`, and in cpp code by any `addWorkspace`.  
 
-`SR3.compositor` has definitions for most workspaces used. Only shadows are made in code.
+`SR3.compositor` has definitions for most workspaces used.  
+Only shadows are made completely by code in `src/common/AppGui_Shadows.cpp`, based on `Samples/2.0/ApiUsage/ShadowMapFromCode/ShadowMapFromCode.cpp`.
 
 ### Workspace Listener
 
-[Done] Do `workspace->addListener(` so that `PlanarReflWorkspaceListener` is updated, for every workspace that can see the reflection (e.g. the cubemap workspaces).  
+We do `workspace->addListener(` so that `PlanarReflWorkspaceListener` is updated, for _every_ workspace that can see the reflection (e.g. the cubemap workspaces).  
 In code `AddListenerRnd2Tex()`, it's `ReflectListener`, `mWsListener` in `Reflect.h`.
 
 `ReflectListener::passEarlyPreExecute` does check which `render_pass` it is from `SR3.compositor` by `identifier` number.

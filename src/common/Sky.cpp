@@ -142,18 +142,20 @@ void CScene::UpdFog(bool on, bool off)
 		2000.f / sc->fogHEnd * 0.0004f,  //** par`
 		// 2000.f / (sc->fogHEnd - sc->fogHStart) * 0.0004f,  //** par`
 		sc->fogHStart);
+
 	//sc->fogHeight, ok ? 1.f/sc->fogHDensity : 0.f,
 	//sc->fogHStart, 1.f/(sc->fogHEnd - sc->fogHStart);
+	p.fogColourSun = sc->fogClr.GetRGBA();
+	p.fogColourAway = sc->fogClr2.GetRGBA();
 
+ 	// pars  not used, not on gui..
 	p.densityCoeff = 0.27f;  //0.47f;
 	p.densityDiffusion = 0.75f;  //2.0f;
 	p.horizonLimit = 0.025f;
-	p.sunPower = 1.0f;  // par gui..
+	p.sunPower = 1.0f;
 	p.skyPower = 1.0f;
 	// p.skyColour = Vector3(0,0.5,1);// sc->fogClr2.GetRGB();
 	p.skyColour = sc->fogClr2.GetRGB1(); //?- Vector3(0.234f, 0.57f, 1.0f);
-	p.fogColourSun = sc->fogClr.GetRGBA();
-	p.fogColourAway = sc->fogClr2.GetRGBA();
 	
 	p.fogBreakMinBrightness = 0.25f;
 	p.fogBreakFalloff = 0.1f;
@@ -297,8 +299,16 @@ void CScene::UpdSun(float dt)
 		// -dir + Ogre::Vector3::UNIT_Y * 0.2f );
 
 	//  🌪️ inc time for  water, grass wind, etc
-	if (dt > 0.f)
+	if (atmo && dt > 0.f)
 		atmo->globalTime += dt;
+	
+	//  wind
+
+	//  grass
+
+	//  post
+	// if (atmo)
+	// 	atmo->gamma = app->pSet->gamma;
 }
 
 

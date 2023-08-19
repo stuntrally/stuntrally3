@@ -5,7 +5,8 @@
 @piece( envSpecularRoughnessClearCoat ) pixelData.clearCoatPerceptualRoughness * midf_c( passBuf.envMapNumMipmaps ) * ( _h( 2.0 ) - pixelData.clearCoatPerceptualRoughness ) @end
 
 @piece( DefaultHeaderPS )
-	// START UNIFORM DECLARATION
+
+	// START UNIFORM DECLARATION  PS  Pbs
 	@property( !hlms_shadowcaster || alpha_test )
 		@property( !hlms_shadowcaster )
 			@insertpiece( PassStructDecl )
@@ -15,7 +16,7 @@
 		@insertpiece( AtmosphereNprSkyStructDecl )
 	@end
 	@insertpiece( custom_ps_uniformStructDeclaration )
-	// END UNIFORM DECLARATION
+	// END UNIFORM DECLARATION  PS  Pbs
 
 	@property( !fresnel_scalar )
 		#define float_fresnel midf
@@ -875,7 +876,7 @@ uv3 = UV * WAVE_SCALE * 2.0  + windTime * 0.7  -(normal4.xy/normal4.zz)*WAVE_CHO
 				pixelData.normal = normalize( mul( TBN, pixelData.normal ) );
 			@end
 
-	//---- clr3 mix  color changing paints  ***
+	//---- clr3 mix  color changing paints  ***  // todo: this is in all pbs shaders now
 			
 			if (material.userValue[0].w > _h( 0.0 ))  // all black
 			{
@@ -1029,7 +1030,7 @@ uv3 = UV * WAVE_SCALE * 2.0  + windTime * 0.7  -(normal4.xy/normal4.zz)*WAVE_CHO
 			@property( hlms_normal || hlms_qtangent )
 
 				//**  gamma  --
-				// finalColour.xyz = pow(finalColour, midf3_c(1.1f, 1.1f, 1.1f));
+				finalColour.xyz = pow(finalColour, midf3_c(1.2, 1.2, 1.2) );
 
 				@property( !hw_gamma_write )
 					//Linear to Gamma space

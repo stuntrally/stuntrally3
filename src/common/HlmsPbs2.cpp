@@ -65,11 +65,11 @@ void HlmsPbs2::calculateHashForPreCreate(
 	if (mtr.substr(0,4) == "sky/")
 		setProperty( "sky", 1 );
 
-	if (mtr.find("body") != String::npos)
+	/*if (mtr.find("body") != String::npos)
 	{
 		// LogO("body_paint");
 		setProperty( "body_paint", 1 );
-	}
+	}*/
 	// if (mtr.find("road") != std::string::npos)
 	// if (mtr.substr(0,4) == "road")
 	// 	setProperty( "road", 1 );
@@ -94,11 +94,11 @@ void HlmsPbs2::calculateHashForPreCaster(
 	if (mtr.substr(0,5) == "grass")
 		setProperty( "grass", 1 );
 
-	if (mtr.find("body") != String::npos)
+	/*if (mtr.find("body") != String::npos)
 	{
 		// LogO("body_paint");
 		setProperty( "body_paint", 1 );
-	}
+	}*/
 }
 
 

@@ -168,7 +168,7 @@
 	pixelData.specular.xyz = pixelData.specular.xyz * metalness;  //** metalness as specular multiplier
 
 	// pixelData.F0 = midf3_c( 0.03f, 0.03f, 0.03f );  //*
-	pixelData.F0 = lerp( midf3_c( 0.03f, 0.03f, 0.03f ),  // ?
+	pixelData.F0 = lerp( midf3_c( 0.03, 0.03, 0.03 ),  // ?
 						pixelData.diffuse.xyz * _h( 3.14159f ), metalness );  //.x;
 	// pixelData.diffuse.xyz = pixelData.diffuse.xyz - pixelData.diffuse.xyz * metalness;  //* -
 @end
@@ -413,12 +413,13 @@
 		@property( !hlms_prepass )
 
 			//**  gamma  --
-			// finalColour.xyz = pow(finalColour, midf3_c(1.1f, 1.1f, 1.1f));
+			finalColour.xyz = pow(finalColour, midf3_c(1.2, 1.2, 1.2));
 
 			//**  emissive terrain
 			@property( emissive_terrain && !hlms_shadowcaster && hlms_lights_directional )
 				// material.kD.xyz  // par.. ++
-				finalColour += 4.0 * pow(metalness, 1.5) * light0Buf.lights[0].specular.xyz;
+				// todo:
+				//finalColour += 4.0 * pow(metalness, 1.5) * light0Buf.lights[0].specular.xyz;
 			@end
 
 			@property( !hw_gamma_write )
