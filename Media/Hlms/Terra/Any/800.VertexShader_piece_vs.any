@@ -13,7 +13,8 @@
 //in int inVs_vertexId;
 
 @piece( DefaultTerraHeaderVS )
-	// START UNIFORM DECLARATION
+
+	// START UNIFORM DECLARATION  VS  Terra
 	@insertpiece( PassStructDecl )
 	@insertpiece( TerraInstanceStructDecl )
 	@property( hlms_shadowcaster )
@@ -22,7 +23,7 @@
 	@end
 	@insertpiece( AtmosphereNprSkyStructDecl )
 	@insertpiece( custom_vs_uniformStructDeclaration )
-	// END UNIFORM DECLARATION
+	// END UNIFORM DECLARATION  VS  Terra
 
 	@insertpiece( DeclAtmosphereNprSkyFuncs )
 @end

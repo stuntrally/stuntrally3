@@ -1,6 +1,4 @@
 
-#include "/media/matias/Datos/SyntaxHighlightingMisc.h"
-
     ///_ calculate fog  * OLD *
     // float fogDepth = shSaturate((depth - fogParams.y) * fogParams.w);  // w = 1 / (max - min)
     // float fogDepthH = shSaturate((depth - fogParamsH.z) * fogParamsH.w);

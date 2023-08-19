@@ -4,14 +4,14 @@
 @piece( DefaultHeaderVS )
 	@insertpiece( Common_Matrix_DeclUnpackMatrix4x4 )
 
-	// START UNIFORM DECLARATION
+	// START UNIFORM DECLARATION  VS  Unlit
 	@insertpiece( PassStructDecl )
 	@property( ( !hlms_shadowcaster || alpha_test ) && hlms_colour && diffuse )
 		@insertpiece( MaterialStructDecl )
 	@end
 	@insertpiece( InstanceStructDecl )
 	@insertpiece( custom_vs_uniformStructDeclaration )
-	// END UNIFORM DECLARATION
+	// END UNIFORM DECLARATION  VS  Unlit
 
 	@property( !hlms_instanced_stereo )
 		@property( !hlms_identity_world )

@@ -29,9 +29,9 @@ struct PS_INPUT
 @insertpiece( DefaultTerraHeaderVS )
 @insertpiece( custom_vs_uniformDeclaration )
 
-// START UNIFORM DECLARATION
+// START UNIFORM DECLARATION  VS  Terra  hlsl
 Texture2D<float> heightMap: register(t@value(heightMap));
-// END UNIFORM DECLARATION
+// END UNIFORM DECLARATION  VS  Terra  hlsl
 
 PS_INPUT main( VS_INPUT input )
 {

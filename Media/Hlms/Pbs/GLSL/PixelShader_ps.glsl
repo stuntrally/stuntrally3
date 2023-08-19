@@ -77,6 +77,8 @@ vulkan_layout( location = 0 ) in block
 
 @property( !hlms_shadowcaster )
 
+/// NORMAL !hlms_shadowcaster
+
 @property( hlms_forwardplus )
 	vulkan_layout( ogre_T@value(f3dGrid) ) uniform usamplerBuffer f3dGrid;
 	ReadOnlyBufferF( @value(f3dLightList), float4, f3dLightList );
@@ -135,6 +137,8 @@ void main()
 	@insertpiece( custom_ps_posExecution )
 }
 @else ///!hlms_shadowcaster
+
+/// THIS IS  hlms_shadowcaster
 
 @insertpiece( DeclShadowCasterMacros )
 

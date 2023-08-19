@@ -11,9 +11,9 @@ layout(std140) uniform;
 
 @insertpiece( DefaultTerraHeaderPS )
 
-// START UNIFORM DECLARATION
+// START UNIFORM DECLARATION  PS  Terra  glsl
 @insertpiece( custom_ps_uniformDeclaration )
-// END UNIFORM DECLARATION
+// END UNIFORM DECLARATION  PS  Terra  glsl
 
 @insertpiece( PccManualProbeDecl )
 

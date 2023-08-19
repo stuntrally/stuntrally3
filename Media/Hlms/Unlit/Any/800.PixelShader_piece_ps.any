@@ -24,16 +24,17 @@
 		@end
 	@end
 
-	// START UNIFORM DECLARATION
+	// START UNIFORM DECLARATION  PS  Unlit
 	@property( has_planar_reflections || hlms_shadowcaster_point )
 		@insertpiece( PassStructDecl )
 	@end
 	@property( !hlms_shadowcaster || alpha_test )
 		@insertpiece( MaterialStructDecl )
 		@insertpiece( InstanceStructDecl )
+		// todo: float gamma?
 	@end
 	@insertpiece( custom_ps_uniformStructDeclaration )
-	// END UNIFORM DECLARATION
+	// END UNIFORM DECLARATION  PS  Unlit
 @end
 
 //-----------------------------------------------------------------------------
@@ -131,14 +132,14 @@
 					 float3(1.0, 0.4, 0.0), onP) * (0.2 + 0.8*clrLi)  // orange
 			,pipe);
 			
-		diffuseCol = midf4_c(pow(clr.rgb, midf3_c(2.f, 2.f, 2.f)), 1.0);
+		diffuseCol = midf4_c(pow(clr.rgb, midf3_c(2.0, 2.0, 2.0)), 1.0);
 		// diffuseCol = midf4_c(clr.rgb, 1.0);
 	@end
 //  ED RTT  ------------
 
 
 	//**  gamma  --
-	// diffuseCol.xyz = pow(diffuseCol.xyz, midf3_c(1.1f, 1.1f, 1.1f));
+	// diffuseCol.xyz = pow(diffuseCol.xyz, midf3_c(1.2, 1.2, 1.2));
 
 	@insertpiece( custom_ps_preLights )
 

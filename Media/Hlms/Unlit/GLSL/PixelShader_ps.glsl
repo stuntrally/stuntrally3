@@ -14,9 +14,10 @@ layout(location = FRAG_COLOR, index = 0) out midf4 outColour;
 layout(location = FRAG_COLOR, index = 0) out midf outColour;
 @end
 
-// START UNIFORM DECLARATION
+// START UNIFORM DECLARATION  PS  Unlit  glsl
 @insertpiece( custom_ps_uniformDeclaration )
-// END UNIFORM DECLARATION
+// END UNIFORM DECLARATION  PS  Unlit  glsl
+
 @property( !hlms_shadowcaster || !hlms_shadow_uses_depth_texture || exponential_shadow_maps )
 	vulkan_layout( location = 0 ) in block
 	{

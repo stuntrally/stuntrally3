@@ -1,8 +1,8 @@
 @insertpiece( SetCrossPlatformSettings )
 
-// START UNIFORM DECLARATION
+// START UNIFORM DECLARATION  PS  Unlit  hlsl
 @insertpiece( custom_ps_uniformDeclaration )
-// END UNIFORM DECLARATION
+// END UNIFORM DECLARATION  PS  Unlit  hlsl
 
 struct PS_INPUT
 {
