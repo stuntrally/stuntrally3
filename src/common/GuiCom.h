@@ -100,8 +100,9 @@ public:
 	void btnReflApply(WP);
 
 	//  🌊 water
-	SlV(WaterSize);
 	Ck ckWaterReflect, ckWaterRefract;  void chkWater(Ck*);
+	SlV(WaterSize);  SlV(WaterDist);  SlV(WaterLod);  SlV(WaterSkip);
+	void btnWaterApply(WP);
 
 	// Ck ckLimitFps;
 	// SV svLimitFps,svLimitSleep;

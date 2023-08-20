@@ -112,8 +112,12 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	ck= &ckWaterRefract; ck->Init("WaterRefraction", &pSet->water_refract);  CevC(Water);
 	sv= &svWaterSize;
 		for (int i=0; i < NumTexSizes; ++i)  sv->strMap[i] = toStr(cTexSizes[i]);
-						sv->Init("WaterSize",	&pSet->water_rttsize, 0,NumTexSizes-1);  sv->DefaultI(0);  SevC(WaterSize);
-	// BtnC("ApplyShadersWater", btnShaders);
+						sv->Init("WaterSize",	&pSet->water_size, 0,NumTexSizes-1);  sv->DefaultI(0);  SevC(WaterSize);
+
+	sv= &svWaterSkip;	sv->Init("WaterSkip",	&pSet->water_skip,	0,20, 1.f);  sv->DefaultI(0);
+	sv= &svWaterDist;	sv->Init("WaterDist",	&pSet->water_dist,	20.f,60000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));  sv->DefaultF(300.f);
+	sv= &svWaterLod;	sv->Init("WaterLod",	&pSet->water_lod,	0.f,2.f, 2.f);  sv->DefaultF(0.4f);
+	BtnC("ApplyShadersWater", btnWaterApply);
 
 
 	//  Presets
@@ -288,4 +292,9 @@ void CGuiCom::slWaterSize(SV*)
 {
 	// app->scn->mWaterRTT->setRTTSize(ciShadowSizesA[pSet->water_rttsize]);
 	// app->scn->mWaterRTT->recreate();
+}
+
+void CGuiCom::btnWaterApply(WP)
+{
+
 }

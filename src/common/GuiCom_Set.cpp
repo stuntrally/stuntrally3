@@ -42,7 +42,7 @@ void CGuiCom::comboGraphicsAll(ComboBoxPtr cmb, size_t val)
 		s.anisotropy = 0;  s.view_distance = 5000;
 		s.lod_bias = 0.2f;  s.ter_detail = 2.0f;  s.road_dist = 1.0;
 		s.ter_tripl = 0;  s.tripl_horiz = 0;  s.horizons = 0;  // s.ter_mtr = 0;
-		s.water_reflect = 0;  s.water_refract = 0;  s.water_rttsize = 0;
+		s.water_reflect = 0;  s.water_refract = 0;  s.water_size = 0;
 		s.shadow_type = Sh_None;  s.shadow_size = 0;  s.shadow_count = 1;  s.shadow_dist = 100;
 		s.gui.trees = 0.f;  s.grass = 0.f;  s.trees_dist = 1.f;  s.grass_dist = 1.f;	break;
 
@@ -50,7 +50,7 @@ void CGuiCom::comboGraphicsAll(ComboBoxPtr cmb, size_t val)
 		s.anisotropy = 0;  s.view_distance = 10000;
 		s.lod_bias = 0.4f;  s.ter_detail = 0.f;  s.road_dist = 1.2;
 		s.ter_tripl = 0;  s.tripl_horiz = 0;  s.horizons = 0;  // s.ter_mtr = 1;
-		s.water_reflect = 0;  s.water_refract = 0;  s.water_rttsize = 0;
+		s.water_reflect = 0;  s.water_refract = 0;  s.water_size = 0;
 		s.shadow_type = Sh_None;  s.shadow_size = 0;  s.shadow_count = 1;  s.shadow_dist = 100;
 		s.gui.trees = 0.f;  s.grass = 0.f;  s.trees_dist = 1.f;  s.grass_dist = 1.f;	break;
 
@@ -58,7 +58,7 @@ void CGuiCom::comboGraphicsAll(ComboBoxPtr cmb, size_t val)
 		s.anisotropy = 2;  s.view_distance = 15000;
 		s.lod_bias = 0.6f;  s.ter_detail = 0.f;  s.road_dist = 1.4;
 		s.ter_tripl = 0;  s.tripl_horiz = 0;  s.horizons = 1;  // s.ter_mtr = 1;
-		s.water_reflect = 0;  s.water_refract = 0;  s.water_rttsize = 0;
+		s.water_reflect = 0;  s.water_refract = 0;  s.water_size = 0;
 		s.shadow_type = Sh_Depth;  s.shadow_size = 1;  s.shadow_count = 1;  s.shadow_dist = 200;
 		s.gui.trees = 0.5f;  s.grass = 1.f;  s.trees_dist = 1.f;  s.grass_dist = 1.f;	break;
 
@@ -66,7 +66,7 @@ void CGuiCom::comboGraphicsAll(ComboBoxPtr cmb, size_t val)
 		s.anisotropy = 4;  s.view_distance = 20000;
 		s.lod_bias = 0.8f;  s.ter_detail = 0.f;  s.road_dist = 1.6;
 		s.ter_tripl = 0;  s.tripl_horiz = 0;  s.horizons = 1;  // s.ter_mtr = 2;
-		s.water_reflect = 1;  s.water_refract = 0;  s.water_rttsize = 0;
+		s.water_reflect = 1;  s.water_refract = 0;  s.water_size = 0;
 		s.shadow_type = Sh_Depth;  s.shadow_size = 2;  s.shadow_count = 1;  s.shadow_dist = 700;
 		s.gui.trees = 1.f;  s.grass = 1.f;  s.trees_dist = 1.f;  s.grass_dist = 1.5f;	break;
 
@@ -74,7 +74,7 @@ void CGuiCom::comboGraphicsAll(ComboBoxPtr cmb, size_t val)
 		s.anisotropy = 4;  s.view_distance = 30000;
 		s.lod_bias = 1.0f;  s.ter_detail = 1.f;  s.road_dist = 1.6;
 		s.ter_tripl = 1;  s.tripl_horiz = 0;  s.horizons = 2;  // s.ter_mtr = 2;
-		s.water_reflect = 1;  s.water_refract = 1;  s.water_rttsize = 0;
+		s.water_reflect = 1;  s.water_refract = 1;  s.water_size = 0;
 		s.shadow_type = Sh_Depth;  s.shadow_size = 3;  s.shadow_count = 2;  s.shadow_dist = 1300;
 		s.gui.trees = 1.5f;  s.grass = 1.f;  s.trees_dist = 1.f;  s.grass_dist = 2.f;	break;
 
@@ -82,7 +82,7 @@ void CGuiCom::comboGraphicsAll(ComboBoxPtr cmb, size_t val)
 		s.anisotropy = 4;  s.view_distance = 40000;
 		s.lod_bias = 1.2f;  s.ter_detail = 1.f;  s.road_dist = 2.0;
 		s.ter_tripl = 1;  s.tripl_horiz = 1;  s.horizons = 2;  // s.ter_mtr = 2;
-		s.water_reflect = 1;  s.water_refract = 1;  s.water_rttsize = 1;
+		s.water_reflect = 1;  s.water_refract = 1;  s.water_size = 1;
 		s.shadow_type = Sh_Depth;  s.shadow_size = 3;  s.shadow_count = 2;  s.shadow_dist = 1600;
 		s.gui.trees = 1.5f;  s.grass = 1.f;  s.trees_dist = 1.f;  s.grass_dist = 2.f;	break;
 
@@ -90,7 +90,7 @@ void CGuiCom::comboGraphicsAll(ComboBoxPtr cmb, size_t val)
 		s.anisotropy = 8;  s.view_distance = 50000;
 		s.lod_bias = 1.5f;  s.ter_detail = 2.f;  s.road_dist = 2.4;
 		s.ter_tripl = 2;  s.tripl_horiz = 1;  s.horizons = 3;  // s.ter_mtr = 2;
-		s.water_reflect = 1;  s.water_refract = 1;  s.water_rttsize = 1;
+		s.water_reflect = 1;  s.water_refract = 1;  s.water_size = 1;
 		s.shadow_type = Sh_Depth;  s.shadow_size = 3;  s.shadow_count = 3;  s.shadow_dist = 2400;
 		s.gui.trees = 2.f;  s.grass = 2.f;  s.trees_dist = 2.f;  s.grass_dist = 3.f;	break;
 
@@ -98,7 +98,7 @@ void CGuiCom::comboGraphicsAll(ComboBoxPtr cmb, size_t val)
 		s.anisotropy = 16;  s.view_distance = 60000;
 		s.lod_bias = 2.0f;  s.ter_detail = 3.f;  s.road_dist = 3.0;
 		s.ter_tripl = 2;  s.tripl_horiz = 2;  s.horizons = 3;  // s.ter_mtr = 2;
-		s.water_reflect = 1;  s.water_refract = 1;  s.water_rttsize = 2;
+		s.water_reflect = 1;  s.water_refract = 1;  s.water_size = 2;
 		s.shadow_type = Sh_Depth;  s.shadow_size = 3;  s.shadow_count = 3;  s.shadow_dist = 3000;
 		s.gui.trees = 2.5f;  s.grass = 2.f;  s.trees_dist = 3.f;  s.grass_dist = 4.f;	break;
 	}

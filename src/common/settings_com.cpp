@@ -61,8 +61,9 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_reflect.mode", refl_mode);
 
 	//  🌊 water
-	Param(c,w, "graph_reflect.water_reflect", water_reflect); Param(c,w, "graph_reflect.water_refract", water_refract);
-	Param(c,w, "graph_reflect.water_rttsize", water_rttsize);
+	Param(c,w, "graph_water.reflect", water_reflect);	Param(c,w, "graph_water.refract", water_refract);
+	Param(c,w, "graph_water.map_size", water_size);		Param(c,w, "graph_water.skip_frames", water_skip);
+	Param(c,w, "graph_water.lod", water_lod);			Param(c,w, "graph_water.water_dist", water_dist);
 
 
 	//  📈 hud

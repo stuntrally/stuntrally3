@@ -48,7 +48,7 @@ public:
 	int ter_tripl = 1, tripl_horiz = 0;  // terrain  // ⛰️
 
 	//  geom detail
-	float view_distance = 20000.f;
+	float view_distance = 60000.f;
 	float lod_bias = 1.f, road_dist = 2.f;
 	int ter_detail = 2;
 	int horizons = 3;
@@ -63,11 +63,13 @@ public:
 	bool car_lights =0, car_light_shadows =0;
 
 	//  🌊 water
-	bool water_reflect, water_refract;  int water_rttsize;
+	bool water_reflect =0, water_refract =0;
+	int water_size = 1, water_skip = 1;
+	float water_lod = 0.3f, water_dist = 60000.f;  //-
 
 	//  🔮 reflections
 	int refl_skip = 2, refl_faces = 2, refl_size = 0, refl_ibl = 32;
-	float refl_dist = 500, refl_lod = 1.f;
+	float refl_dist = 60000.f, refl_lod = 1.f;
 	int refl_mode;  // 0 static, 1 single, 2 full
 
 
