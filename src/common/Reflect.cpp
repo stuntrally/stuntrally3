@@ -175,13 +175,10 @@ void FluidsReflect::CreateFluids()
 	app->UpdFluidBox();
 #endif
 
+	bool reflect = app->pSet->water_reflect;
+	
 	for (int i=0; i < sc->fluids.size(); ++i)
 	{
-//  par ...
-// bool reflect = i==0;  // one
-// bool reflect = 1;  // all  // todo  shader,materials..
-bool reflect = 0;  // off old
-
 		FluidBox& fb = sc->fluids[i];
 		//  plane, mesh  ----
 		Plane p(Vector3::UNIT_Z, 0.f);

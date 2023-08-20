@@ -20,7 +20,8 @@
 namespace wraps {	class RenderBoxScene;  }
 class App;  class SETTINGS;  class CGuiCom;
 class CScene;  class Scene;  class CData;  class TerData;
-class HlmsPbsDatablock2;
+class HlmsPbsDbCar;
+namespace Ogre {  class HlmsPbsDatablock;  }
 
 
 class CGui : public BGui
@@ -406,7 +407,8 @@ public:
 	Ed edMtrFind =0;  void editMtrFind(Ed);
 	struct TwkMtr
 	{
-		HlmsPbsDatablock2 *db =0;
+		// HlmsPbsDbCar *db =0;
+		Ogre::HlmsPbsDatablock* db =0;
 	#define SVf(n)  SV sv##n;  float f##n =0.f;
 		SVf(DiffR)  SVf(DiffG)  SVf(DiffB)
 		SVf(SpecR)  SVf(SpecG)  SVf(SpecB)

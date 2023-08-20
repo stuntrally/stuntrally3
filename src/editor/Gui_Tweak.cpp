@@ -90,7 +90,7 @@ void CGui::slTweakMtr(SV* sv)
 void CGui::updTweakMtr()
 {
 	auto hlms = Root::getSingleton().getHlmsManager()->getHlms( HLMS_PBS );
-	twk.db = (HlmsPbsDatablock2*) hlms->getDatablock( pSet->tweak_mtr );
+	twk.db = (HlmsPbsDatablock*) hlms->getDatablock( pSet->tweak_mtr );
 	if (!twk.db)  return;
 	Vector3 v;  float f;  int i;
 
@@ -108,6 +108,7 @@ void CGui::updTweakMtr()
 
 	//----------------------------------------------------------------------------------------------------
 	StringStream s;  // info only ..
+
 	auto* tex = twk.db->getDiffuseTexture();    if (tex)  s << "Diffuse:    " << tex->getNameStr() << endl;
     tex = twk.db->getTexture(PBSM_NORMAL);      if (tex)  s << "Normal:    " << tex->getNameStr() << endl;
     tex = twk.db->getTexture(PBSM_SPECULAR);    if (tex)  s << "Specular:  " << tex->getNameStr() << endl;
@@ -155,10 +156,18 @@ void CGui::updTweakMtr()
 
 	s << "Emissive: " << twk.db->getEmissive() << "  as lightmap: " << twk.db->getUseEmissiveAsLightmap() << endl;
 	s << "Backgr Diff clr: " << twk.db->getBackgroundDiffuse() << endl;
+	s << endl;
 
-	s << "Detail offset,scale: " << twk.db->getDetailMapOffsetScale(0) << endl;
-	s << "Detail weights map: " << twk.db->getDetailMapWeight(0)
-	  << "  normal: " << twk.db->getDetailNormalWeight(0) << endl;
+	///  user[3], detail[4]
+	for (i=0; i<3; ++i)
+		s << "UserValue " << i << ":    " << twk.db->getUserValue(i) << endl;
+
+	for (i=0; i<4; ++i)
+	{
+		s << "Detail offset,scale " << i << ": " << twk.db->getDetailMapOffsetScale(i) << endl;
+		s << "Detail weights map " << i << ": " << twk.db->getDetailMapWeight(i)
+		<< "  normal: " << twk.db->getDetailNormalWeight(i) << endl;
+	}
 	// twk.db->hasSeparateFresnel()
 	// s << ": " << twk.db->getDetailMapBlendMode() << endl;
 	
@@ -234,6 +243,9 @@ void CGui::GetTweakMtr(String path)
 	liTweakMtr = fLi("TweakMtr");  Lev(liTweakMtr, TweakMtr);
 
 	vsMaterials.clear();
+	// vsMaterials.push_back("#0080FF  ~~~~  Car  ~~~~");
+	// GetMaterialsMat(path+"cars.material",0);  //-
+	vsMaterials.push_back("#0080FFbody_realtime");
 	vsMaterials.push_back("#0080FF  ~~~~  Water  ~~~~");
 	GetMaterialsMat(path+"water.material",0);
 	vsMaterials.push_back("#FFFF00    ---  o O   Pipe  O o  ---");

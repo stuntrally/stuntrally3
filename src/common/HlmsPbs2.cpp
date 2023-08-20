@@ -111,21 +111,27 @@ HlmsDatablock* HlmsPbs2::createDatablockImpl(
 	const HlmsParamVec &params )
 {
 	String val;
-	if( Hlms::findParamInVec( params, "paint", val ) )
+	if( Hlms::findParamInVec( params, "fluid", val ) )
+	{
+		// LogO("paint db2 fluid");
+
+		return OGRE_NEW HlmsPbsDbWater( name, this, macro, blend, params );
+	}
+	else if( Hlms::findParamInVec( params, "paint", val ) )
 	{
 		// LogO("paint db2 new");
 		// LogO(name.getFriendlyText());  // hash-
 		// for (auto p : params)
 		//	LogO(p.second);
 
-		return OGRE_NEW HlmsPbsDatablock2( name, this, macro, blend, params );
+		return OGRE_NEW HlmsPbsDbCar( name, this, macro, blend, params );
 	}else
 		return OGRE_NEW HlmsPbsDatablock( name, this, macro, blend, params );
 }
 
 
 //  💫 upload ConstBuffer
-void HlmsPbsDatablock2::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
+void HlmsPbsDbCar::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
 {
     // float mUserValue[3][4];  // can be used in custom pieces
 	for (int i=0; i < 3; ++i)
@@ -167,7 +173,7 @@ return;  // !!
 }
 
 //  🌟 ctor
-HlmsPbsDatablock2::HlmsPbsDatablock2(
+HlmsPbsDbCar::HlmsPbsDbCar(
 	IdString name, HlmsPbs2 *creator,
 	const HlmsMacroblock *macro, const HlmsBlendblock *blend,
 	const HlmsParamVec &params )
@@ -180,21 +186,71 @@ HlmsPbsDatablock2::HlmsPbsDatablock2(
 		paint = 1;
 		//Vector3 v = StringConverter::parseVector3( val, Vector3::UNIT_SCALE );
 		// setDiffuse( v );
-		// scheduleConstBufferUpdate();
+		scheduleConstBufferUpdate();
 	}
 }
 
 //  clone
-void HlmsPbsDatablock2::cloneImpl( HlmsDatablock *db ) const
+void HlmsPbsDbCar::cloneImpl( HlmsDatablock *db ) const
 {
 	HlmsPbsDatablock::cloneImpl( db );
-	HlmsPbsDatablock2 *db2 = static_cast<HlmsPbsDatablock2*>( db );
+	HlmsPbsDbCar *db2 = static_cast<HlmsPbsDbCar*>( db );
 
 	db2->paint = paint;
 	for (int i=0; i < 3; ++i)
 		db2->paintClr[i] = paintClr[i];
 	db2->paintMul = paintMul;
 }
+
+
+// Ogre::Vector4 waterClr[3] = {Ogre::Vector4(0,0.5,1,0), Ogre::Vector4(0,1,0,0), Ogre::Vector4(1,0.5,0,0)};
+
+//  fluid params
+HlmsPbsDbWater::HlmsPbsDbWater(
+		Ogre::IdString name, HlmsPbs2 *creator,
+		const Ogre::HlmsMacroblock *macro,
+		const Ogre::HlmsBlendblock *blend,
+		const Ogre::HlmsParamVec &params )
+	: HlmsPbsDatablock( name, creator, macro, blend, params )
+{
+	String val;
+	if( Hlms::findParamInVec( params, "fluid", val ) )
+	{
+		// LogO("fluid db2 ctor 1");
+
+		if( Hlms::findParamInVec( params, "waves", val ) )
+		{
+			Vector4 v = StringConverter::parseVector4( val, Vector4(0,0,1,1) );
+			LogO(fToStr(v.x)+" "+fToStr(v.y)+" "+fToStr(v.z)+" "+fToStr(v.w));
+			mDetailsOffsetScale[0][0] = static_cast<float>( v.x );
+			mDetailsOffsetScale[0][1] = static_cast<float>( v.y );
+			mDetailsOffsetScale[0][2] = static_cast<float>( v.z );
+			mDetailsOffsetScale[0][3] = static_cast<float>( v.w );
+			// setDiffuse( v );
+		}
+		scheduleConstBufferUpdate();
+	}
+}
+
+//  💫 upload ConstBuffer
+void HlmsPbsDbWater::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
+{
+	// LogO("water db2 upload");
+	HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #if 0

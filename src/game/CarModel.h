@@ -18,7 +18,7 @@ namespace Ogre {  class HlmsPbsDatablock;
 namespace MyGUI {  class TextBox;  }
 class SETTINGS;  class GAME;  class CAR;
 class Scene;  class App;  class FollowCamera;  struct Cam;
-class HlmsPbsDatablock2;
+class HlmsPbsDbCar;
 
 
 //  CarModel is the "Ogre" part of a Vehicle.
@@ -134,7 +134,7 @@ public:
 	//  🎨 paint
 	int iColor = 0;  // color id
 	Ogre::ColourValue color;  // for minimap pos tri color
-	HlmsPbsDatablock2 *db =0;
+	HlmsPbsDbCar *db =0;
 	void SetPaint();  //  Apply new color
 	
 	

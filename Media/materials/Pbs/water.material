@@ -16,7 +16,7 @@ hlms WaterReflect pbs
 	// specular_map ycrystals_med_d.jpg  //~
 	// specular_map snow1_d.jpg
 	
-	normal_map  wave_nm.png  // sr old
+	normal_map  water_nm.png  // sr old
 	// normal_map  waveNM.png  // n^
 	// normal_map	normal_1.png  //`
 	// normal_map	normal_2.png  //-`
@@ -31,6 +31,8 @@ hlms WaterReflect pbs
 	// roughness	1.0
 	// roughness_map  ycrystals_med_s.jpg
 	// roughness_map  GlassRoughness.png
+	fluid yes
+	waves 0.2 0.3 0.4 0.5
 }
 
 
