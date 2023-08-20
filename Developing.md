@@ -8,14 +8,20 @@ Can be useful if you want to:
 - learn about Ogre-Next used in SR3 or other libraries etc
 - fork SR3 code and start your own project (license required: GPLv3 or newer) based on it
 
+## SR3 ToDo
+
+Many _ToDo_: tasks are added around here BTW of topics.  
+Shorter, fast updated list with more is on [Roadmap](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap).  
+And more in oldest [Task list](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with good info (sort by P, 1 is most important).  
+
 ## IDE
 
-Recommended, for having e.g. go to definition, find references:
+Recommended all in one tool, having e.g.: go to definition, find references, debugging etc.
 ### [Qt Creator](https://www.qt.io/download)
 Easier to set up first, CMake is integrated. Fast, but less options.
 
 ### [VSCodium](https://github.com/VSCodium/vscodium/releases)
-Used by CryHam, needs more to set up. Info on [my guide](https://cryham.tuxfamily.org/cpp-guide/#VSCodium).  
+Used by CryHam, needs more to set up. More info on [my C++ guide](https://cryham.tuxfamily.org/cpp-guide/#VSCodium).  
 Search in all files works super fast. Many extensions available.  
 
 Extensions needed at least: 
@@ -64,47 +70,69 @@ Main files in `Media/Hlms/Terra/Any`.
 - **PBS**, regular shaders for all materials (objects, road,  cars, vegetation etc).  
 Main files in `Media/Hlms/Pbs/Any/Main`.  
 I'm writing **water**/fluids also inside PBS, don't want to split.
-- Unlit (not lighting). We should only use this for **Gui**.  
-**Particles** must be at least: colored by sun diffuse, darker by shadows, also by terrain.
+- Unlit (no lighting). We should only use this for **Gui**.  
+**Particles** must be at least: colored by sun diffuse, darker by shadows, also by terrain.  
 Small files in `Media/Hlms/Unlit/Any`.
 
-Shader code `.any` files are preferred, universal and get translated to `.glsl` or `.hlsl`.
+Shader code in `.any` files are preferred, universal and these get translated to `.glsl` or `.hlsl` at end.
 
 ----
 ## ⚖️ Materials comparison
 
-Everything with materials is different.  
-In **old** SR with Ogre, we used shiny material generator with its own `.shader` syntax and `.mat` files.  
-Now in SR3 with Ogre-Next we use HLMS and **new** PBS materials.  
+Almost everything with materials is different now in SR3.  
+In **old** SR with Ogre, we used _shiny_ material generator with its own `.shader` syntax and `.mat` files.  
+Now in SR3 with Ogre-Next we use _HLMS_ and **new** PBS materials.  
 
 ### ⭐ Old
 
-From old `.mat` files such parameters are changed:
-- `ambient` color - gone, nothing in new
+Old `.mat` example for new material `ES_glass` inheriting from `car_glass`:  
+```
+material ES_glass
+{
+	parent car_glass
+```
+
+From old `.mat` files main parameters changed are:
+- `ambient` color - **gone**, nothing in new
 - `specular` - power exponent (4th number), use new `roughness` for this
 - `env_map true` - _ToDo:_ reflection is now as `re="1"` in `presets.xml`.
 - `refl_amount` - now fresnel
+- `twoside_diffuse true` - now `two_sided true` - for tree leaves, glass etc
 
 ### 🌠 New
 
-We use default `specular_workflow`, metallic workflow is simpler.  
-New HLMS `.material` parameters:
+New `.material` example of new material `ES_glass` **inheriting** from `car_glass`:  
+```
+hlms ES_glass pbs : car_glass
+{
+```
+
+New HLMS `.material` parameters, using [PBS](https://duckduckgo.com/?q=physically+based+shading&t=newext&atb=v321-1&ia=web) - Physically Based Shading:
 - `roughness` 0.001 to 1.0 (replaces old specular power exponent).
 - `metalness` (not to be used in specular_workflow?).
 - `fresnel` is _reflection_ (mirror) amount and
 - `fresnel_coeff` is its color.
 
+We use default `specular_workflow`, metallic workflow is simpler.  
+
+Also texture keywords changed, all are optional:  
+`diffuse_map`, `normal_map`, `specular_map`, `roughness_map`, `emissive_map`.
+
 For terrain layer textures these parames are in `presets.xml` as `ro - roughness, me - metalness, re - reflection`.
+
+### New continued
 
 All in code `Ogre/ogre-next/Components/Hlms/Pbs/src/OgreHlmsPbsDatablock.cpp`.  
 Datablock is basically what has all material parameters.  
 
-Currently editing files is the only way like before.  
+Currently **editing files** is the only way like before.  
 Main `.material` **files** are in `/Media/materials/Pbs`.  
 Materials can be adjusted real-time in SR3 Track Editor: from Options, on tab **Tweak**, find material and use sliders etc.  
 _ToDo:_ this should be our main tool, needs saving .material .json files.  
-There is also that `.material.json` format, longer and more advanced, not too great to edit by hand.
 
+There is also that `.material.json` format, longer and more advanced, worse to edit by hand.  
+But in `.material.json` you can't inherit materials. (confirmed [here](https://forums.ogre3d.org/viewtopic.php?p=553712#p553712)).  
+And in `.material` scripts you can't set textures to wrap or other sampler configs.  
 
 --------
 
@@ -173,6 +201,11 @@ Has also some MyGui classes a bit extended: `MultiList2.*, Slider*.*, Gui_Popup.
 - vdrift - SR simulation (based on old [VDrift] from about 2010) with a lot of changes and custom code,  
 Also has simulation for spaceships, sphere etc, and for `Buoyancy.*`.
 
+## Art, tasks
+
+[topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800) - Remove all non CC data, topic, New skies.  
+More todo on [Roadmap](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap).
+
 
 ----
 
@@ -211,22 +244,25 @@ SR3 loads `heightmap.f32` and gets size (e.g. 1024) from file size (1024*1024*4 
 
 Terra by design had _normalized float heights_ from 0.0 to 1.0 only.  
 We **don't** use that, changed it, since our Hmap and SR editor use any, real height values.  
-_ToDo:_  
+
+**_ToDo:_**  
 This **broke** `src/Terra/TerraShadowMapper.cpp` shadowmap generation (mostly for heights below 0).  
-and terrain shadowmap is disabled.  
-BTW it took way to long, 5 sec at start, possibly due to compute shader building.  
+and terrain **shadowmap** is disabled.  
+BTW it took way too long, 5 sec at start, possibly due to compute shader building.  
 It's this `if (!m_bGenerateShadowMap)` and `return;  //**  5 sec delay` below.  
 
-This also **broke** terrain page visibility. Likely decreasing Fps, no idea how much.  
+This also **broke** terrain page **visibility**. Likely decreasing Fps, no idea how much.  
 Made all visible in `Terra::isVisible` for `if (!bNormalized)`.  
 In ctor `Terra::Terra(` setting `bNormalized` to 1 does try to normalize Hmap.  
 
 #### Extended
 
-Terra Extended with old SR **blendmap** RTT and its noise.  
-Also with emissive layers, property: `emissive terrain`.  
-Changed skirt to be relative size below, not that default big to lowest point.
+Terra is extended with **blendmap** RTT (from old SR) and its noise.  
+Also with emissive, property: `emissive terrain`.  
+Changed skirt to be relative size below, not that default big to lowest point.  
 _ToDo:_ Some holes can appear on horizon terrains. Should be highe for them.
+
+_ToDo:_ For far future. Not a problem, but since we have many [how to do multiple terras](https://forums.ogre3d.org/viewtopic.php?t=96050).
 
 
 ### PlanarReflection 🪞
@@ -264,10 +300,16 @@ Now used for columns to gather more together.
 
 Creating **mesh** code was based on Ogre-Next: `/Samples/2.0/ApiUsage/DynamicGeometry/DynamicGeometryGameState.cpp`.  
 [Few posts](https://forums.ogre3d.org/viewtopic.php?p=554774#p554774) with info and issues (fixed).  
+Road editing is **slower** now, [topic](https://forums.ogre3d.org/viewtopic.php?p=553712#p553712)  
+due to going from V2 mesh to v1 computing tangents and back to v2.  
+_ToDo:_ For far future. We should compute tangents/binormals ourself.  
 
 **Glass pipes** rendering changed. Old Ogre had 2 passes with opposite culling.  
-New does not support passes [topic](https://forums.ogre3d.org/viewtopic.php?t=96902), and instead has:  
-2 nodes with same mesh, but clones datablock and sets opposite cull in it. Code in `pipe glass 2nd item` section of `Road_Mesh.cpp`.
+New does not support passes [[2.3] Dealing with multi pass rendering in ogre next](https://forums.ogre3d.org/viewtopic.php?t=96902), and instead has:  
+2 nodes with same mesh, but clones datablock and sets opposite cull in it. Code in `pipe glass 2nd item` section of `Road_Mesh.cpp`.  
+
+Transparent objects are sorted by Ogre-Next so they don't blink randomly like in old Ogre.  
+There is though a less noticable issue with order on borders showin elipses between pipe segments [screen here]().  
 
 ### Vegetation 🌳🪨
 
@@ -281,7 +323,7 @@ All models are placed during track load by code in `src/common/SceneTrees.cpp`.
 Currently done simplest way, has mesh pages, with vertices and indices.  
 Quite inefficient to render and slow to create mesh.  
 Code in `Grass.h` and `Grass_Mesh.cpp`.  
-_ToDo_: add RTT for density map, read terrain height map in shader..  
+**_ToDo_:** add RTT for density map, read terrain height map in shader..  
 [old topic](https://forums.ogre3d.org/viewtopic.php?t=85626&start=25)  
 [some info](https://forums.ogre3d.org/viewtopic.php?p=553666#p553666) (under "How should I add grass?") on how to do it better.  
 
@@ -298,15 +340,19 @@ Rendering update calls `updatePoses(` to set vehicles (from carModels) to new po
 VDrift simulation, main update code in `src/vdrift/cardynamics_update.cpp` in `void CARDYNAMICS::UpdateBody(`.  
 SR own code for non-car vehicles like: 🚀 Spaceship and 🔘 Sphere, is in `SimulateSpaceship(` and `SimulateSphere(`.  
 
+Few possible _ToDo:_ [here](https://stuntrally.tuxfamily.org/mantis/view.php?id=17).
+
 ### Replay 📽️
 
 All files in `src/game/` with `replay` in name, mainly `Replay.h and .cpp` and `Gui_Replay.cpp` for Gui events.  
-Partly code in `Update_Poses.cpp` for filling replay/ghost data etc.
-Mode detail in `CGame.h` sections with vars for this.
+Partly code in `Update_Poses.cpp` for filling replay/ghost data etc.  
+More detail in `CGame.h` sections with vars for this.  
 
 ### Sound 🔉
 
-Sound manager code in `src/sound/`. Is based on RoR's code. Completely replaced VDrift's code.
+Sound manager code in `src/sound/`. Is based on [RoR's](https://github.com/RigsOfRods/rigs-of-rods/tree/master/source/main/audio) code. Completely replaced VDrift's code.
+
+**_ToDo_:** [Task here](https://stuntrally.tuxfamily.org/mantis/view.php?id=1). Ambient sounds (rain, wind, forest etc). Hit sounds (barrels etc).
 
 
 ----
@@ -358,9 +404,15 @@ And we have own `HlmsPbsDatablock2` with more stuff when needed for paint or flu
 
 Adding more params for Pbs shaders and terrain. E.g. `globalTime` and our own height fog like `fogHparams`.  
 Easiest to add new in `struct AtmoSettingsGpu` also `struct AtmoSettings` and then fill it in `Atmosphere2Npr::_update` (called each frame).  
-_ToDo_: This is half working way. Not all have `atmo` struct.  
+**_ToDo_:** This is half working way. Not all have `atmo` struct.  
 
 _ToDo_: [topic](https://forums.ogre3d.org/viewtopic.php?p=535357#p535357) done through HlmsListener using `getPassBufferSize` and `preparePassBuffer`.
+
+This shader file `Media/Hlms/Pbs/Any/Main/500.Structs_piece_vs_piece_ps.any` has definitions for:
+- `MaterialStructDecl`
+- `CONST_BUFFER_STRUCT_BEGIN( PassBuffer` - uniforms that change per pass
+- `@piece( VStoPS_block )`
+- and lots more
 
 ### setProperty
 
@@ -376,7 +428,7 @@ and calls `setProperty` for shaders.
 
 _ToDo:_ It works but slow, when selecting it creates a new shader (delay 1st time). Better use some uniform for this.
 
-_TODO: Add renderable->hasCustomParameter( 99999 ) for all to get info in debugger.._
+_ToDo:_ ? Add renderable->hasCustomParameter( 999.. ) for all to get info in debugger..
 
 
 ### Add vertex color to PBS
@@ -394,7 +446,8 @@ Inside `HlmsPbs2::createDatablockImpl(` we create `HlmsPbsDatablock2` for vehicl
 It has own `HlmsPbsDatablock2::uploadToConstBuffer`, which is where data is uploaded from C++ to GPU material shader buffers.  
 
 Currently can't change total size, must set `mUserValue[` in cpp and get in shader `material.userValue[`.
-_ToDo_: `body_paint`
+_ToDo:_ `body_paint` property not used yet
+**_ToDo:_** clone on our `HlmsPbsDatablock2` fails? Same vehicles can't have different paints.
 
 When setting car material need to use `HlmsPbsDatablock2*`. Set by `CarModel::SetPaint()`.  
 Changes need `scheduleConstBufferUpdate()` to apply.
@@ -409,6 +462,9 @@ Own HLMS should inherit from Pbs, and needs its own dirs with shaders (probably?
 Also own name in `.material` for materials e.g. `hlms water_name pbs` that last `pbs`.  
 
 _ToDo_: [[Solved][2.1] Trying to create a new HLMS](https://forums.ogre3d.org/viewtopic.php?f=25&t=83763)
+
+Some example already in Terra. Also more and difficult code,
+e.g. `Fill command Buffers` in `HlmsTerra::fillBuffersFor(`.
 
 Own HLMS could control more like `MaterialSizeInGpu` (it needs same size in `uploadToConstBuffer`).  
 This assert triggering, means those were different:  
@@ -441,7 +497,7 @@ In code `AddListenerRnd2Tex()`, it's `ReflectListener`, `mWsListener` in `Reflec
 
 `ReflectListener::passEarlyPreExecute` does check which `render_pass` it is from `SR3.compositor` by `identifier` number.
 
-## ToDo
+## Effects ToDo
 
-Ogre-Next: Sky_Postprocess, ReconstructPosFromDepth, Refractions,  
+Ogre-Next samples: Sky_Postprocess, ReconstructPosFromDepth, Refractions,  
 later: Sample_Hdr, Sample_Tutorial_SSAO, 

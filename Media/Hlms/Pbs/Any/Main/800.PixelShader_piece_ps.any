@@ -393,7 +393,7 @@
 		@property( normal_map_tex )
 
 
-			@property( water && !hlms_shadowcaster) // && hlms_lights_directional && !alpha_test)
+			@property( water && !hlms_shadowcaster )
 			//~~~~~~~ water begin
 
 				@piece( GetNorm )
@@ -422,7 +422,7 @@
 float2 UV = inPs.uv@value(uv_diffuse).xy;
 float timer = atmo.globalTime.x;
 float2
-uv3 = UV * (WAVE_SCALE * 0.05)+ WIND_DIR * timer * WIND_SPEED*0.04 								   + WIND_SPEED2 * timer * float2(-0.015,-0.005);  float3 normal0 = @insertpiece(GetNorm)
+uv3 = UV * (WAVE_SCALE * 0.05)+ WIND_DIR * timer * WIND_SPEED*0.04 								     + WIND_SPEED2 * timer * float2(-0.015,-0.005);  float3 normal0 = @insertpiece(GetNorm)
 uv3 = UV * (WAVE_SCALE * 0.1) + WIND_DIR * timer * WIND_SPEED*0.08-(normal0.xy/normal0.zz)*WAVE_CHOP + WIND_SPEED2 * timer * float2(+0.020,+0.015);  float3 normal1 = @insertpiece(GetNorm)
 uv3 = UV * (WAVE_SCALE * 0.25)+ WIND_DIR * timer * WIND_SPEED*0.07-(normal1.xy/normal1.zz)*WAVE_CHOP + WIND_SPEED2 * timer * float2(-0.04 ,-0.03);   float3 normal2 = @insertpiece(GetNorm)
 uv3 = UV * (WAVE_SCALE * 0.5) + WIND_DIR * timer * WIND_SPEED*0.09-(normal2.xy/normal2.zz)*WAVE_CHOP + WIND_SPEED2 * timer * float2(+0.03 ,+0.04);   float3 normal3 = @insertpiece(GetNorm)
@@ -432,7 +432,6 @@ uv3 = UV * (WAVE_SCALE * 2.0) + WIND_DIR * timer * WIND_SPEED*0.7 -(normal4.xy/n
 				float3 n3 = normal0 * BIG_WAVES_X   + normal1 * BIG_WAVES_Y +
 							normal2 * MID_WAVES_X   + normal3 * MID_WAVES_Y +
 							normal4 * SMALL_WAVES_X + normal5 * SMALL_WAVES_Y;
-				// n3 = n3.xzy;  // green y^-
 				n3 = normalize( midf3_c( n3.x * BUMP, n3.y * BUMP, n3.z ));
 				pixelData.normal = n3;
 				// pixelData.diffuse.xyz = n3;  // test
@@ -441,7 +440,7 @@ uv3 = UV * (WAVE_SCALE * 2.0) + WIND_DIR * timer * WIND_SPEED*0.7 -(normal4.xy/n
 				// pixelData.diffuse.xyz = float3(0.3,0.5,0.7) - float3(0.1,0.4,0.7) * pixelData.normal.z * pixelData.normal.z;
 				// uv3 = UV;
 				// pixelData.normal = @insertpiece(GetNorm)
-				// pixelData.normal = midf3_c( 0.0, 0.0, 1.0 );
+				// pixelData.normal = midf3_c( 0.5, 0.5, 0.1 );
 				// pixelData.specular.xyz = float3(0.9,0.95,0.99) - float3(0.3,0.4,0.5) * pixelData.normal.z;
 
 				pixelData.perceptualRoughness = max(0.01, min(1.0,  0.01 - 2.24 * n3.x - 2.24 * n3.y));  //-?

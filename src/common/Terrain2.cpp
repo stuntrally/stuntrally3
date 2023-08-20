@@ -120,7 +120,7 @@ void CScene::CreateTerrain1(int n)
 		{	tdb->setTexture( TERRA_DETAIL_ROUGHNESS0 + i, tex );
 			tdb->setSamplerblock( TERRA_DETAIL_ROUGHNESS0 + i, sb );
 		}/**/
-		if (PATHS::FileExists(path + d_s))  // for terrain_emissive
+		if (PATHS::FileExists(path + d_s))  // for emissive_terrain
 		{
 			tex = texMgr->createOrRetrieveTexture(d_s,
 				GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
