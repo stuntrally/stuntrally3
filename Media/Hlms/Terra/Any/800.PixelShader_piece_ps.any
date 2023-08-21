@@ -413,7 +413,7 @@
 		@property( !hlms_prepass )
 
 			//**  gamma  --
-			finalColour.xyz = pow(finalColour, midf3_c(1.2, 1.2, 1.2));
+			finalColour.xyz = pow(finalColour, midf3_c(1.15, 1.15, 1.15));
 
 			//**  emissive terrain
 			@property( emissive_terrain && !hlms_shadowcaster && hlms_lights_directional )

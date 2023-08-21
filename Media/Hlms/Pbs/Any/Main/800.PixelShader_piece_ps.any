@@ -1010,7 +1010,7 @@ uv3 = UV * (WAVE_SCALE * 2.0) + WIND_DIR * timer * WIND_SPEED*0.7 -(normal4.xy/n
 			@property( hlms_normal || hlms_qtangent )
 
 				//**  gamma  --
-				finalColour.xyz = pow(finalColour, midf3_c(1.2, 1.2, 1.2) );
+				finalColour.xyz = pow(finalColour, midf3_c(1.15, 1.15, 1.15) );
 
 				@property( !hw_gamma_write )
 					//Linear to Gamma space
