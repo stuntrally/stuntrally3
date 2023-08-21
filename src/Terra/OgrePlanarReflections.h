@@ -36,6 +36,9 @@ THE SOFTWARE.
 
 #include "OgreHeaderPrefix.h"
 
+class SETTINGS;
+
+
 namespace Ogre
 {
     /** \addtogroup Component
@@ -151,8 +154,10 @@ namespace Ogre
         @param maxDistance
         @param lockCamera
         */
-        PlanarReflections( SceneManager *sceneManager, CompositorManager2 *compositorManager,
-                           Real maxDistance, Camera *lockCamera );
+        SETTINGS* pSet =0;
+        PlanarReflections( SETTINGS* set,
+            SceneManager *sceneManager, CompositorManager2 *compositorManager,
+            Real maxDistance, Camera *lockCamera );
         ~PlanarReflections();
 
         void setMaxDistance( Real maxDistance );

@@ -773,7 +773,7 @@
 
 						<Widget type="Slider" skin="Slider" position="280 140 320 18" name="ReflDist"/>
 						<Widget type="TextBox" skin="TextBox" position="32 140 176 24">
-							<Property key="Caption" value="#{Distance}"/>
+							<Property key="Caption" value="#{Distance} -"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.9 0.5 0.5"/>
 						</Widget>
@@ -806,22 +806,22 @@
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#60B0FF#{Water}"/>
 						<Widget type="Button" skin="Button" position="32 240 200 26" layer="Back" name="ApplyShadersWater">
-							<Property key="Caption" value="#{Apply}-"/>
+							<Property key="Caption" value="#{Apply} -"/>
 							<Property key="Colour" value="0.5 0.75 1.0"/>
 							<Property key="TextColour" value="0.5 0.75 1.0"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="32 48 200 24" name="WaterReflection">
-							<Property key="Caption" value="#{WaterReflection}"/>
+							<Property key="Caption" value="#{WaterReflection} *"/>
 							<Property key="TextColour" value="0.6 0.8 1"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="32 78 200 24" name="WaterRefraction">
-							<Property key="Caption" value="#{WaterRefraction}-"/>
+							<Property key="Caption" value="#{WaterRefraction} * -"/>
 							<Property key="TextColour" value="0.6 0.8 1"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 110 164 24">
 							<Property key="Colour" value="0 0 0"/>
-							<Property key="Caption" value="#{Size}"/>
+							<Property key="Caption" value="#{Size} *"/>
 							<Property key="TextColour" value="0.7 0.85 1.0"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="WaterSize"/>
@@ -845,7 +845,7 @@
 
 						<Widget type="Slider" skin="Slider" position="280 170 320 18" name="WaterDist"/>
 						<Widget type="TextBox" skin="TextBox" position="32 170 176 24">
-							<Property key="Caption" value="#{Distance}"/>
+							<Property key="Caption" value="#{Distance} -"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.5 0.5 0.9"/>
 						</Widget>
@@ -868,7 +868,7 @@
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#B0B0B0#{Shadows}"/>
 						<Widget type="Button" skin="Button" position="32 180 200 26" layer="Back" name="ApplyShadows">
-							<Property key="Caption" value="#{Apply}-"/>
+							<Property key="Caption" value="#{Apply} -"/>
 							<Property key="Colour" value="0.9 0.97 1.0"/>
 							<Property key="TextColour" value="0.9 0.97 1.0"/>
 						</Widget>
@@ -1048,7 +1048,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 110 172 24">
-							<Property key="Caption" value="#{TerHQDist}-"/>
+							<Property key="Caption" value="#{TerHQDist} -"/>
 							<Property key="TextColour" value="0.3 0.9 0.3"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="TerDetail"/>
@@ -1084,7 +1084,7 @@
 							<Property key="TextColour" value="1 0.9 0"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="32 78 176 24" name="TrailsOn">
-							<Property key="Caption" value="#{TireTrails}*-"/>
+							<Property key="Caption" value="#{TireTrails} * -"/>
 							<Property key="TextColour" value="1.0 0.8 0.6"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="210 50 60 24" name="ParticlesVal">

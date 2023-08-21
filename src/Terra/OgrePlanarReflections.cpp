@@ -28,6 +28,7 @@ THE SOFTWARE.
 
 #include "OgrePlanarReflections.h"
 #include "Def_Str.h"
+#include "settings.h"
 
 #include <Compositor/OgreCompositorManager2.h>
 #include <Compositor/OgreCompositorWorkspace.h>
@@ -49,9 +50,12 @@ namespace Ogre
             0,      0,    1,    0,
             0,      0,    0,    1 );
 
-    PlanarReflections::PlanarReflections( SceneManager *sceneManager,
-                                          CompositorManager2 *compositorManager, Real maxDistance,
-                                          Camera *lockCamera ) :
+    PlanarReflections::PlanarReflections(
+            SETTINGS* set,
+            SceneManager *sceneManager,
+            CompositorManager2 *compositorManager, Real maxDistance,
+            Camera *lockCamera ) :
+        pSet( set ),
         mActorsSoA( 0 ),
         mCapacityActorsSoA( 0 ),
         mLastAspectRatio( 0 ),
@@ -477,10 +481,10 @@ namespace Ogre
             mAnyPendingFlushRenderable = false;
         }
 
-        bool update = 1;  // todo  0.. pSet
+        bool update = 0;  //**  skip
         static uint skip = 100;
         ++skip;
-        if (skip > 2)  // par upd freq..
+        if (skip > pSet->water_skip)  // par upd freq?
         {   skip = 0;
             update = 1;
         }
@@ -679,8 +683,10 @@ namespace Ogre
 
         const Quaternion camRot( camera->getDerivedOrientation() );
         Real nearPlane = camera->getNearClipDistance();
-        Real farPlane = camera->getFarClipDistance();
-        // Real farPlane = 10.f;  //par, todo sky=
+        // Real farPlane = camera->getFarClipDistance();
+        //**  quality options
+        Real farPlane = pSet->water_dist; //par, todo sky=
+        Real lodBias = pSet->water_lod;
         Real focalLength = camera->getFocalLength();
         Radian fov = camera->getFOVy();
 
@@ -728,7 +734,7 @@ namespace Ogre
 
                     actorData->reflectionCamera->setNearClipDistance( nearPlane );
                     actorData->reflectionCamera->setFarClipDistance( farPlane );
-                    actorData->reflectionCamera->setLodBias(0.1);  // par todo
+                    actorData->reflectionCamera->setLodBias( lodBias );
 
                     actorData->reflectionCamera->setAspectRatio( aspectRatio );
                     actorData->reflectionCamera->setFocalLength( focalLength );

@@ -132,8 +132,9 @@ void FluidsReflect::CreateRTT()
 	useCompute = root->getRenderSystem()->getCapabilities()->hasCapability( RSC_COMPUTE_PROGRAM );
 #endif
 
-	mPlanarRefl = new PlanarReflections( app->mSceneMgr, root->getCompositorManager2(),
-		500.0, 0 );  // par-
+	mPlanarRefl = new PlanarReflections(
+		app->pSet, app->mSceneMgr, root->getCompositorManager2(),
+		500.0, 0 );  // par-?
 	uint32 size = app->pSet->GetTexSize(app->pSet->water_reflect);
 	
 	auto* sc = app->scn->sc;
