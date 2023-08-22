@@ -41,7 +41,12 @@ Advanced, extra, external tools, should be used when testing or developing new (
 - [Renderdoc](https://renderdoc.org/) - For debugging GPU, tracking rendered frame, its draw calls, shaders, textures etc.  
 [documentation](https://renderdoc.org/docs/index.html), [forum post](https://forums.ogre3d.org/viewtopic.php?p=554959#p554959) with quick help on using it, [video tutorials](https://www.youtube.com/results?search_query=tutorial+%22renderdoc%22).
 - [Valgrind](https://valgrind.org/) - For debugging CPU, memory leaks etc.
-- [ASAN](https://clang.llvm.org/docs/AddressSanitizer.html) - same as above?
+- [ASAN](https://clang.llvm.org/docs/AddressSanitizer.html) - close to above
+- Profiler. E.g.: Intel VTune, AMD uProf, Google Orbit, KDAB/hotspot. Any of them will do. For measuring performance, CPU time spent.
+
+Using Vulkan, it has better support for debugging tools. And it complains more, more debug asserts etc, which is good for finding errors.  
+Mentioned in [Post1](https://forums.ogre3d.org/viewtopic.php?p=553813#p553813), [Post2](https://forums.ogre3d.org/viewtopic.php?p=554446#p554446).  
+It starts longer though, shader compilation is much slower.
 
 --------
 
@@ -98,6 +103,8 @@ From old `.mat` files main parameters changed are:
 - `env_map true` - _ToDo:_ reflection is now as `re="1"` in `presets.xml`.
 - `refl_amount` - now fresnel
 - `twoside_diffuse true` - now `two_sided true` - for tree leaves, glass etc
+- `terrain_light_map true` - gone, auto in new
+- `bump_scale 0.5` - now 
 
 ### 🌠 New
 
@@ -230,6 +237,7 @@ Modified to not change light after its update. And added more params for shaders
 Our fog shader code is in: `Media/Hlms/Pbs/Any/Fog_piece_ps.any`  
 and is used in Pbs and Terra `.any` there `@insertpiece( applyFog )`.
 
+
 ### Terra ⛰️
 
 The terrain component. Very efficient. Has triplanar already.  
@@ -255,20 +263,24 @@ This also **broke** terrain page **visibility**. Likely decreasing Fps, no idea 
 Made all visible in `Terra::isVisible` for `if (!bNormalized)`.  
 In ctor `Terra::Terra(` setting `bNormalized` to 1 does try to normalize Hmap.  
 
+**_ToDo:_** Call Terra::update when the camera changes for each of splitscreen views.
+
 #### Extended
 
 Terra is extended with **blendmap** RTT (from old SR) and its noise.  
 Also with emissive, property: `emissive terrain`.  
+
 Changed skirt to be relative size below, not that default big to lowest point.  
 _ToDo:_ Some holes can appear on horizon terrains. Should be highe for them.
 
-_ToDo:_ For far future. Not a problem, but since we have many [how to do multiple terras](https://forums.ogre3d.org/viewtopic.php?t=96050).
+Added _own_ terrain raycast code (for cursor hit pos), since there wasn't one, [topic](https://forums.ogre3d.org/viewtopic.php?t=96602).  
+_ToDo:_ For far future. Not a problem, but since we have many, [how to do multiple terras](https://forums.ogre3d.org/viewtopic.php?t=96050).
 
 
 ### PlanarReflection 🪞
 
 Used for water/fluids.  
-_ToDo_: Modified to have more control and detail options for its camera.
+Modified to have more control and detail options for its camera.  
 
 ## Custom
 
@@ -281,6 +293,10 @@ Main **shaders** for all materials (except terrain and particles) here:
 `Media/Hlms/Pbs/Any/Main/800.VertexShader_piece_vs.any`  (not yet)  
 structures with variables passed to them are in:  
 `Media/Hlms/Pbs/Any/Main/500.Structs_piece_vs_piece_ps.any`  
+
+Keep in mind [post](https://forums.ogre3d.org/viewtopic.php?p=554100&sid=6798838bbed3be6881aa07bf10012412#p554100),
+in .any this does not comment: // @property( hlms_fog )  
+Either add && 0 inside, or any letters to make non existing name, or remove @ too.
 
 ### Compositor
 
@@ -309,7 +325,7 @@ New does not support passes [[2.3] Dealing with multi pass rendering in ogre nex
 2 nodes with same mesh, but clones datablock and sets opposite cull in it. Code in `pipe glass 2nd item` section of `Road_Mesh.cpp`.  
 
 Transparent objects are sorted by Ogre-Next so they don't blink randomly like in old Ogre.  
-There is though a less noticable issue with order on borders showin elipses between pipe segments [screen here]().  
+There is though a less noticable issue with order on borders showin elipses between pipe segments [screen here](https://forums.ogre3d.org/viewtopic.php?p=553945&sid=6798838bbed3be6881aa07bf10012412#p553945).  
 
 ### Vegetation 🌳🪨
 
@@ -390,15 +406,16 @@ Customizing [doc link](https://ogrecave.github.io/ogre-next/api/latest/hlms.html
 From docs: Hlms implementation can be customized:
 - Through HlmsListener.  
 This allows you to have access to the buffer pass to fill extra information; or bind extra buffers to the shader.
-- Overload HlmsPbs.  
+- Overload HlmsPbs. Intro [post](https://forums.ogre3d.org/viewtopic.php?p=554026&sid=6798838bbed3be6881aa07bf10012412#p554026)  
 Useful for overriding only specific parts, or adding new functionality that requires storing extra information in a datablock (e.g. overload HlmsPbsDatablock to add more variables, and then overload HlmsPbs::createDatablockImpl to create these custom datablocks)
 - Directly modify HlmsPbs, HlmsPbsDatablock and the template (.any).
 
-SR3 does all above, we have our `HlmsPbs2.  
-Also a HLMS PBS listener, it's that default `hlmsPbs->setListener( mHlmsPbsTerraShadows );` from Terra.  
+SR3 does all above, we have our `HlmsPbs2`.  
+Also a HLMS PBS listener, it's that default `hlmsPbs->setListener( mHlmsPbsTerraShadows );`  
+from Terra, this is only for Pbs objects, `hlmsTerra` has no listener (_ToDo:_ adding globalTime to both would need it).  
 Done so objects also receive terrain shadows. Only one listener can be used.  
 
-And we have own `HlmsPbsDatablock2` with more stuff when needed for paint or fluids.
+And we have own datablocks: `HlmsPbsDbCar` and `HlmsPbsDbWater` with more stuff when needed for paint or fluids.
 
 ### Adding more uniforms
 
