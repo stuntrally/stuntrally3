@@ -234,8 +234,8 @@ public:
 		SVf(FresR)  SVf(FresG)  SVf(FresB)  //SVf(Fresnel)
 		SVf(Rough)  SVf(Metal)
 		SVf(ClearCoat)  SVf(ClearRough)
-		SVf(BumpScale)
-		Cmb cbWorkflow =0;
+		SVf(BumpScale)  SVf(Transp)
+		Txt txWorkflow =0;
 		Ed edInfo =0;
 	#undef SVf
 	} twk;

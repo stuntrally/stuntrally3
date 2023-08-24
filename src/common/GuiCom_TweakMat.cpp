@@ -54,10 +54,10 @@ void CGuiCom::InitGuiTweakMtr()
 	TWK(Rough, 0.001f, 1.5f)  TWK(Metal, 0.f, 1.5f)
 	TWK(ClearCoat, 0.f, 1.5f)  TWK(ClearRough, 0.001f, 1.5f)
 
-	TWK(BumpScale, 0.0f, 6.f)
+	TWK(BumpScale, 0.0f, 6.f)  TWK(Transp, 0.f, 1.f)
 
-	auto cmb = fCmb("Workflow");  twk.cbWorkflow = cmb;
-	cmb->addItem("Specular");  cmb->addItem("SpecularAsFresnel");  cmb->addItem("Metallic");
+	auto txt = fTxt("Workflow");  twk.txWorkflow = txt;
+	// cmb->addItem("Specular");  cmb->addItem("SpecularAsFresnel");  cmb->addItem("Metallic");
 
 	twk.edInfo = fEd("MtrInfo");
 
@@ -83,6 +83,8 @@ void CGuiCom::slTweakMtr(SV* sv)
 	else if (s=="ClearRough")  twk.db->setClearCoatRoughness(twk.fClearRough);
 
 	else if (s=="BumpScale")   twk.db->setNormalMapWeight(twk.fBumpScale);
+	else if (s=="Transp")      twk.db->setTransparency(twk.fTransp, twk.db->getTransparencyMode());
+
 }
 
 
@@ -105,7 +107,9 @@ void CGuiCom::updTweakMtr()
 	f = twk.db->getClearCoatRoughness();  twk.fClearRough = f;  twk.svClearRough.Upd();
 
 	f = twk.db->getNormalMapWeight();  twk.fBumpScale = f;  twk.svBumpScale.Upd();
-	i = twk.db->getWorkflow();  twk.cbWorkflow->setIndexSelected(i);
+	const static String sWf[3] = {"Specular","SpecularAsFresnel","Metallic"};
+	i = twk.db->getWorkflow();  twk.txWorkflow->setCaption(sWf[i]);
+
 
 	//----------------------------------------------------------------------------------------------------
 	StringStream s;  // info only ..
