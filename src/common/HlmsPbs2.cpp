@@ -114,16 +114,11 @@ HlmsDatablock* HlmsPbs2::createDatablockImpl(
 	if( Hlms::findParamInVec( params, "fluid", val ) )
 	{
 		// LogO("paint db2 fluid");
-
 		return OGRE_NEW HlmsPbsDbWater( name, this, macro, blend, params );
 	}
 	else if( Hlms::findParamInVec( params, "paint", val ) )
 	{
 		// LogO("paint db2 new");
-		// LogO(name.getFriendlyText());  // hash-
-		// for (auto p : params)
-		//	LogO(p.second);
-
 		return OGRE_NEW HlmsPbsDbCar( name, this, macro, blend, params );
 	}else
 		return OGRE_NEW HlmsPbsDatablock( name, this, macro, blend, params );
@@ -205,29 +200,51 @@ void HlmsPbsDbCar::cloneImpl( HlmsDatablock *db ) const
 
 // Ogre::Vector4 waterClr[3] = {Ogre::Vector4(0,0.5,1,0), Ogre::Vector4(0,1,0,0), Ogre::Vector4(1,0.5,0,0)};
 
-//  fluid params
+//  🌊 water fluid params
+//----------------------------------------------------------------
 HlmsPbsDbWater::HlmsPbsDbWater(
 		Ogre::IdString name, HlmsPbs2 *creator,
 		const Ogre::HlmsMacroblock *macro,
 		const Ogre::HlmsBlendblock *blend,
-		const Ogre::HlmsParamVec &params )
-	: HlmsPbsDatablock( name, creator, macro, blend, params )
+		const Ogre::HlmsParamVec &p )
+	: HlmsPbsDatablock( name, creator, macro, blend, p )
 {
 	String val;
-	if( Hlms::findParamInVec( params, "fluid", val ) )
+	if( Hlms::findParamInVec( p, "fluid", val ) )
 	{
 		// LogO("fluid db2 ctor 1");
 
-		if( Hlms::findParamInVec( params, "waves", val ) )
-		{
-			Vector4 v = StringConverter::parseVector4( val, Vector4(0,0,1,1) );
-			LogO(fToStr(v.x)+" "+fToStr(v.y)+" "+fToStr(v.z)+" "+fToStr(v.w));
-			mDetailsOffsetScale[0][0] = static_cast<float>( v.x );
-			mDetailsOffsetScale[0][1] = static_cast<float>( v.y );
-			mDetailsOffsetScale[0][2] = static_cast<float>( v.z );
-			mDetailsOffsetScale[0][3] = static_cast<float>( v.w );
-			// setDiffuse( v );
-		}
+		Vector2 choppyness_scale; // 0.15 25
+		Vector4 smallWaves_midWaves; // 0.15 0.1 0.3 0.15
+		Vector2 bigWaves; // 0.3 0.3
+		Vector3 bump; // 1.5 0.08 0.12  // norm-sc  fresnel  refract
+		// fresnelMultiplier 1.0
+
+		Vector4 colour; // 0.49 0.69 0.78  0.0
+		Vector4 reflectColour; // 0.91 0.93 0.94  0.9
+		Vector4 refractColour; // 0.76 0.89 0.99  0.76
+		Vector4 specColourAndPower; // 0.98 1.0 1.0  64
+
+		Vector3 bump2SpecPowerMul; // 6.0 16 0.8
+		Vector2 speed; // 1.0 1.0
+
+		#define S2V(d,v,a)  StringConverter::parseVector##d(v,a)
+		if (Hlms::findParamInVec(p, "choppyness_scale", val))     choppyness_scale    = S2V(2, val, Vector2(0.15, 1.0));
+		if (Hlms::findParamInVec(p, "smallWaves_midWaves", val))  smallWaves_midWaves = S2V(4, val, Vector4(0.15, 0.1, 0.3, 0.15));
+		if (Hlms::findParamInVec(p, "bigWaves", val))             bigWaves            = S2V(2, val, Vector2(0.3, 0.3));
+
+		// LogO(fToStr(v.x)+" "+fToStr(v.y)+" "+fToStr(v.z)+" "+fToStr(v.w));
+		mDetailsOffsetScale[0][0] = choppyness_scale.x;
+		mDetailsOffsetScale[0][1] = choppyness_scale.y;
+		mDetailsOffsetScale[0][2] = bigWaves.x;
+		mDetailsOffsetScale[0][3] = bigWaves.y;
+
+		mDetailsOffsetScale[1][0] = smallWaves_midWaves.x;
+		mDetailsOffsetScale[1][1] = smallWaves_midWaves.y;
+		mDetailsOffsetScale[1][2] = smallWaves_midWaves.z;
+		mDetailsOffsetScale[1][3] = smallWaves_midWaves.w;
+		// setDiffuse( v );
+
 		scheduleConstBufferUpdate();
 	}
 }
