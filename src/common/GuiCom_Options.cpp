@@ -296,5 +296,5 @@ void CGuiCom::slWaterSize(SV*)
 
 void CGuiCom::btnWaterApply(WP)
 {
-	app->bRecreateFluidsRTT = 1;
+	//app->bRecreateFluidsRTT = 1;  // fixme: crash-
 }

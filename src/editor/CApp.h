@@ -199,7 +199,9 @@ public:
 
 
 	//  💧 Fluids
-	int iFlCur =0;  bool bRecreateFluids =0;  // todo: only one
+	bool bRecreateFluids =0;  // todo: only one
+	bool bRecreateFluidsRTT =0;  // gui opt apply
+	int iFlCur =0;
 	void UpdFluidBox(), UpdMtrWaterDepth();
 	
 

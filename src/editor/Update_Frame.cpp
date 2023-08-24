@@ -354,8 +354,9 @@ void App::update( float dt )
 	
 	
 	//  💧 fluids  upd 🔁
-	if (bRecreateFluids)
+	if (bRecreateFluids || bRecreateFluidsRTT)
 	{	bRecreateFluids = false;
+		bRecreateFluidsRTT = false;
 
 		scn->refl.DestroyFluids();
 		scn->refl.DestroyRTT();  //-

@@ -149,6 +149,7 @@ public:
 	// float mTimer = 0.f;  // todo: wind,water
 
 	// void recreateReflections();  // call after refl_mode changed
+	bool bRecreateFluidsRTT =0;
 
 
 	//  🕹️ Input  ----------------
