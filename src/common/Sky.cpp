@@ -284,7 +284,7 @@ void CScene::UpdSun(float dt)
 	ndSun->_getFullTransformUpdated();
 
 	sun->setPowerScale( Math::PI );  // 💡 brightness simple
-	float bright = 1.3f * app->pSet->bright, contrast = app->pSet->contrast;
+	float bright = 0.9f*1.3f * app->pSet->bright, contrast = app->pSet->contrast;
 	sun->setDiffuseColour( sc->lDiff.GetClr() * 2.2f  * bright * contrast);
 	sun->setSpecularColour(sc->lSpec.GetClr() * 0.75f * bright * contrast);
 
