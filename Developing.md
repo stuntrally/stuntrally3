@@ -281,6 +281,9 @@ _ToDo:_ For far future. Not a problem, but since we have many, [how to do multip
 
 Used for water/fluids.  
 Modified to have more control and detail options for its camera.  
+Shader code in `Samples/Media/Hlms/Pbs/Any/PlanarReflections_piece_ps.any`, mainly:  
+`planarReflUVs`, normal is in `pixelData.normal`, and distortion is added to `pointInPlane` from normal.  
+More info in [post](https://forums.ogre3d.org/viewtopic.php?p=554536#p554536).
 
 ## Custom
 

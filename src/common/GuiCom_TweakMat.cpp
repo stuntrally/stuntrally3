@@ -1,14 +1,15 @@
-#include "OgreHlmsPbsPrerequisites.h"
 #include "pch.h"
 #include "Def_Str.h"
 #include "Gui_Def.h"
 #include "GuiCom.h"
 #include "settings.h"
-#include "CApp.h"
+#include "App.h"
 #include "CGui.h"
 #include "Slider.h"
+#include "paths.h"
 
 #include "HlmsPbs2.h"
+#include <OgreHlmsPbsPrerequisites.h>
 #include <OgreHlmsCommon.h>
 #include <OgreHlmsPbsDatablock.h>
 #include <MyGUI.h>
@@ -22,7 +23,7 @@ using namespace std;
 //------------------------------------------------------------------------------------------------------------
 
 //  👆 pick material from list
-void CGui::listTweakMtr(Li li, size_t val)
+void CGuiCom::listTweakMtr(Li li, size_t val)
 {
 	auto s = li->getItemNameAt(val);
 	if (!s.empty() && s[0] == '#')
@@ -32,7 +33,7 @@ void CGui::listTweakMtr(Li li, size_t val)
 	updTweakMtr();
 }
 
-void CGui::editMtrFind(Ed)
+void CGuiCom::editMtrFind(Ed)
 {
 	FillTweakMtr();
 }
@@ -40,10 +41,10 @@ void CGui::editMtrFind(Ed)
 
 //  🧰🎚️ init gui sliders
 //--------------------------------------------------
-void CGui::InitGuiTweakMtr()
+void CGuiCom::InitGuiTweakMtr()
 {
 	SV* sv;
-	#define TWK(n,a,b)  sv= &twk.sv##n;  sv->Init(#n,  &twk.f##n, a, b, 1.5f, 3,5);  sv->DefaultF(0.0f);  Sev(TweakMtr);
+	#define TWK(n,a,b)  sv= &twk.sv##n;  sv->Init(#n,  &twk.f##n, a, b, 1.5f, 3,5);  sv->DefaultF(0.0f);  SevC(TweakMtr);
 
 	TWK(DiffR, 0.f, 1.5f)  TWK(DiffG, 0.f, 1.5f)  TWK(DiffB, 0.f, 1.5f)
 	TWK(SpecR, 0.f, 1.5f)  TWK(SpecG, 0.f, 1.5f)  TWK(SpecB, 0.f, 1.5f)
@@ -60,14 +61,14 @@ void CGui::InitGuiTweakMtr()
 
 	twk.edInfo = fEd("MtrInfo");
 
-	Edt(edMtrFind, "MtrFind", editMtrFind);
+	EdC(edMtrFind, "MtrFind", editMtrFind);
 	InitClrTweakMtr();
 	FillTweakMtr();
 }
 
 //  🔁 update db mat value
 //--------------------------------------------------
-void CGui::slTweakMtr(SV* sv)
+void CGuiCom::slTweakMtr(SV* sv)
 {
 	if (!twk.db)  return;
 	const auto& s = sv->sName;
@@ -87,7 +88,7 @@ void CGui::slTweakMtr(SV* sv)
 
 //  🔁🌈 set Gui, slider values
 //--------------------------------------------------
-void CGui::updTweakMtr()
+void CGuiCom::updTweakMtr()
 {
 	auto hlms = Root::getSingleton().getHlmsManager()->getHlms( HLMS_PBS );
 	twk.db = (HlmsPbsDatablock*) hlms->getDatablock( pSet->tweak_mtr );
@@ -177,7 +178,7 @@ void CGui::updTweakMtr()
 
 //  🔁📃 Upd Fill materials list
 //--------------------------------------------------
-void CGui::FillTweakMtr()
+void CGuiCom::FillTweakMtr()
 {
 	liTweakMtr->removeAllItems();
 	liTweakMtr->addItem("");
@@ -215,7 +216,7 @@ void CGui::FillTweakMtr()
 
 //  🆕🌈 init mtr colors  only for gui list
 //--------------------------------------------------
-void CGui::InitClrTweakMtr()
+void CGuiCom::InitClrTweakMtr()
 {
 	auto& clr = clrTweakMtr;
 	#define add(a,b)  clr.push_back(make_pair(a,b))
@@ -238,11 +239,15 @@ void CGui::InitClrTweakMtr()
 
 //  🆕📃 Get all materials  once  for gui list
 //--------------------------------------------------
-void CGui::GetTweakMtr(String path)
+void CGuiCom::GetTweakMtr()
 {
-	liTweakMtr = fLi("TweakMtr");  Lev(liTweakMtr, TweakMtr);
+	string sData = PATHS::Data();
+	String path = sData +"/materials/Pbs/";  // path
 
-	vsMaterials.clear();
+	liTweakMtr = fLi("TweakMtr");  LevC(liTweakMtr, TweakMtr);
+
+	vsMaterials.clear();  // _Tool_  add more if needed
+
 	// vsMaterials.push_back("#0080FF  ~~~~  Car  ~~~~");
 	// GetMaterialsMat(path+"cars.material",0);  //-
 	vsMaterials.push_back("#0080FFbody_realtime");

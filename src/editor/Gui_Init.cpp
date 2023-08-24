@@ -633,11 +633,14 @@ void CGui::InitGui()
     for (i=0; i <= 1; ++i)
     {	Btn("NewGame"+toStr(i), btnNewGame);  }
 
-	InitGuiTweakMtr();
-	updTweakMtr();
+	
+	//  🔧 Tweak mtr  ---------------------
+	gcom->GetTweakMtr();
+	gcom->InitGuiTweakMtr();
+	gcom->updTweakMtr();
 	
 
-	///  🧊 3d view []  (veget models, objects)
+	///  🧊 3d view []  (veget models, objects)  todo:
 	//--------------------------------------------
 	//rndCanvas = mGUI->findWidget<Canvas>("CanVeget");  //?
 	viewCanvas = app->mWndEdit->createWidget<Canvas>("Canvas", GetViewSize(), Align::Stretch);

@@ -520,6 +520,12 @@ void CGui::InitGui()
 	liNetEnd = li;
 
 
+	//  🔧 Tweak mtr  ---------------------
+	gcom->GetTweakMtr();
+	gcom->InitGuiTweakMtr();
+	gcom->updTweakMtr();
+
+
 	//  🔗 open url btns  -------------
 	Btn("OpenWelcome", btnWelcome);  Btn("OpenWebsite", btnWebsite);   Btn("OpenSources", btnSources);
 	Btn("OpenForum",   btnForum);    Btn("OpenDonations", btnDonations);

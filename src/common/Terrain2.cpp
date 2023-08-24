@@ -223,7 +223,7 @@ void CScene::CreateTerrain1(int n)
 	//  terra shadows,  hlms listener
 	if (!mHlmsPbsTerraShadows && n == 0 /*&& !upd*/)  // 1st ter only?-
 	{
-		LogO("---T Terrain shadows");
+		LogO("---T Terrain shadows  Pbs + set Listener");
 		mHlmsPbsTerraShadows = new HlmsPbsTerraShadows();
 		mHlmsPbsTerraShadows->setTerra( mTerra );
 		
@@ -246,6 +246,7 @@ void CScene::DestroyTerrain1(int n)
 	if (n == 0)  // 1st ter only-?
 	if( hlmsPbs->getListener() == mHlmsPbsTerraShadows )
 	{
+		LogO("D--T Terrain shadows  Pbs - unset Listener");
 		hlmsPbs->setListener( 0 );
 		delete mHlmsPbsTerraShadows;  mHlmsPbsTerraShadows = 0;
 	}

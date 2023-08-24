@@ -65,7 +65,9 @@ public:
 #define fTbi(s)  mGui->findWidget<TabItem>(s)
 
 #define Tev(tb, evt)  tb->eventTabChangeSelect += newDelegate(this, &CGui::tab##evt)
+
 #define Lev(li, evt)  li->eventListChangePosition += newDelegate(this, &CGui::list##evt)
+#define LevC(li, evt)  li->eventListChangePosition += newDelegate(this, &CGuiCom::list##evt)
 
 #define fTabW(s)  tab = fTab(s); \
 	tab->setIndexSelected(1);  tab->setSmoothShow(false); \

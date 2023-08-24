@@ -172,6 +172,8 @@ public:
 	float te_yf = 8000.f, te_xfx = 12.f, te_xfy = 160.f, te_xf_pow = 1.f;  // tire edit max
 	bool te_reference = 0, te_common = 1;
 
+	//  🔧 tweak
+	std::string tweak_mtr;
 
 	//  effects
 	// bool all_effects =0;

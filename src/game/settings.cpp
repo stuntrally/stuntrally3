@@ -156,6 +156,9 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "misc.show_welcome", show_welcome);	Param(c,w, "misc.loadingback", loadingbackground);
 	Param(c,w, "misc.paintAdj", paintAdj);
 
+	//  🔧 tweak
+	Param(c,w, "tweak.mtr", tweak_mtr);
+
 	//  📡 network
 	Param(c,w, "network.master_server_address", master_server_address);	Param(c,w, "network.nickname", nickname);
 	Param(c,w, "network.master_server_port", master_server_port);		Param(c,w, "network.local_port", local_port);

@@ -791,7 +791,7 @@
 
 			<!--  Tweak Materials PBS  -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
-				<Property key="Caption" value="#6868B0#{Tweak}"/>
+				<Property key="Caption" value="#9090D0#{Materials}"/>
 
 				<Widget type="TextBox" skin="TextBox" position="412 8 220 16">
 					<Property key="Caption" value="#{MaterialProperties}"/>

@@ -10,7 +10,8 @@
 #include "settings_com.h"
 
 
-namespace Ogre {  class SceneNode;  class Root;  class SceneManager;  class Window;  class Viewport;  class Light;  }
+namespace Ogre {  class Root;  class SceneManager;  class Window;  class Viewport;
+	class SceneNode;  class Light;  class HlmsPbsDatablock;  }
 class Scene;  class CData;  class SplineRoad;
 class App;  class SETTINGS;
 class TrackInfo;  class UserTrkInfo;
@@ -208,4 +209,35 @@ public:
 
 	//  🔗 util
 	void OpenBrowserUrl(std::string url);
+
+
+	std::vector<Ogre::String> vsMaterials, vsTweakMtrs;
+	void GetMaterials(   Ogre::String filename, bool clear=true, Ogre::String type="hlms");  // ogre resource
+	void GetMaterialsMat(Ogre::String filename, bool clear=true, Ogre::String type="hlms");  // direct path+file
+
+    
+   	//  🔧 Tweak  edit materials  --------------------
+	void InitGuiTweakMtr(), InitClrTweakMtr();
+	void GetTweakMtr(), FillTweakMtr();
+	Li liTweakMtr =0;  void listTweakMtr(Li, size_t);
+	std::vector<std::pair<Ogre::String,Ogre::String>> clrTweakMtr;
+
+	void slTweakMtr(SV*), updTweakMtr();
+	Ed edMtrFind =0;  void editMtrFind(Ed);
+	struct TwkMtr
+	{
+		// HlmsPbsDbCar *db =0;
+		Ogre::HlmsPbsDatablock* db =0;
+	#define SVf(n)  SV sv##n;  float f##n =0.f;
+		SVf(DiffR)  SVf(DiffG)  SVf(DiffB)
+		SVf(SpecR)  SVf(SpecG)  SVf(SpecB)
+		SVf(FresR)  SVf(FresG)  SVf(FresB)  //SVf(Fresnel)
+		SVf(Rough)  SVf(Metal)
+		SVf(ClearCoat)  SVf(ClearRough)
+		SVf(BumpScale)
+		Cmb cbWorkflow =0;
+		Ed edInfo =0;
+	#undef SVf
+	} twk;
+
 };

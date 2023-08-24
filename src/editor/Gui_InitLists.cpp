@@ -44,17 +44,17 @@ void CGui::InitGuiLists()
 	Cmb(cmbRain1, "Rain1Cmb", comboRain1);  cmbRain1->addItem("");
 	Cmb(cmbRain2, "Rain2Cmb", comboRain2);  cmbRain2->addItem("");
 
-	GetMaterials("weather.particle", true, "particle_system");
-	for (u=0; u < vsMaterials.size(); ++u)
-	{	const String& s = vsMaterials[u];
+	gcom->GetMaterials("weather.particle", true, "particle_system");
+	for (auto& s : gcom->vsMaterials)
+	{
 		cmbRain1->addItem(s);  cmbRain2->addItem(s);
 	}	
 
 	//---------------------  🔥 Emitters  ---------------------
-	GetMaterials("emitters.particle", true, "particle_system");
+	gcom->GetMaterials("emitters.particle", true, "particle_system");
 	app->vEmtNames.clear();
-	for (u=0; u < vsMaterials.size(); ++u)
-		app->vEmtNames.push_back(vsMaterials[u]);
+	for (auto& s : gcom->vsMaterials)
+		app->vEmtNames.push_back(s);
 
 
 	//---------------------  ⛰️ Terrain  ---------------------
@@ -72,9 +72,9 @@ void CGui::InitGuiLists()
 	}
 	
 	//  particles
-	GetMaterials("tires.particle", true, "particle_system");
-	for (u=0; u < vsMaterials.size(); ++u)
-	{	const String& s = vsMaterials[u];
+	gcom->GetMaterials("tires.particle", true, "particle_system");
+	for (auto& s : gcom->vsMaterials)
+	{
 		cmbParDust->addItem(s);  cmbParMud->addItem(s);  cmbParSmoke->addItem(s);
 	}
 	
@@ -177,10 +177,6 @@ void CGui::InitGuiLists()
 	for (n=0; n < 4; ++n)  surfList->addItem("#FFFF80"+TR("#{Pipe} ")+toStr(n));
 	surfList->setIndexSelected(0);
 	
-	
-	//---------------------  🔧 Tweak materials  ---------------------
-	GetTweakMtr(sMat);
-
 	
 	///  👆 Pick window
 	///------------------------------------------------------------------------------------------------------------
