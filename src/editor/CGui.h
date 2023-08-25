@@ -51,7 +51,8 @@ public:
 	void UpdGuiAfterPreset(), FillPickLists();
 
 	Txt valTrk[2] ={0,0};
-	std::vector<Tab> vSubTabsTrack, vSubTabsEdit, vSubTabsHelp, vSubTabsOpts;
+	std::vector<Tab> vSubTabsTrack, vSubTabsEdit,
+		vSubTabsHelp, vSubTabsOpts, vSubTabsMat;
 	
 	//  util
 	void toggleGui(bool toggle=false);

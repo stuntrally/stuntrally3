@@ -134,13 +134,15 @@ public:
 	WP mWndMainPanels[ciMainBtns] ={0,}, mWndRacePanels[ciRaceBtns] ={0,};
 	Btn mWndMainBtns[ciMainBtns]  ={0,}, mWndRaceBtns[ciRaceBtns]   ={0,};
 
-	Wnd mWndMain =0, mWndRace =0,
-		mWndGame =0,mWndReplays =0,  mWndHelp =0, mWndOpts =0,  // menu, windows
+	Wnd mWndMain =0, mWndRace =0,  // menu 2 levels
+		mWndGame =0, mWndReplays =0,
+		mWndHelp =0, mWndOpts =0, mWndMaterials =0,  // common
 		mWndWelcome =0, mWndHowTo =0, mWndRpl =0, mWndRplTxt =0,
 		mWndNetEnd =0, mWndTweak =0, mWndTrkFilt =0,  // rpl controls, netw, tools
 		mWndChampStage =0, mWndChampEnd =0,
 		mWndChallStage =0, mWndChallEnd =0;
-	Tab mWndTabsGame =0, mWndTabsRpl =0, mWndTabsHelp =0, mWndTabsOpts =0;  // main tabs on windows
+	Tab mWndTabsGame =0, mWndTabsRpl =0,
+		mWndTabsHelp =0, mWndTabsOpts =0, mWndTabsMat =0;  // main tabs on windows
 	
 	//MyGUI::VectorWidgetPtr
 	std::vector<WP> vwGui;  // all widgets to destroy

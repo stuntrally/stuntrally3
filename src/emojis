@@ -1,4 +1,5 @@
 Various markers in sources for key sections, methods etc.  Also showing short-cut or hint, next or below.
+You can search in code by emoji for all that is related to it.
 
  _______           _________          ____________      ___________        _______         ______          _________
  Scene             Scene-2            Atmosphere        HUD, Game          HUD-2           Road            Vehicle  
@@ -23,10 +24,10 @@ Various markers in sources for key sections, methods etc.  Also showing short-cu
                    🏁 Start  finish    🖥️ Screen                       ⏳ Loading       💬 chat      ⛓️ util-ity  src   🟢 Ogre
  🎛️ GUI  gui       🔵 Checkpoint chk   📊 Options     🪟 Window wnd*   🆕 Create                                        💡 Light
                    📐 Drivability                                                       🧵 thread    🧰 _Tool_ dev      🌒 shadow
- 🎥 Camera  cam                        📈 Fps         🗜️ Resize        💫 Update        🌀 noise     🪛 param // par    🌠 Hlms  shader
- 📽️ Replay  rpl    🚀 Spaceship        📉 Graphs      🔗 url                per frame                🧪 test  src       🪄 compositor
-                   🔘 Sphere                          🖱️ Mouse         🔁 Refresh       👆 pick  ed                     👀 VR mode
- 👻 Ghost  gho     🏍️ Motorbike        📝 Help         ⌨️ Keys                 single    🚧 cursor    🏗️👷 Editor ed     
+ 🎥 Camera  cam                        📈 Fps         🗜️ Resize        💫 Update        🌀 noise     🪛 param // par    👀 VR mode-
+ 📽️ Replay  rpl    🚀 Spaceship        📉 Graphs      🔗 url                per frame                🧪 test  src       
+                   🔘 Sphere                          🖱️ Mouse         🔁 Refresh       👆 pick  ed                     🌠 Hlms  shader
+ 👻 Ghost  gho     🏍️ Motorbike        📝 Help         ⌨️ Keys                 single    🚧 cursor    🏗️👷 Editor ed     🪄 compositor
  👈 Hint  lesson   🚌 Bus              ❔ tooltip                      🌈 Colors  clr   📍 marker    🎳 Bullet collis   
                                                        🗺️ language     🔺 triangle tri   ⚠ warnings   🎯 ray cast        
  👥 Split-screen                       🖼️ image prv    🔤 text         ⭐ user          🖌️ brush                        

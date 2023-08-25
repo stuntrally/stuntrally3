@@ -94,9 +94,11 @@ protected:
 
 
 	///  🪧 main menu
-	Wnd mWndMain =0, mWndTrack =0, mWndEdit =0, mWndHelp =0, mWndOpts =0;  // menu, windows
+	Wnd mWndMain =0, mWndTrack =0, mWndEdit =0,
+		mWndHelp =0, mWndOpts =0, mWndMaterials =0;  // common
 	Wnd mWndTrkFilt =0, mWndPick =0;
-	Tab mWndTabsTrack =0, mWndTabsEdit =0, mWndTabsHelp =0, mWndTabsOpts =0;  // main tabs on windows
+	Tab mWndTabsTrack =0, mWndTabsEdit =0,
+		mWndTabsHelp =0, mWndTabsOpts =0, mWndTabsMat =0;  // main tabs on windows
 
 	WP mWndMainPanels[WND_ALL] ={0,};
 	Btn mWndMainBtns[WND_ALL] ={0,};

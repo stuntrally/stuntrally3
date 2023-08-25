@@ -249,6 +249,7 @@ void App::UpdVisGui()
 	mWndEdit->setVisible(notMain && pSet->inMenu == WND_Edit);
 	mWndHelp->setVisible(notMain && pSet->inMenu == WND_Help);
 	mWndOpts->setVisible(notMain && pSet->inMenu == WND_Options);
+	mWndMaterials->setVisible(notMain && pSet->inMenu == WND_Materials);
 
 	if (!g)  mWndPick->setVisible(false);
 	if (!g)  mWndTrkFilt->setVisible(false);
@@ -274,7 +275,7 @@ void App::UpdVisGui()
 	if (ndBrush)
 		ndBrush->setVisible(edMode < ED_Road && !bMoveCam);
 
-	for (int i=0; i < WND_ALL; ++i)
+	for (int i=0; i < ciMainBtns; ++i)
 		mWndMainPanels[i]->setVisible(pSet->inMenu == i);
 		
 	if (gui->txWarn)  gui->txWarn->setVisible(false);
@@ -380,13 +381,14 @@ void CGui::GuiShortcut(WND_Types wnd, int tab, int subtab)
 		case WND_Edit:		mWndTabs = app->mWndTabsEdit;  subt = &vSubTabsEdit;  break;
 		case WND_Help:		mWndTabs = app->mWndTabsHelp;  subt = &vSubTabsHelp;  break;
 		case WND_Options:	mWndTabs = app->mWndTabsOpts;  subt = &vSubTabsOpts;  break;
-		default:  break;
+		case WND_Materials:	subt = &vSubTabsOpts;  break;  // fixme
+		default:            mWndTabs = app->mWndTabsTrack; subt = &vSubTabsTrack; break;
 	}
 	if (wnd != WND_Edit)
 		app->mWndPick->setVisible(false);
 	toggleGui(false);
 
-
+	if (tab < 0)  return;
 	size_t t = mWndTabs->getIndexSelected();
 	mWndTabs->setIndexSelected(tab);
 

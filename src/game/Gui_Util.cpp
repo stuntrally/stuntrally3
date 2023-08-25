@@ -10,6 +10,7 @@
 #include "SoundMgr.h"
 
 #include "MultiList2.h"
+#include "settings.h"
 #include <OgreTimer.h>
 #include <MyGUI.h>
 using namespace std;
@@ -75,8 +76,11 @@ void CGui::toggleGui(bool toggle)
 	
 	app->mWndHowTo->setVisible(  gui && mnu == MN_HowTo);
 	app->mWndReplays->setVisible(gui && mnu == MN_Replays);
-	app->mWndHelp->setVisible(   gui && mnu == MN_Help);
-	app->mWndOpts->setVisible(   gui && mnu == MN_Options);
+	
+	app->mWndHelp->setVisible(     gui && mnu == MN_Help);
+	app->mWndOpts->setVisible(     gui && mnu == MN_Options);
+	app->mWndMaterials->setVisible(gui && mnu == MN_Materials);
+	
 	if (!gui)  app->mWndTrkFilt->setVisible(false);
 
 	if (!gui && gcom->imgPrv[2])  // hide fullscr prv
@@ -168,7 +172,7 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab)
 	}
 	toggleGui(false);
 
-
+	if (tab < 0)  return;
 	size_t t = mWndTabs->getIndexSelected();
 	mWndTabs->setIndexSelected(tab);
 

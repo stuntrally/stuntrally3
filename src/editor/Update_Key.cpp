@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "enums.h"
 #include "BaseApp.h"
 #include "Gui_Def.h"
 #include "GuiCom.h"
@@ -59,11 +60,11 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		switch (skey)
 		{
 		case key(UP):  case key(KP_8):
-			pSet->inMenu = (pSet->inMenu-1+WND_ALL)%WND_ALL;
+			pSet->inMenu = (pSet->inMenu -1 + ciMainBtns) % ciMainBtns;
 			gui->toggleGui(false);  return;
 
 		case key(DOWN):  case key(KP_2):
-			pSet->inMenu = (pSet->inMenu+1)%WND_ALL;
+			pSet->inMenu = (pSet->inMenu +1) % ciMainBtns;
 			gui->toggleGui(false);  return;
 
 		case key(KP_ENTER):  case key(RETURN):
@@ -338,7 +339,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		 case key(F): gui->GuiShortcut(WND_Edit, TAB_Grass,2);   return;  //  F -Channels
 
 		case key(V):  gui->GuiShortcut(WND_Edit, TAB_Veget);     return;  // V Vegetation  🌳🪨
-		 case key(M): gui->GuiShortcut(WND_Edit, TAB_Veget,1);   return;  //  M -Models
+		//  case key(M): gui->GuiShortcut(WND_Edit, TAB_Veget,1);   return;  //  M -Models
 
 		case key(U):  gui->GuiShortcut(WND_Edit, TAB_Surface);   return;  // U Surfaces  ⚫💭
 		case key(R):  gui->GuiShortcut(WND_Edit, TAB_Road);      return;  // R Road  🛣️
@@ -348,7 +349,8 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(A):  gui->GuiShortcut(WND_Options, 2);   return;  // A Graphics  📊
 
 		case key(E):  gui->GuiShortcut(WND_Options, 3);   return;  // E View /Settings  ⚙️
-		case key(K):  gui->GuiShortcut(WND_Options, 4);   return;  // K Tweak  🔧
+		case key(K):  gui->GuiShortcut(WND_Options, 4);   return;    // K Tweak  🔧
+		case key(M):  gui->GuiShortcut(WND_Materials, -1);   return;  // M Materials  🔧
 		
 		case key(I):  gui->GuiShortcut(WND_Help, 1);  return;  // I Input/help  📝
 		default:  break;

@@ -133,8 +133,13 @@ void CGui::InitGuiLists()
 				if (name != "sphere" && !PATHS::FileExists(sData+"/objects/"+ name + ".bullet"))
 				{	// no dynamic
 
-					// auto id = name.find('_') ?..
-					string cat = name.substr(0,4);
+					string cat;
+					/*auto p = name.find_first_of('_');
+					if (p != string::npos)
+						cat = name.substr(0,p);
+					else/**/  // todo until _ or 4
+						cat = name.substr(0,4);
+
 					++cats[cat];
 					app->vBuildings.push_back(name);
 					app->vObjNames.push_back(name);  // in -,=

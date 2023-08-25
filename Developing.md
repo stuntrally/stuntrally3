@@ -10,7 +10,7 @@ Can be useful if you want to:
 
 ## SR3 ToDo
 
-Many _ToDo_: tasks are added around here BTW of topics.  
+Many _ToDo:_ tasks are added around here BTW of topics.  
 Shorter, fast updated list with more is on [Roadmap](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap).  
 And more in oldest [Task list](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with good info (sort by P, 1 is most important).  
 
@@ -242,6 +242,8 @@ and is used in Pbs and Terra `.any` there `@insertpiece( applyFog )`.
 
 The terrain component. Very efficient. Has triplanar already.  
 
+_ToDo:_ But `setDetailTriplanarNormalEnabled(true);` is broken still, has black-white spots. Posts: [start](https://forums.ogre3d.org/viewtopic.php?p=554304#p554304) until [end](https://forums.ogre3d.org/viewtopic.php?p=554312#p554312).
+
 #### Comparison
 
 This **changed** completely from old Ogre. Now heightmaps are power of 2, e.g. 1024, not 1025 like old.  
@@ -264,6 +266,8 @@ Made all visible in `Terra::isVisible` for `if (!bNormalized)`.
 In ctor `Terra::Terra(` setting `bNormalized` to 1 does try to normalize Hmap.  
 
 **_ToDo:_** Call Terra::update when the camera changes for each of splitscreen views.
+
+We use `tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);` because it looks best, other are bad.
 
 #### Extended
 
@@ -323,6 +327,9 @@ Road editing is **slower** now, [topic](https://forums.ogre3d.org/viewtopic.php?
 due to going from V2 mesh to v1 computing tangents and back to v2.  
 _ToDo:_ For far future. We should compute tangents/binormals ourself.  
 
+_ToDo:_ We don't handle _device lost_ (happens in DirectX when going out of fullscreen),  
+it will go bad for all created meshes (road, grass).  
+
 **Glass pipes** rendering changed. Old Ogre had 2 passes with opposite culling.  
 New does not support passes [[2.3] Dealing with multi pass rendering in ogre next](https://forums.ogre3d.org/viewtopic.php?t=96902), and instead has:  
 2 nodes with same mesh, but clones datablock and sets opposite cull in it. Code in `pipe glass 2nd item` section of `Road_Mesh.cpp`.  
@@ -339,10 +346,12 @@ All models are placed during track load by code in `src/common/SceneTrees.cpp`.
 
 ### Grass 🌿
 
+It has pages (auto size from terrain size) and no LoDs.  
+Also no fading yet. Started, find: `grow fade away`.
 Currently done simplest way, has mesh pages, with vertices and indices.  
 Quite inefficient to render and slow to create mesh.  
 Code in `Grass.h` and `Grass_Mesh.cpp`.  
-**_ToDo_:** add RTT for density map, read terrain height map in shader..  
+**_ToDo:_** add RTT for density map, read terrain height map in shader, do vertices in shader not on CPU..  
 [old topic](https://forums.ogre3d.org/viewtopic.php?t=85626&start=25)  
 [some info](https://forums.ogre3d.org/viewtopic.php?p=553666#p553666) (under "How should I add grass?") on how to do it better.  
 
@@ -371,7 +380,7 @@ More detail in `CGame.h` sections with vars for this.
 
 Sound manager code in `src/sound/`. Is based on [RoR's](https://github.com/RigsOfRods/rigs-of-rods/tree/master/source/main/audio) code. Completely replaced VDrift's code.
 
-**_ToDo_:** [Task here](https://stuntrally.tuxfamily.org/mantis/view.php?id=1). Ambient sounds (rain, wind, forest etc). Hit sounds (barrels etc).
+**_ToDo:_** [Task here](https://stuntrally.tuxfamily.org/mantis/view.php?id=1). Ambient sounds (rain, wind, forest etc). Hit sounds (barrels etc).
 
 
 ----
@@ -424,9 +433,9 @@ And we have own datablocks: `HlmsPbsDbCar` and `HlmsPbsDbWater` with more stuff 
 
 Adding more params for Pbs shaders and terrain. E.g. `globalTime` and our own height fog like `fogHparams`.  
 Easiest to add new in `struct AtmoSettingsGpu` also `struct AtmoSettings` and then fill it in `Atmosphere2Npr::_update` (called each frame).  
-**_ToDo_:** This is half working way. Not all have `atmo` struct.  
+**_ToDo:_** This is half working way. Not all have `atmo` struct.  
 
-_ToDo_: [topic](https://forums.ogre3d.org/viewtopic.php?p=535357#p535357) done through HlmsListener using `getPassBufferSize` and `preparePassBuffer`.
+_ToDo:_ [topic](https://forums.ogre3d.org/viewtopic.php?p=535357#p535357) done through HlmsListener using `getPassBufferSize` and `preparePassBuffer`.
 
 This shader file `Media/Hlms/Pbs/Any/Main/500.Structs_piece_vs_piece_ps.any` has definitions for:
 - `MaterialStructDecl`
@@ -460,16 +469,16 @@ _ToDo:_ [topic](https://forums.ogre3d.org/viewtopic.php?p=554630#p554630), add f
 [topic from 2015](https://forums.ogre3d.org/viewtopic.php?f=25&t=84539)
 
 
-### Own DataBlock2
+### Own DataBlocks
 
-Inside `HlmsPbs2::createDatablockImpl(` we create `HlmsPbsDatablock2` for vehicle paint params.  
-It has own `HlmsPbsDatablock2::uploadToConstBuffer`, which is where data is uploaded from C++ to GPU material shader buffers.  
+Inside `HlmsPbs2::createDatablockImpl(` we create `HlmsPbsDbCar` for vehicle paint params.  
+It has own `HlmsPbsDbCar::uploadToConstBuffer`, which is where data is uploaded from C++ to GPU material shader buffers.  
 
 Currently can't change total size, must set `mUserValue[` in cpp and get in shader `material.userValue[`.
 _ToDo:_ `body_paint` property not used yet
-**_ToDo:_** clone on our `HlmsPbsDatablock2` fails? Same vehicles can't have different paints.
+**_ToDo:_** clone on our `HlmsPbsDbCar` fails? Same vehicles can't have different paints.
 
-When setting car material need to use `HlmsPbsDatablock2*`. Set by `CarModel::SetPaint()`.  
+When setting car material need to use `HlmsPbsDbCar*`. Set by `CarModel::SetPaint()`.  
 Changes need `scheduleConstBufferUpdate()` to apply.
 
 
@@ -478,15 +487,15 @@ Changes need `scheduleConstBufferUpdate()` to apply.
 The modified `HlmsPbs2` replaces default `HlmsPbs` in Ogre-Next and reads all from same dirs as Pbs.  
 It gathers all above points.  
 
-Own HLMS should inherit from Pbs, and needs its own dirs with shaders (probably?).  
+Fully own HLMS should inherit from Pbs, and (probably?) needs its own dirs with shaders.  
 Also own name in `.material` for materials e.g. `hlms water_name pbs` that last `pbs`.  
 
-_ToDo_: [[Solved][2.1] Trying to create a new HLMS](https://forums.ogre3d.org/viewtopic.php?f=25&t=83763)
+_ToDo:_ [Trying to create a new HLMS](https://forums.ogre3d.org/viewtopic.php?f=25&t=83763)
 
-Some example already in Terra. Also more and difficult code,
+Some example is already in Terra. Has also more and difficult code,
 e.g. `Fill command Buffers` in `HlmsTerra::fillBuffersFor(`.
 
-Own HLMS could control more like `MaterialSizeInGpu` (it needs same size in `uploadToConstBuffer`).  
+Own HLMS could control more, like `MaterialSizeInGpu` (it needs same size in `uploadToConstBuffer`).  
 This assert triggering, means those were different:  
 `assert( (size_t)( passBufferPtr - startupPtr ) * 4u == mapSize );`
 
@@ -497,7 +506,10 @@ Other common assert: [mCachedTransformOutOfDate](https://ogrecave.github.io/ogre
 At end of [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822).
 
 Don't change node pos or rot from inside listeners.  
-Or after call `_getFullTransformUpdated(` e.g. for `ndSky`, `light->getParentNode()->_`, camera etc.
+Or after, need to call `_getFullTransformUpdated(` e.g. for `ndSky`, `light->getParentNode()->_`, camera etc.
+
+Also [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822), leaking GPU RAM inactive and  
+Exception: `Mapping the buffer twice within the same frame detected!`.
 
 ### Workspaces 🪄
 

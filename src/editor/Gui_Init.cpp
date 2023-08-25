@@ -50,14 +50,17 @@ void CGui::InitGui()
 		auto v = LayoutManager::getInstance().loadLayout(file + ".layout");
 		app->vwGui.insert(app->vwGui.end(), v.begin(), v.end());
 	};
-	Load("Common");  Load("Editor_Main");  Load("Editor");  Load("Editor_Track");
-	Load("Editor_Utils");  Load("Editor_Tools");  Load("Editor_Help");  Load("Editor_Options");
+	Load("Common");  Load("MaterialEditor");
+	Load("Editor_Main");   Load("Editor");  Load("Editor_Track");
+	Load("Editor_Utils");  Load("Editor_Tools");
+	Load("Editor_Help");   Load("Editor_Options");
 
 
 	//  🪟 main windows  ----
 	app->mWndMain = fWnd("MainMenuWnd");
 	app->mWndTrack = fWnd("TrackWnd");  app->mWndEdit = fWnd("EditorWnd");
-	app->mWndOpts = fWnd("OptionsWnd"); app->mWndHelp = fWnd("HelpWnd");
+	app->mWndOpts = fWnd("OptionsWnd"); app->mWndHelp = fWnd("HelpWnd");  // common
+	app->mWndMaterials = fWnd("MaterialsWnd");
 	
 	app->mWndPick = fWnd("PickWnd");
 	app->mWndTrkFilt = fWnd("TrackFilterWnd");
@@ -87,6 +90,7 @@ void CGui::InitGui()
 	fTabW("TabWndEdit");  app->mWndTabsEdit = tab;
 	fTabW("TabWndOpts");  app->mWndTabsOpts = tab;
 	fTabW("TabWndHelp");  app->mWndTabsHelp = tab;
+	// fTabW("TabWndMat");   app->mWndTabsMat = tab;
 
 	//  get sub tabs
 	vSubTabsTrack.clear();
@@ -114,6 +118,12 @@ void CGui::InitGui()
 		sub = gcom->FindSubTab(app->mWndTabsOpts->getItemAt(u));
 		vSubTabsOpts.push_back(sub);
 	}
+	/*vSubTabsMat.clear();  // todo
+	for (u=0; u < app->mWndTabsMat->getItemCount(); ++u)
+	{
+		sub = gcom->FindSubTab(app->mWndTabsMat->getItemAt(u));
+		vSubTabsMat.push_back(sub);
+	}*/
 
 	///  🎛️ Gui common init  ---
 	InitMainMenu();

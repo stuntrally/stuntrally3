@@ -221,7 +221,9 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 			case key(T):	gui->GuiShortcut(MN_Options, TABo_Settings);	return;  // T Settings  ⚙️
 			case key(O):	gui->GuiShortcut(MN_Options, TABo_Sound);	return;  // O Sound  🔊
+
 			case key(K):	gui->GuiShortcut(MN_Options, TABo_Tweak);  return;  // K Tweak  🔧
+			case key(M):	gui->GuiShortcut(MN_Materials, -1);  return;  // M Materials  🔧
 			default:  break;
 		}
 	//............................................................................................................

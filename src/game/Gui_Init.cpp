@@ -53,15 +53,18 @@ void CGui::InitGui()
 		auto v = LayoutManager::getInstance().loadLayout(file + ".layout");
 		app->vwGui.insert(app->vwGui.end(), v.begin(), v.end());
 	};
-	Load("Common");  Load("Game_Main");  Load("Game");  Load("Game_Utils");
-	Load("Game_Help");  Load("Game_Options");  Load("Game_Replay");  Load("Game_Tweak");
+	Load("Common");  Load("MaterialEditor");
+	Load("Game_Main");  Load("Game");  Load("Game_Utils");
+	Load("Game_Help");  Load("Game_Options");
+	Load("Game_Replay");  Load("Game_Tweak");
 
 
 	//  🪟 main windows  ----
 	app->mWndMain = fWnd("MainMenuWnd");  app->mWndRace = fWnd("RaceMenuWnd");
 	app->mWndGame = fWnd("GameWnd");  app->mWndReplays = fWnd("ReplaysWnd");
-	app->mWndHelp = fWnd("HelpWnd");  app->mWndOpts = fWnd("OptionsWnd");
 	app->mWndHowTo = fWnd("HowToPlayWnd");
+	app->mWndHelp = fWnd("HelpWnd");  app->mWndOpts = fWnd("OptionsWnd");  // common
+	app->mWndMaterials = fWnd("MaterialsWnd");
 
 	//  dialog wnds  ----
 	app->mWndTrkFilt = fWnd("TrackFilterWnd");  app->mWndWelcome = fWnd("WelcomeWnd");

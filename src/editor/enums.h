@@ -9,8 +9,10 @@ enum ED_MODE
 
 enum WND_Types  // pSet->inMenu
 {
-	WND_Track=0, WND_Edit, WND_Help, WND_Options,
-	WND_ALL
+	WND_Track=0, WND_Edit,
+	WND_Help, WND_Options, WND_Materials,
+	WND_ALL,
+	ciMainBtns = WND_Materials  // last
 };
 
 enum TABS_Edit

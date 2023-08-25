@@ -179,10 +179,12 @@ void CGuiCom::ResizeOptWnd()
 #else  // editor
 	app->mWndTrack->setCoord(xm, ym, xo, yo);
 	app->mWndEdit->setCoord(xm, ym, xo, yo);
-#endif  // both
+#endif  // both, common
 	app->mWndTrkFilt->setCoord(xm, ym+50, xo, yo);
 	app->mWndHelp->setCoord(xm, ym, xo, yo);
 	app->mWndOpts->setCoord(xm, ym, xo, yo);
+	app->mWndMaterials->setCoord(xm, ym, xo, yo);
+
 
 	if (bnQuit)  //  reposition Quit btn
 		bnQuit->setCoord(wx - 0.12*wx, 0, 0.12*wx + 2, /*0.05*wy*/36);

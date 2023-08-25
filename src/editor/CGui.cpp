@@ -51,7 +51,7 @@ CGui::CGui(App* app1)
 void CGui::InitMainMenu()
 {
 	Btn btn;
-	for (int i=0; i < WND_ALL; ++i)
+	for (int i=0; i < ciMainBtns; ++i)
 	{
 		const String s = toStr(i);
 		app->mWndMainPanels[i] = fWP("PanMenu"+s);
@@ -67,7 +67,7 @@ void CGui::InitMainMenu()
 
 void CGui::btnMainMenu(WP wp)
 {
-	for (int i=0; i < WND_ALL; ++i)
+	for (int i=0; i < ciMainBtns; ++i)
 		if (wp == app->mWndMainBtns[i])
 		{
 			pSet->bMain = false;
