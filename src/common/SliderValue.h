@@ -2,6 +2,7 @@
 #include <map>
 #include <OgreString.h>
 #include <MyGUI_Delegate.h>
+#include <MyGUI_Colour.h>
 
 namespace MyGUI {  class Slider;  }
 
@@ -76,6 +77,7 @@ public:
 
 	void setText(Ogre::String txt);  // only if needed manually
 	void setTextClr(float r,float g,float b);
+	void setClr(MyGUI::Colour c);
 
 
 	//  default value for RMB click (real values)

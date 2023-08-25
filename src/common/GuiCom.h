@@ -216,7 +216,7 @@ public:
 	void GetMaterialsMat(Ogre::String filename, bool clear=true, Ogre::String type="hlms");  // direct path+file
 
     
-   	//  🔧 Tweak  edit materials  --------------------
+   	//  🔧 Tweak Mat - Material Editor  --------------------
 	void InitGuiTweakMtr(), InitClrTweakMtr();
 	void GetTweakMtr(), FillTweakMtr();
 	Li liTweakMtr =0;  void listTweakMtr(Li, size_t);
@@ -235,7 +235,10 @@ public:
 		SVf(Rough)  SVf(Metal)
 		SVf(ClearCoat)  SVf(ClearRough)
 		SVf(BumpScale)  SVf(Transp)
-		Txt txWorkflow =0;
+
+  		SV svUser[3][4];  float fUser[3][4] = {0.f,};
+  		SV svDet[4][4];  float fDet[4][4] = {0.f,};
+
 		Ed edInfo =0;
 	#undef SVf
 	} twk;

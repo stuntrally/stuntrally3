@@ -204,9 +204,16 @@ void SliderValue::setText(String txt)
 	else
 	if (edit)  edit->setCaption(txt);
 }
+
 void SliderValue::setTextClr(float r,float g,float b)
 {
 	if (text)  text->setTextColour(Colour(r,g,b));
+}	
+void SliderValue::setClr(Colour c)
+{
+	if (text)  text->setTextColour(c);
+	if (edit)  edit->setTextColour(c);
+	if (slider)  slider->setColour(c);
 }	
 
 

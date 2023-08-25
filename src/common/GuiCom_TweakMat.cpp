@@ -9,6 +9,7 @@
 #include "paths.h"
 
 #include "HlmsPbs2.h"
+#include <OgreVector3.h>
 #include <OgreHlmsPbsPrerequisites.h>
 #include <OgreHlmsCommon.h>
 #include <OgreHlmsPbsDatablock.h>
@@ -56,8 +57,27 @@ void CGuiCom::InitGuiTweakMtr()
 
 	TWK(BumpScale, 0.0f, 6.f)  TWK(Transp, 0.f, 1.f)
 
-	auto txt = fTxt("Workflow");  twk.txWorkflow = txt;
-	// cmb->addItem("Specular");  cmb->addItem("SpecularAsFresnel");  cmb->addItem("Metallic");
+	float a = -1.f, b = 2.f;  // par range
+	int i,x;
+	for (x=0; x < 4; ++x)
+	{
+		for (i=0; i < 3; ++i)
+		{	auto s = "User" + toStr(i) + toStr(x);
+			sv= &twk.svUser[i][x];  sv->Init(s, &twk.fUser[i][x], a, b, 1.5f, 3,5);  sv->DefaultF(0.0f);  SevC(TweakMtr);
+
+			auto c = Colour(0.2f+x*0.2f, 0.5f+i*0.12f, 1.f-i*0.1f-x*0.1f);
+			auto txt = fTxt(s+"Name");  txt->setTextColour(c);
+			sv->setClr(c);  //txt->setCaption();  //..
+		}
+		for (i=0; i < 4; ++i)
+		{	auto s = "Det" + toStr(i) + toStr(x);
+			sv= &twk.svDet[i][x];  sv->Init(s, &twk.fDet[i][x], a, b, 1.5f, 3,5);  sv->DefaultF(0.0f);  SevC(TweakMtr);
+			
+			auto c = Colour(0.2f+x*0.2f, 0.5f+i*0.12f, 1.f-i*0.1f-x*0.1f);
+			auto txt = fTxt(s+"Name");  txt->setTextColour(c);
+			sv->setClr(c);
+		}
+	}
 
 	twk.edInfo = fEd("MtrInfo");
 
@@ -84,7 +104,18 @@ void CGuiCom::slTweakMtr(SV* sv)
 
 	else if (s=="BumpScale")   twk.db->setNormalMapWeight(twk.fBumpScale);
 	else if (s=="Transp")      twk.db->setTransparency(twk.fTransp, twk.db->getTransparencyMode());
-
+	else
+	{
+		Vector4 v;  int i,c;  // todo
+		/*if (s.substr(0,4) == "User")
+		{
+			twk.db->setUserValue(i, v);
+		}
+		if (s.substr(0,3) == "Det")
+		{
+			twk.db->setDetailMapOffsetScale(i, v);
+		}*/
+	}
 }
 
 
@@ -95,7 +126,7 @@ void CGuiCom::updTweakMtr()
 	auto hlms = Root::getSingleton().getHlmsManager()->getHlms( HLMS_PBS );
 	twk.db = (HlmsPbsDatablock*) hlms->getDatablock( pSet->tweak_mtr );
 	if (!twk.db)  return;
-	Vector3 v;  float f;  int i;
+	Vector4 u;  Vector3 v;  float f;  int i,x;
 
 	v = twk.db->getDiffuse();   twk.fDiffR = v.x;  twk.fDiffG = v.y;  twk.fDiffB = v.z;  twk.svDiffR.Upd(); twk.svDiffG.Upd(); twk.svDiffB.Upd();
 	v = twk.db->getSpecular();  twk.fSpecR = v.x;  twk.fSpecG = v.y;  twk.fSpecB = v.z;  twk.svSpecR.Upd(); twk.svSpecG.Upd(); twk.svSpecB.Upd();
@@ -107,34 +138,58 @@ void CGuiCom::updTweakMtr()
 	f = twk.db->getClearCoatRoughness();  twk.fClearRough = f;  twk.svClearRough.Upd();
 
 	f = twk.db->getNormalMapWeight();  twk.fBumpScale = f;  twk.svBumpScale.Upd();
-	const static String sWf[3] = {"Specular","SpecularAsFresnel","Metallic"};
-	i = twk.db->getWorkflow();  twk.txWorkflow->setCaption(sWf[i]);
 
+	for (i=0; i < 3; ++i)
+	{
+		u = twk.db->getUserValue(i);
+		twk.fUser[i][0] = u.x;  twk.fUser[i][1] = u.y;  twk.fUser[i][2] = u.z;  twk.fUser[i][3] = u.w;
+		for (x=0; x < 4; ++x)  twk.svUser[i][x].Upd();
+	}
+	for (i=0; i < 4; ++i)
+	{
+		u = twk.db->getDetailMapOffsetScale(i);
+		twk.fDet[i][0] = u.x;  twk.fDet[i][1] = u.y;  twk.fDet[i][2] = u.z;  twk.fDet[i][3] = u.w;
+		for (x=0; x < 4; ++x)  twk.svDet[i][x].Upd();
+	}
 
 	//----------------------------------------------------------------------------------------------------
 	StringStream s;  // info only ..
 
+	s << "#20F020   Textures: #D0FFD0" << endl;
 	auto* tex = twk.db->getDiffuseTexture();    if (tex)  s << "Diffuse:    " << tex->getNameStr() << endl;
     tex = twk.db->getTexture(PBSM_NORMAL);      if (tex)  s << "Normal:    " << tex->getNameStr() << endl;
+    tex = twk.db->getTexture(PBSM_DETAIL_WEIGHT); if (tex)  s << "Detail Weight:  " << tex->getNameStr() << endl;
+	for (i=0; i < 4; ++i)
+	{
+	    tex = twk.db->getTexture(PBSM_DETAIL0 + i);
+		if (tex)  s << "Detail Diff:        " << tex->getNameStr() << endl;
+	    tex = twk.db->getTexture(PBSM_DETAIL0_NM + i);
+		if (tex)  s << "Detail Norm:     " << tex->getNameStr() << endl;
+	}
     tex = twk.db->getTexture(PBSM_SPECULAR);    if (tex)  s << "Specular:  " << tex->getNameStr() << endl;
     tex = twk.db->getTexture(PBSM_ROUGHNESS);   if (tex)  s << "Roughness: " << tex->getNameStr() << endl;
     tex = twk.db->getTexture(PBSM_EMISSIVE);    if (tex)  s << "Emissive:   " << tex->getNameStr() << endl;
     tex = twk.db->getTexture(PBSM_REFLECTION);  if (tex)  s << "Reflect:    " << tex->getNameStr() << endl;
 	
+	s << "#40D090   Samplers: #C0FFE0" << endl;
 	auto* sb = twk.db->getSamplerblock(0);
 	if (sb)
 	{
 		const static String sFil[5] = {"none","point","lin","anis"};  // FilterOptions
 		s << "Sampler:  min: " << sFil[sb->mMinFilter] << "  mag: " << sFil[sb->mMagFilter] << "  mip: " << sFil[sb->mMipFilter]
-		<< "  Aniso: " << sb->mMaxAnisotropy << endl;
+		  << "  Aniso: " << sb->mMaxAnisotropy << endl;
 
 		const static String sWrap[5] = {"wrap","mirror","clamp","border"};  // TextureAddressingMode
 		s << "Texture wrap uvw:  " << sWrap[sb->mU] << ", " << sWrap[sb->mV] << ", " << sWrap[sb->mW] << endl;
-		
-		s << "Renderables:  " << twk.db->getLinkedRenderables().size() << "  Name:  " << twk.db->getNameStr() << endl;  // meh hash
-		s << endl;
 	}
+	s << "#90D0F0";
+	s << "Renderables:  " << twk.db->getLinkedRenderables().size() << "  Hash:  " << twk.db->getNameStr() << endl;
+	const static String sWf[3] = {"Specular","SpecularAsFresnel","Metallic"};
+	i = twk.db->getWorkflow();
+	s << "#70B0F0PBS Workflow: " << sWf[i] << endl;
+	s << endl;
 
+	s << "#C08040   Macro: #F0C0A0" << endl;
 	//auto* bb = twk.db->getBlendblock();
 	auto* mb = twk.db->getMacroblock();
 	if (mb)
@@ -142,18 +197,21 @@ void CGuiCom::updTweakMtr()
 		// mb->mDepthClamp;  mDepthFunc
 		const static String sCull[4] = {"none","cw","ccw"};  // CullingMode
 		s << "Depth:  check " << mb->mDepthCheck << "  write " << mb->mDepthWrite << "  bias " << mb->mDepthBiasConstant
-		<< "  slope " << mb->mDepthBiasSlopeScale << "  Cull: " << sCull[mb->mCullMode] << endl;
+		  << "  slope " << mb->mDepthBiasSlopeScale << "  Cull: " << sCull[mb->mCullMode] << endl;
 	}
 	s << "Two sided:  " << twk.db->getTwoSidedLighting()
 	  << "  receive shadows:  " << twk.db->getReceiveShadows() << endl;
 
+
+	s << "#C0C040   Alpha: #F0F0A0" << endl;
 	const static String sTr[4]= {"none", "transp", "fade", "refract"};  // TransparencyModes
-	s << "Transparency:  " << twk.db->getTransparency() << "  mode: " << sTr[twk.db->getTransparencyMode()] << endl;
+	s << "Transparency:  " << twk.db->getTransparency()/**/ << "  mode: " << sTr[twk.db->getTransparencyMode()] << endl;
 
 	s << "Alpha test:  " << twk.db->getAlphaTest() << "  threshold: " << twk.db->getAlphaTestThreshold()
 	  << "  from tex:  " << twk.db->getUseAlphaFromTextures() << endl;
-	s << endl;
+	// s << endl;
 
+	s << "#C0C0F0   Light: #D0D0FF" << endl;
 	// twk.db->getFilenameAndResourceGroup(&fname, &grp);
 	s << "Brdf: " << twk.db->getBrdf()
 	  << "  Refract strength: " << twk.db->getRefractionStrength() << endl;
@@ -163,15 +221,18 @@ void CGuiCom::updTweakMtr()
 	s << "Backgr Diff clr: " << twk.db->getBackgroundDiffuse() << endl;
 	s << endl;
 
-	///  user[3], detail[4]
+
+	///  user[3], detail[4]  .. remove
+	s << "#C0C0C0   User: #F0F0F0" << endl;
 	for (i=0; i<3; ++i)
 		s << "UserValue " << i << ":    " << twk.db->getUserValue(i) << endl;
 
+	s << "#D0D0D0   Detail: #E0E0E0" << endl;
 	for (i=0; i<4; ++i)
 	{
 		s << "Detail offset,scale " << i << ": " << twk.db->getDetailMapOffsetScale(i) << endl;
 		s << "Detail weights map " << i << ": " << twk.db->getDetailMapWeight(i)
-		<< "  normal: " << twk.db->getDetailNormalWeight(i) << endl;
+		  << "  normal: " << twk.db->getDetailNormalWeight(i) << endl;
 	}
 	// twk.db->hasSeparateFresnel()
 	// s << ": " << twk.db->getDetailMapBlendMode() << endl;
