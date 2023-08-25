@@ -349,7 +349,6 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(A):  gui->GuiShortcut(WND_Options, 2);   return;  // A Graphics  📊
 
 		case key(E):  gui->GuiShortcut(WND_Options, 3);   return;  // E View /Settings  ⚙️
-		case key(K):  gui->GuiShortcut(WND_Options, 4);   return;    // K Tweak  🔧
 		case key(M):  gui->GuiShortcut(WND_Materials, -1);   return;  // M Materials  🔧
 		
 		case key(I):  gui->GuiShortcut(WND_Help, 1);  return;  // I Input/help  📝

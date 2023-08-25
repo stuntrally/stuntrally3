@@ -24,219 +24,223 @@
 			<UserString key="tip" value="#{TipFind}"/>
 		</Widget>
 
-		<Widget type="ListBox" skin="ListBox" position="626 34 164 520" name="TweakMtr">
+		<Widget type="ListBox" skin="ListBox" position="626 34 164 530" name="TweakMtr">
 			<Property key="Colour" value="0.8 0.9 1"/>
 			<Property key="Colour" value="0.5 0.7 0.9"/>
-			<Property key="Alpha" value="0.5"/>
+			<Property key="Alpha" value="0.6"/>
 			<Property key="Static" value="true"/>
 			<Property key="ReadOnly" value="true"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 
-		<Widget type="TabControl" skin="TabControl" position="8 15 600 520" name="TabWndMat">
+		<Widget type="TabControl" skin="TabControl" position="8 12 600 570" name="TabWndMat">
 			<Property key="Colour" value="0.73 0.88 1"/>
 			<Property key="SmoothShow" value="false"/>
 			<Widget type="TabItem" skin="" position="2 24 614 472">
 				<Property key="Caption" value="#B0F0FF#{InputMain}"/>
 				<Property key="InheritsAlpha" value="false"/>
 
-				<!-- Diff R -->
-				<Widget type="TextBox" skin="TextBox" position="0 0 118 20">
-					<Property key="TextColour" value="1.0 0.4 0.4"/>
-					<Property key="Caption" value="#{Diffuse} #{P_Red}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 0 350 17" name="DiffR">
-					<Property key="Colour" value="1.0 0.5 0.5"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 0 75 20" name="DiffREdit">
-					<Property key="TextColour" value="1.0 0.5 0.5"/>
-				</Widget>
-				<!-- Diff G -->
-				<Widget type="TextBox" skin="TextBox" position="0 20 118 20">
-					<Property key="TextColour" value="0.3 1.0 0.3"/>
-					<Property key="Caption" value="#{Diffuse} #{P_Green}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 20 350 17" name="DiffG">
-					<Property key="Colour" value="0.6 1.0 0.6"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 20 75 20" name="DiffGEdit">
-					<Property key="TextColour" value="0.5 1.0 0.5"/>
-				</Widget>
-				<!-- Diff B -->
-				<Widget type="TextBox" skin="TextBox" position="0 40 118 20">
-					<Property key="TextColour" value="0.2 0.5 1.0"/>
-					<Property key="Caption" value="#{Diffuse} #{P_Blue}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 40 350 17" name="DiffB">
-					<Property key="Colour" value="0.3 0.6 1.0"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 40 75 20" name="DiffBEdit">
-					<Property key="TextColour" value="0.3 0.6 1.0"/>
-				</Widget>
+				<Widget type="ScrollView" skin="ScrollViewEmpty" position="16 12 576 540">
+					<Property key="CanvasSize" value="1100 1800"/>
 
-				<!-- Spec R  ***  -->
-				<Widget type="TextBox" skin="TextBox" position="0 70 118 20">
-					<Property key="TextColour" value="1.0 0.6 0.4"/>
-					<Property key="Caption" value="#{Specular} #{P_Red}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 70 350 17" name="SpecR">
-					<Property key="Colour" value="1.0 0.6 0.6"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 70 75 20" name="SpecREdit">
-					<Property key="TextColour" value="1.0 0.5 0.5"/>
-				</Widget>
-				<!-- Spec G -->
-				<Widget type="TextBox" skin="TextBox" position="0 90 118 20">
-					<Property key="TextColour" value="0.5 1.0 0.5"/>
-					<Property key="Caption" value="#{Specular} #{P_Green}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 90 350 17" name="SpecG">
-					<Property key="Colour" value="0.6 1.0 0.6"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 90 75 20" name="SpecGEdit">
-					<Property key="TextColour" value="0.5 1.0 0.5"/>
-				</Widget>
-				<!-- Spec B -->
-				<Widget type="TextBox" skin="TextBox" position="0 110 118 20">
-					<Property key="TextColour" value="0.4 0.6 1.0"/>
-					<Property key="Caption" value="#{Specular} #{P_Blue}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 110 350 17" name="SpecB">
-					<Property key="Colour" value="0.5 0.7 1.0"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 110 75 20" name="SpecBEdit">
-					<Property key="TextColour" value="0.5 0.7 1.0"/>
-				</Widget>
+					<!-- Diff R -->
+					<Widget type="TextBox" skin="TextBox" position="0 0 118 20">
+						<Property key="TextColour" value="1.0 0.4 0.4"/>
+						<Property key="Caption" value="#{Diffuse} #{P_Red}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 0 350 17" name="DiffR">
+						<Property key="Colour" value="1.0 0.5 0.5"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 0 75 20" name="DiffREdit">
+						<Property key="TextColour" value="1.0 0.5 0.5"/>
+					</Widget>
+					<!-- Diff G -->
+					<Widget type="TextBox" skin="TextBox" position="0 20 118 20">
+						<Property key="TextColour" value="0.3 1.0 0.3"/>
+						<Property key="Caption" value="#{Diffuse} #{P_Green}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 20 350 17" name="DiffG">
+						<Property key="Colour" value="0.6 1.0 0.6"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 20 75 20" name="DiffGEdit">
+						<Property key="TextColour" value="0.5 1.0 0.5"/>
+					</Widget>
+					<!-- Diff B -->
+					<Widget type="TextBox" skin="TextBox" position="0 40 118 20">
+						<Property key="TextColour" value="0.2 0.5 1.0"/>
+						<Property key="Caption" value="#{Diffuse} #{P_Blue}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 40 350 17" name="DiffB">
+						<Property key="Colour" value="0.3 0.6 1.0"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 40 75 20" name="DiffBEdit">
+						<Property key="TextColour" value="0.3 0.6 1.0"/>
+					</Widget>
 
-				<!-- Fresnel R  ***  -->
-				<Widget type="TextBox" skin="TextBox" position="0 140 118 20">
-					<Property key="TextColour" value="1.0 0.9 0.6"/>
-					<Property key="Caption" value="#{ColFresnel} #{P_Red}"/>
-					<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 140 350 18" name="FresR">
-					<Property key="Colour" value="1.0 0.9 0.6"/>
-					<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 140 75 20" name="FresREdit">
-					<Property key="TextColour" value="1.0 0.9 0.6"/>
-					<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
-				</Widget>
-				<!-- Fresnel G -->
-				<Widget type="TextBox" skin="TextBox" position="0 160 118 20">
-					<Property key="TextColour" value="0.6 1.0 0.8"/>
-					<Property key="Caption" value="#{ColFresnel} #{P_Green}"/>  <!--#{ColMetalness}-->
-					<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 160 350 18" name="FresG">
-					<Property key="Colour" value="0.6 1.0 0.8"/>
-					<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 160 75 20" name="FresGEdit">
-					<Property key="TextColour" value="0.6 1.0 0.8"/>
-					<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
-				</Widget>
-				<!-- Fresnel B -->
-				<Widget type="TextBox" skin="TextBox" position="0 180 118 20">
-					<Property key="TextColour" value="0.6 0.8 1.0"/>
-					<Property key="Caption" value="#{ColFresnel} #{P_Blue}"/>
-					<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 180 350 18" name="FresB">
-					<Property key="Colour" value="0.6 0.8 1.0"/>
-					<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 180 75 20" name="FresBEdit">
-					<Property key="TextColour" value="0.6 0.8 1.0"/>
-					<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
-				</Widget>
+					<!-- Spec R  ***  -->
+					<Widget type="TextBox" skin="TextBox" position="0 70 118 20">
+						<Property key="TextColour" value="1.0 0.6 0.4"/>
+						<Property key="Caption" value="#{Specular} #{P_Red}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 70 350 17" name="SpecR">
+						<Property key="Colour" value="1.0 0.6 0.6"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 70 75 20" name="SpecREdit">
+						<Property key="TextColour" value="1.0 0.5 0.5"/>
+					</Widget>
+					<!-- Spec G -->
+					<Widget type="TextBox" skin="TextBox" position="0 90 118 20">
+						<Property key="TextColour" value="0.5 1.0 0.5"/>
+						<Property key="Caption" value="#{Specular} #{P_Green}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 90 350 17" name="SpecG">
+						<Property key="Colour" value="0.6 1.0 0.6"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 90 75 20" name="SpecGEdit">
+						<Property key="TextColour" value="0.5 1.0 0.5"/>
+					</Widget>
+					<!-- Spec B -->
+					<Widget type="TextBox" skin="TextBox" position="0 110 118 20">
+						<Property key="TextColour" value="0.4 0.6 1.0"/>
+						<Property key="Caption" value="#{Specular} #{P_Blue}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 110 350 17" name="SpecB">
+						<Property key="Colour" value="0.5 0.7 1.0"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 110 75 20" name="SpecBEdit">
+						<Property key="TextColour" value="0.5 0.7 1.0"/>
+					</Widget>
 
-
-				<!-- Rough  ***  -->
-				<Widget type="TextBox" skin="TextBox" position="0 210 118 20">
-					<Property key="TextColour" value="0.6 0.6 1.0"/>
-					<Property key="Caption" value="#{ColRoughness}"/>
-					<UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 210 350 17" name="Rough">
-					<Property key="Colour" value="0.6 0.6 1.0"/>
-					<UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 210 75 20" name="RoughEdit">
-					<Property key="TextColour" value="0.6 0.6 1.0"/>
-					<UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/>
-				</Widget>
-
-				<!-- Metal  ***  -->
-				<Widget type="TextBox" skin="TextBox" position="0 230 118 20">
-					<Property key="TextColour" value="0.6 1.0 1.0"/>
-					<Property key="Caption" value="#{ColMetalness}"/>
-					<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 230 350 17" name="Metal">
-					<Property key="Colour" value="0.6 1.0 1.0"/>
-					<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 230 75 20" name="MetalEdit">
-					<Property key="TextColour" value="0.6 1.0 1.0"/>
-					<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
-				</Widget>
+					<!-- Fresnel R  ***  -->
+					<Widget type="TextBox" skin="TextBox" position="0 140 118 20">
+						<Property key="TextColour" value="1.0 0.9 0.6"/>
+						<Property key="Caption" value="#{ColFresnel} #{P_Red}"/>
+						<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 140 350 18" name="FresR">
+						<Property key="Colour" value="1.0 0.9 0.6"/>
+						<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 140 75 20" name="FresREdit">
+						<Property key="TextColour" value="1.0 0.9 0.6"/>
+						<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
+					</Widget>
+					<!-- Fresnel G -->
+					<Widget type="TextBox" skin="TextBox" position="0 160 118 20">
+						<Property key="TextColour" value="0.6 1.0 0.8"/>
+						<Property key="Caption" value="#{ColFresnel} #{P_Green}"/>  <!--#{ColMetalness}-->
+						<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 160 350 18" name="FresG">
+						<Property key="Colour" value="0.6 1.0 0.8"/>
+						<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 160 75 20" name="FresGEdit">
+						<Property key="TextColour" value="0.6 1.0 0.8"/>
+						<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
+					</Widget>
+					<!-- Fresnel B -->
+					<Widget type="TextBox" skin="TextBox" position="0 180 118 20">
+						<Property key="TextColour" value="0.6 0.8 1.0"/>
+						<Property key="Caption" value="#{ColFresnel} #{P_Blue}"/>
+						<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 180 350 18" name="FresB">
+						<Property key="Colour" value="0.6 0.8 1.0"/>
+						<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 180 75 20" name="FresBEdit">
+						<Property key="TextColour" value="0.6 0.8 1.0"/>
+						<UserString key="tip" value="#{ColFresnel} - #{TipChangeGloss}"/>
+					</Widget>
 
 
-				<!-- Clear coat -->
-				<Widget type="TextBox" skin="TextBox" position="0 260 118 20">
-					<Property key="TextColour" value="0.8 0.8 0.8"/>
-					<Property key="Caption" value="#{ColReflect}"/>
-					<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 260 350 15" name="ClearCoat">
-					<Property key="TextColour" value="0.8 0.8 0.8"/>
-					<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 260 75 20" name="ClearCoatVal">
-					<Property key="TextColour" value="0.8 0.8 0.8"/>
-					<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
-				</Widget>
+					<!-- Rough  ***  -->
+					<Widget type="TextBox" skin="TextBox" position="0 210 118 20">
+						<Property key="TextColour" value="0.6 0.6 1.0"/>
+						<Property key="Caption" value="#{ColRoughness}"/>
+						<UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 210 350 17" name="Rough">
+						<Property key="Colour" value="0.6 0.6 1.0"/>
+						<UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 210 75 20" name="RoughEdit">
+						<Property key="TextColour" value="0.6 0.6 1.0"/>
+						<UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/>
+					</Widget>
 
-				<!-- Clear rough -->
-				<Widget type="TextBox" skin="TextBox" position="0 280 118 20">
-					<Property key="TextColour" value="0.7 0.7 0.7"/>
-					<Property key="Caption" value="#{ColRoughness}"/>
-					<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 280 350 15" name="ClearRough">
-					<Property key="TextColour" value="0.7 0.7 0.7"/>
-					<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 280 75 20" name="ClearRoughEdit">
-					<Property key="TextColour" value="0.7 0.7 0.7"/>
-					<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
-				</Widget>
+					<!-- Metal  ***  -->
+					<Widget type="TextBox" skin="TextBox" position="0 230 118 20">
+						<Property key="TextColour" value="0.6 1.0 1.0"/>
+						<Property key="Caption" value="#{ColMetalness}"/>
+						<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 230 350 17" name="Metal">
+						<Property key="Colour" value="0.6 1.0 1.0"/>
+						<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 230 75 20" name="MetalEdit">
+						<Property key="TextColour" value="0.6 1.0 1.0"/>
+						<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
+					</Widget>
 
-				<!-- Bump Scale -->
-				<Widget type="TextBox" skin="TextBox" position="0 310 118 20">
-					<Property key="TextColour" value="0.9 0.9 0.4"/>
-					<Property key="Caption" value="#{NormalsScale}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 310 350 15" name="BumpScale">
-					<Property key="TextColour" value="0.9 0.9 0.4"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 310 75 20" name="BumpScaleEdit">
-					<Property key="TextColour" value="1.0 1.0 0.4"/>
-				</Widget>
 
-				<!-- Transp -->
-				<Widget type="TextBox" skin="TextBox" position="0 340 118 20">
-					<Property key="TextColour" value="0.7 0.8 0.8"/>
-					<Property key="Caption" value="#{Transparency}"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="200 340 350 15" name="Transp">
-					<Property key="TextColour" value="0.7 0.8 0.8"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="120 340 75 20" name="TranspEdit">
-					<Property key="TextColour" value="0.7 0.8 0.8"/>
-				</Widget>
+					<!-- Clear coat -->
+					<Widget type="TextBox" skin="TextBox" position="0 260 118 20">
+						<Property key="TextColour" value="0.8 0.8 0.8"/>
+						<Property key="Caption" value="#{ColReflect}"/>
+						<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 260 350 15" name="ClearCoat">
+						<Property key="TextColour" value="0.8 0.8 0.8"/>
+						<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 260 75 20" name="ClearCoatVal">
+						<Property key="TextColour" value="0.8 0.8 0.8"/>
+						<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
+					</Widget>
 
+					<!-- Clear rough -->
+					<Widget type="TextBox" skin="TextBox" position="0 280 118 20">
+						<Property key="TextColour" value="0.7 0.7 0.7"/>
+						<Property key="Caption" value="#{ColRoughness}"/>
+						<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 280 350 15" name="ClearRough">
+						<Property key="TextColour" value="0.7 0.7 0.7"/>
+						<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 280 75 20" name="ClearRoughEdit">
+						<Property key="TextColour" value="0.7 0.7 0.7"/>
+						<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
+					</Widget>
+
+					<!-- Bump Scale -->
+					<Widget type="TextBox" skin="TextBox" position="0 310 118 20">
+						<Property key="TextColour" value="0.9 0.9 0.4"/>
+						<Property key="Caption" value="#{NormalsScale}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 310 350 15" name="BumpScale">
+						<Property key="TextColour" value="0.9 0.9 0.4"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 310 75 20" name="BumpScaleEdit">
+						<Property key="TextColour" value="1.0 1.0 0.4"/>
+					</Widget>
+
+					<!-- Transp -->
+					<Widget type="TextBox" skin="TextBox" position="0 340 118 20">
+						<Property key="TextColour" value="0.7 0.8 0.8"/>
+						<Property key="Caption" value="#{Transparency}"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="200 340 350 15" name="Transp">
+						<Property key="TextColour" value="0.7 0.8 0.8"/>
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="120 340 75 20" name="TranspEdit">
+						<Property key="TextColour" value="0.7 0.8 0.8"/>
+					</Widget>
+
+				</Widget>
 			</Widget>
 
 			<Widget type="TabItem" skin="" position="2 24 614 472">
@@ -247,234 +251,234 @@
 					<Property key="CanvasSize" value="1100 1800"/>
 
 					<!-- User 0 -->
-					<Widget type="TextBox" skin="TextBox" position="0 0 118 20" name="User0xName">
+					<Widget type="TextBox" skin="TextBox" position="0 0 118 20" name="User00Name">
 						<Property key="Caption" value="User 0 x"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 0 350 15" name="User0x">
+					<Widget type="Slider" skin="Slider" position="180 0 350 15" name="User00">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 0 75 20" name="User0xEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 0 75 20" name="User00Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 20 118 20" name="User0yName">
+					<Widget type="TextBox" skin="TextBox" position="0 20 118 20" name="User01Name">
 						<Property key="Caption" value="User 0 y"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 20 350 15" name="User0y">
+					<Widget type="Slider" skin="Slider" position="180 20 350 15" name="User01">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 20 75 20" name="User0yEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 20 75 20" name="User01Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 40 118 20" name="User0zName">
+					<Widget type="TextBox" skin="TextBox" position="0 40 118 20" name="User02Name">
 						<Property key="Caption" value="User 0 z"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 40 350 15" name="User0z">
+					<Widget type="Slider" skin="Slider" position="180 40 350 15" name="User02">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 40 75 20" name="User0zEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 40 75 20" name="User02Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 60 118 20" name="User0wName">
+					<Widget type="TextBox" skin="TextBox" position="0 60 118 20" name="User03Name">
 						<Property key="Caption" value="User 0 w"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 60 350 15" name="User0w">
+					<Widget type="Slider" skin="Slider" position="180 60 350 15" name="User03">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 60 75 20" name="User0wEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 60 75 20" name="User03Edit">
 					</Widget>
 
 					<!-- User 1 -->
-					<Widget type="TextBox" skin="TextBox" position="0 80 118 20" name="User1xName">
+					<Widget type="TextBox" skin="TextBox" position="0 80 118 20" name="User10Name">
 						<Property key="Caption" value="User 1 x"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 80 350 15" name="User1x">
+					<Widget type="Slider" skin="Slider" position="180 80 350 15" name="User10">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 80 75 20" name="User1xEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 80 75 20" name="User10Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 100 118 20" name="User1yName">
+					<Widget type="TextBox" skin="TextBox" position="0 100 118 20" name="User11Name">
 						<Property key="Caption" value="User 1 y"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 100 350 15" name="User1y">
+					<Widget type="Slider" skin="Slider" position="180 100 350 15" name="User11">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 100 75 20" name="User1yEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 100 75 20" name="User11Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 120 118 20" name="User1zName">
+					<Widget type="TextBox" skin="TextBox" position="0 120 118 20" name="User12Name">
 						<Property key="Caption" value="User 1 z"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 120 350 15" name="User1z">
+					<Widget type="Slider" skin="Slider" position="180 120 350 15" name="User12">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 120 75 20" name="User1zEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 120 75 20" name="User12Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 140 118 20" name="User1wName">
+					<Widget type="TextBox" skin="TextBox" position="0 140 118 20" name="User13Name">
 						<Property key="Caption" value="User 1 w"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 140 350 15" name="User1w">
+					<Widget type="Slider" skin="Slider" position="180 140 350 15" name="User13">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 140 75 20" name="User1wEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 140 75 20" name="User13Edit">
 					</Widget>
 
 					<!-- User 2 -->
-					<Widget type="TextBox" skin="TextBox" position="0 160 118 20" name="User2xName">
+					<Widget type="TextBox" skin="TextBox" position="0 160 118 20" name="User20Name">
 						<Property key="Caption" value="User 2 x"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 160 350 15" name="User2x">
+					<Widget type="Slider" skin="Slider" position="180 160 350 15" name="User20">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 160 75 20" name="User2xEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 160 75 20" name="User20Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 180 118 20" name="User2yName">
+					<Widget type="TextBox" skin="TextBox" position="0 180 118 20" name="User21Name">
 						<Property key="Caption" value="User 2 y"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 180 350 15" name="User2y">
+					<Widget type="Slider" skin="Slider" position="180 180 350 15" name="User21">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 180 75 20" name="User2yEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 180 75 20" name="User21Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 200 118 20" name="User2zName">
+					<Widget type="TextBox" skin="TextBox" position="0 200 118 20" name="User22Name">
 						<Property key="Caption" value="User 2 z"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 200 350 15" name="User2z">
+					<Widget type="Slider" skin="Slider" position="180 200 350 15" name="User22">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 200 75 20" name="User2zEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 200 75 20" name="User22Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 220 118 20" name="User2wName">
+					<Widget type="TextBox" skin="TextBox" position="0 220 118 20" name="User23Name">
 						<Property key="Caption" value="User 2 w"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 220 350 15" name="User2w">
+					<Widget type="Slider" skin="Slider" position="180 220 350 15" name="User23">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 220 75 20" name="User2wEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 220 75 20" name="User23Edit">
 					</Widget>
 
 					<!-- Detail 0 -->
-					<Widget type="TextBox" skin="TextBox" position="0 240 118 20" name="Det0xName">
+					<Widget type="TextBox" skin="TextBox" position="0 240 118 20" name="Det00Name">
 						<Property key="Caption" value="Detail 0 x"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 240 350 15" name="Det0x">
+					<Widget type="Slider" skin="Slider" position="180 240 350 15" name="Det00">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 240 75 20" name="Det0xEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 240 75 20" name="Det00Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 260 118 20" name="Det0yName">
+					<Widget type="TextBox" skin="TextBox" position="0 260 118 20" name="Det01Name">
 						<Property key="Caption" value="Detail 0 y"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 260 350 15" name="Det0y">
+					<Widget type="Slider" skin="Slider" position="180 260 350 15" name="Det01">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 260 75 20" name="Det0yEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 260 75 20" name="Det01Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 280 118 20" name="Det0zName">
+					<Widget type="TextBox" skin="TextBox" position="0 280 118 20" name="Det02Name">
 						<Property key="Caption" value="Detail 0 z"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 280 350 15" name="Det0z">
+					<Widget type="Slider" skin="Slider" position="180 280 350 15" name="Det02">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 280 75 20" name="Det0zEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 280 75 20" name="Det02Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 300 118 20" name="Det0wName">
+					<Widget type="TextBox" skin="TextBox" position="0 300 118 20" name="Det03Name">
 						<Property key="Caption" value="Detail 0 w"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 300 350 15" name="Det0w">
+					<Widget type="Slider" skin="Slider" position="180 300 350 15" name="Det03">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 300 75 20" name="Det0wEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 300 75 20" name="Det03Edit">
 					</Widget>
 
 					<!-- Detail 1 -->
-					<Widget type="TextBox" skin="TextBox" position="0 320 118 20" name="Det1xName">
+					<Widget type="TextBox" skin="TextBox" position="0 320 118 20" name="Det10Name">
 						<Property key="Caption" value="Detail 1 x"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 320 350 15" name="Det1x">
+					<Widget type="Slider" skin="Slider" position="180 320 350 15" name="Det10">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 320 75 20" name="Det1xEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 320 75 20" name="Det10Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 340 118 20" name="Det1yName">
+					<Widget type="TextBox" skin="TextBox" position="0 340 118 20" name="Det11Name">
 						<Property key="Caption" value="Detail 1 y"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 340 350 15" name="Det1y">
+					<Widget type="Slider" skin="Slider" position="180 340 350 15" name="Det11">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 340 75 20" name="Det1yEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 340 75 20" name="Det11Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 360 118 20" name="Det1zName">
+					<Widget type="TextBox" skin="TextBox" position="0 360 118 20" name="Det12Name">
 						<Property key="Caption" value="Detail 1 z"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 360 350 15" name="Det1z">
+					<Widget type="Slider" skin="Slider" position="180 360 350 15" name="Det12">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 360 75 20" name="Det1zEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 360 75 20" name="Det12Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 380 118 20" name="Det1wName">
+					<Widget type="TextBox" skin="TextBox" position="0 380 118 20" name="Det13Name">
 						<Property key="Caption" value="Detail 1 w"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 380 350 15" name="Det1w">
+					<Widget type="Slider" skin="Slider" position="180 380 350 15" name="Det13">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 380 75 20" name="Det1wEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 380 75 20" name="Det13Edit">
 					</Widget>
 
 					<!-- Detail 2 -->
-					<Widget type="TextBox" skin="TextBox" position="0 400 118 20" name="Det2xName">
+					<Widget type="TextBox" skin="TextBox" position="0 400 118 20" name="Det20Name">
 						<Property key="Caption" value="Detail 2 x"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 400 350 15" name="Det2x">
+					<Widget type="Slider" skin="Slider" position="180 400 350 15" name="Det20">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 400 75 20" name="Det2xEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 400 75 20" name="Det20Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 420 118 20" name="Det2yName">
+					<Widget type="TextBox" skin="TextBox" position="0 420 118 20" name="Det21Name">
 						<Property key="Caption" value="Detail 2 y"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 420 350 15" name="Det2y">
+					<Widget type="Slider" skin="Slider" position="180 420 350 15" name="Det21">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 420 75 20" name="Det2yEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 420 75 20" name="Det21Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 440 118 20" name="Det2zName">
+					<Widget type="TextBox" skin="TextBox" position="0 440 118 20" name="Det22Name">
 						<Property key="Caption" value="Detail 2 z"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 440 350 15" name="Det2z">
+					<Widget type="Slider" skin="Slider" position="180 440 350 15" name="Det22">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 440 75 20" name="Det2zEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 440 75 20" name="Det22Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 460 118 20" name="Det2wName">
+					<Widget type="TextBox" skin="TextBox" position="0 460 118 20" name="Det23Name">
 						<Property key="Caption" value="Detail 2 w"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 460 350 15" name="Det2w">
+					<Widget type="Slider" skin="Slider" position="180 460 350 15" name="Det23">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 460 75 20" name="Det2wEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 460 75 20" name="Det23Edit">
 					</Widget>
 
 					<!-- Detail 3 -->
-					<Widget type="TextBox" skin="TextBox" position="0 480 118 20" name="Det3xName">
+					<Widget type="TextBox" skin="TextBox" position="0 480 118 20" name="Det30Name">
 						<Property key="Caption" value="Detail 3 x"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 480 350 15" name="Det3x">
+					<Widget type="Slider" skin="Slider" position="180 480 350 15" name="Det30">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 480 75 20" name="Det3xEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 480 75 20" name="Det30Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 500 118 20" name="Det3yName">
+					<Widget type="TextBox" skin="TextBox" position="0 500 118 20" name="Det31Name">
 						<Property key="Caption" value="Detail 3 y"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 500 350 15" name="Det3y">
+					<Widget type="Slider" skin="Slider" position="180 500 350 15" name="Det31">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 500 75 20" name="Det3yEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 500 75 20" name="Det31Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 520 118 20" name="Det3zName">
+					<Widget type="TextBox" skin="TextBox" position="0 520 118 20" name="Det32Name">
 						<Property key="Caption" value="Detail 3 z"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 520 350 15" name="Det3z">
+					<Widget type="Slider" skin="Slider" position="180 520 350 15" name="Det32">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 520 75 20" name="Det3zEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 520 75 20" name="Det32Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 540 118 20" name="Det3wName">
+					<Widget type="TextBox" skin="TextBox" position="0 540 118 20" name="Det33Name">
 						<Property key="Caption" value="Detail 3 w"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 540 350 15" name="Det3w">
+					<Widget type="Slider" skin="Slider" position="180 540 350 15" name="Det33">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 540 75 20" name="Det3wEdit">
+					<Widget type="EditBox" skin="EditBox" position="100 540 75 20" name="Det33Edit">
 					</Widget>
 
 				</Widget>
@@ -488,7 +492,7 @@
 					<Property key="CanvasSize" value="1100 1800"/> -->
 
 					<!-- Info text big -->
-					<Widget type="EditBox" skin="EditBoxEmpty" position="20 20 475 510" name="MtrInfo">
+					<Widget type="EditBox" skin="EditBoxEmpty" position="20 4 475 580" name="MtrInfo">
 						<Property key="ReadOnly" value="true"/>
 						<Property key="MultiLine" value="true"/>
 						<Property key="WordWrap" value="true"/>

@@ -106,15 +106,19 @@ void CGuiCom::slTweakMtr(SV* sv)
 	else if (s=="Transp")      twk.db->setTransparency(twk.fTransp, twk.db->getTransparencyMode());
 	else
 	{
-		Vector4 v;  int i,c;  // todo
-		/*if (s.substr(0,4) == "User")
+		LogO(s.substr(0,4));
+		if (s.substr(0,4) == "User")
 		{
+			int i = s.substr(4,5)[0]-'0';
+			Vector4 v{twk.fUser[i][0], twk.fUser[i][1], twk.fUser[i][2], twk.fUser[i][3]};
 			twk.db->setUserValue(i, v);
 		}
 		if (s.substr(0,3) == "Det")
 		{
+			int i = s.substr(3,4)[0]-'0';
+			Vector4 v{twk.fDet[i][0], twk.fDet[i][1], twk.fDet[i][2], twk.fDet[i][3]};
 			twk.db->setDetailMapOffsetScale(i, v);
-		}*/
+		}
 	}
 }
 
