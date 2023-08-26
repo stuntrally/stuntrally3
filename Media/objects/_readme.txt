@@ -71,6 +71,7 @@ Barrel
 Author: ahedov
 License: CC-BY-SA
 https://www.blendswap.com/blends/view/69152
+updated and retextured by rubberduck
 
 ---- gas_tank.mesh
 model:
@@ -84,11 +85,6 @@ Author: yughues
 License: CC0
 https://opengameart.org/content/free-tiling-textures-42
 
-
----- Obstacle1.mesh (1..4)
-Pipe Obstacles
-Author: rubberduck
-License: CC0
 
 ---- atomic_barrel.mesh
 ---- pallet.mesh
@@ -189,3 +185,23 @@ https://www.blendswap.com/blends/view/69174
 ---- structure* and ring*
 Author: rubberduck
 License: CC0
+
+
+---- can rusted
+Can Rusted
+Author: Rahul Chaudhary
+License: CC0
+https://polyhaven.com/a/can_rusted
+
+---- garbage bin (blue and green)
+Garbage Bin
+Author: kubassa
+License: CC-BY 4.0
+https://sketchfab.com/3d-models/garbage-bin-f2d30a742e3243b5b702512246376ee8
+
+---- garbage bags
+Low Poly | Plastic Garbage Bags
+Author: Den1121
+License: CC-BY 4.0
+https://sketchfab.com/3d-models/low-poly-plastic-garbage-bags-51cb07645ffa494e9bb67b292f4df86e
+

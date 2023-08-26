@@ -984,3 +984,33 @@ hlms obstaclesCrystal pbs : obstaclesGrey
 	bump_scale 1.2
 	refl_amount 0.5
 }
+
+
+//  new
+hlms ancient_ruins pbs
+{
+	diffuse_map  ancient_ruins.jpg
+	normal_map   ancient_ruins_norm.jpg
+	specular_map ancient_ruins_spec.jpg
+	// ambient 0.9 0.9 0.9
+	diffuse 1.0 1.0 1.0
+	specular 0.7 0.7 0.7 4
+	// bump_scale 0.55
+	fresnel_coeff 0.1
+	roughness 0.3
+	metalness 0.7
+}
+
+hlms ancient_ruins_yellow pbs
+{
+	diffuse_map  ancient_ruins.jpg
+	normal_map   ancient_ruins_norm.jpg
+	specular_map ancient_ruins_spec.jpg
+	// ambient 1.44 1.3 0.92
+	diffuse 1.52 1.3 0.94
+	specular 0.7 0.7 0.7 4
+	// bump_scale 0.55
+	fresnel_coeff 0.1
+	roughness 0.3
+	metalness 0.7
+}

@@ -106,7 +106,6 @@ void CGuiCom::slTweakMtr(SV* sv)
 	else if (s=="Transp")      twk.db->setTransparency(twk.fTransp, twk.db->getTransparencyMode());
 	else
 	{
-		LogO(s.substr(0,4));
 		if (s.substr(0,4) == "User")
 		{
 			int i = s.substr(4,5)[0]-'0';
