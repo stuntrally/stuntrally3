@@ -138,9 +138,9 @@ Datablock is basically what has all material parameters.
 Currently **editing files** is the only way like before.  
 Main `.material` **files** are in `/Media/materials/Pbs`.  
 Materials can be adjusted real-time in SR3 Track Editor: from Options, on tab **Tweak**, find material and use sliders etc.  
-_ToDo:_ this should be our main tool, needs saving .material .json files.  
+_ToDo:_ this should be our main tool, needs saving `.material.json` files.  
 
-There is also that `.material.json` format, longer and more advanced, worse to edit by hand.  
+There is also `.material.json` format, longer and more advanced, worse to edit by hand.  
 But in `.material.json` you can't inherit materials. (confirmed [here](https://forums.ogre3d.org/viewtopic.php?p=553712#p553712)).  
 And in `.material` scripts you can't set textures to wrap or other sampler configs.  
 
@@ -251,7 +251,7 @@ _ToDo:_ But `setDetailTriplanarNormalEnabled(true);` is broken still, has black-
 
 This **changed** completely from old Ogre. Now heightmaps are power of 2, e.g. 1024, not 1025 like old.  
 Old SR `heightmap.f32` are converted on 1st load in SR3. This also needs slight pos offset.  
-SR3 loads `heightmap.f32` and gets size (e.g. 1024) from file size (1024*1024*4 B).  
+SR3 loads `heightmap.f32` and gets size (e.g. 1024) from file size (`1024*1024*4 B`).  
 
 #### Normalized
 
@@ -278,7 +278,7 @@ Terra is extended with **blendmap** RTT (from old SR) and its noise.
 Also with emissive, property: `emissive terrain`.  
 
 Changed skirt to be relative size below, not that default big to lowest point.  
-_ToDo:_ Some holes can appear on horizon terrains. Should be highe for them.
+_ToDo:_ Some holes can appear on horizon terrains. Should be higher for them.
 
 Added _own_ terrain raycast code (for cursor hit pos), since there wasn't one, [topic](https://forums.ogre3d.org/viewtopic.php?t=96602).  
 _ToDo:_ For far future. Not a problem, but since we have many, [how to do multiple terras](https://forums.ogre3d.org/viewtopic.php?t=96050).
@@ -357,7 +357,7 @@ It can process whole dir (e.g. new `objects3/` with files to convert) and has co
 ### Grass 🌿
 
 It has pages (auto size from terrain size) and no LoDs.  
-Also no fading yet. Started, find: `grow fade away`.
+Also no fading yet. Started, find: `grow fade away`.  
 Currently done simplest way, has mesh pages, with vertices and indices.  
 Quite inefficient to render and slow to create mesh.  
 Code in `Grass.h` and `Grass_Mesh.cpp`.  
@@ -484,8 +484,8 @@ _ToDo:_ [topic](https://forums.ogre3d.org/viewtopic.php?p=554630#p554630), add f
 Inside `HlmsPbs2::createDatablockImpl(` we create `HlmsPbsDbCar` for vehicle paint params.  
 It has own `HlmsPbsDbCar::uploadToConstBuffer`, which is where data is uploaded from C++ to GPU material shader buffers.  
 
-Currently can't change total size, must set `mUserValue[` in cpp and get in shader `material.userValue[`.
-_ToDo:_ `body_paint` property not used yet
+Currently can't change total size, must set `mUserValue[` in cpp and get in shader `material.userValue[`.  
+_ToDo:_ `body_paint` property not used yet.  
 **_ToDo:_** clone on our `HlmsPbsDbCar` fails? Same vehicles can't have different paints.
 
 When setting car material need to use `HlmsPbsDbCar*`. Set by `CarModel::SetPaint()`.  
