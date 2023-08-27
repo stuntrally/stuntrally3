@@ -8,11 +8,12 @@ Can be useful if you want to:
 - learn about Ogre-Next used in SR3 or other libraries etc
 - fork SR3 code and start your own project (license required: GPLv3 or newer) based on it
 
-## SR3 ToDo
+## ToDo
 
-Many _ToDo:_ tasks are added around here BTW of topics.  
-Shorter, fast updated list with more is on [Roadmap](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap).  
-And more in oldest [Task list](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with good info (sort by P, 1 is most important).  
+Many _ToDo:_ tasks are added BTW of topics in this file.  
+Shorter, fast updated list with more is on [Roadmap](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap), also for planning.  
+More in [Task list](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with good general info (sorted by P (priority), 1 is most important).  
+Lastly there are plenty of `todo:` or `fixme` places marked in sources.
 
 ## IDE
 
@@ -40,13 +41,15 @@ in `launch.json` configurations (for binaries) are set up, to run or debug.
 Advanced, extra, external tools, should be used when testing or developing new (bigger) things in game or editor:
 - [Renderdoc](https://renderdoc.org/) - For debugging GPU, tracking rendered frame, its draw calls, shaders, textures etc.  
 [documentation](https://renderdoc.org/docs/index.html), [forum post](https://forums.ogre3d.org/viewtopic.php?p=554959#p554959) with quick help on using it, [video tutorials](https://www.youtube.com/results?search_query=tutorial+%22renderdoc%22).
-- [Valgrind](https://valgrind.org/) - For debugging CPU, memory leaks etc.
+- [Valgrind](https://valgrind.org/) - For debugging CPU, memory leaks etc.  
+To use run e.g. `valgrind --leak-check=full ./sr-editor3`, at end it will list details about leaks.
 - [ASAN](https://clang.llvm.org/docs/AddressSanitizer.html) - close to above
-- Profiler. E.g.: Intel VTune, AMD uProf, Google Orbit, KDAB/hotspot. Any of them will do. For measuring performance, CPU time spent.
+- Profiler. E.g.: Intel VTune, AMD uProf, Google Orbit, KDAB/hotspot. Any of them will do. For measuring performance, CPU time spent.  
+Used [KDAB/hotspot](https://github.com/KDAB/hotspot) on Linux, quick tutorial [video](https://www.youtube.com/watch?v=6ogEkQ-vKt4), one [longer](https://www.youtube.com/watch?v=HOR4LiS4uMI). Overview of profiling [tools](https://www.youtube.com/watch?v=GL0GIdj6k2Q), Heaptrack [video](https://www.youtube.com/watch?v=OXqqVSdrSAw).
 
-Using Vulkan, it has better support for debugging tools. And it complains more, more debug asserts etc, which is good for finding errors.  
+WIP Using Vulkan, it has better support for debugging tools. And it complains more, more debug asserts etc, which is good for finding errors.  
 Mentioned in [Post1](https://forums.ogre3d.org/viewtopic.php?p=553813#p553813), [Post2](https://forums.ogre3d.org/viewtopic.php?p=554446#p554446).  
-It starts longer though, shader compilation is much slower.
+It starts longer though, shader compilation is much slower. MyGui doesn't work with it.
 
 --------
 
@@ -343,6 +346,13 @@ Means models for trees, rocks, plants etc.
 It is not paged, does not have impostors (like it was in old SR with paged-geometry).  
 Simply uses Ogre-Next Items that will be automatically HW instanced, to reduce draw calls, also works with mesh LODs.  
 All models are placed during track load by code in `src/common/SceneTrees.cpp`.  
+
+### Objects .mesh
+
+For Vegetation, Objects, etc.  
+All models in **`.mesh`** files from old SR, need to be converted to newer version for SR3 using `OgreMeshTool`.  
+Provided Python script `config/ogre-mesh.py` is helpful for this. Comments inside have more detail.  
+It can process whole dir (e.g. new `objects3/` with files to convert) and has command presets, with LODs set up.  
 
 ### Grass 🌿
 
