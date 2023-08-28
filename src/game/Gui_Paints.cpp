@@ -253,6 +253,8 @@ void CGui::btnPaintRandom(WP)
 		SetPaint();
 		// UpdImgClr();
 		UpdPaintSld();
+		// LogO("GUI OFS: "+toStr(scvPaints->getViewOffset().top)+" "+toStr(gc.y));
+		scvPaints->setViewOffset(IntPoint(0, gc.y));  // fixme? nothing
 		return;
 	}
 	//  🌈 randomize values, adjust
@@ -348,7 +350,7 @@ void CGui::btnPaintDel(WP)
 void CGui::UpdPaintImgs()
 {
 	Ogre::Timer ti;
-	const auto* p = data->paints;
+	auto* p = data->paints;
 	const int all = p->v.size(),
 		clrRow = p->perRow, sx = p->imgSize;
 	
@@ -396,7 +398,7 @@ void CGui::UpdPaintImgs()
 	};
 	for (int i=0; i < all; ++i)
 	{
-		const auto& cl = p->v[i];
+		auto& cl = p->v[i];
 		const int r = cl.rate * 6;
 		rmax = max(rmax, r);
 
@@ -442,6 +444,7 @@ void CGui::UpdPaintImgs()
 			im3 = AddImg(img, r,0, p3,p3, s3,s3, 3, 0, &cl.paints[0]);
 		}	break;
 		}
+		cl.y = py;
 		
 		//  shine  rough  * `  ----
 		int s1 = cl.rough * 2.5f * sx + 2;  s1 = min(64, s1);  // 32

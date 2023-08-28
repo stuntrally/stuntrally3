@@ -31,6 +31,8 @@ struct CarPaint
 	std::string group;  // gui txt title
 	bool new_line = false;  // gui
 	int rate = 0;  // user rating / bookmark
+
+	int y =0;  // gui only
 };
 const int MaxPaints = 990;  // par max ini
 
