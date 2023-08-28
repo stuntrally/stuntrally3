@@ -15,6 +15,7 @@ layout(std140) uniform;
 @insertpiece( custom_vs_uniformDeclaration )
 
 vulkan_layout( OGRE_POSITION ) in vec4 vertex;
+@property( hlms_colour )vulkan_layout( OGRE_DIFFUSE ) in vec4 colour;@end
 
 @property( hlms_normal )vulkan_layout( OGRE_NORMAL ) in float3 normal;@end
 @property( hlms_qtangent )vulkan_layout( OGRE_NORMAL ) in midf4 qtangent;@end

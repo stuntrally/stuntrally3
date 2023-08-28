@@ -9,6 +9,8 @@
 struct VS_INPUT
 {
 	float4 vertex : POSITION;
+@property( hlms_colour )	float4 colour : COLOR0;@end
+
 @property( hlms_normal )	float3 normal : NORMAL;@end
 @property( hlms_qtangent )	float4 qtangent : NORMAL;@end
 

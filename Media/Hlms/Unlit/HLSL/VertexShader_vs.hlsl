@@ -15,8 +15,10 @@ struct VS_INPUT
 {
 	float4 vertex : POSITION;
 @property( hlms_colour )	float4 colour : COLOR0;@end
+
 @foreach( hlms_uv_count, n )
 	float@value( hlms_uv_count@n ) uv@n : TEXCOORD@n;@end
+
 	uint drawId : DRAWID;
 	@insertpiece( custom_vs_attributes )
 };

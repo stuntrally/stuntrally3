@@ -327,6 +327,7 @@ void SplineRoad::BuildSeg(
 					c = Vector4(brdg, pp,
 						std::abs(vN.y), h);  // n
 						//mP[seg].notReal ? 0.f : 1.f, h);  // fixme?
+					// c = Vector4(Math::UnitRandom(), Math::UnitRandom(), Math::UnitRandom(), 0.5f+0.5f*Math::UnitRandom());  // test
 				}else
 				{	//  trail clr
 					c = (float(i)/il) * (mP[seg1].clr - mP[seg].clr) + mP[seg].clr;
@@ -735,7 +736,7 @@ void SplineRoad::createSeg_Meshes(
 		if (bCastShadow && !DS.onTer && !IsRiver() && !IsTrail())
 			it->setCastShadows(true);
 	}	}
-#if 0  // fixme
+#if 0  // is in grid
 	if (cols)
 	{
 		AddMesh(meshC, sMeshC, aabox, &itC, &nodeC, "C."+sEnd);
@@ -743,7 +744,8 @@ void SplineRoad::createSeg_Meshes(
 		if (bCastShadow)
 			itC->setCastShadows(true);
 	}
-//#if 0  // not with mesh
+#endif
+#if 0  // todo: not with mesh..
 	if (DS.hasBlend)
 	{
 		AddMesh(meshB, sMeshB, aabox, &itB, &nodeB, "B."+sEnd);

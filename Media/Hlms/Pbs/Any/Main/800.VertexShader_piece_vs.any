@@ -233,6 +233,12 @@
 		#define inputPos inVs_vertex
 	@end
 
+	@property( !hlms_shadowcaster )
+		@property( hlms_colour )  //**  Pbs vertex color
+			outVs.colour = midf4_c( inVs_colour );
+		@end
+	@end
+
 	// Define inputNormal and inputTangent using inVs_normal, inVs_tangent, inVs_qtangent
 	@property( hlms_qtangent )
 		//Decode qTangent to TBN with reflection
@@ -296,7 +302,7 @@
 	@insertpiece( VertexTransform )
 
 
-		//**  Grass grow fade away ..
+		//**  todo: Grass grow fade away ..
 		@property( 0 && grass && !hlms_shadowcaster )
 			if (inVs_uv0.y == 0.0f)  // top
 			{

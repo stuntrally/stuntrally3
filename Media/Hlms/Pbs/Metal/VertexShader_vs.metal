@@ -8,6 +8,8 @@
 struct VS_INPUT
 {
 	float4 position [[attribute(VES_POSITION)]];
+@property( hlms_colour )	float4 colour [[attribute(VES_DIFFUSE)]];@end
+
 @property( hlms_normal )	float3 normal [[attribute(VES_NORMAL)]];@end
 @property( hlms_qtangent )	midf4 qtangent [[attribute(VES_NORMAL)]];@end
 

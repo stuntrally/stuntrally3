@@ -415,6 +415,10 @@ struct Material
 	@end
 
 	@property( !hlms_shadowcaster )
+		@property( hlms_colour )  //**  Pbs vertex color
+			INTERPOLANT( midf4 colour, @counter(texcoord) );
+		@end
+
 		@property( hlms_normal || hlms_qtangent )
 			INTERPOLANT( float3 pos, @counter(texcoord) );
 			INTERPOLANT( midf3 normal, @counter(texcoord) );
