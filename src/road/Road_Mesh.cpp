@@ -258,6 +258,7 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 	if (lod == 0)
 	for (int i=0; i<2; ++i)
 	{
+		// todo:  ed mini clr it
 		// LogO("LOD 0 ed "+toStr(clr.size()));
 		auto*& it = it34[i];
 		#ifdef V1tangents
@@ -330,7 +331,7 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 				db->setDetailMapBlendMode(0, PBSM_BLEND_MULTIPLY);  //PBSM_BLEND_NORMAL_NON_PREMUL);
 				db->setTexture(PBSM_DETAIL_WEIGHT, "roadAlpha2y.png");
 				db->setDetailMapWeight(0, 1.0);
-				const Real v = 33.3;  // 1.f / 0.03 = alpha tc in rebuild
+				const Real v = 33.3;  //**  1.f / 0.03 = alpha tc in rebuild
 				db->setDetailMapOffsetScale(0, Vector4(0,0, 1,v));
 
 				db->setTexture(PBSM_DETAIL0, sDiff);

@@ -100,7 +100,7 @@ bool SplineRoad::RebuildRoadInt(bool editorAlign, bool bulletFull)
 	//-----------------------------
 	DL0.Clear();
 	
-	for (int lod = 0; lod < LODs; ++lod)
+	for (int lod = 0; lod < LODs; ++lod)  // todo: parallel threads?-
 	{
 		LogR("");
 		LogR("LOD: "+toStr(lod)+" ---  " +

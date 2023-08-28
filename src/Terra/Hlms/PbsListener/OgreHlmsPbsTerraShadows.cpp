@@ -75,8 +75,7 @@ namespace Ogre
 	uint16 HlmsPbsTerraShadows::getNumExtraPassTextures( const HlmsPropertyVec &properties,
 														 bool casterPass ) const
 	{
-		return ( !casterPass && Hlms::getProperty( properties, PbsTerraProperty::TerraEnabled ) ) ? 1u
-																								  : 0u;
+		return ( !casterPass && Hlms::getProperty( properties, PbsTerraProperty::TerraEnabled ) ) ? 1u : 0u;
 	}
 	//-----------------------------------------------------------------------------------
 	void HlmsPbsTerraShadows::propertiesMergedPreGenerationStep(

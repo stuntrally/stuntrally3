@@ -181,7 +181,7 @@ namespace Ogre
 		m_shadowMapTex->scheduleTransitionTo( GpuResidency::Resident );
 
 
-		//----  clear shadowmap
+		//**  ----  clear shadowmap
 		if (!m_bGenerateShadowMap)
 		{
 			// todo: save/load from file, editor dynamic

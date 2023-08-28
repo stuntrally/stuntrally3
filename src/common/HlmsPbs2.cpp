@@ -110,6 +110,7 @@ HlmsDatablock* HlmsPbs2::createDatablockImpl(
 	const HlmsBlendblock *blend,
 	const HlmsParamVec &params )
 {
+#if 1
 	String val;
 	if( Hlms::findParamInVec( params, "fluid", val ) )
 	{
@@ -121,6 +122,7 @@ HlmsDatablock* HlmsPbs2::createDatablockImpl(
 		// LogO("paint db2 new");
 		return OGRE_NEW HlmsPbsDbCar( name, this, macro, blend, params );
 	}else
+#endif
 		return OGRE_NEW HlmsPbsDatablock( name, this, macro, blend, params );
 }
 
@@ -128,7 +130,6 @@ HlmsDatablock* HlmsPbs2::createDatablockImpl(
 //  💫 upload ConstBuffer
 void HlmsPbsDbCar::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
 {
-    // float mUserValue[3][4];  // can be used in custom pieces
 	for (int i=0; i < 3; ++i)
 	{
 		mUserValue[i][0] = paintClr[i].x;
