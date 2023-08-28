@@ -481,6 +481,8 @@ namespace Ogre
             mAnyPendingFlushRenderable = false;
         }
 
+    // #define MANUAL_SKIP  //** todo
+    #ifdef MANUAL_SKIP
         bool update = 0;  //**  skip
         static uint skip = 100;
         ++skip;
@@ -488,6 +490,7 @@ namespace Ogre
         {   skip = 0;
             update = 1;
         }
+    #endif
 
         mActiveActors.clear();
 
@@ -724,11 +727,14 @@ namespace Ogre
                         ++nextFreeActorData;
                     }
                 }
-
+ 
                 if( actorData )
                 {
-                    actorData->workspace->setEnabled( false );  //..
-
+                #ifdef MANUAL_SKIP
+                    actorData->workspace->setEnabled( false );  //.. todo-
+                #else
+                    actorData->workspace->setEnabled( true );  // auto
+                #endif
                     actorData->reflectionCamera->setPosition( camPos );
                     actorData->reflectionCamera->setOrientation( camRot );
 
@@ -857,7 +863,9 @@ namespace Ogre
             ++itActor;
         }
 
+    #ifdef MANUAL_SKIP
         if (update)
+    #endif
         {
             auto itor = mActiveActorData.begin();
             auto end = mActiveActorData.end();
@@ -865,6 +873,7 @@ namespace Ogre
             while( itor != end )
             {
                 const ActiveActorData &actorData = *itor;
+            #ifdef MANUAL_SKIP  // manual
                 // if( actorData.workspace->getEnabled() )
                 {
                     actorData.workspace->_beginUpdate(1);
@@ -872,6 +881,13 @@ namespace Ogre
                     actorData.workspace->_endUpdate(1);
                     // actorData.workspace->setEnabled( false );
                 }
+            #else  // auto
+                if( actorData.workspace->getEnabled() )
+                {
+                    actorData.workspace->_update();
+                    actorData.workspace->setEnabled( false );
+                }
+            #endif
                 ++itor;
             }
         }

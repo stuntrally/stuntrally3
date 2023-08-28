@@ -59,6 +59,7 @@ void ReflectListener::workspacePreUpdate( CompositorWorkspace *workspace )
 //-----------------------------------------------------------------------------------
 void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 {
+	// return;  //!-
 	//  Ignore clear etc
 	if (pass->getType() != PASS_SCENE)
 		return;
@@ -71,7 +72,7 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 	// auto s = passDef->mProfilingId;
 	// LogO("ws pass: "+s);  //toStr(pass->getParentNode()->getId() ));
 
-#define OFF_FOG  //
+#define OFF_FOG  //-
 
 #if defined(SR_EDITOR) && defined(OFF_FOG)
 	bool rtt = id >= 11100 && id < 11103;  // road, ter
@@ -95,10 +96,12 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 	
 	CompositorPassScene *passScene = static_cast<CompositorPassScene *>( pass );
 	Camera *camera = passScene->getCamera();
+	//camera->setLodBias()  // not here, wont work
 
 	//  aspect ratio must match that of the camera we're reflecting
-	mPlanarRefl->update( camera, camera->getAutoAspectRatio()
-		? pass->getViewportAspectRatio( 0u ) : camera->getAspectRatio() );
+	if (mPlanarRefl)
+		mPlanarRefl->update( camera, camera->getAutoAspectRatio()
+			? pass->getViewportAspectRatio( 0u ) : camera->getAspectRatio() );
 }
 
 
@@ -132,15 +135,16 @@ void FluidsReflect::CreateRTT()
 	useCompute = root->getRenderSystem()->getCapabilities()->hasCapability( RSC_COMPUTE_PROGRAM );
 #endif
 
+	auto* sc = app->scn->sc;
+	int all = sc->fluids.size();
+	if (all == 0)
+		return;
+
 	mPlanarRefl = new PlanarReflections(
 		app->pSet, app->mSceneMgr, root->getCompositorManager2(),
 		500.0, 0 );  // par-?
 	uint32 size = app->pSet->GetTexSize(app->pSet->water_reflect);
-	
-	auto* sc = app->scn->sc;
-	int all = sc->fluids.size();
-	// int all = 3; //par max?
-	
+
 	mPlanarRefl->setMaxActiveActors( all,
 		"PlanarReflections",
 		// true,  // accurate-
@@ -199,7 +203,8 @@ void FluidsReflect::CreateFluids()
 		meshV1->buildTangentVectors();
 		MeshPtr mesh = MeshManager::getSingleton().createByImportingV1(
 			sMesh2, rgDef,
-			meshV1.get(), false, false, true, false );
+			meshV1.get(), false, false, false, false );
+			// meshV1.get(), false, false, true, false );
 			// meshV1.get(), true, true, true );  //-
 		
 		MeshManager::getSingleton().remove(sMesh);  // not needed
@@ -212,7 +217,7 @@ void FluidsReflect::CreateFluids()
 
 		Item* item = mgr->createItem( mesh, dyn );
 		String sMtr = fb.id == -1 ? "" :
-			/*1 || */reflect ? "WaterReflect" :  // ##
+			// /*1 || */reflect ? "WaterReflect" :  // ##
 			app->scn->data->fluids->fls[fb.id].material;  //"Water"+toStr(1+fb.type)
 		
 		item->setDatablock( sMtr );  item->setCastShadows( false );
