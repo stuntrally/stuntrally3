@@ -487,7 +487,7 @@
 			<!-- Text -->
 			<Widget type="TabItem" skin="" position="2 24 614 472">
 				<Property key="Caption" value="#B0B0B0#{Detail}"/>
-				<!-- <Property key="InheritsAlpha" value="false"/> -->
+				<Property key="InheritsAlpha" value="false"/>
 
 				<!-- <Widget type="ScrollView" skin="ScrollViewEmpty" position="8 12 596 540">
 					<Property key="CanvasSize" value="1100 1800"/> -->

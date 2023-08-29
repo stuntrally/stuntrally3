@@ -1,307 +1,549 @@
-//  todo:
-hlms WaterReflect pbs
-{
-	diffuse 0.01 0.02 0.03
-	// specular 0.2 0.45 0.6   // refl color
-	specular 0.8 0.9 1
-
-	// specular_map ycrystals_med_d.jpg  //~
-	
-	normal_map  water_nm.png  // sr old
-	// normal_map  waveNM.png  // n^
-
-	fresnel 0.2  //-
-	fresnel_coeff 0.1 0.25 0.35
-	roughness	0.30
-
-	// metalness 0.99
-	// roughness_map  ycrystals_med_s.jpg
-	fluid yes
-
-	choppyness_scale 0.025 5
-    smallWaves_midWaves 0.025 0.15 0.06 0.1
-    bigWaves 0.68 0.67
-}
-
-
-//  Base  Water
+//  base  (for all fluids)
 //--------------------------------------------------------
 hlms Water pbs
 {
-	// diffuse 0.01 0.02 0.03
-	// specular 0.8 0.9 1
-	normal_map  water_nm.png  // sr old
+	fluid yes
+    //  wave choppiness, wave scale
+    choppyness_scale 0.15 25
+    
+    //  small waves XY, medium waves XY
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    //  big waves XY
+    bigWaves 0.3 0.3
+    
+    //  overall bump, reflection bump, refraction bump
+    bump 1.5 0.08 0.12
 
-	// diffuse_map  snow_bumpy_d.jpg
-	// normal_map  jungle_mntn_n.jpg
+    //  extra 2nd layer bump and 2nd specular power
+    bump2SpecPowerMul 4.0 64 1.5
+    
+    //  reduce this to get less reflection
+    fresnelMultiplier 1.0
 
+    //  colors  * * *
+    //  .a is alpha (1 for mud)
+    colour 0.45 0.93 0.80  0.0
+    //  .a is intensity (1 for water)
+    reflectColour 1.0 1.0 1.0  1.0
+    //  .a is max opacity (refraction)
+    refractColour 1.0 1.0 1.0  0.75
+    //  specular color and power
+    specColourAndPower 1.0 1.0 1.0  32
+
+    //  waves anim speed
+    speed 1.0 1.0
+
+    //  wave normal texture
+    normal_map  water_nm.png
+    // WaterDepthMap waterDepth.png
+
+    // receives_shadows true
 	// workflow metallic
+
 	fresnel 1.0  //`
 	fresnel_coeff 1.0 1.0 1.0
-	fresnel_coeff 0.1 0.25 0.35
-	roughness  0.3
-	metalness  0.99
+	roughness  0.2
+	metalness  0.9
 
 	cull_mode none
-	transparency 0.93
+	transparency 0.6  //` 0.93-
 	transparency_mode transparent
 	//two_sided true
 }
 
-//  Base  Mud
-//--------------------------------------------------------
-hlms BaseMud pbs
-{
-	diffuse_map  mntn_dark_d.jpg
-	normal_map   mntn_dark_n.jpg
-
-	fresnel_coeff 0.1
-	roughness 0.5
-	metalness 0.8
-
-	cull_mode none
-}
-
 
 //--------------------------------------------------------
-hlms Water_blue pbs : Water   // Isl3-Islands  Jng13-Tropic
+hlms Water_blue pbs : Water  // Isl3-Islands  Jng13-Tropic
 {
-	diffuse   0.002 0.37 0.45
-	specular  1.0 1.0 1.0
+    choppyness_scale 0.15 25
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.3 0.3
+    bump 1.5 0.12 0.13
+    fresnelMultiplier 1.0
+
+    colour 0.002 0.37 0.45  0.0
+    reflectColour 0.92 1.0 1.0  1.0
+    refractColour 0.62 0.90 1.0  0.75
+
+    specColourAndPower 1.0 1.0 1.0  32
+    bump2SpecPowerMul 6.0 12 0.4
+    speed 1.0 1.0
 }
 
-hlms Water_cyan pbs : Water   // Grc2-Coast
+hlms Water_cyan pbs : Water  // Grc2-Coast
 {
-	diffuse   0.002 0.45 0.37
-	specular  0.99 1.0 1.0
+    choppyness_scale 0.15 25
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.3 0.3
+    bump 1.5 0.10 0.13
+    fresnelMultiplier 1.0
+
+    colour 0.002 0.45 0.37  0.0
+    reflectColour 0.88 1.0 1.0  1.0
+    refractColour 0.62 1.0 0.9  0.75
+
+	specColourAndPower 0.99 1.0 1.0  32
+    bump2SpecPowerMul 6.0 12 0.4
+    speed 1.0 1.0
 }
 
-hlms Water_green pbs : Water   // Jng11-Temple
+hlms Water_green pbs : Water  // Jng11-Temple
 {
-	diffuse   0.29 0.35 0.23
-	specular  0.43 0.53 0.42
-	transparency 0.8
+    choppyness_scale 0.15 25
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.3 0.3
+    bump 1.5 0.10 0.16
+    fresnelMultiplier 1.0
+
+    colour 0.29 0.35 0.23  0.0
+	reflectColour 0.8 0.94 0.33  0.6
+	refractColour 0.65 0.74 0.35  0.53
+	specColourAndPower 0.43 0.53 0.42  256
+
+    bump2SpecPowerMul 8.0 4 0.15
+    speed 1.0 1.0
 }
 
-hlms Water_moss pbs : Water   // Mos2-Mouse
+hlms Water_moss pbs : Water  // Mos2-Mouse
 {
-	diffuse   0.166 0.273 0.268
-	specular  0.66 0.78 0.88
-}
+    choppyness_scale 0.27 35
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.3 0.3
+    bump 1.5 0.238 0.404
+    fresnelMultiplier 1.0
 
+    colour 0.166 0.273 0.268  0.0
+    //reflectColour 0.66 0.86 0.85  1.0
+    reflectColour 0.54 0.72 0.59  1.0
+    refractColour 0.62 0.84 0.76 0.75
 
-hlms Water_white pbs : Water   // Wnt2-Wet
-{
-    diffuse   0.49 0.69 0.78
-    specular  0.98 1.0 1.0
-}
-
-hlms Water_sunset pbs : Water   // Isl4-Sunset
-{
-    diffuse   0.38 0.60 0.78
-    specular  1.0 0.84 0.3
-}
-
-hlms Water_sunset_cyan pbs : Water   // Isl13-Beauty
-{
-    diffuse   0.22 0.67 0.69
-    specular  1.0 0.84 0.3
-}
-
-hlms Water_shore pbs : Water   // Isl5-Shore
-{
-    diffuse   0.6 0.65 0.65
-    specular  0.5 0.55 0.6
-}
-
-hlms Water_dark pbs : Water   // Vlc1-Dark
-{
-    diffuse   0.06 0.14 0.2
-    specular  1.0 0.8 0.3
-}
-
-hlms Water_blue_dark pbs : Water   // Fin1-Lakes
-{
-    diffuse   0.44 0.60 0.717
-    specular  0.66 0.78 0.88
+	specColourAndPower 0.66 0.78 0.88  62
+    bump2SpecPowerMul 6.0 12 0.4
+    speed 1.0 1.0
 }
 
 
-hlms Grease_jelly pbs //: Water   // Uni1-Magic
+hlms Water_white pbs : Water  // Wnt2-Wet
 {
-    diffuse   0.46 0.33 0.66
-    specular  0.7 0.7 1.0
-	diffuse_map  alien_mntn4_d.jpg
-	normal_map   adesert_mntn4_n.jpg
+    choppyness_scale 0.15 25
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.3 0.3
+    bump 1.5 0.08 0.12
+    fresnelMultiplier 1.0
 
-	fresnel_coeff 0.1
-	roughness 0.2
-	metalness 0.8
+    colour 0.49 0.69 0.78  0.0
+	reflectColour 0.91 0.93 0.94  0.9
+	refractColour 0.76 0.89 0.99  0.76
+	specColourAndPower 0.98 1.0 1.0  64
+
+    bump2SpecPowerMul 6.0 16 0.8
+    speed 1.0 1.0
 }
 
-hlms Blue_jelly pbs //: Water
+hlms Water_sunset pbs : Water  // Isl4-Sunset
 {
-	diffuse   0.1 0.18 0.46
-	specular  0.5 0.7 1.0
-	diffuse_map  alien_mntn4_d.jpg
-	normal_map   adesert_mntn4_n.jpg
+    choppyness_scale 0.15 25
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.3 0.3
+    bump 1.5 0.08 0.12
+    fresnelMultiplier 1.0
 
-	fresnel_coeff 0.1
-	roughness 0.3
-	metalness 0.7
+    colour 0.38 0.60 0.78  0.0
+	reflectColour 1.0 0.75 0.57  0.9
+	refractColour 0.85 0.89 0.99  0.76
+	specColourAndPower 1.0 0.84 0.3  64
+
+    bump2SpecPowerMul 6.0 16 0.8
+    speed 1.0 1.0
 }
 
-hlms Acid_green pbs : Water   // green acid
+hlms Water_sunset_cyan pbs : Water  // Isl13-Beauty
 {
-    diffuse   0.19 0.35 0.07
-	specular  0.23 0.38 0.13
+    choppyness_scale 0.15 25
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.3 0.3
+    bump 1.5 0.08 0.12
+    fresnelMultiplier 1.0
+
+    colour 0.22 0.67 0.69  0.0
+	reflectColour 0.88 0.75 0.66  0.9
+	refractColour 0.85 0.89 0.99  0.76
+	specColourAndPower 1.0 0.84 0.3  32
+
+    bump2SpecPowerMul 6.0 36 0.9
+    speed 1.0 1.0
 }
 
-hlms Ice pbs //: BaseMud   // solid
+hlms Water_shore pbs : Water  // Isl5-Shore
 {
-    diffuse   0.63 0.64 0.65
-	specular  0.55 0.58 0.6
+    choppyness_scale 0.15 25
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.3 0.3
+    bump 1.5 0.08 0.12
+    fresnelMultiplier 1.0
 
-	diffuse_map  snow2_d.jpg
-	normal_map   snow2_n.jpg
-	cull_mode none
+    colour 1.0 1.0 1.0  0.0
+	reflectColour 0.85 0.9 0.78  1.0
+	refractColour 0.6 0.7 0.58  0.76
+	specColourAndPower 0.8 0.8 0.9  16
 
-	fresnel 0.0
-	fresnel_coeff 0.0
-	roughness 0.2
-	metalness 0.8
-}
-hlms Ice_cyan pbs //: BaseMud   // solid
-{
-    diffuse   0.6 0.64 0.65
-	specular  0.55 0.58 0.6
-
-	diffuse_map  snow2_s.jpg
-	normal_map   snow2_n.jpg
-	cull_mode none
-
-	fresnel 0.0
-	fresnel_coeff 0.0
-	roughness 0.2
-	metalness 0.8
+    bump2SpecPowerMul 6.0 12 0.4
+    speed 1.0 1.0
 }
 
-hlms LavaOrn pbs : BaseMud   // lava dense fluid
+hlms Water_dark pbs : Water  // Vlc1-Dark
 {
-    diffuse   0.247 0.214 0.195
-	specular  1.0 0.70 0.44
+    choppyness_scale 0.2 40
+    smallWaves_midWaves 0.03 0.2 0.3 0.15
+    bigWaves 0.7 0.3
+    bump 1.5 0.16 0.12
+    fresnelMultiplier 1.0
+    
+    colour 0.06 0.14 0.2  0.0
+	reflectColour 0.66 0.59 0.23  1.0
+	refractColour 0.4 0.65 0.8  0.76
+	specColourAndPower 1.0 0.8 0.3  96
+
+    bump2SpecPowerMul 6.0 12 0.4
+    speed 1.0 1.0
 }
-hlms LavaBlk pbs : BaseMud   // lava solid
+
+hlms Water_blue_dark pbs : Water  // Fin1-Lakes
 {
-    diffuse   0.077 0.08 0.085
-	specular  1.5 0.75 0.30
+    choppyness_scale 0.27 35
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.309 0.297
+    bump 0.87 0.121 0.354
+    fresnelMultiplier 1.0
+    
+	//colour 0.281 0.338 0.475  0.0
+	//reflectColour 0.768 0.834 0.768  1.0
+	//refractColour 0.62 0.84 0.76  0.75
+    //colour 0.64 0.66 0.67  0.0
+    colour 0.44 0.60 0.717  0.0
+	//reflectColour 0.953 0.98 1.0  1.0
+	reflectColour 0.77 0.82 0.83  0.95
+	refractColour 0.506 0.557 0.475  0.75
+
+	specColourAndPower 0.66 0.78 0.88  62
+    bump2SpecPowerMul 2.0 12 0.4
+    speed 1.0 1.0
+}
+
+//hlms Water_blue_dark pbs : Water  // Fin1
+//{
+//    choppyness_scale 0.17 65
+//    //smallWaves_midWaves 0.15 0.10 0.30 0.549
+//    smallWaves_midWaves 0.072 0.797 0.336 0.775
+//    bigWaves 0.73 0.49
+//    bump 1.0 0.082 0.10
+//    fresnelMultiplier 1.0
+//    
+//    colour 0.281 0.35 0.40  0.0
+//	reflectColour 0.768 0.834 0.768  1.0
+//	refractColour 0.62 0.84 0.76  0.75
+//	specColourAndPower 0.535 0.613 0.66  24
+//
+//    bump2SpecPowerMul 2.0 3 0.4
+//    speed 1.0 1.0
+//}
+
+
+hlms Grease_jelly pbs : Water  // Uni1-Magic
+{
+    normal_map water_nh.png
+    choppyness_scale 0.15 25
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.3 0.3
+    bump 1.5 0.32 0.12
+    fresnelMultiplier 1.0
+
+    colour 0.46 0.33 0.66  1.0
+	reflectColour 0.3 0.3 0.2  1.0
+	refractColour 0.8 0.8 0.6  1.0
+	specColourAndPower 1.0 1.0 1.0  64
+
+    bump2SpecPowerMul 6.0 12 0.4
+    speed 0.1 1.0
+}
+
+hlms Blue_jelly pbs : Water
+{
+	Normal_map water_nh.png
+	choppyness_scale 0.06 10
+	smallWaves_midWaves 0.25 0.3 0.5 0.15
+	bigWaves 0.5 0.5
+	bump 2 0.6 0.8
+	fresnelMultiplier 1.0
+
+	colour 0.1 0.18 0.46 0.8
+	reflectColour 0.2 0.3 0.9 1
+	refractColour 0.1 0.4 0.9 1.0
+	specColourAndPower 1.0 1.0 1.0 64
+
+	bump2SpecPowerMul 12.0 12 0.4
+	speed 0.05 1.0
+}
+
+hlms Acid_green pbs : Water  // Tox1-AcidLakes
+{
+    choppyness_scale 0.1 37
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.7 0.3
+    bump 2.5 0.15 0.09
+    fresnelMultiplier 0.6
+
+    colour 0.23 0.35 0.12  0.0
+	reflectColour 0.7 0.94 0.33  0.6
+	refractColour 0.6 0.74 0.35  0.53
+	specColourAndPower 0.33 0.38 0.33  256
+
+    bump2SpecPowerMul 128.0 2.0 1.3
+    speed 0.8 1.0
+}
+
+hlms Ice pbs : Water  // solid
+{
+    choppyness_scale 0.4 27
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.7 0.3
+    bump 2.5 0.145 0.073
+    fresnelMultiplier 0.67
+
+    colour 0.8 0.94 0.95  1.0
+	reflectColour 0.92 0.94 0.95  0.65
+	refractColour 0.6 0.74 0.74  0.65
+	specColourAndPower 0.75 0.78 0.8  256
+
+    bump2SpecPowerMul 128.0 2.0 1.3
+    speed 0.0 1.0
+}
+hlms Ice_cyan pbs : Water  // solid
+{
+    choppyness_scale 0.4 27
+    smallWaves_midWaves 0.15 0.1 0.3 0.15
+    bigWaves 0.7 0.3
+    bump 2.5 0.145 0.073
+    fresnelMultiplier 0.67
+
+    colour 0.8 0.94 0.95  1.0
+	reflectColour 1.0 1.0 1.0  1.0
+	refractColour 0.97 0.99 1.0  0.65
+	specColourAndPower 0.75 0.78 0.8  256
+
+    bump2SpecPowerMul 128.0 2.0 1.3
+    speed 0.0 1.0
+}
+
+hlms LavaOrn pbs : Water  // lava dense fluid
+{
+    choppyness_scale 0.1 33
+    smallWaves_midWaves 0.15 0.1 0.22 0.12
+    bigWaves 0.553 0.435
+    bump 2.5 0.145 0.073
+    fresnelMultiplier 0.67
+
+    colour 0.247 0.214 0.195  1.0
+	reflectColour 0.45 0.46 0.48  0.44
+	refractColour 0.0 0.0 0.0  0.6
+	specColourAndPower 1.0 0.70 0.44  256
+
+    bump2SpecPowerMul 12.86 1.0 1.03
+    speed 0.478 1.0
+}
+hlms LavaBlk pbs : Water  // lava solid
+{
+    choppyness_scale 0.34 33
+    smallWaves_midWaves 0.035 0.15 0.24 0.12
+    bigWaves 0.374 0.153
+    bump 3.0 0.237 0.136
+    fresnelMultiplier 0.61
+
+    colour 0.077 0.08 0.085  1.0
+	reflectColour 0.45 0.46 0.49  0.44
+	refractColour 0.0 0.0 0.0  0.6
+	specColourAndPower 1.5 0.75 0.30  256
+
+    bump2SpecPowerMul 72.0 2.0 1.0
+    speed 0.15 1.0
 }
 
 
 //  Mud
 //--------------------------------------------------------
-hlms Mud_orange pbs : BaseMud
+hlms Mud_orange pbs : Water
 {
-	diffuse   0.63 0.44 0.04
-	specular  0.33 0.25 0.2
+    normal_map water_nh.png
+    choppyness_scale 0.025 5
+    smallWaves_midWaves 0.025 0.15 0.06 0.1
+    bigWaves 0.68 0.67
+    bump 1.2 0.22 0.01
+    fresnelMultiplier 1.0
+
+    colour 0.63 0.44 0.04  1.0
+	reflectColour 0.6 0.4 0.1  0.57
+	refractColour 0.6 0.4 0.1  1.0
+	specColourAndPower 0.33 0.25 0.2  16
+
+    bump2SpecPowerMul 16.0 8 0.3
+    speed 0.03 1.0
 }
 
-hlms Mud_brown pbs : BaseMud
+hlms Mud_brown pbs : Water
 {
-	diffuse   0.50 0.33 0.10
-	specular  0.26 0.22 0.14
+    normal_map water_nh.png
+    choppyness_scale 0.063 5
+    smallWaves_midWaves 0.015 0.15 0.03 0.1
+    bigWaves 0.2 0.2
+    bump 1.2 0.44 0.01
+    fresnelMultiplier 1.0
+
+    colour 0.50 0.33 0.10  1.0
+	reflectColour 0.64 0.42 0.13  0.2
+	refractColour 0.4 0.34 0.1 1.0
+	specColourAndPower 0.26 0.22 0.14  32
+
+    bump2SpecPowerMul 16.0 2.0 0.9
+    speed 0.01 1.0
 }
 
-hlms Mud_dark pbs : BaseMud
+hlms Mud_dark pbs : Water
 {
-	diffuse   0.2 0.17 0.05
-	specular  0.31 0.27 0.18
+    normal_map water_nh.png
+    choppyness_scale 0.015 5
+    smallWaves_midWaves 0.015 0.15 0.03 0.1
+    bigWaves 0.03 0.2
+    bump 2.2 0.2 0.01
+    fresnelMultiplier 1.0
+
+	colour 0.2 0.17 0.05  1.0
+	reflectColour 0.3 0.22 0.11  1.0
+	refractColour 0.8 0.8 0.025  1.0
+    specColourAndPower 0.31 0.27 0.18  64
+
+    bump2SpecPowerMul 12.0 2.0 0.4
+    speed 0.001 1.0
 }
 
 //  Mud  Jungle Dark
 //--------------------------------------------------------
-hlms Mud_orange_JD pbs : BaseMud
+hlms Mud_orange_JD pbs : Water
 {
-    diffuse   0.314 0.336 0.031  1.0
-	specular  0.41 0.33 0.16  16
+    normal_map water_nh.png
+    choppyness_scale 0.021 5
+    smallWaves_midWaves 0.025 0.15 0.06 0.1
+    bigWaves 0.68 0.67
+    bump 1.2 0.22 0.01
+    fresnelMultiplier 1.0
+
+    colour 0.314 0.336 0.031  1.0
+	reflectColour 0.54 0.40 0.15  0.72
+	refractColour 0.6 0.4 0.1  1.0
+	specColourAndPower 0.41 0.33 0.16  16
+
+    bump2SpecPowerMul 16.0 5 0.85
+    speed 0.03 1.0
 }
 
-hlms Mud_brown_JD pbs : BaseMud
+hlms Mud_brown_JD pbs : Water
 {
-    diffuse   0.258 0.268 0.10  1.0
-	specular  0.238 0.266 0.063  32
+    normal_map water_nh.png
+    choppyness_scale 0.063 5
+    smallWaves_midWaves 0.015 0.15 0.03 0.1
+    bigWaves 0.2 0.2
+    bump 1.2 0.44 0.01
+    fresnelMultiplier 1.0
+
+    colour 0.258 0.268 0.10  1.0
+	reflectColour 0.273 0.307 0.130  0.297
+	refractColour 0.338 0.34 0.1 1.0
+	specColourAndPower 0.238 0.266 0.063  32
+
+    bump2SpecPowerMul 16.0 2.0 0.9
+    speed 0.01 1.0
 }
 
-hlms Mud_dark_JD pbs : BaseMud
+hlms Mud_dark_JD pbs : Water
 {
-	diffuse   0.154 0.17 0.05  1.0
-    specular  0.283 0.30 0.18  64
-}
+    normal_map water_nh.png
+    choppyness_scale 0.015 5
+    smallWaves_midWaves 0.015 0.15 0.03 0.1
+    bigWaves 0.03 0.2
+    bump 2.2 0.2 0.01
+    fresnelMultiplier 1.0
 
+	colour 0.154 0.17 0.05  1.0
+	reflectColour 0.215 0.22 0.11  1.0
+	refractColour 0.8 0.8 0.025  1.0
+    specColourAndPower 0.283 0.30 0.18  64
+
+    bump2SpecPowerMul 12.0 2.0 0.4
+    speed 0.001 1.0
+}
 
 
 //  Rivers  .-.-.--.-..-..
 //--------------------------------------------------------
 hlms River_blue pbs : Water_blue  // I3-Islands  J13-Tropic
 {
-    // WaterDepthMap roadAlpha.png
-    // alphaMap HmapTex
-    // speed -15.0 -0.5
+    // WaterDepthMap white.png
+   	// alphaMap HmapTex
+    speed -15.0 -0.5
 }
 
-hlms River_cyan pbs : Water_cyan // G2-Coast
+hlms River_cyan pbs : Water_cyan  // G2-Coast
 {
-    // speed -12.0 -0.2
+    speed -12.0 -0.2
 }
 
 hlms River_green pbs : Water_green  // J11-Temple
 {
-    // speed -3.0 -1.0
+    speed -3.0 -1.0
 }
 
 hlms River_moss pbs : Water_moss  // O2-Mouse
 {
-    // speed -3.0 -1.0
+    speed -3.0 -1.0
 }
 
 hlms River_white pbs : Water_white  // W2-Wet
 {
-    // speed -3.0 -1.0
+    speed -3.0 -1.0
 }
 
-hlms River_sunset pbs : Water_sunset  // I4-Sunset
+hlms River_sunset pbs : Water_sunset // I4-Sunset
 {
-    // speed -3.0 -1.0
+    speed -3.0 -1.0
 }
 
-hlms River_sunset_cyan pbs : Water_sunset_cyan  // I13-Beauty
+hlms River_sunset_cyan pbs : Water_sunset_cyan // I13-Beauty
 {
-    // speed -3.0 -1.0
+    speed -3.0 -1.0
 }
 
 hlms River_shore pbs : Water_shore  // I5-Shore
 {
-    // speed -3.0 -1.0
+    speed -3.0 -1.0
 }
 
 hlms River_dark pbs : Water_dark  // V1-Dark
 {
-    // speed -3.0 -1.0
+    speed -3.0 -1.0
 }
 
 hlms River_blue_dark pbs : Water_blue_dark  // E1
 {
-    // speed -3.0 -1.0
+    speed -3.0 -1.0
 }
 
 hlms River_Grease_jelly pbs : Grease_jelly  // X1-Magic
 {
-    // speed -3.1 -1.0
+    speed -3.1 -1.0
 }
 
 hlms River_Blue_jelly pbs : Blue_jelly
 {
-	// speed -3.05 -1.0
+	speed -3.05 -1.0
 }
 
 
@@ -330,6 +572,7 @@ hlms Water_strange2 pbs : Water
     smallWaves_midWaves 0.15 0.1 0.3 0.15
     bigWaves 0.3 0.3
     bump 1.5 0.08 0.12
+    fresnelMultiplier 1.0
 
     colour 0.42 0.97 0.39  0.0
 	reflectColour 0.98 0.09 0.97  0.9
@@ -364,6 +607,7 @@ hlms Water_pink pbs : Water  // pink
     smallWaves_midWaves 0.15 0.1 0.3 0.15
     bigWaves 0.3 0.3
     bump 1.5 0.08 0.12
+    fresnelMultiplier 1.0
 
     colour 0.99 0.39 0.94  0.0
 	reflectColour 0.94 0.89 0.91  0.9
@@ -376,11 +620,12 @@ hlms Water_pink pbs : Water  // pink
 
 hlms Pink_jelly pbs : Water
 {
-	WaterNormalMap water_nh.png
+	normal_map water_nh.png
 	choppyness_scale 0.08 12
 	smallWaves_midWaves 0.25 0.3 0.5 0.15
 	bigWaves 0.5 0.5
 	bump 2 0.6 0.8
+	fresnelMultiplier 1.0
 
 	colour 0.87 0.1 0.86 0.86
 	reflectColour 0.9 0.3 0.6 1
@@ -393,11 +638,12 @@ hlms Pink_jelly pbs : Water
 
 hlms Oil pbs : Water
 {
-    WaterNormalMap water_nh.png
+    normal_map water_nh.png
     smallWaves_midWaves 0.025 0.15 0.06 0.1
     choppyness_scale 0.03 7
     bigWaves 0.68 0.67
     bump 1.4 0.22 0.01
+    fresnelMultiplier 1.0
 
     colour 0.04 0.04 0.05  1.0
 	reflectColour 0.1 0.2 0.3  0.57
@@ -431,6 +677,7 @@ hlms Liquid_gas2 pbs : Water
     smallWaves_midWaves 0.025 0.15 0.06 0.1
     bigWaves 0.68 0.67
     bump 1.2 0.22 0.01
+    fresnelMultiplier 1.0
 
     colour 0.72 0.69 0.37  0.1
     reflectColour 0.39 0.6 1.0  0.03
@@ -447,6 +694,7 @@ hlms Liquid_gas_space pbs : Water
     smallWaves_midWaves 0.025 0.15 0.06 0.1
     bigWaves 0.68 0.67
     bump 1.2 0.22 0.01
+    fresnelMultiplier 1.0
 
     colour 0.72 0.69 0.77  0.1
     reflectColour 0.39 0.6 3.5  0.03
@@ -458,13 +706,15 @@ hlms Liquid_gas_space pbs : Water
 }
 
 
+
 hlms Green_slime pbs : Water
 {
-	WaterNormalMap water_nh.png
+	normal_map water_nh.png
 	choppyness_scale 0.08 24
 	smallWaves_midWaves 0.25 0.3 0.5 0.15
 	bigWaves 0.5 0.5
 	bump 2 0.6 0.8
+	fresnelMultiplier 1.0
 
 	colour 0.03 0.95 0.26 0.86
 	reflectColour 0.5 0.98 0.1 1
@@ -485,11 +735,10 @@ hlms River_Acid_green pbs : Acid_green  // green acid
 
 hlms River_Ice pbs : Ice  // solid
 {
-    diffuse 0.8 0.94 0.95  0.0
+    colour 0.8 0.94 0.95  0.0
     speed -3.0 -1.0
 }
-
-hlms River_Ice_cyan pbs : Ice_cyan  // solid
+hlms River_Ice_cyan pbs : Ice_cyan // solid
 {
     speed -3.0 -1.0
 }

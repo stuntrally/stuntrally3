@@ -211,7 +211,7 @@ HlmsPbsDbWater::HlmsPbsDbWater(
 	: HlmsPbsDatablock( name, creator, macro, blend, p )
 {
 	String val;
-	if( Hlms::findParamInVec( p, "fluid", val ) )
+	if (Hlms::findParamInVec(p, "fluid", val) || Hlms::findParamInVec(p, "choppyness_scale", val))
 	{
 		// LogO("fluid db2 ctor 1");
 
@@ -219,15 +219,11 @@ HlmsPbsDbWater::HlmsPbsDbWater(
 		Vector4 smallWaves_midWaves;  Vector2 bigWaves;
 		Vector3 bump_fresn_refra;  // norm-sc  fresnel  refract
 		// fresnelMultiplier 1.0
-
-		Vector4 colour, reflectColour, refractColour;
-		Vector4 specColourAndPower;
-
+		Vector4 colour, reflectColour, refractColour, specClrPow;
 		Vector3 bump2SpecPowerMul;
 		Vector2 speed;
 
-
-		#define S2V(d,v,a)  StringConverter::parseVector##d(v,a)
+		#define S2V(dim, val, def)  StringConverter::parseVector##dim(val, def)
 		if (Hlms::findParamInVec(p, "choppyness_scale", val))     choppyness_scale    = S2V(2, val, Vector2(0.15, 1.0));
 		if (Hlms::findParamInVec(p, "smallWaves_midWaves", val))  smallWaves_midWaves = S2V(4, val, Vector4(0.15, 0.1, 0.3, 0.15));
 		if (Hlms::findParamInVec(p, "bigWaves", val))             bigWaves            = S2V(2, val, Vector2(0.3, 0.3));
@@ -236,7 +232,7 @@ HlmsPbsDbWater::HlmsPbsDbWater(
 		if (Hlms::findParamInVec(p, "colour", val))               colour              = S2V(4, val, Vector4(0.49, 0.69, 0.78, 0.0));
 		if (Hlms::findParamInVec(p, "reflectColour", val))        reflectColour       = S2V(4, val, Vector4(0.91, 0.93, 0.94, 0.9));
 		if (Hlms::findParamInVec(p, "refractColour", val))        refractColour       = S2V(4, val, Vector4(0.76, 0.89, 0.99, 0.76));
-		if (Hlms::findParamInVec(p, "specColourAndPower", val))   specColourAndPower  = S2V(4, val, Vector4(0.98, 1.0, 1.0, 0.15));
+		if (Hlms::findParamInVec(p, "specColourAndPower", val))   specClrPow          = S2V(4, val, Vector4(0.98, 1.0, 1.0, 0.15));
 
 		if (Hlms::findParamInVec(p, "bump2SpecPowerMul", val))    bump2SpecPowerMul   = S2V(3, val, Vector3(6.0, 16.0, 0.8));
 		if (Hlms::findParamInVec(p, "speed", val))                speed               = S2V(2, val, Vector2(1.0, 1.0));
@@ -245,17 +241,19 @@ HlmsPbsDbWater::HlmsPbsDbWater(
 		mDetailsOffsetScale[0][1] = smallWaves_midWaves.y;
 		mDetailsOffsetScale[0][2] = smallWaves_midWaves.z;
 		mDetailsOffsetScale[0][3] = smallWaves_midWaves.w;
-
 		mDetailsOffsetScale[1][0] = bigWaves.x;
 		mDetailsOffsetScale[1][1] = bigWaves.y;
-
+	//  mDetailsOffsetScale[1][2] [3] ..
 		mDetailsOffsetScale[2][0] = speed.x;
-
 		mDetailsOffsetScale[2][1] = choppyness_scale.x;
 		mDetailsOffsetScale[2][2] = choppyness_scale.y;
 		mDetailsOffsetScale[2][3] = bump_fresn_refra.x;
 
-		// setDiffuse( v );
+		setDiffuse( Vector3(colour.x, colour.y, colour.z) );
+		setSpecular( Vector3(specClrPow.x, specClrPow.y, specClrPow.z) );
+		// float roughness = specClrPow.z;
+		// setRoughness(roughness);  // todo.. mul, bump_fresn_refra ..
+		setFresnel( Vector3(reflectColour.x, reflectColour.y, reflectColour.z), 1 );
 
 		scheduleConstBufferUpdate();
 	}

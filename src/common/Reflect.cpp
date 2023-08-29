@@ -190,12 +190,12 @@ void FluidsReflect::CreateFluids()
 
 		String sMesh = "WtrMesh"+toStr(i), sMesh2 = "WtrPlane"+toStr(i);
 		const Vector2 v2size(fb.size.x, fb.size.z),
-			uvTile(fb.tile.x*fb.size.x *6, 6* fb.tile.y*fb.size.z);  // par
+			uvTile(fb.tile.x*fb.size.x, fb.tile.y*fb.size.z);
 
 		v1::MeshPtr meshV1 = v1::MeshManager::getSingleton().createPlane(
 			sMesh, rgDef,
 			p, v2size.x, v2size.y,
-			6,6, true, 1,  //par steps /fake  // 30 ##
+			32,32, true, 1,  //par- steps /fake
 			uvTile.x, uvTile.y,
 			Vector3::UNIT_Y,  // up vec for uv
 			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
@@ -205,7 +205,7 @@ void FluidsReflect::CreateFluids()
 			sMesh2, rgDef,
 			meshV1.get(), false, false, false, false );
 			// meshV1.get(), false, false, true, false );
-			// meshV1.get(), true, true, true );  //-
+			// meshV1.get(), true, true, true );  //-	
 		
 		MeshManager::getSingleton().remove(sMesh);  // not needed
 		// meshV1->unload();  //

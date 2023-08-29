@@ -418,7 +418,6 @@
 				#define BUMP         material.detailOffsetScale[2].w
 
 float2 UV = inPs.uv@value(uv_diffuse).xy;
-// float2 UV = inPs.worldPos.xz;  // todo: ?
 float timer = atmo.globalTime.x;
 float2
 uv3 = UV * WAVE_SCALE*0.05+ WIND_DIR *timer* WIND_SPEED*0.04                                   + WIND_SPEED2 *timer* float2(-0.015,-0.005);  float3 normal0 = @insertpiece(GetNorm)
@@ -443,7 +442,9 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 				// pixelData.normal = midf3_c( 0.5, 0.5, 0.1 );
 				// pixelData.specular.xyz = float3(0.9,0.95,0.99) - float3(0.3,0.4,0.5) * pixelData.normal.z;
 
-				pixelData.perceptualRoughness = max(0.01, min(1.0,  0.01 - 2.24 * n3.x - 2.24 * n3.y));  //**
+				pixelData.perceptualRoughness = max(0.01, min(1.0,  0.01 - 2.24 * n3.x - 2.24 * n3.y));  //** par?
+				// transparency ?
+				// material.F0.w = pixelData.perceptualRoughness;
 			//~~~~~~~ water end
 			@else
 				pixelData.normal = getTSNormal( textureMaps@value( normal_map_tex_idx ),
