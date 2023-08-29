@@ -417,7 +417,7 @@
 				#define BIG_WAVES_X  0.3
 				#define BIG_WAVES_Y  0.3
 
-
+				
 float2 UV = inPs.uv@value(uv_diffuse).xy;  // todo: worldpos.xz
 float timer = atmo.globalTime.x;
 float2
@@ -433,7 +433,7 @@ uv3 = UV * (WAVE_SCALE * 2.0) + WIND_DIR * timer * WIND_SPEED*0.7 -(normal4.xy/n
 							normal4 * SMALL_WAVES_X + normal5 * SMALL_WAVES_Y;
 				n3 = normalize( midf3_c( n3.x * BUMP, n3.y * BUMP, n3.z ));
 				pixelData.normal = n3;
-				pixelData.diffuse.xyz = n3;  // test stuff ..
+				// pixelData.diffuse.xyz = n3;  // test stuff ..
 				// pixelData.normal = midf3_c(0.0,0.0,1.0);
 
 				// pixelData.diffuse.xyz = float3(0.02,0.03,0.04) + float3(0.01,0.04,0.07) * pixelData.normal.z;
@@ -443,7 +443,7 @@ uv3 = UV * (WAVE_SCALE * 2.0) + WIND_DIR * timer * WIND_SPEED*0.7 -(normal4.xy/n
 				// pixelData.normal = midf3_c( 0.5, 0.5, 0.1 );
 				// pixelData.specular.xyz = float3(0.9,0.95,0.99) - float3(0.3,0.4,0.5) * pixelData.normal.z;
 
-				pixelData.perceptualRoughness = max(0.01, min(1.0,  0.01 - 2.24 * n3.x - 2.24 * n3.y));  //-?
+				pixelData.perceptualRoughness = max(0.01, min(1.0,  0.01 - 2.24 * n3.x - 2.24 * n3.y));  //**
 			//~~~~~~~ water end
 			@else
 				pixelData.normal = getTSNormal( textureMaps@value( normal_map_tex_idx ),
@@ -862,7 +862,7 @@ uv3 = UV * (WAVE_SCALE * 2.0) + WIND_DIR * timer * WIND_SPEED*0.7 -(normal4.xy/n
 
 	//---- clr3 mix  color changing paints  ***  // todo: this is in all pbs shaders now
 			
-			// property( paint )
+			// property( paint )  // todo
 			if (material.userValue[0].w > _h( 0.0 ))  // all black
 			{
 				float nn = abs(pixelData.normal.z);

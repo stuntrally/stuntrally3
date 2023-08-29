@@ -225,6 +225,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		ndMain->setOrientation(posInfo.rot * Quaternion(Degree(posInfo.hov_roll),Vector3::UNIT_X));
 	else
 		ndMain->setOrientation(posInfo.rot);
+	//ndMain->_getFullTransformUpdated();  //?
 	
 
 	//  🟢🌿 grass sphere pos

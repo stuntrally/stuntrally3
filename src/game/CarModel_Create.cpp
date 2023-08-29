@@ -138,21 +138,22 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 				pDb->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
 			}else
 			{	//  body_paint db2
-				// assert( dynamic_cast<HlmsPbsDatablock2 *>( item->getSubItem(0)->getDatablock() ) );
 				HlmsPbsDbCar* pDb = dynamic_cast<HlmsPbsDbCar *>( item->getSubItem(0)->getDatablock() );
 				LogO(pDb ? "db2 cast ok" : "db2 cast fail");
-				//  clone,  set car color
-				static int id = 0;  ++id;
-			#if 1  // no clone  bad ghost, same car color
-				db = pDb;
-			#else  // fixme  clone ..
-				db = static_cast<HlmsPbsDatablock2*>( pDb->clone( "CarBody" + sCarI + toStr(id) ) );
-			#endif
-				db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
-				//- HlmsPbsDatablock *db1 = static_cast<HlmsPbsDatablock *>(db);
-				item->getSubItem(0)->setDatablock( db );
-				SetPaint();
-
+				if (pDb)
+				{
+					//  clone,  set car color
+					static int id = 0;  ++id;
+				#if 1  // no clone  bad ghost, same car color
+					db = pDb;
+				#else  // fixme  clone ..
+					db = static_cast<HlmsPbsDatablock2*>( pDb->clone( "CarBody" + sCarI + toStr(id) ) );
+				#endif
+					db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
+					//- HlmsPbsDatablock *db1 = static_cast<HlmsPbsDatablock *>(db);
+					item->getSubItem(0)->setDatablock( db );
+					SetPaint();
+				}
 				//db->setBrdf(PbsBrdf::DefaultHasDiffuseFresnel);  // ogre 2.4 mirror
 			}
 	}	}

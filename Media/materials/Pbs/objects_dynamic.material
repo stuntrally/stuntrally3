@@ -122,11 +122,12 @@ hlms wooden_barrel pbs
 {
 	diffuse_map  wooden_barrel.jpg
 	normal_map   wooden_barrel_norm.jpg
-	diffuse  0.9 1 1
-	specular 0.35 0.35 0.35
+	// specular_map wooden_barrel_spec.jpg  //red?
+	diffuse  0.96 1 1
+	specular 0.6 0.6 0.6
 	fresnel_coeff 0.1
-	roughness 0.6
-	metalness 0.2
+	roughness 0.35
+	metalness 0.7
 }
 
 hlms atomic_barrel pbs
@@ -137,7 +138,7 @@ hlms atomic_barrel pbs
 	diffuse  1.0 1.0 1.0
 	specular 0.6 0.6 0.6
 	fresnel_coeff 0.1
-	roughness 0.5
+	roughness 0.45
 	metalness 0.7
 }
 
@@ -176,3 +177,56 @@ hlms Crate_2 pbs
 	metalness 0.5
 }
 
+
+hlms can_rusted pbs pbs
+{
+	diffuse_map  can_rusted.jpg
+	normal_map   can_rusted_norm.jpg
+	specular_map can_rusted_spec.jpg
+	diffuse  1.0 1.0 1.0
+	specular 0.6 0.6 0.6
+	fresnel_coeff 0.1
+	roughness 0.4
+	metalness 0.7
+}
+
+hlms garbage_bin_green pbs
+{
+	diffuse_map  garbage_bin_green.jpg
+	normal_map   garbage_bin_norm.jpg
+	// specular_map garbage_bin_green_spec.jpg
+	diffuse  1.0 1.0 1.0
+	specular 0.6 0.6 0.6
+	// reflMap garbage_bin_metal.jpg
+	fresnel 0.5
+	fresnel_coeff 0.1
+	roughness 0.37
+	metalness 0.6
+}
+
+hlms garbage_bin_blue pbs
+{
+	diffuse_map  garbage_bin_blue.jpg
+	normal_map   garbage_bin_norm.jpg
+	// specular_map garbage_bin_blue_spec.jpg
+	diffuse  1.0 1.0 1.0
+	specular 0.6 0.6 0.6
+	// reflMap garbage_bin_metal.jpg
+	fresnel 0.5
+	fresnel_coeff 0.1
+	roughness 0.33
+	metalness 0.6
+}
+
+hlms trash_bag pbs
+{
+	diffuse_map  garbage_bag.jpg
+	normal_map   garbage_bag_norm.jpg
+	// specular_map garbage_bag_spec.jpg  //red?
+	diffuse  1.0 1.0 1.0
+	specular 0.6 0.6 0.6
+	fresnel 0.5
+	fresnel_coeff 0.1
+	roughness 0.26
+	metalness 0.9
+}
