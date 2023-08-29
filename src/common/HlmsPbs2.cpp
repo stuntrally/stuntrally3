@@ -215,35 +215,46 @@ HlmsPbsDbWater::HlmsPbsDbWater(
 	{
 		// LogO("fluid db2 ctor 1");
 
-		Vector2 choppyness_scale; // 0.15 25
-		Vector4 smallWaves_midWaves; // 0.15 0.1 0.3 0.15
-		Vector2 bigWaves; // 0.3 0.3
-		Vector3 bump; // 1.5 0.08 0.12  // norm-sc  fresnel  refract
+		Vector2 choppyness_scale;
+		Vector4 smallWaves_midWaves;  Vector2 bigWaves;
+		Vector3 bump_fresn_refra;  // norm-sc  fresnel  refract
 		// fresnelMultiplier 1.0
 
-		Vector4 colour; // 0.49 0.69 0.78  0.0
-		Vector4 reflectColour; // 0.91 0.93 0.94  0.9
-		Vector4 refractColour; // 0.76 0.89 0.99  0.76
-		Vector4 specColourAndPower; // 0.98 1.0 1.0  64
+		Vector4 colour, reflectColour, refractColour;
+		Vector4 specColourAndPower;
 
-		Vector3 bump2SpecPowerMul; // 6.0 16 0.8
-		Vector2 speed; // 1.0 1.0
+		Vector3 bump2SpecPowerMul;
+		Vector2 speed;
+
 
 		#define S2V(d,v,a)  StringConverter::parseVector##d(v,a)
 		if (Hlms::findParamInVec(p, "choppyness_scale", val))     choppyness_scale    = S2V(2, val, Vector2(0.15, 1.0));
 		if (Hlms::findParamInVec(p, "smallWaves_midWaves", val))  smallWaves_midWaves = S2V(4, val, Vector4(0.15, 0.1, 0.3, 0.15));
 		if (Hlms::findParamInVec(p, "bigWaves", val))             bigWaves            = S2V(2, val, Vector2(0.3, 0.3));
+		if (Hlms::findParamInVec(p, "bump", val))                 bump_fresn_refra    = S2V(3, val, Vector3(1.5, 0.08, 0.12));
 
-		// LogO(fToStr(v.x)+" "+fToStr(v.y)+" "+fToStr(v.z)+" "+fToStr(v.w));
-		mDetailsOffsetScale[0][0] = choppyness_scale.x;
-		mDetailsOffsetScale[0][1] = choppyness_scale.y;
-		mDetailsOffsetScale[0][2] = bigWaves.x;
-		mDetailsOffsetScale[0][3] = bigWaves.y;
+		if (Hlms::findParamInVec(p, "colour", val))               colour              = S2V(4, val, Vector4(0.49, 0.69, 0.78, 0.0));
+		if (Hlms::findParamInVec(p, "reflectColour", val))        reflectColour       = S2V(4, val, Vector4(0.91, 0.93, 0.94, 0.9));
+		if (Hlms::findParamInVec(p, "refractColour", val))        refractColour       = S2V(4, val, Vector4(0.76, 0.89, 0.99, 0.76));
+		if (Hlms::findParamInVec(p, "specColourAndPower", val))   specColourAndPower  = S2V(4, val, Vector4(0.98, 1.0, 1.0, 0.15));
 
-		mDetailsOffsetScale[1][0] = smallWaves_midWaves.x;
-		mDetailsOffsetScale[1][1] = smallWaves_midWaves.y;
-		mDetailsOffsetScale[1][2] = smallWaves_midWaves.z;
-		mDetailsOffsetScale[1][3] = smallWaves_midWaves.w;
+		if (Hlms::findParamInVec(p, "bump2SpecPowerMul", val))    bump2SpecPowerMul   = S2V(3, val, Vector3(6.0, 16.0, 0.8));
+		if (Hlms::findParamInVec(p, "speed", val))                speed               = S2V(2, val, Vector2(1.0, 1.0));
+
+		mDetailsOffsetScale[0][0] = smallWaves_midWaves.x;
+		mDetailsOffsetScale[0][1] = smallWaves_midWaves.y;
+		mDetailsOffsetScale[0][2] = smallWaves_midWaves.z;
+		mDetailsOffsetScale[0][3] = smallWaves_midWaves.w;
+
+		mDetailsOffsetScale[1][0] = bigWaves.x;
+		mDetailsOffsetScale[1][1] = bigWaves.y;
+
+		mDetailsOffsetScale[2][0] = speed.x;
+
+		mDetailsOffsetScale[2][1] = choppyness_scale.x;
+		mDetailsOffsetScale[2][2] = choppyness_scale.y;
+		mDetailsOffsetScale[2][3] = bump_fresn_refra.x;
+
 		// setDiffuse( v );
 
 		scheduleConstBufferUpdate();
@@ -259,63 +270,10 @@ void HlmsPbsDbWater::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 #if 0
 //----------------------------------------------------------------
 ///  todo: Notes  **Bookmarks**
 //----------------------------------------------------------------
-
-const size_t c_geometryShaderMagicValue = 123456;
-
-renderableA->setCustomParameter( c_geometryShaderMagicValue, Vector4( 0.0f ) ); // Use GS Method A
-renderableB->setCustomParameter( c_geometryShaderMagicValue, Vector4( 1.0f ) ); // Use GS Method B
-
-void MyHlmsPbs::calculateHashForPreCreate( Renderable *renderable, PiecesMap *inOutPieces )
-{
-	HlmsPbs::calculateHashForPreCreate( renderable, inOutPieces );
-	
-	const Renderable::CustomParameterMap &customParams = renderable->getCustomParameters();
-	Renderable::CustomParameterMap::const_iterator it =
-			customParams.find( c_geometryShaderMagicValue );
-	
-	if( it != customParams.end() )
-	{
-		//Geometry Shader will be used. Set which method
-		setProperty( "geometry_shader_method", (int32)it->second );
-	}
-}
-
-@property( geometry_shader_method == 0 )
-...
-@end
-@property( geometry_shader_method == 1 )
-...
-@end
-
-// Just make sure the setCustomParameter gets called before assigning the datablock,
-// otherwise you'll have to do this to refresh the Hlms hashes:
-
-HlmsDatablock *datablock = renderableA->getDatablock();
-Hlms *hlms = datablock->getCreator();
-if( hlms->getType() == HLMS_PBS )
-{
-	assert( dynamic_cast<HlmsPbs2*>( hlms ) );
-	MyHlmsPbs *myHlmsPbs = static_cast<HlmsPbs2*>( hlms );
-	uint32 hash, casterHash;
-	myHlmsPbs->calculateHashFor( renderableA, hash, casterHash );
-	renderableA->_setHlmsHashes( hash, casterHash );
-}
 
 
 //  * * *  todo: try? ..
@@ -327,16 +285,10 @@ HlmsTextureManager::dumpMemoryUsage
 
 hlmsPbs->setParallaxCorrectedCubemap( mParallaxCorrectedCubemap );
 
+
 HlmsPbsTerraShadows::preparePassBuffer  +
 
 Overload Hlms::preparePassHash or HlmsListener::preparePassHash to define a custom property that follows an entirely different shader path
-
-
-
-Hlms implementation can be customized:
-2  through HlmsListener. This allows you to have access to the buffer pass to fill extra information; or bind extra buffers to the shader.
-3  Overload HlmsPbs. Useful for overriding only specific parts, or adding new functionality that requires storing extra information in a datablock (e.g. overload HlmsPbsDatablock to add more variables, and then overload HlmsPbs::createDatablockImpl to create these custom datablocks)
-4  Directly modify HlmsPbs, HlmsPbsDatablock and the template.
 
 
 custom_passBuffer 	can add extra info for pass buffer (only useful if the user is using HlmsListener or overloaded HlmsPbs).

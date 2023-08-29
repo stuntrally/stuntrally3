@@ -216,7 +216,7 @@ public:
 	void GetMaterialsMat(Ogre::String filename, bool clear=true, Ogre::String type="hlms");  // direct path+file
 
     
-   	//  🔧 Tweak Mat - Material Editor  --------------------
+   	//  🔧 Tweak Mtr - Material Editor  --------------------
 	void InitGuiTweakMtr(), InitClrTweakMtr();
 	void GetTweakMtr(), FillTweakMtr();
 	Li liTweakMtr =0;  void listTweakMtr(Li, size_t);
@@ -224,7 +224,10 @@ public:
 
 	void slTweakMtr(SV*), updTweakMtr();
 	Ed edMtrFind =0;  void editMtrFind(Ed);
-	struct TwkMtr
+	
+	void btnMtrLoad(WP), btnMtrSave(WP), btnMtrSaveAll(WP);
+
+	struct TwkMtr  // adjust sld
 	{
 		// HlmsPbsDbCar *db =0;
 		Ogre::HlmsPbsDatablock* db =0;

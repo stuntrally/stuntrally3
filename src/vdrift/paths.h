@@ -27,6 +27,7 @@ public:
 
 	static std::string CacheDir() {        return cache_dir;  }
 	static std::string ShadersDir() {      return cache_dir + "/shaders";  }
+	static std::string MaterialsDir() {    return cache_dir + "/materials";  }
 
 	static std::string SettingsFile(bool ed, bool old=false)
 	{

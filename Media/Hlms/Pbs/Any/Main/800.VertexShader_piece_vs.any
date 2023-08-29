@@ -307,7 +307,7 @@
 			if (inVs_uv0.y == 0.0f)  // top
 			{
 		        const float distToCam = length( outVs.pos );
-				const float maxDist = 150.0;
+				const float maxDist = 150.0;  // par
 				outVs_Position.y -= distToCam < maxDist ? 0.0 : min(6.0, 0.5 * (distToCam - maxDist) );
 			}
 		@end

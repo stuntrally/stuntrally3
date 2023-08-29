@@ -4,7 +4,7 @@
 	<Widget type="Window" skin="WindowC" position="20 696 800 600" align="Center" layer="Overlapped" name="MaterialsWnd">
 		<Property key="MinSize" value="500 400"/>
 		<Property key="Caption" value="#9090D0#{MaterialProperties}"/>
-		<Property key="Alpha" value="0.35"/>
+		<Property key="Alpha" value="0.4"/>
 		<Property key="Snap" value="true"/>
 
 		<!--  Material Editor PBS  -->
@@ -484,9 +484,10 @@
 				</Widget>
 			</Widget>
 
+			<!-- Text -->
 			<Widget type="TabItem" skin="" position="2 24 614 472">
 				<Property key="Caption" value="#B0B0B0#{Detail}"/>
-				<Property key="InheritsAlpha" value="false"/>
+				<!-- <Property key="InheritsAlpha" value="false"/> -->
 
 				<!-- <Widget type="ScrollView" skin="ScrollViewEmpty" position="8 12 596 540">
 					<Property key="CanvasSize" value="1100 1800"/> -->
@@ -501,6 +502,80 @@
 					</Widget>
 
 				<!-- </Widget> -->
+			</Widget>
+
+			<!-- Manage buttons -->
+			<Widget type="TabItem" skin="" position="2 24 614 472">
+				<Property key="Caption" value="#C0B0FF#{RplSave}"/>
+				<Property key="InheritsAlpha" value="false"/>
+
+				<!-- ? Del Add -->
+				<!-- <Widget type="Button" skin="Button" position="12 28 156 24" name="MtrDel">
+					<Property key="Caption" value="#{Delete}"/>
+					<Property key="Colour" value="1.0 0.6 0.6"/>
+					<Property key="TextColour" value="1.0 0.6 0.6"/>
+					<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+						<Property key="ImageCoord" value="256 384 128 128"/>
+						<Property key="Alpha" value="0.5"/>
+						<Property key="ImageTexture" value="gui_icons.png"/>
+						<Property key="NeedMouse" value="false"/>
+					</Widget>
+				</Widget>
+				<Widget type="Button" skin="Button" position="202 28 156 24" name="MtrAdd">
+					<Property key="Caption" value="#{Add}"/>
+					<Property key="Colour" value="0.6 1.0 0.6"/>
+					<Property key="TextColour" value="0.6 1.0 0.6"/>
+					<Property key="InheritsAlpha" value="false"/>
+					<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+						<Property key="ImageCoord" value="256 256 128 128"/>
+						<Property key="Alpha" value="0.7"/>
+						<Property key="ImageTexture" value="gui_icons.png"/>
+						<Property key="NeedMouse" value="false"/>
+					</Widget>
+				</Widget> -->
+
+				<!-- Load Save -->
+				<Widget type="Button" skin="Button" position="12 62 156 24" name="MtrLoad">
+					<Property key="Caption" value="#{RplLoad}"/>
+					<Property key="Colour" value="0.8 0.7 1.0"/>
+					<Property key="TextColour" value="0.7 0.7 1.0"/>
+					<Widget type="ImageBox" skin="ImageBox" position="0 0 24 24">
+						<Property key="ImageCoord" value="512 384 128 128"/>
+						<Property key="Alpha" value="0.7"/>
+						<Property key="ImageTexture" value="gui_icons.png"/>
+						<Property key="NeedMouse" value="false"/>
+					</Widget>
+				</Widget>
+				<Widget type="Button" skin="Button" position="202 62 156 24" name="MtrSave">
+					<Property key="Caption" value="#{RplSave}"/>
+					<Property key="Colour" value="0.5 0.7 1.0"/>
+					<Property key="TextColour" value="0.6 0.8 1.0"/>
+					<Widget type="ImageBox" skin="ImageBox" position="0 2 20 20">
+						<Property key="ImageCoord" value="0 768 128 128"/>
+						<Property key="Colour" value="0.5 0.7 1.0"/>
+						<Property key="Alpha" value="0.6"/>
+						<Property key="ImageTexture" value="gui_icons.png"/>
+						<Property key="NeedMouse" value="false"/>
+					</Widget>
+				</Widget>
+				<Widget type="Button" skin="Button" position="402 62 156 24" name="MtrSaveAll">
+					<Property key="Caption" value="#{RplSave} #{RplAll}"/>
+					<Property key="Colour" value="0.7 0.7 1.0"/>
+					<Property key="TextColour" value="0.8 0.8 1.0"/>
+					<Widget type="ImageBox" skin="ImageBox" position="0 2 20 20">
+						<Property key="ImageCoord" value="0 768 128 128"/>
+						<Property key="Colour" value="0.7 0.7 1.0"/>
+						<Property key="Alpha" value="0.6"/>
+						<Property key="ImageTexture" value="gui_icons.png"/>
+						<Property key="NeedMouse" value="false"/>
+					</Widget>
+				</Widget>
+				<!-- <Widget type="Button" skin="Button" position="12 96 156 24" name="MtrLoadDef">
+					<Property key="Caption" value="#{RplLoad}: #{Reset}"/>
+					<Property key="Colour" value="0.8 0.3 0.3"/>
+					<Property key="TextColour" value="0.9 0.3 0.3"/>
+				</Widget> -->
+
 			</Widget>
 
 		</Widget>

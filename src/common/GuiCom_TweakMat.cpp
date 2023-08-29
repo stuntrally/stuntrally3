@@ -9,6 +9,7 @@
 #include "paths.h"
 
 #include "HlmsPbs2.h"
+#include <OgreHlms.h>
 #include <OgreVector3.h>
 #include <OgreHlmsPbsPrerequisites.h>
 #include <OgreHlmsCommon.h>
@@ -39,12 +40,55 @@ void CGuiCom::editMtrFind(Ed)
 	FillTweakMtr();
 }
 
+//  manage buttons
+//--------------------------------------------------
+
+void CGuiCom::btnMtrLoad(WP)
+{
+#if 0  //  test 1 json  +---
+	// todo reload all?
+	auto* mgr = mRoot->getHlmsManager();
+	mgr->loadMaterials(const String &filename, const String &groupName,
+						HlmsJsonListener *listener,
+						const String &additionalTextureExtension );
+    mgr->parseScript( DataStreamPtr &stream, const String &groupName )
+#endif
+}
+
+//  save one  hlms pbs as .json
+void CGuiCom::btnMtrSave(WP)
+{
+	if (!twk.db)  return;
+	auto* mgr = app->mRoot->getHlmsManager();
+	mgr->saveMaterial( twk.db, PATHS::MaterialsDir() +"/"+ pSet->tweak_mtr + ".json", 0, "");
+}
+
+//  save All  hlms pbs as .json
+void CGuiCom::btnMtrSaveAll(WP)
+{
+	auto* mgr = app->mRoot->getHlmsManager();
+#if 1  //  test 1 json  +---
+	mgr->saveMaterials(HLMS_PBS, PATHS::MaterialsDir()+"/all.material.json", 0, "");
+#else
+	HlmsPbs2 *hlmsPbs2 = static_cast<HlmsPbs2 *>( mgr->getHlms( HLMS_PBS ) );
+	const auto& dbm = hlmsPbs2->getDatablockMap();
+	for (const auto& db : dbm)
+	{
+		const auto& dbe = db.second;
+		LogO(dbe.name);
+		mgr->saveMaterial( dbe.datablock,
+			PATHS::MaterialsDir() +"/"+ dbe.name + ".json", 0, "");
+	}
+#endif
+}
+
+
 
 //  🧰🎚️ init gui sliders
 //--------------------------------------------------
 void CGuiCom::InitGuiTweakMtr()
 {
-	SV* sv;
+	SV* sv;  Btn btn;
 	#define TWK(n,a,b)  sv= &twk.sv##n;  sv->Init(#n,  &twk.f##n, a, b, 1.5f, 3,5);  sv->DefaultF(0.0f);  SevC(TweakMtr);
 
 	TWK(DiffR, 0.f, 1.5f)  TWK(DiffG, 0.f, 1.5f)  TWK(DiffB, 0.f, 1.5f)
@@ -57,6 +101,18 @@ void CGuiCom::InitGuiTweakMtr()
 
 	TWK(BumpScale, 0.0f, 6.f)  TWK(Transp, 0.f, 1.f)
 
+	//  water only ..
+	const static String csUserNames[3][4] = {
+		"","","","",
+		"","","","",
+		"","","","",
+	}, csDetNames[4][4] = {
+		"small wave x","small wave y","mid wave x","mid wave y",
+		"big wave x","big wave y","","",
+		"speed","choppyness","scale","bump",
+		"","","","",
+	};
+
 	float a = -1.f, b = 2.f;  // par range
 	int i,x;
 	for (x=0; x < 4; ++x)
@@ -67,7 +123,8 @@ void CGuiCom::InitGuiTweakMtr()
 
 			auto c = Colour(0.2f+x*0.2f, 0.5f+i*0.12f, 1.f-i*0.1f-x*0.1f);
 			auto txt = fTxt(s+"Name");  txt->setTextColour(c);
-			sv->setClr(c);  //txt->setCaption();  //..
+			sv->setClr(c);
+			if (!csUserNames[i][x].empty())  txt->setCaption(csUserNames[i][x]);
 		}
 		for (i=0; i < 4; ++i)
 		{	auto s = "Det" + toStr(i) + toStr(x);
@@ -76,8 +133,12 @@ void CGuiCom::InitGuiTweakMtr()
 			auto c = Colour(0.2f+x*0.2f, 0.5f+i*0.12f, 1.f-i*0.1f-x*0.1f);
 			auto txt = fTxt(s+"Name");  txt->setTextColour(c);
 			sv->setClr(c);
+			if (!csDetNames[i][x].empty())  txt->setCaption(csDetNames[i][x]);
 		}
 	}
+	
+	BtnC("MtrLoad", btnMtrLoad);
+	BtnC("MtrSave", btnMtrSave);  BtnC("MtrSaveAll", btnMtrSaveAll);
 
 	twk.edInfo = fEd("MtrInfo");
 
@@ -126,7 +187,7 @@ void CGuiCom::slTweakMtr(SV* sv)
 //--------------------------------------------------
 void CGuiCom::updTweakMtr()
 {
-	auto hlms = Root::getSingleton().getHlmsManager()->getHlms( HLMS_PBS );
+	auto hlms = app->mRoot->getHlmsManager()->getHlms( HLMS_PBS );
 	twk.db = (HlmsPbsDatablock*) hlms->getDatablock( pSet->tweak_mtr );
 	if (!twk.db)  return;
 	Vector4 u;  Vector3 v;  float f;  int i,x;

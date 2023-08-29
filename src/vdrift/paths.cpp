@@ -198,7 +198,7 @@ void PATHS::Init(bool log_paths)
 		CreateDir(Ghosts()+"/"+d);
 	}
 
-	// Find cache dir
+	//  Find cache dir
 	#ifdef _WIN32
 	cache_dir = user_config + "/cache";  // APPDATA/stuntrally3/cache
 	#else
@@ -206,11 +206,13 @@ void PATHS::Init(bool log_paths)
 	cache_dir = (xdg_cache_home ? xdg_cache_home / stuntrally3
 				: fs::path(home_dir) / ".cache" / stuntrally3).string();
 	#endif
-	// Create cache dir
+
+	//  Create cache dir
 	CreateDir(CacheDir());
 	CreateDir(ShadersDir());
+	CreateDir(MaterialsDir());
 
-	// Print diagnostic info
+	//  Print diagnostic info
 	if (log_paths)
 	{
 		info.str(string());  // clear, to not have twice
