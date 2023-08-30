@@ -135,7 +135,7 @@ compositor_node Rtt_View
 			rq_last	  199  // before RQ_OVERLAY
 
 			overlays	off
-			shadows		SR3_Shadows
+			shadows		SR3_Shadows  //! rem-
 			// todo: use that from code, not SR3_Shadows from here
 		}
 	}
@@ -260,7 +260,7 @@ compositor_node SR3_Render
 			colour_value  0.02 0.015 0.03 1
 		}
 
-		//  view render  ----
+		//  view render  --------
 		pass render_scene
 		{
 			profiling_id "Main view"
@@ -296,7 +296,7 @@ compositor_node SR3_Render
 			expose demo_dynamic_cubemap
 
 			// in code: game, not ed
-			visibility_mask	 0x3FF  // no 1024 ed
+			visibility_mask	 0x13FF  // no 1024 ed
 			// visibility_mask		0x0000FFFFD  // no hud
 			// rq_last		110  // glass,par etc
 
@@ -375,8 +375,8 @@ compositor_node PlanarReflectNode
 				stencil	dont_care
 			}
 
-			// visibility_mask  0xfffffffe
-			visibility_mask	 0x3FF  // no 1024 ed
+			visibility_mask	 0x3BD  // no 1024 ed, no 2 hud, no 64 grass
+			// visibility_mask	 0x3FD  // no 1024 ed, no 2 hud
 			overlays		 off
 			//shadows  SR3_Shadows
 		}

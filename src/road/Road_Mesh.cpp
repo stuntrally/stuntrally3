@@ -248,7 +248,7 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 
 	SceneNode* node = mSceneMgr->getRootSceneNode( dyn )->createChildSceneNode( dyn );
 	it->setVisible(false);  it->setCastShadows(false);//-
-	it->setVisibilityFlags(RV_Road);
+	it->setVisibilityFlags(trail ? RV_Hud3D : RV_Road);
 	node->attachObject(it);
 
 

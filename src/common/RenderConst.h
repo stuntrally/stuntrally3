@@ -56,8 +56,10 @@ const Ogre::uint8
 //  Visibility Flags used   search for setVisibility
 //------------------------------------------------------------------------
 const Ogre::uint32
-	RV_Road         = 1,   // road only, for road textures
 	RV_Hud          = 2,   // hud  and markers
+	RV_Hud3D        = 4096,// trail
+
+	RV_Road         = 1,   // road only, for road textures
 	RV_Terrain      = 4,   // terrain  and  fluids  for ed terrain.jpg texture
 	RV_Vegetation   = 8,   // vegetation
 	RV_VegetGrass   = 64,  // grass
