@@ -309,10 +309,10 @@
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="252 264 200 24">
 							<Property key="Caption" value="#60A0FF T  #{Settings}"/>
-
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="252 296 200 24">
-							<Property key="Caption" value="#C0A0E0 K  #{Tweak}"/>
+
+						<Widget type="TextBox" skin="TextBox" position="252 296 170 20">
+							<Property key="Caption" value="#C080C0 M  #{Materials}"/>
 						</Widget>
 					</Widget>
 				</Widget>

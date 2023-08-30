@@ -64,14 +64,6 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 	if (iFirst < 10)  // after reset
 	{	++iFirst;
 		mDistReduce = 0.f;  mATilt = 0.f;
-	#if 0  // todo: during loading ..
-		camPosFinal = Vector3(0, iFirst * 200, 0);  // make evth visible, load mesh,tex etc
-		camRotFinal = qTop;
-
-		posOut->camPos = camPosFinal;
-		posOut->camRot = camRotFinal;
-		return;
-	#endif
 	}
 
 	///  ⛰️ Camera Tilt from terrain/road slope under car

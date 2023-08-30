@@ -1,5 +1,6 @@
-#include "RenderConst.h"
 #include "pch.h"
+#include "RenderConst.h"
+#include "cardefs.h"
 #include "par.h"
 #include "Def_Str.h"
 #include "Axes.h"
@@ -392,7 +393,7 @@ void App::newPoses(float time)  // time only for camera update
 			//  🎥 update camera
 			if (carM->fCam)
 				carM->fCam->update(time, pi, &carPoses[qn][c], &pGame->collision,
-					!bRplPlay && pSet->cam_bounce, carM->vType);
+					!bRplPlay && pSet->cam_bounce, carM->vType == V_Sphere);
 			iCurPoses[c] = qn;  // atomic, set new index in queue
 			
 			//))  🔉🎥 upd sound camera

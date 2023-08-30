@@ -207,9 +207,9 @@
 						<Widget type="TextBox" skin="TextBox" position="12 232 170 20">
 							<Property key="Caption" value="#80F0F0 V  #{Vegetation}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="28 252 152 20">
+						<!-- <Widget type="TextBox" skin="TextBox" position="28 252 152 20">
 							<Property key="Caption" value="#80E0E0 M  #{Models}"/>
-						</Widget>
+						</Widget> -->
 
 						<Widget type="TextBox" skin="TextBox" position="12 284 168 20">
 							<Property key="Caption" value="#A0A060 U  #{Surface}"/>
@@ -249,6 +249,10 @@
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="204 262 170 20">
 							<Property key="Caption" value="#FFFF60 I  #{InputHelp}"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="204 296 170 20">
+							<Property key="Caption" value="#C080C0 M  #{Materials}"/>
 						</Widget>
 					</Widget>
 	<!-- ................................................................................................................... -->
