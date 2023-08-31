@@ -217,7 +217,7 @@ void FluidsReflect::CreateFluids()
 
 		Item* item = mgr->createItem( mesh, dyn );
 		String sMtr = fb.id == -1 ? "" :
-			// /*1 || */reflect ? "WaterReflect" :  // ##
+			// 1 ? "Water_test" :  // ## test water
 			app->scn->data->fluids->fls[fb.id].material;  //"Water"+toStr(1+fb.type)
 		
 		item->setDatablock( sMtr );  item->setCastShadows( false );
