@@ -69,6 +69,10 @@ struct PVeget
 	int addRdist = 1;  // road dist
 	float maxTerAng = 30.f;  // terrain
 	float maxDepth = 0.f;  // in fluid
+
+	bool alpha =0;
+	float visDist = 300.f, farDist = 300.f;
+	float yOfs = 0.f;
 };
 
 

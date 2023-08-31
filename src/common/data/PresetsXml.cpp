@@ -172,6 +172,11 @@ bool Presets::LoadXml(string file)
 		a = e->Attribute("rd");	if (a)  l.addRdist = s2i(a);
 		a = e->Attribute("fd");	if (a)  l.maxDepth = s2r(a);
 
+		a = e->Attribute("al");	if (a)  l.alpha = s2i(a)>0;
+		a = e->Attribute("vd");	if (a)  l.visDist = s2r(a);
+		a = e->Attribute("vD");	if (a)  l.farDist = s2r(a);
+		a = e->Attribute("y");	if (a)  l.yOfs = s2r(a);
+
 		veg.push_back(l);  iveg[l.name] = veg.size();
 		e = e->NextSiblingElement("v");
 	}

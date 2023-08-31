@@ -52,7 +52,6 @@ bool Args::Help()
 	{
 		cout << "StuntRally3  command line Arguments help  ----\n";
 		Common("");
-		cout << "  \n";
 		cout << "  check - Does a check for tracks.ini, championships.xml, challenges.xml, missing track ghosts, etc.\n";
 		cout << "  \n";
 		cout << "  convert - For new tracks. Convert ghosts to track's ghosts (less size and frames)\n";

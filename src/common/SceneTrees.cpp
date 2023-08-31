@@ -6,6 +6,7 @@
 #include "Axes.h"
 #include "BltObjects.h"
 #include "ShapeData.h"
+#include "data/PresetsXml.h"
 
 #include "CScene.h"
 // #include "SplineBase.h"
@@ -116,13 +117,21 @@ void CScene::CreateTrees()
 			PagedLayer& pg = sc->pgLayersAll[sc->pgLayers[l]];
 			String file = pg.name;  //, fpng = file+".png";
 			pg.cnt = 0;
-
+	
 			bool found = resMgr.resourceExistsInAnyGroup(file);
 			if (!found)
 			{
 				LogO("WARNING: not found vegetation model: "+file);
 				continue;
 				//file = "sphere.mesh";  // if not found, use white sphere
+			}
+			//  presets.xml needed
+			auto nomesh = file.substr(0, file.length()-5);
+			const PVeget* veg = data->pre->GetVeget(nomesh);
+			if (!veg)
+			{
+				LogO("WARNING: not found vegetation in presets.xml: "+file);
+				continue;
 			}
 
 			// Item* ent = app->mSceneMgr->createItem(file);
@@ -248,17 +257,12 @@ void CScene::CreateTrees()
 				Item *item = mgr->createItem( file,
 					ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
 				
-				bool alpha = file == "crystal2.mesh" || file == "crystal2.mesh";  // todo: par in xml
-				item->setRenderQueueGroup( alpha ? RQG_BatchAlpha : RQG_Road );
+				item->setRenderQueueGroup( veg->alpha ? RQG_BatchAlpha : RQG_Road );
 				item->setVisibilityFlags( RV_Vegetation );
 				app->SetTexWrap(item);
 
-				//  todo: par in xml * scale,aabb?
-				auto s4 = file.substr(0,4), s3 = file.substr(0,3);
-				bool big = s4 == "palm" || s4 == "tree" || s4 == "jung" || s4 == "pine" ||
-					s3 == "gum" || s3 == "fir" || s4 == "crys" || s4 == "shro";
-				Real dist =  // how far visible
-					big ? i % 3 == 0 ? 1000.f : 600.f : 300.f;
+				//  how far visible  // todo: * norm scale, aabb?
+				Real dist =  /*rare far*/ i % 3 == 0 ? veg->farDist : veg->visDist;
 				item->setRenderingDistance( dist * pSet->trees_dist );
 				vegetItems.push_back(item);
 
@@ -276,10 +280,9 @@ void CScene::CreateTrees()
 				SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
 				node->attachObject( item );
 				node->scale( scl * Vector3::UNIT_SCALE );
-				if (big)
-					pos.y -= 0.52f;  // par
+				pos.y -= veg->yOfs;  // ofs below
 				// pos.y += std::min( item->getLocalAabb().getMinimum().y, Real(0.0f) ) * -0.1f + lay.down;  //par
-				// todo: ter h in few +-xz, get lowest ..
+				// todo: ter h in few +-xz, get lowest slow-
 				node->setPosition( pos );
 
 				Degree a( yaw );
