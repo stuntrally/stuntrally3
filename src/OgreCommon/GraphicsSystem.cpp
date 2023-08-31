@@ -6,6 +6,8 @@
 	#include "SdlInputHandler.h"
 #endif
 #include "HlmsPbs2.h"  // our
+#include "MainEntryPoints.h"
+
 #include <OgreLogManager.h>
 #include <OgreConfigFile.h>
 #include <OgreException.h>
@@ -109,6 +111,11 @@ GraphicsSystem::GraphicsSystem( GameState *gameState,
 		FileSystemLayer filesystemLayer( OGRE_VERSION_NAME );
 		mCacheFolder = filesystemLayer.getWritablePath( "" );
 	}*/
+
+	const Args& a = MainEntryPoints::args;
+	if (a.has("c") || a.has("cfg"))
+		mAlwaysAskForConfig = true;
+	
 }
 
 //-----------------------------------------------------------------------------------

@@ -64,7 +64,7 @@ struct ThreadData
 //**  cmd line args
 Args MainEntryPoints::args;
 
-bool Args::has(const string& s)
+bool Args::has(const string& s) const
 {
 	for (const auto& a : all)
 		// if (a.find(s) != string::npos)  // s inside
@@ -82,7 +82,7 @@ void Args::set(const string& s)
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 INT WINAPI MainEntryPoints::mainAppMultiThreaded( HINSTANCE hInst, HINSTANCE hPrevInstance,
-														LPSTR strCmdLine, INT nCmdShow )
+												  LPSTR strCmdLine, INT nCmdShow )
 #else
 int MainEntryPoints::mainAppMultiThreaded( int argc, const char *argv[] )
 #endif

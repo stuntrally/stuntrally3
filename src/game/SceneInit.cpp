@@ -51,8 +51,7 @@ bool Args::Help()
 	if (has("?") || has("help"))
 	{
 		cout << "StuntRally3  command line Arguments help  ----\n";
-		cout << "  ? or help - Displays this info.\n";
-		cout << "Results in Ogre.log or console, lines with )))\n";
+		Common("");
 		cout << "  \n";
 		cout << "  check - Does a check for tracks.ini, championships.xml, challenges.xml, missing track ghosts, etc.\n";
 		cout << "  \n";

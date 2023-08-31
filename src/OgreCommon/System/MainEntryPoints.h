@@ -79,9 +79,9 @@ class LogicSystem;
 struct Args
 {
 	std::vector<std::string> all;
-	bool has(const std::string& s);
+	bool has(const std::string& s) const;
 	void set(const std::string& s);  // debug test
-	bool Help();
+	bool Help(), Common(bool ed);
 };
 
 class MainEntryPoints
