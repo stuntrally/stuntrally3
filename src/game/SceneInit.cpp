@@ -62,6 +62,7 @@ bool Args::Help()
 		cout << "  \n";
 		cout << "  ghosts - Test all vehicles points on all tracks, from all user ghosts. Needs many.\n";
 		cout << "  trkghosts - Test all tracks ghosts, for sudden jumps, due to bad rewinds.\n";
+		return 1;
 	}
 	return 0;
 }

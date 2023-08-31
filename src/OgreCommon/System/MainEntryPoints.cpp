@@ -31,6 +31,18 @@ THE SOFTWARE.
 #include <iostream>
 
 #include "System/MainEntryPoints.h"
+using namespace std;
 
 
 double MainEntryPoints::Frametime = 1.0 / 60.0;
+
+
+void Args::Common(bool ed)
+{
+	cout << "  ? or help - Displays this info\n";
+	cout << "  \n";
+	cout << "  c or cfg - force show Ogre config dialog\n";
+	cout << "  \n";
+	cout << "Results in Ogre"<< ed <<".log or console, lines with )))\n";
+	cout << "  \n";
+}

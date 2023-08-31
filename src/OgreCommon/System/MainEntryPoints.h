@@ -81,7 +81,8 @@ struct Args
 	std::vector<std::string> all;
 	bool has(const std::string& s) const;
 	void set(const std::string& s);  // debug test
-	bool Help(), Common(bool ed);
+	
+	bool Help();  void Common(bool ed);
 };
 
 class MainEntryPoints
