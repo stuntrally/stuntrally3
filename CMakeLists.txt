@@ -174,6 +174,7 @@ foreach (EXE ${EXE_LIST})
     target_link_libraries(
             ${EXE} 
             PRIVATE
+            boost::boost
             Threads::Threads
             OGRE::OGRE
             Bullet::Bullet
