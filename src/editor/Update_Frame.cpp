@@ -194,7 +194,7 @@ void App::UpdateEnd(float dt)
 		for (auto ter : scn->ters)
 		if (ter)
 			ter->update( !scn->sun ? -Vector3::UNIT_Y :
-				scn->sun->getDerivedDirectionUpdated(), lightEpsilon );
+				scn->sun->getDerivedDirectionUpdated(), 0, lightEpsilon );
 	}
 
 
@@ -437,7 +437,8 @@ void App::update( float dt )
 	bFirstRenderFrame = false;
 
 
+	UpdateEnd(dt);  //^
+
 	UpdRnd2Tex();  // * *
 
-	UpdateEnd(dt);  //^
 }

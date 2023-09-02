@@ -93,7 +93,7 @@ namespace Ogre
 
 				// Use 5.0f as epsilon because that guarantees us
 				// it will never trigger a shadow recalculation
-				terra->update( Ogre::Vector3::ZERO, 5.0f );
+				terra->update( Ogre::Vector3::ZERO, 0, 5.0f );
 				++itor;
 			}
 

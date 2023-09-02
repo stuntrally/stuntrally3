@@ -287,7 +287,7 @@ void App::update( float dt )
 				// user in this sample with higher framerates than what he may encounter in many of
 				// his possible uses.
 				ter->update( !scn->sun ? -Vector3::UNIT_Y :
-					scn->sun->getDerivedDirectionUpdated(), lightEpsilon );
+					scn->sun->getDerivedDirectionUpdated(), 0, lightEpsilon );
 		}
 	}
 

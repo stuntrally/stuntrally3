@@ -260,7 +260,7 @@ namespace Ogre
 			useful to prevent heterogeneity between frames (reduce stutter) if
 			you intend to update the light slightly every frame.
 		*/
-		void update( const Vector3 &lightDir, float lightEpsilon=1e-6f );
+		void update( const Vector3 &lightDir, Ogre::Camera* camera, float lightEpsilon=1e-6f );
 
 		/**
 		@brief load

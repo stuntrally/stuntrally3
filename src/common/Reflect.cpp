@@ -74,6 +74,22 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 	// auto s = passDef->mProfilingId;
 	// LogO("ws pass: "+s);  //toStr(pass->getParentNode()->getId() ));
 
+	CompositorPassScene *passScene = static_cast<CompositorPassScene *>( pass );
+	Camera *camera = passScene->getCamera();
+
+#if 0  // todo: upd ter here? for splitscreen
+	///  ⛰️ Terrain  ----
+	if (app->mGraphicsSystem->getRenderWindow()->isVisible())
+	{
+		// Force update the shadow map every frame
+		const float lightEpsilon = 0.0001f;  //** 0.0f slow
+		for (auto ter : app->scn->ters)
+		if (ter)
+			ter->update( !app->scn->sun ? -Vector3::UNIT_Y :
+				app->scn->sun->getDerivedDirectionUpdated(), camera, lightEpsilon );
+	}
+#endif
+
 #define OFF_FOG  //-
 
 #if defined(SR_EDITOR) && defined(OFF_FOG)

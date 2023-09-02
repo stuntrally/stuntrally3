@@ -104,7 +104,7 @@ namespace Ogre
 		,normalmap( this )
 		,blendmap( this )
 
-		,bGenerateShadowMap( 0 )  //** ter par  //^^ todo: 1 in ed
+		,bGenerateShadowMap(0)  //** ter par  //^^ todo: 1 in ed
 		,bNormalized( 0 )
 		,fHMin(-100.f), fHMax(100.f)
 		,iLodMax( 4 )  // 5 lq, max lods .. 0 hq, all lod0
@@ -498,7 +498,7 @@ namespace Ogre
 
 	//  💫 update
 	//-----------------------------------------------------------------------------------
-	void Terra::update( const Vector3 &lightDir, float lightEpsilon )
+	void Terra::update( const Vector3 &lightDir, Camera* camera, float lightEpsilon )
 	{
 		const float lightCosAngleChange = Math::Clamp(
 					(float)m_prevLightDir.dotProduct( lightDir.normalisedCopy() ), -1.0f, 1.0f );
@@ -515,6 +515,8 @@ namespace Ogre
 		mRenderables.clear();
 		m_currentCell = 0;
 
+		if (camera)
+			m_camera = camera;
 		const Vector3 camPos = toYUp( m_camera->getDerivedPosition() );
 
 		const uint32 basePixelDimension = m_basePixelDimension;
