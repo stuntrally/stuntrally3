@@ -263,6 +263,7 @@ This **broke** `src/Terra/TerraShadowMapper.cpp` shadowmap generation (mostly fo
 and terrain **shadowmap** is disabled.  
 BTW it took way too long, 5 sec at start, possibly due to compute shader building.  
 It's this `if (!m_bGenerateShadowMap)` and `return;  //**  5 sec delay` below.  
+Set earlier `,bGenerateShadowMap( 0 )  //** ter par  //^^ todo: 1 in ed`.
 
 This also **broke** terrain page **visibility**. Likely decreasing Fps, no idea how much.  
 Made all visible in `Terra::isVisible` for `if (!bNormalized)`.  

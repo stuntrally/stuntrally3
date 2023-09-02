@@ -306,7 +306,7 @@ namespace Ogre
 		HlmsTerraDatablock *datablock = static_cast<HlmsTerraDatablock*>( renderable->getDatablock() );
 
 		setProperty( PbsProperty::FresnelScalar, 1 );  // 0 float  1 vec3
-		setProperty( PbsProperty::FresnelWorkflow, 1 );
+		setProperty( PbsProperty::FresnelWorkflow, 1 );  //** 
 		setProperty( PbsProperty::MetallicWorkflow, 0 );
 
 		setProperty( PbsProperty::ReceiveShadows, 1 );

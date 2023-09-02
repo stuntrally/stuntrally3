@@ -21,6 +21,7 @@
 // #include <OgreTextureGpuManager.h>
 
 #include "HlmsPbs2.h"
+#include "Terra.h"
 #include <OgreHlmsManager.h>
 #include <Compositor/OgreCompositorManager2.h>
 #include <Compositor/OgreCompositorNodeDef.h>
@@ -53,7 +54,8 @@ using namespace Ogre;
 
 void ReflectListener::workspacePreUpdate( CompositorWorkspace *workspace )
 {
-	mPlanarRefl->beginFrame();
+	if (mPlanarRefl)
+		mPlanarRefl->beginFrame();
 }
 
 //-----------------------------------------------------------------------------------
@@ -94,8 +96,6 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 	app->scn->UpdSun();
 #endif
 	
-	CompositorPassScene *passScene = static_cast<CompositorPassScene *>( pass );
-	Camera *camera = passScene->getCamera();
 	//camera->setLodBias()  // not here, wont work
 
 	//  aspect ratio must match that of the camera we're reflecting
@@ -137,20 +137,19 @@ void FluidsReflect::CreateRTT()
 
 	auto* sc = app->scn->sc;
 	int all = sc->fluids.size();
-	if (all == 0)
-		return;
+	if (all > 0)
+	{
+		mPlanarRefl = new PlanarReflections(
+			app->pSet, app->mSceneMgr, root->getCompositorManager2(),
+			500.0, 0 );  // par-?
+		uint32 size = app->pSet->GetTexSize(app->pSet->water_reflect);
 
-	mPlanarRefl = new PlanarReflections(
-		app->pSet, app->mSceneMgr, root->getCompositorManager2(),
-		500.0, 0 );  // par-?
-	uint32 size = app->pSet->GetTexSize(app->pSet->water_reflect);
-
-	mPlanarRefl->setMaxActiveActors( all,
-		"PlanarReflections",
-		// true,  // accurate-
-		false, //par?
-		size, size, 1/*?mipmaps*/, PFG_RGBA8_UNORM_SRGB, useCompute /*, mWsListener*/ );
-
+		mPlanarRefl->setMaxActiveActors( all,
+			"PlanarReflections",
+			// true,  // accurate-
+			false, //par?
+			size, size, 1/*?mipmaps*/, PFG_RGBA8_UNORM_SRGB, useCompute /*, mWsListener*/ );
+	}
 	
 	mWsListener = new ReflectListener( app, mPlanarRefl );
 

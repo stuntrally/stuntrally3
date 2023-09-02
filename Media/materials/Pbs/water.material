@@ -11,8 +11,8 @@ hlms Water_test pbs
 	metalness  0.8
 
 	cull_mode none  // bad
-	// transparency 0.9
-	// transparency_mode transparent
+	transparency 0.9
+	transparency_mode transparent
 }
 
 
@@ -63,7 +63,7 @@ hlms Water pbs
 	roughness  0.2
 	metalness  0.9
 
-	cull_mode none
+	// cull_mode none  // todo-
 	transparency 0.6  //` 0.93-
 	transparency_mode transparent
 	//two_sided true
@@ -269,7 +269,7 @@ hlms Water_blue_dark pbs : Water  // Fin1-Lakes
 
 hlms Grease_jelly pbs : Water  // Uni1-Magic
 {
-    // normal_map water_nh.png
+    normal_map water_nh.png
     choppyness_scale 0.15 25
     smallWaves_midWaves 0.15 0.1 0.3 0.15
     bigWaves 0.3 0.3
@@ -287,11 +287,11 @@ hlms Grease_jelly pbs : Water  // Uni1-Magic
 
 hlms Blue_jelly pbs : Water
 {
-	Normal_map water_nh.png
+	normal_map water_nh.png
 	choppyness_scale 0.06 10
 	smallWaves_midWaves 0.25 0.3 0.5 0.15
 	bigWaves 0.5 0.5
-	bump 2 0.6 0.8
+	bump 2.0 0.6 0.8
 	// fresnelMultiplier 1.0
 
 	colour 0.1 0.18 0.46 0.8

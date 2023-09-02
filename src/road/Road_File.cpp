@@ -79,7 +79,7 @@ void SplineRoad::ToggleMerge()
 //--------------------------------------------------------------------------------------------------------
 void SplineRoad::UpdLodVis(float fBias, bool bFull)
 {
-	if (!mCamera)  return;
+	if (!mCamera || !mCamera->cam)  return;
 	st.iVis = 0;  st.iTris = 0;
 	const Real fDist[LODs+1] = {-g_VisBehind, 40, 80, 140, g_VisDist};  //par gui bias..
 	

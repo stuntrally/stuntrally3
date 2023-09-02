@@ -375,7 +375,8 @@ compositor_node PlanarReflectNode
 				stencil	dont_care
 			}
 
-			visibility_mask	 0x3BD  // no 1024 ed, no 2 hud, no 64 grass
+			visibility_mask		0x0000012D  // 1 rd 4 ter 8 vgt 32 sky 256 obj
+			// visibility_mask	 0x3BD  // no 1024 ed, no 2 hud, no 64 grass
 			// visibility_mask	 0x3FD  // no 1024 ed, no 2 hud
 			overlays		 off
 			//shadows  SR3_Shadows
@@ -435,8 +436,8 @@ compositor_node_shadow SR3_Shadows
 //------------------------------------------------------------------------------------
 workspace SR3_Workspace
 {
-	// Render Window on channel #0
+	// Render Window  on channel #0
 	connect_external 0 SR3_Render 0
-	// Cubemap on channel #1
+	// Cubemap  on channel #1
 	connect_external 1 SR3_Render 1
 }
