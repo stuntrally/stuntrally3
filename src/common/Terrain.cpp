@@ -164,7 +164,11 @@ void CScene::CreateBltTerrains()
 	if (td.iHorizon <= max_horiz &&
 		(td.collis || td.iHorizon > 0 && drive_horiz))
 	{
-		btVector3 pos(td.posX, -td.posZ, 0.f);
+		btVector3 pos(td.posX, -td.posZ +
+			// 1st ter   has:  td.ofsZ = fTriangleSize on convert
+			// next ters  (made new in sr3-ed)  have: 0  but need same as above
+			(td.ofsZ == 0.f ? td.fTriangleSize : 0.f), 0.f);
+
 		btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
 			td.iVertsXold, td.iVertsXold,
 			&td.hfHeight[0], td.fTriangleSize,
