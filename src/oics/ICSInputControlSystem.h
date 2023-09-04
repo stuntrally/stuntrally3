@@ -27,7 +27,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "ICSPrerequisites.h"
 #include "ICSControl.h"
 #include "ICSChannel.h"
-// #include "../sdl4ogre/events.h"
 
 #define ICS_LOG(text) if(mLog) mLog->logMessage( ("ICS: " + std::string(text)).c_str() );
 #define ICS_MAX_JOYSTICK_AXIS 16
@@ -35,6 +34,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define ICS_JOYSTICK_AXIS_BINDING_MARGIN 10000
 #define ICS_JOYSTICK_SLIDER_BINDING_MARGIN 10000
 #define ICS_MOUSE_AXIS_BINDING_NULL_VALUE std::numeric_limits<int>::max()
+
+namespace tinyxml2
+{	class XMLElement;  }
+
 
 namespace ICS
 {
@@ -45,9 +48,6 @@ namespace ICS
 	};
 
 	class DllExport InputControlSystem
-		// : public SFO::MouseListener,
-		// public SFO::KeyListener,
-        // public SFO::JoyListener
 	{
 
 	public:
@@ -144,12 +144,12 @@ namespace ICS
 
 	protected:
 
-		void loadKeyBinders(TiXmlElement* xmlControlNode);
-		void loadMouseAxisBinders(TiXmlElement* xmlControlNode);
-		void loadMouseButtonBinders(TiXmlElement* xmlControlNode);
-		void loadJoystickAxisBinders(TiXmlElement* xmlControlNode);
-		void loadJoystickButtonBinders(TiXmlElement* xmlControlNode);
-		void loadJoystickPOVBinders(TiXmlElement* xmlControlNode);
+		void loadKeyBinders(tinyxml2::XMLElement* xmlControlNode);
+		void loadMouseAxisBinders(tinyxml2::XMLElement* xmlControlNode);
+		void loadMouseButtonBinders(tinyxml2::XMLElement* xmlControlNode);
+		void loadJoystickAxisBinders(tinyxml2::XMLElement* xmlControlNode);
+		void loadJoystickButtonBinders(tinyxml2::XMLElement* xmlControlNode);
+		void loadJoystickPOVBinders(tinyxml2::XMLElement* xmlControlNode);
 
 		void addMouseAxisBinding_(Control* control, int axis, Control::ControlChangingDirection direction);
 		void removeMouseAxisBinding_(int axis);
