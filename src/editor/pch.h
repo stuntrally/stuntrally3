@@ -36,8 +36,7 @@
 	#include <process.h>
 #endif
 
-#include "tinyxml.h"
-#include "tinyxml2.h"
+#include <tinyxml2.h>
 
 ///  Ogre
 #include <Ogre.h>
@@ -60,3 +59,6 @@
 //#include "btBulletDynamicsCommon.h"
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>
+
+// fix warning
+#define BOOST_BIND_GLOBAL_PLACEHOLDERS

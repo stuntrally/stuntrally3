@@ -5,7 +5,6 @@
 #include "settings.h"
 #include "Cam.h"
 
-#include "tinyxml2.h"
 #include "paths.h"
 #include "mathvector.h"
 // ray cast
@@ -23,9 +22,9 @@
 // #if OGRE_VERSION_MAJOR >= 13
 // #include <OgreDeprecated.h>
 // #endif
-
-using namespace Ogre;
+#include <tinyxml2.h>
 using namespace tinyxml2;
+using namespace Ogre;
 
 
 static float GetAngle(float x, float y)

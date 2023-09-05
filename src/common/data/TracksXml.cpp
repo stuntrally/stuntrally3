@@ -4,24 +4,23 @@
 #include "paths.h"
 #include "ReplayTrk.h"  // check
 // #include "CHud.h"  // StrTime
-#include "tinyxml.h"
-#include "tinyxml2.h"
 #include <set>
-using namespace std;
+#include <tinyxml2.h>
 using namespace tinyxml2;
+using namespace std;
 using Ogre::uchar;
 
 
-Date s2dt(const char* a)
+/*Date s2dt(const char* a)
 {
 	Date d;  d.day=0; d.month=0; d.year=0;
-	TIXML_SSCANF(a,"%2d-%2d-%2d",&d.day,&d.month,&d.year);
+	sscanf(a,"%2d-%2d-%2d",&d.day,&d.month,&d.year);
 	return d;
 }
 string dt2s(const Date& dt)
 {
 	return fToStr(dt.day,0,2)+"-"+fToStr(dt.month,0,2)+"-"+fToStr(dt.year,0,2);
-}
+}*/
 
 
 ///  User Load
@@ -80,19 +79,20 @@ bool UserXml::LoadXml(string file, TracksIni* ini)
 ///------------------------------------------------------------------------------------
 bool UserXml::SaveXml(string file)
 {
-	TiXmlDocument xml;	TiXmlElement root("tracks");
+	XMLDocument xml;
+	XMLElement* root = xml.NewElement("tracks");
 
 	for (const auto& t : trks)
 	{
-		TiXmlElement trk("t");
-		trk.SetAttribute("n",		t.name.c_str());
+		XMLElement* trk = xml.NewElement("t");
+		trk->SetAttribute("n",		t.name.c_str());
 
-		trk.SetAttribute("rate",	toStrC( t.rating ));
-		trk.SetAttribute("bokm",	toStrC( t.bookm ));
-		// trk.SetAttribute("date",	dt2s(t.last).c_str());
-		// trk.SetAttribute("laps",	toStrC( t.laps ));
+		trk->SetAttribute("rate",	toStrC( t.rating ));
+		trk->SetAttribute("bokm",	toStrC( t.bookm ));
+		// trk->SetAttribute("date",	dt2s(t.last).c_str());
+		// trk->SetAttribute("laps",	toStrC( t.laps ));
 		
-		root.InsertEndChild(trk);
+		root->InsertEndChild(trk);
 	}
 	xml.InsertEndChild(root);
 	return xml.SaveFile(file.c_str());

@@ -7,12 +7,11 @@
 #include "Axes.h"
 #include "game.h"  // for surfaces map
 
-#include "tinyxml.h"
-#include "tinyxml2.h"
 #include <OgreSceneNode.h>
+#include <tinyxml2.h>
+using namespace tinyxml2;
 using namespace std;
 using namespace Ogre;
-using namespace tinyxml2;
 
 
 Scene::Scene()

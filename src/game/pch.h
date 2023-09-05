@@ -23,9 +23,8 @@
 #include <time.h>
 #include <math.h>
 
-#include "tinyxml.h"
-#include "tinyxml2.h"
 #include "half.hpp"
+#include <tinyxml2.h>
 
 ///  SDL, Sound
 #include <SDL.h>
@@ -43,3 +42,6 @@
 
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>
+
+// fix warning
+#define BOOST_BIND_GLOBAL_PLACEHOLDERS
