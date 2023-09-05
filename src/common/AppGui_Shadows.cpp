@@ -313,7 +313,10 @@ const char *AppGui::chooseEsmShadowNode()
 	}
 }
 
+
+#if 0  // debug,  didnt work anyway
 //-----------------------------------------------------------------------------------
+//  toggle-
 void AppGui::setupShadowNode( bool forEsm )
 {
 	Root *root = mGraphicsSystem->getRoot();
@@ -354,6 +357,7 @@ void AppGui::createShadowMapDebugOverlays()
 	destroyShadowMapDebugOverlays();
 
 	Root *root = mGraphicsSystem->getRoot();
+	// mWorkspaces[0]..
 	CompositorWorkspace *workspace = mGraphicsSystem->getCompositorWorkspace();
 	Hlms *hlmsUnlit = root->getHlmsManager()->getHlms( HLMS_UNLIT );
 
@@ -464,3 +468,4 @@ void AppGui::destroyShadowMapDebugOverlays()
 		mDebugOverlaySpotlights = 0;
 	}
 }
+#endif

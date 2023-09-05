@@ -116,11 +116,11 @@ public:
 	void setupESM();
 	Ogre::CompositorWorkspace *setupShadowCompositor();
 
-	const char *chooseEsmShadowNode();
-	void setupShadowNode( bool forEsm );
+	const char *chooseEsmShadowNode();  // fixme ESM..
+	// void setupShadowNode( bool forEsm );
 
-	void createShadowMapDebugOverlays();
-	void destroyShadowMapDebugOverlays();
+	// void createShadowMapDebugOverlays();
+	// void destroyShadowMapDebugOverlays();
 
 
 	//  🔮 Reflection Cubemap  ----------------

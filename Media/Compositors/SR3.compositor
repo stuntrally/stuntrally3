@@ -271,33 +271,18 @@ compositor_node SR3_Render
 			//  affected by modifier, so renders to a portion of screen
 			viewport_modifier_mask	0xff
 
-			// load
-			// {
-			// 	all			  clear
-			// 	clear_colour  0.01 0.01 0.02 1
-			// }
-
-			//  Only write to the MSAA surface, don't resolve
 			store
 			{
 				colour	store
 				depth	store
 				stencil	store
 			}
-			// store
-			// {
-			//	colour	store
-			// 	// colour	store_or_resolve
-			// 	depth	dont_care
-			// 	stencil	dont_care
-			// }
 
 			//  materials in this pass will be using this cubemap
 			expose demo_dynamic_cubemap
 
 			// in code: game, not ed
 			visibility_mask	 0x13FF  // no 1024 ed
-			// visibility_mask		0x0000FFFFD  // no hud
 			// rq_last		110  // glass,par etc
 
 			overlays	on
@@ -334,12 +319,12 @@ compositor_node SR3_Render
 
 		// pass custom MYGUI
 		// {
-			// // provider?  _added in code_
+			// provider?  _added in code_
 			// profiling_id "GUI"
 
 			// executed in the second eye
 			// execution_mask			0x02
-			// // not affected by the modifier, apply to the whole screen
+			// apply to the whole screen
 			// viewport_modifier_mask	0x00
 			
 			// rq_first	254
