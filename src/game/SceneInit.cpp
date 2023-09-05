@@ -256,7 +256,6 @@ void App::LoadCleanUp()
 	LogO("DD-- LoadCleanUp ------DD");
 	updMouse();
 	
-	scn->refl.app = this;
 	if (dstTrk)
 	{
 		scn->refl.DestroyFluids();

@@ -238,7 +238,6 @@ void App::LoadTrackEv()
 	scn->DestroyRoads();
 	scn->DestroyPace();
 
-	scn->refl.app = this;
 	scn->refl.DestroyFluids();	// 💧
 	scn->refl.DestroyRTT();
 

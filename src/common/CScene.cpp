@@ -22,6 +22,7 @@ CScene::CScene(App* app1)
 	data = new CData();
 	sc = new Scene();
 	// mWaterRTT = new WaterRTT();
+	refl.app = app1;
 
 	//  Grass
 	grass = new Grass();
