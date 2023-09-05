@@ -3,6 +3,7 @@
 #include "App.h"
 #include "CScene.h"
 #include "OgreHlmsPbsTerraShadows.h"
+#include <OgreHlmsJsonPbs.h>
 #include <OgreShaderPrimitives.h>
 using namespace Ogre;
 
@@ -110,100 +111,12 @@ HlmsDatablock* HlmsPbs2::createDatablockImpl(
 	const HlmsBlendblock *blend,
 	const HlmsParamVec &params )
 {
-#if 1
-	String val;
-	if( Hlms::findParamInVec( params, "fluid", val ) )
-	{
-		// LogO("paint db2 fluid");
-		return OGRE_NEW HlmsPbsDbWater( name, this, macro, blend, params );
-	}
-	else if( Hlms::findParamInVec( params, "paint", val ) )
-	{
-		// LogO("paint db2 new");
-		return OGRE_NEW HlmsPbsDbCar( name, this, macro, blend, params );
-	}else
-#endif
-		return OGRE_NEW HlmsPbsDatablock( name, this, macro, blend, params );
+	return OGRE_NEW HlmsPbsDb2( name, this, macro, blend, params );
 }
 
-
-//  💫 upload ConstBuffer
-void HlmsPbsDbCar::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
-{
-	for (int i=0; i < 3; ++i)
-	{
-		mUserValue[i][0] = paintClr[i].x;
-		mUserValue[i][1] = paintClr[i].y;
-		mUserValue[i][2] = paintClr[i].z;
-	}
-	mUserValue[0][3] = paintMul.x;
-	mUserValue[1][3] = paintMul.y;
-	mUserValue[2][3] = paintMul.z;
-
-	// LogO("paint db2 upload");
-	HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
-return;  // !!
-
-	// todo .. send paint par
-	char* orgPtr = dstPtr;
-	HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
-	dstPtr = orgPtr + HlmsPbsDatablock::MaterialSizeInGpu;  // can't change this ...
-	// memcpy( dstPtr, &mCustomParameter, sizeof( mCustomParameter) );
-
-	//  game copy paint params  ----
-#ifndef SR_EDITOR
-	if (paint)
-	{
-		// LogO("paint db2 upload");
-		size_t sf4 = sizeof( float4 );
-		
-		for (int i=0; i < 3; ++i)
-		{
-			float4 par4 = paintClr[i];
-			memcpy( dstPtr, &par4, sf4 );  dstPtr += sf4;
-		}
-		float4 par4 = paintMul;
-		memcpy( dstPtr, &par4, sf4 );  dstPtr += sf4;
-	}
-#endif
-}
 
 //  🌟 ctor
-HlmsPbsDbCar::HlmsPbsDbCar(
-	IdString name, HlmsPbs2 *creator,
-	const HlmsMacroblock *macro, const HlmsBlendblock *blend,
-	const HlmsParamVec &params )
-	: HlmsPbsDatablock( name, creator, macro, blend, params )
-{
-	String val;
-	if( Hlms::findParamInVec( params, "paint", val ) )
-	{
-		// LogO("paint db2 ctor, paint 1");
-		paint = 1;
-		//Vector3 v = StringConverter::parseVector3( val, Vector3::UNIT_SCALE );
-		// setDiffuse( v );
-		scheduleConstBufferUpdate();
-	}
-}
-
-//  clone
-void HlmsPbsDbCar::cloneImpl( HlmsDatablock *db ) const
-{
-	HlmsPbsDatablock::cloneImpl( db );
-	HlmsPbsDbCar *db2 = static_cast<HlmsPbsDbCar*>( db );
-
-	db2->paint = paint;
-	for (int i=0; i < 3; ++i)
-		db2->paintClr[i] = paintClr[i];
-	db2->paintMul = paintMul;
-}
-
-
-// Ogre::Vector4 waterClr[3] = {Ogre::Vector4(0,0.5,1,0), Ogre::Vector4(0,1,0,0), Ogre::Vector4(1,0.5,0,0)};
-
-//  🌊 water fluid params
-//----------------------------------------------------------------
-HlmsPbsDbWater::HlmsPbsDbWater(
+HlmsPbsDb2::HlmsPbsDb2(
 		Ogre::IdString name, HlmsPbs2 *creator,
 		const Ogre::HlmsMacroblock *macro,
 		const Ogre::HlmsBlendblock *blend,
@@ -211,9 +124,20 @@ HlmsPbsDbWater::HlmsPbsDbWater(
 	: HlmsPbsDatablock( name, creator, macro, blend, p )
 {
 	String val;
+	//  🌊 water fluid params
+	//----------------------------------------------------------------
+	if( Hlms::findParamInVec( p, "paint", val ) )
+	{
+		eType = DB_Paint;
+		LogO("db2 ctor paint");
+		//Vector3 v = StringConverter::parseVector3( val, Vector3::UNIT_SCALE );
+		// setDiffuse( v );
+	}
+	else
 	if (Hlms::findParamInVec(p, "fluid", val) || Hlms::findParamInVec(p, "choppyness_scale", val))
 	{
-		// LogO("fluid db2 ctor 1");
+		eType = DB_Fluid;
+		LogO("db2 ctor fluid");
 
 		Vector2 choppyness_scale;
 		Vector4 smallWaves_midWaves;  Vector2 bigWaves;
@@ -249,21 +173,74 @@ HlmsPbsDbWater::HlmsPbsDbWater(
 		mDetailsOffsetScale[2][2] = choppyness_scale.y;
 		mDetailsOffsetScale[2][3] = bump_fresn_refra.x;
 
-		setDiffuse( Vector3(colour.x, colour.y, colour.z) );
-		setSpecular( Vector3(specClrPow.x, specClrPow.y, specClrPow.z) );
+		setDiffuse( Vector3(colour.x, colour.y, colour.z) * 0.6f );  // par..
+		setSpecular( Vector3(specClrPow.x, specClrPow.y, specClrPow.z) * 0.4f );
+		setFresnel( Vector3(reflectColour.x, reflectColour.y, reflectColour.z) * 0.3f, 1 );
+
 		// float roughness = specClrPow.z;
 		// setRoughness(roughness);  // todo.. mul, bump_fresn_refra ..
-		setFresnel( Vector3(reflectColour.x, reflectColour.y, reflectColour.z), 1 );
+		setTransparency( refractColour.w );
+		setRefractionStrength( bump_fresn_refra.z );
+		//bump_fresn_refra
 
-		scheduleConstBufferUpdate();
 	}
+	scheduleConstBufferUpdate();
 }
 
 //  💫 upload ConstBuffer
-void HlmsPbsDbWater::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
+void HlmsPbsDb2::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
 {
-	// LogO("water db2 upload");
+	if (eType == DB_Paint)
+	{
+		for (int i=0; i < 3; ++i)
+		{
+			mUserValue[i][0] = paintClr[i].x;
+			mUserValue[i][1] = paintClr[i].y;
+			mUserValue[i][2] = paintClr[i].z;
+		}
+		mUserValue[0][3] = paintMul.x;
+		mUserValue[1][3] = paintMul.y;
+		mUserValue[2][3] = paintMul.z;
+	}
+
+	// LogO("paint db2 upload");
 	HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
+return;  // !!
+
+	// todo .. send paint par
+	char* orgPtr = dstPtr;
+	HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
+	dstPtr = orgPtr + HlmsPbsDatablock::MaterialSizeInGpu;  // can't change this ...
+	// memcpy( dstPtr, &mCustomParameter, sizeof( mCustomParameter) );
+
+	//  game copy paint params  ----
+#ifndef SR_EDITOR
+	if (eType == DB_Paint)
+	{
+		// LogO("paint db2 upload");
+		size_t sf4 = sizeof( float4 );
+		
+		for (int i=0; i < 3; ++i)
+		{
+			float4 par4 = paintClr[i];
+			memcpy( dstPtr, &par4, sf4 );  dstPtr += sf4;
+		}
+		float4 par4 = paintMul;
+		memcpy( dstPtr, &par4, sf4 );  dstPtr += sf4;
+	}
+#endif
+}
+
+//  clone  // todo fixme
+void HlmsPbsDb2::cloneImpl( HlmsDatablock *db ) const
+{
+	HlmsPbsDatablock::cloneImpl( db );
+	// HlmsPbsDbCar *db2 = static_cast<HlmsPbsDbCar*>( db );
+
+	// db2->paint = paint;
+	// for (int i=0; i < 3; ++i)
+	// 	db2->paintClr[i] = paintClr[i];
+	// db2->paintMul = paintMul;
 }
 
 

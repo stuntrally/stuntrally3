@@ -33,13 +33,15 @@ public:
 	{
         calculateHashFor( renderable, outHash, outCasterHash );
 	}
-
+	
+	//  setProperty for our shader types
 	void calculateHashForPreCreate(
 		Ogre::Renderable *renderable, Ogre::PiecesMap *inOutPieces ) override;
 
 	void calculateHashForPreCaster(
 		 Ogre::Renderable *renderable, Ogre::PiecesMap *inOutPieces ) override;
 
+	//  ctor  new HlmsPbsDb2
 	Ogre::HlmsDatablock *createDatablockImpl(
 		Ogre::IdString name,
 		const Ogre::HlmsMacroblock *macro,
@@ -48,17 +50,29 @@ public:
 };
 
 
-//  our Datablocks  ----------------
-//  paint for vehicles
-class HlmsPbsDbCar : public Ogre::HlmsPbsDatablock
+//  our Datablock2  ----------------
+//  replaces ALL default HlmsPbsDatablocks
+enum EType
+{
+	DB_PBS =0,  // default normal
+	DB_Paint,  // paint for vehicles
+	DB_Fluid,  // water, mud etc
+};
+
+class HlmsPbsDb2 : public Ogre::HlmsPbsDatablock
 {
 	friend class HlmsPbs2;
 public:
-	bool paint =0;  // body_paint
+	EType eType = DB_PBS;
+
+	//  body_paint
 	Ogre::Vector4 paintClr[3] = {Ogre::Vector4(0,0.5,1,0), Ogre::Vector4(0,1,0,0), Ogre::Vector4(1,0.5,0,0)};
 	Ogre::Vector4 paintMul = Ogre::Vector4(0.2,0.5,0.7,0);
+
+	//  fluid params
+	// Ogre::Vector4 waterClr[3] = {Ogre::Vector4(0,0.5,1,0), Ogre::Vector4(0,1,0,0), Ogre::Vector4(1,0.5,0,0)};
 	
-	HlmsPbsDbCar(
+	HlmsPbsDb2(
 		Ogre::IdString name, HlmsPbs2 *creator,
 		const Ogre::HlmsMacroblock *macro,
 		const Ogre::HlmsBlendblock *blend,
@@ -68,23 +82,4 @@ public:
 	void uploadToConstBuffer( char *dstPtr, Ogre::uint8 dirtyFlags ) override;
 
 	void cloneImpl( HlmsDatablock *db ) const override;
-};
-
-//  fluid params
-class HlmsPbsDbWater : public Ogre::HlmsPbsDatablock
-{
-	friend class HlmsPbs2;
-public:
-	Ogre::Vector4 waterClr[3] = {Ogre::Vector4(0,0.5,1,0), Ogre::Vector4(0,1,0,0), Ogre::Vector4(1,0.5,0,0)};
-	Ogre::Vector2 paintMul = Ogre::Vector2(0.2,0.5);
-	
-	HlmsPbsDbWater(
-		Ogre::IdString name, HlmsPbs2 *creator,
-		const Ogre::HlmsMacroblock *macro,
-		const Ogre::HlmsBlendblock *blend,
-		const Ogre::HlmsParamVec &params );
-
-	void uploadToConstBuffer( char *dstPtr, Ogre::uint8 dirtyFlags ) override;
-
-	// void cloneImpl( HlmsDatablock *db ) const override;
 };
