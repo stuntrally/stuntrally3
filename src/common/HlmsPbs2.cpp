@@ -129,7 +129,7 @@ HlmsPbsDb2::HlmsPbsDb2(
 	if( Hlms::findParamInVec( p, "paint", val ) )
 	{
 		eType = DB_Paint;
-		LogO("db2 ctor paint");
+		// LogO("db2 ctor paint");
 		//Vector3 v = StringConverter::parseVector3( val, Vector3::UNIT_SCALE );
 		// setDiffuse( v );
 	}
@@ -137,7 +137,7 @@ HlmsPbsDb2::HlmsPbsDb2(
 	if (Hlms::findParamInVec(p, "fluid", val) || Hlms::findParamInVec(p, "choppyness_scale", val))
 	{
 		eType = DB_Fluid;
-		LogO("db2 ctor fluid");
+		// LogO("db2 ctor fluid");
 
 		Vector2 choppyness_scale;
 		Vector4 smallWaves_midWaves;  Vector2 bigWaves;
@@ -241,6 +241,38 @@ void HlmsPbsDb2::cloneImpl( HlmsDatablock *db ) const
 	// for (int i=0; i < 3; ++i)
 	// 	db2->paintClr[i] = paintClr[i];
 	// db2->paintMul = paintMul;
+}
+
+
+//  save json
+class HlmsJsonPbs2 : public HlmsJsonPbs
+{
+public:
+	HlmsJsonPbs2( HlmsManager *hlmsManager, TextureGpuManager *textureManager,
+		HlmsJsonListener *listener, const String &additionalExtension )
+		: HlmsJsonPbs( hlmsManager, textureManager, listener, additionalExtension )
+	{
+	}
+
+    void saveMaterial( const HlmsDatablock *datablock, String &out )
+    {
+		HlmsPbsDb2* db2 = (HlmsPbsDb2*)datablock;
+		if (db2->eType == DB_Fluid)
+	        out += ",\n\t\t\t\"fluid\" : true";
+		if (db2->eType == DB_Paint)
+	        out += ",\n\t\t\t\"paint\" : true";
+
+        HlmsJsonPbs::saveMaterial( datablock, out );
+    }
+};
+
+
+void HlmsPbs2::_saveJson(const Ogre::HlmsDatablock *datablock, Ogre::String &outString,
+	Ogre::HlmsJsonListener *listener, const Ogre::String &additionalTextureExtension) const
+{
+	HlmsJsonPbs2 jsonPbs( mHlmsManager, mRenderSystem->getTextureGpuManager(), listener,
+							additionalTextureExtension );
+	jsonPbs.saveMaterial( datablock, outString );
 }
 
 

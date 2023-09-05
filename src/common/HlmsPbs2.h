@@ -47,6 +47,10 @@ public:
 		const Ogre::HlmsMacroblock *macro,
 		const Ogre::HlmsBlendblock *blend,
 		const Ogre::HlmsParamVec &params ) override;
+
+	//  save  adds our types
+	void _saveJson(const Ogre::HlmsDatablock *datablock, Ogre::String &outString,
+		Ogre::HlmsJsonListener *listener, const Ogre::String &additionalTextureExtension) const override;
 };
 
 
