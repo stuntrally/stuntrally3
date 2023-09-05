@@ -40,7 +40,7 @@ protected:
 	Ogre::Camera                *mCamera =0;
 public:
 	Ogre::Root                  *mRoot;
-	Ogre::CompositorWorkspace   *mWorkspace;
+	// Ogre::CompositorWorkspace   *mWorkspace;
 	Ogre::HlmsTerra *hlmsTerra = 0;
 	
 	//  new  ----
@@ -169,7 +169,7 @@ public:
 	Ogre::Window* getRenderWindow() const               { return mRenderWindow; }
 	Ogre::SceneManager* getSceneManager() const         { return mSceneManager; }
 	Ogre::Camera* getCamera() const                     { return mCamera; }
-	Ogre::CompositorWorkspace* getCompositorWorkspace() const { return mWorkspace; }
+	// Ogre::CompositorWorkspace* getCompositorWorkspace() const { return mWorkspace; }
 	Ogre::v1::OverlaySystem* getOverlaySystem() const   { return mOverlaySystem; }
 
 	void setAlwaysAskForConfig( bool alwaysAskForConfig );
@@ -179,6 +179,6 @@ public:
 	const Ogre::String& getResourcePath() const         { return mResourcePath; }
 	const char *        getMediaReadArchiveType() const;
 
-	virtual void stopCompositor();
-	virtual void restartCompositor();
+	// virtual void stopCompositor();
+	// virtual void restartCompositor();
 };

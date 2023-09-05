@@ -132,8 +132,8 @@ void FluidsReflect::DestroyRTT()
 	HlmsPbs2 *pbs = static_cast<HlmsPbs2 *>( hlms );
 	pbs->setPlanarReflections( 0 );  // off
 
-	CompositorWorkspace *ws = app->mGraphicsSystem->getCompositorWorkspace();
 	if (mWsListener)
+	for (auto* ws : app->mWorkspaces)
 		ws->removeListener( mWsListener );
 	delete mWsListener;  mWsListener = 0;
 
@@ -144,7 +144,10 @@ void FluidsReflect::CreateRTT()
 {
 	// return;  // todo: water ...
 	LogO("C~~~ create Fluids RTT");
-
+	if (mPlanarRefl)
+	{	LogO("C~~~ create Fluids RTT ALREADY done!");
+		return;
+	}
 	Root *root = app->mGraphicsSystem->getRoot();
 	bool useCompute = false;
 #if !OGRE_NO_JSON
@@ -164,16 +167,18 @@ void FluidsReflect::CreateRTT()
 			"PlanarReflections",
 			// true,  // accurate-
 			false, //par?
-			size, size, 1/*?mipmaps*/, PFG_RGBA8_UNORM_SRGB, useCompute /*, mWsListener*/ );
+			size, size, 1, // mipmaps
+			PFG_RGBA8_UNORM_SRGB, useCompute /*, mWsListener*/ );
 	}
 	
-	mWsListener = new ReflectListener( app, mPlanarRefl );
+	if (!mWsListener)
+	{
+		LogO("++++ WS add Listener");
+		mWsListener = new ReflectListener( app, mPlanarRefl );
 
-	// app->mWorkspaces
-	LogO("++++ WS add Listener");
-	CompositorWorkspace *workspace = app->mGraphicsSystem->getCompositorWorkspace();
-	workspace->addListener( mWsListener );
-
+		for (auto* ws : app->mWorkspaces)
+			ws->addListener( mWsListener );
+	}
 
 	Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_PBS );
 	assert( dynamic_cast<HlmsPbs2 *>( hlms ) );
@@ -210,7 +215,8 @@ void FluidsReflect::CreateFluids()
 		v1::MeshPtr meshV1 = v1::MeshManager::getSingleton().createPlane(
 			sMesh, rgDef,
 			p, v2size.x, v2size.y,
-			32,32, true, 1,  //par- steps /fake
+			// 1,1, true, 1,  // fix-
+			32,32, true, 1,  //par- steps /fake  buggy-
 			uvTile.x, uvTile.y,
 			Vector3::UNIT_Y,  // up vec for uv
 			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );

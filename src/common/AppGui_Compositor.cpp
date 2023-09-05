@@ -218,10 +218,9 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		auto ws = mgr->addWorkspace( mSceneMgr, ext, c->cam, wsName, true );  // in .compositor
 		// ws->addListener(listener);
 		mWorkspaces.push_back(ws);
-		mGraphicsSystem->mWorkspace = ws;
 		// LogO("C### Created Single workspaces: "+toStr(mWorkspaces.size()));
 
-		// createShadowMapDebugOverlays();
+		// createShadowMapDebugOverlays();  //-
 		return ws;
 	}
 }

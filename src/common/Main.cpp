@@ -37,13 +37,13 @@ class GameGraphicsSystem final : public GraphicsSystem
 {
 	TerraWorkspaceListener *mTerraWorkspaceListener;
 
-	void stopCompositor() override
+	/*void stopCompositor() override
 	{
 		if( mWorkspace )
 			mWorkspace->removeListener( mTerraWorkspaceListener );
 		delete mTerraWorkspaceListener;
 		mTerraWorkspaceListener = 0;
-	}
+	}*/
 
 	//-----------------------------------------------------------------------------
 	CompositorWorkspace *setupCompositor() override

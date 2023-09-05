@@ -73,7 +73,7 @@ GraphicsSystem::GraphicsSystem( GameState *gameState,
 	mRenderWindow( 0 ),
 	mSceneManager( 0 ),
 	mCamera( 0 ),
-	mWorkspace( 0 ),
+	// mWorkspace( 0 ),
 
 	mLogCfgFolder( logCfgPath ),  // in/out: ogre.cfg  out: Ogre.log
 	mCacheFolder( cachePath ),    // out: shaders etc
@@ -385,7 +385,8 @@ void GraphicsSystem::initialize( const String &windowTitle )
 	chooseSceneManager();
 
 	createCamera();  // camera 🎥
-	mWorkspace = setupCompositor();
+	// mWorkspace =
+	setupCompositor();
 
 #if OGRE_USE_SDL2  // input 🕹️
 	mInputHandler = new SdlInputHandler( mSdlWindow, mCurrentGameState,
@@ -792,6 +793,7 @@ const char *GraphicsSystem::getMediaReadArchiveType() const
 #endif
 }
 
+/*
 //-----------------------------------------------------------------------------------
 void GraphicsSystem::stopCompositor()
 {
@@ -811,3 +813,4 @@ void GraphicsSystem::restartCompositor()
 	stopCompositor();
 	mWorkspace = setupCompositor();
 }
+*/
