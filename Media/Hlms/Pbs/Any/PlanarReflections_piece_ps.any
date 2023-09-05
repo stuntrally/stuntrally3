@@ -35,7 +35,7 @@
 	float planarWeight = max( 1.0 - abs( distanceToPlanarReflPlane ) * passBuf.invMaxDistanceToPlanarRefl.x, 0.0 );
 	// float arbitraryDistortion = 5.0f;
 	float3 pointInPlane = inPs.pos.xyz - pixelData.normal * distanceToPlanarReflPlane
-		+ pixelData.normal * float3(3.0, 0.0, 3.0);
+		- pixelData.normal * float3(3.0, 0.0, 3.0);
 		// * planarWeight;
 	float3 projPointInPlane = mul( float4( pointInPlane.xyz, 1.0 ), passBuf.planarReflProjectionMat ).xyw;
 	float2 planarReflUVs = projPointInPlane.xy / projPointInPlane.z;
