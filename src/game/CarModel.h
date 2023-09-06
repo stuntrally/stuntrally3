@@ -113,7 +113,7 @@ public:
 	void Create(), Destroy();  // CreateReflection()
 
 	void CreatePart(Ogre::SceneNode* ndCar, Ogre::Vector3 vPofs,
-		Ogre::String sCar2, Ogre::String sCarI, Ogre::String sMesh, Ogre::String sEnt,
+		Ogre::String sCar2, Ogre::String sCarI, Ogre::String sMesh, Ogre::String sMat,
 		bool ghost, Ogre::uint32 visFlags,
 		Ogre::Aabb* bbox=0, bool bLogInfo=true, bool body = false);
 

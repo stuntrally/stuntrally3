@@ -100,6 +100,11 @@ hlms HI_body pbs //: car_body
 	// metalness 0.5
 	paint yes
 }
+hlms HI_0 pbs : HI_body {  }
+hlms HI_1 pbs : HI_body {  }
+hlms HI_2 pbs : HI_body {  }
+hlms HI_3 pbs : HI_body {  }
+hlms HI_4 pbs : HI_body {  }
 
 hlms HI_interior pbs //: car_interior
 {
@@ -152,6 +157,12 @@ hlms S8_carpaint pbs : car_body
 	specular  0.0 0.2 0.2
 	paint yes
 }
+hlms S8_0 pbs : S8_carpaint {  }
+hlms S8_1 pbs : S8_carpaint {  }
+hlms S8_2 pbs : S8_carpaint {  }
+hlms S8_3 pbs : S8_carpaint {  }
+hlms S8_4 pbs : S8_carpaint {  }
+
 hlms S8_glass pbs : car_glass
 {
 	diffuse_map  S8_glass.png
@@ -200,6 +211,12 @@ hlms XZ_body1_material_ pbs
  	// metalness 0.4
 	paint yes
 }
+hlms XZ_0 pbs : XZ_body1_material_ {  }
+hlms XZ_1 pbs : XZ_body1_material_ {  }
+hlms XZ_2 pbs : XZ_body1_material_ {  }
+hlms XZ_3 pbs : XZ_body1_material_ {  }
+hlms XZ_4 pbs : XZ_body1_material_ {  }
+
 hlms XZ_glass pbs : car_glass
 {
 	diffuse_map  XZ_glass.png
@@ -247,6 +264,12 @@ hlms LK4_body pbs : car_body
 	specular  0.4 0.37 0.23
 	paint yes
 }
+hlms LK4_0 pbs : LK4_body {  }
+hlms LK4_1 pbs : LK4_body {  }
+hlms LK4_2 pbs : LK4_body {  }
+hlms LK4_3 pbs : LK4_body {  }
+hlms LK4_4 pbs : LK4_body {  }
+
 hlms LK4_glass pbs : car_glass2
 {
 	diffuse_map  LK4_glass.png
@@ -277,6 +300,12 @@ hlms HR_body1 pbs : car_body
 	specular  0.06 0.17 0.02
 	paint yes
 }
+hlms HR_0 pbs : HR_body1 {  }
+hlms HR_1 pbs : HR_body1 {  }
+hlms HR_2 pbs : HR_body1 {  }
+hlms HR_3 pbs : HR_body1 {  }
+hlms HR_4 pbs : HR_body1 {  }
+
 hlms HR_glass pbs : car_glass2
 {
 	// diffuse_map  HR_glass.png
@@ -303,6 +332,12 @@ hlms OT_body1234 pbs : car_body
 	specular  0.1 0.5 0.1
 	paint yes
 }
+hlms OT_0 pbs : OT_body1234 {  }
+hlms OT_1 pbs : OT_body1234 {  }
+hlms OT_2 pbs : OT_body1234 {  }
+hlms OT_3 pbs : OT_body1234 {  }
+hlms OT_4 pbs : OT_body1234 {  }
+
 hlms OT_glass pbs : car_glass2
 {
 	diffuse_map  OT_glass.png
@@ -333,6 +368,12 @@ hlms FR4_body pbs : car_body
 	specular  0.3 0.4 0.4
 	paint yes
 }
+hlms FR4_0 pbs : FR4_body {  }
+hlms FR4_1 pbs : FR4_body {  }
+hlms FR4_2 pbs : FR4_body {  }
+hlms FR4_3 pbs : FR4_body {  }
+hlms FR4_4 pbs : FR4_body {  }
+
 hlms FR4_glass pbs : car_glass2
 {
 	diffuse_map  FR4_glass.png
@@ -370,6 +411,12 @@ hlms UV__body pbs : car_body
 	specular  0.3 0.2 0.5
 	paint yes
 }
+hlms UV_0 pbs : UV__body {  }
+hlms UV_1 pbs : UV__body {  }
+hlms UV_2 pbs : UV__body {  }
+hlms UV_3 pbs : UV__body {  }
+hlms UV_4 pbs : UV__body {  }
+
 hlms UV_interior pbs : car_interior
 {
 	diffuse_map   UV_interior.png
@@ -399,6 +446,12 @@ hlms TW_body1 pbs // : car_body
 	metalness 0.8
 	paint yes
 }
+hlms TW_0 pbs : TW_body1 {  }
+hlms TW_1 pbs : TW_body1 {  }
+hlms TW_2 pbs : TW_body1 {  }
+hlms TW_3 pbs : TW_body1 {  }
+hlms TW_4 pbs : TW_body1 {  }
+
 hlms TW_glass pbs //: car_interior
 {
 	diffuse_map  TW_glass.png
@@ -448,6 +501,12 @@ hlms TU_body pbs : car_body
 	specular 0.1 0.12 0.13
 	paint yes
 }
+hlms TU_0 pbs : TU_body {  }
+hlms TU_1 pbs : TU_body {  }
+hlms TU_2 pbs : TU_body {  }
+hlms TU_3 pbs : TU_body {  }
+hlms TU_4 pbs : TU_body {  }
+
 hlms TU_glass pbs
 {
 	// diffuse_map  TU_glass.png
@@ -497,6 +556,12 @@ hlms SZ_body pbs : car_body
 	specular  0.1 0.25 0.4
 	paint yes
 }
+hlms SZ_0 pbs : SZ_body {  }
+hlms SZ_1 pbs : SZ_body {  }
+hlms SZ_2 pbs : SZ_body {  }
+hlms SZ_3 pbs : SZ_body {  }
+hlms SZ_4 pbs : SZ_body {  }
+
 hlms SZ_glass pbs : car_glass2
 {
 	diffuse_map  SZ_glass.png
@@ -530,6 +595,12 @@ hlms FN_body pbs : car_body
 	specular  0.2 0.4 0.0
 	paint yes
 }
+hlms FN_0 pbs : FN_body {  }
+hlms FN_1 pbs : FN_body {  }
+hlms FN_2 pbs : FN_body {  }
+hlms FN_3 pbs : FN_body {  }
+hlms FN_4 pbs : FN_body {  }
+
 hlms FN_glass pbs : car_glass
 {
 	diffuse_map  FN_glass.png
@@ -573,6 +644,12 @@ hlms V1_body1234 pbs : car_body
 	specular  0.0 0.1 0.6
 	paint yes
 }
+hlms V1_0 pbs : V1_body1234 {  }
+hlms V1_1 pbs : V1_body1234 {  }
+hlms V1_2 pbs : V1_body1234 {  }
+hlms V1_3 pbs : V1_body1234 {  }
+hlms V1_4 pbs : V1_body1234 {  }
+
 hlms V1_interior pbs : car_interior
 {
 	diffuse_map  V1_interior.png
@@ -591,6 +668,12 @@ hlms V2_body pbs : car_body
 	specular 0.1 0.4 0.25
 	paint yes
 }
+hlms V2_0 pbs : V2_body {  }
+hlms V2_1 pbs : V2_body {  }
+hlms V2_2 pbs : V2_body {  }
+hlms V2_3 pbs : V2_body {  }
+hlms V2_4 pbs : V2_body {  }
+
 hlms V2_interior pbs : car_interior
 {
 	diffuse_map  V2_interior.png
@@ -613,6 +696,12 @@ hlms V3_body pbs : car_body
 	specular  0.1 0.3 0.6
 	paint yes
 }
+hlms V3_0 pbs : V3_body {  }
+hlms V3_1 pbs : V3_body {  }
+hlms V3_2 pbs : V3_body {  }
+hlms V3_3 pbs : V3_body {  }
+hlms V3_4 pbs : V3_body {  }
+
 hlms V3_interior pbs : car_interior
 {
 	diffuse_map  V3_interior.png
@@ -634,6 +723,12 @@ hlms O_body1 pbs : car_body
 	diffuse	  0.7 0.4 0.1
 	paint yes
 }
+hlms O_0 pbs : O_body1 {  }
+hlms O_1 pbs : O_body1 {  }
+hlms O_2 pbs : O_body1 {  }
+hlms O_3 pbs : O_body1 {  }
+hlms O_4 pbs : O_body1 {  }
+
 // test refl
 hlms O_glass1 pbs //: car_glass
 {
@@ -692,6 +787,12 @@ hlms Y7_body pbs //: car_body
 	metalness 0.01
 	paint yes
 }
+hlms Y7_0 pbs : Y7_body {  }
+hlms Y7_1 pbs : Y7_body {  }
+hlms Y7_2 pbs : Y7_body {  }
+hlms Y7_3 pbs : Y7_body {  }
+hlms Y7_4 pbs : Y7_body {  }
+
 hlms Y7_glass pbs : car_glass2
 {
 	diffuse_map  Y7_glass.png
@@ -737,6 +838,12 @@ hlms BV_body pbs : car_body
 	metalness 0.3
 	paint yes
 }
+hlms BV_0 pbs : BV_body {  }
+hlms BV_1 pbs : BV_body {  }
+hlms BV_2 pbs : BV_body {  }
+hlms BV_3 pbs : BV_body {  }
+hlms BV_4 pbs : BV_body {  }
+
 hlms BV_interior pbs : car_body
 {
 	diffuse_map   BV_interior.png
@@ -769,6 +876,12 @@ hlms U6_body pbs : car_body
 	metalness 0.6
 	paint yes
 }
+hlms U6_0 pbs : U6_body {  }
+hlms U6_1 pbs : U6_body {  }
+hlms U6_2 pbs : U6_body {  }
+hlms U6_3 pbs : U6_body {  }
+hlms U6_4 pbs : U6_body {  }
+
 hlms U6_interior pbs : car_interior
 {
 	diffuse_map   U6_interior.png
@@ -798,6 +911,12 @@ hlms U8_body pbs : car_body
 	specular  0.4 0.5 0.6
 	paint yes
 }
+hlms U8_0 pbs : U8_body {  }
+hlms U8_1 pbs : U8_body {  }
+hlms U8_2 pbs : U8_body {  }
+hlms U8_3 pbs : U8_body {  }
+hlms U8_4 pbs : U8_body {  }
+
 hlms U8_glass pbs : car_glass
 {
 	diffuse_map  U8_glass.png
@@ -829,6 +948,12 @@ hlms MO_body pbs : car_body
 	diffuse	  0.0 0.4 0.0
 	paint yes
 }
+hlms MO_0 pbs : MO_body {  }
+hlms MO_1 pbs : MO_body {  }
+hlms MO_2 pbs : MO_body {  }
+hlms MO_3 pbs : MO_body {  }
+hlms MO_4 pbs : MO_body {  }
+
 hlms MO_interior pbs : car_interior
 {
 	diffuse_map  MO_interior.png
@@ -864,6 +989,12 @@ hlms 3B_body pbs : car_body
 	specular 0.9 0.9 0.9
 	paint yes
 }
+hlms 3B_0 pbs : 3B_body {  }
+hlms 3B_1 pbs : 3B_body {  }
+hlms 3B_2 pbs : 3B_body {  }
+hlms 3B_3 pbs : 3B_body {  }
+hlms 3B_4 pbs : 3B_body {  }
+
 hlms 3B_interior pbs //: car_body
 {
 	diffuse_map  3B_body_red.png
@@ -906,6 +1037,11 @@ hlms BE_body pbs : car_body
 	// specular  0.4 0.4 0.4
 	paint yes
 }
+hlms BE_0 pbs : BE_body {  }
+hlms BE_1 pbs : BE_body {  }
+hlms BE_2 pbs : BE_body {  }
+hlms BE_3 pbs : BE_body {  }
+hlms BE_4 pbs : BE_body {  }
 
 hlms BE_body_noclr pbs //: car_interior
 {
@@ -970,6 +1106,11 @@ hlms SX_body pbs //: car_body
 	metalness 0.7
 	paint yes
 }
+hlms SX_0 pbs : SX_body {  }
+hlms SX_1 pbs : SX_body {  }
+hlms SX_2 pbs : SX_body {  }
+hlms SX_3 pbs : SX_body {  }
+hlms SX_4 pbs : SX_body {  }
 
 hlms SX_exterior pbs //: car_interior
 {
@@ -1058,6 +1199,12 @@ hlms body_realtime pbs //: car_body
 	metalness 0.8
 	paint yes
 }
+hlms ES_0 pbs : body_realtime {  }
+hlms ES_1 pbs : body_realtime {  }
+hlms ES_2 pbs : body_realtime {  }
+hlms ES_3 pbs : body_realtime {  }
+hlms ES_4 pbs : body_realtime {  }  // ghost
+hlms ES_5 pbs : body_realtime {  }  // track
 
 hlms ES_interior pbs //: car_interior
 {

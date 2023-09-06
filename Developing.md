@@ -58,8 +58,9 @@ It starts longer though, shader compilation is much slower. MyGui doesn't work w
 Is the engine used for rendering, managing scene, also loading resources, logging to `.log` files etc.
 
 - [Manual](https://ogrecave.github.io/ogre-next/api/latest/manual.html) - need to read it when beginning.
+- [version comparison](https://www.ogre3d.org/about/what-version-to-choose) of Ogre and Ogre-Next.
 - [Compositor](https://ogrecave.github.io/ogre-next/api/latest/compositor.html) - for effects, RTTs, reflections, etc.
-- [comparison](https://www.ogre3d.org/about/what-version-to-choose) of Ogre and Ogre-Next.
+- [Terrain](https://ogrecave.github.io/ogre-next/api/latest/_terra_system.html) - details of new Terra system
 
 ----
 ## HLMS, materials, shaders

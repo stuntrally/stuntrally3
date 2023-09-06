@@ -115,13 +115,13 @@ void CarModel::LogMeshInfo(const Item* ent, const String& name, int mul)
 //  🆕 CreatePart mesh
 //-------------------------------------------------------------------------------------------------------
 void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
-	String sCar2, String sCarI, String sMesh, String sEnt,
+	String sCar2, String sCarI, String sMesh, String sMat,
 	bool ghost, uint32 visFlags,
 	Aabb* bbox, bool bLogInfo, bool body)
 {
 	if (!FileExists(sCar2 + sMesh))
 		return;
-	LogO("CreatePart " + sCarI + sEnt + " " + sDirname +  sMesh + " r "+  sCarI);
+	LogO("CreatePart " + sCarI + " " + sDirname +  sMesh + " r "+  sCarI + " mtr " + sMat);
 	
 	Item *item =0;
 	try
@@ -138,7 +138,19 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 				pDb->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
 			}else
 			{	//  body_paint db2
-				HlmsPbsDbCar* pDb = dynamic_cast<HlmsPbsDbCar *>( item->getSubItem(0)->getDatablock() );
+			#if 1
+				// LogO("CAR MAT: "+sDirname+"_"+sMat);
+				item->setDatablockOrMaterialName(sDirname+"_"+sMat);
+				
+				HlmsPbsDb2* pDb = dynamic_cast<HlmsPbsDb2*>( item->getSubItem(0)->getDatablock() );
+				LogO(pDb ? "db2 cast ok" : "db2 cast fail");
+				if (pDb)
+				{	db = pDb;
+					db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
+					SetPaint();
+				}
+			#else  //-
+				HlmsPbsDb2* pDb = dynamic_cast<HlmsPbsDb2*>( item->getSubItem(0)->getDatablock() );
 				LogO(pDb ? "db2 cast ok" : "db2 cast fail");
 				if (pDb)
 				{
@@ -146,15 +158,16 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 					static int id = 0;  ++id;
 				#if 1  // no clone  bad ghost, same car color
 					db = pDb;
-				#else  // fixme  clone ..
-					db = static_cast<HlmsPbsDatablock2*>( pDb->clone( "CarBody" + sCarI + toStr(id) ) );
+				#else  // fixme  clone bad-
+					String s = "CarBody" + sCarI + toStr(id);
+					db = static_cast<HlmsPbsDb2*>( pDb->clone( s ) );
 				#endif
 					db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );
-					//- HlmsPbsDatablock *db1 = static_cast<HlmsPbsDatablock *>(db);
-					item->getSubItem(0)->setDatablock( db );
+					item->setDatablock(db);
 					SetPaint();
 				}
 				//db->setBrdf(PbsBrdf::DefaultHasDiffuseFresnel);  // ogre 2.4 mirror
+			#endif
 			}
 	}	}
 	catch (Ogre::Exception ex)
@@ -179,7 +192,7 @@ void CarModel::Create()
 	//if (!pCar)  return;
 
 	String strI = toStr(iIndex)+ (cType == CT_TRACK ? "Z" : (cType == CT_GHOST2 ? "V" :""));
-	mtrId = strI;
+	mtrId = toStr(iIndex);
 	String sCarI = "Car" + strI;
 	resGrpId = sCarI;
 
@@ -266,14 +279,14 @@ void CarModel::Create()
 	///  🆕 Create Models:  body, interior, glass
 	//-------------------------------------------------
 	const String& res = resGrpId;
-	CreatePart(ndCar, vPofs, sCar, res, "_body.mesh",     "",  ghost, RV_Car,  &bodyBox,  bLogInfo, true);
+	CreatePart(ndCar, vPofs, sCar, res, "_body.mesh",     mtrId,  ghost, RV_Car,  &bodyBox,  bLogInfo, true);
 
 	vPofs = Vector3(interiorOfs[0],interiorOfs[1],interiorOfs[2]);  //x+ back y+ down z+ right
 	// if (!ghostTrk)  //!ghost)
-	CreatePart(ndCar, vPofs, sCar, res, "_interior.mesh", "i", ghost, RV_Car,      0, bLogInfo);
+	CreatePart(ndCar, vPofs, sCar, res, "_interior.mesh", mtrId, ghost, RV_Car,      0, bLogInfo);
 
 	vPofs = Vector3::ZERO;
-	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    "g", ghost, RV_CarGlass, 0, bLogInfo);
+	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    mtrId, ghost, RV_CarGlass, 0, bLogInfo);
 	
 	bool sph = vType == V_Sphere;
 
