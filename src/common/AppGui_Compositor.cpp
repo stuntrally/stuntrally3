@@ -261,12 +261,12 @@ Cam* AppGui::CreateCamera(String name,
 	if (!nd)
 	{	nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode(SCENE_DYNAMIC);
 		nd->setName( name + "CamNd" );
-		LogO("c--: new cam node: " + name + "CamNd" );
+		LogO("c---: new cam node: " + name + "CamNd" );
 		nd->setPosition( 0, 50, 100 );  // whatever, upd later
 	}
 #endif
 	Camera* cam = mSceneMgr->createCamera( name );
-	LogO("c--: new cam: " + name);
+	LogO("c---: new cam: " + name);
 
 	cam->setPosition( pos );
 	cam->lookAt( lookAt );

@@ -39,7 +39,9 @@ using namespace Ogre;
 ///---------------------------------------------------------------------------------------------------------------
 void CHud::Update(int carId, float time)
 {
-	PROFILER.beginBlock("g.hud");
+	// if (carId >= app->carModels.size())
+	// 	return;
+	// PROFILER.beginBlock("g.hud");
 
 	
 	//  update HUD elements for all cars that have a viewport (local or replay)
@@ -51,6 +53,7 @@ void CHud::Update(int carId, float time)
 
 	//  track %  local, updated always
 	for (int c = 0; c < cntC; ++c)
+	// if (c < app->carModels.size())
 	{	CarModel* cm = app->carModels[c];
 		if (cm->cType == CarModel::CT_LOCAL ||
 			cm->cType == CarModel::CT_REPLAY)
@@ -59,7 +62,7 @@ void CHud::Update(int carId, float time)
 	
 	if (carId == -1 || app->carModels.empty())
 	{
-		PROFILER.endBlock("g.hud");
+		// PROFILER.endBlock("g.hud");
 		return;
 	}
 
@@ -113,7 +116,7 @@ void CHud::Update(int carId, float time)
 	UpdDebug(pCar, pCarM);
 
 
-	PROFILER.endBlock("g.hud");
+	// PROFILER.endBlock("g.hud");
 }
 
 

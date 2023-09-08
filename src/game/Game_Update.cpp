@@ -19,6 +19,7 @@
 #include "PaceNotes.h"
 #include "GraphicsSystem.h"
 #include "BtOgreExtras.h"
+#include "gameclient.hpp"
 
 #include <OgreVector3.h>
 #include <OgreSceneManager.h>
@@ -131,16 +132,19 @@ void App::update( float dt )
 			hud->Size();
 		}
 
-		for (int c = 0; c < carModels.size(); ++c)
-			hud->Update(c, dt);
-		hud->Update(-1, dt);
-	
-
-		///  📉 graphs update  -._/\_-.
-		if (pSet->show_graphs && graphs.size() > 0)
+		if (!bLoading)
 		{
-			GraphsNewVals();
-			UpdateGraphs();
+			for (int c = 0; c < carModels.size(); ++c)
+				hud->Update(c, dt);
+			hud->Update(-1, dt);
+		
+
+			///  📉 graphs update  -._/\_-.
+			if (pSet->show_graphs && graphs.size() > 0)
+			{
+				GraphsNewVals();
+				UpdateGraphs();
+			}
 		}
 
 		//  🚗 Car poses
@@ -185,6 +189,13 @@ void App::update( float dt )
 
 		///  Gui updates from Networking
 		gui->UpdGuiNetw();
+
+		//  Signal loading finished to the peers
+		if (mClient && bLoadingEnd)
+		{
+			bLoadingEnd = false;
+			mClient->loadingFinished();
+		}
 
 
 		//  🌧️ Update rain/snow - depends on camera

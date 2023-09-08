@@ -239,7 +239,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	}
 
 	//  🎥 set camera view
-	if (fCam)
+	if (fCam && cType != CT_REMOTE)
 	{	fCam->Apply(posInfoCam);
 
 		if (pCar && cam && pSet->boost_fov)  // not here?-
@@ -695,6 +695,8 @@ void CarModel::SetPaint()
 			ColourValue p;
 			p.setHSB(1.f - c.hue, c.sat, c.val);
 			db->paintClr[i] = Vector4(p.r, p.g, p.b, 1.f);
+			if (i == 1)
+				color = p;  // for netw, nick
 		}
 	}
 

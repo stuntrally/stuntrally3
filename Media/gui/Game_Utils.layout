@@ -162,7 +162,7 @@
 		</Widget>
 	</Widget>
 
-	<Widget type="Window" skin="WindowC" position="1356 1700 648 540" align="Center" layer="Popup" name="WndNetEnd">
+	<Widget type="Window" skin="WindowC" position="356 300 648 540" align="Center" layer="Popup" name="WndNetEnd">
 		<Property key="Caption" value="#{Multiplayer}"/>
 		<Property key="Alpha" value="0.8"/>
 		<Property key="Colour" value="0.7 0.7 0"/>

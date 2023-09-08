@@ -485,9 +485,9 @@ void App::updatePoses(float time)
 		{
 			Camera* cam = playerCar->fCam->cam->cam;  //above car 1m
 			Vector3 p = hud->projectPoint(cam, carM->ndMain->getPosition() + Vector3(0,1.f,0));
-			p.x = p.x * mDims[0].width0 * 0.5f;  //1st viewport dims
-			p.y = p.y * mDims[0].height0 * 0.5f;
-			carM->pNickTxt->setPosition(p.x-40, p.y-16);  //center doesnt work
+			p.x *= mDims[0].width0;  // 1st viewport dims
+			p.y *= mDims[0].height0;
+			carM->pNickTxt->setPosition(p.x-40, p.y-16);  // center doesnt work
 			carM->pNickTxt->setVisible(p.z > 0.f);
 		}
 	}
