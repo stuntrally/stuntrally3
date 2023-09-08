@@ -148,7 +148,11 @@
 												  material.detailOffsetScale[@n].xy,
 												  texIndex_detailMetalnessIdx@n ).x;
 		@else
-			midf metalness@n = _h( 1.0 );  //*
+			@property( emissive_terrain )
+				midf metalness@n = _h( 0.0 );  // no _s tex, dark, no emissive
+			@else
+				midf metalness@n = _h( 1.0 );  //*
+			@end
 		@end
 	@end
 
@@ -412,15 +416,15 @@
 	@property( !hlms_render_depth_only )
 		@property( !hlms_prepass )
 
-			//**  gamma  --
-			finalColour.xyz = pow(finalColour, midf3_c(1.15, 1.15, 1.15));
-
 			//**  emissive terrain
 			@property( emissive_terrain && !hlms_shadowcaster && hlms_lights_directional )
-				// material.kD.xyz  // par.. ++
-				// todo:
-				//finalColour += 4.0 * pow(metalness, 1.5) * light0Buf.lights[0].specular.xyz;
+				// material.kD.xyz  // par..
+				// todo: params
+				finalColour += 4.0 * pow(metalness, 1.5) * light0Buf.lights[0].specular.xyz;
 			@end
+
+			//**  gamma  --
+			finalColour.xyz = pow(finalColour, midf3_c(1.15, 1.15, 1.15));
 
 			@property( !hw_gamma_write )
 				//Linear to Gamma space
