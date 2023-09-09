@@ -45,7 +45,7 @@ bool (*CarSort[allSortFunc])(const CarL& c1, const CarL& c2) =
 //-----------------------------------------------------------------------------------------------------------
 void CGui::CarListUpd(bool resetNotFound)
 {
-	bool filter = 0;//isChallGui();
+	bool filter = isChallGui();
 		
 	if (carList)
 	{	carList->removeAllItems();

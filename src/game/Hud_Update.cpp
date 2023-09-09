@@ -74,6 +74,9 @@ void CHud::Update(int carId, float time)
 
 	//  var
 	CarModel* pCarM = app->carModels[carId];
+	if (pCarM->isGhost())
+		return;
+
 	CAR* pCar = pCarM ? pCarM->pCar : 0;
 	Hud& h = hud[carId];
 
