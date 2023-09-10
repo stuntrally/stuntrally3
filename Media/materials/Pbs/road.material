@@ -623,7 +623,7 @@ hlms roadSnowGrn_ter pbs : road_terrain
 	diffuse_map  roadSnowGrn.jpg
 	// normal_map   normal_1.png
 	normal_map   normal_1s.png
-	specular_map roadAlpha2x.jpg
+	specular_map roadAlpha2s.jpg
 	diffuse  0.7 0.7 0.7
 	specular 0.8 0.82 0.82
 
