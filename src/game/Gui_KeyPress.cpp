@@ -318,7 +318,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				if (editFocus)
 					break;
 				if (rpl && mWndRpl)
-				{	bRplWnd = !bRplWnd;  return;  }  // 📽️ replay controls
+				{	bRplWnd = !bRplWnd;  hud->Show();  return;  }  // 📽️ replay controls
 
 				if (mWndHowTo->getVisible())
 				{	pSet->iMenu = MN1_Race;  gui->toggleGui(false);  return;  }

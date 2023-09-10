@@ -497,9 +497,9 @@ void App::updatePoses(float time)
 	{
 		double pos = pGame->timer.GetPlayerTime(0);
 		float len = replay.GetTimeLength();
-		// gui->valRplPerc->setCaption(fToStr(pos/len*100.f, 1,4)+" %");
-		// gui->valRplCur->setCaption(StrTime(pos));
-		// gui->valRplLen->setCaption(StrTime(len));
+		gui->valRplPerc->setCaption(fToStr(pos/len*100.f, 1,4)+" %");
+		gui->valRplCur->setCaption(StrTime(pos));
+		gui->valRplLen->setCaption(StrTime(len));
 
 		float v = pos/len;  //gui->slRplPos->setValue(v);
 

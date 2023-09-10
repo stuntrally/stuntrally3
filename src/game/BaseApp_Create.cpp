@@ -81,16 +81,6 @@ void BaseApp::LoadingOn()
 	imgBack->setVisible(true);
 #endif
 	bckLoad->setVisible(true);
-#if 0
-	mSplitMgr->SetBackground(ColourValue(0.15,0.165,0.18));
-	mSplitMgr->mGuiViewport->setBackgroundColour(ColourValue(0.15,0.165,0.18,1.0));
-	mSplitMgr->mGuiViewport->setClearEveryFrame(true);
-
-	// Turn off  rendering except overlays
-	mSceneMgr->clearSpecialCaseRenderQueues();
-	mSceneMgr->addSpecialCaseRenderQueue(RENDER_QUEUE_OVERLAY);
-	mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_INCLUDE);
-#endif
 }
 void BaseApp::LoadingOff()
 {
@@ -98,13 +88,6 @@ void BaseApp::LoadingOff()
 	imgLoad->setVisible(false);
 	imgBack->setVisible(false);
 	bckLoad->setVisible(false);
-#if 0
-	// Turn On  full rendering
-	mSplitMgr->SetBackground(ColourValue(0.2,0.3,0.4));
-	mSplitMgr->mGuiViewport->setBackgroundColour(ColourValue(0.2,0.3,0.4));
-	mSceneMgr->clearSpecialCaseRenderQueues();
-	mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
-#endif
 }
 
 

@@ -47,8 +47,9 @@ using namespace std;
 void App::update( float dt )
 {
 	fLastFrameDT = dt;
-	#if 0
-	if (dt > 0.02)  //** test big dt
+
+	#if 0  //** log big dt
+	if (dt > 0.02)
 		LogO("dt "+fToStr(dt,3,5));
 	#endif
 
@@ -94,6 +95,10 @@ void App::update( float dt )
 			{
 				--iLoad1stFrames;  // -2 end
 				LoadingOff();  // hide loading overlay
+
+				//  rpl ctrl show
+				if (mWndRpl && !bLoading)
+					mWndRpl->setVisible(bRplPlay && bRplWnd);
 			}
 		}
 
@@ -249,6 +254,25 @@ void App::update( float dt )
 		UpdCubeRefl();  // 🔮💫
 
 
+		//  📽️ replay forward,backward keys
+		if (bRplPlay)
+		{
+			isFocRpl = ctrl;
+			bool le = down || pgdown, ri = up || pgup, ctrlN = ctrl && (le || ri);
+			int ta = ((le || gui->bRplBack) ? -2 : 0) + ((ri || gui->bRplFwd) ? 2 : 0);
+			if (ta)
+			{	double tadd = ta;
+				tadd *= (shift ? 0.2 : 1) * (ctrlN ? 4 : 1) * (alt ? 8 : 1);  // multipliers
+				if (!bRplPause)  tadd -= 1;  // play compensate
+				double t = pGame->timer.GetReplayTime(0), len = replay.GetTimeLength();
+				t += tadd * dt;  // add
+				if (t < 0.0)  t += len;  // cycle
+				if (t > len)  t -= len;
+				pGame->timer.SetReplayTime(0, t);
+			}
+		}
+
+
 		//  🔧 Keys  params  ----
 		#if 0  // todo: move to ed gui
 		float mul = shift ? 0.2f : ctrl ? 3.f : 1.f;
@@ -293,10 +317,7 @@ void App::update( float dt )
 		{
 			const float lightEpsilon = 0.0001f;  //** 0.0f slow
 			for (auto ter : scn->ters)
-			if (ter)
-				// Force update the shadow map every frame to avoid the feeling we're "cheating" the
-				// user in this sample with higher framerates than what he may encounter in many of
-				// his possible uses.
+			if (ter)	// todo: move to ws listener for splitscr..
 				ter->update( !scn->sun ? -Vector3::UNIT_Y :
 					scn->sun->getDerivedDirectionUpdated(), 0, lightEpsilon );
 		}

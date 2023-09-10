@@ -258,7 +258,7 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 	float vel=0.f, rpm=0.f, clutch=1.f;  int gear=1;
 	GetCarVals(carId,&vel,&rpm,&clutch,&gear);
 
-	if (!h.txGear)
+	if (!h.txVel)
 		return;
 
 	///  ⏲️ gear, vel texts  -----------------------------
