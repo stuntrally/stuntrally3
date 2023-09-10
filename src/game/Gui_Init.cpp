@@ -236,8 +236,8 @@ void CGui::InitGui()
 
 	//  ⏱️ Times, opp
 	ck= &ckTimes;		ck->Init("Times",       &pSet->show_times);      Cev(HudShow);
-	ck= &ckOpponents;	ck->Init("Opponents",   &pSet->show_opponents);  Cev(HudShow);
-	ck= &ckOppSort;		ck->Init("OppSort",     &pSet->opplist_sort);
+// ck= &ckOpponents;	ck->Init("Opponents",   &pSet->show_opponents);  Cev(HudShow);
+// ck= &ckOppSort;		ck->Init("OppSort",     &pSet->opplist_sort);
 
 
 	//  📉 Graphs  ------------------------------------------------------------

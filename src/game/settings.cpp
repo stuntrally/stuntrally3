@@ -99,9 +99,9 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "game.collis_roadw", gui.collis_roadw);	Param(c,w, "game.dyn_objects", gui.dyn_objects);
 	Param(c,w, "game.drive_horiz", gui.drive_horiz);
 
-	Param(c,w, "game.trk_reverse", gui.track_reversed);	Param(c,w, "game.sim_mode", gui.sim_mode);
-	Param(c,w, "game.local_players", gui.local_players); Param(c,w, "game.num_laps", gui.num_laps);
-	Param(c,w, "game.start_order", gui.start_order);	Param(c,w, "game.split_vertically", split_vertically);
+	Param(c,w, "game.trk_reverse", gui.track_reversed);   Param(c,w, "game.sim_mode", gui.sim_mode);
+	Param(c,w, "game.local_players", gui.local_players);  Param(c,w, "game.num_laps", gui.num_laps);
+	Param(c,w, "game.start_order", gui.start_order);      Param(c,w, "game.split_vertically", split_vertically);
 
 	//  📉 graphs
 	Param(c,w, "graphs.tc_r", tc_r);			Param(c,w, "graphs.tc_xr", tc_xr);
@@ -119,7 +119,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "hud_show.car_dbgsurf", car_dbgsurf);		Param(c,w, "hud_show.car_tirevis", car_tirevis);
 	Param(c,w, "hud_show.car_dbgtxtclr", car_dbgtxtclr);	Param(c,w, "hud_show.car_dbgtxtcnt", car_dbgtxtcnt);
 	Param(c,w, "hud_show.check_arrow", check_arrow);		Param(c,w, "hud_show.check_beam", check_beam);
-	Param(c,w, "hud_show.opponents", show_opponents);		Param(c,w, "hud_show.opplist_sort", opplist_sort);
+// Param(c,w, "hud_show.opponents", show_opponents);		Param(c,w, "hud_show.opplist_sort", opplist_sort);
 	Param(c,w, "hud_show.graphs", show_graphs);				Param(c,w, "hud_show.graphs_type", (int&)graphs_type);
 	//  🎛️ gui
 	Param(c,w, "gui.cars_view", cars_view);			Param(c,w, "gui.cars_sort", cars_sort);

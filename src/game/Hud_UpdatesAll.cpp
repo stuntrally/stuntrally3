@@ -81,7 +81,7 @@ void CHud::GetCarVals(int id, float* vel, float* rpm, float* clutch, int* gear)
 }
 
 
-//  Multiplayer
+//  🔁📡 Multiplayer
 //---------------------------------------------------------------------------------------------------------------
 void CHud::UpdMultiplayer(CGui* gui, int cnt, float time)
 {
@@ -159,11 +159,11 @@ void CHud::UpdMultiplayer(CGui* gui, int cnt, float time)
 }
 
 
+#if 0
 ///  Opponents list
 // -----------------------------------------------------------------------------------
 void CHud::UpdOpponents(Hud& h, int cnt, CarModel* pCarM)
 {
-#if 0
 	int c;
 	bool visOpp = h.txOpp[0] && pSet->show_opponents;
 	if (visOpp && pCarM && pCarM->pMainNode)
@@ -247,8 +247,8 @@ void CHud::UpdOpponents(Hud& h, int cnt, CarModel* pCarM)
 		}
 		h.txOpp[0]->setCaption(s0);  h.txOpp[1]->setCaption(s1);  h.txOpp[2]->setCaption(s2);
 	}
-#endif
 }
+#endif
 
 
 //  Car texts

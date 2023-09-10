@@ -393,7 +393,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 			case key(F7):	//  ⏱️ Times
 				if (alt)	gui->ckCarDbgBars.Invert(); else
-				if (shift)	gui->ckOpponents.Invert(); else
+			// if (shift)	gui->ckOpponents.Invert(); else
 				if (!ctrl)	gui->ckTimes.Invert();
 				return;
 

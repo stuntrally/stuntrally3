@@ -438,14 +438,14 @@
 							<Property key="Caption" value="#{TimesBar} #8098B0 F7"/>
 							<Property key="TextColour" value="0.75 0.88 1.0"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="32 296 184 24" name="Opponents">
+						<!-- <Widget type="Button" skin="CheckBox" position="32 296 184 24" name="Opponents">
 							<Property key="Caption" value="#{OpponentsList} #607080 shift-F7"/>
 							<Property key="TextColour" value="0.6 0.76 0.9"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="232 296 260 24" name="OppSort">
 							<Property key="Caption" value="#{OpponentsSorted}"/>
 							<Property key="TextColour" value="0.6 0.7 0.8"/>
-						</Widget>
+						</Widget> -->
 
 						<Widget type="ImageBox" skin="ImageBox" position="614 140 90 90">
 							<Property key="ImageCoord" value="128 256 128 128"/>

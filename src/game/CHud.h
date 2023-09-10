@@ -145,7 +145,7 @@ public:
 		 GetCarVals(int id, float* vel, float* rpm, float* clutch, int* gear),
 		 UpdMiniTer(), //UpdDbgTxtClr(),
 		 UpdMultiplayer(CGui* gui, int cnt, float time),
-		 UpdOpponents(Hud& h, int cnt, CarModel* pCarM),
+		 //UpdOpponents(Hud& h, int cnt, CarModel* pCarM),
 		 //UpdMotBlur(CAR* pCar, float time),
 		 UpdCarTexts(int carId, Hud& h, float time, CAR* pCar),
 		 UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM),
