@@ -284,7 +284,7 @@ void CGui::InitGui()
 	ck= &ckEscQuits;	ck->Init("EscQuits",    &pSet->escquit);
 	ck= &ckOgreDialog;	ck->Init("OgreDialog",  &pSet->ogre_dialog);
 	ck= &ckMouseCapture;ck->Init("MouseCapture",&pSet->mouse_capture);
-	ck= &ckScreenPng;   ck->Init("ScreenPng",   &pSet->screen_png);
+ // ck= &ckScreenPng;   ck->Init("ScreenPng",   &pSet->screen_png);
 	
 
 	///  🌞 Sun

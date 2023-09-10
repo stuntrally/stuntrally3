@@ -15,7 +15,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	
 	Param(c,w, "misc.language", language);
 	Param(c,w, "misc.mouse_capture", mouse_capture);
-	Param(c,w, "misc.screenshot_png", screen_png);
+	// Param(c,w, "misc.screenshot_png", screen_png);
 
 	//  🖥️ video  // todo..
 	// Param(c,w, "video.windowx", windowx);			Param(c,w, "video.windowy", windowy);

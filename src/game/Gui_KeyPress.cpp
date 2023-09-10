@@ -640,7 +640,7 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 		ghost.Clear();  replay.Clear();
 	}
 	
-	//  Screen shot
+	//  todo: Screen shot
 	/*if (action(A_Screenshot))
 		mWindow->writeContentsToTimestampedFile(PATHS::Screenshots() + "/",
 			pSet->screen_png ? ".png" : ".jpg");*/	

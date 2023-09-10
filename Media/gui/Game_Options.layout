@@ -1342,10 +1342,10 @@
 					<Property key="TextColour" value="0.6 0.7 0.8"/>
 					<Property key="Caption" value="#{MouseCapture}"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="32 254 256 24" name="ScreenPng">
+				<!-- <Widget type="Button" skin="CheckBox" position="32 254 256 24" name="ScreenPng">
 					<Property key="TextColour" value="0.55 0.6 0.65"/>
 					<Property key="Caption" value="#{ScreenshotPng}"/>
-				</Widget>
+				</Widget> -->
 
 				<Widget type="Button" skin="CheckBox" position="362 94 300 24" name="ShowPictures">
 					<Property key="TextColour" value="0.5 0.6 0.7"/>
