@@ -648,6 +648,8 @@ void CGui::InitGui()
 	gcom->GetTweakMtr();
 	gcom->InitGuiTweakMtr();
 	gcom->updTweakMtr();
+
+	gcom->ChangeTrackView();
 	
 
 	///  🧊 3d view []  (veget models, objects)  todo:

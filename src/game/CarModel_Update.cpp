@@ -549,7 +549,7 @@ void CarModel::UpdKeysCam()
 			// pApp->roadUpdTm = 1.f;
 
 			if (fCam)
-			{	fCam->Next(iC < 0, false/*pApp->shift*/);
+			{	fCam->Next(iC < 0, pApp->shift);
 				pApp->carsCamNum[iIndex] = fCam->miCurrent +1;  // save for pSet
 				
 				// uint32 visMask = fCam->ca->mHideGlass ? RV_MaskAll-RV_CarGlass : RV_MaskAll;

@@ -528,6 +528,8 @@ void CGui::InitGui()
 	gcom->InitGuiTweakMtr();
 	gcom->updTweakMtr();
 
+	gcom->ChangeTrackView();
+
 
 	//  🔗 open url btns  -------------
 	Btn("OpenWelcome", btnWelcome);  Btn("OpenWebsite", btnWebsite);   Btn("OpenSources", btnSources);
