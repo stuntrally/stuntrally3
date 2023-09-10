@@ -1,38 +1,78 @@
 //  satellite antenna
+//  rusty big
 hlms satellite1a pbs
 {
 	diffuse_map satellite1a.jpg
 	normal_map  satellite1a_norm.jpg
-		diffuse 0.8 0.8 0.8
-	specular 0.6 0.6 0.6 24
+	diffuse 0.8 0.8 0.8
+	specular 0.6 0.6 0.6
+	fresnel_coeff 0.1 0.1 0.1
+	roughness 0.5
 }
 hlms satellite1b pbs
 {
 	diffuse_map satellite1b.jpg
 	normal_map  satellite1b_norm.jpg
-		diffuse 0.8 0.8 0.8
-	specular 0.6 0.6 0.6 32
+	diffuse 0.8 0.8 0.8
+	specular 0.6 0.6 0.6
+	fresnel_coeff 0.1 0.1 0.1
+	roughness 0.5
 }
-
+//  white big
 hlms satellite2a pbs
 {
 	diffuse_map satellite2a.jpg
 	normal_map  satellite2a_norm.jpg
-		diffuse 0.8 0.8 0.8
-	specular 0.6 0.6 0.6 24
+	diffuse 0.7 0.7 0.7
+	specular 0.6 0.6 0.6
+	fresnel_coeff 0.1 0.1 0.1
+	roughness 0.5
 }
 hlms satellite2b pbs
 {
 	diffuse_map satellite2b.jpg
 	normal_map  satellite2b_norm.jpg
-		diffuse 0.8 0.8 0.8
-	specular 0.6 0.6 0.6 32
+	diffuse 0.8 0.8 0.8
+	specular 0.6 0.6 0.6
+	fresnel_coeff 0.1 0.1 0.1
+	roughness 0.5
 }
-
+//  medium
 hlms satellite3 pbs
 {
 	diffuse_map satellite3.jpg
 	normal_map  satellite3_norm.jpg
-		diffuse 0.8 0.8 0.8
-	specular 0.6 0.6 0.6 24
+	diffuse 0.8 0.8 0.8
+	specular 0.6 0.6 0.6
+	fresnel_coeff 0.1 0.1 0.1
+	roughness 0.5
+}
+
+
+hlms ancient_ruins pbs
+{
+	diffuse_map  ancient_ruins.jpg
+	normal_map   ancient_ruins_norm.jpg
+	// specular_map ancient_ruins_spec.jpg  //red?
+	diffuse 1.0 1.0 1.0
+	specular 0.5 0.5 0.5
+	// bump_scale 0.55
+	fresnel 0.1
+	fresnel_coeff 0.1 0.1 0.1
+	roughness 0.55
+	// metalness 0.7
+}
+
+hlms ancient_ruins_yellow pbs
+{
+	diffuse_map  ancient_ruins.jpg
+	normal_map   ancient_ruins_norm.jpg
+	// specular_map ancient_ruins_spec.jpg  //red
+	diffuse 1.52 1.3 0.94
+	specular 0.5 0.5 0.5
+	// bump_scale 0.55
+	fresnel 0.1
+	fresnel_coeff 0.1 0.1 0.1
+	roughness 0.55
+	// metalness 0.7
 }
