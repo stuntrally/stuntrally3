@@ -371,7 +371,7 @@ void CHud::Create()
 
 	//  🎥 camera move info text
 	txCamInfo = app->mGui->createWidget<TextBox>("TextBox",
-		0,y, 900,100, Align::Left, "Back", "CamIT");  txCamInfo->setVisible(false);
+		0,y, 1200,100, Align::Left, "Back", "CamIT");  txCamInfo->setVisible(false);
 	txCamInfo->setFontName("hud.text");  txCamInfo->setTextShadow(true);
 	txCamInfo->setTextColour(Colour(0.8,0.9,0.9));
 

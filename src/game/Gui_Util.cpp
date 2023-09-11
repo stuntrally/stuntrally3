@@ -8,6 +8,7 @@
 #include "GuiCom.h"
 #include "game.h"
 #include "SoundMgr.h"
+#include "gameclient.hpp"
 
 #include "MultiList2.h"
 #include "settings.h"
@@ -83,6 +84,7 @@ void CGui::toggleGui(bool toggle)
 	
 	if (!gui)  app->mWndTrkFilt->setVisible(false);
 
+
 	if (!gui && gcom->imgPrv[2])  // hide fullscr prv
 	{	gcom->imgPrv[2]->setVisible(false);
 		gcom->imgTer[2]->setVisible(false);
@@ -104,18 +106,14 @@ void CGui::toggleGui(bool toggle)
 		champ ? TR("#B0FFB0#{Championship}") : TR("#C0C0FF#{Challenge}");
 
 	UpdChampTabVis();
-	
+
 	bool notMain = gui && !(mnu == MN1_Main || mnu == MN1_Race);
 	bool vis = notMain && gc;
 	app->mWndGame->setVisible(vis);
 	if (vis)
-	{	const static float clrs[4][3] = {
-			// single      tutor          champ          chall
-			{0.9,0.9,0.6}, {1.0,0.6,0.3}, {0.6,1.0,0.6}, {0.6,0.6,1.0} };
-		const int c = tutor ? 1 : champ ? 2 : chall ? 3 : 0;
-		app->mWndGame->setColour(Colour(clrs[c][0], clrs[c][1], clrs[c][2]));
-		app->mWndGame->setCaption(chAny ? sCh : TR("#{SingleRace}"));
-		
+	{
+		UpdWndTitle();
+
 		TabItem* t = app->mWndTabsGame->getItemAt(TAB_Champs);
 		t->setCaption(sCh);
 	}
@@ -131,6 +129,7 @@ void CGui::toggleGui(bool toggle)
 		t->setButtonWidthAt(TAB_Stages,chAny ?-1 : 1);  if (id == TAB_Stages && !chAny)  t->setIndexSelected(TAB_Track);
 		t->setButtonWidthAt(TAB_Stage, chAny ?-1 : 1);  if (id == TAB_Stage  && !chAny)  t->setIndexSelected(TAB_Track);
 	}
+
 
 	gcom->bnQuit->setVisible(gui);
 	app->updMouse();
@@ -148,6 +147,42 @@ void CGui::toggleGui(bool toggle)
 		gcom->GuiCenterMouse();
 	}
 	// LogO(String(":::* Time Gui upd: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+}
+
+void CGui::tabGame(Tab, size_t)
+{
+	UpdWndTitle();
+}
+
+//  🪟 game window title and color
+void CGui::UpdWndTitle()
+{
+	const int mnu = pSet->iMenu;
+	bool game = mnu == MN_Single,   champ = mnu == MN_Champ,
+		tutor = mnu == MN_Tutorial, chall = mnu == MN_Chall,
+		chAny = champ || tutor || chall, gc = game || chAny;
+	
+	UString sCh = tutor ? TR("#FFC020#{Tutorial}") :
+		champ ? TR("#B0FFB0#{Championship}") : TR("#C0C0FF#{Challenge}");
+
+	Tab t = app->mWndTabsGame;
+	size_t id = t->getIndexSelected();
+
+	int mplr = app->mClient ? app->mClient->getPeerCount()+1 :
+		id == TAB_Multi ? 1 : 0;  // 📡 networked
+	int plr = app->pSet->gui.local_players;  // 👥 splitscreen
+
+	//  clr
+	auto clr = tutor ? Colour(1.0,0.6,0.3) : champ ? Colour(0.6,1.0,0.6) : chall ? Colour(0.6,0.6,1.0) :
+		mplr > 0 ? Colour(0.8,0.6,1.0) :
+		plr == 1 ? Colour(0.9,0.9,0.5) : Colour(0.5,1.0,1.0);
+	app->mWndGame->setColour(clr);
+	//  title
+	app->mWndGame->setCaption(
+		mplr > 0 ?  TR("#{Multiplayer} - #{Players}: ") + toStr(mplr)  :
+		chAny ?  sCh  :
+		plr == 1 ?  TR("#{SingleRace}") :
+			TR("#{SplitScreen} - #{Players}: ") + toStr(plr) );
 }
 
 
@@ -192,6 +227,7 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab)
 	
 	if (!tc->eventTabChangeSelect.empty())
 		tc->eventTabChangeSelect(tc, tc->getIndexSelected());
+	UpdWndTitle();
 }
 
 //  close netw end

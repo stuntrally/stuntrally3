@@ -597,7 +597,7 @@ void CGui::UpdGuiNetw()
 		if (bRebuildGameList) {
 			bRebuildGameList = false;  rebuildGameList();  }
 		if (bRebuildPlayerList) {
-			bRebuildPlayerList = false;  rebuildPlayerList();  }
+			bRebuildPlayerList = false;  rebuildPlayerList();  UpdWndTitle();  }
 		if (bUpdateGameInfo) {
 			bUpdateGameInfo = false;  updateGameInfo();  }
 		if (bUpdChat) {

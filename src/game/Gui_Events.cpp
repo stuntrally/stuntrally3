@@ -175,6 +175,7 @@ void CGui::btnNumPlayers(WP wp)
 	}
 	if (valLocPlayers)
 		valLocPlayers->setCaption(toStr(plr));
+	UpdWndTitle();
 
 	for (int t = 0; t < 2; ++t)  // hide tabs
 	for (int p = 1; p < (t == 0 ? 6 : 4); ++p)

@@ -86,7 +86,7 @@ void CGui::InitGui()
 
 	//  Tabs  --------
 	Tab tab,sub;
-	fTabW("TabWndGame");    app->mWndTabsGame = tab;
+	fTabW("TabWndGame");    app->mWndTabsGame = tab;  Tev(tab, Game);
 	fTabW("TabWndReplays"); app->mWndTabsRpl = tab;
 	fTabW("TabWndHelp");    app->mWndTabsHelp = tab;
 	fTabW("TabWndOptions"); app->mWndTabsOpts = tab;
@@ -514,7 +514,7 @@ void CGui::InitGui()
 	Btn("btnNetEndClose", btnNetEndClose);
 
 	Mli2 li = app->mWndNetEnd->createWidget<MultiList2>("MultiListBox",4,42,632,360, Align::Left | Align::VStretch);
-	li->setInheritsAlpha(false);  li->setColour(Colour(0.8,0.9,1,1));
+	li->setInheritsAlpha(false);  li->setColour(Colour(0.8,0.9,1,1));  li->setAlpha(0.7);
 	li->removeAllColumns();
 	li->addColumn("", 40);  //N
 	li->addColumn(TR("#{TBPlace}"), 60);	li->addColumn(TR("#{NetNickname}"), 180);
