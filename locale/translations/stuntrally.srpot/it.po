@@ -1,0 +1,7217 @@
+# Stunt Rally translation.
+# .pot template by SR-Translator tool, 2022-04-09.
+# 
+# Translators:
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012
+msgid ""
+msgstr ""
+"Project-Id-Version: Stunt Rally\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-30 15:31+0200\n"
+"PO-Revision-Date: 2014-08-11 15:41+0000\n"
+"Last-Translator: FIRST AUTHOR <EMAIL@ADDRESS>, 2012\n"
+"Language-Team: Italian (http://www.transifex.com/stuntrally/stuntrally/language/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#. General
+msgctxt "Language"
+msgid "Language"
+msgstr "Lingua"
+
+#. General
+#: ogre/Gui_Network.cpp:26 editor/Update_EditKeyTxt.cpp:345
+msgctxt "Yes"
+msgid "Yes"
+msgstr "Sì"
+
+#. General
+#: ogre/Gui_Network.cpp:26:404 editor/Update_EditKeyTxt.cpp:345
+msgctxt "No"
+msgid "No"
+msgstr "No"
+
+#. General
+#: ogre/Gui_Replay.cpp:60:81:125 ogre/Gui_Network.cpp:29:361:592
+msgctxt "Error"
+msgid "Error"
+msgstr "Errore"
+
+#. HUD  Times bar
+#: ogre/Hud_Create.cpp:226 ogre/Gui_Init.cpp:862
+#: ogre/Challenges.cpp:409:539:561:643:661:678
+msgctxt "TBTime"
+msgid "Time"
+msgstr "Tempo"
+
+#. HUD  Times bar
+#: ogre/Hud_Create.cpp:251
+msgctxt "TBLast"
+msgid "Last"
+msgstr "Ultimo"
+
+#. HUD  Times bar
+#: ogre/Hud_Create.cpp:252 ogre/Gui_Init.cpp:862
+msgctxt "TBBest"
+msgid "Best"
+msgstr "Migliore"
+
+#. HUD  Times bar
+#: ogre/Hud_Create.cpp:225:250 ogre/Gui_Init.cpp:863
+msgctxt "TBLap"
+msgid "Lap"
+msgstr "Giro"
+
+#. HUD  Times bar
+#: ogre/Hud_UpdatesAll.cpp:379 ogre/Gui_Init.cpp:861
+msgctxt "TBPlace"
+msgid "Place"
+msgstr "Piazza"
+
+#. HUD  Times bar
+#: ogre/Hud_Create.cpp:228:254 ogre/Challenges.cpp:416:551:563:639:660:677
+msgctxt "TBPosition"
+msgid "Position"
+msgstr "Posizione"
+
+#. HUD  Times bar
+#: Game.layout 377..SingleRace.Track.Text ogre/Hud_Create.cpp:229:255
+#: ogre/Championships.cpp:468 ogre/Challenges.cpp:435:450:545:562:635:659:676
+msgctxt "TBPoints"
+msgid "Points"
+msgstr "Punti"
+
+#. HUD  Times bar
+#: ogre/Hud_UpdatesAll.cpp:430
+msgctxt "TBLapResults"
+msgid "Lap Results"
+msgstr "Risultati del giro"
+
+#. HUD
+msgctxt "Checkpoint"
+msgid "Checkpoint"
+msgstr "Checkpoint"
+
+#. HUD
+#: ogre/Hud_Create.cpp:289
+msgctxt "WrongChk"
+msgid "Wrong Checkpoint"
+msgstr "Checkpoint errato"
+
+#. Editor  status
+#: editor/SceneInit.cpp:188
+msgctxt "Loading"
+msgid "Loading"
+msgstr "Caricamento"
+
+#. Editor  status
+#: ogre/Gui_Tweak.cpp:214 editor/SceneInit.cpp:266
+msgctxt "Loaded"
+msgid "Loaded"
+msgstr "Caricato"
+
+#. Editor  status
+#: editor/SceneInit.cpp:371
+msgctxt "Saving"
+msgid "Saving"
+msgstr "Salvando"
+
+#. Editor  status
+#: ogre/Gui_Tweak.cpp:560 editor/SceneInit.cpp:407 editor/Update_Key.cpp:36
+msgctxt "Saved"
+msgid "Saved"
+msgstr "Salvato"
+
+#. Editor  status
+#: editor/SceneInit.cpp:300
+msgctxt "Updating"
+msgid "Updating"
+msgstr "Aggiornando"
+
+#. Editor  status
+#: editor/SceneInit.cpp:327
+msgctxt "Updated"
+msgid "Updated"
+msgstr "Aggiornato"
+
+#. MAIN  Menu
+#: Game.layout 5..Window ogre/Gui_Util.cpp:563
+msgctxt "SingleRace"
+msgid "Single Race"
+msgstr "Corsa singola"
+
+#. MAIN  Menu
+#: Game.layout 1542..SingleRace.Tab ogre/Championships.cpp:278:422:444
+#: ogre/Gui_Util.cpp:550
+msgctxt "Championship"
+msgid "Championship"
+msgstr "Campionato"
+
+#. MAIN  Menu
+#: ogre/Championships.cpp:278:422:444 ogre/Gui_Util.cpp:549
+msgctxt "Tutorial"
+msgid "Tutorial"
+msgstr "Tutorial"
+
+#. MAIN  Menu
+#: ogre/Challenges.cpp:393:512:633 ogre/Gui_Util.cpp:550
+msgctxt "Challenge"
+msgid "Challenge"
+msgstr "Sfida"
+
+#. MAIN  Menu
+msgctxt "HowToPlay"
+msgid "How To Play"
+msgstr ""
+
+#. MAIN  Menu
+msgctxt "ReplaysMenu"
+msgid "Replays"
+msgstr "Replay"
+
+#. MAIN  Menu
+msgctxt "Options"
+msgid "Options"
+msgstr "Opzioni"
+
+#. MAIN  Menu
+msgctxt "Quit"
+msgid "Quit"
+msgstr "Esci"
+
+#. MAIN  Menu
+#: Game.layout 13..SingleRace.Tab Editor.layout 14..Editor.Tab
+msgctxt "BackMenu"
+msgid "Back"
+msgstr "Indietro"
+
+#. MAIN  Menu
+msgctxt "Help"
+msgid "Help"
+msgstr "Aiuto"
+
+#. MAIN  Menu
+msgctxt "Readme"
+msgid "Readme"
+msgstr "Leggimi"
+
+#. MAIN  Menu
+msgctxt "Support"
+msgid "Support"
+msgstr ""
+
+#. MAIN  Menu
+msgctxt "Contributing"
+msgid "Contributing"
+msgstr ""
+
+#. MAIN  Menu
+msgctxt "Credits"
+msgid "Credits"
+msgstr ""
+
+#. MAIN  Help links
+msgctxt "LinksToWeb"
+msgid "Links to websites:"
+msgstr ""
+
+#. MAIN  Help links
+msgctxt "Homepage"
+msgid "Homepage"
+msgstr ""
+
+#. MAIN  Help links
+msgctxt "DocumentationWiki"
+msgid "Documentation (Wiki)"
+msgstr ""
+
+#. MAIN  Help links
+msgctxt "Forum"
+msgid "Forum"
+msgstr ""
+
+#. MAIN  Help links
+msgctxt "Sources"
+msgid "Sources"
+msgstr ""
+
+#. MAIN  Help links
+msgctxt "TrackEditorTutorial"
+msgid "Track Editor Tutorials"
+msgstr ""
+
+#. MAIN  Help links
+msgctxt "Translations"
+msgid "Translations"
+msgstr ""
+
+#. MAIN  Help links
+msgctxt "GameControllers"
+msgid "Game Controllers"
+msgstr ""
+
+#. MAIN  Help links
+msgctxt "Donations"
+msgid "Donations"
+msgstr ""
+
+#. MAIN  Championship  buttons
+#: Game.layout 1636..SingleRace.Championship.Button :1647:1658
+#: ogre/Championships.cpp:225:478 ogre/Challenges.cpp:570:684
+msgctxt "Start"
+msgid "Start"
+msgstr "Inizia"
+
+#. MAIN  Championship  buttons
+#: ogre/Championships.cpp:225:473:478 ogre/Challenges.cpp:555:570:684
+msgctxt "Continue"
+msgid "Continue"
+msgstr "Continua"
+
+#. MAIN  Championship  buttons
+#: ogre/Championships.cpp:225 ogre/Challenges.cpp:684
+msgctxt "Restart"
+msgid "Restart"
+msgstr "Riavvia"
+
+#. MAIN  Championship  buttons
+msgctxt "Close"
+msgid "Close"
+msgstr "Chiudi"
+
+#. MAIN  Challenge prizes
+#: ogre/Gui_Init.cpp:789 ogre/Challenges.cpp:458:673
+msgctxt "Prize"
+msgid "Prize"
+msgstr "Premio"
+
+#. MAIN  Challenge prizes
+#: ogre/Challenges.cpp:488
+msgctxt "Bronze"
+msgid "Bronze"
+msgstr "Bronzo"
+
+#. MAIN  Challenge prizes
+#: ogre/Challenges.cpp:488
+msgctxt "Silver"
+msgid "Silver"
+msgstr "Argento"
+
+#. MAIN  Challenge prizes
+#: ogre/Challenges.cpp:488
+msgctxt "Gold"
+msgid "Gold"
+msgstr "Oro"
+
+#. Challenge types
+#: Game.layout 1567..SingleRace.Championship.Tab
+msgctxt "Chall_Rally"
+msgid "Rally"
+msgstr "Rally"
+
+#. Challenge types
+#: Game.layout 1573..SingleRace.Championship.Tab
+msgctxt "Chall_Endurance"
+msgid "Endurance"
+msgstr "Resistenza"
+
+#. Challenge types
+#: Game.layout 1576..SingleRace.Championship.Tab
+msgctxt "Chall_Chase"
+msgid "Chase"
+msgstr "Caccia"
+
+#. Challenge types
+#: Game.layout 1582..SingleRace.Championship.Tab
+msgctxt "Chall_Stunts"
+msgid "Stunts"
+msgstr "Acrobazie"
+
+#. Challenge types
+#: Game.layout 1579..SingleRace.Championship.Tab
+msgctxt "Chall_Extreme"
+msgid "Extreme"
+msgstr "Estremo"
+
+#. Challenge types
+#: Game.layout 1588..SingleRace.Championship.Tab
+msgctxt "Chall_Special"
+msgid "Special"
+msgstr "Speciale"
+
+#. MAIN  Track Difficulty
+msgctxt "Diff0"
+msgid "Test Easy"
+msgstr "Test facile"
+
+#. MAIN  Track Difficulty
+msgctxt "Diff1"
+msgid "Very Easy"
+msgstr "Molto facile"
+
+#. MAIN  Track Difficulty
+#: Game.layout 1567..SingleRace.Championship.Tab
+msgctxt "Diff2"
+msgid "Easy"
+msgstr "Facile"
+
+#. MAIN  Track Difficulty
+#: Game.layout 1546..SingleRace.Championship.Tab
+msgctxt "Diff3"
+msgid "Medium"
+msgstr "Medio"
+
+#. MAIN  Track Difficulty
+#: Game.layout 1549..SingleRace.Championship.Tab
+msgctxt "Diff4"
+msgid "Hard"
+msgstr "Difficile"
+
+#. MAIN  Track Difficulty
+#: Game.layout 1552..SingleRace.Championship.Tab
+msgctxt "Diff5"
+msgid "Very Hard"
+msgstr "Molto difficile"
+
+#. MAIN  Track Difficulty
+msgctxt "Diff6"
+msgid "Extreme"
+msgstr "Estrema"
+
+#. MAIN  Track Difficulty
+msgctxt "Diff7"
+msgid "Ultra"
+msgstr "Ultra"
+
+#. MAIN  Track Difficulty
+msgctxt "DifficultyHelp"
+msgid ""
+"Changing difficulty does set: Tracks list filter and sorting, selected "
+"Vehicle and Track, visible HUD elements and driving aids. All can be changed"
+" manually later."
+msgstr ""
+
+#. MAIN  Track Difficulty
+msgctxt "SimulationHelp"
+msgid ""
+"Simulation mode does change how realistic vehicles are and how difficult "
+"driving is. It also changes damage mode and how fast vehicles break after "
+"hits. In Easy mode - vehicles are slow, feel heavy and cars don't slide "
+"much. In Medium - they are fast, slide and will spin wheels on snow and can "
+"on gravel. In Hard - cars rotate easier, and wheels spin already on gravel, "
+"good control is required."
+msgstr ""
+
+#. MAIN  Track
+#: Game.layout 17..SingleRace.Tab 347..SingleRace.Track.Text
+#: 433..SingleRace.Track.Button 872..SingleRace.Setup.Color.Tab
+#: 1431..SingleRace.Multiplayer.Game.Text 1720..SingleRace.Tab
+#: 1724..SingleRace.Track.Text ogre/ChampChall.cpp:387
+#: ogre/Gui_Replay.cpp:71:73:144 ogre/Hud_Create.cpp:227:253
+#: ogre/Championships.cpp:443 ogre/Gui_Init.cpp:535:801 ogre/SceneInit.cpp:214
+#: ogre/CarModel_Create.cpp:124 ogre/Challenges.cpp:514
+#: ogre/Gui_Network.cpp:124 editor/Gui_Tools.cpp:37:44:268:301
+#: editor/SceneInit.cpp:366
+msgctxt "Track"
+msgid "Track"
+msgstr "Pista"
+
+#. MAIN  Track
+#: Game.layout 19..SingleRace.Track.Check 1618..SingleRace.Championship.Check
+#: Editor.layout 2513..Editor.Vegetation.Road.Advanced.Text
+#: ogre/Gui_Network.cpp:125
+msgctxt "Reverse"
+msgid "Reverse"
+msgstr "Invertito"
+
+#. MAIN  Track
+#: Game.layout 25..SingleRace.Track.Button 485..SingleRace.Vehicle.Button
+msgctxt "NewGame"
+msgid "New Game"
+msgstr "Nuovo gioco"
+
+#. MAIN  Track
+#: Game.layout 417..SingleRace.Track.Text
+msgctxt "Find"
+msgid "Find"
+msgstr "Trova"
+
+#. MAIN  Track stats
+#: Game.layout 355..SingleRace.Track.Text :2029
+msgctxt "TrackBestTime"
+msgid "Best time"
+msgstr "Miglior tempo"
+
+#. MAIN  Track stats
+#: Game.layout 360..SingleRace.Track.Text :2033
+msgctxt "TrackAvgSpeed"
+msgid "Avg. speed"
+msgstr "Velocità media"
+
+#. MAIN  Track stats
+#: Game.layout 112..SingleRace.Track.Text :1794
+msgctxt "TrackLength"
+msgid "Length"
+msgstr "Lunghezza"
+
+#. MAIN  Track stats
+#: Game.layout 116..SingleRace.Track.Text :1798
+msgctxt "TrackArea"
+msgid "Area"
+msgstr "Area"
+
+#. MAIN  Track stats
+#: Game.layout 132..SingleRace.Track.Text 181..SingleRace.Track.Image
+#: 1814..SingleRace.Track.Text 1863..SingleRace.Track.Image
+msgctxt "TrackWidthAvg"
+msgid "Width avg."
+msgstr "Larghezza media."
+
+#. MAIN  Track stats
+#: Game.layout 138..SingleRace.Track.Text 188..SingleRace.Track.Image
+#: 1820..SingleRace.Track.Text 1870..SingleRace.Track.Image
+msgctxt "TrackHeightDiff"
+msgid "Height diff."
+msgstr "Diff. di altezza"
+
+#. MAIN  Track stats
+#: Game.layout 144..SingleRace.Track.Text 194..SingleRace.Track.Image
+#: 1826..SingleRace.Track.Text 1876..SingleRace.Track.Image
+#: editor/Update_EditKeyTxt.cpp:126
+msgctxt "TrackInAir"
+msgid "In air"
+msgstr "In aria"
+
+#. MAIN  Track stats
+#: Game.layout 150..SingleRace.Track.Text 200..SingleRace.Track.Image
+#: 1832..SingleRace.Track.Text 1882..SingleRace.Track.Image
+#: editor/Update_EditKeyTxt.cpp:127
+msgctxt "TrackPipes"
+msgid "Pipes"
+msgstr "Tubi"
+
+#. Championship Stage  stats
+#: ogre/Gui_Init.cpp:661:773:785 ogre/common/GuiCom_Track.cpp:206:207
+msgctxt "Name"
+msgid "Name"
+msgstr "Nome"
+
+#. Championship Stage  stats
+#: ogre/Championships.cpp:209 ogre/Challenges.cpp:597
+msgctxt "Tracks"
+msgid "Tracks"
+msgstr "Piste"
+
+#. Championship Stage  stats
+#: Game.layout 2078..SingleRace.Track.Text ogre/Championships.cpp:442
+#: ogre/Challenges.cpp:513:657
+msgctxt "Stage"
+msgid "Stage"
+msgstr "Stage"
+
+#. Championship Stage  stats
+#: Game.layout 1700..SingleRace.Tab ogre/Gui_Init.cpp:774:787
+msgctxt "Stages"
+msgid "Stages"
+msgstr "Stage"
+
+#. Championship Stage  stats
+#: Game.layout 1555..SingleRace.Championship.Tab :1558:1570
+#: ogre/Gui_Init.cpp:801 ogre/common/GuiCom_Track.cpp:210
+msgctxt "Scenery"
+msgid "Scenery"
+msgstr "Scenario"
+
+#. Championship Stage  stats
+msgctxt "Length"
+msgid "Length"
+msgstr "Lunghezza"
+
+#. Championship Stage  stats
+#: Game.layout 747..SingleRace.Vehicle.Text ogre/Championships.cpp:206:453
+#: ogre/Gui_Init.cpp:664:773:785:802 ogre/Challenges.cpp:522:594
+msgctxt "Difficulty"
+msgid "Difficulty"
+msgstr "Difficoltà"
+
+#. Championship Stage  stats
+#: ogre/Championships.cpp:456 ogre/Challenges.cpp:525
+msgctxt "Distance"
+msgid "Distance"
+msgstr "Distanza"
+
+#. Championship Stage  stats
+#: Game.layout 525..SingleRace.Vehicle.Text ogre/Championships.cpp:213
+#: ogre/Gui_Init.cpp:774:787:803 ogre/Challenges.cpp:601
+#: editor/Gui_Events.cpp:473
+msgctxt "Time"
+msgid "Time"
+msgstr "Tempo"
+
+#. Championship Stage  stats
+#: ogre/Championships.cpp:213 ogre/Gui_Init.cpp:774:803
+#: ogre/Challenges.cpp:601
+msgctxt "TimeMS"
+msgid "m:s"
+msgstr "m:s"
+
+#. MAIN  Challenge Stage  progress
+#: ogre/Hud_Create.cpp:230 ogre/Championships.cpp:217
+#: ogre/Gui_Init.cpp:775:788 ogre/Challenges.cpp:672
+msgctxt "Progress"
+msgid "Progress"
+msgstr "Progresso"
+
+#. MAIN  Challenge Stage  progress
+#: ogre/Championships.cpp:218 ogre/Gui_Init.cpp:775:789:803
+msgctxt "Score"
+msgid "Score"
+msgstr "Punteggio"
+
+#. MAIN  Challenge Stage  progress
+#: ogre/Championships.cpp:423
+msgctxt "TotalScore"
+msgid "Total score"
+msgstr "Punteggio totale"
+
+#. MAIN  Challenge Stage  progress
+#: ogre/Championships.cpp:469 ogre/Challenges.cpp:560:633:657
+msgctxt "Needed"
+msgid "Needed"
+msgstr "Necessario"
+
+#. MAIN  Challenge Stage  progress
+#: ogre/Championships.cpp:217:467 ogre/Challenges.cpp:476:532:672
+msgctxt "Finished"
+msgid "Finished"
+msgstr "Completato"
+
+#. MAIN  Challenge Stage  progress
+#: ogre/Championships.cpp:473 ogre/Challenges.cpp:394
+msgctxt "Passed"
+msgid "Passed"
+msgstr "Superato"
+
+#. MAIN  Challenge Stage  progress
+#: ogre/Championships.cpp:475 ogre/Challenges.cpp:394
+msgctxt "DidntPass"
+msgid "Didn't pass"
+msgstr "Non hai superato la prova"
+
+#. MAIN  Challenge Stage  progress
+#: ogre/Championships.cpp:473 ogre/Challenges.cpp:555
+msgctxt "NextStage"
+msgid "Continuing to next stage"
+msgstr "Continua lo stage seguente"
+
+#. MAIN  Challenge Stage  progress
+#: ogre/Championships.cpp:475 ogre/Challenges.cpp:556
+msgctxt "RepeatStage"
+msgid "Repeating stage"
+msgstr "Ripeti lo stage"
+
+#. MAIN  Challenge Stage  progress
+#: ogre/Challenges.cpp:607
+msgctxt "CarChange"
+msgid "Vehicle change"
+msgstr ""
+
+#. MAIN  Challenge Stage  progress
+#: ogre/Challenges.cpp:607
+msgctxt "Allowed"
+msgid "Allowed"
+msgstr "Consentito"
+
+#. Car  Names  from animals
+msgctxt "Turtle"
+msgid "Turtle"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Elephant"
+msgid "Elephant"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Alligator"
+msgid "Alligator"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Bison"
+msgid "Bison"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Caterpillar"
+msgid "Caterpillar"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Rhino"
+msgid "Rhino"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Bear"
+msgid "Bear"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Coyote"
+msgid "Coyote"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Squirrel"
+msgid "Squirrel"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Fox"
+msgid "Fox"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Hyena"
+msgid "Hyena"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Gorilla"
+msgid "Gorilla"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Lizard"
+msgid "Lizard"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Weasel"
+msgid "Weasel"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Wolf"
+msgid "Wolf"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Scorpion"
+msgid "Scorpion"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Buffalo"
+msgid "Buffalo"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Gazelle"
+msgid "Gazelle"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Jaguar"
+msgid "Jaguar"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Puma"
+msgid "Puma"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Leopard"
+msgid "Leopard"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Beetle"
+msgid "Beetle"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Swan"
+msgid "Swan"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Duck"
+msgid "Duck"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Hawk"
+msgid "Hawk"
+msgstr ""
+
+#. Car  Names  from animals
+msgctxt "Rabbit"
+msgid "Rabbit"
+msgstr ""
+
+#. Vehicle
+#: Game.layout 351..SingleRace.Track.Text 466..SingleRace.Tab
+#: 1591..SingleRace.Championship.Tab ogre/Gui_Replay.cpp:77
+#: ogre/Gui_Init.cpp:558
+msgctxt "Vehicle"
+msgid "Vehicle"
+msgstr ""
+
+#. Vehicle
+#: ogre/Gui_Replay.cpp:148 ogre/Gui_Init.cpp:786 ogre/Challenges.cpp:605
+msgctxt "Vehicles"
+msgid "Vehicles"
+msgstr ""
+
+#. TIP  Vehicle
+msgctxt "TipCarsList"
+msgid "Cars list. Press Enter or [New Game] to drive with it."
+msgstr "Lista delle auto. Premi Invio o [Nuovo gioco] per guidare."
+
+#. TIP  Vehicle
+#: Game.layout 506..SingleRace.Vehicle.Widget 674..SingleRace.Vehicle.Edit
+#: 680..SingleRace.Vehicle.Widget 687..SingleRace.Vehicle.Image
+msgctxt "TipCarDesc"
+msgid "Vehicle description text. Can have driving advices."
+msgstr ""
+
+#. TIP  Vehicle
+#: Game.layout 488..SingleRace.Vehicle.Button
+msgctxt "TipNewGameCar"
+msgid "Restart game."
+msgstr "Riavvia il gioco."
+
+#. Color  params
+#: Game.layout 894..SingleRace.Setup.Color.Text
+msgctxt "ColHue"
+msgid "Color - Hue"
+msgstr "Colore"
+
+#. Color  params
+#: Game.layout 909..SingleRace.Setup.Color.Text
+msgctxt "ColSat"
+msgid "Saturation"
+msgstr "Saturazione"
+
+#. Color  params
+#: Game.layout 924..SingleRace.Setup.Color.Text
+msgctxt "ColBright"
+msgid "Brightness"
+msgstr "Luminosità"
+
+#. Color  params
+#: Game.layout 939..SingleRace.Setup.Color.Text
+msgctxt "ColGloss"
+msgid "Glossiness"
+msgstr "Lucentezza"
+
+#. Color  params
+#: Game.layout 954..SingleRace.Setup.Color.Text
+msgctxt "ColReflect"
+msgid "Reflection"
+msgstr "Riflesso"
+
+#. Color  params
+#: Game.layout 877..SingleRace.Setup.Color.Button Editor.layout
+#: 1072..Editor.Layers.Blendmap.Noise.Button
+msgctxt "CarClrRandom"
+msgid "Random"
+msgstr "Casuale"
+
+#. Color  params
+#: Game.layout 883..SingleRace.Setup.Color.Text
+msgctxt "Adjust"
+msgid "Adjust"
+msgstr "Regola"
+
+#. Color  params
+msgctxt "Transparency"
+msgid "Transparency"
+msgstr "Trasparenza"
+
+#. Color  params
+msgctxt "Negative"
+msgid "Negative (darken)"
+msgstr "Negativo (scuro)"
+
+#. TIP  Vehicle Color
+#: Game.layout 896..SingleRace.Setup.Color.Text
+#: 899..SingleRace.Setup.Color.Slider 904..SingleRace.Setup.Color.Text
+msgctxt "TipChangeHue"
+msgid "Change car color (hue)."
+msgstr "Cambia il colore dell'auto (vernice)."
+
+#. TIP  Vehicle Color
+#: Game.layout 911..SingleRace.Setup.Color.Text
+#: 914..SingleRace.Setup.Color.Slider 919..SingleRace.Setup.Color.Text
+msgctxt "TipChangeSat"
+msgid "Change car color saturation (white-black)."
+msgstr "Cambia la saturazione del colore dell'auto (bianco-nero)."
+
+#. TIP  Vehicle Color
+#: Game.layout 926..SingleRace.Setup.Color.Text
+#: 929..SingleRace.Setup.Color.Slider 934..SingleRace.Setup.Color.Text
+msgctxt "TipChangeBright"
+msgid "Change car color brightness (dark-light)."
+msgstr "Cambia la luminosità del colore dell'auto (scuro-chiaro)."
+
+#. TIP  Vehicle Color
+#: Game.layout 941..SingleRace.Setup.Color.Text
+#: 944..SingleRace.Setup.Color.Slider 949..SingleRace.Setup.Color.Text
+msgctxt "TipChangeGloss"
+msgid "Change car color glossiness (matte-shiny)."
+msgstr "Cambia la lucentezza del colore dell'auto (opaco-lucido)."
+
+#. TIP  Vehicle Color
+#: Game.layout 956..SingleRace.Setup.Color.Text
+#: 959..SingleRace.Setup.Color.Slider 964..SingleRace.Setup.Color.Text
+msgctxt "TipChangeReflect"
+msgid "Change car color reflectiveness (matte-mirror)."
+msgstr "Cambia il riflesso del colore dell'auto (metallo-specchio)."
+
+#. MAIN  Vehicle basic stats
+#: Game.layout 49..SingleRace.Track.Text 692..SingleRace.Vehicle.Text :697
+msgctxt "Author"
+msgid "Author(s)"
+msgstr "Autore/i"
+
+#. MAIN  Vehicle basic stats
+#: Game.layout 510..SingleRace.Vehicle.Text
+#: :704:1183..SingleRace.Setup.Steering.Text ogre/Gui_Init.cpp:662
+msgctxt "CarSpeed"
+msgid "Speed"
+msgstr "Velocità"
+
+#. MAIN  Vehicle basic stats
+#: Game.layout 728..SingleRace.Vehicle.Text ogre/Gui_Init.cpp:668
+msgctxt "CarYear"
+msgid "Year"
+msgstr "Anno"
+
+#. MAIN  Vehicle basic stats
+#: Game.layout 718..SingleRace.Vehicle.Text ogre/Gui_Init.cpp:669
+msgctxt "CarType"
+msgid "Type"
+msgstr "Tipo"
+
+#. MAIN  Vehicle basic stats
+#: Game.layout 451..SingleRace.Track.Text 807..SingleRace.Vehicle.Text
+#: 2053..SingleRace.Track.Text
+msgctxt "TrackDrivability"
+msgid "Track Drivability"
+msgstr ""
+
+#. MAIN  Vehicle basic stats
+#: ogre/Gui_Util.cpp:282
+msgctxt "Undrivable"
+msgid "Undrivable"
+msgstr ""
+
+#. MAIN  Vehicle Stats
+#: ogre/Gui_Util.cpp:427
+msgctxt "Car_Mass"
+msgid "Mass"
+msgstr "Massa"
+
+#. MAIN  Vehicle Stats
+#: ogre/Gui_Util.cpp:430
+msgctxt "Car_MassFront"
+msgid "Mass on front"
+msgstr ""
+
+#. MAIN  Vehicle Stats
+#: ogre/Gui_Util.cpp:434
+msgctxt "Car_MaxTorque"
+msgid "Max Torque"
+msgstr "Torque mass."
+
+#. MAIN  Vehicle Stats
+#: ogre/Gui_Util.cpp:437
+msgctxt "Car_MaxPower"
+msgid "Max Power"
+msgstr "Mass.Potenza"
+
+#. MAIN  Vehicle Stats
+#: ogre/Gui_Util.cpp:440
+msgctxt "Car_BhpPerTon"
+msgid "Bhp per tonne"
+msgstr ""
+
+#. MAIN  Vehicle Stats
+#: ogre/Gui_Util.cpp:448
+msgctxt "Car_TopSpeed"
+msgid "Top Speed"
+msgstr "Velocità migliore"
+
+#. MAIN  Vehicle Stats
+#: ogre/Gui_Util.cpp:452:456:460
+msgctxt "Car_TimeTo"
+msgid "Time to"
+msgstr "Tempo di"
+
+#. MAIN  Vehicle Stats
+#: ogre/Gui_Util.cpp:464
+msgctxt "Car_StopTimeFrom"
+msgid "Stop time from"
+msgstr "Ferma il tempo da"
+
+#. MAIN  Car types
+msgctxt "CarType_Asphalt"
+msgid "Asphalt"
+msgstr "Asfalto"
+
+#. MAIN  Car types
+msgctxt "CarType_Racing"
+msgid "Racing"
+msgstr "Da corsa"
+
+#. MAIN  Car types
+msgctxt "CarType_Gravel"
+msgid "Gravel"
+msgstr "Ghiaia"
+
+#. MAIN  Car types
+msgctxt "CarType_Slow"
+msgid "Slow"
+msgstr "Lento"
+
+#. MAIN  Car types
+msgctxt "CarType_Terrain"
+msgid "Terrain"
+msgstr "Terreno"
+
+#. MAIN  Car types
+msgctxt "CarType_Extreme"
+msgid "Extreme"
+msgstr "Estremo"
+
+#. MAIN  Car types
+msgctxt "CarType_Other"
+msgid "Other"
+msgstr "Altro"
+
+#. MAIN  Car types
+msgctxt "CarType_Hover"
+msgid "Hovercraft"
+msgstr "Hovercraft"
+
+#. MAIN  Car types
+msgctxt "CarType_Spaceship"
+msgid "Spaceship"
+msgstr "Astronave"
+
+#. MsgBox
+#: ogre/Gui_Network.cpp:415:487
+msgctxt "MessageBox_Ok"
+msgid "Ok"
+msgstr "Ok"
+
+#. MsgBox
+msgctxt "MessageBox_Yes"
+msgid "Yes"
+msgstr "Sì"
+
+#. MsgBox
+msgctxt "MessageBox_No"
+msgid "No"
+msgstr "No"
+
+#. MsgBox
+msgctxt "MessageBox_Abort"
+msgid "Abort"
+msgstr "Abbandona"
+
+#. MsgBox
+msgctxt "MessageBox_Retry"
+msgid "Retry"
+msgstr "Riprova"
+
+#. MsgBox
+msgctxt "MessageBox_Ignore"
+msgid "Ignore"
+msgstr "Ignora"
+
+#. MsgBox
+#: ogre/Gui_Network.cpp:415:487
+msgctxt "MessageBox_Cancel"
+msgid "Cancel"
+msgstr "Annulla"
+
+#. MsgBox
+msgctxt "MessageBox_Try"
+msgid "Try"
+msgstr "Prova"
+
+#. MsgBox
+msgctxt "MessageBox_Continue"
+msgid "Continue"
+msgstr "Continua"
+
+#. Loading game tags
+#: ogre/LoadingBar.cpp:31:90 ogre/BaseApp_Create.cpp:724
+msgctxt "LoadingDesc"
+msgid "Loading, please wait..."
+msgstr "Caricamento, attendere prego..."
+
+#. Loading game tags
+#: ogre/BaseApp_Create.cpp:729
+msgctxt "Initializing"
+msgid "Initializing"
+msgstr "Inizializzazione"
+
+#. Loading game tags
+msgctxt "LS_CLEANUP"
+msgid "Cleaning up"
+msgstr "Ripulisci"
+
+#. Loading game tags
+msgctxt "LS_GAME"
+msgid "Loading game"
+msgstr "Caricamento del gioco"
+
+#. Loading game tags
+msgctxt "LS_SCENE"
+msgid "Loading scene"
+msgstr "Caricamento scenario"
+
+#. Loading game tags
+msgctxt "LS_CAR"
+msgid "Loading car"
+msgstr "Caricamento auto"
+
+#. Loading game tags
+msgctxt "LS_TER"
+msgid "Loading terrain"
+msgstr "Caricamento terreno"
+
+#. Loading game tags
+msgctxt "LS_ROAD"
+msgid "Loading Road"
+msgstr "Caricamento strada"
+
+#. Loading game tags
+msgctxt "LS_OBJS"
+msgid "Loading Objects"
+msgstr "Caricamento oggetti"
+
+#. Loading game tags
+msgctxt "LS_TREES"
+msgid "Loading Trees"
+msgstr "Caricamento alberi"
+
+#. Loading game tags
+msgctxt "LS_MISC"
+msgid "Finishing"
+msgstr "Completato"
+
+#. Units
+#: Game.layout 510..SingleRace.Vehicle.Text
+#: 1183..SingleRace.Setup.Steering.Text ogre/Gui_Util.cpp:445
+#: ogre/common/GuiCom_Track.cpp:467
+msgctxt "UnitKmh"
+msgid "km/h"
+msgstr "km/h"
+
+#. Units
+#: ogre/Gui_Util.cpp:446 ogre/common/GuiCom_Track.cpp:467
+msgctxt "UnitMph"
+msgid "mph"
+msgstr "mph"
+
+#. Units
+#: ogre/Championships.cpp:457 ogre/Challenges.cpp:526
+#: ogre/common/GuiCom_Options.cpp:54 ogre/common/GuiCom_Track.cpp:384
+msgctxt "UnitKm"
+msgid "km"
+msgstr "km"
+
+#. Units
+#: ogre/Championships.cpp:457 ogre/Challenges.cpp:526
+#: ogre/common/GuiCom_Track.cpp:384
+msgctxt "UnitMi"
+msgid "mi"
+msgstr "mi"
+
+#. Units
+#: Editor.layout 330..Editor.Terrain.Properties.Text :344
+#: ogre/common/GuiCom_Track.cpp:385
+msgctxt "UnitM"
+msgid "m"
+msgstr "m"
+
+#. Units
+#: ogre/Gui_Replay.cpp:180 ogre/Update_Poses.cpp:200
+msgctxt "UnitMB"
+msgid "MB"
+msgstr "MB"
+
+#. Units
+#: ogre/Gui_Util.cpp:428
+msgctxt "UnitKg"
+msgid "kg"
+msgstr "kg"
+
+#. Units
+#: ogre/Gui_Util.cpp:435
+msgctxt "UnitNm"
+msgid "Nm"
+msgstr "Nm"
+
+#. Units
+#: ogre/Gui_Util.cpp:435:438:449
+msgctxt "at"
+msgid "at"
+msgstr "a"
+
+#. Units
+#: ogre/Gui_Util.cpp:435:438
+msgctxt "UnitRpm"
+msgid "rpm"
+msgstr "rpm"
+
+#. Units
+#: ogre/Gui_Util.cpp:438
+msgctxt "UnitBhp"
+msgid "bhp"
+msgstr ""
+
+#. Units
+#: Game.layout 525..SingleRace.Vehicle.Text
+#: ogre/Gui_Util.cpp:449:453:457:461:465
+msgctxt "UnitS"
+msgid "s"
+msgstr "s"
+
+#. Scenery names
+msgctxt "SC_Asphalt"
+msgid "Asphalt"
+msgstr "Asfalto"
+
+#. Scenery names
+msgctxt "SC_Jungle"
+msgid "Jungle"
+msgstr "Giungla"
+
+#. Scenery names
+msgctxt "SC_JungleDark"
+msgid "JungleDark"
+msgstr "GiunglaNera"
+
+#. Scenery names
+msgctxt "SC_Desert"
+msgid "Desert"
+msgstr "Deserto"
+
+#. Scenery names
+msgctxt "SC_DesertMud"
+msgid "DesertMud"
+msgstr "DesertoTorbido"
+
+#. Scenery names
+msgctxt "SC_Savanna"
+msgid "Savanna"
+msgstr "Savana"
+
+#. Scenery names
+msgctxt "SC_SavannaDry"
+msgid "SavannaDry"
+msgstr "SavanaArida"
+
+#. Scenery names
+msgctxt "SC_Winter"
+msgid "Winter"
+msgstr "Inverno"
+
+#. Scenery names
+msgctxt "SC_WinterWet"
+msgid "WinterWet"
+msgstr "InvernoUmido"
+
+#. Scenery names
+msgctxt "SC_Forest"
+msgid "Forest"
+msgstr "Foresta"
+
+#. Scenery names
+msgctxt "SC_ForestMntn"
+msgid "ForestMntn"
+msgstr "ForestaMntgn"
+
+#. Scenery names
+msgctxt "SC_ForestYellow"
+msgid "ForestYellow"
+msgstr "ForestaGialla"
+
+#. Scenery names
+msgctxt "SC_Finland"
+msgid "Finland"
+msgstr "Finlandia"
+
+#. Scenery names
+msgctxt "SC_Island"
+msgid "Island"
+msgstr "Isola"
+
+#. Scenery names
+msgctxt "SC_IslandDark"
+msgid "IslandDark"
+msgstr "IsolaOscura"
+
+#. Scenery names
+msgctxt "SC_Mud"
+msgid "Mud"
+msgstr "Fango"
+
+#. Scenery names
+msgctxt "SC_Australia"
+msgid "Australia"
+msgstr "Australia"
+
+#. Scenery names
+msgctxt "SC_Greece"
+msgid "Greece"
+msgstr "Grecia"
+
+#. Scenery names
+msgctxt "SC_Canyon"
+msgid "Canyon"
+msgstr "Canyon"
+
+#. Scenery names
+msgctxt "SC_Autumn"
+msgid "Autumn"
+msgstr "Autunno"
+
+#. Scenery names
+msgctxt "SC_AutumnDark"
+msgid "AutumnDark"
+msgstr "AutunnoNero"
+
+#. Scenery names
+msgctxt "SC_Moss"
+msgid "Moss"
+msgstr "Palude"
+
+#. Scenery names
+msgctxt "SC_Volcanic"
+msgid "Volcanic"
+msgstr "Vulcano"
+
+#. Scenery names
+msgctxt "SC_VolcanicDark"
+msgid "VolcanicDark"
+msgstr "VulcanoNero"
+
+#. Scenery names
+msgctxt "SC_Unidentified"
+msgid "Unidentified"
+msgstr "Non identificato"
+
+#. Scenery names
+msgctxt "SC_Mars"
+msgid "Mars"
+msgstr "Marte"
+
+#. Scenery names
+msgctxt "SC_Crystals"
+msgid "Crystals"
+msgstr "Cristalli"
+
+#. Scenery names
+msgctxt "SC_GreeceWhite"
+msgid "GreeceWhite"
+msgstr "GreciaBianca"
+
+#. Scenery names
+msgctxt "SC_Toxic"
+msgid "Toxic"
+msgstr ""
+
+#. Scenery names
+msgctxt "SC_Surreal"
+msgid "Surreal"
+msgstr ""
+
+#. Scenery names
+msgctxt "SC_Alien"
+msgid "Alien"
+msgstr ""
+
+#. Scenery names
+msgctxt "SC_Other"
+msgid "Other"
+msgstr ""
+
+#. Scenery names
+msgctxt "SC_Stone"
+msgid "Stone"
+msgstr ""
+
+#. Scenery names
+#: Game.layout 1585..SingleRace.Championship.Tab
+msgctxt "SC_Space"
+msgid "Space"
+msgstr ""
+
+#. Scenery names
+msgctxt "SC_BlackDesert"
+msgid "BlackDesert"
+msgstr ""
+
+#. Scenery names
+msgctxt "SC_SurrealSpace"
+msgid "SurrealSpace"
+msgstr ""
+
+#. Scenery names
+msgctxt "SC_GreeceRocky"
+msgid "GreeceRocky"
+msgstr ""
+
+#. TIP  Vehicle stats
+#: Game.layout 706..SingleRace.Vehicle.Text :714
+msgctxt "TipCarSpeed"
+msgid ""
+"Vehicle speed rating, more means faster car. Warning, on gravel too fast "
+"cars won't be faster because they don't have enough grip."
+msgstr ""
+
+#. TIP  Vehicle stats
+#: Game.layout 720..SingleRace.Vehicle.Text :724
+msgctxt "TipCarType"
+msgid ""
+"Vehicle type, primary destination. Some can still be used on gravel even if "
+"not meant for it."
+msgstr ""
+
+#. TIP  Vehicle stats
+#: Game.layout 732..SingleRace.Vehicle.Text :737
+msgctxt "TipCarYear"
+msgid "Year when this vehicle's production started."
+msgstr ""
+
+#. TIP  Vehicle stats
+#: Game.layout 751..SingleRace.Vehicle.Text :757
+msgctxt "TipCarDifficulty"
+msgid ""
+"Vehicle handling difficulty. Higher values require more skill driving this "
+"vehicle well on tracks, and bring more trouble."
+msgstr ""
+
+#. TIP  Vehicle stats
+#: Game.layout 789..SingleRace.Vehicle.Text :795
+msgctxt "TipCarWidth"
+msgid "Year when this vehicle's production started."
+msgstr ""
+
+#. TIP  Vehicle stats
+#: Game.layout 448..SingleRace.Track.Image 455..SingleRace.Track.Text
+#: :461:804..SingleRace.Vehicle.Image 811..SingleRace.Vehicle.Text
+#: :817:2050..SingleRace.Track.Image 2057..SingleRace.Track.Text :2063
+msgctxt "TipDrivability"
+msgid ""
+"Drivability tells how well will vehicle drive on track. If undrivable, best "
+"to change vehicle. Many vehicles can't handle certain track properties. "
+"Gravel type cars handle all tracks well."
+msgstr ""
+
+#. TIP  Vehicle stats
+#: Game.layout 223..SingleRace.Track.Image 325..SingleRace.Track.Text
+#: 770..SingleRace.Vehicle.Text :776:1905..SingleRace.Track.Image
+#: 2007..SingleRace.Track.Text
+msgctxt "TipRating"
+msgid ""
+"Quality rating. Higher values mean: well made, playable, good looking and "
+"interesting design."
+msgstr ""
+
+#. Championship  end
+#: ogre/Challenges.cpp:475
+msgctxt "ChampEndCongrats"
+msgid "Congratulations !"
+msgstr "Congratulazioni !"
+
+#. Championship  end
+#: ogre/Championships.cpp:279
+msgctxt "TutorEndFinished"
+msgid "You have finished this tutorial."
+msgstr "Hai completato il tutorial."
+
+#. Championship  end
+#: ogre/Championships.cpp:279
+msgctxt "ChampEndFinished"
+msgid "You have finished this championship."
+msgstr "Hai completato il campionato."
+
+#. Championship  end
+#: ogre/Challenges.cpp:476
+msgctxt "ChallEndFinished"
+msgid "You have passed this challenge."
+msgstr "Hai superato la sfida."
+
+#. Championship  info text
+#: Game.layout 1692..SingleRace.Championship.Edit ogre/ChampChall.cpp:323:324
+msgctxt "ChampInfo"
+msgid ""
+"In tutorial/championship mode you drive a series of tracks. Minimum score "
+"(depending on your time) is needed to pass to next stage. Car changing is "
+"possible."
+msgstr "In modalità tutorial/campionato si guida una serie di piste. Un punteggio minimo (che varia a seconda del tempo) è necessario per passare allo stage successiva. E' possibile cambiare auto."
+
+#. Championship  info text
+#: ogre/ChampChall.cpp:322
+msgctxt "ChallInfo"
+msgid ""
+"In challenge mode the game has setup, most settings can't be changed. Time "
+"or position is needed. If you pass you receive bronze, silver or gold prize."
+msgstr "In modalità sfida la maggior parte delle impostazioni di gioco non può essere modicata. Bisogna superare le prove con un buon tempo per ricevere una medaglia d'oro, argento o bronzo."
+
+#. Championship  info text
+#: ogre/ChampChall.cpp:324
+msgctxt "ChampInfo2"
+msgid ""
+"Championships are usually long, have many tracks, but are easy to pass."
+msgstr "I campionati solitamente durano di più e sono composti da più piste, ma sono facilmente superabili."
+
+#. Championship  info text
+#: ogre/ChampChall.cpp:322
+msgctxt "ChallInfo2"
+msgid "Challenges are short but usually difficult to pass."
+msgstr "Le sfide sono brevi ma solitamente difficili da superare."
+
+#. Championship  info text
+#: ogre/ChampChall.cpp:323
+msgctxt "TutorInfo"
+msgid ""
+"Tutorials have just a few tracks. They are easy to pass and show various "
+"track elements."
+msgstr "I tutorial hanno solo poche piste. Sono facili da passare e mostrano vari elementi di pista."
+
+#. Hint  welcome screen
+#: ogre/Gui_Events.cpp:579
+msgctxt "Hint"
+msgid "Hint"
+msgstr "Suggerimento"
+
+#. Hint  welcome screen
+msgctxt "HintShow"
+msgid "Show at startup"
+msgstr "Mostra all'inizio"
+
+#. Hint  welcome screen
+msgctxt "HintKey"
+msgid "Ctrl-F1 - Show"
+msgstr "Ctrl-F1 - Mostra"
+
+#. Hint  welcome screen
+msgctxt "WelcomeTo"
+msgid "Welcome to"
+msgstr "Benvenuto a"
+
+#. Hint  welcome screen
+msgctxt "HintScreen"
+msgid ""
+"To change screen resolution and adjust graphics to your card press Screen "
+"button."
+msgstr ""
+
+#. Hint  welcome screen
+msgctxt "HintInput"
+msgid ""
+"To check keys used in game or reassign them, or to configure controller "
+"press Input button."
+msgstr ""
+
+#. TIP  Track  messages
+#: ogre/SceneInit.cpp:215
+msgctxt "TrackNotFound"
+msgid "Track not found !"
+msgstr "Pista non trovata!"
+
+#. TIP  Track  messages
+#: Game.layout 22..SingleRace.Track.Check 1621..SingleRace.Championship.Check
+msgctxt "TipReverse"
+msgid "Reverse track direction."
+msgstr "Direzione di pista al contrario."
+
+#. TIP  Track  messages
+#: Game.layout 28..SingleRace.Track.Button
+msgctxt "TipNewGame"
+msgid "Start game on new track or Restart on current."
+msgstr "Inizia il gioco su una nuova pista oppure riavvia quella attuale."
+
+#. TIP  Track  messages
+#: Game.layout 420..SingleRace.Track.Text 426..SingleRace.Track.Edit
+msgctxt "TipFind"
+msgid "Enter part of name to find (filters list)."
+msgstr "Inserisci una parte del nome per cercare (lista dei filtri)."
+
+#. TIP  Track  messages
+#: Game.layout 389..SingleRace.Track.Image :394
+msgctxt "TrackDifficulties"
+msgid "Various Track Difficulties"
+msgstr "Piste con difficoltà differenti"
+
+#. TIP  Track
+#: Game.layout 90..SingleRace.Track.Edit 95..SingleRace.Track.Widget
+#: 102..SingleRace.Track.Image 1772..SingleRace.Track.Edit
+#: 1777..SingleRace.Track.Widget 1784..SingleRace.Track.Image
+msgctxt "TipTrackDesc"
+msgid "Track description text."
+msgstr "Testo di descrizione pista"
+
+#. TIP  Track
+#: Game.layout 67..SingleRace.Track.Edit 72..SingleRace.Track.Widget
+#: 79..SingleRace.Track.Image 1749..SingleRace.Track.Edit
+#: 1754..SingleRace.Track.Widget 1761..SingleRace.Track.Image
+msgctxt "TipTrackAdvice"
+msgid "Track driving advices and warnings."
+msgstr ""
+
+#. TIP  Track
+#: Game.layout 37..SingleRace.Track.Image :1728
+msgctxt "TipTrackImg"
+msgid "In game screenshot for selected track."
+msgstr "Immagine di gioco per la pista selezionata."
+
+#. TIP  Track
+#: Game.layout 40..SingleRace.Track.Image :43:1731:1734
+msgctxt "TipTrackMap"
+msgid "Minimap of selected track, view from top."
+msgstr "Minimap della pista selezionata, vista dall'alto."
+
+#. TIP  Track
+#: Game.layout 37..SingleRace.Track.Image :40:43:1728:1731:1734
+msgctxt "TipClickMax"
+msgid "Click to maximize. Then click to close."
+msgstr ""
+
+#. TIP  Track
+#: Game.layout 401..SingleRace.Track.Button 473..SingleRace.Vehicle.Button
+msgctxt "TipTrkViewShort"
+msgid "Short list view."
+msgstr "Breve elenco."
+
+#. TIP  Track
+#: Game.layout 408..SingleRace.Track.Button 481..SingleRace.Vehicle.Button
+msgctxt "TipTrkViewDetailed"
+msgid "Detailed list view."
+msgstr "Elenco dettagliato."
+
+#. TIP  Track difficulties, on icons
+#: Game.layout 249..SingleRace.Track.Image 292..SingleRace.Track.Text
+#: 1931..SingleRace.Track.Image 1974..SingleRace.Track.Text
+msgctxt "fluids"
+msgid "fluids (water or mud)"
+msgstr "flussi (acqua o fango)"
+
+#. TIP  Track difficulties, on icons
+#: Game.layout 254..SingleRace.Track.Image 296..SingleRace.Track.Text
+#: 1936..SingleRace.Track.Image 1978..SingleRace.Track.Text
+msgctxt "bumps"
+msgid "bumps (bumpy terrain)"
+msgstr "bump"
+
+#. TIP  Track difficulties, on icons
+#: Game.layout 259..SingleRace.Track.Image 300..SingleRace.Track.Text
+#: 1941..SingleRace.Track.Image 1982..SingleRace.Track.Text
+msgctxt "jumps"
+msgid "jumps"
+msgstr "salti"
+
+#. TIP  Track difficulties, on icons
+#: Game.layout 264..SingleRace.Track.Image 304..SingleRace.Track.Text
+#: 1946..SingleRace.Track.Image 1986..SingleRace.Track.Text
+msgctxt "loops"
+msgid "loops"
+msgstr "anelli"
+
+#. TIP  Track difficulties, on icons
+#: Game.layout 269..SingleRace.Track.Image 308..SingleRace.Track.Text
+#: 1951..SingleRace.Track.Image 1990..SingleRace.Track.Text
+msgctxt "pipes"
+msgid "pipes"
+msgstr "tubi"
+
+#. TIP  Track difficulties, on icons
+#: Game.layout 274..SingleRace.Track.Image 312..SingleRace.Track.Text
+#: 1956..SingleRace.Track.Image 1994..SingleRace.Track.Text
+msgctxt "banked"
+msgid "banked"
+msgstr "piegamento"
+
+#. TIP  Track difficulties, on icons
+#: Game.layout 279..SingleRace.Track.Image 316..SingleRace.Track.Text
+#: 1961..SingleRace.Track.Image 1998..SingleRace.Track.Text
+msgctxt "frenzy"
+msgid "frenzy (curly road)"
+msgstr "frenesia (curva a spirale)"
+
+#. TIP  Track difficulties, on icons
+#: Game.layout 228..SingleRace.Track.Image 330..SingleRace.Track.Text
+#: 1910..SingleRace.Track.Image 2012..SingleRace.Track.Text
+msgctxt "long"
+msgid "long"
+msgstr "lungo"
+
+#. TIP  Track difficulties, on icons
+#: Game.layout 233..SingleRace.Track.Image 335..SingleRace.Track.Text
+#: 1915..SingleRace.Track.Image 2017..SingleRace.Track.Text
+msgctxt "sum"
+msgid "sum (of difficulties)"
+msgstr ""
+
+#. TIP  Track difficulties, on icons
+#: Game.layout 218..SingleRace.Track.Image 321..SingleRace.Track.Text
+#: 1900..SingleRace.Track.Image 2003..SingleRace.Track.Text
+msgctxt "difficulty"
+msgid "difficulty"
+msgstr "difficoltà"
+
+#. TIP  Track difficulties, on icons
+#: Game.layout 766..SingleRace.Vehicle.Text ogre/Gui_Init.cpp:663
+msgctxt "rating"
+msgid "rating"
+msgstr "valutazione"
+
+#. TIP  Track difficulties, on icons
+#: Game.layout 239..SingleRace.Track.Image 284..SingleRace.Track.Text
+#: 1921..SingleRace.Track.Image 1966..SingleRace.Track.Text
+msgctxt "objects"
+msgid "objects (dynamic)"
+msgstr "oggetti (dinamici)"
+
+#. TIP  Track difficulties, on icons
+#: Game.layout 244..SingleRace.Track.Image 288..SingleRace.Track.Text
+#: 1926..SingleRace.Track.Image 1970..SingleRace.Track.Text
+msgctxt "obstacles"
+msgid "obstacles (on road or in pipe)"
+msgstr "ostacoli (su strada o nei tubi)"
+
+#. TIP  Track stats
+#: Game.layout 155..SingleRace.Track.Text :160:206..SingleRace.Track.Image
+#: 1837..SingleRace.Track.Text :1842:1888..SingleRace.Track.Image
+msgctxt "TrackBankAng"
+msgid "Road banking angles: average and maximum, in degrees."
+msgstr "Angoli di piegamento della strada: medio e massimo, in gradi."
+
+#. Setup  Vehicle,Game
+#: Game.layout 969..SingleRace.Setup.Tab ogre/Challenges.cpp:612
+#: ogre/Gui_Network.cpp:131
+msgctxt "Game"
+msgid "Game"
+msgstr "Gioco"
+
+#. Setup  Vehicle,Game
+#: Game.layout 845..SingleRace.Tab
+msgctxt "Setup"
+msgid "Setup"
+msgstr "Configurazione"
+
+#. Game  Split screen
+#: Game.layout 1274..SingleRace.Tab
+msgctxt "SplitScreen"
+msgid "Split Screen"
+msgstr ""
+
+#. Game  Split screen
+#: Game.layout 1330..SingleRace.SplitScreen.Text
+msgctxt "NumLocalPlayers"
+msgid "Number of local players"
+msgstr "Numero di giocatori locali"
+
+#. Game  Split screen
+#: Game.layout 1285..SingleRace.SplitScreen.Check
+msgctxt "SplitVertically"
+msgid "Split Vertically"
+msgstr "Dividi verticalmente"
+
+#. Game  Split screen
+#: Game.layout 1289..SingleRace.SplitScreen.Check ogre/Gui_Network.cpp:128
+msgctxt "ReverseStartOrder"
+msgid "Reverse starting order"
+msgstr "Ordine inverso di partenza"
+
+#. Game  Split screen
+#: Game.layout 1343..SingleRace.SplitScreen.Text
+msgctxt "NumLaps"
+msgid "Number of laps"
+msgstr "Numero di giri"
+
+#. MAIN  Game  Simulation
+#: Game.layout 1224..SingleRace.Setup.Steering.Text ogre/Gui_Replay.cpp:165
+#: ogre/Gui_Init.cpp:539 ogre/Challenges.cpp:614 ogre/Gui_Network.cpp:132
+#: editor/Update_EditKeyTxt.cpp:345
+msgctxt "Simulation"
+msgid "Simulation"
+msgstr "Simulazione"
+
+#. Setup  ABS,TCS
+#: Game.layout 1266..SingleRace.Setup.Other.Text
+msgctxt "NotRecommended"
+msgid "Not recommended"
+msgstr ""
+
+#. Setup  ABS,TCS
+#: Game.layout 1256..SingleRace.Setup.Other.Check
+msgctxt "ABS"
+msgid "ABS (antilock brakes)"
+msgstr "ABS (freni antibloccaggio)"
+
+#. Setup  ABS,TCS
+#: Game.layout 1258..SingleRace.Setup.Other.Check
+msgctxt "TipABS"
+msgid "Prevents wheel lock when braking (default: off)."
+msgstr "Impedisce il bloccaggio delle ruote in frenata (default: disattivato)"
+
+#. Setup  ABS,TCS
+#: Game.layout 1261..SingleRace.Setup.Other.Check
+msgctxt "TCS"
+msgid "TCS (traction control)"
+msgstr "TCS (controllo di trazione)"
+
+#. Setup  ABS,TCS
+#: Game.layout 1263..SingleRace.Setup.Other.Check
+msgctxt "TipTCS"
+msgid "Prevents wheel spinning when accelerating (default: off)."
+msgstr "Impedisce che le ruote girino durante l'accelerazione (default: disattivato)."
+
+#. Setup  steering
+#: Game.layout 1149..SingleRace.Setup.Steering.Tab
+msgctxt "Gravel"
+msgid "Gravel"
+msgstr "Ghiaia"
+
+#. Setup  steering
+#: Game.layout 1152..SingleRace.Setup.Steering.Tab
+msgctxt "Asphalt"
+msgid "Asphalt"
+msgstr "Asfalto"
+
+#. Setup  steering
+#: Game.layout 1156..SingleRace.Setup.Steering.Text
+msgctxt "SpeedSensitiveSteering"
+msgid "Speed Sensitive Steering"
+msgstr "Sensibilità dello sterzo"
+
+#. Setup  steering
+#: Game.layout 1158..SingleRace.Setup.Steering.Text
+msgctxt "TipSpeedSensitiveSteering"
+msgid "Decreases steering range with higher velocity."
+msgstr "Riduci il raggio di sterzata con maggiore velocità."
+
+#. Setup  steering
+#: Game.layout 1161..SingleRace.Setup.Steering.Text :1198
+msgctxt "SSS_Effect"
+msgid "Effect"
+msgstr "Effetto"
+
+#. Setup  steering
+#: Game.layout 1169..SingleRace.Setup.Steering.Text
+msgctxt "SSS_SpeedFactor"
+msgid "Speed Factor"
+msgstr "Fattore di velocità"
+
+#. Setup  steering
+#: Game.layout 1220..SingleRace.Setup.Steering.Text
+msgctxt "SteerRange"
+msgid "Steering range multipliers"
+msgstr "Moltiplicatori raggio di sterzata"
+
+#. Setup  steering
+#: Game.layout 1226..SingleRace.Setup.Steering.Text
+#: :1230:1233..SingleRace.Setup.Steering.Slider
+msgctxt "TipSteerSim"
+msgid "Steering range multiplier, for simulation mode (Easy,Normal)."
+msgstr "Moltiplicatore del raggio di sterzata, in modalità di simulazione (facile, normale)."
+
+#. Setup  steering
+#: Game.layout 1238..SingleRace.Setup.Steering.Text
+#: :1242:1245..SingleRace.Setup.Steering.Slider
+msgctxt "TipSteerSurf"
+msgid "Steering range multiplier, for surface (Gravel,Asphalt)."
+msgstr "Moltiplicatore del raggio di sterzata, per superficie (ghiaia, asfalto)."
+
+#. Setup  Gearbox
+#: Game.layout 1116..SingleRace.Setup.Tab
+msgctxt "Gearbox"
+msgid "Gearbox"
+msgstr "Cambio automatico"
+
+#. Setup  Gearbox
+#: Game.layout 1123..SingleRace.Setup.Gearbox.Check
+msgctxt "AutoGearbox"
+msgid "Auto gearbox"
+msgstr "Cambio automatico"
+
+#. Setup  Gearbox
+#: Game.layout 1125..SingleRace.Setup.Gearbox.Check
+msgctxt "TipAutoGearbox"
+msgid "Uncheck for manual gears changing."
+msgstr "Deseleziona per guidare con il cambio manuale."
+
+#. Setup  Gearbox
+#: Game.layout 1128..SingleRace.Setup.Gearbox.Check
+msgctxt "AutoRear"
+msgid "Auto Rear gear"
+msgstr "Cambio automatico posteriore"
+
+#. Setup  Gearbox
+#: Game.layout 1130..SingleRace.Setup.Gearbox.Check
+msgctxt "TipAutoRear"
+msgid "Uncheck for manual Rear gear changing."
+msgstr "Deseleziona per guidare con la retro manuale."
+
+#. Setup  Gearbox
+#: Game.layout 1133..SingleRace.Setup.Gearbox.Check
+msgctxt "RearThrottleInverse"
+msgid "Rear throttle inverse"
+msgstr "Retro invertita"
+
+#. Setup  Gearbox
+#: Game.layout 1135..SingleRace.Setup.Gearbox.Check
+msgctxt "TipRearThrottleInverse"
+msgid "Inverse throttle and brake function in rear gear."
+msgstr "Accelerazione in retro e funzionamento dei freni invertiti."
+
+#. Setup  collision
+#: Game.layout 1294..SingleRace.SplitScreen.Check
+msgctxt "VegetCol"
+msgid "Vegetation collision"
+msgstr "Collisione con vegetazione"
+
+#. Setup  collision
+#: Game.layout 1281..SingleRace.SplitScreen.Check ogre/Gui_Network.cpp:133
+msgctxt "CarCollis"
+msgid "Cars collision"
+msgstr "Collisione con auto"
+
+#. Setup  collision
+#: Game.layout 1304..SingleRace.SplitScreen.Check
+msgctxt "RoadWallFullCollis"
+msgid "Road wall full collision"
+msgstr "Collisione completa con strade e muri"
+
+#. Setup  collision
+#: Game.layout 1299..SingleRace.SplitScreen.Check
+msgctxt "DynamicObjects"
+msgid "Dynamic Objects"
+msgstr "Oggetti dinamici"
+
+#. Game  Damage
+#: Game.layout 1025..SingleRace.Setup.Game.Text Editor.layout
+#: 302..Editor.Sun.Fog.Text 1012..Editor.Layers.Blendmap.Blendmap.Text
+#: ogre/Challenges.cpp:615 ogre/Gui_Network.cpp:139
+msgctxt "Damage"
+msgid "Damage"
+msgstr "Danni"
+
+#. Game  Damage
+#: ogre/Gui_Init.cpp:353:359 editor/Update_EditKeyTxt.cpp:295
+#: ogre/common/GuiCom_Options.cpp:66:81
+msgctxt "None"
+msgid "None"
+msgstr "Niente"
+
+#. Game  Damage
+#: ogre/Gui_Init.cpp:353
+msgctxt "Reduced"
+msgid "Reduced"
+msgstr "Ridotto"
+
+#. Game  Damage
+#: ogre/Gui_Init.cpp:354
+msgctxt "Normal"
+msgid "Normal"
+msgstr "Normale"
+
+#. Game  Damage
+#: Game.layout 1041..SingleRace.Setup.Game.Text ogre/Gui_Network.cpp:140
+msgctxt "DamageDecLap"
+msgid "Repair each lap"
+msgstr "Ripara ad ogni giro"
+
+#. Game  Boost
+#: Game.layout 978..SingleRace.Setup.Game.Text 1053..SingleRace.Setup.Tab
+#: ogre/Gui_Init.cpp:540 ogre/Challenges.cpp:618 ogre/Gui_Network.cpp:136
+msgctxt "Boost"
+msgid "Boost"
+msgstr "Turbo"
+
+#. Game  Boost
+#: Game.layout 993..SingleRace.Setup.Game.Text ogre/Challenges.cpp:619
+#: ogre/Gui_Network.cpp:137
+msgctxt "Flip"
+msgid "Flip"
+msgstr "Ribalta l'auto"
+
+#. Game  Boost
+#: ogre/Gui_Init.cpp:341:347 ogre/Gui_Network.cpp:43
+msgctxt "Never"
+msgid "Never"
+msgstr "Mai"
+
+#. Game  Boost
+#: ogre/Gui_Init.cpp:342:348:359 ogre/Gui_Network.cpp:43
+msgctxt "Always"
+msgid "Always"
+msgstr "Sempre"
+
+#. Game  Boost
+#: ogre/Challenges.cpp:613 ogre/Gui_Network.cpp:135
+#: ogre/common/GuiCom_Options.cpp:66
+msgctxt "Any"
+msgid "Any"
+msgstr "Qualsiasi"
+
+#. Game  Boost
+#: ogre/Gui_Init.cpp:341:361 ogre/Gui_Network.cpp:43
+msgctxt "FuelLap"
+msgid "Fuel each lap"
+msgstr "Ricarica per giro"
+
+#. Game  Boost
+#: ogre/Gui_Init.cpp:342:361 ogre/Gui_Network.cpp:43
+msgctxt "FuelTime"
+msgid "Fuel over time"
+msgstr "Ricarica per tempo"
+
+#. Game  Boost
+#: ogre/Gui_Init.cpp:347
+msgctxt "FuelBoost"
+msgid "Boost Fuel"
+msgstr "Miscela turbo"
+
+#. Game  Boost
+#: ogre/Gui_Init.cpp:360
+msgctxt "GoBackTime"
+msgid "Go back time"
+msgstr ""
+
+#. Replay
+#: ogre/Gui_Replay.cpp:60:81:118:125:281:305:314
+msgctxt "Replay"
+msgid "Replay"
+msgstr "Replay"
+
+#. Replay
+#: ogre/Gui_Replay.cpp:60:81
+msgctxt "RplLoad"
+msgid "Load"
+msgstr "Carica"
+
+#. Replay
+#: ogre/Gui_Replay.cpp:118:125 editor/SceneInit.cpp:366
+msgctxt "RplSave"
+msgid "Save"
+msgstr "Salva"
+
+#. Replay
+msgctxt "ToolsTime"
+msgid "Warning: May take several minutes!"
+msgstr ""
+
+#. Replay
+#: ogre/Gui_Replay.cpp:118:305:314 ogre/Gui_Tweak.cpp:503
+#: editor/Gui_Tools.cpp:268:301
+msgctxt "AlreadyExists"
+msgid "Already exists"
+msgstr "Esiste già"
+
+#. Replay
+#: ogre/Gui_Replay.cpp:71:73:77
+msgctxt "DoesntExist"
+msgid "Doesn't exist"
+msgstr ""
+
+#. Replay  list
+#: Game.layout 1614..SingleRace.Championship.Check
+#: ogre/common/GuiCom_TrackUpd.cpp:142
+msgctxt "RplAll"
+msgid "All"
+msgstr "Tutto"
+
+#. Replay  list
+msgctxt "RplCurrent"
+msgid "Current"
+msgstr "Attuale"
+
+#. Replay  list
+#: Game.layout 869..SingleRace.Setup.Color.Tab ogre/CarModel_Create.cpp:125
+msgctxt "Ghost"
+msgid "Ghost"
+msgstr "Fantasma"
+
+#. Replay  list
+msgctxt "RplGhosts"
+msgid "Ghosts"
+msgstr "Fantasmi"
+
+#. Replay  stats
+#: ogre/Gui_Replay.cpp:164
+msgctxt "RplTime"
+msgid "Time"
+msgstr "Tempo"
+
+#. Replay  stats
+#: ogre/Gui_Replay.cpp:181
+msgctxt "RplVersion"
+msgid "Version"
+msgstr "Versione"
+
+#. Replay  stats
+#: ogre/Update_Poses.cpp:200
+msgctxt "RplSize"
+msgid "size"
+msgstr "grandezza"
+
+#. Replay  stats
+#: ogre/Gui_Replay.cpp:180
+msgctxt "RplFileSize"
+msgid "File size"
+msgstr "Grandezza del file"
+
+#. Replay  stats
+#: ogre/Update_Poses.cpp:200
+msgctxt "RplRecTime"
+msgid "Recorded   time"
+msgstr "Tempo registrato"
+
+#. Replay  View  Main
+msgctxt "RplGhost"
+msgid "Show ghost drive - best lap"
+msgstr "Mostra la guida fantasma - miglior giro"
+
+#. Replay  View  Main
+msgctxt "TracksGhost"
+msgid "Track's ghost (ES car best drive for track)"
+msgstr "Piste fantasma (ES miglior guidatore per pista)"
+
+#. Replay  View  other
+msgctxt "RplRewindGhost"
+msgid "Rewind Ghost"
+msgstr "Riavvolgi il fantasma"
+
+#. Replay  View  other
+msgctxt "RplGhostOther"
+msgid "Other car ghost (when current unavailable)"
+msgstr "Altra auto fantasma (quando non è disponibile quella corrente)"
+
+#. Replay  View  setup
+msgctxt "RplAutoRec"
+msgid "Auto record replay"
+msgstr "Registrazione replay automatica"
+
+#. Replay  View  setup
+msgctxt "RplBestOnly"
+msgid "Save ghost only for best time"
+msgstr "Salva il fantasma solo per il tempo migliore"
+
+#. Replay  View  setup
+msgctxt "RplAlpha"
+msgid "Transparent ghost"
+msgstr "Fantasma trasparente"
+
+#. Replay  View  setup
+msgctxt "RplMaxNumViewports"
+msgid "Max. number of viewports (see less, for more player replays)"
+msgstr "Mass. numero di finestre (guarda di meno, per maggiori replay di giocatori)"
+
+#. Replay  View  setup
+msgctxt "GhostHideDist"
+msgid "Hide ghosts if distance is below"
+msgstr ""
+
+#. Screen
+msgctxt "Screen"
+msgid "Screen"
+msgstr "Schermata"
+
+#. Screen
+msgctxt "Video"
+msgid "Video"
+msgstr "Video"
+
+#. Screen
+msgctxt "Resolution"
+msgid "Resolution"
+msgstr "Risoluzione"
+
+#. Screen
+msgctxt "Fullscreen"
+msgid "Fullscreen"
+msgstr "Schermo intero"
+
+#. Screen
+msgctxt "Complex"
+msgid "Complex"
+msgstr "Complesso"
+
+#. Screen
+msgctxt "Simple"
+msgid "Simple"
+msgstr "Semplice"
+
+#. Screen  info
+msgctxt "NeedRestart"
+msgid "* need restart"
+msgstr "* necessita il riavvio"
+
+#. Screen  info
+msgctxt "GraphicsRightHQ"
+msgid ""
+"By default better quality (less Fps) is on right. Marked with + if on left."
+msgstr "Da predefinito, una migliore qualità (meno fps) si trova sulla destra. Contrassegnato con + a sinistra."
+
+#. Screen  vertical synchronisation
+msgctxt "VSync"
+msgid "VSync"
+msgstr "VSync"
+
+#. Screen  advanced
+msgctxt "RenderSystem"
+msgid "Render System"
+msgstr "Sistema di rendering"
+
+#. Screen  advanced
+msgctxt "AntiAliasing"
+msgid "Antialiasing"
+msgstr "Antialiasing"
+
+#. Screen  advanced
+msgctxt "Change"
+msgid "Change"
+msgstr "Cambia"
+
+#. Screen  advanced
+msgctxt "LimitFPS"
+msgid "Limit frames per second"
+msgstr "Limite frame al secondo"
+
+#. Screen  advanced
+msgctxt "FramesPerSec"
+msgid "Frames per second"
+msgstr "Frame al secondo"
+
+#. Screen  advanced
+msgctxt "SleepMS"
+msgid "Sleep interval [milisec]"
+msgstr "Intervallo sonno [milisec]"
+
+#. Graphics Presets
+msgctxt "GraphicsPreset"
+msgid "Graphics preset"
+msgstr "Grafica preimpostata"
+
+#. Graphics Presets
+#: ogre/common/GuiCom_Options.cpp:62:104
+msgctxt "GraphicsAll_Lowest"
+msgid "Lowest"
+msgstr "Più bassa"
+
+#. Graphics Presets
+#: ogre/common/GuiCom_Options.cpp:104
+msgctxt "GraphicsAll_Low"
+msgid "Low"
+msgstr "Basso"
+
+#. Graphics Presets
+#: ogre/common/GuiCom_Options.cpp:62:105
+msgctxt "GraphicsAll_Medium"
+msgid "Medium"
+msgstr "Media"
+
+#. Graphics Presets
+#: ogre/common/GuiCom_Options.cpp:63:105
+msgctxt "GraphicsAll_High"
+msgid "High"
+msgstr "Alto"
+
+#. Graphics Presets
+#: ogre/common/GuiCom_Options.cpp:106
+msgctxt "GraphicsAll_Higher"
+msgid "Higher"
+msgstr "Alta"
+
+#. Graphics Presets
+#: ogre/common/GuiCom_Options.cpp:106
+msgctxt "GraphicsAll_VeryHigh"
+msgid "Very High"
+msgstr "Molto alta"
+
+#. Graphics Presets
+#: ogre/common/GuiCom_Options.cpp:107
+msgctxt "GraphicsAll_Ultra"
+msgid "Ultra"
+msgstr "Ultra"
+
+#. Graphics Presets
+#: ogre/common/GuiCom_Options.cpp:107
+msgctxt "GraphicsAll_Impossible"
+msgid "Impossible"
+msgstr "Impossibile"
+
+#. Network Multiplayer  headers
+#: Game.layout 1357..SingleRace.Tab ogre/Gui_Replay.cpp:163
+msgctxt "Multiplayer"
+msgid "Multiplayer"
+msgstr "Multigiocatore"
+
+#. Network Multiplayer  headers
+#: ogre/Gui_Init.cpp:534
+msgctxt "Game name"
+msgid "Game name"
+msgstr "Nome del gioco"
+
+#. Network Multiplayer  headers
+#: ogre/Gui_Init.cpp:536:802 ogre/Gui_Network.cpp:127
+msgctxt "Laps"
+msgid "Laps"
+msgstr "Giri"
+
+#. Network Multiplayer  headers
+#: Game.layout 823..SingleRace.Vehicle.Tab
+#: :826:829:832:857..SingleRace.Setup.Color.Tab :860:863:866
+#: ogre/Gui_Init.cpp:557 ogre/CarModel_Create.cpp:127
+msgctxt "Player"
+msgid "Player"
+msgstr "Giocatore"
+
+#. Network Multiplayer  headers
+#: ogre/Gui_Init.cpp:537 ogre/Gui_Network.cpp:129
+msgctxt "Players"
+msgid "Players"
+msgstr "Giocatori"
+
+#. Network Multiplayer  headers
+#: ogre/Gui_Init.cpp:538
+msgctxt "Collis."
+msgid "Collis."
+msgstr "Collis."
+
+#. Network Multiplayer  headers
+#: ogre/Gui_Init.cpp:541
+msgctxt "Locked"
+msgid "Locked"
+msgstr "Bloccato"
+
+#. Network Multiplayer  headers
+#: ogre/Gui_Init.cpp:559
+msgctxt "Peers"
+msgid "Peers"
+msgstr "Peer"
+
+#. Network Multiplayer  headers
+#: ogre/Gui_Init.cpp:560
+msgctxt "Ping"
+msgid "Ping"
+msgstr "Ping"
+
+#. Network Server
+#: Game.layout 1480..SingleRace.Multiplayer.Tab
+msgctxt "NetServer"
+msgid "Server"
+msgstr "Server"
+
+#. Network Server
+#: Game.layout 1492..SingleRace.Multiplayer.Server.Text
+msgctxt "NetGamesAvail"
+msgid "Available games"
+msgstr "Giochi disponibili"
+
+#. Network Server
+#: Game.layout 1500..SingleRace.Multiplayer.Server.Button
+msgctxt "NetRefreshList"
+msgid "Get/refresh list"
+msgstr "Ricevi/aggiorna l'elenco"
+
+#. Network Server
+#: Game.layout 1506..SingleRace.Multiplayer.Server.Button
+msgctxt "NetJoinGame"
+msgid "Join game"
+msgstr "Unisciti al gioco"
+
+#. Network Server
+#: ogre/Gui_Network.cpp:412
+msgctxt "NetJoinLocked"
+msgid "Protected game"
+msgstr "Gioco protetto"
+
+#. Network Server
+#: Game.layout 1369..SingleRace.Multiplayer.Directconnect.Button
+msgctxt "NetCreateGame"
+msgid "Create game"
+msgstr "Crea gioco"
+
+#. Network Server
+#: Game.layout 1362..SingleRace.Multiplayer.Tab
+#: 1376..SingleRace.Multiplayer.Directconnect.Button ogre/Gui_Network.cpp:484
+msgctxt "NetDirectConnect"
+msgid "Direct connect"
+msgstr "Connessione diretta"
+
+#. Network Server
+#: ogre/Gui_Network.cpp:485
+msgctxt "NetAddress"
+msgid "Address"
+msgstr "Indirizzo"
+
+#. Network Server
+#: ogre/Gui_Init.cpp:542
+msgctxt "NetHost"
+msgid "Host"
+msgstr "Host"
+
+#. Network Server
+#: ogre/Gui_Init.cpp:543 ogre/Gui_Network.cpp:485
+msgctxt "NetPort"
+msgid "Port"
+msgstr "Porta"
+
+#. Network Server
+#: Game.layout 1394..SingleRace.Multiplayer.Game.Text
+#: ogre/Gui_Network.cpp:413:485
+msgctxt "NetPassword"
+msgid "Password"
+msgstr "Password"
+
+#. Network Game
+#: Game.layout 1384..SingleRace.Multiplayer.Tab
+msgctxt "NetGame"
+msgid "Game"
+msgstr "Gioco"
+
+#. Network Game
+#: Game.layout 1386..SingleRace.Multiplayer.Game.Text
+msgctxt "NetGameName"
+msgid "Game Name"
+msgstr "Nome del gioco"
+
+#. Network Game
+#: ogre/Gui_Network.cpp:230:520
+msgctxt "NetStart"
+msgid "Start"
+msgstr "Inizia"
+
+#. Network Game
+#: Game.layout 1402..SingleRace.Multiplayer.Game.Button ogre/Gui_Init.cpp:561
+#: ogre/Gui_Network.cpp:230:326:526
+msgctxt "NetReady"
+msgid "Ready"
+msgstr "Pronto"
+
+#. Network Game
+#: ogre/Gui_Network.cpp:525
+msgctxt "NetWaiting"
+msgid "Waiting..."
+msgstr "In attesa..."
+
+#. Network Game
+#: ogre/Gui_Network.cpp:514
+msgctxt "NetNew"
+msgid "New game"
+msgstr "Nuovo gioco"
+
+#. Network Game
+#: Game.layout 1407..SingleRace.Multiplayer.Game.Button
+msgctxt "NetLeaveGame"
+msgid "Leave game"
+msgstr "Esci dal gioco"
+
+#. Network Game
+#: Game.layout 1415..SingleRace.Multiplayer.Game.Text
+msgctxt "NetChat"
+msgid "Chat"
+msgstr "Chat"
+
+#. Network Game
+#: ogre/Hud_UpdatesAll.cpp:111
+msgctxt "FinishedCommaPlace"
+msgid "finished, place"
+msgstr "completato, piazza"
+
+#. Network status
+#: ogre/Hud_UpdatesAll.cpp:115
+msgctxt "NetWaitingForOthers"
+msgid "Waiting for others"
+msgstr "In attesa di altri giocatori"
+
+#. Network status
+#: ogre/Gui_Network.cpp:463
+msgctxt "ListeningOnPort"
+msgid "Listening on port"
+msgstr ""
+
+#. Network status
+#: ogre/Gui_Network.cpp:371
+msgctxt "ConnectingTo"
+msgid "Connecting to"
+msgstr "Connetti a"
+
+#. Network status
+#: ogre/Gui_Network.cpp:258
+msgctxt "Connected"
+msgid "Connected"
+msgstr "Connesso"
+
+#. Network status
+#: ogre/Gui_Network.cpp:269
+msgctxt "Disconnected"
+msgid "Disconnected"
+msgstr "Disconnesso"
+
+#. Network status
+msgctxt "NetworkError"
+msgid "Network Error"
+msgstr "Errore di rete"
+
+#. Network messages
+#: network/gameclient.cpp:344
+msgctxt "NetWrongPassword"
+msgid "Wrong password."
+msgstr "Password errata."
+
+#. Network messages
+#: network/gameclient.cpp:342:379
+msgctxt "NetGameProtocolError"
+msgid "Incompatible protocol versions between peers."
+msgstr "Versioni del protocollo incompatibili tra i peer."
+
+#. Network messages
+#: network/masterclient.cpp:107
+msgctxt "NetMasterProtocolError"
+msgid ""
+"Incompatible protocol version - update Stunt Rally or contact server "
+"administrator."
+msgstr "Versione del protocollo non compatibile - aggiorna Stunt Rally o contatta l'amministratore del server."
+
+#. Network messages
+#: network/masterclient.cpp:113
+msgctxt "NetMasterConnectionError"
+msgid "Couldn't reach the master server."
+msgstr "Impossibile raggiungere il master server."
+
+#. Network messages
+#: ogre/Gui_Network.cpp:373:441
+msgctxt "NewtworkFailed"
+msgid ""
+"Failed to initialize networking. Try different local port and make sure your"
+" firewall is properly configured."
+msgstr ""
+
+#. Network Settings
+#: Game.layout 1440..SingleRace.Multiplayer.Tab
+msgctxt "NetSettings"
+msgid "Settings"
+msgstr "Impostazioni"
+
+#. Network Settings
+#: Game.layout 1442..SingleRace.Multiplayer.Settings.Text
+#: ogre/Gui_Init.cpp:861
+msgctxt "NetNickname"
+msgid "Nickname"
+msgstr "Nickname"
+
+#. Network Settings
+#: Game.layout 1517..SingleRace.Multiplayer.Server.Text
+msgctxt "NetMasterIp"
+msgid "Master Server IP"
+msgstr "Master server IP"
+
+#. Network Settings
+#: Game.layout 1522..SingleRace.Multiplayer.Server.Text
+msgctxt "NetMasterPort"
+msgid "Master Server Port"
+msgstr "Porta master server"
+
+#. Network Settings
+#: Game.layout 1446..SingleRace.Multiplayer.Settings.Text
+msgctxt "NetLocalPort"
+msgid "Local Port"
+msgstr "Porta locale"
+
+#. Network Settings
+#: Game.layout 1475..SingleRace.Multiplayer.Settings.Edit
+msgctxt "NetRouterTip"
+msgid ""
+"Router port forwarding configuration might be required in order to allow "
+"peers to connect to the local port."
+msgstr "La configurazione port forwarding del router potrebbe essere necessaria al fine di consentire ai peer di connetersi alla porta locale."
+
+#. Network Settings
+#: Game.layout 1466..SingleRace.Multiplayer.Settings.Edit
+msgctxt "MultiplayerTip"
+msgid ""
+"Hosting a multiplayer game requires port forwarding. Connecting to existing "
+"game doesn't need it, provided other players have it."
+msgstr ""
+
+#. Effects  Main
+msgctxt "Effects"
+msgid "Effects"
+msgstr "Effetti"
+
+#. Effects  Main
+msgctxt "AllEffects"
+msgid "Effects Enabled"
+msgstr "Effetti abilitati"
+
+#. Effects
+msgctxt "Bloom"
+msgid "Bloom"
+msgstr "Bloom"
+
+#. Effects
+msgctxt "Intensity"
+msgid "Intensity"
+msgstr "Intensità"
+
+#. Effects
+msgctxt "OrigImage"
+msgid "Darken"
+msgstr "Oscurità"
+
+#. Effects
+msgctxt "MotionBlur"
+msgid "Motion Blur"
+msgstr "Motion Blur"
+
+#. Effects
+msgctxt "godrays"
+msgid "God Rays"
+msgstr "Raggi crepuscolari"
+
+#. Effects
+msgctxt "filmgrain"
+msgid "Film Grain"
+msgstr "Grana di film"
+
+#. Effects
+msgctxt "softparticles"
+msgid "Soft Particles"
+msgstr "Particelle leggere"
+
+#. Effects DOF
+msgctxt "DepthOfField"
+msgid "Depth of Field"
+msgstr "Profondità di campo"
+
+#. Effects DOF
+msgctxt "Near"
+msgid "Near"
+msgstr "Vicino"
+
+#. Effects DOF
+msgctxt "Far"
+msgid "Far"
+msgstr "Distante"
+
+#. Effects DOF
+#: ogre/common/GuiCom_Options.cpp:58
+msgctxt "Small"
+msgid "Small"
+msgstr "Piccolo"
+
+#. Effects DOF
+#: ogre/common/GuiCom_Options.cpp:58
+msgctxt "Big"
+msgid "Big"
+msgstr "Grande"
+
+#. Effects (ambient shadows)
+msgctxt "ssao"
+msgid "SSAO"
+msgstr "SSAO"
+
+#. Effects HDR  broken
+msgctxt "HDRTab"
+msgid "HDR"
+msgstr "HDR"
+
+#. Effects HDR  broken
+msgctxt "HDR"
+msgid "HDR+Bloom"
+msgstr "HDR+Bloom"
+
+#. Effects HDR  broken
+msgctxt "HDRAdaptationScale"
+msgid "Adapt Scale"
+msgstr "Adatta la scala"
+
+#. Effects HDR  broken
+msgctxt "HDRIntensity"
+msgid "Bloom Intensity"
+msgstr "Intensità del bloom"
+
+#. Effects HDR  broken
+msgctxt "HDROrigImage"
+msgid "Bloom Darken"
+msgstr "Oscurità bloom"
+
+#. Effects HDR  broken
+msgctxt "HDRParam1"
+msgid "Exposure"
+msgstr "Esposizione"
+
+#. Effects HDR  broken
+msgctxt "HDRParam2"
+msgid "Brightness"
+msgstr "Luminosità"
+
+#. Effects HDR  broken
+msgctxt "HDRParam3"
+msgid "Grain"
+msgstr "Grana"
+
+#. Effects HDR  broken
+msgctxt "HDRVignettingRadius"
+msgid "Vignetting Radius"
+msgstr "Radiosità vignettatura"
+
+#. Effects HDR  broken
+msgctxt "HDRVignettingDarkness"
+msgid "Vignetting Darken"
+msgstr "Vignettatura scura"
+
+#. Graphics
+msgctxt "Graphics"
+msgid "Graphics"
+msgstr "Grafica"
+
+#. Graphics
+msgctxt "NeedNewGame"
+msgid "* need New Game"
+msgstr "* necessita Nuovo gioco"
+
+#. Graphics
+msgctxt "RestartApply"
+msgid "Restart game, to apply *changes."
+msgstr "Riavvia il gioco, per applicare i *cambiamenti."
+
+#. Graphics
+msgctxt "ApplyShaders"
+msgid "Apply shaders"
+msgstr "Applica gli shader"
+
+#. Graphics  Detail
+msgctxt "Materials"
+msgid "Materials"
+msgstr "Materiali"
+
+#. Graphics  Detail
+#: Editor.layout 2395..Editor.Vegetation.Road.Tab
+msgctxt "Detail"
+msgid "Detail"
+msgstr "Dettaglio"
+
+#. Graphics  Detail
+#: Editor.layout 386..Editor.Terrain.Properties.Text
+msgctxt "TerrainError"
+msgid "Terrain error"
+msgstr "Errore terreno"
+
+#. Graphics  Detail
+msgctxt "TerHQDist"
+msgid "Terrain HQ dist"
+msgstr "Terreno HQ dist"
+
+#. Graphics  Detail
+#: Editor.layout 2502..Editor.Vegetation.Road.Advanced.Text :2513
+msgctxt "ViewDist"
+msgid "View distance"
+msgstr "Visualizza la distanza"
+
+#. Graphics  Detail
+msgctxt "RoadQual"
+msgid "Road far quality"
+msgstr "Qualità distanza stradale"
+
+#. Graphics  Textures
+msgctxt "Textures"
+msgid "Textures"
+msgstr "Texture"
+
+#. Graphics  Textures
+#: ogre/common/GuiCom_Options.cpp:49
+msgctxt "Bilinear"
+msgid "Bilinear"
+msgstr "Bilineare"
+
+#. Graphics  Textures
+#: ogre/common/GuiCom_Options.cpp:50
+msgctxt "Trilinear"
+msgid "Trilinear"
+msgstr "Trilineare"
+
+#. Graphics  Textures
+#: ogre/common/GuiCom_Options.cpp:51
+msgctxt "Anisotropic"
+msgid "Anisotropic"
+msgstr "Anisotropico"
+
+#. Graphics  Textures
+msgctxt "Anisotropy"
+msgid "Anisotropy"
+msgstr "Anisotropia"
+
+#. Graphics  Textures
+msgctxt "Triplanar"
+msgid "Triplanar"
+msgstr "Triplanare"
+
+#. Graphics  Textures
+#: Editor.layout 776..Editor.Layers.Check
+msgctxt "HighestSlopes"
+msgid "Highest slopes"
+msgstr "Pendii alti"
+
+#. Graphics  Vegetation
+#: Editor.layout 1666..Editor.Tab
+msgctxt "Vegetation"
+msgid "Vegetation"
+msgstr "Vegetazione"
+
+#. Graphics  Vegetation
+msgctxt "TreeMult"
+msgid "Trees multiplier"
+msgstr "Moltiplicatore di alberi"
+
+#. Graphics  Vegetation
+msgctxt "DistMult"
+msgid "Distance mul"
+msgstr "Mol. distanza"
+
+#. Graphics  Vegetation
+msgctxt "GrassMult"
+msgid "Grass mul"
+msgstr "Mol. erba"
+
+#. Graphics  Vegetation
+#: Game.layout 1177..SingleRace.Setup.Steering.Button :1248
+#: ogre/Gui_Tweak.cpp:572
+msgctxt "Reset"
+msgid "Reset"
+msgstr "Riavvia"
+
+#. Graphics  Vegetation
+msgctxt "UseImposters"
+msgid "Use Impostors"
+msgstr "Usa gli impostori"
+
+#. Graphics  Vegetation
+msgctxt "ImpostorsOnly"
+msgid "Impostors Only (low quality)"
+msgstr "Solo impostori (qualità bassa)"
+
+#. Graphics  reflections
+msgctxt "Reflections"
+msgid "Reflections"
+msgstr "Riflessi"
+
+#. Graphics  reflections
+msgctxt "FrameSkip"
+msgid "Frames skip"
+msgstr "Riduci frame"
+
+#. Graphics  reflections
+msgctxt "MapSize"
+msgid "Map size"
+msgstr "Grandezza della mappa"
+
+#. Graphics  reflections
+msgctxt "FacesOnce"
+msgid "Faces at once"
+msgstr "Facce per volta"
+
+#. Graphics  reflections
+msgctxt "ReflMode"
+msgid "Mode"
+msgstr "Modalità"
+
+#. Graphics  reflections
+#: ogre/Gui_Init.cpp:185
+msgctxt "ReflMode_static"
+msgid "Static"
+msgstr "Statico"
+
+#. Graphics  reflections
+#: ogre/Gui_Init.cpp:185
+msgctxt "ReflMode_single"
+msgid "Single"
+msgstr "Singolo"
+
+#. Graphics  reflections
+#: ogre/Gui_Init.cpp:186
+msgctxt "ReflMode_full"
+msgid "Full"
+msgstr "Completo"
+
+#. Graphics  Water
+msgctxt "Water"
+msgid "Water"
+msgstr "Acqua"
+
+#. Graphics  Water
+msgctxt "WaterReflection"
+msgid "Reflection"
+msgstr "Riflesso"
+
+#. Graphics  Water
+msgctxt "WaterRefraction"
+msgid "Refraction"
+msgstr "Rifrazione"
+
+#. Graphics  shadows
+msgctxt "Shadows"
+msgid "Shadows"
+msgstr "Ombre"
+
+#. Graphics  shadows
+msgctxt "Shaders"
+msgid "Shaders"
+msgstr "Shader"
+
+#. Graphics  shadows
+msgctxt "Size"
+msgid "Size"
+msgstr "Grandezza"
+
+#. Graphics  shadows
+msgctxt "TexSize"
+msgid "Texture size"
+msgstr "Grandezza delle texture"
+
+#. Graphics  shadows
+msgctxt "ShadowFilter"
+msgid "Filter"
+msgstr "Filtro"
+
+#. Graphics  shadows
+#: editor/Update_EditKeyTxt.cpp:375
+msgctxt "Count"
+msgid "Count"
+msgstr "Conteggio"
+
+#. Graphics  shadows
+msgctxt "ApplyShadows"
+msgid "Apply Shadows"
+msgstr "Applica le ombre"
+
+#. Graphics  shadows
+msgctxt "LightmapSize"
+msgid "Lightmap size"
+msgstr "Dim. lightmap"
+
+#. Graphics  particles
+msgctxt "Particles"
+msgid "Particles"
+msgstr "Particelle"
+
+#. Graphics  particles
+msgctxt "TireTrails"
+msgid "Tire Trails"
+msgstr "Segni di pneumatico"
+
+#. View  Gauges
+msgctxt "View"
+msgid "View"
+msgstr "Visualizza"
+
+#. View  Gauges
+msgctxt "HUD"
+msgid "HUD"
+msgstr "HUD"
+
+#. View  Gauges
+msgctxt "Digits"
+msgid "Digits (gear, speed)"
+msgstr "Indicatori (marce, velocità)"
+
+#. View  Gauges
+msgctxt "SpeedUnit"
+msgid "Speed unit"
+msgstr "Velocità di unità"
+
+#. View  Gauges
+msgctxt "Gauges"
+msgid "Gauges (rpm, speed)"
+msgstr "Indicatori (giri/min, velocità)"
+
+#. View  Gauges
+msgctxt "Layout"
+msgid "Layout"
+msgstr "Layout"
+
+#. View  Minimap
+msgctxt "Minimap"
+msgid "Minimap"
+msgstr "Minimap"
+
+#. View  Minimap
+msgctxt "MinimapZoom"
+msgid "Zoom"
+msgstr "Zoom"
+
+#. View  Minimap
+msgctxt "MinimapRotate"
+msgid "Rotate"
+msgstr "Ruota"
+
+#. View  Minimap
+msgctxt "MinimapTerrain"
+msgid "Terrain"
+msgstr "Terreno"
+
+#. View  Minimap
+msgctxt "MinimapBorder"
+msgid "Border"
+msgstr "Bordi"
+
+#. View  HUD
+msgctxt "TimesBar"
+msgid "Times bar"
+msgstr "Barra del tempo"
+
+#. View  HUD
+msgctxt "OpponentsList"
+msgid "Opponents List"
+msgstr "Tabella degli avversari"
+
+#. View  HUD
+msgctxt "OpponentsSorted"
+msgid "Opponents Sorted"
+msgstr "Avversari in ordine"
+
+#. View  HUD
+msgctxt "CheckArrow"
+msgid "Checkpoint Arrow"
+msgstr "Freccia checkpoint"
+
+#. View  HUD
+msgctxt "CheckBeam"
+msgid "Next checkpoint beam"
+msgstr "Prossimo checkpoint"
+
+#. View  HUD
+msgctxt "CountdownTime"
+msgid "Race countdown time"
+msgstr "Conto alla rovescia"
+
+#. View  Pacenotes
+msgctxt "Pacenotes"
+msgid "Pacenotes"
+msgstr ""
+
+#. View  Pacenotes
+msgctxt "PaceNextVisible"
+msgid "Next shown"
+msgstr ""
+
+#. View  Racing Line trail
+#: editor/Update_EditKeyTxt.cpp:65
+msgctxt "RacingLine"
+msgid "Racing Line (trail)"
+msgstr ""
+
+#. View  Camera
+msgctxt "Camera"
+msgid "Camera"
+msgstr "Camera"
+
+#. View  Camera
+msgctxt "CameraInfo"
+msgid "Camera info"
+msgstr "Informazioni della camera"
+
+#. View  Camera
+msgctxt "CameraAutoTilt"
+msgid "Camera auto tilt on slopes"
+msgstr "Inclinazione automatica camera su pendenza"
+
+#. View  Camera
+msgctxt "CameraLoopChange"
+msgid "Camera change in loops"
+msgstr "Camera alterata su anelli"
+
+#. View  Camera
+msgctxt "CameraBounce"
+msgid "Dynamic camera bouncing"
+msgstr "Camera bouncing dinamico"
+
+#. View  Camera
+msgctxt "BoostFOV"
+msgid "Adaptive FOV"
+msgstr "FOV adattabili"
+
+#. View  Camera
+msgctxt "FOV"
+msgid "View angle"
+msgstr "Visualizza angolo"
+
+#. Settings  debug
+#: Game.layout 1254..SingleRace.Setup.Tab
+msgctxt "Other"
+msgid "Other"
+msgstr "Altro"
+
+#. Settings  debug
+msgctxt "Development"
+msgid "Development"
+msgstr "Sviluppo"
+
+#. Settings  debug
+msgctxt "FPS"
+msgid "Fps, Triangles, Batches"
+msgstr "Fps, triangoli, batch"
+
+#. Settings  debug
+msgctxt "Wireframe"
+msgid "Wireframe"
+msgstr "Wireframe"
+
+#. Settings  debug
+msgctxt "BulletDebug"
+msgid "Bullet debug"
+msgstr "Bullet debug"
+
+#. Settings  debug
+msgctxt "BulletProfilerTxt"
+msgid "Bullet Profiler Times"
+msgstr "Tempi bullet profile"
+
+#. Settings  debug
+msgctxt "FullSoundsInfo"
+msgid "Full sounds info in graphs."
+msgstr ""
+
+#. Settings  car tweak visualizeations
+msgctxt "CarDebug"
+msgid "Car susp, long|,lat- slips"
+msgstr "Sosp auto, lunghe|lat - slittam"
+
+#. Settings  car tweak visualizeations
+msgctxt "CarTireVisCircles"
+msgid "Tire force circles visualisation"
+msgstr "Visualizz. forza cerchi gomme"
+
+#. Settings  car tweak visualizeations
+msgctxt "CarDebugText"
+msgid "Car debug text "
+msgstr "Testo di debug auto "
+
+#. Settings  car tweak visualizeations
+msgctxt "CarDebugSurfaces"
+msgid "Car tire surfaces"
+msgstr "Superfici dei pneumatici"
+
+#. Settings  car tweak visualizeations
+msgctxt "ProfilerTxt"
+msgid "Profiler times text "
+msgstr "Testo profiler times "
+
+#. Settings  car tweak visualizeations
+msgctxt "TextColor"
+msgid "Text color"
+msgstr "Colore del testo"
+
+#. Settings  car tweak visualizeations
+msgctxt "DevKeys"
+msgid "Developer keys. Ctrl-F global, Alt-shift-1..6 load test tracks."
+msgstr "Tasti per sviluppo. Ctrl-F globale, Alt-shift-1..6 carica i test su piste."
+
+#. Settings  startup
+msgctxt "Startup"
+msgid "Startup"
+msgstr "Avvio"
+
+#. Settings  startup
+msgctxt "MouseCapture"
+msgid "Capture mouse"
+msgstr "Blocca il mouse"
+
+#. Settings  startup
+msgctxt "OgreDialog"
+msgid "Show Ogre dialog"
+msgstr "Mostra il dialogo di Ogre"
+
+#. Settings  startup
+msgctxt "AutoLoad"
+msgid "Auto Load track"
+msgstr "Avvio automatico della pista"
+
+#. Settings  startup
+msgctxt "EscQuit"
+msgid "Esc quits"
+msgstr "Esc chiudi il gioco"
+
+#. Settings  startup
+msgctxt "BulletLines"
+msgid "Bullet debug lines"
+msgstr "Bullet debug linee"
+
+#. Settings  startup
+msgctxt "ShowPictures"
+msgid "Show pictures while loading"
+msgstr "Mostra le immagini nei caricamenti"
+
+#. Settings  startup
+msgctxt "MultiThread"
+msgid "Multi Threaded"
+msgstr "Multi Threaded"
+
+#. Settings  startup
+msgctxt "StartInMain"
+msgid "Start in main menu"
+msgstr "Avvia dal menu principale"
+
+#. Settings  startup
+msgctxt "ScreenshotPng"
+msgid "Screenshots saved as .png"
+msgstr "Schermata salvata come .png"
+
+#. Input  bind
+msgctxt "Input"
+msgid "Input"
+msgstr "Input"
+
+#. Input  bind
+#: ogre/Gui_Input.cpp:223
+msgctxt "InputUnbind"
+msgid "Press RMB on button to unbind."
+msgstr "Premi RMB per cambiare tasto."
+
+#. Input  bind
+msgctxt "InputNoJS"
+msgid "No joystick"
+msgstr "Nessun joystick"
+
+#. Input  bind
+#: ogre/Gui_Input.cpp:22:77
+msgctxt "InputKeyUnassigned"
+msgid "-- None --"
+msgstr "-- Nessuno --"
+
+#. Input  bind
+#: ogre/Gui_Input.cpp:31:272
+msgctxt "InputAssignKey"
+msgid "&lt;Assign&gt;"
+msgstr "&lt;Assegna&gt;"
+
+#. Input  bind
+msgctxt "OneAxisThrottleBrake"
+msgid "One axis for throttle and brake"
+msgstr "Un asse per accelleratore e freni"
+
+#. Input  bind
+msgctxt "TipOneAxisThrottleBrake"
+msgid ""
+"If your controller has throttle and brake in one axis, check this. Bind axis"
+" to throttle, unbind brake. Use Inverse from throttle if needed."
+msgstr "Se il controller dispone di acceleratore e freno in un asse, selezionalo. Assegna asse su acceleratore, cambia tasto di frenata. Utilizza accelerazione invertita se necessario."
+
+#. Input  headers
+msgctxt "InputMapGeneral"
+msgid "General"
+msgstr "Generale"
+
+#. Input  headers
+#: ogre/Gui_Input.cpp:106
+msgctxt "InputHeaderTxt1"
+msgid "Action"
+msgstr "Azione"
+
+#. Input  headers
+#: ogre/Gui_Input.cpp:107
+msgctxt "InputHeaderTxt2"
+msgid "Binding"
+msgstr "Assegnazione"
+
+#. Input  headers
+#: ogre/Gui_Input.cpp:109
+msgctxt "InputHeaderTxt3"
+msgid "Value"
+msgstr "Valore"
+
+#. Input  headers
+#: ogre/Gui_Input.cpp:110
+msgctxt "InputHeaderTxt4"
+msgid "Edit"
+msgstr "Modifica"
+
+#. Input  Detail  Control
+msgctxt "InputControllers"
+msgid "Controllers"
+msgstr "Controller"
+
+#. Input  Detail  Control
+msgctxt "InputDetailPreset"
+msgid "Set from preset"
+msgstr "Preimposta"
+
+#. Input  Detail  Control
+#: ogre/Gui_Input.cpp:344
+msgctxt "InputDetailsFor"
+msgid "Details for"
+msgstr "Dettagli per"
+
+#. Input  Detail  Control
+msgctxt "InputMinVal"
+msgid "Min. Value"
+msgstr "Valore min."
+
+#. Input  Detail  Control
+msgctxt "InputMaxVal"
+msgid "Max. Value"
+msgstr "Valore mass."
+
+#. Input  Detail  Control
+msgctxt "InputMultiplier"
+msgid "Multiplier"
+msgstr "Moltiplicatore"
+
+#. Input  Detail  Control
+msgctxt "InputInverse"
+msgid "Inverse"
+msgstr "Inverso"
+
+#. Input  axis presets
+msgctxt "InpSet_KeyHalf"
+msgid "Key Half"
+msgstr "Tasti metà"
+
+#. Input  axis presets
+msgctxt "InpSet_KeyFull"
+msgid "Key Full"
+msgstr "Tasti completi"
+
+#. Input  axis presets
+msgctxt "InpSet_AxisHalf"
+msgid "Axis Half"
+msgstr "Metà asse"
+
+#. Input  axis presets
+msgctxt "InpSet_AxisHalfInv"
+msgid "Axis Half Inversed"
+msgstr "Metà asse invertito"
+
+#. Input  axis presets
+msgctxt "InpSet_AxisFull"
+msgid "Axis Full"
+msgstr "Asse completo"
+
+#. Input  axis presets
+msgctxt "InpSet_AxisFullInv"
+msgid "Axis Full Inversed"
+msgstr "Asse completo invertito"
+
+#. Input  key setup
+msgctxt "InputKeyboardEmulation"
+msgid "Keyboard Emulation"
+msgstr "Emulazione tastiera"
+
+#. Input  key setup
+msgctxt "InputIncreaseSensitivity"
+msgid "Sensitivity"
+msgstr "Sensitività"
+
+#. Input  key setup
+msgctxt "InputReturnDelay"
+msgid "Return speed"
+msgstr "Velocità di ritorno"
+
+#. Input  key setup
+msgctxt "InputKeyAllPreset"
+msgid "Set all from preset"
+msgstr "Premposta tutto"
+
+#. Input  key setup
+#: ogre/Gui_Input.cpp:249
+msgctxt "InpSet_Slow"
+msgid "Slow"
+msgstr "Lento"
+
+#. Input  key setup
+#: ogre/Gui_Input.cpp:250
+msgctxt "InpSet_Medium"
+msgid "Medium"
+msgstr "Medio"
+
+#. Input  key setup
+#: ogre/Gui_Input.cpp:251
+msgctxt "InpSet_Fast"
+msgid "Fast"
+msgstr "Veloce"
+
+#. MAIN  Game Input  Player
+msgctxt "InputMapThrottle"
+msgid "Throttle"
+msgstr "Accelera"
+
+#. MAIN  Game Input  Player
+msgctxt "InputMapBrake"
+msgid "Brake"
+msgstr "Frena"
+
+#. MAIN  Game Input  Player
+#: Game.layout 1140..SingleRace.Setup.Tab
+msgctxt "InputMapSteering"
+msgid "Steering"
+msgstr "Sterzare"
+
+#. MAIN  Game Input  Player
+msgctxt "InputMapHandBrake"
+msgid "Handbrake"
+msgstr "Freno a mano"
+
+#. MAIN  Game Input  Player
+msgctxt "InputMapBoost"
+msgid "Boost"
+msgstr "Turbo"
+
+#. MAIN  Game Input  Player
+msgctxt "InputMapFlip"
+msgid "Flip"
+msgstr "Ribalta l'auto"
+
+#. MAIN  Game Input  Player
+#: Game.layout 1009..SingleRace.Setup.Game.Text ogre/Challenges.cpp:616
+#: ogre/Gui_Network.cpp:141
+msgctxt "InputMapRewind"
+msgid "Rewind (time)"
+msgstr "Riavvolgi il tempo"
+
+#. Game Input  Player
+msgctxt "InputMapShiftUp"
+msgid "Shift up"
+msgstr "Cambia marcia seguente"
+
+#. Game Input  Player
+msgctxt "InputMapShiftDown"
+msgid "Shift down"
+msgstr "Scala marcia prec."
+
+#. Game Input  Player
+msgctxt "InputMapPrevCamera"
+msgid "Previous Camera"
+msgstr "Camera precedente"
+
+#. Game Input  Player
+msgctxt "InputMapNextCamera"
+msgid "Next Camera"
+msgstr "Camera seguente"
+
+#. Game Input  Player
+msgctxt "InputMapLastChk"
+msgid "Go to last checkp."
+msgstr "Vai all'ultimo checkp."
+
+#. MAIN  Game Input
+msgctxt "InputMapShowOptions"
+msgid "Show options"
+msgstr "Mostra le opzioni"
+
+#. MAIN  Game Input
+msgctxt "InputMapPrevTab"
+msgid "Previous tab"
+msgstr "Scheda precedente"
+
+#. MAIN  Game Input
+msgctxt "InputMapNextTab"
+msgid "Next tab"
+msgstr "Prossima scheda"
+
+#. MAIN  Game Input
+msgctxt "InputMapRestartGame"
+msgid "New game"
+msgstr "Nuovo gioco"
+
+#. MAIN  Game Input
+msgctxt "InputMapResetGame"
+msgid "Reset game"
+msgstr "Riavvia il gioco"
+
+#. MAIN  Game Input
+msgctxt "InputMapScreenshot"
+msgid "Screenshot"
+msgstr "Screenshot"
+
+#. MAIN  Game Input
+msgctxt "InputCameraTxt1"
+msgid "with shift - main cameras only"
+msgstr "con shift - solo la camera principale"
+
+#. MAIN  Game Input
+msgctxt "InputGraphsType"
+msgid "change graphs type in game"
+msgstr "cambia in gioco il tipo di grafico"
+
+#. Game Input  General
+msgctxt "InputOther1"
+msgid "Up,Down - navigate in lists   Enter - start"
+msgstr "Su, Giù - naviga nelle liste   Invio - inizia"
+
+#. Game Input  General
+msgctxt "InputOther2"
+msgid "Enter - show/hide players window in multiplayer"
+msgstr "Enter - mostra/nascondi la finestra dei giocatori in multiplayer"
+
+#. Game Input  General
+msgctxt "InputOther3"
+msgid "Enter - show lap results"
+msgstr "Invio - mostra i risultati del giro"
+
+#. Game Input  General
+msgctxt "InputFocusFind"
+msgid "Ctrl-F  go to find box"
+msgstr "Ctrl-F  barra di ricerca"
+
+#. Game Input  General replay
+msgctxt "InputRplCtrl1"
+msgid "Backspace - show/hide controls (hold ctrl to use mouse)"
+msgstr "Backspace - mostra/nascondi i controlli (tieni premuto ctrl per usare il mouse)"
+
+#. Game Input  General replay
+msgctxt "InputRplCtrl2"
+msgid "P - pause/unpause replay"
+msgstr "P - ferma/riavvia il replay"
+
+#. Game Input  General replay
+msgctxt "InputRplCtrl3"
+msgid "[ , ] - wind backwards/forwards (shift - slow, ctrl,alt - fast)"
+msgstr "[ , ] - vento in avanti/all'indietro (shift - lento, ctrl,alt -veloce)"
+
+#. Game Input  General replay
+msgctxt "InputRplCtrl4"
+msgid "K, L - change camera view to other player"
+msgstr "K, L - guarda camera di un altro giocatore"
+
+#. Game Input  Tweak edit
+msgctxt "TweakEdit1"
+msgid "Alt-Z - toggle tweak window (car edit)"
+msgstr "Alt-Z - vai alla finestra ottimizza (modifica auto)"
+
+#. Game Input  Tweak edit
+msgctxt "TweakEdit2"
+msgid "Alt-Shift-Z - save file and reload game"
+msgstr "Alt-Shift-Z - salva il file e ricarica il gioco"
+
+#. Game Input  Tweak edit
+msgctxt "TweakEdit3"
+msgid "Ctrl-F5 - start car performance test"
+msgstr "Ctrl-F5 - inizia il test sulle prestazioni dell'auto"
+
+#. Game Input  Tweak tire edit
+msgctxt "TiresEdit"
+msgid "Tire Edit - (Graphs in mode 4)"
+msgstr "Modifica gomme - (grafici in modalità 4)"
+
+#. Game Input  Tweak tire edit
+msgctxt "TiresEdit1"
+msgid "PgUp/PgDn - previous, next value"
+msgstr "PgUp/PgDn - valore precedente, seguente"
+
+#. Game Input  Tweak tire edit
+msgctxt "TiresEdit2"
+msgid "1,2 or Num /,* - change value"
+msgstr "1,2 or Num /,* - cambia valore"
+
+#. Game Input  Tweak tire edit
+msgctxt "TiresEdit3"
+msgid "Home - toggle longitudinal / lateral parameters"
+msgstr "Home - attiva/disattiva parametri longitudinali/laterali"
+
+#. Game Input  Tweak tire edit
+msgctxt "TiresEdit4"
+msgid "End - toggle align moment parameters"
+msgstr "End - attiva/disattiva parametri allineamento momento"
+
+#. Game Input  Tweak tire graphs
+msgctxt "TireEdCommonY"
+msgid "Common y range"
+msgstr ""
+
+#. Game Input  Tweak tire graphs
+msgctxt "TireEdReference"
+msgid "Show reference graph"
+msgstr ""
+
+#. Sound  main
+#: Editor.layout 2140..Editor.Vegetation.Surface.Surface.Text
+msgctxt "Sound"
+msgid "Sound"
+msgstr "Suono"
+
+#. Sound  main
+msgctxt "Volume"
+msgid "Volume"
+msgstr "Volume"
+
+#. Sound  main
+msgctxt "VolMaster"
+msgid "Master"
+msgstr "Master"
+
+#. Sound  main
+msgctxt "Engine"
+msgid "Engine"
+msgstr "Engine"
+
+#. Sound  main
+#: Editor.layout 2149..Editor.Vegetation.Surface.Surface.Text
+msgctxt "Tires"
+msgid "Tires"
+msgstr "Pneumatici"
+
+#. Sound  main
+msgctxt "Suspension"
+msgid "Suspension"
+msgstr "Sospensione"
+
+#. Sound  main
+msgctxt "Environment"
+msgid "Environment"
+msgstr "Ambiente"
+
+#. Sound  main
+msgctxt "Reverb"
+msgid "Reverberation"
+msgstr ""
+
+#. Sound  other
+msgctxt "FluidSplash"
+msgid "Fluid Splash"
+msgstr "Schizzi d'acqua"
+
+#. Sound  other
+msgctxt "FluidCont"
+msgid "Fluid Cont."
+msgstr "Cont. flusso"
+
+#. Sound  other
+msgctxt "CarCrash"
+msgid "Car Crash"
+msgstr "Incidente automobilistico"
+
+#. Sound  other
+msgctxt "CarScrap"
+msgid "Car Scrap"
+msgstr "Auto demolita"
+
+#. About
+msgctxt "About"
+msgid "About"
+msgstr "A riguardo"
+
+#. About
+msgctxt "Version"
+msgid "version"
+msgstr "versione"
+
+#. About
+msgctxt "GameBy"
+msgid "A game by"
+msgstr "Un gioco creato da"
+
+#. About
+msgctxt "AndContributors"
+msgid "and contributors."
+msgstr "e collaboratori."
+
+#. About
+msgctxt "BasedOn"
+msgid "based on"
+msgstr "basato su"
+
+#. About
+msgctxt "AndUsing"
+msgid "and using"
+msgstr "e in uso"
+
+#. About
+msgctxt "ProjectPage"
+msgid "project&apos;s page:"
+msgstr "pagina&apos;s progetto:"
+
+#. Editor  Main
+msgctxt "PreviewCam"
+msgid "Preview Camera"
+msgstr "Camera precedente"
+
+#. Editor  Main
+msgctxt "Leave"
+msgid "Leave (exit)"
+msgstr "Lascia (esci)"
+
+#. Editor  Main
+msgctxt "EnterSave"
+msgid "Enter - save"
+msgstr "Enter - salva"
+
+#. Editor  Main
+msgctxt "Screenshot"
+msgid "screenshot"
+msgstr "screenshot"
+
+#. Editor  Main
+msgctxt "TerrainBrush"
+msgid "Terrain brush"
+msgstr "Brush di terreno"
+
+#. Editor  Main
+msgctxt "RoadPoint"
+msgid "Road Point"
+msgstr "Punto di strada"
+
+#. Editor  Main
+msgctxt "RoadStats"
+msgid "Road Stats"
+msgstr "Statistiche stradali"
+
+#. Editor  Main  Track
+#: Editor.layout 5..Window
+msgctxt "Editor"
+msgid "Editor"
+msgstr "Editor"
+
+#. Editor  Main  Track
+msgctxt "LoadTrack"
+msgid "Load Track"
+msgstr "Carica la pista"
+
+#. Editor  Main  Track
+msgctxt "CopySource"
+msgid "Set as copy source"
+msgstr "Imposta come copia originale"
+
+#. Editor  Main  Track
+#: editor/Gui_Tools.cpp:268
+msgctxt "NewDup"
+msgid "New (Duplicate)"
+msgstr "Nuovo (duplicato)"
+
+#. Editor  Main  Track
+#: ogre/Gui_Replay.cpp:305:314 editor/Gui_Tools.cpp:301
+msgctxt "Rename"
+msgid "Rename"
+msgstr "Rinonima"
+
+#. Editor  Main  Track
+#: Game.layout 1669..SingleRace.Championship.Button ogre/Gui_Replay.cpp:281
+#: ogre/Gui_Tweak.cpp:180
+msgctxt "Delete"
+msgid "Delete"
+msgstr "Cancella"
+
+#. Editor  Track  message
+#: editor/Gui_Tools.cpp:317
+msgctxt "DeleteTrack"
+msgid "Delete track ?"
+msgstr "Cancellare la pista?"
+
+#. Editor  Track  message
+#: editor/Gui_Tools.cpp:37
+msgctxt "CopyTrackNoSource"
+msgid "No source track selected."
+msgstr ""
+
+#. Editor  Track  message
+#: editor/Gui_Tools.cpp:44
+msgctxt "CopyTrackSourceSame"
+msgid "Source track and current track are the same."
+msgstr ""
+
+#. Editor  Track  message
+#: editor/SceneInit.cpp:366
+msgctxt "CantSaveOrgTrack"
+msgid "Can't save original track. Duplicate it first."
+msgstr ""
+
+#. Editor  Track  message
+msgctxt "NeedReload"
+msgid "* need reload"
+msgstr "* necessita il riavvio"
+
+#. Editor  Sun
+#: Editor.layout 20..Editor.Tab 26..Editor.Sun.Tab
+msgctxt "Sun"
+msgid "Sun"
+msgstr "Sole"
+
+#. Editor  Sun
+#: Editor.layout 43..Editor.Sun.Sun.Text editor/Gui_Init.cpp:807
+msgctxt "Sky"
+msgid "Sky"
+msgstr "Cielo"
+
+#. Editor  Sun
+#: Editor.layout 66..Editor.Sun.Sun.Text
+msgctxt "SunDir"
+msgid "Sun dir."
+msgstr "Direz. sole"
+
+#. Editor  Sun
+#: Editor.layout 55..Editor.Sun.Sun.Text :75
+msgctxt "Yaw"
+msgid "yaw"
+msgstr "yaw"
+
+#. Editor  Sun
+#: Editor.layout 70..Editor.Sun.Sun.Text editor/Gui_Init.cpp:808
+msgctxt "Pitch"
+msgid "pitch"
+msgstr "pitch"
+
+#. Editor  Sun
+#: Editor.layout 96..Editor.Sun.Sun.Text 401..Editor.Terrain.Properties.Text
+msgctxt "Light"
+msgid "Light"
+msgstr "Luce"
+
+#. Editor  Sun
+#: Editor.layout 100..Editor.Sun.Sun.Text
+msgctxt "Ambient"
+msgid "Ambient"
+msgstr "Ambiente"
+
+#. Editor  Sun
+#: Editor.layout 105..Editor.Sun.Sun.Text 815..Editor.Layers.Button
+#: editor/Gui_Init.cpp:829
+msgctxt "Diffuse"
+msgid "Diffuse"
+msgstr "Diffusione"
+
+#. Editor  Sun
+#: Editor.layout 110..Editor.Sun.Sun.Text
+msgctxt "Specular"
+msgid "Specular"
+msgstr "Speculare"
+
+#. Editor  Fog
+#: Editor.layout 184..Editor.Sun.Tab
+msgctxt "Fog"
+msgid "Fog"
+msgstr "Nebbia"
+
+#. Editor  Fog
+msgctxt "FogNormal"
+msgid "Normal"
+msgstr "Normale"
+
+#. Editor  Fog
+#: Editor.layout 186..Editor.Sun.Fog.Text :246
+msgctxt "FogHeight"
+msgid "Height"
+msgstr "Altezza"
+
+#. Editor  Fog
+#: Game.layout 852..SingleRace.Setup.Tab Editor.layout
+#: 195..Editor.Sun.Fog.Text :203:237
+msgctxt "Color"
+msgid "Color"
+msgstr "Colore"
+
+#. Editor  Fog
+#: Editor.layout 211..Editor.Sun.Fog.Text :275
+#: editor/Update_EditKeyTxt.cpp:277
+msgctxt "FogStart"
+msgid "start"
+msgstr "inizia"
+
+#. Editor  Fog
+#: Editor.layout 224..Editor.Sun.Fog.Text :288
+#: editor/Update_EditKeyTxt.cpp:277
+msgctxt "FogEnd"
+msgid "end"
+msgstr "fine"
+
+#. Editor  Weather
+#: Editor.layout 128..Editor.Sun.Sun.Check 190..Editor.Sun.Fog.Check
+msgctxt "DisableEdit"
+msgid "Disable for edit"
+msgstr "Disattiva per modificare"
+
+#. Editor  Weather
+#: Editor.layout 124..Editor.Sun.Sun.Text
+msgctxt "Weather"
+msgid "Weather"
+msgstr "Tempo metereologico"
+
+#. Editor  Weather
+#: Editor.layout 163..Editor.Sun.Sun.Text
+msgctxt "set1"
+msgid "set1"
+msgstr "set1"
+
+#. Editor  Weather
+#: Editor.layout 168..Editor.Sun.Sun.Text
+msgctxt "set2"
+msgid "set2"
+msgstr "set2"
+
+#. Editor  Weather
+#: Editor.layout 173..Editor.Sun.Sun.Text :178
+msgctxt "intensity"
+msgid "intensity"
+msgstr "intensità"
+
+#. Terrain  Edit modes
+#: Editor.layout 317..Editor.Tab 675..Editor.Terrain.Generator.Text
+#: 1499..Editor.Grasses.Channels.Text 1994..Editor.Vegetation.Models.Text
+msgctxt "Terrain"
+msgid "Terrain"
+msgstr "Terreno"
+
+#. Terrain  Edit modes
+#: editor/Gui_Util.cpp:142
+msgctxt "TerDeform"
+msgid "Deform"
+msgstr "Deforma"
+
+#. Terrain  Edit modes
+#: Game.layout 433..SingleRace.Track.Button editor/Gui_Util.cpp:147
+msgctxt "TerFilter"
+msgid "Filter"
+msgstr "Filtro"
+
+#. Terrain  Edit modes
+#: editor/Gui_Util.cpp:152
+msgctxt "TerSmooth"
+msgid "Smooth"
+msgstr "Smooth"
+
+#. Terrain  Edit modes
+#: editor/Gui_Util.cpp:157
+msgctxt "TerHeight"
+msgid "Height"
+msgstr "Altezza"
+
+#. Terrain  heightmap
+#: Editor.layout 325..Editor.Terrain.Properties.Text
+msgctxt "HeightmapSize"
+msgid "Heightmap size"
+msgstr "Dim. heightmap"
+
+#. Terrain  heightmap
+#: Editor.layout 330..Editor.Terrain.Properties.Text
+msgctxt "TriSize"
+msgid "Triangle size"
+msgstr "Dimensioni triangolo"
+
+#. Terrain  heightmap
+#: Editor.layout 344..Editor.Terrain.Properties.Text
+msgctxt "TerrainSize"
+msgid "Terrain size"
+msgstr "Grandezza del terreno"
+
+#. Terrain  heightmap
+#: Editor.layout 354..Editor.Terrain.Properties.Button
+msgctxt "NewTerrainFlat"
+msgid "New flat"
+msgstr "Nuovo piano"
+
+#. Terrain  heightmap
+#: Editor.layout 461..Editor.Terrain.Generator.Text
+msgctxt "NewTerrainGenerate"
+msgid "Generate new"
+msgstr "Genera nuovo"
+
+#. Terrain  heightmap
+#: Editor.layout 467..Editor.Terrain.Generator.Button
+msgctxt "Add"
+msgid "Add"
+msgstr "Aggiungi"
+
+#. Terrain  heightmap
+#: Editor.layout 472..Editor.Terrain.Generator.Button
+msgctxt "Substract"
+msgid "Substract"
+msgstr "Rimuovi"
+
+#. Terrain  heightmap
+#: Editor.layout 477..Editor.Terrain.Generator.Button
+#: 680..Editor.Terrain.Generator.Text
+msgctxt "Multiply"
+msgid "Multiply"
+msgstr "Moltiplica"
+
+#. Terrain  advanced light
+#: Editor.layout 405..Editor.Terrain.Properties.Text
+msgctxt "NormalsScale"
+msgid "Normals scale"
+msgstr "Scala normale"
+
+#. Terrain  advanced light
+#: Editor.layout 432..Editor.Terrain.Properties.Check
+msgctxt "TerrainEmissiveLight"
+msgid "Terrain has emissive light"
+msgstr "Terreno con luce emissiva"
+
+#. Terrain  advanced light
+#: Editor.layout 420..Editor.Terrain.Properties.Text
+msgctxt "SpecularPower"
+msgid "Specular power"
+msgstr "Potenza speculare"
+
+#. Terrain  advanced light
+#: Editor.layout 436..Editor.Terrain.Properties.Text
+msgctxt "SpecularPowerEm"
+msgid "Emissive power"
+msgstr "Potenza emissiva"
+
+#. Terrain  tools
+#: Editor.layout 448..Editor.Terrain.Tab
+msgctxt "Brushes"
+msgid "Brushes"
+msgstr "Brush"
+
+#. Terrain  tools
+#: Editor.layout 694..Editor.Terrain.Tools.Button
+msgctxt "TerrainHalf"
+msgid "Half"
+msgstr "Metà"
+
+#. Terrain  tools
+#: Editor.layout 701..Editor.Terrain.Tools.Button
+msgctxt "TerrainDouble"
+msgid "Double"
+msgstr "Doppio"
+
+#. Terrain  tools
+#: Editor.layout 708..Editor.Terrain.Tools.Button
+msgctxt "TerrainMove"
+msgid "Move"
+msgstr "Muovi"
+
+#. Terrain  Layers
+#: Editor.layout 769..Editor.Layers.Check 1327..Editor.Grasses.Grasses.Check
+#: 1819..Editor.Vegetation.Models.Check
+msgctxt "Enabled"
+msgid "Enabled"
+msgstr "Abilitato"
+
+#. Terrain  Layers
+#: Editor.layout 756..Editor.Layers.Text
+#: :762:1334..Editor.Grasses.Grasses.Text 1826..Editor.Vegetation.Models.Text
+#: editor/Gui_EventsTer.cpp:407 editor/Gui_Events.cpp:33
+msgctxt "Used"
+msgid "Used"
+msgstr "Usato"
+
+#. Terrain  Layers
+#: editor/Gui_Init.cpp:690 editor/Gui_Events.cpp:459
+msgctxt "Layer"
+msgid "Layer"
+msgstr "Layer"
+
+#. Terrain  Layers
+#: Editor.layout 736..Editor.Tab
+msgctxt "Layers"
+msgid "Layers"
+msgstr "Layer"
+
+#. Terrain  Layers
+#: Editor.layout 876..Editor.Layers.TabC 881..Editor.Layers.Blendmap.Tab
+msgctxt "BlendMap"
+msgid "Blendmap"
+msgstr "Blendmap"
+
+#. Terrain  Layers
+#: Editor.layout 827..Editor.Layers.Text
+msgctxt "TerNormal"
+msgid "Normal"
+msgstr "Normale"
+
+#. Terrain  Layers
+#: Editor.layout 841..Editor.Layers.Check
+msgctxt "auto"
+msgid "Auto"
+msgstr "Auto"
+
+#. Terrain  Layers
+#: Editor.layout 558..Editor.Terrain.Generator.Text 848..Editor.Layers.Text
+#: editor/Update_EditKeyTxt.cpp:305:343:373
+msgctxt "scale"
+msgid "Scale"
+msgstr "Scala"
+
+#. Terrain  Layers  buttons
+#: Game.layout 1561..SingleRace.Championship.Tab :1594 Editor.layout
+#: 863..Editor.Layers.Check :868
+msgctxt "Test"
+msgid "Test"
+msgstr "Test"
+
+#. Terrain  Layers  buttons
+#: Editor.layout 738..Editor.Layers.Button 1282..Editor.Grasses.Grasses.Button
+#: 1742..Editor.Vegetation.Models.Button
+msgctxt "Update"
+msgid "Update"
+msgstr "Aggiorna"
+
+#. Terrain  Layers  buttons
+#: Editor.layout 1083..Editor.Layers.Blendmap.Noise.Button
+msgctxt "Swap"
+msgid "Swap"
+msgstr "Scambia"
+
+#. Terrain  Blendmap
+#: Editor.layout 590..Editor.Terrain.Generator.Text
+#: 883..Editor.Layers.Blendmap.Blendmap.Text
+#: 1503..Editor.Grasses.Channels.Text
+msgctxt "AngleMin"
+msgid "Angle Min"
+msgstr "Angolo min."
+
+#. Terrain  Blendmap
+#: Editor.layout 603..Editor.Terrain.Generator.Text
+#: 896..Editor.Layers.Blendmap.Blendmap.Text
+#: 1518..Editor.Grasses.Channels.Text 1939..Editor.Vegetation.Models.Text
+msgctxt "AngleMax"
+msgid "Angle Max"
+msgstr "Angolo mass."
+
+#. Terrain  Blendmap
+#: Editor.layout 616..Editor.Terrain.Generator.Text
+#: 909..Editor.Layers.Blendmap.Blendmap.Text
+#: 1533..Editor.Grasses.Channels.Text
+msgctxt "TerLAngSm"
+msgid "Angle smooth"
+msgstr "Smooth angolo"
+
+#. Terrain  Blendmap
+#: Editor.layout 629..Editor.Terrain.Generator.Text
+#: 922..Editor.Layers.Blendmap.Blendmap.Text
+#: 1548..Editor.Grasses.Channels.Text 1953..Editor.Vegetation.Models.Text
+msgctxt "HeightMin"
+msgid "Height Min"
+msgstr "Altezza min."
+
+#. Terrain  Blendmap
+#: Editor.layout 643..Editor.Terrain.Generator.Text
+#: 936..Editor.Layers.Blendmap.Blendmap.Text
+#: 1563..Editor.Grasses.Channels.Text 1967..Editor.Vegetation.Models.Text
+msgctxt "HeightMax"
+msgid "Height Max"
+msgstr "Altezza mass."
+
+#. Terrain  Blendmap
+#: Editor.layout 260..Editor.Sun.Fog.Text
+msgctxt "smooth"
+msgid "smooth"
+msgstr "smooth"
+
+#. Terrain  Blendmap
+#: Editor.layout 657..Editor.Terrain.Generator.Text
+#: 950..Editor.Layers.Blendmap.Blendmap.Text
+#: 1578..Editor.Grasses.Channels.Text
+msgctxt "TerLHSm"
+msgid "Height smooth"
+msgstr "Smooth altezza"
+
+#. Terrain  Blendmap
+#: Editor.layout 964..Editor.Layers.Blendmap.Blendmap.Text
+#: :978:992:1023..Editor.Layers.Blendmap.Tab
+#: 1087..Editor.Layers.Blendmap.Noise.Button
+#: :1132:1608..Editor.Grasses.Channels.Text
+msgctxt "TerLNoise"
+msgid "Noise"
+msgstr "Disturbo"
+
+#. Terrain  Blendmap
+#: Editor.layout 1005..Editor.Layers.Blendmap.Blendmap.Check
+msgctxt "TerLNoiseOnly"
+msgid "Only Noise"
+msgstr "Solo disturbo"
+
+#. Terrain  generator
+#: Editor.layout 455..Editor.Terrain.Tab
+msgctxt "Generator"
+msgid "Generator"
+msgstr "Generatore"
+
+#. Terrain  generator
+#: Editor.layout 485..Editor.Terrain.Generator.Text
+msgctxt "TerGenScale"
+msgid "Scale Height"
+msgstr "Altezza di scala"
+
+#. Terrain  generator
+#: Editor.layout 537..Editor.Terrain.Generator.Text
+msgctxt "TerGenOfsX"
+msgid "Offset X"
+msgstr "Offset X"
+
+#. Terrain  generator
+#: Editor.layout 547..Editor.Terrain.Generator.Text
+msgctxt "TerGenOfsY"
+msgid "Offset Y"
+msgstr "Offset Y"
+
+#. Terrain  generator  noise params
+#: Editor.layout 495..Editor.Terrain.Generator.Text
+#: 1091..Editor.Layers.Blendmap.Noise.Text
+#: :1136:1618..Editor.Grasses.Channels.Text
+msgctxt "TerGenFreq"
+msgid "Freq. zoom"
+msgstr "Freq. di zoom"
+
+#. Terrain  generator  noise params
+#: Editor.layout 506..Editor.Terrain.Generator.Text
+#: 1101..Editor.Layers.Blendmap.Noise.Text
+#: :1146:1628..Editor.Grasses.Channels.Text
+msgctxt "TerGenOct"
+msgid "Octaves"
+msgstr "Ottave"
+
+#. Terrain  generator  noise params
+#: Editor.layout 516..Editor.Terrain.Generator.Text
+#: 1111..Editor.Layers.Blendmap.Noise.Text
+#: :1156:1638..Editor.Grasses.Channels.Text
+msgctxt "TerGenPers"
+msgid "Persistance noise"
+msgstr "Disturbo persistente"
+
+#. Terrain  generator  noise params
+#: Editor.layout 526..Editor.Terrain.Generator.Text
+#: 1121..Editor.Layers.Blendmap.Noise.Text
+#: :1166:1648..Editor.Grasses.Channels.Text
+msgctxt "TerGenPow"
+msgid "Power (shape)"
+msgstr "Potenza (forma)"
+
+#. Terrain  surface  particles
+#: Editor.layout 2069..Editor.Vegetation.Surface.Surface.Text
+msgctxt "DustSize"
+msgid "dust size"
+msgstr "grandezza della polvere"
+
+#. Terrain  surface  particles
+#: Editor.layout 2064..Editor.Vegetation.Surface.Surface.Text
+msgctxt "dust"
+msgid "dust"
+msgstr "polvere"
+
+#. Terrain  surface  particles
+#: Editor.layout 2074..Editor.Vegetation.Surface.Surface.Text
+msgctxt "mud"
+msgid "mud"
+msgstr "fango"
+
+#. Terrain  surface  particles
+#: Editor.layout 2079..Editor.Vegetation.Surface.Surface.Text
+msgctxt "smoke"
+msgid "smoke"
+msgstr "fumo"
+
+#. Terrain  surface  particles
+#: Editor.layout 2084..Editor.Vegetation.Surface.Surface.Text
+msgctxt "trailColor"
+msgid "trail color"
+msgstr "colore scia"
+
+#. Terrain  surface  particles
+#: Editor.layout 2110..Editor.Vegetation.Surface.Surface.Text
+msgctxt "ParAmount"
+msgid "Particle amounts"
+msgstr "Quantità di particelle"
+
+#. Terrain  surface  params
+#: Game.layout 1236..SingleRace.Setup.Steering.Text Editor.layout
+#: 2003..Editor.Vegetation.Tab 2014..Editor.Vegetation.Surface.Widget
+#: 2120..Editor.Vegetation.Surface.Surface.Text editor/Gui_Init.cpp:906
+msgctxt "Surface"
+msgid "Surface"
+msgstr "Superficie"
+
+#. Terrain  surface  params
+msgctxt "Type"
+msgid "Type"
+msgstr "Tipo"
+
+#. Terrain  surface  params
+#: Editor.layout 2164..Editor.Vegetation.Surface.Surface.Text
+msgctxt "BumpWavelen"
+msgid "Bump:  WaveLen"
+msgstr "Bump:  WaveLen"
+
+#. Terrain  surface  params
+#: Editor.layout 2169..Editor.Vegetation.Surface.Surface.Text
+msgctxt "Amplitude"
+msgid "Amplitude"
+msgstr "Ampiezza"
+
+#. Terrain  surface  params
+#: Editor.layout 2174..Editor.Vegetation.Surface.Surface.Text
+msgctxt "Friction"
+msgid "Friction"
+msgstr "Attrito"
+
+#. Terrain  surface  params
+#: Editor.layout 2179..Editor.Vegetation.Surface.Surface.Text
+msgctxt "RollingDrag"
+msgid "Rolling Drag"
+msgstr "Resistenza rotolamento"
+
+#. Terrain  surface  params
+msgctxt "RollingResist"
+msgid "Rolling Resistance"
+msgstr ""
+
+#. Terrain  surface  params
+#: Editor.layout 2009..Editor.Vegetation.Surface.Check
+msgctxt "Road1SurfOnly"
+msgid "Only 1 road surface"
+msgstr ""
+
+#. Terrain  Brush  params
+#: editor/Update_EditKeyTxt.cpp:192
+msgctxt "Brush_Size"
+msgid "Size"
+msgstr "Grandezza"
+
+#. Terrain  Brush  params
+#: Game.layout 1060..SingleRace.Setup.Boost.Text
+#: editor/Update_EditKeyTxt.cpp:193
+msgctxt "Brush_Force"
+msgid "Force"
+msgstr "Forza"
+
+#. Terrain  Brush  params
+#: editor/Update_EditKeyTxt.cpp:194
+msgctxt "Brush_Power"
+msgid "Power"
+msgstr "Potenza"
+
+#. Terrain  Brush  params
+#: editor/Update_EditKeyTxt.cpp:197
+msgctxt "Brush_Freq"
+msgid "Freq"
+msgstr "Freq"
+
+#. Terrain  Brush  params
+#: editor/Update_EditKeyTxt.cpp:198
+msgctxt "Brush_Octaves"
+msgid "Octaves"
+msgstr "Ottave"
+
+#. Terrain  Brush  params
+#: Editor.layout 568..Editor.Terrain.Generator.Text
+#: editor/Update_EditKeyTxt.cpp:199
+msgctxt "Brush_Offset"
+msgid "Offset"
+msgstr "Offset"
+
+#. Terrain  Brush  params
+#: editor/Update_EditKeyTxt.cpp:229
+msgctxt "Brush_Height"
+msgid "Height"
+msgstr "Altezza"
+
+#. Terrain  Brush  params
+#: editor/Update_EditKeyTxt.cpp:224
+msgctxt "Brush_Filter"
+msgid "Filter"
+msgstr "Filtro"
+
+#. Terrain  Brush  params
+#: editor/Update_EditKeyTxt.cpp:234
+msgctxt "Brush_CurrentH"
+msgid "Curr.H"
+msgstr "Curr.H"
+
+#. Terrain  Brush  params
+#: editor/Update_EditKeyTxt.cpp:236
+msgctxt "Lock"
+msgid "Lock"
+msgstr "Blocca"
+
+#. Terrain  Brush  shapes
+#: editor/Update_EditKeyTxt.cpp:195
+msgctxt "Brush_Shape"
+msgid "Shape"
+msgstr "Forma"
+
+#. Terrain  Brush  shapes
+msgctxt "Brush_ShapeTriangle"
+msgid "Triang"
+msgstr "Triang"
+
+#. Terrain  Brush  shapes
+msgctxt "Brush_ShapeSinus"
+msgid "Sinus"
+msgstr "Seno"
+
+#. Terrain  Brush  shapes
+msgctxt "Brush_ShapeNoise"
+msgid "Noise"
+msgstr "Disturbo"
+
+#. Terrain  Brush  shapes
+msgctxt "Brush_ShapeNoise2"
+msgid "Noise2"
+msgstr "Disturbo2"
+
+#. Terrain  Brush  shapes
+msgctxt "Brush_ShapeN-gon"
+msgid "N-gon"
+msgstr "N-gon"
+
+#. Vegetation  Main
+#: Editor.layout 323..Editor.Terrain.Tab 1186..Editor.Grasses.Tab
+#: 1671..Editor.Vegetation.Tab
+msgctxt "Properties"
+msgid "Properties"
+msgstr "Proprietà"
+
+#. Vegetation  Main
+#: Editor.layout 1181..Editor.Tab 1280..Editor.Grasses.Tab
+msgctxt "Grasses"
+msgid "Grasses"
+msgstr "Erba"
+
+#. Vegetation  Main
+#: Editor.layout 1740..Editor.Vegetation.Tab
+msgctxt "Models"
+msgid "Models"
+msgstr "Modelli"
+
+#. Vegetation  Main
+#: Editor.layout 1193..Editor.Grasses.Properties.Text
+msgctxt "GrassDens"
+msgid "Grass   density"
+msgstr "Densità dell'erba"
+
+#. Vegetation  Main
+#: Editor.layout 1678..Editor.Vegetation.Properties.Text
+msgctxt "TreeDens"
+msgid "Trees   density"
+msgstr "Densità alberi"
+
+#. Vegetation  Model main
+#: Editor.layout 1794..Editor.Vegetation.Models.Text
+#: 1799..Editor.Vegetation.Models.Button editor/Gui_Init.cpp:880
+msgctxt "Model"
+msgid "Model"
+msgstr "Modello"
+
+#. Vegetation  Model main
+#: Editor.layout 1441..Editor.Grasses.Grasses.Text
+#: 1806..Editor.Vegetation.Models.Text editor/Update_EditKeyTxt.cpp:374
+msgctxt "Density"
+msgid "Density"
+msgstr "Densità"
+
+#. Vegetation  Model main
+#: Editor.layout 1860..Editor.Vegetation.Models.Text
+msgctxt "MinScale"
+msgid "min scale"
+msgstr "scala min."
+
+#. Vegetation  Model main
+#: Editor.layout 1865..Editor.Vegetation.Models.Text
+msgctxt "MaxScale"
+msgid "max scale"
+msgstr "scala mass."
+
+#. Vegetation  Model main
+#: Editor.layout 1594..Editor.Grasses.Channels.Text
+#: 1914..Editor.Vegetation.Models.Text
+msgctxt "DistToRoad"
+msgid "dist. to road"
+msgstr "dist. dalla strada"
+
+#. Vegetation  common
+#: Editor.layout 1887..Editor.Vegetation.Models.Text :1892
+msgctxt "wind"
+msgid "wind"
+msgstr "vento"
+
+#. Vegetation  common
+#: Editor.layout 1209..Editor.Grasses.Properties.Text
+#: 1694..Editor.Vegetation.Properties.Text
+msgctxt "page"
+msgid "page"
+msgstr "pagina"
+
+#. Vegetation  common
+#: Game.layout 1082..SingleRace.Setup.Boost.Text Editor.layout
+#: 1344..Editor.Grasses.Grasses.Text :1387
+msgctxt "min"
+msgid "min"
+msgstr "min"
+
+#. Vegetation  common
+#: Game.layout 1071..SingleRace.Setup.Boost.Text Editor.layout
+#: 1359..Editor.Grasses.Grasses.Text :1402:1927..Editor.Vegetation.Models.Text
+#: ogre/common/GuiCom_Options.cpp:66
+msgctxt "max"
+msgid "max"
+msgstr "mass."
+
+#. Vegetation  common
+#: Editor.layout 1214..Editor.Grasses.Properties.Text
+#: 1699..Editor.Vegetation.Properties.Text
+msgctxt "distance"
+msgid "distance"
+msgstr "distanza"
+
+#. Vegetation  common
+#: Editor.layout 1239..Editor.Grasses.Properties.Text
+msgctxt "length"
+msgid "length"
+msgstr "lunghezza"
+
+#. Vegetation  global
+#: Editor.layout 1725..Editor.Vegetation.Properties.Text
+msgctxt "TreeRoadDist"
+msgid "Trees to road dist."
+msgstr "Dist. alberi da strada"
+
+#. Vegetation  global
+#: Editor.layout 1714..Editor.Vegetation.Properties.Text
+msgctxt "ImpostorDist"
+msgid "Impostors dist."
+msgstr "Dist. impostori"
+
+#. Vegetation  global
+#: Editor.layout 1981..Editor.Vegetation.Models.Text
+msgctxt "LTrFlDepth"
+msgid "max Depth in fluid"
+msgstr "mass. profondità del fluido"
+
+#. Vegetation  Grass
+#: Editor.layout 1339..Editor.Grasses.Grasses.Text
+msgctxt "GrassSize"
+msgid "Size"
+msgstr "Grandezza"
+
+#. Vegetation  Grass
+#: Editor.layout 1265..Editor.Grasses.Properties.Text
+msgctxt "GrDensSmooth"
+msgid "Smooth grass dens."
+msgstr "Dens. erba smooth"
+
+#. Vegetation  Grass
+#: Editor.layout 822..Editor.Layers.Text 1417..Editor.Grasses.Grasses.Text
+#: 1422..Editor.Grasses.Grasses.Button
+#: 2351..Editor.Vegetation.Road.Column.Text editor/Gui_Init.cpp:855:905
+msgctxt "GrMaterial"
+msgid "Material"
+msgstr "Materiale"
+
+#. Vegetation  Grass
+#: Editor.layout 687..Editor.Terrain.Tab 1437..Editor.Grasses.Grasses.Text
+#: 1659..Editor.Grasses.Tab
+msgctxt "GrColorMap"
+msgid "Color map"
+msgstr "Colore della mappa"
+
+#. Vegetation  Grass
+#: Editor.layout 1469..Editor.Grasses.Tab
+msgctxt "Channels"
+msgid "Channels"
+msgstr "Canali"
+
+#. Vegetation  Grass
+#: Editor.layout 1455..Editor.Grasses.Grasses.Text
+msgctxt "Channel"
+msgid "Channel"
+msgstr "Canale"
+
+#. Vegetation  Grass sway
+#: Editor.layout 1230..Editor.Grasses.Properties.Text
+msgctxt "GrassSway"
+msgid "Sway"
+msgstr "Ondeggiamento"
+
+#. Vegetation  Grass sway
+#: Editor.layout 1244..Editor.Grasses.Properties.Text
+msgctxt "speed"
+msgid "speed"
+msgstr "velocità"
+
+#. Vegetation  Grass sway
+#: Editor.layout 1234..Editor.Grasses.Properties.Text
+msgctxt "distribution"
+msgid "distribution"
+msgstr "distribuzione"
+
+#. Road  Main
+#: Editor.layout 579..Editor.Terrain.Generator.Text
+#: 2188..Editor.Vegetation.Tab 2194..Editor.Vegetation.Road.Tab
+#: 2398..Editor.Vegetation.Road.Detail.Text editor/Gui_Init.cpp:691
+#: editor/Update_EditKeyTxt.cpp:65 editor/Gui_Events.cpp:460
+msgctxt "Road"
+msgid "Road"
+msgstr "Strada"
+
+#. Road  Main
+#: Editor.layout 2271..Editor.Vegetation.Road.Tab
+#: 2425..Editor.Vegetation.Road.Detail.Text editor/Gui_Init.cpp:692
+#: editor/Gui_Events.cpp:461
+msgctxt "Pipe"
+msgid "Pipe"
+msgstr "Tubo"
+
+#. Road  Main
+#: Editor.layout 2200..Editor.Vegetation.Road.Road.Text
+#: 2338..Editor.Vegetation.Road.Pipe.Text editor/Update_EditKeyTxt.cpp:58:65
+msgctxt "Wall"
+msgid "Wall"
+msgstr "Muro"
+
+#. Road  Main
+#: editor/Update_EditKeyTxt.cpp:65
+msgctxt "River"
+msgid "River"
+msgstr ""
+
+#. Road  Main
+msgctxt "Hidden"
+msgid "Hidden"
+msgstr ""
+
+#. Road  Main
+#: Editor.layout 2349..Editor.Vegetation.Road.Tab
+msgctxt "Column"
+msgid "Column"
+msgstr "Colonna"
+
+#. Road  Main
+#: Editor.layout 2477..Editor.Vegetation.Road.Tab
+msgctxt "Advanced"
+msgid "Advanced"
+msgstr "Avanzato"
+
+#. Road  materials
+#: Editor.layout 2196..Editor.Vegetation.Road.Road.Text
+msgctxt "RoadMaterials"
+msgid "Road materials"
+msgstr "Materiali da strada"
+
+#. Road  materials
+#: Editor.layout 2273..Editor.Vegetation.Road.Pipe.Text
+msgctxt "PipeMaterials"
+msgid "Pipe materials"
+msgstr "Materiali per il tubo"
+
+#. Road  materials
+#: Editor.layout 2248..Editor.Vegetation.Road.Road.Text
+#: :2259:2315..Editor.Vegetation.Road.Pipe.Text
+#: :2326:2360..Editor.Vegetation.Road.Column.Text
+msgctxt "TexCoordMul"
+msgid "Tex Coord mul."
+msgstr "Mol. coord. tex"
+
+#. Road  build params
+#: Editor.layout 2402..Editor.Vegetation.Road.Detail.Text
+msgctxt "LengthDim"
+msgid "Length dim."
+msgstr "Dim. lunghezza"
+
+#. Road  build params
+#: Editor.layout 2413..Editor.Vegetation.Road.Detail.Text
+msgctxt "WidthSteps"
+msgid "Width Steps"
+msgstr "Passi larghezza"
+
+#. Road  build params
+#: Editor.layout 2452..Editor.Vegetation.Road.Detail.Text
+msgctxt "HeightOffset"
+msgid "Height offset"
+msgstr "Altezza offset"
+
+#. Road  build params
+#: Editor.layout 2479..Editor.Vegetation.Road.Advanced.Text
+msgctxt "MergeLength"
+msgid "Merge length"
+msgstr "Unisci lunghezza"
+
+#. Road  build params
+#: Editor.layout 2490..Editor.Vegetation.Road.Advanced.Text
+msgctxt "LODPointsDist"
+msgid "LOD points dist."
+msgstr "Dist. punti LOD"
+
+#. Road  build params
+#: Editor.layout 2372..Editor.Vegetation.Road.Column.Text
+msgctxt "ColumnNSides"
+msgid "Column N sides"
+msgstr "Lati colonna N"
+
+#. Road  build params
+#: Editor.layout 2383..Editor.Vegetation.Road.Column.Text
+msgctxt "ColumnRadius"
+msgid "Column Radius"
+msgstr "Radiosità colonna"
+
+#. Road  build params
+#: Editor.layout 2440..Editor.Vegetation.Road.Detail.Text
+msgctxt "PipeWStepsMul"
+msgid "Pipe W steps mul."
+msgstr "Tubo W passi mul."
+
+#. Road  build params
+#: Editor.layout 2429..Editor.Vegetation.Road.Detail.Text
+msgctxt "PipeLStepsMul"
+msgid "Pipe L steps mul."
+msgstr "Tubo L passi mul."
+
+#. Road  build  skirt is the gap patch
+#: Editor.layout 2460..Editor.Vegetation.Road.Detail.Text
+msgctxt "SkirtLength"
+msgid "Skirt Length"
+msgstr "Lunghezza margine"
+
+#. Road  build  skirt is the gap patch
+#: Editor.layout 2468..Editor.Vegetation.Road.Detail.Text
+msgctxt "SkirtHeight"
+msgid "Skirt Height"
+msgstr "Altezza margine"
+
+#. Road Point  Main  dim
+#: editor/Update_EditKeyTxt.cpp:122
+msgctxt "Road_Length"
+msgid "Length"
+msgstr "Lunghezza"
+
+#. Road Point  Main  dim
+#: editor/Update_EditKeyTxt.cpp:72:124:275
+msgctxt "Road_Height"
+msgid "Height"
+msgstr "Altezza"
+
+#. Road Point  Main  dim
+#: Game.layout 785..SingleRace.Vehicle.Text ogre/Gui_Init.cpp:665
+#: editor/Update_EditKeyTxt.cpp:47:123:274
+msgctxt "Road_Width"
+msgid "Width"
+msgstr "Larghezza"
+
+#. Road Point  Main  angles
+#: editor/Update_EditKeyTxt.cpp:49
+msgctxt "Road_Yaw"
+msgid "Yaw"
+msgstr "Yaw"
+
+#. Road Point  Main  angles
+#: editor/Update_EditKeyTxt.cpp:48
+msgctxt "Road_Roll"
+msgid "Roll"
+msgstr "Rotola"
+
+#. Road Point  Main  angles
+#: editor/Update_EditKeyTxt.cpp:52:82
+msgctxt "Road_Pipe"
+msgid "Pipe"
+msgstr "Tubo"
+
+#. Road Point  toggle
+#: editor/Update_EditKeyTxt.cpp:72
+msgctxt "Road_OnTerrain"
+msgid "On Terrain"
+msgstr "Su terreno"
+
+#. Road Point  toggle
+#: editor/Update_EditKeyTxt.cpp:53
+msgctxt "Road_Column"
+msgid "Column"
+msgstr "Colonna"
+
+#. Road Point  toggle
+msgctxt "Road_Loop"
+msgid "Loop"
+msgstr "Ripetizione"
+
+#. Road Point  toggle
+#: Game.layout 166..SingleRace.Track.Text 212..SingleRace.Track.Image
+#: 1848..SingleRace.Track.Text 1894..SingleRace.Track.Image
+#: editor/Update_EditKeyTxt.cpp:82:128
+msgctxt "Road_OnPipe"
+msgid "On Pipe"
+msgstr "Sui tubi"
+
+#. Road Point  toggle
+#: editor/Update_EditKeyTxt.cpp:99
+msgctxt "Road_NotReal"
+msgid "Not Real"
+msgstr ""
+
+#. Road Point  toggle
+#: editor/Update_EditKeyTxt.cpp:112
+msgctxt "Road_Merged"
+msgid "Merged"
+msgstr ""
+
+#. Road Point  toggle
+#: editor/Update_EditKeyTxt.cpp:113
+msgctxt "Road_NotLooped"
+msgid "Not looped"
+msgstr ""
+
+#. Road Point  short: checkpoint radius
+#: editor/Update_EditKeyTxt.cpp:55
+msgctxt "Road_ChkR"
+msgid "ChkR"
+msgstr "ChkR"
+
+#. Road Point  short: current
+#: editor/Update_EditKeyTxt.cpp:107:300:334:367
+#: ogre/common/GuiCom_TrackUpd.cpp:140
+msgctxt "Road_Cur"
+msgid "Cur"
+msgstr "Cur"
+
+#. Road Point  short: new
+#: editor/Update_EditKeyTxt.cpp:107:333:366
+msgctxt "Road_New"
+msgid "New"
+msgstr "Nuovo"
+
+#. Road Point  short: selection
+#: editor/Update_EditKeyTxt.cpp:103:336
+msgctxt "Road_sel"
+msgid "sel"
+msgstr "sel"
+
+#. Road Point  angles type
+#: editor/Update_EditKeyTxt.cpp:51
+msgctxt "Road_Snap"
+msgid "Snap"
+msgstr "Snap"
+
+#. Road Point  angles type
+msgctxt "Road_AngleManual"
+msgid "Manual"
+msgstr "Manuale"
+
+#. Road Point  angles type
+msgctxt "Road_AngleAuto"
+msgid "Auto"
+msgstr "Auto"
+
+#. Road Point  angles type
+msgctxt "Road_AngleBoth"
+msgid "Both"
+msgstr "Entrambi"
+
+#. Road  direction
+#: editor/Update_EditKeyTxt.cpp:276
+msgctxt "Road_Dir"
+msgid "Direction"
+msgstr "Direzione"
+
+#. Objects, Fluids  short: position
+#: editor/BaseApp.cpp:26 editor/Update_EditKeyTxt.cpp:302:341:371
+msgctxt "Obj_Pos"
+msgid "Pos."
+msgstr "Pos."
+
+#. Objects, Fluids  short: rotation
+#: editor/BaseApp.cpp:27 editor/Update_EditKeyTxt.cpp:304:342:372
+msgctxt "Obj_Rot"
+msgid "Rot."
+msgstr "Rot."
+
+#. Objects, Fluids  window
+#: editor/Update_EditKeyTxt.cpp:306
+msgctxt "Tile"
+msgid "Tile"
+msgstr "Tile"
+
+#. Tools
+#: Editor.layout 690..Editor.Terrain.Tab
+msgctxt "Tools"
+msgid "Tools"
+msgstr "Utilità"
+
+#. Tools
+msgctxt "SourceTrack"
+msgid "Source track"
+msgstr "Pista originale"
+
+#. Tools
+msgctxt "ChngTrkTab"
+msgid "changed in [Track] tab"
+msgstr "cambiato nella scheda [Pista]"
+
+#. Tools  Copy
+#: editor/Update_KeyRoad.cpp:65 editor/Update_KeyObjects.cpp:120
+#: editor/Gui_Tools.cpp:37:44
+msgctxt "Copy"
+msgid "Copy"
+msgstr "Copia"
+
+#. Tools  Copy
+msgctxt "SunWeather"
+msgid "Sun and Weather"
+msgstr "Sole e tempo meteorologico"
+
+#. Tools  Copy
+msgctxt "TerHeightMap"
+msgid "Terrain Heightmap"
+msgstr "Altezza mappa del terreno"
+
+#. Tools  Copy
+msgctxt "TerLayers"
+msgid "Terrain Layers"
+msgstr "Layer di terreno"
+
+#. Tools  Copy
+msgctxt "RoadParams"
+msgid "Road parameters"
+msgstr "Parametri di strada"
+
+#. Tools  scale
+msgctxt "ScaleMul"
+msgid "Scale multiplier"
+msgstr "Scala moltiplicatore"
+
+#. Tools  scale
+msgctxt "ScaleAll"
+msgid "Scale all"
+msgstr "Scala tutto"
+
+#. Tools  scale
+msgctxt "ScaleTerHeight"
+msgid "Terrain Height"
+msgstr "Altezza del terreno"
+
+#. Tools  Align
+msgctxt "AlignTerrainToRoad"
+msgid "Align terrain to road"
+msgstr "Allinea il terreno alla strada"
+
+#. Tools  Align
+msgctxt "AlignWidthAdd"
+msgid "Width add"
+msgstr "Aggiungi una largezza"
+
+#. Tools  Align
+msgctxt "AlignWidthMul"
+msgid "Width multiply"
+msgstr "Moltiplica larghezza"
+
+#. Tools  Align
+msgctxt "AlignSmooth"
+msgid "Smooth size"
+msgstr "Dim. smooth"
+
+#. Editor Game setup
+msgctxt "Gravity"
+msgid "Gravity"
+msgstr "Gravità"
+
+#. Editor Game setup
+#: Editor.layout 1230..Editor.Grasses.Properties.Text
+msgctxt "Wind"
+msgid "Wind"
+msgstr "Vento"
+
+#. Editor Game setup
+msgctxt "DenyReversed"
+msgid "Deny reversed direction"
+msgstr "Nega direzione opposta"
+
+#. Editor Game setup
+msgctxt "NoWrongChks"
+msgid "Don't show wrong checkpoint messages"
+msgstr ""
+
+#. Editor Warnings
+#: editor/Warnings.cpp:267
+msgctxt "Warnings"
+msgid "Warnings"
+msgstr "Avvertenze"
+
+#. Editor Warnings
+msgctxt "WarningsInfo"
+msgid "Console for track errors, warnings and hints."
+msgstr "Console per errori di pista, avvertenze e consigli."
+
+#. Editor Warnings
+msgctxt "CheckOnLoad"
+msgid "Check on load"
+msgstr "Verifica al caricamento"
+
+#. Editor Warnings
+msgctxt "CheckOnSave"
+msgid "Check on save"
+msgstr "Verifica al salvataggio"
+
+#. Editor Warnings
+msgctxt "InputLoadNextTrack"
+msgid "Load next track (shift - previous)"
+msgstr "Carica la pista seguente (shift - precedente)"
+
+#. Editor  Pick  window
+msgctxt "Pick"
+msgid "Pick"
+msgstr "Prendi"
+
+#. Editor  Pick  window
+msgctxt "PickSetParam"
+msgid "Set parameters, marked with"
+msgstr "Imposta i parametri, contrassegnati con"
+
+#. Editor  Settings
+msgctxt "Settings"
+msgid "Settings"
+msgstr "Impostazioni"
+
+#. Editor  Settings
+msgctxt "SREditorVersion"
+msgid "Stunt Rally - Track Editor - version"
+msgstr "Stunt Rally - Editor di piste - versione"
+
+#. Editor  Settings main
+msgctxt "CamSpeed"
+msgid "Camera speed"
+msgstr "Velocità della camera"
+
+#. Editor  Settings main
+msgctxt "CamInertia"
+msgid "Camera inertia"
+msgstr "Inerzia della camera"
+
+#. Editor  Settings main
+msgctxt "MinimapAndSize"
+msgid "Minimap, size"
+msgstr "Minimap, grandezza"
+
+#. Editor  Settings update
+msgctxt "RoadPointSize"
+msgid "Road points size"
+msgstr "Dimensioni dei punti stradali"
+
+#. Editor  Settings update
+msgctxt "TerUpdSkip"
+msgid "Terrain update skip"
+msgstr "Salta aggiornamento del terreno"
+
+#. Editor  Settings update
+msgctxt "MinimapUpdSkip"
+msgid "Minimap update skip"
+msgstr "Salta aggiornamento minimap"
+
+#. Editor  Settings auto
+msgctxt "TrackAutoLoad"
+msgid "Auto Load track"
+msgstr "Avvio automatico della pista"
+
+#. Editor  Settings auto
+msgctxt "AutoUpdateBlendmap"
+msgid "Auto update blendmap (slow for big size brushes)"
+msgstr "Aggiornamento automatico blendmap (lungo per grandi brush)"
+
+#. Editor  Settings extras
+msgctxt "EdCamPos"
+msgid "Camera position"
+msgstr "Posizione della camera"
+
+#. Editor  Settings extras
+msgctxt "EdInputBar"
+msgid "Input bar  Ctrl-I"
+msgstr "Barra di input  Ctrl-I"
+
+#. Editor  Settings extras
+msgctxt "AllowSaveOrigTrk"
+msgid "Allow saving original tracks"
+msgstr "Consenti il salvataggio di piste originali"
+
+#. Settings  camera views
+msgctxt "SetCamTo"
+msgid "Set camera to"
+msgstr "Imposta la camera a"
+
+#. Settings  camera views
+msgctxt "Top"
+msgid "Top"
+msgstr "In cima"
+
+#. Settings  camera views
+msgctxt "Left"
+msgid "Left"
+msgstr "Sinistra"
+
+#. Settings  camera views
+msgctxt "Right"
+msgid "Right"
+msgstr "Destra"
+
+#. Settings  camera views
+msgctxt "Front"
+msgid "Front"
+msgstr "Frontale"
+
+#. Settings  camera views
+msgctxt "Back"
+msgid "Back"
+msgstr "Indietro"
+
+#. Settings  camera views
+msgctxt "ViewFront"
+msgid "View Front"
+msgstr "Vista frontale"
+
+#. Settings  camera views
+msgctxt "ViewLeft"
+msgid "View Left"
+msgstr "Vista da sinistra"
+
+#. Settings  camera views
+msgctxt "ViewRight"
+msgid "View Right"
+msgstr "Vista da destra"
+
+#. Settings  camera views
+msgctxt "ViewStart"
+msgid "View Start"
+msgstr "Vista di inizio"
+
+#. Tweak
+msgctxt "Graphs"
+msgid "Graphs"
+msgstr "Grafici"
+
+#. Tweak
+msgctxt "Tweak"
+msgid "Tweak"
+msgstr "Ottimizza"
+
+#. Tweak
+msgctxt "MaterialProperties"
+msgid "Material Properties"
+msgstr "Proprietà materiale"
+
+#. Tweak
+#: ogre/Gui_Replay.cpp:73:145 ogre/Gui_Tweak.cpp:134:334
+#: ogre/SceneInit.cpp:216
+msgctxt "TweakUser"
+msgid "User"
+msgstr "Utente"
+
+#. Tweak
+#: ogre/Gui_Tweak.cpp:134:334
+msgctxt "TweakOriginal"
+msgid "Original"
+msgstr "Originale"
+
+#. MAIN  Editor Input Gui
+msgctxt "InputHelp"
+msgid "Input/help"
+msgstr "Input/aiuto"
+
+#. MAIN  Editor Input Gui
+msgctxt "Shortcuts"
+msgid "Shortcuts"
+msgstr "Scorciatoie"
+
+#. MAIN  Editor Input Gui
+msgctxt "InputMain"
+msgid "Main"
+msgstr "Generale"
+
+#. MAIN  Editor Input Gui
+msgctxt "ShortcutsInfo"
+msgid ""
+"Press with alt to quick access gui tab (or sub-tab). Pressing again will "
+"cycle sub-tabs (if any)."
+msgstr "Premi con alt per l'accesso rapido della scheda gui (o sotto-scheda). Premi di nuovo per visualizzare le sotto-schede (se presenti)."
+
+#. MAIN  Editor Input
+msgctxt "InputToggleCam"
+msgid "Tab - camera / edit mode toggle"
+msgstr "Tab - modalità camera/modifica"
+
+#. MAIN  Editor Input
+msgctxt "InputToggleGUIMode"
+msgid "F1 or ` - GUI mode (toggle Options)"
+msgstr "F1 or ` - interfaccia GUI (vai su opzioni)"
+
+#. MAIN  Editor Input
+msgctxt "InputContextHelp"
+msgid "Ctrl-F1 - context help page"
+msgstr "Ctrl-F1 - pagina di aiuto"
+
+#. Editor Input  Shortcuts
+msgctxt "InputNextOptTab"
+msgid "F2,F3 - prev,next tab (alt - sub-tab)"
+msgstr "F2,F3 - prec.,pross. scheda (alt - sottoschede)"
+
+#. Editor Input  Shortcuts
+msgctxt "InputSubTabSpace"
+msgid "Space - cycle sub-tabs (shift - back)"
+msgstr "Spazio - cicla sottoschede (shift - indietro)"
+
+#. Editor Input  Shortcuts
+msgctxt "InputPickTab"
+msgid "Tab - close/open pick window"
+msgstr "Tab - apri/chiudi finestra selezionata"
+
+#. Editor Input  Shortcuts
+msgctxt "InputNextLayTab"
+msgid "alt-1,2 - prev,next Layer tab"
+msgstr "alt-1,2 - prec,pross scheda layer"
+
+#. MAIN  Editor Input  save
+msgctxt "InputSaveTrack"
+msgid "F4 - save track"
+msgstr "F4 - salva la pista"
+
+#. MAIN  Editor Input  save
+msgctxt "InputReadyToPlay"
+msgid "(ready to play in game)"
+msgstr "(pronto a giocare)"
+
+#. MAIN  Editor Input  save
+msgctxt "InputReloadTrack"
+msgid "F5 - reload track"
+msgstr "F5 - ricarica la pista"
+
+#. MAIN  Editor Input  save
+msgctxt "InputUndo"
+msgid "(one time undo)"
+msgstr "(una volta indietro)"
+
+#. MAIN  Editor Input  save
+msgctxt "InputUpdate"
+msgid "F8 - update track"
+msgstr "F8 - aagiorna la pista"
+
+#. MAIN  Editor Input  save
+msgctxt "InputAfterChanges"
+msgid "(after Terrain/Vegetation changes)"
+msgstr "(dopo i cambiamenti di terreno/vegetazione)"
+
+#. MAIN  Editor Input  save
+msgctxt "InputTogglePreview"
+msgid "F7 - enter/leave preview camera"
+msgstr "f7 - accedi/lascia anteprima di camera"
+
+#. MAIN  Editor Input  save
+msgctxt "InputTrackScrn"
+msgid "(for track screenshot)"
+msgstr "(per le immagini catturate delle piste)"
+
+#. MAIN  Editor Camera
+msgctxt "InputCameraMode"
+msgid "Camera mode"
+msgstr "Modalità camera"
+
+#. MAIN  Editor Camera
+msgctxt "InputCamControl"
+msgid "W,S  A,D  Q,E - move   Arrows - rotate"
+msgstr "W,S  A,D  Q,E - muovi   Frecce - ruota"
+
+#. MAIN  Editor Camera
+msgctxt "InputCamControl2"
+msgid "LMB - rotate  RMB - move  MMB - zoom"
+msgstr "LMB - ruota  RMB - muovi  MMB - zooma"
+
+#. Editor Input  Camera next
+msgctxt "InputValueChange"
+msgid "Each (mouse/key) move or value change with "
+msgstr "Per ogni (mouse/tasto) movimento o valore modificato con "
+
+#. Editor Input  Camera next
+msgctxt "InputSlowFast"
+msgid "shift - slow   ctrl - fast"
+msgstr "shift - lento   ctrl - veloce"
+
+#. Editor Input  Camera next
+msgctxt "InputTopView"
+msgid "Alt-Z - toggle top view"
+msgstr "Alt-Z - visualizzazione dall'alto"
+
+#. MAIN  Editor View toggle
+msgctxt "InputToggleVeget"
+msgid "V - Disable / enable vegetation"
+msgstr "V - Attiva/disattiva la vegetazione"
+
+#. MAIN  Editor View toggle
+msgctxt "InputToggleFog"
+msgid "G - toggle Fog"
+msgstr ""
+
+#. MAIN  Editor View toggle
+msgctxt "InputToggleWeather"
+msgid "I - toggle Weather"
+msgstr ""
+
+#. MAIN  Editor View toggle
+msgctxt "InputToggleParticles"
+msgid "P - toggle Particles"
+msgstr ""
+
+#. Terrain  Edit modes
+msgctxt "EditTerrainMode"
+msgid "Edit Terrain mode"
+msgstr "Modifica modalità di terreno"
+
+#. Terrain  Edit modes
+msgctxt "InputTerDeform"
+msgid "D - Deform  (LMB up, RMB down)"
+msgstr "D - Deforma  (LMB su, RMB giù)"
+
+#. Terrain  Edit modes
+msgctxt "InputTerSmooth"
+msgid "S - Smooth  (flatten)"
+msgstr "S - Smooth  (spiana)"
+
+#. Terrain  Edit modes
+msgctxt "InputTerHeight"
+msgid "E - Height set  (RMB change height value)"
+msgstr "E - imposta altezza  (RMB cambia il valore di altezza)"
+
+#. Terrain  Edit modes
+msgctxt "InputTerFilter"
+msgid "F - Filter  (remove noise)"
+msgstr "F - filtro (rimuovi il disturbo)"
+
+#. Terrain  Edit modes  not used
+msgctxt "InputTerPaint"
+msgid "A - Paint Textures (layers)"
+msgstr "A - Colora le texture (layer)"
+
+#. Terrain  Edit modes  not used
+msgctxt "InputPaintColor"
+msgid "C - Paint Color"
+msgstr "C - Colora"
+
+#. Terrain  Toggle
+msgctxt "InputLockBrush"
+msgid "Enter - lock brush position"
+msgstr "Enter - blocca posizione del brush"
+
+#. Terrain  Toggle
+msgctxt "InputTerHeightSet"
+msgid "Space - set height from cursor"
+msgstr ""
+
+#. Terrain  update
+msgctxt "InputMinimapType"
+msgid "shift-F2,F3 - Prev,next minimap type"
+msgstr "shift-F2,F3 - Prec.,pross. tipo di minimap"
+
+#. Terrain  update
+msgctxt "InputUpdBlendmap"
+msgid "F9 - update terrain blendmap (manual)"
+msgstr "F9 - aggiorna il blendmap del terreno (manuale)"
+
+#. Terrain  brush  params
+msgctxt "InputBrushParams"
+msgid "Brush parameters"
+msgstr "Parametri brush"
+
+#. Terrain  brush  params
+msgctxt "InputBrushSize"
+msgid "-,=  (or Wheel)  -  Size"
+msgstr "-,=  (o rotellal)  -  Dimensioni"
+
+#. Terrain  brush  params
+msgctxt "InputBrushForce"
+msgid "[,]  (or shift-Wheel)  -  Force (intensity)"
+msgstr "[,]  (o shift-rotellal)  -  Forza (intensità)"
+
+#. Terrain  brush  params
+msgctxt "InputBrushPower"
+msgid "; &apos;  (or alt-Wheel)  -  Power exponent"
+msgstr "; &apos;  (o alt-rotella)  -  Potenza esponente"
+
+#. Terrain  brush  params
+msgctxt "InputBrushShape"
+msgid "K,L  -  Shape"
+msgstr "K,L  -  Forma"
+
+#. Terrain  brush  params
+msgctxt "InputBrushFreq"
+msgid "O,P  -  noise Frequency (scale)"
+msgstr "O,P  -  frequenza disturbo (scala)"
+
+#. Terrain  brush  params
+msgctxt "InputBrushOctaves"
+msgid ", .   -  noise Octaves (detail)"
+msgstr ", .   -  ottave di disturbo (detaglio)"
+
+#. Terrain  brush  params
+msgctxt "InputBrushOffset"
+msgid "9,0  -  noise generate Offset (position)"
+msgstr "9,0  - Offset genera rumore (posizione)"
+
+#. Terrain  brush  params
+msgctxt "InputBrushFilter"
+msgid "1,2  -  Filter frequency (kernel size)"
+msgstr "1,2 - Frequenza filtro (dimensione kernel)"
+
+#. Road  Input  modify basic
+msgctxt "InputRoadModify"
+msgid "Modify"
+msgstr "Modifica"
+
+#. Road  Input  modify basic
+msgctxt "InputRoadEdit"
+msgid "R - edit road mode"
+msgstr "R - modifica la modalità di strada"
+
+#. Road  Input  modify basic
+msgctxt "InputRoadLMB"
+msgid "LMB (or Arrows)"
+msgstr "LMB (o Frecce)"
+
+#. Road  Input  modify basic
+msgctxt "InputRoadRMB"
+msgid "RMB (or Num +,-)"
+msgstr "RMB (o Num +,-)"
+
+#. Road  Input  modify basic
+msgctxt "InputRoadMMB"
+msgid "MMB (or Num /,*)"
+msgstr "MMB (oppure Num /,*)"
+
+#. Road  Input  modify basic
+msgctxt "InputRoadMove"
+msgid "- move point"
+msgstr "- muovi il punto"
+
+#. Road  Input  modify basic
+msgctxt "InputRoadHeight"
+msgid "- change height"
+msgstr "- cambia altezza"
+
+#. Road  Input  modify basic
+msgctxt "InputRoadWidth"
+msgid "- change road width"
+msgstr "- cambia larghezza stradale"
+
+#. Road  Input  modify basic
+msgctxt "InputRoadAltLMB"
+msgid "alt-LMB (or 1,2)"
+msgstr "alt-LMB (o 1,2)"
+
+#. Road  Input  modify basic
+msgctxt "InputRoadRoll"
+msgid "- rotate roll / scale sel."
+msgstr "- ruota rotol./scala sel."
+
+#. Road  Input  modify toggle
+msgctxt "InputRoadOnTer"
+msgid "Home - toggle on Terrain snap"
+msgstr "Home - vai su snap terreno"
+
+#. Road  Input  modify toggle
+msgctxt "InputRoadColumn"
+msgid "End - on/off column"
+msgstr "End - attiva/disattiva colonna"
+
+#. Road  Input  modify toggle
+msgctxt "InputRoadNotOnTer"
+msgid "when not on terrain"
+msgstr "quando non presente su terreno"
+
+#. Road  Input  modify toggle
+msgctxt "InputRoadMostSel"
+msgid "most work also on selection"
+msgstr "la maggior parte funziona nella selezione"
+
+#. Road  Input  modify medium
+msgctxt "InputRoadAltMMB"
+msgid "alt-RMB (or 3,4)"
+msgstr "alt-RMB (o 3,4)"
+
+#. Road  Input  modify medium
+msgctxt "InputRoadYaw"
+msgid "- rotate yaw"
+msgstr "- rotazione yaw"
+
+#. Road  Input  modify medium
+msgctxt "InputRoadPipeAngle"
+msgid "[,]   - pipe angle  (no pipe when 0)"
+msgstr "[,]   - angolo tubo  (no tubo quando è 0)"
+
+#. Road  Input  modify medium
+msgctxt "InputRoadMat"
+msgid "-,=  - road/pipe material  (-1 hidden)"
+msgstr "-,=  - materiale di strada/tubo (-1 nascosto)"
+
+#. Road  Input  checkpoints
+msgctxt "InputRoadChkRadius"
+msgid "K,L  - checkpoint radius  (ChkR 0 - none)"
+msgstr "K,L  - radiosità del checkpoint  (ChkR 0 - nessuno)"
+
+#. Road  Input  checkpoints
+msgctxt "InputRoadChkCtrl"
+msgid "with ctrl - force custom radius"
+msgstr "con ctrl - forza radiosità personalizzata"
+
+#. Road  Input  checkpoints
+msgctxt "InputRoadChkFirst"
+msgid "0   - set checkpoint as first  (1)"
+msgstr "0   - imposta il checkpoint come prima  (1)"
+
+#. Road  Input  modify advanced
+#: editor/Update_EditKeyTxt.cpp:50
+msgctxt "InputRoadAngType"
+msgid "alt-1,2   - angles type"
+msgstr "alt-1,2   - tipo di angoli"
+
+#. Road  Input  modify advanced
+msgctxt "InputRoadAngSnap"
+msgid "5   - angles snap decrease (shift - increase)"
+msgstr ""
+
+#. Road  Input  modify advanced
+msgctxt "InputRoadAngZero"
+msgid "alt-shift-1  - zero angles"
+msgstr "alt-shift-1  - zero angoli"
+
+#. Road  Input  modify advanced
+msgctxt "InputRoadLoopChk"
+msgid "7   - change checkpoint as loop begin/end (for car camera change)"
+msgstr ""
+
+#. Road  Input  modify advanced
+msgctxt "InputRoadLoopType"
+msgid "cycle loop type (shift - back), keep same on both ends"
+msgstr ""
+
+#. Road  Input  modify advanced
+msgctxt "InputRoadOnPipe"
+msgid "8   - toggle on pipe (ctrl - mark only)"
+msgstr ""
+
+#. Road  Input  modify advanced
+msgctxt "InputRoadNotReal"
+msgid "shift-8   - toggle not real (only for decoration, or point move)"
+msgstr ""
+
+#. Road  Input  (one)
+msgctxt "InputRoadPickOne"
+msgid "Pick (one)"
+msgstr "Prendi (uno)"
+
+#. Road  Input  (one)
+msgctxt "InputRoadPick"
+msgid "Space - pick one/none"
+msgstr "Spazio - prendi uno/nessuno"
+
+#. Road  Input  (one)
+msgctxt "InputRoadNext"
+msgid "PgUp,PgDn (or Wheel) - previous/next point"
+msgstr "PgUp,PgDn (o rotella) - precedente/prossimo punto"
+
+#. Road  Input  (one)
+msgctxt "InputRoadShiftSel"
+msgid "shift - select"
+msgstr "shift - seleziona"
+
+#. Road  Input  (one)
+msgctxt "InputRoadDel"
+msgid "Del - delete picked"
+msgstr "Del - cancella selezionata"
+
+#. Road  Input  (one)
+msgctxt "InputRoadIns"
+msgid "Ins - insert new (after picked, alt - before)"
+msgstr "Ins - inserisci nuovo (dopo aver preso, alt -prima)"
+
+#. Road  Input  (one) advanced
+msgctxt "InputRoadInsAlt"
+msgid "alt-shift - at start   alt-ctrl - at end"
+msgstr "alt-shift - all'inizio   alt-ctrl - alla fine"
+
+#. Road  Input  (one) advanced
+msgctxt "InputRoadNew"
+msgid "ctrl-Space - set new point's values from picked"
+msgstr "ctrl-Space - imposta nuovi valori di punto da raccolto"
+
+#. Road  Input  (many)
+msgctxt "InputRoadSelectMany"
+msgid "Select (many)"
+msgstr "Seleziona (molti)"
+
+#. Road  Input  (many)
+msgctxt "InputRoadSel"
+msgid "Backspace - add to or remove from selection"
+msgstr "Backspace - aggiungi o rimuovi dalla selezione"
+
+#. Road  Input  (many)
+msgctxt "InputRoadSelAlt"
+msgid "alt - select all   ctrl - select none"
+msgstr "alt - seleziona tutto  ctrl - seleziona nessuno"
+
+#. Road  Input  (many)
+msgctxt "InputRoadCopySel"
+msgid "ctrl-Ins - copy selection   ctrl-Del - delete sel."
+msgstr "ctrl-Ins - copia selezionato  ctrl-Del - cancella sel."
+
+#. Road  Input  (many)
+msgctxt "InputRoadShiftReverse"
+msgid "shift-Ins - paste   shift-ctrl-Ins - reversed"
+msgstr "shift-Ins - incolla   shift-ctrl-Ins - inverti"
+
+#. Road  Input  (many)
+msgctxt "InputRoadAfterPick"
+msgid "after picked, center at mouse"
+msgstr "una volta presa, centra in corrispondenza del mouse"
+
+#. Road  Input  tools
+msgctxt "InputRoadRebuild"
+msgid "B - rebuild road (after terrain change, etc.)"
+msgstr "B - ricostruisci la strada (dopo il cambiamento di terreno, ecc.)"
+
+#. Road  Input  tools
+msgctxt "InputRoadAlignTerrain"
+msgid "U - Align terrain to road (for selected segments)"
+msgstr "U - Allinea terreno alla strada (per segmenti selezionati)"
+
+#. Road  Input  tools
+msgctxt "InputRoadMirror"
+msgid "alt-Home - Mirror selection"
+msgstr "alt-Home - Selezione a specchio"
+
+#. Road  Input  more roads
+msgctxt "InputRoadsAdd"
+msgid "ctrl-Enter - Add road, also for decoration or river etc."
+msgstr ""
+
+#. Road  Input  more roads
+msgctxt "InputRoadsNext"
+msgid "Enter - next road (if many), shift - previous"
+msgstr ""
+
+#. Road  Input  more roads
+msgctxt "InputRoadsDel"
+msgid "ctrl-shift-Enter - delete road"
+msgstr ""
+
+#. Road  Input  more roads
+msgctxt "InputRoadsRiver"
+msgid "alt-Enter - toggle River (no wall, columns etc.)"
+msgstr ""
+
+#. Road  Input  rarely used
+msgctxt "InputRoadMerge"
+msgid "M - toggle road merge segs (for test)"
+msgstr "M - attiva/disattiva unione segm strada (per test)"
+
+#. Road  Input  rarely used
+msgctxt "InputRoadStats"
+msgid "T - road stats window"
+msgstr "T - finestra statistiche di strada"
+
+#. Road  Input  rarely used
+msgctxt "InputRoadLooped"
+msgid "N - toggle looped"
+msgstr "N - attiva/disattiva looping"
+
+#. Car Start  Main
+msgctxt "CarStart"
+msgid "Car Start"
+msgstr "Inizio auto"
+
+#. Car Start  Main
+msgctxt "InputStart"
+msgid "Start"
+msgstr "Inizia"
+
+#. Car Start  Main
+msgctxt "InputStartPos"
+msgid "Q - edit car start pos"
+msgstr "Q - modifica la pos. di partenza delle auto"
+
+#. Car Start  Input
+msgctxt "InputStartLMB"
+msgid "ctrl-LMB - place   LMB - move   RMB - height"
+msgstr "ctrl-LMB - piazza   LMB - muovi   RMB - altezza"
+
+#. Car Start  Input
+msgctxt "InputStartAltLMB"
+msgid "alt-LMB - rotate (shift - global)   alt-RMB - pitch (shift - roll)"
+msgstr "alt-LMB - ruota (shift - globale)   alt-RMB - pitch (shift - rotola)"
+
+#. Car Start  Input
+msgctxt "InputStartAltMMB"
+msgid "alt-MMB - reset rotation"
+msgstr "alt-MMB - riavvia la rotazione"
+
+#. Car Start  Input  advanced
+msgctxt "InputStartHeight"
+msgid "[,]  -  adjust start box height (bigger for pipes)"
+msgstr "[,]  -  regola altezza iniziale (più grande per tubi)"
+
+#. Car Start  Input  advanced
+msgctxt "InputStartWidth"
+msgid "; &apos;  -  adjust start box width (for road width)"
+msgstr "; &apos;  - regola larghezza iniziale (per strada)"
+
+#. Car Start  Input  advanced
+msgctxt "InputStartDir"
+msgid "Space  -  change road direction (+ or -)"
+msgstr "Spazio - cambia direzione stradale (+ o -)"
+
+#. Car Start  Input  advanced
+msgctxt "InputStartMeet"
+msgid "car will meet (next+ / prev-) point numbers"
+msgstr "l'auto incontrerà (pross+/prec-) i numeri di punteggio"
+
+#. Fluids  Main
+msgctxt "Fluids"
+msgid "Fluids"
+msgstr "Fluidi"
+
+#. Fluids  Main
+msgctxt "InputFluidsMode"
+msgid "W - edit fluids"
+msgstr "W - modifica i flussi"
+
+#. Fluids  Input
+msgctxt "InputFluidsPrevNext"
+msgid "PgUp,PgDn (or Wheel) - previous/next fluid"
+msgstr "PgUp,PgDn (o rotellina) - flusso precedente/seguente"
+
+#. Fluids  Input
+msgctxt "InputFluidsIns"
+msgid "Ins - insert new, default fluid at cursor"
+msgstr "Ins - inserisci nuovo, fluido preimpostato in corrispondenza del cursore"
+
+#. Fluids  Input
+msgctxt "InputFluidsDel"
+msgid "Del - delete current"
+msgstr "Del - cancella corrente"
+
+#. Fluids  Input
+msgctxt "InputFluidsMove"
+msgid "LMB - move   RMB - height"
+msgstr "LMB - muovi   RMB - altezza"
+
+#. Fluids  Input
+msgctxt "InputFluidsSize"
+msgid "alt-LMB - size   alt-RMB - depth"
+msgstr "alt-LMB - dimensioni  alt-RMB - profondità"
+
+#. Fluids  Input
+msgctxt "InputFluidsType"
+msgid "-,=  - change fluid type (water,mud,etc.)"
+msgstr "-,=  - modifica tipo di fluido (acqua, fango, ecc.)"
+
+#. Fluids  Input advanced
+msgctxt "InputFluidsTile"
+msgid "[,]  - change texture tiling"
+msgstr "[,]  - cambia texture tiling"
+
+#. Fluids  Input advanced
+msgctxt "InputFluidsTileY"
+msgid "; &apos;  - change texture tiling, one coord. only"
+msgstr "; &apos;  - cambia texture tiling, solo una coord."
+
+#. Fluids  Input advanced
+msgctxt "InputFluidsUpdate"
+msgid "F10  - update depth map, after terrain deform near shore"
+msgstr "F10 - aggiorna la profondità di mappa, dopo la deformazione di terreno vicino a riva"
+
+#. Objects  Main
+#: Editor.layout 2529..Editor.Vegetation.Tab
+msgctxt "Objects"
+msgid "Objects"
+msgstr "Oggetti"
+
+#. Objects  Main
+#: Editor.layout 2531..Editor.Vegetation.Objects.Text
+msgctxt "ObjDynamic"
+msgid "Dynamic"
+msgstr "Dinamico"
+
+#. Objects  Main
+#: Editor.layout 2539..Editor.Vegetation.Objects.Text :2556
+msgctxt "ObjStatic"
+msgid "Static"
+msgstr "Statico"
+
+#. Objects  Main
+msgctxt "ObjBuildings"
+msgid "Buildings"
+msgstr "Edifici"
+
+#. Objects  Main
+#: editor/Gui_Init.cpp:680
+msgctxt "ObjRocks"
+msgid "Rocks"
+msgstr "Rocce"
+
+#. Objects  Main
+#: Editor.layout 2547..Editor.Vegetation.Objects.Text :2556
+msgctxt "Group"
+msgid "Group"
+msgstr ""
+
+#. Objects  Input
+msgctxt "InputObjectsMode"
+msgid "X - edit Objects"
+msgstr "X - modifica gli oggetti"
+
+#. Objects  Input
+msgctxt "InputObjectsPrevNext"
+msgid "PgUp,PgDn (or Wheel) - previous/next object"
+msgstr "PgUp,PgDn (o rotella) - precedente/prossimo oggetto"
+
+#. Objects  Input
+msgctxt "InputObjectsIns"
+msgid "Ins - insert new, at cursor"
+msgstr "Ins - inserisci nuovo, in corrispondenza del cursore"
+
+#. Objects  Input
+msgctxt "InputObjectsDel"
+msgid "Del - delete current"
+msgstr "Del - cancella corrente"
+
+#. Objects  Input Modes
+msgctxt "InputObjectsMove"
+msgid "1 - Move   LMB - plane XZ  RMB - Y height"
+msgstr "1 - Muovi  LMB - spiana XZ  RMB - Y altezza"
+
+#. Objects  Input Modes
+msgctxt "InputObjectsRot"
+msgid "2 - Rotate local (alt- global)  LMB: Z  RMB: Y  MMB: X"
+msgstr "2 - Ruota locale (alt- globale)  LMB: Z  RMB: Y  MMB: X"
+
+#. Objects  Input Modes
+msgctxt "InputObjectsScale"
+msgid "3 - Scale   LMB - uniform XYZ  RMB: Y  MMB: Z"
+msgstr "3 - Scala   LMB - uniforma XYZ  RMB: Y  MMB: Z"
+
+#. Objects  Input extras
+msgctxt "InputObjectsMoveReset"
+msgid "shift-1 - move to cursor / reset new height"
+msgstr "shift-1 - muovi nel cursore/riavvia nuova altezza"
+
+#. Objects  Input extras
+msgctxt "InputObjectsRotReset"
+msgid "shift-2 - reset rotation"
+msgstr "shift-2 - riavvia rotazione"
+
+#. Objects  Input extras
+msgctxt "InputObjectsScaleReset"
+msgid "shift-3 - reset scale to 1 (with shift to 0.5)"
+msgstr "shift-3 - riavvia scala a 1 (con shift a 0.5)"
+
+#. Objects  Input extras
+msgctxt "InputObjectsType"
+msgid "-,=  - change object type"
+msgstr "-,=  - cambia tipo di oggetto"
+
+#. Objects  Input
+msgctxt "InputObjectsSimulate"
+msgid "C - simulation toggle for dynamic objects"
+msgstr "C - attiva/disattiva simulazione per oggetti dinamici"
+
+#. Objects  Input
+msgctxt "InputObjectsCopySel"
+msgid "ctrl-Ins - copy selection"
+msgstr "ctrl-Ins - copia selezione"
+
+#. Objects  Input
+msgctxt "InputObjectsPaste"
+msgid "shift-Ins - paste copied"
+msgstr "shift-Ins - incolla"
+
+#. Particles  Input
+msgctxt "InputParticlesMode"
+msgid "A - edit Particles"
+msgstr ""
+
+#. Particles  Input
+msgctxt "InputParticlesDensity"
+msgid "[,] - change density (emission rate)"
+msgstr ""
+
+#. Particles  Input
+msgctxt "InputParticlesStatic"
+msgid "Enter - toggle static"
+msgstr ""
+
+#. HUD  Camera info  parts (use same count, separated by comma)
+#: ogre/FollowCamera.cpp:617
+msgctxt "CamInfoStrings"
+msgid ""
+"Type,Yaw,Pitch,Dist,Height,Speed,Offset,LEFT,RIGHT,Middle,Wheel,shift,Rotate,reset,move,H,Pos"
+msgstr "Tipo,Yaw,Pitch,Dist,Altezza,Velocità,Offset,SINISTRA,DESTRA,Metà,Ruota,marcia,Rotazione,riavvia,muovi,H,Pos"
+
+#. Car descriptions
+msgctxt "CarDesc_OT"
+msgid ""
+"This is the slowest car. Very old and a bit creepy truck. Can drive only on "
+"flat tracks and with turtle speed."
+msgstr "Questa è la macchina più lenta. Camion molto vecchio e un po' inquietante. Guida solo su piste pianeggianti ad una velocità tartaruga."
+
+#. Car descriptions
+msgctxt "CarDesc_FR4"
+msgid ""
+"Quite old, heavy, broad and slow. Good for terrain but not with the best "
+"suspension. Isn't suited for faster or stunt tracks."
+msgstr "Abbastanza vecchia, pesanta, larga e lenta. Buona sui terreni ma non con sospensioni robuste. Non è adatta per piste veloci e acrobatiche."
+
+#. Car descriptions
+msgctxt "CarDesc_HR"
+msgid ""
+"Very heavy and slow car, best for terrain and bumps, easy to drive. But "
+"useless on fast and stunt tracks."
+msgstr "Auto molto pesante e lenta, ottima su terreno e resistente agli urti, facile da guidare. Inutile su piste veloci e acrobatici."
+
+#. Car descriptions
+msgctxt "CarDesc_LK4"
+msgid ""
+"Slow and heavy car. Can handle bumps well. Is stable and easy to drive. But "
+"isn't suited for faster tracks."
+msgstr "Auto lenta e pesante. Gestisce bene gli urti, è stabile e facile da guidare, ma non adatta su piste veloci."
+
+#. Car descriptions
+msgctxt "CarDesc_U8"
+msgid ""
+"Big and heavy exploration vehicle with 8 wheel drive, close to a bus. Great "
+"on all planets for whole team. It is fast but very long and can't do loops, "
+"pipes or jumps."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_MO"
+msgid ""
+"Huge and heavy monster truck. Does terrain and jumps very well. But due to "
+"size, it has problems in everything narrow, even bridges."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_UV"
+msgid ""
+"This big wheeled utility vehicle is powered by 4 electic engines. Suited for"
+" nearly all tracks, except when narrow. Great for exploring other planets. "
+"But has bad aerodynamics and gets stuck in mud."
+msgstr "Questo veicolo vantaggiato di grosse ruote è alimentato da quattro motori elettrici. Adatto per quasi tutti i tipi di pista, tranne su quelle di stretta misura. Ottimo per esplorare altri pianeti. Offre cattiva aerodinamica e rimane incollata nel fango."
+
+#. Car descriptions
+msgctxt "CarDesc_FN"
+msgid ""
+"Another good rally car, suited for all tracks. Is not that long and thus "
+"easier to steer."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_S8"
+msgid ""
+"Good rally car, drivable on all tracks, but shorter and more steerable."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_ES"
+msgid ""
+"Best rally car in game, great driving experience on all tracks. A bit high "
+"though."
+msgstr "Migliore auto da rally in gioco, grandiosa esperienza di guida su tutte le piste. Forse un po' alta."
+
+#. Car descriptions
+msgctxt "CarDesc_HI"
+msgid ""
+"Best rally car in game, drivable on all tracks with the best experience, "
+"similar to ES."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_TW"
+msgid ""
+"This big, extreme vehicle is great for long and smooth tracks. But "
+"completely useless when narrow or in mud (e.g. in jungle). Also not easy to "
+"drive."
+msgstr "Questo grosso e straordinario veicolo è ottimo per le piste lunghe e lisce. Del tutto inutile su strade ristrette o nel fango (es. nella giungla). Inoltre, non è facile da guidare."
+
+#. Car descriptions
+msgctxt "CarDesc_TU"
+msgid ""
+"Very futuristic and fast vehicle. Not suited for narrow roads, jumps or mud."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_SZ"
+msgid ""
+"Fastest car meant for gravel. Light and with a powerful engine. Has great "
+"aerodynamics and steerability."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_XZ"
+msgid ""
+"Very powerful engine fitted car, drivable on most tracks. Not best on bumps "
+"because of short and stiff suspension. So much torque also causes more "
+"wheels spin."
+msgstr "Auto dotata di motore molto potente, facile da guidare sulla maggior parte delle piste, ma non molto su dossi a causa delle sospensioni corte e rigide. Tanto torque provoca molte testa-coda."
+
+#. Car descriptions
+msgctxt "CarDesc_3B"
+msgid ""
+"Very fast, futuristic racing vehicle. Uses 3 stabilized spheres to drive. "
+"Not the best for bridges, mud or pipes."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_BE"
+msgid ""
+"Normal size bike. Light, fast and very agile. Being small it does not like "
+"terrain bumps."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_BV"
+msgid ""
+"Big extreme bike with advanced electric engine. Extremely fast and light. "
+"Also great for exploring other planets. Doesn't handle bad jump landings and"
+" bumps."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_SX"
+msgid ""
+"Very tuned and powerful car. Drivable on all tracks. Not best on bumps. Can "
+"spin wheels easily."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_PH"
+msgid ""
+"Another extremely powerful and fast car. Only for fast smooth tracks, due to"
+" length and low suspension."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_Y7"
+msgid ""
+"Extremely fast car. Don't press throttle for too long. Drivable only on fast"
+" smooth tracks."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_U6"
+msgid ""
+"Incredibly fast, 6 wheels driving with advanced electric engine. Great for "
+"racing on all planets. Caution: it can spin wheels easily, it has 1 gear "
+"only. It also has high center of mass, meaning it will end with wheels up, "
+"after bad landings."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_V1"
+msgid ""
+"A spaceship reworked as a hovercraft. Very fast and easy to steer. Doesn't "
+"care about terrain bumps. But being small does slide sideways."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_V2"
+msgid ""
+"Another hovering spaceship. Slightly heavier and slower but doesn't go "
+"sideways that easily."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_V3"
+msgid ""
+"A big and heavy spaceship. Very good acceleration at start and strong "
+"braking. But doesn't reach high speeds."
+msgstr ""
+
+#. Car descriptions
+msgctxt "CarDesc_O"
+msgid ""
+"An experimental, perfectly stabilized, rotating sphere. Uses advanced "
+"spacecraft propulsion to easily move in any direction. Very fast but very "
+"bouncy."
+msgstr ""
+
+#. Car descriptions
+#: ogre/Gui_Util.cpp:258
+msgctxt "CarDesc_Pipes"
+msgid "NOTE: Currently impossible to use in pipes."
+msgstr "NOTA: al momento non è possibile usare nei tubi."
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Lesson"
+msgid "Lesson"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "DrivingSchool"
+msgid "Stunt Rally driving school"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "LessonClick"
+msgid "click button to play a lesson"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-0"
+msgid "Rewind"
+msgstr "Riavvolgi"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-0text"
+msgid "If you crashed or you're stuck, hold [Backspace] to move back in time."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-1"
+msgid "Turns"
+msgstr "Giri"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-1text"
+msgid ""
+"Don't accelerate all the time. Also don't forget to brake before turns, "
+"especially sharp ones. If you don't know the road yet, it's better to drive "
+"slowly."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-2"
+msgid "Flipping"
+msgstr "Ribalta"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-2text"
+msgid ""
+"Hold [Q] or [W] to flip over the car, when upside down or in jumps. "
+"Depending on settings, it may cost some fuel."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-3"
+msgid "Gravel"
+msgstr "Ghiaia"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-3text"
+msgid ""
+"Remember that mostly you will drive on gravel. This means low grip, lower "
+"speeds and sliding. Wet gravel is even more slippery. Snow and ice are "
+"worst. Deserts are fastest."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-4"
+msgid "Damage"
+msgstr "Danno"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-4text"
+msgid ""
+"Watch your car's damage, especially in stunt tracks. It will stop working if"
+" it is fully damaged and its performance decreases when over 50 %."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-5"
+msgid "Ghost cars"
+msgstr "Auto fantasma"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-5text"
+msgid ""
+"By default, your best drive ghost is an orange car. It will appear after a "
+"lap. The green car is the track's ghost."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-6"
+msgid "Boost"
+msgstr "Turbo"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-6text"
+msgid ""
+"Hold [Ctrl] to boost. Depending on the settings, boost is given each lap, "
+"regenerates over time, or is infinite."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-7"
+msgid "Cars"
+msgstr "Auto"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-7text"
+msgid ""
+"Pick the right car type for a track. So, don't use low cars on bumpy "
+"terrain, avoid large cars in narrow tracks, and fast super cars aren't meant"
+" for slippery surfaces."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-8"
+msgid "Steering"
+msgstr "Sterza"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-8text"
+msgid ""
+"If you don't feel comfortable with steering on keyboard, try different "
+"settings in [Setup], tab [Steering], namely range and speed decrease and "
+"keys sensitivity in [Input]."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-9"
+msgid "Jumps"
+msgstr "Salti"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-9text"
+msgid ""
+"Don't drive too fast in jumps, else the car will land in a sloppy manner. "
+"The ideal landing is on the jump's other end."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-10"
+msgid "Loops"
+msgstr "Anelli"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-10text"
+msgid ""
+"In loops, the camera will automatically switch to an interior view, to make "
+"it easier to steer while in a loop."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-11"
+msgid "Pipes"
+msgstr "Tubi"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-11text"
+msgid ""
+"Don't drive too fast in pipes and loops. You will damage the car's bottom "
+"due to high acceleration."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-12"
+msgid "Vehicles"
+msgstr "Veicoli"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-12text"
+msgid ""
+"Check out other vehicles, we also have hovering spaceships, and tracks on "
+"other planets."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-13"
+msgid "Simulation"
+msgstr "Simulazione"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-13text"
+msgid ""
+"By default simulation is in easy mode, for beginners. Don't forget to set it"
+" to normal if the game feels too easy."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-14"
+msgid "Fps"
+msgstr "Fps"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-14text"
+msgid ""
+"Press F11 to show the bar with frames per second and other info. For "
+"playing, it's best to have at least 30 Fps, 60 Fps being the ideal value."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-15"
+msgid "Help"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-15text"
+msgid ""
+"For more info, check [Help] in the menu. It also has links to websites."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-16"
+msgid "Camera"
+msgstr "Camera"
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-16text"
+msgid ""
+"Press [C] for next or [X] for previous camera view. Hold shift for main "
+"cameras only."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-17"
+msgid "Trail"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-17text"
+msgid ""
+"Follow racing line trail, for best way to drive. Use its colors to your "
+"advantage. Brake early when you see it turning red."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-18"
+msgid "Pacenotes"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-18text"
+msgid ""
+"Observe pace note signs above road. They show turns: easy as green, medium "
+"as orange, and sharpest being red."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-19"
+msgid "Stunt Pacenotes"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-19text"
+msgid ""
+"Pace notes also warn about stunts like jumps, loops and on pipe drive. For "
+"jumps, also text with ideal speed is shown. Turning green on close match, "
+"orange when too slow and cyan or white when too fast."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-20"
+msgid "Fluids"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-20text"
+msgid ""
+"Fluids like water and mud are safe. You can drive cars under the water and "
+"through mud. Stay out of lava and acid, which will cause damage fast."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-21"
+msgid "Wheels"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-21text"
+msgid ""
+"Beware of spinning wheels, car looses grip and will slide too much. Release "
+"throttle to get back grip and wheels rolling normally. This will happen on "
+"surfaces like snow or with faster cars."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-22"
+msgid "Keyboard"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-22text"
+msgid "By default, keyboard arrows are used to drive."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-23"
+msgid "Editors"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-23text"
+msgid ""
+"Stunt Rally comes with its own Track Editor, where you can modify its tracks"
+" or create your own. Game also has its vehicle editor and many other "
+"development tools."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-24"
+msgid "Details"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-24text"
+msgid ""
+"Track and Vehicle tabs show a lot of information. You can sort or filter "
+"their lists. Some vehicles are difficult to drive, and will only drive well "
+"on few tracks."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-25"
+msgid "Support"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-25text"
+msgid ""
+"Stunt Rally is Free Libre Open Source Software. You can contribute to this "
+"project or support it with donation(s)."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-26"
+msgid "Test tracks"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-26text"
+msgid ""
+"When beginning it may be safer and more fun, to train driving on big test "
+"tracks with no roads: Flat, TerrainBig, Fluids, Snow or Asphalt. Type name "
+"in find box for quick search."
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-27"
+msgid "Handbrake"
+msgstr ""
+
+#. TIP  Hints title+text  (in How To Play)
+msgctxt "Hint-27text"
+msgid ""
+"Use handbrake very shortly in very sharp turns. It will lock rear wheels and"
+" make car turn faster."
+msgstr ""
+
+#. Game  User Path
+msgctxt "UserDir"
+msgid "User Path (logs, configs, user data, etc)"
+msgstr "Percorso utente (log, config, user data, ecc.)"
+
+#. TIP  Slider
+#: Editor.layout 671..Editor.Terrain.Generator.Text
+msgctxt "TipSliderReset"
+msgid "RMB on slider - reset to default value."
+msgstr "RMB su cursore - riavvia il valore predefinito."
+
+#. TIP  Track
+msgctxt "TipLoadTrkEditor"
+msgid "Load track (after change) or Reload current track."
+msgstr "Carica la pista (dopo il cambiamento) o ricarica quella corrente."
+
+#. TIP  Track
+msgctxt "TipTrkScreenEditor"
+msgid "In game screenshot for selected track."
+msgstr "Immagine di gioco per la pista selezionata."
+
+#. TIP  Track
+msgctxt "TipMinimapScrnEditor"
+msgid "Minimap of selected track, view from top."
+msgstr "Minimap della pista selezionata, vista dall'alto."
+
+#. TIP  Track
+msgctxt "TipTrackDescEditor"
+msgid "Track description text (click to edit)."
+msgstr "Testo di descrizione pista (clicka per modificare)."
+
+#. TIP  Track  Editor
+msgctxt "TipCopySource"
+msgid "Pick selected track for copy source, used in [Tools] tab."
+msgstr "Scegli la pista selezionata per copia originale, usata nella scheda [Utilità]."
+
+#. TIP  Track  Editor
+msgctxt "TipNewDup"
+msgid ""
+"Create a new track by duplicating the selected track and using new name "
+"(change name first)."
+msgstr "Crea una nuova pista duplicando una selezionata, usando un nome nuovo (cambia prima il nome)."
+
+#. TIP  Track  Editor
+msgctxt "TipRenameTrk"
+msgid "Rename selected track with new name (change name first)."
+msgstr "Rinonima la pista selezionata con un nome nuovo (prima cambia il nome)."
+
+#. TIP  Track  Editor
+msgctxt "TipTrkNameEditor"
+msgid ""
+"Selected track name, used also for renaming track and as new track name."
+msgstr "Nome della pista selezionata, usata anche per essere rinominata come nuova."
+
+#. TIP  Track  Editor
+msgctxt "TipDeleteTrk"
+msgid "Permanently delete selected track."
+msgstr "Elimina definitivamente la pista selezionata."
+
+#. TIP  Sky  (leave tips for last)
+#: Editor.layout 45..Editor.Sun.Sun.Text 51..Editor.Sun.Sun.Button
+msgctxt "TipSkyMats"
+msgid "Sky material names."
+msgstr "Nomi materiali del cielo"
+
+#. TIP  Sky  (leave tips for last)
+#: Editor.layout 72..Editor.Sun.Sun.Text 81..Editor.Sun.Sun.Slider
+#: 85..Editor.Sun.Sun.Text
+msgctxt "TipSunDirPitch"
+msgid "Sun direction - pitch angle."
+msgstr "Direzione del sole - angolo pitch."
+
+#. TIP  Sky  (leave tips for last)
+#: Editor.layout 77..Editor.Sun.Sun.Text 89..Editor.Sun.Sun.Slider
+#: 93..Editor.Sun.Sun.Text
+msgctxt "TipSunDirYaw"
+msgid "Sun direction - yaw angle."
+msgstr "Direzione del sole - angolo yaw."
+
+#. TIP  Sky  (leave tips for last)
+#: Editor.layout 102..Editor.Sun.Sun.Text
+msgctxt "TipSunAmbient"
+msgid ""
+"Sun light ambient (constant) color. R G B components 0 to 1 (eg. 0.4 0.4 "
+"0.4)"
+msgstr "Colore (costante) della luce solare su ambiente. Elementi R G B da 0 a 1 (es. 0.4. 0.4 0.4)"
+
+#. TIP  Sky  (leave tips for last)
+#: Editor.layout 107..Editor.Sun.Sun.Text
+msgctxt "TipSunDiffuse"
+msgid ""
+"Sun light diffuse (normal) color. R G B components 0 to 1 (eg. 0.9 0.9 0.9)"
+msgstr "Colore di diffusione luce solare (normale). Elementi R G B da 0 a 1 (es. 0.9 0.9 0.9)"
+
+#. TIP  Sky  (leave tips for last)
+#: Editor.layout 112..Editor.Sun.Sun.Text
+msgctxt "TipSunSpecular"
+msgid ""
+"Sun light specular (shiny) color. R G B components 0 to 1 (eg. 0.6 0.6 0.6)"
+msgstr "Colore (lucente) di luce del sole speculare. Elementi R G B da 0 a 1 (es. 0.6 0.6 0.6)"
+
+#. TIP  Fog
+#: Editor.layout 197..Editor.Sun.Fog.Text
+msgctxt "TipFogClr"
+msgid "Fog end color when looking under sun."
+msgstr "Colore di fine nebbia quando si guarda sotto il sole."
+
+#. TIP  Fog
+#: Editor.layout 205..Editor.Sun.Fog.Text
+msgctxt "TipFogClr2"
+msgid "Fog end color when looking away from sun."
+msgstr "Fine colore nebbia quando si distoglie lo sguardo dal sole."
+
+#. TIP  Fog
+#: Editor.layout 239..Editor.Sun.Fog.Text
+msgctxt "TipFogClrH"
+msgid "Fog color for height fog."
+msgstr "Colore nebbia per altezza."
+
+#. TIP  Fog
+#: Editor.layout 197..Editor.Sun.Fog.Text :205:239
+msgctxt "TipFogClrRGBA"
+msgid ""
+"R G B A components 0 to 1 (eg. 0.7 0.8 0.9 1). Last can be used to lower "
+"maximum density (1 is full)."
+msgstr "Elementi R G B A da 0 a 1 (es. 0.7 0.8 0.9 1). Può essere usato per abbassare la densità massima (1 è pieno)."
+
+#. TIP  Fog
+#: Editor.layout 213..Editor.Sun.Fog.Text 217..Editor.Sun.Fog.Slider
+#: 221..Editor.Sun.Fog.Text :277:281..Editor.Sun.Fog.Slider
+#: 285..Editor.Sun.Fog.Text
+msgctxt "TipFogStartDist"
+msgid "Fog start distance [meters]."
+msgstr "Distanza iniziale della nebbia [metri]."
+
+#. TIP  Fog
+#: Editor.layout 226..Editor.Sun.Fog.Text 230..Editor.Sun.Fog.Slider
+#: 234..Editor.Sun.Fog.Text :290:294..Editor.Sun.Fog.Slider
+#: 298..Editor.Sun.Fog.Text
+msgctxt "TipFogEndDist"
+msgid "Fog end distance [meters]."
+msgstr "Fine distanza della nebbia [metri]."
+
+#. TIP  Fog
+#: Editor.layout 248..Editor.Sun.Fog.Text 252..Editor.Sun.Fog.Slider
+#: 257..Editor.Sun.Fog.Edit
+msgctxt "TipFogHStart"
+msgid ""
+"Height fog start height [meters] at which fog starts getting denser for "
+"smooth distance."
+msgstr "Altezza di inizio nebbia [metri] dove la nebbia comincerà a essere più fitta per distanza smoothing."
+
+#. TIP  Fog
+#: Editor.layout 262..Editor.Sun.Fog.Text 266..Editor.Sun.Fog.Slider
+#: 271..Editor.Sun.Fog.Edit
+msgctxt "TipFogHSmooth"
+msgid "Height fog smooth distance [meters]."
+msgstr "Distanza smoothing di altezza nebbia [metri]"
+
+#. TIP  Fog
+#: Editor.layout 192..Editor.Sun.Fog.Check
+msgctxt "TipDisableFog"
+msgid "Disable fog when editing road from distance."
+msgstr "Disattiva la nebbia durante la modifica della strada dalla distanza."
+
+#. TIP  Weather
+#: Editor.layout 137..Editor.Sun.Sun.Combo 165..Editor.Sun.Sun.Text
+msgctxt "TipRainSnow1"
+msgid "Set 1 Rain/Snow type"
+msgstr "Imp 1 tipo di pioggia/neve"
+
+#. TIP  Weather
+#: Editor.layout 144..Editor.Sun.Sun.Combo 170..Editor.Sun.Sun.Text
+msgctxt "TipRainSnow2"
+msgid "Set 2 Rain/Snow type"
+msgstr "Imp 2 tipo di pioggia/neve"
+
+#. TIP  Weather
+#: Editor.layout 148..Editor.Sun.Sun.Text 152..Editor.Sun.Sun.Slider
+#: 156..Editor.Sun.Sun.Text 160..Editor.Sun.Sun.Slider
+#: 175..Editor.Sun.Sun.Text :180
+msgctxt "TipRainSnowInt"
+msgid "Rain/Snow intensity (eg. 1000)"
+msgstr "Intensità pioggia/neve (es. 1000)"
+
+#. TIP  Weather
+#: Editor.layout 130..Editor.Sun.Sun.Check
+msgctxt "TipDisableWeather"
+msgid "Disable weather particles."
+msgstr "Disattiva particelle del tempo meteorologico."
+
+#. TIP  Terrain
+#: Editor.layout 332..Editor.Terrain.Properties.Text
+#: 336..Editor.Terrain.Properties.Slider 341..Editor.Terrain.Properties.Edit
+msgctxt "TipTerTriSize"
+msgid ""
+"Terrain triangle size in [meters] (recommended: 1 - 2, use more for big "
+"track area). Changed after Update (F8)."
+msgstr "Dimensione triangolo di terreno in [metri] (si raccomanda: 1 - 2, per piste abbastanza grandi). Cambia dopo l'aggiornamento (F8)."
+
+#. TIP  Terrain
+#: Editor.layout 346..Editor.Terrain.Properties.Text :350
+msgctxt "TipTerSize"
+msgid ""
+"Resulting area in meters (side length). Equals vertex count multipled by "
+"triangle size."
+msgstr "Superficie risultante in metri (lunghezza del lato). Numero uguale di vertice moltiplicato per dimensioni triangolo."
+
+#. TIP  Terrain
+#: Editor.layout 388..Editor.Terrain.Properties.Text
+#: 393..Editor.Terrain.Properties.Edit 397..Editor.Terrain.Properties.Slider
+msgctxt "TipTerErrorNorm"
+msgid ""
+"Default terrain error in percent. Less for flat, more for high terrains."
+msgstr "Errore di terreno predefinito in percentuale. Meno per piani, più per terreni elevati."
+
+#. TIP  Terrain
+#: Editor.layout 407..Editor.Terrain.Properties.Text
+#: 412..Editor.Terrain.Properties.Edit 416..Editor.Terrain.Properties.Slider
+msgctxt "TipTerNormScale"
+msgid ""
+"Use if needed to scale terrain texture normals, for lighting. Otherwise "
+"default 1."
+msgstr "Se necessario, usa per scalare le texture normali di terreno per l'illuminazione. In caso contrario, di default è 1."
+
+#. TIP  Terrain  New Hmap
+#: Editor.layout 356..Editor.Terrain.Properties.Button
+msgctxt "TipNewTerrainFlat"
+msgid "Create new, flat terrain."
+msgstr "Crea nuovo, terreno piano."
+
+#. TIP  Terrain  New Hmap
+#: Editor.layout 463..Editor.Terrain.Generator.Text
+msgctxt "TipTerrainGenerate"
+msgid "Generates new terrain from noise functions using all parameters below."
+msgstr "Genera nuovo terreno dalle funzioni di disturbo usando tutti i parametri in basso."
+
+#. TIP  Info
+msgctxt "TipBrushPick"
+msgid "shift-LMB - on Brushes, pick only shape (don't change mode)."
+msgstr "shift-LMB - sui brush, prende solo il modello (non cambia modalità)."
+
+#. TIP  Terrain  tools
+#: Editor.layout 696..Editor.Terrain.Tools.Button
+msgctxt "TipTerrainHalf"
+msgid ""
+"Resize current terrain heightmap by half (use only for reducing file size)."
+msgstr "Ridimensiona a metà l'attuale heightmap di terreno (usa solo per ridurre la dimensione del file)"
+
+#. TIP  Terrain  tools
+#: Editor.layout 703..Editor.Terrain.Tools.Button
+msgctxt "TipTerrainDouble"
+msgid "Make terrain size double, leaving current heightmap part in center."
+msgstr "Rende doppia la dimensione del terreno, lasciando la parte di altezza della mappa al centro."
+
+#. TIP  Terrain  tools
+#: Editor.layout 710..Editor.Terrain.Tools.Button
+msgctxt "TipTerrainMove"
+msgid "Move terrain."
+msgstr "Muovi il terreno."
+
+#. TIP  Terrain  Layers
+#: Editor.layout 773..Editor.Layers.Check
+msgctxt "TipToggleLayer"
+msgid "Turn on/off chosen texture layer."
+msgstr "Attiva/disattiva il layer di texture scelto."
+
+#. TIP  Terrain  Layers
+#: Editor.layout 321..Editor.Terrain.TabC 759..Editor.Layers.Text
+#: 785..Editor.Layers.TabC 809..Editor.Layers.ProgressBar
+msgctxt "TipTerLayers"
+msgid ""
+"Recommended use 3 or 4, with noise. Affects Fps. More than 4 will not work."
+msgstr "Con disturboo, si raccomanda di usare 3 o 4. Afflige gli fps. Più di 4 non funzionerà."
+
+#. TIP  Terrain  Layers
+#: Editor.layout 779..Editor.Layers.Check
+msgctxt "TipToggleTriplanar"
+msgid "Use for steep or mountain layers, max use is 2."
+msgstr "Usa su layer ripidi o di montagna, uso massimo è 2."
+
+#. TIP  Terrain  Layers
+#: Editor.layout 766..Editor.Layers.Text
+msgctxt "TipTerTripl"
+msgid ""
+"When using graphics option triplanar max 2, this layer will have triplanar "
+"mapping (good textured slopes). Affects Fps."
+msgstr "Quando si utilizza l'opzione grafica triplanare mass. 2, il layer avrà mappatura triplanare (buone texture sui versanti). Afflige gli fps."
+
+#. TIP  Terrain  Layers
+#: Editor.layout 327..Editor.Terrain.Properties.Text
+#: 361..Editor.Terrain.Properties.TabC
+#: 382..Editor.Terrain.Properties.ProgressBar
+msgctxt "TipTerVertCount"
+msgid ""
+"Terrain vertex count on one side (squares). Apply with buttons [New Flat] or"
+" [Resize]."
+msgstr "Numero vertice di terreno da un lato (quadrati). Applica con i pulsanti [Nuovo terreno] o [Ridimensiona]."
+
+#. TIP  Terrain  Layers
+#: Editor.layout 812..Editor.Layers.Image
+msgctxt "TipDiffusePrev"
+msgid "Diffuse texture preview image."
+msgstr "Anteprima immagine di diffusione texture."
+
+#. TIP  Terrain  Layers
+#: Editor.layout 819..Editor.Layers.Button 824..Editor.Layers.Text
+msgctxt "TipDiffuseTex"
+msgid "Diffuse texture (Specular in alpha)."
+msgstr "Diffusione texture (speculare in alfa)."
+
+#. TIP  Terrain  Layers
+#: Editor.layout 830..Editor.Layers.Text 838..Editor.Layers.Combo
+msgctxt "TipNormalTex"
+msgid "Normal texture (Height in alpha)."
+msgstr "Texture normale ( altezza in alfa)"
+
+#. TIP  Terrain  Layers
+#: Editor.layout 845..Editor.Layers.Check
+msgctxt "TipTexNormAuto"
+msgid ""
+"When checked, Normal texture is automatically set from Diffuse texture (+ "
+"_nh in filename)."
+msgstr "Se selezionato, texture normale viene imposta automaticamente in diffusione texture ( (+ _nh in nome file)."
+
+#. TIP  Terrain  Layers
+#: Editor.layout 850..Editor.Layers.Text 855..Editor.Layers.Edit
+#: 859..Editor.Layers.Slider
+msgctxt "TipTexTiling"
+msgid "Texture tiling length (less means more repeats)."
+msgstr "Lunghezza texture tiling (meno significa più ripetizoni)."
+
+#. TIP  Terrain  Layers
+#: Editor.layout 747..Editor.Layers.Button :753
+msgctxt "TipTerLMove"
+msgid "Move layer, changes order."
+msgstr "Muovi il layer, cambia l'ordine."
+
+#. TIP  Terrain  blendmap
+#: Editor.layout 592..Editor.Terrain.Generator.Text
+#: :596:600..Editor.Terrain.Generator.Slider
+#: 885..Editor.Layers.Blendmap.Blendmap.Text
+#: :889:893..Editor.Layers.Blendmap.Blendmap.Slider
+msgctxt "TipTerLAngMin"
+msgid "Starting terrain angle for layer."
+msgstr "Avvia angolo di terreno per layer."
+
+#. TIP  Terrain  blendmap
+#: Editor.layout 605..Editor.Terrain.Generator.Text
+#: :609:613..Editor.Terrain.Generator.Slider
+#: 898..Editor.Layers.Blendmap.Blendmap.Text
+#: :902:906..Editor.Layers.Blendmap.Blendmap.Slider
+msgctxt "TipTerLAngMax"
+msgid "Ending terrain angle for layer."
+msgstr "Angolo di fine terreno per layer."
+
+#. TIP  Terrain  blendmap
+#: Editor.layout 618..Editor.Terrain.Generator.Text
+#: :622:626..Editor.Terrain.Generator.Slider
+#: 911..Editor.Layers.Blendmap.Blendmap.Text
+#: :915:919..Editor.Layers.Blendmap.Blendmap.Slider
+#: 1535..Editor.Grasses.Channels.Text 1540..Editor.Grasses.Channels.Edit
+#: 1544..Editor.Grasses.Channels.Slider
+msgctxt "TipTerLAngSm"
+msgid "Angle smooth range (transition)."
+msgstr "Raggio angolo smoothing (transizione)."
+
+#. TIP  Terrain  blendmap
+#: Editor.layout 631..Editor.Terrain.Generator.Text
+#: 636..Editor.Terrain.Generator.Edit 640..Editor.Terrain.Generator.Slider
+#: 924..Editor.Layers.Blendmap.Blendmap.Text
+#: 929..Editor.Layers.Blendmap.Blendmap.Edit
+#: 933..Editor.Layers.Blendmap.Blendmap.Slider
+msgctxt "TipTerLHMin"
+msgid "Starting terrain height for layer."
+msgstr "Altezza di terreno iniziale per layer."
+
+#. TIP  Terrain  blendmap
+#: Editor.layout 645..Editor.Terrain.Generator.Text
+#: 650..Editor.Terrain.Generator.Edit 654..Editor.Terrain.Generator.Slider
+#: 938..Editor.Layers.Blendmap.Blendmap.Text
+#: 943..Editor.Layers.Blendmap.Blendmap.Edit
+#: 947..Editor.Layers.Blendmap.Blendmap.Slider
+msgctxt "TipTerLHMax"
+msgid "Ending terrain height for layer."
+msgstr "Altezza di fine terreno per layer."
+
+#. TIP  Terrain  blendmap
+#: Editor.layout 659..Editor.Terrain.Generator.Text
+#: :663:667..Editor.Terrain.Generator.Slider
+#: 952..Editor.Layers.Blendmap.Blendmap.Text
+#: :956:960..Editor.Layers.Blendmap.Blendmap.Slider
+#: 1580..Editor.Grasses.Channels.Text 1585..Editor.Grasses.Channels.Edit
+#: 1590..Editor.Grasses.Channels.Slider
+msgctxt "TipTerLHSm"
+msgid "Height smooth range (transition)."
+msgstr "Raggio di altezza smoothing (transizione)."
+
+#. TIP  Terrain  blendmap
+#: Editor.layout 966..Editor.Layers.Blendmap.Blendmap.Text
+#: :970:974..Editor.Layers.Blendmap.Blendmap.Slider
+#: 980..Editor.Layers.Blendmap.Blendmap.Text
+#: :984:988..Editor.Layers.Blendmap.Blendmap.Slider
+#: 994..Editor.Layers.Blendmap.Blendmap.Text
+#: :998:1002..Editor.Layers.Blendmap.Blendmap.Slider
+#: 1078..Editor.Layers.Blendmap.Noise.ProgressBar
+msgctxt "TipTerLNoise"
+msgid ""
+"Multiplier for additional noise. +1 blends to next used layer, -1 to "
+"previous, +2 to over next."
+msgstr "Moltiplicatore per rumore aggiuntivo. +1 si fonde al successivo layer usato, -1 al precedente, +2 dopo il prossimo."
+
+#. TIP  Terrain  blendmap
+#: Editor.layout 1008..Editor.Layers.Blendmap.Blendmap.Check
+msgctxt "TipTerNoiseOnly"
+msgid ""
+"Will ignore terrain angle and height ranges. Layer will only appear, if "
+"other layer's noise multiplier blends to this."
+msgstr "Ignorerà angolo di terreno e gamme di altezza. Il layer apparirà soltanto, se l'altro moltiplicatore di disturbo si fonde a questo."
+
+#. TIP  Terrain  blendmap
+#: Editor.layout 865..Editor.Layers.Check
+msgctxt "TipTestBlendmap"
+msgid ""
+"Use to test blendmap clarity. The color box shows this layer's color on "
+"blendmap (is black when layer is off). Usually, a good blendmap needs to "
+"have pure layer colors with little blending (dull, mixed colors). To achieve"
+" that narrow/separate angle and height ranges and use high or low noise "
+"power."
+msgstr "Usata per testare la chiarezza del blendmap. La casella di colore indica il colore del layer su blendmap (è nero quando il layer è spento). Di solito, un buon blendmap deve avere colori di layer puri con poca miscelazione (opaco, colori misti). Per ottenere angoli stretti/separati e la gamma di altezza, usa alta o bassa capacità di disturbo."
+
+#. TIP  Terrain  particles
+#: Editor.layout 2043..Editor.Vegetation.Surface.Surface.Edit
+#: 2066..Editor.Vegetation.Surface.Surface.Text
+msgctxt "TipDustInt"
+msgid "Dust particles intensity."
+msgstr "Intensità particelle di polvere."
+
+#. TIP  Terrain  particles
+#: Editor.layout 2048..Editor.Vegetation.Surface.Surface.Edit
+#: 2071..Editor.Vegetation.Surface.Surface.Text
+msgctxt "TipDustSize"
+msgid "Dust particles size."
+msgstr "Dimensioni particelle di polvere."
+
+#. TIP  Terrain  particles
+#: Editor.layout 2053..Editor.Vegetation.Surface.Surface.Edit
+#: 2076..Editor.Vegetation.Surface.Surface.Text
+msgctxt "TipMudInt"
+msgid "Mud particles intensity."
+msgstr "Intensità particelle di fango."
+
+#. TIP  Terrain  particles
+#: Editor.layout 2058..Editor.Vegetation.Surface.Surface.Edit
+#: 2081..Editor.Vegetation.Surface.Surface.Text
+msgctxt "TipSmokeInt"
+msgid "Smoke particles intensity."
+msgstr "Intensità particelle di fumo."
+
+#. TIP  Terrain  particles
+#: Editor.layout 2086..Editor.Vegetation.Surface.Surface.Text
+msgctxt "TipTrailClr"
+msgid "Tire trails color. R G B A components 0 to 1 (eg. 0.4 0.4 0.2 0.6)"
+msgstr "Colore delle scie di gomme. Elementi R G B A da 0 a 1 (es. 0.4 0.4 0.2 0.6)"
+
+#. TIP  Terrain  particles
+#: Editor.layout 2093..Editor.Vegetation.Surface.Surface.Combo
+msgctxt "TipParType1"
+msgid "Tire Particle type 1 (global for track)."
+msgstr "Particella di pneumatici di tipo 1 (globale per la pista)."
+
+#. TIP  Terrain  particles
+#: Editor.layout 2100..Editor.Vegetation.Surface.Surface.Combo
+msgctxt "TipParType2"
+msgid "Tire Particle type 2 (global for track)."
+msgstr "Particella di pneumatici di tipo 2 (globale per la pista)."
+
+#. TIP  Terrain  particles
+#: Editor.layout 2107..Editor.Vegetation.Surface.Surface.Combo
+msgctxt "TipParType3"
+msgid "Tire Particle type 3 (global for track)."
+msgstr "Particella di pneumatici di tipo 3 (globale per la pista)."
+
+#. TIP  Terrain  particles
+msgctxt "TipTireParType3"
+msgid "Tire Particle type 3."
+msgstr "Particelle ruote di tipo 3."
+
+#. TIP  Terrain  surface
+#: Editor.layout 2133..Editor.Vegetation.Surface.Surface.Text :2166
+msgctxt "TipBumpFreq"
+msgid "Frequency of additional bumps on surface (distance between them)."
+msgstr "Frequenza di bump aggiuntivi sulla superficie (distanza tra loro)."
+
+#. TIP  Terrain  surface
+#: Editor.layout 2137..Editor.Vegetation.Surface.Surface.Text :2171
+msgctxt "TipBumpAmp"
+msgid "Amplitude of additional bumps on surface (how high)."
+msgstr "Ampiezza di bump aggiuntivi sulla superficie (quanto intensa)."
+
+#. TIP  Terrain  surface
+#: Editor.layout 2122..Editor.Vegetation.Surface.Surface.Text
+#: 2129..Editor.Vegetation.Surface.Surface.Combo
+#: 2142..Editor.Vegetation.Surface.Surface.Text :2146
+msgctxt "TipSurfType"
+msgid "Type of surface, determines sound."
+msgstr "Tipo di superficie, determina il suono."
+
+#. TIP  Terrain  surface
+#: Editor.layout 2157..Editor.Vegetation.Surface.Surface.Text :2181
+msgctxt "TipRollDrag"
+msgid ""
+"Drag for wheels, bigger will make them slow down faster (eg. 140 for snow, "
+"80 for grass)."
+msgstr "Ruote di trascinamento, più grandi li farà rallentare più velocemente (es. 140 per neve, 80 per erba)."
+
+#. TIP  Terrain  surface
+#: Editor.layout 2161..Editor.Vegetation.Surface.Surface.Text :2176
+msgctxt "TipSurfFrict"
+msgid "Surface friction (eg. 1.0 asphalt, 0.7 gravel, 0.5 ice)."
+msgstr "Attrito di superficie (es. 1.0 asfalto, 0.7 ghiaia, 0.5 ghiaccio)."
+
+#. TIP  Vegetation
+#: Editor.layout 1195..Editor.Grasses.Properties.Text
+#: 1199..Editor.Grasses.Properties.Slider 1205..Editor.Grasses.Properties.Edit
+msgctxt "TipGrassDens"
+msgid "How dense/rare will the grass be on terrain."
+msgstr "Quanto fitta/scarsa sarà l'erba presente sul terreno."
+
+#. TIP  Vegetation
+#: Editor.layout 1680..Editor.Vegetation.Properties.Text
+#: 1684..Editor.Vegetation.Properties.Slider
+#: 1690..Editor.Vegetation.Properties.Edit
+msgctxt "TipTreeDens"
+msgid "How many models (trees, rocks, etc.) will be on track."
+msgstr "Quanti modelli (alberi, rocce ecc.) saranno presenti su pista."
+
+#. TIP  Vegetation
+#: Editor.layout 1727..Editor.Vegetation.Properties.Text
+#: 1731..Editor.Vegetation.Properties.Slider
+#: 1736..Editor.Vegetation.Properties.Edit
+msgctxt "TipModelRoadDist"
+msgid ""
+"Distance from road to models (global, added to each model's own value)."
+msgstr "Distanza dei modelli dalla strada (globale, aggiunto ad ogni valore del modello)."
+
+#. TIP  Vegetation
+#: Editor.layout 1716..Editor.Vegetation.Properties.Text
+#: 1721..Editor.Vegetation.Properties.Edit
+msgctxt "TipImpDist"
+msgid "Far distance at which the 2d impostors dissapear."
+msgstr "Lontananza in cui gli impostori in 2d scompaiono."
+
+#. TIP  Vegetation  page,vis
+#: Editor.layout 1211..Editor.Grasses.Properties.Text
+#: 1221..Editor.Grasses.Properties.Edit
+msgctxt "TipGrassPageLength"
+msgid ""
+"Grass Page length (low will reload often, high will cause visible "
+"switching)."
+msgstr "Lunghezza pagine erba (bassa si ricarica spesso, alta causa commutazione visibile)."
+
+#. TIP  Vegetation  page,vis
+#: Editor.layout 1696..Editor.Vegetation.Properties.Text
+#: 1706..Editor.Vegetation.Properties.Edit
+msgctxt "TipModelPageLength"
+msgid ""
+"Models Page length (low will reload often and make too many batches, high "
+"will cause visible switching and make too many drawn triangles)."
+msgstr "Lunghezza pagina modelli (se bassa si ricarica spesso e crea molti batch, alta causa commutazione visibile e crea troppi triangoli disegnati)."
+
+#. TIP  Vegetation  page,vis
+#: Editor.layout 1216..Editor.Grasses.Properties.Text
+#: 1226..Editor.Grasses.Properties.Edit
+msgctxt "TipGrassVisDist"
+msgid "Visibility distance for grass pages."
+msgstr "Distanza di visibilità per le pagine di erba."
+
+#. TIP  Vegetation  page,vis
+#: Editor.layout 1701..Editor.Vegetation.Properties.Text
+#: 1711..Editor.Vegetation.Properties.Edit
+msgctxt "TipModelVisDist"
+msgid ""
+"Visibility distance for 3d models, after this they turn into 2d impostors."
+msgstr "Distanza di visibilità per i modelli in 3d, dopo l'applicazione si trasformano in impostori in 2d."
+
+#. TIP  Grass
+#: Editor.layout 1267..Editor.Grasses.Properties.Text
+#: 1271..Editor.Grasses.Properties.Slider 1276..Editor.Grasses.Properties.Edit
+msgctxt "TipGrDensSmooth"
+msgid ""
+"Grass density map - smooth size. Higher will make a smoother transition from"
+" road to grass."
+msgstr "Densità erba su mappa - dimensione smoothing. Un valore più alto creerà una transizione più liscia dalla strada all'erba."
+
+#. TIP  Grass
+#: Editor.layout 1346..Editor.Grasses.Grasses.Text
+#: 1350..Editor.Grasses.Grasses.Slider 1355..Editor.Grasses.Grasses.Text
+#: 1365..Editor.Grasses.Grasses.Slider :1393:1408
+msgctxt "TipGrassPatchLengthMin"
+msgid "Minimal grass patch length."
+msgstr "Altezza minima di patch erba."
+
+#. TIP  Grass
+#: Editor.layout 1361..Editor.Grasses.Grasses.Text :1370
+msgctxt "TipGrassPatchLengthMax"
+msgid "Maximal grass patch length."
+msgstr "Lunghezza massima di patch erba."
+
+#. TIP  Grass
+#: Editor.layout 1389..Editor.Grasses.Grasses.Text :1398
+msgctxt "TipGrassPatchHeightMin"
+msgid "Minimal grass patch height."
+msgstr "Altezza minima di patch erba."
+
+#. TIP  Grass
+#: Editor.layout 1404..Editor.Grasses.Grasses.Text :1413
+msgctxt "TipGrassPatchHeightMax"
+msgid "Maximal grass patch height."
+msgstr "Altezza massima di patch erba."
+
+#. TIP  Grass  sway
+#: Editor.layout 1241..Editor.Grasses.Properties.Text
+#: 1251..Editor.Grasses.Properties.Edit
+msgctxt "TipGrassSwayLen"
+msgid "Grass sway effect length (scale)."
+msgstr "Lunghezza ondeggiamento dell'erba (scala)."
+
+#. TIP  Grass  sway
+#: Editor.layout 1246..Editor.Grasses.Properties.Text
+#: 1256..Editor.Grasses.Properties.Edit
+msgctxt "TipGrassSwaySpd"
+msgid "Grass sway effect speed."
+msgstr "Velocità ondeggiamento dell'erba."
+
+#. TIP  Grass  sway
+#: Editor.layout 1236..Editor.Grasses.Properties.Text
+#: 1261..Editor.Grasses.Properties.Edit
+msgctxt "TipGrassSwayDistr"
+msgid "Grass sway effect distribution (how random)."
+msgstr "Distribuzione dell'effetto ondeggiamento dell'erba (casuale)."
+
+#. TIP  Grass  terrain
+#: Editor.layout 1520..Editor.Grasses.Channels.Text
+#: 1525..Editor.Grasses.Channels.Edit 1529..Editor.Grasses.Channels.Slider
+msgctxt "TipGrTerMaxAngle"
+msgid ""
+"Terrain angle above which there won't be any grass (starts fading out, for "
+"smooth angle)."
+msgstr "Angolo di terreno posto sopra dove non ci sarà alcun strato di erba (inizio dissolvenza, per angolo smoothing)."
+
+#. TIP  Grass  terrain
+#: Editor.layout 1550..Editor.Grasses.Channels.Text
+#: 1555..Editor.Grasses.Channels.Edit 1559..Editor.Grasses.Channels.Slider
+msgctxt "TipGrTerMinHeight"
+msgid ""
+"Terrain height below which there won't be any grass (starts fading out, for "
+"smooth distance)."
+msgstr "Altezza terreno posto sotto in cui non ci sarà erba (inizio dissolvenza, per distanza smoothing)."
+
+#. TIP  Grass  terrain
+#: Editor.layout 1565..Editor.Grasses.Channels.Text
+#: 1570..Editor.Grasses.Channels.Edit 1574..Editor.Grasses.Channels.Slider
+msgctxt "TipGrTerMaxHeight"
+msgid ""
+"Terrain height above which there won't be any grass (starts fading out, for "
+"smooth distance)."
+msgstr "Angolo di terreno posto sopra dove non ci sarà alcun strato di erba (inizio dissolvenza, per distanza smoothing)."
+
+#. TIP  Grass  terrain
+#: Editor.layout 1419..Editor.Grasses.Grasses.Text
+#: 1426..Editor.Grasses.Grasses.Button
+msgctxt "TipGrassMaterial"
+msgid "Grass material (type) for this layer, chosen to match track's scenery."
+msgstr "(tipo) Materiale erba per layer, scelto per abbinare lo scenario della pista."
+
+#. TIP  Grass  terrain
+#: Editor.layout 1324..Editor.Grasses.Grasses.Image
+#: 1433..Editor.Grasses.Grasses.Combo 1438..Editor.Grasses.Grasses.Text
+msgctxt "TipGrassColorMap"
+msgid ""
+"Grass colormap for scenery, usually same choice as for grass material. "
+"Additional grass coloring."
+msgstr "Colormap erba per layer, di solito stessa scelta come i materiali erba. Colorazione erba aggiuntivo."
+
+#. TIP  Grass  terrain
+#: Editor.layout 1317..Editor.Grasses.Grasses.ProgressBar
+#: 1336..Editor.Grasses.Grasses.Text 1494..Editor.Grasses.Channels.ProgressBar
+msgctxt "TipGrassLayers"
+msgid "Grass layers. Recommended use 1-4."
+msgstr "Layer erba. Si raccomanda di usare da 1 a 4."
+
+#. TIP  Grass  terrain
+#: Editor.layout 1321..Editor.Grasses.Grasses.Image
+msgctxt "TipGrassPrev"
+msgid "Preview image of this grass layer (changed with material)."
+msgstr "Anteprima immagine del layer d'erba (cambiato con materiale)."
+
+#. TIP  Grass  terrain
+#: Editor.layout 1331..Editor.Grasses.Grasses.Check
+msgctxt "TipToggleGrass"
+msgid "Enable or disable this grass layer."
+msgstr "Attiva o disattiva il layer erba."
+
+#. TIP  Grass  terrain
+#: Editor.layout 1443..Editor.Grasses.Grasses.Text
+#: :1447:1451..Editor.Grasses.Grasses.Slider 1457..Editor.Grasses.Grasses.Text
+#: :1461:1465..Editor.Grasses.Grasses.Slider
+msgctxt "TipGrassLayerDens"
+msgid "Grass density for layer (how often it will appear)."
+msgstr "Densità erba per layer (quanto spesso si manifesta)."
+
+#. TIP  Vegetation  models
+#: Editor.layout 1293..Editor.Grasses.Grasses.TabC
+#: 1753..Editor.Vegetation.Models.TabC
+#: 1790..Editor.Vegetation.Models.ProgressBar
+#: 1828..Editor.Vegetation.Models.Text
+msgctxt "TipVegetGroups"
+msgid "Vegetation model groups (recommended use 4-6), affects performance."
+msgstr "Gruppi di modello vegetazione (si raccomanda di usare da 4 a 6), influisce sulle prestazioni."
+
+#. TIP  Vegetation  models
+#: Editor.layout 1796..Editor.Vegetation.Models.Text
+#: 1803..Editor.Vegetation.Models.Button
+msgctxt "TipVegetModels"
+msgid "Models (meshes) for vegetation. Found in data/trees/."
+msgstr "Modelli (mesh) per vegetazione. Locata in data/trees/."
+
+#. TIP  Vegetation  models
+#: Editor.layout 1808..Editor.Vegetation.Models.Text
+#: :1812:1816..Editor.Vegetation.Models.Slider
+msgctxt "TipModelDens"
+msgid "How often model will appear on track area."
+msgstr "Quanto spesso il modello apparirà sulla zona della pista."
+
+#. TIP  Vegetation  models
+#: Editor.layout 1823..Editor.Vegetation.Models.Check
+msgctxt "TipToggleModel"
+msgid "Enable or disable this model."
+msgstr "Attiva/disattiva il modello."
+
+#. TIP  Vegetation  models
+msgctxt "TipRoadDist"
+msgid "How far from road will the model appear."
+msgstr "Quanto distante dalla strada verrà visualizzato il modello."
+
+#. TIP  Vegetation  models
+#: Editor.layout 1862..Editor.Vegetation.Models.Text
+#: :1871:1879..Editor.Vegetation.Models.Slider
+msgctxt "TipModelMinScale"
+msgid "Model minimal scale."
+msgstr "Scala minima del modello."
+
+#. TIP  Vegetation  models
+#: Editor.layout 1867..Editor.Vegetation.Models.Text
+#: :1875:1883..Editor.Vegetation.Models.Slider
+msgctxt "TipModelMaxScale"
+msgid "Model maximal scale."
+msgstr "Scala massima del modello."
+
+#. TIP  Vegetation  models
+#: Editor.layout 1596..Editor.Grasses.Channels.Text
+#: :1600:1604..Editor.Grasses.Channels.Slider
+#: 1916..Editor.Vegetation.Models.Text
+#: :1920:1924..Editor.Vegetation.Models.Slider
+msgctxt "TipRoadDist2"
+msgid "Additional distance to road."
+msgstr "Distanza dalla strada aggiuntiva."
+
+#. TIP  Vegetation  models
+#: Editor.layout 1929..Editor.Vegetation.Models.Text
+msgctxt "TipRoadDistMax"
+msgid ""
+"Maximum distance to road. E.g. can be used for vegetation that should appear"
+" only close to road: plants, bushes etc."
+msgstr "Distanza massima dalla strada. Es. può essere usata per la vegetazione che deve apparire solo vicino alla strada: piante, cespugli ecc."
+
+#. TIP  Vegetation  models
+#: Editor.layout 1889..Editor.Vegetation.Models.Text
+#: :1898:1906..Editor.Vegetation.Models.Slider
+msgctxt "TipWindInflL"
+msgid "Wind influence on model, length scale."
+msgstr "Influenza del vento sul modello, scala di lunghezza."
+
+#. TIP  Vegetation  models
+#: Editor.layout 1894..Editor.Vegetation.Models.Text
+#: :1902:1910..Editor.Vegetation.Models.Slider
+msgctxt "TipWindInflH"
+msgid "Wind influence on model, height scale."
+msgstr "Influenza del vento sul modello, scala di altezza."
+
+#. TIP  Vegetation  models
+msgctxt "TipModelPrev"
+msgid "Model preview image."
+msgstr "Anteprima immagine del modello."
+
+#. TIP  Vegetation  terrain
+#: Editor.layout 1941..Editor.Vegetation.Models.Text
+#: :1945:1949..Editor.Vegetation.Models.Slider
+msgctxt "TipLTrMaxTerAng"
+msgid "Terrain angle above which model won't appear."
+msgstr "Angolo di terreno posto sopra dove il modello non apparirà."
+
+#. TIP  Vegetation  terrain
+#: Editor.layout 1954..Editor.Vegetation.Models.Text
+#: 1959..Editor.Vegetation.Models.Edit 1963..Editor.Vegetation.Models.Slider
+msgctxt "TipLTrMinTerH"
+msgid "Terrain height below which model won't appear."
+msgstr "Altezza di terreno posta sotto in cui il modello non apparirà."
+
+#. TIP  Vegetation  terrain
+#: Editor.layout 1968..Editor.Vegetation.Models.Text
+#: 1973..Editor.Vegetation.Models.Edit 1977..Editor.Vegetation.Models.Slider
+msgctxt "TipLTrMaxTerH"
+msgid "Terrain height above which model won't appear."
+msgstr "Altezza terreno posto sopra dove il modello non apparirà."
+
+#. TIP  Vegetation  terrain
+#: Editor.layout 1982..Editor.Vegetation.Models.Text
+#: 1987..Editor.Vegetation.Models.Edit 1991..Editor.Vegetation.Models.Slider
+msgctxt "TipLTrFlDepth"
+msgid "Maximal depth in fluid allowed (set 0 to exclude from fluids)."
+msgstr "Profondità massima nel fluido consentito (imposta 0 per escludere dai fluidi)."
