@@ -34,8 +34,8 @@ project( StuntRally3 )
 option(BUILD_GAME             "Build the game binary."    ON)
 option(BUILD_EDITOR           "Build the track editor."   ON)
 option(BUILD_MASTER_SERVER    "Build the game list master server."  OFF)
-option(BUILD_TRANSL_TOOL      "Build the tool for translation updating, it creates .pot"  OFF)
-
+option(BUILD_TRANSL_TOOL      "Build the tool for translation updating, it creates .pot"  ON)
+#^ ?
 
 #  Linux prefers lower-case exe names
 if (WIN32 OR APPLE)
@@ -300,5 +300,23 @@ foreach( EXE ${EXE_LIST} )
 	target_link_libraries( ${EXE} ${LIBS} )
 
 endforeach()
+
+
+##  Translations tool
+##------------------------------------------------------------------------------------------------------
+if (BUILD_TRANSL_TOOL)
+	message( STATUS "Configuring: " ${TRANSL_EXE} )
+
+	add_executable( ${TRANSL_EXE} WIN32 ./src/transl/main.cpp )
+	target_include_directories( ${TRANSL_EXE} PRIVATE ./src/transl )
+
+	target_precompile_headers( ${TRANSL_EXE} PRIVATE src/transl/pch.h )
+	#  c++
+	target_compile_options(  ${TRANSL_EXE} PRIVATE -Wswitch )
+	target_compile_features( ${TRANSL_EXE} PRIVATE cxx_std_17 )
+
+	set_target_properties( ${TRANSL_EXE} PROPERTIES LINKER_LANGUAGE CXX )
+	# target_link_libraries( ${TRANSL_EXE} ${LIBS} )
+endif()
 
 message( STATUS "---------- SR end" )
