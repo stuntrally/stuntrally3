@@ -185,7 +185,8 @@ hlms pipeGlassCrystal pbs : pipe_glass
 
 hlms pipeGlassCrystal2Red pbs : pipe_glass
 {
-	diffuse 1.2 0.1 0.09
+	diffuse  1.2 0.1 0.09
+	specular 1.0 0.5 0.5
 	diffuse_map roadGlass_crystal.png
 	specular_map roadGlass_spec0.png
 	normal_map roadGlass_crystal_n.png
@@ -194,7 +195,8 @@ hlms pipeGlassCrystal2Red pbs : pipe_glass
 
 hlms pipeGlassCrystal2Blue pbs : pipe_glass
 {
-	diffuse 0.2 0.3 0.8
+	diffuse  0.2 0.3 0.8
+	specular 0.6 0.8 1.0
 	diffuse_map roadGlass_crystal.png
 	specular_map roadGlass_spec0.png
 	normal_map roadGlass_crystal_n.png
@@ -203,7 +205,8 @@ hlms pipeGlassCrystal2Blue pbs : pipe_glass
 
 hlms pipeGlassCrystal2Cyan pbs : pipe_glass
 {
-	diffuse 0.2 0.7 0.8
+	diffuse  0.2 0.7 0.8
+	specular 0.5 1.0 1.0
 	diffuse_map roadGlass_crystal.png
 	specular_map roadGlass_spec0.png
 	normal_map roadGlass_crystal_n.png
@@ -211,7 +214,8 @@ hlms pipeGlassCrystal2Cyan pbs : pipe_glass
 
 hlms pipeGlassCrystal2Pink pbs : pipe_glass
 {
-	diffuse 1.04 0.11 0.4
+	diffuse  1.04 0.11 0.4
+	specular 1.0 0.5 1.0
 	diffuse_map roadGlass_crystal.png
 	specular_map roadGlass_spec0.png
 	normal_map roadGlass_crystal_n.png
@@ -220,7 +224,8 @@ hlms pipeGlassCrystal2Pink pbs : pipe_glass
 
 hlms pipeGlassCrystal2Green pbs : pipe_glass
 {
-	diffuse 0.1 1.06 0.2
+	diffuse  0.1 1.06 0.2
+	specular 0.5 1.0 0.5
 	diffuse_map roadGlass_crystal.png
 	specular_map roadGlass_spec0.png
 	normal_map roadGlass_crystal_n.png
