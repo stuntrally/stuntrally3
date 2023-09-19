@@ -914,9 +914,8 @@ hlms obstaclesGrey pbs
 	diffuse_map  obstaclesGrey_d.jpg
 	normal_map   obstaclesGrey_n.jpg
 	specular_map obstaclesGrey_s.jpg
-	// ambient 1.0 1.0 1.0
 	diffuse 0.8 0.8 0.8
-	specular 1.0 1.0 1.0 //20
+	specular 1.0 1.0 1.0
 	roughness 0.3
 	metalness 0.9
 }
@@ -925,7 +924,6 @@ hlms obstaclesRed pbs : obstaclesGrey
 {
 	diffuse_map  obstaclesGreen_d.jpg
 	specular_map obstaclesGreen_s.jpg
-	// ambient 1.12 0.59 0.42
 	diffuse 1.23 0.62 0.49
 	specular 2.1 0.8 1.0 //12
 }
@@ -935,10 +933,9 @@ hlms obstaclesWhite pbs : obstaclesGrey
 	diffuse_map  obstaclesWhite_d.jpg
 	specular_map obstaclesWhite_s.jpg
 	reflMap obstaclesWhite_s.jpg
-	// ambient 1.3 1.3 1.33
 	diffuse 1.15 1.05 1.2
 	specular 1.1 1.0 1.3 //12
-	refl_amount 0.5
+	// refl_amount 0.5
 }
 
 hlms obstaclesGreen pbs : obstaclesGrey
@@ -946,7 +943,6 @@ hlms obstaclesGreen pbs : obstaclesGrey
 	normal_map   obstaclesMarble_n.jpg
 	diffuse_map  obstaclesGreen_d.jpg
 	specular_map obstaclesGreen_s.jpg
-	// ambient 0.7 0.8 0.73
 	diffuse 0.05 0.78 0.6
 	specular 1.0 1.6 1.2 //26
 }
@@ -955,11 +951,10 @@ hlms obstaclesBlack pbs : obstaclesGrey
 {
 	diffuse_map  obstaclesWhite_d.jpg	
 	specular_map obstaclesWhite_s.jpg
-	reflMap obstaclesCrystal_s.jpg
-	// ambient 0.51 0.49 0.49
+	// reflMap obstaclesCrystal_s.jpg
 	diffuse 0.69 0.69 0.79
 	specular 1.03 1.1 1.1 //32
-	refl_amount 0.5
+	// refl_amount 0.5
 }
 
 hlms obstaclesMarble pbs : obstaclesGrey
@@ -977,10 +972,9 @@ hlms obstaclesCrystal pbs : obstaclesGrey
 	diffuse_map  obstaclesCrystal_d.jpg
 	normal_map   obstaclesCrystal_n.jpg
 	specular_map obstaclesCrystal_s.jpg
-	reflMap obstaclesCrystal_s.jpg
-	// ambient 0.2 1.3 0.86
+	// reflMap obstaclesCrystal_s.jpg
 	diffuse 0.8 1.8 1.1
 	specular 0.5 1.6 1.0
 	bump_scale 1.2
-	refl_amount 0.5
+	// refl_amount 0.5
 }

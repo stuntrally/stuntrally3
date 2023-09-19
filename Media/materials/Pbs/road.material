@@ -1144,6 +1144,20 @@ hlms roadMoss2_ter pbs : road_terrain
 	normal_map normal_1.png
 }
 
+hlms roadMossMarble pbs : road
+{
+	diffuse_map roadMoss.jpg
+	diffuse 1.16 0.21 0.42
+	specular 0.58 0.13 0.25
+}
+hlms roadMossMarble_ter pbs : road_terrain
+{
+	diffuse_map roadMoss.jpg
+	diffuse 1.16 0.23 0.41
+	specular 0.58 0.13 0.25
+	normal_map normal_1.png
+}
+
 //  Marble Rock
 hlms roadMarbleStone pbs : road
 {
@@ -1176,7 +1190,6 @@ hlms roadSandMarble_ter pbs : road_terrain
 	normal_map normal_1.png
 }
 
-//  Sand marble
 hlms roadSandMarblePink pbs : road
 {
 	diffuse_map roadSnow.jpg

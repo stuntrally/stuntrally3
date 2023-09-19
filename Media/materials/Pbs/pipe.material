@@ -183,6 +183,51 @@ hlms pipeGlassCrystal pbs : pipe_glass
 }
 
 
+hlms pipeGlassCrystal2Red pbs : pipe_glass
+{
+	diffuse 1.2 0.1 0.09
+	diffuse_map roadGlass_crystal.png
+	specular_map roadGlass_spec0.png
+	normal_map roadGlass_crystal_n.png
+	// bump_scale 0.3
+}
+
+hlms pipeGlassCrystal2Blue pbs : pipe_glass
+{
+	diffuse 0.2 0.3 0.8
+	diffuse_map roadGlass_crystal.png
+	specular_map roadGlass_spec0.png
+	normal_map roadGlass_crystal_n.png
+	bump_scale 0.3
+}
+
+hlms pipeGlassCrystal2Cyan pbs : pipe_glass
+{
+	diffuse 0.2 0.7 0.8
+	diffuse_map roadGlass_crystal.png
+	specular_map roadGlass_spec0.png
+	normal_map roadGlass_crystal_n.png
+}
+
+hlms pipeGlassCrystal2Pink pbs : pipe_glass
+{
+	diffuse 1.04 0.11 0.4
+	diffuse_map roadGlass_crystal.png
+	specular_map roadGlass_spec0.png
+	normal_map roadGlass_crystal_n.png
+	// bump_scale 0.3
+}
+
+hlms pipeGlassCrystal2Green pbs : pipe_glass
+{
+	diffuse 0.1 1.06 0.2
+	diffuse_map roadGlass_crystal.png
+	specular_map roadGlass_spec0.png
+	normal_map roadGlass_crystal_n.png
+	bump_scale 0.3
+}
+
+
 hlms pipeGlassAlien pbs : pipe_glass
 {
 	diffuse  0.76 0.82 0.90
@@ -594,7 +639,7 @@ hlms pipe_wall_Black pbs : pipe_wall_base
 {
 	diffuse  0.26 0.26 0.26
 	specular 0.3 0.28 0.3 32
-	diffuseMap brass_patina.jpg
+	diffuse_map brass_patina.jpg
 	normal_map normal_1.png
 	bump_scale 3.0
 }

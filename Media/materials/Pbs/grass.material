@@ -79,6 +79,11 @@ hlms grass3g pbs : grass
     diffuse_map grass3g.png
 }
 
+hlms grass3m pbs : grass
+{
+    diffuse_map grass3m.png
+}
+
 hlms grass3o pbs : grass
 {
     diffuse_map grass3o.png
@@ -92,6 +97,11 @@ hlms grass3y pbs : grass
 hlms grass3s pbs : grass
 {
     diffuse_map grass3s.png
+}
+
+hlms grass4m pbs : grass
+{
+    diffuse_map grass4m.png
 }
 
 hlms grass4v pbs : grass
