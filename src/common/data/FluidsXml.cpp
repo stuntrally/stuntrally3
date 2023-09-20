@@ -4,6 +4,7 @@
 #include <tinyxml2.h>
 using namespace tinyxml2;
 using namespace Ogre;
+using namespace std;
 
 
 FluidParams::FluidParams()
@@ -19,11 +20,16 @@ FluidParams::FluidParams()
 	fog.dens = 1.f/17.f;  fog.densH = 0.25f;
 }
 
+bool FluidsXml::MatInMap(string mat)
+{
+	return matMap.find(mat) != matMap.end();
+}
+
 
 //  Load
 //--------------------------------------------------------------------------------------------------------------------------------------
 
-bool FluidsXml::LoadXml(std::string file, std::map <std::string, int>* surf_map)
+bool FluidsXml::LoadXml(string file, std::map<string, int>* surf_map)
 {
 	XMLDocument doc;
 	XMLError e = doc.LoadFile(file.c_str());
@@ -42,8 +48,8 @@ bool FluidsXml::LoadXml(std::string file, std::map <std::string, int>* surf_map)
 	while (eFl)
 	{
 		FluidParams fp;
-		a = eFl->Attribute("name");			if (a)  fp.name = std::string(a);
-		a = eFl->Attribute("material");		if (a)  fp.material = std::string(a);
+		a = eFl->Attribute("name");			if (a)  fp.name = string(a);
+		a = eFl->Attribute("material");		if (a)  fp.material = string(a);
 		//  car buoyancy
 		a = eFl->Attribute("density");		if (a)  fp.density = s2r(a);
 		a = eFl->Attribute("angDamp");		if (a)  fp.angularDrag = s2r(a);
@@ -71,7 +77,7 @@ bool FluidsXml::LoadXml(std::string file, std::map <std::string, int>* surf_map)
 		a = eFl->Attribute("deep");			if (a)  fp.deep = s2i(a) > 0;
 		a = eFl->Attribute("surf");
 		if (a)
-		{	std::string s(a);
+		{	string s(a);
 			int id = surf_map ? (*surf_map)[s]-1 : -1;
 			if (id == -1)
 			{	id = 4;  // default if not found
@@ -99,6 +105,7 @@ bool FluidsXml::LoadXml(std::string file, std::map <std::string, int>* surf_map)
 		//
 
 		fls.push_back(fp);
+		matMap[fp.material] = i;
 		flMap[fp.name] = i++;
 		eFl = eFl->NextSiblingElement("fluid");
 	}

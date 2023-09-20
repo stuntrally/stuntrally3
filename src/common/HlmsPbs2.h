@@ -29,6 +29,8 @@ public:
 	
 	constexpr static size_t selected_glow = 123;
 
+	class FluidsXml* pFluidsXml =0;  //! set this after Load
+
 	void CalculateHashFor( Ogre::Renderable *renderable, Ogre::uint32 &outHash, Ogre::uint32 &outCasterHash )
 	{
         calculateHashFor( renderable, outHash, outCasterHash );

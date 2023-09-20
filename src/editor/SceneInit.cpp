@@ -76,6 +76,11 @@ void App::createScene01()  // once, init
 	scn->sc->pReverbsXml = scn->data->reverbs;
 
 	LogO(String(":::* Time load xmls: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	
+	//  set fluids in Pbs2
+	auto* mgr = mRoot->getHlmsManager();
+	HlmsPbs2 *hlmsPbs2 = static_cast<HlmsPbs2 *>( mgr->getHlms( HLMS_PBS ) );
+	hlmsPbs2->pFluidsXml = scn->sc->pFluidsXml;
 
 
 	//  🖼️ prv tex  todo

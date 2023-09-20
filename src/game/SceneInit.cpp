@@ -25,6 +25,7 @@
 #include "gameclient.hpp"
 #include "Terra.h"
 #include "MainEntryPoints.h"
+#include "HlmsPbs2.h"
 
 #include <OgreCommon.h>
 #include <OgreQuaternion.h>
@@ -104,6 +105,11 @@ void App::LoadData()
 	scn->data->Load(&pGame->surf_map, check);
 	scn->sc->pFluidsXml = scn->data->fluids;
 	scn->sc->pReverbsXml = scn->data->reverbs;
+
+	//  set fluids in Pbs2
+	auto* mgr = mRoot->getHlmsManager();
+	HlmsPbs2 *hlmsPbs2 = static_cast<HlmsPbs2 *>( mgr->getHlms( HLMS_PBS ) );
+	hlmsPbs2->pFluidsXml = scn->sc->pFluidsXml;
 
 	//  championships.xml, progress.xml
 	gui->Ch_XmlLoad();

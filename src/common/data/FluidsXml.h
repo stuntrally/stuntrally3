@@ -45,7 +45,11 @@ public:
 
 	//  maps name to fls index, at track load
 	std::map<std::string, int> flMap;  // 0 if not found
-	
+
+	//  maps material name to fls index
+	std::map<std::string, int> matMap;  // 0 if not found
+	bool MatInMap(std::string mat);
+
 	//  methods
 	//FluidsXml();  void Default();
 	bool LoadXml(std::string file, std::map <std::string, int>* surf_map=0);
