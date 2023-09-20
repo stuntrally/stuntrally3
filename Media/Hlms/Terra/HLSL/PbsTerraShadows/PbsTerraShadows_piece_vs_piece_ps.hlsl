@@ -33,7 +33,12 @@
 								0 ).xyz;
 	float terraHeightWeight = terraWorldPos.y * passBuf.invTerraBounds.y + passBuf.terraOrigin.y;
     terraHeightWeight = (terraHeightWeight - terraShadowData.y) * terraShadowData.z * 1023.0;
-	outVs.terrainShadow = lerp( midf_c( terraShadowData.x ), _h( 1.0 ), midf_c( saturate( terraHeightWeight ) ) );
+	// property( water )  //** // todo: fixme
+	@property( 1 )  /// we dont use it anyway yet
+		outVs.terrainShadow = 1.0;
+	@else
+		outVs.terrainShadow = lerp( midf_c( terraShadowData.x ), _h( 1.0 ), midf_c( saturate( terraHeightWeight ) ) );
+	@end
 @end
 
 @property( hlms_lights_directional && hlms_num_shadow_map_lights )
