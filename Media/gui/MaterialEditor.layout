@@ -250,235 +250,235 @@
 				<Widget type="ScrollView" skin="ScrollViewEmpty" position="16 12 576 540">
 					<Property key="CanvasSize" value="1100 1800"/>
 
-					<!-- User 0 -->
-					<Widget type="TextBox" skin="TextBox" position="0 0 118 20" name="User00Name">
-						<Property key="Caption" value="User 0 x"/>
-					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 0 350 15" name="User00">
-					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 0 75 20" name="User00Edit">
-					</Widget>
-
-					<Widget type="TextBox" skin="TextBox" position="0 20 118 20" name="User01Name">
-						<Property key="Caption" value="User 0 y"/>
-					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 20 350 15" name="User01">
-					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 20 75 20" name="User01Edit">
-					</Widget>
-
-					<Widget type="TextBox" skin="TextBox" position="0 40 118 20" name="User02Name">
-						<Property key="Caption" value="User 0 z"/>
-					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 40 350 15" name="User02">
-					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 40 75 20" name="User02Edit">
-					</Widget>
-
-					<Widget type="TextBox" skin="TextBox" position="0 60 118 20" name="User03Name">
-						<Property key="Caption" value="User 0 w"/>
-					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 60 350 15" name="User03">
-					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 60 75 20" name="User03Edit">
-					</Widget>
-
-					<!-- User 1 -->
-					<Widget type="TextBox" skin="TextBox" position="0 80 118 20" name="User10Name">
-						<Property key="Caption" value="User 1 x"/>
-					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 80 350 15" name="User10">
-					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 80 75 20" name="User10Edit">
-					</Widget>
-
-					<Widget type="TextBox" skin="TextBox" position="0 100 118 20" name="User11Name">
-						<Property key="Caption" value="User 1 y"/>
-					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 100 350 15" name="User11">
-					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 100 75 20" name="User11Edit">
-					</Widget>
-
-					<Widget type="TextBox" skin="TextBox" position="0 120 118 20" name="User12Name">
-						<Property key="Caption" value="User 1 z"/>
-					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 120 350 15" name="User12">
-					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 120 75 20" name="User12Edit">
-					</Widget>
-
-					<Widget type="TextBox" skin="TextBox" position="0 140 118 20" name="User13Name">
-						<Property key="Caption" value="User 1 w"/>
-					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 140 350 15" name="User13">
-					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 140 75 20" name="User13Edit">
-					</Widget>
-
-					<!-- User 2 -->
-					<Widget type="TextBox" skin="TextBox" position="0 160 118 20" name="User20Name">
-						<Property key="Caption" value="User 2 x"/>
-					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 160 350 15" name="User20">
-					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 160 75 20" name="User20Edit">
-					</Widget>
-
-					<Widget type="TextBox" skin="TextBox" position="0 180 118 20" name="User21Name">
-						<Property key="Caption" value="User 2 y"/>
-					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 180 350 15" name="User21">
-					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 180 75 20" name="User21Edit">
-					</Widget>
-
-					<Widget type="TextBox" skin="TextBox" position="0 200 118 20" name="User22Name">
-						<Property key="Caption" value="User 2 z"/>
-					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 200 350 15" name="User22">
-					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 200 75 20" name="User22Edit">
-					</Widget>
-
-					<Widget type="TextBox" skin="TextBox" position="0 220 118 20" name="User23Name">
-						<Property key="Caption" value="User 2 w"/>
-					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 220 350 15" name="User23">
-					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 220 75 20" name="User23Edit">
-					</Widget>
-
 					<!-- Detail 0 -->
-					<Widget type="TextBox" skin="TextBox" position="0 240 118 20" name="Det00Name">
+					<Widget type="TextBox" skin="TextBox" position="0 0 118 20" name="Det00Name">
 						<Property key="Caption" value="Detail 0 x"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 240 350 15" name="Det00">
+					<Widget type="Slider" skin="Slider" position="180 0 350 15" name="Det00">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 240 75 20" name="Det00Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 0 75 20" name="Det00Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 260 118 20" name="Det01Name">
+					<Widget type="TextBox" skin="TextBox" position="0 20 118 20" name="Det01Name">
 						<Property key="Caption" value="Detail 0 y"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 260 350 15" name="Det01">
+					<Widget type="Slider" skin="Slider" position="180 20 350 15" name="Det01">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 260 75 20" name="Det01Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 20 75 20" name="Det01Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 280 118 20" name="Det02Name">
+					<Widget type="TextBox" skin="TextBox" position="0 40 118 20" name="Det02Name">
 						<Property key="Caption" value="Detail 0 z"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 280 350 15" name="Det02">
+					<Widget type="Slider" skin="Slider" position="180 40 350 15" name="Det02">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 280 75 20" name="Det02Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 40 75 20" name="Det02Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 300 118 20" name="Det03Name">
+					<Widget type="TextBox" skin="TextBox" position="0 60 118 20" name="Det03Name">
 						<Property key="Caption" value="Detail 0 w"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 300 350 15" name="Det03">
+					<Widget type="Slider" skin="Slider" position="180 60 350 15" name="Det03">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 300 75 20" name="Det03Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 60 75 20" name="Det03Edit">
 					</Widget>
 
 					<!-- Detail 1 -->
-					<Widget type="TextBox" skin="TextBox" position="0 320 118 20" name="Det10Name">
+					<Widget type="TextBox" skin="TextBox" position="0 80 118 20" name="Det10Name">
 						<Property key="Caption" value="Detail 1 x"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 320 350 15" name="Det10">
+					<Widget type="Slider" skin="Slider" position="180 80 350 15" name="Det10">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 320 75 20" name="Det10Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 80 75 20" name="Det10Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 340 118 20" name="Det11Name">
+					<Widget type="TextBox" skin="TextBox" position="0 100 118 20" name="Det11Name">
 						<Property key="Caption" value="Detail 1 y"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 340 350 15" name="Det11">
+					<Widget type="Slider" skin="Slider" position="180 100 350 15" name="Det11">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 340 75 20" name="Det11Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 100 75 20" name="Det11Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 360 118 20" name="Det12Name">
+					<Widget type="TextBox" skin="TextBox" position="0 120 118 20" name="Det12Name">
 						<Property key="Caption" value="Detail 1 z"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 360 350 15" name="Det12">
+					<Widget type="Slider" skin="Slider" position="180 120 350 15" name="Det12">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 360 75 20" name="Det12Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 120 75 20" name="Det12Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 380 118 20" name="Det13Name">
+					<Widget type="TextBox" skin="TextBox" position="0 140 118 20" name="Det13Name">
 						<Property key="Caption" value="Detail 1 w"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 380 350 15" name="Det13">
+					<Widget type="Slider" skin="Slider" position="180 140 350 15" name="Det13">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 380 75 20" name="Det13Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 140 75 20" name="Det13Edit">
 					</Widget>
 
 					<!-- Detail 2 -->
-					<Widget type="TextBox" skin="TextBox" position="0 400 118 20" name="Det20Name">
+					<Widget type="TextBox" skin="TextBox" position="0 160 118 20" name="Det20Name">
 						<Property key="Caption" value="Detail 2 x"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 400 350 15" name="Det20">
+					<Widget type="Slider" skin="Slider" position="180 160 350 15" name="Det20">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 400 75 20" name="Det20Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 160 75 20" name="Det20Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 420 118 20" name="Det21Name">
+					<Widget type="TextBox" skin="TextBox" position="0 180 118 20" name="Det21Name">
 						<Property key="Caption" value="Detail 2 y"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 420 350 15" name="Det21">
+					<Widget type="Slider" skin="Slider" position="180 180 350 15" name="Det21">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 420 75 20" name="Det21Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 180 75 20" name="Det21Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 440 118 20" name="Det22Name">
+					<Widget type="TextBox" skin="TextBox" position="0 200 118 20" name="Det22Name">
 						<Property key="Caption" value="Detail 2 z"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 440 350 15" name="Det22">
+					<Widget type="Slider" skin="Slider" position="180 200 350 15" name="Det22">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 440 75 20" name="Det22Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 200 75 20" name="Det22Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 460 118 20" name="Det23Name">
+					<Widget type="TextBox" skin="TextBox" position="0 220 118 20" name="Det23Name">
 						<Property key="Caption" value="Detail 2 w"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 460 350 15" name="Det23">
+					<Widget type="Slider" skin="Slider" position="180 220 350 15" name="Det23">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 460 75 20" name="Det23Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 220 75 20" name="Det23Edit">
 					</Widget>
 
 					<!-- Detail 3 -->
-					<Widget type="TextBox" skin="TextBox" position="0 480 118 20" name="Det30Name">
+					<Widget type="TextBox" skin="TextBox" position="0 240 118 20" name="Det30Name">
 						<Property key="Caption" value="Detail 3 x"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 480 350 15" name="Det30">
+					<Widget type="Slider" skin="Slider" position="180 240 350 15" name="Det30">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 480 75 20" name="Det30Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 240 75 20" name="Det30Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 500 118 20" name="Det31Name">
+					<Widget type="TextBox" skin="TextBox" position="0 260 118 20" name="Det31Name">
 						<Property key="Caption" value="Detail 3 y"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 500 350 15" name="Det31">
+					<Widget type="Slider" skin="Slider" position="180 260 350 15" name="Det31">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 500 75 20" name="Det31Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 260 75 20" name="Det31Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 520 118 20" name="Det32Name">
+					<Widget type="TextBox" skin="TextBox" position="0 280 118 20" name="Det32Name">
 						<Property key="Caption" value="Detail 3 z"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 520 350 15" name="Det32">
+					<Widget type="Slider" skin="Slider" position="180 280 350 15" name="Det32">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 520 75 20" name="Det32Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 280 75 20" name="Det32Edit">
 					</Widget>
 
-					<Widget type="TextBox" skin="TextBox" position="0 540 118 20" name="Det33Name">
+					<Widget type="TextBox" skin="TextBox" position="0 300 118 20" name="Det33Name">
 						<Property key="Caption" value="Detail 3 w"/>
 					</Widget>
-					<Widget type="Slider" skin="Slider" position="180 540 350 15" name="Det33">
+					<Widget type="Slider" skin="Slider" position="180 300 350 15" name="Det33">
 					</Widget>
-					<Widget type="EditBox" skin="EditBox" position="100 540 75 20" name="Det33Edit">
+					<Widget type="EditBox" skin="EditBox" position="100 300 75 20" name="Det33Edit">
+					</Widget>
+					
+					<!-- User 0 -->
+					<Widget type="TextBox" skin="TextBox" position="0 320 118 20" name="User00Name">
+						<Property key="Caption" value="User 0 x"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="180 320 350 15" name="User00">
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="100 320 75 20" name="User00Edit">
+					</Widget>
+
+					<Widget type="TextBox" skin="TextBox" position="0 340 118 20" name="User01Name">
+						<Property key="Caption" value="User 0 y"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="180 340 350 15" name="User01">
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="100 340 75 20" name="User01Edit">
+					</Widget>
+
+					<Widget type="TextBox" skin="TextBox" position="0 360 118 20" name="User02Name">
+						<Property key="Caption" value="User 0 z"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="180 360 350 15" name="User02">
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="100 360 75 20" name="User02Edit">
+					</Widget>
+
+					<Widget type="TextBox" skin="TextBox" position="0 380 118 20" name="User03Name">
+						<Property key="Caption" value="User 0 w"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="180 380 350 15" name="User03">
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="100 380 75 20" name="User03Edit">
+					</Widget>
+
+					<!-- User 1 -->
+					<Widget type="TextBox" skin="TextBox" position="0 400 118 20" name="User10Name">
+						<Property key="Caption" value="User 1 x"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="180 400 350 15" name="User10">
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="100 400 75 20" name="User10Edit">
+					</Widget>
+
+					<Widget type="TextBox" skin="TextBox" position="0 420 118 20" name="User11Name">
+						<Property key="Caption" value="User 1 y"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="180 420 350 15" name="User11">
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="100 420 75 20" name="User11Edit">
+					</Widget>
+
+					<Widget type="TextBox" skin="TextBox" position="0 440 118 20" name="User12Name">
+						<Property key="Caption" value="User 1 z"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="180 440 350 15" name="User12">
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="100 440 75 20" name="User12Edit">
+					</Widget>
+
+					<Widget type="TextBox" skin="TextBox" position="0 460 118 20" name="User13Name">
+						<Property key="Caption" value="User 1 w"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="180 460 350 15" name="User13">
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="100 460 75 20" name="User13Edit">
+					</Widget>
+
+					<!-- User 2 -->
+					<Widget type="TextBox" skin="TextBox" position="0 480 118 20" name="User20Name">
+						<Property key="Caption" value="User 2 x"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="180 480 350 15" name="User20">
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="100 480 75 20" name="User20Edit">
+					</Widget>
+
+					<Widget type="TextBox" skin="TextBox" position="0 500 118 20" name="User21Name">
+						<Property key="Caption" value="User 2 y"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="180 500 350 15" name="User21">
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="100 500 75 20" name="User21Edit">
+					</Widget>
+
+					<Widget type="TextBox" skin="TextBox" position="0 520 118 20" name="User22Name">
+						<Property key="Caption" value="User 2 z"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="180 520 350 15" name="User22">
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="100 520 75 20" name="User22Edit">
+					</Widget>
+
+					<Widget type="TextBox" skin="TextBox" position="0 540 118 20" name="User23Name">
+						<Property key="Caption" value="User 2 w"/>
+					</Widget>
+					<Widget type="Slider" skin="Slider" position="180 540 350 15" name="User23">
+					</Widget>
+					<Widget type="EditBox" skin="EditBox" position="100 540 75 20" name="User23Edit">
 					</Widget>
 
 				</Widget>

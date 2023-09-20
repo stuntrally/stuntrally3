@@ -2,6 +2,8 @@
 #include "HlmsPbs2.h"
 #include "App.h"
 #include "CScene.h"
+#include "FluidsXml.h"
+
 #include "OgreHlmsPbsTerraShadows.h"
 #include <OgreHlmsJsonPbs.h>
 #include <OgreShaderPrimitives.h>
@@ -54,7 +56,13 @@ void HlmsPbs2::calculateHashForPreCreate(
 	const auto& mtr = rnd->getDatablockOrMaterialName();
 	// LogO("- calc pbs: " + mtr);   // on every item
 	
-	if (mtr.substr(0,5) == "Water")
+	bool fluid = false;
+	if (pFluidsXml)
+		fluid = pFluidsXml->MatInMap(mtr);
+	else
+		LogO("HlmsPbs2 pFluidsXml not set!");
+
+	if (fluid)
 		setProperty( "water", 1 );
 	else
 	if (mtr.substr(0,5) == "River")
@@ -171,15 +179,20 @@ HlmsPbsDb2::HlmsPbsDb2(
 		mDetailsOffsetScale[2][0] = speed.x;
 		mDetailsOffsetScale[2][1] = choppyness_scale.x;
 		mDetailsOffsetScale[2][2] = choppyness_scale.y;
+		
 		mDetailsOffsetScale[2][3] = bump_fresn_refra.x;
+		mDetailsOffsetScale[3][0] = bump2SpecPowerMul.x;  // bump2
+		mDetailsOffsetScale[3][1] = bump2SpecPowerMul.z;  // mul
 
-		setDiffuse( Vector3(colour.x, colour.y, colour.z) * 0.6f );  // par..
+
+		// setDiffuse( Vector3(colour.x, colour.y, colour.z) * 0.6f );  // par..88
+		setDiffuse( Vector3(refractColour.x, refractColour.y, refractColour.z) * 0.6f );  // par..
 		setSpecular( Vector3(specClrPow.x, specClrPow.y, specClrPow.z) * 0.4f );
 		setFresnel( Vector3(reflectColour.x, reflectColour.y, reflectColour.z) * 0.3f, 1 );
 
 		// float roughness = specClrPow.z;
 		// setRoughness(roughness);  // todo.. mul, bump_fresn_refra ..
-		setTransparency( refractColour.w );
+		setTransparency( colour.w == 0.0 ? refractColour.w : 1.0 );
 		setRefractionStrength( bump_fresn_refra.z );
 		//bump_fresn_refra
 

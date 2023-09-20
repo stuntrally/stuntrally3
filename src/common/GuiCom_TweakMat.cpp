@@ -109,23 +109,14 @@ void CGuiCom::InitGuiTweakMtr()
 	}, csDetNames[4][4] = {
 		"small wave x","small wave y","mid wave x","mid wave y",
 		"big wave x","big wave y","","",
-		"speed","choppyness","scale","bump",
-		"","","","",
+		"speed","choppyness","scale","bump1",
+		"bump2","mix1-2","","",
 	};
 
-	float a = -1.f, b = 2.f;  // par range
+	float a = -1.f, b = 2.f;  // par range..
 	int i,x;
 	for (x=0; x < 4; ++x)
 	{
-		for (i=0; i < 3; ++i)
-		{	auto s = "User" + toStr(i) + toStr(x);
-			sv= &twk.svUser[i][x];  sv->Init(s, &twk.fUser[i][x], a, b, 1.5f, 3,5);  sv->DefaultF(0.0f);  SevC(TweakMtr);
-
-			auto c = Colour(0.2f+x*0.2f, 0.5f+i*0.12f, 1.f-i*0.1f-x*0.1f);
-			auto txt = fTxt(s+"Name");  txt->setTextColour(c);
-			sv->setClr(c);
-			if (!csUserNames[i][x].empty())  txt->setCaption(csUserNames[i][x]);
-		}
 		for (i=0; i < 4; ++i)
 		{	auto s = "Det" + toStr(i) + toStr(x);
 			sv= &twk.svDet[i][x];  sv->Init(s, &twk.fDet[i][x], a, b, 1.5f, 3,5);  sv->DefaultF(0.0f);  SevC(TweakMtr);
@@ -134,6 +125,15 @@ void CGuiCom::InitGuiTweakMtr()
 			auto txt = fTxt(s+"Name");  txt->setTextColour(c);
 			sv->setClr(c);
 			if (!csDetNames[i][x].empty())  txt->setCaption(csDetNames[i][x]);
+		}
+		for (i=0; i < 3; ++i)
+		{	auto s = "User" + toStr(i) + toStr(x);
+			sv= &twk.svUser[i][x];  sv->Init(s, &twk.fUser[i][x], a, b, 1.5f, 3,5);  sv->DefaultF(0.0f);  SevC(TweakMtr);
+
+			auto c = Colour(0.2f+x*0.2f, 0.5f+i*0.12f, 1.f-i*0.1f-x*0.1f);
+			auto txt = fTxt(s+"Name");  txt->setTextColour(c);
+			sv->setClr(c);
+			if (!csUserNames[i][x].empty())  txt->setCaption(csUserNames[i][x]);
 		}
 	}
 	

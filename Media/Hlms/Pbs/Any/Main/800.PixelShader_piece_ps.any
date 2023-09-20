@@ -412,10 +412,12 @@
 				#define WIND_DIR     float2(0.5, -0.8)  // todo: par, grass, trees too
 				#define WIND_SPEED   material.detailOffsetScale[2].x * 0.32
 				#define WIND_SPEED2  material.detailOffsetScale[2].x * 2.0
-				
 				#define WAVE_CHOP    material.detailOffsetScale[2].y * 0.01
 				#define WAVE_SCALE  -material.detailOffsetScale[2].z
+				
 				#define BUMP         material.detailOffsetScale[2].w
+				#define BUMP2        material.detailOffsetScale[3].x  //bump2SpecPowerMul
+				#define SPEC2        material.detailOffsetScale[3].y
 
 float2 UV = inPs.uv@value(uv_diffuse).xy;
 float timer = atmo.globalTime.x;
@@ -427,12 +429,14 @@ uv3 = UV * WAVE_SCALE*0.5 + WIND_DIR *timer* WIND_SPEED*0.09-(normal2.xy/normal2
 uv3 = UV * WAVE_SCALE*1.0 + WIND_DIR *timer* WIND_SPEED*0.4 -(normal3.xy/normal3.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(-0.02 ,+0.1 );   float3 normal4 = @insertpiece(GetNorm)
 uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(+0.1  ,-0.06);   float3 normal5 = @insertpiece(GetNorm)
 
-				float3 n3 = normal0 * BIG_WAVES_X   + normal1 * BIG_WAVES_Y +
+				float3 n6 = normal0 * BIG_WAVES_X   + normal1 * BIG_WAVES_Y +
 							normal2 * MID_WAVES_X   + normal3 * MID_WAVES_Y +
 							normal4 * SMALL_WAVES_X + normal5 * SMALL_WAVES_Y;
-				n3 = normalize( midf3_c( n3.x * BUMP, n3.y * BUMP, n3.z ));
-				pixelData.normal = n3;
-				// pixelData.diffuse.xyz = n3;  // test stuff ..
+				float3 n1 = normalize( midf3_c( n6.x * BUMP,  n6.y * BUMP,  n6.z ));
+				float3 n2 = normalize( midf3_c( n6.x * BUMP2, n6.y * BUMP2, n6.z ));
+
+				pixelData.normal = lerp(n1, n2, SPEC2);
+				// pixelData.diffuse.xyz = n1;  // test stuff ..
 				// pixelData.normal = midf3_c(0.0,0.0,1.0);
 
 				// pixelData.diffuse.xyz = float3(0.02,0.03,0.04) + float3(0.01,0.04,0.07) * pixelData.normal.z;
@@ -442,7 +446,7 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 				// pixelData.normal = midf3_c( 0.5, 0.5, 0.1 );
 				// pixelData.specular.xyz = float3(0.9,0.95,0.99) - float3(0.3,0.4,0.5) * pixelData.normal.z;
 
-				pixelData.perceptualRoughness = max(0.01, min(1.0,  0.01 - 2.24 * n3.x - 2.24 * n3.y));  //** par?
+				pixelData.perceptualRoughness = max(0.01, min(1.0,  0.01 - 2.24 * n1.x - 2.24 * n1.y));  //** par?
 				// transparency ?
 				// material.F0.w = pixelData.perceptualRoughness;
 			//~~~~~~~ water end
