@@ -62,12 +62,15 @@ void HlmsPbs2::calculateHashForPreCreate(
 	else
 		LogO("HlmsPbs2 pFluidsXml not set!");
 
+	if (mtr.substr(0,5) == "River")
+		fluid = 1;
+
 	if (fluid)
 		setProperty( "water", 1 );
 	else
-	if (mtr.substr(0,5) == "River")
-		setProperty( "river", 1 );
-	else
+	// if (mtr.substr(0,5) == "River")
+	// 	setProperty( "river", 1 );
+	// else
 	if (mtr.substr(0,5) == "grass")
 		setProperty( "grass", 1 );
 	else 
