@@ -1,4 +1,5 @@
 include(DependenciesFunctions)
+
 set(CMAKE_THREAD_PREFER_PTHREAD YES)
 find_package(Threads REQUIRED)
 
@@ -83,14 +84,6 @@ add_external_lib(
 #)
 
 add_external_lib(
-        tinyxml
-        tinyxml/2.6.2
-        REQUIRED
-        PKG_CONFIG "tinyxml >= 2.6"
-        FIND_PACKAGE
-)
-
-add_external_lib(
         tinyxml2
         tinyxml2/9.0.0
         REQUIRED
@@ -103,14 +96,13 @@ set(LIBS
         #Boost::Boost  #  fails
         #Threads::Threads
         #OGRE::OGRE
-        Bullet::Bullet
+        #- Bullet::Bullet  // fixme?
         #SDL2::SDL2
         #MyGUI::MyGUI
         VorbisFile::VorbisFile
         OGG::OGG
         #OpenAL::OpenAL  #  fails
         #ENet::ENet  #  fails
-        tinyxml::tinyxml
         tinyxml2::tinyxml2
 )
 

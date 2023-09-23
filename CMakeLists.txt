@@ -8,6 +8,8 @@
 
 
 cmake_minimum_required( VERSION 3.16 )
+# Include path for additional CMake library finding scripts
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake/" ${CMAKE_MODULE_PATH})
 
 message(STATUS "Build DIR: ${CMAKE_BINARY_DIR}")
 
@@ -24,6 +26,7 @@ endif()
 
 include(CMakeDependentOption)
 include(Macros)
+find_package(PkgConfig REQUIRED)
 include(FeatureSummary)
 
 
@@ -53,8 +56,9 @@ endif()
 set(_PREFIX "SR_")
 
 #  Test if conan is installed
-find_program(CONAN_CMD_TEST conan NO_CACHE)
-cmake_dependent_option(USE_PACKAGE_MANAGER "Use conan" ON "NOT CONAN_CMD_TEST STREQUAL CONAN_CMD_TEST-NOTFOUND" OFF)
+#- find_program(CONAN_CMD_TEST conan NO_CACHE)  // fixme?
+#- cmake_dependent_option(USE_PACKAGE_MANAGER "Use conan" ON "NOT CONAN_CMD_TEST STREQUAL CONAN_CMD_TEST-NOTFOUND" OFF)
+set(USE_PACKAGE_MANAGER OFF)
 message(STATUS "Using conan: ${USE_PACKAGE_MANAGER}")
 
 #  Allow user to globally set the library preference for external libraries
@@ -99,8 +103,8 @@ endif()
 #  Check for dependencies
 include(DependenciesConfig)
 
-message( STATUS "---------- resolve_conan_dependencies" )
-resolve_conan_dependencies()
+#- message( STATUS "---------- resolve_conan_dependencies" )
+#- resolve_conan_dependencies()  // fixme?
 
 
 #  root dir
@@ -206,6 +210,17 @@ find_package( Threads )
 find_package( Boost COMPONENTS system thread REQUIRED )
 
 
+#  fix 5  bullet
+find_package( Bullet REQUIRED )
+
+message( STATUS "--- Bullet: " ${BULLET_FOUND} )
+# message( STATUS "--- Bullet: " ${BULLET_INCLUDE_DIRS} )
+# message( STATUS "--- Bullet: " ${BULLET_LIBRARIES} )
+
+# find_package(OGG REQUIRED)
+# find_package(Vorbis REQUIRED)
+
+
 ##  Executables
 ##------------------------------------------------------------------------------------------------------
 foreach( EXE ${EXE_LIST} )
@@ -236,6 +251,8 @@ foreach( EXE ${EXE_LIST} )
 		target_include_directories( ${EXE} PRIVATE ${subdir} )
 	endforeach()
 
+	target_include_directories( ${EXE} PRIVATE ${BULLET_INCLUDE_DIRS} )
+
 	#  fix 5  ENet  since conan fails
 	# find_package( ENet REQUIRED )  # inside Dep..cmake
 	if ( ${EXE} STREQUAL ${GAME_EXE} )  # game, once
@@ -264,6 +281,9 @@ foreach( EXE ${EXE_LIST} )
 
 	#  OpenAL
 	target_link_libraries( ${EXE} "${OPENAL_LIBRARY}" )
+
+	#  bullet
+	target_link_libraries( ${EXE} ${BULLET_LIBRARIES} -lBulletWorldImporter )
 
 
 	#  Ogre  ----

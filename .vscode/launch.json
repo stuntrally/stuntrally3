@@ -44,5 +44,13 @@
 			"program": "${workspaceFolder}/bin/RelWithDebInfo/sr-editor3",
 			"cwd": "${workspaceFolder}/bin/RelWithDebInfo/"
 		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "game Rel cfg",
+			"args": ["cfg"],
+			"program": "${workspaceFolder}/bin/Release/stuntrally3",
+			"cwd": "${workspaceFolder}/bin/Release/"
+		},
 	]
 }
