@@ -19,9 +19,9 @@ particle_system RainStorm
 		height	38
 		depth	22  //h
 
-		colour_range_start	0.22 0.22 0.22  0.2
-		colour				0.25 0.25 0.25  0.2
-		colour_range_end	0.28 0.28 0.28  0.3
+		colour_range_start	0.09 0.09 0.09  0.15
+		colour				0.12 0.12 0.12  0.2
+		colour_range_end	0.15 0.15 0.15  0.25
 
 		emission_rate	200
 		velocity_min	15.6
@@ -69,9 +69,9 @@ particle_system RainFastA
 		height	16
 		depth	12  //h
 
-		colour_range_start	0.8 0.8 0.8  0.3
-		colour				0.8 0.8 0.8  0.4
-		colour_range_end	0.8 0.8 0.8  0.5
+		colour_range_start	0.4 0.4 0.4  0.2
+		colour				0.4 0.4 0.4  0.3
+		colour_range_end	0.4 0.4 0.4  0.4
 
 		emission_rate	200
 		velocity_min	13.6
@@ -111,9 +111,9 @@ particle_system RainFast
 		height	16
 		depth	12  //h
 
-		colour_range_start	0.8 0.8 0.8  0.6
-		colour				0.8 0.8 0.8  0.5
-		colour_range_end	0.8 0.8 0.8  0.4
+		colour_range_start	0.6 0.6 0.6  0.4
+		colour				0.6 0.6 0.6  0.5
+		colour_range_end	0.6 0.6 0.6  0.5
 
 		emission_rate	200
 		velocity_min	13.6
@@ -328,9 +328,9 @@ particle_system SnowStorm
 		height	19
 		depth	11  //h
 
-		colour_range_start	1 1 1  0.7
+		colour_range_start	1 1 1  0.5
 		colour				1 1 1  0.6
-		colour_range_end	1 1 1  0.5
+		colour_range_end	1 1 1  0.7
 
 		emission_rate	20
 		velocity_min	5.1
