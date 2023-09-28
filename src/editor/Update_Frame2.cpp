@@ -48,7 +48,7 @@ void App::UpdateKey(float dt)
 	#undef isKey
 
 	static float fUp = 0.f, fDn = 0.f, fPgUp = 0.f, fPgDn = 0.f;
-	const float rpt = -0.1f;  // -0.15 s delay
+	const float rpt = -0.15f;  // -0.15 s delay
 	const int d = alt ? 16 : ctrl ? 4  : 1,
 	         pg = alt ? 64 : ctrl ? 32 : 8;
 
