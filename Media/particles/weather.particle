@@ -3,7 +3,7 @@
 particle_system RainStorm
 {
 	material			Dust
-	quota				5000
+	quota				15000
 	particle_width		2.2
 	particle_height		4.2
 	cull_each			true
@@ -49,7 +49,7 @@ particle_system RainStorm
 particle_system RainFastA
 {
 	material			RainDropLong
-	quota				10000
+	quota				90000
 	particle_width		0.03
 	particle_height		1.52
 
@@ -91,7 +91,7 @@ particle_system RainFastA
 particle_system RainFast
 {
 	material			RainDropLong
-	quota				10000
+	quota				60000
 	particle_width		0.03
 	particle_height		1.52
 
@@ -133,7 +133,7 @@ particle_system RainFast
 particle_system RainFine
 {
 	material			RainDrop
-	quota				10000
+	quota				50000
 	particle_width		0.03
 	particle_height		0.16
 
@@ -175,7 +175,7 @@ particle_system RainFine
 particle_system RainHeavy
 {
 	material			RainDrop
-	quota				20000
+	quota				50000
 	particle_width		0.16
 	particle_height		0.86
 
@@ -218,9 +218,9 @@ particle_system RainHeavy
 particle_system Snow
 {
 	material			SnowFlake
-	quota				18000
-	particle_width		0.09
-	particle_height		0.09
+	quota				60000
+	particle_width		0.08
+	particle_height		0.08
 
 	cull_each		false
     sorted			false
@@ -267,9 +267,9 @@ particle_system Snow
 particle_system SnowFine
 {
 	material			SnowFlake
-	quota				18000
-	particle_width		0.07
-	particle_height		0.07
+	quota				60000
+	particle_width		0.06
+	particle_height		0.06
 
 	cull_each		false
     sorted			false
@@ -308,7 +308,7 @@ particle_system SnowFine
 particle_system SnowStorm
 {
 	material			SnowFlake
-	quota				18000
+	quota				60000
 	particle_width		0.08
 	particle_height		0.08
 
@@ -356,9 +356,9 @@ particle_system SnowStorm
 particle_system SnowStormFine
 {
 	material			SnowFlake
-	quota				18000
-	particle_width		0.07
-	particle_height		0.07
+	quota				60000
+	particle_width		0.06
+	particle_height		0.06
 
 	cull_each		false
     sorted			false
@@ -398,7 +398,7 @@ particle_system SnowStormFine
 particle_system CrystalSnow
 {
 	material			SnowFlake
-	quota				18000
+	quota				38000
 	particle_width		0.09
 	particle_height		0.09
 
@@ -447,7 +447,7 @@ particle_system CrystalSnow
 particle_system CrystalSnowFine
 {
 	material			SnowFlake
-	quota				18000
+	quota				38000
 	particle_width		0.07
 	particle_height		0.07
 
@@ -488,7 +488,7 @@ particle_system CrystalSnowFine
 particle_system CrystalSnowStorm
 {
 	material			SnowFlake
-	quota				18000
+	quota				38000
 	particle_width		0.08
 	particle_height		0.08
 
@@ -536,7 +536,7 @@ particle_system CrystalSnowStorm
 particle_system CrystalSnowStormFine
 {
 	material			SnowFlake
-	quota				18000
+	quota				38000
 	particle_width		0.07
 	particle_height		0.07
 
@@ -578,7 +578,7 @@ particle_system CrystalSnowStormFine
 particle_system CrystalSnowGreen
 {
 	material			SnowFlake
-	quota				18000
+	quota				38000
 	particle_width		0.09
 	particle_height		0.09
 
@@ -627,7 +627,7 @@ particle_system CrystalSnowGreen
 particle_system CrystalSnowFineGreen
 {
 	material			SnowFlake
-	quota				18000
+	quota				38000
 	particle_width		0.07
 	particle_height		0.07
 
