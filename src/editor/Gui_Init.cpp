@@ -292,8 +292,8 @@ void CGui::InitGui()
 	sv= &svSkyYaw;		sv->Init("SkyYaw",		&sc->skyYaw,  -180.f,180.f, 1.f, 1,4);  sv->DefaultF(0.f);  Sev(UpdSky);
 	sv= &svSunPitch;	sv->Init("SunPitch",	&sc->ldPitch,    0.f,90.f,  1.f, 1,4);  sv->DefaultF(54.f);    Sev(UpdSun);
 	sv= &svSunYaw;		sv->Init("SunYaw",		&sc->ldYaw,   -180.f,180.f, 1.f, 1,4);  sv->DefaultF(-123.f);  Sev(UpdSun);
-	sv= &svRain1Rate;	sv->Init("Rain1Rate",	&sc->rainEmit,   0.f,8000.f, 1.5f);  sv->DefaultF(1000.f);
-	sv= &svRain2Rate;	sv->Init("Rain2Rate",	&sc->rain2Emit,  0.f,8000.f, 1.5f);  sv->DefaultF(1000.f);
+	sv= &svRain1Rate;	sv->Init("Rain1Rate",	&sc->rainEmit,   0.f,90000.f, 2.5f);  sv->DefaultF(1000.f);
+	sv= &svRain2Rate;	sv->Init("Rain2Rate",	&sc->rain2Emit,  0.f,90000.f, 2.5f);  sv->DefaultF(1000.f);
 	//  🌫️ Fog
 	sv= &svFogStart;	sv->Init("FogStart",	&sc->fogStart,   0.f,4000.f, 2.f, 0,3);  sv->DefaultF(100.f);  Sev(UpdFog);
 	sv= &svFogEnd;		sv->Init("FogEnd",		&sc->fogEnd,     0.f,9000.f, 2.f, 0,3);  sv->DefaultF(600.f);  Sev(UpdFog);

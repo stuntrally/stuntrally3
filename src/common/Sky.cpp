@@ -60,8 +60,11 @@ void CScene::CreateSun()
 	LogO("C--- create Sun");
 	auto *mgr = app->mSceneMgr;
 	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
-	
-	//mgr->setForwardClustered( true, 16, 8, 24, 4, 0, 2, 2, 50 );  // for more lights  //** higher CPU use, bad for debug
+
+	if (app->pSet->car_lights)  // for more lights  //** higher CPU use, bad for debug
+		mgr->setForwardClustered( true, 16, 8, 24, 4, 0, 2, 2, 50 );
+	else
+		mgr->setForwardClustered( false, 16, 8, 24, 4, 0, 2, 2, 50 );
 
 	sun = mgr->createLight();
 	sun->setType( Light::LT_DIRECTIONAL );
