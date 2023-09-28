@@ -212,8 +212,9 @@ public:
 
 
 	std::vector<Ogre::String> vsMaterials, vsTweakMtrs;
-	void GetMaterials(   Ogre::String filename, bool clear=true, Ogre::String type="hlms");  // ogre resource
-	void GetMaterialsMat(Ogre::String filename, bool clear=true, Ogre::String type="hlms");  // direct path+file
+	void GetMaterials(    Ogre::String filename, bool clear=true, Ogre::String type="hlms");  // ogre resource
+	void GetMaterialsMat( Ogre::String filename, bool clear=true, Ogre::String type="hlms");  // direct path+file
+	void GetMaterialsJson(Ogre::String filename, bool clear=true, Ogre::String type="pbs", Ogre::String matStart="\t\t\"");
 
     
    	//  🔧 Tweak Mtr - Material Editor  --------------------

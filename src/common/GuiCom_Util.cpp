@@ -423,7 +423,7 @@ void CGuiCom::CreateFonts()
 		{	c = codes->createChild("Code");
 			c->addAttribute("range", "33 255");
 		}
-		//doc.save(string("aaa.txt"));
+		//doc.save(string("fonts.txt"));
 		font->deserialization(root, Version(3,2,0));
 
 		//  add
@@ -449,7 +449,7 @@ void CGuiCom::GetMaterials(String filename, bool clear, String type)
 				std::string line = stream->getLine();
 				StringUtil::trim(line);
  
-				if (StringUtil::startsWith(line, type/*"material"*/))
+				if (StringUtil::startsWith(line, type))
 				{
 					//LogO(line);
 					Ogre::vector<String>::type vec = StringUtil::split(line," \t:");
@@ -472,7 +472,7 @@ void CGuiCom::GetMaterials(String filename, bool clear, String type)
 			}	}
 		}catch (Ogre::Exception &e)
 		{
-			LogO("!GetMaterials Exception! " + e.getFullDescription());
+			LogO("GetMaterials Exception! " + e.getFullDescription());
 	}	}
 	stream->close();
 }
@@ -492,7 +492,7 @@ void CGuiCom::GetMaterialsMat(String filename, bool clear, String type)
 				std::string line = ch;
 				StringUtil::trim(line);
  
-				if (StringUtil::startsWith(line, type/*"material"*/))
+				if (StringUtil::startsWith(line, type))
 				{
 					//LogO(line);
 					auto vec = StringUtil::split(line," \t:");
@@ -517,6 +517,53 @@ void CGuiCom::GetMaterialsMat(String filename, bool clear, String type)
 			LogO("GetMaterialsMat Exception! " + e.getFullDescription());
 	}	}
 	else
-		LogO("GetMat, can't open: " + filename);
+		LogO("GetMaterialsMat, can't open: " + filename);
+	stream.close();
+}
+
+void CGuiCom::GetMaterialsJson(String filename, bool clear, String type, String matStart)
+{
+	if (clear)
+		vsMaterials.clear();
+	
+	std::ifstream stream(filename.c_str(), std::ifstream::in);
+	if (!stream.fail())
+	{	try
+		{
+			bool typeStarted = false;
+			while(!stream.eof())
+			{
+				char ch[256+2];
+				stream.getline(ch,256);
+				std::string line = ch;
+ 
+				if (line.find(type) != string::npos)
+					typeStarted = true;
+
+				if (typeStarted && StringUtil::startsWith(line, matStart))
+				{
+					auto vec = StringUtil::split(line," \t:\"");
+					bool skipFirst = false;
+					for (auto it : vec)
+					{
+						std::string match = it;
+						StringUtil::trim(match);
+						if (!match.empty())
+						{
+							if (skipFirst)
+							{	skipFirst = false;  continue;	}
+
+							//LogO(match);
+							vsMaterials.push_back(match);						
+							break;
+						}
+					}
+			}	}
+		}catch (Ogre::Exception &e)
+		{
+			LogO("GetMaterialsJson Exception! " + e.getFullDescription());
+	}	}
+	else
+		LogO("GetMaterialsJson, can't open: " + filename);
 	stream.close();
 }

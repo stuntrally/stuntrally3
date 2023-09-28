@@ -381,6 +381,7 @@ void CGuiCom::GetTweakMtr()
 	// GetMaterialsMat(path+"cars.material",0);  //-
 	vsMaterials.push_back("#0080FFbody_realtime");
 	vsMaterials.push_back("#0080FF  ~~~~  Water  ~~~~");
+	GetMaterialsJson(path+"fluids.material.json",0);
 	GetMaterialsMat(path+"water.material",0);
 	vsMaterials.push_back("#FFFF00    ---  o O   Pipe  O o  ---");
 	GetMaterialsMat(path+"pipe.material",0);
