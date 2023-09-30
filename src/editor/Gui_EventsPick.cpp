@@ -235,6 +235,12 @@ void CGui::listPickTex(Mli2 li, size_t pos)
 			l.texNorm = sNorm;
 	}	}
 
+	//  load tex
+	auto* texMgr = app->mRoot->getRenderSystem()->getTextureGpuManager();
+	TextureGpu *tex = texMgr->createOrRetrieveTexture(s,
+		GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
+	tex->scheduleTransitionTo( GpuResidency::Resident );
+
 	//  upd img
 	btnTexDiff->setCaption(s.substr(0, s.length()-6));  // rem _d.jpg
     imgTexDiff->setImageTexture(s);
