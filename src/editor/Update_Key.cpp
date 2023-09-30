@@ -172,7 +172,6 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 		case key(F9):  // blendmap
 			gui->ckDebugBlend.Invert();
-			bTerUpdBlend = true;
 			return;
 
 

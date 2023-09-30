@@ -271,6 +271,16 @@ namespace Ogre
 
 	
     //-----------------------------------------------------------------------------------
+    void HlmsTerraDatablock::setBlendmapTest( bool enabled )
+    {
+        if( bBlendmapTest != enabled )
+        {
+            bBlendmapTest = enabled;
+
+            flushRenderables();
+        }
+    }
+    //-----------------------------------------------------------------------------------
     void HlmsTerraDatablock::setDetailTriplanarDiffuseEnabled( bool enabled )
     {
         if( mDetailTriplanarDiffuseEnabled != enabled )

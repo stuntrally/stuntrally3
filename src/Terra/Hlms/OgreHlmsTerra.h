@@ -89,8 +89,6 @@ namespace Ogre
 		HlmsTerra( Archive *dataFolder, ArchiveVec *libraryFolders );
 		~HlmsTerra() override;
 
-		void setDebugBlendmap( bool on );  //**
-
 		const FastArray<Terra *> &getLinkedTerras() const { return mLinkedTerras; }
 
 		void _linkTerra( Terra *terra );

@@ -222,14 +222,6 @@ namespace Ogre
 			}
 		}
 	}
-	//-----------------------------------------------------------------------------------
-	void HlmsTerra::setDebugBlendmap( bool on )
-	{
-		setProperty("blendmap_test", on ? 1 : 0);
-		// uint32 hash, casterHash;  // todo:
-		// CalculateHashFor( rend, hash, casterHash );
-		// _setHlmsHashes( hash, casterHash );
-	}
 
 	//-----------------------------------------------------------------------------------
 	void HlmsTerra::setDetailTextureProperty( const char *propertyName, HlmsTerraDatablock *datablock,
@@ -306,12 +298,12 @@ namespace Ogre
 		HlmsTerraDatablock *datablock = static_cast<HlmsTerraDatablock*>( renderable->getDatablock() );
 
 		setProperty( PbsProperty::FresnelScalar, 1 );  // 0 float  1 vec3
-		setProperty( PbsProperty::FresnelWorkflow, 1 );  //** 
+		setProperty( PbsProperty::FresnelWorkflow, 1 );  //**  terra workflow
 		setProperty( PbsProperty::MetallicWorkflow, 0 );
 
 		setProperty( PbsProperty::ReceiveShadows, 1 );
 
-		setProperty( "blendmap_test", 0 );
+		setProperty( "blendmap_test", datablock->bBlendmapTest );
 
 		//**  new
 		setProperty( "emissive_terrain", datablock->bEmissive ? 1 : 0 );

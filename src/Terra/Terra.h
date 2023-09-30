@@ -42,6 +42,8 @@ class App;
 
 namespace Ogre
 {
+	class HlmsTerraDatablock;
+
 	struct GridPoint
 	{
 		int32 x;
@@ -129,6 +131,7 @@ namespace Ogre
 		//begin  extras by CryHam
 		Ogre::String mtrName;
 		Ogre::SceneNode* node =0;
+		Ogre::HlmsTerraDatablock* tDb = 0;
 
 		bool bGenerateShadowMap;  //** ter
 		bool bNormalized;  // true: Hmap floats 0..1 (broken),  false: any, real heights

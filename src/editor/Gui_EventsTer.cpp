@@ -15,6 +15,7 @@
 #include "Terra.h"
 #include "GraphicsSystem.h"
 #include "OgreHlmsTerra.h"
+#include "OgreHlmsTerraDatablock.h"
 
 #include <fstream>
 #include <MyGUI.h>
@@ -461,15 +462,10 @@ void CGui::slTerGen(SV*)
 	app->bUpdTerPrv = true;
 }
 
-//  debug
+//  blendmap_test
 void CGui::chkDebugBlend(Ck*)
 {
-	app->mGraphicsSystem->hlmsTerra->setDebugBlendmap(bDebugBlend);
-	// todo:
-	// app->scn->ter
-		// uint32 hash, casterHash;  // todo:
-		// CalculateHashFor( rend, hash, casterHash );
-		// _setHlmsHashes( hash, casterHash );
+	app->scn->ter->tDb->setBlendmapTest(bDebugBlend);
 	dbgLclr->setVisible(bDebugBlend);
 }
 

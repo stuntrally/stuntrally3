@@ -490,7 +490,7 @@
 
 						<!-- Triplanar -->
 						<Widget type="TextBox" skin="TextBox" position="32 110 172 24">
-							<Property key="Caption" value="#{Triplanar}"/>
+							<Property key="Caption" value="#{Triplanar} *"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.6 0.9 0.6"/>
 						</Widget>
@@ -500,7 +500,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 140 176 24">
-							<Property key="Caption" value="#{Triplanar} - #{Horizon}"/>
+							<Property key="Caption" value="#{Triplanar} - #{Horizon} *"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.6 0.8 0.9"/>
 						</Widget>
