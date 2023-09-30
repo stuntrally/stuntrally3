@@ -303,9 +303,8 @@ namespace Ogre
 
 		setProperty( PbsProperty::ReceiveShadows, 1 );
 
-		setProperty( "blendmap_test", datablock->bBlendmapTest );
-
 		//**  new
+		setProperty( "blendmap_test", datablock->bBlendmapTest );
 		setProperty( "emissive_terrain", datablock->bEmissive ? 1 : 0 );
 
 		uint32 brdf = datablock->getBrdf();

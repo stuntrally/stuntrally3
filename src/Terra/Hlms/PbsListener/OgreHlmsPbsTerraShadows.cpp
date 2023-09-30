@@ -121,6 +121,7 @@ namespace Ogre
 												   SceneManager *sceneManager ) const
 	{
 		return (!casterPass && mTerra) ? (2 /*+ 1 */) * 16u : 0u;
+		//** add more here..
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -145,7 +146,7 @@ namespace Ogre
 			*passBufferPtr++ = invHeight;
 			*passBufferPtr++ = terrainXZInvDim.y;
 			*passBufferPtr++ = 1.0f;
-
+			//** add more here..
 		}
 		return passBufferPtr;
 	}

@@ -79,7 +79,7 @@ namespace Ogre
 	void ShadowMapper::createCompositorWorkspace()
 	{
 		if (!m_bGenerateShadowMap)
-			return;  //**  5 sec delay
+			return;  //**  5 sec delay, on old PC
 
 		OGRE_ASSERT_LOW( !m_shadowWorkspace );
 		OGRE_ASSERT_LOW( !m_tmpGaussianFilterTex );
