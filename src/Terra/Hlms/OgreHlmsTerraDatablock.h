@@ -197,7 +197,8 @@ namespace Ogre
 							const HlmsBlendblock *blendblock, const HlmsParamVec &params );
 		~HlmsTerraDatablock() override;
 
-		bool bEmissive =0;
+		bool bEmissive =0;  //**
+		bool bBlendmapTest =0;
 
 		/// Sets overall diffuse colour. The colour will be divided by PI for energy conservation.
 		void setDiffuse( const Vector3 &diffuseColour );
@@ -244,7 +245,9 @@ namespace Ogre
 		void setBrdf( TerraBrdf::TerraBrdf brdf );
 		uint32 getBrdf() const;
 
-        /// Enables/disables triplanar mapping on detail diffuse maps. Calling this function may trigger
+        void setBlendmapTest( bool enabled );  //**
+
+		/// Enables/disables triplanar mapping on detail diffuse maps. Calling this function may trigger
         /// an HlmsDatablock::flushRenderables
         void setDetailTriplanarDiffuseEnabled( bool enabled );
         bool getDetailTriplanarDiffuseEnabled() const { return mDetailTriplanarDiffuseEnabled; };

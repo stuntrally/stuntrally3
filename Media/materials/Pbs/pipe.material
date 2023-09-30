@@ -36,6 +36,8 @@ hlms pipe_glass pbs
 	// fresnel_coeff 0.9 0.9 0.9
 	roughness 0.45
 	metalness 0.99
+	fresnel 0.8
+	fresnel_coeff 0.3 0.3 0.3
 
 	cull_mode clockwise
 	//+ cull_mode anticlockwise  // 2nd, cloned in code
@@ -173,13 +175,14 @@ hlms pipeGlassYellow pbs : pipe_glass
 hlms pipeGlassCrystal pbs : pipe_glass
 {
 	diffuse  0.2 0.5 0.7
-	specular 0.2 0.6 1
+	specular 0.2 0.4 0.6
 	transparency 0.98
 	diffuse_map  roadGlassD.png
 	// specular 0.1 0.3 0.5 //128
 	// specular_map roadGlass_spec0.png
 	normal_map   normal_1.png
 	// bump_scale 0.1
+	roughness 0.4
 }
 
 
