@@ -13,6 +13,7 @@
 #include "CGui.h"
 
 #include <OgrePrerequisites.h>
+#include <OgreVector3.h>
 #include <OgreVector4.h>
 #include <OgreCommon.h>
 #include "GraphicsSystem.h"
@@ -52,19 +53,20 @@ void CScene::CreateTerrain1(int n)
 	app->InitTexFilters(&sb);
 	auto* texMgr = app->mRoot->getRenderSystem()->getTextureGpuManager();
 
-	//  triplanar
+	//  triplanar  ----
 	const auto& td = sc->tds[n];
 	bool terTripl = td.triplCnt > 0 &&  n <= app->pSet->tripl_horiz;  // 0 ter, 1 horiz, 2
 	int tex_tripl = app->pSet->ter_tripl;  // off, diff, norm
 	bool bTripl = tex_tripl > 0 && terTripl;
 	LogO("C--T Terrain tripl layers: " + toStr(td.triplCnt)+" ter: "+toStr(terTripl)+" tex: "+toStr(tex_tripl));
 
-	if (bTripl)  //**
+	if (bTripl)  //**  set tripl
 	{	tdb->setDetailTriplanarDiffuseEnabled(true);
-		if (tex_tripl > 1 && terTripl)
+		if (tex_tripl >= 2 && terTripl)
+			tdb->setDetailTriplanarMetalnessEnabled(true);
+		//tdb->setDetailTriplanarRoughnessEnabled(true);  // no tex, not used yet
+		if (tex_tripl >= 3 && terTripl)
 			tdb->setDetailTriplanarNormalEnabled(true);  // fixme black spots..
-		// tdb->setDetailTriplanarRoughnessEnabled(true);  // no tex, not used
-		// tdb->setDetailTriplanarMetalnessEnabled(true);
 	}
 	tdb->bEmissive = td.emissive;
 
@@ -91,13 +93,15 @@ void CScene::CreateTerrain1(int n)
 
 		//  combined rgb,a from 2 tex
 		String path = PATHS::Data() + "/terrain/";
-		String d_d, d_s, d_r, n_n;
+		String d_d, d_s, d_r, n_n, n_s, fname;
 		
-		///  diffuse  ----
+		//  diffuse  ----
 		d_d = l.texFile;  // ends with _d
 		d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");  // _s
-		// d_r = StringUtil::replaceAll(l.texNorm,"_d.","_r.");  // _r  todo: ter rough tex
+		// d_r = StringUtil::replaceAll(l.texNorm,"_d.","_r.");  // _r
+		//  specular  ----
 		n_n = l.texNorm;  // _n
+		n_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");  // _s
 
 
 		auto tex = texMgr->createOrRetrieveTexture(d_d,
@@ -113,16 +117,26 @@ void CScene::CreateTerrain1(int n)
 			tdb->setSamplerblock( TERRA_DETAIL0_NM + i, sb );
 		}
 
-		/** // todo: _r _m terrain textures..
+		/* // todo: _r rough terrain textures..
 		tex = texMgr->createOrRetrieveTexture( "white.png", //d_r,
 			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 		if (tex)
 		{	tdb->setTexture( TERRA_DETAIL_ROUGHNESS0 + i, tex );
 			tdb->setSamplerblock( TERRA_DETAIL_ROUGHNESS0 + i, sb );
-		}/**/
-		if (PATHS::FileExists(path + d_s))  // for emissive_terrain
+		}*/
+		
+		//  find _s  for specular, reflective (metal) or emissive_terrain
+		fname = d_s;
+		if (!PATHS::FileExists(path + fname))
+		{	fname = n_s;
+			if (!PATHS::FileExists(path + fname))
+			{	fname = d_d;
+				// LogO("Ter diff: "+d_d+"  _s from: "+fname);
+		}	}
+		//if (par..
+		if (PATHS::FileExists(path + fname))
 		{
-			tex = texMgr->createOrRetrieveTexture(d_s,
+			tex = texMgr->createOrRetrieveTexture(fname,
 				GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 			if (tex)
 			{	tdb->setTexture( TERRA_DETAIL_METALNESS0 + i, tex );
@@ -134,18 +148,26 @@ void CScene::CreateTerrain1(int n)
 			sc = bTripl ? 1.f / l.tiling : fTer / l.tiling;
 		tdb->setDetailMapOffsetScale( i, Vector4(of,of, sc,sc) );
 		
-		//  find mat params from presets
+		//  find mat params from presets  ----
 		auto s = d_d;  s = s.substr(0, s.find_first_of('.'));
 		auto pt = data->pre->GetTer(s);
 		if (!pt)
 			LogO("Ter mtr error! not in presets: "+d_d);
 		else
-		{	tdb->setMetalness(i, pt->metal);  // fresnel, specular ?..
+		{	tdb->setMetalness(i, pt->metal);
 			tdb->setRoughness(i, pt->rough);
-			LogO("* Ter lay: "+d_d+" met:"+fToStr(pt->metal)+
+			tdb->setDiffuse(Vector3(td.clrDiff.x, td.clrDiff.y, td.clrDiff.z));
+		
+		// todo: diffuse, fresnel, specular, emissive color ?.. gui
+			// tdb->setSpecular( toV3(spec) * (!one ? 1.f : gc.gloss) );  // todo:
+			// tdb->setFresnel( Vector3::UNIT_SCALE * gc.fresnel, false );
+			LogO("* Ter lay: "+d_d+"  _s from: "+fname+"  met:"+fToStr(pt->metal)+
 				"  ro: "+fToStr(pt->rough)+(pt->reflect ? "  refl" : ""));
-			if (pt->reflect && app->mCubeReflTex)
-				tdb->setTexture( TERRA_REFLECTION, app->mCubeReflTex );  // par
+			
+			if (app->mCubeReflTex && td.reflect != -1 &&  // disable
+				(td.reflect == 1 ||  // force
+				 (pt->reflect && td.reflect == 0)))  // whole auto, from layers
+				tdb->setTexture( TERRA_REFLECTION, app->mCubeReflTex );
 		}
 	}
 
@@ -176,6 +198,7 @@ void CScene::CreateTerrain1(int n)
 	mTerra->mtrName = mtrName;
 	// mTerra->setCustomSkirtMinHeight(0.8f); //?-
 	mTerra->setCastShadows( false );
+	mTerra->tDb = tdb;
 
 	// if (upd)  //  ed update ter only
 	// 	ters[n] = mTerra;
@@ -209,6 +232,9 @@ void CScene::CreateTerrain1(int n)
 
 	// if (mTerra->m_blendMapTex)
 	tdb->setTexture( TERRA_DETAIL_WEIGHT, mTerra->blendmap.texture );  //**
+	#ifdef SR_EDITOR
+	tdb->setBlendmapTest( app->gui->bDebugBlend );
+	#endif
 
 
 	db = hlmsMgr->getDatablock( mtrName );
