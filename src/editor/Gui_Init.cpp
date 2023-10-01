@@ -206,7 +206,7 @@ void CGui::InitGui()
 	
 	if (!PATHS::FileExists(usrPrv))
 		Copy(cfgB+"png", usrPrv);
-	app->prvBrushes.Load(usrPrv,1);  // fixme.. doesnt show
+	// app->prvBrushes.Load(usrPrv,1);  // doesnt show
 
 	btnBrushesLoad(0);
 	// GuiShortcut(WND_Edit, TAB_Terrain,2);  // test, shows
@@ -325,9 +325,9 @@ void CGui::InitGui()
 	imgTexDiff = fImg("TerImgDiff");
 	Tab(tabsHmap, "TabHMapSize", tabHmap);  valHmapMB = fTxt("TerHmapMB");
 
-	// sv= &svTerNormScale;  sv->Init("TerNormScale", &sc->td.normScale,  0.01f,3.f, 1.f, 1,3);  sv->DefaultF(1.f);  Sev(TerPar);
+		// sv= &svTerNormScale;  sv->Init("TerNormScale", &sc->td.normScale,  0.01f,3.f, 1.f, 1,3);  sv->DefaultF(1.f);  Sev(TerPar);
 	// sv= &svTerSpecPow;    sv->Init("TerSpecPow",   &sc->td.specularPow,   0.2f,128.f,2.f, 1,4);  sv->DefaultF(32.f); Sev(TerPar);
-	sv= &svTerSpecPowEm;  sv->Init("TerSpecPowEm", &f, 0.5f,4.f,  1.f, 1,3);  sv->DefaultF(2.f);  Sev(TerPar);
+	// sv= &svTerSpecPowEm;  sv->Init("TerSpecPowEm", &f, 0.5f,4.f,  1.f, 1,3);  sv->DefaultF(2.f);  Sev(TerPar);
 
 	//  horiz, collis
 	sv= &svTerHoriz;	sv->Init("TerHoriz",	&i,    0, 2);  sv->DefaultI(0);  Sev(TerHoriz);
@@ -558,7 +558,6 @@ void CGui::InitGui()
 	sv= &svGravity;		sv->Init("Gravity",		&sc->gravity,   2.f,20.f, 1.5f, 2,4);  sv->DefaultF(9.81f);
 	ck= &ckDenyReversed;	ck->Init("DenyReversed",	&sc->denyReversed);
 	ck= &ckTiresAsphalt;	ck->Init("TiresAsphalt",	&sc->asphalt);
-	ck= &ckTerrainEmissive;	ck->Init("TerrainEmissive",	&b);
 	ck= &ckNoWrongChks;		ck->Init("NoWrongChks",		&sc->noWrongChks);
 	txtEdInfo = fTxt("EdInfo");
 	

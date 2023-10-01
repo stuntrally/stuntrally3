@@ -35,6 +35,7 @@
 #include <OgreManualObject.h>
 #include <OgreViewport.h>
 #include <OgreMaterialManager.h>
+#include <OgreGpuResource.h>
 #include <OgreResourceGroupManager.h>
 #include <OgreSceneNode.h>
 #include <OgreMeshManager2.h>
@@ -221,7 +222,18 @@ void App::NewCommon(bool onlyTerVeget)
 	ResourceGroupManager::getSingleton().addResourceLocation(resTrk, "FileSystem");
 
 	if (!onlyTerVeget)
-		MinimizeMemory();
+		MinimizeMemory();  // !
+
+
+	//  meh, works
+	for (int i=0; i<2; ++i)
+		prvBrushes.Load(PATHS::UserConfigDir()+"/brushes.png",1);
+
+	//  todo:  preload 2d tex, all?  gui, particles,..
+	// auto* texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
+	// TextureGpu *tex = texMgr->createOrRetrieveTexture("stuntrally-logo.jpg",
+	// 	GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
+	// tex->scheduleTransitionTo( GpuResidency::Resident );
 }
 
 ///  Load

@@ -275,8 +275,8 @@ void CGui::btnBrushesLoad(WP wp)
 	app->brSets.Load(PATHS::UserConfigDir()+"/brushes.ini");
 	if (wp)
 		app->GenBrushesPrv();
-	// else  // at start
-	// 	app->prvBrushes.Load(PATHS::UserConfigDir()+"/brushes.png",1);
+	else  // at start
+		app->prvBrushes.Load(PATHS::UserConfigDir()+"/brushes.png",1);
 	
 	UpdBrushesImgs();
 }

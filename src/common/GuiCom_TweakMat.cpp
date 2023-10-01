@@ -202,6 +202,7 @@ void CGuiCom::updTweakMtr()
 	f = twk.db->getClearCoatRoughness();  twk.fClearRough = f;  twk.svClearRough.Upd();
 
 	f = twk.db->getNormalMapWeight();  twk.fBumpScale = f;  twk.svBumpScale.Upd();
+	f = twk.db->getTransparency();  twk.fTransp = f;  twk.svTransp.Upd();
 
 	for (i=0; i < 3; ++i)
 	{
