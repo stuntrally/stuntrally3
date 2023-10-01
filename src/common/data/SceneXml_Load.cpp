@@ -333,8 +333,10 @@ bool Scene::LoadTerData(TerData& td, XMLElement* e)
 	a = e->Attribute("posX");		if (a)  td.posX = s2r(a);
 	a = e->Attribute("posZ");		if (a)  td.posZ = s2r(a);
 
+	a = e->Attribute("diff");		if (a)  td.clrDiff = s2v(a);
 	a = e->Attribute("emissive");	if (a)  td.emissive = s2i(a)>0;
-	// a = e->Attribute("specPow");	if (a)  td.specularPow = s2r(a);
+	a = e->Attribute("reflect");	if (a)  td.reflect = s2i(a);
+	// a = e->Attribute("specPow");	if (a)  td.specularPow = s2r(a);  // roughness?
 	a = e->Attribute("specPowEm");	if (a)  td.specularPowEm = s2r(a);
 
 	a = e->Attribute("horiz");		if (a)  td.iHorizon = s2i(a);

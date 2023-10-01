@@ -73,10 +73,13 @@ public:
 	void UpdLayers();  // tripl
 
 	//  📊 graphics options
+	//  todo:?  not used per layer, whole terrain from options
 	//  which should have triplanar most (e.g. high slope mountains)
 	int triplanarLayer1 = 8, triplanarLayer2 = 8, triplCnt = 0;  // off
 	// float normScale;  // scale terrain normals -not used-
 
+	Ogre::Vector3 clrDiff{1.f,1.f,1.f};
+	int reflect = 0;  // (metal)  -1 disable  0 auto from layers  1 force
 	bool emissive = false;  // emissive light from specular
 	// float specularPow;  // -not used-
 	float specularPowEm = 2.f;  // specular power (exponent)

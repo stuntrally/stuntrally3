@@ -325,7 +325,17 @@ void CGui::InitGui()
 	imgTexDiff = fImg("TerImgDiff");
 	Tab(tabsHmap, "TabHMapSize", tabHmap);  valHmapMB = fTxt("TerHmapMB");
 
-		// sv= &svTerNormScale;  sv->Init("TerNormScale", &sc->td.normScale,  0.01f,3.f, 1.f, 1,3);  sv->DefaultF(1.f);  Sev(TerPar);
+	//  diff clr
+	sv= &svTerDiffR;  sv->Init("TerDiffR", &f, 0.f,2.f,  1.5f, 1,3);  sv->DefaultF(1.f);  //Sev(TerPar);
+	sv= &svTerDiffG;  sv->Init("TerDiffG", &f, 0.f,2.f,  1.5f, 1,3);  sv->DefaultF(1.f);  //Sev(TerPar);
+	sv= &svTerDiffB;  sv->Init("TerDiffB", &f, 0.f,2.f,  1.5f, 1,3);  sv->DefaultF(1.f);  //Sev(TerPar);
+	//  emis, refl
+	ck= &ckTerrainEmissive;	ck->Init("TerrainEmissive",	&b);
+	sv= &svTerReflect;
+	sv->strMap[-1] = TR("#{No}");  sv->strMap[0] = TR("#{auto}");  sv->strMap[1] = TR("#{Yes}");
+						sv->Init("TerReflect", &i,  -2,1);  sv->DefaultI(0);  //Sev(TerPar);
+
+	// sv= &svTerNormScale;  sv->Init("TerNormScale", &sc->td.normScale,  0.01f,3.f, 1.f, 1,3);  sv->DefaultF(1.f);  Sev(TerPar);
 	// sv= &svTerSpecPow;    sv->Init("TerSpecPow",   &sc->td.specularPow,   0.2f,128.f,2.f, 1,4);  sv->DefaultF(32.f); Sev(TerPar);
 	// sv= &svTerSpecPowEm;  sv->Init("TerSpecPowEm", &f, 0.5f,4.f,  1.f, 1,3);  sv->DefaultF(2.f);  Sev(TerPar);
 

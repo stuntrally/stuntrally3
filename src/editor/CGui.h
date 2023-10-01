@@ -151,8 +151,12 @@ public:
 	
 	//  tri size
 	SlV(TerTriSize);  int UpdTxtTerSize(float mul=1.f);
+	//  clr
+	SlV(TerDiffR);  SlV(TerDiffG);  SlV(TerDiffB);
 	//  ext
-	SV /*svTerNormScale, svTerSpecPow,*/ svTerSpecPowEm;  void slTerPar(SV*);
+	/*SV svTerNormScale, svTerSpecPow, svTerSpecPowEm;*/  void slTerPar(SV*);
+	CK(TerrainEmissive);
+	SlV(TerReflect);
 	
 	SlV(TerHoriz);  SlV(TerPosX);  SlV(TerPosZ);
 	//  collis, borders
@@ -344,7 +348,7 @@ public:
 	
 	//  🚗 Game  --------------------
 	SV svDamage, svWind, svGravity;
-	CK(DenyReversed);  CK(TiresAsphalt);  CK(TerrainEmissive);
+	CK(DenyReversed);  CK(TiresAsphalt);
 	CK(NoWrongChks);
 	void SldUpd_Game();
 	//  sound

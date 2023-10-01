@@ -131,8 +131,11 @@ bool Scene::SaveXml(String file)
 			if (td.posX != 0.f)  ter->SetAttribute("posX",	toStrC( td.posX ));
 			if (td.posZ != 0.f)  ter->SetAttribute("posZ",	toStrC( td.posZ ));
 
+			ter->SetAttribute("diff",	toStrC( td.clrDiff ));
 			if (td.emissive)
 				ter->SetAttribute("emissive",	td.emissive ? 1 : 0);
+			if (td.reflect)
+				ter->SetAttribute("reflect",	td.reflect);
 			// if (td.specularPow != 32.f)
 			// 	ter->SetAttribute("specPow",	toStrC( td.specularPow ));
 			if (td.specularPowEm != 2.f)

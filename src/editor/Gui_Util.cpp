@@ -111,8 +111,14 @@ void CGui::SetGuiTerFromXml()
 	svTerTriSize.UpdF(&td().fTriangleSize);  //`
 	UpdTxtTerSize();
 	// svTerNormScale.Upd();  svTerSpecPow.Upd();
+	
+	svTerDiffR.UpdF(&td().clrDiff.x);
+	svTerDiffG.UpdF(&td().clrDiff.y);
+	svTerDiffB.UpdF(&td().clrDiff.z);
+
 	ckTerrainEmissive.Upd(&td().emissive);
-	svTerSpecPowEm.UpdF(&td().specularPowEm);
+	svTerReflect.UpdI(&td().reflect);
+	// svTerSpecPowEm.UpdF(&td().specularPowEm);
 
 	tabTerLayer(tabsTerLayers, idTerLay);
 	updTersTxt();
