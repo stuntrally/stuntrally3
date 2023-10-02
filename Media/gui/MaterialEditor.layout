@@ -3,7 +3,7 @@
 
 	<Widget type="Window" skin="WindowC" position="20 696 800 600" align="Center" layer="Overlapped" name="MaterialsWnd">
 		<Property key="MinSize" value="500 400"/>
-		<Property key="Caption" value="#9090D0#{MaterialProperties}"/>
+		<Property key="Caption" value="#9090D0#{MaterialEditor}"/>
 		<Property key="Alpha" value="0.4"/>
 		<Property key="Snap" value="true"/>
 
@@ -31,6 +31,20 @@
 			<Property key="Static" value="true"/>
 			<Property key="ReadOnly" value="true"/>
 			<Property key="InheritsAlpha" value="false"/>
+		</Widget>
+
+		<!-- save -->
+		<Widget type="Button" skin="Button" position="372 2 126 20" name="MtrSave">
+			<Property key="Caption" value="#{RplSave}"/>
+			<Property key="Colour" value="0.5 0.7 1.0"/>
+			<Property key="TextColour" value="0.6 0.8 1.0"/>
+			<Widget type="ImageBox" skin="ImageBox" position="0 2 20 20">
+				<Property key="ImageCoord" value="0 768 128 128"/>
+				<Property key="Colour" value="0.5 0.7 1.0"/>
+				<Property key="Alpha" value="0.6"/>
+				<Property key="ImageTexture" value="gui_icons.png"/>
+				<Property key="NeedMouse" value="false"/>
+			</Widget>
 		</Widget>
 
 		<Widget type="TabControl" skin="TabControl" position="8 12 600 570" name="TabWndMat">
@@ -172,16 +186,16 @@
 
 					<!-- Metal  ***  -->
 					<Widget type="TextBox" skin="TextBox" position="0 230 118 20">
-						<Property key="TextColour" value="0.6 1.0 1.0"/>
+						<Property key="TextColour" value="0.5 0.7 0.7"/>
 						<Property key="Caption" value="#{ColMetalness}"/>
 						<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
 					</Widget>
 					<Widget type="Slider" skin="Slider" position="200 230 350 17" name="Metal">
-						<Property key="Colour" value="0.6 1.0 1.0"/>
+						<Property key="Colour" value="0.5 0.7 0.7"/>
 						<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
 					</Widget>
 					<Widget type="EditBox" skin="EditBox" position="120 230 75 20" name="MetalEdit">
-						<Property key="TextColour" value="0.6 1.0 1.0"/>
+						<Property key="TextColour" value="0.5 0.7 0.7"/>
 						<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
 					</Widget>
 
@@ -546,7 +560,7 @@
 						<Property key="NeedMouse" value="false"/>
 					</Widget>
 				</Widget>
-				<Widget type="Button" skin="Button" position="202 62 156 24" name="MtrSave">
+				<!-- <Widget type="Button" skin="Button" position="202 62 156 24" name="MtrSave">
 					<Property key="Caption" value="#{RplSave}"/>
 					<Property key="Colour" value="0.5 0.7 1.0"/>
 					<Property key="TextColour" value="0.6 0.8 1.0"/>
@@ -557,7 +571,7 @@
 						<Property key="ImageTexture" value="gui_icons.png"/>
 						<Property key="NeedMouse" value="false"/>
 					</Widget>
-				</Widget>
+				</Widget> -->
 				<Widget type="Button" skin="Button" position="402 62 156 24" name="MtrSaveAll">
 					<Property key="Caption" value="#{RplSave} #{RplAll}"/>
 					<Property key="Colour" value="0.7 0.7 1.0"/>

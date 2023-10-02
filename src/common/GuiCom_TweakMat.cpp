@@ -125,6 +125,7 @@ void CGuiCom::InitGuiTweakMtr()
 			auto txt = fTxt(s+"Name");  txt->setTextColour(c);
 			sv->setClr(c);
 			if (!csDetNames[i][x].empty())  txt->setCaption(csDetNames[i][x]);
+			else  txt->setCaption("");
 		}
 		for (i=0; i < 3; ++i)
 		{	auto s = "User" + toStr(i) + toStr(x);
@@ -134,6 +135,7 @@ void CGuiCom::InitGuiTweakMtr()
 			auto txt = fTxt(s+"Name");  txt->setTextColour(c);
 			sv->setClr(c);
 			if (!csUserNames[i][x].empty())  txt->setCaption(csUserNames[i][x]);
+			else  txt->setCaption("");
 		}
 	}
 	
@@ -387,6 +389,7 @@ void CGuiCom::GetTweakMtr()
 	vsMaterials.push_back("#FFFF00    ---  o O   Pipe  O o  ---");
 	GetMaterialsMat(path+"pipe.material",0);
 	vsMaterials.push_back("#807010  -----===  Road  ===-----");
+	GetMaterialsJson(path+"road.material.json",0);
 	GetMaterialsMat(path+"road.material",0);
 
 	vsMaterials.push_back("#808080  ----[]  objects static  []----");
