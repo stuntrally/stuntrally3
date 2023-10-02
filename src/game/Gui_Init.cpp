@@ -86,10 +86,11 @@ void CGui::InitGui()
 
 	//  Tabs  --------
 	Tab tab,sub;
-	fTabW("TabWndGame");    app->mWndTabsGame = tab;  Tev(tab, Game);
-	fTabW("TabWndReplays"); app->mWndTabsRpl = tab;
-	fTabW("TabWndHelp");    app->mWndTabsHelp = tab;
-	fTabW("TabWndOptions"); app->mWndTabsOpts = tab;
+	fTabW("TabWndGame");     app->mWndTabsGame = tab;  Tev(tab, Game);
+	fTabW("TabWndReplays");  app->mWndTabsRpl = tab;
+	fTabW("TabWndOptions");  app->mWndTabsOpts = tab;
+	fTabW("TabWndHelp");     app->mWndTabsHelp = tab;
+	fTabW("TabWndMat");      app->mWndTabsMat = tab;
 
 	//  get sub tabs
 	vSubTabsGame.clear();
@@ -103,6 +104,12 @@ void CGui::InitGui()
 	{
 		sub = (Tab)gcom->FindSubTab(app->mWndTabsOpts->getItemAt(i));
 		vSubTabsOpts.push_back(sub);
+	}
+	vSubTabsMat.clear();
+	for (i=0; i < app->mWndTabsMat->getItemCount(); ++i)
+	{
+		sub = (Tab)gcom->FindSubTab(app->mWndTabsMat->getItemAt(i));
+		vSubTabsMat.push_back(sub);
 	}
 
 	if (pSet->iMenu >= MN_Tutorial && pSet->iMenu <= MN_Chall)

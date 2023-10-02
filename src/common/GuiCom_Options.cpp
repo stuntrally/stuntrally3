@@ -10,14 +10,11 @@
 #include "Grass.h"
 #ifndef SR_EDITOR
 	#include "game.h"
-	// #include "SplitScreen.h"
 #endif
+#include "CGui.h"
 #include "Slider.h"
-// #include "WaterRTT.h"
 #include "Terra.h"
 #include <OgreCamera.h>
-// #include <OgreMaterialManager.h>
-// #include <OgreSceneNode.h>
 #include <MyGUI.h>
 using namespace MyGUI;
 using namespace Ogre;
@@ -33,6 +30,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	SV* sv;  Ck* ck;  int i;
 
 	BtnC("Quit", btnQuit);  bnQuit = btn;
+	BtnC("MatEditor", btnMatEditor);
 	
 	//  🧊 Detail, far geometry
 	sv= &svLodBias;		sv->Init("LodBias",		&pSet->lod_bias,	0.f,4.f, 1.5f);  SevC(LodBias);  sv->DefaultF(1.f);
@@ -282,19 +280,28 @@ void CGuiCom::btnReflApply(WP)
 //  🌊 water  todo
 void CGuiCom::chkWater(Ck*)
 {
-	// app->scn->mWaterRTT->setReflect(pSet->water_reflect);
-	// app->scn->mWaterRTT->setRefract(pSet->water_refract);
-	// app->scn->changeShadows();
-	// app->scn->mWaterRTT->recreate();
+	// setReflect(pSet->water_reflect);
+	// setRefract(pSet->water_refract);
+	// recreate();
 }
 
 void CGuiCom::slWaterSize(SV*)
 {
-	// app->scn->mWaterRTT->setRTTSize(ciShadowSizesA[pSet->water_rttsize]);
-	// app->scn->mWaterRTT->recreate();
+	// setRTTSize(ciShadowSizesA[pSet->water_rttsize]);
+	// recreate();
 }
 
 void CGuiCom::btnWaterApply(WP)
 {
 	//app->bRecreateFluidsRTT = 1;  // fixme: crash-
+}
+
+
+void CGuiCom::btnMatEditor(WP)
+{
+#ifdef SR_EDITOR
+	app->gui->GuiShortcut(WND_Materials, 1);
+#else
+	app->gui->GuiShortcut(MN_Materials, 1);
+#endif
 }

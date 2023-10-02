@@ -387,7 +387,7 @@ void CGui::GuiShortcut(WND_Types wnd, int tab, int subtab)
 		case WND_Edit:		mWndTabs = app->mWndTabsEdit;  subt = &vSubTabsEdit;  break;
 		case WND_Help:		mWndTabs = app->mWndTabsHelp;  subt = &vSubTabsHelp;  break;
 		case WND_Options:	mWndTabs = app->mWndTabsOpts;  subt = &vSubTabsOpts;  break;
-		case WND_Materials:	subt = &vSubTabsOpts;  break;  // fixme
+		case WND_Materials:	mWndTabs = app->mWndTabsMat;   subt = &vSubTabsMat;  break;
 		default:            mWndTabs = app->mWndTabsTrack; subt = &vSubTabsTrack; break;
 	}
 	if (wnd != WND_Edit)

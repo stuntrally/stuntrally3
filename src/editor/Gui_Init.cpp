@@ -86,11 +86,11 @@ void CGui::InitGui()
 	
 	//  Tabs  --------
 	TabPtr tab,sub;
-	fTabW("TabWndTrack"); app->mWndTabsTrack = tab;
-	fTabW("TabWndEdit");  app->mWndTabsEdit = tab;
-	fTabW("TabWndOpts");  app->mWndTabsOpts = tab;
-	fTabW("TabWndHelp");  app->mWndTabsHelp = tab;
-	// fTabW("TabWndMat");   app->mWndTabsMat = tab;
+	fTabW("TabWndTrack");  app->mWndTabsTrack = tab;
+	fTabW("TabWndEdit");   app->mWndTabsEdit = tab;
+	fTabW("TabWndOpts");   app->mWndTabsOpts = tab;
+	fTabW("TabWndHelp");   app->mWndTabsHelp = tab;
+	fTabW("TabWndMat");    app->mWndTabsMat = tab;
 
 	//  get sub tabs
 	vSubTabsTrack.clear();
@@ -118,12 +118,12 @@ void CGui::InitGui()
 		sub = gcom->FindSubTab(app->mWndTabsOpts->getItemAt(u));
 		vSubTabsOpts.push_back(sub);
 	}
-	/*vSubTabsMat.clear();  // todo
+	vSubTabsMat.clear();
 	for (u=0; u < app->mWndTabsMat->getItemCount(); ++u)
 	{
 		sub = gcom->FindSubTab(app->mWndTabsMat->getItemAt(u));
 		vSubTabsMat.push_back(sub);
-	}*/
+	}
 
 	///  🎛️ Gui common init  ---
 	InitMainMenu();
@@ -324,6 +324,7 @@ void CGui::InitGui()
 
 	imgTexDiff = fImg("TerImgDiff");
 	Tab(tabsHmap, "TabHMapSize", tabHmap);  valHmapMB = fTxt("TerHmapMB");
+	Btn("TerUpdateLight", btnUpdateLayers);
 
 	//  diff clr
 	sv= &svTerDiffR;  sv->Init("TerDiffR", &f, 0.f,2.f,  1.5f, 1,3);  sv->DefaultF(1.f);  //Sev(TerPar);

@@ -200,10 +200,11 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab)
 	std::vector<TabControl*>* subt = 0;
 	
 	switch (menu)
-	{	case MN_Replays:  mWndTabs = app->mWndTabsRpl;  break;
-		case MN_Help:     mWndTabs = app->mWndTabsHelp;  break;
-		case MN_Options:  mWndTabs = app->mWndTabsOpts;  subt = &vSubTabsOpts;  break;
-		default:          mWndTabs = app->mWndTabsGame;  subt = &vSubTabsGame;  break;
+	{	case MN_Replays:   mWndTabs = app->mWndTabsRpl;  break;
+		case MN_Help:      mWndTabs = app->mWndTabsHelp;  break;
+		case MN_Options:   mWndTabs = app->mWndTabsOpts;  subt = &vSubTabsOpts;  break;
+		case MN_Materials: mWndTabs = app->mWndTabsMat;   subt = &vSubTabsMat;  break;
+		default:           mWndTabs = app->mWndTabsGame;  subt = &vSubTabsGame;  break;
 	}
 	toggleGui(false);
 

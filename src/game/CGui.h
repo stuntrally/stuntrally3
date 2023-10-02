@@ -61,7 +61,7 @@ public:
 	void UpdGuiAfterPreset();
 
 	Txt valTrkNet =0;
-	std::vector<Tab> vSubTabsGame, vSubTabsOpts;
+	std::vector<Tab> vSubTabsGame, vSubTabsOpts, vSubTabsMat;
 	GuiPopup* popup =0;  // msg with edits
 
 	//  Gui util

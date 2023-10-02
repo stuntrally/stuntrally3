@@ -226,6 +226,7 @@ public:
 	void slTweakMtr(SV*), updTweakMtr();
 	Ed edMtrFind =0;  void editMtrFind(Ed);
 	
+	void btnMatEditor(WP);
 	void btnMtrLoad(WP), btnMtrSave(WP), btnMtrSaveAll(WP);
 
 	struct TwkMtr  // adjust sld

@@ -51,6 +51,11 @@
 			<Property key="Colour" value="0.73 0.88 1"/>
 			<Property key="SmoothShow" value="false"/>
 			<Widget type="TabItem" skin="" position="2 24 614 472">
+				<Property key="Caption" value="#FFE0C0&lt;#{BackMenu}"/>
+				<Property key="Colour" value="1 0.6 0.2"/>
+			</Widget>
+
+			<Widget type="TabItem" skin="" position="2 24 614 472">
 				<Property key="Caption" value="#B0F0FF#{InputMain}"/>
 				<Property key="InheritsAlpha" value="false"/>
 

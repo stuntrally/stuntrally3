@@ -335,10 +335,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		 case key(B): gui->GuiShortcut(WND_Edit, TAB_Layers,0);  return;  //  B -Blendmap
 
 		case key(G):  gui->GuiShortcut(WND_Edit, TAB_Grass);     return;  // G Grasses  🌿
-		 case key(F): gui->GuiShortcut(WND_Edit, TAB_Grass,2);   return;  //  F -Channels
+		 case key(L): gui->GuiShortcut(WND_Edit, TAB_Grass,2);   return;  //  L -Channels
 
 		case key(V):  gui->GuiShortcut(WND_Edit, TAB_Veget);     return;  // V Vegetation  🌳🪨
-		//  case key(M): gui->GuiShortcut(WND_Edit, TAB_Veget,1);   return;  //  M -Models
+		 case key(M): gui->GuiShortcut(WND_Edit, TAB_Veget,1);   return;  //  M -Models
 
 		case key(U):  gui->GuiShortcut(WND_Edit, TAB_Surface);   return;  // U Surfaces  ⚫💭
 		case key(R):  gui->GuiShortcut(WND_Edit, TAB_Road);      return;  // R Road  🛣️
@@ -348,7 +348,8 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(A):  gui->GuiShortcut(WND_Options, 2);   return;  // A Graphics  📊
 
 		case key(E):  gui->GuiShortcut(WND_Options, 3);   return;  // E View /Settings  ⚙️
-		case key(M):  gui->GuiShortcut(WND_Materials, -1);   return;  // M Materials  🔧
+		case key(F):  gui->GuiShortcut(WND_Materials, -1);   return;  // F -Material editor
+		case key(K):  gui->GuiShortcut(WND_Options, 3, 3);   return;  // K -Tweak  🔧
 		
 		case key(I):  gui->GuiShortcut(WND_Help, 1);  return;  // I Input/help  📝
 		default:  break;
