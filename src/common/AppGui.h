@@ -99,6 +99,8 @@ public:
 
 	void MinimizeMemory();  // mtr,tex, reduce mem, each track load
 	// void setTightMemoryBudget(), setRelaxedMemoryBudget();
+	std::map<std::string, int> mapCommonTex;  // preload and don't unload
+	void InitCommonTex(), LoadCommonTex();
 
 
 	//  🆕 Init  ----------------

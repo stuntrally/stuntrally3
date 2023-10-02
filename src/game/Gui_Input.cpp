@@ -139,6 +139,7 @@ void CGui::CreateInputTab(int iTab, bool player,
 	{
 		std::string name = it->mName;
 		y = yHdr + yRow[name] * yAdd;
+		if (name == "Screenshot")  continue;  // fixme?
 
 		//  description label  ----------------
 		Txt desc = tabitem->createWidget<TextBox>("TextBox",

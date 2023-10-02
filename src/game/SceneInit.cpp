@@ -353,7 +353,7 @@ void App::LoadCleanUp()
 	// TextureGpuManager::getEntries() Singleton().unloadUnreferencedResources();
 	LogO("------  # Unload prev track res done");*/
 
-	MinimizeMemory();  // todo: car refl ?
+	MinimizeMemory();  // !
 
 	SetupCompositor();  //+ ok
 }

@@ -19,6 +19,7 @@
 #include <OgreTextureGpuManager.h>
 #include <OgrePixelFormatGpuUtils.h>
 #include <Vao/OgreVaoManager.h>
+#include <OgreTextureGpuManager.h>
 
 using namespace Ogre;
 using namespace std;
@@ -140,6 +141,9 @@ void AppGui::unloadUnusedTextures()
 			|| !entry.texture->isTexture()
 			|| entry.texture->isRenderToTexture()
 			|| entry.texture->isUav() //
+			|| mapCommonTex.find(name) != mapCommonTex.end()
+			// || name == "flare1.png"
+			// || name == "brushes.png" //-
 			)
 		{
 			// likely internal texture
@@ -173,6 +177,8 @@ void AppGui::MinimizeMemory()
 	}
 	catch( UnimplementedException & )
 	{	}	// Ignore. Vulkan doesn't implement this (yet?).
+
+	LoadCommonTex();  // !
 }
 
 #if 0
@@ -215,3 +221,32 @@ OGRE_ARCH_TYPE != OGRE_ARCHITECTURE_32
 	mTightMemoryBudget = false;
 }
 #endif
+
+
+//  
+//-----------------------------------------------------------------------------------
+void AppGui::InitCommonTex()
+{
+	auto& v = mapCommonTex;
+#ifndef SR_EDITOR  // game
+	v["background2.jpg"] = 1; //?
+	v["boost.png"] = 1;
+	v["flare1.png"] = 1;
+	v["mud.png"] = 1;
+	v["dust.png"] = 1;
+#endif
+	v["gui_icons.png"] = 1;
+	v["track_icons.png"] = 1;
+	v["stuntrally-logo.jpg"] = 1;  // to not flash white
+}
+
+void AppGui::LoadCommonTex()
+{
+	auto* texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
+	for (auto name : mapCommonTex)
+	{
+		TextureGpu *tex = texMgr->createOrRetrieveTexture(name.first,
+			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
+		tex->scheduleTransitionTo( GpuResidency::Resident );
+	}
+}
