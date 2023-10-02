@@ -556,6 +556,7 @@
 	<Tag name="Simple">Simple</Tag>
 	<!--  Screen  info  -->
 	<Tag name="NeedRestart">* need restart</Tag>
+	<Tag name="NotDone">not done yet, ToDo</Tag>
 	<Tag name="GraphicsRightHQ">By default better quality (less Fps) is on right. Marked with + if on left.</Tag>
 	<!--  Screen  vertical synchronisation  -->
 	<Tag name="VSync">VSync</Tag>
@@ -1319,7 +1320,7 @@
 	<!--  Tweak  -->
 	<Tag name="Graphs">Graphs</Tag>
 	<Tag name="Tweak">Tweak</Tag>
-	<Tag name="MaterialProperties">Material Properties</Tag>
+	<Tag name="MaterialEditor">Material Editor</Tag>
 	<Tag name="TweakUser">User</Tag>
 	<Tag name="TweakOriginal">Original</Tag>
 

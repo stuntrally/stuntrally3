@@ -57,7 +57,7 @@ public:
 	//  util
 	void toggleGui(bool toggle=false);
 	void GuiShortcut(WND_Types wnd, int tab, int subtab=-1), NumTabNext(int rel);
-	void btnEdTut(WP);
+	void btnEdTut(WP), btnMatEditor(WP);
 
 
 	//  👷 ed gui, status

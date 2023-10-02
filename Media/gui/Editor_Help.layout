@@ -137,10 +137,10 @@
 							<Property key="Caption" value="#{InputTrackScrn}"/>
 							<Property key="TextColour" value="0.5 0.66 0.8"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="396 132 368 20">
+						<!-- <Widget type="TextBox" skin="TextBox" position="396 132 368 20">
 							<Property key="TextColour" value="0.6 0.65 0.7"/>
 							<Property key="Caption" value="F12 - #{InputMapScreenshot}"/>
-						</Widget>
+						</Widget> -->
 					</Widget>
 	<!-- ................................................................................................................... -->
 					<Widget type="TabItem" skin="" position="2 24 754 444">
@@ -184,10 +184,10 @@
 							<Property key="Caption" value="#FFFF80 S  #{Sun}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="12 88 168 20">
-							<Property key="Caption" value="#A0D8A0 H  #{Terrain}"/>
+							<Property key="Caption" value="#A0D8A0 D  #{Terrain}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="28 108 152 20">
-							<Property key="Caption" value="#40E040 D  #{Brushes}"/>
+							<Property key="Caption" value="#40E040 H  #{Brushes}"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="12 136 168 20">
@@ -201,15 +201,15 @@
 							<Property key="Caption" value="#B0F040 G  #{Grasses}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="28 204 152 20">
-							<Property key="Caption" value="#70F070 F  #{Channels}"/>
+							<Property key="Caption" value="#70F070 L  #{Channels}"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="12 232 170 20">
 							<Property key="Caption" value="#80F0F0 V  #{Vegetation}"/>
 						</Widget>
-						<!-- <Widget type="TextBox" skin="TextBox" position="28 252 152 20">
+						<Widget type="TextBox" skin="TextBox" position="28 252 152 20">
 							<Property key="Caption" value="#80E0E0 M  #{Models}"/>
-						</Widget> -->
+						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="12 284 168 20">
 							<Property key="Caption" value="#A0A060 U  #{Surface}"/>
@@ -245,14 +245,14 @@
 							<Property key="Caption" value="#60A0FF E  #{Settings}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="204 234 154 20">
-							<Property key="Caption" value="#6868B0 K  #{Tweak}"/>
+							<Property key="Caption" value="#C090D0 K  #{Tweak}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="204 262 170 20">
 							<Property key="Caption" value="#FFFF60 I  #{InputHelp}"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="204 296 170 20">
-							<Property key="Caption" value="#C080C0 M  #{Materials}"/>
+							<Property key="Caption" value="#D0B0F0 F  #{MaterialEditor}"/>
 						</Widget>
 					</Widget>
 	<!-- ................................................................................................................... -->

@@ -84,3 +84,8 @@ void CGui::tabMainMenu(Tab tab, size_t id)
 	pSet->bMain = true;
 	app->gui->toggleGui(false);  // back to main
 }
+
+ void CGui::btnMatEditor(WP)
+ {
+	GuiShortcut(WND_Materials, -1);
+ }

@@ -477,6 +477,13 @@
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#C0C090#{Light}"/>
 
+						<Widget type="Button" skin="Button" position="624 164 124 36" name="TerUpdateLight">
+							<Property key="Caption" value="#{Update}"/>
+							<Property key="Colour" value="0.5 1.0 0.2"/>
+							<Property key="TextColour" value="0.5 1.0 0.2"/>
+							<Property key="Alpha" value="0.7"/>
+						</Widget>
+		
 						<!-- diff clr -->
 						<Widget type="TextBox" skin="TextBox" position="32 36 200 20">
 							<Property key="Caption" value="#{Diffuse} #{P_Red}"/>
@@ -524,7 +531,7 @@
 							<Property key="Caption" value="#{ColReflect}"/>
 							<Property key="TextColour" value="0.6 0.75 0.9"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="236 166 56 24" name="TerReflectText">
+						<Widget type="TextBox" skin="TextBox" position="236 166 56 24" name="TerReflectVal">
 							<Property key="Colour" value="0.5 0.65 0.8"/>
 							<Property key="TextColour" value="0.6 0.75 0.9"/>
 						</Widget>
