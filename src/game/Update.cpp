@@ -36,7 +36,7 @@ void App::UpdThr()
 		double dt = double(gtim.getMicroseconds()) * 0.000001;
 		gtim.reset();
 		
-		if (!isFocGui && !bLoading && !mGraphicsSystem->getQuit() && pGame)
+		if (!bLoading && !mGraphicsSystem->getQuit() && pGame)
 		{
 			bSimulating = true;
 			bool ret = pGame->OneLoop(dt);

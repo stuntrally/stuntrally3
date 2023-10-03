@@ -254,6 +254,15 @@ void App::update( float dt )
 		UpdCubeRefl();  // 🔮💫
 
 
+		//  🌧️ stop rain/snow when paused
+		if (scn->pr && scn->pr2 && pGame)
+		{
+			if (pGame->pause)
+				{	 scn->pr->setSpeedFactor(0.f);  scn->pr2->setSpeedFactor(0.f);  }
+			else{	 scn->pr->setSpeedFactor(1.f);  scn->pr2->setSpeedFactor(1.f);  }
+		}
+
+
 		//  📽️ replay forward,backward keys
 		if (bRplPlay)
 		{
