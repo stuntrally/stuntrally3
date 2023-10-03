@@ -86,6 +86,7 @@ int clrAspect(float asp, String* sa)
 //-----------------------------------------------------------------------------------------------------------
 void CGuiCom::InitGuiScreenRes()
 {
+	return;  /// todo: restore..
 	Ck* ck;
 	// ck= &ckVidFullscr;  ck->Init("FullScreen", &pSet->fullscreen);  CevC(VidFullscr);
 	// ck= &ckVidVSync;	ck->Init("VSync",      &pSet->vsync);		CevC(VidVSync);

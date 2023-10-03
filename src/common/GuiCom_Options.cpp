@@ -135,7 +135,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	// sv= &svLimitSleep; sv->Init("LimitSleep", &pSet->limit_sleep,  -2,20, 1.5f);  sv->DefaultI(-1);
 	
 	//  🖥️ Screen
-	ck= &ckVRmode;  ck->Init("VRmode", &pSet->vr_mode);
+	// ck= &ckVRmode;  ck->Init("VRmode", &pSet->vr_mode);  // todo:
 
 	//  💡 brightness
 	float bright = 1.f, contrast = 1.f;

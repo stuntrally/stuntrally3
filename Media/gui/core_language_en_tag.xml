@@ -552,6 +552,10 @@
 	<Tag name="Fullscreen">Fullscreen</Tag>
 	<Tag name="VRmode">VR Mode</Tag>
 	
+	<Tag name="Brightness">Brightness</Tag>
+	<Tag name="Contrast">Contrast</Tag>
+	<!-- <Tag name="Gamma">Gamma</Tag> -->
+
 	<Tag name="Complex">Complex</Tag>
 	<Tag name="Simple">Simple</Tag>
 	<!--  Screen  info  -->

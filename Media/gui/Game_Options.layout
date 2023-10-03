@@ -23,7 +23,7 @@
 					<Property key="SmoothShow" value="false"/>
 					<Widget type="TabItem" skin="" position="2 24 738 472">
 						<Property key="Caption" value="#B0F0FF#{InputMain}"/>
-						<Widget type="ImageBox" skin="ImageBox" position="32 56 96 96">
+						<!-- <Widget type="ImageBox" skin="ImageBox" position="32 56 96 96">
 							<Property key="ImageCoord" value="128 0 128 128"/>
 							<Property key="Alpha" value="1.0"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
@@ -52,35 +52,37 @@
 							<Property key="TextColour" value="0.7 0.85 1"/>
 							<Property key="Colour" value="0.6 0.8 1"/>
 							<Property key="FontName" value="font.big"/>
-						</Widget>
+						</Widget> -->
 
-						<Widget type="ImageBox" skin="ImageBox" position="32 236 96 96">
+						<Widget type="ImageBox" skin="ImageBox" position="32 36 96 96">
 							<Property key="ImageCoord" value="384 256 128 128"/>
 							<Property key="Alpha" value="0.9"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="164 244 322 24">
+						<Widget type="TextBox" skin="TextBox" position="164 44 322 24">
 							<Property key="Caption" value="#{GraphicsPreset} **"/>
 							<Property key="TextColour" value="0.7 1 1"/>
 							<Property key="FontName" value="font.big"/>
 							<Property key="TextShadow" value="true"/>
 						</Widget>
-						<Widget type="ComboBox" skin="ComboBox" position="164 280 190 32" name="CmbGraphicsAll">
+						<Widget type="ComboBox" skin="ComboBox" position="164 80 190 32" name="CmbGraphicsAll">
 							<Property key="Static" value="true"/>
 							<Property key="ReadOnly" value="true"/>
 							<Property key="Colour" value="0.4 0.9 0.9"/>
 							<Property key="TextColour" value="0.8 1 1"/>
 							<Property key="FontName" value="font.big"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="384 288 252 24">
+						<Widget type="TextBox" skin="TextBox" position="384 88 252 24">
 							<Property key="Caption" value="*#{NeedRestart}"/>
 							<Property key="TextColour" value="0.5 0.8 0.8"/>
 							<Property key="FontName" value="font.big"/>
 						</Widget>
-					</Widget>
+					<!-- </Widget>
+
 					<Widget type="TabItem" skin="" position="2 24 738 472" layer="Back">
-						<Property key="Caption" value="#60D0FF#{Video}"/>
-						<Widget type="Button" skin="CheckBox" position="32 48 176 24" name="VSync">
+						<Property key="Caption" value="#60D0FF#{Video}"/> -->
+						
+						<!-- <Widget type="Button" skin="CheckBox" position="32 48 176 24" name="VSync">
 							<Property key="Caption" value="#{VSync} **"/>
 							<Property key="TextColour" value="0.5 0.9 1"/>
 						</Widget>
@@ -93,7 +95,7 @@
 							<Property key="Colour" value="0.6 0.8 1.0"/>
 							<Property key="Static" value="true"/>
 							<Property key="ReadOnly" value="true"/>
-						</Widget>
+						</Widget> -->
 						<!--<Widget type="TextBox" skin="TextBox" position="396 48 264 24">
 							<Property key="TextColour" value="0.7 0.9 0.9"/>
 							<Property key="Alpha" value="0.6"/>
@@ -111,15 +113,16 @@
 							<Property key="TextColour" value="0.7 1 0.5"/>
 						</Widget>
 
-						<Widget type="Button" skin="CheckBox" position="364 156 190 24" name="VRmode">
-							<Property key="Caption" value="#{VRmode} *"/>
-							<Property key="TextColour" value="0.6 0.8 1"/>
-							<Property key="FontName" value="font.big"/>
-						</Widget>
+						<!-- <Widget type="Button" skin="CheckBox" position="364 156 190 24" name="VRmode">
+							<Property key="Caption" value="#{VRmode} * = #{NotDone}"/>
+							<Property key="TextColour" value="0.3 0.6 0.8"/>
+							<Property key="FontName" value="font.small"/>
+						</Widget> -->
 
 						<Widget type="TextBox" skin="TextBox" position="32 336 248 24">
-							<Property key="Caption" value="*#{Brightness}"/>
+							<Property key="Caption" value="#{Brightness}"/>
 							<Property key="TextColour" value="0.9 0.7 0.7"/>
+							<Property key="Alpha" value="0.8"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="296 336 48 24" name="BrightVal">
 							<Property key="TextColour" value="0.9 0.7 0.7"/>
@@ -128,8 +131,9 @@
 							<Property key="Colour" value="0.9 0.7 0.7"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="32 366 248 24">
-							<Property key="Caption" value="*#{Contrast}"/>
+							<Property key="Caption" value="#{Contrast}"/>
 							<Property key="TextColour" value="0.9 0.5 0.5"/>
+							<Property key="Alpha" value="0.8"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="296 366 48 24" name="ContrastVal">
 							<Property key="TextColour" value="0.9 0.5 0.5"/>
@@ -312,7 +316,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="252 296 170 20">
-							<Property key="Caption" value="#C080C0 M  #{Materials}"/>
+							<Property key="Caption" value="#C080C0 F  #{MaterialEditor}"/>
 						</Widget>
 					</Widget>
 				</Widget>
@@ -1355,7 +1359,7 @@
 
 
 			<Widget type="TabItem" skin="" position="2 24 794 562">
-				<Property key="Caption" value="#C090D0#{Tweak}"/>
+				<Property key="Caption" value="#7060B0#{Tweak}"/>
 				<Widget type="TabControl" skin="TabControl" position="16 15 744 500" name="SubTab">
 					<Property key="Colour" value="0.73 0.88 1"/>
 					<Property key="SmoothShow" value="false"/>
@@ -1363,9 +1367,9 @@
 					<Widget type="TabItem" skin="" position="2 24 738 472">
 						<Property key="Caption" value="#D0C0A0#{Other}"/>
 						<!-- fps -->
-						<Widget type="ImageBox" skin="ImageBox" position="362 58 30 30">
+						<Widget type="ImageBox" skin="ImageBox" position="2 58 30 30">
 							<Property key="ImageCoord" value="128 896 128 128"/>
-							<Property key="Alpha" value="0.8"/>
+							<Property key="Alpha" value="0.6"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="32 62 320 24" name="Fps">
@@ -1407,7 +1411,7 @@
 							<Property key="Caption" value="#{DevKeys}"/>
 						</Widget>
 
-						<Widget type="Button" skin="Button" position="376 54 300 28" name="MatEditor">
+						<Widget type="Button" skin="Button" position="376 404 300 28" name="MatEditor">
 							<Property key="Caption" value="#{MaterialEditor}"/>
 							<Property key="TextAlign" value="Center"/>
 							<Property key="TextColour" value="0.9 0.7 0.9"/>
