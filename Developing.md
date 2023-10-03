@@ -129,26 +129,28 @@ We use default `specular_workflow`, metallic workflow is simpler.
 Also texture keywords changed, all are optional:  
 `diffuse_map`, `normal_map`, `specular_map`, `roughness_map`, `emissive_map`.
 
-For terrain layer textures these parames are in `presets.xml` as `ro - roughness, me - metalness, re - reflection`.
+For terrain layer textures these parames are in `presets.xml` as:  
+`ro - roughness, me - metalness, re - reflection`.
 
 ### New continued
 
 All in code `Ogre/ogre-next/Components/Hlms/Pbs/src/OgreHlmsPbsDatablock.cpp`.  
 Datablock is basically what has all material parameters.  
 
-Editing files by hand is the one way, the other is using Material Editor (Alt-F) GUI,  
+Editing files by hand is one way, the better is using **Material Editor** (Alt-F) GUI,  
 saving and then applying / merging changes back to original files.  
 
 Main `.material` and `.material.json` **files** are in `/Media/materials/Pbs`.  
 Materials can be adjusted real-time in Material Editor (Alt-F): or in Options, button on tab **Tweak**. find material and use sliders etc.  
-_ToDo:_ this is the main tool, needs saving _all_ `.material.json` files.  
+_ToDo:_ this is the main tool, needs saving _all_ as `.material.json` files.  
 
 We now also use `.material.json` format, longer and more advanced.  
-A bit worse to edit by hand. Can be saved from GUI editor.  
+A bit worse to edit by hand. Can be saved from Material Editor GUI into `.json` files in:  
+`/home/user/.cache/stuntrally3/materials`
 
-In `.material.json` you can't inherit materials. (confirmed [here](https://forums.ogre3d.org/viewtopic.php?p=553712#p553712)).  
+In `.material.json` you can't inherit materials (confirmed [here](https://forums.ogre3d.org/viewtopic.php?p=553712#p553712)).  
 Need to duplicate whole e.g. for rivers.  
-Also if present, need to remove secion "reflection"  with `DynamicCubemap`, will crash otherwise, it is added by code.  
+Also if present, need to remove secion `"reflection"` with `DynamicCubemap`, will crash otherwise, it is added by code.  
 
 In `.material` scripts you can't set textures to wrap or other sampler configs but inheriting works.  
 

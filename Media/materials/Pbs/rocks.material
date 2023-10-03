@@ -609,9 +609,11 @@ hlms hexrock_metal pbs : rock_base
 	normal_map  hexrock_metal_norm.jpg
 	specular_map hexrock_metal_spec.jpg
 	// reflMap hexrock_metal_spec.jpg
-	// ambient 0.5 0.7 0.75
-	diffuse 1.05 1.1 0.95
-	specular 0.8 0.9 0.8 //20
+	diffuse 0.8 0.8 0.8
+	specular 0.3 0.35 0.35
+	roughness 0.3
+	fresnel 0.5
+	fresnel_coeff 0.3 0.37 0.4
 	// env_map true
 	// fresnel false
 	// refl_amount 0.1
