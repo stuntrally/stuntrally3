@@ -134,7 +134,7 @@ namespace Ogre
                 fogHparams(11,0.2,0,0),
                 fogColourSun( 0.99f, 0.99f, 0.98f, 1.f ),
                 fogColourAway( 0.74f, 0.87f, 1.0f, 1.f ),
-                fogFluidH( 1900.f, 1.f/17.f, 0.15f, 0 ),
+                fogFluidH(-1900.f, 1.f/17.f, 0.15f, 0 ),
                 fogFluidClr( 0.5f, 0.6f, 0.7f, 0.f)
             {
             }
@@ -201,8 +201,8 @@ namespace Ogre
 
         //**  new
         float globalTime = 0.f;
-        Vector4 fogFluidH;
-        Vector4 fogFluidClr;
+        Vector4 fogFluidH{-1900.f, 1.f/17.f, 0.15f, 0};
+        Vector4 fogFluidClr{0,0,0,0};
 
     protected:
         MaterialPtr         mMaterial;

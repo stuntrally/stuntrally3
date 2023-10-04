@@ -67,6 +67,7 @@ void PreviewTex::Destroy()
 //  2 load image from path
 bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8 a)
 {
+	LogO("PreviewTex: "+path);
 	if (!PATHS::FileExists(path))
 	{
 		LogO("PreviewTex: doesn't exist: "+path);
@@ -100,6 +101,7 @@ bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8
 			if (!prvTex)
 				Create(w, h, sName);
 		#endif
+		#if 1
 			//**  convert sRGB, fixes bad white clr  // todo- in shader, slow
 			// Ogre::Timer ti;
 			auto fmt = img.getPixelFormat();  // LogO(toStr(fmt)+" fmt prv");
@@ -118,10 +120,10 @@ bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8
 					p += 4;  // a
 				}
 			}
+		#endif
 			// LogO(String("::: Time prv sRGB: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");  // 44 ms  6 Fps
 				
 			//LogO("PRV: "+toStr(img.getWidth())+" "+toStr(img.getHeight())+"  "+path);
-			prvTex->scheduleTransitionTo( GpuResidency::Resident );
 
 			///----
 			auto pf = PFG_RGBA8_UNORM_SRGB;
@@ -147,6 +149,7 @@ bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8
 			}
 			mgr->removeStagingTexture( tex );  tex = 0;
 
+			prvTex->scheduleTransitionTo( GpuResidency::Resident );
 
 			/*if (img.getWidth() == prvTex->getWidth() &&
 				img.getHeight() == prvTex->getHeight())  // same dim

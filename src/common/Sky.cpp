@@ -329,7 +329,7 @@ void CScene::UpdSun(float dt)
 				fp.fog.r, fp.fog.g, fp.fog.b, fp.fog.a);
 		}else
 		{	atmo->fogFluidH = Vector4(
-				-900.f, 1.f/17.f, 0.15f, 0);
+				1900.f, 1.f/17.f, 0.15f, 0);
 			atmo->fogFluidClr = Vector4(
 				0,0,0,0);
 		}
