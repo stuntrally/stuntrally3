@@ -26,9 +26,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
-
-#ifndef _OgreTerra_H_
-#define _OgreTerra_H_
+#pragma once
 
 #include <OgrePrerequisites.h>
 #include <OgreMovableObject.h>
@@ -397,5 +395,3 @@ namespace Ogre
 		static void destroyTempTexture( TextureGpu *tmpRtt );
 	};
 }
-
-#endif

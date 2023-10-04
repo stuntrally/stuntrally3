@@ -1,6 +1,7 @@
 /*
+Modified by CryHam  under GPLv3
 -----------------------------------------------------------------------------
-This source file is part of OGRE-Next
+This source file WAS part of OGRE-Next
     (Object-oriented Graphics Rendering Engine)
 For the latest info, see http://www.ogre3d.org/
 
@@ -27,6 +28,7 @@ THE SOFTWARE.
 */
 #pragma once
 
+#include "OgreVector4.h"
 #include <OgreAtmosphere2Prerequisites.h>
 
 #include <OgreAtmosphereComponent.h>
@@ -100,11 +102,13 @@ namespace Ogre
             /// Value to send to SceneManager::setAmbientLight
             float envmapScale;
 
-            //  CryHam  new  ----
+            //**  fog new  ----
             float fogStartDistance;
             Ogre::Vector4 fogHcolor, fogHparams;
             Ogre::Vector4 fogColourSun;
             Ogre::Vector4 fogColourAway;
+            Ogre::Vector4 fogFluidH;
+            Ogre::Vector4 fogFluidClr;
 
             Preset() :
                 time( 0.0f ),
@@ -124,12 +128,14 @@ namespace Ogre
                 linkedSceneAmbientUpperPower( 0.1f * Math::PI ),
                 linkedSceneAmbientLowerPower( 0.01f * Math::PI ),
                 envmapScale( 1.0f ),
-                
+                //**  fog new  ----
                 fogStartDistance( 0.0f ),
                 fogHcolor(0.5,0.75,1,1),
                 fogHparams(11,0.2,0,0),
                 fogColourSun( 0.99f, 0.99f, 0.98f, 1.f ),
-                fogColourAway( 0.74f, 0.87f, 1.0f, 1.f )
+                fogColourAway( 0.74f, 0.87f, 1.0f, 1.f ),
+                fogFluidH( 1900.f, 1.f/17.f, 0.15f, 0 ),
+                fogFluidClr( 0.5f, 0.6f, 0.7f, 0.f)
             {
             }
 
@@ -195,6 +201,8 @@ namespace Ogre
 
         //**  new
         float globalTime = 0.f;
+        Vector4 fogFluidH;
+        Vector4 fogFluidClr;
 
     protected:
         MaterialPtr         mMaterial;

@@ -62,19 +62,19 @@ namespace Ogre
         float fogBreakMinBrightness;
         float fogBreakFalloff;
         
-		//  new, SR3 added, fog
+		//**  fog new, SR3 added
    		float fogStartDistance;
-
         float4 fogHcolor;
         float4 fogHparams;
         float4 fogColourSun;
         float4 fogColourAway;
+        float4 fogFluidH;
+        float4 fogFluidClr;
 
 		//**  new other
 		float globalTime;  // for water, grass, wind etc
-        // float gamma;    // not here, post color adjust..
 
-		// float2 windDir;   // x,z
+		// float2 windDir;   // x,z  new ..
 		// float windSpeed;  // freq, amp, turbulence-
         
         // todo:
@@ -449,19 +449,20 @@ namespace Ogre
         atmoGpu.packedParams2 = packedParams2;
         atmoGpu.packedParams3 = packedParams3;
 
-        atmoGpu.fogStartDistance = mPreset.fogStartDistance;
         atmoGpu.fogDensity = mPreset.fogDensity;
         atmoGpu.fogBreakMinBrightness = mPreset.fogBreakMinBrightness * mPreset.fogBreakFalloff;
         atmoGpu.fogBreakFalloff = -mPreset.fogBreakFalloff;
 
+        //**  fog new
+        atmoGpu.fogStartDistance = mPreset.fogStartDistance;
         atmoGpu.fogHcolor = mPreset.fogHcolor;
         atmoGpu.fogHparams = mPreset.fogHparams;
         atmoGpu.fogColourSun = mPreset.fogColourSun;
         atmoGpu.fogColourAway = mPreset.fogColourAway;
+        atmoGpu.fogFluidH   = fogFluidH;
+        atmoGpu.fogFluidClr = fogFluidClr;
 
-        //**  new
-        atmoGpu.globalTime = globalTime;
-        // atmoGpu.gamma = gamma;
+        atmoGpu.globalTime  = globalTime;
 
         mHlmsBuffer->upload( &atmoGpu, 0u, sizeof( atmoGpu ) );
     }

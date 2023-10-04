@@ -5,6 +5,7 @@
 #include "SceneXml.h"
 #include "CScene.h"
 #include "Road.h"  // sun rot
+#include "FluidsXml.h"
 #include "dbl.h"
 #ifdef SR_EDITOR
 	#include "CApp.h"
@@ -12,6 +13,7 @@
 #else
 	#include "CGame.h"
 	#include "settings.h"
+	#include "CarModel.h"
 #endif
 #include <OgreCommon.h>
 #include <OgreRoot.h>
@@ -305,13 +307,52 @@ void CScene::UpdSun(float dt)
 	if (atmo && dt > 0.f)
 		atmo->globalTime += dt;
 	
+
+	//  🌊 underwater
+	///~~  fluid fog, send params to shaders
+#ifndef SR_EDITOR  // game only
+	bool hasCars = !app->carModels.empty();
+	if (atmo &&  hasCars  && app->pSet->game.local_players == 1)  // todo: splitscreen
+	{
+		int fi = app->carModels[0]->iCamFluid;
+		float p = app->carModels[0]->fCamFl;
+		if (fi >= 0)
+		{	const FluidBox* fb = &app->scn->sc->fluids[fi];
+			const FluidParams& fp = app->scn->sc->pFluidsXml->fls[fb->id];
+
+			LogO(fToStr(fb->pos.y)+" "+fToStr(p)+"  clr "+
+			fToStr(fp.fog.r)+" "+fToStr(fp.fog.g)+" "+fToStr(fp.fog.b)+" "+fToStr(fp.fog.a));
+			atmo->fogFluidH = Vector4(
+				fb->pos.y +p /*+0.5f par? ofsH..*/, 1.f / fp.fog.dens, fp.fog.densH +p*0.5f, 0);
+
+			atmo->fogFluidClr = Vector4(
+				fp.fog.r, fp.fog.g, fp.fog.b, fp.fog.a);
+		}else
+		{	atmo->fogFluidH = Vector4(
+				-900.f, 1.f/17.f, 0.15f, 0);
+			atmo->fogFluidClr = Vector4(
+				0,0,0,0);
+		}
+	}
+
+	//  🌿 grass sphere pos ()
+	/*if (hasCars)
+	{
+		Real r = 1.7;  r *= r;  //par
+		const Vector3* p = &carModels[0]->posSph[0];
+		mFactory->setSharedParameter("posSph0", sh::makeProperty <sh::Vector4>(new sh::Vector4(p->x,p->y,p->z,r)));
+		p = &carModels[0]->posSph[1];
+		mFactory->setSharedParameter("posSph1", sh::makeProperty <sh::Vector4>(new sh::Vector4(p->x,p->y,p->z,r)));
+	}else
+	{	mFactory->setSharedParameter("posSph0", sh::makeProperty <sh::Vector4>(new sh::Vector4(0,0,500,-1)));
+		mFactory->setSharedParameter("posSph1", sh::makeProperty <sh::Vector4>(new sh::Vector4(0,0,500,-1)));
+	}*/
+
+#endif	
+
 	//  wind
 
-	//  grass
-
-	//  post
-	// if (atmo)
-	// 	atmo->gamma = app->pSet->gamma;
+	//  post, gamma-
 }
 
 
