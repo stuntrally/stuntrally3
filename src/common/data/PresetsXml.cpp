@@ -11,32 +11,32 @@ using namespace Ogre;
 
 const PSky* Presets::GetSky(std::string mtr)
 {
-	int id = isky[mtr]-1;
-	return id >= 0 ? &sky[id] : 0;
+	auto f = isky.find(mtr);
+	return f != isky.end() ? &sky[f->second -1] : 0;
 }
 
 const PTer* Presets::GetTer(std::string tex)
 {
-	int id = iter[tex]-1;
-	return id >= 0 ? &ter[id] : 0;
+	auto f = iter.find(tex);
+	return f != iter.end() ? &ter[f->second -1] : 0;
 }
 
 const PRoad* Presets::GetRoad(std::string mtr)
 {
-	int id = ird[mtr]-1;
-	return id >= 0 ? &rd[id] : 0;
+	auto f = ird.find(mtr);
+	return f != ird.end() ? &rd[f->second -1] : 0;
 }
 
 const PGrass* Presets::GetGrass(std::string mtr)
 {
-	int id = igr[mtr]-1;
-	return id >= 0 ? &gr[id] : 0;
+	auto f = igr.find(mtr);
+	return f != igr.end() ? &gr[f->second -1] : 0;
 }
 
 const PVeget* Presets::GetVeget(std::string mesh)
 {
-	int id = iveg[mesh]-1;
-	return id >= 0 ? &veg[id] : 0;
+	auto f = iveg.find(mesh);
+	return f != iveg.end() ? &veg[f->second -1] : 0;
 }
 
 
