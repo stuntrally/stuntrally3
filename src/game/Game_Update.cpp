@@ -182,8 +182,8 @@ void App::update( float dt )
 		if (isFocGui && !isTweak() && !bLoading &&
 			pSet->iMenu >= MN_Single && pSet->iMenu <= MN_Chall)
 		{
-			if (down)  fDn += dt;  else  if (pgdown)  fPgDn += dt;  else
-			if (up)    fUp += dt;  else  if (pgup)    fPgUp += dt;  else
+			if (keyDown)  fDn += dt;  else  if (keyPgDown)  fPgDn += dt;  else
+			if (keyUp)    fUp += dt;  else  if (keyPgUp)    fPgUp += dt;  else
 			{	fUp = 0.f;  fDn = 0.f;  fPgUp = 0.f;  fPgDn = 0.f;  }
 			if (fUp   > 0.f) {  gui->LNext(-d);   fUp = rpt;  }
 			if (fDn   > 0.f) {  gui->LNext( d);   fDn = rpt;  }
@@ -267,7 +267,7 @@ void App::update( float dt )
 		if (bRplPlay)
 		{
 			isFocRpl = ctrl;
-			bool le = down || pgdown, ri = up || pgup, ctrlN = ctrl && (le || ri);
+			bool le = keyDown || keyPgDown, ri = keyUp || keyPgUp, ctrlN = ctrl && (le || ri);
 			int ta = ((le || gui->bRplBack) ? -2 : 0) + ((ri || gui->bRplFwd) ? 2 : 0);
 			if (ta)
 			{	double tadd = ta;
@@ -281,42 +281,6 @@ void App::update( float dt )
 			}
 		}
 
-
-		//  🔧 Keys  params  ----
-		#if 0  // todo: move to ed gui
-		float mul = shift ? 0.2f : ctrl ? 3.f : 1.f;
-		int d = right ? 1 : left ? -1 : 0;
-		if (0 && d && scn->atmo)  // todo on gui-
-		{
-			SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
-			Atmosphere2Npr *atmo = static_cast<Atmosphere2Npr*>( sceneManager->getAtmosphere() );
-			if (atmo)
-			{
-			Atmosphere2Npr::Preset p = atmo->getPreset();
-
-			float mul1 = 1.f + 0.01f * mul * d;  //par
-			switch (param)
-			{
-			// p.fogHcolor.xyz  fogHparams.xy
-			case 0:  p.fogDensity *= mul1;  break;
-			case 1:  p.densityCoeff *= mul1;  break;
-			case 2:  p.densityDiffusion *= mul1;  break;
-			case 3:  p.horizonLimit *= mul1;  break;
-			case 4:  p.sunPower *= mul1;  break;
-			case 5:  p.skyPower *= mul1;  break;
-			case 6:  p.skyColour.x *= mul1;  break;
-			case 7:  p.skyColour.y *= mul1;  break;
-			case 8:  p.skyColour.z *= mul1;  break;
-			case 9:   p.fogBreakMinBrightness *= mul1;  break;
-			case 10:  p.fogBreakFalloff *= mul1;  break;
-			case 11:  p.linkedLightPower *= mul1;  break;
-			case 12:  p.linkedSceneAmbientUpperPower *= mul1;  break;
-			case 13:  p.linkedSceneAmbientLowerPower *= mul1;  break;
-			case 14:  p.envmapScale *= mul1;  break;
-			}
-			atmo->setPreset(p);
-		}	}
-		#endif
 
 		//  ⚫📉
 		bool tireEd = updateTireEdit();
@@ -333,7 +297,6 @@ void App::update( float dt )
 	}
 
 	UpdFpsText(dt);
-	updDebugText();
 }
 
 
@@ -348,8 +311,8 @@ bool App::updateTireEdit()
 
 	if (!edit)  return edit;
 
-	int k = (mKeys[2] ? -1 : 0)
-		  + (mKeys[3] ?  1 : 0);
+	int k = (keyMul ? -1 : 0)
+		  + (keyDiv ?  1 : 0);
 	if (!k)  return edit;
 
 	double mul = shift ? 0.2 : (ctrl ? 4.0 : 1.0);

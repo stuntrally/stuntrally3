@@ -40,17 +40,12 @@ void App::keyReleased( const SDL_KeyboardEvent &arg )
 	case key(LCTRL):   case key(RCTRL):   ctrl = false;   break;
 	case key(LALT):    case key(RALT):    alt = false;    break;
 
-	case key(DOWN):  down = false;   break;
-	case key(UP):    up   = false;   break;
-	// case key(HOME):  left  = false;   break;  // params
-	// case key(END):   right = false;   break;
-	case key(PAGEDOWN):  pgdown = false;   break;
-	case key(PAGEUP):    pgup   = false;   break;
-
-	case key(KP_PLUS):      mKeys[0] = 0;  break;  // sun
-	case key(KP_MINUS):     mKeys[1] = 0;  break;
-	case key(KP_MULTIPLY):  mKeys[2] = 0;  break;
-	case key(KP_DIVIDE):    mKeys[3] = 0;  break;
+	case key(DOWN):  keyDown = false;   break;
+	case key(UP):    keyUp   = false;   break;
+	case key(PAGEDOWN):  keyPgDown = false;   break;
+	case key(PAGEUP):    keyPgUp   = false;   break;
+	case key(KP_MULTIPLY):  keyMul = false;  break;
+	case key(KP_DIVIDE):    keyDiv = false;  break;
 
 	/*case key(F4):
 	if (arg.keysym.mod & (KMOD_LCTRL|KMOD_RCTRL))
@@ -72,6 +67,22 @@ void App::keyReleased( const SDL_KeyboardEvent &arg )
 		MyGUI::InputManager::getInstance().injectKeyRelease(kc);
 	}
 }
+
+#if 0
+		// Hot reload of shaders.
+		Ogre::Root *root = mGraphicsSystem->getRoot();
+		Ogre::HlmsManager *hlmsManager = root->getHlmsManager();
+
+		Ogre::Hlms *hlms = hlmsManager->getHlms( Ogre::HLMS_PBS );  // F1
+		Ogre::Hlms *hlms = hlmsManager->getHlms( Ogre::HLMS_UNLIT );  // F2
+		Ogre::Hlms *hlms = hlmsManager->getComputeHlms();  // F3
+		Ogre::GpuProgramManager::getSingleton().clearMicrocodeCache();
+		hlms->reloadFrom( hlms->getDataFolder() );
+
+		// Force device reelection
+		Ogre::Root *root = mGraphicsSystem->getRoot();
+		root->getRenderSystem()->validateDevice( true );
+#endif
 
 //-----------------------------------------------------------------------------------------------------------
 //  ⌨️ Key pressed
@@ -96,17 +107,12 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	case key(LCTRL):  case key(RCTRL):   ctrl = true;   break;
 	case key(LALT):   case key(RALT):    alt = true;    break;
 
-	case key(DOWN):  down  = true;   break;  // for gui lists
-	case key(UP):    up    = true;   break;
-	// case key(HOME):  left  = true;  break;  // params
-	// case key(END):   right = true;  break;
-	case key(PAGEDOWN):  /*++param;*/  pgdown = true;  break;
-	case key(PAGEUP):    /*--param;*/  pgup   = true;  break;
-
-	case key(KP_PLUS):      mKeys[0] = 1;  break;  // sun
-	case key(KP_MINUS):     mKeys[1] = 1;  break;
-	case key(KP_MULTIPLY):  mKeys[2] = 1;  break;
-	case key(KP_DIVIDE):    mKeys[3] = 1;  break;
+	case key(DOWN):  keyDown  = true;   break;  // for gui lists
+	case key(UP):    keyUp    = true;   break;
+	case key(PAGEDOWN):  keyPgDown = true;  break;
+	case key(PAGEUP):    keyPgUp   = true;  break;
+	case key(KP_MULTIPLY):  keyMul = true;  break;  // tire edit
+	case key(KP_DIVIDE):    keyDiv = true;  break;
 	default:  break;
 	}
 

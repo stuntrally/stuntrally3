@@ -50,7 +50,7 @@ App* GridCellLods::pApp = 0;
 void GridCellLods::Create()
 {
 	auto mSceneMgr = pApp->mSceneMgr;
-	// for (auto& lod : lods)
+	// for (auto& lod : lods)  // todo:
 	// {
 	auto& lod = lods[0];
 	auto& pos = lod.pos;  auto& norm = lod.norm;

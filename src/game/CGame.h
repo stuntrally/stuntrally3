@@ -24,18 +24,10 @@ class GAME;  class CHud;  class CGui;  class CGuiCom;
 class App : public BaseApp,	public ICS::ChannelListener
 {
 	//  vars
-	//  input  temp  ----
-	int mKeys[4] = {0,0,0,0};  // sun adj
-	int param = 0;  // to adjust
-	bool pgup = false, pgdown = false;
-	bool up = false, down = false;  // arrows for gui lists
-
-	//  overlay-
-	void updDebugText();
-	bool mDisplayOverlay = 0;  //remove..
-	Ogre::v1::TextAreaOverlayElement *mDebugText =0, *mDebugTextShadow =0;
-	void CreateDebugTextOverlay();
-
+	//  input  ----
+	bool keyUp = false, keyDown = false;  // arrows for gui lists
+	bool keyPgUp = false, keyPgDown = false;
+	bool keyMul = false, keyDiv = false;  // tide edit
 
 public:
 	void InitGui();

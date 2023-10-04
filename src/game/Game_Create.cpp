@@ -167,8 +167,6 @@ void App::createScene01()
 
 	LogO(">>>>>>>> Init SR done ----");
 
-	CreateDebugTextOverlay();
-
 	//  auto load
 	if (pSet->autostart)
 		NewGame();
