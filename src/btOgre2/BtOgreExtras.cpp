@@ -1,4 +1,5 @@
 #include "BtOgreExtras.h"
+#include "RenderConst.h"
 #include <utility>
 
 #include <OgreManualObject2.h>
@@ -82,6 +83,7 @@ void LineDrawer::update()
 		manualObject = smgr->createManualObject(SCENE_STATIC);
 		DebugDrawer::logToOgre("Set no shadows");
 		manualObject->setCastShadows(false);
+		manualObject->setVisibilityFlags(RQG_Hud1);  //** ? still in refl
 		DebugDrawer::logToOgre("Attach object to node");
 		attachNode->attachObject(manualObject);
 		DebugDrawer::logToOgre("done creating object");

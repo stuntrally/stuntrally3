@@ -71,7 +71,7 @@ void Grass::Create()
 	//  page size  from ter size
 	const Real pws = max(100.f, min(500.f, tws / 5.f));
 	// const Real pws = 100.f;  // test
-	LogO("Grass page: "+toStr(pws));
+	LogO("Grass page size: "+toStr(pws));
 	const Real hps = pws / 2.f;
 	const Real pws2 = pws * pws;
 

@@ -105,11 +105,13 @@ void CScene::CreateTrees()
 
 		//  set random seed  // add seed in scene.xml and in editor gui?
 		MTRand rnd((MTRand::uint32)1213);
-		#define getTerPos()		(rnd.rand()-0.5) * td.fTerWorldSize
+		#define getTerPos()		(rnd.rand()-0.5) * td.fTriangleSize * td.iVertsX;  //td.fTerWorldSize
 
 		TextureBox tb;
 		if (imgRoad)
 			tb = imgRoad->getData(0);
+		else
+			LogO("TREES no imgRoad !");
 
 		//  Tree Layers
 		for (size_t l=0; l < sc->pgLayers.size(); ++l)
@@ -123,7 +125,6 @@ void CScene::CreateTrees()
 			{
 				LogO("WARNING: not found vegetation model: "+file);
 				continue;
-				//file = "sphere.mesh";  // if not found, use white sphere
 			}
 			//  presets.xml needed
 			auto nomesh = file.substr(0, file.length()-5);
@@ -159,12 +160,15 @@ void CScene::CreateTrees()
 
 			//  num trees  ----------------------------------------------------------------
 			int cnt = fTrees * 6000 * pg.dens;
+			LogO("Tree:  "+file+"\t cnt: "+toStr(cnt));
+			// LogO(String("col?  ")+(col?"y":"n")+ " ofs x "+fToStr(ofs.x,2));
 			
 			for (int i = 0; i < cnt; ++i)
 			{
 				#if 0  ///  test shapes, new objects
 					int ii = i; // l*cnt+i;
 					yaw = (ii * 15) % 360;  // grid
+					// yaw = 0.f;
 					pos.z = -100 +(ii / 9) * 20;  pos.x = -100 +(ii % 9) * 20;
 					Real scl = pg.minScale;
 				#else
@@ -190,6 +194,7 @@ void CScene::CreateTrees()
 				if (ang > pg.maxTerAng)
 					add = false;
 
+				// if (!add)  LogO("ter ang");
 				if (!add)  continue;  //
 
 				//  check ter height  ------------
@@ -200,6 +205,7 @@ void CScene::CreateTrees()
 				if (pos.y < pg.minTerH || pos.y > pg.maxTerH)
 					add = false;
 				
+				// if (!add)  LogO("ter h");
 				if (!add)  continue;  //
 				
 				//  check if in fluids  ------------
@@ -207,6 +213,7 @@ void CScene::CreateTrees()
 				if (fa > pg.maxDepth)
 					add = false;
 
+				// if (!add)  LogO("in fl");
 
 				//  check if on road - uses roadDensity.png
 				if (imgRoad && r > 0)  //  ----------------
@@ -245,12 +252,13 @@ void CScene::CreateTrees()
 					if (bMax && /*d > 1 &&*/ rmin > d-1)  // max dist (optional)
 						add = false;
 				}
+				// if (!add)  LogO("on rd");
 				if (!add)  continue;  //
 
 				//  check if outside of terrain?
 				// if (pos.x < 
 				
-				if (!add)  continue;  //
+				// if (!add)  continue;  //
 
 
 				//  **************  add  **************

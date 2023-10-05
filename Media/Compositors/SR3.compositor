@@ -32,7 +32,7 @@ compositor_node Rtt_RoadDens
 			rq_last	  72
 
 			overlays	off
-			enable_forward_plus false
+			// enable_forward_plus false  // is not recognized ?
 		}
 	}
 }
@@ -67,7 +67,7 @@ compositor_node Rtt_RoadPreview
 			rq_last	  72
 
 			overlays	off
-			enable_forward_plus false
+			// enable_forward_plus false
 		}
 	}
 }
@@ -101,7 +101,7 @@ compositor_node Rtt_Terrain
 			rq_last	  76   // RQG_Fluid too
 
 			overlays	off
-			enable_forward_plus false
+			// enable_forward_plus false
 		}
 	}
 }
@@ -236,7 +236,7 @@ compositor_node CubemapNodeMsaa
 compositor_node SR3_Render
 {
 	in 0 rt_renderwindow
-	in 1 demo_dynamic_cubemap
+	in 1 dynamic_cubemap
 
 	target rt_renderwindow
 	{
@@ -279,7 +279,7 @@ compositor_node SR3_Render
 			}
 
 			//  materials in this pass will be using this cubemap
-			expose demo_dynamic_cubemap
+			expose dynamic_cubemap
 
 			// in code: game, not ed
 			visibility_mask	 0x13FF  // no 1024 ed
@@ -319,7 +319,7 @@ compositor_node SR3_Render
 
 		// pass custom MYGUI
 		// {
-			// provider?  _added in code_
+			// provider?   //** added in code
 			// profiling_id "GUI"
 
 			// executed in the second eye

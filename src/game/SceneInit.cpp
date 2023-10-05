@@ -354,7 +354,8 @@ void App::LoadCleanUp()
 	LogO("------  # Unload prev track res done");*/
 
 	if (dstTrk)
-	{	MinimizeMemory();  // !
+	{
+		MinimizeMemory();  // !
 
 		SetupCompositor();  //+ ok
 	}
