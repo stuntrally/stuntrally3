@@ -1,12 +1,16 @@
 ![](/Media/hud/stuntrally-logo.jpg)
 
+![last commit](https://flat.badgen.net/github/last-commit/stuntrally/stuntrally3)
+![commits](https://flat.badgen.net/github/commits/stuntrally/stuntrally3)
+![license](https://flat.badgen.net/github/license/stuntrally/stuntrally3)
+
 ## Links
 
 [Stunt Rally Homepage](https://stuntrally.tuxfamily.org/) - Download links, Documentation wiki, track & vehicle browsers etc.  
 [Forums](https://forum.freegamedev.net/viewforum.php?f=77) - Discussions, tracks, Issues, etc.  
-[Sources](https://github.com/stuntrally/) - also for bugs & Issues, pull requests, etc.  
+[Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs & Issues, pull requests, etc.  
 Old [Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from 2.x versions and development  
-[Videos](https://www.youtube.com/user/TheCrystalHammer) - from game and editor  
+[Videos](https://www.youtube.com/user/TheCrystalHammer) - from game and editor (old)  
 [Donations](https://cryham.tuxfamily.org/donate/) - financial support
 
 ------------------------------------------------------------------------------
@@ -16,7 +20,7 @@ Old [Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from 2.x
 Port and continuation of latest [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.x using latest [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0 for rendering.  
 
 Already playable game in all modes. Working Track Editor, almost fully restored.  
-Still WIP, not yet released and beta.
+Still WIP, not yet released and beta (with bugs).
 
 **Changes and new features** listed on top of [changelog](https://stuntrally.tuxfamily.org/wiki/doku.php?id=changelog).  
 For details see [**Roadmap**](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap#sr_3) with missing features and todo.  
