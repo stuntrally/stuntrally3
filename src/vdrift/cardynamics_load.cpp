@@ -484,7 +484,7 @@ bool CARDYNAMICS::Load(GAME* game, CONFIGFILE& c)
 
 		//load the rotational inertia parameter from the tire section
 		float front,rear;
-		if (c.GetParamE("tire-both.rotational-inertia", front))
+		if (c.GetParam("tire-both.rotational-inertia", front))
 			rear = front;
 		else
 		{	if (!c.GetParamE("tire-front.rotational-inertia", front))  return false;

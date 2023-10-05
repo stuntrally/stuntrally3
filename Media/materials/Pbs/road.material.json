@@ -59,7 +59,7 @@
 			"clear_coat" :
 			{
 				"value" : 0.15755147,
-				"roughness" : 0
+				"roughness" : 0.001
 			},
 			"diffuse" :
 			{
@@ -307,7 +307,7 @@
 			"clear_coat" :
 			{
 				"value" : 0.38602895,
-				"roughness" : 0
+				"roughness" : 0.001
 			},
 			"diffuse" :
 			{
