@@ -234,6 +234,7 @@ void AppGui::InitCommonTex()
 	v["flare1.png"] = 1;
 	v["mud.png"] = 1;
 	v["dust.png"] = 1;
+	v["gauges4.png"] = 1;  //pSet->gauges_type
 #endif
 	v["gui_icons.png"] = 1;
 	v["track_icons.png"] = 1;
@@ -242,6 +243,7 @@ void AppGui::InitCommonTex()
 
 void AppGui::LoadCommonTex()
 {
+	return;  // likely not needed now, since that "fixes white texture flashes"
 	auto* texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
 	for (auto name : mapCommonTex)
 	{
@@ -249,4 +251,5 @@ void AppGui::LoadCommonTex()
 			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
 		tex->scheduleTransitionTo( GpuResidency::Resident );
 	}
+	texMgr->waitForStreamingCompletion();
 }

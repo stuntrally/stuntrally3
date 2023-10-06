@@ -75,17 +75,17 @@ BaseApp::~BaseApp()
 //-------------------------------------------------------------------------------------
 void BaseApp::LoadingOn()
 {
-	if (!imgLoad)  return;
+	// if (!imgLoad)  return;
 #ifndef TEST_LOAD
-	imgLoad->setVisible(true);
+	// imgLoad->setVisible(true);
 	imgBack->setVisible(true);
 #endif
 	bckLoad->setVisible(true);
 }
 void BaseApp::LoadingOff()
 {
-	if (!imgLoad)  return;
-	imgLoad->setVisible(false);
+	// if (!imgLoad)  return;
+	// imgLoad->setVisible(false);
 	imgBack->setVisible(false);
 	bckLoad->setVisible(false);
 }
@@ -127,7 +127,7 @@ void BaseApp::baseInitGui()
 
 	///  menu background image
 	//  dont show for autoload and no loadingbackground
-	if (!(!pSet->loadingbackground && pSet->autostart))
+	// if (!(!pSet->loadingbackground && pSet->autostart))
 	{
 		imgBack = mGui->createWidget<ImageBox>("ImageBox",
 			0,0, 800,600, Align::Default, "ToolTip","ImgBack");
@@ -137,16 +137,15 @@ void BaseApp::baseInitGui()
 		#endif
 	}
 
-	///  loading background img
-	imgLoad = mGui->createWidget<ImageBox>("ImageBox",
+	///  loading background img  - not used
+/*	imgLoad = mGui->createWidget<ImageBox>("ImageBox",
 		0,0, 800,600, Align::Default, "Pointer", "ImgLoad");
-	// imgLoad->setImageTexture("background2.jpg");
 	#ifdef TEST_LOAD
 	imgLoad->setVisible(false);  //-
 	#else
-	imgLoad->setVisible(true);
+	// imgLoad->setVisible(true);
 	#endif
-
+*/
 
 	LogO("---- baseSizeGui");
 	baseSizeGui();
@@ -185,7 +184,7 @@ void BaseApp::baseSizeGui()
 	{	six = sx;  siy = six / si;
 		oiy = (siy - sy) / 2;
 	}
-	imgLoad->setCoord(-oix, -oiy, six, siy);
+	// imgLoad->setCoord(-oix, -oiy, six, siy);
 	if (imgBack)
-	imgBack->setCoord(-oix, -oiy, six, siy);
+		imgBack->setCoord(-oix, -oiy, six, siy);
 }
