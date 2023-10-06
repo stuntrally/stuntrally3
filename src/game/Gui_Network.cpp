@@ -101,14 +101,14 @@ void CGui::rebuildPlayerList()
 void CGui::updateGameInfo()
 {
 	//  set game config
-	if (netGameInfo.name && edNetGameName)
+	if (netGameInfo.name[0] != '\0' && edNetGameName)
 	{	string name(netGameInfo.name);
 		edNetGameName->setCaption(name);
 	}
-	if (netGameInfo.track)
+	if (netGameInfo.track[0] != '\0')
 	{	string track(netGameInfo.track);
 		gcom->sListTrack = track;
-		gcom->bListTrackU = netGameInfo.track[31]==1;  //user
+		gcom->bListTrackU = netGameInfo.track[31]==1;  // user
 		gcom->ReadTrkStats();
 	}
 	updateGameSet();

@@ -597,7 +597,8 @@ CAR* GAME::LoadCar(const string& pathCar, const string& carname,
 
 	if (!car->Load(app,  carconf, carname,
 		start_pos, start_rot,  collision,
-		pSet->abs, pSet->tcs,  isRemote, idCar, false))
+		pSet->abs[0], pSet->tcs[0],
+		isRemote, idCar, false))
 	{
 		LogO("-==- Error! loading CAR: "+carname);
 		return NULL;
