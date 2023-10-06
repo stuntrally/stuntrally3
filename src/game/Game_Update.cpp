@@ -53,6 +53,12 @@ void App::update( float dt )
 		LogO("dt "+fToStr(dt,3,5));
 	#endif
 
+	//  fixes white texture flashes
+	if (bLoading)
+	{
+		auto* texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
+		texMgr->waitForStreamingCompletion();
+	}
 
 	//  🕹️ Input upd  ----
 	mInputCtrl->update(dt);

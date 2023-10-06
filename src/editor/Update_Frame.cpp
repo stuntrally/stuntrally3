@@ -285,6 +285,12 @@ void App::UpdateEnd(float dt)
 //-----------------------------------------------------------------------------------------------------------------------------
 void App::update( float dt )
 {
+	//  fixes white texture flashes
+	{
+		auto* texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
+		texMgr->waitForStreamingCompletion();
+	}
+
 	UpdateKey(dt);  // key edits etc
 	
 	UpdFpsText(dt);
