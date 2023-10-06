@@ -154,14 +154,14 @@ string replaceTagsPass(const string& _line, bool& _replaceResult)
 						string replacement;
 
 						bool find = true;
-						// try to find in loaded from resources language strings
+						//  try to find in loaded from resources language strings
 						auto replace = transl.find(tag);
 						if (replace != transl.end())
 							replacement = replace->second;
 						else
 							find = false;
 
-						// try to ask user if event assigned or use #{_tag} instead
+						//  try to ask user if event assigned or use #{_tag} instead
 						if (!find)
 						{
 							iter = line.insert(iter, '#') + size_t(len + 2);
@@ -222,13 +222,15 @@ int main(int argc, char* argv[])
 #endif
 {
 	///  ----  [Setup]  ----
-	string path = "../";  // data subdir location
-	string px = "Media/gui/core_language_en_tag.xml";
-	string pot = "sr.pot";  // output file  // TODO: save in user dir?
+	//  data subdir location
+	const string path = "../../";  // test in bin/Release etc
+	// const string path = "../";  // in locale/
+	string pxml = "Media/gui/core_language_en_tag.xml";
+	const string pot = "sr.pot";  // output file
 	
 	const int bar = 50;   // text progress length
 	const bool bLog = 1;  // use log file
-	string slog = "sr.log";  // log file
+	const string slog = "sr.log";  // log file
 		
 
 	//  log
@@ -269,11 +271,11 @@ int main(int argc, char* argv[])
 
 	//  open xml with all tags
 	//-----------------------------------------------------------------------------
-	px = path + px;
-	cout << "Reading xml: " << px << endl;
-	log("Reading xml: " << px << endl);
+	pxml = path + pxml;
+	cout << "Reading xml: " << pxml << endl;
+	log("Reading xml: " << pxml << endl);
 
-	fi.open(px.c_str(), ios_base::in);
+	fi.open(pxml.c_str(), ios_base::in);
 	if (fi.fail())
 	{	cout << "Can't open !" << endl;
 		log("Can't open !");
@@ -354,14 +356,36 @@ int main(int argc, char* argv[])
 	///-----------------------------------------------------------------------------
 	cout << "Listing source dirs" << endl;
 	string pLay = path + "Media/gui/";
+	
 	vecstr lay, lay_n;
-	lay.push_back("Game.layout");    lay_n.push_back("Game");
-	lay.push_back("Editor.layout");	 lay_n.push_back("Editor");
+	const vecstr lays = // todo list dir, auto
+	{	"Common",
+		"Editor_Help",
+		"Editor",
+		"Editor_Main",
+		"Editor_Options",
+		"Editor_Tools",
+		"Editor_Track",
+		"Editor_Utils",
+		"Game_Help",
+		"Game",
+		"Game_Main",
+		"Game_Options",
+		"Game_Replay",
+		"Game_Tweak",
+		"Game_Utils",
+		"MaterialEditor",
+		"MessageBox"};
+	for (auto s : lays)
+	{	lay.push_back(s + ".layout");    lay_n.push_back(s);
+	}
 
 
 	//  sources dirs to search (where transl uses are)
 	//-----------------------------------------------------------------------------
-	string pSrc = path + "src/";
+	const string srcDir = "src/";
+	const string layDir = "Media/gui/";
+	const string pSrc = path + srcDir;
 	vecstr dir;
 	dir.push_back("game");
 	dir.push_back("editor");
@@ -593,12 +617,14 @@ int main(int argc, char* argv[])
 					{
 						if (!nLn)
 							og << "#: ";
-						og << lay[i]+" ";  // lay file name
+						og << layDir << lay[i];  // lay file name
 					}
 					if (nLn)  nLn = false;
-					fname = false;
 											
 					og << ":" << l;  // lay line number
+					if (fname)
+						og << endl << "#: ";
+					fname = false;
 
 					const string& su = (*lu)[l];  // hierarchy
 					if (su != su_old)
@@ -634,7 +660,7 @@ int main(int argc, char* argv[])
 					{
 						if (nLn)
 						{	os << endl;  nLn = false;  }
-						os << "#: " << sf;  // file name
+						os << "#: " << srcDir << sf;  // file name
 					}
 					fname = false;
 					
