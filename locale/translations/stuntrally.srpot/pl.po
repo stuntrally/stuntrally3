@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-07 00:39+0200\n"
-"PO-Revision-Date: 2023-09-16 20:58+0000\n"
+"PO-Revision-Date: 2023-10-07 00:41+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/pl/>\n"
@@ -18,10 +18,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
-"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && ("
+"n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
 "n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Weblate 5.0.2\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #. General 
 #: Media/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -894,28 +894,25 @@ msgstr "Restart gry."
 #: Media/gui/Game.layout:890 ..SingleRace.Setup.Tab
 msgctxt "Paint"
 msgid "Paint"
-msgstr ""
+msgstr "Lakier"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:57
 msgctxt "P_1color"
 msgid "1 color, simple"
-msgstr ""
+msgstr "1 kolor, prosty"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:58
-#, fuzzy
-#| msgctxt "TextColor"
-#| msgid "Text color"
 msgctxt "P_2colors"
 msgid "2 colors"
-msgstr "Kolor tekstu"
+msgstr "2 kolory"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:58
 msgctxt "P_3colors"
 msgid "3 colors, changing"
-msgstr ""
+msgstr "3 kolory, zmienny"
 
 #. Color  params 
 #: Media/gui/Editor_Utils.layout:94 ..Color.Text Media/gui/Game.layout:1091
@@ -957,7 +954,7 @@ msgstr "Odbicie"
 #: Media/gui/MaterialEditor.layout:149 ..MaterialEditor.Main.Text :194
 msgctxt "ColMetalness"
 msgid "Metalness"
-msgstr ""
+msgstr "Metaliczność"
 
 #. Color  params 
 #: Media/gui/Game.layout:1161 ..SingleRace.Setup.Paint.Text
@@ -969,12 +966,9 @@ msgstr ""
 #: :199..MaterialEditor.Main.Slider :203..MaterialEditor.Main.Edit
 #: :225..MaterialEditor.Main.Text :226:230..MaterialEditor.Main.Slider
 #: :234..MaterialEditor.Main.Edit
-#, fuzzy
-#| msgctxt "ColBright"
-#| msgid "Brightness"
 msgctxt "ColRoughness"
 msgid "Roughness"
-msgstr "Jasność"
+msgstr "Szorstkość"
 
 #. Color  params 
 #: Media/gui/Game.layout:1207 ..SingleRace.Setup.Paint.Text
@@ -986,7 +980,7 @@ msgstr "Jasność"
 #: :164:168..MaterialEditor.Main.Slider :172..MaterialEditor.Main.Edit
 msgctxt "ColFresnel"
 msgid "Fresnel"
-msgstr ""
+msgstr "Fresnel"
 
 #. Color  params 
 #: Media/gui/Game.layout:1177 ..SingleRace.Setup.Paint.Text
@@ -998,7 +992,7 @@ msgstr ""
 #: :234..MaterialEditor.Main.Edit
 msgctxt "ColClearCoat"
 msgid "Clear coat"
-msgstr ""
+msgstr "Powłoka bezbarwna"
 
 #. Color  extras 
 #: Media/gui/Editor_Track.layout:702 ..Track.Pacenotes.View.Text
@@ -1035,7 +1029,7 @@ msgstr "Dostosuj"
 #: Media/gui/Game.layout:938 ..SingleRace.Setup.Paint.Check
 msgctxt "NewLine"
 msgid "New line"
-msgstr ""
+msgstr "Nowa linia"
 
 #. TIP  Vehicle Color 
 #: src/game/Gui_Paints.cpp:465
@@ -1044,6 +1038,8 @@ msgid ""
 "Click to apply color to vehicle, and select. Shift-Click move selected here. "
 "Alt-Click swap color with selected."
 msgstr ""
+"Kliknij by zastosować kolor do pojazdu i wybrać. Shift-Klik przenosi wybrany "
+"tutaj. Alt-Klik zamienia kolor z wybranym."
 
 #. TIP  Vehicle Color 
 #: Media/gui/Game.layout:1094 ..SingleRace.Setup.Paint.Text
@@ -1295,48 +1291,33 @@ msgstr "Oczyszczanie"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:812
-#, fuzzy
-#| msgctxt "LS_GAME"
-#| msgid "Loading game"
 msgctxt "LS_GAME"
 msgid "Loading Game"
 msgstr "Wczytywanie gry"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:812:882
-#, fuzzy
-#| msgctxt "LS_SCENE"
-#| msgid "Loading scene"
 msgctxt "LS_SCENE"
 msgid "Loading Scene"
-msgstr "Wcztuję scenę"
+msgstr "Ładowanie Sceny"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:812
-#, fuzzy
-#| msgctxt "LS_TREES"
-#| msgid "Loading Trees"
 msgctxt "LS_CAR"
 msgid "Loading Vehicles"
-msgstr "Ładowanie drzew"
+msgstr "Ładowanie Pojazdów"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:813
-#, fuzzy
-#| msgctxt "LS_TER"
-#| msgid "Loading terrain"
 msgctxt "LS_TER"
 msgid "Loading Terrains"
-msgstr "Wczytywanie terenu"
+msgstr "Ładowanie Terenów"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:813
-#, fuzzy
-#| msgctxt "LS_ROAD"
-#| msgid "Loading Road"
 msgctxt "LS_ROAD"
 msgid "Loading Roads"
-msgstr "Ładowanie trasy"
+msgstr "Ładowanie Dróg"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:813
@@ -1346,12 +1327,9 @@ msgstr "Ładowanie obiektów"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:813
-#, fuzzy
-#| msgctxt "LS_TER"
-#| msgid "Loading terrain"
 msgctxt "LS_TREES"
 msgid "Loading Vegetation"
-msgstr "Wczytywanie terenu"
+msgstr "Ładowanie Wegetacji"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:815
@@ -1629,137 +1607,116 @@ msgstr "GrecjaSkalna"
 #. Scenery names 
 msgctxt "SC_Marble"
 msgid "Marble"
-msgstr ""
+msgstr "Marmur"
 
 #. Vehicle Paint names 
 #: Media/gui/Editor.layout:488 ..Editor.Terrain.Light.Text
 #: Media/gui/MaterialEditor.layout:67 ..MaterialEditor.Main.Text :101:135
-#, fuzzy
-#| msgctxt "NetReady"
-#| msgid "Ready"
 msgctxt "P_Red"
 msgid "Red"
-msgstr "Gotowy"
+msgstr "Czerwony"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "Change"
-#| msgid "Change"
 msgctxt "P_Orange"
 msgid "Orange"
-msgstr "Zmień"
+msgstr "Pomarańczowy"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "SC_ForestYellow"
-#| msgid "ForestYellow"
 msgctxt "P_Yellow"
 msgid "Yellow"
-msgstr "LasŻółty"
+msgstr "Żółty"
 
 #. Vehicle Paint names 
 msgctxt "P_Lime"
 msgid "Lime"
-msgstr ""
+msgstr "Limonka"
 
 #. Vehicle Paint names 
 #: Media/gui/Editor.layout:500 ..Editor.Terrain.Light.Text
 #: Media/gui/MaterialEditor.layout:78 ..MaterialEditor.Main.Text :112:149
-#, fuzzy
-#| msgctxt "SC_Greece"
-#| msgid "Greece"
 msgctxt "P_Green"
 msgid "Green"
-msgstr "Grecja"
+msgstr "Zielony"
 
 #. Vehicle Paint names 
 msgctxt "P_Olive"
 msgid "Olive"
-msgstr ""
+msgstr "Oliwkowy"
 
 #. Vehicle Paint names 
 msgctxt "P_SkyBlue"
 msgid "SkyBlue"
-msgstr ""
+msgstr "Błękit"
 
 #. Vehicle Paint names 
 #: Media/gui/Editor.layout:512 ..Editor.Terrain.Light.Text
 #: Media/gui/MaterialEditor.layout:89 ..MaterialEditor.Main.Text :123:163
 msgctxt "P_Blue"
 msgid "Blue"
-msgstr ""
+msgstr "Niebieski"
 
 #. Vehicle Paint names 
 msgctxt "P_Cyan"
 msgid "Cyan"
-msgstr ""
+msgstr "Turkus"
 
 #. Vehicle Paint names 
 msgctxt "P_Teal"
 msgid "Teal"
-msgstr ""
+msgstr "Morski"
 
 #. Vehicle Paint names 
 msgctxt "P_Violet"
 msgid "Violet"
-msgstr ""
+msgstr "Fiolet"
 
 #. Vehicle Paint names 
 msgctxt "P_Magenta"
 msgid "Magenta"
-msgstr ""
+msgstr "Purpurowy"
 
 #. Vehicle Paint names 
 msgctxt "P_Brown"
 msgid "Brown"
-msgstr ""
+msgstr "Brązowy"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "SC_BlackDesert"
-#| msgid "BlackDesert"
 msgctxt "P_Black"
 msgid "Black"
-msgstr "CzarnaPustynia"
+msgstr "Czarny"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "SC_GreeceWhite"
-#| msgid "GreeceWhite"
 msgctxt "P_White"
 msgid "White"
-msgstr "GrecjaBiała"
+msgstr "Biały"
 
 #. Vehicle Paint names 
 #: Media/gui/Game.layout:1029 ..SingleRace.Setup.Paint.Tab
 msgctxt "P_Mix"
 msgid "Mix"
-msgstr ""
+msgstr "Miks"
 
 #. Vehicle Paint names 
 msgctxt "P_Neon"
 msgid "Neon"
-msgstr ""
+msgstr "Neon"
 
 #. Vehicle Paint names 
 msgctxt "P_Ice"
 msgid "Ice"
-msgstr ""
+msgstr "Lód"
 
 #. Vehicle Paint names 
 msgctxt "P_Fire"
 msgid "Fire"
-msgstr ""
+msgstr "Ogień"
 
 #. Vehicle Paint names 
 msgctxt "P_Rainbow"
 msgid "Rainbow"
-msgstr ""
+msgstr "Tęcza"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "Silver"
-#| msgid "Silver"
 msgctxt "P_Silver"
 msgid "Silver"
 msgstr "Srebro"
@@ -2184,7 +2141,7 @@ msgstr "przeszkody (na drodze lub w rurze)"
 #: :1234..SingleRace.Setup.Paint.Slider
 msgctxt "user"
 msgid "user"
-msgstr ""
+msgstr "użytkownik"
 
 #. TIP  Track difficulties, on icons 
 #: Media/gui/Common.layout:204 ..Track-Filter.Check
@@ -2193,7 +2150,7 @@ msgstr ""
 #: :60..SingleRace.Track.Check
 msgctxt "bookmark"
 msgid "bookmark"
-msgstr ""
+msgstr "zakładka"
 
 #. TIP  Track stats 
 #: Media/gui/Editor_Track.layout:173 ..Track.Track.Text
@@ -2420,7 +2377,7 @@ msgstr "Dynamiczne Obiekty"
 #: Media/gui/Game.layout:1358 ..SingleRace.Setup.Collision.Check
 msgctxt "DriveOnHorizons"
 msgid "Allow driving outside map, on horizons"
-msgstr ""
+msgstr "Zazwól na jazdę poza mapą, na horyzontach"
 
 #. Game  Damage 
 #: Media/gui/Editor.layout:322 ..Editor.Sun.Fog.Text
@@ -2728,19 +2685,13 @@ msgstr "Pełny ekran"
 #. Screen 
 #: Media/gui/Editor_Options.layout:115 ..Options.Screen.Video.Check
 #: Media/gui/Game_Options.layout:116
-#, fuzzy
-#| msgctxt "ReflMode"
-#| msgid "Mode"
 msgctxt "VRmode"
 msgid "VR Mode"
-msgstr "Tryb"
+msgstr "Tryb VR"
 
 #. Screen 
 #: Media/gui/Editor_Options.layout:121 ..Options.Screen.Video.Text
 #: Media/gui/Game_Options.layout:122
-#, fuzzy
-#| msgctxt "ColBright"
-#| msgid "Brightness"
 msgctxt "Brightness"
 msgid "Brightness"
 msgstr "Jasność"
@@ -2748,12 +2699,9 @@ msgstr "Jasność"
 #. Screen 
 #: Media/gui/Editor_Options.layout:132 ..Options.Screen.Video.Text
 #: Media/gui/Game_Options.layout:133
-#, fuzzy
-#| msgctxt "InputControllers"
-#| msgid "Controllers"
 msgctxt "Contrast"
 msgid "Contrast"
-msgstr "Kontrolery"
+msgstr "Kontrast"
 
 #. <Tag name="Gamma">Gamma</Tag>
 msgctxt "Complex"
@@ -2887,12 +2835,9 @@ msgstr "Bardzo wysokie"
 
 #. Graphics Presets 
 #: src/common/GuiCom_Options.cpp:127
-#, fuzzy
-#| msgctxt "GraphicsAll_Higher"
-#| msgid "Higher"
 msgctxt "GraphicsAll_Highest"
 msgid "Highest"
-msgstr "Wyższe"
+msgstr "Najwyższe"
 
 #. Graphics Presets 
 #: src/common/GuiCom_Options.cpp:127
@@ -3379,7 +3324,7 @@ msgstr "Zrestartuj, aby zmienić *"
 #: :1026..Options.Graphics.Textures.Button
 msgctxt "Apply"
 msgid "Apply"
-msgstr ""
+msgstr "Zastosuj"
 
 #. Graphics  Detail 
 msgctxt "Materials"
@@ -3551,7 +3496,7 @@ msgstr "Boków na raz"
 #: Media/gui/Game_Options.layout:789
 msgctxt "IblSamples"
 msgid "IBL samples"
-msgstr ""
+msgstr "Próbki IBL"
 
 #. Graphics  reflections 
 msgctxt "ReflMode"
@@ -3648,22 +3593,16 @@ msgstr "Wielkość Lightmap"
 #. Graphics  lights 
 #: Media/gui/Editor_Options.layout:405 ..Options.Graphics.Tab
 #: Media/gui/Game_Options.layout:918
-#, fuzzy
-#| msgctxt "Light"
-#| msgid "Light"
 msgctxt "Lights"
 msgid "Lights"
-msgstr "Światło"
+msgstr "Światła"
 
 #. Graphics  lights 
 #: Media/gui/Editor_Options.layout:407 ..Options.Graphics.Lights.Check
 #: Media/gui/Game_Options.layout:920
-#, fuzzy
-#| msgctxt "Vehicles"
-#| msgid "Vehicles"
 msgctxt "VehicleLights"
 msgid "Vehicle Lights"
-msgstr "Pojazdy"
+msgstr "Światła Pojazdów"
 
 #. Graphics  particles 
 #: Media/gui/Editor_Help.layout:736 ..Help.Input/help.Tab
@@ -4772,12 +4711,9 @@ msgstr "koniec"
 #. Editor  Weather 
 #: Media/gui/Editor.layout:135 ..Editor.Sun.Sun.Check
 #: :140:206..Editor.Sun.Fog.Check
-#, fuzzy
-#| msgctxt "DisableEdit"
-#| msgid "Disable for edit"
 msgctxt "DisableEdit"
 msgid "Disable/enable for editing."
-msgstr "Wyłącz do edycji"
+msgstr "Wył/Włącz do edycji."
 
 #. Editor  Weather 
 #: Media/gui/Editor.layout:128 ..Editor.Sun.Sun.Text :133..Editor.Sun.Sun.Check
@@ -4898,22 +4834,16 @@ msgstr "Pomnóż"
 #: Media/gui/Editor.layout:586 ..Editor.Terrain.Tab
 #: :590..Editor.Terrain.Collision.Check Media/gui/Game.layout:1344
 #: ..SingleRace.Setup.Tab
-#, fuzzy
-#| msgctxt "CarCollis"
-#| msgid "Cars collision"
 msgctxt "Collision"
 msgid "Collision"
-msgstr "Kolizja aut"
+msgstr "Kolizja"
 
 #. Terrain  properties 
 #: Media/gui/Editor.layout:596 ..Editor.Terrain.Collision.Text
 #: :1233..Editor.Terrain.Tools.Text
-#, fuzzy
-#| msgctxt "MinimapBorder"
-#| msgid "Border"
 msgctxt "Border"
 msgid "Border"
-msgstr "Ramka"
+msgstr "Granica"
 
 #. Terrain  properties 
 #: Media/gui/Editor.layout:465 ..Editor.Terrain.Size.Text
@@ -4922,7 +4852,7 @@ msgstr "Ramka"
 #: :1072..Options.Graphics.Detail.Text
 msgctxt "Horizon"
 msgid "Horizon"
-msgstr ""
+msgstr "Horyzont"
 
 #. Terrain  advanced light 
 #: Media/gui/Editor.layout:557 ..Editor.Terrain.Light.Text
@@ -5971,27 +5901,21 @@ msgstr "Ilość wygładzania"
 
 #. Tools  Align 
 #: Media/gui/Editor.layout:1210 ..Editor.Terrain.Tools.Button :1212
-#, fuzzy
-#| msgctxt "AlignTerrainToRoad"
-#| msgid "Align terrain to road"
 msgctxt "AlignHorizonToTerrain"
 msgid "Align horizon to terrain"
-msgstr "Wyrównaj teren do drogi."
+msgstr "Wyrównaj horyzont do terenu"
 
 #. Tools  Align 
 #: Media/gui/Editor.layout:1215 ..Editor.Terrain.Tools.Text
-#, fuzzy
-#| msgctxt "CarType_Terrain"
-#| msgid "Terrain"
 msgctxt "AH_BaseTer"
 msgid "Base Terrain"
-msgstr "Terenowy"
+msgstr "Teren bazowy"
 
 #. Tools  Align 
 #: Media/gui/Editor.layout:1224 ..Editor.Terrain.Tools.Text
 msgctxt "AH_Below"
 msgid "Below"
-msgstr ""
+msgstr "Poniżej"
 
 #. Editor Game setup 
 #: Media/gui/Editor_Track.layout:613 ..Track.Game.Text
@@ -6096,12 +6020,9 @@ msgstr "Minimapa, rozmiar"
 
 #. Editor  Settings main 
 #: Media/gui/Editor_Options.layout:687 ..Options.Settings.Minimap.Text
-#, fuzzy
-#| msgctxt "Minimap"
-#| msgid "Minimap"
 msgctxt "MiniType"
 msgid "Minimap type"
-msgstr "Minimapa"
+msgstr "Typ minimapy"
 
 #. Editor  Settings update 
 #: Media/gui/Editor_Options.layout:731 ..Options.Settings.Minimap.Text
@@ -6111,12 +6032,9 @@ msgstr "Wielkość punktów drogi"
 
 #. Editor  Settings update 
 #: Media/gui/Editor_Options.layout:720 ..Options.Settings.Minimap.Text
-#, fuzzy
-#| msgctxt "TerUpdSkip"
-#| msgid "Terrain update skip"
 msgctxt "RoadUpdSkip"
 msgid "Road update skip"
-msgstr "Pominięć odśw. terenu"
+msgstr "Pominięć odśw. drogi"
 
 #. Editor  Settings update 
 #: Media/gui/Editor_Options.layout:709 ..Options.Settings.Minimap.Text
@@ -6247,12 +6165,9 @@ msgstr "Dostrajanie"
 #: Media/gui/Editor_Options.layout:816 ..Options.Settings.Tweak.Button
 #: Media/gui/Game_Options.layout:318 ..Options.Input.Shortcuts.Text
 #: :1414..Options.Tweak.Other.Button Media/gui/MaterialEditor.layout:5 ..Window
-#, fuzzy
-#| msgctxt "GrMaterial"
-#| msgid "Material"
 msgctxt "MaterialEditor"
 msgid "Material Editor"
-msgstr "Materiał"
+msgstr "Edytor Materiałów"
 
 #. Tweak 
 #: src/game/SceneInit.cpp:239 src/game/Gui_Replay.cpp:77:148
@@ -6857,7 +6772,7 @@ msgstr "ctrl-Enter - Dodaj drogę, również do dekoracji, rzek, itp."
 #: Media/gui/Editor_Help.layout:369 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsNext"
 msgid "Enter - next road (if many), shift - previous"
-msgstr ""
+msgstr "Enter - następna droga (jeśli wiele), shift - poprzednia"
 
 #. Road  Input  more roads
 #: Media/gui/Editor_Help.layout:377 ..Help.Input/help.Road1.Text
