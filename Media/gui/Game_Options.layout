@@ -1445,11 +1445,11 @@
 							<Property key="Alpha" value="0.8"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
-						<!-- <Widget type="Button" skin="CheckBox" position="32 84 340 24" name="CarTireVis">
-							<Property key="Caption" value="= #{CarTireVisCircles} #508050 ctrl-F9"/>
+						<Widget type="Button" skin="CheckBox" position="32 84 340 24" name="CarTireVis">
+							<Property key="Caption" value="#{CarTireVisCircles} #508050 ctrl-F9"/>
 							<Property key="TextColour" value="0.6 0.9 0.6"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="32 120 320 24" name="CarDbgBars">
+						<!-- <Widget type="Button" skin="CheckBox" position="32 120 320 24" name="CarDbgBars">
 							<Property key="Caption" value="= #{CarDebug} #507060 alt-F7"/>
 							<Property key="TextColour" value="0.6 0.8 0.7"/>
 						</Widget> -->

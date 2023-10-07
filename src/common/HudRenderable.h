@@ -48,5 +48,6 @@ public:
 	void position(float x, float y, float z);
 	void texUV(float u, float v);
 	void color(float r, float g, float b, float a);
+	void color(Ogre::ColourValue c);
 	void end();
 };

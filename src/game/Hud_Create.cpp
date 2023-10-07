@@ -403,37 +403,21 @@ void CHud::Create()
 	///  ⚫ tire vis circles  + + + +
 	asp = float(app->mWindow->getWidth()) / float(app->mWindow->getHeight());
 
-#if 0  // todo
 	if (pSet->car_tirevis)
 	{	SceneNode* rt = scm->getRootSceneNode();
 		for (int i=0; i < 4; ++i)
 		{
-			ManualObject* m = app->mSceneMgr->createManualObject();
-			// m->setDynamic(true);
-			// m->setUseIdentityProjection(true);  // fixme ?
-			// m->setUseIdentityView(true);
-			m->setCastShadows(false);
-
-			m->estimateVertexCount(32);
-			m->begin("hud/line", OT_LINE_LIST);
-			m->position(-1,0, 0);  m->colour(1,1,1);
-			m->position( 1,0, 0);  m->colour(1,1,1);
-			m->quad(0, 1, 2, 3);
-			m->end();
-		 
-			AxisAlignedBox aabInf;	aabInf.setInfinite();
-			// m->setBoundingBox(aabInf);  // always visible
-			m->setVisibilityFlags(RV_Hud);
-			m->setRenderQueueGroup(RQG_Hud1);
-
-			moTireVis[i] = m;
-			ndTireVis[i] = rt->createChildSceneNode();  ndTireVis[i]->attachObject(moTireVis[i]);
+			hrTireVis[i] = new HudRenderable("hud/line", scm,
+				OT_LINE_LIST, false, true, RV_Hud,RQG_Hud1,
+				2 + 3*3 + 5*5 + 33);
+ 
+			ndTireVis[i] = rt->createChildSceneNode();  ndTireVis[i]->attachObject(hrTireVis[i]);
 			ndTireVis[i]->setPosition((i%2 ? 1.f :-1.f) * 0.13f - 0.7f,
 									  (i/2 ?-1.f : 1.f) * 0.22f - 0.6f, 0.f);
 			const Real s = 0.06f;  // par
 			ndTireVis[i]->setScale(s, s*asp, 1.f);
+			// ndTireVis[i]->setVisible(pSet->car_tirevis);
 	}	}
-#endif
 
 
 	//  debug texts car  == == ==
@@ -536,6 +520,8 @@ void CHud::Destroy()
 	Dest(txMsg)  Dest(bckMsg)
 	Dest(txCamInfo)
 	
-	// for (i=0; i < 4; ++i)
-		// Dest2(moTireVis[i],ndTireVis[i])
+	for (i=0; i < 4; ++i)
+	{
+		Dest2(ndTireVis[i])  Del(hrTireVis[i])
+	}
 }

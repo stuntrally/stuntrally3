@@ -120,7 +120,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
  // Param(c,w, "hud_show.opponents", show_opponents);		Param(c,w, "hud_show.opplist_sort", opplist_sort);
 	//  🔧 hud tweak
 	Param(c,w, "hud_tweak.car_dbgtxt", car_dbgtxt);			//Param(c,w, "hud_tweak.show_cardbg", car_dbgbars);
-	Param(c,w, "hud_tweak.car_dbgsurf", car_dbgsurf);		//Param(c,w, "hud_tweak.car_tirevis", car_tirevis);  // todo:
+	Param(c,w, "hud_tweak.car_dbgsurf", car_dbgsurf);		Param(c,w, "hud_tweak.car_tirevis", car_tirevis);  // todo:
 	Param(c,w, "hud_tweak.car_dbgtxtclr", car_dbgtxtclr);	Param(c,w, "hud_tweak.car_dbgtxtcnt", car_dbgtxtcnt);
 	Param(c,w, "hud_tweak.graphs", show_graphs);			Param(c,w, "hud_tweak.graphs_type", (int&)graphs_type);
 

@@ -65,7 +65,7 @@ public:
 		// show_opponents =0, opplist_sort =0,
 
 	//  🔧 hud tweak
-		// car_dbgbars =0, car_tirevis =0,
+		car_tirevis =0, // car_dbgbars =0,
 		car_dbgtxt =0, car_dbgsurf =0,  // 🗒️
 		show_graphs =0;  // 📉
 	//  🎚️ sizes
@@ -83,7 +83,7 @@ public:
 	bool trail_show =1;
 
 	eGraphType graphs_type = Gh_Fps;
-	int car_dbgtxtclr = 0, car_dbgtxtcnt = 0;
+	int car_dbgtxtclr = 1, car_dbgtxtcnt = 0;
 	bool sounds_info =0;
 	//  🎛️ gui
 	bool cars_sortup =1;  int cars_view = 0, cars_sort = 1;

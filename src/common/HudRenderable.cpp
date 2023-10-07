@@ -206,11 +206,19 @@ void HudRenderable::texUV(float u, float v)
 	vp[0] = u;  vp[1] = v;
 	vp += 2;
 }
+
 void HudRenderable::color(float r, float g, float b, float a)
 {
 	if (!bColors)  return;
 
 	vp[0] = r;  vp[1] = g;  vp[2] = b;  vp[3] = a;
+	vp += 4;
+}
+void HudRenderable::color(ColourValue c)
+{
+	if (!bColors)  return;
+
+	vp[0] = c.r;  vp[1] = c.g;  vp[2] = c.b;  vp[3] = c.a;
 	vp += 4;
 }
 

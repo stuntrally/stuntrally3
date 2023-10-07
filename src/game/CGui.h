@@ -284,7 +284,7 @@ public:
 	//  profiler
 	Ck ckProfilerTxt, ckBulletDebug, ckBltProfTxt, ckSoundInfo;
 	//  car dbg
-	// Ck ckTireVis, ckCarDbgBars;  // todo:
+	Ck ckTireVis;  //, ckCarDbgBars;
 	Ck ckCarDbgTxt, ckCarDbgSurf;  void chkHudCreate(Ck*);
 	SV svDbgTxtClr, svDbgTxtCnt;
 

@@ -409,7 +409,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				return;
 
 			case key(F9):	//  ⚫ car dbg
-			//	if (ctrl)	gui->ckTireVis.Invert(); else
+				if (ctrl)	gui->ckTireVis.Invert(); else
 				if (alt)	gui->ckCarDbgSurf.Invert(); else
 				if (shift)	gui->ckCarDbgTxt.Invert();
 				else		gui->ckGraphs.Invert();
