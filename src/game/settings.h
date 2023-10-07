@@ -5,7 +5,7 @@
 #include "protocol.hpp"
 
 
-#define SET_VER  3012  // 3.0
+#define SET_VER  3016  // 3.0 beta
 
 
 enum eGraphType  {
@@ -54,17 +54,20 @@ public:
 	int yMain =0, yRace =0;  // kbd up/dn cursors
 	int difficulty =0;
 
-	//  ✅ show
+	//  ✅ hud show
 	bool show_gauges =1, show_digits =1, // ⏲️
 		//  🌍 minimap
 		trackmap =1, mini_zoomed =1, mini_rotated =1,
 		mini_terrain =1, mini_border =1,
 		check_beam =1, check_arrow =0,  // 🥛🔝
 		show_times =1,  // ⏱️
-		show_opponents =0, opplist_sort =0,
-		car_dbgbars =0, car_dbgtxt =0, car_dbgsurf =0,  // 🗒️
-		car_tirevis =0, show_graphs =0,  // 📉
-		ch_all =0;  // show all champs/challs
+		ch_all =0,  // show all champs/challs
+		// show_opponents =0, opplist_sort =0,
+
+	//  🔧 hud tweak
+		// car_dbgbars =0, car_tirevis =0,
+		car_dbgtxt =0, car_dbgsurf =0,  // 🗒️
+		show_graphs =0;  // 📉
 	//  🎚️ sizes
 	float size_gauges = 0.19f, size_minimap = 0.2f;
 	float size_minipos = 0.1f, size_arrow = 0.2f, zoom_minimap = 4.f;
@@ -175,6 +178,7 @@ public:
 
 	//  🔧 tweak
 	std::string tweak_mtr;
+	std::map<char, std::string> dev_tracks;  // alt-shift-
 
 	//  effects
 	// bool all_effects =0;
