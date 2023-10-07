@@ -1338,14 +1338,14 @@
 					<Property key="TextColour" value="0.7 0.8 0.9"/>
 					<Property key="Caption" value="#{EscQuit}"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="32 158 256 24" name="OgreDialog">
+				<!-- <Widget type="Button" skin="CheckBox" position="32 188 256 24" name="OgreDialog =">
 					<Property key="TextColour" value="0.4 0.5 0.6"/>
 					<Property key="Caption" value="#{OgreDialog}"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="32 222 256 24" name="MouseCapture">
+				<Widget type="Button" skin="CheckBox" position="32 222 256 24" name="MouseCapture =">
 					<Property key="TextColour" value="0.6 0.7 0.8"/>
 					<Property key="Caption" value="#{MouseCapture}"/>
-				</Widget>
+				</Widget> -->
 				<!-- <Widget type="Button" skin="CheckBox" position="32 254 256 24" name="ScreenPng">
 					<Property key="TextColour" value="0.55 0.6 0.65"/>
 					<Property key="Caption" value="#{ScreenshotPng}"/>

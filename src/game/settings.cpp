@@ -153,7 +153,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 	//  ⚙️ misc
 	Param(c,w, "misc.version", version);
-	Param(c,w, "misc.show_welcome", show_welcome);	Param(c,w, "misc.loadingback", loadingbackground);
+	Param(c,w, "misc.show_welcome", show_welcome);	// Param(c,w, "misc.loadingback", loadingbackground);
 	Param(c,w, "misc.paintAdj", paintAdj);
 
 	//  🔧 tweak

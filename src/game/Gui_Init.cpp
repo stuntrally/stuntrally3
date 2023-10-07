@@ -352,10 +352,10 @@ void CGui::InitGui()
 	ck= &ckAutoStart;	ck->Init("AutoStart",   &pSet->autostart);
 	ck= &ckEscQuits;	ck->Init("EscQuits",    &pSet->escquit);
 
-	ck= &ckOgreDialog;	ck->Init("OgreDialog",  &pSet->ogre_dialog);  // todo:
-	ck= &ckMouseCapture;ck->Init("MouseCapture",&pSet->mouse_capture);
+ // ck= &ckOgreDialog;	ck->Init("OgreDialog",  &pSet->ogre_dialog);  // todo:
+ // ck= &ckMouseCapture;ck->Init("MouseCapture",&pSet->mouse_capture);
 
-	ck= &ckShowPics;	ck->Init("ShowPictures",&pSet->loadingbackground);
+ // ck= &ckShowPics;	ck->Init("ShowPictures",&pSet->loadingbackground);
  // ck= &ckScreenPng;   ck->Init("ScreenPng",   &pSet->screen_png);
 
 

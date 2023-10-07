@@ -10,14 +10,15 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "game.start_in_main", startInMain);
 	
 	//  ⚙️ misc
-	Param(c,w, "misc.autostart", autostart);		Param(c,w, "misc.ogredialog", ogre_dialog);
+	Param(c,w, "misc.autostart", autostart);
 	Param(c,w, "misc.escquit", escquit);
 	
 	Param(c,w, "misc.language", language);
-	Param(c,w, "misc.mouse_capture", mouse_capture);
+	// Param(c,w, "misc.ogredialog", ogre_dialog);  // todo..
+	// Param(c,w, "misc.mouse_capture", mouse_capture);
 	// Param(c,w, "misc.screenshot_png", screen_png);
 
-	//  🖥️ video  // todo..
+	//  🖥️ video  // todo: ..
 	// Param(c,w, "video.windowx", windowx);			Param(c,w, "video.windowy", windowy);
 	// Param(c,w, "video.fullscreen", fullscreen);		Param(c,w, "video.vsync", vsync);
 
