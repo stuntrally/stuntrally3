@@ -11,15 +11,16 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-07 00:39+0200\n"
-"PO-Revision-Date: 2014-08-11 15:41+0000\n"
-"Last-Translator: Wuzzy <Wuzzy@disroot.org>, 2014-2015\n"
-"Language-Team: German (http://www.transifex.com/stuntrally/stuntrally/"
-"language/de/)\n"
+"PO-Revision-Date: 2023-10-07 00:41+0000\n"
+"Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/stunt-rally-3/"
+"stunt-rally-3/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #. General 
 #: Media/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -188,7 +189,7 @@ msgstr "Herausforderung"
 #: ..NewGame.Button
 msgctxt "HowToPlay"
 msgid "How To Play"
-msgstr ""
+msgstr "Spielanleitung"
 
 #. MAIN  Menu 
 #: Media/gui/Game_Main.layout:48 ..StuntRally##{GameVersion}.Button
@@ -245,13 +246,13 @@ msgstr "Liesmich"
 #: Media/gui/Game_Help.layout:17 ..Help.Tab
 msgctxt "Support"
 msgid "Support"
-msgstr ""
+msgstr "Unterstützung"
 
 #. MAIN  Menu 
 #: Media/gui/Game_Help.layout:158 ..Help.Tab
 msgctxt "Contributing"
 msgid "Contributing"
-msgstr ""
+msgstr "Mitwirken"
 
 #. MAIN  Menu 
 #: Media/gui/Game_Help.layout:182 ..Help.Tab
@@ -263,25 +264,25 @@ msgstr ""
 #: Media/gui/Game_Help.layout:45 ..Help.Support.Text
 msgctxt "LinksToWeb"
 msgid "Links to websites:"
-msgstr ""
+msgstr "Links zu Websites:"
 
 #. MAIN  Help links 
 #: Media/gui/Game_Help.layout:58 ..Help.Support.Button
 msgctxt "Homepage"
 msgid "Homepage"
-msgstr ""
+msgstr "Startseite"
 
 #. MAIN  Help links 
 #: Media/gui/Game_Help.layout:64 ..Help.Support.Button
 msgctxt "DocumentationWiki"
 msgid "Documentation (Wiki)"
-msgstr ""
+msgstr "Dokumentation (Wiki)"
 
 #. MAIN  Help links 
 #: Media/gui/Game_Help.layout:77 ..Help.Support.Button
 msgctxt "Forum"
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
 #. MAIN  Help links 
 #: Media/gui/Game_Help.layout:95 ..Help.Support.Button
@@ -294,13 +295,13 @@ msgstr ""
 #: Media/gui/Game_Help.layout:83 ..Help.Support.Button
 msgctxt "TrackEditorTutorial"
 msgid "Track Editor Tutorials"
-msgstr ""
+msgstr "Tutorials zum Strecken Editor"
 
 #. MAIN  Help links 
 #: Media/gui/Game_Help.layout:89 ..Help.Support.Button
 msgctxt "Translations"
 msgid "Translations"
-msgstr ""
+msgstr "Übersetzungen"
 
 #. MAIN  Help links 
 #: Media/gui/Game_Help.layout:70 ..Help.Support.Button
@@ -312,7 +313,7 @@ msgstr ""
 #: Media/gui/Game_Help.layout:101 ..Help.Support.Button
 msgctxt "Donations"
 msgid "Donations"
-msgstr ""
+msgstr "Spenden"
 
 #. MAIN  Championship  buttons 
 #: Media/gui/Game.layout:1944 ..SingleRace.Championship.Button :1955:1966
@@ -722,132 +723,132 @@ msgstr "Erlaubt"
 #. Car  Names  from animals 
 msgctxt "Turtle"
 msgid "Turtle"
-msgstr ""
+msgstr "Schildkröte"
 
 #. Car  Names  from animals 
 msgctxt "Elephant"
 msgid "Elephant"
-msgstr ""
+msgstr "Elefant"
 
 #. Car  Names  from animals 
 msgctxt "Alligator"
 msgid "Alligator"
-msgstr ""
+msgstr "Alligator"
 
 #. Car  Names  from animals 
 msgctxt "Bison"
 msgid "Bison"
-msgstr ""
+msgstr "Bison"
 
 #. Car  Names  from animals 
 msgctxt "Caterpillar"
 msgid "Caterpillar"
-msgstr ""
+msgstr "Raupe"
 
 #. Car  Names  from animals 
 msgctxt "Rhino"
 msgid "Rhino"
-msgstr ""
+msgstr "Nashorn"
 
 #. Car  Names  from animals 
 msgctxt "Bear"
 msgid "Bear"
-msgstr ""
+msgstr "Bär"
 
 #. Car  Names  from animals 
 msgctxt "Coyote"
 msgid "Coyote"
-msgstr ""
+msgstr "Kojote"
 
 #. Car  Names  from animals 
 msgctxt "Squirrel"
 msgid "Squirrel"
-msgstr ""
+msgstr "Eichhörnchen"
 
 #. Car  Names  from animals 
 msgctxt "Fox"
 msgid "Fox"
-msgstr ""
+msgstr "Fuchs"
 
 #. Car  Names  from animals 
 msgctxt "Hyena"
 msgid "Hyena"
-msgstr ""
+msgstr "Hyäne"
 
 #. Car  Names  from animals 
 msgctxt "Gorilla"
 msgid "Gorilla"
-msgstr ""
+msgstr "Gorilla"
 
 #. Car  Names  from animals 
 msgctxt "Lizard"
 msgid "Lizard"
-msgstr ""
+msgstr "Eidechse"
 
 #. Car  Names  from animals 
 msgctxt "Weasel"
 msgid "Weasel"
-msgstr ""
+msgstr "Wiesel"
 
 #. Car  Names  from animals 
 msgctxt "Wolf"
 msgid "Wolf"
-msgstr ""
+msgstr "Wolf"
 
 #. Car  Names  from animals 
 msgctxt "Scorpion"
 msgid "Scorpion"
-msgstr ""
+msgstr "Skorpion"
 
 #. Car  Names  from animals 
 msgctxt "Buffalo"
 msgid "Buffalo"
-msgstr ""
+msgstr "Büffel"
 
 #. Car  Names  from animals 
 msgctxt "Gazelle"
 msgid "Gazelle"
-msgstr ""
+msgstr "Gazelle"
 
 #. Car  Names  from animals 
 msgctxt "Jaguar"
 msgid "Jaguar"
-msgstr ""
+msgstr "Jaguar"
 
 #. Car  Names  from animals 
 msgctxt "Puma"
 msgid "Puma"
-msgstr ""
+msgstr "Puma"
 
 #. Car  Names  from animals 
 msgctxt "Leopard"
 msgid "Leopard"
-msgstr ""
+msgstr "Leopard"
 
 #. Car  Names  from animals 
 msgctxt "Beetle"
 msgid "Beetle"
-msgstr ""
+msgstr "Käfer"
 
 #. Car  Names  from animals 
 msgctxt "Swan"
 msgid "Swan"
-msgstr ""
+msgstr "Schwan"
 
 #. Car  Names  from animals 
 msgctxt "Duck"
 msgid "Duck"
-msgstr ""
+msgstr "Ente"
 
 #. Car  Names  from animals 
 msgctxt "Hawk"
 msgid "Hawk"
-msgstr ""
+msgstr "Falke"
 
 #. Car  Names  from animals 
 msgctxt "Rabbit"
 msgid "Rabbit"
-msgstr ""
+msgstr "Kaninchen"
 
 #. Vehicle 
 #: Media/gui/Game.layout:384 ..SingleRace.Track.Text :504..SingleRace.Tab
@@ -891,28 +892,25 @@ msgstr "Neu starten."
 #: Media/gui/Game.layout:890 ..SingleRace.Setup.Tab
 msgctxt "Paint"
 msgid "Paint"
-msgstr ""
+msgstr "Farbe"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:57
 msgctxt "P_1color"
 msgid "1 color, simple"
-msgstr ""
+msgstr "1 Farbe, einfach"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:58
-#, fuzzy
-#| msgctxt "TextColor"
-#| msgid "Text color"
 msgctxt "P_2colors"
 msgid "2 colors"
-msgstr "Textfarbe"
+msgstr "2 Farben"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:58
 msgctxt "P_3colors"
 msgid "3 colors, changing"
-msgstr ""
+msgstr "3 Farben, wechselnd"
 
 #. Color  params 
 #: Media/gui/Editor_Utils.layout:94 ..Color.Text Media/gui/Game.layout:1091
@@ -966,12 +964,9 @@ msgstr ""
 #: :199..MaterialEditor.Main.Slider :203..MaterialEditor.Main.Edit
 #: :225..MaterialEditor.Main.Text :226:230..MaterialEditor.Main.Slider
 #: :234..MaterialEditor.Main.Edit
-#, fuzzy
-#| msgctxt "ColBright"
-#| msgid "Brightness"
 msgctxt "ColRoughness"
 msgid "Roughness"
-msgstr "Helligkeit"
+msgstr "Rauheit"
 
 #. Color  params 
 #: Media/gui/Game.layout:1207 ..SingleRace.Setup.Paint.Text
@@ -983,7 +978,7 @@ msgstr "Helligkeit"
 #: :164:168..MaterialEditor.Main.Slider :172..MaterialEditor.Main.Edit
 msgctxt "ColFresnel"
 msgid "Fresnel"
-msgstr ""
+msgstr "Fresnel"
 
 #. Color  params 
 #: Media/gui/Game.layout:1177 ..SingleRace.Setup.Paint.Text
@@ -995,7 +990,7 @@ msgstr ""
 #: :234..MaterialEditor.Main.Edit
 msgctxt "ColClearCoat"
 msgid "Clear coat"
-msgstr ""
+msgstr "Klarlack"
 
 #. Color  extras 
 #: Media/gui/Editor_Track.layout:702 ..Track.Pacenotes.View.Text
@@ -1032,7 +1027,7 @@ msgstr "Anpassen"
 #: Media/gui/Game.layout:938 ..SingleRace.Setup.Paint.Check
 msgctxt "NewLine"
 msgid "New line"
-msgstr ""
+msgstr "Neue Linie"
 
 #. TIP  Vehicle Color 
 #: src/game/Gui_Paints.cpp:465
@@ -1124,13 +1119,13 @@ msgstr "Klasse"
 #: :845..SingleRace.Vehicle.Text :2363..SingleRace.Track.Text
 msgctxt "TrackDrivability"
 msgid "Track Drivability"
-msgstr ""
+msgstr "Streckenfahrbarkeit"
 
 #. MAIN  Vehicle basic stats 
 #: src/game/Gui_UtilCar.cpp:275
 msgctxt "Undrivable"
 msgid "Undrivable"
-msgstr ""
+msgstr "Unbefahrbar"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:420
@@ -1310,12 +1305,9 @@ msgstr "Szene wird geladen"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:812
-#, fuzzy
-#| msgctxt "LS_TREES"
-#| msgid "Loading Trees"
 msgctxt "LS_CAR"
 msgid "Loading Vehicles"
-msgstr "Bäume werden geladen"
+msgstr "Fahrzeuge werden geladen"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:813
@@ -1328,12 +1320,9 @@ msgstr "Gelände wird geladen"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:813
-#, fuzzy
-#| msgctxt "LS_ROAD"
-#| msgid "Loading Road"
 msgctxt "LS_ROAD"
 msgid "Loading Roads"
-msgstr "Straße wird geladen"
+msgstr "Straßen werden geladen"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:813
@@ -1343,12 +1332,9 @@ msgstr "Objekte werden geladen"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:813
-#, fuzzy
-#| msgctxt "LS_TER"
-#| msgid "Loading terrain"
 msgctxt "LS_TREES"
 msgid "Loading Vegetation"
-msgstr "Gelände wird geladen"
+msgstr "Vegetation wird geladen"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:815
@@ -1626,132 +1612,114 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Marble"
 msgid "Marble"
-msgstr ""
+msgstr "Marmor"
 
 #. Vehicle Paint names 
 #: Media/gui/Editor.layout:488 ..Editor.Terrain.Light.Text
 #: Media/gui/MaterialEditor.layout:67 ..MaterialEditor.Main.Text :101:135
-#, fuzzy
-#| msgctxt "NetReady"
-#| msgid "Ready"
 msgctxt "P_Red"
 msgid "Red"
-msgstr "Bereit"
+msgstr "Rot"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "Change"
-#| msgid "Change"
 msgctxt "P_Orange"
 msgid "Orange"
-msgstr "Ändern"
+msgstr "Orange"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "SC_ForestYellow"
-#| msgid "ForestYellow"
 msgctxt "P_Yellow"
 msgid "Yellow"
-msgstr "WaldGelb"
+msgstr "Gelb"
 
 #. Vehicle Paint names 
 msgctxt "P_Lime"
 msgid "Lime"
-msgstr ""
+msgstr "Limette"
 
 #. Vehicle Paint names 
 #: Media/gui/Editor.layout:500 ..Editor.Terrain.Light.Text
 #: Media/gui/MaterialEditor.layout:78 ..MaterialEditor.Main.Text :112:149
-#, fuzzy
-#| msgctxt "SC_Greece"
-#| msgid "Greece"
 msgctxt "P_Green"
 msgid "Green"
-msgstr "Griechenland"
+msgstr "Grün"
 
 #. Vehicle Paint names 
 msgctxt "P_Olive"
 msgid "Olive"
-msgstr ""
+msgstr "Olive"
 
 #. Vehicle Paint names 
 msgctxt "P_SkyBlue"
 msgid "SkyBlue"
-msgstr ""
+msgstr "Himmelblau"
 
 #. Vehicle Paint names 
 #: Media/gui/Editor.layout:512 ..Editor.Terrain.Light.Text
 #: Media/gui/MaterialEditor.layout:89 ..MaterialEditor.Main.Text :123:163
 msgctxt "P_Blue"
 msgid "Blue"
-msgstr ""
+msgstr "Blau"
 
 #. Vehicle Paint names 
 msgctxt "P_Cyan"
 msgid "Cyan"
-msgstr ""
+msgstr "Türkis"
 
 #. Vehicle Paint names 
 msgctxt "P_Teal"
 msgid "Teal"
-msgstr ""
+msgstr "Blaugrün"
 
 #. Vehicle Paint names 
 msgctxt "P_Violet"
 msgid "Violet"
-msgstr ""
+msgstr "Violett"
 
 #. Vehicle Paint names 
 msgctxt "P_Magenta"
 msgid "Magenta"
-msgstr ""
+msgstr "Magenta"
 
 #. Vehicle Paint names 
 msgctxt "P_Brown"
 msgid "Brown"
-msgstr ""
+msgstr "Braun"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "SC_BlackDesert"
-#| msgid "BlackDesert"
 msgctxt "P_Black"
 msgid "Black"
-msgstr "SchwarzeWüste"
+msgstr "Schwarz"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "SC_GreeceWhite"
-#| msgid "GreeceWhite"
 msgctxt "P_White"
 msgid "White"
-msgstr "GriechenlandWeiß"
+msgstr "Weiß"
 
 #. Vehicle Paint names 
 #: Media/gui/Game.layout:1029 ..SingleRace.Setup.Paint.Tab
 msgctxt "P_Mix"
 msgid "Mix"
-msgstr ""
+msgstr "Mischen"
 
 #. Vehicle Paint names 
 msgctxt "P_Neon"
 msgid "Neon"
-msgstr ""
+msgstr "Neon"
 
 #. Vehicle Paint names 
 msgctxt "P_Ice"
 msgid "Ice"
-msgstr ""
+msgstr "Eis"
 
 #. Vehicle Paint names 
 msgctxt "P_Fire"
 msgid "Fire"
-msgstr ""
+msgstr "Feuer"
 
 #. Vehicle Paint names 
 msgctxt "P_Rainbow"
 msgid "Rainbow"
-msgstr ""
+msgstr "Regenbogen"
 
 #. Vehicle Paint names 
 #, fuzzy
@@ -2000,7 +1968,7 @@ msgstr "Beschreibung der Strecke."
 #: :2070..SingleRace.Track.Image
 msgctxt "TipTrackAdvice"
 msgid "Track driving advices and warnings."
-msgstr ""
+msgstr "Strecken Fahrhinweise und Warnungen."
 
 #. TIP  Track 
 #: Media/gui/Game.layout:38 ..SingleRace.Track.Image :2036
@@ -2018,7 +1986,7 @@ msgstr "Karte der ausgewählten Strecke, Sicht von oben."
 #: Media/gui/Game.layout:38 ..SingleRace.Track.Image :41:44:2036:2039:2042
 msgctxt "TipClickMax"
 msgid "Click to maximize. Then click to close."
-msgstr ""
+msgstr "Klicken Sie zum Maximieren. Klicken Sie dann zum Schließen."
 
 #. TIP  Track 
 #: Media/gui/Editor_Track.layout:374 ..Track.Track.Button
@@ -2124,7 +2092,7 @@ msgstr "lang"
 #: :2327..SingleRace.Track.Text
 msgctxt "sum"
 msgid "sum (of difficulties)"
-msgstr ""
+msgstr "Summe (der Schwierigkeiten)"
 
 #. TIP  Track difficulties, on icons 
 #: Media/gui/Common.layout:93 ..Track-Filter.Check
@@ -2181,7 +2149,7 @@ msgstr "Hindernisse (auf Straße oder im Rohr)"
 #: :1234..SingleRace.Setup.Paint.Slider
 msgctxt "user"
 msgid "user"
-msgstr ""
+msgstr "Benutzer"
 
 #. TIP  Track difficulties, on icons 
 #: Media/gui/Common.layout:204 ..Track-Filter.Check
@@ -2190,7 +2158,7 @@ msgstr ""
 #: :60..SingleRace.Track.Check
 msgctxt "bookmark"
 msgid "bookmark"
-msgstr ""
+msgstr "Lesezeichen"
 
 #. TIP  Track stats 
 #: Media/gui/Editor_Track.layout:173 ..Track.Track.Text
@@ -2223,7 +2191,7 @@ msgstr "Steuerung"
 #: Media/gui/Game.layout:1585 ..SingleRace.Tab src/game/Gui_Util.cpp:184
 msgctxt "SplitScreen"
 msgid "Split Screen"
-msgstr ""
+msgstr "Geteiltes Bild"
 
 #. Game  Split screen 
 #: Media/gui/Game.layout:1625 ..SingleRace.SplitScreen.Text
@@ -2512,7 +2480,7 @@ msgstr "Boost-Tank"
 #: src/game/Gui_Init.cpp:311
 msgctxt "GoBackTime"
 msgid "Go back time"
-msgstr ""
+msgstr "Zeit zurückdrehen"
 
 #. Replay 
 #: Media/gui/Game_Options.layout:231 ..Options.Input.General.Text
@@ -2725,19 +2693,13 @@ msgstr "Vollbild"
 #. Screen 
 #: Media/gui/Editor_Options.layout:115 ..Options.Screen.Video.Check
 #: Media/gui/Game_Options.layout:116
-#, fuzzy
-#| msgctxt "ReflMode"
-#| msgid "Mode"
 msgctxt "VRmode"
 msgid "VR Mode"
-msgstr "Modus"
+msgstr "VR Modus"
 
 #. Screen 
 #: Media/gui/Editor_Options.layout:121 ..Options.Screen.Video.Text
 #: Media/gui/Game_Options.layout:122
-#, fuzzy
-#| msgctxt "ColBright"
-#| msgid "Brightness"
 msgctxt "Brightness"
 msgid "Brightness"
 msgstr "Helligkeit"
@@ -2745,12 +2707,9 @@ msgstr "Helligkeit"
 #. Screen 
 #: Media/gui/Editor_Options.layout:132 ..Options.Screen.Video.Text
 #: Media/gui/Game_Options.layout:133
-#, fuzzy
-#| msgctxt "InputControllers"
-#| msgid "Controllers"
 msgctxt "Contrast"
 msgid "Contrast"
-msgstr "Controller"
+msgstr "Kontrast"
 
 #. <Tag name="Gamma">Gamma</Tag>
 msgctxt "Complex"
@@ -2884,12 +2843,9 @@ msgstr "Sehr hoch"
 
 #. Graphics Presets 
 #: src/common/GuiCom_Options.cpp:127
-#, fuzzy
-#| msgctxt "GraphicsAll_Higher"
-#| msgid "Higher"
 msgctxt "GraphicsAll_Highest"
 msgid "Highest"
-msgstr "Höher"
+msgstr "Höchste"
 
 #. Graphics Presets 
 #: src/common/GuiCom_Options.cpp:127
@@ -3375,7 +3331,7 @@ msgstr "Spiel neustarten, um *Änderungen anzuwenden."
 #: :1026..Options.Graphics.Textures.Button
 msgctxt "Apply"
 msgid "Apply"
-msgstr ""
+msgstr "Anwenden"
 
 #. Graphics  Detail 
 msgctxt "Materials"
@@ -3644,22 +3600,16 @@ msgstr "Lightmap-Größe"
 #. Graphics  lights 
 #: Media/gui/Editor_Options.layout:405 ..Options.Graphics.Tab
 #: Media/gui/Game_Options.layout:918
-#, fuzzy
-#| msgctxt "Light"
-#| msgid "Light"
 msgctxt "Lights"
 msgid "Lights"
-msgstr "Licht"
+msgstr "Lichter"
 
 #. Graphics  lights 
 #: Media/gui/Editor_Options.layout:407 ..Options.Graphics.Lights.Check
 #: Media/gui/Game_Options.layout:920
-#, fuzzy
-#| msgctxt "Vehicles"
-#| msgid "Vehicles"
 msgctxt "VehicleLights"
 msgid "Vehicle Lights"
-msgstr "Fahrzeuge"
+msgstr "Fahrzeugbeleuchtung"
 
 #. Graphics  particles 
 #: Media/gui/Editor_Help.layout:736 ..Help.Input/help.Tab
@@ -4896,12 +4846,9 @@ msgstr "Multiplizieren"
 #: Media/gui/Editor.layout:586 ..Editor.Terrain.Tab
 #: :590..Editor.Terrain.Collision.Check Media/gui/Game.layout:1344
 #: ..SingleRace.Setup.Tab
-#, fuzzy
-#| msgctxt "CarCollis"
-#| msgid "Cars collision"
 msgctxt "Collision"
 msgid "Collision"
-msgstr "Autokollision"
+msgstr "Kollision"
 
 #. Terrain  properties 
 #: Media/gui/Editor.layout:596 ..Editor.Terrain.Collision.Text
@@ -4920,7 +4867,7 @@ msgstr "Rand"
 #: :1072..Options.Graphics.Detail.Text
 msgctxt "Horizon"
 msgid "Horizon"
-msgstr ""
+msgstr "Horizont"
 
 #. Terrain  advanced light 
 #: Media/gui/Editor.layout:557 ..Editor.Terrain.Light.Text
@@ -5599,12 +5546,12 @@ msgstr "Mauer"
 #: src/editor/Update_EditKeyTxt.cpp:55
 msgctxt "River"
 msgid "River"
-msgstr ""
+msgstr "Fluss"
 
 #. Road  Main 
 msgctxt "Hidden"
 msgid "Hidden"
-msgstr ""
+msgstr "Versteckt"
 
 #. Road  Main 
 #: Media/gui/Editor.layout:3253 ..Editor.Vegetation.Road.Tab
@@ -5791,14 +5738,14 @@ msgstr "Nicht real"
 #: src/editor/Update_EditKeyTxt.cpp:102
 msgctxt "Road_Merged"
 msgid "Merged"
-msgstr ""
+msgstr "Zusammen"
 
 #. Road Point  toggle 
 #: Media/gui/Editor.layout:3090 ..Editor.Vegetation.Road.Tab
 #: src/editor/Update_EditKeyTxt.cpp:103
 msgctxt "Road_NotLooped"
 msgid "Not looped"
-msgstr ""
+msgstr "Nicht geloopt"
 
 #. Road Point  short: checkpoint radius 
 #: Media/gui/Editor.layout:3013 ..Editor.Vegetation.Road.RoadPoint.Text
@@ -5969,12 +5916,9 @@ msgstr "Glättungsgröße"
 
 #. Tools  Align 
 #: Media/gui/Editor.layout:1210 ..Editor.Terrain.Tools.Button :1212
-#, fuzzy
-#| msgctxt "AlignTerrainToRoad"
-#| msgid "Align terrain to road"
 msgctxt "AlignHorizonToTerrain"
 msgid "Align horizon to terrain"
-msgstr "Gelände zum Weg ausrichten"
+msgstr "Horizont zum Gelände ausrichten"
 
 #. Tools  Align 
 #: Media/gui/Editor.layout:1215 ..Editor.Terrain.Tools.Text
@@ -5989,7 +5933,7 @@ msgstr "Gelände"
 #: Media/gui/Editor.layout:1224 ..Editor.Terrain.Tools.Text
 msgctxt "AH_Below"
 msgid "Below"
-msgstr ""
+msgstr "Unten"
 
 #. Editor Game setup 
 #: Media/gui/Editor_Track.layout:613 ..Track.Game.Text
@@ -6245,12 +6189,9 @@ msgstr "Feineinstellungen"
 #: Media/gui/Editor_Options.layout:816 ..Options.Settings.Tweak.Button
 #: Media/gui/Game_Options.layout:318 ..Options.Input.Shortcuts.Text
 #: :1414..Options.Tweak.Other.Button Media/gui/MaterialEditor.layout:5 ..Window
-#, fuzzy
-#| msgctxt "GrMaterial"
-#| msgid "Material"
 msgctxt "MaterialEditor"
 msgid "Material Editor"
-msgstr "Material"
+msgstr "Material Editor"
 
 #. Tweak 
 #: src/game/SceneInit.cpp:239 src/game/Gui_Replay.cpp:77:148
@@ -7153,7 +7094,7 @@ msgstr "Umschalt-Einfg - Kopie einfügen"
 #: Media/gui/Editor_Help.layout:739 ..Help.Input/help.Particles.Text
 msgctxt "InputParticlesMode"
 msgid "A - edit Particles"
-msgstr ""
+msgstr "A - Partikel bearbeiten"
 
 #. Particles  Input 
 #: Media/gui/Editor_Help.layout:764 ..Help.Input/help.Particles.Text
@@ -7417,19 +7358,19 @@ msgstr "ANMERKUNG: Momentan unmöglich in Rohren zu benutzen."
 #: Media/gui/Game_Replay.layout:240 ..Window
 msgctxt "Lesson"
 msgid "Lesson"
-msgstr ""
+msgstr "Lektion"
 
 #. TIP  Hints title+text  (in How To Play) 
 #: Media/gui/Game_Help.layout:365 ..HowToPlay.Text
 msgctxt "DrivingSchool"
 msgid "Stunt Rally driving school"
-msgstr ""
+msgstr "Stunt Rally Fahrschule"
 
 #. TIP  Hints title+text  (in How To Play) 
 #: Media/gui/Game_Help.layout:365 ..HowToPlay.Text
 msgctxt "LessonClick"
 msgid "click button to play a lesson"
-msgstr ""
+msgstr "Klicken Sie auf die Schaltfläche, um eine Lektion abzuspielen"
 
 #. TIP  Hints title+text  (in How To Play) 
 #: Media/gui/Game_Help.layout:384 ..HowToPlay.Button
@@ -7670,7 +7611,7 @@ msgstr ""
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-15"
 msgid "Help"
-msgstr ""
+msgstr "Hilfe"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-15text"
@@ -7709,7 +7650,7 @@ msgstr ""
 #: Media/gui/Game_Help.layout:377 ..HowToPlay.Button
 msgctxt "Hint-18"
 msgid "Pacenotes"
-msgstr ""
+msgstr "Temponoten"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-18text"
@@ -7761,7 +7702,7 @@ msgstr ""
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-22"
 msgid "Keyboard"
-msgstr ""
+msgstr "Tastatur"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-22text"
@@ -7785,7 +7726,7 @@ msgstr ""
 #: Media/gui/Game_Help.layout:419 ..HowToPlay.Button
 msgctxt "Hint-24"
 msgid "Details"
-msgstr ""
+msgstr "Einzelheiten"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-24text"
@@ -7798,7 +7739,7 @@ msgstr ""
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-25"
 msgid "Support"
-msgstr ""
+msgstr "Unterstützung"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-25text"
@@ -7811,7 +7752,7 @@ msgstr ""
 #: Media/gui/Game_Help.layout:412 ..HowToPlay.Button
 msgctxt "Hint-26"
 msgid "Test tracks"
-msgstr ""
+msgstr "Teststrecken"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-26text"
@@ -7825,7 +7766,7 @@ msgstr ""
 #: Media/gui/Game_Help.layout:412 ..HowToPlay.Button
 msgctxt "Hint-27"
 msgid "Handbrake"
-msgstr ""
+msgstr "Handbremse"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-27text"
