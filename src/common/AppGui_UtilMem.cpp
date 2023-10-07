@@ -243,7 +243,7 @@ void AppGui::InitCommonTex()
 
 void AppGui::LoadCommonTex()
 {
-	return;  // likely not needed now, since that "fixes white texture flashes"
+	// return;  // needed, "fixes white texture flashes"
 	auto* texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
 	for (auto name : mapCommonTex)
 	{

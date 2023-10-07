@@ -77,12 +77,10 @@ hlms circle_minimap unlit : hud_base
 //---------------------------------------------------------------------------
 hlms checkpoint pbs
 {
-    // diffuse  0.0 0.0 0.0
-    // specular 0.2 1.0 0.2
+    diffuse  1.0 1.0 1.0
     specular 1.0 1.0 1.0
-    // emissive 0.2 1.0 0.2
 
-	workflow metallic
+	// fresnel 0.1
 	fresnel_coeff 0.1 0.1 0.1
 	roughness 0.1
 	metalness 0.8

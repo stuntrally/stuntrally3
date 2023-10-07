@@ -26,7 +26,7 @@ SParams::SParams()
 	fadeLapResults = 0.1f;  //0.04f;
 
 //  chk beam size
-	chkBeamSx = 5.f;  chkBeamSy = 44.f;
+	chkBeamSx = 5.f;  chkBeamSy = 44.f,  chkBeamYofs = -10.f,
 //  ghost
 	ghostHideTime = 0.2f;
 

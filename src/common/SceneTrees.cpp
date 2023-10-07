@@ -70,6 +70,7 @@ void CScene::RecreateTrees()
 
 void CScene::CreateTrees()
 {
+	if (ters.empty())  return;  // just gui
 	LogO("C--- CreateTrees");
 	Ogre::Timer ti;
 	iVegetAll = 0;

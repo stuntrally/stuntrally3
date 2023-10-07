@@ -26,7 +26,7 @@ struct SParams
 	,fadeLapResults
 
 //  📍 chk beam size
-	,chkBeamSx, chkBeamSy
+	,chkBeamSx, chkBeamSy, chkBeamYofs
 //  👻 ghost
 	,ghostHideTime
 

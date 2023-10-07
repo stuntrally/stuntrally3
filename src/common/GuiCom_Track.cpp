@@ -407,6 +407,7 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 	
 	//  road stats
 	//---------------------------------------------------------------------------
+	if (sc->tds.empty())  return;
 	stTrk[ch][1]->setCaption(fToStr(sc->tds[0].fTerWorldSize*0.001f*m ,1,3) + km);  // 1st ter
 	if (!rd)  return;
 	float len = rd->st.Length;					//3,5

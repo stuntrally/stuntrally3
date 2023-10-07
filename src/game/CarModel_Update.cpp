@@ -80,7 +80,7 @@ void CarModel::UpdNextCheck()  // 📍
 		bChkUpd = true;
 	}
 		
-	p.y -= gPar.chkBeamSy;  // lower
+	p.y += gPar.chkBeamYofs;  // lower
 	ndNextChk->setPosition(p);
 	ndNextChk->setScale(gPar.chkBeamSx, gPar.chkBeamSy, gPar.chkBeamSx);
 	ndNextChk->setVisible(pSet->check_beam && !pApp->bHideHudBeam);
