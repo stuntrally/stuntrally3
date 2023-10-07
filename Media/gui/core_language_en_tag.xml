@@ -561,6 +561,7 @@
 	<!--  Screen  info  -->
 	<Tag name="NeedRestart">* need restart</Tag>
 	<Tag name="NotDone">not done yet, ToDo</Tag>
+	<Tag name="NeedApply">need Apply</Tag>
 	<Tag name="GraphicsRightHQ">By default better quality (less Fps) is on right. Marked with + if on left.</Tag>
 	<!--  Screen  vertical synchronisation  -->
 	<Tag name="VSync">VSync</Tag>
@@ -789,7 +790,16 @@
 	<!--  Settings  debug  -->
 	<Tag name="Other">Other</Tag>
 	<Tag name="Development">Development</Tag>
-	<Tag name="FPS">Fps, Triangles, Batches</Tag>
+	
+	<Tag name="FPS">Fps bar, render statistics</Tag>
+	<Tag name="FPS_Fps">Frames per second</Tag>
+	<Tag name="FPS_Triangles">Millions of triangles</Tag>
+	<Tag name="FPS_Draws">Draw calls</Tag>
+	<Tag name="FPS_Instances">Instances</Tag>
+	<Tag name="FPS_Vegetation">Vegetation models</Tag>
+	<Tag name="FPS_Workspaces">Workspaces</Tag>
+	<Tag name="FPS_Memory">GPU memory</Tag>
+	
 	<Tag name="Wireframe">Wireframe</Tag>
 	<Tag name="BulletDebug">Bullet debug</Tag>
 	<Tag name="BulletProfilerTxt">Bullet Profiler Times</Tag>

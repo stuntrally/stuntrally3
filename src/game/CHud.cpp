@@ -85,17 +85,7 @@ String CHud::StrClr(ColourValue c)
 	sprintf(hex, "#%02x%02x%02x", int(c.r * 255.f), int(c.g * 255.f), int(c.b * 255.f));
 	return String(hex);
 }
-/*
-void CHud::UpdDbgTxtClr()
-{
-	ColourValue c = pSet->car_dbgtxtclr ? ColourValue::Black : ColourValue::White;
-	for (int i=0; i < ov.size(); ++i)
-	{
-		if (ov[i].oU)  ov[i].oU->setColour(c);
-		if (ov[i].oX)  ov[i].oX->setColour(c);
-	}
-}
-*/
+
 
 #ifndef BT_NO_PROFILE
 ///  Bullet profiling text
