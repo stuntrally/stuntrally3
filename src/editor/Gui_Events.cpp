@@ -425,8 +425,6 @@ void CGui::chkTrkReverse(Ck*)
 void CGui::chkCamPos(Ck*){     app->bckCamPos->setVisible(pSet->camPos);  }
 void CGui::chkInputBar(Ck*){   app->bckInput->setVisible(pSet->inputBar);  }
 
-void CGui::chkFps(Ck*){        app->bckFps->setVisible(pSet->show_fps);
-								app->txFps->setVisible(pSet->show_fps);  }
 void CGui::chkWireframe(Ck*){  app->SetWireframe();  }
 
 void CGui::slSizeRoadP(SV*)

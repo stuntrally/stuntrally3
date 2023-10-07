@@ -229,7 +229,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 		//  📈 Fps, WireFrame  F11, F10
 		case key(F11):
-			gui->ckFps.Invert();  return;
+			gcom->nextFps();  return;
 
 		case key(F10):
 			gui->ckWireframe.Invert();  return;

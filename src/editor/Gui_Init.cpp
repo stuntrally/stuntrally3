@@ -262,7 +262,7 @@ void CGui::InitGui()
 	sv= &svRoadUpd;		sv->Init("RoadUpd",		&pSet->road_skip, 0, 30);  sv->DefaultI(8);
 	sv= &svSizeRoadP;	sv->Init("SizeRoadP",	&pSet->road_sphr, 0.1f,12.f);  sv->DefaultF(2.f);  Sev(SizeRoadP);
 
-	ck= &ckFps;			ck->Init("Fps",			&pSet->show_fps);  Cev(Fps);
+	//  📈 debug, other
 	ck= &ckWireframe;	ck->Init("Wireframe",	&app->bWireframe);  Cev(Wireframe);
 	ck= &ckCamPos;		ck->Init("CamPos",		&pSet->camPos);    Cev(CamPos);
 	ck= &ckInputBar;	ck->Init("InputBar",	&pSet->inputBar);  Cev(InputBar);

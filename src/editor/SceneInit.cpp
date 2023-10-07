@@ -171,7 +171,6 @@ void App::createScene01()  // once, init
 
 	gui->chkInputBar(0);  // upd vis
 	gui->chkCamPos(0);
-	gui->chkFps(0);
 }
 
 void App::destroyScene()

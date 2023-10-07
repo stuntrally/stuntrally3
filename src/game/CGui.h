@@ -279,13 +279,13 @@ public:
 	CK(Graphs);
 
 
-	//  📈 Fps debug, other
-	Ck ckFps;  CK(Wireframe);
+	//  📈 debug, other
+	CK(Wireframe);
 	//  profiler
 	Ck ckProfilerTxt, ckBulletDebug, ckBltProfTxt, ckSoundInfo;
 	//  car dbg
-	Ck ckCarDbgBars, ckCarDbgTxt, ckCarDbgSurf;
-	Ck ckTireVis;  void chkHudCreate(Ck*);
+	// Ck ckTireVis, ckCarDbgBars;  // todo:
+	Ck ckCarDbgTxt, ckCarDbgSurf;  void chkHudCreate(Ck*);
 	SV svDbgTxtClr, svDbgTxtCnt;
 
 

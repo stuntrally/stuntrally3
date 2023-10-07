@@ -2,6 +2,7 @@
 #include "AppGui.h"
 #include "Def_Str.h"
 #include "CScene.h"
+#include "settings.h"
 
 #include <OgreRoot.h>
 #include <OgreFrameStats.h>
@@ -40,8 +41,11 @@ String cvsI(int v, int grn, int red, int width=4)
 //-----------------------------------------------------------------------------------
 void AppGui::UpdFpsText(float dt)
 {
+	if (!pSet->fps_bar)
+		return;
+
 	timFps += dt;
-	if (timFps < 0.2f)  // 5 fps
+	if (timFps < 0.2f)  // 5 fps upd
 		return;
 	timFps = 0.f;
 
@@ -50,17 +54,31 @@ void AppGui::UpdFpsText(float dt)
 	const FrameStats *st = mRoot->getFrameStats();
 	const auto *cmp = mRoot->getCompositorManager2();
 
-	const float fps = st->getAvgFps(),  //st->getFps(),
-		tris = rm.mFaceCount/1000000.f,  // / 7.f,  //** !! div / 7  ~= 1 + 6 cube, wrong
+	const float fps = st->getAvgFps();  //st->getFps(),
+
+	String txt;  bool h = fps >= 100.f;
+	txt += cvsF( fps,  59.f, 30.f, h ? 0 : 1, h ? 3 : 4) + "  ";
+	
+	if (pSet->fps_bar == 1)
+	{	txFps->setCaption(txt);  return;  }
+	
+	const float
+		tris = rm.mFaceCount/1000000.f,  //**  ? / 7 = 1 + 6 cube, wrong, meh
 		mem = GetGPUmem();
-	const int draw = rm.mDrawCount,  // div / 7
-		inst = rm.mInstanceCount,  // div / 7
+	const int
+		draw = rm.mDrawCount,
+		inst = rm.mInstanceCount,
 		vgt = scn->iVegetAll,
 		gui = MyGUI::Ogre2RenderManager::getInstance().getBatchCount(),
 		ws = cmp->getNumWorkspaces();
 
-	String txt;  bool h = fps >= 100.f;
-	txt += cvsF( fps,  59.f, 30.f, h ? 0 : 1, h ? 3 : 4) + "  ";
+	if (pSet->fps_bar == 2)
+	{
+		txt += cvsI( draw, 150, 1200, 3) + "  ";
+		txt += cvsF( mem,  600.f, 1700.f, 0,4);  // + "M\n";
+		txFps->setCaption(txt);  return;
+	}
+
 	txt += cvsF( tris, 4.f, 8.f, 2,4)+"  ";  // + "m ";  //txt += "v " + toStr( rm.mVertexCount/1000 ) + "  ";
 	txt += cvsI( draw, 150, 1200, 3) + "\n";
 
@@ -68,7 +86,7 @@ void AppGui::UpdFpsText(float dt)
 	txt += cvsI( inst, 2000, 16000, 5) + " ";  //txt += "b " + toStr( rm.mBatchCount, 0);
 	txt += cvsI( vgt, 3000, 20000, 5) + "\n";
 
-	txt += "#B0B0B0G " + cvsI( gui, 8, 41, 2);
+	txt += "#B0B0B0G " + cvsI( gui, 8, 45, 2);
 	txt += "#9090F0 w " + cvsI( ws, 8, 16, 2) + " ";
 	txt += cvsF( mem,  600.f, 1700.f, 0,4);  // + "M\n";
 

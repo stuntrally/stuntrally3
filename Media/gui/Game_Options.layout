@@ -568,10 +568,10 @@
 							<Property key="TextColour" value="0.6 1.0 1.0"/>
 							<Property key="Caption" value="#{Size}"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="32 96 140 24" name="MiniZoom">
-							<Property key="Caption" value="#{MinimapZoom}"/>
+						<!-- <Widget type="Button" skin="CheckBox" position="32 96 140 24" name="MiniZoom">
+							<Property key="Caption" value="#{MinimapZoom} -"/>
 							<Property key="TextColour" value="0.5 0.9 0.9"/>
-						</Widget>
+						</Widget> -->
 						<Widget type="Button" skin="CheckBox" position="232 136 140 24" name="MiniRot">
 							<Property key="Caption" value="#{MinimapRotate}"/>
 							<Property key="TextColour" value="0.85 0.8 0.75"/>
@@ -582,14 +582,14 @@
 						<Widget type="TextBox" skin="TextBox" position="296 96 48 24" name="ZoomMinimapVal">
 							<Property key="TextColour" value="0.7 0.85 0.85"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="32 176 140 24" name="MiniBorder">
-							<Property key="Caption" value="#{MinimapBorder}"/>
+						<!-- <Widget type="Button" skin="CheckBox" position="32 176 140 24" name="MiniBorder">
+							<Property key="Caption" value="#{MinimapBorder} ="/>
 							<Property key="TextColour" value="0.7 0.85 0.85"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="32 136 140 24" name="MiniTer">
-							<Property key="Caption" value="#{MinimapTerrain}"/>
+							<Property key="Caption" value="#{MinimapTerrain} ="/>
 							<Property key="TextColour" value="0.6 0.9 0.75"/>
-						</Widget>
+						</Widget> -->
 
 						<Widget type="Button" skin="CheckBox" position="32 256 364 24" name="ChkBeam">
 							<Property key="Caption" value="#{CheckBeam} #587858 shift-F6"/>
@@ -1366,20 +1366,25 @@
 
 					<Widget type="TabItem" skin="" position="2 24 738 472">
 						<Property key="Caption" value="#D0C0A0#{Other}"/>
+
 						<!-- fps -->
-						<Widget type="ImageBox" skin="ImageBox" position="2 58 30 30">
+						<Widget type="ImageBox" skin="ImageBox" position="32 58 30 30">
 							<Property key="ImageCoord" value="128 896 128 128"/>
 							<Property key="Alpha" value="0.6"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="32 62 320 24" name="Fps">
+						<Widget type="TextBox" skin="TextBox" position="66 62 220 24">
 							<Property key="Caption" value="#{FPS} #E0E0FF F11"/>
-							<Property key="TextColour" value="0.7 0.7 1.0"/>
+							<Property key="TextColour" value="0.8 0.85 1.0"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="388 62 256 24" name="ProfilerTxt">
-							<Property key="Caption" value="#{ProfilerTxt} #707088 shift-F11"/>
-							<Property key="TextColour" value="0.56 0.56 0.75"/>
+						<Widget type="Slider" skin="Slider" position="376 62 120 16" name="Fps">
+							<Property key="Colour" value="0.8 0.85 1.0"/>
 						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="356 62 20 20" name="FpsVal">
+							<Property key="Colour" value="0.8 0.85 1.0"/>
+							<Property key="TextColour" value="0.8 0.85 1.0"/>
+						</Widget>
+
 						<!-- wireframe -->
 						<Widget type="ImageBox" skin="ImageBox" position="32 120 40 40">
 							<Property key="ImageCoord" value="640 256 128 128"/>
@@ -1390,6 +1395,16 @@
 							<Property key="Caption" value="#{Wireframe} #707070 F10"/>
 							<Property key="TextColour" value="0.8 0.8 0.8"/>
 						</Widget>
+
+						<Widget type="Button" skin="CheckBox" position="388 126 256 24" name="ProfilerTxt">
+							<Property key="Caption" value="#{ProfilerTxt} #707088 shift-F11"/>
+							<Property key="TextColour" value="0.56 0.56 0.75"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="388 176 256 24" name="SoundInfo">
+							<Property key="Caption" value="#{FullSoundsInfo} #506880 alt-F10"/>
+							<Property key="TextColour" value="0.5 0.65 0.8"/>
+						</Widget>
+
 						<Widget type="Button" skin="CheckBox" position="32 222 256 24" name="BltLines">
 							<Property key="TextColour" value="0.9 0.85 0.5"/>
 							<Property key="Caption" value="#{BulletLines} (#{Startup}) *"/>
@@ -1398,18 +1413,10 @@
 							<Property key="Caption" value="#{BulletDebug} #908850 ctrl-F10"/>
 							<Property key="TextColour" value="0.9 0.85 0.5"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="388 254 256 24" name="BltProfTxt">
+						<!-- <Widget type="Button" skin="CheckBox" position="388 254 256 24" name="BltProfTxt">
 							<Property key="Caption" value="#{BulletProfilerTxt} #706050 shift-F10"/>
 							<Property key="TextColour" value="0.7 0.65 0.5"/>
-						</Widget>
-						<Widget type="Button" skin="CheckBox" position="388 176 256 24" name="SoundInfo">
-							<Property key="Caption" value="#{FullSoundsInfo} #506880 alt-F10"/>
-							<Property key="TextColour" value="0.5 0.65 0.8"/>
-						</Widget>
-						<Widget type="Button" skin="CheckBox" position="32 342 656 24" name="DevKeys">
-							<Property key="TextColour" value="0.65 0.5 0.5"/>
-							<Property key="Caption" value="#{DevKeys}"/>
-						</Widget>
+						</Widget> -->
 
 						<Widget type="Button" skin="Button" position="376 404 300 28" name="MatEditor">
 							<Property key="Caption" value="#{MaterialEditor}"/>
@@ -1426,14 +1433,14 @@
 							<Property key="Alpha" value="0.8"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="32 84 340 24" name="CarTireVis">
+						<!-- <Widget type="Button" skin="CheckBox" position="32 84 340 24" name="CarTireVis">
 							<Property key="Caption" value="= #{CarTireVisCircles} #508050 ctrl-F9"/>
 							<Property key="TextColour" value="0.6 0.9 0.6"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="32 120 320 24" name="CarDbgBars">
 							<Property key="Caption" value="= #{CarDebug} #507060 alt-F7"/>
 							<Property key="TextColour" value="0.6 0.8 0.7"/>
-						</Widget>
+						</Widget> -->
 						<Widget type="Button" skin="CheckBox" position="32 156 320 24" name="CarDbgSurf">
 							<Property key="Caption" value="#{CarDebugSurfaces} #586058 alt-F9"/>
 							<Property key="TextColour" value="0.55 0.65 0.55"/>
@@ -1494,7 +1501,7 @@
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="106 264 500 24">
-							<Property key="Caption" value="#D8B8C8#{TiresEdit} *7"/>
+							<Property key="Caption" value="#D8B8C8#{TiresEdit}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="106 292 500 24">
 							<Property key="Caption" value="#C0A0B0#{TiresEdit1}"/>
@@ -1610,6 +1617,21 @@
 						</Widget>
 
 					</Widget>
+
+					<Widget type="TabItem" skin="" position="2 24 738 472">
+						<Property key="Caption" value="#C0F0D0#{Tracks}"/>
+
+						<Widget type="Button" skin="CheckBox" position="32 32 656 24" name="DevKeys">
+							<Property key="TextColour" value="0.5 0.65 0.5"/>
+							<Property key="Caption" value="#{DevKeys}"/>
+						</Widget>
+
+						<!-- todo: combos for all? -->
+						<Widget type="TextBox" skin="TextBox" position="32 70 644 320" name="DevTracks">
+							<Property key="TextColour" value="0.7 0.8 0.7"/>
+						</Widget>
+					</Widget>
+
 				</Widget>
 			</Widget>
 

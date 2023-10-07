@@ -72,6 +72,9 @@ public:
 	MyGUI::TabPtr FindSubTab(WP tab);  // util
 	
 
+	//  📈 Fps
+	SlV(Fps);  void nextFps();
+
 	///  📊 Graphics  --------------------------
 
 	//  textures

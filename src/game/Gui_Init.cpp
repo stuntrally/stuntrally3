@@ -208,10 +208,10 @@ void CGui::InitGui()
 
 	//  🌍 minimap
 	ck= &ckMinimap;		ck->Init("Minimap",     &pSet->trackmap);      Cev(Minimap);
-	ck= &ckMiniZoom;	ck->Init("MiniZoom",    &pSet->mini_zoomed);   Cev(MiniUpd);
+	// ck= &ckMiniZoom;	ck->Init("MiniZoom",    &pSet->mini_zoomed);   Cev(MiniUpd);  // fixme
 	ck= &ckMiniRot;		ck->Init("MiniRot",     &pSet->mini_rotated);
-	ck= &ckMiniTer;		ck->Init("MiniTer",     &pSet->mini_terrain);  Cev(MiniUpd);
-	ck= &ckMiniBorder;	ck->Init("MiniBorder",  &pSet->mini_border);   Cev(MiniUpd);
+	// ck= &ckMiniTer;		ck->Init("MiniTer",     &pSet->mini_terrain);  Cev(MiniUpd);  // todo
+	// ck= &ckMiniBorder;	ck->Init("MiniBorder",  &pSet->mini_border);   Cev(MiniUpd);
 
 	//  🎥 camera
 	ck= &ckCamInfo;		ck->Init("CamInfo",     &pSet->show_cam);   Cev(HudShow);
@@ -243,8 +243,8 @@ void CGui::InitGui()
 
 	//  ⏱️ Times, opp
 	ck= &ckTimes;		ck->Init("Times",       &pSet->show_times);      Cev(HudShow);
-// ck= &ckOpponents;	ck->Init("Opponents",   &pSet->show_opponents);  Cev(HudShow);
-// ck= &ckOppSort;		ck->Init("OppSort",     &pSet->opplist_sort);
+	// ck= &ckOpponents;	ck->Init("Opponents",   &pSet->show_opponents);  Cev(HudShow);
+	// ck= &ckOppSort;		ck->Init("OppSort",     &pSet->opplist_sort);
 
 
 	//  📉 Graphs  ------------------------------------------------------------
@@ -259,26 +259,37 @@ void CGui::InitGui()
 	valGraphsType->setCaption(toStr(pSet->graphs_type));
 
 
-	//  📈 Fps,dbg,other  ------------------------------------------------------------
-	ck= &ckFps;			ck->Init("Fps",			&pSet->show_fps);  Cev(HudShow);
-	app->bckFps->setVisible(pSet->show_fps);
-	app->txFps->setVisible(pSet->show_fps);
+	//  📈 debug, other  ------------------------------------------------------------
 	ck= &ckWireframe;	ck->Init("Wireframe",   &app->bWireframe);  Cev(Wireframe);
+	sv= &svDbgTxtCnt;	sv->Init("DbgTxtCnt",	&pSet->car_dbgtxtcnt, 0, 8);
 
 	ck= &ckProfilerTxt;	ck->Init("ProfilerTxt", &pSet->profilerTxt);  Cev(HudShow);
-	ck= &ckBulletDebug;	ck->Init("BulletDebug", &pSet->bltDebug);
-	ck= &ckBltProfTxt;	ck->Init("BltProfTxt",  &pSet->bltProfilerTxt);  //-
 	ck= &ckSoundInfo;	ck->Init("SoundInfo",   &pSet->sounds_info);
 
-	ck= &ckCarDbgBars;	ck->Init("CarDbgBars",  &pSet->car_dbgbars);   Cev(HudShow);  //-
+	ck= &ckBulletDebug;	ck->Init("BulletDebug", &pSet->bltDebug);
+	ck= &ckBltLines;	ck->Init("BltLines",	&pSet->bltLines);
+ //	ck= &ckBltProfTxt;	ck->Init("BltProfTxt",  &pSet->bltProfilerTxt);  //-
+
+ // ck= &ckCarDbgBars;	ck->Init("CarDbgBars",  &pSet->car_dbgbars);   Cev(HudShow);  //-
 	ck= &ckCarDbgTxt;	ck->Init("CarDbgTxt",   &pSet->car_dbgtxt);    Cev(HudShow);
 	ck= &ckCarDbgSurf;	ck->Init("CarDbgSurf",  &pSet->car_dbgsurf);   Cev(HudShow);
 
-	ck= &ckTireVis;		ck->Init("CarTireVis",  &pSet->car_tirevis);   Cev(HudCreate);
+ // ck= &ckTireVis;		ck->Init("CarTireVis",  &pSet->car_tirevis);   Cev(HudCreate);  // todo:
 	ck= &ckGraphs;		ck->Init("Graphs",		&pSet->show_graphs);   Cev(Graphs);
 
 	sv= &svDbgTxtClr;	sv->Init("DbgTxtClr",	&pSet->car_dbgtxtclr, 0, 1);  //-
 	sv= &svDbgTxtCnt;	sv->Init("DbgTxtCnt",	&pSet->car_dbgtxtcnt, 0, 8);
+
+	//  🔧 Tweak  ------------------------------------------------------------
+	ck= &ckDevKeys;		ck->Init("DevKeys",		&pSet->dev_keys);
+
+	Txt txt = fTxt("DevTracks");
+	string s = "";
+	for (auto t : pSet->dev_tracks)
+	{	s += t.first;
+		s += " - " + t.second + "\n";
+	}
+	txt->setCaption(s);
 
 
 	//  🔨 Game  ------------------------------------------------------------
@@ -340,12 +351,11 @@ void CGui::InitGui()
 	ck= &ckStartInMain;	ck->Init("StartInMain", &pSet->startInMain);
 	ck= &ckAutoStart;	ck->Init("AutoStart",   &pSet->autostart);
 	ck= &ckEscQuits;	ck->Init("EscQuits",    &pSet->escquit);
-	ck= &ckOgreDialog;	ck->Init("OgreDialog",  &pSet->ogre_dialog);
+
+	ck= &ckOgreDialog;	ck->Init("OgreDialog",  &pSet->ogre_dialog);  // todo:
 	ck= &ckMouseCapture;ck->Init("MouseCapture",&pSet->mouse_capture);
 
-	ck= &ckBltLines;	ck->Init("BltLines",	&pSet->bltLines);
 	ck= &ckShowPics;	ck->Init("ShowPictures",&pSet->loadingbackground);
-	ck= &ckDevKeys;		ck->Init("DevKeys",		&pSet->dev_keys);
  // ck= &ckScreenPng;   ck->Init("ScreenPng",   &pSet->screen_png);
 
 

@@ -157,6 +157,8 @@ void CHud::Size()
 //---------------------------------------------------------------------------------------------------------------
 void CHud::Show(bool hideAll)
 {
+	if (!txDbgSurf)  // not inited
+		return;
 	if (hideAll /*|| app->iLoad1stFrames > -1*/)  // still loading
 	{
 		app->bckFps->setVisible(false);
@@ -182,15 +184,9 @@ void CHud::Show(bool hideAll)
 	
 	txDbgProfTim->setVisible(pSet->profilerTxt);
 	txDbgProfBlt->setVisible(pSet->bltProfilerTxt);
-	/*bool show = pSet->car_dbgbars;
-	if (ovCarDbg){  if (show)  ovCarDbg->show();  else  ovCarDbg->hide();  }
-	show = pSet->car_dbgtxt || pSet->bltProfilerTxt || pSet->profilerTxt;
-	if (ovCarDbgTxt){  if (show)  ovCarDbgTxt->show();  else  ovCarDbgTxt->hide();  }
-	show = pSet->car_dbgsurf;
-	if (ovCarDbgExt){  if (show)  ovCarDbgExt->show();  else  ovCarDbgExt->hide();  }*/
 
-	app->bckFps->setVisible(pSet->show_fps);
-	app->txFps->setVisible(pSet->show_fps);
+	app->bckFps->setVisible(pSet->fps_bar);
+	app->txFps->setVisible(pSet->fps_bar);
 	if (bckMsg)
 	{
 		bool cam = pSet->show_cam && !app->isFocGui, times = pSet->show_times;

@@ -398,8 +398,8 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				return;
 
 			case key(F7):	//  ⏱️ Times
-				if (alt)	gui->ckCarDbgBars.Invert(); else
-			// if (shift)	gui->ckOpponents.Invert(); else
+			//	if (alt)	gui->ckCarDbgBars.Invert(); else
+			//	if (shift)	gui->ckOpponents.Invert(); else
 				if (!ctrl)	gui->ckTimes.Invert();
 				return;
 
@@ -409,7 +409,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				return;
 
 			case key(F9):	//  ⚫ car dbg
-				if (ctrl)	gui->ckTireVis.Invert(); else
+			//	if (ctrl)	gui->ckTireVis.Invert(); else
 				if (alt)	gui->ckCarDbgSurf.Invert(); else
 				if (shift)	gui->ckCarDbgTxt.Invert();
 				else		gui->ckGraphs.Invert();
@@ -417,7 +417,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 			case key(F11):	//  📈 Fps, profiler times
 				if (shift)	gui->ckProfilerTxt.Invert(); else
-				if (!ctrl)	gui->ckFps.Invert();
+				if (!ctrl)  gcom->nextFps();
 				break;
 
 			case key(F10):	//  blt debug

@@ -104,7 +104,8 @@ public:
 	CK(Minimap);
 	void btnSetCam(WP);
 
-	CK(Fps);  CK(Wireframe);  Ck ckAllowSave;
+	//  📈 debug, other
+	CK(Wireframe);  Ck ckAllowSave;
 	CK(InputBar);  CK(CamPos);
 
 	//  🔝 top view

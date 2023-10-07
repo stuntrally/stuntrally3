@@ -31,7 +31,11 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 	BtnC("Quit", btnQuit);  bnQuit = btn;
 	BtnC("MatEditor", btnMatEditor);
-	
+
+	//  📈 Fps
+	sv= &svFps;			sv->Init("Fps",			&pSet->fps_bar, 0, 3);  sv->DefaultI(1);  SevC(Fps);
+	slFps(0);
+
 	//  🧊 Detail, far geometry
 	sv= &svLodBias;		sv->Init("LodBias",		&pSet->lod_bias,	0.f,4.f, 1.5f);  SevC(LodBias);  sv->DefaultF(1.f);
 	sv= &svTerDetail;	sv->Init("TerDetail",	&pSet->ter_detail,	0,5);  SevC(TerDetail);  sv->DefaultI(2);
@@ -187,8 +191,31 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 }
 
 
-//  events . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+//  Fps . . . . . . . . . . . . . . . . . . . . . . . . 
+void CGuiCom::nextFps()
+{
+	++pSet->fps_bar;
+	if (pSet->fps_bar > 3)  pSet->fps_bar = 0;
+	svFps.Upd();  slFps(0);
+}
 
+void CGuiCom::slFps(SV*)
+{
+	int f = pSet->fps_bar;
+	app->txFps->setVisible(f > 0);
+	app->bckFps->setVisible(f > 0);
+
+	const static int dim[4][2] = {  // dim
+		{ 16, 16},  // off
+		{ 76, 28},  // fps
+		{234, 28},  // 3
+		{234, 78}   // full
+	};
+	app->bckFps->setSize(dim[f][0], dim[f][1]);
+}
+
+
+//  events . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 void CGuiCom::comboTexFilter(CMB)
 {
 	pSet->tex_filt = val;
