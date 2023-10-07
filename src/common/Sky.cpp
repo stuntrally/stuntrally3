@@ -320,8 +320,8 @@ void CScene::UpdSun(float dt)
 		{	const FluidBox* fb = &app->scn->sc->fluids[fi];
 			const FluidParams& fp = app->scn->sc->pFluidsXml->fls[fb->id];
 
-			LogO(fToStr(fb->pos.y)+" "+fToStr(p)+"  clr "+
-			fToStr(fp.fog.r)+" "+fToStr(fp.fog.g)+" "+fToStr(fp.fog.b)+" "+fToStr(fp.fog.a));
+			// LogO(fToStr(fb->pos.y)+" "+fToStr(p)+"  clr "+
+			// fToStr(fp.fog.r)+" "+fToStr(fp.fog.g)+" "+fToStr(fp.fog.b)+" "+fToStr(fp.fog.a));
 			atmo->fogFluidH = Vector4(
 				fb->pos.y +p /*+0.5f par? ofsH..*/, 1.f / fp.fog.dens, fp.fog.densH +p*0.5f, 0);
 

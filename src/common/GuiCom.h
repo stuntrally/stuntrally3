@@ -73,7 +73,7 @@ public:
 	
 
 	//  📈 Fps
-	SlV(Fps);  void nextFps();
+	SlV(Fps);  Txt txFpsInfo =0;  void nextFps();
 
 	///  📊 Graphics  --------------------------
 

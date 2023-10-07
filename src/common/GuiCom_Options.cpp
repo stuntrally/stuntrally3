@@ -34,6 +34,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 	//  📈 Fps
 	sv= &svFps;			sv->Init("Fps",			&pSet->fps_bar, 0, 3);  sv->DefaultI(1);  SevC(Fps);
+	txFpsInfo = fTxt("FpsInfo");
 	slFps(0);
 
 	//  🧊 Detail, far geometry
@@ -201,7 +202,7 @@ void CGuiCom::nextFps()
 
 void CGuiCom::slFps(SV*)
 {
-	int f = pSet->fps_bar;
+	int f = max(0, min(3, pSet->fps_bar));
 	app->txFps->setVisible(f > 0);
 	app->bckFps->setVisible(f > 0);
 
@@ -212,6 +213,16 @@ void CGuiCom::slFps(SV*)
 		{234, 78}   // full
 	};
 	app->bckFps->setSize(dim[f][0], dim[f][1]);
+
+	const static string ss[4] = {  // info
+		"#{None}",
+		"#{FPS_Fps}",
+		"#{FPS_Fps},  #{FPS_Draws},  #{FPS_Memory} MB",
+		"#{FPS_Fps},  #{FPS_Triangles},  #{FPS_Draws}\n"
+		"   i #{FPS_Instances},  #{FPS_Vegetation}\n"
+		"  G GUI,  w #{FPS_Workspaces},  #{FPS_Memory} MB",
+	};
+	txFpsInfo->setCaption(TR(ss[f]));
 }
 
 

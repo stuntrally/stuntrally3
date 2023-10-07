@@ -6,10 +6,10 @@ Thank you for all your contributions.
 
 Even smaller things count like:
 - Testing and reporting a bug.
+- Improving a translation to a language.
+- Increasing popularity, spreading info about Stunt Rally 3 on internet (with link to our [website](https://stuntrally.tuxfamily.org/)).
 - Sharing an honest opinion, or idea on Forum.
 - Constructive discussion about features, etc.
-- Improving a translation to a language.
-- Spreading info about Stunt Rally on internet.
 
 
 Below is a list (in no order, just my favorite 2 first)
