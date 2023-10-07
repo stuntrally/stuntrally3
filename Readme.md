@@ -1,9 +1,9 @@
 ![](/Media/hud/stuntrally-logo.jpg)
 
 [![Translation status](https://hosted.weblate.org/widget/stunt-rally-3/stunt-rally-3/svg-badge.svg)](https://hosted.weblate.org/engage/stunt-rally-3/)
-![last commit](https://flat.badgen.net/github/last-commit/stuntrally/stuntrally3)
-![commits](https://flat.badgen.net/github/commits/stuntrally/stuntrally3)
-![license](https://flat.badgen.net/github/license/stuntrally/stuntrally3)
+![Last commit date](https://flat.badgen.net/github/last-commit/stuntrally/stuntrally3)
+![Commits count](https://flat.badgen.net/github/commits/stuntrally/stuntrally3)
+![License](https://flat.badgen.net/github/license/stuntrally/stuntrally3)
 
 ## Links
 
@@ -51,7 +51,8 @@ Sources have emojis, [this file](/src/emojis) has all, with quick components gui
 
 ## License
 
-    Stunt Rally 3 - 3D racing game, based on VDrift and Ogre-Next, with own Track Editor
+    Stunt Rally 3 - 3D racing game, with own Track Editor
+                    based on Ogre-Next rendering and VDrift simulation
     Copyright (C) 2010-2023  Crystal Hammer and contributors
 
 
@@ -68,14 +69,18 @@ Sources have emojis, [this file](/src/emojis) has all, with quick components gui
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see https://www.gnu.org/licenses/
 
+------------------------------------------------------------------------------
 
     The license GNU GPL 3.0 applies to code written by us,
     which is in src/ dir, subdirs:
 	- common, editor, game, network, road, transl
 	and modified, subdirs:
-	- Terra, sound, vdrift.
+	- Terra, sound, vdrift
+
     Libraries used have their own licenses, included in:
 	- btOgre2, oics (modified to tinyxml2)
+    - OgreCommon (modified slightly)
+    - in src/vdrift/: half.hpp, quickprof.h, Buoyancy.h, unittest.h
     
 	For Media (art, data) licenses, see various _*.txt files in Media/ subdirs.
 
