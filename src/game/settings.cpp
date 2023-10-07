@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <OgreString.h>
 using namespace Ogre;
+using namespace std;
 
 
 void SETTINGS::Load(std::string sfile)
@@ -115,12 +116,14 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "hud_show.gauges", show_gauges);				Param(c,w, "hud_show.show_digits", show_digits);
 	Param(c,w, "hud_show.trackmap", trackmap);				Param(c,w, "hud_show.times", show_times);
 	Param(c,w, "hud_show.caminfo", show_cam);				Param(c,w, "hud_show.cam_tilt", cam_tilt);
-	Param(c,w, "hud_show.car_dbgtxt", car_dbgtxt);			Param(c,w, "hud_show.show_cardbg", car_dbgbars);
-	Param(c,w, "hud_show.car_dbgsurf", car_dbgsurf);		Param(c,w, "hud_show.car_tirevis", car_tirevis);
-	Param(c,w, "hud_show.car_dbgtxtclr", car_dbgtxtclr);	Param(c,w, "hud_show.car_dbgtxtcnt", car_dbgtxtcnt);
 	Param(c,w, "hud_show.check_arrow", check_arrow);		Param(c,w, "hud_show.check_beam", check_beam);
-// Param(c,w, "hud_show.opponents", show_opponents);		Param(c,w, "hud_show.opplist_sort", opplist_sort);
-	Param(c,w, "hud_show.graphs", show_graphs);				Param(c,w, "hud_show.graphs_type", (int&)graphs_type);
+ // Param(c,w, "hud_show.opponents", show_opponents);		Param(c,w, "hud_show.opplist_sort", opplist_sort);
+	//  🔧 hud tweak
+	Param(c,w, "hud_tweak.car_dbgtxt", car_dbgtxt);			//Param(c,w, "hud_tweak.show_cardbg", car_dbgbars);
+	Param(c,w, "hud_tweak.car_dbgsurf", car_dbgsurf);		//Param(c,w, "hud_tweak.car_tirevis", car_tirevis);  // todo:
+	Param(c,w, "hud_tweak.car_dbgtxtclr", car_dbgtxtclr);	Param(c,w, "hud_tweak.car_dbgtxtcnt", car_dbgtxtcnt);
+	Param(c,w, "hud_tweak.graphs", show_graphs);			Param(c,w, "hud_tweak.graphs_type", (int&)graphs_type);
+
 	//  🎛️ gui
 	Param(c,w, "gui.cars_view", cars_view);			Param(c,w, "gui.cars_sort", cars_sort);
 	Param(c,w, "gui.car_ed_tab", car_ed_tab);		Param(c,w, "gui.tweak_tab", tweak_tab);
@@ -141,6 +144,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "hud_size.cam_bounce", cam_bounce);			Param(c,w, "hud_size.cam_bnc_mul", cam_bnc_mul);
 	//  🚦 pacenotes
 	Param(c,w, "pacenotes.show", pace_show);	Param(c,w, "pacenotes.trail", trail_show);
+	Param(c,w, "pacenotes.next", pace_next);
 
 
 	//  📈 graphics
@@ -149,15 +153,27 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 	//  ⚙️ misc
 	Param(c,w, "misc.version", version);
-	Param(c,w, "misc.bulletDebug", bltDebug);		Param(c,w, "misc.bulletLines", bltLines);
-	Param(c,w, "misc.profilerTxt", profilerTxt);	Param(c,w, "misc.bulletProfilerTxt", bltProfilerTxt);
-	Param(c,w, "misc.dev_keys", dev_keys);			Param(c,w, "misc.dev_no_prvs", dev_no_prvs);
-
 	Param(c,w, "misc.show_welcome", show_welcome);	Param(c,w, "misc.loadingback", loadingbackground);
 	Param(c,w, "misc.paintAdj", paintAdj);
 
 	//  🔧 tweak
+	Param(c,w, "tweak.dev_keys", dev_keys);			
 	Param(c,w, "tweak.mtr", tweak_mtr);
+	Param(c,w, "tweak.bulletDebug", bltDebug);		Param(c,w, "tweak.bulletLines", bltLines);
+	Param(c,w, "tweak.profilerTxt", profilerTxt);	Param(c,w, "tweak.bulletProfilerTxt", bltProfilerTxt);
+	Param(c,w, "tweak.dev_no_prvs", dev_no_prvs);
+
+	//  🔧 tweak tracks
+	string twk_trk = "tweak_tracks.";
+	if (w)
+	{	for (auto t : dev_tracks)
+			Param(c,w, twk_trk + t.first, t.second);
+	}else
+	{	string trk;  char h;
+		dev_tracks.clear();
+		for (h = '0'; h <= '9'; ++h)  if (c.GetParam(twk_trk + h, trk))  dev_tracks[h] = trk;
+		for (h = 'A'; h <= 'Z'; ++h)  if (c.GetParam(twk_trk + h, trk))  dev_tracks[h] = trk;
+	}
 
 	//  📡 network
 	Param(c,w, "network.master_server_address", master_server_address);	Param(c,w, "network.nickname", nickname);

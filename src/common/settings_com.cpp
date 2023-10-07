@@ -66,8 +66,8 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_water.lod", water_lod);			Param(c,w, "graph_water.water_dist", water_dist);
 
 
-	//  📈 hud
-	Param(c,w, "hud_show.fps", show_fps);
+	//  📈 fps
+	Param(c,w, "tweak.fps", fps_bar);
 	//  🚦 pacenotes
 	Param(c,w, "pacenotes.dist", pace_dist);		Param(c,w, "pacenotes.alpha", pace_alpha);
 	Param(c,w, "pacenotes.size", pace_size);		Param(c,w, "pacenotes.near", pace_near);
