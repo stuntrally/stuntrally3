@@ -1,5 +1,6 @@
 ![](/Media/hud/stuntrally-logo.jpg)
 
+[![Translation status](https://hosted.weblate.org/widget/stunt-rally-3/stunt-rally-3/svg-badge.svg)](https://hosted.weblate.org/engage/stunt-rally-3/)
 ![last commit](https://flat.badgen.net/github/last-commit/stuntrally/stuntrally3)
 ![commits](https://flat.badgen.net/github/commits/stuntrally/stuntrally3)
 ![license](https://flat.badgen.net/github/license/stuntrally/stuntrally3)
