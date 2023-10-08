@@ -4,15 +4,13 @@
 #define rgDef  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME
 
 
-//  Render Queue Groups used  //search for setRenderQueueGroup
+//  Render Queue Groups   used in setRenderQueueGroup etc
 //------------------------------------------------------------------------
 /*	Default, movables queue ID:
 	Decal            0
 	Light            0-5
 	Item             10
 	Rectangle2D      10
-	v1::Entity       110
-	v1::Rectangle2D  110
 	ParticleSystem   110
 	..
 	Default, queues mode:
@@ -54,31 +52,36 @@ const Ogre::uint8
 	RQG_Hud3         = RQ_OVERLAY +3;
 
 
-//  Visibility Flags used   search for setVisibility
+//  Visibility Flags  used in setVisibility
 //------------------------------------------------------------------------
 const Ogre::uint32
-	RV_Hud          = 2,   // hud  and markers
-	RV_Hud3D        = 4096,// trail
+	RV_Hud          = 0x00002000,  // ⏱️⏲️ hud  and markers,  in game has own pass
+	RV_Hud3D        = 0x00001000,  // 🎗️   trail
 
-	RV_Road         = 1,   // road only, for road textures
-	RV_Terrain      = 4,   // terrain  and  fluids  for ed terrain.jpg texture
-	RV_Vegetation   = 8,   // vegetation
-	RV_VegetGrass   = 64,  // grass
-	RV_Objects      = 256, // all objects  (static meshes, buildings and dynamic props)
-	RV_Sky          = 32,  // sky, editor only
+	RV_Road         = 0x00000001,  // 🛣️   road only, for road textures
+	RV_Terrain      = 0x00000004,  // ⛰️   terrain  and  fluids 🌊  for ed terrain.jpg texture
+	RV_Vegetation   = 0x00000008,  // 🌳🪨 vegetation
+	RV_VegetGrass   = 0x00000010,  // 🌿   grass
+	RV_Objects      = 0x00000020,  // 📦🏢 all objects  (static meshes, buildings and dynamic props)
+
+	RV_SkyMain      = 0x00000100,  // ⛅   sky for main view
+	RV_SkyPlanarRefl= 0x00000200,  // ⛅🪞 sky for fluids refl 🌊
+	RV_SkyCubeRefl  = 0x00000400,  // ⛅🔮 sky for dynamic refl car,metals,etc
   
-	RV_Car          = 128, // car,interior, tires  in game, (hide in reflection render)
+	RV_Car          = 0x00000080,  // 🚗⚫ car,interior, tires  in game  (hide in reflection render)
+	RV_CarGlass     = 0x00000040,  // 🚗🪟 car glass in game  (hide for in car camera)
 	RV_Particles    = RV_Car,
-	RV_CarGlass     = 16,  // car glass in game, (hide for in car camera)
 
 	//  vis masks
-	RV_MaskReflect  = RV_Sky + RV_Road + RV_Terrain + RV_Vegetation + RV_Objects,  // hide 2: hud, car,glass,tires
+	RV_MaskGameAll  = RV_SkyMain + RV_Road + RV_Terrain + RV_Vegetation + RV_VegetGrass + RV_Objects 
+					+ RV_Car + RV_CarGlass + RV_Hud3D,
+	RV_MaskReflect  = RV_SkyCubeRefl + RV_Road + RV_Terrain + RV_Vegetation + RV_Objects,  // no hud, grass, car,glass,tires
 	//  most as  visibility_mask  in SR3.compositor
-	RV_WaterReflect = RV_Terrain + RV_Vegetation + RV_Road /*+ RV_Objects /*+ RV_Car*/,
-	RV_WaterRefract = RV_Terrain + RV_Vegetation + RV_Road + RV_Objects + RV_Car,
+	// RV_WaterReflect = RV_Terrain + RV_Vegetation + RV_Road /*+ RV_Objects /*+ RV_Car*/,
+	// RV_WaterRefract = RV_Terrain + RV_Vegetation + RV_Road + RV_Objects + RV_Car,
 
-	RV_MaskAll      = 511,
-	RV_MaskPrvCam   = 512,
-	
-	RV_EdRoadDens    = 1024,
-	RV_EdRoadPreview = 2048;
+	// RV_MaskAll      = 0x000001FF,
+	// RV_MaskPrvCam   = 0x00000200,
+	//  ed only  road RTT prv
+	RV_EdRoadDens    = 0x00004000,  // 🛣️🌿 for grass,trees placing etc
+	RV_EdRoadPreview = 0x00008000;  // 🛣️🌍 for minimap

@@ -124,8 +124,8 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	// mLodCameraName ?
 
 #ifndef SR_EDITOR
-	//  game, Hud has own render
-	ps->mVisibilityMask = 0x000FFFFF - RV_Hud;
+	//**  game,  Hud has own render
+	ps->mVisibilityMask = RV_MaskGameAll;
 	// ps->mLastRQ = RQ_OVERLAY; //RQG_CarGhost;  // no, hides pacenotes-
 #endif
 

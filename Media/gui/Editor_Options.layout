@@ -272,7 +272,7 @@
 
 						<Widget type="Slider" skin="Slider" position="280 140 320 18" name="ReflDist"/>
 						<Widget type="TextBox" skin="TextBox" position="32 140 176 24">
-							<Property key="Caption" value="#{Distance} ="/>
+							<Property key="Caption" value="#{Distance}"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.9 0.5 0.5"/>
 						</Widget>
@@ -344,7 +344,7 @@
 
 						<Widget type="Slider" skin="Slider" position="280 170 320 18" name="WaterDist"/>
 						<Widget type="TextBox" skin="TextBox" position="32 170 176 24">
-							<Property key="Caption" value="#{Distance} ="/>
+							<Property key="Caption" value="#{Distance}"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.5 0.5 0.9"/>
 						</Widget>

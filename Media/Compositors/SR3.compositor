@@ -25,8 +25,8 @@ compositor_node Rtt_RoadDens
 				stencil	store
 			}
 			//  todo: depth only?  add RV_Objects but black,  add smooth outline? ..
-			visibility_mask 0x00504  // RV_EdRoadDens  1024, + RV_Objects
-			// visibility_mask 0x400  // RV_EdRoadDens  1024
+			visibility_mask  0x00004020  // RV_EdRoadDens + RV_Objects
+			// visibility_mask  0x00004000  // RV_EdRoadDens
 			
 			rq_first  1  // road, objects
 			rq_last	  72
@@ -61,7 +61,7 @@ compositor_node Rtt_RoadPreview
 				depth	store
 				stencil	store
 			}
-			visibility_mask 0x800  // RV_EdRoadPreview  2048
+			visibility_mask  0x00008000  // RV_EdRoadPreview
 			
 			rq_first  70  // road
 			rq_last	  72
@@ -95,7 +95,7 @@ compositor_node Rtt_Terrain
 				depth	store
 				stencil	store
 			}
-			visibility_mask 0x00104  // RV_Terrain & Fluids, + RV_Objects
+			visibility_mask  0x00000024  // RV_Terrain & Fluids, + RV_Objects
 			
 			rq_first  1    // terrain, objects
 			rq_last	  76   // RQG_Fluid too
@@ -130,7 +130,7 @@ compositor_node Rtt_View
 				stencil	store
 			}
 
-			visibility_mask	 0x3FF  // normal
+			visibility_mask  0x000001FF  // normal
 			rq_first  0
 			rq_last	  199  // before RQ_OVERLAY
 
@@ -167,10 +167,10 @@ abstract target cubemap_target
 
 		expose cubemap
 
-		visibility_mask		0x0000012D  // 1 rd 4 ter 8 vgt 32 sky 256 obj
-		// visibility_mask		0x0000016D  // + 64 grass
+		visibility_mask  0x0000042D  // 1 rd 4 ter 8 vgt 20 obj  400 sky
+		// visibility_mask  0x0000046D  // + 40 grass
 
-		overlays			off
+		overlays		off
 		camera_cubemap_reorient true
 		// shadows		SR3_Shadows
 		// ^ crashes ..
@@ -192,6 +192,7 @@ compositor_node CubemapNode
 	target tmpCubemap -Z : cubemap_target { 
 		pass ibl_specular
 		{
+			identifier	33111
 			input tmpCubemap
 			output cubemap
 	}	}
@@ -224,6 +225,7 @@ compositor_node CubemapNodeMsaa
 	target mixedCubemapRtv -Z : cubemap_target {
 		pass ibl_specular
 		{
+			identifier	33133
 			input tmpCubemap
 			output cubemap
 	}	}
@@ -243,6 +245,7 @@ compositor_node SR3_Render
 		pass clear
 		{
 			profiling_id "Clear all"
+			identifier	22000
 
 			//  executed on first view/eye
 			execution_mask			0x01
@@ -281,8 +284,8 @@ compositor_node SR3_Render
 			//  materials in this pass will be using this cubemap
 			expose dynamic_cubemap
 
-			// in code: game, not ed
-			visibility_mask	 0x13FF  // no 1024 ed
+			//** set in code for game: RV_MaskGameAll, not ed
+			visibility_mask  0x000011FF   // trail, sky main, all geom
 			// rq_last		110  // glass,par etc
 
 			overlays	on
@@ -294,6 +297,7 @@ compositor_node SR3_Render
 		pass render_scene
 		{
 			profiling_id "HUD"
+			identifier	22501
 
 			// executed in all eyes, not views
 			// execution_mask			0xff
@@ -308,7 +312,7 @@ compositor_node SR3_Render
 				depth	store  //-
 				stencil	store
 			}
-			visibility_mask		0x002  // RV_Hud
+			visibility_mask  0x00002000  // RV_Hud
 
 			rq_first	200
 			rq_last		230
@@ -336,7 +340,7 @@ compositor_node SR3_Render
 }
 
 
-//  🪞 planar reflections  Water
+//  🪞 planar reflections  Water 🌊 fluids
 //------------------------------------------------------------------------------------
 compositor_node PlanarReflectNode
 {
@@ -347,6 +351,7 @@ compositor_node PlanarReflectNode
 		pass render_scene
 		{
 			profiling_id "Planar Reflection"
+			identifier 44001
 
 			load
 			{
@@ -360,16 +365,15 @@ compositor_node PlanarReflectNode
 				stencil	dont_care
 			}
 
-			visibility_mask		0x0000012D  // 1 rd 4 ter 8 vgt 32 sky 256 obj
-			// visibility_mask	 0x3BD  // no 1024 ed, no 2 hud, no 64 grass
-			// visibility_mask	 0x3FD  // no 1024 ed, no 2 hud
+			visibility_mask  0x0000022D  // 1 rd 4 ter 8 vgt 20 obj  200 sky
 			overlays		 off
-			//shadows  SR3_Shadows
+			//shadows  SR3_Shadows  // no-
 		}
 
 		pass generate_mipmaps
 		{
 			profiling_id "Planar Reflect Mipmaps"
+			identifier 44201
 		
 			mipmap_method compute_hq
 		}
@@ -382,7 +386,7 @@ workspace PlanarReflections
 }
 
 
-//  🌒 shadows  - for ed prv cam .. drop?
+//  🌒 shadows  - for ed prv cam .. // todo: drop this
 //------------------------------------------------------------------------------------
 compositor_node_shadow SR3_Shadows
 {
@@ -401,6 +405,7 @@ compositor_node_shadow SR3_Shadows
 		pass clear
 		{
 			colour_value 1 1 1 1
+			identifier	77000
 		}
 	}
 
@@ -411,6 +416,7 @@ compositor_node_shadow SR3_Shadows
 			pass render_scene
 			{
 				profiling_id "Shadows unused"
+				identifier	77877
 			}
 		}
 	}
