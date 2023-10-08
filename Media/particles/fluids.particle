@@ -136,14 +136,14 @@ particle_system FluidWater
 		height	0.7
 		depth	0.4  //h
 
-		colour_range_start	1.0 1.0 1.0  0.5
-		colour				1.0 1.0 1.0  0.7
-		colour_range_end	1.0 1.0 1.0  0.9
+		colour_range_start	1.0 1.0 1.0  0.1
+		colour				1.0 1.0 1.0  0.3
+		colour_range_end	1.0 1.0 1.0  0.4
 
 		velocity_min	1.5
-		velocity_max	3.0
+		velocity_max	6.0
 		time_to_live_min	1.8
-		time_to_live_max	2.5
+		time_to_live_max	3.1
 	}
 
 	affector Rotator
@@ -155,22 +155,22 @@ particle_system FluidWater
 	}
 	affector LinearForce
 	{
-		force_vector	0 -3.8 0
+		force_vector	0 -6.8 0
 		force_application	add
 	}
 
 	affector DirectionRandomiser
 	{
-		randomness	5
+		randomness	25
 	}
 
 	affector Scaler
 	{
-		rate	5.20
+		rate	3.50
 	}
 
 	affector ColourFader
 	{
-		alpha	-1.20
+		alpha	-0.20
 	}
 }

@@ -2387,49 +2387,56 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.36, 0.24000001, 0.060000002],
-				"background" : [1, 1, 1, 1]
+				"value" : [0.11814534, 0.14460625, 0.032512143],
+				"background" : [1, 1, 1, 1],
+				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.164, 0.13200001, 0.064]
+				"value" : [0.11307034, 0.13200001, 0.0827156],
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.16200002, 0.120000005, 0.045],
+				"value" : [0.11985345, 0.15195824, 0.084233284],
 				"mode" : "coloured"
 			},
 			"normal" :
 			{
-				"value" : 1,
+				"value" : 0.3308624,
 				"texture" : "water_nh.png",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 0.2
+				"value" : 0.2,
+				"sampler" : "Sampler_10"
 			},
 			"detail_diffuse0" :
 			{
 				"value" : 1,
 				"offset" : [0.025, 0.15],
-				"scale" : [0.06, 0.1]
+				"scale" : [0.06, 0.1],
+				"sampler" : "Sampler_10"
 			},
 			"detail_diffuse1" :
 			{
 				"value" : 1,
-				"offset" : [0.68, 0.67]
+				"offset" : [0.68, 0.67],
+				"sampler" : "Sampler_10"
 			},
 			"detail_diffuse2" :
 			{
 				"value" : 1,
 				"offset" : [0.03, 0.021],
-				"scale" : [5, 1.2]
+				"scale" : [6, 1.7],
+				"sampler" : "Sampler_10"
 			},
 			"detail_diffuse3" :
 			{
 				"value" : 1,
-				"offset" : [16, 0.85]
+				"offset" : [16, 0.7291224],
+				"sampler" : "Sampler_10"
 			}
 		},
 
@@ -2448,49 +2455,56 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.075, 0.054, 0.015],
-				"background" : [1, 1, 1, 1]
+				"value" : [0.072353326, 0.07970794, 0.01739657],
+				"background" : [1, 1, 1, 1],
+				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.295, 0.29, 0.26]
+				"value" : [0.15755147, 0.16893806, 0.12851554],
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.113, 0.103, 0.077],
+				"value" : [0.13917255, 0.17279206, 0.077],
 				"mode" : "coloured"
 			},
 			"normal" :
 			{
-				"value" : 1,
+				"value" : 0.5352347,
 				"texture" : "water_nh.png",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 0.2
+				"value" : 0.2,
+				"sampler" : "Sampler_10"
 			},
 			"detail_diffuse0" :
 			{
 				"value" : 1,
 				"offset" : [0.015, 0.15],
-				"scale" : [0.03, 0.1]
+				"scale" : [0.03, 0.1],
+				"sampler" : "Sampler_10"
 			},
 			"detail_diffuse1" :
 			{
 				"value" : 1,
-				"offset" : [0.2, 0.2]
+				"offset" : [0.2, 0.2],
+				"sampler" : "Sampler_10"
 			},
 			"detail_diffuse2" :
 			{
 				"value" : 1,
-				"offset" : [0.01, 0.063],
-				"scale" : [5, 1.2]
+				"offset" : [0.01, 0.11165726],
+				"scale" : [6, 3.2],
+				"sampler" : "Sampler_10"
 			},
 			"detail_diffuse3" :
 			{
 				"value" : 1,
-				"offset" : [16, 0.9]
+				"offset" : [12, 0.768973],
+				"sampler" : "Sampler_10"
 			}
 		},
 
@@ -2509,49 +2523,56 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.48000002, 0.48000002, 0.015000001],
-				"background" : [1, 1, 1, 1]
+				"value" : [0.047937885, 0.05177183, 0.009225651],
+				"background" : [1, 1, 1, 1],
+				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.1132, 0.120000005, 0.072000004]
+				"value" : [0.14460625, 0.17862715, 0.14460625],
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.064500004, 0.066, 0.033],
+				"value" : [0.08884117, 0.09829883, 0.08884117],
 				"mode" : "coloured"
 			},
 			"normal" :
 			{
-				"value" : 1,
+				"value" : 0.7460283,
 				"texture" : "water_nh.png",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 0.2
+				"value" : 0.18738273,
+				"sampler" : "Sampler_10"
 			},
 			"detail_diffuse0" :
 			{
 				"value" : 1,
 				"offset" : [0.015, 0.15],
-				"scale" : [0.03, 0.1]
+				"scale" : [0.03, 0.1],
+				"sampler" : "Sampler_10"
 			},
 			"detail_diffuse1" :
 			{
 				"value" : 1,
-				"offset" : [0.03, 0.2]
+				"offset" : [0.03, 0.2],
+				"sampler" : "Sampler_10"
 			},
 			"detail_diffuse2" :
 			{
 				"value" : 1,
 				"offset" : [0.001, 0.015],
-				"scale" : [5, 2.2]
+				"scale" : [7, 3.2],
+				"sampler" : "Sampler_10"
 			},
 			"detail_diffuse3" :
 			{
 				"value" : 1,
-				"offset" : [12, 0.4]
+				"offset" : [12, 0.4],
+				"sampler" : "Sampler_10"
 			}
 		},
 
