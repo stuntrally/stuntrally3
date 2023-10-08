@@ -1,8 +1,8 @@
 #pragma once
 #include <Compositor/OgreCompositorWorkspaceListener.h>
+#include <OgrePlanarReflections.h>
 
 namespace Ogre  {
-	class PlanarReflections;  class PlanarReflectionActor;
 	// class Terra;  class Atmosphere2Npr;  class HlmsPbsTerraShadows;
 	class Light;  class SceneNode;  class Camera;  class SceneManager;  }
 class App;
@@ -38,6 +38,7 @@ public:
 	std::vector<Ogre::Item*> vIt;
 	std::vector<Ogre::SceneNode*> vNd;
 	std::vector<Ogre::PlanarReflectionActor*> vActors;
+	std::vector<Ogre::PlanarReflections::TrackedRenderable*> vTracked;
 
 	void CreateFluids(), DestroyFluids(), CreateBltFluids();
 

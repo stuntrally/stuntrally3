@@ -39,6 +39,7 @@
 #include <OgreMeshManager2.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
+#include <OgreRenderable.h>
 #include "OgrePlanarReflections.h"
 #include <Compositor/Pass/PassScene/OgreCompositorPassScene.h>
 using namespace Ogre;
@@ -253,6 +254,7 @@ void FluidsReflect::CreateFluids()
 
 		//  actor, tracked  ----
 		PlanarReflectionActor* actor =0;
+		PlanarReflections::TrackedRenderable* tracked =0;
 		if (reflect && mPlanarRefl)
 		{
 			actor = mPlanarRefl->addActor( PlanarReflectionActor(
@@ -264,18 +266,15 @@ void FluidsReflect::CreateFluids()
 				actor->mActivationPriority = i;
 			}
 
-			PlanarReflections::TrackedRenderable tracked(
+			tracked = new PlanarReflections::TrackedRenderable(
 				item->getSubItem(0), item,
 				Vector3::UNIT_Z, Vector3(0, 0, 0) );
-			mPlanarRefl->addRenderable( tracked );
+			mPlanarRefl->addRenderable( *tracked );
 		}
-
-		// mPlanarRefl->removeRenderable( tracked );  // todo ?
-		// mPlanarRefl->removeActor( actor );
 
 
 		//  add  ----
-		vActors.push_back(actor);
+		vTracked.push_back(tracked);  vActors.push_back(actor);
 		vsMesh.push_back(sMesh);  vsMesh2.push_back(sMesh2);
 		vIt.push_back(item);  vNd.push_back(node);
 	}
@@ -290,13 +289,12 @@ void FluidsReflect::CreateFluids()
 void FluidsReflect::DestroyFluids()
 {
 	LogO("D~~~ destroy Fluids");
-	if (mPlanarRefl)
-		mPlanarRefl->destroyAllActors();
 	
 	for (int i=0; i < vNd.size(); ++i)
 	{
-		// removeActor( vActors[i] );
-		// mPlanarRefl->remov();
+		mPlanarRefl->removeRenderable( vTracked[i]->renderable );
+		delete vTracked[i];
+		mPlanarRefl->destroyActor(vActors[i]);
 
 		app->mSceneMgr->destroySceneNode(vNd[i]);
 		app->mSceneMgr->destroyItem(vIt[i]);
@@ -305,6 +303,7 @@ void FluidsReflect::DestroyFluids()
 	}
 	vNd.clear();  vIt.clear();
 	vsMesh.clear();  vsMesh2.clear();
+	vActors.clear();  vTracked.clear();
 }
 
 

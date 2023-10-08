@@ -360,17 +360,19 @@ void App::update( float dt )
 	
 	
 	//  💧 fluids  upd 🔁
-	if (bRecreateFluids || bRecreateFluidsRTT)
+	if (bRecreateFluids)
 	{	bRecreateFluids = false;
-		bRecreateFluidsRTT = false;
-
+		
 		scn->refl.DestroyFluids();
-		scn->refl.DestroyRTT();  //-
+		scn->refl.CreateFluids();
+	}
 
+	if (bRecreateFluidsRTT)
+	{	bRecreateFluidsRTT = false;
+		
+		scn->refl.DestroyRTT();  // fixme
 		scn->refl.CreateRTT();
 		AddListenerRnd2Tex();
-		scn->refl.CreateFluids();
-		UpdFluidBox();
 	}
 
 	//  🔥 emitters  upd 🔁
