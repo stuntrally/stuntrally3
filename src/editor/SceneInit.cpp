@@ -46,7 +46,7 @@ using namespace Ogre;
 using namespace std;
 
 
-bool Args::Help()
+bool Args::Help()  // ❔
 {
 	if (has("?") || has("help"))
 	{
@@ -61,7 +61,7 @@ bool Args::Help()
 }
 
 
-//  Create Scene
+//  🆕 Create Scene
 //-------------------------------------------------------------------------------------
 void App::createScene01()  // once, init
 {
@@ -173,15 +173,37 @@ void App::createScene01()  // once, init
 	gui->chkCamPos(0);
 }
 
+
+//  💥 Destroy  LoadCleanUp()
+//----------------------------------------------------------------------------------
 void App::destroyScene()
 {
 	DestroyRnd2Tex();
-	scn->destroyScene();
+	// scn->destroyScene();
+
+	LogO("DD-- destroyScene ------DD");
+	
+	scn->DelRoadDens();
+	scn->grass->Destroy();
+	scn->DestroyTrees();
+	DestroyObjects(true);
+	scn->DestroyRoads();
+	scn->DestroyTerrains();
+	scn->refl.DestroyFluids();
+	scn->refl.DestroyRTT();
+	scn->DestroyEmitters(true);
+	scn->DestroyAllAtmo();
+
+	scn->DestroyTrail();
+
+	// BaseApp::destroyScene();
 
 	if (mGui)  {
 		mGui->shutdown();	delete mGui;	mGui = 0;  }
 	if (mPlatform)  {
 		mPlatform->shutdown();	delete mPlatform;	mPlatform = 0;  }
+	
+	LogO(">>>>>>>> Destroy SR Ed done ----");
 }
 
 
@@ -200,8 +222,6 @@ void App::NewCommon(bool onlyTerVeget)
 	scn->grass->Destroy();  // 🌿
 	scn->DestroyTrees();
 
-	// mSceneMgr->destroyAllStaticGeometry();
-	
 	if (!onlyTerVeget)
 	{
 		DestroyObjects(true);  // 📦
@@ -439,6 +459,8 @@ void CGui::btnUpdateVeget(WP)
 //---------------------------------------------------------------------------------------------------------------
 void App::SaveTrack()
 {
+	if (scn->ters.empty())  // track not loaded
+		return;
 	if (!pSet->allow_save)  // can force it when in writable location
 	if (!pSet->gui.track_user)
 	{	MyGUI::Message::createMessageBox(

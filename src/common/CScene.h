@@ -82,7 +82,8 @@ public:
 	
 	GridMtrs grid;
 
-	SplineRoad* trail = 0;  // driving aids
+	//  driving aids, game only
+	SplineRoad* trail = 0;
 	PaceNotes* pace = 0;
 	void DestroyRoads(), DestroyPace(), DestroyTrail();
 

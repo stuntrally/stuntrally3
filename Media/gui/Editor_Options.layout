@@ -806,7 +806,7 @@
 							<Property key="Colour" value="0.8 0.85 1.0"/>
 							<Property key="TextColour" value="0.8 0.85 1.0"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="336 92 320 120" name="FpsInfo">
+						<Widget type="TextBox" skin="TextBox" position="286 92 450 90" name="FpsInfo">
 							<Property key="Alpha" value="0.7"/>
 							<Property key="Colour" value="0.8 0.85 0.9"/>
 							<Property key="TextColour" value="0.8 0.85 0.9"/>

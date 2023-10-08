@@ -47,7 +47,7 @@ using namespace Ogre;
 using namespace std;
 
 
-bool Args::Help()
+bool Args::Help()  // ❔
 {
 	if (has("?") || has("help"))
 	{

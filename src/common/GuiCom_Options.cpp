@@ -103,7 +103,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->refl_dist,	20.f,60000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
 																	SevC(ReflDist);  sv->DefaultF(300.f);
 	sv= &svReflIbl;		sv->Init("ReflIbl",		&pSet->refl_ibl,	0,8, 2.f);  SevC(ReflIbl);  sv->DefaultI(5);
-	sv= &svReflLod;		sv->Init("ReflLod",		&pSet->refl_lod,	0.f,4.f, 1.5f);  SevC(ReflLod);  sv->DefaultF(1.f);
+	sv= &svReflLod;		sv->Init("ReflLod",		&pSet->refl_lod,	0.f,4.f, 1.5f);  SevC(ReflLod);  sv->DefaultF(0.4f);
 	BtnC("ApplyRefl", btnReflApply);
 	/*sv= &svReflMode;  // todo: 1 cube refl for each car..
 	sv->strMap[0] = TR("#{ReflMode_static}");  sv->strMap[1] = TR("#{ReflMode_single}");
