@@ -176,16 +176,27 @@ void CScene::UpdFog(bool on, bool off)
 //-------------------------------------------------------------------------------------
 void CScene::UpdSkyScale()
 {
-	if (!ndSky)  return;
-	Vector3 scale = app->pSet->view_distance * Vector3::UNIT_SCALE * 0.7f;
-	ndSky->setScale(scale);
-	ndSky->_getFullTransformUpdated();
+	const float sc[SK_ALL] =
+	{  app->pSet->view_distance, app->pSet->refl_dist, app->pSet->water_dist };
+
+	for (int i=0; i < SK_ALL; ++i)
+	if (ndSky[i])
+	{
+		Vector3 scale = sc[i] * Vector3::UNIT_SCALE * 0.7f;
+		// LogO("Sky "+toStr(i)+" "+fToStr(sc[i]));
+		ndSky[i]->setScale(scale);
+		ndSky[i]->_getFullTransformUpdated();
+	}
+	// ndSky[0]->setVisible(0);
+	// ndSky[1]->setVisible(1);
+	// ndSky[2]->setVisible(0);
 }
+
 void CScene::CreateSkyDome(String sMater, float yaw)
 {
 	// return;  //** test no sky
-	if (itSky)  return;
-	LogO("C--- create SkyDome");
+	if (itSky[0])  return;  // already created
+	LogO("C--- create SkyDomes");
 	
 	auto *mgr = app->mSceneMgr;
 	ManualObject* m = mgr->createManualObject();
@@ -223,20 +234,29 @@ void CScene::CreateSkyDome(String sMater, float yaw)
 	}	}
 	m->end();
 
-	sMeshSky = "skymesh";
-	MeshPtr mesh = m->convertToMesh(sMeshSky, "General", false);
-	auto dyn = SCENE_DYNAMIC; // SCENE_STATIC;  // todo: sky in postprocess shader..
-	itSky = app->mSceneMgr->createItem( mesh, dyn );
-	itSky->setCastShadows(false);
-	itSky->setVisibilityFlags(RV_Sky);
-	// Aabb aabb( Aabb::BOX_INFINITE );  itSky->setLocalAabb(aabb);  // meh-
-	ndSky = app->mSceneMgr->getRootSceneNode( dyn )->createChildSceneNode( dyn );
-	ndSky->attachObject(itSky);
-	Quaternion q;  q.FromAngleAxis(Degree(-yaw), Vector3::UNIT_Y);
-	ndSky->setOrientation(q);
+
+	//  todo: sky in postprocess shader? splits workspace etc
+	//  ndSky is moved each frame to camera pos to be in center
+	const uint32 vis[SK_ALL] = { RV_SkyMain, RV_SkyCubeRefl, RV_SkyPlanarRefl };
+	auto dyn = SCENE_DYNAMIC; // SCENE_STATIC;
+	for (int i=0; i < SK_ALL; ++i)
+	{
+		sMeshSky[i] = "skymesh"+toStr(i);
+		MeshPtr mesh = m->convertToMesh(sMeshSky[i], "General", false);
+
+		itSky[i] = app->mSceneMgr->createItem( mesh, dyn );
+		itSky[i]->setCastShadows(false);
+		itSky[i]->setVisibilityFlags(vis[i]);
+		// LogO(toStr(vis[i]));
+		// Aabb aabb( Aabb::BOX_INFINITE );  itSky->setLocalAabb(aabb);  // meh-
+		
+		ndSky[i] = app->mSceneMgr->getRootSceneNode( dyn )->createChildSceneNode( dyn );
+		ndSky[i]->attachObject(itSky[i]);
+		Quaternion q;  q.FromAngleAxis(Degree(-yaw), Vector3::UNIT_Y);
+		ndSky[i]->setOrientation(q);
+	}
 	UpdSkyScale();
-
-
+	
 	//  tex change to mirror
 	Root *root = app->mRoot;
 	HlmsSamplerblock sampler;
@@ -253,13 +273,15 @@ void CScene::CreateSkyDome(String sMater, float yaw)
 
 void CScene::DestroySkyDome()
 {
-	LogO("D--- destroy SkyDome");
+	LogO("D--- destroy SkyDomes");
 	auto *mgr = app->mSceneMgr;
-	MeshManager::getSingleton().remove(sMeshSky);
-	if (ndSky)
-	{   mgr->destroySceneNode(ndSky);  ndSky = 0;  }
-	if (itSky)
-	{   mgr->destroyItem(itSky);  itSky = 0;  }
+	for (int i=0; i < SK_ALL; ++i)
+	{
+		if (!sMeshSky[i].empty())
+		{	MeshManager::getSingleton().remove(sMeshSky[i]);  sMeshSky[i].clear();  }
+		if (ndSky[i]){  mgr->destroySceneNode(ndSky[i]);  ndSky[i] = 0;  }
+		if (itSky[i]){  mgr->destroyItem(itSky[i]);  itSky[i] = 0;  }
+	}
 }
 
 
@@ -267,10 +289,13 @@ void CScene::DestroySkyDome()
 //-------------------------------------------------------------------------------------
 void CScene::UpdSky()
 {
-	if (!ndSky)  return;
 	Quaternion q;  q.FromAngleAxis(Degree(-sc->skyYaw), Vector3::UNIT_Y);
-	ndSky->setOrientation(q);
-	ndSky->_getFullTransformUpdated();
+	for (int i=0; i < SK_ALL; ++i)
+	if (ndSky[i])
+	{
+		ndSky[i]->setOrientation(q);
+		ndSky[i]->_getFullTransformUpdated();
+	}
 	UpdSun();  //in ed
 }
 

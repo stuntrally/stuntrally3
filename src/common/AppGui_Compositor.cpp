@@ -96,6 +96,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	if (pass->getType() != PASS_CUSTOM)
 	{
 		pass = target->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
+		pass->mIdentifier = 99900;  //-?
 	}
 	if (!vr_mode)  // single gui, fullscreen
 	{

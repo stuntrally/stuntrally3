@@ -299,9 +299,10 @@ void App::update( float dt )
 
 	scn->UpdSun(dt);  // ⛅
 
-	if (scn->ndSky)
-	{	scn->ndSky->setPosition(mCamera->getPosition());
-		scn->ndSky->_getFullTransformUpdated();
+	for (int i=0; i < CScene::SK_ALL; ++i)
+	if (scn->ndSky[i])
+	{	scn->ndSky[i]->setPosition(mCamera->getPosition());
+		scn->ndSky[i]->_getFullTransformUpdated();
 	}
 
 	if (mCubeCamera)  // refl
@@ -370,9 +371,11 @@ void App::update( float dt )
 	if (bRecreateFluidsRTT)
 	{	bRecreateFluidsRTT = false;
 		
-		scn->refl.DestroyRTT();  // fixme
+		scn->refl.DestroyFluids();
+		scn->refl.DestroyRTT();  // fixme, crash from listener?
 		scn->refl.CreateRTT();
-		AddListenerRnd2Tex();
+		// AddListenerRnd2Tex();
+		scn->refl.CreateFluids();
 	}
 
 	//  🔥 emitters  upd 🔁

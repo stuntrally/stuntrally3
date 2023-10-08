@@ -44,9 +44,11 @@ public:
 	void CreateAllAtmo(), DestroyAllAtmo();
 
 	//  ⛅ Sky ~
-	Ogre::String sMeshSky;
-	Ogre::Item* itSky = 0;
-	Ogre::SceneNode* ndSky = 0;
+	enum ESkies { SK_Main=0,  SK_CubeRefl,  SK_PlanarRefl, SK_ALL };
+	Ogre::String sMeshSky[SK_ALL];
+	Ogre::Item* itSky[SK_ALL] = {0, 0, 0};
+	Ogre::SceneNode* ndSky[SK_ALL] = {0, 0, 0};
+
 	void CreateSkyDome(Ogre::String sMater, float yaw), UpdSkyScale();
 	void DestroySkyDome(), UpdSky();
 

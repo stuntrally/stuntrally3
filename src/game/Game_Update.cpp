@@ -68,9 +68,10 @@ void App::update( float dt )
 
 	scn->UpdSun(dt);  // ⛅
 
-	if (scn->ndSky)
-	{	scn->ndSky->setPosition(mCamera->getPosition());
-		scn->ndSky->_getFullTransformUpdated();
+	for (int i=0; i < CScene::SK_ALL; ++i)
+	if (scn->ndSky[i])
+	{	scn->ndSky[i]->setPosition(mCamera->getPosition());
+		scn->ndSky[i]->_getFullTransformUpdated();
 	}
 
 

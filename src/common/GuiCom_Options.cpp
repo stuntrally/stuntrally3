@@ -101,7 +101,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 						sv->Init("ReflSize",	&pSet->refl_size,    0,NumTexSizes-1 -1, 2.f);  sv->DefaultI(0);
 
 	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->refl_dist,	20.f,60000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
-																	SevC(ReflDist);  sv->DefaultF(300.f);
+																	SevC(ReflDist);  sv->DefaultF(1000.f);
 	sv= &svReflIbl;		sv->Init("ReflIbl",		&pSet->refl_ibl,	0,8, 2.f);  SevC(ReflIbl);  sv->DefaultI(5);
 	sv= &svReflLod;		sv->Init("ReflLod",		&pSet->refl_lod,	0.f,4.f, 1.5f);  SevC(ReflLod);  sv->DefaultF(0.4f);
 	BtnC("ApplyRefl", btnReflApply);
@@ -118,7 +118,8 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 						sv->Init("WaterSize",	&pSet->water_size, 0,NumTexSizes-1);  sv->DefaultI(0);  SevC(WaterSize);
 
 	sv= &svWaterSkip;	sv->Init("WaterSkip",	&pSet->water_skip,	0,20, 2.f);  sv->DefaultI(0);
-	sv= &svWaterDist;	sv->Init("WaterDist",	&pSet->water_dist,	20.f,60000.f, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));  sv->DefaultF(300.f);
+	sv= &svWaterDist;	sv->Init("WaterDist",	&pSet->water_dist,	20.f,60000.f, 4.f, 1,4, 0.001f, TR(" #{UnitKm}"));
+																	SevC(WaterDist);  sv->DefaultF(1000.f);
 	sv= &svWaterLod;	sv->Init("WaterLod",	&pSet->water_lod,	0.f,2.f, 2.f);  sv->DefaultF(0.4f);
 	BtnC("ApplyShadersWater", btnWaterApply);
 
@@ -291,13 +292,19 @@ void CGuiCom::btnShadersApply(WP)
 {
 }
 
+void CGuiCom::slWaterDist(SV*)
+{
+	// planar refl dist?..
+	app->scn->UpdSkyScale();
+}
 
 //  🔮 reflection
 void CGuiCom::slReflDist(SV*)
 {
 	app->mCubeCamera->setFarClipDistance( pSet->refl_dist );
-	// todo: 2nd sky scale
+	app->scn->UpdSkyScale();
 }
+
 void CGuiCom::slReflMode(SV* sv)
 {
 }
