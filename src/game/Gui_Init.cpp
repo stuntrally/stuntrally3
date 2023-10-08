@@ -268,7 +268,7 @@ void CGui::InitGui()
 
 	ck= &ckBulletDebug;	ck->Init("BulletDebug", &pSet->bltDebug);
 	ck= &ckBltLines;	ck->Init("BltLines",	&pSet->bltLines);
- //	ck= &ckBltProfTxt;	ck->Init("BltProfTxt",  &pSet->bltProfilerTxt);  //-
+ 	ck= &ckBltProfTxt;	ck->Init("BltProfTxt",  &pSet->bltProfilerTxt);  // fixme?
 
  // ck= &ckCarDbgBars;	ck->Init("CarDbgBars",  &pSet->car_dbgbars);   Cev(HudShow);  //-
 	ck= &ckCarDbgTxt;	ck->Init("CarDbgTxt",   &pSet->car_dbgtxt);    Cev(HudShow);

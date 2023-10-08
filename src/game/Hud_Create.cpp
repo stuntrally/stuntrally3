@@ -416,7 +416,7 @@ void CHud::Create()
 									  (i/2 ?-1.f : 1.f) * 0.22f - 0.6f, 0.f);
 			const Real s = 0.06f;  // par
 			ndTireVis[i]->setScale(s, s*asp, 1.f);
-			// ndTireVis[i]->setVisible(pSet->car_tirevis);
+			// ndTireVis[i]->setVisible(pSet->car_tirevis);  //-
 	}	}
 
 
@@ -463,10 +463,6 @@ void CHud::Create()
 
 //  💥 HUD destroy
 //---------------------------------------------------------------------------------------------------------------
-// CHud::OvrDbg::OvrDbg() :
-// 	oL(0),oR(0),oS(0), oU(0),oX(0)
-// {	}
-
 CHud::Hud::Hud()
 {
 	vMiniPos.resize(6);
@@ -498,6 +494,7 @@ void CHud::Destroy()
 
 		// for (i=0; i < 3; ++i)  Dest(h.txOpp[i])
 		// Dest(h.bckOpp)
+
 		//  🏁 times, lap
 		Dest(h.txTimTxt)  Dest(h.txTimes)  Dest(h.bckTimes)
 		Dest(h.txLapTxt)  Dest(h.txLap)  Dest(h.bckLap)
@@ -521,7 +518,5 @@ void CHud::Destroy()
 	Dest(txCamInfo)
 	
 	for (i=0; i < 4; ++i)
-	{
-		Dest2(ndTireVis[i])  Del(hrTireVis[i])
-	}
+	{	Dest2(ndTireVis[i])  Del(hrTireVis[i])  }
 }
