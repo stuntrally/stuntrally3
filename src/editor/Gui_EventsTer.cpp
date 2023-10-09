@@ -39,6 +39,7 @@ TerData& CGui::td()
 void CGui::tabTerLayer(Tab wp, size_t id)
 {
 	idTerLay = id;  // help var
+	if (notd())  return;
 	TerLayer* l = &td().layersAll[idTerLay];
 
 	noBlendUpd = true;
@@ -76,8 +77,10 @@ void CGui::SldUpd_TerLNvis()
 {
 	//  upd vis of layer noise sliders
 	//  check for valid +1,-1,+2 layers
+	if (notd())  return;
 	int ll = td().layers.size();
 	int l1 = -1, last = 8, last_2 = 8,  nu = 0, ncl = 0;
+
 	for (int i=0; i < TerData::ciNumLay; ++i)
 	if (td().layersAll[i].on)
 	{	++nu;
@@ -233,7 +236,7 @@ void CGui::slTerPar(SV*sv)
 //  save new hmap
 void CGui::saveNewHmap(float* hfData, int size, int add, bool bNew)
 {
-	auto file = scn->getHmap(add ? scn->sc->tds.size() :  // if add, last
+	auto file = scn->getHmap( //add ? scn->sc->tds.size() :  // if add, last
 		scn->terCur, bNew);
 	LogO("TER+ New Hmap  " + toStr(size) +"  "+ file);
 	std::ofstream of;
@@ -257,6 +260,7 @@ void CGui::btnAlignHorizonToTer(WP)
 
 void CGui::btnTerrainNew(WP)
 {
+	if (notd())  return;
 	int si = UpdTxtTerSize();
 
 	auto& s = td().iVertsX;
@@ -283,6 +287,7 @@ void CGui::btnTerrainNew(WP)
 //  Terrain  half  --------------------------------
 void CGui::btnTerrainHalf(WP)
 {
+	if (notd())  return;
 	int so = td().iVertsX;
 	int s = so / 2;
 	float* hfData = new float[s * s];
@@ -309,6 +314,7 @@ void CGui::btnTerrainHalf(WP)
 //  Terrain  double  --------------------------------
 void CGui::btnTerrainDouble(WP)
 {
+	if (notd())  return;
 	int so = td().iVertsX;
 	int s = so * 2, ofs4 = s / 4;
 	float* hfData = new float[s * s];
@@ -334,6 +340,7 @@ void CGui::btnTerrainDouble(WP)
 //  Terrain  resize ..  --------------------------------
 void CGui::btnTerrainResize(WP)
 {
+	if (notd())  return;
 	int size = getHMapSizeTab() / 2;
 	if (valTerTriSize)
 		valTerTriSize->setCaption(fToStr(td().fTriangleSize * size,2,4));
@@ -374,6 +381,7 @@ void CGui::btnTerrainResize(WP)
 //  Terrain  move  --------------------------------
 void CGui::btnTerrainMove(WP)
 {
+	if (notd())  return;
 	Ed ex = (Ed)app->mWndEdit->findWidget("TerMoveX");
 	Ed ey = (Ed)app->mWndEdit->findWidget("TerMoveY");
 	int mx = ex ? s2i(ex->getCaption()) : 0;
@@ -407,6 +415,8 @@ void CGui::btnTerrainMove(WP)
 //  Terrain  height scale  --------------------------------
 void CGui::btnScaleTerH(WP)
 {
+	return;  // todo: fixme crash..
+	if (notd())  return;
 	if (!app->scn->road)  return;
 	Real sf = std::max(0.1f, fScaleTer);  // scale mul
 	int i;
@@ -559,6 +569,7 @@ const static float ns[15][4] = {  //  freq, oct, pers, pow
 
 void CGui::btnNpreset(WP wp)
 {
+	if (notd())  return;
 	int l = bRn2->getStateSelected() ? 1 : 0;
 	String s = wp->getName();  //"TerLN_"
 	int i = s2i(s.substr(6));
@@ -573,6 +584,7 @@ void CGui::btnNpreset(WP wp)
 }
 void CGui::btnNrandom(WP wp)
 {
+	if (notd())  return;
 	int l = bRn2->getStateSelected() ? 1 : 0;
 
 	TerLayer& t = td().layersAll[idTerLay];
@@ -587,6 +599,7 @@ void CGui::btnNrandom(WP wp)
 //  swap noise 1 and 2 params
 void CGui::btnNswap(WP wp)
 {
+	if (notd())  return;
 	TerLayer& t = td().layersAll[idTerLay];
 	std::swap(t.nFreq[0], t.nFreq[1]);
 	std::swap(t.nOct[0] , t.nOct[1] );

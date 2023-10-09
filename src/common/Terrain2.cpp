@@ -85,7 +85,7 @@ void CScene::CreateTerrain1(int n)
 	///  🏔️ Layer Textures  ------------------------------------------------
 	const Real fTer = td.fTerWorldSize;
 	// const Real fTer = td.fTriangleSize * td.iVertsX;
-	int ls = td.layers.size();
+	int ls = std::min(4, (int)td.layers.size());
 	for (int i=0; i < ls; ++i)
 	{
 		const TerLayer& l = td.layersAll[td.layers[i]];

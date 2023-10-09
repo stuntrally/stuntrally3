@@ -88,6 +88,7 @@ void TerData::UpdLayers()
 				else
 					triplanarLayer1 = li;  }
 			++li;
-			layers.push_back(i);
+			if (layers.size() < 4)  // Terra 4 max
+				layers.push_back(i);
 	}	}
 }
