@@ -108,24 +108,13 @@ void App::LoadData()
 //------------------------------------------------------------------------------------
 App::~App()
 {
-	///+  save settings
-	SaveCam();
-	pSet->Save(PATHS::SettingsFile(1));
-	scn->data->user->SaveXml(PATHS::UserConfigDir() + "/tracks.xml");
-
-	DestroyObjects(false);
-
-	delete scn;
-
-	// gui->viewBox->destroy();
-	// delete gui->viewBox;
+	delete scn;  scn = 0;
 
 	BltWorldDestroy();
 	
 	delete[] pBrFmask;  pBrFmask = 0;
+	delete[] mBrushData;  mBrushData = 0;
 
-	delete[] mBrushData;
-
-	delete gcom;
-	delete gui;
+	delete gcom;  gcom = 0;
+	delete gui;  gui = 0;
 }

@@ -21,7 +21,6 @@ CScene::CScene(App* app1)
 {
 	data = new CData();
 	sc = new Scene();
-	// mWaterRTT = new WaterRTT();
 	refl.app = app1;
 
 	//  Grass
@@ -35,7 +34,6 @@ CScene::CScene(App* app1)
 CScene::~CScene()
 {
 	delete grass;
-	//?DestroyRoad();
 	// delete pace;
 
 	delete sc;
@@ -66,13 +64,4 @@ void CScene::DestroyTrail()
 	{	trail->Destroy();
 		delete trail;  trail = 0;
 	}
-}
-
-void CScene::destroyScene()
-{
-	// mWaterRTT->destroy();
-
-	// DestroyRoads();  DestroyPace();  DestroyTrail();
-	// DestroyTrees();
-	// DestroyWeather();
 }

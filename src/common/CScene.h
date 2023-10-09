@@ -25,8 +25,6 @@ public:
 	CScene(App* app1);
 	~CScene();
 
-	void destroyScene();
-
 
 	//  Shadows-
 	// void changeShadows(), UpdShaderParams(), UpdPaceParams();
@@ -84,7 +82,7 @@ public:
 	
 	GridMtrs grid;
 
-	//  driving aids, game only
+	//  driving aids, game only	 // todo: for each player, split ..
 	SplineRoad* trail = 0;
 	PaceNotes* pace = 0;
 	void DestroyRoads(), DestroyPace(), DestroyTrail();

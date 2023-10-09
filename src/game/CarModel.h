@@ -13,7 +13,7 @@
 
 namespace Ogre {  class HlmsPbsDatablock;
 	class SceneNode;  class Camera;  class SceneManager;
-	class ParticleSystem;  class Item;  class Terra;
+	class ParticleSystem;  class Item;  //class Terra;
 	namespace v1 {  class RibbonTrail;  class BillboardSet;  }  }
 namespace MyGUI {  class TextBox;  }
 class SETTINGS;  class GAME;  class CAR;

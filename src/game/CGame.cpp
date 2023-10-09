@@ -103,7 +103,6 @@ void App::destroyScene()
 	
 	// delete[] blendMtr;  blendMtr = 0;
 
-	// BaseApp::destroyScene();
 
 	LogO(">>>>>>>> Destroy SR ----");
 	Destroy();

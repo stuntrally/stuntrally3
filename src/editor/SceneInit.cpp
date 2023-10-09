@@ -13,6 +13,7 @@
 #include "Reflect.h"
 #include "paths.h"
 #include "RenderConst.h"
+#include "TracksXml.h"
 
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
@@ -199,14 +200,15 @@ void App::destroyScene()
 
 	scn->DestroyTrail();
 
-	// BaseApp::destroyScene();
 
-	if (mGui)  {
-		mGui->shutdown();	delete mGui;	mGui = 0;  }
-	if (mPlatform)  {
-		mPlatform->shutdown();	delete mPlatform;	mPlatform = 0;  }
+	DestroyGui();
 	
 	LogO(">>>>>>>> Destroy SR Ed done ----");
+
+	///+  save settings
+	SaveCam();
+	pSet->Save(PATHS::SettingsFile(1));
+	scn->data->user->SaveXml(PATHS::UserConfigDir() + "/tracks.xml");
 }
 
 

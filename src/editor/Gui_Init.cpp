@@ -498,8 +498,7 @@ void CGui::InitGui()
 	//------------------------------------------------------------------------
 	Ed(GrSwayDistr, editTrGr);  Ed(GrSwayLen, editTrGr);  Ed(GrSwaySpd, editTrGr);
 
-	imgGrass = fImg("ImgGrass");  imgGrClr = fImg("ImgGrClr");
-	//; Cmb(cmbGrassClr, "CmbGrClr", comboGrassClr);
+	imgGrass = fImg("ImgGrass");  //imgGrClr = fImg("ImgGrClr");
 
 	//  grass channels
 	sv= &svGrChAngMin;	sv->Init("GrChMinA",	&f, 0.f,90.f, 1.f, 1,4);  sv->DefaultF(30.f);
