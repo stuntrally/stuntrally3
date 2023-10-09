@@ -134,6 +134,8 @@ void App::createScene01()  // once, init
 
 
 	CreatePreviews();
+	
+	prvScene.Create(this);
 
 
 	///  🧰  Command line arguments  ----
@@ -179,6 +181,7 @@ void App::createScene01()  // once, init
 void App::destroyScene()
 {
 	DestroyRnd2Tex();
+	prvScene.Destroy();
 	// scn->destroyScene();
 
 	LogO("DD-- destroyScene ------DD");

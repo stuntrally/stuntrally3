@@ -253,7 +253,8 @@ void CGui::InitGui()
 
 	sv= &svMiniNum;		sv->strMap[App::RT_ALL     ] = "ALL";
 	sv->strMap[App::RT_RoadDens] = "Road Density";		sv->strMap[App::RT_RoadPrv ] = "Road Preview";  // todo: TR(..
-	sv->strMap[App::RT_Terrain ] = "Terrain Preview";	sv->strMap[App::RT_View    ] = "View camera";
+	sv->strMap[App::RT_Terrain ] = "Terrain Preview";	sv->strMap[App::RT_View3D    ] = "Track View";
+	sv->strMap[App::RT_PreView3D] = "Object View";
 						sv->Init("MiniNum",		&pSet->num_mini,  0, App::RT_ALL-1);  sv->DefaultI(1);  Sev(MiniNum);
 
 	// sv= &svTerUpd;		sv->Init("TerUpd",		&pSet->ter_skip,  0, 20);  sv->DefaultI(1);  //; todo: restore

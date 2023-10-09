@@ -107,7 +107,7 @@ compositor_node Rtt_Terrain
 }
 
 //  🏗️ ed rtt 3  cam preview  normal all
-compositor_node Rtt_View
+compositor_node Rtt_View3D
 {
 	in 0 rt_output
 
@@ -141,6 +141,43 @@ compositor_node Rtt_View
 	}
 }
 //  end of  Editor only
+
+
+//  🧊 3d preview  other scene
+//------------------------------------------------------------------------------------
+compositor_node Rtt_PreView3D
+{
+	in 0 rt_output
+
+	target rt_output
+	{
+		pass render_scene
+		{
+			profiling_id "RTT 3d preview"
+			identifier	12345
+
+			load
+			{
+				all				clear
+				// clear_colour	0 0 0 0  // black, transparent?
+				clear_colour	0.2 0.35 0.45 1  // sky blue
+			}
+			store
+			{
+				colour	store
+				depth	store
+				stencil	store
+			}
+
+			visibility_mask  0x000001FF  // all
+			rq_first  0
+			rq_last	  199  // before RQ_OVERLAY
+
+			overlays	off
+			// shadows	SR3_Shadows  // no-
+		}
+	}
+}
 
 
 //  🔮 cube reflections

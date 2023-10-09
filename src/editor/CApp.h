@@ -5,8 +5,9 @@
 #include "quaternion.h"
 #include "tracksurface.h"
 #include "SceneXml.h"  //Object-
-#include "PreviewTex.h"
 #include "brushes.h"
+#include "PreviewTex.h"
+#include "PreviewScene.h"
 
 #include <SDL_keycode.h>
 // #include <Ogre.h>
@@ -97,10 +98,11 @@ public:
 
 	//  🖼️ rtt  render to texture  --------
 	enum ERnd2Tex
-	{	RT_RoadDens, // roadDensity.png  road (on terrain) map to exclude grass
-		RT_RoadPrv,  // road.png     minimap road preview, colors
-		RT_Terrain,  // terrain.png  minimap terrain
-		RT_View,     // view.jpg  preview camera, track view
+	{	RT_RoadDens,  // roadDensity.png   road (on terrain) map to exclude grass,trees
+		RT_RoadPrv,   // road.png     minimap road preview, colors
+		RT_Terrain,   // terrain.png  minimap terrain
+		RT_View3D,    // view.jpg     preview camera, track 3d view
+		RT_PreView3D, // 3d preview, object
 		RT_ALL
 	};
 	struct SRndTrg
@@ -247,4 +249,8 @@ public:
 
 	//  🛣️ Roads  ----
 	void RoadsNext(int add = 1), RoadsAdd(), RoadsDel();
+
+
+	//  🧊 3D Preview  for objects, vegetation
+	PreviewScene prvScene;
 };

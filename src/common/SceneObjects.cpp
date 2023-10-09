@@ -8,12 +8,11 @@
 #include "settings.h"
 #include "BtOgreGP.h"
 #include "ShapeData.h"
+#include "App.h"
 #ifdef SR_EDITOR
-	#include "CApp.h"
 	#include "CGui.h"
 	#include "Road.h"
 #else
-	#include "CGame.h"
 	#include "game.h"
 #endif
 #include <BulletCollision/CollisionDispatch/btCollisionObject.h>

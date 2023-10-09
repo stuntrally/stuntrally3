@@ -91,7 +91,7 @@ void CScene::DestroySun()
 	sun = 0;
 
 	if (ndSun)
-		mgr->destroySceneNode( ndSun );
+		mgr->destroySceneNode(ndSun);
 	ndSun = 0;
 }
 

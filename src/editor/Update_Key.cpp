@@ -37,7 +37,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			case key(KP_ENTER):  case key(RETURN):  // save screen
 			{
 				int u = pSet->allow_save ? pSet->gui.track_user : 1;
-				rt[RT_View].tex->writeContentsToFile(gcom->pathTrk[u] + pSet->gui.track + "/preview/view.jpg", 0, 0);
+				rt[RT_View3D].tex->writeContentsToFile(gcom->pathTrk[u] + pSet->gui.track + "/preview/view.jpg", 0, 0);
 				
 				gcom->listTrackChng(gcom->trkList,0);  // upd gui img
 				gui->Status("#{Saved}", 1,1,0);

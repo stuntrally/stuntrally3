@@ -36,26 +36,30 @@ using namespace Ogre;
 // . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 void App::CreateRnd2Tex()
 {
-	const char* strWs[RT_ALL] = {"Rtt_RoadDens", "Rtt_RoadPreview", "Rtt_Terrain", "Rtt_View"};
+	const char* strWs[RT_ALL] = {
+		"Rtt_RoadDens", "Rtt_RoadPreview", "Rtt_Terrain", "Rtt_View3D", "Rtt_PreView3D"};
 		
-	auto* texMgr =mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
-	auto* mgr = mRoot->getCompositorManager2();
+	auto* texMgr = mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
+	auto* wsMgr = mRoot->getCompositorManager2();
 
 	scn->sc->tds[0].UpdVals();
 	Real tws = scn->sc->tds[0].fTerWorldSize;  // world dim  // 1st ter
 
 	for (int i=0; i < RT_ALL; ++i)
 	{
-		auto& r = rt[i];  bool full = i==RT_View;
+		bool full = i == RT_View3D, prv3D = i == RT_PreView3D;
+		auto& r = rt[i];
 		String si = toStr(i); //, sMtr = "road_mini_"+si;
 		{
+			auto* scMgr = prv3D ? prvScene.mgr : mSceneMgr;
+
 			//  🖼️ Texture & RTT
 			r.tex = texMgr->createTexture( "EdTex" + si,
 				GpuPageOutStrategy::SaveToSystemRam,
 				TextureFlags::ManualTexture, TextureTypes::Type2D );
 			// const int mul = tws > 1200.f ? 2 : 1, div = mul == 1 ? 1 : 2;
 			uint32 res =
-				i == RT_View ? 1024 :  // preview const
+				i == RT_View3D ? 1024 :  // preview const
 				1024;  // todo: // mul * 1024;  // bigger with ter size  // todo: fix previews..
 			
 			r.tex->setResolution(res, res);
@@ -79,10 +83,10 @@ void App::CreateRnd2Tex()
 
 			//  🎥 Camera
 			if (r.cam)
-			{	mSceneMgr->destroyCamera(r.cam);  r.cam = 0;  }
-			if( !r.cam )
+			{	scMgr->destroyCamera(r.cam);  r.cam = 0;  }
+			if( !r.cam && !prv3D)  // prv has own
 			{
-				r.cam = mSceneMgr->createCamera( "RttCam" + si, true );
+				r.cam = scMgr->createCamera( "RttCam" + si, true );
 				bool btm = i == RT_RoadDens;
 				r.cam->setPosition(Vector3(0, btm ? -1500 : 1500, 0));  //par- max height
 				r.cam->setOrientation( btm ?
@@ -91,6 +95,7 @@ void App::CreateRnd2Tex()
 				r.cam->setNearClipDistance(0.5);
 				r.cam->setFarClipDistance(50000);  // r.cam->setUseRenderingDistance(true);
 				r.cam->setAspectRatio(1.0);
+				
 				if (!full)  // ortho proj
 				{	r.cam->setProjectionType(PT_ORTHOGRAPHIC);
 					r.cam->setOrthoWindow(tws, tws);
@@ -110,26 +115,31 @@ void App::CreateRnd2Tex()
 			chan[0] = r.rtt;
 
 			const String name( "RttWrk" + si );  // created from code
-			if( !mgr->hasWorkspaceDefinition( name ) )
+			if( !wsMgr->hasWorkspaceDefinition( name ) )
 			{
-				auto* w = mgr->addWorkspaceDefinition( name );
+				auto* w = wsMgr->addWorkspaceDefinition( name );
 				// w->mEnableForwardPlus = false;
 				w->connectExternal( 0, strWs[i], 0 );
 			}else
 				LogO("Workspace already exists: "+name);
 
 		// #define MANUAL_RTT_UPD  // todo: terrain shadowed..?
+
 			//  add Workspace
-			LogO(String("++++ WS add:  Ed ")+strWs[i]+", all: "+toStr(mgr->getNumWorkspaces()));
+			LogO(String("++++ WS add:  Ed ")+strWs[i]+", all: "+toStr(wsMgr->getNumWorkspaces()));
+
+			auto* cam = prv3D ? prvScene.cam : r.cam;
+			r.ws = wsMgr->addWorkspace( scMgr, chan, cam, name,
 		#ifndef MANUAL_RTT_UPD
-			r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, true );  //! slower
+				true );  //! slower
 			// r.ws->setEnabled(false);
 		#else
-			r.ws = mgr->addWorkspace( mSceneMgr, chan, r.cam, name, false );  // todo: manual update
+				false );  // todo: manual update
 			// r.ws->_beginUpdate(true);
 			// r.ws->_update();  // todo: upd when needed only, skip
 			// r.ws->_endUpdate(true);
 		#endif
+
 
 			//  🌍 Hud minimap rect 2d  ----
 			{
@@ -206,7 +216,7 @@ void App::UpdRnd2Tex()
 	++ii;
 	for (int i=0; i < RT_ALL; ++i)
 	{
-		auto& r = rt[i];  bool full = i==RT_View;
+		auto& r = rt[i];  bool full = i == RT_View3D;
 		if (!r.ws)  continue;
 
 		if (full)
@@ -250,6 +260,7 @@ void App::DestroyRnd2Tex()
 		if (r.cam) {  mSceneMgr->destroyCamera( r.cam );  r.cam = 0;  }
 		if (r.rtt) {  texMgr->destroyTexture( r.rtt );  r.rtt = 0;  }
 		if (r.tex) {  texMgr->destroyTexture( r.tex );  r.tex = 0;  }
+
 		delete r.hr;  r.hr = 0;
 		if (r.nd)  {  mSceneMgr->destroySceneNode( r.nd );  r.nd = 0;  }
 	}
@@ -270,14 +281,14 @@ void App::UpdMiniSize()
 
 	for (int i=0; i < RT_ALL; ++i)
 	{
-		auto& r = rt[i];  bool full = i==RT_View;
+		auto& r = rt[i];  bool full = i == RT_View3D;
 		if (!r.hr)  continue;
 
 		r.hr->begin();
 		auto s = full ? 2.f : pSet->size_minimap;
 		Real x = 1.f - s / asp, y = -1.f + s;
-		Real x0 = i==RT_RoadDens ? 1.f : 0.f,
-			 x1 = i==RT_RoadDens ? 0.f : 1.f;
+		Real x0 = i == RT_RoadDens ? 1.f : 0.f,
+			 x1 = i == RT_RoadDens ? 0.f : 1.f;
 		r.hr->position(x,  -1.f, 0.f);  r.hr->texUV(x0, 1.f);
 		r.hr->position(1.f,-1.f, 0.f);  r.hr->texUV(x1, 1.f);
 		r.hr->position(x,     y, 0.f);  r.hr->texUV(x0, 0.f);
@@ -296,7 +307,7 @@ void App::UpdMiniVis()
 	for (int i=0; i < RT_ALL; ++i)
 	{
 		bool vis = 
-			full ? i == RT_View :
+			full ? i == RT_View3D :
 			pSet->trackmap && i == pSet->num_mini;
 		if (rt[i].nd)  rt[i].nd->setVisible(vis);
 	}
@@ -365,7 +376,7 @@ return;  // todo: smooth roadDens? on gpu/compute
 		rt[i].tex->update();  // all have to exist
 	}*/
 
-	int n = RT_View; // RT_RoadDens
+	int n = RT_View3D; // RT_RoadDens
 	int w = rt[n].tex->getWidth(), h = rt[n].tex->getHeight();
 	using Ogre::uint;
 	uint *rd = new uint[w*h];   // road render
