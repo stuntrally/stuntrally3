@@ -177,7 +177,7 @@ void CGui::listRplChng(List* li, size_t pos)
 
 		//  file stats
 		int size = fs::file_size(file);
-		//; std::time_t ti = fs::last_write_time(file);
+		//; std::time_t ti = fs::last_write_time(file);  // todo:
 		// if (!std::strftime(stm, 126, "%d.%b'%y  %a %H:%M", std::localtime(&ti)))
 			stm[0]=0;
 		

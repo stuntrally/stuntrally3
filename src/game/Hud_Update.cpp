@@ -152,7 +152,7 @@ void CHud::UpdPosElems(int cnt, int cntC, int carId)
 	if (carId == -1 && hrPos)
 	{	hrPos->begin();
 
-		const int plr = 1;  //; app->mSplitMgr->mNumViewports;
+		const int plr = 1;  //; app->mSplitMgr->mNumViewports;  // todo:
 		for (int v = 0; v < plr; ++v)  // all viewports
 		{
 			const Hud& h = hud[v];

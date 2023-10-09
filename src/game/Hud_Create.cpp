@@ -48,7 +48,6 @@ void CHud::Create()
 	Ogre::Timer ti;
 
 	SceneManager* scm = app->mSceneMgr;
-	// if (hud[0].moMap)//;
 	if (hud[0].txVel || hud[0].txTimes)
 		LogO("C--! Create Hud: exists !");
 

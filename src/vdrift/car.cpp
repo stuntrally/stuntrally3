@@ -169,8 +169,8 @@ void CAR::Update(double dt)
 void CAR::HandleInputs(const std::vector <float> & inputs, float dt)
 {
 	assert(inputs.size() == CARINPUT::ALL); //-
-	//; if (pApp && pApp->IsFocGuiInput())
-		// return;
+	if (pApp && pApp->IsFocGuiInput())
+		return;
 
 	dynamics.inputsCopy = inputs;
 

@@ -375,14 +375,14 @@ void App::LoadGame()
 	
 	pGame->LeaveGame(dstTrk);
 
-	/*if (gui->bReloadSim)  //; ?
+	if (gui->bReloadSim)  // after gui cmb
 	{	gui->bReloadSim = false;
 		pGame->ReloadSimData();
 
 		static bool f1 = true;
 		if (f1) {  f1 = false;
 			gui->updSld_TwkSurf(0);  }
-	}*/
+	}
 	
 	///<>  save old track
 	oldTrack = pSet->game.track;  oldTrkUser = pSet->game.track_user;
@@ -634,12 +634,12 @@ void App::LoadTerrain()
 	if (dstTrk)
 	{
 		scn->CreateTerrains(1);  // common
-		//; GetTerMtrIds();  // todo: get from blendmap tex ..
+		//** GetTerMtrIds();  // todo: get from blendmap tex ..
 		scn->CreateBltTerrains();  // 1st ter only-  // todo: before cars..
 	}
 
 	//; for (int c=0; c < carModels.size(); ++c)
-	// 	carModels[c]->terrain = scn->ter;
+		// carModels[c]->terrain = scn->ter;
 }
 
 //  🛣️ Road  6

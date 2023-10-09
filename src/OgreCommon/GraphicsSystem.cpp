@@ -715,7 +715,7 @@ void GraphicsSystem::chooseSceneManager()
 				RenderQueue::StableSort );
 
 	//Set sane defaults for proper shadow mapping
-	mSceneManager->setShadowDirectionalLightExtrusionDistance( 1000.0f );  //** par! 500..1500
+	mSceneManager->setShadowDirectionalLightExtrusionDistance( 1000.0f );  //** par! 500..1500  todo: ?
 	mSceneManager->setShadowFarDistance( 1000.0f );
 }
 
