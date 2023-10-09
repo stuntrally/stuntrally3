@@ -397,7 +397,8 @@ void App::update( float dt )
 
 	if (oldVis != vis)
 	{	oldVis = vis;
-		gui->viewCanvas->setVisible(vis);
+		rt[RT_PreView3D].nd->setVisible(vis);
+		// gui->viewCanvas->setVisible(vis);
 	}
 	if (gui->tiViewUpd >= 0.f)
 		gui->tiViewUpd += dt;

@@ -10,6 +10,8 @@
 #include <fstream>
 #include "Gui_Def.h"
 #include "Slider.h"
+#include <OgreHlmsCommon.h>
+#include <OgreHlmsPbsDatablock.h>
 #include "MultiList2.h"
 #include <MyGUI.h>
 using namespace MyGUI;
@@ -188,9 +190,19 @@ void CGui::listPickSky(Mli2 li, size_t pos)
 		sc->ldYaw = p->ldYaw;  svSunYaw.Upd();
 		scn->UpdSun();
 	}
-	//  upd img
 	btnSky->setCaption(s);
-	
+
+	//  upd img tex prv
+	Hlms *hlms = app->mRoot->getHlmsManager()->getHlms( HLMS_PBS );
+	HlmsPbsDatablock *db = static_cast<HlmsPbsDatablock*>(hlms->getDatablock( p->mtr ));
+	if (db)
+	{	auto* tex = db->getTexture(PBSM_EMISSIVE);
+	    if (tex)
+		{	String n = tex->getNameStr();
+			app->LoadTex(n);
+			imgSky->setImageTexture(n);
+	}	}
+
 	// app->UpdateTrack();
 	scn->DestroyAllAtmo();
 	scn->CreateAllAtmo();

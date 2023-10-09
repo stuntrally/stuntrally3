@@ -52,6 +52,10 @@
 							<Property key="TextAlign" value="Left"/>
 							<UserString key="tip" value="#{TipSkyMats}"/>
 						</Widget>
+						<!-- Sky prv -->
+						<Widget type="ImageBox" skin="ImageBox" position="310 166 440 110" name="ImgSky">
+							<!-- <Property key="Alpha" value="0.8"/> -->
+						</Widget>
 
 						<!-- sun dir -->
 						<Widget type="TextBox" skin="TextBox" position="100 52 84 25">
@@ -130,14 +134,14 @@
 							<Property key="TextColour" value="0.7 0.85 1"/>
 						</Widget>
 
-						<Widget type="Button" skin="CheckBox" position="500 316 400 24" name="WeatherEnable">
-							<Property key="Caption" value="#{Weather} (I)"/>
-							<Property key="TextColour" value="0.5 0.8 0.8"/>
-							<UserString key="tip" value="#{DisableEdit}"/>
-						</Widget>
-						<Widget type="Button" skin="CheckBox" position="500 276 400 24" name="EmittersEnable">
+						<Widget type="Button" skin="CheckBox" position="500 306 400 24" name="EmittersEnable">
 							<Property key="Caption" value="#{Particles} (P)"/>
 							<Property key="TextColour" value="0.8 0.8 0.5"/>
+							<UserString key="tip" value="#{DisableEdit}"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="500 336 400 24" name="WeatherEnable">
+							<Property key="Caption" value="#{Weather} (I)"/>
+							<Property key="TextColour" value="0.5 0.8 0.8"/>
 							<UserString key="tip" value="#{DisableEdit}"/>
 						</Widget>
 
@@ -1820,21 +1824,21 @@
 						</Widget> -->
 
 						<Widget type="TextBox" skin="TextBox" position="352 76 204 24">
-							<Property key="Caption" value="#{Wind}, #{GrassSway}-!"/>
+							<Property key="Caption" value="#{Wind}, #{GrassSway} ="/>
 							<Property key="TextColour" value="0.6 1 0.4"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="392 108 112 24">
-							<Property key="Caption" value="#{distribution}-"/>
+							<Property key="Caption" value="#{distribution} ="/>
 							<Property key="TextColour" value="0.6 0.9 0.3"/>
 							<UserString key="tip" value="#{TipGrassSwayDistr}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="392 132 112 24">
-							<Property key="Caption" value="#{length}-"/>
+							<Property key="Caption" value="#{length} ="/>
 							<Property key="TextColour" value="0.6 0.9 0.3"/>
 							<UserString key="tip" value="#{TipGrassSwayLen}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="392 156 112 24">
-							<Property key="Caption" value="#{speed}-"/>
+							<Property key="Caption" value="#{speed} ="/>
 							<Property key="TextColour" value="0.6 0.9 0.3"/>
 							<UserString key="tip" value="#{TipGrassSwaySpd}"/>
 						</Widget>
@@ -1855,7 +1859,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="352 220 156 24">
-							<Property key="Caption" value="#{GrDensSmooth}-!"/>
+							<Property key="Caption" value="#{GrDensSmooth} ="/>
 							<Property key="TextColour" value="0.75 0.95 0.45"/>
 							<UserString key="tip" value="#{TipGrDensSmooth}"/>
 						</Widget>
@@ -1867,6 +1871,13 @@
 							<Property key="Colour" value="0.85 1 0.1"/>
 							<Property key="TextColour" value="0.75 0.95 0.45"/>
 							<UserString key="tip" value="#{TipGrDensSmooth}"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="352 240 236 24">
+							<Property key="Caption" value="= #{NotDone}"/>
+							<Property key="TextColour" value="0.6 1 0.4"/>
+							<Property key="FontName" value="font.small"/>
+							<Property key="Alpha" value="0.6"/>
 						</Widget>
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 754 478">
@@ -1922,9 +1933,9 @@
 						<Widget type="ImageBox" skin="ImageBox" position="528 176 200 200" name="ImgGrass">
 							<UserString key="tip" value="#{TipGrassPrev}"/>
 						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="300 92 24 24" name="ImgGrClr">
+						<!-- <Widget type="ImageBox" skin="ImageBox" position="300 92 24 24" name="ImgGrClr">
 							<UserString key="tip" value="#{TipGrassColorMap}"/>
-						</Widget>
+						</Widget> -->
 						<Widget type="Button" skin="CheckBox" position="464 56 130 24" name="LGrEnabled">
 							<Property key="Caption" value="#{Enabled}"/>
 							<Property key="Colour" value="0.6 1 0.6"/>

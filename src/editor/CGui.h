@@ -120,7 +120,7 @@ public:
 	
 
 	//  🌦️🌫️ Sky  --------------------
-	Btn btnSky =0;  // pick
+	Img imgSky =0;  Btn btnSky =0;  // pick
 	Cmb cmbRain1 =0, cmbRain2 =0;
 	void comboSky(CMB), comboRain1(CMB),comboRain2(CMB);
 
@@ -299,9 +299,7 @@ public:
 	SV svGrMinX, svGrMaxX;
 	SV svGrMinY, svGrMaxY;
 
-	void comboGrassMtr(CMB);
-	// Cmb cmbGrassClr =0;  void comboGrassClr(CMB);
-	Img imgGrass =0, imgGrClr =0;
+	Img imgGrass =0;  //, imgGrClr =0;
 
 	///  grass channels  --------
 	int idGrChan =0;  // help var

@@ -186,6 +186,7 @@ void CGui::InitGuiLists()
 	///  👆 Pick window
 	///------------------------------------------------------------------------------------------------------------
 	//  Pick btns
+	imgSky = fImg("ImgSky");
 	Btn("PickSky", btnPickSky);      btn->eventMouseWheel += newDelegate(this, &CGui::wheelSky);  btnSky = btn;
 	Btn("PickTex", btnPickTex);      btn->eventMouseWheel += newDelegate(this, &CGui::wheelTex);  btnTexDiff = btn;
 	Btn("PickGrass", btnPickGrass);  btn->eventMouseWheel += newDelegate(this, &CGui::wheelGrs);  btnGrassMtr = btn;
