@@ -245,11 +245,21 @@ void AppGui::LoadCommonTex()
 {
 	// return;  // needed, "fixes white texture flashes"
 	auto* texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
+
 	for (auto name : mapCommonTex)
-	{
-		TextureGpu *tex = texMgr->createOrRetrieveTexture(name.first,
-			GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
-		tex->scheduleTransitionTo( GpuResidency::Resident );
-	}
+		LoadTex(name.first, false);
+
 	texMgr->waitForStreamingCompletion();
+}
+
+ void AppGui::LoadTex(Ogre::String fname, bool wait)
+ {
+	auto* texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
+
+	TextureGpu *tex = texMgr->createOrRetrieveTexture( fname,
+		GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
+	tex->scheduleTransitionTo( GpuResidency::Resident );
+
+	if (wait)
+		texMgr->waitForStreamingCompletion();
 }

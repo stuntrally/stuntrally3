@@ -139,7 +139,7 @@ public:
 
 	bool bUpdTerPrv =0;
 	Ogre::TextureGpu *terPrvTex =0;
-	const static int BrPrvSize = 256, BrIcoSize = 128, TerPrvSize = 256;
+	const static int BrPrvSize = 256, BrIcoSize = 128, TerPrvSize = 512;
 
 
 	///<>  🖌️⛰️ terrain edit, brush

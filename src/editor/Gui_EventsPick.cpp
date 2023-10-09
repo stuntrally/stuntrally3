@@ -235,13 +235,8 @@ void CGui::listPickTex(Mli2 li, size_t pos)
 			l.texNorm = sNorm;
 	}	}
 
-	//  load tex
-	auto* texMgr = app->mRoot->getRenderSystem()->getTextureGpuManager();
-	TextureGpu *tex = texMgr->createOrRetrieveTexture(s,
-		GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
-	tex->scheduleTransitionTo( GpuResidency::Resident );
-
 	//  upd img
+	app->LoadTex(s);
 	btnTexDiff->setCaption(s.substr(0, s.length()-6));  // rem _d.jpg
     imgTexDiff->setImageTexture(s);
 	UpdSurfList();
@@ -271,7 +266,9 @@ void CGui::listPickGrs(Mli2 li, size_t pos)
 		l.minSy = p->minSy;  svGrMinY.Upd();
 		l.maxSy = p->maxSy;  svGrMaxY.Upd();
 	}
+
 	//  upd img
+	app->LoadTex(s + ".png");
 	btnGrassMtr->setCaption(s);
 	imgGrass->setImageTexture(s + ".png");  // same mtr name as tex
 }

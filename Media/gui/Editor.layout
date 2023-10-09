@@ -2450,13 +2450,13 @@
 							<Property key="TextColour" value="0.6 0.8 0.8"/>
 						</Widget>
 						<Widget type="ImageBox" skin="ImageBox" position="640 110 32 20">
-							<Property key="ImageCoord" value="0 48 32 20"/>
+							<Property key="ImageCoord" value="36 36 32 20"/>
 							<Property key="ImageTexture" value="track_icons.png"/>
 							<Property key="Colour" value="0.2 1 0.4"/>
 							<Property key="Alpha" value="0.8"/>
 						</Widget>
 						<Widget type="ImageBox" skin="ImageBox" position="700 113 32 20">
-							<Property key="ImageCoord" value="0 32 32 20"/>
+							<Property key="ImageCoord" value="0 38 32 20"/>
 							<Property key="ImageTexture" value="track_icons.png"/>
 							<Property key="Colour" value="0.2 1 0.4"/>
 							<Property key="Alpha" value="0.5"/>

@@ -273,9 +273,11 @@ void CGui::tabPgLayers(Tab wp, size_t id)
 
 void CGui::updVegetInfo()
 {
-	Vector3 va = viewSc * svLTrMinSc.getF(),
-			vb = viewSc * svLTrMaxSc.getF();
-	float wa = std::max(va.x, va.z), wb = std::max(vb.x, vb.z);
+	auto& d = app->prvScene.dim;
+	Vector3 va = d * svLTrMinSc.getF(),
+			vb = d * svLTrMaxSc.getF();
+	float wa = std::max(va.x, va.z),
+		  wb = std::max(vb.x, vb.z);
 	txVHmin->setCaption(fToStr(va.y, 1,4));
 	txVHmax->setCaption(fToStr(vb.y, 1,4));
 	txVWmin->setCaption(fToStr(wa, 1,4));
@@ -319,6 +321,8 @@ void CGui::Upd3DView(String mesh)
 {
 	viewMesh = mesh;
 	tiViewUpd = 0.f;
+	app->prvScene.Load(mesh);
+	updVegetInfo();
 }
 
 

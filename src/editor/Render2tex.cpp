@@ -63,9 +63,8 @@ void App::CreateRnd2Tex()
 				1024;  // todo: // mul * 1024;  // bigger with ter size  // todo: fix previews..
 			
 			r.tex->setResolution(res, res);
-			// int mips = PixelFormatGpuUtils::getMaxMipmapCount( res );
-			// r.tex->setNumMipmaps( mips );
 			r.tex->scheduleTransitionTo( GpuResidency::OnStorage );
+			r.tex->setNumMipmaps(1);  // none
 
 			r.tex->setPixelFormat(
 				// PFG_RGBA8_UNORM );  // dark jpg, good prv

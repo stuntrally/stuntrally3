@@ -17,7 +17,6 @@
 #include "MessageBox/MessageBoxStyle.h"
 
 
-namespace wraps {	class RenderBoxScene;  }
 class App;  class SETTINGS;  class CGuiCom;
 class CScene;  class Scene;  class CData;  class TerData;
 class HlmsPbsDbCar;
@@ -266,7 +265,6 @@ public:
 	void updVegetInfo();
 
 	Can viewCanvas =0;
-	wraps::RenderBoxScene* viewBox =0;  Ogre::Vector3 viewSc;
 	MyGUI::IntCoord GetViewSize();
 	Ogre::String viewMesh;
 	float tiViewUpd =0;

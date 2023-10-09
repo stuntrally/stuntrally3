@@ -99,7 +99,7 @@ void App::UpdateEnd(float dt)
 	{	bool vis = bGuiFocus && mWndEdit &&
 			mWndEdit->getVisible() && mWndTabsEdit->getIndexSelected() == TAB_Terrain &&
 			gui->vSubTabsEdit.size() > TAB_Terrain &&
-			gui->vSubTabsEdit[TAB_Terrain]->getIndexSelected() == 4;  // tab
+			gui->vSubTabsEdit[TAB_Terrain]->getIndexSelected() == 5;  // tab
 		ndTerGen->setVisible(vis);
 	}
 
@@ -390,8 +390,10 @@ void App::update( float dt )
 	
 	//--  3d view upd  (is global in window)
 	static bool oldVis = false;
-	int tab = mWndTabsEdit->getIndexSelected(), st5 = gui->vSubTabsEdit[TAB_Veget]->getIndexSelected();
-	bool vis = mWndEdit && mWndEdit->getVisible() && (tab == TAB_Objects || tab == TAB_Veget && st5 == 1);
+	int tab = mWndTabsEdit->getIndexSelected(),
+		st5 = gui->vSubTabsEdit[TAB_Veget]->getIndexSelected();
+	bool vis = mWndEdit && mWndEdit->getVisible() &&
+		(tab == TAB_Objects || tab == TAB_Veget && st5 == 1);
 
 	if (oldVis != vis)
 	{	oldVis = vis;
