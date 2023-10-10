@@ -364,9 +364,9 @@ void CGuiCom::comboLanguage(ComboBox* wp, size_t val)
 
 	// todo: fix, without restart
 	//  reinit gui
-	#ifndef SR_EDITOR
-	//bGuiReinit = true;
-	#endif
+	// #ifndef SR_EDITOR
+	// bGuiReinit = true;
+	// #endif
 }
 
 

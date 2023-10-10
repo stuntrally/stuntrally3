@@ -121,6 +121,7 @@ void App::update( float dt )
 		
 		if (bWindowResized && gcom)
 		{	bWindowResized = false;
+			LogO("[]-- WindowResized");
 
 			gcom->ResizeOptWnd();
 			gcom->SizeGUI();
@@ -128,7 +129,7 @@ void App::update( float dt )
 			gui->updChampListDim();  // resize lists
 			gui->slSSS(0);
 			gui->listCarChng(gui->carList,0);  // had wrong size
-			//; bRecreateHUD = true;
+			bRecreateHUD = true;
 			
 			/*if (mSplitMgr)  //  reassign car cameras from new viewports
 			scn->mWaterRTT->setViewerCamera(cam1);
@@ -138,6 +139,13 @@ void App::update( float dt )
 
 
 		//  ⏱️ HUD  ----
+		//  hud update sizes, after res change
+		if (bRecreateHUD)
+		{	bRecreateHUD = false;
+			
+			hud->Destroy();  hud->Create();
+			bSizeHUD = true;
+		}
 		if (bSizeHUD)
 		{	bSizeHUD = false;
 			

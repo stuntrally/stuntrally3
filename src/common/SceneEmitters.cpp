@@ -47,7 +47,7 @@ void CScene::CreateEmitters(bool force)
 			continue;
 		}
 		ps->setVisibilityFlags(RV_Particles);
-		//; ps->setRenderQueueGroup(RQG_Weather); //RQG_CarParticles);
+		ps->setRenderQueueGroup(RQG_Weather); //RQG_CarParticles);
 
 		SceneNode* nd = rt->createChildSceneNode(SCENE_DYNAMIC, em.pos);
 		nd->attachObject(ps);

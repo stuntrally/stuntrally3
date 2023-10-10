@@ -316,7 +316,7 @@ void CGui::GuiUpdate()
 {
 	gcom->UnfocusLists();
 
-	/*if (gcom->bGuiReinit)  // after language change from combo
+	if (gcom->bGuiReinit)  // after language change from combo  fixme
 	{	gcom->bGuiReinit = false;
 
 		mGui->destroyWidgets(app->vwGui);
@@ -327,7 +327,7 @@ void CGui::GuiUpdate()
 
 		app->bWindowResized = true;
 		app->mWndTabsOpts->setIndexSelected(3);  // switch back to view tab
-	}*/
+	}
 
 		
 	//  sort trk list
@@ -342,12 +342,12 @@ void CGui::GuiUpdate()
 	}
 
 	//  upd tweak tire save
-	/*if (app->pGame->reloadSimDone)
+	if (app->pGame->reloadSimDone)  // todo:?
 	{	app->pGame->reloadSimDone = false;
 
 		FillTweakLists();
 		btnTweakTireLoad(0);  // load back
-	}*/
+	}
 }
 
 

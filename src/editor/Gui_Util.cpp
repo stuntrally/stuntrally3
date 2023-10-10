@@ -456,7 +456,7 @@ void CGui::GuiUpdate()
 			btnNewGame(0);
 	}	}
 	
-	if (gcom->bGuiReinit)  // after language change from combo
+	if (gcom->bGuiReinit)  // after language change from combo  fixme
 	{	gcom->bGuiReinit = false;
 
 		mGui->destroyWidgets(app->vwGui);
@@ -473,14 +473,15 @@ void CGui::GuiUpdate()
 	gcom->SortTrkList();
 
 
-	if (app->bWindowResized)
+	if (app->bWindowResized && gcom)
 	{	app->bWindowResized = false;
+		LogO("[]-- WindowResized");
 
 		gcom->ResizeOptWnd();
 		//bSizeHUD = true;
 		gcom->SizeGUI();
 		gcom->updTrkListDim();
-		viewCanvas->setCoord(GetViewSize());
+		// viewCanvas->setCoord(GetViewSize());
 
 		//slSizeMinimap(0);
 		//LoadTrack();  // shouldnt be needed ...
@@ -504,7 +505,7 @@ void CGui::btnClrSet(WP w)
 
 	IntPoint p = w->getAbsolutePosition();  p.left += 100;  p.top -= 50;
 	wndColor->setPosition(p);
-	if (!(wndColor->getVisible() && oth))  // dont hide if changed
+	if (!(wndColor->getVisible() && other))  // dont hide if changed
 		wndColor->setVisible(!wndColor->getVisible());
 }
 void CGui::btnClrSetA(WP w)
