@@ -314,7 +314,7 @@ void SplineRoad::BuildSeg(
 			}else if (vis)// && HasRoad())
 			{
 				Vector4 c;
-				///  color  for minimap preview  ---~~~====~~~---
+				///  color  for 🌍 minimap preview  ---~~~====~~~---
 				if (!IsTrail())
 				{
 					Real brdg = min(1.f, std::abs(vP.y - yTer) * 0.4f);  //par ] height diff mul

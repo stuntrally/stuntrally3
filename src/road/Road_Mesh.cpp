@@ -252,7 +252,7 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 	node->attachObject(it);
 
 
-	//  ed road for mini and density
+	//  ed road for 🌍 minimap and density
 	//---------------------------------------------------------
 #ifdef SR_EDITOR
 	if (lod == 0)
@@ -267,7 +267,9 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 			it = mSceneMgr->createItem( mesh, dyn );
 		#endif
 		it->setRenderQueueGroup(RQG_Road);
-		it->setVisibilityFlags(i ? RV_EdRoadPreview : RV_EdRoadDens);
+		it->setVisibilityFlags(
+			// hide rivers  todo: normal material rivers in terrain prv
+			i ? (IsRiver() ? 0 : RV_EdRoadPreview) : RV_EdRoadDens);
 		it->setCastShadows(false);
 		it->setDatablockOrMaterialName(i ? "ed_RoadPreview" : "ed_RoadDens");
 		node->attachObject(it);

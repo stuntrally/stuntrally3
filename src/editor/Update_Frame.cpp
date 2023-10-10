@@ -205,7 +205,7 @@ void App::UpdateEnd(float dt)
 		if (grsDens != gdOld)
 		{
 			scn->grass->Destroy();
-			scn->grass->Create();
+			scn->grass->Create(this);
 		}
 
 		if (!deformed && defOld)
@@ -215,7 +215,7 @@ void App::UpdateEnd(float dt)
 			//	grd.rnd->update();
 
 			scn->grass->Destroy();
-			scn->grass->Create();
+			scn->grass->Create(this);
 		}
 		defOld = deformed;
 		gdOld = grsDens;
@@ -231,7 +231,7 @@ void App::UpdateEnd(float dt)
 		scn->RecreateTrees();
 		scn->grass->Destroy();
 		if (pSet->bTrees)
-			scn->grass->Create();  // 🌿
+			scn->grass->Create(this);  // 🌿
 	}
 	
 	
