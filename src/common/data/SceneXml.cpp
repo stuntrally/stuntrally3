@@ -4,6 +4,7 @@
 #include "SceneXml.h"
 #include "FluidsXml.h"
 #include "TracksXml.h"
+#include "SColor.h"
 #include "Axes.h"
 #include "game.h"  // for surfaces map
 
@@ -56,7 +57,7 @@ void Scene::Default()
 	{
 		SGrassLayer* gr = &grLayersAll[i];
 		gr->on = i == 0;
-		gr->material = "grassJungle";  gr->colorMap = "grClrJungle.png";
+		gr->material = "grassJungle";  gr->color = SColor(0.f,0.f,1.f);  // white
 		gr->minSx = 1.2f;  gr->minSy = 1.2f;  gr->maxSx = 1.6f;  gr->maxSy = 1.6f;
 		gr->swayDistr = 4.0f;  gr->swayLen = 0.2f;  gr->swaySpeed = 0.5f;
 	}

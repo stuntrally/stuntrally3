@@ -278,7 +278,7 @@ void CGuiCom::btnVegetApply(WP)
 	app->scn->CreateTrees();
 	
 	app->scn->grass->Destroy();
-	app->scn->grass->Create();
+	app->scn->grass->Create(app);
 }
 
 

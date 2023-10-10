@@ -235,7 +235,8 @@ bool Scene::SaveXml(String file)
 			XMLElement* grl = xml.NewElement("grass");
 			grl->SetAttribute("on",		g.on ? 1 : 0);
 			grl->SetAttribute("mtr",	g.material.c_str());
-			grl->SetAttribute("clr",	g.colorMap.c_str());
+			// grl->SetAttribute("clr",	g.colorMap.c_str());  // old drop-
+			grl->SetAttribute("cl",		g.color.Save().c_str() );  // new
 			grl->SetAttribute("dens",	toStrC( g.dens ));
 			grl->SetAttribute("chan",	toStrC( g.iChan ));
 

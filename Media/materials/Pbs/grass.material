@@ -9,9 +9,9 @@ hlms grass pbs
 
     diffuse 1 1 1
     specular 0.0 0.0 0.0
-	fresnel_coeff 0.1
+	fresnel_coeff 0.01
 	roughness 0.4
-	metalness 0.1
+	// metalness 0.1
 }
 
 //  old  -

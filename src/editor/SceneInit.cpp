@@ -343,7 +343,7 @@ void App::LoadTrackEv()
 	{
 		scn->LoadRoadDens();
 		scn->CreateTrees();  // trees after objects so they aren't inside them
-		scn->grass->Create();  // 🌿
+		scn->grass->Create(this);  // 🌿
 	}
 
 
@@ -424,7 +424,7 @@ void App::UpdateTrackEv()
 
 	if (pSet->bTrees)
 	{	scn->CreateTrees();
-		scn->grass->Create();  // 🌿
+		scn->grass->Create(this);  // 🌿
 	}
 	DestroyRnd2Tex();
 	CreateRnd2Tex();  // if new hmap size
@@ -449,7 +449,7 @@ void CGui::btnUpdateGrass(WP)
 {
 	scn->grass->Destroy();
 	if (pSet->bTrees)
-		scn->grass->Create();  // 🌿
+		scn->grass->Create(app);  // 🌿
 }
 
 void CGui::btnUpdateVeget(WP)

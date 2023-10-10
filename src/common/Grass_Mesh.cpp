@@ -26,6 +26,7 @@
 #include <Vao/OgreVaoManager.h>
 #include <OgreMesh.h>
 #include <OgreTextureBox.h>
+#include <OgreHlmsPbsDatablock.h>
 using namespace Ogre;
 using namespace std;
 
@@ -44,8 +45,9 @@ class ManResLd : public ManualResourceLoader
 
 //  Create  Grass
 //---------------------------------------------------------
-void Grass::Create()
+void Grass::Create(App* app1)
 {
+	app = app1;
 	LogO("C--G Create Grass: ");
 	Timer ti;
 	if (!pSet || !scn || !terrain || !scn->imgRoad)
@@ -188,6 +190,12 @@ void Grass::Create()
 
 					CreateMesh(gd, "g"+toStr(id), gr->material, 
 						pos, norm, clr, tcs, idx);
+					
+					//  color
+					Hlms *hlms = app->mRoot->getHlmsManager()->getHlms( HLMS_PBS );
+					HlmsPbsDatablock *db = static_cast<HlmsPbsDatablock*>(hlms->getDatablock( gr->material ));
+					if (db)
+						db->setDiffuse(gr->color.GetRGB());
 					
 					gd.node->setPosition(Vector3(xp, yp, zp));
 					gd.it->setRenderingDistance( 100.f * pSet->grass_dist );  //par

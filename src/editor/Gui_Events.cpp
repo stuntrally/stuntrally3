@@ -198,7 +198,9 @@ void CGui::tabGrLayers(Tab wp, size_t id)
 	for (int i=0; i < liGrs->getItemCount(); ++i)  // upd pick
 		if (liGrs->getSubItemNameAt(1,i).substr(7) == gr->material)
 			liGrs->setIndexSelected(i);
-	// _Cmb(cmbGrassClr, gr->colorMap);
+	
+	Vector3 c = gr->color.GetRGB();
+	clrGrass->setColour(Colour(c.x,c.y,c.z));
 
 	_Ed(GrSwayDistr, g0->swayDistr);
 	_Ed(GrSwayLen, g0->swayLen);

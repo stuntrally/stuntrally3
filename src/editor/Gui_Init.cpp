@@ -309,11 +309,9 @@ void CGui::InitGui()
 	ck= &ckEmitters;	ck->Init("EmittersEnable",	&pSet->bEmitters);  Cev(Emitters);
 
 	//  🎨 clr imgs
-	ImgB(clrAmb,  "ClrAmb",  btnClrSet);  ImgB(clrDiff, "ClrDiff",  btnClrSet);
-	ImgB(clrSpec, "ClrSpec", btnClrSet);
-	ImgB(clrFog,  "ClrFog",  btnClrSetA); ImgB(clrFog2, "ClrFog2",  btnClrSetA);
-	ImgB(clrFogH, "ClrFogH", btnClrSetA);
-	ImgB(clrTrail,"ClrTrail",btnClrSetA);
+	ImgB(clrAmb,  "ClrAmb",  btnClrSet);   ImgB(clrDiff, "ClrDiff",  btnClrSet);   ImgB(clrSpec, "ClrSpec", btnClrSet);
+	ImgB(clrFog,  "ClrFog",  btnClrSetA);  ImgB(clrFog2, "ClrFog2",  btnClrSetA);  ImgB(clrFogH, "ClrFogH", btnClrSetA);
+	ImgB(clrTrail,"ClrTrail",btnClrSetA);  ImgB(clrGrass,"ClrGrass", btnClrSet);
 
 
 	///  ⛰️ Terrain
@@ -665,14 +663,10 @@ void CGui::InitGui()
 	///  🧊 3d view []  (veget models, objects)  todo:
 	//--------------------------------------------
 	//rndCanvas = mGUI->findWidget<Canvas>("CanVeget");  //?
-	viewCanvas = app->mWndEdit->createWidget<Canvas>("Canvas", GetViewSize(), Align::Stretch);
-	viewCanvas->setInheritsAlpha(false);
-	viewCanvas->setPointer("hand");
-	viewCanvas->setVisible(false);
-	// viewBox->setCanvas(viewCanvas);
-	// viewBox->setBackgroundColour(Colour(0.32,0.35,0.37,0.7));
-	// viewBox->setAutoRotation(true);
-	// viewBox->setMouseRotation(true);
+	// viewCanvas = app->mWndEdit->createWidget<Canvas>("Canvas", GetViewSize(), Align::Stretch);
+	// viewCanvas->setInheritsAlpha(false);
+	// viewCanvas->setPointer("hand");
+	// viewCanvas->setVisible(false);
 
 
 	bGI = true;  // gui inited, gui events can now save vals

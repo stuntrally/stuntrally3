@@ -496,8 +496,10 @@ void CGui::btnClrSet(WP w)
 	SColor* v;  // rgb
 	if (w == clrAmb)   v = &sc->lAmb;   else
 	if (w == clrDiff)  v = &sc->lDiff;  else
-	if (w == clrSpec)  v = &sc->lSpec;
-	bool oth = wpClrSet != w;  wpClrSet = w;
+	if (w == clrSpec)  v = &sc->lSpec;  else
+	if (w == clrGrass) v = &sc->grLayersAll[idGrLay].color;
+	
+	bool other = wpClrSet != w;  wpClrSet = w;
 
 	svAlp.setVisible(false);
 	svHue.UpdF(&v->h);  svSat.UpdF(&v->s);  svVal.UpdF(&v->v);

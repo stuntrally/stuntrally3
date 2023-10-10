@@ -122,6 +122,7 @@ void App::update( float dt )
 		if (bWindowResized && gcom)
 		{	bWindowResized = false;
 			LogO("[]-- WindowResized");
+			// todo: GraphicsSystem SDL_WINDOWEVENT_RESIZED:  bWindowResized = true;  // set ?
 
 			gcom->ResizeOptWnd();
 			gcom->SizeGUI();

@@ -8,6 +8,7 @@
 #include <OgreVector4.h>
 
 namespace Ogre {  class SceneManager;  class SceneNode;  class Item;  class Terra;  }
+class App;
 
 
 struct GrassData  // SegData
@@ -30,13 +31,14 @@ struct GrassData  // SegData
 class Grass  //  🌿  ------------------
 {
 public:
+	App* app =0;
 
 	Ogre::SceneManager* mSceneMgr = 0;
 	Ogre::Terra* terrain = 0;
 	class CScene* scn = 0;
 	class SETTINGS* pSet = 0;
 
-	void Create();
+	void Create(App* app1);
 	void Destroy();
 
 

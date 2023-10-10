@@ -264,7 +264,7 @@ public:
 	Txt txVHmin =0, txVHmax =0, txVWmin =0, txVWmax =0, txVCnt =0;
 	void updVegetInfo();
 
-	Can viewCanvas =0;
+	// Can viewCanvas =0;
 	MyGUI::IntCoord GetViewSize();
 	Ogre::String viewMesh;
 	float tiViewUpd =0;
@@ -291,6 +291,7 @@ public:
 	void SldUpd_GrL();
 
 	Btn btnGrassMtr =0;  // pick
+	Img clrGrass =0;
 	Tab tabsGrLayers =0;  void tabGrLayers(TAB);
 	CK(GrLayOn);  Txt valLGrAll =0;
 	void btnUpdateGrass(WP);
