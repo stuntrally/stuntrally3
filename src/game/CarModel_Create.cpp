@@ -508,16 +508,20 @@ void CarModel::Create()
 				{	NameValuePairList params;
 					params["numberOfChains"] = "1";
 					params["maxElements"] = toStr(320 * pSet->trails_len);
+					params["useVertexColours"] = "true";
+					params["useTextureCoords"] = "true";
 
 					whTrail[w] = (v1::RibbonTrail*)mSceneMgr->createMovableObject(
 						"RibbonTrail", &mSceneMgr->_getEntityMemoryManager(SCENE_DYNAMIC), &params);
+					whTrail[w]->setUseVertexColours(true);
+					whTrail[w]->setUseTextureCoords(true);
 					whTrail[w]->setInitialColour(0, 0.1,0.1,0.1, 0);
 					whTrail[w]->setFaceCamera(false,Vector3::UNIT_Y);
 					whTrail[w]->setRenderQueueGroup(RQG_CarTrails);
-					ndRoot->attachObject(whTrail[w]);
-					whTrail[w]->setDatablockOrMaterialName("TireTrail", "Popular");  //?
+					whTrail[w]->setDatablockOrMaterialName("TireTrail", "General");  //
 					whTrail[w]->setCastShadows(false);
 					whTrail[w]->addNode(ndWhE[w]);
+					ndRoot->attachObject(whTrail[w]);
 				}
 				whTrail[w]->setTrailLength(90 * pSet->trails_len);  //30
 				whTrail[w]->setInitialColour(0, 0.1f,0.1f,0.1f, 0);

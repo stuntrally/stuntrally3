@@ -731,7 +731,7 @@ void SplineRoad::createSeg_Meshes(
 			it2->setRenderQueueGroup(que);
 
 		// if (IsTrail())
-		// 	it->setVisibilityFlags(RV_Hud);
+		// 	it->setVisibilityFlags(RV_Hud3D);
 
 		if (bCastShadow && !DS.onTer && !IsRiver() && !IsTrail())
 			it->setCastShadows(true);

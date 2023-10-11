@@ -38,7 +38,7 @@ void SplineMarkEd::createMarker(String mat, Item*& it, SceneNode*& nd)
 {
 	it = mSceneMgr->createItem(sMarkerMesh);
 	it->setDatablockOrMaterialName(mat);  it->setCastShadows(false);
-	it->setVisibilityFlags(RV_Hud);
+	it->setVisibilityFlags(RV_Hud3D);
 	nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	nd->attachObject(it);  nd->setVisible(false);
 }
@@ -64,7 +64,7 @@ void SplineMarkEd::AddMarker(Vector3 pos)
 
 	it = mSceneMgr->createItem(sMarkerMesh, "General", SCENE_STATIC);
 	it->setDatablockOrMaterialName("sphere_norm");  it->setCastShadows(false);
-	it->setVisibilityFlags(RV_Hud);
+	it->setVisibilityFlags(RV_Hud3D);
 	
 	nd = mSceneMgr->getRootSceneNode(SCENE_STATIC)->createChildSceneNode(SCENE_STATIC);
 	nd->attachObject(it);

@@ -21,7 +21,7 @@ void App::CreateBox(SceneNode*& nd, Item*& it, String sMat, String sMesh, int x)
 	MaterialPtr mtr;
 	nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	it = mSceneMgr->createItem(sMesh);
-	it->setVisibilityFlags(RV_Hud);
+	it->setVisibilityFlags(RV_Hud3D);
 	it->setCastShadows(false);
 	if (!sMat.empty())
 		it->setDatablockOrMaterialName(sMat);

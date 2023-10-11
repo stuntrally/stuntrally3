@@ -55,8 +55,8 @@ const Ogre::uint8
 //  Visibility Flags  used in setVisibility
 //------------------------------------------------------------------------
 const Ogre::uint32
-	RV_Hud          = 0x00002000,  // ⏱️⏲️ hud  and markers,  in game has own pass
-	RV_Hud3D        = 0x00001000,  // 🎗️   trail
+	RV_Hud          = 0x00002000,  // ⏱️⏲️ hud  in game has own pass
+	RV_Hud3D        = 0x00001000,  // 🎗️   trail  and ed markers
 
 	RV_Road         = 0x00000001,  // 🛣️   road only, for road textures
 	RV_Terrain      = 0x00000004,  // ⛰️   terrain  and  fluids 🌊  for ed terrain.jpg texture
