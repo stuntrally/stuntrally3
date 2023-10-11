@@ -103,6 +103,16 @@ TrkL::TrkL() :
 {	}
 
 
+//  🆕 Init all
+void CGuiCom::GuiInitAll()
+{
+	GuiInitTooltip();
+	GuiInitLang();
+
+	GuiInitGraphics();
+	InitGuiScreenRes();
+	ImgPrvInit();
+}
 
 //  Util
 //----------------------------------------------------------------------------------------------------------------
@@ -154,6 +164,61 @@ TabPtr CGuiCom::FindSubTab(WP tab)
 			sub = (TabPtr)wp;
 	}
 	return sub;
+}
+
+
+//  🖼️ fullscr previews
+//-----------------------------------------------------------------------------------
+void CGuiCom::ImgPrvClk(WP)
+{
+	imgPrv[2]->setVisible(true);
+}
+void CGuiCom::ImgTerClk(WP)
+{
+	imgTer[2]->setVisible(true);
+	imgMini[2]->setVisible(true);
+}
+void CGuiCom::ImgPrvClose(WP)
+{
+	imgPrv[2]->setVisible(false);
+	imgTer[2]->setVisible(false);
+	imgMini[2]->setVisible(false);
+}
+
+void CGuiCom::ImgPrvInit()
+{
+	std::vector<int> ii =
+	#ifdef SR_EDITOR
+		{0,2};
+	#else
+		{0,1,2};
+	#endif
+	for (int i : ii)
+	{	string s = toStr(i);
+		if (i < 2)
+		{	ImgBC(imgPrv[i], "TrackImg" +s, ImgPrvClk);
+			ImgBC(imgTer[i], "TrkTerImg"+s, ImgTerClk);
+			ImgBC(imgMini[i],"TrackMap" +s, ImgTerClk);
+		}else{
+			ImgBC(imgPrv[i], "TrackImg" +s, ImgPrvClose);
+			ImgBC(imgTer[i], "TrkTerImg"+s, ImgPrvClose);
+			ImgBC(imgMini[i],"TrackMap" +s, ImgPrvClose);
+		}
+		initMiniPos(i);
+	}
+	for (int i : ii)
+	{	imgPrv[i]->setImageTexture("PrvView");
+  		imgTer[i]->setImageTexture("PrvTer");
+  		imgMini[i]->setImageTexture("PrvRoad");
+	}
+}
+
+void CGuiCom::initMiniPos(int i)
+{
+	imgMiniPos[i] = fImg("TrackPos" + toStr(i));
+	imgMiniRot[i] = imgMiniPos[i]->getSubWidgetMain()->castType<RotatingSkin>();
+	IntSize si = imgMiniPos[i]->getSize();
+	imgMiniRot[i]->setCenter(IntPoint(si.width*0.9f, si.height*0.9f));  //0.7
 }
 
 

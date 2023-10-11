@@ -32,26 +32,6 @@ void CGui::InitGuiChamps()
 	gcom->trkDesc[1] = fEd("TrackDesc1");  gcom->trkAdvice[1] = fEd("TrackAdvice1");
 	valTrkNet = fTxt("TrackText");
 
-	//  preview images
-	for (i=0; i < 3; ++i)
-	{	string s = toStr(i);
-		if (i < 2)
-		{	ImgB(gcom->imgPrv[i], "TrackImg" +s, ImgPrvClk);
-			ImgB(gcom->imgTer[i], "TrkTerImg"+s, ImgTerClk);
-			ImgB(gcom->imgMini[i],"TrackMap" +s, ImgTerClk);
-		}else{
-			ImgB(gcom->imgPrv[i], "TrackImg" +s, ImgPrvClose);
-			ImgB(gcom->imgTer[i], "TrkTerImg"+s, ImgPrvClose);
-			ImgB(gcom->imgMini[i],"TrackMap" +s, ImgPrvClose);
-		}
-		gcom->initMiniPos(i);
-	}
-	for (i=0; i < 3; ++i)
-	{	gcom->imgPrv[i]->setImageTexture("PrvView");
-  		gcom->imgTer[i]->setImageTexture("PrvTer");
-  		gcom->imgMini[i]->setImageTexture("PrvRoad");
-	}
-
 	//  track stats text
 	for (i=0; i < gcom->StTrk; ++i)    gcom->stTrk[1][i] = fTxt("2st"+toStr(i));
 	for (i=0; i < gcom->ImStTrk; ++i)  gcom->imStTrk[1][i] = fImg("2ist"+toStr(i));

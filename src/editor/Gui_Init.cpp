@@ -127,11 +127,7 @@ void CGui::InitGui()
 
 	///  🎛️ Gui common init  ---
 	InitMainMenu();
-	gcom->GuiInitTooltip();
-	gcom->GuiInitLang();
-
-	gcom->GuiInitGraphics();
-	gcom->InitGuiScreenRes();
+	gcom->GuiInitAll();
 
 
 	//app->mWndTabs->setIndexSelected(3);  //default*--

@@ -354,23 +354,22 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 	if (hqParticles)  Warn(INFO,"HQ, particles present");
 
 
-	///  Final Quality (optim, fps drop)  // todo:
+	//  🏞️ Final Quality
 	//---------------------------------------------------------------
 	int hq = 0;
 	if (hqTerrain) hq+=2;   if (hqHoriz)  ++hq;
 	if (hqGrass)  ++hq;     if (hqVeget)  ++hq;
 	if (hqMainRoad)  ++hq;  if (hqRoads)  ++hq;  if (hqRiver)  ++hq;
 	if (hqParticles) ++hq;  if (hqFluids) ++hq;  if (hqObjects)  ++hq;
-	tw.hq = hq;
-	tw.warn = cntWarn;
+	tw.hq = hq;  tw.warn = cntWarn;
 
 	Warn(NOTE,"---- HQ Overall: "+toStr(hq)+ "  of 10 max");
 	if (hq > 8)
-		Warn(INFO,"Quality too high (possibly low Fps), try to reduce densities or layers/models/grasses count");
+		Warn(INFO,"Quality very high (possibly low Fps) - check densities of models, objects, grasses, layers counts");
 	else if (hq > 6)
-		Warn(INFO,"Great quality, but do some optimisations");
+		Warn(INFO,"Great quality - but check for some optimisations");
 	else if (hq < 5)
-		Warn(WARN,"Low quality (ignore for deserts etc)\n - try to add something: layers, vegetation, fluids, objects, particles");
+		Warn(WARN,"Low quality  (ignore for deserts etc)\n - try to add something: layers, vegetation, fluids, objects, particles");
 	
 
 	///-  end  ----------------

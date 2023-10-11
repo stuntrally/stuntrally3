@@ -92,6 +92,10 @@ public:
 	img = fImg(name);  \
 	if (img && img->eventMouseButtonClick.empty())  img->eventMouseButtonClick += newDelegate(this, &CGui::event);
 
+#define ImgBC(img, name, event)  \
+	img = fImg(name);  \
+	if (img && img->eventMouseButtonClick.empty())  img->eventMouseButtonClick += newDelegate(this, &CGuiCom::event);
+
 
 //  check
 #define Chk(name, event, var)  \

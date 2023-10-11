@@ -166,12 +166,12 @@ void CGuiCom::ResizeOptWnd()
 	Real yo = (1.f - ym)*wy, xo = 4.f/3.f * yo;  // opt wnd size in pix
 	ym = (wy - yo)*0.5f;  xm = (wx - xo)*0.5f;
 
-#ifndef SR_EDITOR  // game
 	int xc = (wx - wy)*0.5f;
 	imgPrv[2]->setCoord(xc, 0, wy, wy);  // fullscr prv
 	imgTer[2]->setCoord(xc, 0, wy, wy);
 	imgMini[2]->setCoord(xc, 0, wy, wy);  initMiniPos(2);
 
+#ifndef SR_EDITOR  // game
 	app->mWndGame->setCoord(xm, ym, xo, yo);
 	app->mWndReplays->setCoord(xm, ym, xo, yo);
 	app->mWndWelcome->setCoord(xm, ym, xo, yo);

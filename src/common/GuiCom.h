@@ -65,7 +65,7 @@ public:
 
 	//  🆕 init
 	void GuiCenterMouse();
-	void GuiInitTooltip(), GuiInitLang();
+	void GuiInitAll(), GuiInitTooltip(), GuiInitLang();
 	//  init tabs
 	void GuiInitGraphics(), GuiInitTrack(), initMiniPos(int i);
 
@@ -142,7 +142,8 @@ public:
 	Img imgPrv[3], imgMini[3], imgTer[3];  // view,  mini: road, terrain, [2] is fullscr
 	Img imgMiniPos[3];  MyGUI::RotatingSkin* imgMiniRot[3];
 	Img imgTrkIco1 =0, imgTrkIco2 =0;
-	
+	void ImgPrvClk(WP), ImgTerClk(WP), ImgPrvClose(WP), ImgPrvInit();
+
 
 	//  📝 st- road stats, dim  inf- tracks.ini ratings
 	const static int InfTrk = 13, ImStTrk = 4,

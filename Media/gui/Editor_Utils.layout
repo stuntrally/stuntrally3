@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MyGUI type="Layout" version="3.2.0">
 	
+	<!-- full screen track preview  -->
+	<Widget type="ImageBox" skin="ImageBox" position="174 15 336 336" layer="Popup" name="TrackImg2">
+		<Property key="Visible" value="false"/>
+	</Widget>
+	<Widget type="ImageBox" skin="ImageBox" position="526 270 252 252" layer="Popup" name="TrkTerImg2">
+		<Property key="Visible" value="false"/>
+	</Widget>
+	<Widget type="ImageBox" skin="ImageBox" position="526 270 252 252" layer="Popup" name="TrackMap2">
+		<Property key="Visible" value="false"/>
+		<Widget type="ImageBox" skin="RotatingSkin" position="64 64 16 16" name="TrackPos2">
+			<Property key="ImageTexture" value="carpos0.png"/>
+		</Widget>
+	</Widget>
+
 	<Widget type="ImageBox" skin="ImageBox" position="1 2000 64 64" align="Left Bottom" layer="Back" name="modeCam">
 		<Property key="ImageCoord" value="0 512 128 128"/>
 		<Property key="Colour" value="0.7 0.85 1"/>

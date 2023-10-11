@@ -163,15 +163,6 @@ void CGuiCom::AddTrkL(std::string name, int user,
 }
 
 
-void CGuiCom::initMiniPos(int i)
-{
-	imgMiniPos[i] = fImg("TrackPos" + toStr(i));
-	imgMiniRot[i] = imgMiniPos[i]->getSubWidgetMain()->castType<RotatingSkin>();
-	IntSize si = imgMiniPos[i]->getSize();
-	imgMiniRot[i]->setCenter(IntPoint(si.width*0.9f, si.height*0.9f));  //0.7
-}
-
-
 //  🆕 Gui Init 🏞️ Track once
 //-----------------------------------------------------------------------------------------------------------
 void CGuiCom::GuiInitTrack()

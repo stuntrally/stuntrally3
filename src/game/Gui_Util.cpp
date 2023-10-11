@@ -480,21 +480,3 @@ void CGui::FillHelpTxt()
 		ed->setVScrollPosition(0);
 	}
 }
-
-
-//  🖼️ fullscr previews
-void CGui::ImgPrvClk(WP)
-{
-	gcom->imgPrv[2]->setVisible(true);
-}
-void CGui::ImgTerClk(WP)
-{
-	gcom->imgTer[2]->setVisible(true);
-	gcom->imgMini[2]->setVisible(true);
-}
-void CGui::ImgPrvClose(WP)
-{
-	gcom->imgPrv[2]->setVisible(false);
-	gcom->imgTer[2]->setVisible(false);
-	gcom->imgMini[2]->setVisible(false);
-}

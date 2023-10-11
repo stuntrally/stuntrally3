@@ -1684,8 +1684,6 @@
 
 	<!--  TIP  Track  -->
 	<Tag name="TipLoadTrkEditor">Load track (after change) or Reload current track.</Tag>
-	<Tag name="TipTrkScreenEditor">In game screenshot for selected track.</Tag>
-	<Tag name="TipMinimapScrnEditor">Minimap of selected track, view from top.</Tag>
 	<Tag name="TipTrackDescEditor">Track description text (click to edit).</Tag>
 
 

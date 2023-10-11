@@ -359,8 +359,8 @@ void App::LoadTrackEv()
 
 	gui->Status("#{Loaded}", 0.5,0.7,1.0);
 	
-	if (pSet->check_load)
-		gui->WarningsCheck(scn->sc, scn->roads);
+	// if (pSet->check_load)  // fixme
+	// 	gui->WarningsCheck(scn->sc, scn->roads);
 
 	LogO(String(":::> Time Load Track: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
