@@ -388,12 +388,12 @@ public:
 	//  ⚠ Warnings  --------------------
 	Ed edWarn =0;  Txt txWarn =0;
 	Img imgWarn =0, imgInfo =0;
-	void WarningsCheck(const class Scene* sc, const SplineRoad* road);
+	void WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads);
 
 	int cntWarn = 0;  // count
 	bool logWarn =0;  // only log warnings (tool)
 
-	enum eWarn {  ERR=0, WARN, INFO, NOTE, TXT  };
+	enum eWarn {  FATAL, ERR, WARN, INFO, NOTE, TXT, WARN_ALL  };
 	void Warn(eWarn type, Ogre::String text);
 
 	int iLoadNext = 0;

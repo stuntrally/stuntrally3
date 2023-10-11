@@ -366,7 +366,7 @@ void App::LoadTrackEv()
 	gui->Status("#{Loaded}", 0.5,0.7,1.0);
 	
 	if (pSet->check_load)
-		gui->WarningsCheck(scn->sc, scn->road);
+		gui->WarningsCheck(scn->sc, scn->roads);
 
 	LogO(String(":::> Time Load Track: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
@@ -477,7 +477,7 @@ void App::SaveTrack()
 	gui->Status("#{Saving}...", 1,0.4,0.1);
 
 	if (pSet->check_save)
-		gui->WarningsCheck(scn->sc, scn->road);
+		gui->WarningsCheck(scn->sc, scn->roads);
 }
 void App::SaveTrackEv()
 {

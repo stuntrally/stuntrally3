@@ -49,10 +49,12 @@ void CGui::ToolTracksWarnings()
 		/**/if (StringUtil::startsWith(trk,"test"))  continue;
 
 		Scene sc;  sc.LoadXml(path +"scene.xml");
-		SplineRoad rd(app);  rd.LoadFile(path +"road.xml");
+		SplineRoad rd(app);  rd.LoadFile(path +"road.xml");  // 1 only..
+		std::vector<SplineRoad*> vRoads;
+		vRoads.push_back(&rd);
 		
 		LogO("Track: "+trk);
-		WarningsCheck(&sc,&rd);
+		WarningsCheck(&sc, vRoads);
 	}
 	LogO(String("::: Time ALL tracks: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 	LogO("))) ALL tracks warnings --------- End");
