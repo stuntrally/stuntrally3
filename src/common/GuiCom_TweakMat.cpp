@@ -68,8 +68,8 @@ void CGuiCom::btnMtrSaveAll(WP)
 {
 	auto* mgr = app->mRoot->getHlmsManager();
 #if 1  //  1 json
-	mgr->saveMaterials(HLMS_PBS, PATHS::MaterialsDir()+"/all.material.json", 0, "");
-#else  //  all files-
+	mgr->saveMaterials(HLMS_PBS, PATHS::MaterialsDir()+"/all.material.json", 0, "", true);  // latest
+#else  //  1 json per material-
 	HlmsPbs2 *hlmsPbs2 = static_cast<HlmsPbs2 *>( mgr->getHlms( HLMS_PBS ) );
 	const auto& dbm = hlmsPbs2->getDatablockMap();
 	for (const auto& db : dbm)
