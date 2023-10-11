@@ -73,10 +73,6 @@ public:
 	void SetUsedStr(Txt valUsed, int cnt, int yellowAt);
 	
 
-	//  🧰 _Tools_
-	void ToolSceneXml(), ToolTracksWarnings();  //, ToolPresets();
-	
-
 	//  🪟🛠️ tool windows texts  ----
 	const static int
 		BR_TXT = 10, RD_TXT = 14, RDS_TXT = 11,  //  brush, road, road stats
@@ -385,11 +381,22 @@ public:
 	SV svAlignWidthAdd, /*svAlignWidthMul,*/ svAlignSmooth;
 
 
+	//  🧰 _Tools_  cmd arg
+	void ToolSceneXml();
+	void ToolTracksWarnings();  //, ToolPresets();
+
 	//  ⚠ Warnings  --------------------
+	struct TrackWarn
+	{
+		int hq = 0;  //-
+		int warn = 0;  // cnt
+		int horiz = 0;
+	};
+	TrackWarn WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads);
+
 	Ed edWarn =0;  Txt txWarn =0;
 	Img imgWarn =0, imgInfo =0;
-	void WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads);
-
+	
 	int cntWarn = 0;  // count
 	bool logWarn =0;  // only log warnings (tool)
 

@@ -29,9 +29,11 @@ void CGui::Warn(eWarn type, String text)
 	if (type == FATAL || type == ERR || type == WARN)  ++cntWarn;  // count serious only
 }
 	
-void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads)
+CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads)
 {
-	if (!edWarn && !logWarn)  return;
+	CGui::TrackWarn tw;
+	if (!edWarn && !logWarn)  return tw;
+	
 	cntWarn = 0;
 	if (!logWarn)
 		edWarn->setCaption("");
@@ -44,7 +46,7 @@ void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads
 	//  🛣️ Roads
 	//----------------------------------------------------------------------------
 	int roads = 0;  // cnt
-	int roadMtrs = 0;
+	int roadMtrs = 0, pipeMtrs = 0;
 	for (int r = 0; r < (int)vRoads.size(); ++r)
 	{
 		const auto road = vRoads[r];
@@ -52,25 +54,37 @@ void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads
 		
 		if (cnt < 2)
 		{
-			Warn(WARN, "---- Road: " + toStr(r) + " ");
+			Warn(ERR, "---- Road: " + toStr(r) + " empty, has < 2 points");
 			continue;  // nothing
 		}
-		if (road->IsRiver())  hqRiver = 1;
+		bool river = road->IsRiver();
+		if (river)  hqRiver = 1;
 		++roads;
-		Warn(INFO, "---- Road: " + toStr(r));
+		if (river)
+			Warn(INFO, "== River: " + toStr(r));
+		else
+			Warn(INFO, "~~ Road: " + toStr(r));
 
-		//  mtrs  todo: map by name
-		bool mtrUsed[4]={0,0,0,0};
+		
+		//  count materials  todo: map by names
+		bool mtrUsed[MTRs] ={0,0,0,0}, mtrPipe[MTRs] ={0,0,0,0};
 		for (int i=0; i < road->mP.size(); ++i)
 		{
 			const SplinePoint& p = road->mP[i];
-			if (p.idMtr >= 0 && p.idMtr < 4)
+			if (p.idMtr >= 0 && p.idMtr < MTRs)
+			if (p.pipe > 0.f)
+				mtrPipe[p.idMtr] = true;
+			else
 				mtrUsed[p.idMtr] = true;
 		}
-		int rdm = 0;
-		for (int i=0; i<4; ++i)
-			if (mtrUsed[i])  ++rdm;
+		int rdm = 0, pim = 0;
+		for (int i=0; i < MTRs; ++i)
+		{	if (mtrUsed[i])  ++rdm;
+			if (mtrPipe[i])  ++pim;
+		}
 		roadMtrs += rdm;
+		pipeMtrs += pim;
+
 
 		///-  🏁 start  ---------------------------------------
 		if (r == 0)  // first main only
@@ -90,9 +104,9 @@ void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads
 			{
 				Vector3 ch1 = road->mP[iP1].pos;
 				float d1 = stPla.getDistance(ch1);
-				Warn(TXT,"Car start to 1st check distance: "+fToStr(d1,2,4));
+				Warn(TXT,"Start to 1st check distance: "+fToStr(d1,2,4));
 				if (d1 < 0.f)
-					Warn(WARN,"Car start isn't facing first checkpoint\n (wrong direction or first checkpoint), distance: "+fToStr(d1,2,4));
+					Warn(WARN,"Start isn't facing first checkpoint\n (wrong direction or first checkpoint), distance: "+fToStr(d1,2,4));
 				//Warn(NOTE,"Check1 pos "+fToStr(ch0.x,2,5)+" "+fToStr(ch0.y,2,5)+" "+fToStr(ch0.z,2,5));
 
 				//-  road dir  ----
@@ -110,28 +124,28 @@ void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads
 			//-  🏁 start pos  ----
 			float tws = 0.5f * sc->tds[0].fTerWorldSize;  // 1st ter-
 			if (stPos.x < -tws || stPos.x > tws || stPos.z < -tws || stPos.z > tws)
-				Warn(ERR,"Car start is outside Terrain 1 area - Whoa :o");
+				Warn(ERR,"Start is outside Terrain 1 area - Whoa :o");
 			
-			/*if (scn->terrain)  // won't work in tool..
-			{	float yt = scn->terrain->getHeightAtWorldPosition(stPos), yd = stPos.y - yt - 0.5f;
-				//Warn(TXT,"Car start to terrain distance "+fToStr(yd,1,4));
-				if (yd < 0.f)   Warn(ERR, "Car start below terrain  Whoa :o");
-				if (yd > 0.3f)  Warn(INFO,"Car start far above terrain\n (skip this if on bridge or in pipe), distance: "+fToStr(yd,1,4));
-			}*/
-			
-
-			//-  other start places inside terrain (split screen)  ----
-			/*if (scn->terrain)  // won't work in tool..
-			for (int i=1; i<4; ++i)
-			{
-				Vector3 p = stPos + i * stDir * 6.f;  //par dist
-				float yt = scn->terrain->getHeightAtWorldPosition(p), yd = p.y - yt - 0.5f;
-				String si = toStr(i);
-								Warn(TXT, "Car "+si+" start to ter dist "+fToStr(yd,1,4));
-				//if (yd < 0.f)   Warn(WARN,"Car "+si+" start below terrain !");  // moved above in game
-				if (yd > 0.3f)  Warn(INFO,"Car "+si+" start far above terrain");//\n (skips bridge/pipe), distance: "+fToStr(yd,1,4));
-			}/**/
-			
+			//  won't work in tool..
+			if (app && app->scn && !app->scn->ters.empty())
+			{	
+				{	float yt = app->scn->getTerH(stPos), yd = stPos.y - yt - 0.5f;
+					//Warn(TXT,"Start to terrain distance "+fToStr(yd,1,4));
+					if (yd < 0.f)   Warn(ERR, "Start below terrain - Whoa :o");
+					if (yd > 0.3f)  Warn(INFO,"Start far above terrain\n (skip this if on bridge or in pipe), distance: "+fToStr(yd,1,4));
+				}
+				
+				//-  other start places inside terrain (split screen)  ----
+				for (int i=1; i<4; ++i)
+				{
+					Vector3 p = stPos + i * stDir * 6.f;  //par dist
+					float yt = app->scn->getTerH(p), yd = p.y - yt - 0.5f;
+					String si = toStr(i);
+									Warn(TXT, "Car "+si+" start to ter dist "+fToStr(yd,1,4));
+					//if (yd < 0.f)   Warn(WARN,"Car "+si+" start below terrain !");  // moved above in game
+					if (yd > 0.3f)  Warn(INFO,"Car "+si+" start far above terrain");//\n (skips bridge/pipe), distance: "+fToStr(yd,1,4));
+				}/**/
+			}			
 			
 			//-  🔵 first chk  ----
 			if (iP1 < 0 || iP1 >= cnt)
@@ -202,55 +216,58 @@ void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads
 	}
 
 
-	//-  🛣️ roads used  ----
+	//-  🛣️ roads  ----
 	if (hqRiver)  Warn(INFO, "HQ, River present :)");
-	Warn(INFO, "Roads count: " + toStr(roads));
+	Warn(INFO, "Roads - count: " + toStr(roads));
 	if (roads > 6)	Warn(WARN, "High roads count: " + toStr(roads) + " - not recommended");
 	
-	//-  🛣️ road materials used  ----
-	Warn(INFO, "Road materials used: " + toStr(roadMtrs));
-	if (roadMtrs > 8)
-		Warn(WARN, "High Road materials used: " + toStr(roadMtrs) + " - not recommended");
+	//-  🛣️ road materials  ----
+	Warn(INFO, "Road materials used: " + toStr(roadMtrs) + " Pipe materials: " + toStr(pipeMtrs));
+	int rdMtr = roadMtrs + pipeMtrs;
+	if (rdMtr > 8)
+		Warn(WARN, "High Road+Pipe materials used: " + toStr(rdMtr) + " - not recommended");
 
 	
 	///  ⛰️ Terrains
 	//---------------------------------------------------------------
-	int i=0;
+	int i = 0, ters = sc->tds.size();
+	Warn(INFO, "---- Terrains - count: " + toStr(ters));
 	for (const auto& td : sc->tds)
 	{
 		int horiz = td.iHorizon;
-		Warn(INFO, "---- Terrain: " + toStr(i)+ " - Horizon: " + toStr(horiz));
 		if (horiz)  hqHoriz = 1;
 		
+		//  info
+		Warn(INFO, "[] Terrain: " + toStr(i+1)+ " - Horizon: " + toStr(horiz));
+		
 		//  hmap filesize
-		// String st = "Terrain " + toStr(i)+ ": ";
-		String st = !horiz ? "Terrain " + toStr(i)+ ": " : 
-			"Horizon: " + toStr(i)+ " - Horizon: " + toStr(horiz);
 		int sz = td.iVertsX * td.iVertsX * sizeof(float) / 1024/1024;
 		if (td.iVertsX > 4000)
-			Warn(ERR, st+"using huge heightmap "+toStr(td.iVertsX-1)+", file size is "+toStr(sz)+" MB !!");
+			Warn(ERR, "using huge heightmap "+toStr(td.iVertsX-1)+", file size is "+toStr(sz)+" MB !!");
 		else if (td.iVertsX > 2000)
-			Warn(WARN, st+"using very big heightmap "+toStr(td.iVertsX-1)+", file size is "+toStr(sz)+" MB !");
+			Warn(WARN, "using very big heightmap "+toStr(td.iVertsX-1)+", file size is "+toStr(sz)+" MB !");
 
-		// if (td.iVertsX < 200)
-		// 	Warn(INFO,"Using too small heightmap "+toStr(td.iVertsX-1));
+		if (td.iVertsX < 512)
+			Warn(INFO,"Using too small heightmap: "+toStr(td.iVertsX-1));
 
-		//-  🔺 tri size  main ter  ----
+		//-  🔺 tri size  ----
 		float tri = td.fTriangleSize;
-		if (tri < 0.9f && !horiz)	Warn(INFO, st+"triangle size is small "+fToStr(tri,2,4));
-		if (tri > 1.7f && !horiz)	Warn(INFO, st+"triangle size is big "+fToStr(tri,2,4)+" - not recommended");
+		if (tri < 0.9f && !horiz)	Warn(INFO, "triangle size is small "+fToStr(tri,2,4));
+		if (tri > 1.7f && !horiz)	Warn(INFO, "triangle size is big "+fToStr(tri,2,4)+" - not recommended");
 
-		if (tri <  5.1f && horiz == 1)	Warn(INFO, st+"horizon size is small "+fToStr(tri,2,4));
-		if (tri > 21.1f && horiz == 1)	Warn(INFO, st+"horizon size is big "+fToStr(tri,2,4)+" - not recommended");
+		if (tri <  5.1f && horiz == 1)	Warn(INFO, "horizon size is small "+fToStr(tri,2,4));
+		if (tri > 21.1f && horiz == 1)	Warn(INFO, "horizon size is big "+fToStr(tri,2,4)+" - not recommended, better to make 2nd");
 
-		if (tri < 30.1f && horiz == 2)	Warn(INFO, st+"horizon2 size is small "+fToStr(tri,2,4));
-		if (tri > 51.7f && horiz == 2)	Warn(INFO, st+"horizon2 size is big "+fToStr(tri,2,4)+" - not recommended");
+		if (tri < 30.1f && horiz == 2)	Warn(INFO, "horizon2 size is small "+fToStr(tri,2,4));
+		if (tri > 51.7f && horiz == 2)	Warn(INFO, "horizon2 size is big "+fToStr(tri,2,4)+" - not recommended");
+
+		if (tri > 5.f && horiz == 0)  Warn(ERR,"big triangle but not Horizon > 0");
 
 		///-  🏔️ ter layers  -------------
 		int lay = 0;
 		for (int l=0; l < TerData::ciNumLay; ++l)
 			if (td.layersAll[l].on)  ++lay;
-		Warn(NOTE, st+" - layers used: "+toStr(lay));
+		Warn(NOTE, "Terrain - layers used: "+toStr(lay));
 
 		hqTerrain = lay >= 4;
 		if (hqTerrain)  Warn(INFO,"HQ Terrain");
@@ -258,7 +275,8 @@ void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads
 		if (lay <= 2)  Warn(INFO,"Too few terrain layers used");
 		++i;
 	}
-	if (!hqHoriz)  Warn(WARN,"No Horizon terrain - no terrain marked as horizon > 0");
+	if (!hqHoriz && ters == 1){  Warn(WARN,"No Horizon terrain");  tw.horiz++;  }
+	if (!hqHoriz && ters > 1){  Warn(WARN,"No Horizon terrain or no terrain marked as Horizon > 0");  tw.horiz++;  }
 	if (hqHoriz)  Warn(INFO,"HQ Horizon");
 
 	
@@ -268,13 +286,15 @@ void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads
 		//  layers  ----
 		int veg = sc->densTrees > 0.f ? sc->pgLayers.size() : 0;
 		Warn(NOTE,"---- Vegetation - models used: "+toStr(veg));
-		if (sc->densTrees < 0.01f)  Warn(WARN,"No Vegetation - feels empty :(");
+		// if (sc->densTrees < 0.01f)  Warn(WARN,"No Vegetation - feels empty :(");
 		hqVeget = veg >= 6;
 		if (hqVeget)   Warn(INFO,"HQ Vegetation");
 		if (veg >= 12)  Warn(WARN,"Too many models used - not recommended");  //par..
 		if (veg <= 4)  Warn(INFO,"Too few models used - feels empty :(");
 		
 		//  total count
+		//  todo: this needs getTerH & angle, without Terra loaded
+		//  works only in ed (with veget on and at 1.0 mul), not in cmd tool
 		int all = 0;
 		for (auto l : sc->pgLayersAll)
 		if (l.on)
@@ -297,7 +317,7 @@ void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads
 	Warn(NOTE,"---- Grass - layers used: "+toStr(gr));
 	hqGrass = gr >= 4;
 	if (hqGrass)  Warn(INFO,"HQ Grass");
-	if (gr >= 5)  Warn(WARN,"Too many grasses used - not recommended");
+	if (gr >= 6)  Warn(WARN,"Too many grasses used - not recommended");
 	if (gr <= 2)  Warn(INFO,"Too few grasses used");
 
 	//..  page size small, dist big
@@ -306,6 +326,7 @@ void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads
 	//  🌊 Fluids
 	//---------------------------------------------------------------
 	int fl = sc->fluids.size();
+	Warn(NOTE,"---- Fluids - used: "+toStr(gr));
 	hqFluids = fl > 0;
 	if (hqFluids)  Warn(INFO,"HQ, fluid present");
 	
@@ -319,6 +340,7 @@ void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads
 		// todo: test if under terrains ..
 	}
 	int objs = objVar.size();
+	Warn(NOTE,"---- Objects - used: "+toStr(gr));
 	if (objs >= 60)  Warn(WARN,"Too many objects used - not recommended");
 	if (objs <= 2)  Warn(INFO,"Too few objects placed");
 	hqObjects = objs > 7;
@@ -327,6 +349,7 @@ void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads
 	//  🔥 Particles, clouds
 	//---------------------------------------------------------------
 	int pars = sc->emitters.size();
+	Warn(NOTE,"---- Particles - used: "+toStr(gr));
 	hqParticles = pars > 0;
 	if (hqParticles)  Warn(INFO,"HQ, particles present");
 
@@ -338,6 +361,8 @@ void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads
 	if (hqGrass)  ++hq;     if (hqVeget)  ++hq;
 	if (hqMainRoad)  ++hq;  if (hqRoads)  ++hq;  if (hqRiver)  ++hq;
 	if (hqParticles) ++hq;  if (hqFluids) ++hq;  if (hqObjects)  ++hq;
+	tw.hq = hq;
+	tw.warn = cntWarn;
 
 	Warn(NOTE,"---- HQ Overall: "+toStr(hq)+ "  of 10 max");
 	if (hq > 8)
@@ -352,7 +377,7 @@ void CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads
 	if (logWarn)
 	{
 		LogO("Warnings: "+toStr(cntWarn)+"\n");
-		return;
+		return tw;
 	}
 	bool warn = cntWarn > 0;
 	if (!warn)

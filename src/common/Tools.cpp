@@ -33,29 +33,52 @@ using namespace MyGUI;
 
 //--------  Editor Tools  --------
 
-///  _Tool_	Warnings  ......................................................
+///  🧰 _Tool_  Warnings  ......................................................
 ///  check all tracks for warnings
-///  Warning: takes about 16 sec
 void CGui::ToolTracksWarnings()
 {
 	Ogre::Timer ti;
 	LogO("))) ALL tracks warnings =========");
 	logWarn = true;
+	TrackWarn all;  int min_hq = 20, max_hq = 0;
 
-	for (int i=0; i < data->tracks->trks.size(); ++i)
-	{	//  foreach track
-		string trk = data->tracks->trks[i].name, path = gcom->pathTrk[0] +"/"+ trk +"/";
-		/**/if (!(trk[0] >= 'A' && trk[0] <= 'Z'))  continue;
-		/**/if (StringUtil::startsWith(trk,"test"))  continue;
+	//  foreach track
+	int tracks = data->tracks->trks.size();
+	for (int t=0; t < tracks; ++t)
+	{	string trk = data->tracks->trks[t].name,
+			path = gcom->pathTrk[0] +"/"+ trk +"/";
+		if (!(trk[0] >= 'A' && trk[0] <= 'Z'))  continue;
+		if (StringUtil::startsWith(trk,"test"))  continue;
 
 		Scene sc;  sc.LoadXml(path +"scene.xml");
-		SplineRoad rd(app);  rd.LoadFile(path +"road.xml");  // 1 only..
+
 		std::vector<SplineRoad*> vRoads;
-		vRoads.push_back(&rd);
+		for (int i=0; i < 20; ++i)  // max roads?
+		{
+			String si = i==0 ? "" : toStr(i+1);
+			string p = path + "road" +si + ".xml";
+			if (PATHS::FileExists(p))
+			{
+				auto* rd = new SplineRoad(0);  // no getTerH etc !
+				rd->LoadFile(p);
+				vRoads.push_back(rd);
+		}	}
 		
 		LogO("Track: "+trk);
-		WarningsCheck(&sc, vRoads);
+		TrackWarn tw = WarningsCheck(&sc, vRoads);
+		
+		if (tw.hq < min_hq)  min_hq = tw.hq;  if (tw.hq > max_hq)  max_hq = tw.hq;
+		all.hq += tw.hq;
+		all.warn += tw.warn;
+		all.horiz += tw.horiz;
 	}
+	LogO("))) ALL tracks warnings --------- Stats");
+	LogO(String("::: Average Quality: ") + fToStr( float(all.hq) / tracks) + "  of 10 HQ");
+	LogO(String("::: Quality  min: ")+toStr(min_hq)+"  max: "+toStr(max_hq));
+	LogO(String("::: Total  Horizons: ") + toStr( tracks - all.horiz ) +
+							"  " + fToStr( 100.f * float(all.horiz) / tracks,0,3)+" %");
+	LogO(String("::: Total  Warnings: ") + toStr( all.warn) +
+							"  average: " + fToStr( float(all.warn) / tracks,2,4));
 	LogO(String("::: Time ALL tracks: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 	LogO("))) ALL tracks warnings --------- End");
 }

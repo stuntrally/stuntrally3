@@ -152,7 +152,7 @@ void App::createScene01()  // once, init
 	{	gui->ToolSceneXml();  quit = 1;  }
 
 	///  _Tool_ warnings  ................
-	///  takes some time
+	// args.set("warn");  // debug
 	if (args.has("warnings") || args.has("warn"))
 	{	gui->ToolTracksWarnings();  quit = 1;  }
 		
@@ -252,12 +252,6 @@ void App::NewCommon(bool onlyTerVeget)
 	//  meh, works
 	for (int i=0; i<2; ++i)
 		prvBrushes.Load(PATHS::UserConfigDir()+"/brushes.png",1);
-
-	//  todo:  preload 2d tex, all?  gui, particles,..
-	// auto* texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
-	// TextureGpu *tex = texMgr->createOrRetrieveTexture("stuntrally-logo.jpg",
-	// 	GpuPageOutStrategy::Discard, CommonTextureTypes::Diffuse, "General" );
-	// tex->scheduleTransitionTo( GpuResidency::Resident );
 }
 
 ///  Load
@@ -507,10 +501,10 @@ void App::SaveTrackEv()
 	for (auto r : scn->roads)
 	{
 		auto si = i==0 ? "" : toStr(i+1);  ++i;
-		r->SaveFile(dir+ "road"+si+".xml");
+		r->SaveFile(dir + "road" +si+ ".xml");
 	}
 
-	scn->sc->SaveXml(dir+"scene.xml");
+	scn->sc->SaveXml(dir + "scene.xml");
 
 	SaveGrassDens();
 	// SaveWaterDepth();  //-

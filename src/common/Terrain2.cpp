@@ -327,7 +327,7 @@ Ogre::Real CScene::getTerH(Ogre::Real x, Ogre::Real z)
 	{
 		Vector3 p(x, 0.f, z);
 		if (ter->getHeightAt(p))
-			return p.y;
+			return p.y;  // todo: max of all ter?
 	}
 	return 0.f;  //-
 }

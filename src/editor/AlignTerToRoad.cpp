@@ -204,7 +204,7 @@ void App::AlignHorizonToTer()
 	const int base = pSet->ah_base_ter;
 	if (scn->terCur == base || base >= scn->ters.size())
 	{
-		LogO("Align Horiz: base ter == current, or out range");
+		LogO("Align Horiz: base ter == current, or out of range");
 		return;
 	}
 	auto* baseTer = scn->ters[base];

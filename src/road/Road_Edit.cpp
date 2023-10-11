@@ -112,6 +112,7 @@ void SplineEdit::Move1(int id, Vector3 relPos)
 
 Real SplineEdit::getTerH(const Vector3& p)
 {
+	if (!scn)  return 0.f;  // tool
 	Vector3 pos(p);
 	scn->getTerH(pos);
 	return pos.y;
