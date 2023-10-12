@@ -337,6 +337,7 @@
 	<Tag name="SC_SurrealSpace">SurrealSpace</Tag>
 	<Tag name="SC_GreeceRocky">GreeceRocky</Tag>
 	<Tag name="SC_Marble">Marble</Tag>
+	<Tag name="SC_Spring">Spring</Tag>
 
 	<!--  Vehicle Paint names  -->
 	<Tag name="P_Red">Red</Tag>

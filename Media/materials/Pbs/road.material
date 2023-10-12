@@ -1579,3 +1579,36 @@ hlms roadMarsTransp_ter pbs : road_terrain
 	normal_map roadMars_norm.jpg
 	bump_scale 0.6
 }
+
+//----------------------------------------------------------------------------
+//  Spring
+hlms roadSpring pbs : road
+{
+	diffuse_map roadSpring.jpg
+	diffuse 0.7 0.7 0.7
+	specular 0.25 0.3 0.25 48
+}
+hlms roadSpring_ter pbs : road_terrain
+{
+	diffuse_map roadSpring.jpg
+	normal_map normal_2.png
+	// ambient 1.02 1.06 1.0
+	diffuse 0.65 0.65 0.65
+	specular 0.15 0.2 0.15 32
+}
+
+hlms roadSpring2 pbs : road
+{
+	diffuse_map roadSpring2.jpg
+	// ambient 0.7 0.83 0.7
+	diffuse 0.5 0.66 0.5
+	specular 0.15 0.33 0.25 48
+}
+hlms roadSpring2_ter pbs : road_terrain
+{
+	diffuse_map roadSpring2.jpg
+	normal_map normal_1.png
+	// ambient 0.7 0.83 0.7
+	diffuse 0.6 0.75 0.6
+	specular 0.15 0.33 0.25 96
+}

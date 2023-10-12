@@ -35,8 +35,8 @@ hlms pipe_glass pbs
 
 	// fresnel_coeff 0.9 0.9 0.9
 	roughness 0.45
-	metalness 0.99
-	fresnel 0.8
+	// metalness 0.99
+	fresnel 1.0
 	fresnel_coeff 0.3 0.3 0.3
 
 	cull_mode clockwise
@@ -44,9 +44,9 @@ hlms pipe_glass pbs
 
 	// transparency 1.0
 	transparency_mode transparent
-	two_sided true
+	// two_sided true
 
-	use_alpha_from_textures off  //?
+	// use_alpha_from_textures off  //?
 
 	receives_shadows false
 }
@@ -1031,4 +1031,33 @@ hlms wall_metal_40_grid pbs : wall_base_refl
 hlms wallP_metal_40_grid pbs : wall_metal_40_grid
 {
 	cull_mode none
+}
+
+
+//  new 10'23  spring
+hlms road_wall_spring pbs : wall_base
+{
+	diffuse  0.95 0.95 0.95
+	specular 0.21 0.21 0.61
+	diffuse_map wall_spring.jpg
+	normal_map  wall_spring_norm.png
+	// bump_scale 1.1
+}
+
+hlms pipe_wall_spring pbs : pipe_wall_base
+{
+	diffuse  0.95 0.95 0.95
+	specular 0.21 0.21 0.61
+	diffuse_map wall_spring.jpg
+	normal_map  wall_spring_norm.png
+	// bump_scale 1.1
+}
+
+hlms road_col_spring pbs : column
+{
+	diffuse  0.95 0.85 0.55
+	specular 0.41 0.61 0.31
+	diffuse_map roadMoss.jpg
+	normal_map  normal_1.png
+	// bump_scale 0.7
 }

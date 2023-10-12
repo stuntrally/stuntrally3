@@ -81,6 +81,9 @@
 <s m="sky/magicdark"       c="#7070B0"   p="31"  y="-30"  />
 
 <s m="sky/magic_alien"     c="#70A974"   p="30"  y="-41"  />
+	
+<s m="sky/belfast_sunset01"  c="#ffd69f"   p="8"  y="-45"  /> <!-- used in Spr1-Rise --> 
+	
 
 
 <!--  ⛰️🏔️ Terrain textures  ================================================================================================================================
@@ -147,6 +150,7 @@ common:  sc - "short scenery name" (name color)
 
 <t sc="Grc"  t="ground_white_d"     n="ground_white_n"     s="8.54"  r="2" su="DesertBumpy"    ro="0.34" me="0.3" re="0"  tp="0"  du="0.3" ds="0.2" md="0.4" tr="0.36 0.40 0.28 0.7"  aa="0"  ab="18" />
 <t sc="Grc"  t="ground_yellow_d"    n="jungle_mntn_n"      s="8.91"  r="3" su="DesertBumpy"    ro="0.31" me="0.3" re="0"  tp="0"  du="0.3" ds="0.2" md="0.4" tr="0.42 0.36 0.28 0.6"  aa="18" ab="30" />
+<t sc="Grc"  t="mntn_yellow2_d"     n="jungle_stone_n"     s="42.53" r="2" su="Rocks"          tp="1" du="0.3" ds="0.2" md="0.5" tr="0.32 0.32 0.32 0.4"  aa="33" ab="90" />
 
 <t sc="Isl"  t="---- Sand ------"   r="0" />      <!-- 🏖️ -->
 <t sc="Isl"  t="island_sand2_d"     n="desert_sand2_n"     s="10.21" r="2" su="DesertFast"     ro="0.61" me="0.4" re="0"  tp="0"  du="0.6" ds="0.7" md="0.0" tr="0.44 0.40 0.23 0.7"  aa="0"  ab="90" />
@@ -256,6 +260,10 @@ common:  sc - "short scenery name" (name color)
 <t sc="Mar"  t="moss_ground_marble_d"   n="grass_ground_n"      s="8.92"  r="2" su="GrassJungle"    tp="0" du="0.0" ds="0.2" md="0.1" tr="0.13 0.20 0.13 0.8"  aa="17" ab="34" />
 <t sc="Mar"  t="moss_plants_marble_d"   n="moss_plants_n"       s="9.01"  r="2" su="GrassJungle"    tp="0" du="0.0" ds="0.2" md="0.1" tr="0.12 0.25 0.23 0.8"  aa="0"  ab="19" />
 
+<t sc="Spr"  t="grass_green_spring_d"   n="grass_green_n"       s="9.43"  r="5" su="GrassJungle"    tp="0" du="0.0" ds="0.2" md="0.4" tr="0.16 0.31 0.04 0.7"  aa="0"  ab="27" />
+<t sc="Spr"  t="grass_ground_spring_d"  n="grass_ground_n"      s="9.04"  r="5" su="GrassForest"    tp="0" du="0.0" ds="0.2" md="0.8" tr="0.22 0.20 0.04 0.9"  aa="0"  ab="25" />
+<t sc="Spr"  t="grass_rocky_spring_d"   n="grass_rocky_n"       s="10.81" r="4" su="DesertBumpy"    tp="0" du="0.0" ds="0.2" md="0.6" tr="0.42 0.46 0.08 0.7"  aa="13" ab="36" />
+
 
 <!--  🛣️ Roads  ================================================================================================================================
       m - road material   rest same as for t (above) -->
@@ -333,11 +341,14 @@ common:  sc - "short scenery name" (name color)
 <r sc="Blk"  m="roadDesertBlack"      r="1" su="roadDesert"   re="0"  du="0.4" ds="0.9" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 <!--  new rbduck  SR 2.8 -->
-<r sc="Mos"  m="roadMoss2"             r="3" su="roadJungle"   du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.8" />
-<r sc="Oth"  m="roadMarbleStone"       r="1" su="roadForest"   du="0.0" ds="0.2" md="0.0" tr="0.56 0.50 0.50 0.7" />
-<r sc="GrcR" m="roadSandMarble"        r="1" su="roadGravel"   du="0.0" ds="0.2" md="0.0" tr="0.70 0.70 0.70 0.6" />
-<r sc="GrcR" m="roadSandMarblePink"    r="1" su="roadGravel"   du="0.0" ds="0.2" md="0.0" tr="0.75 0.65 0.70 0.6" />
-<r sc="Mar"  m="roadMossMarble"        r="3" su="roadJungle"   du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.8" />
+<r sc="Mos"  m="roadMoss2"            r="3" su="roadJungle"   du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.8" />
+<r sc="Oth"  m="roadMarbleStone"      r="1" su="roadForest"   du="0.0" ds="0.2" md="0.0" tr="0.56 0.50 0.50 0.7" />
+<r sc="GrcR" m="roadSandMarble"       r="1" su="roadGravel"   du="0.0" ds="0.2" md="0.0" tr="0.70 0.70 0.70 0.6" />
+<r sc="GrcR" m="roadSandMarblePink"   r="1" su="roadGravel"   du="0.0" ds="0.2" md="0.0" tr="0.75 0.65 0.70 0.6" />
+<r sc="Mar"  m="roadMossMarble"       r="3" su="roadJungle"   du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.8" />
+	
+<r sc="For"  m="roadSpring"           r="4" su="roadForest"   du="0.0" ds="0.2" md="0.2" tr="0.30 0.26 0.16 0.8" />
+<r sc="For"  m="roadSpring2"          r="4" su="roadForest"   du="0.0" ds="0.2" md="0.2" tr="0.30 0.26 0.16 0.8" />
 	
 <r sc="Oth"  m="roadInvisibleDesert"       r="3" su="roadDesert"   du="0.0" ds="0.0" md="0.0" tr="0.40 0.36 0.16 0.4" />
 <r sc="Oth"  m="roadInvisibleJungle"       r="3" su="roadJungle"   du="0.0" ds="0.0" md="0.0" tr="0.40 0.36 0.16 0.4" />
@@ -388,11 +399,11 @@ common:  sc - "short scenery name" (name color)
 <r sc="Des"  m="pipeGlassYellow"      r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 <r sc="Wnt"  m="---- pipe glass2 ----" r="0" />
-<r sc="Cry"  m="pipeGlassCrystal"     r="2" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Cry"  m="pipeGlassCrystal2Red" r="2" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Cry"  m="pipeGlassCrystal2Blue" r="2" su="roadDesert"  re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Cry"  m="pipeGlassCrystal2Cyan" r="2" su="roadDesert"  re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Cry"  m="pipeGlassCrystal2Pink" r="2" su="roadDesert"  re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Cry"  m="pipeGlassCrystal"       r="2" su="roadDesert" re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Cry"  m="pipeGlassCrystal2Red"   r="2" su="roadDesert" re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Cry"  m="pipeGlassCrystal2Blue"  r="2" su="roadDesert" re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Cry"  m="pipeGlassCrystal2Cyan"  r="2" su="roadDesert" re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Cry"  m="pipeGlassCrystal2Pink"  r="2" su="roadDesert" re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Cry"  m="pipeGlassCrystal2Green" r="2" su="roadDesert" re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Spc"  m="pipeGlassAlien"       r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Cry"  m="pipeGlassAlienBlue"   r="3" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -417,6 +428,8 @@ common:  sc - "short scenery name" (name color)
 <r sc="Cry"  m="road_wall_crystal"    r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Aln"  m="road_wall_Alien"      r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Blk"  m="road_wall_Black"      r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Jng"  m="road_wall_spring"     r="4" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+
 
 <r sc="Oth"  m="pipe_wall"            r="3" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="JngD" m="pipe_wall_JDark"      r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -428,6 +441,8 @@ common:  sc - "short scenery name" (name color)
 <r sc="Cry"  m="pipe_wall_crystal"    r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Aln"  m="pipe_wall_Alien"      r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Blk"  m="pipe_wall_Black"      r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Jng"  m="pipe_wall_spring"     r="4" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+
 
 <r sc="Wnt"  m="---- column ----"     r="0" />  <!-- 🏛️ -->
 <r sc="Oth"  m="road_col"             r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -439,6 +454,7 @@ common:  sc - "short scenery name" (name color)
 <r sc="Cry"  m="road_col_crystal"     r="3" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Aln"  m="road_col_Alien"       r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Blk"  m="road_col_Black"       r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Jng"  m="road_col_spring"      r="4" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 <r sc="Wnt"  m="---- wall universal"  r="0" />  <!-- 🧱📏 -->
 <r sc="Spc"  m="wall_space_diam"      r="4" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -517,7 +533,7 @@ common:  sc - "short scenery name" (name color)
 <r sc="Grc"  m="River_cyan"           r="4" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="JngD" m="River_green"          r="2" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Mos"  m="River_moss"           r="3" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Mar" m="River_marble"          r="1" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Mar"  m="River_marble"         r="1" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 <r sc="GrcR" m="River_white"          r="1" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Isl"  m="River_sunset"         r="1" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -544,6 +560,16 @@ common:  sc - "short scenery name" (name color)
 <r sc="Vlc"  m="River_LavaOrn"        r="2" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="VlcD" m="River_LavaBlk"        r="3" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />  
 <r sc="Vlc"  m="River_LavaHot"        r="2" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+	
+<r sc="GrcR" m="River_milky_white"    r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Jng"  m="River_milky_blue"     r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Grc"  m="River_milky_cyan"     r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="GrcR" m="River_clear_white"    r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Jng"  m="River_clear_blue"     r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="JngD" m="River_clear_green"    r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Isl"  m="River_clear_sunset"   r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="IslD" m="River_clear_shore"    r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Sur"  m="River_clear_pink"     r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 
 <!--  🌿  Grasses  ================================================================================================================================
@@ -631,6 +657,23 @@ common:  sc - "short scenery name" (name color)
 <g sc="Mrs"  g="grassZ13r"         c="grClrWinter"    r="1" xa="1.87" xb="2.23" ya="1.86" yb="2.26" />
 <g sc="Mrs"  g="grassZ14r"         c="grClrWinter"    r="2" xa="1.87" xb="2.23" ya="1.86" yb="2.26" />
 <g sc="Mrs"  g="grassZ1r"          c="grClrWinter"    r="2" xa="1.87" xb="2.23" ya="1.86" yb="2.26" />
+	
+<g sc="Aln"  g="alienPlant01a"     c="grClrWinter"    r="1" xa="2.67" xb="3.23" ya="1.96" yb="2.26" />
+<g sc="Aln"  g="alienPlant01b"     c="grClrWinter"    r="1" xa="2.67" xb="3.23" ya="1.96" yb="2.26" />
+
+<g sc="For"  g="flower01"          c="grClrForest"    r="2" xa="1.60" xb="1.80" ya="1.46" yb="1.67" />
+<g sc="For"  g="flower01b"         c="grClrForest"    r="2" xa="1.60" xb="1.80" ya="1.46" yb="1.67" />
+<g sc="For"  g="flower02"          c="grClrForest"    r="2" xa="1.80" xb="2.00" ya="1.66" yb="1.87" />
+<g sc="For"  g="flower03"          c="grClrForest"    r="2" xa="1.80" xb="2.00" ya="1.66" yb="1.87" />
+
+<g sc="Jng"  g="seaweedTall01"     c="grClrForest"    r="2" xa="2.60" xb="4.60" ya="3.4" yb="6.0" />
+<g sc="Jng"  g="seaweedTall02"     c="grClrForest"    r="2" xa="2.60" xb="4.60" ya="3.4" yb="6.0" />
+<g sc="Jng"  g="seaweedTall03"     c="grClrForest"    r="2" xa="2.60" xb="4.60" ya="3.4" yb="6.0" />
+<g sc="Jng"  g="seaweedTall04"     c="grClrForest"    r="2" xa="2.60" xb="4.60" ya="3.4" yb="6.0" />
+<g sc="Uni"  g="seaweedTall05"     c="grClrSmall"     r="2" xa="2.60" xb="4.60" ya="3.4" yb="6.0" />
+<g sc="Jng"  g="seaweed01"         c="grClrForest"    r="2" xa="1.80" xb="2.10" ya="1.76" yb="2.07" />
+<g sc="Jng"  g="seaweed02"         c="grClrForest"    r="2" xa="1.80" xb="2.10" ya="1.76" yb="2.07" />
+<g sc="Jng"  g="seaweed03"         c="grClrForest"    r="2" xa="1.80" xb="2.10" ya="1.76" yb="2.07" />
 
 
 <!--  🌳  Vegetation  ================================================================================================================================

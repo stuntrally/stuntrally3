@@ -24,7 +24,9 @@ recursive = False
 #  objects3/  new obstacles, hq
 start_dir = media + 'objects3/'
 #args = ' -v2 -e -t -ts 4 -O puqs '  # no lods +
-args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 400 -p 12 '  # 3 lods
+
+#  bridge, pier
+args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 15 '  # 3 lods
 
 #  rocks/  hex*
 #start_dir = media + 'rockshex/'
