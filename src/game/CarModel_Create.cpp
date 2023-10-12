@@ -246,11 +246,11 @@ void CarModel::Create()
 	if (cType == CT_LOCAL && !deny && !pApp->bHideHudBeam)
 	{
 		itNextChk = mSceneMgr->createItem("check.mesh");  ToDel(itNextChk);
-		itNextChk->setRenderQueueGroup(RQG_Weather);  itNextChk->setCastShadows(false);
+		itNextChk->setRenderQueueGroup(RQG_Ghost);  itNextChk->setCastShadows(false);
 		itNextChk->setDatablockOrMaterialName("checkpoint_normal");
 		
 		ndNextChk = ndRoot->createChildSceneNode();  ToDel(ndNextChk);
-		ndNextChk->attachObject(itNextChk);  itNextChk->setVisibilityFlags(RV_Hud);
+		ndNextChk->attachObject(itNextChk);  itNextChk->setVisibilityFlags(RV_Hud3D);
 		ndNextChk->setVisible(false);
 	}
 

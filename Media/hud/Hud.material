@@ -78,18 +78,18 @@ hlms circle_minimap unlit : hud_base
 hlms checkpoint pbs
 {
     diffuse  1.0 1.0 1.0
-    specular 1.0 1.0 1.0
+    specular 0.0 0.0 0.0
 
 	// fresnel 0.1
 	fresnel_coeff 0.1 0.1 0.1
-	roughness 0.1
-	metalness 0.8
+	roughness 0.4
+	// metalness 0.8
 
     // scene_blend alpha_blend
  	diffuse_map  checkpoint.png
  	depth_write off
 	cull_mode none
-	transparency 1.0
+	transparency 0.9
 	transparency_mode transparent
 	two_sided true
 }
@@ -97,28 +97,28 @@ hlms checkpoint pbs
 //  normal checkpoint, not finish
 hlms checkpoint_normal pbs : checkpoint
 {
-	diffuse  0.0 0.1 0.0
+	diffuse  0.0 0.9 0.0
 	// specular 0.3 1.7 0.3
-	emissive 0.0 0.1 0.0
+	emissive 0.0 0.2 0.0
 }
 //  finish, does not end race
 hlms checkpoint_lap pbs : checkpoint
 {
-	diffuse  0.0 0.1 0.0
+	diffuse  0.0 0.9 0.9
 	// specular 0.5 1.7 0.7
-	emissive 0.0 0.1 0.1
+	emissive 0.0 0.15 0.15
 }
 //  finish, last lap begins after passing it
 hlms checkpoint_lastlap pbs : checkpoint
 {
 	specular 0.4 0.4 0.2
-	// emissive 1.0 1.0 0.1
+	emissive 0.15 0.15 0.05
 }
 //  the very last checkpoint, ends race after passing
 hlms checkpoint_finish pbs : checkpoint
 {
 	specular 0.4 0.2 0.2
-	// emissive 1.0 0.7 0.1
+	emissive 0.2 0.1 0.1
 }
 
 
