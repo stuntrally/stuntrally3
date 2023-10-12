@@ -359,3 +359,48 @@ hlms grassZ1r pbs : grass_emis
     diffuse_map  grassZ1r.png
     emissive_map grassZ1r.png
 }
+
+//  spring
+hlms alienPlant01a pbs : grass {
+	emissive 0.2 0.2 0.2
+    diffuse_map alienPlant01a.png  }
+	
+hlms alienPlant01b pbs : grass {
+	emissive 0.2 0.2 0.2
+    diffuse_map alienPlant01b.png  }
+
+hlms flower01 pbs : grass {
+    diffuse_map flower01.png  }
+	
+hlms flower01b pbs : grass {
+    diffuse_map flower01b.png  }
+
+hlms flower02 pbs : grass {
+    diffuse_map flower02.png  }
+
+hlms flower03 pbs : grass {
+    diffuse_map flower03.png  }
+	
+hlms seaweedTall01 pbs : grass {
+    diffuse_map seaweedTall01.png  }
+	
+hlms seaweedTall02 pbs : grass {
+    diffuse_map seaweedTall02.png  }
+	
+hlms seaweedTall03 pbs : grass {
+    diffuse_map seaweedTall03.png  }
+	
+hlms seaweedTall04 pbs : grass {
+    diffuse_map seaweedTall04.png  }
+	
+hlms seaweedTall05 pbs : grass {
+    diffuse_map seaweedTall05.png  }
+
+hlms seaweed01 pbs : grass {
+    diffuse_map seaweed01.png  }
+	
+hlms seaweed02 pbs : grass {
+    diffuse_map seaweed02.png  }
+	
+hlms seaweed03 pbs : grass {
+    diffuse_map seaweed03.png  }
