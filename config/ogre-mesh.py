@@ -6,10 +6,10 @@ import os
 #  script to convert  .mesh files
 #  from v1 SR 2.7 to v2 SR 3.0  with lods
 
-#  setup dirs  -----
-work_dir = '/home/ch/_sr/og3/Ogre/ogre-next/build/Release/bin/'
+#  setup dirs  --  change to yours to use  -----
+work_dir = '/home/ch/_sr/Ogre/ogre-next/build/Release/bin/'
 tool = './OgreMeshTool'
-media = '/home/ch/_sr/og3/_sr/Media/'
+media = '/home/ch/_sr/_sr3/Media/'
 recursive = False
 
 #start_dir = os.getcwd()
@@ -23,6 +23,7 @@ recursive = False
 #------------------------------
 #  objects3/  new obstacles, hq
 start_dir = media + 'objects3/'
+#args = ' -v2 -e -t -ts 4 -O puqs '  # no lods +
 args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 400 -p 12 '  # 3 lods
 
 #  rocks/  hex*
