@@ -18,7 +18,7 @@
 // #include <OgreShadowCameraSetup.h>
 // #include <OgreTexture.h>
 
-#define BrushMaxSize  512
+#define BrushMaxSize  1024
 
 //  Gui
 const int ciAngSnapsNum = 7;
