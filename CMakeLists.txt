@@ -175,17 +175,18 @@ foreach (EXE ${EXE_LIST})
             ${EXE} 
             PRIVATE
             boost::boost
-            Threads::Threads
-            OGRE::OGRE
             Bullet::Bullet
-            SDL2::SDL2
+            enet::enet
             MyGUI::MyGUI
-            Vorbis::vorbis
-            Vorbis::vorbisfile
             Ogg::ogg
+            OGRE::OGRE
             OpenAL::OpenAL
+            SDL2::SDL2
+            Threads::Threads
             tinyxml::tinyxml
             tinyxml2::tinyxml2
+            Vorbis::vorbis
+            Vorbis::vorbisfile
     )
 
 endforeach ()
