@@ -2,7 +2,7 @@
 // #include "PreviewTex.h"
 //#include "SceneClasses.h"
 #include "Road.h"
-#include "Reflect.h"
+#include "FluidsReflect.h"
 #include "Grid.h"
 #include <OgreVector3.h>
 #include <OgreString.h>

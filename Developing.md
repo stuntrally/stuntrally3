@@ -546,7 +546,7 @@ Parts of [post](https://forums.ogre3d.org/viewtopic.php?p=553666#p553666) with i
 ### Workspace Listener
 
 We do `workspace->addListener(` so that `PlanarReflWorkspaceListener` is updated, for _every_ workspace that can see the reflection (e.g. the cubemap workspaces).  
-In code `AddListenerRnd2Tex()`, it's `ReflectListener`, `mWsListener` in `Reflect.h`.
+In code `AddListenerRnd2Tex()`, it's `ReflectListener`, `mWsListener` in `FluidsReflect.h`.
 
 `ReflectListener::passEarlyPreExecute` does check which `render_pass` it is from `SR3.compositor` by `identifier` number.
 

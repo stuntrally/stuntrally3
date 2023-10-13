@@ -68,3 +68,26 @@ void App::UpdStartPos(bool vis)
 		ndStartBox[i]->setVisible(vis && edMode == ED_Start && bEdit());
 	}
 }
+
+//  🚧 ed cursor
+void App::UpdFluidBox()
+{
+	int fls = scn->sc->fluids.size();
+	bool bFluids = edMode == ED_Fluids && fls > 0 && !bMoveCam;
+	if (fls > 0)
+		iFlCur = std::max(0, std::min(iFlCur, fls-1));
+
+	if (!ndFluidBox)  return;
+	ndFluidBox->setVisible(bFluids);
+	if (!bFluids)  return;
+	
+	FluidBox& fb = scn->sc->fluids[iFlCur];
+	ndFluidBox->setPosition(fb.pos);
+	ndFluidBox->setScale(fb.size);
+}
+
+void App::UpdMtrWaterDepth()
+{
+	float fl = edMode == ED_Fluids ? 0.f : 1.f;
+	// sh::Factory::getInstance().setSharedParameter("waterDepth", sh::makeProperty<sh::FloatValue>(new sh::FloatValue(fl)));
+}
