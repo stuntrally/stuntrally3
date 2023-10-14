@@ -6,28 +6,8 @@
 using namespace tinyxml2;
 
 
-BltShape::BltShape()
-	:type(BLT_Sphere)
-	,radius(1.f), height(1.f)
-	,offset(0,0,0) //,rot(Degree;
-	,friction(0.2f), restitution(0.9f)
-{
-	//rot = Quaternion::IDENTITY;
-}
-
-BltCollision::BltCollision()
-{
-	mesh = "";
-	//shapes
-}
-
-BltObjects::BltObjects()
-{	}
-
-
 //  Load  collision objects from xml
 ///--------------------------------------------------------------------------------------------------------------------------------------
-
 bool BltObjects::LoadXml()
 {
 	colNone.clear();

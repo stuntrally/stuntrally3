@@ -115,6 +115,7 @@ void CScene::CreateTrees()
 			LogO("TREES no imgRoad !");
 
 		//  Tree Layers
+		int nn = 0;
 		for (size_t l=0; l < sc->pgLayers.size(); ++l)
 		{
 			PagedLayer& pg = sc->pgLayersAll[sc->pgLayers[l]];
@@ -160,18 +161,17 @@ void CScene::CreateTrees()
 			Vector3 ofs(0,0,0);  if (col)  ofs = col->offset;  // mesh offset
 
 			//  num trees  ----------------------------------------------------------------
-			int cnt = fTrees * 6000 * pg.dens;
-			LogO("Tree:  "+file+"\t cnt: "+toStr(cnt));
-			// LogO(String("col?  ")+(col?"y":"n")+ " ofs x "+fToStr(ofs.x,2));
+			int cnt = fTrees * 6000 * pg.dens, all = 0;
+			// LogO(String("col?  ")+(col?"y":"n")+ " ofs x "+fToStr(ofs.x,2)+ " z "+fToStr(ofs.y,2));
 			
 			for (int i = 0; i < cnt; ++i)
 			{
 				#if 0  ///  test shapes, new objects
-					int ii = i; // l*cnt+i;
-					yaw = (ii * 15) % 360;  // grid
+					yaw = (nn * 15) % 360;  // grid
 					// yaw = 0.f;
-					pos.z = -100 +(ii / 9) * 20;  pos.x = -100 +(ii % 9) * 20;
+					pos.z = -100 +(nn / 9) * 20;  pos.x = -100 +(nn % 9) * 20;
 					Real scl = pg.minScale;
+					++nn;
 				#else
 					yaw = rnd.rand(360.0);
 					pos.x = getTerPos();  pos.z = getTerPos();
@@ -201,7 +201,7 @@ void CScene::CreateTrees()
 				//  check ter height  ------------
 				bool in = ter0->getHeightAt(pos);
 				// LogO(fToStr(pos.y));
-				if (!in)  add = false;  // outside
+				// if (!in)  add = false;  // outside
 				
 				if (pos.y < pg.minTerH || pos.y > pg.maxTerH)
 					add = false;
@@ -263,6 +263,7 @@ void CScene::CreateTrees()
 
 
 				//  **************  add  **************
+				++all;
 				Item *item = mgr->createItem( file,
 					ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
 				
@@ -289,11 +290,12 @@ void CScene::CreateTrees()
 				SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
 				node->attachObject( item );
 				node->scale( scl * Vector3::UNIT_SCALE );
+
 				pos.y -= veg->yOfs;  // ofs below
 				// pos.y += std::min( item->getLocalAabb().getMinimum().y, Real(0.0f) ) * -0.1f + lay.down;  //par
 				// todo: ter h in few +-xz, get lowest slow-
 				node->setPosition( pos );
-
+				
 				Degree a( yaw );
 				Quaternion q;  q.FromAngleAxis( a, Vector3::UNIT_Y );
 				if (0) // todo: par pg.tilt ..
@@ -377,6 +379,7 @@ void CScene::CreateTrees()
 				}
 				#endif
 			}
+			LogO("Tree:  "+file+"\t cnt: "+toStr(all)+" / "+toStr(cnt));
 		}
 		LogO(String("***** Vegetation models count: ") + toStr(iVegetAll) + "  shapes: " + toStr(cntshp));
 	}
