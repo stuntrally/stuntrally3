@@ -255,7 +255,7 @@ void FluidsReflect::CreateFluids()
 		//  actor, tracked  ----
 		PlanarReflectionActor* actor =0;
 		PlanarReflections::TrackedRenderable* tracked =0;
-		if (reflect && mPlanarRefl)
+		if (reflect && mPlanarRefl && fb.hq >= 2)  // quality
 		{
 			actor = mPlanarRefl->addActor( PlanarReflectionActor(
 				node->getPosition(), v2size, node->getOrientation() ));

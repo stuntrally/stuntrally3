@@ -110,6 +110,7 @@ bool Scene::SaveXml(String file)
 		{
 			const FluidBox* fb = &fluids[i];
 			XMLElement* fe = xml.NewElement("fluid");
+			fe->SetAttribute("hq",		toStrC( fb->hq ));
 			fe->SetAttribute("name",	fb->name.c_str() );
 			fe->SetAttribute("pos",		toStrC( fb->pos ));
 			fe->SetAttribute("rot",		toStrC( fb->rot ));

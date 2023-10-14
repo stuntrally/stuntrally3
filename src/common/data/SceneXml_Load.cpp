@@ -122,6 +122,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		while (u)
 		{
 			FluidBox fb;
+			a = u->Attribute("hq");		if (a)  fb.hq = s2i(a);
 			a = u->Attribute("name");	if (a)  fb.name = string(a);
 
 			a = u->Attribute("pos");	if (a)  fb.pos = s2v(a);

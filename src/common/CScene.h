@@ -88,7 +88,7 @@ public:
 	void DestroyRoads(), DestroyPace(), DestroyTrail();
 
 	
-	//  🌳🪨 Vegetation
+	//  🌳🪨 Vegetation Trees
 	//-----------------------------------
 	Ogre::Image2* imgRoad = 0;  int imgRoadSize = 0;
 	void LoadRoadDens(), DelRoadDens();

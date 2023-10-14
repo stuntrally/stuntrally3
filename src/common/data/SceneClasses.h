@@ -31,7 +31,7 @@ struct TerLayer		//. 🏔️ terrain texture layer
 
 	// particles intensities, S size  // todo create, auto from presets..
 	float dust = 0.f, dustS = 0.2f, mud = 0.f, smoke = 0.f;
-	SColor tclr{0.16f,0.5f,0.2f,0.7f};  Ogre::Vector4 tcl;  // trail color, rgba copy
+	SColor tclr{0.16f,0.5f,0.2f,0.7f};  Ogre::Vector4 tcl{0,0,0,0};  // trail color, rgba copy
 	
 	///  🏔️ blendmap
 	//  min,max range and smooth range for terrain angle and height
@@ -141,6 +141,7 @@ public:
 
 	int id = -1;  // auto set, index to FluidParams, -1 doesnt exist
 	std::string name;
+	int hq = 2;  // quality 2 reflect 1 refract 0 basic
 
 	class btCollisionObject* cobj = 0;
 	int idParticles = 0;   // auto set  index for wheel particles  -1 none
@@ -173,7 +174,7 @@ class SEmitter		//  🔥 particles ⛅☢️
 public:
 	std::string name;  // particle_system
 	Ogre::Vector3 pos{0,0,0}, size{1,1,1};
-	Ogre::Vector3 up{0,1,0};  float rot = 0.f;  // dir
+	Ogre::Vector3 up{0,1,0};  float rot = 0.f;  // dir todo:
 	Ogre::Vector2 par{1,1};  // auto set original particle size from .emitter
 	float rate = 0.f;  // emit
 	float parScale = 1.f;
