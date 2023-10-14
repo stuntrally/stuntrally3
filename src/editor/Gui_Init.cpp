@@ -322,9 +322,9 @@ void CGui::InitGui()
 	Btn("TerUpdateLight", btnUpdateLayers);
 
 	//  diff clr
-	sv= &svTerDiffR;  sv->Init("TerDiffR", &f, 0.f,2.f,  1.5f, 1,3);  sv->DefaultF(1.f);  //Sev(TerPar);
-	sv= &svTerDiffG;  sv->Init("TerDiffG", &f, 0.f,2.f,  1.5f, 1,3);  sv->DefaultF(1.f);  //Sev(TerPar);
-	sv= &svTerDiffB;  sv->Init("TerDiffB", &f, 0.f,2.f,  1.5f, 1,3);  sv->DefaultF(1.f);  //Sev(TerPar);
+	sv= &svTerDiffR;  sv->Init("TerDiffR", &f, 0.f,2.f,  1.5f, 3,5);  sv->DefaultF(1.f);  //Sev(TerPar);
+	sv= &svTerDiffG;  sv->Init("TerDiffG", &f, 0.f,2.f,  1.5f, 3,5);  sv->DefaultF(1.f);  //Sev(TerPar);
+	sv= &svTerDiffB;  sv->Init("TerDiffB", &f, 0.f,2.f,  1.5f, 3,5);  sv->DefaultF(1.f);  //Sev(TerPar);
 	//  emis, refl
 	ck= &ckTerrainEmissive;	ck->Init("TerrainEmissive",	&b);
 	sv= &svTerReflect;

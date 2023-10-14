@@ -375,7 +375,7 @@ void App::CreateRoads()  // 🛣️
 	if (StringUtil::startsWith(fname,"road"))
 	{
 		int id = scn->roads.size();
-		LogO("~~~R create road " + toStr(id) + " from: " + fname);
+		LogO("C~~R create road " + toStr(id) + " from: " + fname);
 		Cam* cam = &mCams[0];  // todo: lod cam-
 		scn->road = new SplineRoad(this);
 		scn->road->Setup(

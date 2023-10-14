@@ -43,7 +43,7 @@ using namespace Ogre;
 
 void CScene::DestroyTrees()
 {
-	LogO("D--- destroy Trees");
+	LogO("D--V destroy Veget Trees");
 
 	SceneManager *mgr = app->mSceneMgr;
 	for (auto node : vegetNodes)
@@ -71,7 +71,7 @@ void CScene::RecreateTrees()
 void CScene::CreateTrees()
 {
 	if (ters.empty())  return;  // just gui
-	LogO("C--- CreateTrees");
+	LogO("C--V Create Veget Trees");
 	Ogre::Timer ti;
 	iVegetAll = 0;
 	// updGrsTer();

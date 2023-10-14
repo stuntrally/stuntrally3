@@ -536,7 +536,7 @@ Exception: `Mapping the buffer twice within the same frame detected!`.
 
 Workspace basically is the setup for rendering one view target, only like reflection, shadow, etc and lastly screen.  
 Many compositor Workspaces are created from code (telling how to render stuff, also few extra for editor minimap RTT).  
-Creating is in `.log` lines with: `++++ WS add:`, and in cpp code by any `addWorkspace`.  
+Creating is in `.log` lines with: `--++ WS add:`, and in cpp code by any `addWorkspace`.  
 
 `SR3.compositor` has definitions for most workspaces used.  
 Only shadows are made completely by code in `src/common/AppGui_Shadows.cpp`, based on `Samples/2.0/ApiUsage/ShadowMapFromCode/ShadowMapFromCode.cpp`.

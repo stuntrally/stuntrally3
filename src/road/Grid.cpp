@@ -121,7 +121,7 @@ void GridMtrs::AddMesh(
 	auto it = mtrs.find(mtr);
 	if (it != mtrs.end())
 	{
-		s = "Grid# add  ";
+		s = "Grid add  ";
 		(*it).second.AddMesh(lod, worldPos, mtr,
 			pos, norm, clr, tcs, idx);
 	}else
@@ -129,7 +129,7 @@ void GridMtrs::AddMesh(
 		GridCells cells;
 		// cells.fCellSize = 10.f;  // par-
 
-		s = "Grid# new  ";
+		s = "Grid New  ";
 		cells.AddMesh(lod, worldPos, mtr,
 			pos, norm, clr, tcs, idx);
 		mtrs[mtr] = cells;  // new

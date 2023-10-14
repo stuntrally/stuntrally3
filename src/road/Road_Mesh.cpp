@@ -396,7 +396,7 @@ void SplineRoad::addTri(int f1, int f2, int f3, int i)
 //-----------------------------------------------------------------------------------
 void SplineRoad::Destroy()  // full and markers
 {
-	LogO("D--- destroy Road");
+	LogO("D~~R destroy Road");
 	if (ndSel)	mSceneMgr->destroySceneNode(ndSel);
 	if (ndChosen)	mSceneMgr->destroySceneNode(ndChosen);
 	if (ndRot)	mSceneMgr->destroySceneNode(ndRot);

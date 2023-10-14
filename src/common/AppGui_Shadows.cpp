@@ -268,7 +268,7 @@ CompositorWorkspace *AppGui::setupShadowCompositor()
 	}
 
 	//  add Workspace
-	LogO("++++ WS add:  Shadows, all: "+toStr(mgr->getNumWorkspaces()));
+	LogO("--++ WS add:  Shadows, all: "+toStr(mgr->getNumWorkspaces()));
 	auto* mWorkspace = mgr->addWorkspace(
 		mSceneMgr, mWindow->getTexture(),
 		mCamera, "ShadowMapFromCodeWorkspace", true );

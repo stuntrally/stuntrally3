@@ -93,7 +93,7 @@ namespace Ogre
 		finalTarget[1] = m_tmpGaussianFilterTex;
 
 		//  add Workspace
-		LogO("++++ WS add:  Ter Shadowmap, all: "+toStr(m_compositorManager->getNumWorkspaces()));
+		LogO("--++ WS add:  Ter Shadowmap, all: "+toStr(m_compositorManager->getNumWorkspaces()));
 		m_shadowWorkspace = m_compositorManager->addWorkspace(
 			m_sceneManager, finalTarget, 0,
 			"Terra/ShadowGeneratorWorkspace", false );

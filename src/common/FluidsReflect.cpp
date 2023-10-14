@@ -174,7 +174,7 @@ void FluidsReflect::CreateRTT()
 	
 	if (!mWsListener)
 	{
-		LogO("++++ WS add Listener");
+		LogO("--++ WS add Listener");
 		mWsListener = new ReflectListener( app, mPlanarRefl );
 
 		for (auto* ws : app->mWorkspaces)

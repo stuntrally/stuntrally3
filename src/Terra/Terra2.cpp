@@ -185,7 +185,7 @@ namespace Ogre
 		const IdString workspaceName = "Terra/GpuBlendMapperWorkspace" + si;
 
 		//  add Workspace
-		LogO("++++ WS add:  Ter Blendmap "+si+", all: "+toStr(mgr->getNumWorkspaces()));
+		LogO("--++ WS add:  Ter Blendmap "+si+", all: "+toStr(mgr->getNumWorkspaces()));
 		workspace = pTerra->m_compositorManager->addWorkspace(
 			sceneMgr, texture/*finalTargetChannels*/, camera, workspaceName, false );
 

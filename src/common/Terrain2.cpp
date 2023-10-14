@@ -158,9 +158,7 @@ void CScene::CreateTerrain1(int n)
 			tdb->setRoughness(i, pt->rough);
 			tdb->setDiffuse(Vector3(td.clrDiff.x, td.clrDiff.y, td.clrDiff.z));
 		
-		// todo: diffuse, fresnel, specular, emissive color ?.. gui
-			// tdb->setSpecular( toV3(spec) * (!one ? 1.f : gc.gloss) );  // todo:
-			// tdb->setFresnel( Vector3::UNIT_SCALE * gc.fresnel, false );
+			// todo: diffuse, fresnel, specular, emissive color ?.. gui
 			LogO("* Ter lay: "+d_d+"  _s from: "+fname+"  met:"+fToStr(pt->metal)+
 				"  ro: "+fToStr(pt->rough)+(pt->reflect ? "  refl" : ""));
 			

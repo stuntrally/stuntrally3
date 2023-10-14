@@ -153,14 +153,14 @@ CompositorWorkspace* AppGui::SetupCompositor()
 
 		//  add Workspace
 		CompositorWorkspace* ws1,*ws2;
-		LogO("++++ WS add:  VR Eye L, all: "+toStr(mgr->getNumWorkspaces()));
+		LogO("--++ WS add:  VR Eye L, all: "+toStr(mgr->getNumWorkspaces()));
 		ws1 = mgr->addWorkspace( mSceneMgr, ext,
 				camL->cam, wsName,
 				true, -1, 0, 0,
 				Vector4( 0.0f, 0.0f, 0.5f, 1.0f ),
 				0x01, 0x01 );
 
-		LogO("++++ WS add:  VR Eye R, all: "+toStr(mgr->getNumWorkspaces()));
+		LogO("--++ WS add:  VR Eye R, all: "+toStr(mgr->getNumWorkspaces()));
 		ws2 = mgr->addWorkspace( mSceneMgr, ext, 
 				camR->cam, wsName,
 				true, -1, 0, 0,
@@ -190,7 +190,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 			d.SetDim(views, !pSet->split_vertically, i);
 
 			//  add Workspace
-			LogO("++++ WS add:  Split Screen "+toStr(i)+", all: "+toStr(mgr->getNumWorkspaces()));
+			LogO("--++ WS add:  Split Screen "+toStr(i)+", all: "+toStr(mgr->getNumWorkspaces()));
 			CompositorWorkspace* w =
 				mgr->addWorkspace( mSceneMgr, ext,
 					c->cam, wsName,
@@ -215,7 +215,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		mCamera = c->cam;
 
 		//  add Workspace
-		LogO("++++ WS add:  Main, all: "+toStr(mgr->getNumWorkspaces()));
+		LogO("--++ WS add:  Main, all: "+toStr(mgr->getNumWorkspaces()));
 		auto ws = mgr->addWorkspace( mSceneMgr, ext, c->cam, wsName, true );  // in .compositor
 		// ws->addListener(listener);
 		mWorkspaces.push_back(ws);
@@ -262,12 +262,12 @@ Cam* AppGui::CreateCamera(String name,
 	if (!nd)
 	{	nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode(SCENE_DYNAMIC);
 		nd->setName( name + "CamNd" );
-		LogO("c---: new cam node: " + name + "CamNd" );
+		LogO("c--: new cam node: " + name + "CamNd" );
 		nd->setPosition( 0, 50, 100 );  // whatever, upd later
 	}
 #endif
 	Camera* cam = mSceneMgr->createCamera( name );
-	LogO("c---: new cam: " + name);
+	LogO("c--: new cam: " + name);
 
 	cam->setPosition( pos );
 	cam->lookAt( lookAt );

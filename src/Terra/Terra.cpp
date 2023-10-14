@@ -279,7 +279,7 @@ namespace Ogre
 		const IdString workspaceName = "Terra/GpuNormalMapperWorkspace" + si;
 
 		//  add Workspace
-		LogO("++++ WS add:  Ter Normals "+si+", all: "+toStr(mgr->getNumWorkspaces()));
+		LogO("--++ WS add:  Ter Normals "+si+", all: "+toStr(mgr->getNumWorkspaces()));
 		workspace = mgr->addWorkspace(
 			sceneMgr, finalTargetChannels, camera, workspaceName, false );
 

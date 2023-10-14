@@ -208,7 +208,7 @@ namespace Ogre
                 channels.push_back( actorData.reflectionTexture );
 
         		//  add Workspace
-    			LogO("++++ WS add:  Planar Reflect, all: "+toStr(mCompositorManager->getNumWorkspaces()));
+    			LogO("--++ WS add:  Planar Reflect, all: "+toStr(mCompositorManager->getNumWorkspaces()));
                 actorData.workspace = mCompositorManager->addWorkspace(
                     mSceneManager, channels, actorData.reflectionCamera, workspaceName, false, 0 );
                 actorData.isReserved = false;

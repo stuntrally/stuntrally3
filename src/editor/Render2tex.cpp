@@ -125,7 +125,7 @@ void App::CreateRnd2Tex()
 		// #define MANUAL_RTT_UPD  // todo: terrain shadowed..?
 
 			//  add Workspace
-			LogO(String("++++ WS add:  Ed ")+strWs[i]+", all: "+toStr(wsMgr->getNumWorkspaces()));
+			LogO(String("--++ WS add:  Ed ")+strWs[i]+", all: "+toStr(wsMgr->getNumWorkspaces()));
 
 			auto* cam = prv3D ? prvScene.cam : r.cam;
 			r.ws = wsMgr->addWorkspace( scMgr, chan, cam, name,

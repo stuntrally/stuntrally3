@@ -145,7 +145,7 @@ void AppGui::CreateCubeReflect()
 	}
 
 	//  add Workspace
-	LogO("++++ WS add:  Reflect Cube, all: "+toStr(mgr->getNumWorkspaces()));
+	LogO("--++ WS add:  Reflect Cube, all: "+toStr(mgr->getNumWorkspaces()));
 	auto* ws = mgr->addWorkspace(
 		mSceneMgr, chan, mCubeCamera, name, false );  // manual update
 	mWorkspaces.push_back(ws);  //+ to destroy
