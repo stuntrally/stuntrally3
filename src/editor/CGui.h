@@ -106,7 +106,7 @@ public:
 	//  🔝 top view
 	void toggleTopView();
 	bool bTopView = 0, oldFog = 0;
-	Ogre::Vector3 oldPos,oldRot;
+	Ogre::Vector3 oldPos{0,0,0}, oldRot{0,0,0};
 
 
 	//  🎨 Color tool wnd  ----

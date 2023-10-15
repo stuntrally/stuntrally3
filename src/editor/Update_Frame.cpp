@@ -32,13 +32,13 @@ void App::processMouse(double fDT)
 	while (time > ivDT)
 	{	time -= ivDT;
 	
-		Vector3 vInpC(0,0,0),vInp;
+		Vector3 vInpC(0,0,0);
 		Real fSmooth = (powf(1.0f - pSet->cam_inert, 2.2f) * 40.f + 0.1f) * ivDT;
 
 		const Real sens = 0.13;
 		if (bCam())
 			vInpC = Vector3(mx, my, 0)*sens;
-		vInp = Vector3(mx, my, 0)*sens;  mx = 0;  my = 0;
+		Vector3 vInp = Vector3(mx, my, 0)*sens;  mx = 0;  my = 0;
 		vNew += (vInp-vNew) * fSmooth;
 
 		if (mbMiddle){	mTrans.z += vInpC.y * 1.6f;  }  // zoom

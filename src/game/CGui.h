@@ -77,9 +77,6 @@ public:
 	//  🚗 Car
 	///-----------------------------------------------------------------------------------------------------------------
 
-	/*CarModel* viewCar =0;
-	Can viewCanvas;  // 3d view  ---
-	wraps::RenderBoxScene* viewBox =0;  Ogre::Vector3 viewSc;*/
 	MyGUI::IntCoord GetViewSize();
 	void InitCarPrv();
 

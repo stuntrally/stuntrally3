@@ -276,12 +276,12 @@ struct MyRayResultCallback : public btCollisionWorld::RayResultCallback
 	btVector3	m_rayFromWorld;//used to calculate hitPointWorld from hitFraction
 	btVector3	m_rayToWorld;
 
-	btVector3	m_hitNormalWorld;
-	btVector3	m_hitPointWorld;
+	btVector3	m_hitNormalWorld{0,0,1};
+	btVector3	m_hitPointWorld{0,0,0};
 	
 	int m_shapeId;
 	const btCollisionObject* m_exclude;
-	bool bIgnoreCars,bCamTilt,bCamDist;
+	bool bIgnoreCars, bCamTilt, bCamDist;
 		
 	virtual	btScalar	addSingleResult(btCollisionWorld::LocalRayResult& rayResult, bool normalInWorldSpace)
 	{
@@ -332,9 +332,9 @@ struct MyRayResultCallback : public btCollisionWorld::RayResultCallback
 		if (normalInWorldSpace)
 			m_hitNormalWorld = rayResult.m_hitNormalLocal;
 		else  ///need to transform normal into worldspace
-			m_hitNormalWorld = m_collisionObject->getWorldTransform().getBasis()*rayResult.m_hitNormalLocal;
+			m_hitNormalWorld = m_collisionObject->getWorldTransform().getBasis() * rayResult.m_hitNormalLocal;
 
-		m_hitPointWorld.setInterpolate3(m_rayFromWorld,m_rayToWorld,rayResult.m_hitFraction);
+		m_hitPointWorld.setInterpolate3(m_rayFromWorld, m_rayToWorld, rayResult.m_hitFraction);
 		return rayResult.m_hitFraction;
 	}
 };

@@ -69,7 +69,7 @@ public:
 class CheckSphere
 {
 public:
-	Ogre::Vector3 pos;
+	Ogre::Vector3 pos{0,0,0};
 	Ogre::Real r = 1.f, r2 = 1.f;  // radius, r*r
 	bool loop = false;  // for car camera change
 	
@@ -237,7 +237,7 @@ public:
 
 	//  🔵 checkpoint spheres  ----
 	std::vector<CheckSphere> mChks;
-	Ogre::Vector3 vStartBoxDim;   // start/finish box, half dimensions
+	Ogre::Vector3 vStartBoxDim{2.f,5.f,10.f};   // start/finish box, half dimensions
 
 	int iDir = 1;     // -1 or +1  if road points go +/-1 with car start orientation
 	int iChkId1 = 0, iChkId1Rev = 0;   // 1st chekpoint index (and for reversed) for mChks[]

@@ -80,7 +80,7 @@ struct RScrap
 struct RHit
 {
 	half fHitForce, fParIntens, fParVel;
-	Ogre::Vector3 vHitPos, vHitNorm;  // world hit data
+	Ogre::Vector3 vHitPos{0,0,0}, vHitNorm{0,0,0};  // world hit data
 };  // 30B
 
 

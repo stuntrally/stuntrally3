@@ -536,7 +536,7 @@ void CGui::InitCarPrv()
 
 	PosInfo p;  p.bNew = true;
 	p.pos = Vector3(0,0,0);
-	p.rot = Quaternion(Degree(180),Vector3(1,0,0)) * Quaternion(Degree(50),Vector3(0,1,0));
+	p.rot = Quaternion(Degree(180), Vector3(1,0,0)) * Quaternion(Degree(50), Vector3(0,1,0));
 	p.whPos[0] = Vector3(0,-1,-1);  p.whRot[0] = p.rot;
 	
 	viewCar->Update(p, p, 0.f);

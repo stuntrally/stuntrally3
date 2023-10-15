@@ -20,7 +20,7 @@ struct PosInfo
 {
 	bool bNew;  //  new posinfo available for Update
 	//  🚗 car
-	Ogre::Vector3 pos, carY;
+	Ogre::Vector3 pos, carY;  // init in ctor
 	//  ⚫ wheel
 	const static int W = MAX_WHEELS;
 	Ogre::Vector3 whPos[W];

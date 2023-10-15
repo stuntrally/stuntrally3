@@ -296,7 +296,7 @@ if (bSound)
 	///  ⚫ Tires  oooo
 	for (int i = 0; i < numWheels; ++i)
 	{
-		Vector3 wh;  wh = Axes::toOgre(whPos[i]);
+		Vector3 wh = Axes::toOgre(whPos[i]);
 
 		float maxgain = 0.6f, pitchvar = 0.4f, pmul = 1.f;
 
@@ -420,7 +420,7 @@ if (bSound)
 	
 	
 	//  🔨 crash  ----
-	Vector3 hp;  hp = Axes::toOgre(hitPos);
+	Vector3 hp = Axes::toOgre(hitPos);
 	{
 		crashdetection2.Update(-fHitForce, dt);
 		crashdetection2.deceltrigger = 1.f;

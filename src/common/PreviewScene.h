@@ -21,7 +21,7 @@ public:
 	bool Load(Ogre::String mesh);
 	void Unload();
 
-	Ogre::Vector3 dim;  // after load
+	Ogre::Vector3 dim{1,1,1};  // after load
 	Ogre::SceneManager* mgr = 0;
 	Ogre::Camera* cam = 0;
 protected:

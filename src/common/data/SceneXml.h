@@ -23,7 +23,7 @@ public:
 	std::pair <MATHVECTOR<float,3>, QUATERNION<float>> GetStart(int index, bool looped);
 
 	//  preview cam
-	Ogre::Vector3 camPos,camDir;
+	Ogre::Vector3 camPos, camDir;  // init all in ctor
 
 
 	//  ⛅ Sky

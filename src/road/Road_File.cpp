@@ -53,7 +53,7 @@ void SplineRoad::Defaults()
 	
 	g_ColNSides = 4; g_ColRadius = 2.f;
 
-	iDir = -1;  vStartBoxDim = Vector3(1.5f, 5,12);  // /long |height -width
+	iDir = -1;  vStartBoxDim = Vector3(1.5f, 5, 12);  // /long |height -width
 	iChkId1 = 0;  iChkId1Rev = 0;
 }
 

@@ -38,7 +38,7 @@ void CGui::SetGuiFromXmls()
 	if (!app->mWndEdit)  return;
 	bGI = false;
 	
-	Vector3 c;
+	Vector3 c{0,0,0};
 	#define _Ed(name, val)  ed##name->setCaption(toStr(val))
 	#define _Clr(name, val)  c = val.GetRGB1();  clr##name->setColour(Colour(c.x,c.y,c.z))
 	#define _Cmb(cmb, str)  cmb->setIndexSelected( cmb->findItemIndexWith(str) )

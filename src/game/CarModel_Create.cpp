@@ -446,7 +446,7 @@ void CarModel::Create()
 					nb->attachObject(parBoost[i]);
 				}else
 				{	// use exhaust pos values from car file
-					Vector3 pos;
+					Vector3 pos{0,0,0};
 					if (i==0)
 						pos = Vector3(exhaustPos[0], exhaustPos[1], exhaustPos[2]);
 					else if (!has2exhausts)

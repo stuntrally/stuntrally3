@@ -169,8 +169,8 @@ public:
 	std::list<FluidBox*> inFluids;  /// list of fluids this car is in (if any)
 	std::vector<std::list<FluidBox*> > inFluidsWh;
 	
-	Ogre::Vector3 vHitPos,vHitNorm;  // world hit data
-	Ogre::Vector3 vHitCarN,vHitDmgN;  float fHitDmgA;  // damage factors
+	Ogre::Vector3 vHitPos{0,0,0}, vHitNorm{0,0,0};  // world hit data
+	Ogre::Vector3 vHitCarN{0,0,0}, vHitDmgN{0,0,0};  float fHitDmgA;  // damage factors
 	float fHitTime, fParIntens,fParVel, fHitForce,
 		fHitForce2,fHitForce3, //dbg info only
 		fCarScrap,fCarScreech;

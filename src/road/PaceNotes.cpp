@@ -35,7 +35,7 @@ PaceNote::PaceNote(int i, int t, Vector3 p,  //id,use, pos
 		float sx,float sy,  float r,float g,float b,float a,  //size, clr
 		float ox,float oy, float u,float v)  //ofs:dir,bar width, tex uv
 	:pos(p), size(sx,sy), clr(r,g,b,a), ofs(ox,oy), uv(u,v)
-	,use(t), id(i), start(0), jump(0), vel(0.f)
+	,use(t), id(i), start(0), jump(0), vel(0.f), text(0)
 {	}
 
 

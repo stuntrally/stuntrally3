@@ -80,7 +80,7 @@ public:
 	std::vector<ALuint>  buffers;
 	std::vector<Ogre::String> buffer_file;
 
-	Ogre::Vector3 camera_position;
+	Ogre::Vector3 camera_position{0,0,0};
 
 	//  al vars
 	ALCdevice*  device;

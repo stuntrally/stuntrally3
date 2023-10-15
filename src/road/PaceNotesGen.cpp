@@ -355,7 +355,7 @@ void PaceNotes::Rebuild(SplineRoad* road, Scene* sc, bool reversed)
 	
 	if (num > 0 && mTerrain)
 	{
-		Vector3 pos;
+		Vector3 pos{0,0,0};
 		//  terrain height
 		float* terH = new float[num];
 		for (i=0; i < num; ++i)
@@ -466,7 +466,7 @@ void PaceNotes::Rebuild(SplineRoad* road, Scene* sc, bool reversed)
 		}
 
 		///~~~  vel for jumps
-		Vector3 oldPos;  float oldTime = 0.f;
+		Vector3 oldPos{0,0,0};  float oldTime = 0.f;
 		Quaternion rot;  float vel = 0.f;
 
 		for (i=0; i < num; ++i)

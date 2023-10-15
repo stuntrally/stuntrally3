@@ -734,7 +734,7 @@ void App::LoadTrees()
 //  Preload all resources, ensure visible
 void App::LoadView(int c)
 {
-	Quaternion q;  Vector3 p;  // stat pos-
+	Quaternion q;  Vector3 p{0,0,0};  // stat pos-
 	auto* ter = scn->ter;
 	float t = sc->tds[0].fTerWorldSize*0.3;  // *0.5
 	
@@ -1027,7 +1027,8 @@ void App::CreateTrail(Cam* cam)
 
 
 	//  add points  - > - -
-	Vector3 pos, old;  float tOld = 0.f, vOld = 0.f;
+	Vector3 pos{0,0,0}, old{0,0,0};
+	float tOld = 0.f, vOld = 0.f;
 
 	for (int i=0; i < frames; ++i)
 	{

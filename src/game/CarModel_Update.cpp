@@ -63,7 +63,7 @@ void CarModel::UpdNextCheck()  // 📍
 	if (!ndNextChk || !pApp || !pApp->scn->road)  return;
 	if (pApp->scn->road->mChks.empty())  return;
 
-	Vector3 p;
+	Vector3 p{0,0,0};
 	if (iNumChks == pApp->scn->road->mChks.size() && iCurChk != -1)
 	{
 		int lap = pGame->timer.GetCurrentLap(iIndex) + 1, laps = pSet->game.num_laps;

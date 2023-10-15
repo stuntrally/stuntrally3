@@ -54,8 +54,8 @@ public:
 	int hw_id;
 	ALuint buffer;
 	
-	Ogre::Vector3 pos;
-	Ogre::Vector3 vel;
+	Ogre::Vector3 pos{0,0,0};
+	Ogre::Vector3 vel{0,0,0};
 
 	SoundBaseMgr* sound_mgr;
 };

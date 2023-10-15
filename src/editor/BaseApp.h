@@ -45,7 +45,7 @@ protected:
 
 protected:	
 	SDL_Window* mSDLWindow =0;
-	Ogre::Vector3 mCamPosOld, mCamDirOld;
+	Ogre::Vector3 mCamPosOld{0,0,0}, mCamDirOld{0,0,0};
 
 
 	///  🕹️ Input  ----------------
@@ -74,7 +74,7 @@ protected:
 	bool bMoveCam  =0;
 	int mx =0, my =0, mz =0;  double mDTime =0.0;
 	Ogre::Real mRotX =0, mRotY =0,  mRotKX =0, mRotKY =0,  moveMul =0, rotMul =0;
-	Ogre::Vector3 mTrans;
+	Ogre::Vector3 mTrans{0,0,0};
 
 	float fStFade =0.f;  // status
 

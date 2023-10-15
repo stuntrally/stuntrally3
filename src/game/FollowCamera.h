@@ -51,19 +51,19 @@ public:
 	class btRigidBody* chassis =0;
 
 	///  state vars  ----
-	Ogre::Vector3 mLook, mPosNodeOld;
+	Ogre::Vector3 mLook{0,0,0}, mPosNodeOld{0,0,0};
 
 	Ogre::Quaternion qq;  // for ext cam
 	Ogre::Radian mAPitch, mAYaw, mATilt;  // angles for arena cam, smoothing
 
-	Ogre::Vector3 camPosFinal;  // final for mCamera
+	Ogre::Vector3 camPosFinal{0,0,0};  // final for mCamera
 	Ogre::Quaternion camRotFinal;
 
 	Ogre::Real mVel =0.f;
 	Ogre::Real mDistReduce =0.f;  //float dbgLen;
 
 	#ifdef CAM_TILT_DBG
-		Ogre::Vector3 posHit[4];
+		Ogre::Vector3 posHit[4] ={{0,0,0},{0,0,0},{0,0,0},{0,0,0}};
 	#endif
 
 	///  💫 update, simulates camera  ----

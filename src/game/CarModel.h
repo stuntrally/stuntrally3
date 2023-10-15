@@ -151,7 +151,7 @@ public:
 
 	//  🚗 Main node  --------
 	Ogre::SceneNode* ndMain =0, *ndSph =0;
-	Ogre::Vector3 posSph[2];  // 🟢🌿 grass sphere
+	Ogre::Vector3 posSph[2] = {{0,0,0},{0,0,0}};  // 🟢🌿 grass sphere
 
 	std::vector<Ogre::Light*> lights;  // 💡
 	
@@ -172,9 +172,9 @@ public:
 	
 	//  🏁 start/finish pos
 	bool bInStart = 0, bGetStart = true;
-	Ogre::Matrix4 matStart;  Ogre::Vector4 vStartDist;
+	Ogre::Matrix4 matStart;  Ogre::Vector4 vStartDist{0,0,0,0};
 	float iWonMsgTime = 0.f;
-	Ogre::Vector3 vStartPos;
+	Ogre::Vector3 vStartPos{0,0,0};
 
 	void ResetChecks(bool bDist=false), UpdNextCheck(), ShowNextChk(bool visible);
 	Ogre::String sChkMtr;  bool bChkUpd = true;

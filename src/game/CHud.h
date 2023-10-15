@@ -81,7 +81,7 @@ public:
 		std::vector<SMiniPos> vMiniPos;  // const size: 6
 		
 		//  center position .
-		Ogre::Vector2 vcRpm, vcVel;  // -1..1
+		Ogre::Vector2 vcRpm{0,0}, vcVel{0,0};  // -1..1
 		Ogre::Real fScale = 0.19f;
 
 		WP parent =0;

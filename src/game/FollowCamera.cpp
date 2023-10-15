@@ -56,8 +56,10 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 		qTop = Quaternion(Degree(-90), Vector3::UNIT_X), qSphFix = Quaternion(Degree(180), Vector3::UNIT_Z);
 
 	Quaternion  orient = orientGoal * qOrFix;
-	Vector3  caOfs = (ca->mType == CAM_Car && sphere ? Vector3(-ca->mOffset.x, -ca->mOffset.y, ca->mOffset.z) : ca->mOffset);
-	Vector3  ofs = orient * caOfs, 	goalLook = posGoal + ofs;
+	Vector3 caOfs = (ca->mType == CAM_Car && sphere ? Vector3(-ca->mOffset.x, -ca->mOffset.y, ca->mOffset.z)
+				: ca->mOffset);
+	Vector3 ofs = orient * caOfs,
+		goalLook = posGoal + ofs;
 
 	first = iFirst < 2;  ///par few first frames after reset
 	if (iFirst < 10)  // after reset
@@ -87,7 +89,7 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 		const static MATHVECTOR<float,3> dir(0,0,-1);  // cast rays down
 		
 		//  car rot, yaw angle
-		Quaternion q = posIn.rot * Quaternion(Degree(90),Vector3(0,1,0));
+		Quaternion q = posIn.rot * Quaternion(Degree(90), Vector3(0,1,0));
 		float angCarY = q.getYaw().valueRadians() + PI_d/2.f;
 		float ax = cosf(angCarY)*Rdist, ay = sinf(angCarY)*Rdist;
 		//LogO("pos: "+fToStr(pos[0],2,4)+" "+fToStr(pos[1],2,4)+"  a: "+fToStr(angCarY,2,4)+"  dir: "+fToStr(ax,2,4)+" "+fToStr(ay,2,4));
@@ -136,11 +138,10 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 	
 	if (ca->mType == CAM_Follow)  ofs = ca->mOffset;
 	
-	Vector3  pos,goalPos;
-	pos     = camPosFinal - ofs;
-	goalPos = posGoal;
+	Vector3 pos     = camPosFinal - ofs;
+	Vector3 goalPos = posGoal;
 	
-	Vector3  xyz;
+	Vector3 xyz{0,0,0};
 	if (ca->mType != CAM_Arena)
 	{
 		Real x,y,z,xz;   // pitch & yaw to direction vector
@@ -188,7 +189,7 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 			}
 			#endif
 
-			Quaternion  qy = Quaternion(ca->mYaw,Vector3(0,1,0));
+			Quaternion  qy = Quaternion(ca->mYaw, Vector3(0,1,0));
 			goalPos += qq * (xyz + ca->mOffset);
 			
 			camPosFinal = goalPos;
@@ -204,7 +205,7 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 
 		if (ca->mType ==  CAM_Arena)
 		{
-			Vector3  Pos(0,0,0), goalPos = ca->mOffset;
+			Vector3 Pos(0,0,0), goalPos = ca->mOffset;
 			Pos = camPosFinal;  //read last state (smooth)
 			Pos += (goalPos - Pos) * dtmul;
 			
@@ -213,14 +214,13 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 			
 			if (first)  {  Pos = goalPos;  mAPitch = ca->mPitch;  mAYaw = ca->mYaw;  }
 			camPosFinal = Pos;
-			camRotFinal = Quaternion(Degree(mAYaw),Vector3(0,1,0)) * Quaternion(Degree(mAPitch),Vector3(1,0,0));
+			camRotFinal = Quaternion(Degree(mAYaw), Vector3(0,1,0)) * Quaternion(Degree(mAPitch), Vector3(1,0,0));
 			manualOrient = true;
 		}
 		else
 		{
 			if (first)  pos = goalPos;
-			Vector3  addPos,addLook;
-			addPos = (goalPos - pos).normalisedCopy() * (goalPos - pos).length() * dtmul;
+			Vector3 addPos = (goalPos - pos).normalisedCopy() * (goalPos - pos).length() * dtmul;
 			if (addPos.squaredLength() > (goalPos - pos).squaredLength())  addPos = goalPos - pos;
 			pos += addPos;
 			camPosFinal = pos + ofs;
@@ -228,7 +228,7 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 			goalLook = posGoal + ofs;
 			if (first)	{	mLook = goalLook;  }
 
-			addLook = (goalLook - mLook) * dtmul;//Rot;
+			Vector3 addLook = (goalLook - mLook) * dtmul;//Rot;
 			mLook += addLook;
 		}
 	}

@@ -395,7 +395,7 @@ void App::UpdObjSel()
 //  selection center pos, or picked pos for multi rotate and scale
 Vector3 App::GetObjPos0()
 {
-	Vector3 pos0(0,0,0);
+	Vector3 pos0{0,0,0};
 	if (iObjCur>=0)
 	{
 		MATHVECTOR<float,3> p = scn->sc->objects[iObjCur].pos;

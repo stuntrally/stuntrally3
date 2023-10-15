@@ -248,7 +248,7 @@ void App::MouseObjects()
 	bool upd = false, sel = !vObjSel.empty();
 
 	//  rotate/scale selected
-	Vector3 pos0;  Matrix3 m;
+	Vector3 pos0{0,0,0};  Matrix3 m = Matrix3::IDENTITY;
 	if (sel && objEd != EO_Move)
 	{
 		pos0 = GetObjPos0();

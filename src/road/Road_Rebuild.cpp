@@ -176,7 +176,7 @@ void SplineRoad::BuildSeg(
 		++DLM.iLmrg;
 		///  length <dir>  |
 		Vector3 vL0 = interpolate(seg, l);
-		Vector3 vl = GetLenDir(seg, l, l+la), vw;
+		Vector3 vl = GetLenDir(seg, l, l+la), vw{1,0,0};
 		Real len = vl.length();  vl.normalise();
 		
 		//  len tc
@@ -208,7 +208,7 @@ void SplineRoad::BuildSeg(
 		bool onTer1 = DS.onTer || mP[seg].onTer && i==0 || mP[seg1].onTer && i==il;
 
 		///  normal <dir>  /
-		Vector3 vn;
+		Vector3 vn{0,1,0};
 		if (i==0)	vn = DL0.v0_N[seg];  else  // seg start=end
 		if (i==il)	vn = DL0.v0_N[seg1];
 		else
@@ -238,7 +238,7 @@ void SplineRoad::BuildSeg(
 		
 		///  road ~    Width  vertices
 		//--------------------------------------------------------------------------------------------
-		Vector3 vH0, vH1;  //#  positions for bank angle
+		Vector3 vH0{0,1,0}, vH1{1,0,0};  //#  positions for bank angle
 		int w0 = DS.pipe ? iw/4   : 0,
 			w1 = DS.pipe ? iw*3/4 : iw;
 
@@ -246,7 +246,8 @@ void SplineRoad::BuildSeg(
 		for (int w=0; w <= iw; ++w)  // width +1
 		{
 			//  pos create
-			Vector3 vP,vN;	Real tcw = Real(w)/Real(iw);
+			Vector3 vP{0,0,0}, vN{0,1,0};
+			Real tcw = Real(w)/Real(iw);
 
 			Real yTer = 0.f;
 			if (fPipe == 0.f)
@@ -419,7 +420,8 @@ void SplineRoad::BuildSeg(
 					Real a = Real(w)/iwC *2*PI_d,  //+PI_d/4.f
 						x = r*cosf(a), y = r*sinf(a);
 
-					Vector3 vlXZ(vl.x, 0.f, vl.z);  Real fl = 1.f/max(0.01f, vlXZ.length());
+					Vector3 vlXZ(vl.x, 0.f, vl.z);
+					Real fl = 1.f/max(0.01f, vlXZ.length());
 					Vector3 vP = vL0 + fl * vl * x + vwn * y;
 					Real yy;
 

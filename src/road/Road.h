@@ -244,7 +244,7 @@ private:
 public:  ///  🚦 pacenotes prepass data
 	struct PaceM
 	{
-		Ogre::Vector3 pos, pos2;
+		Ogre::Vector3 pos{0,0,0}, pos2{0,0,0};
 		float aa = 0.f;
 		int used = -1;  bool vis =1, notReal =0, onTer =1;
 		int loop = 0;  bool jump =0,jumpR =0, onPipe =0,onPipeE =0;
@@ -285,7 +285,7 @@ private:
 	friend class App;
 	friend class CGui;
 public:
-	Ogre::Vector3 posHit;  bool bHitTer = false;  // mouse pos on terrain
+	Ogre::Vector3 posHit{0,0,0};  bool bHitTer = false;  // mouse pos on terrain
 	float fHitDist = 10.f;
 	
 	int iOldHide = -1, idStr = 0;  // upd var

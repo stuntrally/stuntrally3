@@ -268,7 +268,7 @@ void App::KeyTxtStart(Real q)
 {
 	SplineRoad* road = scn->road;
 	Txt *stTxt = gui->stTxt;
-	Vector3 p;  if (ndCar)  p = ndCar->getPosition();
+	//Vector3 p{0,0,0};  if (ndCar)  p = ndCar->getPosition();
 	stTxt[0]->setCaption("");
 	stTxt[1]->setCaption(TR("#{Road_Width} ") +fToStr(road->vStartBoxDim.z,1,4));
 	stTxt[2]->setCaption(TR("#{Road_Height} ")+fToStr(road->vStartBoxDim.y,1,4));

@@ -150,13 +150,13 @@ HlmsPbsDb2::HlmsPbsDb2(
 		eType = DB_Fluid;
 		// LogO("db2 ctor fluid");
 
-		Vector2 choppyness_scale;
-		Vector4 smallWaves_midWaves;  Vector2 bigWaves;
-		Vector3 bump_fresn_refra;  // norm-sc  fresnel  refract
+		Vector2 choppyness_scale{0,0};
+		Vector4 smallWaves_midWaves{0,0,0,0};  Vector2 bigWaves{0,0};
+		Vector3 bump_fresn_refra{0,0,0};  // norm-sc  fresnel  refract
 		// fresnelMultiplier 1.0
-		Vector4 colour, reflectColour, refractColour, specClrPow;
-		Vector3 bump2SpecPowerMul;
-		Vector2 speed;
+		Vector4 colour{0,0,0,0}, reflectColour{0,0,0,0}, refractColour{0,0,0,0}, specClrPow{0,0,0,0};
+		Vector3 bump2SpecPowerMul{0,0,0};
+		Vector2 speed{0,0};
 
 		#define S2V(dim, val, def)  StringConverter::parseVector##dim(val, def)
 		if (Hlms::findParamInVec(p, "choppyness_scale", val))     choppyness_scale    = S2V(2, val, Vector2(0.15, 1.0));

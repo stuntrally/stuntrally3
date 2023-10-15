@@ -25,8 +25,8 @@ public:
 
 	struct Hit
 	{
-		btVector3 pos, norm, vel;  btScalar force;
-		class ShapeData* sdCar;  int dyn;
+		btVector3 pos{0,0,0}, norm{0,0,1}, vel{0,0,0};  btScalar force =0.f;
+		class ShapeData* sdCar =0;  int dyn = 0;
 	};
 	btAlignedObjectArray<Hit> vHits;
 };
