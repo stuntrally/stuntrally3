@@ -1,4 +1,70 @@
 
+@piece( applyFog )
+    @property( hlms_fog && !sky )
+    //property( hlms_fog )  // todo: inside hfog on sky and underwater
+
+        const float distToCameraH = length( inPs.pos.xyz );
+    	//const float camPosH =  passBuf.view[3][1];
+
+        // ||  Height fog  first
+        midf heightWeight = midf_c( exp2( -distToCameraH * atmo.fogHparams.z ) );
+        const midf heightMul = saturate( ( inPs.worldH - atmo.fogHparams.x ) * atmo.fogHparams.y );  // amount H
+        const midf3 fogHclr = lerp( lerp( finalColour.xyz,
+                                        atmo.fogHcolor.xyz,  atmo.fogHcolor.w),
+                                    finalColour.xyz,  heightWeight );
+        finalColour.xyz = lerp( fogHclr, finalColour.xyz, heightMul );
+        // todo: lerp finalColour less?
+
+    //end
+    //property( hlms_fog && !sky )
+
+        // **  Distance fog
+        const midf luminance = dot( finalColour.xyz, midf3_c( _h(0.212655), _h(0.715158), _h(0.072187) ) );
+        const midf lumFogWeight = max( exp2(
+            atmo.fogBreakFalloff * luminance + atmo.fogBreakMinBrightness ), _h(0.0) );  // todo: par gui..
+        
+        const float distToCamera = max( _h(0.0), distToCameraH - atmo.fogStartDistance );
+        midf fogWeight = midf_c( exp2( -distToCamera * atmo.fogDensity ) );  // amount
+        fogWeight = saturate( lerp( _h(1.0), fogWeight, lumFogWeight ) );
+        
+
+       	// <>  fog Dir  sun -> away
+        // todo: fix dir looking down..
+        @property( hlms_lights_directional )
+            midf3 lightDirW = light0Buf.lights[0].position.xyz;
+        @else
+            midf3 lightDirW = midf3_c(1,0,0);
+        @end
+    	const midf3 camPosW = midf3_c( passBuf.view[3][0], passBuf.view[3][1], passBuf.view[3][2] );
+        const midf3 eyeDir = normalize(camPosW - inPs.pos.xyz);
+		//float3 eyeDir = normalize(camPosObjSpace.xyz - posObjSpace.xyz);  //old
+        float fogDir = dot( normalize(eyeDir.xz), normalize(lightDirW.xz) ) * _h(0.5) + _h(0.5);
+
+        midf4 fogColour = lerp( atmo.fogColourSun,
+                                atmo.fogColourAway,  fogDir );
+
+        finalColour.xyz = lerp(
+                            lerp( finalColour.xyz, inPs.fog.xyz,  fogColour.w),  // transparency
+                            finalColour.xyz,  fogWeight );  // atmo orig
+
+        finalColour.xyz =
+            //camPosW * 10.0 + 0.001 *  // test
+            lerp( lerp( finalColour.xyz, fogColour.xyz, fogColour.w ),  // transparency
+                  finalColour.xyz,  fogWeight );
+
+        // ~~  Fluid fog
+        midf fluidDist = midf_c( exp2( -distToCameraH * atmo.fogFluidH.y ) );
+        fluidDist = saturate( fluidDist - 0.3 );  // minimum par, depth h?
+        float fluidHeight = saturate(( inPs.worldH - atmo.fogFluidH.x/*h*/) * atmo.fogFluidH.z);
+
+        finalColour.xyz = lerp(
+                            lerp ( atmo.fogFluidClr.xyz, finalColour.xyz,  fluidDist ),
+                            finalColour.xyz,
+                            fluidHeight );  // fluid
+    @end
+@end
+
+
     ///_ calculate fog  * OLD *
     // float fogDepth = shSaturate((depth - fogParams.y) * fogParams.w);  // w = 1 / (max - min)
     // float fogDepthH = shSaturate((depth - fogParamsH.z) * fogParamsH.w);
@@ -18,80 +84,3 @@
 
     // shOutputColour(0).xyz = shLerp( shOutputColour(0).xyz, flClrFinal.rgb, flL);
     ///_
-
-@piece( applyFog )
-    @property( hlms_fog && !sky )
-    //property( hlms_fog )  // todo: inside hfog on sky
-
-        const float distToCameraH = length( inPs.pos.xyz );
-    	//const float camPosH =  passBuf.view[3][1];
-
-        //**  height fog  first
-        midf fogHWeight = midf_c( exp2( -distToCameraH * atmo.fogHparams.z ) );
-        const midf heightMul = saturate( ( inPs.worldH - atmo.fogHparams.x ) * atmo.fogHparams.y );  // amount H
-        const midf3 fogHclr = lerp( lerp( finalColour.xyz,
-                                        atmo.fogHcolor.xyz,
-                                        atmo.fogHcolor.w),
-                                    finalColour.xyz,
-                                    fogHWeight );
-        finalColour.xyz = lerp( fogHclr, finalColour.xyz, heightMul );
-        
-        //const midf insideMul = saturate( ( camPosH - atmo.fogHparams.x ) * atmo.fogHparams.y );  // amount H
-        //finalColour.xyz = lerp( fogHclr.zzz, finalColour.xyz, insideMul );
-    //end
-    //property( hlms_fog && !sky )
-        //**  distance fog
-        const midf luminance = dot( finalColour.xyz, midf3_c( _h(0.212655), _h(0.715158), _h(0.072187) ) );
-        const midf lumFogWeight = max( exp2(
-            atmo.fogBreakFalloff * luminance + atmo.fogBreakMinBrightness ), _h(0.0) );
-        
-        const float distToCamera = max( _h(0.0), distToCameraH - atmo.fogStartDistance );
-        midf fogWeight = midf_c( exp2( -distToCamera * atmo.fogDensity ) );  // amount
-        fogWeight = lerp( _h(1.0), fogWeight, lumFogWeight );
-        
-        // todo: fix fog dir looking down..
-        finalColour.xyz = lerp( inPs.fog.xyz, finalColour.xyz, fogWeight );  // atmo orig
-    	const midf3 camPosW = midf3_c( passBuf.view[3][0], passBuf.view[3][1], passBuf.view[3][2] );
-        const midf3 eyeDir = normalize(camPosW - inPs.pos.xyz);
-		//- float3 eyeDir = normalize(camPosObjSpace.xyz - posObjSpace.xyz);
-
-       	@property( hlms_lights_directional )
-            midf3 lightDirW = light0Buf.lights[0].position.xyz;
-        @else
-            midf3 lightDirW = midf3_c(1,0,0);
-        @end
-        float fogDir = dot( normalize(eyeDir.xz), normalize(lightDirW.xz) ) * _h(0.5) + _h(0.5);
-                                    //   #define p_sunDir	midf3_c( atmo.packedParams2.xyz )
-        // float fogDir = dot( pixelData.viewDir.xz, midf2_c( atmo.packedParams2.xy ) ) * 0.5 + 0.5;  // bad screen space-
-
-        midf4 fogColour = lerp( atmo.fogColourSun,
-                                atmo.fogColourAway,
-                                fogDir );
-        finalColour.xyz =
-            //camPosW * 10.0 + 0.001 *  // test
-            lerp( fogColour.xyz,
-                  finalColour.xyz,
-                  fogWeight );
-                //fogWeight * fogColour.w );  // todo: transparency
-
-        //**  fluid fog  // fixme wip ..
-        // midf fogHWeight = midf_c( exp2( -distToCameraH * atmo.fogHparams.z ) );
-        // const midf heightMul = saturate( ( inPs.worldH - atmo.fogHparams.x ) * atmo.fogHparams.y );  // amount H
-        // float flDepth = shSaturate(depth * fogFluidH.y);
-        // float flDepth = exp2( -distToCameraH * atmo.fogHparams.z ) * atmo.fogFluidH.y;
-        float flH = saturate(( inPs.worldH - atmo.fogFluidH.x/*h*/) * atmo.fogFluidH.z);
-        finalColour.xyz =
-            lerp( atmo.fogFluidClr.xyz,
-                  finalColour.xyz,
-                  flH * 0.8 );
-
-            // midf4 flClrFinal = lerp( /*fogClrFinal*/fogColour.xyz, atmo.fogFluidClr.xyz, flH);
-            // float flL = lerp( fogL, flDepth /* * fogFluidClr.a*/, flH);
-
-            // finalColour.xyz = lerp( finalColour.xyz, flClrFinal.xyz, flL);
-
-        // const midf fogHin = saturate( ( atmo.cameraDisplacement.y - atmo.fogHparams.x ) * atmo.fogHparams.y );
-        // midf fogHinWeight = midf_c( exp2( -fogHin * atmo.fogHparams.z ) );
-        // finalColour.xyz = lerp( atmo.fogHcolor.xyz, finalColour.xyz, fogHinWeight );
-    @end
-@end
