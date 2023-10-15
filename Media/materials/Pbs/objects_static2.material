@@ -92,14 +92,14 @@ hlms ancient_ruins_white pbs
 }
 
 
-//  pier
+//  pier, Spring
 hlms pier_planks pbs
 {
 	diffuse_map pier_planks.jpg
 	normal_map pier_planks_norm.jpg
-	// specMap pier_planks_spec.jpg
+	// specular_map pier_planks_spec.jpg
 	// reflMap pier_planks_metal.jpg
-	// specMap_rgb true
+	// specular_map_rgb true
 	// ambient 1.0 1.0 1.0
 	diffuse  0.8 0.8 0.8
 	specular 0.3 0.3 0.3
@@ -111,7 +111,7 @@ hlms pier_poles pbs
 {
 	diffuse_map pier_poles.jpg
 	normal_map pier_poles_norm.jpg
-	// specMap pier_poles_spec.jpg
+	// specular_map pier_poles_spec.jpg
 	// ambient 1.0 1.0 1.0
 	diffuse  0.8 0.8 0.8
 	specular 0.3 0.3 0.3
@@ -123,9 +123,9 @@ hlms pier_planks_brown pbs
 {
 	diffuse_map pier_planks.jpg
 	normal_map pier_planks_norm.jpg
-	// specMap pier_planks_spec.jpg
+	// specular_map pier_planks_spec.jpg
 	// reflMap pier_planks_metal.jpg
-	// specMap_rgb true
+	// specular_map_rgb true
 	// ambient 0.75 0.6 0.3
 	diffuse  0.7 0.7 0.65
 	specular 0.3 0.3 0.3
@@ -137,10 +137,111 @@ hlms pier_poles_brown pbs
 {
 	diffuse_map pier_poles.jpg
 	normal_map pier_poles_norm.jpg
-	// specMap pier_poles_spec.jpg
+	// specular_map pier_poles_spec.jpg
 	// ambient 0.75 0.6 0.3
 	diffuse  0.7 0.7 0.65
 	specular 0.3 0.3 0.3
 	fresnel 0.1
 	roughness 0.55
+}
+
+//  new Stn2
+hlms mining_truck pbs
+{
+	diffuse_map mining_truck.jpg
+	normal_map mining_truck_norm.jpg
+	specular_map mining_truck_spec.jpg
+	// reflMap mining_truck_metal.jpg
+	diffuse 0.8 0.8 0.8
+	specular 1.0 1.0 1.0
+	roughness 0.35
+}
+
+hlms radio_tower pbs
+{
+	diffuse_map radio_tower.jpg
+	// normal_map radio_tower_norm.jpg
+	// specular_map radio_tower_spec.jpg
+	// reflMap radio_tower_metal.jpg
+	diffuse 0.8 0.8 0.8
+	specular 1.0 1.0 1.0
+	roughness 0.4
+}
+
+hlms house_05 pbs
+{
+	diffuse_map house_05.jpg
+	normal_map house_05_norm.jpg
+	roughness_map house_05_spec.jpg
+	// reflMap house_05_metal.jpg
+	diffuse 0.8 0.8 0.8
+	specular 1.0 1.0 1.0
+	roughness 0.4
+}
+
+hlms storage_tank pbs
+{
+	diffuse_map storage_tank.jpg
+	// normal_map storage_tank_norm.jpg
+	// specular_map storage_tank_spec.jpg
+	// reflMap storage_tank_spec.jpg
+	diffuse 0.8 0.8 0.8
+	specular 1.0 1.0 1.0
+	// bump_scale 0.65
+	roughness 0.42
+}
+
+hlms storage_tank_2 pbs
+{
+	diffuse_map storage_tank_2.jpg
+	// normal_map storage_tank_2_norm.jpg
+	// specular_map storage_tank_2_spec.jpg
+	// reflMap storage_tank_2_metal.jpg
+	diffuse 0.8 0.8 0.8
+	specular 1.0 1.0 1.0
+	roughness 0.42
+}
+
+hlms gas_tank_02_red pbs
+{
+	diffuse_map gas_tank_02_red.jpg
+	// normal_map gas_tank_02_norm.jpg
+	// specular_map gas_tank_02_spec.jpg
+	reflMap gas_tank_02_metal.jpg
+	diffuse 0.8 0.8 0.8
+	specular 1.0 1.0 1.0 26
+	roughness 0.45
+}
+
+hlms gas_tank_02_grey pbs
+{
+	diffuse_map gas_tank_02_grey.jpg
+	normal_map gas_tank_02_norm.jpg
+	specular_map gas_tank_02_spec.jpg
+	// reflMap gas_tank_02_metal.jpg
+	diffuse 0.8 0.8 0.8
+	specular 1.0 1.0 1.0
+	roughness 0.45
+}
+
+hlms gas_tank_02_green pbs
+{
+	diffuse_map gas_tank_02_green.jpg
+	// normal_map gas_tank_02_norm.jpg
+	// specular_map gas_tank_02_spec.jpg
+	// reflMap gas_tank_02_metal.jpg
+	diffuse 0.8 0.8 0.8
+	specular 1.0 1.0 1.0
+	roughness 0.45
+}
+
+hlms gas_tank_02_blue pbs
+{
+	diffuse_map gas_tank_02_blue.jpg
+	// normal_map gas_tank_02_norm.jpg
+	// specular_map gas_tank_02_spec.jpg
+	// reflMap gas_tank_02_metal.jpg
+	diffuse 0.8 0.8 0.8
+	specular 1.0 1.0 1.0
+	roughness 0.45
 }

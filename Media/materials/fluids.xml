@@ -164,6 +164,15 @@
 	<fluid name="acid green"	material="Acid_green" density="500" angDamp="0.9" linDamp="0.4" heightDamp="1"
 		fogHSVA="0.222 0.798 0.390 1" fogDens="11" fogDensH="0.6"
 		fDamage="5" deep="1" />
+	<fluid name="acid green weak"	material="Acid_green" density="500" angDamp="0.9" linDamp="0.4" heightDamp="1"
+		fogHSVA="0.222 0.798 0.390 1" fogDens="11" fogDensH="0.6"
+		fDamage="1.3" deep="1" />
+	<fluid name="alien acid"	material="Alien_acid" density="500" angDamp="0.9" linDamp="0.4" heightDamp="1"
+		fogHSVA="0.362 0.798 0.390 1" fogDens="11" fogDensH="0.6"
+		fDamage="5" deep="1" />
+	<fluid name="alien acid weak"	material="Alien_acid" density="500" angDamp="0.9" linDamp="0.4" heightDamp="1"
+		fogHSVA="0.362 0.798 0.390 1" fogDens="11" fogDensH="0.6"
+		fDamage="1.3" deep="1" />
 
 	<fluid name="ice solid"		material="Ice"		density="500" angDamp="0.2" linDamp="0.4" heightDamp="1"
 		fogHSVA="0.495 0.154 0.696 1" fogDens="6" fogDensH="0.6"
@@ -227,8 +236,8 @@
 		fogHSVA="0.548 0.742 0.612 1" fogDens="22" fogDensH="1" deep="1" />
 	<fluid name="water cyan low density"	material="Water_cyan"  density="100" angDamp="0.7" linDamp="0.2" heightDamp="0"
 		fogHSVA="0.475 0.824 0.624 1" fogDens="27" fogDensH="1" deep="1" />
-	<fluid name="water green low density"	material="Water_green" density="100" angDamp="0.7" linDamp="0.2" heightDamp="0"
-		fogHSVA="0.277 0.582 0.357 1" fogDens="24" fogDensH="1" deep="1" />
+	<fluid name="water green low density"	material="Water_green" density="100" angDamp="0.2" linDamp="0.05" heightDamp="0"
+		fogHSVA="0.277 0.582 0.357 1" fogDens="124" fogDensH="1" deep="1" />
 	<fluid name="water moss low density"	material="Water_moss"  density="150" angDamp="0.8" linDamp="0.3" heightDamp="0"
 		fogHSVA="0.428 0.440 0.258 1" fogDens="39" fogDensH="1" deep="1" />
 	<fluid name="water blue dark low density" material="Water_blue_dark"  density="100" angDamp="0.7" linDamp="0.3" heightDamp="0"

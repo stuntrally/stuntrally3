@@ -178,3 +178,29 @@ hlms sky/magic_alien pbs : sky_base
 {
     emissive_map  magic_alien.jpg
 }
+
+//  new
+hlms sky/belfast_sunset01 pbs : sky_base
+{
+    emissive_map  belfast_sunset01.jpg
+}
+
+hlms sky/newsky020A pbs : sky_base
+{
+    emissive_map  DaySkyHDRI020B_8K-HDR.jpg
+}
+
+hlms sky/newsky020B pbs : sky_base
+{
+    emissive_map  DaySkyHDRI020B_8K-HDR_2.jpg
+}
+
+hlms sky/newsky026A pbs : sky_base
+{
+    emissive_map  DaySkyHDRI026B_8K-HDR.jpg
+}
+
+hlms sky/newsky026B pbs : sky_base
+{
+    emissive_map  DaySkyHDRI026B_8K-HDR_2.jpg
+}
