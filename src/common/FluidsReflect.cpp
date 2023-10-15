@@ -236,21 +236,27 @@ void FluidsReflect::CreateFluids()
 		//  item, node  ----
 		SceneManager *mgr = app->mSceneMgr;
 		SceneNode *rootNode = mgr->getRootSceneNode( dyn );
-
-		Item* item = mgr->createItem( mesh, dyn );
+		Item* item[2] ={0,0};
+		SceneNode* node[2] ={0,0};
+		
 		String sMtr = fb.id == -1 ? "" :
 			// 1 ? "Water_test" :  // ## test water
 			app->scn->data->fluids->fls[fb.id].material;  //"Water"+toStr(1+fb.type)
-		
-		item->setDatablock( sMtr );  item->setCastShadows( false );
-		item->setRenderQueueGroup( RQG_Fluid );  item->setVisibilityFlags( RV_Terrain );
-		app->SetTexWrap(item);
-		
-		SceneNode* node = rootNode->createChildSceneNode( dyn );
-		node->setPosition( fb.pos );
-		node->setOrientation( Quaternion( Radian( -Math::HALF_PI ), Vector3::UNIT_X ) );  // _
-		node->attachObject( item );
 
+		//  [0] above  [1] below
+		for (int n=0; n < 2; ++n)
+		{
+			item[n] = mgr->createItem( mesh, dyn );
+			item[n]->setDatablock( sMtr );  item[n]->setCastShadows( false );
+			item[n]->setRenderQueueGroup( RQG_Fluid );  item[n]->setVisibilityFlags( RV_Terrain );
+			app->SetTexWrap(item[n]);
+			
+			node[n] = rootNode->createChildSceneNode( dyn );
+			node[n]->setPosition( fb.pos + Vector3(0, n ? -0.05f : 0, 0));  // 2nd down
+			node[n]->setOrientation( Quaternion(
+				(n ? -1.f : 1.f) * Radian( -Math::HALF_PI ), Vector3::UNIT_X ) );  // _
+			node[n]->attachObject( item[n] );
+		}
 
 		//  actor, tracked  ----
 		PlanarReflectionActor* actor =0;
@@ -258,7 +264,7 @@ void FluidsReflect::CreateFluids()
 		if (reflect && mPlanarRefl && fb.hq >= 2)  // quality
 		{
 			actor = mPlanarRefl->addActor( PlanarReflectionActor(
-				node->getPosition(), v2size, node->getOrientation() ));
+				node[0]->getPosition(), v2size, node[0]->getOrientation() ));
 	        
 			if (0)  // i==0)  // par main big wtr only?
 			{
@@ -267,16 +273,20 @@ void FluidsReflect::CreateFluids()
 			}
 
 			tracked = new PlanarReflections::TrackedRenderable(
-				item->getSubItem(0), item,
+				item[0]->getSubItem(0), item[0],
 				Vector3::UNIT_Z, Vector3(0, 0, 0) );
 			mPlanarRefl->addRenderable( *tracked );
 		}
 
-
 		//  add  ----
-		vTracked.push_back(tracked);  vActors.push_back(actor);
-		vsMesh.push_back(sMesh);  vsMesh2.push_back(sMesh2);
-		vIt.push_back(item);  vNd.push_back(node);
+		OgreFluid fl;
+		fl.tracked = tracked;  fl.actor = actor;
+		fl.sMesh = sMesh;  fl.sMesh2 = sMesh2;
+		for (int n=0; n < 2; ++n)
+		{	fl.item[n] = item[n];
+			fl.node[n] = node[n];
+		}
+		fluids.push_back(fl);
 	}
 
 	#ifndef SR_EDITOR  // game
@@ -290,20 +300,24 @@ void FluidsReflect::DestroyFluids()
 {
 	LogO("D~~~ destroy Fluids");
 	
-	for (int i=0; i < vNd.size(); ++i)
+	for (auto fl : fluids)
 	{
-		mPlanarRefl->removeRenderable( vTracked[i]->renderable );
-		delete vTracked[i];
-		mPlanarRefl->destroyActor(vActors[i]);
+		if (fl.tracked)
+		{
+			mPlanarRefl->removeRenderable( fl.tracked->renderable );
+			delete fl.tracked;
+		}
+		if (fl.actor)
+			mPlanarRefl->destroyActor(fl.actor);
 
-		app->mSceneMgr->destroySceneNode(vNd[i]);
-		app->mSceneMgr->destroyItem(vIt[i]);
-		v1::MeshManager::getSingleton().remove(vsMesh[i]);
-		MeshManager::getSingleton().remove(vsMesh2[i]);
+		for (int n=0; n < 2; ++n)
+		{	if (fl.node[n])  app->mSceneMgr->destroySceneNode(fl.node[n]);
+			if (fl.item[n])  app->mSceneMgr->destroyItem(fl.item[n]);
+		}
+		v1::MeshManager::getSingleton().remove(fl.sMesh);
+		MeshManager::getSingleton().remove(fl.sMesh2);
 	}
-	vNd.clear();  vIt.clear();
-	vsMesh.clear();  vsMesh2.clear();
-	vActors.clear();  vTracked.clear();
+	fluids.clear();
 }
 
 
@@ -325,7 +339,8 @@ void FluidsReflect::CreateBltFluids()
 		btCollisionObject* bco = 0;
 		float t = sc->tds[0].fTerWorldSize*0.5f;  // not bigger than terrain  // 1st ter!-
 		btScalar sx = std::min(t, fb.size.x*0.5f), sy = std::min(t, fb.size.z*0.5f), sz = fb.size.y*0.5f;
-		
+
+	//_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 	if (0 && fp.solid)  /// test random ray jumps meh-
 	{
 		const int size = 16;
@@ -362,8 +377,8 @@ void FluidsReflect::CreateBltFluids()
 	#else
 		app->world->addCollisionObject(bco);
 	#endif
-
 	}else{
+	//_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 		btCollisionShape* bshp = 0;
 		bshp = new btBoxShape(btVector3(sx,sy,sz));

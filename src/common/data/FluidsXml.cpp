@@ -99,10 +99,10 @@ bool FluidsXml::LoadXml(string file, std::map<string, int>* surf_map)
 		a = eFl->Attribute("fogHSVA");
 		if (a)
 		{	Vector4 v = s2v4(a);
+			v.y = powf(v.y, 0.5f);  v.z *= 0.8f;  //par to fix sRGB
 			ColourValue c;  c.setHSB(v.x, v.y, v.z);
 			fp.fog.r = c.r;  fp.fog.g = c.g;  fp.fog.b = c.b;  fp.fog.a = v.w;
 		}
-		//
 
 		fls.push_back(fp);
 		matMap[fp.material] = i;

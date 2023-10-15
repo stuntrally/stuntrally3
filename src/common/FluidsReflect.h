@@ -33,12 +33,16 @@ public:
 	App* app =0;
 	class btDiscreteDynamicsWorld* world =0;
 
-	//  🟢 meshes etc per fluid
-	std::vector<Ogre::String/*MeshPtr*/> vsMesh, vsMesh2;
-	std::vector<Ogre::Item*> vIt;
-	std::vector<Ogre::SceneNode*> vNd;
-	std::vector<Ogre::PlanarReflectionActor*> vActors;
-	std::vector<Ogre::PlanarReflections::TrackedRenderable*> vTracked;
+	//  🟢 ogre data per fluid
+	struct OgreFluid
+	{
+		Ogre::String sMesh, sMesh2;  //MeshPtr
+		Ogre::Item* item[2] ={0,0};
+		Ogre::SceneNode* node[2] ={0,0};
+		Ogre::PlanarReflectionActor* actor =0;
+		Ogre::PlanarReflections::TrackedRenderable* tracked =0;
+	};
+	std::vector<OgreFluid> fluids;
 
 	void CreateFluids(), DestroyFluids(), CreateBltFluids();
 
