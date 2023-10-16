@@ -32,8 +32,8 @@ struct RayResult : public btCollisionWorld::RayResultCallback
 	btVector3	m_rayFromWorld;//used to calculate hitPointWorld from hitFraction
 	btVector3	m_rayToWorld;
 
-	btVector3	m_hitNormalWorld;
-	btVector3	m_hitPointWorld;
+	btVector3	m_hitNormalWorld{0,0,1};
+	btVector3	m_hitPointWorld{0,0,0};
 		
 	virtual	btScalar addSingleResult(btCollisionWorld::LocalRayResult& rayResult, bool normalInWorldSpace)
 	{

@@ -31,8 +31,8 @@ float TerUtil::GetAngleAt(Terra* terrain, float x, float z, float s)
 	Vector3 vX(x+s, y0, z), vZ(x, y0, z+s);
 	terrain->getHeightAt(vx);  terrain->getHeightAt(vX);
 	terrain->getHeightAt(vz);  terrain->getHeightAt(vZ);
-	Vector3 v_x = vx-vX;  //v_x.normalise();
-	Vector3 v_z = vz-vZ;  //v_z.normalise();
+	Vector3 v_x = vx-vX;  v_x.normalise();//-?
+	Vector3 v_z = vz-vZ;  v_z.normalise();
 	Vector3 n = -v_x.crossProduct(v_z);  n.normalise();
 	Real a = Math::ACos(n.y).valueDegrees();
 	return a;
@@ -181,13 +181,17 @@ SplinePoint::SplinePoint()
 }
 void SplinePoint::SetDefault()
 {
-	pos = Vector3::ZERO;  tan = Vector3::ZERO;  onTer = 1;
-	width = 7.f;  aYaw = 0;  aRoll = 0;  wtan = 0.f;
-	mYaw = 0;  mRoll = 0;  aType = AT_Both;
-	cols = 1;  pipe = 0.f;
-	idMtr = 0;  idWall = 0;  chkR = 0.f;
-	onPipe = 0;  loop = 0;
-	chk1st = false;  notReal = false;
-	nCk = -1;
-}
+	pos = Vector3::ZERO;  tan = Vector3::ZERO;
+	width = 7.f;  wtan = 0.f;
 
+	mYaw = 0;  mRoll = 0;  aType = AT_Both;
+	aYaw = 0;  aRoll = 0;  aY = 0.f;  aR = 0.f;
+
+	clr = Vector4::ZERO;  nCk = -1;
+
+	onTer = 1;  cols = 1;
+	onPipe = 0;  loop = 0;
+	pipe = 0.f;
+	idMtr = 0;  idWall = 0;  chkR = 0.f;
+	chk1st = false;  notReal = false;
+}

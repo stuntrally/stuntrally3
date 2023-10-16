@@ -308,8 +308,8 @@ namespace Ogre
 		Vector3 vX(x+s, y0, z), vZ(x, y0, z+s);
 		vx.y = getHeight(vx.x, vx.z);  vX.y = getHeight(vX.x, vX.z);
 		vz.y = getHeight(vz.x, vz.z);  vZ.y = getHeight(vZ.x, vZ.z);
-		Vector3 v_x = vx-vX;  //v_x.normalise();
-		Vector3 v_z = vz-vZ;  //v_z.normalise();
+		Vector3 v_x = vx-vX;  v_x.normalise();//-?
+		Vector3 v_z = vz-vZ;  v_z.normalise();
 		Vector3 n = -v_x.crossProduct(v_z);  n.normalise();
 		Real a = Math::ACos(n.y).valueDegrees();
 		return a;
