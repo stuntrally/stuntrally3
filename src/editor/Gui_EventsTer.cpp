@@ -317,8 +317,11 @@ void CGui::btnTerrainDouble(WP)
 	if (notd())  return;
 	int so = td().iVertsX;
 	int s = so * 2, ofs4 = s / 4;
-	float* hfData = new float[s * s];
-	int size = s * s * sizeof(float);
+
+	const int size = s * s;
+	float* hfData = new float[size];
+	for (int i=0; i < size; ++i)
+		hfData[i] = 0.f;
 	
 	//  resize Hmap by half
 	for (int j=0; j < so; ++j)
@@ -328,7 +331,7 @@ void CGui::btnTerrainDouble(WP)
 		for (int i=0; i < so; ++i,++a)
 		{	hfData[a] = td().hfHeight[a2];  ++a2;  }
 	}
-	saveNewHmap(hfData, size);
+	saveNewHmap(hfData, size * sizeof(float));
 	delete[] hfData;
 
 	td().iVertsX = s;  td().UpdVals();

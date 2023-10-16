@@ -177,6 +177,12 @@
 	<fluid name="ice solid"		material="Ice"		density="500" angDamp="0.2" linDamp="0.4" heightDamp="1"
 		fogHSVA="0.495 0.154 0.696 1" fogDens="6" fogDensH="0.6"
 		solid="1" surf="roadSnow" idParticles="-1" deep="0" />
+	<fluid name="ice cyan"		material="Ice_cyan"		density="500" angDamp="0.2" linDamp="0.4" heightDamp="1"
+		fogHSVA="0.555 0.154 0.696 1" fogDens="6" fogDensH="0.6"
+		solid="1" surf="roadSnowIce" idParticles="-1" deep="0" />
+	<fluid name="ice bumpy"		material="Ice_bumpy"	density="500" angDamp="0.2" linDamp="0.4" heightDamp="1"
+		fogHSVA="0.495 0.154 0.696 1" fogDens="6" fogDensH="0.6"
+		solid="1" surf="SnowMedium" idParticles="-1" deep="0" />
 
 	<fluid name="lava"			material="LavaOrn"	density="1000" angDamp="3" linDamp="1.3" heightDamp="3"
 		fogHSVA="0.047 0.767 0.116 1" fogDens="4" fogDensH="0.6"

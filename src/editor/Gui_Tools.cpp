@@ -146,7 +146,8 @@ void CGui::btnCopyRoadPars(WP)
 	SplineRoad* r = scn->road;
 	if (!ChkTrkCopy() || !r)  return;
 	String from = PathCopyTrk();
-	SplineRoad rd(app);  rd.LoadFile(from + "/road.xml",false);  // todo: other roads
+	SplineRoad rd(app);
+	rd.LoadFile(from + "/road.xml",false);  // todo: other roads
 
 	for (int i=0; i < MTRs; ++i)
 	{	r->sMtrRoad[i] = rd.sMtrRoad[i];
@@ -253,13 +254,11 @@ void CGui::btnScaleAll(WP)
 
 
 ///  track 	. . . . . . . . . . . . . . . . . . . .	. . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-//-----------------------------------------------------------------------------------------------------------
-
 String CGui::PathCopyTrk(int user) {
 	int u = user == -1 ? bCopyTrackU : user;	return gcom->pathTrk[u] + sCopyTrack;  }
 
-
 ///  New (duplicate)
+//-----------------------------------------------------------------------------------------------------------
 void CGui::btnTrackNew(WP)
 {
 	String name = trkName->getCaption();
