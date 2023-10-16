@@ -39,11 +39,11 @@ void CInput::LoadInputDefaults()
 
 
 	//  players keys, [4] sets
-	const int iHalf = 4, iAxis = 2, iTrig = 6;
+	const int iHalf = 4, iAxis = 2, iTrig = 7;
 	const PlayerActions
 		aHalf[iHalf] = {A_Throttle, A_Brake,  A_HandBrake, A_Boost},
 		aAxis[iAxis] = {A_Steering, A_Flip},
-		aTrig[iTrig] = {A_ShiftUp, A_ShiftDown,  A_PrevCamera, A_NextCamera,  A_LastChk, A_Rewind};
+		aTrig[iTrig] = {A_ShiftUp, A_ShiftDown,  A_PrevCamera, A_NextCamera,  A_LastChk, A_Rewind, A_Lights};
 	const SDL_Keycode
 		kHalf[4][iHalf]	= {{SDLK_UP, SDLK_DOWN,  SDLK_SPACE, SDLK_LCTRL},
 						   {SDLK_u, SDLK_m,  SDLK_n, SDLK_j},
@@ -55,7 +55,7 @@ void CInput::LoadInputDefaults()
 							   {{SDLK_d, SDLK_g}, {SDLK_e, SDLK_t}},
 							   {{SDLK_l, SDLK_QUOTE}, {SDLK_o, SDLK_LEFTBRACKET}} },
 
-		kTrig0[iTrig] = {SDLK_a, SDLK_s,  SDLK_x, SDLK_c,  SDLK_0, SDLK_INSERT};  // 1st player, rest undefined
+		kTrig0[iTrig] = {SDLK_a, SDLK_s,  SDLK_x, SDLK_c,  SDLK_0, SDLK_INSERT, SDLK_z};  // 1st player, rest undefined
 
 	//  map to add in order like in enum
 	const int iBoth = iHalf+iAxis;

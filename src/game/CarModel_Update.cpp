@@ -292,6 +292,17 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		UpdateBraking();
 	}
 	#endif
+
+	//  💡 Lights front
+	if (pCar)
+	{	// not from posInfo, always can toggle
+		bLightsOld = bLights;
+		bLights = pCar->bLightsOn;
+		if (bLights != bLightsOld)
+		{
+			for (auto l:lights)
+				l->setVisible(bLights);
+	}	}
 	
 
 	//  ✨ update particle emitters

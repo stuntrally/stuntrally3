@@ -32,6 +32,8 @@ public:
 	//  🌞 Sun, Light
 	float ldPitch, ldYaw;  // dir angles
 	SColor lAmb,lDiff,lSpec;
+	
+	bool needLights =0;  // dark, for vehicle
 
 	//  🌫️ Fog
 	float fogStart, fogEnd;  // lin range

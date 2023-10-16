@@ -258,6 +258,12 @@ void CAR::HandleInputs(const std::vector <float> & inputs, float dt)
 
 	bRewind = timeRew <= 0.f && bRew;  // car input
 	bRewindOld = bRewind;
+
+	//  💡 Lights toggle
+	bool lights = inputs[CARINPUT::LIGHTS];
+	if (lights && !bLightsOld)
+		bLightsOn = !bLightsOn;
+	bLightsOld = lights;
 }
 
 

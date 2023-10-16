@@ -26,6 +26,8 @@ void Scene::Default()
 	secEdited = 0;
 
 	asphalt = false;  denyReversed = false;  noWrongChks = false;
+	needLights = false;
+	
 	windAmt = 0.f;  damageMul = 1.f;
 	gravity = 9.81f;
 	

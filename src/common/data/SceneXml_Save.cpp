@@ -34,6 +34,8 @@ bool Scene::SaveXml(String file)
 			car->SetAttribute("road1mtr", road1mtr ? "1":"0");
 		if (noWrongChks)
 			car->SetAttribute("noWrongChks", noWrongChks ? "1":"0");
+		if (needLights)
+			car->SetAttribute("needLights", needLights ? "1":"0");
 
 		if (denyReversed)
 			car->SetAttribute("denyRev", "1");

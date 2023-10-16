@@ -226,4 +226,7 @@ public:
 	Ogre::v1::BillboardSet* bsBrakes =0, *bsFlares =0;
 	bool bBraking = true;
 	void UpdateBraking();
+
+	//  💡 Lights
+	bool bLightsOld =0, bLights =0;
 };

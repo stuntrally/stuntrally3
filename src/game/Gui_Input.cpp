@@ -97,7 +97,7 @@ void CGui::CreateInputTab(int iTab, bool player,
 		//  columns positon x  txt,btn,bar,>
 		x0 = 16, x1 = 160, x2 = 325, x3 = 464,
 		yHdr0 = 12, yHdr = yHdr0+6,  // header start
-		yAdd = 14,  // y add with new row
+		yAdd = 13,  // y add with new row
 		s0 = x1-x0-5;  // descr size x
 
 	#define CreateText(x,y, w,h, name, text)  {  Txt txt =  \
@@ -124,7 +124,7 @@ void CGui::CreateInputTab(int iTab, bool player,
 		yRow["Rewind"]=y;     y+=2 +2;
 		yRow["NextCamera"]=y; y+=2;     yRow["PrevCamera"]=y;  y+=2 +1;
 		yRow["ShiftUp"]=y;    y+=2;     yRow["ShiftDown"]=y;   y+=2 +1;
-		yRow["LastChk"]=y;    y+=2;
+		yRow["LastChk"]=y;    y+=2;     yRow["Lights"]=y;      y+=2;
 		//  general
 		y = 2;
 		yRow["ShowOptions"]=y; y+=2 +1;
@@ -224,7 +224,7 @@ void CGui::CreateInputTab(int iTab, bool player,
 	}
 
 	if (player)
-	{	y = yHdr + 32 * yAdd;
+	{	y = yHdr + 34 * yAdd;
 		CreateText(x1,y, 500,24, "txtunb" + sPlr, TR("#80B0F0#{InputUnbind}"));
 	}
 }

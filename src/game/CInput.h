@@ -24,8 +24,10 @@ const static std::string csActions[NumActions] =
 };*/
 
 const static std::string csPlayerActions[NumPlayerActions] =
-{	"Throttle", "Brake", "Steering", "HandBrake", "Boost", "Flip",
-	"ShiftUp", "ShiftDown", "PrevCamera", "NextCamera", "LastChk", "Rewind"
+{	"Throttle", "Brake", "Steering", "HandBrake",
+	"Boost", "Flip",
+	"ShiftUp", "ShiftDown", "PrevCamera", "NextCamera",
+	"LastChk", "Rewind", "Lights"
 };
 
 namespace ICS

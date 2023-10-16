@@ -100,5 +100,8 @@ const std::vector <float> & CARCONTROLMAP_LOCAL::ProcessInput(
 	inputs[CARINPUT::LAST_CHK]	= forceBrake ? false : channels[A_LastChk];
 	inputs[CARINPUT::REWIND]	= forceBrake ? false : channels[A_Rewind];
 
+	//  lights
+	inputs[CARINPUT::LIGHTS]	= channels[A_Lights];
+
 	return inputs;
 }

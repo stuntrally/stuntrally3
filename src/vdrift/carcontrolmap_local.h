@@ -4,8 +4,11 @@
 
 
 enum PlayerActions
-{	A_Throttle, A_Brake, A_Steering, A_HandBrake, A_Boost, A_Flip,
-	A_ShiftUp, A_ShiftDown, A_PrevCamera, A_NextCamera, A_LastChk, A_Rewind, NumPlayerActions
+{	A_Throttle, A_Brake, A_Steering, A_HandBrake,
+	A_Boost, A_Flip,
+	A_ShiftUp, A_ShiftDown, A_PrevCamera, A_NextCamera,
+	A_LastChk, A_Rewind, A_Lights,
+	NumPlayerActions
 };
 
 
@@ -20,7 +23,7 @@ private:
 public:
 	CARCONTROLMAP_LOCAL()
 	{
-		for (int i=0; i < 8; ++i)
+		for (int i=0; i < 8; ++i)  //par
 		{	grUpOld[i] = false;  grDnOld[i] = false;  }
 		Reset();
 	}

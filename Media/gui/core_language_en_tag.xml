@@ -890,6 +890,7 @@
 	<Tag name="InputMapPrevCamera">Previous Camera</Tag>
 	<Tag name="InputMapNextCamera">Next Camera</Tag>
 	<Tag name="InputMapLastChk">Go to last checkp.</Tag>
+	<Tag name="InputMapLights">Toggle lights</Tag>
 
 
 	<!--  MAIN  Game Input  -->
@@ -1282,6 +1283,7 @@
 	<Tag name="Wind">Wind</Tag>
 	<Tag name="DenyReversed">Deny reversed direction</Tag>
 	<Tag name="NoWrongChks">Don't show wrong checkpoint messages</Tag>
+	<Tag name="NeedLights">Requires vehicle lights</Tag>
 
 	<!--  Editor Warnings  -->
 	<Tag name="Warnings">Warnings</Tag>
@@ -1620,7 +1622,7 @@
 	<Tag name="LessonClick">click button to play a lesson</Tag>
 
 	<Tag name="Hint-0">Rewind</Tag>
-	<Tag name="Hint-0text">If you crashed or you're stuck, hold [Backspace] to move back in time.</Tag>
+	<Tag name="Hint-0text">If you crashed or you're stuck, hold [Insert] to move back in time.</Tag>
 	<Tag name="Hint-1">Turns</Tag>
 	<Tag name="Hint-1text">Don't accelerate all the time. Also don't forget to brake before turns, especially sharp ones. If you don't know the road yet, it's better to drive slowly.</Tag>
 	<Tag name="Hint-2">Flipping</Tag>

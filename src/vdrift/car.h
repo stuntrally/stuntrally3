@@ -210,6 +210,9 @@ public:
 	//  car inputs (new)
 	int iCamNext = 0;
 	bool bLastChk =0, bLastChkOld =0;
+	
 	bool bRewind =0, bRewindOld =0;
 	float timeRew = 0.f;
+	
+	bool bLightsOn =0, bLightsOld =0;
 };

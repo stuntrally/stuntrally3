@@ -564,6 +564,7 @@ void CGui::InitGui()
 	ck= &ckDenyReversed;	ck->Init("DenyReversed",	&sc->denyReversed);
 	ck= &ckTiresAsphalt;	ck->Init("TiresAsphalt",	&sc->asphalt);
 	ck= &ckNoWrongChks;		ck->Init("NoWrongChks",		&sc->noWrongChks);
+	ck= &ckNeedLights;		ck->Init("NeedLights",		&sc->needLights);
 	txtEdInfo = fTxt("EdInfo");
 	
 	

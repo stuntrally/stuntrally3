@@ -343,7 +343,7 @@ public:
 	//  🚗 Game  --------------------
 	SV svDamage, svWind, svGravity;
 	CK(DenyReversed);  CK(TiresAsphalt);
-	CK(NoWrongChks);
+	CK(NoWrongChks);  CK(NeedLights);
 	void SldUpd_Game();
 	//  sound
 	Txt txtRevebDescr =0;

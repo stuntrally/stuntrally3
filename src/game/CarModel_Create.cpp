@@ -321,6 +321,7 @@ void CarModel::Create()
 			light->setSpotlightRange(Degree(5), Degree(40), 1.0f );  //par 5 30
 			
 			light->setCastShadows(pSet->car_light_shadows);
+			light->setVisible(sc->needLights);  // auto on for dark tracks
 			lights.push_back(light);
 	}	}
 

@@ -24,13 +24,13 @@ bool Scene::LoadXml(String file, bool bTer)
 	XMLElement* root = doc.RootElement();
 	if (!root)  return false;
 
-	// clear  --
+	//  clear  --
 	Default();
 
 	//td.layers.clear();
 	//pgLayers.clear();
 
-	// read
+	//  read
 	XMLElement* e, *u;
 	const char* a;
 
@@ -54,6 +54,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("denyRev");	if (a)  denyReversed = s2i(a) > 0;
 		a = e->Attribute("gravity");	if (a)  gravity = s2r(a);
 		a = e->Attribute("noWrongChks"); if (a)  noWrongChks = s2i(a) > 0;
+		a = e->Attribute("needLights"); if (a)  needLights = s2i(a) > 0;
 	}
 
 	///  🏁 car start
