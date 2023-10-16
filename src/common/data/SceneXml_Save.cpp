@@ -237,7 +237,9 @@ bool Scene::SaveXml(String file)
 			grl->SetAttribute("on",		g.on ? 1 : 0);
 			grl->SetAttribute("mtr",	g.material.c_str());
 			// grl->SetAttribute("clr",	g.colorMap.c_str());  // old drop-
-			grl->SetAttribute("cl",		g.color.Save().c_str() );  // new
+			auto c = g.color;
+			if (c.h != 0.f || c.s != 0.f || c.v != 1.f || c.a != 1.f || c.n != 0.f)
+				grl->SetAttribute("cl", c.Save().c_str() );  // new
 			grl->SetAttribute("dens",	toStrC( g.dens ));
 			grl->SetAttribute("chan",	toStrC( g.iChan ));
 

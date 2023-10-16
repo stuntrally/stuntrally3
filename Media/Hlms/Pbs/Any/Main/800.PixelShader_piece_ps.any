@@ -848,7 +848,7 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 @end
 
 		@property( hlms_colour )  //**  vertex color
-			//pixelData.diffuse *= inPs.colour;  // todo:
+			// pixelData.diffuse *= inPs.colour;  // todo: for particles, road blend
 		@end
 
 		@insertpiece( forwardPlusDoDecals )
@@ -1021,7 +1021,9 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 			@property( hlms_normal || hlms_qtangent )
 
 				//**  gamma  --
-				finalColour.xyz = pow(finalColour, midf3_c(1.15, 1.15, 1.15) );
+				@property( !sky )
+					finalColour.xyz = pow(finalColour, midf3_c(1.15, 1.15, 1.15) );
+				@end
 
 				@property( !hw_gamma_write )
 					//Linear to Gamma space
