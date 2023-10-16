@@ -518,8 +518,8 @@ void GAME::UpdateCarInputs(CAR & car)
 
 	//  Input
 	app->input->mPlayerInputStateMutex.lock();
-	int id = std::min(3, car.id);
-	for (int i=0; i<4; ++i)
+	int id = std::min(MAX_PLAYERS-1, car.id);
+	for (int i=0; i < MAX_PLAYERS; ++i)
 	{
 		for (int a = 0; a < NumPlayerActions; ++a)
 			app->input->mPlayerInputState[i][a] = app->mInputCtrlPlayer[i]->getChannel(a)->getValue();

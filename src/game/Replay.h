@@ -1,4 +1,5 @@
 #pragma once
+#include "par.h"
 #include "mathvector.h"
 #include "quaternion.h"
 // #include <Ogre.h>
@@ -206,6 +207,6 @@ public:
 
 	void Clear();
 private:
-	std::vector<RewindFrame> frames[4];  // 4 players max (split screen)
-	int idLast[4];  // last index from GetFrame (optimisation)
+	std::vector<RewindFrame> frames[MAX_PLAYERS];  // 4 players max (split screen)
+	int idLast[MAX_PLAYERS];  // last index from GetFrame (optimisation)
 };

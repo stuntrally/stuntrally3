@@ -188,9 +188,10 @@ void CHud::UpdDebug(CAR* pCar, CarModel* pCarM)
 		const Real ad = 2.f*PI_d/na, u = 0.02f;  // u line thickness
 		const ColourValue cb(0.8,0.8,0.8),cl(0.2,1,0.2),cr(0.9,0.4,0),cc(1,1,0);
 		
-		for (int i=0; i < 4; ++i)
+		const CARDYNAMICS& cd = pCar->dynamics;
+		const int numWh = std::min(cd.numWheels, MAX_TireVis);
+		for (int i=0; i < numWh; ++i)
 		{
-			const CARDYNAMICS& cd = pCar->dynamics;
 			const CARWHEEL::SlideSlip& t = cd.wheel[i].slips;
 			float d = cd.wheel_contact[i].GetDepth() - 2*cd.wheel[i].GetRadius();
 			bool off = !(d > -0.1f && d <= -0.01f);  // not in air

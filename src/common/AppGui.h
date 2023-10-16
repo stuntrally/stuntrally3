@@ -2,6 +2,7 @@
 #include "Gui_Def.h"
 #include "Cam.h"
 #include "ViewDim.h"
+#include "par.h"
 #include <string>
 #include <OgreString.h>
 #include <OgreHlmsCommon.h>
@@ -146,7 +147,7 @@ public:
 	void DestroyCameras();
 	
 	//  viewport dimensions, for each player [4]
-	ViewDim mDims[4];
+	ViewDim mDims[MAX_PLAYERS];
 
 	//  workspace, Ogre render setup   players [4] + 1 for Refl cube
 	std::vector<Ogre::CompositorWorkspace*> mWorkspaces;

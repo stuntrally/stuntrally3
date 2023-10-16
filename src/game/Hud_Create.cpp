@@ -404,7 +404,7 @@ void CHud::Create()
 
 	if (pSet->car_tirevis)
 	{	SceneNode* rt = scm->getRootSceneNode();
-		for (int i=0; i < 4; ++i)
+		for (int i=0; i < MAX_TireVis; ++i)
 		{
 			hrTireVis[i] = new HudRenderable("hud/line", scm,
 				OT_LINE_LIST, false, true, RV_Hud,RQG_Hud1,
@@ -516,6 +516,6 @@ void CHud::Destroy()
 	Dest(txMsg)  Dest(bckMsg)
 	Dest(txCamInfo)
 	
-	for (i=0; i < 4; ++i)
+	for (i=0; i < MAX_TireVis; ++i)
 	{	Dest2(ndTireVis[i])  Del(hrTireVis[i])  }
 }

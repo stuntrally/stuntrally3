@@ -3,6 +3,8 @@
 //  for making vehicle preview screens, see info in cameras.xml
 //#define CAR_PRV
 
+#define MAX_PLAYERS 4
+
 ///  const game params  -------
 struct SParams
 {
@@ -43,4 +45,4 @@ struct SParams
 	SParams();
 };
 
-static SParams gPar;
+const static SParams gPar;

@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "settings.h"
 //#include "protocol.hpp"
 #include <stdio.h>
@@ -34,7 +35,7 @@ void SETTINGS::Save(std::string sfile)
 //  📄 paint.cfg
 void SETTINGS::SerPaints(bool wr, CONFIGFILE & cf)
 {
-	for (int i=0; i < 6; ++i)  // cars
+	for (int i=0; i < MAX_PLAYERS + 2; ++i)  // cars
 	{
 		char ss[64];
 		sprintf(ss, "car%d.", i+1);
@@ -63,14 +64,14 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 
 	//  🚗 cars
-	for (int i=0; i < 6; ++i)
+	for (int i=0; i < MAX_PLAYERS + 2; ++i)
 	{
 		char ss[64];  sprintf(ss, "car%d.", i+1);   std::string s = ss;
-		if (i < 4)
+		if (i < MAX_PLAYERS)
 		{	Param(c,w, s+"car", gui.car[i]);		Param(c,w, s+"camera", cam_view[i]);
 		}
 	}
-	// todo: this for all 4 cars-
+	// todo: this for all cars
 	Param(c,w, "car1.autotrans", autoshift);
 	Param(c,w, "car1.autorear", autorear);		Param(c,w, "car1.autorear_inv", rear_inv);
 	for (int i=0; i <= 1; ++i)  // steering
@@ -219,20 +220,20 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 SETTINGS::SETTINGS()
 {
-	cam_view.resize(4);
-	for (int i=0; i < 4; ++i)
+	cam_view.resize(MAX_PLAYERS);
+	for (int i=0; i < MAX_PLAYERS; ++i)
 		cam_view[i] = 9;
 }
 
 
 SETTINGS::GameSet::GameSet()
 {
-	clr.resize(6);
-	car.resize(4);
+	clr.resize(MAX_PLAYERS + 2);
+	car.resize(MAX_PLAYERS);
 
 	BoostDefault();
 
-	for (int i=0; i < 4; ++i)
+	for (int i=0; i < MAX_PLAYERS; ++i)
 		car[i] = "HI";
 }
 

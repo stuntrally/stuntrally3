@@ -1,5 +1,6 @@
 #pragma once
 #include "carcontrolmap_local.h"
+#include "par.h"
 #include <string>
 #include <vector>
 #include <mutex>
@@ -73,11 +74,11 @@ public:
 	CInput(App* app1);
 
 	//  Input
-	float mPlayerInputState[4][NumPlayerActions];
+	float mPlayerInputState[MAX_PLAYERS][NumPlayerActions];
 	std::mutex mPlayerInputStateMutex;
 	
 	std::vector<InputAction> mInputActions;
-	std::vector<InputAction> mInputActionsPlayer[4];
+	std::vector<InputAction> mInputActionsPlayer[MAX_PLAYERS];
 
 	///  Add
 	//  Global trigger

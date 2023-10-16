@@ -12,7 +12,7 @@ CInput::CInput(App* app1)
 	:app(app1)
 {
 	int p,a;
-	for (p=0; p < 4; ++p)
+	for (p=0; p < MAX_PLAYERS; ++p)
 	for (a=0; a < NumPlayerActions; ++a)
 		mPlayerInputState[p][a] = 0;
 }
@@ -25,7 +25,7 @@ void CInput::LoadInputDefaults()
 	//  clear
 	mInputActions.clear();
 	int i,p,n;
-	for (i=0; i < 4; ++i)
+	for (i=0; i < MAX_PLAYERS; ++i)
 		mInputActionsPlayer[i].clear();
 
 
@@ -38,12 +38,13 @@ void CInput::LoadInputDefaults()
 		AddGlob(Actions(i), keyG[i]);
 
 
-	//  players keys, [4] sets
+	//  players keys, 4 sets
 	const int iHalf = 4, iAxis = 2, iTrig = 7;
 	const PlayerActions
 		aHalf[iHalf] = {A_Throttle, A_Brake,  A_HandBrake, A_Boost},
 		aAxis[iAxis] = {A_Steering, A_Flip},
-		aTrig[iTrig] = {A_ShiftUp, A_ShiftDown,  A_PrevCamera, A_NextCamera,  A_LastChk, A_Rewind, A_Lights};
+		aTrig[iTrig] = {A_ShiftUp, A_ShiftDown,  A_PrevCamera, A_NextCamera,
+						A_LastChk, A_Rewind, A_Lights};
 	const SDL_Keycode
 		kHalf[4][iHalf]	= {{SDLK_UP, SDLK_DOWN,  SDLK_SPACE, SDLK_LCTRL},
 						   {SDLK_u, SDLK_m,  SDLK_n, SDLK_j},
@@ -63,12 +64,13 @@ void CInput::LoadInputDefaults()
 	int id[iBoth]  = {0,1,0,2,3,1};  // id for both
 
 	//  add
-	for (p=0; p < 4; ++p)
+	for (p=0; p < MAX_PLAYERS; ++p)
 	{
+		#define out(p, key)  p >= 4 ? SDLK_UNKNOWN : key
 		for (n=0; n < iBoth; ++n)
 		{	i = id[n];
-			if (bH[n])  AddHalf(p, aHalf[i], kHalf[p][i]);
-			else        AddAxis(p, aAxis[i], kAxis[p][i][0], kAxis[p][i][1]);
+			if (bH[n])  AddHalf(p, aHalf[i], out(p, kHalf[p][i]));
+			else        AddAxis(p, aAxis[i], out(p, kAxis[p][i][0]), out(p, kAxis[p][i][1]));
 		}
 		for (i=0; i < iTrig; ++i)
 			AddTrig(p, aTrig[i], p == 0 ? kTrig0[i] : SDLK_UNKNOWN);
@@ -76,7 +78,7 @@ void CInput::LoadInputDefaults()
 
 	//  Load
 	LoadInputDefaults(mInputActions, app->mInputCtrl);
-	for (i=0; i<4; ++i)
+	for (i=0; i < MAX_PLAYERS; ++i)
 		LoadInputDefaults(mInputActionsPlayer[i], app->mInputCtrlPlayer[i]);
 }
 

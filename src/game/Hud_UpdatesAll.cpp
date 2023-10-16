@@ -356,9 +356,9 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			{
 				String s = TR("---  "+toStr(pCarM->iWonPlace)+" #{TBPlace}  ---");
 				h.txPlace->setCaption(s);
-				const static Colour clrPlace[4] = {
-					Colour(0.4,1,0.2), Colour(1,1,0.3), Colour(1,0.7,0.2), Colour(1,0.5,0.2) };
-				h.txPlace->setTextColour(clrPlace[pCarM->iWonPlace-1]);
+				const static Colour clrPlace[5] = {
+					Colour(0.4,1,0.2), Colour(1,1,0.3), Colour(1,0.7,0.2), Colour(1,0.5,0.2), Colour(0.7,0.6,0.6) };
+				h.txPlace->setTextColour(clrPlace[std::min(4, pCarM->iWonPlace-1)]);
 				h.bckPlace->setVisible(true);
 		}	}
 
