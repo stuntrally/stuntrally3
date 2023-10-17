@@ -8,9 +8,9 @@ hlms road pbs  // bridges
 	specular_map roadAsphalt_spec.jpg
 	// workflow metallic
 	roughness 0.4
-	metalness 0.1
+	// metalness 0.1
 
-	fresnel	0.0
+	fresnel	0.1
 	fresnel_coeff 0.3 0.3 0.3
 	// diffuse  1.0 1.0 1.0
 	specular 0.3 0.3 0.3
@@ -22,14 +22,14 @@ hlms road_terrain pbs
 	scene_blend alpha_blend
 	// specular_map roadAsphalt_spec2.jpg
 
-	fresnel	0.0
-	fresnel_coeff 0.01 0.01 0.01
+	fresnel	0.5
+	fresnel_coeff 0.2 0.2 0.2
 
 	workflow specular_ogre
 	roughness 0.5
-	metalness 0.1
+	// metalness 0.1
 	// diffuse  0.7 0.7 0.7
-	specular 1 1 1
+	specular 0.5 0.5 0.5
 }
 
 
@@ -92,7 +92,8 @@ hlms roadJDark_ter pbs : road_terrain
 	normal_map   normal_2.png
 	// specular_map roadAlpha2i.jpg
 	diffuse  0.70 0.60 0.80
-	specular 0.43 0.43 0.40
+	specular 0.33 0.33 0.30
+	roughness 0.3
 }
 
 hlms roadJDarkWet pbs : road
@@ -314,9 +315,9 @@ hlms roadSandMagic_ter pbs : road_terrain
 	diffuse_map  roadSandSet.jpg
 	normal_map   normal_2.png
 	diffuse  0.12 0.22 0.42
-	specular 0.15 0.1 0.2
-	roughness 0.01
-	metalness 1.0
+	specular 0.2 0.3 0.5
+	roughness 0.2
+	// metalness 1.0
 	fresnel	1.0
 	fresnel_coeff 0.1 0.4 1.0
 }
@@ -336,6 +337,7 @@ hlms roadSandMagicCyan_ter pbs : road_terrain
 	specular 0.3 0.6 0.6
 	diffuse_map roadSandSet.jpg
 	normal_map normal_2.png
+	roughness 0.2
 	refl_amount 0.15
 	bump_scale 0.3
 }
@@ -652,6 +654,7 @@ hlms roadDesert_ter pbs : road_terrain
 	normal_map   roadDesert_n.jpg
 	diffuse  1.05 0.97 0.62
 	specular 0.16 0.14 0.12
+	fresnel_coeff 0.1 0.1 0.1
 }
 
 hlms roadDesertOrn pbs : road

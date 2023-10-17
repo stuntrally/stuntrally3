@@ -599,33 +599,32 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_1",
 			"shadow_const_bias" : 0.01,
-			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
-				"value" : 0.76,
+				"value" : 0.82282966,
 				"mode" : "Transparent",
 				"use_alpha_from_textures" : true
 			},
 			"diffuse" :
 			{
-				"value" : [0.29404694, 0.39618725, 0.42457193],
+				"value" : [0.24040379, 0.37345532, 0.51355416],
 				"background" : [1, 1, 1, 1],
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.39200002, 0.4, 0.4],
+				"value" : [0.39200002, 0.41676587, 0.43505496],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.27300003, 0.279, 0.282],
+				"value" : [0.27300003, 0.28257647, 0.2963592],
 				"mode" : "coloured"
 			},
 			"normal" :
 			{
-				"value" : 1,
+				"value" : 0.73021173,
 				"texture" : "water_nm.png",
 				"sampler" : "Sampler_10"
 			},

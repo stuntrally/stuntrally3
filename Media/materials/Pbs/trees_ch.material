@@ -227,10 +227,10 @@ hlms tree22fatTrunk pbs : base-tree
 }
 hlms tree22fatTwig pbs : base-twig
 {
+    alpha_test greater 0.8
     diffuse_map twigP2b4.png
 }
-    //diffuse_map twigP27c.png
-}
+//diffuse_map twigP27c.png
 // wil,    Greece`
 
 hlms tree34stinyTrunk pbs : base-tree
@@ -350,9 +350,8 @@ hlms tree40topsmTwig pbs : base-twig
 {
     diffuse_map twig34g2c.png
 }
-    // greece,des`
-    //diffuse_map twig40_4wg.png
-// }
+// greece,des`
+//diffuse_map twig40_4wg.png
 
 
 // trunk114         trunk115w        trunk116        trunk117
