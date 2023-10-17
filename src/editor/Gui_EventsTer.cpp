@@ -289,6 +289,7 @@ void CGui::btnTerrainHalf(WP)
 {
 	if (notd())  return;
 	int so = td().iVertsX;
+	if (so <= 128)  return;
 	int s = so / 2;
 	float* hfData = new float[s * s];
 	int size = s * s * sizeof(float);
@@ -316,6 +317,8 @@ void CGui::btnTerrainDouble(WP)
 {
 	if (notd())  return;
 	int so = td().iVertsX;
+	if (so >= 4096)  return;
+
 	int s = so * 2, ofs4 = s / 4;
 
 	const int size = s * s;

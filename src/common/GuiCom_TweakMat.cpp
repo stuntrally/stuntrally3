@@ -361,7 +361,7 @@ void CGuiCom::InitClrTweakMtr()
 	add("white" ,"#FFFFFF");  add("ice"   ,"#F9F9F9");  add("snow"  ,"#EEEEEE");
 	add("viol"  ,"#8040FF");  add("pink"  ,"#FF40FF");
 	add("sunset","#F0C010");  add("alien" ,"#90F020");  add("space" ,"#90C0E0");
-	add("dark"  ,"#202020");  add("sand"  ,"#FFE0B0");  add("savan" ,"#A0F080");
+	add("dark"  ,"#606060");  add("sand"  ,"#FFE0B0");  add("savan" ,"#A0F080");
 	add("stone" ,"#C0C0C0");  add("metal" ,"#6090C0");  add("gravel","#909090");
 
 	add("glass" ,"#F0F8FF");  add("road"  ,"#904000");  add("pipe"  ,"#C0C000");

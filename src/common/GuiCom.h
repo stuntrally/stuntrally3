@@ -74,6 +74,7 @@ public:
 
 	//  📈 Fps
 	SlV(Fps);  Txt txFpsInfo =0;  void nextFps();
+	const static int FPS_Modes = 4;
 
 	///  📊 Graphics  --------------------------
 

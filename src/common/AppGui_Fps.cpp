@@ -74,6 +74,12 @@ void AppGui::UpdFpsText(float dt)
 
 	if (pSet->fps_bar == 2)
 	{
+		txt += cvsF( tris, 4.f, 8.f, 2,4)+"  ";
+		txt += cvsI( draw, 150, 1200, 3) + "  ";
+		txFps->setCaption(txt);  return;
+	}
+	if (pSet->fps_bar == 3)
+	{
 		txt += cvsI( draw, 150, 1200, 3) + "  ";
 		txt += cvsF( mem,  600.f, 1700.f, 0,4);  // + "M\n";
 		txFps->setCaption(txt);  return;

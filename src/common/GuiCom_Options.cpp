@@ -33,7 +33,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	BtnC("MatEditor", btnMatEditor);
 
 	//  📈 Fps
-	sv= &svFps;			sv->Init("Fps",			&pSet->fps_bar, 0, 3);  sv->DefaultI(1);  SevC(Fps);
+	sv= &svFps;			sv->Init("Fps",			&pSet->fps_bar, 0, FPS_Modes);  sv->DefaultI(1);  SevC(Fps);
 	txFpsInfo = fTxt("FpsInfo");
 	slFps(0);
 
@@ -197,27 +197,29 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 void CGuiCom::nextFps()
 {
 	++pSet->fps_bar;
-	if (pSet->fps_bar > 3)  pSet->fps_bar = 0;
+	if (pSet->fps_bar > FPS_Modes)  pSet->fps_bar = 0;
 	svFps.Upd();  slFps(0);
 }
 
 void CGuiCom::slFps(SV*)
 {
-	int f = max(0, min(3, pSet->fps_bar));
+	int f = max(0, min(FPS_Modes, pSet->fps_bar));
 	app->txFps->setVisible(f > 0);
 	app->bckFps->setVisible(f > 0);
 
-	const static int dim[4][2] = {  // dim
+	const static int dim[FPS_Modes+1][2] = {  // dim
 		{ 16, 16},  // off
 		{ 76, 28},  // fps
+		{234, 28},  // 3
 		{234, 28},  // 3
 		{234, 78}   // full
 	};
 	app->bckFps->setSize(dim[f][0], dim[f][1]);
 
-	const static string ss[4] = {  // info
+	const static string ss[FPS_Modes+1] = {  // info
 		"#{None}",
 		"#{FPS_Fps}",
+		"#{FPS_Fps},  #{FPS_Triangles}, #{FPS_Draws}",
 		"#{FPS_Fps},  #{FPS_Draws},  #{FPS_Memory} MB",
 		"#{FPS_Fps},  #{FPS_Triangles},  #{FPS_Draws}\n"
 		"   i #{FPS_Instances},  #{FPS_Vegetation}\n"
