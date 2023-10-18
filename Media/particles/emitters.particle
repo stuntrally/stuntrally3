@@ -8,7 +8,7 @@ particle_system Cloud1
 	particle_height		122
 	cull_each			false
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -64,7 +64,7 @@ particle_system Cloud2
 	particle_height		122
 	cull_each			false
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -119,7 +119,7 @@ particle_system Cloud3
 	particle_height		122
 	cull_each			false
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -174,7 +174,7 @@ particle_system Cloud4
 	particle_height		162
 	cull_each			false
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -229,7 +229,7 @@ particle_system Cloud5
 	particle_height		102
 	cull_each			false
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -287,7 +287,7 @@ particle_system Radioactive
 	particle_height		2.6
 	cull_each			true
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Box
 	{
@@ -343,7 +343,7 @@ particle_system AcidVapor1
 	particle_height		12.6
 	cull_each			true
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -393,7 +393,7 @@ particle_system AcidVapor2
 	particle_height		2.6
 	cull_each			true
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -448,7 +448,7 @@ particle_system AlienGlow
 	particle_height		2.6
 	cull_each			true
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -505,7 +505,7 @@ particle_system SmokeBrown
 	particle_height		11.6
 	cull_each			false
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -556,7 +556,7 @@ particle_system SmokeBlack
 	particle_height		11.6
 	cull_each			false
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -607,7 +607,7 @@ particle_system SmokeGray
 	particle_height		11.6
 	cull_each			false
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -659,7 +659,7 @@ particle_system FireYellowRed
 	particle_height		7.6
 	cull_each			false
 	billboard_type		point
-    sorted				false
+	sorted				false
 
 	emitter Cylinder
 	{
@@ -710,7 +710,7 @@ particle_system FireOrangeRed
 	particle_height		4.1
 	cull_each			false
 	billboard_type		point
-    sorted				false
+	sorted				false
 
 	emitter Cylinder
 	{
@@ -765,7 +765,7 @@ particle_system FireOrange
 	particle_height		5.6
 	cull_each			false
 	billboard_type		point
-    sorted				false
+	sorted				false
 
 	emitter Cylinder
 	{
@@ -820,7 +820,7 @@ particle_system FireOrangeTiny
 	particle_height		0.8
 	cull_each			false
 	billboard_type		point
-    sorted				false
+	sorted				false
 
 	emitter Cylinder
 	{
@@ -877,7 +877,7 @@ particle_system CraterLava1
 	particle_height		2.2
 	cull_each			false
 	billboard_type		point
-    sorted				false
+	sorted				false
 
 	emitter Cylinder
 	{
@@ -937,7 +937,7 @@ particle_system CraterLava2
 	particle_height		3.5
 	cull_each			false
 	billboard_type		point
-    sorted				false
+	sorted				false
 
 	emitter Cylinder
 	{
@@ -1000,7 +1000,7 @@ particle_system ElectricSparks
 	particle_width	0.12
 	particle_height	0.75
 	cull_each		false
-    sorted			false
+	sorted			false
 	billboard_type  oriented_self
 
 	emitter Box
@@ -1044,7 +1044,7 @@ particle_system Electricity
     particle_width  1.25
     particle_height 1.25
 	cull_each		false
-    sorted			false
+	sorted			false
 	billboard_type	point
 
 	emitter Cylinder
@@ -1102,7 +1102,7 @@ particle_system AlienBeamDown
     particle_width  0.2
     particle_height 0.4
 	cull_each		false
-    sorted			false
+	sorted			false
 	billboard_type	point
 
 	emitter Cylinder
@@ -1155,7 +1155,7 @@ particle_system AlienBeamUp
     particle_width  2.7
     particle_height 4.2
 	cull_each		false
-    sorted			false
+	sorted			false
 	billboard_type	point
 
 	emitter Cylinder
@@ -1377,7 +1377,7 @@ particle_system AlienCloud1
 	particle_height		122
 	cull_each			false
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -1431,7 +1431,7 @@ particle_system AlienCloud2
 	particle_height		122
 	cull_each			false
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -1485,7 +1485,7 @@ particle_system AlienCloud3
 	particle_height		122
 	cull_each			false
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -1540,7 +1540,7 @@ particle_system CrystalCloud
 	particle_height		122
 	cull_each			false
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -1594,7 +1594,7 @@ particle_system PinkCloud
 	particle_height		122
 	cull_each			false
 	billboard_type		point
-    sorted				true
+	sorted				true
 
 	emitter Cylinder
 	{
@@ -1649,7 +1649,7 @@ particle_system ElectricSparks2
 	particle_width	0.12
 	particle_height	0.75
 	cull_each		false
-    sorted			false
+	sorted			false
 	billboard_type  oriented_self
 
 	emitter Box
@@ -1694,7 +1694,7 @@ particle_system FireSparks1
 	particle_width	0.12
 	particle_height	0.4
 	cull_each		false
-    sorted			false
+	sorted			false
 	billboard_type  oriented_self
 
 	emitter Box
@@ -1735,7 +1735,7 @@ particle_system FireSparks2
 	particle_width	0.12
 	particle_height	0.75
 	cull_each		false
-    sorted			false
+	sorted			false
 	billboard_type  oriented_self
 
 	emitter Box
@@ -1780,7 +1780,7 @@ particle_system RainbowSparks1
 	particle_width	0.12
 	particle_height	0.75
 	cull_each		false
-    sorted			false
+	sorted			false
 	billboard_type  oriented_self
 
 	emitter Box
@@ -2476,5 +2476,202 @@ particle_system GreenSlimefallLow
 	affector ColourFader
 	{
 		alpha	-0.20
+	}
+}
+
+//  Aurora
+particle_system Aurora01
+{
+	material			Aurora01
+	quota				50
+	particle_width		1000
+	particle_height		50
+	cull_each			false
+	billboard_type		point
+	sorted				true
+
+	emitter Cylinder
+	{
+		angle	0
+		position	0 0 0
+		direction	0 1 0
+		width	300
+		height	300
+		depth	32  //h
+
+		colour				0.9 0.9 0.9  0.4
+		colour_range_start	0.9 0.9 0.9  0.5
+		colour_range_end	0.9 0.9 0.9  0.5
+
+		emission_rate	1000
+		velocity_min	0.01
+		velocity_max	0.03
+		time_to_live_min	9.3
+		time_to_live_max	12.5
+	}
+
+    affector ColourFader
+    {
+        alpha 0.02
+    }
+    affector Scaler
+    {
+   	    rate 4
+    }
+	affector LinearForce
+	{
+		force_vector	0 0.1 3
+		force_application	add
+	}
+	affector DirectionRandomiser
+	{
+		randomness	4
+	}
+}
+
+particle_system Aurora02
+{
+	material			Aurora02
+	quota				50
+	particle_width		1400
+	particle_height		110
+	cull_each			false
+	billboard_type		point
+	sorted				true
+
+	emitter Cylinder
+	{
+		angle	0
+		position	0 0 0
+		direction	0 1 0
+		width	300
+		height	300
+		depth	32  //h
+
+		colour				0.9 0.9 0.9  0.4
+		colour_range_start	0.9 0.9 0.9  0.5
+		colour_range_end	0.9 0.9 0.9  0.5
+
+		emission_rate	1000
+		velocity_min	0.02
+		velocity_max	0.05
+		time_to_live_min	7.3
+		time_to_live_max	10.5
+	}
+
+    affector ColourFader
+    {
+        alpha 0.01
+    }
+    affector Scaler
+    {
+   	    rate 4
+    }
+	affector LinearForce
+	{
+		force_vector	0 0.1 5
+		force_application	add
+	}
+	affector DirectionRandomiser
+	{
+		randomness	4
+	}
+}
+
+particle_system Aurora03
+{
+	material			Aurora03
+	quota				50
+	particle_width		1200
+	particle_height		100
+	cull_each			false
+	billboard_type		point
+	sorted				true
+
+	emitter Cylinder
+	{
+		angle	0
+		position	0 0 0
+		direction	0 1 0
+		width	300
+		height	300
+		depth	32  //h
+
+		colour				0.9 0.9 0.9  0.4
+		colour_range_start	0.9 0.9 0.9  0.5
+		colour_range_end	0.9 0.9 0.9  0.5
+
+		emission_rate	1000
+		velocity_min	0.01
+		velocity_max	0.03
+		time_to_live_min	9.3
+		time_to_live_max	12.5
+	}
+
+    affector ColourFader
+    {
+        alpha 0.02
+    }
+    affector Scaler
+    {
+   	    rate 4
+    }
+	affector LinearForce
+	{
+		force_vector	3 0.1 1
+		force_application	add
+	}
+	affector DirectionRandomiser
+	{
+		randomness	4
+	}
+}
+
+particle_system Aurora04
+{
+	material			Aurora04
+	quota				50
+	particle_width		1150
+	particle_height		120
+	cull_each			false
+	billboard_type		point
+	sorted				true
+
+	emitter Cylinder
+	{
+		angle	0
+		position	0 0 0
+		direction	0 1 0
+		width	300
+		height	300
+		depth	32  //h
+
+		colour				0.9 0.9 0.9  0.4
+		colour_range_start	0.9 0.9 0.9  0.5
+		colour_range_end	0.9 0.9 0.9  0.5
+
+		emission_rate	1000
+		velocity_min	0.01
+		velocity_max	0.03
+		time_to_live_min	9.3
+		time_to_live_max	12.5
+	}
+
+    affector ColourFader
+    {
+        alpha 0.02
+    }
+    affector Scaler
+    {
+   	    rate 4
+    }
+	affector LinearForce
+	{
+		force_vector	-4 0.1 2
+		force_application	add
+	}
+	affector DirectionRandomiser
+	{
+		randomness	4
 	}
 }

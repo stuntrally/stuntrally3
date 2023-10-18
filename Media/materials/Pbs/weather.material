@@ -88,3 +88,25 @@ hlms FluidJellyFall unlit : Base_particle
 {
 	diffuse_map fluid-jelly-waterfall.png
 }
+
+
+//  Aurora
+hlms Aurora01 unlit : Base_particle
+{
+    diffuse_map aurora01.png
+}
+
+hlms Aurora02 unlit : Base_particle
+{
+    diffuse_map aurora02.png
+}
+
+hlms Aurora03 unlit : Base_particle
+{
+    diffuse_map aurora03.png
+}
+
+hlms Aurora04 unlit : Base_particle
+{
+    diffuse_map aurora04.png
+}
