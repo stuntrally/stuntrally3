@@ -563,6 +563,7 @@
 	<Tag name="NeedRestart">* need restart</Tag>
 	<Tag name="NotDone">not done yet, ToDo</Tag>
 	<Tag name="NeedApply">need Apply</Tag>
+	<Tag name="Ignored">ignored</Tag>
 	<Tag name="GraphicsRightHQ">By default better quality (less Fps) is on right. Marked with + if on left.</Tag>
 	<!--  Screen  vertical synchronisation  -->
 	<Tag name="VSync">VSync</Tag>

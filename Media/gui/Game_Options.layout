@@ -845,7 +845,7 @@
 							<Property key="Alpha" value="0.6"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="32 140 176 24">
-							<Property key="Caption" value="#{FrameSkip}"/>
+							<Property key="Caption" value="#{FrameSkip} ="/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.4 0.8 1"/>
 						</Widget>

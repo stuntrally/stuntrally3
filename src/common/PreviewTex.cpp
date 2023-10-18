@@ -113,9 +113,13 @@ bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8
 				for (int x=0; x < xSize; ++x)
 				{
 					uint8 r = buf[p], g = buf[p+1], b = buf[p+2];
-					r = 255.f * PixelFormatGpuUtils::fromSRGB(r / 255.f);
-					g = 255.f * PixelFormatGpuUtils::fromSRGB(g / 255.f);
-					b = 255.f * PixelFormatGpuUtils::fromSRGB(b / 255.f);
+					// r = 255.f * PixelFormatGpuUtils::fromSRGB(r / 255.f);
+					// g = 255.f * PixelFormatGpuUtils::fromSRGB(g / 255.f);
+					// b = 255.f * PixelFormatGpuUtils::fromSRGB(b / 255.f);
+					// powf( ( x + 0.055f ) / 1.055f, 2.4f ); ^
+					r = 255.f * powf(r / 255.f, 1.9f);  //** par!
+					g = 255.f * powf(g / 255.f, 1.9f);
+					b = 255.f * powf(b / 255.f, 1.9f);
 					buf[p] = r;  buf[p+1] = g;  buf[p+2] = b;
 					p += 4;  // a
 				}
