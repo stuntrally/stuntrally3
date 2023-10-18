@@ -204,3 +204,13 @@ hlms sky/newsky026B pbs : sky_base
 {
     emissive_map  DaySkyHDRI026B_8K-HDR_2.jpg
 }
+
+hlms sky/kloppenheim02_a pbs : sky_base
+{
+    emissive_map  kloppenheim02_a.jpg
+}
+
+hlms sky/kloppenheim02_b pbs : sky_base
+{
+    emissive_map  kloppenheim02_b.jpg
+}
