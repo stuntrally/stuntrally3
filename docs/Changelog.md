@@ -39,7 +39,7 @@ Stunt Rally 3 is continuing last SR 2.x, using latest Ogre-Next 3.0.
   - Terrain circle cursor - same size far/near, animated
   - Grass layer color - can pick any, no ColorMap combo
   - Skydome preview image map shown on Sky tab
-- New **material editor** - Alt-F both in game and editor. Can save json, needs adjusting
+- New **Material Editor** - Alt-F both in game and editor. Can save json, needs adjusting after
 - Moved translations to Weblate
 - What is different, worse, compared to old SR 2.x
   - Video options: Resolution, Vsync, Antialiasing, etc are not on Gui, but in Ogre dialog before start. No LimitFps

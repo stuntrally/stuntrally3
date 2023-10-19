@@ -22,21 +22,21 @@ _Todo:_ means it's not present or not yet fully restored from old SR 2.x
 
 ## Gameplay 🏁
 
-- Simulation modes: Easy (beginner) and Normal
-- 🔨 Simple vehicle damage %
-- 💨 Boost - key to apply rocket boosters to speed up vehicle, works in air and underwater too
-- ⏪ Rewind - hold key to go back in time (after hit or mistake)
 - 🏞️ 223 **Tracks**
-  - in 38 sceneries, great variety from nature based, to alien, space and surreal
+  - in 38 **sceneries**, great variety from nature based, to alien, space and surreal
   - over 8 hours to drive all, just once
+- **Stunt** elements: obstacles, jumps, loops, pipes or very twisted road
+- 🌊 Drives through water or mud areas (safe, won't get stuck)
+- 📦 Dynamic objects on tracks (barrels, boxes, etc), can be hit
 - 🚗 20 **Vehicles**
   - 20 cars (Hyena or Fox are best for rally)
   - few extreme with bigger wheels, or: 3, 6 and 8 wheeled 🚌
   - 2 motorbikes 🏍️
   - 3 hovering spaceships 🚀, 1 bouncy sphere 🔘
-- **Stunt** elements: obstacles, jumps, loops, pipes or very twisted road
-- 🌊 Drives through water or mud areas (safe, won't get stuck)
-- 📦 Dynamic objects on tracks (barrels, boxes, etc), can be hit
+- 💨 Boost - key to apply rocket boosters to speed up vehicle, works in air and underwater too
+- ⏪ Rewind - hold key to go back in time (after hit or mistake)
+- Simulation modes: Easy (beginner) and Normal
+- 🔨 Simple vehicle damage %, doesn't affect driving until 50%
 
 ## Input
 

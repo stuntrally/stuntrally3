@@ -23,10 +23,12 @@ Port and continuation of latest [Stunt Rally](https://github.com/stuntrally/stun
 Already playable game in all modes. Working Track Editor, almost fully restored.  
 Still WIP, not yet released and beta (with bugs).
 
-**Changes and new features** listed on top of [changelog](https://stuntrally.tuxfamily.org/wiki/doku.php?id=changelog).  
-For details see [**Roadmap**](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap#sr_3) with missing features and todo.  
+**Full features** [list here](docs/Features.md).  
 
-Progress posts on [SR forum](https://forum.freegamedev.net/viewtopic.php?f=81&t=18515). Dev questions and answers in Ogre-Next [topic](https://forums.ogre3d.org/viewtopic.php?t=96576).
+**Changes** and new features listed in [changelog](docs/Changelog.md).  
+For details see [Roadmap](docs/Roadmap.md) with missing features and todo.  
+
+Progress posts in [SR forum topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18515). Dev questions and answers in Ogre-Next [topic](https://forums.ogre3d.org/viewtopic.php?t=96576).
 
 ------------------------------------------------------------------------------
 

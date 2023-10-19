@@ -11,7 +11,7 @@ Can be useful if you want to:
 ## ToDo
 
 Many _ToDo:_ tasks are added BTW of topics in this file.  
-Shorter, fast updated list with more is on [Roadmap](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap), also for planning.  
+Shorter, fast updated list with more is on [Roadmap](Roadmap.md), also for planning.  
 More in [Task list](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with good general info (sorted by P (priority), 1 is most important).  
 Lastly there are plenty of `todo:` or `fixme` places marked in sources.
 
@@ -224,7 +224,7 @@ Also has simulation for spaceships, sphere etc, and for `Buoyancy.*`.
 ## Art, tasks
 
 [topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800) - Remove all non CC data, topic, New skies.  
-More todo on [Roadmap](https://stuntrally.tuxfamily.org/wiki/doku.php?id=roadmap).
+More todo on [Roadmap](Roadmap.md).
 
 
 ----
