@@ -32,7 +32,7 @@ Progress posts on [SR forum](https://forum.freegamedev.net/viewtopic.php?f=81&t=
 
 ## Building
 
-How to build (compile) project from sources is described in [Building](https://github.com/stuntrally/stuntrally3/blob/main/Building.md).  
+How to build (compile) project from sources is described in [Building](docs/Building.md).  
 Requires building Ogre-Next and MyGui fork from sources.
 
 ------------------------------------------------------------------------------
@@ -40,11 +40,11 @@ Requires building Ogre-Next and MyGui fork from sources.
 ## Contributing
 
 Help and contributing is welcome.  
-If you'd like to contribute, please check [Contributing](https://github.com/stuntrally/stuntrally/blob/master/Contributing.md).
+If you'd like to contribute, please check [Contributing](docs/Contributing.md).
 
 ## Developing
 
-General info with some details is in [Developing](https://github.com/stuntrally/stuntrally3/blob/main/Developing.md).  
+General info with some details is in [Developing](docs/Developing.md).  
 Sources have emojis, [this file](/src/emojis) has all, with quick components guide etc.
 
 ------------------------------------------------------------------------------
