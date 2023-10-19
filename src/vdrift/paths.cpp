@@ -35,7 +35,7 @@ namespace
 
 
 //  static vars
-string PATHS::ogre_plugin, PATHS::home_dir,
+string /*PATHS::ogre_plugin,*/ PATHS::home_dir,
 	PATHS::user_config, PATHS::game_config,
 	PATHS::user_data, PATHS::game_data,
 	PATHS::cache_dir;
@@ -47,7 +47,7 @@ void PATHS::Init(bool log_paths)
 	typedef vector<fs::path> Paths;
 
 	// Set Ogre plugins dir
-	{
+/*	{
 		ogre_plugin = "";
 		char *plugindir = getenv("OGRE_PLUGIN_DIR");
 		if (plugindir) {
@@ -62,6 +62,7 @@ void PATHS::Init(bool log_paths)
 	}
 	//ogre_plugin = "/usr/lib/x86_64-linux-gnu/OGRE-1.9.0";
 	ogre_plugin = "/usr/local/lib/OGRE";
+*/
 
 	fs::path stuntrally3 = "stuntrally3";
 	// Figure out the user's home directory
@@ -218,7 +219,7 @@ void PATHS::Init(bool log_paths)
 		info.str(string());  // clear, to not have twice
 		info << "Paths info" << endl;
 		info << "-------------" << endl;
-		info << "Ogre plugin-: " << ogre_plugin << endl;
+		// info << "Ogre plugin-: " << ogre_plugin << endl;
 		info << "Data:         " << Data() << endl;
 		info << "ConfigDir:    " << GameConfigDir() << endl;  //?
 		// info << "Home:         " << home_dir << endl;

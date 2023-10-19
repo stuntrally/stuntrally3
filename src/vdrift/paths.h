@@ -11,7 +11,7 @@ typedef std::list <std::string> strlist;
 class PATHS
 {
 private:
-	static std::string ogre_plugin, home_dir;
+	static std::string /*ogre_plugin,*/ home_dir;
 	static std::string user_config, game_config;
 	static std::string user_data, game_data, cache_dir;
 
@@ -19,7 +19,7 @@ public:
 	static void Init(bool log_paths=true);
 	static std::stringstream info;
 
-	static std::string OgrePluginDir() {   return ogre_plugin;  }
+	// static std::string OgrePluginDir() {   return ogre_plugin;  }
 	static std::string HomeDir() {         return home_dir;  }
 
 	static std::string UserConfigDir() {   return user_config;  }

@@ -386,4 +386,5 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 
 	txWarn->setVisible(warn);
 	imgInfo->setVisible(!warn);  imgWarn->setVisible(warn);
+	return tw;
 }
