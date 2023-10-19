@@ -49,7 +49,7 @@ Git [repo](https://github.com/stuntrally/stuntrally3) and [tracks](https://githu
   paint datablock2 clone fix-  
   gpu mem leaks or renders inactive  
 
-New tracks **__ghosts__**, add to champs and challs 🏆  
+New tracks **ghosts**, add to champs and challs 🏆  
 [Horizons](https://stuntrally.tuxfamily.org/mantis/view.php?id=11), add to rest of tracks  
 
 fix and build on `Windows`: blendmap hlsl or any, MyGui CMake .lib, `conan`  

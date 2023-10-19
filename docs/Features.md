@@ -11,7 +11,7 @@ _Todo:_ means it's not present or not yet fully restored from old SR 2.x
     - 👻 Ghost drive (orange) - chase your best time vehicle on track
     - Track's ghost (green) - best drive for track, a green ghost car ES, on all tracks
     - 📽️ Replays - save your drive and watch it from other cameras later
-  - 📐 Tutorials - few short and easy tracks for start, with various track elements
+  - Tutorials - few short and easy tracks for start, with various track elements
   - 🏆 Championships - usually long series of tracks.  
     Easier - Drive to get higher score, if too low repeat a stage.
   - 🥇 Challenges - few tracks, quite difficult to pass, game already set up.  
@@ -28,7 +28,7 @@ _Todo:_ means it's not present or not yet fully restored from old SR 2.x
 - **Stunt** elements: obstacles, jumps, loops, pipes or very twisted road
 - 🌊 Drives through water or mud areas (safe, won't get stuck)
 - 📦 Dynamic objects on tracks (barrels, boxes, etc), can be hit
-- 🚗 20 **Vehicles**
+- 🚗 25 **Vehicles**
   - 20 cars (Hyena or Fox are best for rally)
   - few extreme with bigger wheels, or: 3, 6 and 8 wheeled 🚌
   - 2 motorbikes 🏍️
