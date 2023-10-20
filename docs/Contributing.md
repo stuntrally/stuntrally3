@@ -1,5 +1,6 @@
-
 # Contributing
+
+_How to participate in developing Stunt Rally 3 game or editor._
 
 Help is welcomed.  
 Thank you for all your contributions.
@@ -40,9 +41,9 @@ Tracks are licensed GPLv3 by default.
 ------------------------
 ## Testers
 
-If you found a bug please report it, info [here](https://stuntrally.tuxfamily.org/wiki/doku.php?id=troubleshooting).  
+If you found an unknown bug please report it, info [here](Troubleshooting.md).  
 Even better if you're able to build from sources.  
-If so, then also honest, constructive opinions or suggestions (e.g. about my latest changes) are welcome, on Forum.
+If so, then also honest, constructive opinions or suggestions (e.g. about my latest  change or planned) are welcome, on Forum.
 
 ## Packagers
 
@@ -52,7 +53,7 @@ or know how to improve building from sources (or make it easier).
 ------------------------
 ## Translators
 
-If you want to help translating a language, check Wiki page [Localization](https://stuntrally.tuxfamily.org/wiki/doku.php?id=localization).
+If you want to help translating a language, check Wiki page [Localization](Localization.md).
 
 ------------------------
 ## Sound Artists
@@ -69,3 +70,67 @@ Or can edit vehicles ([topic](https://forum.freegamedev.net/viewtopic.php?f=80&t
 # Donations
 
 Financial support is possible through [CryHam's page](https://cryham.tuxfamily.org/donate/).
+
+------------------------
+.
+------------------------
+
+# Git Workflow 
+
+> Also new data like tracks, objects, textures, sounds etc. aren't done like this.  Just uploaded as attachments on Forum.
+
+This page describes the procedure to get your code (fixes, patches, new features, media etc.) included into Stunt Rally.  
+  This assumes you have already cloned our code and done something with it and now are ready to share your stuff.  
+
+If you don't know what to do, but want to help, check out the repo page [Contributing](https://github.com/stuntrally/stuntrally/blob/master/Contributing.md),  
+[ToDo](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with programming tasks with descriptions (sort by priority P, 1 is critical, higher are less important),  
+and also [[Roadmap for next version(s).
+
+  
+## Prerequisites ##
+
+  * [Git](https://git-scm.com/) version control software
+  * [GitHub](https://github.com/signup/free) account, it's free (our code is hosted there)
+  * Preferably some prior Git knowledge.  There is a lot of Git tutorials on internet.
+
+## Set up Git ##
+
+If this is the first time you use Git, setup your name and email:
+
+```
+$ git config --global user.name "My Name"
+$ git config --global user.email "myemail@example.com"
+```
+
+You also need to generate ssh keys and setup them on GitHub to push there.  
+See how to on [Linux](https://help.github.com/articles/generating-ssh-keys#platform-linux) or [Windows](https://help.github.com/articles/generating-ssh-keys#platform-windows).
+
+  
+## Workflow ##
+
+A simpler way is to make patches, but only for really small things.
+
+Forking is made possible by GitHub and is great for first contributions.  
+In the long run, we probably let you commit directly to our repo, which saves everyone's time.  
+(Preferably in a branch, since CryHam doesn't like surprises, on master).
+
+  - [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) our repository at GitHub (done once)
+  - Clone it (done once)
+  - Develop it (fix, modify or add your new stuff)
+  - Test it.
+  -   If you added new files use `git add`  
+  - Commit your changes: `git commit -a -m "Implemented something"`   (or "Fixed a crash when..", etc.)  
+  - Push the code to GitHub: `git push`
+  - Create a [pull](https://help.github.com/send-pull-requests/) request on GitHub
+  -   Rest.  _(or praise the Lord and pass the ammunition)_
+  - Go back to 3.
+
+> Note: it is likely that work still needs to be done before it will be accepted.  Also, it is possible that it won't be accepted by CryHam at all (if it doesn't fit SR).  Thus, it's best to discuss it before.
+
+If you work on our repo (without fork) points 1 and 8 are gone.
+
+>   An artificial feedback loop appears between 3-4, and sometimes between 5-7 (forgot to add),  
+Point 9 appears randomly between all of others, and imaginary points 0 and 12 start to appear later.  
+And none of this would happen if we had gone fishing.  
+
+Have fun  _(usually between 3 and 4)_.  

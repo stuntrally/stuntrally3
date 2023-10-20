@@ -28,21 +28,24 @@ Still WIP, not yet released and beta (with bugs).
 **Changes** and new features listed in [changelog](docs/Changelog.md).  
 For details see [Roadmap](docs/Roadmap.md) with missing features and todo.  
 
+Updated documentation is now inside [docs/](docs/) dir. It's WIP.
+
 Progress posts in [SR forum topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18515). Dev questions and answers in Ogre-Next [topic](https://forums.ogre3d.org/viewtopic.php?t=96576).
 
 ------------------------------------------------------------------------------
 
 ## Building
 
-How to build (compile) project from sources is described in [Building](docs/Building.md).  
-Requires building Ogre-Next and MyGui fork from sources.
+How to compile project from sources is described in [Building](docs/Building.md).  
+Requires building Ogre-Next and MyGui fork from sources first.
 
 ------------------------------------------------------------------------------
 
 ## Contributing
 
 Help and contributing is welcome.  
-If you'd like to contribute, please check [Contributing](docs/Contributing.md).
+If you'd like to contribute, please check [Contributing](docs/Contributing.md).  
+You can help with [translating](docs/Localization.md), testing, adding or improving content, fixing, developing code etc.
 
 ## Developing
 

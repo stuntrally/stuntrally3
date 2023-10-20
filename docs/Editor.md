@@ -1,4 +1,4 @@
-_Help on using Track Editor._
+_Help on using SR3 Track Editor._
 
 
 ### Introduction
@@ -253,3 +253,31 @@ Save **frequently** (F4), after each step or change. When made a mistake hit F5 
     * enter preview camera and make a track screenshot
     * drive the track, go back to editor and make changes to road / terrain to get the desired diving experience (this is quite important and best to repeat it often, starting early and after each major change)
 
+
+## Steps after
+
+### ini
+
+Filling 📄 `config/tracks.ini` is done by CryHam to have some consistency for all tracks so far.  
+Adding a line to tracks.ini at end, with your track's name (put it in original tracks/ dir) will show difficulty ratings, time, etc on Gui tab Track.  
+See inside [tracks.ini](../config/tracks.ini) for more info about syntax and values.  
+Each rating is manually set by feeling and should be checked with other tracks to fit rest well.  
+
+### Track's Ghost
+
+How to add Track's Ghost🏞️👻 drive to your new track.  
+This will also show racing line (trail) and few more pacenotes (bumps etc).
+
+  1. Be sure you didn't drive ES yet (well or faster) on this track. Or just delete your older ghost for it.
+  2. Start game, use Rewind: Back in time.
+  3. Use car: ES and Simulation: Normal.
+  4. Drive smoothly, as perfectly as you can, always on road, with no hits.  
+     Drive 1 lap from start to finish, not using boost unless impossible otherwise (or some underwater).
+  5. Copy user's ghost (named by your track and `_ES.rpl`) from:  
+     `~/.local/share/stuntrally3/ghosts/normal/` into:
+     `/Media/ghosts/original`.
+  6. Start convert tool, run: `./stuntrally3 convert`
+  7. This will result in new file in `/Media/ghosts` and be visible in game now.
+  8. After this, better track time will be known.  
+     Adjust last value `T=` in `tracks.ini` so that it gives about 12 points for this ES ghost drive.  
+     Add extra seconds 2..7 for difficult tracks for user rewinds and mistakes.
