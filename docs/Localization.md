@@ -104,7 +104,7 @@ translations have been updated and you can now check them (after pull).
 
 We use gettext's .po and .pot files for web translations, it is a very popular text format.
 
-All strings in Stunt Rally 3 are in **the xml file** Media/gui/core_language_en_tag.xml.  
+All strings in Stunt Rally 3 are in **[the _en.xml file](../Media/gui/core_language_en_tag.xml)**.  
 Used by MyGUI's own translation system.  
 
 This file is edited manually, each new string is added there.  
@@ -112,7 +112,7 @@ It also has xml comments with group names,
 which then show up as Develeoper comment on web (as #. in .pot file).
 
 A C++ program (src/transl/main.cpp) generates sr.pot templates file from the xml file.  
-//It also searches for string references in sources and Gui layouts, also getting widgets hierarchy.//
+_It also searches for string references in sources and Gui layouts, also getting widgets hierarchy._
 
 Web translation gives translated .po files back, which are then converted to  
 MyGUI's translations (other languages *_tag.xml)  

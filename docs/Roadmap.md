@@ -100,7 +100,7 @@ sim new poses _interpolation_?
 🔊 **Ambient** [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
 🚗🔊 More car **sounds**.. todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7)  
 ⛅🌳 Remove all non **CC** data, [topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800), New skies  
-🛣️ Road: wall types, spline walls ](https://stuntrally.tuxfamily.org/mantis/view.php?id=6[link)  
+🛣️ Road: wall types, spline walls [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)  
 
 🕹️ new **Game** elements:  
 teleporters, moving & rotating obstacles, elevators  
