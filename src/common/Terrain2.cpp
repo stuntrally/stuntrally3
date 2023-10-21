@@ -55,8 +55,8 @@ void CScene::CreateTerrain1(int n)
 
 	//  triplanar  ----
 	const auto& td = sc->tds[n];
-	bool terTripl = td.triplCnt > 0 &&  n <= app->pSet->tripl_horiz;  // 0 ter, 1 horiz, 2
-	int tex_tripl = app->pSet->ter_tripl;  // off, diff, norm
+	bool terTripl = td.triplCnt > 0 &&  n <= app->pSet->g.tripl_horiz;  // 0 ter, 1 horiz, 2
+	int tex_tripl = app->pSet->g.ter_tripl;  // off, diff, norm
 	bool bTripl = tex_tripl > 0 && terTripl;
 	LogO("C--T Terrain tripl layers: " + toStr(td.triplCnt)+" ter: "+toStr(terTripl)+" tex: "+toStr(tex_tripl));
 

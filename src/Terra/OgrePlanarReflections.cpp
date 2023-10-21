@@ -481,7 +481,7 @@ namespace Ogre
             mAnyPendingFlushRenderable = false;
         }
 
-    // #define MANUAL_SKIP  //** todo
+    // #define MANUAL_SKIP  //** todo  -----------------
     #ifdef MANUAL_SKIP
         bool update = 0;  //**  skip
         static uint skip = 100;
@@ -688,8 +688,8 @@ namespace Ogre
         Real nearPlane = camera->getNearClipDistance();
         // Real farPlane = camera->getFarClipDistance();
         //**  quality options
-        Real farPlane = pSet->water_dist; //par, todo sky=
-        Real lodBias = pSet->water_lod;
+        Real farPlane = pSet->g.water_dist; //par, todo sky=
+        Real lodBias = pSet->g.water_lod;
         Real focalLength = camera->getFocalLength();
         Radian fov = camera->getFOVy();
 

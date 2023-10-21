@@ -273,7 +273,7 @@ void CScene::CreateTrees()
 
 				//  how far visible  // todo: * norm scale, aabb?
 				Real dist =  /*rare far*/ i % 3 == 0 ? veg->farDist : veg->visDist;
-				item->setRenderingDistance( dist * pSet->trees_dist );
+				item->setRenderingDistance( dist * pSet->g.trees_dist );
 				vegetItems.push_back(item);
 
 			#if 0  //  marker | test

@@ -162,7 +162,7 @@ void FluidsReflect::CreateRTT()
 		mPlanarRefl = new PlanarReflections(
 			app->pSet, app->mSceneMgr, root->getCompositorManager2(),
 			500.0, 0 );  // par-?
-		uint32 size = app->pSet->GetTexSize(app->pSet->water_reflect);
+		uint32 size = app->pSet->GetTexSize(app->pSet->g.water_reflect);
 
 		mPlanarRefl->setMaxActiveActors( all,
 			"PlanarReflections",
@@ -201,7 +201,7 @@ void FluidsReflect::CreateFluids()
 	app->UpdFluidBox();
 #endif
 
-	bool reflect = app->pSet->water_reflect;
+	bool reflect = app->pSet->g.water_reflect;
 	
 	for (int i=0; i < sc->fluids.size(); ++i)
 	{

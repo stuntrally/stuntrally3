@@ -246,7 +246,7 @@ void App::update( float dt )
 				{
 					roadUpdTm = 0.f;
 					for (auto r : scn->roads)
-						r->UpdLodVis(pSet->road_dist);
+						r->UpdLodVis(pSet->g.road_dist);
 					
 					//  trail upd lods
 					if (scn->trail && pSet->trail_show && !bHideHudTrail)

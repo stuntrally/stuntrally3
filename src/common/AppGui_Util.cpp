@@ -80,7 +80,7 @@ void AppGui::SetTexWrap(Item* it, bool wrap)
 void AppGui::InitTexFilters(HlmsSamplerblock* sb, bool wrap)
 {
 	FilterOptions mia, mip;
-	switch (pSet->tex_filt)
+	switch (pSet->g.tex_filt)
 	{
 	case 3:  mia = FO_ANISOTROPIC;  mip = FO_ANISOTROPIC;  break;  // full anisotropic
 	case 2:  mia = FO_ANISOTROPIC;  mip = FO_LINEAR;  break;  // anisotropic
@@ -90,7 +90,7 @@ void AppGui::InitTexFilters(HlmsSamplerblock* sb, bool wrap)
 	sb->mMinFilter = mia;  sb->mMagFilter = mia;
 	sb->mMipFilter = mip;
 
-	sb->mMaxAnisotropy = pSet->anisotropy;
+	sb->mMaxAnisotropy = pSet->g.anisotropy;
 
 	auto w = wrap ? TAM_WRAP : TAM_CLAMP;
 	sb->mU = w;  sb->mV = w;  sb->mW = w;

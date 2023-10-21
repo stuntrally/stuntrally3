@@ -923,7 +923,7 @@ void App::CreateRoads()
 
 	if (dstTrk)
 	{
-		road->bCastShadow = pSet->shadow_type >= Sh_Depth;
+		road->bCastShadow = pSet->g.shadow_type >= Sh_Depth;
 		road->bRoadWFullCol = pSet->gui.collis_roadw;
 
 		for (auto r : scn->roads)

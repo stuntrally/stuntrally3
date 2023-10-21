@@ -71,13 +71,13 @@ void AppGui::createPcfShadowNode()
 
 	//  light 1, directional
 	const uint32
-		size1 = pSet->GetTexSize(pSet->shadow_size),
+		size1 = pSet->GetTexSize(pSet->g.shadow_size),
 		size2 = size1 / 2u;  // par /?
 	// SHADOWMAP_FOCUSED, SHADOWMAP_PLANEOPTIMAL,  // for 1
-	sp.technique = pSet->shadow_count > 1 ?
+	sp.technique = pSet->g.shadow_count > 1 ?
 		SHADOWMAP_PSSM : SHADOWMAP_FOCUSED;
 	sp.numPssmSplits = std::min(4, std::max(2,
-		pSet->shadow_count ));
+		pSet->g.shadow_count ));
 
 	sp.resolution[0].x = size1;  sp.resolution[0].y = size1;
 	for( size_t i = 1u; i < 4u; ++i )
@@ -92,7 +92,7 @@ void AppGui::createPcfShadowNode()
 	spv.push_back( sp );
 
 
-	if (pSet->car_lights)  // or >1 sun planets..
+	if (pSet->g.car_lights)  // or >1 sun planets..
 	{
 		//  light 2  dir, spot or point
 	#ifdef USE_STATIC_BRANCHING_FOR_SHADOWMAP_LIGHTS
@@ -149,8 +149,8 @@ void AppGui::createPcfShadowNode()
 		RQG_Sky,  //0u,     // firstRq = 0u,
 		RQG_PipeGlass  //255u    // lastRq = 255u
 	);
-	mSceneMgr->setShadowDirectionalLightExtrusionDistance( pSet->shadow_dist );
-	mSceneMgr->setShadowFarDistance( pSet->shadow_dist );
+	mSceneMgr->setShadowDirectionalLightExtrusionDistance( pSet->g.shadow_dist );
+	mSceneMgr->setShadowFarDistance( pSet->g.shadow_dist );
 	// HlmsDatablock::mShadowConstantBias.
 }
 
@@ -166,11 +166,11 @@ void AppGui::createEsmShadowNodes()
 	silent_memset( &sp, 0, sizeof( sp ) );
 
 	const uint32
-		size1 = pSet->GetTexSize(pSet->shadow_size), size2 = size1 / 2u;  // par /?
+		size1 = pSet->GetTexSize(pSet->g.shadow_size), size2 = size1 / 2u;  // par /?
 	// SHADOWMAP_PLANEOPTIMAL,  // for 1?
 	// SHADOWMAP_FOCUSED,
 	sp.technique = SHADOWMAP_PSSM;
-	sp.numPssmSplits = std::min(4, std::max(2, pSet->shadow_count )); // 3u;
+	sp.numPssmSplits = std::min(4, std::max(2, pSet->g.shadow_count )); // 3u;
 
 	//  light 1  directional
 	sp.technique = SHADOWMAP_PSSM;

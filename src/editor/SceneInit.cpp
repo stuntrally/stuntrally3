@@ -125,8 +125,8 @@ void App::createScene01()  // once, init
 	//  🎥 camera
 	asp = float(mWindow->getWidth()) / float(mWindow->getHeight());
 	mCamera->setNearClipDistance(0.1f);
-	mCamera->setFarClipDistance(pSet->view_distance);
-	mCamera->setLodBias(pSet->lod_bias);
+	mCamera->setFarClipDistance(pSet->g.view_distance);
+	mCamera->setLodBias(pSet->g.lod_bias);
 
 	//  set last cam pos
 	mCamera->setPosition(Vector3(pSet->cam_x, pSet->cam_y, pSet->cam_z));

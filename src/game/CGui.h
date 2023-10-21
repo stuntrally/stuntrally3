@@ -58,7 +58,6 @@ public:
 	bool bGI = 0;  // gui inited  set values
 	void InitGui(), GuiUpdate();
 	void InitGuiCar(), InitGuiChamps();
-	void UpdGuiAfterPreset();
 
 	Txt valTrkNet =0;
 	std::vector<Tab> vSubTabsGame, vSubTabsOpts, vSubTabsMat;

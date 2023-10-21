@@ -57,7 +57,7 @@ void Grass::Create(App* app1)
 	const Real tws = sc->tds[0].fTerWorldSize, hws = tws * 0.5f;  //par-
 	const Real mrg = 0.98f;
 
-	const Real fGrass = pSet->grass * sc->densGrass * 3.0f;  // std::min(pSet->grass, 
+	const Real fGrass = pSet->g.grass * sc->densGrass * 3.0f;  // std::min(pSet->grass, 
 	#ifdef SR_EDITOR
 	const Real fTrees = pSet->gui.trees * sc->densTrees;
 	#else
@@ -126,11 +126,12 @@ void Grass::Create(App* app1)
 						xn >=  mrg || zn >=  mrg)
 						continue;  // outside ter
 
+					//  todo: grass density RTT, channels in rgba, image read not this..
 					//  ter ang
 					Real at = terrain->getAngle(xw, zw, 1.f);
-					if (at < ch->angMin - ch->angSm/2.f || at > ch->angMax + ch->angSm/2.f)
+					if (at < ch->angMin - ch->angSm/2.f)  // || at > ch->angMax + ch->angSm/2.f)
 						continue;  // todo smooth ..
-					//  ter h
+										//  ter h
 					Real h = terrain->getHeight(xw, zw);  // /2 par..
 					if (h < ch->hMin - ch->hSm/2.f || h > ch->hMax + ch->hSm)  // linRange-
 						continue;
@@ -198,7 +199,7 @@ void Grass::Create(App* app1)
 						db->setDiffuse(gr->color.GetRGB());
 					
 					gd.node->setPosition(Vector3(xp, yp, zp));
-					gd.it->setRenderingDistance( 100.f * pSet->grass_dist );  //par
+					gd.it->setRenderingDistance( 100.f * pSet->g.grass_dist );  //par
 					gds.push_back(gd);  ++all;
 				}
 			}	// pages

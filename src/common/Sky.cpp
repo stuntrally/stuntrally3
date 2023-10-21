@@ -63,8 +63,9 @@ void CScene::CreateSun()
 	auto *mgr = app->mSceneMgr;
 	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 
-	if (app->pSet->car_lights)  // for more lights  //** higher CPU use, bad for debug
-		mgr->setForwardClustered( true, 16, 8, 24, 4, 0, 2, 2, 50 );
+	//  More Lights  //** higher CPU use, bad for debug
+	if (app->pSet->g.car_lights)
+		mgr->setForwardClustered( true, 16, 8, 24, 4, 0, 2, 2, 50 );  //par?
 	else
 		mgr->setForwardClustered( false, 16, 8, 24, 4, 0, 2, 2, 50 );
 
@@ -177,7 +178,7 @@ void CScene::UpdFog(bool on, bool off)
 void CScene::UpdSkyScale()
 {
 	const float sc[SK_ALL] =
-	{  app->pSet->view_distance, app->pSet->refl_dist, app->pSet->water_dist };
+	{  app->pSet->g.view_distance, app->pSet->g.refl_dist, app->pSet->g.water_dist };
 
 	for (int i=0; i < SK_ALL; ++i)
 	if (ndSky[i])
@@ -262,7 +263,7 @@ void CScene::CreateSkyDome(String sMater, float yaw)
 	HlmsSamplerblock sampler;
 	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
 	sampler.mMipFilter = FO_LINEAR; //?FO_ANISOTROPIC;
-	sampler.mMaxAnisotropy = app->pSet->anisotropy;
+	sampler.mMaxAnisotropy = app->pSet->g.anisotropy;
 	auto w = TAM_MIRROR;
 	sampler.mU = w;  sampler.mV = w;  sampler.mW = w;
 
@@ -306,7 +307,7 @@ void CScene::UpdSun(float dt)
 	Vector3 dir = SplineRoad::GetRot(sc->ldYaw - sc->skyYaw, -sc->ldPitch);
 	// sun->setDiffuseColour( 0.0, 1.0, 0.0);
 	// sun->setSpecularColour(0.0, 0.0, 1.0);
-	if (atmo)
+	if (atmo)  // todo: drop..
 	{	atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
 		atmo->setLight(sun);
 	}

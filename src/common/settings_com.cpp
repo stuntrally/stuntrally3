@@ -29,45 +29,46 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	// Param(c,w, "video.limit_fps_val", limit_fps_val);	Param(c,w, "video.limit_sleep", limit_sleep);
 
 
-	//  📊 graphics  ----
+	//  📊 graphics  --------
 	Param(c,w, "graph_detail.preset", preset);
 	
-	//  textures
-	Param(c,w, "graph_detail.anisotropy", anisotropy);		Param(c,w, "graph_detail.tex_filter", tex_filt);
-	Param(c,w, "graph_detail.ter_tripl", ter_tripl);		// Param(c,w, "graph_detail.ter_mtr", ter_mtr);
-	Param(c,w, "graph_detail.tripl_horiz", tripl_horiz);
+	//  🖼️ textures
+	Param(c,w, "graph_detail.anisotropy", g.anisotropy);	Param(c,w, "graph_detail.tex_filter", g.tex_filt);
 	
-	//  detail
-	Param(c,w, "graph_detail.view_dist", view_distance);
-	Param(c,w, "graph_detail.lod_bias", lod_bias);
-	Param(c,w, "graph_detail.ter_detail", ter_detail);		Param(c,w, "graph_detail.road_dist", road_dist);
-	Param(c,w, "graph_detail.horizons", horizons);
+	//  geom detail
+	Param(c,w, "graph_detail.view_dist", g.view_distance);
+	Param(c,w, "graph_detail.lod_bias", g.lod_bias);		Param(c,w, "graph_detail.road_dist", g.road_dist);
+
+	//  ⛰️ terrain
+	Param(c,w, "graph_detail.ter_tripl", g.ter_tripl);		Param(c,w, "graph_detail.tripl_horiz", g.tripl_horiz);
+	Param(c,w, "graph_detail.horizons", g.horizons);
+	Param(c,w, "graph_detail.ter_lod", g.ter_lod);			Param(c,w, "graph_detail.horiz_lod", g.horiz_lod);		
 	
+	//  🌳🪨🌿 veget
+	Param(c,w, "graph_veget.grass", g.grass);				// graph_veget.trees later in settings
+	Param(c,w, "graph_veget.trees_dist", g.trees_dist);		Param(c,w, "graph_veget.grass_dist", g.grass_dist);
+
 	//  🌒 shadow
-	Param(c,w, "graph_shadow.dist", shadow_dist);			Param(c,w, "graph_shadow.size", shadow_size);
-	Param(c,w, "graph_shadow.count", shadow_count);			Param(c,w, "graph_shadow.type", shadow_type);
-	Param(c,w, "graph_shadow.filter", shadow_filter);
+	Param(c,w, "graph_shadow.size", g.shadow_size);
+	Param(c,w, "graph_shadow.count", g.shadow_count);		Param(c,w, "graph_shadow.type", g.shadow_type);
+	Param(c,w, "graph_shadow.dist", g.shadow_dist);			Param(c,w, "graph_shadow.filter", g.shadow_filter);
 	
 	//  💡 lights
-	Param(c,w, "graph_lights.car", car_lights);		Param(c,w, "graph_lights.car_shadows", car_light_shadows);
-
-	//  🌳🪨🌿 veget
-	Param(c,w, "graph_veget.grass", grass);
-	Param(c,w, "graph_veget.trees_dist", trees_dist);		Param(c,w, "graph_veget.grass_dist", grass_dist);
-
-	//  🔮 reflections
-	Param(c,w, "graph_reflect.skip_frames", refl_skip);		Param(c,w, "graph_reflect.faces_once", refl_faces);
-	Param(c,w, "graph_reflect.map_size", refl_size);		Param(c,w, "graph_reflect.dist", refl_dist);
-	Param(c,w, "graph_reflect.lod", refl_lod);				Param(c,w, "graph_reflect.ibl", refl_ibl);
-	Param(c,w, "graph_reflect.mode", refl_mode);
+	Param(c,w, "graph_lights.car", g.car_lights);			Param(c,w, "graph_lights.car_shadows", g.car_light_shadows);
 
 	//  🌊 water
-	Param(c,w, "graph_water.reflect", water_reflect);	Param(c,w, "graph_water.refract", water_refract);
-	Param(c,w, "graph_water.map_size", water_size);		Param(c,w, "graph_water.skip_frames", water_skip);
-	Param(c,w, "graph_water.lod", water_lod);			Param(c,w, "graph_water.water_dist", water_dist);
+	Param(c,w, "graph_water.map_size", g.water_size);		//Param(c,w, "graph_water.skip_frames", g.water_skip);  // todo
+	Param(c,w, "graph_water.reflect", g.water_reflect);		Param(c,w, "graph_water.refract", g.water_refract);
+	Param(c,w, "graph_water.water_dist", g.water_dist);		Param(c,w, "graph_water.lod", g.water_lod);
+
+	//  🔮 reflections
+	Param(c,w, "graph_reflect.map_size", g.refl_size);		
+	Param(c,w, "graph_reflect.skip_frames", g.refl_skip);	Param(c,w, "graph_reflect.faces_once", g.refl_faces);
+	Param(c,w, "graph_reflect.dist", g.refl_dist);			Param(c,w, "graph_reflect.lod", g.refl_lod);
+	Param(c,w, "graph_reflect.ibl", g.refl_ibl);			// Param(c,w, "graph_reflect.mode", g.refl_mode);
 
 
-	//  📈 fps
+	//  📈 fps  ----
 	Param(c,w, "tweak.fps", fps_bar);
 	//  🚦 pacenotes
 	Param(c,w, "pacenotes.dist", pace_dist);		Param(c,w, "pacenotes.alpha", pace_alpha);

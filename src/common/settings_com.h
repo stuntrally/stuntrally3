@@ -43,35 +43,43 @@ public:
 	//  📊 Graphics  ----
 	int preset = 4;  // last set, info only
 
-	//  🖼️ textures filtering
-	int anisotropy = 4, tex_filt = 2;
-	int ter_tripl = 1, tripl_horiz = 0;  // terrain  // ⛰️
+	//!  Any change or order needs Update in:  Detail presets
+	struct Detail
+	{
+		//  🖼️ textures filtering  2x
+		int anisotropy = 4;
+		int tex_filt = 2;
 
-	//  geom detail
-	float view_distance = 60000.f;
-	float lod_bias = 1.f, road_dist = 2.f;
-	int ter_detail = 2;
-	int horizons = 3;
+		//  geom detail  3x
+		float view_distance = 60000.f;
+		float lod_bias = 1.f, road_dist = 2.f;  // 📦🪨 🛣️
 
-	//  🌳🪨🌿 veget
-	float grass =1.f, trees_dist =1.f, grass_dist =1.f;  // trees in gui.
+		//  ⛰️ terrain  5x
+		int ter_tripl = 1, tripl_horiz = 0;
+		int horizons = 3;
+		int ter_lod = 2, horiz_lod = 2;
 
-	//  🌒 shadow
-	int shadow_size = 2, shadow_count = 3, shadow_type = Sh_Depth;
-	float shadow_dist = 1000.f;  int shadow_filter = 1;
-	//  💡 lights
-	bool car_lights =0, car_light_shadows =0;
+		//  🌳🪨🌿 veget  4x
+		float trees = 1.5f;  // only for presets [] arrays
+		float grass = 1.f, trees_dist = 1.f, grass_dist = 1.f;  //! trees in gui. set for mplr
 
-	//  🌊 water
-	bool water_reflect =0, water_refract =0;
-	int water_size = 1, water_skip = 1;
-	float water_lod = 0.3f, water_dist = 60000.f;  //-
+		//  🌒 shadow  5x
+		int shadow_size = 2, shadow_count = 3, shadow_type = Sh_Depth;
+		float shadow_dist = 600.f;  int shadow_filter = 1;
 
-	//  🔮 reflections
-	int refl_skip = 2, refl_faces = 2, refl_size = 0, refl_ibl = 32;
-	float refl_dist = 60000.f, refl_lod = 1.f;
-	int refl_mode;  // 0 static, 1 single, 2 full
+		//  💡 lights  2x
+		bool car_lights =0, car_light_shadows =0;
 
+		//  🌊 water  5x
+		int water_size = 1;  //, water_skip = 1;  // todo
+		bool water_reflect =0, water_refract =0;
+		float water_dist = 2000.f, water_lod = 0.3f;  //-
+
+		//  🔮 reflections  6x
+		int refl_size = 1, refl_skip = 0, refl_faces = 2;
+		float refl_dist = 500.f, refl_lod = 0.4f;  int refl_ibl = 2;
+		// int refl_mode = 1;  // todo: 0 static, 1 single, 2 full
+	} g;
 
 	//  📰🔻 Tracks list  ----
 	//  view, sort column, filter on

@@ -56,9 +56,9 @@ CompositorWorkspace* AppGui::SetupCompositor()
 
 
 	//  🌒 shadows
-	bool esm = pSet->shadow_type == 2;
+	bool esm = pSet->g.shadow_type == 2;
 	static bool first =	true;
-	if (first && pSet->shadow_type > 0)
+	if (first && pSet->g.shadow_type > 0)
 	{
 		if (esm)  setupESM();
 		createPcfShadowNode();
@@ -110,7 +110,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	assert( dynamic_cast<CompositorPassSceneDef *>(passes[is]) );
 	CompositorPassSceneDef* ps = static_cast<CompositorPassSceneDef *>(passes[is]);
 	
-	switch (pSet->shadow_type)
+	switch (pSet->g.shadow_type)
 	{
 	case 0:  break;  // none
 	case 1:  ps->mShadowNode = "ShadowMapFromCodeShadowNode";  break;
@@ -175,7 +175,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	}
 
 #ifndef SR_EDITOR
-	//  👥 splitscreen   ---- ---- ---- ----
+	//  👥 Split Screen   ---- ---- ---- ----
 	//.....................................................................................
 	else if (views > 1)
 	{
@@ -208,7 +208,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		return mWorkspaces[0];
 	}
 #endif
-	else  // 🖥️ single view
+	else  // 🖥️ Single View
 	//.....................................................................................
 	{
 		auto c = CreateCamera( "Player", 0, Vector3(0,150,0), Vector3(0,0,0) );
@@ -227,12 +227,15 @@ CompositorWorkspace* AppGui::SetupCompositor()
 }
 
 
-//  💥🎥 destroy camera
+//  💥🎥 Destroy Camera
 void AppGui::DestroyCameras()
 {
 	LogO("D### destroy Cameras");
-	// for (auto cam : mCameras)
-		// mSceneMgr->destroyCamera(cam);
+	for (auto cam : mCams)
+	{
+		if (cam.nd)  mSceneMgr->destroySceneNode(cam.nd);  cam.nd = 0;
+		if (cam.cam)  mSceneMgr->destroyCamera(cam.cam);
+	}
 	// mSceneMgr->destroyAllCameras();
 	mCams.clear();  // for game, not all
 }
@@ -245,7 +248,7 @@ Cam* AppGui::findCam(String name)
 	return 0;
 }
 
-//  🆕🎥 create camera
+//  🆕🎥 Create Camera
 //--------------------------------------------------------------------------------
 Cam* AppGui::CreateCamera(String name,
 	SceneNode* nd, Vector3 pos, Vector3 lookAt)
@@ -272,9 +275,9 @@ Cam* AppGui::CreateCamera(String name,
 	cam->setPosition( pos );
 	cam->lookAt( lookAt );
 	cam->setNearClipDistance( 0.1f );
-	cam->setFarClipDistance( pSet->view_distance );
+	cam->setFarClipDistance( pSet->g.view_distance );
 	cam->setAutoAspectRatio( true );
-	cam->setLodBias( pSet->lod_bias );
+	cam->setLodBias( pSet->g.lod_bias );
 
 #ifdef USEnodes
 	cam->detachFromParent();

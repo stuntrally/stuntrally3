@@ -95,7 +95,7 @@ void App::UpdateKey(float dt)
 	static bool bSelChngOld = false;
 	if (road)
 	{
-		road->fLodBias = pSet->road_dist;  // after rebuild
+		road->fLodBias = pSet->g.road_dist;  // after rebuild
 
 		if (bSelChngOld && !road->bSelChng)
 			road->Rebuild(true);
@@ -109,7 +109,7 @@ void App::UpdateKey(float dt)
 	if (road && ti >= dti)
 	{	ti = 0;
 
-		Real dist = pSet->road_dist, dist2 = 600*600; //par
+		Real dist = pSet->g.road_dist, dist2 = 600*600; //par
 		bool prv = edMode == ED_PrvCam, ed = edMode == ED_Road && !bMoveCam;
 
 		int i = 0;

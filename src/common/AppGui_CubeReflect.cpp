@@ -50,7 +50,7 @@ void AppGui::CreateCubeReflect()
 		TextureTypes::TypeCube );
 	mCubeReflTex->scheduleTransitionTo( GpuResidency::OnStorage );
 
-	uint32 size = cTexSizes[pSet->refl_size];  // from set
+	uint32 size = cTexSizes[pSet->g.refl_size];  // from set
 	mCubeReflTex->setResolution( size, size );
 
 	int mips = PixelFormatGpuUtils::getMaxMipmapCount( size );
@@ -90,8 +90,8 @@ void AppGui::CreateCubeReflect()
 
 	//  📊 graphics params 1 :
 	// mCubeCamera->setFarClipDistance( pSet->view_distance );
-	mCubeCamera->setFarClipDistance( pSet->refl_dist );  // todo: 2nd sky!
-	mCubeCamera->setLodBias( pSet->refl_lod );  // par..
+	mCubeCamera->setFarClipDistance( pSet->g.refl_dist );  // todo: 2nd sky!
+	mCubeCamera->setLodBias( pSet->g.refl_lod );  // par..
 	// mCubeCamera->setShadowRenderingDistance( 300 );  // par ?-
 	// mCubeCamera->setCastShadows(true);
 
@@ -112,7 +112,7 @@ void AppGui::CreateCubeReflect()
 	
 	//  📊 graphics params 2 :
 	iblPassDef->mForceMipmapFallback = lowest; //mIblQuality == MipmapsLowest;  // todo: par?
-	float ibl = 1u << size_t(pSet->refl_ibl);
+	float ibl = 1u << size_t(pSet->g.refl_ibl);
 	LogO("IBL: "+fToStr(ibl));
 	iblPassDef->mSamplesPerIteration = ibl;  // mIblQuality == IblLow ? 32.0f : 128.0f;
 	iblPassDef->mSamplesSingleIterationFallback = iblPassDef->mSamplesPerIteration;
@@ -163,7 +163,7 @@ void AppGui::UpdCubeRefl()
 	if (iReflStart < 4)  return;  //? crash in cullPhase01 w/o
 
 	//  skip whole update
-	if (iReflSkip++ < pSet->refl_skip)
+	if (iReflSkip++ < pSet->g.refl_skip)
 		return;
 	iReflSkip = 0;
 
@@ -180,10 +180,10 @@ void AppGui::UpdCubeRefl()
 		++iFace;
 	};
 
-	if (pSet->refl_faces == 6)
+	if (pSet->g.refl_faces == 6)
 		wsCubeRefl->setExecutionMask( 0xFF );
 	else
-	{	for (int i=0; i < pSet->refl_faces; ++i)
+	{	for (int i=0; i < pSet->g.refl_faces; ++i)
 			addFace();
 		wsCubeRefl->setExecutionMask(mask);
 	}

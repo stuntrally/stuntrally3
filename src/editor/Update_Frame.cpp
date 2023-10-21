@@ -242,7 +242,7 @@ void App::UpdateEnd(float dt)
 
 		for (SplineRoad* road : scn->roads)
 		{
-			road->bCastShadow = pSet->shadow_type >= Sh_Depth;
+			road->bCastShadow = pSet->g.shadow_type >= Sh_Depth;
 			bool fu = road->RebuildRoadInt();
 			if (fu)
 				scn->grid.Create();
