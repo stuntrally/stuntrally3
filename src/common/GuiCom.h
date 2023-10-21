@@ -74,44 +74,50 @@ public:
 
 	//  📈 Fps
 	SlV(Fps);  Txt txFpsInfo =0;  void nextFps();
-	const static int FPS_Modes = 4;
+	constexpr static int FPS_Modes = 4;
 
 	///  📊 Graphics  --------------------------
-
-	//  textures
-	SlV(Anisotropy);
-	void comboTexFilter(CMB), cmbAntiAliasing(CMB);
-	SV svTerTripl, svTriplHoriz;
-	void btnShadersApply(WP);
-
-	//  geom detail
-	SlV(ViewDist);  SlV(LodBias);
-	SlV(TerDetail);  SV svRoadDist, svHorizons;
-
-	//  🌳🪨🌿 veget
-	SV svTrees, svGrass, svTreesDist, svGrassDist;
-	void btnVegetReset(WP), btnVegetApply(WP);
-
-	//  🌒 shadow
-	SV svShadowType, svShadowCount, svShadowSize, svShadowDist;
-	void btnShadowsApply(WP);
-
-	//  💡 lights
-	Ck ckCarLights, ckCarLightsShadows;
-
-	//  🔮 reflection
-	SV svReflSkip, svReflFaces, svReflSize;
-	SlV(ReflDist);  SlV(ReflMode);  SlV(ReflIbl);  SlV(ReflLod);
-	void btnReflApply(WP);
-
-	//  🌊 water
-	Ck ckWaterReflect, ckWaterRefract;  void chkWater(Ck*);
-	SlV(WaterSize);  SlV(WaterDist);  SlV(WaterLod);  SlV(WaterSkip);
-	void btnWaterApply(WP);
+	// Cmb cbAntiAlias =0;  void cmbAntiAlias(CMB);
 
 	// Ck ckLimitFps;
 	// SV svLimitFps,svLimitSleep;
-	
+
+	//----  same as SETcom struct Detail
+	//{
+		//  🖼️ textures
+		SlV(Anisotropy);
+		Cmb cbTexFilter =0;  void cmbTexFilter(CMB);
+		
+		//  geom detail 📦🪨 🛣️
+		SlV(ViewDist);
+		SlV(LodBias);  SV svRoadDist;
+
+		//  ⛰️ terrain
+		SV svTerTripl, svTriplHoriz;
+		SV svHorizons;
+		SlV(TerLod);  SV svHorizLod;
+
+		//  🌳🪨🌿 veget
+		SV svTrees, svGrass, svTreesDist, svGrassDist;
+		void btnVegetReset(WP), btnVegetApply(WP);
+
+		//  🌒 shadow
+		SV svShadowSize, svShadowCount, svShadowType;
+		SV svShadowDist;  SV svShadowFilter;  void btnShadowsApply(WP);
+		//  💡 lights
+		Ck ckCarLights, ckCarLightsShadows;
+
+		//  🌊 water
+		SlV(WaterSize);  //SlV(WaterSkip);
+		Ck ckWaterReflect, ckWaterRefract;  void chkWater(Ck*);
+		SlV(WaterDist);  SlV(WaterLod);	 void btnWaterApply(WP);
+
+		//  🔮 reflection
+		SV svReflSize, svReflSkip, svReflFaces;
+		SlV(ReflDist);  SlV(ReflLod);  //SlV(ReflMode);
+		SlV(ReflIbl);  void btnReflApply(WP);
+	//}
+	//----
 
 	//  track path 
 	Ogre::String pathTrk[2];    // 0 read only  1 //U user paths for save
@@ -204,9 +210,9 @@ public:
 	Cmb resList =0;
 	void InitGuiScreenRes(), ResizeOptWnd();
 
-	CK(VidFullscr);  CK(VidVSync);
-	void btnResChng(WP);
-	void comboGraphicsAll(CMB), comboRenderSystem(CMB);
+	//CK(VidFullscr);  CK(VidVSync);
+	//void btnResChng(WP);
+	void cmbGraphicsPreset(CMB); //, cmbRenderSystem(CMB);
 
 	//  💡 Light  --------------------------
 	SV svBright, svContrast;

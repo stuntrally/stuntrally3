@@ -29,7 +29,7 @@ enum IblQuality
 //--------------------------------------------------------------------------------
 //  Base application with:
 //    Ogre, MyGui, settings, Fps bar, utils
-//    Reflection cube
+//    Shadows, Reflection cube
 //--------------------------------------------------------------------------------
 class AppGui : public BGui
 {
@@ -149,7 +149,7 @@ public:
 	//  viewport dimensions, for each player [4]
 	ViewDim mDims[MAX_PLAYERS];
 
-	//  workspace, Ogre render setup   players [4] + 1 for Refl cube
+	//  workspace, Ogre render setup   players [4] + 1 for Refl cube, more for fluids etc
 	std::vector<Ogre::CompositorWorkspace*> mWorkspaces;
 
 

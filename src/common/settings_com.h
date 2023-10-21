@@ -65,7 +65,7 @@ public:
 
 		//  🌒 shadow  5x
 		int shadow_size = 2, shadow_count = 3, shadow_type = Sh_Depth;
-		float shadow_dist = 600.f;  int shadow_filter = 1;
+		float shadow_dist = 600.f;  int shadow_filter = 1;  //3x3
 
 		//  💡 lights  2x
 		bool car_lights =0, car_light_shadows =0;

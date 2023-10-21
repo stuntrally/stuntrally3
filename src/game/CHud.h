@@ -108,7 +108,7 @@ public:
 	Txt txDbgCar[4] ={0,0,0,0}; //, txDbgTxt =0, txDbgExt =0;
 	Txt txDbgSurf =0, txDbgProfTim =0, txDbgProfBlt =0;
 
-	const static int MAX_TireVis = 4;
+	constexpr static int MAX_TireVis = 4;
 	Ogre::SceneNode *ndTireVis[MAX_TireVis] ={0,0,0,0,};
 	HudRenderable   *hrTireVis[MAX_TireVis] ={0,0,0,0,};
 
