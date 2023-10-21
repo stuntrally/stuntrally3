@@ -14,18 +14,19 @@ using namespace Ogre;
 
 
 //  🆕🚧 Create cursor
-void App::CreateBox(SceneNode*& nd, Item*& it, String sMat, String sMesh, int x)
+void App::CreateBox(SceneNode*& nd, Item*& it,
+	String sMat, String sMesh, int x, bool shadow)
 {
 	if (nd)  return;
 	// LogO("---- create cursor: " + sMat +" "+ sMesh);
-	MaterialPtr mtr;
 	nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	it = mSceneMgr->createItem(sMesh);
 	it->setVisibilityFlags(RV_Hud3D);
-	it->setCastShadows(false);
+	it->setCastShadows(shadow);
 	if (!sMat.empty())
 		it->setDatablockOrMaterialName(sMat);
-	it->setRenderQueueGroup(RQG_Ghost);  // after road
+	if (!shadow)
+		it->setRenderQueueGroup(RQG_Ghost);  // after road
 	
 	nd->setPosition(Vector3(x,0,0));
 	nd->attachObject(it);
@@ -36,7 +37,7 @@ void App::CreateBox(SceneNode*& nd, Item*& it, String sMat, String sMesh, int x)
 void App::CreateCursors()
 {
 	LogO("C--- create Cursors");
-	CreateBox(ndCar, itCar, "", "car.mesh");
+	CreateBox(ndCar, itCar, "", "car.mesh", 0, 1);
 	
 	CreateBox(ndStartBox[0], itStartBox[0], "start_box", "cube.mesh", 20000);
 	CreateBox(ndStartBox[1], itStartBox[1], "end_box", "cube.mesh", 20000);

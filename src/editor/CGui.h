@@ -47,7 +47,7 @@ public:
 	
 	bool bGI = false;  // gui inited  set values
 	void InitGui(), InitGuiLists(), GuiUpdate();
-	void UpdGuiAfterPreset(), FillPickLists();
+	void FillPickLists();
 
 	Txt valTrk[2] ={0,0};
 	std::vector<Tab> vSubTabsTrack, vSubTabsEdit,

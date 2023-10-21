@@ -280,7 +280,7 @@ private:
 //--------------------------------------------------------------------------------
 const std::string StatusPage::m_templates[] =
 {
-	"Stunt Rally Master Server Status Page\n"
+	"Stunt Rally 3 Master Server Status Page\n"
 	"====================================\n"
 	"\n"
 	"Currently, there are %GAMES% available games.\n"

@@ -193,7 +193,8 @@ public:
 
 	//  🚧 box cursors  car start,end,  fluids, objects, emitters
 	void UpdStartPos(bool vis = true), CreateCursors();
-	void CreateBox(Ogre::SceneNode*& nd, Ogre::Item*& ent, Ogre::String sMat, Ogre::String sMesh, int x=0);
+	void CreateBox(Ogre::SceneNode*& nd, Ogre::Item*& it,
+		Ogre::String sMat, Ogre::String sMesh, int x = 0, bool shadow =false);
 
 	Ogre::SceneNode* ndCar =0, *ndStartBox[2]={0,0},  *ndFluidBox =0, *ndObjBox =0, *ndEmtBox =0;
 	Ogre::Item*      itCar =0, *itStartBox[2]={0,0},  *itFluidBox =0, *itObjBox =0, *itEmtBox =0;
