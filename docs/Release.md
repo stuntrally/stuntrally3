@@ -3,28 +3,28 @@ The process of releasing and things that need to be checked before.
 ### 1. Code
   * Fix crashes and critical bugs
   * Be sure the code works and there is nothing that would make it broken
-  * Make sure all tools in code use ''#if 0'', search for ''_Tool_''
-  * Try a clean rebuild and check ''make install''
+  * Make sure all tools or debug logs in code are disabled
+  * Try a clean rebuild and check `make install`
 
 ### 2. Update
   * Content
     * For new tracks: make track's ghosts, add to ini, champs and challs xmls (all in config/)
     * Run editor tools to check tracks (errors, presets, etc): ToolSceneXml, ToolTracksWarnings meh
     * For new cars: check in-car cameras, perf test, easy sim, etc
-  * ''Readme.txt'' (links, track count, etc)
+  * `Readme.txt` (links, track count, etc)
   * Version numbers
-    * in Gui, file ''*_en.tag.xml'', tag ''name="GameVersion"''
-    * in ''installer.nsi'' script, at top
+    * in Gui, file `*_en.tag.xml`, tag `name="GameVersion"`
+    * in `installer.nsi` script, at top
   * [Sync translations](Localization.md#translation-sync)  
-    check some other language so there are no ''#{MyGUI Tags}'' in GUI
+    check some other language so there are no `#{MyGUI Tags}` in GUI
 
 ### 3. Test
-  * Check all the game modes (Championship, Challenge, Split screen, Multiplayer, Replays)
+  * Check all the game modes - Championship, Challenge, Split screen, Multiplayer, Replays
   * Check at least new features and important older ones (see [Features](Features.md))
   * Delete/rename your user dir to check default config (update *-default.cfg)
   * Try a few different Vehicles and Tracks
   * Test Graphics presets from combo
-  * Try Track Editor (duplicate a track, save, and at least basic editing, of each mode)
+  * Try Track Editor - duplicate a track, save, and at least basic editing, of each mode
 
 ### 4. Packages
   * Create packages for supported systems and test them

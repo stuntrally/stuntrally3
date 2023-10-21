@@ -160,37 +160,38 @@ In `.material` scripts you can't set textures to wrap or other sampler configs b
 
 ## config files 📄
 
-[user] - means file is in user `.config/stuntrally3` dir, and saved by SR3.  
+[👤] - means file is in user `.config/stuntrally3` dir, and saved by SR3.  
 Otherwise, means a static file in `config/` dir, manually edited.  
-(i) - means file has info about itself and syntax, written inside.
+(❔) - means file has info about itself and syntax, written inside.
 
 Vehicles config
-- config/cars.xml - (i) list for Vehicles tab with manually set parameters
-- Media/cars/cameras.xml - (i) all follow camera views for game
+- config/cars.xml - (❔) - list for Vehicles tab with manually set parameters
+- Media/cars/cameras.xml - (❔) - all follow camera views for game
 - Media/carsim/[mode]/* -  
 *.car - vehicle file (can edit directly in game Alt-Z),  
 *_stats.xml - vehicle performance test results (after Ctrl-F5)  
 .tire coeffs, suspension
 
 Game modes
-- championships.xml - (i) for Gui, tutorials too
-- challenges.xml - (i) with tracks list, pass conditions, game setup etc
+- championships.xml - (❔) - for Gui, tutorials too
+- challenges.xml - (❔) - with tracks list, pass conditions, game setup etc
 
 Game progress
-- progress.xml, progress_rev.xml - [user] progress for championships, _rev for reversed
-- progressL.xml, progressL_rev.xml - [user] same but for challenges
+- progress.xml, progress_rev.xml - [👤] - progress for championships, _rev for reversed
+- progressL.xml, progressL_rev.xml - [👤] - same but for challenges
 
 Game config
-- input.xml and input_p[1..4].xml - [user] for game, common and player input bindings, Gui tab Input
+- input.xml and input_p[1..4].xml - [👤] - for game, common and player input bindings, Gui tab Input
 
 - paint.cfg - current vehicles paint setups
 - paints.ini - dynamic list for vehicles on Paints tab
 
 Common config
-- fluids.xml - (i) 
-- presets.xml - params for editor lists and game too
-- tracks.xml - [user] tracks bookmark and rating, from Gui Track tab
+- fluids.xml - (❔) - buoyancy and other fluid parameters for fluid areas
+- presets.xml - (❔) - params for editor lists and game too
+- tracks.xml - [👤] - tracks bookmark and rating, from Gui Track tab
 
+Track files, in each track's dir.  
 Below * means: nothing or 2,3,4.. etc if more.
 - heightmap*.f32 - heightmap(s) for terrain(s). Format is raw 32 bit floats (4B for 1 height). Size always square: 512,1024,2048 etc.
 - road*.xml - file(s) for each road/river etc. Has many params and points.
@@ -198,7 +199,7 @@ Below * means: nothing or 2,3,4.. etc if more.
 
 ## emojis
 
-You can also get familiar with `src/emojis` file.  
+You can also get familiar with [src/emojis](../src/emojis) file.  
 It lists many emojis used for indentifying code sections, variable blocks etc in sources.  
 Done for better orientation, grouping and cooler code in files, especially for big ones with many at once.  
 It is possible to search for all related to some component or aspect in sources,  

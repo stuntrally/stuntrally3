@@ -68,9 +68,14 @@ Install the Ogre Command Line tools.
 Windows: Download it from http://www.ogre3d.org/download/tools and unzip it to the default folder (C:\OgreCommandLineTools)  
 Linux: Should be included with your Ogre package. On Ubuntu, it is included in the ogre-1.9-tools package. The binary we are looking for is "OgreXMLConverter", so try running that to see whether you have it installed.
 
-   
+**NEW**  
+For SR3 the `OgreMeshTool` binary is needed, which is built along with Ogre-Next.  
+Script [ogre-mesh.py](../config/ogre-mesh.py) can convert multiple Ogre 1.x (or 2.x) `.mesh` files to final 2.1 format.
+Sample syntax for LODs count, distances, tangents and other options passes as arguments to `OgreMeshTool` are in `ogre-mesh.py`.
+
 
 #### Create a simple static object
+
 For testing purpose we just export a Blender default object (the box, or maybe the monkey)
 
 ![](images/img20121230_4.png)
@@ -85,16 +90,16 @@ Start **SR Editor** and place the object.
 
 ![](images/img20121230_5.png)
 
-![](images/img20121230_6.png)
-
 Works! Now we have Suzanne (the monkey) in our track.  
-Not much interaction, other than you can collide with the object, but it will not move. Thats why we continue to create a dynamic object, by creating a binary bullet file containing all necessary physical information.
+Not much interaction, other than you can collide with the object, but it will not move.  
+That's why we continue to create a dynamic object, by creating a binary bullet file containing all necessary physical information.
 
    
 
 #### Create a dynamic object
 
-Blender can export the dynamics of an object (to be more exact of the whole world in your blender project) to binary dump. This part of the tutorial will walk through the necessary steps.
+Blender can export the dynamics of an object (to be more exact of the whole world in your blender project) to binary dump.  
+This part of the tutorial will walk through the necessary steps.
 
 Start Blender, we can continue with the previous test object.
 Change to the Game Mode
