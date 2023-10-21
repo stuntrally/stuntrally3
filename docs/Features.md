@@ -23,13 +23,13 @@ _Todo:_ means it's not present or not yet fully restored from old SR 2.x
 ## Gameplay 🏁
 
 - 🏞️ 223 **Tracks**
-  - in 38 **sceneries**, great variety from nature based, to alien, space and surreal
+  - in 39 **sceneries**, great variety: from nature based, to alien, space and surreal
   - over 8 hours to drive all, just once
 - **Stunt** elements: obstacles, jumps, loops, pipes or very twisted road
 - 🌊 Drives through water or mud areas (safe, won't get stuck)
 - 📦 Dynamic objects on tracks (barrels, boxes, etc), can be hit
 - 🚗 25 **Vehicles**
-  - 20 cars (Hyena or Fox are best for rally)
+  - 16 cars (Hyena or Fox are best for rally)
   - few extreme with bigger wheels, or: 3, 6 and 8 wheeled 🚌
   - 2 motorbikes 🏍️
   - 3 hovering spaceships 🚀, 1 bouncy sphere 🔘
@@ -84,15 +84,15 @@ _Todo:_ means it's not present or not yet fully restored from old SR 2.x
   - Terrain generator with many parameters
 - In-editor **Help** page with all key shortcuts and mouse actions listed
 - _ToDo:_ Console tab, listing track errors, warnings and very simple hints for quality when saving
-- _Old:_ Wiki page and video tutorials available
+- _Old:_ Wiki page and video tutorials available [here](Editor.md)
 - No undo - using quick save and quick load
 
 ## Vehicle editing 🚗
 
 - In game vehicle editor
-  - allows faster tinkering with simulation parameters, collision, etc  
-  - aids creating new ones, Wiki [here..]
-- Many graphs (visualizations) of key simulation values  
+  - allows faster tinkering with simulation parameters, collision, etc
+  - aids creating new ones, Wiki [here](VehicleEditing.md)
+- Many graphs (visualizations) of key simulation values
   - gearbox and torque curve, suspension, differentials etc
 - Tire functions (Pacejka's Magic Formula) editing _while_ driving
 - Tire grip cricles visualization

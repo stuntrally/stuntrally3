@@ -1,4 +1,4 @@
-_Car edititng and .car parameters explained._
+_Vehicle edititng and .car parameters explained._
 
 _Todo:_ Renew screenshots {{..
 

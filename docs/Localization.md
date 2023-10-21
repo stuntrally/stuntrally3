@@ -90,42 +90,38 @@ xml_po_parser.py de.po core_language_de_tag.xml
 Move the xml into data/gui. Start game or editor and test.
 
   
-### Sync translations
-
-If you build from sources, and you translated something recently, then  
-when you see on master a commit 'Sync translations.' this means that  
-translations have been updated and you can now check them (after pull).
-
-  
 ----
 
-  
-### Technical Details
 
-We use gettext's .po and .pot files for web translations, it is a very popular text format.
-
-All strings in Stunt Rally 3 are in **[the _en.xml file](../Media/gui/core_language_en_tag.xml)**.  
-Used by MyGUI's own translation system.  
-
-This file is edited manually, each new string is added there.  
-It also has xml comments with group names,  
-which then show up as Develeoper comment on web (as #. in .pot file).
-
-A C++ program (src/transl/main.cpp) generates sr.pot templates file from the xml file.  
-_It also searches for string references in sources and Gui layouts, also getting widgets hierarchy._
-
-Web translation gives translated .po files back, which are then converted to  
-MyGUI's translations (other languages *_tag.xml)  
-by the locale/xml_po_parser.py Python3 script.
-
-  
 ### Translation **Sync**
 
-This needs 2 steps.  
-First is automatic, Weblate pushes after 1 hour, `.po` files, directly to our git repo.  
-Second is manual, needs starting [2upd-xml.sh](/src/locale/2upd-xml.sh) to convert `.po` to `.xml` files for MyGui.  
+Synchronizing / updating repo translations in Github after changes in weblate.
 
-  
+This needs 2 steps:
+- First is automatic, Weblate pushes after up to 1 hour, its modified `.po` files, directly to our Git repo.  
+- Second is manual, needs starting **[2upd-xml.sh](../locale/2upd-xml.sh)** (or just `xml_po_all.py`) inside `locale/`  
+  To convert `.po` to `*_tag.xml` files for MyGui in [Media/gui](../Media/gui/). And pushing to Git.  
+
+
+### Technical Details
+
+All strings in Stunt Rally 3 are in the [_en_tag.xml file](../Media/gui/core_language_en_tag.xml),  
+used by MyGUI's own translation system.  
+
+> This file is edited and sorted manually. Each new string for Gui or Hud is added there.  
+It also has xml comments with group and subgroups names,  
+which then show up as Develeoper comment on web (as #. in `sr.pot` file).
+
+After changes in the .xml file, run **[1upd-all.sh](../locale/2upd-xml.sh)** inside `locale/`.
+
+A small C++ program [sr_translator](../src/transl/main.cpp) generates `sr.pot` templates file from the .xml file.  
+_It also searches for string references in sources and Gui layouts, also getting widgets hierarchy._
+
+We use gettext's `.po` and `.pot` files for web translations, it is a very popular text format.
+
+
+----
+
 ### Adding new language
 
 See example commit adding Czech (cs) language: [link](https://github.com/stuntrally/stuntrally/commit/18018ecff5ddc27eea7d26f023e2ecea554d5e88)
