@@ -243,23 +243,23 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 		//  hmap filesize
 		int sz = td.iVertsX * td.iVertsX * sizeof(float) / 1024/1024;
 		if (td.iVertsX > 4000)
-			Warn(ERR, "using huge heightmap "+toStr(td.iVertsX-1)+", file size is "+toStr(sz)+" MB !!");
+			Warn(ERR, "using huge 4k heightmap: "+toStr(td.iVertsX-1)+", file size is: "+toStr(sz)+" MB !!");
 		else if (td.iVertsX > 2000)
-			Warn(WARN, "using very big heightmap "+toStr(td.iVertsX-1)+", file size is "+toStr(sz)+" MB !");
+			Warn(WARN, "using very big 2k heightmap: "+toStr(td.iVertsX-1)+", file size is: "+toStr(sz)+" MB !");
 
 		if (td.iVertsX < 512)
-			Warn(INFO,"Using too small heightmap: "+toStr(td.iVertsX-1));
+			Warn(INFO,"Using too small < 512 heightmap: "+toStr(td.iVertsX-1));
 
 		//-  🔺 tri size  ----
 		float tri = td.fTriangleSize;
-		if (tri < 0.9f && !horiz)	Warn(INFO, "triangle size is small "+fToStr(tri,2,4));
-		if (tri > 1.7f && !horiz)	Warn(INFO, "triangle size is big "+fToStr(tri,2,4)+" - not recommended");
+		if (tri < 0.9f && !horiz)	Warn(INFO, "triangle size < 0.9 Small:  "+fToStr(tri,2,4));
+		if (tri > 1.7f && !horiz)	Warn(INFO, "triangle size > 1.7 Big: "+fToStr(tri,2,4)+" - not recommended");
 
-		if (tri <  5.1f && horiz == 1)	Warn(INFO, "horizon size is small "+fToStr(tri,2,4));
-		if (tri > 21.1f && horiz == 1)	Warn(INFO, "horizon size is big "+fToStr(tri,2,4)+" - not recommended, better to make 2nd");
+		if (tri <  5.f && horiz == 1)	Warn(INFO, "horizon tri size < 5  Small: "+fToStr(tri,2,4));
+		if (tri > 21.f && horiz == 1)	Warn(INFO, "horizon tri size > 21 Big: "+fToStr(tri,2,4)+" - not recommended, better to make 2nd");
 
-		if (tri < 30.1f && horiz == 2)	Warn(INFO, "horizon2 size is small "+fToStr(tri,2,4));
-		if (tri > 51.7f && horiz == 2)	Warn(INFO, "horizon2 size is big "+fToStr(tri,2,4)+" - not recommended");
+		if (tri < 30.f && horiz == 2)	Warn(INFO, "horizon2 tri size < 30 Small: "+fToStr(tri,2,4));
+		if (tri > 51.f && horiz == 2)	Warn(INFO, "horizon2 tri size > 51 Big: "+fToStr(tri,2,4)+" - not recommended");
 
 		if (tri > 5.f && horiz == 0)  Warn(ERR,"big triangle but not Horizon > 0");
 
@@ -285,7 +285,7 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 	{
 		//  layers  ----
 		int veg = sc->densTrees > 0.f ? sc->pgLayers.size() : 0;
-		Warn(NOTE,"---- Vegetation - models used: "+toStr(veg));
+		Warn(NOTE,"---- Vegetation - models used: "+toStr(veg));  // works only when shown
 		// if (sc->densTrees < 0.01f)  Warn(WARN,"No Vegetation - feels empty :(");
 		hqVeget = veg >= 6;
 		if (hqVeget)   Warn(INFO,"HQ Vegetation");
@@ -317,8 +317,8 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 	Warn(NOTE,"---- Grass - layers used: "+toStr(gr));
 	hqGrass = gr >= 4;
 	if (hqGrass)  Warn(INFO,"HQ Grass");
-	if (gr >= 6)  Warn(WARN,"Too many grasses used - not recommended");
-	if (gr <= 2)  Warn(INFO,"Too few grasses used");
+	if (gr >= 6)  Warn(WARN,"Too many grasses used (>= 6) - not recommended");
+	if (gr <= 2)  Warn(INFO,"Too few grasses used (<= 2)");
 
 	//..  page size small, dist big
 	
@@ -326,7 +326,7 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 	//  🌊 Fluids
 	//---------------------------------------------------------------
 	int fl = sc->fluids.size();
-	Warn(NOTE,"---- Fluids - used: "+toStr(gr));
+	Warn(NOTE,"---- Fluids - used: "+toStr(fl));
 	hqFluids = fl > 0;
 	if (hqFluids)  Warn(INFO,"HQ, fluid present");
 	
@@ -340,16 +340,16 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 		// todo: test if under terrains ..
 	}
 	int objs = objVar.size();
-	Warn(NOTE,"---- Objects - used: "+toStr(gr));
-	if (objs >= 60)  Warn(WARN,"Too many objects used - not recommended");
-	if (objs <= 2)  Warn(INFO,"Too few objects placed");
+	Warn(NOTE,"---- Objects - used: "+toStr(objs));
+	if (objs >= 60)  Warn(WARN,"Very many objects used (>= 60) - not recommended");
+	if (objs <= 2)  Warn(INFO,"Too few objects placed (<= 2)");
 	hqObjects = objs > 7;
 	if (hqObjects)  Warn(INFO,"HQ objects (> 7 present)");
 
 	//  🔥 Particles, clouds
 	//---------------------------------------------------------------
 	int pars = sc->emitters.size();
-	Warn(NOTE,"---- Particles - used: "+toStr(gr));
+	Warn(NOTE,"---- Particles - used: "+toStr(pars));
 	hqParticles = pars > 0;
 	if (hqParticles)  Warn(INFO,"HQ, particles present");
 
@@ -365,11 +365,11 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 
 	Warn(NOTE,"---- HQ Overall: "+toStr(hq)+ "  of 10 max");
 	if (hq > 8)
-		Warn(INFO,"Quality very high (possibly low Fps) - check densities of models, objects, grasses, layers counts");
+		Warn(INFO,"Quality very high (> 8)  (possibly low Fps) - check densities of models, objects, grasses, layers counts");
 	else if (hq > 6)
-		Warn(INFO,"Great quality - but check for some optimisations");
+		Warn(INFO,"Great quality (> 6) - but check for some optimisations");
 	else if (hq < 5)
-		Warn(WARN,"Low quality  (ignore for deserts etc)\n - try to add something: layers, vegetation, fluids, objects, particles");
+		Warn(WARN,"Low quality (< 5)  (ignore for deserts etc)\n - try to add something: layers, vegetation, fluids, objects, particles");
 	
 
 	///-  end  ----------------
