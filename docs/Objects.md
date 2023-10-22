@@ -3,43 +3,51 @@ _How to add or create static and dynamic objects with Blender._
 
 ## Adding
 
-This here is a short list for developers.
-
-  - Download (license **must** be: CC0, CC-BY, CC-BY-SA, only, if not specified don't bother) - or create a model in Blender  
+  - **Create** a model in **Blender**
+  - or **Download**, license **must** be: CC0, CC-BY, CC-BY-SA, only, if not specified don't bother  
     _**Note:**_ Do a sane test, to check for proper human **Artist**.  
     There are now many trolls, kids, idiots copying other's or illegally got stuff and putting on Sketchfab, and they don't check it.  
     Usually if you see a name, registered few years ago, with some link to Artist's other website too, then it's good.
+
+### Using objects from other websites
+Download from one of the model web portals like [sketchfab](https://sketchfab.com/search?category=nature-plants&features=downloadable&licenses=7c23a1ba438d4306920229c12afcb5f9&licenses=b9ddc40b93e34cdca1fc152f39b9f375&licenses=322a749bcfa841b29dff1e8a1bb74b0b&sort_by=-viewCount&type=models), [blendswap](https://www.blendswap.com/categories), [polyhaven](https://polyhaven.com/models/nature) or [opengameart](https://opengameart.org/)
+
+This here is a short list before contributing.
+
   - Once seen the model is ok, and can be useful:
-    * create dir with a **good_name** - to have some consistency, when picking model in editor, etc.
+    * create a folder with a **good_name** - to have some consistency, when picking model in editor, etc.
     * convert .tga to **.png**, .obj (or other) to .blend
     * use **.jpg** textures to save size (e.g. 90-95% quality), unless transparent / alpha needed
-    * check textures, possibly **resize**: for small objects 1k is ok, 4k is only okay for very big objects or detailed road, terrrain (future high quality).
+    * check textures, possibly **resize**: for small objects 1k is ok, 2k for bigger,  
+      _and 4k is only okay for very big objects, or detailed road, terrrain (future high quality)._
     * add **readme.txt** - a must, with original: model name, Author, License, url
     * (old) possibly attach preview.jpg - so people may be interested in working with the model further
     * make a fork, then PR, to upload to [blendfiles](https://github.com/stuntrally/blendfiles) repo
   - Export from Blender to Ogre .mesh, check the look in game
     * remember to use real life scale (meters)
     * reset all transforms (Ctrl A) before exports
-  - Bullet
-    * if starting a new **dynamic** object watch this: [video](http://www.youtube.com/watch?v=fv-Oq5oe8Nw) and add that to logic,  
-      then pressing P twice should start physics and export **.bullet** file
-    * for dynamic objects: add simple physics shape(s), make actor (rigid body)
-    * on material tab under Physics set friction
-    * on physics tab set mass, damping (linear and angular, check in game)
+  - **Dynamic** objects need `.bullet` file
+    * watch this: [video](http://www.youtube.com/watch?v=fv-Oq5oe8Nw) and add that to logic,  
+      then pressing P twice should start physics and export `.bullet` file
+    * add simple physics shape(s), make actor (rigid body)
+    * on Material tab under Physics set friction
+    * on Physics tab set mass, damping (linear and angular, check in game)
     * don't forget to set the Margin to e.g. 0.1 under collision bounds
-    * for static models: if too high poly create 1 simple mesh for it  
-      if low poly (like 0AD) do nothing, will have trimesh made in code
+    * for static models: if too high poly - create 1 simple mesh for collision  
+      if low poly - (like 0AD building) do nothing, will have trimesh made in code
   - Done (be happy, suggest adding it to some tracks, or make a new with it, use other too)
 
 ----
 
 ## Creating
-This page walks you through the steps to create new static objects and to add them to Stunt Rally.
 
-_Warning_: The learning curve for Blender is quite steep, you need to invest a serious amount of time to learn and use it efficiently. Fortunately there are plenty of tutorials, websites and books to pick up the skills. 
+This section walks you through the steps to create new static object and add it to Stunt Rally.
 
-Currently static and dynamic objects are stored in the ''\data\objects'' folder in the folder you choosed to install Stunt Rally.  
-It contains Ogre mesh files (binary), surface images (textures) and bullet files for the dynamic objects.
+_Warning_: The learning curve for Blender is quite steep, you need to invest a serious amount of time to learn and use it efficiently.  
+Fortunately there are plenty of tutorials, videos, websites and books to pick up the skills. 
+
+Currently static and dynamic objects are stored in the `/Media/objects` and similar folders.  
+It contains Ogre mesh files (binary), surface images (textures) and .bullet files for dynamic objects.
 
 ![](images/img20121230_1.png)
 
@@ -50,13 +58,14 @@ It contains Ogre mesh files (binary), surface images (textures) and bullet files
 
 Blender, [Downloads here](https://www.blender.org/download/get-blender/).
 
-### Preparations
+### Export plugin
 
-Blender comes with plenty of import and export plugins, but the ogre export plugin we need to download separately.  
+Blender comes with plenty of import and export plugins, but the Ogre export plugin we need to download separately.  
 Download the latest **blender2ogre** plugin [from here](https://github.com/OGRECave/blender2ogre/releases)
 and follow [installing](https://github.com/OGRECave/blender2ogre#installing) guide.
 
-Install the plugin in Blender  
+### Install the plugin in Blender
+
 Open preferences (menu|file), Add-Ons, Install from file, pick io_export_ogreDotScene.py then click Install from file.  
 Next switch to tab Import-Export and find OGRE Exporter, mark that checkbox to enable it (if it isn't).
 
@@ -64,14 +73,15 @@ Next switch to tab Import-Export and find OGRE Exporter, mark that checkbox to e
 
 ![](images/img20121230_2.png)
 
-Install the Ogre Command Line tools.  
+### Install the Ogre Command Line tools
+
 Windows: Download it from http://www.ogre3d.org/download/tools and unzip it to the default folder (C:\OgreCommandLineTools)  
 Linux: Should be included with your Ogre package. On Ubuntu, it is included in the ogre-1.9-tools package. The binary we are looking for is "OgreXMLConverter", so try running that to see whether you have it installed.
 
 **NEW**  
 For SR3 the `OgreMeshTool` binary is needed, which is built along with Ogre-Next.  
-Script [ogre-mesh.py](../config/ogre-mesh.py) can convert multiple Ogre 1.x (or 2.x) `.mesh` files to final 2.1 format.
-Sample syntax for LODs count, distances, tangents and other options passes as arguments to `OgreMeshTool` are in `ogre-mesh.py`.
+Script [ogre-mesh.py](../config/ogre-mesh.py) can convert multiple Ogre 1.x (or 2.x) `.mesh` files to final 2.1 format.  
+Sample syntax for LODs count, distances, tangents and other options passes as arguments to `OgreMeshTool` are in [ogre-mesh.py](../config/ogre-mesh.py).
 
 
 #### Create a simple static object
@@ -84,21 +94,20 @@ Export to mesh (File|export|Ogre3D)
 If succesfull, you will find 2 files in the selected folder (1 mesh file in xml format and 1 binary mesh fie)  
 From the exporter options pick axes as "xz-y", use tangents (mark checked), uncheck edges-list (we don't need them).
 
-**Copy the binary mesh** into the objects folder.
+**Copy the binary** `.mesh` into the `objects/` or similar folder.
 
 Start **SR Editor** and place the object.
 
 ![](images/img20121230_5.png)
 
-Works! Now we have Suzanne (the monkey) in our track.  
+Works! Now we have the object on our track.  
 Not much interaction, other than you can collide with the object, but it will not move.  
-That's why we continue to create a dynamic object, by creating a binary bullet file containing all necessary physical information.
+That's why we continue to create a dynamic object, by creating a binary `.bullet` file containing all necessary physical information.
 
-   
 
 #### Create a dynamic object
 
-Blender can export the dynamics of an object (to be more exact of the whole world in your blender project) to binary dump.  
+Blender can export the dynamics of an object (to be more exact of the whole world in your Blender project) to binary file.  
 This part of the tutorial will walk through the necessary steps.
 
 Start Blender, we can continue with the previous test object.
@@ -110,12 +119,12 @@ Open the Blender text editor
 
 ![](images/img20121231_11.png)
 
-and enter this code
+and enter this code:
 ```
 import PhysicsConstraints;
 PhysicsConstraints.exportBulletFile("object.bullet")
 ``` 
-Save it as //bulletexp//
+Save it as `bulletexp`
 
 ![](images/img20121231_13.png)
 
@@ -133,19 +142,21 @@ Open the physics attributes for our object and do the following settings   Physi
 
 Click into the 3D window and start the engine by pressing "p"   For a short moment you will see the object falling down.   Press "p" again (for our keyboard sensor).
 
-The script creates an object.bullet file in the blender folder
+The script creates an `object.bullet` file in the blender folder
 
 ![](images/img20121231_18.png)
 
-Copy the file to the same object folder as our meshfile, it must have the same filename as the mesh file (eg. object.mesh and object.bullet)
+Copy the file to the same object folder as our meshfile, it must have the same filename as the mesh file (eg. `object.mesh` and `object.bullet`)
 
-Start the editor, place the object. Press "C" to simulate physics, if OK check out your track.
+Start the SR editor, place the object. Press "C" to simulate physics, if OK check out your track.
 
-=== Remarks on objects ===
+### Remarks on objects
 Keep it low poly and use only 1 material if possible.  
 I depends on how many times an object will be on track.
 
-^Example, triangle counts for various objects: ^^
+Example, triangle counts for various objects:
+| triangles | object type |
+|-----|------|
 | 300 | small rock |
 | 600 | fern, plant |
 | 1k | small tree, rock, barrel etc |
@@ -153,22 +164,23 @@ I depends on how many times an object will be on track.
 | 10k | static object, eg. temple, that won't be many times |
 | 50k | a detailed object, meant to be once on a track   (eg. inside of pyramid, or spaceship, etc.) |
 
-Generally, using a Higher graphics preset, triangle count should be up to 800k and batch count up to 300 (max 500), having 2 cars, vegetation, terrain visible, in a view position that covers over half of the track.
+Using generated LODs (by `OgreMeshTool`) one can then put more (higher quality) objects or vegetation, without final triangles count being too high for game.
 
-   
-#### Tutorial 2
+
+## Tutorial 2
 
 ### Create new objects
-Creating a new objects from the scratch with Blender requires at least basic Blender skills.
 
-Stick to low poly meshes and don't get templted to download an objects with thousands of vertexes, it will pull down the framerate.
+Creating a new object from the scratch with Blender requires at least basic Blender skills.
 
-### Use objects from other websites
-Download from one of the model web portals like http://opengameart.org/ or http://www.blendswap.com/
+Stick to **low poly** meshes and don't get tempted to create or download objects with over 50000 triangles, as it can pull down the framerate (Fps).  
+Only use hight poly (over 50k tris) meshes if:
+- it will be once or twice on track
+- it is for main drivable vehicle
+- you will reduce (Decimate) it in Blender and it works well
+- or you apply good % reducing LODs with OgreMeshTool
 
-Important: Check the license under which the objects are released (at least if you plan to submit the object to become part of Stunt Rally distributable), preferrably CC0, CC-BY, GPL or similar.
-
-### Materials OLD
+### Materials, OLD SR
 
 It is needed to name materials in blender with some prefix (e.g. from your object) so that all material names are unique in game.
 Then knowing your material names, it's needed to add them in .mat.
