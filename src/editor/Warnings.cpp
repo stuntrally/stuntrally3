@@ -129,22 +129,22 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 			//  won't work in tool..
 			if (app && app->scn && !app->scn->ters.empty())
 			{	
-				{	float yt = app->scn->getTerH(stPos), yd = stPos.y - yt - 0.5f;
+				{	float yt = app->scn->getTerH(stPos.x, stPos.z), yd = stPos.y - yt - 0.5f;
 					//Warn(TXT,"Start to terrain distance "+fToStr(yd,1,4));
 					if (yd < 0.f)   Warn(ERR, "Start below terrain - Whoa :o");
 					if (yd > 0.3f)  Warn(INFO,"Start far above terrain\n (skip this if on bridge or in pipe), distance: "+fToStr(yd,1,4));
 				}
 				
 				//-  other start places inside terrain (split screen)  ----
-				for (int i=1; i<4; ++i)
+				for (int i=1; i < 4; ++i)
 				{
 					Vector3 p = stPos + i * stDir * 6.f;  //par dist
-					float yt = app->scn->getTerH(p), yd = p.y - yt - 0.5f;
+					float yt = app->scn->getTerH(p.x, p.z), yd = p.y - yt - 0.5f;
 					String si = toStr(i);
-									Warn(TXT, "Car "+si+" start to ter dist "+fToStr(yd,1,4));
+									//Warn(TXT, "Car "+si+" start to ter dist "+fToStr(yd,1,4));
 					//if (yd < 0.f)   Warn(WARN,"Car "+si+" start below terrain !");  // moved above in game
 					if (yd > 0.3f)  Warn(INFO,"Car "+si+" start far above terrain");//\n (skips bridge/pipe), distance: "+fToStr(yd,1,4));
-				}/**/
+				}
 			}			
 			
 			//-  🔵 first chk  ----
@@ -191,11 +191,13 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 
 			//-  🔵 road, chk cnt  ----
 			float ratio = float(numChks)/cnt;
-			Warn(TXT,"Road points to checkpoints ratio: "+fToStr(ratio,2,4));
-			if (ratio < 1.f/10.f)  //par
-				Warn(WARN,"Extremely low checkpoints ratio, add more");
-			else if (ratio < 1.f/5.f)  //par  1 chk for 5 points
-				Warn(WARN,"Very few checkpoints ratio, add more");
+			Warn(TXT,"Road points to checkpoints ratio: "+fToStr(ratio,2,4)+"  = "+toStr(numChks)+"/"+toStr(cnt));
+			if (ratio < 0.1f)  //par  // 1 chk for 10 points
+				Warn(WARN,"Extremely low checkpoints ratio (< 0.1), add more");
+			else if (ratio < 0.2f)  //par  1 chk for 5 points
+				Warn(WARN,"Very few checkpoints ratio (< 0.2), add more");
+			else if (ratio > 0.4f)  //par  1 chk for 3 points
+				Warn(WARN,"High checkpoints ratio (> 0.4), remove not needed");
 		}
 		//-  🛣️ road points too far
 		float len = road->st.Length;

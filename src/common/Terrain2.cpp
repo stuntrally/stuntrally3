@@ -206,7 +206,6 @@ void CScene::CreateTerrain1(int n)
 		if (n == 0)  // 1st ter only
 			ter = mTerra;
 	}
-	updTerLod();
 
 	//  ⛰️ Heightmap  ------------------------------------------------
 	LogO("---T Terrain Hmap load");

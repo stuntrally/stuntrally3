@@ -35,8 +35,16 @@ void CScene::CreateTerrains(bool terLoad)
 }
 void CScene::updTerLod()
 {
-	if (!app->scn->ters.empty())
-		app->scn->ters[0]->iLodMax = 6 - app->pSet->ter_detail;  //par?
+	//assert( ters.size() == sc->tds.size() );
+	if (ters.empty())  return;
+	int s = std::min(ters.size(), sc->tds.size());
+	
+	for (int i=0; i < ters.size(); ++i)
+	{
+		int lod = sc->tds[i].iHorizon > 0 ?
+			app->pSet->g.horiz_lod : app->pSet->g.ter_lod;
+		ters[i]->iLodMax = 6 - lod;  //par`
+	}
 }
 
 String CScene::getHmap(int n, bool bNew)
@@ -55,7 +63,7 @@ void CScene::CreateTerrain(int n, bool terLoad)
 	auto& td = sc->tds[n];
 
 #ifndef SR_EDITOR  // ed all
-	if (td.iHorizon > app->pSet->horizons)
+	if (td.iHorizon > app->pSet->g.horizons)
 		return;
 #endif
 
@@ -114,6 +122,7 @@ void CScene::CreateTerrain(int n, bool terLoad)
 
 
 	CreateTerrain1(n);
+	updTerLod();
 
 	// ter = mTerra;  //set ptr
 	if (n == 0)  // 1st ter only-
@@ -152,7 +161,7 @@ void CScene::CreateBltTerrains()
 			iLastHoriz = td.iHorizon;
 		
 	//  can drive outside regular terrains 0
-	auto max_horiz = app->pSet->horizons;
+	auto max_horiz = app->pSet->g.horizons;
 	bool drive_horiz =
 	#ifdef SR_EDITOR
 		false;
