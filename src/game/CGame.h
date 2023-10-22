@@ -78,6 +78,7 @@ public:
 	void UpdThr();
 	std::thread* mThread =0;  // 2nd thread for simulation
 
+	void updCarLightsBright();
 
 	//  📽️ Replays  ----------------
 	//  replay - full, saved by user

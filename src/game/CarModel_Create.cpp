@@ -306,13 +306,15 @@ void CarModel::Create()
 			Light* light = mSceneMgr->createLight();
 			node->attachObject( light );  ToDel(node);
 			
-			ColourValue c(1.f, 1.1f, 1.1f);  //par clr..
+			ColourValue c(1.f, 1.1f, 1.1f);  //par .car clr..
 			float bright = 0.9f*1.3f * pSet->bright, contrast = pSet->contrast;
-			light->setDiffuseColour(  c * bright * contrast );  // clr
+			light->setDiffuseColour(  c * bright * contrast );
 			light->setSpecularColour( c * bright * contrast );
 
-			Real pwr = sph ? 3.f : 12.f / numLights; //par
-			light->setPowerScale( Math::PI * pwr );
+			lightPower = sph ? 3.f : 12.f / numLights; //par  bright
+			lightPower *= Math::PI;
+			light->setPowerScale( lightPower * pSet->car_light_bright);
+
 			light->setType( 
 				sph ? Light::LT_POINT  // lol
 				: Light::LT_SPOTLIGHT );
@@ -323,7 +325,7 @@ void CarModel::Create()
 			light->setSpotlightRange(Degree(5), Degree(40), 1.0f );  //par 5 30
 			
 			light->setCastShadows(pSet->g.car_light_shadows);
-			light->setVisible(sc->needLights);  // auto on for dark tracks
+			light->setVisible(sc->needLights);  // auto on for dark tracks  set pCar ..
 			lights.push_back(light);
 	}	}
 
@@ -405,8 +407,11 @@ void CarModel::Create()
 
 			bsFlares->setDatablockOrMaterialName("flare1", "Popular");
 			nd->attachObject(bsFlares);
-			if (pCar)
+			if (pCar)  // on
+			{	if (sc->needLights)
+					pCar->bLightsOn = 1;
 				bsFlares->setVisible(pSet->g.car_lights && pCar->bLightsOn);
+			}
 		}
 	}
 	

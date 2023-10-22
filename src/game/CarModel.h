@@ -154,6 +154,9 @@ public:
 	Ogre::Vector3 posSph[2] = {{0,0,0},{0,0,0}};  // 🟢🌿 grass sphere
 
 	std::vector<Ogre::Light*> lights;  // 💡
+	float lightPower = 1.f;
+	void updLightsBright();
+	
 	
 	//  hide/show
 	void setVisible(bool visible);

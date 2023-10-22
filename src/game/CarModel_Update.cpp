@@ -588,6 +588,12 @@ void CarModel::UpdateBraking()
 		bsBrakes->setVisible(bBraking && bVisible);
 }
 
+void CarModel::updLightsBright()
+{
+	for (auto& l:lights)
+		l->setPowerScale( lightPower * pSet->car_light_bright);
+}
+
 //  ✨ upd particles
 void CarModel::UpdParsTrails(bool visible)
 {

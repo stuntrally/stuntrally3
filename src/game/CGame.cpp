@@ -108,3 +108,10 @@ void App::destroyScene()
 	Destroy();
 	LogO(">>>>>>>> Destroy SR done ----");
 }
+
+
+void App::updCarLightsBright()
+{
+	for (auto& c:carModels)
+		c->updLightsBright();
+}

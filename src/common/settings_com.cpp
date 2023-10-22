@@ -28,6 +28,11 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	// Param(c,w, "video.limit_fps", limit_fps);
 	// Param(c,w, "video.limit_fps_val", limit_fps_val);	Param(c,w, "video.limit_sleep", limit_sleep);
 
+	//  💡
+	Param(c,w, "video.bright", bright);			Param(c,w, "video.contrast", contrast);
+	Param(c,w, "graph_lights.bright", car_light_bright);
+
+
 
 	//  📊 graphics  --------
 	Param(c,w, "graph_detail.preset", preset);

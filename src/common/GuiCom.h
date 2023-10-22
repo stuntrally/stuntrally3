@@ -105,7 +105,7 @@ public:
 		SV svShadowSize, svShadowCount, svShadowType;
 		SV svShadowDist;  SV svShadowFilter;  void btnShadowsApply(WP);
 		//  💡 lights
-		Ck ckCarLights, ckCarLightsShadows;
+		Ck ckCarLights, ckCarLightsShadows;  void slBright(WP);
 
 		//  🌊 water
 		SlV(WaterSize);  //SlV(WaterSkip);
@@ -216,6 +216,7 @@ public:
 
 	//  💡 Light  --------------------------
 	SV svBright, svContrast;
+	SlV(CarLightBright);
 
 
 	//  🔗 util

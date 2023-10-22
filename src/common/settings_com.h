@@ -29,8 +29,10 @@ public:
 	// std::string buffer, rendersystem;
 	//  limit
 	// bool limit_fps =0;  float limit_fps_val = 60.f;  int limit_sleep = -1;
+	
 	//  💡 brightness
-	float bright = 1.f, contrast = 1.f; //, gamma = 1.15f;
+	float bright = 1.f, contrast = 1.f;  //, gamma = 1.15f;
+	float car_light_bright = 1.f;
 	
 	//  hud
 	bool vr_mode = 0;  // 👀 forces 1 player
