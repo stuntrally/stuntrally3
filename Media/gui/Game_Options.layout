@@ -879,13 +879,13 @@
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#B0B0B0#{Shadows}"/>
 						<Widget type="Button" skin="Button" position="32 240 200 26" layer="Back" name="ApplyShadows">
-							<Property key="Caption" value="#{Apply} ="/>
+							<Property key="Caption" value="#{Apply} ^"/>
 							<Property key="Colour" value="0.9 0.97 1.0"/>
 							<Property key="TextColour" value="0.9 0.97 1.0"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 50 176 24">
-							<Property key="Caption" value="#{Shadows}"/>
+							<Property key="Caption" value="#{Shadows} **"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.5 0.8 1"/>
 						</Widget>
@@ -895,27 +895,27 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 80 176 24">
-							<Property key="Caption" value="#{MapSize}"/>
+							<Property key="Caption" value="#{Count} * ="/>
 							<Property key="Colour" value="0 0 0"/>
-							<Property key="TextColour" value="0.5 0.8 1"/>
+							<Property key="TextColour" value="0.75 0.85 1"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="280 80 320 18" name="ShadowSize"/>
-						<Widget type="TextBox" skin="TextBox" position="210 80 60 24" name="ShadowSizeVal">
-							<Property key="TextColour" value="0.5 0.8 1"/>
+						<Widget type="Slider" skin="Slider" position="280 80 320 18" name="ShadowCount"/>
+						<Widget type="TextBox" skin="TextBox" position="210 80 60 24" name="ShadowCountVal">
+							<Property key="TextColour" value="0.75 0.85 1"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 110 176 24">
-							<Property key="Caption" value="#{Count}"/>
+							<Property key="Caption" value="#{MapSize} *"/>
 							<Property key="Colour" value="0 0 0"/>
-							<Property key="TextColour" value="0.75 0.85 1"/>
+							<Property key="TextColour" value="0.5 0.8 1"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="ShadowCount"/>
-						<Widget type="TextBox" skin="TextBox" position="210 110 60 24" name="ShadowCountVal">
-							<Property key="TextColour" value="0.75 0.85 1"/>
+						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="ShadowSize"/>
+						<Widget type="TextBox" skin="TextBox" position="210 110 60 24" name="ShadowSizeVal">
+							<Property key="TextColour" value="0.5 0.8 1"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 140 176 24">
-							<Property key="Caption" value="#{Distance}"/>
+							<Property key="Caption" value="#{Distance} *"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.7 0.8 0.9"/>
 						</Widget>
@@ -925,7 +925,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 170 176 24">
-							<Property key="Caption" value="#{ShadowFilter}"/>
+							<Property key="Caption" value="#{ShadowFilter} ^"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.6 0.7 0.8"/>
 						</Widget>
@@ -945,6 +945,15 @@
 						<Widget type="Button" skin="CheckBox" position="32 78 200 24" name="CarLightsShadows">
 							<Property key="Caption" value="#{Shadows} *"/>
 							<Property key="TextColour" value="0.7 0.7 0.7"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 110 176 24">
+							<Property key="Caption" value="#{Brightness}"/>
+							<Property key="TextColour" value="0.8 0.8 0.6"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="CarLightBright"/>
+						<Widget type="TextBox" skin="TextBox" position="210 110 60 24" name="CarLightBrightVal">
+							<Property key="TextColour" value="0.8 0.8 0.6"/>
 						</Widget>
 					</Widget>
 
@@ -1128,7 +1137,7 @@
 							<Property key="TextColour" value="1 0.9 0"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="32 78 176 24" name="TrailsOn">
-							<Property key="Caption" value="#{TireTrails} * ="/>
+							<Property key="Caption" value="#{TireTrails}"/>
 							<Property key="TextColour" value="1.0 0.8 0.6"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="210 50 60 24" name="ParticlesVal">
@@ -1139,7 +1148,7 @@
 						</Widget>
 					</Widget>
 
-					<!-- 🪄 Effects hidden -->
+					<!-- 🪄 Effects todo -->
 					<!-- <Widget type="TabItem" skin="" position="2 24 738 472">
 						<Property key="Caption" value="#E0C080#{Effects}"/>
 						<Property key="ButtonAutoWidth" value="false"/>

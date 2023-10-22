@@ -13,6 +13,7 @@
 #include "HlmsPbs2.h"
 #include <OgreHlmsUnlitDatablock.h>
 #include <OgreHlmsCompute.h>
+#include <OgreHlmsCommon.h>
 
 #include <Compositor/OgreCompositorManager2.h>
 #include <Compositor/OgreCompositorNodeDef.h>
@@ -23,7 +24,9 @@
 #include <Compositor/Pass/PassScene/OgreCompositorPassScene.h>
 #include <Compositor/Pass/PassIblSpecular/OgreCompositorPassIblSpecularDef.h>
 #include "Utils/MiscUtils.h"
+#include "settings_com.h"
 using namespace Ogre;
+using namespace std;
 
 // #define USE_STATIC_BRANCHING_FOR_SHADOWMAP_LIGHTS  //-
 
@@ -76,16 +79,18 @@ void AppGui::createPcfShadowNode()
 	// SHADOWMAP_FOCUSED, SHADOWMAP_PLANEOPTIMAL,  // for 1
 	sp.technique = pSet->g.shadow_count > 1 ?
 		SHADOWMAP_PSSM : SHADOWMAP_FOCUSED;
-	sp.numPssmSplits = std::min(4, std::max(2,
-		pSet->g.shadow_count ));
+	sp.numPssmSplits = min(4, max(2, pSet->g.shadow_count ));
 
 	sp.resolution[0].x = size1;  sp.resolution[0].y = size1;
 	for( size_t i = 1u; i < 4u; ++i )
 	{	sp.resolution[i].x = size2;  sp.resolution[i].y = size2;  }
-
+	//  [0 ]
+	//  [  ]
+	//  [][][]   1 2 3  ?
 	sp.atlasStart[0].x = 0u;	sp.atlasStart[0].y = 0u;
 	sp.atlasStart[1].x = 0u;	sp.atlasStart[1].y = size1;
 	sp.atlasStart[2].x = size2;	sp.atlasStart[2].y = size1;
+	sp.atlasStart[3].x = size1;	sp.atlasStart[3].y = size1;
 
 	sp.supportedLightTypes = 0u;
 	sp.addLightType( Light::LT_DIRECTIONAL );
@@ -135,23 +140,43 @@ void AppGui::createPcfShadowNode()
 	#endif
 	}
 
+	// bool esm = pSet->g.shadow_type >= Sh_Soft;
 	ShadowNodeHelper::createShadowNodeWithSettings(
-		mgr, rs->getCapabilities(), "ShadowMapFromCodeShadowNode", spv,
-		false,  // useEsm
+		mgr, rs->getCapabilities(),
+		// esm ? chooseEsmShadowNode() :
+		"ShadowMapFromCodeShadowNode", spv,
+		false,  // esm ?, // fixme ..
 		size2,  // pointLight CubemapRes = 1024u,
 		0.95f,  // pssmLambda = 0.95f,
 		1.0f,   // splitPadding = 1.0f,
 		0.125f, // splitBlend = 0.125f,
 		0.313f, // splitFade = 0.313f,
-		0,      // numStableSplits = 0,
+		0,      // numStableSplits = 0,  // par ?? would be awesome if it worked, has artifacts..
 		VisibilityFlags::RESERVED_VISIBILITY_FLAGS,  // visibilityMask
 		1.5f,   // xyPadding = 1.5f,
-		RQG_Sky,  //0u,     // firstRq = 0u,
-		RQG_PipeGlass  //255u    // lastRq = 255u
+		RQG_Sky,  		// firstRq = 0u,
+		RQG_PipeGlass	// lastRq = 255u
 	);
 	mSceneMgr->setShadowDirectionalLightExtrusionDistance( pSet->g.shadow_dist );
 	mSceneMgr->setShadowFarDistance( pSet->g.shadow_dist );
 	// HlmsDatablock::mShadowConstantBias.
+	
+	updShadowFilter();
+}
+
+//  Filtering PCF  ----
+void AppGui::updShadowFilter()
+{
+	HlmsPbs::ShadowFilter fil = 
+		pSet->g.shadow_type == Sh_Soft ? HlmsPbs::ExponentialShadowMaps : // ESM
+		(HlmsPbs::ShadowFilter)(pSet->g.shadow_filter);  // HlmsPbs::PCF_2x2 .. PCF_6x6,
+
+	HlmsManager *hlmsMgr = mRoot->getHlmsManager();
+	HlmsPbs *hlmsPbs = (HlmsPbs*)hlmsMgr->getHlms( HLMS_PBS );
+	hlmsPbs->setShadowSettings(fil);
+
+	HlmsTerra *hlmsTerra = (HlmsTerra*)hlmsMgr->getHlms( HLMS_USER3 );
+	hlmsPbs->setShadowSettings(fil);
 }
 
 //  🆕 create ESM
@@ -170,11 +195,11 @@ void AppGui::createEsmShadowNodes()
 	// SHADOWMAP_PLANEOPTIMAL,  // for 1?
 	// SHADOWMAP_FOCUSED,
 	sp.technique = SHADOWMAP_PSSM;
-	sp.numPssmSplits = std::min(4, std::max(2, pSet->g.shadow_count )); // 3u;
+	sp.numPssmSplits = 3;  // fixme  why only 3 works ..
+	// sp.numPssmSplits = min(4, max(2, pSet->g.shadow_count )); // 3u;
 
 	//  light 1  directional
 	sp.technique = SHADOWMAP_PSSM;
-	sp.numPssmSplits = 3u;
 	sp.resolution[0].x = size2;  sp.resolution[0].y = size2;
 	sp.resolution[1].x = size1;  sp.resolution[1].y = size1;
 	sp.resolution[2].x = size2;  sp.resolution[2].y = size2;
@@ -245,6 +270,9 @@ CompositorWorkspace *AppGui::setupShadowCompositor()
 	CompositorManager2 *mgr = mRoot->getCompositorManager2();
 	const String workspaceName( "ShadowMapFromCodeWorkspace" );
 
+	// if (mgr->hasWorkspaceDefinition( workspaceName ) )
+	// 	mgr->removeWorkspaceDefinition( workspaceName );
+
 	if( !mgr->hasWorkspaceDefinition( workspaceName ) )
 	{
 		mgr->createBasicWorkspaceDef(
@@ -264,7 +292,7 @@ CompositorWorkspace *AppGui::setupShadowCompositor()
 		passSceneDef->mShadowNode = "ShadowMapFromCodeShadowNode";
 
 		createPcfShadowNode();
-		createEsmShadowNodes();
+		// createEsmShadowNodes();
 	}
 
 	//  add Workspace

@@ -4,6 +4,7 @@
 #include "settings.h"
 #include "App.h"
 #include "Cam.h"
+#include "settings_com.h"
 #include "GraphicsSystem.h"
 
 #include <OgreRoot.h>
@@ -112,9 +113,9 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	
 	switch (pSet->g.shadow_type)
 	{
-	case 0:  break;  // none
-	case 1:  ps->mShadowNode = "ShadowMapFromCodeShadowNode";  break;
-	case 2:  ps->mShadowNode = chooseEsmShadowNode();  break;
+	case Sh_None:  break;  // none
+	case Sh_Depth: ps->mShadowNode = "ShadowMapFromCodeShadowNode";  break;
+	case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
 	}
 
 	// mGraphicsSystem->restartCompositor();
@@ -230,12 +231,12 @@ CompositorWorkspace* AppGui::SetupCompositor()
 //  💥🎥 Destroy Camera
 void AppGui::DestroyCameras()
 {
-	LogO("D### destroy Cameras");
-	for (auto cam : mCams)
+	LogO("D### destroy Cameras-");
+	/*for (auto cam : mCams)  // todo ?
 	{
 		if (cam.nd)  mSceneMgr->destroySceneNode(cam.nd);  cam.nd = 0;
 		if (cam.cam)  mSceneMgr->destroyCamera(cam.cam);
-	}
+	}*/
 	// mSceneMgr->destroyAllCameras();
 	mCams.clear();  // for game, not all
 }

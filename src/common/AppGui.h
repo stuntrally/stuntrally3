@@ -119,6 +119,7 @@ public:
 	void createEsmShadowNodes();
 	void setupESM();
 	Ogre::CompositorWorkspace *setupShadowCompositor();
+	void updShadowFilter();
 
 	const char *chooseEsmShadowNode();  // fixme ESM..
 	// void setupShadowNode( bool forEsm );
