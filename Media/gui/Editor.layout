@@ -17,7 +17,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
-			<!-- Sun -->
+			<!-- 🌞 Sun -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#FFFF80#{Sun}"/>
 				<Widget type="TabControl" skin="TabControl" position="16 28 760 506" name="SubTab">
@@ -100,7 +100,7 @@
 							<UserString key="tip" value="#{TipSunDirYaw}"/>
 						</Widget>
 
-						<!-- Light -->
+						<!-- 🌞 Light -->
 						<Widget type="TextBox" skin="TextBox" position="80 176 192 24">
 							<Property key="Caption" value="#{Light}"/>
 							<Property key="TextColour" value="1 1 0.9"/>
@@ -145,7 +145,7 @@
 							<UserString key="tip" value="#{DisableEdit}"/>
 						</Widget>
 
-						<!-- Rain -->
+						<!-- 🌧️ Rain -->
 						<Widget type="ComboBox" skin="ComboBox" position="188 344 148 24" name="Rain1Cmb">
 							<Property key="Colour" value="0.7 1 1"/>
 							<Property key="TextColour" value="0.7 1 1"/>
@@ -198,7 +198,7 @@
 						</Widget>
 					</Widget>
 
-					<!-- Fog -->
+					<!-- 🌫️ Fog -->
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#C0E0FF#{Fog}"/>
 						<Widget type="TextBox" skin="TextBox" position="24 184 184 24">
@@ -257,7 +257,7 @@
 							<UserString key="tip" value="#{TipFogEndDist}"/>
 						</Widget>
 
-						<!-- Height Fog -->
+						<!-- 🌫️ Height Fog -->
 						<Widget type="TextBox" skin="TextBox" position="44 212 104 24">
 							<Property key="Caption" value="#{Color}"/>
 							<Property key="TextColour" value="0.8 0.9 1"/>
@@ -338,7 +338,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
-			<!-- Terrain -->
+			<!-- ⛰️ Terrain -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#A0D8A0#{Terrain}"/>
 
@@ -426,7 +426,7 @@
 							<UserString key="tip" value="#{RplFileSize}"/>
 						</Widget>						
 
-						<!-- Tri Size -->
+						<!-- 🔻 Tri Size -->
 						<Widget type="TextBox" skin="TextBox" position="32 72 168 24">
 							<Property key="Caption" value="#{TriSize} [#{UnitM}]"/>
 							<Property key="TextColour" value="0.4 1 0.7"/>
@@ -465,7 +465,7 @@
 							<Property key="Alpha" value="0.7"/>
 						</Widget>
 
-						<!-- horizon -->
+						<!-- Horizon -->
 						<Widget type="TextBox" skin="TextBox" position="32 180 120 24">
 							<Property key="Caption" value="#{Horizon}"/>
 							<Property key="TextColour" value="0.3 0.7 1.0"/>
@@ -488,7 +488,7 @@
 							<Property key="Alpha" value="0.7"/>
 						</Widget>
 		
-						<!-- diff clr -->
+						<!-- 🌈 diff clr -->
 						<Widget type="TextBox" skin="TextBox" position="32 36 200 20">
 							<Property key="Caption" value="#{Diffuse} #{P_Red}"/>
 							<Property key="TextColour" value="0.9 0.75 0.6"/>
@@ -590,7 +590,7 @@
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#90C0C0#{Collision}"/>
 
-						<!-- collision -->
+						<!-- 🎳 collision -->
 						<Widget type="Button" skin="CheckBox" position="32 36 452 24" name="TerCollis">
 							<Property key="Caption" value="#{Collision}"/>
 							<Property key="TextColour" value="0.9 0.9 0.9"/>
@@ -651,7 +651,7 @@
 
 					</Widget>
 
-					<!-- Brushes -->
+					<!-- 🖌️🖌️ Brushes -->
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#40E040#{Brushes}"/>
 
@@ -680,7 +680,7 @@
 
 						<Widget type="Widget" skin="PanelEmpty" position="625 45 140 520" align="Stretch" name="panBrushAdj">
 
-							<!-- zoom -->
+							<!-- 🔍 zoom -->
 							<Widget type="ImageBox" skin="ImageBox" position="18 0 24 24">
 								<Property key="ImageCoord" value="256 128 128 128"/>
 								<Property key="Alpha" value="0.7"/>
@@ -805,7 +805,7 @@
 						</Widget>
 					</Widget>
 
-					<!-- Brush Params -->
+					<!-- 🖌️ Brush Params -->
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#608060#{InputBrushParams}"/>
 						<Widget type="Button" skin="Button" position="20 20 156 30" name="BrushRandom2">
@@ -935,7 +935,7 @@
 					</Widget>
 
 
-					<!-- Ter Generator -->
+					<!-- 🛠️ Ter Generator -->
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#40D0A0#{Generator}"/>
 						<Widget type="Widget" skin="PanelSkin" position="0 45 750 436">
@@ -1170,7 +1170,7 @@
 						</Widget>
 					</Widget>
 
-					<!-- Ter Tools -->
+					<!-- 🛠️ Ter Tools -->
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#E0A050#{Tools}"/>
 
@@ -1296,7 +1296,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
-			<!-- Layers -->
+			<!-- 🏔️ Layers -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#80FF00#{Layers}"/>
 
@@ -1465,7 +1465,7 @@
 					<Property key="Visible" value="false"/>
 				</Widget>
 				
-				<!-- BlendMap -->
+				<!-- 🏔️ BlendMap -->
 				<Widget type="TabControl" skin="TabControl" position="24 232 744 300" name="SubTab">
 					<Property key="Caption" value="#B0F060#{BlendMap}"/>
 					<Property key="ButtonAutoWidth" value="true"/>
@@ -1554,6 +1554,7 @@
 							<UserString key="tip" value="#{TipTerLHSm}"/>
 						</Widget>
 
+						<!-- 🌀 noise -->
 						<Widget type="TextBox" skin="TextBox" position="10 188 130 24">
 							<Property key="Caption" value="#{TerLNoise} +1"/>
 							<Property key="TextColour" value="0.3 0.6 0.85"/>
@@ -1614,7 +1615,7 @@
 						</Widget>
 					</Widget>
 
-					<!-- Noise presets -->
+					<!-- 🌀 Noise presets -->
 					<Widget type="TabItem" skin="" position="2 24 738 272">
 						<Property key="Caption" value="#90C0FF#{TerLNoise}"/>
 						<Widget type="Button" skin="Button" position="610 55 20 20" name="TerLN_0">
@@ -1773,7 +1774,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
-			<!-- Grasses -->
+			<!-- 🌿 Grasses -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#B0F040#{Grasses}"/>
 				<Widget type="TabControl" skin="TabControl" position="16 28 760 506" name="SubTab">
@@ -1932,6 +1933,7 @@
 							<Property key="Alpha" value="0.7"/>
 						</Widget>
 
+						<!-- 🌿 Grass -->
 						<Widget type="ImageBox" skin="ImageBox" position="528 176 200 200" name="ImgGrass">
 							<UserString key="tip" value="#{TipGrassPrev}"/>
 						</Widget>
@@ -2076,6 +2078,8 @@
 							<UserString key="tip" value="#{TipGrassLayerDens}"/>
 						</Widget>
 					</Widget>
+
+					<!-- 🌿🏛️ channels -->
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#70F070#{Channels}"/>
 
@@ -2273,7 +2277,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
-			<!-- Vegetation -->
+			<!-- 🌳🪨 Vegetation -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#80F0F0#{Vegetation}"/>
 				<Widget type="TabControl" skin="TabControl" position="16 28 760 506" name="SubTab">
@@ -2357,6 +2361,7 @@
 							<Property key="TextColour" value="0.6 1.0 1.0"/>
 							<Property key="Alpha" value="0.7"/>
 						</Widget>
+
 						<Widget type="Widget" skin="" position="136 12 634 24">
 							<Widget type="TabControl" skin="TabControlIcon" position="0 0 616 24" name="LTrNumTab">
 								<Property key="Colour" value="0.6 0.8 0.8"/>
@@ -2624,7 +2629,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
-			<!-- Surface -->
+			<!-- ⚫💭 Surface -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#B0B060#{Surface}"/>
 
@@ -2810,7 +2815,7 @@
 			</Widget>
 			
 <!-- ============================================================================================================================================= -->
-			<!-- Road -->
+			<!-- 🛣️ Road -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#FFB020#{Road}"/>
 
@@ -2851,255 +2856,16 @@
 					</Widget>
 				</Widget>
 
-				<!-- Road mtr -->
 				<Widget type="TabControl" skin="TabControl" position="16 28 752 496" name="SubTab">
 					<Property key="ButtonAutoWidth" value="true"/>
 					<Property key="Colour" value="0.73 0.88 1"/>
 					<Property key="SmoothShow" value="false"/>
-					
+				
 					<!-- WIP Road Point params  #{Properties}  -->
-					<Widget type="TabItem" skin="" position="2 24 746 468">
-						<Property key="Caption" value="#FFB020#{RoadPoint}"/>
+					<!-- // Todo: in Editor_ToDo.layout // -->
 
-						<!-- ter -->
-						<Widget type="ImageBox" skin="ImageBox" position="2 5 32 20">
-							<Property key="InheritsAlpha" value="false"/>
-							<Property key="ImageCoord" value="32 40 32 20"/>
-							<Property key="ImageTexture" value="track_icons.png"/>
-						</Widget>
-						<Widget type="Button" skin="CheckBox" position="36 5 110 20" name="rdOnTer">
-							<Property key="Caption" value="#{Road_OnTerrain}"/>
-							<Property key="TextColour" value="0.5 1.0 0.5"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="216 8 110 20">
-							<Property key="Caption" value="#{CarType}"/>
-							<Property key="TextColour" value="0.3 0.6 0.8"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="328 5 60 24" name="rdTypeEdit">
-							<Property key="TextColour" value="0.3 0.6 0.8"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="408 8 240 16" name="rdType">
-							<Property key="Colour" value="0.3 0.6 0.8"/>
-						</Widget>
-
-						<!-- height -->
-						<Widget type="ImageBox" skin="ImageBox" position="2 63 32 20">
-							<Property key="InheritsAlpha" value="false"/>
-							<Property key="ImageCoord" value="32 40 32 20"/>
-							<Property key="ImageTexture" value="track_icons.png"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="36 63 110 24">
-							<Property key="Caption" value="#{Road_Height}"/>
-							<Property key="TextColour" value="0.6 0.9 0.6"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="148 60 60 24" name="rdHeightEdit">
-							<Property key="TextColour" value="0.6 1.0 0.6"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="228 63 440 16" name="rdHeight">
-							<Property key="Colour" value="0.6 0.9 0.6"/>
-						</Widget>
-
-						<!-- width -->
-						<Widget type="ImageBox" skin="ImageBox" position="0 93 32 20">
-							<Property key="InheritsAlpha" value="false"/>
-							<Property key="ImageCoord" value="0 40 32 20"/>
-							<Property key="ImageTexture" value="track_icons.png"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="36 93 110 24">
-							<Property key="Caption" value="#{Road_Width}"/>
-							<Property key="TextColour" value="0.3 0.9 0.8"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="148 90 60 24" name="rdWidthEdit">
-							<Property key="TextColour" value="0.3 1.0 0.9"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="228 93 440 16" name="rdWidth">
-							<Property key="Colour" value="0.3 0.9 0.8"/>
-						</Widget>
-
-						<!-- angles -->
-						<Widget type="ImageBox" skin="ImageBox" position="0 120 32 24">
-							<Property key="InheritsAlpha" value="false"/>
-							<Property key="Colour" value="1.0 0.7 0.4"/>
-							<Property key="ImageCoord" value="288 0 32 32"/>
-							<Property key="ImageTexture" value="track_icons.png"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="36 123 110 24">
-							<Property key="Caption" value="#{Road_Roll}"/>
-							<Property key="TextColour" value="1.0 0.7 0.5"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="148 120 60 24" name="rdRollEdit">
-							<Property key="TextColour" value="1.0 0.7 0.5"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="228 123 440 16" name="rdRoll">
-							<Property key="Colour" value="1.0 0.7 0.5"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="36 153 110 24">
-							<Property key="Caption" value="#{Road_Yaw}"/>
-							<Property key="TextColour" value="0.9 0.6 0.5"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="148 150 60 24" name="rdYawEdit">
-							<Property key="TextColour" value="0.9 0.6 0.5"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="228 153 440 16" name="rdYaw">
-							<Property key="Colour" value="0.9 0.6 0.5"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="36 183 110 24">
-							<Property key="Caption" value="#{CarType}"/>
-							<Property key="TextColour" value="0.9 0.6 0.8"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="148 180 60 24" name="rdRollEdit">
-							<Property key="TextColour" value="0.9 0.6 0.8"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="228 183 440 16" name="rdRoll">
-							<Property key="Colour" value="0.9 0.6 0.8"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="36 213 110 24">
-							<Property key="Caption" value="#{Road_Snap}"/>
-							<Property key="TextColour" value="0.9 0.3 0.3"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="148 210 60 24" name="rdRollEdit">
-							<Property key="TextColour" value="0.9 0.3 0.3"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="228 213 440 16" name="rdRoll">
-							<Property key="Colour" value="0.9 0.3 0.3"/>
-						</Widget>
-
-						<!-- Pipe -->
-						<Widget type="ImageBox" skin="ImageBox" position="0 240 32 20">
-							<Property key="InheritsAlpha" value="false"/>
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="128 40 32 20"/>
-							<Property key="Alpha" value="1.0"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="36 243 110 24">
-							<Property key="Caption" value="#{Road_Pipe}"/>
-							<Property key="TextColour" value="0.9 0.9 0.0"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="148 240 60 24" name="rdPipeEdit">
-							<Property key="TextColour" value="0.9 0.9 0.1"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="228 243 440 16" name="rdPipe">
-							<Property key="Colour" value="0.9 0.9 0.1"/>
-						</Widget>
-
-						<!-- column -->
-						<Widget type="TextBox" skin="TextBox" position="36 273 110 24">
-							<Property key="Caption" value="#{Road_Column}"/>
-							<Property key="TextColour" value="0.8 0.8 0.8"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="148 270 60 24" name="rdColumnEdit">
-							<Property key="TextColour" value="0.8 0.8 0.8"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="228 273 440 16" name="rdColumn">
-							<Property key="Colour" value="0.8 0.8 0.8"/>
-						</Widget>
-
-						<!-- material -->
-						<Widget type="ImageBox" skin="ImageBox" position="0 300 28 28">
-							<Property key="InheritsAlpha" value="false"/>
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="32 4 32 32"/>
-							<Property key="Alpha" value="0.7"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="36 303 110 24">
-							<Property key="Caption" value="#{GrMaterial}"/>
-							<Property key="TextColour" value="0.8 0.8 1.0"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="148 300 60 24" name="rdMtrEdit">
-							<Property key="TextColour" value="0.8 0.8 1.0"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="228 303 440 16" name="rdMtr">
-							<Property key="Colour" value="0.8 0.8 1.0"/>
-						</Widget>
-
-						<!-- ChkR -->
-						<Widget type="TextBox" skin="TextBox" position="36 333 110 24">
-							<Property key="Caption" value="#{Road_ChkR}"/>
-							<Property key="TextColour" value="0.7 0.5 1.0"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="148 330 60 24" name="rdChkEdit">
-							<Property key="TextColour" value="0.7 0.5 1.0"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="228 333 440 16" name="rdChk">
-							<Property key="Colour" value="0.7 0.5 1.0"/>
-						</Widget>
-
-						<!-- wall -->
-						<Widget type="TextBox" skin="TextBox" position="36 363 110 24">
-							<Property key="Caption" value="#{Wall}"/>
-							<Property key="TextColour" value="0.7 0.9 0.9"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="148 360 60 24" name="rdWallEdit">
-							<Property key="TextColour" value="0.7 0.9 0.9"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="228 363 440 16" name="rdWall">
-							<Property key="Colour" value="0.7 0.9 0.9"/>
-						</Widget>
-
-						<!-- loop type -->
-						<Widget type="ImageBox" skin="ImageBox" position="0 390 28 28">
-							<Property key="InheritsAlpha" value="false"/>
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="224 4 32 32"/>
-							<Property key="Alpha" value="0.7"/>
-						</Widget>
-						<!-- <Widget type="ImageBox" skin="ImageBox" position="0 324 26 26">
-							<Property key="InheritsAlpha" value="false"/>
-							<Property key="ImageCoord" value="384 768 128 128"/>
-							<Property key="ImageTexture" value="gui_icons.png"/>
-							<Property key="Alpha" value="0.0"/>
-						</Widget> -->
-						<Widget type="TextBox" skin="TextBox" position="36 393 110 24">
-							<Property key="Caption" value="#{Road_Loop}"/>
-							<Property key="TextColour" value="0.4 0.9 0.9"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="148 390 60 24" name="rdWallEdit">
-							<Property key="TextColour" value="0.4 0.9 0.9"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="228 393 440 16" name="rdWall">
-							<Property key="Colour" value="0.4 0.9 0.9"/>
-						</Widget>
-
-						<!-- on pipe -->
-						<Widget type="ImageBox" skin="ImageBox" position="0 420 32 20">
-							<Property key="InheritsAlpha" value="false"/>
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="160 40 32 20"/>
-							<Property key="Alpha" value="1.0"/>
-						</Widget>
-						<Widget type="Button" skin="CheckBox" position="36 423 110 20" name="rdChk1st">
-							<Property key="Caption" value="#{Road_OnPipe}"/>
-							<Property key="TextColour" value="1.0 0.45 0.2"/>
-						</Widget>
-
-						<!-- chk 1st -->
-						<Widget type="Button" skin="CheckBox" position="336 423 110 20" name="rdChk1st">
-							<Property key="Caption" value="(1)"/>
-							<Property key="TextColour" value="0.6 0.6 1.0"/>
-						</Widget>
-
-						<!-- not real -->
-						<Widget type="ImageBox" skin="ImageBox" position="500 420 26 26">
-							<Property key="InheritsAlpha" value="false"/>
-							<Property key="ImageCoord" value="256 384 128 128"/>
-							<Property key="ImageTexture" value="gui_icons.png"/>
-							<Property key="Alpha" value="0.7"/>
-						</Widget>
-						<Widget type="Button" skin="CheckBox" position="536 423 110 20" name="rdNotReal">
-							<Property key="Caption" value="#{Road_NotReal}"/>
-							<Property key="TextColour" value="0.8 0.6 0.7"/>
-						</Widget>
-
-						<!-- rdKey[13]->setCaption(road->bMerge ? TR("#{Road_Merged}"): "");
-						rdTxt[13]->setCaption(road->isLooped ? "": TR("#{Road_NotLooped}")); -->
-					</Widget>
-
-
-					<!-- road,pipe Materials -->
+					
+					<!-- 🛣️ Road  Materials -->
 					<Widget type="TabItem" skin="" position="2 24 746 468">
 						<Property key="Caption" value="#A0F0F0#{Road}"/>
 						<Widget type="TextBox" skin="TextBox" position="60 32 284 24">
@@ -3178,6 +2944,7 @@
 						</Widget>
 					</Widget>
 
+					<!-- ⭕ Pipe  Materials -->
 					<Widget type="TabItem" skin="" position="2 24 746 468">
 						<Property key="Caption" value="#F0F060#{Pipe}"/>
 						<Widget type="TextBox" skin="TextBox" position="60 32 268 24">
@@ -3256,7 +3023,7 @@
 						</Widget>
 					</Widget>
 
-					<!-- Column -->
+					<!-- 🏛️ Column -->
 					<Widget type="TabItem" skin="" position="2 24 746 468">
 						<Property key="Caption" value="#B0B0C8#{Column}"/>
 						<Widget type="TextBox" skin="TextBox" position="36 32 244 24">
@@ -3440,7 +3207,7 @@
 			</Widget>
 
 <!-- ============================================================================================================================================= -->
-			<!-- Objects -->
+			<!-- 📦🏢 Objects -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#D0D0D0#{Objects}"/>
 				<Widget type="TextBox" skin="TextBox" position="14 16 128 24">

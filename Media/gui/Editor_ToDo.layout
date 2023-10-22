@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MyGUI type="Layout" version="3.2.0">
+
+	<Widget type="Window" skin="WindowC" position="20 24 800 600" align="Center" layer="Overlapped" name="EditorWnd">
+		<Property key="MinSize" value="500 400"/>
+		<Property key="Caption" value="#{Editor}"/>
+		<Property key="Alpha" value="0.3"/>
+		<Property key="Snap" value="true"/>
+		<Property key="Visible" value="true"/>
+		<Widget type="TabControl" skin="TabControlIcon" position="0 0 800 600" align="Stretch" layer="Back" name="TabWndEdit">
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="SmoothShow" value="false"/>
+			<Property key="Colour" value="0.7 0.9 1"/>
+			<Widget type="TabItem" skin="" position="2 24 794 562">
+				<Property key="Caption" value="#FFE0C0&lt;#{BackMenu}"/>
+				<Property key="Colour" value="1 0.6 0.2"/>
+			</Widget>
+
+				
+					<!-- WIP Road Point params  #{Properties}  -->
+					<Widget type="TabItem" skin="" position="2 24 746 468">
+						<Property key="Caption" value="#FFB020#{RoadPoint}"/>
+						<Property key="ButtonAutoWidth" value="false"/>
+						<Property key="ButtonWidth" value="1"/>
+	
+						<!-- ter -->
+						<Widget type="ImageBox" skin="ImageBox" position="2 5 32 20">
+							<Property key="InheritsAlpha" value="false"/>
+							<Property key="ImageCoord" value="32 40 32 20"/>
+							<Property key="ImageTexture" value="track_icons.png"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="36 5 110 20" name="rdOnTer">
+							<Property key="Caption" value="#{Road_OnTerrain}"/>
+							<Property key="TextColour" value="0.5 1.0 0.5"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="216 8 110 20">
+							<Property key="Caption" value="#{CarType}"/>
+							<Property key="TextColour" value="0.3 0.6 0.8"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="328 5 60 24" name="rdTypeEdit">
+							<Property key="TextColour" value="0.3 0.6 0.8"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="408 8 240 16" name="rdType">
+							<Property key="Colour" value="0.3 0.6 0.8"/>
+						</Widget>
+
+						<!-- height -->
+						<Widget type="ImageBox" skin="ImageBox" position="2 63 32 20">
+							<Property key="InheritsAlpha" value="false"/>
+							<Property key="ImageCoord" value="32 40 32 20"/>
+							<Property key="ImageTexture" value="track_icons.png"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 63 110 24">
+							<Property key="Caption" value="#{Road_Height}"/>
+							<Property key="TextColour" value="0.6 0.9 0.6"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="148 60 60 24" name="rdHeightEdit">
+							<Property key="TextColour" value="0.6 1.0 0.6"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="228 63 440 16" name="rdHeight">
+							<Property key="Colour" value="0.6 0.9 0.6"/>
+						</Widget>
+
+						<!-- width -->
+						<Widget type="ImageBox" skin="ImageBox" position="0 93 32 20">
+							<Property key="InheritsAlpha" value="false"/>
+							<Property key="ImageCoord" value="0 40 32 20"/>
+							<Property key="ImageTexture" value="track_icons.png"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 93 110 24">
+							<Property key="Caption" value="#{Road_Width}"/>
+							<Property key="TextColour" value="0.3 0.9 0.8"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="148 90 60 24" name="rdWidthEdit">
+							<Property key="TextColour" value="0.3 1.0 0.9"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="228 93 440 16" name="rdWidth">
+							<Property key="Colour" value="0.3 0.9 0.8"/>
+						</Widget>
+
+						<!-- angles -->
+						<Widget type="ImageBox" skin="ImageBox" position="0 120 32 24">
+							<Property key="InheritsAlpha" value="false"/>
+							<Property key="Colour" value="1.0 0.7 0.4"/>
+							<Property key="ImageCoord" value="288 0 32 32"/>
+							<Property key="ImageTexture" value="track_icons.png"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 123 110 24">
+							<Property key="Caption" value="#{Road_Roll}"/>
+							<Property key="TextColour" value="1.0 0.7 0.5"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="148 120 60 24" name="rdRollEdit">
+							<Property key="TextColour" value="1.0 0.7 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="228 123 440 16" name="rdRoll">
+							<Property key="Colour" value="1.0 0.7 0.5"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="36 153 110 24">
+							<Property key="Caption" value="#{Road_Yaw}"/>
+							<Property key="TextColour" value="0.9 0.6 0.5"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="148 150 60 24" name="rdYawEdit">
+							<Property key="TextColour" value="0.9 0.6 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="228 153 440 16" name="rdYaw">
+							<Property key="Colour" value="0.9 0.6 0.5"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="36 183 110 24">
+							<Property key="Caption" value="#{CarType}"/>
+							<Property key="TextColour" value="0.9 0.6 0.8"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="148 180 60 24" name="rdRollEdit">
+							<Property key="TextColour" value="0.9 0.6 0.8"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="228 183 440 16" name="rdRoll">
+							<Property key="Colour" value="0.9 0.6 0.8"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="36 213 110 24">
+							<Property key="Caption" value="#{Road_Snap}"/>
+							<Property key="TextColour" value="0.9 0.3 0.3"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="148 210 60 24" name="rdRollEdit">
+							<Property key="TextColour" value="0.9 0.3 0.3"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="228 213 440 16" name="rdRoll">
+							<Property key="Colour" value="0.9 0.3 0.3"/>
+						</Widget>
+
+						<!-- Pipe -->
+						<Widget type="ImageBox" skin="ImageBox" position="0 240 32 20">
+							<Property key="InheritsAlpha" value="false"/>
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="128 40 32 20"/>
+							<Property key="Alpha" value="1.0"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 243 110 24">
+							<Property key="Caption" value="#{Road_Pipe}"/>
+							<Property key="TextColour" value="0.9 0.9 0.0"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="148 240 60 24" name="rdPipeEdit">
+							<Property key="TextColour" value="0.9 0.9 0.1"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="228 243 440 16" name="rdPipe">
+							<Property key="Colour" value="0.9 0.9 0.1"/>
+						</Widget>
+
+						<!-- column -->
+						<Widget type="TextBox" skin="TextBox" position="36 273 110 24">
+							<Property key="Caption" value="#{Road_Column}"/>
+							<Property key="TextColour" value="0.8 0.8 0.8"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="148 270 60 24" name="rdColumnEdit">
+							<Property key="TextColour" value="0.8 0.8 0.8"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="228 273 440 16" name="rdColumn">
+							<Property key="Colour" value="0.8 0.8 0.8"/>
+						</Widget>
+
+						<!-- material -->
+						<Widget type="ImageBox" skin="ImageBox" position="0 300 28 28">
+							<Property key="InheritsAlpha" value="false"/>
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="32 4 32 32"/>
+							<Property key="Alpha" value="0.7"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 303 110 24">
+							<Property key="Caption" value="#{GrMaterial}"/>
+							<Property key="TextColour" value="0.8 0.8 1.0"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="148 300 60 24" name="rdMtrEdit">
+							<Property key="TextColour" value="0.8 0.8 1.0"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="228 303 440 16" name="rdMtr">
+							<Property key="Colour" value="0.8 0.8 1.0"/>
+						</Widget>
+
+						<!-- ChkR -->
+						<Widget type="TextBox" skin="TextBox" position="36 333 110 24">
+							<Property key="Caption" value="#{Road_ChkR}"/>
+							<Property key="TextColour" value="0.7 0.5 1.0"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="148 330 60 24" name="rdChkEdit">
+							<Property key="TextColour" value="0.7 0.5 1.0"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="228 333 440 16" name="rdChk">
+							<Property key="Colour" value="0.7 0.5 1.0"/>
+						</Widget>
+
+						<!-- wall -->
+						<Widget type="TextBox" skin="TextBox" position="36 363 110 24">
+							<Property key="Caption" value="#{Wall}"/>
+							<Property key="TextColour" value="0.7 0.9 0.9"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="148 360 60 24" name="rdWallEdit">
+							<Property key="TextColour" value="0.7 0.9 0.9"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="228 363 440 16" name="rdWall">
+							<Property key="Colour" value="0.7 0.9 0.9"/>
+						</Widget>
+
+						<!-- loop type -->
+						<Widget type="ImageBox" skin="ImageBox" position="0 390 28 28">
+							<Property key="InheritsAlpha" value="false"/>
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="224 4 32 32"/>
+							<Property key="Alpha" value="0.7"/>
+						</Widget>
+						<!-- <Widget type="ImageBox" skin="ImageBox" position="0 324 26 26">
+							<Property key="InheritsAlpha" value="false"/>
+							<Property key="ImageCoord" value="384 768 128 128"/>
+							<Property key="ImageTexture" value="gui_icons.png"/>
+							<Property key="Alpha" value="0.0"/>
+						</Widget> -->
+						<Widget type="TextBox" skin="TextBox" position="36 393 110 24">
+							<Property key="Caption" value="#{Road_Loop}"/>
+							<Property key="TextColour" value="0.4 0.9 0.9"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="148 390 60 24" name="rdWallEdit">
+							<Property key="TextColour" value="0.4 0.9 0.9"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="228 393 440 16" name="rdWall">
+							<Property key="Colour" value="0.4 0.9 0.9"/>
+						</Widget>
+
+						<!-- on pipe -->
+						<Widget type="ImageBox" skin="ImageBox" position="0 420 32 20">
+							<Property key="InheritsAlpha" value="false"/>
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="160 40 32 20"/>
+							<Property key="Alpha" value="1.0"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="36 423 110 20" name="rdChk1st">
+							<Property key="Caption" value="#{Road_OnPipe}"/>
+							<Property key="TextColour" value="1.0 0.45 0.2"/>
+						</Widget>
+
+						<!-- chk 1st -->
+						<Widget type="Button" skin="CheckBox" position="336 423 110 20" name="rdChk1st">
+							<Property key="Caption" value="(1)"/>
+							<Property key="TextColour" value="0.6 0.6 1.0"/>
+						</Widget>
+
+						<!-- not real -->
+						<Widget type="ImageBox" skin="ImageBox" position="500 420 26 26">
+							<Property key="InheritsAlpha" value="false"/>
+							<Property key="ImageCoord" value="256 384 128 128"/>
+							<Property key="ImageTexture" value="gui_icons.png"/>
+							<Property key="Alpha" value="0.7"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="536 423 110 20" name="rdNotReal">
+							<Property key="Caption" value="#{Road_NotReal}"/>
+							<Property key="TextColour" value="0.8 0.6 0.7"/>
+						</Widget>
+
+						<!-- rdKey[13]->setCaption(road->bMerge ? TR("#{Road_Merged}"): "");
+						rdTxt[13]->setCaption(road->isLooped ? "": TR("#{Road_NotLooped}")); -->
+					</Widget>
+
+
+					<!-- Road  Materials -->
+					<Widget type="TabItem" skin="" position="2 24 746 468">
+						<Property key="Caption" value="#A0F0F0#{Road}"/>
+						<Widget type="TextBox" skin="TextBox" position="60 32 284 24">
+							<Property key="Caption" value="#{RoadMaterials}"/>
+							<Property key="TextColour" value="0.5 1 1"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="380 32 216 24">
+							<Property key="Caption" value="#{Wall}"/>
+							<Property key="TextColour" value="0.5 0.8 0.8"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 68 24 24">
+							<Property key="TextColour" value="0.2 0.9 0.9"/>
+							<Property key="Caption" value="1"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 92 24 24">
+							<Property key="TextColour" value="0.2 0.9 0.9"/>
+							<Property key="Caption" value="2"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 116 24 24">
+							<Property key="TextColour" value="0.2 0.9 0.9"/>
+							<Property key="Caption" value="3"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 140 24 24">
+							<Property key="TextColour" value="0.2 0.9 0.9"/>
+							<Property key="Caption" value="4"/>
+						</Widget>
+
+						<Widget type="Button" skin="Button" position="60 64 190 24" name="0RdMtr">
+							<Property key="Colour" value="0.5 1 1"/>
+							<Property key="TextColour" value="0.5 1 1"/>
+							<Property key="TextAlign" value="Left"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="60 88 190 24" name="1RdMtr">
+							<Property key="TextColour" value="0.5 1 1"/>
+							<Property key="Colour" value="0.5 1 1"/>
+							<Property key="TextAlign" value="Left"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="60 112 190 24" name="2RdMtr">
+							<Property key="Colour" value="0.5 1 1"/>
+							<Property key="TextColour" value="0.5 1 1"/>
+							<Property key="TextAlign" value="Left"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="60 136 190 24" name="3RdMtr">
+							<Property key="TextColour" value="0.5 1 1"/>
+							<Property key="Colour" value="0.5 1 1"/>
+							<Property key="TextAlign" value="Left"/>
+						</Widget>
+						
+						<Widget type="Button" skin="Button" position="380 64 190 24" name="0RdMtrW">
+							<Property key="Colour" value="0.5 0.7 0.7"/>
+							<Property key="TextColour" value="0.5 0.7 0.7"/>
+							<Property key="TextAlign" value="Left"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="36 196 316 24">
+							<Property key="Caption" value="#{TexCoordMul}"/>
+							<Property key="TextColour" value="0.6 1 1"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="36 224 56 24" name="RdTcMulEdit">
+							<Property key="TextColour" value="0.6 1 1"/>
+							<Property key="Colour" value="0.6 1 1"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="96 227 256 18" name="RdTcMul">
+							<Property key="Colour" value="0.6 1 1"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="380 196 312 24">
+							<Property key="Caption" value="#{TexCoordMul}"/>
+							<Property key="TextColour" value="0.6 0.7 0.7"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="380 224 56 24" name="RdTcMulWEdit">
+							<Property key="TextColour" value="0.6 0.7 0.7"/>
+							<Property key="Colour" value="0.6 0.7 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="440 227 256 18" name="RdTcMulW">
+							<Property key="Colour" value="0.6 0.7 0.7"/>
+						</Widget>
+					</Widget>
+
+					<!-- Pipe  Materials -->
+					<Widget type="TabItem" skin="" position="2 24 746 468">
+						<Property key="Caption" value="#F0F060#{Pipe}"/>
+						<Widget type="TextBox" skin="TextBox" position="60 32 268 24">
+							<Property key="Caption" value="#{PipeMaterials}"/>
+							<Property key="TextColour" value="1 1 0.5"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 68 24 24">
+							<Property key="TextColour" value="0.9 0.9 0.2"/>
+							<Property key="Caption" value="1"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 92 24 24">
+							<Property key="TextColour" value="0.9 0.9 0.2"/>
+							<Property key="Caption" value="2"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 116 24 24">
+							<Property key="TextColour" value="0.9 0.9 0.2"/>
+							<Property key="Caption" value="3"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 140 24 24">
+							<Property key="TextColour" value="0.9 0.9 0.2"/>
+							<Property key="Caption" value="4"/>
+						</Widget>
+
+						<Widget type="Button" skin="Button" position="60 64 190 24" name="0RdMtrP">
+							<Property key="Colour" value="1 1 0.5"/>
+							<Property key="TextColour" value="1 1 0.5"/>
+							<Property key="TextAlign" value="Left"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="60 88 190 24" name="1RdMtrP">
+							<Property key="Colour" value="1 1 0.5"/>
+							<Property key="TextColour" value="1 1 0.5"/>
+							<Property key="TextAlign" value="Left"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="60 112 190 24" name="2RdMtrP">
+							<Property key="TextColour" value="1 1 0.5"/>
+							<Property key="Colour" value="1 1 0.5"/>
+							<Property key="TextAlign" value="Left"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="60 136 190 24" name="3RdMtrP">
+							<Property key="Colour" value="1 1 0.5"/>
+							<Property key="TextColour" value="1 1 0.5"/>
+							<Property key="TextAlign" value="Left"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="36 196 316 24">
+							<Property key="Caption" value="#{TexCoordMul}"/>
+							<Property key="TextColour" value="1 1 0.6"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="36 224 56 24" name="RdTcMulPEdit">
+							<Property key="TextColour" value="1 1 0.6"/>
+							<Property key="Colour" value="1 1 0.6"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="96 227 256 18" name="RdTcMulP">
+							<Property key="Colour" value="1 1 0.6"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="380 196 312 24">
+							<Property key="Caption" value="#{TexCoordMul}"/>
+							<Property key="TextColour" value="0.7 0.7 0.6"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="380 224 56 24" name="RdTcMulPWEdit">
+							<Property key="TextColour" value="0.7 0.7 0.6"/>
+							<Property key="Colour" value="0.7 0.7 0.6"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="440 227 256 18" name="RdTcMulPW">
+							<Property key="Colour" value="0.7 0.7 0.6"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="380 32 232 24">
+							<Property key="Caption" value="#{Wall}"/>
+							<Property key="TextColour" value="0.7 0.7 0.5"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="380 64 190 24" name="0RdMtrPW">
+							<Property key="Colour" value="0.7 0.7 0.5"/>
+							<Property key="TextColour" value="0.7 0.7 0.5"/>
+							<Property key="TextAlign" value="Left"/>
+						</Widget>
+					</Widget>
+
+					<!-- Column -->
+					<Widget type="TabItem" skin="" position="2 24 746 468">
+						<Property key="Caption" value="#B0B0C8#{Column}"/>
+						<Widget type="TextBox" skin="TextBox" position="36 32 244 24">
+							<Property key="Caption" value="#{GrMaterial}"/>
+							<Property key="TextColour" value="0.9 0.9 0.9"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="36 64 190 24" name="0RdMtrC">
+							<Property key="TextColour" value="0.7 0.7 0.7"/>
+							<Property key="Colour" value="0.7 0.7 0.7"/>
+							<Property key="TextAlign" value="Left"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 196 312 24">
+							<Property key="Caption" value="#{TexCoordMul}"/>
+							<Property key="TextColour" value="0.7 0.7 0.7"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="36 224 56 24" name="RdTcMulCEdit">
+							<Property key="TextColour" value="0.7 0.7 0.7"/>
+							<Property key="Colour" value="0.7 0.7 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="96 227 256 18" name="RdTcMulC">
+							<Property key="Colour" value="0.7 0.7 0.7"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="36 320 308 24">
+							<Property key="Caption" value="#{ColumnNSides}"/>
+							<Property key="TextColour" value="0.8 0.8 1.0"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="36 346 48 24" name="RdColNEdit">
+							<Property key="Colour" value="0.7 0.7 0.9"/>
+							<Property key="TextColour" value="0.7 0.7 0.9"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="96 349 256 18" name="RdColN">
+							<Property key="Colour" value="0.7 0.7 0.9"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 380 308 24">
+							<Property key="Caption" value="#{ColumnRadius}"/>
+							<Property key="TextColour" value="0.8 0.8 1.0"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="36 406 48 24" name="RdColREdit">
+							<Property key="Colour" value="0.8 0.8 1.0"/>
+							<Property key="TextColour" value="0.8 0.8 1.0"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="96 409 256 18" name="RdColR">
+							<Property key="Colour" value="0.8 0.8 1.0"/>
+						</Widget>
+					</Widget>
+
+					<!-- geom detail -->
+					<Widget type="TabItem" skin="" position="2 24 746 468">
+						<Property key="Caption" value="#B09070#{Detail}"/>
+
+						<Widget type="TextBox" skin="TextBox" position="36 204 188 24">
+							<Property key="Caption" value="#{Road}"/>
+							<Property key="TextColour" value="0.5 0.9 0.7"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 236 180 24">
+							<Property key="Caption" value="#{LengthDim}"/>
+							<Property key="TextColour" value="0.5 0.9 0.7"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="220 232 48 24" name="RdLenDimEdit">
+							<Property key="Colour" value="0.5 0.9 0.7"/>
+							<Property key="TextColour" value="0.5 0.9 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 236 256 16" name="RdLenDim">
+							<Property key="Colour" value="0.5 0.9 0.7"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 264 180 24">
+							<Property key="Caption" value="#{WidthSteps}"/>
+							<Property key="TextColour" value="0.5 0.9 0.7"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="220 260 48 24" name="RdWidthStepsEdit">
+							<Property key="Colour" value="0.5 0.9 0.7"/>
+							<Property key="TextColour" value="0.5 0.9 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 264 256 16" name="RdWidthSteps">
+							<Property key="Colour" value="0.5 0.9 0.7"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="36 320 188 24">
+							<Property key="Caption" value="#{Pipe}"/>
+							<Property key="TextColour" value="0.8 0.8 0.4"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 352 180 24">
+							<Property key="Caption" value="#{PipeLStepsMul}"/>
+							<Property key="TextColour" value="0.8 0.8 0.4"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="220 348 48 24" name="RdPlsMEdit">
+							<Property key="TextColour" value="0.8 0.8 0.4"/>
+							<Property key="Colour" value="0.8 0.8 0.4"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 352 256 16" name="RdPlsM">
+							<Property key="Colour" value="0.8 0.8 0.4"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 380 180 24">
+							<Property key="Caption" value="#{PipeWStepsMul}"/>
+							<Property key="TextColour" value="0.8 0.8 0.4"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="220 376 48 24" name="RdPwsMEdit">
+							<Property key="Colour" value="0.8 0.8 0.4"/>
+							<Property key="TextColour" value="0.8 0.8 0.4"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 380 256 16" name="RdPwsM">
+							<Property key="Colour" value="0.8 0.8 0.4"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="480 140 140 24">
+							<Property key="Caption" value="#{HeightOffset}"/>
+							<Property key="TextColour" value="0.5 0.8 0.8"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="620 136 48 24" name="RdHeightOfs">
+							<Property key="Colour" value="0.5 0.8 0.8"/>
+							<Property key="TextColour" value="0.5 0.8 0.8"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="480 68 140 24">
+							<Property key="Caption" value="#{SkirtLength}"/>
+							<Property key="TextColour" value="0.5 0.7 0.9"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="620 64 48 24" name="RdSkirtLen">
+							<Property key="Colour" value="0.5 0.7 0.9"/>
+							<Property key="TextColour" value="0.5 0.7 0.9"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="480 100 140 24">
+							<Property key="Caption" value="#{SkirtHeight}"/>
+							<Property key="TextColour" value="0.5 0.7 0.9"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="620 96 48 24" name="RdSkirtH">
+							<Property key="Colour" value="0.5 0.7 0.9"/>
+							<Property key="TextColour" value="0.5 0.7 0.9"/>
+						</Widget>
+					</Widget>
+
+					<Widget type="TabItem" skin="" position="2 24 746 468">
+						<Property key="Caption" value="#80B070#{Advanced}"/>
+						<Widget type="TextBox" skin="TextBox" position="36 32 312 24">
+							<Property key="Caption" value="#{MergeLength}"/>
+							<Property key="TextColour" value="0.6 1.0 0.6"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="36 56 48 24" name="RdMergeLenEdit">
+							<Property key="Colour" value="0.6 0.9 0.6"/>
+							<Property key="TextColour" value="0.6 0.9 0.6"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="96 59 456 18" name="RdMergeLen">
+							<Property key="Colour" value="0.6 0.9 0.6"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 98 312 24">
+							<Property key="Caption" value="#{LODPointsDist}"/>
+							<Property key="TextColour" value="0.4 0.9 0.4"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="36 122 48 24" name="RdLodPLenEdit">
+							<Property key="Colour" value="0.4 0.8 0.4"/>
+							<Property key="TextColour" value="0.4 0.8 0.4"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="96 125 456 18" name="RdLodPLen">
+							<Property key="Colour" value="0.4 0.8 0.4"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="36 232 312 24">
+							<Property key="Caption" value="#{ViewDist}"/>
+							<Property key="TextColour" value="0.6 0.9 0.4"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="36 256 48 24" name="RdVisDistEdit">
+							<Property key="Colour" value="0.6 0.9 0.4"/>
+							<Property key="TextColour" value="0.6 0.9 0.4"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="96 259 456 18" name="RdVisDist">
+							<Property key="Colour" value="0.6 0.9 0.4"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="36 298 312 24">
+							<Property key="Caption" value="#{ViewDist} - #{Reverse}"/>
+							<Property key="TextColour" value="0.6 0.9 0.4"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="36 322 48 24" name="RdVisBehindEdit">
+							<Property key="Colour" value="0.4 0.8 0.4"/>
+							<Property key="TextColour" value="0.6 0.8 0.4"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="96 325 456 18" name="RdVisBehind">
+							<Property key="Colour" value="0.6 0.8 0.4"/>
+						</Widget>
+					</Widget>
+
+		</Widget>
+	</Widget>
+
+</MyGUI>
