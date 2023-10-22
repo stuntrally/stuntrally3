@@ -55,6 +55,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "set.cam_speed", cam_speed);			Param(c,w, "set.cam_inert", cam_inert);
 	Param(c,w, "set.ter_skip", ter_skip);			Param(c,w, "set.road_sphr", road_sphr);
 	Param(c,w, "set.mini_skip", mini_skip);			Param(c,w, "set.road_skip", road_skip);
+	Param(c,w, "prv_rot_speed", prv_rot_speed);
 		
 	//  ⛰️ ter generator
 	Param(c,w, "ter_gen.scale", gen_scale);

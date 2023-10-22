@@ -8,8 +8,10 @@
 #include "Road.h"
 
 #include "GraphicsSystem.h"
+#include "settings.h"
 #include <OgreCommon.h>
 #include <OgreVector3.h>
+#include <OgreQuaternion.h>
 #include <OgreException.h>
 #include <OgreResourceGroupManager.h>
 #include <OgrePlatformInformation.h>
@@ -132,5 +134,17 @@ bool PreviewScene::Load(Ogre::String mesh)
 	cam->setPosition(pos);
 	cam->lookAt(look);
 
+	yaw = 0.f;
 	return true;
+}
+
+void PreviewScene::Update(float dt)
+{
+	if (!node)  return;
+
+	Quaternion q;  q.FromAngleAxis(Radian(yaw), Vector3::UNIT_Y);
+	node->setOrientation(q);
+#ifdef SR_EDITOR
+	yaw += dt * 0.7f * app->pSet->prv_rot_speed;  //par rot speed
+#endif
 }

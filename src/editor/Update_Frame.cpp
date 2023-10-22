@@ -257,6 +257,8 @@ void App::UpdateEnd(float dt)
 		}
 	}
 
+	prvScene.Update(dt);  // 🧊 rotate
+
 
 	UpdCubeRefl();  // 🔮💫
 

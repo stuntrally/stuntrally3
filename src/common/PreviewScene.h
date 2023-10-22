@@ -20,6 +20,8 @@ public:
 
 	bool Load(Ogre::String mesh);
 	void Unload();
+	void Update(float dt);
+	float yaw =0.f;  // rot angle
 
 	Ogre::Vector3 dim{1,1,1};  // after load
 	Ogre::SceneManager* mgr = 0;
