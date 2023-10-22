@@ -540,7 +540,8 @@ Many compositor Workspaces are created from code (telling how to render stuff, a
 Creating is in `.log` lines with: `--++ WS add:`, and in cpp code by any `addWorkspace`.  
 
 `SR3.compositor` has definitions for most workspaces used.  
-Only shadows are made completely by code in `src/common/AppGui_Shadows.cpp`, based on `Samples/2.0/ApiUsage/ShadowMapFromCode/ShadowMapFromCode.cpp`.
+Only shadows are made completely by code in `src/common/AppGui_Shadows.cpp`, based on `Samples/2.0/ApiUsage/ShadowMapFromCode/ShadowMapFromCode.cpp`.  
+_Todo:_ only 3 PSSM splits work, no other count. ESM (Sh_Soft) is also broken.
 
 Parts of [post](https://forums.ogre3d.org/viewtopic.php?p=553666#p553666) with info.
 
@@ -551,7 +552,16 @@ In code `AddListenerRnd2Tex()`, it's `ReflectListener`, `mWsListener` in `Fluids
 
 `ReflectListener::passEarlyPreExecute` does check which `render_pass` it is from `SR3.compositor` by `identifier` number.
 
-## Effects ToDo
+## Effects
 
-Ogre-Next samples: Sky_Postprocess, ReconstructPosFromDepth, Refractions,  
-later: Sample_Hdr, Sample_Tutorial_SSAO, 
+_ToDo:_ From Ogre-Next samples to use:
+- **ReconstructPosFromDepth** (water, soft particles) also [topic](https://forums.ogre3d.org/viewtopic.php?t=97096&sid=5b5762532f55a6b74f28e1404b1d54bb), [maybe](https://forums.ogre3d.org/viewtopic.php?t=97059&sid=5b5762532f55a6b74f28e1404b1d54bb)
+- **Refractions** (water)
+- Sky_Postprocess (no?)
+- InterpolationLoop (meh, later)
+
+Effects:
+- Sample_**Hdr** (with bloom), Sample_Tutorial_**SSAO**
+- Lastly GI: InstantRadiosity (main), ImageVoxelizer (VCT), LocalCubemaps refl
+- meh: OpenVR, StereoRendering
+- to fix: ShadowMapDebugging, ShadowMapFromCode

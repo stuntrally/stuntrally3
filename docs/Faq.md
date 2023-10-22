@@ -37,8 +37,8 @@ It may be also possible that you are trying to play a game type that you don't l
 **How do I make the game easier to play?**  
 We recommend first driving slower cars (like e.g. LK4) on easy, flat tracks.  
 I don't recommend turning on ABS or TCS since those will in fact make it harder to understand what is happening with tires (which ones spin or slide) and thus make the game experience worse, weird or simply not as it is meant to be (there was a [poll](https://forum.freegamedev.net/viewtopic.php?f=81&t=5598) on forum too).  
-This may also happen when using different cars. The best car is HI or similar. If starting normal simulation mode, I highly recommend using this one as first. It is easy to handle, fast and can drive on all tracks. Once you learn it you can try others.  
-If you're not a fan of cars, you can try the spaceships on some flat tracks. They are very easy to handle and fun. Just don't try them in pipes or other stunts, aren't drivable there.
+This may also happen when using different cars. The best cars are Hyena, Fox or similar. If starting normal simulation mode, I highly recommend using those as first. Those are easy to handle, fast and can drive on all tracks. Once you learn handling them you can try others.  
+If you're not a fan of wheels, you can try the spaceships on some flat tracks. They are very easy to handle and fun. Just don't try them in pipes or other stunts, aren't drivable there (they go nuts).
 
 **Why is it so easy to drive? How do I make the game harder to play?**  
 It gets really easy once you know all tracks and get used to the simulation. It's not yet on the level of difficulty I'd like to have.  
