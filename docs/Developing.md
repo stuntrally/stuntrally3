@@ -199,7 +199,7 @@ Below * means: nothing or 2,3,4.. etc if more.
 
 ## emojis
 
-You can also get familiar with [src/emojis](../src/emojis) file.  
+You can also get familiar with [emojis](../src/emojis.txt) file.  
 It lists many emojis used for indentifying code sections, variable blocks etc in sources.  
 Done for better orientation, grouping and cooler code in files, especially for big ones with many at once.  
 It is possible to search for all related to some component or aspect in sources,  

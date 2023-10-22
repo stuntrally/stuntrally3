@@ -50,7 +50,7 @@ You can help with [translating](docs/Localization.md), testing, adding or improv
 ## Developing
 
 General info with some details is in [Developing](docs/Developing.md).  
-Sources have emojis, [this file](/src/emojis) has all, with quick components guide etc.
+Sources have emojis, [this file](/src/emojis.txt) has all, with quick components guide etc.
 
 ------------------------------------------------------------------------------
 

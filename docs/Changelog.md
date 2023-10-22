@@ -52,7 +52,7 @@ Stunt Rally 3 is continuing last SR 2.x, using latest Ogre-Next 3.0.
 - Sources
   - Require building latest Ogre-Next and MyGui-Next fork from sources. Info in git [Building](Building.md) file
   - Reworked base class and new AppGui class, common for game and editor
-  - Added **emojis**, for better code orientation in key sections and methods. Quick guide in [emojis file](../src/emojis)
+  - Added **emojis**, for better code orientation in key sections and methods. Quick guide in [emojis file](../src/emojis.txt)
   - Game and Editor tools can be started passing command line argument(s)
     - cfg or config forces showing Ogre dialog with screen and rendering options
     - Starting with ? shows help for all. In code search for _Tool_ or references to MainEntryPoints::args
