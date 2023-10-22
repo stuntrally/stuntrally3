@@ -292,7 +292,7 @@ void CarModel::Create()
 
 
 	//  💡 car lights  ----------------------
-	if (pSet->car_lights && !ghost)
+	if (pSet->g.car_lights && !ghost)
 	{
 		int cnt = fsFlares.pos.size();
 		const Real dirY = -0.1f, dirZ = 1.f;  //par-
@@ -301,13 +301,15 @@ void CarModel::Create()
 		for (int i=0; i < numLights; ++i)
 		if (i < cnt)
 		{
+			// LogO(toStr(fsFlares.pos[i]));  //-
 			SceneNode* node = ndCar->createChildSceneNode( SCENE_DYNAMIC, fsFlares.pos[i] );
-			LogO(toStr(fsFlares.pos[i]));  //-
-			
 			Light* light = mSceneMgr->createLight();
 			node->attachObject( light );  ToDel(node);
-			light->setDiffuseColour(  1.f, 1.1f, 1.1f );  // clr
-			light->setSpecularColour( 1.f, 1.1f, 1.1f );
+			
+			ColourValue c(1.f, 1.1f, 1.1f);  //par clr..
+			float bright = 0.9f*1.3f * pSet->bright, contrast = pSet->contrast;
+			light->setDiffuseColour(  c * bright * contrast );  // clr
+			light->setSpecularColour( c * bright * contrast );
 
 			Real pwr = sph ? 3.f : 12.f / numLights; //par
 			light->setPowerScale( Math::PI * pwr );
@@ -320,7 +322,7 @@ void CarModel::Create()
 			light->setAttenuationBasedOnRadius( 30.0f, 0.01f );
 			light->setSpotlightRange(Degree(5), Degree(40), 1.0f );  //par 5 30
 			
-			light->setCastShadows(pSet->car_light_shadows);
+			light->setCastShadows(pSet->g.car_light_shadows);
 			light->setVisible(sc->needLights);  // auto on for dark tracks
 			lights.push_back(light);
 	}	}
@@ -391,7 +393,7 @@ void CarModel::Create()
 			bsBrakes->setVisible(false);
 		}
 		//  front flares
-		if (hasFlares)
+		if (hasFlares && !ghost)
 		{	bsFlares = mSceneMgr->createBillboardSet();
 			auto s = fsFlares.size;
 			bsFlares->setDefaultDimensions(s, s);
@@ -403,7 +405,8 @@ void CarModel::Create()
 
 			bsFlares->setDatablockOrMaterialName("flare1", "Popular");
 			nd->attachObject(bsFlares);
-			bsFlares->setVisible(pSet->car_lights);
+			if (pCar)
+				bsFlares->setVisible(pSet->g.car_lights && pCar->bLightsOn);
 		}
 	}
 	

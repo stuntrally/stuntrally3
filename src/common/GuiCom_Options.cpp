@@ -91,9 +91,10 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	BtnC("ApplyShadows", btnShadowsApply);
 
 	//  💡 Lights
-	ck= &ckCarLights;        ck->Init("CarLights",          &pSet->g.car_lights);  //CevC(Lights);
-	ck= &ckCarLightsShadows; ck->Init("CarLightsShadows",   &pSet->g.car_light_shadows);
-
+	ck= &ckCarLights;        ck->Init("CarLights",        &pSet->g.car_lights);  //CevC(Lights);
+	ck= &ckCarLightsShadows; ck->Init("CarLightsShadows", &pSet->g.car_light_shadows);
+	sv= &svCarLightBright;   sv->Init("CarLightBright",   &pSet->car_light_bright, 0.1f,3.f, 1.f);
+															  sv->DefaultF(1.f);  SevC(CarLightBright);
 
 	//  🔮 Reflection
 	sv= &svReflSkip;	sv->Init("ReflSkip",	&pSet->g.refl_skip,    0,1000, 2.f);  sv->DefaultI(0);
@@ -145,8 +146,8 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 	//  💡 brightness
 	float bright = 1.f, contrast = 1.f;
-	sv= &svBright;		sv->Init("Bright",		&pSet->bright,   0.2,3.f);  sv->DefaultF(1.f);
-	sv= &svContrast;	sv->Init("Contrast",	&pSet->contrast, 0.2,3.f);  sv->DefaultF(1.f);
+	sv= &svBright;		sv->Init("Bright",		&pSet->bright,   0.2,3.f);  sv->DefaultF(1.f);  SevC(CarLightBright);
+	sv= &svContrast;	sv->Init("Contrast",	&pSet->contrast, 0.2,3.f);  sv->DefaultF(1.f);  SevC(CarLightBright);
 
 	/*CmbC(cmb, "CmbAntiAliasing", cmbAntiAliasing);
 	int si=0;
@@ -291,7 +292,8 @@ void CGuiCom::btnShadowsApply(WP)
 {
 	// todo ..
 	// app->SetupCompositor();  //-
-	// app->setupShadowCompositor();
+	// app->setupShadowCompositor();  // fixme crash ws def..
+	app->updShadowFilter();  // works
 }
 
 void CGuiCom::slWaterDist(SV*)
@@ -341,6 +343,15 @@ void CGuiCom::slWaterSize(SV*)
 void CGuiCom::btnWaterApply(WP)
 {
 	//app->bRecreateFluidsRTT = 1;  // fixme: crash-
+}
+
+void CGuiCom::slCarLightBright(SV*)
+{
+	//UpdSun(0.f);  // not needed
+	// upd veh lights..
+	#ifndef SR_EDITOR
+	app->updCarLightsBright();
+	#endif
 }
 
 

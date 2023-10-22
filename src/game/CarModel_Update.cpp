@@ -46,7 +46,7 @@ void CarModel::setVisible(bool vis)
 
 	ndMain->setVisible(vis);
 	if (bsBrakes)  bsBrakes->setVisible(vis && bBraking);
-	if (bsFlares)  bsFlares->setVisible(vis && pSet->car_lights);  // todo fade from behind..
+	if (bsFlares)  bsFlares->setVisible(vis && pSet->g.car_lights);  // todo fade from behind..
 
 	for (int w=0; w < numWheels; ++w)
 	{	ndWh[w]->setVisible(vis);
@@ -293,7 +293,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	}
 	#endif
 
-	//  💡 Lights front
+	//  💡 Lights front 🚗
 	if (pCar)
 	{	// not from posInfo, always can toggle
 		bLightsOld = bLights;
@@ -302,6 +302,8 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		{
 			for (auto l:lights)
 				l->setVisible(bLights);
+			if (bsFlares)
+				bsFlares->setVisible(bLights && pSet->g.car_lights);
 	}	}
 	
 
