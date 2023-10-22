@@ -131,7 +131,10 @@ void Grass::Create(App* app1)
 					Real at = terrain->getAngle(xw, zw, 1.f);
 					if (at < ch->angMin - ch->angSm/2.f)  // || at > ch->angMax + ch->angSm/2.f)
 						continue;  // todo smooth ..
-										//  ter h
+					Real hi = (at - ch->angMax) / ch->angSm;
+					if (hi > 1.f || hi > Math::UnitRandom())
+						continue;
+					//  ter h
 					Real h = terrain->getHeight(xw, zw);  // /2 par..
 					if (h < ch->hMin - ch->hSm/2.f || h > ch->hMax + ch->hSm)  // linRange-
 						continue;
