@@ -48,7 +48,7 @@ class ManResLd : public ManualResourceLoader
 //  🏗️ Create Mesh
 //---------------------------------------------------------------------------------------------------------------------------------
 void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
-	Ogre::String sMtrName, bool alpha, bool pipeGlass,
+	Ogre::String sMtrName, bool alpha, bool pipeGlass, bool minimap,
 	const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
 	const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,
 	const std::vector<Ogre::uint16>& idx)
@@ -197,7 +197,7 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 #endif
 
 
-	//  add mesh to scene
+	//  Mesh 🟢
 	//---------------------------------------------------------
 	subMesh->setMaterialName(sMtrName);
 
@@ -232,133 +232,138 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 #endif
 
 
-	//  add mesh to scene
+	//  Node 🟢
 	//---------------------------------------------------------
+	Item *it =0, *it2 =0;
 	auto dyn = SCENE_STATIC;
-#ifdef SR_EDITOR
-	// dyn = SCENE_DYNAMIC;  // ed a bit faster?
-#endif
-
-	Item *it2 =0, *it34[2] ={0,0};
-#ifdef V1tangents
-	Item *it = mSceneMgr->createItem( s2, "General", dyn );
-#else
-	Item *it = mSceneMgr->createItem( mesh, dyn );
-#endif
-
-	SceneNode* node = mSceneMgr->getRootSceneNode( dyn )->createChildSceneNode( dyn );
-	it->setVisible(false);  it->setCastShadows(false);//-
-	it->setVisibilityFlags(trail ? RV_Hud3D : RV_Road);
-	node->attachObject(it);
-
-
-	//  ed road for 🌍 minimap and density
-	//---------------------------------------------------------
-#ifdef SR_EDITOR
-	if (lod == 0)
-	for (int i=0; i<2; ++i)
-	{
-		// todo:  ed mini clr it
-		// LogO("LOD 0 ed "+toStr(clr.size()));
-		auto*& it = it34[i];
-		#ifdef V1tangents
-			it = mSceneMgr->createItem( s2, "General", dyn );
-		#else
-			it = mSceneMgr->createItem( mesh, dyn );
-		#endif
-		it->setRenderQueueGroup(RQG_Road);
-		it->setVisibilityFlags(
-			// hide rivers  todo: normal material rivers in terrain prv
-			i ? (IsRiver() ? 0 : RV_EdRoadPreview) : RV_EdRoadDens);
-		it->setCastShadows(false);
-		it->setDatablockOrMaterialName(i ? "ed_RoadPreview" : "ed_RoadDens");
-		node->attachObject(it);
-	}
-#endif
-
-	//  ⭕ pipe glass 2nd item
-	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	if (pipeGlass)
-	{
-	#ifdef V1tangents
-		it2 = mSceneMgr->createItem( s2, "General", dyn );
-	#else
-		it2 = mSceneMgr->createItem( mesh, dyn );
+	#ifdef SR_EDITOR
+		// dyn = SCENE_DYNAMIC;  // ed a bit faster?
 	#endif
-		
-		String sMtr2 = sMtrName + "2";
-		auto hlms = pApp->mRoot->getHlmsManager()->getHlms( HLMS_PBS );
-		if (!hlms->getDatablock(sMtr2))
-		{	//  clone if not already
-			LogO(sMtr2);
-			HlmsDatablock *db2 = it2->getSubItem(0)->getDatablock()->clone(sMtr2);
-			HlmsMacroblock mb;  // = db2->getMacroblock();
-			mb.mDepthBiasConstant = 3.f;  //.. mDepthBiasSlopeScale
-			mb.mDepthWrite = false;
-			mb.mCullMode = CULL_ANTICLOCKWISE;  // set opposite cull
-			db2->setMacroblock(mb);
-			it2->setDatablock(db2);
-		}
-		it2->setDatablockOrMaterialName(sMtr2);
+	SceneNode* node = mSceneMgr->getRootSceneNode( dyn )->createChildSceneNode( dyn );
 
-		node->attachObject(it2);
-		it2->setVisible(false);  it2->setCastShadows(false);//-
-		it2->setVisibilityFlags(RV_Road);
-	}
 
-	//  wrap tex  ----
-	if (!trail)
+	if (minimap)
 	{
-		pApp->SetTexWrap(it);  if (it2)  pApp->SetTexWrap(it2);
-	}
-
-	//  replace onTer alpha  ----
-	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	HlmsPbsDatablock *db = static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
-	if (alpha && db)
-	{
-		const TextureGpu *diffTex = db->getDiffuseTexture(),
-			*normTex = db->getTexture(PBSM_NORMAL);
-		if (diffTex && normTex)
+		//  🌍 Items  [Editor] road for minimap and density
+		//--------------------------------------------------------------------------------------------
+		if (lod == 0)
+		for (int i=0; i<2; ++i)
 		{
-			const String sAlpha = "roadAlpha2.png", sFlat = "flat_n.png",
-				sDiff = diffTex->getNameStr(), sNorm = normTex->getNameStr();
+			// todo:  ed mini clr it
+			// LogO("LOD 0 ed "+toStr(clr.size()));
+			auto*& itm = i ? it2 : it;
+			#ifdef V1tangents
+				itm = mSceneMgr->createItem( s2, "General", dyn );
+			#else
+				itm = mSceneMgr->createItem( mesh, dyn );
+			#endif
+			itm->setRenderQueueGroup(RQG_Road);
+			itm->setVisibilityFlags(  // in rtt mini always visible
+				// hide rivers  todo: normal material rivers in terrain prv
+				i ? (IsRiver() ? 0 : RV_EdRoadPreview) : RV_EdRoadDens);
+			itm->setCastShadows(false);
+			itm->setDatablockOrMaterialName(i ? "ed_RoadPreview" : "ed_RoadDens");
+			node->attachObject(itm);
+		}
+	}else
+	{	//  🟢 Items  [Normal]
+		//--------------------------------------------------------------------------------------------
 
-			if (sDiff != sAlpha)  // once
+	#ifdef V1tangents
+		it = mSceneMgr->createItem( s2, "General", dyn );
+	#else
+		it = mSceneMgr->createItem( mesh, dyn );
+	#endif
+
+		it->setVisible(false);  it->setCastShadows(false);//-
+		it->setVisibilityFlags(trail ? RV_Hud3D : RV_Road);
+		node->attachObject(it);
+
+
+		//  ⭕ pipe glass 2nd item
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		if (pipeGlass)
+		{
+		#ifdef V1tangents
+			it2 = mSceneMgr->createItem( s2, "General", dyn );
+		#else
+			it2 = mSceneMgr->createItem( mesh, dyn );
+		#endif
+			
+			String sMtr2 = sMtrName + "2";
+			auto hlms = pApp->mRoot->getHlmsManager()->getHlms( HLMS_PBS );
+			if (!hlms->getDatablock(sMtr2))
+			{	//  clone if not already
+				// LogO(sMtr2);
+				HlmsDatablock *db2 = it2->getSubItem(0)->getDatablock()->clone(sMtr2);
+				HlmsMacroblock mb;  // = db2->getMacroblock();
+				mb.mDepthBiasConstant = 3.f;  //.. mDepthBiasSlopeScale
+				mb.mDepthWrite = false;
+				mb.mCullMode = CULL_ANTICLOCKWISE;  // set opposite cull
+				db2->setMacroblock(mb);
+				it2->setDatablock(db2);
+			}
+			it2->setDatablockOrMaterialName(sMtr2);
+
+			node->attachObject(it2);
+			it2->setVisible(false);  it2->setCastShadows(false);//-
+			it2->setVisibilityFlags(RV_Road);
+		}
+
+		//  wrap tex  ----
+		if (!trail)
+		{
+			pApp->SetTexWrap(it);  if (it2)  pApp->SetTexWrap(it2);
+		}
+
+		//  replace onTer alpha  ----
+		//** todo: move to json ..
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		HlmsPbsDatablock *db = static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
+		if (alpha && db)
+		{
+			const TextureGpu *diffTex = db->getDiffuseTexture(),
+				*normTex = db->getTexture(PBSM_NORMAL);
+			if (diffTex && normTex)
 			{
-				//LogO("RD mtr: "+ sMtrName+" tex: "+sDiff+" norm: "+sNorm);
-				db->setTexture(PBSM_DIFFUSE, sAlpha);  // same for all
-				db->setTexture(PBSM_NORMAL, sFlat);
+				const String sAlpha = "roadAlpha2.png", sFlat = "flat_n.png",
+					sDiff = diffTex->getNameStr(), sNorm = normTex->getNameStr();
 
-				db->setDetailMapBlendMode(0, PBSM_BLEND_MULTIPLY);  //PBSM_BLEND_NORMAL_NON_PREMUL);
-				db->setTexture(PBSM_DETAIL_WEIGHT, "roadAlpha2y.png");
-				db->setDetailMapWeight(0, 1.0);
-				const Real v = 33.3;  //**  1.f / 0.03 = alpha tc in rebuild
-				db->setDetailMapOffsetScale(0, Vector4(0,0, 1,v));
+				if (sDiff != sAlpha)  // once
+				{
+					//LogO("RD mtr: "+ sMtrName+" tex: "+sDiff+" norm: "+sNorm);
+					db->setTexture(PBSM_DIFFUSE, sAlpha);  // same for all
+					db->setTexture(PBSM_NORMAL, sFlat);
 
-				db->setTexture(PBSM_DETAIL0, sDiff);
-				db->setTexture(PBSM_DETAIL0_NM, sNorm);
-				//todo: PBSM_SPECULAR ?.. stretched
-				// db->setFresnel(Vector3(1.f,1,1), false);
-		}	}
+					db->setDetailMapBlendMode(0, PBSM_BLEND_MULTIPLY);  //PBSM_BLEND_NORMAL_NON_PREMUL);
+					db->setTexture(PBSM_DETAIL_WEIGHT, "roadAlpha2y.png");
+					db->setDetailMapWeight(0, 1.0);
+					const Real v = 33.3;  //**  1.f / 0.03 = alpha tc in rebuild
+					db->setDetailMapOffsetScale(0, Vector4(0,0, 1,v));
+
+					db->setTexture(PBSM_DETAIL0, sDiff);
+					db->setTexture(PBSM_DETAIL0_NM, sNorm);
+					//todo: PBSM_SPECULAR ?.. stretched
+					// db->setFresnel(Vector3(1.f,1,1), false);
+			}	}
+		}
+		if (db)  //  set reflection, from presets  ----
+		{
+			auto s = sMtrName;
+			auto is = s.find_last_of('_');  // drop _ter
+			if (is != std::string::npos)
+				s = s.substr(0,is);
+			auto rd = pApp->scn->data->pre->GetRoad(s);
+			if (!rd)
+			{  }  // LogO("Road mat error: not in presets: "+s);
+			else
+			if (rd->reflect && pApp->mCubeReflTex)
+				db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );  // wet, etc+
+			// it->getSubItem(0)->setDatablock( db );
+		}
 	}
-	if (db)  //  set reflection, from presets  ----
-	{
-		auto s = sMtrName;
-		auto is = s.find_last_of('_');  // drop _ter
-		if (is != std::string::npos)
-			s = s.substr(0,is);
-		auto rd = pApp->scn->data->pre->GetRoad(s);
-		if (!rd)
-		{  }  // LogO("Road mat error: not in presets: "+s);
-		else
-		if (rd->reflect && pApp->mCubeReflTex)
-			db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );  // wet, etc+
-		// it->getSubItem(0)->setDatablock( db );
-	}
-
+	//  save
 	sd.it = it;  sd.it2 = it2;
-	sd.it3r = it34[0];  sd.it4d = it34[1];
 	sd.node = node;
 	// sd.mesh = mesh;  // sd.mesh1 = m1;
 
@@ -429,16 +434,15 @@ void SplineRoad::DestroySeg(int id)
 				auto& w = rs.wall[l];
 				auto& n = w.node;   if (n)  mgr->destroySceneNode(n);  n = 0;
 				auto& i = w.it;     if (i)  mgr->destroyItem(i);  i = 0;
-				if (w.mesh)  ms.remove(w.mesh);
-				w.mesh.reset();
-				if (w.mesh1)  m1.remove(w.mesh1);
-				w.mesh1.reset();
+				if (w.mesh)   ms.remove(w.mesh);   w.mesh.reset();
+				if (w.mesh1)  m1.remove(w.mesh1);  w.mesh1.reset();
 			}
 			{	// > blend
-				// auto& n = rs.blend[l].node;  if (n)  mgr->destroySceneNode(n);  n = 0;
-				// auto& i = rs.blend[l].it;    if (i)  mgr->destroyItem(i);  i = 0;
-				// auto& s = rs.blend[l].smesh;
-				// if (!s.empty())  ms.remove(s);  s = "";
+				auto& b = rs.blend[l];
+				auto& n = b.node;  if (n)  mgr->destroySceneNode(n);  n = 0;
+				auto& i = b.it;    if (i)  mgr->destroyItem(i);  i = 0;
+				if (b.mesh)   ms.remove(b.mesh);   b.mesh.reset();
+				if (b.mesh1)  m1.remove(b.mesh1);  b.mesh1.reset();
 			}
 			{	// - road
 				// LogO("---- Destroy Road seg " + rs.road[l].smesh);
@@ -446,15 +450,17 @@ void SplineRoad::DestroySeg(int id)
 				auto& n = rd.node;  if (n)  mgr->destroySceneNode(n);  n = 0;
 				auto& i = rd.it;    if (i)  mgr->destroyItem(i);  i = 0;
 				auto& j = rd.it2;   if (j)  mgr->destroyItem(j);  j = 0;
-			#ifdef SR_EDITOR
-				auto& r = rd.it3r;  if (r)  mgr->destroyItem(r);  r = 0;
-				auto& d = rd.it4d;  if (d)  mgr->destroyItem(d);  d = 0;
-			#endif
-				if (rd.mesh)  ms.remove(rd.mesh);
-				rd.mesh.reset();
-				if (rd.mesh1)  m1.remove(rd.mesh1);
-				rd.mesh1.reset();
+				if (rd.mesh)   ms.remove(rd.mesh);   rd.mesh.reset();
+				if (rd.mesh1)  m1.remove(rd.mesh1);  rd.mesh1.reset();
 			}
+		}
+		{	// * mini ed
+			auto& rd = rs.mini;
+			auto& n = rd.node;  if (n)  mgr->destroySceneNode(n);  n = 0;
+			auto& i = rd.it;    if (i)  mgr->destroyItem(i);  i = 0;
+			auto& j = rd.it2;   if (j)  mgr->destroyItem(j);  j = 0;
+			if (rd.mesh)   ms.remove(rd.mesh);   rd.mesh.reset();
+			if (rd.mesh1)  m1.remove(rd.mesh1);  rd.mesh1.reset();
 		}
 	}
 	catch (Exception ex)

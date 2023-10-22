@@ -383,7 +383,7 @@ void SplineRoad::PrepassLod(
 void SplineRoad::DataLodMesh::Clear()
 {	iLmrg = 0;	iLmrgW = 0;  iLmrgC = 0;  iLmrgB = 0;
 
-	pos.clear();  norm.clear();  tcs.clear();  clr.clear();
+	pos.clear();  norm.clear();  tcs.clear();  clr.clear();  clrMini.clear();
 	posW.clear(); normW.clear(); tcsW.clear();
 	posC.clear(); normC.clear(); tcsC.clear();
 	posB.clear(); normB.clear(); tcsB.clear(); clrB.clear();

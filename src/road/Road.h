@@ -12,11 +12,6 @@
 namespace Ogre {  class SceneManager;  class SceneNode;  class Item;  class Terrain;  class Camera;  }
 class btTriangleMesh;
 
-#if defined(_WIN32) && defined(SR_EDITOR)
-	// win doesnt need bullet somehow
-#else
-	#include "btBulletCollisionCommon.h"
-#endif
 
 #ifdef SR_EDITOR
 #define LogR(a)  //LogO(String("~ Road  ") + a)
@@ -34,17 +29,17 @@ struct SegData
 {
 	//  🟢 Ogre resources for 1 segment
 	Ogre::SceneNode* node =0;
-	Ogre::Item* it =0, *it2 =0,
-		*it3r = 0, *it4d =0;  // ed for road mini and density
+	Ogre::Item* it =0, *it2 =0;
 	Ogre::MeshPtr mesh;
 	Ogre::v1::MeshPtr mesh1;
 };
 
 struct RoadSeg
 {
-	SegData road[LODs], wall[LODs];  //, col, blend[LODs];
-	Ogre::String sMtrRd,sMtrWall,sMtrB;
+	SegData road[LODs], wall[LODs], blend[LODs];  // col in grid
+	Ogre::String sMtrRd, sMtrWall, sMtrB;
 	int mtrId = 0;
+	SegData mini;  // in ed for minimap road.png and roadDensity.png
 	
 	std::vector<Ogre::Vector3> lpos;  //points for lod dist
 	int nTri[LODs], mrgLod = 0;
@@ -143,7 +138,7 @@ private:
 //---------------------------------------------------------------------------------------
 
 	void CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
-		Ogre::String sMtrName, bool alpha, bool pipeGlass,
+		Ogre::String sMtrName, bool alpha, bool pipeGlass, bool minimap,
 		const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
 		const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,
 		const std::vector<Ogre::uint16>& idx);
@@ -218,7 +213,7 @@ private:
 	struct StatsLod   // 🗒️ stats for current Lod
 	{	//#  stats
 		Ogre::Real roadLen = 0.f, rdOnT = 0.f, rdPipe = 0.f, rdOnPipe = 0.f;
-		Ogre::Real avgWidth = 0.f, stMaxH = FLT_MIN, stMinH = FLT_MAX;
+		Ogre::Real avgWidth = 0.f, stMaxH = -1.0e6, stMinH = 1.0e6;
 		Ogre::Real bankAvg = 0.f, bankMax = 0.f;
 		bool stats = false;
 	};
@@ -231,10 +226,10 @@ private:
 
 	struct DataLodMesh   // 🟫🟫 mesh data for lod  (from merged segs)
 	{
-		//>  W-wall  C-column  B-blend
-		std::vector<Ogre::Vector4>  clr0/*empty*/, clr, clrB;
-		std::vector<Ogre::Vector3>  pos,norm, posW,normW, posC,normC, posLod, posB,normB;
-		std::vector<Ogre::Vector2>  tcs, tcsW, tcsC, tcsB;
+		//>  W-wall  C-column  B-blend  Minimap
+		std::vector<Ogre::Vector4> clr0/*empty*/, clr, clrB, clrMini;
+		std::vector<Ogre::Vector3> pos,norm, posW,normW, posC,normC, posLod, posB,normB;
+		std::vector<Ogre::Vector2> tcs, tcsW, tcsC, tcsB;
 
 		int iLmrg = 0, iLmrgW = 0, iLmrgC = 0, iLmrgB = 0;
 		
@@ -260,7 +255,7 @@ private:
 		bool pipe;
 		bool hasBlend;
 		int iwC;
-		bool jfw0,jfw1,jfw2;  // jump front walls
+		bool jfw0,jfw1,jfw2;  // jump front walls, fixme
 	};
 	
 

@@ -314,10 +314,11 @@ void SplineRoad::BuildSeg(
 
 			}else if (vis)// && HasRoad())
 			{
-				Vector4 c;
+				Vector4 c{1,1,1,1};
 				///  color  for 🌍 minimap preview  ---~~~====~~~---
 				if (!IsTrail())
 				{
+				#ifdef SR_EDITOR
 					Real brdg = min(1.f, std::abs(vP.y - yTer) * 0.4f);  //par ] height diff mul
 					Real h = max(0.f, 1.f - std::abs(vP.y - yTer) / 30.f);  // for grass dens tex
 					
@@ -325,10 +326,11 @@ void SplineRoad::BuildSeg(
 					// float pp = fPipe;  //-
 					float pp = fPipe*0.5f + (onP ? 0.5f : 0.f);  // put onP in pipe
 					
-					c = Vector4(brdg, pp,
+					Vector4 mic(brdg, pp,
 						std::abs(vN.y), h);  // n
 						//mP[seg].notReal ? 0.f : 1.f, h);  // fixme?
-					// c = Vector4(Math::UnitRandom(), Math::UnitRandom(), Math::UnitRandom(), 0.5f+0.5f*Math::UnitRandom());  // test
+					DLM.clrMini.push_back(mic);
+				#endif
 				}else
 				{	//  trail clr
 					c = (float(i)/il) * (mP[seg1].clr - mP[seg].clr) + mP[seg].clr;
@@ -339,10 +341,12 @@ void SplineRoad::BuildSeg(
 
 				//>  data road
 				DLM.pos.push_back(vP);   DLM.norm.push_back(vN);
-				DLM.tcs.push_back(vtc);  DLM.clr.push_back(c);
+				DLM.tcs.push_back(vtc);  DLM.clr.push_back(c);//- ?
+				
 				if (DS.hasBlend)
 				{	//  alpha, blend 2nd mtr
-					c.z = std::max(0.f, std::min(1.f, float(i)/il ));
+					// c = Vector4(Math::UnitRandom(), Math::UnitRandom(), Math::UnitRandom(), Math::RangeRandom(0.f,1.f));  // test
+					c.w = std::max(0.f, std::min(1.f, float(i)/il ));
 					DLM.posB.push_back(vP);   DLM.normB.push_back(vN);
 					DLM.tcsB.push_back(vtc);  DLM.clrB.push_back(c);
 				}
@@ -604,11 +608,9 @@ void SplineRoad::createSeg_Meshes(
 
 	if (HasRoad())
 	{
-		/*LogO("RD lod "+toStr(lod)+
-			"  pos "+toStr(DLM.pos.size())+
-			"  norm "+toStr(DLM.norm.size())+
-			"  clr "+toStr(DLM.clr.size())+
-			"  tcs "+toStr(DLM.tcs.size())+
+		/*LogO("RD- lod "+toStr(lod)+ "  mtr "+rs.sMtrRd+
+			"  pos "+toStr(DLM.pos.size())+ "  norm "+toStr(DLM.norm.size())+
+			"  clr "+toStr(DLM.clr.size())+ "  tcs "+toStr(DLM.tcs.size())+
 			"  idx "+toStr(idx.size()) );*/
 	#ifdef USE_GRID_R  //-
 		pApp->scn->grid.AddMesh(
@@ -618,18 +620,30 @@ void SplineRoad::createSeg_Meshes(
 			DLM.pos, DLM.norm, DLM.clr, DLM.tcs, idx);
 	#else
 		CreateMesh( lod, rs.road[lod], sMesh,
-			rs.sMtrRd, rs.alpha, pipeGlass,
+			rs.sMtrRd, rs.alpha, pipeGlass, false,
 			DLM.pos, DLM.norm, DLM.clr, DLM.tcs, idx);
 	#endif
+	#ifdef SR_EDITOR
+		if (lod == 0)  //  🌍 Minimap
+		CreateMesh( 0, rs.mini, sMesh+"#",
+			rs.sMtrRd, rs.alpha, pipeGlass, true, //*
+			DLM.pos, DLM.norm, DLM.clrMini, DLM.tcs, idx);
+	#endif
+	}
+	if (DS.hasBlend)  // Blend >
+	{
+		/*LogO("RD^ lod "+toStr(lod)+ "  mtr "+rs.sMtrB+
+			"  pos "+toStr(DLM.posB.size())+ "  norm "+toStr(DLM.normB.size())+
+			"  clr "+toStr(DLM.clrB.size())+ "  tcs "+toStr(DLM.tcsB.size())+
+			"  idx "+toStr(idxB.size()) );*/
+		CreateMesh( lod, rs.blend[lod], sMeshB,
+			rs.sMtrB, rs.alpha, pipeGlass, false,
+			DLM.posB, DLM.normB, DLM.clrB, DLM.tcsB, idxB);
+		rs.blend[lod].it->setRenderQueueGroup(RQG_RoadBlend);
+		// CreateMesh( -1, sm, aabox,  rs.sMtrB);
 	}
 
 	bool cols = !DLM.posC.empty() && DL.isLod0;  // cols have no lods
-	/*if (DS.hasBlend)  // fixme
-	{
-		meshB = MeshManager::getSingleton().createManual(sMeshB,"General");
-		sm = meshB->createSubMesh();
-		CreateMesh( -1, sm, aabox, DLM.posB,DLM.normB,DLM.clrB,DLM.tcsB, idxB, rs.sMtrB);
-	}*/
 	//*=*/wall = 0;  cols = 0;  // test
 
 
@@ -677,7 +691,7 @@ void SplineRoad::createSeg_Meshes(
 				DLM.posW, DLM.normW, DLM.clr0, DLM.tcsW, idx);
 		#else
 			CreateMesh( -1, rs.wall[lod], sMesh+"W",
-				rs.sMtrWall, false, false,
+				rs.sMtrWall, false, false, false,
 				DLM.posW, DLM.normW, DLM.clr0, DLM.tcsW, idx);
 			rs.wall[lod].it->setCastShadows(true);
 		#endif
@@ -723,37 +737,28 @@ void SplineRoad::createSeg_Meshes(
 		auto it = rs.road[lod].it,
 			it2 = rs.road[lod].it2;
 		if (it)
-		{
-		// sr = AddMesh(mesh, sMesh, aabox, &it, &node, "."+sEnd);
-		auto que = 
-			//IsTrail() ? RQG_RoadBlend /*: RQG_Hud1*/ : // ?
-			pipeGlass || IsRiver() ? RQG_PipeGlass : RQG_Road;
-		it->setRenderQueueGroup(que);
-		if (it2)
-			it2->setRenderQueueGroup(que);
+		{	auto que = 
+				//IsTrail() ? RQG_RoadBlend /*: RQG_Hud1*/ : // ?
+				pipeGlass || IsRiver() ? RQG_PipeGlass : RQG_Road;
+			it->setRenderQueueGroup(que);
+			if (it2)  it2->setRenderQueueGroup(que);
 
-		// if (IsTrail())
-		// 	it->setVisibilityFlags(RV_Hud3D);
+			// if (IsTrail())
+			// 	it->setVisibilityFlags(RV_Hud3D);
 
-		if (bCastShadow && !DS.onTer && !IsRiver() && !IsTrail())
-			it->setCastShadows(true);
+			if (bCastShadow && !DS.onTer && !IsRiver() && !IsTrail())
+				it->setCastShadows(true);
 	}	}
-#if 0  // is in grid
-	if (cols)
+	if (DS.hasBlend)  // Blend >
 	{
-		AddMesh(meshC, sMeshC, aabox, &itC, &nodeC, "C."+sEnd);
-		itC->setVisible(true);
-		if (bCastShadow)
-			itC->setCastShadows(true);
-	}
-#endif
-#if 0  // todo: not with mesh..
-	if (DS.hasBlend)
-	{
-		AddMesh(meshB, sMeshB, aabox, &itB, &nodeB, "B."+sEnd);
-		// itB->setRenderQueueGroup(RQG_RoadBlend);
-	}
-#endif
+		auto it = rs.blend[lod].it,
+			it2 = rs.blend[lod].it2;
+		if (it)
+		{	auto que = RQG_RoadBlend;
+			it->setRenderQueueGroup(que);
+			if (it2)  it2->setRenderQueueGroup(que);
+			it->setCastShadows(false);
+	}	}
 
 	rs.empty = false;  // new
 }
