@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-07 00:39+0200\n"
+"POT-Creation-Date: 2023-10-22 23:24+0200\n"
 "PO-Revision-Date: 2014-08-11 15:41+0000\n"
 "Last-Translator: Júlia Pék <jet.baker1.0@gmail.com>, "
 "2014-2015,2017-2018,2020\n"
@@ -27,14 +27,14 @@ msgid "Language"
 msgstr "Nyelv"
 
 #. General 
-#: src/game/Gui_Network.cpp:26 src/editor/Gui_Init.cpp:335
+#: src/game/Gui_Network.cpp:26 src/editor/Gui_Init.cpp:332
 #: src/editor/Update_EditKeyTxt.cpp:343
 msgctxt "Yes"
 msgid "Yes"
 msgstr "Igen"
 
 #. General 
-#: src/game/Gui_Network.cpp:26:404 src/editor/Gui_Init.cpp:335
+#: src/game/Gui_Network.cpp:26:404 src/editor/Gui_Init.cpp:332
 #: src/editor/Update_EditKeyTxt.cpp:343
 msgctxt "No"
 msgid "No"
@@ -47,38 +47,38 @@ msgid "Error"
 msgstr "Hiba"
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:252 src/game/Challenges.cpp:410:540:562:644:662:679
-#: src/game/Gui_Init.cpp:527
+#: src/game/Hud_Create.cpp:253 src/game/Challenges.cpp:410:540:562:644:662:679
+#: src/game/Gui_Init.cpp:533
 msgctxt "TBTime"
 msgid "Time"
 msgstr "Idő"
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:282
+#: src/game/Hud_Create.cpp:283
 msgctxt "TBLast"
 msgid "Last"
 msgstr "Utolsó"
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:283 src/game/Gui_Init.cpp:527
+#: src/game/Hud_Create.cpp:284 src/game/Gui_Init.cpp:533
 msgctxt "TBBest"
 msgid "Best"
 msgstr "Legjobb"
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:251:281 src/game/Gui_Init.cpp:528
+#: src/game/Hud_Create.cpp:252:282 src/game/Gui_Init.cpp:534
 msgctxt "TBLap"
 msgid "Lap"
 msgstr "Kör"
 
 #. HUD  Times bar 
-#: src/game/Hud_UpdatesAll.cpp:356 src/game/Gui_Init.cpp:526
+#: src/game/Hud_UpdatesAll.cpp:356 src/game/Gui_Init.cpp:532
 msgctxt "TBPlace"
 msgid "Place"
 msgstr "Hely"
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:254:285
+#: src/game/Hud_Create.cpp:255:286
 #: src/game/Challenges.cpp:417:552:564:640:661:678
 msgctxt "TBPosition"
 msgid "Position"
@@ -86,7 +86,7 @@ msgstr "Pozíció"
 
 #. HUD  Times bar 
 #: Media/gui/Game.layout:410 ..SingleRace.Track.Text
-#: src/game/Championships.cpp:469 src/game/Hud_Create.cpp:255:286
+#: src/game/Championships.cpp:469 src/game/Hud_Create.cpp:256:287
 #: src/game/Challenges.cpp:436:451:546:563:636:660:677
 msgctxt "TBPoints"
 msgid "Points"
@@ -99,51 +99,51 @@ msgid "Lap Results"
 msgstr "Köreredmények"
 
 #. HUD 
-#: Media/gui/Game_Options.layout:1248 ..Options.Sound.Main.Check
+#: Media/gui/Game_Options.layout:1298 ..Options.Sound.Main.Check
 msgctxt "Checkpoint"
 msgid "Checkpoint"
 msgstr "Ellenőrzőpont"
 
 #. HUD 
-#: Media/gui/Game_Options.layout:1244 ..Options.Sound.Main.Check
-#: src/game/Hud_Create.cpp:324
+#: Media/gui/Game_Options.layout:1294 ..Options.Sound.Main.Check
+#: src/game/Hud_Create.cpp:325
 msgctxt "WrongChk"
 msgid "Wrong Checkpoint"
 msgstr "Rossz Ellenőrzőpont"
 
 #. Editor  status 
-#: src/editor/SceneInit.cpp:243
+#: src/editor/SceneInit.cpp:261
 msgctxt "Loading"
 msgid "Loading"
 msgstr "Töltés"
 
 #. Editor  status 
-#: src/game/Gui_TweakSim.cpp:220 src/editor/SceneInit.cpp:341
+#: src/game/Gui_TweakSim.cpp:220 src/editor/SceneInit.cpp:359
 msgctxt "Loaded"
 msgid "Loaded"
 msgstr "Betöltve"
 
 #. Editor  status 
-#: src/editor/SceneInit.cpp:450
+#: src/editor/SceneInit.cpp:470
 msgctxt "Saving"
 msgid "Saving"
 msgstr "Mentés"
 
 #. Editor  status 
-#: src/game/Gui_TweakSim.cpp:567 src/editor/SceneInit.cpp:493
+#: src/game/Gui_TweakSim.cpp:567 src/editor/SceneInit.cpp:513
 #: src/editor/Update_Key.cpp:42
 msgctxt "Saved"
 msgid "Saved"
 msgstr "Elmentett"
 
 #. Editor  status 
-#: src/editor/SceneInit.cpp:379
+#: src/editor/SceneInit.cpp:397
 msgctxt "Updating"
 msgid "Updating"
 msgstr "Frissítés"
 
 #. Editor  status 
-#: src/editor/SceneInit.cpp:407
+#: src/editor/SceneInit.cpp:425
 msgctxt "Updated"
 msgid "Updated"
 msgstr "Frissítve"
@@ -341,7 +341,7 @@ msgid "Close"
 msgstr "Bezárás"
 
 #. MAIN  Challenge prizes 
-#: src/game/Challenges.cpp:459:674 src/game/Gui_InitChamps.cpp:98
+#: src/game/Challenges.cpp:459:674 src/game/Gui_InitChamps.cpp:78
 msgctxt "Prize"
 msgid "Prize"
 msgstr "Díj"
@@ -470,7 +470,7 @@ msgstr ""
 #: ..Help.Input/help.Shortcuts.Text Media/gui/Editor_Main.layout:27
 #: ..StuntRally-TrackEditor-version##{GameVersion}.Button
 #: Media/gui/Editor_Track.layout:5 :18..Track.Tab :22..Track.Track.Text
-#: :411..Track.Track.Button :723..Track.Pacenotes.View.Check
+#: :411..Track.Track.Button :725..Track.Pacenotes.View.Check
 #: Media/gui/Game.layout:17 ..SingleRace.Tab :380..SingleRace.Track.Text
 #: :471..SingleRace.Track.Button :910..SingleRace.Setup.Paint.Tab
 #: :1739..SingleRace.Multiplayer.Game.Text :2028..SingleRace.Tab
@@ -478,18 +478,18 @@ msgstr ""
 #: ..Options.Input.Shortcuts.Text Media/gui/Game_Replay.layout:32
 #: ..Replays.Replay.Button :151..Replays.View.Text
 #: src/game/Championships.cpp:444 src/game/CarModel_Config.cpp:108
-#: src/game/Hud_Create.cpp:253:284 src/game/Challenges.cpp:515
-#: src/game/Gui_Init.cpp:431 src/game/SceneInit.cpp:237
+#: src/game/Hud_Create.cpp:254:285 src/game/Challenges.cpp:515
+#: src/game/Gui_Init.cpp:437 src/game/SceneInit.cpp:237
 #: src/game/Gui_Replay.cpp:75:77:147 src/game/Gui_Network.cpp:124
-#: src/game/Gui_InitChamps.cpp:110 src/game/ChampChall.cpp:389
-#: src/editor/Gui_Tools.cpp:37:44:269:302 src/editor/SceneInit.cpp:445
+#: src/game/Gui_InitChamps.cpp:90 src/game/ChampChall.cpp:389
+#: src/editor/Gui_Tools.cpp:37:44:268:301 src/editor/SceneInit.cpp:465
 msgctxt "Track"
 msgid "Track"
 msgstr "Pálya"
 
 #. MAIN  Track 
-#: Media/gui/Editor.layout:3420 ..Editor.Vegetation.Road.Advanced.Text
-#: Media/gui/Editor_Track.layout:723 ..Track.Pacenotes.View.Check
+#: Media/gui/Editor.layout:3194 ..Editor.Vegetation.Road.Advanced.Text
+#: Media/gui/Editor_Track.layout:725 ..Track.Pacenotes.View.Check
 #: Media/gui/Game.layout:19 ..SingleRace.Track.Check
 #: :1926..SingleRace.Championship.Check src/game/Gui_Network.cpp:125
 msgctxt "Reverse"
@@ -500,7 +500,7 @@ msgstr ""
 #: Media/gui/Game.layout:25 ..SingleRace.Track.Button
 #: :523..SingleRace.Vehicle.Button :1651..SingleRace.SplitScreen.Button
 #: Media/gui/Game_Main.layout:30 ..StuntRally##{GameVersion}.Button :96..Window
-#: Media/gui/Game_Options.layout:717 ..Options.Graphics.Button
+#: Media/gui/Game_Options.layout:724 ..Options.Graphics.Button
 msgctxt "NewGame"
 msgid "New Game"
 msgstr "Új játék"
@@ -577,13 +577,14 @@ msgstr ""
 
 #. Championship Stage  stats 
 #: Media/gui/Common.layout:71 ..Track-Filter.Check :74
-#: src/game/Gui_InitCar.cpp:147 src/game/Gui_InitChamps.cpp:82:94
-#: src/common/GuiCom_Track.cpp:219:220
+#: src/game/Gui_InitCar.cpp:147 src/game/Gui_InitChamps.cpp:62:74
+#: src/common/GuiCom_Track.cpp:210:211
 msgctxt "Name"
 msgid "Name"
 msgstr "Név"
 
 #. Championship Stage  stats 
+#: Media/gui/Game_Options.layout:1677 ..Options.Tweak.Tab
 #: src/game/Championships.cpp:210 src/game/Challenges.cpp:598
 msgctxt "Tracks"
 msgid "Tracks"
@@ -598,15 +599,15 @@ msgstr ""
 
 #. Championship Stage  stats 
 #: Media/gui/Game.layout:2008 ..SingleRace.Tab
-#: src/game/Gui_InitChamps.cpp:83:96
+#: src/game/Gui_InitChamps.cpp:63:76
 msgctxt "Stages"
 msgid "Stages"
 msgstr ""
 
 #. Championship Stage  stats 
 #: Media/gui/Common.layout:81 ..Track-Filter.Check Media/gui/Game.layout:1863
-#: ..SingleRace.Championship.Tab :1866:1878 src/game/Gui_InitChamps.cpp:110
-#: src/common/GuiCom_Track.cpp:223
+#: ..SingleRace.Championship.Tab :1866:1878 src/game/Gui_InitChamps.cpp:90
+#: src/common/GuiCom_Track.cpp:214
 msgctxt "Scenery"
 msgid "Scenery"
 msgstr ""
@@ -620,16 +621,16 @@ msgstr "Hossz"
 #: Media/gui/Game.layout:785 ..SingleRace.Vehicle.Text
 #: Media/gui/Game_Main.layout:185 ..NewGame.Button
 #: src/game/Championships.cpp:207:454 src/game/Challenges.cpp:523:595
-#: src/game/Gui_InitCar.cpp:150 src/game/Gui_InitChamps.cpp:82:94:111
+#: src/game/Gui_InitCar.cpp:150 src/game/Gui_InitChamps.cpp:62:74:91
 msgctxt "Difficulty"
 msgid "Difficulty"
 msgstr "Nehézség"
 
 #. Championship Stage  stats 
-#: Media/gui/Editor_Options.layout:266 ..Options.Graphics.Reflections.Text
-#: :338..Options.Graphics.Water.Text :381..Options.Graphics.Shadows.Text
-#: Media/gui/Game_Options.layout:779 :851..Options.Graphics.Water.Text
-#: :894..Options.Graphics.Shadows.Text src/game/Championships.cpp:457
+#: Media/gui/Editor_Options.layout:280 ..Options.Graphics.Reflections.Text
+#: :338..Options.Graphics.Water.Text :411..Options.Graphics.Shadows.Text
+#: Media/gui/Game_Options.layout:786 :844..Options.Graphics.Water.Text
+#: :917..Options.Graphics.Shadows.Text src/game/Championships.cpp:457
 #: src/game/Challenges.cpp:526 src/editor/Update_Frame.cpp:85
 msgctxt "Distance"
 msgid "Distance"
@@ -638,27 +639,27 @@ msgstr ""
 #. Championship Stage  stats 
 #: Media/gui/Game.layout:563 ..SingleRace.Vehicle.Text
 #: src/game/Championships.cpp:214 src/game/Challenges.cpp:602
-#: src/game/Gui_InitChamps.cpp:83:96:112 src/editor/Gui_Events.cpp:586
+#: src/game/Gui_InitChamps.cpp:63:76:92 src/editor/Gui_Events.cpp:583
 msgctxt "Time"
 msgid "Time"
 msgstr "Idő"
 
 #. Championship Stage  stats 
 #: src/game/Championships.cpp:214 src/game/Challenges.cpp:602
-#: src/game/Gui_InitChamps.cpp:83:112
+#: src/game/Gui_InitChamps.cpp:63:92
 msgctxt "TimeMS"
 msgid "m:s"
 msgstr "m:s"
 
 #. MAIN  Challenge Stage  progress 
-#: src/game/Championships.cpp:218 src/game/Hud_Create.cpp:256
-#: src/game/Challenges.cpp:673 src/game/Gui_InitChamps.cpp:84:97
+#: src/game/Championships.cpp:218 src/game/Hud_Create.cpp:257
+#: src/game/Challenges.cpp:673 src/game/Gui_InitChamps.cpp:64:77
 msgctxt "Progress"
 msgid "Progress"
 msgstr ""
 
 #. MAIN  Challenge Stage  progress 
-#: src/game/Championships.cpp:219 src/game/Gui_InitChamps.cpp:84:98:112
+#: src/game/Championships.cpp:219 src/game/Gui_InitChamps.cpp:64:78:92
 msgctxt "Score"
 msgid "Score"
 msgstr "Pont"
@@ -851,14 +852,14 @@ msgstr ""
 #: Media/gui/Game.layout:384 ..SingleRace.Track.Text :504..SingleRace.Tab
 #: :1899..SingleRace.Championship.Tab Media/gui/Game_Options.layout:259
 #: ..Options.Input.Shortcuts.Text Media/gui/Game_Tweak.layout:14 ..Tweak.Tab
-#: :424 src/game/Gui_Init.cpp:454 src/game/Gui_Replay.cpp:81
+#: :424 src/game/Gui_Init.cpp:460 src/game/Gui_Replay.cpp:81
 msgctxt "Vehicle"
 msgid "Vehicle"
 msgstr "Jármű"
 
 #. Vehicle 
 #: src/game/Challenges.cpp:606 src/game/Gui_Replay.cpp:151
-#: src/game/Gui_InitChamps.cpp:95
+#: src/game/Gui_InitChamps.cpp:75
 msgctxt "Vehicles"
 msgid "Vehicles"
 msgstr "Járművek"
@@ -908,21 +909,21 @@ msgid "3 colors, changing"
 msgstr ""
 
 #. Color  params 
-#: Media/gui/Editor_Utils.layout:94 ..Color.Text Media/gui/Game.layout:1091
+#: Media/gui/Editor_Utils.layout:108 ..Color.Text Media/gui/Game.layout:1091
 #: ..SingleRace.Setup.Paint.Text
 msgctxt "ColHue"
 msgid "Color - Hue"
 msgstr ""
 
 #. Color  params 
-#: Media/gui/Editor_Utils.layout:110 ..Color.Text Media/gui/Game.layout:1110
+#: Media/gui/Editor_Utils.layout:124 ..Color.Text Media/gui/Game.layout:1110
 #: ..SingleRace.Setup.Paint.Text
 msgctxt "ColSat"
 msgid "Saturation"
 msgstr ""
 
 #. Color  params 
-#: Media/gui/Editor_Utils.layout:126 ..Color.Text Media/gui/Game.layout:1127
+#: Media/gui/Editor_Utils.layout:140 ..Color.Text Media/gui/Game.layout:1127
 #: ..SingleRace.Setup.Paint.Text
 msgctxt "ColBright"
 msgid "Brightness"
@@ -935,7 +936,7 @@ msgid "Glossiness"
 msgstr ""
 
 #. Color  params 
-#: Media/gui/Editor.layout:530 ..Editor.Terrain.Light.Text
+#: Media/gui/Editor.layout:534 ..Editor.Terrain.Light.Text
 #: Media/gui/Game.layout:1176 ..SingleRace.Setup.Paint.Text
 #: Media/gui/MaterialEditor.layout:210 ..MaterialEditor.Main.Text
 msgctxt "ColReflect"
@@ -988,8 +989,8 @@ msgid "Clear coat"
 msgstr ""
 
 #. Color  extras 
-#: Media/gui/Editor_Track.layout:702 ..Track.Pacenotes.View.Text
-#: Media/gui/Editor_Utils.layout:142 ..Color.Text
+#: Media/gui/Editor_Track.layout:704 ..Track.Pacenotes.View.Text
+#: Media/gui/Editor_Utils.layout:156 ..Color.Text
 #: Media/gui/Game_Options.layout:529 ..Options.View.Pacenotes.Text
 #: Media/gui/MaterialEditor.layout:252 ..MaterialEditor.Main.Text
 msgctxt "Transparency"
@@ -997,28 +998,28 @@ msgid "Transparency"
 msgstr "Átlátszó"
 
 #. Color  extras 
-#: Media/gui/Editor_Utils.layout:158 ..Color.Text
+#: Media/gui/Editor_Utils.layout:172 ..Color.Text
 msgctxt "Negative"
 msgid "Negative (darken)"
 msgstr ""
 
 #. Color  extras 
-#: Media/gui/Editor.layout:808 ..Editor.Terrain.Brushparameters.Button
-#: :813:1663..Editor.Layers.Blendmap.Noise.Button Media/gui/Game.layout:1239
+#: Media/gui/Editor.layout:812 ..Editor.Terrain.Brushparameters.Button
+#: :817:1668..Editor.Layers.Blendmap.Noise.Button Media/gui/Game.layout:1239
 #: ..SingleRace.Setup.Paint.Button
 msgctxt "CarClrRandom"
 msgid "Random"
 msgstr "Véletlen"
 
 #. Color  extras 
-#: Media/gui/Editor.layout:672 ..Editor.Terrain.Brushes.Check
+#: Media/gui/Editor.layout:676 ..Editor.Terrain.Brushes.Check
 #: Media/gui/Game.layout:922 ..SingleRace.Setup.Paint.Check
 msgctxt "Adjust"
 msgid "Adjust"
 msgstr ""
 
 #. Color  extras 
-#: Media/gui/Editor.layout:732 ..Editor.Terrain.Brushes.Text
+#: Media/gui/Editor.layout:736 ..Editor.Terrain.Brushes.Text
 #: Media/gui/Game.layout:938 ..SingleRace.Setup.Paint.Check
 msgctxt "NewLine"
 msgid "New line"
@@ -1102,7 +1103,6 @@ msgid "Year"
 msgstr "Év"
 
 #. MAIN  Vehicle basic stats 
-#: Media/gui/Editor.layout:2868 ..Editor.Vegetation.Road.RoadPoint.Text :2942
 #: Media/gui/Game.layout:756 ..SingleRace.Vehicle.Text
 #: src/game/Gui_InitCar.cpp:155
 msgctxt "CarType"
@@ -1263,7 +1263,7 @@ msgid "Continue"
 msgstr "Folytatás"
 
 #. Loading game tags 
-#: Media/gui/Editor_Utils.layout:30 ..Text src/game/BaseApp_Create.cpp:118
+#: Media/gui/Editor_Utils.layout:44 ..Text src/game/BaseApp_Create.cpp:118
 msgctxt "LoadingDesc"
 msgid "Loading, please wait..."
 msgstr "Kérem várjon, töltődik..."
@@ -1350,36 +1350,36 @@ msgstr "Befejezés"
 #: Media/gui/Game.layout:548 ..SingleRace.Vehicle.Text
 #: :1494..SingleRace.Setup.Steering.Text Media/gui/Game_Options.layout:398
 #: ..Options.View.HUD.Button src/game/Gui_UtilCar.cpp:438
-#: src/common/GuiCom_Track.cpp:488
+#: src/common/GuiCom_Track.cpp:480
 msgctxt "UnitKmh"
 msgid "km/h"
 msgstr "km/h"
 
 #. Units 
 #: Media/gui/Game_Options.layout:402 ..Options.View.HUD.Button
-#: src/game/Gui_UtilCar.cpp:439 src/common/GuiCom_Track.cpp:488
+#: src/game/Gui_UtilCar.cpp:439 src/common/GuiCom_Track.cpp:480
 msgctxt "UnitMph"
 msgid "mph"
 msgstr "mph"
 
 #. Units 
-#: Media/gui/Editor.layout:440 ..Editor.Terrain.Size.Text
+#: Media/gui/Editor.layout:444 ..Editor.Terrain.Size.Text
 #: src/game/Championships.cpp:458 src/game/Challenges.cpp:527
-#: src/common/GuiCom_Track.cpp:404 src/common/GuiCom_Options.cpp:38:97:115
+#: src/common/GuiCom_Track.cpp:395 src/common/GuiCom_Options.cpp:44:105:123
 msgctxt "UnitKm"
 msgid "km"
 msgstr "km"
 
 #. Units 
 #: src/game/Championships.cpp:458 src/game/Challenges.cpp:527
-#: src/common/GuiCom_Track.cpp:404
+#: src/common/GuiCom_Track.cpp:395
 msgctxt "UnitMi"
 msgid "mi"
 msgstr ""
 
 #. Units 
-#: Media/gui/Editor.layout:426 ..Editor.Terrain.Size.Text
-#: src/common/GuiCom_Track.cpp:405
+#: Media/gui/Editor.layout:430 ..Editor.Terrain.Size.Text
+#: src/common/GuiCom_Track.cpp:396
 msgctxt "UnitM"
 msgid "m"
 msgstr ""
@@ -1618,8 +1618,13 @@ msgctxt "SC_Marble"
 msgid "Marble"
 msgstr ""
 
+#. Scenery names 
+msgctxt "SC_Spring"
+msgid "Spring"
+msgstr ""
+
 #. Vehicle Paint names 
-#: Media/gui/Editor.layout:488 ..Editor.Terrain.Light.Text
+#: Media/gui/Editor.layout:492 ..Editor.Terrain.Light.Text
 #: Media/gui/MaterialEditor.layout:67 ..MaterialEditor.Main.Text :101:135
 #, fuzzy
 #| msgctxt "NetReady"
@@ -1647,7 +1652,7 @@ msgid "Lime"
 msgstr ""
 
 #. Vehicle Paint names 
-#: Media/gui/Editor.layout:500 ..Editor.Terrain.Light.Text
+#: Media/gui/Editor.layout:504 ..Editor.Terrain.Light.Text
 #: Media/gui/MaterialEditor.layout:78 ..MaterialEditor.Main.Text :112:149
 #, fuzzy
 #| msgctxt "SC_Greece"
@@ -1667,7 +1672,7 @@ msgid "SkyBlue"
 msgstr ""
 
 #. Vehicle Paint names 
-#: Media/gui/Editor.layout:512 ..Editor.Terrain.Light.Text
+#: Media/gui/Editor.layout:516 ..Editor.Terrain.Light.Text
 #: Media/gui/MaterialEditor.layout:89 ..MaterialEditor.Main.Text :123:163
 msgctxt "P_Blue"
 msgid "Blue"
@@ -1914,7 +1919,7 @@ msgid "Track not found !"
 msgstr "A pálya nem található!"
 
 #. TIP  Track  messages 
-#: Media/gui/Editor_Track.layout:726 ..Track.Pacenotes.View.Check
+#: Media/gui/Editor_Track.layout:728 ..Track.Pacenotes.View.Check
 #: Media/gui/Game.layout:22 ..SingleRace.Track.Check
 #: :1929..SingleRace.Championship.Check
 msgctxt "TipReverse"
@@ -1965,18 +1970,21 @@ msgid "Track driving advices and warnings."
 msgstr ""
 
 #. TIP  Track 
+#: Media/gui/Editor_Track.layout:34 ..Track.Track.Image
 #: Media/gui/Game.layout:38 ..SingleRace.Track.Image :2036
 msgctxt "TipTrackImg"
 msgid "In game screenshot for selected track."
 msgstr ""
 
 #. TIP  Track 
+#: Media/gui/Editor_Track.layout:37 ..Track.Track.Image :40
 #: Media/gui/Game.layout:41 ..SingleRace.Track.Image :44:2039:2042
 msgctxt "TipTrackMap"
 msgid "Minimap of selected track, view from top."
 msgstr ""
 
 #. TIP  Track 
+#: Media/gui/Editor_Track.layout:34 ..Track.Track.Image :37:40
 #: Media/gui/Game.layout:38 ..SingleRace.Track.Image :41:44:2036:2039:2042
 msgctxt "TipClickMax"
 msgid "Click to maximize. Then click to close."
@@ -2100,8 +2108,8 @@ msgstr "nehézség"
 
 #. TIP  Track difficulties, on icons 
 #: Media/gui/Common.layout:100 ..Track-Filter.Check :197
-#: Media/gui/Editor.layout:709 ..Editor.Terrain.Brushes.Image
-#: :713..Editor.Terrain.Brushes.Text Media/gui/Editor_Track.layout:62
+#: Media/gui/Editor.layout:713 ..Editor.Terrain.Brushes.Image
+#: :717..Editor.Terrain.Brushes.Text Media/gui/Editor_Track.layout:62
 #: ..Track.Track.Image :67..Track.Track.Text :71..Track.Track.Slider
 #: Media/gui/Game.layout:66 ..SingleRace.Track.Image :71..SingleRace.Track.Text
 #: :75..SingleRace.Track.Slider :804..SingleRace.Vehicle.Text
@@ -2133,7 +2141,7 @@ msgstr ""
 
 #. TIP  Track difficulties, on icons 
 #: Media/gui/Common.layout:197 ..Track-Filter.Check :204
-#: Media/gui/Editor.layout:709 ..Editor.Terrain.Brushes.Image
+#: Media/gui/Editor.layout:713 ..Editor.Terrain.Brushes.Image
 #: Media/gui/Editor_Track.layout:51 ..Track.Track.Image :56..Track.Track.Check
 #: :62..Track.Track.Image :67..Track.Track.Text :71..Track.Track.Slider
 #: Media/gui/Game.layout:55 ..SingleRace.Track.Image
@@ -2165,7 +2173,7 @@ msgstr ""
 
 #. Setup  Vehicle,Game 
 #: Media/gui/Editor_Help.layout:230 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor_Track.layout:603 ..Track.Tab Media/gui/Game.layout:1260
+#: Media/gui/Editor_Track.layout:599 ..Track.Tab Media/gui/Game.layout:1260
 #: ..SingleRace.Setup.Tab Media/gui/Game_Options.layout:266
 #: ..Options.Input.Shortcuts.Text src/game/Challenges.cpp:613
 #: src/game/Gui_Network.cpp:131
@@ -2215,7 +2223,7 @@ msgstr "Körök száma"
 #. MAIN  Game  Simulation 
 #: Media/gui/Game.layout:1535 ..SingleRace.Setup.Steering.Text
 #: Media/gui/Game_Main.layout:220 ..NewGame.Button src/game/Challenges.cpp:615
-#: src/game/Gui_Init.cpp:435 src/game/Gui_Replay.cpp:168
+#: src/game/Gui_Init.cpp:441 src/game/Gui_Replay.cpp:168
 #: src/game/Gui_Network.cpp:132 src/editor/Update_EditKeyTxt.cpp:343
 msgctxt "Simulation"
 msgid "Simulation"
@@ -2258,7 +2266,7 @@ msgid "Gravel"
 msgstr ""
 
 #. Setup  steering 
-#: Media/gui/Editor_Track.layout:629 ..Track.Game.Check
+#: Media/gui/Editor_Track.layout:626 ..Track.Game.Check
 #: Media/gui/Game.layout:1463 ..SingleRace.Setup.Steering.Tab
 msgctxt "Asphalt"
 msgid "Asphalt"
@@ -2382,9 +2390,9 @@ msgid "Allow driving outside map, on horizons"
 msgstr ""
 
 #. Game  Damage 
-#: Media/gui/Editor.layout:322 ..Editor.Sun.Fog.Text
-#: :1601..Editor.Layers.Blendmap.Blendmap.Text
-#: Media/gui/Editor_Track.layout:605 ..Track.Game.Text
+#: Media/gui/Editor.layout:326 ..Editor.Sun.Fog.Text
+#: :1606..Editor.Layers.Blendmap.Blendmap.Text
+#: Media/gui/Editor_Track.layout:601 ..Track.Game.Text
 #: Media/gui/Game.layout:1316 ..SingleRace.Setup.Game.Text
 #: src/game/Challenges.cpp:616 src/game/Gui_Network.cpp:139
 msgctxt "Damage"
@@ -2392,20 +2400,20 @@ msgid "Damage"
 msgstr "Sérülés"
 
 #. Game  Damage 
-#: src/game/Gui_Init.cpp:304:310 src/editor/Update_EditKeyTxt.cpp:293
-#: src/common/GuiCom_Options.cpp:59:76
+#: src/game/Gui_Init.cpp:311:317 src/editor/Update_EditKeyTxt.cpp:293
+#: src/common/GuiCom_Options.cpp:60:82:220
 msgctxt "None"
 msgid "None"
 msgstr ""
 
 #. Game  Damage 
-#: src/game/Gui_Init.cpp:304
+#: src/game/Gui_Init.cpp:311
 msgctxt "Reduced"
 msgid "Reduced"
 msgstr ""
 
 #. Game  Damage 
-#: src/game/Gui_Init.cpp:305 src/common/GuiCom_Options.cpp:60
+#: src/game/Gui_Init.cpp:312 src/common/GuiCom_Options.cpp:61
 msgctxt "Normal"
 msgid "Normal"
 msgstr ""
@@ -2421,7 +2429,7 @@ msgstr ""
 #: Media/gui/Game.layout:1269 ..SingleRace.Setup.Game.Text
 #: :1364..SingleRace.Setup.Tab Media/gui/Game_Options.layout:654
 #: ..Options.View.Camera.Text :665 src/game/Challenges.cpp:619
-#: src/game/Gui_Init.cpp:436 src/game/Gui_Network.cpp:136
+#: src/game/Gui_Init.cpp:442 src/game/Gui_Network.cpp:136
 msgctxt "Boost"
 msgid "Boost"
 msgstr ""
@@ -2434,13 +2442,13 @@ msgid "Flip"
 msgstr ""
 
 #. Game  Boost 
-#: src/game/Gui_Init.cpp:292:298 src/game/Gui_Network.cpp:43
+#: src/game/Gui_Init.cpp:299:305 src/game/Gui_Network.cpp:43
 msgctxt "Never"
 msgid "Never"
 msgstr "Soha"
 
 #. Game  Boost 
-#: src/game/Gui_Init.cpp:293:299:310 src/game/Gui_Network.cpp:43
+#: src/game/Gui_Init.cpp:300:306:317 src/game/Gui_Network.cpp:43
 msgctxt "Always"
 msgid "Always"
 msgstr "Mindig"
@@ -2453,25 +2461,25 @@ msgid "Any"
 msgstr ""
 
 #. Game  Boost 
-#: src/game/Gui_Init.cpp:292:312 src/game/Gui_Network.cpp:43
+#: src/game/Gui_Init.cpp:299:319 src/game/Gui_Network.cpp:43
 msgctxt "FuelLap"
 msgid "Fuel each lap"
 msgstr ""
 
 #. Game  Boost 
-#: src/game/Gui_Init.cpp:293:312 src/game/Gui_Network.cpp:43
+#: src/game/Gui_Init.cpp:300:319 src/game/Gui_Network.cpp:43
 msgctxt "FuelTime"
 msgid "Fuel over time"
 msgstr ""
 
 #. Game  Boost 
-#: src/game/Gui_Init.cpp:298
+#: src/game/Gui_Init.cpp:305
 msgctxt "FuelBoost"
 msgid "Boost Fuel"
 msgstr ""
 
 #. Game  Boost 
-#: src/game/Gui_Init.cpp:311
+#: src/game/Gui_Init.cpp:318
 msgctxt "GoBackTime"
 msgid "Go back time"
 msgstr ""
@@ -2485,7 +2493,7 @@ msgid "Replay"
 msgstr "Visszajátszás"
 
 #. Replay 
-#: Media/gui/Editor.layout:783 ..Editor.Terrain.Brushes.Button :795
+#: Media/gui/Editor.layout:787 ..Editor.Terrain.Brushes.Button :799
 #: Media/gui/Game.layout:969 ..SingleRace.Setup.Paint.Button :992
 #: Media/gui/Game_Replay.layout:45 ..Replays.Replay.Button
 #: Media/gui/Game_Tweak.layout:253 ..Tweak.Tires.Button
@@ -2496,7 +2504,7 @@ msgid "Load"
 msgstr "Töltés"
 
 #. Replay 
-#: Media/gui/Editor.layout:771 ..Editor.Terrain.Brushes.Button
+#: Media/gui/Editor.layout:775 ..Editor.Terrain.Brushes.Button
 #: Media/gui/Game.layout:980 ..SingleRace.Setup.Paint.Button
 #: Media/gui/Game_Replay.layout:40 ..Replays.Replay.Button
 #: Media/gui/Game_Tweak.layout:22 ..Tweak.Vehicle.Button
@@ -2504,7 +2512,7 @@ msgstr "Töltés"
 #: :460..Tweak.collisions.Button Media/gui/MaterialEditor.layout:37
 #: ..MaterialEditor.Button :527..MaterialEditor.Tab
 #: :568..MaterialEditor.Save.Button :580 src/game/Gui_Replay.cpp:121:128
-#: src/editor/SceneInit.cpp:445
+#: src/editor/SceneInit.cpp:465
 msgctxt "RplSave"
 msgid "Save"
 msgstr "Mentés"
@@ -2516,7 +2524,7 @@ msgstr ""
 
 #. Replay 
 #: src/game/Gui_Replay.cpp:121:309:318 src/game/Gui_TweakSim.cpp:510
-#: src/editor/Gui_Tools.cpp:269:302
+#: src/editor/Gui_Tools.cpp:268:301
 msgctxt "AlreadyExists"
 msgid "Already exists"
 msgstr "Már létezik"
@@ -2528,24 +2536,24 @@ msgid "Doesn't exist"
 msgstr "Nem létezik"
 
 #. Replay  list 
-#: Media/gui/Common.layout:220 ..Track-Filter.Text Media/gui/Editor.layout:344
-#: ..Editor.Terrain.Text :1302..Editor.Layers.Text
-#: :2813..Editor.Vegetation.Road.Text Media/gui/Editor_Utils.layout:60
+#: Media/gui/Common.layout:220 ..Track-Filter.Text Media/gui/Editor.layout:348
+#: ..Editor.Terrain.Text :1306..Editor.Layers.Text
+#: :2825..Editor.Vegetation.Road.Text Media/gui/Editor_Utils.layout:74
 #: ..Tab-close/openpickwindow.Button Media/gui/Game.layout:1922
 #: ..SingleRace.Championship.Check Media/gui/Game_Replay.layout:27
 #: ..Replays.Replay.Button Media/gui/Game_Tweak.layout:260 ..Tweak.Tires.Button
 #: Media/gui/MaterialEditor.layout:580 ..MaterialEditor.Save.Button
-#: src/common/GuiCom_Options.cpp:47 src/common/GuiCom_TrackUpd.cpp:145
+#: src/common/GuiCom_Options.cpp:51 src/common/GuiCom_TrackUpd.cpp:145
 msgctxt "RplAll"
 msgid "All"
 msgstr ""
 
 #. Replay  list 
-#: Media/gui/Editor.layout:342 ..Editor.Terrain.Text
-#: :344:1300..Editor.Layers.Text :1302:2811..Editor.Vegetation.Road.Text :2813
-#: Media/gui/Editor_Utils.layout:65 ..Tab-close/openpickwindow.Button
+#: Media/gui/Editor.layout:346 ..Editor.Terrain.Text
+#: :348:1304..Editor.Layers.Text :1306:2823..Editor.Vegetation.Road.Text :2825
+#: Media/gui/Editor_Utils.layout:79 ..Tab-close/openpickwindow.Button
 #: Media/gui/Game_Replay.layout:32 ..Replays.Replay.Button
-#: src/editor/Gui_Events.cpp:93:347 src/editor/Update_EditKeyTxt.cpp:182
+#: src/editor/Gui_Events.cpp:93:346 src/editor/Update_EditKeyTxt.cpp:182
 msgctxt "RplCurrent"
 msgid "Current"
 msgstr ""
@@ -2583,7 +2591,7 @@ msgid "size"
 msgstr "méret"
 
 #. Replay  stats 
-#: Media/gui/Editor.layout:421 ..Editor.Terrain.Size.Text
+#: Media/gui/Editor.layout:425 ..Editor.Terrain.Size.Text
 #: src/game/Gui_Replay.cpp:184
 msgctxt "RplFileSize"
 msgid "File size"
@@ -2693,7 +2701,8 @@ msgstr ""
 
 #. Screen 
 #: Media/gui/Editor_Options.layout:121 ..Options.Screen.Video.Text
-#: Media/gui/Game_Options.layout:122
+#: :444..Options.Graphics.Lights.Text Media/gui/Game_Options.layout:122
+#: :950..Options.Graphics.Lights.Text
 msgctxt "Brightness"
 msgid "Brightness"
 msgstr ""
@@ -2711,31 +2720,48 @@ msgid "Complex"
 msgstr ""
 
 #. <Tag name="Gamma">Gamma</Tag>
-#: Media/gui/Editor.layout:1210 ..Editor.Terrain.Tools.Button
+#: Media/gui/Editor.layout:1214 ..Editor.Terrain.Tools.Button
 msgctxt "Simple"
 msgid "Simple"
 msgstr "Egyszerű"
 
 #. Screen  info 
 #: Media/gui/Editor_Options.layout:74 ..Options.Screen.Main.Text
-#: :110..Options.Screen.Video.Text :189..Options.Graphics.Text
+#: :110..Options.Screen.Video.Text :191..Options.Graphics.Text
 #: Media/gui/Game_Options.layout:75 :111..Options.Screen.Video.Text
-#: :696..Options.Graphics.Text
+#: :697..Options.Graphics.Text
 msgctxt "NeedRestart"
 msgid "* need restart"
 msgstr "* újraindítás szükséges"
 
 #. Screen  info 
+#: Media/gui/Editor.layout:1877 ..Editor.Grasses.Properties.Text
 #: Media/gui/Editor_Options.layout:115 ..Options.Screen.Video.Check
-#: :195..Options.Graphics.Text Media/gui/Game_Options.layout:116
-#: :702..Options.Graphics.Text
+#: :203..Options.Graphics.Text Media/gui/Game_Options.layout:116
+#: :709..Options.Graphics.Text
 msgctxt "NotDone"
 msgid "not done yet, ToDo"
 msgstr ""
 
 #. Screen  info 
-#: Media/gui/Editor_Options.layout:207 ..Options.Graphics.Edit
-#: Media/gui/Game_Options.layout:714
+#: Media/gui/Editor_Options.layout:197 ..Options.Graphics.Text
+#: Media/gui/Game_Options.layout:703
+msgctxt "NeedApply"
+msgid "need Apply"
+msgstr ""
+
+#. Screen  info 
+#: Media/gui/Editor_Options.layout:209 ..Options.Graphics.Text
+#, fuzzy
+#| msgctxt "MessageBox_Ignore"
+#| msgid "Ignore"
+msgctxt "Ignored"
+msgid "ignored"
+msgstr "Mellőz"
+
+#. Screen  info 
+#: Media/gui/Editor_Options.layout:221 ..Options.Graphics.Edit
+#: Media/gui/Game_Options.layout:721
 msgctxt "GraphicsRightHQ"
 msgid ""
 "By default better quality (less Fps) is on right. Marked with + if on left."
@@ -2798,43 +2824,43 @@ msgid "Graphics preset"
 msgstr ""
 
 #. Graphics Presets 
-#: src/common/GuiCom_Options.cpp:55:124
+#: src/common/GuiCom_Options.cpp:132
 msgctxt "GraphicsAll_Lowest"
 msgid "Lowest"
 msgstr "Alacsonyabb"
 
 #. Graphics Presets 
-#: src/common/GuiCom_Options.cpp:124
+#: src/common/GuiCom_Options.cpp:132
 msgctxt "GraphicsAll_Low"
 msgid "Low"
 msgstr "Alacsony"
 
 #. Graphics Presets 
-#: src/common/GuiCom_Options.cpp:55:125
+#: src/common/GuiCom_Options.cpp:133
 msgctxt "GraphicsAll_Medium"
 msgid "Medium"
 msgstr "Közepes"
 
 #. Graphics Presets 
-#: src/common/GuiCom_Options.cpp:56:125
+#: src/common/GuiCom_Options.cpp:133
 msgctxt "GraphicsAll_High"
 msgid "High"
 msgstr "Magas"
 
 #. Graphics Presets 
-#: src/common/GuiCom_Options.cpp:126
+#: src/common/GuiCom_Options.cpp:134
 msgctxt "GraphicsAll_Higher"
 msgid "Higher"
 msgstr "Magasabb"
 
 #. Graphics Presets 
-#: src/common/GuiCom_Options.cpp:126
+#: src/common/GuiCom_Options.cpp:134
 msgctxt "GraphicsAll_VeryHigh"
 msgid "Very High"
 msgstr "Nagyon magas"
 
 #. Graphics Presets 
-#: src/common/GuiCom_Options.cpp:127
+#: src/common/GuiCom_Options.cpp:135
 #, fuzzy
 #| msgctxt "GraphicsAll_Higher"
 #| msgid "Higher"
@@ -2843,7 +2869,7 @@ msgid "Highest"
 msgstr "Magasabb"
 
 #. Graphics Presets 
-#: src/common/GuiCom_Options.cpp:127
+#: src/common/GuiCom_Options.cpp:135
 msgctxt "GraphicsAll_Ultra"
 msgid "Ultra"
 msgstr ""
@@ -2858,14 +2884,14 @@ msgid "Multiplayer"
 msgstr "Multiplayer"
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:430
+#: src/game/Gui_Init.cpp:436
 msgctxt "Game name"
 msgid "Game name"
 msgstr "Játék neve"
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:432 src/game/Gui_Network.cpp:127
-#: src/game/Gui_InitChamps.cpp:111
+#: src/game/Gui_Init.cpp:438 src/game/Gui_Network.cpp:127
+#: src/game/Gui_InitChamps.cpp:91
 msgctxt "Laps"
 msgid "Laps"
 msgstr "Körök"
@@ -2874,38 +2900,38 @@ msgstr "Körök"
 #: Media/gui/Game.layout:861 ..SingleRace.Vehicle.Tab
 #: :864:867:870:895..SingleRace.Setup.Paint.Tab :898:901:904
 #: Media/gui/Game_Options.layout:188 ..Options.Input.Tab
-#: src/game/CarModel_Config.cpp:111 src/game/Gui_Init.cpp:453
+#: src/game/CarModel_Config.cpp:111 src/game/Gui_Init.cpp:459
 msgctxt "Player"
 msgid "Player"
 msgstr "Játékos"
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:433 src/game/Gui_Util.cpp:181:184
+#: src/game/Gui_Init.cpp:439 src/game/Gui_Util.cpp:181:184
 #: src/game/Gui_Network.cpp:129
 msgctxt "Players"
 msgid "Players"
 msgstr "Játékosok"
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:434
+#: src/game/Gui_Init.cpp:440
 msgctxt "Collis."
 msgid "Collis."
 msgstr ""
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:437
+#: src/game/Gui_Init.cpp:443
 msgctxt "Locked"
 msgid "Locked"
 msgstr "Zárolt"
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:455
+#: src/game/Gui_Init.cpp:461
 msgctxt "Peers"
 msgid "Peers"
 msgstr ""
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:456
+#: src/game/Gui_Init.cpp:462
 msgctxt "Ping"
 msgid "Ping"
 msgstr "Ping"
@@ -2961,13 +2987,13 @@ msgid "Address"
 msgstr "Cím"
 
 #. Network Server 
-#: src/game/Gui_Init.cpp:438
+#: src/game/Gui_Init.cpp:444
 msgctxt "NetHost"
 msgid "Host"
 msgstr ""
 
 #. Network Server 
-#: src/game/Gui_Init.cpp:439 src/game/Gui_Network.cpp:485
+#: src/game/Gui_Init.cpp:445 src/game/Gui_Network.cpp:485
 msgctxt "NetPort"
 msgid "Port"
 msgstr "Port"
@@ -2999,7 +3025,7 @@ msgstr "Start"
 
 #. Network Game 
 #: Media/gui/Game.layout:1710 ..SingleRace.Multiplayer.Game.Button
-#: src/game/Gui_Init.cpp:457 src/game/Gui_Network.cpp:230:326:526
+#: src/game/Gui_Init.cpp:463 src/game/Gui_Network.cpp:230:326:526
 msgctxt "NetReady"
 msgid "Ready"
 msgstr "Kész"
@@ -3111,7 +3137,7 @@ msgstr ""
 
 #. Network Settings 
 #: Media/gui/Game.layout:1750 ..SingleRace.Multiplayer.Settings.Text
-#: src/game/Gui_Init.cpp:526
+#: src/game/Gui_Init.cpp:532
 msgctxt "NetNickname"
 msgid "Nickname"
 msgstr ""
@@ -3152,25 +3178,25 @@ msgstr ""
 
 #. Effects  Main 
 #: Media/gui/Game_Options.layout:307 ..Options.Input.Shortcuts.Text
-#: :1102..Options.Graphics.Tab
+#: :1152..Options.Graphics.Tab
 msgctxt "Effects"
 msgid "Effects"
 msgstr ""
 
 #. Effects  Main 
-#: Media/gui/Game_Options.layout:1111 ..Options.Graphics.Effects.Check
+#: Media/gui/Game_Options.layout:1161 ..Options.Graphics.Effects.Check
 msgctxt "AllEffects"
 msgid "Effects Enabled"
 msgstr ""
 
 #. Effects 
-#: Media/gui/Game_Options.layout:1118 ..Options.Graphics.Effects.Check
+#: Media/gui/Game_Options.layout:1168 ..Options.Graphics.Effects.Check
 msgctxt "Bloom"
 msgid "Bloom"
 msgstr ""
 
 #. Effects 
-#: Media/gui/Game_Options.layout:1122 ..Options.Graphics.Effects.Text
+#: Media/gui/Game_Options.layout:1172 ..Options.Graphics.Effects.Text
 msgctxt "Intensity"
 msgid "Intensity"
 msgstr ""
@@ -3196,7 +3222,7 @@ msgid "Film Grain"
 msgstr ""
 
 #. Effects 
-#: Media/gui/Game_Options.layout:1136 ..Options.Graphics.Effects.Check
+#: Media/gui/Game_Options.layout:1186 ..Options.Graphics.Effects.Check
 msgctxt "softparticles"
 msgid "Soft Particles"
 msgstr ""
@@ -3207,7 +3233,7 @@ msgid "Depth of Field"
 msgstr ""
 
 #. Effects DOF 
-#: Media/gui/Editor_Track.layout:692 ..Track.Pacenotes.View.Text
+#: Media/gui/Editor_Track.layout:694 ..Track.Pacenotes.View.Text
 #: Media/gui/Game_Options.layout:509 ..Options.View.Pacenotes.Text
 msgctxt "Near"
 msgid "Near"
@@ -3230,7 +3256,7 @@ msgid "Big"
 msgstr "Nagy"
 
 #. Effects (ambient shadows) 
-#: Media/gui/Game_Options.layout:1131 ..Options.Graphics.Effects.Check
+#: Media/gui/Game_Options.layout:1181 ..Options.Graphics.Effects.Check
 msgctxt "ssao"
 msgid "SSAO"
 msgstr ""
@@ -3241,19 +3267,19 @@ msgid "HDR"
 msgstr ""
 
 #. Effects HDR  broken 
-#: Media/gui/Game_Options.layout:1141 ..Options.Graphics.Effects.Check
+#: Media/gui/Game_Options.layout:1191 ..Options.Graphics.Effects.Check
 msgctxt "HDR"
 msgid "HDR+Bloom"
 msgstr ""
 
 #. Effects HDR  broken 
-#: Media/gui/Game_Options.layout:1146 ..Options.Graphics.Effects.Text
+#: Media/gui/Game_Options.layout:1196 ..Options.Graphics.Effects.Text
 msgctxt "HDRAdaptationScale"
 msgid "Adapt Scale"
 msgstr ""
 
 #. Effects HDR  broken 
-#: Media/gui/Game_Options.layout:1154 ..Options.Graphics.Effects.Text
+#: Media/gui/Game_Options.layout:1204 ..Options.Graphics.Effects.Text
 msgctxt "HDRIntensity"
 msgid "Bloom Intensity"
 msgstr ""
@@ -3290,33 +3316,33 @@ msgstr ""
 
 #. Graphics 
 #: Media/gui/Editor_Help.layout:240 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor_Options.layout:180 ..Options.Tab
+#: Media/gui/Editor_Options.layout:182 ..Options.Tab
 #: Media/gui/Game_Options.layout:304 ..Options.Input.Shortcuts.Text
-#: :687..Options.Tab
+#: :688..Options.Tab
 msgctxt "Graphics"
 msgid "Graphics"
 msgstr ""
 
 #. Graphics 
-#: Media/gui/Game_Options.layout:690 ..Options.Graphics.Text
+#: Media/gui/Game_Options.layout:691 ..Options.Graphics.Text
 msgctxt "NeedNewGame"
 msgid "* need New Game"
 msgstr ""
 
 #. Graphics 
-#: Media/gui/Game_Options.layout:720 ..Options.Graphics.Button
+#: Media/gui/Game_Options.layout:727 ..Options.Graphics.Button
 msgctxt "RestartApply"
 msgid "Restart game, to apply *changes."
 msgstr ""
 
 #. Graphics 
-#: Media/gui/Editor_Options.layout:225 ..Options.Graphics.Reflections.Button
-#: :299..Options.Graphics.Water.Button :361..Options.Graphics.Shadows.Button
-#: :420..Options.Graphics.Vegetation.Button
-#: :513..Options.Graphics.Textures.Button Media/gui/Game_Options.layout:738
-#: :812..Options.Graphics.Water.Button :874..Options.Graphics.Shadows.Button
-#: :933..Options.Graphics.Vegetation.Button
-#: :1026..Options.Graphics.Textures.Button
+#: Media/gui/Editor_Options.layout:239 ..Options.Graphics.Reflections.Button
+#: :313..Options.Graphics.Water.Button :375..Options.Graphics.Shadows.Button
+#: :457..Options.Graphics.Vegetation.Button
+#: :555..Options.Graphics.Textures.Button Media/gui/Game_Options.layout:745
+#: :819..Options.Graphics.Water.Button :881..Options.Graphics.Shadows.Button
+#: :963..Options.Graphics.Vegetation.Button
+#: :1061..Options.Graphics.Textures.Button
 msgctxt "Apply"
 msgid "Apply"
 msgstr ""
@@ -3327,12 +3353,13 @@ msgid "Materials"
 msgstr ""
 
 #. Graphics  Detail 
-#: Media/gui/Editor.layout:3301 ..Editor.Vegetation.Road.Tab
-#: Media/gui/Editor_Options.layout:286 ..Options.Graphics.Reflections.Text
-#: :348..Options.Graphics.Water.Text :521..Options.Graphics.Tab
-#: Media/gui/Editor_Track.layout:713 ..Track.Pacenotes.View.Text
-#: Media/gui/Game_Options.layout:799 :861..Options.Graphics.Water.Text
-#: :1034..Options.Graphics.Tab Media/gui/MaterialEditor.layout:507
+#: Media/gui/Editor.layout:3075 ..Editor.Vegetation.Road.Tab
+#: Media/gui/Editor_Options.layout:290 ..Options.Graphics.Reflections.Text
+#: :348..Options.Graphics.Water.Text :563..Options.Graphics.Tab
+#: :602..Options.Graphics.Detail.Text Media/gui/Editor_Track.layout:715
+#: ..Track.Pacenotes.View.Text Media/gui/Game_Options.layout:796
+#: :854..Options.Graphics.Water.Text :1069..Options.Graphics.Tab
+#: :1108..Options.Graphics.Detail.Text Media/gui/MaterialEditor.layout:507
 #: ..MaterialEditor.Tab
 msgctxt "Detail"
 msgid "Detail"
@@ -3344,113 +3371,111 @@ msgid "Terrain error"
 msgstr ""
 
 #. Graphics  Detail 
-#: Media/gui/Editor_Options.layout:541 ..Options.Graphics.Detail.Text
-#: Media/gui/Game_Options.layout:1054
 msgctxt "TerHQDist"
 msgid "Terrain HQ dist"
 msgstr ""
 
 #. Graphics  Detail 
-#: Media/gui/Editor.layout:3409 ..Editor.Vegetation.Road.Advanced.Text :3420
-#: Media/gui/Editor_Options.layout:550 ..Options.Graphics.Detail.Text
-#: Media/gui/Editor_Track.layout:673 ..Track.Pacenotes.View.Text
+#: Media/gui/Editor.layout:3183 ..Editor.Vegetation.Road.Advanced.Text :3194
+#: Media/gui/Editor_Options.layout:583 ..Options.Graphics.Detail.Text
+#: Media/gui/Editor_Track.layout:675 ..Track.Pacenotes.View.Text
 #: Media/gui/Game_Options.layout:490 ..Options.View.Pacenotes.Text
-#: :1063..Options.Graphics.Detail.Text
+#: :1089..Options.Graphics.Detail.Text
 msgctxt "ViewDist"
 msgid "View distance"
 msgstr ""
 
 #. Graphics  Detail 
-#: Media/gui/Editor_Options.layout:532 ..Options.Graphics.Detail.Text
-#: Media/gui/Game_Options.layout:1045
+#: Media/gui/Editor_Options.layout:574 ..Options.Graphics.Detail.Text
+#: Media/gui/Game_Options.layout:1080
 msgctxt "RoadQual"
 msgid "Road far quality"
 msgstr ""
 
 #. Graphics  Textures 
-#: Media/gui/Editor_Options.layout:469 ..Options.Graphics.Tab
-#: :476..Options.Graphics.Textures.Text Media/gui/Game_Options.layout:982
-#: :989..Options.Graphics.Textures.Text
+#: Media/gui/Editor_Options.layout:506 ..Options.Graphics.Tab
+#: :513..Options.Graphics.Textures.Text Media/gui/Game_Options.layout:1012
+#: :1019..Options.Graphics.Textures.Text
 msgctxt "Textures"
 msgid "Textures"
 msgstr ""
 
 #. Graphics  Textures 
-#: src/common/GuiCom_Options.cpp:46
+#: src/common/GuiCom_Options.cpp:50
 msgctxt "Bilinear"
 msgid "Bilinear"
 msgstr ""
 
 #. Graphics  Textures 
-#: src/common/GuiCom_Options.cpp:46
+#: src/common/GuiCom_Options.cpp:50
 msgctxt "Trilinear"
 msgid "Trilinear"
 msgstr ""
 
 #. Graphics  Textures 
-#: src/common/GuiCom_Options.cpp:47
+#: src/common/GuiCom_Options.cpp:51
 msgctxt "Anisotropic"
 msgid "Anisotropic"
 msgstr ""
 
 #. Graphics  Textures 
-#: Media/gui/Editor_Options.layout:483 ..Options.Graphics.Textures.Text
-#: Media/gui/Game_Options.layout:996
+#: Media/gui/Editor_Options.layout:520 ..Options.Graphics.Textures.Text
+#: Media/gui/Game_Options.layout:1026
 msgctxt "Anisotropy"
 msgid "Anisotropy"
 msgstr ""
 
 #. Graphics  Textures 
-#: Media/gui/Editor_Options.layout:494 ..Options.Graphics.Textures.Text :504
-#: Media/gui/Game_Options.layout:1007 :1017
+#: Media/gui/Editor_Options.layout:531 ..Options.Graphics.Textures.Text
+#: Media/gui/Game_Options.layout:1037
 msgctxt "Triplanar"
 msgid "Triplanar"
 msgstr ""
 
 #. Graphics  Textures 
-#: Media/gui/Editor.layout:1363 ..Editor.Layers.Check
+#: Media/gui/Editor.layout:1367 ..Editor.Layers.Check
 msgctxt "HighestSlopes"
 msgid "Highest slopes"
 msgstr ""
 
 #. Graphics  Vegetation 
 #: Media/gui/Editor_Help.layout:207 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor.layout:2270 ..Editor.Tab
-#: Media/gui/Editor_Options.layout:418 ..Options.Graphics.Tab
-#: :523..Options.Graphics.Detail.Text Media/gui/Editor_Track.layout:524
-#: ..Track.Tools.Button Media/gui/Game_Options.layout:931
-#: :1036..Options.Graphics.Detail.Text
+#: Media/gui/Editor.layout:2281 ..Editor.Tab
+#: Media/gui/Editor_Options.layout:455 ..Options.Graphics.Tab
+#: :565..Options.Graphics.Detail.Text Media/gui/Editor_Track.layout:520
+#: ..Track.Tools.Button Media/gui/Game_Options.layout:961
+#: :1071..Options.Graphics.Detail.Text
 msgctxt "Vegetation"
 msgid "Vegetation"
 msgstr ""
 
 #. Graphics  Vegetation 
-#: Media/gui/Editor_Options.layout:430 ..Options.Graphics.Vegetation.Text
-#: Media/gui/Game_Options.layout:943
+#: Media/gui/Editor_Options.layout:467 ..Options.Graphics.Vegetation.Text
+#: Media/gui/Game_Options.layout:973
 msgctxt "TreeMult"
 msgid "Trees multiplier"
 msgstr ""
 
 #. Graphics  Vegetation 
-#: Media/gui/Editor_Options.layout:435 ..Options.Graphics.Vegetation.Text :445
-#: Media/gui/Game_Options.layout:948 :958
+#: Media/gui/Editor_Options.layout:472 ..Options.Graphics.Vegetation.Text :482
+#: Media/gui/Game_Options.layout:978 :988
 msgctxt "DistMult"
 msgid "Distance mul"
 msgstr ""
 
 #. Graphics  Vegetation 
-#: Media/gui/Editor_Options.layout:440 ..Options.Graphics.Vegetation.Text
-#: Media/gui/Game_Options.layout:953
+#: Media/gui/Editor_Options.layout:477 ..Options.Graphics.Vegetation.Text
+#: Media/gui/Game_Options.layout:983
 msgctxt "GrassMult"
 msgid "Grass mul"
 msgstr ""
 
 #. Graphics  Vegetation 
-#: Media/gui/Editor.layout:795 ..Editor.Terrain.Brushes.Button
-#: Media/gui/Editor_Options.layout:425 ..Options.Graphics.Vegetation.Button
+#: Media/gui/Editor.layout:799 ..Editor.Terrain.Brushes.Button
+#: Media/gui/Editor_Options.layout:462 ..Options.Graphics.Vegetation.Button
 #: Media/gui/Game.layout:992 ..SingleRace.Setup.Paint.Button
 #: :1488..SingleRace.Setup.Steering.Button :1559
-#: Media/gui/Game_Options.layout:938 Media/gui/Game_Tweak.layout:260
+#: Media/gui/Game_Options.layout:968 Media/gui/Game_Tweak.layout:260
 #: ..Tweak.Tires.Button Media/gui/MaterialEditor.layout:592
 #: ..MaterialEditor.Save.Button src/game/Gui_TweakSim.cpp:579
 msgctxt "Reset"
@@ -3458,37 +3483,39 @@ msgid "Reset"
 msgstr ""
 
 #. Graphics  reflections 
-#: Media/gui/Editor_Options.layout:223 ..Options.Graphics.Tab
-#: Media/gui/Game_Options.layout:736
+#: Media/gui/Editor_Options.layout:237 ..Options.Graphics.Tab
+#: Media/gui/Game_Options.layout:743
 msgctxt "Reflections"
 msgid "Reflections"
 msgstr ""
 
 #. Graphics  reflections 
-#: Media/gui/Editor_Options.layout:235 ..Options.Graphics.Reflections.Text
-#: :327..Options.Graphics.Water.Text Media/gui/Game_Options.layout:748
-#: :840..Options.Graphics.Water.Text
+#: Media/gui/Editor_Options.layout:249 ..Options.Graphics.Reflections.Text
+#: :361..Options.Graphics.Water.Text Media/gui/Game_Options.layout:755
+#: :867..Options.Graphics.Water.Text
 msgctxt "FrameSkip"
 msgid "Frames skip"
 msgstr ""
 
 #. Graphics  reflections 
-#: Media/gui/Editor_Options.layout:246 ..Options.Graphics.Reflections.Text
-#: Media/gui/Game_Options.layout:759
+#: Media/gui/Editor_Options.layout:270 ..Options.Graphics.Reflections.Text
+#: :328..Options.Graphics.Water.Text :401..Options.Graphics.Shadows.Text
+#: Media/gui/Game_Options.layout:776 :834..Options.Graphics.Water.Text
+#: :907..Options.Graphics.Shadows.Text
 msgctxt "MapSize"
 msgid "Map size"
 msgstr ""
 
 #. Graphics  reflections 
-#: Media/gui/Editor_Options.layout:256 ..Options.Graphics.Reflections.Text
-#: Media/gui/Game_Options.layout:769
+#: Media/gui/Editor_Options.layout:260 ..Options.Graphics.Reflections.Text
+#: Media/gui/Game_Options.layout:766
 msgctxt "FacesOnce"
 msgid "Faces at once"
 msgstr ""
 
 #. Graphics  reflections 
-#: Media/gui/Editor_Options.layout:276 ..Options.Graphics.Reflections.Text
-#: Media/gui/Game_Options.layout:789
+#: Media/gui/Editor_Options.layout:300 ..Options.Graphics.Reflections.Text
+#: Media/gui/Game_Options.layout:806
 msgctxt "IblSamples"
 msgid "IBL samples"
 msgstr ""
@@ -3499,49 +3526,49 @@ msgid "Mode"
 msgstr ""
 
 #. Graphics  reflections 
-#: src/common/GuiCom_Options.cpp:103
+#: src/common/GuiCom_Options.cpp:111
 msgctxt "ReflMode_static"
 msgid "Static"
 msgstr ""
 
 #. Graphics  reflections 
-#: src/common/GuiCom_Options.cpp:103
+#: src/common/GuiCom_Options.cpp:111
 msgctxt "ReflMode_single"
 msgid "Single"
 msgstr ""
 
 #. Graphics  reflections 
-#: src/common/GuiCom_Options.cpp:104
+#: src/common/GuiCom_Options.cpp:112
 msgctxt "ReflMode_full"
 msgid "Full"
 msgstr ""
 
 #. Graphics  Water 
-#: Media/gui/Editor_Options.layout:297 ..Options.Graphics.Tab
-#: Media/gui/Game_Options.layout:810
+#: Media/gui/Editor_Options.layout:311 ..Options.Graphics.Tab
+#: Media/gui/Game_Options.layout:817
 msgctxt "Water"
 msgid "Water"
 msgstr ""
 
 #. Graphics  Water 
-#: Media/gui/Editor_Options.layout:304 ..Options.Graphics.Water.Check
-#: Media/gui/Game_Options.layout:817
+#: Media/gui/Editor_Options.layout:318 ..Options.Graphics.Water.Check
+#: Media/gui/Game_Options.layout:824
 msgctxt "WaterReflection"
 msgid "Reflection"
 msgstr ""
 
 #. Graphics  Water 
-#: Media/gui/Editor_Options.layout:308 ..Options.Graphics.Water.Check
-#: Media/gui/Game_Options.layout:821
+#: Media/gui/Editor_Options.layout:322 ..Options.Graphics.Water.Check
+#: Media/gui/Game_Options.layout:828
 msgctxt "WaterRefraction"
 msgid "Refraction"
 msgstr ""
 
 #. Graphics  shadows 
-#: Media/gui/Editor_Options.layout:359 ..Options.Graphics.Tab
-#: :366..Options.Graphics.Shadows.Text :411..Options.Graphics.Lights.Check
-#: Media/gui/Game_Options.layout:872 :879..Options.Graphics.Shadows.Text
-#: :924..Options.Graphics.Lights.Check
+#: Media/gui/Editor_Options.layout:373 ..Options.Graphics.Tab
+#: :381..Options.Graphics.Shadows.Text :439..Options.Graphics.Lights.Check
+#: Media/gui/Game_Options.layout:879 :887..Options.Graphics.Shadows.Text
+#: :945..Options.Graphics.Lights.Check
 msgctxt "Shadows"
 msgid "Shadows"
 msgstr ""
@@ -3552,13 +3579,11 @@ msgid "Shaders"
 msgstr ""
 
 #. Graphics  shadows 
-#: Media/gui/Editor.layout:382 ..Editor.Terrain.Tab
-#: Media/gui/Editor_Options.layout:314 ..Options.Graphics.Water.Text
-#: :371..Options.Graphics.Shadows.Text Media/gui/Editor_Track.layout:683
-#: ..Track.Pacenotes.View.Text Media/gui/Game_Options.layout:410
-#: ..Options.View.HUD.Text :500..Options.View.Pacenotes.Text
-#: :568..Options.View.Minimap.Text :602:827..Options.Graphics.Water.Text
-#: :884..Options.Graphics.Shadows.Text src/editor/Update_EditKeyTxt.cpp:373
+#: Media/gui/Editor.layout:386 ..Editor.Terrain.Tab
+#: Media/gui/Editor_Track.layout:685 ..Track.Pacenotes.View.Text
+#: Media/gui/Game_Options.layout:410 ..Options.View.HUD.Text
+#: :500..Options.View.Pacenotes.Text :568..Options.View.Minimap.Text :602
+#: src/editor/Update_EditKeyTxt.cpp:373
 msgctxt "Size"
 msgid "Size"
 msgstr ""
@@ -3569,13 +3594,15 @@ msgid "Texture size"
 msgstr ""
 
 #. Graphics  shadows 
+#: Media/gui/Editor_Options.layout:421 ..Options.Graphics.Shadows.Text
+#: Media/gui/Game_Options.layout:927
 msgctxt "ShadowFilter"
 msgid "Filter"
 msgstr ""
 
 #. Graphics  shadows 
-#: Media/gui/Editor_Options.layout:376 ..Options.Graphics.Shadows.Text
-#: Media/gui/Game_Options.layout:889 src/editor/Update_EditKeyTxt.cpp:375
+#: Media/gui/Editor_Options.layout:391 ..Options.Graphics.Shadows.Text
+#: Media/gui/Game_Options.layout:897 src/editor/Update_EditKeyTxt.cpp:375
 msgctxt "Count"
 msgid "Count"
 msgstr ""
@@ -3586,15 +3613,15 @@ msgid "Lightmap size"
 msgstr ""
 
 #. Graphics  lights 
-#: Media/gui/Editor_Options.layout:405 ..Options.Graphics.Tab
-#: Media/gui/Game_Options.layout:918
+#: Media/gui/Editor_Options.layout:433 ..Options.Graphics.Tab
+#: Media/gui/Game_Options.layout:939
 msgctxt "Lights"
 msgid "Lights"
 msgstr ""
 
 #. Graphics  lights 
-#: Media/gui/Editor_Options.layout:407 ..Options.Graphics.Lights.Check
-#: Media/gui/Game_Options.layout:920
+#: Media/gui/Editor_Options.layout:435 ..Options.Graphics.Lights.Check
+#: Media/gui/Game_Options.layout:941
 #, fuzzy
 #| msgctxt "Vehicles"
 #| msgid "Vehicles"
@@ -3604,25 +3631,25 @@ msgstr "Járművek"
 
 #. Graphics  particles 
 #: Media/gui/Editor_Help.layout:736 ..Help.Input/help.Tab
-#: Media/gui/Editor.layout:138 ..Editor.Sun.Sun.Check
-#: Media/gui/Editor_Tools.layout:418 ..Window Media/gui/Editor_Track.layout:566
-#: ..Track.Tools.Button Media/gui/Game_Options.layout:1082
-#: ..Options.Graphics.Tab :1086..Options.Graphics.Particles.Check
+#: Media/gui/Editor.layout:137 ..Editor.Sun.Sun.Check
+#: Media/gui/Editor_Tools.layout:418 ..Window Media/gui/Editor_Track.layout:562
+#: ..Track.Tools.Button Media/gui/Game_Options.layout:1131
+#: ..Options.Graphics.Tab :1135..Options.Graphics.Particles.Check
 #: Media/gui/Game_Replay.layout:121 ..Replays.View.Check
 msgctxt "Particles"
 msgid "Particles"
 msgstr ""
 
 #. Graphics  particles 
-#: Media/gui/Game_Options.layout:1090 ..Options.Graphics.Particles.Check
+#: Media/gui/Game_Options.layout:1139 ..Options.Graphics.Particles.Check
 msgctxt "TireTrails"
 msgid "Tire Trails"
 msgstr ""
 
 #. View  Gauges 
 #: Media/gui/Editor_Help.layout:88 ..Help.Input/help.Tab
-#: Media/gui/Editor_Options.layout:585 ..Options.Settings.Tab
-#: Media/gui/Editor_Track.layout:665 ..Track.Pacenotes.Tab
+#: Media/gui/Editor_Options.layout:640 ..Options.Settings.Tab
+#: Media/gui/Editor_Track.layout:667 ..Track.Pacenotes.Tab
 #: Media/gui/Game_Options.layout:297 ..Options.Input.Shortcuts.Text
 #: :383..Options.Tab Media/gui/Game_Replay.layout:94 ..Replays.Tab
 msgctxt "View"
@@ -3631,7 +3658,7 @@ msgstr ""
 
 #. View  Gauges 
 #: Media/gui/Game_Options.layout:388 ..Options.View.Tab
-#: :1234..Options.Sound.Main.Text
+#: :1284..Options.Sound.Main.Text
 msgctxt "HUD"
 msgid "HUD"
 msgstr ""
@@ -3661,7 +3688,7 @@ msgid "Layout"
 msgstr ""
 
 #. View  Minimap 
-#: Media/gui/Editor_Options.layout:667 ..Options.Settings.Tab
+#: Media/gui/Editor_Options.layout:728 ..Options.Settings.Tab
 #: Media/gui/Game_Options.layout:300 ..Options.Input.Shortcuts.Text
 #: :549..Options.View.Tab :557..Options.View.Minimap.Check
 msgctxt "Minimap"
@@ -3669,7 +3696,7 @@ msgid "Minimap"
 msgstr ""
 
 #. View  Minimap 
-#: Media/gui/Editor.layout:685 ..Editor.Terrain.Brushes.Text
+#: Media/gui/Editor.layout:689 ..Editor.Terrain.Brushes.Text
 #: Media/gui/Game_Options.layout:571 ..Options.View.Minimap.Check
 msgctxt "MinimapZoom"
 msgid "Zoom"
@@ -3730,7 +3757,7 @@ msgid "Race countdown time"
 msgstr ""
 
 #. View  Pacenotes 
-#: Media/gui/Editor_Track.layout:659 ..Track.Tab
+#: Media/gui/Editor_Track.layout:661 ..Track.Tab
 #: Media/gui/Game_Options.layout:478 ..Options.View.Tab
 #: :485..Options.View.Pacenotes.Check
 msgctxt "Pacenotes"
@@ -3794,8 +3821,8 @@ msgstr ""
 
 #. Settings  debug 
 #: Media/gui/Game.layout:1565 ..SingleRace.Setup.Tab
-#: Media/gui/Game_Options.layout:1264 ..Options.Sound.Tab
-#: :1367..Options.Tweak.Tab
+#: Media/gui/Game_Options.layout:1314 ..Options.Sound.Tab
+#: :1417..Options.Tweak.Tab
 msgctxt "Other"
 msgid "Other"
 msgstr ""
@@ -3806,123 +3833,165 @@ msgid "Development"
 msgstr ""
 
 #. Settings  debug 
-#: Media/gui/Editor_Options.layout:784 ..Options.Settings.Tweak.Check
-#: Media/gui/Game_Options.layout:1375 ..Options.Tweak.Other.Check
+#: Media/gui/Editor_Options.layout:856 ..Options.Settings.Tweak.Text
+#: Media/gui/Game_Options.layout:1426 ..Options.Tweak.Other.Text
 msgctxt "FPS"
-msgid "Fps, Triangles, Batches"
+msgid "Fps bar, render statistics"
 msgstr ""
 
 #. Settings  debug 
-#: Media/gui/Editor_Options.layout:795 ..Options.Settings.Tweak.Check
-#: Media/gui/Game_Options.layout:1389 ..Options.Tweak.Other.Check
+#: src/common/GuiCom_Options.cpp:221:222:223:224
+msgctxt "FPS_Fps"
+msgid "Frames per second"
+msgstr ""
+
+#. Settings  debug 
+#: src/common/GuiCom_Options.cpp:222:224
+msgctxt "FPS_Triangles"
+msgid "Millions of triangles"
+msgstr ""
+
+#. Settings  debug 
+#: src/common/GuiCom_Options.cpp:222:223:224
+msgctxt "FPS_Draws"
+msgid "Draw calls"
+msgstr ""
+
+#. Settings  debug 
+#: src/common/GuiCom_Options.cpp:225
+msgctxt "FPS_Instances"
+msgid "Instances"
+msgstr ""
+
+#. Settings  debug 
+#: src/common/GuiCom_Options.cpp:225
+msgctxt "FPS_Vegetation"
+msgid "Vegetation models"
+msgstr ""
+
+#. Settings  debug 
+#: src/common/GuiCom_Options.cpp:226
+msgctxt "FPS_Workspaces"
+msgid "Workspaces"
+msgstr ""
+
+#. Settings  debug 
+#: src/common/GuiCom_Options.cpp:223:226
+msgctxt "FPS_Memory"
+msgid "GPU memory"
+msgstr ""
+
+#. Settings  debug 
+#: Media/gui/Editor_Options.layout:880 ..Options.Settings.Tweak.Check
+#: Media/gui/Game_Options.layout:1449 ..Options.Tweak.Other.Check
 msgctxt "Wireframe"
 msgid "Wireframe"
 msgstr ""
 
 #. Settings  debug 
-#: Media/gui/Game_Options.layout:1397 ..Options.Tweak.Other.Check
+#: Media/gui/Game_Options.layout:1467 ..Options.Tweak.Other.Check
 msgctxt "BulletDebug"
 msgid "Bullet debug"
 msgstr ""
 
 #. Settings  debug 
-#: Media/gui/Game_Options.layout:1401 ..Options.Tweak.Other.Check
+#: Media/gui/Game_Options.layout:1471 ..Options.Tweak.Other.Check
 msgctxt "BulletProfilerTxt"
 msgid "Bullet Profiler Times"
 msgstr ""
 
 #. Settings  debug 
-#: Media/gui/Game_Options.layout:1405 ..Options.Tweak.Other.Check
+#: Media/gui/Game_Options.layout:1458 ..Options.Tweak.Other.Check
 msgctxt "FullSoundsInfo"
 msgid "Full sounds info in graphs."
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1433 ..Options.Tweak.Graphs.Check
+#: Media/gui/Game_Options.layout:1496 ..Options.Tweak.Graphs.Check
 msgctxt "CarDebug"
 msgid "Car susp, long|,lat- slips"
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1429 ..Options.Tweak.Graphs.Check
-#: :1585..Options.Tweak.Tires.Text
+#: Media/gui/Game_Options.layout:1492 ..Options.Tweak.Graphs.Check
+#: :1648..Options.Tweak.Tires.Text
 msgctxt "CarTireVisCircles"
 msgid "Tire force circles visualisation"
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1466 ..Options.Tweak.Graphs.Check
+#: Media/gui/Game_Options.layout:1529 ..Options.Tweak.Graphs.Check
 msgctxt "CarDebugText"
 msgid "Car debug text "
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1437 ..Options.Tweak.Graphs.Check
+#: Media/gui/Game_Options.layout:1500 ..Options.Tweak.Graphs.Check
 msgctxt "CarDebugSurfaces"
 msgid "Car tire surfaces"
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1379 ..Options.Tweak.Other.Check
+#: Media/gui/Game_Options.layout:1454 ..Options.Tweak.Other.Check
 msgctxt "ProfilerTxt"
 msgid "Profiler times text "
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1474 ..Options.Tweak.Graphs.Text
+#: Media/gui/Game_Options.layout:1537 ..Options.Tweak.Graphs.Text
 msgctxt "TextColor"
 msgid "Text color"
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1410 ..Options.Tweak.Other.Check
+#: Media/gui/Game_Options.layout:1681 ..Options.Tweak.Tracks.Check
 msgctxt "DevKeys"
 msgid "Developer keys. Ctrl-F global, Alt-shift-1..6 load test tracks."
 msgstr ""
 
 #. Settings  startup 
-#: Media/gui/Editor_Options.layout:747 ..Options.Settings.Settings.Text
-#: Media/gui/Game_Options.layout:1326 ..Options.Settings.Text
-#: :1394..Options.Tweak.Other.Check
+#: Media/gui/Editor_Options.layout:819 ..Options.Settings.Settings.Text
+#: Media/gui/Game_Options.layout:1376 ..Options.Settings.Text
+#: :1464..Options.Tweak.Other.Check
 msgctxt "Startup"
 msgid "Startup"
 msgstr ""
 
 #. Settings  startup 
-#: Media/gui/Editor_Options.layout:767 ..Options.Settings.Settings.Check
-#: Media/gui/Game_Options.layout:1346 ..Options.Settings.Check
+#: Media/gui/Editor_Options.layout:839 ..Options.Settings.Settings.Check
+#: Media/gui/Game_Options.layout:1396 ..Options.Settings.Check
 msgctxt "MouseCapture"
 msgid "Capture mouse"
 msgstr ""
 
 #. Settings  startup 
-#: Media/gui/Editor_Options.layout:763 ..Options.Settings.Settings.Check
-#: Media/gui/Game_Options.layout:1342 ..Options.Settings.Check
+#: Media/gui/Editor_Options.layout:835 ..Options.Settings.Settings.Check
+#: Media/gui/Game_Options.layout:1392 ..Options.Settings.Check
 msgctxt "OgreDialog"
 msgid "Show Ogre dialog"
 msgstr ""
 
 #. Settings  startup 
-#: Media/gui/Game_Options.layout:1334 ..Options.Settings.Check
+#: Media/gui/Game_Options.layout:1384 ..Options.Settings.Check
 msgctxt "AutoLoad"
 msgid "Auto Load track"
 msgstr ""
 
 #. Settings  startup 
-#: Media/gui/Editor_Options.layout:759 ..Options.Settings.Settings.Check
-#: Media/gui/Game_Options.layout:1338 ..Options.Settings.Check
+#: Media/gui/Editor_Options.layout:831 ..Options.Settings.Settings.Check
+#: Media/gui/Game_Options.layout:1388 ..Options.Settings.Check
 msgctxt "EscQuit"
 msgid "Esc quits"
 msgstr ""
 
 #. Settings  startup 
-#: Media/gui/Game_Options.layout:1394 ..Options.Tweak.Other.Check
+#: Media/gui/Game_Options.layout:1464 ..Options.Tweak.Other.Check
 msgctxt "BulletLines"
 msgid "Bullet debug lines"
 msgstr ""
 
 #. Settings  startup 
-#: Media/gui/Game_Options.layout:1355 ..Options.Settings.Check
+#: Media/gui/Game_Options.layout:1405 ..Options.Settings.Check
 msgctxt "ShowPictures"
 msgid "Show pictures while loading"
 msgstr ""
@@ -3933,15 +4002,15 @@ msgid "Multi Threaded"
 msgstr ""
 
 #. Settings  startup 
-#: Media/gui/Editor_Options.layout:751 ..Options.Settings.Settings.Check
-#: Media/gui/Game_Options.layout:1330 ..Options.Settings.Check
+#: Media/gui/Editor_Options.layout:823 ..Options.Settings.Settings.Check
+#: Media/gui/Game_Options.layout:1380 ..Options.Settings.Check
 msgctxt "StartInMain"
 msgid "Start in main menu"
 msgstr ""
 
 #. Settings  startup 
-#: Media/gui/Editor_Options.layout:771 ..Options.Settings.Settings.Check
-#: Media/gui/Game_Options.layout:1350 ..Options.Settings.Check
+#: Media/gui/Editor_Options.layout:843 ..Options.Settings.Settings.Check
+#: Media/gui/Game_Options.layout:1400 ..Options.Settings.Check
 msgctxt "ScreenshotPng"
 msgid "Screenshots saved as .png"
 msgstr ""
@@ -4049,7 +4118,7 @@ msgid "Max. Value"
 msgstr ""
 
 #. Input  Detail  Control 
-#: Media/gui/Editor_Track.layout:605 ..Track.Game.Text
+#: Media/gui/Editor_Track.layout:601 ..Track.Game.Text
 msgctxt "InputMultiplier"
 msgid "Multiplier"
 msgstr ""
@@ -4196,19 +4265,24 @@ msgctxt "InputMapLastChk"
 msgid "Go to last checkp."
 msgstr ""
 
+#. Game Input  Player 
+msgctxt "InputMapLights"
+msgid "Toggle lights"
+msgstr ""
+
 #. MAIN  Game Input 
 msgctxt "InputMapShowOptions"
 msgid "Show options"
 msgstr ""
 
 #. MAIN  Game Input 
-#: Media/gui/Game_Options.layout:1487 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1550 ..Options.Tweak.Tweak.Text
 msgctxt "InputMapPrevTab"
 msgid "Previous tab"
 msgstr ""
 
 #. MAIN  Game Input 
-#: Media/gui/Game_Options.layout:1487 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1550 ..Options.Tweak.Tweak.Text
 msgctxt "InputMapNextTab"
 msgid "Next tab"
 msgstr ""
@@ -4236,7 +4310,7 @@ msgid "with shift - main cameras only"
 msgstr ""
 
 #. MAIN  Game Input 
-#: Media/gui/Game_Options.layout:1487 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1550 ..Options.Tweak.Tweak.Text
 msgctxt "InputGraphsType"
 msgid "change graphs type in game"
 msgstr ""
@@ -4291,13 +4365,13 @@ msgid "K, L - change camera view to other player"
 msgstr ""
 
 #. Game Input  Tweak edit 
-#: Media/gui/Game_Options.layout:1517 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1580 ..Options.Tweak.Tweak.Text
 msgctxt "TweakEdit1"
 msgid "Alt-Z - toggle tweak window (car edit)"
 msgstr ""
 
 #. Game Input  Tweak edit 
-#: Media/gui/Game_Options.layout:1520 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1583 ..Options.Tweak.Tweak.Text
 #: Media/gui/Game_Tweak.layout:26 ..Tweak.Vehicle.Button
 #: :464..Tweak.collisions.Button
 msgctxt "TweakEdit2"
@@ -4305,44 +4379,44 @@ msgid "Alt-Shift-Z - save file and reload game"
 msgstr ""
 
 #. Game Input  Tweak edit 
-#: Media/gui/Game_Options.layout:1523 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1586 ..Options.Tweak.Tweak.Text
 msgctxt "TweakEdit3"
 msgid "Ctrl-F5 - start car performance test"
 msgstr ""
 
 #. Game Input  Tweak tire edit 
-#: Media/gui/Game_Options.layout:1496 ..Options.Tweak.Tweak.Text
-#: :1531..Options.Tweak.Tires.Text
+#: Media/gui/Game_Options.layout:1559 ..Options.Tweak.Tweak.Text
+#: :1594..Options.Tweak.Tires.Text
 msgctxt "TiresEdit"
-msgid "Tire Edit - (Graphs in mode 4)"
+msgid "Tire Edit - (Graphs mode)"
 msgstr ""
 
 #. Game Input  Tweak tire edit 
-#: Media/gui/Game_Options.layout:1499 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1562 ..Options.Tweak.Tweak.Text
 msgctxt "TiresEdit1"
 msgid "PgUp/PgDn - previous, next value"
 msgstr ""
 
 #. Game Input  Tweak tire edit 
-#: Media/gui/Game_Options.layout:1502 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1565 ..Options.Tweak.Tweak.Text
 msgctxt "TiresEdit2"
 msgid "1,2 or Num /,* - change value"
 msgstr ""
 
 #. Game Input  Tweak tire edit 
-#: Media/gui/Game_Options.layout:1505 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1568 ..Options.Tweak.Tweak.Text
 msgctxt "TiresEdit3"
 msgid "Home - toggle longitudinal / lateral parameters"
 msgstr ""
 
 #. Game Input  Tweak tire edit 
-#: Media/gui/Game_Options.layout:1508 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1571 ..Options.Tweak.Tweak.Text
 msgctxt "TiresEdit4"
 msgid "End - toggle align moment parameters"
 msgstr ""
 
 #. Game Input  Tweak tire graphs 
-#: Media/gui/Game_Options.layout:1580 ..Options.Tweak.Tires.Check
+#: Media/gui/Game_Options.layout:1643 ..Options.Tweak.Tires.Check
 msgctxt "TireEdCommonY"
 msgid "Common y range"
 msgstr ""
@@ -4354,82 +4428,82 @@ msgid "Show reference graph"
 msgstr ""
 
 #. Sound  main 
-#: Media/gui/Editor.layout:2758 ..Editor.Vegetation.Surface.Surface.Text
-#: Media/gui/Editor_Track.layout:644 ..Track.Game.Text
+#: Media/gui/Editor.layout:2770 ..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor_Track.layout:646 ..Track.Game.Text
 #: Media/gui/Game_Options.layout:311 ..Options.Input.Shortcuts.Text
-#: :1164..Options.Tab Media/gui/Game_Tweak.layout:402 ..Tweak.Surface.Text
+#: :1214..Options.Tab Media/gui/Game_Tweak.layout:402 ..Tweak.Surface.Text
 msgctxt "Sound"
 msgid "Sound"
 msgstr "Hang"
 
 #. Sound  main 
-#: Media/gui/Game_Options.layout:1172 ..Options.Sound.Main.Text
-#: :1266..Options.Sound.Other.Text
+#: Media/gui/Game_Options.layout:1222 ..Options.Sound.Main.Text
+#: :1316..Options.Sound.Other.Text
 msgctxt "Volume"
 msgid "Volume"
 msgstr "Hangerő"
 
 #. Sound  main 
-#: Media/gui/Game_Options.layout:1177 ..Options.Sound.Main.Text
+#: Media/gui/Game_Options.layout:1227 ..Options.Sound.Main.Text
 msgctxt "VolMaster"
 msgid "Master"
 msgstr ""
 
 #. Sound  main 
-#: Media/gui/Game_Options.layout:1188 ..Options.Sound.Main.Text
+#: Media/gui/Game_Options.layout:1238 ..Options.Sound.Main.Text
 msgctxt "Engine"
 msgid "Engine"
 msgstr "Motor"
 
 #. Sound  main 
-#: Media/gui/Editor.layout:2767 ..Editor.Vegetation.Surface.Surface.Text
-#: Media/gui/Editor_Track.layout:629 ..Track.Game.Check
-#: Media/gui/Game_Options.layout:1198 ..Options.Sound.Main.Text
-#: :1528..Options.Tweak.Tab Media/gui/Game_Tweak.layout:216 ..Tweak.Tab
+#: Media/gui/Editor.layout:2779 ..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor_Track.layout:626 ..Track.Game.Check
+#: Media/gui/Game_Options.layout:1248 ..Options.Sound.Main.Text
+#: :1591..Options.Tweak.Tab Media/gui/Game_Tweak.layout:216 ..Tweak.Tab
 #: :407..Tweak.Surface.Text
 msgctxt "Tires"
 msgid "Tires"
 msgstr "Gumik"
 
 #. Sound  main 
-#: Media/gui/Game_Options.layout:1208 ..Options.Sound.Main.Text
+#: Media/gui/Game_Options.layout:1258 ..Options.Sound.Main.Text
 msgctxt "Suspension"
 msgid "Suspension"
 msgstr ""
 
 #. Sound  main 
-#: Media/gui/Game_Options.layout:1218 ..Options.Sound.Main.Text
+#: Media/gui/Game_Options.layout:1268 ..Options.Sound.Main.Text
 msgctxt "Environment"
 msgid "Environment"
 msgstr ""
 
 #. Sound  main 
-#: Media/gui/Editor_Track.layout:644 ..Track.Game.Text
-#: Media/gui/Game_Options.layout:1229 ..Options.Sound.Main.Check
+#: Media/gui/Editor_Track.layout:646 ..Track.Game.Text
+#: Media/gui/Game_Options.layout:1279 ..Options.Sound.Main.Check
 msgctxt "Reverb"
 msgid "Reverberation"
 msgstr ""
 
 #. Sound  other 
-#: Media/gui/Game_Options.layout:1272 ..Options.Sound.Other.Text
+#: Media/gui/Game_Options.layout:1322 ..Options.Sound.Other.Text
 msgctxt "FluidSplash"
 msgid "Fluid Splash"
 msgstr ""
 
 #. Sound  other 
-#: Media/gui/Game_Options.layout:1282 ..Options.Sound.Other.Text
+#: Media/gui/Game_Options.layout:1332 ..Options.Sound.Other.Text
 msgctxt "FluidCont"
 msgid "Fluid Cont."
 msgstr ""
 
 #. Sound  other 
-#: Media/gui/Game_Options.layout:1292 ..Options.Sound.Other.Text
+#: Media/gui/Game_Options.layout:1342 ..Options.Sound.Other.Text
 msgctxt "CarCrash"
 msgid "Car Crash"
 msgstr "Ütközés"
 
 #. Sound  other 
-#: Media/gui/Game_Options.layout:1302 ..Options.Sound.Other.Text
+#: Media/gui/Game_Options.layout:1352 ..Options.Sound.Other.Text
 msgctxt "CarScrap"
 msgid "Car Scrap"
 msgstr ""
@@ -4507,7 +4581,6 @@ msgid "Terrain brush"
 msgstr ""
 
 #. Editor  Main 
-#: Media/gui/Editor.layout:2854 ..Editor.Vegetation.Road.Tab
 #: Media/gui/Editor_Tools.layout:521 ..Window
 msgctxt "RoadPoint"
 msgid "Road Point"
@@ -4527,7 +4600,7 @@ msgid "Editor"
 msgstr ""
 
 #. Editor  Main  Track 
-#: Media/gui/Editor_Options.layout:210 ..Options.Graphics.Button
+#: Media/gui/Editor_Options.layout:224 ..Options.Graphics.Button
 #: Media/gui/Editor_Track.layout:27 ..Track.Track.Button
 msgctxt "LoadTrack"
 msgid "Load Track"
@@ -4541,7 +4614,7 @@ msgstr ""
 
 #. Editor  Main  Track 
 #: Media/gui/Editor_Track.layout:434 ..Track.Track.Button
-#: src/editor/Gui_Tools.cpp:269
+#: src/editor/Gui_Tools.cpp:268
 msgctxt "NewDup"
 msgid "New (Duplicate)"
 msgstr ""
@@ -4549,15 +4622,15 @@ msgstr ""
 #. Editor  Main  Track 
 #: Media/gui/Editor_Track.layout:446 ..Track.Track.Button
 #: Media/gui/Game_Replay.layout:57 ..Replays.Replay.Button
-#: src/game/Gui_Replay.cpp:309:318 src/editor/Gui_Tools.cpp:302
+#: src/game/Gui_Replay.cpp:309:318 src/editor/Gui_Tools.cpp:301
 msgctxt "Rename"
 msgid "Rename"
 msgstr ""
 
 #. Editor  Main  Track 
-#: Media/gui/Editor.layout:758 ..Editor.Terrain.Brushes.Button
+#: Media/gui/Editor.layout:762 ..Editor.Terrain.Brushes.Button
 #: Media/gui/Editor_Track.layout:459 ..Track.Track.Button
-#: :545..Track.Tools.Text Media/gui/Game.layout:944
+#: :541..Track.Tools.Text Media/gui/Game.layout:944
 #: ..SingleRace.Setup.Paint.Button :1977..SingleRace.Championship.Button
 #: Media/gui/Game_Replay.layout:51 ..Replays.Replay.Button
 #: Media/gui/Game_Tweak.layout:268 ..Tweak.Tires.Button
@@ -4568,7 +4641,7 @@ msgid "Delete"
 msgstr ""
 
 #. Editor  Track  message 
-#: src/editor/Gui_Tools.cpp:318
+#: src/editor/Gui_Tools.cpp:317
 msgctxt "DeleteTrack"
 msgid "Delete track ?"
 msgstr ""
@@ -4586,13 +4659,13 @@ msgid "Source track and current track are the same."
 msgstr ""
 
 #. Editor  Track  message 
-#: src/editor/SceneInit.cpp:445
+#: src/editor/SceneInit.cpp:465
 msgctxt "CantSaveOrgTrack"
 msgid "Can't save original track. Duplicate it first."
 msgstr ""
 
 #. Editor  Track  message 
-#: Media/gui/Editor_Options.layout:183 ..Options.Graphics.Text
+#: Media/gui/Editor_Options.layout:185 ..Options.Graphics.Text
 msgctxt "NeedReload"
 msgid "* need reload"
 msgstr ""
@@ -4606,140 +4679,145 @@ msgstr ""
 
 #. Editor  Sun 
 #: Media/gui/Editor.layout:44 ..Editor.Sun.Sun.Text
-#: src/editor/Gui_InitLists.cpp:226
+#: src/editor/Gui_InitLists.cpp:227
 msgctxt "Sky"
 msgid "Sky"
 msgstr ""
 
 #. Editor  Sun 
-#: Media/gui/Editor.layout:68 ..Editor.Sun.Sun.Text
+#: Media/gui/Editor.layout:72 ..Editor.Sun.Sun.Text
 msgctxt "SunDir"
 msgid "Sun dir."
 msgstr ""
 
 #. Editor  Sun 
-#: Media/gui/Editor.layout:57 ..Editor.Sun.Sun.Text :77
+#: Media/gui/Editor.layout:61 ..Editor.Sun.Sun.Text :81
 msgctxt "Yaw"
 msgid "yaw"
 msgstr ""
 
 #. Editor  Sun 
-#: Media/gui/Editor.layout:72 ..Editor.Sun.Sun.Text
-#: src/editor/Gui_InitLists.cpp:227
+#: Media/gui/Editor.layout:76 ..Editor.Sun.Sun.Text
+#: src/editor/Gui_InitLists.cpp:228
 msgctxt "Pitch"
 msgid "pitch"
 msgstr ""
 
 #. Editor  Sun 
-#: Media/gui/Editor.layout:100 ..Editor.Sun.Sun.Text :477..Editor.Terrain.Tab
-#: :553..Editor.Terrain.Light.Text
+#: Media/gui/Editor.layout:104 ..Editor.Sun.Sun.Text :481..Editor.Terrain.Tab
+#: :557..Editor.Terrain.Light.Text
 msgctxt "Light"
 msgid "Light"
 msgstr ""
 
 #. Editor  Sun 
-#: Media/gui/Editor.layout:104 ..Editor.Sun.Sun.Text
+#: Media/gui/Editor.layout:108 ..Editor.Sun.Sun.Text
 msgctxt "Ambient"
 msgid "Ambient"
 msgstr ""
 
 #. Editor  Sun 
-#: Media/gui/Editor.layout:109 ..Editor.Sun.Sun.Text
-#: :488..Editor.Terrain.Light.Text :500:512:1402..Editor.Layers.Button
+#: Media/gui/Editor.layout:113 ..Editor.Sun.Sun.Text
+#: :492..Editor.Terrain.Light.Text :504:516:1406..Editor.Layers.Button
 #: Media/gui/Game.layout:1014 ..SingleRace.Setup.Paint.Tab
 #: :1145..SingleRace.Setup.Paint.Text :1149..SingleRace.Setup.Paint.Slider
 #: :1153..SingleRace.Setup.Paint.Text Media/gui/MaterialEditor.layout:67
-#: ..MaterialEditor.Main.Text :78:89 src/editor/Gui_InitLists.cpp:249
-#: src/common/GuiCom_Options.cpp:59
+#: ..MaterialEditor.Main.Text :78:89 src/editor/Gui_InitLists.cpp:250
+#: src/common/GuiCom_Options.cpp:60
 msgctxt "Diffuse"
 msgid "Diffuse"
 msgstr ""
 
 #. Editor  Sun 
-#: Media/gui/Editor.layout:114 ..Editor.Sun.Sun.Text Media/gui/Game.layout:1017
+#: Media/gui/Editor.layout:118 ..Editor.Sun.Sun.Text Media/gui/Game.layout:1017
 #: ..SingleRace.Setup.Paint.Tab :1145..SingleRace.Setup.Paint.Text
 #: :1149..SingleRace.Setup.Paint.Slider :1153..SingleRace.Setup.Paint.Text
 #: Media/gui/MaterialEditor.layout:101 ..MaterialEditor.Main.Text :112:123
-#: src/common/GuiCom_Options.cpp:60
+#: src/common/GuiCom_Options.cpp:61
 msgctxt "Specular"
 msgid "Specular"
 msgstr ""
 
 #. Editor  Fog 
-#: Media/gui/Editor.layout:198 ..Editor.Sun.Tab :204..Editor.Sun.Fog.Check
+#: Media/gui/Editor.layout:202 ..Editor.Sun.Tab :208..Editor.Sun.Fog.Check
 msgctxt "Fog"
 msgid "Fog"
 msgstr ""
 
 #. Editor  Fog 
+#: src/common/GuiCom_Options.cpp:82
 msgctxt "FogNormal"
 msgid "Normal"
 msgstr ""
 
 #. Editor  Fog 
-#: Media/gui/Editor.layout:200 ..Editor.Sun.Fog.Text :266
+#: Media/gui/Editor.layout:204 ..Editor.Sun.Fog.Text :270
 msgctxt "FogHeight"
 msgid "Height"
 msgstr ""
 
 #. Editor  Fog 
-#: Media/gui/Editor.layout:209 ..Editor.Sun.Fog.Text :217:257
-#: Media/gui/Editor_Utils.layout:78 ..Window
+#: Media/gui/Editor.layout:213 ..Editor.Sun.Fog.Text
+#: :221:261:1941..Editor.Grasses.Grasses.Text Media/gui/Editor_Utils.layout:92
+#: ..Window
 msgctxt "Color"
 msgid "Color"
 msgstr ""
 
 #. Editor  Fog 
-#: Media/gui/Editor.layout:226 ..Editor.Sun.Fog.Text :295
+#: Media/gui/Editor.layout:230 ..Editor.Sun.Fog.Text :299
 #: src/editor/Update_EditKeyTxt.cpp:275
 msgctxt "FogStart"
 msgid "start"
 msgstr ""
 
 #. Editor  Fog 
-#: Media/gui/Editor.layout:241 ..Editor.Sun.Fog.Text :308
+#: Media/gui/Editor.layout:245 ..Editor.Sun.Fog.Text :312
 #: src/editor/Update_EditKeyTxt.cpp:275
 msgctxt "FogEnd"
 msgid "end"
 msgstr ""
 
 #. Editor  Weather 
-#: Media/gui/Editor.layout:135 ..Editor.Sun.Sun.Check
-#: :140:206..Editor.Sun.Fog.Check
+#: Media/gui/Editor.layout:139 ..Editor.Sun.Sun.Check
+#: :144:210..Editor.Sun.Fog.Check
 msgctxt "DisableEdit"
 msgid "Disable/enable for editing."
 msgstr ""
 
 #. Editor  Weather 
-#: Media/gui/Editor.layout:128 ..Editor.Sun.Sun.Text :133..Editor.Sun.Sun.Check
+#: Media/gui/Editor.layout:132 ..Editor.Sun.Sun.Text :142..Editor.Sun.Sun.Check
 msgctxt "Weather"
 msgid "Weather"
 msgstr "Időjárás"
 
 #. Editor  Weather 
-#: Media/gui/Editor.layout:175 ..Editor.Sun.Sun.Text
+#: Media/gui/Editor.layout:179 ..Editor.Sun.Sun.Text
 msgctxt "set1"
 msgid "set1"
 msgstr ""
 
 #. Editor  Weather 
-#: Media/gui/Editor.layout:180 ..Editor.Sun.Sun.Text
+#: Media/gui/Editor.layout:184 ..Editor.Sun.Sun.Text
 msgctxt "set2"
 msgid "set2"
 msgstr ""
 
 #. Editor  Weather 
-#: Media/gui/Editor.layout:185 ..Editor.Sun.Sun.Text :190
+#: Media/gui/Editor.layout:189 ..Editor.Sun.Sun.Text :194
 msgctxt "intensity"
 msgid "intensity"
 msgstr ""
 
 #. Terrain  Edit modes 
 #: Media/gui/Editor_Help.layout:186 ..Help.Input/help.Shortcuts.Text
-#: :259..Help.Input/help.Tab Media/gui/Editor.layout:338 ..Editor.Tab
-#: :344..Editor.Terrain.Text :1156..Editor.Terrain.Generator.Text
-#: :1302..Editor.Layers.Text :2102..Editor.Grasses.Channels.Text
-#: :2611..Editor.Vegetation.Models.Text src/editor/Update_Frame.cpp:83
+#: :259..Help.Input/help.Tab Media/gui/Editor.layout:342 ..Editor.Tab
+#: :348..Editor.Terrain.Text :1160..Editor.Terrain.Generator.Text
+#: :1306..Editor.Layers.Text :2113..Editor.Grasses.Channels.Text
+#: :2623..Editor.Vegetation.Models.Text Media/gui/Editor_Options.layout:536
+#: ..Options.Graphics.Textures.Text :606..Options.Graphics.Detail.Text
+#: Media/gui/Game_Options.layout:1042 :1112..Options.Graphics.Detail.Text
+#: src/editor/Update_Frame.cpp:83
 msgctxt "Terrain"
 msgid "Terrain"
 msgstr ""
@@ -4751,7 +4829,7 @@ msgid "Deform"
 msgstr ""
 
 #. Terrain  Edit modes 
-#: Media/gui/Common.layout:36 ..Window Media/gui/Editor.layout:920
+#: Media/gui/Common.layout:36 ..Window Media/gui/Editor.layout:924
 #: ..Editor.Terrain.Brushparameters.Text Media/gui/Editor_Track.layout:411
 #: ..Track.Track.Button Media/gui/Game.layout:471 ..SingleRace.Track.Button
 #: src/editor/Gui_Util.cpp:173
@@ -4766,46 +4844,46 @@ msgid "Smooth"
 msgstr ""
 
 #. Terrain  Edit modes 
-#: Media/gui/Editor.layout:908 ..Editor.Terrain.Brushparameters.Text
+#: Media/gui/Editor.layout:912 ..Editor.Terrain.Brushparameters.Text
 #: src/editor/Gui_Util.cpp:183
 msgctxt "TerHeight"
 msgid "Height"
 msgstr ""
 
 #. Terrain  heightmap 
-#: Media/gui/Editor.layout:386 ..Editor.Terrain.Size.Text
-#: :1244..Editor.Terrain.Tools.Text
+#: Media/gui/Editor.layout:390 ..Editor.Terrain.Size.Text
+#: :1248..Editor.Terrain.Tools.Text
 msgctxt "HeightmapSize"
 msgid "Heightmap size"
 msgstr ""
 
 #. Terrain  heightmap 
-#: Media/gui/Editor.layout:426 ..Editor.Terrain.Size.Text
+#: Media/gui/Editor.layout:430 ..Editor.Terrain.Size.Text
 msgctxt "TriSize"
 msgid "Triangle size"
 msgstr ""
 
 #. Terrain  heightmap 
-#: Media/gui/Editor.layout:440 ..Editor.Terrain.Size.Text
+#: Media/gui/Editor.layout:444 ..Editor.Terrain.Size.Text
 msgctxt "TerrainSize"
 msgid "Terrain size"
 msgstr ""
 
 #. Terrain  heightmap 
-#: Media/gui/Editor.layout:452 ..Editor.Terrain.Size.Button
+#: Media/gui/Editor.layout:456 ..Editor.Terrain.Size.Button
 msgctxt "NewTerrainFlat"
 msgid "New flat"
 msgstr ""
 
 #. Terrain  heightmap 
-#: Media/gui/Editor.layout:941 ..Editor.Terrain.Generator.Text
+#: Media/gui/Editor.layout:945 ..Editor.Terrain.Generator.Text
 msgctxt "NewTerrainGenerate"
 msgid "Generate new"
 msgstr ""
 
 #. Terrain  heightmap 
-#: Media/gui/Editor.layout:746 ..Editor.Terrain.Brushes.Button
-#: :947..Editor.Terrain.Generator.Button Media/gui/Game.layout:955
+#: Media/gui/Editor.layout:750 ..Editor.Terrain.Brushes.Button
+#: :951..Editor.Terrain.Generator.Button Media/gui/Game.layout:955
 #: ..SingleRace.Setup.Paint.Button Media/gui/MaterialEditor.layout:543
 #: ..MaterialEditor.Save.Button
 msgctxt "Add"
@@ -4813,154 +4891,154 @@ msgid "Add"
 msgstr ""
 
 #. Terrain  heightmap 
-#: Media/gui/Editor.layout:952 ..Editor.Terrain.Generator.Button
+#: Media/gui/Editor.layout:956 ..Editor.Terrain.Generator.Button
 msgctxt "Substract"
 msgid "Substract"
 msgstr ""
 
 #. Terrain  heightmap 
-#: Media/gui/Editor.layout:957 ..Editor.Terrain.Generator.Button
-#: :1161..Editor.Terrain.Generator.Text
+#: Media/gui/Editor.layout:961 ..Editor.Terrain.Generator.Button
+#: :1165..Editor.Terrain.Generator.Text
 msgctxt "Multiply"
 msgid "Multiply"
 msgstr ""
 
 #. Terrain  properties 
-#: Media/gui/Editor.layout:586 ..Editor.Terrain.Tab
-#: :590..Editor.Terrain.Collision.Check Media/gui/Game.layout:1344
+#: Media/gui/Editor.layout:590 ..Editor.Terrain.Tab
+#: :594..Editor.Terrain.Collision.Check Media/gui/Game.layout:1344
 #: ..SingleRace.Setup.Tab
 msgctxt "Collision"
 msgid "Collision"
 msgstr ""
 
 #. Terrain  properties 
-#: Media/gui/Editor.layout:596 ..Editor.Terrain.Collision.Text
-#: :1233..Editor.Terrain.Tools.Text
+#: Media/gui/Editor.layout:600 ..Editor.Terrain.Collision.Text
+#: :1237..Editor.Terrain.Tools.Text
 msgctxt "Border"
 msgid "Border"
 msgstr ""
 
 #. Terrain  properties 
-#: Media/gui/Editor.layout:465 ..Editor.Terrain.Size.Text
-#: Media/gui/Editor_Options.layout:504 ..Options.Graphics.Textures.Text
-#: :559..Options.Graphics.Detail.Text Media/gui/Game_Options.layout:1017
-#: :1072..Options.Graphics.Detail.Text
+#: Media/gui/Editor.layout:469 ..Editor.Terrain.Size.Text
+#: Media/gui/Editor_Options.layout:546 ..Options.Graphics.Textures.Text
+#: :592..Options.Graphics.Detail.Text :614 Media/gui/Game_Options.layout:1052
+#: :1098..Options.Graphics.Detail.Text :1120
 msgctxt "Horizon"
 msgid "Horizon"
 msgstr ""
 
 #. Terrain  advanced light 
-#: Media/gui/Editor.layout:557 ..Editor.Terrain.Light.Text
+#: Media/gui/Editor.layout:561 ..Editor.Terrain.Light.Text
 #: Media/gui/MaterialEditor.layout:240 ..MaterialEditor.Main.Text
 msgctxt "NormalsScale"
 msgid "Normals scale"
 msgstr ""
 
 #. Terrain  advanced light 
-#: Media/gui/Editor.layout:525 ..Editor.Terrain.Light.Check
+#: Media/gui/Editor.layout:529 ..Editor.Terrain.Light.Check
 msgctxt "TerrainEmissiveLight"
 msgid "Terrain has emissive light"
 msgstr ""
 
 #. Terrain  advanced light 
-#: Media/gui/Editor.layout:572 ..Editor.Terrain.Light.Text
+#: Media/gui/Editor.layout:576 ..Editor.Terrain.Light.Text
 msgctxt "SpecularPower"
 msgid "Specular power"
 msgstr ""
 
 #. Terrain  advanced light 
-#: Media/gui/Editor.layout:541 ..Editor.Terrain.Light.Text
+#: Media/gui/Editor.layout:545 ..Editor.Terrain.Light.Text
 msgctxt "SpecularPowerEm"
 msgid "Emissive power"
 msgstr ""
 
 #. Terrain  tools 
 #: Media/gui/Editor_Help.layout:189 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor.layout:651 ..Editor.Terrain.Tab
+#: Media/gui/Editor.layout:655 ..Editor.Terrain.Tab
 msgctxt "Brushes"
 msgid "Brushes"
 msgstr ""
 
 #. Terrain  tools 
-#: Media/gui/Editor.layout:1250 ..Editor.Terrain.Tools.Button
+#: Media/gui/Editor.layout:1254 ..Editor.Terrain.Tools.Button
 msgctxt "TerrainHalf"
 msgid "Half"
 msgstr ""
 
 #. Terrain  tools 
-#: Media/gui/Editor.layout:1257 ..Editor.Terrain.Tools.Button
+#: Media/gui/Editor.layout:1261 ..Editor.Terrain.Tools.Button
 msgctxt "TerrainDouble"
 msgid "Double"
 msgstr ""
 
 #. Terrain  tools 
-#: Media/gui/Editor.layout:618 ..Editor.Terrain.Collision.Text
-#: :1266..Editor.Terrain.Tools.Button :1324..Editor.Layers.Text
+#: Media/gui/Editor.layout:622 ..Editor.Terrain.Collision.Text
+#: :1270..Editor.Terrain.Tools.Button :1328..Editor.Layers.Text
 msgctxt "TerrainMove"
 msgid "Move"
 msgstr ""
 
 #. Terrain  Layers 
-#: Media/gui/Common.layout:44 ..Track-Filter.Check Media/gui/Editor.layout:1356
-#: ..Editor.Layers.Check :1928..Editor.Grasses.Grasses.Check
-#: :2436..Editor.Vegetation.Models.Check
+#: Media/gui/Common.layout:44 ..Track-Filter.Check Media/gui/Editor.layout:1360
+#: ..Editor.Layers.Check :1950..Editor.Grasses.Grasses.Check
+#: :2448..Editor.Vegetation.Models.Check
 msgctxt "Enabled"
 msgid "Enabled"
 msgstr ""
 
 #. Terrain  Layers 
-#: Media/gui/Editor.layout:1343 ..Editor.Layers.Text
-#: :1349:1935..Editor.Grasses.Grasses.Text :2443..Editor.Vegetation.Models.Text
-#: src/editor/Gui_EventsTer.cpp:498 src/editor/Gui_Events.cpp:29
+#: Media/gui/Editor.layout:1347 ..Editor.Layers.Text
+#: :1353:1957..Editor.Grasses.Grasses.Text :2455..Editor.Vegetation.Models.Text
+#: src/editor/Gui_EventsTer.cpp:514 src/editor/Gui_Events.cpp:29
 msgctxt "Used"
 msgid "Used"
 msgstr ""
 
 #. Terrain  Layers 
-#: src/editor/Gui_InitLists.cpp:179 src/editor/Gui_Events.cpp:571
+#: src/editor/Gui_InitLists.cpp:179 src/editor/Gui_Events.cpp:568
 msgctxt "Layer"
 msgid "Layer"
 msgstr ""
 
 #. Terrain  Layers 
 #: Media/gui/Editor_Help.layout:193 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor.layout:1296 ..Editor.Tab
+#: Media/gui/Editor.layout:1300 ..Editor.Tab
 msgctxt "Layers"
 msgid "Layers"
 msgstr ""
 
 #. Terrain  Layers 
 #: Media/gui/Editor_Help.layout:196 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor.layout:1465 ..Editor.Layers.TabC
-#: :1470..Editor.Layers.Blendmap.Tab
+#: Media/gui/Editor.layout:1469 ..Editor.Layers.TabC
+#: :1474..Editor.Layers.Blendmap.Tab
 msgctxt "BlendMap"
 msgid "Blendmap"
 msgstr ""
 
 #. Terrain  Layers 
-#: Media/gui/Editor.layout:1414 ..Editor.Layers.Text
+#: Media/gui/Editor.layout:1418 ..Editor.Layers.Text
 msgctxt "TerNormal"
 msgid "Normal"
 msgstr ""
 
 #. Terrain  Layers 
-#: Media/gui/Editor.layout:1428 ..Editor.Layers.Check
-#: src/editor/Gui_Init.cpp:335
+#: Media/gui/Editor.layout:1432 ..Editor.Layers.Check
+#: src/editor/Gui_Init.cpp:332
 msgctxt "auto"
 msgid "Auto"
 msgstr ""
 
 #. Terrain  Layers 
-#: Media/gui/Editor.layout:1038 ..Editor.Terrain.Generator.Text
-#: :1435..Editor.Layers.Text Media/gui/Game_Options.layout:632
-#: ..Options.View.Camera.Text :1589..Options.Tweak.Tires.Text :1600
+#: Media/gui/Editor.layout:1042 ..Editor.Terrain.Generator.Text
+#: :1439..Editor.Layers.Text Media/gui/Game_Options.layout:632
+#: ..Options.View.Camera.Text :1652..Options.Tweak.Tires.Text :1663
 #: src/editor/Update_EditKeyTxt.cpp:303:341:371
 msgctxt "scale"
 msgid "Scale"
 msgstr ""
 
 #. Terrain  Layers  buttons 
-#: Media/gui/Editor.layout:1450 ..Editor.Layers.Check :1455
+#: Media/gui/Editor.layout:1454 ..Editor.Layers.Check :1459
 #: Media/gui/Game.layout:1869 ..SingleRace.Championship.Tab :1902
 #: Media/gui/Game_Tweak.layout:424 ..Tweak.Tab
 msgctxt "Test"
@@ -4968,190 +5046,190 @@ msgid "Test"
 msgstr ""
 
 #. Terrain  Layers  buttons 
-#: Media/gui/Editor.layout:457 ..Editor.Terrain.Size.Button
-#: :480..Editor.Terrain.Light.Button :1316..Editor.Layers.Button
-#: :1874..Editor.Grasses.Grasses.Button :2347..Editor.Vegetation.Models.Button
+#: Media/gui/Editor.layout:461 ..Editor.Terrain.Size.Button
+#: :484..Editor.Terrain.Light.Button :1320..Editor.Layers.Button
+#: :1929..Editor.Grasses.Grasses.Button :2358..Editor.Vegetation.Models.Button
 msgctxt "Update"
 msgid "Update"
 msgstr ""
 
 #. Terrain  Layers  buttons 
-#: Media/gui/Editor.layout:1674 ..Editor.Layers.Blendmap.Noise.Button
+#: Media/gui/Editor.layout:1679 ..Editor.Layers.Blendmap.Noise.Button
 msgctxt "Swap"
 msgid "Swap"
 msgstr ""
 
 #. Terrain  Blendmap 
-#: Media/gui/Editor.layout:1070 ..Editor.Terrain.Generator.Text
-#: :1472..Editor.Layers.Blendmap.Blendmap.Text
-#: :2106..Editor.Grasses.Channels.Text
+#: Media/gui/Editor.layout:1074 ..Editor.Terrain.Generator.Text
+#: :1476..Editor.Layers.Blendmap.Blendmap.Text
+#: :2117..Editor.Grasses.Channels.Text
 msgctxt "AngleMin"
 msgid "Angle Min"
 msgstr ""
 
 #. Terrain  Blendmap 
-#: Media/gui/Editor.layout:1083 ..Editor.Terrain.Generator.Text
-#: :1485..Editor.Layers.Blendmap.Blendmap.Text
-#: :2121..Editor.Grasses.Channels.Text :2556..Editor.Vegetation.Models.Text
+#: Media/gui/Editor.layout:1087 ..Editor.Terrain.Generator.Text
+#: :1489..Editor.Layers.Blendmap.Blendmap.Text
+#: :2132..Editor.Grasses.Channels.Text :2568..Editor.Vegetation.Models.Text
 msgctxt "AngleMax"
 msgid "Angle Max"
 msgstr ""
 
 #. Terrain  Blendmap 
-#: Media/gui/Editor.layout:1096 ..Editor.Terrain.Generator.Text
-#: :1498..Editor.Layers.Blendmap.Blendmap.Text
-#: :2136..Editor.Grasses.Channels.Text
+#: Media/gui/Editor.layout:1100 ..Editor.Terrain.Generator.Text
+#: :1502..Editor.Layers.Blendmap.Blendmap.Text
+#: :2147..Editor.Grasses.Channels.Text
 msgctxt "TerLAngSm"
 msgid "Angle smooth"
 msgstr ""
 
 #. Terrain  Blendmap 
-#: Media/gui/Editor.layout:1110 ..Editor.Terrain.Generator.Text
-#: :1511..Editor.Layers.Blendmap.Blendmap.Text
-#: :2151..Editor.Grasses.Channels.Text :2570..Editor.Vegetation.Models.Text
+#: Media/gui/Editor.layout:1114 ..Editor.Terrain.Generator.Text
+#: :1515..Editor.Layers.Blendmap.Blendmap.Text
+#: :2162..Editor.Grasses.Channels.Text :2582..Editor.Vegetation.Models.Text
 msgctxt "HeightMin"
 msgid "Height Min"
 msgstr ""
 
 #. Terrain  Blendmap 
-#: Media/gui/Editor.layout:1124 ..Editor.Terrain.Generator.Text
-#: :1525..Editor.Layers.Blendmap.Blendmap.Text
-#: :2166..Editor.Grasses.Channels.Text :2584..Editor.Vegetation.Models.Text
+#: Media/gui/Editor.layout:1128 ..Editor.Terrain.Generator.Text
+#: :1529..Editor.Layers.Blendmap.Blendmap.Text
+#: :2177..Editor.Grasses.Channels.Text :2596..Editor.Vegetation.Models.Text
 msgctxt "HeightMax"
 msgid "Height Max"
 msgstr ""
 
 #. Terrain  Blendmap 
-#: Media/gui/Editor.layout:280 ..Editor.Sun.Fog.Text
+#: Media/gui/Editor.layout:284 ..Editor.Sun.Fog.Text
 #: Media/gui/Game_Options.layout:665 ..Options.View.Camera.Text
 msgctxt "smooth"
 msgid "smooth"
 msgstr ""
 
 #. Terrain  Blendmap 
-#: Media/gui/Editor.layout:1138 ..Editor.Terrain.Generator.Text
-#: :1539..Editor.Layers.Blendmap.Blendmap.Text
-#: :2181..Editor.Grasses.Channels.Text
+#: Media/gui/Editor.layout:1142 ..Editor.Terrain.Generator.Text
+#: :1543..Editor.Layers.Blendmap.Blendmap.Text
+#: :2192..Editor.Grasses.Channels.Text
 msgctxt "TerLHSm"
 msgid "Height smooth"
 msgstr ""
 
 #. Terrain  Blendmap 
-#: Media/gui/Editor.layout:808 ..Editor.Terrain.Brushparameters.Button
-#: :1553..Editor.Layers.Blendmap.Blendmap.Text
-#: :1567:1581:1614..Editor.Layers.Blendmap.Tab
-#: :1678..Editor.Layers.Blendmap.Noise.Button
-#: :1723:2211..Editor.Grasses.Channels.Text
+#: Media/gui/Editor.layout:812 ..Editor.Terrain.Brushparameters.Button
+#: :1558..Editor.Layers.Blendmap.Blendmap.Text
+#: :1572:1586:1619..Editor.Layers.Blendmap.Tab
+#: :1683..Editor.Layers.Blendmap.Noise.Button
+#: :1728:2222..Editor.Grasses.Channels.Text
 msgctxt "TerLNoise"
 msgid "Noise"
 msgstr ""
 
 #. Terrain  Blendmap 
-#: Media/gui/Editor.layout:1594 ..Editor.Layers.Blendmap.Blendmap.Check
+#: Media/gui/Editor.layout:1599 ..Editor.Layers.Blendmap.Blendmap.Check
 msgctxt "TerLNoiseOnly"
 msgid "Only Noise"
 msgstr ""
 
 #. Terrain  generator 
-#: Media/gui/Editor.layout:935 ..Editor.Terrain.Tab
-#: Media/gui/Editor_Track.layout:730 ..Track.Pacenotes.Tab
+#: Media/gui/Editor.layout:939 ..Editor.Terrain.Tab
+#: Media/gui/Editor_Track.layout:732 ..Track.Pacenotes.Tab
 msgctxt "Generator"
 msgid "Generator"
 msgstr ""
 
 #. Terrain  generator 
-#: Media/gui/Editor.layout:965 ..Editor.Terrain.Generator.Text
+#: Media/gui/Editor.layout:969 ..Editor.Terrain.Generator.Text
 msgctxt "TerGenScale"
 msgid "Scale Height"
 msgstr ""
 
 #. Terrain  generator 
-#: Media/gui/Editor.layout:1017 ..Editor.Terrain.Generator.Text
+#: Media/gui/Editor.layout:1021 ..Editor.Terrain.Generator.Text
 msgctxt "TerGenOfsX"
 msgid "Offset X"
 msgstr ""
 
 #. Terrain  generator 
-#: Media/gui/Editor.layout:1027 ..Editor.Terrain.Generator.Text
+#: Media/gui/Editor.layout:1031 ..Editor.Terrain.Generator.Text
 msgctxt "TerGenOfsY"
 msgid "Offset Y"
 msgstr ""
 
 #. Terrain  generator  noise params 
-#: Media/gui/Editor.layout:975 ..Editor.Terrain.Generator.Text
-#: :1682..Editor.Layers.Blendmap.Noise.Text
-#: :1727:2221..Editor.Grasses.Channels.Text
+#: Media/gui/Editor.layout:979 ..Editor.Terrain.Generator.Text
+#: :1687..Editor.Layers.Blendmap.Noise.Text
+#: :1732:2232..Editor.Grasses.Channels.Text
 msgctxt "TerGenFreq"
 msgid "Freq. zoom"
 msgstr ""
 
 #. Terrain  generator  noise params 
-#: Media/gui/Editor.layout:986 ..Editor.Terrain.Generator.Text
-#: :1692..Editor.Layers.Blendmap.Noise.Text
-#: :1737:2231..Editor.Grasses.Channels.Text
+#: Media/gui/Editor.layout:990 ..Editor.Terrain.Generator.Text
+#: :1697..Editor.Layers.Blendmap.Noise.Text
+#: :1742:2242..Editor.Grasses.Channels.Text
 msgctxt "TerGenOct"
 msgid "Octaves"
 msgstr ""
 
 #. Terrain  generator  noise params 
-#: Media/gui/Editor.layout:996 ..Editor.Terrain.Generator.Text
-#: :1702..Editor.Layers.Blendmap.Noise.Text
-#: :1747:2241..Editor.Grasses.Channels.Text
+#: Media/gui/Editor.layout:1000 ..Editor.Terrain.Generator.Text
+#: :1707..Editor.Layers.Blendmap.Noise.Text
+#: :1752:2252..Editor.Grasses.Channels.Text
 msgctxt "TerGenPers"
 msgid "Persistance noise"
 msgstr ""
 
 #. Terrain  generator  noise params 
-#: Media/gui/Editor.layout:1006 ..Editor.Terrain.Generator.Text
-#: :1712..Editor.Layers.Blendmap.Noise.Text
-#: :1757:2251..Editor.Grasses.Channels.Text
+#: Media/gui/Editor.layout:1010 ..Editor.Terrain.Generator.Text
+#: :1717..Editor.Layers.Blendmap.Noise.Text
+#: :1762:2262..Editor.Grasses.Channels.Text
 msgctxt "TerGenPow"
 msgid "Power (shape)"
 msgstr ""
 
 #. Terrain  surface  particles 
-#: Media/gui/Editor.layout:2687 ..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2699 ..Editor.Vegetation.Surface.Surface.Text
 msgctxt "DustSize"
 msgid "dust size"
 msgstr ""
 
 #. Terrain  surface  particles 
-#: Media/gui/Editor.layout:2682 ..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2694 ..Editor.Vegetation.Surface.Surface.Text
 msgctxt "dust"
 msgid "dust"
 msgstr ""
 
 #. Terrain  surface  particles 
-#: Media/gui/Editor.layout:2692 ..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2704 ..Editor.Vegetation.Surface.Surface.Text
 msgctxt "mud"
 msgid "mud"
 msgstr ""
 
 #. Terrain  surface  particles 
-#: Media/gui/Editor.layout:2697 ..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2709 ..Editor.Vegetation.Surface.Surface.Text
 msgctxt "smoke"
 msgid "smoke"
 msgstr ""
 
 #. Terrain  surface  particles 
-#: Media/gui/Editor.layout:2702 ..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2714 ..Editor.Vegetation.Surface.Surface.Text
 msgctxt "trailColor"
 msgid "trail color"
 msgstr ""
 
 #. Terrain  surface  particles 
-#: Media/gui/Editor.layout:2728 ..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2740 ..Editor.Vegetation.Surface.Surface.Text
 msgctxt "ParAmount"
 msgid "Particle amounts"
 msgstr ""
 
 #. Terrain  surface  params 
 #: Media/gui/Editor_Help.layout:214 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor.layout:2621 ..Editor.Vegetation.Tab
-#: :2632..Editor.Vegetation.Surface.Widget
-#: :2738..Editor.Vegetation.Surface.Surface.Text Media/gui/Game.layout:1547
+#: Media/gui/Editor.layout:2633 ..Editor.Vegetation.Tab
+#: :2644..Editor.Vegetation.Surface.Widget
+#: :2750..Editor.Vegetation.Surface.Surface.Text Media/gui/Game.layout:1547
 #: ..SingleRace.Setup.Steering.Text Media/gui/Game_Tweak.layout:272 ..Tweak.Tab
-#: src/editor/Gui_InitLists.cpp:329
+#: src/editor/Gui_InitLists.cpp:330
 msgctxt "Surface"
 msgid "Surface"
 msgstr ""
@@ -5163,28 +5241,28 @@ msgid "Type"
 msgstr ""
 
 #. Terrain  surface  params 
-#: Media/gui/Editor.layout:2782 ..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2794 ..Editor.Vegetation.Surface.Surface.Text
 #: Media/gui/Game_Tweak.layout:323 ..Tweak.Surface.Text :348
 msgctxt "BumpWavelen"
 msgid "Bump:  WaveLen"
 msgstr ""
 
 #. Terrain  surface  params 
-#: Media/gui/Editor.layout:2787 ..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2799 ..Editor.Vegetation.Surface.Surface.Text
 #: Media/gui/Game_Tweak.layout:336 ..Tweak.Surface.Text :360
 msgctxt "Amplitude"
 msgid "Amplitude"
 msgstr ""
 
 #. Terrain  surface  params 
-#: Media/gui/Editor.layout:2792 ..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2804 ..Editor.Vegetation.Surface.Surface.Text
 #: Media/gui/Game_Tweak.layout:286 ..Tweak.Surface.Text :298:310
 msgctxt "Friction"
 msgid "Friction"
 msgstr ""
 
 #. Terrain  surface  params 
-#: Media/gui/Editor.layout:2797 ..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2809 ..Editor.Vegetation.Surface.Surface.Text
 #: Media/gui/Game_Tweak.layout:372 ..Tweak.Surface.Text
 msgctxt "RollingDrag"
 msgid "Rolling Drag"
@@ -5196,20 +5274,20 @@ msgid "Rolling Resistance"
 msgstr ""
 
 #. Terrain  surface  params 
-#: Media/gui/Editor.layout:2627 ..Editor.Vegetation.Surface.Check
+#: Media/gui/Editor.layout:2639 ..Editor.Vegetation.Surface.Check
 msgctxt "Road1SurfOnly"
 msgid "Only 1 road surface"
 msgstr ""
 
 #. Terrain  Brush  params 
-#: Media/gui/Editor.layout:818 ..Editor.Terrain.Brushparameters.Text
+#: Media/gui/Editor.layout:822 ..Editor.Terrain.Brushparameters.Text
 #: src/editor/Update_EditKeyTxt.cpp:183
 msgctxt "Brush_Size"
 msgid "Size"
 msgstr ""
 
 #. Terrain  Brush  params 
-#: Media/gui/Editor.layout:829 ..Editor.Terrain.Brushparameters.Text
+#: Media/gui/Editor.layout:833 ..Editor.Terrain.Brushparameters.Text
 #: Media/gui/Game.layout:1371 ..SingleRace.Setup.Boost.Text
 #: src/editor/Update_EditKeyTxt.cpp:184
 msgctxt "Brush_Force"
@@ -5217,29 +5295,29 @@ msgid "Force"
 msgstr ""
 
 #. Terrain  Brush  params 
-#: Media/gui/Editor.layout:840 ..Editor.Terrain.Brushparameters.Text
+#: Media/gui/Editor.layout:844 ..Editor.Terrain.Brushparameters.Text
 #: src/editor/Update_EditKeyTxt.cpp:185
 msgctxt "Brush_Power"
 msgid "Power"
 msgstr ""
 
 #. Terrain  Brush  params 
-#: Media/gui/Editor.layout:863 ..Editor.Terrain.Brushparameters.Text
+#: Media/gui/Editor.layout:867 ..Editor.Terrain.Brushparameters.Text
 #: src/editor/Update_EditKeyTxt.cpp:188
 msgctxt "Brush_Freq"
 msgid "Freq"
 msgstr ""
 
 #. Terrain  Brush  params 
-#: Media/gui/Editor.layout:874 ..Editor.Terrain.Brushparameters.Text
+#: Media/gui/Editor.layout:878 ..Editor.Terrain.Brushparameters.Text
 #: src/editor/Update_EditKeyTxt.cpp:189
 msgctxt "Brush_Octaves"
 msgid "Octaves"
 msgstr ""
 
 #. Terrain  Brush  params 
-#: Media/gui/Editor.layout:885 ..Editor.Terrain.Brushparameters.Text
-#: :896:1048..Editor.Terrain.Generator.Text
+#: Media/gui/Editor.layout:889 ..Editor.Terrain.Brushparameters.Text
+#: :900:1052..Editor.Terrain.Generator.Text
 #: src/editor/Update_EditKeyTxt.cpp:190
 msgctxt "Brush_Offset"
 msgid "Offset"
@@ -5252,7 +5330,7 @@ msgid "Height"
 msgstr ""
 
 #. Terrain  Brush  params 
-#: Media/gui/Editor_Utils.layout:70 ..Tab-close/openpickwindow.Button
+#: Media/gui/Editor_Utils.layout:84 ..Tab-close/openpickwindow.Button
 #: src/editor/Update_EditKeyTxt.cpp:218
 msgctxt "Brush_Filter"
 msgid "Filter"
@@ -5271,7 +5349,7 @@ msgid "Lock"
 msgstr ""
 
 #. Terrain  Brush  shapes 
-#: Media/gui/Editor.layout:851 ..Editor.Terrain.Brushparameters.Text
+#: Media/gui/Editor.layout:855 ..Editor.Terrain.Brushparameters.Text
 #: src/editor/Update_EditKeyTxt.cpp:186
 msgctxt "Brush_Shape"
 msgid "Shape"
@@ -5306,217 +5384,215 @@ msgid "N-gon"
 msgstr ""
 
 #. Vegetation  Main 
-#: Media/gui/Editor.layout:1778 ..Editor.Grasses.Tab
-#: :2275..Editor.Vegetation.Tab :2852..Editor.Vegetation.Road.TabC
+#: Media/gui/Editor.layout:1783 ..Editor.Grasses.Tab
+#: :2286..Editor.Vegetation.Tab :2863..Editor.Vegetation.Road.TabC
 msgctxt "Properties"
 msgid "Properties"
 msgstr ""
 
 #. Vegetation  Main 
 #: Media/gui/Editor_Help.layout:200 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor.layout:1773 ..Editor.Tab :1872..Editor.Grasses.Tab
+#: Media/gui/Editor.layout:1778 ..Editor.Tab :1884..Editor.Grasses.Tab
 msgctxt "Grasses"
 msgid "Grasses"
 msgstr ""
 
 #. Vegetation  Main 
 #: Media/gui/Editor_Help.layout:210 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor.layout:2345 ..Editor.Vegetation.Tab
+#: Media/gui/Editor.layout:2356 ..Editor.Vegetation.Tab
 msgctxt "Models"
 msgid "Models"
 msgstr ""
 
 #. Vegetation  Main 
-#: Media/gui/Editor.layout:1785 ..Editor.Grasses.Properties.Text
+#: Media/gui/Editor.layout:1790 ..Editor.Grasses.Properties.Text
 msgctxt "GrassDens"
 msgid "Grass   density"
 msgstr ""
 
 #. Vegetation  Main 
-#: Media/gui/Editor.layout:2282 ..Editor.Vegetation.Properties.Text
+#: Media/gui/Editor.layout:2293 ..Editor.Vegetation.Properties.Text
 msgctxt "TreeDens"
 msgid "Trees   density"
 msgstr ""
 
 #. Vegetation  Model main 
-#: Media/gui/Editor.layout:2411 ..Editor.Vegetation.Models.Text
-#: :2416..Editor.Vegetation.Models.Button src/editor/Gui_InitLists.cpp:302
+#: Media/gui/Editor.layout:2423 ..Editor.Vegetation.Models.Text
+#: :2428..Editor.Vegetation.Models.Button src/editor/Gui_InitLists.cpp:303
 msgctxt "Model"
 msgid "Model"
 msgstr ""
 
 #. Vegetation  Model main 
-#: Media/gui/Editor.layout:2044 ..Editor.Grasses.Grasses.Text
-#: :2423..Editor.Vegetation.Models.Text src/editor/Update_EditKeyTxt.cpp:374
+#: Media/gui/Editor.layout:2053 ..Editor.Grasses.Grasses.Text
+#: :2435..Editor.Vegetation.Models.Text src/editor/Update_EditKeyTxt.cpp:374
 msgctxt "Density"
 msgid "Density"
 msgstr ""
 
 #. Vegetation  Model main 
-#: Media/gui/Editor.layout:2477 ..Editor.Vegetation.Models.Text
+#: Media/gui/Editor.layout:2489 ..Editor.Vegetation.Models.Text
 msgctxt "MinScale"
 msgid "min scale"
 msgstr ""
 
 #. Vegetation  Model main 
-#: Media/gui/Editor.layout:2482 ..Editor.Vegetation.Models.Text
+#: Media/gui/Editor.layout:2494 ..Editor.Vegetation.Models.Text
 msgctxt "MaxScale"
 msgid "max scale"
 msgstr ""
 
 #. Vegetation  Model main 
-#: Media/gui/Editor.layout:2197 ..Editor.Grasses.Channels.Text
-#: :2531..Editor.Vegetation.Models.Text
+#: Media/gui/Editor.layout:2208 ..Editor.Grasses.Channels.Text
+#: :2543..Editor.Vegetation.Models.Text
 msgctxt "DistToRoad"
 msgid "dist. to road"
 msgstr ""
 
 #. Vegetation  common 
-#: Media/gui/Editor.layout:2504 ..Editor.Vegetation.Models.Text :2509
+#: Media/gui/Editor.layout:2516 ..Editor.Vegetation.Models.Text :2521
 msgctxt "wind"
 msgid "wind"
 msgstr ""
 
 #. Vegetation  common 
-#: Media/gui/Editor.layout:1801 ..Editor.Grasses.Properties.Text
-#: :2298..Editor.Vegetation.Properties.Text
+#: Media/gui/Editor.layout:1806 ..Editor.Grasses.Properties.Text
+#: :2309..Editor.Vegetation.Properties.Text
 msgctxt "page"
 msgid "page"
 msgstr ""
 
 #. Vegetation  common 
-#: Media/gui/Common.layout:208 ..Track-Filter.Text Media/gui/Editor.layout:1945
-#: ..Editor.Grasses.Grasses.Text :1988 Media/gui/Game.layout:1393
+#: Media/gui/Common.layout:208 ..Track-Filter.Text Media/gui/Editor.layout:1967
+#: ..Editor.Grasses.Grasses.Text :2010 Media/gui/Game.layout:1393
 #: ..SingleRace.Setup.Boost.Text
 msgctxt "min"
 msgid "min"
 msgstr ""
 
 #. Vegetation  common 
-#: Media/gui/Common.layout:211 ..Track-Filter.Text Media/gui/Editor.layout:1960
-#: ..Editor.Grasses.Grasses.Text :2003:2544..Editor.Vegetation.Models.Text
+#: Media/gui/Common.layout:211 ..Track-Filter.Text Media/gui/Editor.layout:1982
+#: ..Editor.Grasses.Grasses.Text :2025:2556..Editor.Vegetation.Models.Text
+#: Media/gui/Editor_Options.layout:592 ..Options.Graphics.Detail.Text
 #: Media/gui/Game.layout:1382 ..SingleRace.Setup.Boost.Text
-#: Media/gui/Game_Options.layout:1535 ..Options.Tweak.Tires.Text :1546:1557
-#: src/common/GuiCom_Options.cpp:58
+#: Media/gui/Game_Options.layout:1098 :1598..Options.Tweak.Tires.Text
+#: :1609:1620 src/common/GuiCom_Options.cpp:58
 msgctxt "max"
 msgid "max"
 msgstr ""
 
 #. Vegetation  common 
-#: Media/gui/Editor.layout:1806 ..Editor.Grasses.Properties.Text
-#: :2303..Editor.Vegetation.Properties.Text
+#: Media/gui/Editor.layout:1811 ..Editor.Grasses.Properties.Text
+#: :2314..Editor.Vegetation.Properties.Text
 msgctxt "distance"
 msgid "distance"
 msgstr ""
 
 #. Vegetation  common 
-#: Media/gui/Editor.layout:1831 ..Editor.Grasses.Properties.Text
+#: Media/gui/Editor.layout:1836 ..Editor.Grasses.Properties.Text
 msgctxt "length"
 msgid "length"
 msgstr ""
 
 #. Vegetation  global 
-#: Media/gui/Editor.layout:2330 ..Editor.Vegetation.Properties.Text
+#: Media/gui/Editor.layout:2341 ..Editor.Vegetation.Properties.Text
 msgctxt "TreeRoadDist"
 msgid "Trees to road dist."
 msgstr ""
 
 #. Vegetation  global 
-#: Media/gui/Editor.layout:2319 ..Editor.Vegetation.Properties.Text
+#: Media/gui/Editor.layout:2330 ..Editor.Vegetation.Properties.Text
 msgctxt "ImpostorDist"
 msgid "Impostors dist."
 msgstr ""
 
 #. Vegetation  global 
-#: Media/gui/Editor.layout:2598 ..Editor.Vegetation.Models.Text
+#: Media/gui/Editor.layout:2610 ..Editor.Vegetation.Models.Text
 msgctxt "LTrFlDepth"
 msgid "max Depth in fluid"
 msgstr ""
 
 #. Vegetation  Grass 
-#: Media/gui/Editor.layout:1940 ..Editor.Grasses.Grasses.Text
+#: Media/gui/Editor.layout:1962 ..Editor.Grasses.Grasses.Text
 msgctxt "GrassSize"
 msgid "Size"
 msgstr ""
 
 #. Vegetation  Grass 
-#: Media/gui/Editor.layout:1857 ..Editor.Grasses.Properties.Text
+#: Media/gui/Editor.layout:1862 ..Editor.Grasses.Properties.Text
 msgctxt "GrDensSmooth"
 msgid "Smooth grass dens."
 msgstr ""
 
 #. Vegetation  Grass 
-#: Media/gui/Editor.layout:1409 ..Editor.Layers.Text
-#: :2018..Editor.Grasses.Grasses.Text :2023..Editor.Grasses.Grasses.Button
-#: :3001..Editor.Vegetation.Road.RoadPoint.Text
-#: :3255..Editor.Vegetation.Road.Column.Text
-#: src/editor/Gui_InitLists.cpp:276:328
+#: Media/gui/Editor.layout:1413 ..Editor.Layers.Text
+#: :2040..Editor.Grasses.Grasses.Text :2045..Editor.Grasses.Grasses.Button
+#: :3029..Editor.Vegetation.Road.Column.Text
+#: src/editor/Gui_InitLists.cpp:277:329
 msgctxt "GrMaterial"
 msgid "Material"
 msgstr ""
 
 #. Vegetation  Grass 
-#: Media/gui/Editor.layout:2039 ..Editor.Grasses.Grasses.Text
-#: :2262..Editor.Grasses.Tab
+#: Media/gui/Editor.layout:2273 ..Editor.Grasses.Tab
 msgctxt "GrColorMap"
 msgid "Color map"
 msgstr ""
 
 #. Vegetation  Grass 
 #: Media/gui/Editor_Help.layout:203 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor.layout:2072 ..Editor.Grasses.Tab
+#: Media/gui/Editor.layout:2083 ..Editor.Grasses.Tab
 msgctxt "Channels"
 msgid "Channels"
 msgstr ""
 
 #. Vegetation  Grass 
-#: Media/gui/Editor.layout:2058 ..Editor.Grasses.Grasses.Text
+#: Media/gui/Editor.layout:2067 ..Editor.Grasses.Grasses.Text
 msgctxt "Channel"
 msgid "Channel"
 msgstr ""
 
 #. Vegetation  Grass sway 
-#: Media/gui/Editor.layout:1822 ..Editor.Grasses.Properties.Text
+#: Media/gui/Editor.layout:1827 ..Editor.Grasses.Properties.Text
 msgctxt "GrassSway"
 msgid "Sway"
 msgstr ""
 
 #. Vegetation  Grass sway 
-#: Media/gui/Editor.layout:1836 ..Editor.Grasses.Properties.Text
+#: Media/gui/Editor.layout:1841 ..Editor.Grasses.Properties.Text
 msgctxt "speed"
 msgid "speed"
 msgstr "sebesség"
 
 #. Vegetation  Grass sway 
-#: Media/gui/Editor.layout:1826 ..Editor.Grasses.Properties.Text
+#: Media/gui/Editor.layout:1831 ..Editor.Grasses.Properties.Text
 msgctxt "distribution"
 msgid "distribution"
 msgstr ""
 
 #. Road  Main 
 #: Media/gui/Editor_Help.layout:217 ..Help.Input/help.Shortcuts.Text
-#: :340..Help.Input/help.Tab Media/gui/Editor.layout:1059
-#: ..Editor.Terrain.Generator.Text :2807..Editor.Vegetation.Tab
-#: :2813..Editor.Vegetation.Road.Text :3096..Editor.Vegetation.Road.Tab
-#: :3304..Editor.Vegetation.Road.Detail.Text Media/gui/Editor_Track.layout:529
-#: ..Track.Tools.Button :551 src/editor/Gui_InitLists.cpp:180
-#: src/editor/Gui_Events.cpp:572 src/editor/Update_EditKeyTxt.cpp:55
+#: :340..Help.Input/help.Tab Media/gui/Editor.layout:1063
+#: ..Editor.Terrain.Generator.Text :2819..Editor.Vegetation.Tab
+#: :2825..Editor.Vegetation.Road.Text :2869..Editor.Vegetation.Road.Tab
+#: :3078..Editor.Vegetation.Road.Detail.Text Media/gui/Editor_Track.layout:525
+#: ..Track.Tools.Button :547 src/editor/Gui_InitLists.cpp:180
+#: src/editor/Gui_Events.cpp:569 src/editor/Update_EditKeyTxt.cpp:55
 msgctxt "Road"
 msgid "Road"
 msgstr "Út"
 
 #. Road  Main 
-#: Media/gui/Editor.layout:3174 ..Editor.Vegetation.Road.Tab
-#: :3331..Editor.Vegetation.Road.Detail.Text src/editor/Gui_InitLists.cpp:181
-#: src/editor/Gui_Events.cpp:573
+#: Media/gui/Editor.layout:2948 ..Editor.Vegetation.Road.Tab
+#: :3105..Editor.Vegetation.Road.Detail.Text src/editor/Gui_InitLists.cpp:181
+#: src/editor/Gui_Events.cpp:570
 msgctxt "Pipe"
 msgid "Pipe"
 msgstr "Cső"
 
 #. Road  Main 
-#: Media/gui/Editor.layout:3025 ..Editor.Vegetation.Road.RoadPoint.Text
-#: :3102..Editor.Vegetation.Road.Road.Text
-#: :3241..Editor.Vegetation.Road.Pipe.Text
+#: Media/gui/Editor.layout:2875 ..Editor.Vegetation.Road.Road.Text
+#: :3015..Editor.Vegetation.Road.Pipe.Text
 #: src/editor/Update_EditKeyTxt.cpp:48:55
 msgctxt "Wall"
 msgid "Wall"
@@ -5534,14 +5610,14 @@ msgid "Hidden"
 msgstr ""
 
 #. Road  Main 
-#: Media/gui/Editor.layout:3253 ..Editor.Vegetation.Road.Tab
+#: Media/gui/Editor.layout:3027 ..Editor.Vegetation.Road.Tab
 msgctxt "Column"
 msgid "Column"
 msgstr ""
 
 #. Road  Main 
-#: Media/gui/Editor.layout:1244 ..Editor.Terrain.Tools.Text
-#: :3384..Editor.Vegetation.Road.Tab Media/gui/Editor_Options.layout:809
+#: Media/gui/Editor.layout:1248 ..Editor.Terrain.Tools.Text
+#: :3158..Editor.Vegetation.Road.Tab Media/gui/Editor_Options.layout:894
 #: ..Options.Settings.Tweak.Text Media/gui/MaterialEditor.layout:265
 #: ..MaterialEditor.Tab
 msgctxt "Advanced"
@@ -5549,87 +5625,87 @@ msgid "Advanced"
 msgstr ""
 
 #. Road  materials 
-#: Media/gui/Editor.layout:3098 ..Editor.Vegetation.Road.Road.Text
+#: Media/gui/Editor.layout:2871 ..Editor.Vegetation.Road.Road.Text
 msgctxt "RoadMaterials"
 msgid "Road materials"
 msgstr ""
 
 #. Road  materials 
-#: Media/gui/Editor.layout:3176 ..Editor.Vegetation.Road.Pipe.Text
+#: Media/gui/Editor.layout:2950 ..Editor.Vegetation.Road.Pipe.Text
 msgctxt "PipeMaterials"
 msgid "Pipe materials"
 msgstr ""
 
 #. Road  materials 
-#: Media/gui/Editor.layout:3150 ..Editor.Vegetation.Road.Road.Text
-#: :3161:3218..Editor.Vegetation.Road.Pipe.Text
-#: :3229:3264..Editor.Vegetation.Road.Column.Text
+#: Media/gui/Editor.layout:2923 ..Editor.Vegetation.Road.Road.Text
+#: :2934:2992..Editor.Vegetation.Road.Pipe.Text
+#: :3003:3038..Editor.Vegetation.Road.Column.Text
 msgctxt "TexCoordMul"
 msgid "Tex Coord mul."
 msgstr ""
 
 #. Road  build params 
-#: Media/gui/Editor.layout:3308 ..Editor.Vegetation.Road.Detail.Text
+#: Media/gui/Editor.layout:3082 ..Editor.Vegetation.Road.Detail.Text
 msgctxt "LengthDim"
 msgid "Length dim."
 msgstr ""
 
 #. Road  build params 
-#: Media/gui/Editor.layout:3319 ..Editor.Vegetation.Road.Detail.Text
+#: Media/gui/Editor.layout:3093 ..Editor.Vegetation.Road.Detail.Text
 msgctxt "WidthSteps"
 msgid "Width Steps"
 msgstr ""
 
 #. Road  build params 
-#: Media/gui/Editor.layout:3358 ..Editor.Vegetation.Road.Detail.Text
+#: Media/gui/Editor.layout:3132 ..Editor.Vegetation.Road.Detail.Text
 msgctxt "HeightOffset"
 msgid "Height offset"
 msgstr ""
 
 #. Road  build params 
-#: Media/gui/Editor.layout:3386 ..Editor.Vegetation.Road.Advanced.Text
+#: Media/gui/Editor.layout:3160 ..Editor.Vegetation.Road.Advanced.Text
 msgctxt "MergeLength"
 msgid "Merge length"
 msgstr ""
 
 #. Road  build params 
-#: Media/gui/Editor.layout:3397 ..Editor.Vegetation.Road.Advanced.Text
+#: Media/gui/Editor.layout:3171 ..Editor.Vegetation.Road.Advanced.Text
 msgctxt "LODPointsDist"
 msgid "LOD points dist."
 msgstr ""
 
 #. Road  build params 
-#: Media/gui/Editor.layout:3276 ..Editor.Vegetation.Road.Column.Text
+#: Media/gui/Editor.layout:3050 ..Editor.Vegetation.Road.Column.Text
 msgctxt "ColumnNSides"
 msgid "Column N sides"
 msgstr ""
 
 #. Road  build params 
-#: Media/gui/Editor.layout:3287 ..Editor.Vegetation.Road.Column.Text
+#: Media/gui/Editor.layout:3061 ..Editor.Vegetation.Road.Column.Text
 msgctxt "ColumnRadius"
 msgid "Column Radius"
 msgstr ""
 
 #. Road  build params 
-#: Media/gui/Editor.layout:3346 ..Editor.Vegetation.Road.Detail.Text
+#: Media/gui/Editor.layout:3120 ..Editor.Vegetation.Road.Detail.Text
 msgctxt "PipeWStepsMul"
 msgid "Pipe W steps mul."
 msgstr ""
 
 #. Road  build params 
-#: Media/gui/Editor.layout:3335 ..Editor.Vegetation.Road.Detail.Text
+#: Media/gui/Editor.layout:3109 ..Editor.Vegetation.Road.Detail.Text
 msgctxt "PipeLStepsMul"
 msgid "Pipe L steps mul."
 msgstr ""
 
 #. Road  build  skirt is the gap patch 
-#: Media/gui/Editor.layout:3366 ..Editor.Vegetation.Road.Detail.Text
+#: Media/gui/Editor.layout:3140 ..Editor.Vegetation.Road.Detail.Text
 msgctxt "SkirtLength"
 msgid "Skirt Length"
 msgstr ""
 
 #. Road  build  skirt is the gap patch 
-#: Media/gui/Editor.layout:3374 ..Editor.Vegetation.Road.Detail.Text
+#: Media/gui/Editor.layout:3148 ..Editor.Vegetation.Road.Detail.Text
 msgctxt "SkirtHeight"
 msgid "Skirt Height"
 msgstr ""
@@ -5641,14 +5717,12 @@ msgid "Length"
 msgstr ""
 
 #. Road Point  Main  dim 
-#: Media/gui/Editor.layout:2885 ..Editor.Vegetation.Road.RoadPoint.Text
 #: src/editor/Update_EditKeyTxt.cpp:62:114:273
 msgctxt "Road_Height"
 msgid "Height"
 msgstr ""
 
 #. Road Point  Main  dim 
-#: Media/gui/Editor.layout:2902 ..Editor.Vegetation.Road.RoadPoint.Text
 #: Media/gui/Game.layout:823 ..SingleRace.Vehicle.Text
 #: src/game/Gui_InitCar.cpp:151 src/editor/Update_EditKeyTxt.cpp:37:113:272
 msgctxt "Road_Width"
@@ -5656,48 +5730,41 @@ msgid "Width"
 msgstr ""
 
 #. Road Point  Main  angles 
-#: Media/gui/Editor.layout:2931 ..Editor.Vegetation.Road.RoadPoint.Text
 #: src/editor/Update_EditKeyTxt.cpp:39
 msgctxt "Road_Yaw"
 msgid "Yaw"
 msgstr ""
 
 #. Road Point  Main  angles 
-#: Media/gui/Editor.layout:2920 ..Editor.Vegetation.Road.RoadPoint.Text
 #: src/editor/Update_EditKeyTxt.cpp:38
 msgctxt "Road_Roll"
 msgid "Roll"
 msgstr ""
 
 #. Road Point  Main  angles 
-#: Media/gui/Editor.layout:2971 ..Editor.Vegetation.Road.RoadPoint.Text
 #: src/editor/Update_EditKeyTxt.cpp:42:72
 msgctxt "Road_Pipe"
 msgid "Pipe"
 msgstr ""
 
 #. Road Point  toggle 
-#: Media/gui/Editor.layout:2863 ..Editor.Vegetation.Road.RoadPoint.Check
 #: src/editor/Update_EditKeyTxt.cpp:62
 msgctxt "Road_OnTerrain"
 msgid "On Terrain"
 msgstr ""
 
 #. Road Point  toggle 
-#: Media/gui/Editor.layout:2983 ..Editor.Vegetation.Road.RoadPoint.Text
 #: src/editor/Update_EditKeyTxt.cpp:43
 msgctxt "Road_Column"
 msgid "Column"
 msgstr ""
 
 #. Road Point  toggle 
-#: Media/gui/Editor.layout:3049 ..Editor.Vegetation.Road.RoadPoint.Text
 msgctxt "Road_Loop"
 msgid "Loop"
 msgstr ""
 
 #. Road Point  toggle 
-#: Media/gui/Editor.layout:3067 ..Editor.Vegetation.Road.RoadPoint.Check
 #: Media/gui/Editor_Track.layout:184 ..Track.Track.Text :230..Track.Track.Image
 #: Media/gui/Game.layout:198 ..SingleRace.Track.Text
 #: :244..SingleRace.Track.Image :2158..SingleRace.Track.Text
@@ -5707,28 +5774,24 @@ msgid "On Pipe"
 msgstr ""
 
 #. Road Point  toggle 
-#: Media/gui/Editor.layout:3085 ..Editor.Vegetation.Road.RoadPoint.Check
 #: src/editor/Update_EditKeyTxt.cpp:89
 msgctxt "Road_NotReal"
 msgid "Not Real"
 msgstr ""
 
 #. Road Point  toggle 
-#: Media/gui/Editor.layout:3089 ..Editor.Vegetation.Road.Tab
 #: src/editor/Update_EditKeyTxt.cpp:102
 msgctxt "Road_Merged"
 msgid "Merged"
 msgstr ""
 
 #. Road Point  toggle 
-#: Media/gui/Editor.layout:3090 ..Editor.Vegetation.Road.Tab
 #: src/editor/Update_EditKeyTxt.cpp:103
 msgctxt "Road_NotLooped"
 msgid "Not looped"
 msgstr ""
 
 #. Road Point  short: checkpoint radius 
-#: Media/gui/Editor.layout:3013 ..Editor.Vegetation.Road.RoadPoint.Text
 #: src/editor/Update_EditKeyTxt.cpp:45
 msgctxt "Road_ChkR"
 msgid "ChkR"
@@ -5755,7 +5818,6 @@ msgid "sel"
 msgstr ""
 
 #. Road Point  angles type 
-#: Media/gui/Editor.layout:2953 ..Editor.Vegetation.Road.RoadPoint.Text
 #: src/editor/Update_EditKeyTxt.cpp:41
 msgctxt "Road_Snap"
 msgid "Snap"
@@ -5802,26 +5864,26 @@ msgstr ""
 
 #. Tools 
 #: Media/gui/Editor_Help.layout:227 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor.layout:1170 ..Editor.Terrain.Tab
+#: Media/gui/Editor.layout:1174 ..Editor.Terrain.Tab
 #: Media/gui/Editor_Track.layout:473 ..Track.Tab
 msgctxt "Tools"
 msgid "Tools"
 msgstr ""
 
 #. Tools 
-#: Media/gui/Editor_Track.layout:488 ..Track.Tools.Text
+#: Media/gui/Editor_Track.layout:484 ..Track.Tools.Text
 msgctxt "SourceTrack"
 msgid "Source track"
 msgstr ""
 
 #. Tools 
-#: Media/gui/Editor_Track.layout:495 ..Track.Tools.Text
+#: Media/gui/Editor_Track.layout:491 ..Track.Tools.Text
 msgctxt "ChngTrkTab"
 msgid "changed in [Track] tab"
 msgstr ""
 
 #. Tools  Copy 
-#: Media/gui/Editor_Track.layout:504 ..Track.Tools.Text
+#: Media/gui/Editor_Track.layout:500 ..Track.Tools.Text
 #: src/editor/Update_KeyObjects.cpp:115 src/editor/Gui_Tools.cpp:37:44
 #: src/editor/Update_KeyRoad.cpp:65
 msgctxt "Copy"
@@ -5829,141 +5891,150 @@ msgid "Copy"
 msgstr ""
 
 #. Tools  Copy 
-#: Media/gui/Editor_Track.layout:508 ..Track.Tools.Button
+#: Media/gui/Editor_Track.layout:504 ..Track.Tools.Button
 msgctxt "SunWeather"
 msgid "Sun and Weather"
 msgstr ""
 
 #. Tools  Copy 
-#: Media/gui/Editor_Track.layout:513 ..Track.Tools.Button
+#: Media/gui/Editor_Track.layout:509 ..Track.Tools.Button
 msgctxt "TerHeightMap"
 msgid "Terrain Heightmap"
 msgstr ""
 
 #. Tools  Copy 
-#: Media/gui/Editor_Track.layout:519 ..Track.Tools.Button
+#: Media/gui/Editor_Track.layout:515 ..Track.Tools.Button
 msgctxt "TerLayers"
 msgid "Terrain Layers"
 msgstr ""
 
 #. Tools  Copy 
-#: Media/gui/Editor_Track.layout:535 ..Track.Tools.Button
+#: Media/gui/Editor_Track.layout:531 ..Track.Tools.Button
 msgctxt "RoadParams"
 msgid "Road parameters"
 msgstr ""
 
 #. Tools  scale 
-#: Media/gui/Editor_Track.layout:570 ..Track.Tools.Text
+#: Media/gui/Editor_Track.layout:566 ..Track.Tools.Text
 msgctxt "ScaleMul"
 msgid "Scale multiplier"
 msgstr ""
 
 #. Tools  scale 
-#: Media/gui/Editor_Track.layout:576 ..Track.Tools.Button
+#: Media/gui/Editor_Track.layout:572 ..Track.Tools.Button
 msgctxt "ScaleAll"
 msgid "Scale all"
 msgstr ""
 
 #. Tools  scale 
-#: Media/gui/Editor_Track.layout:581 ..Track.Tools.Button
+#: Media/gui/Editor_Track.layout:577 ..Track.Tools.Button
 msgctxt "ScaleTerHeight"
 msgid "Terrain Height"
 msgstr ""
 
 #. Tools  Align 
-#: Media/gui/Editor.layout:1175 ..Editor.Terrain.Tools.Button
+#: Media/gui/Editor.layout:1179 ..Editor.Terrain.Tools.Button
 msgctxt "AlignTerrainToRoad"
 msgid "Align terrain to road"
 msgstr ""
 
 #. Tools  Align 
-#: Media/gui/Editor.layout:1181 ..Editor.Terrain.Tools.Text
+#: Media/gui/Editor.layout:1185 ..Editor.Terrain.Tools.Text
 msgctxt "AlignWidthAdd"
 msgid "Width add"
 msgstr ""
 
 #. Tools  Align 
-#: Media/gui/Editor.layout:1199 ..Editor.Terrain.Tools.Text
+#: Media/gui/Editor.layout:1203 ..Editor.Terrain.Tools.Text
 msgctxt "AlignWidthMul"
 msgid "Width multiply"
 msgstr ""
 
 #. Tools  Align 
-#: Media/gui/Editor.layout:1190 ..Editor.Terrain.Tools.Text
+#: Media/gui/Editor.layout:1194 ..Editor.Terrain.Tools.Text
 msgctxt "AlignSmooth"
 msgid "Smooth size"
 msgstr ""
 
 #. Tools  Align 
-#: Media/gui/Editor.layout:1210 ..Editor.Terrain.Tools.Button :1212
+#: Media/gui/Editor.layout:1214 ..Editor.Terrain.Tools.Button :1216
 msgctxt "AlignHorizonToTerrain"
 msgid "Align horizon to terrain"
 msgstr ""
 
 #. Tools  Align 
-#: Media/gui/Editor.layout:1215 ..Editor.Terrain.Tools.Text
+#: Media/gui/Editor.layout:1219 ..Editor.Terrain.Tools.Text
 msgctxt "AH_BaseTer"
 msgid "Base Terrain"
 msgstr ""
 
 #. Tools  Align 
-#: Media/gui/Editor.layout:1224 ..Editor.Terrain.Tools.Text
+#: Media/gui/Editor.layout:1228 ..Editor.Terrain.Tools.Text
 msgctxt "AH_Below"
 msgid "Below"
 msgstr ""
 
 #. Editor Game setup 
-#: Media/gui/Editor_Track.layout:613 ..Track.Game.Text
+#: Media/gui/Editor_Track.layout:609 ..Track.Game.Text
 msgctxt "Gravity"
 msgid "Gravity"
 msgstr ""
 
 #. Editor Game setup 
-#: Media/gui/Editor.layout:1822 ..Editor.Grasses.Properties.Text
-#: Media/gui/Editor_Track.layout:621 ..Track.Game.Text
+#: Media/gui/Editor.layout:1827 ..Editor.Grasses.Properties.Text
+#: Media/gui/Editor_Track.layout:617 ..Track.Game.Text
 msgctxt "Wind"
 msgid "Wind"
 msgstr ""
 
 #. Editor Game setup 
-#: Media/gui/Editor_Track.layout:633 ..Track.Game.Check
+#: Media/gui/Editor_Track.layout:630 ..Track.Game.Check
 msgctxt "DenyReversed"
 msgid "Deny reversed direction"
 msgstr ""
 
 #. Editor Game setup 
-#: Media/gui/Editor_Track.layout:637 ..Track.Game.Check
+#: Media/gui/Editor_Track.layout:634 ..Track.Game.Check
 msgctxt "NoWrongChks"
 msgid "Don't show wrong checkpoint messages"
 msgstr ""
 
+#. Editor Game setup 
+#: Media/gui/Editor_Track.layout:638 ..Track.Game.Check
+#, fuzzy
+#| msgctxt "Vehicles"
+#| msgid "Vehicles"
+msgctxt "NeedLights"
+msgid "Requires vehicle lights"
+msgstr "Járművek"
+
 #. Editor Warnings 
 #: Media/gui/Editor_Help.layout:233 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor_Track.layout:736 ..Track.Tab src/editor/Warnings.cpp:271
+#: Media/gui/Editor_Track.layout:738 ..Track.Tab src/editor/Warnings.cpp:386
 msgctxt "Warnings"
 msgid "Warnings"
 msgstr ""
 
 #. Editor Warnings 
-#: Media/gui/Editor_Track.layout:760 ..Track.Warnings.Text
+#: Media/gui/Editor_Track.layout:762 ..Track.Warnings.Text
 msgctxt "WarningsInfo"
 msgid "Console for track errors, warnings and hints."
 msgstr ""
 
 #. Editor Warnings 
-#: Media/gui/Editor_Track.layout:768 ..Track.Warnings.Check
+#: Media/gui/Editor_Track.layout:770 ..Track.Warnings.Check
 msgctxt "CheckOnLoad"
 msgid "Check on load"
 msgstr ""
 
 #. Editor Warnings 
-#: Media/gui/Editor_Track.layout:764 ..Track.Warnings.Check
+#: Media/gui/Editor_Track.layout:766 ..Track.Warnings.Check
 msgctxt "CheckOnSave"
 msgid "Check on save"
 msgstr ""
 
 #. Editor Warnings 
-#: Media/gui/Editor_Track.layout:772 ..Track.Warnings.Text
+#: Media/gui/Editor_Track.layout:774 ..Track.Warnings.Text
 msgctxt "InputLoadNextTrack"
 msgid "Load next track (shift - previous)"
 msgstr ""
@@ -5974,77 +6045,77 @@ msgid "Pick"
 msgstr ""
 
 #. Editor  Pick  window 
-#: Media/gui/Editor_Utils.layout:44 ..Tab-close/openpickwindow.Check :49
+#: Media/gui/Editor_Utils.layout:58 ..Tab-close/openpickwindow.Check :63
 msgctxt "PickSetParam"
 msgid "Set parameters, marked with"
 msgstr ""
 
 #. Editor  Settings 
 #: Media/gui/Editor_Help.layout:244 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor_Options.layout:573 ..Options.Tab :744..Options.Settings.Tab
+#: Media/gui/Editor_Options.layout:628 ..Options.Tab :816..Options.Settings.Tab
 #: Media/gui/Game_Options.layout:314 ..Options.Input.Shortcuts.Text
-#: :1323..Options.Tab
+#: :1373..Options.Tab
 msgctxt "Settings"
 msgid "Settings"
 msgstr ""
 
 #. Editor  Settings 
-#: Media/gui/Editor_Main.layout:5 ..Window Media/gui/Editor_Options.layout:575
+#: Media/gui/Editor_Main.layout:5 ..Window Media/gui/Editor_Options.layout:630
 #: ..Options.Settings.Text
 msgctxt "SREditorVersion"
 msgid "Stunt Rally - Track Editor - version"
 msgstr ""
 
 #. Editor  Settings main 
-#: Media/gui/Editor_Options.layout:644 ..Options.Settings.View.Text
+#: Media/gui/Editor_Options.layout:705 ..Options.Settings.View.Text
 msgctxt "CamSpeed"
 msgid "Camera speed"
 msgstr ""
 
 #. Editor  Settings main 
-#: Media/gui/Editor_Options.layout:655 ..Options.Settings.View.Text
+#: Media/gui/Editor_Options.layout:716 ..Options.Settings.View.Text
 msgctxt "CamInertia"
 msgid "Camera inertia"
 msgstr ""
 
 #. Editor  Settings main 
-#: Media/gui/Editor_Options.layout:675 ..Options.Settings.Minimap.Check
+#: Media/gui/Editor_Options.layout:736 ..Options.Settings.Minimap.Check
 msgctxt "MinimapAndSize"
 msgid "Minimap, size"
 msgstr ""
 
 #. Editor  Settings main 
-#: Media/gui/Editor_Options.layout:687 ..Options.Settings.Minimap.Text
+#: Media/gui/Editor_Options.layout:748 ..Options.Settings.Minimap.Text
 msgctxt "MiniType"
 msgid "Minimap type"
 msgstr ""
 
 #. Editor  Settings update 
-#: Media/gui/Editor_Options.layout:731 ..Options.Settings.Minimap.Text
+#: Media/gui/Editor_Options.layout:792 ..Options.Settings.Minimap.Text :803
 msgctxt "RoadPointSize"
 msgid "Road points size"
 msgstr ""
 
 #. Editor  Settings update 
-#: Media/gui/Editor_Options.layout:720 ..Options.Settings.Minimap.Text
+#: Media/gui/Editor_Options.layout:781 ..Options.Settings.Minimap.Text
 msgctxt "RoadUpdSkip"
 msgid "Road update skip"
 msgstr ""
 
 #. Editor  Settings update 
-#: Media/gui/Editor_Options.layout:709 ..Options.Settings.Minimap.Text
+#: Media/gui/Editor_Options.layout:770 ..Options.Settings.Minimap.Text
 msgctxt "TerUpdSkip"
 msgid "Terrain update skip"
 msgstr ""
 
 #. Editor  Settings update 
-#: Media/gui/Editor_Options.layout:699 ..Options.Settings.Minimap.Text
+#: Media/gui/Editor_Options.layout:760 ..Options.Settings.Minimap.Text
 msgctxt "MinimapUpdSkip"
 msgid "Minimap update skip"
 msgstr ""
 
 #. Editor  Settings auto 
-#: Media/gui/Editor_Options.layout:755 ..Options.Settings.Settings.Check
+#: Media/gui/Editor_Options.layout:827 ..Options.Settings.Settings.Check
 msgctxt "TrackAutoLoad"
 msgid "Auto Load track"
 msgstr ""
@@ -6055,98 +6126,98 @@ msgid "Auto update blendmap (slow for big size brushes)"
 msgstr ""
 
 #. Editor  Settings extras 
-#: Media/gui/Editor_Options.layout:799 ..Options.Settings.Tweak.Check
+#: Media/gui/Editor_Options.layout:884 ..Options.Settings.Tweak.Check
 msgctxt "EdCamPos"
 msgid "Camera position bar  Ctrl-C"
 msgstr ""
 
 #. Editor  Settings extras 
-#: Media/gui/Editor_Options.layout:803 ..Options.Settings.Tweak.Check
+#: Media/gui/Editor_Options.layout:888 ..Options.Settings.Tweak.Check
 msgctxt "EdInputBar"
 msgid "Input bar  Ctrl-I"
 msgstr ""
 
 #. Editor  Settings extras 
-#: Media/gui/Editor_Options.layout:813 ..Options.Settings.Tweak.Check
+#: Media/gui/Editor_Options.layout:898 ..Options.Settings.Tweak.Check
 msgctxt "AllowSaveOrigTrk"
 msgid "Allow saving original tracks"
 msgstr ""
 
 #. Settings  camera views 
-#: Media/gui/Editor_Options.layout:593 ..Options.Settings.View.Text
+#: Media/gui/Editor_Options.layout:648 ..Options.Settings.View.Text
 msgctxt "SetCamTo"
 msgid "Set camera to"
 msgstr ""
 
 #. Settings  camera views 
-#: Media/gui/Editor_Options.layout:599 ..Options.Settings.View.Button
+#: Media/gui/Editor_Options.layout:654 ..Options.Settings.View.Button
 msgctxt "Top"
 msgid "Top"
 msgstr ""
 
 #. Settings  camera views 
-#: Media/gui/Editor.layout:600 ..Editor.Terrain.Collision.Check
-#: Media/gui/Editor_Options.layout:604 ..Options.Settings.View.Button
+#: Media/gui/Editor.layout:604 ..Editor.Terrain.Collision.Check
+#: Media/gui/Editor_Options.layout:659 ..Options.Settings.View.Button
 msgctxt "Left"
 msgid "Left"
 msgstr ""
 
 #. Settings  camera views 
-#: Media/gui/Editor.layout:604 ..Editor.Terrain.Collision.Check
-#: Media/gui/Editor_Options.layout:609 ..Options.Settings.View.Button
+#: Media/gui/Editor.layout:608 ..Editor.Terrain.Collision.Check
+#: Media/gui/Editor_Options.layout:664 ..Options.Settings.View.Button
 msgctxt "Right"
 msgid "Right"
 msgstr ""
 
 #. Settings  camera views 
-#: Media/gui/Editor.layout:608 ..Editor.Terrain.Collision.Check
-#: Media/gui/Editor_Options.layout:619 ..Options.Settings.View.Button
+#: Media/gui/Editor.layout:612 ..Editor.Terrain.Collision.Check
+#: Media/gui/Editor_Options.layout:674 ..Options.Settings.View.Button
 msgctxt "Front"
 msgid "Front"
 msgstr ""
 
 #. Settings  camera views 
-#: Media/gui/Editor.layout:612 ..Editor.Terrain.Collision.Check
-#: Media/gui/Editor_Options.layout:614 ..Options.Settings.View.Button
+#: Media/gui/Editor.layout:616 ..Editor.Terrain.Collision.Check
+#: Media/gui/Editor_Options.layout:669 ..Options.Settings.View.Button
 msgctxt "Back"
 msgid "Back"
 msgstr ""
 
 #. Settings  camera views 
-#: Media/gui/Editor_Options.layout:625 ..Options.Settings.View.Button
+#: Media/gui/Editor_Options.layout:680 ..Options.Settings.View.Button
 msgctxt "ViewFront"
 msgid "View Front"
 msgstr ""
 
 #. Settings  camera views 
-#: Media/gui/Editor_Options.layout:630 ..Options.Settings.View.Button
+#: Media/gui/Editor_Options.layout:685 ..Options.Settings.View.Button
 msgctxt "ViewLeft"
 msgid "View Left"
 msgstr ""
 
 #. Settings  camera views 
-#: Media/gui/Editor_Options.layout:635 ..Options.Settings.View.Button
+#: Media/gui/Editor_Options.layout:690 ..Options.Settings.View.Button
 msgctxt "ViewRight"
 msgid "View Right"
 msgstr ""
 
 #. Settings  camera views 
-#: Media/gui/Editor_Options.layout:640 ..Options.Settings.View.Button
+#: Media/gui/Editor_Options.layout:695 ..Options.Settings.View.Button
 msgctxt "ViewStart"
 msgid "View Start"
 msgstr ""
 
 #. Tweak 
-#: Media/gui/Game_Options.layout:1422 ..Options.Tweak.Tab
-#: :1447..Options.Tweak.Graphs.Check
+#: Media/gui/Game_Options.layout:1485 ..Options.Tweak.Tab
+#: :1510..Options.Tweak.Graphs.Check
 msgctxt "Graphs"
 msgid "Graphs"
 msgstr ""
 
 #. Tweak 
 #: Media/gui/Editor_Help.layout:247 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor_Options.layout:775 ..Options.Settings.Tab
-#: Media/gui/Game_Options.layout:1361 ..Options.Tab :1484..Options.Tweak.Tab
+#: Media/gui/Editor_Options.layout:847 ..Options.Settings.Tab
+#: Media/gui/Game_Options.layout:1411 ..Options.Tab :1547..Options.Tweak.Tab
 #: Media/gui/Game_Tweak.layout:5 ..Window
 msgctxt "Tweak"
 msgid "Tweak"
@@ -6154,9 +6225,9 @@ msgstr ""
 
 #. Tweak 
 #: Media/gui/Editor_Help.layout:254 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor_Options.layout:816 ..Options.Settings.Tweak.Button
+#: Media/gui/Editor_Options.layout:901 ..Options.Settings.Tweak.Button
 #: Media/gui/Game_Options.layout:318 ..Options.Input.Shortcuts.Text
-#: :1414..Options.Tweak.Other.Button Media/gui/MaterialEditor.layout:5 ..Window
+#: :1477..Options.Tweak.Other.Button Media/gui/MaterialEditor.layout:5 ..Window
 msgctxt "MaterialEditor"
 msgid "Material Editor"
 msgstr ""
@@ -6192,7 +6263,7 @@ msgstr ""
 #: Media/gui/Editor_Help.layout:45 ..Help.Input/help.Tab
 #: Media/gui/Editor_Options.layout:23 ..Options.Screen.Tab
 #: Media/gui/Game_Options.layout:24 :200..Options.Input.Tab
-#: :1170..Options.Sound.Tab Media/gui/MaterialEditor.layout:58
+#: :1220..Options.Sound.Tab Media/gui/MaterialEditor.layout:58
 #: ..MaterialEditor.Tab
 msgctxt "InputMain"
 msgid "Main"
@@ -6239,7 +6310,7 @@ msgstr ""
 
 #. Editor Input  Shortcuts 
 #: Media/gui/Editor_Help.layout:169 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor_Utils.layout:37 ..Window :56..Tab-close/openpickwindow.Text
+#: Media/gui/Editor_Utils.layout:51 ..Window :70..Tab-close/openpickwindow.Text
 msgctxt "InputPickTab"
 msgid "Tab - close/open pick window"
 msgstr ""
@@ -6423,7 +6494,7 @@ msgstr ""
 
 #. Terrain  brush  params 
 #: Media/gui/Editor_Help.layout:299 ..Help.Input/help.Terrain.Text
-#: Media/gui/Editor.layout:805 ..Editor.Terrain.Tab
+#: Media/gui/Editor.layout:809 ..Editor.Terrain.Tab
 msgctxt "InputBrushParams"
 msgid "Brush parameters"
 msgstr ""
@@ -6741,7 +6812,7 @@ msgstr ""
 
 #. Road  Input  tools
 #: Media/gui/Editor_Help.layout:351 ..Help.Input/help.Road1.Text
-#: Media/gui/Editor.layout:1177 ..Editor.Terrain.Tools.Button
+#: Media/gui/Editor.layout:1181 ..Editor.Terrain.Tools.Button
 msgctxt "InputRoadAlignTerrain"
 msgid "U - Align terrain to road (for selected segments)"
 msgstr ""
@@ -6856,7 +6927,7 @@ msgstr ""
 
 #. Fluids  Main 
 #: Media/gui/Editor_Help.layout:622 ..Help.Input/help.Tab
-#: Media/gui/Editor_Tools.layout:257 ..Window Media/gui/Editor_Track.layout:556
+#: Media/gui/Editor_Tools.layout:257 ..Window Media/gui/Editor_Track.layout:552
 #: ..Track.Tools.Button
 msgctxt "Fluids"
 msgid "Fluids"
@@ -6923,23 +6994,23 @@ msgstr ""
 
 #. Objects  Main 
 #: Media/gui/Editor_Help.layout:220 ..Help.Input/help.Shortcuts.Text
-#: :664..Help.Input/help.Tab Media/gui/Editor.layout:3437
-#: ..Editor.Vegetation.Tab Media/gui/Editor_Options.layout:523
+#: :664..Help.Input/help.Tab Media/gui/Editor.layout:3211
+#: ..Editor.Vegetation.Tab Media/gui/Editor_Options.layout:565
 #: ..Options.Graphics.Detail.Text Media/gui/Editor_Tools.layout:324 ..Window
-#: Media/gui/Editor_Track.layout:561 ..Track.Tools.Button
-#: Media/gui/Game_Options.layout:1036
+#: Media/gui/Editor_Track.layout:557 ..Track.Tools.Button
+#: Media/gui/Game_Options.layout:1071
 msgctxt "Objects"
 msgid "Objects"
 msgstr ""
 
 #. Objects  Main 
-#: Media/gui/Editor.layout:3439 ..Editor.Vegetation.Objects.Text
+#: Media/gui/Editor.layout:3213 ..Editor.Vegetation.Objects.Text
 msgctxt "ObjDynamic"
 msgid "Dynamic"
 msgstr ""
 
 #. Objects  Main 
-#: Media/gui/Editor.layout:3447 ..Editor.Vegetation.Objects.Text :3464
+#: Media/gui/Editor.layout:3221 ..Editor.Vegetation.Objects.Text :3238
 msgctxt "ObjStatic"
 msgid "Static"
 msgstr ""
@@ -6956,7 +7027,7 @@ msgid "Rocks"
 msgstr ""
 
 #. Objects  Main 
-#: Media/gui/Editor.layout:3455 ..Editor.Vegetation.Objects.Text :3464
+#: Media/gui/Editor.layout:3229 ..Editor.Vegetation.Objects.Text :3238
 msgctxt "Group"
 msgid "Group"
 msgstr ""
@@ -7301,7 +7372,7 @@ msgstr ""
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-0text"
-msgid "If you crashed or you're stuck, hold [Backspace] to move back in time."
+msgid "If you crashed or you're stuck, hold [Insert] to move back in time."
 msgstr ""
 
 #. TIP  Hints title+text  (in How To Play) 
@@ -7659,34 +7730,22 @@ msgstr ""
 
 #. TIP  Slider 
 #: Media/gui/Editor_Help.layout:152 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor.layout:1152 ..Editor.Terrain.Generator.Text
-#: Media/gui/Game_Options.layout:1253 ..Options.Sound.Main.Text
+#: Media/gui/Editor.layout:1156 ..Editor.Terrain.Generator.Text
+#: Media/gui/Game_Options.layout:1303 ..Options.Sound.Main.Text
 msgctxt "TipSliderReset"
 msgid "RMB on slider - reset to default value."
 msgstr ""
 
 #. TIP  Track 
-#: Media/gui/Editor_Options.layout:213 ..Options.Graphics.Button
+#: Media/gui/Editor_Options.layout:227 ..Options.Graphics.Button
 #: Media/gui/Editor_Track.layout:30 ..Track.Track.Button
 msgctxt "TipLoadTrkEditor"
 msgid "Load track (after change) or Reload current track."
 msgstr ""
 
 #. TIP  Track 
-#: Media/gui/Editor_Track.layout:34 ..Track.Track.Image
-msgctxt "TipTrkScreenEditor"
-msgid "In game screenshot for selected track."
-msgstr ""
-
-#. TIP  Track 
-#: Media/gui/Editor_Track.layout:37 ..Track.Track.Image :40
-msgctxt "TipMinimapScrnEditor"
-msgid "Minimap of selected track, view from top."
-msgstr ""
-
-#. TIP  Track 
 #: Media/gui/Editor_Track.layout:89 ..Track.Track.Edit
-#: :112:119..Track.Track.Image :757..Track.Warnings.Edit
+#: :112:119..Track.Track.Image :759..Track.Warnings.Edit
 msgctxt "TipTrackDescEditor"
 msgid "Track description text (click to edit)."
 msgstr ""
@@ -7731,60 +7790,60 @@ msgid "Sky material names."
 msgstr ""
 
 #. TIP  Sky  (leave tips for last) 
-#: Media/gui/Editor.layout:74 ..Editor.Sun.Sun.Text :83..Editor.Sun.Sun.Slider
-#: :87..Editor.Sun.Sun.Text
+#: Media/gui/Editor.layout:78 ..Editor.Sun.Sun.Text :87..Editor.Sun.Sun.Slider
+#: :91..Editor.Sun.Sun.Text
 msgctxt "TipSunDirPitch"
 msgid "Sun direction - pitch angle."
 msgstr ""
 
 #. TIP  Sky  (leave tips for last) 
-#: Media/gui/Editor.layout:79 ..Editor.Sun.Sun.Text :91..Editor.Sun.Sun.Slider
-#: :95..Editor.Sun.Sun.Text
+#: Media/gui/Editor.layout:83 ..Editor.Sun.Sun.Text :95..Editor.Sun.Sun.Slider
+#: :99..Editor.Sun.Sun.Text
 msgctxt "TipSunDirYaw"
 msgid "Sun direction - yaw angle."
 msgstr ""
 
 #. TIP  Sky  (leave tips for last) 
-#: Media/gui/Editor.layout:106 ..Editor.Sun.Sun.Text
+#: Media/gui/Editor.layout:110 ..Editor.Sun.Sun.Text
 msgctxt "TipSunAmbient"
 msgid ""
 "Sun light ambient (constant) color. R G B components 0 to 1 (eg. 0.4 0.4 0.4)"
 msgstr ""
 
 #. TIP  Sky  (leave tips for last) 
-#: Media/gui/Editor.layout:111 ..Editor.Sun.Sun.Text
+#: Media/gui/Editor.layout:115 ..Editor.Sun.Sun.Text
 msgctxt "TipSunDiffuse"
 msgid ""
 "Sun light diffuse (normal) color. R G B components 0 to 1 (eg. 0.9 0.9 0.9)"
 msgstr ""
 
 #. TIP  Sky  (leave tips for last) 
-#: Media/gui/Editor.layout:116 ..Editor.Sun.Sun.Text
+#: Media/gui/Editor.layout:120 ..Editor.Sun.Sun.Text
 msgctxt "TipSunSpecular"
 msgid ""
 "Sun light specular (shiny) color. R G B components 0 to 1 (eg. 0.6 0.6 0.6)"
 msgstr ""
 
 #. TIP  Fog 
-#: Media/gui/Editor.layout:211 ..Editor.Sun.Fog.Text
+#: Media/gui/Editor.layout:215 ..Editor.Sun.Fog.Text
 msgctxt "TipFogClr"
 msgid "Fog end color when looking under sun."
 msgstr ""
 
 #. TIP  Fog 
-#: Media/gui/Editor.layout:219 ..Editor.Sun.Fog.Text
+#: Media/gui/Editor.layout:223 ..Editor.Sun.Fog.Text
 msgctxt "TipFogClr2"
 msgid "Fog end color when looking away from sun."
 msgstr ""
 
 #. TIP  Fog 
-#: Media/gui/Editor.layout:259 ..Editor.Sun.Fog.Text
+#: Media/gui/Editor.layout:263 ..Editor.Sun.Fog.Text
 msgctxt "TipFogClrH"
 msgid "Fog color for height fog."
 msgstr ""
 
 #. TIP  Fog 
-#: Media/gui/Editor.layout:211 ..Editor.Sun.Fog.Text :219:259
+#: Media/gui/Editor.layout:215 ..Editor.Sun.Fog.Text :223:263
 msgctxt "TipFogClrRGBA"
 msgid ""
 "R G B A components 0 to 1 (eg. 0.7 0.8 0.9 1). Last can be used to lower "
@@ -7792,26 +7851,26 @@ msgid ""
 msgstr ""
 
 #. TIP  Fog 
-#: Media/gui/Editor.layout:228 ..Editor.Sun.Fog.Text
-#: :232..Editor.Sun.Fog.Slider :237..Editor.Sun.Fog.Edit
-#: :297..Editor.Sun.Fog.Text :301..Editor.Sun.Fog.Slider
-#: :305..Editor.Sun.Fog.Text
+#: Media/gui/Editor.layout:232 ..Editor.Sun.Fog.Text
+#: :236..Editor.Sun.Fog.Slider :241..Editor.Sun.Fog.Edit
+#: :301..Editor.Sun.Fog.Text :305..Editor.Sun.Fog.Slider
+#: :309..Editor.Sun.Fog.Text
 msgctxt "TipFogStartDist"
 msgid "Fog start distance [meters]."
 msgstr ""
 
 #. TIP  Fog 
-#: Media/gui/Editor.layout:243 ..Editor.Sun.Fog.Text
-#: :247..Editor.Sun.Fog.Slider :252..Editor.Sun.Fog.Edit
-#: :310..Editor.Sun.Fog.Text :314..Editor.Sun.Fog.Slider
-#: :318..Editor.Sun.Fog.Text
+#: Media/gui/Editor.layout:247 ..Editor.Sun.Fog.Text
+#: :251..Editor.Sun.Fog.Slider :256..Editor.Sun.Fog.Edit
+#: :314..Editor.Sun.Fog.Text :318..Editor.Sun.Fog.Slider
+#: :322..Editor.Sun.Fog.Text
 msgctxt "TipFogEndDist"
 msgid "Fog end distance [meters]."
 msgstr ""
 
 #. TIP  Fog 
-#: Media/gui/Editor.layout:268 ..Editor.Sun.Fog.Text
-#: :272..Editor.Sun.Fog.Slider :277..Editor.Sun.Fog.Edit
+#: Media/gui/Editor.layout:272 ..Editor.Sun.Fog.Text
+#: :276..Editor.Sun.Fog.Slider :281..Editor.Sun.Fog.Edit
 msgctxt "TipFogHStart"
 msgid ""
 "Height fog start height [meters] at which fog starts getting denser for "
@@ -7819,35 +7878,35 @@ msgid ""
 msgstr ""
 
 #. TIP  Fog 
-#: Media/gui/Editor.layout:282 ..Editor.Sun.Fog.Text
-#: :286..Editor.Sun.Fog.Slider :291..Editor.Sun.Fog.Edit
+#: Media/gui/Editor.layout:286 ..Editor.Sun.Fog.Text
+#: :290..Editor.Sun.Fog.Slider :295..Editor.Sun.Fog.Edit
 msgctxt "TipFogHSmooth"
 msgid "Height fog smooth distance [meters]."
 msgstr ""
 
 #. TIP  Weather 
-#: Media/gui/Editor.layout:149 ..Editor.Sun.Sun.Combo :177..Editor.Sun.Sun.Text
+#: Media/gui/Editor.layout:153 ..Editor.Sun.Sun.Combo :181..Editor.Sun.Sun.Text
 msgctxt "TipRainSnow1"
 msgid "Set 1 Rain/Snow type"
 msgstr ""
 
 #. TIP  Weather 
-#: Media/gui/Editor.layout:156 ..Editor.Sun.Sun.Combo :182..Editor.Sun.Sun.Text
+#: Media/gui/Editor.layout:160 ..Editor.Sun.Sun.Combo :186..Editor.Sun.Sun.Text
 msgctxt "TipRainSnow2"
 msgid "Set 2 Rain/Snow type"
 msgstr ""
 
 #. TIP  Weather 
-#: Media/gui/Editor.layout:160 ..Editor.Sun.Sun.Text
-#: :164..Editor.Sun.Sun.Slider :168..Editor.Sun.Sun.Text
-#: :172..Editor.Sun.Sun.Slider :187..Editor.Sun.Sun.Text :192
+#: Media/gui/Editor.layout:164 ..Editor.Sun.Sun.Text
+#: :168..Editor.Sun.Sun.Slider :172..Editor.Sun.Sun.Text
+#: :176..Editor.Sun.Sun.Slider :191..Editor.Sun.Sun.Text :196
 msgctxt "TipRainSnowInt"
 msgid "Rain/Snow intensity (eg. 1000)"
 msgstr ""
 
 #. TIP  Terrain 
-#: Media/gui/Editor.layout:428 ..Editor.Terrain.Size.Text
-#: :432..Editor.Terrain.Size.Slider :437..Editor.Terrain.Size.Edit
+#: Media/gui/Editor.layout:432 ..Editor.Terrain.Size.Text
+#: :436..Editor.Terrain.Size.Slider :441..Editor.Terrain.Size.Edit
 msgctxt "TipTerTriSize"
 msgid ""
 "Terrain triangle size in [meters] (recommended: 1 - 2, use more for big "
@@ -7855,7 +7914,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Terrain 
-#: Media/gui/Editor.layout:442 ..Editor.Terrain.Size.Text :446
+#: Media/gui/Editor.layout:446 ..Editor.Terrain.Size.Text :450
 msgctxt "TipTerSize"
 msgid ""
 "Resulting area in meters (side length). Equals vertex count multipled by "
@@ -7869,8 +7928,8 @@ msgid ""
 msgstr ""
 
 #. TIP  Terrain 
-#: Media/gui/Editor.layout:559 ..Editor.Terrain.Light.Text
-#: :564..Editor.Terrain.Light.Edit :568..Editor.Terrain.Light.Slider
+#: Media/gui/Editor.layout:563 ..Editor.Terrain.Light.Text
+#: :568..Editor.Terrain.Light.Edit :572..Editor.Terrain.Light.Slider
 msgctxt "TipTerNormScale"
 msgid ""
 "Use if needed to scale terrain texture normals, for lighting. Otherwise "
@@ -7878,13 +7937,13 @@ msgid ""
 msgstr ""
 
 #. TIP  Terrain  New Hmap 
-#: Media/gui/Editor.layout:454 ..Editor.Terrain.Size.Button
+#: Media/gui/Editor.layout:458 ..Editor.Terrain.Size.Button
 msgctxt "TipNewTerrainFlat"
 msgid "Create new, flat terrain."
 msgstr ""
 
 #. TIP  Terrain  New Hmap 
-#: Media/gui/Editor.layout:943 ..Editor.Terrain.Generator.Text
+#: Media/gui/Editor.layout:947 ..Editor.Terrain.Generator.Text
 msgctxt "TipTerrainGenerate"
 msgid "Generates new terrain from noise functions using all parameters below."
 msgstr ""
@@ -7896,46 +7955,46 @@ msgid "shift-LMB - on Brushes, pick only shape (don't change mode)."
 msgstr ""
 
 #. TIP  Terrain  tools 
-#: Media/gui/Editor.layout:1252 ..Editor.Terrain.Tools.Button
+#: Media/gui/Editor.layout:1256 ..Editor.Terrain.Tools.Button
 msgctxt "TipTerrainHalf"
 msgid ""
 "Resize current terrain heightmap by half (use only for reducing file size)."
 msgstr ""
 
 #. TIP  Terrain  tools 
-#: Media/gui/Editor.layout:1259 ..Editor.Terrain.Tools.Button
+#: Media/gui/Editor.layout:1263 ..Editor.Terrain.Tools.Button
 msgctxt "TipTerrainDouble"
 msgid "Make terrain size double, leaving current heightmap part in center."
 msgstr ""
 
 #. TIP  Terrain  tools 
-#: Media/gui/Editor.layout:1268 ..Editor.Terrain.Tools.Button
+#: Media/gui/Editor.layout:1272 ..Editor.Terrain.Tools.Button
 msgctxt "TipTerrainMove"
 msgid "Move terrain."
 msgstr ""
 
 #. TIP  Terrain  Layers 
-#: Media/gui/Editor.layout:1360 ..Editor.Layers.Check
+#: Media/gui/Editor.layout:1364 ..Editor.Layers.Check
 msgctxt "TipToggleLayer"
 msgid "Turn on/off chosen texture layer."
 msgstr ""
 
 #. TIP  Terrain  Layers 
-#: Media/gui/Editor.layout:380 ..Editor.Terrain.TabC :1327..Editor.Layers.Text
-#: :1346:1372..Editor.Layers.TabC :1396..Editor.Layers.ProgressBar
+#: Media/gui/Editor.layout:384 ..Editor.Terrain.TabC :1331..Editor.Layers.Text
+#: :1350:1376..Editor.Layers.TabC :1400..Editor.Layers.ProgressBar
 msgctxt "TipTerLayers"
 msgid ""
 "Recommended use 3 or 4, with noise. Affects Fps. More than 4 will not work."
 msgstr ""
 
 #. TIP  Terrain  Layers 
-#: Media/gui/Editor.layout:1366 ..Editor.Layers.Check
+#: Media/gui/Editor.layout:1370 ..Editor.Layers.Check
 msgctxt "TipToggleTriplanar"
 msgid "Use for steep or mountain layers, max use is 2."
 msgstr ""
 
 #. TIP  Terrain  Layers 
-#: Media/gui/Editor.layout:1353 ..Editor.Layers.Text
+#: Media/gui/Editor.layout:1357 ..Editor.Layers.Text
 msgctxt "TipTerTripl"
 msgid ""
 "When using graphics option triplanar max 2, this layer will have triplanar "
@@ -7943,8 +8002,8 @@ msgid ""
 msgstr ""
 
 #. TIP  Terrain  Layers 
-#: Media/gui/Editor.layout:388 ..Editor.Terrain.Size.Text
-#: :393..Editor.Terrain.Size.TabC :417..Editor.Terrain.Size.ProgressBar
+#: Media/gui/Editor.layout:392 ..Editor.Terrain.Size.Text
+#: :397..Editor.Terrain.Size.TabC :421..Editor.Terrain.Size.ProgressBar
 msgctxt "TipTerVertCount"
 msgid ""
 "Terrain vertex count on one side (squares). Apply with buttons [New Flat] or "
@@ -7952,26 +8011,26 @@ msgid ""
 msgstr ""
 
 #. TIP  Terrain  Layers 
-#: Media/gui/Editor.layout:1399 ..Editor.Layers.Image
+#: Media/gui/Editor.layout:1403 ..Editor.Layers.Image
 msgctxt "TipDiffusePrev"
 msgid "Diffuse texture preview image."
 msgstr ""
 
 #. TIP  Terrain  Layers 
-#: Media/gui/Editor.layout:1406 ..Editor.Layers.Button
-#: :1411..Editor.Layers.Text
+#: Media/gui/Editor.layout:1410 ..Editor.Layers.Button
+#: :1415..Editor.Layers.Text
 msgctxt "TipDiffuseTex"
 msgid "Diffuse texture (Specular in alpha)."
 msgstr ""
 
 #. TIP  Terrain  Layers 
-#: Media/gui/Editor.layout:1417 ..Editor.Layers.Text :1425..Editor.Layers.Combo
+#: Media/gui/Editor.layout:1421 ..Editor.Layers.Text :1429..Editor.Layers.Combo
 msgctxt "TipNormalTex"
 msgid "Normal texture (Height in alpha)."
 msgstr ""
 
 #. TIP  Terrain  Layers 
-#: Media/gui/Editor.layout:1432 ..Editor.Layers.Check
+#: Media/gui/Editor.layout:1436 ..Editor.Layers.Check
 msgctxt "TipTexNormAuto"
 msgid ""
 "When checked, Normal texture is automatically set from Diffuse texture (+ "
@@ -7979,87 +8038,87 @@ msgid ""
 msgstr ""
 
 #. TIP  Terrain  Layers 
-#: Media/gui/Editor.layout:1437 ..Editor.Layers.Text :1442..Editor.Layers.Edit
-#: :1446..Editor.Layers.Slider
+#: Media/gui/Editor.layout:1441 ..Editor.Layers.Text :1446..Editor.Layers.Edit
+#: :1450..Editor.Layers.Slider
 msgctxt "TipTexTiling"
 msgid "Texture tiling length (less means more repeats)."
 msgstr ""
 
 #. TIP  Terrain  Layers 
-#: Media/gui/Editor.layout:1333 ..Editor.Layers.Button :1339
+#: Media/gui/Editor.layout:1337 ..Editor.Layers.Button :1343
 msgctxt "TipTerLMove"
 msgid "Move layer, changes order."
 msgstr ""
 
 #. TIP  Terrain  blendmap 
-#: Media/gui/Editor.layout:1072 ..Editor.Terrain.Generator.Text
-#: :1076:1080..Editor.Terrain.Generator.Slider
-#: :1474..Editor.Layers.Blendmap.Blendmap.Text
-#: :1478:1482..Editor.Layers.Blendmap.Blendmap.Slider
+#: Media/gui/Editor.layout:1076 ..Editor.Terrain.Generator.Text
+#: :1080:1084..Editor.Terrain.Generator.Slider
+#: :1478..Editor.Layers.Blendmap.Blendmap.Text
+#: :1482:1486..Editor.Layers.Blendmap.Blendmap.Slider
 msgctxt "TipTerLAngMin"
 msgid "Starting terrain angle for layer."
 msgstr ""
 
 #. TIP  Terrain  blendmap 
-#: Media/gui/Editor.layout:1085 ..Editor.Terrain.Generator.Text
-#: :1089:1093..Editor.Terrain.Generator.Slider
-#: :1487..Editor.Layers.Blendmap.Blendmap.Text
-#: :1491:1495..Editor.Layers.Blendmap.Blendmap.Slider
+#: Media/gui/Editor.layout:1089 ..Editor.Terrain.Generator.Text
+#: :1093:1097..Editor.Terrain.Generator.Slider
+#: :1491..Editor.Layers.Blendmap.Blendmap.Text
+#: :1495:1499..Editor.Layers.Blendmap.Blendmap.Slider
 msgctxt "TipTerLAngMax"
 msgid "Ending terrain angle for layer."
 msgstr ""
 
 #. TIP  Terrain  blendmap 
-#: Media/gui/Editor.layout:1098 ..Editor.Terrain.Generator.Text
-#: :1102:1106..Editor.Terrain.Generator.Slider
-#: :1500..Editor.Layers.Blendmap.Blendmap.Text
-#: :1504:1508..Editor.Layers.Blendmap.Blendmap.Slider
-#: :2138..Editor.Grasses.Channels.Text :2143..Editor.Grasses.Channels.Edit
-#: :2147..Editor.Grasses.Channels.Slider
+#: Media/gui/Editor.layout:1102 ..Editor.Terrain.Generator.Text
+#: :1106:1110..Editor.Terrain.Generator.Slider
+#: :1504..Editor.Layers.Blendmap.Blendmap.Text
+#: :1508:1512..Editor.Layers.Blendmap.Blendmap.Slider
+#: :2149..Editor.Grasses.Channels.Text :2154..Editor.Grasses.Channels.Edit
+#: :2158..Editor.Grasses.Channels.Slider
 msgctxt "TipTerLAngSm"
 msgid "Angle smooth range (transition)."
 msgstr ""
 
 #. TIP  Terrain  blendmap 
-#: Media/gui/Editor.layout:1112 ..Editor.Terrain.Generator.Text
-#: :1117..Editor.Terrain.Generator.Edit :1121..Editor.Terrain.Generator.Slider
-#: :1513..Editor.Layers.Blendmap.Blendmap.Text
-#: :1518..Editor.Layers.Blendmap.Blendmap.Edit
-#: :1522..Editor.Layers.Blendmap.Blendmap.Slider
+#: Media/gui/Editor.layout:1116 ..Editor.Terrain.Generator.Text
+#: :1121..Editor.Terrain.Generator.Edit :1125..Editor.Terrain.Generator.Slider
+#: :1517..Editor.Layers.Blendmap.Blendmap.Text
+#: :1522..Editor.Layers.Blendmap.Blendmap.Edit
+#: :1526..Editor.Layers.Blendmap.Blendmap.Slider
 msgctxt "TipTerLHMin"
 msgid "Starting terrain height for layer."
 msgstr ""
 
 #. TIP  Terrain  blendmap 
-#: Media/gui/Editor.layout:1126 ..Editor.Terrain.Generator.Text
-#: :1131..Editor.Terrain.Generator.Edit :1135..Editor.Terrain.Generator.Slider
-#: :1527..Editor.Layers.Blendmap.Blendmap.Text
-#: :1532..Editor.Layers.Blendmap.Blendmap.Edit
-#: :1536..Editor.Layers.Blendmap.Blendmap.Slider
+#: Media/gui/Editor.layout:1130 ..Editor.Terrain.Generator.Text
+#: :1135..Editor.Terrain.Generator.Edit :1139..Editor.Terrain.Generator.Slider
+#: :1531..Editor.Layers.Blendmap.Blendmap.Text
+#: :1536..Editor.Layers.Blendmap.Blendmap.Edit
+#: :1540..Editor.Layers.Blendmap.Blendmap.Slider
 msgctxt "TipTerLHMax"
 msgid "Ending terrain height for layer."
 msgstr ""
 
 #. TIP  Terrain  blendmap 
-#: Media/gui/Editor.layout:1140 ..Editor.Terrain.Generator.Text
-#: :1144:1148..Editor.Terrain.Generator.Slider
-#: :1541..Editor.Layers.Blendmap.Blendmap.Text
-#: :1545..Editor.Layers.Blendmap.Blendmap.Edit
-#: :1549..Editor.Layers.Blendmap.Blendmap.Slider
-#: :2183..Editor.Grasses.Channels.Text :2188..Editor.Grasses.Channels.Edit
-#: :2193..Editor.Grasses.Channels.Slider
+#: Media/gui/Editor.layout:1144 ..Editor.Terrain.Generator.Text
+#: :1148:1152..Editor.Terrain.Generator.Slider
+#: :1545..Editor.Layers.Blendmap.Blendmap.Text
+#: :1549..Editor.Layers.Blendmap.Blendmap.Edit
+#: :1553..Editor.Layers.Blendmap.Blendmap.Slider
+#: :2194..Editor.Grasses.Channels.Text :2199..Editor.Grasses.Channels.Edit
+#: :2204..Editor.Grasses.Channels.Slider
 msgctxt "TipTerLHSm"
 msgid "Height smooth range (transition)."
 msgstr ""
 
 #. TIP  Terrain  blendmap 
-#: Media/gui/Editor.layout:1555 ..Editor.Layers.Blendmap.Blendmap.Text
-#: :1559:1563..Editor.Layers.Blendmap.Blendmap.Slider
-#: :1569..Editor.Layers.Blendmap.Blendmap.Text
-#: :1573:1577..Editor.Layers.Blendmap.Blendmap.Slider
-#: :1583..Editor.Layers.Blendmap.Blendmap.Text
-#: :1587:1591..Editor.Layers.Blendmap.Blendmap.Slider
-#: :1669..Editor.Layers.Blendmap.Noise.ProgressBar
+#: Media/gui/Editor.layout:1560 ..Editor.Layers.Blendmap.Blendmap.Text
+#: :1564:1568..Editor.Layers.Blendmap.Blendmap.Slider
+#: :1574..Editor.Layers.Blendmap.Blendmap.Text
+#: :1578:1582..Editor.Layers.Blendmap.Blendmap.Slider
+#: :1588..Editor.Layers.Blendmap.Blendmap.Text
+#: :1592:1596..Editor.Layers.Blendmap.Blendmap.Slider
+#: :1674..Editor.Layers.Blendmap.Noise.ProgressBar
 msgctxt "TipTerLNoise"
 msgid ""
 "Multiplier for additional noise. +1 blends to next used layer, -1 to "
@@ -8067,7 +8126,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Terrain  blendmap 
-#: Media/gui/Editor.layout:1597 ..Editor.Layers.Blendmap.Blendmap.Check
+#: Media/gui/Editor.layout:1602 ..Editor.Layers.Blendmap.Blendmap.Check
 msgctxt "TipTerNoiseOnly"
 msgid ""
 "Will ignore terrain angle and height ranges. Layer will only appear, if "
@@ -8075,7 +8134,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Terrain  blendmap 
-#: Media/gui/Editor.layout:1452 ..Editor.Layers.Check
+#: Media/gui/Editor.layout:1456 ..Editor.Layers.Check
 msgctxt "TipTestBlendmap"
 msgid ""
 "Use to test blendmap clarity. The color box shows this layer's color on "
@@ -8085,53 +8144,53 @@ msgid ""
 msgstr ""
 
 #. TIP  Terrain  particles 
-#: Media/gui/Editor.layout:2661 ..Editor.Vegetation.Surface.Surface.Edit
-#: :2684..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2673 ..Editor.Vegetation.Surface.Surface.Edit
+#: :2696..Editor.Vegetation.Surface.Surface.Text
 msgctxt "TipDustInt"
 msgid "Dust particles intensity."
 msgstr ""
 
 #. TIP  Terrain  particles 
-#: Media/gui/Editor.layout:2666 ..Editor.Vegetation.Surface.Surface.Edit
-#: :2689..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2678 ..Editor.Vegetation.Surface.Surface.Edit
+#: :2701..Editor.Vegetation.Surface.Surface.Text
 msgctxt "TipDustSize"
 msgid "Dust particles size."
 msgstr ""
 
 #. TIP  Terrain  particles 
-#: Media/gui/Editor.layout:2671 ..Editor.Vegetation.Surface.Surface.Edit
-#: :2694..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2683 ..Editor.Vegetation.Surface.Surface.Edit
+#: :2706..Editor.Vegetation.Surface.Surface.Text
 msgctxt "TipMudInt"
 msgid "Mud particles intensity."
 msgstr ""
 
 #. TIP  Terrain  particles 
-#: Media/gui/Editor.layout:2676 ..Editor.Vegetation.Surface.Surface.Edit
-#: :2699..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2688 ..Editor.Vegetation.Surface.Surface.Edit
+#: :2711..Editor.Vegetation.Surface.Surface.Text
 msgctxt "TipSmokeInt"
 msgid "Smoke particles intensity."
 msgstr ""
 
 #. TIP  Terrain  particles 
-#: Media/gui/Editor.layout:2704 ..Editor.Vegetation.Surface.Surface.Text
+#: Media/gui/Editor.layout:2716 ..Editor.Vegetation.Surface.Surface.Text
 msgctxt "TipTrailClr"
 msgid "Tire trails color. R G B A components 0 to 1 (eg. 0.4 0.4 0.2 0.6)"
 msgstr ""
 
 #. TIP  Terrain  particles 
-#: Media/gui/Editor.layout:2711 ..Editor.Vegetation.Surface.Surface.Combo
+#: Media/gui/Editor.layout:2723 ..Editor.Vegetation.Surface.Surface.Combo
 msgctxt "TipParType1"
 msgid "Tire Particle type 1 (global for track)."
 msgstr ""
 
 #. TIP  Terrain  particles 
-#: Media/gui/Editor.layout:2718 ..Editor.Vegetation.Surface.Surface.Combo
+#: Media/gui/Editor.layout:2730 ..Editor.Vegetation.Surface.Surface.Combo
 msgctxt "TipParType2"
 msgid "Tire Particle type 2 (global for track)."
 msgstr ""
 
 #. TIP  Terrain  particles 
-#: Media/gui/Editor.layout:2725 ..Editor.Vegetation.Surface.Surface.Combo
+#: Media/gui/Editor.layout:2737 ..Editor.Vegetation.Surface.Surface.Combo
 msgctxt "TipParType3"
 msgid "Tire Particle type 3 (global for track)."
 msgstr ""
@@ -8142,30 +8201,30 @@ msgid "Tire Particle type 3."
 msgstr ""
 
 #. TIP  Terrain  surface 
-#: Media/gui/Editor.layout:2751 ..Editor.Vegetation.Surface.Surface.Text :2784
+#: Media/gui/Editor.layout:2763 ..Editor.Vegetation.Surface.Surface.Text :2796
 #: Media/gui/Game_Tweak.layout:325 ..Tweak.Surface.Text :332:350:357
 msgctxt "TipBumpFreq"
 msgid "Frequency of additional bumps on surface (distance between them)."
 msgstr ""
 
 #. TIP  Terrain  surface 
-#: Media/gui/Editor.layout:2755 ..Editor.Vegetation.Surface.Surface.Text :2789
+#: Media/gui/Editor.layout:2767 ..Editor.Vegetation.Surface.Surface.Text :2801
 #: Media/gui/Game_Tweak.layout:338 ..Tweak.Surface.Text :345:362:369
 msgctxt "TipBumpAmp"
 msgid "Amplitude of additional bumps on surface (how high)."
 msgstr ""
 
 #. TIP  Terrain  surface 
-#: Media/gui/Editor.layout:2740 ..Editor.Vegetation.Surface.Surface.Text
-#: :2747..Editor.Vegetation.Surface.Surface.Combo
-#: :2760..Editor.Vegetation.Surface.Surface.Text :2764
+#: Media/gui/Editor.layout:2752 ..Editor.Vegetation.Surface.Surface.Text
+#: :2759..Editor.Vegetation.Surface.Surface.Combo
+#: :2772..Editor.Vegetation.Surface.Surface.Text :2776
 #: Media/gui/Game_Tweak.layout:404 ..Tweak.Surface.Text
 msgctxt "TipSurfType"
 msgid "Type of surface, determines sound."
 msgstr ""
 
 #. TIP  Terrain  surface 
-#: Media/gui/Editor.layout:2775 ..Editor.Vegetation.Surface.Surface.Text :2799
+#: Media/gui/Editor.layout:2787 ..Editor.Vegetation.Surface.Surface.Text :2811
 #: Media/gui/Game_Tweak.layout:374 ..Tweak.Surface.Text :381
 msgctxt "TipRollDrag"
 msgid ""
@@ -8174,54 +8233,54 @@ msgid ""
 msgstr ""
 
 #. TIP  Terrain  surface 
-#: Media/gui/Editor.layout:2779 ..Editor.Vegetation.Surface.Surface.Text :2794
+#: Media/gui/Editor.layout:2791 ..Editor.Vegetation.Surface.Surface.Text :2806
 #: Media/gui/Game_Tweak.layout:288 ..Tweak.Surface.Text :295:300:307:312:319
 msgctxt "TipSurfFrict"
 msgid "Surface friction (eg. 1.0 asphalt, 0.7 gravel, 0.5 ice)."
 msgstr ""
 
 #. TIP  Vegetation 
-#: Media/gui/Editor.layout:1787 ..Editor.Grasses.Properties.Text
-#: :1791..Editor.Grasses.Properties.Slider
-#: :1797..Editor.Grasses.Properties.Edit
+#: Media/gui/Editor.layout:1792 ..Editor.Grasses.Properties.Text
+#: :1796..Editor.Grasses.Properties.Slider
+#: :1802..Editor.Grasses.Properties.Edit
 msgctxt "TipGrassDens"
 msgid "How dense/rare will the grass be on terrain."
 msgstr ""
 
 #. TIP  Vegetation 
-#: Media/gui/Editor.layout:2284 ..Editor.Vegetation.Properties.Text
-#: :2288..Editor.Vegetation.Properties.Slider
-#: :2294..Editor.Vegetation.Properties.Edit
+#: Media/gui/Editor.layout:2295 ..Editor.Vegetation.Properties.Text
+#: :2299..Editor.Vegetation.Properties.Slider
+#: :2305..Editor.Vegetation.Properties.Edit
 msgctxt "TipTreeDens"
 msgid "How many models (trees, rocks, etc.) will be on track."
 msgstr ""
 
 #. TIP  Vegetation 
-#: Media/gui/Editor.layout:2332 ..Editor.Vegetation.Properties.Text
-#: :2336..Editor.Vegetation.Properties.Slider
-#: :2341..Editor.Vegetation.Properties.Edit
+#: Media/gui/Editor.layout:2343 ..Editor.Vegetation.Properties.Text
+#: :2347..Editor.Vegetation.Properties.Slider
+#: :2352..Editor.Vegetation.Properties.Edit
 msgctxt "TipModelRoadDist"
 msgid "Distance from road to models (global, added to each model's own value)."
 msgstr ""
 
 #. TIP  Vegetation 
-#: Media/gui/Editor.layout:2321 ..Editor.Vegetation.Properties.Text
-#: :2326..Editor.Vegetation.Properties.Edit
+#: Media/gui/Editor.layout:2332 ..Editor.Vegetation.Properties.Text
+#: :2337..Editor.Vegetation.Properties.Edit
 msgctxt "TipImpDist"
 msgid "Far distance at which the 2d impostors dissapear."
 msgstr ""
 
 #. TIP  Vegetation  page,vis 
-#: Media/gui/Editor.layout:1803 ..Editor.Grasses.Properties.Text
-#: :1813..Editor.Grasses.Properties.Edit
+#: Media/gui/Editor.layout:1808 ..Editor.Grasses.Properties.Text
+#: :1818..Editor.Grasses.Properties.Edit
 msgctxt "TipGrassPageLength"
 msgid ""
 "Grass Page length (low will reload often, high will cause visible switching)."
 msgstr ""
 
 #. TIP  Vegetation  page,vis 
-#: Media/gui/Editor.layout:2300 ..Editor.Vegetation.Properties.Text
-#: :2310..Editor.Vegetation.Properties.Edit
+#: Media/gui/Editor.layout:2311 ..Editor.Vegetation.Properties.Text
+#: :2321..Editor.Vegetation.Properties.Edit
 msgctxt "TipModelPageLength"
 msgid ""
 "Models Page length (low will reload often and make too many batches, high "
@@ -8229,24 +8288,24 @@ msgid ""
 msgstr ""
 
 #. TIP  Vegetation  page,vis 
-#: Media/gui/Editor.layout:1808 ..Editor.Grasses.Properties.Text
-#: :1818..Editor.Grasses.Properties.Edit
+#: Media/gui/Editor.layout:1813 ..Editor.Grasses.Properties.Text
+#: :1823..Editor.Grasses.Properties.Edit
 msgctxt "TipGrassVisDist"
 msgid "Visibility distance for grass pages."
 msgstr ""
 
 #. TIP  Vegetation  page,vis 
-#: Media/gui/Editor.layout:2305 ..Editor.Vegetation.Properties.Text
-#: :2315..Editor.Vegetation.Properties.Edit
+#: Media/gui/Editor.layout:2316 ..Editor.Vegetation.Properties.Text
+#: :2326..Editor.Vegetation.Properties.Edit
 msgctxt "TipModelVisDist"
 msgid ""
 "Visibility distance for 3d models, after this they turn into 2d impostors."
 msgstr ""
 
 #. TIP  Grass 
-#: Media/gui/Editor.layout:1859 ..Editor.Grasses.Properties.Text
-#: :1863..Editor.Grasses.Properties.Slider
-#: :1868..Editor.Grasses.Properties.Edit
+#: Media/gui/Editor.layout:1864 ..Editor.Grasses.Properties.Text
+#: :1868..Editor.Grasses.Properties.Slider
+#: :1873..Editor.Grasses.Properties.Edit
 msgctxt "TipGrDensSmooth"
 msgid ""
 "Grass density map - smooth size. Higher will make a smoother transition from "
@@ -8254,55 +8313,55 @@ msgid ""
 msgstr ""
 
 #. TIP  Grass 
-#: Media/gui/Editor.layout:1947 ..Editor.Grasses.Grasses.Text
-#: :1951..Editor.Grasses.Grasses.Slider :1956..Editor.Grasses.Grasses.Text
-#: :1966..Editor.Grasses.Grasses.Slider :1994:2009
+#: Media/gui/Editor.layout:1969 ..Editor.Grasses.Grasses.Text
+#: :1973..Editor.Grasses.Grasses.Slider :1978..Editor.Grasses.Grasses.Text
+#: :1988..Editor.Grasses.Grasses.Slider :2016:2031
 msgctxt "TipGrassPatchLengthMin"
 msgid "Minimal grass patch length."
 msgstr ""
 
 #. TIP  Grass 
-#: Media/gui/Editor.layout:1962 ..Editor.Grasses.Grasses.Text :1971
+#: Media/gui/Editor.layout:1984 ..Editor.Grasses.Grasses.Text :1993
 msgctxt "TipGrassPatchLengthMax"
 msgid "Maximal grass patch length."
 msgstr ""
 
 #. TIP  Grass 
-#: Media/gui/Editor.layout:1990 ..Editor.Grasses.Grasses.Text :1999
+#: Media/gui/Editor.layout:2012 ..Editor.Grasses.Grasses.Text :2021
 msgctxt "TipGrassPatchHeightMin"
 msgid "Minimal grass patch height."
 msgstr ""
 
 #. TIP  Grass 
-#: Media/gui/Editor.layout:2005 ..Editor.Grasses.Grasses.Text :2014
+#: Media/gui/Editor.layout:2027 ..Editor.Grasses.Grasses.Text :2036
 msgctxt "TipGrassPatchHeightMax"
 msgid "Maximal grass patch height."
 msgstr ""
 
 #. TIP  Grass  sway 
-#: Media/gui/Editor.layout:1833 ..Editor.Grasses.Properties.Text
-#: :1843..Editor.Grasses.Properties.Edit
+#: Media/gui/Editor.layout:1838 ..Editor.Grasses.Properties.Text
+#: :1848..Editor.Grasses.Properties.Edit
 msgctxt "TipGrassSwayLen"
 msgid "Grass sway effect length (scale)."
 msgstr ""
 
 #. TIP  Grass  sway 
-#: Media/gui/Editor.layout:1838 ..Editor.Grasses.Properties.Text
-#: :1848..Editor.Grasses.Properties.Edit
+#: Media/gui/Editor.layout:1843 ..Editor.Grasses.Properties.Text
+#: :1853..Editor.Grasses.Properties.Edit
 msgctxt "TipGrassSwaySpd"
 msgid "Grass sway effect speed."
 msgstr ""
 
 #. TIP  Grass  sway 
-#: Media/gui/Editor.layout:1828 ..Editor.Grasses.Properties.Text
-#: :1853..Editor.Grasses.Properties.Edit
+#: Media/gui/Editor.layout:1833 ..Editor.Grasses.Properties.Text
+#: :1858..Editor.Grasses.Properties.Edit
 msgctxt "TipGrassSwayDistr"
 msgid "Grass sway effect distribution (how random)."
 msgstr ""
 
 #. TIP  Grass  terrain 
-#: Media/gui/Editor.layout:2123 ..Editor.Grasses.Channels.Text
-#: :2128..Editor.Grasses.Channels.Edit :2132..Editor.Grasses.Channels.Slider
+#: Media/gui/Editor.layout:2134 ..Editor.Grasses.Channels.Text
+#: :2139..Editor.Grasses.Channels.Edit :2143..Editor.Grasses.Channels.Slider
 msgctxt "TipGrTerMaxAngle"
 msgid ""
 "Terrain angle above which there won't be any grass (starts fading out, for "
@@ -8310,8 +8369,8 @@ msgid ""
 msgstr ""
 
 #. TIP  Grass  terrain 
-#: Media/gui/Editor.layout:2153 ..Editor.Grasses.Channels.Text
-#: :2158..Editor.Grasses.Channels.Edit :2162..Editor.Grasses.Channels.Slider
+#: Media/gui/Editor.layout:2164 ..Editor.Grasses.Channels.Text
+#: :2169..Editor.Grasses.Channels.Edit :2173..Editor.Grasses.Channels.Slider
 msgctxt "TipGrTerMinHeight"
 msgid ""
 "Terrain height below which there won't be any grass (starts fading out, for "
@@ -8319,8 +8378,8 @@ msgid ""
 msgstr ""
 
 #. TIP  Grass  terrain 
-#: Media/gui/Editor.layout:2168 ..Editor.Grasses.Channels.Text
-#: :2173..Editor.Grasses.Channels.Edit :2177..Editor.Grasses.Channels.Slider
+#: Media/gui/Editor.layout:2179 ..Editor.Grasses.Channels.Text
+#: :2184..Editor.Grasses.Channels.Edit :2188..Editor.Grasses.Channels.Slider
 msgctxt "TipGrTerMaxHeight"
 msgid ""
 "Terrain height above which there won't be any grass (starts fading out, for "
@@ -8328,15 +8387,14 @@ msgid ""
 msgstr ""
 
 #. TIP  Grass  terrain 
-#: Media/gui/Editor.layout:2020 ..Editor.Grasses.Grasses.Text
-#: :2027..Editor.Grasses.Grasses.Button
+#: Media/gui/Editor.layout:2042 ..Editor.Grasses.Grasses.Text
+#: :2049..Editor.Grasses.Grasses.Button
 msgctxt "TipGrassMaterial"
 msgid "Grass material (type) for this layer, chosen to match track's scenery."
 msgstr ""
 
 #. TIP  Grass  terrain 
-#: Media/gui/Editor.layout:1925 ..Editor.Grasses.Grasses.Image
-#: :2035..Editor.Grasses.Grasses.Combo :2040..Editor.Grasses.Grasses.Text
+#: Media/gui/Editor.layout:1943 ..Editor.Grasses.Grasses.Text
 msgctxt "TipGrassColorMap"
 msgid ""
 "Grass colormap for scenery, usually same choice as for grass material. "
@@ -8344,58 +8402,58 @@ msgid ""
 msgstr ""
 
 #. TIP  Grass  terrain 
-#: Media/gui/Editor.layout:1918 ..Editor.Grasses.Grasses.ProgressBar
-#: :1937..Editor.Grasses.Grasses.Text
-#: :2097..Editor.Grasses.Channels.ProgressBar
+#: Media/gui/Editor.layout:1925 ..Editor.Grasses.Grasses.ProgressBar
+#: :1959..Editor.Grasses.Grasses.Text
+#: :2108..Editor.Grasses.Channels.ProgressBar
 msgctxt "TipGrassLayers"
 msgid "Grass layers. Recommended use 1-4."
 msgstr ""
 
 #. TIP  Grass  terrain 
-#: Media/gui/Editor.layout:1922 ..Editor.Grasses.Grasses.Image
+#: Media/gui/Editor.layout:1937 ..Editor.Grasses.Grasses.Image
 msgctxt "TipGrassPrev"
 msgid "Preview image of this grass layer (changed with material)."
 msgstr ""
 
 #. TIP  Grass  terrain 
-#: Media/gui/Editor.layout:1932 ..Editor.Grasses.Grasses.Check
+#: Media/gui/Editor.layout:1954 ..Editor.Grasses.Grasses.Check
 msgctxt "TipToggleGrass"
 msgid "Enable or disable this grass layer."
 msgstr ""
 
 #. TIP  Grass  terrain 
-#: Media/gui/Editor.layout:2046 ..Editor.Grasses.Grasses.Text
-#: :2050:2054..Editor.Grasses.Grasses.Slider :2060..Editor.Grasses.Grasses.Text
-#: :2064:2068..Editor.Grasses.Grasses.Slider
+#: Media/gui/Editor.layout:2055 ..Editor.Grasses.Grasses.Text
+#: :2059:2063..Editor.Grasses.Grasses.Slider :2069..Editor.Grasses.Grasses.Text
+#: :2073:2077..Editor.Grasses.Grasses.Slider
 msgctxt "TipGrassLayerDens"
 msgid "Grass density for layer (how often it will appear)."
 msgstr ""
 
 #. TIP  Vegetation  models 
-#: Media/gui/Editor.layout:1885 ..Editor.Grasses.Grasses.TabC
-#: :2358..Editor.Vegetation.Models.TabC
-#: :2407..Editor.Vegetation.Models.ProgressBar
-#: :2445..Editor.Vegetation.Models.Text
+#: Media/gui/Editor.layout:1892 ..Editor.Grasses.Grasses.TabC
+#: :2370..Editor.Vegetation.Models.TabC
+#: :2419..Editor.Vegetation.Models.ProgressBar
+#: :2457..Editor.Vegetation.Models.Text
 msgctxt "TipVegetGroups"
 msgid "Vegetation model groups (recommended use 4-6), affects performance."
 msgstr ""
 
 #. TIP  Vegetation  models 
-#: Media/gui/Editor.layout:2413 ..Editor.Vegetation.Models.Text
-#: :2420..Editor.Vegetation.Models.Button
+#: Media/gui/Editor.layout:2425 ..Editor.Vegetation.Models.Text
+#: :2432..Editor.Vegetation.Models.Button
 msgctxt "TipVegetModels"
 msgid "Models (meshes) for vegetation. Found in data/trees/."
 msgstr ""
 
 #. TIP  Vegetation  models 
-#: Media/gui/Editor.layout:2425 ..Editor.Vegetation.Models.Text
-#: :2429:2433..Editor.Vegetation.Models.Slider
+#: Media/gui/Editor.layout:2437 ..Editor.Vegetation.Models.Text
+#: :2441:2445..Editor.Vegetation.Models.Slider
 msgctxt "TipModelDens"
 msgid "How often model will appear on track area."
 msgstr ""
 
 #. TIP  Vegetation  models 
-#: Media/gui/Editor.layout:2440 ..Editor.Vegetation.Models.Check
+#: Media/gui/Editor.layout:2452 ..Editor.Vegetation.Models.Check
 msgctxt "TipToggleModel"
 msgid "Enable or disable this model."
 msgstr ""
@@ -8406,30 +8464,30 @@ msgid "How far from road will the model appear."
 msgstr ""
 
 #. TIP  Vegetation  models 
-#: Media/gui/Editor.layout:2479 ..Editor.Vegetation.Models.Text
-#: :2488:2496..Editor.Vegetation.Models.Slider
+#: Media/gui/Editor.layout:2491 ..Editor.Vegetation.Models.Text
+#: :2500:2508..Editor.Vegetation.Models.Slider
 msgctxt "TipModelMinScale"
 msgid "Model minimal scale."
 msgstr ""
 
 #. TIP  Vegetation  models 
-#: Media/gui/Editor.layout:2484 ..Editor.Vegetation.Models.Text
-#: :2492:2500..Editor.Vegetation.Models.Slider
+#: Media/gui/Editor.layout:2496 ..Editor.Vegetation.Models.Text
+#: :2504:2512..Editor.Vegetation.Models.Slider
 msgctxt "TipModelMaxScale"
 msgid "Model maximal scale."
 msgstr ""
 
 #. TIP  Vegetation  models 
-#: Media/gui/Editor.layout:2199 ..Editor.Grasses.Channels.Text
-#: :2203:2207..Editor.Grasses.Channels.Slider
-#: :2533..Editor.Vegetation.Models.Text
-#: :2537:2541..Editor.Vegetation.Models.Slider
+#: Media/gui/Editor.layout:2210 ..Editor.Grasses.Channels.Text
+#: :2214:2218..Editor.Grasses.Channels.Slider
+#: :2545..Editor.Vegetation.Models.Text
+#: :2549:2553..Editor.Vegetation.Models.Slider
 msgctxt "TipRoadDist2"
 msgid "Additional distance to road."
 msgstr ""
 
 #. TIP  Vegetation  models 
-#: Media/gui/Editor.layout:2546 ..Editor.Vegetation.Models.Text
+#: Media/gui/Editor.layout:2558 ..Editor.Vegetation.Models.Text
 msgctxt "TipRoadDistMax"
 msgid ""
 "Maximum distance to road. E.g. can be used for vegetation that should appear "
@@ -8437,15 +8495,15 @@ msgid ""
 msgstr ""
 
 #. TIP  Vegetation  models 
-#: Media/gui/Editor.layout:2506 ..Editor.Vegetation.Models.Text
-#: :2515:2523..Editor.Vegetation.Models.Slider
+#: Media/gui/Editor.layout:2518 ..Editor.Vegetation.Models.Text
+#: :2527:2535..Editor.Vegetation.Models.Slider
 msgctxt "TipWindInflL"
 msgid "Wind influence on model, length scale."
 msgstr ""
 
 #. TIP  Vegetation  models 
-#: Media/gui/Editor.layout:2511 ..Editor.Vegetation.Models.Text
-#: :2519:2527..Editor.Vegetation.Models.Slider
+#: Media/gui/Editor.layout:2523 ..Editor.Vegetation.Models.Text
+#: :2531:2539..Editor.Vegetation.Models.Slider
 msgctxt "TipWindInflH"
 msgid "Wind influence on model, height scale."
 msgstr ""
@@ -8456,29 +8514,29 @@ msgid "Model preview image."
 msgstr ""
 
 #. TIP  Vegetation  terrain 
-#: Media/gui/Editor.layout:2558 ..Editor.Vegetation.Models.Text
-#: :2562:2566..Editor.Vegetation.Models.Slider
+#: Media/gui/Editor.layout:2570 ..Editor.Vegetation.Models.Text
+#: :2574:2578..Editor.Vegetation.Models.Slider
 msgctxt "TipLTrMaxTerAng"
 msgid "Terrain angle above which model won't appear."
 msgstr ""
 
 #. TIP  Vegetation  terrain 
-#: Media/gui/Editor.layout:2571 ..Editor.Vegetation.Models.Text
-#: :2576..Editor.Vegetation.Models.Edit :2580..Editor.Vegetation.Models.Slider
+#: Media/gui/Editor.layout:2583 ..Editor.Vegetation.Models.Text
+#: :2588..Editor.Vegetation.Models.Edit :2592..Editor.Vegetation.Models.Slider
 msgctxt "TipLTrMinTerH"
 msgid "Terrain height below which model won't appear."
 msgstr ""
 
 #. TIP  Vegetation  terrain 
-#: Media/gui/Editor.layout:2585 ..Editor.Vegetation.Models.Text
-#: :2590..Editor.Vegetation.Models.Edit :2594..Editor.Vegetation.Models.Slider
+#: Media/gui/Editor.layout:2597 ..Editor.Vegetation.Models.Text
+#: :2602..Editor.Vegetation.Models.Edit :2606..Editor.Vegetation.Models.Slider
 msgctxt "TipLTrMaxTerH"
 msgid "Terrain height above which model won't appear."
 msgstr ""
 
 #. TIP  Vegetation  terrain 
-#: Media/gui/Editor.layout:2599 ..Editor.Vegetation.Models.Text
-#: :2604..Editor.Vegetation.Models.Edit :2608..Editor.Vegetation.Models.Slider
+#: Media/gui/Editor.layout:2611 ..Editor.Vegetation.Models.Text
+#: :2616..Editor.Vegetation.Models.Edit :2620..Editor.Vegetation.Models.Slider
 msgctxt "TipLTrFlDepth"
 msgid "Maximal depth in fluid allowed (set 0 to exclude from fluids)."
 msgstr ""
