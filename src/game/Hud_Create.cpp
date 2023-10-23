@@ -20,14 +20,8 @@
 #include <OgreEntity.h>
 #include <OgreSceneNode.h>
 #include <OgreMaterialManager.h>
-// #include <OgreTextureManager.h>
-#include <OgreManualObject2.h>
-#include <OgrePass.h>
-#include <OgreTechnique.h>
+#include <OgreHlmsCommon.h>
 #include <OgreSceneManager.h>
-#include <OgreOverlayManager.h>
-#include <OgreOverlayElement.h>
-#include <OgreTextureGpuManager.h>
 
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>

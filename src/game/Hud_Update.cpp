@@ -92,11 +92,6 @@ void CHud::Update(int carId, float time)
 	// 	UpdOpponents(h, cnt, pCarM);
 
 
-	//  motion blur intensity
-	// if (pSet->blur)
-	// 	UpdMotBlur(pCar, time);
-
-
 	///  gear, vel texts
 	UpdCarTexts(carId, h, time, pCar);
 
@@ -186,7 +181,8 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 	//if (carId == -1)  return;
 	int base = baseCarId, id = carId;
 	bool main = base == id;
-	// LogO(toStr(b)+" b "+toStr(c)+" c");
+	// LogO(toStr(base)+" b "+toStr(id)+" car");
+	
 	#ifdef DEBUG
 	assert(id >= 0);
 	assert(base >= 0);
@@ -310,9 +306,9 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 				// h.moMap->texUV(tc[p][0],tc[p][1], 0);  // uv2
 			}
 		else
-		{	Vector2 mp(-app->carPoses[qb][base].pos[2], app->carPoses[qb][base].pos[0]);
+		{	Vector2 mp(-app->carPoses[qb][base].pos.z, app->carPoses[qb][base].pos.x);
 			float t = app->sc->tds[0].fTerWorldSize;  // 1st ter-
-			float t2 = t * 0.5;
+			float t2 = t * 0.5f;
 			float xc =  (mp.x + t2) / t,
 				  yc = -(mp.y + t2) / t + 1.f;
 			
@@ -329,7 +325,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 	///  🌍🔺 minimap car pos  x,y = -1..1
 	Vector2 mp(-app->carPoses[qc][id].pos[2], app->carPoses[qc][id].pos[0]);
 
-	//  other cars in player's car view space
+	//  other cars in player's car view space  // fixme..
 	if (!main && bZoom)
 	{
 		Vector2 plr(-app->carPoses[qb][base].pos[2], app->carPoses[qb][base].pos[0]);

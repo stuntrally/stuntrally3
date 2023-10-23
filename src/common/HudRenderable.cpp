@@ -1,16 +1,18 @@
-#include "OgreCommon.h"
-#include "Vao/OgreBufferPacked.h"
-#include "half.hpp"
+#include "OgreHlmsSamplerblock.h"
 #include "pch.h"
+#include "half.hpp"
 #include "Def_Str.h"
 #include "HudRenderable.h"
 #include <OgreRoot.h>
+#include <OgreCommon.h>
 #include <OgreSceneManager.h>
 #include <OgreHlms.h>
 #include <OgreHlmsManager.h>
+#include <OgreHlmsUnlitDatablock.h>
 #include <Vao/OgreVaoManager.h>
 #include <Vao/OgreVertexArrayObject.h>
 #include <Vao/OgreVertexElements.h>
+#include <Vao/OgreBufferPacked.h>
 using namespace Ogre;
 
 
@@ -76,7 +78,13 @@ HudRenderable::HudRenderable(
 	mRenderables.push_back( this );
 
 	auto hlms = Root::getSingleton().getHlmsManager()->getHlms( HLMS_UNLIT );
-	auto db = hlms->getDatablock( material );
+	HlmsUnlitDatablock* db = (HlmsUnlitDatablock*)hlms->getDatablock( material );
+
+	HlmsSamplerblock sb;  // set wrap
+	// sb.mU = TAM_CLAMP;  sb.mV = TAM_CLAMP;  sb.mW = TAM_CLAMP;  // todo blink?
+	sb.mU = TAM_WRAP;  sb.mV = TAM_WRAP;  sb.mW = TAM_WRAP;
+	db->setSamplerblock( 0, sb );
+
 	setDatablock( db );
 }
 
