@@ -1,7 +1,7 @@
-//Various tools and visualizations to tweak game.//
+_Various tools and visualizations to tweak game._
 
 
-#### Tools list ####
+## Tools list
 This Wiki describes most tools available in game (found on Tweak tab).   
 How to use them and what are they for.   
 Mainly they are helpful in visualizing the result of edited .car sections.
@@ -21,27 +21,29 @@ They are listed here for quick guide:
 | Ctrl-F5  | Perf Test          | Starts car performance test, results show eg. 0-100 kmh time etc. |
 
    
-#### Common ####
+#### Common
 In game and editor.
 
-### Fps bar ###
-Toggle Fps bar showing with F11.  
-This small left top bar shows 4 values (that change, especially when moving):
-  - Rendered Frames per second (Fps), it's best to play with at least 30, 60 being optimal for most monitors.
-  - Triangle count, e.g. 821k means there are 821 000 triangles drawn each frame.
-  - Batches count, e.g. 254 means there were 254 draw calls to render geometry on GPU.
-  - GPU Memory use. e.g. 261M means 261 MB are occupied (by textures, geometry etc).
+### Fps bar
+Cycle Fps bar mode with F11.  
 
-Old Ogre 1.x and its rendering systems do much on CPU, and batches count is most critical (usually bad 40 Fps starts above 400 batches or so).
-### Wireframe ###
-Toggle wireframe mode with F10. In editor use Ctrl-F11.  
+This small left top bar shows values (that change, especially when moving), in default mode:
+  - Rendered Frames per second (Fps), it's best to play with at least 30, 60 being optimal for most monitors.
+  - Triangle count, e.g. 1.20 means there are 1 200 000 triangles drawn each frame (all render targets).
+  - Batches count, e.g. 254 means there were 254 draw calls to render geometry on GPU.
+  - GPU Memory use. e.g. 521M means 521 MB are occupied (by textures, geometry etc).
+
+This is better explained on Gui for each mode.
+
+### Wireframe
+Toggle wireframe mode with F10.  
 It is useful to check how dense are triangles in car/wheel model (or also for whole track).
 
    
-#### Game tools ####
+#### Game tools
 
    
-### Bullet Debug Lines ###
+### Bullet Debug Lines
 This is useful to check and adjust the shape of car body that collides.  
 To use bullet lines first check the global (Startup) option, and restart game.
 
@@ -53,23 +55,23 @@ If game was started with it enabled, you can toggle bullet debug lines with Ctrl
 {{http://stuntrally.tuxfamily.org/uploads/images/wiki/2.jpg}}
 
 If you just need to edit car collision, don't use official tracks.   
-//They have a lot of vegetation and it will be horribly slow to draw all lines (and this stays until you quit and restart game).//   
+_They have a lot of vegetation and it will be horribly slow to draw all lines (and this stays until you quit and restart game)._   
 Use test tracks which are usually quite empty (and also reload fast).
 
    
-### Developer keys ###
+### Developer keys
 
 If you mark the checkbox 'Developer keys..', also shown on previous screen (Tweak tab), you can:
 
-1. Use alt-shift-digit to quickly start a test track, without using menu.   
-See [](https://github.com/stuntrally/stuntrally/blob/master/source/ogre/Gui_KeyPress.cpp#L123|here in sources]] for which track is on which digit key.   
-So e.g. Alt-Shift-1 will load Test1-Flat, Alt-Shift-3 loads TestC4-ow, etc.
+1. Use Alt-Shift-digit/letter to quickly start a test track, without using menu.  
+So e.g. Alt-Shift-A will load Test1-Flat, Alt-Shift-F loads Test3-Bumps, etc.  
+This can be set in in `game.cfg` under `tweak_tracks` for each digit/letter key.
 
 2. Press Ctrl-F at any time to show Gui and focus cursor in track search edit.
 
 
    
-### Tree collisions ###
+### Tree collisions
 
 As shown on previous screen, you can see yellow capsule shapes for palms.   
 We use such simple shapes for trees. No need for full trimesh and should be faster.
@@ -82,7 +84,7 @@ See the top of this file for more info (e.g. how to disable collision or use ful
 
 
    
-### Car file Editor ###
+### Car file Editor
 Editing car settings (.car file) is done in game.
 ```
 Alt-Z - toggles car editor in game.
@@ -90,25 +92,26 @@ Alt-Shift-Z - saves changes and restarts game.
 ```
 Use tracks Test1-Flat or Test2-Asphalt etc, to reduce reloading time and concentrate on editing car.
 
-//You can use your Text Editor (e.g. to have syntax coloring) and press F5 to reload game after saving .car file.//
+_You can use your Text Editor (e.g. to have syntax coloring) and press F5 to reload game after saving .car file._
 
 If the .car file for current car wasn't modified, Editor will show cyan "Original" text and file path.   
 After saving changes, yellow "User" path will appear.
 
-Edited .car file is located in user dir path (see [](Paths]]) in data/carsim/mode/cars/ subdir,   where mode is current simulation mode (easy or normal).
+Edited .car file is located in user dir path (see [Paths](Paths.md)) in `data/carsim/mode/cars/` subdir,  
+where mode is current simulation mode (easy or normal).
 
    
-### Graphs ###
+### Graphs
 Graphs in game can be used to test more advanced car behaviour and simulation.
 
 Press F9 to show/hide, F2,F3 will cycle through various graph types. Or use Gui to pick from combo.
 
 E.g. Car engine torque curve can be seen, all gear ratios for car speed.   
-Those are explained more in [](CarEditing]].
+Those are explained more in [VehicleEditing](VehicleEditing.md).
 
 
    
-### Car debug Text ###
+### Car debug Text
 This was the first simulation visualisation and it is still useful if you want to check the values (if they don't change too fast).
 
 Use this checkbox to toggle it or Shift-F9.
@@ -118,7 +121,7 @@ On Gui you can also change how many text sections are displayed and change text 
 {{http://stuntrally.tuxfamily.org/uploads/images/wiki/3.jpg}}
 
    
-### Performance test ###
+### Performance test
 
 Car performance test is automatic. It's used to get car performance info, which is shown on Gui, tab Car.
 
@@ -134,21 +137,21 @@ Perf test stats contain info like max engine torque and power, top speed, accele
 
 Most of those stats are then shown in info panel on Gui when when picking car in game.
 
-//Run it for each sim mode (provided you made it different as game requires). See bottom of page for differences list.//
+_Run it for each sim mode (provided you made it different as game requires). See bottom of page for differences list._
 
 {{http://stuntrally.tuxfamily.org/uploads/images/wiki/4.jpg}}
 
 
    
-#### Game (advanced) ####
+## Game (advanced)
 
    
-### Surfaces ###
+### Surfaces
 
 {{http://stuntrally.tuxfamily.org/uploads/images/wiki/12.jpg}}
 
    
-### Tires ###
+### Tires
 {{http://stuntrally.tuxfamily.org/uploads/images/wiki/10.jpg}}
 
 {{http://stuntrally.tuxfamily.org/uploads/images/wiki/11.jpg}}

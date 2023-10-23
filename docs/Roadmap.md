@@ -23,10 +23,10 @@ Git [repo](https://github.com/stuntrally/stuntrally3) and [tracks](https://githu
   blendmap also .hlsl or .any  
   read blendmap, for ter wheel `surface` ids, many ters  
 - Road  
-  Grid for walls, road, **blend**, pipes, ed update cell  
+  **Grid** for walls, road, pipes, ed update cell  
   1 mesh with 4 LODs, shader fix specular stretch  
 - Grass, add Wind params  
-  deform spheres, alpha or grow fade far  
+  **deform** spheres, alpha or grow fade far  
 - **Wind** for trees  
 
 - **Editor**, fix  
@@ -37,14 +37,14 @@ Git [repo](https://github.com/stuntrally/stuntrally3) and [tracks](https://githu
   _tools_ fix scale ter h, copy horizon, which ter, road  
 
 - **HUD**  
-  HudRend issues, **`minimap`** blink?  
-  fix Splitscreen gauges  
-  **Minimap** circle, terrain add, fix pos tris  
+  HudRend issues  
+  fix **Splitscreen**, gauges  
+  _Minimap_ circle, terrain add, fix pos tris  
 
 - Game, meh fix  
   water vis `dist`?  
   Graphics Options: terrain, horizons lod bias-  
-  tire **trails**, no uv tex-  
+  tire trails no uv tex-  
   cd veget mesh, LODs adjust  
   paint datablock2 clone fix-  
   gpu mem leaks or renders inactive  

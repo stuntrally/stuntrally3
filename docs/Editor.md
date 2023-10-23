@@ -9,23 +9,23 @@ Stunt Rally includes a Track Editor that can be used for creating your own track
 
 There is a 10 chapters (very OLD) video tutorial (version 1.7) on YouTube: 
 
-[Chapter 1: Intro](https://www.youtube.com/watch?v=nJrpQbwzlXE)
-[Chapter 2: Terrain](https://www.youtube.com/watch?v=FDJFRgW52ms)
-[Chapter 3: Road, basic](https://www.youtube.com/watch?v=ylUySzCSjd8)
-[Chapter 4: Road, advanced](https://www.youtube.com/watch?v=Gycjc7noflY)
-[Chapter 5: Fluids](https://www.youtube.com/watch?v=CiKkueI2tqU)
-[Chapter 6: Vegetation](https://www.youtube.com/watch?v=L6eZKLG79TQ)
-[Chapter 7: Checkpoints](https://www.youtube.com/watch?v=LlU1Sp_6bcU)
-[Chapter 8: Drive](https://www.youtube.com/watch?v=qdLlY4EYnyM)
-[Chapter 9: Objects](https://www.youtube.com/watch?v=9DzgmYmxu3w)
-[Chapter 10: Tools](https://www.youtube.com/watch?v=6GQx0pW6HEk)
+[Chapter 1: Intro](https://www.youtube.com/watch?v=nJrpQbwzlXE)  
+[Chapter 2: Terrain](https://www.youtube.com/watch?v=FDJFRgW52ms)  
+[Chapter 3: Road, basic](https://www.youtube.com/watch?v=ylUySzCSjd8)  
+[Chapter 4: Road, advanced](https://www.youtube.com/watch?v=Gycjc7noflY)  
+[Chapter 5: Fluids](https://www.youtube.com/watch?v=CiKkueI2tqU)  
+[Chapter 6: Vegetation](https://www.youtube.com/watch?v=L6eZKLG79TQ)  
+[Chapter 7: Checkpoints](https://www.youtube.com/watch?v=LlU1Sp_6bcU)  
+[Chapter 8: Drive](https://www.youtube.com/watch?v=qdLlY4EYnyM)  
+[Chapter 9: Objects](https://www.youtube.com/watch?v=9DzgmYmxu3w)  
+[Chapter 10: Tools](https://www.youtube.com/watch?v=6GQx0pW6HEk)  
 
 and 4 addidtional chapters (from version 2.1)
 
-[Chapter 11: Fog](https://www.youtube.com/watch?v=yNPIR29iv0U)
-[Chapter 12: Grasses](https://www.youtube.com/watch?v=xeazOxtcLCY)
-[Chapter 13: Warnings](https://www.youtube.com/watch?v=UWvm-okLuy8)
-[Chapter 14: Terrain, advanced](https://www.youtube.com/watch?v=v8Evcw7nLok)
+[Chapter 11: Fog](https://www.youtube.com/watch?v=yNPIR29iv0U)  
+[Chapter 12: Grasses](https://www.youtube.com/watch?v=xeazOxtcLCY)  
+[Chapter 13: Warnings](https://www.youtube.com/watch?v=UWvm-okLuy8)  
+[Chapter 14: Terrain, advanced](https://www.youtube.com/watch?v=v8Evcw7nLok)  
 
 These videos (64 minutes total) cover creating a new track in detail. Even if being quite old now.  
 There is a **more recent** page describing editor features [here](https://cryham.tuxfamily.org/portfolio/2015-sr-track-editor).

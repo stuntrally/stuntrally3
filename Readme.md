@@ -7,9 +7,10 @@
 
 ## Links
 
-[Stunt Rally Homepage](https://stuntrally.tuxfamily.org/) - Download links, Documentation wiki, track & vehicle browsers etc.  
+[Stunt Rally Homepage](https://stuntrally.tuxfamily.org/) - Download links, old documentation wiki, track & vehicle browsers etc.  
 [Forums](https://forum.freegamedev.net/viewforum.php?f=77) - Discussions, tracks, Issues, etc.  
 [Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs & Issues, pull requests, etc.  
+[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/Features.md) - new, is inside docs/  
 Old [Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from 2.x versions and development  
 [Videos](https://www.youtube.com/user/TheCrystalHammer) - from game and editor (old)  
 [Donations](https://cryham.tuxfamily.org/donate/) - financial support
@@ -21,14 +22,14 @@ Old [Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from 2.x
 Port and continuation of latest [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.x using latest [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0 for rendering.  
 
 Already playable game in all modes. Working Track Editor, almost fully restored.  
-Still WIP, not yet released and beta (with bugs).
+Still WIP, not yet released and beta (possible bugs).
 
 **Full features** [list here](docs/Features.md).  
 
 **Changes** and new features listed in [changelog](docs/Changelog.md).  
 For details see [Roadmap](docs/Roadmap.md) with missing features and todo.  
 
-Updated documentation is now inside [docs/](docs/) dir. It's WIP.
+**Documentation** is now inside [docs/](docs/) dir. It's partly WIP.
 
 Progress posts in [SR forum topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18515). Dev questions and answers in Ogre-Next [topic](https://forums.ogre3d.org/viewtopic.php?t=96576).
 

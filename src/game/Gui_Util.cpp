@@ -363,11 +363,11 @@ void CGui::btnWebsite(WP)
 }
 void CGui::btnWiki(WP)
 {
-	PATHS::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=features");
+	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally3/blob/main/docs/Features.md");
 }
 void CGui::btnWikiInput(WP)
 {
-	PATHS::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=running#controllers");
+	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally3/blob/main/docs/Running.md#controllers");
 }
 
 void CGui::btnForum(WP)
@@ -376,15 +376,15 @@ void CGui::btnForum(WP)
 }
 void CGui::btnSources(WP)
 {
-	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally");
+	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally3");
 }
 void CGui::btnEdTut(WP)
 {
-	PATHS::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=editor");
+	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally3/blob/main/docs/Editor.md");
 }
 void CGui::btnTransl(WP)
 {
-	PATHS::OpenUrl("https://stuntrally.tuxfamily.org/wiki/doku.php?id=localization");
+	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally3/blob/main/docs/Localization.md");
 }
 void CGui::btnDonations(WP)
 {
@@ -433,7 +433,7 @@ void CGui::FillHelpTxt()
 	};
 
 	ed = fEd("Readme");        if (ed)  PathMd("Readme.md", 0);
-	ed = fEd("Contributing");  if (ed)  PathMd("Contributing.md", 1);
+	ed = fEd("Contributing");  if (ed)  PathMd("docs/Contributing.md", 1);
 
 	ed = fEd("Credits");
 	if (ed)

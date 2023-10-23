@@ -62,8 +62,8 @@ If you can record or edit sounds for games. Especially looped engine sounds.
 
 ## 3D Artists
 
-If you know Blender and can help with importing existing models into game [Objects wiki](https://stuntrally.tuxfamily.org/wiki/doku.php?id=objects).  
-Or can edit vehicles ([topic](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526) and [wiki](https://stuntrally.tuxfamily.org/wiki/doku.php?id=carmodeling)) or objects for game, UV unwrap, texturing, etc.
+If you know Blender and can help with importing existing models into game [Objects wiki](Objects.md).  
+Or can edit vehicles ([topic](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526) and [wiki](VehicleModeling.md)) or objects for game, UV unwrap, texturing, etc.
 
 
 ------------------------
@@ -82,9 +82,9 @@ Financial support is possible through [CryHam's page](https://cryham.tuxfamily.o
 This page describes the procedure to get your code (fixes, patches, new features, media etc.) included into Stunt Rally.  
   This assumes you have already cloned our code and done something with it and now are ready to share your stuff.  
 
-If you don't know what to do, but want to help, check out the repo page [Contributing](https://github.com/stuntrally/stuntrally/blob/master/Contributing.md),  
+If you don't know what to do, but want to help, check out the repo page [Contributing](Contributing.md),  
 [ToDo](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with programming tasks with descriptions (sort by priority P, 1 is critical, higher are less important),  
-and also [[Roadmap for next version(s).
+and also [Roadmap](Roadmap.md) for next version(s).
 
   
 ## Prerequisites ##
