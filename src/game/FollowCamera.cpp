@@ -292,6 +292,7 @@ void FollowCamera::Apply(const PosInfo& posIn)
 	{	cam->nd->setPosition(posIn.camPos);
 		cam->nd->setOrientation(posIn.camRot);
 	}else
+	if (cam->cam)
 	{	cam->cam->setPosition(posIn.camPos);
 		cam->cam->setOrientation(posIn.camRot);
 	}

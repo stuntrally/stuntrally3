@@ -77,12 +77,11 @@ HudRenderable::HudRenderable(
 
 	mRenderables.push_back( this );
 
-	auto hlms = Root::getSingleton().getHlmsManager()->getHlms( HLMS_UNLIT );
+ 	//  set clamp
+ 	auto hlms = Root::getSingleton().getHlmsManager()->getHlms( HLMS_UNLIT );
 	HlmsUnlitDatablock* db = (HlmsUnlitDatablock*)hlms->getDatablock( material );
-
-	HlmsSamplerblock sb;  // set wrap
-	// sb.mU = TAM_CLAMP;  sb.mV = TAM_CLAMP;  sb.mW = TAM_CLAMP;  // todo blink?
-	sb.mU = TAM_WRAP;  sb.mV = TAM_WRAP;  sb.mW = TAM_WRAP;
+	HlmsSamplerblock sb;
+	sb.mU = TAM_CLAMP;  sb.mV = TAM_CLAMP;  sb.mW = TAM_CLAMP;
 	db->setSamplerblock( 0, sb );
 
 	setDatablock( db );

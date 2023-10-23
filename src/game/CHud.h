@@ -104,6 +104,7 @@ public:
 	//  🎥 camera move info
 	Txt txCamInfo =0;
 
+
 	//  🔧 car debug texts
 	Txt txDbgCar[4] ={0,0,0,0}; //, txDbgTxt =0, txDbgExt =0;
 	Txt txDbgSurf =0, txDbgProfTim =0, txDbgProfBlt =0;
@@ -128,7 +129,6 @@ public:
 		
 	float asp =1.f, scX =1.f, scY =1.f,
 		minX =0.f, maxX =0.f, minY =0.f, maxY =0.f;  // minimap visible range
-	Ogre::SceneNode *ndLine =0;
 
 	//------------------------------------------
 

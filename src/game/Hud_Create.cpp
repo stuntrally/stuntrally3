@@ -48,7 +48,7 @@ void CHud::Create()
 
 	//  minimap from road img
 	int plr = pSet->game.local_players;
-	LogO("C--- Create Hud  plrs="+toStr(plr));
+	LogO("C--- Create Hud  plrs= "+toStr(plr));
 	asp = 1.f;
 
 	///  reload mini textures
@@ -77,12 +77,13 @@ void CHud::Create()
 	int y=1200; //off 0
 
 	
-	//  car pos tris (form all cars on all viewports)
+	//  🔺 car pos tris (form all cars on all viewports)
 	SceneNode* rt = scm->getRootSceneNode();
 	// asp = 1.f;  //_temp
 	hrPos = new HudRenderable("hud/CarPos", scm,
 		// 0.f, true,true, 1.f,Vector2(1,1), RV_Hud,RQG_Hud3, plr * 6);
-		OT_TRIANGLE_LIST, true,true, RV_Hud,RQG_Hud1, plr * 2);  // ?
+		// OT_TRIANGLE_LIST, true,true, RV_Hud,RQG_Hud3, plr * 3);  // ok 1
+		OT_TRIANGLE_LIST, true,true, RV_Hud,RQG_Hud3, plr * cnt);  // each plr all cars (incl. ghosts)
 	ndPos = rt->createChildSceneNode();
 	ndPos->attachObject(hrPos);
 
@@ -470,7 +471,7 @@ void CHud::Destroy()
 	#define Del(hr)  {  delete hr;  hr =0;  }
 	#define Dest(w)  if (w) {  app->mGui->destroyWidget(w);  w = 0;  }
 
-	int i,c;
+	int i,c;  // per player
 	for (c=0; c < hud.size(); ++c)
 	{	Hud& h = hud[c];
 
@@ -505,7 +506,7 @@ void CHud::Destroy()
 	Dest(txDbgSurf);
 	Dest(txDbgProfTim);  Dest(txDbgProfBlt);
 
-	//  msg global
+	//  global
 	Dest2(ndPos)  Del(hrPos)
 	Dest(txMsg)  Dest(bckMsg)
 	Dest(txCamInfo)
