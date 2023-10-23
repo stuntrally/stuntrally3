@@ -7,11 +7,11 @@ typedef vector<string> vecstr;
 
 ///---- INFO
 //  This is a tool program that generates sr.pot for translations
-//  It reads tags (strings) from *en_tag.xml
+//  It reads tags (strings) from *en_tag.xml file
 //  and searches for their references in .cpp sources and
-//  in gui .layout (finds also widget hierarchy)
+//  in Gui .layout, it also finds widget hierarchy
 //
-//  Search for  [Setup]  to setup paths and params
+//  Find  [Setup]  to setup paths and params
 //  look for  //par  for tweaking params
 //  and  //test  for adding more info in log
 //-----
