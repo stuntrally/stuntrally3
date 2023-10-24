@@ -604,9 +604,10 @@ void SplineRoad::createSeg_Meshes(
 
 	const bool wall = !DLM.posW.empty();
 	const bool pipeGlass = DS.pipe && bMtrPipeGlass[ mP[seg].idMtr ];  // pipe glass mtr
+	const bool invisible = strstr(rs.sMtrRd.c_str(), "Invisible");
 
 
-	if (HasRoad())
+	if (HasRoad() && !invisible)
 	{
 		/*LogO("RD- lod "+toStr(lod)+ "  mtr "+rs.sMtrRd+
 			"  pos "+toStr(DLM.pos.size())+ "  norm "+toStr(DLM.norm.size())+

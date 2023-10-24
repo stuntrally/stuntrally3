@@ -1073,67 +1073,37 @@ hlms roadSandMarblePink_ter pbs : road_terrain
 //  Invisible Roads, for different surface types
 hlms roadInvisibleDesert pbs : road
 {
-	//diffuse_map roadSnow.jpg
-	diffuse 0.8 0.8 0.8 0.0
-	specular 0.1 0.1 0.1
 }
 hlms roadInvisibleDesert_ter pbs : road_terrain
 {
-	//diffuse_map roadSnow.jpg
-	diffuse 0.95 0.85 0.95 0.0
-	specular 0.1 0.1 0.1
 }
 
 hlms roadInvisibleJungle pbs : road
 {
-	//diffuse_map roadSnow.jpg
-	diffuse 0.8 0.8 0.8 0.0
-	specular 0.1 0.1 0.1
 }
 hlms roadInvisibleJungle_ter pbs : road_terrain
 {
-	//diffuse_map roadSnow.jpg
-	diffuse 0.95 0.85 0.95 0.0
-	specular 0.1 0.1 0.1
 }
 
 hlms roadInvisibleGravel pbs : road
 {
-	//diffuse_map roadSnow.jpg
-	diffuse 0.8 0.8 0.8 0.0
-	specular 0.1 0.1 0.1
 }
 hlms roadInvisibleGravel_ter pbs : road_terrain
 {
-	//diffuse_map roadSnow.jpg
-	diffuse 0.95 0.85 0.95 0.0
-	specular 0.1 0.1 0.1
 }
 
 hlms roadInvisibleSnow pbs : road
 {
-	//diffuse_map roadSnow.jpg
-	diffuse 0.8 0.8 0.8 0.0
-	specular 0.1 0.1 0.1
 }
 hlms roadInvisibleSnow_ter pbs : road_terrain
 {
-	//diffuse_map roadSnow.jpg
-	diffuse 0.95 0.85 0.95 0.0
-	specular 0.1 0.1 0.1
 }
 
 hlms roadInvisibleForest pbs : road
 {
-	//diffuse_map roadSnow.jpg
-	diffuse 0.8 0.8 0.8 0.0
-	specular 0.1 0.1 0.1
 }
 hlms roadInvisibleForest_ter pbs : road_terrain
 {
-	//diffuse_map roadSnow.jpg
-	diffuse 0.95 0.85 0.95 0.0
-	specular 0.1 0.1 0.1
 }
 
 //  50 % Transparent roads
@@ -1595,15 +1565,13 @@ hlms roadSpring_ter pbs : road_terrain
 {
 	diffuse_map roadSpring.jpg
 	normal_map normal_2.png
-	// ambient 1.02 1.06 1.0
-	diffuse 0.65 0.65 0.65
+	diffuse 0.66 0.68 0.65
 	specular 0.15 0.2 0.15 32
 }
 
 hlms roadSpring2 pbs : road
 {
 	diffuse_map roadSpring2.jpg
-	// ambient 0.7 0.83 0.7
 	diffuse 0.5 0.66 0.5
 	specular 0.15 0.33 0.25 48
 }
@@ -1611,7 +1579,6 @@ hlms roadSpring2_ter pbs : road_terrain
 {
 	diffuse_map roadSpring2.jpg
 	normal_map normal_1.png
-	// ambient 0.7 0.83 0.7
 	diffuse 0.6 0.75 0.6
 	specular 0.15 0.33 0.25 96
 }

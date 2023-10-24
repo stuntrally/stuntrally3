@@ -210,8 +210,8 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 
 	if (!posInfo.bNew)  return;  // new only ?
 	posInfo.bNew = false;
-	/// dont get anything from pCar or car.dynamics here
-	/// all must be read from posInfo (it is filled from vdrift car or from replay)
+	///  Don't get anything from pCar or car.dynamics here
+	///  All must be read from posInfo (it is filled from vdrift car or from replay)
 	
 	if (!ndMain)  return;
 

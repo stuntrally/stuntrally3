@@ -42,7 +42,7 @@ hlms pipe_glass pbs
 	cull_mode clockwise
 	//+ cull_mode anticlockwise  // 2nd, cloned in code
 
-	// transparency 1.0
+	// transparency 1.0  // fixme, fade - no glow in fog
 	transparency_mode transparent
 	// two_sided true
 

@@ -219,8 +219,8 @@ void App::newPoses(float time)  // time only for camera update
 		{
 			///  🔝 arrow update  --------------------------------------
 			SplineRoad* road = scn->road;
-			if (pSet->check_arrow && carM->cType == CarModel::CT_LOCAL
-			  && !bRplPlay && hud->arrow.node && road && road->mChks.size()>0)
+			if (pSet->check_arrow && carM->cType == CarModel::CT_LOCAL &&
+				!bRplPlay && hud->arrow.node && road && road->mChks.size()>0)
 		  		hud->arrow.UpdateChk(road, carM, pi.pos);
 			
 			//----------------------------------------------------------------------------
