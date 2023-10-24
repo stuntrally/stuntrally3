@@ -73,7 +73,8 @@ public:
 	
 
 	//  📈 Fps
-	SlV(Fps);  Txt txFpsInfo =0;  void nextFps();
+	SlV(Fps);  SV svFpsMul;
+	Txt txFpsInfo =0;  void nextFps();
 	constexpr static int FPS_Modes = 4;
 
 	///  📊 Graphics  --------------------------

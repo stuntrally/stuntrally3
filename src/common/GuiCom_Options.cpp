@@ -34,8 +34,8 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 	//  📈 Fps
 	sv= &svFps;			sv->Init("Fps",			&pSet->fps_bar, 0, FPS_Modes);  sv->DefaultI(1);  SevC(Fps);
-	txFpsInfo = fTxt("FpsInfo");
-	// slFps(0);
+	sv= &svFpsMul;		sv->Init("FpsMul",		&pSet->fps_mul, 0.1f,6.f, 1.5f);  sv->DefaultF(1.f);
+	txFpsInfo = fTxt("FpsInfo");   slFps(0);
 
 
 	//  🧊 Detail, far geometry

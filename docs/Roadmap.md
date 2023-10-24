@@ -42,7 +42,7 @@ Git [repo](https://github.com/stuntrally/stuntrally3) and [tracks](https://githu
   _Minimap_ circle, terrain add, fix pos tris  
 
 - Game, meh fix  
-  water vis `dist`?  
+  water vis dist?  
   Graphics Options: terrain, horizons lod bias-  
   tire trails no uv tex-  
   cd veget mesh, LODs adjust  

@@ -1430,7 +1430,7 @@
 						<Widget type="Slider" skin="Slider" position="356 62 120 16" name="Fps">
 							<Property key="Colour" value="0.8 0.85 1.0"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="336 62 20 20" name="FpsVal">
+						<Widget type="TextBox" skin="TextBox" position="326 62 20 20" name="FpsVal">
 							<Property key="Colour" value="0.8 0.85 1.0"/>
 							<Property key="TextColour" value="0.8 0.85 1.0"/>
 						</Widget>
@@ -1438,6 +1438,17 @@
 							<Property key="Alpha" value="0.7"/>
 							<Property key="Colour" value="0.8 0.85 0.9"/>
 							<Property key="TextColour" value="0.8 0.85 0.9"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="266 32 220 24">
+							<Property key="Caption" value="#{P_Red}"/>
+							<Property key="TextColour" value="1.0 0.1 0.05"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="356 32 220 16" name="FpsMul">
+							<Property key="Colour" value="1.0 0.8 0.8"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="326 32 20 20" name="FpsMulVal">
+							<Property key="TextColour" value="1.0 0.8 0.8"/>
 						</Widget>
 
 						<!-- wireframe -->
@@ -1474,7 +1485,7 @@
 							<Property key="TextColour" value="0.7 0.65 0.5"/>
 						</Widget>
 
-						<Widget type="Button" skin="Button" position="376 324 300 28" name="MatEditor">
+						<Widget type="Button" skin="Button" position="376 344 300 28" name="MatEditor">
 							<Property key="Caption" value="#{MaterialEditor}"/>
 							<Property key="TextAlign" value="Center"/>
 							<Property key="TextColour" value="0.9 0.7 0.9"/>

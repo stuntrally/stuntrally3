@@ -860,7 +860,7 @@
 						<Widget type="Slider" skin="Slider" position="356 62 120 16" name="Fps">
 							<Property key="Colour" value="0.8 0.85 1.0"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="336 62 20 20" name="FpsVal">
+						<Widget type="TextBox" skin="TextBox" position="326 62 20 20" name="FpsVal">
 							<Property key="Colour" value="0.8 0.85 1.0"/>
 							<Property key="TextColour" value="0.8 0.85 1.0"/>
 						</Widget>
@@ -870,35 +870,46 @@
 							<Property key="TextColour" value="0.8 0.85 0.9"/>
 						</Widget>
 
+						<Widget type="TextBox" skin="TextBox" position="266 32 220 24">
+							<Property key="Caption" value="#{P_Red}"/>
+							<Property key="TextColour" value="1.0 0.1 0.05"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="356 32 220 16" name="FpsMul">
+							<Property key="Colour" value="1.0 0.8 0.8"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="326 32 20 20" name="FpsMulVal">
+							<Property key="TextColour" value="1.0 0.8 0.8"/>
+						</Widget>
+
 						<!-- wireframe -->
-						<Widget type="ImageBox" skin="ImageBox" position="32 86 30 30">
+						<Widget type="ImageBox" skin="ImageBox" position="32 106 30 30">
 							<Property key="ImageCoord" value="640 256 128 128"/>
 							<Property key="Alpha" value="0.4"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="66 94 356 24" name="Wireframe">
+						<Widget type="Button" skin="CheckBox" position="66 114 356 24" name="Wireframe">
 							<Property key="TextColour" value="0.7 0.8 0.9"/>
 							<Property key="Caption" value="#{Wireframe}  F10"/>
 						</Widget>
 
-						<Widget type="Button" skin="CheckBox" position="32 158 356 24" name="CamPos">
+						<Widget type="Button" skin="CheckBox" position="32 178 356 24" name="CamPos">
 							<Property key="Caption" value="#{EdCamPos}"/>
 							<Property key="TextColour" value="0.55 0.6 0.65"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="32 190 356 24" name="InputBar">
+						<Widget type="Button" skin="CheckBox" position="32 210 356 24" name="InputBar">
 							<Property key="Caption" value="#{EdInputBar}"/>
 							<Property key="TextColour" value="0.65 0.7 0.75"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="376 158 284 24">
+						<Widget type="TextBox" skin="TextBox" position="376 178 284 24">
 							<Property key="TextColour" value="0.65 0.5 0.5"/>
 							<Property key="Caption" value="#{Advanced}"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="376 190 512 24" name="AllowSave">
+						<Widget type="Button" skin="CheckBox" position="376 210 512 24" name="AllowSave">
 							<Property key="TextColour" value="0.65 0.5 0.5"/>
 							<Property key="Caption" value="#{AllowSaveOrigTrk}"/>
 						</Widget>
-						<Widget type="Button" skin="Button" position="376 324 300 28" name="MatEditor">
+						<Widget type="Button" skin="Button" position="376 344 300 28" name="MatEditor">
 							<Property key="Caption" value="#{MaterialEditor}"/>
 							<Property key="TextAlign" value="Center"/>
 							<Property key="TextColour" value="0.9 0.7 0.9"/>

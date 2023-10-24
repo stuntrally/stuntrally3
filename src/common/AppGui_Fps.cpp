@@ -55,8 +55,9 @@ void AppGui::UpdFpsText(float dt)
 	const auto *cmp = mRoot->getCompositorManager2();
 
 	const float fps = st->getAvgFps();  //st->getFps(),
+	const float m = pSet->fps_mul;
 
-	String txt;  bool h = fps >= 100.f;
+	String txt;  const bool h = fps >= 100.f;
 	txt += cvsF( fps,  59.f, 30.f, h ? 0 : 1, h ? 3 : 4) + "  ";
 	
 	if (pSet->fps_bar == 1)
@@ -74,27 +75,27 @@ void AppGui::UpdFpsText(float dt)
 
 	if (pSet->fps_bar == 2)
 	{
-		txt += cvsF( tris, 4.f, 8.f, 2,4)+"  ";
-		txt += cvsI( draw, 150, 1200, 3) + "  ";
+		txt += cvsF( tris, 4.f*m, 8.f*m, 2,4)+"  ";
+		txt += cvsI( draw, 150*m, 1200*m, 3) + "  ";
 		txFps->setCaption(txt);  return;
 	}
 	if (pSet->fps_bar == 3)
 	{
-		txt += cvsI( draw, 150, 1200, 3) + "  ";
-		txt += cvsF( mem,  600.f, 1700.f, 0,4);  // + "M\n";
+		txt += cvsI( draw, 150*m, 1200*m, 3) + "  ";
+		txt += cvsF( mem,  600.f*m, 1700.f*m, 0,4);  // + "M\n";
 		txFps->setCaption(txt);  return;
 	}
 
-	txt += cvsF( tris, 4.f, 8.f, 2,4)+"  ";  // + "m ";  //txt += "v " + toStr( rm.mVertexCount/1000 ) + "  ";
-	txt += cvsI( draw, 150, 1200, 3) + "\n";
+	txt += cvsF( tris, 4.f*m, 8.f*m, 2,4)+"  ";  // + "m ";  //txt += "v " + toStr( rm.mVertexCount/1000 ) + "  ";
+	txt += cvsI( draw, 150*m, 1200*m, 3) + "\n";
 
 	txt += "#A0C0A0 i ";
-	txt += cvsI( inst, 2000, 16000, 5) + " ";  //txt += "b " + toStr( rm.mBatchCount, 0);
-	txt += cvsI( vgt, 3000, 20000, 5) + "\n";
+	txt += cvsI( inst, 2000*m, 16000*m, 5) + " ";  //txt += "b " + toStr( rm.mBatchCount, 0);
+	txt += cvsI( vgt, 3000*m, 20000*m, 5) + "\n";
 
-	txt += "#B0B0B0G " + cvsI( gui, 8, 45, 2);
+	txt += "#B0B0B0G " + cvsI( gui, 8*m, 45*m, 2);
 	txt += "#9090F0 w " + cvsI( ws, 8, 16, 2) + " ";
-	txt += cvsF( mem,  600.f, 1700.f, 0,4);  // + "M\n";
+	txt += cvsF( mem,  600.f*m, 1700.f*m, 0,4);  // + "M\n";
 
 	//  test colors
 	/*for (int i = 15; i < 60; i+=5)

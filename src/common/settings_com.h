@@ -37,6 +37,7 @@ public:
 	//  hud
 	bool vr_mode = 0;  // 👀 forces 1 player
 	int fps_bar =0;  // 📈
+	float fps_mul = 1.f;  // red vals factor
 	
 	//  🚦 pacenotes
 	float pace_dist = 200.f, pace_size = 1.f, pace_near = 1.f, pace_alpha = 1.f;
