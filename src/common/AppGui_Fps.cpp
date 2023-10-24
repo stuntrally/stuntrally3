@@ -18,21 +18,22 @@ using namespace MyGUI;
 
 //  🌈 Fps, stat colors
 //-----------------------------------------------------------------------------------
-const int iClrVal = 8;
-const String sClrVal[iClrVal] =  // long
-	{"#A0C0FF", "#20A0FF", "#10FFFF", "#10FF10", "#FFFF20", "#FFC010", "#FF8010", "#FF1010"};
+const int ciClrVal = 9, ciGrn = 3;
+const String sClrVal[ciClrVal] =  // long
+	{"#A0C0FF", "#20A0FF", "#10FFFF", "#10FF10",
+	 "#FFFF10", "#FFC010", "#FF8010", "#FF1010", "#C00000", };
 
 const String clrVal(int i)
-{	return sClrVal[std::max(0, std::min(iClrVal-1, i))];  }
+{	return sClrVal[std::max(0, std::min(ciClrVal-1, i))];  }
 
 String cvsF(float v, float grn, float red, int precision=2, int width=4)
 {
-	int c = 4.f * (v - grn) / (red - grn) + 3.f /*grn id*/;
+	int c = 4.f * (v - grn) / (red - grn) + ciGrn;
 	return clrVal(c) + fToStr(v, precision, width);
 }
 String cvsI(int v, int grn, int red, int width=4)
 {
-	int c = 4.f * (v - grn) / (red - grn) + 3.f /*grn id*/;
+	int c = 4.f * (v - grn) / (red - grn) + ciGrn;
 	return clrVal(c) + iToStr(v, width);
 }
 

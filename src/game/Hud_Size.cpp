@@ -222,6 +222,7 @@ void CHud::Show(bool hideAll)
 				h.ndMap->setVisible(pSet->trackmap);
 				h.txTimes->setVisible(times);  h.txTimTxt->setVisible(times);  h.bckTimes->setVisible(times);
 				h.txLap->setVisible(times);  h.txLapTxt->setVisible(times);  h.bckLap->setVisible(times);
+				if (!times)  h.bckWarn->setVisible(0);
 
 				/*h.bckOpp->setVisible(opp);
 				h.txOpp[0]->setVisible(opp);  h.txOpp[1]->setVisible(opp);  h.txOpp[2]->setVisible(opp);*/
