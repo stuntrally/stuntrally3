@@ -117,4 +117,4 @@ Thank you for donating. For now, I didn't set up patreon yet.
 **I have a question that is not answered here / how can I learn more about this project?**  
 Firstly by reading the Documentation. It describes most things already.  
 Lastly, you can ask on Forum.  
-For info about CryHam (main creator of SR), his other project you can read more on [CryHam's website](https://cryham.tuxfamily.org/).
+For info about CryHam (main creator of SR), his other projects, and more, you can read on [CryHam's website](https://cryham.tuxfamily.org/).

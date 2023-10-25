@@ -15,11 +15,11 @@ Git [repo](https://github.com/stuntrally/stuntrally3) and [tracks](https://githu
 ### 3.0
 
 - Water, fluids  
-  tweak par, fix, **refract, depth** for color, border alpha, fix in `ed cam prv`
+  tweak par, fix, **refract, depth** for color, border alpha, fix reflect in `ed F7 cam prv`
 - Fog, 2 colors cam dir fix, `fix bright pipes`  
 - Terrain  
-  **shadowmap** fix < 0, save/load  
-  fix triplanar normalmaps, add emissive par  
+  **shadowmap** fix < 0, save/load-  
+  add emissive, reflect par, fix triplanar normalmaps-  
   blendmap also .hlsl or .any  
   read blendmap, for ter wheel `surface` ids, many ters  
 - Road  
@@ -31,22 +31,20 @@ Git [repo](https://github.com/stuntrally/stuntrally3) and [tracks](https://githu
 
 - **Editor**, fix  
   `save` Hmaps before lay upd  
-  **rtt** upd skip fix, or one shot on save  
+  **rtt** upd skip fix, or create on save  
   terrains move, ray, pos edit  
-  objs pick errors?  
-  _tools_ fix scale ter h, copy horizon, which ter, road  
+  objs pick errors  
+  _tools_: fix scale ter h, copy horizon, which ter, road  
 
 - **HUD**  
-  HudRend issues  
-  fix **Splitscreen**, gauges  
+  fix **Splitscreen** crash, gauges  
   _Minimap_ circle, terrain add, fix pos tris  
+  HudRend map issues-  
 
 - Game, meh fix  
   water vis dist?  
-  Graphics Options: terrain, horizons lod bias-  
   tire trails no uv tex-  
   cd veget mesh, LODs adjust  
-  paint datablock2 clone fix-  
   gpu mem leaks or renders inactive  
 
 New tracks **ghosts**, add to champs and challs 🏆  
