@@ -329,6 +329,7 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 	//---------------------------------------------------------------
 	int fl = sc->fluids.size();
 	Warn(NOTE,"---- Fluids - used: "+toStr(fl));
+	if (fl > 6)  Warn(WARN,"Many fluids present (> 6), disable reflection on smaller");
 	hqFluids = fl > 0;
 	if (hqFluids)  Warn(INFO,"HQ, fluid present");
 	

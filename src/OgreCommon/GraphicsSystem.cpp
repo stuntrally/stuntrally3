@@ -655,7 +655,7 @@ void GraphicsSystem::registerHlms()
 		}
 		hlmsUnlit2 = OGRE_NEW HlmsUnlit2( ar, &dirs );
 		Root::getSingleton().getHlmsManager()->registerHlms( hlmsUnlit2 );
-		hlmsUnlit2->setDebugOutputPath(true, false, PATHS::ShadersDir()+"/");
+		hlmsUnlit2->setDebugOutputPath(false, false, PATHS::ShadersDir()+"/");
 	}
 
 	{	//  Create & Register HlmsPbs2  ----
@@ -669,7 +669,7 @@ void GraphicsSystem::registerHlms()
 		}
 		hlmsPbs2 = OGRE_NEW HlmsPbs2( ar, &dirs );
 		Root::getSingleton().getHlmsManager()->registerHlms( hlmsPbs2 );
-		hlmsPbs2->setDebugOutputPath(true, false, PATHS::ShadersDir()+"/");
+		hlmsPbs2->setDebugOutputPath(false, false, PATHS::ShadersDir()+"/");
 	}
 
 
