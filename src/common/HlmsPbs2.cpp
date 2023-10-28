@@ -277,6 +277,7 @@ public:
 	        out += ",\n\t\t\t\"fluid\" : true";
 		if (db2->eType == DB_Paint)
 	        out += ",\n\t\t\t\"paint\" : true";
+		// todo: env "reflect", auto add DynamicCubemap ..
 
         HlmsJsonPbs::saveMaterial( datablock, out );
     }

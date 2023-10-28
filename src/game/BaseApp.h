@@ -47,32 +47,18 @@ public:
 	
 	void showMouse(), hideMouse(), updMouse();
 	
-	///  effects
-	// void recreateCompositor();
-	// bool AnyEffectEnabled();
-
 	//  wnd, hud, upl
 	bool bWindowResized =1, bSizeHUD =1, bRecreateHUD =0;
 	// float roadUpdTm =0.f;
-	// Ogre::SceneNode* ndSky =0;  //-
 	
 
 	// bool mShowDialog =0, mShutDown =0;
-	// bool setup(), configure();  void updateStats();
+	// bool setup(), configure();;
 
-	///  create
-	// virtual void createScene() = 0;
-	// virtual void destroyScene() = 0;
-
-	// void createViewports(), refreshCompositor(bool disableAll=false);
 	// void setupResources(), createResourceListener(), loadResources();
 	void LoadingOn(), LoadingOff();
 
 	///  frame events
-	// bool frameRenderingQueued(const Ogre::FrameEvent& evt);
-	// bool frameEnded(const Ogre::FrameEvent& evt);
-	// virtual bool frameStart(Ogre::Real time) = 0;
-	// virtual bool frameEnd(Ogre::Real time) = 0;
 	// void onCursorChange(const std::string& name);
 
 

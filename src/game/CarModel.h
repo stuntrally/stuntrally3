@@ -11,7 +11,7 @@
 #include <vector>
 #include <string>
 
-namespace Ogre {  class HlmsPbsDatablock;
+namespace Ogre {
 	class SceneNode;  class Camera;  class SceneManager;
 	class ParticleSystem;  class Item;  //class Terra;
 	namespace v1 {  class RibbonTrail;  class BillboardSet;  }  }

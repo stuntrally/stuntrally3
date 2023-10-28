@@ -184,8 +184,10 @@ void BaseApp::updMouse()
 	else      hideMouse();
 
 	auto* inp = mGraphicsSystem->getInputHandler();
+#ifndef DEBUG
 	inp->setGrabMousePointer( pSet->mouse_capture && !gui );
 	inp->setMouseRelative( pSet->mouse_capture && !gui );
+#endif
 	// inp->setMouseVisible( pSet->mouse_capture );
 	// mInputWrapper->setAllowGrab(pSet->mouse_capture);
 }

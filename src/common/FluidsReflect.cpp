@@ -143,7 +143,6 @@ void FluidsReflect::DestroyRTT()
 
 void FluidsReflect::CreateRTT()
 {
-	// return;  // todo: water ...
 	LogO("C~~~ create Fluids RTT");
 	if (mPlanarRefl)
 	{	LogO("C~~~ create Fluids RTT ALREADY done!");
@@ -161,7 +160,7 @@ void FluidsReflect::CreateRTT()
 	{
 		mPlanarRefl = new PlanarReflections(
 			app->pSet, app->mSceneMgr, root->getCompositorManager2(),
-			500.0, 0 );  // par-?
+			50.0, 0 );  //** par-? 500
 		uint32 size = app->pSet->GetTexSize(app->pSet->g.water_reflect);
 
 		mPlanarRefl->setMaxActiveActors( all,
@@ -178,8 +177,9 @@ void FluidsReflect::CreateRTT()
 		mWsListener = new ReflectListener( app, mPlanarRefl );
 
 		for (auto* ws : app->mWorkspaces)
+		{	ws->removeListener( mWsListener );  // not necessary
 			ws->addListener( mWsListener );
-	}
+	}	}
 
 	Hlms *hlms = root->getHlmsManager()->getHlms( HLMS_PBS );
 	assert( dynamic_cast<HlmsPbs2 *>( hlms ) );

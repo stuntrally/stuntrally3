@@ -64,8 +64,8 @@ void ViewDim::SetDim(int views, bool horizontal, int i/*player view*/)
 			else if (i == 4)  Set01(0.5, 0.5, 0.5, 0.5);  // [    |    ]
 		}else{
 			if (i < 3)        Set01(0.0, i*t, 0.5, t);    // [--|  ]
-			else if (i == 0)  Set01(0.5, 0.0, 0.5, 0.5);  // [--|--]
-			else if (i == 1)  Set01(0.5, 0.5, 0.5, 0.5);  // [--|  ]
+			else if (i == 3)  Set01(0.5, 0.0, 0.5, 0.5);  // [--|--]
+			else if (i == 4)  Set01(0.5, 0.5, 0.5, 0.5);  // [--|  ]
 		}	break;
 	case 6:                                      // [  |  |  ]
 		Set01((i%3) * t, (i/3) * 0.5, t, 0.5);   // [--+--+--]
