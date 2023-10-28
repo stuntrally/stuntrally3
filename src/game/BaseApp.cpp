@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "Def_Str.h"
 #include "BaseApp.h"
 #include "CarModel.h"
@@ -72,7 +73,7 @@ void BaseApp::mouseMoved(const SDL_Event &arg)
 	if (arg.type == SDL_MOUSEMOTION)
 	{
 		mInputCtrl->mouseMoved(arg.motion);
-		for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->mouseMoved(arg.motion);
+		for (int i=0; i < MAX_Players; ++i)  mInputCtrlPlayer[i]->mouseMoved(arg.motion);
 
 		xAbs = arg.motion.x;  xRel = arg.motion.xrel;
 		yAbs = arg.motion.y;  yRel = arg.motion.yrel;
@@ -100,7 +101,7 @@ void BaseApp::mouseMoved(const SDL_Event &arg)
 void BaseApp::mousePressed( const SDL_MouseButtonEvent& arg, Uint8 id )
 {
 	mInputCtrl->mousePressed(arg, id);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->mousePressed(arg, id);
+	for (int i=0; i < MAX_Players; ++i)  mInputCtrlPlayer[i]->mousePressed(arg, id);
 
 	if (bAssignKey)  return;
 
@@ -118,7 +119,7 @@ void BaseApp::mousePressed( const SDL_MouseButtonEvent& arg, Uint8 id )
 void BaseApp::mouseReleased( const SDL_MouseButtonEvent& arg, Uint8 id )
 {
 	mInputCtrl->mouseReleased(arg, id);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->mouseReleased(arg, id);
+	for (int i=0; i < MAX_Players; ++i)  mInputCtrlPlayer[i]->mouseReleased(arg, id);
 
 	if (bAssignKey)  return;
 
@@ -148,19 +149,19 @@ void BaseApp::textInput(const SDL_TextInputEvent &arg)
 void BaseApp::joyAxisMoved(const SDL_JoyAxisEvent &arg, int axis )
 {
 	mInputCtrl->axisMoved(arg, axis);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->axisMoved(arg, axis);
+	for (int i=0; i < MAX_Players; ++i)  mInputCtrlPlayer[i]->axisMoved(arg, axis);
 }
 
 void BaseApp::joyButtonPressed(const SDL_JoyButtonEvent &evt, int button)
 {
 	mInputCtrl->buttonPressed(evt, button);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->buttonPressed(evt, button);
+	for (int i=0; i < MAX_Players; ++i)  mInputCtrlPlayer[i]->buttonPressed(evt, button);
 }
 
 void BaseApp::joyButtonReleased(const SDL_JoyButtonEvent &evt, int button)
 {
 	mInputCtrl->buttonReleased(evt, button);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->buttonReleased(evt, button);
+	for (int i=0; i < MAX_Players; ++i)  mInputCtrlPlayer[i]->buttonReleased(evt, button);
 }
 
 

@@ -12,7 +12,7 @@ CInput::CInput(App* app1)
 	:app(app1)
 {
 	int p,a;
-	for (p=0; p < MAX_PLAYERS; ++p)
+	for (p=0; p < MAX_Players; ++p)
 	for (a=0; a < NumPlayerActions; ++a)
 		mPlayerInputState[p][a] = 0;
 }
@@ -25,7 +25,7 @@ void CInput::LoadInputDefaults()
 	//  clear
 	mInputActions.clear();
 	int i,p,n;
-	for (i=0; i < MAX_PLAYERS; ++i)
+	for (i=0; i < MAX_Players; ++i)
 		mInputActionsPlayer[i].clear();
 
 
@@ -64,7 +64,7 @@ void CInput::LoadInputDefaults()
 	int id[iBoth]  = {0,1,0,2,3,1};  // id for both
 
 	//  add
-	for (p=0; p < MAX_PLAYERS; ++p)
+	for (p=0; p < MAX_Players; ++p)
 	{
 		#define out(p, key)  p >= 4 ? SDLK_UNKNOWN : key
 		for (n=0; n < iBoth; ++n)
@@ -78,7 +78,7 @@ void CInput::LoadInputDefaults()
 
 	//  Load
 	LoadInputDefaults(mInputActions, app->mInputCtrl);
-	for (i=0; i < MAX_PLAYERS; ++i)
+	for (i=0; i < MAX_Players; ++i)
 		LoadInputDefaults(mInputActionsPlayer[i], app->mInputCtrlPlayer[i]);
 }
 

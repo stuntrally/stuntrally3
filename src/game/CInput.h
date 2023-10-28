@@ -74,11 +74,11 @@ public:
 	CInput(App* app1);
 
 	//  Input
-	float mPlayerInputState[MAX_PLAYERS][NumPlayerActions];
+	float mPlayerInputState[MAX_Players][NumPlayerActions];
 	std::mutex mPlayerInputStateMutex;
 	
 	std::vector<InputAction> mInputActions;
-	std::vector<InputAction> mInputActionsPlayer[MAX_PLAYERS];
+	std::vector<InputAction> mInputActionsPlayer[MAX_Players];
 
 	///  Add
 	//  Global trigger

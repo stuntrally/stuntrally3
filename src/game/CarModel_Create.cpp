@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "Def_Str.h"
 #include "CScene.h"
 #include "paths.h"
@@ -119,13 +120,14 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 	bool ghost, uint32 visFlags,
 	Aabb* bbox, bool bLogInfo, bool body)
 {
-	if (!FileExists(sCar2 + sMesh))
+	auto mesh = sCar2 + sMesh;
+	if (!FileExists(mesh))
 		return;
-	LogO("CreatePart " + sCarI + " " + sDirname +  sMesh + " r "+  sCarI + " mtr " + sMat);
+	LogO("CreatePart " + sCarI + " " + mesh + " r "+  sCarI + " mtr " + sMat);
 	
 	Item *item =0;
 	try
-	{	item = mSceneMgr->createItem( sDirname + sMesh, sCarI, SCENE_DYNAMIC );
+	{	item = mSceneMgr->createItem( mesh, sCarI, SCENE_DYNAMIC );
 		pApp->SetTexWrap(item);
 
 		//**  set reflection cube
@@ -192,9 +194,9 @@ void CarModel::Create()
 	//if (!pCar)  return;
 
 	String strI = toStr(iIndex)+ (cType == CT_TRACK ? "Z" : (cType == CT_GHOST2 ? "V" :""));
-	mtrId = toStr(iIndex);
+	mtrId = isGhostTrk() ? "T" : isGhost() ? "G" : toStr(iIndex);  // _ in cars.material
 	String sCarI = "Car" + strI;
-	resGrpId = sCarI;
+	resGrpId = sCarI;  // just for unique name
 
 	String sCars = PATHS::Cars() + "/" + sDirname;
 	resCar = sCars + "/textures";

@@ -147,10 +147,10 @@ public:
 		Ogre::Vector3 pos, Ogre::Vector3 lookAt);
 	void DestroyCameras();
 	
-	//  viewport dimensions, for each player [4]
-	ViewDim mDims[MAX_PLAYERS];
+	//  viewport dimensions, for each player
+	ViewDim mDims[MAX_Players];
 
-	//  workspace, Ogre render setup   players [4] + 1 for Refl cube, more for fluids etc
+	//  workspace, Ogre render setup   players + 1 for Refl cube, more for fluids etc
 	std::vector<Ogre::CompositorWorkspace*> mWorkspaces;
 
 

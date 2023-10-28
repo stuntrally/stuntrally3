@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "Def_Str.h"
 #include "Gui_Def.h"
 #include "GuiCom.h"
@@ -329,8 +330,8 @@ void CGui::InitGui()
 
 
 	//  👥 Split screen  ------------------------------------------------------------
-	Btn("btnPlayers1", btnNumPlayers);	Btn("btnPlayers2", btnNumPlayers);
-	Btn("btnPlayers3", btnNumPlayers);	Btn("btnPlayers4", btnNumPlayers);
+	for (int i=0; i < MAX_Players; ++i)
+	{	Btn("btnPlayers"+toStr(i+1), btnNumPlayers);  }
 
 	tbPlr[0] = fTab("SubTabPlayer");   Tev(tbPlr[0], Player);
 	tbPlr[1] = fTab("SubTabPlayer2");  Tev(tbPlr[1], Player);

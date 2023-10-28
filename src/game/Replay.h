@@ -207,6 +207,6 @@ public:
 
 	void Clear();
 private:
-	std::vector<RewindFrame> frames[MAX_PLAYERS];  // 4 players max (split screen)
-	int idLast[MAX_PLAYERS];  // last index from GetFrame (optimisation)
+	std::vector<RewindFrame> frames[MAX_Players];  // players (split screen)
+	int idLast[MAX_Players];  // last index from GetFrame (optimisation)
 };

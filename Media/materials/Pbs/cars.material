@@ -100,11 +100,13 @@ hlms HI_body pbs //: car_body
 	// metalness 0.5
 	paint yes
 }
-hlms HI_0 pbs : HI_body {  }
+hlms HI_0 pbs : HI_body {  }  // meh way, fixme HlmsPbsDb2::cloneImpl
 hlms HI_1 pbs : HI_body {  }
 hlms HI_2 pbs : HI_body {  }
 hlms HI_3 pbs : HI_body {  }
 hlms HI_4 pbs : HI_body {  }
+hlms HI_5 pbs : HI_body {  }  // MAX_Players
+hlms HI_G pbs : HI_body {  }  // ghost
 
 hlms HI_interior pbs //: car_interior
 {
@@ -162,6 +164,8 @@ hlms S8_1 pbs : S8_carpaint {  }
 hlms S8_2 pbs : S8_carpaint {  }
 hlms S8_3 pbs : S8_carpaint {  }
 hlms S8_4 pbs : S8_carpaint {  }
+hlms S8_5 pbs : S8_carpaint {  }
+hlms S8_G pbs : S8_carpaint {  }
 
 hlms S8_glass pbs : car_glass
 {
@@ -216,6 +220,8 @@ hlms XZ_1 pbs : XZ_body1_material_ {  }
 hlms XZ_2 pbs : XZ_body1_material_ {  }
 hlms XZ_3 pbs : XZ_body1_material_ {  }
 hlms XZ_4 pbs : XZ_body1_material_ {  }
+hlms XZ_5 pbs : XZ_body1_material_ {  }
+hlms XZ_G pbs : XZ_body1_material_ {  }
 
 hlms XZ_glass pbs : car_glass
 {
@@ -269,6 +275,8 @@ hlms LK4_1 pbs : LK4_body {  }
 hlms LK4_2 pbs : LK4_body {  }
 hlms LK4_3 pbs : LK4_body {  }
 hlms LK4_4 pbs : LK4_body {  }
+hlms LK4_5 pbs : LK4_body {  }
+hlms LK4_G pbs : LK4_body {  }
 
 hlms LK4_glass pbs : car_glass2
 {
@@ -305,6 +313,8 @@ hlms HR_1 pbs : HR_body1 {  }
 hlms HR_2 pbs : HR_body1 {  }
 hlms HR_3 pbs : HR_body1 {  }
 hlms HR_4 pbs : HR_body1 {  }
+hlms HR_5 pbs : HR_body1 {  }
+hlms HR_G pbs : HR_body1 {  }
 
 hlms HR_glass pbs : car_glass2
 {
@@ -337,6 +347,8 @@ hlms OT_1 pbs : OT_body1234 {  }
 hlms OT_2 pbs : OT_body1234 {  }
 hlms OT_3 pbs : OT_body1234 {  }
 hlms OT_4 pbs : OT_body1234 {  }
+hlms OT_5 pbs : OT_body1234 {  }
+hlms OT_G pbs : OT_body1234 {  }
 
 hlms OT_glass pbs : car_glass2
 {
@@ -373,6 +385,8 @@ hlms FR4_1 pbs : FR4_body {  }
 hlms FR4_2 pbs : FR4_body {  }
 hlms FR4_3 pbs : FR4_body {  }
 hlms FR4_4 pbs : FR4_body {  }
+hlms FR4_5 pbs : FR4_body {  }
+hlms FR4_G pbs : FR4_body {  }
 
 hlms FR4_glass pbs : car_glass2
 {
@@ -416,6 +430,8 @@ hlms UV_1 pbs : UV__body {  }
 hlms UV_2 pbs : UV__body {  }
 hlms UV_3 pbs : UV__body {  }
 hlms UV_4 pbs : UV__body {  }
+hlms UV_5 pbs : UV__body {  }
+hlms UV_G pbs : UV__body {  }
 
 hlms UV_interior pbs : car_interior
 {
@@ -451,6 +467,8 @@ hlms TW_1 pbs : TW_body1 {  }
 hlms TW_2 pbs : TW_body1 {  }
 hlms TW_3 pbs : TW_body1 {  }
 hlms TW_4 pbs : TW_body1 {  }
+hlms TW_5 pbs : TW_body1 {  }
+hlms TW_G pbs : TW_body1 {  }
 
 hlms TW_glass pbs //: car_interior
 {
@@ -506,6 +524,8 @@ hlms TU_1 pbs : TU_body {  }
 hlms TU_2 pbs : TU_body {  }
 hlms TU_3 pbs : TU_body {  }
 hlms TU_4 pbs : TU_body {  }
+hlms TU_5 pbs : TU_body {  }
+hlms TU_G pbs : TU_body {  }
 
 hlms TU_glass pbs
 {
@@ -561,6 +581,8 @@ hlms SZ_1 pbs : SZ_body {  }
 hlms SZ_2 pbs : SZ_body {  }
 hlms SZ_3 pbs : SZ_body {  }
 hlms SZ_4 pbs : SZ_body {  }
+hlms SZ_5 pbs : SZ_body {  }
+hlms SZ_G pbs : SZ_body {  }
 
 hlms SZ_glass pbs : car_glass2
 {
@@ -600,6 +622,8 @@ hlms FN_1 pbs : FN_body {  }
 hlms FN_2 pbs : FN_body {  }
 hlms FN_3 pbs : FN_body {  }
 hlms FN_4 pbs : FN_body {  }
+hlms FN_5 pbs : FN_body {  }
+hlms FN_G pbs : FN_body {  }
 
 hlms FN_glass pbs : car_glass
 {
@@ -649,6 +673,8 @@ hlms V1_1 pbs : V1_body1234 {  }
 hlms V1_2 pbs : V1_body1234 {  }
 hlms V1_3 pbs : V1_body1234 {  }
 hlms V1_4 pbs : V1_body1234 {  }
+hlms V1_5 pbs : V1_body1234 {  }
+hlms V1_G pbs : V1_body1234 {  }
 
 hlms V1_interior pbs : car_interior
 {
@@ -673,6 +699,8 @@ hlms V2_1 pbs : V2_body {  }
 hlms V2_2 pbs : V2_body {  }
 hlms V2_3 pbs : V2_body {  }
 hlms V2_4 pbs : V2_body {  }
+hlms V2_5 pbs : V2_body {  }
+hlms V2_G pbs : V2_body {  }
 
 hlms V2_interior pbs : car_interior
 {
@@ -701,6 +729,8 @@ hlms V3_1 pbs : V3_body {  }
 hlms V3_2 pbs : V3_body {  }
 hlms V3_3 pbs : V3_body {  }
 hlms V3_4 pbs : V3_body {  }
+hlms V3_5 pbs : V3_body {  }
+hlms V3_G pbs : V3_body {  }
 
 hlms V3_interior pbs : car_interior
 {
@@ -728,6 +758,8 @@ hlms O_1 pbs : O_body1 {  }
 hlms O_2 pbs : O_body1 {  }
 hlms O_3 pbs : O_body1 {  }
 hlms O_4 pbs : O_body1 {  }
+hlms O_5 pbs : O_body1 {  }
+hlms O_G pbs : O_body1 {  }
 
 // test refl
 hlms O_glass1 pbs //: car_glass
@@ -792,6 +824,8 @@ hlms Y7_1 pbs : Y7_body {  }
 hlms Y7_2 pbs : Y7_body {  }
 hlms Y7_3 pbs : Y7_body {  }
 hlms Y7_4 pbs : Y7_body {  }
+hlms Y7_5 pbs : Y7_body {  }
+hlms Y7_G pbs : Y7_body {  }
 
 hlms Y7_glass pbs : car_glass2
 {
@@ -843,6 +877,8 @@ hlms BV_1 pbs : BV_body {  }
 hlms BV_2 pbs : BV_body {  }
 hlms BV_3 pbs : BV_body {  }
 hlms BV_4 pbs : BV_body {  }
+hlms BV_5 pbs : BV_body {  }
+hlms BV_G pbs : BV_body {  }
 
 hlms BV_interior pbs : car_body
 {
@@ -881,6 +917,8 @@ hlms U6_1 pbs : U6_body {  }
 hlms U6_2 pbs : U6_body {  }
 hlms U6_3 pbs : U6_body {  }
 hlms U6_4 pbs : U6_body {  }
+hlms U6_5 pbs : U6_body {  }
+hlms U6_G pbs : U6_body {  }
 
 hlms U6_interior pbs : car_interior
 {
@@ -916,6 +954,8 @@ hlms U8_1 pbs : U8_body {  }
 hlms U8_2 pbs : U8_body {  }
 hlms U8_3 pbs : U8_body {  }
 hlms U8_4 pbs : U8_body {  }
+hlms U8_5 pbs : U8_body {  }
+hlms U8_G pbs : U8_body {  }
 
 hlms U8_glass pbs : car_glass
 {
@@ -953,6 +993,8 @@ hlms MO_1 pbs : MO_body {  }
 hlms MO_2 pbs : MO_body {  }
 hlms MO_3 pbs : MO_body {  }
 hlms MO_4 pbs : MO_body {  }
+hlms MO_5 pbs : MO_body {  }
+hlms MO_G pbs : MO_body {  }
 
 hlms MO_interior pbs : car_interior
 {
@@ -994,6 +1036,8 @@ hlms 3B_1 pbs : 3B_body {  }
 hlms 3B_2 pbs : 3B_body {  }
 hlms 3B_3 pbs : 3B_body {  }
 hlms 3B_4 pbs : 3B_body {  }
+hlms 3B_5 pbs : 3B_body {  }
+hlms 3B_G pbs : 3B_body {  }
 
 hlms 3B_interior pbs //: car_body
 {
@@ -1042,6 +1086,8 @@ hlms BE_1 pbs : BE_body {  }
 hlms BE_2 pbs : BE_body {  }
 hlms BE_3 pbs : BE_body {  }
 hlms BE_4 pbs : BE_body {  }
+hlms BE_5 pbs : BE_body {  }
+hlms BE_G pbs : BE_body {  }
 
 hlms BE_body_noclr pbs //: car_interior
 {
@@ -1111,6 +1157,8 @@ hlms SX_1 pbs : SX_body {  }
 hlms SX_2 pbs : SX_body {  }
 hlms SX_3 pbs : SX_body {  }
 hlms SX_4 pbs : SX_body {  }
+hlms SX_5 pbs : SX_body {  }
+hlms SX_G pbs : SX_body {  }
 
 hlms SX_exterior pbs //: car_interior
 {
@@ -1203,8 +1251,10 @@ hlms ES_0 pbs : body_realtime {  }
 hlms ES_1 pbs : body_realtime {  }
 hlms ES_2 pbs : body_realtime {  }
 hlms ES_3 pbs : body_realtime {  }
-hlms ES_4 pbs : body_realtime {  }  // ghost
-hlms ES_5 pbs : body_realtime {  }  // track
+hlms ES_4 pbs : body_realtime {  }
+hlms ES_5 pbs : body_realtime {  }  // MAX_Players
+hlms ES_G pbs : body_realtime {  }  // Ghost
+hlms ES_T pbs : body_realtime {  }  // Track  MAX_Vehicles
 
 hlms ES_interior pbs //: car_interior
 {

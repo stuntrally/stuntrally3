@@ -1,5 +1,5 @@
 #include "pch.h"
-// #include "Def_Str.h"
+#include "Def_Str.h"
 #include "Gui_Def.h"
 #include "GuiCom.h"
 #include "settings.h"
@@ -34,13 +34,13 @@ void CGui::SetPaint()  // Mr Pet Saint
 	
 	auto& cm = app->carModels;
 	int s = cm.size(), i;
-	if (iCurCar == 4)  // ghost
+	if (iCurCar == MAX_Players)  // Ghost 👻
 	{
 		for (i=0; i < s; ++i)
 			if (cm[i]->isGhost() && !cm[i]->isGhostTrk())
 				cm[i]->SetPaint();
 	}
-	else if (iCurCar == 5)  // track's ghost
+	else if (iCurCar == MAX_Players + 1)  // Track's ghost 🏞️👻
 	{
 		for (i=0; i < s; ++i)
 			if (cm[i]->isGhostTrk())

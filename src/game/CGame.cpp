@@ -74,7 +74,7 @@ void App::destroyScene()
 	hud->Destroy();
 	hud->arrow.Destroy(mSceneMgr);
 	
-	// for (int i=0; i<4; ++i)
+	// for (int i=0; i < MAX_Players; ++i)
 		// pSet->cam_view[i] = carsCamNum[i];
 
 	//  Delete all cars

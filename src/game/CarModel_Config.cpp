@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "dbl.h"
 #include "Def_Str.h"
 #include "mathvector.h"
@@ -23,7 +24,7 @@ CarModel::CarModel(int index, int colorId,
 
 	:pApp(app), cam(cam1)
 
-	,iIndex(index), iColor(colorId % 6)
+	,iIndex(index), iColor(colorId % MAX_Vehicles)
 	,sDirname(name)
 	,cType(type), vType(V_Car)
 

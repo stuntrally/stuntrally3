@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "Def_Str.h"
 #include "CGame.h"
 #include "CHud.h"
@@ -24,7 +25,7 @@ using namespace Ogre;
 CHud::CHud(App* ap1)
 	:app(ap1)
 {
-	hud.resize(4);
+	hud.resize(MAX_Players);
 	
 	pSet = ap1->pSet;
 	// gui = ap1->gui;

@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "Def_Str.h"
 #include "SceneXml.h"
 #include "CScene.h"
@@ -136,7 +137,7 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 				}
 				
 				//-  other start places inside terrain (split screen)  ----
-				for (int i=1; i < 4; ++i)
+				for (int i=1; i < MAX_Players; ++i)
 				{
 					Vector3 p = stPos + i * stDir * 6.f;  //par dist
 					float yt = app->scn->getTerH(p.x, p.z), yd = p.y - yt - 0.5f;

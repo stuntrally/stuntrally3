@@ -30,7 +30,7 @@ void App::keyReleased( const SDL_KeyboardEvent &arg )
 {
 	//  input
 	mInputCtrl->keyReleased(arg);
-	for (int i=0; i<4; ++i)  mInputCtrlPlayer[i]->keyReleased(arg);
+	for (int i=0; i < MAX_Players; ++i)  mInputCtrlPlayer[i]->keyReleased(arg);
 
 	if (bAssignKey)  return;
 
@@ -92,7 +92,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 {	
 	if (!mInputCtrl->keyPressed(arg))
 		return;
-	for (int i=0; i<4; ++i)
+	for (int i=0; i < MAX_Players; ++i)
 	{
 		if (!mInputCtrlPlayer[i]->keyPressed(arg))
 			return;

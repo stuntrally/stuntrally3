@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "Def_Str.h"
 #include "BaseApp.h"
 #include "paths.h"
@@ -31,7 +32,7 @@ void BaseApp::CreateInputs()
 
 	for (int j=0; j < SDL_NumJoysticks(); ++j)
 		mInputCtrl->addJoystick(j);
-	for (int i=0; i<4; ++i)
+	for (int i=0; i < MAX_Players; ++i)
 	{
 		file = PATHS::UserConfigDir() + "/input_p" + toStr(i) + ".xml";
 		mInputCtrlPlayer[i] = new ICS::InputControlSystem(file, true, mInputBindListner, NULL, 100);
@@ -63,7 +64,7 @@ BaseApp::~BaseApp()
 	//  save inputs
 	mInputCtrl->save(PATHS::UserConfigDir() + "/input.xml");
 	delete mInputCtrl;
-	for (int i=0; i<4; ++i)
+	for (int i=0; i < MAX_Players; ++i)
 	{
 		mInputCtrlPlayer[i]->save(PATHS::UserConfigDir() + "/input_p" + toStr(i) + ".xml");
 		delete mInputCtrlPlayer[i];

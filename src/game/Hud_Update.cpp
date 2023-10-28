@@ -45,8 +45,8 @@ void CHud::Update(int carId, float time)
 
 	
 	//  update HUD elements for all cars that have a viewport (local or replay)
-	int cnt = std::min(6, (int)app->carModels.size());  // all cars
-	int cntC = std::min(4, cnt - (app->isGhost2nd && !app->bRplPlay ? 1 : 0));  // all vis plr
+	int cnt = std::min(MAX_Vehicles, (int)app->carModels.size());  // all cars
+	int cntC = std::min(MAX_Players, cnt - (app->isGhost2nd && !app->bRplPlay ? 1 : 0));  // all vis plr
 	
 	UpdPosElems(cnt, cntC, carId);
 
@@ -342,7 +342,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 		  yp = -(mp.y - minY)*scY*2.f+1.f;
 
 	//  clamp to circle
-	if (bZoom /*&& bRot*/)
+	/*if (bZoom) //&& bRot)
 	{
 		float d = xp*xp + yp*yp;
 		const float dd = pSet->mini_border ? 0.95f : 0.85f;
@@ -350,7 +350,7 @@ void CHud::UpdRotElems(int baseCarId, int carId, float vel, float rpm)
 		{	d = dd/sqrt(d);
 			xp *= d;  yp *= d;
 		}
-	}else
+	}else*/
 	{	// clamp to square
 		xp = std::min(1.f, std::max(-1.f, xp));
 		yp = std::min(1.f, std::max(-1.f, yp));

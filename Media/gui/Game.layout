@@ -868,7 +868,13 @@
 						<Property key="Caption" value="#A0A060#{Player} 3"/>
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 542 -8">
-						<Property key="Caption" value="#D06060#{Player} 4"/>
+						<Property key="Caption" value="#D06060 4"/>
+					</Widget>
+					<Widget type="TabItem" skin="" position="2 24 542 -8">
+						<Property key="Caption" value="#904040 5"/>
+					</Widget>
+					<Widget type="TabItem" skin="" position="2 24 542 -8">
+						<Property key="Caption" value="#704070 6"/>
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 542 -8">
 						<Property key="Caption" value=""/>
@@ -902,7 +908,13 @@
 								<Property key="Caption" value="#A0A060#{Player} 3"/>
 							</Widget>
 							<Widget type="TabItem" skin="" position="2 24 542 -8">
-								<Property key="Caption" value="#D06060#{Player} 4"/>
+								<Property key="Caption" value="#D06060 4"/>
+							</Widget>
+							<Widget type="TabItem" skin="" position="2 24 542 -8">
+								<Property key="Caption" value="#B04040 5"/>
+							</Widget>
+							<Widget type="TabItem" skin="" position="2 24 542 -8">
+								<Property key="Caption" value="#804080 6"/>
 							</Widget>
 							<Widget type="TabItem" skin="" position="2 24 542 -8">
 								<Property key="Caption" value="#FFC020#{Ghost}"/>
@@ -1617,10 +1629,20 @@
 					<Property key="Colour" value="1 0.8 0.4"/>
 					<Property key="TextColour" value="0.9 0.65 0.3"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="309 100 48 30" name="btnPlayers4">
+				<Widget type="Button" skin="Button" position="310 100 62 30" name="btnPlayers4">
 					<Property key="Caption" value="4"/>
 					<Property key="Colour" value="1 0.6 0.6"/>
 					<Property key="TextColour" value="0.8 0.5 0.5"/>
+				</Widget>
+				<Widget type="Button" skin="Button" position="376 100 48 30" name="btnPlayers5">
+					<Property key="Caption" value="5"/>
+					<Property key="Colour" value="0.7 0.4 0.4"/>
+					<Property key="TextColour" value="0.7 0.4 0.4"/>
+				</Widget>
+				<Widget type="Button" skin="Button" position="428 100 48 30" name="btnPlayers6">
+					<Property key="Caption" value="6"/>
+					<Property key="Colour" value="0.6 0.3 0.6"/>
+					<Property key="TextColour" value="0.6 0.3 0.6"/>
 				</Widget>
 				<Widget type="TextBox" skin="TextBox" position="24 74 232 24">
 					<Property key="Caption" value="#{NumLocalPlayers}"/>

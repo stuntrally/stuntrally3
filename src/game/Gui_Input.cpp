@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "Def_Str.h"
 #include "Gui_Def.h"
 #include "GuiCom.h"
@@ -256,9 +257,9 @@ void CGui::InitInputGui()
 		cmb->addItem(TR("#{InpSet_Fast}"));
 	}
 	
-	///  fill global and 4 players tabs
-	CreateInputTab(4, false, app->input->mInputActions, app->mInputCtrl);
-	for (int i=0; i < 4; ++i)
+	///  fill global and players tabs
+	CreateInputTab(MAX_Players, false, app->input->mInputActions, app->mInputCtrl);
+	for (int i=0; i < MAX_Players; ++i)
 		CreateInputTab(i, true, app->input->mInputActionsPlayer[i], app->mInputCtrlPlayer[i]);
 }
 
@@ -400,7 +401,7 @@ bool CGui::TabInputId(int* pId)
 {
 	if (!tabInput)  return false;
 	int id = tabInput->getIndexSelected();
-	if (id > 3)  return false;
+	if (id >= MAX_Players)  return false;
 	*pId = id;  return true;
 }
 
@@ -410,9 +411,9 @@ void CGui::comboInputKeyAllPreset(ComboBoxPtr cmb, size_t val)
 	int id=0;  if (!TabInputId(&id))  return;
 
 	const int numActs = 6;  // these actions have key emul params (analog)
-	int keyActs[numActs] = {A_Boost, A_Brake, A_Flip, A_HandBrake, A_Steering, A_Throttle};
+	const int keyActs[numActs] = {A_Boost, A_Brake, A_Flip, A_HandBrake, A_Steering, A_Throttle};
 	const Real speeds[3] = {2.f, 3.f, 4.f};
-	Real vInc = speeds[val-1];
+	const Real vInc = speeds[val-1];
 
 	for (int i=0; i < numActs; ++i)
 	{
@@ -431,7 +432,7 @@ void CGui::UpdateInputBars()
 {
 	TabControl* inputTab = fTab("SubTabInput");  if (!inputTab)  return;
 	TabItem* current = inputTab->getItemSelected();
-	for (int i=0; i<current->getChildCount(); ++i)
+	for (int i=0; i < current->getChildCount(); ++i)
 	{
 		ImageBox* image = current->getChildAt(i)->castType<ImageBox>(false);
 		if (!image)  continue;

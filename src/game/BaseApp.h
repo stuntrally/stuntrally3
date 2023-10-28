@@ -85,7 +85,7 @@ public:
 	///  🕹️ Input
 	//------------------------------------------------------------
 	ICS::InputControlSystem* mInputCtrl =0;
-	ICS::InputControlSystem* mInputCtrlPlayer[MAX_PLAYERS] ={0,};
+	ICS::InputControlSystem* mInputCtrlPlayer[MAX_Players] ={0,};
 	std::vector<SDL_Joystick*> mJoysticks;
 	
 	// this is set to true when the user is asked to assign a new key

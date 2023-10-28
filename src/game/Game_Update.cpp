@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "Def_Str.h"
 #include "CScene.h"
 #include "SceneXml.h"
@@ -62,7 +63,7 @@ void App::update( float dt )
 
 	//  🕹️ Input upd  ----
 	mInputCtrl->update(dt);
-	for (int i=0; i<4; ++i)
+	for (int i=0; i < MAX_Players; ++i)  // < current ?
 		mInputCtrlPlayer[i]->update(dt);
 
 
@@ -316,7 +317,7 @@ void App::update( float dt )
 }
 
 
-//  ⚫📉 Tire Edit keys
+//  ⚫📉 Tire Edit keys  max 4 wheels
 //...................................................................
 bool App::updateTireEdit()
 {

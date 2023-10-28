@@ -87,7 +87,7 @@ public:
 		WP parent =0;
 		Hud();
 	};
-	std::vector<Hud> hud;  // const size: max viewports 4
+	std::vector<Hud> hud;  // const size: MAX_Players
 	// todo: one for all^, in splitscreen
 
 

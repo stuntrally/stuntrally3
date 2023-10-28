@@ -198,6 +198,12 @@
 						<Property key="Caption" value="#FFF850 4 "/>
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 510 492">
+						<Property key="Caption" value="#D08080 5 "/>
+					</Widget>
+					<Widget type="TabItem" skin="" position="2 24 510 492">
+						<Property key="Caption" value="#C050C0 6 "/>
+					</Widget>
+					<Widget type="TabItem" skin="" position="2 24 510 492">
 						<Property key="Caption" value="#80C0FF#{InputMain}"/>
 						<Widget type="ImageBox" skin="ImageBox" position="580 480 80 80">
 							<Property key="ImageCoord" value="512 0 128 128"/>

@@ -109,7 +109,7 @@ public:
 	//  steering range multipliers
 	float steer_range[2] = {1.0, 0.76},  // gravel/asphalt
 			steer_sim[2] = {0.65, 0.90};  // simulation modes  0 easy 1 normal
-	std::vector<int> cam_view;  //[4]
+	std::vector<int> cam_view;  // [MAX_Players]
 
 	//---------------  game config
 	class GameSet
@@ -119,8 +119,8 @@ public:
 		bool track_reversed =0;
 		float trees = 1.5f;  // 🌳🪨 veget common
 
-		std::vector<std::string> car;  //[4] local players
-		std::vector<CarPaint> clr;  //[6] also for ghosts 🎨  own paint.cfg
+		std::vector<std::string> car;  // [MAX_Players]   local players
+		std::vector<CarPaint> clr;     // [MAX_Vehicles]  also for ghosts 🎨  own paint.cfg
 
 		bool vr_mode =0;  // copy in game from pSet->
 		int local_players = 1, num_laps = 2;  // 👥 split

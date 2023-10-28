@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "paths.h"
 #include "Road.h"
 #include "Def_Str.h"
@@ -86,7 +87,7 @@ void App::LoadData()
 
 	
 	//  restore camNums
-	for (int i=0; i<4; ++i)
+	for (int i=0; i < MAX_Players; ++i)
 		if (pSet->cam_view[i] >= 0)
 			carsCamNum[i] = pSet->cam_view[i];
 
@@ -308,7 +309,7 @@ void App::LoadCleanUp()
 			carsCamNum[i] = 
 				c->iLoopLastCam != -1 ? c->iLoopLastCam +1 :  //o
 				c->fCam->miCurrent +1;  // save which cam view
-			if (i < 4)
+			if (i < MAX_Players)
 				pSet->cam_view[i] = carsCamNum[i];
 		}
 		delete c;
@@ -422,7 +423,7 @@ void App::LoadGame()
 		// This only handles one local player
 		CarModel::eCarType et = CarModel::CT_LOCAL;
 		int startId = i;
-		std::string carName = pSet->game.car[std::min(3,i)], nick = "";
+		std::string carName = pSet->game.car[std::min(MAX_Players-1,i)], nick = "";
 		if (mClient)  // 📡
 		{
 			// Various places assume carModels[0] is local
@@ -466,7 +467,7 @@ void App::LoadGame()
 		
 		//  always because ghplay can appear during play after best lap
 		// 1st ghost = orgCar
-		CarModel* c = new CarModel(i, 4, CarModel::CT_GHOST, orgCar, 0, this);
+		CarModel* c = new CarModel(i, MAX_Players, CarModel::CT_GHOST, orgCar, 0, this);
 		c->Load(-1, false);
 		c->pCar = (*carModels.begin())->pCar;  // based on 1st car
 		carModels.push_back(c);
@@ -474,7 +475,7 @@ void App::LoadGame()
 		//  2st ghost - other car
 		if (isGhost2nd)
 		{
-			CarModel* c = new CarModel(i, 4, CarModel::CT_GHOST2, ghCar, 0, this);
+			CarModel* c = new CarModel(i, MAX_Players, CarModel::CT_GHOST2, ghCar, 0, this);
 			c->Load(-1, false);
 			c->pCar = (*carModels.begin())->pCar;
 			carModels.push_back(c);
@@ -490,7 +491,7 @@ void App::LoadGame()
 		std::string file = PATHS::TrkGhosts()+"/"+ pSet->game.track + sRev + ".gho";
 		if (ghTrk.LoadFile(file))
 		{
-			CarModel* c = new CarModel(i, 5, CarModel::CT_TRACK, "ES", 0, this);
+			CarModel* c = new CarModel(i, MAX_Players+1, CarModel::CT_TRACK, "ES", 0, this);
 			c->Load(-1, false);
 			c->pCar = (*carModels.begin())->pCar;  // based on 1st car
 			carModels.push_back(c);

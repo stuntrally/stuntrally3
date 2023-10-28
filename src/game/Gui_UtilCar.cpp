@@ -263,7 +263,7 @@ void CGui::listCarChng(MultiList2* li, size_t)
 }	
 void CGui::changeCar()
 {
-	if (iCurCar < 4)
+	if (iCurCar < MAX_Players)
 		pSet->gui.car[iCurCar] = sListCar;
 }
 

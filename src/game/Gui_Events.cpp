@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "Def_Str.h"
 #include "Gui_Def.h"
 #include "GuiCom.h"
@@ -117,7 +118,7 @@ void CGui::tabPlayer(Tab, size_t id)
 {
 	iCurCar = id;
 	//  update gui for this car (color h,s,v, name, img)
-	bool plr = iCurCar < 4;
+	bool plr = iCurCar < MAX_Players;
 	if (plr)
 	{
 		string c = pSet->gui.car[iCurCar];
@@ -168,17 +169,14 @@ void CGui::btnNumPlayers(WP wp)
 {
 	auto& plr = pSet->gui.local_players;
 	if (wp)
-	{	if      (wp->getName() == "btnPlayers1")  plr = 1;
-		else if (wp->getName() == "btnPlayers2")  plr = 2;
-		else if (wp->getName() == "btnPlayers3")  plr = 3;
-		else if (wp->getName() == "btnPlayers4")  plr = 4;
-	}
+		sscanf(wp->getName().c_str(), "btnPlayers%d", &plr);
+
 	if (valLocPlayers)
 		valLocPlayers->setCaption(toStr(plr));
 	UpdWndTitle();
 
 	for (int t = 0; t < 2; ++t)  // hide tabs
-	for (int p = 1; p < (t == 0 ? 6 : 4); ++p)
+	for (int p = 1; p < (t == 0 ? MAX_Vehicles : MAX_Players); ++p)
 		tbPlr[t]->setButtonWidthAt(p, plr > p ? -1 : 1);
 }
 

@@ -127,7 +127,7 @@ public:
 
 
 	//  resource  --------
-	int iIndex = 0;  // car id
+	int iIndex = 0;  // car id for  timer, camview
 	std::string sDirname;  // dir name of car (e.g. ES)
 	Ogre::String resGrpId, mtrId;  // resource group name, material suffix
 	std::string resCar;  // path to car textures
