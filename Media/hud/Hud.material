@@ -129,10 +129,10 @@ hlms Arrow pbs
     specular 0.1 0.3 0.1
     emissive 0.1 0.3 0.1
 
-	workflow metallic
-	fresnel_coeff 0.1 0.1 0.1
-	roughness 0.2
-	metalness 0.6
+	// workflow metallic
+	fresnel_coeff 0.01 0.01 0.01
+	roughness 0.1
+	// metalness 0.6
 
     // scene_blend alpha_blend
 	// cull_mode none
@@ -140,6 +140,12 @@ hlms Arrow pbs
 	// transparency_mode transparent
 	// two_sided true
 }
+hlms Arrow0 pbs : Arrow {  }
+hlms Arrow1 pbs : Arrow {  }
+hlms Arrow2 pbs : Arrow {  }
+hlms Arrow3 pbs : Arrow {  }
+hlms Arrow4 pbs : Arrow {  }
+hlms Arrow5 pbs : Arrow {  }
 
 //  🚦 3d  road Pacenote signs
 hlms pacenote unlit

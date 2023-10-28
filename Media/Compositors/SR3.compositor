@@ -270,16 +270,16 @@ compositor_node CubemapNodeMsaa
 
 
 //------------------------------------------------------------------------------------
-//  🏞️  Main render  (👥 split screen)
+//  🏞️  [Main render]  (👥 split screens too and 🏗️ ed)
 //------------------------------------------------------------------------------------
-compositor_node SR3_Render
+abstract compositor_node SR3_RenderAbs
 {
 	in 0 rt_renderwindow
 	in 1 dynamic_cubemap
 
 	target rt_renderwindow
 	{
-		pass clear
+		pass clear  //  --------
 		{
 			profiling_id "Clear all"
 			identifier	22000
@@ -296,11 +296,10 @@ compositor_node SR3_Render
 				depth	store
 				stencil	store
 			}
-			
 			colour_value  0.02 0.015 0.03 1
 		}
 
-		//  view render  --------
+		//  [Main Render]  --------
 		pass render_scene
 		{
 			profiling_id "Main view"
@@ -321,16 +320,14 @@ compositor_node SR3_Render
 			//  materials in this pass will be using this cubemap
 			expose dynamic_cubemap
 
-			//** set in code for game: RV_MaskGameAll, not ed
-			visibility_mask  0x000011FF   // trail, sky main, all geom
+			visibility_mask  0x000011FF   // set later  RV_MaskGameAll
 			// rq_last		110  // glass,par etc
 
 			overlays	on
-			// shadows		SR3_Shadows
+			// shadows		SR3_Shadows  //** added in code
 		}
 
-
-		//  restore  ----  for Hud, split
+		//  for Hud, split  --------
 		pass render_scene
 		{
 			profiling_id "HUD"
@@ -357,10 +354,10 @@ compositor_node SR3_Render
 			overlays	off
 		}
 
-
+		//** added in code  --------
 		// pass custom MYGUI
 		// {
-			// provider?   //** added in code
+			// provider?
 			// profiling_id "GUI"
 
 			// executed in the second eye
@@ -460,12 +457,68 @@ compositor_node_shadow SR3_Shadows
 }
 
 
-//  workspace
+//  [Main Nodes]  for all  Max_Players,  vis mask  same as RV_Hud3D[..]
 //------------------------------------------------------------------------------------
-workspace SR3_Workspace
+compositor_node SR3_Render0 : SR3_RenderAbs
+{	target rt_renderwindow
+	{	pass clear			{	}
+		pass render_scene	{	visibility_mask  0x000011FF  }
+}	}
+compositor_node SR3_Render1 : SR3_RenderAbs
+{	target rt_renderwindow
+	{	pass clear			{	}
+		pass render_scene	{	visibility_mask  0x000101FF  }
+}	}
+compositor_node SR3_Render2 : SR3_RenderAbs
+{	target rt_renderwindow
+	{	pass clear			{	}
+		pass render_scene	{	visibility_mask  0x000201FF  }
+}	}
+compositor_node SR3_Render3 : SR3_RenderAbs
+{	target rt_renderwindow
+	{	pass clear			{	}
+		pass render_scene	{	visibility_mask  0x000401FF  }
+}	}
+compositor_node SR3_Render4 : SR3_RenderAbs
+{	target rt_renderwindow
+	{	pass clear			{	}
+		pass render_scene	{	visibility_mask  0x000801FF  }
+}	}
+compositor_node SR3_Render5 : SR3_RenderAbs
+{	target rt_renderwindow
+	{	pass clear			{	}
+		pass render_scene	{	visibility_mask  0x001001FF  }
+}	}
+
+//  [Workspaces]  0 also for ed 🏗️
+//------------------------------------------------------------------------------------
+workspace SR3_Workspace0
 {
-	// Render Window  on channel #0
-	connect_external 0 SR3_Render 0
-	// Cubemap  on channel #1
-	connect_external 1 SR3_Render 1
+	connect_external 0 SR3_Render0 0  // Render Window  on channel #0
+	connect_external 1 SR3_Render0 1  // Cubemap  on channel #1
+}
+workspace SR3_Workspace1
+{
+	connect_external 0 SR3_Render1 0
+	connect_external 1 SR3_Render1 1
+}
+workspace SR3_Workspace2
+{
+	connect_external 0 SR3_Render2 0
+	connect_external 1 SR3_Render2 1
+}
+workspace SR3_Workspace3
+{
+	connect_external 0 SR3_Render3 0
+	connect_external 1 SR3_Render3 1
+}
+workspace SR3_Workspace4
+{
+	connect_external 0 SR3_Render4 0
+	connect_external 1 SR3_Render4 1
+}
+workspace SR3_Workspace5
+{
+	connect_external 0 SR3_Render5 0
+	connect_external 1 SR3_Render5 1
 }

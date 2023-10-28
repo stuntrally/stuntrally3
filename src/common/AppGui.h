@@ -140,7 +140,7 @@ public:
 
 
 	//  👥 Split screen  ----------------
-	std::vector<Cam> mCamsAll, mCams;  // for each player [4]
+	std::vector<Cam> mCamsAll, mCams;  // for each player
 	Cam* findCam(Ogre::String name);
 
 	Cam* CreateCamera(Ogre::String name,
