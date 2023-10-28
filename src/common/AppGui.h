@@ -135,6 +135,7 @@ public:
 	int iReflSkip =0, iReflStart =0;
 	void CreateCubeReflect(), UpdCubeRefl();
 
+	void AddGuiShadows(bool vr_mode = false, int i = 0, bool gui = true);
 	Ogre::CompositorWorkspace* SetupCompositor();
 
 

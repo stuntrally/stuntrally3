@@ -252,8 +252,8 @@ void CarModel::Create()
 		itNextChk->setDatablockOrMaterialName("checkpoint_normal");
 		
 		ndNextChk = ndRoot->createChildSceneNode();  ToDel(ndNextChk);
-		ndNextChk->attachObject(itNextChk);  itNextChk->setVisibilityFlags(RV_Hud3D);
-		ndNextChk->setVisible(false);
+		ndNextChk->attachObject(itNextChk);
+		itNextChk->setVisibilityFlags(RV_Hud3D[iIndex]);  ndNextChk->setVisible(false);
 	}
 
 

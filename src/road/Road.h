@@ -84,6 +84,7 @@ public:
 	bool IsTrail()   // just 🎗️road (like river), but has colors per vertex
 	{	return type == RD_Trail;  }
 	int trailSegId;  // for current road trace only
+	int player = 0;  // splitscreen player for trail RV_Hud3D[..]
 
 	bool HasRoad()  // 🛣️
 	{	return !IsDecor();  }

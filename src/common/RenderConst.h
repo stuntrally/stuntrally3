@@ -1,4 +1,5 @@
 #pragma once
+#include "par.h"
 #include <OgrePrerequisites.h>
 
 #define rgDef  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME
@@ -52,11 +53,18 @@ const Ogre::uint8
 	RQG_Hud3         = RQ_OVERLAY +3;
 
 
-//  Visibility Flags  used in setVisibility
-//------------------------------------------------------------------------
+//  Visibility Flags  used in setVisibility  check same in SR3.compositor
+//-----------------------------------------------------------------------------------
 const Ogre::uint32
 	RV_Hud          = 0x00002000,  // ⏱️⏲️ hud  in game has own pass
-	RV_Hud3D        = 0x00001000,  // 🎗️   trail  and ed markers
+	RV_Hud3D[MAX_Players]
+				    ={0x00001000,  // 🎗️🥛 trail, nextchk (for splitscreen players 1..4)
+					  0x00010000,
+					  0x00020000,
+					  0x00040000,
+					  0x00080000,
+					  0x00100000},
+	RV_Hud3Ded      = RV_Hud3D[0], // ed markers
 
 	RV_Road         = 0x00000001,  // 🛣️   road only, for road textures
 	RV_Terrain      = 0x00000004,  // ⛰️   terrain  and  fluids 🌊  for ed terrain.jpg texture
@@ -74,7 +82,7 @@ const Ogre::uint32
 
 	//  vis masks
 	RV_MaskGameAll  = RV_SkyMain + RV_Road + RV_Terrain + RV_Vegetation + RV_VegetGrass + RV_Objects 
-					+ RV_Car + RV_CarGlass + RV_Hud3D,
+					+ RV_Car + RV_CarGlass, // + RV_Hud3D[player],
 	RV_MaskReflect  = RV_SkyCubeRefl + RV_Road + RV_Terrain + RV_Vegetation + RV_Objects,  // no hud, grass, car,glass,tires
 	//  most as  visibility_mask  in SR3.compositor
 	// RV_WaterReflect = RV_Terrain + RV_Vegetation + RV_Road /*+ RV_Objects /*+ RV_Car*/,

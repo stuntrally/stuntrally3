@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
 #include "settings.h"
@@ -36,6 +37,43 @@
 using namespace Ogre;
 
 
+//  common
+void AppGui::AddGuiShadows(bool vr_mode, int i, bool gui)
+{
+	auto* mgr = mRoot->getCompositorManager2();
+	CompositorNodeDef* node = mgr->getNodeDefinitionNonConst("SR3_Render"+toStr(i));  //SR3_RenderAbs
+	CompositorTargetDef* target = node->getTargetPass(0);
+	auto passes = target->getCompositorPasses();
+	CompositorPassDef* pass = passes.back();
+
+	//  🎛️ Gui, add MyGUI pass  ----
+	if (gui)
+	{
+		if (pass->getType() != PASS_CUSTOM)
+		{
+			pass = target->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
+			pass->mIdentifier = 99900;  //-?
+		}
+		if (!vr_mode)  // single gui, fullscreen
+		{
+			pass->mExecutionMask = 0x02;
+			pass->mViewportModifierMask = 0x00;
+	}	}
+
+
+	//  🌒 shadows
+	const int is = 1;  // 1
+	assert( dynamic_cast<CompositorPassSceneDef *>(passes[is]) );
+	CompositorPassSceneDef* ps = static_cast<CompositorPassSceneDef *>(passes[is]);
+	
+	switch (pSet->g.shadow_type)
+	{
+	case Sh_None:  break;  // none
+	case Sh_Depth: ps->mShadowNode = "ShadowMapFromCodeShadowNode";  break;
+	case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
+	}
+}
+
 //-----------------------------------------------------------------------------------------
 //  🪄 Setup Compositor
 //-----------------------------------------------------------------------------------------
@@ -53,6 +91,8 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		// LogO("D### setup Compositor rem workspace");
 		mgr->removeWorkspace( ws );
 	}
+	mgr->removeAllWorkspaces();  // not necessary
+	// mgr->removeAllCameras();
 	mWorkspaces.clear();
 
 
@@ -88,36 +128,6 @@ CompositorWorkspace* AppGui::SetupCompositor()
 #endif
 
 
-	//  🎛️ Gui, add MyGUI pass  ----
-	CompositorNodeDef* node = mgr->getNodeDefinitionNonConst("SR3_Render");
-	CompositorTargetDef* target = node->getTargetPass(0);
-	auto passes = target->getCompositorPasses();
-	CompositorPassDef* pass = passes.back();
-
-	if (pass->getType() != PASS_CUSTOM)
-	{
-		pass = target->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
-		pass->mIdentifier = 99900;  //-?
-	}
-	if (!vr_mode)  // single gui, fullscreen
-	{
-		pass->mExecutionMask = 0x02;
-		pass->mViewportModifierMask = 0x00;
-	}
-
-
-	//  🌒 shadows
-	const int is = 1;  // 1
-	assert( dynamic_cast<CompositorPassSceneDef *>(passes[is]) );
-	CompositorPassSceneDef* ps = static_cast<CompositorPassSceneDef *>(passes[is]);
-	
-	switch (pSet->g.shadow_type)
-	{
-	case Sh_None:  break;  // none
-	case Sh_Depth: ps->mShadowNode = "ShadowMapFromCodeShadowNode";  break;
-	case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
-	}
-
 	// mGraphicsSystem->restartCompositor();
 	// createShadowMapDebugOverlays();
 
@@ -126,7 +136,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 
 #ifndef SR_EDITOR
 	//**  game,  Hud has own render
-	ps->mVisibilityMask = RV_MaskGameAll;
+	// ps->mVisibilityMask = RV_MaskGameAll + RV_Hud3D[0]+ RV_Hud3D[1];
 	// ps->mLastRQ = RQ_OVERLAY; //RQG_CarGhost;  // no, hides pacenotes-
 #endif
 
@@ -135,16 +145,16 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	//-----------------------------------------------------------------------------------------
 	DestroyCameras();  // 💥🎥
 
-	for (int i = 0; i < 4; ++i)
+	for (int i = 0; i < MAX_Players; ++i)
 		mDims[i].Default();
-
-	const IdString wsName( "SR3_Workspace" );
 
 	if (vr_mode)
 	{
-		//  👀 VR mode  ---- ----
+		//  👀 VR mode  ---- ----  wip meh todo use OpenVR
 		//.................................................................................
 		const Real eyeSide = 0.5f, eyeFocus = 0.45f, eyeZ = -10.f;  // dist
+
+		AddGuiShadows(vr_mode, 0, true);
 
 		auto camL = CreateCamera( "EyeL", 0,
 			Vector3(-eyeSide, 0.f,0.f), Vector3(eyeFocus * -eyeSide, 0.f, eyeZ) );
@@ -155,6 +165,8 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		//  add Workspace
 		CompositorWorkspace* ws1,*ws2;
 		LogO("--++ WS add:  VR Eye L, all: "+toStr(mgr->getNumWorkspaces()));
+		auto str = "SR3_Workspace0";
+		const IdString wsName( str );
 		ws1 = mgr->addWorkspace( mSceneMgr, ext,
 				camL->cam, wsName,
 				true, -1, 0, 0,
@@ -183,6 +195,9 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		for (int i = 0; i < views; ++i)
 		{
 			bool f1 = i > 0;
+
+			AddGuiShadows(vr_mode, i, i==views-1);  // last only gui
+
 			auto c = CreateCamera( "Player" + toStr(i), 0, Vector3::ZERO, Vector3::NEGATIVE_UNIT_Z );
 			if (i==0)
 				mCamera = c->cam;
@@ -192,15 +207,14 @@ CompositorWorkspace* AppGui::SetupCompositor()
 
 			//  add Workspace
 			LogO("--++ WS add:  Split Screen "+toStr(i)+", all: "+toStr(mgr->getNumWorkspaces()));
+			auto str = "SR3_Workspace"+toStr(i);
+			const IdString wsName( str );
 			CompositorWorkspace* w =
 				mgr->addWorkspace( mSceneMgr, ext,
 					c->cam, wsName,
 					true, -1, 0, 0,
 					Vector4(d.left0, d.top0, d.width0, d.height0),
 					f1 ? 0x02 : 0x01, f1 ? 0x02 : 0x01 );
-			// CompositorTargetDef* target = w->getTargetPass(0);
-			// auto passes = target->getCompositorPasses();
-			// passes[1]->
 
 			mWorkspaces.push_back(w);
 		}
@@ -215,8 +229,12 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		auto c = CreateCamera( "Player", 0, Vector3(0,150,0), Vector3(0,0,0) );
 		mCamera = c->cam;
 
+		AddGuiShadows(vr_mode, 0, true);
+
 		//  add Workspace
 		LogO("--++ WS add:  Main, all: "+toStr(mgr->getNumWorkspaces()));
+		auto str = "SR3_Workspace0";
+		const IdString wsName( str );
 		auto ws = mgr->addWorkspace( mSceneMgr, ext, c->cam, wsName, true );  // in .compositor
 		// ws->addListener(listener);
 		mWorkspaces.push_back(ws);
@@ -261,7 +279,7 @@ Cam* AppGui::CreateCamera(String name,
 		mCams.push_back(*fc);
 		return fc;
 	}
-// #define USEnodes  //- crashes in ogre upd frustum later
+//  #define USEnodes  //- crashes in ogre upd frustum later
 #ifdef USEnodes
 	if (!nd)
 	{	nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode(SCENE_DYNAMIC);
@@ -286,7 +304,10 @@ Cam* AppGui::CreateCamera(String name,
 #endif
 
 	Cam c;
-	c.cam = cam;  c.nd = nd;
+	c.cam = cam;
+#ifdef USEnodes
+	c.nd = nd;
+#endif
 	c.name = name;
 	
 	mCamsAll.push_back(c);
@@ -330,25 +351,4 @@ Cam* AppGui::CreateCamera(String name,
 	}
 
 	mCamera = mEyeCameras[0];
-#endif
-
-
-#if 0	// todo: shadow filter..
-	if( arg.keysym.sym == SDLK_F5 )
-	{
-		Ogre::Hlms *hlms = mGraphicsSystem->getRoot()->getHlmsManager()->getHlms( Ogre::HLMS_PBS );
-
-		assert( dynamic_cast<HlmsPbs2 *>( hlms ) );
-		HlmsPbs2 *pbs = static_cast<HlmsPbs2 *>( hlms );
-
-		Ogre::HlmsPbs::ShadowFilter nextFilter = static_cast<Ogre::HlmsPbs::ShadowFilter>(
-			( pbs->getShadowFilter() + 1u ) % Ogre::HlmsPbs::NumShadowFilter );
-
-		pbs->setShadowSettings( nextFilter );
-
-		if( nextFilter == Ogre::HlmsPbs::ExponentialShadowMaps )
-			setupShadowNode( true );
-		else
-			setupShadowNode( false );
-	}
 #endif

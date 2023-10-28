@@ -21,7 +21,7 @@ void App::CreateBox(SceneNode*& nd, Item*& it,
 	// LogO("---- create cursor: " + sMat +" "+ sMesh);
 	nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	it = mSceneMgr->createItem(sMesh);
-	it->setVisibilityFlags(RV_Hud3D);
+	it->setVisibilityFlags(RV_Hud3Ded);
 	it->setCastShadows(shadow);
 	if (!sMat.empty())
 		it->setDatablockOrMaterialName(sMat);
