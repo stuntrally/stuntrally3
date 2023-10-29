@@ -31,7 +31,10 @@ void CHud::Arrow::Create(SceneManager* mgr, SETTINGS* pSet, int plr)
 	it->setRenderQueueGroup(RQG_Hud3);
 	it->setDatablockOrMaterialName("Arrow"+toStr(player));
 
-		nodeRot = node->createChildSceneNode();
+	pDb = dynamic_cast<HlmsPbsDb2*>( it->getSubItem(0)->getDatablock() );
+	// LogO(pDb ? "arrow db2 cast ok" : "arrow db2 cast fail");
+	
+	nodeRot = node->createChildSceneNode();
 	nodeRot->attachObject(it);
 	nodeRot->setScale(pSet->size_arrow/2.f * Vector3::UNIT_SCALE);
 	it->setVisibilityFlags(RV_Hud3D[player]);
@@ -69,10 +72,12 @@ void CHud::Arrow::UpdateChk(SplineRoad* road, CarModel* carM, const Vector3& pos
 			carM->fCam->cam->cam->getOrientation().zAxis()) + 1.f) / 2.f;
 
 		//  set color in material (red for wrong dir)
-		// Vector3 col1 = angle * Vector3(0.0, 0.8, 0.0) + (1.f-angle) * Vector3(0.8, 0.0, 0.0);
-		// Vector3 col2 = angle * Vector3(0.0, 0.3, 0.0) + (1.f-angle) * Vector3(0.3, 0.0, 0.0);
-		// get datablock, set diffuse..
-		}
+		Vector3 col1 = angle * Vector3(0.0, 0.8, 0.0) + (1.f-angle) * Vector3(0.8, 0.0, 0.0);
+		Vector3 col2 = angle * Vector3(0.0, 0.3, 0.0) + (1.f-angle) * Vector3(0.3, 0.0, 0.0);
+		if (pDb)
+		{	pDb->setDiffuse(col1);
+			pDb->setSpecular(col2);
+	}	}
 }
 
 void CHud::Arrow::Update(CarModel* carM, float time)
