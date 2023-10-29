@@ -1,6 +1,7 @@
 #pragma once
 // #include "PreviewTex.h"
 //#include "SceneClasses.h"
+#include "par.h"
 #include "Road.h"
 #include "FluidsReflect.h"
 #include "Grid.h"
@@ -82,10 +83,10 @@ public:
 	
 	GridMtrs grid;
 
-	//  driving aids, game only	 // todo: for each player, split ..
-	SplineRoad* trail = 0;
-	PaceNotes* pace = 0;
-	void DestroyRoads(), DestroyPace(), DestroyTrail();
+	//  driving aids, game only
+	SplineRoad* trail[MAX_Players] = {0,0,0,0,0,0,};
+	PaceNotes* pace[MAX_Players] = {0,0,0,0,0,0,};
+	void DestroyRoads(), DestroyPace(), DestroyTrail(int i), DestroyTrails();
 
 	
 	//  🌳🪨 Vegetation Trees

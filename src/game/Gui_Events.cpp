@@ -215,8 +215,12 @@ void CGui::chkHudCreate(Ck*)
 void CGui::slSizeArrow(SV*)
 {
 	float v = pSet->size_arrow * 0.5f;
-	if (hud->arrow.nodeRot)
-		hud->arrow.nodeRot->setScale(v * Vector3::UNIT_SCALE);
+	for (int i = 0; i < MAX_Players; ++i)
+	{	auto* nd = hud->arrow[i].nodeRot;
+		if (nd)
+		{	nd->setScale(v * Vector3::UNIT_SCALE);
+			nd->_getFullTransformUpdated();
+	}	}
 }
 void CGui::slCountdownTime(SL)
 {
@@ -242,8 +246,11 @@ void CGui::chkHudShow(Ck*)
 
 void CGui::chkArrow(Ck*)
 {
-	if (hud->arrow.nodeRot)
-		hud->arrow.nodeRot->setVisible(pSet->check_arrow && !app->bHideHudArr);
+	for (int i = 0; i < MAX_Players; ++i)
+	{	auto* nd = hud->arrow[i].nodeRot;
+		if (nd)
+			nd->setVisible(pSet->check_arrow && !app->bHideHudArr);
+	}
 }
 void CGui::chkBeam(Ck*)
 {
@@ -276,9 +283,10 @@ void CGui::slUpd_Pace(SV*)
 //  🎗️ trail
 void CGui::chkTrailShow(Ck*)
 {
-	if (!app->scn->trail)  return;
 	if (!pSet->trail_show)
-		app->scn->trail->SetVisTrail(false);
+		for (int i=0; i < MAX_Players; ++i)
+		if (app->scn->trail[i])
+			app->scn->trail[i]->SetVisTrail(false);
 }
 
 void CGui::chkReverse(Ck*) {  gcom->ReadTrkStats();  }

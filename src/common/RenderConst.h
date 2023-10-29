@@ -58,7 +58,7 @@ const Ogre::uint8
 const Ogre::uint32
 	RV_Hud          = 0x00002000,  // ⏱️⏲️ hud  in game has own pass
 	RV_Hud3D[MAX_Players]
-				    ={0x00001000,  // 🎗️🥛 trail, nextchk (for splitscreen players 1..4)
+				    ={0x00001000,  // 🎗️🥛 trail, pace, nextchk (for splitscreen players)
 					  0x00010000,
 					  0x00020000,
 					  0x00040000,

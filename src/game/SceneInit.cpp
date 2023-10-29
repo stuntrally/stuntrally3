@@ -280,11 +280,11 @@ void App::LoadCleanUp()
 	bool rplHide = bRplPlay && pSet->rpl_hideHudAids;
 
 	bHideHudBeam = rplRd;
-	bHideHudArr = rplRd || morePlr;
+	bHideHudArr = rplRd /*|| morePlr*/;
 	bool denyPace = gui->pChall && !gui->pChall->pacenotes;
-	bHideHudPace = morePlr || denyPace || rplHide;  // todo: ? pace, trail for splitscreen
+	bHideHudPace = /*morePlr ||*/ denyPace || rplHide;  // todo: mplr ?
 	bool denyTrail = gui->pChall && !gui->pChall->trail;
-	bHideHudTrail = morePlr || denyTrail || rplHide;
+	bHideHudTrail = /*morePlr ||*/ denyTrail || rplHide;
 
 
 	// rem old track
@@ -297,7 +297,8 @@ void App::LoadCleanUp()
 		ResourceGroupManager::getSingleton().addResourceLocation(resTrk, "FileSystem");
 	}
 
-	hud->arrow.Destroy(mSceneMgr);
+	for (int i=0; i < MAX_Players; ++i)
+		hud->arrow[i].Destroy(mSceneMgr);
 
 
 	//  Delete all cars
@@ -333,7 +334,7 @@ void App::LoadCleanUp()
 		scn->DestroyEmitters(true);  // 🔥
 		scn->DestroyAllAtmo();  // 🌦️
 	}
-	scn->DestroyTrail();
+	scn->DestroyTrails();
 
 
 	///  destroy all  shouldn't be needed..
@@ -542,7 +543,9 @@ void App::LoadScene()  // 3
 	//  🔝 checkpoint arrow
 	bool deny = gui->pChall && !gui->pChall->chk_arr;
 	if (!bHideHudArr && !deny)
-		hud->arrow.Create(mSceneMgr, pSet);
+		for (int i=0; i < carModels.size(); ++i)
+		if (!carModels[i]->isGhost())
+			hud->arrow[i].Create(mSceneMgr, pSet, i);
 }
 
 
@@ -648,8 +651,9 @@ void App::LoadRoad()
 {
 	CreateRoads();   // dstTrk inside
 		
-	if (hud->arrow.nodeRot)
-		hud->arrow.nodeRot->setVisible(pSet->check_arrow && !bHideHudArr);
+	for (int i=0; i < MAX_Players; ++i)
+	if (hud->arrow[i].nodeRot)
+		hud->arrow[i].nodeRot->setVisible(pSet->check_arrow && !bHideHudArr);
 
 	//  boost fuel at start  . . .
 	//  based on road length
@@ -908,14 +912,19 @@ void App::CreateRoads()
 
 	//  🚦 pace ~ ~
 	LogO("D--~ destroy Trail");
-	scn->DestroyTrail();
+	scn->DestroyTrails();
 
 	scn->DestroyPace();
 	if (!bHideHudPace)
 	{
-		scn->pace = new PaceNotes(pSet);
-		scn->pace->Setup(mSceneMgr, cam, scn->ter, gui->mGui, mWindow);
-	}
+		for (int i=0; i < carModels.size(); ++i)
+		if (!carModels[i]->isGhost())
+		{	scn->pace[i] = new PaceNotes(pSet);
+			scn->pace[i]->player = i;
+			scn->pace[i]->Setup(mSceneMgr, 
+				carModels[i]->fCam->cam->cam, // &mCams[i],
+				scn->ter, gui->mGui, mWindow);
+	}	}
 
 
 	//  after road load we have iChk1 so set it for carModels
@@ -938,13 +947,16 @@ void App::CreateRoads()
 	
 
 	//  🚦 pace ~ ~
-	if (scn->pace)
+	for (int i=0; i < MAX_Players; ++i)
+	if (scn->pace[i])
 	{
 		road->RebuildRoadPace();  //todo: load only..
-		scn->pace->Rebuild(road, scn->sc, pSet->game.track_reversed);
+		scn->pace[i]->Rebuild(road, scn->sc, pSet->game.track_reversed);
 	}
 
-	CreateTrail(cam);
+	for (int i=0; i < carModels.size(); ++i)
+	if (!carModels[i]->isGhost())
+		CreateTrail(cam, i);
 }
 
 
@@ -975,12 +987,12 @@ void App::CreateRoadsInt()
 ///  Trail ghost track  ~~--~-~--
 //---------------------------------------------------------------------------------------------------------------
 
-void App::CreateTrail(Cam* cam)
+void App::CreateTrail(Cam* cam, int id)
 {
 	// if (!pSet->trail_show)
 		// return;  // fixme crash in replay--
-	if (scn->trail)
-		scn->DestroyTrail();
+	if (scn->trail[id])
+		scn->DestroyTrail(id);
 
 	//  load
 	TrackGhost gho;
@@ -1000,6 +1012,7 @@ void App::CreateTrail(Cam* cam)
 
 	//  setup trail road
 	SplineRoad* tr = new SplineRoad(pGame);
+	tr->player = id;
 	tr->Setup("", 0.7, scn, mSceneMgr, cam, 100);
 	tr->sMtrRoad[0] = "trailRoad";  tr->bMtrRoadTer[0] = false;
 	tr->type = RD_Trail;  tr->isLooped = false;
@@ -1085,7 +1098,7 @@ void App::CreateTrail(Cam* cam)
 
 	tr->Rebuild(true);
 	tr->RebuildRoadInt();
-	scn->trail = tr;
+	scn->trail[id] = tr;
 	bool vis = !pSet->trail_show || bHideHudTrail;
 	tr->SetVisTrail(!vis);
 	// tr->SetVisTrail(false);

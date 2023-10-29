@@ -413,17 +413,19 @@ void App::GraphsNewVals()				// Game
 		if (gsi >= 2 && !carModels.empty())
 		{
 			CarModel* cm = carModels[0];
+			int id = cm->iIndex;
+			auto* pace = scn->pace[id];
 			int ncs = scn->road->mChks.size();
-			if (scn->pace)
+			if (pace)
 			graphs[0]->UpdTitle("Pacenotes\n"
-				"#E0F0FF cur "+toStr(scn->pace->iCur)+"  all "+toStr(scn->pace->iAll)+"  st "+toStr(scn->pace->iStart));
+				"#E0F0FF cur "+toStr(pace->iCur)+"  all "+toStr(pace->iAll)+"  st "+toStr(pace->iStart));
 			graphs[1]->UpdTitle("\nCheckpoints  #F0F0D0 in "+iToStr(cm->iInChk,2)+" "+
 				" | "+ (cm->iInChk >= 0 ? toStr( (cm->iInChk - scn->road->iChkId1 + ncs) % ncs ) : "")+
 				(cm->bInStart?" inSt":"")+"\n"+
 				" cur "+iToStr(cm->iCurChk,2)+" next "+iToStr(cm->iNextChk,2)+
 				" all "+iToStr(cm->iNumChks,2)+"="+toStr(ncs)+" 1st "+toStr(scn->road->iChkId1)+"\n"+
-				(!scn->trail ? "No trail" :
-				"Trail  #F0D0A0 all "+toStr(scn->trail->getNumPoints())+ " id "+ toStr(scn->trail->trailSegId)
+				(!scn->trail[id] ? "No trail" :
+				"Trail  #F0D0A0 all "+toStr(scn->trail[id]->getNumPoints())+ " id "+ toStr(scn->trail[id]->trailSegId)
 				) );
 		}	break;
 		

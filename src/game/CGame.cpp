@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "par.h"
 #include "CGame.h"
 #include "CHud.h"
 #include "CGui.h"
@@ -72,7 +73,8 @@ void App::destroyScene()
 	
 	DestroyGraphs();
 	hud->Destroy();
-	hud->arrow.Destroy(mSceneMgr);
+	for (int i = 0; i < MAX_Players; ++i)
+		hud->arrow[i].Destroy(mSceneMgr);
 	
 	// for (int i=0; i < MAX_Players; ++i)
 		// pSet->cam_view[i] = carsCamNum[i];
@@ -96,7 +98,7 @@ void App::destroyScene()
 	scn->DestroyEmitters(true);
 	scn->DestroyAllAtmo();
 
-	scn->DestroyTrail();
+	scn->DestroyTrails();
 
 	if (pGame)
 		pGame->End();

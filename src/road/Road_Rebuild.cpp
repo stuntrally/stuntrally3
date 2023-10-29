@@ -136,7 +136,7 @@ void SplineRoad::BuildSeg(
 	rs.alpha = DS.onTer &&
 		rs.sMtrRd.find("_ter") != String::npos &&
 		rs.sMtrRd.find("phalt") == String::npos &&
-		rs.sMtrRd.find("etal") == String::npos;  // meh- par in mtr..
+		rs.sMtrRd.find("etal") == String::npos;  // todo: meh- par in mtr..
 
 	
 	//  seg params  -----------------
@@ -598,7 +598,7 @@ void SplineRoad::createSeg_Meshes(
 	//-----------------------------------------
 	const String sEnd = toStr(idStr) + "_" + toStr(idRd);  ++idStr;
 	const String sMesh =
-		(!IsTrail() ? "road." : "trl.") + sEnd,
+		(!IsTrail() ? "road." : "trl"+toStr(player)+".") + sEnd,
 		sMeshW = sMesh + "W", sMeshC = sMesh + "C", sMeshB = sMesh + "B";
 	const int lod = DL.lod;
 

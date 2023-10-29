@@ -198,7 +198,8 @@ void App::destroyScene()
 	scn->DestroyEmitters(true);
 	scn->DestroyAllAtmo();
 
-	scn->DestroyTrail();
+	// scn->DestroyTrail(0);
+	scn->DestroyPace();
 
 
 	DestroyGui();
@@ -325,8 +326,8 @@ void App::LoadTrackEv()
 	
 	//  🚦 pace ~ ~
 	Cam* cam = &mCams[0];  // todo: lod cam-
-	scn->pace = new PaceNotes(pSet);
-	scn->pace->Setup(mSceneMgr, cam, scn->ter, gui->mGui, mWindow);
+	scn->pace[0] = new PaceNotes(pSet);
+	scn->pace[0]->Setup(mSceneMgr, cam->cam, scn->ter, gui->mGui, mWindow);
 	
 	
 	//  📦 Objects

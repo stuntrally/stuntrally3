@@ -57,12 +57,13 @@ class PaceNotes  // 🚦 All
 {
 public:
 	SETTINGS* pSet =0;  ///*
+	int player = 0;  // set it
 	PaceNotes(SETTINGS* pset);
 	~PaceNotes();
 	//void Defaults();
 
 	//  🌟 Setup, call this on Init
-	void Setup(Ogre::SceneManager* sceneMgr, Cam* camera,
+	void Setup(Ogre::SceneManager* sceneMgr, Ogre::Camera* camera,
 		Ogre::Terra* terrain, MyGUI::Gui* gui, Ogre::Window* window);
 	void SetupTer(Ogre::Terra* terrain);
 
@@ -84,7 +85,7 @@ private:
 	Ogre::Terra* mTerrain =0;
 	MyGUI::Gui* mGui =0;
 	Ogre::Window* mWindow =0;
-	Cam* cam =0;
+	Ogre::Camera* cam =0;
 	
 	//  all notes
 	HudRenderable* hr =0;

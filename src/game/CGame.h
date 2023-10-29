@@ -110,7 +110,7 @@ public:
 
 	///  🆕 Create  . . . . . . . . . . . . . . . . . . . . . . . . 
 	Ogre::String resCar, resTrk, resDrv;
-	void CreateCar(), CreateRoads(), CreateRoadsInt(), CreateTrail(Cam* cam);
+	void CreateCar(), CreateRoads(), CreateRoadsInt(), CreateTrail(Cam* cam, int id);
 	void CreateObjects(), DestroyObjects(bool clear), ResetObjects();
 
 	void NewGame(bool force=false, bool perfTest=false);

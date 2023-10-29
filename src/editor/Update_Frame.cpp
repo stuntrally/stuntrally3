@@ -248,11 +248,11 @@ void App::UpdateEnd(float dt)
 				scn->grid.Create();
 			
 			bool full = road == road1 && fu;
-			if (full && scn->pace)  // pace, only for 1st
+			if (full && scn->pace[0])  // pace, only for 1st road
 			{
-				scn->pace->SetupTer(scn->ters[0]);  // 1st ter only-
+				scn->pace[0]->SetupTer(scn->ters[0]);  // 1st ter only-
 				road->RebuildRoadPace();
-				scn->pace->Rebuild(road, scn->sc, pSet->trk_reverse);
+				scn->pace[0]->Rebuild(road, scn->sc, pSet->trk_reverse);
 			}
 		}
 	}
@@ -432,8 +432,8 @@ void App::update( float dt )
 	
 	
 	//  pace vis
-	if (scn->pace)
-		scn->pace->UpdVis(Vector3::ZERO, edMode == ED_PrvCam);
+	if (scn->pace[0])
+		scn->pace[0]->UpdVis(Vector3::ZERO, edMode == ED_PrvCam);
 
 	
 	//  upd terrain generator preview

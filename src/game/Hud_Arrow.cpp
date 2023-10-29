@@ -1,12 +1,15 @@
 #include "pch.h"
+#include "Def_Str.h"
 #include "RenderConst.h"
 #include "settings.h"
 #include "CHud.h"
+#include "ViewDim.h"
 #include "CarModel.h"
 #include "FollowCamera.h"
 #include "Road.h"
 #include "Cam.h"
 
+#include "HlmsPbs2.h"
 #include <OgreItem.h>
 #include <OgreSceneNode.h>
 #include <OgreCamera.h>
@@ -17,19 +20,21 @@ using namespace Ogre;
 ///  HUD Arrow
 ///---------------------------------------------------------------------------------------------------------------
 
-void CHud::Arrow::Create(SceneManager* mgr, SETTINGS* pSet)
+void CHud::Arrow::Create(SceneManager* mgr, SETTINGS* pSet, int plr)
 {
 	if (!node)
 		node = mgr->getRootSceneNode()->createChildSceneNode();
 	if (it)  return;
-	it = mgr->createItem("arrow.mesh");
+	player = plr;
+
+	it = mgr->createItem("arrow.mesh");  it->setCastShadows(false);
 	it->setRenderQueueGroup(RQG_Hud3);
-	it->setCastShadows(false);
-	
-	nodeRot = node->createChildSceneNode();
+	it->setDatablockOrMaterialName("Arrow"+toStr(player));
+
+		nodeRot = node->createChildSceneNode();
 	nodeRot->attachObject(it);
 	nodeRot->setScale(pSet->size_arrow/2.f * Vector3::UNIT_SCALE);
-	it->setVisibilityFlags(RV_Hud);
+	it->setVisibilityFlags(RV_Hud3D[player]);
 	nodeRot->setVisible(pSet->check_arrow);
 }
 
@@ -64,26 +69,26 @@ void CHud::Arrow::UpdateChk(SplineRoad* road, CarModel* carM, const Vector3& pos
 			carM->fCam->cam->cam->getOrientation().zAxis()) + 1.f) / 2.f;
 
 		//  set color in material (red for wrong dir)
-		// Vector3 col1 = angle * Vector3(0.0, 1.0, 0.0) + (1-angle) * Vector3(1.0, 0.0, 0.0);
-		// Vector3 col2 = angle * Vector3(0.0, 0.4, 0.0) + (1-angle) * Vector3(0.4, 0.0, 0.0);
+		// Vector3 col1 = angle * Vector3(0.0, 0.8, 0.0) + (1.f-angle) * Vector3(0.8, 0.0, 0.0);
+		// Vector3 col2 = angle * Vector3(0.0, 0.3, 0.0) + (1.f-angle) * Vector3(0.3, 0.0, 0.0);
 		// get datablock, set diffuse..
-	}
+		}
 }
 
 void CHud::Arrow::Update(CarModel* carM, float time)
 {
-	// align checkpoint arrow,  move in front of camera
+	//  align checkpoint arrow,  move in front of camera
 	if (!node)  return;
 
 	Camera* cam = carM->fCam->cam->cam;
 
 	Vector3 pos = cam->getPosition();
-	Vector3 dir = cam->getDirection();  dir.normalise();
-	Vector3 up = cam->getUp();  up.normalise();
-	Vector3 arrowPos = pos + 10.0f * dir + 3.5f*up;
-	node->setPosition(arrowPos);
+	Vector3 z = cam->getDirection();
+	Vector3 y = cam->getUp();
+	Vector3 arrowPos = pos + 10.f * z + 3.5f * y;
+	node->setPosition(arrowPos);  // in 3d, camera space
 	
-	// animate
+	//  animate
 	bool bFirstFrame = carM->bGetStart;
 	if (bFirstFrame) // 1st frame: dont animate
 		qCur = qEnd;
@@ -91,8 +96,9 @@ void CHud::Arrow::Update(CarModel* carM, float time)
 		qCur = Quaternion::Slerp(time*5, qStart, qEnd, true);
 	nodeRot->setOrientation(qCur);
 	
-	// look down -y a bit so we can see the arrow better
+	//  look down -y a bit so we can see the arrow better
 	nodeRot->pitch(Degree(-20), SceneNode::TS_LOCAL); 
+	nodeRot->_getFullTransformUpdated();
 }
 
 void CHud::Arrow::Destroy(SceneManager* mgr)
@@ -100,4 +106,5 @@ void CHud::Arrow::Destroy(SceneManager* mgr)
 	if (nodeRot)  mgr->destroySceneNode(nodeRot);  nodeRot = 0;
 	if (node)  mgr->destroySceneNode(node);  node = 0;
 	if (it)  mgr->destroyItem(it);  it = 0;
+	pDb = 0;
 }

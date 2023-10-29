@@ -53,15 +53,22 @@ void CScene::DestroyRoads()
 
 void CScene::DestroyPace()
 {
-	if (pace)
-	{	pace->Destroy();
-		delete pace;  pace = 0;
+	for (auto*& p : pace)
+	if (p)
+	{	p->Destroy();
+		delete p;  p = 0;
 	}
 }
-void CScene::DestroyTrail()
+
+void CScene::DestroyTrail(int i)
 {
-	if (trail)
-	{	trail->Destroy();
-		delete trail;  trail = 0;
+	if (trail[i])
+	{	trail[i]->Destroy();
+		delete trail[i];  trail[i] = 0;
 	}
+}
+void CScene::DestroyTrails()
+{
+	for (int i=0; i < MAX_Players; ++i)
+		DestroyTrail(i);
 }

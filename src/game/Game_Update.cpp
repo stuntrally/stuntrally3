@@ -175,7 +175,9 @@ void App::update( float dt )
 			updatePoses(dt);
 
 			if (pSet->check_arrow && !bRplPlay && !carModels.empty())
-				hud->arrow.Update(carModels[0], dt);
+				for (int c = 0; c < carModels.size(); ++c)
+				if (!carModels[c]->isGhost())
+					hud->arrow[c].Update(carModels[c], dt);
 
 			//  cam info text
 			if (pSet->show_cam && !carModels.empty() && hud->txCamInfo)
@@ -250,23 +252,31 @@ void App::update( float dt )
 						r->UpdLodVis(pSet->g.road_dist);
 					
 					//  trail upd lods
-					if (scn->trail && pSet->trail_show && !bHideHudTrail)
-						scn->trail->UpdLodVis();
+					for (int i=0; i < MAX_Players; ++i)
+					// if (!carModels[i]->isGhost())
+					if (scn->trail[i] && pSet->trail_show && !bHideHudTrail)
+						scn->trail[i]->UpdLodVis();
 				}
 			}
 			//PROFILER.endBlock("g.road");
 		}
 
 		//  🚦 pace upd vis  ~ ~ ~
-		if (scn->pace && !bLoading && !carModels.empty())
+		if (!bLoading && !carModels.empty())
 		{	
-			const CarModel* cm = *carModels.begin();
-			Vector3 p = cm->ndMain->getPosition();
-			float vel = bRplPlay ? frm[0].vel : cm->pCar->GetSpeedometer();
-			scn->pace->carVel = vel;
-			scn->pace->rewind = bRplPlay ? false : cm->pCar->bRewind;
-			scn->pace->UpdVis(p);
-		}
+			for (int i=0; i < carModels.size(); ++i)
+			{	const CarModel* cm = carModels[i];
+				if (!cm->isGhost())
+				{
+					int id = cm->iIndex;
+					if (scn->pace[id])
+					{	
+						Vector3 pos = cm->ndMain->getPosition();
+						float vel = bRplPlay ? frm[0].vel : cm->pCar->GetSpeedometer();
+						scn->pace[id]->carVel = vel;
+						scn->pace[id]->rewind = bRplPlay ? false : cm->pCar->bRewind;
+						scn->pace[id]->UpdVis(pos);
+		}	}	}	}
 
 		UpdCubeRefl();  // 🔮💫
 

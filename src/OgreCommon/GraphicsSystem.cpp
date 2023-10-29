@@ -168,22 +168,22 @@ void GraphicsSystem::initialize( const String &windowTitle )
 
 	const String cfgPath = 
 #if OGRE_PLATFORM != OGRE_PLATFORM_ANDROID
-	  #ifdef SR_EDITOR
+	#ifdef SR_EDITOR
 		mLogCfgFolder + "ogre_ed.cfg";
-	  #else
+	#else
 		mLogCfgFolder + "ogre.cfg";
-	  #endif
+	#endif
 #else
 		"";
 #endif
 
 	const AbiCookie abiCookie = generateAbiCookie();
 	mRoot = OGRE_NEW Root( &abiCookie, pluginsPath, cfgPath,
-	  #ifdef SR_EDITOR
+	#ifdef SR_EDITOR
 		mLogCfgFolder + "Ogre_ed.log",
-	  #else
+	#else
 		mLogCfgFolder + "Ogre.log",
-	  #endif
+	#endif
 		windowTitle );
 
 	AndroidSystems::registerArchiveFactories();

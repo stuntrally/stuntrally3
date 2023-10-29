@@ -105,10 +105,11 @@ void CarModel::ResetChecks(bool bDist)  // needs to be done after road load!
 	UpdNextCheck();
 
 	//LogO("ResetChecks");
-	SplineRoad* trail = pApp->scn->trail;
-	if (trail)  // +
-		trail->trailSegId = 0;
-
+	if (iIndex < MAX_Players)
+	{	SplineRoad* trail = pApp->scn->trail[iIndex];
+		if (trail)  // +
+			trail->trailSegId = 0;
+	}
 	//  percent const  ------
 	if (bDist && !road->mChks.empty())
 	{

@@ -220,8 +220,8 @@ void App::newPoses(float time)  // time only for camera update
 			///  🔝 arrow update  --------------------------------------
 			SplineRoad* road = scn->road;
 			if (pSet->check_arrow && carM->cType == CarModel::CT_LOCAL &&
-				!bRplPlay && hud->arrow.node && road && road->mChks.size()>0)
-		  		hud->arrow.UpdateChk(road, carM, pi.pos);
+				!bRplPlay && hud->arrow[c].node && road && road->mChks.size()>0)
+		  		hud->arrow[c].UpdateChk(road, carM, pi.pos);
 			
 			//----------------------------------------------------------------------------
 			if (carM->bGetStart)  // get finish, end box
@@ -360,8 +360,9 @@ void App::newPoses(float time)  // time only for camera update
 								carM->updTimes = true;
 
 								//  trail  next start ->--
-								if (scn->trail && carM->iNumChks < ncs-1)  // skip last
-									scn->trail->trailSegId =
+								int id = carM->iIndex;
+								if (scn->trail[id] && carM->iNumChks < ncs-1)  // skip last
+									scn->trail[id]->trailSegId =
 										(inc * (i - scn->road->iChkId1) + (rev ? 0 : 1) + ncs) % ncs;
 
 								if (pSet->snd_chk && locar)
