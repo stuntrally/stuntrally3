@@ -248,6 +248,7 @@
 	<Tag name="SC_SurrealSpace">KosmosSurrealny</Tag>
 	<Tag name="SC_GreeceRocky">GrecjaSkalna</Tag>
 	<Tag name="SC_Marble">Marmur</Tag>
+	<Tag name="SC_Spring">Sterowanie</Tag>
 	<Tag name="P_Red">Czerwony</Tag>
 	<Tag name="P_Orange">Pomarańczowy</Tag>
 	<Tag name="P_Yellow">Żółty</Tag>
@@ -402,7 +403,9 @@
 	<Tag name="Complex">Złożone</Tag>
 	<Tag name="Simple">Proste</Tag>
 	<Tag name="NeedRestart">* wymaga restartu</Tag>
-	<Tag name="NotDone">not done yet, ToDo</Tag>
+	<Tag name="NotDone">jeszcze nie zrobiono, do zrobienia</Tag>
+	<Tag name="NeedApply">Zastosuj</Tag>
+	<Tag name="Ignored">Zignoruj</Tag>
 	<Tag name="GraphicsRightHQ">Domyślnie lepsza jakość (mniej klatek na sekundę) jest po prawej. Zaznaczone + gdy po lewej.</Tag>
 	<Tag name="VSync">Synchr. pionowa</Tag>
 	<Tag name="RenderSystem">System renderowania</Tag>
@@ -566,7 +569,14 @@
 	<Tag name="FOV">Kąt widzenia</Tag>
 	<Tag name="Other">Inne</Tag>
 	<Tag name="Development">Narzędzia</Tag>
-	<Tag name="FPS">Klatek na sek., trójkątów, wsadów</Tag>
+	<Tag name="FPS">Fps bar, render statistics</Tag>
+	<Tag name="FPS_Fps">Klatki na sekundę (FPS)</Tag>
+	<Tag name="FPS_Triangles">Millions of triangles</Tag>
+	<Tag name="FPS_Draws">Draw calls</Tag>
+	<Tag name="FPS_Instances">Odległość</Tag>
+	<Tag name="FPS_Vegetation">Kolizja z wegetacją</Tag>
+	<Tag name="FPS_Workspaces">Workspaces</Tag>
+	<Tag name="FPS_Memory">GPU memory</Tag>
 	<Tag name="Wireframe">Szkielet</Tag>
 	<Tag name="BulletDebug">debug Bullet</Tag>
 	<Tag name="BulletProfilerTxt">Czasy profilera Bullet</Tag>
@@ -632,6 +642,7 @@
 	<Tag name="InputMapPrevCamera">Poprzedni widok</Tag>
 	<Tag name="InputMapNextCamera">Następny widok</Tag>
 	<Tag name="InputMapLastChk">Start od poprzedniego punktu kontrolnego</Tag>
+	<Tag name="InputMapLights">Toggle lights</Tag>
 	<Tag name="InputMapShowOptions">Pokaż opcje</Tag>
 	<Tag name="InputMapPrevTab">Poprzednia zakładka</Tag>
 	<Tag name="InputMapNextTab">Następna zakładka</Tag>
@@ -893,6 +904,7 @@
 	<Tag name="Wind">Wiatr</Tag>
 	<Tag name="DenyReversed">Zabroń odwrotny kierunek</Tag>
 	<Tag name="NoWrongChks">Nie pokazuj komunikatów \</Tag>
+	<Tag name="NeedLights">Światła Pojazdów</Tag>
 	<Tag name="Warnings">Ostrzeżenia</Tag>
 	<Tag name="WarningsInfo">Konsola dla błędów trasy, ostrzerzeń i porad.</Tag>
 	<Tag name="CheckOnLoad">Sprawdź przy ładowaniu</Tag>
@@ -912,7 +924,7 @@
 	<Tag name="MinimapUpdSkip">Pominięć odśw. minimapy</Tag>
 	<Tag name="TrackAutoLoad">Autom. wczytywanie trasy</Tag>
 	<Tag name="AutoUpdateBlendmap">Autom. odświeżanie przejść terenu (wolne dla dużych pędzli)</Tag>
-	<Tag name="EdCamPos">Pozycja kamery</Tag>
+	<Tag name="EdCamPos">Pasek pozycji kamery  Ctrl-C</Tag>
 	<Tag name="EdInputBar">Pasek wejścia Ctrl-I</Tag>
 	<Tag name="AllowSaveOrigTrk">Pozwól zapisywać oryginalne trasy.</Tag>
 	<Tag name="SetCamTo">Ustaw kamerę na</Tag>
@@ -1165,8 +1177,6 @@
 	<Tag name="UserDir">Katalog użytkownika (logi, konfigi, dane, itp.)</Tag>
 	<Tag name="TipSliderReset">Prawy przycisk myszy na suwaku - ustaw domyślną wartość.</Tag>
 	<Tag name="TipLoadTrkEditor">Wczytaj trasę (po zmianie) lub Przeładuj obecną.</Tag>
-	<Tag name="TipTrkScreenEditor">Zrzut z gry dla wybranej trasy.</Tag>
-	<Tag name="TipMinimapScrnEditor">Minimapa wybranej trasy (widok z góry).</Tag>
 	<Tag name="TipTrackDescEditor">Tekst opisowy trasy (kliknij by edytować).</Tag>
 	<Tag name="TipCopySource">Wybierz trasę jako źródło skąd kopiować, używane w zakładce [Narzędzia].</Tag>
 	<Tag name="TipNewDup">Stwórz nową trasę przez zduplikowanie wybranej, używając nowej nazwy (wprować nazwę najpierw).</Tag>
@@ -1289,6 +1299,7 @@
 	<Tag name="LANG_cs">Čeština</Tag>
 	<Tag name="LANG_nl_NL">Nederlands</Tag>
 	<Tag name="LANG_hu_HU">Magyar</Tag>
+	<Tag name="SC_Anomaly">Anomaly</Tag>
 	<Tag name="GameVersion">3.0</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 

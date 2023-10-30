@@ -248,6 +248,7 @@
 	<Tag name="SC_SurrealSpace">SurrealSpace</Tag>
 	<Tag name="SC_GreeceRocky">GreeceRocky</Tag>
 	<Tag name="SC_Marble">Marble</Tag>
+	<Tag name="SC_Spring">Direção</Tag>
 	<Tag name="P_Red">Pronto</Tag>
 	<Tag name="P_Orange">Alterar</Tag>
 	<Tag name="P_Yellow">FlorestaAmarela</Tag>
@@ -403,6 +404,8 @@
 	<Tag name="Simple">Simples</Tag>
 	<Tag name="NeedRestart">* precisa reiniciar</Tag>
 	<Tag name="NotDone">not done yet, ToDo</Tag>
+	<Tag name="NeedApply">need Apply</Tag>
+	<Tag name="Ignored">Ignorar</Tag>
 	<Tag name="GraphicsRightHQ">Por padrão melhor qualidade (menos FPS) está na direita. Marcado com + se na esquerda.</Tag>
 	<Tag name="VSync">VSync</Tag>
 	<Tag name="RenderSystem">Sistema de Renderização</Tag>
@@ -566,7 +569,14 @@
 	<Tag name="FOV">Ângulo de visão</Tag>
 	<Tag name="Other">Outros</Tag>
 	<Tag name="Development">Desenvolvimento</Tag>
-	<Tag name="FPS">Fps, Triangles, Batches</Tag>
+	<Tag name="FPS">Fps bar, render statistics</Tag>
+	<Tag name="FPS_Fps">Frames por segundo</Tag>
+	<Tag name="FPS_Triangles">Millions of triangles</Tag>
+	<Tag name="FPS_Draws">Draw calls</Tag>
+	<Tag name="FPS_Instances">Distância</Tag>
+	<Tag name="FPS_Vegetation">Colisão com vegetação</Tag>
+	<Tag name="FPS_Workspaces">Workspaces</Tag>
+	<Tag name="FPS_Memory">GPU memory</Tag>
 	<Tag name="Wireframe">Wireframe</Tag>
 	<Tag name="BulletDebug">Bullet debug</Tag>
 	<Tag name="BulletProfilerTxt">Bullet Profiler Times</Tag>
@@ -632,6 +642,7 @@
 	<Tag name="InputMapPrevCamera">Câmera Anterior</Tag>
 	<Tag name="InputMapNextCamera">Próxima Câmera</Tag>
 	<Tag name="InputMapLastChk">Ir ao checkp. anterior.</Tag>
+	<Tag name="InputMapLights">Toggle lights</Tag>
 	<Tag name="InputMapShowOptions">Mostrar opções</Tag>
 	<Tag name="InputMapPrevTab">Aba anterior</Tag>
 	<Tag name="InputMapNextTab">Próxima Aba</Tag>
@@ -893,6 +904,7 @@
 	<Tag name="Wind">Wind</Tag>
 	<Tag name="DenyReversed">Deny reversed direction</Tag>
 	<Tag name="NoWrongChks">Don't show wrong checkpoint messages</Tag>
+	<Tag name="NeedLights">Veículos</Tag>
 	<Tag name="Warnings">Alertas</Tag>
 	<Tag name="WarningsInfo">Console for track errors, warnings and hints.</Tag>
 	<Tag name="CheckOnLoad">Check on load</Tag>
@@ -1165,8 +1177,6 @@
 	<Tag name="UserDir">User Path (logs, configs, user data, etc)</Tag>
 	<Tag name="TipSliderReset">RMB on slider - reset to default value.</Tag>
 	<Tag name="TipLoadTrkEditor">Carregar pista (após a mudança) ou Atualizar pista atual.</Tag>
-	<Tag name="TipTrkScreenEditor">Captura de tela de dentro do jogo nessa pista.</Tag>
-	<Tag name="TipMinimapScrnEditor">Minimapa da pista selecionada, vista do topo.</Tag>
 	<Tag name="TipTrackDescEditor">Texto de descrição da pista (clique para editar).</Tag>
 	<Tag name="TipCopySource">Pick selected track for copy source, used in [Tools] tab.</Tag>
 	<Tag name="TipNewDup">Create a new track by duplicating the selected track and using new name (change name first).</Tag>
@@ -1289,6 +1299,7 @@
 	<Tag name="LANG_cs">Čeština</Tag>
 	<Tag name="LANG_nl_NL">Nederlands</Tag>
 	<Tag name="LANG_hu_HU">Magyar</Tag>
+	<Tag name="SC_Anomaly">Anomaly</Tag>
 	<Tag name="GameVersion">3.0</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 

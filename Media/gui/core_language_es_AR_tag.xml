@@ -248,6 +248,7 @@
 	<Tag name="SC_SurrealSpace">SurrealSpace</Tag>
 	<Tag name="SC_GreeceRocky">GreeceRocky</Tag>
 	<Tag name="SC_Marble">Marble</Tag>
+	<Tag name="SC_Spring">Conduccion</Tag>
 	<Tag name="P_Red">Listo</Tag>
 	<Tag name="P_Orange">Cambiar</Tag>
 	<Tag name="P_Yellow">Yellow</Tag>
@@ -403,6 +404,8 @@
 	<Tag name="Simple">Simple</Tag>
 	<Tag name="NeedRestart">+necesita reiniciar</Tag>
 	<Tag name="NotDone">not done yet, ToDo</Tag>
+	<Tag name="NeedApply">need Apply</Tag>
+	<Tag name="Ignored">ignored</Tag>
 	<Tag name="GraphicsRightHQ">Por defecto mejor calidad (menos cuadros por segundo) está en la derecha. Marcado con + si está en la izquierda</Tag>
 	<Tag name="VSync">Sincronizacion vertical</Tag>
 	<Tag name="RenderSystem">Representación del sistema</Tag>
@@ -566,7 +569,14 @@
 	<Tag name="FOV">Angulo de vista</Tag>
 	<Tag name="Other">Otro</Tag>
 	<Tag name="Development">Desarrollo</Tag>
-	<Tag name="FPS">Cuadros por segundo, Triangulos, Lotes</Tag>
+	<Tag name="FPS">Fps bar, render statistics</Tag>
+	<Tag name="FPS_Fps">Cuadros por segundo</Tag>
+	<Tag name="FPS_Triangles">Millions of triangles</Tag>
+	<Tag name="FPS_Draws">Draw calls</Tag>
+	<Tag name="FPS_Instances">distancia</Tag>
+	<Tag name="FPS_Vegetation">Colicion con vegetacion</Tag>
+	<Tag name="FPS_Workspaces">Workspaces</Tag>
+	<Tag name="FPS_Memory">GPU memory</Tag>
 	<Tag name="Wireframe">Estructura</Tag>
 	<Tag name="BulletDebug">Bullet debug</Tag>
 	<Tag name="BulletProfilerTxt">Bullet Profiler Times</Tag>
@@ -632,6 +642,7 @@
 	<Tag name="InputMapPrevCamera">Camara anterior</Tag>
 	<Tag name="InputMapNextCamera">Camara siguiente</Tag>
 	<Tag name="InputMapLastChk">Ir al ultimo chequeo</Tag>
+	<Tag name="InputMapLights">Toggle lights</Tag>
 	<Tag name="InputMapShowOptions">Opciones lentas</Tag>
 	<Tag name="InputMapPrevTab">Tabulador anterior</Tag>
 	<Tag name="InputMapNextTab">Tabulador siguiente</Tag>
@@ -651,7 +662,7 @@
 	<Tag name="TweakEdit1">Alt-Z - Ventana de alternar ajustes (editar carro)</Tag>
 	<Tag name="TweakEdit2">Alt-Shift-Z - guardar archivo y recargar juego</Tag>
 	<Tag name="TweakEdit3">Ctrl-F5 - empezar test de desempeño de caro</Tag>
-	<Tag name="TiresEdit">Tire Edit - (Graphs in mode 4)</Tag>
+	<Tag name="TiresEdit">Tire Edit - (Graphs mode)</Tag>
 	<Tag name="TiresEdit1">RePag/AvPag - anterior, siguiente valor</Tag>
 	<Tag name="TiresEdit2">1,2 o Num /,* - cambiar valor</Tag>
 	<Tag name="TiresEdit3">Home - toggle longitudinal / lateral parameters</Tag>
@@ -893,6 +904,7 @@
 	<Tag name="Wind">Viento</Tag>
 	<Tag name="DenyReversed">Deny reversed direction</Tag>
 	<Tag name="NoWrongChks">No mostrar mensajes de puntos de control erroneos</Tag>
+	<Tag name="NeedLights">Vista derecha</Tag>
 	<Tag name="Warnings">Advertencias</Tag>
 	<Tag name="WarningsInfo">Console for track errors, warnings and hints.</Tag>
 	<Tag name="CheckOnLoad">Check on load</Tag>
@@ -1107,7 +1119,7 @@
 	<Tag name="DrivingSchool">Stunt Rally driving school</Tag>
 	<Tag name="LessonClick">click button to play a lesson</Tag>
 	<Tag name="Hint-0">Rewind</Tag>
-	<Tag name="Hint-0text">If you crashed or you're stuck, hold [Backspace] to move back in time.</Tag>
+	<Tag name="Hint-0text">If you crashed or you're stuck, hold [Insert] to move back in time.</Tag>
 	<Tag name="Hint-1">Turns</Tag>
 	<Tag name="Hint-1text">Don't accelerate all the time. Also don't forget to brake before turns, especially sharp ones. If you don't know the road yet, it's better to drive slowly.</Tag>
 	<Tag name="Hint-2">Flipping</Tag>
@@ -1165,8 +1177,6 @@
 	<Tag name="UserDir">User Path (logs, configs, user data, etc)</Tag>
 	<Tag name="TipSliderReset">RMB on slider - reset to default value.</Tag>
 	<Tag name="TipLoadTrkEditor">Load track (after change) or Reload current track.</Tag>
-	<Tag name="TipTrkScreenEditor">In game screenshot for selected track.</Tag>
-	<Tag name="TipMinimapScrnEditor">Minimap of selected track, view from top.</Tag>
 	<Tag name="TipTrackDescEditor">Track description text (click to edit).</Tag>
 	<Tag name="TipCopySource">Pick selected track for copy source, used in [Tools] tab.</Tag>
 	<Tag name="TipNewDup">Create a new track by duplicating the selected track and using new name (change name first).</Tag>
@@ -1289,6 +1299,7 @@
 	<Tag name="LANG_cs">Čeština</Tag>
 	<Tag name="LANG_nl_NL">Nederlands</Tag>
 	<Tag name="LANG_hu_HU">Magyar</Tag>
+	<Tag name="SC_Anomaly">Anomaly</Tag>
 	<Tag name="GameVersion">3.0</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 

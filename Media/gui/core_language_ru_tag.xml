@@ -248,6 +248,7 @@
 	<Tag name="SC_SurrealSpace">SurrealSpace</Tag>
 	<Tag name="SC_GreeceRocky">GreeceRocky</Tag>
 	<Tag name="SC_Marble">Marble</Tag>
+	<Tag name="SC_Spring">Управление</Tag>
 	<Tag name="P_Red">Готов</Tag>
 	<Tag name="P_Orange">Изменить</Tag>
 	<Tag name="P_Yellow">Зол.Лес</Tag>
@@ -403,6 +404,8 @@
 	<Tag name="Simple">Просто</Tag>
 	<Tag name="NeedRestart">* необходим рестарт</Tag>
 	<Tag name="NotDone">not done yet, ToDo</Tag>
+	<Tag name="NeedApply">need Apply</Tag>
+	<Tag name="Ignored">Игнорировать</Tag>
 	<Tag name="GraphicsRightHQ">По умол. направо лучше качество (меньше К/с). Отмечен + если налево.</Tag>
 	<Tag name="VSync">Верт. синхр.</Tag>
 	<Tag name="RenderSystem">Система Визуализации</Tag>
@@ -566,7 +569,14 @@
 	<Tag name="FOV">Вид ракурсом</Tag>
 	<Tag name="Other">Другое</Tag>
 	<Tag name="Development">Разработка</Tag>
-	<Tag name="FPS">К/с, Треуг., Пакеты</Tag>
+	<Tag name="FPS">Fps bar, render statistics</Tag>
+	<Tag name="FPS_Fps">Кадров в секунду</Tag>
+	<Tag name="FPS_Triangles">Millions of triangles</Tag>
+	<Tag name="FPS_Draws">Draw calls</Tag>
+	<Tag name="FPS_Instances">Дистанция</Tag>
+	<Tag name="FPS_Vegetation">Столк. с растит.</Tag>
+	<Tag name="FPS_Workspaces">Workspaces</Tag>
+	<Tag name="FPS_Memory">GPU memory</Tag>
 	<Tag name="Wireframe">Каркас</Tag>
 	<Tag name="BulletDebug">Отладка Bullet</Tag>
 	<Tag name="BulletProfilerTxt">Сроки профайлера Bullet</Tag>
@@ -632,6 +642,7 @@
 	<Tag name="InputMapPrevCamera">Пред. камера</Tag>
 	<Tag name="InputMapNextCamera">След. камера</Tag>
 	<Tag name="InputMapLastChk">Спасти авто</Tag>
+	<Tag name="InputMapLights">Toggle lights</Tag>
 	<Tag name="InputMapShowOptions">Показ. опции</Tag>
 	<Tag name="InputMapPrevTab">Пред. вкладка</Tag>
 	<Tag name="InputMapNextTab">След. вкладка</Tag>
@@ -893,6 +904,7 @@
 	<Tag name="Wind">Ветер</Tag>
 	<Tag name="DenyReversed">Нельзя обратно</Tag>
 	<Tag name="NoWrongChks">Не показ. сообщение Пропущена КТ</Tag>
+	<Tag name="NeedLights">Машины</Tag>
 	<Tag name="Warnings">Оповещения</Tag>
 	<Tag name="WarningsInfo">Консоль ошибок трассы, оповещений и намеков.</Tag>
 	<Tag name="CheckOnLoad">Пров. при загр.</Tag>
@@ -1165,8 +1177,6 @@
 	<Tag name="UserDir">Путь пользователя (данные пользователя)</Tag>
 	<Tag name="TipSliderReset">RMB на ползунке - сброс значения по умолчанию.</Tag>
 	<Tag name="TipLoadTrkEditor">Загрузить трассу (после изменеия) или Перезагрузить текущую</Tag>
-	<Tag name="TipTrkScreenEditor">Снимок трассы для игры</Tag>
-	<Tag name="TipMinimapScrnEditor">Мини-карта выбранной трассы, вид сверху.</Tag>
 	<Tag name="TipTrackDescEditor">Описание трассы (нажми для редактирования).</Tag>
 	<Tag name="TipCopySource">Выбираем трассу для копирования, используется в [Инструменты] вкладке.</Tag>
 	<Tag name="TipNewDup">Создает новую трассу, дублируя выбранную трассу, и использует новое имя (во-первых измени имя).</Tag>
@@ -1289,6 +1299,7 @@
 	<Tag name="LANG_cs">Čeština</Tag>
 	<Tag name="LANG_nl_NL">Nederlands</Tag>
 	<Tag name="LANG_hu_HU">Magyar</Tag>
+	<Tag name="SC_Anomaly">Anomaly</Tag>
 	<Tag name="GameVersion">3.0</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 

@@ -33,15 +33,15 @@
 	<Tag name="Readme">Liesmich</Tag>
 	<Tag name="Support">Unterstützung</Tag>
 	<Tag name="Contributing">Mitwirken</Tag>
-	<Tag name="Credits">Credits</Tag>
+	<Tag name="Credits">Danksagungen</Tag>
 	<Tag name="LinksToWeb">Links zu Websites:</Tag>
 	<Tag name="Homepage">Startseite</Tag>
 	<Tag name="DocumentationWiki">Dokumentation (Wiki)</Tag>
 	<Tag name="Forum">Forum</Tag>
-	<Tag name="Sources">Sources</Tag>
+	<Tag name="Sources">Quellen</Tag>
 	<Tag name="TrackEditorTutorial">Tutorials zum Strecken Editor</Tag>
 	<Tag name="Translations">Übersetzungen</Tag>
-	<Tag name="GameControllers">Game Controllers</Tag>
+	<Tag name="GameControllers">Spielcontroller</Tag>
 	<Tag name="Donations">Spenden</Tag>
 	<Tag name="Start">Start</Tag>
 	<Tag name="Continue">Fortsetzen</Tag>
@@ -248,6 +248,7 @@
 	<Tag name="SC_SurrealSpace">SurrealSpace</Tag>
 	<Tag name="SC_GreeceRocky">GreeceRocky</Tag>
 	<Tag name="SC_Marble">Marmor</Tag>
+	<Tag name="SC_Spring">Lenkung</Tag>
 	<Tag name="P_Red">Rot</Tag>
 	<Tag name="P_Orange">Orange</Tag>
 	<Tag name="P_Yellow">Gelb</Tag>
@@ -403,6 +404,8 @@
 	<Tag name="Simple">Einfach</Tag>
 	<Tag name="NeedRestart">* Neustart erforderlich</Tag>
 	<Tag name="NotDone">not done yet, ToDo</Tag>
+	<Tag name="NeedApply">Anwenden</Tag>
+	<Tag name="Ignored">Ignorieren</Tag>
 	<Tag name="GraphicsRightHQ">Standardmäßig ist die bessere Qualität (niedrigere Bildwiederholrate) auf der rechten Seite. Mit »+« markiert, wenn es auf der linken Seite ist.</Tag>
 	<Tag name="VSync">VSync</Tag>
 	<Tag name="RenderSystem">Rendersystem</Tag>
@@ -566,7 +569,14 @@
 	<Tag name="FOV">Gesichtsfeld</Tag>
 	<Tag name="Other">Sonstige</Tag>
 	<Tag name="Development">Entwicklung</Tag>
-	<Tag name="FPS">FPS, Dreiecke, Batches</Tag>
+	<Tag name="FPS">Fps bar, render statistics</Tag>
+	<Tag name="FPS_Fps">Bildwiederholfrequenz</Tag>
+	<Tag name="FPS_Triangles">Millions of triangles</Tag>
+	<Tag name="FPS_Draws">Draw calls</Tag>
+	<Tag name="FPS_Instances">Distanz</Tag>
+	<Tag name="FPS_Vegetation">Vegetations-Kollision</Tag>
+	<Tag name="FPS_Workspaces">Workspaces</Tag>
+	<Tag name="FPS_Memory">GPU memory</Tag>
 	<Tag name="Wireframe">Drahtgitter</Tag>
 	<Tag name="BulletDebug">Bullet-Debug</Tag>
 	<Tag name="BulletProfilerTxt">Bullet-Profileranzeige</Tag>
@@ -632,6 +642,7 @@
 	<Tag name="InputMapPrevCamera">Vorherige Kamera</Tag>
 	<Tag name="InputMapNextCamera">Nächste Kamera</Tag>
 	<Tag name="InputMapLastChk">Zurücksetzen</Tag>
+	<Tag name="InputMapLights">Toggle lights</Tag>
 	<Tag name="InputMapShowOptions">Einstellungen zeigen</Tag>
 	<Tag name="InputMapPrevTab">Vorheriger Tab</Tag>
 	<Tag name="InputMapNextTab">Nächster Tab</Tag>
@@ -893,6 +904,7 @@
 	<Tag name="Wind">Wind</Tag>
 	<Tag name="DenyReversed">Andere Richtung verboten</Tag>
 	<Tag name="NoWrongChks">Falsche Kontrollpunktmitteilungen nicht anzeigen</Tag>
+	<Tag name="NeedLights">Fahrzeugbeleuchtung</Tag>
 	<Tag name="Warnings">Warnungen</Tag>
 	<Tag name="WarningsInfo">Konsole für Streckenfehler, -warnungen und -hinweise.</Tag>
 	<Tag name="CheckOnLoad">Beim Laden prüfen</Tag>
@@ -1165,8 +1177,6 @@
 	<Tag name="UserDir">Benutzerpfad (Logs, Konfiguration, Benutzerdaten, etc.)</Tag>
 	<Tag name="TipSliderReset">RMT auf Schieberegler: Wert zurücksetzen.</Tag>
 	<Tag name="TipLoadTrkEditor">Andere Strecke laden oder aktuelle Strecke neu laden.</Tag>
-	<Tag name="TipTrkScreenEditor">Bildschirmfoto der ausgewählten Strecke.</Tag>
-	<Tag name="TipMinimapScrnEditor">Karte der ausgewählten Strecke, Sicht von oben.</Tag>
 	<Tag name="TipTrackDescEditor">Streckenbeschreibung (Klicken zum Bearbeiten).</Tag>
 	<Tag name="TipCopySource">Strecke als Kopierquelle für den »Werkzeuge«-Tab auswählen.</Tag>
 	<Tag name="TipNewDup">Erstellen einer neuen Strecke durch Duplizieren der ausgewählten Strecke unter neuem Namen (erst Namen ändern)</Tag>
@@ -1289,6 +1299,7 @@
 	<Tag name="LANG_cs">Čeština</Tag>
 	<Tag name="LANG_nl_NL">Nederlands</Tag>
 	<Tag name="LANG_hu_HU">Magyar</Tag>
+	<Tag name="SC_Anomaly">Anomaly</Tag>
 	<Tag name="GameVersion">3.0</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 

@@ -248,6 +248,7 @@
 	<Tag name="SC_SurrealSpace">SurrealSpace</Tag>
 	<Tag name="SC_GreeceRocky">GreeceRocky</Tag>
 	<Tag name="SC_Marble">Marble</Tag>
+	<Tag name="SC_Spring">Direction</Tag>
 	<Tag name="P_Red">Prêt</Tag>
 	<Tag name="P_Orange">Modifier</Tag>
 	<Tag name="P_Yellow">ForêtJaune</Tag>
@@ -403,6 +404,8 @@
 	<Tag name="Simple">Simple</Tag>
 	<Tag name="NeedRestart">* redémarrage requis</Tag>
 	<Tag name="NotDone">not done yet, ToDo</Tag>
+	<Tag name="NeedApply">need Apply</Tag>
+	<Tag name="Ignored">Ignorer</Tag>
 	<Tag name="GraphicsRightHQ">Par défaut, la meilleure qualité est obtenue avec le curseur à droite. Si elle est obtenue à gauche, le glisseur aura un + à gauche.</Tag>
 	<Tag name="VSync">Synchronisation verticale</Tag>
 	<Tag name="RenderSystem">Système de rendu</Tag>
@@ -566,7 +569,14 @@
 	<Tag name="FOV">Champ de vision</Tag>
 	<Tag name="Other">Autres</Tag>
 	<Tag name="Development">Développement</Tag>
-	<Tag name="FPS">IPS, triangles, batches</Tag>
+	<Tag name="FPS">Fps bar, render statistics</Tag>
+	<Tag name="FPS_Fps">Images par seconde</Tag>
+	<Tag name="FPS_Triangles">Millions of triangles</Tag>
+	<Tag name="FPS_Draws">Draw calls</Tag>
+	<Tag name="FPS_Instances">Distance</Tag>
+	<Tag name="FPS_Vegetation">Collision avec les végétaux</Tag>
+	<Tag name="FPS_Workspaces">Workspaces</Tag>
+	<Tag name="FPS_Memory">GPU memory</Tag>
 	<Tag name="Wireframe">Fil de fer</Tag>
 	<Tag name="BulletDebug">Débogage Bullet</Tag>
 	<Tag name="BulletProfilerTxt">Temps du profileur Bullet</Tag>
@@ -632,6 +642,7 @@
 	<Tag name="InputMapPrevCamera">Caméra précédente</Tag>
 	<Tag name="InputMapNextCamera">Caméra suivante</Tag>
 	<Tag name="InputMapLastChk">Dernier point de ctrl.</Tag>
+	<Tag name="InputMapLights">Toggle lights</Tag>
 	<Tag name="InputMapShowOptions">Afficher les options</Tag>
 	<Tag name="InputMapPrevTab">Onglet précédent</Tag>
 	<Tag name="InputMapNextTab">Onglet suivant</Tag>
@@ -893,6 +904,7 @@
 	<Tag name="Wind">Vent</Tag>
 	<Tag name="DenyReversed">Interdire le changement de direction</Tag>
 	<Tag name="NoWrongChks">Pas de msg. de mauvais point de contrôle</Tag>
+	<Tag name="NeedLights">Véhicules</Tag>
 	<Tag name="Warnings">Avertissements</Tag>
 	<Tag name="WarningsInfo">Console pour les erreurs de circuit, avertissements et traces.</Tag>
 	<Tag name="CheckOnLoad">Vérifier en chargeant</Tag>
@@ -1165,8 +1177,6 @@
 	<Tag name="UserDir">Chemin utilisateur (journaux, fichiers de configuration, etc.)</Tag>
 	<Tag name="TipSliderReset">Clic droit sur un glisseur - réinitialiser à la valeur par défaut.</Tag>
 	<Tag name="TipLoadTrkEditor">Charger le circuit (après modifications) ou recharger le circuit actuel.</Tag>
-	<Tag name="TipTrkScreenEditor">Capture d'écran du jeu pour la piste sélectionnée.</Tag>
-	<Tag name="TipMinimapScrnEditor">Mini-carte de la piste sélectionnée, vue de dessus.</Tag>
 	<Tag name="TipTrackDescEditor">Description du circuit (cliquez pour éditer).</Tag>
 	<Tag name="TipCopySource">Prendre le circuit sélectionné comme source pour la copie, utilisé dans l'onglet [Outils].</Tag>
 	<Tag name="TipNewDup">Crée un nouveau circuit en dupliquant le circuit sélectionné et en utilisant le nouveau nom (changez le nom d'abord).</Tag>
@@ -1289,6 +1299,7 @@
 	<Tag name="LANG_cs">Čeština</Tag>
 	<Tag name="LANG_nl_NL">Nederlands</Tag>
 	<Tag name="LANG_hu_HU">Magyar</Tag>
+	<Tag name="SC_Anomaly">Anomaly</Tag>
 	<Tag name="GameVersion">3.0</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 

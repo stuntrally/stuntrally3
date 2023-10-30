@@ -248,6 +248,7 @@
 	<Tag name="SC_SurrealSpace">Surrealistische ruimte</Tag>
 	<Tag name="SC_GreeceRocky">GreeceRocky</Tag>
 	<Tag name="SC_Marble">Marble</Tag>
+	<Tag name="SC_Spring">Spring</Tag>
 	<Tag name="P_Red">Klaar</Tag>
 	<Tag name="P_Orange">Aanpassen</Tag>
 	<Tag name="P_Yellow">Geel bos</Tag>
@@ -403,6 +404,8 @@
 	<Tag name="Simple">Eenvoudig</Tag>
 	<Tag name="NeedRestart">* Herstart vereist</Tag>
 	<Tag name="NotDone">not done yet, ToDo</Tag>
+	<Tag name="NeedApply">need Apply</Tag>
+	<Tag name="Ignored">Negeren</Tag>
 	<Tag name="GraphicsRightHQ">Standaard staat betere kwaliteit (minder fps) rechts en is gemarkeerd met + indien naar links verschoven.</Tag>
 	<Tag name="VSync">Verticale synchronisatie</Tag>
 	<Tag name="RenderSystem">Laadtechniek</Tag>
@@ -566,7 +569,14 @@
 	<Tag name="FOV">Kijkhoek</Tag>
 	<Tag name="Other">Overig</Tag>
 	<Tag name="Development">Ontwikkeling</Tag>
-	<Tag name="FPS">Fps, driehoeken, reeksen</Tag>
+	<Tag name="FPS">Fps bar, render statistics</Tag>
+	<Tag name="FPS_Fps">Aantal frames per seconde</Tag>
+	<Tag name="FPS_Triangles">Millions of triangles</Tag>
+	<Tag name="FPS_Draws">Draw calls</Tag>
+	<Tag name="FPS_Instances">Afstand</Tag>
+	<Tag name="FPS_Vegetation">Begroeiingsbotsing</Tag>
+	<Tag name="FPS_Workspaces">Workspaces</Tag>
+	<Tag name="FPS_Memory">GPU memory</Tag>
 	<Tag name="Wireframe">Blauwdruk</Tag>
 	<Tag name="BulletDebug">Bullet debug</Tag>
 	<Tag name="BulletProfilerTxt">Bullet Profiler Times</Tag>
@@ -632,6 +642,7 @@
 	<Tag name="InputMapPrevCamera">Previous Camera</Tag>
 	<Tag name="InputMapNextCamera">Next Camera</Tag>
 	<Tag name="InputMapLastChk">Go to last checkp.</Tag>
+	<Tag name="InputMapLights">Toggle lights</Tag>
 	<Tag name="InputMapShowOptions">Show options</Tag>
 	<Tag name="InputMapPrevTab">Previous tab</Tag>
 	<Tag name="InputMapNextTab">Next tab</Tag>
@@ -651,7 +662,7 @@
 	<Tag name="TweakEdit1">Alt-Z - toggle tweak window (car edit)</Tag>
 	<Tag name="TweakEdit2">Alt-Shift-Z - save file and reload game</Tag>
 	<Tag name="TweakEdit3">Ctrl-F5 - start car performance test</Tag>
-	<Tag name="TiresEdit">Tire Edit - (Graphs in mode 4)</Tag>
+	<Tag name="TiresEdit">Tire Edit - (Graphs mode)</Tag>
 	<Tag name="TiresEdit1">PgUp/PgDn - previous, next value</Tag>
 	<Tag name="TiresEdit2">1,2 or Num /,* - change value</Tag>
 	<Tag name="TiresEdit3">Home - toggle longitudinal / lateral parameters</Tag>
@@ -893,6 +904,7 @@
 	<Tag name="Wind">Wind</Tag>
 	<Tag name="DenyReversed">Deny reversed direction</Tag>
 	<Tag name="NoWrongChks">Don't show wrong checkpoint messages</Tag>
+	<Tag name="NeedLights">Voertuigen</Tag>
 	<Tag name="Warnings">Warnings</Tag>
 	<Tag name="WarningsInfo">Console for track errors, warnings and hints.</Tag>
 	<Tag name="CheckOnLoad">Check on load</Tag>
@@ -1107,7 +1119,7 @@
 	<Tag name="DrivingSchool">Stunt Rally driving school</Tag>
 	<Tag name="LessonClick">click button to play a lesson</Tag>
 	<Tag name="Hint-0">Rewind</Tag>
-	<Tag name="Hint-0text">If you crashed or you're stuck, hold [Backspace] to move back in time.</Tag>
+	<Tag name="Hint-0text">If you crashed or you're stuck, hold [Insert] to move back in time.</Tag>
 	<Tag name="Hint-1">Turns</Tag>
 	<Tag name="Hint-1text">Don't accelerate all the time. Also don't forget to brake before turns, especially sharp ones. If you don't know the road yet, it's better to drive slowly.</Tag>
 	<Tag name="Hint-2">Flipping</Tag>
@@ -1165,8 +1177,6 @@
 	<Tag name="UserDir">User Path (logs, configs, user data, etc)</Tag>
 	<Tag name="TipSliderReset">RMB on slider - reset to default value.</Tag>
 	<Tag name="TipLoadTrkEditor">Load track (after change) or Reload current track.</Tag>
-	<Tag name="TipTrkScreenEditor">In game screenshot for selected track.</Tag>
-	<Tag name="TipMinimapScrnEditor">Minimap of selected track, view from top.</Tag>
 	<Tag name="TipTrackDescEditor">Track description text (click to edit).</Tag>
 	<Tag name="TipCopySource">Pick selected track for copy source, used in [Tools] tab.</Tag>
 	<Tag name="TipNewDup">Create a new track by duplicating the selected track and using new name (change name first).</Tag>
@@ -1289,6 +1299,7 @@
 	<Tag name="LANG_cs">Čeština</Tag>
 	<Tag name="LANG_nl_NL">Nederlands</Tag>
 	<Tag name="LANG_hu_HU">Magyar</Tag>
+	<Tag name="SC_Anomaly">Anomaly</Tag>
 	<Tag name="GameVersion">3.0</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
