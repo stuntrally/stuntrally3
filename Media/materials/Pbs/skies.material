@@ -214,3 +214,19 @@ hlms sky/kloppenheim02_b pbs : sky_base
 {
     emissive_map  kloppenheim02_b.jpg
 }
+
+//  anomaly
+hlms sky/sky_anomaly_01 pbs : sky_base
+{
+    emissive_map  sky_anomaly_01.jpg
+}
+
+hlms sky/sky_anomaly_02 pbs : sky_base
+{
+    emissive_map  sky_anomaly_02.jpg
+}
+
+hlms sky/sky_anomaly_03 pbs : sky_base
+{
+    emissive_map  sky_anomaly_03.jpg
+}

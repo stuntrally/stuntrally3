@@ -404,3 +404,64 @@ hlms seaweed02 pbs : grass {
 	
 hlms seaweed03 pbs : grass {
     diffuse_map seaweed03.png  }
+
+
+//  anomaly
+hlms grassAnomaly01a pbs : grass {
+	emissive 0.3 0.3 0.3
+    diffuse_map grassAnomaly01a.png  }
+	
+hlms grassAnomaly01b pbs : grass {
+    diffuse_map grassAnomaly01b.png  }
+	
+hlms grassAnomaly01c pbs : grass {
+    diffuse_map grassAnomaly01c.png  }
+	
+
+hlms grassAnomaly02a pbs : grass {
+	emissive 0.3 0.3 0.3
+    diffuse_map grassAnomaly02a.png  }
+	
+hlms grassAnomaly02b pbs : grass {
+    diffuse_map grassAnomaly02b.png  }
+	
+hlms grassAnomaly02c pbs : grass {
+	// ambient 0.8 0.8 0.6
+    diffuse 0.5 0.5 0.4
+    diffuse_map grassAnomaly02c.png  }
+	
+hlms grassAnomaly03a pbs : grass {
+	emissive 0.3 0.3 0.3
+    diffuse_map grassAnomaly03a.png  }
+	
+hlms grassAnomaly03b pbs : grass {
+    diffuse_map grassAnomaly03b.png  }
+	
+hlms grassAnomaly03c pbs : grass {
+	// ambient 0.8 0.8 0.6
+    diffuse 0.5 0.5 0.4
+    diffuse_map grassAnomaly03c.png  }
+	
+hlms grassAnomaly04a pbs : grass {
+	emissive 0.3 0.3 0.3
+    diffuse_map grassAnomaly04a.png  }
+	
+hlms grassAnomaly04b pbs : grass {
+    diffuse_map grassAnomaly04b.png  }
+	
+hlms grassAnomaly04c pbs : grass {
+	// ambient 1.8 1.8 1.6
+    diffuse 1.5 1.5 1.4
+    diffuse_map grassAnomaly04c.png  }
+	
+hlms flower02AnomalyA pbs : grass {
+	emissive 0.3 0.3 0.3
+    diffuse_map flower02AnomalyA.png  }
+	
+hlms flower02AnomalyB pbs : grass {
+    diffuse_map flower02AnomalyB.png  }
+	
+hlms flower02AnomalyC pbs : grass {
+	// ambient 0.8 0.8 0.6
+    diffuse 0.5 0.5 0.4
+    diffuse_map flower02AnomalyC.png  }
