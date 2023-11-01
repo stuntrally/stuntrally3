@@ -349,6 +349,8 @@ it will go bad for all created meshes (road, grass).
 New does not support passes [[2.3] Dealing with multi pass rendering in ogre next](https://forums.ogre3d.org/viewtopic.php?t=96902), and instead has:  
 2 nodes with same mesh, but clones datablock and sets opposite cull in it. Code in `pipe glass 2nd item` section of `Road_Mesh.cpp`.  
 
+_ToDo:_ glass pipes are too bright (glow) in fog.
+
 Transparent objects are sorted by Ogre-Next so they don't blink randomly like in old Ogre.  
 There is though a less noticable issue with order on borders showin elipses between pipe segments [screen here](https://forums.ogre3d.org/viewtopic.php?p=553945&sid=6798838bbed3be6881aa07bf10012412#p553945).  
 
