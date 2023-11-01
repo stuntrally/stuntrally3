@@ -106,6 +106,7 @@ public:
 
 
 	//  🆕 Init  ----------------
+	std::string getSystemLanguage();
 	void InitAppGui();
 	void DestroyGui();
 	void Quit();
