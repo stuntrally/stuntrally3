@@ -1,8 +1,7 @@
 _How to translate Stunt Rally 3.x game/editor to a language._
 
-We moved to Weblate. Translating works.  
-Links for Weblate info: [translating](https://docs.weblate.org/en/latest/user/translating.html), [integration](
-https://docs.weblate.org/en/latest/devel/integration.html).
+We moved to Weblate. Link for general info: [**translating**](https://docs.weblate.org/en/latest/user/translating.html). _And for details [integration](
+https://docs.weblate.org/en/latest/devel/integration.html)._
 
 ### Introduction
 
@@ -11,14 +10,13 @@ _Supplying translations, even small typo fixes, is a great way to contribute._
 
 You can easily and conveniently translate on the [webpage](https://hosted.weblate.org/projects/stunt-rally-3/stunt-rally-3/). It has some more features.
 
-_You can also download the translation from there and translate it locally using a tool like eg. [PoEdit](https://sourceforge.net/projects/poedit/._
+_You can also download the translation from there and translate it locally using a tool like [PoEdit](https://sourceforge.net/projects/poedit/)._
 
 ### How to start
 
-  - Get yourself an account on Weblate, if you don't have one already (and if it's needed)
-  - Pick your language and join its translation team (on website, link above)
-  - Add a language if it is not there (if you intend to translate at least 20% of it)
-  - Start translating
+  - Get yourself an account on Weblate, if you don't have one already
+  - Pick your language or add language if it's not there _(if you intend to translate at least 20% of it)_
+  - Press Translate to start, pick unfinished strings or other from combo
 
 ### Order
 
@@ -39,21 +37,21 @@ This is the recommended order in which to translate.
     to make sure they will fit into the GUI (for tooltips this doesn't matter).
   * Full translation requires time and patience, also good game and editor experience to catch the text meaning.
 
-  * Check **Developer note:**
+  * Check **Source string description:**
     * This is my comment, usually a group name for few strings telling what are they for.
     * Those having 'Main' are more important than others.
     * Usually if this comment has a long group name it's not that important as the shorter ones.
     * If you see 'Input' then this is a text for either mouse or keyboard action
     * Only few strings have some unusual longer remarks
   * ?_ToDo:_ See details, it shows more info, namely:
-  * **Occurrences**
+  * **Source string location**
     * for Gui .layout files shows in which, at which line and   **Widget name hierarchy** (parent widget captions)   ending with widget **type** on which this string is.
     * for source .cpp files shows path (inside source/), file name and at which line.
   * Context, this is a string id from xml   e.g. all input texts start with Input, tips start with Tip etc. (apart from that it's not very helpful)
 
-### How to read the occurrences text
+### How to read location
 
-On Weblate these (first ones at least) are as links to sources in our Git repo.
+On Weblate these are as links to source files (first occurrence in file at least) in our Git repo.
 
 Example for Boost string:
 ```
@@ -105,14 +103,14 @@ This needs 2 steps:
 
 ### Technical Details
 
-All strings in Stunt Rally 3 are in the [_en_tag.xml file](../Media/gui/core_language_en_tag.xml),  
+All original English strings in Stunt Rally 3 are in the [*_en_tag.xml file](../Media/gui/core_language_en_tag.xml),  
 used by MyGUI's own translation system.  
 
 > This file is edited and sorted manually. Each new string for Gui or Hud is added there.  
 It also has xml comments with group and subgroups names,  
 which then show up as Develeoper comment on web (as #. in `sr.pot` file).
 
-After changes in the .xml file, run **[1upd-all.sh](../locale/2upd-xml.sh)** inside `locale/`.
+After changes in the .xml file, run **[1upd-all.sh](../locale/1upd-all.sh)** inside `locale/`.
 
 A small C++ program [sr_translator](../src/transl/main.cpp) generates `sr.pot` templates file from the .xml file.  
 _It also searches for string references in sources and Gui layouts, also getting widgets hierarchy._
@@ -143,15 +141,13 @@ Language name in this language (found on e.g. Wikipedia).
 This will be visible in combobox on Gui.  
 Note that it needs translation update after, to have the new tag in all languages.
 
-source/ogre/Localization.h  
+src/common/AppGui_Init.cpp
 ```
 else if (!strcmp(buf,"Czech")) loc = "cs";
 ```
 English name of language from windows GetLocaleInfoA function.
 
-source/ogre/common/GuiCom_Util.cpp
+src/common/GuiCom_Util.cpp
 ```
 languages["cs"] = TR("#{LANG_CS}");
 ```
-
-  

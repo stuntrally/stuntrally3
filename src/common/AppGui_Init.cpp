@@ -8,10 +8,63 @@
 #include <MyGUI_TextBox.h>
 #include <MyGUI_ImageBox.h>
 
+#include <iterator>
 #include <string>
 #include <filesystem>
+#include <locale.h>
+#include <cctype>
+
+#include <OgrePlatform.h>
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+	#include <Winnls.h>  //<windows.h>
+#endif
 using namespace MyGUI;
 using namespace std;
+
+
+//  detect language
+std::string AppGui::getSystemLanguage()
+{
+	const std::string default_lang = "en";
+
+	setlocale(LC_ALL, "");
+
+	char *loc = setlocale(LC_ALL, NULL);
+	if (!loc)
+		return default_lang;
+	if (memcmp(loc, "C", 2) == 0)
+		return "en";
+
+	//  windows only
+	#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+		char buf[256];  // loc has same result?       // English name of language
+		int res = GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_SENGLANGUAGE, buf, sizeof(buf));
+
+			if (!strcmp(buf,"English"))     loc = "en";
+		else if (!strcmp(buf,"German"))     loc = "de";
+		else if (!strcmp(buf,"Finnish"))    loc = "fi";
+		else if (!strcmp(buf,"Romanian"))   loc = "ro";
+		else if (!strcmp(buf,"French"))     loc = "fr";
+		else if (!strcmp(buf,"Russian"))    loc = "ru";
+		else if (!strcmp(buf,"Portuguese")) loc = "pt";
+		else if (!strcmp(buf,"Italian"))    loc = "it";
+		else if (!strcmp(buf,"Polish"))     loc = "pl";
+		else if (!strcmp(buf,"Slovakian"))  loc = "sk";
+		else if (!strcmp(buf,"Spanish"))    loc = "es";
+		else if (!strcmp(buf,"Czech"))      loc = "cs";
+	#endif
+
+	//  We parse here only the first part of two part codes (e.g.fi_FI).
+	//  We can revisit this if we get regional translations.
+	std::string s(loc);
+	if (s.size() > 2)
+	{
+		s = s.substr(0, 2);
+		transform(s.begin(), s.end(), s.begin(), 
+			[](unsigned char c){  return tolower(c);  } );
+	}
+	return s;
+}
 
 
 //  🌟🆕 init Gui
@@ -44,9 +97,9 @@ void AppGui::InitAppGui()
 	//; PointerManager::getInstance().setVisible(false);
 	
 	//------------------------ language
-	/*if (pSet->language == "")  // autodetect
+	if (pSet->language == "")  // autodetect
 	{	pSet->language = getSystemLanguage();
-		setlocale(LC_NUMERIC, "C");  }*/
+		setlocale(LC_NUMERIC, "C");  }
 	
 	if (!PATHS::FileExists(PATHS::Data() + "/gui/core_language_" + pSet->language + "_tag.xml"))
 		pSet->language = "en";  // use en if not found
