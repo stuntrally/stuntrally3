@@ -357,7 +357,9 @@ hlms OT_glass pbs : car_glass2
 hlms OT_interior pbs : car_interior
 {
 	diffuse_map  OT_interior.png
-	specular  0.2 0.2 0.2
+	diffuse  0.3 0.3 0.3
+	specular 0.2 0.2 0.2
+	roughness 0.6
 }
 hlms OT_wheel pbs : car_wheel
 {
@@ -437,8 +439,9 @@ hlms UV_interior pbs : car_interior
 {
 	diffuse_map   UV_interior.png
 	specular_map  UV_interior_refl.png
-	diffuse  0.7 0.7 0.7
-	specular 0.4 0.4 0.4 //12
+	diffuse  0.5 0.5 0.5
+	specular 0.4 0.4 0.4
+	roughness 0.2
 }
 hlms UV_Tire pbs : car_wheel
 {
@@ -628,13 +631,14 @@ hlms FN_G pbs : FN_body {  }
 hlms FN_glass pbs : car_glass
 {
 	diffuse_map  FN_glass.png
-	workflow specular_fresnel
-	fresnel_coeff 0.5 0.5 0.5
+	// workflow specular_fresnel
+	fresnel_coeff 0.2 0.2 0.2
 
 	diffuse   0 0 0
-	specular  1 1 1
+	specular  0.6 0.6 0.6
 	roughness 0.01
-	metalness 0.8
+	transparency 0.9
+	// metalness 0.8
 }
 }
 hlms FN_interior pbs : car_interior
@@ -680,8 +684,9 @@ hlms V1_interior pbs : car_interior
 {
 	diffuse_map  V1_interior.png
 	specular_map V1_interior_spec.png
-	diffuse  0.9 0.9 0.9
-	specular 1.0 1.0 1.0
+	diffuse  0.1 0.1 0.1
+	specular 0.6 0.6 0.6
+	roughness 0.18
 }
 
 //  V2
@@ -705,8 +710,9 @@ hlms V2_G pbs : V2_body {  }
 hlms V2_interior pbs : car_interior
 {
 	diffuse_map  V2_interior.png
-	diffuse  0.7 0.8 0.8
-	specular 0.8 0.8 0.8
+	diffuse  0.1 0.1 0.1
+	specular 0.6 0.6 0.6
+	roughness 0.21
 }
 hlms V2_glass pbs : car_body
 {
@@ -736,8 +742,9 @@ hlms V3_interior pbs : car_interior
 {
 	diffuse_map  V3_interior.png
 	//specular_map  V3_interior_spec.png
-	diffuse  0.8 0.8 0.8
-	specular 1.0 1.0 1.0
+	diffuse  0.1 0.1 0.1
+	specular 0.6 0.6 0.6
+	roughness 0.15
 }
 hlms V3_glass pbs : car_glass2
 {
@@ -964,19 +971,32 @@ hlms U8_glass pbs : car_glass
 hlms U8_interior pbs : car_interior
 {
 	diffuse_map  U8_interior.png
-	specular_map  U8_interior_spec.png
-	cull_mode none
+	specular_map U8_interior_spec.png
+	// cull_mode none
 	diffuse  0.2 0.2 0.2
+	specular 0.4 0.4 0.4
+	roughness 0.4
+}
+hlms U8_floor pbs : car_interior
+{
+	diffuse_map   U8_floor.jpg
+	normal_map    flat_n.png
+	// specular_map  U8_floor.jpg
+	roughness_map U8_floor.jpg
+	cull_mode none
+	diffuse  0.8 0.8 0.8
 	specular 0.5 0.5 0.5
+	roughness 0.9
+	fresnel 1.0
+	fresnel_coeff 0.7 0.7 0.7
 }
 hlms U8_wheel pbs : car_wheel
 {
 	diffuse_map   U8_wheel.png
 	specular_map  U8_wheel_refl.png
-	metalness_map U8_wheel_refl.png
-	diffuse  0.3 0.3 0.3
+	diffuse  0.5 0.5 0.5
 	specular 0.5 0.5 0.5
-	metalness 0.1
+	roughness 0.2
 }
 
 
@@ -999,10 +1019,11 @@ hlms MO_G pbs : MO_body {  }
 hlms MO_interior pbs : car_interior
 {
 	diffuse_map  MO_interior.png
-	diffuse  0.8 0.8 0.8
-	specular 0.5 0.5 0.5
+	diffuse  0.1 0.1 0.1
+	specular 0.2 0.2 0.2
 	roughness 0.3
-	metalness 0.2
+	fresnel 1.0
+	fresnel_coeff 0.7 0.7 0.7
 }
 hlms MO_wheel pbs : car_wheel
 {
@@ -1223,10 +1244,25 @@ hlms SX_wheel pbs // : car_wheel
 
 
 //  ES  -------------------------------------------------
-hlms body_realtime pbs //: car_body
+hlms ES_body pbs //: car_body
+{
+	// for ed:
+	diffuse_map ES_body_white2.jpg
+
+	workflow specular_fresnel
+	fresnel_coeff 1 1 1
+
+	diffuse	  0.0 0.0 0.0
+	specular  0.25 0.25 0.45
+	roughness 0.6
+	metalness 0.7
+	paint yes
+}
+hlms ES_body1 pbs //: car_body
 {
 	// for ed:
 	diffuse_map car_body_ed.png
+	// normal_map   flat_n.png
 	// diffuse_map  ES_body_white2.jpg  //+
 	// normal_map   ES_normal.png
 	// specular_map   ES_refl.png  //+
@@ -1234,7 +1270,6 @@ hlms body_realtime pbs //: car_body
 	// metalness_map  ES_refl.png
 	cull_mode none  //! for ed..
 
-	// workflow metallic
 	fresnel_coeff 0.1 0.1 0.1
 	// fresnel_coeff 1 1 1
 
@@ -1247,53 +1282,56 @@ hlms body_realtime pbs //: car_body
 	metalness 0.8
 	paint yes
 }
-hlms ES_0 pbs : body_realtime {  }
-hlms ES_1 pbs : body_realtime {  }
-hlms ES_2 pbs : body_realtime {  }
-hlms ES_3 pbs : body_realtime {  }
-hlms ES_4 pbs : body_realtime {  }
-hlms ES_5 pbs : body_realtime {  }  // MAX_Players
-hlms ES_G pbs : body_realtime {  }  // Ghost
-hlms ES_T pbs : body_realtime {  }  // Track  MAX_Vehicles
+hlms ES_0 pbs : ES_body {  }
+hlms ES_1 pbs : ES_body {  }
+hlms ES_2 pbs : ES_body {  }
+hlms ES_3 pbs : ES_body {  }
+hlms ES_4 pbs : ES_body {  }
+hlms ES_5 pbs : ES_body {  }  // MAX_Players
+hlms ES_G pbs : ES_body {  }  // Ghost
+hlms ES_T pbs : ES_body {  }  // Track  MAX_Vehicles
 
+hlms ES_exterior pbs
+{
+	diffuse_map  ES_body_white2.jpg
+	normal_map   ES_normal.png
+
+	fresnel 0.2
+	fresnel_coeff 0.2 0.2 0.2
+
+	diffuse	  1.1 1.1 1.1
+	specular  0.7 0.7 0.7
+	roughness 0.4
+}
 hlms ES_interior pbs //: car_interior
 {
 	diffuse_map  ES_interior.png
 	normal_map   ES_interior_normal.jpg
-	//roughness_map  ES_interior.png
-	//metalness_map  ES_interior.png
 
-	// workflow specular_fresnel
 	fresnel 0.0
 	fresnel_coeff 0.0 0.0 0.0
-	// fresnel_coeff 1 1 1
 
-	diffuse	  0.4 0.4 0.4
-	specular  0.0 0.0 0.0
-	roughness 0.8
-	metalness 0.02
+	diffuse	  0.7 0.7 0.7
+	specular  0.1 0.1 0.1
+	roughness 0.6
 }
 
 hlms ES_glass pbs : car_glass
 {
 	diffuse_map  ES_glass.png
-	normal_map   flat_n.png
+	// normal_map   flat_n.png
 	// specular_map ES_glass_refl.jpg
 
-	roughness 0.13
-	metalness 1.0
-	specular  0.0 0.0 0.0
+	// roughness 0.13
+	// specular  1 1 1
 
-	// workflow specular_fresnel
 	// fresnel_coeff 0.1
-
-	roughness 0.2
-	metalness 0.8
+	// fresnel_coeff 1 1 1
 
 	cull_mode none
 	depth_write off
-	transparency 0.99
-	transparency_mode transparent
+	transparency 0.95
+	// transparency_mode transparent
 }
 
 hlms ES_wheel pbs : car_wheel
