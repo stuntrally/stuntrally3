@@ -149,7 +149,7 @@ bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8
 			}
 			catch (Exception e)
 			{
-				LogO(String("PrvTex can't upload ")/*+e.what()*/);
+				LogO(String("PreviewTex: can't upload")/*+e.what()*/);
 			}
 			mgr->removeStagingTexture( tex );  tex = 0;
 
@@ -207,7 +207,7 @@ void PreviewTex::Clear(const uint8 b, const uint8 g, const uint8 r, const uint8 
 	}
 	catch (Exception e)
 	{
-		LogO(String("PrvTex can't upload ")/*+e.what()*/);
+		LogO(String("PreviewTex: can't upload")/*+e.what()*/);
 	}
 	
 	mgr->removeStagingTexture( tex );  tex = 0;

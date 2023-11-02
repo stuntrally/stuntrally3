@@ -1402,7 +1402,7 @@
 	<Tag name="InputPaintColor">C - Paint Color</Tag>
 
 	<!--  Terrain  Toggle  -->
-	<Tag name="InputLockBrush">Enter - lock brush position</Tag>
+	<Tag name="InputLockBrush">Insert - lock brush position</Tag>
 	<Tag name="InputTerHeightSet">Space - set height from cursor</Tag>
 
 	<!--  Terrain  update  -->
