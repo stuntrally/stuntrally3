@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-22 23:24+0200\n"
+"POT-Creation-Date: 2023-11-02 20:02+0100\n"
 "PO-Revision-Date: 2014-08-11 15:41+0000\n"
 "Last-Translator: Hugo Locurcio, 2014-2015\n"
 "Language-Team: French (http://www.transifex.com/stuntrally/stuntrally/"
@@ -48,38 +48,38 @@ msgid "Error"
 msgstr "Erreur"
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:253 src/game/Challenges.cpp:410:540:562:644:662:679
-#: src/game/Gui_Init.cpp:533
+#: src/game/Hud_Create.cpp:246 src/game/Challenges.cpp:410:540:562:644:662:679
+#: src/game/Gui_Init.cpp:534
 msgctxt "TBTime"
 msgid "Time"
 msgstr "Temps"
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:283
+#: src/game/Hud_Create.cpp:276
 msgctxt "TBLast"
 msgid "Last"
 msgstr "Dernier"
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:284 src/game/Gui_Init.cpp:533
+#: src/game/Hud_Create.cpp:277 src/game/Gui_Init.cpp:534
 msgctxt "TBBest"
 msgid "Best"
 msgstr "Meilleur"
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:252:282 src/game/Gui_Init.cpp:534
+#: src/game/Hud_Create.cpp:245:275 src/game/Gui_Init.cpp:535
 msgctxt "TBLap"
 msgid "Lap"
 msgstr "Tour"
 
 #. HUD  Times bar 
-#: src/game/Hud_UpdatesAll.cpp:356 src/game/Gui_Init.cpp:532
+#: src/game/Hud_UpdatesAll.cpp:356 src/game/Gui_Init.cpp:533
 msgctxt "TBPlace"
 msgid "Place"
 msgstr "Place"
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:255:286
+#: src/game/Hud_Create.cpp:248:279
 #: src/game/Challenges.cpp:417:552:564:640:661:678
 msgctxt "TBPosition"
 msgid "Position"
@@ -87,7 +87,7 @@ msgstr "Position"
 
 #. HUD  Times bar 
 #: Media/gui/Game.layout:410 ..SingleRace.Track.Text
-#: src/game/Championships.cpp:469 src/game/Hud_Create.cpp:256:287
+#: src/game/Championships.cpp:469 src/game/Hud_Create.cpp:249:280
 #: src/game/Challenges.cpp:436:451:546:563:636:660:677
 msgctxt "TBPoints"
 msgid "Points"
@@ -100,51 +100,51 @@ msgid "Lap Results"
 msgstr "Résultats du tour"
 
 #. HUD 
-#: Media/gui/Game_Options.layout:1298 ..Options.Sound.Main.Check
+#: Media/gui/Game_Options.layout:1304 ..Options.Sound.Main.Check
 msgctxt "Checkpoint"
 msgid "Checkpoint"
 msgstr "Point de contrôle"
 
 #. HUD 
-#: Media/gui/Game_Options.layout:1294 ..Options.Sound.Main.Check
-#: src/game/Hud_Create.cpp:325
+#: Media/gui/Game_Options.layout:1300 ..Options.Sound.Main.Check
+#: src/game/Hud_Create.cpp:318
 msgctxt "WrongChk"
 msgid "Wrong Checkpoint"
 msgstr "Mauvais point de contrôle"
 
 #. Editor  status 
-#: src/editor/SceneInit.cpp:261
+#: src/editor/SceneInit.cpp:262
 msgctxt "Loading"
 msgid "Loading"
 msgstr "Chargement"
 
 #. Editor  status 
-#: src/game/Gui_TweakSim.cpp:220 src/editor/SceneInit.cpp:359
+#: src/game/Gui_TweakSim.cpp:220 src/editor/SceneInit.cpp:360
 msgctxt "Loaded"
 msgid "Loaded"
 msgstr "Chargé"
 
 #. Editor  status 
-#: src/editor/SceneInit.cpp:470
+#: src/editor/SceneInit.cpp:471
 msgctxt "Saving"
 msgid "Saving"
 msgstr "Sauvegarde"
 
 #. Editor  status 
-#: src/game/Gui_TweakSim.cpp:567 src/editor/SceneInit.cpp:513
+#: src/game/Gui_TweakSim.cpp:567 src/editor/SceneInit.cpp:514
 #: src/editor/Update_Key.cpp:42
 msgctxt "Saved"
 msgid "Saved"
 msgstr "Enregistré"
 
 #. Editor  status 
-#: src/editor/SceneInit.cpp:397
+#: src/editor/SceneInit.cpp:398
 msgctxt "Updating"
 msgid "Updating"
 msgstr "Mise à jour"
 
 #. Editor  status 
-#: src/editor/SceneInit.cpp:425
+#: src/editor/SceneInit.cpp:426
 msgctxt "Updated"
 msgid "Updated"
 msgstr "Mis à jour"
@@ -157,8 +157,8 @@ msgid "Single Race"
 msgstr "Course simple"
 
 #. MAIN  Menu 
-#: Media/gui/Game.layout:1850 ..SingleRace.Tab Media/gui/Game_Main.layout:148
-#: ..NewGame.Button Media/gui/Game_Options.layout:273
+#: Media/gui/Game.layout:1872 ..SingleRace.Tab Media/gui/Game_Main.layout:148
+#: ..NewGame.Button Media/gui/Game_Options.layout:279
 #: ..Options.Input.Shortcuts.Text Media/gui/Game_Utils.layout:18 ..Window :50
 #: src/game/Championships.cpp:279:423:445 src/game/Gui_Util.cpp:105:165
 msgctxt "Championship"
@@ -167,7 +167,7 @@ msgstr "Championnat"
 
 #. MAIN  Menu 
 #: Media/gui/Game_Main.layout:130 ..NewGame.Button
-#: Media/gui/Game_Options.layout:270 ..Options.Input.Shortcuts.Text
+#: Media/gui/Game_Options.layout:276 ..Options.Input.Shortcuts.Text
 #: src/game/Championships.cpp:279:423:445 src/game/Gui_Util.cpp:104:164
 msgctxt "Tutorial"
 msgid "Tutorial"
@@ -175,7 +175,7 @@ msgstr "Tutoriel"
 
 #. MAIN  Menu 
 #: Media/gui/Game_Main.layout:166 ..NewGame.Button
-#: Media/gui/Game_Options.layout:276 ..Options.Input.Shortcuts.Text
+#: Media/gui/Game_Options.layout:282 ..Options.Input.Shortcuts.Text
 #: Media/gui/Game_Utils.layout:89 ..Window :121
 #: src/game/Challenges.cpp:394:513:634 src/game/Gui_Util.cpp:105:165
 msgctxt "Challenge"
@@ -314,7 +314,7 @@ msgid "Donations"
 msgstr ""
 
 #. MAIN  Championship  buttons 
-#: Media/gui/Game.layout:1944 ..SingleRace.Championship.Button :1955:1966
+#: Media/gui/Game.layout:1966 ..SingleRace.Championship.Button :1977:1988
 #: Media/gui/Game_Utils.layout:29 ..Championship.Button :100..Challenge.Button
 #: src/game/Championships.cpp:226:479 src/game/Challenges.cpp:571:685
 msgctxt "Start"
@@ -366,37 +366,37 @@ msgid "Gold"
 msgstr "Or"
 
 #. Challenge types 
-#: Media/gui/Game.layout:1875 ..SingleRace.Championship.Tab
+#: Media/gui/Game.layout:1897 ..SingleRace.Championship.Tab
 msgctxt "Chall_Rally"
 msgid "Rally"
 msgstr "Rally"
 
 #. Challenge types 
-#: Media/gui/Game.layout:1881 ..SingleRace.Championship.Tab
+#: Media/gui/Game.layout:1903 ..SingleRace.Championship.Tab
 msgctxt "Chall_Endurance"
 msgid "Endurance"
 msgstr "Endurance"
 
 #. Challenge types 
-#: Media/gui/Game.layout:1884 ..SingleRace.Championship.Tab
+#: Media/gui/Game.layout:1906 ..SingleRace.Championship.Tab
 msgctxt "Chall_Chase"
 msgid "Chase"
 msgstr "Poursuite"
 
 #. Challenge types 
-#: Media/gui/Game.layout:1890 ..SingleRace.Championship.Tab
+#: Media/gui/Game.layout:1912 ..SingleRace.Championship.Tab
 msgctxt "Chall_Stunts"
 msgid "Stunts"
 msgstr "Acrobaties"
 
 #. Challenge types 
-#: Media/gui/Game.layout:1887 ..SingleRace.Championship.Tab
+#: Media/gui/Game.layout:1909 ..SingleRace.Championship.Tab
 msgctxt "Chall_Extreme"
 msgid "Extreme"
 msgstr "Extrême"
 
 #. Challenge types 
-#: Media/gui/Game.layout:1896 ..SingleRace.Championship.Tab
+#: Media/gui/Game.layout:1918 ..SingleRace.Championship.Tab
 msgctxt "Chall_Special"
 msgid "Special"
 msgstr "Spécial"
@@ -412,25 +412,25 @@ msgid "Very Easy"
 msgstr "Très facile"
 
 #. MAIN  Track Difficulty 
-#: Media/gui/Game.layout:1875 ..SingleRace.Championship.Tab
+#: Media/gui/Game.layout:1897 ..SingleRace.Championship.Tab
 msgctxt "Diff2"
 msgid "Easy"
 msgstr "Facile"
 
 #. MAIN  Track Difficulty 
-#: Media/gui/Game.layout:1854 ..SingleRace.Championship.Tab
+#: Media/gui/Game.layout:1876 ..SingleRace.Championship.Tab
 msgctxt "Diff3"
 msgid "Medium"
 msgstr "Moyen"
 
 #. MAIN  Track Difficulty 
-#: Media/gui/Game.layout:1857 ..SingleRace.Championship.Tab
+#: Media/gui/Game.layout:1879 ..SingleRace.Championship.Tab
 msgctxt "Diff4"
 msgid "Hard"
 msgstr "Difficile"
 
 #. MAIN  Track Difficulty 
-#: Media/gui/Game.layout:1860 ..SingleRace.Championship.Tab
+#: Media/gui/Game.layout:1882 ..SingleRace.Championship.Tab
 msgctxt "Diff5"
 msgid "Very Hard"
 msgstr "Très difficile"
@@ -473,17 +473,17 @@ msgstr ""
 #: Media/gui/Editor_Track.layout:5 :18..Track.Tab :22..Track.Track.Text
 #: :411..Track.Track.Button :725..Track.Pacenotes.View.Check
 #: Media/gui/Game.layout:17 ..SingleRace.Tab :380..SingleRace.Track.Text
-#: :471..SingleRace.Track.Button :910..SingleRace.Setup.Paint.Tab
-#: :1739..SingleRace.Multiplayer.Game.Text :2028..SingleRace.Tab
-#: :2032..SingleRace.Track.Text Media/gui/Game_Options.layout:256
+#: :471..SingleRace.Track.Button :922..SingleRace.Setup.Paint.Tab
+#: :1761..SingleRace.Multiplayer.Game.Text :2050..SingleRace.Tab
+#: :2054..SingleRace.Track.Text Media/gui/Game_Options.layout:262
 #: ..Options.Input.Shortcuts.Text Media/gui/Game_Replay.layout:32
 #: ..Replays.Replay.Button :151..Replays.View.Text
-#: src/game/Championships.cpp:444 src/game/CarModel_Config.cpp:108
-#: src/game/Hud_Create.cpp:254:285 src/game/Challenges.cpp:515
-#: src/game/Gui_Init.cpp:437 src/game/SceneInit.cpp:237
+#: src/game/Championships.cpp:444 src/game/CarModel_Config.cpp:109
+#: src/game/Hud_Create.cpp:247:278 src/game/Challenges.cpp:515
+#: src/game/Gui_Init.cpp:438 src/game/SceneInit.cpp:238
 #: src/game/Gui_Replay.cpp:75:77:147 src/game/Gui_Network.cpp:124
 #: src/game/Gui_InitChamps.cpp:90 src/game/ChampChall.cpp:389
-#: src/editor/Gui_Tools.cpp:37:44:268:301 src/editor/SceneInit.cpp:465
+#: src/editor/Gui_Tools.cpp:37:44:268:301 src/editor/SceneInit.cpp:466
 msgctxt "Track"
 msgid "Track"
 msgstr "Circuit"
@@ -492,16 +492,16 @@ msgstr "Circuit"
 #: Media/gui/Editor.layout:3194 ..Editor.Vegetation.Road.Advanced.Text
 #: Media/gui/Editor_Track.layout:725 ..Track.Pacenotes.View.Check
 #: Media/gui/Game.layout:19 ..SingleRace.Track.Check
-#: :1926..SingleRace.Championship.Check src/game/Gui_Network.cpp:125
+#: :1948..SingleRace.Championship.Check src/game/Gui_Network.cpp:125
 msgctxt "Reverse"
 msgid "Reverse"
 msgstr "Inverser"
 
 #. MAIN  Track 
 #: Media/gui/Game.layout:25 ..SingleRace.Track.Button
-#: :523..SingleRace.Vehicle.Button :1651..SingleRace.SplitScreen.Button
+#: :523..SingleRace.Vehicle.Button :1673..SingleRace.SplitScreen.Button
 #: Media/gui/Game_Main.layout:30 ..StuntRally##{GameVersion}.Button :96..Window
-#: Media/gui/Game_Options.layout:724 ..Options.Graphics.Button
+#: Media/gui/Game_Options.layout:730 ..Options.Graphics.Button
 msgctxt "NewGame"
 msgid "New Game"
 msgstr "Nouvelle partie"
@@ -515,27 +515,27 @@ msgid "Find"
 msgstr "Rechercher"
 
 #. MAIN  Track stats 
-#: Media/gui/Game.layout:388 ..SingleRace.Track.Text :2339
+#: Media/gui/Game.layout:388 ..SingleRace.Track.Text :2361
 msgctxt "TrackBestTime"
 msgid "Best time"
 msgstr "Meilleur temps"
 
 #. MAIN  Track stats 
-#: Media/gui/Game.layout:393 ..SingleRace.Track.Text :2343
+#: Media/gui/Game.layout:393 ..SingleRace.Track.Text :2365
 msgctxt "TrackAvgSpeed"
 msgid "Avg. speed"
 msgstr "Vitesse moyenne"
 
 #. MAIN  Track stats 
 #: Media/gui/Editor_Track.layout:130 ..Track.Track.Text
-#: Media/gui/Game.layout:144 ..SingleRace.Track.Text :2104
+#: Media/gui/Game.layout:144 ..SingleRace.Track.Text :2126
 msgctxt "TrackLength"
 msgid "Length"
 msgstr "Longueur"
 
 #. MAIN  Track stats 
 #: Media/gui/Editor_Track.layout:134 ..Track.Track.Text
-#: Media/gui/Game.layout:148 ..SingleRace.Track.Text :2108
+#: Media/gui/Game.layout:148 ..SingleRace.Track.Text :2130
 msgctxt "TrackArea"
 msgid "Area"
 msgstr "Surface"
@@ -543,8 +543,8 @@ msgstr "Surface"
 #. MAIN  Track stats 
 #: Media/gui/Editor_Track.layout:150 ..Track.Track.Text :199..Track.Track.Image
 #: Media/gui/Game.layout:164 ..SingleRace.Track.Text
-#: :213..SingleRace.Track.Image :2124..SingleRace.Track.Text
-#: :2173..SingleRace.Track.Image
+#: :213..SingleRace.Track.Image :2146..SingleRace.Track.Text
+#: :2195..SingleRace.Track.Image
 msgctxt "TrackWidthAvg"
 msgid "Width avg."
 msgstr "Largeur moyenne"
@@ -552,8 +552,8 @@ msgstr "Largeur moyenne"
 #. MAIN  Track stats 
 #: Media/gui/Editor_Track.layout:156 ..Track.Track.Text :206..Track.Track.Image
 #: Media/gui/Game.layout:170 ..SingleRace.Track.Text
-#: :220..SingleRace.Track.Image :2130..SingleRace.Track.Text
-#: :2180..SingleRace.Track.Image
+#: :220..SingleRace.Track.Image :2152..SingleRace.Track.Text
+#: :2202..SingleRace.Track.Image
 msgctxt "TrackHeightDiff"
 msgid "Height diff."
 msgstr "Dénivelé"
@@ -561,8 +561,8 @@ msgstr "Dénivelé"
 #. MAIN  Track stats 
 #: Media/gui/Editor_Track.layout:162 ..Track.Track.Text :212..Track.Track.Image
 #: Media/gui/Game.layout:176 ..SingleRace.Track.Text
-#: :226..SingleRace.Track.Image :2136..SingleRace.Track.Text
-#: :2186..SingleRace.Track.Image src/editor/Update_EditKeyTxt.cpp:116
+#: :226..SingleRace.Track.Image :2158..SingleRace.Track.Text
+#: :2208..SingleRace.Track.Image src/editor/Update_EditKeyTxt.cpp:116
 msgctxt "TrackInAir"
 msgid "In air"
 msgstr "Dans l'air"
@@ -570,8 +570,8 @@ msgstr "Dans l'air"
 #. MAIN  Track stats 
 #: Media/gui/Editor_Track.layout:168 ..Track.Track.Text :218..Track.Track.Image
 #: Media/gui/Game.layout:182 ..SingleRace.Track.Text
-#: :232..SingleRace.Track.Image :2142..SingleRace.Track.Text
-#: :2192..SingleRace.Track.Image src/editor/Update_EditKeyTxt.cpp:117
+#: :232..SingleRace.Track.Image :2164..SingleRace.Track.Text
+#: :2214..SingleRace.Track.Image src/editor/Update_EditKeyTxt.cpp:117
 msgctxt "TrackPipes"
 msgid "Pipes"
 msgstr "Tubes"
@@ -585,29 +585,29 @@ msgid "Name"
 msgstr "Nom"
 
 #. Championship Stage  stats 
-#: Media/gui/Game_Options.layout:1677 ..Options.Tweak.Tab
+#: Media/gui/Game_Options.layout:1694 ..Options.Tweak.Tab
 #: src/game/Championships.cpp:210 src/game/Challenges.cpp:598
 msgctxt "Tracks"
 msgid "Tracks"
 msgstr "Circuits"
 
 #. Championship Stage  stats 
-#: Media/gui/Game.layout:2388 ..SingleRace.Track.Text
+#: Media/gui/Game.layout:2410 ..SingleRace.Track.Text
 #: src/game/Championships.cpp:443 src/game/Challenges.cpp:514:658
 msgctxt "Stage"
 msgid "Stage"
 msgstr "Étape"
 
 #. Championship Stage  stats 
-#: Media/gui/Game.layout:2008 ..SingleRace.Tab
+#: Media/gui/Game.layout:2030 ..SingleRace.Tab
 #: src/game/Gui_InitChamps.cpp:63:76
 msgctxt "Stages"
 msgid "Stages"
 msgstr "Étapes"
 
 #. Championship Stage  stats 
-#: Media/gui/Common.layout:81 ..Track-Filter.Check Media/gui/Game.layout:1863
-#: ..SingleRace.Championship.Tab :1866:1878 src/game/Gui_InitChamps.cpp:90
+#: Media/gui/Common.layout:81 ..Track-Filter.Check Media/gui/Game.layout:1885
+#: ..SingleRace.Championship.Tab :1888:1900 src/game/Gui_InitChamps.cpp:90
 #: src/common/GuiCom_Track.cpp:214
 msgctxt "Scenery"
 msgid "Scenery"
@@ -630,8 +630,8 @@ msgstr "Difficulté"
 #. Championship Stage  stats 
 #: Media/gui/Editor_Options.layout:280 ..Options.Graphics.Reflections.Text
 #: :338..Options.Graphics.Water.Text :411..Options.Graphics.Shadows.Text
-#: Media/gui/Game_Options.layout:786 :844..Options.Graphics.Water.Text
-#: :917..Options.Graphics.Shadows.Text src/game/Championships.cpp:457
+#: Media/gui/Game_Options.layout:792 :850..Options.Graphics.Water.Text
+#: :923..Options.Graphics.Shadows.Text src/game/Championships.cpp:457
 #: src/game/Challenges.cpp:526 src/editor/Update_Frame.cpp:85
 msgctxt "Distance"
 msgid "Distance"
@@ -653,7 +653,7 @@ msgid "m:s"
 msgstr "m:s"
 
 #. MAIN  Challenge Stage  progress 
-#: src/game/Championships.cpp:218 src/game/Hud_Create.cpp:257
+#: src/game/Championships.cpp:218 src/game/Hud_Create.cpp:250
 #: src/game/Challenges.cpp:673 src/game/Gui_InitChamps.cpp:64:77
 msgctxt "Progress"
 msgid "Progress"
@@ -851,9 +851,9 @@ msgstr ""
 
 #. Vehicle 
 #: Media/gui/Game.layout:384 ..SingleRace.Track.Text :504..SingleRace.Tab
-#: :1899..SingleRace.Championship.Tab Media/gui/Game_Options.layout:259
+#: :1921..SingleRace.Championship.Tab Media/gui/Game_Options.layout:265
 #: ..Options.Input.Shortcuts.Text Media/gui/Game_Tweak.layout:14 ..Tweak.Tab
-#: :424 src/game/Gui_Init.cpp:460 src/game/Gui_Replay.cpp:81
+#: :424 src/game/Gui_Init.cpp:461 src/game/Gui_Replay.cpp:81
 msgctxt "Vehicle"
 msgid "Vehicle"
 msgstr "Véhicule"
@@ -882,13 +882,13 @@ msgstr ""
 
 #. TIP  Vehicle 
 #: Media/gui/Game.layout:526 ..SingleRace.Vehicle.Button
-#: :1654..SingleRace.SplitScreen.Button
+#: :1676..SingleRace.SplitScreen.Button
 msgctxt "TipNewGameCar"
 msgid "Restart game."
 msgstr "Redémarrer la partie"
 
 #. Color  params 
-#: Media/gui/Game.layout:890 ..SingleRace.Setup.Tab
+#: Media/gui/Game.layout:896 ..SingleRace.Setup.Tab
 msgctxt "Paint"
 msgid "Paint"
 msgstr ""
@@ -915,52 +915,52 @@ msgid "3 colors, changing"
 msgstr ""
 
 #. Color  params 
-#: Media/gui/Editor_Utils.layout:108 ..Color.Text Media/gui/Game.layout:1091
+#: Media/gui/Editor_Utils.layout:108 ..Color.Text Media/gui/Game.layout:1103
 #: ..SingleRace.Setup.Paint.Text
 msgctxt "ColHue"
 msgid "Color - Hue"
 msgstr "Coleur - teinte"
 
 #. Color  params 
-#: Media/gui/Editor_Utils.layout:124 ..Color.Text Media/gui/Game.layout:1110
+#: Media/gui/Editor_Utils.layout:124 ..Color.Text Media/gui/Game.layout:1122
 #: ..SingleRace.Setup.Paint.Text
 msgctxt "ColSat"
 msgid "Saturation"
 msgstr "Saturation"
 
 #. Color  params 
-#: Media/gui/Editor_Utils.layout:140 ..Color.Text Media/gui/Game.layout:1127
+#: Media/gui/Editor_Utils.layout:140 ..Color.Text Media/gui/Game.layout:1139
 #: ..SingleRace.Setup.Paint.Text
 msgctxt "ColBright"
 msgid "Brightness"
 msgstr "Luminosité"
 
 #. Color  params 
-#: Media/gui/Game.layout:1144 ..SingleRace.Setup.Paint.Text
+#: Media/gui/Game.layout:1156 ..SingleRace.Setup.Paint.Text
 msgctxt "ColGloss"
 msgid "Glossiness"
 msgstr "Brillance"
 
 #. Color  params 
 #: Media/gui/Editor.layout:534 ..Editor.Terrain.Light.Text
-#: Media/gui/Game.layout:1176 ..SingleRace.Setup.Paint.Text
+#: Media/gui/Game.layout:1188 ..SingleRace.Setup.Paint.Text
 #: Media/gui/MaterialEditor.layout:210 ..MaterialEditor.Main.Text
 msgctxt "ColReflect"
 msgid "Reflection"
 msgstr "Réflexion"
 
 #. Color  params 
-#: Media/gui/Game.layout:1206 ..SingleRace.Setup.Paint.Text
+#: Media/gui/Game.layout:1218 ..SingleRace.Setup.Paint.Text
 #: Media/gui/MaterialEditor.layout:149 ..MaterialEditor.Main.Text :194
 msgctxt "ColMetalness"
 msgid "Metalness"
 msgstr ""
 
 #. Color  params 
-#: Media/gui/Game.layout:1161 ..SingleRace.Setup.Paint.Text
-#: :1162:1166..SingleRace.Setup.Paint.Slider :1170..SingleRace.Setup.Paint.Text
-#: :1190:1191:1195..SingleRace.Setup.Paint.Slider
-#: :1200..SingleRace.Setup.Paint.Text Media/gui/MaterialEditor.layout:179
+#: Media/gui/Game.layout:1173 ..SingleRace.Setup.Paint.Text
+#: :1174:1178..SingleRace.Setup.Paint.Slider :1182..SingleRace.Setup.Paint.Text
+#: :1202:1203:1207..SingleRace.Setup.Paint.Slider
+#: :1212..SingleRace.Setup.Paint.Text Media/gui/MaterialEditor.layout:179
 #: ..MaterialEditor.Main.Text :180:184..MaterialEditor.Main.Slider
 #: :188..MaterialEditor.Main.Edit :195..MaterialEditor.Main.Text
 #: :199..MaterialEditor.Main.Slider :203..MaterialEditor.Main.Edit
@@ -974,8 +974,8 @@ msgid "Roughness"
 msgstr "Luminosité"
 
 #. Color  params 
-#: Media/gui/Game.layout:1207 ..SingleRace.Setup.Paint.Text
-#: :1211..SingleRace.Setup.Paint.Slider :1215..SingleRace.Setup.Paint.Text
+#: Media/gui/Game.layout:1219 ..SingleRace.Setup.Paint.Text
+#: :1223..SingleRace.Setup.Paint.Slider :1227..SingleRace.Setup.Paint.Text
 #: Media/gui/MaterialEditor.layout:135 ..MaterialEditor.Main.Text
 #: :136:140..MaterialEditor.Main.Slider :144..MaterialEditor.Main.Edit
 #: :149..MaterialEditor.Main.Text :150:154..MaterialEditor.Main.Slider
@@ -986,9 +986,9 @@ msgid "Fresnel"
 msgstr ""
 
 #. Color  params 
-#: Media/gui/Game.layout:1177 ..SingleRace.Setup.Paint.Text
-#: :1181..SingleRace.Setup.Paint.Slider :1185..SingleRace.Setup.Paint.Text
-#: :1191:1195..SingleRace.Setup.Paint.Slider :1200..SingleRace.Setup.Paint.Text
+#: Media/gui/Game.layout:1189 ..SingleRace.Setup.Paint.Text
+#: :1193..SingleRace.Setup.Paint.Slider :1197..SingleRace.Setup.Paint.Text
+#: :1203:1207..SingleRace.Setup.Paint.Slider :1212..SingleRace.Setup.Paint.Text
 #: Media/gui/MaterialEditor.layout:211 ..MaterialEditor.Main.Text
 #: :215..MaterialEditor.Main.Slider :219..MaterialEditor.Main.Edit
 #: :226..MaterialEditor.Main.Text :230..MaterialEditor.Main.Slider
@@ -1000,7 +1000,7 @@ msgstr ""
 #. Color  extras 
 #: Media/gui/Editor_Track.layout:704 ..Track.Pacenotes.View.Text
 #: Media/gui/Editor_Utils.layout:156 ..Color.Text
-#: Media/gui/Game_Options.layout:529 ..Options.View.Pacenotes.Text
+#: Media/gui/Game_Options.layout:535 ..Options.View.Pacenotes.Text
 #: Media/gui/MaterialEditor.layout:252 ..MaterialEditor.Main.Text
 msgctxt "Transparency"
 msgid "Transparency"
@@ -1014,7 +1014,7 @@ msgstr "Négatif (assombrir)"
 
 #. Color  extras 
 #: Media/gui/Editor.layout:812 ..Editor.Terrain.Brushparameters.Button
-#: :817:1668..Editor.Layers.Blendmap.Noise.Button Media/gui/Game.layout:1239
+#: :817:1668..Editor.Layers.Blendmap.Noise.Button Media/gui/Game.layout:1251
 #: ..SingleRace.Setup.Paint.Button
 msgctxt "CarClrRandom"
 msgid "Random"
@@ -1022,14 +1022,14 @@ msgstr "Aléatoire"
 
 #. Color  extras 
 #: Media/gui/Editor.layout:676 ..Editor.Terrain.Brushes.Check
-#: Media/gui/Game.layout:922 ..SingleRace.Setup.Paint.Check
+#: Media/gui/Game.layout:934 ..SingleRace.Setup.Paint.Check
 msgctxt "Adjust"
 msgid "Adjust"
 msgstr "Ajuster"
 
 #. Color  extras 
 #: Media/gui/Editor.layout:736 ..Editor.Terrain.Brushes.Text
-#: Media/gui/Game.layout:938 ..SingleRace.Setup.Paint.Check
+#: Media/gui/Game.layout:950 ..SingleRace.Setup.Paint.Check
 msgctxt "NewLine"
 msgid "New line"
 msgstr ""
@@ -1043,32 +1043,32 @@ msgid ""
 msgstr ""
 
 #. TIP  Vehicle Color 
-#: Media/gui/Game.layout:1094 ..SingleRace.Setup.Paint.Text
-#: :1098..SingleRace.Setup.Paint.Slider :1104..SingleRace.Setup.Paint.Text
+#: Media/gui/Game.layout:1106 ..SingleRace.Setup.Paint.Text
+#: :1110..SingleRace.Setup.Paint.Slider :1116..SingleRace.Setup.Paint.Text
 msgctxt "TipChangeHue"
 msgid "Change car color (hue)."
 msgstr "Changer la couleur de la voiture (teinte)."
 
 #. TIP  Vehicle Color 
-#: Media/gui/Game.layout:1001 ..SingleRace.Setup.Paint.Slider
-#: :1006..SingleRace.Setup.Paint.Text :1112:1116..SingleRace.Setup.Paint.Slider
-#: :1121..SingleRace.Setup.Paint.Text
+#: Media/gui/Game.layout:1013 ..SingleRace.Setup.Paint.Slider
+#: :1018..SingleRace.Setup.Paint.Text :1124:1128..SingleRace.Setup.Paint.Slider
+#: :1133..SingleRace.Setup.Paint.Text
 msgctxt "TipChangeSat"
 msgid "Change car color saturation (white-black)."
 msgstr "Changer la saturation de la couleur de la voiture (blanc/noir)."
 
 #. TIP  Vehicle Color 
-#: Media/gui/Game.layout:1129 ..SingleRace.Setup.Paint.Text
-#: :1133..SingleRace.Setup.Paint.Slider :1138..SingleRace.Setup.Paint.Text
+#: Media/gui/Game.layout:1141 ..SingleRace.Setup.Paint.Text
+#: :1145..SingleRace.Setup.Paint.Slider :1150..SingleRace.Setup.Paint.Text
 msgctxt "TipChangeBright"
 msgid "Change car color brightness (dark-light)."
 msgstr "Changer la luminosité de la peinture de la voiture (sombre/clair)."
 
 #. TIP  Vehicle Color 
-#: Media/gui/Game.layout:1145 ..SingleRace.Setup.Paint.Text
-#: :1149..SingleRace.Setup.Paint.Slider :1153..SingleRace.Setup.Paint.Text
-#: :1162:1166..SingleRace.Setup.Paint.Slider :1170..SingleRace.Setup.Paint.Text
-#: :1207:1211..SingleRace.Setup.Paint.Slider :1215..SingleRace.Setup.Paint.Text
+#: Media/gui/Game.layout:1157 ..SingleRace.Setup.Paint.Text
+#: :1161..SingleRace.Setup.Paint.Slider :1165..SingleRace.Setup.Paint.Text
+#: :1174:1178..SingleRace.Setup.Paint.Slider :1182..SingleRace.Setup.Paint.Text
+#: :1219:1223..SingleRace.Setup.Paint.Slider :1227..SingleRace.Setup.Paint.Text
 #: Media/gui/MaterialEditor.layout:136 ..MaterialEditor.Main.Text
 #: :140..MaterialEditor.Main.Slider :144..MaterialEditor.Main.Edit
 #: :150..MaterialEditor.Main.Text :154..MaterialEditor.Main.Slider
@@ -1082,8 +1082,8 @@ msgid "Change car color glossiness (matte-shiny)."
 msgstr "Changer la brillance de la peinture (mat/brillant)."
 
 #. TIP  Vehicle Color 
-#: Media/gui/Game.layout:1177 ..SingleRace.Setup.Paint.Text
-#: :1181..SingleRace.Setup.Paint.Slider :1185..SingleRace.Setup.Paint.Text
+#: Media/gui/Game.layout:1189 ..SingleRace.Setup.Paint.Text
+#: :1193..SingleRace.Setup.Paint.Slider :1197..SingleRace.Setup.Paint.Text
 #: Media/gui/MaterialEditor.layout:211 ..MaterialEditor.Main.Text
 #: :215..MaterialEditor.Main.Slider :219..MaterialEditor.Main.Edit
 msgctxt "TipChangeReflect"
@@ -1099,7 +1099,7 @@ msgstr "Auteur(s)"
 
 #. MAIN  Vehicle basic stats 
 #: Media/gui/Game.layout:548 ..SingleRace.Vehicle.Text
-#: :742:1494..SingleRace.Setup.Steering.Text src/game/Gui_InitCar.cpp:148
+#: :742:1506..SingleRace.Setup.Steering.Text src/game/Gui_InitCar.cpp:148
 msgctxt "CarSpeed"
 msgid "Speed"
 msgstr "Vitesse"
@@ -1120,7 +1120,7 @@ msgstr "Type"
 
 #. MAIN  Vehicle basic stats 
 #: Media/gui/Game.layout:489 ..SingleRace.Track.Text
-#: :845..SingleRace.Vehicle.Text :2363..SingleRace.Track.Text
+#: :845..SingleRace.Vehicle.Text :2385..SingleRace.Track.Text
 msgctxt "TrackDrivability"
 msgid "Track Drivability"
 msgstr ""
@@ -1272,25 +1272,25 @@ msgid "Continue"
 msgstr "Continuer"
 
 #. Loading game tags 
-#: Media/gui/Editor_Utils.layout:44 ..Text src/game/BaseApp_Create.cpp:118
+#: Media/gui/Editor_Utils.layout:44 ..Text src/game/BaseApp_Create.cpp:119
 msgctxt "LoadingDesc"
 msgid "Loading, please wait..."
 msgstr "Chargement, veuillez patienter..."
 
 #. Loading game tags 
-#: src/game/BaseApp_Create.cpp:124
+#: src/game/BaseApp_Create.cpp:125
 msgctxt "Initializing"
 msgid "Initializing"
 msgstr "Initialisation"
 
 #. Loading game tags 
-#: src/game/SceneInit.cpp:812
+#: src/game/SceneInit.cpp:817
 msgctxt "LS_CLEANUP"
 msgid "Cleaning up"
 msgstr "Nettoyage"
 
 #. Loading game tags 
-#: src/game/SceneInit.cpp:812
+#: src/game/SceneInit.cpp:817
 #, fuzzy
 #| msgctxt "LS_GAME"
 #| msgid "Loading game"
@@ -1299,7 +1299,7 @@ msgid "Loading Game"
 msgstr "Chargement du jeu"
 
 #. Loading game tags 
-#: src/game/SceneInit.cpp:812:882
+#: src/game/SceneInit.cpp:817:887
 #, fuzzy
 #| msgctxt "LS_SCENE"
 #| msgid "Loading scene"
@@ -1308,7 +1308,7 @@ msgid "Loading Scene"
 msgstr "Chargement de la scène"
 
 #. Loading game tags 
-#: src/game/SceneInit.cpp:812
+#: src/game/SceneInit.cpp:817
 #, fuzzy
 #| msgctxt "LS_TREES"
 #| msgid "Loading Trees"
@@ -1317,7 +1317,7 @@ msgid "Loading Vehicles"
 msgstr "Chargement des arbres"
 
 #. Loading game tags 
-#: src/game/SceneInit.cpp:813
+#: src/game/SceneInit.cpp:818
 #, fuzzy
 #| msgctxt "LS_TER"
 #| msgid "Loading terrain"
@@ -1326,7 +1326,7 @@ msgid "Loading Terrains"
 msgstr "Chargement du terrain"
 
 #. Loading game tags 
-#: src/game/SceneInit.cpp:813
+#: src/game/SceneInit.cpp:818
 #, fuzzy
 #| msgctxt "LS_ROAD"
 #| msgid "Loading Road"
@@ -1335,13 +1335,13 @@ msgid "Loading Roads"
 msgstr "Chargement de la route"
 
 #. Loading game tags 
-#: src/game/SceneInit.cpp:813
+#: src/game/SceneInit.cpp:818
 msgctxt "LS_OBJS"
 msgid "Loading Objects"
 msgstr "Chargement des objets"
 
 #. Loading game tags 
-#: src/game/SceneInit.cpp:813
+#: src/game/SceneInit.cpp:818
 #, fuzzy
 #| msgctxt "LS_TER"
 #| msgid "Loading terrain"
@@ -1350,14 +1350,14 @@ msgid "Loading Vegetation"
 msgstr "Chargement du terrain"
 
 #. Loading game tags 
-#: src/game/SceneInit.cpp:815
+#: src/game/SceneInit.cpp:820
 msgctxt "LS_MISC"
 msgid "Finishing"
 msgstr "Terminé"
 
 #. Units 
 #: Media/gui/Game.layout:548 ..SingleRace.Vehicle.Text
-#: :1494..SingleRace.Setup.Steering.Text Media/gui/Game_Options.layout:398
+#: :1506..SingleRace.Setup.Steering.Text Media/gui/Game_Options.layout:404
 #: ..Options.View.HUD.Button src/game/Gui_UtilCar.cpp:438
 #: src/common/GuiCom_Track.cpp:480
 msgctxt "UnitKmh"
@@ -1365,7 +1365,7 @@ msgid "km/h"
 msgstr "km/h"
 
 #. Units 
-#: Media/gui/Game_Options.layout:402 ..Options.View.HUD.Button
+#: Media/gui/Game_Options.layout:408 ..Options.View.HUD.Button
 #: src/game/Gui_UtilCar.cpp:439 src/common/GuiCom_Track.cpp:480
 msgctxt "UnitMph"
 msgid "mph"
@@ -1602,7 +1602,7 @@ msgid "Stone"
 msgstr "Pierre"
 
 #. Scenery names 
-#: Media/gui/Game.layout:1893 ..SingleRace.Championship.Tab
+#: Media/gui/Game.layout:1915 ..SingleRace.Championship.Tab
 msgctxt "SC_Space"
 msgid "Space"
 msgstr "Espace"
@@ -1635,8 +1635,15 @@ msgctxt "SC_Spring"
 msgid "Spring"
 msgstr "Direction"
 
+#. Scenery names 
+msgctxt "SC_Anomaly"
+msgid "Anomaly"
+msgstr ""
+
 #. Vehicle Paint names 
 #: Media/gui/Editor.layout:492 ..Editor.Terrain.Light.Text
+#: Media/gui/Editor_Options.layout:873 ..Options.Settings.Tweak.Text
+#: Media/gui/Game_Options.layout:1449 ..Options.Tweak.Other.Text
 #: Media/gui/MaterialEditor.layout:67 ..MaterialEditor.Main.Text :101:135
 #, fuzzy
 #| msgctxt "NetReady"
@@ -1735,7 +1742,7 @@ msgid "White"
 msgstr "GrèceBlanche"
 
 #. Vehicle Paint names 
-#: Media/gui/Game.layout:1029 ..SingleRace.Setup.Paint.Tab
+#: Media/gui/Game.layout:1041 ..SingleRace.Setup.Paint.Tab
 msgctxt "P_Mix"
 msgid "Mix"
 msgstr ""
@@ -1807,8 +1814,8 @@ msgstr ""
 #. TIP  Vehicle stats 
 #: Media/gui/Game.layout:486 ..SingleRace.Track.Image
 #: :493..SingleRace.Track.Text :499:842..SingleRace.Vehicle.Image
-#: :849..SingleRace.Vehicle.Text :855:2360..SingleRace.Track.Image
-#: :2367..SingleRace.Track.Text :2373
+#: :849..SingleRace.Vehicle.Text :855:2382..SingleRace.Track.Image
+#: :2389..SingleRace.Track.Text :2395
 msgctxt "TipDrivability"
 msgid ""
 "Drivability tells how well will vehicle drive on track. If undrivable, best "
@@ -1820,7 +1827,7 @@ msgstr ""
 #: Media/gui/Editor_Track.layout:241 ..Track.Track.Image :343..Track.Track.Text
 #: Media/gui/Game.layout:255 ..SingleRace.Track.Image
 #: :357..SingleRace.Track.Text :808..SingleRace.Vehicle.Text
-#: :814:2215..SingleRace.Track.Image :2317..SingleRace.Track.Text
+#: :814:2237..SingleRace.Track.Image :2339..SingleRace.Track.Text
 msgctxt "TipRating"
 msgid ""
 "Quality rating. Higher values mean: well made, playable, good looking and "
@@ -1854,7 +1861,7 @@ msgid "You have passed this challenge."
 msgstr "Vous avez réussi ce défi."
 
 #. Championship  info text 
-#: Media/gui/Game.layout:2000 ..SingleRace.Championship.Edit
+#: Media/gui/Game.layout:2022 ..SingleRace.Championship.Edit
 #: src/game/ChampChall.cpp:325:326
 msgctxt "ChampInfo"
 msgid ""
@@ -1902,7 +1909,7 @@ msgstr ""
 "montre divers éléments de circuit."
 
 #. Hint  welcome screen 
-#: Media/gui/Game_Replay.layout:240 ..Window src/game/Gui_Events.cpp:468
+#: Media/gui/Game_Replay.layout:240 ..Window src/game/Gui_Events.cpp:474
 msgctxt "Hint"
 msgid "Hint"
 msgstr "Astuce"
@@ -1915,14 +1922,14 @@ msgstr "Montrer au démarrage"
 
 #. Hint  welcome screen 
 #: Media/gui/Game_Help.layout:52 ..Help.Support.Button :340..Welcometo.Text
-#: Media/gui/Game_Options.layout:212 ..Options.Input.General.Text
+#: Media/gui/Game_Options.layout:218 ..Options.Input.General.Text
 msgctxt "HintKey"
 msgid "Ctrl-F1 - Show"
 msgstr "Ctrl-F1 - Montrer"
 
 #. Hint  welcome screen 
 #: Media/gui/Game_Help.layout:52 ..Help.Support.Button :266..Window
-#: Media/gui/Game_Options.layout:212 ..Options.Input.General.Text
+#: Media/gui/Game_Options.layout:218 ..Options.Input.General.Text
 msgctxt "WelcomeTo"
 msgid "Welcome to"
 msgstr "Bienvenue dans"
@@ -1948,7 +1955,7 @@ msgstr ""
 "configurer une manette ou un volant, cliquez sur Contrôles."
 
 #. TIP  Track  messages 
-#: src/game/SceneInit.cpp:238
+#: src/game/SceneInit.cpp:239
 msgctxt "TrackNotFound"
 msgid "Track not found !"
 msgstr "Circuit non trouvé !"
@@ -1956,7 +1963,7 @@ msgstr "Circuit non trouvé !"
 #. TIP  Track  messages 
 #: Media/gui/Editor_Track.layout:728 ..Track.Pacenotes.View.Check
 #: Media/gui/Game.layout:22 ..SingleRace.Track.Check
-#: :1929..SingleRace.Championship.Check
+#: :1951..SingleRace.Championship.Check
 msgctxt "TipReverse"
 msgid "Reverse track direction."
 msgstr "Inverse la direction du circuit."
@@ -1990,8 +1997,8 @@ msgstr "Différentes difficultés"
 #: Media/gui/Editor_Track.layout:101 ..Track.Track.Widget
 #: Media/gui/Game.layout:121 ..SingleRace.Track.Edit
 #: :126..SingleRace.Track.Widget :133..SingleRace.Track.Image
-#: :2081..SingleRace.Track.Edit :2086..SingleRace.Track.Widget
-#: :2093..SingleRace.Track.Image
+#: :2103..SingleRace.Track.Edit :2108..SingleRace.Track.Widget
+#: :2115..SingleRace.Track.Image
 msgctxt "TipTrackDesc"
 msgid "Track description text."
 msgstr "Texte de description du circuit."
@@ -2000,29 +2007,29 @@ msgstr "Texte de description du circuit."
 #: Media/gui/Editor_Track.layout:78 ..Track.Track.Widget :96..Track.Track.Image
 #: Media/gui/Game.layout:98 ..SingleRace.Track.Edit
 #: :103..SingleRace.Track.Widget :110..SingleRace.Track.Image
-#: :2058..SingleRace.Track.Edit :2063..SingleRace.Track.Widget
-#: :2070..SingleRace.Track.Image
+#: :2080..SingleRace.Track.Edit :2085..SingleRace.Track.Widget
+#: :2092..SingleRace.Track.Image
 msgctxt "TipTrackAdvice"
 msgid "Track driving advices and warnings."
 msgstr ""
 
 #. TIP  Track 
 #: Media/gui/Editor_Track.layout:34 ..Track.Track.Image
-#: Media/gui/Game.layout:38 ..SingleRace.Track.Image :2036
+#: Media/gui/Game.layout:38 ..SingleRace.Track.Image :2058
 msgctxt "TipTrackImg"
 msgid "In game screenshot for selected track."
 msgstr "Capture d'écran du jeu pour la piste sélectionnée."
 
 #. TIP  Track 
 #: Media/gui/Editor_Track.layout:37 ..Track.Track.Image :40
-#: Media/gui/Game.layout:41 ..SingleRace.Track.Image :44:2039:2042
+#: Media/gui/Game.layout:41 ..SingleRace.Track.Image :44:2061:2064
 msgctxt "TipTrackMap"
 msgid "Minimap of selected track, view from top."
 msgstr "Mini-carte de la piste sélectionnée, vue de dessus."
 
 #. TIP  Track 
 #: Media/gui/Editor_Track.layout:34 ..Track.Track.Image :37:40
-#: Media/gui/Game.layout:38 ..SingleRace.Track.Image :41:44:2036:2039:2042
+#: Media/gui/Game.layout:38 ..SingleRace.Track.Image :41:44:2058:2061:2064
 msgctxt "TipClickMax"
 msgid "Click to maximize. Then click to close."
 msgstr ""
@@ -2047,8 +2054,8 @@ msgstr "Vue détaillée."
 #: Media/gui/Common.layout:124 ..Track-Filter.Check
 #: Media/gui/Editor_Track.layout:267 ..Track.Track.Image :310..Track.Track.Text
 #: Media/gui/Game.layout:281 ..SingleRace.Track.Image
-#: :324..SingleRace.Track.Text :2241..SingleRace.Track.Image
-#: :2284..SingleRace.Track.Text
+#: :324..SingleRace.Track.Text :2263..SingleRace.Track.Image
+#: :2306..SingleRace.Track.Text
 msgctxt "fluids"
 msgid "fluids (water or mud)"
 msgstr "Liquides (eau ou boue)"
@@ -2057,8 +2064,8 @@ msgstr "Liquides (eau ou boue)"
 #: Media/gui/Common.layout:132 ..Track-Filter.Check
 #: Media/gui/Editor_Track.layout:272 ..Track.Track.Image :314..Track.Track.Text
 #: Media/gui/Game.layout:286 ..SingleRace.Track.Image
-#: :328..SingleRace.Track.Text :2246..SingleRace.Track.Image
-#: :2288..SingleRace.Track.Text
+#: :328..SingleRace.Track.Text :2268..SingleRace.Track.Image
+#: :2310..SingleRace.Track.Text
 msgctxt "bumps"
 msgid "bumps (bumpy terrain)"
 msgstr "bosses (terrain)"
@@ -2067,8 +2074,8 @@ msgstr "bosses (terrain)"
 #: Media/gui/Common.layout:140 ..Track-Filter.Check
 #: Media/gui/Editor_Track.layout:277 ..Track.Track.Image :318..Track.Track.Text
 #: Media/gui/Game.layout:291 ..SingleRace.Track.Image
-#: :332..SingleRace.Track.Text :2251..SingleRace.Track.Image
-#: :2292..SingleRace.Track.Text
+#: :332..SingleRace.Track.Text :2273..SingleRace.Track.Image
+#: :2314..SingleRace.Track.Text
 msgctxt "jumps"
 msgid "jumps"
 msgstr "sauts"
@@ -2077,8 +2084,8 @@ msgstr "sauts"
 #: Media/gui/Common.layout:148 ..Track-Filter.Check
 #: Media/gui/Editor_Track.layout:282 ..Track.Track.Image :322..Track.Track.Text
 #: Media/gui/Game.layout:296 ..SingleRace.Track.Image
-#: :336..SingleRace.Track.Text :2256..SingleRace.Track.Image
-#: :2296..SingleRace.Track.Text
+#: :336..SingleRace.Track.Text :2278..SingleRace.Track.Image
+#: :2318..SingleRace.Track.Text
 msgctxt "loops"
 msgid "loops"
 msgstr "boucles"
@@ -2087,8 +2094,8 @@ msgstr "boucles"
 #: Media/gui/Common.layout:156 ..Track-Filter.Check
 #: Media/gui/Editor_Track.layout:287 ..Track.Track.Image :326..Track.Track.Text
 #: Media/gui/Game.layout:301 ..SingleRace.Track.Image
-#: :340..SingleRace.Track.Text :2261..SingleRace.Track.Image
-#: :2300..SingleRace.Track.Text
+#: :340..SingleRace.Track.Text :2283..SingleRace.Track.Image
+#: :2322..SingleRace.Track.Text
 msgctxt "pipes"
 msgid "pipes"
 msgstr "tubes"
@@ -2097,8 +2104,8 @@ msgstr "tubes"
 #: Media/gui/Common.layout:164 ..Track-Filter.Check
 #: Media/gui/Editor_Track.layout:292 ..Track.Track.Image :330..Track.Track.Text
 #: Media/gui/Game.layout:306 ..SingleRace.Track.Image
-#: :344..SingleRace.Track.Text :2266..SingleRace.Track.Image
-#: :2304..SingleRace.Track.Text
+#: :344..SingleRace.Track.Text :2288..SingleRace.Track.Image
+#: :2326..SingleRace.Track.Text
 msgctxt "banked"
 msgid "banked"
 msgstr "incliné"
@@ -2107,8 +2114,8 @@ msgstr "incliné"
 #: Media/gui/Common.layout:172 ..Track-Filter.Check
 #: Media/gui/Editor_Track.layout:297 ..Track.Track.Image :334..Track.Track.Text
 #: Media/gui/Game.layout:311 ..SingleRace.Track.Image
-#: :348..SingleRace.Track.Text :2271..SingleRace.Track.Image
-#: :2308..SingleRace.Track.Text
+#: :348..SingleRace.Track.Text :2293..SingleRace.Track.Image
+#: :2330..SingleRace.Track.Text
 msgctxt "frenzy"
 msgid "frenzy (curly road)"
 msgstr "routes sinueuses"
@@ -2117,8 +2124,8 @@ msgstr "routes sinueuses"
 #: Media/gui/Common.layout:188 ..Track-Filter.Check
 #: Media/gui/Editor_Track.layout:246 ..Track.Track.Image :348..Track.Track.Text
 #: Media/gui/Game.layout:260 ..SingleRace.Track.Image
-#: :362..SingleRace.Track.Text :2220..SingleRace.Track.Image
-#: :2322..SingleRace.Track.Text
+#: :362..SingleRace.Track.Text :2242..SingleRace.Track.Image
+#: :2344..SingleRace.Track.Text
 msgctxt "long"
 msgid "long"
 msgstr "long"
@@ -2127,8 +2134,8 @@ msgstr "long"
 #: Media/gui/Common.layout:181 ..Track-Filter.Check
 #: Media/gui/Editor_Track.layout:251 ..Track.Track.Image :353..Track.Track.Text
 #: Media/gui/Game.layout:265 ..SingleRace.Track.Image
-#: :367..SingleRace.Track.Text :2225..SingleRace.Track.Image
-#: :2327..SingleRace.Track.Text
+#: :367..SingleRace.Track.Text :2247..SingleRace.Track.Image
+#: :2349..SingleRace.Track.Text
 msgctxt "sum"
 msgid "sum (of difficulties)"
 msgstr ""
@@ -2137,8 +2144,8 @@ msgstr ""
 #: Media/gui/Common.layout:93 ..Track-Filter.Check
 #: Media/gui/Editor_Track.layout:236 ..Track.Track.Image :339..Track.Track.Text
 #: Media/gui/Game.layout:250 ..SingleRace.Track.Image
-#: :353..SingleRace.Track.Text :2210..SingleRace.Track.Image
-#: :2313..SingleRace.Track.Text
+#: :353..SingleRace.Track.Text :2232..SingleRace.Track.Image
+#: :2335..SingleRace.Track.Text
 msgctxt "difficulty"
 msgid "difficulty"
 msgstr "difficulté"
@@ -2150,8 +2157,8 @@ msgstr "difficulté"
 #: ..Track.Track.Image :67..Track.Track.Text :71..Track.Track.Slider
 #: Media/gui/Game.layout:66 ..SingleRace.Track.Image :71..SingleRace.Track.Text
 #: :75..SingleRace.Track.Slider :804..SingleRace.Vehicle.Text
-#: :1225..SingleRace.Setup.Paint.Image :1230..SingleRace.Setup.Paint.Text
-#: :1234..SingleRace.Setup.Paint.Slider src/game/Gui_InitCar.cpp:149
+#: :1237..SingleRace.Setup.Paint.Image :1242..SingleRace.Setup.Paint.Text
+#: :1246..SingleRace.Setup.Paint.Slider src/game/Gui_InitCar.cpp:149
 msgctxt "rating"
 msgid "rating"
 msgstr "note"
@@ -2160,8 +2167,8 @@ msgstr "note"
 #: Media/gui/Common.layout:108 ..Track-Filter.Check
 #: Media/gui/Editor_Track.layout:257 ..Track.Track.Image :302..Track.Track.Text
 #: Media/gui/Game.layout:271 ..SingleRace.Track.Image
-#: :316..SingleRace.Track.Text :2231..SingleRace.Track.Image
-#: :2276..SingleRace.Track.Text
+#: :316..SingleRace.Track.Text :2253..SingleRace.Track.Image
+#: :2298..SingleRace.Track.Text
 msgctxt "objects"
 msgid "objects (dynamic)"
 msgstr "objets (dynamiques)"
@@ -2170,8 +2177,8 @@ msgstr "objets (dynamiques)"
 #: Media/gui/Common.layout:116 ..Track-Filter.Check
 #: Media/gui/Editor_Track.layout:262 ..Track.Track.Image :306..Track.Track.Text
 #: Media/gui/Game.layout:276 ..SingleRace.Track.Image
-#: :320..SingleRace.Track.Text :2236..SingleRace.Track.Image
-#: :2280..SingleRace.Track.Text
+#: :320..SingleRace.Track.Text :2258..SingleRace.Track.Image
+#: :2302..SingleRace.Track.Text
 msgctxt "obstacles"
 msgid "obstacles (on road or in pipe)"
 msgstr "obstacles (sur la route ou dans un tube)"
@@ -2184,8 +2191,8 @@ msgstr "obstacles (sur la route ou dans un tube)"
 #: Media/gui/Game.layout:55 ..SingleRace.Track.Image
 #: :60..SingleRace.Track.Check :66..SingleRace.Track.Image
 #: :71..SingleRace.Track.Text :75..SingleRace.Track.Slider
-#: :1225..SingleRace.Setup.Paint.Image :1230..SingleRace.Setup.Paint.Text
-#: :1234..SingleRace.Setup.Paint.Slider
+#: :1237..SingleRace.Setup.Paint.Image :1242..SingleRace.Setup.Paint.Text
+#: :1246..SingleRace.Setup.Paint.Slider
 msgctxt "user"
 msgid "user"
 msgstr ""
@@ -2203,15 +2210,15 @@ msgstr ""
 #: Media/gui/Editor_Track.layout:173 ..Track.Track.Text
 #: :178:224..Track.Track.Image Media/gui/Game.layout:187
 #: ..SingleRace.Track.Text :192:238..SingleRace.Track.Image
-#: :2147..SingleRace.Track.Text :2152:2198..SingleRace.Track.Image
+#: :2169..SingleRace.Track.Text :2174:2220..SingleRace.Track.Image
 msgctxt "TrackBankAng"
 msgid "Road banking angles: average and maximum, in degrees."
 msgstr "Angles d'incurvation de la route : moyen et maximum, en degrés."
 
 #. Setup  Vehicle,Game 
 #: Media/gui/Editor_Help.layout:230 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor_Track.layout:599 ..Track.Tab Media/gui/Game.layout:1260
-#: ..SingleRace.Setup.Tab Media/gui/Game_Options.layout:266
+#: Media/gui/Editor_Track.layout:599 ..Track.Tab Media/gui/Game.layout:1272
+#: ..SingleRace.Setup.Tab Media/gui/Game_Options.layout:272
 #: ..Options.Input.Shortcuts.Text src/game/Challenges.cpp:613
 #: src/game/Gui_Network.cpp:131
 msgctxt "Game"
@@ -2219,7 +2226,7 @@ msgid "Game"
 msgstr "Jeu"
 
 #. Setup  Vehicle,Game 
-#: Media/gui/Game.layout:883 ..SingleRace.Tab Media/gui/Game_Options.layout:263
+#: Media/gui/Game.layout:889 ..SingleRace.Tab Media/gui/Game_Options.layout:269
 #: ..Options.Input.Shortcuts.Text Media/gui/Game_Tweak.layout:220
 #: ..Tweak.Tires.Text
 msgctxt "Setup"
@@ -2227,121 +2234,121 @@ msgid "Setup"
 msgstr "Configuration"
 
 #. Game  Split screen 
-#: Media/gui/Game.layout:1585 ..SingleRace.Tab src/game/Gui_Util.cpp:184
+#: Media/gui/Game.layout:1597 ..SingleRace.Tab src/game/Gui_Util.cpp:184
 msgctxt "SplitScreen"
 msgid "Split Screen"
 msgstr ""
 
 #. Game  Split screen 
-#: Media/gui/Game.layout:1625 ..SingleRace.SplitScreen.Text
+#: Media/gui/Game.layout:1647 ..SingleRace.SplitScreen.Text
 msgctxt "NumLocalPlayers"
 msgid "Number of local players"
 msgstr "Nombre de joueurs locaux"
 
 #. Game  Split screen 
-#: Media/gui/Game.layout:1596 ..SingleRace.SplitScreen.Check
+#: Media/gui/Game.layout:1608 ..SingleRace.SplitScreen.Check
 msgctxt "SplitVertically"
 msgid "Split Vertically"
 msgstr "Scinder verticalement"
 
 #. Game  Split screen 
-#: Media/gui/Game.layout:1600 ..SingleRace.SplitScreen.Check
+#: Media/gui/Game.layout:1612 ..SingleRace.SplitScreen.Check
 #: src/game/Gui_Network.cpp:128
 msgctxt "ReverseStartOrder"
 msgid "Reverse starting order"
 msgstr "Inverser l'ordre de départ"
 
 #. Game  Split screen 
-#: Media/gui/Game.layout:1638 ..SingleRace.SplitScreen.Text
+#: Media/gui/Game.layout:1660 ..SingleRace.SplitScreen.Text
 msgctxt "NumLaps"
 msgid "Number of laps"
 msgstr "Nombre de tours"
 
 #. MAIN  Game  Simulation 
-#: Media/gui/Game.layout:1535 ..SingleRace.Setup.Steering.Text
+#: Media/gui/Game.layout:1547 ..SingleRace.Setup.Steering.Text
 #: Media/gui/Game_Main.layout:220 ..NewGame.Button src/game/Challenges.cpp:615
-#: src/game/Gui_Init.cpp:441 src/game/Gui_Replay.cpp:168
+#: src/game/Gui_Init.cpp:442 src/game/Gui_Replay.cpp:168
 #: src/game/Gui_Network.cpp:132 src/editor/Update_EditKeyTxt.cpp:343
 msgctxt "Simulation"
 msgid "Simulation"
 msgstr "Simulation"
 
 #. Setup  ABS,TCS 
-#: Media/gui/Game.layout:1577 ..SingleRace.Setup.Other.Text
+#: Media/gui/Game.layout:1589 ..SingleRace.Setup.Other.Text
 msgctxt "NotRecommended"
 msgid "Not recommended"
 msgstr "Non recommandé"
 
 #. Setup  ABS,TCS 
-#: Media/gui/Game.layout:1567 ..SingleRace.Setup.Other.Check
+#: Media/gui/Game.layout:1579 ..SingleRace.Setup.Other.Check
 msgctxt "ABS"
 msgid "ABS (antilock brakes)"
 msgstr "ABS (anti-blocage des roues)"
 
 #. Setup  ABS,TCS 
-#: Media/gui/Game.layout:1569 ..SingleRace.Setup.Other.Check
+#: Media/gui/Game.layout:1581 ..SingleRace.Setup.Other.Check
 msgctxt "TipABS"
 msgid "Prevents wheel lock when braking (default: off)."
 msgstr "Évite le blocage des roues au freinage (par défaut : désactivé)."
 
 #. Setup  ABS,TCS 
-#: Media/gui/Game.layout:1572 ..SingleRace.Setup.Other.Check
+#: Media/gui/Game.layout:1584 ..SingleRace.Setup.Other.Check
 msgctxt "TCS"
 msgid "TCS (traction control)"
 msgstr "TCS (contrôle de la traction)"
 
 #. Setup  ABS,TCS 
-#: Media/gui/Game.layout:1574 ..SingleRace.Setup.Other.Check
+#: Media/gui/Game.layout:1586 ..SingleRace.Setup.Other.Check
 msgctxt "TipTCS"
 msgid "Prevents wheel spinning when accelerating (default: off)."
 msgstr "Évite de tourner les roues en accélérant (par défaut : désactivé)."
 
 #. Setup  steering 
-#: Media/gui/Game.layout:1460 ..SingleRace.Setup.Steering.Tab
+#: Media/gui/Game.layout:1472 ..SingleRace.Setup.Steering.Tab
 msgctxt "Gravel"
 msgid "Gravel"
 msgstr "Gravier"
 
 #. Setup  steering 
 #: Media/gui/Editor_Track.layout:626 ..Track.Game.Check
-#: Media/gui/Game.layout:1463 ..SingleRace.Setup.Steering.Tab
+#: Media/gui/Game.layout:1475 ..SingleRace.Setup.Steering.Tab
 msgctxt "Asphalt"
 msgid "Asphalt"
 msgstr "Bitume"
 
 #. Setup  steering 
-#: Media/gui/Game.layout:1467 ..SingleRace.Setup.Steering.Text
+#: Media/gui/Game.layout:1479 ..SingleRace.Setup.Steering.Text
 msgctxt "SpeedSensitiveSteering"
 msgid "Speed Sensitive Steering"
 msgstr "Direction sensible à la vitesse"
 
 #. Setup  steering 
-#: Media/gui/Game.layout:1469 ..SingleRace.Setup.Steering.Text
+#: Media/gui/Game.layout:1481 ..SingleRace.Setup.Steering.Text
 msgctxt "TipSpeedSensitiveSteering"
 msgid "Decreases steering range with higher velocity."
 msgstr "Rend la direction moins forte avec des vitesses élevées."
 
 #. Setup  steering 
-#: Media/gui/Game.layout:1472 ..SingleRace.Setup.Steering.Text :1509
+#: Media/gui/Game.layout:1484 ..SingleRace.Setup.Steering.Text :1521
 msgctxt "SSS_Effect"
 msgid "Effect"
 msgstr "Effet"
 
 #. Setup  steering 
-#: Media/gui/Game.layout:1480 ..SingleRace.Setup.Steering.Text
+#: Media/gui/Game.layout:1492 ..SingleRace.Setup.Steering.Text
 msgctxt "SSS_SpeedFactor"
 msgid "Speed Factor"
 msgstr "Facteur de vitesse"
 
 #. Setup  steering 
-#: Media/gui/Game.layout:1531 ..SingleRace.Setup.Steering.Text
+#: Media/gui/Game.layout:1543 ..SingleRace.Setup.Steering.Text
 msgctxt "SteerRange"
 msgid "Steering range multipliers"
 msgstr "Multiplicateurs d'angles de braquage"
 
 #. Setup  steering 
-#: Media/gui/Game.layout:1537 ..SingleRace.Setup.Steering.Text
-#: :1541:1544..SingleRace.Setup.Steering.Slider
+#: Media/gui/Game.layout:1549 ..SingleRace.Setup.Steering.Text
+#: :1553:1556..SingleRace.Setup.Steering.Slider
 msgctxt "TipSteerSim"
 msgid "Steering range multiplier, for simulation mode (Easy,Normal)."
 msgstr ""
@@ -2349,82 +2356,82 @@ msgstr ""
 "simulation (Facile ou Normal)."
 
 #. Setup  steering 
-#: Media/gui/Game.layout:1549 ..SingleRace.Setup.Steering.Text
-#: :1553:1556..SingleRace.Setup.Steering.Slider
+#: Media/gui/Game.layout:1561 ..SingleRace.Setup.Steering.Text
+#: :1565:1568..SingleRace.Setup.Steering.Slider
 msgctxt "TipSteerSurf"
 msgid "Steering range multiplier, for surface (Gravel,Asphalt)."
 msgstr ""
 "Multiplicateur d'angle de braquage, pour la surface (gravier ou asphalte)."
 
 #. Setup  Gearbox 
-#: Media/gui/Game.layout:1427 ..SingleRace.Setup.Tab
+#: Media/gui/Game.layout:1439 ..SingleRace.Setup.Tab
 msgctxt "Gearbox"
 msgid "Gearbox"
 msgstr "Boîte de vitesses"
 
 #. Setup  Gearbox 
-#: Media/gui/Game.layout:1434 ..SingleRace.Setup.Gearbox.Check
+#: Media/gui/Game.layout:1446 ..SingleRace.Setup.Gearbox.Check
 msgctxt "AutoGearbox"
 msgid "Auto gearbox"
 msgstr "Boîte de rapports automatique"
 
 #. Setup  Gearbox 
-#: Media/gui/Game.layout:1436 ..SingleRace.Setup.Gearbox.Check
+#: Media/gui/Game.layout:1448 ..SingleRace.Setup.Gearbox.Check
 msgctxt "TipAutoGearbox"
 msgid "Uncheck for manual gears changing."
 msgstr "Décochez pour changer de vitesse manuellement."
 
 #. Setup  Gearbox 
-#: Media/gui/Game.layout:1439 ..SingleRace.Setup.Gearbox.Check
+#: Media/gui/Game.layout:1451 ..SingleRace.Setup.Gearbox.Check
 msgctxt "AutoRear"
 msgid "Auto Rear gear"
 msgstr "Marche aarière automatique"
 
 #. Setup  Gearbox 
-#: Media/gui/Game.layout:1441 ..SingleRace.Setup.Gearbox.Check
+#: Media/gui/Game.layout:1453 ..SingleRace.Setup.Gearbox.Check
 msgctxt "TipAutoRear"
 msgid "Uncheck for manual Rear gear changing."
 msgstr "Décochez pour aller en marche arrière manuellement."
 
 #. Setup  Gearbox 
-#: Media/gui/Game.layout:1444 ..SingleRace.Setup.Gearbox.Check
+#: Media/gui/Game.layout:1456 ..SingleRace.Setup.Gearbox.Check
 msgctxt "RearThrottleInverse"
 msgid "Rear throttle inverse"
 msgstr "Inverser commandes marche arrière"
 
 #. Setup  Gearbox 
-#: Media/gui/Game.layout:1446 ..SingleRace.Setup.Gearbox.Check
+#: Media/gui/Game.layout:1458 ..SingleRace.Setup.Gearbox.Check
 msgctxt "TipRearThrottleInverse"
 msgid "Inverse throttle and brake function in rear gear."
 msgstr "Inverser les contrôles Accélérer et Freiner en marche arrière."
 
 #. Setup  collision 
-#: Media/gui/Game.layout:1346 ..SingleRace.Setup.Collision.Check
+#: Media/gui/Game.layout:1358 ..SingleRace.Setup.Collision.Check
 msgctxt "VegetCol"
 msgid "Vegetation collision"
 msgstr "Collision avec les végétaux"
 
 #. Setup  collision 
-#: Media/gui/Game.layout:1592 ..SingleRace.SplitScreen.Check
+#: Media/gui/Game.layout:1604 ..SingleRace.SplitScreen.Check
 #: src/game/Gui_Network.cpp:133
 msgctxt "CarCollis"
 msgid "Cars collision"
 msgstr "Collision des voitures"
 
 #. Setup  collision 
-#: Media/gui/Game.layout:1354 ..SingleRace.Setup.Collision.Check
+#: Media/gui/Game.layout:1366 ..SingleRace.Setup.Collision.Check
 msgctxt "RoadWallFullCollis"
 msgid "Road wall full collision"
 msgstr "Collision avec la route"
 
 #. Setup  collision 
-#: Media/gui/Game.layout:1350 ..SingleRace.Setup.Collision.Check
+#: Media/gui/Game.layout:1362 ..SingleRace.Setup.Collision.Check
 msgctxt "DynamicObjects"
 msgid "Dynamic Objects"
 msgstr "Objets dynamiques"
 
 #. Setup  collision 
-#: Media/gui/Game.layout:1358 ..SingleRace.Setup.Collision.Check
+#: Media/gui/Game.layout:1370 ..SingleRace.Setup.Collision.Check
 msgctxt "DriveOnHorizons"
 msgid "Allow driving outside map, on horizons"
 msgstr ""
@@ -2433,62 +2440,62 @@ msgstr ""
 #: Media/gui/Editor.layout:326 ..Editor.Sun.Fog.Text
 #: :1606..Editor.Layers.Blendmap.Blendmap.Text
 #: Media/gui/Editor_Track.layout:601 ..Track.Game.Text
-#: Media/gui/Game.layout:1316 ..SingleRace.Setup.Game.Text
+#: Media/gui/Game.layout:1328 ..SingleRace.Setup.Game.Text
 #: src/game/Challenges.cpp:616 src/game/Gui_Network.cpp:139
 msgctxt "Damage"
 msgid "Damage"
 msgstr "Dégâts"
 
 #. Game  Damage 
-#: src/game/Gui_Init.cpp:311:317 src/editor/Update_EditKeyTxt.cpp:293
+#: src/game/Gui_Init.cpp:312:318 src/editor/Update_EditKeyTxt.cpp:293
 #: src/common/GuiCom_Options.cpp:60:82:220
 msgctxt "None"
 msgid "None"
 msgstr "Aucun"
 
 #. Game  Damage 
-#: src/game/Gui_Init.cpp:311
+#: src/game/Gui_Init.cpp:312
 msgctxt "Reduced"
 msgid "Reduced"
 msgstr "Réduit"
 
 #. Game  Damage 
-#: src/game/Gui_Init.cpp:312 src/common/GuiCom_Options.cpp:61
+#: src/game/Gui_Init.cpp:313 src/common/GuiCom_Options.cpp:61
 msgctxt "Normal"
 msgid "Normal"
 msgstr "Normal"
 
 #. Game  Damage 
-#: Media/gui/Game.layout:1332 ..SingleRace.Setup.Game.Text
+#: Media/gui/Game.layout:1344 ..SingleRace.Setup.Game.Text
 #: src/game/Gui_Network.cpp:140
 msgctxt "DamageDecLap"
 msgid "Repair each lap"
 msgstr "Réparer à chaque tour"
 
 #. Game  Boost 
-#: Media/gui/Game.layout:1269 ..SingleRace.Setup.Game.Text
-#: :1364..SingleRace.Setup.Tab Media/gui/Game_Options.layout:654
-#: ..Options.View.Camera.Text :665 src/game/Challenges.cpp:619
-#: src/game/Gui_Init.cpp:442 src/game/Gui_Network.cpp:136
+#: Media/gui/Game.layout:1281 ..SingleRace.Setup.Game.Text
+#: :1376..SingleRace.Setup.Tab Media/gui/Game_Options.layout:660
+#: ..Options.View.Camera.Text :671 src/game/Challenges.cpp:619
+#: src/game/Gui_Init.cpp:443 src/game/Gui_Network.cpp:136
 msgctxt "Boost"
 msgid "Boost"
 msgstr "Turbo"
 
 #. Game  Boost 
-#: Media/gui/Game.layout:1284 ..SingleRace.Setup.Game.Text
+#: Media/gui/Game.layout:1296 ..SingleRace.Setup.Game.Text
 #: src/game/Challenges.cpp:620 src/game/Gui_Network.cpp:137
 msgctxt "Flip"
 msgid "Flip"
 msgstr "Retourner"
 
 #. Game  Boost 
-#: src/game/Gui_Init.cpp:299:305 src/game/Gui_Network.cpp:43
+#: src/game/Gui_Init.cpp:300:306 src/game/Gui_Network.cpp:43
 msgctxt "Never"
 msgid "Never"
 msgstr "Jamais"
 
 #. Game  Boost 
-#: src/game/Gui_Init.cpp:300:306:317 src/game/Gui_Network.cpp:43
+#: src/game/Gui_Init.cpp:301:307:318 src/game/Gui_Network.cpp:43
 msgctxt "Always"
 msgid "Always"
 msgstr "Toujours"
@@ -2501,32 +2508,32 @@ msgid "Any"
 msgstr "Tous"
 
 #. Game  Boost 
-#: src/game/Gui_Init.cpp:299:319 src/game/Gui_Network.cpp:43
+#: src/game/Gui_Init.cpp:300:320 src/game/Gui_Network.cpp:43
 msgctxt "FuelLap"
 msgid "Fuel each lap"
 msgstr "Turbo à chaque tour"
 
 #. Game  Boost 
-#: src/game/Gui_Init.cpp:300:319 src/game/Gui_Network.cpp:43
+#: src/game/Gui_Init.cpp:301:320 src/game/Gui_Network.cpp:43
 msgctxt "FuelTime"
 msgid "Fuel over time"
 msgstr "Turbo régén."
 
 #. Game  Boost 
-#: src/game/Gui_Init.cpp:305
+#: src/game/Gui_Init.cpp:306
 msgctxt "FuelBoost"
 msgid "Boost Fuel"
 msgstr "Fuel Boost"
 
 #. Game  Boost 
-#: src/game/Gui_Init.cpp:318
+#: src/game/Gui_Init.cpp:319
 msgctxt "GoBackTime"
 msgid "Go back time"
 msgstr ""
 
 #. Replay 
-#: Media/gui/Game_Options.layout:231 ..Options.Input.General.Text
-#: :283..Options.Input.Shortcuts.Text Media/gui/Game_Replay.layout:17
+#: Media/gui/Game_Options.layout:237 ..Options.Input.General.Text
+#: :289..Options.Input.Shortcuts.Text Media/gui/Game_Replay.layout:17
 #: ..Replays.Tab src/game/Gui_Replay.cpp:64:85:121:128:285:309:318
 msgctxt "Replay"
 msgid "Replay"
@@ -2534,7 +2541,7 @@ msgstr "Replays"
 
 #. Replay 
 #: Media/gui/Editor.layout:787 ..Editor.Terrain.Brushes.Button :799
-#: Media/gui/Game.layout:969 ..SingleRace.Setup.Paint.Button :992
+#: Media/gui/Game.layout:981 ..SingleRace.Setup.Paint.Button :1004
 #: Media/gui/Game_Replay.layout:45 ..Replays.Replay.Button
 #: Media/gui/Game_Tweak.layout:253 ..Tweak.Tires.Button
 #: Media/gui/MaterialEditor.layout:557 ..MaterialEditor.Save.Button :592
@@ -2545,14 +2552,14 @@ msgstr "Chargement"
 
 #. Replay 
 #: Media/gui/Editor.layout:775 ..Editor.Terrain.Brushes.Button
-#: Media/gui/Game.layout:980 ..SingleRace.Setup.Paint.Button
+#: Media/gui/Game.layout:992 ..SingleRace.Setup.Paint.Button
 #: Media/gui/Game_Replay.layout:40 ..Replays.Replay.Button
 #: Media/gui/Game_Tweak.layout:22 ..Tweak.Vehicle.Button
 #: :234..Tweak.Tires.Button :397..Tweak.Surface.Button
 #: :460..Tweak.collisions.Button Media/gui/MaterialEditor.layout:37
 #: ..MaterialEditor.Button :527..MaterialEditor.Tab
 #: :568..MaterialEditor.Save.Button :580 src/game/Gui_Replay.cpp:121:128
-#: src/editor/SceneInit.cpp:465
+#: src/editor/SceneInit.cpp:466
 msgctxt "RplSave"
 msgid "Save"
 msgstr "Sauvegarder"
@@ -2579,7 +2586,7 @@ msgstr "N'existe pas"
 #: Media/gui/Common.layout:220 ..Track-Filter.Text Media/gui/Editor.layout:348
 #: ..Editor.Terrain.Text :1306..Editor.Layers.Text
 #: :2825..Editor.Vegetation.Road.Text Media/gui/Editor_Utils.layout:74
-#: ..Tab-close/openpickwindow.Button Media/gui/Game.layout:1922
+#: ..Tab-close/openpickwindow.Button Media/gui/Game.layout:1944
 #: ..SingleRace.Championship.Check Media/gui/Game_Replay.layout:27
 #: ..Replays.Replay.Button Media/gui/Game_Tweak.layout:260 ..Tweak.Tires.Button
 #: Media/gui/MaterialEditor.layout:580 ..MaterialEditor.Save.Button
@@ -2599,9 +2606,9 @@ msgid "Current"
 msgstr "Circuit actuel"
 
 #. Replay  list 
-#: Media/gui/Game.layout:907 ..SingleRace.Setup.Paint.Tab
+#: Media/gui/Game.layout:919 ..SingleRace.Setup.Paint.Tab
 #: Media/gui/Game_Replay.layout:121 ..Replays.View.Check
-#: :142..Replays.View.Text src/game/CarModel_Config.cpp:109
+#: :142..Replays.View.Text src/game/CarModel_Config.cpp:110
 msgctxt "Ghost"
 msgid "Ghost"
 msgstr "Fantôme"
@@ -2706,7 +2713,7 @@ msgstr ""
 #: Media/gui/Editor_Help.layout:237 ..Help.Input/help.Shortcuts.Text
 #: Media/gui/Editor_Options.layout:18 ..Options.Tab
 #: Media/gui/Game_Help.layout:297 ..Welcometo.Button
-#: Media/gui/Game_Options.layout:19 :290..Options.Input.Shortcuts.Text
+#: Media/gui/Game_Options.layout:19 :296..Options.Input.Shortcuts.Text
 msgctxt "Screen"
 msgid "Screen"
 msgstr "Écran"
@@ -2745,7 +2752,7 @@ msgstr "Mode"
 #. Screen 
 #: Media/gui/Editor_Options.layout:121 ..Options.Screen.Video.Text
 #: :444..Options.Graphics.Lights.Text Media/gui/Game_Options.layout:122
-#: :950..Options.Graphics.Lights.Text
+#: :956..Options.Graphics.Lights.Text
 #, fuzzy
 #| msgctxt "ColBright"
 #| msgid "Brightness"
@@ -2778,7 +2785,7 @@ msgstr "Simple"
 #: Media/gui/Editor_Options.layout:74 ..Options.Screen.Main.Text
 #: :110..Options.Screen.Video.Text :191..Options.Graphics.Text
 #: Media/gui/Game_Options.layout:75 :111..Options.Screen.Video.Text
-#: :697..Options.Graphics.Text
+#: :703..Options.Graphics.Text
 msgctxt "NeedRestart"
 msgid "* need restart"
 msgstr "* redémarrage requis"
@@ -2787,14 +2794,14 @@ msgstr "* redémarrage requis"
 #: Media/gui/Editor.layout:1877 ..Editor.Grasses.Properties.Text
 #: Media/gui/Editor_Options.layout:115 ..Options.Screen.Video.Check
 #: :203..Options.Graphics.Text Media/gui/Game_Options.layout:116
-#: :709..Options.Graphics.Text
+#: :715..Options.Graphics.Text
 msgctxt "NotDone"
 msgid "not done yet, ToDo"
 msgstr ""
 
 #. Screen  info 
 #: Media/gui/Editor_Options.layout:197 ..Options.Graphics.Text
-#: Media/gui/Game_Options.layout:703
+#: Media/gui/Game_Options.layout:709
 msgctxt "NeedApply"
 msgid "need Apply"
 msgstr ""
@@ -2810,7 +2817,7 @@ msgstr "Ignorer"
 
 #. Screen  info 
 #: Media/gui/Editor_Options.layout:221 ..Options.Graphics.Edit
-#: Media/gui/Game_Options.layout:721
+#: Media/gui/Game_Options.layout:727
 msgctxt "GraphicsRightHQ"
 msgid ""
 "By default better quality (less Fps) is on right. Marked with + if on left."
@@ -2926,8 +2933,8 @@ msgid "Ultra"
 msgstr "Ultra"
 
 #. Network Multiplayer  headers 
-#: Media/gui/Game.layout:1665 ..SingleRace.Tab
-#: Media/gui/Game_Options.layout:280 ..Options.Input.Shortcuts.Text
+#: Media/gui/Game.layout:1687 ..SingleRace.Tab
+#: Media/gui/Game_Options.layout:286 ..Options.Input.Shortcuts.Text
 #: Media/gui/Game_Utils.layout:165 ..Window src/game/Gui_Replay.cpp:166
 #: src/game/Gui_Util.cpp:181
 msgctxt "Multiplayer"
@@ -2935,13 +2942,13 @@ msgid "Multiplayer"
 msgstr "Multijoueur"
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:436
+#: src/game/Gui_Init.cpp:437
 msgctxt "Game name"
 msgid "Game name"
 msgstr "Nom de la partie"
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:438 src/game/Gui_Network.cpp:127
+#: src/game/Gui_Init.cpp:439 src/game/Gui_Network.cpp:127
 #: src/game/Gui_InitChamps.cpp:91
 msgctxt "Laps"
 msgid "Laps"
@@ -2949,64 +2956,64 @@ msgstr "Tours"
 
 #. Network Multiplayer  headers 
 #: Media/gui/Game.layout:861 ..SingleRace.Vehicle.Tab
-#: :864:867:870:895..SingleRace.Setup.Paint.Tab :898:901:904
+#: :864:867:901..SingleRace.Setup.Paint.Tab :904:907
 #: Media/gui/Game_Options.layout:188 ..Options.Input.Tab
-#: src/game/CarModel_Config.cpp:111 src/game/Gui_Init.cpp:459
+#: src/game/CarModel_Config.cpp:112 src/game/Gui_Init.cpp:460
 msgctxt "Player"
 msgid "Player"
 msgstr "Joueur"
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:439 src/game/Gui_Util.cpp:181:184
+#: src/game/Gui_Init.cpp:440 src/game/Gui_Util.cpp:181:184
 #: src/game/Gui_Network.cpp:129
 msgctxt "Players"
 msgid "Players"
 msgstr "Joueurs"
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:440
+#: src/game/Gui_Init.cpp:441
 msgctxt "Collis."
 msgid "Collis."
 msgstr "Collision"
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:443
+#: src/game/Gui_Init.cpp:444
 msgctxt "Locked"
 msgid "Locked"
 msgstr "Privé"
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:461
+#: src/game/Gui_Init.cpp:462
 msgctxt "Peers"
 msgid "Peers"
 msgstr "Pairs"
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:462
+#: src/game/Gui_Init.cpp:463
 msgctxt "Ping"
 msgid "Ping"
 msgstr "Latence"
 
 #. Network Server 
-#: Media/gui/Game.layout:1788 ..SingleRace.Multiplayer.Tab
+#: Media/gui/Game.layout:1810 ..SingleRace.Multiplayer.Tab
 msgctxt "NetServer"
 msgid "Server"
 msgstr "Serveur"
 
 #. Network Server 
-#: Media/gui/Game.layout:1800 ..SingleRace.Multiplayer.Server.Text
+#: Media/gui/Game.layout:1822 ..SingleRace.Multiplayer.Server.Text
 msgctxt "NetGamesAvail"
 msgid "Available games"
 msgstr "Parties disponibles"
 
 #. Network Server 
-#: Media/gui/Game.layout:1808 ..SingleRace.Multiplayer.Server.Button
+#: Media/gui/Game.layout:1830 ..SingleRace.Multiplayer.Server.Button
 msgctxt "NetRefreshList"
 msgid "Get/refresh list"
 msgstr "Rafraîchir la liste"
 
 #. Network Server 
-#: Media/gui/Game.layout:1814 ..SingleRace.Multiplayer.Server.Button
+#: Media/gui/Game.layout:1836 ..SingleRace.Multiplayer.Server.Button
 msgctxt "NetJoinGame"
 msgid "Join game"
 msgstr "Rejoindre la partie"
@@ -3018,14 +3025,14 @@ msgid "Protected game"
 msgstr "Partie privée"
 
 #. Network Server 
-#: Media/gui/Game.layout:1677 ..SingleRace.Multiplayer.Directconnect.Button
+#: Media/gui/Game.layout:1699 ..SingleRace.Multiplayer.Directconnect.Button
 msgctxt "NetCreateGame"
 msgid "Create game"
 msgstr "Créer une partie"
 
 #. Network Server 
-#: Media/gui/Game.layout:1670 ..SingleRace.Multiplayer.Tab
-#: :1684..SingleRace.Multiplayer.Directconnect.Button
+#: Media/gui/Game.layout:1692 ..SingleRace.Multiplayer.Tab
+#: :1706..SingleRace.Multiplayer.Directconnect.Button
 #: src/game/Gui_Network.cpp:484
 msgctxt "NetDirectConnect"
 msgid "Direct connect"
@@ -3038,32 +3045,32 @@ msgid "Address"
 msgstr "Adresse"
 
 #. Network Server 
-#: src/game/Gui_Init.cpp:444
+#: src/game/Gui_Init.cpp:445
 msgctxt "NetHost"
 msgid "Host"
 msgstr "Hôte"
 
 #. Network Server 
-#: src/game/Gui_Init.cpp:445 src/game/Gui_Network.cpp:485
+#: src/game/Gui_Init.cpp:446 src/game/Gui_Network.cpp:485
 msgctxt "NetPort"
 msgid "Port"
 msgstr "Port"
 
 #. Network Server 
-#: Media/gui/Game.layout:1702 ..SingleRace.Multiplayer.Game.Text
+#: Media/gui/Game.layout:1724 ..SingleRace.Multiplayer.Game.Text
 #: src/game/Gui_Network.cpp:413:485
 msgctxt "NetPassword"
 msgid "Password"
 msgstr "Mot de passe"
 
 #. Network Game 
-#: Media/gui/Game.layout:1692 ..SingleRace.Multiplayer.Tab
+#: Media/gui/Game.layout:1714 ..SingleRace.Multiplayer.Tab
 msgctxt "NetGame"
 msgid "Game"
 msgstr "Jeu"
 
 #. Network Game 
-#: Media/gui/Game.layout:1694 ..SingleRace.Multiplayer.Game.Text
+#: Media/gui/Game.layout:1716 ..SingleRace.Multiplayer.Game.Text
 msgctxt "NetGameName"
 msgid "Game Name"
 msgstr "Nom du jeu"
@@ -3075,8 +3082,8 @@ msgid "Start"
 msgstr "Démarrer"
 
 #. Network Game 
-#: Media/gui/Game.layout:1710 ..SingleRace.Multiplayer.Game.Button
-#: src/game/Gui_Init.cpp:463 src/game/Gui_Network.cpp:230:326:526
+#: Media/gui/Game.layout:1732 ..SingleRace.Multiplayer.Game.Button
+#: src/game/Gui_Init.cpp:464 src/game/Gui_Network.cpp:230:326:526
 msgctxt "NetReady"
 msgid "Ready"
 msgstr "Prêt"
@@ -3094,13 +3101,13 @@ msgid "New game"
 msgstr "Nouvelle partie"
 
 #. Network Game 
-#: Media/gui/Game.layout:1715 ..SingleRace.Multiplayer.Game.Button
+#: Media/gui/Game.layout:1737 ..SingleRace.Multiplayer.Game.Button
 msgctxt "NetLeaveGame"
 msgid "Leave game"
 msgstr "Quitter le jeu"
 
 #. Network Game 
-#: Media/gui/Game.layout:1723 ..SingleRace.Multiplayer.Game.Text
+#: Media/gui/Game.layout:1745 ..SingleRace.Multiplayer.Game.Text
 msgctxt "NetChat"
 msgid "Chat"
 msgstr "Discussion"
@@ -3185,38 +3192,38 @@ msgstr ""
 "différent et vérifiez que votre pare-feu est correctement configuré."
 
 #. Network Settings 
-#: Media/gui/Game.layout:1748 ..SingleRace.Multiplayer.Tab
+#: Media/gui/Game.layout:1770 ..SingleRace.Multiplayer.Tab
 msgctxt "NetSettings"
 msgid "Settings"
 msgstr "Réglages"
 
 #. Network Settings 
-#: Media/gui/Game.layout:1750 ..SingleRace.Multiplayer.Settings.Text
-#: src/game/Gui_Init.cpp:532
+#: Media/gui/Game.layout:1772 ..SingleRace.Multiplayer.Settings.Text
+#: src/game/Gui_Init.cpp:533
 msgctxt "NetNickname"
 msgid "Nickname"
 msgstr "Surnom"
 
 #. Network Settings 
-#: Media/gui/Game.layout:1825 ..SingleRace.Multiplayer.Server.Text
+#: Media/gui/Game.layout:1847 ..SingleRace.Multiplayer.Server.Text
 msgctxt "NetMasterIp"
 msgid "Master Server IP"
 msgstr "IP du serveur maître"
 
 #. Network Settings 
-#: Media/gui/Game.layout:1830 ..SingleRace.Multiplayer.Server.Text
+#: Media/gui/Game.layout:1852 ..SingleRace.Multiplayer.Server.Text
 msgctxt "NetMasterPort"
 msgid "Master Server Port"
 msgstr "Port du serveur maître"
 
 #. Network Settings 
-#: Media/gui/Game.layout:1754 ..SingleRace.Multiplayer.Settings.Text
+#: Media/gui/Game.layout:1776 ..SingleRace.Multiplayer.Settings.Text
 msgctxt "NetLocalPort"
 msgid "Local Port"
 msgstr "Port local"
 
 #. Network Settings 
-#: Media/gui/Game.layout:1783 ..SingleRace.Multiplayer.Settings.Edit
+#: Media/gui/Game.layout:1805 ..SingleRace.Multiplayer.Settings.Edit
 msgctxt "NetRouterTip"
 msgid ""
 "Router port forwarding configuration might be required in order to allow "
@@ -3226,7 +3233,7 @@ msgstr ""
 "d'autres joueurs à se connecter au port local."
 
 #. Network Settings 
-#: Media/gui/Game.layout:1774 ..SingleRace.Multiplayer.Settings.Edit
+#: Media/gui/Game.layout:1796 ..SingleRace.Multiplayer.Settings.Edit
 msgctxt "MultiplayerTip"
 msgid ""
 "Hosting a multiplayer game requires port forwarding. Connecting to existing "
@@ -3234,26 +3241,26 @@ msgid ""
 msgstr ""
 
 #. Effects  Main 
-#: Media/gui/Game_Options.layout:307 ..Options.Input.Shortcuts.Text
-#: :1152..Options.Graphics.Tab
+#: Media/gui/Game_Options.layout:313 ..Options.Input.Shortcuts.Text
+#: :1158..Options.Graphics.Tab
 msgctxt "Effects"
 msgid "Effects"
 msgstr "Effets"
 
 #. Effects  Main 
-#: Media/gui/Game_Options.layout:1161 ..Options.Graphics.Effects.Check
+#: Media/gui/Game_Options.layout:1167 ..Options.Graphics.Effects.Check
 msgctxt "AllEffects"
 msgid "Effects Enabled"
 msgstr "Effets activés"
 
 #. Effects 
-#: Media/gui/Game_Options.layout:1168 ..Options.Graphics.Effects.Check
+#: Media/gui/Game_Options.layout:1174 ..Options.Graphics.Effects.Check
 msgctxt "Bloom"
 msgid "Bloom"
 msgstr "Ébouissement"
 
 #. Effects 
-#: Media/gui/Game_Options.layout:1172 ..Options.Graphics.Effects.Text
+#: Media/gui/Game_Options.layout:1178 ..Options.Graphics.Effects.Text
 msgctxt "Intensity"
 msgid "Intensity"
 msgstr "Intensité"
@@ -3279,7 +3286,7 @@ msgid "Film Grain"
 msgstr "Grain de film"
 
 #. Effects 
-#: Media/gui/Game_Options.layout:1186 ..Options.Graphics.Effects.Check
+#: Media/gui/Game_Options.layout:1192 ..Options.Graphics.Effects.Check
 msgctxt "softparticles"
 msgid "Soft Particles"
 msgstr "Particules adoucies"
@@ -3291,7 +3298,7 @@ msgstr "Profondeur du terrain"
 
 #. Effects DOF 
 #: Media/gui/Editor_Track.layout:694 ..Track.Pacenotes.View.Text
-#: Media/gui/Game_Options.layout:509 ..Options.View.Pacenotes.Text
+#: Media/gui/Game_Options.layout:515 ..Options.View.Pacenotes.Text
 msgctxt "Near"
 msgid "Near"
 msgstr "Proche"
@@ -3313,7 +3320,7 @@ msgid "Big"
 msgstr "Gros"
 
 #. Effects (ambient shadows) 
-#: Media/gui/Game_Options.layout:1181 ..Options.Graphics.Effects.Check
+#: Media/gui/Game_Options.layout:1187 ..Options.Graphics.Effects.Check
 msgctxt "ssao"
 msgid "SSAO"
 msgstr "SSAO"
@@ -3324,19 +3331,19 @@ msgid "HDR"
 msgstr "HDR"
 
 #. Effects HDR  broken 
-#: Media/gui/Game_Options.layout:1191 ..Options.Graphics.Effects.Check
+#: Media/gui/Game_Options.layout:1197 ..Options.Graphics.Effects.Check
 msgctxt "HDR"
 msgid "HDR+Bloom"
 msgstr "HDR + ébouissement"
 
 #. Effects HDR  broken 
-#: Media/gui/Game_Options.layout:1196 ..Options.Graphics.Effects.Text
+#: Media/gui/Game_Options.layout:1202 ..Options.Graphics.Effects.Text
 msgctxt "HDRAdaptationScale"
 msgid "Adapt Scale"
 msgstr "Adapter l'échelle"
 
 #. Effects HDR  broken 
-#: Media/gui/Game_Options.layout:1204 ..Options.Graphics.Effects.Text
+#: Media/gui/Game_Options.layout:1210 ..Options.Graphics.Effects.Text
 msgctxt "HDRIntensity"
 msgid "Bloom Intensity"
 msgstr "Intensité d'éblouissement"
@@ -3374,20 +3381,20 @@ msgstr "Intensité de l'effet Vignette"
 #. Graphics 
 #: Media/gui/Editor_Help.layout:240 ..Help.Input/help.Shortcuts.Text
 #: Media/gui/Editor_Options.layout:182 ..Options.Tab
-#: Media/gui/Game_Options.layout:304 ..Options.Input.Shortcuts.Text
-#: :688..Options.Tab
+#: Media/gui/Game_Options.layout:310 ..Options.Input.Shortcuts.Text
+#: :694..Options.Tab
 msgctxt "Graphics"
 msgid "Graphics"
 msgstr "Graphiques"
 
 #. Graphics 
-#: Media/gui/Game_Options.layout:691 ..Options.Graphics.Text
+#: Media/gui/Game_Options.layout:697 ..Options.Graphics.Text
 msgctxt "NeedNewGame"
 msgid "* need New Game"
 msgstr "* besoin d'une nouvelle partie"
 
 #. Graphics 
-#: Media/gui/Game_Options.layout:727 ..Options.Graphics.Button
+#: Media/gui/Game_Options.layout:733 ..Options.Graphics.Button
 msgctxt "RestartApply"
 msgid "Restart game, to apply *changes."
 msgstr "Redémarrer le jeu pour appliquer les changements"
@@ -3396,10 +3403,10 @@ msgstr "Redémarrer le jeu pour appliquer les changements"
 #: Media/gui/Editor_Options.layout:239 ..Options.Graphics.Reflections.Button
 #: :313..Options.Graphics.Water.Button :375..Options.Graphics.Shadows.Button
 #: :457..Options.Graphics.Vegetation.Button
-#: :555..Options.Graphics.Textures.Button Media/gui/Game_Options.layout:745
-#: :819..Options.Graphics.Water.Button :881..Options.Graphics.Shadows.Button
-#: :963..Options.Graphics.Vegetation.Button
-#: :1061..Options.Graphics.Textures.Button
+#: :555..Options.Graphics.Textures.Button Media/gui/Game_Options.layout:751
+#: :825..Options.Graphics.Water.Button :887..Options.Graphics.Shadows.Button
+#: :969..Options.Graphics.Vegetation.Button
+#: :1067..Options.Graphics.Textures.Button
 msgctxt "Apply"
 msgid "Apply"
 msgstr ""
@@ -3414,9 +3421,9 @@ msgstr "Matériels"
 #: Media/gui/Editor_Options.layout:290 ..Options.Graphics.Reflections.Text
 #: :348..Options.Graphics.Water.Text :563..Options.Graphics.Tab
 #: :602..Options.Graphics.Detail.Text Media/gui/Editor_Track.layout:715
-#: ..Track.Pacenotes.View.Text Media/gui/Game_Options.layout:796
-#: :854..Options.Graphics.Water.Text :1069..Options.Graphics.Tab
-#: :1108..Options.Graphics.Detail.Text Media/gui/MaterialEditor.layout:507
+#: ..Track.Pacenotes.View.Text Media/gui/Game_Options.layout:802
+#: :860..Options.Graphics.Water.Text :1075..Options.Graphics.Tab
+#: :1114..Options.Graphics.Detail.Text Media/gui/MaterialEditor.layout:507
 #: ..MaterialEditor.Tab
 msgctxt "Detail"
 msgid "Detail"
@@ -3436,23 +3443,23 @@ msgstr "Détail du terrain"
 #: Media/gui/Editor.layout:3183 ..Editor.Vegetation.Road.Advanced.Text :3194
 #: Media/gui/Editor_Options.layout:583 ..Options.Graphics.Detail.Text
 #: Media/gui/Editor_Track.layout:675 ..Track.Pacenotes.View.Text
-#: Media/gui/Game_Options.layout:490 ..Options.View.Pacenotes.Text
-#: :1089..Options.Graphics.Detail.Text
+#: Media/gui/Game_Options.layout:496 ..Options.View.Pacenotes.Text
+#: :1095..Options.Graphics.Detail.Text
 msgctxt "ViewDist"
 msgid "View distance"
 msgstr "Distance de vue"
 
 #. Graphics  Detail 
 #: Media/gui/Editor_Options.layout:574 ..Options.Graphics.Detail.Text
-#: Media/gui/Game_Options.layout:1080
+#: Media/gui/Game_Options.layout:1086
 msgctxt "RoadQual"
 msgid "Road far quality"
 msgstr "Détails de la route"
 
 #. Graphics  Textures 
 #: Media/gui/Editor_Options.layout:506 ..Options.Graphics.Tab
-#: :513..Options.Graphics.Textures.Text Media/gui/Game_Options.layout:1012
-#: :1019..Options.Graphics.Textures.Text
+#: :513..Options.Graphics.Textures.Text Media/gui/Game_Options.layout:1018
+#: :1025..Options.Graphics.Textures.Text
 msgctxt "Textures"
 msgid "Textures"
 msgstr "Textures"
@@ -3477,14 +3484,14 @@ msgstr "Anisotrope"
 
 #. Graphics  Textures 
 #: Media/gui/Editor_Options.layout:520 ..Options.Graphics.Textures.Text
-#: Media/gui/Game_Options.layout:1026
+#: Media/gui/Game_Options.layout:1032
 msgctxt "Anisotropy"
 msgid "Anisotropy"
 msgstr "Filtrage anisotrope"
 
 #. Graphics  Textures 
 #: Media/gui/Editor_Options.layout:531 ..Options.Graphics.Textures.Text
-#: Media/gui/Game_Options.layout:1037
+#: Media/gui/Game_Options.layout:1043
 msgctxt "Triplanar"
 msgid "Triplanar"
 msgstr "Triplane"
@@ -3500,29 +3507,29 @@ msgstr "Pentes les plus raides"
 #: Media/gui/Editor.layout:2281 ..Editor.Tab
 #: Media/gui/Editor_Options.layout:455 ..Options.Graphics.Tab
 #: :565..Options.Graphics.Detail.Text Media/gui/Editor_Track.layout:520
-#: ..Track.Tools.Button Media/gui/Game_Options.layout:961
-#: :1071..Options.Graphics.Detail.Text
+#: ..Track.Tools.Button Media/gui/Game_Options.layout:967
+#: :1077..Options.Graphics.Detail.Text
 msgctxt "Vegetation"
 msgid "Vegetation"
 msgstr "Végétation"
 
 #. Graphics  Vegetation 
 #: Media/gui/Editor_Options.layout:467 ..Options.Graphics.Vegetation.Text
-#: Media/gui/Game_Options.layout:973
+#: Media/gui/Game_Options.layout:979
 msgctxt "TreeMult"
 msgid "Trees multiplier"
 msgstr "Multi. d'arbres"
 
 #. Graphics  Vegetation 
 #: Media/gui/Editor_Options.layout:472 ..Options.Graphics.Vegetation.Text :482
-#: Media/gui/Game_Options.layout:978 :988
+#: Media/gui/Game_Options.layout:984 :994
 msgctxt "DistMult"
 msgid "Distance mul"
 msgstr "Multi. de distance"
 
 #. Graphics  Vegetation 
 #: Media/gui/Editor_Options.layout:477 ..Options.Graphics.Vegetation.Text
-#: Media/gui/Game_Options.layout:983
+#: Media/gui/Game_Options.layout:989
 msgctxt "GrassMult"
 msgid "Grass mul"
 msgstr "Multi. d'herbe"
@@ -3530,9 +3537,9 @@ msgstr "Multi. d'herbe"
 #. Graphics  Vegetation 
 #: Media/gui/Editor.layout:799 ..Editor.Terrain.Brushes.Button
 #: Media/gui/Editor_Options.layout:462 ..Options.Graphics.Vegetation.Button
-#: Media/gui/Game.layout:992 ..SingleRace.Setup.Paint.Button
-#: :1488..SingleRace.Setup.Steering.Button :1559
-#: Media/gui/Game_Options.layout:968 Media/gui/Game_Tweak.layout:260
+#: Media/gui/Game.layout:1004 ..SingleRace.Setup.Paint.Button
+#: :1500..SingleRace.Setup.Steering.Button :1571
+#: Media/gui/Game_Options.layout:974 Media/gui/Game_Tweak.layout:260
 #: ..Tweak.Tires.Button Media/gui/MaterialEditor.layout:592
 #: ..MaterialEditor.Save.Button src/game/Gui_TweakSim.cpp:579
 msgctxt "Reset"
@@ -3541,15 +3548,15 @@ msgstr "Réinitialiser"
 
 #. Graphics  reflections 
 #: Media/gui/Editor_Options.layout:237 ..Options.Graphics.Tab
-#: Media/gui/Game_Options.layout:743
+#: Media/gui/Game_Options.layout:749
 msgctxt "Reflections"
 msgid "Reflections"
 msgstr "Réflexions"
 
 #. Graphics  reflections 
 #: Media/gui/Editor_Options.layout:249 ..Options.Graphics.Reflections.Text
-#: :361..Options.Graphics.Water.Text Media/gui/Game_Options.layout:755
-#: :867..Options.Graphics.Water.Text
+#: :361..Options.Graphics.Water.Text Media/gui/Game_Options.layout:761
+#: :873..Options.Graphics.Water.Text
 msgctxt "FrameSkip"
 msgid "Frames skip"
 msgstr "Fréquence d'actualisation"
@@ -3557,22 +3564,22 @@ msgstr "Fréquence d'actualisation"
 #. Graphics  reflections 
 #: Media/gui/Editor_Options.layout:270 ..Options.Graphics.Reflections.Text
 #: :328..Options.Graphics.Water.Text :401..Options.Graphics.Shadows.Text
-#: Media/gui/Game_Options.layout:776 :834..Options.Graphics.Water.Text
-#: :907..Options.Graphics.Shadows.Text
+#: Media/gui/Game_Options.layout:782 :840..Options.Graphics.Water.Text
+#: :913..Options.Graphics.Shadows.Text
 msgctxt "MapSize"
 msgid "Map size"
 msgstr "Taille de la carte"
 
 #. Graphics  reflections 
 #: Media/gui/Editor_Options.layout:260 ..Options.Graphics.Reflections.Text
-#: Media/gui/Game_Options.layout:766
+#: Media/gui/Game_Options.layout:772
 msgctxt "FacesOnce"
 msgid "Faces at once"
 msgstr "Faces"
 
 #. Graphics  reflections 
 #: Media/gui/Editor_Options.layout:300 ..Options.Graphics.Reflections.Text
-#: Media/gui/Game_Options.layout:806
+#: Media/gui/Game_Options.layout:812
 msgctxt "IblSamples"
 msgid "IBL samples"
 msgstr ""
@@ -3602,21 +3609,21 @@ msgstr "Complet"
 
 #. Graphics  Water 
 #: Media/gui/Editor_Options.layout:311 ..Options.Graphics.Tab
-#: Media/gui/Game_Options.layout:817
+#: Media/gui/Game_Options.layout:823
 msgctxt "Water"
 msgid "Water"
 msgstr "Eau"
 
 #. Graphics  Water 
 #: Media/gui/Editor_Options.layout:318 ..Options.Graphics.Water.Check
-#: Media/gui/Game_Options.layout:824
+#: Media/gui/Game_Options.layout:830
 msgctxt "WaterReflection"
 msgid "Reflection"
 msgstr "Réflexion"
 
 #. Graphics  Water 
 #: Media/gui/Editor_Options.layout:322 ..Options.Graphics.Water.Check
-#: Media/gui/Game_Options.layout:828
+#: Media/gui/Game_Options.layout:834
 msgctxt "WaterRefraction"
 msgid "Refraction"
 msgstr "Réfraction"
@@ -3624,8 +3631,8 @@ msgstr "Réfraction"
 #. Graphics  shadows 
 #: Media/gui/Editor_Options.layout:373 ..Options.Graphics.Tab
 #: :381..Options.Graphics.Shadows.Text :439..Options.Graphics.Lights.Check
-#: Media/gui/Game_Options.layout:879 :887..Options.Graphics.Shadows.Text
-#: :945..Options.Graphics.Lights.Check
+#: Media/gui/Game_Options.layout:885 :893..Options.Graphics.Shadows.Text
+#: :951..Options.Graphics.Lights.Check
 msgctxt "Shadows"
 msgid "Shadows"
 msgstr "Ombres"
@@ -3638,8 +3645,8 @@ msgstr "Shaders"
 #. Graphics  shadows 
 #: Media/gui/Editor.layout:386 ..Editor.Terrain.Tab
 #: Media/gui/Editor_Track.layout:685 ..Track.Pacenotes.View.Text
-#: Media/gui/Game_Options.layout:410 ..Options.View.HUD.Text
-#: :500..Options.View.Pacenotes.Text :568..Options.View.Minimap.Text :602
+#: Media/gui/Game_Options.layout:416 ..Options.View.HUD.Text
+#: :506..Options.View.Pacenotes.Text :574..Options.View.Minimap.Text :608
 #: src/editor/Update_EditKeyTxt.cpp:373
 msgctxt "Size"
 msgid "Size"
@@ -3652,14 +3659,14 @@ msgstr "Taille des textures"
 
 #. Graphics  shadows 
 #: Media/gui/Editor_Options.layout:421 ..Options.Graphics.Shadows.Text
-#: Media/gui/Game_Options.layout:927
+#: Media/gui/Game_Options.layout:933
 msgctxt "ShadowFilter"
 msgid "Filter"
 msgstr "Filtre"
 
 #. Graphics  shadows 
 #: Media/gui/Editor_Options.layout:391 ..Options.Graphics.Shadows.Text
-#: Media/gui/Game_Options.layout:897 src/editor/Update_EditKeyTxt.cpp:375
+#: Media/gui/Game_Options.layout:903 src/editor/Update_EditKeyTxt.cpp:375
 msgctxt "Count"
 msgid "Count"
 msgstr "Nombre"
@@ -3671,7 +3678,7 @@ msgstr "Taille de la lightmap"
 
 #. Graphics  lights 
 #: Media/gui/Editor_Options.layout:433 ..Options.Graphics.Tab
-#: Media/gui/Game_Options.layout:939
+#: Media/gui/Game_Options.layout:945
 #, fuzzy
 #| msgctxt "Light"
 #| msgid "Light"
@@ -3681,7 +3688,7 @@ msgstr "Lumière"
 
 #. Graphics  lights 
 #: Media/gui/Editor_Options.layout:435 ..Options.Graphics.Lights.Check
-#: Media/gui/Game_Options.layout:941
+#: Media/gui/Game_Options.layout:947
 #, fuzzy
 #| msgctxt "Vehicles"
 #| msgid "Vehicles"
@@ -3693,15 +3700,15 @@ msgstr "Véhicules"
 #: Media/gui/Editor_Help.layout:736 ..Help.Input/help.Tab
 #: Media/gui/Editor.layout:137 ..Editor.Sun.Sun.Check
 #: Media/gui/Editor_Tools.layout:418 ..Window Media/gui/Editor_Track.layout:562
-#: ..Track.Tools.Button Media/gui/Game_Options.layout:1131
-#: ..Options.Graphics.Tab :1135..Options.Graphics.Particles.Check
+#: ..Track.Tools.Button Media/gui/Game_Options.layout:1137
+#: ..Options.Graphics.Tab :1141..Options.Graphics.Particles.Check
 #: Media/gui/Game_Replay.layout:121 ..Replays.View.Check
 msgctxt "Particles"
 msgid "Particles"
 msgstr "Particules"
 
 #. Graphics  particles 
-#: Media/gui/Game_Options.layout:1139 ..Options.Graphics.Particles.Check
+#: Media/gui/Game_Options.layout:1145 ..Options.Graphics.Particles.Check
 msgctxt "TireTrails"
 msgid "Tire Trails"
 msgstr "Traces de pneus"
@@ -3710,160 +3717,161 @@ msgstr "Traces de pneus"
 #: Media/gui/Editor_Help.layout:88 ..Help.Input/help.Tab
 #: Media/gui/Editor_Options.layout:640 ..Options.Settings.Tab
 #: Media/gui/Editor_Track.layout:667 ..Track.Pacenotes.Tab
-#: Media/gui/Game_Options.layout:297 ..Options.Input.Shortcuts.Text
-#: :383..Options.Tab Media/gui/Game_Replay.layout:94 ..Replays.Tab
+#: Media/gui/Game_Options.layout:303 ..Options.Input.Shortcuts.Text
+#: :389..Options.Tab Media/gui/Game_Replay.layout:94 ..Replays.Tab
 msgctxt "View"
 msgid "View"
 msgstr "Vue"
 
 #. View  Gauges 
-#: Media/gui/Game_Options.layout:388 ..Options.View.Tab
-#: :1284..Options.Sound.Main.Text
+#: Media/gui/Game_Options.layout:394 ..Options.View.Tab
+#: :1290..Options.Sound.Main.Text
 msgctxt "HUD"
 msgid "HUD"
 msgstr "HUD"
 
 #. View  Gauges 
-#: Media/gui/Game_Options.layout:390 ..Options.View.HUD.Check
+#: Media/gui/Game_Options.layout:396 ..Options.View.HUD.Check
 msgctxt "Digits"
 msgid "Digits (gear, speed)"
 msgstr "Chiffres (rapport, vitesse)"
 
 #. View  Gauges 
-#: Media/gui/Game_Options.layout:394 ..Options.View.HUD.Text
+#: Media/gui/Game_Options.layout:400 ..Options.View.HUD.Text
 msgctxt "SpeedUnit"
 msgid "Speed unit"
 msgstr "Unité de vitesse"
 
 #. View  Gauges 
-#: Media/gui/Game_Options.layout:406 ..Options.View.HUD.Check
+#: Media/gui/Game_Options.layout:412 ..Options.View.HUD.Check
 msgctxt "Gauges"
 msgid "Gauges (rpm, speed)"
 msgstr "Jauges (tours/min, vitesse)"
 
 #. View  Gauges 
-#: Media/gui/Game_Options.layout:430 ..Options.View.HUD.Text
+#: Media/gui/Game_Options.layout:436 ..Options.View.HUD.Text
 msgctxt "Layout"
 msgid "Layout"
 msgstr "Disposition"
 
 #. View  Minimap 
 #: Media/gui/Editor_Options.layout:728 ..Options.Settings.Tab
-#: Media/gui/Game_Options.layout:300 ..Options.Input.Shortcuts.Text
-#: :549..Options.View.Tab :557..Options.View.Minimap.Check
+#: Media/gui/Game_Options.layout:306 ..Options.Input.Shortcuts.Text
+#: :555..Options.View.Tab :563..Options.View.Minimap.Check
 msgctxt "Minimap"
 msgid "Minimap"
 msgstr "Minicarte"
 
 #. View  Minimap 
 #: Media/gui/Editor.layout:689 ..Editor.Terrain.Brushes.Text
-#: Media/gui/Game_Options.layout:571 ..Options.View.Minimap.Check
+#: Media/gui/Game_Options.layout:577 ..Options.View.Minimap.Check
 msgctxt "MinimapZoom"
 msgid "Zoom"
 msgstr "Zoom"
 
 #. View  Minimap 
-#: Media/gui/Game_Options.layout:575 ..Options.View.Minimap.Check
+#: Media/gui/Editor_Options.layout:803 ..Options.Settings.Minimap.Text
+#: Media/gui/Game_Options.layout:581 ..Options.View.Minimap.Check
 msgctxt "MinimapRotate"
 msgid "Rotate"
 msgstr "Pivoter"
 
 #. View  Minimap 
-#: Media/gui/Game_Options.layout:589 ..Options.View.Minimap.Check
+#: Media/gui/Game_Options.layout:595 ..Options.View.Minimap.Check
 msgctxt "MinimapTerrain"
 msgid "Terrain"
 msgstr "Terrain"
 
 #. View  Minimap 
-#: Media/gui/Game_Options.layout:585 ..Options.View.Minimap.Check
+#: Media/gui/Game_Options.layout:591 ..Options.View.Minimap.Check
 msgctxt "MinimapBorder"
 msgid "Border"
 msgstr "Bordure"
 
 #. View  HUD 
-#: Media/gui/Game_Options.layout:441 ..Options.View.HUD.Check
+#: Media/gui/Game_Options.layout:447 ..Options.View.HUD.Check
 msgctxt "TimesBar"
 msgid "Times bar"
 msgstr "Barre des temps"
 
 #. View  HUD 
-#: Media/gui/Game_Options.layout:445 ..Options.View.HUD.Check
+#: Media/gui/Game_Options.layout:451 ..Options.View.HUD.Check
 msgctxt "OpponentsList"
 msgid "Opponents List"
 msgstr "Liste des adversaires"
 
 #. View  HUD 
-#: Media/gui/Game_Options.layout:449 ..Options.View.HUD.Check
+#: Media/gui/Game_Options.layout:455 ..Options.View.HUD.Check
 msgctxt "OpponentsSorted"
 msgid "Opponents Sorted"
 msgstr "Trier les adversaires"
 
 #. View  HUD 
-#: Media/gui/Game_Options.layout:598 ..Options.View.Minimap.Check
+#: Media/gui/Game_Options.layout:604 ..Options.View.Minimap.Check
 msgctxt "CheckArrow"
 msgid "Checkpoint Arrow"
 msgstr "Flèche du point de contrôle"
 
 #. View  HUD 
-#: Media/gui/Game_Options.layout:594 ..Options.View.Minimap.Check
+#: Media/gui/Game_Options.layout:600 ..Options.View.Minimap.Check
 msgctxt "CheckBeam"
 msgid "Next checkpoint beam"
 msgstr "Rayon du prochain point de contrôle"
 
 #. View  HUD 
-#: Media/gui/Game_Options.layout:466 ..Options.View.HUD.Text
+#: Media/gui/Game_Options.layout:472 ..Options.View.HUD.Text
 msgctxt "CountdownTime"
 msgid "Race countdown time"
 msgstr "Compte à rebours avant une course"
 
 #. View  Pacenotes 
 #: Media/gui/Editor_Track.layout:661 ..Track.Tab
-#: Media/gui/Game_Options.layout:478 ..Options.View.Tab
-#: :485..Options.View.Pacenotes.Check
+#: Media/gui/Game_Options.layout:484 ..Options.View.Tab
+#: :491..Options.View.Pacenotes.Check
 msgctxt "Pacenotes"
 msgid "Pacenotes"
 msgstr ""
 
 #. View  Pacenotes 
-#: Media/gui/Game_Options.layout:519 ..Options.View.Pacenotes.Text
+#: Media/gui/Game_Options.layout:525 ..Options.View.Pacenotes.Text
 msgctxt "PaceNextVisible"
 msgid "Next shown"
 msgstr ""
 
 #. View  Racing Line trail 
-#: Media/gui/Game_Options.layout:539 ..Options.View.Pacenotes.Check
+#: Media/gui/Game_Options.layout:545 ..Options.View.Pacenotes.Check
 #: src/editor/Update_EditKeyTxt.cpp:55
 msgctxt "RacingLine"
 msgid "Racing Line (trail)"
 msgstr ""
 
 #. View  Camera 
-#: Media/gui/Game_Options.layout:613 ..Options.View.Tab
+#: Media/gui/Game_Options.layout:619 ..Options.View.Tab
 #: src/editor/Update_Frame.cpp:77
 msgctxt "Camera"
 msgid "Camera"
 msgstr "Caméra"
 
 #. View  Camera 
-#: Media/gui/Game_Options.layout:615 ..Options.View.Camera.Check
+#: Media/gui/Game_Options.layout:621 ..Options.View.Camera.Check
 msgctxt "CameraInfo"
 msgid "Camera info"
 msgstr "Informations de la caméra"
 
 #. View  Camera 
-#: Media/gui/Game_Options.layout:619 ..Options.View.Camera.Check
+#: Media/gui/Game_Options.layout:625 ..Options.View.Camera.Check
 msgctxt "CameraAutoTilt"
 msgid "Camera auto tilt on slopes"
 msgstr "Orientation de la caméra automatique"
 
 #. View  Camera 
-#: Media/gui/Game_Options.layout:623 ..Options.View.Camera.Check
+#: Media/gui/Game_Options.layout:629 ..Options.View.Camera.Check
 msgctxt "CameraLoopChange"
 msgid "Camera change in loops"
 msgstr "Changement de caméra dans les boucles"
 
 #. View  Camera 
-#: Media/gui/Game_Options.layout:628 ..Options.View.Camera.Check
+#: Media/gui/Game_Options.layout:634 ..Options.View.Camera.Check
 msgctxt "CameraBounce"
 msgid "Dynamic camera bouncing"
 msgstr "Mouvement de caméra dynamique"
@@ -3874,15 +3882,15 @@ msgid "Adaptive FOV"
 msgstr "Champ de vision adaptatif"
 
 #. View  Camera 
-#: Media/gui/Game_Options.layout:643 ..Options.View.Camera.Text :654:665
+#: Media/gui/Game_Options.layout:649 ..Options.View.Camera.Text :660:671
 msgctxt "FOV"
 msgid "View angle"
 msgstr "Champ de vision"
 
 #. Settings  debug 
-#: Media/gui/Game.layout:1565 ..SingleRace.Setup.Tab
-#: Media/gui/Game_Options.layout:1314 ..Options.Sound.Tab
-#: :1417..Options.Tweak.Tab
+#: Media/gui/Game.layout:1577 ..SingleRace.Setup.Tab
+#: Media/gui/Game_Options.layout:1320 ..Options.Sound.Tab
+#: :1423..Options.Tweak.Tab
 msgctxt "Other"
 msgid "Other"
 msgstr "Autres"
@@ -3894,7 +3902,7 @@ msgstr "Développement"
 
 #. Settings  debug 
 #: Media/gui/Editor_Options.layout:856 ..Options.Settings.Tweak.Text
-#: Media/gui/Game_Options.layout:1426 ..Options.Tweak.Other.Text
+#: Media/gui/Game_Options.layout:1432 ..Options.Tweak.Other.Text
 msgctxt "FPS"
 msgid "Fps bar, render statistics"
 msgstr ""
@@ -3951,116 +3959,116 @@ msgid "GPU memory"
 msgstr ""
 
 #. Settings  debug 
-#: Media/gui/Editor_Options.layout:880 ..Options.Settings.Tweak.Check
-#: Media/gui/Game_Options.layout:1449 ..Options.Tweak.Other.Check
+#: Media/gui/Editor_Options.layout:891 ..Options.Settings.Tweak.Check
+#: Media/gui/Game_Options.layout:1466 ..Options.Tweak.Other.Check
 msgctxt "Wireframe"
 msgid "Wireframe"
 msgstr "Fil de fer"
 
 #. Settings  debug 
-#: Media/gui/Game_Options.layout:1467 ..Options.Tweak.Other.Check
+#: Media/gui/Game_Options.layout:1484 ..Options.Tweak.Other.Check
 msgctxt "BulletDebug"
 msgid "Bullet debug"
 msgstr "Débogage Bullet"
 
 #. Settings  debug 
-#: Media/gui/Game_Options.layout:1471 ..Options.Tweak.Other.Check
+#: Media/gui/Game_Options.layout:1488 ..Options.Tweak.Other.Check
 msgctxt "BulletProfilerTxt"
 msgid "Bullet Profiler Times"
 msgstr "Temps du profileur Bullet"
 
 #. Settings  debug 
-#: Media/gui/Game_Options.layout:1458 ..Options.Tweak.Other.Check
+#: Media/gui/Game_Options.layout:1475 ..Options.Tweak.Other.Check
 msgctxt "FullSoundsInfo"
 msgid "Full sounds info in graphs."
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1496 ..Options.Tweak.Graphs.Check
+#: Media/gui/Game_Options.layout:1513 ..Options.Tweak.Graphs.Check
 msgctxt "CarDebug"
 msgid "Car susp, long|,lat- slips"
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1492 ..Options.Tweak.Graphs.Check
-#: :1648..Options.Tweak.Tires.Text
+#: Media/gui/Game_Options.layout:1509 ..Options.Tweak.Graphs.Check
+#: :1665..Options.Tweak.Tires.Text
 msgctxt "CarTireVisCircles"
 msgid "Tire force circles visualisation"
 msgstr "Visualisation des cercles de force sur les pneus"
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1529 ..Options.Tweak.Graphs.Check
+#: Media/gui/Game_Options.layout:1546 ..Options.Tweak.Graphs.Check
 msgctxt "CarDebugText"
 msgid "Car debug text "
 msgstr "Texte de débogage de la voiture "
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1500 ..Options.Tweak.Graphs.Check
+#: Media/gui/Game_Options.layout:1517 ..Options.Tweak.Graphs.Check
 msgctxt "CarDebugSurfaces"
 msgid "Car tire surfaces"
 msgstr "Surfaces de penus de la voiture"
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1454 ..Options.Tweak.Other.Check
+#: Media/gui/Game_Options.layout:1471 ..Options.Tweak.Other.Check
 msgctxt "ProfilerTxt"
 msgid "Profiler times text "
 msgstr "Temps du profileur "
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1537 ..Options.Tweak.Graphs.Text
+#: Media/gui/Game_Options.layout:1554 ..Options.Tweak.Graphs.Text
 msgctxt "TextColor"
 msgid "Text color"
 msgstr "Couleur du texte"
 
 #. Settings  car tweak visualizeations 
-#: Media/gui/Game_Options.layout:1681 ..Options.Tweak.Tracks.Check
+#: Media/gui/Game_Options.layout:1698 ..Options.Tweak.Tracks.Check
 msgctxt "DevKeys"
 msgid "Developer keys. Ctrl-F global, Alt-shift-1..6 load test tracks."
 msgstr "Touches développeur. Ctrl-F"
 
 #. Settings  startup 
 #: Media/gui/Editor_Options.layout:819 ..Options.Settings.Settings.Text
-#: Media/gui/Game_Options.layout:1376 ..Options.Settings.Text
-#: :1464..Options.Tweak.Other.Check
+#: Media/gui/Game_Options.layout:1382 ..Options.Settings.Text
+#: :1481..Options.Tweak.Other.Check
 msgctxt "Startup"
 msgid "Startup"
 msgstr "Démarrage"
 
 #. Settings  startup 
 #: Media/gui/Editor_Options.layout:839 ..Options.Settings.Settings.Check
-#: Media/gui/Game_Options.layout:1396 ..Options.Settings.Check
+#: Media/gui/Game_Options.layout:1402 ..Options.Settings.Check
 msgctxt "MouseCapture"
 msgid "Capture mouse"
 msgstr "Capturer la souris"
 
 #. Settings  startup 
 #: Media/gui/Editor_Options.layout:835 ..Options.Settings.Settings.Check
-#: Media/gui/Game_Options.layout:1392 ..Options.Settings.Check
+#: Media/gui/Game_Options.layout:1398 ..Options.Settings.Check
 msgctxt "OgreDialog"
 msgid "Show Ogre dialog"
 msgstr "Montrer la fenêtre Ogre"
 
 #. Settings  startup 
-#: Media/gui/Game_Options.layout:1384 ..Options.Settings.Check
+#: Media/gui/Game_Options.layout:1390 ..Options.Settings.Check
 msgctxt "AutoLoad"
 msgid "Auto Load track"
 msgstr "Chargement automatique du circuit"
 
 #. Settings  startup 
 #: Media/gui/Editor_Options.layout:831 ..Options.Settings.Settings.Check
-#: Media/gui/Game_Options.layout:1388 ..Options.Settings.Check
+#: Media/gui/Game_Options.layout:1394 ..Options.Settings.Check
 msgctxt "EscQuit"
 msgid "Esc quits"
 msgstr "Esc quitte"
 
 #. Settings  startup 
-#: Media/gui/Game_Options.layout:1464 ..Options.Tweak.Other.Check
+#: Media/gui/Game_Options.layout:1481 ..Options.Tweak.Other.Check
 msgctxt "BulletLines"
 msgid "Bullet debug lines"
 msgstr "Lignes de débogage de Bullet"
 
 #. Settings  startup 
-#: Media/gui/Game_Options.layout:1405 ..Options.Settings.Check
+#: Media/gui/Game_Options.layout:1411 ..Options.Settings.Check
 msgctxt "ShowPictures"
 msgid "Show pictures while loading"
 msgstr "Montrer des images pendant le chargement"
@@ -4072,14 +4080,14 @@ msgstr "Utiliser plusieurs fils d'éxécution"
 
 #. Settings  startup 
 #: Media/gui/Editor_Options.layout:823 ..Options.Settings.Settings.Check
-#: Media/gui/Game_Options.layout:1380 ..Options.Settings.Check
+#: Media/gui/Game_Options.layout:1386 ..Options.Settings.Check
 msgctxt "StartInMain"
 msgid "Start in main menu"
 msgstr "Démarrer dans le menu principal"
 
 #. Settings  startup 
 #: Media/gui/Editor_Options.layout:843 ..Options.Settings.Settings.Check
-#: Media/gui/Game_Options.layout:1400 ..Options.Settings.Check
+#: Media/gui/Game_Options.layout:1406 ..Options.Settings.Check
 msgctxt "ScreenshotPng"
 msgid "Screenshots saved as .png"
 msgstr "Captures d'écran au format .png"
@@ -4087,13 +4095,13 @@ msgstr "Captures d'écran au format .png"
 #. Input  bind 
 #: Media/gui/Game_Help.layout:322 ..Welcometo.Button
 #: Media/gui/Game_Options.layout:183 ..Options.Tab
-#: :293..Options.Input.Shortcuts.Text
+#: :299..Options.Input.Shortcuts.Text
 msgctxt "Input"
 msgid "Input"
 msgstr "Contrôles"
 
 #. Input  bind 
-#: src/game/Gui_Input.cpp:227
+#: src/game/Gui_Input.cpp:228
 msgctxt "InputUnbind"
 msgid "Press RMB on button to unbind."
 msgstr "Clic droit sur un bouton pour ne plus assigner."
@@ -4104,25 +4112,25 @@ msgid "No joystick"
 msgstr "Pas de joystick"
 
 #. Input  bind 
-#: src/game/Gui_Input.cpp:25:80
+#: src/game/Gui_Input.cpp:26:81
 msgctxt "InputKeyUnassigned"
 msgid "-- None --"
 msgstr "-- Aucun --"
 
 #. Input  bind 
-#: src/game/Gui_Input.cpp:34:276
+#: src/game/Gui_Input.cpp:35:277
 msgctxt "InputAssignKey"
 msgid "&lt;Assign&gt;"
 msgstr "&lt;Attacher&gt;"
 
 #. Input  bind 
-#: Media/gui/Game_Options.layout:323 ..Options.Input.Check
+#: Media/gui/Game_Options.layout:329 ..Options.Input.Check
 msgctxt "OneAxisThrottleBrake"
 msgid "One axis for throttle and brake"
 msgstr "Un axe pour accélérer et freiner"
 
 #. Input  bind 
-#: Media/gui/Game_Options.layout:326 ..Options.Input.Check
+#: Media/gui/Game_Options.layout:332 ..Options.Input.Check
 msgctxt "TipOneAxisThrottleBrake"
 msgid ""
 "If your controller has throttle and brake in one axis, check this. Bind axis "
@@ -4133,31 +4141,31 @@ msgstr ""
 "un axe inversé si nécessaire."
 
 #. Input  headers 
-#: Media/gui/Game_Options.layout:209 ..Options.Input.Tab
+#: Media/gui/Game_Options.layout:215 ..Options.Input.Tab
 msgctxt "InputMapGeneral"
 msgid "General"
 msgstr "Général"
 
 #. Input  headers 
-#: src/game/Gui_Input.cpp:109
+#: src/game/Gui_Input.cpp:110
 msgctxt "InputHeaderTxt1"
 msgid "Action"
 msgstr "Action"
 
 #. Input  headers 
-#: src/game/Gui_Input.cpp:110
+#: src/game/Gui_Input.cpp:111
 msgctxt "InputHeaderTxt2"
 msgid "Binding"
 msgstr "Raccourci"
 
 #. Input  headers 
-#: src/game/Gui_Input.cpp:112
+#: src/game/Gui_Input.cpp:113
 msgctxt "InputHeaderTxt3"
 msgid "Value"
 msgstr "Valeur"
 
 #. Input  headers 
-#: src/game/Gui_Input.cpp:113
+#: src/game/Gui_Input.cpp:114
 msgctxt "InputHeaderTxt4"
 msgid "Edit"
 msgstr "Éditer"
@@ -4173,8 +4181,8 @@ msgid "Set from preset"
 msgstr "Définir depuis un pré-réglage"
 
 #. Input  Detail  Control 
-#: Media/gui/Game_Options.layout:340 ..Options.Input.Text
-#: src/game/Gui_Input.cpp:348
+#: Media/gui/Game_Options.layout:346 ..Options.Input.Text
+#: src/game/Gui_Input.cpp:349
 msgctxt "InputDetailsFor"
 msgid "Details for"
 msgstr "Détails pour"
@@ -4196,7 +4204,7 @@ msgid "Multiplier"
 msgstr "Multiplicateur"
 
 #. Input  Detail  Control 
-#: Media/gui/Game_Options.layout:344 ..Options.Input.Check
+#: Media/gui/Game_Options.layout:350 ..Options.Input.Check
 msgctxt "InputInverse"
 msgid "Inverse"
 msgstr "Inverse"
@@ -4232,13 +4240,13 @@ msgid "Axis Full Inversed"
 msgstr "Axe complet inversé"
 
 #. Input  key setup 
-#: Media/gui/Game_Options.layout:348 ..Options.Input.Text
+#: Media/gui/Game_Options.layout:354 ..Options.Input.Text
 msgctxt "InputKeyboardEmulation"
 msgid "Keyboard Emulation"
 msgstr "Émulation du clavier"
 
 #. Input  key setup 
-#: Media/gui/Game_Options.layout:352 ..Options.Input.Text
+#: Media/gui/Game_Options.layout:358 ..Options.Input.Text
 msgctxt "InputIncreaseSensitivity"
 msgid "Sensitivity"
 msgstr "Sensibilité"
@@ -4249,25 +4257,25 @@ msgid "Return speed"
 msgstr "Vitesse du retour"
 
 #. Input  key setup 
-#: Media/gui/Game_Options.layout:360 ..Options.Input.Text
+#: Media/gui/Game_Options.layout:366 ..Options.Input.Text
 msgctxt "InputKeyAllPreset"
 msgid "Set all from preset"
 msgstr "Définir depuis un pré-réglage"
 
 #. Input  key setup 
-#: src/game/Gui_Input.cpp:253
+#: src/game/Gui_Input.cpp:254
 msgctxt "InpSet_Slow"
 msgid "Slow"
 msgstr "Lent"
 
 #. Input  key setup 
-#: src/game/Gui_Input.cpp:254
+#: src/game/Gui_Input.cpp:255
 msgctxt "InpSet_Medium"
 msgid "Medium"
 msgstr "Moyen"
 
 #. Input  key setup 
-#: src/game/Gui_Input.cpp:255
+#: src/game/Gui_Input.cpp:256
 msgctxt "InpSet_Fast"
 msgid "Fast"
 msgstr "Rapide"
@@ -4283,7 +4291,7 @@ msgid "Brake"
 msgstr "Freiner"
 
 #. MAIN  Game Input  Player 
-#: Media/gui/Game.layout:1451 ..SingleRace.Setup.Tab
+#: Media/gui/Game.layout:1463 ..SingleRace.Setup.Tab
 msgctxt "InputMapSteering"
 msgid "Steering"
 msgstr "Direction"
@@ -4304,7 +4312,7 @@ msgid "Flip"
 msgstr "Retourner"
 
 #. MAIN  Game Input  Player 
-#: Media/gui/Game.layout:1300 ..SingleRace.Setup.Game.Text
+#: Media/gui/Game.layout:1312 ..SingleRace.Setup.Game.Text
 #: src/game/Challenges.cpp:617 src/game/Gui_Network.cpp:141
 msgctxt "InputMapRewind"
 msgid "Rewind (time)"
@@ -4321,13 +4329,13 @@ msgid "Shift down"
 msgstr "Rétrograder"
 
 #. Game Input  Player 
-#: Media/gui/Game_Options.layout:224 ..Options.Input.General.Text
+#: Media/gui/Game_Options.layout:230 ..Options.Input.General.Text
 msgctxt "InputMapPrevCamera"
 msgid "Previous Camera"
 msgstr "Caméra précédente"
 
 #. Game Input  Player 
-#: Media/gui/Game_Options.layout:224 ..Options.Input.General.Text
+#: Media/gui/Game_Options.layout:230 ..Options.Input.General.Text
 msgctxt "InputMapNextCamera"
 msgid "Next Camera"
 msgstr "Caméra suivante"
@@ -4348,13 +4356,13 @@ msgid "Show options"
 msgstr "Afficher les options"
 
 #. MAIN  Game Input 
-#: Media/gui/Game_Options.layout:1550 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1567 ..Options.Tweak.Tweak.Text
 msgctxt "InputMapPrevTab"
 msgid "Previous tab"
 msgstr "Onglet précédent"
 
 #. MAIN  Game Input 
-#: Media/gui/Game_Options.layout:1550 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1567 ..Options.Tweak.Tweak.Text
 msgctxt "InputMapNextTab"
 msgid "Next tab"
 msgstr "Onglet suivant"
@@ -4376,44 +4384,44 @@ msgid "Screenshot"
 msgstr "Capture d'écran"
 
 #. MAIN  Game Input 
-#: Media/gui/Game_Options.layout:227 ..Options.Input.General.Text
+#: Media/gui/Game_Options.layout:233 ..Options.Input.General.Text
 msgctxt "InputCameraTxt1"
 msgid "with shift - main cameras only"
 msgstr "avec Maj. - caméras principales seulement"
 
 #. MAIN  Game Input 
-#: Media/gui/Game_Options.layout:1550 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1567 ..Options.Tweak.Tweak.Text
 msgctxt "InputGraphsType"
 msgid "change graphs type in game"
 msgstr "changer le type de graphiques dans le jeu"
 
 #. Game Input  General 
-#: Media/gui/Game_Options.layout:215 ..Options.Input.General.Text
+#: Media/gui/Game_Options.layout:221 ..Options.Input.General.Text
 msgctxt "InputOther1"
 msgid "Up,Down - navigate in lists   Enter - start"
 msgstr "Haut,bas - naviguer dans les listes Entrée - démarrer"
 
 #. Game Input  General 
-#: Media/gui/Game_Options.layout:218 ..Options.Input.General.Text
+#: Media/gui/Game_Options.layout:224 ..Options.Input.General.Text
 msgctxt "InputOther2"
 msgid "Enter - show/hide players window in multiplayer"
 msgstr "Entrée - montrer/cacher la fenêtre des joueurs"
 
 #. Game Input  General 
-#: Media/gui/Game_Options.layout:221 ..Options.Input.General.Text
+#: Media/gui/Game_Options.layout:227 ..Options.Input.General.Text
 msgctxt "InputOther3"
 msgid "Enter - show lap results"
 msgstr "Entrée - montrer les résultats du tour"
 
 #. Game Input  General 
 #: Media/gui/Editor_Help.layout:172 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Game_Options.layout:286 ..Options.Input.Shortcuts.Text
+#: Media/gui/Game_Options.layout:292 ..Options.Input.Shortcuts.Text
 msgctxt "InputFocusFind"
 msgid "Ctrl-F  go to find box"
 msgstr "Ctrl-F aller à la boîte de recherche"
 
 #. Game Input  General replay 
-#: Media/gui/Game_Options.layout:234 ..Options.Input.General.Text
+#: Media/gui/Game_Options.layout:240 ..Options.Input.General.Text
 msgctxt "InputRplCtrl1"
 msgid "Backspace - show/hide controls (hold ctrl to use mouse)"
 msgstr ""
@@ -4421,31 +4429,31 @@ msgstr ""
 "la souris)"
 
 #. Game Input  General replay 
-#: Media/gui/Game_Options.layout:237 ..Options.Input.General.Text
+#: Media/gui/Game_Options.layout:243 ..Options.Input.General.Text
 msgctxt "InputRplCtrl2"
 msgid "P - pause/unpause replay"
 msgstr "P - mettre en pause/reprendre le replay"
 
 #. Game Input  General replay 
-#: Media/gui/Game_Options.layout:240 ..Options.Input.General.Text
+#: Media/gui/Game_Options.layout:246 ..Options.Input.General.Text
 msgctxt "InputRplCtrl3"
 msgid "[ , ] - wind backwards/forwards (shift - slow, ctrl,alt - fast)"
 msgstr "[ , ] - aller en avant/arrière (Maj. - lent, Ctrl,Alt - rapide)"
 
 #. Game Input  General replay 
-#: Media/gui/Game_Options.layout:243 ..Options.Input.General.Text
+#: Media/gui/Game_Options.layout:249 ..Options.Input.General.Text
 msgctxt "InputRplCtrl4"
 msgid "K, L - change camera view to other player"
 msgstr "K, L - changer la vue de la caméra vers un autre joueur."
 
 #. Game Input  Tweak edit 
-#: Media/gui/Game_Options.layout:1580 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1597 ..Options.Tweak.Tweak.Text
 msgctxt "TweakEdit1"
 msgid "Alt-Z - toggle tweak window (car edit)"
 msgstr "Alt-Z - afficher la fenêtre d'édition de voiture"
 
 #. Game Input  Tweak edit 
-#: Media/gui/Game_Options.layout:1583 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1600 ..Options.Tweak.Tweak.Text
 #: Media/gui/Game_Tweak.layout:26 ..Tweak.Vehicle.Button
 #: :464..Tweak.collisions.Button
 msgctxt "TweakEdit2"
@@ -4453,14 +4461,14 @@ msgid "Alt-Shift-Z - save file and reload game"
 msgstr "Alt-Maj.-Z - sauvegarder et recharger"
 
 #. Game Input  Tweak edit 
-#: Media/gui/Game_Options.layout:1586 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1603 ..Options.Tweak.Tweak.Text
 msgctxt "TweakEdit3"
 msgid "Ctrl-F5 - start car performance test"
 msgstr "Ctrl-F5 - démarrer un test de performance voiture"
 
 #. Game Input  Tweak tire edit 
-#: Media/gui/Game_Options.layout:1559 ..Options.Tweak.Tweak.Text
-#: :1594..Options.Tweak.Tires.Text
+#: Media/gui/Game_Options.layout:1576 ..Options.Tweak.Tweak.Text
+#: :1611..Options.Tweak.Tires.Text
 #, fuzzy
 #| msgctxt "TiresEdit"
 #| msgid "Tire Edit - (Graphs in mode 4)"
@@ -4469,31 +4477,31 @@ msgid "Tire Edit - (Graphs mode)"
 msgstr "Édition des pneus - (graphiques en mode 4)"
 
 #. Game Input  Tweak tire edit 
-#: Media/gui/Game_Options.layout:1562 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1579 ..Options.Tweak.Tweak.Text
 msgctxt "TiresEdit1"
 msgid "PgUp/PgDn - previous, next value"
 msgstr "Pg.préc./Pg.suiv. - valeur précédente/suivante"
 
 #. Game Input  Tweak tire edit 
-#: Media/gui/Game_Options.layout:1565 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1582 ..Options.Tweak.Tweak.Text
 msgctxt "TiresEdit2"
 msgid "1,2 or Num /,* - change value"
 msgstr "1,2 ou pavé num. /,* - changer la valeur"
 
 #. Game Input  Tweak tire edit 
-#: Media/gui/Game_Options.layout:1568 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1585 ..Options.Tweak.Tweak.Text
 msgctxt "TiresEdit3"
 msgid "Home - toggle longitudinal / lateral parameters"
 msgstr "Orig. - basculer entre les paramètres longitudinaux et latéraux"
 
 #. Game Input  Tweak tire edit 
-#: Media/gui/Game_Options.layout:1571 ..Options.Tweak.Tweak.Text
+#: Media/gui/Game_Options.layout:1588 ..Options.Tweak.Tweak.Text
 msgctxt "TiresEdit4"
 msgid "End - toggle align moment parameters"
 msgstr ""
 
 #. Game Input  Tweak tire graphs 
-#: Media/gui/Game_Options.layout:1643 ..Options.Tweak.Tires.Check
+#: Media/gui/Game_Options.layout:1660 ..Options.Tweak.Tires.Check
 msgctxt "TireEdCommonY"
 msgid "Common y range"
 msgstr ""
@@ -4507,27 +4515,27 @@ msgstr "Montrer le diagramme de référence"
 #. Sound  main 
 #: Media/gui/Editor.layout:2770 ..Editor.Vegetation.Surface.Surface.Text
 #: Media/gui/Editor_Track.layout:646 ..Track.Game.Text
-#: Media/gui/Game_Options.layout:311 ..Options.Input.Shortcuts.Text
-#: :1214..Options.Tab Media/gui/Game_Tweak.layout:402 ..Tweak.Surface.Text
+#: Media/gui/Game_Options.layout:317 ..Options.Input.Shortcuts.Text
+#: :1220..Options.Tab Media/gui/Game_Tweak.layout:402 ..Tweak.Surface.Text
 msgctxt "Sound"
 msgid "Sound"
 msgstr "Son"
 
 #. Sound  main 
-#: Media/gui/Game_Options.layout:1222 ..Options.Sound.Main.Text
-#: :1316..Options.Sound.Other.Text
+#: Media/gui/Game_Options.layout:1228 ..Options.Sound.Main.Text
+#: :1322..Options.Sound.Other.Text
 msgctxt "Volume"
 msgid "Volume"
 msgstr "Volume"
 
 #. Sound  main 
-#: Media/gui/Game_Options.layout:1227 ..Options.Sound.Main.Text
+#: Media/gui/Game_Options.layout:1233 ..Options.Sound.Main.Text
 msgctxt "VolMaster"
 msgid "Master"
 msgstr "Maître"
 
 #. Sound  main 
-#: Media/gui/Game_Options.layout:1238 ..Options.Sound.Main.Text
+#: Media/gui/Game_Options.layout:1244 ..Options.Sound.Main.Text
 msgctxt "Engine"
 msgid "Engine"
 msgstr "Moteur"
@@ -4535,52 +4543,52 @@ msgstr "Moteur"
 #. Sound  main 
 #: Media/gui/Editor.layout:2779 ..Editor.Vegetation.Surface.Surface.Text
 #: Media/gui/Editor_Track.layout:626 ..Track.Game.Check
-#: Media/gui/Game_Options.layout:1248 ..Options.Sound.Main.Text
-#: :1591..Options.Tweak.Tab Media/gui/Game_Tweak.layout:216 ..Tweak.Tab
+#: Media/gui/Game_Options.layout:1254 ..Options.Sound.Main.Text
+#: :1608..Options.Tweak.Tab Media/gui/Game_Tweak.layout:216 ..Tweak.Tab
 #: :407..Tweak.Surface.Text
 msgctxt "Tires"
 msgid "Tires"
 msgstr "Pneus"
 
 #. Sound  main 
-#: Media/gui/Game_Options.layout:1258 ..Options.Sound.Main.Text
+#: Media/gui/Game_Options.layout:1264 ..Options.Sound.Main.Text
 msgctxt "Suspension"
 msgid "Suspension"
 msgstr "Suspension"
 
 #. Sound  main 
-#: Media/gui/Game_Options.layout:1268 ..Options.Sound.Main.Text
+#: Media/gui/Game_Options.layout:1274 ..Options.Sound.Main.Text
 msgctxt "Environment"
 msgid "Environment"
 msgstr "Environnement"
 
 #. Sound  main 
 #: Media/gui/Editor_Track.layout:646 ..Track.Game.Text
-#: Media/gui/Game_Options.layout:1279 ..Options.Sound.Main.Check
+#: Media/gui/Game_Options.layout:1285 ..Options.Sound.Main.Check
 msgctxt "Reverb"
 msgid "Reverberation"
 msgstr ""
 
 #. Sound  other 
-#: Media/gui/Game_Options.layout:1322 ..Options.Sound.Other.Text
+#: Media/gui/Game_Options.layout:1328 ..Options.Sound.Other.Text
 msgctxt "FluidSplash"
 msgid "Fluid Splash"
 msgstr "Éclaboussures"
 
 #. Sound  other 
-#: Media/gui/Game_Options.layout:1332 ..Options.Sound.Other.Text
+#: Media/gui/Game_Options.layout:1338 ..Options.Sound.Other.Text
 msgctxt "FluidCont"
 msgid "Fluid Cont."
 msgstr "Liquides"
 
 #. Sound  other 
-#: Media/gui/Game_Options.layout:1342 ..Options.Sound.Other.Text
+#: Media/gui/Game_Options.layout:1348 ..Options.Sound.Other.Text
 msgctxt "CarCrash"
 msgid "Car Crash"
 msgstr "Collisions de la voiture"
 
 #. Sound  other 
-#: Media/gui/Game_Options.layout:1352 ..Options.Sound.Other.Text
+#: Media/gui/Game_Options.layout:1358 ..Options.Sound.Other.Text
 msgctxt "CarScrap"
 msgid "Car Scrap"
 msgstr "Ferraille de voiture"
@@ -4707,8 +4715,8 @@ msgstr "Renommer"
 #. Editor  Main  Track 
 #: Media/gui/Editor.layout:762 ..Editor.Terrain.Brushes.Button
 #: Media/gui/Editor_Track.layout:459 ..Track.Track.Button
-#: :541..Track.Tools.Text Media/gui/Game.layout:944
-#: ..SingleRace.Setup.Paint.Button :1977..SingleRace.Championship.Button
+#: :541..Track.Tools.Text Media/gui/Game.layout:956
+#: ..SingleRace.Setup.Paint.Button :1999..SingleRace.Championship.Button
 #: Media/gui/Game_Replay.layout:51 ..Replays.Replay.Button
 #: Media/gui/Game_Tweak.layout:268 ..Tweak.Tires.Button
 #: Media/gui/MaterialEditor.layout:532 ..MaterialEditor.Save.Button
@@ -4736,7 +4744,7 @@ msgid "Source track and current track are the same."
 msgstr "Le circuit source et le circuit actuel sont identiques."
 
 #. Editor  Track  message 
-#: src/editor/SceneInit.cpp:465
+#: src/editor/SceneInit.cpp:466
 msgctxt "CantSaveOrgTrack"
 msgid "Can't save original track. Duplicate it first."
 msgstr "Impossible d'écraser un circuit intégré au jeu. Dupliquez-le d'abord."
@@ -4796,9 +4804,9 @@ msgstr "Ambience"
 #. Editor  Sun 
 #: Media/gui/Editor.layout:113 ..Editor.Sun.Sun.Text
 #: :492..Editor.Terrain.Light.Text :504:516:1406..Editor.Layers.Button
-#: Media/gui/Game.layout:1014 ..SingleRace.Setup.Paint.Tab
-#: :1145..SingleRace.Setup.Paint.Text :1149..SingleRace.Setup.Paint.Slider
-#: :1153..SingleRace.Setup.Paint.Text Media/gui/MaterialEditor.layout:67
+#: Media/gui/Game.layout:1026 ..SingleRace.Setup.Paint.Tab
+#: :1157..SingleRace.Setup.Paint.Text :1161..SingleRace.Setup.Paint.Slider
+#: :1165..SingleRace.Setup.Paint.Text Media/gui/MaterialEditor.layout:67
 #: ..MaterialEditor.Main.Text :78:89 src/editor/Gui_InitLists.cpp:250
 #: src/common/GuiCom_Options.cpp:60
 msgctxt "Diffuse"
@@ -4806,9 +4814,9 @@ msgid "Diffuse"
 msgstr "Diffuser"
 
 #. Editor  Sun 
-#: Media/gui/Editor.layout:118 ..Editor.Sun.Sun.Text Media/gui/Game.layout:1017
-#: ..SingleRace.Setup.Paint.Tab :1145..SingleRace.Setup.Paint.Text
-#: :1149..SingleRace.Setup.Paint.Slider :1153..SingleRace.Setup.Paint.Text
+#: Media/gui/Editor.layout:118 ..Editor.Sun.Sun.Text Media/gui/Game.layout:1029
+#: ..SingleRace.Setup.Paint.Tab :1157..SingleRace.Setup.Paint.Text
+#: :1161..SingleRace.Setup.Paint.Slider :1165..SingleRace.Setup.Paint.Text
 #: Media/gui/MaterialEditor.layout:101 ..MaterialEditor.Main.Text :112:123
 #: src/common/GuiCom_Options.cpp:61
 msgctxt "Specular"
@@ -4896,7 +4904,7 @@ msgstr "intensité"
 #: :1306..Editor.Layers.Text :2113..Editor.Grasses.Channels.Text
 #: :2623..Editor.Vegetation.Models.Text Media/gui/Editor_Options.layout:536
 #: ..Options.Graphics.Textures.Text :606..Options.Graphics.Detail.Text
-#: Media/gui/Game_Options.layout:1042 :1112..Options.Graphics.Detail.Text
+#: Media/gui/Game_Options.layout:1048 :1118..Options.Graphics.Detail.Text
 #: src/editor/Update_Frame.cpp:83
 msgctxt "Terrain"
 msgid "Terrain"
@@ -4963,7 +4971,7 @@ msgstr "Générer un nouveau"
 
 #. Terrain  heightmap 
 #: Media/gui/Editor.layout:750 ..Editor.Terrain.Brushes.Button
-#: :951..Editor.Terrain.Generator.Button Media/gui/Game.layout:955
+#: :951..Editor.Terrain.Generator.Button Media/gui/Game.layout:967
 #: ..SingleRace.Setup.Paint.Button Media/gui/MaterialEditor.layout:543
 #: ..MaterialEditor.Save.Button
 msgctxt "Add"
@@ -4985,7 +4993,7 @@ msgstr "Multiplier"
 
 #. Terrain  properties 
 #: Media/gui/Editor.layout:590 ..Editor.Terrain.Tab
-#: :594..Editor.Terrain.Collision.Check Media/gui/Game.layout:1344
+#: :594..Editor.Terrain.Collision.Check Media/gui/Game.layout:1356
 #: ..SingleRace.Setup.Tab
 #, fuzzy
 #| msgctxt "CarCollis"
@@ -5007,8 +5015,8 @@ msgstr "Bordure"
 #. Terrain  properties 
 #: Media/gui/Editor.layout:469 ..Editor.Terrain.Size.Text
 #: Media/gui/Editor_Options.layout:546 ..Options.Graphics.Textures.Text
-#: :592..Options.Graphics.Detail.Text :614 Media/gui/Game_Options.layout:1052
-#: :1098..Options.Graphics.Detail.Text :1120
+#: :592..Options.Graphics.Detail.Text :614 Media/gui/Game_Options.layout:1058
+#: :1104..Options.Graphics.Detail.Text :1126
 msgctxt "Horizon"
 msgid "Horizon"
 msgstr ""
@@ -5116,8 +5124,8 @@ msgstr "Automatique"
 
 #. Terrain  Layers 
 #: Media/gui/Editor.layout:1042 ..Editor.Terrain.Generator.Text
-#: :1439..Editor.Layers.Text Media/gui/Game_Options.layout:632
-#: ..Options.View.Camera.Text :1652..Options.Tweak.Tires.Text :1663
+#: :1439..Editor.Layers.Text Media/gui/Game_Options.layout:638
+#: ..Options.View.Camera.Text :1669..Options.Tweak.Tires.Text :1680
 #: src/editor/Update_EditKeyTxt.cpp:303:341:371
 msgctxt "scale"
 msgid "Scale"
@@ -5125,7 +5133,7 @@ msgstr "Échelle"
 
 #. Terrain  Layers  buttons 
 #: Media/gui/Editor.layout:1454 ..Editor.Layers.Check :1459
-#: Media/gui/Game.layout:1869 ..SingleRace.Championship.Tab :1902
+#: Media/gui/Game.layout:1891 ..SingleRace.Championship.Tab :1924
 #: Media/gui/Game_Tweak.layout:424 ..Tweak.Tab
 msgctxt "Test"
 msgid "Test"
@@ -5187,7 +5195,7 @@ msgstr "Hauteur maximale"
 
 #. Terrain  Blendmap 
 #: Media/gui/Editor.layout:284 ..Editor.Sun.Fog.Text
-#: Media/gui/Game_Options.layout:665 ..Options.View.Camera.Text
+#: Media/gui/Game_Options.layout:671 ..Options.View.Camera.Text
 msgctxt "smooth"
 msgid "smooth"
 msgstr "doux"
@@ -5313,7 +5321,7 @@ msgstr "Quantité de particules"
 #: Media/gui/Editor_Help.layout:214 ..Help.Input/help.Shortcuts.Text
 #: Media/gui/Editor.layout:2633 ..Editor.Vegetation.Tab
 #: :2644..Editor.Vegetation.Surface.Widget
-#: :2750..Editor.Vegetation.Surface.Surface.Text Media/gui/Game.layout:1547
+#: :2750..Editor.Vegetation.Surface.Surface.Text Media/gui/Game.layout:1559
 #: ..SingleRace.Setup.Steering.Text Media/gui/Game_Tweak.layout:272 ..Tweak.Tab
 #: src/editor/Gui_InitLists.cpp:330
 msgctxt "Surface"
@@ -5321,7 +5329,7 @@ msgid "Surface"
 msgstr "Surface"
 
 #. Terrain  surface  params 
-#: Media/gui/Game_Options.layout:420 ..Options.View.HUD.Text
+#: Media/gui/Game_Options.layout:426 ..Options.View.HUD.Text
 msgctxt "Type"
 msgid "Type"
 msgstr "Type"
@@ -5374,7 +5382,7 @@ msgstr "Taille"
 
 #. Terrain  Brush  params 
 #: Media/gui/Editor.layout:833 ..Editor.Terrain.Brushparameters.Text
-#: Media/gui/Game.layout:1371 ..SingleRace.Setup.Boost.Text
+#: Media/gui/Game.layout:1383 ..SingleRace.Setup.Boost.Text
 #: src/editor/Update_EditKeyTxt.cpp:184
 msgctxt "Brush_Force"
 msgid "Force"
@@ -5550,7 +5558,7 @@ msgstr "page"
 
 #. Vegetation  common 
 #: Media/gui/Common.layout:208 ..Track-Filter.Text Media/gui/Editor.layout:1967
-#: ..Editor.Grasses.Grasses.Text :2010 Media/gui/Game.layout:1393
+#: ..Editor.Grasses.Grasses.Text :2010 Media/gui/Game.layout:1405
 #: ..SingleRace.Setup.Boost.Text
 msgctxt "min"
 msgid "min"
@@ -5560,9 +5568,9 @@ msgstr "min"
 #: Media/gui/Common.layout:211 ..Track-Filter.Text Media/gui/Editor.layout:1982
 #: ..Editor.Grasses.Grasses.Text :2025:2556..Editor.Vegetation.Models.Text
 #: Media/gui/Editor_Options.layout:592 ..Options.Graphics.Detail.Text
-#: Media/gui/Game.layout:1382 ..SingleRace.Setup.Boost.Text
-#: Media/gui/Game_Options.layout:1098 :1598..Options.Tweak.Tires.Text
-#: :1609:1620 src/common/GuiCom_Options.cpp:58
+#: Media/gui/Game.layout:1394 ..SingleRace.Setup.Boost.Text
+#: Media/gui/Game_Options.layout:1104 :1615..Options.Tweak.Tires.Text
+#: :1626:1637 src/common/GuiCom_Options.cpp:58
 msgctxt "max"
 msgid "max"
 msgstr "max"
@@ -5703,7 +5711,7 @@ msgstr "Colonne"
 
 #. Road  Main 
 #: Media/gui/Editor.layout:1248 ..Editor.Terrain.Tools.Text
-#: :3158..Editor.Vegetation.Road.Tab Media/gui/Editor_Options.layout:894
+#: :3158..Editor.Vegetation.Road.Tab Media/gui/Editor_Options.layout:905
 #: ..Options.Settings.Tweak.Text Media/gui/MaterialEditor.layout:265
 #: ..MaterialEditor.Tab
 msgctxt "Advanced"
@@ -5853,8 +5861,8 @@ msgstr "Boucle"
 #. Road Point  toggle 
 #: Media/gui/Editor_Track.layout:184 ..Track.Track.Text :230..Track.Track.Image
 #: Media/gui/Game.layout:198 ..SingleRace.Track.Text
-#: :244..SingleRace.Track.Image :2158..SingleRace.Track.Text
-#: :2204..SingleRace.Track.Image src/editor/Update_EditKeyTxt.cpp:72:118
+#: :244..SingleRace.Track.Image :2180..SingleRace.Track.Text
+#: :2226..SingleRace.Track.Image src/editor/Update_EditKeyTxt.cpp:72:118
 msgctxt "Road_OnPipe"
 msgid "On Pipe"
 msgstr "Sur un tube"
@@ -6102,7 +6110,7 @@ msgstr "Véhicules"
 
 #. Editor Warnings 
 #: Media/gui/Editor_Help.layout:233 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor_Track.layout:738 ..Track.Tab src/editor/Warnings.cpp:386
+#: Media/gui/Editor_Track.layout:738 ..Track.Tab src/editor/Warnings.cpp:388
 msgctxt "Warnings"
 msgid "Warnings"
 msgstr "Avertissements"
@@ -6145,8 +6153,8 @@ msgstr ""
 #. Editor  Settings 
 #: Media/gui/Editor_Help.layout:244 ..Help.Input/help.Shortcuts.Text
 #: Media/gui/Editor_Options.layout:628 ..Options.Tab :816..Options.Settings.Tab
-#: Media/gui/Game_Options.layout:314 ..Options.Input.Shortcuts.Text
-#: :1373..Options.Tab
+#: Media/gui/Game_Options.layout:320 ..Options.Input.Shortcuts.Text
+#: :1379..Options.Tab
 msgctxt "Settings"
 msgid "Settings"
 msgstr "Réglages"
@@ -6186,7 +6194,7 @@ msgid "Minimap type"
 msgstr "Minicarte"
 
 #. Editor  Settings update 
-#: Media/gui/Editor_Options.layout:792 ..Options.Settings.Minimap.Text :803
+#: Media/gui/Editor_Options.layout:792 ..Options.Settings.Minimap.Text
 msgctxt "RoadPointSize"
 msgid "Road points size"
 msgstr "Taille des points de la route"
@@ -6224,7 +6232,7 @@ msgid "Auto update blendmap (slow for big size brushes)"
 msgstr "Mettre à jour la blendmap automatiquement"
 
 #. Editor  Settings extras 
-#: Media/gui/Editor_Options.layout:884 ..Options.Settings.Tweak.Check
+#: Media/gui/Editor_Options.layout:895 ..Options.Settings.Tweak.Check
 #, fuzzy
 #| msgctxt "EdCamPos"
 #| msgid "Camera position"
@@ -6233,13 +6241,13 @@ msgid "Camera position bar  Ctrl-C"
 msgstr "Position de la caméra"
 
 #. Editor  Settings extras 
-#: Media/gui/Editor_Options.layout:888 ..Options.Settings.Tweak.Check
+#: Media/gui/Editor_Options.layout:899 ..Options.Settings.Tweak.Check
 msgctxt "EdInputBar"
 msgid "Input bar  Ctrl-I"
 msgstr "Barre d'entrée Ctrl-I"
 
 #. Editor  Settings extras 
-#: Media/gui/Editor_Options.layout:898 ..Options.Settings.Tweak.Check
+#: Media/gui/Editor_Options.layout:909 ..Options.Settings.Tweak.Check
 msgctxt "AllowSaveOrigTrk"
 msgid "Allow saving original tracks"
 msgstr "Autoriser la sauvegarde des circuits par défaut"
@@ -6309,8 +6317,8 @@ msgid "View Start"
 msgstr "Vue du Départ"
 
 #. Tweak 
-#: Media/gui/Game_Options.layout:1485 ..Options.Tweak.Tab
-#: :1510..Options.Tweak.Graphs.Check
+#: Media/gui/Game_Options.layout:1502 ..Options.Tweak.Tab
+#: :1527..Options.Tweak.Graphs.Check
 msgctxt "Graphs"
 msgid "Graphs"
 msgstr "Graphiques"
@@ -6318,7 +6326,7 @@ msgstr "Graphiques"
 #. Tweak 
 #: Media/gui/Editor_Help.layout:247 ..Help.Input/help.Shortcuts.Text
 #: Media/gui/Editor_Options.layout:847 ..Options.Settings.Tab
-#: Media/gui/Game_Options.layout:1411 ..Options.Tab :1547..Options.Tweak.Tab
+#: Media/gui/Game_Options.layout:1417 ..Options.Tab :1564..Options.Tweak.Tab
 #: Media/gui/Game_Tweak.layout:5 ..Window
 msgctxt "Tweak"
 msgid "Tweak"
@@ -6326,9 +6334,9 @@ msgstr "Ajuster"
 
 #. Tweak 
 #: Media/gui/Editor_Help.layout:254 ..Help.Input/help.Shortcuts.Text
-#: Media/gui/Editor_Options.layout:901 ..Options.Settings.Tweak.Button
-#: Media/gui/Game_Options.layout:318 ..Options.Input.Shortcuts.Text
-#: :1477..Options.Tweak.Other.Button Media/gui/MaterialEditor.layout:5 ..Window
+#: Media/gui/Editor_Options.layout:912 ..Options.Settings.Tweak.Button
+#: Media/gui/Game_Options.layout:324 ..Options.Input.Shortcuts.Text
+#: :1494..Options.Tweak.Other.Button Media/gui/MaterialEditor.layout:5 ..Window
 #, fuzzy
 #| msgctxt "GrMaterial"
 #| msgid "Material"
@@ -6337,7 +6345,7 @@ msgid "Material Editor"
 msgstr "Matériel"
 
 #. Tweak 
-#: src/game/SceneInit.cpp:239 src/game/Gui_Replay.cpp:77:148
+#: src/game/SceneInit.cpp:240 src/game/Gui_Replay.cpp:77:148
 #: src/game/Gui_TweakSim.cpp:140:340
 msgctxt "TweakUser"
 msgid "User"
@@ -6358,7 +6366,7 @@ msgstr "Touches/aide"
 
 #. MAIN  Editor Input Gui 
 #: Media/gui/Editor_Help.layout:146 ..Help.Input/help.Tab
-#: Media/gui/Game_Options.layout:247 ..Options.Input.Tab
+#: Media/gui/Game_Options.layout:253 ..Options.Input.Tab
 msgctxt "Shortcuts"
 msgid "Shortcuts"
 msgstr "Raccourcis"
@@ -6366,8 +6374,8 @@ msgstr "Raccourcis"
 #. MAIN  Editor Input Gui 
 #: Media/gui/Editor_Help.layout:45 ..Help.Input/help.Tab
 #: Media/gui/Editor_Options.layout:23 ..Options.Screen.Tab
-#: Media/gui/Game_Options.layout:24 :200..Options.Input.Tab
-#: :1220..Options.Sound.Tab Media/gui/MaterialEditor.layout:58
+#: Media/gui/Game_Options.layout:24 :206..Options.Input.Tab
+#: :1226..Options.Sound.Tab Media/gui/MaterialEditor.layout:58
 #: ..MaterialEditor.Tab
 msgctxt "InputMain"
 msgid "Main"
@@ -6375,7 +6383,7 @@ msgstr "Principal"
 
 #. MAIN  Editor Input Gui 
 #: Media/gui/Editor_Help.layout:180 ..Help.Input/help.Shortcuts.Edit
-#: Media/gui/Game_Options.layout:253 ..Options.Input.Shortcuts.Edit
+#: Media/gui/Game_Options.layout:259 ..Options.Input.Shortcuts.Edit
 msgctxt "ShortcutsInfo"
 msgid ""
 "Press with alt to quick access gui tab (or sub-tab). Pressing again will "
@@ -6578,8 +6586,11 @@ msgstr "C - Couleur de la peinture"
 
 #. Terrain  Toggle 
 #: Media/gui/Editor_Help.layout:281 ..Help.Input/help.Terrain.Text
+#, fuzzy
+#| msgctxt "InputLockBrush"
+#| msgid "Enter - lock brush position"
 msgctxt "InputLockBrush"
-msgid "Enter - lock brush position"
+msgid "Insert - lock brush position"
 msgstr "Entrée - verrouiller la position de la brosse"
 
 #. Terrain  Toggle 
@@ -7112,7 +7123,7 @@ msgstr ""
 #: ..Editor.Vegetation.Tab Media/gui/Editor_Options.layout:565
 #: ..Options.Graphics.Detail.Text Media/gui/Editor_Tools.layout:324 ..Window
 #: Media/gui/Editor_Track.layout:557 ..Track.Tools.Button
-#: Media/gui/Game_Options.layout:1071
+#: Media/gui/Game_Options.layout:1077
 msgctxt "Objects"
 msgid "Objects"
 msgstr "Objets"
@@ -7262,7 +7273,7 @@ msgid "Enter - toggle static"
 msgstr ""
 
 #. HUD  Camera info  parts (use same count, separated by comma) 
-#: src/game/FollowCamera.cpp:602
+#: src/game/FollowCamera.cpp:603
 msgctxt "CamInfoStrings"
 msgid ""
 "Type,Yaw,Pitch,Dist,Height,Speed,Offset,LEFT,RIGHT,Middle,Wheel,shift,Rotate,"
@@ -7935,7 +7946,7 @@ msgstr "Chemin utilisateur (journaux, fichiers de configuration, etc.)"
 #. TIP  Slider 
 #: Media/gui/Editor_Help.layout:152 ..Help.Input/help.Shortcuts.Text
 #: Media/gui/Editor.layout:1156 ..Editor.Terrain.Generator.Text
-#: Media/gui/Game_Options.layout:1303 ..Options.Sound.Main.Text
+#: Media/gui/Game_Options.layout:1309 ..Options.Sound.Main.Text
 msgctxt "TipSliderReset"
 msgid "RMB on slider - reset to default value."
 msgstr "Clic droit sur un glisseur - réinitialiser à la valeur par défaut."
