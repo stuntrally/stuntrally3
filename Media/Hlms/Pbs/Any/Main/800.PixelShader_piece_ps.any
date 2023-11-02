@@ -376,9 +376,9 @@
 @piece( LoadNormalData )
 	@property( !normal_map )
 		// Geometric normal
-		pixelData.normal = normalize( inPs.normal ) @insertpiece( two_sided_flip_normal );
-	@else
-		//Normal mapping.
+					pixelData.normal = normalize( inPs.normal ) @insertpiece( two_sided_flip_normal );
+			@else
+		// Normal mapping
 		pixelData.geomNormal = normalize( inPs.normal ) @insertpiece( two_sided_flip_normal );
 		midf3 vTangent		= normalize( inPs.tangent );
 
@@ -386,7 +386,7 @@
 			@piece( tbnApplyReflection ) * inPs.biNormalReflection@end
 		@end
 
-		//Get the TBN matrix
+		// Get the TBN matrix
 		midf3 vBinormal	= normalize( cross( pixelData.geomNormal, vTangent )@insertpiece( tbnApplyReflection ) );
 		midf3x3 TBN		= buildMidf3x3( vTangent, vBinormal, pixelData.geomNormal );
 
@@ -848,7 +848,7 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 @end
 
 		@property( hlms_colour )  //**  vertex color
-			// pixelData.diffuse *= inPs.colour;  // todo: for particles, road blend
+			pixelData.diffuse *= inPs.colour;  // road blend  // todo: particles
 		@end
 
 		@insertpiece( forwardPlusDoDecals )
