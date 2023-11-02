@@ -223,14 +223,19 @@ int main(int argc, char* argv[])
 {
 	///  ----  [Setup]  ----
 	//  data subdir location
+#if 1
 	const string path = "../../";  // test in bin/Release etc
-	// const string path = "../";  // in locale/
+	const string outdir = "../../locale/";
+#else
+	const string path = "../";  // in locale/
+	const string outdir = "";
+#endif
 	string pxml = "Media/gui/core_language_en_tag.xml";
-	const string pot = "sr.pot";  // output file
+	const string pot = outdir + "sr.pot";  // output file
 	
 	const int bar = 50;   // text progress length
 	const bool bLog = 1;  // use log file
-	const string slog = "sr.log";  // log file
+	const string slog = outdir + "sr.log";  // log file
 		
 
 	//  log
