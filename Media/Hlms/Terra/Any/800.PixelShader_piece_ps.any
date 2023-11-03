@@ -37,10 +37,14 @@
 
 	@insertpiece( DeclDetailTriplanarFuncs )
 
-	@property( detail_triplanar )
+	@property( detail_triplanar )  // not used
 		midf3 pow3( midf3 v, midf e )
 		{
 			return midf3_c( pow( v.x, e ), pow( v.y, e ), pow( v.z, e ) );
+			// return midf3_c(
+			// 	(v.x >= _h( 0.0 )) ? pow( v.x, e ) : -pow( -v.x, e ),
+			// 	(v.y >= _h( 0.0 )) ? pow( v.y, e ) : -pow( -v.y, e ),
+			// 	(v.z >= _h( 0.0 )) ? pow( v.z, e ) : -pow( -v.z, e ));
 		}
 	@end
 @end
@@ -172,6 +176,8 @@
 	pixelData.specular.xyz = pixelData.specular.xyz * metalness;  //** metalness as specular multiplier
 
 	// pixelData.F0 = midf3_c( 0.03f, 0.03f, 0.03f );  //*
+	// pixelData.F0 = midf3_c( 6.0f, 6.0f, 6.0f );  //** par! fresnel  refl color
+	// pixelData.F0 = midf3_c( 1.0f, 1.0f, 1.0f );  //** par!
 	pixelData.F0 = lerp( midf3_c( 0.03, 0.03, 0.03 ),  // ?
 						pixelData.diffuse.xyz * _h( 3.14159f ), metalness );  //.x;
 	// pixelData.diffuse.xyz = pixelData.diffuse.xyz - pixelData.diffuse.xyz * metalness;  //* -
@@ -214,8 +220,20 @@
 	@property( detail_triplanar )
 		pixelData.worldSpaceNormal = pixelData.geomNormal;
 		// https://bgolus.medium.com/normal-mapping-for-a-triplanar-shader-10bf39dca05a
-		midf3 triplanarBlend = pow3( pixelData.worldSpaceNormal, _h( 4.0 ) );
-		triplanarBlend /= dot( triplanarBlend, midf3_c( 1.0, 1.0, 1.0 ) );
+		//  nope, issues
+		// midf3 triplanarBlend = pow3( pixelData.worldSpaceNormal, _h( 4.0 ) );
+		// triplanarBlend /= dot( triplanarBlend, midf3_c( 1.0, 1.0, 1.0 ) );
+
+		//  good from old SR
+		float3 absNormal = abs( pixelData.worldSpaceNormal );
+		float3 triplanarBlend = absNormal;
+		//  Tighten up the blending zone:  
+		//triplanarBlend = (triplanarBlend - 0.2) * 7;  // in other paper
+		triplanarBlend = (triplanarBlend - 0.5);
+		triplanarBlend = max(triplanarBlend, 0.0001);
+
+		//  Force weights to sum to 1.0
+		triplanarBlend /= triplanarBlend.x + triplanarBlend.y + triplanarBlend.z;
 	@end
 
 	pixelData.geomNormal = mul( pixelData.geomNormal, toMidf3x3( passBuf.view ) );
@@ -264,6 +282,7 @@
 		@property( normal_map )
 			@property( detail_triplanar_normal )
 				pixelData.normal = mul( pixelData.normal, toMidf3x3( passBuf.view ) );
+				// pixelData.normal = normalize( mul( pixelData.normal, toMidf3x3( passBuf.view ) ) );  //** todo: ?
 			@else
 				pixelData.normal = normalize( mul( TBN, pixelData.normal ) );
 			@end
@@ -419,7 +438,7 @@
 			//**  emissive terrain
 			@property( emissive_terrain && !hlms_shadowcaster && hlms_lights_directional )
 				// material.kD.xyz  // par..
-				// todo: params
+				// todo: params  saturate before fog?
 				finalColour += 4.0 * pow(metalness, 1.5) * light0Buf.lights[0].specular.xyz;
 			@end
 
