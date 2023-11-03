@@ -91,6 +91,8 @@ void AppGui::unloadTexturesFromUnusedMaterials()
 				++itor;
 			}
 		}
+		// hlms->_clearShaderCache();
+		// hlms->destroyAllDatablocks(); // todo: ?
 	}
 
 	// Unload all unused textures, unless they're also in the "usedTex" (a texture may be

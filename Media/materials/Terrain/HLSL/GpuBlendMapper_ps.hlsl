@@ -23,6 +23,7 @@ float4 main
 	PS_INPUT inPs,
 	uniform float2 heightMapResolution,
 	uniform float3 vScale
+	// TODO: copy from glsl ... or to .any
 ) : SV_Target
 {
 	int2 iCoord = int2( inPs.uv0 * heightMapResolution );

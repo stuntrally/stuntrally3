@@ -234,9 +234,9 @@ void App::KeyTxtTerrain(Real q)
 	//  edit  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 	if (!bEdit())  return;
 	if (mz != 0)
-	{	if (alt){			curBr().power  *= 1.f - 0.4f*q*mz;  updBrush();  }
-		else if (!shift){	curBr().size   *= 1.f - 0.4f*q*mz;  updBrush();  }
-		else				curBr().intens *= 1.f - 0.4f*q*mz/0.05;
+	{	if (alt)  {			curBr().power  *= 1.f - 0.4f*q*mz;  updBrush();  }
+		else if (!shift) {	curBr().size   *= 1.f - 0.4f*q*mz;  updBrush();  }
+		else  {				curBr().intens *= 1.f - 0.4f*q*mz/0.05;  }  // todo: < range
 	}
 	if (isKey(MINUS)){   curBr().size  *= 1.f - 0.04f*q;  updBrush();  }
 	if (isKey(EQUALS)){  curBr().size  *= 1.f + 0.04f*q;  updBrush();  }
