@@ -376,8 +376,18 @@
 @piece( LoadNormalData )
 	@property( !normal_map )
 		// Geometric normal
-					pixelData.normal = normalize( inPs.normal ) @insertpiece( two_sided_flip_normal );
-			@else
+		@property( grass_123 )  // todo: lit grass ..
+			// midf3_c n = -inPs.pos;  n.y *= 0.3;
+			// pixelData.normal = midf3_c( normalize( n ) );
+			const midf3 camPosW1 = midf3_c( passBuf.view[3][0], passBuf.view[3][1], passBuf.view[3][2] );
+			const midf3 eyeDir1 = normalize(camPosW1 - inPs.pos.xyz);
+			pixelData.normal = normalize(float3(eyeDir1.x, 0.0, eyeDir1.z));
+
+			// pixelData.normal = float3(0.0,0.0,1.0) @insertpiece( two_sided_flip_normal );
+		@else
+			pixelData.normal = normalize( inPs.normal ) @insertpiece( two_sided_flip_normal );
+		@end
+	@else
 		// Normal mapping
 		pixelData.geomNormal = normalize( inPs.normal ) @insertpiece( two_sided_flip_normal );
 		midf3 vTangent		= normalize( inPs.tangent );
