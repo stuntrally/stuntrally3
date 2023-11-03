@@ -9,41 +9,42 @@ import os
 #  setup dirs  --  change to yours to use  -----
 work_dir = '/home/ch/_sr/Ogre/ogre-next/build/Release/bin/'
 tool = './OgreMeshTool'
-media = '/home/ch/_sr/_sr3/Media/'
+data = '/home/ch/_sr/_sr3/data/'
 recursive = False
 
 #start_dir = os.getcwd()
 #recursive = True
 
-# start_dir = media + 'trees2'
+# start_dir = data + 'trees2'
 # args = ' -v2 -e -t -ts 4 -O puqs -l 4 -d 200 -p 20 '  #  objs
 # args = ' -v2 -e -t -ts 4 -O puqs -l 6 -d 200 -p 15 '  #  trees, rocks
 
 #  configs for Media subdirs
 #------------------------------
 #  objects3/  new obstacles, hq
-start_dir = media + 'objects3/'
-#args = ' -v2 -e -t -ts 4 -O puqs '  # no lods +
-args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 10 '  # 3 lods
+start_dir = data + 'objects3/'
+args = ' -v2 -e -t -ts 4 -O puqs '  # no lods +
+# args = ' -v2 -e -t -ts 4 -O puqs '  # no lods +
+#args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 10 '  # 3 lods
 
 #  bridge, pier
 #args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 15 '  # 3 lods
 
 #  rocks/  hex*
-#start_dir = media + 'rockshex/'
+#start_dir = data + 'rockshex/'
 #args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 400 -p 12 '  # 3 lods
 
 #  objects0/  0 A.D. buildings
-#start_dir = media + 'objects0/'
+#start_dir = data + 'objects0/'
 #args = ' -v2 -e -t -ts 4 -O puqs '  # no lods +
 # args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 600 -p 5 '  # 3 lods bad-
 
 #  objects2/  satelite, hq
-#start_dir = media + 'objects2/'
+#start_dir = data + 'objects2/'
 #args = ' -v2 -e -t -ts 4 -O puqs -l 3 -d 600 -p 15 '  # 4 lods far
 
 #  objectsC/  alien,city,skyscraper
-#start_dir = media + 'objectsC/'
+#start_dir = data + 'objectsC/'
 #args = ' -v2 -e -t -ts 4 -O puqs '  # no lods +
 # args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 600 -p 10 '  # 3 lods far bad-
 #------------------------------

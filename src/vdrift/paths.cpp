@@ -22,7 +22,7 @@
 
 // Should come from CMake
 #ifndef SHARED_DATA_DIR
-#define SHARED_DATA_DIR "Media"
+#define SHARED_DATA_DIR "data"
 #endif
 using namespace std;
 
@@ -84,7 +84,7 @@ void PATHS::Init(bool log_paths)
 			}
 		#else // Windows
 			char *homedir = getenv("USERPROFILE");
-			if (homedir == NULL) homedir = "Media"; // WIN 9x/Me
+			if (homedir == NULL) homedir = "data"; // WIN 9x/Me
 		#endif
 		home_dir += homedir;
 	}
@@ -154,11 +154,11 @@ void PATHS::Init(bool log_paths)
 		//dirs.push_back(user_data_dir);
 
 		// Adding relative path for running from sources
-		dirs.push_back(execname().parent_path().parent_path().parent_path() / "Media");
+		dirs.push_back(execname().parent_path().parent_path().parent_path() / "data");
 		dirs.push_back(execname().parent_path().parent_path().parent_path());
-		dirs.push_back(execname().parent_path().parent_path() / "Media");
+		dirs.push_back(execname().parent_path().parent_path() / "data");
 		dirs.push_back(execname().parent_path().parent_path());
-		dirs.push_back(execname().parent_path() / "Media");
+		dirs.push_back(execname().parent_path() / "data");
 		dirs.push_back(execname().parent_path());
 		// Adding relative path from installed executable
 		dirs.push_back(execname().parent_path().parent_path() / shareDir);

@@ -14,7 +14,7 @@
 /home/ch/_sr/_sr3/src/btOgre2/README.md|- Readme 🖼️
 /home/ch/_sr/_sr3/src/emojis.txt|emojis ✨
 /home/ch/_sr/_sr3/config/tracks.ini|tracks ini 🏞️
-/home/ch/_sr/_sr3/Media/gui/core_language_en_tag.xml|Gui -- en xml 🎛️
-/home/ch/_sr/_sr3/Media/gui/Game_Options.layout
-/home/ch/_sr/_sr3/Media/gui/Editor_Options.layout
-/home/ch/_sr/_sr3/Media/gui/Editor.layout
+/home/ch/_sr/_sr3/data/gui/core_language_en_tag.xml|Gui -- en xml 🎛️
+/home/ch/_sr/_sr3/data/gui/Game_Options.layout
+/home/ch/_sr/_sr3/data/gui/Editor_Options.layout
+/home/ch/_sr/_sr3/data/gui/Editor.layout

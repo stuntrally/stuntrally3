@@ -230,7 +230,7 @@ int main(int argc, char* argv[])
 	const string path = "../";  // in locale/
 	const string outdir = "";
 #endif
-	string pxml = "Media/gui/core_language_en_tag.xml";
+	string pxml = "data/gui/core_language_en_tag.xml";
 	const string pot = outdir + "sr.pot";  // output file
 	
 	const int bar = 50;   // text progress length
@@ -360,7 +360,7 @@ int main(int argc, char* argv[])
 	//  get gui .layout files  [Setup]  //par
 	///-----------------------------------------------------------------------------
 	cout << "Listing source dirs" << endl;
-	string pLay = path + "Media/gui/";
+	string pLay = path + "data/gui/";
 	
 	vecstr lay, lay_n;
 	const vecstr lays = // todo list dir, auto
@@ -389,7 +389,7 @@ int main(int argc, char* argv[])
 	//  sources dirs to search (where transl uses are)
 	//-----------------------------------------------------------------------------
 	const string srcDir = "src/";
-	const string layDir = "Media/gui/";
+	const string layDir = "data/gui/";
 	const string pSrc = path + srcDir;
 	vecstr dir;
 	dir.push_back("game");

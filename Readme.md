@@ -1,4 +1,4 @@
-![](/Media/hud/stuntrally-logo.jpg)
+![](/data/hud/stuntrally-logo.jpg)
 
 [![Translation status](https://hosted.weblate.org/widget/stunt-rally-3/stunt-rally-3/svg-badge.svg)](https://hosted.weblate.org/engage/stunt-rally-3/)
 ![Last commit date](https://flat.badgen.net/github/last-commit/stuntrally/stuntrally3)
@@ -87,6 +87,6 @@ Sources have emojis, [this file](/src/emojis.txt) has all, with quick components
     - OgreCommon (modified slightly)
     - in src/vdrift/: half.hpp, quickprof.h, Buoyancy.h, unittest.h
     
-	For Media (art, data) licenses, see various _*.txt files in Media/ subdirs.
+	For Media (art, data) licenses, see various _*.txt files in data/ subdirs.
 
 ------------------------------------------------------------------------------

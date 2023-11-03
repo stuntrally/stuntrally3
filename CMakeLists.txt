@@ -154,9 +154,9 @@ message( STATUS "---------- SR sources" )
 #  Compiler  ----
 set( COMMON_SRC_DIRS
 	#  not really sources
-	Media/gui
-	Media/materials
-	Media/particles
+	data/gui
+	data/materials
+	data/particles
 
 	#  libs
 	./src/btOgre2

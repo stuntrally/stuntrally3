@@ -75,13 +75,13 @@ There is no shader graph editor, everything is in big text files.
 It is very complex and extensive, it covers plenty of conditions for shader variations (in .any files).  
 We have own shaders for:
 - **Terra** for terrain, with layers, triplanar, based on PBS.  
-Main files in `Media/Hlms/Terra/Any`.
+Main files in `data/Hlms/Terra/Any`.
 - **PBS**, regular shaders for all materials (objects, road,  cars, vegetation etc).  
-Main files in `Media/Hlms/Pbs/Any/Main`.  
+Main files in `data/Hlms/Pbs/Any/Main`.  
 I'm writing **water**/fluids also inside PBS, don't want to split.
 - Unlit (no lighting). We should only use this for **Gui**.  
 **Particles** must be at least: colored by sun diffuse, darker by shadows, also by terrain.  
-Small files in `Media/Hlms/Unlit/Any`.
+Small files in `data/Hlms/Unlit/Any`.
 
 Shader code in `.any` files are preferred, universal and these get translated to `.glsl` or `.hlsl` at end.
 
@@ -140,7 +140,7 @@ Datablock is basically what has all material parameters.
 Editing files by hand is one way, the better is using **Material Editor** (Alt-F) GUI,  
 saving and then applying / merging changes back to original files.  
 
-Main `.material` and `.material.json` **files** are in `/Media/materials/Pbs`.  
+Main `.material` and `.material.json` **files** are in `/data/materials/Pbs`.  
 Materials can be adjusted real-time in Material Editor (Alt-F): or in Options, button on tab **Tweak**. find material and use sliders etc.  
 _ToDo:_ this is the main tool, needs saving _all_ as `.material.json` files.  
 
@@ -166,8 +166,8 @@ Otherwise, means a static file in `config/` dir, manually edited.
 
 Vehicles config
 - config/cars.xml - (❔) - list for Vehicles tab with manually set parameters
-- Media/cars/cameras.xml - (❔) - all follow camera views for game
-- Media/carsim/[mode]/* -  
+- data/cars/cameras.xml - (❔) - all follow camera views for game
+- data/carsim/[mode]/* -  
 *.car - vehicle file (can edit directly in game Alt-Z),  
 *_stats.xml - vehicle performance test results (after Ctrl-F5)  
 .tire coeffs, suspension
@@ -248,7 +248,7 @@ Only used for **fog** and its params.
 It can render sky atmosphere with sun (and no clouds). We don't use this. We could someday have dynamic sky shaders this way.  
 Modified to not change light after its update. And added more params for shaders, fog etc.  
 
-Our fog shader code is in: `Media/Hlms/Pbs/Any/Fog_piece_ps.any`  
+Our fog shader code is in: `data/Hlms/Pbs/Any/Fog_piece_ps.any`  
 and is used in Pbs and Terra `.any` there `@insertpiece( applyFog )`.
 
 
@@ -300,7 +300,7 @@ _ToDo:_ For far future. Not a problem, but since we have many, [how to do multip
 
 Used for water/fluids.  
 Modified to have more control and detail options for its camera.  
-Shader code in `Samples/Media/Hlms/Pbs/Any/PlanarReflections_piece_ps.any`, mainly:  
+Shader code in `Samples/data/Hlms/Pbs/Any/PlanarReflections_piece_ps.any`, mainly:  
 `planarReflUVs`, normal is in `pixelData.normal`, and distortion is added to `pointInPlane` from normal.  
 More info in [post](https://forums.ogre3d.org/viewtopic.php?p=554536#p554536).
 
@@ -311,10 +311,10 @@ These are using Ogre-Next base components but extend them to our specific render
 ### HlmsPbs2
 
 Main **shaders** for all materials (except terrain and particles) here:  
-`Media/Hlms/Pbs/Any/Main/800.PixelShader_piece_ps.any`  (modified)  
-`Media/Hlms/Pbs/Any/Main/800.VertexShader_piece_vs.any`  (not yet)  
+`data/Hlms/Pbs/Any/Main/800.PixelShader_piece_ps.any`  (modified)  
+`data/Hlms/Pbs/Any/Main/800.VertexShader_piece_vs.any`  (not yet)  
 structures with variables passed to them are in:  
-`Media/Hlms/Pbs/Any/Main/500.Structs_piece_vs_piece_ps.any`  
+`data/Hlms/Pbs/Any/Main/500.Structs_piece_vs_piece_ps.any`  
 
 Keep in mind [post](https://forums.ogre3d.org/viewtopic.php?p=554100&sid=6798838bbed3be6881aa07bf10012412#p554100),
 in .any this does not comment: // @property( hlms_fog )  
@@ -461,7 +461,7 @@ Easiest to add new in `struct AtmoSettingsGpu` also `struct AtmoSettings` and th
 
 _ToDo:_ [topic](https://forums.ogre3d.org/viewtopic.php?p=535357#p535357) done through HlmsListener using `getPassBufferSize` and `preparePassBuffer`.
 
-This shader file `Media/Hlms/Pbs/Any/Main/500.Structs_piece_vs_piece_ps.any` has definitions for:
+This shader file `data/Hlms/Pbs/Any/Main/500.Structs_piece_vs_piece_ps.any` has definitions for:
 - `MaterialStructDecl`
 - `CONST_BUFFER_STRUCT_BEGIN( PassBuffer` - uniforms that change per pass
 - `@piece( VStoPS_block )`

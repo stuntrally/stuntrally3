@@ -275,9 +275,9 @@ This will also show racing line (trail) and few more pacenotes (bumps etc).
      Drive 1 lap from start to finish, not using boost unless impossible otherwise (or some underwater).
   5. Copy user's ghost (named by your track and `_ES.rpl`) from:  
      `~/.local/share/stuntrally3/ghosts/normal/` into:
-     `/Media/ghosts/original`.
+     `/data/ghosts/original`.
   6. Start convert tool, run: `./stuntrally3 convert`
-  7. This will result in new file in `/Media/ghosts` and be visible in game now.
+  7. This will result in new file in `/data/ghosts` and be visible in game now.
   8. After this, better track time will be known.  
      Adjust last value `T=` in `tracks.ini` so that it gives about 12 points for this ES ghost drive.  
      Add extra seconds 2..7 for difficult tracks for user rewinds and mistakes.

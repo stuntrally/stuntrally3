@@ -24,11 +24,12 @@ Dependencies/*
 #gui
 tracks*
 #cars
-#Media/road/
-Media/ghosts/original/
-#objects
+#data/road/
+data/ghosts/original/
+#objects*
 #terrain
-#Media
+#data
+sr.log
 
 .DS_Store
 iOSDependencies

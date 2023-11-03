@@ -79,7 +79,7 @@ Financial support is possible through [CryHam's page](https://cryham.tuxfamily.o
 
 > Also new data like tracks, objects, textures, sounds etc. aren't done like this.  Just uploaded as attachments on Forum.
 
-This page describes the procedure to get your code (fixes, patches, new features, media etc.) included into Stunt Rally.  
+This page describes the procedure to get your code (fixes, patches, new features, data etc.) included into Stunt Rally.  
   This assumes you have already cloned our code and done something with it and now are ready to share your stuff.  
 
 If you don't know what to do, but want to help, check out the repo page [Contributing](Contributing.md),  

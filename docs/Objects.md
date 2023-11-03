@@ -46,7 +46,7 @@ This section walks you through the steps to create new static object and add it 
 _Warning_: The learning curve for Blender is quite steep, you need to invest a serious amount of time to learn and use it efficiently.  
 Fortunately there are plenty of tutorials, videos, websites and books to pick up the skills. 
 
-Currently static and dynamic objects are stored in the `/Media/objects` and similar folders.  
+Currently static and dynamic objects are stored in the `/data/objects` and similar folders.  
 It contains Ogre mesh files (binary), surface images (textures) and .bullet files for dynamic objects.
 
 ![](images/img20121230_1.png)

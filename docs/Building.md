@@ -1,9 +1,11 @@
+## About
 
-On Windows CMake will fail, due to other paths (try `Dependencies/Ogre` maybe).
+This page describes how to build Stunt Rally 3 on **Linux** (Debian-based), using Conan.  
+How to build on Windows is on other [page](BuildingVS.md).
 
-Only tested on GNU/Linux, Debian 11. It should work on Debian-based.  
+Tested on GNU/Linux, Debian 11 and 12. It should work on Debian-based (like Ubuntu etc).  
 _First steps here are same as in my [ogre3ter-demo](https://github.com/cryham/ogre3ter-demo/) it could be easier to build that for start._  
-Guide below has setup steps for empty Debian 11:  
+Guide below has setup steps for empty Debian 12:  
 
 ## 1. Basic
 
@@ -112,11 +114,11 @@ pip install conan
 
 ## 6. Clone SR3
 
-Clone SR3 (this repo) and [SR3 tracks](https://github.com/stuntrally/tracks3) inside `Media/tracks`:  
+Clone SR3 (this repo) and [SR3 tracks](https://github.com/stuntrally/tracks3) inside `data/tracks`:  
 ```
 cd dev/
 git clone https://github.com/stuntrally/stuntrally3.git sr3
-cd sr3/Media
+cd sr3/data
 
 git clone https://github.com/stuntrally/tracks3.git tracks
 cd ..
@@ -174,7 +176,7 @@ dev - root folder
          Debug
          Release - has stuntrally3, sr3-editor, plugins.cfg, resources2.cfg
          RelWithDebInfo
-      Media
+      data
          tracks - has Test1-Flat, Test3-Bumps - cloned tracks3 repo (or old tracks)
    mygui-next
       build/Release/lib - has libMyGUI.Ogre2Platform.a, libMyGUIEngine.so.3.2.3
