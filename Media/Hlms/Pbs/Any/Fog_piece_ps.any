@@ -1,7 +1,13 @@
 
 @piece( applyFog )
     @property( hlms_fog && !sky )
-    //property( hlms_fog )  // todo: inside hfog on sky and underwater
+    //property( hlms_fog )  // todo: inside hfog and underwater, on sky too
+
+    	@property( transparent_mode )
+		    const float tr = pixelData.diffuse.w * 1.05; //par todo: not perfect..  //F0.w;
+        @else
+            const float tr = _h(1.0);
+        @end
 
         const float distToCameraH = length( inPs.pos.xyz );
     	//const float camPosH =  passBuf.view[3][1];
@@ -10,7 +16,7 @@
         midf heightWeight = midf_c( exp2( -distToCameraH * atmo.fogHparams.z ) );
         const midf heightMul = saturate( ( inPs.worldH - atmo.fogHparams.x ) * atmo.fogHparams.y );  // amount H
         const midf3 fogHclr = lerp( lerp( finalColour.xyz,
-                                        atmo.fogHcolor.xyz,  atmo.fogHcolor.w),
+                                        atmo.fogHcolor.xyz *tr,  atmo.fogHcolor.w),
                                     finalColour.xyz,  heightWeight );
         finalColour.xyz = lerp( fogHclr, finalColour.xyz, heightMul );
         // todo: lerp finalColour less?
@@ -44,23 +50,22 @@
                                 atmo.fogColourAway,  fogDir );
 
         finalColour.xyz = lerp(
-                            lerp( finalColour.xyz, inPs.fog.xyz,  fogColour.w),  // transparency
+                            lerp( finalColour.xyz, inPs.fog.xyz *tr,  fogColour.w),  // transparency
                             finalColour.xyz,  fogWeight );  // atmo orig
 
         finalColour.xyz =
             //camPosW * 10.0 + 0.001 *  // test
-            lerp( lerp( finalColour.xyz, fogColour.xyz, fogColour.w ),  // transparency
+            lerp( lerp( finalColour.xyz, fogColour.xyz *tr, fogColour.w ),  // transparency
                   finalColour.xyz,  fogWeight );
 
-        // ~~  Fluid fog
+        // ~~  Fluid fog inside
         midf fluidDist = midf_c( exp2( -distToCameraH * atmo.fogFluidH.y ) );
         fluidDist = saturate( fluidDist - 0.3 );  // minimum par, depth h?
         float fluidHeight = saturate(( inPs.worldH - atmo.fogFluidH.x/*h*/) * atmo.fogFluidH.z);
 
         finalColour.xyz = lerp(
-                            lerp ( atmo.fogFluidClr.xyz, finalColour.xyz,  fluidDist ),
-                            finalColour.xyz,
-                            fluidHeight );  // fluid
+                            lerp ( atmo.fogFluidClr.xyz *tr, finalColour.xyz,  fluidDist ),
+                            finalColour.xyz,  fluidHeight );  // fluid
     @end
 @end
 
