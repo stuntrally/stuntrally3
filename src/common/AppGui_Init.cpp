@@ -175,5 +175,6 @@ void AppGui::LoadSettings()
 		pSet->Load(setFile);  // Load
 	}
 
-	LogO(PATHS::info.str());  // log info
+	cout << PATHS::info.str();
+	// LogO(PATHS::info.str());  // no log yet
 }

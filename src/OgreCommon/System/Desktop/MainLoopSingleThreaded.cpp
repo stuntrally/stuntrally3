@@ -26,6 +26,7 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 #include "pch.h"
+#include "App.h"
 #include <iostream>
 
 #include "System/MainEntryPoints.h"
@@ -39,13 +40,14 @@ THE SOFTWARE.
 #include <OgrePrerequisites.h>
 #include <OgreWindow.h>
 #include <OgreTimer.h>
+#include <memory>
 
 #include "Threading/OgreThreads.h"
 
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-INT WINAPI MainEntryPoints::mainAppSingleThreaded( HINSTANCE hInst, HINSTANCE hPrevInstance,
-														 LPSTR strCmdLine, INT nCmdShow )
+INT WINAPI MainEntryPoints::mainAppSingleThreaded(
+	HINSTANCE hInst, HINSTANCE hPrevInstance, LPSTR strCmdLine, INT nCmdShow )
 #else
 int MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 #endif
@@ -76,8 +78,16 @@ int MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 	if (args.Help())
 		return 0;
 
-	MainEntryPoints::createSystems( &graphicsGameState, &graphicsSystem,
-									&logicGameState, &logicSystem );
+	std::cout << "Init :: new App\n";
+	std::unique_ptr<App> app = std::make_unique<App>();
+	
+	std::cout << "Init :: LoadSettings\n";
+	app->LoadSettings();
+	
+	std::cout << "Init :: createSystems\n";
+	MainEntryPoints::createSystems( app.get(),
+		&graphicsGameState, &graphicsSystem,
+		&logicGameState, &logicSystem );
 
 	try
 	{

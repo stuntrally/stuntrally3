@@ -11,6 +11,7 @@
 class GameState;
 class GraphicsSystem;
 class LogicSystem;
+class App;
 
 
 /** Most of our demos use the same basic setup for game loop. If you want to understand
@@ -85,6 +86,7 @@ struct Args
 	bool Help();  void Common(bool ed);
 };
 
+
 class MainEntryPoints
 {
 public:
@@ -103,7 +105,8 @@ public:
 		Pointer to newly allocated LogicSystem. Can be null.
 		If null, outLogicGameState must be null too
 	*/
-	static void createSystems( GameState **outGraphicsGameState, GraphicsSystem **outGraphicsSystem,
+	static void createSystems( App *app,
+								GameState **outGraphicsGameState, GraphicsSystem **outGraphicsSystem,
 								GameState **outLogicGameState, LogicSystem **outLogicSystem );
 
 	/// Destroys the systems created via createSystems. Implementation should check for null pointers.

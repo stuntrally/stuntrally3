@@ -26,6 +26,7 @@ THE SOFTWARE.
 -----------------------------------------------------------------------------
 */
 #include "pch.h"
+#include "App.h"
 #include <OgrePrerequisites.h>
 #include <iostream>
 
@@ -102,8 +103,16 @@ int MainEntryPoints::mainAppMultiThreaded( int argc, const char *argv[] )
 	if (args.Help())
 		return 0;
 
-	MainEntryPoints::createSystems( &graphicsGameState, &graphicsSystem,
-									&logicGameState, &logicSystem );
+	std::cout << "Init :: new App\n";
+	std::unique_ptr<App> app = std::make_unique<App>();
+	
+	std::cout << "Init :: LoadSettings\n";
+	app->LoadSettings();
+	
+	std::cout << "Init :: createSystems\n";
+	MainEntryPoints::createSystems( app.get(),
+		&graphicsGameState, &graphicsSystem,
+		&logicGameState, &logicSystem );
 
 	GameEntityManager gameEntityManager( graphicsSystem, logicSystem );
 

@@ -542,8 +542,9 @@ int UnitTest::runLoop( Ogre::String outputFolder )
 	GameState *logicGameState = 0;
 	LogicSystem *logicSystem = 0;
 
-	MainEntryPoints::createSystems( &graphicsGameState, &graphicsSystem, &logicGameState,
-									&logicSystem );
+	MainEntryPoints::createSystems( 0,
+		&graphicsGameState, &graphicsSystem,
+		&logicGameState, &logicSystem );
 
 	try
 	{

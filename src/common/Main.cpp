@@ -174,14 +174,12 @@ public:
 //  🌟 main App ctor
 //-----------------------------------------------------------------------------
 void MainEntryPoints::createSystems(
+		App *app,
 		GameState **outGraphicsGameState,
 		GraphicsSystem **outGraphicsSystem,
 		GameState **outLogicGameState,
 		LogicSystem **outLogicSystem)
 {
-	std::cout << "Init :: createSystems\n";
-	App *app = new App();
-
 	std::cout << "Init :: pathmanager\n";
 	PATHS::Init();
 	std::cout << PATHS::info.str();
@@ -192,7 +190,7 @@ void MainEntryPoints::createSystems(
 		app,
 		PATHS::UserConfigDir()+"/",
 		PATHS::CacheDir()+"/",
-		String("./"),
+		String("./"),  // todo: ? check run from other dir than exe
 		// PATHS::GameConfigDir()+"/",  // todo: config/resources2.cfg
 		String("./") );
 
