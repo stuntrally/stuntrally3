@@ -15,8 +15,8 @@ Git [repo](https://github.com/stuntrally/stuntrally3) and [tracks](https://githu
 ### 3.0
 
 - Water, fluids  
-  tweak par, fix, **refract, depth** for color, border alpha, fix reflect in `ed F7 cam prv`
-- Fog, 2 colors cam dir fix, `fix bright pipes`  
+  tweak par, **refract, depth** for color, border alpha
+- Fog, 2 colors cam dir fix-
 - Terrain  
   **shadowmap** fix < 0, save/load-  
   add emissive, reflect par, fix triplanar normalmaps-  
@@ -32,6 +32,7 @@ Git [repo](https://github.com/stuntrally/stuntrally3) and [tracks](https://githu
 - **Editor**, fix  
   `save` Hmaps before lay upd  
   **rtt** upd skip fix, or create on save  
+  water **reflect** in `F7 cam prv`  
   terrains move, ray, pos edit  
   objs pick errors  
   _tools_: fix scale ter h, copy horizon, which ter, road  

@@ -36,8 +36,10 @@ Progress posts in [SR forum topic](https://forum.freegamedev.net/viewtopic.php?f
 
 ## Building
 
-How to compile project from sources is described in [Building](docs/Building.md).  
-Requires building Ogre-Next and MyGui fork from sources first.
+How to compile project from sources:  
+- On **Linux**  is described in [Building](docs/Building.md).  
+  Requires building Ogre-Next and MyGui fork from sources first.  
+- On **Windows** in [BuildingVS](docs/BuildingVS.md), building all dependecies from sources first.
 
 ------------------------------------------------------------------------------
 
@@ -45,11 +47,12 @@ Requires building Ogre-Next and MyGui fork from sources first.
 
 Help and contributing is welcome.  
 If you'd like to contribute, please check [Contributing](docs/Contributing.md).  
-You can help with [translating](docs/Localization.md), testing, adding or improving content, fixing, developing code etc.
+You can help with:
+- [translating](docs/Localization.md), testing, adding or improving content, fixing, developing code etc.
 
 ## Developing
 
-General info with some details is in [Developing](docs/Developing.md).  
+General info with some details for SR3, its sources and using Ogre-Next is in [Developing](docs/Developing.md).  
 Sources have emojis, [this file](/src/emojis.txt) has all, with quick components guide etc.
 
 ------------------------------------------------------------------------------

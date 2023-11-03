@@ -1,16 +1,18 @@
 _Info on how to add new textures and materials for terrain, road, grass, objects, vehicles etc._
 
+## Basic
+
 ### Introduction ###
 
-This page is for ver 2.3 and above it explains what to do when adding new content.  
-I.e. where to put your new data and which files need to be edited so it can appear and look good.
+This page explains what to do when adding new content.  
+I.e. where to put your new data and which files need to be edited so it can appear and look good in SR3.
 
-Since ver 2.3 editor uses config/presets.xml. Nothing new will appear in editor unless you add a line for it in that file.  
-It is quite simple, just copy a similar line and add it (keep it alphabetically sorted). Change the 3rd param to your resource name.
+The file [presets.xml](../config/presets.xml) is used by editor and game. It is edited manually.  
+Nothing new will appear in editor's pick lists, unless you add a line for it in that file.  
+It is quite simple, just copy a similar line and add it (keep it alphabetically sorted and space aligned). Change the 3rd param to your resource name.
 
 See comments inside presets.xml for (short) info on each param.  
 Later you can setup values for parameters, e.g. layer scaling or model size etc. that are set (by default) when picking (less manual setup needed).  
-Note, for release make sure that data dirs ending with _s have the new textures resized for small size.
 
 
 ### Skies ###

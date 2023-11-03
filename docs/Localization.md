@@ -85,7 +85,7 @@ e.g. inside locale/
 ```
 xml_po_parser.py de.po core_language_de_tag.xml
 ```
-Move the xml into data/gui. Start game or editor and test.
+Move the xml into data/gui/. Start game or editor and test.
 
   
 ----
@@ -98,12 +98,12 @@ Synchronizing / updating repo translations in Github after changes in weblate.
 This needs 2 steps:
 - First is automatic, Weblate pushes after up to 1 hour, its modified `.po` files, directly to our Git repo.  
 - Second is manual, needs starting **[2upd-xml.sh](../locale/2upd-xml.sh)** (or just `xml_po_all.py`) inside `locale/`  
-  To convert `.po` to `*_tag.xml` files for MyGui in [Media/gui](../Media/gui/). And pushing to Git.  
+  To convert `.po` to `*_tag.xml` files for MyGui in [data/gui](../data/gui/). And pushing to Git.  
 
 
 ### Technical Details
 
-All original English strings in Stunt Rally 3 are in the [*_en_tag.xml file](../Media/gui/core_language_en_tag.xml),  
+All original English strings in Stunt Rally 3 are in the [*_en_tag.xml file](../data/gui/core_language_en_tag.xml),  
 used by MyGUI's own translation system.  
 
 > This file is edited and sorted manually. Each new string for Gui or Hud is added there.  
