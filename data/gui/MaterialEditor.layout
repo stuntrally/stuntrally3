@@ -28,8 +28,6 @@
 			<Property key="Colour" value="0.8 0.9 1"/>
 			<Property key="Colour" value="0.5 0.7 0.9"/>
 			<Property key="Alpha" value="0.6"/>
-			<Property key="Static" value="true"/>
-			<Property key="ReadOnly" value="true"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 
@@ -212,7 +210,7 @@
 						<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
 					</Widget>
 					<Widget type="Slider" skin="Slider" position="200 260 350 15" name="ClearCoat">
-						<Property key="TextColour" value="0.8 0.8 0.8"/>
+						<Property key="Colour" value="0.8 0.8 0.8"/>
 						<UserString key="tip" value="#{ColClearCoat} - #{TipChangeReflect}"/>
 					</Widget>
 					<Widget type="EditBox" skin="EditBox" position="120 260 75 20" name="ClearCoatVal">
@@ -227,7 +225,7 @@
 						<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
 					</Widget>
 					<Widget type="Slider" skin="Slider" position="200 280 350 15" name="ClearRough">
-						<Property key="TextColour" value="0.7 0.7 0.7"/>
+						<Property key="Colour" value="0.7 0.7 0.7"/>
 						<UserString key="tip" value="#{ColClearCoat} - #{ColRoughness}"/>
 					</Widget>
 					<Widget type="EditBox" skin="EditBox" position="120 280 75 20" name="ClearRoughEdit">
@@ -241,7 +239,7 @@
 						<Property key="Caption" value="#{NormalsScale}"/>
 					</Widget>
 					<Widget type="Slider" skin="Slider" position="200 310 350 15" name="BumpScale">
-						<Property key="TextColour" value="0.9 0.9 0.4"/>
+						<Property key="Colour" value="0.9 0.9 0.4"/>
 					</Widget>
 					<Widget type="EditBox" skin="EditBox" position="120 310 75 20" name="BumpScaleEdit">
 						<Property key="TextColour" value="1.0 1.0 0.4"/>
@@ -253,7 +251,7 @@
 						<Property key="Caption" value="#{Transparency}"/>
 					</Widget>
 					<Widget type="Slider" skin="Slider" position="200 340 350 15" name="Transp">
-						<Property key="TextColour" value="0.7 0.8 0.8"/>
+						<Property key="Colour" value="0.7 0.8 0.8"/>
 					</Widget>
 					<Widget type="EditBox" skin="EditBox" position="120 340 75 20" name="TranspEdit">
 						<Property key="TextColour" value="0.7 0.8 0.8"/>

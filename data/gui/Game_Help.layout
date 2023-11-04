@@ -32,16 +32,7 @@
 					<Property key="Alpha" value="0.6"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="32 16 600 60">
-					<Property key="ReadOnly" value="true"/>
-					<Property key="MultiLine" value="true"/>
-					<Property key="WordWrap" value="true"/>
-					<Property key="VisibleHScroll" value="false"/>
-					<Property key="VisibleVScroll" value="true"/>
-					<Property key="MaxTextLength" value="8000"/>
-					<Property key="TextColour" value="0.94 0.86 1.0"/>
-					<Property key="Colour" value="0.66 0.5 0.8"/>
-				</Widget>
+
 				<Widget type="TextBox" skin="TextBox" position="32 30 300 28">
 					<Property key="Caption" value="#{LinksToWeb}"/>
 					<Property key="TextAlign" value="Left"/>

@@ -842,11 +842,6 @@
 							<Property key="Caption" value="#{MouseCapture}"/>
 						</Widget>
 
-						<Widget type="Button" skin="CheckBox" position="32 322 512 24" name="AllowSave">
-							<Property key="TextColour" value="0.65 0.5 0.5"/>
-							<Property key="Caption" value="#{AllowSaveOrigTrk}"/>
-						</Widget>
-
 						<!-- hlms -->
 						<Widget type="Button" skin="CheckBox" position="376 62 256 24" name="CacheHlms">
 							<Property key="TextColour" value="0.7 0.7 0.9"/>
@@ -862,7 +857,7 @@
 						<Property key="Caption" value="#7060B0#{Tweak}"/>
 	
 						<!-- fps -->
-						<Widget type="ImageBox" skin="ImageBox" position="32 58 30 30">
+						<Widget type="ImageBox" skin="ImageBox" position="32 54 30 30">
 							<Property key="ImageCoord" value="128 896 128 128"/>
 							<Property key="Alpha" value="0.6"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
@@ -896,12 +891,12 @@
 						</Widget>
 
 						<!-- wireframe -->
-						<Widget type="ImageBox" skin="ImageBox" position="32 106 30 30">
+						<Widget type="ImageBox" skin="ImageBox" position="32 116 30 30">
 							<Property key="ImageCoord" value="640 256 128 128"/>
 							<Property key="Alpha" value="0.4"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="66 114 356 24" name="Wireframe">
+						<Widget type="Button" skin="CheckBox" position="66 124 356 24" name="Wireframe">
 							<Property key="TextColour" value="0.7 0.8 0.9"/>
 							<Property key="Caption" value="#{Wireframe}  F10"/>
 						</Widget>
@@ -930,11 +925,16 @@
 					<Widget type="TabItem" skin="" position="2 24 738 472">
 						<Property key="Caption" value="#B080A0#{Advanced}"/>
 
-						<Widget type="Button" skin="Button" position="376 304 300 28" name="MatEditor">
+						<Widget type="Button" skin="CheckBox" position="32 124 512 24" name="AllowSave">
+							<Property key="TextColour" value="0.65 0.5 0.5"/>
+							<Property key="Caption" value="#{AllowSaveOrigTrk}"/>
+						</Widget>
+
+						<Widget type="Button" skin="Button" position="376 124 300 32" name="MatEditor">
 							<Property key="Caption" value="#{MaterialEditor}"/>
 							<Property key="TextAlign" value="Center"/>
-							<Property key="TextColour" value="0.9 0.7 0.9"/>
-							<Property key="Colour" value="0.9 0.7 0.9"/>
+							<Property key="TextColour" value="0.5 1.0 1.0"/>
+							<Property key="Colour" value="0.2 1.0 1.0"/>
 						</Widget>
 	
 						<Widget type="TextBox" skin="TextBox" position="376 374 252 24">
