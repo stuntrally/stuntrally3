@@ -400,8 +400,7 @@ void App::UpdateTrack()
 }
 void App::UpdateTrackEv()
 {
-	// if (!bNewHmap)
-	// 	scn->copyTerHmap();
+	SaveHmaps();  // save
 
 	NewCommon(true);  // destroy only terrain and veget
 	
@@ -431,8 +430,7 @@ void App::UpdateTrackEv()
 //  Update btns  ---
 void CGui::btnUpdateLayers(WP)
 {
-	// if (!app->bNewHmap)
-	// 	app->scn->copyTerHmap();
+	app->SaveHmaps();  // save
 	scn->DestroyTerrains();
 	scn->CreateTerrains(1);  // 🏔️
 	scn->road->scn = scn;
@@ -481,7 +479,31 @@ void App::SaveTrackEv()
 	gui->CreateDir(dir);
 	gui->CreateDir(dir+"/objects");
 
-	//  all terrains, save Hmap
+	SaveHmaps();
+
+	int i = 0;  // all roads
+	for (auto r : scn->roads)
+	{
+		auto si = i==0 ? "" : toStr(i+1);  ++i;
+		r->SaveFile(dir + "road" +si+ ".xml");
+	}
+
+	scn->sc->SaveXml(dir + "scene.xml");
+
+	SaveGrassDens();
+	// SaveWaterDepth();  //-
+
+	DelNewHmaps();
+
+	gui->Status("#{Saved}", 1,0.6,0.2);
+}
+
+//  all terrains, save Hmap
+void App::SaveHmaps()
+{
+	// if (!bNewHmap)  // old SR way, fixme?
+	// 	scn->copyTerHmap();
+
 	int i = 0;
 	for (auto ter : scn->ters)
 	if (ter)  //-
@@ -497,22 +519,6 @@ void App::SaveTrackEv()
 		of.write((const char*)&td.hfHeight[0], fsize);
 		of.close();  ++i;
 	}
-
-	i = 0;  // all roads
-	for (auto r : scn->roads)
-	{
-		auto si = i==0 ? "" : toStr(i+1);  ++i;
-		r->SaveFile(dir + "road" +si+ ".xml");
-	}
-
-	scn->sc->SaveXml(dir + "scene.xml");
-
-	SaveGrassDens();
-	// SaveWaterDepth();  //-
-
-	DelNewHmaps();
-
-	gui->Status("#{Saved}", 1,0.6,0.2);
 }
 
 void App::DelNewHmaps()

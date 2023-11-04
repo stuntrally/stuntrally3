@@ -59,7 +59,8 @@ public:
 	void keyPressObjects(SDL_Scancode skey);
 
 	//  ⏳ Loading
-	void LoadTrackEv(), SaveTrackEv(), UpdateTrackEv(), DelNewHmaps();
+	void LoadTrackEv(), SaveTrackEv(), UpdateTrackEv();
+	void SaveHmaps(), DelNewHmaps();
 	enum TrkEvent {  TE_None=0, TE_Load, TE_Save, TE_Update  }
 	eTrkEvent = TE_None;
 	int iUpdEvent = 0;

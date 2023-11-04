@@ -500,7 +500,6 @@ void CGui::chkTerLayOn(Ck* ck)
 	td().UpdLayers();
 	updUsedTer();
 
-	// todo! save hmap if changed
 	app->UpdateTrack();
 
 	SldUpd_TerLNvis();

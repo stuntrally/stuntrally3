@@ -172,17 +172,19 @@ void CGui::btnCopyRoadPars(WP)
 
 ///  tools 	. . . . . . . . . . . . . . . . . . . .	. . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
+//  deletes all roads points, leaves setups
 void CGui::btnDeleteRoad(WP)
 {
 	//scn->DestroyRoads();
 	//scn->road = new
 
-	int l = scn->road->getNumPoints();
-	for (int i=0; i < l; ++i)
-	{
-		scn->road->iChosen = scn->road->getNumPoints()-1;
-		scn->road->Delete();
-	}
+	for (auto* rd : scn->roads)
+	{	int l = rd->getNumPoints();
+		for (int i=0; i < l; ++i)
+		{
+			rd->iChosen = rd->getNumPoints()-1;
+			rd->Delete();
+	}	}
 	//scn->road->Rebuild(true);
 }
 void CGui::btnDeleteFluids(WP)
