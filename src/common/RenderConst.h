@@ -37,7 +37,6 @@ const Ogre::uint8
 
 	RQG_BatchAlpha   = RQ_7 +4,  // veget transparent
 	RQG_Fluid        = RQ_7 +5,  // water etc
-	RQG_RoadMarkers  = RQ_7 +6,  // ed
 
 	RQG_PipeGlass    = RQ_GlassV2 +2,   // v2 glass pipe road`
 	RQG_CarGlass     = RQ_GlassV2 +4,   // v2
@@ -48,6 +47,7 @@ const Ogre::uint8
 
 	RQG_Weather      = RQ_GlassV1 +5,   // v1 particles rain etc
 
+	RQG_RoadMarkers  = RQ_OVERLAY,  // ed
 	RQG_Hud1         = RQ_OVERLAY +1,
 	RQG_Hud2         = RQ_OVERLAY +2,
 	RQG_Hud3         = RQ_OVERLAY +3;
