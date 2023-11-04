@@ -276,14 +276,6 @@ void CGui::InitGui()
 
 	sv= &svCamSpeed;	sv->Init("CamSpeed",	&pSet->cam_speed, 0.1f,4.f);  sv->DefaultF(0.9f);
 	sv= &svCamInert;	sv->Init("CamInert",	&pSet->cam_inert, 0.f, 1.f);  sv->DefaultF(0.4f);
-
-	//  startup
-	ck= &ckStartInMain;	ck->Init("StartInMain", &pSet->startInMain);
-	ck= &ckAutoStart;	ck->Init("AutoStart",   &pSet->autostart);
-	ck= &ckEscQuits;	ck->Init("EscQuits",    &pSet->escquit);
- // ck= &ckOgreDialog;	ck->Init("OgreDialog",  &pSet->ogre_dialog);  // todo: read cfg early
- // ck= &ckMouseCapture;ck->Init("MouseCapture",&pSet->mouse_capture);
- // ck= &ckScreenPng;   ck->Init("ScreenPng",   &pSet->screen_png);
 	
 
 	///  🌞 Sun

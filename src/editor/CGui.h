@@ -89,9 +89,6 @@ public:
 
 
 	//  ⚙️ Settings  --------------------
-	Ck ckAutoStart, ckEscQuits;  // startup
-	Ck ckStartInMain, ckOgreDialog, ckMouseCapture, ckScreenPng;
-
 	SlV(SizeMinimap);  SlV(MiniNum);  SlV(SizeRoadP);
 	SV svCamSpeed, svCamInert;
 	SV svTerUpd, svMiniUpd, svRoadUpd;

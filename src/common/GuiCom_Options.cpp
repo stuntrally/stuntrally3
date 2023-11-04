@@ -127,7 +127,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	BtnC("ApplyShadersWater", btnWaterApply);
 
 
-	//  Presets
+	//  📊 Presets
 	CmbC(cmb, "CmbGraphicsPreset", cmbGraphicsPreset);
 	cmb->removeAllItems();
 	cmb->addItem(TR("#{GraphicsAll_Lowest}"));  cmb->addItem(TR("#{GraphicsAll_Low}"));
@@ -191,6 +191,23 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 		//	combo->addItem(rsl[i]->getName());
 	}
 	#endif
+
+	//  ⚙️ Settings  🆕 Startup common 
+	//------------------------------------------------------------
+	// ck= &ckVRmode;  ck->Init("VRmode", &pSet->vr_mode);  // todo: meh
+
+	ck= &ckStartInMain;	ck->Init("StartInMain", &pSet->startInMain);
+	ck= &ckAutoStart;	ck->Init("AutoStart",   &pSet->autostart);
+	ck= &ckEscQuits;	ck->Init("EscQuits",    &pSet->escquit);
+
+	ck= &ckOgreDialog;	ck->Init("OgreDialog",  &pSet->ogre_dialog);
+	ck= &ckMouseCapture;ck->Init("MouseCapture",&pSet->mouse_capture);
+	//  hlms
+	ck= &ckCacheHlms;		ck->Init("CacheHlms",      &pSet->cache_hlms);
+	ck= &ckCacheShaders;	ck->Init("CacheShaders",   &pSet->cache_shaders);
+
+ 	ck= &ckDebugShaders;	ck->Init("DebugShaders",   &pSet->debug_shaders);
+ 	ck= &ckDebugProperties;	ck->Init("DebugProperties",&pSet->debug_properties);
 }
 
 

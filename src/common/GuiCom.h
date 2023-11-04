@@ -220,7 +220,14 @@ public:
 	SlV(CarLightBright);
 
 
-	//  🔗 util
+	//  ⚙️ Settings  --------------------------
+	//  startup common	
+	Ck ckStartInMain, ckAutoStart, ckEscQuits;
+	Ck ckOgreDialog, ckMouseCapture;
+	Ck ckCacheHlms, ckCacheShaders, ckDebugShaders, ckDebugProperties;
+
+
+	//  🔗 util  --------------------------
 	void OpenBrowserUrl(std::string url);
 
 

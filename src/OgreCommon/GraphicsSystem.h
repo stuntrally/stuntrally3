@@ -17,7 +17,7 @@
 namespace Ogre  {  class HlmsTerra;  }
 class SdlInputHandler;
 
-// class App;
+class App;
 class HlmsUnlit2;  // our
 class HlmsPbs2;
 
@@ -28,6 +28,7 @@ private:
 	using BaseSystem::initialize;
 
 protected:
+	App* pApp =0;
 	BaseSystem          *mLogicSystem;
 
 #if OGRE_USE_SDL2
@@ -63,10 +64,13 @@ protected:
 	GameEntityVec const *mThreadGameEntityToUpdate;
 	float               mThreadWeight;
 
-	bool                mQuit;
-	bool                mAlwaysAskForConfig;
-	bool                mUseHlmsDiskCache;
-	bool                mUseMicrocodeCache;
+	bool  mQuit;
+	bool  mAlwaysAskForConfig;
+	//  hlms
+	bool  mUseHlmsDiskCache;
+	bool  mUseMicrocodeCache;
+	bool  mDebugShaders;
+	bool  mDebugProperties;
 
 	Ogre::ColourValue   mBackgroundColour;
 
@@ -110,7 +114,7 @@ protected:
 
 public:
 	//  🌟 ctor  ----
-	GraphicsSystem( GameState *gameState,
+	GraphicsSystem( App* app, GameState *gameState,
 		Ogre::String logCfgPath = Ogre::String(""),
 		Ogre::String cachePath = Ogre::String(""),
 		Ogre::String resourcePath = Ogre::String(""),

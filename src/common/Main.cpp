@@ -132,7 +132,7 @@ class GameGraphicsSystem final : public GraphicsSystem
 			//  Create and register the terra Hlms
 			hlmsTerra = OGRE_NEW HlmsTerra( aTerra, &dirs );
 			hlmsManager->registerHlms( hlmsTerra );
-			hlmsTerra->setDebugOutputPath(false, false, PATHS::ShadersDir()+"/");
+			hlmsTerra->setDebugOutputPath(mDebugShaders, mDebugProperties, PATHS::ShadersDir()+"/");
 		}
 
 		//  Add Terra's piece files that customize the PBS implementation.
@@ -154,12 +154,14 @@ class GameGraphicsSystem final : public GraphicsSystem
 
 public:
 	//  🌟 ctor  ----
-	GameGraphicsSystem( GameState *gameState,
+	GameGraphicsSystem( App* app,
+			GameState *gameState,
 			String logCfgPath = String(""),
 			String cachePath = String(""),
 			String resourcePath = String(""),
 			String pluginsPath = String("./") )
-		: GraphicsSystem( gameState,
+		: GraphicsSystem(
+			app, gameState,
 			logCfgPath,
 			cachePath,
 			resourcePath,
@@ -187,7 +189,7 @@ void MainEntryPoints::createSystems(
 	std::cout << "Init :: new GraphicsSystem\n";
 
 	GameGraphicsSystem *graphicsSystem = new GameGraphicsSystem(
-		app,
+		app, app,
 		PATHS::UserConfigDir()+"/",
 		PATHS::CacheDir()+"/",
 		String("./"),  // todo: ? check run from other dir than exe

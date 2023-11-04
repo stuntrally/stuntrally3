@@ -19,7 +19,10 @@ public:
 
 	//  ⚙️ Startup, other  ----
 	bool autostart =0, escquit =1, startInMain =1;
-	bool ogre_dialog =0, mouse_capture =1; //, screen_png =0;
+	bool ogre_dialog =0, mouse_capture =1;
+	//  hlms
+	bool debug_shaders =0, debug_properties =0;
+	bool cache_hlms =1, cache_shaders =1;
 
 	std::string language;  // "" autodetect
 

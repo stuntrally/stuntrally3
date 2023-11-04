@@ -275,6 +275,8 @@ public:
 	CK(Graphs);
 
 
+	//  🆕 Startup  ----
+	Ck ckBltLines, ckShowPics, ckDevKeys;
 	//  📈 debug, other
 	CK(Wireframe);
 	//  profiler
@@ -335,13 +337,6 @@ public:
 	//  radios
 	Btn bRkmh =0, bRmph =0;  // km/h, mph
 	void radKmh(WP), radMph(WP), radUpd(bool kmh);
-
-
-	//  🆕 Startup  ----
-	Ck ckAutoStart, ckEscQuits;
-	Ck ckStartInMain, ckOgreDialog;
-	Ck ckBltLines, ckShowPics;
-	Ck ckMouseCapture, ckDevKeys, ckScreenPng;
 
 
 	//  Effects  ----

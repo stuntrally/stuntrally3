@@ -1,5 +1,8 @@
 #include "pch.h"
 #include "Def_Str.h"
+#include "App.h"
+#include "settings.h"
+
 #include "GraphicsSystem.h"
 #include "GameState.h"
 #if OGRE_PLATFORM != OGRE_PLATFORM_APPLE_IOS
@@ -57,12 +60,14 @@ using namespace Ogre;
 
 //  🌟 ctor
 //-----------------------------------------------------------------------------------
-GraphicsSystem::GraphicsSystem( GameState *gameState,
+GraphicsSystem::GraphicsSystem(
+		App* app, GameState *gameState,
 		String logCfgPath,
 		String cachePath,
 		String resourcePath,
 		String pluginsPath,
 		ColourValue backgroundColour ) :
+	pApp(app),
 	BaseSystem( gameState ),
 	mLogicSystem( 0 ),
 #if OGRE_USE_SDL2
@@ -87,11 +92,14 @@ GraphicsSystem::GraphicsSystem( GameState *gameState,
 	mThreadWeight( 0 ),
 
 	mQuit( false ),
-	mAlwaysAskForConfig( false ),
-	mUseHlmsDiskCache( true ),
-	mUseMicrocodeCache( true ),
+	mAlwaysAskForConfig( app->pSet->ogre_dialog ),
+	//  hlms cache files, and debug in shaders/
+	mUseHlmsDiskCache( app->pSet->cache_hlms ),
+	mUseMicrocodeCache( app->pSet->cache_shaders ),
+	mDebugShaders( app->pSet->debug_shaders ),  // works in Debug only
+	mDebugProperties( app->pSet->debug_properties ),
 
-	mGrabMouse( false ),  //** par, true in release, from set..
+	mGrabMouse( app->pSet->mouse_capture ),
 	mBackgroundColour( backgroundColour )
 {
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE
@@ -115,7 +123,6 @@ GraphicsSystem::GraphicsSystem( GameState *gameState,
 	const Args& a = MainEntryPoints::args;
 	if (a.has("c") || a.has("cfg"))
 		mAlwaysAskForConfig = true;
-	
 }
 
 //-----------------------------------------------------------------------------------
@@ -655,7 +662,7 @@ void GraphicsSystem::registerHlms()
 		}
 		hlmsUnlit2 = OGRE_NEW HlmsUnlit2( ar, &dirs );
 		Root::getSingleton().getHlmsManager()->registerHlms( hlmsUnlit2 );
-		hlmsUnlit2->setDebugOutputPath(false, false, PATHS::ShadersDir()+"/");
+		hlmsUnlit2->setDebugOutputPath(mDebugShaders, mDebugProperties, PATHS::ShadersDir()+"/");
 	}
 
 	{	//  Create & Register HlmsPbs2  ----
@@ -669,7 +676,7 @@ void GraphicsSystem::registerHlms()
 		}
 		hlmsPbs2 = OGRE_NEW HlmsPbs2( ar, &dirs );
 		Root::getSingleton().getHlmsManager()->registerHlms( hlmsPbs2 );
-		hlmsPbs2->setDebugOutputPath(false, false, PATHS::ShadersDir()+"/");
+		hlmsPbs2->setDebugOutputPath(mDebugShaders, mDebugProperties, PATHS::ShadersDir()+"/");
 	}
 
 
