@@ -21,6 +21,7 @@ of bigger focused contributions:
 
 If you know C++, [Ogre-Next](https://forums.ogre3d.org/viewforum.php?f=25) (2 and up) or shaders,  
 and preferably could handle some of the [Roadmap](Roadmap.md) tasks.  
+Details for tools and sources are in [Developing](Developing.md).  
 Own ideas could also go into SR, just need some discussion first.  
 Most ideas are already in [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php). Sorted by P (priority): 1 is most important, higher are less so.
 

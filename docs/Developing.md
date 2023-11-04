@@ -22,7 +22,7 @@ Recommended all in one tool, having e.g.: go to definition, find references, deb
 Easier to set up first, CMake is integrated. Fast, but less options.
 
 ### [VSCodium](https://github.com/VSCodium/vscodium/releases)
-Used by CryHam, needs more to set up. More info on [my C++ guide](https://cryham.tuxfamily.org/cpp-guide/#VSCodium).  
+Used by CryHam, needs a moment to set up frist. More info on [my C++ guide](https://cryham.tuxfamily.org/cpp-guide/#VSCodium).  
 Search in all files works super fast. Many extensions available.  
 
 Extensions needed at least: 
@@ -85,74 +85,7 @@ Small files in `data/Hlms/Unlit/Any`.
 
 Shader code in `.any` files are preferred, universal and these get translated to `.glsl` or `.hlsl` at end.
 
-----
-## ⚖️ Materials comparison
-
-Almost everything with materials is different now in SR3.  
-In **old** SR with Ogre, we used _shiny_ material generator with its own `.shader` syntax and `.mat` files.  
-Now in SR3 with Ogre-Next we use _HLMS_ and **new** PBS materials.  
-
-### ⭐ Old
-
-Old `.mat` example for new material `ES_glass` inheriting from `car_glass`:  
-```
-material ES_glass
-{
-	parent car_glass
-```
-
-From old `.mat` files main parameters changed are:
-- `ambient` color - **gone**, nothing in new
-- `specular` - power exponent (4th number), use new `roughness` for this
-- `env_map true` - _ToDo:_ reflection is now as `re="1"` in `presets.xml`.
-- `refl_amount` - now fresnel
-- `twoside_diffuse true` - now `two_sided true` - for tree leaves, glass etc
-- `terrain_light_map true` - gone, auto in new
-- `bump_scale 0.5` - now 
-
-### 🌠 New
-
-New `.material` example of new material `ES_glass` **inheriting** from `car_glass`:  
-```
-hlms ES_glass pbs : car_glass
-{
-```
-
-New HLMS `.material` parameters, using [PBS](https://duckduckgo.com/?q=physically+based+shading&t=newext&atb=v321-1&ia=web) - Physically Based Shading:
-- `roughness` 0.001 to 1.0 (replaces old specular power exponent).
-- `metalness` (not to be used in specular_workflow?).
-- `fresnel` is _reflection_ (mirror) amount and
-- `fresnel_coeff` is its color.
-
-We use default `specular_workflow`, metallic workflow is simpler.  
-
-Also texture keywords changed, all are optional:  
-`diffuse_map`, `normal_map`, `specular_map`, `roughness_map`, `emissive_map`.
-
-For terrain layer textures these parames are in `presets.xml` as:  
-`ro - roughness, me - metalness, re - reflection`.
-
-### New continued
-
-All in code `Ogre/ogre-next/Components/Hlms/Pbs/src/OgreHlmsPbsDatablock.cpp`.  
-Datablock is basically what has all material parameters.  
-
-Editing files by hand is one way, the better is using **Material Editor** (Alt-F) GUI,  
-saving and then applying / merging changes back to original files.  
-
-Main `.material` and `.material.json` **files** are in `/data/materials/Pbs`.  
-Materials can be adjusted real-time in Material Editor (Alt-F): or in Options, button on tab **Tweak**. find material and use sliders etc.  
-_ToDo:_ this is the main tool, needs saving _all_ as `.material.json` files.  
-
-We now also use `.material.json` format, longer and more advanced.  
-A bit worse to edit by hand. Can be saved from Material Editor GUI into `.json` files in:  
-`/home/user/.cache/stuntrally3/materials`
-
-In `.material.json` you can't inherit materials (confirmed [here](https://forums.ogre3d.org/viewtopic.php?p=553712#p553712)).  
-Need to duplicate whole e.g. for rivers.  
-Also if present, need to remove secion `"reflection"` with `DynamicCubemap`, will crash otherwise, it is added by code.  
-
-In `.material` scripts you can't set textures to wrap or other sampler configs but inheriting works.  
+Continued in own page for [Materials](Materials.md).
 
 --------
 
