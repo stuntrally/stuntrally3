@@ -1404,29 +1404,20 @@
 					<Property key="TextColour" value="0.6 0.8 0.8"/>
 					<Property key="Caption" value="#{MouseCapture}"/>
 				</Widget>
-
-				<!-- hlms -->
-				<Widget type="Button" skin="CheckBox" position="332 62 256 24" name="CacheHlms">
-					<Property key="TextColour" value="0.7 0.7 0.9"/>
-					<Property key="Caption" value="#{CacheHlms}"/>
-				</Widget>
-				<Widget type="Button" skin="CheckBox" position="332 94 256 24" name="CacheShaders">
-					<Property key="TextColour" value="0.7 0.7 0.7"/>
-					<Property key="Caption" value="#{CacheShaders}"/>
-				</Widget>
-				<Widget type="Button" skin="CheckBox" position="332 126 256 24" name="DebugShaders">
-					<Property key="TextColour" value="0.7 0.7 0.5"/>
-					<Property key="Caption" value="#{DebugShaders}"/>
-				</Widget>
-				<Widget type="Button" skin="CheckBox" position="332 158 256 24" name="DebugProperties">
-					<Property key="TextColour" value="0.6 0.6 0.5"/>
-					<Property key="Caption" value="#{DebugProperties}"/>
-				</Widget>
-
 				<!-- <Widget type="Button" skin="CheckBox" position="362 94 300 24" name="ShowPictures">
 					<Property key="TextColour" value="0.5 0.6 0.7"/>
 					<Property key="Caption" value="#{ShowPictures} *"/>
 				</Widget> -->
+
+				<!-- hlms -->
+				<Widget type="Button" skin="CheckBox" position="376 62 256 24" name="CacheHlms">
+					<Property key="TextColour" value="0.7 0.7 0.9"/>
+					<Property key="Caption" value="#{CacheMaterials}"/>
+				</Widget>
+				<Widget type="Button" skin="CheckBox" position="376 94 256 24" name="CacheShaders">
+					<Property key="TextColour" value="0.7 0.7 0.7"/>
+					<Property key="Caption" value="#{CacheShaders}"/>
+				</Widget>
 			</Widget>
 
 
@@ -1488,11 +1479,16 @@
 							<Property key="Caption" value="#{ProfilerTxt} #707088 shift-F11"/>
 							<Property key="TextColour" value="0.56 0.56 0.75"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="388 254 256 24" name="SoundInfo">
-							<Property key="Caption" value="#{FullSoundsInfo} #506880 alt-F10"/>
-							<Property key="TextColour" value="0.5 0.65 0.8"/>
-						</Widget>
+					</Widget>
 
+					<Widget type="TabItem" skin="" position="2 24 738 472">
+						<Property key="Caption" value="#B080A0#{Advanced}"/>
+
+						<Widget type="ImageBox" skin="ImageBox" position="32 120 40 40">
+							<Property key="ImageCoord" value="640 256 128 128"/>
+							<Property key="Alpha" value="0.6"/>
+							<Property key="ImageTexture" value="gui_icons.png"/>
+						</Widget>
 						<Widget type="Button" skin="CheckBox" position="32 222 256 24" name="BltLines">
 							<Property key="TextColour" value="0.9 0.85 0.5"/>
 							<Property key="Caption" value="#{BulletLines} (#{Startup}) *"/>
@@ -1507,12 +1503,29 @@
 							<Property key="TextColour" value="0.7 0.65 0.5"/>
 						</Widget>
 
-						<Widget type="Button" skin="Button" position="376 324 300 28" name="MatEditor">
+						<Widget type="Button" skin="Button" position="376 304 300 28" name="MatEditor">
 							<Property key="Caption" value="#{MaterialEditor}"/>
 							<Property key="TextAlign" value="Center"/>
-							<Property key="TextColour" value="0.9 0.7 0.9"/>
-							<Property key="Colour" value="0.9 0.7 0.9"/>
+							<Property key="TextColour" value="0.7 1.0 0.9"/>
+							<Property key="Colour" value="0.7 1.0 0.9"/>
 						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="376 374 252 24">
+							<Property key="TextColour" value="0.5 0.58 0.54"/>
+							<Property key="Caption" value="#{Development} ** #{TipDebug}"/>
+							<UserString key="tip" value="#{TipDebug}"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="376 404 256 24" name="DebugShaders">
+							<Property key="TextColour" value="0.4 0.6 0.5"/>
+							<Property key="Caption" value="#{DebugShaders}"/>
+							<UserString key="tip" value="#{TipDebug}"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="376 434 256 24" name="DebugProperties">
+							<Property key="TextColour" value="0.3 0.5 0.4"/>
+							<Property key="Caption" value="#{DebugProperties}"/>
+							<UserString key="tip" value="#{TipDebug}"/>
+						</Widget>
+
 					</Widget>
 
 					<Widget type="TabItem" skin="" position="2 24 738 472">
@@ -1552,6 +1565,11 @@
 							<Property key="ReadOnly" value="true"/>
 							<Property key="Colour" value="0.75 0.7 0.9"/>
 							<Property key="TextColour" value="0.87 0.8 1"/>
+						</Widget>
+
+						<Widget type="Button" skin="CheckBox" position="32 254 256 24" name="SoundInfo">
+							<Property key="Caption" value="#{FullSoundsInfo} #506880 alt-F10"/>
+							<Property key="TextColour" value="0.5 0.65 0.8"/>
 						</Widget>
 
 						<Widget type="ImageBox" skin="ImageBox" position="388 180 40 40">
