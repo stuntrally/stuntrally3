@@ -363,7 +363,7 @@ void CGui::btnWebsite(WP)
 }
 void CGui::btnWiki(WP)
 {
-	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally3/blob/main/docs/Features.md");
+	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md");
 }
 void CGui::btnWikiInput(WP)
 {
