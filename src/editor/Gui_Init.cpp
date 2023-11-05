@@ -612,6 +612,7 @@ void CGui::InitGui()
 	
 
 	///  📃 Fill Combo boxes  . . . . . . .
+	gcom->InitClrTweakMtr();
 	InitGuiLists();
 
 
@@ -644,7 +645,6 @@ void CGui::InitGui()
 
 	
 	//  🔧 Tweak mtr  ---------------------
-	gcom->GetTweakMtr();
 	gcom->InitGuiTweakMtr();
 	gcom->updTweakMtr();
 

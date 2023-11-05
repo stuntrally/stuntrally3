@@ -255,7 +255,14 @@ void App::UpdVisGui()
 	mWndEdit->setVisible(notMain && pSet->inMenu == WND_Edit);
 	mWndHelp->setVisible(notMain && pSet->inMenu == WND_Help);
 	mWndOpts->setVisible(notMain && pSet->inMenu == WND_Options);
-	mWndMaterials->setVisible(notMain && pSet->inMenu == WND_Materials);
+	
+	//  mat editor
+	bool mat = notMain && pSet->inMenu == WND_Materials;
+	static bool mat1st = 1;
+	if (mat && mat1st)
+		gcom->FillTweakMtr();  // on 1st show
+	mWndMaterials->setVisible(mat);
+
 
 	if (!g)  mWndPick->setVisible(false);
 	if (!g)  mWndTrkFilt->setVisible(false);

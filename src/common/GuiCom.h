@@ -241,7 +241,9 @@ public:
 	void InitGuiTweakMtr(), InitClrTweakMtr();
 	void GetTweakMtr(), FillTweakMtr();
 	Li liTweakMtr =0;  void listTweakMtr(Li, size_t);
+	
 	std::vector<std::pair<Ogre::String,Ogre::String>> clrTweakMtr;
+	Ogre::String ClrName(Ogre::String s);
 
 	void slTweakMtr(SV*), updTweakMtr();
 	Ed edMtrFind =0;  void editMtrFind(Ed);

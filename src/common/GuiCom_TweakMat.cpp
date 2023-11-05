@@ -143,10 +143,9 @@ void CGuiCom::InitGuiTweakMtr()
 	BtnC("MtrSave", btnMtrSave);  BtnC("MtrSaveAll", btnMtrSaveAll);
 
 	twk.edInfo = fEd("MtrInfo");
-
+	liTweakMtr = fLi("TweakMtr");  LevC(liTweakMtr, TweakMtr);
+	
 	EdC(edMtrFind, "MtrFind", editMtrFind);
-	InitClrTweakMtr();
-	FillTweakMtr();
 }
 
 //  🔁 update db mat value
@@ -312,6 +311,13 @@ void CGuiCom::updTweakMtr()
 //--------------------------------------------------
 void CGuiCom::FillTweakMtr()
 {
+	//  once list all
+	static bool f1st = 1;
+	if (f1st)
+	{	f1st = 0;
+		GetTweakMtr();
+	}
+
 	liTweakMtr->removeAllItems();
 	liTweakMtr->addItem("");
 
@@ -327,14 +333,7 @@ void CGuiCom::FillTweakMtr()
 
 		if (srch.empty() || s.find(srch) != string::npos)  // find match
 		{
-			String c;
-			for (auto it = clrTweakMtr.begin(); it != clrTweakMtr.end(); ++it)
-			{
-				if (s.find(it->first) != string::npos)
-				{
-					c = it->second;
-					break;
-			}	}
+			String c = ClrName(s);
 			liTweakMtr->addItem(c + m);
 	}	}
 
@@ -343,6 +342,20 @@ void CGuiCom::FillTweakMtr()
 	{
 		liTweakMtr->setIndexSelected(i);  break;
 	}
+}
+
+//  🌈 get clr for name
+String CGuiCom::ClrName(String s)
+{
+	for (auto it = clrTweakMtr.begin(); it != clrTweakMtr.end(); ++it)
+	{
+		if (s.find(it->first) != string::npos)
+		{
+			return it->second;
+			break;
+	}	}
+	String c;
+	return c;
 }
 
 
@@ -374,39 +387,25 @@ void CGuiCom::InitClrTweakMtr()
 void CGuiCom::GetTweakMtr()
 {
 	string sData = PATHS::Data();
-	String path = sData +"/materials/Pbs/";  // path
+	String path = sData +"/materials/Pbs";  // path
 
-	liTweakMtr = fLi("TweakMtr");  LevC(liTweakMtr, TweakMtr);
+	vsMaterials.clear();
 
-	vsMaterials.clear();  // _Tool_  add more if needed
-
-	// vsMaterials.push_back("#0080FF  ~~~~  Car  ~~~~");
-	// GetMaterialsMat(path+"cars.material",0);  //-
-	vsMaterials.push_back("#0080FFbody_realtime");
-	vsMaterials.push_back("#0080FF  ~~~~  Water  ~~~~");
-	GetMaterialsJson(path+"fluids.material.json",0);
-	GetMaterialsMat(path+"water.material",0);
-	vsMaterials.push_back("#FFFF00    ---  o O   Pipe  O o  ---");
-	GetMaterialsMat(path+"pipe.material",0);
-	vsMaterials.push_back("#807010  -----===  Road  ===-----");
-	GetMaterialsJson(path+"road.material.json",0);
-	GetMaterialsMat(path+"road.material",0);
-
-	vsMaterials.push_back("#808080  ----[]  objects static  []----");
-	GetMaterialsMat(path+"objects_static.material",0);
-	vsMaterials.push_back("#808080  ----[]  objects static2  []----");
-	GetMaterialsMat(path+"objects_static2.material",0);
-	vsMaterials.push_back("#808080  ----x  objects dynamic  x----");
-	GetMaterialsMat(path+"objects_dynamic.material",0);
-
-	vsMaterials.push_back("#80FF80  --------Y  trees  Y--------");
-	GetMaterialsMat(path+"trees.material",0);
-	vsMaterials.push_back("#C0F080  --------Y  trees ch  Y--------");
-	GetMaterialsMat(path+"trees_ch.material",0);
-	vsMaterials.push_back("#80C080  --------Y  trees old  Y--------");
-	GetMaterialsMat(path+"trees_old.material",0);
-	vsMaterials.push_back("#C0C0C0  ----cc  rocks  cc----");
-	GetMaterialsMat(path+"rocks.material",0);
-
+	strlist li;
+	PATHS::DirList(path, li);
+	for (auto mat : li)
+	{
+		if (StringUtil::endsWith(mat, ".material.json"))
+		{
+			vsMaterials.push_back("----  " + mat);
+			GetMaterialsJson(path+"/"+mat,0);
+		}
+		else if (StringUtil::endsWith(mat, ".material"))
+		{
+			vsMaterials.push_back("----  " + mat);
+			GetMaterialsMat(path+"/"+mat,0);
+		}
+		// unlit  not needed, wont edit
+	}
 	vsTweakMtrs = vsMaterials;
 }

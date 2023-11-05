@@ -530,7 +530,6 @@ void CGui::InitGui()
 
 
 	//  🔧 Tweak mtr  ---------------------
-	gcom->GetTweakMtr();
 	gcom->InitGuiTweakMtr();
 	gcom->updTweakMtr();
 
