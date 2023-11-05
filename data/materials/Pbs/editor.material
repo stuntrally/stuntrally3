@@ -74,10 +74,8 @@ hlms edTerGen unlit
 hlms ed_base pbs
 {
 	diffuse  0.5 0.5 0.5  // gray test
-	workflow metallic
 	fresnel_coeff 0.01 0.01 0.01
 	roughness 0.4
-	metalness 0.8
 }
 
 //  alpha
@@ -168,13 +166,18 @@ hlms end_box pbs : ed_box
 	transparency 0.99
 }
 
-//hlms body_realtime pbs : ed_base  // in cars.material
-//{
-//	diffuse_map car_body_ed.png
-//	diffuse  0.3 0.3 0.3
-//	specular 0.7 0.7 0.7
-//	cull_mode none  //!
-//}
+//  car start
+hlms body_realtime pbs
+{
+	diffuse_map car_body_ed.png
+	cull_mode none
+
+	diffuse	  0.0 0.0 0.0
+	specular  0.25 0.25 0.45
+	fresnel_coeff 1 1 1
+	roughness 0.21
+	paint yes
+}
 
 
 //  💧📦🔥  boxes, current

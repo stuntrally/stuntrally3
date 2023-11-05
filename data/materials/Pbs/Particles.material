@@ -146,12 +146,14 @@ hlms FluidWater unlit
 	depth_write	off
 }
 
-hlms FluidWater1 pbs  // meh try, white?
+hlms FluidWater1 pbs  // meh try, white, wrong place?
 {
 	diffuse_map fluid-water.png
+	scene_blend alpha_blend
+	alpha_rejection greater 64
+	depth_write	off
 	// scene_blend alpha_blend
 	// alpha_rejection greater 64
-	depth_write	off
 
 	// cull_mode none
 	// transparency 0.9
@@ -160,15 +162,11 @@ hlms FluidWater1 pbs  // meh try, white?
 
 	// workflow specular_fresnel
 	// workflow specular_ogre
-	// workflow metallic
-	fresnel 0.01
 	fresnel_coeff 0.1 0.1 0.1
-	// fresnel_coeff 1 1 1
 	
-	diffuse   0 0 0
-	specular  0 0 0
+	diffuse   1 0 0
+	specular  0 1 0
 	// diffuse		0.5 0.5 0.5
 	// specular	0.1 0.1 0.1
 	roughness 0.3
-	metalness 0.7
 }

@@ -10,22 +10,22 @@
 
 	//Note: avoid values extremely close to zero  (0; 1] is physically correct.
 	// roughness 0.2
-	// metalness 0.2
+	// metalness 0.2  - in metallic only
 
-	// fresnel		1.33
+	// fresnel		1.33      \
 	//Fresnel as IOR (index of refraction), seperate per RGB component
-	//fresnel	1.33 1.33 1.2
+	//fresnel	1.33 1.33 1.2   \
 
 	//Directly set the "F0" term, instead of using IOR
-	//fresnel_coeff	0.1
-	//fresnel_coeff	0.1 0.1 0.2
-	//workflow specular_ogre specular_fresnel metallic
+	//fresnel_coeff	0.1            \
+	//fresnel_coeff	0.1 0.1 0.2     \ in specular_*
+	//workflow specular_ogre  specular_fresnel  metallic - don't use
 	
 	//diffuse_map	Rocks_Diffuse.tga
 	//normal_map	Rocks_Normal.tga
 	//roughness_map	Rocks_Spec.tga
-	//metalness_map  grass_ground_s.jpg
-	//specular_map	Rocks_Diffuse.tga
+	//metalness_map  grass_ground_s.jpg  - in metallic only
+	//specular_map	Rocks_Diffuse.tga  in specular_*
 
 	//detail_weight_map	nm_up.png
 // }

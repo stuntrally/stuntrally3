@@ -6,7 +6,6 @@ hlms sky_base pbs
     emissive 1 1 1
 	specular 0 0 0
 	roughness 0.01
-	metalness 0.01
 }
 
 //  Skies

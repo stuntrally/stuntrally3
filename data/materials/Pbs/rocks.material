@@ -5,7 +5,6 @@ hlms rock_base pbs
 	specular 0.2 0.2 0.2
 	fresnel_coeff 0.1
 	roughness 0.5
-	metalness 0.1
 	workflow specular_ogre
 }
 
@@ -13,7 +12,7 @@ hlms rock1 pbs : rock_base
 {
 	diffuse_map 1rock.png
 	normal_map  1rock_norm.png
-	specular 0.5 0.5 0.5 //32
+	specular 0.5 0.5 0.5
 }
 
 //  greece yellow
@@ -74,7 +73,7 @@ hlms rock_w4 pbs : rock_base
     diffuse_map rock_n4-W.jpg
 	normal_map  rock_n4_norm.png
 	diffuse 1.0 1.02 1.02
-	specular 0.9 0.9 0.9 24
+	specular 0.9 0.9 0.9
 }
 
 hlms rock_n5 pbs : rock_base
@@ -89,7 +88,7 @@ hlms rock_w5v pbs : rock_base
     diffuse_map rock_n5v-W.jpg
 	normal_map  rock_n5_norm.png
 	diffuse 1.0 1.02 1.02
-	specular 0.9 0.9 0.9 24
+	specular 0.9 0.9 0.9
 }
 
 
@@ -141,7 +140,7 @@ hlms rock_R5f pbs : rock_base
     diffuse_map rock_R5.jpg
 	normal_map  rock_n5_norm.png
 	diffuse 1.0 0.8 0.7
-	//specular 0.9 0.9 0.9 24
+	//specular 0.9 0.9 0.9
 }
 
 
@@ -164,11 +163,8 @@ hlms crystal1 pbs
 	// depth_check off
 	two_sided true
 	// receives_shadows false
-	fresnel 1.0
 	fresnel_coeff 0.9
 	roughness 0.3
-	metalness 0.9
-	workflow metallic
 }
 
 hlms crystal6 pbs
@@ -184,11 +180,8 @@ hlms crystal6 pbs
 	scene_blend add
 	cull_mode none
 	two_sided true
-	fresnel 1.0
 	fresnel_coeff 0.9
 	roughness 0.3
-	metalness 0.9
-	workflow metallic
 }
 
 //  -
@@ -204,11 +197,8 @@ hlms crystal_cube4 pbs
 	two_sided true
 	//receives_shadows false
 	//bump_scale 3
-	fresnel 1.0
 	fresnel_coeff 0.9
 	roughness 0.3
-	metalness 0.9
-	workflow metallic
 }
 
 hlms crystal_form1 pbs
@@ -221,11 +211,8 @@ hlms crystal_form1 pbs
 	specular 1 0.7 1
 	// refl_amount 0.2
 
-	fresnel 1.0
-	fresnel_coeff 0.9
+	fresnel_coeff 0.95
 	roughness 0.3
-	metalness 0.95
-	workflow metallic
 }
 
 hlms crystalForm4 pbs
@@ -238,11 +225,8 @@ hlms crystalForm4 pbs
 	specular 0.5 1 1
 	//bump_scale 2
 
-	fresnel 1.0
-	fresnel_coeff 0.9
+	fresnel_coeff 0.95
 	roughness 0.25
-	metalness 0.95
-	workflow metallic
 }
 
 hlms crystal_form3 pbs
@@ -256,11 +240,8 @@ hlms crystal_form3 pbs
 	// refl_amount 0.2
 	//bump_scale 3
 
-	fresnel 1.0
 	fresnel_coeff 0.9
 	roughness 0.2
-	metalness 0.9
-	// workflow metallic
 }
 //------------------------------------------------------------------
 

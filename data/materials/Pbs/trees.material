@@ -12,7 +12,6 @@ hlms gum_branch pbs
 
 	fresnel_coeff 0.4
 	roughness 0.2
-	metalness 0.4
 	specular 0.8 0.8 0.8
 }
 
@@ -24,7 +23,6 @@ hlms gum_bark pbs
 
 	fresnel_coeff 0.1
 	roughness 0.3
-	metalness 0.1
 	specular 0.5 0.5 0.5
 }
 
@@ -39,11 +37,8 @@ hlms palm2 pbs
 
 	diffuse 0.9 0.9 0.9
 	specular 0.2 0.2 0.2
-	fresnel 0
-	fresnel_coeff 0
+	fresnel_coeff 0.3
 	roughness 0.3
-	metalness 0.9
-	workflow specular_ogre
 	
 	alpha_test greater 0.5
     cull_mode none
@@ -56,12 +51,10 @@ hlms Palm pbs
 	normal_map  palm_norm.png
 	alpha_test greater 0.31
 	diffuse 0.9 0.9 0.9
-	specular 0.7 0.7 0.7
+	specular 0.4 0.4 0.4
 
-	fresnel 0
-	fresnel_coeff 0
-	roughness 0.3
-	metalness 0.8
+	fresnel_coeff 0.2
+	roughness 0.4
 }
 
 
@@ -75,8 +68,6 @@ hlms jungle_tree pbs
 
 	fresnel_coeff 0.1
 	roughness 0.5
-	metalness 0.1
-	workflow specular_ogre
 	
 	alpha_test greater 0.5
     cull_mode none
@@ -99,8 +90,6 @@ hlms fern_v2 pbs
 
 	fresnel_coeff 0.4
 	roughness 0.3
-	metalness 0.5
-	workflow specular_ogre
 	specular 0.8 0.8 0.8
 	
 	alpha_test greater 0.5
@@ -116,9 +105,7 @@ hlms fern2 pbs
 
 	fresnel_coeff 0.4
 	roughness 0.3
-	metalness 0.5
 	specular 0.8 0.8 0.8
-	workflow specular_ogre
 	
 	alpha_test greater 0.5
     cull_mode none
@@ -131,7 +118,9 @@ hlms palm_plant pbs
 	normal_map  palm_plant_normal.png
 	specular_map palm_plant_spec.png
 	diffuse 1.5 1.5 1.5
-	specular 0.5 0.5 0.5 //32
+	specular 0.4 0.4 0.4
+	fresnel_coeff 0.4
+    roughness 0.2
 
 	alpha_test greater 0.5
 	cull_mode none
@@ -143,15 +132,13 @@ hlms plant_tropical pbs
 	diffuse_map plant_tropical_m.png
 	normal_map  plant_tropical_norm_m.png
 	//specular_map palm_plant_spec.png
-	specular 0.57 0.6 0.5 //24
+	specular 0.57 0.6 0.5
+	fresnel_coeff 0.5
+    roughness 0.2
 
 	alpha_test greater 0.5
 	cull_mode none
 	two_sided true
-
-	fresnel_coeff 0.1
-    roughness 0.2
-    metalness 0.7
 }
 
 
@@ -163,11 +150,10 @@ hlms cactus pbs
 	diffuse_map cactus.png
 	normal_map  cactus_norm.png
 	diffuse 1.0 1.0 1.0
-	specular 0.2 0.2 0.2 //32
+	specular 0.2 0.2 0.2
 
 	fresnel_coeff 0.1
     roughness 0.3
-    metalness 0.2
 }
 
 
@@ -182,13 +168,11 @@ hlms pine_base pbs
 
 	// diffuse_map white.png
 	//normal_map  pine_half_norm.png
-	diffuse 1.0 1.0 1.0
+	diffuse  1.0 1.0 1.0
 	specular 0.5 0.5 0.5
 
-	// fresnel 0.1
-	fresnel_coeff 0.1
+	fresnel_coeff 0.15
 	roughness 0.1
-	metalness 0.2
 }
 
 hlms pine1full pbs : pine_base
@@ -277,7 +261,6 @@ hlms gum_branch_alien pbs
 
 	fresnel_coeff 0.1
 	roughness 0.3
-	metalness 0.2
 }
 
 hlms gum_bark_alien pbs
@@ -288,7 +271,6 @@ hlms gum_bark_alien pbs
 
 	fresnel_coeff 0.1
 	roughness 0.5
-	metalness 0.1
 }
 
 hlms jungle_tree_alien pbs
@@ -304,7 +286,6 @@ hlms jungle_tree_alien pbs
 
 	fresnel_coeff 0.1
 	roughness 0.4
-	metalness 0.1
 }
 
 hlms shroom1_alien pbs
@@ -314,9 +295,8 @@ hlms shroom1_alien pbs
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 32
 
-	fresnel_coeff 0.1
+	fresnel_coeff 0.2
     roughness 0.3
-    metalness 0.2
 }
 
 hlms shroom2_alien pbs
@@ -326,9 +306,8 @@ hlms shroom2_alien pbs
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 32
     
-	fresnel_coeff 0.1
+	fresnel_coeff 0.2
     roughness 0.3
-    metalness 0.2
 }
 
 hlms shroom3_alien pbs
@@ -338,9 +317,8 @@ hlms shroom3_alien pbs
 	diffuse 0.7 0.7 0.8
 	//specular 0.5 0.5 1.0 32
     
-	fresnel_coeff 0.1
+	fresnel_coeff 0.2
     roughness 0.3
-    metalness 0.2
 }
 
 
@@ -352,28 +330,26 @@ hlms fern2_black pbs
 	diffuse_map fern2.png
 	normal_map  fern2_normal.png
 	//specular_map fern2_spec.png
-	specular 0.3 0.5 0.7 //32
-	emissive 0.1 0.25 2.5
+	specular 0.3 0.5 0.7
+	emissive 0.1 0.25 1.5
 
 	alpha_test greater 0.5
 	cull_mode none
     
-	fresnel_coeff 0.1
-    roughness 0.3
-    metalness 0.4
+	fresnel_coeff 0.3
+    roughness 0.13
 }
 
 hlms gum_branch_black pbs
 {
     diffuse_map  gum_branch_alien.png
     diffuse 0.9 0.9 0.9
-    specular 0.12 0.16 0.2 //32
+    specular 0.12 0.16 0.2
     emissive 0.08 0.15 0.8
 
 	alpha_test greater 0.5
     cull_mode none
 
     fresnel_coeff 0.1
-    roughness 0.3
-    metalness 0.4
+    roughness 0.2
 }

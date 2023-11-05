@@ -11,7 +11,6 @@ hlms grass pbs
     specular 0.0 0.0 0.0
 	fresnel_coeff 0.01
 	roughness 0.4
-	// metalness 0.1
 }
 
 //  old  -
@@ -315,7 +314,6 @@ hlms grass_emis pbs
     emissive 1 1 1
 	fresnel_coeff 0.01
 	roughness 0.1
-	metalness 0.1
 }
 
 hlms grassZ10 pbs : grass_emis

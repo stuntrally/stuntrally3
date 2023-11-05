@@ -10,12 +10,10 @@ hlms Water pbs : Water
 	// diffuse_map  snow_bumpy_d.jpg
 	// normal_map  jungle_mntn_n.jpg
 
-	// workflow metallic
-	fresnel 1.0  //`
-	// fresnel_coeff 1.0 1.0 1.0
-	fresnel_coeff 0.1 0.25 0.35
-	roughness  0.3
-	metalness  0.99
+	// fresnel 1.0  //`
+	fresnel_coeff 1.0 1.0 1.0
+	// fresnel_coeff 0.1 0.25 0.35
+	roughness  0.23
 
 	cull_mode none
 	transparency 0.93
@@ -32,7 +30,6 @@ hlms BaseMud pbs : Water
 
 	fresnel_coeff 0.1
 	roughness 0.5
-	metalness 0.8
 
 	cull_mode none
 }
@@ -375,87 +372,65 @@ hlms Alien_acid pbs : Water
 // hlms River_Acid_green   // green acid
 // {
 //     parent Acid_green
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.8 -1.0
 // }
 
 // hlms River_Ice   // solid
 // {
 //     parent Ice
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     colour 0.8 0.94 0.95  0.0
 //     speed -3.0 -1.0
 // }
 // hlms River_Ice_cyan   // solid
 // {
 //     parent Ice_cyan
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }
 
 // hlms River_LavaOrn   // lava dense fluid
 // {
 //     parent LavaOrn
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -0.478 -1.0
 // }
 // hlms River_LavaBlk   // lava solid
 // {
 //     parent LavaBlk
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -0.15 -1.0
 // }
 
 // hlms River_pink  
 // {
 //     parent Water_pink
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }
 
 // hlms River_strange 
 // {
 //     parent Water_strange
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }
 
 // hlms River_strange2
 // {
 //     parent Water_strange2
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }
 
 // hlms River_liquid_gas
 // {
 //     parent Liquid_gas
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -1.0 -1.0
 // }
 
 // hlms River_liquid_gas2
 // {
 //     parent Liquid_gas2
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -1.0 -1.0
 // }
 
 // hlms River_liquid_gas_space
 // {
 //     parent Liquid_gas2
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -1.0 -1.0
 // }
 
@@ -463,48 +438,36 @@ hlms Alien_acid pbs : Water
 // hlms River_Pink_jelly
 // {
 // 	parent Pink_jelly
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 // 	speed -3.05 -1.0
 // }
 
 // hlms River_Green_slime
 // {
 // 	parent Green_slime
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 // 	speed -3.05 -1.0
 // }
 
 // hlms River_Oil
 // {
 // 	parent Oil
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 // 	speed -2.05 -1.0
 // }
 
 // hlms River_LavaHot
 // {
 //     parent LavaHot
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -0.478 -1.0
 // }
 
 // hlms River_marble  
 // {
 //     parent Water_marble
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }
 
 // hlms River_milky_white
 // {
 //     parent Water_milky_white
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }
 
@@ -512,24 +475,18 @@ hlms Alien_acid pbs : Water
 // hlms River_milky_blue
 // {
 //     parent Water_milky_blue
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }
 
 // hlms River_milky_cyan
 // {
 //     parent Water_milky_cyan
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }
 
 // hlms River_clear_white
 // {
 //     parent Water_clear_white
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }
 
@@ -537,24 +494,18 @@ hlms Alien_acid pbs : Water
 // hlms River_clear_blue
 // {
 //     parent Water_clear_blue
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }
 
 // hlms River_clear_green
 // {
 //     parent Water_clear_green
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }
 
 // hlms River_clear_sunset
 // {
 //     parent Water_clear_sunset
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }
 
@@ -562,15 +513,11 @@ hlms Alien_acid pbs : Water
 // hlms River_clear_shore
 // {
 //     parent Water_clear_shore
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }
 
 // hlms River_clear_pink
 // {
 //     parent Water_clear_pink
-//     WaterDepthMap white.png
-// 	alphaMap HmapTex
 //     speed -3.0 -1.0
 // }

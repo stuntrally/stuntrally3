@@ -5,10 +5,8 @@ hlms fuel_can pbs
 	specular_map fuel_can_spec.png
 	diffuse  0.9 0.9 0.9
 	specular 1.0 1.0 1.0
-	workflow specular_ogre
 	fresnel_coeff 0.8 0.8 0.8
 	roughness 0.5
-	metalness 0.7
 }
 
 hlms RubberTire pbs
@@ -20,7 +18,6 @@ hlms RubberTire pbs
 	specular 0.9 0.9 0.9
 	fresnel_coeff 0.1
 	roughness 0.6
-	metalness 0.6
 }
 
 hlms concrete_texture pbs
@@ -32,7 +29,6 @@ hlms concrete_texture pbs
 	specular 1 1 1
 	fresnel_coeff 0.1
 	roughness 0.8
-	metalness 0.3
 }
 
 
@@ -44,7 +40,6 @@ hlms crate2 pbs
 	specular 0.6 0.6 0.6
 	fresnel_coeff 0.1
 	roughness 0.4
-	metalness 0.4
 }
 
 hlms Crate pbs
@@ -56,7 +51,6 @@ hlms Crate pbs
 	specular 0.55 0.6 0.6
 	fresnel_coeff 0.1
 	roughness 0.4
-	metalness 0.4
 }
 
 hlms cone pbs
@@ -66,7 +60,6 @@ hlms cone pbs
 	specular 0.6 0.4 0.2
 	fresnel_coeff 0.1
 	roughness 0.4
-	metalness 0.6
 }
 
 hlms wood_block pbs
@@ -77,7 +70,6 @@ hlms wood_block pbs
 	specular 0.3 0.3 0.3
 	fresnel_coeff 0.1
 	roughness 0.5
-	metalness 0.1
 }
 
 
@@ -90,8 +82,6 @@ hlms plastic_barrel pbs
 	specular 1.0 1.0 1.0
 	fresnel_coeff 0.1
 	roughness 0.4
-	metalness 0.5
-	workflow specular_ogre
 }
 
 hlms plastic_big pbs
@@ -102,8 +92,6 @@ hlms plastic_big pbs
 	specular 1.00 1.00 1.00
 	fresnel_coeff 0.1
 	roughness 0.5
-	metalness 0.5
-	// workflow specular_ogre
 }
 
 hlms plastic_big_hvy pbs
@@ -114,8 +102,6 @@ hlms plastic_big_hvy pbs
 	specular 1.00 1.00 1.00
 	fresnel_coeff 0.1
 	roughness 0.6
-	metalness 0.4
-	// workflow specular_ogre
 }
 
 hlms wooden_barrel pbs
@@ -127,7 +113,6 @@ hlms wooden_barrel pbs
 	specular 0.6 0.6 0.6
 	fresnel_coeff 0.1
 	roughness 0.35
-	metalness 0.7
 }
 
 hlms atomic_barrel pbs
@@ -139,7 +124,6 @@ hlms atomic_barrel pbs
 	specular 0.6 0.6 0.6
 	fresnel_coeff 0.1
 	roughness 0.45
-	metalness 0.7
 }
 
 
@@ -152,7 +136,6 @@ hlms pallet pbs
 	specular 0.55 0.6 0.6
 	fresnel_coeff 0.1
 	roughness 0.6
-	metalness 0.1
 }
 
 hlms Crate_1 pbs
@@ -163,7 +146,6 @@ hlms Crate_1 pbs
 	specular 0.55 0.6 0.6
 	fresnel_coeff 0.1
 	roughness 0.5
-	metalness 0.5
 }
 
 hlms Crate_2 pbs
@@ -174,7 +156,6 @@ hlms Crate_2 pbs
 	specular 0.55 0.6 0.6
 	fresnel_coeff 0.1
 	roughness 0.5
-	metalness 0.5
 }
 
 
@@ -187,7 +168,6 @@ hlms can_rusted pbs pbs
 	specular 0.6 0.6 0.6
 	fresnel_coeff 0.1
 	roughness 0.4
-	metalness 0.7
 }
 
 hlms garbage_bin_green pbs
@@ -195,13 +175,11 @@ hlms garbage_bin_green pbs
 	diffuse_map  garbage_bin_green.jpg
 	normal_map   garbage_bin_norm.jpg
 	// specular_map garbage_bin_green_spec.jpg
+	// reflMap garbage_bin_metal.jpg
 	diffuse  1.0 1.0 1.0
 	specular 0.6 0.6 0.6
-	// reflMap garbage_bin_metal.jpg
-	fresnel 0.5
-	fresnel_coeff 0.1
+	fresnel_coeff 0.5
 	roughness 0.37
-	metalness 0.6
 }
 
 hlms garbage_bin_blue pbs
@@ -209,13 +187,11 @@ hlms garbage_bin_blue pbs
 	diffuse_map  garbage_bin_blue.jpg
 	normal_map   garbage_bin_norm.jpg
 	// specular_map garbage_bin_blue_spec.jpg
+	// reflMap garbage_bin_metal.jpg
 	diffuse  1.0 1.0 1.0
 	specular 0.6 0.6 0.6
-	// reflMap garbage_bin_metal.jpg
-	fresnel 0.5
 	fresnel_coeff 0.1
 	roughness 0.33
-	metalness 0.6
 }
 
 hlms trash_bag pbs
@@ -225,8 +201,6 @@ hlms trash_bag pbs
 	// specular_map garbage_bag_spec.jpg  //red?
 	diffuse  1.0 1.0 1.0
 	specular 0.6 0.6 0.6
-	fresnel 0.5
 	fresnel_coeff 0.1
 	roughness 0.26
-	metalness 0.9
 }
