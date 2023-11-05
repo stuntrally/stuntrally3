@@ -163,8 +163,9 @@ hlms S8_rear_lights pbs : car_interior
 hlms S8_interior pbs : car_interior
 {
 	diffuse_map  S8_interior.png
-	diffuse  0.5 0.5 0.5
-	specular 0.2 0.2 0.2
+	diffuse  0.4 0.4 0.4
+	specular 0.1 0.1 0.1
+	roughness 0.6
 }
 
 hlms S8_wheel pbs : car_wheel

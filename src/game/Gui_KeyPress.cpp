@@ -233,27 +233,15 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			default:  break;
 		}
 	//............................................................................................................
-	//>--  dev shortcuts, alt-shift - start test tracks
+	//>--  dev shortcuts, alt-shift - start Test Tracks  🏞️
 	if (pSet->dev_keys && alt && shift && !mClient)
 	{
-		string t;
-		switch (skey)    //  alt- shift-  Tracks  🏞️
-		{
-			case key(1):  t = "Test2-Asphalt";  break;		case key(2):  t = "TestC9-Jumps";  break;
-			case key(3):  t = "Test3-Bumps";  break;		case key(4):  t = "TestC4-Ow";  break;
-			case key(5):  t = "TestC7-Oc";  break;
-			case key(6):  t = "TestC6-Temp";  break;		case key(7):  t = "Test10-FlatPerf";  break;
-			
-			case key(Q):  t = "Test6-Fluids";  break;		case key(W):  t = "Test4-TerrainBig";  break;
-			case key(E):  t = "TestC8-Align";  break;		case key(R):  t = "Test12-Snow";  break;
+		string t;  char c = 0;
+		if (skey >= SDL_SCANCODE_0 && skey <= SDL_SCANCODE_9)
+		{	c = skey - SDL_SCANCODE_0;  c+='0';  t = pSet->dev_tracks[c];  }
+		if (skey >= SDL_SCANCODE_A && skey <= SDL_SCANCODE_Z)
+		{	c = skey - SDL_SCANCODE_A;  c+='A';  t = pSet->dev_tracks[c];  }
 
-			case key(A):  t = "Test1-Flat";  break;			case key(S):  t = "Test7-FluidsSmall";  break;
-			case key(D):  t = "TestC13-Rivers";  break;		case key(F):  t = "Test3-Bumps";  break;
-
-			case key(X):  t = "Test8-Objects";  break;		case key(C):  t = "TestC6-Temp";  break;
-			case key(V):  t = "TestC10-Pace";  break;
-			default:  break;
-		} 
 		if (!t.empty())
 		{
 			gui->BackFromChs();
