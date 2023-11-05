@@ -248,7 +248,7 @@ hlms gas_tank_02_blue pbs
 	roughness 0.45
 }
 
-//  new Fin
+//  new Fin2  ------------------------------------------
 hlms log_cabin_01 pbs
 {
 	diffuse_map log_cabin_01.jpg
