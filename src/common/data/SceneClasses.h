@@ -141,7 +141,7 @@ public:
 
 	int id = -1;  // auto set, index to FluidParams, -1 doesnt exist
 	std::string name;
-	int hq = 2;  // quality 2 reflect 1 refract 0 basic
+	int hq = 2;  // quality:  2 reflect  1 refract  0 diffuse
 
 	class btCollisionObject* cobj = 0;
 	int idParticles = 0;   // auto set  index for wheel particles  -1 none

@@ -297,12 +297,16 @@ void App::KeyTxtFluids(Real q)
 	}else
 	{	FluidBox& fb = scn->sc->fluids[iFlCur];
 		flTxt[0]->setCaption(TR("#{Road_Cur}     ") +toStr(iFlCur+1)+" / "+toStr(scn->sc->fluids.size()));
-		flTxt[1]->setCaption(fb.name);
+		flTxt[1]->setCaption(gcom->ClrName(fb.name) + fb.name);
 		flTxt[2]->setCaption(TR("#{Obj_Pos}  ") +fToStr(fb.pos.x,1,4)+" "+fToStr(fb.pos.y,1,4)+" "+fToStr(fb.pos.z,1,4));
 		flTxt[3]->setCaption("");
 		//flTxt[3]->setCaption(TR("#{Obj_Rot}:  ")+fToStr(fb.rot.x,1,4));
 		flTxt[3]->setCaption(TR("#{scale}  ") +fToStr(fb.size.x,1,4)+" "+fToStr(fb.size.y,1,4)+" "+fToStr(fb.size.z,1,4));
 		flTxt[4]->setCaption(TR("#{Tile}  ") +fToStr(fb.tile.x,3,5)+" "+fToStr(fb.tile.y,3,5));
+
+		//  quality
+		const static String hqStr[3] = {TR("#{Diffuse}"), TR("#{WaterRefraction}"), TR("#{WaterReflection}"), };
+		flTxt[5]->setCaption(toStr(fb.hq) +" "+ hqStr[fb.hq]);
 
 		//  edit
 		if (isKey(LEFTBRACKET) ||isKey(O)){  fb.tile   *= 1.f - 0.04f*q;  bRecreateFluids = true;  }

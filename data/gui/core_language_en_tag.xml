@@ -1538,6 +1538,7 @@
 	<Tag name="InputFluidsMove">LMB - move   RMB - height</Tag>
 	<Tag name="InputFluidsSize">alt-LMB - size   alt-RMB - depth</Tag>
 	<Tag name="InputFluidsType">-,=  - change fluid type (water,mud,etc.)</Tag>
+	<Tag name="InputFluidsQuality">1,2  - change fluid rendering quality</Tag>
 
 	<!--  Fluids  Input advanced  -->
 	<Tag name="InputFluidsTile">[,]  - change texture tiling</Tag>

@@ -29,7 +29,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 	//  💧 Fluids  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 	if (edMode == ED_Fluids && edit)
 	{	int fls = scn->sc->fluids.size();
-		const std::vector<FluidParams>& dfl = scn->data->fluids->fls;
+		const auto& dfl = scn->data->fluids->fls;
 		switch (skey)
 		{
 			//  ins
@@ -47,46 +47,50 @@ void App::keyPressObjects(SDL_Scancode skey)
 			default:  break;
 		}
 		if (fls > 0)
-		switch (skey)
 		{
-			//  first, last
-			case key(HOME):  case key(KP_7):
-				iFlCur = 0;  UpdFluidBox();  break;
-			case key(END):  case key(KP_1):
-				iFlCur = fls-1;  UpdFluidBox();  break;
-
-			//  prev,next
-			case key(PAGEUP):  case key(KP_9):
-				iFlCur = (iFlCur-1+fls)%fls;  UpdFluidBox();  break;
-			case key(PAGEDOWN):	case key(KP_3):
-				iFlCur = (iFlCur+1)%fls;	  UpdFluidBox();  break;
-
-			//  del
-			case key(DELETE):  case key(KP_PERIOD):
-			case key(KP_5):
-				if (fls == 1)	scn->sc->fluids.clear();
-				else			scn->sc->fluids.erase(scn->sc->fluids.begin() + iFlCur);
-				iFlCur = std::max(0, std::min(iFlCur, (int)scn->sc->fluids.size()-1));
-				bRecreateFluids = true;
-				break;
-
-			//  prev,next type
-			case key(9):  case key(MINUS):
+			FluidBox& fb = scn->sc->fluids[iFlCur];
+			switch (skey)
 			{
-				FluidBox& fb = scn->sc->fluids[iFlCur];
-				fb.id = (fb.id-1 + dfl.size()) % dfl.size();
-				fb.name = dfl[fb.id].name;
-				bRecreateFluids = true;
-			}	break;
-			case key(0):  case key(EQUALS):
-			{
-				FluidBox& fb = scn->sc->fluids[iFlCur];
-				fb.id = (fb.id+1) % dfl.size();
-				fb.name = dfl[fb.id].name;
-				bRecreateFluids = true;
-			}	break;
-			default:  break;
-		}
+				//  first, last
+				case key(HOME):  case key(KP_7):
+					iFlCur = 0;  UpdFluidBox();  break;
+				case key(END):  case key(KP_1):
+					iFlCur = fls-1;  UpdFluidBox();  break;
+
+				//  prev,next
+				case key(PAGEUP):  case key(KP_9):
+					iFlCur = (iFlCur-1+fls)%fls;  UpdFluidBox();  break;
+				case key(PAGEDOWN):	case key(KP_3):
+					iFlCur = (iFlCur+1)%fls;	  UpdFluidBox();  break;
+
+				//  del
+				case key(DELETE):  case key(KP_PERIOD):
+				case key(KP_5):
+					if (fls == 1)	scn->sc->fluids.clear();
+					else			scn->sc->fluids.erase(scn->sc->fluids.begin() + iFlCur);
+					iFlCur = std::max(0, std::min(iFlCur, (int)scn->sc->fluids.size()-1));
+					bRecreateFluids = true;
+					break;
+
+				//  prev,next type
+				case key(9):  case key(MINUS):
+				{
+					fb.id = (fb.id-1 + dfl.size()) % dfl.size();
+					fb.name = dfl[fb.id].name;  bRecreateFluids = true;
+				}	break;
+				case key(0):  case key(EQUALS):
+				{
+					fb.id = (fb.id+1) % dfl.size();
+					fb.name = dfl[fb.id].name;  bRecreateFluids = true;
+				}	break;
+
+				//  quality
+				case key(1):
+					if (fb.hq > 0)  --fb.hq;  bRecreateFluids = true;  break;
+				case key(2):
+					if (fb.hq < 2)  ++fb.hq;  bRecreateFluids = true;  break;
+				default:  break;
+		}	}
 	}
 
 	//  📦 Objects  | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
