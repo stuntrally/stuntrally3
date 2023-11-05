@@ -403,7 +403,7 @@
 		@property( normal_map_tex )
 
 
-			@property( water && !hlms_shadowcaster )
+			@property( (water || river) && !hlms_shadowcaster )
 			//~~~~~~~ water begin
 
 				@piece( GetNorm )
@@ -419,9 +419,15 @@
 				#define BIG_WAVES_X    material.detailOffsetScale[1].x
 				#define BIG_WAVES_Y    material.detailOffsetScale[1].y
 
-				#define WIND_DIR     float2(0.5, -0.8)  // todo: par, grass, trees too
+			@property( river )
+				#define WIND_DIR     float2(0.1, -2.1)
+				#define WIND_SPEED   material.detailOffsetScale[2].x * 1.32
+				#define WIND_SPEED2  material.detailOffsetScale[2].x * 0.21
+			@else  // water
+				#define WIND_DIR     float2(0.5, -0.8)  // todo: par, same for grass, trees too
 				#define WIND_SPEED   material.detailOffsetScale[2].x * 0.32
 				#define WIND_SPEED2  material.detailOffsetScale[2].x * 2.0
+			@end
 				#define WAVE_CHOP    material.detailOffsetScale[2].y * 0.01
 				#define WAVE_SCALE  -material.detailOffsetScale[2].z
 				
@@ -445,6 +451,12 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 				float3 n1 = normalize( midf3_c( n6.x * BUMP,  n6.y * BUMP,  n6.z ));
 				float3 n2 = normalize( midf3_c( n6.x * BUMP2, n6.y * BUMP2, n6.z ));
 
+			@property( river123 )  // water fall getting white meh
+				// float fall = abs(pixelData.geomNormal.y) * 0.5;
+				float fall = abs(inPs.normal.y) * 0.1;  // todo: world space normal
+				pixelData.diffuse.xyz = lerp( pixelData.diffuse.xyz, midf3_c(0.8, 0.8, 0.8), fall );
+			@end
+
 				pixelData.normal = lerp(n1, n2, SPEC2);
 				// pixelData.diffuse.xyz = n1;  // test stuff ..
 				// pixelData.normal = midf3_c(0.0,0.0,1.0);
@@ -457,6 +469,7 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 				// pixelData.specular.xyz = float3(0.9,0.95,0.99) - float3(0.3,0.4,0.5) * pixelData.normal.z;
 
 				pixelData.perceptualRoughness = max(0.01, min(1.0,  0.01 - 2.24 * n1.x - 2.24 * n1.y));  //** par?
+
 				// transparency ?
 				// material.F0.w = pixelData.perceptualRoughness;
 			//~~~~~~~ water end
