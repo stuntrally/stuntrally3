@@ -354,8 +354,7 @@ String CGuiCom::ClrName(String s)
 			return it->second;
 			break;
 	}	}
-	String c;
-	return c;
+	return "#A0C0E0";  // default
 }
 
 

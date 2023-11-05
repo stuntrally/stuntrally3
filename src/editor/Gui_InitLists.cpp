@@ -2,19 +2,24 @@
 #include "Def_Str.h"
 #include "Gui_Def.h"
 #include "GuiCom.h"
-#include "CData.h"
-#include "TracksXml.h"
-#include "PresetsXml.h"
-#include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
 #include "paths.h"
 #include "MultiList2.h"
 #include "Slider.h"
 
+#include "CScene.h"
+#include "SceneClasses.h"
+#include "FluidsXml.h"
+#include "CData.h"
+#include "TracksXml.h"
+#include "PresetsXml.h"
+#include "settings.h"
+
 #include <filesystem>
 #include <MyGUI.h>
 #include <MyGUI_InputManager.h>
+#include <OgreString.h>
 using namespace MyGUI;
 // using namespace Ogre;
 using Ogre::String;  using Ogre::StringUtil;
@@ -181,7 +186,28 @@ void CGui::InitGuiLists()
 	for (n=0; n < 4; ++n)  surfList->addItem("#FFB020"+TR("#{Road} ")+toStr(n));
 	for (n=0; n < 4; ++n)  surfList->addItem("#FFFF80"+TR("#{Pipe} ")+toStr(n));
 	surfList->setIndexSelected(0);
-	
+
+
+	//---------------------  💧 Fluids  ---------------------
+	const auto& dfl = scn->data->fluids->fls;
+	fluidsList = fLi("FluidsList");  Lev(fluidsList, FluidsChng);
+	fluidsList->removeAllItems();
+	for (auto& fp : dfl)
+	{
+		String c = gcom->ClrName(fp.name);
+		fluidsList->addItem(c + fp.name);
+	}
+
+	//---------------------  ✨ Particles  ---------------------
+	particlesList = fLi("ParticlesList");  Lev(particlesList, ParticlesChng);
+	particlesList->removeAllItems();
+	for (auto& em : app->vEmtNames)
+	{
+		String low = em;  StringUtil::toLowerCase(low);
+		String c = gcom->ClrName(low);
+		particlesList->addItem(c + em);
+	}
+
 	
 	///  👆 Pick window
 	///------------------------------------------------------------------------------------------------------------

@@ -361,7 +361,13 @@ public:
 	Li objListDyn =0, objListSt =0, objListBld =0, objListCat =0;
 	void listObjsChng(Li, size_t), listObjsNext(int rel);
 	void listObjsCatChng(Li, size_t);
-	
+
+	//  💧 Fluids  ----
+	Li fluidsList =0;  void listFluidsChng(Li, size_t);
+
+	//  ✨ Particles  ----
+	Li particlesList =0;  void listParticlesChng(Li, size_t);
+
 
 	//  🛠️ Tools  --------------------
 	//  copy

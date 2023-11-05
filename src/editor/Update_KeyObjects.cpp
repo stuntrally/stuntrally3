@@ -36,7 +36,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 			case key(INSERT):  case key(KP_0):
 			if (road && road->bHitTer)
 			{
-				FluidBox fb;	fb.name = "water blue";
+				FluidBox fb;  fb.name = newFluidName;
 				fb.pos = road->posHit;	fb.rot = Vector3(0.f, 0.f, 0.f);
 				fb.size = Vector3(50.f, 20.f, 50.f);  fb.tile = Vector2(0.01f, 0.01f);
 				scn->sc->fluids.push_back(fb);
@@ -254,7 +254,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 			case key(INSERT):  case key(KP_0):
 			if (road && road->bHitTer)
 			{
-				SEmitter em;  em.name = "SmokeBrown";
+				SEmitter em;  em.name = newEmtName;
 				em.pos = road->posHit;  em.size = Vector3(2.f, 1.f, 2.f);  em.rate = 10.f;
 				scn->sc->emitters.push_back(em);  iEmtCur = scn->sc->emitters.size()-1;
 				bRecreateEmitters = true;

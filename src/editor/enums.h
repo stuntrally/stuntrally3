@@ -20,7 +20,8 @@ enum TABS_Edit
 	TAB_Back=0, TAB_Sun,
 	TAB_Terrain, TAB_Layers,
 	TAB_Grass, TAB_Veget,
-	TAB_Surface, TAB_Road,
+	TAB_Road, TAB_Surface,
 	TAB_Objects,
+	TAB_Fluids, TAB_Particles,
 	TabsEdit_ALL
 };

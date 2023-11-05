@@ -207,6 +207,7 @@ public:
 	bool bRecreateFluidsRTT =0;  // gui opt apply
 	int iFlCur =0;
 	void UpdFluidBox(), UpdMtrWaterDepth();
+	std::string newFluidName = "water blue";
 	
 
 	//  📦 Objects  ----
@@ -242,6 +243,7 @@ public:
 
 	void UpdEmtBox();
 	bool bRecreateEmitters = 0;
+	std::string newEmtName = "SmokeBrown";
 
 
 	//  ⚫ Surfaces  ----

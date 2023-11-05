@@ -1,13 +1,8 @@
 #include "pch.h"
 #include "RenderConst.h"
 #include "Def_Str.h"
-#include "SceneXml.h"
-#include "CScene.h"
-#include "Axes.h"
 #include "paths.h"
 #include "settings.h"
-#include "BtOgreGP.h"
-#include "ShapeData.h"
 #include "App.h"
 #ifdef SR_EDITOR
 	#include "CGui.h"
@@ -15,6 +10,15 @@
 #else
 	#include "game.h"
 #endif
+
+#include "SceneXml.h"
+#include "CScene.h"
+#include "CData.h"
+#include "FluidsXml.h"
+
+#include "Axes.h"
+#include "BtOgreGP.h"
+#include "ShapeData.h"
 #include <BulletCollision/CollisionDispatch/btCollisionObject.h>
 #include <BulletCollision/CollisionShapes/btCollisionShape.h>
 #include <LinearMath/btDefaultMotionState.h>
@@ -572,6 +576,41 @@ void App::UpdObjNewNode()
 	objNew.SetFromBlt();
 	objNew.nd->setPosition(p);
 	objNew.nd->setScale(objNew.scale);
+}
+
+//  💧🌊 Fluids  set type
+void CGui::listFluidsChng(Li li, size_t id)
+{
+	if (id == ITEM_NONE || id >= li->getItemCount())  id = 0;
+	if (li->getItemCount()==0)  return;
+	string mat = li->getItemNameAt(id);
+	if (mat[0]=='#')  mat = mat.substr(7);
+
+	// const auto& dfl = scn->data->fluids->fls;
+	int fls = scn->sc->fluids.size();
+	if (!fls || app->iFlCur < 0)
+	{	app->newFluidName = mat;  return;  }
+
+	FluidBox& fb = scn->sc->fluids[app->iFlCur];  // set
+	fb.id = id;  fb.name = mat;  //dfl[fb.id].name;
+	app->bRecreateFluids = true;
+}
+
+//  ✨ Particles  set type
+void CGui::listParticlesChng(Li li, size_t id)
+{
+	if (id == ITEM_NONE || id >= li->getItemCount())  id = 0;
+	if (li->getItemCount()==0)  return;
+	string mat = li->getItemNameAt(id);
+	if (mat[0]=='#')  mat = mat.substr(7);
+	
+	int emts = scn->sc->emitters.size();
+	if (!emts || app->iEmtCur < 0)  // none or no sel, set default new
+	{	app->newEmtName = mat;  return;  }
+
+	SEmitter& em = scn->sc->emitters[app->iEmtCur];  // set
+	em.name = mat;  //app->vEmtNames[id];
+	app->bRecreateEmitters = true;
 }
 
 #endif
