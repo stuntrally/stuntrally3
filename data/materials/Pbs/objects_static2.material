@@ -247,3 +247,40 @@ hlms gas_tank_02_blue pbs
 	fresnel_coeff 0.6
 	roughness 0.45
 }
+
+//  new Fin
+hlms log_cabin_01 pbs
+{
+	diffuse_map log_cabin_01.jpg
+	normal_map log_cabin_01_norm.jpg
+	specular_map log_cabin_01_spec.jpg
+	diffuse  0.8 0.8 0.8
+	specular 1.0 1.0 1.0
+	fresnel_coeff 0.6
+	roughness 0.3
+	// bump_scale 0.7
+}
+
+hlms wagon_wood pbs
+{
+	diffuse_map wagon_wood.jpg
+	normal_map wagon_wood_norm.jpg
+	specular_map wagon_wood_spec.jpg
+	// reflMap wagon_wood_metal.jpg
+	diffuse  0.8 0.8 0.8
+	specular 1.0 1.0 1.0
+	fresnel_coeff 0.6
+	roughness 0.3
+}
+
+hlms wagon_wheels pbs
+{
+	diffuse_map wagon_wheels.jpg
+	normal_map wagon_wheels_norm.jpg
+	specular_map wagon_wheels_spec.jpg
+	// reflMap wagon_wheels_metal.jpg
+	diffuse  0.8 0.8 0.8
+	specular 1.0 1.0 1.0
+	fresnel_coeff 0.6
+	roughness 0.3
+}

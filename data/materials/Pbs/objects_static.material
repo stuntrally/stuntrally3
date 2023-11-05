@@ -900,5 +900,31 @@ hlms obstaclesCrystal pbs : obstaclesGrey
 	specular 0.5 1.6 1.0
 	bump_scale 1.2
 	// refl_amount 0.5
-	roughness 0.1	
+	roughness 0.1
+}
+
+//  anomaly  ------------------------------------------
+hlms concrete_bar_anomaly pbs
+{
+	diffuse_map concrete_bar_norm.jpg
+	normal_map concrete_bar_norm.jpg
+	// specular_map concrete_bar_spec.png
+	diffuse  0.9 0.9 0.9
+	specular 1 1 1
+	fresnel_coeff 0.6
+	roughness 0.3
+}
+
+hlms obstaclesAnomaly pbs
+{
+	diffuse_map obstaclesAnomaly_d.jpg
+	normal_map maur_boat_norm.png
+	// specular_map maur_boat_spec.png
+	// ambient 1.1 1.1 1.1
+	diffuse 0.75 0.75 0.75
+	specular 0.5 1.6 1.0
+	// bump_scale 1.2
+	// refl_amount 0.5
+	fresnel_coeff 0.6
+	roughness 0.4
 }

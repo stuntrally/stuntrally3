@@ -599,3 +599,60 @@ hlms hexrock_metal pbs : rock_base
 	// fresnel false
 	// refl_amount 0.1
 }
+
+//  anomaly
+hlms crystal1_anomaly pbs : rock_base
+{
+	diffuse_map roadGlass_alien.png
+	normal_map crystal_form3_n.jpg
+
+	diffuse 2.3 0.6 0.6
+	specular 0.05 1.2 0.25
+	roughness 0.3
+
+	// transparent true
+	//scene_blend add
+	scene_blend alpha_blend
+	//cull_hardware none
+
+	depth_write off
+	depth_check off
+	two_sided true
+	receives_shadows false
+}
+
+hlms rock02brown2flat_anomaly pbs : rock_base
+{
+	diffuse_map rock02_anomaly.jpg
+	normal_map rock02_anomaly_norm.jpg
+	specular 1.3 0.3 1.3
+	roughness 0.5
+}
+
+hlms rock26grayBlue_anomaly pbs : rock_base
+{
+	diffuse_map rock26_norm.jpg
+	normal_map rock26.jpg
+	specular 0.3 1.3 0.3
+	roughness 0.35
+}
+
+hlms rock08white3tall_anomaly pbs : rock_base
+{
+	diffuse_map rock08_anomaly.jpg
+	normal_map rock08_norm.jpg
+	// ambient 0.7 0.7 0.6
+	specular 0.3 0.3 0.3
+	roughness 0.25
+}
+
+hlms rock35red1edgy_anomaly pbs : rock_base
+{
+	diffuse_map rock35_anomaly.jpg
+	normal_map rock35_norm.jpg
+	// ambient 1.2 0.9 0.7
+	diffuse 1.0 0.7 0.5
+	specular 0.3 0.3 0.3
+	roughness 0.25
+}
+
