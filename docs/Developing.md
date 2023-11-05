@@ -43,13 +43,14 @@ Advanced, extra, external tools, should be used when testing or developing new (
 [documentation](https://renderdoc.org/docs/index.html), [forum post](https://forums.ogre3d.org/viewtopic.php?p=554959#p554959) with quick help on using it, [video tutorials](https://www.youtube.com/results?search_query=tutorial+%22renderdoc%22).
 - [Valgrind](https://valgrind.org/) - For debugging CPU, memory leaks etc.  
 To use run e.g. `valgrind --leak-check=full ./sr-editor3`, at end it will list details about leaks.
-- [ASAN](https://clang.llvm.org/docs/AddressSanitizer.html) - close to above
-- Profiler. E.g.: Intel VTune, AMD uProf, Google Orbit, KDAB/hotspot. Any of them will do. For measuring performance, CPU time spent.  
+- [ASAN](https://clang.llvm.org/docs/AddressSanitizer.html) - close purpose to above
+- Profiler. E.g.: Intel VTune, AMD uProf, Google Orbit, KDAB/hotspot. Any of them will do.  
+For measuring performance, CPU time spent in methods from classes in code.  
 Used [KDAB/hotspot](https://github.com/KDAB/hotspot) on Linux, quick tutorial [video](https://www.youtube.com/watch?v=6ogEkQ-vKt4), one [longer](https://www.youtube.com/watch?v=HOR4LiS4uMI). Overview of profiling [tools](https://www.youtube.com/watch?v=GL0GIdj6k2Q), Heaptrack [video](https://www.youtube.com/watch?v=OXqqVSdrSAw).
 
-WIP Using Vulkan, it has better support for debugging tools. And it complains more, more debug asserts etc, which is good for finding errors.  
+WIP Using Vulkan, it has better support for debugging tools, has more debug asserts etc, which <del>is</del> would be good for finding errors.  
 Mentioned in [Post1](https://forums.ogre3d.org/viewtopic.php?p=553813#p553813), [Post2](https://forums.ogre3d.org/viewtopic.php?p=554446#p554446).  
-It starts longer though, shader compilation is much slower. MyGui doesn't work with it.
+It starts longer though, shader compilation is much slower. MyGui **doesn't** work with Vulkan.
 
 --------
 
@@ -244,10 +245,10 @@ These are using Ogre-Next base components but extend them to our specific render
 ### HlmsPbs2
 
 Main **shaders** for all materials (except terrain and particles) here:  
-`data/Hlms/Pbs/Any/Main/800.PixelShader_piece_ps.any`  (modified)  
-`data/Hlms/Pbs/Any/Main/800.VertexShader_piece_vs.any`  (not yet)  
+[800.PixelShader_piece_ps.any](data/Hlms/Pbs/Any/Main/800.PixelShader_piece_ps.any)  (modified)  
+[800.VertexShader_piece_vs.any](data/Hlms/Pbs/Any/Main/800.VertexShader_piece_vs.any)  (not yet)  
 structures with variables passed to them are in:  
-`data/Hlms/Pbs/Any/Main/500.Structs_piece_vs_piece_ps.any`  
+[500.Structs_piece_vs_piece_ps.any](data/Hlms/Pbs/Any/Main/500.Structs_piece_vs_piece_ps.any)  
 
 Keep in mind [post](https://forums.ogre3d.org/viewtopic.php?p=554100&sid=6798838bbed3be6881aa07bf10012412#p554100),
 in .any this does not comment: // @property( hlms_fog )  

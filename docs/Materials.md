@@ -78,7 +78,9 @@ Objects have their own wiki page, it also has more info on material editing (.ma
 
 Almost everything with materials is different now in SR3.  
 In **old** SR with Ogre, we used _shiny_ material generator with its own `.shader` syntax and `.mat` files.  
+
 Now in SR3 with Ogre-Next we use _HLMS_ and **new** PBS materials.  
+Main `.material` and `.material.json` **files** are in [data/materials/Pbs](../data/materials/Pbs).  
 
 ### ⭐ Old
 
@@ -125,25 +127,34 @@ Also texture keywords changed, all are optional:
 For terrain layer textures these parames are in `presets.xml` as:  
 `ro - roughness, me - metalness, re - reflection`.
 
-### New continued
+Details are as comments in code [OgreHlmsPbsDatablock.h](https://github.com/OGRECave/ogre-next/blob/master/Components/Hlms/Pbs/include/OgreHlmsPbsDatablock.h).  
+Datablock is basically a structure with all material parameters.  
 
-All in code `Ogre/ogre-next/Components/Hlms/Pbs/src/OgreHlmsPbsDatablock.cpp`.  
-Datablock is basically what has all material parameters.  
+### Material Editor
 
-Editing files by hand is one way, the better is using **Material Editor** (Alt-F) GUI,  
+Editing files by hand is one way, the better is using our **Material Editor** (Alt-F) GUI (both in game and editor),  
 saving and then applying / merging changes back to original files.  
 
-Main `.material` and `.material.json` **files** are in `/data/materials/Pbs`.  
-Materials can be adjusted real-time in Material Editor (Alt-F): or in Options, button on tab **Tweak**. find material and use sliders etc.  
-_ToDo:_ this is the main tool, needs saving _all_ as `.material.json` files.  
+Materials can be adjusted real-time in Material Editor (Alt-F): or in Options, button on tab **Tweak**.  
+Find material (search by name above) and then use sliders to tweak. There are few tabs, water has own set.  
+
+### material.json
 
 We now also use `.material.json` format, longer and more advanced.  
-A bit worse to edit by hand. Can be saved from Material Editor GUI into `.json` files in:  
-`/home/user/.cache/stuntrally3/materials`
+A bit worse to edit by hand. Can be **saved** from Material Editor GUI into `.json` files in:  
+`/home/user/.cache/stuntrally3/materials`  
+either one material or all.  
 
-In `.material.json` you can't inherit materials (confirmed [here](https://forums.ogre3d.org/viewtopic.php?p=553712#p553712)).  
+A couple of _freaking hopeless_ issues to keep in mind:
+
+In `.material` scripts you can't set textures to **wrap** (and they _don't_ by default) or other sampler configs, but inheriting works.  
+
+`.material` is now just meant as a faster way of porting old SR `.mat`,  
+then best to save as .json from Material Editor (still a lot manual work to do).
+
+In `.material.json` you **can't inherit** materials (confirmed [here](https://forums.ogre3d.org/viewtopic.php?p=553712#p553712)).  
 Need to duplicate whole e.g. for rivers.  
-Also if present, need to remove secion `"reflection"` with `DynamicCubemap`, will crash otherwise, it is added by code.  
+Also if present, need to remove section `"reflection"` with `DynamicCubemap`, will crash otherwise, it is added by code.  
 
-In `.material` scripts you can't set textures to wrap or other sampler configs but inheriting works.  
-
+_ToDo:_ try without River* materials needed, road setProperty("river")..?  
+_ToDo:_ make this easier, reflection for objects..

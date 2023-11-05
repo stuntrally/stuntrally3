@@ -1,7 +1,7 @@
 _Where is your user data located, saved logs and configs._
 
 
-### Introduction
+## Introduction
 
 This page describes where the game searches for its data and configuration files.
 
@@ -11,7 +11,7 @@ The information is useful if you are e.g.:
   * doing manual configuration (editing .cfg without the GUI)
   * packaging Stunt Rally 3
 
-### Location of User's dir
+## Location of User's dir
 
 This path is visible directly in game, **in Gui**, on Help page, under User Path. You can mark it and copy.
 
@@ -26,7 +26,7 @@ On GNU/Linux the user's dir is mostly:
 However, `$XDG_CONFIG_HOME/stuntrally3` takes precedence if the environment variable is set. (**?**)
 
   
-### User Configs and Logs
+## User Configs and Logs
 
 The **default** configuration files are located in the data path, under `config` subdirectory. The game creates dedicated configuration files for each users and they take precedence over the defaults. If you want to reset your configuration to defaults, just delete your user's dir game.cfg, input*.xml, editor.cfg.
 
@@ -45,7 +45,7 @@ Files in user's dir are:
     * ogre.err, ogre_ed.err - same as .log but only with errors and warnings, also from std::cerr
     * MyGUI.log - not important, stuff from GUI
 
-#### User data
+### User data
 
 As the game's installation directory might very well be write protected from non-administrators, your user generated data is saved in user's dir. This data might be critical to the game or editor, but they can start without it with default settings.
 
@@ -56,7 +56,7 @@ Subdirs are: _([mode] is easy or normal, both simulation modes)_
   * ghosts/mode - best laps for each car on each track are saved here
   * records/mode - .txt files for best times on tracks
   * replays - if you save replays they land here
-  * screenshots - filled when making screens in game or editor (by default F12)
+  * _screenshots - filled when making screens in game or editor (by default F12)_ - **not** implemented in SR3
   * tracks - user made tracks are located here. To share a track just pack the track's dir. Then unpacking here makes the track available.
 
 If you want to reset record time for a track just go inside records/ and delete the .txt file with same track name (or edit it and remove section for a car name).
@@ -64,7 +64,7 @@ If you want to reset record time for a track just go inside records/ and delete 
 To completely remove the game you need to delete your user's dir. Ghosts and replays may become big (e.g. 1GB).
 
 
-### Game Data
+## Game Data
 
 As a rule of thumb, Stunt Rally doesn't care what its working directory is (i.e. from where you run the game). It will detect the actual executable location and search the data in relation to that. 
 
@@ -72,7 +72,7 @@ There are few different possibilities here, making it possible to run the game f
 
 If you have your data in a really obscure path, you can always define `STUNTRALLY_DATA_ROOT` environment variable.
 
-### Cache
+## Cache
 
 Cache is used for automatically generated files. Deleting cache files is safe - the application will re-create them when they are next needed, although this might result in a temporary slow-down.
 
@@ -80,7 +80,24 @@ On Windows, this is currently the same as user's config directory.
 
 On Linux (and other similar systems), the cache dir is most likely `~/.cache/stuntrally3` (where tilde means the user's home directory). However, `$XDG_CACHE_HOME/stuntrally3` takes precedence if the environment variable is set.
 
+### Contents
+
+Folders:
+- materials/ - is where `.json` files will be, after saving from Material Editor (one or all)
+- shaders/ - here can be (lots) of `.glsl` (or `.hlsl`) files resulting from HLMS shader generating. Only for those not in cache (otherwise size 0).
+
+Files:
+- hlmsCache1.bin, hlmsCache3.bin, hlmsCache7.bin
+- shaderCode.cache
+- textureData.json
+
+Note: `shaderCode.cache` could get very big e.g. 1GB at which point it may even slow down game/editor starting instead of helping.  
+
+Deleting these files will restore fastest starting speed, but may slow down tracks loading.  
+
+Options for using cache are on Gui in Settings.
+
   
-### Config XMLs
+## Config XMLs
 
 These files are listed in [Developing here](Developing.md#config-files-📄)
