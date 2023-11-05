@@ -10,7 +10,7 @@
 [Stunt Rally Homepage](https://stuntrally.tuxfamily.org/) - Download links, track & vehicle browsers etc.  
 [Forums](https://forum.freegamedev.net/viewforum.php?f=77) - Discussions, tracks, Issues, etc.  
 [Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs & Issues, pull requests, etc.  
-[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_Menu.md) - new, is inside docs/  
+[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md) - new, is inside docs/  
 Old [Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from 2.x versions and development  
 [Videos](https://www.youtube.com/user/TheCrystalHammer) - from game and editor (old)  
 [Donations](https://cryham.tuxfamily.org/donate/) - financial support
@@ -25,7 +25,7 @@ Already playable game in all modes. Working Track Editor, almost fully restored.
 Still WIP, not yet released and beta (possible bugs).
 
 **Full features** [list here](docs/Features.md).  
-**Documentation** is now inside [docs/](docs/_Menu.md) dir. It's partly WIP.
+**Documentation** is now inside [docs/](docs/_menu.md) dir. It's partly WIP.
 
 **Changes** and new features in [changelog](docs/Changelog.md).  
 Details in [Roadmap](docs/Roadmap.md) with missing features and todo.  

@@ -123,7 +123,7 @@ and enter this code:
 ```
 import PhysicsConstraints;
 PhysicsConstraints.exportBulletFile("object.bullet")
-``` 
+```
 Save it as `bulletexp`
 
 ![](images/img20121231_13.png)

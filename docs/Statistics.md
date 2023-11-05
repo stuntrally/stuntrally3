@@ -55,4 +55,4 @@ Link to calculate [date difference](https://www.timeanddate.com/date/durationres
 |**0.2**  |06.06'10| 56 |  22 | |  |  **2**| +1|   |   |**1** |Jungle         | **3**  | CT, 360    |                       |
 |**0.1**  |11.04'10| -  |  15 | |  |  **1**|   |   |   |**0** |               | **1**  | 3S         |                       |
 
-Old image with graphs from this data is [here](StatisticsOld.png) (last is SR 2.5, from 11 2014).  
+Old image with graphs from this data is [here](images/StatisticsOld.png) (last is SR 2.5, from 11 2014).

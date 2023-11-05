@@ -81,12 +81,15 @@ These libs have `CMakeLists.txt` file inside, which means we need to:
 **for each lib**: start CMake-Gui, pick sources folder to where you extracted it  
 e.g. `c:\dev\enet-1.3.17`, and then new `build` folder inside e.g. to `c:\dev\enet-1.3.17\build`  
 After that set, press Configure, twice, and lastly Generate.  
-Now there should be a `.sln`` file inside build\ dir.  
+Now there should be a `.sln` file inside build\ dir.  
 
 Open it (with your VS) and build solution.  
 We need to build `Release x64` (64 bit compiler, Release configuration), _later if needed Debug for any issue finding._
 
 Many of these libraries will build just as _Static library .lib_. That's okay, _these will link with our exe, not be in own DLL_.  
+
+For **enet** also these system libs were needed to add in Properties - Linker input:  
+winmm.lib;Ws2_32.lib;
 
 Very **important** thing is that all should use in:  
 Project Properties - C++ - Code Generation - Runtime Library: **Multi Threaded DLL**, and for Debug same but with Debug DLL.  
