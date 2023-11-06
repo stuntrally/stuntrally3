@@ -478,6 +478,7 @@ void App::updatePoses(float time)
 		{	mCubeCamera->setPosition(carM->ndMain->getPosition());// carPoses[q][c].pos);
 			// mCubeCamera->setVisibilityFlags( RV_MaskReflect /*32*/ );
 			// mCubeCamera->setOrientation(carM->ndMain->getOrientation());
+			// mCubeCamera->_getFullTransformUpdated();  //-?
 		}
 
 

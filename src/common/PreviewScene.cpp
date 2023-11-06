@@ -133,6 +133,7 @@ bool PreviewScene::Load(Ogre::String mesh)
 
 	cam->setPosition(pos);
 	cam->lookAt(look);
+	// cam->_getFullTransformUpdated();
 
 	yaw = 0.f;
 	return true;
@@ -144,6 +145,7 @@ void PreviewScene::Update(float dt)
 
 	Quaternion q;  q.FromAngleAxis(Radian(yaw), Vector3::UNIT_Y);
 	node->setOrientation(q);
+	node->_getFullTransformUpdated();
 #ifdef SR_EDITOR
 	yaw += dt * 0.7f * app->pSet->prv_rot_speed;  //par rot speed
 #endif

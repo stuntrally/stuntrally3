@@ -103,6 +103,7 @@ void App::UpdEmtBox()
 	ndEmtBox->setPosition(em.pos);
 	//ndEmtBox->setOrientation(Quaternion(Degree(em.rot), em.up));
 	ndEmtBox->setScale(em.size);
+	ndEmtBox->_getFullTransformUpdated();
 }
 
 void App::SetEmtType(int rel)

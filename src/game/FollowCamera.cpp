@@ -291,6 +291,7 @@ void FollowCamera::Apply(const PosInfo& posIn)
 	if (cam->nd)
 	{	cam->nd->setPosition(posIn.camPos);
 		cam->nd->setOrientation(posIn.camRot);
+		cam->nd->_getFullTransformUpdated();  //-?
 	}else
 	if (cam->cam)
 	{	cam->cam->setPosition(posIn.camPos);

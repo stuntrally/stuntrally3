@@ -84,6 +84,7 @@ void CarModel::UpdNextCheck()  // 📍
 	ndNextChk->setPosition(p);
 	ndNextChk->setScale(gPar.chkBeamSx, gPar.chkBeamSy, gPar.chkBeamSx);
 	ndNextChk->setVisible(pSet->check_beam && !pApp->bHideHudBeam);
+	ndNextChk->_getFullTransformUpdated();
 }
 void CarModel::ShowNextChk(bool visible)
 {
@@ -226,7 +227,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		ndMain->setOrientation(posInfo.rot * Quaternion(Degree(posInfo.hov_roll),Vector3::UNIT_X));
 	else
 		ndMain->setOrientation(posInfo.rot);
-	//ndMain->_getFullTransformUpdated();  //?
+	ndMain->_getFullTransformUpdated();  //?
 	
 
 	//  🟢🌿 grass sphere pos
@@ -237,6 +238,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	if (ndSph)  // sph test
 	{	ndSph->setPosition(posSph[0]);
 		ndSph->setScale(Vector3::UNIT_SCALE * 1.7 *2/0.6f);  //par
+		ndSph->_getFullTransformUpdated();
 	}
 
 	//  🎥 set camera view
@@ -358,6 +360,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 			ndWh[w]->setPosition(posInfo.whPos[w]);
 			#endif
 			ndWh[w]->setOrientation(posInfo.whRot[w]);
+			ndWh[w]->_getFullTransformUpdated();  //?
 		}
 
 		///  Update particles and trails
@@ -484,6 +487,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 					//	vp.y += road->fHeight;	}/**/
 				ndWhE[w]->setPosition(vp);
 				//ndWhE[w]->setOrientation(posInfo.rot);  // fixme? upside down
+				ndWhE[w]->_getFullTransformUpdated();
 			}
 			//  const trail alpha
 			float ac = pipe ? 0.f : /*own par..*/lay.smoke < 0.5f ? 0.14f : 0.f;
@@ -516,9 +520,10 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 			ndBrake[w]->setScale(-1, 1, 1);
 			
 		ndBrake[w]->pitch(Degree(180), Node::TS_LOCAL);
-		
 		if (w < 2)  // turn only front wheels
 			ndBrake[w]->yaw(-Degree(posInfo.whSteerAng[w]));
+
+		ndBrake[w]->_getFullTransformUpdated();
 	}
 	
 	if (iFirst <= 10)  ++iFirst;  //par

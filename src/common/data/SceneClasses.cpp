@@ -15,6 +15,7 @@ void Object::SetFromBlt()
 	if (!nd)  return;
 	nd->setPosition(Axes::toOgre(pos));
 	nd->setOrientation(Axes::toOgreW(rot));
+	nd->_getFullTransformUpdated();
 }
 
 

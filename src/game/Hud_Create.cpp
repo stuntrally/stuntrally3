@@ -411,6 +411,7 @@ void CHud::Create()
 			const Real s = 0.06f;  // par
 			ndTireVis[i]->setScale(s, s*asp, 1.f);
 			// ndTireVis[i]->setVisible(pSet->car_tirevis);  //-
+			ndTireVis[i]->_getFullTransformUpdated();  //?
 	}	}
 
 

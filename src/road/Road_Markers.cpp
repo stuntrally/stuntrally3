@@ -47,6 +47,7 @@ void SplineMarkEd::createMarker(String mat, Item*& it, SceneNode*& nd)
 void SplineEdit::Mark::setPos(Vector3 pos)
 {
 	nd->setPosition(pos);
+	nd->_getFullTransformUpdated();  //?
 }
 void SplineEdit::Mark::setVis(bool vis)
 {
@@ -70,6 +71,7 @@ void SplineMarkEd::AddMarker(Vector3 pos)
 	nd->attachObject(it);
 	nd->setPosition(pos);
 	nd->scale(fMarkerScale * Vector3::UNIT_SCALE);
+	nd->_getFullTransformUpdated();  //?
 
 	Mark m;
 	m.nd = nd;  m.it = it;
@@ -140,6 +142,7 @@ void SplineRoad::SelectMarker(bool bHide)
 		m.setVis(false);
 		ndChosen->setPosition(m.nd->getPosition());
 		ndChosen->setScale(m.nd->getScale());
+		ndChosen->_getFullTransformUpdated();
 		ndChosen->setVisible(true);
 		ndRot->setVisible(true);
 		lastNdChosen = i;
@@ -151,6 +154,7 @@ void SplineRoad::SelectMarker(bool bHide)
 		ndChk->setPosition(pc);
 		
 		ndChk->setScale(mP[i].chkR * 2.f * mP[i].width * Vector3::UNIT_SCALE);
+		ndChk->_getFullTransformUpdated();
 		ndChk->setVisible(true);
 	}	
 
@@ -162,6 +166,7 @@ void SplineRoad::SelectMarker(bool bHide)
 		m.setVis(false);
 		ndSel->setPosition(m.nd->getPosition());
 		ndSel->setScale(m.nd->getScale());
+		ndSel->_getFullTransformUpdated();
 		ndSel->setVisible(true);
 		lastNdSel = iSelPoint;
 	}
@@ -206,6 +211,7 @@ void SplineMarkEd::UpdRot()
 
 	//Quaternion q;  q.FromAngleAxis(Degree(0), vr);
 	//ndRot->setOrientation(q);  //.. box
+	ndRot->_getFullTransformUpdated();
 }
 
 

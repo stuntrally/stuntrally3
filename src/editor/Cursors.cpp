@@ -59,6 +59,7 @@ void App::UpdStartPos(bool vis)
 		{
 			ndCar->setPosition(p1);  ndCar->setOrientation(q1);
 			ndCar->setVisible(vis && gui->bGI && scn->road);  // hide before load
+			ndCar->_getFullTransformUpdated();
 		}else
 			ndCar->setVisible(vis);
 		ndStartBox[i]->setPosition(p1);  ndStartBox[i]->setOrientation(q1);
@@ -66,6 +67,7 @@ void App::UpdStartPos(bool vis)
 		if (scn->road)
 			ndStartBox[i]->setScale(Vector3(1, scn->road->vStartBoxDim.y, scn->road->vStartBoxDim.z));
 	
+		ndStartBox[i]->_getFullTransformUpdated();
 		ndStartBox[i]->setVisible(vis && edMode == ED_Start && bEdit());
 	}
 }
@@ -85,6 +87,7 @@ void App::UpdFluidBox()
 	FluidBox& fb = scn->sc->fluids[iFlCur];
 	ndFluidBox->setPosition(fb.pos);
 	ndFluidBox->setScale(fb.size);
+	ndFluidBox->_getFullTransformUpdated();
 }
 
 void App::UpdMtrWaterDepth()

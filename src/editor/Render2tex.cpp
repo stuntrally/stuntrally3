@@ -326,6 +326,7 @@ void App::UpdMiniPos()
 		Real s = pSet->size_minimap;
 		Real xm1 = 1.f - s / asp, ym1 = -1.f + s, xm2 = 1.f, ym2 = -1.f;
 		ndPos->setPosition( xm1+(xm2-xm1)*x, ym1+(ym2-ym1)*y, 0.f);
+		ndPos->_getFullTransformUpdated();
 
 		float angrot = mCamera->getOrientation().getYaw().valueDegrees();
 		float psx = 0.9f * pSet->size_minimap, psy = psx*asp;  // *par len

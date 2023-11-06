@@ -739,6 +739,7 @@ void SplineRoad::Pick(Camera* mCamera, Real mx, Real my,
 		if (!newP.onTer && bAddH)
 			pos.y = newP.pos.y;
 		ndHit->setPosition(pos);
+		ndHit->_getFullTransformUpdated();
 	}
 }
 

@@ -323,6 +323,7 @@ void App::UpdObjPick()
 	ndObjBox->setPosition(posO);
 	ndObjBox->setOrientation(rotO);
 	ndObjBox->setScale(s);
+	ndObjBox->_getFullTransformUpdated();
 }
 
 void App::PickObject()
@@ -576,6 +577,7 @@ void App::UpdObjNewNode()
 	objNew.SetFromBlt();
 	objNew.nd->setPosition(p);
 	objNew.nd->setScale(objNew.scale);
+	objNew.nd->_getFullTransformUpdated();
 }
 
 //  💧🌊 Fluids  set type

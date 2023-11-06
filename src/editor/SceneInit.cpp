@@ -573,6 +573,7 @@ void App::TerCircleUpd(float dt)
 	//  scale with distance, to be same on screen
 	const Real dist = std::min(3000.f, scn->road->fHitDist );
 	scn->road->ndHit->setScale(Vector3::UNIT_SCALE * dist * pSet->road_sphr * 0.01f);  // par
+	scn->road->ndHit->_getFullTransformUpdated();
 	const Real Radd = std::max(0.01f, dist * 0.02f);  // par..
 
 	if (!mo)

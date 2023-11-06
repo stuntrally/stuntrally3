@@ -154,7 +154,7 @@ void App::MouseFluids()
 			fb.pos += vm;
 
 			for (int n=0; n < 2; ++n)
-				if (fl.node[n])  fl.node[n]->setPosition(fb.pos);
+				if (fl.node[n]){  fl.node[n]->setPosition(fb.pos);  fl.node[n]->_getFullTransformUpdated();  }
 			UpdFluidBox();
 		}
 		else if (mbRight)  // move y
@@ -163,7 +163,7 @@ void App::MouseFluids()
 			fb.pos.y += ym;
 			
 			for (int n=0; n < 2; ++n)
-				if (fl.node[n])  fl.node[n]->setPosition(fb.pos);
+				if (fl.node[n]){  fl.node[n]->setPosition(fb.pos);  fl.node[n]->_getFullTransformUpdated();  }
 			UpdFluidBox();
 		}
 		// rot not supported (bullet trigger isnt working, trees check & waterDepth is a lot simpler)
@@ -210,13 +210,13 @@ void App::MouseEmitters()
 			Vector3 vz = mCamera->getDirection();  vz.y = 0;  vz.normalise();
 			Vector3 vm = (-vNew.y * vz + vNew.x * vx) * d * moveMul;
 			em.pos += vm;
-			em.nd->setPosition(em.pos);  UpdEmtBox();
+			em.nd->setPosition(em.pos);  em.nd->_getFullTransformUpdated();  UpdEmtBox();
 		}
 		else if (mbRight)  // move y
 		{
 			Real ym = -vNew.y * d * moveMul;
 			em.pos.y += ym;
-			em.nd->setPosition(em.pos);  UpdEmtBox();
+			em.nd->setPosition(em.pos);  em.nd->_getFullTransformUpdated();  UpdEmtBox();
 		}
 		else if (mbMiddle)  // rot yaw
 		{

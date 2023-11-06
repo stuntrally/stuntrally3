@@ -273,10 +273,11 @@ void CarModel::Create()
 	all_subs=0;  all_tris=0;  //stats
 	
 	if (bRotFix)
-		ndCar->setOrientation(
+	{	ndCar->setOrientation(
 			Quaternion(Degree(90),Vector3::UNIT_Y) *
 			Quaternion(Degree(180),Vector3::UNIT_X));
-
+		// ndCar->_getFullTransformUpdated();  //at end?
+	}
 
 	///  🆕 Create Models:  body, interior, glass
 	//-------------------------------------------------
