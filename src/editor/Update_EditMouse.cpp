@@ -350,5 +350,7 @@ void App::MouseObjects()
 		}else  break;  // only 1
 	}
 	if (upd)
-		UpdObjPick();
+	{	UpdObjPick();
+		UpdObjNewNode();
+	}
 }
