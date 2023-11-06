@@ -1645,7 +1645,7 @@
 					<Property key="TextColour" value="0.6 0.3 0.6"/>
 				</Widget>
 				<Widget type="TextBox" skin="TextBox" position="24 74 232 24">
-					<Property key="Caption" value="#{NumLocalPlayers}"/>
+					<Property key="Caption" value="#{NumLocalPlayers} **"/>
 					<Property key="TextColour" value="0.7 0.9 1"/>
 				</Widget>
 				<Widget type="Widget" skin="PanelSkin" position="24 103 44 24">

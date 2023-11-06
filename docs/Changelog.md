@@ -30,6 +30,7 @@ Stunt Rally 3 is continuing last SR 2.x, using latest Ogre-Next 3.0.
     - New columns with **user**'s track rating (slider) and bookmark (checkbox) for better orientation
   - Game window title showing mode and players count, changing color
   - More info on Fps bar (F11), colors from values (orange and red are very high), info on Gui
+ Settings for using cache and shaders debug, and got back those for mouse capture and ogre dialog show.
 - Editor
   - Many **terrains** - new Gui buttons: < Previous, > Next, + Add, X Delete, top right (same for Roads)
     - Enter - goes to next terrain, while editing with brushes (outside Gui)
@@ -37,8 +38,11 @@ Stunt Rally 3 is continuing last SR 2.x, using latest Ogre-Next 3.0.
     - Dynamic list with groups - Add,Delete,Load,Save buttons - saved in brushes.ini and png (but slow)
     - Brush parameters - New tab with sliders and **Random** buttons. Colored values
     - Grid brushes, 3×3, 5×5 etc - can repeat N-gon type, repeat in OfsY parameter
-  - Particles scale - new parameter for size e.g. for bigger clouds in distance (keys K,L)
   - Bigger terrain heightmaps - available, with good Fps. File size shown (2k is 16MB, 4k is 67MB!)
+  - New tabs Fluids and Particles with lists for easier picking, colored names
+  - Fluids quality (diffuse, refract (not done yet), reflect) keys 1,2 - to reduce rendering when many on track
+  - Update now saves terrain heightmaps, so F5 won't undo after
+  - Particles scale - new parameter for size e.g. for bigger clouds in distance (keys K,L)
   - Terrain circle cursor - same size far/near, animated
   - Grass layer color - can pick any, no ColorMap combo
   - Sky preview map shown on Sky tab
