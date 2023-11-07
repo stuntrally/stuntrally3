@@ -40,6 +40,7 @@ Stunt Rally 3 is continuing last SR 2.x, using latest Ogre-Next 3.0.
     - Grid brushes, 3×3, 5×5 etc - can repeat N-gon type, repeat in OfsY parameter
   - Bigger terrain heightmaps - available, with good Fps. File size shown (2k is 16MB, 4k is 67MB!)
   - New tabs Fluids and Particles with lists for easier picking, colored names
+  - Focus camera on current (object, fluid, road point, anything) - key \
   - Fluids quality (diffuse, refract (not done yet), reflect) keys 1,2 - to reduce rendering when many on track
   - Update now saves terrain heightmaps, so F5 won't undo after
   - Particles scale - new parameter for size e.g. for bigger clouds in distance (keys K,L)
