@@ -6,6 +6,7 @@
 #include "GuiCom.h"
 #include "Road.h"
 #include <OgreSceneNode.h>
+#include <OgreVector3.h>
 #include <MyGUI_InputManager.h>
 #include <MyGUI_Widget.h>
 #include <MyGUI_TextBox.h>
@@ -393,3 +394,55 @@ void App::KeyTxtEmitters(Real q)
 }
 
 #undef isKey
+
+//  Focus Cam on cur edit, cursor
+
+void App::FocusCam()
+{
+	Vector3 pos = mCamera->getPosition(), dir = mCamera->getDirection();
+	Real dist = 20.f;  Vector3 sc;
+	auto SetCam = [&]()
+	{	pos -= dir * dist;
+		mCamera->setPosition(pos);
+	};
+		
+	switch (edMode)
+	{
+	case ED_PrvCam:  // 🖼️🎥
+		mCamera->setPosition(scn->sc->camPos);
+		mCamera->setDirection(scn->sc->camDir);  break;
+
+	case ED_Road:  // 🛣️
+	{	int id = scn->road->iChosen;  dist = 50.f;
+		if (id >= 0)
+		{	pos = scn->road->getPos(id);  SetCam();  }
+	}	break;
+
+	case ED_Start:  dist = 20.f;  // 🏁
+		pos = ndCar->getPosition();  SetCam();  break;
+
+	case ED_Objects:  // 📦
+		dist = ndObjBox->getScale().y * 10.f;
+		pos = ndObjBox->getPosition();  SetCam();  break;
+
+	case ED_Fluids:  // 🌊
+		sc = ndFluidBox->getScale();
+		dist = (sc.x + sc.z) / 2.f * 1.5f;
+		pos = ndFluidBox->getPosition();  SetCam();  break;
+
+	case ED_Particles:  dist = 50.f;  // ✨
+		sc = ndEmtBox->getScale();
+		dist = (sc.x + sc.y + sc.z) / 3.f + 10.f;
+		pos = ndEmtBox->getPosition();  SetCam();
+		break;
+
+	//  ter edit, cursor  ⛰️
+	case ED_Deform: case ED_Smooth: case ED_Height: case ED_Filter:
+	default:
+		if (scn->road && scn->road->bHitTer && scn->td)
+		{
+			dist = curBr().size * scn->td->fTriangleSize * 1.2f;
+			pos = scn->road->posHit;  SetCam();
+		}	break;
+	}
+}

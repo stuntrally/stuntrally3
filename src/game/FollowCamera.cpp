@@ -289,7 +289,7 @@ void FollowCamera::Apply(const PosInfo& posIn)
 	//sleep(milliseconds(rand()%20));  // test
 	if (!cam)  return;
 	if (cam->nd)
-	{	cam->nd->setPosition(posIn.camPos);
+	{	cam->nd->setPosition(posIn.camPos);  // todo: crash old nd
 		cam->nd->setOrientation(posIn.camRot);
 		cam->nd->_getFullTransformUpdated();  //-?
 	}else

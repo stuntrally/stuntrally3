@@ -102,7 +102,7 @@ public:
 	CK(InputBar);  CK(CamPos);
 
 	//  🔝 top view
-	void toggleTopView();
+	void ToggleTopView(), FocusCam();
 	bool bTopView = 0, oldFog = 0;
 	Ogre::Vector3 oldPos{0,0,0}, oldRot{0,0,0};
 

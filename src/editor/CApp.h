@@ -89,7 +89,7 @@ public:
 	Ogre::String resTrk;  void NewCommon(bool onlyTerVeget);
 
 	void CreateObjects(), DestroyObjects(bool clear), ResetObjects();
-	void UpdObjPick(), PickObject(), ToggleObjSim();
+	void UpdObjPick(), PickObject(), ToggleObjSim(), FocusCam();
 
 
 	//  🌍 minimap  ----
@@ -123,8 +123,8 @@ public:
 	
 
 	//  ⛰️📍 terrain cursor, circle mesh  o  ----
-	HudRenderable*   hrTerC[ED_Filter+1] ={0,0,0,0};
-	Ogre::SceneNode* ndTerC[ED_Filter+1] ={0,0,0,0};
+	HudRenderable*   hrTerC[ED_TerEditMax] ={0,0,0,0};
+	Ogre::SceneNode* ndTerC[ED_TerEditMax] ={0,0,0,0};
 	void TerCircleInit(), TerCircleUpd(float dt);
 
 	//  🖼️ brush, ter gen  preview tex  ----
@@ -145,7 +145,7 @@ public:
 
 	///<>  🖌️⛰️ terrain edit, brush
 	BrushesIni brSets;
-	const static float brClr[4][3];
+	const static float brClr[ED_TerEditMax][3];
 
 	void SetBrushPreset(int id, bool upd =1), SetBrushRandom(int n);
 	void updBrush(), UpdBr();
@@ -158,7 +158,7 @@ public:
 
 	//  🖌️ params
 	float mBrFiltOld = 1.f;
-	BrushSet br[ED_Filter+1];  // [4]
+	BrushSet br[ED_TerEditMax];
 	int iCurBr = 0;
 	BrushSet& curBr() {  return br[iCurBr];  }
 

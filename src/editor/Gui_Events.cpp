@@ -484,7 +484,7 @@ void CGui::btnSetCam(WP wp)
 }
 
 //  🎥 toggle top view camera
-void CGui::toggleTopView()
+void CGui::ToggleTopView()
 {
 	bTopView = !bTopView;
 	Camera* cam = app->mCamera;
@@ -508,6 +508,13 @@ void CGui::toggleTopView()
 		pSet->bFog = oldFog;  ckFog.Upd();  scn->UpdFog();
 	}
 }
+
+//  🎥 camera focus near selected
+void CGui::FocusCam()
+{
+	app->FocusCam();
+}
+
 
 
 //  ⚫💭 Surface

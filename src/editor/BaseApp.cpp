@@ -40,7 +40,7 @@ void BaseApp::textInput(const SDL_TextInputEvent &arg)
 	const char* text = &arg.text[0];
 	auto unicode = utf8ToUnicode(std::string(text));
 
-	if (bGuiFocus)
+	if (bGuiFocus && !alt)
 	for (auto it = unicode.begin(); it != unicode.end(); ++it)
 		MyGUI::InputManager::getInstance().injectKeyPress(
 			MyGUI::KeyCode::None, *it);
@@ -61,7 +61,7 @@ void BaseApp::keyReleased( const SDL_KeyboardEvent &arg )
 	default:  break;
 	}
 
-	if (bGuiFocus)
+	if (bGuiFocus && !alt)
 	{
 		MyGUI::KeyCode kc = SDL2toGUIKey(arg.keysym.sym);
 		MyGUI::InputManager::getInstance().injectKeyRelease(kc);

@@ -4,7 +4,7 @@ enum ED_MODE
 {
 	ED_Deform=0, ED_Smooth, ED_Height, ED_Filter, /*ED_Paint,*/
 	ED_Road, ED_Start, ED_PrvCam, ED_Fluids, ED_Objects, ED_Particles,
-	ED_ALL
+	ED_ALL,  ED_TerEditMax = ED_Filter+1
 };
 
 enum WND_Types  // pSet->inMenu

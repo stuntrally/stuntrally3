@@ -237,8 +237,12 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 		//  Top view  alt-Z
 		case key(Z):
-			if (alt)  {  gui->toggleTopView();  return;  }
+			if (alt)  {  gui->ToggleTopView();  return;  }
 			break;
+
+		//  Focus  \.
+		case key(BACKSLASH):
+			gui->FocusCam();  return;
 
 
 		//  Input bar  ctrl-I
