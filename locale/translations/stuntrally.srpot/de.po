@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-02 20:02+0100\n"
-"PO-Revision-Date: 2023-10-30 05:09+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2023-11-08 21:35+0000\n"
+"Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/de/>\n"
 "Language: de\n"
@@ -880,7 +880,7 @@ msgstr ""
 #: :725..SingleRace.Vehicle.Image
 msgctxt "TipCarDesc"
 msgid "Vehicle description text. Can have driving advices."
-msgstr ""
+msgstr "Text zur Fahrzeugbeschreibung. Kann Fahrhinweise haben."
 
 #. TIP  Vehicle 
 #: Media/gui/Game.layout:526 ..SingleRace.Vehicle.Button
@@ -953,7 +953,7 @@ msgstr "Spiegelung"
 #: Media/gui/MaterialEditor.layout:149 ..MaterialEditor.Main.Text :194
 msgctxt "ColMetalness"
 msgid "Metalness"
-msgstr ""
+msgstr "Metallizität"
 
 #. Color  params 
 #: Media/gui/Game.layout:1173 ..SingleRace.Setup.Paint.Text
@@ -1593,12 +1593,12 @@ msgstr "SchwarzeWüste"
 #. Scenery names 
 msgctxt "SC_SurrealSpace"
 msgid "SurrealSpace"
-msgstr ""
+msgstr "SurrealerRaum"
 
 #. Scenery names 
 msgctxt "SC_GreeceRocky"
 msgid "GreeceRocky"
-msgstr ""
+msgstr "GriechenlandSteinig"
 
 #. Scenery names 
 msgctxt "SC_Marble"
@@ -1606,17 +1606,14 @@ msgid "Marble"
 msgstr "Marmor"
 
 #. Scenery names 
-#, fuzzy
-#| msgctxt "InputMapSteering"
-#| msgid "Steering"
 msgctxt "SC_Spring"
 msgid "Spring"
-msgstr "Lenkung"
+msgstr "Frühling"
 
 #. Scenery names 
 msgctxt "SC_Anomaly"
 msgid "Anomaly"
-msgstr ""
+msgstr "Anomalie"
 
 #. Vehicle Paint names 
 #: Media/gui/Editor.layout:492 ..Editor.Terrain.Light.Text
@@ -2745,7 +2742,7 @@ msgstr "* Neustart erforderlich"
 #: :715..Options.Graphics.Text
 msgctxt "NotDone"
 msgid "not done yet, ToDo"
-msgstr ""
+msgstr "noch nicht getan, ToDo"
 
 #. Screen  info 
 #: Media/gui/Editor_Options.layout:197 ..Options.Graphics.Text
@@ -3786,7 +3783,7 @@ msgstr "Gezeigte nächste"
 #: src/editor/Update_EditKeyTxt.cpp:55
 msgctxt "RacingLine"
 msgid "Racing Line (trail)"
-msgstr ""
+msgstr "Rennlinie (Weg)"
 
 #. View  Camera 
 #: Media/gui/Game_Options.layout:619 ..Options.View.Tab
@@ -3848,46 +3845,37 @@ msgstr "Entwicklung"
 #: Media/gui/Game_Options.layout:1432 ..Options.Tweak.Other.Text
 msgctxt "FPS"
 msgid "Fps bar, render statistics"
-msgstr ""
+msgstr "Fps-Balken, Renderstatistiken"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:221:222:223:224
-#, fuzzy
-#| msgctxt "FramesPerSec"
-#| msgid "Frames per second"
 msgctxt "FPS_Fps"
 msgid "Frames per second"
-msgstr "Bildwiederholfrequenz"
+msgstr "Bilder pro Sekunde"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:222:224
 msgctxt "FPS_Triangles"
 msgid "Millions of triangles"
-msgstr ""
+msgstr "Millionen von Dreiecken"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:222:223:224
 msgctxt "FPS_Draws"
 msgid "Draw calls"
-msgstr ""
+msgstr "Ziehungsaufrufe"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:225
-#, fuzzy
-#| msgctxt "Distance"
-#| msgid "Distance"
 msgctxt "FPS_Instances"
 msgid "Instances"
-msgstr "Distanz"
+msgstr "Instanzen"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:225
-#, fuzzy
-#| msgctxt "VegetCol"
-#| msgid "Vegetation collision"
 msgctxt "FPS_Vegetation"
 msgid "Vegetation models"
-msgstr "Vegetations-Kollision"
+msgstr "Vegetationsmodelle"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:226
@@ -3899,7 +3887,7 @@ msgstr ""
 #: src/common/GuiCom_Options.cpp:223:226
 msgctxt "FPS_Memory"
 msgid "GPU memory"
-msgstr ""
+msgstr "GPU-Speicher"
 
 #. Settings  debug 
 #: Media/gui/Editor_Options.layout:891 ..Options.Settings.Tweak.Check
@@ -4292,7 +4280,7 @@ msgstr "Zurücksetzen"
 #. Game Input  Player 
 msgctxt "InputMapLights"
 msgid "Toggle lights"
-msgstr ""
+msgstr "Lichter umschalten"
 
 #. MAIN  Game Input 
 msgctxt "InputMapShowOptions"
@@ -4411,12 +4399,9 @@ msgstr "Strg-F5 - Auto-Leistungstest starten"
 #. Game Input  Tweak tire edit 
 #: Media/gui/Game_Options.layout:1576 ..Options.Tweak.Tweak.Text
 #: :1611..Options.Tweak.Tires.Text
-#, fuzzy
-#| msgctxt "TiresEdit"
-#| msgid "Tire Edit - (Graphs in mode 4)"
 msgctxt "TiresEdit"
 msgid "Tire Edit - (Graphs mode)"
-msgstr "Reifen bearbeiten - (Graphen in Modus 4)"
+msgstr "Reifen bearbeiten - (Graphenmodus)"
 
 #. Game Input  Tweak tire edit 
 #: Media/gui/Game_Options.layout:1579 ..Options.Tweak.Tweak.Text
@@ -4945,9 +4930,6 @@ msgstr "Kollision"
 #. Terrain  properties 
 #: Media/gui/Editor.layout:600 ..Editor.Terrain.Collision.Text
 #: :1237..Editor.Terrain.Tools.Text
-#, fuzzy
-#| msgctxt "MinimapBorder"
-#| msgid "Border"
 msgctxt "Border"
 msgid "Border"
 msgstr "Rand"
@@ -5998,12 +5980,9 @@ msgstr "Horizont zum Gelände ausrichten"
 
 #. Tools  Align 
 #: Media/gui/Editor.layout:1219 ..Editor.Terrain.Tools.Text
-#, fuzzy
-#| msgctxt "CarType_Terrain"
-#| msgid "Terrain"
 msgctxt "AH_BaseTer"
 msgid "Base Terrain"
-msgstr "Gelände"
+msgstr "Basisgelände"
 
 #. Tools  Align 
 #: Media/gui/Editor.layout:1228 ..Editor.Terrain.Tools.Text
@@ -6038,12 +6017,9 @@ msgstr "Falsche Kontrollpunktmitteilungen nicht anzeigen"
 
 #. Editor Game setup 
 #: Media/gui/Editor_Track.layout:638 ..Track.Game.Check
-#, fuzzy
-#| msgctxt "VehicleLights"
-#| msgid "Vehicle Lights"
 msgctxt "NeedLights"
 msgid "Requires vehicle lights"
-msgstr "Fahrzeugbeleuchtung"
+msgstr "Fahrzeuglichter notwendig"
 
 #. Editor Warnings 
 #: Media/gui/Editor_Help.layout:233 ..Help.Input/help.Shortcuts.Text
@@ -6123,12 +6099,9 @@ msgstr "Kartengröße"
 
 #. Editor  Settings main 
 #: Media/gui/Editor_Options.layout:748 ..Options.Settings.Minimap.Text
-#, fuzzy
-#| msgctxt "Minimap"
-#| msgid "Minimap"
 msgctxt "MiniType"
 msgid "Minimap type"
-msgstr "Karte"
+msgstr "Minikartentyp"
 
 #. Editor  Settings update 
 #: Media/gui/Editor_Options.layout:792 ..Options.Settings.Minimap.Text
@@ -6138,12 +6111,9 @@ msgstr "Straßenpunkte-Größe"
 
 #. Editor  Settings update 
 #: Media/gui/Editor_Options.layout:781 ..Options.Settings.Minimap.Text
-#, fuzzy
-#| msgctxt "TerUpdSkip"
-#| msgid "Terrain update skip"
 msgctxt "RoadUpdSkip"
 msgid "Road update skip"
-msgstr "Geländeaktua. überspr."
+msgstr "Straßenaktua. überspr."
 
 #. Editor  Settings update 
 #: Media/gui/Editor_Options.layout:770 ..Options.Settings.Minimap.Text
@@ -6170,12 +6140,9 @@ msgstr "Blendmap automatisch aktualisieren (langsam für große Pinseln)"
 
 #. Editor  Settings extras 
 #: Media/gui/Editor_Options.layout:895 ..Options.Settings.Tweak.Check
-#, fuzzy
-#| msgctxt "EdCamPos"
-#| msgid "Camera position"
 msgctxt "EdCamPos"
 msgid "Camera position bar  Ctrl-C"
-msgstr "Kameraposition"
+msgstr "Kamerapositionsleiste  Strg-C"
 
 #. Editor  Settings extras 
 #: Media/gui/Editor_Options.layout:899 ..Options.Settings.Tweak.Check
@@ -6463,19 +6430,19 @@ msgstr "V - Vegetation an/aus"
 #: Media/gui/Editor_Help.layout:119 ..Help.Input/help.View.Text
 msgctxt "InputToggleFog"
 msgid "G - toggle Fog"
-msgstr ""
+msgstr "G - Nebel umschalten"
 
 #. MAIN  Editor View toggle 
 #: Media/gui/Editor_Help.layout:123 ..Help.Input/help.View.Text
 msgctxt "InputToggleWeather"
 msgid "I - toggle Weather"
-msgstr ""
+msgstr "I - Wetter umschalten"
 
 #. MAIN  Editor View toggle 
 #: Media/gui/Editor_Help.layout:127 ..Help.Input/help.View.Text
 msgctxt "InputToggleParticles"
 msgid "P - toggle Particles"
-msgstr ""
+msgstr "P - Partikeln umschalten"
 
 #. Terrain  Edit modes 
 #: Media/gui/Editor_Help.layout:262 ..Help.Input/help.Terrain.Text
@@ -6519,12 +6486,9 @@ msgstr "C - Anstrichfarbe"
 
 #. Terrain  Toggle 
 #: Media/gui/Editor_Help.layout:281 ..Help.Input/help.Terrain.Text
-#, fuzzy
-#| msgctxt "InputLockBrush"
-#| msgid "Enter - lock brush position"
 msgctxt "InputLockBrush"
 msgid "Insert - lock brush position"
-msgstr "Eingabe - Pinselposition einrasten"
+msgstr "Einfügen - Pinselposition einrasten"
 
 #. Terrain  Toggle 
 #: Media/gui/Editor_Help.layout:285 ..Help.Input/help.Terrain.Text
@@ -7194,7 +7158,7 @@ msgstr ""
 #: Media/gui/Editor_Help.layout:768 ..Help.Input/help.Particles.Text
 msgctxt "InputParticlesStatic"
 msgid "Enter - toggle static"
-msgstr ""
+msgstr "Enter - statisch umschalten"
 
 #. HUD  Camera info  parts (use same count, separated by comma) 
 #: src/game/FollowCamera.cpp:603
@@ -7467,15 +7431,11 @@ msgid "Rewind"
 msgstr "Zurück"
 
 #. TIP  Hints title+text  (in How To Play) 
-#, fuzzy
-#| msgctxt "Hint-0text"
-#| msgid ""
-#| "If you crashed or you're stuck, hold [Backspace] to move back in time."
 msgctxt "Hint-0text"
 msgid "If you crashed or you're stuck, hold [Insert] to move back in time."
 msgstr ""
 "Falls Sie einen Unfall gebaut haben oder Sie feststecken, halten sie die "
-"[Rücktaste] gedrückt, um sich in der Zeit zurückzubewegen."
+"[Einfügen] gedrückt, um sich in der Zeit zurückzubewegen."
 
 #. TIP  Hints title+text  (in How To Play) 
 #: Media/gui/Game_Help.layout:377 ..HowToPlay.Button
@@ -7709,6 +7669,8 @@ msgstr "Hilfe"
 msgctxt "Hint-15text"
 msgid "For more info, check [Help] in the menu. It also has links to websites."
 msgstr ""
+"Weitere Informationen finden Sie unter [Hilfe] im Menü. Dort finden Sie auch "
+"Links zu Websites."
 
 #. TIP  Hints title+text  (in How To Play) 
 #: Media/gui/Game_Help.layout:405 ..HowToPlay.Button
@@ -7729,7 +7691,7 @@ msgstr ""
 #: Media/gui/Game_Help.layout:377 ..HowToPlay.Button
 msgctxt "Hint-17"
 msgid "Trail"
-msgstr ""
+msgstr "Weg"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-17text"
@@ -7768,7 +7730,7 @@ msgstr ""
 #: Media/gui/Game_Help.layout:405 ..HowToPlay.Button
 msgctxt "Hint-20"
 msgid "Fluids"
-msgstr ""
+msgstr "Flüssigkeiten"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-20text"
@@ -7781,7 +7743,7 @@ msgstr ""
 #: Media/gui/Game_Help.layout:412 ..HowToPlay.Button
 msgctxt "Hint-21"
 msgid "Wheels"
-msgstr ""
+msgstr "Räder"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-21text"
@@ -7799,12 +7761,12 @@ msgstr "Tastatur"
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-22text"
 msgid "By default, keyboard arrows are used to drive."
-msgstr ""
+msgstr "Standardmäßig werden die Pfeile der Tastatur zum Fahren verwendet."
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-23"
 msgid "Editors"
-msgstr ""
+msgstr "Editoren"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-23text"
