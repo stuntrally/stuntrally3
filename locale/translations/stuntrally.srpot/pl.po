@@ -10,18 +10,18 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-02 20:02+0100\n"
-"PO-Revision-Date: 2023-10-08 04:10+0000\n"
-"Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
+"PO-Revision-Date: 2023-11-08 21:35+0000\n"
+"Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
-"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && ("
+"n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
 "n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #. General 
 #: Media/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -1620,7 +1620,7 @@ msgstr "Sterowanie"
 #. Scenery names 
 msgctxt "SC_Anomaly"
 msgid "Anomaly"
-msgstr ""
+msgstr "Anomalia"
 
 #. Vehicle Paint names 
 #: Media/gui/Editor.layout:492 ..Editor.Terrain.Light.Text
@@ -2668,7 +2668,7 @@ msgstr "Ukryj duchy, gdy odległość jest mniejsza od"
 #: Media/gui/Game_Replay.layout:125 ..Replays.View.Check
 msgctxt "RplHideHudAids"
 msgid "Hide HUD aids when playing replay (pacenotes, trail)"
-msgstr ""
+msgstr "Ukryj pomoce z deski podczas powtórki (znaki, linia)"
 
 #. Screen 
 #: Media/gui/Editor_Help.layout:237 ..Help.Input/help.Shortcuts.Text
@@ -3853,7 +3853,7 @@ msgstr "Narzędzia"
 #: Media/gui/Game_Options.layout:1432 ..Options.Tweak.Other.Text
 msgctxt "FPS"
 msgid "Fps bar, render statistics"
-msgstr ""
+msgstr "Pasek Fps, statystyki renderowania"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:221:222:223:224
@@ -3868,13 +3868,13 @@ msgstr "Klatki na sekundę (FPS)"
 #: src/common/GuiCom_Options.cpp:222:224
 msgctxt "FPS_Triangles"
 msgid "Millions of triangles"
-msgstr ""
+msgstr "Miliony trójkątów"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:222:223:224
 msgctxt "FPS_Draws"
 msgid "Draw calls"
-msgstr ""
+msgstr "Zawołania rysowania"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:225
@@ -3904,7 +3904,7 @@ msgstr ""
 #: src/common/GuiCom_Options.cpp:223:226
 msgctxt "FPS_Memory"
 msgid "GPU memory"
-msgstr ""
+msgstr "Pamięć karty"
 
 #. Settings  debug 
 #: Media/gui/Editor_Options.layout:891 ..Options.Settings.Tweak.Check
@@ -4296,7 +4296,7 @@ msgstr "Start od poprzedniego punktu kontrolnego"
 #. Game Input  Player 
 msgctxt "InputMapLights"
 msgid "Toggle lights"
-msgstr ""
+msgstr "Przełącz światła"
 
 #. MAIN  Game Input 
 msgctxt "InputMapShowOptions"
@@ -6881,7 +6881,7 @@ msgstr "ctrl-shift-Enter - zmaż drogę"
 #: Media/gui/Editor_Help.layout:381 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsRiver"
 msgid "alt-Enter - toggle River (no wall, columns etc.)"
-msgstr ""
+msgstr "alt-Enter - przełącz Rzekę (bez ścian, kolumn itp.)"
 
 #. Road  Input  rarely used
 #: Media/gui/Editor_Help.layout:360 ..Help.Input/help.Road1.Text
@@ -7732,6 +7732,8 @@ msgid ""
 "Observe pace note signs above road. They show turns: easy as green, medium "
 "as orange, and sharpest being red."
 msgstr ""
+"Obserwuj znaki tempa nad drogą. Pokazują one zakręty: łatwe zielono, średnie "
+"pomarańczowo, a najostrzejsze czerwono."
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-19"
