@@ -1391,6 +1391,7 @@
 	<Tag name="InputValueChange">Each (mouse/key) move or value change with </Tag>
 	<Tag name="InputSlowFast">shift - slow   ctrl - fast</Tag>
 	<Tag name="InputTopView">Alt-Z - toggle top view</Tag>
+	<Tag name="InputCamFocus">\ - focums camera on current (object, anything)</Tag>
 
 	<!--  MAIN  Editor View toggle  -->
 	<Tag name="InputToggleVeget">V - Disable / enable vegetation</Tag>

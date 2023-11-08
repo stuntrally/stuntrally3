@@ -111,6 +111,10 @@
 							<Property key="TextColour" value="0.8 0.7 1.0"/>
 							<Property key="Caption" value="#{InputTopView}"/>
 						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="12 218 384 30">
+							<Property key="TextColour" value="0.9 0.7 1.0"/>
+							<Property key="Caption" value="#{InputCamFocus}"/>
+						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="396 204 368 20">
 							<Property key="Caption" value="#{InputToggleVeget}"/>
