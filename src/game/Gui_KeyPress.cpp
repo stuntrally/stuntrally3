@@ -237,9 +237,9 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	if (pSet->dev_keys && alt && shift && !mClient)
 	{
 		string t;  char c = 0;
-		if (skey >= SDL_SCANCODE_0 && skey <= SDL_SCANCODE_9)
-		{	c = skey - SDL_SCANCODE_0;  c+='0';  t = pSet->dev_tracks[c];  }
-		if (skey >= SDL_SCANCODE_A && skey <= SDL_SCANCODE_Z)
+		if (skey >= SDL_SCANCODE_1 && skey <= SDL_SCANCODE_0)
+		{	c = skey - SDL_SCANCODE_1;  c+='1';  t = pSet->dev_tracks[c];  }
+		else if (skey >= SDL_SCANCODE_A && skey <= SDL_SCANCODE_Z)
 		{	c = skey - SDL_SCANCODE_A;  c+='A';  t = pSet->dev_tracks[c];  }
 
 		if (!t.empty())
