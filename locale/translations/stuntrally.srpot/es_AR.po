@@ -9,43 +9,44 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-02 20:02+0100\n"
-"PO-Revision-Date: 2014-08-11 15:41+0000\n"
-"Last-Translator: William Beltrán <wbeltranc@gmail.com>, 2015\n"
-"Language-Team: Spanish (Argentina) (http://www.transifex.com/stuntrally/"
-"stuntrally/language/es_AR/)\n"
+"PO-Revision-Date: 2023-11-08 21:35+0000\n"
+"Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
+"Language-Team: Spanish (Argentina) <https://hosted.weblate.org/projects/"
+"stunt-rally-3/stunt-rally-3/es_AR/>\n"
 "Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
-"1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 "
+": 2;\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #. General 
 #: Media/gui/Editor_Help.layout:20 ..Help.Input/help.Text
 #: Media/gui/Game_Help.layout:123 ..Help.Support.Text
 msgctxt "Language"
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #. General 
 #: src/game/Gui_Network.cpp:26 src/editor/Gui_Init.cpp:332
 #: src/editor/Update_EditKeyTxt.cpp:343
 msgctxt "Yes"
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
 #. General 
 #: src/game/Gui_Network.cpp:26:404 src/editor/Gui_Init.cpp:332
 #: src/editor/Update_EditKeyTxt.cpp:343
 msgctxt "No"
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #. General 
 #: src/game/Gui_Replay.cpp:64:85:128 src/game/Gui_Network.cpp:29:361:592
 msgctxt "Error"
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #. HUD  Times bar 
 #: src/game/Hud_Create.cpp:246 src/game/Challenges.cpp:410:540:562:644:662:679
@@ -70,7 +71,7 @@ msgstr ""
 #: src/game/Hud_Create.cpp:245:275 src/game/Gui_Init.cpp:535
 msgctxt "TBLap"
 msgid "Lap"
-msgstr ""
+msgstr "Vuelta"
 
 #. HUD  Times bar 
 #: src/game/Hud_UpdatesAll.cpp:356 src/game/Gui_Init.cpp:533
@@ -83,7 +84,7 @@ msgstr ""
 #: src/game/Challenges.cpp:417:552:564:640:661:678
 msgctxt "TBPosition"
 msgid "Position"
-msgstr ""
+msgstr "Lugar"
 
 #. HUD  Times bar 
 #: Media/gui/Game.layout:410 ..SingleRace.Track.Text
@@ -91,7 +92,7 @@ msgstr ""
 #: src/game/Challenges.cpp:436:451:546:563:636:660:677
 msgctxt "TBPoints"
 msgid "Points"
-msgstr ""
+msgstr "Puntos"
 
 #. HUD  Times bar 
 #: src/game/Hud_UpdatesAll.cpp:407
@@ -110,7 +111,7 @@ msgstr ""
 #: src/game/Hud_Create.cpp:318
 msgctxt "WrongChk"
 msgid "Wrong Checkpoint"
-msgstr ""
+msgstr "Punto de control incorrecto"
 
 #. Editor  status 
 #: src/editor/SceneInit.cpp:262
@@ -154,7 +155,7 @@ msgstr ""
 #: ..NewGame.Button src/game/Gui_Util.cpp:183
 msgctxt "SingleRace"
 msgid "Single Race"
-msgstr ""
+msgstr "Carrera individual"
 
 #. MAIN  Menu 
 #: Media/gui/Game.layout:1872 ..SingleRace.Tab Media/gui/Game_Main.layout:148
@@ -163,7 +164,7 @@ msgstr ""
 #: src/game/Championships.cpp:279:423:445 src/game/Gui_Util.cpp:105:165
 msgctxt "Championship"
 msgid "Championship"
-msgstr ""
+msgstr "Campeonato"
 
 #. MAIN  Menu 
 #: Media/gui/Game_Main.layout:130 ..NewGame.Button
@@ -171,7 +172,7 @@ msgstr ""
 #: src/game/Championships.cpp:279:423:445 src/game/Gui_Util.cpp:104:164
 msgctxt "Tutorial"
 msgid "Tutorial"
-msgstr ""
+msgstr "Tutoría"
 
 #. MAIN  Menu 
 #: Media/gui/Game_Main.layout:166 ..NewGame.Button
@@ -203,7 +204,7 @@ msgstr ""
 #: ..StuntRally##{GameVersion}.Button Media/gui/Game_Options.layout:5
 msgctxt "Options"
 msgid "Options"
-msgstr ""
+msgstr "Opciones"
 
 #. MAIN  Menu 
 #: Media/gui/Common.layout:4 ..Button
@@ -232,7 +233,7 @@ msgstr ""
 #: ..StuntRally##{GameVersion}.Button
 msgctxt "Help"
 msgid "Help"
-msgstr ""
+msgstr "Ayuda"
 
 #. MAIN  Menu 
 #: Media/gui/Game_Help.layout:140 ..Help.Tab
@@ -268,7 +269,7 @@ msgstr ""
 #: Media/gui/Game_Help.layout:58 ..Help.Support.Button
 msgctxt "Homepage"
 msgid "Homepage"
-msgstr ""
+msgstr "Página web"
 
 #. MAIN  Help links 
 #: Media/gui/Game_Help.layout:64 ..Help.Support.Button
@@ -280,7 +281,7 @@ msgstr ""
 #: Media/gui/Game_Help.layout:77 ..Help.Support.Button
 msgctxt "Forum"
 msgid "Forum"
-msgstr ""
+msgstr "Foro"
 
 #. MAIN  Help links 
 #: Media/gui/Game_Help.layout:95 ..Help.Support.Button
@@ -299,7 +300,7 @@ msgstr ""
 #: Media/gui/Game_Help.layout:89 ..Help.Support.Button
 msgctxt "Translations"
 msgid "Translations"
-msgstr ""
+msgstr "Traducciones"
 
 #. MAIN  Help links 
 #: Media/gui/Game_Help.layout:70 ..Help.Support.Button
@@ -319,13 +320,13 @@ msgstr ""
 #: src/game/Championships.cpp:226:479 src/game/Challenges.cpp:571:685
 msgctxt "Start"
 msgid "Start"
-msgstr ""
+msgstr "Inicio"
 
 #. MAIN  Championship  buttons 
 #: src/game/Championships.cpp:226:474:479 src/game/Challenges.cpp:556:571:685
 msgctxt "Continue"
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
 
 #. MAIN  Championship  buttons 
 #: src/game/Championships.cpp:226 src/game/Challenges.cpp:685
@@ -339,13 +340,13 @@ msgstr ""
 #: Media/gui/Game_Utils.layout:81 ..Championship.Button :157..Challenge.Button
 msgctxt "Close"
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 #. MAIN  Challenge prizes 
 #: src/game/Challenges.cpp:459:674 src/game/Gui_InitChamps.cpp:78
 msgctxt "Prize"
 msgid "Prize"
-msgstr ""
+msgstr "Premio"
 
 #. MAIN  Challenge prizes 
 #: src/game/Challenges.cpp:489
@@ -486,7 +487,7 @@ msgstr ""
 #: src/editor/Gui_Tools.cpp:37:44:268:301 src/editor/SceneInit.cpp:466
 msgctxt "Track"
 msgid "Track"
-msgstr ""
+msgstr "Pista"
 
 #. MAIN  Track 
 #: Media/gui/Editor.layout:3194 ..Editor.Vegetation.Road.Advanced.Text
@@ -504,7 +505,7 @@ msgstr ""
 #: Media/gui/Game_Options.layout:730 ..Options.Graphics.Button
 msgctxt "NewGame"
 msgid "New Game"
-msgstr ""
+msgstr "Nuevo juego"
 
 #. MAIN  Track 
 #: Media/gui/Editor_Track.layout:395 ..Track.Track.Text
@@ -531,7 +532,7 @@ msgstr ""
 #: Media/gui/Game.layout:144 ..SingleRace.Track.Text :2126
 msgctxt "TrackLength"
 msgid "Length"
-msgstr ""
+msgstr "Longitud"
 
 #. MAIN  Track stats 
 #: Media/gui/Editor_Track.layout:134 ..Track.Track.Text
@@ -616,7 +617,7 @@ msgstr ""
 #. Championship Stage  stats 
 msgctxt "Length"
 msgid "Length"
-msgstr ""
+msgstr "Longitud"
 
 #. Championship Stage  stats 
 #: Media/gui/Game.layout:785 ..SingleRace.Vehicle.Text
@@ -625,7 +626,7 @@ msgstr ""
 #: src/game/Gui_InitCar.cpp:150 src/game/Gui_InitChamps.cpp:62:74:91
 msgctxt "Difficulty"
 msgid "Difficulty"
-msgstr ""
+msgstr "Dificultad"
 
 #. Championship Stage  stats 
 #: Media/gui/Editor_Options.layout:280 ..Options.Graphics.Reflections.Text
@@ -635,7 +636,7 @@ msgstr ""
 #: src/game/Challenges.cpp:526 src/editor/Update_Frame.cpp:85
 msgctxt "Distance"
 msgid "Distance"
-msgstr ""
+msgstr "Distancia"
 
 #. Championship Stage  stats 
 #: Media/gui/Game.layout:563 ..SingleRace.Vehicle.Text
@@ -643,7 +644,7 @@ msgstr ""
 #: src/game/Gui_InitChamps.cpp:63:76:92 src/editor/Gui_Events.cpp:583
 msgctxt "Time"
 msgid "Time"
-msgstr ""
+msgstr "Tiempo"
 
 #. Championship Stage  stats 
 #: src/game/Championships.cpp:214 src/game/Challenges.cpp:602
@@ -657,13 +658,13 @@ msgstr ""
 #: src/game/Challenges.cpp:673 src/game/Gui_InitChamps.cpp:64:77
 msgctxt "Progress"
 msgid "Progress"
-msgstr ""
+msgstr "Progreso"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:219 src/game/Gui_InitChamps.cpp:64:78:92
 msgctxt "Score"
 msgid "Score"
-msgstr ""
+msgstr "Puntuación"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:424
