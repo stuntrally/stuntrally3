@@ -219,11 +219,14 @@ bool SoundTemplate::setParameter(Ogre::StringVector vec)
 
 ///  Sound
 //---------------------------------------------------------------------------------------------------------
+int Sound::instances = 0;
+
 Sound::Sound(SoundTemplate* tpl, SoundBaseMgr* mgr1)
 	:templ(tpl), sound_mgr(mgr1)
 	,start_sound(0), stop_sound(0)
 	,lastgain(1.0f), is2D(false), engine(false)
 {
+	++instances;
 	//  create sounds
 	if (tpl->has_start)
 		start_sound = sound_mgr->createSound(tpl->start_name, templ->name);
@@ -243,6 +246,7 @@ Sound::Sound(SoundTemplate* tpl, SoundBaseMgr* mgr1)
 
 Sound::~Sound()
 {
+	--instances;
 	delete start_sound;
 	delete stop_sound;
 	

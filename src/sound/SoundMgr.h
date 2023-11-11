@@ -42,8 +42,9 @@ private:
 class Sound
 {
 	friend class SoundMgr;
-
 public:
+	static int instances;
+
 	Sound(SoundTemplate* tpl, SoundBaseMgr* mgr);
 	~Sound();
 
@@ -93,14 +94,14 @@ public:
 	void setCamera(Ogre::Vector3 position, Ogre::Vector3 direction, Ogre::Vector3 up, Ogre::Vector3 velocity);
 	bool isDisabled() {  return disabled;  }
 
-	SoundBaseMgr* sound_mgr;
+	SoundBaseMgr* sound_mgr =0;
 
 private:
 	SoundTemplate* createTemplate(Ogre::String name, Ogre::String filename);
 	void skipToNextCloseBrace(Ogre::FileStreamDataStream* chunk);
 	void skipToNextOpenBrace(Ogre::FileStreamDataStream* chunk);
 
-	bool disabled;
+	bool disabled =1;
 
 	std::map <Ogre::String, SoundTemplate*> templates;
 	std::vector<SoundTemplate*> v_templ;  // to delete

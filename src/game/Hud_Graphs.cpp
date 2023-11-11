@@ -377,7 +377,7 @@ void App::GraphsNewVals()				// Game
 		SoundBaseMgr* snd = pGame->snd->sound_mgr;
 		graphs[0]->UpdTitle("Sounds Info\n"+snd->sReverb);
 		graphs[1]->UpdTitle("\nbuf: "+toStr(snd->buffers_used_max)+" /"+toStr(SoundBaseMgr::MAX_BUFFERS)+"\n"+
-							"src: "+toStr(snd->sources_use)+" /"+toStr(snd->hw_sources_num));
+							"src: "+toStr(snd->sources_use)+" /"+toStr(snd->hw_sources_num)+"  inst: "+toStr(Sound::instances));
 		graphs[2]->UpdTitle("hw: "+iToStr(snd->hw_sources_use,2)+" /"+toStr(SoundBaseMgr::HW_SRC));
 		
 		bool info = pSet->sounds_info;
