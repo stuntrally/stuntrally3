@@ -269,7 +269,7 @@ void Sound::setPitch(float value)
 			else
 			if (p < 0.5f){  p = 0.5f;  v = 0.f;  }
 			else
-			if (p > 1.f) {  v = 1.f - (p - 1.f)*1.f;  if (v < 0.f)  v = 0.f;  }
+			if (p > 1.f) {  v = 1.f - (p - 1.f)*2.f;  if (v < 0.f)  v = 0.f;  }
 			else
 			if (p < 1.f) {  v = 1.f - (1.f - p)*2.f;  if (v < 0.f)  v = 0.f;  }
 			
