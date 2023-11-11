@@ -139,7 +139,8 @@ void CGui::tabPlayer(Tab, size_t id)
 
 void CGui::comboBoost(CMB)
 {
-	pSet->gui.boost_type = val;  app->hud->Show();
+	pSet->gui.boost_type = val;
+	app->hud->Show();
 }
 void CGui::comboFlip(CMB)
 {
@@ -214,6 +215,7 @@ void CGui::chkHudCreate(Ck*)
 
 void CGui::slSizeArrow(SV*)
 {
+	if (!pSet->hud_on)  return;
 	float v = pSet->size_arrow * 0.5f;
 	for (int i = 0; i < MAX_Players; ++i)
 	{	auto* nd = hud->arrow[i].nodeRot;
@@ -271,7 +273,7 @@ void CGui::chkMinimap(Ck*)
 
 void CGui::chkMiniUpd(Ck*)
 {
-	hud->UpdMiniTer();
+	// hud->UpdMiniTer();
 }
 
 //  🚦 pacenotes

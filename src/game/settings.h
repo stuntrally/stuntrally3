@@ -53,6 +53,7 @@ public:
 	int iMenu;  // EMenu,
 	int yMain =0, yRace =0;  // kbd up/dn cursors
 	int difficulty =0;
+	bool hud_on =1;  // 0 won't create it
 
 	//  ✅ hud show
 	bool show_gauges =1, show_digits =1, // ⏲️

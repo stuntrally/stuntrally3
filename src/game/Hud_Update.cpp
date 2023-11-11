@@ -39,6 +39,7 @@ using namespace Ogre;
 ///---------------------------------------------------------------------------------------------------------------
 void CHud::Update(int carId, float time)
 {
+	if (!pSet->hud_on)  return;
 	// if (carId >= app->carModels.size())
 	// 	return;
 	// PROFILER.beginBlock("g.hud");

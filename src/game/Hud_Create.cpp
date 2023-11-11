@@ -35,6 +35,7 @@ using namespace MyGUI;
 
 void CHud::Create()
 {
+	if (!pSet->hud_on)  return;
 	// LogO("C--- Create Hud");
 	//Destroy();  //
 	if (app->carModels.size() == 0)  return;
@@ -465,6 +466,7 @@ CHud::Hud::Hud()
 
 void CHud::Destroy()
 {
+	if (!pSet->hud_on)  return;
 	LogO("D--- Destroy Hud");
 	SceneManager* scm = app->mSceneMgr;
 

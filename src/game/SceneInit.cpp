@@ -790,7 +790,7 @@ void App::LoadMisc()
 	// SetTexWrap( HLMS_UNLIT, "FluidWater", false );  //**
 
 
-	if (pSet->hud)
+	if (pSet->hud_on)
 	{
 		hud->Create();  //!-
 		hud->Show();
@@ -914,23 +914,23 @@ void App::CreateRoads()
 
 
 	//  🚦 pace ~ ~
-if (pSet->hud)
-{
-	LogO("D--~ destroy Trail");
-	scn->DestroyTrails();
-
-	scn->DestroyPace();
-	if (!bHideHudPace)
+	if (pSet->hud_on)
 	{
-		for (int i=0; i < carModels.size(); ++i)
-		if (!carModels[i]->isGhost())
-		{	scn->pace[i] = new PaceNotes(pSet);
-			scn->pace[i]->player = i;
-			scn->pace[i]->Setup(mSceneMgr, 
-				carModels[i]->fCam->cam->cam, // &mCams[i],
-				scn->ter, gui->mGui, mWindow);
-	}	}
-}
+		LogO("D--~ destroy Trail");
+		scn->DestroyTrails();
+
+		scn->DestroyPace();
+		if (!bHideHudPace)
+		{
+			for (int i=0; i < carModels.size(); ++i)
+			if (!carModels[i]->isGhost())
+			{	scn->pace[i] = new PaceNotes(pSet);
+				scn->pace[i]->player = i;
+				scn->pace[i]->Setup(mSceneMgr, 
+					carModels[i]->fCam->cam->cam, // &mCams[i],
+					scn->ter, gui->mGui, mWindow);
+		}	}
+	}
 
 	//  after road load we have iChk1 so set it for carModels
 	for (int i=0; i < carModels.size(); ++i)
@@ -994,7 +994,7 @@ void App::CreateRoadsInt()
 
 void App::CreateTrail(Cam* cam, int id)
 {
-	if (!pSet->hud)  return;
+	if (!pSet->hud_on)  return;
 	// if (!pSet->trail_show)
 		// return;  // fixme crash in replay--
 	if (scn->trail[id])

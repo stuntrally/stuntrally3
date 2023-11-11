@@ -27,6 +27,7 @@ using namespace MyGUI;
 //---------------------------------------------------------------------------------------------------------------
 void CHud::Size()
 {
+	if (!pSet->hud_on)  return;
 	int cnt = pSet->game.local_players;
 	#ifdef DEBUG
 	assert(cnt <= hud.size());
@@ -157,6 +158,7 @@ void CHud::Size()
 //---------------------------------------------------------------------------------------------------------------
 void CHud::Show(bool hideAll)
 {
+	if (!pSet->hud_on)  return;
 	if (!txDbgSurf)  // not inited
 		return;
 	if (hideAll /*|| app->iLoad1stFrames > -1*/)  // still loading

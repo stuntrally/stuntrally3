@@ -262,7 +262,7 @@ void App::update( float dt )
 		}
 
 		//  🚦 pace upd vis  ~ ~ ~
-		if (!bLoading && !carModels.empty())
+		if (!bLoading && !carModels.empty() && pSet->hud_on)
 		{	
 			for (int i=0; i < carModels.size(); ++i)
 			{	const CarModel* cm = carModels[i];
@@ -311,6 +311,7 @@ void App::update( float dt )
 
 		//  ⚫📉
 		bool tireEd = updateTireEdit();
+		
 
 		///  ⛰️ Terrain  ----
 		if (mGraphicsSystem->getRenderWindow()->isVisible() )
