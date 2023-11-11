@@ -98,6 +98,7 @@ void App::destroyScene()
 	scn->DestroyEmitters(true);
 	scn->DestroyAllAtmo();
 
+	scn->DestroyPace();
 	scn->DestroyTrails();
 
 	if (pGame)

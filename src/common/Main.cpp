@@ -210,7 +210,7 @@ void MainEntryPoints::destroySystems(
 		LogicSystem *logicSystem)
 {
 	delete graphicsSystem;
-	delete graphicsGameState;
+	//- delete graphicsGameState;  // deleting app later, at end of main
 }
 
 
