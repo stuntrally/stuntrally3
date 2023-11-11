@@ -80,8 +80,9 @@ public:
 	SoundMgr* snd =0;
 	Sound* snd_chk =0, *snd_chkwr =0,
 		*snd_lap =0, *snd_lapbest =0,
-		*snd_stage =0, *snd_win[3]={0,0,0}, *snd_fail =0;
-	void UpdHudSndVol();
+		*snd_stage =0, *snd_win[3]={0,0,0}, *snd_fail =0,
+		*snd_ambient =0;
+	void UpdHudSndVol(), DeleteHudSounds();
 
 
 	///  New  carsim  -------------

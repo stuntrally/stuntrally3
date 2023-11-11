@@ -60,8 +60,6 @@ void GAME::Start()
 	profilingmode = true;
 
 
-	//settings->Load(PATHS::GetSettingsFile());
-
 	controls.second.Reset();
 
 	InitializeSound();  // if it fails, will be disabled
@@ -312,12 +310,15 @@ bool GAME::InitializeSound()
 	{
 		LogO("@  Sound init - Disabled.");
 		return false;
-	}
+	}else
+		LoadHudSounds();  //`
+	
 	LogO("@  Sound init ok.");
 	return true;
 }
 
 
+//  hud sounds 🔊
 void GAME::LoadHudSounds()
 {
 	Ogre::Timer ti;
@@ -326,24 +327,37 @@ void GAME::LoadHudSounds()
 	snd_lap = snd->createInstance("hud/lap");
 	snd_lapbest = snd->createInstance("hud/lapbest");
 	snd_stage = snd->createInstance("hud/stage");
+	snd_fail = snd->createInstance("hud/fail");
 	for (int i=0; i < 3; ++i)
 		snd_win[i] = snd->createInstance("hud/win"+toStr(i));
-	snd_fail = snd->createInstance("hud/fail");
 	
 	UpdHudSndVol();
 	LogO(":::* Time Hud Sounds: "+ fToStr(ti.getMilliseconds(),0,3) +" ms");
 }
 
-
 void GAME::UpdHudSndVol()
 {
 	float g = pSet->vol_hud;
-	snd_chk->setGain(g);  snd_chkwr->setGain(g);
-	snd_lap->setGain(g);  snd_lapbest->setGain(g);
+	snd_chk->setGain(g);
+	snd_chkwr->setGain(g);
+	snd_lap->setGain(g);
+	snd_lapbest->setGain(g);
 	snd_stage->setGain(g);
+	snd_fail->setGain(g);
 	for (int i=0; i < 3; ++i)
 		snd_win[i]->setGain(g);
-	snd_fail->setGain(g);
+}
+
+void GAME::DeleteHudSounds()
+{
+	delete snd_chk;  snd_chk = 0;
+	delete snd_chkwr;  snd_chkwr = 0;
+	delete snd_lap;  snd_lap = 0;
+	delete snd_lapbest;  snd_lapbest = 0;
+	delete snd_stage;  snd_stage = 0;
+	delete snd_fail;  snd_fail = 0;
+	for (int i=0; i < 3; ++i)
+	{	delete snd_win[i];  snd_win[i] = 0;  }
 }
 
 
@@ -366,14 +380,10 @@ void GAME::End()
 
 	LeaveGame(true);
 
-	//  hud sounds 🔊
-	delete snd_chk;  delete snd_chkwr;
-	delete snd_lap;  delete snd_lapbest;
-	delete snd_stage;  delete snd_fail;
-	for (int i=0; i < 3; ++i)
-		delete snd_win[i];
-	
-	delete snd;  snd = 0;
+	//  sounds 🔊
+	DeleteHudSounds();
+
+	delete snd;  snd = 0;  // SoundMgr
 
 
 	///+  save settings first incase later deinits cause crashes
@@ -578,6 +588,8 @@ void GAME::LeaveGame(bool dstTrk)
 	//  sounds 🔊
 	if (snd && hadCars)
 		snd->sound_mgr->DestroySources(false);  //))
+	
+	DeleteHudSounds();  //`
 	
 	timer.Unload();
 

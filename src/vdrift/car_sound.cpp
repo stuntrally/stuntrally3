@@ -125,6 +125,7 @@ void CAR::CARsounds::SetNumWheels(int n)
 void CAR::CARsounds::Destroy()
 {
 	delete engine;
+	delete turbo;
 	int i;
 	for (i = 0; i < gravel.size(); ++i)  // tires
 	{
