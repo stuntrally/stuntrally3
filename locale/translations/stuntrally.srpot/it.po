@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-02 20:02+0100\n"
-"PO-Revision-Date: 2014-08-11 15:41+0000\n"
-"Last-Translator: FIRST AUTHOR <EMAIL@ADDRESS>, 2012\n"
-"Language-Team: Italian (http://www.transifex.com/stuntrally/stuntrally/"
-"language/it/)\n"
+"PO-Revision-Date: 2023-11-11 10:04+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/stunt-rally-3/"
+"stunt-rally-3/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
-"1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 "
+": 2;\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #. General 
 #: Media/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -7260,8 +7261,8 @@ msgid ""
 "Type,Yaw,Pitch,Dist,Height,Speed,Offset,LEFT,RIGHT,Middle,Wheel,shift,Rotate,"
 "reset,move,H,Pos"
 msgstr ""
-"Tipo,Yaw,Pitch,Dist,Altezza,Velocità,Offset,SINISTRA,DESTRA,Metà,Ruota,"
-"marcia,Rotazione,riavvia,muovi,H,Pos"
+"Tipo,Yaw,Pitch,Dist,Altezza,Velocità,Offset,SINISTRA,DESTRA,Metà,Ruota,marcia"
+",Rotazione,riavvia,muovi,H,Pos"
 
 #. Car descriptions 
 msgctxt "CarDesc_OT"
@@ -7896,15 +7897,14 @@ msgid ""
 "Create a new track by duplicating the selected track and using new name "
 "(change name first)."
 msgstr ""
-"Crea una nuova pista duplicando una selezionata, usando un nome nuovo "
-"(cambia prima il nome)."
+"Crea una nuova pista duplicando una selezionata, usando un nome nuovo ("
+"cambia prima il nome)."
 
 #. TIP  Track  Editor 
 #: Media/gui/Editor_Track.layout:449 ..Track.Track.Button
 msgctxt "TipRenameTrk"
 msgid "Rename selected track with new name (change name first)."
-msgstr ""
-"Rinonima la pista selezionata con un nome nuovo (prima cambia il nome)."
+msgstr "Rinonima la pista selezionata con un nome nuovo (prima cambia il nome)."
 
 #. TIP  Track  Editor 
 #: Media/gui/Editor_Track.layout:24 ..Track.Track.Text :456..Track.Track.Edit
@@ -7946,8 +7946,8 @@ msgctxt "TipSunAmbient"
 msgid ""
 "Sun light ambient (constant) color. R G B components 0 to 1 (eg. 0.4 0.4 0.4)"
 msgstr ""
-"Colore (costante) della luce solare su ambiente. Elementi R G B da 0 a 1 "
-"(es. 0.4. 0.4 0.4)"
+"Colore (costante) della luce solare su ambiente. Elementi R G B da 0 a 1 ("
+"es. 0.4. 0.4 0.4)"
 
 #. TIP  Sky  (leave tips for last) 
 #: Media/gui/Editor.layout:115 ..Editor.Sun.Sun.Text
@@ -8174,8 +8174,8 @@ msgid ""
 "Terrain vertex count on one side (squares). Apply with buttons [New Flat] or "
 "[Resize]."
 msgstr ""
-"Numero vertice di terreno da un lato (quadrati). Applica con i pulsanti "
-"[Nuovo terreno] o [Ridimensiona]."
+"Numero vertice di terreno da un lato (quadrati). Applica con i pulsanti ["
+"Nuovo terreno] o [Ridimensiona]."
 
 #. TIP  Terrain  Layers 
 #: Media/gui/Editor.layout:1403 ..Editor.Layers.Image
@@ -8317,8 +8317,8 @@ msgid ""
 msgstr ""
 "Usata per testare la chiarezza del blendmap. La casella di colore indica il "
 "colore del layer su blendmap (è nero quando il layer è spento). Di solito, "
-"un buon blendmap deve avere colori di layer puri con poca miscelazione "
-"(opaco, colori misti). Per ottenere angoli stretti/separati e la gamma di "
+"un buon blendmap deve avere colori di layer puri con poca miscelazione ("
+"opaco, colori misti). Per ottenere angoli stretti/separati e la gamma di "
 "altezza, usa alta o bassa capacità di disturbo."
 
 #. TIP  Terrain  particles 
