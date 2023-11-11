@@ -11,16 +11,17 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-02 20:02+0100\n"
-"PO-Revision-Date: 2014-08-11 15:41+0000\n"
-"Last-Translator: fri, 2015-2017,2019,2022\n"
-"Language-Team: Czech (http://www.transifex.com/stuntrally/stuntrally/"
-"language/cs/)\n"
+"PO-Revision-Date: 2023-11-11 10:04+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/stunt-rally-3/"
+"stunt-rally-3/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
 "<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #. General 
 #: Media/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -7101,8 +7102,7 @@ msgstr ""
 #. Fluids  Input advanced 
 msgctxt "InputFluidsUpdate"
 msgid "F10  - update depth map, after terrain deform near shore"
-msgstr ""
-"F10  - aktualizovat hlobkovou mapu, po změně tvaru krajiny poblíž břehu"
+msgstr "F10  - aktualizovat hlobkovou mapu, po změně tvaru krajiny poblíž břehu"
 
 #. Objects  Main 
 #: Media/gui/Editor_Help.layout:220 ..Help.Input/help.Shortcuts.Text
@@ -7866,8 +7866,7 @@ msgstr "Text s popisem trati (klepnout pro upravení)."
 #: Media/gui/Editor_Track.layout:425 ..Track.Track.Button
 msgctxt "TipCopySource"
 msgid "Pick selected track for copy source, used in [Tools] tab."
-msgstr ""
-"Zvolte vybranou trať pro zdroj kopírování, použito na kartě [Nástroje]."
+msgstr "Zvolte vybranou trať pro zdroj kopírování, použito na kartě [Nástroje]."
 
 #. TIP  Track  Editor 
 #: Media/gui/Editor_Track.layout:437 ..Track.Track.Button

@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-02 20:02+0100\n"
-"PO-Revision-Date: 2014-08-11 15:41+0000\n"
-"Last-Translator: Tapio <tapiovierros@gmail.com>, 2014\n"
-"Language-Team: Finnish (http://www.transifex.com/stuntrally/stuntrally/"
-"language/fi/)\n"
+"PO-Revision-Date: 2023-11-11 10:04+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/stunt-rally-3/"
+"stunt-rally-3/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #. General 
 #: Media/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -7877,8 +7878,8 @@ msgctxt "TipSunDiffuse"
 msgid ""
 "Sun light diffuse (normal) color. R G B components 0 to 1 (eg. 0.9 0.9 0.9)"
 msgstr ""
-"Auringon valon väri. Puna-viher-sini komponentit 0:sta 1:een (esim. 0.9 0.9 "
-"0.9)."
+"Auringon valon väri. Puna-viher-sini komponentit 0:sta 1:een (esim. 0.9 0.9 0"
+".9)."
 
 #. TIP  Sky  (leave tips for last) 
 #: Media/gui/Editor.layout:120 ..Editor.Sun.Sun.Text
