@@ -59,7 +59,7 @@ SoundTemplate* SoundMgr::createTemplate(String name, String filename)
 }
 
 
-Sound* SoundMgr::createInstance(Ogre::String name, int car)
+Sound* SoundMgr::createInstance(Ogre::String name)
 {
 	//  search template
 	if (templates.find(name) == templates.end())
@@ -67,7 +67,7 @@ Sound* SoundMgr::createInstance(Ogre::String name, int car)
 
 	SoundTemplate* templ = templates[name];
 
-	Sound* inst = new Sound(car, templ, sound_mgr);
+	Sound* inst = new Sound(templ, sound_mgr);
 	
 	String ss = name.substr(0,4);
 	inst->set2D(ss=="hud/");  // set 2d
@@ -130,6 +130,7 @@ void SoundMgr::parseScript(FileStreamDataStream* stream)
 	LogO("@  SoundScript: Parsed: "+toStr(cnt)+" templates.");
 }
 
+//  this requires new lines..
 void SoundMgr::skipToNextCloseBrace(FileStreamDataStream* stream)
 {
 	String line = "";
@@ -218,9 +219,9 @@ bool SoundTemplate::setParameter(Ogre::StringVector vec)
 
 ///  Sound
 //---------------------------------------------------------------------------------------------------------
-Sound::Sound(int car1, SoundTemplate* tpl, SoundBaseMgr* mgr1)
-	:car(car1), templ(tpl), sound_mgr(mgr1)
-	,start_sound(NULL), stop_sound(NULL)
+Sound::Sound(SoundTemplate* tpl, SoundBaseMgr* mgr1)
+	:templ(tpl), sound_mgr(mgr1)
+	,start_sound(0), stop_sound(0)
 	,lastgain(1.0f), is2D(false), engine(false)
 {
 	//  create sounds
@@ -258,7 +259,7 @@ void Sound::setPitch(float value)
 	//if (start_sound)  // only pitch looped
 	if (templ->free_sound == 0)  return;
 
-	int i, ii = templ->free_sound;
+	int ii = templ->free_sound;
 	for (int i=0; i < ii; ++i)
 		if (sounds[i])
 		{
@@ -268,7 +269,7 @@ void Sound::setPitch(float value)
 			else
 			if (p < 0.5f){  p = 0.5f;  v = 0.f;  }
 			else
-			if (p > 1.f) {  v = 1.f - (p - 1.f);      if (v < 0.f)  v = 0.f;  }
+			if (p > 1.f) {  v = 1.f - (p - 1.f)*1.f;  if (v < 0.f)  v = 0.f;  }
 			else
 			if (p < 1.f) {  v = 1.f - (1.f - p)*2.f;  if (v < 0.f)  v = 0.f;  }
 			

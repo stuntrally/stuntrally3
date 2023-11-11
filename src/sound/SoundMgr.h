@@ -8,7 +8,7 @@
 namespace Ogre  {  class FileStreamDataStream;  }
 class SoundBase;  class SoundBaseMgr;
 
-const int MAX_SOUNDS_PER_SCRIPT = 8;  // per 1 template
+const int MAX_SOUNDS_PER_SCRIPT = 8;  // per 1 template, todo: vector<
 
 
 ///  sound template  from .cfg to create
@@ -26,14 +26,14 @@ private:
 
 	Ogre::String name, file_name;
 
-	bool  has_start, has_stop;
-	bool  unpitchable;
+	bool  has_start =0, has_stop =0;
+	bool  unpitchable =0;
 
 	Ogre::String sound_names[MAX_SOUNDS_PER_SCRIPT];
 	float        sound_pitches[MAX_SOUNDS_PER_SCRIPT];
 	Ogre::String start_name, stop_name;
 
-	int   free_sound;
+	int   free_sound = 0;  // for names[, pitches[
 };
 
 
@@ -44,7 +44,7 @@ class Sound
 	friend class SoundMgr;
 
 public:
-	Sound(int car, SoundTemplate* tpl, SoundBaseMgr* mgr);
+	Sound(SoundTemplate* tpl, SoundBaseMgr* mgr);
 	~Sound();
 
 	void setGain(float value);
@@ -61,16 +61,15 @@ public:
 	void setEnabled(bool e);
 
 private:
-	SoundTemplate* templ;
-	SoundBaseMgr* sound_mgr;
+	SoundTemplate* templ =0;
+	SoundBaseMgr* sound_mgr =0;
 
-	SoundBase* start_sound, *stop_sound;
+	SoundBase* start_sound =0, *stop_sound =0;
 	SoundBase* sounds[MAX_SOUNDS_PER_SCRIPT];
 
 	float pitch_gain[MAX_SOUNDS_PER_SCRIPT];
 	float lastgain;
 
-	int car;  //  number of the car this is for
 	bool engine;
 };
 
@@ -86,7 +85,7 @@ public:
 
 	void parseScript(Ogre::FileStreamDataStream* stream);  // sounds.cfg
 
-	Sound* createInstance(Ogre::String templatename, int car);  // new Sound
+	Sound* createInstance(Ogre::String template);  // new Sound
 
 	void setPaused(bool mute);
 	void setMasterVolume(float vol);

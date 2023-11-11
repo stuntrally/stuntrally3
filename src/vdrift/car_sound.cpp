@@ -38,40 +38,40 @@ bool CAR::LoadSounds(const std::string & carpath)
 	
 	SoundMgr* snd = pGame->snd;
 	const string& eng = dynamics.engine.sound_name;
-	s.engine = snd->createInstance(eng,0);  s.engine->set2D(ss);
+	s.engine = snd->createInstance(eng);  s.engine->set2D(ss);
 	s.engine->setEngine(true);  s.engine->start();  // 🔉
 
 	int i;  float fw = numWheels;
 	for (i = 0; i < numWheels; ++i)  // tires
 	{
-		s.asphalt[i] = snd->createInstance("asphalt", 0);	s.asphalt[i]->set2D(ss);
-		s.grass[i]   = snd->createInstance("grass", 0);
+		s.asphalt[i] = snd->createInstance("asphalt");	s.asphalt[i]->set2D(ss);
+		s.grass[i]   = snd->createInstance("grass");
 		s.grass[i]->seek(float(i)/fw);  s.grass[i]->set2D(ss);
-		s.gravel[i]  = snd->createInstance("gravel", 0);
+		s.gravel[i]  = snd->createInstance("gravel");
 		s.gravel[i]->seek(float(i)/fw);  s.gravel[i]->set2D(ss);
 	}
 	for (i = 0; i < numWheels; ++i)
 	{
-		s.bump[i] = snd->createInstance("bump"+toStr(i%4), 0);  s.bump[i]->set2D(ss);
+		s.bump[i] = snd->createInstance("bump"+toStr(i%4));  s.bump[i]->set2D(ss);
 		s.bump[i]->seek(float(i)/fw);
 	}
 
 	for (i = 0; i < Ncrashsounds; ++i)  // crashes
 	{	string cn = "crash/";  int n=i+1;  cn += toStr(n/10)+toStr(n%10);
-		s.crash[i] = snd->createInstance(cn, 0);  s.crash[i]->set2D(ss);
+		s.crash[i] = snd->createInstance(cn);  s.crash[i]->set2D(ss);
 	}
-	s.scrap   = snd->createInstance("crash/scrap",  0);  s.scrap->set2D(ss);
-	s.screech = snd->createInstance("crash/screech",0);  s.screech->set2D(ss);
+	s.scrap   = snd->createInstance("crash/scrap");    s.scrap->set2D(ss);
+	s.screech = snd->createInstance("crash/screech");  s.screech->set2D(ss);
 
-	s.wind  = snd->createInstance("wind",  0);  s.wind->set2D(ss);
-	s.boost = snd->createInstance("boost", 0);  s.boost->set2D(ss);
+	s.wind  = snd->createInstance("wind");   s.wind->set2D(ss);
+	s.boost = snd->createInstance("boost");  s.boost->set2D(ss);
 
 	for (i = 0; i < Nwatersounds; ++i)  // fluids
-	{	s.water[i] = snd->createInstance("water"+toStr(i+1), 0);  s.water[i]->set2D(ss);  }
+	{	s.water[i] = snd->createInstance("water"+toStr(i+1));  s.water[i]->set2D(ss);  }
 
-	s.mud        = snd->createInstance("mud1", 0);        s.mud->set2D(ss);
-	s.mud_cont   = snd->createInstance("mud_cont",   0);  s.mud_cont->set2D(ss);
-	s.water_cont = snd->createInstance("water_cont", 0);  s.water_cont->set2D(ss);
+	s.mud        = snd->createInstance("mud1");        s.mud->set2D(ss);
+	s.mud_cont   = snd->createInstance("mud_cont");    s.mud_cont->set2D(ss);
+	s.water_cont = snd->createInstance("water_cont");  s.water_cont->set2D(ss);
 
 	LogO(":::* Time car Sounds: "/*+carpath+" "*/+ fToStr(ti.getMilliseconds(),0,3) +" ms");
 	return true;

@@ -298,6 +298,7 @@ bool GAME::InitializeSound()
 	fi.open(path.c_str(), ios_base::binary);
 	if (!fi)
 	{	LogO("@  Can't load " + path);  return false;  }
+	
 	FileStreamDataStream fd(&fi,false);
 	snd->parseScript(&fd);
 	fd.close();
@@ -320,14 +321,15 @@ bool GAME::InitializeSound()
 void GAME::LoadHudSounds()
 {
 	Ogre::Timer ti;
-	snd_chk = snd->createInstance("hud/chk",  0);
-	snd_chkwr = snd->createInstance("hud/chkwrong",  0);
-	snd_lap = snd->createInstance("hud/lap",  0);
-	snd_lapbest = snd->createInstance("hud/lapbest",  0);
-	snd_stage = snd->createInstance("hud/stage",  0);
+	snd_chk = snd->createInstance("hud/chk");
+	snd_chkwr = snd->createInstance("hud/chkwrong");
+	snd_lap = snd->createInstance("hud/lap");
+	snd_lapbest = snd->createInstance("hud/lapbest");
+	snd_stage = snd->createInstance("hud/stage");
 	for (int i=0; i < 3; ++i)
-	snd_win[i] = snd->createInstance("hud/win"+toStr(i),  0);
-	snd_fail = snd->createInstance("hud/fail",  0);
+		snd_win[i] = snd->createInstance("hud/win"+toStr(i));
+	snd_fail = snd->createInstance("hud/fail");
+	
 	UpdHudSndVol();
 	LogO(":::* Time Hud Sounds: "+ fToStr(ti.getMilliseconds(),0,3) +" ms");
 }
@@ -339,7 +341,8 @@ void GAME::UpdHudSndVol()
 	snd_chk->setGain(g);  snd_chkwr->setGain(g);
 	snd_lap->setGain(g);  snd_lapbest->setGain(g);
 	snd_stage->setGain(g);
-	for (int i=0; i<3; ++i)  snd_win[i]->setGain(g);
+	for (int i=0; i < 3; ++i)
+		snd_win[i]->setGain(g);
 	snd_fail->setGain(g);
 }
 
