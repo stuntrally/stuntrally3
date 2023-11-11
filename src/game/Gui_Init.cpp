@@ -174,6 +174,8 @@ void CGui::InitGui()
 	ck= &ckReverb;		ck->Init("ChkReverb",   &pSet->snd_reverb);
 
 	sv= &svVolEngine;	sv->Init("VolEngine",	&pSet->vol_engine, 0.f, 1.4f);  sv->DefaultF(0.58f);
+	sv= &svVolTurbo;	sv->Init("VolTurbo",	&pSet->vol_turbo, 0.f, 1.6f);  sv->DefaultF(1.f);
+
 	sv= &svVolTires;	sv->Init("VolTires",	&pSet->vol_tires,  0.f, 1.4f);  sv->DefaultF(0.856f);
 	sv= &svVolSusp;		sv->Init("VolSusp",		&pSet->vol_susp,   0.f, 1.4f);  sv->DefaultF(0.474f);
 	sv= &svVolEnv;		sv->Init("VolEnv",		&pSet->vol_env,    0.f, 1.4f);  sv->DefaultF(0.748f);

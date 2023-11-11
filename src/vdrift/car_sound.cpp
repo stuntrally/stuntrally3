@@ -33,16 +33,26 @@ using namespace Ogre;
 bool CAR::LoadSounds(const std::string & carpath)
 {
 	Ogre::Timer ti;
-	bool ss = pApp->pSet->game.local_players > 1;
+	bool ss = pApp->pSet->game.local_players > 1;  // 👥 split screen same volume
 	CARsounds& s = sounds;
 	
 	SoundMgr* snd = pGame->snd;
+	
+	//  📈 engine
 	const string& eng = dynamics.engine.sound_name;
 	s.engine = snd->createInstance(eng);  s.engine->set2D(ss);
 	s.engine->setEngine(true);  s.engine->start();  // 🔉
+	
+	//  turbo
+	const string& turbo = dynamics.turbo.sound_name;
+	if (!turbo.empty())
+	{	s.turbo = snd->createInstance(turbo);  s.turbo->set2D(ss);
+		s.turbo->setEngine(true);  s.turbo->start();  // 🔉
+	}
 
+	//  ⚫ wheels, tires
 	int i;  float fw = numWheels;
-	for (i = 0; i < numWheels; ++i)  // tires
+	for (i = 0; i < numWheels; ++i)
 	{
 		s.asphalt[i] = snd->createInstance("asphalt");	s.asphalt[i]->set2D(ss);
 		s.grass[i]   = snd->createInstance("grass");
@@ -56,17 +66,21 @@ bool CAR::LoadSounds(const std::string & carpath)
 		s.bump[i]->seek(float(i)/fw);
 	}
 
-	for (i = 0; i < Ncrashsounds; ++i)  // crashes
+	//  🔨 crashes, hit
+	for (i = 0; i < Ncrashsounds; ++i)
 	{	string cn = "crash/";  int n=i+1;  cn += toStr(n/10)+toStr(n%10);
 		s.crash[i] = snd->createInstance(cn);  s.crash[i]->set2D(ss);
 	}
 	s.scrap   = snd->createInstance("crash/scrap");    s.scrap->set2D(ss);
 	s.screech = snd->createInstance("crash/screech");  s.screech->set2D(ss);
 
+	//  todo: allow variations per track, from scene.xml
+	//  🌪️ environment
 	s.wind  = snd->createInstance("wind");   s.wind->set2D(ss);
 	s.boost = snd->createInstance("boost");  s.boost->set2D(ss);
 
-	for (i = 0; i < Nwatersounds; ++i)  // fluids
+	//  💧 fluids
+	for (i = 0; i < Nwatersounds; ++i)
 	{	s.water[i] = snd->createInstance("water"+toStr(i+1));  s.water[i]->set2D(ss);  }
 
 	s.mud        = snd->createInstance("mud1");        s.mud->set2D(ss);
@@ -286,11 +300,23 @@ if (bSound)
 		gain = throttle;
 	}else
 	{	//  car
-		gain = throttle * 0.5 + 0.5;
+		gain = throttle * 0.5 + 0.5;  // par
 		s.engine->setPitch(rpm);
 	}
 	s.engine->setPosition(ep, ev);
 	s.engine->setGain(gain * dynamics.engine_vol_mul * pSet->vol_engine);
+	
+	//  turbo
+	if (s.turbo)
+	{	s.turbo->setPosition(ep, ev);
+		auto& tb = dynamics.turbo;
+		s.turbo->setPitch(rpm / tb.rpm_max);
+
+		gain = (rpm - tb.rpm_min) / (tb.rpm_max - tb.rpm_min);
+		gain = min(1.f, max(0.001f, gain));
+		float thr = throttle * tb.vol_max + tb.vol_idle;
+		s.turbo->setGain(thr * gain * pSet->vol_turbo * pSet->vol_engine);
+	}
 
 
 	///  ⚫ Tires  oooo

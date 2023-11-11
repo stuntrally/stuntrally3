@@ -1241,6 +1241,7 @@
 						<Widget type="TextBox" skin="TextBox" position="180 60 60 24" name="VolMasterVal">
 							<Property key="TextColour" value="0.94 0.9 1.0"/>
 						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="32 110 144 24">
 							<Property key="Caption" value="#{Engine}"/>
 							<Property key="TextColour" value="0.8 0.85 1.0"/>
@@ -1251,6 +1252,7 @@
 						<Widget type="TextBox" skin="TextBox" position="180 110 60 24" name="VolEngineVal">
 							<Property key="TextColour" value="0.8 0.85 1.0"/>
 						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="32 140 144 24">
 							<Property key="Caption" value="#{Tires}"/>
 							<Property key="TextColour" value="0.75 0.8 1.0"/>
@@ -1261,6 +1263,7 @@
 						<Widget type="TextBox" skin="TextBox" position="180 140 60 24" name="VolTiresVal">
 							<Property key="TextColour" value="0.75 0.8 1.0"/>
 						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="32 170 144 24">
 							<Property key="Caption" value="#{Suspension}"/>
 							<Property key="TextColour" value="0.75 0.8 1.0"/>
@@ -1271,6 +1274,7 @@
 						<Widget type="TextBox" skin="TextBox" position="180 170 60 24" name="VolSuspVal">
 							<Property key="TextColour" value="0.75 0.8 1.0"/>
 						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="32 200 144 24">
 							<Property key="Caption" value="#{Environment}"/>
 							<Property key="TextColour" value="0.6 0.75 1.0"/>
@@ -1297,6 +1301,7 @@
 						<Widget type="TextBox" skin="TextBox" position="180 306 60 24" name="VolHudVal">
 							<Property key="TextColour" value="0.75 0.8 1.0"/>
 						</Widget>
+
 						<Widget type="Button" skin="CheckBox" position="32 356 308 24" name="SndChkWr">
 							<Property key="Caption" value="#{WrongChk}"/>
 							<Property key="TextColour" value="0.65 0.8 0.9"/>
@@ -1335,6 +1340,7 @@
 						<Widget type="TextBox" skin="TextBox" position="180 48 60 24" name="VolFlSplashVal">
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
 						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="32 72 144 24">
 							<Property key="Caption" value="#{FluidCont}"/>
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
@@ -1345,6 +1351,7 @@
 						<Widget type="TextBox" skin="TextBox" position="180 72 60 24" name="VolFlContVal">
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
 						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="32 104 144 24">
 							<Property key="Caption" value="#{CarCrash}"/>
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
@@ -1355,6 +1362,7 @@
 						<Widget type="TextBox" skin="TextBox" position="180 104 60 24" name="VolCarCrashVal">
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
 						</Widget>
+						
 						<Widget type="TextBox" skin="TextBox" position="32 128 144 24">
 							<Property key="Caption" value="#{CarScrap}"/>
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
@@ -1364,6 +1372,17 @@
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="180 128 60 24" name="VolCarScrapVal">
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 160 144 24">
+							<Property key="Caption" value="#{Turbo}"/>
+							<Property key="TextColour" value="0.8 0.95 1.0"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="248 160 320 18" name="VolTurbo">
+							<Property key="Colour" value="0.8 0.95 1"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="180 160 60 24" name="VolTurboVal">
+							<Property key="TextColour" value="0.8 0.95 1.0"/>
 						</Widget>
 
 						<Widget type="ImageBox" skin="ImageBox" position="640 20 100 100">

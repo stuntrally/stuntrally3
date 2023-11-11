@@ -16,30 +16,11 @@
 using namespace std;
 
 
-CARDYNAMICS::CARDYNAMICS() :
-	world(NULL), chassis(NULL), whTrigs(0), pGame(0), vtype(V_Car),
-	hov_throttle(0.f), hov_roll(0.f), sphereYaw(0.f),
-	drive(AWD), tacho_rpm(0), engine_vol_mul(1),
-	autoclutch(true), autoshift(true), autorear(true),
-	shifted(true), shift_gear(0),
-	last_auto_clutch(1.0), rem_shift_time(0.0),
-	shift_time(0.2),
-	abs(false), tcs(false),
-	maxangle(45.0), ang_damp(0.4),
-	/*bTerrain(false),*/ pSet(0), pScene(0),
-	doBoost(0.f), doFlip(0.f), boostVal(0.f), fBoostFov(0.f),
-	boostFuel(0.f),boostFuelStart(0.f),
-	fHitTime(0), fHitForce(0), fParIntens(0), fParVel(0), //hit
-	vHitPos(0,0,0), vHitNorm(0,0,0), vHitCarN(0,0,0), vHitDmgN(0,0,0), fHitDmgA(0),
-	steerValue(0.f), velPrev(0,0,0),
-	fCarScrap(0.f), fCarScreech(0.f),
-	time(0.0), fDamage(0), fBncMass(1.0), cam_force(0,0,0)
+CARDYNAMICS::CARDYNAMICS()
 	//coll_R, coll_W, coll_H, coll_Hofs, coll_Wofs, coll_Lofs
 	//coll_posLfront, coll_posLback
 {
 	SetNumWheels(4);
-
-	boostFuel = 0.f;  // set later when road length known
 
 	hov.Default();
 }
@@ -144,6 +125,9 @@ bool CARDYNAMICS::Load(GAME* game, CONFIGFILE& c)
 		if (!c.GetParamE("engine.sound", engine.sound_name))
 			engine.sound_name = "engine";
 
+		if (!c.GetParamE("turbo.sound", turbo.sound_name))
+			turbo.sound_name.clear();
+
 		if (!c.GetParamE("engine.rpm-limit", rpm_limit))  return false;
 		engine.SetRpmMax(rpm_limit);
 
@@ -204,13 +188,15 @@ bool CARDYNAMICS::Load(GAME* game, CONFIGFILE& c)
 		}
 
 		//  factor for stats  -
-		mul = 1.f;
-		if (c.GetParam("engine.real-pow-tq-mul", mul))
-			engine.real_pow_tq_mul = mul;
-		
-		mul = 1.f;
-		if (c.GetParam("engine.sound-vol-mul", mul))
-			engine_vol_mul = mul;
+		float f;
+		if (c.GetParam("engine.real-pow-tq-mul", f))  engine.real_pow_tq_mul = f;
+		if (c.GetParam("engine.sound-vol-mul", f))  engine_vol_mul = f;
+
+		//  turbo factors
+		if (c.GetParam("turbo.vol-max",  f))  turbo.vol_max = f;
+		if (c.GetParam("turbo.vol-idle", f))  turbo.vol_idle = f;
+		if (c.GetParam("turbo.rpm-max",  f))  turbo.rpm_max = f;
+		if (c.GetParam("turbo.rpm-min",  f))  turbo.rpm_min = f;
 	}
 
 	//load transmission

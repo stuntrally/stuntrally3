@@ -170,14 +170,23 @@ public:
 	///  🔊 Sounds  ---------------
 	struct CARsounds
 	{
-		Sound* engine =0;
-		std::vector<Sound*> asphalt, grass, gravel, bump;  // tires
+		//  📈 engine
+		Sound* engine =0, *turbo =0;
 		
+		//  ⚫ tires  todo: more surfaces..
+		std::vector<Sound*> asphalt, grass, gravel, bump;
+		//  bump for tires hit, suspension
+		
+		//  🔨 crash, hit
 		std::vector<Sound*> crash;
 		std::vector<float> crashtime, bumptime, bumpvol;
+		Sound* scrap =0, *screech =0;  // continuous
 		
-		Sound* wind =0, *boost =0, *scrap =0,*screech =0;  // cont.
-		Sound* mud =0, *mud_cont =0,*water_cont =0;  // 💧 fluids
+		// 🌪️ environment
+		Sound* wind =0, *boost =0;
+		
+		// 💧 fluids
+		Sound* mud =0, *mud_cont =0,*water_cont =0;
 		std::vector<Sound*> water;
 		bool fluidHitOld = 0;  float whMudSpin = 0.f;  ///new vars, for snd
 

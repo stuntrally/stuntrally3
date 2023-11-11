@@ -24,15 +24,16 @@
 #include "Buoyancy.h"
 
 class MODEL;  class CONFIGFILE;  class COLLISION_WORLD;  class FluidBox;  class GAME;
+class SETTINGS;  class Scene;  class FluidsXml;
 
 
 class CARDYNAMICS : public btActionInterface
 {
 public:
 
-	class SETTINGS* pSet;
-	class Scene* pScene;  // for fluids
-	class FluidsXml* pFluids;  // to get fluid params
+	SETTINGS* pSet =0;
+	Scene* pScene =0;  // for fluids
+	FluidsXml* pFluids =0;  // to get fluid params
 	std::vector<float> inputsCopy;  // just for dbg info txt
 
 	int numWheels;  // copy from CAR
@@ -41,11 +42,11 @@ public:
 	CARDYNAMICS();
 	~CARDYNAMICS();
 	
-	GAME* pGame;
+	GAME* pGame =0;
 	bool Load(GAME* game, CONFIGFILE & c);
 
 	void Init(
-		class SETTINGS* pSet1, class Scene* pScene1, class FluidsXml* pFluids1,
+		SETTINGS* pSet1, Scene* pScene1, FluidsXml* pFluids1,
 		COLLISION_WORLD & world,
 		const MATHVECTOR<Dbl,3> & position,
 		const QUATERNION<Dbl> & orientation);
@@ -91,11 +92,11 @@ public:
 		coll_TopFr, coll_TopMid, coll_TopBack,
 		coll_TopFrHm, coll_TopMidHm, coll_TopBackHm, coll_FrontWm;
 // buoyancy params dim
-	float buoy_X, buoy_Y, buoy_Z, buoy_Mul;
+	float buoy_X = 1.2f, buoy_Y = 0.7f, buoy_Z = 0.4f, buoy_Mul = 1.f;
 	
 // damage
 	// changed in CAR::UpdateSounds from bullet hit info
-	float fDamage;  // 0-100 %
+	float fDamage = 0.f;  // 0..100 %
 
 // driveline
 	// driveline input
@@ -126,7 +127,7 @@ public:
 
 	// set the steering angle to "value", where 1.0 is maximum right lock and -1.0 is maximum left lock.
 	void SetSteering(const Dbl value, const float range_mul);
-	Dbl steerValue;  // copy from SetSteering
+	Dbl steerValue = 0.0;  // copy from SetSteering
 	Dbl GetSteering() const {	return steerValue;	}
 
 	// get the maximum steering angle in degrees
@@ -150,7 +151,7 @@ public:
 public:
 	///  camera bounce
 	LINEARFRAME cam_body;
-	MATHVECTOR<Dbl,3> cam_force;
+	MATHVECTOR<Dbl,3> cam_force{0,0,0};
 
 	///  🌊 buoyancy
 	std::vector<float> whH;  // wheel submerge 0..1
@@ -159,29 +160,32 @@ public:
 	Polyhedron poly;
 	float body_mass;  btVector3 body_inertia;
 
-	// interpolated chassis state
+	//  interpolated chassis state
 	MATHVECTOR<Dbl,3> chassisPosition, chassisCenterOfMass;
 	QUATERNION<Dbl> chassisRotation;
 	
-	// manual flip over, rocket boost
-	float doFlip, doBoost, boostFuel,boostFuelStart, boostVal, fBoostFov;
+	//  manual flip over, rocket boost 💨
+	float doFlip = 0.f, doBoost = 0.f;    // Fuel set later when road length known
+	float boostFuel = 0.f, boostFuelStart = 0.f, boostVal = 0.f, fBoostFov = 0.f;
 
 	std::list<FluidBox*> inFluids;  /// list of fluids this car is in (if any)
 	std::vector<std::list<FluidBox*> > inFluidsWh;
 	
-	Ogre::Vector3 vHitPos{0,0,0}, vHitNorm{0,0,0};  // world hit data
-	Ogre::Vector3 vHitCarN{0,0,0}, vHitDmgN{0,0,0};  float fHitDmgA;  // damage factors
-	float fHitTime, fParIntens,fParVel, fHitForce,
-		fHitForce2,fHitForce3, //dbg info only
-		fCarScrap,fCarScreech;
-	btVector3 velPrev;
-	Dbl time;  // for wind only
+	Ogre::Vector3 vHitPos{0,0,0}, vHitNorm{0,0,1};  // 🔨 world hit data
+	Ogre::Vector3 vHitCarN{0,0,1}, vHitDmgN{0,0,1};
+	float fHitDmgA = 0.f;  // damage factors
+	float fHitTime = 0.f, fParIntens = 0.f, fParVel = 0.f, fHitForce = 0.f,
+		fHitForce2 = 0.f, fHitForce3 = 0.f, //dbg info only
+		fCarScrap = 0.f, fCarScreech = 0.f;
+	btVector3 velPrev{0,0,0};
+	Dbl time = 0.0;  // for wind only
 	
 	///  other vehicles  *  *  *
-	VehicleType vtype;
+	//----------------------------------
+	VehicleType vtype = V_Car;
 
-	float sphereYaw;  // dir
-	float hov_throttle, hov_roll;
+	float sphereYaw = 0.f;  // 🔘 dir
+	float hov_throttle = 0.f, hov_roll = 0.f;  // 🚀 spc
 
 	void SimulateSpaceship(Dbl dt), SimulateSphere(Dbl dt);
 	std::string sHov;
@@ -210,8 +214,8 @@ public:
 // chassis state  -----------------
 	RIGIDBODY body;
 	MATHVECTOR<Dbl,3> center_of_mass;
-	COLLISION_WORLD* world;
-	btRigidBody *chassis, *whTrigs;
+	COLLISION_WORLD* world = 0;
+	btRigidBody *chassis =0, *whTrigs =0;
 	
 // driveline state  -----------------
 	CARFUELTANK fuel_tank;
@@ -223,16 +227,27 @@ public:
 	std::vector <CARBRAKE> brake;
 	std::vector <CARWHEEL> wheel;
 	
-	enum { FWD = 3, RWD = 12, AWD = 15, WD6 = 25 , WD8 = 35 } drive;
-	Dbl driveshaft_rpm, tacho_rpm;  float engine_vol_mul;
+	enum
+	{	FWD = 3, RWD = 12, AWD = 15, WD6 = 25 , WD8 = 35  }
+	drive = AWD;
+	Dbl driveshaft_rpm = 0.0, tacho_rpm = 0.0;
 
-	bool autoclutch, autoshift, autorear, shifted;
-	int shift_gear;
-	Dbl last_auto_clutch, rem_shift_time, shift_time;  //remaining
+	float engine_vol_mul = 1.f;  // 🔊 snd cfg
+	struct Turbo  //  factors
+	{
+		std::string sound_name;
+		float vol_max = 0.9f, vol_idle = 0.1f;
+		float rpm_min = 3500.f, rpm_max = 8000.f;
+	} turbo;
+
+// gearbox vars
+	bool autoclutch =1, autoshift =1, autorear =1, shifted = 1;
+	int shift_gear = 0;
+	Dbl last_auto_clutch = 1.0, rem_shift_time = 0.0, shift_time = 0.2;  //remaining
 
 // traction control state
-	bool abs, tcs;
-	std::vector <int> abs_active, tcs_active;
+	bool abs =0, tcs =0;
+	std::vector<int> abs_active, tcs_active;
 	
 // cardynamics state  -----------------
 	std::vector <MATHVECTOR<Dbl,3> > wheel_velocity, wheel_position;
@@ -242,15 +257,15 @@ public:
 	std::vector <CARSUSPENSION> suspension;
 	std::vector <CARAERO> aerodynamics;
 
-	std::list <std::pair <Dbl, MATHVECTOR<Dbl,3> > > mass_only_particles;
+	std::list<std::pair <Dbl, MATHVECTOR<Dbl,3> > > mass_only_particles;
 	
-	Dbl feedback, maxangle, flip_mul;
-	Dbl ang_damp;  Dbl rot_coef[4];  /// new
+	Dbl feedback, maxangle = 45.0, flip_mul;
+	Dbl ang_damp = 0.4;  Dbl rot_coef[4];  /// new meh-
 	
 // chassis, cardynamics
 	MATHVECTOR<Dbl,3> GetDownVector() const;
 
-	// wrappers (to be removed)
+	// wrappers
 	QUATERNION<Dbl> Orientation() const;
 	MATHVECTOR<Dbl,3> Position() const;
 
@@ -280,7 +295,7 @@ public:
 	void Tick(Dbl dt);  /// update simulation
 	void UpdateBody(Dbl dt, Dbl drive_torque[]);	// advance chassis(body, suspension, wheels) simulation by dt
 
-	void UpdateMass();  Dbl fBncMass;
+	void UpdateMass();  Dbl fBncMass = 1.0;
 	void SynchronizeBody();
 	void SynchronizeChassis();
 

@@ -948,8 +948,11 @@
 	<!--  Sound  main  -->
 	<Tag name="Sound">Sound</Tag>
 	<Tag name="Volume">Volume</Tag>
+	
 	<Tag name="VolMaster">Master</Tag>
 	<Tag name="Engine">Engine</Tag>
+	<Tag name="Turbo">Turbo</Tag>
+
 	<Tag name="Tires">Tires</Tag>
 	<Tag name="Suspension">Suspension</Tag>
 	<Tag name="Environment">Environment</Tag>

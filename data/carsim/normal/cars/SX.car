@@ -48,6 +48,15 @@ fluidTrigH = 0.0
 friction = 0.4
 
 
+#  turbo sound
+#---------------------------
+[ turbo ]
+sound = turbo2bs
+vol-max = 0.5
+vol-idle = 0.05
+rpm-max = 7000
+rpm-min = 3500
+
 #  engine
 #---------------------------
 [ engine ]

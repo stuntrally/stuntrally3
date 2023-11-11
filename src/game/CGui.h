@@ -292,7 +292,8 @@ public:
 	
 	//  🔉 Sound
 	SlV(VolMaster);  SlV(VolHud);
-	SV svVolEngine, svVolTires, svVolSusp, svVolEnv;
+	SV svVolEngine, svVolTurbo;
+	SV svVolTires, svVolSusp, svVolEnv;
 	SV svVolFlSplash, svVolFlCont, svVolCarCrash, svVolCarScrap;
 	Ck ckSndChk, ckSndChkWr, ckReverb;
 
