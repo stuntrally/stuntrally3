@@ -400,7 +400,7 @@ void CGuiCom::GuiInitLang()
 		AddLang("ro");
 		AddLang("sk");
 		AddLang("cs");
-		AddLang("es_AR");
+		AddLang("es");
 		AddLang("nl_NL");
 		AddLang("hu_HU");
 	}

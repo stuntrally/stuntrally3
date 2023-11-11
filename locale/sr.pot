@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-08 18:49+0100\n"
+"POT-Creation-Date: 2023-11-11 09:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -164,7 +164,7 @@ msgstr ""
 #: ..Window
 #: data/gui/Game_Main.layout:112
 #: ..NewGame.Button
-#: src/game/Gui_Util.cpp:186
+#: src/game/Gui_Util.cpp:183
 msgctxt "SingleRace"
 msgid "Single Race"
 msgstr ""
@@ -180,7 +180,7 @@ msgstr ""
 #: ..Window
 #: :47
 #: src/game/Championships.cpp:279:423:445
-#: src/game/Gui_Util.cpp:106:168
+#: src/game/Gui_Util.cpp:105:165
 msgctxt "Championship"
 msgid "Championship"
 msgstr ""
@@ -191,7 +191,7 @@ msgstr ""
 #: data/gui/Game_Options.layout:276
 #: ..Options.Input.Shortcuts.Text
 #: src/game/Championships.cpp:279:423:445
-#: src/game/Gui_Util.cpp:105:167
+#: src/game/Gui_Util.cpp:104:164
 msgctxt "Tutorial"
 msgid "Tutorial"
 msgstr ""
@@ -205,7 +205,7 @@ msgstr ""
 #: ..Window
 #: :115
 #: src/game/Challenges.cpp:394:513:634
-#: src/game/Gui_Util.cpp:106:168
+#: src/game/Gui_Util.cpp:105:165
 msgctxt "Challenge"
 msgid "Challenge"
 msgstr ""
@@ -2613,7 +2613,7 @@ msgstr ""
 #. Game  Split screen 
 #: data/gui/Game.layout:1597
 #: ..SingleRace.Tab
-#: src/game/Gui_Util.cpp:187
+#: src/game/Gui_Util.cpp:184
 msgctxt "SplitScreen"
 msgid "Split Screen"
 msgstr ""
@@ -3453,7 +3453,7 @@ msgstr ""
 #: data/gui/Game_Utils.layout:159
 #: ..Window
 #: src/game/Gui_Replay.cpp:166
-#: src/game/Gui_Util.cpp:184
+#: src/game/Gui_Util.cpp:181
 msgctxt "Multiplayer"
 msgid "Multiplayer"
 msgstr ""
@@ -3487,7 +3487,7 @@ msgstr ""
 
 #. Network Multiplayer  headers 
 #: src/game/Gui_Init.cpp:432
-#: src/game/Gui_Util.cpp:184:187
+#: src/game/Gui_Util.cpp:181:184
 #: src/game/Gui_Network.cpp:129
 msgctxt "Players"
 msgid "Players"
