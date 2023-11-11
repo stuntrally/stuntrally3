@@ -91,6 +91,7 @@ HudRenderable::HudRenderable(
 //-----------------------------------------------------------------------------------
 HudRenderable::~HudRenderable()
 {
+	_setNullDatablock();
 	destroy();  //
 	
 	VaoManager *mgr = mManager->getDestinationRenderSystem()->getVaoManager();
