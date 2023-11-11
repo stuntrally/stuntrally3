@@ -229,3 +229,8 @@ hlms sky/sky_anomaly_03 pbs : sky_base
 {
     emissive_map  sky_anomaly_03.jpg
 }
+
+hlms sky/space_nebula_01 pbs : sky_base
+{
+    emissive_map  space_nebula_01.jpg
+}
