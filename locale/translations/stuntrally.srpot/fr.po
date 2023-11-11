@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-02 20:02+0100\n"
-"PO-Revision-Date: 2023-11-08 21:35+0000\n"
-"Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
+"PO-Revision-Date: 2023-11-11 10:04+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/fr/>\n"
 "Language: fr\n"
@@ -6464,8 +6464,7 @@ msgstr "Mode d'édtion du terrain"
 #: Media/gui/Editor_Help.layout:265 ..Help.Input/help.Terrain.Text
 msgctxt "InputTerDeform"
 msgid "D - Deform  (LMB up, RMB down)"
-msgstr ""
-"D - Déformer (bouton gauche : vers le haut, bouton droit : vers le bas)"
+msgstr "D - Déformer (bouton gauche : vers le haut, bouton droit : vers le bas)"
 
 #. Terrain  Edit modes 
 #: Media/gui/Editor_Help.layout:273 ..Help.Input/help.Terrain.Text
@@ -7187,8 +7186,8 @@ msgid ""
 "Type,Yaw,Pitch,Dist,Height,Speed,Offset,LEFT,RIGHT,Middle,Wheel,shift,Rotate,"
 "reset,move,H,Pos"
 msgstr ""
-"Type,Angle vertical,Angle horizontal,Distance,Hauteur,Vitesse,Décalage,"
-"GAUCHE,DROITE,Milieu,Molette,maj.,Tourner,réinit.,déplacer,H,Pos"
+"Type,Angle vertical,Angle horizontal,Distance,Hauteur,Vitesse,Décalage,GAUCHE"
+",DROITE,Milieu,Molette,maj.,Tourner,réinit.,déplacer,H,Pos"
 
 #. Car descriptions 
 msgctxt "CarDesc_OT"
@@ -7958,8 +7957,8 @@ msgctxt "TipSunSpecular"
 msgid ""
 "Sun light specular (shiny) color. R G B components 0 to 1 (eg. 0.6 0.6 0.6)"
 msgstr ""
-"Couleur des reflets de la lumière du soleil. Composants R V B de 0 à 1 "
-"(exemple : 0.6 0.6 0.6)"
+"Couleur des reflets de la lumière du soleil. Composants R V B de 0 à 1 ("
+"exemple : 0.6 0.6 0.6)"
 
 #. TIP  Fog 
 #: Media/gui/Editor.layout:215 ..Editor.Sun.Fog.Text
@@ -7971,8 +7970,7 @@ msgstr "Couleur de la fin de la brume quand la caméra regarde le soleil."
 #: Media/gui/Editor.layout:223 ..Editor.Sun.Fog.Text
 msgctxt "TipFogClr2"
 msgid "Fog end color when looking away from sun."
-msgstr ""
-"Couleur de la fin de la brume quand la caméra ne regarde pas le soleil."
+msgstr "Couleur de la fin de la brume quand la caméra ne regarde pas le soleil."
 
 #. TIP  Fog 
 #: Media/gui/Editor.layout:263 ..Editor.Sun.Fog.Text
