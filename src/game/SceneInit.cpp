@@ -154,7 +154,7 @@ void App::LoadData()
 	// if (args.has("presets"))
 	// {	gui->ToolPresets();  quit = 1;  }
 
-	if (quit)
+	if (quit || check)
 		exit(0);
 	
 
@@ -790,9 +790,12 @@ void App::LoadMisc()
 	// SetTexWrap( HLMS_UNLIT, "FluidWater", false );  //**
 
 
-	hud->Create();  //!-
-	hud->Show();
-	//- hud->Show(true);  // hide
+	if (pSet->hud)
+	{
+		hud->Create();  //!-
+		hud->Show();
+		//- hud->Show(true);  // hide
+	}
 	
 	// Camera settings
 	for (auto car : carModels)
@@ -911,6 +914,8 @@ void App::CreateRoads()
 
 
 	//  🚦 pace ~ ~
+if (pSet->hud)
+{
 	LogO("D--~ destroy Trail");
 	scn->DestroyTrails();
 
@@ -925,7 +930,7 @@ void App::CreateRoads()
 				carModels[i]->fCam->cam->cam, // &mCams[i],
 				scn->ter, gui->mGui, mWindow);
 	}	}
-
+}
 
 	//  after road load we have iChk1 so set it for carModels
 	for (int i=0; i < carModels.size(); ++i)
@@ -989,6 +994,7 @@ void App::CreateRoadsInt()
 
 void App::CreateTrail(Cam* cam, int id)
 {
+	if (!pSet->hud)  return;
 	// if (!pSet->trail_show)
 		// return;  // fixme crash in replay--
 	if (scn->trail[id])

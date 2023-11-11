@@ -23,8 +23,8 @@ recursive = False
 #------------------------------
 #  objects2convert/  new
 start_dir = data + 'objects2convert/'
-args = ' -v2 -e -t -ts 4 -O puqs '  # no lods +
-#args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 10 '  # 3 lods
+#args = ' -v2 -e -t -ts 4 -O puqs '  # no lods +
+args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 10 '  # 3 lods
 
 #  bridge, pier
 # args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 15 '  # 3 lods
