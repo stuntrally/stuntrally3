@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-02 20:02+0100\n"
-"PO-Revision-Date: 2023-11-08 21:35+0000\n"
-"Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
+"PO-Revision-Date: 2023-11-11 10:04+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/pl/>\n"
 "Language: pl\n"
@@ -1836,9 +1836,9 @@ msgid ""
 "(depending on your time) is needed to pass to next stage. Car changing is "
 "possible."
 msgstr ""
-"W samouczkach / mistrzostwach jedzie się serię tras. Minimalne punkty "
-"(zależne od czasu) są potrzebne by przejść do następnego odcinka. Zmiana "
-"auta jest możliwa."
+"W samouczkach / mistrzostwach jedzie się serię tras. Minimalne punkty ("
+"zależne od czasu) są potrzebne by przejść do następnego odcinka. Zmiana auta "
+"jest możliwa."
 
 #. Championship  info text 
 #: src/game/ChampChall.cpp:324
@@ -6929,8 +6929,7 @@ msgstr "ctrl-LMB - ustaw LMB - przesuń RMB - wysokość"
 #: Media/gui/Editor_Help.layout:596 ..Help.Input/help.Start.Text
 msgctxt "InputStartAltLMB"
 msgid "alt-LMB - rotate (shift - global)   alt-RMB - pitch (shift - roll)"
-msgstr ""
-"alt-LMB - obróć (shift - globalnie)  alt-RMB - pochyl (shift - skrzyw.)"
+msgstr "alt-LMB - obróć (shift - globalnie)  alt-RMB - pochyl (shift - skrzyw.)"
 
 #. Car Start  Input 
 #: Media/gui/Editor_Help.layout:600 ..Help.Input/help.Start.Text
@@ -7903,8 +7902,8 @@ msgid ""
 "Create a new track by duplicating the selected track and using new name "
 "(change name first)."
 msgstr ""
-"Stwórz nową trasę przez zduplikowanie wybranej, używając nowej nazwy "
-"(wprować nazwę najpierw)."
+"Stwórz nową trasę przez zduplikowanie wybranej, używając nowej nazwy ("
+"wprować nazwę najpierw)."
 
 #. TIP  Track  Editor 
 #: Media/gui/Editor_Track.layout:449 ..Track.Track.Button
@@ -8314,9 +8313,9 @@ msgid ""
 msgstr ""
 "Użyj do testowania czystości mapy przejść. Kolor obok pokazuje kolor tej "
 "warstwy na mapie przejść (czarny gdy warstwa wyłączona). Zazwyczaj dobra "
-"mapa przejść powinna mieć czyste kolory warstw i nie wiele przejśc "
-"(zmieszane blade kolory). By do tego doprowadzić, zawęż/rozdziel zakres "
-"kątów i wysokości oraz użyj wysokiej lub niskiej potęgi szumu."
+"mapa przejść powinna mieć czyste kolory warstw i nie wiele przejśc ("
+"zmieszane blade kolory). By do tego doprowadzić, zawęż/rozdziel zakres kątów "
+"i wysokości oraz użyj wysokiej lub niskiej potęgi szumu."
 
 #. TIP  Terrain  particles 
 #: Media/gui/Editor.layout:2673 ..Editor.Vegetation.Surface.Surface.Edit
