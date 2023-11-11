@@ -103,7 +103,6 @@ int MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 
 			MainEntryPoints::destroySystems( graphicsGameState, graphicsSystem,
 											 logicGameState, logicSystem );
-
 			return 0; //User cancelled config
 		}
 

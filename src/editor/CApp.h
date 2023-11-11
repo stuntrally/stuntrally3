@@ -119,7 +119,7 @@ public:
 	Ogre::SceneNode* ndBck =0;
 
 	void CreateRnd2Tex(), DestroyRnd2Tex(), UpdRnd2Tex(), AddListenerRnd2Tex();
-	void UpdMiniSize(), UpdMiniVis(), UpdMiniPos();
+	void UpdMiniSize(), UpdMiniVis(), UpdMiniPos(), DestroyEdHud();
 	
 
 	//  ⛰️📍 terrain cursor, circle mesh  o  ----

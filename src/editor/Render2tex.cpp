@@ -246,6 +246,22 @@ void App::UpdRnd2Tex()
 	}
 }
 
+
+//  💥 destroy
+void App::DestroyEdHud()
+{
+	delete hrBck;  hrBck = 0;
+	if (ndBck) {  mSceneMgr->destroySceneNode(ndBck);  ndBck = 0;  }
+
+	for (int i=0; i < ED_TerEditMax; ++i)
+	{	delete hrTerC[i];
+		if (ndTerC[i]) {  mSceneMgr->destroySceneNode(ndTerC[i]);  ndTerC[i] = 0;  }
+	}
+	delete hrBrush;  delete hrTerGen;
+	if (ndBrush) {  mSceneMgr->destroySceneNode(ndBrush);  ndBrush = 0;  }
+	if (ndTerGen) {  mSceneMgr->destroySceneNode(ndTerGen);  ndTerGen = 0;  }
+}
+
 //  💥 destroy
 void App::DestroyRnd2Tex()
 {

@@ -181,6 +181,8 @@ void App::createScene01()  // once, init
 //----------------------------------------------------------------------------------
 void App::destroyScene()
 {
+	DestroyEdHud();
+	
 	DestroyRnd2Tex();
 	prvScene.Destroy();
 	// scn->destroyScene();
@@ -328,7 +330,7 @@ void App::LoadTrackEv()
 	Cam* cam = &mCams[0];  // todo: lod cam-
 	scn->pace[0] = new PaceNotes(pSet);
 	scn->pace[0]->Setup(mSceneMgr, cam->cam, scn->ter, gui->mGui, mWindow);
-	
+
 	
 	//  📦 Objects
 	CreateObjects();
