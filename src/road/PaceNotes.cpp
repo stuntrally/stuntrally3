@@ -78,6 +78,7 @@ void PaceNotes::UpdVis(Vector3 carPos, bool hide)
 {
 	const Real dd = pSet->pace_dist, dd2 = dd*dd;
 	int i,s;
+	if (!cam)  return;
 
 #ifndef SR_EDITOR
 	//  game  ----

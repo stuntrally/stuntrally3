@@ -37,9 +37,8 @@ Git [repo](https://github.com/stuntrally/stuntrally3) and [tracks](https://githu
   _tools_: fix scale ter h, copy horizon, which ter, road  
 
 - **HUD**  
-  `fix` players change crash, splitscreen gauges  
+  fix splitscreen gauges etc  
   _Minimap_ circle, terrain add, fix pos tris  
-  HudRend map issues-  
 
 - Game, meh fix  
   water vis dist?  
