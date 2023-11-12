@@ -292,6 +292,7 @@ public:
 	
 	//  🔉 Sound
 	SlV(VolMaster);  SlV(VolHud);
+	SV svVolAmbient;
 	SV svVolEngine, svVolTurbo;
 	SV svVolTires, svVolSusp, svVolEnv;
 	SV svVolFlSplash, svVolFlCont, svVolCarCrash, svVolCarScrap;

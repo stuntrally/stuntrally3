@@ -162,6 +162,7 @@ public:
 
 	//  🔊 sound
 	float vol_master = 1.f, vol_hud = 1.f,
+		vol_ambient = 1.f,
 		vol_engine = 0.6f, vol_turbo = 1.f,
 		vol_tires =1.f, vol_susp =1.f, vol_env =1.f,
 		vol_fl_splash =1.f, vol_fl_cont =1.f,

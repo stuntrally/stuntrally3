@@ -1,26 +1,62 @@
 
--- sounds from  https://www.freesound.org/
-
-| dir/files     | author       | sound name |
---------------------------------------------------
-
-water* mud*   cgeffex     large splashes
-
-mud_cont      justinbw    water spigget onto mud 2
-water_cont    justinbw    water spigget onto mud 1
+---- sounds from
+https://www.freesound.org/
+edited by CryHam, in Audacity
 
 
-hit/terrain   halleck   hit with dirt spray 1
-hit/dirt      halleck   hit with dirt spray 1 body
-              halleck   hit with dirt spray 2 body
-              halleck   hit with dirt spray 3
+---- fluids/water*.wav  fluids/mud1.wav
+Name: large splashes
+Author: cgeffex    License: CC-BY-4.0    Date: June 5th, 2010
+https://freesound.org/people/CGEffex/sounds/98335/
 
-vehicle/boost    nathanshadow   thruster level ii
+---- fluids/mud_cont.wav
+Name: water spigget onto mud 2
+Author: justinbw   License: CC-BY-4.0    Date: April 4th, 2009
+https://freesound.org/people/JustinBW/sounds/70207/
+April 4th, 2009
 
-hud*
+---- fluids/water_cont.wav
+Name: water spigget onto mud 1
+Author: justinbw   License: CC-BY-4.0    Date: April 4th, 2009
+https://freesound.org/people/JustinBW/sounds/70206/
 
 
--- sounds from VDrift
+---- hit/terrain*.wav  not used yet..
+Name: hit with dirt spray 1
+Author: Halleck    License: CC-BY-4.0    Date: June 1st, 2011
+https://freesound.org/people/Halleck/sounds/121643/
+
+---- hit/dirt*.wav
+Name: hit with dirt spray 1 body
+Author: Halleck    License: CC-BY-4.0    Date: June 1st, 2011
+https://freesound.org/people/Halleck/sounds/121642/
+
+Name: hit with dirt spray 2 body
+Author: Halleck    License: CC-BY-4.0    Date: June 1st, 2011vol_ambient
+https://freesound.org/people/Halleck/sounds/121644/
+
+Name: hit with dirt spray 3
+Author: Halleck    License: CC-BY-4.0    Date: June 1st, 2011
+https://freesound.org/people/Halleck/sounds/121645/
+
+
+---- vehicle/boost.wav
+Name: Thruster_Level_II.aif
+Author: nathanshadow   License: CC Sampling Plus 1.0   Date: Sep 1st, 2006
+https://creativecommons.org/licenses/sampling+/1.0/
+https://freesound.org/people/nathanshadow/sounds/22455/
+
+
+---- turbo*
+Author: CryHam
+made entirely in Audacity
+License: CC-BY-4.0
+
+
+---- hud*
+
+
+---- old from VDrift
 
 vehicle/bump_front*
 vehicle/bump_rear*

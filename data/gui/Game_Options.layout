@@ -1286,10 +1286,31 @@
 							<Property key="TextColour" value="0.6 0.75 1.0"/>
 						</Widget>
 
+						<Widget type="TextBox" skin="TextBox" position="32 230 144 24">
+							<Property key="Caption" value="#{Ambience}"/>
+							<Property key="TextColour" value="0.6 1.0 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="248 230 320 18" name="VolAmbient">
+							<Property key="Colour" value="0.8 1 0.7"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="180 230 60 24" name="VolAmbientVal">
+							<Property key="TextColour" value="0.6 1.0 0.5"/>
+						</Widget>
+
 						<Widget type="Button" skin="CheckBox" position="32 256 308 24" name="ChkReverb">
 							<Property key="Caption" value="#{Reverb} **"/>
 							<Property key="TextColour" value="0.6 0.8 1.0"/>
 						</Widget>
+
+						<Widget type="ImageBox" skin="ImageBox" position="640 20 100 100">
+							<Property key="ImageCoord" value="128 128 128 128"/>
+							<Property key="Alpha" value="0.6"/>
+							<Property key="ImageTexture" value="gui_icons.png"/>
+						</Widget>
+					</Widget>
+
+					<Widget type="TabItem" skin="" position="2 24 738 472">
+						<Property key="Caption" value="#D0FFFF#{HUD}"/>
 
 						<Widget type="TextBox" skin="TextBox" position="32 306 144 24">
 							<Property key="Caption" value="#{HUD}"/>

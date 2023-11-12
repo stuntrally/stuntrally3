@@ -69,7 +69,8 @@ bool Scene::LoadXml(String file, bool bTer)
 	///  🔉 sound
 	e = root->FirstChildElement("sound");
 	if (e)
-	{	a = e->Attribute("ambient");	if (a)  sAmbient = string(a);
+	{	a = e->Attribute("ambient");	if (a)  ambientSnd = string(a);
+		a = e->Attribute("vol");		if (a)  ambientVol = s2r(a);
 		a = e->Attribute("reverbs");	if (a)  sReverbs = string(a);
 		UpdRevSet();
 	}

@@ -18,18 +18,20 @@ build*/*
 Dependencies/*
 
 #  data
+sr.log
 #*_tag.xml
 #config
 #hud
 #gui
 tracks*
 #cars
-#data/road/
 data/ghosts/original/
+objects2convert
 #objects*
+#data/road/
 #terrain
 #data
-sr.log
+#sounds
 
 .DS_Store
 iOSDependencies

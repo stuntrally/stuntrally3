@@ -45,7 +45,8 @@ public:
 	/// ---  🆕 new game  ========
 	void LeaveGame(bool dstTrk);  // call in this order
 	bool NewGameDoLoadTrack();  // track
-	bool NewGameDoLoadMisc(float pre_time);  // timer,etc
+	bool NewGameDoLoadMisc(float pre_time,  // timer,etc
+		std::string ambient_snd, float ambient_vol);
 	
 	
 	CAR* LoadCar(const std::string& pathCar, const std::string& carname,
@@ -82,6 +83,7 @@ public:
 		*snd_lap =0, *snd_lapbest =0,
 		*snd_stage =0, *snd_win[3]={0,0,0}, *snd_fail =0,
 		*snd_ambient =0;
+	float vol_ambient = 1.f;
 	void UpdHudSndVol(), DeleteHudSounds();
 
 

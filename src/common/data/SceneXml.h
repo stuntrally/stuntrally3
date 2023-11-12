@@ -56,7 +56,8 @@ public:
 	
 
 	//  🔉 sound
-	std::string sAmbient, sReverbs;  void UpdRevSet();
+	std::string ambientSnd, sReverbs;  void UpdRevSet();
+	float ambientVol = 1.f;
 	struct RevSet  // copy from ReverbSet, name = sReverbs, from base if ""
 	{	std::string descr,
 			normal, cave, cavebig, pipe, pipebig, influid;

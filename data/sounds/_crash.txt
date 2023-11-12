@@ -1,9 +1,8 @@
 
-**  01..12.wav
-crash hits, made from smaller cuts:
+----  crash/01..12.wav
+crash hits, made by CryHam, from smaller cuts by:
 
--- Author: halleck
--- License:  CC BY SA 3.0
+Author: Halleck    License: CC-BY-4.0    Date: June 1st, 2011
 
 metal medium hit
 https://www.freesound.org/people/Halleck/sounds/121668/
@@ -26,17 +25,15 @@ https://www.freesound.org/people/Halleck/sounds/121622/
 metal crash 1
 https://www.freesound.org/people/Halleck/sounds/121655/
 
-**  scrap.wav
+----  crash/scrap.wav
 metal roll cage hits heavy
 https://www.freesound.org/people/Halleck/sounds/121669/
 
-**  screech.wav
+----  crash/screech.wav
 metal screech and scraping
 https://www.freesound.org/people/Halleck/sounds/121677/
 
 
--- Author: sagetyrtle
--- License:  CC 0
-
-crash
+---- crash
+Author: sagetyrtle    License: CC 0
 https://www.freesound.org/people/sagetyrtle/sounds/40158/

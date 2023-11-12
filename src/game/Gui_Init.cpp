@@ -171,6 +171,7 @@ void CGui::InitGui()
 
 	//  🔉 Sound  --------
 	sv= &svVolMaster;	sv->Init("VolMaster",	&pSet->vol_master, 0.f, 2.0f);  sv->DefaultF(1.55f);  Sev(VolMaster);
+	sv= &svVolAmbient;	sv->Init("VolAmbient",	&pSet->vol_ambient, 0.f, 2.0f);  sv->DefaultF(1.f);  Sev(VolMaster);
 	ck= &ckReverb;		ck->Init("ChkReverb",   &pSet->snd_reverb);
 
 	sv= &svVolEngine;	sv->Init("VolEngine",	&pSet->vol_engine, 0.f, 1.4f);  sv->DefaultF(0.58f);

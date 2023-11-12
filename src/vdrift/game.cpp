@@ -555,7 +555,7 @@ bool GAME::NewGameDoLoadTrack()
 	return true;
 }
 
-bool GAME::NewGameDoLoadMisc(float pre_time)
+bool GAME::NewGameDoLoadMisc(float pre_time, std::string ambient_name, float ambient_vol)
 {
 	//  load the timer
 	if (!timer.Load(PATHS::Records()+"/"+ pSet->game.sim_mode+"/"+ pSet->game.track+".txt", pre_time))
@@ -565,9 +565,19 @@ bool GAME::NewGameDoLoadMisc(float pre_time)
 		timer.AddCar(cars[i]->GetCarType());
 	timer.AddCar("ghost");
 
-	//  sounds 🔊
+	//  sounds 🔊  ----
 	LoadHudSounds();
+
 	snd->sound_mgr->CreateSources();  //))
+
+	if (!ambient_name.empty())
+	{
+		snd_ambient = snd->createInstance(ambient_name);
+		snd_ambient->set2D(true);
+		vol_ambient = ambient_vol;
+		snd_ambient->setGain(vol_ambient * pSet->vol_ambient);
+		snd_ambient->start();  // 🔉 is during load..
+	}	
 	return true;
 }
 
@@ -585,11 +595,12 @@ void GAME::LeaveGame(bool dstTrk)
 		delete cars[i];
 	cars.clear();
 
-	//  sounds 🔊
+	//  sounds 🔊  ----
 	if (snd && hadCars)
 		snd->sound_mgr->DestroySources(false);  //))
 	
-	DeleteHudSounds();  //`
+	DeleteHudSounds();  //` todo: dont, mark to not destroy hud sources
+	delete snd_ambient;  snd_ambient = 0;
 	
 	timer.Unload();
 
@@ -655,7 +666,10 @@ void GAME::ProcessNewSettings()
 		controls.first->SetAutoRear(pSet->autorear);
 		//controls.first->SetAutoClutch(settings->rear_inv);
 	}
+	//  snd vol 🔊
 	snd->setMasterVolume(pSet->vol_master);
+	if (snd_ambient)
+		snd_ambient->setGain(vol_ambient * pSet->vol_ambient);
 }
 
 void GAME::UpdateForceFeedback(float dt)

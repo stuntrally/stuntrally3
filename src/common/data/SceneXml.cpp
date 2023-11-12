@@ -31,7 +31,8 @@ void Scene::Default()
 	windAmt = 0.f;  damageMul = 1.f;
 	gravity = 9.81f;
 	
-	sAmbient = "";  sReverbs = "";
+	ambientSnd = "";  sReverbs = "";
+	ambientVol = 1.f;
 
 	skyMtr = "World/NoonSky";  skyYaw = 0.f;
 	rainEmit = 0;  rainName = "";

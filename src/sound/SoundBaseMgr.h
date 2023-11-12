@@ -63,7 +63,7 @@ public:
 	bool loadOGGFile(Ogre::String file, ALuint buffer, int& outSamples);
 
 	//  ambient sound (own, low level)
-	ALuint amb_source, amb_buffer;
+	// ALuint amb_source, amb_buffer;
 
 	
 	//  active audio sources (hardware sources)

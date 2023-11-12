@@ -505,7 +505,8 @@ void App::LoadGame()
 		pGame->timer.end_sim = false;
 	}
 
-	pGame->NewGameDoLoadMisc(pretime);
+	pGame->NewGameDoLoadMisc(pretime,
+		scn->sc->ambientSnd, scn->sc->ambientVol);
 }
 //---------------------------------------------------------------------------------------------------------------
 

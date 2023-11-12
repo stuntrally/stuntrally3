@@ -200,7 +200,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 	//  🔊 sound
 	Param(c,w, "sound.device", snd_device);			Param(c,w, "sound.reverb", snd_reverb);
-	Param(c,w, "sound.volume", vol_master);	
+	Param(c,w, "sound.volume", vol_master);			Param(c,w, "sound.ambient", vol_ambient);  // todo: in ed too..
 	Param(c,w, "sound.vol_engine", vol_engine);		Param(c,w, "sound.vol_turbo", vol_turbo);
 	Param(c,w, "sound.vol_tires", vol_tires);		Param(c,w, "sound.vol_env", vol_env);
 	Param(c,w, "sound.vol_susp", vol_susp);

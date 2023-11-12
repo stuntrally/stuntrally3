@@ -60,7 +60,8 @@ bool Scene::SaveXml(String file)
 
 
 	XMLElement* snd = xml.NewElement("sound");  // 🔉
-		snd->SetAttribute("ambient",		sAmbient.c_str());
+		snd->SetAttribute("ambient",		ambientSnd.c_str());
+		snd->SetAttribute("vol",			toStrC( ambientVol ));
 		snd->SetAttribute("reverbs",		sReverbs.c_str());
 	root->InsertEndChild(snd);
 	
