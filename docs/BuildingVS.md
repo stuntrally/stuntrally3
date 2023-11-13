@@ -55,7 +55,9 @@ This is an `.exe` that will extract Boost files to a typed folder.
 
 **Bullet** is different, it has a file [`build_visual_studio_vr_pybullet_double_dynamic.bat`](https://github.com/bulletphysics/bullet3/blob/master/build_visual_studio_vr_pybullet_double_dynamic.bat).  
 Important line in this `.bat` is starting with: `premake4  --dynamic-runtime --double  `  
-Meaning bullet will use double types and dynamic DLL for runtime.  
+Meaning bullet will use _double_ types and dynamic DLL for runtime.  
+I recommend removing `--double` from it, it's not needed and works slower on old PCs.
+
 Start this `.bat` file, it that will generate a folder bullet3\vs2010\ with `0_Bullet3Solution.sln` file,  
 open it and build with your VS (first convert dialog will show).  
 You can build whole solution, there is more stuff.  
@@ -125,6 +127,7 @@ If so you can start and check Ogre demos and samples inside:
   `OGRE-Next.sln` from above `build\` dir, and building in VS.  
   This will take less time than first in cmd.  
 
+----
 - _Note:_ I'm not sure how to do this quicker (set both ON before 1st build).  
   It would need setting TRUE in `Ogre/ogre-next/CMakeLists.txt` at end of line with:
   ```
@@ -137,12 +140,26 @@ If so you can start and check Ogre demos and samples inside:
   Caution: if this was done later, after building MyGui and/or StuntRally3,  
   then you need to rebuild also MyGui and then StuntRally3 too.
  
+- _Optional_ for Debug only.  
+  For Debug build to be usable we have to comment out this `assert`,  
+  (needs rebuilding Ogre-Next after),  
+  I added // at start in `OgreNode.h` (line was 681, could change):  
+
+```
+        virtual_l2 FORCEINLINE const Matrix4 &_getFullTransform() const
+        {
+#if OGRE_DEBUG_MODE >= OGRE_DEBUG_MEDIUM
+            //assert( !mCachedTransformOutOfDate );
+#endif
+```
+
 ## 4. Building MyGui-Next
 
 MyGui-Next is my fork of MyGui on branch `ogre3`.  
 I follow its build guide [here](https://github.com/cryham/mygui-next/tree/ogre3).  
+_It isn't the latest, and was also based on fork._  
 
-It needs to have set (should be by default):  
+It needs to have set (this should be by default):  
    - MYGUI_RENDERSYSTEM: 8 - Ogre 3.x
    - MYGUI_USE_FREETYPE: yes
    - all MYGUI_BUILD*: no
@@ -155,12 +172,13 @@ Inside `c:\dev\`
 ```
 git clone https://github.com/cryham/mygui-next --branch ogre3 --single-branch
 ```
+Follow its build guide [here](https://github.com/cryham/mygui-next/tree/ogre3#windows).  
+This _needs_ renaming few cmake files in it.
+
 Open CMake-Gui, pick sources `c:\dev\mygui-next`, build to `c:\dev\mygui-next\build`.  
 Press Configure twice, then Generate.  
 
-We need Release build, _and possibly Debug too._  
-
-**WIP**: There are probably wrong paths there, that need editing and fixing in CMakeLists.txt.
+We need Release build, _only if Release fails, then Debug too._  
 
 ## 6. Clone SR3
 
@@ -169,23 +187,63 @@ In `c:\dev\`
 ```
 git clone https://github.com/stuntrally/stuntrally3.git sr3
 cd sr3/data
-
 git clone https://github.com/stuntrally/tracks3.git tracks
 ```
-
 ## 7. Build SR3
 
-_ToDo:_ Rename the file CMakeLists-VS.txt to CMakeLists.txt.  
+Rename the files, replacing them (best to keep copies):  
+`CMakeLists-WindowsRelease.txt` to:  
+`CMakeLists.txt`  
+and  
+`\bin\Release\plugins_Windows.cfg` to:  
+`\bin\Release\plugins.cfg`
 
 Open CMake-Gui, pick sources `c:\dev\sr3` and build as `c:\dev\sr3\build`.  
+
+> If doing a Debug build, then do same but use:
+> `CMakeLists-WindowsDebug.txt` and  
+> `bin\Debug\plugins_Windows.cfg`  
+> and choose a _different_ build dir e.g. `c:\dev\sr3\buildDebug`  
+
+Press Configure twice.  
+If it fails, then probably need to adjust some paths in CMake files.  
+If it succeeded then press Generate.  
+Open `c:\dev\sr3\build\StuntRally3.sln` with VS (2019),  
+pick `Release x64` configuration and build it.  
+
+This should produce valid *.exe files
 
 
 ## 8. Start StuntRally3
 
-If it succeeds, go into one of:  
-`sr3/bin/RelWithDebInfo` - if used `cmake ../`  
-`sr3/bin/Release` - if used `cmake ../ -DCMAKE_BUILD_TYPE="Release"`  
-`sr3/bin/Debug` - if used `cmake ../ -DCMAKE_BUILD_TYPE="Debug"`  
-and start the executable:  
-`./sr-editor3` - for SR3 Track Editor  
-`./stuntrally3` - for SR3 game  
+Copy into `c:\dev\sr3\bin\Release\`  
+**all** needed `*.dll` files from previously built dependencies, we need:
+```
+MyGUIEngine.dll
+OgreHlmsPbs.dll
+OgreHlmsUnlit.dll
+OgreMain.dll
+OgreOverlay.dll
+OgrePlanarReflections.dll
+OpenAL32.dll
+Plugin_ParticleFX.dll
+RenderSystem_Direct3D11.dll (not used yet)
+RenderSystem_GL3Plus.dll
+SDL2.dll
+amd_ags_x64.dll (got from internet)
+```
+
+If build succeeded, start:  
+`c:\dev\sr3\bin\Release\StuntRally3.exe` - for SR3 game  
+`c:\dev\sr3\bin\Release\SR-Editor3.exe` - for SR3 Track Editor  
+and if for Debug then inside:  
+`c:\dev\sr3\bin\Debug`  
+
+Starting any `.exe` with `cfg` argument will show Ogre config dialog.
+
+If Ogre dialogs shows empty, replace `plugins.cfg` with `plugins_Windows.cfg` again.  
+
+Only `Open GL 3+ Rendering Subsystem` should be used (DX11 fails).  
+
+Logs will be in:  
+`C:\Users\USERNAME\AppData\Roaming\stuntrally3\`
