@@ -54,6 +54,7 @@ class TerData		//  ⛰️ Terrain
 public:	
 	//  height field
 	std::vector<float> hfHeight;
+	std::vector<double> hfHeightDbl;
 	int getFileSize(std::string filename);  // Inits iVertsX etc
 	
 	//  🗜️ size

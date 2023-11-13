@@ -170,7 +170,7 @@ void CScene::CreateBltTerrains()
 	#endif
 
 
-	for (const auto& td : sc->tds)
+	for (auto& td : sc->tds)
 	if (td.iHorizon <= max_horiz &&
 		(td.collis || td.iHorizon > 0 && drive_horiz))
 	{
@@ -179,11 +179,22 @@ void CScene::CreateBltTerrains()
 			// next ters  (made new in sr3-ed)  have: 0  but need same as above
 			(td.ofsZ == 0.f ? td.fTriangleSize : 0.f), 0.f);
 
+	#ifdef BT_USE_DOUBLE_PRECISION  // double fix
+		int si = td.hfHeight.size();
+		td.hfHeightDbl.resize(si, 0.0);
+		for (int i = 0; i < si; ++i)
+			td.hfHeightDbl[i] = td.hfHeight[i];
+
+		btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
+			td.iVertsXold, td.iVertsXold,
+			&td.hfHeightDbl[0], td.fTriangleSize,
+			-1300.f,1300.f, 2, PHY_DOUBLE,false);  //par- max height
+	#else  //  float
 		btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
 			td.iVertsXold, td.iVertsXold,
 			&td.hfHeight[0], td.fTriangleSize,
-			-1300.f,1300.f, 2, PHY_FLOAT,false);  //par- max height
-		
+			-1300.f, 1300.f, 2, PHY_FLOAT, false);  //par- max height
+	#endif
 		hfShape->setUseDiamondSubdivision(true);
 
 		btVector3 scl(td.fTriangleSize, td.fTriangleSize, 1);
