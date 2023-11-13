@@ -10,106 +10,104 @@ SR 3.0 moved to Ogre-Next, 3.0 or higher.
 [Ogre topic](https://forums.ogre3d.org/viewtopic.php?t=96576&sid=15b9610ca52af886515b49b4733ef546) (dev Q&A)  
 Git [repo](https://github.com/stuntrally/stuntrally3) and [tracks](https://github.com/stuntrally/tracks3), older simple [terrain demo](https://github.com/cryham/ogre3ter-demo)  
 
-<u>Marked</u>: `crucial`, also **Next or Big** and _Important_.
+Marked: <u>critical</u>, `crucial`, **Next or Big**, _Important_.
 
 ### 3.0
 
-- Water, fluids  
-  tweak par, **refract, depth** for color, border alpha
-- Fog, 2 colors cam dir fix-
-- Terrain  
+New tracks **ghosts**, add to `champs and challs` 🏆  
+SR 3.0 <u>video, screens</u>, 📽️ `editor Videos`, all new  
+_Install_ docs/*.md files  
+
+### 3.1
+
+- 🌊 Water tweak par, **refract, depth** for color, border alpha  
+- ⛰️ Terrain  
   **shadowmap** fix < 0, save/load-  
   add emissive, reflect par, fix triplanar normalmaps-  
-  blendmap also .hlsl or .any  
-  read blendmap, for ter wheel `surface` ids, many ters  
-- Road  
+  blendmap also .hlsl or .any for DX  
+  read blendmap, for ter wheel **surface** ids, many ters  
+- 🛣️ Road  
   **Grid** for walls, road, pipes, ed update cell  
   1 mesh with 4 LODs, shader fix specular stretch  
-- Grass, add Wind params  
-  **deform** spheres, alpha or grow fade far  
-- **Wind** for trees  
+- 🌪️ **Wind**, for trees  
+  Grass **deform** spheres, wind params, far fade-  
 
-- Editor, fix  
-  minimap _RTTs_ upd skip, or create on save  
-  water reflect in `F7 cam prv`  
-  objects pick _errors_  
+- 🏗️ Editor, fix  
+  objects pick `errors`  
+  minimap **RTTs** upd skip (slow), or create on save  
+  water reflect in **F7 cam prv**  
   moved terrains, error in ray pos edit-  
   _tools_: fix scale ter h, copy horizon, which ter, road  
 
-- **HUD**  
+- ⏲️ **HUD**  
   fix splitscreen gauges etc  
   _Minimap_ circle, terrain add, fix pos tris  
 
-- Game, meh fix  
+- Rest  
+  MyGui CMake .lib, _Conan_  
+  move all .mat to **.json**, reflect in .json for objects, wet?  
+  .mesh LODs test adjust-  
   water vis dist?  
   tire trails no uv tex-  
-  mesh LODs adjust  
+  Fog, 2 colors cam dir fix-  
   gpu mem leaks or renders inactive  
 
-New tracks **ghosts**, add to champs and challs 🏆  
-
-fix on `Windows`  
-blendmap hlsl or any, MyGui CMake .lib, Conan  
-`install` docs/*.md files  
-
-📽️ **editor Videos**, all new  
-
 ----
-### 3.1
+### 3.2
+
+🔊 **Ambient** [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
+🚗🔊 More car **Sounds**.. todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7)  
+📦🔊 object hit sounds, reverb change in water, caves, pipes-  
 
 [Horizons](https://stuntrally.tuxfamily.org/mantis/view.php?id=11), add to rest of tracks  
 🪄 **Effects**: Soft Particles, SSAO, HDR, bloom, rays?  
 🖥️ Gui render system, all **options**?  
-
-Road noise blend, color per vertex  
-grass density as RTT, noise, color  
-inside height fog?, noise 3d? volumetric clouds  
-auto road, ter surface **Particles**,trail, from `presets.xml` not per track  
-
 🌀 Add [FastNoise](https://github.com/Auburn/FastNoiseLite) for brushes and ter gen  
-🌊 Ocean: Terra waves, vehicle deform, particles  
-⏲️ Gauges with shader [demo](https://www.shadertoy.com/view/7t3fzs)  
+
+auto road/ter **Surface**: Particles, trail, sounds, from `presets.xml` not per track  
+Road noise blend, color per vertex  
+grass density as **RTT**, noise, color  
+inside height fog?, noise 3d? _volumetric_ clouds  
 
 🌳 new trees, Bushes, more vegetation, tiny close, grasses, rock packs  
 redo or replace lowest quality meshes: shroom* 🍄, skyscraper* 🏢  
 normalize .mesh scales fir, etc.  
 
 ----
-### 3.1 or later
+### 3.3
 
 _Basically all [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with priority 1 to 12._
 
-all **json** materials, custom params? wet?  
 ed _tools_: copy roads which combo,all  
 Grass read Hmap - no index, vertex buffers? texture atlas-  
 slow track load, shaders, ?ter get h, norm, do parallel  
 🖱️ Input mouse bind, 👀 VR mode meh-  
 
-🔊 **Ambient** [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
-🚗🔊 More car **sounds**.. todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7)  
-📦🔊 object hit sounds, reverb change in water, caves, pipes-  
-
 ⛅🌳 Remove all non **CC** data, [topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800), New skies  
 🛣️ Road: wall types, spline walls [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)  
 
-🕹️ new **Game** elements:  
-teleporters, moving & rotating obstacles, elevators  
-force fields, speed up, lift, anti-gravity
+🕹️ New **Game** elements:  
+Teleporters, moving & rotating Obstacles, elevators  
+Force fields, speed up, lift, anti-gravity
+Track 💡lights, `entities.xml` (sum of object, animation, light, 🔥particles etc)
 
 🏆✨ new [game Modes](https://stuntrally.tuxfamily.org/mantis/view.php?id=21): [Career](https://forum.freegamedev.net/viewtopic.php?f=79&t=5211), Collection, 3d cup models  
 👥 [Splitscreen](https://stuntrally.tuxfamily.org/mantis/view.php?id=26) issues  
 
+🌊 Ocean: Terra waves, vehicle deform, particles  
+⏲️ Gauges with shader [demo](https://www.shadertoy.com/view/7t3fzs)  
+
 ----
-### Graphics
+#### Graphics
 
 🏞️ [Rivers/waterfalls](https://stuntrally.tuxfamily.org/mantis/view.php?id=7)  
 ✨ [Particles](https://stuntrally.tuxfamily.org/mantis/view.php?id=2)  
 🌞 [Sun flare](https://stuntrally.tuxfamily.org/mantis/view.php?id=9)  
 ⚡ lightning weather: line, thunder sound, light or glow  
 
-### Data
+#### Data
 
-🛣️ **Road** textures, adapt, 2,3 variations, blending few at once?, traces alpha texture  
+🛣️ **Road** textures, redo, 2,3 variations, blending few at once?, traces alpha texture  
 🏢 finish rest of 0AD han buildings, maur, others?  
 📦 New static Objects, dynamic hay  
 Sceneries: PostApo, Spring trees  
@@ -123,7 +121,7 @@ sim new poses _interpolation_?
 
 ----
 
-### 2.8
+### 2.x old
 
 new deps with latest Ogre fix for terrain visibility, resulting in editor vegetation issue  
 meh, fix shadow check [here](https://github.com/OGRECave/ogre/blob/master/Media/RTShaderLib/GLSL/SGXLib_IntegratedPSSM.glsl#L86), screens [here](https://forums.ogre3d.org/viewtopic.php?t=96888&sid=bf9864a27e57f24f55950ccb5d273dea)  
