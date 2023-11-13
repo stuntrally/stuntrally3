@@ -44,8 +44,8 @@ void RigidBodyState::setWorldTransform(const btTransform& in)
 	const auto pos = transform.getOrigin();
 
 	//Set to the node
-	mNode->_setDerivedOrientation({ rot.w(), rot.x(), rot.y(), rot.z() });
-	mNode->_setDerivedPosition({ pos.x(), pos.y(), pos.z() });
+	mNode->_setDerivedOrientation({ (Real)rot.w(), (Real)rot.x(), (Real)rot.y(), (Real)rot.z() });
+	mNode->_setDerivedPosition({ (Real)pos.x(), (Real)pos.y(), (Real)pos.z() });
 	// mNode->_setDerivedPosition({pos.x(), pos.z(), -pos.y()});  ///!-
 }
 

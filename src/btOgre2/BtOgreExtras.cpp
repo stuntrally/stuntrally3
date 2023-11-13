@@ -24,12 +24,12 @@ btVector3 Convert::toBullet2(const Vector3& v)
 
 Quaternion Convert::toOgre(const btQuaternion& q)
 {
-	return { q.w(), q.x(), q.y(), q.z() };
+	return { (Real)q.w(), (Real)q.x(), (Real)q.y(), (Real)q.z() };
 }
 
 Vector3 Convert::toOgre(const btVector3& v)
 {
-	return { v.x(), v.z(), -v.y() };  ///!
+	return { (Real)v.x(), (Real)v.z(), -(Real)v.y() };  ///!
 }
 
 LineDrawer::LineDrawer(SceneNode* node, String datablockId, SceneManager* smgr) :
@@ -162,7 +162,7 @@ void DebugDrawer::drawLine(const btVector3& from, const btVector3& to, const btV
 	const auto ogreFrom = Convert::toOgre(from);
 	const auto ogreTo = Convert::toOgre(to);
 
-	ColourValue ogreColor{ color.x(), color.y(), color.z(), 1.0f };
+	ColourValue ogreColor{ (Real)color.x(), (Real)color.y(), (Real)color.z(), 1.0f };
 	ogreColor *= unlitDiffuseMultiplier;
 
 	drawer.addLine(ogreFrom, ogreTo, ogreColor);

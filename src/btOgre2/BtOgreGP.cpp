@@ -259,11 +259,15 @@ btConvexHullShape* VertexIndexToShape::createConvex()
 	assert(getVertexCount() && (getIndexCount() >= 6) &&
 		("Mesh must have some vertices and at least 6 indices (2 triangles)"));
 
-	auto shape = new btConvexHullShape{ static_cast<btScalar*>(&mVertexBuffer[0].x), int(getVertexCount()), sizeof(Vector3) };
+#ifdef BT_USE_DOUBLE_PRECISION
+	return 0;  // fixme ..  // not used
+#else
+	auto shape = new btConvexHullShape{
+		static_cast<btScalar*>(&mVertexBuffer[0].x), int(getVertexCount()), sizeof(Vector3) };
 
 	shape->setLocalScaling(Convert::toBullet(mScale));
-
 	return shape;
+#endif
 }
 
 btBvhTriangleMeshShape* VertexIndexToShape::createTrimesh()
