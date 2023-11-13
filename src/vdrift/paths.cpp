@@ -105,7 +105,7 @@ void PATHS::Init(bool log_paths)
 		HRESULT hRes = SHGetSpecialFolderLocation(NULL, CSIDL_APPDATA|CSIDL_FLAG_CREATE, &pidl);
 		if (hRes == NOERROR)
 		{
-			SHGetPathFromIDList(pidl, AppDir);
+			SHGetPathFromIDListA(pidl, AppDir);
 			int i;
 			for (i = 0; AppDir[i] != '\0'; ++i) {
 				if (AppDir[i] == '\\') str += '/';
@@ -274,14 +274,14 @@ bool PATHS::DirList(string dirpath, strlist& dirlist, string extension)
 #else
 //------Folder listing for WIN32
 	HANDLE          hList;
-	TCHAR           szDir[MAX_PATH+1];
-	WIN32_FIND_DATA FileData;
+	CHAR            szDir[MAX_PATH+1];
+	WIN32_FIND_DATAA FileData;
 
 	// Get the proper directory path
 	sprintf(szDir, "%s\\*", dirpath.c_str());
 
 	// Get the first file
-	hList = FindFirstFile(szDir, &FileData);
+	hList = FindFirstFileA(szDir, &FileData);
 	if (hList == INVALID_HANDLE_VALUE)
 	{ 
 		//no files found.  that's OK
@@ -289,7 +289,7 @@ bool PATHS::DirList(string dirpath, strlist& dirlist, string extension)
 	else
 	{
 		// Traverse through the directory structure
-		while (FindNextFile(hList, &FileData))
+		while (FindNextFileA(hList, &FileData))
 		{
 			// Check the object is a directory or not
 			if (FileData.dwFileAttributes & FILE_ATTRIBUTE_HIDDEN)
@@ -334,7 +334,7 @@ namespace
 	fs::path execname()
 	{
 		char buf[1024];
-		DWORD ret = GetModuleFileName(NULL, buf, sizeof(buf));
+		DWORD ret = GetModuleFileNameA(NULL, buf, sizeof(buf));
 		if (ret == 0 || ret == sizeof(buf)) return fs::path();
 		return buf;
 	}
