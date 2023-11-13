@@ -216,7 +216,7 @@ string Transl(const string& _line)
 ///  main
 ///--------------------------------------------------------------------------------------------------------
 #ifdef _WIN32
-int _tmain(int argc, _TCHAR* argv[])
+int WinMain(int argc, _TCHAR* argv[])
 #else
 int main(int argc, char* argv[])
 #endif

@@ -1,5 +1,5 @@
 #pragma once
-#include <al.h>
+#include <AL/al.h>
 //  EFX Reverb presets - copy from AL/efx-presets.h
 
 //---------------------
