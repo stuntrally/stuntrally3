@@ -60,7 +60,7 @@ namespace Ogre
 
         A PBR solution is iterative and requires more resources.
     */
-    class _OgreAtmosphereExport Atmosphere2Npr final : public AtmosphereComponent
+    class /*_OgreAtmosphereExport*/ Atmosphere2Npr final : public AtmosphereComponent
     {
     public:
         struct Preset

@@ -73,7 +73,7 @@ namespace Ogre
         ArrayReal    xyHalfSize[2];
     };
 
-    class _OgrePlanarReflectionsExport PlanarReflectionActor
+    class /*_OgrePlanarReflectionsExport*/ PlanarReflectionActor
     {
         friend class PlanarReflections;
 

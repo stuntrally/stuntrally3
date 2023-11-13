@@ -78,7 +78,7 @@ namespace Ogre
         Actors are culled against the camera, thus if they're no longer visible Ogre will
         stop updating those actors, improving performance.
     */
-    class _OgrePlanarReflectionsExport PlanarReflections
+    class /*_OgrePlanarReflectionsExport*/ PlanarReflections
     {
     public:
         struct TrackedRenderable
