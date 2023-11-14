@@ -8,29 +8,80 @@
 ## Links
 
 [Stunt Rally Homepage](https://stuntrally.tuxfamily.org/) - Download links, track & vehicle browsers etc.  
-[Forums](https://forum.freegamedev.net/viewforum.php?f=77) - Discussions, tracks, Issues, etc.  
 [Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs & Issues, pull requests, etc.  
-[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md) - new, is inside docs/  
+[Forums](https://forum.freegamedev.net/viewforum.php?f=77) - Discussions, tracks, Issues, etc.  
+[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md) - is now inside docs/  
 Old [Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from 2.x versions and development  
-[Videos](https://www.youtube.com/user/TheCrystalHammer) - from game and editor (old)  
+[Videos](https://www.youtube.com/user/TheCrystalHammer) - from game and (old) editor  
 [Donations](https://cryham.tuxfamily.org/donate/) - financial support
 
 ------------------------------------------------------------------------------
 
 ## Description
 
-Port and continuation of latest [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.x using latest [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0 for rendering.  
+3D racing game with own Track Editor.
 
-Already playable game in all modes. Working Track Editor, almost fully restored.  
-Still WIP, not yet released and beta (possible bugs).
+Stunt Rally 3 features 226 tracks in 40 sceneries and 25 vehicles.  
+Game modes include:
+* Single Race (with your Ghost drive, track car guide), Replays,
+* Challenges, Championships, Tutorials, (series of tracks)
+* Multiplayer (info [here](docs/multiplayer.md), no official server) and Split Screen, up to 6 players.  
+
+The Track Editor allows creating and modifying tracks.  
+Both run on GNU/Linux and Windows.  
 
 **Full features** [list here](docs/Features.md).  
+
+The game has a **rally** style of driving and sliding, mostly on gravel,  
+with possible **stunt** elements (jumps, loops, pipes) and generated roads from 3D spline.  
+It also features few Sci-Fi vehicles and planets.
+
+This is continuation of old [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.x.  
+Using [Ogre-Next](https://github.com/OGRECave/ogre-next) for graphics and [VDrift](https://github.com/VDrift/vdrift) for simulation.
+
 **Documentation** is now inside [docs/](docs/_menu.md) dir. It's partly WIP.
 
 **Changes** and new features in [changelog](docs/Changelog.md).  
-Details in [Roadmap](docs/Roadmap.md) with missing features and todo.  
-
+Details in [Roadmap](docs/Roadmap.md) with few missing features, known issues, and todo.  
 Progress posts in [SR forum topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18515). Dev questions and answers in Ogre-Next [topic](https://forums.ogre3d.org/viewtopic.php?t=96576).
+
+------------------------------------------------------------------------------
+
+## Quick Start
+
+[Hardware requirements](docs/Running.md#hardware-requirements).
+
+### Game
+
+Esc or Tab - shows/hides GUI.
+
+Quick setup help is on the Welcome screen, shown at game start, or by Ctrl-F1.  
+- Use Ogre config dialog before start to adjust Screen resolution, etc (start with `cfg` argument will show it).  
+  Only OpenGL 3+ Rendering Subsystem is supported now
+- Open Options to pick graphics preset according to your GPU and *do* restart.  
+- Open Options tab Input, to see or reassign keys, or configure a game controller, info [here](docs/Running.md#input).  
+
+Game related Hints are available in menu: How to drive, with few driving lessons.  
+Have fun 😀
+
+#### Troubleshooting
+
+If you have problems at start, check page [Running](docs/Running.md).  
+All settings and logs are saved to user folder, see [Paths](docs/Paths.md). It is also shown on first Help page.
+
+------------------------------------------------------------------------------
+
+### Editor
+
+F1 (or tilde) - shows/hides GUI,  
+Tab - switches between Camera and Edit modes.  
+Press Ctrl-F1 to read what can be edited and how.  
+
+There is no undo, so use F5 to reload last track state, and F4 to save it often.  
+After each save, track can be tested in game.
+
+[Tutorial](docs/editor.md) page has more info with _Old videos (to be replaced)_.  
+
 
 ------------------------------------------------------------------------------
 
@@ -43,12 +94,21 @@ How to compile project from sources:
 
 ------------------------------------------------------------------------------
 
+## Feedback
+
+Before reporting bugs or issues, be sure to [Read before posting](https://forum.freegamedev.net/viewtopic.php?f=78&t=3814) topic first
+
+Then create a [new issue on github](https://github.com/stuntrally/stuntrally3/issues/new) (if not present already)  
+or a topic on Forum [SR Bugs & Help](https://forum.freegamedev.net/viewforum.php?f=78).
+
 ## Contributing
 
 Help and contributing is welcome.  
 If you'd like to contribute, please check [Contributing](docs/Contributing.md).  
-You can help with:
-- [translating](docs/Localization.md), testing, adding or improving content, fixing, developing code etc.
+You can help with:  
+- [translating](docs/Localization.md) - done on Weblate
+- testing, packaging, adding or improving content, fixing, developing code etc.  
+  done with PRs on github
 
 ## Developing
 

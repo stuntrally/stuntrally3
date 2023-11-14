@@ -6,14 +6,14 @@ _How to start the game, configure controller, settings etc._
 The recommended minimum hardware is:
 
 * CPU: with 2 cores, 2.4 GHz
-* GPU: dedicated, low budget (e.g. GeForce GTX 560 Ti, Radeon RX 570)  
-  with Shader Model 3.0 supported and 2GB GPU RAM.
+* GPU: dedicated, low budget (e.g. Radeon RX 570, [GPU benchmark](https://www.videocardbenchmark.net/compare/3558vs4444/Radeon-RX-470570-vs-Radeon-RX-6600-XT)),  
+with Shader Model 4.0 supported and 2GB GPU RAM.  
 
 Integrated GPUs and old laptops don't handle the game well or at all.  
 In any case, if you get graphic errors, try updating your graphic driver, and making sure game uses dedicated GPU.
 
-The game is developed on a PC with Radeon RX 570, which will likely be optimal (unless you have a better GPU).  
-Using default settings (Higher), and with no effects, it achieves around 60 Fps on all tracks (but less in complex ones).  
+The game _was_ developed on a PC with Radeon RX 570, which will likely be optimal (unless you have a better GPU).  
+Using default settings (Higher), it achieved around 60 Fps on all tracks (bit less in complex ones).  
 
 It is possible to run some tracks on lower hardware, but with low Fps (could be unplayable, below 30), especially on complex tracks.  
 Press F11 to show Fps bar (see [Tweak](Tweak.md) page for more info).
@@ -59,30 +59,40 @@ After your configuration is complete you can restart game to have the settings s
 
 You may want to backup your input_p0.xml (for Player1) in user settings dir (see [Paths](Paths.md) page) or create presets this way.
 
-   
+----
+
 ### Graphics Options
 
 Using preset combobox (which changes all settings) should be enough. Remember to quit and restart after change.
 
 You may want to change some options individually.  
+They have marks at end (** * ^ # etc) see legend for meaning.
+
 There are few `[Graphics]` options that are more important and have more impact on performance than the rest.  
 Generally first tabs have higher impact on Fps: Reflection, Water, Shadows.
 
 _Fps - Frames per second. The first value shown in upper left corner of the screen.  
 Higher values mean smoother play. It is recommended to play with at least 30 Fps or to aim at monitor's refresh rate._
 
-Todo: OLD
+  * Reflections and Water - very demanding, lowering Fps.
+    Size (of textures for them) is important. Also _frame skip_ and _faces at once_ for dynamic cube reflections can help.
+    
+  * Shadows - quite demanding too. If you have very low Fps turn them off (None).  
+    Could do same for split screen, since Fps drops with each new player viewport.  
+    Increasing Size and Filter will make them better quality.  
+    Shadows _do_ need restart to change (Todo fix).
 
-  * Effects - have very big impact on Fps (usually any will half the Fps).  
-    It is recommended to turn them off for smooth play. Bloom is the only one less Fps intensitive.
+  * Vegetation - Reduce Trees and Grass multipliers for more Fps.  
+    For newer GPUs you can set them higher to have denser vegetation.
 
-  * Shadows - the biggest Fps killer. If you have low Fps turn them off (None) also this is recommended for split screen, since the Fps drops there with each new player viewport.
+  * Materials - If you have an old GPU, you should lower Anisotropy (0-16, 4 is enough).  
+    Turning off Triplanar can reduce Fps much, especially on demanding tracks (big and with high mountains).
 
-  * Vegetation - also a Fps killer, reduce Trees and Grass multipliers for more fps. For newer GPUs you can set them higher to have a denser vegetation.
+  * Detail - has options for geometry Level Of Detail.  
+    Reducing it will decrease drawn triangles count and make geometry less smooth.
 
-  * Materials tab - if you have an old GPU, you should lower Anisotropy (0-16, 4 is enough), Terrain (Low, Normal, Parallax (broken)) and Shaders. Turning off Triplanar can reduce Fps very much, especially on demanding tracks (big and with high mountains).
-
-For minimum settings just pick Lowest from preset combobox and restart.
+For minimum settings just pick Lowest from preset combobox and restart.  
+For values suggested, check other Graphics options on Gui, or in [soruces](../src/common/GuiCom_Presets.cpp) for that.
 
    
 ### Configs
