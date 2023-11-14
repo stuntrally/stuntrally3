@@ -271,17 +271,17 @@
 		</Widget>-->
 
 		<Widget type="Widget" skin="PanelSkin" position="12 170 768 52">
-			<Property key="Colour" value="0.7 0.85 1"/>
-			<Property key="Alpha" value="0.5"/>
+			<Property key="Colour" value="0.5 0.75 1"/>
+			<Property key="Alpha" value="0.6"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
-		<Widget type="EditBox" skin="EditBoxEmpty" position="20 176 520 56">
+		<Widget type="EditBox" skin="EditBoxEmpty" position="20 176 540 46">
 			<Property key="ReadOnly" value="true"/>
 			<Property key="MultiLine" value="true"/>
 			<Property key="WordWrap" value="true"/>
 			<Property key="TextColour" value="0.8 0.9 1.0"/>
 			<Property key="TextAlign" value="Left Top"/>
-			<Property key="Caption" value="#{HintScreen}"/>
+			<Property key="Caption" value="#{HintGraphics}"/>  <!-- HintScreen -->
 			<Property key="TextShadow" value="true"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="576 176 196 40" name="btnHintScreen">
@@ -296,11 +296,11 @@
 		</Widget>
 
 		<Widget type="Widget" skin="PanelSkin" position="12 240 768 52">
-			<Property key="Colour" value="0.9 0.9 0.8"/>
-			<Property key="Alpha" value="0.5"/>
+			<Property key="Colour" value="0.9 0.9 0.7"/>
+			<Property key="Alpha" value="0.6"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
-		<Widget type="EditBox" skin="EditBoxEmpty" position="20 246 520 54">
+		<Widget type="EditBox" skin="EditBoxEmpty" position="20 246 540 46">
 			<Property key="ReadOnly" value="true"/>
 			<Property key="MultiLine" value="true"/>
 			<Property key="WordWrap" value="true"/>
@@ -319,9 +319,41 @@
 				<Property key="NeedMouse" value="false"/>
 			</Widget>
 		</Widget>
-		<Widget type="ImageBox" skin="ImageBox" position="16 312 459 134">
-			<Property key="ImageCoord" value="0 0 1266 369"/>  <!-- asp 3.428 -->
-			<Property key="ImageTexture" value="keys.png"/>
+
+		<!-- keyboard -->
+		<Widget type="ImageBox" skin="ImageBox" position="16 332 459 134">
+			<Property key="ImageCoord" value="0 0 1266 369"/>  <!-- aspect x/y = 3.428 -->
+			<Property key="ImageTexture" value="keyboard.png"/>
+		</Widget>
+		<Widget type="ImageBox" skin="ImageBox" position="338 450 30 30"> <!-- steering -->
+			<Property key="ImageCoord" value="128 384 128 128"/>
+			<Property key="Alpha" value="1.0"/>
+			<Property key="ImageTexture" value="gui_icons.png"/>
+		</Widget>
+		<Widget type="ImageBox" skin="ImageBox" position="400 460 24 24"> <!-- rewind -->
+			<Property key="ImageCoord" value="512 384 128 128"/>
+			<Property key="Alpha" value="1.0"/>
+			<Property key="ImageTexture" value="gui_icons.png"/>
+		</Widget>
+		<Widget type="ImageBox" skin="ImageBox" position="22 458 24 24"> <!-- boost -->
+			<Property key="ImageCoord" value="512 0 128 128"/>
+			<Property key="Alpha" value="1.0"/>
+			<Property key="ImageTexture" value="gui_icons.png"/>
+		</Widget>
+		<Widget type="ImageBox" skin="ImageBox" position="56 368 24 24"> <!-- flip -->
+			<Property key="ImageCoord" value="512 128 128 128"/>
+			<Property key="Alpha" value="1.0"/>
+			<Property key="ImageTexture" value="gui_icons.png"/>
+		</Widget>
+		<Widget type="ImageBox" skin="ImageBox" position="92 402 20 20"> <!-- camera -->
+			<Property key="ImageCoord" value="0 512 128 128"/>
+			<Property key="Alpha" value="1.0"/>
+			<Property key="ImageTexture" value="gui_icons.png"/>
+		</Widget>
+		<Widget type="ImageBox" skin="ImageBox" position="142 442 20 20"> <!-- handbrake -->
+			<Property key="ImageCoord" value="768 512 128 128"/>
+			<Property key="Alpha" value="1.0"/>
+			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
 
 		<Widget type="Button" skin="CheckBox" position="576 426 232 24" name="chkHintShow">
