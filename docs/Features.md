@@ -22,9 +22,9 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
 
 ## Gameplay 🏁
 
-- 🏞️ 223 **Tracks**
-  - in 39 **sceneries**, great variety: from nature based, to alien, space and surreal
-  - over 8 hours to drive all, just once
+- 🏞️ 226 **Tracks**
+  - in 40 **sceneries**, great variety: from nature based, to alien, space and surreal
+  - over 10 hours to drive all, just once
 - **Stunt** elements: obstacles, jumps, loops, pipes or very twisted road
 - 🌊 Drives through water or mud areas (safe, won't get stuck)
 - 📦 Dynamic objects on tracks (barrels, boxes, etc), can be hit

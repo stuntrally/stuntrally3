@@ -47,21 +47,27 @@ Stunt Rally 3 is continuing last SR 2.x, using latest Ogre-Next 3.0.
   - Terrain circle cursor - same size far/near, animated
   - Grass layer color - can pick any, no ColorMap combo
   - Sky preview map shown on Sky tab
-- New **Material Editor** - Alt-F both in game and editor. Can save json, needs adjusting after
+- New **Material Editor** - Alt-F both in game and editor. Can save json, needs adjusting after, [info](Materials.md)
 - Moved [**translations**](Localization.md) to Weblate
-- What is different, worse, compared to old SR 2.x
-  - Video options: Resolution, Vsync, Antialiasing, etc are not on Gui, but in Ogre dialog before start. No LimitFps
-    - Can't change them without quit. Also possibly alt-tab could require track reload on Windows
-  - On older PCs
-    - Slower road editing (~20 Fps not 60). Full Rebuild (B) takes quite long, columns need it
-    - Slower track loading (e.g. 5 sec not 1) and few lags due to long shaders compilation etc
-  - Generally lighting changed due to sRGB colors, also using gamma to fix 1.15
-    - Every color in e.g. sun, particles, materials etc needs adjusting when converting from SR 2.x (darker, more saturated)
 - Sources
   - Require building latest Ogre-Next and MyGui-Next fork from sources. Info in git [Building](Building.md) file
   - Reworked base class and new AppGui class, common for game and editor
   - Added **emojis**, for better code orientation in key sections and methods. Quick guide in [emojis file](../src/emojis.txt)
+  - Only tinyxml2 used now, no tinyxml
   - Game and Editor tools can be started passing command line **argument**(s)
     - **cfg or config** forces showing Ogre dialog with screen and rendering options
     - Starting with ? shows help for all. In code search for _Tool_ or references to MainEntryPoints::args
-  - Only tinyxml2 used now, no tinyxml
+- **Bugs** and notable **missing** features from SR 2.8, not yet present in SR 3.0:
+  - Video options: Resolution, Vsync, Antialiasing, etc are not on Gui, but in Ogre dialog before start. No LimitFps
+    - Can't change them without quit. Also possibly alt-tab could require track reload on Windows
+  - Terrain shadowmap, Fluids: depth color, Refraction, smooth border. Grass deform, Trees wind. No env reflections on objects.
+  - HUD: minimap terrain or border, bad other position markers, bad in splitscreen: gauges, minimaps, digits etc.
+  - Editor
+    - Slower road editing (~20 Fps not 60), added skip. Full Rebuild (B) takes quite _long_, columns need it
+    - Bad reflection in editor F7 camera, less Fps (minimap RTTs don't skip, no terrain+road mode)
+    - Object pick errors,  moved Terrains bad edit cursor pos
+  - On older PCs: slower track loading (e.g. 5 sec not 1) and few lags due to long shaders compilation etc
+  - Generally lighting changed due to sRGB colors (also using gamma to fix 1.15)
+    - Every color in e.g. sun, particles, materials etc needs adjusting when converting from SR 2.x (make it darker, more saturated)
+  - Grass not lit by vehicle lights, particles are unlit
+  
