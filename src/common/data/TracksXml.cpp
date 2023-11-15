@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "TracksXml.h"
+#include "SceneXml.h"
 #include "paths.h"
 #include "ReplayTrk.h"  // check
 // #include "CHud.h"  // StrTime
@@ -225,7 +226,9 @@ bool TracksIni::LoadIni(string file, bool check)
 				if (!ti.test && !ti.testC)
 				if (!PATHS::FileExists(file))
 				{	if (r==1)
-					{	if (s != "Des14-JumpCrazy")  //denyReversed)
+					{
+						Scene sc;  sc.LoadXml(PATHS::Tracks()+"/"+ s + "/scene.xml");
+						if (!sc.denyReversed)
 							LogO("!Rev Missing trk gho for: " + s);
 					}else	LogO("! Missing trk gho for: " + s);
 				}else
