@@ -35,11 +35,13 @@ const Ogre::uint8
 	RQG_Road         = RQ_7,
 	RQG_RoadBlend    = RQ_7 +1,
 
-	RQG_BatchAlpha   = RQ_7 +4,  // veget transparent
-	RQG_Fluid        = RQ_7 +5,  // water etc
+	RQG_Fluid        = RQ_7 +4,  // water etc
+	RQG_Grass        = RQ_7 +5,  // veget grass
 
-	RQG_PipeGlass    = RQ_GlassV2 +2,   // v2 glass pipe road`
-	RQG_CarGlass     = RQ_GlassV2 +4,   // v2
+	RQG_PipeGlass    = RQ_GlassV2 +2,   // glass pipe road`
+	RQG_AlphaVegObj  = RQ_GlassV2 +3,   // veget,objects transparent
+	
+	RQG_CarGlass     = RQ_GlassV2 +4,   // 
 	RQG_Ghost        = RQ_GlassV2 +7,   // markers, debug
 
 	RQG_CarTrails    = RQ_GlassV1,      // v1 trails after glass

@@ -267,7 +267,7 @@ void CScene::CreateTrees()
 				Item *item = mgr->createItem( file,
 					ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
 				
-				item->setRenderQueueGroup( veg->alpha ? RQG_BatchAlpha : RQG_Road );
+				item->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
 				item->setVisibilityFlags( RV_Vegetation );
 				app->SetTexWrap(item);
 
