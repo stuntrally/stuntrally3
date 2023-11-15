@@ -303,7 +303,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		bLights = pCar->bLightsOn;
 		if (bLights != bLightsOld)
 		{
-			for (auto l:lights)
+			for (auto* l:lights)
 				l->setVisible(bLights);
 			if (bsFlares)
 				bsFlares->setVisible(bLights && pSet->g.car_lights);

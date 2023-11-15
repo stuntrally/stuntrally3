@@ -300,7 +300,7 @@ void FluidsReflect::DestroyFluids()
 {
 	LogO("D~~~ destroy Fluids");
 	
-	for (auto fl : fluids)
+	for (auto& fl : fluids)
 	{
 		if (fl.tracked)
 		{

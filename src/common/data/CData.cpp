@@ -86,7 +86,7 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 	LogO(String("**** Loaded Fluids: ") + toStr(fluids->fls.size()));
 
 	objs->LoadXml();  //  collisions.xml
-	LogO(String("**** Loaded Vegetation objects: ") + toStr(objs->colsMap.size()));
+	LogO(String("**** Loaded Vegetation collisions: ") + toStr(objs->colsMap.size()));
 	
 	auto snd = PATHS::Sounds();
 	reverbs->LoadXml(snd + "/reverbs.xml");
