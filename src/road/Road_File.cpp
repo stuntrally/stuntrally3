@@ -39,7 +39,10 @@ void SplineRoad::Defaults()
 	fScRot = 1.8f;  fScHit = 0.8f;
 	
 	for (int i=0; i < MTRs; ++i)
-	{	sMtrRoad[i] = "";  sMtrPipe[i] = "";  bMtrPipeGlass[i] = true;  bMtrRoadTer[0] = false;  }
+	{	sMtrRoad[i] = "";  sMtrPipe[i] = "";
+		bMtrAlpha[i] = true;
+		bMtrPipeGlass[i] = true;  bMtrRoadTer[0] = false;
+	}
 	sMtrRoad[0] = "roadNgravel";  bMtrRoadTer[0] = true;
 	sMtrPipe[0] = "pipeGlass";
 	sMtrWall = "road_wall";  sMtrCol = "road_col";  sMtrWallPipe = "pipe_wall";

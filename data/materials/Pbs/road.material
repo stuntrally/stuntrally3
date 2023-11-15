@@ -149,7 +149,7 @@ hlms roadAsphalt pbs : road
 	diffuse  0.75 0.75 0.75
 	specular 0.8 0.8 0.8
 }
-hlms roadAsphalt_ter pbs : road
+hlms roadAsphalt_ter_no pbs : road
 {
 	diffuse_map  roadAsphalt.jpg
 	normal_map   normal_1.png

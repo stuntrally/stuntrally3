@@ -38,7 +38,8 @@ struct PRoad
 	int rate = 0;
 	Ogre::String mtr, sc;
 	std::string surfName;
-	bool reflect = false;
+	bool reflect = false;  // adds cube refl
+	bool alpha = true;  // on _ter adds smooth border
 
 	float dust = 0.f, mud = 0.2f, dustS = 0.f;
 	SColor tclr = SColor(0.2f, 0.2f, 0.1f, 0.6f);  // trail

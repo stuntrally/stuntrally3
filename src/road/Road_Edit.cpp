@@ -2,7 +2,11 @@
 #include "Def_Str.h"
 #include "dbl.h"
 #include "Road.h"
+
 #include "CScene.h"
+#include "CData.h"
+#include "SceneXml.h"
+#include "PresetsXml.h"
 #ifdef SR_EDITOR
 	#include "CApp.h"
 #else
@@ -497,13 +501,23 @@ void SplineRoad::SetMtrPipe(int i, String sMtr)
 {
 	sMtrPipe[i] = sMtr;  // check if glass in mtr name
 	bMtrPipeGlass[i] = strstr(sMtr.c_str(), "lass") != 0;
+	// LogO("bMtrPipeGlass: " + sMtr +" ="+ toStr(bMtrPipeGlass[i] ? 1 : 0));
 }
 
 void SplineRoad::updMtrRoadTer()
 {
+	auto* pre = pApp->scn->data->pre;
+
 	HlmsManager* hlms = pApp->mRoot->getHlmsManager();
 	for (int i=0; i < MTRs; ++i)
+	{
 		bMtrRoadTer[i] = hlms->getDatablockNoDefault( sMtrRoad[i] + "_ter" );
+		bMtrPipeGlass[i] = strstr(sMtrPipe[i].c_str(), "lass") != 0;
+		
+		auto* rd = pre->GetRoad(sMtrRoad[i]);
+		bMtrAlpha[i] = rd && rd->alpha;
+		// LogO("bMtrAlpha: " + sMtrRoad[i] +" ="+ toStr(bMtrAlpha[i] ? 1 : 0));
+	}
 }
 
 

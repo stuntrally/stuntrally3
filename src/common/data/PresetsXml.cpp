@@ -120,6 +120,7 @@ bool Presets::LoadXml(string file)
 		a = e->Attribute("m");	if (a)  l.mtr = String(a);
 		a = e->Attribute("su");	if (a)  l.surfName = string(a);
 		a = e->Attribute("re");	if (a)  l.reflect = s2i(a)>0;
+		a = e->Attribute("a");	if (a)  l.alpha = s2i(a)>0;
 
 		a = e->Attribute("sc");	if (a)  l.sc = String(a);
 

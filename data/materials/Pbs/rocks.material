@@ -616,10 +616,9 @@ hlms crystal1_anomaly pbs : rock_base
 
 	//scene_blend add
 	scene_blend alpha_blend
-	//cull_mode none
-
+	cull_mode none
 	depth_write off
-	depth_check off
+	depth_check off  // on purpose
 	two_sided true
 	receives_shadows false
 }

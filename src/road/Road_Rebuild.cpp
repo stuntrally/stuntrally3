@@ -112,7 +112,8 @@ void SplineRoad::BuildSeg(
 	//  material
 	const int mid = mP[seg].idMtr;
 	DS.mtrId = max(0,mid);  // on terrain use _ter mtr if it exists
-	const String suffix = IsRoad() && DS.onTer && bMtrRoadTer[DS.mtrId] ? "_ter" :"";
+	const String suffix = IsRoad() &&
+		DS.onTer && bMtrRoadTer[DS.mtrId] ? "_ter" :"";
 
 	DS.wallId = IsRiver() ? -1 : mP[seg].idWall;
 	DS.pipe = isPipe(seg);
@@ -132,11 +133,12 @@ void SplineRoad::BuildSeg(
 	bool useSkirt = DS.onTer || DS.pipe;  // pipe own factor..
 	Real skLen = useSkirt ? g_SkirtLen : 0.f, skH = useSkirt ? g_SkirtH : 0.f;
 
-	//  alpha border
+	//  alpha border ...
 	rs.alpha = DS.onTer &&
-		rs.sMtrRd.find("_ter") != String::npos &&
-		rs.sMtrRd.find("phalt") == String::npos &&
-		rs.sMtrRd.find("etal") == String::npos;  // todo: meh- par in mtr..
+		//rs.sMtrRd.find("_ter") != String::npos &&
+		bMtrRoadTer[DS.mtrId] && bMtrAlpha[DS.mtrId];  // todo: upd in ed
+	// rs.alpha = 0;  // test?
+	// LogO("bMtrAlpha:: " + rs.sMtrRd +" ="+ (rs.alpha ? "1" : "0"));
 
 	
 	//  seg params  -----------------

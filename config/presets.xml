@@ -109,11 +109,12 @@
 
 
 <!--  ⛰️🏔️ Terrain textures  ================================================================================================================================
+Note: each line should have them all set..
 common:  sc - "short scenery name" (name color)
       t - diff tex   n - norm tex  (t,n filename no ext)
       s - scale   r - rating 1..5   su - surface
       ro - roughness 0..1   me - metalness 0..>1 as specular multiplier
-      re - reflection 0|1   tp - triplanar 0|1
+      re - reflection 0|1   tp - triplanar 0|1  (both default 0)
       du - dust  ds - dust size  md - mud   tr - trail color
       aa,ab - min,max ter angle  d - damage -->
 
@@ -312,7 +313,8 @@ common:  sc - "short scenery name" (name color)
 
 
 <!--  🛣️ Roads  ================================================================================================================================
-      m - road material   rest same as for t (above) -->
+      m - road material   rest same as for t (above)
+      a - alpha, on _ter materials will have smooth border added (default 1) -->
 
 <r sc="JngD" m="roadJDark"            r="4" su="roadJungle"   re="0"  du="0.0" ds="0.2" md="0.2" tr="0.40 0.36 0.16 0.8" />
 <r sc="JngD" m="roadJDarkWet"         r="3" su="roadJungle"   re="1"  du="0.0" ds="0.2" md="0.2" tr="0.40 0.36 0.16 0.8" />
@@ -374,12 +376,12 @@ common:  sc - "short scenery name" (name color)
 <r sc="Mrs"  m="roadMars"             r="3" su="roadForest"   re="0"  du="0.2" ds="0.4" md="0.0" tr="0.042 0.593 0.540 0.7 0.0" />
 <r sc="Blk"  m="roadFunny"            r="1" su="roadJungle"   re="0"  du="0.0" ds="0.4" md="0.0" tr="0.042 0.593 0.540 0.7 0.0" />
 
-<r sc="Oth"  m="roadMetal1"           r="2" su="roadForest"   re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" />
-<r sc="Oth"  m="roadMetal2"           r="1" su="roadAsphalt"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" />
+<r sc="Oth"  m="roadMetal1"           r="2" su="roadForest"   re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" a="0" />
+<r sc="Oth"  m="roadMetal2"           r="1" su="roadAsphalt"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" a="0" />
 
-<r sc="Stn"  m="roadAsphalt"          r="3" su="Asphalt"      re="0"  du="0.0" ds="0.9" md="0.0" tr="0.00 0.00 0.00 0.0" />
-<r sc="Oth"  m="roadAsphaltSpace"     r="1" su="roadAsphalt"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" />
-<r sc="Oth"  m="roadAsphaltSpaceBlue" r="1" su="roadAsphalt"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" />
+<r sc="Stn"  m="roadAsphalt"          r="3" su="Asphalt"      re="0"  du="0.0" ds="0.9" md="0.0" tr="0.00 0.00 0.00 0.0" a="0" />
+<r sc="Oth"  m="roadAsphaltSpace"     r="1" su="roadAsphalt"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" a="0" />
+<r sc="Oth"  m="roadAsphaltSpaceBlue" r="1" su="roadAsphalt"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" a="0" />
 
 <r sc="Aln"  m="roadAlienD"           r="2" su="roadDesert"   re="0"  du="0.4" ds="0.9" md="0.0" tr="0.70 0.66 0.36 0.7" />
 <r sc="Aln"  m="roadAlien"            r="1" su="roadJungle"   re="0"  du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.8" />
@@ -403,12 +405,12 @@ common:  sc - "short scenery name" (name color)
 
 <r sc="Sur"  m="roadDesertAnomaly"              r="5" su="roadDesert"  re="0"  du="0.4" ds="0.9" md="0.0" tr="0.30 0.66 0.96 0.7" />
 <r sc="Sur"  m="roadSavannahAnomaly"            r="2" su="roadGravel"  re="0"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" />
-<r sc="Spc"  m="roadMetal1Anomaly"              r="2" su="roadDesert"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" />
-<r sc="Spc"  m="roadMetal2Anomaly"              r="2" su="roadAsphalt" re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" />
-<r sc="Sur"  m="roadAsphaltAnomaly"             r="2" su="roadDesert"  re="0"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" />
-<r sc="Spc"  m="roadAsphaltAnomalySpace"        r="2" su="roadDesert"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" />
-<r sc="Sur"  m="roadAsphaltAnomalyStreaks"      r="2" su="roadDesert"  re="0"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" />
-<r sc="Spc"  m="roadAsphaltAnomalySpaceStreaks" r="2" su="roadDesert"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" />
+<r sc="Spc"  m="roadMetal1Anomaly"              r="2" su="roadDesert"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" a="0" />
+<r sc="Spc"  m="roadMetal2Anomaly"              r="2" su="roadAsphalt" re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" a="0" />
+<r sc="Sur"  m="roadAsphaltAnomaly"             r="2" su="roadDesert"  re="0"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" a="0" />
+<r sc="Spc"  m="roadAsphaltAnomalySpace"        r="2" su="roadDesert"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" a="0" />
+<r sc="Sur"  m="roadAsphaltAnomalyStreaks"      r="2" su="roadDesert"  re="0"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" a="0" />
+<r sc="Spc"  m="roadAsphaltAnomalySpaceStreaks" r="2" su="roadDesert"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" a="0" />
 <r sc="Sur"  m="roadMossAnomaly"                r="3" su="roadJungle"  re="0"  du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.8" />
 <r sc="Sur"  m="roadMossAnomaly2"               r="3" su="roadJungle"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.8" />
 

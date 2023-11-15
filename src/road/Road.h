@@ -304,6 +304,7 @@ public:
 
 	Ogre::String  sMtrRoad[MTRs], sMtrWall,sMtrWallPipe, sMtrCol;
 	bool bMtrRoadTer[MTRs];  // if _ter material present in .mat
+	bool bMtrAlpha[MTRs];  // if _ter material has alpha, from presets.xml
 	void updMtrRoadTer();
 	void SetMtrPipe(int i, Ogre::String sMtr);
 

@@ -63,7 +63,7 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 	if (MeshManager::getSingleton().getByName(sMesh))
 		LogR("Mesh exists !!!" + sMesh);
 
-	//LogO("RD mesh: "+sMesh+" "+sMtrName);
+	//LogO("RD MESH: "+sMesh+" "+sMtrName+" al: "+(alpha?"1":"0"));
 	bool trail = IsTrail();
 
  	Aabb aabox;
