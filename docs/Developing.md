@@ -204,11 +204,12 @@ Terra by design had _normalized float heights_ from 0.0 to 1.0 only.
 We **don't** use that, changed it, since our Hmap and SR editor use any, real height values.  
 
 **_ToDo:_**  
-This **broke** `src/Terra/TerraShadowMapper.cpp` shadowmap generation (mostly for heights below 0).  
+This **broke** [TerraShadowMapper](../src/Terra/TerraShadowMapper.cpp) shadowmap generation (mostly for heights below 0).  
 and terrain **shadowmap** is disabled.  
 BTW it took way too long, 5 sec at start, possibly due to compute shader building.  
 It's this `if (!m_bGenerateShadowMap)` and `return;  //**  5 sec delay` below.  
 Set earlier `,bGenerateShadowMap( 0 )  //** ter par  //^^ todo: 1 in ed`.
+Good info [in post](https://forums.ogre3d.org/viewtopic.php?p=555308#p555308), how it works and [where (2nd half)](https://forums.ogre3d.org/viewtopic.php?p=555280#p555280) to change.  
 
 This also **broke** terrain page **visibility**. Likely decreasing Fps, no idea how much.  
 Made all visible in `Terra::isVisible` for `if (!bNormalized)`.  
@@ -346,7 +347,7 @@ Sound manager code in `src/sound/`. Is based on [RoR's](https://github.com/RigsO
 # 🟢 Ogre-Next - Advanced 🧰🔧
 
 Explaining how to do advaced things, that need extending HLMS, shaders and .cpp code for it too.  
-Some utility code `src/common/AppGui_Util.cpp` with few really basic things that needed methods now.
+Some utility [code](../src/common/AppGui_Util.cpp) with few really basic things that needed methods now.
 
 Some links (few also in [post here](https://forums.ogre3d.org/viewtopic.php?p=554575#p554575)) with good info (may be somewhat random and really old):
 - [recent longer 2 replies](https://forums.ogre3d.org/viewtopic.php?p=555022#p555022)
@@ -361,13 +362,14 @@ Some links (few also in [post here](https://forums.ogre3d.org/viewtopic.php?p=55
 
 ## HLMS shaders output
 
-Shaders are saved to `/home/ch/.cache/stuntrally3/shaders`.  
+Shaders are saved to `/home/user/.cache/stuntrally3/shaders`.  
 This is useful to know what finally ended in all shader's code (e.g. glsl) after HLMS did its preprocessor work.  
-Can be disabled, find all 3 `setDebugOutputPath` and set 1st arg to false, 2nd is for properties.  
+It has its settings on Gui now (that go into `setDebugOutputPath`): Debug Shaders and Debug Properties.  
 
-With 2nd arg true, properties are at top of each shader file,  
+With Debug Properties set, properties are at top of each shader file,  
 this makes all compiling errors have wrong line numbers,  
-but at least one can get some idea of what kind of shader it was.
+but at least one can get some idea of what kind of shader it was.  
+Other way is putting extra comments in .any and seeing them in .glsl as result.
 
 ## HLMS extending 🌠
 
@@ -418,9 +420,9 @@ _ToDo:_ It works but slow, when selecting it creates a new shader (delay 1st tim
 _ToDo:_ ? Add renderable->hasCustomParameter( 999.. ) for all to get info in debugger..
 
 
-### Add vertex color to PBS
+### PBS vertex colors
 
-_ToDo:_ [topic](https://forums.ogre3d.org/viewtopic.php?p=554630#p554630), add for road blending.
+[Topic](https://forums.ogre3d.org/viewtopic.php?p=554630#p554630), added for road blending, road minimap preview colors etc.
 
 ### Adding textures
 
@@ -464,7 +466,8 @@ Other common assert: [mCachedTransformOutOfDate](https://ogrecave.github.io/ogre
 At end of [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822).
 
 Don't change node pos or rot from inside listeners.  
-Or after, need to call `_getFullTransformUpdated(` e.g. for `ndSky`, `light->getParentNode()->_`, camera etc.
+Or after, need to call `_getFullTransformUpdated(` e.g. for `ndSky`, `light->getParentNode()->_`, camera etc.  
+Seems fixed for each frame, but IIRC does assert on new track load. Thus for Debug build it is commented out in Ogre-Next sources.
 
 Also [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822), leaking GPU RAM inactive and  
 Exception: `Mapping the buffer twice within the same frame detected!`.
@@ -476,7 +479,8 @@ Many compositor Workspaces are created from code (telling how to render stuff, a
 Creating is in `.log` lines with: `--++ WS add:`, and in cpp code by any `addWorkspace`.  
 
 `SR3.compositor` has definitions for most workspaces used.  
-Only shadows are made completely by code in `src/common/AppGui_Shadows.cpp`, based on `Samples/2.0/ApiUsage/ShadowMapFromCode/ShadowMapFromCode.cpp`.  
+Only shadows are made completely by code in `src/common/AppGui_Shadows.cpp`,  
+based on `Samples/2.0/ApiUsage/ShadowMapFromCode/ShadowMapFromCode.cpp`.  
 _Todo:_ only 3 PSSM splits work, no other count. ESM (Sh_Soft) is also broken.
 
 Parts of [post](https://forums.ogre3d.org/viewtopic.php?p=553666#p553666) with info.
@@ -497,7 +501,7 @@ _ToDo:_ From Ogre-Next samples to use:
 - InterpolationLoop (meh, later)
 
 Effects:
-- Sample_**Hdr** (with bloom), Sample_Tutorial_**SSAO**
+- Sample_**HDR** (with bloom), Sample_Tutorial_**SSAO**
 - Lastly GI: InstantRadiosity (main), ImageVoxelizer (VCT), LocalCubemaps refl
 - meh: OpenVR, StereoRendering
 - to fix: ShadowMapDebugging, ShadowMapFromCode
