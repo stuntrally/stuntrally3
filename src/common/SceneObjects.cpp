@@ -15,6 +15,7 @@
 #include "CScene.h"
 #include "CData.h"
 #include "FluidsXml.h"
+#include "PresetsXml.h"
 
 #include "Axes.h"
 #include "BtOgreGP.h"
@@ -165,6 +166,12 @@ void App::CreateObjects()
 		o.SetFromBlt();
 		o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Objects);
 		o.nd->setScale(o.scale);
+
+		//  alpha from presets.xml
+		auto* veg = scn->data->pre->GetVeget(o.name);
+		if (veg)
+			o.it->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
+
 		if (no)  continue;
 
 		//  add to bullet world (in game)
@@ -362,7 +369,7 @@ void App::PickObject()
 				//Aabb ab = objs[i].it->getLocalAabb();
 				//ab.getCenter();  ab.getSize();
 
-				//  closest to obj center
+				//  closest to obj center  // fixme fails..
 				const Vector3 posSph = objs[i].nd->getPosition();
 				const Vector3 ps = pos - posSph;
 				Vector3 crs = ps.crossProduct(dir);
@@ -481,6 +488,11 @@ void App::AddNewObj(bool getName)  //App..
 
 	//  create object
 	o.it = mSceneMgr->createItem(o.name + ".mesh");
+	//  alpha from presets.xml
+	auto* veg = scn->data->pre->GetVeget(o.name);
+	if (veg)
+		o.it->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
+
 	o.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	o.SetFromBlt();
 	o.nd->setScale(o.scale);
