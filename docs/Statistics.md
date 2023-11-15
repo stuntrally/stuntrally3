@@ -17,8 +17,8 @@ Link to calculate [date difference](https://www.timeanddate.com/date/durationres
 
 |Version  | Date   |Days| MB  |g|e |Tracks |new|ren|del| Scn  |New Sceneries  |Vehicles|New Vehicles| Changes               |
 |---------|--------|----|-----|-|--|-------|---|---|---|------|---------------|--------|------------|-----------------------|
-|**3.0**  | ?.11'23|>365|1790 |!|!!|**225**|+23| 7 |-2 |  40  |               |   25   |            | PBS, Horizons etc     |
-|**2.8**  | ?.11'23|>365|1790 | |  |**225**|+23| 7 |-2 |  40  | Marble, Spring, Anomaly |   25   |            |                       |
+|**3.0**  | ?.11'23|>365|1790 |!|!!|**226**|+24| 7 |-2 |  40  |               |   25   |            | PBS, Horizons etc     |
+|**2.8**  | ?.11'23|>365|1790 | |  |**226**|+24| 7 |-2 |  40  | Marble, Spring, Anomaly |   25   |            |                       |
 |         |        |    |     | |  |       |   |   |   |      |               |        |            |                       |
 |**2.7**  |11.11'22|2609|1408 |1|- |**202**|+34|130|-4 |**37**| SurrealSpace, GreeceRocky, Other | **25** | HI, SX, BE, U6, U8, MO, 3B | removed cars: 3S,360,CT,M3,TC6, N1,S1 |
 |**2.6.2**|25.03'22| -  | -   | |  |**172**|   |   |   |  34  |               |   25   |            |                       |

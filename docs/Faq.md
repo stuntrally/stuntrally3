@@ -42,7 +42,7 @@ It may be also possible that you are trying to play a game type that you don't l
 
 **How do I make the game easier to play?**  
 
-We recommend first driving slower cars (like e.g. LK4) on easy, flat tracks.  
+We recommend first driving slower cars (like e.g. Bison, LK4) on easy, flat tracks.  
 I don't recommend turning on ABS or TCS since those will in fact make it harder to understand what is happening with tires (which ones spin or slide) and thus make the game experience worse, weird or simply not as it is meant to be (there was a [poll](https://forum.freegamedev.net/viewtopic.php?f=81&t=5598) on forum too).  
 This may also happen when using different cars. The best cars are Hyena, Fox or similar. If starting normal simulation mode, I highly recommend using those as first. Those are easy to handle, fast and can drive on all tracks. Once you learn handling them you can try others.  
 If you're not a fan of wheels, you can try the spaceships on some flat tracks. They are very easy to handle and fun. Just don't try them in pipes or other stunts, aren't drivable there (they go nuts).
@@ -60,6 +60,7 @@ We have a lot of challenges in game. Those are difficult to pass since a good ti
 **Does it work?**  
 
 Yes. But it only works with Direct Connect (need to know other IP).  
+
 Public game list server is not working since years.  
 You could try running it on your own:
 - need to build [this program](../src/network/master-server/main.cpp)
@@ -94,9 +95,10 @@ Sure. Check the section [Controllers](Running.md#controllers) on how to configur
 
 **How do I reset my settings?**  
 
-This is in our [Paths](Paths.md), Just by deleting your config files.
+This is in our [Paths](Paths.md), just by deleting your config files.
 
-**What's the difference between Space brake and Key Down ?**  
+**What's the difference between Space brake and key Down?**  
+
 This is the same as in cars. Regular brake will act on all wheels (with higher ratio on front). And it's best at slowing down car.  
 The handbrake acts on rear wheels only and can also easily lock them to make a faster car spin possible in sharp turns.
 
@@ -104,10 +106,12 @@ The handbrake acts on rear wheels only and can also easily lock them to make a f
 ### OS
 
 **Why is the game not in my Linux distribution?**  
+
 We manage only the official binaries archive, which should be enough to play the game on other distributions.  
 But it may not work on some. There could be a problem with compiling it. Or simply nobody yet did it.
 
 **Why is there no OS X package?**  
+
 Nobody managed to make it. And then continued to update it. If you still want to play the game, I recommend trying it on Ubuntu.
 
 ----
@@ -115,21 +119,26 @@ Nobody managed to make it. And then continued to update it. If you still want to
 ### Contribute
 
 **I have found a bug, what should I do?**  
+
 If it is a crash than it's obvious but if not make sure it is a bug. Observe if there is a pattern to have it happen, this will be useful in fixing it.  
 Read this wiki about [Troubleshooting](Troubleshooting.md). It tells how to report a bug and what is needed for it.
 
 **How can I contribute to this project?**  
+
 See page [Contributing](Contributing.md) for details and areas in which you can contribute.  
 Thank you for all contributions.
 
 **How can I make a new track?**  
+
 This needs some time to learn the included SR3 Track Editor but is explained in a (very OLD) series of video tutorials on [Editor](Editor.md) page with some more info.
 
 **Can I donate or support this project financially?**  
+
 Yes. Since few years CryHam started accepting donations. To donate use [paypal link](https://paypal.me/cryham) or [Donate page](https://cryham.tuxfamily.org/donate/).  
 Thank you for donating. For now, I didn't set up patreon yet.
 
 **I have a question that is not answered here / how can I learn more about this project?**  
+
 Firstly by reading the Documentation. It describes most things already.  
 Lastly, you can ask on Forum.  
 For info about CryHam (main creator of SR), his other projects, and more, you can read on [CryHam's website](https://cryham.tuxfamily.org/).
