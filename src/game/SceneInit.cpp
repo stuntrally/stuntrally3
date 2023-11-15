@@ -873,6 +873,12 @@ void App::NewGameDoLoad()
 		case LS_VIEW0: case LS_VIEW1: case LS_VIEW2: case LS_VIEW3:  // 🎥
 		case LS_VIEW4: case LS_VIEW5: case LS_VIEW6: case LS_VIEW7: case LS_VIEW8:
 		{
+			if (pSet->g.car_lights)
+			for (auto& c:carModels)  // on/off lights, lag
+				if (c->cType == CarModel::CT_LOCAL)
+				for (auto& l:c->lights)
+					l->setVisible(cur <= LS_VIEW3);
+
 			LoadView(c);
 			// perc = 75.f + (90.f-75.f) * c / 9.f;
 			perc = 85;
