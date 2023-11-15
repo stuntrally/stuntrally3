@@ -36,4 +36,4 @@
 📚[Tasks](http://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php)  
 🤗[Release Process](Release.md)  
 
-🏛️[old SR docs](https://github.com/stuntrally/stuntrally3/blob/main/docs/)
+🏛️[old SR 2.x docs](https://github.com/stuntrally/stuntrally/blob/master/docs/_menu.md)
