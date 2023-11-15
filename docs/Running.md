@@ -3,48 +3,57 @@ _How to start the game, configure controller, settings etc._
 
 ### Hardware requirements
 
-The recommended minimum hardware is:
+The recommended minimum hardware is, at least:
 
-* CPU: with 2 cores, 2.4 GHz
-* GPU: dedicated, low budget (e.g. Radeon RX 570, [GPU benchmark](https://www.videocardbenchmark.net/compare/3558vs4444/Radeon-RX-470570-vs-Radeon-RX-6600-XT)),  
-with Shader Model 4.0 supported and 2GB GPU RAM.  
+* CPU: 2 cores, 2.4 GHz
+* GPU: dedicated, with 2GB GPU RAM and Open GL 4 supported:  
+  - Low budget (e.g. Radeon RX 570, GeForce GTX 970, GeForce RTX 3050)  
+  - or High (e.g. Radeon RX 6600 XT, GeForce RTX 3070) etc.
+  - Link to [GPU benchmark](https://www.videocardbenchmark.net/compare/2954vs3558vs3521vs4495vs4444/) for comparing.
+* RAM: 4GB
+* Disk space: 4GB
 
 Integrated GPUs and old laptops don't handle the game well or at all.  
-In any case, if you get graphic errors, try updating your graphic driver, and making sure game uses dedicated GPU.
+In any case, if you get graphic errors, try updating your graphic driver, and making sure game uses dedicated GPU.  
+
+Old or slow CPUs could make the game not handle simulation correctly and slow down.  
+Too low GPUs (benchmark score or cores count) will slower rendering,  
+to less than ideal 60 Fps (from display VSync), especially on big, complex, demanding tracks.
 
 The game _was_ developed on a PC with Radeon RX 570, which will likely be optimal (unless you have a better GPU).  
 Using default settings (Higher), it achieved around 60 Fps on all tracks (bit less in complex ones).  
 
-It is possible to run some tracks on lower hardware, but with low Fps (could be unplayable, below 30), especially on complex tracks.  
-Press F11 to show Fps bar (see [Tweak](Tweak.md) page for more info).
+It is possible to run some tracks (Test* should) on lower hardware, but with low Fps (could be unplayable, below 30).  
+
+Pressing F11 will cycle Fps bar (see [Tweak](Tweak.md) page for more info).  
+In game F9 shows (default) time Graph of Fps.
 
   
 ### Running
   - Esc/Tab key shows/hides GUI (F1 or ` in Editor).
-  - Ogre dialog has screen resolution, VSync, antialiasing etc.
-  - In Options, Screen tab pick Graphics preset according to your GPU.
+  - Ogre dialog (before start) has screen resolution, VSync, antialiasing etc.
+  - In Options, on Screen tab, pick Graphics preset according to your GPU.
   - Quit game/editor to save settings and start again.
-  - Press New Game button to start driving.
-  - For new users, read the Hints shown on welcome screen at game start (Ctrl-F1)
-    or in 
-  - Visit help page in game to read Quick help.
+  - Press 🏁 New Game button to start driving.
+  - For new users, you can enter *How to play* to watch few lessons, and read Hints there.
+  - Help page in game has Quick help and other pages (this Readme, Contributing, and all gathered Credits).
   - Have Fun 😀
 
    
 ### Input
 
-Keys used in game can be seen in Options on tab `[Input]`.
+Keys used in game can be seen in Options on tab `Input`. Also quickly on Welcome screen (Ctr-F1).
 
-If you want to reassign keys, or have a _game controller_ go to tab `[Player1]` to bind it and test range.
+If you want to reassign keys, or have a **game controller** 🎮 go to tab `Player1` (or other) to bind it and test range.
 
-For keyboard input, there is a sensitivity setting. You can change it for each control, or pick for all from combo (preset).  
-There are also speed sensitive steering and steering range settings on Setup tab in single race window.
+For keyboard input, there is a **sensitivity** setting. You can change it for each control, or pick for all from combo (preset).  
+There are also speed sensitive steering and steering range settings on Setup tab in Single Race window.
 
-By default, in game you can change **cameras** with C/X (with shift for main cameras only).  
+By default, in game you can change **cameras** 🎥 with C/X (with shift for main cameras only).  
 Cameras can be adjusted in game, by mouse - move mouse to see actions.
 
    
-### Controllers ###
+### Controllers
 
 Click button to start binding, then move axis or press button or key to bind it.  
 Click on Edit > to change Inverse for a control (for analog axis).  
@@ -68,9 +77,10 @@ You may want to backup your input_p0.xml (for Player1) in user settings dir (see
 Using preset combobox (which changes all settings) should be enough. Remember to quit and restart after change.
 
 You may want to change some options individually.  
-They have marks at end (** * ^ # etc) see legend for meaning.
+Many have marks at end (** * ^ # etc) see legend for meaning (right, bottom on Gui).  
+Those without marks are updated instantly. Some, like Vegetation can be updated with button.
 
-There are few `[Graphics]` options that are more important and have more impact on performance than the rest.  
+There are few `Graphics` options that are more important and have more impact on performance than the rest.  
 Generally first tabs have higher impact on Fps: Reflection, Water, Shadows.
 
 _Fps - Frames per second. The first value shown in upper left corner of the screen.  

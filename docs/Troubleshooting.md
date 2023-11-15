@@ -35,18 +35,19 @@ So how about saving your time as well as ours and providing the answers before w
     We are not always able to reproduce the problem (e.g. due to missing hardware).  
     If we can't replicate it, we rely on your testing and confirmation of fixes.
 
-### Debugging yourself
+### Debugging yourself (advanced)
 
-If you wish to be extra helpful (and are on Linux), you can provide a stack trace of the crash.
+If you wish to be extra helpful (and are using Linux), you can provide a stack trace of the crash.
 
   - Install ''gdb'', the GNU Debugger
-  - Install ''stuntrally3-dbg'' or similar, i.e. Stunt Rally 3 with debugging symbols (if it exists).
-  - You can also compile the game yourself with the debugging info.
+  - <del>Install ''stuntrally3-dbg'' or similar, i.e. Stunt Rally 3 with debugging symbols (if it exists).</del>
+  - You could *compile the game* [(info here)](Building.md) yourself in Debug configuration, with debugging info.
   - Run SR3 through the debugger:
-    * ''$ gdb stuntrally3''
-    * _(you are taken to gdb prompt)_
-    * ''run''
-    * _(wait for the crash)_
-    * ''bt'' _(stands for backtrace)_
+    * `gdb stuntrally3`
+    * _you are taken to gdb prompt_
+    * `run`
+    * _wait for the crash_
+    * `bt`
+    * _stands for backtrace_
     * Copy-paste the resulting trace to use as with the log files
   

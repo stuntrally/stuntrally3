@@ -31,10 +31,10 @@ There is no chat. Since years, IRC is not used, and was team's development chann
 ----
 ### Technologies and Libraries used
 
-Code is written in [C++](https://en.wikipedia.org/wiki/C%2B%2B). Uses [CMake](https://cmake.org/) and [Conan](https://conan.io/) to build.  
+Code is written in [C++](https://en.wikipedia.org/wiki/C%2B%2B). Uses [CMake](https://cmake.org/) and possibly [Conan](https://conan.io/) to build.  
 [Git](https://git-scm.com/) for repository. Located on [Github here](https://github.com/stuntrally/). Licensed under [GPL v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).  
 
-Car simulation is done by [VDrift](https://vdrift.net/) also using [bullet physics](https://bulletphysics.org/).  
+Car simulation is done by [VDrift](https://vdrift.net/) (older version) also using [bullet physics](https://bulletphysics.org/).  
 Sound with [OpenAL Soft](https://openal-soft.org/).  
 
 Rendering by [Ogre-Next](https://www.ogre3d.org/) with PBR materials using [HLMS](https://ogrecave.github.io/ogre-next/api/latest/hlms.html). Gui by [MyGUI](https://github.com/MyGUI/mygui).  

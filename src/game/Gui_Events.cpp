@@ -466,7 +466,7 @@ const static short hintsImg[CGui::iHints][5] = {
 	{0, 6*128, 4*128, 128,128}, // 27 handbrake
 };
 const static char* hintTex[3] = {
-	"gui_icons.png", "track_icons.png", "keys.png" };
+	"gui_icons.png", "track_icons.png", "keyboard.png" };
 
 //  upd hint text, img  ----
 void CGui::UpdHint()
