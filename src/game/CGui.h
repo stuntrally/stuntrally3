@@ -453,7 +453,8 @@ public:
 
 	//  🏞️ stages
 	Ed edChInfo =0, edChDesc =0;  WP panCh =0;
-	Txt txtCh =0, valCh =0, txtChP[3] ={0,0,0}, valChP[3] ={0,0,0};  // stages info, pass/progress
+	Txt txtCh =0, valCh =0, txtChName =0,
+		txtChP[3] ={0,0,0}, valChP[3] ={0,0,0};  // stages info, pass/progress
 
 	void btnStageNext(WP), btnStagePrev(WP);  Txt valStageNum =0;
 	void StageListAdd(int n, Ogre::String name, int laps, Ogre::String progress);

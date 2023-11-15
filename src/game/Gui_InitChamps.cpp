@@ -45,7 +45,7 @@ void CGui::InitGuiChamps()
 	Btn("btnChampInfo",btnChampInfo);
 
 	panCh = fWP("panCh");
-	txtCh = fTxt("txtChDetail");
+	txtCh = fTxt("txtChDetail");  txtChName = fTxt("txtChName");
 	valCh = fTxt("valChDetail");
 	for (i=0; i<3; ++i) {  Ogre::String s = toStr(i);
 		txtChP[i] = fTxt("txtChP"+s);

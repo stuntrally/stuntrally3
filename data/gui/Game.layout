@@ -2027,12 +2027,16 @@
 					<Property key="WordWrap" value="true"/>
 				</Widget>
 			</Widget>
+
 			<Widget type="TabItem" skin="" position="2 24 794 562" name="TabStages">
 				<Property key="Caption" value="#80E0C0#{Stages}"/>
 				<Widget type="Widget" skin="PanelSkin" position="506 52 266 316" name="panCh">
 					<Property key="Colour" value="0.6 0.8 1"/>
 					<Property key="Alpha" value="0.55"/>
 					<Property key="InheritsAlpha" value="false"/>
+				</Widget>
+				<Widget type="TextBox" skin="TextBox" position="32 32 612 30" name="txtChName">
+					<Property key="TextShadow" value="true"/>
 				</Widget>
 				<Widget type="TextBox" skin="TextBox" position="516 62 119 560" name="txtChDetail">
 					<Property key="TextShadow" value="true"/>
@@ -2047,6 +2051,7 @@
 				<Widget type="TextBox" skin="TextBox" position="516 394 119 560" name="txtChP2"/>
 				<Widget type="TextBox" skin="TextBox" position="606 394 280 560" name="valChP2"/>
 			</Widget>
+
 			<Widget type="TabItem" skin="" position="2 24 794 562" name="TabTrack">
 				<Property key="Caption" value="#60E060#{Track}"/>
 				<Widget type="TextBox" skin="TextBox" position="176 516 200 24" name="TrackText">

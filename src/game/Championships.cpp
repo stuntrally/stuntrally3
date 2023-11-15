@@ -197,6 +197,7 @@ void CGui::listChampChng(MyGUI::MultiList2* chlist, size_t id)
 		StageListAdd(n, trk.name, trk.laps, po > 0.f ? "#E0F0FF"+fToStr(po,1,3) : "");
 	}
 	if (edChDesc)  edChDesc->setCaption(ch.descr);
+	txtChName->setCaption(ch.name);
 
 
 	//  champ details  -----------------------------------
