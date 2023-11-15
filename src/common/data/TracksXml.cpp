@@ -192,7 +192,8 @@ bool TracksIni::LoadIni(string file, bool check)
 		i=1;  int c,n, nn = trks.size()-1;
 
 		stringstream ss;  ss << fixed;
-		ss << "))) Sceneries stats:\n""Num - Name - tracks count - last track in it (num trks back)""\n";
+		ss << "))) Sceneries stats:\n"
+			"Num - Name - tracks count - last track in it (number of tracks back)""\n";
 
 		for (auto it = scns.begin(); it != scns.end(); ++it,++i)
 		{

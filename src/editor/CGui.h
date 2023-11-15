@@ -359,6 +359,7 @@ public:
 	//  📦 Objects  ----
 	//  gui lists
 	Li objListDyn =0, objListSt =0, objListBld =0, objListCat =0;
+	Txt objInfo =0;
 	void listObjsChng(Li, size_t), listObjsNext(int rel);
 	void listObjsCatChng(Li, size_t);
 

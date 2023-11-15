@@ -112,6 +112,7 @@ void CGui::InitGuiLists()
 	objListSt  = fLi("ObjListSt");   Lev(objListSt,  ObjsChng);
 	objListBld = fLi("ObjListBld");  Lev(objListBld, ObjsChng);
 	objListCat = fLi("ObjListCat");  Lev(objListCat, ObjsCatChng);
+	objInfo = fTxt("ObjInfo");
 	objPan = fWP("objPan");
 
 

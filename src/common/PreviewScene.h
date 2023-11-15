@@ -24,6 +24,8 @@ public:
 	float yaw =0.f;  // rot angle
 
 	Ogre::Vector3 dim{1,1,1};  // after load
+	Ogre::String mat;
+	
 	Ogre::SceneManager* mgr = 0;
 	Ogre::Camera* cam = 0;
 protected:

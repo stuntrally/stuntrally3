@@ -268,6 +268,7 @@ void CGui::tabPgLayers(Tab wp, size_t id)
 
 void CGui::updVegetInfo()
 {
+	//  🌳🪨 Veget Models tab
 	auto& d = app->prvScene.dim;
 	Vector3 va = d * svLTrMinSc.getF(),
 			vb = d * svLTrMaxSc.getF();
@@ -277,6 +278,15 @@ void CGui::updVegetInfo()
 	txVHmax->setCaption(fToStr(vb.y, 1,4));
 	txVWmin->setCaption(fToStr(wa, 1,4));
 	txVWmax->setCaption(fToStr(wb, 1,4));
+
+	// 📦🏢 Objects tab
+	UString s =
+		TR("#{GrMaterial}") + ":\n" + app->prvScene.mat +
+		TR("\n\n#{Size}:") +
+		"\n x " + fToStr(d.x, 1,4)+
+		"\n y " + fToStr(d.y, 1,4)+
+		"\n z " + fToStr(d.z, 1,4);
+	objInfo->setCaption(s);
 }
 
 void CGui::slLTrSc(SV*)

@@ -107,6 +107,7 @@ bool PreviewScene::Load(Ogre::String mesh)
 	LogO("+--P PreviewScene Load: "+mesh);
 
 	item = mgr->createItem(mesh);
+	mat = item->getSubItem(0)->getDatablockOrMaterialName();  // for info
 	node = mgr->getRootSceneNode()->createChildSceneNode();
 	node->attachObject(item);
 
