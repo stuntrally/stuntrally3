@@ -4,7 +4,6 @@ hlms column pbs
     // specular 1 1 1
     // depth_bias 3
 
-	// workflow metallic
 	fresnel_coeff 0.01
 	roughness 0.6
 }
@@ -1391,4 +1390,60 @@ hlms wall_mining_truck_anomaly pbs : road_wall
 hlms wallP_mining_truck_anomaly pbs : wall_mining_truck_anomaly
 {
 	cull_mode none
+}
+
+
+//  crystal Cry5
+hlms road_wall_crystal_cyan pbs : road_wall
+{
+	diffuse 0.95 1.35 0.65
+	specular 0.21 0.41 0.41
+	diffuse_map crystal_wall.jpg
+	normal_map normal_1.png
+	//bump_scale 1.5
+}
+
+hlms pipe_wall_crystal_cyan pbs : pipe_wall
+{
+	diffuse 0.95 1.35 0.65
+	specular 0.21 0.41 0.41
+	diffuse_map crystal_wall.jpg
+	normal_map normal_1.png
+	// bump_scale 1.5
+}
+
+hlms road_col_crystal_cyan pbs : column
+{
+	diffuse 0.95 1.35 0.65
+	specular 0.21 0.41 0.41
+	diffuse_map crystal_wall.jpg
+	normal_map normal_1.png
+	// bump_scale 1.2
+}
+
+hlms road_wall_crystal_pink pbs : road_wall
+{
+	diffuse 1.45 0.95 0.95
+	specular 1.31 0.21 0.21
+	diffuse_map crystal_wall_pink.jpg
+	normal_map normal_1.png
+	// bump_scale 1.5
+}
+
+hlms pipe_wall_crystal_pink pbs : pipe_wall
+{
+	diffuse 1.45 0.95 0.95
+	specular 1.31 0.21 0.21
+	diffuse_map crystal_wall_pink.jpg
+	normal_map normal_1.png
+	// bump_scale 1.5
+}
+
+hlms road_col_crystal_pink pbs : column
+{
+	diffuse 1.45 0.95 0.95
+	specular 1.31 0.21 0.21
+	diffuse_map crystal_wall_pink.jpg
+	normal_map normal_1.png
+	// bump_scale 1.2
 }

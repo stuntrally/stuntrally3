@@ -222,6 +222,7 @@ hlms balloon1_anomaly pbs
 	diffuse 0.8 0.8 0.8
 	specular 0.3 0.3 0.3
 	roughness 0.35
+	cull_mode none
 }
 
 hlms balloon2_anomaly pbs
@@ -234,6 +235,7 @@ hlms balloon2_anomaly pbs
 	// bump_scale 1.2
 	// refl_amount 0.5
 	roughness 0.3
+	cull_mode none
 }
 
 hlms Crate_anomaly pbs

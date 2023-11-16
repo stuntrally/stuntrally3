@@ -206,22 +206,22 @@ hlms Water_clear_white pbs : Water
     speed 1.0 1.0
 }
 
-hlms Water_clear_blue pbs : Water
-{
-    choppyness_scale 0.15 25
-    smallWaves_midWaves 0.15 0.1 0.3 0.15
-    bigWaves 0.3 0.3
-    bump 1.5 0.12 0.13
-    fresnelMultiplier 1.0
+// hlms Water_clear_blue pbs : Water
+// {
+//     choppyness_scale 0.15 25
+//     smallWaves_midWaves 0.15 0.1 0.3 0.15
+//     bigWaves 0.3 0.3
+//     bump 1.5 0.12 0.13
+//     fresnelMultiplier 1.0
 
-    colour 0.002 0.37 0.57  0.0
-    reflectColour 0.92 1.0 0.72  0.3
-    refractColour 0.92 0.90 1.03  0.05
+//     colour 0.002 0.37 0.57  0.0
+//     reflectColour 0.92 1.0 0.72  0.3
+//     refractColour 0.92 0.90 1.03  0.05
 
-    specColourAndPower 1.0 1.0 1.0  32
-    bump2SpecPowerMul 6.0 12 0.2
-    speed 1.0 1.0
-}
+//     specColourAndPower 1.0 1.0 1.0  32
+//     bump2SpecPowerMul 6.0 12 0.2
+//     speed 1.0 1.0
+// }
 
 hlms Water_clear_green pbs : Water
 {

@@ -330,7 +330,7 @@
 			<Property key="Alpha" value="1.0"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="ImageBox" skin="ImageBox" position="400 460 24 24"> <!-- rewind -->
+		<Widget type="ImageBox" skin="ImageBox" position="322 346 24 24"> <!-- rewind -->
 			<Property key="ImageCoord" value="512 384 128 128"/>
 			<Property key="Alpha" value="1.0"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
