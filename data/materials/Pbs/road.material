@@ -1740,7 +1740,7 @@ hlms roadMetal1Anomaly pbs : road
 	// ambient 0.8 0.8 1.1
 	diffuse  0.5 0.3 0.5
 	specular 1 0.2 1
-	// bump_scale 0.5
+	bump_scale 0.5
 	// refl_amount 0.05
 	roughness 0.4
 }
@@ -1752,7 +1752,7 @@ hlms roadMetal1Anomaly_ter pbs : road
 	// ambient 0.8 0.8 1.1
 	diffuse  0.5 0.3 0.5
 	specular 1 0.2 1
-	// bump_scale 0.4
+	bump_scale 0.4
 	// refl_amount 0.05
 	roughness 0.55
 }
@@ -1765,7 +1765,7 @@ hlms roadMetal2Anomaly pbs : road
 	diffuse 0.5 0.7 0.4
 	specular 2 1 1
 	normal_map roadMetal2Anomaly_norm.jpg
-	// bump_scale 0.2
+	bump_scale 0.2
 	// refl_amount 0.15
 	roughness 0.5
 }
@@ -1777,7 +1777,7 @@ hlms roadMetal2Anomaly_ter pbs : road
 	// ambient 1.1 0.7 0.8
 	diffuse  0.5 0.7 1.2
 	specular 2 1 1
-	// bump_scale 0.3
+	bump_scale 0.3
 	// refl_amount 0.15
 	roughness 0.5
 }

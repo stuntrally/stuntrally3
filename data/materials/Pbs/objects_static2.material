@@ -17,6 +17,7 @@ hlms satellite1b pbs
 	specular 0.6 0.6 0.6
 	fresnel_coeff 0.1 0.1 0.1
 	roughness 0.5
+	reflect yes
 }
 //  white big
 hlms satellite2a pbs
@@ -57,7 +58,7 @@ hlms ancient_ruins pbs
 	// specular_map ancient_ruins_spec.jpg  //red ?
 	diffuse  1.0 1.0 1.0
 	specular 0.5 0.5 0.5
-	// bump_scale 0.55
+	bump_scale 0.55
 	fresnel_coeff 0.1 0.1 0.1
 	roughness 0.55
 }
@@ -69,7 +70,7 @@ hlms ancient_ruins_yellow pbs
 	// specular_map ancient_ruins_spec.jpg  //red ?
 	diffuse  1.52 1.3 0.94
 	specular 0.5 0.5 0.5
-	// bump_scale 0.55
+	bump_scale 0.55
 	fresnel_coeff 0.1 0.1 0.1
 	roughness 0.55
 }
@@ -82,7 +83,7 @@ hlms ancient_ruins_white pbs
 	diffuse  1.1 1.1 1.1
 	specular 0.87 0.87 0.87
 	fresnel_coeff 0.1 0.1 0.1
-	// bump_scale 0.55
+	bump_scale 0.55
 	roughness 0.55
 }
 
@@ -183,7 +184,7 @@ hlms storage_tank pbs
 	// reflMap storage_tank_spec.jpg
 	diffuse 0.8 0.8 0.8
 	specular 1.0 1.0 1.0
-	// bump_scale 0.65
+	bump_scale 0.65
 	fresnel_coeff 0.6
 	roughness 0.42
 }
@@ -258,7 +259,7 @@ hlms log_cabin_01 pbs
 	specular 1.0 1.0 1.0
 	fresnel_coeff 0.6
 	roughness 0.3
-	// bump_scale 0.7
+	bump_scale 0.7
 }
 
 hlms wagon_wood pbs
