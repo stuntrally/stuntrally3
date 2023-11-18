@@ -6,7 +6,7 @@
 #include <OgreHlmsPbsDatablock.h>
 
 //  HLMS overrides for SR3, used instead of default Pbs and Unlit
-
+class App;
 
 //  our Unlit  ----------------
 class HlmsUnlit2 : public Ogre::HlmsUnlit
@@ -24,7 +24,8 @@ public:
 class HlmsPbs2 : public Ogre::HlmsPbs
 {
 public:
-	HlmsPbs2( Ogre::Archive *dataFolder, Ogre::ArchiveVec *libraryFolders );
+	App* app =0;
+	HlmsPbs2( App* app1, Ogre::Archive *dataFolder, Ogre::ArchiveVec *libraryFolders );
 	~HlmsPbs2() override;
 	
 	constexpr static size_t selected_glow = 123;
@@ -68,6 +69,7 @@ enum EType
 class HlmsPbsDb2 : public Ogre::HlmsPbsDatablock
 {
 	friend class HlmsPbs2;
+	App* app =0;
 public:
 	EType eType = DB_PBS;
 
@@ -78,11 +80,12 @@ public:
 	//  fluid params
 	// Ogre::Vector4 waterClr[3] = {Ogre::Vector4(0,0.5,1,0), Ogre::Vector4(0,1,0,0), Ogre::Vector4(1,0.5,0,0)};
 	
-	HlmsPbsDb2(
+	HlmsPbsDb2(	App* app1,
 		Ogre::IdString name, HlmsPbs2 *creator,
 		const Ogre::HlmsMacroblock *macro,
 		const Ogre::HlmsBlendblock *blend,
 		const Ogre::HlmsParamVec &params );
+	~HlmsPbsDb2();
 
     //  what we send to the GPU (to send more)
 	void uploadToConstBuffer( char *dstPtr, Ogre::uint8 dirtyFlags ) override;

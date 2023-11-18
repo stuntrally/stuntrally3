@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Def_Str.h"
 #include "HlmsPbs2.h"
 #include "App.h"
@@ -39,8 +40,8 @@ void HlmsUnlit2::calculateHashForPreCreate(
 
 //  our Pbs
 //----------------------------------------------------------------
-HlmsPbs2::HlmsPbs2( Archive *dataFolder, ArchiveVec *libraryFolders )
-	:HlmsPbs( dataFolder, libraryFolders )
+HlmsPbs2::HlmsPbs2( App* app1, Archive *dataFolder, ArchiveVec *libraryFolders )
+	:app(app1), HlmsPbs( dataFolder, libraryFolders )
 {
 }
 HlmsPbs2::~HlmsPbs2()
@@ -120,19 +121,41 @@ HlmsDatablock* HlmsPbs2::createDatablockImpl(
 	const HlmsBlendblock *blend,
 	const HlmsParamVec &params )
 {
-	return OGRE_NEW HlmsPbsDb2( name, this, macro, blend, params );
+	return OGRE_NEW HlmsPbsDb2( app, name, this, macro, blend, params );
 }
 
 
+//  💥 dtor
+HlmsPbsDb2::~HlmsPbsDb2()
+{
+	auto it = app->vDbRefl.find(this);
+	if (it != app->vDbRefl.end())
+		app->vDbRefl.erase(it);
+}
+
 //  🌟 ctor
-HlmsPbsDb2::HlmsPbsDb2(
+HlmsPbsDb2::HlmsPbsDb2( App* app1,
 		Ogre::IdString name, HlmsPbs2 *creator,
 		const Ogre::HlmsMacroblock *macro,
 		const Ogre::HlmsBlendblock *blend,
 		const Ogre::HlmsParamVec &p )
 	: HlmsPbsDatablock( name, creator, macro, blend, p )
+	, app(app1)
 {
 	String val;
+	//  extra params in .material or .json
+	if( Hlms::findParamInVec( p, "bump_scale", val ) )
+	{
+		Real sc = s2r(val);
+		setNormalMapWeight(sc);
+		// LogO("db2 bump_scale2: " + fToStr(getNormalMapWeight()));
+	}
+	if( Hlms::findParamInVec( p, "reflect", val ) )
+	{
+		creator->app->vDbRefl.insert(this);  // save for later, mCubeReflTex doesn't exist yet
+		// setTexture( PBSM_REFLECTION, creator->app->mCubeReflTex );
+	}
+
 	//  🌊 water fluid params
 	//----------------------------------------------------------------
 	if( Hlms::findParamInVec( p, "paint", val ) )
@@ -275,9 +298,18 @@ public:
 	        out += ",\n\t\t\t\"fluid\" : true";
 		if (db2->eType == DB_Paint)
 	        out += ",\n\t\t\t\"paint\" : true";
+
+		TextureGpu *tex = db2->getTexture( PBSM_REFLECTION ), *no = 0;
+		if (tex)
+		{	db2->setTexture( PBSM_REFLECTION, no );
+	        out += ",\n\t\t\t\"reflect\" : true";
+		}
 		// todo: env "reflect", auto add DynamicCubemap ..
 
         HlmsJsonPbs::saveMaterial( datablock, out );
+
+		if (tex)
+			db2->setTexture( PBSM_REFLECTION, tex );
     }
 };
 

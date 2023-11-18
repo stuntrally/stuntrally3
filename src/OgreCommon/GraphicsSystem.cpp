@@ -674,7 +674,7 @@ void GraphicsSystem::registerHlms()
 			Archive* lib = mgr.load( rootDir + *it, type, true );
 			dirs.push_back( lib );
 		}
-		hlmsPbs2 = OGRE_NEW HlmsPbs2( ar, &dirs );
+		hlmsPbs2 = OGRE_NEW HlmsPbs2( pApp, ar, &dirs );
 		Root::getSingleton().getHlmsManager()->registerHlms( hlmsPbs2 );
 		hlmsPbs2->setDebugOutputPath(mDebugShaders, mDebugProperties, PATHS::ShadersDir()+"/");
 	}

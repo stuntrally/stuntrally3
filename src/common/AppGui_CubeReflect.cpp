@@ -155,6 +155,15 @@ void AppGui::CreateCubeReflect()
 }
 
 
+void AppGui::ApplyReflect()
+{
+	for (auto* db2 : vDbRefl)
+	{
+		db2->setTexture( PBSM_REFLECTION, mCubeReflTex );
+	}
+}
+
+
 //  🔮💫 update  each frame try
 void AppGui::UpdCubeRefl()
 {
@@ -192,4 +201,6 @@ void AppGui::UpdCubeRefl()
 	wsCubeRefl->_beginUpdate( true );
 	wsCubeRefl->_update();
 	wsCubeRefl->_endUpdate( true );
+
+	ApplyReflect();  //**
 }

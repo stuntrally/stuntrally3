@@ -18,6 +18,7 @@ namespace Ogre {  class Root;  class SceneManager;  class Window;  class Camera;
 	class Terra;  class HlmsPbsTerraShadows;
 	class PlanarReflections;  }
 class GraphicsSystem;  class SETTINGS;  class CScene;  class CGui;  class CGuiCom;
+class HlmsPbsDb2;
 
 //  cube reflections, car etc
 enum IblQuality
@@ -135,6 +136,9 @@ public:
 	Ogre::CompositorWorkspace* wsCubeRefl = 0;
 	int iReflSkip =0, iReflStart =0;
 	void CreateCubeReflect(), UpdCubeRefl();
+
+	void ApplyReflect();  // to all Db2s, after CubeRefl created
+	std::set<HlmsPbsDb2*> vDbRefl;
 
 	void AddGuiShadows(bool vr_mode = false, int i = 0, bool gui = true);
 	Ogre::CompositorWorkspace* SetupCompositor();
