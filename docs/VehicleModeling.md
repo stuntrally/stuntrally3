@@ -240,59 +240,51 @@ optional: 3S_spec.png, 3S_refl.png - to map specular parts and reflection, or de
 
 ### Materials file
 
-Todo: OLD outdated..
+More details in [Materials](Materials.md) page.
 
-Materials for all cars are defined in data/materials/cars.mat
+<del>Materials for all cars are defined in data/materials/cars.mat</del>
 
-A very basic example for 3S, you can comment out lines with %%//%%.
+A very basic example for 3S (replace with your new), you can comment out lines with %%//%%.
 ```
-material car_body_3S
+hlms car_body_3S pbs : car_body
 {
-	parent car_body
-	specMap 3S_spec.png
+    specular_map 3S_spec.png
 }
 
-material 3S_glass
+hlms 3S_glass pbs : car_glass2
 {
-	parent car_glass2
-	diffuseMap 3S_glass.png
 }
-material 3S_interior
+hlms 3S_interior pbs : car_interior
 {
-	parent car_interior
-	diffuseMap 3S_interior.png
+    diffuse_map 3S_interior.png
 }
-material 3S_wheel
+hlms 3S_wheel pbs : car_wheel
 {
-	parent car_wheel
-	diffuseMap 3S_wheel.png
+    diffuse_map 3S_wheel.png
 }
 ```
 
-More complicated example for ES wheel
+More complicated example for 3S wheel
 ```
-material ES_wheel
+hlms 3S_wheel pbs : car_wheel
 {
-	parent car_wheel
-	diffuseMap ES_wheel.png
-	normalMap ES_wheel_normal.jpg
-	specMap ES_wheel_spec.png
-	reflMap ES_wheel_spec.png
+    diffuse_map 3S_wheel.png
+    normal_map 3S_wheel_norm.jpg
+    specular_map 3S_wheel_spec.png
+    roughness_map 3S_wheel_rough.png
 }
 ```
 
 Another for XZ wheel
 ```
-material XZ_wheel_chrome  // rim
+hlms XZ_wheel_chrome pbs : car_base
 {
-	parent car_base
-	diffuseMap XZ_Tire.png
-	ambient 0.1 0.1 0.1
-	diffuse 0.1 0.1 0.1
-	specular 1 1 1 4
-	env_map true
-	fresnel true
-	fresnelScaleBiasPower 0.6 0.15 4
+    diffuse_map  XZ_Tire.png
+    diffuse  0.1 0.1 0.1
+    specular 1.0 1.0 1.0
+    fresnel_coeff  0.6 0.6 0.15
+    roughness 0.1
+    reflect yes
 }
 ```
 

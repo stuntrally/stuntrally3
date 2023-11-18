@@ -93,13 +93,13 @@ material ES_glass
 
 From old `.mat` files main parameters changed are:
 - `ambient` color - **gone**, nothing in new
-- `specular` - now only 3 values, remove **4th**  
+- `specular` - now only 3 values, have to remove **4th**  
    instead of power exponent (4th number), use new `roughness`
-- `env_map true` - _ToDo:_ **reflection** is now as `re="1"` in `presets.xml`, not yet for objects ..
+- `envMap ReflectionCube` - not needed, auto
+- `env_map true` - **reflection** for objects/all materials as `reflect yes`, for terrain as `re="1"` in `presets.xml`
 - `refl_amount` - now `fresnel_coeff` as color
-- `twoside_diffuse true` - now `two_sided true` - for tree leaves, glass etc
+- `twoside_diffuse true` - now `two_sided true` - for tree leaves, glass (not pipe) etc
 - `terrain_light_map true` - gone, auto in new
-- `bump_scale 0.5` - now 
 
 ### 🌠 New
 
@@ -122,7 +122,15 @@ _do **not** use:_
 We use default `specular_workflow`, metallic workflow is simpler, not to be used.  
 
 Also texture keywords changed, all are optional:  
-`diffuse_map`, `normal_map`, `specular_map`, `roughness_map`, `emissive_map`.
+`diffuse_map`, `normal_map`, `specular_map` (same as `metalness_map`), `roughness_map`, `emissive_map`.  
+There is no `reflect_map`, we can use either:
+- `specular_map` (1.0 is shinest) or
+- new `roughness_map` (0 to 0.2 is shinest)
+- or both for big/complex models.
+
+Need to add `reflect yes` to .material or .json to get that `env_refl` (environment reflection cubemap) as before.
+
+Quick examples, top of [PbsExample.material-](../data/materials/Pbs/PbsExample.material-).
 
 For terrain layer textures these parames are in `presets.xml` as:  
 `ro - roughness, me - metalness, re - reflection`.
