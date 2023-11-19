@@ -101,6 +101,9 @@
 <s m="sky/newsky026A"          c="#516477"   p="33"  y="0"  />
 <s m="sky/newsky026B"          c="#55779a"   p="33"  y="0"  />
 <s m="sky/space_nebula_01"     c="#41182a"   p="25"  y="115"  />
+<s m="sky/newsky011"           c="#afc789"   p="25"  y="0"  />
+<s m="sky/mud_road01"          c="#7a9747"   p="40"  y="75"  />
+<s m="sky/mud_road02"          c="#5e4562"   p="40"  y="75"  />
 	
 <!--  skies, anomaly  -->
 <s m="sky/sky_anomaly_01"      c="#a6d76e"   p="55"  y="0"  />
@@ -290,6 +293,12 @@ common:  sc - "short scenery name" (name color)
 <t sc="Cry"  t="ycrystals3_fine_d"      n="ycrystals_fine_n"    s="17.15" r="3" su="SnowDeep"       tp="0" du="0.0" ds="1.0" md="0.0" tr="0.26 0.1 0.23 0.8"  aa="0"  ab="10" />
 <t sc="Cry"  t="ycrystals3_med_d"       n="ycrystals_med_n"     s="12.59" r="2" su="SnowDeep"       tp="0" du="0.0" ds="1.0" md="0.0" tr="0.26 0.1 0.23 0.8"  aa="14" ab="31" />
 <t sc="Cry"  t="ycrystals3_big_d"       n="ycrystals_big_n"     s="17.15" r="4" su="SnowDeep"       tp="0" du="0.0" ds="1.0" md="0.0" tr="0.26 0.1 0.23 0.8"  aa="38" ab="90" />
+	
+<t sc="Mud"  t="ground_mud3_d"          n="ground_mud3_n"       s="8.53"  r="4" su="GrassJungleWet" tp="0" du="0.0" ds="0.2" md="0.6" tr="0.30 0.26 0.10 0.7"  aa="19" ab="34" />
+<t sc="Blk"  t="ground_mud3_oil_d"      n="ground_mud3_n"       s="8.53"  r="4" su="GrassJungleWet" tp="0" du="0.0" ds="0.2" md="0.6" tr="0.30 0.26 0.10 0.7"  aa="19" ab="34" />
+<t sc="Vlc"  t="ground_dirty_d"         n="ground_dirty_n"      s="6.67"  r="2" su="DesertMud"      tp="0" du="0.0" ds="0.0" md="0.1" tr="0.25 0.20 0.14 0.6"  aa="13" ab="26" />
+<t sc="Blk"  t="ground_dirty_toxic_d"   n="ground_dirty_n"      s="6.67"  r="2" su="DesertMud"      tp="0" du="0.0" ds="0.0" md="0.1" tr="0.25 0.20 0.14 0.6"  aa="13" ab="26" />
+<t sc="Vlc"  t="mntn_dark2_d"           n="mntn_dark2_n"        s="30.02" r="1" su="Rocks"          tp="1" du="0.3" ds="0.2" md="0.5" tr="0.32 0.32 0.32 0.4"  aa="44" ab="90" />
 
 <!-- new metal grid texture -->
 <t sc="Spc"  t="space_metal_grid_d"   n="space_metal_grid_n"   s="25.0"  r="1" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
@@ -414,6 +423,9 @@ common:  sc - "short scenery name" (name color)
 <r sc="Sur"  m="roadMossAnomaly"                r="3" su="roadJungle"  re="0"  du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.8" />
 <r sc="Sur"  m="roadMossAnomaly2"               r="3" su="roadJungle"  re="1"  du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.8" />
 
+<r sc="Blk" m="roadMudOil"            r="4" su="roadJungle"   du="0.0" ds="0.1" md="0.2" tr="0.40 0.36 0.16 0.8" />
+<r sc="Tox" m="roadSandToxic"         r="2" su="roadGravel"   du="0.0" ds="0.2" md="0.0" tr="0.54 0.44 0.30 0.1" />
+
 <r sc="JngD" m="roadJDarkTransp"            r="4" su="roadJungle"   du="0.0" ds="0.2" md="0.2" tr="0.40 0.36 0.16 0.4" />
 <r sc="For"  m="roadJungleTransp"           r="4" su="roadForest"   du="0.0" ds="0.2" md="0.2" tr="0.30 0.26 0.16 0.4" />
 <r sc="Mos"  m="roadMossTransp"             r="3" su="roadJungle"   du="0.0" ds="0.2" md="0.0" tr="0.09 0.19 0.15 0.4" />
@@ -447,7 +459,7 @@ common:  sc - "short scenery name" (name color)
 <r sc="Oth"  m="pipeGlass"            r="3" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Grc"  m="pipeGlassCyan"        r="5" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Cry"  m="pipeGlassBlue"        r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Jng"  m="pipeGlassGreen"       r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Jng"  m="pipeGlassGreen"       r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" a="0" />
 <r sc="Aus"  m="pipeGlassRed"         r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Can"  m="pipeGlassOrange"      r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Cry"  m="pipeGlassBlueD"       r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -1020,7 +1032,7 @@ common:  sc - "short scenery name" (name color)
 <!--  💎 Crystal  ================  -->
 <v sc="Cry"  p="---- Crystal ----"    r="0" />
 <v sc="Cry"  p="crystal1"             r="3" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Cry"  p="crystal1_anomaly"     r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Cry"  p="crystal1_anomaly"     r="3" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal1_cyan"        r="3" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal1_pink"        r="3" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal2"             r="2" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
@@ -1031,10 +1043,10 @@ common:  sc - "short scenery name" (name color)
 <v sc="Cry"  p="crystal3_blue"        r="2" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal3_cyan"        r="2" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal3_pink"        r="2" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Cry"  p="crystal4"             r="2" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Cry"  p="crystal4_blue"        r="2" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Cry"  p="crystal4_cyan"        r="2" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Cry"  p="crystal4_pink"        r="2" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Cry"  p="crystal4"             r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Cry"  p="crystal4_blue"        r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Cry"  p="crystal4_cyan"        r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Cry"  p="crystal4_pink"        r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal_cube4"        r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 
 <v sc="Cry"  p="crystal_form1"        r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
