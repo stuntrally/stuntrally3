@@ -16,9 +16,9 @@
 			//  *** Game setup ***
 			//  Simulation mode:   "easy" or "normal" (default)
 			//  damage:  "0" None   "1" Reduced           "2" Normal (default)
-			//  boost:   "0" Never  "1" FuelLap (default) "2" FuelTime  "3" Always
+			//  boost:   "0" Never  "1" FuelLap (default) "2" FuelTime   "3" Always
 			//  flip:    "0" Never  "1" FuelBoost         "2" Always (default)
-			//  rewind:  "0" None   "1" Always (default)
+			//  rewind:  "0" None   "1" Always (default)  "2" Take back time
 			//  dmg_lap:  0..100  damage repair on lap, default 40
 			//  car change:  "1" allow  "0" deny (default) picked once at start
 			//  abs,tcs:  "1" allow  "0" deny (default)
@@ -569,6 +569,20 @@ descr="New tracks with complex terrain and pipe installations.">
 		</tracks>
 	</challenge>
 
+	<!-- 3.0  2.8 -->
+	<challenge name="#60A0FFUnderwater #90C0FFadventures" ver="1" difficulty="4" type="2"
+descr="Normally driving underwater wouldn't be possible, but here we are. A few tracks with significant parts underwater. Still very slow to do, so you can #2080F0boost always.">
+		<cartype names="Gravel|Asphalt" />
+		<car names="BV|U6|Y7" />
+		<sim boost="3" />
+		<pass avgPoints="8" />
+		<tracks>
+			<t name="Isl20-Atlantis"   passPoints="7" />
+			<t name="Isl21-BarrelFun"  passPoints="7" />
+			<t name="Jng26-MilkyWay"   passPoints="7" />
+		</tracks>
+	</challenge>
+
 
 <!--  🏎️ Chase  (fast)  -->
 <!--========================================================================================================================-->
@@ -827,6 +841,31 @@ descr="Most surreal and colorful tracks, quite unreal and beautiful.">
 		</tracks>
 	</challenge>
 
+	<!-- 3.0  2.8 -->
+	<challenge name="#00F0FFThe #C000FFAno#30FF00maly" ver="1" difficulty="4" type="4"
+descr="Odd, strange, sometimes bizzare looking tracks in anomaly space with rendering glitches. Certainly surprising but without too difficult stunts. #2080F0Boost available always and rewind time.">
+		<sim boost="3" flip="2" rewind="2" />
+		<cartype names="Gravel|Asphalt" />
+		<car names="U6|TU|BV" />
+		<pass avgPoints="9" />
+		<tracks>
+			<t name="Ano1-Glitchy"  passPoints="8" />
+			<t name="Ano2-Bug"      passPoints="8" />
+			<t name="Ano3-Oversize" passPoints="8" />
+		</tracks>
+	</challenge>
+
+	<challenge name="#B0C0A0Urban #010201Nightmare" ver="1" difficulty="7" type="4"
+descr="The most extremely twisted tracks in decaying urban locations. Very long tracks with some difficult stunts. But mostly with slow, exhausting twists on road. #2080F0Boost available always and rewind time.">
+		<sim boost="3" flip="2" rewind="2" />
+		<cartype names="Gravel|Asphalt|Extreme" />
+		<car names="U6|TU|BV" />
+		<pass avgPoints="9" />
+		<tracks>
+			<t name="Stn2-UltraFrenzy"  passPoints="8" />
+			<t name="Apo1-TarFields"    passPoints="8" />
+		</tracks>
+	</challenge>
 
 	<!--  ⭕➿ Stunts  -->
 <!--========================================================================================================================-->
@@ -1001,7 +1040,7 @@ descr="Stunt tracks on various islands. Not too challenging.">
 	</challenge>
 
 	<challenge name="#F0F020U#F0D040l#D0B080t#C090A0i#B080C0m#A080D8a#9080E0t#8080F0e #FFA020long #C0C0FFstunts" ver="1" difficulty="7" type="5"
-descr="Newest long stunt tracks. Great looks and challenging stunts. Last tracks are extremely long. Be prepared, patient and avoid damage, if you want to pass. #C0E0C0Fast vehicles available, changing possible.">
+descr="New long stunt tracks. Great looks and challenging stunts. Last tracks are extremely long. Be prepared, patient and avoid damage, if you want to pass. #C0E0C0Fast vehicles available, changing possible.">
 		<cartype names="Gravel" />
 		<car names="SX|U6|UV" />
 		<pass avgPoints="10" />
@@ -1021,6 +1060,20 @@ descr="Long and strange track on other planets with some stunt elements.">
 		<tracks>
 		</tracks>
 	</challenge> -->
+
+	<!-- 3.0  2.8 -->
+	<challenge name="#C02020Ultra #F04040difficult #F04040extreme #F0C040plus" ver="1" difficulty="7" type="5"
+descr="The ultra hiper difficult extreme challenge plus. New track reaching over all previous difficulty.
+Surely the last one to try. Unbelievably long and difficult. Will require many rewind uses to even drive through.
+#2080F0But you can rewind time and boost all you want here. Thus score is less important.">
+		<cartype names="Gravel" />
+		<car names="U6" />
+		<sim damage="1" boost="3" flip="2" rewind="2" />
+		<pass avgPoints="12" />
+		<tracks>
+			<t name="Spc3-HyperLoops"   passPoints="9" />
+		</tracks>
+	</challenge>
 
 
 	<!--  🪐 Space  2.7  -->
@@ -1505,6 +1558,33 @@ descr="Stunts with motorbikes.">
 		</tracks>
 	</challenge>
 
+<!-- todo: add
+	<t name="Aln4-EjeloOutpost"/>
+	<t name="Aln5-WhiteLemon"/>
+	<t name="Can8-RedoPoka"/>
+	<t name="Can9-DukeRain"/>
+	<t name="Grc14-SquazeloLakes"/>
+	<t name="Atm10-LakeCity"/>
+
+	<t name="Blk2-Sawtooth"/>
+	<t name="Sur9-HexForest"/>
+	<t name="Cry4-Slide"/>
+
+	<t name="Aln6-Overgrowth"/>
+
+	<t name="Mos8-MogFoss"/>
+	<t name="Mar2-Momayon"/>
+
+	<t name="For21-StuntValley"/>
+	<t name="Des19-Sandgrains"/>
+	<t name="Mud6-Weiriwasso"/>
+
+	<t name="Sav16-StuykoStunting"/>
+	<t name="Des20-DesertCoaster"/>
+	<t name="Spr1-Rise"/>
+
+	<t name="Fin3-TreeTops"/>
+-->
 
 <!--  🧪 Test  -->
 <!--========================================================================================================================-->
