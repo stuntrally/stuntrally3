@@ -141,7 +141,7 @@ void App::MouseStart()
 void App::MouseFluids()
 {
 	FluidBox& fb = scn->sc->fluids[iFlCur];
-	const Real fMove(0.2f);  //, fRot(20.f);  //par speed
+	const Real fMove(0.06f), scaleMul(0.06f);  //par speed
 	const Real d = mCamera->getPosition().distance(fb.pos) * fMove;
 	if (!alt)
 	{
@@ -179,7 +179,7 @@ void App::MouseFluids()
 		{
 			Vector3 vx = mCamera->getRight();      vx.y = 0;  vx.normalise();  vx.x = fabs(vx.x);  vx.z = fabs(vx.z);
 			Vector3 vz = mCamera->getDirection();  vz.y = 0;  vz.normalise();  vz.x = fabs(vz.x);  vz.z = fabs(vz.z);
-			Vector3 vm = (vNew.y * vz + vNew.x * vx) * d * moveMul;
+			Vector3 vm = (vNew.y * vz + vNew.x * vx) * d * scaleMul;
 			fb.size += vm;
 			if (fb.size.x < 0.2f)  fb.size.x = 0.2f;
 			if (fb.size.z < 0.2f)  fb.size.z = 0.2f;
@@ -187,7 +187,7 @@ void App::MouseFluids()
 		}
 		else if (mbRight)  // size y
 		{
-			float vm = -vNew.y * d * moveMul;
+			float vm = -vNew.y * d * scaleMul;
 			fb.size.y += vm;
 			if (fb.size.y < 0.2f)  fb.size.y = 0.2f;
 			bRecreateFluids = true;  //

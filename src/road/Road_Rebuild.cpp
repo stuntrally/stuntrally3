@@ -134,8 +134,8 @@ void SplineRoad::BuildSeg(
 	Real skLen = useSkirt ? g_SkirtLen : 0.f, skH = useSkirt ? g_SkirtH : 0.f;
 
 	//  alpha border ...
-	rs.alpha = DS.onTer &&
-		//rs.sMtrRd.find("_ter") != String::npos &&
+	rs.alpha = DS.onTer && 
+		rs.sMtrRd.find("_ter") != String::npos &&
 		bMtrRoadTer[DS.mtrId] && bMtrAlpha[DS.mtrId];  // todo: upd in ed
 	// rs.alpha = 0;  // test?
 	// LogO("bMtrAlpha:: " + rs.sMtrRd +" ="+ (rs.alpha ? "1" : "0"));
