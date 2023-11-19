@@ -51,7 +51,7 @@ void CARDYNAMICS::UpdateBuoyancy()
 	//	sinf(chassisPosition[0]*0.3f)*cosf(chassisPosition[1]*0.32f);
 	//LogO("pos " + toStr((float)chassisPosition[0]) + " " + toStr((float)chassisPosition[1]) + "  b " + toStr(bc));
 
-	for (auto fb : inFluids)
+	for (auto* fb : inFluids)
 	if (fb->id >= 0)
 	{
 		const FluidParams& fp = pFluids->fls[fb->id];
@@ -309,7 +309,7 @@ void CARDYNAMICS::DebugPrint( std::ostream & out, bool p1, bool p2, bool p3, boo
 			out << "total: " << endl;
 			out << fToStr(aero[0],0,5) << " " << fToStr(aero[1],0,4) << " " << fToStr(aero[2],0,6) << endl;
 
-			for (auto a : aerodynamics)
+			for (const auto& a : aerodynamics)
 				a.DebugPrint(out);
 			}
 
@@ -320,7 +320,7 @@ void CARDYNAMICS::DebugPrint( std::ostream & out, bool p1, bool p2, bool p3, boo
 			MATHVECTOR<Dbl,3> wind_force(0), wind_torque(0), air_velocity(0);
 			air_velocity[0] = -160/3.6;
 
-			for (auto a : aerodynamics)
+			for (const auto& a : aerodynamics)
 			{
 				MATHVECTOR<Dbl,3> force = a.GetForce(air_velocity, false);
 				wind_force = wind_force + force;
@@ -595,7 +595,7 @@ void CARDYNAMICS::UpdateMass()
 	center_of_mass.Set(0,0,0);
 
 	// calculate the total mass, and center of mass
-	for (auto i : mass_only_particles)
+	for (const auto& i : mass_only_particles)
 	{
 		// add the current mass to the total mass
 		total_mass += i.first;
@@ -619,7 +619,7 @@ void CARDYNAMICS::UpdateMass()
 	for (int i = 0; i < 9; ++i)
 		inertia[i] = 0;
 
-	for (auto i : mass_only_particles)
+	for (const auto& i : mass_only_particles)
 	{
 		// transform into the rigid body coordinates
 		MATHVECTOR<Dbl,3> pos = i.second - center_of_mass;

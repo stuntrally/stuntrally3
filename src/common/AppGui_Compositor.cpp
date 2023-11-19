@@ -86,7 +86,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	
 	//  💥 destroy old
 	LogO("D### destroy Compositor, workspaces: "+ toStr(mWorkspaces.size()));
-	for (auto ws : mWorkspaces)
+	for (auto* ws : mWorkspaces)
 	{
 		// LogO("D### setup Compositor rem workspace");
 		mgr->removeWorkspace( ws );

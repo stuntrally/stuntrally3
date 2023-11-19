@@ -392,7 +392,7 @@ void CGuiCom::GetTweakMtr()
 
 	strlist li;
 	PATHS::DirList(path, li);
-	for (auto mat : li)
+	for (auto& mat : li)
 	{
 		if (StringUtil::endsWith(mat, ".material.json"))
 		{

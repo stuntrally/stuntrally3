@@ -545,7 +545,7 @@ void CONFIGFILE::GetParamList(std::list <string> & paramlistoutput, string sel_s
 			templist[i.name] = true;
 	}
 
-	for (auto i : templist)
+	for (const auto& i : templist)
 	{
 		paramlistoutput.push_back(i.first);
 	}

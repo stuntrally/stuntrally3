@@ -173,7 +173,7 @@ void PATHS::Init(bool log_paths)
 		// TODO: Adding path from config file
 
 		//  Loop through the paths and pick the first one that contain some data
-		for (auto d : dirs)
+		for (const auto& d : dirs)
 		{
 			//  Data dir
 			// LogO(d);
@@ -193,7 +193,7 @@ void PATHS::Init(bool log_paths)
 	///--------------------------------------------------
 	list <string> li;
 	PATHS::DirList(PATHS::CarSim(), li);
-	for (auto d : li)
+	for (const auto& d : li)
 	{
 		CreateDir(Records()+"/"+d);
 		CreateDir(Ghosts()+"/"+d);
@@ -310,14 +310,14 @@ bool PATHS::DirList(string dirpath, strlist& dirlist, string extension)
 	if (!extension.empty())
 	{
 		list <list <string>::iterator> todel;
-		for (auto i = dirlist.begin(); i != dirlist.end(); ++i)
+		for (auto it = dirlist.begin(); it != dirlist.end(); ++it)
 		{
-			if (i->find(extension) != i->length()-extension.length())
-				todel.push_back(i);
+			if (it->find(extension) != it->length()-extension.length())
+				todel.push_back(it);
 		}
 		
-		for (auto i = todel.begin(); i != todel.end(); ++i)
-			dirlist.erase(*i);
+		for (auto it = todel.begin(); it != todel.end(); ++it)
+			dirlist.erase(*it);
 	}
 	
 	dirlist.sort();

@@ -176,7 +176,7 @@ void CARDYNAMICS::AlignWithGround()
 MATHVECTOR<Dbl,3> CARDYNAMICS::GetTotalAero() const
 {
 	MATHVECTOR<Dbl,3> downforce = 0;
-	for (auto a : aerodynamics)
+	for (const auto& a : aerodynamics)
 		downforce = downforce + a.GetLiftVector() + a.GetDragVector();
 	return downforce;
 }
@@ -184,7 +184,7 @@ MATHVECTOR<Dbl,3> CARDYNAMICS::GetTotalAero() const
 Dbl CARDYNAMICS::GetAerodynamicDownforceCoefficient() const
 {
 	Dbl coeff = 0.0;
-	for (auto a : aerodynamics)
+	for (const auto& a : aerodynamics)
 		coeff += a.GetAerodynamicDownforceCoefficient();
 	return coeff;
 }
@@ -192,7 +192,7 @@ Dbl CARDYNAMICS::GetAerodynamicDownforceCoefficient() const
 Dbl CARDYNAMICS::GetAeordynamicDragCoefficient() const
 {
 	Dbl coeff = 0.0;
-	for (auto a : aerodynamics)
+	for (const auto& a : aerodynamics)
 		coeff += a.GetAeordynamicDragCoefficient();
 	return coeff;
 }

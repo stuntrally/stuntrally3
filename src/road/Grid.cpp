@@ -144,7 +144,7 @@ void GridMtrs::Create()
 	LogO("C:## Grid + Create ##");
 	LogO("C::+ Grid = materials: "+toStr(mtrs.size()));
 	int meshes = 0;
-	for (auto& m : mtrs)
+	for (const auto& m : mtrs)
 		meshes += m.second.cells.size();
 	LogO("C::+ Grid = meshes: "+toStr(meshes));
 

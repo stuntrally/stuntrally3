@@ -84,7 +84,7 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 	{
 		// Force update the shadow map every frame
 		const float lightEpsilon = 0.0001f;  //** 0.0f slow
-		for (auto ter : app->scn->ters)
+		for (auto* ter : app->scn->ters)
 		if (ter)
 			ter->update( !app->scn->sun ? -Vector3::UNIT_Y :
 				app->scn->sun->getDerivedDirectionUpdated(), camera, lightEpsilon );

@@ -319,7 +319,7 @@ void CScene::TerNext(int add)
 //  ⛓️⛰️ util all Ter H
 Ogre::Real CScene::getTerH(Ogre::Real x, Ogre::Real z)
 {
-	for (auto ter : ters)
+	for (auto* ter : ters)
 	if (ter)
 	{
 		Vector3 p(x, 0.f, z);
@@ -332,7 +332,7 @@ Ogre::Real CScene::getTerH(Ogre::Real x, Ogre::Real z)
 //  all ters
 bool CScene::getTerH(Ogre::Vector3& pos)  // sets y
 {
-	for (auto ter : ters)
+	for (auto* ter : ters)
 	{
 		Vector3 p = pos;
 		if (ter && ter->getHeightAt(p))

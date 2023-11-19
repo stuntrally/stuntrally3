@@ -67,7 +67,7 @@ void CGui::InitGuiLists()
 
 	strlist li;
 	PATHS::DirList(sData + "/terrain", li);
-	for (auto q : li)
+	for (const auto& q : li)
 	{
 		if (StringUtil::match(q, "*_n.*", false))
 			cmbTexNorm->addItem(q);
@@ -78,7 +78,7 @@ void CGui::InitGuiLists()
 	
 	//  particles
 	gcom->GetMaterials("tires.particle", true, "particle_system");
-	for (auto& s : gcom->vsMaterials)
+	for (const auto& s : gcom->vsMaterials)
 	{
 		cmbParDust->addItem(s);  cmbParMud->addItem(s);  cmbParSmoke->addItem(s);
 	}
@@ -90,7 +90,7 @@ void CGui::InitGuiLists()
 
 	//---------------------  🌿 Grass  ---------------------
 	/*PATHS::DirList(sData + "/grass", li);
-	for (auto q : li)
+	for (const auto& q : li)
 	{
 		if (StringUtil::startsWith(q, "grClr", false))
 			cmbGrassClr->addItem(q);
@@ -133,7 +133,7 @@ void CGui::InitGuiLists()
 		lo.clear();
 		PATHS::DirList(sData + path, lo);
 
-		for (auto q : lo)
+		for (const auto& q : lo)
 			if (StringUtil::endsWith(q,".mesh"))
 			{	string name = q.substr(0, q.length()-5);  //no .ext
 				if (name != "sphere" && !PATHS::FileExists(sData+"/objects/"+ name + ".bullet"))
@@ -193,7 +193,7 @@ void CGui::InitGuiLists()
 	const auto& dfl = scn->data->fluids->fls;
 	fluidsList = fLi("FluidsList");  Lev(fluidsList, FluidsChng);
 	fluidsList->removeAllItems();
-	for (auto& fp : dfl)
+	for (const auto& fp : dfl)
 	{
 		String c = gcom->ClrName(fp.name);
 		fluidsList->addItem(c + fp.name);
@@ -202,7 +202,7 @@ void CGui::InitGuiLists()
 	//---------------------  ✨ Particles  ---------------------
 	particlesList = fLi("ParticlesList");  Lev(particlesList, ParticlesChng);
 	particlesList->removeAllItems();
-	for (auto& em : app->vEmtNames)
+	for (const auto& em : app->vEmtNames)
 	{
 		String low = em;  StringUtil::toLowerCase(low);
 		String c = gcom->ClrName(low);

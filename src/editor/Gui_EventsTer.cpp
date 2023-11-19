@@ -674,7 +674,7 @@ bool App::LoadAllSurfaces()
 	std::list <std::string> sectionlist;
 	param.GetSectionList(sectionlist);
 	
-	for (auto section : sectionlist)
+	for (const auto& section : sectionlist)
 	{
 		TRACKSURFACE surf;
 		surf.name = section;

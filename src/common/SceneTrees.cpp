@@ -46,11 +46,11 @@ void CScene::DestroyTrees()
 	LogO("D--V destroy Veget Trees");
 
 	SceneManager *mgr = app->mSceneMgr;
-	for (auto node : vegetNodes)
+	for (auto* node : vegetNodes)
 		mgr->destroySceneNode(node);
 	vegetNodes.clear();
 	
-	for (auto item : vegetItems)
+	for (auto* item : vegetItems)
 		mgr->destroyItem(item);
 	vegetItems.clear();
 }

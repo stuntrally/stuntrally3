@@ -136,7 +136,7 @@ void SplineRoad::UpdLodVis(float fBias, bool bFull)
 void SplineRoad::UpdLodVisMarks(Real distSq, bool vis)
 {
 	#ifdef SR_EDITOR  // ed markers visible  near only
-	for (auto m:vMarks)
+	for (const auto& m : vMarks)
 	if (m.nd)
 	{
 		Real d = mCamera->cam->getPosition().squaredDistance(m.nd->getPosition());
@@ -204,7 +204,7 @@ void SplineRoad::UnsetForRnd()  // unsed ..
 }*/
 void SplineRoad::SetVisTrail(bool vis)
 {
-	for (auto& rs : vSegs)
+	for (const auto& rs : vSegs)
 	{
 		if (rs.empty)  continue;
 

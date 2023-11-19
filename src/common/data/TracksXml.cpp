@@ -40,7 +40,7 @@ bool UserXml::LoadXml(string file, TracksIni* ini)
 
 
 	//  fill all from tracks.ini
-	for (auto& trk : ini->trks)
+	for (const auto& trk : ini->trks)
 	{
 		UserTrkInfo t;
 		t.name = trk.name;
@@ -190,7 +190,7 @@ bool TracksIni::LoadIni(string file, bool check)
 	if (check)
 	{
 		LogO("))) Checking: tracks.ini");
-		i=1;  int c,n, nn = trks.size()-1;
+		i = 1;  int c,n, nn = trks.size()-1;
 
 		stringstream ss;  ss << fixed;
 		ss << "))) Sceneries stats:\n"
@@ -249,7 +249,7 @@ bool TracksIni::LoadIni(string file, bool check)
 		//  not in tracks.ini
 		strlist li;
 		PATHS::DirList(PATHS::Tracks(), li);
-		for (auto s : li)
+		for (auto& s : li)
 		{
 			if (trkmap[s]==0 && s.find('-') != string::npos)
 				LogO("!! Track not in ini: " + s);

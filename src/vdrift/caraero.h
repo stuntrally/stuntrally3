@@ -28,7 +28,7 @@ public:
 		lift_surface_area(0), lift_coefficient(0), lift_efficiency(0)
 	{	}
 
-	void DebugPrint(std::ostream & out);
+	void DebugPrint(std::ostream & out) const;
 	
 	void Set(const MATHVECTOR<Dbl,3> & newpos, Dbl new_drag_frontal_area, Dbl new_drag_coefficient,
 		Dbl new_lift_surface_area, Dbl new_lift_coefficient, Dbl new_lift_efficiency)

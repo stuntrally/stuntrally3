@@ -124,21 +124,21 @@ string replaceTagsPass(const string& _line, bool& _replaceResult)
 	string line(_line);
 
 	auto end = line.end();
-	for (auto iter = line.begin(); iter != end; )
+	for (auto it = line.begin(); it != end; )
 	{
-		if (*iter == '#')
+		if (*it == '#')
 		{
-			++iter;
-			if (iter == end)
+			++it;
+			if (it == end)
 				return line;
 			else
 			{
-				if (*iter != '{')
+				if (*it != '{')
 				{
-					++iter;
+					++it;
 					continue;
 				}
-				auto iter2 = iter;
+				auto iter2 = it;
 				++iter2;
 
 				while (true)
@@ -148,7 +148,7 @@ string replaceTagsPass(const string& _line, bool& _replaceResult)
 
 					if (*iter2 == '}')
 					{
-						size_t start = iter - line.begin();
+						size_t start = it - line.begin();
 						size_t len = (iter2 - line.begin()) - start - 1;
 						const string& tag = line.substr(start + 1, len);
 						string replacement;
@@ -164,19 +164,19 @@ string replaceTagsPass(const string& _line, bool& _replaceResult)
 						//  try to ask user if event assigned or use #{_tag} instead
 						if (!find)
 						{
-							iter = line.insert(iter, '#') + size_t(len + 2);
+							it = line.insert(it, '#') + size_t(len + 2);
 							end = line.end();
 							break;
 						}
 
 						_replaceResult = true;
 
-						iter = line.erase(iter - size_t(1), iter2 + size_t(1));
-						size_t pos = iter - line.begin();
+						it = line.erase(it - size_t(1), iter2 + size_t(1));
+						size_t pos = it - line.begin();
 						line.insert(pos, replacement);
-						iter = line.begin() + pos + replacement.length();
+						it = line.begin() + pos + replacement.length();
 						end = line.end();
-						if (iter == end)
+						if (it == end)
 							return line;
 						break;
 					}
@@ -184,7 +184,7 @@ string replaceTagsPass(const string& _line, bool& _replaceResult)
 				}
 		}	}
 		else
-			++iter;
+			++it;
 	}
 	return line;
 }

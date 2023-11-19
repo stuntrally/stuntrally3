@@ -68,11 +68,11 @@ void CARDYNAMICS::ApplyAerodynamicsToBody(Dbl dt)
 	MATHVECTOR<Dbl,3> air_velocity = -GetVelocity();
 	(-Orientation()).RotateVector(air_velocity);
 
-	for (auto i = aerodynamics.begin(); i != aerodynamics.end(); ++i)
+	for (const auto& i : aerodynamics)
 	{
-		MATHVECTOR<Dbl,3> force = i->GetForce(air_velocity);
+		MATHVECTOR<Dbl,3> force = i.GetForce(air_velocity);
 		wind_force = wind_force + force;
-		wind_torque = wind_torque + (i->GetPosition() - center_of_mass).cross(force);
+		wind_torque = wind_torque + (i.GetPosition() - center_of_mass).cross(force);
 	}
 	Orientation().RotateVector(wind_force);
 	Orientation().RotateVector(wind_torque);

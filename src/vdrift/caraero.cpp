@@ -3,7 +3,7 @@
 #include "Def_Str.h"
 
 
-void CARAERO::DebugPrint(std::ostream & out)
+void CARAERO::DebugPrint(std::ostream & out) const
 {
 	out << "---" << std::endl;
 	out << "Drag " << fToStr(drag_vector[0], 0,5) <<" "<< fToStr(drag_vector[1], 0,4) <<" "<< fToStr(drag_vector[2], 0,5) << std::endl;
