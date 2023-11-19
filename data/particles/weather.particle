@@ -1246,9 +1246,9 @@ particle_system CloudsMistToxicThin
 		height	60
 		depth	30  //h
 
-		colour_range_start	0.59 1.78 1.33  0.10
-		colour				0.58 1.66 1.40  0.06
-		colour_range_end	0.63 1.88 1.2   0.01
+		colour_range_start	0.29 1.78 1.33  0.03
+		colour				0.28 1.66 1.40  0.02
+		colour_range_end	0.33 1.88 1.2   0.01
 
 		emission_rate	10
 		velocity_min	0.1

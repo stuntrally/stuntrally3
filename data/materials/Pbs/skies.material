@@ -234,3 +234,19 @@ hlms sky/space_nebula_01 pbs : sky_base
 {
     emissive_map  space_nebula_01.jpg
 }
+
+
+hlms sky/newsky011 pbs : sky_base
+{
+    emissive_map  DaySkyHDRI011B_8K-HDR.jpg
+}
+
+hlms sky/mud_road01 pbs : sky_base
+{
+    emissive_map  mud_road01.jpg
+}
+
+hlms sky/mud_road02 pbs : sky_base
+{
+    emissive_map  mud_road02.jpg
+}
