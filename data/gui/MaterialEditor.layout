@@ -36,6 +36,8 @@
 			<Property key="Caption" value="#{RplSave}"/>
 			<Property key="Colour" value="0.5 0.7 1.0"/>
 			<Property key="TextColour" value="0.6 0.8 1.0"/>
+			<Property key="Alpha" value="0.9"/>
+			<Property key="InheritsAlpha" value="false"/>
 			<Widget type="ImageBox" skin="ImageBox" position="0 2 20 20">
 				<Property key="ImageCoord" value="0 768 128 128"/>
 				<Property key="Colour" value="0.5 0.7 1.0"/>

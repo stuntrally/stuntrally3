@@ -123,7 +123,7 @@ We use default `specular_workflow`, metallic workflow is simpler, not to be used
 
 Also texture keywords changed, all are optional:  
 `diffuse_map`, `normal_map`, `specular_map` (same as `metalness_map`), `roughness_map`, `emissive_map`.  
-There is no `reflect_map`, we can use either:
+There is no reflMap or `reflect_map`, we can use either:
 - `specular_map` (1.0 is shinest) or
 - new `roughness_map` (0 to 0.2 is shinest)
 - or both for big/complex models.
