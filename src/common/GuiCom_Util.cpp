@@ -68,7 +68,8 @@ CGuiCom::CGuiCom(App* app1)
 	scnN["Uni"] = "Unidentified";  scnN["Mrs"] = "Mars";            scnN["Cry"] = "Crystals";
 
 	scnN["Sur"] = "Surreal";       scnN["Mar"] = "Marble";          scnN["Spr"] = "Spring";
-	scnN["Spc"] = "Space";         scnN["SuSp"] = "SurrealSpace";	scnN["Ano"] = "Anomaly";
+	scnN["Spc"] = "Space";         scnN["SuSp"]= "SurrealSpace";
+	scnN["Ano"] = "Anomaly";       scnN["Apo"] = "PostApo";
 
 	scnN["Oth"] = "Other";         scnN["Blk"] = "BlackDesert";     scnN["Asp"] = "Asphalt";
 
@@ -91,7 +92,8 @@ CGuiCom::CGuiCom(App* app1)
 	scnClr["Unidentified"] = "#8080D0";  scnClr["Mars"]         = "#A04840";  scnClr["Crystals"]     = "#4090F0";
 
 	scnClr["Surreal"]      = "#F080B0";  scnClr["Marble"]       = "#E0A0C0";  scnClr["Spring"]       = "#A0F000";
-	scnClr["Space"]        = "#A0B8D0";  scnClr["SurrealSpace"] = "#80B0FF";  scnClr["Anomaly"]      = "#FF50D0";
+	scnClr["Space"]        = "#A0B8D0";  scnClr["SurrealSpace"] = "#80B0FF";
+	scnClr["Anomaly"]      = "#FF50D0";  scnClr["PostApo"]      = "#283818";
 
 	scnClr["Other"]        = "#C0D0E0";  scnClr["BlackDesert"]  = "#202020";  scnClr["Asphalt"]      = "#B0E0E0";
 }
