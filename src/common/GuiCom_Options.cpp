@@ -40,7 +40,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 	//  🧊 Detail, far geometry
 	const Real maxDist = 60000.f;
-	sv= &svLodBias;		sv->Init("LodBias",		&pSet->g.lod_bias,	0.f,4.f, 1.5f);  SevC(LodBias);  sv->DefaultF(1.f);
+	sv= &svLodBias;		sv->Init("LodBias",		&pSet->g.lod_bias,	0.01f,4.f, 1.5f);  SevC(LodBias);  sv->DefaultF(1.f);
 	sv= &svRoadDist;	sv->Init("RoadDist",	&pSet->g.road_dist,	0.f,5.f, 2.f, 2,5);  sv->DefaultF(1.6f);
 	sv= &svViewDist;	sv->Init("ViewDist",	&pSet->g.view_distance, 50.f,maxDist, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
 																			SevC(ViewDist);  sv->DefaultF(maxDist);
@@ -106,7 +106,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	sv= &svReflDist;	sv->Init("ReflDist",	&pSet->g.refl_dist,	20.f,maxDist, 2.f, 1,4, 0.001f, TR(" #{UnitKm}"));
 																	SevC(ReflDist);  sv->DefaultF(1000.f);
 	sv= &svReflIbl;		sv->Init("ReflIbl",		&pSet->g.refl_ibl,	0,8, 2.f);  SevC(ReflIbl);  sv->DefaultI(5);
-	sv= &svReflLod;		sv->Init("ReflLod",		&pSet->g.refl_lod,	0.f,4.f, 1.5f);  SevC(ReflLod);  sv->DefaultF(0.4f);
+	sv= &svReflLod;		sv->Init("ReflLod",		&pSet->g.refl_lod,	0.01f,4.f, 1.5f);  SevC(ReflLod);  sv->DefaultF(0.4f);
 	BtnC("ApplyRefl", btnReflApply);
 	/*sv= &svReflMode;  // todo: 1 cube refl for each car..
 	sv->strMap[0] = TR("#{ReflMode_static}");  sv->strMap[1] = TR("#{ReflMode_single}");
@@ -123,7 +123,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 // sv= &svWaterSkip;	sv->Init("WaterSkip",	&pSet->g.water_skip,	0,20, 2.f);  sv->DefaultI(0);
 	sv= &svWaterDist;	sv->Init("WaterDist",	&pSet->g.water_dist,	20.f,maxDist, 4.f, 1,4, 0.001f, TR(" #{UnitKm}"));
 																	SevC(WaterDist);  sv->DefaultF(1000.f);
-	sv= &svWaterLod;	sv->Init("WaterLod",	&pSet->g.water_lod,	0.f,2.f, 2.f);  sv->DefaultF(0.4f);
+	sv= &svWaterLod;	sv->Init("WaterLod",	&pSet->g.water_lod,	0.01f,2.f, 2.f);  sv->DefaultF(0.4f);
 	BtnC("ApplyShadersWater", btnWaterApply);
 
 
