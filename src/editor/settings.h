@@ -37,6 +37,7 @@ public:
 	int ter_skip = 4, mini_skip = 4;
 	int road_skip = 12;  float road_sphr = 2.5f;
 	float prv_rot_speed = 1.f;  // rad/s
+	float move_speed = 1.f;
 	
 	//  🎥 camera
 	float cam_speed = 0.9f, cam_inert = 0.4f;

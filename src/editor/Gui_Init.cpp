@@ -260,6 +260,8 @@ void CGui::InitGui()
 	sv= &svSizeRoadP;	sv->Init("SizeRoadP",	&pSet->road_sphr, 0.1f,12.f);  sv->DefaultF(2.f);  Sev(SizeRoadP);
 
 	sv= &svPrvRotSpd;	sv->Init("PrvRotSpd",	&pSet->prv_rot_speed, -4.f,4.f);  sv->DefaultF(0.f);
+	sv= &svMoveSpd;		sv->Init("MoveSpd",		&pSet->move_speed, 0.1f,8.f, 3.f);  sv->DefaultF(1.f);
+	
 
 	//  📈 debug, other
 	ck= &ckWireframe;	ck->Init("Wireframe",	&app->bWireframe);  Cev(Wireframe);

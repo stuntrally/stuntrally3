@@ -4,6 +4,7 @@
 #include "Axes.h"
 #include "CApp.h"
 #include "Road.h"
+#include "settings.h"
 
 #include <OgreCamera.h>
 #include <OgreSceneNode.h>
@@ -53,7 +54,8 @@ void App::MouseRoad()
 {
 	const Real fMove(0.2f), fRot(10.f);  //par speed
 	SplineRoad* road = scn->road;
-	const Real d = road->iChosen == -1 ? 30.f * fMove :
+	const Real s = moveMul * pSet->move_speed;
+	const Real d = road->iChosen == -1 ? 30.f * fMove:
 		mCamera->getRealPosition().distance(road->getPos(road->iChosen)) * fMove;
 
 	if (!alt)
@@ -61,19 +63,19 @@ void App::MouseRoad()
 		if (mbLeft)    // move on xz
 		{	Vector3 vx = mCamera->getRight();      vx.y = 0;  vx.normalise();
 			Vector3 vz = mCamera->getDirection();  vz.y = 0;  vz.normalise();
-			road->Move((vNew.x * vx - vNew.y * vz) * d * moveMul);
+			road->Move((vNew.x * vx - vNew.y * vz) * d * s);
 		}else
 		if (mbRight)   // height
-			road->Move(-vNew.y * Vector3::UNIT_Y * d * moveMul);
+			road->Move(-vNew.y * Vector3::UNIT_Y * d * s);
 		else
 		if (mbMiddle)  // width
-			road->AddWidth(vNew.x * 1.f * moveMul);
+			road->AddWidth(vNew.x * 1.f * s);
 	}else
 	{	//  alt
 		if (mbLeft)    // rot pitch
-			road->AddYaw(   vNew.x * fRot * moveMul,0.f,false/*alt*/);
+			road->AddYaw(   vNew.x * fRot * s, 0.f,false/*alt*/);
 		if (mbRight)   // rot yaw
-			road->AddRoll(  vNew.y *-fRot * moveMul,0.f,false/*alt*/);
+			road->AddRoll(  vNew.y *-fRot * s, 0.f,false/*alt*/);
 	}
 }
 
@@ -141,8 +143,8 @@ void App::MouseStart()
 void App::MouseFluids()
 {
 	FluidBox& fb = scn->sc->fluids[iFlCur];
-	const Real fMove(0.06f), scaleMul(0.06f);  //par speed
-	const Real d = mCamera->getPosition().distance(fb.pos) * fMove;
+	const Real fMove(0.06f), scaleMul(0.3f);  //par speed
+	const Real d = mCamera->getPosition().distance(fb.pos) * fMove * pSet->move_speed;
 	if (!alt)
 	{
 		auto& fl = scn->refl.fluids[iFlCur];
@@ -179,7 +181,7 @@ void App::MouseFluids()
 		{
 			Vector3 vx = mCamera->getRight();      vx.y = 0;  vx.normalise();  vx.x = fabs(vx.x);  vx.z = fabs(vx.z);
 			Vector3 vz = mCamera->getDirection();  vz.y = 0;  vz.normalise();  vz.x = fabs(vz.x);  vz.z = fabs(vz.z);
-			Vector3 vm = (vNew.y * vz + vNew.x * vx) * d * scaleMul;
+			Vector3 vm = (vNew.y * vz + vNew.x * vx) * d * moveMul * scaleMul;
 			fb.size += vm;
 			if (fb.size.x < 0.2f)  fb.size.x = 0.2f;
 			if (fb.size.z < 0.2f)  fb.size.z = 0.2f;
@@ -187,7 +189,7 @@ void App::MouseFluids()
 		}
 		else if (mbRight)  // size y
 		{
-			float vm = -vNew.y * d * scaleMul;
+			float vm = -vNew.y * d * moveMul * scaleMul;
 			fb.size.y += vm;
 			if (fb.size.y < 0.2f)  fb.size.y = 0.2f;
 			bRecreateFluids = true;  //
@@ -201,7 +203,8 @@ void App::MouseEmitters()
 {
 	SEmitter& em = scn->sc->emitters[iEmtCur];
 	const Real fMove(0.2f), fRot(20.f);  //par speed
-	const Real d = mCamera->getPosition().distance(em.pos) * fMove;
+	const Real s = pSet->move_speed;
+	const Real d = mCamera->getPosition().distance(em.pos) * fMove * s;
 	if (emtEd == EO_Move)
 	{
 		if (mbLeft)	// move on xz
@@ -220,7 +223,7 @@ void App::MouseEmitters()
 		}
 		else if (mbMiddle)  // rot yaw
 		{
-			Real xm = vNew.x * fRot * moveMul;
+			Real xm = vNew.x * fRot * moveMul * s;
 			em.rot += xm;
 			//em.nd->setOrientation(Quaternion(Degree(em.rot.x), em.up));
 		}
@@ -253,6 +256,7 @@ void App::MouseObjects()
 {
 	const Real fMove(0.2f), fRot(20.f), fScale(0.01f);  //par speed
 	bool upd = false, sel = !vObjSel.empty();
+	const Real s = pSet->move_speed;
 
 	//  rotate/scale selected
 	Vector3 pos0{0,0,0};  Matrix3 m = Matrix3::IDENTITY;
@@ -261,7 +265,7 @@ void App::MouseObjects()
 		pos0 = GetObjPos0();
 		if (objEd == EO_Rotate)
 		{
-			Real relA = -vNew.x * fRot * moveMul;
+			Real relA = -vNew.x * fRot * moveMul * s;
 			Quaternion q;  q.FromAngleAxis(Degree(relA),
 				mbLeft ? Vector3::UNIT_Y : (mbRight ? -Vector3::UNIT_Z : Vector3::UNIT_X));
 			q.ToRotationMatrix(m);
@@ -274,7 +278,7 @@ void App::MouseObjects()
 	{
 		Object& o = i == -1 ? objNew : scn->sc->objects[i];
 		bool upd1 = false;
-		const Real d = mCamera->getPosition().distance(Axes::toOgre(o.pos)) * fMove;
+		const Real d = mCamera->getPosition().distance(Axes::toOgre(o.pos)) * fMove * s;
 
 		switch (objEd)
 		{
@@ -298,7 +302,7 @@ void App::MouseObjects()
 
 			case EO_Rotate:
 			{
-				Real xm = -vNew.x * fRot * moveMul *PI_d/180.f;
+				Real xm = -vNew.x * fRot * moveMul *PI_d/180.f * s;
 				Quaternion q(o.rot.w(),o.rot.x(),o.rot.y(),o.rot.z());
 				Radian r = Radian(xm);  Quaternion qr;
 

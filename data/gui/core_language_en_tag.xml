@@ -1327,6 +1327,7 @@
 	<Tag name="RoadUpdSkip">Road update skip</Tag>
 	<Tag name="TerUpdSkip">Terrain update skip</Tag>
 	<Tag name="MinimapUpdSkip">Minimap update skip</Tag>
+	<Tag name="EditSpd">Edit speed</Tag>
 
 	<!--  Editor  Settings auto  -->
 	<Tag name="TrackAutoLoad">Auto Load track</Tag>
