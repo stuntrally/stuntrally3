@@ -8,6 +8,7 @@ hlms satellite1a pbs
 	specular 0.6 0.6 0.6
 	fresnel_coeff 0.1 0.1 0.1
 	roughness 0.5
+	// reflect yes
 }
 hlms satellite1b pbs
 {
@@ -17,7 +18,7 @@ hlms satellite1b pbs
 	specular 0.6 0.6 0.6
 	fresnel_coeff 0.1 0.1 0.1
 	roughness 0.5
-	reflect yes
+	// reflect yes
 }
 //  white big
 hlms satellite2a pbs
@@ -180,25 +181,26 @@ hlms storage_tank pbs
 {
 	diffuse_map storage_tank.jpg
 	normal_map storage_tank_norm.jpg
-	specular_map storage_tank_spec.jpg
-	// reflMap storage_tank_spec.jpg
+	roughness_map storage_tank_rough.jpg
+	// specular_map storage_tank_spec.jpg  // red-
 	diffuse 0.8 0.8 0.8
-	specular 1.0 1.0 1.0
-	bump_scale 0.65
-	fresnel_coeff 0.6
-	roughness 0.42
+	specular 0.3 0.3 0.3
+	fresnel_coeff 0.3 0.3 0.3
+	roughness 0.6
+	bump_scale 0.5
+	// reflect yes
 }
 
 hlms storage_tank_2 pbs
 {
 	diffuse_map storage_tank_2.jpg
 	normal_map storage_tank_2_norm.jpg
-	specular_map storage_tank_2_spec.jpg
-	// reflMap storage_tank_2_metal.jpg
+	roughness_map storage_tank_2_rough.jpg
+	// specular_map storage_tank_2_metal.jpg  // red-
 	diffuse 0.8 0.8 0.8
-	specular 1.0 1.0 1.0
-	fresnel_coeff 0.6
-	roughness 0.42
+	specular 0.3 0.3 0.3
+	fresnel_coeff 0.3 0.3 0.3
+	roughness 0.96
 }
 
 hlms gas_tank_02_red pbs
@@ -206,7 +208,7 @@ hlms gas_tank_02_red pbs
 	diffuse_map gas_tank_02_red.jpg
 	// normal_map gas_tank_02_norm.jpg
 	// specular_map gas_tank_02_spec.jpg
-	reflMap gas_tank_02_metal.jpg
+	// reflMap gas_tank_02_metal.jpg  // todo:
 	diffuse  0.8 0.8 0.8
 	specular 1.0 1.0 1.0 26
 	fresnel_coeff 0.6

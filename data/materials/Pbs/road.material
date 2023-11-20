@@ -1612,7 +1612,7 @@ hlms roadSpring2_ter pbs : road_terrain
 //----------------------------------------------------------------------------
 //  Anomaly  ----
 
-// Desert Anomaly 
+//  Desert Anomaly 
 hlms roadDesertAnomaly pbs //: road
 {
 	transparency 0.5
@@ -1634,7 +1634,7 @@ hlms roadDesertAnomaly_ter pbs : road_terrain
 	roughness 0.5
 }
 
-// Savannah Anomaly 
+//  Savannah Anomaly 
 hlms roadSavannahAnomaly pbs : road
 {
 	diffuse  0.8 0.8 0.8
@@ -1653,7 +1653,7 @@ hlms roadSavannahAnomaly_ter pbs : road_terrain
 	roughness 0.8
 }
 
-// Moss Anomaly
+//  Moss Anomaly
 hlms roadMossAnomaly pbs : road
 {
 	diffuse_map roadMossAnomaly.jpg
@@ -1690,7 +1690,7 @@ hlms roadMossAnomaly2_ter pbs : road_terrain
 	roughness 0.07
 }
 
-// Asphalt Anomaly
+//  Asphalt Anomaly
 hlms roadAsphaltAnomaly pbs : road
 {
 	diffuse_map roadAsphalt_spec.jpg
@@ -1731,7 +1731,7 @@ hlms roadAsphaltAnomalyStreaks_ter pbs : road
 	roughness 0.45
 }
 
-// Anomaly Space - Metal
+//  Anomaly Space - Metal
 hlms roadMetal1Anomaly pbs : road
 {
 	diffuse_map roadMetal1Anomaly.jpg
@@ -1782,7 +1782,7 @@ hlms roadMetal2Anomaly_ter pbs : road
 	roughness 0.5
 }
 
-// Anomaly Space - Asphalt
+//  Anomaly Space - Asphalt
 hlms roadAsphaltAnomalySpace pbs : road
 {
 	diffuse_map roadAsphalt_spec.jpg
@@ -1825,4 +1825,43 @@ hlms roadAsphaltAnomalySpaceStreaks_ter pbs : road
 	specular 1.7 0.0 0.4
 	receives_shadows false
 	roughness 0.52
+}
+
+
+//  post-apo
+//----------------------------------------------------------------------------
+hlms roadMudOil pbs : road
+{
+	diffuse_map roadJDarkD.jpg
+	// ambient 0.7 0.6 1.1
+	diffuse 0.5 0.4 0.75
+	specular 0.3 0.3 0.35
+	roughness 0.12
+}
+hlms roadMudOil_ter pbs : road_terrain
+{
+	diffuse_map roadJDarkD.jpg
+	normal_map  normal_2.png
+	// ambient 0.5 0.45 0.7
+	diffuse 0.50 0.50 0.70
+	specular 0.43 0.4 0.45
+	roughness 0.33
+}
+
+hlms roadSandToxic pbs : road
+{
+	diffuse_map roadSandSet.jpg
+	// ambient 0.37 0.6 0.31
+	diffuse 0.4 0.6 0.33
+	specular 0.3 0.35 0.2
+	roughness 0.22
+}
+hlms roadSandToxic_ter pbs : road_terrain
+{
+	diffuse_map roadSandSet.jpg
+	normal_map  normal_2.png
+	// ambient 0.4 0.6 0.31
+	diffuse 0.4 0.6 0.31
+	specular 0.3 0.37 0.2
+	roughness 0.24
 }

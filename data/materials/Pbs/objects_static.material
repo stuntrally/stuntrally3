@@ -328,7 +328,7 @@ hlms Building pbs
 	diffuse_map  skyscraper.jpg
 	normal_map   skyscraper_norm.jpg
 	specular_map skyscraper_spec.jpg
-	metalness_map skyscraper_refl.jpg
+	// roughness_map skyscraper_refl.jpg
 	diffuse  0.9 0.9 0.9
 	specular 0.4 0.4 0.4
 	fresnel_coeff 0.1
@@ -339,10 +339,12 @@ hlms Building pbs
 hlms water_plane_big pbs
 {
 	diffuse_map  water_plane_big.jpg
-	diffuse  1.0 1.04 1.05
-	specular 0.4 0.45 0.5
-	fresnel_coeff 0.5 0.5 0.5
-	roughness 0.45
+	normal_map flat_n.png
+	diffuse  0.43 0.44 0.45
+	specular 0.14 0.145 0.15
+	fresnel_coeff 0.25 0.25 0.25
+	roughness 0.15
+	reflect yes
 }
 
 hlms balloon1 pbs
@@ -501,7 +503,7 @@ hlms metal_01 pbs
 	diffuse_map  metal_01.jpg
 	normal_map   metal_01_norm.jpg
 	// specular_map metal_01_spec.jpg
-	// reflMap metal_01_spec.jpg
+	// roughness_map metal_01_spec.jpg
 	diffuse  0.7 0.7 0.7
 	specular 0.6 0.6 0.6
 	fresnel_coeff 0.7
@@ -514,7 +516,7 @@ hlms metal_02 pbs
 	diffuse_map  metal_02.jpg
 	normal_map   metal_02_norm.jpg
 	// specular_map metal_02_spec.jpg
-	// reflMap metal_02_spec.jpg
+	// roughness_map metal_02_spec.jpg
 	diffuse  0.7 0.7 0.7
 	specular 0.8 0.8 0.8
 	fresnel_coeff 0.7
@@ -585,7 +587,7 @@ hlms metal_06 pbs
 	diffuse_map  metal_06.jpg
 	normal_map   metal_06_norm.jpg
 	// specular_map metal_06_spec.jpg
-	// reflMap metal_06.jpg
+	// roughness_map metal_06.jpg
 	diffuse  0.7 0.7 0.7
 	specular 1 1 1
 	fresnel_coeff 0.7
@@ -658,7 +660,6 @@ hlms structure pbs
 	diffuse_map  metal_01.jpg
 	normal_map   metal_01_norm.jpg
 	// specular_map metal_01_spec.jpg
-	// reflMap metal_01_spec.jpg
 	diffuse  0.7 0.7 0.8
 	specular 0.5 0.5 0.7
 	fresnel_coeff 0.6
@@ -672,7 +673,6 @@ hlms ring_blue pbs
 	diffuse_map  metal_01_light.jpg
 	normal_map   metal_01_norm.jpg
 	// specular_map metal_01_spec.jpg
-	// reflMap metal_01_spec.jpg
 	diffuse 0.4 0.7 1.0
 	specular 0.3 0.3 0.4
 	// refl_amount 0.05
@@ -684,7 +684,6 @@ hlms ring_blue_stick pbs
 	diffuse_map  metal_02_light.jpg
 	normal_map   metal_02_norm.jpg
 	// specular_map metal_02_spec.jpg
-	// reflMap metal_02_spec.jpg
 	diffuse 0.4 0.7 1.0
 	specular 0.3 0.3 0.4
 	fresnel_coeff 0.6
@@ -696,7 +695,6 @@ hlms ring_red pbs
 	diffuse_map  metal_01.jpg
 	normal_map   metal_01_norm.jpg
 	// specular_map metal_01_spec.jpg
-	// reflMap metal_01_spec.jpg
 	diffuse  1.4 0.6 0.5
 	specular 0.5 0.3 0.3
 	// refl_amount 0.05
@@ -708,7 +706,6 @@ hlms ring_red_stick pbs
 	diffuse_map  metal_02.jpg
 	normal_map   metal_02_norm.jpg
 	// specular_map metal_02_spec.jpg
-	// reflMap metal_02_spec.jpg
 	diffuse  1.4 0.6 0.5
 	specular 0.5 0.3 0.3
 	fresnel_coeff 0.5
@@ -720,7 +717,6 @@ hlms ring_lime pbs
 	diffuse_map  metal_01.jpg
 	normal_map   metal_01_norm.jpg
 	// specular_map metal_01_spec.jpg
-	// reflMap metal_01_spec.jpg
 	diffuse  0.9 1 0.1
 	specular 0.27 0.5 0.1
 	// refl_amount 0.05
@@ -732,7 +728,6 @@ hlms ring_lime_stick pbs
 	diffuse_map  metal_02.jpg
 	normal_map   metal_02_norm.jpg
 	// specular_map metal_02_spec.jpg
-	// reflMap metal_02_spec.jpg
 	diffuse  0.9 1 0.1
 	specular 0.27 0.5 0.1
 	fresnel_coeff 0.5
@@ -853,7 +848,7 @@ hlms obstaclesWhite pbs : obstaclesGrey
 {
 	diffuse_map  obstaclesWhite_d.jpg
 	specular_map obstaclesWhite_s.jpg
-	reflMap obstaclesWhite_s.jpg
+	roughness_map obstaclesWhite_s.jpg
 	diffuse  1.15 1.05 1.2
 	specular 1.1 1.0 1.3
 	// refl_amount 0.5
@@ -872,7 +867,7 @@ hlms obstaclesBlack pbs : obstaclesGrey
 {
 	diffuse_map  obstaclesWhite_d.jpg
 	specular_map obstaclesWhite_s.jpg
-	// reflMap obstaclesCrystal_s.jpg
+	// roughness_map obstaclesCrystal_s.jpg
 	diffuse  0.69 0.69 0.79
 	specular 1.03 1.1 1.1
 	// refl_amount 0.5
@@ -886,7 +881,7 @@ hlms obstaclesMarble pbs : obstaclesGrey
 	specular_map obstaclesMarble_s.jpg
 	diffuse  1.15 0.9 1.1
 	specular 0.9 0.7 0.9
-	// bump_scale 0.9
+	bump_scale 0.9
 	roughness 0.4
 }
 
@@ -895,10 +890,10 @@ hlms obstaclesCrystal pbs : obstaclesGrey
 	diffuse_map  obstaclesCrystal_d.jpg
 	normal_map   obstaclesCrystal_n.jpg
 	specular_map obstaclesCrystal_s.jpg
-	// reflMap obstaclesCrystal_s.jpg
+	// roughness_map obstaclesCrystal_s.jpg
 	diffuse  0.8 1.8 1.1
 	specular 0.5 1.6 1.0
-	// bump_scale 1.2
+	bump_scale 1.2
 	// refl_amount 0.5
 	roughness 0.1
 }
@@ -923,7 +918,7 @@ hlms obstaclesAnomaly pbs
 	// ambient 1.1 1.1 1.1
 	diffuse 0.75 0.75 0.75
 	specular 0.5 1.6 1.0
-	// bump_scale 1.2
+	bump_scale 1.2
 	// refl_amount 0.5
 	fresnel_coeff 0.6
 	roughness 0.4

@@ -172,26 +172,38 @@ hlms can_rusted pbs pbs
 
 hlms garbage_bin_green pbs
 {
-	diffuse_map  garbage_bin_green.jpg
-	normal_map   garbage_bin_norm.jpg
+	diffuse_map garbage_bin_green.jpg
+	normal_map garbage_bin_norm.jpg
+	specular_map garbage_bin_green_spec.jpg
+	// specular_map garbage_bin_metal.jpg
+	roughness_map garbage_bin_rough.jpg
+	diffuse 1.0 1.0 1.0
+	specular 1 1 1
+	fresnel_coeff 1 1 1
+	roughness 0.3
+	reflect yes
+	// specular 0.6 0.6 0.6
+	// fresnel_coeff 0.5 0.5 0.5
+	// roughness 0.13
+
+	// diffuse_map  garbage_bin_green.jpg
+	// normal_map   garbage_bin_norm.jpg
 	// specular_map garbage_bin_green_spec.jpg
-	// reflMap garbage_bin_metal.jpg
-	diffuse  1.0 1.0 1.0
-	specular 0.6 0.6 0.6
-	fresnel_coeff 0.5
-	roughness 0.37
+	// roughness_map garbage_bin_metal.jpg
 }
 
 hlms garbage_bin_blue pbs
 {
-	diffuse_map  garbage_bin_blue.jpg
-	normal_map   garbage_bin_norm.jpg
+	// diffuse_map garbage_bin_blue.jpg
+	diffuse_map garbage_bin_blue_spec.jpg
+	normal_map garbage_bin_norm.jpg
 	// specular_map garbage_bin_blue_spec.jpg
-	// reflMap garbage_bin_metal.jpg
-	diffuse  1.0 1.0 1.0
+	// specular_map garbage_bin_metal.jpg
+	// roughness_map garbage_bin_rough.jpg
+	diffuse 1.0 1.0 1.0
 	specular 0.6 0.6 0.6
-	fresnel_coeff 0.1
-	roughness 0.33
+	fresnel_coeff 0.5 0.5 0.5
+	roughness 0.13
 }
 
 hlms trash_bag pbs
@@ -232,7 +244,7 @@ hlms balloon2_anomaly pbs
 	specular_map concrete_bar_norm.jpg
 	diffuse 0.75 0.75 1.65
 	specular 0.5 1.0 1.6
-	// bump_scale 1.2
+	bump_scale 1.2
 	// refl_amount 0.5
 	roughness 0.3
 	cull_mode none
@@ -244,7 +256,7 @@ hlms Crate_anomaly pbs
 	normal_map crate_anomaly.jpg
 	diffuse  1.9 1 1
 	specular 1.55 0.6 0.6
-	// bump_scale 4.0
+	bump_scale 4.0
 	roughness 0.55
 }
 
@@ -252,11 +264,114 @@ hlms crate2m_anomaly pbs
 {
 	diffuse_map big_tire.png
 	normal_map concrete_bar_norm.jpg
-	terrain_light_map true
 	// ambient 0.95 1 1
 	diffuse  0.65 0.7 0.7
 	specular 0.6 0.6 0.6
-	// bump_scale 2.0
+	bump_scale 2.0
 	roughness 0.55
 }
 
+
+//  post-apo  // todo: sort
+//------------------------------------------------------
+hlms dead_tree_01 pbs
+{
+	diffuse_map tree_dead_01_bark_d.jpg
+	normal_map  tree_dead_01_bark_n.jpg
+	// specular_map tree_dead_01_bark_s.jpg
+	diffuse 0.8 0.8 0.8
+	specular 1.0 1.0 1.0 //26
+	fresnel_coeff 0.1
+	roughness 0.3
+	bump_scale 0.7
+}
+
+hlms dead_tree_01_dark pbs
+{
+	diffuse_map tree_dead_01_bark_d.jpg
+	normal_map  tree_dead_01_bark_n.jpg
+	// specular_map tree_dead_01_bark_s.jpg
+	ambient 0.55 0.57 0.55
+	diffuse 0.46 0.5 0.46
+	specular 0.3 0.32 0.3 //26
+	fresnel_coeff 0.1
+	roughness 0.3
+	bump_scale 0.7
+}
+
+hlms dead_tree_01_burned pbs
+{
+	diffuse_map tree_dead_01_bark_burned_d.jpg
+	normal_map  tree_dead_01_bark_n.jpg
+	// specular_map tree_dead_01_bark_s.jpg
+	// ambient 0.4 0.4 0.4
+	diffuse 0.46 0.46 0.46
+	specular 0.1 0.1 0.1 //26
+	fresnel_coeff 0.1
+	roughness 0.3
+	bump_scale 0.7
+}
+
+hlms dead_tree_04 pbs
+{
+	diffuse_map tree_dead_04_bark_d.jpg
+	normal_map  tree_dead_04_bark_n.jpg
+	// specular_map tree_dead_04_bark_s.jpg
+	ambienct 0.9 0.9 0.9
+	diffuse 0.8 0.8 0.8
+	specular 1.0 1.0 1.0 //26
+	fresnel_coeff 0.1
+	roughness 0.3
+	bump_scale 0.7
+}
+
+hlms dead_tree_04_dark pbs
+{
+	diffuse_map tree_dead_04_bark_d.jpg
+	normal_map  tree_dead_04_bark_n.jpg
+	// specular_map tree_dead_04_bark_s.jpg
+	// ambient 0.55 0.57 0.55
+	diffuse 0.46 0.5 0.46
+	specular 0.3 0.32 0.3 //26
+	fresnel_coeff 0.1
+	roughness 0.3
+	bump_scale 0.7
+}
+
+hlms dead_tree_04_burned pbs
+{
+	diffuse_map tree_dead_04_bark_burned_d.jpg
+	normal_map  tree_dead_04_bark_n.jpg
+	// specular_map tree_dead_04_bark_s.jpg
+	// ambient 0.4 0.4 0.4
+	diffuse 0.46 0.46 0.46
+	specular 0.1 0.1 0.1 //26
+	fresnel_coeff 0.1
+	roughness 0.3
+	bump_scale 0.7
+}
+
+hlms oil_pump pbs
+{
+	parent base
+	diffuse_map oil_pump.jpg
+	normal_map  oil_pump_norm.jpg
+	// specular_map oil_pump_spec.jpg
+	// reflMap oil_pump_spec.jpg
+	diffuse 0.8 0.8 0.8
+	specular 1.0 1.0 1.0 //26
+	fresnel_coeff 0.1
+	roughness 0.3
+}
+
+hlms post_apo_buildings pbs
+{
+	diffuse_map concrete_postapo_d.jpg
+	normal_map  concrete_postapo_n.jpg
+	// specular_map concrete_postapo_s.jpg
+	// reflMap concrete_postapo_m.jpg
+	diffuse 0.8 0.8 0.8
+	specular 1.0 1.0 1.0 //26
+	fresnel_coeff 0.1
+	roughness 0.3
+}
