@@ -17,10 +17,11 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "misc.ogredialog", ogre_dialog);
 	Param(c,w, "misc.mouse_capture", mouse_capture);
 	//  hlms
-	Param(c,w, "misc.debug_shaders", debug_shaders);
-	Param(c,w, "misc.debug_properties", debug_properties);
-	Param(c,w, "misc.cache_hlms", cache_hlms);
-	Param(c,w, "misc.cache_shaders", cache_shaders);
+	Param(c,w, "misc.debug_shaders", debug_shaders);	Param(c,w, "misc.debug_properties", debug_properties);
+	Param(c,w, "misc.cache_hlms", cache_hlms);			Param(c,w, "misc.cache_shaders", cache_shaders);
+
+	//  🔧 tweak
+	Param(c,w, "tweak.mtr", tweak_mtr);  		Param(c,w, "tweak.find", find_mtr);
 
 	//  🖥️ video  // todo: ..
 	// Param(c,w, "video.windowx", windowx);			Param(c,w, "video.windowy", windowy);

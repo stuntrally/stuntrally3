@@ -180,7 +180,6 @@ public:
 	bool te_reference = 0, te_common = 1;
 
 	//  🔧 tweak
-	std::string tweak_mtr;
 	std::map<char, std::string> dev_tracks;  // alt-shift-
 
 	//  effects

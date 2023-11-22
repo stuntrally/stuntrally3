@@ -463,7 +463,7 @@ This assert triggering, means those were different:
 ### Other 🧪
 
 Other common assert: [mCachedTransformOutOfDate](https://ogrecave.github.io/ogre-next/api/latest/_ogre20_changes.html#AssersionCachedOutOfDate).  
-At end of [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822).
+At end of [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822) and also debug todo [here](https://forums.ogre3d.org/viewtopic.php?p=555087#p555087).
 
 Don't change node pos or rot from inside listeners.  
 Or after, need to call `_getFullTransformUpdated(` e.g. for `ndSky`, `light->getParentNode()->_`, camera etc.  

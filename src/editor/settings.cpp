@@ -75,7 +75,6 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "brush.adjust", br_adjust);
 
 	//  🔧 tweak
-	Param(c,w, "tweak.mtr", tweak_mtr);
 
 	//  👆 pick
 	Param(c,w, "pick.set_par", pick_setpar);		Param(c,w, "pick.objGroup", objGroup);

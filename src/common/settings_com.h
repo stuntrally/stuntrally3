@@ -24,7 +24,11 @@ public:
 	bool debug_shaders =0, debug_properties =0;
 	bool cache_hlms =1, cache_shaders =1;
 
+	//  🔧 tweak
+	std::string tweak_mtr, find_mtr;
+
 	std::string language;  // "" autodetect
+
 
 	//  🖥️ Screen  ----
 	// int windowx =800, windowy =600;//, fsaa =0;

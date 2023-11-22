@@ -61,7 +61,7 @@ public:
 	bool trk_reverse =0, show_mph =0;
 
 	//  🔧 tweak
-	std::string tweak_mtr, objGroup{"rock"};
+	std::string objGroup{"rock"};
 	//  👆 pick
 	bool pick_setpar =1;
 

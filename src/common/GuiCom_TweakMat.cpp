@@ -35,8 +35,9 @@ void CGuiCom::listTweakMtr(Li li, size_t val)
 	updTweakMtr();
 }
 
-void CGuiCom::editMtrFind(Ed)
+void CGuiCom::editMtrFind(Ed ed)
 {
+	pSet->find_mtr = ed->getCaption();
 	FillTweakMtr();
 }
 
@@ -146,6 +147,7 @@ void CGuiCom::InitGuiTweakMtr()
 	liTweakMtr = fLi("TweakMtr");  LevC(liTweakMtr, TweakMtr);
 	
 	EdC(edMtrFind, "MtrFind", editMtrFind);
+	edMtrFind->setCaption(pSet->find_mtr);
 }
 
 //  🔁 update db mat value
@@ -317,13 +319,13 @@ void CGuiCom::FillTweakMtr()
 	{	f1st = 0;
 		GetTweakMtr();
 	}
-
 	liTweakMtr->removeAllItems();
-	liTweakMtr->addItem("");
+	liTweakMtr->addItem("");  //-
 
 	String srch = edMtrFind->getCaption();
 	StringUtil::toLowerCase(srch);
 
+	//  add matching
 	for (const auto& m : vsMaterials)
 	if (m != "road" && m != "road_terrain" && m != "column" && 
 		m != "pipe_base" && m != "pipe_glass")  // no base mtr
@@ -337,6 +339,7 @@ void CGuiCom::FillTweakMtr()
 			liTweakMtr->addItem(c + m);
 	}	}
 
+	//  select cur
 	for (size_t i=0; i < liTweakMtr->getItemCount(); ++i)
 	if (StringUtil::endsWith(liTweakMtr->getItemNameAt(i), pSet->tweak_mtr))
 	{

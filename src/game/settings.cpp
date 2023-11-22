@@ -159,7 +159,6 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 	//  🔧 tweak
 	Param(c,w, "tweak.dev_keys", dev_keys);			
-	Param(c,w, "tweak.mtr", tweak_mtr);
 	Param(c,w, "tweak.bulletDebug", bltDebug);		Param(c,w, "tweak.bulletLines", bltLines);
 	Param(c,w, "tweak.profilerTxt", profilerTxt);	Param(c,w, "tweak.bulletProfilerTxt", bltProfilerTxt);
 	Param(c,w, "tweak.dev_no_prvs", dev_no_prvs);
