@@ -61,7 +61,8 @@ bool Scene::SaveXml(String file)
 
 	XMLElement* snd = xml.NewElement("sound");  // 🔉
 		snd->SetAttribute("ambient",		ambientSnd.c_str());
-		snd->SetAttribute("vol",			toStrC( ambientVol ));
+		if (ambientVol != 1.f)
+			snd->SetAttribute("vol",		toStrC( ambientVol ));
 		snd->SetAttribute("reverbs",		sReverbs.c_str());
 	root->InsertEndChild(snd);
 	
@@ -211,6 +212,10 @@ bool Scene::SaveXml(String file)
 				par->SetAttribute("dust",	sParDust.c_str());
 				par->SetAttribute("mud",	sParMud.c_str());
 				par->SetAttribute("smoke",	sParSmoke.c_str());
+				//  fluids if not default
+				if (sFluidWater   != "FluidWater")    par->SetAttribute("flWater",  sFluidWater.c_str());
+				if (sFluidMud     != "FluidMud")      par->SetAttribute("flMud",  sFluidMud.c_str());
+				if (sFluidMudSoft != "FluidMudSoft")  par->SetAttribute("flMudSoft",  sFluidMudSoft.c_str());
 			ter->InsertEndChild(par);
 
 		ters->InsertEndChild(ter);

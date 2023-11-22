@@ -66,7 +66,8 @@ public:
 	
 
 	//  ⚫💭  wheel particle types
-	Ogre::String  sParDust, sParMud, sParSmoke;
+	Ogre::String  sParDust, sParMud, sParSmoke,  // todo: auto create from presets.xml
+		sFluidWater, sFluidMud, sFluidMudSoft;  // fluids  todo: auto from fluids.xml
 	
 	///  ⛰️ Terrains  ----
 	std::vector<TerData> tds;

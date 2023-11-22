@@ -174,3 +174,62 @@ particle_system FluidWater
 		alpha	-0.20
 	}
 }
+
+
+//  Mud white
+particle_system FluidMudWhite
+{
+	material			FluidMudWhite
+	quota				1500
+	particle_width		0.4
+	particle_height		0.4
+	cull_each			false
+	billboard_type		point
+
+	emitter Box
+	{
+		angle	2
+		position	0 0.2 0
+		direction	0 1 0
+		width	0.6
+		height	0.3
+		depth	0.3  //h
+
+		colour_range_start	1.0 1.0 1.0  0.5
+		colour				1.0 1.0 1.0  0.7
+		colour_range_end	1.0 1.0 1.0  0.8
+
+		velocity_min	2.5
+		velocity_max	4.5
+		time_to_live_min	0.5
+		time_to_live_max	1.4
+	}
+
+	affector Rotator
+	{
+		rotation_range_start 0
+		rotation_range_end 360
+		rotation_speed_range_start -120
+		rotation_speed_range_end 120
+	}
+	affector LinearForce
+	{
+		force_vector	0 -9.8 0
+		force_application	add
+	}
+
+	affector DirectionRandomiser
+	{
+		randomness	2
+	}
+
+	affector Scaler
+	{
+		rate	0.70
+	}
+
+	affector ColourFader
+	{
+		alpha	-0.50
+	}
+}

@@ -410,6 +410,10 @@ bool Scene::LoadTerData(TerData& td, XMLElement* e)
 	{	a = u->Attribute("dust");	if (a)  sParDust = String(a);
 		a = u->Attribute("mud");	if (a)  sParMud = String(a);
 		a = u->Attribute("smoke");	if (a)  sParSmoke = String(a);
+
+		a = u->Attribute("flWater");	if (a)  sFluidWater = String(a);
+		a = u->Attribute("flMud");		if (a)  sFluidMud = String(a);
+		a = u->Attribute("flMudSoft");	if (a)  sFluidMudSoft = String(a);
 	}
 	return true;
 }

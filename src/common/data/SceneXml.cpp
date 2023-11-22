@@ -49,6 +49,7 @@ void Scene::Default()
 	lDiff = SColor(0.16f, 0.0f, 0.7f);	lSpec = SColor(0.16f, 0.05f, 1.f);
 
 	sParDust = "Dust";  sParMud = "Mud";  sParSmoke = "Smoke";
+	sFluidWater = "FluidWater";  sFluidMud = "FluidMud";  sFluidMudSoft = "FluidMudSoft";
 
 	tds.clear();
 	// td.Default();

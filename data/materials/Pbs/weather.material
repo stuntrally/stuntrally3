@@ -146,6 +146,14 @@ hlms FluidWater unlit
 	depth_write	off
 }
 
+hlms FluidMudWhite unlit
+{
+	 diffuse_map fluid-mud-white.png
+	 scene_blend alpha_blend
+	 alpha_rejection greater 64
+	 depth_write off
+}
+
 
 //  Weather
 //----------------------------------------------------------------------------
