@@ -316,51 +316,6 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 			pApp->SetTexWrap(it);  if (it2)  pApp->SetTexWrap(it2);
 		}
 
-		//  replace onTer alpha  ----
-		//** todo: move to json ..
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		HlmsPbsDatablock *db = static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
-		if (alpha && db)
-		{
-			const TextureGpu *diffTex = db->getDiffuseTexture(),
-				*normTex = db->getTexture(PBSM_NORMAL);
-			if (diffTex && normTex)
-			{
-				const String sAlpha = "roadAlpha2.png", sFlat = "flat_n.png",
-					sDiff = diffTex->getNameStr(), sNorm = normTex->getNameStr();
-
-				if (sDiff != sAlpha)  // once
-				{
-					//LogO("RD mtr: "+ sMtrName+" tex: "+sDiff+" norm: "+sNorm);
-					db->setTexture(PBSM_DIFFUSE, sAlpha);  // same for all
-					db->setTexture(PBSM_NORMAL, sFlat);
-
-					db->setDetailMapBlendMode(0, PBSM_BLEND_MULTIPLY);  //PBSM_BLEND_NORMAL_NON_PREMUL);
-					db->setTexture(PBSM_DETAIL_WEIGHT, "roadAlpha2y.png");
-					db->setDetailMapWeight(0, 1.0);
-					const Real v = 33.3;  //**  1.f / 0.03 = alpha tc in rebuild
-					db->setDetailMapOffsetScale(0, Vector4(0,0, 1,v));
-
-					db->setTexture(PBSM_DETAIL0, sDiff);
-					db->setTexture(PBSM_DETAIL0_NM, sNorm);
-					//todo: PBSM_SPECULAR ?.. stretched
-					// db->setFresnel(Vector3(1.f,1,1), false);
-			}	}
-		}
-		if (db)  //  set reflection, from presets  ----
-		{
-			auto s = sMtrName;
-			auto is = s.find_last_of('_');  // drop _ter
-			if (is != std::string::npos)
-				s = s.substr(0,is);
-			auto rd = pApp->scn->data->pre->GetRoad(s);
-			if (!rd)
-			{  }  // LogO("Road mat error: not in presets: "+s);
-			else
-			if (rd->reflect && pApp->mCubeReflTex)
-				db->setTexture( PBSM_REFLECTION, pApp->mCubeReflTex );  // wet, etc+
-			// it->getSubItem(0)->setDatablock( db );
-		}
 	}
 	//  save
 	sd.it = it;  sd.it2 = it2;
