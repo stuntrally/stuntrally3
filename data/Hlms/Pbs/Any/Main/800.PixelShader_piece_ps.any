@@ -308,25 +308,25 @@
 	pixelData.specular.xyz = midf3_c( material.kS.xyz );
 	@property( !metallic_workflow )
 		pixelData.F0 = float_fresnel_c( material.F0.@insertpiece( FresnelSwizzle ) );
-		@property( specular_map && !fresnel_workflow )
+		@property( specular_map && !fresnel_workflow )  // specular_ogre +
 			pixelData.specular.xyz *= SampleSpecular( textureMaps@value( specular_map_idx ),
-													  samplerState@value(specular_map_sampler),
-													  UV_SPECULAR( inPs.uv@value(uv_specular).xy ),
-													  texIndex_specularIdx ).xyz;
+										samplerState@value(specular_map_sampler),  //**  for wet roads  others default 1
+										UV_SPECULAR( inPs.uv@value(uv_specular).xy ) * float2(1.0, material.detailOffsetScale[0].w),
+										texIndex_specularIdx ).xyz;
 		@end
 		@property( specular_map && fresnel_workflow )
 			pixelData.F0 *= SampleSpecular( textureMaps@value( specular_map_idx ),
-											samplerState@value(specular_map_sampler),
-											UV_SPECULAR( inPs.uv@value(uv_specular).xy ),
-											texIndex_specularIdx ).@insertpiece( FresnelSwizzle );
+										samplerState@value(specular_map_sampler),
+										UV_SPECULAR( inPs.uv@value(uv_specular).xy ),
+										texIndex_specularIdx ).@insertpiece( FresnelSwizzle );
 		@end
-	@else
+	@else  // nope
 		midf metalness = midf_c( material.F0.x );
 		@property( specular_map )
 			metalness *= SampleSpecular( textureMaps@value( specular_map_idx ),
-										 samplerState@value(specular_map_sampler),
-										 UV_SPECULAR( inPs.uv@value(uv_specular).xy ),
-										 texIndex_specularIdx ).x;
+										samplerState@value(specular_map_sampler),
+										UV_SPECULAR( inPs.uv@value(uv_specular).xy ),
+										texIndex_specularIdx ).x;
 		@end
 		pixelData.F0 = lerp( make_float_fresnel( 0.04f ), pixelData.diffuse.xyz * _h( 3.14159f ), metalness );
 		pixelData.diffuse.xyz = pixelData.diffuse.xyz - pixelData.diffuse.xyz * metalness;
@@ -510,8 +510,8 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 
 	@foreach( detail_maps_normal, n )
 		@piece( SampleDetailMapNm@n )getTSNormal( textureMaps@value(detail_map_nm@n_idx),
-												  samplerState@value(detail_map_nm@n_sampler),
-												  UV_DETAIL_NM@n( @property( detail_triplanar )GetTriplanarUVTp( inPs.worldPos, pixelData.worldSpaceNormal )@else inPs.uv@value(uv_detail_nm@n).xy@end @insertpiece( offsetDetail@n ) ),
+												  samplerState@value(detail_map_nm@n_sampler),  //** not uv_detail_nm@n just uv_detail
+												  UV_DETAIL_NM@n( @property( detail_triplanar )GetTriplanarUVTp( inPs.worldPos, pixelData.worldSpaceNormal )@else inPs.uv@value(uv_detail@n).xy@end @insertpiece( offsetDetail@n ) ),
 												  texIndex_detailNormMapIdx@n ) * detailWeights.@insertpiece(detail_swizzle@n) @insertpiece( detail@n_nm_weight_mul )@end
 	@end
 

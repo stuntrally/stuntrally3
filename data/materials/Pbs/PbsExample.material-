@@ -1,0 +1,60 @@
+//  .material is temporary, worse
+
+//  use Recommended case, and set all its parameters
+
+hlms Recommended pbs
+{
+	diffuse   1 1 1
+	specular  1 1 1
+
+	fresnel_coeff  0.1 0.1 0.2   // reflect color
+	roughness 0.2   // minimum 0.001
+
+	diffuse_map  rock.jpg
+	normal_map   rock_norm.jpg
+	specular_map  rock_spec.jpg  // optional
+	//roughness_map  rock_rough.jpg  // very optional
+}
+
+//  or of iherited with : from other, only set changed parameters
+
+hlms Changed pbs : Recommended
+{
+	diffuse   0.5 0.5 0.5
+
+	roughness 0.1
+
+	diffuse_map  rock2.jpg
+	normal_map   rock2_norm.jpg
+}
+
+
+// See documentation of HlmsPbsDatablock for all available settings:
+// https:ogrecave.github.io/ogre-next/api/2.3/class_ogre_1_1_hlms_pbs_datablock.html#add5507880534dc20bf7dcae3435ed66a
+
+hlms All pbs
+{
+	diffuse   1 1 1  // Internally the diffuse colour is divided by PI.
+	specular  1 1 1
+	emissive  0 0 0
+
+	roughness 0.2  - minimum 0.001  avoid values extremely close to zero  (0; 1] is physically correct.
+	// metalness 0.2  - in metallic only - don't use
+
+	//  Fresnel as IOR (index of refraction), seperate per RGB component
+	// fresnel 1.33           \   - don't use
+	// fresnel 1.33 1.33 1.2   \  - don't use
+
+	//  Directly set the "F0" term, instead of using IOR
+	// fresnel_coeff   0.1            \  - don't use
+	fresnel_coeff   0.1 0.1 0.2     \ - use, in specular_*
+	// workflow specular_ogre   specular_fresnel   metallic - don't use
+
+	diffuse_map  rock.jpg
+	normal_map   rock_norm.jpg
+	specular_map  rock_spec.jpg  in specular_*
+	// metalness_map   rock_met.jpg  - in metallic only - don't use
+	roughness_map  rock_d.jpg
+
+	// detail_weight_map  detail.png
+}

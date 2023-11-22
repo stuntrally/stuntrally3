@@ -53,10 +53,9 @@
 @end
 
 @piece( Overlay )
+	//** custom alpha replace
 	//Overlay @value(t)
-	pixelData.diffuse.xyz = lerp( pixelData.diffuse.xyz,
-						  pixelData.diffuse.xyz * ( pixelData.diffuse.xyz + _h( 2.0 ) * detailCol@value(t).xyz * (_h( 1.0 ) - pixelData.diffuse.xyz) ),
-						  detailCol@value(t).a );
+	pixelData.diffuse.a *= detailCol@value(t).x;
 @end
 
 @piece( Lighten )
