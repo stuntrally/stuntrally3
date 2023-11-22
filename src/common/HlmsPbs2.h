@@ -4,6 +4,7 @@
 #include <OgreHlmsUnlit.h>
 #include <OgreArchive.h>
 #include <OgreHlmsPbsDatablock.h>
+#include <rapidjson/document.h>
 
 //  HLMS overrides for SR3, used instead of default Pbs and Unlit
 class App;
@@ -54,6 +55,10 @@ public:
 	//  save  adds our types
 	void _saveJson(const Ogre::HlmsDatablock *datablock, Ogre::String &outString,
 		Ogre::HlmsJsonListener *listener, const Ogre::String &additionalTextureExtension) const override;
+
+	void _loadJson(const rapidjson::Value &jsonValue, const Ogre::HlmsJson::NamedBlocks &blocks,
+		Ogre::HlmsDatablock *datablock, const Ogre::String &resourceGroup,
+		Ogre::HlmsJsonListener *listener, const Ogre::String &additionalTextureExtension ) const override;
 };
 
 
@@ -69,8 +74,8 @@ enum EType
 class HlmsPbsDb2 : public Ogre::HlmsPbsDatablock
 {
 	friend class HlmsPbs2;
-	App* app =0;
 public:
+	App* app =0;
 	EType eType = DB_PBS;
 
 	//  body_paint
@@ -79,6 +84,9 @@ public:
 
 	//  fluid params
 	// Ogre::Vector4 waterClr[3] = {Ogre::Vector4(0,0.5,1,0), Ogre::Vector4(0,1,0,0), Ogre::Vector4(1,0.5,0,0)};
+
+	//  cube reflect  object,road..
+	bool reflect = false;
 	
 	HlmsPbsDb2(	App* app1,
 		Ogre::IdString name, HlmsPbs2 *creator,

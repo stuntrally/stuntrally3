@@ -81,9 +81,9 @@ void HlmsPbs2::calculateHashForPreCreate(
 		// LogO("body_paint");
 		setProperty( "body_paint", 1 );
 	}*/
-	// if (mtr.find("road") != std::string::npos)
-	// if (mtr.substr(0,4) == "road")
-	// 	setProperty( "road", 1 );
+	if (mtr.find("_ter") != std::string::npos &&
+		mtr.substr(0,4) == "road")
+		setProperty( "road", 1 );  // todo: ? specular uv mul
 
 #ifdef SR_EDITOR
     //  selected glow  for ed road segs, objects
@@ -133,26 +133,28 @@ HlmsPbsDb2::~HlmsPbsDb2()
 		app->vDbRefl.erase(it);
 }
 
-//  🌟 ctor
+//  🌟 ctor	
 HlmsPbsDb2::HlmsPbsDb2( App* app1,
-		Ogre::IdString name, HlmsPbs2 *creator,
-		const Ogre::HlmsMacroblock *macro,
-		const Ogre::HlmsBlendblock *blend,
-		const Ogre::HlmsParamVec &p )
+		IdString name, HlmsPbs2 *creator,
+		const HlmsMacroblock *macro,
+		const HlmsBlendblock *blend,
+		const HlmsParamVec &p )
 	: HlmsPbsDatablock( name, creator, macro, blend, p )
 	, app(app1)
 {
-	String val;
-	//  extra params in .material or .json
+	//  extra params in .material only!  .json in load
+	String val,s;
+	s = name.getFriendlyText();  // hash, or name in Debug
 	if( Hlms::findParamInVec( p, "bump_scale", val ) )
 	{
 		Real sc = s2r(val);
 		setNormalMapWeight(sc);
-		// LogO("db2 bump_scale2: " + fToStr(getNormalMapWeight()));
+		// LogO("db2 .mat "+s+" bump_scale: " + fToStr(getNormalMapWeight()));
 	}
 	if( Hlms::findParamInVec( p, "reflect", val ) )
 	{
 		creator->app->vDbRefl.insert(this);  // save for later, mCubeReflTex doesn't exist yet
+		LogO("db2 .mat reflect " + s);
 		// setTexture( PBSM_REFLECTION, creator->app->mCubeReflTex );
 	}
 
@@ -161,7 +163,7 @@ HlmsPbsDb2::HlmsPbsDb2( App* app1,
 	if( Hlms::findParamInVec( p, "paint", val ) )
 	{
 		eType = DB_Paint;
-		// LogO("db2 ctor paint");
+		LogO("db2 .mat paint " + s);
 		//Vector3 v = StringConverter::parseVector3( val, Vector3::UNIT_SCALE );
 		// setDiffuse( v );
 	}
@@ -169,7 +171,7 @@ HlmsPbsDb2::HlmsPbsDb2( App* app1,
 	if (Hlms::findParamInVec(p, "fluid", val) || Hlms::findParamInVec(p, "choppyness_scale", val))
 	{
 		eType = DB_Fluid;
-		// LogO("db2 ctor fluid");
+		LogO("db2 .mat fluid " + s);  // old SR format params
 
 		Vector2 choppyness_scale{0,0};
 		Vector4 smallWaves_midWaves{0,0,0,0};  Vector2 bigWaves{0,0};
@@ -281,7 +283,8 @@ void HlmsPbsDb2::cloneImpl( HlmsDatablock *db ) const
 }
 
 
-//  save json
+//  .material.json
+//----------------------------------------------------------------
 class HlmsJsonPbs2 : public HlmsJsonPbs
 {
 public:
@@ -291,6 +294,30 @@ public:
 	{
 	}
 
+	//  Load .json  ---------------------------------
+	void loadMaterial( const rapidjson::Value &json, const HlmsJson::NamedBlocks &blocks,
+		HlmsDatablock *datablock, const String &resourceGroup )
+	{
+		HlmsJsonPbs::loadMaterial( json, blocks, datablock, resourceGroup );
+		HlmsPbsDb2* db2 = (HlmsPbsDb2*)datablock;
+
+		auto it = json.FindMember( "reflect" );
+		if (it != json.MemberEnd() /*&& it->value.IsString()*/)
+		{
+			// LogO("db2 json reflect +");
+			db2->reflect = 1;
+			db2->app->vDbRefl.insert(db2);  // save for later, mCubeReflTex doesn't exist yet
+		}
+		it = json.FindMember( "paint" );
+		if (it != json.MemberEnd())
+			db2->eType = DB_Paint;
+
+		it = json.FindMember( "fluid" );
+		if (it != json.MemberEnd())
+			db2->eType = DB_Fluid;
+	}
+
+	//  Save .json  ---------------------------------
     void saveMaterial( const HlmsDatablock *datablock, String &out )
     {
 		HlmsPbsDb2* db2 = (HlmsPbsDb2*)datablock;
@@ -299,27 +326,33 @@ public:
 		if (db2->eType == DB_Paint)
 	        out += ",\n\t\t\t\"paint\" : true";
 
+		//  add reflect par,  rem cube, restore
 		TextureGpu *tex = db2->getTexture( PBSM_REFLECTION ), *no = 0;
 		if (tex)
 		{	db2->setTexture( PBSM_REFLECTION, no );
 	        out += ",\n\t\t\t\"reflect\" : true";
 		}
-		// todo: env "reflect", auto add DynamicCubemap ..
-
         HlmsJsonPbs::saveMaterial( datablock, out );
-
 		if (tex)
 			db2->setTexture( PBSM_REFLECTION, tex );
     }
 };
 
 
-void HlmsPbs2::_saveJson(const Ogre::HlmsDatablock *datablock, Ogre::String &outString,
-	Ogre::HlmsJsonListener *listener, const Ogre::String &additionalTextureExtension) const
+//----------------------------------------------------------------
+void HlmsPbs2::_saveJson(const HlmsDatablock *datablock, String &outString,
+	HlmsJsonListener *listener, const String &addTexExt) const
 {
-	HlmsJsonPbs2 jsonPbs( mHlmsManager, mRenderSystem->getTextureGpuManager(), listener,
-							additionalTextureExtension );
+	HlmsJsonPbs2 jsonPbs( mHlmsManager, mRenderSystem->getTextureGpuManager(), listener, addTexExt );
 	jsonPbs.saveMaterial( datablock, outString );
+}
+
+void HlmsPbs2::_loadJson( const rapidjson::Value &jsonValue, const HlmsJson::NamedBlocks &blocks,
+	HlmsDatablock *datablock, const String &resourceGroup,
+	HlmsJsonListener *listener, const String &addTexExt) const
+{
+	HlmsJsonPbs2 jsonPbs( mHlmsManager, mRenderSystem->getTextureGpuManager(), listener, addTexExt );
+	jsonPbs.loadMaterial( jsonValue, blocks, datablock, resourceGroup );
 }
 
 
