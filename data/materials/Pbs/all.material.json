@@ -41488,38 +41488,7 @@
 			}
 		},
 
-		"sky/belfast_sunset01" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "belfast_sunset01.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
+		
 		"sky/big_clouds2_gen" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -42096,70 +42065,6 @@
 			}
 		},
 
-		"sky/kloppenheim02_a" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "kloppenheim02_a.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
-		"sky/kloppenheim02_b" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "kloppenheim02_b.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
 		"sky/light_blue" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -42352,230 +42257,7 @@
 			}
 		},
 
-		"sky/mud_road01" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "mud_road01.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
-		"sky/mud_road02" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "mud_road02.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
-		"sky/newsky011" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "DaySkyHDRI011B_8K-HDR.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
-		"sky/newsky020A" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "DaySkyHDRI020B_8K-HDR.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
-		"sky/newsky020B" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "DaySkyHDRI020B_8K-HDR_2.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
-		"sky/newsky026A" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "DaySkyHDRI026B_8K-HDR.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
-		"sky/newsky026B" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "DaySkyHDRI026B_8K-HDR_2.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
+		
 		"sky/night_blue" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -42636,134 +42318,6 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "gen-offworld.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
-		"sky/sky_anomaly_01" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "sky_anomaly_01.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
-		"sky/sky_anomaly_02" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "sky_anomaly_02.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
-		"sky/sky_anomaly_03" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "sky_anomaly_03.jpg",
-				"sampler" : "Sampler_10"
-			}
-		},
-
-		"sky/space_nebula_01" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "space_nebula_01.jpg",
 				"sampler" : "Sampler_10"
 			}
 		},
@@ -42988,6 +42542,1255 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "sky_white2.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+				"sky/clouds_01_blurry" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "clouds_01_blurry.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/cloudy_01" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "cloudy_01.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/cloudy_02_toxic" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "cloudy_02_toxic.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/cloudy_03_grey" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "cloudy_03_grey.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/cloudy_03_dark" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "cloudy_03_dark.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/day_clouds_01_thin" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "day_clouds_01_thin.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/day_clouds_02" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "day_clouds_02.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/day_clouds_02_blue" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "day_clouds_02_blue.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/day_clouds_03_grey" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "day_clouds_03_grey.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/day_clouds_04_blue" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "day_clouds_04_blue.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/day_clouds_05_bright" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "day_clouds_05_bright.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/dusk_stormy_01_blue" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "dusk_stormy_01_blue.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/dusk_stormy_01_brown" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "dusk_stormy_01_brown.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/dusk_stormy_01_sur" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "dusk_stormy_01_sur.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/dusk_stormy_02_grey" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "dusk_stormy_02_grey.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/dusk_stormy_02_brown" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "dusk_stormy_02_brown.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/dusk_stormy_02_dark" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "dusk_stormy_02_dark.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/foggy_01" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "foggy_01.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/foggy_01_brown" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "foggy_01_brown.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/foggy_01_green" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "foggy_01_green.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/foggy_02_grey" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "foggy_02_grey.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/foggy_02_brown" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "foggy_02_brown.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/night_01_clear" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "night_01_clear.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/night_01_clear_blue" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "night_01_clear_blue.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/overcast_01_blue" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "overcast_01_blue.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/overcast_01_grey" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "overcast_01_grey.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/overcast_02_green" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "overcast_02_green.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		
+		"sky/overcast_02_purple" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "overcast_02_purple.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/sky_clear_01" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "sky_clear_01.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/sunset_01" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "sunset_01.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/sunset_01_bright" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "sunset_01_bright.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/sunset_02_clouds" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "sunset_02_clouds.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/sunset_03_rays" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "sunset_03_rays.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/anomaly_01" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "anomaly_01.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/anomaly_02" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "anomaly_02.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/anomaly_03" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "anomaly_03.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/space_nebula_01" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "space_nebula_01.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/space_nebula_02_red" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "space_nebula_02_red.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"sky/space_nebula_02_red2" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "space_nebula_02_red2.jpg",
 				"sampler" : "Sampler_10"
 			}
 		},
