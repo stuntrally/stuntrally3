@@ -20407,6 +20407,7 @@
 		{
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
+			"reflect" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
@@ -20419,12 +20420,13 @@
 			"specular" :
 			{
 				"value" : [0.6, 0.6, 0.6],
+				"texture" : "garbage_bin_green_spec.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : 0.1,
-				"mode" : "coeff"
+				"value" : [1, 1, 1],
+				"mode" : "coloured"
 			},
 			"normal" :
 			{
@@ -20434,7 +20436,9 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.13
+				"value" : 0.3,
+				"texture" : "garbage_bin_rough.jpg",
+				"sampler" : "Sampler_10"
 			}
 		},
 
@@ -20442,8 +20446,8 @@
 		{
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
 			"reflect" : true,
+			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
@@ -20454,7 +20458,7 @@
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1],
+				"value" : [0.6, 0.6, 0.6],
 				"texture" : "garbage_bin_green_spec.jpg",
 				"sampler" : "Sampler_10"
 			},
