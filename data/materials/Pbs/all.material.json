@@ -2336,27 +2336,27 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.060000002, 0.24000001, 0.54],
+				"value" : [0.016, 0.04, 0.15],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.4, 0.4, 0.4]
+				"value" : [0.01, 0.04, 0.1]
 			},
 			"fresnel" :
 			{
-				"value" : [0.060000002, 0.09, 0.27],
+				"value" : [0.03, 0.09, 0.12],
 				"mode" : "coloured"
 			},
 			"normal" :
 			{
-				"value" : 1,
+				"value" : 0.676,
 				"texture" : "water_nh.png",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 0.2
+				"value" : 0.22
 			},
 			"detail_diffuse0" :
 			{
@@ -5801,12 +5801,12 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.456, 0.59400004, 0.57600003],
+				"value" : [0.456, 0.594, 0.576],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.036000002, 0.080000006, 0.080000006]
+				"value" : [0.036, 0.08, 0.08]
 			},
 			"fresnel" :
 			{
@@ -5861,7 +5861,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.53400004, 0.53400004, 0.59400004],
+				"value" : [0.534, 0.534, 0.594],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
@@ -7906,6 +7906,7 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -8156,6 +8157,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -8165,27 +8168,27 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.060000002, 0.24000001, 0.54],
+				"value" : [0.012, 0.053, 0.16],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.4, 0.4, 0.4]
+				"value" : [0.033, 0.078, 0.15]
 			},
 			"fresnel" :
 			{
-				"value" : [0.060000002, 0.09, 0.27],
+				"value" : [0.03, 0.09, 0.15],
 				"mode" : "coloured"
 			},
 			"normal" :
 			{
-				"value" : 1,
+				"value" : 0.676,
 				"texture" : "water_nh.png",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 0.2
+				"value" : 0.22
 			},
 			"detail_diffuse0" :
 			{
@@ -8201,7 +8204,7 @@
 			"detail_diffuse2" :
 			{
 				"value" : 1,
-				"offset" : [0.05, 0.06],
+				"offset" : [0.45, 0.06],
 				"scale" : [10, 2]
 			},
 			"detail_diffuse3" :
@@ -8216,6 +8219,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -8281,26 +8286,60 @@
 		"River_Green_slime" :
 		{
 			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
+			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 1,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
 			"diffuse" :
 			{
-				"value" : [1, 1, 1],
+				"value" : [0.060000002, 0.42, 0.3],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1]
+				"value" : [0.4, 0.4, 0.4]
 			},
 			"fresnel" :
 			{
-				"value" : 0.818,
-				"mode" : "coeff"
+				"value" : [0.15, 0.29400003, 0.030000001],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "water_nh.png",
+				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 1
+				"value" : 0.2
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"offset" : [0.25, 0.3],
+				"scale" : [0.5, 0.15]
+			},
+			"detail_diffuse1" :
+			{
+				"value" : 1,
+				"offset" : [0.5, 0.5]
+			},
+			"detail_diffuse2" :
+			{
+				"value" : 1,
+				"offset" : [0.38, 0.08],
+				"scale" : [24, 2]
+			},
+			"detail_diffuse3" :
+			{
+				"value" : 1,
+				"offset" : [12, 0.4]
 			}
 		},
 
@@ -8309,6 +8348,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -8376,6 +8417,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -8436,6 +8479,7 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -8501,26 +8545,60 @@
 		"River_LavaHot" :
 		{
 			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
+			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 1,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
 			"diffuse" :
 			{
-				"value" : [1, 1, 1],
+				"value" : [0, 0, 0],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1]
+				"value" : [0.44000003, 0.48000002, 0.176]
 			},
 			"fresnel" :
 			{
-				"value" : 0.818,
-				"mode" : "coeff"
+				"value" : [0.43500003, 0.43800002, 0.14400001],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "water_nm.png",
+				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 1
+				"value" : 0.2
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"offset" : [0.15, 0.1],
+				"scale" : [0.22, 0.12]
+			},
+			"detail_diffuse1" :
+			{
+				"value" : 1,
+				"offset" : [0.553, 0.435]
+			},
+			"detail_diffuse2" :
+			{
+				"value" : 1,
+				"offset" : [0.478, 0.1],
+				"scale" : [33, 2.5]
+			},
+			"detail_diffuse3" :
+			{
+				"value" : 1,
+				"offset" : [4.86, 1.03]
 			}
 		},
 
@@ -8655,26 +8733,61 @@
 		"River_Oil" :
 		{
 			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
+			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 1,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
 			"diffuse" :
 			{
-				"value" : [1, 1, 1],
+				"value" : [0.078, 0.078, 0.114],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1]
+				"value" : [0.13200001, 0.14, 0.148]
 			},
 			"fresnel" :
 			{
-				"value" : 0.818,
-				"mode" : "coeff"
+				"value" : [0.030000001, 0.060000002, 0.09],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "water_nh.png",
+				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 1
+				"value" : 0.2
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"offset" : [0.025, 0.15],
+				"scale" : [0.06, 0.1]
+			},
+			"detail_diffuse1" :
+			{
+				"value" : 1,
+				"offset" : [0.68, 0.67]
+			},
+			"detail_diffuse2" :
+			{
+				"value" : 1,
+				"offset" : [0.03, 0.03],
+				"scale" : [7, 1.4]
+			},
+			"detail_diffuse3" :
+			{
+				"value" : 1,
+				"offset" : [16, 0.3]
 			}
 		},
 
@@ -8683,6 +8796,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -8930,10 +9045,11 @@
 
 		"River_blue" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -9004,6 +9120,7 @@
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -9068,6 +9185,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -9130,13 +9249,75 @@
 			}
 		},
 
+		"River_clear_white" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.02,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.456, 0.53400004, 0.59400004],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.39200002, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : [0.27300003, 0.279, 0.282],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "water_nm.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.23
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"offset" : [0.15, 0.1],
+				"scale" : [0.3, 0.15]
+			},
+			"detail_diffuse1" :
+			{
+				"value" : 1,
+				"offset" : [0.3, 0.3]
+			},
+			"detail_diffuse2" :
+			{
+				"value" : 1,
+				"offset" : [1, 0.15],
+				"scale" : [25, 1.5]
+			},
+			"detail_diffuse3" :
+			{
+				"value" : 1,
+				"offset" : [6, 0.3]
+			}
+		},
+
 		"River_cyan" :
 		{
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
-			"fluid" : true,
 			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -9204,6 +9385,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -9264,6 +9447,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -9329,26 +9514,60 @@
 		"River_liquid_gas" :
 		{
 			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
+			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.016,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
 			"diffuse" :
 			{
-				"value" : [1, 1, 1],
+				"value" : [0.456, 0.594, 0.576],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1]
+				"value" : [0.036, 0.08, 0.08]
 			},
 			"fresnel" :
 			{
-				"value" : 0.818,
-				"mode" : "coeff"
+				"value" : [0.117, 0.18, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "water_nm.png",
+				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 1
+				"value" : 0.2
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"offset" : [0.025, 0.15],
+				"scale" : [0.06, 0.1]
+			},
+			"detail_diffuse1" :
+			{
+				"value" : 1,
+				"offset" : [0.68, 0.67]
+			},
+			"detail_diffuse2" :
+			{
+				"value" : 1,
+				"offset" : [0.03, 0.025],
+				"scale" : [5, 1.2]
+			},
+			"detail_diffuse3" :
+			{
+				"value" : 1,
+				"offset" : [16, 0.3]
 			}
 		},
 
@@ -9357,6 +9576,7 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
@@ -9383,6 +9603,7 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
@@ -9409,6 +9630,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -9476,6 +9699,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -9544,6 +9769,7 @@
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -9611,6 +9837,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -9678,6 +9906,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
@@ -9704,6 +9934,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
@@ -9730,6 +9962,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -9791,6 +10025,7 @@
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
+			"fluid" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
@@ -9849,73 +10084,6 @@
 			{
 				"value" : 1,
 				"offset" : [6, 0.9],
-				"sampler" : "Sampler_10"
-			}
-		},
-
-		"River_white" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_2",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"transparency" :
-			{
-				"value" : 0.76,
-				"mode" : "Transparent",
-				"use_alpha_from_textures" : true
-			},
-			"diffuse" :
-			{
-				"value" : [0.29404694, 0.39618725, 0.42457193],
-				"background" : [1, 1, 1, 1],
-				"sampler" : "Sampler_10"
-			},
-			"specular" :
-			{
-				"value" : [0.39200002, 0.4, 0.4],
-				"sampler" : "Sampler_10"
-			},
-			"fresnel" :
-			{
-				"value" : [0.27300003, 0.279, 0.282],
-				"mode" : "coloured"
-			},
-			"normal" :
-			{
-				"value" : 1,
-				"texture" : "water_nm.png",
-				"sampler" : "Sampler_10"
-			},
-			"roughness" :
-			{
-				"value" : 0.2,
-				"sampler" : "Sampler_10"
-			},
-			"detail_diffuse0" :
-			{
-				"value" : 1,
-				"offset" : [0.15, 0.1],
-				"scale" : [0.3, 0.15],
-				"sampler" : "Sampler_10"
-			},
-			"detail_diffuse1" :
-			{
-				"value" : 1,
-				"offset" : [0.3, 0.3],
-				"sampler" : "Sampler_10"
-			},
-			"detail_diffuse2" :
-			{
-				"value" : 1,
-				"offset" : [1, 0.15],
-				"scale" : [25, 1.5],
-				"sampler" : "Sampler_10"
-			},
-			"detail_diffuse3" :
-			{
-				"value" : 1,
-				"offset" : [6, 0.8],
 				"sampler" : "Sampler_10"
 			}
 		},
@@ -16177,7 +16345,7 @@
 			}
 		},
 
-		"Water_white" :
+		"River_white" :
 		{
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_2",
