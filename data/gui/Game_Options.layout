@@ -1286,7 +1286,7 @@
 							<Property key="TextColour" value="0.6 0.75 1.0"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="32 230 144 24">
+						<!-- <Widget type="TextBox" skin="TextBox" position="32 230 144 24">
 							<Property key="Caption" value="#{Ambience}"/>
 							<Property key="TextColour" value="0.6 1.0 0.5"/>
 						</Widget>
@@ -1295,7 +1295,7 @@
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="180 230 60 24" name="VolAmbientVal">
 							<Property key="TextColour" value="0.6 1.0 0.5"/>
-						</Widget>
+						</Widget> -->
 
 						<Widget type="Button" skin="CheckBox" position="32 256 308 24" name="ChkReverb">
 							<Property key="Caption" value="#{Reverb} **"/>
