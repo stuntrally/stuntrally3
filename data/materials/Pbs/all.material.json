@@ -6,11 +6,11 @@
 			"min" : "anisotropic",
 			"mag" : "anisotropic",
 			"mip" : "linear",
-			"u" : "mirror",
-			"v" : "mirror",
-			"w" : "mirror",
+			"u" : "wrap",
+			"v" : "wrap",
+			"w" : "wrap",
 			"miplodbias" : 0,
-			"max_anisotropic" : 16,
+			"max_anisotropic" : 8,
 			"compare_function" : "disabled",
 			"border" :[1, 1, 1, 1],
 			"min_lod" : -3.4028235e+38,
@@ -563,7 +563,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.029999997, 0.029999997, 0.029999997],
+				"value" : [0.0297, 0.0297, 0.0297],
 				"background" : [1, 1, 1, 1],
 				"texture" : "3B_wheel.jpg",
 				"sampler" : "Sampler_10"
@@ -777,7 +777,7 @@
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1]
+				"value" : [0.5, 0.5, 0.5]
 			},
 			"fresnel" :
 			{
@@ -804,7 +804,7 @@
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1]
+				"value" : [0.5, 0.5, 0.5]
 			},
 			"fresnel" :
 			{
@@ -848,7 +848,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.03
+				"value" : 0.1
 			}
 		},
 
@@ -868,7 +868,7 @@
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1]
+				"value" : [0.5, 0.5, 0.5]
 			},
 			"fresnel" :
 			{
@@ -883,7 +883,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.03
+				"value" : 0.1
 			}
 		},
 
@@ -963,27 +963,27 @@
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
-				"value" : 0.53,
+				"value" : 0.68,
 				"mode" : "Transparent",
 				"use_alpha_from_textures" : true
 			},
 			"diffuse" :
 			{
-				"value" : [0.36, 0.44400004, 0.312],
+				"value" : [0.36, 0.444, 0.312],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.13200001, 0.152, 0.216]
+				"value" : [0.132, 0.152, 0.216]
 			},
 			"fresnel" :
 			{
-				"value" : [0.21000001, 0.282, 0.156],
+				"value" : [0.21, 0.282, 0.156],
 				"mode" : "coloured"
 			},
 			"normal" :
 			{
-				"value" : 1,
+				"value" : 0.885,
 				"texture" : "water_nm.png",
 				"sampler" : "Sampler_10"
 			},
@@ -1030,12 +1030,12 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.48000002, 0.48000002, 0.36],
+				"value" : [0.48, 0.48, 0.36],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.24000001, 0.2, 0.120000005]
+				"value" : [0.24, 0.2, 0.12]
 			},
 			"fresnel" :
 			{
@@ -1091,7 +1091,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.54, 0.24000001, 0.3],
+				"value" : [0.54, 0.24, 0.3],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
@@ -1152,16 +1152,16 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.18, 0.36, 0.90000004],
+				"value" : [0.18, 0.36, 0.900],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0, 0.16000001, 0.080000006]
+				"value" : [0, 0.16, 0.080]
 			},
 			"fresnel" :
 			{
-				"value" : [0.030000001, 0.36, 0.060000002],
+				"value" : [0.030, 0.36, 0.0600],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -2565,7 +2565,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.9000001, 1, 1],
+				"value" : [1.9, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crate_anomaly.jpg",
 				"sampler" : "Sampler_10"
@@ -4142,7 +4142,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.060000002, 0.42, 0.3],
+				"value" : [0.0600, 0.42, 0.3],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
@@ -4151,7 +4151,7 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.15, 0.29400003, 0.030000001],
+				"value" : [0.15, 0.294, 0.030],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -5156,12 +5156,12 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.582, 0.59400004, 0.6],
+				"value" : [0.582, 0.594, 0.6],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.312, 0.32000002]
+				"value" : [0.3, 0.312, 0.320]
 			},
 			"fresnel" :
 			{
@@ -5678,11 +5678,11 @@
 			},
 			"specular" :
 			{
-				"value" : [0.44000003, 0.48000002, 0.176]
+				"value" : [0.44, 0.480, 0.176]
 			},
 			"fresnel" :
 			{
-				"value" : [0.43500003, 0.43800002, 0.14400001],
+				"value" : [0.435, 0.438, 0.144],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -5866,7 +5866,7 @@
 			},
 			"specular" :
 			{
-				"value" : [0.036000002, 0.080000006, 0.080000006]
+				"value" : [0.0360, 0.080, 0.080]
 			},
 			"fresnel" :
 			{
@@ -5921,18 +5921,18 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.53400004, 0.53400004, 0.59400004],
+				"value" : [0.534, 0.534, 0.594],
 				"background" : [1, 1, 1, 1],
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.036000002, 0.080000006, 0.080000006],
+				"value" : [0.0360, 0.080, 0.080],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.117, 0.18, 1.0500001],
+				"value" : [0.117, 0.18, 1.05],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -6333,12 +6333,12 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.39000002, 0.42, 0.39600006],
+				"value" : [0.390, 0.42, 0.396],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.32000002, 0.336, 0.3]
+				"value" : [0.320, 0.336, 0.3]
 			},
 			"fresnel" :
 			{
@@ -6399,7 +6399,7 @@
 			},
 			"specular" :
 			{
-				"value" : [0.103999995, 0.088, 0.056],
+				"value" : [0.1035, 0.088, 0.056],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
@@ -6528,12 +6528,12 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.39000002, 0.42, 0.39600006],
+				"value" : [0.390, 0.42, 0.396],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.32000002, 0.336, 0.3]
+				"value" : [0.320, 0.336, 0.3]
 			},
 			"fresnel" :
 			{
@@ -6588,7 +6588,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.063847, 0.0429814, 0.014999999],
+				"value" : [0.063847, 0.0429814, 0.0149],
 				"background" : [1, 1, 1, 1],
 				"sampler" : "Sampler_10"
 			},
@@ -6795,7 +6795,7 @@
 			},
 			"specular" :
 			{
-				"value" : [0.11307034, 0.13200001, 0.0827156],
+				"value" : [0.11307034, 0.132, 0.0827156],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
@@ -6857,12 +6857,12 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.39000002, 0.42, 0.39600006],
+				"value" : [0.390, 0.42, 0.396],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.32000002, 0.336, 0.3]
+				"value" : [0.320, 0.336, 0.3]
 			},
 			"fresnel" :
 			{
@@ -6918,12 +6918,12 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.39000002, 0.42, 0.39600006],
+				"value" : [0.390, 0.42, 0.396],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.32000002, 0.336, 0.3]
+				"value" : [0.320, 0.336, 0.3]
 			},
 			"fresnel" :
 			{
@@ -7758,11 +7758,11 @@
 			},
 			"specular" :
 			{
-				"value" : [0.13200001, 0.14, 0.148]
+				"value" : [0.132, 0.14, 0.148]
 			},
 			"fresnel" :
 			{
-				"value" : [0.030000001, 0.060000002, 0.09],
+				"value" : [0.030, 0.0600, 0.09],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -7984,12 +7984,12 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.48000002, 0.48000002, 0.36],
+				"value" : [0.480, 0.480, 0.36],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.24000001, 0.2, 0.120000005]
+				"value" : [0.24, 0.2, 0.120]
 			},
 			"fresnel" :
 			{
@@ -8045,7 +8045,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.54, 0.24000001, 0.3],
+				"value" : [0.54, 0.24, 0.3],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
@@ -8106,16 +8106,16 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.18, 0.36, 0.90000004],
+				"value" : [0.18, 0.36, 0.900],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0, 0.16000001, 0.080000006]
+				"value" : [0, 0.16, 0.080]
 			},
 			"fresnel" :
 			{
-				"value" : [0.030000001, 0.36, 0.060000002],
+				"value" : [0.030, 0.36, 0.0600],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -8297,7 +8297,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.060000002, 0.42, 0.3],
+				"value" : [0.0600, 0.42, 0.3],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
@@ -8306,7 +8306,7 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.15, 0.29400003, 0.030000001],
+				"value" : [0.15, 0.294, 0.030],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -8428,12 +8428,12 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.582, 0.59400004, 0.6],
+				"value" : [0.582, 0.594, 0.6],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.312, 0.32000002]
+				"value" : [0.3, 0.312, 0.320]
 			},
 			"fresnel" :
 			{
@@ -8561,11 +8561,11 @@
 			},
 			"specular" :
 			{
-				"value" : [0.44000003, 0.48000002, 0.176]
+				"value" : [0.44, 0.480, 0.176]
 			},
 			"fresnel" :
 			{
-				"value" : [0.43500003, 0.43800002, 0.14400001],
+				"value" : [0.435, 0.438, 0.144],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -8684,12 +8684,12 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.39000002, 0.42, 0.39600006],
+				"value" : [0.390, 0.42, 0.396],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.32000002, 0.336, 0.3]
+				"value" : [0.320, 0.336, 0.3]
 			},
 			"fresnel" :
 			{
@@ -8750,11 +8750,11 @@
 			},
 			"specular" :
 			{
-				"value" : [0.13200001, 0.14, 0.148]
+				"value" : [0.132, 0.14, 0.148]
 			},
 			"fresnel" :
 			{
-				"value" : [0.030000001, 0.060000002, 0.09],
+				"value" : [0.030, 0.0600, 0.09],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -8884,7 +8884,7 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.27600002, 0.3, 0.3],
+				"value" : [0.276, 0.3, 0.3],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -8936,16 +8936,16 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.456, 0.53400004, 0.59400004],
+				"value" : [0.456, 0.534, 0.594],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.52, 0.24000001, 0.040000003]
+				"value" : [0.52, 0.24, 0.040]
 			},
 			"fresnel" :
 			{
-				"value" : [0.08400001, 0.027000003, 0.291],
+				"value" : [0.084, 0.027, 0.291],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -9006,7 +9006,7 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.306, 0.120000005, 0.15],
+				"value" : [0.306, 0.120, 0.15],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -9070,7 +9070,7 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.27600002, 0.3, 0.3],
+				"value" : [0.276, 0.3, 0.3],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -9265,16 +9265,16 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.456, 0.53400004, 0.59400004],
+				"value" : [0.456, 0.534, 0.594],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.39200002, 0.4, 0.4]
+				"value" : [0.392, 0.4, 0.4]
 			},
 			"fresnel" :
 			{
-				"value" : [0.27300003, 0.279, 0.282],
+				"value" : [0.273, 0.279, 0.282],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -9396,16 +9396,16 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.24000001, 0.39000002, 0.48000002],
+				"value" : [0.24, 0.390, 0.480],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.4, 0.32000002, 0.120000005]
+				"value" : [0.4, 0.320, 0.120]
 			},
 			"fresnel" :
 			{
-				"value" : [0.19800001, 0.177, 0.069000006],
+				"value" : [0.198, 0.177, 0.069],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -9652,7 +9652,7 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.32400003, 0.32400003, 0.30900002],
+				"value" : [0.324, 0.324, 0.309],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -9785,12 +9785,12 @@
 			},
 			"specular" :
 			{
-				"value" : [0.26400003, 0.312, 0.352],
+				"value" : [0.264, 0.312, 0.352],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.16200002, 0.21600002, 0.177],
+				"value" : [0.162, 0.216, 0.177],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -9854,12 +9854,12 @@
 			},
 			"specular" :
 			{
-				"value" : [0.32000002, 0.32000002, 0.35999998],
+				"value" : [0.322, 0.32, 0.358],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.25500003, 0.27, 0.234],
+				"value" : [0.255, 0.27, 0.234],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -9973,16 +9973,16 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.51000005, 0.53400004, 0.59400004],
+				"value" : [0.51, 0.534, 0.594],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.4, 0.336, 0.120000005]
+				"value" : [0.4, 0.336, 0.120]
 			},
 			"fresnel" :
 			{
-				"value" : [0.3, 0.22500001, 0.171],
+				"value" : [0.3, 0.225, 0.171],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -14514,7 +14514,7 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.27600002, 0.3, 0.3],
+				"value" : [0.276, 0.3, 0.3],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -14710,7 +14710,7 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.27600002, 0.35, 0.44297296],
+				"value" : [0.276, 0.35, 0.44297296],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -14834,16 +14834,16 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.51600003, 0.59400004, 0.51600003],
+				"value" : [0.516, 0.594, 0.516],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.39200002, 0.4, 0.4]
+				"value" : [0.392, 0.4, 0.4]
 			},
 			"fresnel" :
 			{
-				"value" : [0.22200002, 0.26700002, 0.27300003],
+				"value" : [0.222, 0.267, 0.273],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -14900,11 +14900,11 @@
 			},
 			"specular" :
 			{
-				"value" : [0.32000002, 0.32000002, 0.35999998]
+				"value" : [0.322, 0.322, 0.358]
 			},
 			"fresnel" :
 			{
-				"value" : [0.25500003, 0.27, 0.234],
+				"value" : [0.255, 0.27, 0.234],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -14956,16 +14956,16 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.51000005, 0.53400004, 0.59400004],
+				"value" : [0.51, 0.534, 0.594],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.4, 0.336, 0.120000005]
+				"value" : [0.4, 0.336, 0.120]
 			},
 			"fresnel" :
 			{
-				"value" : [0.3, 0.22500001, 0.171],
+				"value" : [0.3, 0.225, 0.171],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -15017,16 +15017,16 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.456, 0.53400004, 0.59400004],
+				"value" : [0.456, 0.534, 0.594],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.39200002, 0.4, 0.4]
+				"value" : [0.392, 0.4, 0.4]
 			},
 			"fresnel" :
 			{
-				"value" : [0.27300003, 0.279, 0.282],
+				"value" : [0.273, 0.279, 0.282],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -15144,16 +15144,16 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.24000001, 0.39000002, 0.48000002],
+				"value" : [0.24, 0.39, 0.48],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.4, 0.32000002, 0.120000005]
+				"value" : [0.4, 0.32, 0.120]
 			},
 			"fresnel" :
 			{
-				"value" : [0.19800001, 0.177, 0.069000006],
+				"value" : [0.198, 0.177, 0.069],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -15339,7 +15339,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.504, 0.528, 0.58800006],
+				"value" : [0.504, 0.528, 0.588],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
@@ -15400,7 +15400,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.504, 0.528, 0.58800006],
+				"value" : [0.504, 0.528, 0.588],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
@@ -15471,7 +15471,7 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.32400003, 0.32400003, 0.30900002],
+				"value" : [0.324, 0.324, 0.309],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -15528,7 +15528,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.48000002, 0.6, 0.36],
+				"value" : [0.482, 0.6, 0.36],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
@@ -15537,7 +15537,7 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.32400003, 0.32400003, 0.30900002],
+				"value" : [0.324, 0.324, 0.309],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -15728,12 +15728,12 @@
 			},
 			"specular" :
 			{
-				"value" : [0.26400003, 0.312, 0.352],
+				"value" : [0.264, 0.312, 0.352],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.16200002, 0.21600002, 0.177],
+				"value" : [0.162, 0.216, 0.177],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -15789,13 +15789,13 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.52471817, 0.44562283, 0.51600003],
+				"value" : [0.52471817, 0.44562283, 0.516],
 				"background" : [1, 1, 1, 1],
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.39200002, 0.21704686, 0.4],
+				"value" : [0.392, 0.21704686, 0.4],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
@@ -15862,12 +15862,12 @@
 			},
 			"specular" :
 			{
-				"value" : [0.32000002, 0.32000002, 0.35999998],
+				"value" : [0.322, 0.322, 0.358],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.25500003, 0.27, 0.234],
+				"value" : [0.255, 0.27, 0.234],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -15923,7 +15923,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.39600006, 0.59400004, 0.354],
+				"value" : [0.396, 0.594, 0.354],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
@@ -15932,7 +15932,7 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.24300002, 0.279, 0.44700003],
+				"value" : [0.243, 0.279, 0.447],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -15983,16 +15983,16 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.456, 0.53400004, 0.59400004],
+				"value" : [0.456, 0.534, 0.594],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.52, 0.040000003, 0.040000003]
+				"value" : [0.52, 0.040, 0.040]
 			},
 			"fresnel" :
 			{
-				"value" : [0.29400003, 0.027000003, 0.291],
+				"value" : [0.294, 0.027, 0.291],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -16044,16 +16044,16 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.456, 0.53400004, 0.59400004],
+				"value" : [0.456, 0.534, 0.594],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.52, 0.24000001, 0.040000003]
+				"value" : [0.52, 0.24, 0.040]
 			},
 			"fresnel" :
 			{
-				"value" : [0.08400001, 0.027000003, 0.291],
+				"value" : [0.084, 0.027, 0.291],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -16114,7 +16114,7 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.306, 0.120000005, 0.15],
+				"value" : [0.306, 0.120, 0.15],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -16165,16 +16165,16 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.51000005, 0.53400004, 0.59400004],
+				"value" : [0.51, 0.534, 0.594],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.4, 0.336, 0.120000005]
+				"value" : [0.4, 0.336, 0.120]
 			},
 			"fresnel" :
 			{
-				"value" : [0.3, 0.22500001, 0.171],
+				"value" : [0.3, 0.225, 0.171],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -16298,12 +16298,12 @@
 			},
 			"specular" :
 			{
-				"value" : [0.39200002, 0.41676587, 0.43505496],
+				"value" : [0.392, 0.41676587, 0.43505496],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.27300003, 0.28257647, 0.2963592],
+				"value" : [0.273, 0.28257647, 0.2963592],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -16366,12 +16366,12 @@
 			},
 			"specular" :
 			{
-				"value" : [0.39200002, 0.41676587, 0.43505496],
+				"value" : [0.392, 0.41676587, 0.43505496],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.27300003, 0.28257647, 0.2963592],
+				"value" : [0.273, 0.28257647, 0.2963592],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -17409,7 +17409,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.5199999, 1.3, 0.94000006],
+				"value" : [1.51, 1.3, 0.94],
 				"background" : [1, 1, 1, 1],
 				"texture" : "ancient_ruins.jpg",
 				"sampler" : "Sampler_10"
@@ -17591,7 +17591,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.74999994, 1.65],
+				"value" : [0.744, 0.744, 1.65],
 				"background" : [1, 1, 1, 1],
 				"texture" : "obstaclesAnomaly_d.jpg",
 				"sampler" : "Sampler_10"
@@ -18963,7 +18963,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.6, 0.3, 0.74999994],
+				"value" : [1.6, 0.3, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal3.png",
 				"sampler" : "Sampler_10"
@@ -19184,7 +19184,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.85, 0.8, 0.95000005],
+				"value" : [0.85, 0.8, 0.95],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_form2_cyan.jpg",
 				"sampler" : "Sampler_10"
@@ -19529,7 +19529,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.4, 0.75999993, 0.9599999],
+				"value" : [1.4, 0.753, 0.95],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_form1_pink.jpg",
 				"sampler" : "Sampler_10"
@@ -20485,7 +20485,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.7, 0.7, 0.74999994],
+				"value" : [0.7, 0.7, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "gas_tank.jpg",
 				"sampler" : "Sampler_10"
@@ -22225,7 +22225,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.4999999, 1.4999999, 1.4],
+				"value" : [1.49, 1.49, 1.4],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAnomaly04c.png",
 				"sampler" : "Sampler_10"
@@ -23047,7 +23047,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.74999994, 0.74999994],
+				"value" : [0.744, 0.744, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "han_struct_02.png",
 				"sampler" : "Sampler_10"
@@ -23610,7 +23610,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.74999994, 0.74999994],
+				"value" : [0.744, 0.744, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "maur_struct_b.png",
 				"sampler" : "Sampler_10"
@@ -23644,7 +23644,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.74999994, 0.74999994],
+				"value" : [0.744, 0.744, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "maur_struct_a.png",
 				"sampler" : "Sampler_10"
@@ -23678,7 +23678,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.74999994, 0.74999994],
+				"value" : [0.744, 0.744, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "maur_boat.png",
 				"sampler" : "Sampler_10"
@@ -23712,7 +23712,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.74999994, 0.74999994],
+				"value" : [0.744, 0.744, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "maur_ship.png",
 				"sampler" : "Sampler_10"
@@ -24470,7 +24470,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.74999994, 0.74999994],
+				"value" : [0.744, 0.744, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "obstaclesAnomaly_d.jpg",
 				"sampler" : "Sampler_10"
@@ -24864,7 +24864,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.4999999, 1.4999999, 1.4999999],
+				"value" : [1.49, 1.49, 1.49],
 				"background" : [1, 1, 1, 1],
 				"texture" : "palm_plant.png",
 				"sampler" : "Sampler_10"
@@ -24900,7 +24900,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.74999994, 0.7],
+				"value" : [0.744, 0.744, 0.7],
 				"background" : [1, 1, 1, 1],
 				"texture" : "pers_struct.dds",
 				"sampler" : "Sampler_10"
@@ -25440,7 +25440,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.1, 0.74999994, 2.75],
+				"value" : [0.1, 0.744, 2.75],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAsphalt_spec.jpg",
 				"sampler" : "Sampler_10"
@@ -25554,7 +25554,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.1, 0.74999994, 2.75],
+				"value" : [0.1, 0.744, 2.75],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAsphaltAnomalyStreaks.png",
 				"sampler" : "Sampler_10"
@@ -25773,7 +25773,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.75999993, 0.82, 0.9],
+				"value" : [0.753, 0.82, 0.9],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadGlass_alien.png",
 				"sampler" : "Sampler_10"
@@ -25814,7 +25814,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.75999993, 0.82, 0.9],
+				"value" : [0.753, 0.82, 0.9],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadGlass_alien.png",
 				"sampler" : "Sampler_10"
@@ -28362,7 +28362,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [1.4999999, 2, 2.9999998],
+				"value" : [1.49, 2, 2.98],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadGlassC_dirt2.png",
 				"sampler" : "Sampler_10"
@@ -28405,7 +28405,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [1.4999999, 2, 2.9999998],
+				"value" : [1.49, 2, 2.98],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadGlassC_dirt2.png",
 				"sampler" : "Sampler_10"
@@ -28448,7 +28448,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [1.4999999, 2, 2.9999998],
+				"value" : [1.49, 2, 2.98],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadGlassC_dirt2.png",
 				"sampler" : "Sampler_10"
@@ -28489,7 +28489,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [1.4999999, 2, 2.9999998],
+				"value" : [1.49, 2, 2.98],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadGlassC_dirt2.png",
 				"sampler" : "Sampler_10"
@@ -28904,7 +28904,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.54, 0.61, 0.47999996],
+				"value" : [0.54, 0.61, 0.476],
 				"background" : [1, 1, 1, 1],
 				"texture" : "brass_patina.jpg",
 				"sampler" : "Sampler_10"
@@ -28972,7 +28972,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1, 0.61, 0.47999996],
+				"value" : [1, 0.61, 0.476],
 				"background" : [1, 1, 1, 1],
 				"texture" : "brass_patina.jpg",
 				"sampler" : "Sampler_10"
@@ -29100,7 +29100,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.95000005, 0.95000005, 0.95000005],
+				"value" : [0.95, 0.95, 0.95],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_wall.jpg",
 				"sampler" : "Sampler_10"
@@ -29134,7 +29134,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.95000005, 1.35, 0.65],
+				"value" : [0.95, 1.35, 0.65],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_wall.jpg",
 				"sampler" : "Sampler_10"
@@ -29168,7 +29168,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.45, 0.95000005, 0.95000005],
+				"value" : [1.45, 0.95, 0.95],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_wall_pink.jpg",
 				"sampler" : "Sampler_10"
@@ -29274,7 +29274,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.95000005, 0.95000005, 0.95000005],
+				"value" : [0.95, 0.95, 0.95],
 				"background" : [1, 1, 1, 1],
 				"texture" : "wall_spring.jpg",
 				"sampler" : "Sampler_10"
@@ -29411,7 +29411,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.85, 0.85],
+				"value" : [0.744, 0.85, 0.85],
 				"background" : [1, 1, 1, 1],
 				"texture" : "plastic_diff_white.jpg",
 				"sampler" : "Sampler_10"
@@ -29514,7 +29514,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.74999994, 0.74999994],
+				"value" : [0.744, 0.744, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "ptol_struct.jpg",
 				"sampler" : "Sampler_10"
@@ -29650,7 +29650,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.2, 0.23999998, 0.3],
+				"value" : [0.2, 0.238, 0.3],
 				"background" : [1, 1, 1, 1],
 				"texture" : "pyramid_small.dds",
 				"sampler" : "Sampler_10"
@@ -29950,7 +29950,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.65, 0.74999994],
+				"value" : [0.744, 0.65, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAdesertD.jpg",
 				"sampler" : "Sampler_10"
@@ -29980,7 +29980,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.77, 0.67, 0.7099999],
+				"value" : [0.77, 0.67, 0.70],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAdesertD.jpg",
 				"sampler" : "Sampler_10"
@@ -30010,7 +30010,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.77, 0.67, 0.7099999],
+				"value" : [0.77, 0.67, 0.70],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAdesert.jpg",
 				"sampler" : "Sampler_10"
@@ -30124,7 +30124,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.81, 0.8, 0.74999994],
+				"value" : [0.81, 0.8, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAlienD.jpg",
 				"sampler" : "Sampler_10"
@@ -30160,7 +30160,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.81, 0.8, 0.74999994],
+				"value" : [0.81, 0.8, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAlienD.jpg",
 				"sampler" : "Sampler_10"
@@ -30196,7 +30196,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.87, 0.95000005, 0.88],
+				"value" : [0.87, 0.95, 0.88],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAlienD.jpg",
 				"sampler" : "Sampler_10"
@@ -30230,7 +30230,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.87, 0.95000005, 0.88],
+				"value" : [0.87, 0.95, 0.88],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAlienD.jpg",
 				"sampler" : "Sampler_10"
@@ -30386,7 +30386,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.8, 0.9, 0.74999994],
+				"value" : [0.8, 0.9, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAlien.jpg",
 				"sampler" : "Sampler_10"
@@ -30420,7 +30420,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.8, 0.9, 0.74999994],
+				"value" : [0.8, 0.9, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAlien.jpg",
 				"sampler" : "Sampler_10"
@@ -30462,7 +30462,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.74999994, 0.74999994],
+				"value" : [0.744, 0.744, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAsphalt.jpg",
 				"sampler" : "Sampler_10"
@@ -30492,7 +30492,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.1, 0.74999994, 2.75],
+				"value" : [0.1, 0.744, 2.75],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAsphalt_spec.jpg",
 				"sampler" : "Sampler_10"
@@ -30523,7 +30523,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.1, 0.74999994, 2.75],
+				"value" : [0.1, 0.744, 2.75],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAsphalt_spec.jpg",
 				"sampler" : "Sampler_10"
@@ -30554,7 +30554,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.1, 0.74999994, 2.75],
+				"value" : [0.1, 0.744, 2.75],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAsphaltAnomalyStreaks.png",
 				"sampler" : "Sampler_10"
@@ -30585,7 +30585,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.1, 0.74999994, 2.75],
+				"value" : [0.1, 0.744, 2.75],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAsphaltAnomalyStreaks.png",
 				"sampler" : "Sampler_10"
@@ -30622,7 +30622,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.1, 0.74999994, 2.75],
+				"value" : [0.1, 0.744, 2.75],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAsphalt_spec.jpg",
 				"sampler" : "Sampler_10"
@@ -30658,7 +30658,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.1, 0.74999994, 2.75],
+				"value" : [0.1, 0.744, 2.75],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAsphaltAnomalyStreaks.png",
 				"sampler" : "Sampler_10"
@@ -30688,7 +30688,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.1, 0.74999994, 2.75],
+				"value" : [0.1, 0.744, 2.75],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAsphaltAnomalyStreaks.png",
 				"sampler" : "Sampler_10"
@@ -30724,7 +30724,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.1, 0.74999994, 2.75],
+				"value" : [0.1, 0.744, 2.75],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAsphalt_spec.jpg",
 				"sampler" : "Sampler_10"
@@ -30930,7 +30930,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.74999994, 0.74999994],
+				"value" : [0.744, 0.744, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadAsphalt.jpg",
 				"sampler" : "Sampler_10"
@@ -31114,7 +31114,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.55, 0.3],
+				"value" : [0.744, 0.55, 0.3],
 				"background" : [1, 1, 1, 1],
 				"texture" : "canyonroad2.jpg",
 				"sampler" : "Sampler_10"
@@ -31150,7 +31150,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.55, 0.3],
+				"value" : [0.744, 0.55, 0.3],
 				"background" : [1, 1, 1, 1],
 				"texture" : "canyonroad2.jpg",
 				"sampler" : "Sampler_10"
@@ -31186,7 +31186,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.55, 0.3],
+				"value" : [0.744, 0.55, 0.3],
 				"background" : [1, 1, 1, 1],
 				"texture" : "canyonroad2.jpg",
 				"sampler" : "Sampler_10"
@@ -31220,7 +31220,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.55, 0.3],
+				"value" : [0.744, 0.55, 0.3],
 				"background" : [1, 1, 1, 1],
 				"texture" : "canyonroad2.jpg",
 				"sampler" : "Sampler_10"
@@ -32086,7 +32086,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.81, 0.8, 0.74999994],
+				"value" : [0.81, 0.8, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadDesertD.jpg",
 				"sampler" : "Sampler_10"
@@ -32116,7 +32116,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.87, 0.95000005, 0.88],
+				"value" : [0.87, 0.95, 0.88],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadDesertD.jpg",
 				"sampler" : "Sampler_10"
@@ -32272,7 +32272,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.95000005, 0.87, 0.72],
+				"value" : [0.95, 0.87, 0.72],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadDesert.jpg",
 				"sampler" : "Sampler_10"
@@ -32626,7 +32626,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.62, 0.54, 0.47999996],
+				"value" : [0.62, 0.54, 0.476],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadSnow.jpg",
 				"sampler" : "Sampler_10"
@@ -33522,7 +33522,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.042, 0.051999997, 0.11999999],
+				"value" : [0.042, 0.0517, 0.119],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadSandSet.jpg",
 				"sampler" : "Sampler_10"
@@ -33637,7 +33637,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.69, 0.27, 0.74999994],
+				"value" : [0.69, 0.27, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadSandSet.jpg",
 				"sampler" : "Sampler_10"
@@ -33672,7 +33672,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.69, 0.27, 0.74999994],
+				"value" : [0.69, 0.27, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadSandSet.jpg",
 				"sampler" : "Sampler_10"
@@ -33829,7 +33829,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.65, 0.74999994],
+				"value" : [0.744, 0.65, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadMars.jpg",
 				"sampler" : "Sampler_10"
@@ -33871,7 +33871,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.65, 0.74999994],
+				"value" : [0.744, 0.65, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadMars.jpg",
 				"sampler" : "Sampler_10"
@@ -34362,7 +34362,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.6, 0.74999994, 0.6],
+				"value" : [0.6, 0.744, 0.6],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadMoss.jpg",
 				"sampler" : "Sampler_10"
@@ -34825,7 +34825,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.5, 0.4, 0.74999994],
+				"value" : [0.5, 0.4, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadJDarkD.jpg",
 				"sampler" : "Sampler_10"
@@ -35793,7 +35793,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.11999999, 0.22, 0.42],
+				"value" : [0.119, 0.22, 0.42],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadSandSet.jpg",
 				"sampler" : "Sampler_10"
@@ -35986,7 +35986,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.11999999, 0.22, 0.42],
+				"value" : [0.119, 0.22, 0.42],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadSandSet.jpg",
 				"sampler" : "Sampler_10"
@@ -36472,7 +36472,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.85, 0.74999994, 0.6],
+				"value" : [0.85, 0.744, 0.6],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadSnow.jpg",
 				"sampler" : "Sampler_10"
@@ -36508,7 +36508,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.85, 0.74999994, 0.6],
+				"value" : [0.85, 0.744, 0.6],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadSnow.jpg",
 				"sampler" : "Sampler_10"
@@ -36544,7 +36544,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.85, 0.74999994, 0.6],
+				"value" : [0.85, 0.744, 0.6],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadSnow.jpg",
 				"sampler" : "Sampler_10"
@@ -36578,7 +36578,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.85, 0.74999994, 0.5],
+				"value" : [0.85, 0.744, 0.5],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadSnow.jpg",
 				"sampler" : "Sampler_10"
@@ -37251,7 +37251,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.95000005, 0.85, 0.85],
+				"value" : [0.95, 0.85, 0.85],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadSnow.jpg",
 				"sampler" : "Sampler_10"
@@ -37684,7 +37684,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.6, 0.74999994, 0.6],
+				"value" : [0.6, 0.744, 0.6],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadSpring2.jpg",
 				"sampler" : "Sampler_10"
@@ -37942,7 +37942,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.45, 0.6, 0.74999994],
+				"value" : [0.45, 0.6, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "brass_patina.jpg",
 				"sampler" : "Sampler_10"
@@ -38112,7 +38112,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.95000005, 0.95000005, 0.95000005],
+				"value" : [0.95, 0.95, 0.95],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_wall.jpg",
 				"sampler" : "Sampler_10"
@@ -38146,7 +38146,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.95000005, 1.35, 0.65],
+				"value" : [0.95, 1.35, 0.65],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_wall.jpg",
 				"sampler" : "Sampler_10"
@@ -38180,7 +38180,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.45, 0.95000005, 0.95000005],
+				"value" : [1.45, 0.95, 0.95],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_wall_pink.jpg",
 				"sampler" : "Sampler_10"
@@ -38214,7 +38214,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.95000005, 0.85, 0.55],
+				"value" : [0.95, 0.85, 0.55],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadMoss.jpg",
 				"sampler" : "Sampler_10"
@@ -38248,7 +38248,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1, 1.4999999, 1],
+				"value" : [1, 1.49, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "HI_WheelWall_col.jpg",
 				"sampler" : "Sampler_10"
@@ -38478,7 +38478,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.54, 0.61, 0.47999996],
+				"value" : [0.54, 0.61, 0.476],
 				"background" : [1, 1, 1, 1],
 				"texture" : "brass_patina.jpg",
 				"sampler" : "Sampler_10"
@@ -38580,7 +38580,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.95000005, 0.95000005, 0.95000005],
+				"value" : [0.95, 0.95, 0.95],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_wall.jpg",
 				"sampler" : "Sampler_10"
@@ -38614,7 +38614,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.95000005, 1.35, 0.65],
+				"value" : [0.95, 1.35, 0.65],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_wall.jpg",
 				"sampler" : "Sampler_10"
@@ -38648,7 +38648,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.45, 0.95000005, 0.95000005],
+				"value" : [1.45, 0.95, 0.95],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_wall_pink.jpg",
 				"sampler" : "Sampler_10"
@@ -38754,7 +38754,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.95000005, 0.95000005, 0.95000005],
+				"value" : [0.95, 0.95, 0.95],
 				"background" : [1, 1, 1, 1],
 				"texture" : "wall_spring.jpg",
 				"sampler" : "Sampler_10"
@@ -41024,7 +41024,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.74999994, 0.74999994],
+				"value" : [0.744, 0.744, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "rome_struct_2.jpg",
 				"sampler" : "Sampler_10"
@@ -41058,7 +41058,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.74999994, 0.74999994, 0.74999994],
+				"value" : [0.744, 0.744, 0.744],
 				"background" : [1, 1, 1, 1],
 				"texture" : "rome_struct_1.jpg",
 				"sampler" : "Sampler_10"
@@ -45192,7 +45192,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.05, 0.95000005, 1.1],
+				"value" : [1.05, 0.95, 1.1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "twig39g1.png",
 				"sampler" : "Sampler_10"
@@ -50234,7 +50234,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.4999999, 1.4999999, 1.4999999],
+				"value" : [1.49, 1.49, 1.49],
 				"background" : [1, 1, 1, 1],
 				"texture" : "windmill.jpg",
 				"sampler" : "Sampler_10"
@@ -50338,7 +50338,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.9599999, 1, 1],
+				"value" : [0.95, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "wooden_barrel.jpg",
 				"sampler" : "Sampler_10"
