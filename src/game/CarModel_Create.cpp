@@ -496,9 +496,12 @@ void CarModel::Create()
 		///  ⚫💭 wheel emitters  ------------------------
 		if (!ghost)
 		{
-			const static String sPar[PAR_ALL] = {"Smoke","Mud","Dust","FlWater","FlMud","FlMudS"};  // for ogre name
+			const static String sPar[PAR_ALL] = {
+				"Smoke","Mud","Dust", "FlWater","FlMud","FlMudS"};  // for ogre name
 			//  particle type names
-			const String sName[PAR_ALL] = {sc->sParSmoke, sc->sParMud, sc->sParDust, "FluidWater", "FluidMud", "FluidMudSoft"};
+			const String sName[PAR_ALL] = {
+				sc->sParSmoke, sc->sParMud, sc->sParDust, sc->sFluidWater, sc->sFluidMud, sc->sFluidMudSoft};
+			
 			for (int w=0; w < numWheels; ++w)
 			{
 				String siw = strI + "_" +toStr(w);
