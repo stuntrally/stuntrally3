@@ -521,12 +521,19 @@ common:  sc - "short scenery name" (name color)
 <r sc="Grc"  m="pipeGlassAnomaly3Cyan"          r="3" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Sur"  m="pipeGlassAnomaly3Pink"          r="3" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Jng"  m="pipeGlassAnomaly3Green"         r="3" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+
 <r sc="Sur"  m="pipeAsphaltAnomaly"             r="3" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Spc"  m="pipeAsphaltAnomalySpace"        r="3" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Sur"  m="pipeAsphaltAnomalyStreaks"      r="3" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Spc"  m="pipeAsphaltAnomalySpaceStreaks" r="3" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Spc"  m="pipeGlassAnomalySpace"      r="3" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Spc"  m="pipeGlassAnomalySpaceDark"  r="3" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+
+<r sc="Spc"  m="grate_02"      r="1" su="roadDesert"  re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Spc"  m="grate_03"      r="1" su="roadDesert"  re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Spc"  m="grate_04"      r="1" su="roadDesert"  re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Spc"  m="grate_05"      r="1" su="roadDesert"  re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Spc"  m="grate_sf"      r="1" su="roadDesert"  re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 
 <r sc="Wnt"  m="---- pipe wall ----"     r="0" />  <!-- ⭕📏 -->
