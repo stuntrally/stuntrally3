@@ -30,25 +30,26 @@ _Install_ docs/*.md files
   **Grid** for walls, road, pipes, ed update cell  
   1 mesh with 4 LODs, shader fix specular stretch  
 - 🌪️ **Wind**, for trees  
+  Lights on `grass`, sun lit particles-  
   Grass **deform** spheres, wind params, far fade-  
 
 - 🏗️ Editor, fix  
+  delete road, F5 stays  
   objects pick `errors`  
+  water reflect in `F7 cam prv`  
   minimap **RTTs** upd skip (slow), or create on save  
-  water reflect in **F7 cam prv**  
-  moved terrains, error in ray pos edit-  
-  _tools_: fix scale ter h, copy horizon, which ter, road  
+  edit moved terrains, error in ray pos-  
+  _tools_: fix **scale ter h**, copy horizon, which ter, road  
 
-- ⏲️ **HUD**  
+- ⏲️ `HUD`  
   fix splitscreen gauges etc  
   _Minimap_ circle, terrain add, fix pos tris  
 
 - Rest  
   MyGui CMake .lib, _Conan_  
-  move all .mat to **.json**, reflect in .json for objects, wet?  
   .mesh LODs test adjust-  
   water vis dist?  
-  tire trails no uv tex-  
+  tire **trails clr**, no uv tex-  
   Fog, 2 colors cam dir fix-  
   gpu mem leaks or renders inactive  
 

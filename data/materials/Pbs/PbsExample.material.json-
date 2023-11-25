@@ -118,9 +118,9 @@
 
             "detail_diffuse0" :
             {
-                "mode" : "NormalNonPremul",
+                "mode" : "Multiply",
                 "offset" : [0, 0],
-                "scale" : [1, 1],
+                "scale" : [4, 4],
                 "value" : 1,
                 "texture" : "texture.png",
                 "sampler" : "unique_name",
@@ -130,6 +130,17 @@
             "detail_normal0" :
             {
                 "offset" : [0, 0],
+                "scale" : [4, 4],
+                "value" : 1,
+                "texture" : "texture.png",
+                "sampler" : "unique_name",
+                "uv" : 0
+            },
+
+            "detail_diffuse1" :
+            {
+                "mode" : "NormalNonPremul",
+                "offset" : [0, 0],
                 "scale" : [1, 1],
                 "value" : 1,
                 "texture" : "texture.png",
@@ -137,6 +148,17 @@
                 "uv" : 0
             },
 
+            "detail_normal1" :
+            {
+                "offset" : [0, 0],
+                "scale" : [1, 1],
+                "value" : 1,
+                "texture" : "texture.png",
+                "sampler" : "unique_name",
+                "uv" : 0
+            },
+
+            //  don't use, only for static
             "reflection" :
             {
                 "texture" : "cubemap.png",

@@ -1,4 +1,4 @@
-//  .material is temporary, worse
+//  .material is temporary, less features than .json, but has inheriting
 
 //  use Recommended case, and set all its parameters
 
@@ -16,7 +16,7 @@ hlms Recommended pbs
 	//roughness_map  rock_rough.jpg  // very optional
 }
 
-//  or of iherited with : from other, only set changed parameters
+//  or Changed which iherited with : from Recommended, only sets changed parameters
 
 hlms Changed pbs : Recommended
 {
@@ -29,7 +29,7 @@ hlms Changed pbs : Recommended
 }
 
 
-// See documentation of HlmsPbsDatablock for all available settings:
+// See below or in documentation of HlmsPbsDatablock for all available settings:
 // https:ogrecave.github.io/ogre-next/api/2.3/class_ogre_1_1_hlms_pbs_datablock.html#add5507880534dc20bf7dcae3435ed66a
 
 hlms All pbs
@@ -57,4 +57,24 @@ hlms All pbs
 	roughness_map  rock_d.jpg
 
 	// detail_weight_map  detail.png
+
+	//----  custom in SR3:  - all in HlmsPbsDb2::HlmsPbsDb2(
+	bump_scale 1.5  - scales normal_map values
+	reflect yes  - for reflecting roads and objects  note: to disable need to comment out line, no does not work
+	fluid yes  - for fluids
+	paint yes  - for vehicle body, not used
+
+	//----  custom, old SR  fluids
+	choppyness_scale  0.15 1.0
+	smallWaves_midWaves  0.15 0.1 0.3 0.15
+	bigWaves  0.3 0.3
+	bump  1.5 0.08 0.12
+
+	colour  0.49, 0.69, 0.78, 0.0));
+	reflectColour  0.91 0.93 0.94 0.9
+	refractColour  0.76 0.89 0.99 0.76
+	specColourAndPower  0.98 1.0 1.0 0.15
+
+	bump2SpecPowerMul  6.0, 16.0, 0.8
+	speed  1.0, 1.0
 }
