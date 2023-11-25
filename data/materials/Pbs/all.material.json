@@ -18851,6 +18851,7 @@
 		{
 			"macroblock" : "Macroblock_8",
 			"blendblock" : "Blendblock_6",
+			"reflect" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
@@ -18959,6 +18960,7 @@
 		{
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_1",
+			"reflect" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
@@ -19065,6 +19067,7 @@
 		{
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
+			"reflect" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
@@ -19214,18 +19217,19 @@
 		{
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
+			"reflect" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.9, 0.5, 0.6],
+				"value" : [0.6, 0.2, 0.2],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_form2_pink.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.9, 0.3, 0.4]
+				"value" : [0.7, 0.3, 0.4]
 			},
 			"fresnel" :
 			{
@@ -19318,6 +19322,7 @@
 		{
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
+			"reflect" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
@@ -19525,23 +19530,24 @@
 		{
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
+			"reflect" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.4, 0.753, 0.95],
+				"value" : [0.6, 0.35, 0.4],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_form1_pink.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.96, 0.4, 0.58]
+				"value" : [0.96, 0.35, 0.45]
 			},
 			"fresnel" :
 			{
-				"value" : 0.1,
-				"mode" : "coeff"
+				"value" : [0.9, 0.5, 0.7],
+				"mode" : "coloured"
 			},
 			"normal" :
 			{
@@ -19551,7 +19557,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.35
+				"value" : 0.1
 			}
 		},
 
@@ -19630,23 +19636,24 @@
 		{
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
+			"reflect" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.25, 0.45, 0.77],
+				"value" : [0.85, 0.35, 0.47],
 				"background" : [1, 1, 1, 1],
 				"texture" : "crystal_form3_pink.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.9, 0.25, 0.45]
+				"value" : [0.9, 0.35, 0.8]
 			},
 			"fresnel" :
 			{
-				"value" : 0.1,
-				"mode" : "coeff"
+				"value" : [1.0, 0.5, 0.8],
+				"mode" : "coloured"
 			},
 			"normal" :
 			{
@@ -19656,7 +19663,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.35
+				"value" : 0.15
 			}
 		},
 
