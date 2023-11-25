@@ -106,10 +106,17 @@ bool PreviewScene::Load(Ogre::String mesh)
 	
 	LogO("+--P PreviewScene Load: "+mesh);
 
-	item = mgr->createItem(mesh);
-	mat = item->getSubItem(0)->getDatablockOrMaterialName();  // for info
-	node = mgr->getRootSceneNode()->createChildSceneNode();
-	node->attachObject(item);
+	try
+	{	item = mgr->createItem(mesh);
+		mat = item->getSubItem(0)->getDatablockOrMaterialName();  // for info
+		node = mgr->getRootSceneNode()->createChildSceneNode();
+		node->attachObject(item);
+	}
+	catch(Exception e)
+	{
+		LogO("+--P PreviewScene can't create!");
+		return false;
+	}
 
 	//  🎥 set camera to fit
 	Aabb ab = item->getLocalAabb();
