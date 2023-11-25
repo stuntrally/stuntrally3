@@ -541,7 +541,7 @@ descr="Few new, rather easy rally tracks in new places, mostly forest.">
 		<pass avgPoints="10" />
 		<tracks>
 			<t name="Grc12-KapabaRivers"  passPoints="8" />
-			<t name="Isl16-SandyMountain" passPoints="8" />
+			<t name="Can10-SandyMountain" passPoints="8" />
 			<t name="For20-LakoPine"      passPoints="8" />
 			<t name="For19-CrolKarstMntn" passPoints="8" />
 			<t name="Wnt18-MountPen"      passPoints="8" />
@@ -1405,7 +1405,7 @@ descr="Drive the fast 3 metal spheres vehicle through rather easy tracks. Cautio
 		<tracks>
 			<t name="Sur7-UaraHills"      passPoints="8" />
 			<t name="Grc12-KapabaRivers"  passPoints="8" />
-			<t name="Isl16-SandyMountain" passPoints="8" />
+			<t name="Can10-SandyMountain" passPoints="8" />
 			<t name="For19-CrolKarstMntn" passPoints="8" />
 		</tracks>
 	</challenge>
@@ -1534,7 +1534,7 @@ descr="Nice drive with regular motorbike.">
 		<car names="BE|BV" />
 		<pass avgPoints="10" />
 		<tracks>
-			<t name="Isl16-SandyMountain" passPoints="8" />
+			<t name="Can10-SandyMountain" passPoints="8" />
 			<t name="Grc5-Climb"          passPoints="9" />
 			<t name="For20-LakoPine"      passPoints="8" />
 			<t name="For19-CrolKarstMntn" passPoints="8" />

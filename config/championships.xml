@@ -425,7 +425,7 @@ descr="Newest space stunt tracks.">
 	<champ name="Various mountains" ver="2" difficulty="2" type="5"
 descr="Desert championship. Part 1.">
 		<t name="For20-LakoPine"/>
-		<t name="Isl16-SandyMountain"/>
+		<t name="Can10-SandyMountain"/>
 		<t name="Grc11-PickCave"/>
 		<t name="For19-CrolKarstMntn"/>
 		<!-- <t name="Sur7-UaraHills"/> -->
@@ -573,7 +573,7 @@ descr="Island championship. Part 1.">
 		<t name="Isl8-Pharaoh"/>
 		<t name="Isl9-Web"/>
 	</champ>
-	<champ name="Island 2nd" ver="1" difficulty="5" type="5"
+	<champ name="Island 2nd" ver="2" difficulty="5" type="5"
 descr="Island championship. Part 2.">
 		<t name="Isl10-Treasure"/>
 		<t name="Isl11-StuntIslands"/>
@@ -581,7 +581,6 @@ descr="Island championship. Part 2.">
 		<t name="Isl13-Beauty"/>
 		<t name="Isl14-Ocean"/>
 		<t name="Isl15-IslandVillages"/>
-		<t name="Isl16-SandyMountain"/>
 		<t name="Isl17-AdapterIslands"/>
 		<t name="Isl18-RoupaIsland"/>
 		<t name="Isl19-Shocacosh"/>
@@ -597,7 +596,7 @@ descr="Mud championship.">
 		<t name="Mud4-Taiga"/>
 		<t name="Mud5-Mudflats"/>
 	</champ>
-	<champ name="Canyon" ver="1" difficulty="3" type="6"
+	<champ name="Canyon" ver="2" difficulty="3" type="6"
 descr="Canyon championship.">
 		<t name="Can1-Hairpins"/>
 		<t name="Can2-CanyonRun"/>
@@ -608,6 +607,7 @@ descr="Canyon championship.">
 		<t name="Can7-RedWavy"/>
 		<t name="Can8-RedoPoka"/>
 		<t name="Can9-DukeRain"/>
+		<t name="Can10-SandyMountain"/>
 	</champ>
 	<champ name="Australia" ver="2" difficulty="4" type="6"
 descr="Australia championship.">
@@ -901,7 +901,7 @@ descr="Absolutely all rally tracks from game. Some easy pipes might appear.">
 		<t name="Grc10-BeachCity"/>
 		<t name="Isl15-IslandVillages"/>
 		<t name="Jng23-FollowValley"/>
-		<t name="Isl16-SandyMountain"/>
+		<t name="Can10-SandyMountain"/>
 		<t name="For18-MountCaro"/>
 		<t name="Wnt18-MountPen"/>
 		<t name="Jng25-CantorJungle"/>
@@ -923,7 +923,7 @@ descr="Absolutely all rally tracks from game. Some easy pipes might appear.">
 		<t name="Grc10-BeachCity"/>
 		<t name="Isl15-IslandVillages"/>
 		<t name="Jng23-FollowValley"/>
-		<t name="Isl16-SandyMountain"/>
+		<t name="Can10-SandyMountain"/>
 		<t name="Jng24-NightJungle"/>
 		<t name="For18-MountCaro"/>
 		<t name="Wnt18-MountPen"/>
