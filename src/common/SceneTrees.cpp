@@ -116,9 +116,9 @@ void CScene::CreateTrees()
 
 		//  Tree Layers
 		int nn = 0;
-		for (size_t l=0; l < sc->pgLayers.size(); ++l)
+		for (size_t l=0; l < sc->vegLayers.size(); ++l)
 		{
-			PagedLayer& pg = sc->pgLayersAll[sc->pgLayers[l]];
+			VegetLayer& pg = sc->vegLayersAll[sc->vegLayers[l]];
 			String file = pg.name;  //, fpng = file+".png";
 			pg.cnt = 0;
 	

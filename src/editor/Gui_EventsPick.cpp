@@ -302,7 +302,7 @@ void CGui::listPickVeg(Mli2 li, size_t pos)
 	btnVeget->setCaption(s);
 	s += ".mesh";
 
-	auto& l = sc->pgLayersAll[idPgLay];
+	auto& l = sc->vegLayersAll[idPgLay];
 	l.name = s;
 	
 	//  preset

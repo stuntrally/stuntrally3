@@ -164,7 +164,9 @@ bool Scene::LoadXml(String file, bool bTer)
 	
 
 	///  🌳🪨 vegetation
- 	e = root->FirstChildElement("paged");
+ 	e = root->FirstChildElement("veget");
+	if (!e)
+ 		e = root->FirstChildElement("paged");
 	if (e)
 	{	a = e->Attribute("densTrees");		if (a)  densTrees = s2r(a);
 		a = e->Attribute("densGrass");		if (a)  densGrass = s2r(a);
@@ -246,7 +248,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		u = e->FirstChildElement("layer");
 		while (u)
 		{
-			PagedLayer l;
+			VegetLayer l;
 			a = u->Attribute("on");			if (a)  l.on = s2i(a);  else  l.on = 1;
 			a = u->Attribute("name");		if (a)  l.name = String(a);
 			a = u->Attribute("dens");		if (a)  l.dens = s2r(a);
@@ -264,10 +266,10 @@ bool Scene::LoadXml(String file, bool bTer)
 			a = u->Attribute("maxTerH");	if (a)  l.maxTerH = s2r(a);
 			a = u->Attribute("maxDepth");	if (a)  l.maxDepth = s2r(a);
 
-			pgLayersAll[pgl++] = l;
+			vegLayersAll[pgl++] = l;
 			u = u->NextSiblingElement("layer");
 		}
-		UpdPgLayers();
+		UpdVegLayers();
 	}
 	
  	///  🎥 camera

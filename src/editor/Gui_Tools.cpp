@@ -123,8 +123,8 @@ void CGui::btnCopyVeget(WP)
 	for (int i=0; i < sc->ciNumGrLay; ++i)
 		sc->grLayersAll[i] = sF.grLayersAll[i];
 
-	for (int i=0; i < sc->ciNumPgLay; ++i)
-		sc->pgLayersAll[i] = sF.pgLayersAll[i];
+	for (int i=0; i < sc->ciNumVegLay; ++i)
+		sc->vegLayersAll[i] = sF.vegLayersAll[i];
 
 	SetGuiFromXmls();	app->UpdateTrack();
 }

@@ -253,7 +253,7 @@ void CGui::tabPgLayers(Tab wp, size_t id)
 	idPgLay = id;  // help var
 	SldUpd_PgL();
 
-	const PagedLayer& lay = sc->pgLayersAll[idPgLay];
+	const VegetLayer& lay = sc->vegLayersAll[idPgLay];
 	string s = lay.name.substr(0, lay.name.length()-5);
 
 	btnVeget->setCaption(s);
@@ -262,7 +262,7 @@ void CGui::tabPgLayers(Tab wp, size_t id)
 			liVeg->setIndexSelected(i);
 			
 	Upd3DView(lay.name);
-	SetUsedStr(valLTrAll, sc->pgLayers.size(), 6);
+	SetUsedStr(valLTrAll, sc->vegLayers.size(), 6);
 	txVCnt->setCaption(toStr(lay.cnt));
 }
 
@@ -297,7 +297,7 @@ void CGui::slLTrSc(SV*)
 //  tab changed
 void CGui::SldUpd_PgL()
 {
-	PagedLayer& lay = sc->pgLayersAll[idPgLay];
+	VegetLayer& lay = sc->vegLayersAll[idPgLay];
 	ckPgLayOn.Upd(&lay.on);
 	svLTrDens.UpdF(&lay.dens);
 
@@ -318,8 +318,8 @@ void CGui::SldUpd_PgL()
 
 void CGui::chkPgLayOn(Ck*)
 {
-	sc->UpdPgLayers();
-	SetUsedStr(valLTrAll, sc->pgLayers.size(), 6);
+	sc->UpdVegLayers();
+	SetUsedStr(valLTrAll, sc->vegLayers.size(), 6);
 }
 
 void CGui::Upd3DView(String mesh)

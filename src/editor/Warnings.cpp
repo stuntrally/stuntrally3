@@ -287,7 +287,7 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 	//---------------------------------------------------------------
 	{
 		//  layers  ----
-		int veg = sc->densTrees > 0.f ? sc->pgLayers.size() : 0;
+		int veg = sc->densTrees > 0.f ? sc->vegLayers.size() : 0;
 		Warn(NOTE,"---- Vegetation - models used: "+toStr(veg));  // works only when shown
 		// if (sc->densTrees < 0.01f)  Warn(WARN,"No Vegetation - feels empty :(");
 		hqVeget = veg >= 6;
@@ -299,7 +299,7 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 		//  todo: this needs getTerH & angle, without Terra loaded
 		//  works only in ed (with veget on and at 1.0 mul), not in cmd tool
 		int all = 0;
-		for (auto l : sc->pgLayersAll)
+		for (auto l : sc->vegLayersAll)
 		if (l.on)
 		{
 			all += l.cnt;

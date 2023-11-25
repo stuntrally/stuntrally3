@@ -26,7 +26,7 @@ bool Scene::SaveXml(String file)
 		ver->SetAttribute("secEd",   toStrC( secEdited ));
 	root->InsertEndChild(ver);
 
-	XMLElement* car = xml.NewElement("car");  // 🚗
+	XMLElement* car = xml.NewElement("car");  // 🚗 game
 		car->SetAttribute("tires",	asphalt ? "1":"0");
 		if (damageMul != 1.f)
 			car->SetAttribute("damage",	toStrC( damageMul ));
@@ -208,7 +208,7 @@ bool Scene::SaveXml(String file)
 				ter->InsertEndChild(tex);
 			}
 			
-			XMLElement* par = xml.NewElement("par");  // ⚫💭
+			XMLElement* par = xml.NewElement("par");  // ⚫💭 surface par
 				par->SetAttribute("dust",	sParDust.c_str());
 				par->SetAttribute("mud",	sParMud.c_str());
 				par->SetAttribute("smoke",	sParSmoke.c_str());
@@ -223,7 +223,7 @@ bool Scene::SaveXml(String file)
 	root->InsertEndChild(ters);
 	
 
-	XMLElement* pgd = xml.NewElement("paged");  // 🌳🪨 vegetation
+	XMLElement* pgd = xml.NewElement("veget");  // 🌳🪨 vegetation
 		pgd->SetAttribute("densGrass",   toStrC( densGrass ));
 		pgd->SetAttribute("densTrees",   toStrC( densTrees ));
 		//  grass
@@ -238,7 +238,7 @@ bool Scene::SaveXml(String file)
 		pgd->SetAttribute("trRdDist",	toStrC( trRdDist  ));
 
 		int i;
-		for (int i=0; i < ciNumGrLay; ++i)  // 🌿
+		for (int i=0; i < ciNumGrLay; ++i)  // 🌿 grass
 		{
 			const SGrassLayer& g = grLayersAll[i];
 			XMLElement* grl = xml.NewElement("grass");
@@ -284,27 +284,27 @@ bool Scene::SaveXml(String file)
 			pgd->InsertEndChild(gch);
 		}
 
-		for (i=0; i < ciNumPgLay; ++i)  // 🌳🪨
+		for (i=0; i < ciNumVegLay; ++i)  // 🌳🪨 models
 		{
-			const PagedLayer& l = pgLayersAll[i];
-			XMLElement* pgl = xml.NewElement("layer");
-			pgl->SetAttribute("on",			l.on ? 1 : 0);
-			pgl->SetAttribute("name",		l.name.c_str());
-			pgl->SetAttribute("dens",		toStrC( l.dens ));
-			pgl->SetAttribute("minScale",	toStrC( l.minScale ));
-			pgl->SetAttribute("maxScale",	toStrC( l.maxScale ));
+			const VegetLayer& l = vegLayersAll[i];
+			XMLElement* vgl = xml.NewElement("layer");
+			vgl->SetAttribute("on",			l.on ? 1 : 0);
+			vgl->SetAttribute("name",		l.name.c_str());
+			vgl->SetAttribute("dens",		toStrC( l.dens ));
+			vgl->SetAttribute("minScale",	toStrC( l.minScale ));
+			vgl->SetAttribute("maxScale",	toStrC( l.maxScale ));
 
-			pgl->SetAttribute("ofsY",		toStrC( l.ofsY ));
-			pgl->SetAttribute("addTrRdDist",toStrC( l.addRdist ));
-			pgl->SetAttribute("maxRdist",	toStrC( l.maxRdist ));
-			pgl->SetAttribute("windFx",		toStrC( l.windFx ));
-			pgl->SetAttribute("windFy",		toStrC( l.windFy ));
+			vgl->SetAttribute("ofsY",		toStrC( l.ofsY ));
+			vgl->SetAttribute("addTrRdDist",toStrC( l.addRdist ));
+			vgl->SetAttribute("maxRdist",	toStrC( l.maxRdist ));
+			vgl->SetAttribute("windFx",		toStrC( l.windFx ));
+			vgl->SetAttribute("windFy",		toStrC( l.windFy ));
 
-			pgl->SetAttribute("maxTerAng",	toStrC( l.maxTerAng ));
-			pgl->SetAttribute("minTerH",	toStrC( l.minTerH ));
-			pgl->SetAttribute("maxTerH",	toStrC( l.maxTerH ));
-			pgl->SetAttribute("maxDepth",	toStrC( l.maxDepth ));
-			pgd->InsertEndChild(pgl);
+			vgl->SetAttribute("maxTerAng",	toStrC( l.maxTerAng ));
+			vgl->SetAttribute("minTerH",	toStrC( l.minTerH ));
+			vgl->SetAttribute("maxTerH",	toStrC( l.maxTerH ));
+			vgl->SetAttribute("maxDepth",	toStrC( l.maxDepth ));
+			pgd->InsertEndChild(vgl);
 		}
 	root->InsertEndChild(pgd);
 
@@ -335,7 +335,7 @@ bool Scene::SaveXml(String file)
 	root->InsertEndChild(objs);
 
 
-	XMLElement* emts = xml.NewElement("emitters");  // 🔥
+	XMLElement* emts = xml.NewElement("emitters");  // 🔥 particles
 		for (i=0; i < emitters.size(); ++i)
 		{
 			const SEmitter* e = &emitters[i];

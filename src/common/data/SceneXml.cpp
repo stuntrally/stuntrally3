@@ -168,13 +168,13 @@ void Scene::UpdateSurfId()
 }
 
 
-void Scene::UpdPgLayers()
+void Scene::UpdVegLayers()
 {
-	pgLayers.clear();
-	for (int i=0; i < ciNumPgLay; ++i)
+	vegLayers.clear();
+	for (int i=0; i < ciNumVegLay; ++i)
 	{
-		if (pgLayersAll[i].on)
-			pgLayers.push_back(i);
+		if (vegLayersAll[i].on)
+			vegLayers.push_back(i);
 	}
 }
 

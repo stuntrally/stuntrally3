@@ -73,13 +73,13 @@ public:
 	std::vector<TerData> tds;
 
 	//  🛣️ Road surfaces
-	TerLayer layerRoad[4];
+	TerLayer layerRoad[4];  // todo: per road, move there..
 
 	
 	///  🌳🪨  Vegetation params  --------
 	float densTrees, densGrass;  int grDensSmooth;
 	float grPage, grDist;
-	float trPage, trDist, trDistImp;
+	float trPage, trDist, trDistImp;  // not used anymore
 	int trRdDist;  // dist from road to trees
 
 	//  🌿 grass layers  paged
@@ -88,10 +88,10 @@ public:
 	SGrassChannel grChan[4];
 
 	//  model layers  (trees,rocks,etc)  not paged
-	const static int ciNumPgLay = 14;  // all, for edit
-	PagedLayer pgLayersAll[ciNumPgLay];
-	std::vector<int> pgLayers;    // active only (on)
-	void UpdPgLayers();
+	const static int ciNumVegLay = 14;  // max all, for edit
+	VegetLayer vegLayersAll[ciNumVegLay];
+	std::vector<int> vegLayers;    // active only (on)
+	void UpdVegLayers();
 
 	
 	//  💧 Fluids  ~~~

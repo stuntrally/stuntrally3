@@ -193,9 +193,9 @@ void CGui::ToolSceneXml()
 		}
 
 		///  veget  --------
-		for (n=0; n < Scene::ciNumPgLay; ++n)
+		for (n=0; n < Scene::ciNumVegLay; ++n)
 		{
-			const PagedLayer& l = sc.pgLayersAll[n];
+			const VegetLayer& l = sc.vegLayersAll[n];
 			const String& s = l.name;  //.mesh
 				
 			//  checks

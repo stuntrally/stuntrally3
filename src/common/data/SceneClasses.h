@@ -96,7 +96,7 @@ public:
 };
 
 
-class PagedLayer	//  🌳🪨 Vegetation model
+class VegetLayer	//  🌳🪨 Vegetation model
 {
 public:
 	bool on = false;
