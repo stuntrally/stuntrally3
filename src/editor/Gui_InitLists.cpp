@@ -173,8 +173,11 @@ void CGui::InitGuiLists()
 	};
 	AddPath("/objects");
 	AddPath("/objects2");
+	objListCat->addItem("#C0D0E0---- Obstacle");
+	AddPath("/obstacles");
 	objListCat->addItem("#FFB060---- "+TR("#{ObjRocks}"));
 	AddPath("/rocks");
+	AddPath("/rockshex");
 	objListCat->addItem("#C0C8C0---- City");
 	AddPath("/objectsC");
 	objListCat->addItem("#E0E0A0---- 0 A.D.");

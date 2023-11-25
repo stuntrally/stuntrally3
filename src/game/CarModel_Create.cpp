@@ -174,7 +174,7 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 	}	}
 	catch (Ogre::Exception ex)
 	{
-		LogO(String("## CreatePart exc! ") + ex.what());
+		LogO(String("## Vehicle CreatePart failed! ") + ex.what());
 	}
 	ToDel(item);
 

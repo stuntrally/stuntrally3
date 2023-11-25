@@ -471,7 +471,8 @@ void CGui::FillHelpTxt()
 			ReadTxt("cars/" + c.id + "/about.txt");
 
 		ReadTxts("objects");  ReadTxts("objects2");  ReadTxts("objectsC");  ReadTxts("objects0");
-		ReadTxts("skies");  ReadTxts("rocks");
+		ReadTxts("obstacles");  ReadTxts("rocks");  ReadTxts("rockshex");
+		ReadTxts("skies");  
 		ReadTxts("grass");  ReadTxts("terrain");  ReadTxts("road");
 		ReadTxts("trees");  ReadTxts("trees2");   ReadTxts("trees-old");  //todo: replace-
 		ReadTxts("sounds");  ReadTxts("hud");
