@@ -114,13 +114,13 @@ void CScene::CreateTrees()
 		else
 			LogO("TREES no imgRoad !");
 
-		//  Tree Layers
+		//  Tree Layers  ------------------------------------
 		int nn = 0;
 		for (size_t l=0; l < sc->vegLayers.size(); ++l)
 		{
-			VegetLayer& pg = sc->vegLayersAll[sc->vegLayers[l]];
-			String file = pg.name;  //, fpng = file+".png";
-			pg.cnt = 0;
+			VegetLayer& vg = sc->vegLayersAll[sc->vegLayers[l]];
+			String file = vg.name;  //, fpng = file+".png";
+			vg.cnt = 0;
 	
 			bool found = resMgr.resourceExistsInAnyGroup(file);
 			if (!found)
@@ -157,11 +157,11 @@ void CScene::CreateTrees()
 
 
 			///  collision object
-			const BltCollision* col = data->objs->Find(pg.name);
+			const BltCollision* col = data->objs->Find(vg.name);
 			Vector3 ofs(0,0,0);  if (col)  ofs = col->offset;  // mesh offset
 
 			//  num trees  ----------------------------------------------------------------
-			int cnt = fTrees * 6000 * pg.dens, all = 0;
+			int cnt = fTrees * 6000 * vg.dens, all = 0;
 			// LogO(String("col?  ")+(col?"y":"n")+ " ofs x "+fToStr(ofs.x,2)+ " z "+fToStr(ofs.y,2));
 			
 			for (int i = 0; i < cnt; ++i)
@@ -175,7 +175,7 @@ void CScene::CreateTrees()
 				#else
 					yaw = rnd.rand(360.0);
 					pos.x = getTerPos();  pos.z = getTerPos();
-					Real scl = rnd.rand() * (pg.maxScale - pg.minScale) + pg.minScale;
+					Real scl = rnd.rand() * (vg.maxScale - vg.minScale) + vg.minScale;
 				#endif
 				pos0 = pos;  // store original place
 				bool add = true;
@@ -192,7 +192,7 @@ void CScene::CreateTrees()
 
 				//  check ter angle  ------------
 				float ang = ter0->getAngle(pos.x, pos.z, td.fTriangleSize);
-				if (ang > pg.maxTerAng)
+				if (ang > vg.maxTerAng)
 					add = false;
 
 				// if (!add)  LogO("ter ang");
@@ -203,7 +203,7 @@ void CScene::CreateTrees()
 				// LogO(fToStr(pos.y));
 				if (!in)  add = false;  // outside
 				
-				if (pos.y < pg.minTerH || pos.y > pg.maxTerH)
+				if (pos.y < vg.minTerH || pos.y > vg.maxTerH)
 					add = false;
 				
 				// if (!add)  LogO("ter h");
@@ -211,7 +211,7 @@ void CScene::CreateTrees()
 				
 				//  check if in fluids  ------------
 				float fa = sc->GetDepthInFluids(pos);
-				if (fa > pg.maxDepth)
+				if (fa > vg.maxDepth)
 					add = false;
 
 				// if (!add)  LogO("in fl");
@@ -222,11 +222,11 @@ void CScene::CreateTrees()
 				int mx = (0.5*tws + pos.x)/tws*r,
 					my = (0.5*tws + pos.z)/tws*r;
 
-					int c = sc->trRdDist + pg.addRdist;
+					int c = sc->trRdDist + vg.addRdist;
 					int d = c;
-					bool bMax = pg.maxRdist < 20; //100 slow-
+					bool bMax = vg.maxRdist < 20; //100 slow-
 					if (bMax)
-						d = c + pg.maxRdist+1;  // not less than c
+						d = c + vg.maxRdist+1;  // not less than c
 
 					//  find dist to road
 					int ii,jj, rr, rmin = 3000;  //d
@@ -308,7 +308,7 @@ void CScene::CreateTrees()
 				vegetNodes.push_back(node);
 				//  ****************************
 				
-				++pg.cnt;  ++iVegetAll;  // count stats
+				++vg.cnt;  ++iVegetAll;  // count stats
 					
 				
 				///  🎳 add to bullet world
@@ -316,7 +316,7 @@ void CScene::CreateTrees()
 				int cc = col ? col->shapes.size() : 0;
 				//  not found in xml or specified, 1 shape
 				bool useTrimesh = !col || cc == 1 && col->shapes[0].type == BLT_Mesh;
-				bool noCol = data->objs->colNone[pg.name];
+				bool noCol = data->objs->colNone[vg.name];
 
 				if (pSet->game.collis_veget && !noCol)
 				if (!useTrimesh)

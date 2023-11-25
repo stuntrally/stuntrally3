@@ -209,6 +209,10 @@ hlms Cloud5 unlit : Base_particle
 {
     diffuse_map cloud5.png
 }
+hlms Cloud6 unlit : Base_particle
+{
+    diffuse_map cloud6.png
+}
 hlms Cloud7 unlit : Base_particle
 {
     diffuse_map cloud7.png

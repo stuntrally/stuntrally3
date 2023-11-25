@@ -157,9 +157,9 @@ void App::CreateObjects()
 			o.it->setName("oE"+s);
 			SetTexWrap(o.it);
 		}
-		catch( Ogre::Exception& e )
+		catch (Exception& e)
 		{
-			LogO(String("Create obj fail: ") + e.what());
+			LogO(String("Create object fail: ") + e.what());
 			continue;
 		}
 		o.nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode();
@@ -487,19 +487,25 @@ void App::AddNewObj(bool getName)  //App..
 	}
 
 	//  create object
-	o.it = mSceneMgr->createItem(o.name + ".mesh");
-	//  alpha from presets.xml
-	auto* veg = scn->data->pre->GetVeget(o.name);
-	if (veg)
-		o.it->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
+	try
+	{	o.it = mSceneMgr->createItem(o.name + ".mesh");
+		//  alpha from presets.xml
+		auto* veg = scn->data->pre->GetVeget(o.name);
+		if (veg)
+			o.it->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
 
-	o.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	o.SetFromBlt();
-	o.nd->setScale(o.scale);
-	o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Vegetation);
+		o.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+		o.SetFromBlt();
+		o.nd->setScale(o.scale);
+		o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Vegetation);
 
-	o.dyn = PATHS::FileExists(PATHS::Data()+"/objects/"+ o.name + ".bullet");
-	scn->sc->objects.push_back(o);
+		o.dyn = PATHS::FileExists(PATHS::Data()+"/objects/"+ o.name + ".bullet");
+		scn->sc->objects.push_back(o);
+	}
+	catch (Exception ex)
+	{
+		LogO("no object! " + ex.getFullDescription());
+	}
 }
 
 
@@ -571,10 +577,17 @@ void App::SetObjNewType(int tnew)
 	String name = vObjNames[iObjTNew];
 	objNew.dyn = PATHS::FileExists(PATHS::Data()+"/objects/"+ name + ".bullet");
 	if (objNew.dyn)  objNew.scale = Vector3::UNIT_SCALE;  // dyn no scale
-	objNew.it = mSceneMgr->createItem(name + ".mesh");
-	objNew.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	objNew.nd->attachObject(objNew.it);  objNew.it->setVisibilityFlags(RV_Vegetation);
-	UpdObjNewNode();
+	try
+	{	objNew.it = mSceneMgr->createItem(name + ".mesh");
+		objNew.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+		objNew.nd->attachObject(objNew.it);  objNew.it->setVisibilityFlags(RV_Vegetation);
+		UpdObjNewNode();
+	}
+	catch (Exception ex)
+	{
+		LogO("no object! " + ex.getFullDescription());
+	}
+
 }
 
 void App::UpdObjNewNode()

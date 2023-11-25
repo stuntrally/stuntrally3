@@ -17,6 +17,7 @@
 #endif
 #include <OgreCommon.h>
 #include <OgreRoot.h>
+#include <OgreException.h>
 #include <OgreSceneNode.h>
 #include <OgreCamera.h>
 #include <OgreParticleSystem.h>
@@ -244,21 +245,27 @@ void CScene::CreateSkyDome(String sMater, float yaw)
 	{
 		sMeshSky[i] = "skymesh"+toStr(i);
 		MeshPtr mesh = m->convertToMesh(sMeshSky[i], "General", false);
-
-		itSky[i] = app->mSceneMgr->createItem( mesh, dyn );
-		itSky[i]->setCastShadows(false);
-		itSky[i]->setVisibilityFlags(vis[i]);
-		// LogO(toStr(vis[i]));
-		// Aabb aabb( Aabb::BOX_INFINITE );  itSky->setLocalAabb(aabb);  // meh-
-		
-		ndSky[i] = app->mSceneMgr->getRootSceneNode( dyn )->createChildSceneNode( dyn );
-		ndSky[i]->attachObject(itSky[i]);
-		Quaternion q;  q.FromAngleAxis(Degree(-yaw), Vector3::UNIT_Y);
-		ndSky[i]->setOrientation(q);
+		try
+		{	itSky[i] = app->mSceneMgr->createItem( mesh, dyn );
+			itSky[i]->setCastShadows(false);
+			itSky[i]->setVisibilityFlags(vis[i]);
+			// LogO(toStr(vis[i]));
+			// Aabb aabb( Aabb::BOX_INFINITE );  itSky->setLocalAabb(aabb);  // meh-
+			
+			ndSky[i] = app->mSceneMgr->getRootSceneNode( dyn )->createChildSceneNode( dyn );
+			ndSky[i]->attachObject(itSky[i]);
+			Quaternion q;  q.FromAngleAxis(Degree(-yaw), Vector3::UNIT_Y);
+			ndSky[i]->setOrientation(q);
+		}
+		catch (Exception e)
+		{
+			LogO("C--- create Sky failed!");
+		}
 	}
 	UpdSkyScale();
 	
 	//  tex change to mirror
+return;  //!
 	Root *root = app->mRoot;
 	HlmsSamplerblock sampler;
 	sampler.mMinFilter = FO_ANISOTROPIC;  sampler.mMagFilter = FO_ANISOTROPIC;
