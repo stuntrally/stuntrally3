@@ -43,11 +43,8 @@
 <s m="sky/gray_clouded"    c="#A8B0B8"   p="40"  y="105"  />
 
 <s m="sky/foggy_gen"       c="#90B0D0"   p="24"  y=" 47"  />
-<s m="sky/big_clouds_gen"  c="#7890A8"   p="16"  y=" 45"  />
-<s m="sky/big_clouds2_gen" c="#6080A0"   p="12"  y="  0"  />
 
 <s m="sky/dawn_bright"     c="#D0D0B0"   p="21"  y="-45"  />
-<s m="sky/dawn_cloudy"     c="#B0B090"   p="16"  y=" 88"  />
 
 <s m="sky/sunset_rays_gen" c="#D06010"   p=" 8"  y="  0"  />
 <s m="sky/sunset_blue_gen" c="#E09060"   p="16"  y=" 57"  />
@@ -56,7 +53,6 @@
 <s m="sky/morning_gen"     c="#C0B0A0"   p="30"  y=" -8"  />
 <s m="sky/morning2_gen"    c="#D0D090"   p="30"  y="  8"  />
 
-<s m="sky/twighlight_gen"  c="#806030"   p=" 8"  y=" 48"  />
 <s m="sky/night_blue"      c="#3070B0"   p="12"  y=" 78"  />
 <s m="sky/offworld_gen"    c="#B0A090"   p="14"  y=" 27"  />
 
@@ -87,6 +83,7 @@
 <!--  skies, from hdri  -->
 <s m="sky/clouds_01_blurry"       c="#8a929d" p="26" y="-29" />	
 <s m="sky/cloudy_01"              c="#d1d0d0"   p="20"  y="0"  />
+<s m="sky/cloudy_02_brown"        c="#5b5b53"   p="25"  y="0"  /> 
 <s m="sky/cloudy_02_toxic"        c="#afc789"   p="25"  y="0"  />  <!-- Apo1-TarFields -->
 <s m="sky/cloudy_03_grey"         c="#717a7f"   p="55"  y="-5"  />
 <s m="sky/cloudy_03_dark"         c="#42565d"   p="55"  y="-5"  />
@@ -96,6 +93,10 @@
 <s m="sky/day_clouds_03_grey"     c="#8794a7" p="52" y="-47" />
 <s m="sky/day_clouds_04_blue"     c="#7b95ce" p="48" y="-35" />
 <s m="sky/day_clouds_05_bright"   c="#e6f9ff"   p="56"  y="28"  />
+<s m="sky/day_clouds_05_bright2"  c="#ecf0f3"   p="56"  y="28"  />
+<s m="sky/day_clouds_06"          c="#c3e3fd"   p="38"  y="0"  />
+<s m="sky/dawn_01"                c="#cac2ad"   p="15"  y="0"  />
+<s m="sky/dawn_01_orange"         c="#dda767"   p="15"  y="0"  />
 <s m="sky/dusk_stormy_01_blue"    c="#58677c"   p="13"  y="-2"  />
 <s m="sky/dusk_stormy_01_brown"   c="#5f6153"   p="13"  y="-2"  />
 <s m="sky/dusk_stormy_01_sur"     c="#bac018"   p="13"  y="-2"  />
