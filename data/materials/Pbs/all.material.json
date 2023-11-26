@@ -7933,7 +7933,7 @@
 
 		"River_Acid_green" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"fluid" : true,
@@ -8184,7 +8184,7 @@
 
 		"River_Blue_jelly" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -8246,7 +8246,7 @@
 
 		"River_Grease_jelly" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -8315,7 +8315,7 @@
 
 		"River_Green_slime" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
@@ -8375,7 +8375,7 @@
 
 		"River_Ice" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -8444,7 +8444,7 @@
 
 		"River_Ice_cyan" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -8506,7 +8506,7 @@
 
 		"River_LavaBlk" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"fluid" : true,
@@ -8574,7 +8574,7 @@
 
 		"River_LavaHot" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
@@ -8634,7 +8634,7 @@
 
 		"River_LavaOrn" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
@@ -8762,7 +8762,7 @@
 
 		"River_Oil" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"fluid" : true,
@@ -8823,7 +8823,7 @@
 
 		"River_Pink_jelly" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9146,7 +9146,7 @@
 
 		"River_blue_dark" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9212,7 +9212,7 @@
 
 		"River_clear_green" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9281,7 +9281,7 @@
 
 		"River_clear_white" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9343,7 +9343,7 @@
 
 		"River_cyan" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9412,7 +9412,7 @@
 
 		"River_dark" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9474,7 +9474,7 @@
 
 		"River_green" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9543,7 +9543,7 @@
 
 		"River_liquid_gas" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
@@ -9603,8 +9603,8 @@
 
 		"River_liquid_gas2" :
 		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"fluid" : true,
 			"workflow" : "specular_ogre",
@@ -9630,8 +9630,8 @@
 
 		"River_liquid_gas_space" :
 		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"fluid" : true,
 			"workflow" : "specular_ogre",
@@ -9657,7 +9657,7 @@
 
 		"River_milky_cyan" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9726,7 +9726,7 @@
 
 		"River_milky_white" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9795,7 +9795,7 @@
 
 		"River_moss" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9864,77 +9864,77 @@
 
 		"River_shore" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
-			"reflect" : true,
 			"fluid" : true,
+			"reflect" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
-				"value" : 0.76,
+				"value" : 0.7521215,
 				"mode" : "Transparent",
 				"use_alpha_from_textures" : true
 			},
 			"diffuse" :
 			{
-				"value" : [0.25128078, 0.2780311, 0.2469107],
+				"value" : [0.08293227, 0.12702724, 0.11733323],
 				"background" : [1, 1, 1, 1],
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_12"
 			},
 			"specular" :
 			{
-				"value" : [0.322, 0.32, 0.358],
-				"sampler" : "Sampler_10"
+				"value" : [0.12702724, 0.18582508, 0.18359964],
+				"sampler" : "Sampler_12"
 			},
 			"fresnel" :
 			{
-				"value" : [0.255, 0.27, 0.234],
+				"value" : [0.13697445, 0.21321617, 0.19936374],
 				"mode" : "coloured"
 			},
 			"normal" :
 			{
-				"value" : 1,
+				"value" : 1.6650219,
 				"texture" : "water_nm.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_12"
 			},
 			"roughness" :
 			{
 				"value" : 0.2,
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_12"
 			},
 			"detail_diffuse0" :
 			{
 				"value" : 1,
 				"offset" : [0.15, 0.1],
 				"scale" : [0.3, 0.15],
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_12"
 			},
 			"detail_diffuse1" :
 			{
 				"value" : 1,
 				"offset" : [0.3, 0.3],
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_12"
 			},
 			"detail_diffuse2" :
 			{
 				"value" : 1,
-				"offset" : [1, 0.15],
+				"offset" : [6, 0.15],
 				"scale" : [25, 1.5],
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_12"
 			},
 			"detail_diffuse3" :
 			{
 				"value" : 1,
-				"offset" : [6, 0.4],
-				"sampler" : "Sampler_10"
+				"offset" : [6, 0.44446492],
+				"sampler" : "Sampler_12"
 			}
 		},
 
 		"River_strange" :
 		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
 			"fluid" : true,
@@ -9961,8 +9961,8 @@
 
 		"River_strange2" :
 		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
 			"fluid" : true,
@@ -9989,7 +9989,7 @@
 
 		"River_sunset" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -10051,7 +10051,7 @@
 
 		"River_sunset_cyan" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -16377,7 +16377,7 @@
 
 		"River_white" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"fluid" : true,

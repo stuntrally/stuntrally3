@@ -52,7 +52,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	cmb->addItem(TR("#{Anisotropic}"));  cmb->addItem(TR("#{Anisotropic} #{RplAll}"));
 	cmb->setIndexSelected(pSet->g.tex_filt);  //cmbTexFilter(cmb, pSet->g.tex_filt); //-
 
-	sv= &svAnisotropy;	sv->Init("Anisotropy",	&pSet->g.anisotropy,  0,16);  SevC(Anisotropy);  sv->DefaultI(4);
+	sv= &svAnisotropy;	sv->Init("Anisotropy",	&pSet->g.anisotropy,  1,16);  SevC(Anisotropy);  sv->DefaultI(4);
 	// BtnC("ApplyShaders", btnShaders);
 
 	//  ⛰️ Terrain
