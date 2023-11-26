@@ -50,7 +50,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	cmb->removeAllItems();
 	cmb->addItem(TR("#{Bilinear}"));     cmb->addItem(TR("#{Trilinear}"));
 	cmb->addItem(TR("#{Anisotropic}"));  cmb->addItem(TR("#{Anisotropic} #{RplAll}"));
-	cmb->setIndexSelected(pSet->g.tex_filt);  cmbTexFilter(cmb, pSet->g.tex_filt); //-
+	cmb->setIndexSelected(pSet->g.tex_filt);  //cmbTexFilter(cmb, pSet->g.tex_filt); //-
 
 	sv= &svAnisotropy;	sv->Init("Anisotropy",	&pSet->g.anisotropy,  0,16);  SevC(Anisotropy);  sv->DefaultI(4);
 	// BtnC("ApplyShaders", btnShaders);
@@ -252,12 +252,12 @@ void CGuiCom::slFps(SV*)
 void CGuiCom::cmbTexFilter(CMB)
 {
 	pSet->g.tex_filt = val;
-	// todo: apply ugh
+	app->SetAnisotropy();
 }
 
 void CGuiCom::slAnisotropy(SV*)
 {
-	// todo: apply ugh
+	app->SetAnisotropy();
 }
 
 void CGuiCom::slViewDist(SV*)

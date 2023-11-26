@@ -78,14 +78,17 @@ public:
 
 
 	//  ⛓️ Utils  ----------------
-	//  wireframe
+	//  Wireframe
 	bool bWireframe = 0;
 	void SetWireframe();
 	void SetWireframe(Ogre::HlmsTypes type, bool wire);
-	//  tex wrap
+	//  Texture filtering, wrap
 	void SetTexWrap(Ogre::HlmsTypes type, Ogre::String name, bool wrap = true);
 	void SetTexWrap(Ogre::Item* it, bool wrap = true);
-	void InitTexFilters(Ogre::HlmsSamplerblock* sb, bool wrap = true);
+	void InitTexFiltUV(Ogre::HlmsSamplerblock* sb, bool wrap = true);
+	void InitTexFilt(Ogre::HlmsSamplerblock* sb);
+	void SetAnisotropy();
+	void SetAnisotropy(Ogre::Item* it);
 	//  select
 	void UpdSelectGlow(Ogre::Renderable *rend, bool selected);
 	void BarrierResolve(Ogre::TextureGpu* tex);  // fix rtt for vulkan
