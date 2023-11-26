@@ -30,6 +30,21 @@
 			"border" :[1, 1, 1, 1],
 			"min_lod" : -3.4028235e+38,
 			"max_lod" : 3.4028235e+38
+		},
+		"Sampler_Grass" :
+		{
+			"min" : "anisotropic",
+			"mag" : "anisotropic",
+			"mip" : "anisotropic",
+			"u" : "clamp",
+			"v" : "clamp",
+			"w" : "clamp",
+			"miplodbias" : 0,
+			"max_anisotropic" : 8,
+			"compare_function" : "disabled",
+			"border" :[1, 1, 1, 1],
+			"min_lod" : -3.4028235e+38,
+			"max_lod" : 3.4028235e+38
 		}
 	},
 
@@ -7918,7 +7933,7 @@
 
 		"River_Acid_green" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"fluid" : true,
@@ -8169,7 +8184,7 @@
 
 		"River_Blue_jelly" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -8231,7 +8246,7 @@
 
 		"River_Grease_jelly" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -8300,7 +8315,7 @@
 
 		"River_Green_slime" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
@@ -8360,7 +8375,7 @@
 
 		"River_Ice" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -8429,7 +8444,7 @@
 
 		"River_Ice_cyan" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -8491,7 +8506,7 @@
 
 		"River_LavaBlk" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"fluid" : true,
@@ -8559,7 +8574,7 @@
 
 		"River_LavaHot" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
@@ -8619,7 +8634,7 @@
 
 		"River_LavaOrn" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
@@ -8747,7 +8762,7 @@
 
 		"River_Oil" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"fluid" : true,
@@ -8808,7 +8823,7 @@
 
 		"River_Pink_jelly" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9131,7 +9146,7 @@
 
 		"River_blue_dark" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9197,7 +9212,7 @@
 
 		"River_clear_green" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9266,7 +9281,7 @@
 
 		"River_clear_white" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9328,7 +9343,7 @@
 
 		"River_cyan" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9397,7 +9412,7 @@
 
 		"River_dark" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9459,7 +9474,7 @@
 
 		"River_green" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9528,7 +9543,7 @@
 
 		"River_liquid_gas" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
@@ -9588,8 +9603,8 @@
 
 		"River_liquid_gas2" :
 		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"fluid" : true,
 			"workflow" : "specular_ogre",
@@ -9615,8 +9630,8 @@
 
 		"River_liquid_gas_space" :
 		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"fluid" : true,
 			"workflow" : "specular_ogre",
@@ -9642,7 +9657,7 @@
 
 		"River_milky_cyan" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9711,7 +9726,7 @@
 
 		"River_milky_white" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9780,7 +9795,7 @@
 
 		"River_moss" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -9849,77 +9864,77 @@
 
 		"River_shore" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
-			"reflect" : true,
 			"fluid" : true,
+			"reflect" : true,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
-				"value" : 0.76,
+				"value" : 0.7521215,
 				"mode" : "Transparent",
 				"use_alpha_from_textures" : true
 			},
 			"diffuse" :
 			{
-				"value" : [0.25128078, 0.2780311, 0.2469107],
+				"value" : [0.08293227, 0.12702724, 0.11733323],
 				"background" : [1, 1, 1, 1],
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_12"
 			},
 			"specular" :
 			{
-				"value" : [0.322, 0.32, 0.358],
-				"sampler" : "Sampler_10"
+				"value" : [0.12702724, 0.18582508, 0.18359964],
+				"sampler" : "Sampler_12"
 			},
 			"fresnel" :
 			{
-				"value" : [0.255, 0.27, 0.234],
+				"value" : [0.13697445, 0.21321617, 0.19936374],
 				"mode" : "coloured"
 			},
 			"normal" :
 			{
-				"value" : 1,
+				"value" : 1.6650219,
 				"texture" : "water_nm.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_12"
 			},
 			"roughness" :
 			{
 				"value" : 0.2,
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_12"
 			},
 			"detail_diffuse0" :
 			{
 				"value" : 1,
 				"offset" : [0.15, 0.1],
 				"scale" : [0.3, 0.15],
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_12"
 			},
 			"detail_diffuse1" :
 			{
 				"value" : 1,
 				"offset" : [0.3, 0.3],
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_12"
 			},
 			"detail_diffuse2" :
 			{
 				"value" : 1,
-				"offset" : [1, 0.15],
+				"offset" : [6, 0.15],
 				"scale" : [25, 1.5],
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_12"
 			},
 			"detail_diffuse3" :
 			{
 				"value" : 1,
-				"offset" : [6, 0.4],
-				"sampler" : "Sampler_10"
+				"offset" : [6, 0.44446492],
+				"sampler" : "Sampler_12"
 			}
 		},
 
 		"River_strange" :
 		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
 			"fluid" : true,
@@ -9946,8 +9961,8 @@
 
 		"River_strange2" :
 		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
 			"fluid" : true,
@@ -9974,7 +9989,7 @@
 
 		"River_sunset" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -10036,7 +10051,7 @@
 
 		"River_sunset_cyan" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"reflect" : true,
@@ -16362,7 +16377,7 @@
 
 		"River_white" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"fluid" : true,
@@ -20759,7 +20774,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass10.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -20788,7 +20803,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass11w.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -20817,7 +20832,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass11wg.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -20846,7 +20861,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass12o.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -20875,7 +20890,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass12s.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -20904,7 +20919,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass12w.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -20933,7 +20948,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass12y-.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -20962,7 +20977,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass15.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -20991,7 +21006,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass15g.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21020,7 +21035,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass15o.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21049,7 +21064,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass16g.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21078,7 +21093,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass16r.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21107,7 +21122,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass16s.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21136,7 +21151,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass17.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21165,7 +21180,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass17r.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21194,7 +21209,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass18gw.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21223,7 +21238,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass18s.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21252,7 +21267,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass18w.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21281,7 +21296,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass18wg.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21310,7 +21325,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass19.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21339,7 +21354,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass2.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21368,7 +21383,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass20.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21397,7 +21412,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass20p.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21426,7 +21441,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass2g.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21455,7 +21470,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass3.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21484,7 +21499,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass3g.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21513,7 +21528,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass3m.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21542,7 +21557,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass3o.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21571,7 +21586,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass3s.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21600,7 +21615,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass3y.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21629,7 +21644,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass4m.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21658,7 +21673,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass4v.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21687,7 +21702,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass4v-alien.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21716,7 +21731,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass5.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21745,7 +21760,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass6r.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21774,7 +21789,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass6s.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21803,7 +21818,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass7wg.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21832,7 +21847,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass7wy.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21861,7 +21876,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass8g.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21890,7 +21905,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grass9r.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21919,7 +21934,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAnomaly01a.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21952,7 +21967,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAnomaly01b.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -21981,7 +21996,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAnomaly01c.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22010,7 +22025,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAnomaly02a.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22043,7 +22058,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAnomaly02b.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22072,7 +22087,7 @@
 				"value" : [0.5, 0.5, 0.4],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAnomaly02c.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22101,7 +22116,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAnomaly03a.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22134,7 +22149,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAnomaly03b.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22163,7 +22178,7 @@
 				"value" : [0.5, 0.5, 0.4],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAnomaly03c.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22192,7 +22207,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAnomaly04a.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22225,7 +22240,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAnomaly04b.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22254,7 +22269,7 @@
 				"value" : [1.49, 1.49, 1.4],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAnomaly04c.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22283,7 +22298,7 @@
 				"value" : [0.5, 0.5, 0.5],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassAustralia.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22312,7 +22327,7 @@
 				"value" : [0.5, 0.5, 0.5],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassDesert.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22341,7 +22356,7 @@
 				"value" : [0.5, 0.5, 0.5],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassForest.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22370,7 +22385,7 @@
 				"value" : [0.5, 0.55, 0.5],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassGreece.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22399,7 +22414,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassJungle.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22428,7 +22443,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassSavanna.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22457,7 +22472,7 @@
 				"value" : [0.4, 0.4, 0.4],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassUnidentified.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22486,7 +22501,7 @@
 				"value" : [0.5, 0.5, 0.5],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassWinter.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22515,7 +22530,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassX10b.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22544,7 +22559,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassX10b-alien.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22573,7 +22588,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassX13p.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22602,7 +22617,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassXc.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22631,7 +22646,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassXc-alien.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22660,7 +22675,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassXv.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22689,7 +22704,7 @@
 				"value" : [0, 0, 0],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassZ10.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22708,7 +22723,7 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "grassZ10.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			}
 		},
 
@@ -22724,7 +22739,7 @@
 				"value" : [0, 0, 0],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassZ11.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22743,7 +22758,7 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "grassZ11.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			}
 		},
 
@@ -22759,7 +22774,7 @@
 				"value" : [0, 0, 0],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassZ13p.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22778,7 +22793,7 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "grassZ13p.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			}
 		},
 
@@ -22794,7 +22809,7 @@
 				"value" : [0, 0, 0],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassZ13r.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22813,7 +22828,7 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "grassZ13r.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			}
 		},
 
@@ -22829,7 +22844,7 @@
 				"value" : [0, 0, 0],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassZ14r.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22848,7 +22863,7 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "grassZ14r.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			}
 		},
 
@@ -22864,7 +22879,7 @@
 				"value" : [0, 0, 0],
 				"background" : [1, 1, 1, 1],
 				"texture" : "grassZ1r.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -22883,7 +22898,7 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "grassZ1r.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			}
 		},
 
@@ -24757,6 +24772,7 @@
 		{
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
+			"reflect" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
@@ -24768,25 +24784,41 @@
 			},
 			"specular" :
 			{
-				"value" : [0.5, 1.6, 1],
+				"value" : [0.5, 1.6, 1.2],
 				"texture" : "obstaclesCrystal_s.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.6, 0.6, 0.6],
+				"value" : [0.8, 0.8, 0.8],
 				"mode" : "coloured"
 			},
 			"normal" :
 			{
-				"value" : 1.2,
+				"value" : 0.7,
 				"texture" : "obstaclesCrystal_n.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 0.1
-			}
+				"value" : 0.35
+			},
+            "detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [8, 8],
+                "value" : 0.5,
+                "texture" : "metal_212_wh.jpg",
+                "sampler" : "Sampler_10"
+            },
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [8, 8],
+                "value" : 0.9,
+                "texture" : "metal_212_spec.jpg",
+                "sampler" : "Sampler_10"
+            }
 		},
 
 		"obstaclesGreen" :
@@ -24821,8 +24853,25 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.3
-			}
+				"value" : 0.3,
+				"texture" : "obstaclesGreen_s.jpg"
+			},
+            "detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [12, 12],
+                "value" : 0.8,
+                "texture" : "metal_212_wh.jpg",
+                "sampler" : "Sampler_10"
+            },
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [12, 12],
+                "value" : 0.9,
+                "texture" : "metal_212_spec.jpg",
+                "sampler" : "Sampler_10"
+            }
 		},
 
 		"obstaclesGrey" :
@@ -24857,8 +24906,25 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.3
-			}
+				"value" : 0.7,
+				"texture" : "obstaclesGrey_n.jpg"
+			},
+            "detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [12, 12],
+                "value" : 0.8,
+                "texture" : "metal_212_wh.jpg",
+                "sampler" : "Sampler_10"
+            },
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [12, 12],
+                "value" : 0.9,
+                "texture" : "metal_212_spec.jpg",
+                "sampler" : "Sampler_10"
+            }
 		},
 
 		"obstaclesMarble" :
@@ -24894,7 +24960,23 @@
 			"roughness" :
 			{
 				"value" : 0.4
-			}
+			},
+            "detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [16, 16],
+                "value" : 0.8,
+                "texture" : "metal_212_wh.jpg",
+                "sampler" : "Sampler_10"
+            },
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [16, 16],
+                "value" : 0.9,
+                "texture" : "metal_212_spec.jpg",
+                "sampler" : "Sampler_10"
+            }
 		},
 
 		"obstaclesRed" :
@@ -24965,10 +25047,26 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.3,
+				"value" : 0.5,
 				"texture" : "obstaclesWhite_s.jpg",
 				"sampler" : "Sampler_10"
-			}
+			},
+            "detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [12, 12],
+                "value" : 0.8,
+                "texture" : "metal_212_wh.jpg",
+                "sampler" : "Sampler_10"
+            },
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [12, 12],
+                "value" : 0.9,
+                "texture" : "metal_212_spec.jpg",
+                "sampler" : "Sampler_10"
+            }
 		},
 
 		"oil_pump" :
@@ -35273,7 +35371,7 @@
 			},
 			"specular" :
 			{
-				"value" : [0.9, 0.9, 0.8]
+				"value" : [0.1, 0.1, 0.1]
 			},
 			"fresnel" :
 			{
@@ -35282,13 +35380,13 @@
 			},
 			"normal" :
 			{
-				"value" : 1,
+				"value" : 1.7,
 				"texture" : "normal_2.png",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 0.5
+				"value" : 0.34
 			},
 			"detail_diffuse0" :
 			{
@@ -47603,13 +47701,13 @@
 			"specular" :
 			{
 				"value" : [1, 1, 1],
-				"texture" : "wagon_wheels_spec.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : 0.6,
-				"mode" : "coeff"
+				"value" : [0.6, 0.6, 0.6],
+				"texture" : "wagon_wheels_spec.jpg",
+				"mode" : "coloured"
 			},
 			"normal" :
 			{

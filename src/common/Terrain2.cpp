@@ -50,7 +50,7 @@ void CScene::CreateTerrain1(int n)
 	
 	//  tex filtering
 	HlmsSamplerblock sb;
-	app->InitTexFilters(&sb);
+	app->InitTexFiltUV(&sb);
 	auto* texMgr = app->mRoot->getRenderSystem()->getTextureGpuManager();
 
 	//  triplanar  ----

@@ -51,7 +51,7 @@ void AppGui::SetWireframe(HlmsTypes type, bool wire)
 void AppGui::SetTexWrap(HlmsTypes type, String name, bool wrap)
 {
 	HlmsSamplerblock sb;
-	InitTexFilters(&sb, wrap);
+	InitTexFiltUV(&sb, wrap);
 
 	Hlms *hlms = mRoot->getHlmsManager()->getHlms( type );
 	if (type == HLMS_PBS)
@@ -66,18 +66,60 @@ void AppGui::SetTexWrap(HlmsTypes type, String name, bool wrap)
 
 void AppGui::SetTexWrap(Item* it, bool wrap)
 {
+	SetAnisotropy(it);
+
+return;  //! **  wrap in .json, no need-
 	HlmsSamplerblock sb;
-	InitTexFilters(&sb, wrap);
+	InitTexFiltUV(&sb, wrap);
 
 	assert( dynamic_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() ) );
-	HlmsPbsDatablock *db =
-		static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
+	HlmsPbsDatablock *db = static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
 	
 	for (int n=0; n < NUM_PBSM_SOURCES; ++n)  // all
-		db->setSamplerblock( PBSM_DIFFUSE + n, sb );
+		db->setSamplerblock( n, sb );
 }
 
-void AppGui::InitTexFilters(HlmsSamplerblock* sb, bool wrap)
+void AppGui::SetAnisotropy(Item* it)
+{
+	assert( dynamic_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() ) );
+	HlmsPbsDatablock *db = static_cast< HlmsPbsDatablock *>( it->getSubItem(0)->getDatablock() );
+	
+	for (int n=0; n < NUM_PBSM_SOURCES; ++n)  // all
+	{
+		const HlmsSamplerblock *s = db->getSamplerblock( n );
+		if (s)
+		{
+			HlmsSamplerblock sb( *s );
+			InitTexFilt(&sb);
+			db->setSamplerblock( n, sb );
+		}
+	}
+}
+
+void AppGui::SetAnisotropy()
+{
+	return;  //! ** drops road UV wrap on load!
+
+	Hlms *hlms = mRoot->getHlmsManager()->getHlms( HLMS_PBS );
+	const auto& dbs = hlms->getDatablockMap();
+	for (auto it = dbs.begin(); it != dbs.end(); ++it)
+	{
+		auto* db = static_cast< HlmsPbsDatablock *>(it->second.datablock);
+		// if (db)
+		for (int n=0; n < NUM_PBSM_SOURCES; ++n)  // all
+		{
+			const HlmsSamplerblock *s = db->getSamplerblock( n );
+			if (s)
+			{
+				HlmsSamplerblock sb( *s );
+				InitTexFilt(&sb);
+				db->setSamplerblock( n, sb );
+			}
+		}
+	}
+}
+
+void AppGui::InitTexFilt(HlmsSamplerblock* sb)
 {
 	FilterOptions mia, mip;
 	switch (pSet->g.tex_filt)
@@ -91,6 +133,11 @@ void AppGui::InitTexFilters(HlmsSamplerblock* sb, bool wrap)
 	sb->mMipFilter = mip;
 
 	sb->mMaxAnisotropy = pSet->g.anisotropy;
+}
+
+void AppGui::InitTexFiltUV(HlmsSamplerblock* sb, bool wrap)
+{
+	InitTexFilt(sb);
 
 	auto w = wrap ? TAM_WRAP : TAM_CLAMP;
 	sb->mU = w;  sb->mV = w;  sb->mW = w;

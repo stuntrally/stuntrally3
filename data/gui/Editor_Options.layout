@@ -511,14 +511,14 @@
 							<Property key="TextColour" value="0.2 1 0.2"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="32 50 172 24">
-							<Property key="Caption" value="#{Textures} *"/>
+							<Property key="Caption" value="#{Textures} **"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="Alpha" value="1"/>
 							<Property key="TextColour" value="0.2 1 0.2"/>
 						</Widget>
 						
 						<Widget type="TextBox" skin="TextBox" position="32 80 172 24">
-							<Property key="Caption" value="#{Anisotropy} *"/>
+							<Property key="Caption" value="#{Anisotropy} **"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.2 1 0.2"/>
 						</Widget>
