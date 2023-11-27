@@ -1,21 +1,32 @@
-_How to add or create static and dynamic objects with Blender._
+_Adding static or dynamic objects into SR3, using Blender and exporting._
 
 
 ## Adding
 
-  - **Create** a model in **Blender**
-  - or **Download**, license **must** be: CC0, CC-BY, CC-BY-SA, only, if not specified don't bother  
-    _**Note:**_ Do a sane test, to check for proper human **Artist**.  
-    There are now many trolls, kids, idiots copying other's or illegally got stuff and putting on Sketchfab, and they don't check it.  
-    Usually if you see a name, registered few years ago, with some link to Artist's other website too, then it's good.
+To add a model / object you can either **Create** it in [**Blender**](https://www.blender.org/), or:
 
-### Using objects from other websites
-Download from one of the model web portals like [sketchfab](https://sketchfab.com/search?category=nature-plants&features=downloadable&licenses=7c23a1ba438d4306920229c12afcb5f9&licenses=b9ddc40b93e34cdca1fc152f39b9f375&licenses=322a749bcfa841b29dff1e8a1bb74b0b&sort_by=-viewCount&type=models), [blendswap](https://www.blendswap.com/categories), [polyhaven](https://polyhaven.com/models/nature) or [opengameart](https://opengameart.org/)
+### Use CC objects
+
+Download from one of the model web portals like: [sketchfab](https://sketchfab.com/search?category=nature-plants&features=downloadable&licenses=7c23a1ba438d4306920229c12afcb5f9&licenses=b9ddc40b93e34cdca1fc152f39b9f375&licenses=322a749bcfa841b29dff1e8a1bb74b0b&sort_by=-viewCount&type=models), [blendswap](https://www.blendswap.com/categories), [polyhaven](https://polyhaven.com/models/nature) or [opengameart](https://opengameart.org/).
+
+<u>**NOTE 1:**</u> License **must** be: CC0, CC-BY, CC-BY-SA, only (info e.g. [here](https://en.wikipedia.org/wiki/Creative_Commons_license)).  
+If not specified, don't bother. _E.g. there is a lot of stuff only for use in Unity, UE or such nonsense, or "free download" crap)._  
+
+**Note 2:** Also needs a "sanity test", to check for proper human **Artist(s)**.  
+_There are now many trolls, kids, bots, idiots copying other's or illegally got stuff and putting on Sketchfab, and they don't check it._  
+Usually if you see a name, registered few years ago, with some link to Artist's other website too, then it's good.  
+
+**Note 3:** Also, check description, because sometimes e.g. used textures aren't licensed properly and need to be replaced, etc.
+
+Many models there are too high poly (high faces/triangles count) and meant for movies or rendering, not for games.
+
+## Steps
 
 This here is a short list before contributing.
 
   - Once seen the model is ok, and can be useful:
-    * create a folder with a **good_name** - to have some consistency, when picking model in editor, etc.
+    * create a folder with a **good_name** (but_not_too_long)  
+      to have some consistency, when picking model in editor, etc.
     * convert .tga to **.png**, .obj (or other) to .blend
     * use **.jpg** textures to save size (e.g. 90-95% quality), unless transparent / alpha needed
     * check textures, possibly **resize**: for small objects 1k is ok, 2k for bigger,  
@@ -24,7 +35,8 @@ This here is a short list before contributing.
     * (old) possibly attach preview.jpg - so people may be interested in working with the model further
     * make a fork, then PR, to upload to [blendfiles](https://github.com/stuntrally/blendfiles) repo
   - Export from Blender to Ogre .mesh, check the look in game
-    * remember to use real life scale (meters)
+    * remember to use real life **scale** - meters
+    * **compare** size to a car (start pos), e.g don't do real buildings that are *bigger* than a human would use
     * reset all transforms (Ctrl A) before exports
   - **Dynamic** objects need `.bullet` file
     * watch this: [video](http://www.youtube.com/watch?v=fv-Oq5oe8Nw) and add that to logic,  
@@ -33,7 +45,7 @@ This here is a short list before contributing.
     * on Material tab under Physics set friction
     * on Physics tab set mass, damping (linear and angular, check in game)
     * don't forget to set the Margin to e.g. 0.1 under collision bounds
-    * for static models: if too high poly - create 1 simple mesh for collision  
+    * for static models: if too high poly - create 1 simpler mesh for collision (we never did it yet)  
       if low poly - (like 0AD building) do nothing, will have trimesh made in code
   - Done (be happy, suggest adding it to some tracks, or make a new with it, use other too)
 
@@ -49,10 +61,8 @@ Fortunately there are plenty of tutorials, videos, websites and books to pick up
 Currently static and dynamic objects are stored in the `/data/objects` and similar folders.  
 It contains Ogre mesh files (binary), surface images (textures) and .bullet files for dynamic objects.
 
-![](images/img20121230_1.png)
-
    
-#### Tutorial 1
+## Tutorial 1
 
 ### Requirements
 
@@ -61,40 +71,70 @@ Blender, [Downloads here](https://www.blender.org/download/get-blender/).
 ### Export plugin
 
 Blender comes with plenty of import and export plugins, but the Ogre export plugin we need to download separately.  
+
+Ogre-Next 3.0 for now has no SDK, so SR 3.0 RC3 has a file `ogre-mesh-v2.7z` [link](https://github.com/stuntrally/stuntrally3/releases/tag/3.0-rc3).  
+So firstly unpack `ogre-mesh-v2.7z` somewhere.
+
 Download the latest **blender2ogre** plugin [from here](https://github.com/OGRECave/blender2ogre/releases)
 and follow [installing](https://github.com/OGRECave/blender2ogre#installing) guide.
 
-### Install the plugin in Blender
+I.e. extract `io_ogre` to addons, then enable it in Blender, and configure to use:
+- on Windows that `OgreMeshTool.exe` from our `ogre-mesh-v2.7z`
+- on Linux `OgreMeshTool` binary, if built yourself in `/Ogre/ogre-next/build/Release/bin/`
 
-Open preferences (menu|file), Add-Ons, Install from file, pick io_export_ogreDotScene.py then click Install from file.  
-Next switch to tab Import-Export and find OGRE Exporter, mark that checkbox to enable it (if it isn't).
+Screen with installed and configured plugin in Blender options (on Linux):
 
-![](images/img20121230_3.png)
+![](images/blender-export-addons.png)
 
-![](images/img20121230_2.png)
-
-### Install the Ogre Command Line tools
-
-Windows: Download it from http://www.ogre3d.org/download/tools and unzip it to the default folder (C:\OgreCommandLineTools)  
-Linux: Should be included with your Ogre package. On Ubuntu, it is included in the ogre-1.9-tools package. The binary we are looking for is "OgreXMLConverter", so try running that to see whether you have it installed.
-
-**NEW**  
-For SR3 the `OgreMeshTool` binary is needed, which is built along with Ogre-Next.  
-Script [ogre-mesh.py](../config/ogre-mesh.py) can convert multiple Ogre 1.x (or 2.x) `.mesh` files to final 2.1 format.  
-Sample syntax for LODs count, distances, tangents and other options passes as arguments to `OgreMeshTool` are in [ogre-mesh.py](../config/ogre-mesh.py).
+After all that you can export from Blender menu directly Ogre `.mesh` files for use in SR3 now.
 
 
-#### Create a simple static object
+### Old v1 mesh
+
+Other option is to export old way (like for SR 2.x) .mesh v1. And then convert it to v2 .mesh. Like so:  
+`OgreMeshTool -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 10 something.mesh`  
+This is also for converting any objects from old SR 2.x.
+
+### LODs
+
+More arguments examples passed as arguments to `OgreMeshTool`  
+(for -l LODs count, -d distances, -p % reduce, tangents and other options)  
+are in [ogre-mesh.py](../config/ogre-mesh.py) Python script.  
+
+For many meshes you can just run this script, it does convert all files in 1 folder (set inside).
+
+We use LODs now, which are crucial for vegetation.  
+They need some time to test. For high poly surely:  
+3 LOD levels, distance 200 or so and LOD % reduce 10 (or more if ok).
+
+It needs to be tweaked, so that there are no holes (missing tris)  
+as viewed in SR3, when you lower to 0 - in Graphics - Detail - first slider (Objects, Vegetation) - aka *the LOD bias*.
+
+----
+
+## Create a simple static object
 
 For testing purpose we just export a Blender default object (the box, or maybe the monkey)
 
 ![](images/img20121230_4.png)
 
-Export to mesh (File|export|Ogre3D)  
-If succesfull, you will find 2 files in the selected folder (1 mesh file in xml format and 1 binary mesh fie)  
-From the exporter options pick axes as "xz-y", use tangents (mark checked), uncheck edges-list (we don't need them).
 
-**Copy the binary** `.mesh` into the `objects/` or similar folder.
+## Export
+
+To export, select mesh in Blender and use from menu: File - Export - Ogre3D.
+
+It is **crucial** to have `xz-y` set and `generate tangents` in *Blender Ogre export* dialog.  
+Most likely also LODs values, best if tested in SR3.  
+
+Rest can be seen on screen (right side has options twice because it scrolls down):  
+
+![](images/blender-export-dialog.png)
+
+File name here isn't needed, `.mesh` file will be named like mesh(es) in Blender.
+
+It can take few seconds. If succesfull, you will find .mesh file(s) in the selected folder  
+
+**Copy the binary** `.mesh` into the `objects/` or similar folder in SR3 `data/`.
 
 Start **SR Editor** and place the object.
 
@@ -105,7 +145,7 @@ Not much interaction, other than you can collide with the object, but it will no
 That's why we continue to create a dynamic object, by creating a binary `.bullet` file containing all necessary physical information.
 
 
-#### Create a dynamic object
+## Create a dynamic object
 
 Blender can export the dynamics of an object (to be more exact of the whole world in your Blender project) to binary file.  
 This part of the tutorial will walk through the necessary steps.
@@ -180,42 +220,19 @@ Only use hight poly (over 50k tris) meshes if:
 - you will reduce (Decimate) it in Blender and it works well
 - or you apply good % reducing LODs with OgreMeshTool
 
-### Materials, OLD SR
+### Materials
 
-It is needed to name materials in blender with some prefix (e.g. from your object) so that all material names are unique in game.
-Then knowing your material names, it's needed to add them in .mat.
-For static objects edit file data/materials/objects_static.mat or objects_dynamic.mat if your object is dynamic (has .bullet file and can move).
+It is needed to name materials in blender with some prefix (e.g. from your object) so that all material names are unique in game.  
+Then knowing your material name(s), it's needed to add them in [all.material.json](../data/materials/Pbs/all.material.json).
+More about syntax with examples in [Materials](Materials.md#🌠-new-materialjson) page, 2nd half.
 
-The simplest material is white, not that diffuseMap parameter must be present.
-```
-material my_new_object
-{
-	parent base
-	diffuseMap white.png
-}
-```
+Texture files should also be copied to `data/objects*` (same place where .mesh and .bullet).  
 
-The syntax is quite simple and powerful. It allows using all implemented material features with few lines.
-```
-material my_new_object
-{
-	parent base
-	diffuseMap pers_struct.dds
-	normalMap pers_struct_norm.png
-	ambient 0.9 0.9 0.9
-	diffuse 1.0 1.0 1.0
-	specular 0.4 0.4 0.3 6
-	terrain_light_map true
-	bump_scale 1.3
-}
-```
-Your texture file name should be after diffuseMap. This file should also be copied to data/objects (same place where .mesh and .bullet).
+Use diffuse, specular, fresnel for colors of different PBS lighting, all have Red,Green,Blue values.  
+Diffuse depends on light direction. And specular for shininess.  
 
-Use ambient, diffuse and specular for colors of different lighting, all have Red,Green,Blue values. Ambient is constant (this is what you see when objects is in shadow). Diffuse depends on light direction (only the lit side). And specular also has a power exponent, the 4th value, after R,G,B. Small values e.g. 4 make matte-like surfaces, where high e.g. 64 make it quite shiny.
-
-Comments are made with `//`. So if you don't want to use a line you can either delete it or add `//` in front.
-
-If you have a normalMap use it in material (remember to have tangents generated during export). Normal map could be either already provided, or you can generate it using GIMP normal map plugin.
+If you have a normal map use it in material (remember to have tangents generated during export).  
+Normal map could be either already provided, or you can generate it using GIMP normal map plugin.  
 The last parameter bump_scale can be used to scale normal map's effect. Default value is 1.0. More will make it bumpier.
 
 You can use own texture for specular in specMap.   
