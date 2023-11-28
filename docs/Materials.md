@@ -24,7 +24,7 @@ If you add a unique thing, used on couple tracks, rate it low, unless it's meant
 ### 🔮 Materials
 
 **All materials** are now in [all.material.json](../data/materials/Pbs/all.material.json).  
-Only particles aren't yet.  
+Only unlit: particles and hud aren't yet.  
 More info on this `.json` format at bottom.
 
 ### 📝 Text
@@ -51,7 +51,8 @@ They are all .jpg saved at about 97%. Size is square 1k (1024) or 2k.
 Name endings mean:  
 _d - diffuse texture (main)  
 _s - specular amount (not color)   if not present, will be black (no specular)  
-_n - normal map (needed, if not provided can be made with some tool)   You can use flat_n.png before real normalmap for quicker test.  
+_n - normal map (needed, if not provided can be made with some tool)  
+_You can use flat_n.png before real normalmap for quicker test._  
 *_h - old not used now, was for broken parallax height*
 
 Unlike other things, terrain has its own material and shader, so only adding to presets.xml is needed.
@@ -591,16 +592,17 @@ Extra textures (layers) can be added to modulate original diffuse and/or normal 
 
 In this quite advanced material, 2 extra maps are added.  
 First `detail_diffuse0` map multiplying regular `diffuse` map.  
-Other variants possible, all are inside `@piece` in [this shader file](../data/Hlms/Pbs/Any/Main/200.BlendModes_piece_ps.any).
-The "scale" is UV coords multiplier, it means that detail map with repeat 12 times more.
+Other `mode` variants are possible, all inside `@piece` in [this shader file](../data/Hlms/Pbs/Any/Main/200.BlendModes_piece_ps.any).  
+The `scale"` is UV coords multiplier, it means that detail map will repeat 12 times more.  
+There is also `offset` which just gets added to UV coords.
 
-Great for adding smaller scale detail like scratches, etc.
+Great for adding smaller scale detail like scratches, etc.  
 Mostly detail_diffuse0 should be white though to not change regular color.
 
-Another map is `detail_normal0` to modulate `normal` map.
+Another map is `detail_normal0` to modulate `normal` map.  
 The `value` is a multiplier for how much.
 
-Note that `detail_diffuse0` and `detail_normal0` aren't required both, only diffuse or normal is okay too.
+Note that `detail_diffuse0` and `detail_normal0` aren't required both, only diffuse or normal is okay too.  
 Also value, scale and offset can have other values set.
 
 There can be more detail maps (4 total, 0..3). But let's not over do this, it affects Fps (performance).
