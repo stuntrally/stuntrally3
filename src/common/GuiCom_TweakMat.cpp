@@ -25,9 +25,10 @@ using namespace std;
 //------------------------------------------------------------------------------------------------------------
 
 //  👆 pick material from list
-void CGuiCom::listTweakMtr(Li li, size_t val)
+void CGuiCom::listTweakMtr(Li li, size_t id)
 {
-	auto s = li->getItemNameAt(val);
+	if (id == ITEM_NONE || id >= li->getItemCount())  return;
+	auto s = li->getItemNameAt(id);
 	if (!s.empty() && s[0] == '#')
 		s = s.substr(7);
 	
@@ -97,7 +98,7 @@ void CGuiCom::InitGuiTweakMtr()
 	// TWK(Fresnel, 0.f, 1.5f)
 	TWK(FresR, 0.f, 1.5f)  TWK(FresG, 0.f, 1.5f)  TWK(FresB, 0.f, 1.5f)
 
-	TWK(Rough, 0.001f, 1.5f)  TWK(Metal, 0.f, 1.5f)
+	TWK(Rough, 0.001f, 1.5f)  //TWK(Metal, 0.f, 1.5f)
 	TWK(ClearCoat, 0.f, 1.5f)  TWK(ClearRough, 0.001f, 1.5f)
 
 	TWK(BumpScale, 0.0f, 6.f)  TWK(Transp, 0.f, 1.f)
@@ -162,7 +163,7 @@ void CGuiCom::slTweakMtr(SV* sv)
 	else if (s=="FresR" || s=="FresG" || s=="FresB")   twk.db->setFresnel(Vector3(twk.fFresR, twk.fFresG, twk.fFresB), true);
 
 	else if (s=="Rough")       twk.db->setRoughness(twk.fRough);
-	else if (s=="Metal")       twk.db->setMetalness(twk.fMetal);
+	//else if (s=="Metal")       twk.db->setMetalness(twk.fMetal);
 	else if (s=="ClearCoat")   twk.db->setClearCoat(twk.fClearCoat);
 	else if (s=="ClearRough")  twk.db->setClearCoatRoughness(twk.fClearRough);
 
@@ -191,7 +192,7 @@ void CGuiCom::slTweakMtr(SV* sv)
 void CGuiCom::updTweakMtr()
 {
 	auto hlms = app->mRoot->getHlmsManager()->getHlms( HLMS_PBS );
-	twk.db = (HlmsPbsDatablock*) hlms->getDatablock( pSet->tweak_mtr );
+	twk.db = (HlmsPbsDb2*) hlms->getDatablock( pSet->tweak_mtr );
 	if (!twk.db)  return;
 	Vector4 u;  Vector3 v;  float f;  int i,x;
 
@@ -200,7 +201,7 @@ void CGuiCom::updTweakMtr()
 	v = twk.db->getFresnel();   twk.fFresR = v.x;  twk.fFresG = v.y;  twk.fFresB = v.z;  twk.svFresR.Upd(); twk.svFresG.Upd(); twk.svFresB.Upd();
 
 	f = twk.db->getRoughness();  twk.fRough = f;  twk.svRough.Upd();
-	f = twk.db->getMetalness();  twk.fMetal = f;  twk.svMetal.Upd();
+	//f = twk.db->getMetalness();  twk.fMetal = f;  twk.svMetal.Upd();
 	f = twk.db->getClearCoat();  twk.fClearCoat = f;  twk.svClearCoat.Upd();
 	f = twk.db->getClearCoatRoughness();  twk.fClearRough = f;  twk.svClearRough.Upd();
 
@@ -222,6 +223,10 @@ void CGuiCom::updTweakMtr()
 
 	//----------------------------------------------------------------------------------------------------
 	StringStream s;  // info only ..
+	const static String sTypes[DB_ALL] = { "PBS", "Paint", "Fluid" };
+
+	s << "#C0C0C0Reflect: #E0E0E0" << (twk.db->reflect ? "yes" : "no");
+	s << "#B0C0D0   Type: #D0E0F0" << sTypes[twk.db->eType] << endl;
 
 	s << "#20F020   Textures: #D0FFD0" << endl;
 	auto* tex = twk.db->getDiffuseTexture();    if (tex)  s << "Diffuse:    " << tex->getNameStr() << endl;

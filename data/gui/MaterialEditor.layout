@@ -189,20 +189,17 @@
 						<UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/>
 					</Widget>
 
-					<!-- Metal  ***  -->
+					<!-- Metal  ***  not
 					<Widget type="TextBox" skin="TextBox" position="0 230 118 20">
 						<Property key="TextColour" value="0.5 0.7 0.7"/>
 						<Property key="Caption" value="#{ColMetalness}"/>
-						<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
 					</Widget>
 					<Widget type="Slider" skin="Slider" position="200 230 350 17" name="Metal">
 						<Property key="Colour" value="0.5 0.7 0.7"/>
-						<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
 					</Widget>
 					<Widget type="EditBox" skin="EditBox" position="120 230 75 20" name="MetalEdit">
 						<Property key="TextColour" value="0.5 0.7 0.7"/>
-						<!-- <UserString key="tip" value="#{ColRoughness} - #{TipChangeGloss}"/> -->
-					</Widget>
+					</Widget>-->
 
 
 					<!-- Clear coat -->
