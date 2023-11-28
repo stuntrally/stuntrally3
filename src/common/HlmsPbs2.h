@@ -69,6 +69,7 @@ enum EType
 	DB_PBS =0,  // default normal
 	DB_Paint,  // paint for vehicles
 	DB_Fluid,  // water, mud etc
+	DB_ALL
 };
 
 class HlmsPbsDb2 : public Ogre::HlmsPbsDatablock

@@ -125,7 +125,7 @@ bool CARDYNAMICS::Load(GAME* game, CONFIGFILE& c)
 		if (!c.GetParamE("engine.sound", engine.sound_name))
 			engine.sound_name = "engine";
 
-		if (!c.GetParamE("turbo.sound", turbo.sound_name))
+		if (!c.GetParam("turbo.sound", turbo.sound_name))
 			turbo.sound_name.clear();
 
 		if (!c.GetParamE("engine.rpm-limit", rpm_limit))  return false;

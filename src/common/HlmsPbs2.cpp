@@ -55,6 +55,7 @@ void HlmsPbs2::calculateHashForPreCreate(
 	HlmsPbs::calculateHashForPreCreate( rnd, inOut );
 	
 	const auto& mtr = rnd->getDatablockOrMaterialName();
+	auto* db = (HlmsPbsDb2*)rnd->getDatablock();
 	// LogO("- calc pbs: " + mtr);   // on every item
 	
 	bool fluid = false;
@@ -62,6 +63,13 @@ void HlmsPbs2::calculateHashForPreCreate(
 		fluid = pFluidsXml->MatInMap(mtr);
 	else
 		LogO("HlmsPbs2 pFluidsXml not set!");
+
+	if (db && db->eType == DB_Paint)
+		setProperty( "paint", 1 );
+	if (db && db->eType == DB_Fluid)
+	{	fluid = 1;
+		setProperty( "water", 1 );
+	}
 
 	if (mtr.substr(0,5) == "River")
 	{	fluid = 1;
