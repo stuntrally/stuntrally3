@@ -892,7 +892,7 @@
 						</Widget>
 
 						<Widget type="Button" skin="CheckBox" position="32 316 184 24" name="ChkTrail">
-							<Property key="Caption" value="#{RacingLine}"/>
+							<Property key="Caption" value="#{RacingLine} *"/>
 							<Property key="TextColour" value="1.0 0.7 0.4"/>
 						</Widget>
 						<Widget type="ImageBox" skin="ImageBox" position="32 346 72 72">
@@ -1026,6 +1026,10 @@
 						<Widget type="Button" skin="CheckBox" position="66 240 356 24" name="InputBar">
 							<Property key="Caption" value="#{EdInputBar}"/>
 							<Property key="TextColour" value="0.65 0.7 0.75"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="66 340 356 24" name="HudOn">
+							<Property key="Caption" value="#{HUD} - #{Enabled}"/>
+							<Property key="TextColour" value="0.6 0.5 0.5"/>
 						</Widget>
 					</Widget>
 

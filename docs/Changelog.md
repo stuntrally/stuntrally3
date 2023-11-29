@@ -47,6 +47,7 @@ Stunt Rally 3 is continuing last SR 2.x, using latest Ogre-Next 3.0.
   - Terrain circle cursor - same size far/near, animated
   - Grass layer color - can pick any, no ColorMap combo
   - Sky preview map shown on Sky tab
+  - Hud hide and Trail show checkboxes, moved to tab View, split from Settings
 - New **Material Editor** - Alt-F both in game and editor. Can save json, needs adjusting after, [info](Materials.md)
 - Moved [**translations**](Localization.md) to Weblate
 - Sources
