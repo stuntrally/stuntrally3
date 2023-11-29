@@ -107,20 +107,22 @@ void SplineRoad::UpdLodVis(float fBias, bool bFull)
 			bool vis;
 			if (bFull)  vis = i==0;  else  // all in 1st lod for preview
 			vis = d >= fDist[i] * fBias && d < fDist[i+1] * fBias;  // normal
+		#ifndef SR_EDITOR  // ed all
 			if (IsTrail() && vis)  // ->--
 				vis = mP[seg].nCk >= trailSegId -1
 				   && mP[seg].nCk <= trailSegId +3;  // par vis -1..5 far
+		#endif
 
 			/*if (bMerge)  vis = rs.mrgLod == i;  // vis mrg test-
 			else  vis = i == 3;/**/  // check lod 0
 			
-			#ifdef SR_EDITOR
+		#ifdef SR_EDITOR
 			if (vis && rs.road[i].it)  // todo: not each frame-
 			{
 				auto* rend = rs.road[i].it->getSubItem(0);
 				pApp->UpdSelectGlow(rend, bSel);
 			}
-			#endif
+		#endif
 			
 			if (rs.road[i].it)   rs.road[i].it->setVisible(vis);
 			if (rs.road[i].it2)  rs.road[i].it2->setVisible(vis);

@@ -164,40 +164,41 @@ void CGui::btnEdTut(WP)
 //  tool wnds show/hide
 void App::UpdEditWnds()
 {
+	bool on = pSet->hud_on;
 	if (mWndBrush)
 	{	if (edMode == ED_Deform)
 		{	mWndBrush->setCaption(TR("D - #{TerDeform}"));
 			mWndBrush->setColour(Colour(0.5f, 0.9f, 0.3f));
-			mWndBrush->setVisible(true);
+			mWndBrush->setVisible(on);
 		}
 		else if (edMode == ED_Filter)
 		{	mWndBrush->setCaption(TR("F - #{TerFilter}"));
 			mWndBrush->setColour(Colour(0.5f, 0.75f, 1.0f));
-			mWndBrush->setVisible(true);  
+			mWndBrush->setVisible(on);  
 		}
 		else if (edMode == ED_Smooth)
 		{	mWndBrush->setCaption(TR("S - #{TerSmooth}"));
 			mWndBrush->setColour(Colour(0.3f, 0.8f, 0.8f));
-			mWndBrush->setVisible(true);
+			mWndBrush->setVisible(on);
 		}
 		else if (edMode == ED_Height)
 		{	mWndBrush->setCaption(TR("E - #{TerHeight}"));
 			mWndBrush->setColour(Colour(0.7f, 1.0f, 0.7f));
-			mWndBrush->setVisible(true);
+			mWndBrush->setVisible(on);
 		}else
 			mWndBrush->setVisible(false);
 	}
-	if (mWndRoadCur)  mWndRoadCur->setVisible(edMode == ED_Road);
-	if (mWndCam)      mWndCam->setVisible(edMode == ED_PrvCam);
+	if (mWndRoadCur)  mWndRoadCur->setVisible(edMode == ED_Road && on);
+	if (mWndCam)      mWndCam->setVisible(edMode == ED_PrvCam && on);
 	
-	if (mWndStart)    mWndStart->setVisible(edMode == ED_Start);
+	if (mWndStart)    mWndStart->setVisible(edMode == ED_Start && on);
 
-	if (mWndFluids)   mWndFluids->setVisible(edMode == ED_Fluids);
+	if (mWndFluids)   mWndFluids->setVisible(edMode == ED_Fluids && on);
 	UpdFluidBox();
 
-	if (mWndObjects)   mWndObjects->setVisible(edMode == ED_Objects);
+	if (mWndObjects)   mWndObjects->setVisible(edMode == ED_Objects && on);
 
-	if (mWndParticles) mWndParticles->setVisible(edMode == ED_Particles);
+	if (mWndParticles) mWndParticles->setVisible(edMode == ED_Particles && on);
 	UpdEmtBox();
 
 	UpdStartPos(edMode != ED_PrvCam);  // StBox visible
@@ -248,7 +249,7 @@ void App::UpdVisGui()
 		}*/
 	}
 	//  wnd
-	bool g = bGuiFocus;
+	bool g = bGuiFocus, on = pSet->hud_on;
 	bool notMain = g && !pSet->bMain;
 	mWndMain->setVisible(g && pSet->bMain);
 	mWndTrack->setVisible(notMain && pSet->inMenu == WND_Track);
@@ -271,9 +272,9 @@ void App::UpdVisGui()
 
 	//  mode
 	if (gui->imgCam)
-	{	gui->imgCam->setVisible(!g && bMoveCam);
-		gui->imgEdit->setVisible(!g && !bMoveCam);
-		gui->imgGui->setVisible(g);
+	{	gui->imgCam->setVisible(!g && bMoveCam && on);
+		gui->imgEdit->setVisible(!g && !bMoveCam && on);
+		gui->imgGui->setVisible(g && on);
 	}
 
 	bool vis = g || !bMoveCam;
@@ -286,7 +287,7 @@ void App::UpdVisGui()
 	if (!g && gcom->mToolTip)  gcom->mToolTip->setVisible(false);
 
 	if (ndBrush)
-		ndBrush->setVisible(edMode < ED_Road && !bMoveCam);
+		ndBrush->setVisible(edMode < ED_Road && !bMoveCam && on);
 
 	for (int i=0; i < ciMainBtns; ++i)
 		mWndMainPanels[i]->setVisible(pSet->inMenu == i);
