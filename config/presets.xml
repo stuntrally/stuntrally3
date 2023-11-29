@@ -943,6 +943,8 @@ common:  sc - "short scenery name" (name color)
 <v sc="Wnt"  p="rock41grayWh"         r="2" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Wnt"  p="rock46grayWhite2"     r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 
+
+
 <!--  rocks  orng,red  🟠 Can, 🔴 Aus  -->
 <v sc="Can"  p="rock03can1flat"       r="3" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Can"  p="rock04can2flat"       r="3" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
@@ -957,6 +959,29 @@ common:  sc - "short scenery name" (name color)
 <v sc="Aus"  p="rock35red1edgy"       r="5" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Aus"  p="rock40red3flat"       r="2" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Aus"  p="rock44red4rndWh"      r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+
+<v sc="Aln"  p="rock47alienRound1"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Aln"  p="rock47alienRound1Green"    r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Aln"  p="rock48alienRound2"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Aln"  p="rock48alienRound2Green"    r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />	
+
+<v sc="Aln"  p="rock11alienWhite1"         r="5" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Aln"  p="rock23alienBlock"          r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Aln"  p="rock24alienTriangle"       r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="For"  p="rock49brownEdgy"           r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Aln"  p="rock49alienEdgy"           r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+
+<v sc="Grc"  p="rock50yellowRound"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Aln"  p="rock50alienWhite2"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+
+<v sc="Ano"  p="crystal1_anomaly"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Ano"  p="crystal2_anomaly"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Ano"  p="rock02brown2flat_anomaly"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Ano"  p="rock08white3tall_anomaly"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Ano"  p="rock12orange_anomaly"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Ano"  p="rock26grayBlue_anomaly"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Ano"  p="rock35red1edgy_anomaly"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+
 
 
 <!--  🪨 Rocks old  ================  -->
