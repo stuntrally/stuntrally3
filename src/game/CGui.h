@@ -329,7 +329,7 @@ public:
 	SV svPaceNear, svPaceAlpha;
 	void slUpd_Pace(SV*);
 	
-	//  Trail
+	//  🎗️ Trail
 	CK(TrailShow);
 	
 	//  ⏱️ Times, opp

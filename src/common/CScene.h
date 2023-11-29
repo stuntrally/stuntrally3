@@ -43,7 +43,7 @@ public:
 	void CreateAllAtmo(), DestroyAllAtmo();
 
 	//  ⛅ Sky ~
-	enum ESkies { SK_Main=0,  SK_CubeRefl,  SK_PlanarRefl, SK_ALL };
+	enum ESkies {  SK_Main=0, SK_CubeRefl, SK_PlanarRefl, SK_ALL  };
 	Ogre::String sMeshSky[SK_ALL];
 	Ogre::Item* itSky[SK_ALL] = {0, 0, 0};
 	Ogre::SceneNode* ndSky[SK_ALL] = {0, 0, 0};
@@ -83,10 +83,11 @@ public:
 	
 	GridMtrs grid;
 
-	//  driving aids, game only
+	//  driving aids, also simpler in ed
 	SplineRoad* trail[MAX_Players] = {0,0,0,0,0,0,};
 	PaceNotes* pace[MAX_Players] = {0,0,0,0,0,0,};
 	void DestroyRoads(), DestroyPace(), DestroyTrail(int i), DestroyTrails();
+	void CreateTrail(Cam* cam, int id =0, bool bHideHudTrail =0);
 
 	
 	//  🌳🪨 Vegetation Trees

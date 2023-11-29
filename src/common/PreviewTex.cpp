@@ -67,7 +67,7 @@ void PreviewTex::Destroy()
 //  2 load image from path
 bool PreviewTex::Load(String path, bool force,  uint8 b, uint8 g, uint8 r, uint8 a)
 {
-	LogO("PreviewTex: "+path);
+	// LogO("PreviewTex: "+path);
 	if (!PATHS::FileExists(path))
 	{
 		LogO("PreviewTex: doesn't exist: "+path);

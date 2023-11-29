@@ -244,7 +244,8 @@ void SplineRoad::BuildSeg(
 		int w0 = DS.pipe ? iw/4   : 0,
 			w1 = DS.pipe ? iw*3/4 : iw;
 
-		Real tcL = tc * (DS.pipe ? g_tcMulP : g_tcMul);
+		Real tcL = tc * (DS.pipe ? g_tcMulP : g_tcMul),
+			tcW = DS.pipe ? 1.f : 1.f;  //g_tcMulWP : g_tcMulW;  // todo:
 		for (int w=0; w <= iw; ++w)  // width +1
 		{
 			//  pos create
@@ -338,7 +339,7 @@ void SplineRoad::BuildSeg(
 					c = (float(i)/il) * (mP[seg1].clr - mP[seg].clr) + mP[seg].clr;
 					c.w = 1.f;
 				}
-				Vector2 vtc(tcw * 1.f /**2p..*/,
+				Vector2 vtc(tcw * tcW,
 					rs.alpha ? tcL * 0.03f : tcL);  //** par = alpha tc!
 
 				//>  data road
@@ -630,7 +631,7 @@ void SplineRoad::createSeg_Meshes(
 		if (lod == 0)  //  🌍 Minimap
 		CreateMesh( 0, rs.mini, sMesh+"#",
 			rs.sMtrRd, rs.alpha, pipeGlass, true, //*
-			DLM.pos, DLM.norm, DLM.clrMini, DLM.tcs, idx);
+			DLM.pos, DLM.norm, IsTrail() ? DLM.clr : DLM.clrMini, DLM.tcs, idx);
 	#endif
 	}
 	if (DS.hasBlend)  // Blend >

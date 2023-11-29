@@ -573,7 +573,9 @@ void CGui::InitGui()
 	sv= &svPaceAlpha;	sv->Init("PaceAlpha",	&pSet->pace_alpha,  0.3f,1.f);  sv->DefaultF(1.f);  Sev(Upd_Pace);
 	slUpd_Pace(0);
 	ck= &ckTrkReverse;	ck->Init("ReverseOn",	&pSet->trk_reverse);  Cev(TrkReverse);
-	
+
+	ck= &ckTrailShow;	ck->Init("ChkTrail",	&pSet->trail_show);  Cev(TrailShow);
+
 
 	///  Surface
 	ck= &ckRoad1Mtr;	ck->Init("Road1Mtr",	&sc->road1mtr);

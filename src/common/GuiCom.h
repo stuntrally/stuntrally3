@@ -15,6 +15,7 @@ namespace Ogre {  class Root;  class SceneManager;  class Window;  class Viewpor
 class Scene;  class CData;  class SplineRoad;
 class App;  class SETTINGS;
 class TrackInfo;  class UserTrkInfo;
+class HlmsPbsDb2;
 
 
 //  tracks,cars list items - with info for sorting
@@ -254,12 +255,12 @@ public:
 	struct TwkMtr  // adjust sld
 	{
 		// HlmsPbsDbCar *db =0;
-		Ogre::HlmsPbsDatablock* db =0;
+		HlmsPbsDb2* db =0;
 	#define SVf(n)  SV sv##n;  float f##n =0.f;
 		SVf(DiffR)  SVf(DiffG)  SVf(DiffB)
 		SVf(SpecR)  SVf(SpecG)  SVf(SpecB)
 		SVf(FresR)  SVf(FresG)  SVf(FresB)  //SVf(Fresnel)
-		SVf(Rough)  SVf(Metal)
+		SVf(Rough)  //SVf(Metal)
 		SVf(ClearCoat)  SVf(ClearRough)
 		SVf(BumpScale)  SVf(Transp)
 

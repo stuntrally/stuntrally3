@@ -3,16 +3,12 @@
 #include "CScene.h"
 #include "CData.h"
 #include "SceneXml.h"
-// #include "WaterRTT.h"
+
 #include "Road.h"
 #include "PaceNotes.h"
 #include "Grass.h"
 #include "App.h"
 
-#include <OgreItem.h>
-#include <OgreHlmsPbsPrerequisites.h>
-#include <OgreHlmsPbsDatablock.h>
-#include <OgreHlmsSamplerblock.h>
 using namespace Ogre;
 
 

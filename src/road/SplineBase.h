@@ -190,8 +190,10 @@ public:
 #endif
 
 	
-protected:	
 	SplinePoint newP;  // new point for insert
+
+	void Rebuild(bool full = false);
+protected:	
 
 	//  selection  ----
 	//  chosen stays, SelPoint is under mouse Pick
@@ -204,7 +206,6 @@ protected:
 	//  rebuild, mark only  ----
 	bool rebuild = false;
 	int iDirtyId = -1, iRebuildSkip = 0;
-	void Rebuild(bool full = false);
 
 
 	Ogre::Real g_Height = 0.1f;	 ///geom  above terrain global

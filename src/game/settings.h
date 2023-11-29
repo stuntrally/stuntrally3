@@ -81,7 +81,6 @@ public:
 	float fov_min = 90.f, fov_boost = 5.f, fov_smooth = 5.f;  // fov
 	//  🚦 pacenotes
 	bool pace_show =1;  int pace_next = 4;
-	bool trail_show =1;
 
 	eGraphType graphs_type = Gh_Fps;
 	int car_dbgtxtclr = 1, car_dbgtxtcnt = 0;

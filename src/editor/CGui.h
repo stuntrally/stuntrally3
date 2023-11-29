@@ -353,7 +353,8 @@ public:
 	//  🚦 Pacenotes  ----
 	SV svPaceShow, svPaceDist, svPaceSize, svPaceNear, svPaceAlpha;
 	void slUpd_Pace(SV*);
-	CK(TrkReverse);
+	//  🎗️ Trail
+	CK(TrailShow);  CK(TrkReverse);
 
 
 	//  📦 Objects  ----

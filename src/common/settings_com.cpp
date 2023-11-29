@@ -83,7 +83,8 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	//  🚦 pacenotes
 	Param(c,w, "pacenotes.dist", pace_dist);		Param(c,w, "pacenotes.alpha", pace_alpha);
 	Param(c,w, "pacenotes.size", pace_size);		Param(c,w, "pacenotes.near", pace_near);
-
+	Param(c,w, "pacenotes.trail", trail_show);
+	
 
 	//  🏞️📃 gui tracks  ---
 	Param(c,w, "gui_tracks.view", tracks_view);		Param(c,w, "gui_tracks.filter", tracks_filter);

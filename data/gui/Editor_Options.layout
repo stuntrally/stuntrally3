@@ -626,7 +626,7 @@
 
 			<!-- Settings -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
-				<Property key="Caption" value="#60A0FF#{Settings}"/>
+				<Property key="Caption" value="#80D0FF#{View}"/>
 				<Widget type="TextBox" skin="TextBox" position="16 524 304 20">
 					<Property key="Caption" value="#{SREditorVersion} #{GameVersion}"/>
 					<Property key="TextColour" value="0.6 0.7 0.8"/>
@@ -638,7 +638,7 @@
 
 					<!-- View -->
 					<Widget type="TabItem" skin="" position="2 24 738 432">
-						<Property key="Caption" value="#D0FFFF#{View}"/>
+						<Property key="Caption" value="#80D0FF#{Camera}"/>
 						<Widget type="ImageBox" skin="ImageBox" position="660 12 60 60">
 							<Property key="ImageCoord" value="0 512 128 128"/>
 							<Property key="Alpha" value="0.6"/>
@@ -822,6 +822,102 @@
 							<Property key="TextColour" value="0.6 1.0 0.6"/>
 						</Widget>
 					</Widget>
+
+					<!-- pacenotes -->
+					<Widget type="TabItem" skin="" position="2 24 794 562">
+						<Property key="Caption" value="#C0C060#{Pacenotes}"/>
+		
+						<Widget type="Button" skin="CheckBox" position="32 16 132 24" name="ReverseOn">
+							<Property key="Caption" value="#{Track} - #{Reverse}"/>
+							<Property key="Colour" value="0.8 1 0.6"/>
+							<Property key="TextColour" value="0.8 1 0.5"/>
+							<UserString key="tip" value="#{TipReverse}"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 56 268 24">
+							<Property key="Caption" value="#{Pacenotes} - #{Detail}"/>
+							<Property key="TextColour" value="1.0 1.0 0.9"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 56 180 20" name="PaceShow">
+							<Property key="Colour" value="1.0 1.0 0.9"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 56 60 24" name="PaceShowVal">
+							<Property key="TextColour" value="0.9 0.9 0.6"/>
+						</Widget>
+
+						<Widget type="ImageBox" skin="ImageBox" position="32 130 72 72">
+							<Property key="ImageCoord" value="640 512 128 128"/>
+							<Property key="Alpha" value="0.3"/>
+							<Property key="ImageTexture" value="gui_icons.png"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="162 96 164 24">
+							<Property key="TextColour" value="0.9 0.9 0.7"/>
+							<Property key="Caption" value="#{ViewDist}"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 96 320 18" name="PaceDist">
+							<Property key="Colour" value="0.9 0.9 0.7"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 96 48 24" name="PaceDistVal">
+							<Property key="TextColour" value="0.9 0.9 0.7"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="232 136 64 24">
+							<Property key="TextColour" value="0.8 0.8 0.6"/>
+							<Property key="Caption" value="#{Size}"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 136 320 18" name="PaceSize">
+							<Property key="Colour" value="0.8 0.8 0.6"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 136 48 24" name="PaceSizeVal">
+							<Property key="TextColour" value="0.8 0.8 0.6"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="232 176 64 24">
+							<Property key="Caption" value="#{Near}"/>
+							<Property key="TextColour" value="0.7 0.7 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 176 320 18" name="PaceNear">
+							<Property key="Colour" value="0.7 0.7 0.5"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 176 48 24" name="PaceNearVal">
+							<Property key="TextColour" value="0.7 0.7 0.5"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="162 216 164 24">
+							<Property key="Caption" value="#{Transparency}"/>
+							<Property key="TextColour" value="0.6 0.6 0.4"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 216 320 18" name="PaceAlpha">
+							<Property key="Colour" value="0.6 0.6 0.4"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 216 48 24" name="PaceAlphaVal">
+							<Property key="TextColour" value="0.6 0.6 0.4"/>
+						</Widget>
+
+						<Widget type="Button" skin="CheckBox" position="32 316 184 24" name="ChkTrail">
+							<Property key="Caption" value="#{RacingLine}"/>
+							<Property key="TextColour" value="1.0 0.7 0.4"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="32 346 72 72">
+							<Property key="ImageCoord" value="768 640 128 128"/>
+							<Property key="Alpha" value="0.7"/>
+							<Property key="ImageTexture" value="gui_icons.png"/>
+						</Widget>
+					</Widget>
+					<!--<Widget type="TabItem" skin="" position="2 24 754 478">
+						<Property key="Caption" value="#A0C080#{Generator}"/>
+					</Widget>-->
+				</Widget>
+			</Widget>
+
+			<!-- Settings -->
+			<Widget type="TabItem" skin="" position="2 24 794 562">
+				<Property key="Caption" value="#60A0FF#{Settings}"/>
+				<Widget type="TextBox" skin="TextBox" position="16 524 304 20">
+					<Property key="Caption" value="#{SREditorVersion} #{GameVersion}"/>
+					<Property key="TextColour" value="0.6 0.7 0.8"/>
+					<Property key="Alpha" value="0.6"/>
+				</Widget>
+				<Widget type="TabControl" skin="TabControl" position="16 15 744 500" name="SubTab">
+					<Property key="Colour" value="0.73 0.88 1"/>
+					<Property key="SmoothShow" value="false"/>
 
 					<!-- Settings -->
 					<Widget type="TabItem" skin="" position="2 24 738 432">

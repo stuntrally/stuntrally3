@@ -390,6 +390,8 @@ void App::CreateRoads()  // 🛣️
 	}
 	scn->rdCur = 0;
 	scn->road = scn->roads[scn->rdCur];
+
+	scn->CreateTrail(&mCams[0]);
 }
 
 

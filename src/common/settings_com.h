@@ -48,6 +48,7 @@ public:
 	
 	//  🚦 pacenotes
 	float pace_dist = 200.f, pace_size = 1.f, pace_near = 1.f, pace_alpha = 1.f;
+	bool trail_show =1;
 
 
 	//  📊 Graphics  ----

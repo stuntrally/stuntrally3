@@ -426,6 +426,15 @@ void CGui::slUpd_Pace(SV*)
 void CGui::chkTrkReverse(Ck*)
 {
 	scn->road->Rebuild(true);
+
+	scn->CreateTrail(&app->mCams[0]);
+}
+
+//  🎗️ trail
+void CGui::chkTrailShow(Ck*)
+{
+	if (app->scn->trail[0])
+		app->scn->trail[0]->SetVisTrail(pSet->trail_show);
 }
 
 
