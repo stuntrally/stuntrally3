@@ -278,7 +278,7 @@ public:
 	//  🆕 Startup  ----
 	Ck ckBltLines, ckShowPics, ckDevKeys;
 	//  📈 debug, other
-	CK(Wireframe);
+	CK(Wireframe);  Ck ckHudOn;
 	//  profiler
 	Ck ckProfilerTxt, ckBulletDebug, ckBltProfTxt, ckSoundInfo;
 	//  car dbg

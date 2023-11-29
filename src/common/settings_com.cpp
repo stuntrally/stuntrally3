@@ -19,6 +19,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	//  hlms
 	Param(c,w, "misc.debug_shaders", debug_shaders);	Param(c,w, "misc.debug_properties", debug_properties);
 	Param(c,w, "misc.cache_hlms", cache_hlms);			Param(c,w, "misc.cache_shaders", cache_shaders);
+	Param(c,w, "misc.hud_on", hud_on);
 
 	//  🔧 tweak
 	Param(c,w, "tweak.mtr", tweak_mtr);  		Param(c,w, "tweak.find", find_mtr);

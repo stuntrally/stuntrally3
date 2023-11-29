@@ -221,8 +221,8 @@
 						<Widget type="TextBox" skin="TextBox" position="12 308 168 20">
 							<Property key="Caption" value="#FFB020 R  #{Road}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="12 336 168 20">
-							<Property key="Caption" value="#D0D0D0 X  #{Objects}"/>
+						<Widget type="TextBox" skin="TextBox" position="12 336 268 20">
+							<Property key="Caption" value="#D0D0D0 X  #{Objects} /#80C0FF #{Fluids} /#F0F080 #{Particles} "/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="204 64 168 20">

@@ -98,7 +98,7 @@ public:
 	void btnSetCam(WP);
 
 	//  📈 debug, other
-	CK(Wireframe);  Ck ckAllowSave;
+	CK(Wireframe);  Ck ckAllowSave;  CK(HudOn);
 	CK(InputBar);  CK(CamPos);
 
 	//  🔝 top view
