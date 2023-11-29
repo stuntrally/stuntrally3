@@ -29872,7 +29872,9 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.3
+				"value" : 0.9,
+				"texture" : "concrete_postapo_r.jpg",
+				"sampler" : "Sampler_10"
 			}
 		},
 
@@ -43046,7 +43048,7 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "cloudy_02_brown.jpg",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Sky"
 			}
 		},
 		
@@ -43398,7 +43400,7 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "day_clouds_06.jpg",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Sky"
 			}
 		},
 		
@@ -43430,7 +43432,7 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "dawn_01.jpg",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Sky"
 			}
 		},
 		
@@ -43462,7 +43464,7 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "dawn_01_orange.jpg",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Sky"
 			}
 		},
 		
