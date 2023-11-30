@@ -443,6 +443,11 @@ void CGui::chkTrailShow(Ck*)
 void CGui::chkCamPos(Ck*){     app->bckCamPos->setVisible(pSet->camPos);  }
 void CGui::chkInputBar(Ck*){   app->bckInput->setVisible(pSet->inputBar);  }
 
+void CGui::chkHudOn(Ck*)
+{
+	app->UpdVisGui();  app->UpdEditWnds();
+}
+
 void CGui::chkWireframe(Ck*){  app->SetWireframe();  }
 
 void CGui::slSizeRoadP(SV*)

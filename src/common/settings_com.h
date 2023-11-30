@@ -53,6 +53,7 @@ public:
 
 	//  📊 Graphics  ----
 	int preset = 4;  // last set, info only
+	bool hud_on =1;  // 0 won't create it, in ed hides dialogs
 
 	//!  Any change or order needs Update in:  Detail presets
 	struct Detail

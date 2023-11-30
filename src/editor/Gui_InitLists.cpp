@@ -255,10 +255,10 @@ void CGui::FillPickLists()
 	
 	lp->removeAllColumns();  lp->removeAllItems();
 	lp->addColumn("#90C0F0", 15);
-	lp->addColumn("#E0F0FF"+TR("#{Sky}"), 200);
-	lp->addColumn("#E0F0FF"+TR("#{Pitch}"), 60);
+	lp->addColumn("#E0F0FF"+TR("#{Sky}"), 250);
+	lp->addColumn("#E0F0FF"+TR("#{Pitch}"), 40);
 	lp->addColumn(" ", sl);
-	liPickX[P_Sky] = 0.45f;  liPickW[P_Sky] = 280;
+	liPickX[P_Sky] = 0.45f;  liPickW[P_Sky] = 360;
 
 	for (u=0; u < data->pre->sky.size(); ++u)
 	{	const PSky& s = data->pre->sky[u];
@@ -267,6 +267,7 @@ void CGui::FillPickLists()
 		l = lp->getItemCount()-1;
 
 		lp->setSubItemNameAt(1,l, c+ s.mtr);
+		if (s.mtr[0] != '-')
 		lp->setSubItemNameAt(2,l, c+ fToStr( s.ldPitch, 0,2));
 	}
 

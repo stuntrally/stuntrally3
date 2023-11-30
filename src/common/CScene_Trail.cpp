@@ -97,13 +97,14 @@ void CScene::CreateTrail(Cam* cam, int id, bool bHideHudTrail)
 		//  if ghost car in next check, inc trail seg id
 		const int np = tr->getNumPoints();
 
-		const auto& ck = road->mChks[iNextChk];
-		if (pos.squaredDistance(ck.pos) < ck.r2)
-		{
-			//LogO(toStr(np) + " in ck "+toStr(iCk)+" r "+toStr(ck.r)+" nCk "+toStr(tr->newP.nCk));
-			++iCk;
-			iNextChk = (iNextChk + inc + ncs) % ncs;
-		}
+		if (ncs > 0)
+		{	const auto& ck = road->mChks[iNextChk];
+			if (pos.squaredDistance(ck.pos) < ck.r2)
+			{
+				//LogO(toStr(np) + " in ck "+toStr(iCk)+" r "+toStr(ck.r)+" nCk "+toStr(tr->newP.nCk));
+				++iCk;
+				iNextChk = (iNextChk + inc + ncs) % ncs;
+		}	}
 
 		float d = old.squaredDistance(pos);
 		if (d > dd)
@@ -143,7 +144,7 @@ void CScene::CreateTrail(Cam* cam, int id, bool bHideHudTrail)
 	tr->Rebuild(true);
 	tr->RebuildRoadInt();
 	trail[id] = tr;
-	bool vis = !app->pSet->trail_show || bHideHudTrail;
-	tr->SetVisTrail(!vis);
-	// tr->SetVisTrail(false);
+	
+	bool vis = app->pSet->trail_show && !bHideHudTrail;
+	tr->SetVisTrail(vis);
 }

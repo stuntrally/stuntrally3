@@ -276,6 +276,7 @@ void App::LoadTrackEv()
 
 	scn->DestroyRoads();
 	scn->DestroyPace();
+	scn->DestroyTrails();
 
 	scn->refl.DestroyFluids();	// 💧
 	scn->refl.DestroyRTT();
@@ -330,6 +331,10 @@ void App::LoadTrackEv()
 	Cam* cam = &mCams[0];  // todo: lod cam-
 	scn->pace[0] = new PaceNotes(pSet);
 	scn->pace[0]->Setup(mSceneMgr, cam->cam, scn->ter, gui->mGui, mWindow);
+
+	//  🎗️ Trail
+	if (pSet->trail_show)  // meh toggle vis fix
+		scn->CreateTrail(&mCams[0]);
 
 	
 	//  📦 Objects
@@ -390,8 +395,6 @@ void App::CreateRoads()  // 🛣️
 	}
 	scn->rdCur = 0;
 	scn->road = scn->roads[scn->rdCur];
-
-	scn->CreateTrail(&mCams[0]);
 }
 
 
@@ -490,6 +493,13 @@ void App::SaveTrackEv()
 	{
 		auto si = i==0 ? "" : toStr(i+1);  ++i;
 		r->SaveFile(dir + "road" +si+ ".xml");
+	}
+	for (; i < 20; ++i)  // delete any more old
+	{
+		auto si = i==0 ? "" : toStr(i+1);
+		auto p = dir + "road" +si+ ".xml";
+		if (PATHS::FileExists(p))
+			gui->Delete(p);
 	}
 
 	scn->sc->SaveXml(dir + "scene.xml");

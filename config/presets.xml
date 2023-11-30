@@ -6,80 +6,7 @@
 <!--  ⛅  Skies  ================================================================
       m - material name from sky.mat  c - color (for list)  y - sun yaw  p - pitch -->
 
-<!--  new todo:
-<s m="001_empty_blue"       c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="002_clouded_gray"     c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="003_clouded_white"    c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="004_clouds_dark"      c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="004_clouds_gray"      c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="005_clouds_blue"      c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="006_clouds_half"      c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="007_clouded"          c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="008_clouded_grayblue" c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="008_clouded_gray"     c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="009_clouded_half"     c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="013_empty_pink"       c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="013_empty_sunset"     c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="014_clouded_dark"     c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="014_clouded_gray"     c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="014_clouded_halfgray" c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="015_clouds_blue"      c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="016_foggy_dark"       c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="016_foggy_graydark"   c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="016_foggy_gray"       c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="016_foggy_white"      c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="016_foggy_yellow"     c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="019_empty_blue"       c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="019_strange_green"    c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="020_empty_orange"     c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="100_kloppenheim_06"   c="#C0D8F8"   p="84"  y=" 13"  />
--->
-<!--  ⛅ skies, old  -->
-<s m="sky/day_blue"        c="#C0D8F8"   p="84"  y=" 13"  />
-<s m="sky/day_blue2"       c="#D0E0F8"   p="60"  y="-40"  />
-<s m="sky/day_clouds"      c="#B0C0D0"   p="33"  y="-40"  />
-
-<s m="sky/cloudy"          c="#90B0D0"   p="23"  y=" 59"  />
-<s m="sky/gray_clouded"    c="#A8B0B8"   p="40"  y="105"  />
-
-<s m="sky/foggy_gen"       c="#90B0D0"   p="24"  y=" 47"  />
-
-<s m="sky/dawn_bright"     c="#D0D0B0"   p="21"  y="-45"  />
-
-<s m="sky/sunset_rays_gen" c="#D06010"   p=" 8"  y="  0"  />
-<s m="sky/sunset_blue_gen" c="#E09060"   p="16"  y=" 57"  />
-<s m="sky/sunset_gen"      c="#E080A0"   p="16"  y=" 45"  />
-
-<s m="sky/morning_gen"     c="#C0B0A0"   p="30"  y=" -8"  />
-<s m="sky/morning2_gen"    c="#D0D090"   p="30"  y="  8"  />
-
-<s m="sky/night_blue"      c="#3070B0"   p="12"  y=" 78"  />
-<s m="sky/offworld_gen"    c="#B0A090"   p="14"  y=" 27"  />
-
-<!--  skies, oldest  (lowest quality)  -->
-<s m="sky/dust"            c="#C0C090"   p="32"  y=" 60"  />
-<s m="sky/duskred"         c="#903820"   p="27"  y=" 15"  />
-
-<s m="sky/white"           c="#B0C0D0"   p="26"  y=" 60"  />
-<s m="sky/white2"          c="#D0D0D0"   p="40"  y=" 60"  />
-
-<s m="sky/light_blue"      c="#80C0FF"   p="20"  y=" 60"  />
-<s m="sky/blue_clouds"     c="#C0E0FF"   p="57"  y=" 62"  />
-<s m="sky/gray_clouds"     c="#A0A0A0"   p="38"  y=" 41"  />
-<s m="sky/dark_clouds"     c="#707070"   p="36"  y=" 41"  />
-
-<s m="sky/sunset"          c="#E8B0C0"   p="40"  y="-40"  />
-<s m="sky/dawn"            c="#D4D090"   p="28"  y=" -7"  />
-<s m="sky/duskstormy"      c="#A09040"   p="17"  y=" 18"  />
-
-<s m="sky/dayovercast"     c="#A0C0D0"   p="30"  y="124"  />
-<s m="sky/magic"           c="#A0A0FF"   p="30"  y="-41"  />
-<s m="sky/magicdark"       c="#7070B0"   p="31"  y="-30"  />
-
-<s m="sky/magic_alien"     c="#70A974"   p="30"  y="-41"  />
-
 <!--  skies, newest, added by rubberduck -->
-	
 <!--  skies, from hdri  -->
 <s m="sky/clouds_01_blurry"       c="#8a929d" p="26" y="-29" />	
 <s m="sky/cloudy_01"              c="#d1d0d0"   p="20"  y="0"  />
@@ -130,6 +57,50 @@
 <s m="sky/space_nebula_02_red"    c="#be030c"   p="35"  y="25"  />
 <s m="sky/space_nebula_02_red2"   c="#be030c"   p="35"  y="25"  />
 
+<!--  ⛅ skies, old  -->
+<s m="---------  old"   />
+<s m="sky/day_blue"        c="#C0D8F8"   p="84"  y=" 13"  />
+<s m="sky/day_blue2"       c="#D0E0F8"   p="60"  y="-40"  />
+<s m="sky/day_clouds"      c="#B0C0D0"   p="33"  y="-40"  />
+
+<s m="sky/cloudy"          c="#90B0D0"   p="23"  y=" 59"  />
+<s m="sky/gray_clouded"    c="#A8B0B8"   p="40"  y="105"  />
+
+<s m="sky/foggy_gen"       c="#90B0D0"   p="24"  y=" 47"  />
+
+<s m="sky/dawn_bright"     c="#D0D0B0"   p="21"  y="-45"  />
+
+<s m="sky/sunset_rays_gen" c="#D06010"   p=" 8"  y="  0"  />
+<s m="sky/sunset_blue_gen" c="#E09060"   p="16"  y=" 57"  />
+<s m="sky/sunset_gen"      c="#E080A0"   p="16"  y=" 45"  />
+
+<s m="sky/morning_gen"     c="#C0B0A0"   p="30"  y=" -8"  />
+<s m="sky/morning2_gen"    c="#D0D090"   p="30"  y="  8"  />
+
+<s m="sky/night_blue"      c="#3070B0"   p="12"  y=" 78"  />
+<s m="sky/offworld_gen"    c="#B0A090"   p="14"  y=" 27"  />
+
+<!--  skies, oldest  (lowest quality)  -->
+<s m="sky/dust"            c="#C0C090"   p="32"  y=" 60"  />
+<s m="sky/duskred"         c="#903820"   p="27"  y=" 15"  />
+
+<s m="sky/white"           c="#B0C0D0"   p="26"  y=" 60"  />
+<s m="sky/white2"          c="#D0D0D0"   p="40"  y=" 60"  />
+
+<s m="sky/light_blue"      c="#80C0FF"   p="20"  y=" 60"  />
+<s m="sky/blue_clouds"     c="#C0E0FF"   p="57"  y=" 62"  />
+<s m="sky/gray_clouds"     c="#A0A0A0"   p="38"  y=" 41"  />
+<s m="sky/dark_clouds"     c="#707070"   p="36"  y=" 41"  />
+
+<s m="sky/sunset"          c="#E8B0C0"   p="40"  y="-40"  />
+<s m="sky/dawn"            c="#D4D090"   p="28"  y=" -7"  />
+<s m="sky/duskstormy"      c="#A09040"   p="17"  y=" 18"  />
+
+<s m="sky/dayovercast"     c="#A0C0D0"   p="30"  y="124"  />
+<s m="sky/magic"           c="#A0A0FF"   p="30"  y="-41"  />
+<s m="sky/magicdark"       c="#7070B0"   p="31"  y="-30"  />
+
+<s m="sky/magic_alien"     c="#70A974"   p="30"  y="-41"  />
 
 
 <!--  ⛰️🏔️ Terrain textures  ================================================================================================================================
@@ -325,20 +296,20 @@ common:  sc - "short scenery name" (name color)
 <t sc="Spc"  t="space_metal_grid_d"   n="space_metal_grid_n"   s="25.0"  r="1" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
 
 <t sc="Oth"  t="---- new Anomaly ------"  r="0" />      <!-- 🔲 -->
-<t sc="Sur"  t="grass_mix_anomaly_d"          n="grass_mix_anomaly_n"          s="8.02"  r="4" su="GrassJungle"    tp="0" du="0.0" ds="0.2" md="0.8" tr="0.18 0.36 0.04 0.7"  aa="0"  ab="28" />
-<t sc="Sur"  t="lava2_anomaly_d"              n="lava2_anomaly_s"              s="14.55" r="1" su="Rocks"          tp="0" du="0.0" ds="0.0" md="0.5" tr="0.32 0.32 0.32 0.3"  aa="26" ab="45" />
-<t sc="Sur"  t="jungle_stone_anomaly_d"       n="jungle_stone_n"     	       s="26.00" r="3" su="Rocks"          tp="1" du="0.0" ds="0.2" md="0.0" tr="0.20 0.20 0.20 0.6"  aa="42" ab="90" />
-<t sc="Sur"  t="mntn_brown_anomaly_d"         n="mntn_brown_n"                 s="32.19" r="3" su="Rocks"          tp="1" du="0.0" ds="0.2" md="1.0" tr="0.23 0.23 0.10 0.8"  aa="52" ab="90" />
-<t sc="Sur"  t="desert_sand_big_anomaly_d"    n="desert_sand_big_n"            s="9.63"  r="4" su="DesertBumpy"    tp="0" du="0.9" ds="1.0" md="0.1" tr="0.48 0.46 0.08 0.7"  aa="15" ab="27" />
-<t sc="Sur"  t="snow_rough_anomaly_d"         n="snow_rough_anomaly_n"         s="12.14" r="2" su="SnowDeep"       tp="0" du="0.4" ds="0.6" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="11" ab="90" />
-<t sc="Spc"  t="space_metal_anomaly_d"        n="space_metal_anomaly_n"        s="12.0"  r="2" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
-<t sc="Sur"  t="desert_mntn2_anomaly_d"       n="desert_mntn2_anomaly_n"       s="41.30" r="2" su="Rocks"          tp="1" du="0.0" ds="0.2" md="0.1" tr="0.20 0.20 0.00 1.0"  aa="44" ab="90" />
-<t sc="Spc"  t="space_diam_anomaly_d"         n="space_diam_anomaly_n"         s="12.0"  r="1" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
-<t sc="Spc"  t="space_diam_anomaly2_d"        n="space_diam_anomaly_n"         s="12.0"  r="1" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
-<t sc="Spc"  t="space_octagons_anomaly_d"     n="space_octagons_anomaly_n"     s="12.0"  r="1" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
-<t sc="Spc"  t="space_metal_grid_anomaly_d"   n="space_metal_grid_anomaly_n"   s="25.0"  r="1" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
-<t sc="Spc"  t="space_gray_anomaly_d"         n="space_gray_anomaly_n"         s="12.0"  r="2" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
-<t sc="Spc"  t="space_x_anomaly_d"            n="space_x_anomaly_n"            s="12.0"  r="2" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Ano"  t="grass_mix_anomaly_d"          n="grass_mix_anomaly_n"          s="8.02"  r="4" su="GrassJungle"    tp="0" du="0.0" ds="0.2" md="0.8" tr="0.18 0.36 0.04 0.7"  aa="0"  ab="28" />
+<t sc="Ano"  t="lava2_anomaly_d"              n="lava2_anomaly_s"              s="14.55" r="1" su="Rocks"          tp="0" du="0.0" ds="0.0" md="0.5" tr="0.32 0.32 0.32 0.3"  aa="26" ab="45" />
+<t sc="Ano"  t="jungle_stone_anomaly_d"       n="jungle_stone_n"     	       s="26.00" r="3" su="Rocks"          tp="1" du="0.0" ds="0.2" md="0.0" tr="0.20 0.20 0.20 0.6"  aa="42" ab="90" />
+<t sc="Ano"  t="mntn_brown_anomaly_d"         n="mntn_brown_n"                 s="32.19" r="3" su="Rocks"          tp="1" du="0.0" ds="0.2" md="1.0" tr="0.23 0.23 0.10 0.8"  aa="52" ab="90" />
+<t sc="Ano"  t="desert_sand_big_anomaly_d"    n="desert_sand_big_n"            s="9.63"  r="4" su="DesertBumpy"    tp="0" du="0.9" ds="1.0" md="0.1" tr="0.48 0.46 0.08 0.7"  aa="15" ab="27" />
+<t sc="Ano"  t="snow_rough_anomaly_d"         n="snow_rough_anomaly_n"         s="12.14" r="2" su="SnowDeep"       tp="0" du="0.4" ds="0.6" md="1.0" tr="0.40 0.40 0.40 0.6"  aa="11" ab="90" />
+<t sc="Ano"  t="space_metal_anomaly_d"        n="space_metal_anomaly_n"        s="12.0"  r="2" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Ano"  t="desert_mntn2_anomaly_d"       n="desert_mntn2_anomaly_n"       s="41.30" r="2" su="Rocks"          tp="1" du="0.0" ds="0.2" md="0.1" tr="0.20 0.20 0.00 1.0"  aa="44" ab="90" />
+<t sc="Ano"  t="space_diam_anomaly_d"         n="space_diam_anomaly_n"         s="12.0"  r="1" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Ano"  t="space_diam_anomaly2_d"        n="space_diam_anomaly_n"         s="12.0"  r="1" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Ano"  t="space_octagons_anomaly_d"     n="space_octagons_anomaly_n"     s="12.0"  r="1" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Ano"  t="space_metal_grid_anomaly_d"   n="space_metal_grid_anomaly_n"   s="25.0"  r="1" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Ano"  t="space_gray_anomaly_d"         n="space_gray_anomaly_n"         s="12.0"  r="2" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
+<t sc="Ano"  t="space_x_anomaly_d"            n="space_x_anomaly_n"            s="12.0"  r="2" su="Metal"          tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
 
 
 
@@ -551,13 +522,13 @@ common:  sc - "short scenery name" (name color)
 <r sc="Blk"  m="road_wall_Black"         r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Jng"  m="road_wall_spring"        r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
-<r sc="Spc"  m="road_wall_metal_01_anomaly"  r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Spc"  m="road_wall_metal_02_anomaly"  r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Sur"  m="road_wall_wheel_anomaly"     r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Spc"  m="wall_space_gray_anomaly"     r="5" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Spc"  m="wall_space_x_anomaly"        r="5" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Sur"  m="wall_lava_anomaly"           r="5" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Sur"  m="wall_mining_truck_anomaly"   r="5" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="road_wall_metal_01_anomaly"  r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="road_wall_metal_02_anomaly"  r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="road_wall_wheel_anomaly"     r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="wall_space_gray_anomaly"     r="5" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="wall_space_x_anomaly"        r="5" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="wall_lava_anomaly"           r="5" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="wall_mining_truck_anomaly"   r="5" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 
 <r sc="Oth"  m="pipe_wall"              r="3" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -574,13 +545,13 @@ common:  sc - "short scenery name" (name color)
 <r sc="Blk"  m="pipe_wall_Black"        r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Jng"  m="pipe_wall_spring"       r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
-<r sc="Spc"  m="pipe_wall_metal_01_anomaly" r="4" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Spc"  m="pipe_wall_metal_02_anomaly" r="4" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Sur"  m="pipe_wall_wheel_anomaly"    r="4" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Spc"  m="wallP_space_gray_anomaly"   r="5" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Spc"  m="wallP_space_x_anomaly"      r="5" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Sur"  m="wallP_lava_anomaly"         r="5" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Sur"  m="wallP_mining_truck_anomaly" r="5" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="pipe_wall_metal_01_anomaly" r="4" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="pipe_wall_metal_02_anomaly" r="4" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="pipe_wall_wheel_anomaly"    r="4" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="wallP_space_gray_anomaly"   r="5" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="wallP_space_x_anomaly"      r="5" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="wallP_lava_anomaly"         r="5" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="wallP_mining_truck_anomaly" r="5" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 
 
@@ -597,7 +568,7 @@ common:  sc - "short scenery name" (name color)
 <r sc="Aln"  m="road_col_Alien"         r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Blk"  m="road_col_Black"         r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Jng"  m="road_col_spring"        r="4" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Jng"  m="road_col_wheel_anomaly" r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="road_col_wheel_anomaly" r="1" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 <r sc="Wnt"  m="---- wall universal"   r="0" />  <!-- 🧱📏 -->
 <r sc="Spc"  m="wall_space_diam"       r="4" su="roadDesert"   re="1"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -715,13 +686,13 @@ common:  sc - "short scenery name" (name color)
 <r sc="IslD" m="River_clear_shore"    r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Sur"  m="River_clear_pink"     r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
-<r sc="Oth"  m="River_Water_anomaly_blue"     r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Oth"  m="River_Anomaly_jelly_1"        r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Oth"  m="River_Anomaly_jelly_2"        r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Oth"  m="River_Anomaly_jelly_3"        r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Oth"  m="River_Mud_white_anomaly"      r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Oth"  m="River_Water_strange_anomaly"  r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
-<r sc="Oth"  m="River_Water_strange2_anomaly" r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="River_Water_anomaly_blue"     r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="River_Anomaly_jelly_1"        r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="River_Anomaly_jelly_2"        r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="River_Anomaly_jelly_3"        r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="River_Mud_white_anomaly"      r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="River_Water_strange_anomaly"  r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
+<r sc="Ano"  m="River_Water_strange2_anomaly" r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
 
 <!--  🌿  Grasses  ================================================================================================================================
@@ -827,21 +798,21 @@ common:  sc - "short scenery name" (name color)
 <g sc="Jng"  g="seaweed02"         c="grClrForest"    r="2" xa="1.80" xb="2.10" ya="1.76" yb="2.07" />
 <g sc="Jng"  g="seaweed03"         c="grClrForest"    r="2" xa="1.80" xb="2.10" ya="1.76" yb="2.07" />
 
-<g sc="Sur"  g="grassAnomaly01a"       c="grClrJungle"    r="1" xa="2.50" xb="3.34" ya="2.32" yb="3.93" />
-<g sc="Sur"  g="grassAnomaly01b"       c="grClrJungle"    r="1" xa="2.50" xb="3.34" ya="2.32" yb="3.93" />
-<g sc="Sur"  g="grassAnomaly01c"       c="grClrJungle"    r="1" xa="2.50" xb="3.34" ya="2.32" yb="3.93" />
-<g sc="Sur"  g="grassAnomaly02a"       c="grClrJungle"    r="1" xa="1.83" xb="5.60" ya="1.22" yb="7.62" />
-<g sc="Sur"  g="grassAnomaly02b"       c="grClrJungle"    r="1" xa="1.83" xb="5.60" ya="1.22" yb="7.62" />
-<g sc="Sur"  g="grassAnomaly02c"       c="grClrJungle"    r="1" xa="1.83" xb="5.60" ya="1.22" yb="7.62" />
-<g sc="Sur"  g="grassAnomaly03a"       c="grClrJungle"    r="2" xa="4.28" xb="5.57" ya="6.00" yb="8.00" />
-<g sc="Sur"  g="grassAnomaly03b"       c="grClrJungle"    r="2" xa="4.28" xb="5.57" ya="6.00" yb="8.00" />
-<g sc="Sur"  g="grassAnomaly03c"       c="grClrJungle"    r="2" xa="4.28" xb="5.57" ya="6.00" yb="8.00" />
-<g sc="Sur"  g="grassAnomaly04a"       c="grClrJungle"    r="1" xa="1.22" xb="1.44" ya="2.15" yb="2.50" />
-<g sc="Sur"  g="grassAnomaly04b"       c="grClrJungle"    r="1" xa="1.22" xb="1.44" ya="2.15" yb="2.50" />
-<g sc="Sur"  g="grassAnomaly04c"       c="grClrJungle"    r="1" xa="1.22" xb="1.44" ya="2.15" yb="2.50" />
-<g sc="Sur"  g="flower02AnomalyA"      c="grClrForest"    r="2" xa="2.80" xb="2.00" ya="5.66" yb="7.87" />
-<g sc="Sur"  g="flower02AnomalyB"      c="grClrForest"    r="2" xa="2.80" xb="2.00" ya="5.66" yb="7.87" />
-<g sc="Sur"  g="flower02AnomalyC"      c="grClrForest"    r="2" xa="2.80" xb="2.00" ya="5.66" yb="7.87" />
+<g sc="Ano"  g="grassAnomaly01a"       c="grClrJungle"    r="1" xa="2.50" xb="3.34" ya="2.32" yb="3.93" />
+<g sc="Ano"  g="grassAnomaly01b"       c="grClrJungle"    r="1" xa="2.50" xb="3.34" ya="2.32" yb="3.93" />
+<g sc="Ano"  g="grassAnomaly01c"       c="grClrJungle"    r="1" xa="2.50" xb="3.34" ya="2.32" yb="3.93" />
+<g sc="Ano"  g="grassAnomaly02a"       c="grClrJungle"    r="1" xa="1.83" xb="5.60" ya="1.22" yb="7.62" />
+<g sc="Ano"  g="grassAnomaly02b"       c="grClrJungle"    r="1" xa="1.83" xb="5.60" ya="1.22" yb="7.62" />
+<g sc="Ano"  g="grassAnomaly02c"       c="grClrJungle"    r="1" xa="1.83" xb="5.60" ya="1.22" yb="7.62" />
+<g sc="Ano"  g="grassAnomaly03a"       c="grClrJungle"    r="2" xa="4.28" xb="5.57" ya="6.00" yb="8.00" />
+<g sc="Ano"  g="grassAnomaly03b"       c="grClrJungle"    r="2" xa="4.28" xb="5.57" ya="6.00" yb="8.00" />
+<g sc="Ano"  g="grassAnomaly03c"       c="grClrJungle"    r="2" xa="4.28" xb="5.57" ya="6.00" yb="8.00" />
+<g sc="Ano"  g="grassAnomaly04a"       c="grClrJungle"    r="1" xa="1.22" xb="1.44" ya="2.15" yb="2.50" />
+<g sc="Ano"  g="grassAnomaly04b"       c="grClrJungle"    r="1" xa="1.22" xb="1.44" ya="2.15" yb="2.50" />
+<g sc="Ano"  g="grassAnomaly04c"       c="grClrJungle"    r="1" xa="1.22" xb="1.44" ya="2.15" yb="2.50" />
+<g sc="Ano"  g="flower02AnomalyA"      c="grClrForest"    r="2" xa="2.80" xb="2.00" ya="5.66" yb="7.87" />
+<g sc="Ano"  g="flower02AnomalyB"      c="grClrForest"    r="2" xa="2.80" xb="2.00" ya="5.66" yb="7.87" />
+<g sc="Ano"  g="flower02AnomalyC"      c="grClrForest"    r="2" xa="2.80" xb="2.00" ya="5.66" yb="7.87" />
 
 
 <!--  🌳  Vegetation  ================================================================================================================================
@@ -1085,11 +1056,9 @@ common:  sc - "short scenery name" (name color)
 <!--  💎 Crystal  ================  -->
 <v sc="Cry"  p="---- Crystal ----"    r="0" />
 <v sc="Cry"  p="crystal1"             r="3" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Cry"  p="crystal1_anomaly"     r="3" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal1_cyan"        r="3" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal1_pink"        r="3" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal2"             r="2" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Cry"  p="crystal2_anomaly"     r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal2_cyan"        r="2" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal2_pink"        r="2" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal3"             r="2" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
@@ -1115,6 +1084,26 @@ common:  sc - "short scenery name" (name color)
 <v sc="Cry"  p="crystal_flower_blue"  r="2" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal_flower_cyan"  r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Cry"  p="crystal_flower_pink"  r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+
+<v sc="Ano"  p="balloon1_anomaly"         r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="balloon2_anomaly"         r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="big_tire_anomaly"         r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="concrete_bar_anomaly"     r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="cone_anomaly"             r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="crate_2_anomaly"          r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="crate2m_anomaly"          r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="crate_anomaly"            r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="crystal1_anomaly"         r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="crystal2_anomaly"         r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="obstacleRingAnomaly"      r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="plastic_barrel_anomaly"   r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="plastic_big_anomaly"      r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="plastic_big_hvy_anomaly"  r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="rock02brown2flat_anomaly" r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="rock08white3tall_anomaly" r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="rock12orange_anomaly"     r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="rock26grayBlue_anomaly"   r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="rock35red1edgy_anomaly"   r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 
 
 <!--  🟢 Alien  ================  -->

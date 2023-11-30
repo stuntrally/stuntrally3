@@ -261,8 +261,9 @@ void CGui::InitGui()
 
 	//  📈 debug, other  ------------------------------------------------------------
 	ck= &ckWireframe;	ck->Init("Wireframe",   &app->bWireframe);  Cev(Wireframe);
-	sv= &svDbgTxtCnt;	sv->Init("DbgTxtCnt",	&pSet->car_dbgtxtcnt, 0, 8);
+	ck= &ckHudOn;		ck->Init("HudOn",       &pSet->hud_on);
 
+	sv= &svDbgTxtCnt;	sv->Init("DbgTxtCnt",	&pSet->car_dbgtxtcnt, 0, 8);
 	ck= &ckProfilerTxt;	ck->Init("ProfilerTxt", &pSet->profilerTxt);  Cev(HudShow);
 	ck= &ckSoundInfo;	ck->Init("SoundInfo",   &pSet->sounds_info);
 

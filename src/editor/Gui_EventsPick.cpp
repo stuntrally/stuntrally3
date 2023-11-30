@@ -181,6 +181,7 @@ void CGui::listPickSky(Mli2 li, size_t pos)
 	string s = liSky->getSubItemNameAt(1,pos);
 	//s = "sky/" + s.substr(7);
 	s = s.substr(7);
+	if (s[0] == '-')  return;  // sep
 	const PSky* p = data->pre->GetSky(s);  if (!p)  return;
 
 	//  set

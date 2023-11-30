@@ -267,6 +267,7 @@ void CGui::InitGui()
 	ck= &ckWireframe;	ck->Init("Wireframe",	&app->bWireframe);  Cev(Wireframe);
 	ck= &ckCamPos;		ck->Init("CamPos",		&pSet->camPos);    Cev(CamPos);
 	ck= &ckInputBar;	ck->Init("InputBar",	&pSet->inputBar);  Cev(InputBar);
+	ck= &ckHudOn;		ck->Init("HudOn",		&pSet->hud_on);	 Cev(HudOn);
 	ck= &ckAllowSave;	ck->Init("AllowSave",	&pSet->allow_save);
 
 	//  🎥 Camera set btns

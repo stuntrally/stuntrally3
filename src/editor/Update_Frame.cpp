@@ -238,21 +238,22 @@ void App::UpdateEnd(float dt)
 	//  🛣️ roads  upd 🔁
 	if (!scn->roads.empty())
 	{
-		SplineRoad* road1 = scn->roads[0];
+		auto* road1 = scn->roads[0];
 
-		for (SplineRoad* road : scn->roads)
+		for (auto* r : scn->roads)
+		if (!r->IsTrail())
 		{
-			road->bCastShadow = pSet->g.shadow_type >= Sh_Depth;
-			bool fu = road->RebuildRoadInt();
+			r->bCastShadow = pSet->g.shadow_type >= Sh_Depth;
+			bool fu = r->RebuildRoadInt();
 			if (fu)
 				scn->grid.Create();
 			
-			bool full = road == road1 && fu;
+			bool full = r == road1 && fu;
 			if (full && scn->pace[0])  // pace, only for 1st road
 			{
 				scn->pace[0]->SetupTer(scn->ters[0]);  // 1st ter only-
-				road->RebuildRoadPace();
-				scn->pace[0]->Rebuild(road, scn->sc, pSet->trk_reverse);
+				r->RebuildRoadPace();
+				scn->pace[0]->Rebuild(r, scn->sc, pSet->trk_reverse);
 			}
 		}
 	}
@@ -435,7 +436,10 @@ void App::update( float dt )
 	if (scn->pace[0])
 		scn->pace[0]->UpdVis(Vector3::ZERO, edMode == ED_PrvCam);
 
+	if (scn->trail[0])
+		scn->trail[0]->SetVisTrail(pSet->trail_show);// UpdLodVis(1.f, 0);
 	
+
 	//  upd terrain generator preview
 	if (bUpdTerPrv)
 	{	bUpdTerPrv = false;

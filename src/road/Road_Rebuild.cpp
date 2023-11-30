@@ -630,8 +630,9 @@ void SplineRoad::createSeg_Meshes(
 	#ifdef SR_EDITOR
 		if (lod == 0)  //  🌍 Minimap
 		CreateMesh( 0, rs.mini, sMesh+"#",
-			rs.sMtrRd, rs.alpha, pipeGlass, true, //*
-			DLM.pos, DLM.norm, IsTrail() ? DLM.clr : DLM.clrMini, DLM.tcs, idx);
+			rs.sMtrRd, rs.alpha, pipeGlass,  !IsTrail(), //*
+			DLM.pos, DLM.norm,  IsTrail() ? DLM.clr : DLM.clrMini,
+			DLM.tcs, idx);
 	#endif
 	}
 	if (DS.hasBlend)  // Blend >

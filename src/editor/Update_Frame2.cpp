@@ -113,7 +113,8 @@ void App::UpdateKey(float dt)
 		bool prv = edMode == ED_PrvCam, ed = edMode == ED_Road && !bMoveCam;
 
 		int i = 0;
-		for (auto r : scn->roads)
+		for (auto* r : scn->roads)
+		if (!r->IsTrail())
 		{
 			r->UpdLodVis(dist, prv);
 			r->UpdLodVisMarks(dist2, ed && i == scn->rdCur);
