@@ -89,6 +89,10 @@ License: CC0
 More:
 https://polyhaven.com/hdris
 
+mixed:
+
+anomaly_04.jpg
+mixed day_clouds_04_blue and dawn_01
 
 
 -------------- procedural

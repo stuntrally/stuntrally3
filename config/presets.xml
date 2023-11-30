@@ -51,6 +51,7 @@
 <s m="sky/anomaly_01"             c="#a6d76e"   p="55"  y="0"  /> <!-- Ano2-Bug -->
 <s m="sky/anomaly_02"             c="#5b8b7b"   p="18" y="-35"  /> <!-- Ano3-Oversize  -->
 <s m="sky/anomaly_03"             c="#ff7b52"   p="8"  y="-90"  /> <!-- TestC14-Anomaly -->
+<s m="sky/anomaly_04"   		  c="#7b95ce"   p="1" y="0" /> <!-- Ano1-Glitchy -->
 
 <!--  skies, space, alien, etc  -->
 <s m="sky/space_nebula_01"        c="#41182a"   p="25"  y="115"  /> <!-- Cry5-CrystalIslands -->
