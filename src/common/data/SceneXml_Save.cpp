@@ -330,6 +330,9 @@ bool Scene::SaveXml(String file)
 
 			if (o->scale != Vector3::UNIT_SCALE)  // dont save default
 				oe->SetAttribute("sc",	toStrC( o->scale ));
+
+			if (!o->shadow)
+				oe->SetAttribute("sh",	o->shadow ? 1 : 0 );
 			objs->InsertEndChild(oe);
 		}
 	root->InsertEndChild(objs);

@@ -157,6 +157,7 @@ void App::CreateObjects()
 		{	o.it = mSceneMgr->createItem((no ? "sphere" : o.name) + ".mesh");
 			o.it->setName("oE"+s);
 			SetTexWrap(o.it);
+			o.it->setCastShadows(o.shadow);
 		}
 		catch (Exception& e)
 		{
