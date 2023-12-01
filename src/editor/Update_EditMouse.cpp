@@ -37,7 +37,7 @@ void App::EditMouse()
 	if (edMode == ED_Start /*&&	vStartPos.size() >= 4 && vStartRot.size() >= 4*/)
 		MouseStart();
 
-	if (edMode == ED_Particles && !scn->sc->emitters.empty())
+	if (edMode == ED_Particles && !scn->sc->emitters.empty() && pSet->bEmitters)
 		MouseEmitters();
 	
 	if (edMode == ED_Fluids && !scn->sc->fluids.empty())

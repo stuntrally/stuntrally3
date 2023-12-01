@@ -5,6 +5,7 @@
 #include "CGui.h"
 #include "GuiCom.h"
 #include "Road.h"
+#include "settings.h"
 #include <OgreSceneNode.h>
 #include <OgreVector3.h>
 #include <MyGUI_InputManager.h>
@@ -380,7 +381,8 @@ void App::KeyTxtEmitters(Real q)
 	emtTxt[6]->setCaption(TR("#{Density}: ") +fToStr(e.rate,0,3) );
 	emtTxt[7]->setCaption(TR("#{Count}: ") + toStr(e.ps ? e.ps->getNumParticles() : 0) + (e.stat ? "  Static" : ""));
 
-	if (!bEdit())  return;
+	if (!bEdit() || !pSet->bEmitters || !e.ps)
+		return;
 	if (isKey(LEFTBRACKET) ||isKey(O)){  e.rate  *= 1.f - 0.04f*q;  e.ps->getEmitter(0)->setEmissionRate(e.rate);  }
 	if (isKey(RIGHTBRACKET)||isKey(P)){  e.rate  *= 1.f + 0.04f*q;  e.ps->getEmitter(0)->setEmissionRate(e.rate);  }
 	if (isKey(SEMICOLON)   ||isKey(K)){  e.parScale *= 1.f - 0.04f*q;  e.UpdEmitter();  }
