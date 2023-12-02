@@ -17889,13 +17889,12 @@
 			},
 			"specular" :
 			{
-				"value" : [0.9, 0.9, 0.9],
-				"texture" : "branches_01_spec.jpg",
+				"value" : [0.1, 0.1, 0.1],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : 0.818,
+				"value" : 0.2,
 				"mode" : "coeff"
 			},
 			"normal" :
@@ -20618,16 +20617,23 @@
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1]
+				"value" : [0.6, 0.62, 0.65]
 			},
 			"fresnel" :
 			{
-				"value" : 0.6,
+				"value" : 0.5,
 				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "gas_tank_02_norm.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 0.45
+				"value" : 0.9,
+				"texture" : "gas_tank_02_rough.jpg"
 			}
 		},
 
@@ -20646,16 +20652,23 @@
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1]
+				"value" : [0.5, 0.52, 0.5]
 			},
 			"fresnel" :
 			{
-				"value" : 0.6,
+				"value" : 0.5,
 				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "gas_tank_02_norm.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 0.45
+				"value" : 0.8,
+				"texture" : "gas_tank_02_rough.jpg"
 			}
 		},
 
@@ -20674,8 +20687,7 @@
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1],
-				"texture" : "gas_tank_02_spec.jpg",
+				"value" : [0.6, 0.6, 0.6],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
@@ -20691,7 +20703,8 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.5
+				"value" : 1.0,
+				"texture" : "gas_tank_02_rough.jpg"
 			}
 		},
 
@@ -20710,16 +20723,23 @@
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1]
+				"value" : [0.3, 0.3, 0.27]
 			},
 			"fresnel" :
 			{
 				"value" : 0.6,
 				"mode" : "coeff"
 			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "gas_tank_02_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
 			"roughness" :
 			{
-				"value" : 0.45
+				"value" : 0.95,
+				"texture" : "gas_tank_02_rough.jpg"
 			}
 		},
 
@@ -47753,13 +47773,12 @@
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1],
+				"value" : [0.1, 0.1, 0.1],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.6, 0.6, 0.6],
-				"texture" : "wagon_wheels_spec.jpg",
+				"value" : [0.2, 0.2, 0.2],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -47770,7 +47789,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.3
+				"value" : 0.5
 			}
 		},
 
@@ -47789,14 +47808,13 @@
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1],
-				"texture" : "wagon_wood_spec.jpg",
+				"value" : [0.1, 0.1, 0.1],
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : 0.6,
-				"mode" : "coeff"
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
 			},
 			"normal" :
 			{
@@ -47806,7 +47824,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.3
+				"value" : 0.5
 			}
 		},
 

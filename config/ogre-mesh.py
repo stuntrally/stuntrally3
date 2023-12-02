@@ -21,13 +21,15 @@ recursive = False
 
 #  configs for Media subdirs
 #------------------------------
-#  objects2convert/  new
+#  ----  new
 start_dir = data + 'objects2convert/'
-#args = ' -v2 -e -t -ts 4 -O puqs '  # no lods +
-args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 10 '  # 3 lods
 
-#  bridge, pier
-# args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 15 '  # 3 lods
+#  ----  presets  ----
+# args = ' -v2 -e -t -ts 4 -O puqs '                   # no lods +  highest quality, no drop
+args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 8 '  # 3 lods  high quality, low drop
+# args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 10 '   # 3 lods  medium
+# args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 12 '  # 3 lods  low
+# args = ' -v2 -e -t -ts 4 -O puqs -l 2 -d 200 -p 15 '  # 3 lods  lowest quality, quick drop
 
 #  rocks/  hex*
 #start_dir = data + 'rockshex/'
