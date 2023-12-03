@@ -754,7 +754,7 @@ descr="Alien championship.">
 	</champ>
 
 	<champ name="Stone" ver="1" difficulty="5" type="6"
-descr="Alien championship.">
+descr="Stone championship.">
 		<t name="Stn1-StoneQuarry"/>
 		<t name="Stn2-UltraFrenzy"/>
 	</champ>
