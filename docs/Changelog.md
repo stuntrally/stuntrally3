@@ -59,9 +59,9 @@ Stunt Rally 3 is continuing last SR 2.x, using latest Ogre-Next 3.0.
     - **cfg or config** forces showing Ogre dialog with screen and rendering options
     - Starting with ? shows help for all. In code search for _Tool_ or references to MainEntryPoints::args
 - **Bugs** and notable **missing** features from SR 2.8, not yet present in SR 3.0:
-  - Video options: Resolution, Vsync, Antialiasing, etc are not on Gui, but in Ogre dialog before start. No LimitFps
-    - Can't change them without quit. Also possibly alt-tab could require track reload on Windows
-  - Terrain shadowmap, Fluids: depth color, Refraction, smooth border. Grass deform, Trees wind. No env reflections on objects.
+  - Video options: Resolution, Vsync, Antialiasing, etc are not on Gui, but in Ogre dialog before start. No Limit Fps.
+    - Can't change them without quit. Also possibly alt-tab could require track reload on Windows.
+  - Terrain shadowmap, Fluids: depth color, Refraction, smooth border. Grass deform, Trees wind.
   - HUD: minimap terrain or border, bad other position markers, bad in splitscreen: gauges, minimaps, digits etc.
   - Editor
     - Slower road editing (~20 Fps not 60), added skip. Full Rebuild (B) takes quite _long_, columns need it

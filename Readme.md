@@ -21,7 +21,7 @@ Old [Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from 2.x
 
 3D racing game with own Track Editor.
 
-Stunt Rally 3 features 226 tracks in 40 sceneries and 25 vehicles.  
+Stunt Rally 3 features 228 tracks in 41 sceneries and 25 vehicles.  
 Game modes include:
 * Single Race (with your Ghost drive, track car guide), Replays,
 * Challenges, Championships, Tutorials, (series of tracks)
@@ -39,11 +39,9 @@ It also features few Sci-Fi vehicles and planets.
 This is continuation of old [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.x.  
 Using [Ogre-Next](https://github.com/OGRECave/ogre-next) for graphics and [VDrift](https://github.com/VDrift/vdrift) for simulation.
 
-**Documentation** is now inside [docs/](docs/_menu.md) dir. It's partly WIP.
+**Documentation** is now inside [docs/](docs/_menu.md) dir.
 
 **Changes** and new features in [changelog](docs/Changelog.md).  
-Details in [Roadmap](docs/Roadmap.md) with few missing features, known issues, and todo.  
-Progress posts in [SR forum topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18515). Dev questions and answers in Ogre-Next [topic](https://forums.ogre3d.org/viewtopic.php?t=96576).
 
 ------------------------------------------------------------------------------
 
@@ -111,6 +109,8 @@ You can help with:
   done with PRs on github
 
 ## Developing
+
+Details in [Roadmap](docs/Roadmap.md) with few missing features, known issues, and future **ToDo** plans.  
 
 General info with some details for SR3, its sources and using Ogre-Next is in [Developing](docs/Developing.md).  
 Sources have emojis, [this file](/src/emojis.txt) has all, with quick components guide etc.
