@@ -197,6 +197,19 @@ descr="Tracks with single or strange jumps.">
 		</tracks>
 	</challenge>
 
+	<!-- 3.0 -->
+	<challenge name="#B0C080Nice and #C0FF90easy" ver="1" difficulty="2" type="0"
+descr="3 short, easy tracks. Nice looking locations. Caution: slow down before wooden bridges.">
+		<cartype names="Gravel|Terrain" />
+		<car names="U6|TU|BV" />
+		<pass avgPoints="10" />
+		<tracks>
+			<t name="Des19-Sandgrains"  passPoints="9" />
+			<t name="Spr1-Rise"         passPoints="9" />
+			<t name="For21-StuntValley" passPoints="9" />
+		</tracks>
+	</challenge>
+
 
 <!--  🏝️ Scenery  -->
 <!--========================================================================================================================-->
@@ -385,6 +398,29 @@ descr="Another alternating series, where odd tracks are brown (some dark), and e
 		</tracks>
 	</challenge>
 
+	<!-- 3.0 -->
+	<challenge name="#E0C0A0Canyon #909060Mountains" ver="1" difficulty="4" type="1"
+descr="3 tracks in and around various orange canyon mountains. Increasing track length and difficulty.">
+		<cartype names="Gravel|Asphalt|Extreme|Terrain" />
+		<pass avgPoints="11" />
+		<tracks>
+			<t name="Atm10-LakeCity"  passPoints="9" />
+			<t name="Can8-RedoPoka"   passPoints="9" />
+			<t name="Mud6-Weiriwasso" passPoints="9" />
+		</tracks>
+	</challenge>
+
+	<challenge name="#80F0B0Moss and #F0A0A0Marble trip" ver="1" difficulty="4" type="1"
+descr="Two long tracks, one inside foggy moss, other in strange new marble scenery.">
+		<sim boost="3" flip="2" rewind="2" />
+		<cartype names="Gravel|Asphalt|Extreme" />
+		<pass avgPoints="9" />
+		<tracks>
+			<t name="Mos8-MogFoss"   passPoints="9" />
+			<t name="Mar2-Momayon"   passPoints="9" />
+		</tracks>
+	</challenge>
+
 
 <!--  ⏳ Endurance  (long)  -->
 <!--========================================================================================================================-->
@@ -541,7 +577,7 @@ descr="Few new, rather easy rally tracks in new places, mostly forest.">
 		<pass avgPoints="10" />
 		<tracks>
 			<t name="Grc12-KapabaRivers"  passPoints="8" />
-			<t name="Can10-SandyMountain" passPoints="8" />
+			<t name="Isl16-SandyMountain" passPoints="8" />
 			<t name="For20-LakoPine"      passPoints="8" />
 			<t name="For19-CrolKarstMntn" passPoints="8" />
 			<t name="Wnt18-MountPen"      passPoints="8" />
@@ -570,8 +606,8 @@ descr="New tracks with complex terrain and pipe installations.">
 	</challenge>
 
 	<!-- 3.0  2.8 -->
-	<challenge name="#60A0FFUnderwater #90C0FFadventures" ver="1" difficulty="4" type="2"
-descr="Normally driving underwater wouldn't be possible, but here we are. A few tracks with significant parts underwater. Still very slow to do, so you can #2080F0boost always.">
+	<challenge name="#60A0FFUnderwater #90C0FFadventures" ver="1" difficulty="5" type="2"
+descr="Normally driving underwater wouldn't be possible, but here we are. A few tracks with significant parts underwater. Still very slow to do, so you can #2080F0boost always. #80C0F0Or you could pick the fastest U6 Bug vehicle.">
 		<cartype names="Gravel|Asphalt" />
 		<car names="BV|U6|Y7" />
 		<sim boost="3" />
@@ -836,29 +872,57 @@ descr="Most surreal and colorful tracks, quite unreal and beautiful.">
 		<car names="SX|XZ|U6|Y7|BE|BV" />
 		<pass avgPoints="11" />
 		<tracks>
-			<t name="Sur1-Surreal"     passPoints="9" />
-			<t name="Sur5-FreshBreeze" passPoints="8" />
+			<t name="Sur1-Surreal"      passPoints="9" />
+			<t name="Sur5-FreshBreeze"  passPoints="8" />
 		</tracks>
 	</challenge>
 
-	<!-- 3.0  2.8 -->
-	<challenge name="#00F0FFThe #C000FFAno#30FF00maly" ver="1" difficulty="4" type="4"
-descr="Odd, strange, sometimes bizzare looking tracks in anomaly space with rendering glitches. Certainly surprising but without too difficult stunts. #2080F0Boost available always and rewind time.">
+	<!-- 3.0 -->
+	<challenge name="#010101Dark &amp; #C08040Dense #60C090Vegetation" ver="1" difficulty="4" type="4"
+descr="Inside dense forests and in dark or at night. Includes Finland with aurora. #F0F080Lights recommended. #2080F0Rewind goes back time.">
+		<sim rewind="2" />
+		<cartype names="Gravel|Asphalt" />
+		<car names="BV" />
+		<pass avgPoints="9" />
+		<tracks>
+			<t name="Can9-DukeRain"      passPoints="8" />
+			<t name="Jng24-NightJungle"  passPoints="8" />
+			<t name="Fin3-TreeTops"      passPoints="8" />
+			<t name="Isl3-IslandsNight"  passPoints="8" />
+		</tracks>
+	</challenge>
+
+	<challenge name="#104050Dark #90A080Weather #A0C0E0Stunt" ver="1" difficulty="4" type="4"
+	descr="Extreme weather on tracks with basic stunts. Not long, and not too difficult.">
 		<sim boost="3" flip="2" rewind="2" />
 		<cartype names="Gravel|Asphalt" />
 		<car names="U6|TU|BV" />
 		<pass avgPoints="9" />
 		<tracks>
-			<t name="Ano1-Glitchy"  passPoints="8" />
-			<t name="Ano2-Bug"      passPoints="8" />
-			<t name="Ano3-Oversize" passPoints="8" />
+			<t name="Wnt1-CrossLoop"    passPoints="6" />
+			<t name="For9-MadMntnDark"  passPoints="8" />
 		</tracks>
 	</challenge>
 
-	<challenge name="#B0C0A0Urban #010201Nightmare" ver="1" difficulty="7" type="4"
-descr="The most extremely twisted tracks in decaying urban locations. Very long tracks with some difficult stunts. But mostly with slow, exhausting twists on road. #2080F0Boost available always and rewind time.">
+
+	<challenge name="#00F0FFThe #C000FFAno#30FF00maly" ver="1" difficulty="4" type="4"
+descr="Odd, out of place, bizzare looking tracks in anomaly space with rendering glitches. Certainly surprising but without too difficult stunts. #2080F0Boost available always and rewind time.">
 		<sim boost="3" flip="2" rewind="2" />
-		<cartype names="Gravel|Asphalt|Extreme" />
+		<cartype names="Gravel|Asphalt" />
+		<car names="U6|TU|BV" />
+		<pass avgPoints="9" />
+		<tracks>
+			<t name="Ano0-AnomalyFun"  passPoints="8" />
+			<t name="Ano1-Glitchy"     passPoints="8" />
+			<t name="Ano2-Bug"         passPoints="8" />
+			<t name="Ano3-Oversize"    passPoints="8" />
+		</tracks>
+	</challenge>
+
+	<challenge name="#B0B0B0Urban #407010Decay" ver="1" difficulty="7" type="4"
+descr="The most extremely twisted tracks in decaying urban, apocaliptic locations. Very long tracks with some difficult stunts. But mostly with slow, exhausting twists on road. #2080F0Boost available always and rewind time.">
+		<sim boost="3" flip="2" rewind="2" />
+		<cartype names="Gravel|Asphalt" />
 		<car names="U6|TU|BV" />
 		<pass avgPoints="9" />
 		<tracks>
@@ -866,6 +930,7 @@ descr="The most extremely twisted tracks in decaying urban locations. Very long 
 			<t name="Apo1-TarFields"    passPoints="8" />
 		</tracks>
 	</challenge>
+
 
 	<!--  ⭕➿ Stunts  -->
 <!--========================================================================================================================-->
@@ -1062,16 +1127,15 @@ descr="Long and strange track on other planets with some stunt elements.">
 	</challenge> -->
 
 	<!-- 3.0  2.8 -->
-	<challenge name="#C02020Ultra #F04040difficult #F04040extreme #F0C040plus" ver="1" difficulty="7" type="5"
-descr="The ultra hiper difficult extreme challenge plus. New track reaching over all previous difficulty.
-Surely the last one to try. Unbelievably long and difficult. Will require many rewind uses to even drive through.
-#2080F0But you can rewind time and boost all you want here. Thus score is less important.">
-		<cartype names="Gravel" />
-		<car names="U6" />
-		<sim damage="1" boost="3" flip="2" rewind="2" />
-		<pass avgPoints="12" />
+	<challenge name="#E0E080Desert and #B0E080Savanna stunts" ver="1" difficulty="5" type="5"
+descr="Two new tracks with stunts in normal sceneries. Not very difficult but with some tricky loops or jumps.">
+		<sim boost="3" flip="2" rewind="2" />
+		<cartype names="Gravel|Asphalt" />
+		<car names="U6|TU|BV" />
+		<pass avgPoints="9" />
 		<tracks>
-			<t name="Spc3-HyperLoops"   passPoints="9" />
+			<t name="Sav16-StuykoStunting" passPoints="8" />
+			<t name="Des20-DesertCoaster"  passPoints="8" />
 		</tracks>
 	</challenge>
 
@@ -1105,7 +1169,7 @@ descr="An expedition into other planets, originally driven with electic powered 
 	</challenge>
 
 	<challenge name="#B0C8E0Space Trip" ver="1" difficulty="4" type="6"
-descr="Extreme cars in interesting places outside earth.">
+descr="Extreme cars in interesting places outside Earth.">
 		<car names="UV|TU|TW|U6|BV" />
 		<hud chkBeam="1" chkArrow="1" />
 		<pass avgPoints="10" />
@@ -1175,7 +1239,7 @@ descr="Very fast chase. Great stunts on other planets. Need to use the rechargab
 	</challenge>
 
 	<challenge name="#D0FFA0Alien #4090F0Stunts #A04840Extreme" ver="1" difficulty="6" type="6"
-descr="The new outside earth stunt tracks. Continuation of Outer Stunts.">
+descr="The new outside Earth stunt tracks. Continuation of Outer Stunts.">
 		<cartype names="Gravel|Asphalt|Extreme" />
 		<car deny="3B|MO" />
 		<pass avgPoints="12" />
@@ -1183,6 +1247,56 @@ descr="The new outside earth stunt tracks. Continuation of Outer Stunts.">
 			<t name="Mrs4-Platforms"  passPoints="9" />
 			<t name="Aln2-Freefall"   passPoints="9" />
 			<t name="Cry3-BlueHell"   passPoints="9" />
+		</tracks>
+	</challenge>
+
+	<!-- 3.0  2.8 -->
+	<challenge name="#010101Dark &amp; #4080C0Dense #8060B0Vegetation" ver="1" difficulty="5" type="6"
+descr="Located on other planets in complete dark or almost. With some strange stunts, irregular loops etc. All inside dense forests or between crystals. #F0F080Vehicle lights required. #2080F0Rewind goes back time.">
+		<sim boost="3" flip="2" rewind="2" />
+		<cartype names="Gravel|Asphalt" />
+		<car names="BV" />
+		<pass avgPoints="9" />
+		<tracks>
+			<t name="Cry4-Slide"        passPoints="8"/>
+			<t name="Sur9-HexForest"    passPoints="8"/>
+			<t name="Blk2-Sawtooth"     passPoints="8"/>
+			<t name="Aln6-Overgrowth"   passPoints="8"/>
+		</tracks>
+	</challenge>
+
+	<challenge name="#4090F0Outer space #C090D0Beauty" ver="1" difficulty="3" type="6"
+descr="2 tracks on beautiful planets with crystals.">
+		<cartype names="Gravel|Asphalt|Extreme" />
+		<pass avgPoints="9" />
+		<tracks>
+			<t name="Cry5-CrystalIslands"  passPoints="8"/>
+			<t name="Mar3-Plateaus"        passPoints="8"/>
+		</tracks>
+	</challenge>
+
+	<challenge name="#80C020Alien trip in mountains" ver="1" difficulty="3" type="6"
+descr="Alien green like locations but in mountains. With stunts in later tracks.">
+		<cartype names="Gravel|Asphalt" />
+		<car names="U6|BV" />
+		<pass avgPoints="9" />
+		<tracks>
+			<t name="Grc14-SquazeloLakes" passPoints="8"/>
+			<t name="Aln4-EjeloOutpost"   passPoints="8"/>
+			<t name="Aln5-WhiteLemon"     passPoints="8"/>
+		</tracks>
+	</challenge>
+
+	<challenge name="#C02020Ultra #F04040difficult #F04040extreme #F0C040plus" ver="1" difficulty="7" type="6"
+descr="The ultra hiper difficult extreme challenge plus. New track reaching over all previous difficulty.
+Surely the last one to try. Unbelievably long and difficult. Will require many rewind uses to even drive through.
+#2080F0But you can rewind time and boost all you want here. Thus score is less important.">
+		<cartype names="Gravel" />
+		<car names="U6" />
+		<sim damage="1" boost="3" flip="2" rewind="2" />
+		<pass avgPoints="12" />
+		<tracks>
+			<t name="Spc3-HyperLoops"   passPoints="9" />
 		</tracks>
 	</challenge>
 
@@ -1405,7 +1519,7 @@ descr="Drive the fast 3 metal spheres vehicle through rather easy tracks. Cautio
 		<tracks>
 			<t name="Sur7-UaraHills"      passPoints="8" />
 			<t name="Grc12-KapabaRivers"  passPoints="8" />
-			<t name="Can10-SandyMountain" passPoints="8" />
+			<t name="Can10-SandyCanyon"   passPoints="8" />
 			<t name="For19-CrolKarstMntn" passPoints="8" />
 		</tracks>
 	</challenge>
@@ -1534,7 +1648,7 @@ descr="Nice drive with regular motorbike.">
 		<car names="BE|BV" />
 		<pass avgPoints="10" />
 		<tracks>
-			<t name="Can10-SandyMountain" passPoints="8" />
+			<t name="Can10-SandyCanyon"   passPoints="8" />
 			<t name="Grc5-Climb"          passPoints="9" />
 			<t name="For20-LakoPine"      passPoints="8" />
 			<t name="For19-CrolKarstMntn" passPoints="8" />
@@ -1558,34 +1672,6 @@ descr="Stunts with motorbikes.">
 		</tracks>
 	</challenge>
 
-<!-- todo: add
-	<t name="Aln4-EjeloOutpost"/>
-	<t name="Aln5-WhiteLemon"/>
-	<t name="Aln6-Overgrowth"/>
-
-	<t name="Can8-RedoPoka"/>
-	<t name="Can9-DukeRain"/>
-
-	<t name="Grc14-SquazeloLakes"/>
-	<t name="Atm10-LakeCity"/>
-
-	<t name="Blk2-Sawtooth"/>
-	<t name="Sur9-HexForest"/>
-	<t name="Cry4-Slide"/>
-
-	<t name="Mos8-MogFoss"/>
-	<t name="Mar2-Momayon"/>
-
-	<t name="For21-StuntValley"/>
-	<t name="Des19-Sandgrains"/>
-	<t name="Mud6-Weiriwasso"/>
-
-	<t name="Sav16-StuykoStunting"/>
-	<t name="Des20-DesertCoaster"/>
-	<t name="Spr1-Rise"/>
-
-	<t name="Fin3-TreeTops"/>
--->
 
 <!--  🧪 Test  -->
 <!--========================================================================================================================-->

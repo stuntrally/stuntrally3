@@ -27,11 +27,13 @@ tracks*
 #cars
 data/ghosts/original/
 objects2convert
-#objects*
+#data/objects*/
+#data/trees*/
 #data/road/
 #terrain
 #data
-#sounds
+#data/materials/*
+sounds
 
 .DS_Store
 iOSDependencies

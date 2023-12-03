@@ -425,7 +425,7 @@ descr="Newest space stunt tracks.">
 	<champ name="Various mountains" ver="2" difficulty="2" type="5"
 descr="Desert championship. Part 1.">
 		<t name="For20-LakoPine"/>
-		<t name="Can10-SandyMountain"/>
+		<t name="Can10-SandyCanyon"/>
 		<t name="Grc11-PickCave"/>
 		<t name="For19-CrolKarstMntn"/>
 		<!-- <t name="Sur7-UaraHills"/> -->
@@ -607,7 +607,7 @@ descr="Canyon championship.">
 		<t name="Can7-RedWavy"/>
 		<t name="Can8-RedoPoka"/>
 		<t name="Can9-DukeRain"/>
-		<t name="Can10-SandyMountain"/>
+		<t name="Can10-SandyCanyon"/>
 	</champ>
 	<champ name="Australia" ver="2" difficulty="4" type="6"
 descr="Australia championship.">
@@ -641,12 +641,14 @@ descr="Greece championship, Part 2.">
 		<t name="Grc11-PickCave"/>
 		<t name="Grc12-KapabaRivers"/>
 		<t name="Grc13-YeleyStunts"/>
+		<t name="Grc14-SquazeloLakes"/>
 	</champ>
 
 	<champ name="Finland" ver="1" difficulty="1" type="6"
 descr="Finland championship.">
 		<t name="Fin1-Lakes"/>
 		<t name="Fin2-Serpent"/>
+		<t name="Fin3-TreeTops"/>
 	</champ>
 	<champ name="Autumn" ver="2" difficulty="3" type="6"
 descr="Autumn championship.">
@@ -662,6 +664,7 @@ descr="Autumn championship, Part 2.">
 		<t name="Atm7-Industrial"/>
 		<t name="Atm8-Ultima"/>
 		<t name="Atm9-SchwabAutumn"/>
+		<t name="Atm10-LakeCity"/>
 	</champ>
 
 	<champ name="Moss" ver="3" difficulty="5" type="6"
@@ -705,16 +708,19 @@ descr="Mars championship.">
 		<t name="Mrs4-Platforms"/>
 	</champ>
 
-	<champ name="Toxic" ver="1" difficulty="3" type="6"
+	<champ name="Toxic and PostApo" ver="1" difficulty="4" type="6"
 descr="Toxic championship.">
 		<t name="Tox1-Radioactive"/>
 		<t name="Tox2-AcidLakes"/>
+		<t name="Apo1-TarFields"/>
 	</champ>
 	<champ name="Crystals" ver="1" difficulty="3" type="6"
 descr="Crystals championship.">
 		<t name="Cry1-CrystalMoon"/>
 		<t name="Cry2-MagicFog"/>
 		<t name="Cry3-BlueHell"/>
+		<t name="Cry4-Slide"/>
+		<t name="Cry5-CrystalIslands"/>
 	</champ>
 	<champ name="Surreal" ver="4" difficulty="2" type="6"
 descr="Surreal championship.">
@@ -725,6 +731,7 @@ descr="Surreal championship.">
 descr="Marble championship.">
 		<t name="Mar1-Infinity"/>
 		<t name="Mar2-Momayon"/>
+		<t name="Mar3-Plateaus"/>
 	</champ>
 	<champ name="SurrealSpace" ver="1" difficulty="5" type="6"
 descr="SurrealSpace championship.">
@@ -743,18 +750,37 @@ descr="Alien championship.">
 		<t name="Aln3-MushroomBeach"/>
 		<t name="Aln4-EjeloOutpost"/>
 		<t name="Aln5-WhiteLemon"/>
+		<t name="Aln6-Overgrowth"/>
+	</champ>
+
+	<champ name="Stone" ver="1" difficulty="5" type="6"
+descr="Alien championship.">
+		<t name="Stn1-StoneQuarry"/>
+		<t name="Stn2-UltraFrenzy"/>
 	</champ>
 	<champ name="Other" ver="2" difficulty="3" type="6"
 descr="Championship of single track sceneries.">
-		<t name="Stn1-StoneQuarry"/>
 		<t name="Oth1-FogCity"/>
 		<t name="Oth2-BlackWinter"/>
 	</champ>
-	<champ name="Other, Space" ver="1" difficulty="3" type="6"
+	<champ name="Space" ver="1" difficulty="3" type="6"
 descr="Championship of single track sceneries in Space.">
 		<t name="Spc1-Minerals"/>
 		<t name="Spc2-SpaceMine"/>
+		<t name="Spc3-HyperLoops"/>
+	</champ>
+	<champ name="Black" ver="1" difficulty="3" type="6"
+descr="Black planet championship.">
 		<t name="Blk1-Darkness"/>
+		<t name="Blk2-Sawtooth"/>
+	</champ>
+
+	<champ name="Anomaly" ver="1" difficulty="5" type="6"
+descr="Anomaly scenery (graphical glitches) championship.">
+		<t name="Ano0-AnomalyFun"/>
+		<t name="Ano1-Glitchy"/>
+		<t name="Ano2-Bug"/>
+		<t name="Ano3-Oversize"/>
 	</champ>
 
 
@@ -901,7 +927,7 @@ descr="Absolutely all rally tracks from game. Some easy pipes might appear.">
 		<t name="Grc10-BeachCity"/>
 		<t name="Isl15-IslandVillages"/>
 		<t name="Jng23-FollowValley"/>
-		<t name="Can10-SandyMountain"/>
+		<t name="Can10-SandyCanyon"/>
 		<t name="For18-MountCaro"/>
 		<t name="Wnt18-MountPen"/>
 		<t name="Jng25-CantorJungle"/>
@@ -918,12 +944,17 @@ descr="Absolutely all rally tracks from game. Some easy pipes might appear.">
 
 	<!-- todo: add new tracks ^v 
 		<t name="Wnt1-Cross"/>
+		<t name="Wnt1-CrossLoop"/>
+		<t name="For9-MadMntnDark"/>
+		<t name="Isl3-IslandsNight"/>
+		<t name="Ano0-AnomalyFun"/>
 		<t name="Oth2-BlackWinter"/>
 		<t name="Aus9-RedDesert"/>
 		<t name="Grc10-BeachCity"/>
 		<t name="Isl15-IslandVillages"/>
 		<t name="Jng23-FollowValley"/>
-		<t name="Can10-SandyMountain"/>
+		<t name="Isl16-SandyMountain"/>
+		<t name="Can10-SandyCanyon"/>
 		<t name="Jng24-NightJungle"/>
 		<t name="For18-MountCaro"/>
 		<t name="Wnt18-MountPen"/>
@@ -952,19 +983,20 @@ descr="Absolutely all rally tracks from game. Some easy pipes might appear.">
 		<t name="Mar2-Momayon"/>
 		<t name="Aln6-Overgrowth"/>
 		<t name="Ano1-Glitchy"/>
-		<t name="Spc3-HyperLoops"/>
 		<t name="Mos8-MogFoss"/>
-		<t name="For21-StuntValley"/>
-		<t name="Isl21-BarrelFun"/>
+
 		<t name="Des19-Sandgrains"/>
-		<t name="Sav16-StuykoStunting"/>
 		<t name="Mud6-Weiriwasso"/>
-		<t name="Des20-DesertCoaster"/>
 		<t name="Jng26-MilkyWay"/>
 		<t name="Spr1-Rise"/>
+
+		<t name="Spc3-HyperLoops"/>
+		<t name="For21-StuntValley"/>
+		<t name="Isl21-BarrelFun"/>
+		<t name="Sav16-StuykoStunting"/>
+		<t name="Des20-DesertCoaster"/>
 		<t name="Stn2-UltraFrenzy"/>
 		<t name="Fin3-TreeTops"/>
-
 		<t name="Ano2-Bug"/>
 		<t name="Ano3-Oversize"/>
 		<t name="Cry5-CrystalIslands"/>
