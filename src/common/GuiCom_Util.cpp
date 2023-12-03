@@ -448,7 +448,7 @@ void CGuiCom::CreateFonts()
 
 	const int cnt = 3;
 	string names[cnt] = {"font.small","font.normal","font.big"};
-	float sizes[cnt] = {28.f, 33.f, 38.f};  // par
+	float sizes[cnt] = {30.f, 34.f, 39.f};  // par
 	
 	String inf;
 	for (int i=0; i < cnt; ++i)
