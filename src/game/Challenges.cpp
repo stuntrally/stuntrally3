@@ -479,7 +479,7 @@ void CGui::ChallengeAdvance(float timeCur/*total*/)
 	txChallEndF->setCaption(passed ? TR("#{ChallEndFinished}") : TR("#{Finished}"));
 
 	edChallEnd->setCaption(s);
-	app->mWndChallEnd->setVisible(true);  // show after stage end
+	// app->mWndChallEnd->setVisible(true);  // show after stage end
 	
 	LogO("|]");
 }

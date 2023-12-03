@@ -773,9 +773,9 @@ particle_system SandStormRed
 		height	18
 		depth	12  //h
 
-		colour_range_start	0.21 0.11 0.07  0.1
-		colour				0.27 0.15 0.10  0.2
-		colour_range_end	0.32 0.19 0.13  0.3
+		colour_range_start	0.11 0.04 0.02  0.1
+		colour				0.13 0.05 0.03  0.2
+		colour_range_end	0.17 0.08 0.04  0.3
 
 		emission_rate	200
 		velocity_min	10.6

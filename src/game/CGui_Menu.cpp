@@ -222,15 +222,16 @@ void CGui::comboDiff(Cmb cmb, size_t val)
 		ckTrailShow.SetValue(trail);  ckMinimap.SetValue(minimap);
 	};
 
+	const char D = SETcom::colFilDef[1][1], L = SETcom::colFilDef[1][13];  // max diff, len
 	switch (val)
 	{// up,col, filt,diff, pipes,jmp,len  bm,ar,tr,mi  car,trk
 	case 0:  SetDiff(1,6,  1,2, 0,0, 3,  1,1,1,1, "V2", "Isl2-Sandy");  break;
 	case 1:  SetDiff(1,6,  1,3, 1,1, 6,  0,1,1,1, "ES", "Isl12-Beach");  break;  //Isl5-Shore
 	case 2:  SetDiff(1,6,  1,4, 2,2, 9,  0,0,1,1, "HI", "Jng6-Fun");  break;  // Isl6-Flooded
 	case 3:  SetDiff(0,3,  1,5, 4,4,14,  0,0,1,1, "HI", "Isl14-Ocean");  break;
-	case 4:  SetDiff(0,3,  0,6, 4,4,24,  0,0,0,1, "SX", "Grc9-Oasis");  break;
-	case 5:  SetDiff(0,17, 0,6, 4,4,24,  0,0,0,0, "SX", "Mos5-Factory");  break;  // Isl17-AdapterIslands
-	case 6:  SetDiff(0,17, 0,6, 4,4,24,  0,0,0,0, "U6", "Uni7-GlassStairs");  break;
+	case 4:  SetDiff(0,3,  0,6, 4,4,21,  0,0,0,1, "SX", "Grc9-Oasis");  break;
+	case 5:  SetDiff(0,17, 0,6, 4,4, L,  0,0,0,0, "SX", "Mos5-Factory");  break;  // Isl17-AdapterIslands
+	case 6:  SetDiff(0,17, 0,D, 4,4, L,  0,0,0,0, "U6", "Uni7-GlassStairs");  break;
 	}
 	app->mWndRaceBtns[1]->setVisible(val < 4);  // tutorials
 	gcom->TrackListUpd(true);  gcom->listTrackChng(gcom->trkList,0);

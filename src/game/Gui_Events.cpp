@@ -207,10 +207,12 @@ void CGui::slHudSize(SV*)
 void CGui::slHudCreate(SV*)
 {
 	hud->Destroy();  hud->Create();
+	hud->Show();
 }
 void CGui::chkHudCreate(Ck*)
 {
 	hud->Destroy();  hud->Create();
+	hud->Show();
 }
 
 void CGui::slSizeArrow(SV*)

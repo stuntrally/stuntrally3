@@ -347,9 +347,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(U):  gui->GuiShortcut(WND_Edit, TAB_Surface);   return;  // U Surfaces  ⚫💭
 		case key(R):  gui->GuiShortcut(WND_Edit, TAB_Road);      return;  // R Road  🛣️
 		case key(X):  switch (edMode)
-		{	case ED_Objects:   gui->GuiShortcut(WND_Edit, TAB_Objects);   return;  // X Objects   📦
-			case ED_Fluids:    gui->GuiShortcut(WND_Edit, TAB_Fluids);    return;  // X Fluids  💧🌊
+		{	case ED_Fluids:    gui->GuiShortcut(WND_Edit, TAB_Fluids);    return;  // X Fluids  💧🌊
 			case ED_Particles: gui->GuiShortcut(WND_Edit, TAB_Particles); return;  // X Particles  🔥
+			default:
+			case ED_Objects:   gui->GuiShortcut(WND_Edit, TAB_Objects);   return;  // X Objects   📦
 		}	return;
 		case key(C):  gui->GuiShortcut(WND_Options, 1);	  return;  // C Screen  🖥️
 		case key(A):  gui->GuiShortcut(WND_Options, 2);   return;  // A Graphics  📊
