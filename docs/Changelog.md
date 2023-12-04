@@ -1,12 +1,11 @@
 ## What's coming next
 
 This section lists changes not yet released, but committed to new repositories stuntrally3 and tracks3.  
-Stunt Rally 3 is continuing last SR 2.x, using latest Ogre-Next 3.0.  
 
 ## Version 3.0 beta
 
-- Missing things and bugs listed on [Roadmap](Roadmap.md)
-- Graphics - moved to Ogre-Next
+- Stunt Rally 3 is continuing last SR 2.x.  
+- Graphics - moved to Ogre-Next 3.0
   - A **lot smoother and higher Fps**, also in split screen
     - No vegetation lags. Auto HW instancing. Good Fps with many objects/buildings, and road points in editor
   - Vegetation models - no impostors, now using meshes with LODs
@@ -16,10 +15,10 @@ Stunt Rally 3 is continuing last SR 2.x, using latest Ogre-Next 3.0.
     - New vehicle materials - with more parameters and new look
     - Color changing **paints**, 3 colors (on Gui) at once depending on view angle
     - New paints - Big set, over **450** total
-    - Materials in new .json format with more posibilities e.g. detail maps
-    - New .material syntax and new (more complicated) **HLMS** shaders, comparison and details in [Developing](Developing.md) file
+    - [Materials](Materials.md) in new .json format with more posibilities e.g. detail maps
+    - New syntax and new (more complicated) **HLMS** shaders, comparison and details in [Developing](Developing.md) file
   - Better glass pipes - sorted, no random blinking
-  - Vehicle front **lights** - new tab Lights in Graphics options, toggle key, _Todo:_ WIP grass not lit
+  - Vehicle front **lights** - new tab Lights in Graphics options, toggle key, WIP grass is not lit
 - Game
   - Up to 6 players in Splitscreen or Multiplayer
   - Splitscreen 3D Hud available for each player: checkpoint arrow, beam, pacenotes, racing line
@@ -30,7 +29,9 @@ Stunt Rally 3 is continuing last SR 2.x, using latest Ogre-Next 3.0.
     - New columns with **user**'s track rating (slider) and bookmark (checkbox) for better orientation
   - Game window title showing mode and players count, changing color
   - More info on Fps bar (F11), colors from values (orange and red are very high), info on Gui
- Settings for using cache and shaders debug, and got back those for mouse capture and ogre dialog show.
+  - Settings for using cache and shaders debug, mouse capture and ogre dialog show.
+- New **Material Editor** - Alt-F both in game and editor. Can save json, needs adjusting after, [info](Materials.md)
+- Moved [**translations**](Localization.md) to [Weblate]((https://hosted.weblate.org/projects/stunt-rally-3/stunt-rally-3/))
 - Editor
   - Many **terrains** - new Gui buttons: < Previous, > Next, + Add, X Delete, top right (same for Roads)
     - Enter - goes to next terrain, while editing with brushes (outside Gui)
@@ -39,17 +40,15 @@ Stunt Rally 3 is continuing last SR 2.x, using latest Ogre-Next 3.0.
     - Brush parameters - New tab with sliders and **Random** buttons. Colored values
     - Grid brushes, 3×3, 5×5 etc - can repeat N-gon type, repeat in OfsY parameter
   - Bigger terrain heightmaps - available, with good Fps. File size shown (2k is 16MB, 4k is 67MB!)
-  - New tabs Fluids and Particles with lists for easier picking, colored names
-  - Focus camera on current (object, fluid, road point, anything) - key \
+  - New tabs Fluids and Particles with lists (Alt-X) for easier picking, colored names
+  - **Focus camera** on current (object, fluid, road point, anything) - key \
   - Fluids quality (diffuse, refract (not done yet), reflect) keys 1,2 - to reduce rendering when many on track
   - Update now saves terrain heightmaps, so F5 won't undo after
   - Particles scale - new parameter for size e.g. for bigger clouds in distance (keys K,L)
   - Terrain circle cursor - same size far/near, animated
   - Grass layer color - can pick any, no ColorMap combo
   - Sky preview map shown on Sky tab
-  - Hud hide and Trail show checkboxes, moved to tab View, split from Settings
-- New **Material Editor** - Alt-F both in game and editor. Can save json, needs adjusting after, [info](Materials.md)
-- Moved [**translations**](Localization.md) to Weblate
+  - Hud hide and Trail show checkboxes. New tab View, split from Settings
 - Sources
   - Require building latest Ogre-Next and MyGui-Next fork from sources. Info in git [Building](Building.md) file
   - Reworked base class and new AppGui class, common for game and editor

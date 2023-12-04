@@ -7,7 +7,8 @@ import re
 def get_dirs(dir):
 	return [name for name in os.listdir(dir) if os.path.isdir(os.path.join(dir, name))]
 
-pre = '..';  # path
+#pre = '..';  # path
+pre = '.';  # path
 tdir = pre+'/data/tracks'
 trks = get_dirs(tdir)
 #print(trks)

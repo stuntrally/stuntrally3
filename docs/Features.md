@@ -17,7 +17,7 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
   - 🥇 Challenges - few tracks, quite difficult to pass, game already set up.  
     Challenging - Drive with no mistakes to win bronze, silver or gold prize.
 - 👥 More Players
-  - 🪟 Split Screen - 2 to 4 players on 1 screen (requires a good GPU or reduced graphics options)
+  - 🪟 Split Screen - 2 to 6 players on 1 screen (requires a good GPU or reduced graphics options)
   - 🌎 Multiplayer - over internet or in local network, in-game chat. See Wiki, no game server, needs direct connect.
 
 ## Gameplay 🏁
@@ -52,7 +52,7 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
   - shows best way to drive, red colors for braking
 - 🌍 Minimap, can be zoomed and rotated, _Todo:_ terrain and border toggleable
 - Driving aids
-  - 🔝 arrow to next check point (HUD top), _Todo:_ fix for split screen
+  - 🔝 arrow to next check point (HUD top)
   - next check point beam (on track)
   - track completion percentage %
   - time difference and current points shown on each checkpoint
