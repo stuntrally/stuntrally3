@@ -28,7 +28,7 @@ The process of releasing and things that need to be checked before.
 
 ### 4. Packages
   * Create packages for supported systems and test them
-    * Windows installer - use dist/installer.nsi with [NSIS](https://nsis.sourceforge.net/Main_Page), easy if from CI build from github Actions
+    * Windows installer - use [dist/installer.nsi](../dist/installer.nsi) with [NSIS](https://nsis.sourceforge.net/Main_Page), easy if from CI build from github Actions
     * Very old: Linux binaries - need VM (was 12.04), info how to [here](https://github.com/stuntrally/stuntrally/tree/master/dist/linux-archive)dist/linux-archive/Readme.md)
   * Make sure all packages use the same version of the sources (meh)
   * Once the packages work, tag the version number to all repositories (stuntrally3 and tracks3)
@@ -43,5 +43,5 @@ The process of releasing and things that need to be checked before.
     * also cars.xml for Car Browser, remove unnecessary comments
   * For significant look changes update home **screens**, and pics on other websites
   * Notify known third-party packagers about new release
-  * Announce release - on forums: [SR General](https://forum.freegamedev.net/viewforum.php?f=81),  
+  * Announce release - on [New Forum](https://groups.f-hub.org/stunt-rally/),  
    [Ogre showcase](https://www.ogre3d.org/forums/viewtopic.php?f=11&t=58244), meh old: [VDrift dev](https://vdrift.net/Forum/showthread.php?tid=1629), [freegamer](https://freegamer.blogspot.com/), etc.

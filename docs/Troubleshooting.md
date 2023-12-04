@@ -6,8 +6,8 @@ This page describes how to properly report bugs etc. as well as self help tips.
 
 ### Where to report problems
 
-  * [Github Issues](https://github.com/stuntrally/stuntrally3/issues) or
-  * [Bugs & Help forum](https://forum.freegamedev.net/viewforum.php?f=78)
+  * [Github Issues](https://github.com/stuntrally/stuntrally3/issues)
+  * or [New forum](https://groups.f-hub.org/stunt-rally/) if already invited.
 
 ### What we will ask from you
 

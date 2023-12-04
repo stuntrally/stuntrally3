@@ -156,11 +156,6 @@ Has also some MyGui classes a bit extended: `MultiList2.*, Slider*.*, Gui_Popup.
 - vdrift - SR simulation (based on old [VDrift] from about 2010) with a lot of changes and custom code,  
 Also has simulation for spaceships, sphere etc, and for `Buoyancy.*`.
 
-## Art, tasks
-
-[topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800) - Remove all non CC data, topic, New skies.  
-More todo on [Roadmap](Roadmap.md).
-
 
 ----
 

@@ -24,9 +24,10 @@ It has text pages for [new game](https://cryham.tuxfamily.org/portfolio/stuntral
 
 ### Feedback
 
-Be sure to [Read before posting](https://forum.freegamedev.net/viewtopic.php?f=78&t=3814) first.  
-You can post on [Forum](https://forum.freegamedev.net/viewforum.php?f=77) or create new Issue on [github](https://github.com/stuntrally/stuntrally3/issues) - If not already present in _known issues_.  
-There is no chat. Since years, IRC is not used, and was team's development channel.  
+Be sure to [Read before posting](https://groups.f-hub.org/d/2ftpShKs/-how-to-post-sr3-info-help-links-about-etc-) first.  
+You can create new Issue on [github](https://github.com/stuntrally/stuntrally3/issues) - If not already present in _known issues_ (on [Roadmap](Roadmap.md), Tasks.  
+Or post on [New Forums](https://groups.f-hub.org/stunt-rally/) if already invited there.  
+There is no chat or easier way. This is to prevent spam and distraction.
 
 ----
 ### Technologies and Libraries used

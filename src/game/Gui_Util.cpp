@@ -373,7 +373,7 @@ void CGui::btnWikiInput(WP)
 
 void CGui::btnForum(WP)
 {
-	PATHS::OpenUrl("https://forum.freegamedev.net/viewforum.php?f=77");
+	PATHS::OpenUrl("https://groups.f-hub.org/stunt-rally/");
 }
 void CGui::btnSources(WP)
 {

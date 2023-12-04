@@ -35,8 +35,8 @@ A quick info: it is not random, it's quite specifically formatted to how I want 
 ## Track creators
 
 If you manage to create an interesting track, it can be included in future versions.  
-Tracks are shared on [this forum](https://forum.freegamedev.net/viewforum.php?f=80).  
-If needed I usually finish them and improve FPS (performance), may change something.  
+More info in [this topic](https://groups.f-hub.org/d/lpntzPrD/-creating-tracks-and-their-content].  
+If needed, I can finish them, may change something.  
 Tracks are licensed GPLv3 by default.
 
 ------------------------
@@ -64,7 +64,7 @@ If you can record or edit sounds for games. Especially looped engine sounds.
 ## 3D Artists
 
 If you know Blender and can help with importing existing models into game [Objects wiki](Objects.md).  
-Or can edit vehicles ([topic](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526) and [wiki](VehicleModeling.md)) or objects for game, UV unwrap, texturing, etc.
+Or can edit vehicles ([new topic](https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526) and [docs page](VehicleModeling.md)) or objects for game, UV unwrap, texturing, etc.
 
 
 ------------------------

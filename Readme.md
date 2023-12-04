@@ -7,49 +7,52 @@
 
 ## Links
 
-[Stunt Rally Homepage](https://stuntrally.tuxfamily.org/) - Download links, track & vehicle browsers etc.  
-[Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs & Issues, pull requests, etc.  
-[Forums](https://forum.freegamedev.net/viewforum.php?f=77) - Discussions, tracks, Issues, etc.  
-[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md) - is now inside docs/  
-Old [Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from 2.x versions and development  
-[Videos](https://www.youtube.com/user/TheCrystalHammer) - from game and (old) editor  
-[Donations](https://cryham.tuxfamily.org/donate/) - financial support
+🌎[Stunt Rally Homepage](https://stuntrally.tuxfamily.org/) - Download links, track & vehicle browsers etc.  
+⚙️[Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs & Issues, pull requests, etc.  
+🏛️[New Forum](https://groups.f-hub.org/stunt-rally/) - Discussions, Tracks, content, etc.  
+📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - archive  
+
+📚[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md) - is now inside docs/, Information on many pages  
+🖼️Old [Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from 2.x versions and development  
+▶️[Videos](https://www.youtube.com/user/TheCrystalHammer) - from gameplay and (old) editor  
+💜[Donations](https://cryham.tuxfamily.org/donate/) - financial support
 
 ------------------------------------------------------------------------------
 
-## Description
+## 📄Description
 
-3D racing game with own Track Editor.
-
-Stunt Rally 3 features 228 tracks in 41 sceneries and 25 vehicles.  
-Game modes include:
-* Single Race (with your Ghost drive, track car guide), Replays,
-* Challenges, Championships, Tutorials, (series of tracks)
-* Multiplayer (info [here](docs/multiplayer.md), no official server) and Split Screen, up to 6 players.  
-
-The Track Editor allows creating and modifying tracks.  
-Both run on GNU/Linux and Windows.  
-
-**Full features** [list here](docs/Features.md).  
+Stunt Rally is a 3D racing game with own Track Editor.  
+Works on GNU/Linux and Windows.  
 
 The game has a **rally** style of driving and sliding, mostly on gravel,  
 with possible **stunt** elements (jumps, loops, pipes) and generated roads from 3D spline.  
-It also features few Sci-Fi vehicles and planets.
+It also features few Sci-Fi vehicles and different planets🌌.
 
-This is continuation of old [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.x.  
-Using [Ogre-Next](https://github.com/OGRECave/ogre-next) for graphics and [VDrift](https://github.com/VDrift/vdrift) for simulation.
+This SR 3.x is the continuation of old [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.x.  
+Using [Ogre-Next](https://github.com/OGRECave/ogre-next) for rendering and [VDrift](https://github.com/VDrift/vdrift) for simulation.
 
-**Documentation** is now inside [docs/](docs/_menu.md) dir.
+**Documentation** is now [inside docs/](docs/_menu.md) dir.
 
+## 📊Features
+
+Stunt Rally 3 features 228 tracks in 41 sceneries and 25 vehicles.  
+Game modes include:
+* ⏱️Single Race (with your Ghost drive, track car guide), Replays,
+* 🏆Challenges, Championships, Tutorials, (series of tracks)
+* 👥Multiplayer (info [here](docs/multiplayer.md), no official server) and Split Screen, up to 6 players.  
+
+The Track Editor allows creating and modifying tracks.  
+
+**Full features** [list here](docs/Features.md).  
 **Changes** and new features in [changelog](docs/Changelog.md).  
 
 ------------------------------------------------------------------------------
 
-## Quick Start
+## 🚀Quick Start
 
 [Hardware requirements](docs/Running.md#hardware-requirements).
 
-### Game
+### 🚗Game
 
 Esc or Tab - shows/hides GUI.
 
@@ -69,21 +72,22 @@ All settings and logs are saved to user folder, see [Paths](docs/Paths.md). It i
 
 ------------------------------------------------------------------------------
 
-### Editor
+### 🏗️Track Editor
 
 F1 (or tilde) - shows/hides GUI,  
 Tab - switches between Camera and Edit modes.  
 Press Ctrl-F1 to read what can be edited and how.  
 
 There is no undo, so use F5 to reload last track state, and F4 to save it often.  
-After each save, track can be tested in game.
+After each save, track can be tested in game.  
+If needed do manual backup copies of track folder.
 
-[Tutorial](docs/editor.md) page has more info with _Old videos (to be replaced)_.  
+[Tutorial](docs/editor.md) page has more info ... and _very old videos (to be replaced)_.  
 
 
 ------------------------------------------------------------------------------
 
-## Building
+## ⚙️Building
 
 How to compile project from sources:  
 - On **Linux**  is described in [Building](docs/Building.md).  
@@ -92,14 +96,15 @@ How to compile project from sources:
 
 ------------------------------------------------------------------------------
 
-## Feedback
+## 🗨️Feedback
 
-Before reporting bugs or issues, be sure to [Read before posting](https://forum.freegamedev.net/viewtopic.php?f=78&t=3814) topic first
+Before reporting bugs or issues, be sure to [Read before posting](https://groups.f-hub.org/d/2ftpShKs/-how-to-post-sr3-info-help-links-about-etc-) (or 
+[the old one](https://forum.freegamedev.net/viewtopic.php?f=78&t=3814)) topic first.
 
 Then create a [new issue on github](https://github.com/stuntrally/stuntrally3/issues/new) (if not present already)  
-or a topic on Forum [SR Bugs & Help](https://forum.freegamedev.net/viewforum.php?f=78).
+or a topic on [New Forum](https://groups.f-hub.org/stunt-rally/) (if already invited).
 
-## Contributing
+## 🤝Contributing
 
 Help and contributing is welcome.  
 If you'd like to contribute, please check [Contributing](docs/Contributing.md).  
@@ -108,7 +113,7 @@ You can help with:
 - testing, packaging, adding or improving content, fixing, developing code etc.  
   done with PRs on github
 
-## Developing
+## 🛠️Developing
 
 Details in [Roadmap](docs/Roadmap.md) with few missing features, known issues, and future **ToDo** plans.  
 
@@ -117,7 +122,7 @@ Sources have emojis, [this file](/src/emojis.txt) has all, with quick components
 
 ------------------------------------------------------------------------------
 
-## License
+## ⚖️License
 
     Stunt Rally 3 - 3D racing game, with own Track Editor
                     based on Ogre-Next rendering and VDrift simulation

@@ -3,38 +3,32 @@ _List of things **to do**, planned for next releases._
 This is the latest, fast updated list.  
 More in [Tasks tracker](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php?page_number=1) with older tasks too and some more detail.
 
-#### About
-
-SR 3.0 moved to Ogre-Next, 3.0 or higher.  
-[Forum topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18515) (progress),
-[Ogre topic](https://forums.ogre3d.org/viewtopic.php?t=96576&sid=15b9610ca52af886515b49b4733ef546) (dev Q&A)  
-Git [repo](https://github.com/stuntrally/stuntrally3) and [tracks](https://github.com/stuntrally/tracks3), older simple [terrain demo](https://github.com/cryham/ogre3ter-demo)  
+Git [sr3 repo](https://github.com/stuntrally/stuntrally3) and [tracks3](https://github.com/stuntrally/tracks3), older simple [terrain demo](https://github.com/cryham/ogre3ter-demo)  
 
 Marked: <u>critical</u>, `crucial`, **Next or Big**, _Important_.
 
 ### 3.0
 
-New tracks **ghosts**, add to `champs and challs` 🏆  
-SR 3.0 <u>video, screens</u>, 📽️ `editor Videos`, all new  
-_Install_ docs/*.md files  
+New tracks add to `champs` 🏆  
+SR 3.0 <u>screens</u>, 📽️ `editor Videos`, all new  
 
-### 3.1
+### 3.1 cd restore
 
+- 🌪️ **Wind**, for trees  
+  Grass **deform** spheres, wind params, far fade-  
+- Lights on `grass`, sun lit particles-  
 - 🌊 Water tweak par, **refract, depth** for color, border alpha  
 - ⛰️ Terrain  
   **shadowmap** fix < 0, save/load-  
   add emissive, reflect par, fix triplanar normalmaps-  
   blendmap also .hlsl or .any for DX  
   read blendmap, for ter wheel **surface** ids, many ters  
+  pages visibility fix restore  
 - 🛣️ Road  
   **Grid** for walls, road, pipes, ed update cell  
   1 mesh with 4 LODs, shader fix specular stretch  
-- 🌪️ **Wind**, for trees  
-  Lights on `grass`, sun lit particles-  
-  Grass **deform** spheres, wind params, far fade-  
 
 - 🏗️ Editor, fix  
-  delete road, F5 stays  
   objects pick `errors`  
   water reflect in `F7 cam prv`  
   minimap **RTTs** upd skip (slow), or create on save  
@@ -54,7 +48,7 @@ _Install_ docs/*.md files
   gpu mem leaks or renders inactive  
 
 ----
-### 3.2
+### 3.2 new, data
 
 🔊 **Ambient** [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
 🚗🔊 More car **Sounds**.. todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7)  
@@ -65,31 +59,34 @@ _Install_ docs/*.md files
 🖥️ Gui render system, all **options**?  
 🌀 Add [FastNoise](https://github.com/Auburn/FastNoiseLite) for brushes and ter gen  
 
-auto road/ter **Surface**: Particles, trail, sounds, from `presets.xml` not per track  
-Road noise blend, color per vertex  
-grass density as **RTT**, noise, color  
-inside height fog?, noise 3d? _volumetric_ clouds  
-
 🌳 new trees, Bushes, more vegetation, tiny close, grasses, rock packs  
 redo or replace lowest quality meshes: shroom* 🍄, skyscraper* 🏢  
 normalize .mesh scales fir, etc.  
 
-----
-### 3.3
+⛅🌳 Remove all non **CC** data, New skies: [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
+🛣️ Road: wall types, spline walls [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)  
 
-_Basically all [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with priority 1 to 12._
+----
+### 3.2 restore
+
+auto road/ter **Surface**: Particles, trail, sounds, from `presets.xml` not per track  
+Road noise blend, color per vertex  
+grass density as **RTT**, noise, color  
+inside height fog?, noise 3d? _volumetric_ clouds  
 
 ed _tools_: copy roads which combo,all  
 Grass read Hmap - no index, vertex buffers? texture atlas-  
 slow track load, shaders, ?ter get h, norm, do parallel  
 🖱️ Input mouse bind, 👀 VR mode meh-  
 
-⛅🌳 Remove all non **CC** data, [topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800), New skies  
-🛣️ Road: wall types, spline walls [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)  
+----
+### 3.3 new game stuff✨
+
+_Basically all [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with priority 1 to 12._
 
 🕹️ New **Game** elements:  
-Teleporters, moving & rotating Obstacles, elevators  
-Force fields, speed up, lift, anti-gravity
+✨Teleporters, moving & rotating Obstacles, elevators  
+Force fields, speed up, lift, anti-gravity  
 Track 💡lights, `entities.xml` (sum of object, animation, light, 🔥particles etc)
 
 🏆✨ new [game Modes](https://stuntrally.tuxfamily.org/mantis/view.php?id=21): [Career](https://forum.freegamedev.net/viewtopic.php?f=79&t=5211), Collection, 3d cup models  
@@ -103,7 +100,7 @@ Track 💡lights, `entities.xml` (sum of object, animation, light, 🔥particles
 
 🏞️ [Rivers/waterfalls](https://stuntrally.tuxfamily.org/mantis/view.php?id=7)  
 ✨ [Particles](https://stuntrally.tuxfamily.org/mantis/view.php?id=2)  
-🌞 [Sun flare](https://stuntrally.tuxfamily.org/mantis/view.php?id=9)  
+🌞 [Sun flare](https://stuntrally.tuxfamily.org/mantis/view.php?id=9), sun rays..  
 ⚡ lightning weather: line, thunder sound, light or glow  
 
 #### Data
@@ -113,7 +110,7 @@ Track 💡lights, `entities.xml` (sum of object, animation, light, 🔥particles
 📦 New static Objects, dynamic hay  
 Sceneries: PostApo, Spring trees  
 
-🚗 New Vehicles: [topic](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526), **collection** [link](https://sketchfab.com/cryham/collections/vehicles-todo-for-stunt-rally-327a2dd7593f47c7b97af6b806a60bb8)  
+🚗 New Vehicles: [new topic](https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526), models **collection** [link](https://sketchfab.com/cryham/collections/vehicles-todo-for-stunt-rally-327a2dd7593f47c7b97af6b806a60bb8)  
 
 #### Meh
 ed roads: [split](https://stuntrally.tuxfamily.org/mantis/view.php?id=4), checkpoints, merge?  

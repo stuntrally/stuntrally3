@@ -1,4 +1,3 @@
-_Todo: SR3 is NOT yet released_ 
 
 ## Introduction
 
@@ -9,23 +8,30 @@ Latest are located on the official **[Releases page](https://github.com/stuntral
 
 See details below for info how to use them.
 
+----
 ## Windows
 
 Official **installer** will be located in our [Releases page](https://github.com/stuntrally/stuntrally3/releases).
 
-It is an executable (.exe) that will install game (and editor) in chosen destination.   
+It is an executable (.exe) that will install game (and editor) in chosen destination (should be a _new_ folder).  
 After installation shortcuts will appear in start menu folder.   
 Tested on Windows 10, 64-bit.  
-Version 2.2.1 was the last one to run on Windows XP.
 
+----
 ## GNU/Linux
+
+SR 3.0 is not yet available. Only way is building from sources (not easy), how to [here](Building.md).  
+Tested on Debian 11 and 12.
+
+----
 
 ### Flatpak
 
-Flatpak build is **most recent** for GNU/Linux and supported on many distros.  
+Flatpak build _was_ most recent for SR 2.x for GNU/Linux and supported on many distros.  
 How to set up flatpak for your distro [here](https://flatpak.org/setup/).  
 And how to install StuntRally with it [here](https://flathub.org/apps/details/org.tuxfamily.StuntRally).  
 
+----
 
 ### Old archive
 

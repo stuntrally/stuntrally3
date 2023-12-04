@@ -1,7 +1,10 @@
 ## About
 
-This page describes how to build Stunt Rally 3 on **Linux** (Debian-based), using Conan.  
 How to build on Windows is on other [page](BuildingVS.md).
+
+This page describes how to build Stunt Rally 3 on **Linux** (Debian-based),  
+using Conan, and its CMake setup from this [PR here](https://github.com/stuntrally/stuntrally3/pull/1).  
+Currently CMakeLists.txt in repo is not using Conan.
 
 Tested on GNU/Linux, Debian 11 and 12. It should work on Debian-based (like Ubuntu etc).  
 _First steps here are same as in my [ogre3ter-demo](https://github.com/cryham/ogre3ter-demo/) it could be easier to build that for start._  

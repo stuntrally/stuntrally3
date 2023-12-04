@@ -8,7 +8,7 @@ Modifying an existing car (e.g. extending its quality) is much easier.
 
 ### Model websites
 There are already pretty good car models, available on [sketchfab](https://sketchfab.com/search?category=cars-vehicles&features=downloadable&licenses=7c23a1ba438d4306920229c12afcb5f9&licenses=b9ddc40b93e34cdca1fc152f39b9f375&licenses=322a749bcfa841b29dff1e8a1bb74b0b&sort_by=-likeCount&type=models) or [blendswap](https://www.blendswap.com/blends/category/19).  
-See our forum topic, [this post](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526) shows the list of cars.  
+See our forum topic, [new post](https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-to-do), [old post](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526) shows the list of cars.  
 Some are too high poly or too low. And some just don't fit the game.  
 The license for the art must be GPL, CC-BY-SA, CC-BY, CC0, etc so we could use it.
 
