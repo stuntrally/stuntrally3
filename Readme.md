@@ -13,7 +13,7 @@
 📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - archive  
 
 📚[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md) - is now inside docs/, Information on many pages  
-🖼️Old [Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from 2.x versions and development  
+🖼️[Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from all versions and development  
 ▶️[Videos](https://www.youtube.com/user/TheCrystalHammer) - from gameplay and (old) editor  
 💜[Donations](https://cryham.tuxfamily.org/donate/) - financial support
 
