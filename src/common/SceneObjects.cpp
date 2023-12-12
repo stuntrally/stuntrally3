@@ -155,6 +155,9 @@ void App::CreateObjects()
 		if (no)  continue;  //- no spheres
 		try 
 		{	o.it = mSceneMgr->createItem((no ? "sphere" : o.name) + ".mesh");
+			if (!o.material.empty())
+				o.it->setDatablockOrMaterialName(o.material);
+			
 			o.it->setName("oE"+s);
 			SetTexWrap(o.it);
 			o.it->setCastShadows(o.shadow);

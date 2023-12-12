@@ -157,6 +157,7 @@ public:
 	QUATERNION<float> rot{0,-1,0,0};
 	Ogre::Vector3 scale{1,1,1};
 	std::string name;  // mesh file name
+	std::string material;  // variant, default if empty
 	bool shadow =1;
 
 	Ogre::SceneNode* nd = 0;  // ogre

@@ -321,6 +321,8 @@ bool Scene::SaveXml(String file)
 			const Object* o = &objects[i];
 			XMLElement* oe = xml.NewElement("o");
 			oe->SetAttribute("name",	o->name.c_str() );
+			if (!o->material.empty())
+				oe->SetAttribute("mat", o->material.c_str() );
 
 			string s = toStr(o->pos[0])+" "+toStr(o->pos[1])+" "+toStr(o->pos[2]);
 			oe->SetAttribute("pos",		s.c_str());
