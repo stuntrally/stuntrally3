@@ -24,6 +24,8 @@ SR 3.0 is not yet available. Only way is building from sources (not easy), how t
 Tested on Debian 11 and 12.
 
 ----
+### All below, not updated for SR 3.0
+----
 
 ### Flatpak
 

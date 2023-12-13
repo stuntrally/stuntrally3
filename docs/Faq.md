@@ -4,7 +4,7 @@ _Frequently Asked Questions, or answers to some questions from past._
 
 **What PC do I need to play?**  
 
-PCs with dedicated GPUs are best, low budget is enough, details in [Hardware Requirements](Running.md#hardware-requirements).
+PCs with dedicated GPUs are best (crucial), low budget is enough, details in [Hardware Requirements](Running.md#hardware-requirements).
 
 **Can I play on a laptop?**  
 
@@ -107,12 +107,15 @@ The handbrake acts on rear wheels only and can also easily lock them to make a f
 
 **Why is the game not in my Linux distribution?**  
 
-We manage only the official binaries archive, which should be enough to play the game on other distributions.  
-But it may not work on some. There could be a problem with compiling it. Or simply nobody yet did it.
+Nowadays [flatpak](Install.md#flatpak) should cover all distributions. It isn't official, it is managed by contributor(s).  
+Long ago we had official binaries archive, we don't now.  
+For those who really want, I'd recommend [building](Building.md) from sources, but it's not an easy task.
 
-**Why is there no OS X package?**  
+**Why is there no Mac OS X package?**  
 
-Nobody managed to make it. And then continued to update it. If you still want to play the game, I recommend trying it on Ubuntu.
+Nobody managed to make it. And then continued to update it. If you still want to play the game, I recommend trying it on Debian.  
+Apple is one of the worst companies ever, and their products are overpriced, meant to be garbage [see video](https://www.youtube.com/watch?v=AUaJ8pDlxi8) (and [wiki](https://en.wikipedia.org/wiki/Planned_obsolescence)).  
+I won't support it myself, instead will promote [Freedom](https://www.fsf.org/) that Linux OSes and [FOSS](https://www.gnu.org/philosophy/free-sw.html) give.  
 
 ----
 
@@ -121,7 +124,8 @@ Nobody managed to make it. And then continued to update it. If you still want to
 **I have found a bug, what should I do?**  
 
 If it is a crash than it's obvious but if not make sure it is a bug. Observe if there is a pattern to have it happen, this will be useful in fixing it.  
-Read this wiki about [Troubleshooting](Troubleshooting.md). It tells how to report a bug and what is needed for it.
+Read this wiki about [Troubleshooting](Troubleshooting.md). It tells how to report a bug and what is needed for it.  
+Basically by creating a new [Issue](https://github.com/stuntrally/stuntrally3/issues) on github, or on [Forum](https://groups.f-hub.org/stunt-rally/).
 
 **How can I contribute to this project?**  
 
@@ -134,11 +138,12 @@ This needs some time to learn the included SR3 Track Editor but is explained in 
 
 **Can I donate or support this project financially?**  
 
-Yes. Since few years CryHam started accepting donations. To donate use [paypal link](https://paypal.me/cryham) or [Donate page](https://cryham.tuxfamily.org/donate/).  
+Yes. Since few years CryHam started accepting donations. To donate use [Donate page](https://cryham.tuxfamily.org/donate/).  
+Or directly [paypal link](https://paypal.me/cryham) or [ko-fi link](https://ko-fi.com/cryham) that also allows monthly donations.  
 Thank you for donating. For now, I didn't set up patreon yet.
 
 **I have a question that is not answered here / how can I learn more about this project?**  
 
 Firstly by reading the Documentation. It describes most things already.  
-Lastly, you can ask on Forum.  
+Quick questions can be on github [Issues](https://github.com/stuntrally/stuntrally3/issues) page, for longer discussions we have new Forum.  
 For info about CryHam (main creator of SR), his other projects, and more, you can read on [CryHam's website](https://cryham.tuxfamily.org/).

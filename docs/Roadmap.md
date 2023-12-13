@@ -10,7 +10,7 @@ Marked: <u>critical</u>, `crucial`, **Next or Big**, _Important_.
 ### 3.0
 
 New tracks add to `champs` 🏆  
-SR 3.0 <u>screens</u>, 📽️ `editor Videos`, all new  
+SR 3.0 📽️ `editor Videos`, all new  
 
 ### 3.1 cd restore
 
