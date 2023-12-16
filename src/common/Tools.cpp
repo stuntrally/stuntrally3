@@ -241,6 +241,98 @@ void CGui::ToolSceneXml()
 	LogO("))) ALL tracks scene --------- End");
 }
 
+///............................................................................................................................
+///  _Tool_ scene2  OLD skies, old veget etc
+///  check/resave all tracks scene.xml 
+///............................................................................................................................
+void CGui::ToolSceneOld()
+{
+	LogO("))) ALL tracks scene2 OLD =========");
+	std::map<string, int> noCol,minSc;
+	auto& rg = ResourceGroupManager::getSingleton();
+	std::map<string, int> mapSky;
+
+		mapSky["sky/blue_clouds"] = 1;	// "sky_photo6.jpg"
+		mapSky["sky/cloudy"] = 1;		// "sky-2clouds.jpg"
+		mapSky["sky/dark_clouds"] = 1;	// "sky_p3dark.jpg"
+		mapSky["sky/dawn"] = 1;			// "sky_dawn.jpg"
+		mapSky["sky/dawn_bright"] = 1;	// "sky-clearday.jpg"
+		mapSky["sky/day_blue"] = 1;		// "sky-clearday1.jpg"
+		mapSky["sky/day_blue2"] = 1;	// "sky-1day.jpg"
+		mapSky["sky/day_clouds"] = 1;	// "sky-clearday2.jpg"
+		mapSky["sky/dayovercast"] = 1;	// "dayovercast.jpg"
+		mapSky["sky/duskred"] = 1;		// "duskred.jpg"
+		mapSky["sky/duskstormy"] = 1;	// "duskstormy.jpg"
+		mapSky["sky/dust"] = 1;			// "sky_dust.jpg"
+		mapSky["sky/foggy_gen"] = 1;	// "gen-foggy.jpg"
+		mapSky["sky/gray_clouded"] = 1;	// "sky-darkclouds.jpg"
+		mapSky["sky/gray_clouds"] = 1;	// "sky_photo3.jpg"
+		mapSky["sky/light_blue"] = 1;	// "sky_lightblue.jpg"
+
+		mapSky["sky/magic"] = 1;			// "magic.jpg"
+		mapSky["sky/magic_alien"] = 1;		// "magic_alien.jpg"
+		mapSky["sky/magicdark"] = 1;		// "magicdark.jpg"
+		mapSky["sky/morning2_gen"] = 1;		// "gen-brightday2.jpg"
+		mapSky["sky/morning_gen"] = 1;		// "gen-brightday.jpg"
+		mapSky["sky/night_blue"] = 1;		// "sky-night.jpg"
+		mapSky["sky/offworld_gen"] = 1;		// "gen-offworld.jpg"
+		mapSky["sky/sunset"] = 1;			// "sky_sunset.jpg"
+		mapSky["sky/sunset_blue_gen"] = 1;	// "gen-morning.jpg"
+		mapSky["sky/sunset_gen"] = 1;		// "gen-sunset.jpg"
+		mapSky["sky/sunset_rays_gen"] = 1;	// "gen-godrays.jpg"
+		mapSky["sky/white"] = 1;			// "sky_white.jpg"
+		mapSky["sky/white2"] = 1;			// "sky_white2.jpg"
+
+	int i,n, t = 0;
+	for (auto trkinf : data->tracks->trks)
+	{
+		//  load each track xmls
+		string trk = trkinf.name, path = gcom->pathTrk[0] +"/"+ trk +"/";
+		Scene sc;  sc.LoadXml(path +"scene.xml");
+		// SplineRoad rd(app);  rd.LoadFile(path +"road.xml");
+		bool modif = false;
+
+		int l = 20 - trk.length();  // align
+		for (n=0; n < l; ++n)  trk += " ";
+
+		///  sky  ---
+		auto it = mapSky.find(sc.skyMtr);
+		bool old = it != mapSky.end();
+		
+		auto s = trk;
+		s += old ? "  OLD sky: " + sc.skyMtr + "  " : "  new +    ";
+		if (old)  ++t;
+
+		///  old trees  --------
+		int ot = 0;
+		for (n=0; n < Scene::ciNumVegLay; ++n)
+		{
+			const VegetLayer& l = sc.vegLayersAll[n];
+			const String& m = l.name;  //.mesh
+			if (!m.empty())
+			{
+				// if (l.on && !rg.resourceExistsInAnyGroup(s))
+				if (m == "tree.07.mesh" ||
+					m == "tree.09.mesh")
+					++ot;
+		}	}
+
+		if (ot)
+			s += "   old-trees: "+toStr(ot);
+		// if (old || ot)
+		LogO(s);
+
+		if (modif)
+			sc.SaveXml(path +"scene.xml");  /// resave
+		//SplineRoad rd(this);  rd.LoadFile(path+"road.xml");
+		//rd.SaveFile(path+"road1.xml");  // resave
+	}
+	int all = data->tracks->trks.size();
+	LogO("))) ALL tracks:  "+toStr(all)+"  OLD:  "+toStr(t)+"  "+fToStr(100.f*float(t)/all,2,4)+" %");
+
+	LogO("))) ALL tracks scene2 OLD --------- End");
+}
+
 
 #else
 //--------  Game Tools  --------

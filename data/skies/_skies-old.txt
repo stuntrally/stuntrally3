@@ -1,16 +1,55 @@
 ---- OLD skies ----
 360x90 degree spherical Skybox textures, UV map them to a hemisphere for best result.
+All 4k x 1k resolution.
 
-- (old)  sky_*.jpg also d* m*
+---- (old)  sky_*.jpg also d* m*
 Free high res skymaps (Massive 07 update!) 
 by: 0ptikz
 https://blenderartists.org/forum/showthread.php?24038-Free-high-res-skymaps-%28Massive-07-update
 
-- (new)  gen_*.jpg, sky-*.jpg
+sky_dawn.jpg - blue yellow
+sky_dust.jpg - brown 1clr`
+sky_lightblue.jpg ~ bri cyan blue todo
+
+sky_p3dark.jpg - cld dark gray`
+sky_photo3.jpg ~ cld light gray
+sky_photo6.jpg ~ cld high bri skyblue`
+sky_sunset.jpg - orange`
+sky_white2.jpg - wnt 1clr`
+sky_white.jpg - wnt white
+
+dayovercast.jpg  - shore steelblue
+duskred.jpg - mars red
+duskstormy.jpg - vlc cremat black
+
+magic_alien.jpg  - green
+magicdark.jpg  - cry purple
+magic.jpg  - uni violet
+
+
+---- (old new)  gen_*.jpg, sky-*.jpg
 New High resolution sky pack for Blender
 by: 0ptikz
 https://blenderartists.org/forum/showthread.php?224065-New-High-resolution-sky-pack-for-Blender
 
+gen-brightday2.jpg - dark blue fog orange
+gen-brightday.jpg
+gen-foggy.jpg
+gen-godrays.jpg
+gen-morning.jpg
+gen-offworld.jpg
+gen-sunset.jpg
+
+sky-1day.jpg
+sky-2clouds.jpg
+sky-clearday1.jpg
+sky-clearday2.jpg
+sky-clearday.jpg
+sky-darkclouds.jpg
+sky-night.jpg
+
+
 Released under an 'I don't give an damn' license.
 Meaning you can use them for anything you want, including commercial work.
 The only thing I ask is that you don't sell them. That's it.
+

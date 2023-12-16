@@ -388,7 +388,7 @@ public:
 
 
 	//  🧰 _Tools_  cmd arg
-	void ToolSceneXml();
+	void ToolSceneXml(), ToolSceneOld();
 	void ToolTracksWarnings();  //, ToolPresets();
 
 	//  ⚠ Warnings  --------------------

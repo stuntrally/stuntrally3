@@ -55,6 +55,7 @@ bool Args::Help()  // ❔
 		Common("ed");
 		// todo: // fixme crash ter, load hmap only?
 		cout << "  sc or scene - Runs scene.xml checks for all tracks.\n";
+		cout << "  old or sc2 - Runs scene.xml checks for all tracks for OLD skies, etc.\n";
 		cout << "  warn or warnings - Runs warnings checks for all tracks.\n";
 		return 1;
 	}
@@ -150,6 +151,9 @@ void App::createScene01()  // once, init
 	///  _Tool_ scene  ...................
 	if (args.has("scene") || args.has("sc"))
 	{	gui->ToolSceneXml();  quit = 1;  }
+
+	if (args.has("old") || args.has("sc2"))
+	{	gui->ToolSceneOld();  quit = 1;  }
 
 	///  _Tool_ warnings  ................
 	// args.set("warn");  // debug
