@@ -607,6 +607,18 @@ void App::NextObjMat(int add, Object& o)
 		o.it->setDatablockOrMaterialName(o.material);
 }
 
+void App::TogObjStatic()  // toggle static
+{
+	if (!vObjSel.empty())
+	{	for (int i : vObjSel)
+			scn->sc->objects[i].stat = !scn->sc->objects[i].stat;
+		return;
+	}
+	bool bNew = iObjCur == -1;
+	Object& o = bNew || scn->sc->objects.empty() ? objNew : scn->sc->objects[iObjCur];
+	o.stat = !o.stat;
+}
+
 
 //  preview model for insert
 void App::SetObjNewType(int tnew)

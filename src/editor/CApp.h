@@ -220,6 +220,7 @@ public:
 	std::vector<std::string> vObjNames, vBuildings;
 	void SetObjNewType(int tnew), UpdObjNewNode();
 	void NextObjMat(int add), NextObjMat(int add, Object& o);
+	void TogObjStatic();  // toggle static
 
 	void AddNewObj(bool getName=true);
 

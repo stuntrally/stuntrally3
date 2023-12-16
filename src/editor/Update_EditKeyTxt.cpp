@@ -350,6 +350,7 @@ void App::KeyTxtObjects()
 	objTxt[5]->setCaption(TR("#{Simulation}:  ") + TR(objSim?"#{Yes}":"#{No}")); // +"      "+toStr(world->getNumCollisionObjects()));
 	objTxt[5]->setTextColour(objSim ? MyGUI::Colour(1.0,0.9,1.0) : MyGUI::Colour(0.8,0.8,0.83));
 	objTxt[6]->setCaption(o.material);
+	objTxt[7]->setCaption(o.stat ? TR("#{ObjStatic}") : "");
 
 	//  edit
 	if (mz != 0 && bEdit() && objs > 0)  // wheel prev/next
@@ -380,7 +381,7 @@ void App::KeyTxtEmitters(Real q)
 	
 	emtTxt[5]->setCaption(TR("#{Size}: ") +fToStr(e.parScale,2,4)+" * "+fToStr(e.par.x,1,3) );
 	emtTxt[6]->setCaption(TR("#{Density}: ") +fToStr(e.rate,0,3) );
-	emtTxt[7]->setCaption(TR("#{Count}: ") + toStr(e.ps ? e.ps->getNumParticles() : 0) + (e.stat ? "  Static" : ""));
+	emtTxt[7]->setCaption(TR("#{Count}: ") + toStr(e.ps ? e.ps->getNumParticles() : 0) + (e.stat ? TR("  #{ObjStatic}") : ""));
 
 	if (!bEdit() || !pSet->bEmitters || !e.ps)
 		return;

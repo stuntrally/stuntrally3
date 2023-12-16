@@ -100,16 +100,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 		{
 			case key(SPACE):
 				iObjCur = -1;  PickObject();  UpdObjPick();  break;
-				
-			//  prev,next type
-			case key(9):  case key(MINUS):   SetObjNewType((iObjTNew-1 + objAll) % objAll);  break;
-			case key(0):  case key(EQUALS):  SetObjNewType((iObjTNew+1) % objAll);  break;
-
-			//  prev,next material
-			case key(O):  case key(LEFTBRACKET):   NextObjMat(-1);  break;
-			case key(P):  case key(RIGHTBRACKET):  NextObjMat( 1);  break;
-
-				
+			
 			//  ins
 			case key(INSERT):	case key(KP_0):
 			if (ctrl)  // copy selected
@@ -163,6 +154,18 @@ void App::keyPressObjects(SDL_Scancode skey)
 
 				UpdObjSel();
 				break;
+
+			//  prev,next type
+			case key(9):  case key(MINUS):   SetObjNewType((iObjTNew-1 + objAll) % objAll);  break;
+			case key(0):  case key(EQUALS):  SetObjNewType((iObjTNew+1) % objAll);  break;
+
+			//  prev,next material
+			case key(O):  case key(LEFTBRACKET):   NextObjMat(-1);  break;
+			case key(P):  case key(RIGHTBRACKET):  NextObjMat( 1);  break;
+
+			//  static
+			case key(KP_ENTER):  case key(RETURN):  TogObjStatic();  break;
+			
 			default:  break;
 		}
 		::Object* o = iObjCur == -1 ? &objNew :
@@ -250,6 +253,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 			case key(9):  case key(MINUS):   SetEmtType(-1);  bRecreateEmitters = true;  break;
 			case key(0):  case key(EQUALS):  SetEmtType( 1);  bRecreateEmitters = true;  break;
 
+			//  static
 			case key(KP_ENTER):  case key(RETURN):
 				scn->sc->emitters[iEmtCur].stat = !scn->sc->emitters[iEmtCur].stat;
 				bRecreateEmitters = true;  break;

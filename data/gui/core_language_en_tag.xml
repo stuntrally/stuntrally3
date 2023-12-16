@@ -976,8 +976,8 @@
 	<Tag name="AndUsing">and using</Tag>
 	<Tag name="ProjectPage">project&apos;s page:</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
-	<Tag name="GameVersion">3.0</Tag>
-		
+	<Tag name="GameVersion">3.0.1</Tag>
+
 	
 	
 <!--  ............................................................................................................................  -->
@@ -1588,6 +1588,7 @@
 	<Tag name="InputParticlesMode">A - edit Particles</Tag>
 	<Tag name="InputParticlesDensity">[,] - change density (emission rate)</Tag>
 	<Tag name="InputParticlesStatic">Enter - toggle static</Tag>
+	<Tag name="InputParticlesSize">K,L - change size scale</Tag>
 
 
 <!--  ............................................................................................................................  -->

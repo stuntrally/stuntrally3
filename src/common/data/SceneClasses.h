@@ -144,7 +144,7 @@ public:
 	std::string name;
 	int hq = 2;  // quality:  2 reflect  1 refract  0 diffuse
 
-	class btCollisionObject* cobj = 0;
+	class btCollisionObject* cobj = 0;  // 🎳 bullet
 	int idParticles = 0;   // auto set  index for wheel particles  -1 none
 	bool solid = false, deep = false;  // auto set, from FluidParams
 };
@@ -158,14 +158,15 @@ public:
 	Ogre::Vector3 scale{1,1,1};
 	std::string name;  // mesh file name
 	std::string material;  // variant, default if empty
-	bool shadow =1;
+	bool stat = false;  // force static, if has .bullet
+	bool shadow = true;
 
-	Ogre::SceneNode* nd = 0;  // ogre
+	Ogre::SceneNode* nd = 0;  // 🟢 ogre
 	Ogre::Item* it = 0;
 	class btDefaultMotionState* ms = 0;  // 🎳 bullet
 	class btCollisionObject* co = 0;
 	class btRigidBody* rb = 0;
-	bool dyn = false;
+	bool dyn = false;  // auto set
 	class btTransform* tr1 = 0;  // 1st pos after load, for reset
 
 	void SetFromBlt();
@@ -177,7 +178,7 @@ class SEmitter		//  🔥 particles ⛅☢️
 public:
 	std::string name;  // particle_system
 	Ogre::Vector3 pos{0,0,0}, size{1,1,1};
-	Ogre::Vector3 up{0,1,0};  float rot = 0.f;  // dir todo:
+	Ogre::Vector3 up{0,1,0};  float rot = 0.f, velScale = 1.f;  // dir todo:
 	Ogre::Vector2 par{1,1};  // auto set original particle size from .emitter
 	float rate = 0.f;  // emit
 	float parScale = 1.f;
@@ -185,7 +186,7 @@ public:
 	float upd = 2.f;  // update time for static
 	bool stat = false;  // static for, e.g. clouds
 
-	Ogre::SceneNode* nd = 0;  // ogre
+	Ogre::SceneNode* nd = 0;  // 🟢 ogre
 	Ogre::ParticleSystem* ps = 0;
 	
 	void UpdEmitter();

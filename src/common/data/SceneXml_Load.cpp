@@ -287,12 +287,15 @@ bool Scene::LoadXml(String file, bool bTer)
 		{
 			Object o;
 			a = u->Attribute("name");	if (a)  o.name = string(a);
+			a = u->Attribute("stat");	if (a)  o.stat = s2i(a) > 0;
+
 			a = u->Attribute("mat");	if (a)  o.material = string(a);
 
 			a = u->Attribute("pos");	if (a)  {  Vector3 v = s2v(a);  o.pos = MATHVECTOR<float,3>(v.x,v.y,v.z);  }
 			a = u->Attribute("rot");	if (a)  {  Vector4 v = s2v4(a);  o.rot = QUATERNION<float>(v.x,v.y,v.z,v.w);  }
 			a = u->Attribute("sc");		if (a)  o.scale = s2v(a);
-			a = u->Attribute("sh");		if (a)  o.shadow = s2i(a) > 0;			
+			
+			a = u->Attribute("sh");		if (a)  o.shadow = s2i(a) > 0;
 
 			objects.push_back(o);
 			u = u->NextSiblingElement("o");

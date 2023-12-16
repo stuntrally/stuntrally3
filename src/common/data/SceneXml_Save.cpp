@@ -100,7 +100,7 @@ bool Scene::SaveXml(String file)
 			fogH->SetAttribute("dmg",	toStrC( fHDamage ));
 	root->InsertEndChild(fogH);
 
-	XMLElement* li = xml.NewElement("light");  // 💡
+	XMLElement* li = xml.NewElement("light");  // 💡 sun
 		li->SetAttribute("pitch",		toStrC( ldPitch ));
 		li->SetAttribute("yaw",			toStrC( ldYaw ));
 		li->SetAttribute("ambient",		lAmb.Save().c_str() );
@@ -315,12 +315,16 @@ bool Scene::SaveXml(String file)
 	root->InsertEndChild(cam);
 
 
-	XMLElement* objs = xml.NewElement("objects");  // 📦
+	XMLElement* objs = xml.NewElement("objects");  // 📦 objects
 		for (i=0; i < objects.size(); ++i)
 		{
 			const Object* o = &objects[i];
 			XMLElement* oe = xml.NewElement("o");
+
 			oe->SetAttribute("name",	o->name.c_str() );
+			if (o->stat)
+				oe->SetAttribute("stat", o->stat ? 1 : 0 );
+
 			if (!o->material.empty())
 				oe->SetAttribute("mat", o->material.c_str() );
 
@@ -333,8 +337,9 @@ bool Scene::SaveXml(String file)
 			if (o->scale != Vector3::UNIT_SCALE)  // dont save default
 				oe->SetAttribute("sc",	toStrC( o->scale ));
 
-			if (!o->shadow)
+			if (!o->shadow)  // ext  // todo: gui
 				oe->SetAttribute("sh",	o->shadow ? 1 : 0 );
+
 			objs->InsertEndChild(oe);
 		}
 	root->InsertEndChild(objs);
