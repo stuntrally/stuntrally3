@@ -1,6 +1,9 @@
 #pragma once
 #include "SceneXml.h"  // need SColor
 #include <OgreString.h>
+#include <OgreStringVector.h>
+#include <string>
+#include <vector>
 
 
 //  Presets xml  for editor Pick lists and game materials
@@ -76,6 +79,14 @@ struct PVeget
 	float yOfs = 0.f;
 };
 
+//  📦🪨  Objects  ----
+struct PObject
+{
+	std::string name;  // .mesh
+	// std::vector<std::string>
+	Ogre::StringVector mats;  // other possible materials
+};
+
 
 ///  📄 Presets xml  with common params  for ed and game
 //-----------------------------------------------------------
@@ -101,6 +112,10 @@ public:
 	std::vector<PVeget> veg;
 	std::map<std::string, int> iveg;
 	const PVeget* GetVeget(std::string mesh);
+
+	std::vector<PObject> obj;
+	std::map<std::string, int> iobj;
+	const PObject* GetObject(std::string mesh);
 
 	bool LoadXml(std::string file);
 };

@@ -326,7 +326,7 @@
 	</Widget>
 
 <!-- ============================================================================================================================================= -->
-	<Widget type="Window" skin="WindowC" position="1076 672 306 190" layer="Back" name="ObjectsWnd">
+	<Widget type="Window" skin="WindowC" position="1076 672 306 220" layer="Back" name="ObjectsWnd">
 		<Property key="Caption" value="X - #{Objects}"/>
 		<Property key="Colour" value="1.0 1.0 1.0"/>
 		<Property key="Alpha" value="0.6"/>
@@ -376,18 +376,23 @@
 			<Property key="TextColour" value="0.61 0.75 0.85"/>
 		</Widget>
 
-		<Widget type="Widget" skin="PanelSkin" position="0 118 300 28" name="objPan">
+		<Widget type="TextBox" skin="TextBoxS" position="34 120 220 20" name="objTxt6">
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="TextColour" value="0.9 0.95 1.0"/>
+		</Widget>
+
+		<Widget type="Widget" skin="PanelSkin" position="0 148 300 28" name="objPan">
 			<Property key="Colour" value="1.0 0.9 1.0"/>
 			<Property key="Alpha" value="0.5"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="Visible" value="false"/>
 		</Widget>
-		<Widget type="ImageBox" skin="ImageBox" position="0 116 32 32" name="objImg5">
+		<Widget type="ImageBox" skin="ImageBox" position="0 146 32 32" name="objImg5">
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="track_icons.png"/>
 			<Property key="ImageCoord" value="64 0 32 32"/>
 		</Widget>
-		<Widget type="TextBox" skin="TextBoxS" position="34 120 220 20" name="objTxt5">
+		<Widget type="TextBox" skin="TextBoxS" position="34 150 220 20" name="objTxt5">
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="TextColour" value="0.9 0.9 1.0"/>
 		</Widget>

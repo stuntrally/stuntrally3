@@ -39,6 +39,12 @@ const PVeget* Presets::GetVeget(std::string mesh)
 	return f != iveg.end() ? &veg[f->second -1] : 0;
 }
 
+const PObject* Presets::GetObject(std::string mesh)
+{
+	auto f = iobj.find(mesh);
+	return f != iobj.end() ? &obj[f->second -1] : 0;
+}
+
 
 ///  📄 Load Presets
 //--------------------------------------------------------------------------------------------------------------------------------------
@@ -180,6 +186,21 @@ bool Presets::LoadXml(string file)
 
 		veg.push_back(l);  iveg[l.name] = veg.size();
 		e = e->NextSiblingElement("v");
+	}
+
+	///  📦🪨 objects
+ 	e = root->FirstChildElement("o");
+	while (e)
+	{
+		PObject o;
+		a = e->Attribute("o");	if (a)  o.name = string(a);
+		a = e->Attribute("m");
+		if (a)
+		{	String s = a;
+			o.mats = StringUtil::split(s, "|");
+		}
+		obj.push_back(o);  iobj[o.name] = obj.size();
+		e = e->NextSiblingElement("o");
 	}
 	return true;
 }

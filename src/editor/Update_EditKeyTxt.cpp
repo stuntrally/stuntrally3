@@ -349,11 +349,12 @@ void App::KeyTxtObjects()
 
 	objTxt[5]->setCaption(TR("#{Simulation}:  ") + TR(objSim?"#{Yes}":"#{No}")); // +"      "+toStr(world->getNumCollisionObjects()));
 	objTxt[5]->setTextColour(objSim ? MyGUI::Colour(1.0,0.9,1.0) : MyGUI::Colour(0.8,0.8,0.83));
+	objTxt[6]->setCaption(o.material);
 
 	//  edit
-	if (mz != 0 && bEdit())  // wheel prev/next
-	{
-		if (objs > 0)  {  iObjCur = (iObjCur-mz+objs)%objs;  UpdObjPick();  }
+	if (mz != 0 && bEdit() && objs > 0)  // wheel prev/next
+	{	int add = (alt ? 10 : ctrl ? 4 : 1) * mz;
+		iObjCur = (iObjCur - add + objs) % objs;  UpdObjPick();
 	}
 }
 
@@ -397,8 +398,8 @@ void App::KeyTxtEmitters(Real q)
 
 #undef isKey
 
-//  Focus Cam on cur edit, cursor
-
+//  🎥 Focus Cam on cur edit, cursor
+//----------------------------------------------------------------
 void App::FocusCam()
 {
 	Vector3 pos = mCamera->getPosition(), dir = mCamera->getDirection();
