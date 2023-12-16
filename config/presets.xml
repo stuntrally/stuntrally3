@@ -1129,4 +1129,40 @@ common:  sc - "short scenery name" (name color)
 <v sc="Blk"  p="gum_tree_black"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="1.45" sb="2.22"  wx="0.30" wy="0.004"  ab="20.48" rd="1" fd="0.0" />
 <v sc="Blk"  p="fern2_black"          r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="0.30" sb="0.44"  wx="0" wy="0"  ab="29.12" rd="1" fd="0.5" />
 
+
+
+<!--  📦🪨  Objects, caves, rocks etc
+      =========================================================================================================
+      o - .mesh name
+      mats - material set name
+-->
+
+<!-- material sets
+      n - name
+      m - possible materials, separated by |
+-->
+<mats n="caves" m="cave_dark|cave_brown|cave_white|cave_yellow|cave_uni|cave_alien|cave_winter|cave_orange|cave_ice|cave_ice_marble|cave_grey|cave_green" />
+
+<o o="cave_01" mats="caves" />
+<o o="cave_02" mats="caves" />
+<o o="cave_03" mats="caves" />
+<o o="cave_04" mats="caves" />
+<o o="cave_05" mats="caves" />
+<o o="cave_06" mats="caves" />
+<o o="cave_07" mats="caves" />
+<o o="cave_08" mats="caves" />
+<o o="cave_09" mats="caves" />
+<o o="cave_10" mats="caves" />
+<o o="cavebig_01" mats="caves" />
+<o o="cavebig_02" mats="caves" />
+<o o="cavebig_03" mats="caves" />
+<o o="cavebig_04" mats="caves" />
+<o o="cavebig_05" mats="caves" />
+<o o="cavebig_06" mats="caves" />
+
+<mats n="garbage_bin" m="garbage_bin_green|garbage_bin_blue" />
+
+<o o="garbage_bin_green" mats="garbage_bin" />
+<!-- <o o="garbage_bin_blue" mats="garbage_bin" /> -->
+
 </presets>

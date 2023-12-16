@@ -145,7 +145,7 @@ void App::CreateObjects()
 	{
 		Object& o = scn->sc->objects[i];
 		String s = toStr(i);  // counter for names
-		o.dyn = objHasBlt[o.name];
+		o.dyn = o.stat ? false : objHasBlt[o.name];
 		#ifndef SR_EDITOR
 		if (o.dyn && !pSet->game.dyn_objects)  continue;
 		#endif
@@ -572,6 +572,42 @@ void CGui::listObjsCatChng(Li li, size_t id)
 }
 
 
+//  🔮 cycle object materials
+void App::NextObjMat(int add)
+{
+	if (!vObjSel.empty())
+	{	for (int i : vObjSel)
+			NextObjMat(add, scn->sc->objects[i]);
+		return;
+	}
+	bool bNew = iObjCur == -1;
+	Object& o = bNew || scn->sc->objects.empty() ? objNew : scn->sc->objects[iObjCur];
+	NextObjMat(add, o);
+}
+
+void App::NextObjMat(int add, Object& o)
+{
+	const PObject* obj = scn->data->pre->GetObject(o.name);
+	if (!obj || !obj->pMatSet)  return;
+	
+	auto& m = obj->pMatSet->mats;
+	int j = -1, si = m.size();
+	if (si < 2)  return;
+	
+	for (int i=0; i < si; ++i)  // find cur
+		if (m[i] == o.material)
+		{	j = i;  break;  }
+	if (j == -1)
+		j = 0;
+	else
+		j = (j + add + si) % si;  // inc
+	o.material = m[j];  // set
+
+	if (!o.material.empty())
+		o.it->setDatablockOrMaterialName(o.material);
+}
+
+
 //  preview model for insert
 void App::SetObjNewType(int tnew)
 {
@@ -592,7 +628,6 @@ void App::SetObjNewType(int tnew)
 	{
 		LogO("no object! " + ex.getFullDescription());
 	}
-
 }
 
 void App::UpdObjNewNode()

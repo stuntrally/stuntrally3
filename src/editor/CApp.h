@@ -219,6 +219,7 @@ public:
 	int iObjTNew = 0;  // new object's type, id for vObjNames
 	std::vector<std::string> vObjNames, vBuildings;
 	void SetObjNewType(int tnew), UpdObjNewNode();
+	void NextObjMat(int add), NextObjMat(int add, Object& o);
 
 	void AddNewObj(bool getName=true);
 

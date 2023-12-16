@@ -105,6 +105,10 @@ void App::keyPressObjects(SDL_Scancode skey)
 			case key(9):  case key(MINUS):   SetObjNewType((iObjTNew-1 + objAll) % objAll);  break;
 			case key(0):  case key(EQUALS):  SetObjNewType((iObjTNew+1) % objAll);  break;
 
+			//  prev,next material
+			case key(O):  case key(LEFTBRACKET):   NextObjMat(-1);  break;
+			case key(P):  case key(RIGHTBRACKET):  NextObjMat( 1);  break;
+
 				
 			//  ins
 			case key(INSERT):	case key(KP_0):

@@ -79,12 +79,18 @@ struct PVeget
 	float yOfs = 0.f;
 };
 
-//  📦🪨  Objects  ----
+//  📦🪨  Materials set  ----
+struct PMatSet
+{
+	std::string name;
+	Ogre::StringVector mats;  // possible materials
+};
+
+//  📦🪨  Object material set  ----
 struct PObject
 {
 	std::string name;  // .mesh
-	// std::vector<std::string>
-	Ogre::StringVector mats;  // other possible materials
+	PMatSet* pMatSet =0;
 };
 
 
@@ -112,6 +118,11 @@ public:
 	std::vector<PVeget> veg;
 	std::map<std::string, int> iveg;
 	const PVeget* GetVeget(std::string mesh);
+
+	
+	std::vector<PMatSet> matset;
+	std::map<std::string, int> imatset;
+	PMatSet* GetMatSet(std::string name);
 
 	std::vector<PObject> obj;
 	std::map<std::string, int> iobj;

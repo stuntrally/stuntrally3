@@ -39,6 +39,13 @@ const PVeget* Presets::GetVeget(std::string mesh)
 	return f != iveg.end() ? &veg[f->second -1] : 0;
 }
 
+
+PMatSet* Presets::GetMatSet(std::string name)
+{
+	auto f = imatset.find(name);
+	return f != imatset.end() ? &matset[f->second -1] : 0;
+}
+
 const PObject* Presets::GetObject(std::string mesh)
 {
 	auto f = iobj.find(mesh);
@@ -188,17 +195,30 @@ bool Presets::LoadXml(string file)
 		e = e->NextSiblingElement("v");
 	}
 
+
+	///  📦🪨 material sets
+ 	e = root->FirstChildElement("mats");
+	while (e)
+	{
+		PMatSet mats;
+		a = e->Attribute("n");	if (a)  mats.name = string(a);
+		a = e->Attribute("m");
+		if (a)
+		{	String s = a;
+			mats.mats = StringUtil::split(s, "|");
+		}
+		matset.push_back(mats);  imatset[mats.name] = matset.size();
+		e = e->NextSiblingElement("mats");
+	}
+
 	///  📦🪨 objects
  	e = root->FirstChildElement("o");
 	while (e)
 	{
 		PObject o;
 		a = e->Attribute("o");	if (a)  o.name = string(a);
-		a = e->Attribute("m");
-		if (a)
-		{	String s = a;
-			o.mats = StringUtil::split(s, "|");
-		}
+		a = e->Attribute("mats");	if (a)  o.pMatSet = GetMatSet(string(a));
+		
 		obj.push_back(o);  iobj[o.name] = obj.size();
 		e = e->NextSiblingElement("o");
 	}
