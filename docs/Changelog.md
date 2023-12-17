@@ -7,6 +7,7 @@ This section lists changes not yet released, but committed to new repositories s
 - Editor
   - Changing object material, sets defined in `presets.xml`
   - Toggle static for dynamic object, no `*_static.mesh`
+  - Fix alt-J crash, shortcuts
 - Updated docs
 
 ## Version 3.0 beta

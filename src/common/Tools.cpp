@@ -250,7 +250,7 @@ void CGui::ToolSceneOld()
 	LogO("))) ALL tracks scene2 OLD =========");
 	std::map<string, int> noCol,minSc;
 	auto& rg = ResourceGroupManager::getSingleton();
-	std::map<string, int> mapSky;
+	std::map<string, int> mapSky, useSky;
 
 		mapSky["sky/blue_clouds"] = 1;	// "sky_photo6.jpg"
 		mapSky["sky/cloudy"] = 1;		// "sky-2clouds.jpg"
@@ -298,6 +298,8 @@ void CGui::ToolSceneOld()
 		///  sky  ---
 		auto it = mapSky.find(sc.skyMtr);
 		bool old = it != mapSky.end();
+		if (old)  //-
+			useSky[sc.skyMtr]++;
 		
 		auto s = trk;
 		s += old ? "  OLD sky: " + sc.skyMtr + "  " : "  new +    ";
@@ -329,6 +331,8 @@ void CGui::ToolSceneOld()
 	}
 	int all = data->tracks->trks.size();
 	LogO("))) ALL tracks:  "+toStr(all)+"  OLD:  "+toStr(t)+"  "+fToStr(100.f*float(t)/all,2,4)+" %");
+	for (auto& s : useSky)
+		LogO(s.first+" : "+toStr(s.second));
 
 	LogO("))) ALL tracks scene2 OLD --------- End");
 }
