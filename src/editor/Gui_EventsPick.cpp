@@ -193,16 +193,7 @@ void CGui::listPickSky(Mli2 li, size_t pos)
 	}
 	btnSky->setCaption(s);
 
-	//  upd img tex prv
-	Hlms *hlms = app->mRoot->getHlmsManager()->getHlms( HLMS_PBS );
-	HlmsPbsDatablock *db = static_cast<HlmsPbsDatablock*>(hlms->getDatablock( p->mtr ));
-	if (db)
-	{	auto* tex = db->getTexture(PBSM_EMISSIVE);
-	    if (tex)
-		{	String n = tex->getNameStr();
-			app->LoadTex(n);
-			imgSky->setImageTexture(n);
-	}	}
+	updImgSky();  updSkySun();
 
 	// app->UpdateTrack();
 	scn->DestroyAllAtmo();

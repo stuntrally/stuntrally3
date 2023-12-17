@@ -41,6 +41,7 @@
 							<Property key="Alpha" value="1.0"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="80 24 104 24">
 							<Property key="Caption" value="#{Sky}"/>
 							<Property key="TextColour" value="0.6 0.8 1"/>
@@ -52,9 +53,15 @@
 							<Property key="TextAlign" value="Left"/>
 							<UserString key="tip" value="#{TipSkyMats}"/>
 						</Widget>
+
 						<!-- Sky prv -->
 						<Widget type="ImageBox" skin="ImageBox" position="310 166 440 110" name="ImgSky">
-							<!-- <Property key="Alpha" value="0.8"/> -->
+							<Widget type="ImageBox" skin="ImageBox" position="220 60 12 12" name="ImgSkySun">
+								<Property key="ImageCoord" value="384 0 128 128"/>
+								<Property key="Alpha" value="1.0"/>
+								<Property key="ImageTexture" value="gui_icons.png"/>
+								<Property key="NeedMouse" value="false"/>
+							</Widget>
 						</Widget>
 
 						<!-- sun dir -->
@@ -65,8 +72,9 @@
 						<Widget type="Slider" skin="Slider" position="256 52 320 18" name="SkyYaw">
 							<Property key="Colour" value="0.6 0.8 1"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="188 52 64 24" name="SkyYawVal">
+						<Widget type="EditBox" skin="EditBox" position="188 50 64 24" name="SkyYawEdit">
 							<Property key="TextColour" value="0.6 0.8 1"/>
+							<Property key="Colour" value="0.6 0.8 1"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="80 92 172 24">
@@ -87,16 +95,18 @@
 							<Property key="Colour" value="1 0.8 0.2"/>
 							<UserString key="tip" value="#{TipSunDirPitch}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="188 116 64 24" name="SunPitchVal">
+						<Widget type="EditBox" skin="EditBox" position="188 114 64 24" name="SunPitchEdit">
 							<Property key="TextColour" value="1 0.8 0.2"/>
+							<Property key="Colour" value="1 0.8 0.2"/>
 							<UserString key="tip" value="#{TipSunDirPitch}"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="256 140 320 16" name="SunYaw">
 							<Property key="Colour" value="0.9 0.9 0"/>
 							<UserString key="tip" value="#{TipSunDirYaw}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="188 140 64 24" name="SunYawVal">
+						<Widget type="EditBox" skin="EditBox" position="188 138 64 24" name="SunYawEdit">
 							<Property key="TextColour" value="0.9 0.9 0"/>
+							<Property key="Colour" value="0.9 0.9 0"/>
 							<UserString key="tip" value="#{TipSunDirYaw}"/>
 						</Widget>
 

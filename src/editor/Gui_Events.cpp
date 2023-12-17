@@ -8,12 +8,16 @@
 #include "CData.h"
 #include "PresetsXml.h"
 #include "Road.h"
+
 #include <fstream>
 #include "Gui_Def.h"
 #include "Slider.h"
 #include "MultiList2.h"
 #include "Terra.h"
 #include <MyGUI.h>
+#include <MyGUI_Types.h>
+#include <OgreHlmsCommon.h>
+#include <OgreHlmsPbsDatablock.h>
 using namespace MyGUI;
 using namespace Ogre;
 using namespace std;
@@ -41,6 +45,7 @@ void CGui::comboSky(Cmb cmb, size_t val)  // sky materials
 {
 	String s = cmb->getItemNameAt(val);
 	sc->skyMtr = s;  app->UpdateTrack();
+	updImgSky();  updSkySun();
 }
 
 void CGui::comboRain1(Cmb cmb, size_t val)  // rain types
@@ -54,8 +59,36 @@ void CGui::comboRain2(Cmb cmb, size_t val)
 	app->scn->DestroyWeather();  app->scn->CreateWeather();
 }
 
-void CGui::slUpdSky(SV*){	scn->UpdSky();	}
-void CGui::slUpdSun(SV*){	scn->UpdSun();	}
+void CGui::slUpdSky(SV*){	scn->UpdSky();	updSkySun();  }
+void CGui::slUpdSun(SV*){	scn->UpdSun();  updSkySun();  }
+
+
+//  upd img tex prv
+void CGui::updImgSky()
+{
+	Hlms *hlms = app->mRoot->getHlmsManager()->getHlms( HLMS_PBS );
+	HlmsPbsDatablock *db = static_cast<HlmsPbsDatablock*>(hlms->getDatablock( sc->skyMtr ));
+	if (db)
+	{	auto* tex = db->getTexture(PBSM_EMISSIVE);
+	    if (tex)
+		{	String n = tex->getNameStr();
+			app->LoadTex(n);
+			imgSky->setImageTexture(n);
+	}	}
+}
+
+void CGui::updSkySun()
+{
+	WP wp = imgSkySun->getParent();
+	auto& si = wp->getCoord();
+	const int z = 32, z2 = z/2;
+	float
+		x = (180.f - sc->ldYaw) / 360.f,
+		y = (90.f - sc->ldPitch) / 90.f;
+	imgSkySun->setCoord(IntCoord(
+		x * si.width - z2,
+		y * si.height - z2, z,z));
+}
 
 //  fog
 void CGui::slUpdFog(SV*)

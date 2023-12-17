@@ -246,10 +246,10 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="204 214 170 20">
-							<Property key="Caption" value="#60A0FF E  #{Settings}"/>
+							<Property key="Caption" value="#60F0F0 E  #{View}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="204 234 154 20">
-							<Property key="Caption" value="#C090D0 K  #{Tweak}"/>
+							<Property key="Caption" value="#60A0FF K  #{Settings}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="204 262 170 20">
 							<Property key="Caption" value="#FFFF60 I  #{InputHelp}"/>
