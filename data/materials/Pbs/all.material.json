@@ -25290,19 +25290,19 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.744, 0.744, 0.7],
+				"value" : [0.99275076, 0.99275076, 0.7358167],
 				"background" : [1, 1, 1, 1],
 				"texture" : "pers_struct.dds",
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.1, 0.1, 0.1]
+				"value" : [0.20416808, 0.20416808, 0.20416808]
 			},
 			"fresnel" :
 			{
-				"value" : 0.1,
-				"mode" : "coeff"
+				"value" : [0.15290171, 0.15290171, 0.15290171],
+				"mode" : "coloured"
 			},
 			"normal" :
 			{
@@ -25312,7 +25312,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.6
+				"value" : 0.25027925
 			}
 		},
 
@@ -29906,7 +29906,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.744, 0.744, 0.744],
+				"value" : [0.9860202, 0.99275076, 0.86751866],
 				"background" : [1, 1, 1, 1],
 				"texture" : "ptol_struct.jpg",
 				"sampler" : "Sampler_10"
@@ -29917,8 +29917,8 @@
 			},
 			"fresnel" :
 			{
-				"value" : 0.1,
-				"mode" : "coeff"
+				"value" : [0.14573519, 0.14043605, 0.12832889],
+				"mode" : "coloured"
 			},
 			"normal" :
 			{
@@ -29928,7 +29928,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.6
+				"value" : 0.2850331
 			}
 		},
 
@@ -29940,29 +29940,29 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.6, 0.6, 0.5],
+				"value" : [0.899927, 0.90318954, 0.5],
 				"background" : [1, 1, 1, 1],
 				"texture" : "pyramid_big.dds",
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.1, 0.1, 0.1]
+				"value" : [0.17131194, 0.17319104, 0.11167672]
 			},
 			"fresnel" :
 			{
-				"value" : 0.1,
-				"mode" : "coeff"
+				"value" : [0.029079083, 0.029079083, 0.029079083],
+				"mode" : "coloured"
 			},
 			"normal" :
 			{
-				"value" : 1,
+				"value" : 1.5492973,
 				"texture" : "pyramid_big_norm.png",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 0.6
+				"value" : 0.42301428
 			}
 		},
 
@@ -30008,7 +30008,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.6, 0.6, 0.4],
+				"value" : [0.86108464, 0.7603427, 0.2284909],
 				"background" : [1, 1, 1, 1],
 				"texture" : "pyramid_small.dds",
 				"sampler" : "Sampler_10"
@@ -30019,18 +30019,18 @@
 			},
 			"fresnel" :
 			{
-				"value" : 0.1,
-				"mode" : "coeff"
+				"value" : [0.1, 0.094273254, 0.08669332],
+				"mode" : "coloured"
 			},
 			"normal" :
 			{
-				"value" : 1,
+				"value" : 1.092771,
 				"texture" : "pyramid_small_norm.png",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 0.6
+				"value" : 0.3007069
 			}
 		},
 
@@ -32217,25 +32217,25 @@
 		"roadDesert" :
 		{
 			"macroblock" : "Macroblock_4",
-			"blendblock" : "Blendblock_1",
+			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.9, 0.9, 0.9],
+				"value" : [0.94927645, 1.0130335, 0.7449826],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadDesertD.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.36, 0.34, 0.3],
+				"value" : [0.66092414, 0.5385521, 0.45826077],
 				"texture" : "roadAsphalt_spec.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : [0.3, 0.3, 0.3],
+				"value" : [0.64626986, 0.59727263, 0.45826077],
 				"mode" : "coloured"
 			},
 			"roughness" :
@@ -32698,18 +32698,18 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.05, 0.97, 0.62],
+				"value" : [0.8259845, 0.70854735, 0.4898582],
 				"background" : [1, 1, 1, 1],
 				"texture" : "roadDesert.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.16, 0.14, 0.12]
+				"value" : [0.23679918, 0.2305587, 0.15652776]
 			},
 			"fresnel" :
 			{
-				"value" : [0.1, 0.1, 0.1],
+				"value" : [0.5059184, 0.48719835, 0.35099038],
 				"mode" : "coloured"
 			},
 			"normal" :
@@ -32720,7 +32720,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.5
+				"value" : 0.5837197
 			},
 			"detail_diffuse0" :
 			{
@@ -43190,39 +43190,7 @@
 				"sampler" : "Sampler_Sky"
 			}
 		},
-
-		"sky/duskstormy" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "duskstormy.jpg",
-				"sampler" : "Sampler_Sky"
-			}
-		},
-
+		
 		"sky/dust" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -43539,38 +43507,6 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "gen-brightday.jpg",
-				"sampler" : "Sampler_Sky"
-			}
-		},
-
-		"sky/night_blue" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "sky-night.jpg",
 				"sampler" : "Sampler_Sky"
 			}
 		},
@@ -44050,7 +43986,7 @@
 			"emissive" :
 			{
 				"value" : [1, 1, 1],
-				"texture" : "day_clouds_02.jpg",
+				"texture" : "day_clouds_02_blue.jpg",
 				"sampler" : "Sampler_Sky"
 			}
 		},
@@ -44082,7 +44018,7 @@
 			"emissive" :
 			{
 				"value" : [1, 1, 1],
-				"texture" : "day_clouds_02_blue.jpg",
+				"texture" : "day_clouds_02_cyan.jpg",
 				"sampler" : "Sampler_Sky"
 			}
 		},
@@ -44502,6 +44438,38 @@
 				"sampler" : "Sampler_Sky"
 			}
 		},
+
+		"sky/dusk_stormy_02_red" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "dusk_stormy_02_red.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
 		
 		"sky/foggy_01" :
 		{
@@ -44918,7 +44886,39 @@
 				"sampler" : "Sampler_Sky"
 			}
 		},
-		
+
+		"sky/sky_clear_01_bright" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "sky_clear_01_bright.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
+
 		"sky/sunset_01" :
 		{
 			"macroblock" : "Macroblock_0",
