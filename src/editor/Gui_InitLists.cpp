@@ -266,7 +266,7 @@ void CGui::FillPickLists()
 		lp->addItem(c, 0);
 		l = lp->getItemCount()-1;
 
-		lp->setSubItemNameAt(1,l, c+ s.mtr);
+		lp->setSubItemNameAt(1,l, c+ s.mtr.substr(4));  // no sky/
 		if (s.mtr[0] != '-')
 		lp->setSubItemNameAt(2,l, c+ fToStr( s.ldPitch, 0,2));
 	}

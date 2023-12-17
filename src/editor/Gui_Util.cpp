@@ -48,8 +48,8 @@ void CGui::SetGuiFromXmls()
 	//-----------------------------------------------
 	btnSky->setCaption(sc->skyMtr);
 	String s = sc->skyMtr;  s = s.substr(4, s.length());  // sel on pick list
-	for (size_t i=0; i < liSky->getItemCount(); ++i)
-		if (liSky->getSubItemNameAt(1, i).substr(7) == s)
+	for (size_t i=0; i < liSky->getItemCount(); ++i)  // no #clr, no sky/
+		if (liSky->getSubItemNameAt(1, i).substr(7) == s.substr(4))
 			liSky->setIndexSelected(i);
 
 	svSkyYaw.Upd();  svSunPitch.Upd();  svSunYaw.Upd();

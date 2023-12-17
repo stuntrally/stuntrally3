@@ -362,6 +362,8 @@ void App::LoadTrackEv()
 	UpdStartPos();
 	UpdEditWnds();  //
 
+	gui->updImgSky();  gui->updSkySun();
+
 	/*try
 	{	TexturePtr tex = TextureManager::getSingleton().getByName("waterDepth.png");
 		if (tex)
