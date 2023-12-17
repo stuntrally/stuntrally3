@@ -328,8 +328,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(O):  gui->GuiShortcut(WND_Track, 2);  return;  // O Tools  🛠️
 
 		case key(W):  gui->GuiShortcut(WND_Track, 3);  return;  // W Game  🚗
-		case key(P):  gui->GuiShortcut(WND_Track, 4);  return;  // P Pacenotes  🚦
-		case key(J):  gui->GuiShortcut(WND_Track, 5);  return;  // J Warnings  ⚠
+		case key(J):  gui->GuiShortcut(WND_Track, 4);  return;  // J Warnings  ⚠
 
 		case key(S):  gui->GuiShortcut(WND_Edit, TAB_Sun);       return;  // S Sun  🌦️
 		case key(D):  gui->GuiShortcut(WND_Edit, TAB_Terrain);   return;  // D Heightmap  ⛰️
@@ -355,10 +354,11 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(C):  gui->GuiShortcut(WND_Options, 1);	  return;  // C Screen  🖥️
 		case key(A):  gui->GuiShortcut(WND_Options, 2);   return;  // A Graphics  📊
 
-		case key(E):  gui->GuiShortcut(WND_Options, 3);      return;  // E View /Settings  ⚙️
+		case key(E):  gui->GuiShortcut(WND_Options, 3);      return;  // E View, Camera  ⚙️
 		case key(F):  gui->GuiShortcut(WND_Materials, -1);   return;  // F Material editor  🔮
-		case key(K):  gui->GuiShortcut(WND_Options, 3, 3);   return;  // K -Tweak  🔧
-		
+		case key(K):  gui->GuiShortcut(WND_Options, 4);   return;  // K Settings, Tweak  🔧
+		// case key(P):  gui->GuiShortcut(WND_Track, 4);  return;  // P Pacenotes  🚦
+		// free:  N Y P		
 		case key(I):  gui->GuiShortcut(WND_Help, 1);  return;  // I Input/help  📝
 		default:  break;
 	}

@@ -2,6 +2,13 @@
 
 This section lists changes not yet released, but committed to new repositories stuntrally3 and tracks3.  
 
+## Version 3.0.1
+
+- Editor
+  - Changing object material, sets defined in `presets.xml`
+  - Toggle static for dynamic object, no `*_static.mesh`
+- Updated docs
+
 ## Version 3.0 beta
 
 - Stunt Rally 3 is continuing last SR 2.x.  
