@@ -76,13 +76,10 @@
 <s m="sky/dawn_bright"     c="#D0D0B0"   p="21"  y="-45" />
 
 <s m="sky/sunset_rays_gen" c="#D06010"   p=" 8"  y="  0" />
-<s m="sky/sunset_blue_gen" c="#E09060"   p="16"  y=" 57" />
 <s m="sky/sunset_gen"      c="#E080A0"   p="16"  y=" 45" />
 
 <s m="sky/morning_gen"     c="#C0B0A0"   p="30"  y=" -8" />
 <s m="sky/morning2_gen"    c="#D0D090"   p="30"  y="  8" />
-
-<s m="sky/offworld_gen"    c="#B0A090"   p="14"  y=" 27" />
 
 <!--  skies, oldest  (lowest quality)  -->
 <s m="sky/dust"            c="#C0C090"   p="32"  y=" 60" />
@@ -96,13 +93,11 @@
 <s m="sky/gray_clouds"     c="#A0A0A0"   p="38"  y=" 41" />
 <s m="sky/dark_clouds"     c="#707070"   p="36"  y=" 41" />
 
-<s m="sky/sunset"          c="#E8B0C0"   p="40"  y="-40" />
 <s m="sky/dawn"            c="#D4D090"   p="28"  y=" -7" />
-
 <s m="sky/dayovercast"     c="#A0C0D0"   p="30"  y="124" />
+
 <s m="sky/magic"           c="#A0A0FF"   p="30"  y="-41" />
 <s m="sky/magicdark"       c="#7070B0"   p="31"  y="-30" />
-
 <s m="sky/magic_alien"     c="#70A974"   p="30"  y="-41" />
 
 

@@ -282,10 +282,10 @@ void CGui::ToolSceneOld()
 		mapSky["sky/morning_gen"] = 1;		// "gen-brightday.jpg"
 		
 		mapSky["sky/night_blue"] = 1;		// "sky-night.jpg"
-		mapSky["sky/offworld_gen"] = 1;		// "gen-offworld.jpg"
+		mapSky["sky/offworld_gen"] = 1;		// "gen-offworld.jpg"  +
 		
-		mapSky["sky/sunset"] = 1;			// "sky_sunset.jpg"
-		mapSky["sky/sunset_blue_gen"] = 1;	// "gen-morning.jpg"
+		mapSky["sky/sunset"] = 1;			// "sky_sunset.jpg"  +
+		mapSky["sky/sunset_blue_gen"] = 1;	// "gen-morning.jpg"  +
 		mapSky["sky/sunset_gen"] = 1;		// "gen-sunset.jpg"
 		mapSky["sky/sunset_rays_gen"] = 1;	// "gen-godrays.jpg"
 		

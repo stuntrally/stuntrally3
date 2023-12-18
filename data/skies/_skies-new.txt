@@ -1,115 +1,58 @@
 ---- NEW skies 1 ----
 
-anomaly_01.jpg
-https://ambientcg.com/view?id=DaySkyHDRI027B
-
-cloudy_01.jpg
-https://ambientcg.com/view?id=DaySkyHDRI004B
-
-cloudy_02*.jpg
-https://ambientcg.com/view?id=DaySkyHDRI011B
-
-cloudy_03*.jpg
-https://ambientcg.com/view?id=DaySkyHDRI031B
-
-day_clouds_02*.jpg
-https://ambientcg.com/view?id=DaySkyHDRI026B
-
-day_clouds_05*.jpg
-https://ambientcg.com/view?id=DaySkyHDRI033B
-
-day_clouds_06.jpg
-https://ambientcg.com/view?id=DaySkyHDRI017B
-
-dawn_01*.jpg
-https://ambientcg.com/view?id=EveningSkyHDRI019B
-
-dusk_stormy_01*.jpg
-https://ambientcg.com/view?id=EveningSkyHDRI001B
-
-dusk_stormy_02*.jpg
-https://ambientcg.com/view?id=EveningSkyHDRI012B
-
-foggy_01*.jpg
-https://ambientcg.com/view?id=DaySkyHDRI032B
-
-foggy_02*.jpg
-https://ambientcg.com/view?id=DaySkyHDRI003B
-
-overcast_01*.jpg
-https://ambientcg.com/view?id=DaySkyHDRI020B
-
-sky_clear_01.jpg
-https://ambientcg.com/view?id=DaySkyHDRI010B
-
-sunset_02*.jpg
-https://ambientcg.com/view?id=EveningSkyHDRI017B
-
-
+anomaly_01.jpg                 https://ambientcg.com/view?id=DaySkyHDRI027B
+cloudy_01.jpg                  https://ambientcg.com/view?id=DaySkyHDRI004B
+cloudy_02*.jpg                 https://ambientcg.com/view?id=DaySkyHDRI011B
+cloudy_03*.jpg                 https://ambientcg.com/view?id=DaySkyHDRI031B
+day_clouds_02*.jpg             https://ambientcg.com/view?id=DaySkyHDRI026B
+day_clouds_05*.jpg             https://ambientcg.com/view?id=DaySkyHDRI033B
+day_clouds_06.jpg              https://ambientcg.com/view?id=DaySkyHDRI017B
+dawn_01*.jpg                   https://ambientcg.com/view?id=EveningSkyHDRI019B
+dusk_stormy_01*.jpg            https://ambientcg.com/view?id=EveningSkyHDRI001B
+dusk_stormy_02*.jpg            https://ambientcg.com/view?id=EveningSkyHDRI012B
+foggy_01*.jpg                  https://ambientcg.com/view?id=DaySkyHDRI032B
+foggy_02*.jpg                  https://ambientcg.com/view?id=DaySkyHDRI003B
+overcast_01*.jpg               https://ambientcg.com/view?id=DaySkyHDRI020B
+sky_clear_01.jpg               https://ambientcg.com/view?id=DaySkyHDRI010B
+sunset_02*.jpg                 https://ambientcg.com/view?id=EveningSkyHDRI017B
 
 Partly modified, especially anomaly skies
 
-License: CC0
-https://docs.ambientcg.com/license/
-More:
-https://ambientcg.com/list?type=HDRI
+License: CC0    https://docs.ambientcg.com/license/
+More:           https://ambientcg.com/list?type=HDRI
 
 ---- NEW skies 2 ----
 
-anomaly_03.jpg
-https://polyhaven.com/a/table_mountain_1_puresky
+anomaly_03.jpg                 https://polyhaven.com/a/table_mountain_1_puresky
+anomaly_04.jpg                 mixed:  day_clouds_04_blue  and  dawn_01
+clouds_01_blurry.jpg           https://polyhaven.com/a/kloppenheim_07_puresky
+day_clouds_01_thin.jpg         https://polyhaven.com/a/aristea_wreck_puresky
+day_clouds_03_grey.jpg         https://polyhaven.com/a/farm_field_puresky
+day_clouds_04_blue.jpg         https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky
+night_01*.jpg, anomaly_02.jpg  https://polyhaven.com/a/kloppenheim_02_puresky
+overcast_02*.jpg               https://polyhaven.com/a/mud_road_puresky
+sunset_01*.jpg                 https://polyhaven.com/a/belfast_sunset_puresky
+sunset_03_rays.jpg             https://polyhaven.com/a/kloppenheim_06_puresky
 
-clouds_01_blurry.jpg
-https://polyhaven.com/a/kloppenheim_07_puresky
-
-day_clouds_01_thin.jpg
-https://polyhaven.com/a/aristea_wreck_puresky
-
-day_clouds_03_grey.jpg
-https://polyhaven.com/a/farm_field_puresky
-
-day_clouds_04_blue.jpg
-https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky
-
-night_01*.jpg, anomaly_02.jpg
-https://polyhaven.com/a/kloppenheim_02_puresky
-
-overcast_02*.jpg
-https://polyhaven.com/a/mud_road_puresky
-
-sunset_01*.jpg
-https://polyhaven.com/a/belfast_sunset_puresky
-
-sunset_03_rays.jpg
-https://polyhaven.com/a/kloppenheim_06_puresky
-
-
-
-License: CC0
-More:
-https://polyhaven.com/hdris
-
-mixed:
-
-anomaly_04.jpg
-mixed day_clouds_04_blue and dawn_01
+License: CC0    https://polyhaven.com/hdris
 
 
 -------------- procedural
-
 space_nebula_01.jpg
-space_nebula_02_red.jpg (with modified version of Saturn *1)
-space_nebula_02_red2.jpg (version without Saturn)
+space_nebula_02_red.jpg  (with modified version of Saturn *1)
+space_nebula_02_red2.jpg  (version without Saturn)
 
-Self created in Blender, with big thanks to Samuel Krug VFX
+Author: rubberduck
+License: CC-BY 4.0
+
+Created in Blender by rubberduck, with big thanks to Samuel Krug VFX
 https://www.youtube.com/watch?v=v6pULIv8sZA
 and with a noise from Simon Thommes Noise Pack (CC0)
 https://simonthommes.gumroad.com/l/NOISE-P
 
 For fairness licensed under CC-BY-SA 4.0 to credit Samuel Krug VFX for the wonderful nebula tutorial
 
-*1
-uses Saturn model from
+*1  uses Saturn model from
 Author: Akshat
 License: CC-BY 4.0
 https://sketchfab.com/3d-models/saturn-8fb67d3defd74aaa880df3a08317e641
