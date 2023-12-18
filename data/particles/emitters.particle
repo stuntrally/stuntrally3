@@ -2418,9 +2418,9 @@ particle_system PinkCloud
 		height	232
 		depth	122  //h
 
-		colour				0.99 0.75 0.8  0.12
-		colour_range_start	0.99 0.61 0.7  0.11
-		colour_range_end	0.98 0.7 0.75  0.13
+		colour				0.49 0.35 0.4  0.12
+		colour_range_start	0.49 0.31 0.3  0.11
+		colour_range_end	0.48 0.3 0.35  0.13
 
 		emission_rate	200
 		velocity_min	0.1

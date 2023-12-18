@@ -2,6 +2,10 @@
 360x90 degree spherical Skybox textures, UV map them to a hemisphere for best result.
 All 4k x 1k resolution.
 
+all to replace  => new
++	done with tab
+
+
 ---- (old)  sky_*.jpg also d* m*
 Free high res skymaps (Massive 07 update!) 
 by: 0ptikz
@@ -18,12 +22,12 @@ sky_sunset.jpg - orange`
 sky_white2.jpg - wnt 1clr`
 sky_white.jpg - wnt white
 
-dayovercast.jpg  - shore steelblue
-duskred.jpg - mars red
-duskstormy.jpg - vlc cremat black
+dayovercast.jpg  - shore steelblue  =>
+~	duskred.jpg - mars red, vlc lava  => dusk_stormy_02_red.jpg
++	duskstormy.jpg - vlc cremat black  => dawn_01_orange.jpg
 
-magic_alien.jpg  - green
-magicdark.jpg  - cry purple
+magic_alien.jpg  - aln green
+magicdark.jpg  - cry dark blue
 magic.jpg  - uni violet
 
 
@@ -32,21 +36,21 @@ New High resolution sky pack for Blender
 by: 0ptikz
 https://blenderartists.org/forum/showthread.php?224065-New-High-resolution-sky-pack-for-Blender
 
-gen-brightday2.jpg - dark blue fog orange
-gen-brightday.jpg
-gen-foggy.jpg
-gen-godrays.jpg
-gen-morning.jpg
-gen-offworld.jpg
-gen-sunset.jpg
+gen-brightday.jpg - dark blue fog yellow 
+gen-brightday2.jpg - skyblue white
+gen-foggy.jpg - gray cyan blue
+gen-godrays.jpg - orange dark
+gen-morning.jpg - orange blue
+gen-offworld.jpg - yellow gray cyan
+gen-sunset.jpg - orange white
 
-sky-1day.jpg
-sky-2clouds.jpg
-sky-clearday1.jpg
-sky-clearday2.jpg
-sky-clearday.jpg
-sky-darkclouds.jpg
-sky-night.jpg
+sky-1day.jpg - skyblue top
+sky-2clouds.jpg - yellow gray cloudy
+sky-clearday.jpg - skyblue yellow dark
+sky-clearday1.jpg - skyblue clouds white
+sky-clearday2.jpg - clouds dark white
+sky-darkclouds.jpg - gray white
++	sky-night.jpg - Isl11-StuntIslands  => sky/sunset_02_clouds
 
 
 Released under an 'I don't give an damn' license.
