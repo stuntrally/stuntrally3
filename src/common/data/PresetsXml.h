@@ -15,6 +15,7 @@ struct PSky
 	int rate = 0;  // rating  for quality, popular
 	Ogre::String mtr = "sky", clr = "#C0E0FF";
 	float ldYaw = 0.f, ldPitch = 0.f;  // sun dir
+	SColor fogClr,fogClr2;  // fog clr sun-away
 };
 
 //  ⛰️ Terrain layer ----

@@ -188,7 +188,12 @@ void CGui::listPickSky(Mli2 li, size_t pos)
 	if (pSet->pick_setpar)
 	{	sc->ldPitch = p->ldPitch;  svSunPitch.Upd();
 		sc->ldYaw = p->ldYaw;  svSunYaw.Upd();
+		sc->fogClr = p->fogClr;  sc->fogClr2 = p->fogClr2;
+		
 		scn->UpdSun();
+		Vector3 c;
+		#define _Clr(name, val)  c = val.GetRGB1();  clr##name->setColour(Colour(c.x,c.y,c.z))
+		_Clr(Fog, sc->fogClr);  _Clr(Fog2, sc->fogClr2);
 	}
 	btnSky->setCaption(s);
 

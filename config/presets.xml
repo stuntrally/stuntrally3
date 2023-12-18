@@ -4,63 +4,68 @@
 
 
 <!--  ⛅  Skies  ================================================================
-      m - material name from sky.mat  c - color (for list)  y - sun yaw  p - pitch -->
+      m - material name from sky.mat  c - color (for list)  y - sun yaw  p - pitch
+      fc - fog sun color  gc - fog away color
+-->
+<!--  new skies, from hdri  -->
+<s m="sky/clouds_01_blurry"      c="#8a929d"  p="26"  y="-29" fc="0.583 0.333 0.420 0.900 0.0" gc="0.556 0.333 0.467 1.000 0.0" /> <!-- Wnt DangerRoad -->
+<s m="sky/cloudy_01"             c="#d1d0d0"  p="20"  y="0"   fc="0.586 0.270 1.000 1.000 0.0" gc="0.586 0.270 1.000 1.000 0.0" /> <!-- CanyonRun -->
+<s m="sky/cloudy_02_brown"       c="#8b8b63"  p="25"  y="0"   fc="0.118 0.031 0.497 0.768 0.0" gc="0.120 0.093 0.155 0.907 0.0" /> <!-- For Banked -->
+<s m="sky/cloudy_02_toxic"       c="#88dd44"  p="25"  y="0"   fc="0.312 0.490 0.304 0.402 0.2" gc="0.254 0.180 0.312 0.738 0.224" />  <!-- Apo1-TarFields -->
+<s m="sky/cloudy_03_grey"        c="#717a7f"  p="55"  y="-5"  fc="0.581 0.311 0.861 0.911 0.0" gc="0.591 0.451 0.541 0.860 0.0" /> <!-- -->
+<s m="sky/cloudy_03_dark"        c="#42765d"  p="55"  y="-5"  fc="0.581 0.311 0.861 0.911 0.0" gc="0.591 0.451 0.541 0.860 0.0" /> <!-- -->
 
-<!--  skies, newest, added by rubberduck -->
-<!--  skies, from hdri  -->
-<s m="sky/clouds_01_blurry"       c="#8a929d"  p="26"  y="-29" />
-<s m="sky/cloudy_01"              c="#d1d0d0"  p="20"  y="0" />
-<s m="sky/cloudy_02_brown"        c="#8b8b63"  p="25"  y="0" /> 
-<s m="sky/cloudy_02_toxic"        c="#88dd44"  p="25"  y="0" />  <!-- Apo1-TarFields -->
-<s m="sky/cloudy_03_grey"         c="#717a7f"  p="55"  y="-5" />
-<s m="sky/cloudy_03_dark"         c="#42765d"  p="55"  y="-5" />
-<s m="sky/day_clouds_01_thin"     c="#7c8497"  p="50"  y="-37" />
-<s m="sky/day_clouds_02"          c="#5174aa"  p="32"  y="-1" />
-<s m="sky/day_clouds_02_blue"     c="#50B0D0"  p="32"  y="-1" />
-<s m="sky/day_clouds_03_grey"     c="#8794a7"  p="52"  y="-47" />
-<s m="sky/day_clouds_04_blue"     c="#7b95ce"  p="48"  y="-35" />
-<s m="sky/day_clouds_05_bright"   c="#c0d0f0"  p="56"  y="-11" />
-<s m="sky/day_clouds_05_bright2"  c="#ecf0ff"  p="56"  y="-11" />
-<s m="sky/day_clouds_06"          c="#88aacc"  p="38"  y="0" />
-<s m="sky/dawn_01"                c="#ccc090"  p="15"  y="0" />
-<s m="sky/dawn_01_orange"         c="#eeaa66"  p="15"  y="0" />
-<s m="sky/dawn_01_red"            c="#ee7755"  p="15"  y="0" />
-<s m="sky/dusk_stormy_01_blue"    c="#4477aa"  p="13"  y="-2" />
-<s m="sky/dusk_stormy_01_brown"   c="#5f6153"  p="13"  y="-2" />
-<s m="sky/dusk_stormy_01_sur"     c="#bb80cc"  p="13"  y="-2" />
-<s m="sky/dusk_stormy_02_brown"   c="#775522"  p="11"  y="-1" />
-<s m="sky/dusk_stormy_02_dark"    c="#334715"  p="11"  y="-1" />
-<s m="sky/dusk_stormy_02_grey"    c="#4d565d"  p="11"  y="-1" />
-<s m="sky/dusk_stormy_02_red"     c="#904010"  p="11"  y="-1" />
-<s m="sky/foggy_01"               c="#cdd1d0"  p="50"  y="-5" />
-<s m="sky/foggy_01_blue"          c="#114477"  p="50"  y="-5" />
-<s m="sky/foggy_01_brown"         c="#826626"  p="50"  y="-5" />
-<s m="sky/foggy_01_green"         c="#b3ebb1"  p="50"  y="-5" />
-<s m="sky/foggy_02_grey"          c="#757a80"  p="55"  y="0" />
-<s m="sky/foggy_02_brown"         c="#827161"  p="55"  y="0" />
-<s m="sky/night_01_clear"         c="#616a73"  p="18"  y="-35" />
-<s m="sky/night_01_clear_blue"    c="#4f557c"  p="18"  y="-35" /> <!-- Fin3-TreeTops -->
-<s m="sky/overcast_01_blue"       c="#58525f"  p="15"  y="-3" /> <!-- Stn2-UltraFrenzy -->
-<s m="sky/overcast_01_grey"       c="#959b98"  p="15"  y="-3" />
-<s m="sky/overcast_02_green"      c="#7a9747"  p="40"  y="75" />
-<s m="sky/overcast_02_purple"     c="#8e458e"  p="40"  y="75" />
-<s m="sky/sky_clear_01"           c="#66aacc"  p="35"  y="-33" />
-<s m="sky/sky_clear_01_bright"    c="#80c0ff"  p="35"  y="-33" />
-<s m="sky/sunset_01"              c="#ffd69f"  p="11"  y="-62" /> <!-- Spr1-Rise, Mar3-Plateaus -->
-<s m="sky/sunset_01_bright"       c="#d5bebe"  p="22"  y="-65" />
-<s m="sky/sunset_02_clouds"       c="#ffe3c1"  p="6"   y="25" />
-<s m="sky/sunset_03_rays"         c="#feff99"  p="8"   y="-38" />
+<s m="sky/day_clouds_01_thin"    c="#7c8497"  p="50"  y="-37" fc="0.593 0.106 0.850 0.805 0.0" gc="0.583 0.082 0.730 0.858 0.0" /> <!-- For StuntValley -->
+<s m="sky/day_clouds_02"         c="#5174aa"  p="32"  y="-1"  fc="0.581 0.311 0.861 0.911 0.0" gc="0.591 0.451 0.541 0.860 0.0" /> <!-- -->
+<s m="sky/day_clouds_02_blue"    c="#50B0D0"  p="32"  y="-1"  fc="0.568 0.170 1.000 1.000 0.0" gc="0.556 0.463 0.647 1.000 0.0" /> <!-- Des-LowJumps -->
+<s m="sky/day_clouds_03_grey"    c="#8794a7"  p="52"  y="-47" fc="0.581 0.311 0.861 0.911 0.0" gc="0.591 0.451 0.541 0.860 0.0" /> <!-- -->
 
-<!--  skies, anomaly  -->
-<s m="sky/anomaly_01"             c="#a6d76e"  p="55" y="0" /> <!-- Ano2-Bug -->
-<s m="sky/anomaly_02"             c="#5b8b7b"  p="18" y="-35" /> <!-- Ano3-Oversize  -->
-<s m="sky/anomaly_03"             c="#ff7b52"  p="8"  y="-90" /> <!-- TestC14-Anomaly -->
-<s m="sky/anomaly_04"             c="#7b95ce"  p="1"  y="0" /> <!-- Ano1-Glitchy -->
+<s m="sky/day_clouds_04_blue"    c="#7b95ce"  p="48"  y="-35" fc="0.591 0.329 0.997 1.000 0.0" gc="0.589 0.461 0.292 1.000 0.0" /> <!-- Aus3-Canyon, Beach, Temple, -->
+<s m="sky/day_clouds_05_bright"  c="#c0d0f0"  p="56"  y="-11" fc="0.581 0.311 0.561 0.911 0.0" gc="0.591 0.451 0.541 0.860 0.0" /> <!-- -->
+<s m="sky/day_clouds_05_bright2" c="#ecf0ff"  p="56"  y="-11" fc="0.545 0.068 0.795 1.000 0.0" gc="0.541 0.045 0.879 0.975 0.0" /> <!-- Wnt-FrozenGarden-->
+<s m="sky/day_clouds_06"         c="#88aacc"  p="38"  y="0"   fc="0.522 0.436 0.383 1.000 0.0" gc="0.527 0.481 0.255 1.000 0.0" /> <!-- Grc-Halfpipes -->
+<s m="sky/dawn_01"               c="#ccc090"  p="15"  y="0"   fc="0.165 0.209 0.941 0.850 0.0" gc="0.126 0.368 0.262 0.907 0.0" /> <!-- Can-Obstacles -->
+<s m="sky/dawn_01_orange"        c="#eeaa66"  p="15"  y="0"   fc="0.103 0.802 0.533 0.913 0.0" gc="0.101 0.624 0.113 0.874 0.0" /> <!-- Vlc-Crematoria -->
+<s m="sky/dawn_01_red"           c="#ee7755"  p="15"  y="0"   fc="0.039 0.890 0.379 0.819 0.0" gc="0.010 0.849 0.166 1.000 0.0" /> <!-- Mrs4-Platforms -->
 
-<!--  skies, space, alien, etc  -->
-<s m="sky/space_nebula_01"        c="#41182a"  p="25" y="115" /> <!-- Cry5-CrystalIslands -->
-<s m="sky/space_nebula_02_red"    c="#be030c"  p="35" y="25" />
-<s m="sky/space_nebula_02_red2"   c="#be030c"  p="35" y="25" />
+<s m="sky/dusk_stormy_01_blue"   c="#4477aa"  p="13"  y="-2"  fc="0.581 0.311 0.861 0.911 0.0" gc="0.591 0.451 0.541 0.860 0.0" /> <!-- -->
+<s m="sky/dusk_stormy_01_brown"  c="#5f6153"  p="13"  y="-2"  fc="0.126 0.562 0.866 0.362 0.0" gc="0.118 0.442 0.258 0.900 0.0" /> <!-- Can-Vast -->
+<s m="sky/dusk_stormy_01_sur"    c="#bb80cc"  p="13"  y="-2"  fc="0.360 0.248 0.538 0.981 0.324" gc="0.151 0.971 0.886 0.958 0.752" /> <!-- Sur1-Surreal -->
+
+<s m="sky/dusk_stormy_02_brown"  c="#775522"  p="11"  y="-1"  fc="0.083 0.800 0.968 0.900 0.0" gc="0.101 0.339 0.101 0.999 0.0" /> <!-- MudLake -->
+<s m="sky/dusk_stormy_02_dark"   c="#334715"  p="11"  y="-1"  fc="0.128 0.488 0.169 1.000 0.089" gc="0.163 0.289 0.035 1.000 0.0" /> <!-- Vlc1-Dark -->
+<s m="sky/dusk_stormy_02_grey"   c="#4d565d"  p="11"  y="-1"  fc="0.583 0.083 0.082 0.950 0.0" gc="0.583 0.235 0.104 0.900 0.0" /> <!-- Twister -->
+<s m="sky/dusk_stormy_02_red"    c="#904010"  p="11"  y="-1"  fc="0.042 1.000 0.048 0.760 0.0" gc="0.000 1.000 0.031 0.900 0.0" /> <!-- Mrs-Red -->
+
+<s m="sky/foggy_01"              c="#114477"  p="50"  y="-5"  fc="0.176 0.333 0.240 0.660 0.0" gc="0.273 0.190 0.188 0.504 0.0" /> <!-- MudFlats -->
+<s m="sky/foggy_01_blue"         c="#114477"  p="50"  y="-5"  fc="0.581 0.311 0.861 0.911 0.0" gc="0.591 0.451 0.541 0.860 0.0" /> <!-- -->
+<s m="sky/foggy_01_brown"        c="#826626"  p="50"  y="-5"  fc="0.081 0.665 0.169 0.900 0.0" gc="0.079 0.393 0.099 0.900 0.0" /> <!-- Vlc-Sad -->
+<s m="sky/foggy_01_green"        c="#b3ebb1"  p="50"  y="-5"  fc="0.581 0.311 0.861 0.911 0.0" gc="0.591 0.451 0.541 0.860 0.0" /> <!-- -->
+<s m="sky/foggy_02_grey"         c="#757a80"  p="55"  y="0"   fc="0.581 0.311 0.861 0.911 0.0" gc="0.591 0.451 0.541 0.860 0.0" /> <!-- -->
+<s m="sky/foggy_02_brown"        c="#827161"  p="55"  y="0"   fc="0.581 0.311 0.861 0.911 0.0" gc="0.591 0.451 0.541 0.860 0.0" /> <!-- -->
+
+<s m="sky/night_01_clear"        c="#616a73"  p="18"  y="-35" fc="0.591 0.267 0.097 1.000 0.0" gc="0.550 0.204 0.084 0.900 0.0" /> <!-- IslandsNight -->
+<s m="sky/night_01_clear_blue"   c="#4f557c"  p="18"  y="-35" fc="0.643 0.295 0.429 0.947 0.0" gc="0.622 0.285 0.320 0.913 0.0" /> <!-- Fin3-TreeTops -->
+<s m="sky/overcast_01_blue"      c="#58525f"  p="15"  y="-3"  fc="0.545 0.138 0.379 0.874 0.0" gc="0.163 0.083 0.559 0.789 0.0" /> <!-- Stn2-UltraFrenzy -->
+<s m="sky/overcast_01_grey"      c="#959b98"  p="15"  y="-3"  fc="0.167 0.079 0.760 0.800 0.0" gc="0.583 0.068 0.590 0.800 0.0" /> <!-- Atm3-Orange -->
+<s m="sky/overcast_02_green"     c="#7a9747"  p="40"  y="75"  fc="0.390 0.388 0.492 0.847 0.277" gc="0.362 0.572 0.637 0.560 0.277" /> <!-- MossyMntn -->
+<s m="sky/overcast_02_purple"    c="#8e458e"  p="40"  y="75"  fc="0.581 0.311 0.861 0.911 0.0" gc="0.591 0.451 0.541 0.860 0.0" /> <!-- -->
+
+<s m="sky/sky_clear_01"          c="#66aacc"  p="35"  y="-33" fc="0.559 0.258 1.011 1.000 0.0" gc="0.577 0.618 0.482 1.000 0.0" /> <!-- Grc7-Spider -->
+<s m="sky/sky_clear_01_bright"   c="#80c0ff"  p="35"  y="-33" fc="0.597 0.240 1.000 1.000 0.0" gc="0.597 0.566 0.794 1.000 0.0" /> <!-- Des6 -->
+<s m="sky/sunset_01"             c="#ffd69f"  p="11"  y="-62" fc="0.099 0.647 0.913 0.863 0.0" gc="0.684 0.250 0.074 0.794 0.0" /> <!-- Spr1-Rise, Mar3-Plateaus -->
+<s m="sky/sunset_01_bright"      c="#d5bebe"  p="22"  y="-65" fc="0.812 0.039 1.000 0.880 0.0" gc="0.690 0.459 0.296 0.810 0.0" /> <!-- Des11-PersianCity -->
+<s m="sky/sunset_02_clouds"      c="#ffe3c1"  p="6"   y="25"  fc="0.647 0.163 0.523 0.286 0.0" gc="0.593 0.610 0.169 0.860 0.0" /> <!-- Isl11-StuntIslands-->
+<s m="sky/sunset_03_rays"        c="#feff99"  p="8"   y="-38" fc="0.111 0.754 0.800 1.000 0.0" gc="0.593 0.407 0.320 1.000 0.0" /> <!-- Isl4-Sunset -->
+<!--  anomaly  -->
+<s m="sky/anomaly_01"            c="#a6d76e"  p="55"  y="0"   fc="0.843 0.000 1.111 0.970 0.043" gc="0.597 0.702 0.237 0.271 0.345" /> <!-- Ano2-Bug -->
+<s m="sky/anomaly_02"            c="#5b8b7b"  p="18"  y="-35" fc="0.308 0.618 0.820 1.926 0.252" gc="0.684 0.618 0.397 1.040 0.219" /> <!-- Ano3-Oversize  -->
+<s m="sky/anomaly_03"            c="#ff7b52"  p="8"   y="-90" fc="0.171 1.000 0.900 1.000 0.000" gc="0.556 1.000 0.900 1.000 0.000" /> <!-- Ano0-AnomalyFun -->
+<s m="sky/anomaly_04"            c="#7b95ce"  p="1"   y="0"   fc="0.911 0.802 0.361 0.636 0.000" gc="0.145 1.000 1.498 0.033 0.000" /> <!-- Ano1-Glitchy -->
+<!--  space, alien, etc  -->
+<s m="sky/space_nebula_01"       c="#41182a"  p="25"  y="115" fc="0.884 0.887 0.045 0.885 0.000" gc="0.711 0.521 0.051 0.693 0.000" /> <!-- Cry5-CrystalIslands -->
+<s m="sky/space_nebula_02_red"   c="#be030c"  p="35"  y="25"  fc="0.042 1.000 0.200 0.760 0.205" gc="0.000 1.000 0.150 0.900 0.145" /> <!-- Mrs1 -->
+<s m="sky/space_nebula_02_red2"  c="#be030c"  p="35"  y="25"  fc="0.042 1.000 0.200 0.760 0.100" gc="0.000 1.000 0.150 0.900 0.100" /> <!-- -->
 
 <!--  ⛅ skies, old  -->
 <s m="-------------  old  ---------"  />

@@ -259,21 +259,20 @@ void CGui::ToolSceneOld()
 		mapSky["sky/dawn"] = 1;			// "sky_dawn.jpg"
 		mapSky["sky/dawn_bright"] = 1;	// "sky-clearday.jpg"
 		
+		mapSky["sky/light_blue"] = 1;	// "sky_lightblue.jpg"
 		mapSky["sky/day_blue"] = 1;		// "sky-clearday1.jpg"
 		mapSky["sky/day_blue2"] = 1;	// "sky-1day.jpg"
 		mapSky["sky/day_clouds"] = 1;	// "sky-clearday2.jpg"
 
-		mapSky["sky/dayovercast"] = 1;	// "dayovercast.jpg" +
-		mapSky["sky/duskred"] = 1;		// "duskred.jpg"  +
-		mapSky["sky/duskstormy"] = 1;	// "duskstormy.jpg" + none
+			mapSky["sky/dayovercast"] = 1;	// "dayovercast.jpg" +
+			mapSky["sky/duskred"] = 1;		// "duskred.jpg"  +
+			mapSky["sky/duskstormy"] = 1;	// "duskstormy.jpg" + none
 
 		mapSky["sky/dust"] = 1;			// "sky_dust.jpg"
 		mapSky["sky/foggy_gen"] = 1;	// "gen-foggy.jpg"
 		mapSky["sky/gray_clouded"] = 1;	// "sky-darkclouds.jpg"
 		mapSky["sky/gray_clouds"] = 1;	// "sky_photo3.jpg"
 		
-		mapSky["sky/light_blue"] = 1;	// "sky_lightblue.jpg"
-
 		mapSky["sky/magic"] = 1;			// "magic.jpg"
 		mapSky["sky/magic_alien"] = 1;		// "magic_alien.jpg"
 		mapSky["sky/magicdark"] = 1;		// "magicdark.jpg"
@@ -281,11 +280,12 @@ void CGui::ToolSceneOld()
 		mapSky["sky/morning2_gen"] = 1;		// "gen-brightday2.jpg"
 		mapSky["sky/morning_gen"] = 1;		// "gen-brightday.jpg"
 		
-		mapSky["sky/night_blue"] = 1;		// "sky-night.jpg"
-		mapSky["sky/offworld_gen"] = 1;		// "gen-offworld.jpg"  +
-		
-		mapSky["sky/sunset"] = 1;			// "sky_sunset.jpg"  +
-		mapSky["sky/sunset_blue_gen"] = 1;	// "gen-morning.jpg"  +
+			mapSky["sky/night_blue"] = 1;		// "sky-night.jpg"  +
+			mapSky["sky/offworld_gen"] = 1;		// "gen-offworld.jpg"  +
+			
+			mapSky["sky/sunset"] = 1;			// "sky_sunset.jpg"  +
+			mapSky["sky/sunset_blue_gen"] = 1;	// "gen-morning.jpg"  +
+
 		mapSky["sky/sunset_gen"] = 1;		// "gen-sunset.jpg"
 		mapSky["sky/sunset_rays_gen"] = 1;	// "gen-godrays.jpg"
 		

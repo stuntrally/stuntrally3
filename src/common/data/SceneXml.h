@@ -36,7 +36,7 @@ public:
 	bool needLights =0;  // dark, for vehicle
 
 	//  🌫️ Fog
-	float fogStart, fogEnd;  // lin range
+	float fogStart, fogEnd;  // fake-linear range
 	SColor fogClr,fogClr2;  // 2colors sun-away  .a = intensity
 
 	SColor fogClrH;  // height fog color
