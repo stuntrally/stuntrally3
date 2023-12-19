@@ -287,9 +287,9 @@ void CGui::ToolSceneOld()
 			mapSky["sky/sunset_blue_gen"] = 1;	// "gen-morning.jpg"  +
 
 		mapSky["sky/sunset_gen"] = 1;		// "gen-sunset.jpg"
-		mapSky["sky/sunset_rays_gen"] = 1;	// "gen-godrays.jpg"
+			mapSky["sky/sunset_rays_gen"] = 1;	// "gen-godrays.jpg"  +
 		
-		mapSky["sky/white"] = 1;			// "sky_white.jpg"
+			mapSky["sky/white"] = 1;			// "sky_white.jpg"  +
 		mapSky["sky/white2"] = 1;			// "sky_white2.jpg"
 
 	int i,n, t = 0;

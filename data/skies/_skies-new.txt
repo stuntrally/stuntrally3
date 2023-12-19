@@ -1,39 +1,39 @@
----- NEW skies 1 ----
+---- NEW skies ----
+file(s) .jpg         url  https://..
 
-anomaly_01.jpg                 https://ambientcg.com/view?id=DaySkyHDRI027B
-cloudy_01.jpg                  https://ambientcg.com/view?id=DaySkyHDRI004B
-cloudy_02*.jpg                 https://ambientcg.com/view?id=DaySkyHDRI011B
-cloudy_03*.jpg                 https://ambientcg.com/view?id=DaySkyHDRI031B
-day_clouds_02*.jpg             https://ambientcg.com/view?id=DaySkyHDRI026B
-day_clouds_05*.jpg             https://ambientcg.com/view?id=DaySkyHDRI033B
-day_clouds_06.jpg              https://ambientcg.com/view?id=DaySkyHDRI017B
-dawn_01*.jpg                   https://ambientcg.com/view?id=EveningSkyHDRI019B
-dusk_stormy_01*.jpg            https://ambientcg.com/view?id=EveningSkyHDRI001B
-dusk_stormy_02*.jpg            https://ambientcg.com/view?id=EveningSkyHDRI012B
-foggy_01*.jpg                  https://ambientcg.com/view?id=DaySkyHDRI032B
-foggy_02*.jpg                  https://ambientcg.com/view?id=DaySkyHDRI003B
-overcast_01*.jpg               https://ambientcg.com/view?id=DaySkyHDRI020B
-sky_clear_01.jpg               https://ambientcg.com/view?id=DaySkyHDRI010B
-sunset_02*.jpg                 https://ambientcg.com/view?id=EveningSkyHDRI017B
+anomaly_01           https://ambientcg.com/view?id=DaySkyHDRI027B
+anomaly_02           https://polyhaven.com/a/kloppenheim_02_puresky
+anomaly_03           https://polyhaven.com/a/table_mountain_1_puresky
+anomaly_04           mixed:  day_clouds_04_blue  and  dawn_01
+cloudy_01            https://ambientcg.com/view?id=DaySkyHDRI004B
+clouds_01_blurry     https://polyhaven.com/a/kloppenheim_07_puresky
+cloudy_02*           https://ambientcg.com/view?id=DaySkyHDRI011B
+cloudy_03*           https://ambientcg.com/view?id=DaySkyHDRI031B
+cloudy_04_white      https://ambientcg.com/view?id=DaySkyHDRI008B
+dawn_01*             https://ambientcg.com/view?id=EveningSkyHDRI019B
+day_clouds_01_thin   https://polyhaven.com/a/aristea_wreck_puresky
+day_clouds_02*       https://ambientcg.com/view?id=DaySkyHDRI026B
+day_clouds_03_grey   https://polyhaven.com/a/farm_field_puresky
+day_clouds_04_blue   https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky
+day_clouds_05*       https://ambientcg.com/view?id=DaySkyHDRI033B
+day_clouds_06        https://ambientcg.com/view?id=DaySkyHDRI017B
+dusk_stormy_01*      https://ambientcg.com/view?id=EveningSkyHDRI001B
+dusk_stormy_02*      https://ambientcg.com/view?id=EveningSkyHDRI012B
+foggy_01*            https://ambientcg.com/view?id=DaySkyHDRI032B
+foggy_02*            https://ambientcg.com/view?id=DaySkyHDRI003B
+night_01*            https://polyhaven.com/a/kloppenheim_02_puresky
+overcast_01*         https://ambientcg.com/view?id=DaySkyHDRI020B
+overcast_02*         https://polyhaven.com/a/mud_road_puresky
+sky_clear_01*        https://ambientcg.com/view?id=DaySkyHDRI010B
+sunset_01*           https://polyhaven.com/a/belfast_sunset_puresky
+sunset_02*           https://ambientcg.com/view?id=EveningSkyHDRI017B
+sunset_03_rays       https://polyhaven.com/a/kloppenheim_06_puresky
+sunset_04_cloudy     https://ambientcg.com/view?id=EveningSkyHDRI005B
 
 Partly modified, especially anomaly skies
 
 License: CC0    https://docs.ambientcg.com/license/
 More:           https://ambientcg.com/list?type=HDRI
-
----- NEW skies 2 ----
-
-anomaly_03.jpg                 https://polyhaven.com/a/table_mountain_1_puresky
-anomaly_04.jpg                 mixed:  day_clouds_04_blue  and  dawn_01
-clouds_01_blurry.jpg           https://polyhaven.com/a/kloppenheim_07_puresky
-day_clouds_01_thin.jpg         https://polyhaven.com/a/aristea_wreck_puresky
-day_clouds_03_grey.jpg         https://polyhaven.com/a/farm_field_puresky
-day_clouds_04_blue.jpg         https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky
-night_01*.jpg, anomaly_02.jpg  https://polyhaven.com/a/kloppenheim_02_puresky
-overcast_02*.jpg               https://polyhaven.com/a/mud_road_puresky
-sunset_01*.jpg                 https://polyhaven.com/a/belfast_sunset_puresky
-sunset_03_rays.jpg             https://polyhaven.com/a/kloppenheim_06_puresky
-
 License: CC0    https://polyhaven.com/hdris
 
 
