@@ -43383,70 +43383,6 @@
 			}
 		},
 
-		"sky/morning2_gen" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "gen-brightday2.jpg",
-				"sampler" : "Sampler_Sky"
-			}
-		},
-
-		"sky/morning_gen" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "gen-brightday.jpg",
-				"sampler" : "Sampler_Sky"
-			}
-		},
-
 		"sky/sunset_gen" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -43479,38 +43415,6 @@
 			}
 		},
 
-		"sky/white2" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "sky_white2.jpg",
-				"sampler" : "Sampler_Sky"
-			}
-		},
-		
 		"sky/clouds_01_blurry" :
 		{
 			"macroblock" : "Macroblock_0",

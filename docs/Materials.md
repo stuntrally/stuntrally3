@@ -527,8 +527,8 @@ diffuse, specular, normal, roughness.
 - specular - tells where surface will shine from light reflection.
 - roughness - tells how much it will shine. 0 is mirror, 0.2 most shine, 0.4 gets blurry, 0.9 is just dull.
 
-There is no *metalness* texture, it's meant for a simpler metal workflow,
-we use specular workflow which has own colors (on texture) for specular shine.
+There is no *metalness* texture, it's meant for a simpler *metallic* workflow,  
+we use *specular_ogre* workflow which has own colors (on texture) for specular shine.
 
 
 ## Example 6, detail maps
@@ -593,7 +593,7 @@ Extra textures (layers) can be added to modulate original diffuse and/or normal 
 In this quite advanced material, 2 extra maps are added.  
 First `detail_diffuse0` map multiplying regular `diffuse` map.  
 Other `mode` variants are possible, all inside `@piece` in [this shader file](../data/Hlms/Pbs/Any/Main/200.BlendModes_piece_ps.any).  
-The `scale"` is UV coords multiplier, it means that detail map will repeat 12 times more.  
+The `scale` is UV coords multiplier, it means that detail map will repeat 12 times more.  
 There is also `offset` which just gets added to UV coords.
 
 Great for adding smaller scale detail like scratches, etc.  

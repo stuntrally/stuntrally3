@@ -22,7 +22,7 @@
 <s m="sky/day_clouds_03_grey"    c="#8794a7"  p="52"  y="-47" fc="0.581 0.311 0.861 0.911 0.0" gc="0.591 0.451 0.541 0.860 0.0" /> <!-- -->
 
 <s m="sky/day_clouds_04_blue"    c="#7b95ce"  p="48"  y="-35" fc="0.591 0.329 0.997 1.000 0.0" gc="0.589 0.461 0.292 1.000 0.0" /> <!-- Aus3-Canyon, Beach, Temple, -->
-<s m="sky/day_clouds_05_bright"  c="#c0d0f0"  p="56"  y="-11" fc="0.581 0.311 0.561 0.911 0.0" gc="0.591 0.451 0.541 0.860 0.0" /> <!-- -->
+<s m="sky/day_clouds_05_bright"  c="#c0c8d0"  p="56"  y="-11" fc="0.581 0.064 0.312 0.911 0.0" gc="0.591 0.159 0.893 0.860 0.0" /> <!-- Wnt-MountPen -->
 <s m="sky/day_clouds_05_bright2" c="#ecf0ff"  p="56"  y="-11" fc="0.545 0.068 0.795 1.000 0.0" gc="0.541 0.045 0.879 0.975 0.0" /> <!-- Wnt-FrozenGarden-->
 <s m="sky/day_clouds_06"         c="#88aacc"  p="38"  y="0"   fc="0.522 0.436 0.383 1.000 0.0" gc="0.527 0.481 0.255 1.000 0.0" /> <!-- Grc-Halfpipes -->
 <s m="sky/dawn_01"               c="#ccc090"  p="15"  y="0"   fc="0.165 0.209 0.941 0.850 0.0" gc="0.126 0.368 0.262 0.907 0.0" /> <!-- Can-Obstacles -->
@@ -83,13 +83,9 @@
 <s m="sky/dawn_bright"     c="#D0D0B0"   p="21"  y="-45" />
 <s m="sky/sunset_gen"      c="#E080A0"   p="16"  y=" 45" />
 
-<s m="sky/morning_gen"     c="#C0B0A0"   p="30"  y=" -8" />
-<s m="sky/morning2_gen"    c="#D0D090"   p="30"  y="  8" />
-
 <!--  skies, oldest  (lowest quality)  -->
 <s m="sky/dust"            c="#C0C090"   p="32"  y=" 60" />
 <s m="sky/dawn"            c="#D4D090"   p="28"  y=" -7" />
-<s m="sky/white2"          c="#D0D0D0"   p="40"  y=" 60" />
 
 <s m="sky/light_blue"      c="#80C0FF"   p="20"  y=" 60" />
 <s m="sky/blue_clouds"     c="#C0E0FF"   p="57"  y=" 62" />

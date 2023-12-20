@@ -277,8 +277,8 @@ void CGui::ToolSceneOld()
 		mapSky["sky/magic_alien"] = 1;		// "magic_alien.jpg"
 		mapSky["sky/magicdark"] = 1;		// "magicdark.jpg"
 		
-		mapSky["sky/morning2_gen"] = 1;		// "gen-brightday2.jpg"
-		mapSky["sky/morning_gen"] = 1;		// "gen-brightday.jpg"
+			mapSky["sky/morning2_gen"] = 1;		// "gen-brightday2.jpg"  +
+			mapSky["sky/morning_gen"] = 1;		// "gen-brightday.jpg"  +
 		
 			mapSky["sky/night_blue"] = 1;		// "sky-night.jpg"  +
 			mapSky["sky/offworld_gen"] = 1;		// "gen-offworld.jpg"  +
@@ -290,7 +290,7 @@ void CGui::ToolSceneOld()
 			mapSky["sky/sunset_rays_gen"] = 1;	// "gen-godrays.jpg"  +
 		
 			mapSky["sky/white"] = 1;			// "sky_white.jpg"  +
-		mapSky["sky/white2"] = 1;			// "sky_white2.jpg"
+			mapSky["sky/white2"] = 1;			// "sky_white2.jpg"  +
 
 	int i,n, t = 0;
 	for (auto trkinf : data->tracks->trks)
