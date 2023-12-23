@@ -5,7 +5,6 @@ anomaly_01           https://ambientcg.com/view?id=DaySkyHDRI027B
 anomaly_02           https://polyhaven.com/a/kloppenheim_02_puresky
 anomaly_03           https://polyhaven.com/a/table_mountain_1_puresky
 anomaly_04           mixed:  day_clouds_04_blue  and  dawn_01
-cloudy_01            https://ambientcg.com/view?id=DaySkyHDRI004B
 clouds_01_blurry     https://polyhaven.com/a/kloppenheim_07_puresky
 cloudy_02*           https://ambientcg.com/view?id=DaySkyHDRI011B
 cloudy_03*           https://ambientcg.com/view?id=DaySkyHDRI031B
