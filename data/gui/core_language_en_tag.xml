@@ -1577,6 +1577,7 @@
 	<Tag name="InputObjectsRotReset">shift-2 - reset rotation</Tag>
 	<Tag name="InputObjectsScaleReset">shift-3 - reset scale to 1 (with shift to 0.5)</Tag>
 	<Tag name="InputObjectsType">-,=  - change object type</Tag>
+	<Tag name="InputObjectsMaterial">O,P - change material</Tag>
 
 	<!--  Objects  Input  -->
 	<Tag name="InputObjectsSimulate">C - simulation toggle for dynamic objects</Tag>
