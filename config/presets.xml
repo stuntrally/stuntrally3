@@ -914,6 +914,19 @@ common:  sc - "short scenery name" (name color)
 <v sc="Wnt"  p="rock41grayWh"         r="2" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Wnt"  p="rock46grayWhite2"     r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 
+<v sc="Wnt"  p="rock02snow"           r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Wnt"  p="rock07snow"           r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Wnt"  p="rock08snow"           r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Wnt"  p="rock11snow"           r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Wnt"  p="rock11red2snow"       r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Wnt"  p="rock16snow"           r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Wnt"  p="rock18snow"           r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Wnt"  p="rock23snow"           r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Wnt"  p="rock25snow"           r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Wnt"  p="rock30snow"           r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+<v sc="Wnt"  p="rock33snow"           r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
+
+
 
 
 <!--  rocks  orng,red  🟠 Can, 🔴 Aus  -->
