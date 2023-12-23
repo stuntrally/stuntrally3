@@ -16,7 +16,6 @@ sky_p3dark.jpg - cld dark gray`
 sky_photo3.jpg ~ cld light gray
 sky_photo6.jpg ~ cld high bri skyblue`
 sky_sunset.jpg - orange`
-sky_white2.jpg - wnt 1clr`
 
 magic_alien.jpg  - aln green
 magicdark.jpg  - cry dark blue
@@ -28,8 +27,6 @@ New High resolution sky pack for Blender
 by: 0ptikz
 https://blenderartists.org/forum/showthread.php?224065-New-High-resolution-sky-pack-for-Blender
 
-gen-brightday.jpg - dark blue fog yellow 
-gen-brightday2.jpg - skyblue white
 gen-foggy.jpg - gray cyan blue
 gen-sunset.jpg - orange white
 

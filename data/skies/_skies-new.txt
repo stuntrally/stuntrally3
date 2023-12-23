@@ -28,7 +28,7 @@ sky_clear_01*        https://ambientcg.com/view?id=DaySkyHDRI010B
 sunset_01*           https://polyhaven.com/a/belfast_sunset_puresky
 sunset_02*           https://ambientcg.com/view?id=EveningSkyHDRI017B
 sunset_03_rays       https://polyhaven.com/a/kloppenheim_06_puresky
-sunset_04_cloudy     https://ambientcg.com/view?id=EveningSkyHDRI005B
+sunset_04_*          https://ambientcg.com/view?id=EveningSkyHDRI005B
 
 Partly modified, especially anomaly skies
 
