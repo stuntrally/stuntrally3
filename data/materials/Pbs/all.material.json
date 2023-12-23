@@ -24881,13 +24881,13 @@
                 "value" : 0.5,
                 "texture" : "metal_212_wh.jpg",
                 "sampler" : "Sampler_10"
-            },
+},
             "detail_normal0" :
             {
                 "mode" : "Multiply",
                 "scale" : [8, 8],
                 "value" : 0.9,
-                "texture" : "metal_212_spec.jpg",
+                "texture" : "metal_212_norm.jpg",
                 "sampler" : "Sampler_10"
             }
 		},
@@ -24940,7 +24940,7 @@
                 "mode" : "Multiply",
                 "scale" : [12, 12],
                 "value" : 0.9,
-                "texture" : "metal_212_spec.jpg",
+                "texture" : "metal_212_norm.jpg",
                 "sampler" : "Sampler_10"
             }
 		},
@@ -24993,7 +24993,7 @@
                 "mode" : "Multiply",
                 "scale" : [12, 12],
                 "value" : 0.9,
-                "texture" : "metal_212_spec.jpg",
+                "texture" : "metal_212_norm.jpg",
                 "sampler" : "Sampler_10"
             }
 		},
@@ -25045,7 +25045,7 @@
                 "mode" : "Multiply",
                 "scale" : [16, 16],
                 "value" : 0.9,
-                "texture" : "metal_212_spec.jpg",
+                "texture" : "metal_212_norm.jpg",
                 "sampler" : "Sampler_10"
             }
 		},
@@ -25135,7 +25135,7 @@
                 "mode" : "Multiply",
                 "scale" : [12, 12],
                 "value" : 0.9,
-                "texture" : "metal_212_spec.jpg",
+                "texture" : "metal_212_norm.jpg",
                 "sampler" : "Sampler_10"
             }
 		},
@@ -42607,7 +42607,15 @@
 			{
 				"value" : 0.32,
 				"sampler" : "Sampler_10"
-			}
+			},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [3, 3],
+                "value" : -0.8,
+                "texture" : "metal_212_norm.jpg",
+                "sampler" : "Sampler_10"
+            }
 		},
 		
 		"cave_ice_marble" :
@@ -43941,38 +43949,6 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "clouds_01_blurry.jpg",
-				"sampler" : "Sampler_Sky"
-			}
-		},
-		
-		"sky/cloudy_01" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "cloudy_01.jpg",
 				"sampler" : "Sampler_Sky"
 			}
 		},
