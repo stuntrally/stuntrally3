@@ -269,7 +269,7 @@ void CGui::ToolSceneOld()
 			mapSky["sky/duskstormy"] = 1;	// "duskstormy.jpg" + none
 
 		mapSky["sky/dust"] = 1;			// "sky_dust.jpg"
-		mapSky["sky/foggy_gen"] = 1;	// "gen-foggy.jpg"
+			mapSky["sky/foggy_gen"] = 1;	// "gen-foggy.jpg"  +
 		mapSky["sky/gray_clouded"] = 1;	// "sky-darkclouds.jpg"
 		mapSky["sky/gray_clouds"] = 1;	// "sky_photo3.jpg"
 		
