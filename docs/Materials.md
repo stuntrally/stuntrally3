@@ -584,7 +584,7 @@ Extra textures (layers) can be added to modulate original diffuse and/or normal 
 				"mode" : "Multiply",
 				"scale" : [12, 12],
 				"value" : 0.9,
-				"texture" : "metal_212_spec.jpg",
+				"texture" : "metal_212_norm.jpg",
 				"sampler" : "Sampler_10"
 			}
 },
@@ -603,7 +603,7 @@ Another map is `detail_normal0` to modulate `normal` map.
 The `value` is a multiplier for how much.
 
 Note that `detail_diffuse0` and `detail_normal0` aren't required both, only diffuse or normal is okay too.  
-Also value, scale and offset can have other values set.
+Also value, scale and offset can have other values set. And detail_normal0 value can be negative for opposite effect.
 
 There can be more detail maps (4 total, 0..3). But let's not over do this, it affects Fps (performance).
 
