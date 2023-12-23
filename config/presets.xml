@@ -1166,7 +1166,7 @@ common:  sc - "short scenery name" (name color)
 <o o="cavebig_06" mats="caves" />
 <o o="mntn_01" mats="caves" />
 
-<mats n="garbage_bin" m="garbage_bin_green|garbage_bin_blue" />
+<mats n="garbage_bin" m="garbage_bin_green|garbage_bin_blue|garbage_bin_anomaly" />
 
 <o o="garbage_bin" mats="garbage_bin" />
 
@@ -1218,7 +1218,7 @@ common:  sc - "short scenery name" (name color)
 <o o="barrel_oil" mats="barrel_oil" />
 <o o="barrel_oil_heavy" mats="barrel_oil" />
 
-<mats n="ancient_ruins" m="ancient_ruins|ancient_ruins_white|ancient_ruins_yellow" />
+<mats n="ancient_ruins" m="ancient_ruins|ancient_ruins_white|ancient_ruins_yellow|ancient_ruins_green|ancient_ruins_anomaly" />
 
 <o o="ancient_ruins_01" mats="ancient_ruins" />
 <o o="ancient_ruins_02" mats="ancient_ruins" />
@@ -1229,3 +1229,5 @@ common:  sc - "short scenery name" (name color)
 <mats n="gas_tank_02" m="gas_tank_02_blue|gas_tank_02_green|gas_tank_02_grey|gas_tank_02_red" />
 
 <o o="gas_tank_02" mats="gas_tank_02" />
+
+</presets>
