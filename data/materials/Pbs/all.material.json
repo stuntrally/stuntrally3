@@ -39221,7 +39221,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock01_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39255,7 +39257,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock02_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39266,6 +39270,42 @@
 			{
 				"value" : 1,
 				"texture" : "rock02_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+		
+		"rock02snow" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rock02snow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock02snow_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rock02snow_norm.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
@@ -39323,7 +39363,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock03_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39357,7 +39399,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock04_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39391,7 +39435,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock05_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39425,7 +39471,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock06_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39459,7 +39507,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock07_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39470,6 +39520,42 @@
 			{
 				"value" : 1,
 				"texture" : "rock07_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+		
+		"rock07snow" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rock07snow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock07snow_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rock07snow_norm.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
@@ -39493,7 +39579,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock08_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39504,6 +39592,42 @@
 			{
 				"value" : 1,
 				"texture" : "rock08_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+		
+		"rock08snow" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rock08snow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock08snow_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rock08snow_norm.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
@@ -39561,7 +39685,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock09_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39629,7 +39755,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock10_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39640,40 +39768,6 @@
 			{
 				"value" : 1,
 				"texture" : "rock10_norm.jpg",
-				"sampler" : "Sampler_10"
-			},
-			"roughness" :
-			{
-				"value" : 0.5
-			}
-		},
-		
-		"rock11alienWhite1" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [1, 1, 1],
-				"background" : [1, 1, 1, 1],
-				"texture" : "rock11alien.jpg",
-				"sampler" : "Sampler_10"
-			},
-			"specular" :
-			{
-				"value" : [0.3, 0.3, 0.3]
-			},
-			"fresnel" :
-			{
-				"value" : 0.1,
-				"mode" : "coeff"
-			},
-			"normal" :
-			{
-				"value" : 1,
-				"texture" : "rock11alien_norm.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
@@ -39697,7 +39791,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock11_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39708,6 +39804,114 @@
 			{
 				"value" : 1,
 				"texture" : "rock11_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+		
+		"rock11alienWhite1" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rock11alien.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock11_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rock11alien_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+		
+		"rock11snow" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rock11snow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock11snow_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rock11snow_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+		
+		"rock11red2snow" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 0.7, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rock11snow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock11snow_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rock11snow_norm.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
@@ -39731,7 +39935,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock12_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39765,7 +39971,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock13_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39799,7 +40007,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock14_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39833,7 +40043,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock15_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39867,7 +40079,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock16_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39878,6 +40092,42 @@
 			{
 				"value" : 1,
 				"texture" : "rock16_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+		
+		"rock16snow" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rock16snow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock16snow_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rock16snow_norm.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
@@ -39901,7 +40151,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock17_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39935,7 +40187,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock18_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -39946,6 +40200,43 @@
 			{
 				"value" : 1,
 				"texture" : "rock18_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+		
+		
+		"rock18snow" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rock18snow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock18snow_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rock18snow_norm.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
@@ -39969,7 +40260,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock19_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40003,7 +40296,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock20_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40037,7 +40332,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock21_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40071,7 +40368,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock22_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40105,7 +40404,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock23_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40116,6 +40417,42 @@
 			{
 				"value" : 1,
 				"texture" : "rock23_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+		
+		"rock23snow" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rock23snow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock23snow_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rock23snow_norm.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
@@ -40139,7 +40476,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock23_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40150,40 +40489,6 @@
 			{
 				"value" : 1,
 				"texture" : "rock23_norm.jpg",
-				"sampler" : "Sampler_10"
-			},
-			"roughness" :
-			{
-				"value" : 0.5
-			}
-		},
-
-		"rock24triangle" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [1, 1, 1],
-				"background" : [1, 1, 1, 1],
-				"texture" : "rock24.jpg",
-				"sampler" : "Sampler_10"
-			},
-			"specular" :
-			{
-				"value" : [0.3, 0.3, 0.3]
-			},
-			"fresnel" :
-			{
-				"value" : 0.1,
-				"mode" : "coeff"
-			},
-			"normal" :
-			{
-				"value" : 1,
-				"texture" : "rock24_norm.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
@@ -40207,7 +40512,45 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock24_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rock24_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"rock24triangle" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rock24.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock24_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40241,7 +40584,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock25_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40252,6 +40597,42 @@
 			{
 				"value" : 1,
 				"texture" : "rock25_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+		
+		"rock25snow" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rock25snow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock25snow_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rock25snow_norm.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
@@ -40275,7 +40656,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock26_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40343,7 +40726,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock28_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40377,7 +40762,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock30_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40388,6 +40775,42 @@
 			{
 				"value" : 1,
 				"texture" : "rock30_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+		
+		"rock30snow" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rock30snow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock30snow_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rock30snow_norm.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
@@ -40411,7 +40834,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock32_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40445,7 +40870,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock33_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40456,6 +40883,42 @@
 			{
 				"value" : 1,
 				"texture" : "rock33_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+		
+		"rock33snow" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rock33snow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock33snow_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rock33snow_norm.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
@@ -40479,7 +40942,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock34_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40513,7 +40978,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock35_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40581,7 +41048,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock37_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40615,7 +41084,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock39_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40649,7 +41120,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock40_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40683,7 +41156,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock41_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40717,7 +41192,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock44_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40751,7 +41228,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock46_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40785,7 +41264,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock47_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40819,7 +41300,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.4, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock47_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40853,7 +41336,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock48_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40887,7 +41372,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.4, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock48_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40921,7 +41408,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.4, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock49_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40955,7 +41444,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.4, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock49_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -40989,7 +41480,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.4, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock50_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -41023,7 +41516,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.4, 0.3]
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "rock50_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -41042,7 +41537,6 @@
 			}
 		},
 		
-
 		"rock_L2" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -42228,6 +42722,42 @@
 			"roughness" :
 			{
 				"value" : 0.5
+			}
+		},
+		
+		"snow_top" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1.0, 1.02, 1.02],
+				"background" : [1, 1, 1, 1],
+				"texture" : "snow1_d.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"texture" : "snow1_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.54, 0.54, 0.54],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.36,
+				"texture" : "snow1_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.85
 			}
 		},
 
