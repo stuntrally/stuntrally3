@@ -1164,9 +1164,70 @@ common:  sc - "short scenery name" (name color)
 <o o="cavebig_04" mats="caves" />
 <o o="cavebig_05" mats="caves" />
 <o o="cavebig_06" mats="caves" />
+<o o="mntn_01" mats="caves" />
 
-<mats n="garbage_bin" m="garbage_bin_green|garbage_bin_blue" />
+<mats n="garbage_bin" m="garbage_bin_green|garbage_bin_blue|garbage_bin_anomaly" />
 
-<o o="garbage_bin_green" mats="garbage_bin" />
+<o o="garbage_bin" mats="garbage_bin" />
+
+<mats n="hexrocks" m="hexrock_brown|hexrock_grey|hexrock_crystal|hexrock_metal|hexrock_marble|hexrock_crystal_pink|hexrock_marble_white" />
+
+<o o="hexcave_01" mats="hexrocks" />
+<o o="hexcave_02" mats="hexrocks" />
+<o o="hexcave_03" mats="hexrocks" />
+<o o="hexcave_04" mats="hexrocks" />
+<o o="hexcave_05" mats="hexrocks" />
+<o o="hexcave_06" mats="hexrocks" />
+<o o="hexrock_bridge_01" mats="hexrocks" />
+<o o="hexrock_bridge_02" mats="hexrocks" />
+<o o="hexrock_bridge_03" mats="hexrocks" />
+<o o="hexrock_cliff_01" mats="hexrocks" />
+<o o="hexrock_cliff_02" mats="hexrocks" />
+<o o="hexrock_cliff_03" mats="hexrocks" />
+<o o="hexrock_large_01" mats="hexrocks" />
+<o o="hexrock_large_02" mats="hexrocks" />
+<o o="hexrock_medium_01" mats="hexrocks" />
+<o o="hexrock_medium_02" mats="hexrocks" />
+<o o="hexrock_single_01" mats="hexrocks" />
+<o o="hexrock_single_02" mats="hexrocks" />
+<o o="hexrock_small_01" mats="hexrocks" />
+<o o="hexrock_small_02" mats="hexrocks" />
+<o o="hexrock_small_03" mats="hexrocks" />
+<o o="hexrock_small_04" mats="hexrocks" />
+
+<mats n="obstacles" m="obstaclesGrey|obstaclesMarble|obstaclesGreen|obstaclesCrystal|obstaclesBlack|obstaclesRed|obstaclesBrown|obstaclesWhite|obstaclesWhite2|obstaclesAnomaly" />
+
+<o o="obstacle1" mats="obstacles" />
+<o o="obstacle2" mats="obstacles" />
+<o o="obstacle3" mats="obstacles" />
+<o o="obstacle4" mats="obstacles" />
+<o o="obstacle5" mats="obstacles" />
+<o o="obstacle6" mats="obstacles" />
+<o o="obstacle7" mats="obstacles" />
+<o o="obstacle8" mats="obstacles" />
+<o o="obstacle_twisted1L" mats="obstacles" />
+<o o="obstacle_twisted1R" mats="obstacles" />
+<o o="obstacle_twisted2L" mats="obstacles" />
+<o o="obstacle_twisted2R" mats="obstacles" />
+<o o="obstacle_twisted3L" mats="obstacles" />
+<o o="obstacle_twisted3R" mats="obstacles" />
+<o o="obstacleRing" mats="obstacles" />
+
+<mats n="barrel_oil" m="barrel_oil_red|barrel_oil_green" />
+
+<o o="barrel_oil" mats="barrel_oil" />
+<o o="barrel_oil_heavy" mats="barrel_oil" />
+
+<mats n="ancient_ruins" m="ancient_ruins|ancient_ruins_white|ancient_ruins_yellow|ancient_ruins_green|ancient_ruins_anomaly" />
+
+<o o="ancient_ruins_01" mats="ancient_ruins" />
+<o o="ancient_ruins_02" mats="ancient_ruins" />
+<o o="ancient_ruins_03" mats="ancient_ruins" />
+<o o="ancient_ruins_04" mats="ancient_ruins" />
+<o o="ancient_ruins_05" mats="ancient_ruins" />
+
+<mats n="gas_tank_02" m="gas_tank_02_blue|gas_tank_02_green|gas_tank_02_grey|gas_tank_02_red" />
+
+<o o="gas_tank_02" mats="gas_tank_02" />
 
 </presets>
