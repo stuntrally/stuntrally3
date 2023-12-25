@@ -28,6 +28,9 @@ using namespace Ogre;
 using namespace std;
 using namespace MyGUI;
 
+#define	LogToolStart(s)  LogO(String("\n))) Tool start\n")+s)
+
+
 
 #ifdef SR_EDITOR
 
@@ -38,7 +41,7 @@ using namespace MyGUI;
 void CGui::ToolTracksWarnings()
 {
 	Ogre::Timer ti;
-	LogO("))) ALL tracks warnings =========");
+	LogToolStart("))) ALL tracks warnings =========");
 	logWarn = true;
 	TrackWarn all;  int min_hq = 20, max_hq = 0;
 
@@ -91,7 +94,7 @@ void CGui::ToolTracksWarnings()
 void CGui::ToolSceneXml()
 {
 	//Ogre::Timer ti;
-	LogO("))) ALL tracks scene =========");
+	LogToolStart("))) ALL tracks scene =========");
 	std::map<string, int> noCol,minSc;
 	auto& rg = ResourceGroupManager::getSingleton();
 
@@ -115,7 +118,7 @@ void CGui::ToolSceneXml()
 			if (id==-1)  LogO("Reverb not found! "+trk+"  "+sc.sReverbs);
 		}		
 		
-		///  sky clrs  ---
+		///  ⛅ Sky clrs  ---
 		string s;
 		s += sc.lAmb.Check("amb");  s += sc.lDiff.Check("dif");  s += sc.lSpec.Check("spc");
 		s += sc.fogClr.Check("fog");  s += sc.fogClr2.Check("fog2");  s += sc.fogClrH.Check("foh");
@@ -123,7 +126,7 @@ void CGui::ToolSceneXml()
 			LogO("CLR CHK! "+trk+"  "+s);
 		
 		
-		///  terrain  --------
+		///  ⛰️ Terrains  --------
 		#if 0  // used
 		for (n=0; n < sc.td.layers.size(); ++n)
 		{	const TerLayer& l = sc.td.layersAll[sc.td.layers[n]];
@@ -159,7 +162,7 @@ void CGui::ToolSceneXml()
 			#endif
 		}
 		
-		///  road  ----
+		///  🛣️ Road  ----
 		int iLch = 0;
 		for (n=0; n < rd.mP.size(); ++n)
 			if (rd.mP[n].chkR > 0.f && rd.mP[n].loop > 0)
@@ -183,7 +186,7 @@ void CGui::ToolSceneXml()
 		//sMtrWall,sMtrWallPipe, sMtrCol
 
 		
-		///  grass  ----
+		///  🌿 Grass  ----
 		for (n=0; n < Scene::ciNumGrLay; ++n)
 		{	const SGrassLayer& l = sc.grLayersAll[n];
 
@@ -192,7 +195,7 @@ void CGui::ToolSceneXml()
 				LogO("Grs: " + trk + " Not Found in presets !!!  " + s);
 		}
 
-		///  veget  --------
+		///  🌳🪨 Veget  ----------------
 		for (n=0; n < Scene::ciNumVegLay; ++n)
 		{
 			const VegetLayer& l = sc.vegLayersAll[n];
@@ -230,6 +233,21 @@ void CGui::ToolSceneXml()
 				}/**/
 		}	}
 
+		//  📦🏢 Objects  --------
+		Hlms *hlms = app->mRoot->getHlmsManager()->getHlms( HLMS_PBS );
+		for (auto& o : sc.objects)
+		{
+			if (!rg.resourceExistsInAnyGroup(o.name+".mesh"))
+				LogO(trk + " Obj mesh Not Found !  " + o.name );
+				
+			if (!o.material.empty())
+			{
+				auto *db = hlms->getDatablock(o.material);
+				if (!db)
+					LogO(trk + "Obj mat Not Found !  " + o.material + "  mesh  " + o.name);
+			}
+		}
+
 		if (modif)
 			sc.SaveXml(path +"scene.xml");  /// resave
 		//SplineRoad rd(this);  rd.LoadFile(path+"road.xml");
@@ -247,7 +265,7 @@ void CGui::ToolSceneXml()
 ///............................................................................................................................
 void CGui::ToolSceneOld()
 {
-	LogO("))) ALL tracks scene2 OLD =========");
+	LogToolStart("))) ALL tracks scene2 OLD =========");
 	std::map<string, int> noCol,minSc;
 	auto& rg = ResourceGroupManager::getSingleton();
 	std::map<string, int> mapSky, useSky;
@@ -355,7 +373,7 @@ void CGui::ToolSceneOld()
 ///............................................................................................................................
 void CGui::ToolGhosts()
 {
-	LogO("))) ALL ghost times check =========");
+	LogToolStart("))) ALL ghost times check =========");
 	using namespace std;
 	const string sim = 1 /**/ ? "normal" : "easy";
 	String msg="\n";  const float tMax = 10000.f;
@@ -446,7 +464,7 @@ void CGui::ToolGhosts()
 ///............................................................................................................................
 void CGui::ToolGhostsConv()
 {
-	LogO("))) ALL ghosts Convert =========");
+	LogToolStart("))) ALL ghosts Convert =========");
 	Replay2 ghost;  TrackGhost trg;
 	for (int r=0; r < 2; ++r)
 	{
@@ -531,7 +549,7 @@ void CGui::ToolGhostsConv()
 ///............................................................................................................................
 void CGui::ToolTestTrkGhosts()
 {
-	LogO("))) ALL tracks ghosts Test =========");
+	LogToolStart("))) ALL tracks ghosts Test =========");
 	TrackGhost gho;
 	
 	//  foreach track
