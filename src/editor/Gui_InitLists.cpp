@@ -254,7 +254,7 @@ void CGui::FillPickLists()
 	const int rt = 22, sl = 21;
 	
 	lp->removeAllColumns();  lp->removeAllItems();
-	lp->addColumn("#90C0F0", 15);
+	lp->addColumn("#90C0F0", rt);
 	lp->addColumn("#E0F0FF"+TR("#{Sky}"), 250);
 	lp->addColumn("#E0F0FF"+TR("#{Pitch}"), 40);
 	lp->addColumn(" ", sl);
@@ -263,12 +263,13 @@ void CGui::FillPickLists()
 	for (u=0; u < data->pre->sky.size(); ++u)
 	{	const PSky& s = data->pre->sky[u];
 		String c = s.clr;
-		lp->addItem(c, 0);
+		lp->addItem(
+			s.rate ? gcom->getClrRating(s.rate) + toStr(s.rate) : c, 0);
 		l = lp->getItemCount()-1;
 
 		lp->setSubItemNameAt(1,l, c+ s.mtr.substr(4));  // no sky/
 		if (s.mtr[0] != '-')
-		lp->setSubItemNameAt(2,l, c+ fToStr( s.ldPitch, 0,2));
+			lp->setSubItemNameAt(2,l, c+ fToStr( s.ldPitch, 0,2));
 	}
 
 

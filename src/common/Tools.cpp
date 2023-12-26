@@ -270,7 +270,7 @@ void CGui::ToolSceneOld()
 	auto& rg = ResourceGroupManager::getSingleton();
 	std::map<string, int> mapSky, useSky;
 
-		mapSky["sky/blue_clouds"] = 1;	// "sky_photo6.jpg"
+		mapSky["sky/blue_clouds"] = 1;	// "sky_photo6.jpg"  !
 		mapSky["sky/cloudy"] = 1;		// "sky-2clouds.jpg"
 		mapSky["sky/dark_clouds"] = 1;	// "sky_p3dark.jpg"
 		
@@ -278,8 +278,8 @@ void CGui::ToolSceneOld()
 		mapSky["sky/dawn_bright"] = 1;	// "sky-clearday.jpg"
 		
 		mapSky["sky/light_blue"] = 1;	// "sky_lightblue.jpg"
-		mapSky["sky/day_blue"] = 1;		// "sky-clearday1.jpg"
-		mapSky["sky/day_blue2"] = 1;	// "sky-1day.jpg"
+		mapSky["sky/day_blue"] = 1;		// "sky-clearday1.jpg"  !
+		mapSky["sky/day_blue2"] = 1;	// "sky-1day.jpg"  !
 		mapSky["sky/day_clouds"] = 1;	// "sky-clearday2.jpg"
 
 			mapSky["sky/dayovercast"] = 1;	// "dayovercast.jpg" +
@@ -293,7 +293,7 @@ void CGui::ToolSceneOld()
 		
 		mapSky["sky/magic"] = 1;			// "magic.jpg"
 		mapSky["sky/magic_alien"] = 1;		// "magic_alien.jpg"
-		mapSky["sky/magicdark"] = 1;		// "magicdark.jpg"
+			mapSky["sky/magicdark"] = 1;		// "magicdark.jpg"  +
 		
 			mapSky["sky/morning2_gen"] = 1;		// "gen-brightday2.jpg"  +
 			mapSky["sky/morning_gen"] = 1;		// "gen-brightday.jpg"  +
