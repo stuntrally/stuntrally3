@@ -8,7 +8,7 @@ anomaly_04           mixed:  day_clouds_04_blue  and  dawn_01
 clouds_01_blurry     https://polyhaven.com/a/kloppenheim_07_puresky
 cloudy_02*           https://ambientcg.com/view?id=DaySkyHDRI011B
 cloudy_03*           https://ambientcg.com/view?id=DaySkyHDRI031B
-cloudy_04_white      https://ambientcg.com/view?id=DaySkyHDRI008B
+cloudy_04*           https://ambientcg.com/view?id=DaySkyHDRI008B
 dawn_01*             https://ambientcg.com/view?id=EveningSkyHDRI019B
 day_clouds_01_thin   https://polyhaven.com/a/aristea_wreck_puresky
 day_clouds_02*       https://ambientcg.com/view?id=DaySkyHDRI026B
@@ -19,7 +19,6 @@ day_clouds_06        https://ambientcg.com/view?id=DaySkyHDRI017B
 dusk_stormy_01*      https://ambientcg.com/view?id=EveningSkyHDRI001B
 dusk_stormy_02*      https://ambientcg.com/view?id=EveningSkyHDRI012B
 foggy_01*            https://ambientcg.com/view?id=DaySkyHDRI032B
-foggy_02*            https://ambientcg.com/view?id=DaySkyHDRI003B
 night_01*            https://polyhaven.com/a/kloppenheim_02_puresky
 overcast_01*         https://ambientcg.com/view?id=DaySkyHDRI020B
 overcast_02*         https://polyhaven.com/a/mud_road_puresky
@@ -37,7 +36,7 @@ License: CC0    https://polyhaven.com/hdris
 
 
 -------------- procedural
-space_nebula_01.jpg
+space_nebula_01*.jpg
 space_nebula_02_red.jpg  (with modified version of Saturn *1)
 space_nebula_02_red2.jpg  (version without Saturn)
 
