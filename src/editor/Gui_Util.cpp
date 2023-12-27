@@ -267,7 +267,7 @@ void App::UpdVisGui()
 
 	if (!g)  mWndPick->setVisible(false);
 	if (!g)  mWndTrkFilt->setVisible(false);
-	if (!g && gui->wndColor)  gui->wndColor->setVisible(false);
+	if (/*!g &&*/ gui->wndColor)  gui->wndColor->setVisible(false);
 	if (gcom->bnQuit)  gcom->bnQuit->setVisible(g);
 
 	//  mode

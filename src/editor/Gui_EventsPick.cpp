@@ -104,6 +104,7 @@ void CGui::btnPickRoadCol(WP wp)
 //----------------------------------------------------
 void CGui::PickShow(EPick n, bool toggleVis)
 {
+	if (wndColor)  wndColor->setVisible(false);
 	liSky->setVisible(n == P_Sky);  liTex->setVisible(n == P_Tex);
 	liGrs->setVisible(n == P_Grs);  liVeg->setVisible(n == P_Veg);
 	liRd->setVisible(n == P_Rd);
