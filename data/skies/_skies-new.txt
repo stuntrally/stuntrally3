@@ -1,32 +1,38 @@
 ---- NEW skies ----
-file(s) .jpg         url  https://..
+file(s) *.jpg        url  https://..
 
 anomaly_01           https://ambientcg.com/view?id=DaySkyHDRI027B
 anomaly_02           https://polyhaven.com/a/kloppenheim_02_puresky
 anomaly_03           https://polyhaven.com/a/table_mountain_1_puresky
 anomaly_04           mixed:  day_clouds_04_blue  and  dawn_01
-clouds_01_blurry     https://polyhaven.com/a/kloppenheim_07_puresky
-cloudy_02*           https://ambientcg.com/view?id=DaySkyHDRI011B
-cloudy_03*           https://ambientcg.com/view?id=DaySkyHDRI031B
-cloudy_04*           https://ambientcg.com/view?id=DaySkyHDRI008B
-dawn_01*             https://ambientcg.com/view?id=EveningSkyHDRI019B
-day_clouds_01_thin   https://polyhaven.com/a/aristea_wreck_puresky
-day_clouds_02*       https://ambientcg.com/view?id=DaySkyHDRI026B
-day_clouds_03_grey   https://polyhaven.com/a/farm_field_puresky
-day_clouds_04_blue   https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky
-day_clouds_05*       https://ambientcg.com/view?id=DaySkyHDRI033B
+
+cloudy_02            https://ambientcg.com/view?id=DaySkyHDRI011B
+cloudy_03            https://ambientcg.com/view?id=DaySkyHDRI031B
+cloudy_04            https://ambientcg.com/view?id=DaySkyHDRI008B
+
+dawn_01              https://ambientcg.com/view?id=EveningSkyHDRI019B
+day_clear_01         https://ambientcg.com/view?id=DaySkyHDRI023B
+
+day_clouds_02        https://ambientcg.com/view?id=DaySkyHDRI026B
+day_clouds_03        https://polyhaven.com/a/farm_field_puresky
+day_clouds_04        https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky
+day_clouds_05        https://ambientcg.com/view?id=DaySkyHDRI033B
 day_clouds_06        https://ambientcg.com/view?id=DaySkyHDRI017B
-dusk_stormy_01*      https://ambientcg.com/view?id=EveningSkyHDRI001B
-dusk_stormy_02*      https://ambientcg.com/view?id=EveningSkyHDRI012B
-foggy_01*            https://ambientcg.com/view?id=DaySkyHDRI032B
-night_01*            https://polyhaven.com/a/kloppenheim_02_puresky
-overcast_01*         https://ambientcg.com/view?id=DaySkyHDRI020B
-overcast_02*         https://polyhaven.com/a/mud_road_puresky
-sky_clear_01*        https://ambientcg.com/view?id=DaySkyHDRI010B
-sunset_01*           https://polyhaven.com/a/belfast_sunset_puresky
-sunset_02*           https://ambientcg.com/view?id=EveningSkyHDRI017B
-sunset_03_rays       https://polyhaven.com/a/kloppenheim_06_puresky
-sunset_04_*          https://ambientcg.com/view?id=EveningSkyHDRI005B
+
+dusk_stormy_01       https://ambientcg.com/view?id=EveningSkyHDRI001B
+dusk_stormy_02       https://ambientcg.com/view?id=EveningSkyHDRI012B
+foggy_01             https://ambientcg.com/view?id=DaySkyHDRI032B
+night_01             https://polyhaven.com/a/kloppenheim_02_puresky
+
+overcast_01          https://ambientcg.com/view?id=DaySkyHDRI020B
+overcast_02          https://polyhaven.com/a/mud_road_puresky
+overcast_03          https://ambientcg.com/view?id=DaySkyHDRI021B
+
+sky_clear_01         https://ambientcg.com/view?id=DaySkyHDRI010B
+sunset_01            https://polyhaven.com/a/belfast_sunset_puresky
+sunset_02            https://ambientcg.com/view?id=EveningSkyHDRI017B
+sunset_03            https://polyhaven.com/a/kloppenheim_06_puresky
+sunset_04            https://ambientcg.com/view?id=EveningSkyHDRI005B
 
 Partly modified, especially anomaly skies
 

@@ -45359,7 +45359,39 @@
 				"sampler" : "Sampler_Sky"
 			}
 		},
-		
+
+		"sky/overcast_03" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "overcast_03.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
+
 		"sky/sky_clear_01_bright" :
 		{
 			"macroblock" : "Macroblock_0",
