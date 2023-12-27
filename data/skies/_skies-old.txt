@@ -17,9 +17,8 @@ sky_photo3.jpg ~ cld light gray
 sky_photo6.jpg ~ cld high bri skyblue`
 sky_sunset.jpg - orange`
 
-magic_alien.jpg  - aln green
-magicdark.jpg  - cry dark blue
 magic.jpg  - uni violet
+magic_alien.jpg  - aln green
 
 
 ---- (old new)  gen_*.jpg, sky-*.jpg
@@ -29,12 +28,12 @@ https://blenderartists.org/forum/showthread.php?224065-New-High-resolution-sky-p
 
 gen-sunset.jpg - orange white
 
-sky-1day.jpg - skyblue top
+sky-1day.jpg ~ skyblue top
 sky-2clouds.jpg - yellow gray cloudy
-sky-clearday.jpg - skyblue yellow dark
+sky-clearday.jpg ~ skyblue yellow dark
 
-sky-clearday1.jpg - skyblue clouds white
-sky-clearday2.jpg - clouds dark white
+sky-clearday1.jpg ~ skyblue clouds white
+sky-clearday2.jpg ~ clouds dark white
 sky-darkclouds.jpg - gray white
 
 
