@@ -1261,5 +1261,6 @@ common:  sc - "short scenery name" (name color)
 <o o="icicles_row_01" mats="icicles" />
 <o o="icicles_row_02" mats="icicles" />
 <o o="icicles_row_03" mats="icicles" />
+<o o="icicles_row_04" mats="icicles" />
 
 </presets>
