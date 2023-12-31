@@ -1233,4 +1233,33 @@ common:  sc - "short scenery name" (name color)
 
 <o o="gas_tank_02" mats="gas_tank_02" />
 
+<mats n="icicles" m="icicles|icicles2|icicles_marble|icicles_marble2|stalac_dark|stalac_dark2|stalac_brown|stalac_white|stalac_yellow|stalac_uni|stalac_uni2|stalac_alien|stalac_orange" />
+
+<o o="icicle_small_single_01" mats="icicles" />
+<o o="icicle_small_single_02" mats="icicles" />
+<o o="icicle_small_single_03" mats="icicles" />
+<o o="icicle_small_single_04" mats="icicles" />
+<o o="icicles_small_01" mats="icicles" />
+<o o="icicles_small_02" mats="icicles" />
+<o o="icicles_small_03" mats="icicles" />
+<o o="icicles_small_row_01" mats="icicles" />
+<o o="icicles_small_row_02" mats="icicles" />
+<o o="icicles_small_row_03" mats="icicles" />
+<o o="icicles_small_row_04" mats="icicles" />
+<o o="icicles_small_row_05" mats="icicles" />
+<o o="icicle_single_01" mats="icicles" />
+<o o="icicle_single_02" mats="icicles" />
+<o o="icicle_single_03" mats="icicles" />
+<o o="icicle_single_04" mats="icicles" />
+<o o="icicles_01" mats="icicles" />
+<o o="icicles_02" mats="icicles" />
+<o o="icicles_03" mats="icicles" />
+<o o="icicles_04" mats="icicles" />
+<o o="icicles_05" mats="icicles" />
+<o o="icicles_06" mats="icicles" />
+<o o="icicles_07" mats="icicles" />
+<o o="icicles_row_01" mats="icicles" />
+<o o="icicles_row_02" mats="icicles" />
+<o o="icicles_row_03" mats="icicles" />
+
 </presets>

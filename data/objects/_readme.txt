@@ -113,6 +113,7 @@ https://opengameart.org/content/metalstone-textures
 Author: Daniel74
 License: CC0
 https://www.blendswap.com/blends/view/56205
+icicles and snow added by rubberduck
 
 ---- well.mesh
 Author: ahedov
@@ -168,6 +169,7 @@ Tree trunks
 Author: ahedov
 License: CC-BY-SA
 https://www.blendswap.com/blends/view/69221
+modified, variants and snow added by rubberduck
 
 ---- container_big
 Blue Shipping Crate

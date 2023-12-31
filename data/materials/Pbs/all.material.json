@@ -5104,6 +5104,8 @@
 				"sampler" : "Sampler_10"
 			}
 		},
+		
+		
 
 		"Ice_bumpy" :
 		{
@@ -23758,7 +23760,9 @@
 			},
 			"specular" :
 			{
-				"value" : [1, 1, 1]
+				"value" : [1, 1, 1],
+				"texture" : "house_05_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -23773,11 +23777,11 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.4,
-				"texture" : "house_05_spec.jpg",
-				"sampler" : "Sampler_10"
+				"value" : 0.36
+				
 			}
 		},
+		
 
 		"house_1_4" :
 		{
@@ -23794,7 +23798,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [1, 1, 1],
+				"texture" : "house_1_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -23809,10 +23815,10 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.6
+				"value" : 0.4
 			}
 		},
-
+		
 		"house_2_4" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -23828,7 +23834,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [1, 1, 1],
+				"texture" : "house_2_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -23843,10 +23851,10 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.6
+				"value" : 0.4
 			}
 		},
-
+		
 		"house_3_4" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -23862,7 +23870,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [1, 1, 1],
+				"texture" : "house_3_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -23877,10 +23887,10 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.6
+				"value" : 0.4
 			}
 		},
-
+		
 		"house_4_4" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -23896,7 +23906,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.3, 0.3, 0.3]
+				"value" : [1, 1, 1],
+				"texture" : "house_4_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
@@ -23911,7 +23923,46 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.6
+				"value" : 0.4
+			}
+		},
+		
+		"house_1_windows" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "house_1_windows.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "house_1_windows_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 0.8,
+				"texture" : "house_1_windows_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.3,
+				"texture" : "house_1_windows_rough.jpg",
+				"sampler" : "Sampler_10"
 			}
 		},
 
@@ -24086,7 +24137,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.3
+				"value" : 0.52
 			}
 		},
 
@@ -43052,6 +43103,701 @@
 			}
 		},
 		
+		"icicles" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_1",
+			"reflect" : true,
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.28,
+				"roughness" : 0.035
+			},
+			"diffuse" :
+			{
+				"value" : [0.6, 0.66, 0.66],
+				"background" : [1, 1, 1, 1],
+				"texture" : "icicles.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.29, 0.34, 0.39],
+				"texture" : "ice_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.69, 0.93, 1.26],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.25,
+				"texture" : "icicles_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.22,
+				"texture" : "icicles_rough.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [8, 8],
+                "value" : 0.5,
+                "texture" : "metal_212_norm.jpg",
+                "sampler" : "Sampler_10"
+            }
+		},
+		
+		"icicles2" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"reflect" : true,
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.28,
+				"roughness" : 0.035
+			},
+			"diffuse" :
+			{
+				"value" : [0.6, 0.8, 0.83],
+				"background" : [1, 1, 1, 1],
+				"texture" : "ice_d.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.29, 0.34, 0.39],
+				"texture" : "ice_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.69, 0.93, 1.26],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.75,
+				"texture" : "icicles_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.32,
+				"texture" : "icicles_rough.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"icicles_marble" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_1",
+			"reflect" : true,
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.28,
+				"roughness" : 0.035
+			},
+			"diffuse" :
+			{
+				"value" : [2.3, 1.2, 0.65],
+				"background" : [1, 1, 1, 1],
+				"texture" : "icicles.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.28, 1.02, 0.93],
+				"texture" : "ice_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [1.24, 0.46, 1.08],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.25,
+				"texture" : "icicles_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.22,
+				"texture" : "icicles_rough.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [8, 8],
+                "value" : 0.5,
+                "texture" : "metal_212_norm.jpg",
+                "sampler" : "Sampler_10"
+            }
+		},
+		
+		"icicles_marble2" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"reflect" : true,
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.28,
+				"roughness" : 0.035
+			},
+			"diffuse" :
+			{
+				"value" : [2.45, 1.2, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "ice_d.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.37, 0.94, 0.88],
+				"texture" : "ice_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [1.24, 0.46, 1.08],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.75,
+				"texture" : "icicles_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.32,
+				"texture" : "icicles_rough.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"stalac_dark" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.013,
+				"roughness" : 0.345
+			},
+			"diffuse" :
+			{
+				"value" : [0.86, 0.89, 0.87],
+				"background" : [1, 1, 1, 1],
+				"texture" : "stalactites.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.5, 0.780, 0.468745],
+				"texture" : "mntn_black_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.575395, 0.78, 0.818],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.3,
+				"texture" : "icicles_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.470076
+			},
+			"detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.85,
+                "texture" : "mntn_black_s.jpg",
+                "sampler" : "Sampler_10"
+},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [4, 4],
+                "value" : 0.7,
+                "texture" : "mntn_black_n.jpg",
+                "sampler" : "Sampler_10"
+            }
+		},
+		
+		"stalac_dark2" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.013,
+				"roughness" : 0.345
+			},
+			"diffuse" :
+			{
+				"value" : [0.86, 0.89, 0.87],
+				"background" : [1, 1, 1, 1],
+				"texture" : "stalactites.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.5, 0.780, 0.468745],
+				"texture" : "mntn_black_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.575395, 0.78, 0.818],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.3,
+				"texture" : "icicles_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.470076
+			},
+			"emissive" :
+			{
+				"value" : [0, 1, 0.8],
+				"texture" : "stalactites_emit_uni.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.85,
+                "texture" : "mntn_black_s.jpg",
+                "sampler" : "Sampler_10"
+},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [4, 4],
+                "value" : 0.7,
+                "texture" : "mntn_black_n.jpg",
+                "sampler" : "Sampler_10"
+            }
+		},
+		
+		
+		"stalac_brown" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [2.3, 1.57605, 1.48854],
+				"background" : [1, 1, 1, 1],
+				"texture" : "stalactites.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.5, 0.780, 0.468745],
+				"texture" : "mntn_dark_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [1.075395, 0.78, 0.818],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.3,
+				"texture" : "icicles_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.470076
+			},
+			"detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.85,
+                "texture" : "mntn_dark_d.jpg",
+                "sampler" : "Sampler_10"
+},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [4, 4],
+                "value" : 0.7,
+                "texture" : "mntn_dark_n.jpg",
+                "sampler" : "Sampler_10"
+            }
+		},
+		
+		"stalac_white" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [3, 2.6, 3.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "stalactites.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.95, 0.9, 0.93605],
+				"texture" : "jungle_stone_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.798862, 0.78, 0.818],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.19498,
+				"texture" : "icicles_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.426033
+			},
+			"detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.85,
+                "texture" : "mntn_white2_d.jpg",
+                "sampler" : "Sampler_10"
+},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [4, 4],
+                "value" : 0.7,
+                "texture" : "jungle_stone_n.jpg",
+                "sampler" : "Sampler_10"
+            }
+		},
+		
+		"stalac_yellow" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1.9, 1.5, 1.2],
+				"background" : [1, 1, 1, 1],
+				"texture" : "stalactites.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.95, 0.8, 0.93605],
+				"texture" : "jungle_stone_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.798862, 0.78, 0.818],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.19498,
+				"texture" : "icicles_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.426033
+			},
+			"detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.85,
+                "texture" : "mntn_yellow2_d.jpg",
+                "sampler" : "Sampler_10"
+},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [4, 4],
+                "value" : 0.7,
+                "texture" : "jungle_stone_n.jpg",
+                "sampler" : "Sampler_10"
+            }
+		},
+		
+		"stalac_uni" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [2.4, 2, 3.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "stalactites.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"texture" : "jungle_mntnx_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.798862, 0.78, 0.818],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.19498,
+				"texture" : "icicles_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.426033
+			},
+			"emissive" :
+			{
+				"value" : [0, 2, 1.7],
+				"texture" : "stalactites_emit_uni.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.85,
+                "texture" : "jungle_mntnx_d.jpg",
+                "sampler" : "Sampler_10"
+},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [4, 4],
+                "value" : 0.7,
+                "texture" : "jungle_mntn_n.jpg",
+                "sampler" : "Sampler_10"
+            }
+		},
+		
+		"stalac_uni2" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [2.4, 2, 3.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "stalactites.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"texture" : "jungle_mntnx_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.798862, 0.78, 0.818],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.19498,
+				"texture" : "icicles_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.426033
+			},
+			"emissive" :
+			{
+				"value" : [1.1, 0.2, 2.8],
+				"texture" : "stalactites_emit_uni.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.85,
+                "texture" : "jungle_mntnx_d.jpg",
+                "sampler" : "Sampler_10"
+},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [4, 4],
+                "value" : 0.7,
+                "texture" : "jungle_mntn_n.jpg",
+                "sampler" : "Sampler_10"
+            }
+		},
+		
+		"stalac_alien" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1.85, 1.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "stalactites.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 1.0, 1.34],
+				"texture" : "desert_mntn_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.62, 0.81, 1.26],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.19498,
+				"texture" : "icicles_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.426033
+			},
+			"emissive" :
+			{
+				"value" : [0, 0.8, 0.7],
+				"texture" : "stalactites_emit_alien.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.85,
+                "texture" : "alien_mntn_d.jpg",
+                "sampler" : "Sampler_10"
+},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [4, 4],
+                "value" : 0.7,
+                "texture" : "desert_mntn_n.jpg",
+                "sampler" : "Sampler_10"
+            }
+		},
+		
+		"stalac_orange" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [3.15, 2.4, 1.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "stalactites.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.98, 0.5, 0.44],
+				"texture" : "desert_mntn_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.798862, 0.78, 0.818],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.19498,
+				"texture" : "icicles_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.466033
+			},
+			"detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.85,
+                "texture" : "adesert_mntn_d.jpg",
+                "sampler" : "Sampler_10"
+},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [4, 4],
+                "value" : 0.7,
+                "texture" : "desert_mntn_n.jpg",
+                "sampler" : "Sampler_10"
+            }
+		},
+		
 		"snow_top" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -43060,14 +43806,14 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [1.0, 1.02, 1.02],
+				"value" : [0.8, 0.8, 0.8],
 				"background" : [1, 1, 1, 1],
 				"texture" : "snow1_d.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.9, 0.9, 0.9],
+				"value" : [1.1, 1.1, 1.1],
 				"texture" : "snow1_s.jpg",
 				"sampler" : "Sampler_10"
 			},
@@ -43084,7 +43830,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.85
+				"value" : 0.45
 			}
 		},
 
@@ -49259,7 +50005,9 @@
 			},
 			"specular" :
 			{
-				"value" : [0.1, 0.1, 0.1]
+				"value" : [0.5, 0.5, 0.5],
+				"texture" : "tree_trunks_spec.jpg",
+				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
