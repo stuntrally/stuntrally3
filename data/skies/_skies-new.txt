@@ -33,6 +33,7 @@ sunset_01            https://polyhaven.com/a/belfast_sunset_puresky
 sunset_02            https://ambientcg.com/view?id=EveningSkyHDRI017B
 sunset_03            https://polyhaven.com/a/kloppenheim_06_puresky
 sunset_04            https://ambientcg.com/view?id=EveningSkyHDRI005B
+sunset_06			 https://polyhaven.com/a/rocky_ridge_puresky
 
 Partly modified, especially anomaly skies
 
@@ -41,13 +42,20 @@ More:           https://ambientcg.com/list?type=HDRI
 License: CC0    https://polyhaven.com/hdris
 
 
+
+sunset_05_clear_orange		https://hdrmaps.com/after-the-sunset-in-november/
+dawn_02_cloudy				https://hdrmaps.com/altewalde-sky-dome/
+
+License: CC-BY		https://hdrmaps.com/freebies/free-hdris/
+Note: The site mostly offers non-free HDRIs, but a few under CC-BY
+
 -------------- procedural
 space_nebula_01*.jpg
 space_nebula_02_red.jpg  (with modified version of Saturn *1)
 space_nebula_02_red2.jpg  (version without Saturn)
 
 Author: rubberduck
-License: CC-BY 4.0
+License: CC-BY-SA 4.0
 
 Created in Blender by rubberduck, with big thanks to Samuel Krug VFX
 https://www.youtube.com/watch?v=v6pULIv8sZA

@@ -182,6 +182,12 @@
 	<fluid name="ice solid"		material="Ice"		density="500" angDamp="0.2" linDamp="0.4" heightDamp="1"
 		fogHSVA="0.495 0.154 0.696 1" fogDens="6" fogDensH="0.6"
 		solid="1" surf="roadSnow" idParticles="-1" deep="0" />
+	<fluid name="ice bright"		material="Ice_bright"		density="500" angDamp="0.2" linDamp="0.4" heightDamp="1"
+		fogHSVA="0.495 0.154 0.696 1" fogDens="6" fogDensH="0.6"
+		solid="1" surf="roadSnowIce" idParticles="-1" deep="0" />
+	<fluid name="ice blue"		material="Ice_blue"		density="500" angDamp="0.2" linDamp="0.4" heightDamp="1"
+		fogHSVA="0.495 0.154 0.696 1" fogDens="6" fogDensH="0.6"
+		solid="1" surf="roadSnowIce" idParticles="-1" deep="0" />
 	<fluid name="ice cyan"		material="Ice_cyan"		density="500" angDamp="0.2" linDamp="0.4" heightDamp="1"
 		fogHSVA="0.555 0.154 0.696 1" fogDens="6" fogDensH="0.6"
 		solid="1" surf="roadSnowIce" idParticles="-1" deep="0" />
