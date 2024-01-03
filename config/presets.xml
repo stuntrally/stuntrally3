@@ -88,7 +88,7 @@
 <s m="sky/dawn_bright"     c="#D0D0B0"   r="3" p="21"  y="-45" />
 <s m="sky/sunset_gen"      c="#E080A0"   r="2" p="16"  y=" 45" />
 
-<!--  skies, oldest  (lowest quality)  -->
+<!--  skies, oldest  -->
 <s m="sky/dust"            c="#C0C090"   r="5" p="32"  y=" 60" />
 <s m="sky/dawn"            c="#D4D090"   r="5" p="28"  y=" -7" />
 
