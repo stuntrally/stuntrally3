@@ -8,7 +8,6 @@ Free high res skymaps (Massive 07 update!)
 by: 0ptikz
 https://blenderartists.org/forum/showthread.php?24038-Free-high-res-skymaps-%28Massive-07-update
 
-sky_dawn.jpg - blue yellow
 sky_dust.jpg - brown 1clr`
 sky_lightblue.jpg ~ bri cyan blue todo
 
@@ -25,8 +24,6 @@ magic_alien.jpg  - aln green
 New High resolution sky pack for Blender
 by: 0ptikz
 https://blenderartists.org/forum/showthread.php?224065-New-High-resolution-sky-pack-for-Blender
-
-gen-sunset.jpg - orange white
 
 sky-1day.jpg ~ skyblue top
 sky-2clouds.jpg - yellow gray cloudy

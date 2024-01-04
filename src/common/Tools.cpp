@@ -274,7 +274,7 @@ void CGui::ToolSceneOld()
 		mapSky["sky/cloudy"] = 1;		// "sky-2clouds.jpg"
 		mapSky["sky/dark_clouds"] = 1;	// "sky_p3dark.jpg"
 		
-		mapSky["sky/dawn"] = 1;			// "sky_dawn.jpg"
+			mapSky["sky/dawn"] = 1;			// "sky_dawn.jpg"  +
 		mapSky["sky/dawn_bright"] = 1;	// "sky-clearday.jpg"
 		
 		mapSky["sky/light_blue"] = 1;	// "sky_lightblue.jpg"
@@ -304,7 +304,7 @@ void CGui::ToolSceneOld()
 			mapSky["sky/sunset"] = 1;			// "sky_sunset.jpg"  +
 			mapSky["sky/sunset_blue_gen"] = 1;	// "gen-morning.jpg"  +
 
-		mapSky["sky/sunset_gen"] = 1;		// "gen-sunset.jpg"
+			mapSky["sky/sunset_gen"] = 1;		// "gen-sunset.jpg"  +
 			mapSky["sky/sunset_rays_gen"] = 1;	// "gen-godrays.jpg"  +
 		
 			mapSky["sky/white"] = 1;			// "sky_white.jpg"  +
