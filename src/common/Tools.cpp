@@ -277,7 +277,7 @@ void CGui::ToolSceneOld()
 			mapSky["sky/dawn"] = 1;			// "sky_dawn.jpg"  +
 		mapSky["sky/dawn_bright"] = 1;	// "sky-clearday.jpg"
 		
-		mapSky["sky/light_blue"] = 1;	// "sky_lightblue.jpg"
+			mapSky["sky/light_blue"] = 1;	// "sky_lightblue.jpg"  +
 		mapSky["sky/day_blue"] = 1;		// "sky-clearday1.jpg"  !
 		mapSky["sky/day_blue2"] = 1;	// "sky-1day.jpg"  !
 		mapSky["sky/day_clouds"] = 1;	// "sky-clearday2.jpg"

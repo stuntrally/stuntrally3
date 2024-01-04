@@ -99,8 +99,6 @@
 
 <!--  skies, oldest  -->
 <s m="sky/blue_clouds"     c="#C0E0FF"   r="5" p="57"  y=" 62" />
-<s m="sky/light_blue"      c="#80C0FF"   r="3" p="20"  y=" 60" />
-
 <s m="sky/gray_clouds"     c="#A0A0A0"   r="4" p="38"  y=" 41" />
 <s m="sky/dark_clouds"     c="#707070"   r="2" p="36"  y=" 41" />
 
