@@ -9,8 +9,11 @@ anomaly_04           mixed:  day_clouds_04_blue  and  dawn_01
 cloudy_02            https://ambientcg.com/view?id=DaySkyHDRI011B
 cloudy_03            https://ambientcg.com/view?id=DaySkyHDRI031B
 cloudy_04            https://ambientcg.com/view?id=DaySkyHDRI008B
+cloudy_05            https://ambientcg.com/view?id=DaySkyHDRI021B
 
 dawn_01              https://ambientcg.com/view?id=EveningSkyHDRI019B
+dawn_02              https://hdrmaps.com/altewalde-sky-dome/
+dawn_03              https://ambientcg.com/view?id=EveningSkyHDRI020B
 day_clear_01         https://ambientcg.com/view?id=DaySkyHDRI023B
 
 day_clouds_02        https://ambientcg.com/view?id=DaySkyHDRI026B
@@ -18,9 +21,15 @@ day_clouds_03        https://polyhaven.com/a/farm_field_puresky
 day_clouds_04        https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky
 day_clouds_05        https://ambientcg.com/view?id=DaySkyHDRI033B
 day_clouds_06        https://ambientcg.com/view?id=DaySkyHDRI017B
+day_clouds_07        https://ambientcg.com/view?id=DaySkyHDRI028B
+day_clouds_08        https://ambientcg.com/view?id=DaySkyHDRI029B
 
 dusk_stormy_01       https://ambientcg.com/view?id=EveningSkyHDRI001B
 dusk_stormy_02       https://ambientcg.com/view?id=EveningSkyHDRI012B
+
+evening_01           https://ambientcg.com/view?id=EveningSkyHDRI007B
+evening_02           https://ambientcg.com/view?id=EveningSkyHDRI014B
+
 foggy_01             https://ambientcg.com/view?id=DaySkyHDRI032B
 night_01             https://polyhaven.com/a/kloppenheim_02_puresky
 
@@ -33,20 +42,18 @@ sunset_01            https://polyhaven.com/a/belfast_sunset_puresky
 sunset_02            https://ambientcg.com/view?id=EveningSkyHDRI017B
 sunset_03            https://polyhaven.com/a/kloppenheim_06_puresky
 sunset_04            https://ambientcg.com/view?id=EveningSkyHDRI005B
+
+sunset_05            https://hdrmaps.com/after-the-sunset-in-november/
 sunset_06			 https://polyhaven.com/a/rocky_ridge_puresky
 
-Partly modified, especially anomaly skies
+
+Modified, especially anomaly skies
 
 License: CC0    https://docs.ambientcg.com/license/
 More:           https://ambientcg.com/list?type=HDRI
 License: CC0    https://polyhaven.com/hdris
 
-
-
-sunset_05_clear_orange		https://hdrmaps.com/after-the-sunset-in-november/
-dawn_02_cloudy				https://hdrmaps.com/altewalde-sky-dome/
-
-License: CC-BY		https://hdrmaps.com/freebies/free-hdris/
+License: CC-BY  https://hdrmaps.com/freebies/free-hdris/
 Note: The site mostly offers non-free HDRIs, but a few under CC-BY
 
 -------------- procedural

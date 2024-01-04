@@ -43892,7 +43892,7 @@
                 "value" : 0.85,
                 "texture" : "mntn_black_s.jpg",
                 "sampler" : "Sampler_10"
-},
+			},
             "detail_normal0" :
             {
                 "mode" : "Multiply",
@@ -43955,7 +43955,7 @@
                 "value" : 0.85,
                 "texture" : "mntn_black_s.jpg",
                 "sampler" : "Sampler_10"
-},
+			},
             "detail_normal0" :
             {
                 "mode" : "Multiply",
@@ -44008,7 +44008,7 @@
                 "value" : 0.85,
                 "texture" : "mntn_dark_d.jpg",
                 "sampler" : "Sampler_10"
-},
+			},
             "detail_normal0" :
             {
                 "mode" : "Multiply",
@@ -44060,7 +44060,7 @@
                 "value" : 0.85,
                 "texture" : "mntn_white2_d.jpg",
                 "sampler" : "Sampler_10"
-},
+			},
             "detail_normal0" :
             {
                 "mode" : "Multiply",
@@ -44112,7 +44112,7 @@
                 "value" : 0.85,
                 "texture" : "mntn_yellow2_d.jpg",
                 "sampler" : "Sampler_10"
-},
+			},
             "detail_normal0" :
             {
                 "mode" : "Multiply",
@@ -44170,7 +44170,7 @@
                 "value" : 0.85,
                 "texture" : "jungle_mntnx_d.jpg",
                 "sampler" : "Sampler_10"
-},
+			},
             "detail_normal0" :
             {
                 "mode" : "Multiply",
@@ -44228,7 +44228,7 @@
                 "value" : 0.85,
                 "texture" : "jungle_mntnx_d.jpg",
                 "sampler" : "Sampler_10"
-},
+			},
             "detail_normal0" :
             {
                 "mode" : "Multiply",
@@ -44286,7 +44286,7 @@
                 "value" : 0.85,
                 "texture" : "alien_mntn_d.jpg",
                 "sampler" : "Sampler_10"
-},
+			},
             "detail_normal0" :
             {
                 "mode" : "Multiply",
@@ -44338,7 +44338,7 @@
                 "value" : 0.85,
                 "texture" : "adesert_mntn_d.jpg",
                 "sampler" : "Sampler_10"
-},
+			},
             "detail_normal0" :
             {
                 "mode" : "Multiply",
@@ -45706,6 +45706,38 @@
 			}
 		},
 
+		"sky/cloudy_05_grey" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "cloudy_05_grey.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
+
 		"sky/day_clear_01" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -45995,6 +46027,70 @@
 			}
 		},
 		
+		"sky/day_clouds_07" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "day_clouds_07.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
+		
+		"sky/day_clouds_08" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "day_clouds_08.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
+		
 		"sky/dawn_01" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -46122,7 +46218,39 @@
 				"sampler" : "Sampler_Sky"
 			}
 		},
-		
+
+		"sky/dawn_03" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "dawn_03.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
+
 		"sky/dusk_stormy_01_blue" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -46375,6 +46503,134 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "dusk_stormy_02_red.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
+
+		"sky/evening_01_orange" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "evening_01_orange.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
+
+		"sky/evening_01_red" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "evening_01_red.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
+
+		"sky/evening_02" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "evening_02.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
+
+		"sky/evening_02_dark" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "evening_02_dark.jpg",
 				"sampler" : "Sampler_Sky"
 			}
 		},
@@ -46892,7 +47148,7 @@
 			}
 		},
 		
-		"sky/sunset_05_clear_orange" :
+		"sky/sunset_05_clear_red" :
 		{
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
@@ -46919,11 +47175,10 @@
 			"emissive" :
 			{
 				"value" : [1, 1, 1],
-				"texture" : "sunset_05_clear_orange.jpg",
+				"texture" : "sunset_05_clear_red.jpg",
 				"sampler" : "Sampler_Sky"
 			}
-		},
-		
+		},		
 		
 		"sky/sunset_06" :
 		{
