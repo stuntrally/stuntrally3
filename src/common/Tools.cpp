@@ -271,7 +271,7 @@ void CGui::ToolSceneOld()
 	std::map<string, int> mapSky, useSky;
 
 		mapSky["sky/blue_clouds"] = 1;	// "sky_photo6.jpg"  !
-		mapSky["sky/cloudy"] = 1;		// "sky-2clouds.jpg"
+			mapSky["sky/cloudy"] = 1;		// "sky-2clouds.jpg"  +
 			mapSky["sky/dark_clouds"] = 1;	// "sky_p3dark.jpg"  +
 		
 			mapSky["sky/dawn"] = 1;			// "sky_dawn.jpg"  +
