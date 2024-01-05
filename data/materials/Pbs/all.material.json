@@ -45065,38 +45065,6 @@
 			}
 		},
 
-		"sky/dawn_bright" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "sky-clearday.jpg",
-				"sampler" : "Sampler_Sky"
-			}
-		},
-
 		"sky/day_blue" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -45157,38 +45125,6 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "sky-1day.jpg",
-				"sampler" : "Sampler_Sky"
-			}
-		},
-
-		"sky/day_clouds" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "sky-clearday2.jpg",
 				"sampler" : "Sampler_Sky"
 			}
 		},
@@ -45929,7 +45865,39 @@
 				"sampler" : "Sampler_Sky"
 			}
 		},
-		
+
+		"sky/day_clouds_09" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "day_clouds_09.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
+				
 		"sky/dawn_01" :
 		{
 			"macroblock" : "Macroblock_0",

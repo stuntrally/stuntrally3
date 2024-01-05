@@ -20,9 +20,11 @@ day_clouds_02        https://ambientcg.com/view?id=DaySkyHDRI026B
 day_clouds_03        https://polyhaven.com/a/farm_field_puresky
 day_clouds_04        https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky
 day_clouds_05        https://ambientcg.com/view?id=DaySkyHDRI033B
+
 day_clouds_06        https://ambientcg.com/view?id=DaySkyHDRI017B
 day_clouds_07        https://ambientcg.com/view?id=DaySkyHDRI028B
 day_clouds_08        https://ambientcg.com/view?id=DaySkyHDRI029B
+day_clouds_09        https://polyhaven.com/a/sunflowers_puresky
 
 dusk_stormy_01       https://ambientcg.com/view?id=EveningSkyHDRI001B
 dusk_stormy_02       https://ambientcg.com/view?id=EveningSkyHDRI012B
