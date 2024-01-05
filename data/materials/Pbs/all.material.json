@@ -38513,6 +38513,41 @@
 				"sampler" : "Sampler_10"
 			}
 		},
+		
+		"roadSnowWhite" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.95, 0.9, 0.86],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.38],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.5, 0.5, 0.6],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.3,
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		
 
 		"roadSnowGrn" :
 		{
@@ -38829,6 +38864,49 @@
 			"specular" :
 			{
 				"value" : [0.3, 0.26, 0.26]
+			},
+			"fresnel" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"roadSnowWhite_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.653, 0.58, 0.53],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.295, 0.29]
 			},
 			"fresnel" :
 			{
@@ -44357,7 +44435,7 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.8, 0.8, 0.8],
+				"value" : [0.97, 0.97, 0.95],
 				"background" : [1, 1, 1, 1],
 				"texture" : "snow1_d.jpg",
 				"sampler" : "Sampler_10"
@@ -44375,13 +44453,13 @@
 			},
 			"normal" :
 			{
-				"value" : 0.56,
+				"value" : 0.86,
 				"texture" : "snow1_n.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
 			{
-				"value" : 0.45
+				"value" : 0.52
 			},
 			"detail_normal0" :
             {
