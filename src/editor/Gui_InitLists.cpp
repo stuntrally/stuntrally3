@@ -340,16 +340,17 @@ void CGui::FillPickLists()
 
 	for (u=0; u < data->pre->veg.size(); ++u)
 	{	const PVeget& t = data->pre->veg[u];
-		String c = gcom->scnClr[gcom->scnN[t.sc]];  if (c.empty())  c = "#000000";
-		lp->addItem(
-			t.rate ? gcom->getClrRating(t.rate) + toStr(t.rate) : c, 0);
-		l = lp->getItemCount()-1;
+		if (t.rate >= 0)
+		{	String c = gcom->scnClr[gcom->scnN[t.sc]];  if (c.empty())  c = "#000000";
+			lp->addItem(
+				t.rate ? gcom->getClrRating(t.rate) + toStr(t.rate) : c, 0);
+			l = lp->getItemCount()-1;
 
-		lp->setSubItemNameAt(1,l, c+ t.name);
-		if (t.rate)
-			lp->setSubItemNameAt(2,l, c+ fToStr(t.maxScale, 1,3));
-			//lp->setSubItemNameAt(3,l, c+ fToStr(t.maxTerAng, 0,2));
-	}
+			lp->setSubItemNameAt(1,l, c+ t.name);
+			if (t.rate)
+				lp->setSubItemNameAt(2,l, c+ fToStr(t.maxScale, 1,3));
+				//lp->setSubItemNameAt(3,l, c+ fToStr(t.maxTerAng, 0,2));
+	}	}
 
 
 	///  🛣️ Road  --------------------------------
