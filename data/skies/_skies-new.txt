@@ -58,7 +58,9 @@ License: CC0    https://polyhaven.com/hdris
 License: CC-BY  https://hdrmaps.com/freebies/free-hdris/
 Note: The site mostly offers non-free HDRIs, but a few under CC-BY
 
--------------- procedural
+
+---- NEW skies, procedural ----
+
 space_nebula_01*.jpg
 space_nebula_02_red.jpg  (with modified version of Saturn *1)
 space_nebula_02_red2.jpg  (version without Saturn)

@@ -3,7 +3,9 @@
 This section lists changes not yet released, but committed to new repositories stuntrally3 and tracks3.  
 
 
-- Updated few tracks, with new horizons, skies etc
+- Tracks
+  - Almost all, replaced old 4k skies with new ones 8k
+  - Many updated with new horizons, few with objects etc
 - Editor
   - Changing object material, sets defined in `presets.xml`
   - Toggle static for dynamic object, no `*_static.mesh`
