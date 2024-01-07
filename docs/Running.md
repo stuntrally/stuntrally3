@@ -130,6 +130,8 @@ Especially if you can build the game from [Sources](Building.md).
 Game and editor have few console tools that can be started on various occasions.  
 Tool output will be as text in terminal and in .log file (Ogre.log or Ogre_ed.log).
 
+#### How to
+
 To get more text info about available tools:
 
 1. First start console (cmd.exe on Windows or any terminal app for Linux like Konsole, Console, Terminal, XTerm etc).
@@ -141,6 +143,8 @@ To get more text info about available tools:
 
 2. Then change path to your SR3 binaries
 3. Start editor or game exe with ? in command line argument for all available.
+
+#### Example
 
 Example output for editor tools:
 ```
@@ -174,3 +178,11 @@ Results in Ogre1.log or console, lines with )))
   ghosts - Test all vehicles points on all tracks, from all user ghosts. Needs many.
   trkghosts - Test all tracks ghosts, for sudden jumps, due to bad rewinds.
 ```
+
+#### Shortcuts
+
+E.g. starting `StuntRally3 convert` (on Windows) will convert ghosts to track ghosts,  
+or `SR3-Editor scene` will do all tracks scene.xml checks.
+
+You can also make a `.bat` or `.sh` file with shortcuts for these tools.  
+E.g. `./sr-editor3 scene >ed-scn.txt` (on Linux) can also redirect output to txt file in same folder.
