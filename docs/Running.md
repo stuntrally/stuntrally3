@@ -123,3 +123,54 @@ If problems occur check `ogre.log` for errors (or `ogre_ed.log` for editor).
 If you have problems running, and suspect a bug, see [Troubleshooting](Troubleshooting.md).  
 Testing and reporting bugs is welcome.  
 Especially if you can build the game from [Sources](Building.md).
+
+
+### Console Tools
+
+Game and editor have few console tools that can be started on various occasions.  
+Tool output will be as text in terminal and in .log file (Ogre.log or Ogre_ed.log).
+
+To get more text info about available tools:
+
+1. First start console (cmd.exe on Windows or any terminal app for Linux like Konsole, Console, Terminal, XTerm etc).
+
+    So e.g. on Windows enter Start Menu (or by keys `Logo + R`) and type cmd, press to run it.  
+    More help e.g. [here](https://www.lifewire.com/how-to-open-command-prompt-2618089) or for Debian e.g. [here](https://vitux.com/four-ways-to-open-the-terminal-in-debian/).  
+
+    If you're using [DoubleCmd](https://github.com/doublecmd/doublecmd/releases) you can just press F9 to Run Terminal from inside folder where SR3 binaries are.
+
+2. Then change path to your SR3 binaries
+3. Start editor or game exe with ? in command line argument for all available.
+
+Example output for editor tools:
+```
+SR3-Editor  command line Arguments help  ----
+  ? or help - Displays this info
+  
+  c or cfg - force show Ogre config dialog
+  
+Results in Ogre1.log or console, lines with )))
+  
+  sc or scene - Runs scene.xml checks for all tracks.
+  old or sc2 - Runs scene.xml checks for all tracks skies use, old tree meshes, etc.
+  warn or warnings - Runs warnings checks for all tracks.
+```
+and for game tools:
+```
+StuntRally3  command line Arguments help  ----
+  ? or help - Displays this info
+  
+  c or cfg - force show Ogre config dialog
+  
+Results in Ogre1.log or console, lines with )))
+  
+  check - Does a check for tracks.ini, championships.xml, challenges.xml, missing track ghosts, etc.
+  
+  convert - For new tracks. Convert ghosts to track's ghosts (less size and frames)
+     Put original ghosts into  data/ghosts/original/*_ES.rpl
+     ES car, normal sim, 1st lap, no boost, use rewind type: Go back time
+     Time should be like in tracks.ini or less (last T= )
+  
+  ghosts - Test all vehicles points on all tracks, from all user ghosts. Needs many.
+  trkghosts - Test all tracks ghosts, for sudden jumps, due to bad rewinds.
+```

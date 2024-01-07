@@ -55,7 +55,7 @@ bool Args::Help()  // ❔
 		Common("ed");
 		// todo: // fixme crash ter, load hmap only?
 		cout << "  sc or scene - Runs scene.xml checks for all tracks.\n";
-		cout << "  old or sc2 - Runs scene.xml checks for all tracks for OLD skies, etc.\n";
+		cout << "  old or sc2 - Runs scene.xml checks for all tracks skies use, old tree meshes, etc.\n";
 		cout << "  warn or warnings - Runs warnings checks for all tracks.\n";
 		return 1;
 	}
