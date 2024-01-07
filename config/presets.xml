@@ -94,11 +94,6 @@
 
 <!--  ⛅ skies, old  -->
 <s m="-------------  old  ---------"  />
-<s m="sky/day_blue"        c="#C0D8F8"   r="5" p="84"  y=" 13" />
-<s m="sky/day_blue2"       c="#D0E0F8"   r="5" p="60"  y="-40" />
-
-<s m="sky/blue_clouds"     c="#C0E0FF"   r="5" p="57"  y=" 62" />
-<s m="sky/gray_clouds"     c="#A0A0A0"   r="4" p="38"  y=" 41" />
 
 <s m="sky/magic"           c="#A0A0FF"   r="4" p="30"  y="-41" />
 <s m="sky/magic_alien"     c="#70A974"   r="2" p="30"  y="-41" />
