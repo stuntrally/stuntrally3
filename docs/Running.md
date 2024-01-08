@@ -128,7 +128,8 @@ Especially if you can build the game from [Sources](Building.md).
 ### Console Tools
 
 Game and editor have few console tools that can be started on various occasions.  
-Tool output will be as text in terminal and in .log file (Ogre.log or Ogre_ed.log).
+Tool output will be as text in terminal and in .log file (Ogre.log or Ogre_ed.log).  
+The first line is always `))) Tool start`.
 
 #### How to
 
