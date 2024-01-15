@@ -291,8 +291,8 @@ void CGui::ToolSceneOld()
 		mapSky["sky/gray_clouded"] = 1;	// "sky-darkclouds.jpg"
 		mapSky["sky/gray_clouds"] = 1;	// "sky_photo3.jpg"
 	
-	mapSky["sky/magic"] = 1;			// "magic.jpg"  // todo
-	mapSky["sky/magic_alien"] = 1;		// "magic_alien.jpg"  // todo
+		mapSky["sky/magic"] = 1;			// "magic.jpg"
+		mapSky["sky/magic_alien"] = 1;		// "magic_alien.jpg"
 		mapSky["sky/magicdark"] = 1;		// "magicdark.jpg"
 	
 		mapSky["sky/morning2_gen"] = 1;		// "gen-brightday2.jpg"

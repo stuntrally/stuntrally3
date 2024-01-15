@@ -124,6 +124,7 @@ If you have problems running, and suspect a bug, see [Troubleshooting](Troublesh
 Testing and reporting bugs is welcome.  
 Especially if you can build the game from [Sources](Building.md).
 
+----
 
 ### Console Tools
 

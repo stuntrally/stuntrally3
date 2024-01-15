@@ -89,14 +89,10 @@
 <!--  space, alien, etc  -->
 <s m="sky/space_nebula_01"       c="#51182a"  r="2" p="25"  y="145" fc="0.884 0.887 0.045 0.925 0.000" gc="0.711 0.521 0.013 0.930 0.000" /> <!-- Cry5-CrystalIslands -->
 <s m="sky/space_nebula_01_blue"  c="#2020b9"  r="3" p="25"  y="155" fc="0.684 0.887 0.045 0.985 0.000" gc="0.611 0.521 0.013 0.930 0.000" /> <!-- -->
-<s m="sky/space_nebula_02_red"   c="#ae030c"  r="2" p="35"  y="25"  fc="0.042 1.000 0.200 0.760 0.205" gc="0.000 1.000 0.150 0.900 0.145" /> <!-- Mrs1 -->
+<s m="sky/space_nebula_02_red"   c="#ae030c"  r="1" p="35"  y="25"  fc="0.042 1.000 0.200 0.760 0.205" gc="0.000 1.000 0.150 0.900 0.145" /> <!-- Mrs1 -->
 <s m="sky/space_nebula_02_red2"  c="#ae232c"  r="1" p="35"  y="25"  fc="0.042 1.000 0.200 0.760 0.100" gc="0.000 1.000 0.150 0.900 0.100" /> <!-- -->
-
-<!--  ⛅ skies, old  -->
-<s m="-------------  old  ---------"  />
-
-<s m="sky/magic"           c="#A0A0FF"   r="4" p="30"  y="-41" />
-<s m="sky/magic_alien"     c="#70A974"   r="2" p="30"  y="-41" />
+<s m="sky/space_nebula_03_uni"   c="#6e53e2"  r="4" p="47"  y="132" fc="0.042 1.000 0.200 0.760 0.100" gc="0.000 1.000 0.150 0.900 0.100" /> <!-- Uni -->
+<s m="sky/space_nebula_04_aln"   c="#6ec132"  r="2" p="47"  y="167" fc="0.042 1.000 0.200 0.760 0.100" gc="0.000 1.000 0.150 0.900 0.100" /> <!-- Aln -->
 
 
 <!--  ⛰️🏔️ Terrain textures  ================================================================================================================================
@@ -1303,5 +1299,15 @@ common:  sc - "short scenery name" (name color)
 <o o="icicles_row_02" mats="icicles" />
 <o o="icicles_row_03" mats="icicles" />
 <o o="icicles_row_04" mats="icicles" />
+
+<!-- material demo -->
+
+<mats n="demo" m="demo1_Diffuse|demo2_Diff_Norm|demo3_Diff_Norm_Spec|demo4_DNS_Reflect|demo5_DNS_Rough|demo6_DNSR_detailDN" />
+
+<o o="_cube" mats="demo" />
+<o o="_geosphere4500" mats="demo" />
+<o o="_geosphere8000" mats="demo" />
+<o o="_sphere" mats="demo" />
+<o o="_uv_sphere" mats="demo" />
 
 </presets>

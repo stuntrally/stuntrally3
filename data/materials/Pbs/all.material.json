@@ -45104,70 +45104,6 @@
 			}
 		},
 		
-		"sky/magic" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "magic.jpg",
-				"sampler" : "Sampler_Sky"
-			}
-		},
-
-		"sky/magic_alien" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0, 0, 0],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0, 0, 0]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			},
-			"emissive" :
-			{
-				"value" : [1, 1, 1],
-				"texture" : "magic_alien.jpg",
-				"sampler" : "Sampler_Sky"
-			}
-		},
-
 		"sky/cloudy_02_brown" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -47215,6 +47151,70 @@
 			{
 				"value" : [1, 1, 1],
 				"texture" : "space_nebula_02_red2.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
+
+		"sky/space_nebula_03_uni" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "space_nebula_03_uni.jpg",
+				"sampler" : "Sampler_Sky"
+			}
+		},
+
+		"sky/space_nebula_04_aln" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.01, 0.01, 0.01],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "space_nebula_04_aln.jpg",
 				"sampler" : "Sampler_Sky"
 			}
 		},
