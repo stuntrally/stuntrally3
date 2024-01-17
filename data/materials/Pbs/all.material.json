@@ -7896,6 +7896,90 @@
 				"value" : 0.3
 			}
 		},
+		
+		"ObeliskCrystal2" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1.3, 3.1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "obelisk.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.3]
+			},
+			"fresnel" :
+			{
+				"value" : [0.130, 0.4600, 0.9],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "obelisk_norm.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.285
+			},
+			"detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.97,
+                "texture" : "obelisk_crystal.png",
+                "sampler" : "Sampler_10"
+			},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.8,
+                "texture" : "obelisk_crystal_norm.jpg",
+                "sampler" : "Sampler_10"
+            }
+		},
+		
+		"ObeliskBlack" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.079, 0.059, 0.096],
+				"background" : [1, 1, 1, 1],
+				"texture" : "obelisk.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "obelisk_norm.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
 
 		"Oil" :
 		{
@@ -17788,6 +17872,40 @@
 			{
 				"value" : 0.55,
 				"texture" : "ancient_ruins.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.55
+			}
+		},
+		
+		"ancient_ruins_black" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.4, 0.35, 0.52],
+				"background" : [1, 1, 1, 1],
+				"texture" : "ancient_ruins.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.5]
+			},
+			"fresnel" :
+			{
+				"value" : [0.1, 0.1, 0.1],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.55,
+				"texture" : "ancient_ruins_norm.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :
@@ -30667,6 +30785,56 @@
 				"value" : 0.3
 			}
 		},
+		
+		"pyramid_big_crystal" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1.6, 2.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "pyramid_big.dds",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.17131194, 0.21319104, 0.24167672]
+			},
+			"fresnel" :
+			{
+				"value" : [0.029079083, 0.029079083, 0.049079083],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.5492973,
+				"texture" : "pyramid_big_norm.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.42301428
+			},
+			"detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.94,
+                "texture" : "ycrystals_fine_d.jpg",
+                "sampler" : "Sampler_10"
+			},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.8,
+                "texture" : "ycrystals_fine_n.jpg",
+                "sampler" : "Sampler_10"
+            }
+		},
 
 		"pyramid_small" :
 		{
@@ -30734,6 +30902,56 @@
 			{
 				"value" : 0.2
 			}
+		},
+		
+		"pyramid_small_crystal" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.899927, 1.25318954, 1.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "pyramid_small.dds",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.17131194, 0.21319104, 0.24167672]
+			},
+			"fresnel" :
+			{
+				"value" : [0.029079083, 0.029079083, 0.049079083],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.092771,
+				"texture" : "pyramid_small_norm.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.3007069
+			},
+			"detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.94,
+                "texture" : "ycrystals_fine_d.jpg",
+                "sampler" : "Sampler_10"
+			},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [2, 2],
+                "value" : 0.8,
+                "texture" : "ycrystals_fine_n.jpg",
+                "sampler" : "Sampler_10"
+            }
 		},
 
 		"radio_tower" :

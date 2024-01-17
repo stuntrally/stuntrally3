@@ -1258,7 +1258,7 @@ common:  sc - "short scenery name" (name color)
 <o o="barrel_oil" mats="barrel_oil" />
 <o o="barrel_oil_heavy" mats="barrel_oil" />
 
-<mats n="ancient_ruins" m="ancient_ruins|ancient_ruins_white|ancient_ruins_yellow|ancient_ruins_green|ancient_ruins_anomaly" />
+<mats n="ancient_ruins" m="ancient_ruins|ancient_ruins_white|ancient_ruins_yellow|ancient_ruins_green|ancient_ruins_anomaly|ancient_ruins_black" />
 
 <o o="ancient_ruins_01" mats="ancient_ruins" />
 <o o="ancient_ruins_02" mats="ancient_ruins" />
@@ -1299,6 +1299,18 @@ common:  sc - "short scenery name" (name color)
 <o o="icicles_row_02" mats="icicles" />
 <o o="icicles_row_03" mats="icicles" />
 <o o="icicles_row_04" mats="icicles" />
+
+<mats n="pyramids_big" m="pyramid_big|pyramid_big_black|pyramid_big_crystal" />
+
+<o o="pyramid_big" mats="pyramids_big" />
+
+<mats n="pyramids_small" m="pyramid_small|pyramid_small_black|pyramid_small_crystal" />
+
+<o o="pyramid_small" mats="pyramids_small" />
+
+<mats n="obelisks" m="obelisk|ObeliskCrystal|ObeliskCrystal2|ObeliskBlack" />
+
+<o o="obelisk" mats="obelisks" />
 
 <!-- material demo -->
 
