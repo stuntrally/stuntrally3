@@ -4,7 +4,8 @@ This section lists changes not yet released, but committed to new repositories s
 
 
 - Tracks
-  - Almost all, replaced old 4k skies with new ones 8k
+  - 1 New
+  - Replaced all old 4k skies with new 8k ones on all tracks
   - Many updated with new horizons, few with objects etc
 - Editor
   - Changing object material, sets defined in `presets.xml`
@@ -68,10 +69,10 @@ This section lists changes not yet released, but committed to new repositories s
     - **cfg or config** forces showing Ogre dialog with screen and rendering options
     - Starting with ? shows help for all. In code search for _Tool_ or references to MainEntryPoints::args
 - **Bugs** and notable **missing** features from SR 2.8, not yet present in SR 3.0:
-  - Video options: Resolution, Vsync, Antialiasing, etc are not on Gui, but in Ogre dialog before start. No Limit Fps.
+  - Video options: Resolution, Vsync, Antialiasing, etc are not on Gui, but in Ogre dialog before start. No Limit Fps
     - Can't change them without quit. Also possibly alt-tab could require track reload on Windows.
   - Terrain shadowmap, Fluids: depth color, Refraction, smooth border. Grass deform, Trees wind.
-  - HUD: minimap terrain or border, bad other position markers, bad in splitscreen: gauges, minimaps, digits etc.
+  - HUD: minimap terrain or border, bad other position markers, bad in splitscreen: gauges, minimaps, digits etc
   - Editor
     - Slower road editing (~20 Fps not 60), added skip. Full Rebuild (B) takes quite _long_, columns need it
     - Bad reflection in editor F7 camera, less Fps (minimap RTTs don't skip, no terrain+road mode)
