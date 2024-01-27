@@ -18,6 +18,7 @@
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include <OgreItem.h>
+#include <OgreSubMesh2.h>
 using namespace Ogre;
 
 
@@ -108,7 +109,36 @@ bool PreviewScene::Load(Ogre::String mesh)
 
 	try
 	{	item = mgr->createItem(mesh);
-		mat = item->getSubItem(0)->getDatablockOrMaterialName();  // for info
+		
+		//  txt for info  --------
+		sInfo.clear();
+		int all = item->getNumSubItems(), all_tris = 0, lods = 0;
+		for (int i=0; i < all; ++i)
+		{
+			auto* si = item->getSubItem(i);
+			if (!i)  lods = si->getSubMesh()->mVao[0].size();  // once
+			int tris = si->getSubMesh()->mVao[0][0]->getPrimitiveCount();
+			sInfo += " "+si->getSubMesh()->getMaterialName()+"    "+fToStr(tris /1000.f,1,4)+" k  "+"\n";
+			all_tris += tris;
+		}
+		sTotal = ": "+toStr(all)+"  Tris: "+fToStr(all_tris /1000.f,0,2)+" k" + "  LODs: "+toStr(lods);
+		//  lods  --------
+		sLods.clear();
+		for (int lod=0; lod < lods; ++lod)
+		{
+			int lod_tris = 0;
+			for (int i=0; i < all; ++i)
+			{
+				auto* si = item->getSubItem(i);
+				int lods = si->getSubMesh()->mVao[0].size();
+				if (lod < lods)
+				{	int tris = si->getSubMesh()->mVao[0][lod]->getPrimitiveCount();
+					lod_tris += tris;
+			}	}
+			sLods += " "+toStr(lod+1)+"    "+fToStr(lod_tris /1000.f,1,4)+" k   "+
+				fToStr(100.f * lod_tris / all_tris,1,4)+"%\n";
+		}
+		
 		node = mgr->getRootSceneNode()->createChildSceneNode();
 		node->attachObject(item);
 	}

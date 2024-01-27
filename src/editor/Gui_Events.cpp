@@ -307,18 +307,16 @@ void CGui::updVegetInfo()
 			vb = d * svLTrMaxSc.getF();
 	float wa = std::max(va.x, va.z),
 		  wb = std::max(vb.x, vb.z);
-	txVHmin->setCaption(fToStr(va.y, 1,4));
-	txVHmax->setCaption(fToStr(vb.y, 1,4));
-	txVWmin->setCaption(fToStr(wa, 1,4));
-	txVWmax->setCaption(fToStr(wb, 1,4));
+	txVHmin->setCaption(fToStr(va.y, 1,4));  txVWmin->setCaption(fToStr(wa, 1,4));
+	txVHmax->setCaption(fToStr(vb.y, 1,4));  txVWmax->setCaption(fToStr(wb, 1,4));
 
 	// 📦🏢 Objects tab
 	UString s =
-		TR("#{GrMaterial}") + ":\n" + app->prvScene.mat +
-		TR("\n\n#{Size}:") +
-		"\n x " + fToStr(d.x, 1,4)+
-		"\n y " + fToStr(d.y, 1,4)+
-		"\n z " + fToStr(d.z, 1,4);
+		TR("#60E060 #{Size} [#{UnitM}]: #D0E0F0 \n") +
+		" x " + fToStr(d.x, 1,4)+"\n y " + fToStr(d.y, 1,4)+"\n z " + fToStr(d.z, 1,4) +"\n\n"+
+		TR("#E0E060 #{RplAll}")+ app->prvScene.sTotal +"\n\n"+
+		TR("#60E060 #{GrMaterial}  : Tris #D0E0F0 \n") + app->prvScene.sInfo +"\n"+
+		"#E08030 LOD  Tris #A0A0D0\n"+ app->prvScene.sLods;
 	objInfo->setCaption(s);
 }
 
