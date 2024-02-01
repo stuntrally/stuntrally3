@@ -20,7 +20,7 @@ class StuntRally3(ConanFile):
         self.requires("boost/1.83.0")
         self.requires("ogre3d-next/2024.01@anotherfoxguy/stable", force=True)
         self.requires("bullet3/3.25") 
-        self.requires("sdl/2.28.2")
+        self.requires("sdl/2.28.5")
         self.requires("mygui-next/2023.04@anotherfoxguy/stable")
         self.requires("ogg/1.3.5")
         self.requires("vorbis/1.3.7")
@@ -28,6 +28,7 @@ class StuntRally3(ConanFile):
         self.requires("enet/1.3.17")
         self.requires("tinyxml2/9.0.0")
 
+        self.requires("libalsa/1.2.10", override=True)
         self.requires("libpng/1.6.40", override=True)
         self.requires("libwebp/1.3.2", override=True)
         self.requires("zlib/1.3", override=True)
