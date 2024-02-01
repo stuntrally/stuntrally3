@@ -20,7 +20,6 @@ endif ()
 
 include(CMakeDependentOption)
 include(Macros)
-find_package(PkgConfig REQUIRED)
 include(FeatureSummary)
 
 
