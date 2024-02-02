@@ -1,0 +1,114 @@
+---
+name: Build game
+
+on: [ push, pull_request ]
+
+jobs:
+  build-gcc:
+    name: Linux build on Ubuntu
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Cache conan
+        uses: actions/cache@v4
+        with:
+          key: conan-ubuntu-${{ hashFiles('conanfile.py') }}
+          path: ~/.conan2/
+
+      - name: Install dependencies
+        run: |
+          curl "https://raw.githubusercontent.com/AnotherFoxGuy/ci-scripts/main/install-conan.sh" | sudo bash
+          sudo apt-get update
+          sudo apt-get -y install \
+                  pkg-config \
+                  ninja-build \
+                  nvidia-cg-toolkit \
+                  libsdl2-dev \
+                  libfreetype6-dev \
+                  libfreeimage-dev \
+                  libzzip-dev \
+                  libois-dev \
+                  libgl1-mesa-dev \
+                  libglu1-mesa-dev \
+                  libx11-dev \
+                  libxt-dev \
+                  libxaw7-dev \
+                  libxrandr-dev \
+                  libopenjp2-7-dev \
+                  libbullet-dev \
+                  libbullet-extras-dev \
+                  libtinyxml-dev \
+                  libtinyxml2-dev  \
+                  libenet-dev \
+                  libboost-system-dev \
+                  libboost-thread-dev \
+                  libboost-system-dev \
+                  libboost-wave-dev
+
+        shell: bash
+
+      - name: Configure
+        run: |
+          conan profile detect --force
+          echo "tools.system.package_manager:mode = install" > ~/.conan2/global.conf
+          echo "tools.system.package_manager:sudo = True" >> ~/.conan2/global.conf
+          conan remote add rigs-of-rods-deps https://conan.cloudsmith.io/rigs-of-rods/deps/ -f
+          conan install . -s build_type=Release -b missing -pr:b=default -c tools.cmake.cmaketoolchain:generator="Ninja" -of build
+          cmake --preset conan-release -DBUILD_MASTER_SERVER=ON
+        shell: bash
+
+      - name: Build
+        run: |
+          cd build
+          ninja
+        shell: bash
+
+      - name: Clean Conan pkgs
+        run: conan cache clean "*" -sbd
+        shell: bash
+
+  build-msvc:
+    name: Windows build
+    runs-on: windows-2019
+    env:
+      BUILD_TOOLS_PATH: C:\apps\build-tools\
+      CONAN_USER_HOME_SHORT: None
+    steps:
+      - run: echo $env:BUILD_TOOLS_PATH | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install Build tools
+        run: git clone https://git.anotherfoxguy.com/AnotherFoxGuy/build-tools.git %BUILD_TOOLS_PATH%
+        shell: cmd
+
+      - name: Cache conan packages
+        uses: actions/cache@v4
+        with:
+          key: conan-windows-${{ hashFiles('conanfile.py') }}
+          path: ~/.conan2
+      
+      - name: Enable Developer Command Prompt
+        uses: ilammy/msvc-dev-cmd@v1.12.1
+
+      - name: Configure
+        run: |
+          conan remote add rigs-of-rods-deps https://conan.cloudsmith.io/rigs-of-rods/deps/ -f
+          conan install . -b missing -pr:b=tools/conan-profiles/vs-19-release-ninja -pr=tools/conan-profiles/vs-19-release-ninja -of build
+          cmake --preset conan-release -DCMAKE_INSTALL_PREFIX=redist -DCREATE_CONTENT_FOLDER=ON
+        shell: cmd
+
+      - name: Build
+        run: |
+          cd build
+          ninja
+        shell: cmd
+
+      - name: Clean Conan pkgs
+        run: conan cache clean "*" -sbd
+        shell: cmd
