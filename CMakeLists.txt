@@ -180,9 +180,9 @@ foreach (EXE ${EXE_LIST})
             Ogg::ogg
             OGRE::OGRE
             OpenAL::OpenAL
+            rapidjson
             SDL2::SDL2
             Threads::Threads
-            tinyxml::tinyxml
             tinyxml2::tinyxml2
             Vorbis::vorbis
             Vorbis::vorbisfile
