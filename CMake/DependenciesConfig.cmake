@@ -7,7 +7,7 @@ find_package(OGRE REQUIRED CONFIG COMPONENTS Bites Overlay Paging RTShaderSystem
 find_package(BULLET REQUIRED COMPONENTS system thread filesystem wave)
 find_package(SDL2 REQUIRED CONFIG)
 find_package(MyGUI REQUIRED)
-find_package(OGG REQUIRED)
+find_package(Ogg REQUIRED)
 find_package(Vorbis REQUIRED)
 find_package(OpenAL REQUIRED CONFIG)
 find_package(tinyxml2 REQUIRED)

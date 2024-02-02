@@ -22,6 +22,9 @@ include(CMakeDependentOption)
 include(Macros)
 include(FeatureSummary)
 
+if (NOT WIN32)
+    find_package(PkgConfig)
+endif ()
 
 project(StuntRally3)
 

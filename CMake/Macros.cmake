@@ -200,3 +200,23 @@ function(cmd_option name desc)
 
     set(${name} "${${name}}" PARENT_SCOPE)
 endfunction()
+
+macro(find_with_pkg package interface_name PKG_CONFIG)
+    pkg_check_modules(${package} ${PKG_CONFIG})
+
+    if (${package}_FOUND)
+        message(STATUS "Using '${package}' system library (Found by pkg_config)")
+
+        # Create the target interface library
+        add_library(${interface_name} INTERFACE IMPORTED GLOBAL)
+
+        # Retrieve the package information
+        get_package_interface(${package})
+
+        # And add it to our target
+        target_include_directories(${interface_name} INTERFACE ${INCLUDES})
+        target_link_libraries(${interface_name} INTERFACE ${LIBRARIES})
+
+        message(STATUS "Added inteface ${interface_name} ${INCLUDES} ${LIBRARIES}")
+    endif ()
+endmacro()
