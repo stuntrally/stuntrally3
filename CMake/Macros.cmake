@@ -201,6 +201,20 @@ function(cmd_option name desc)
     set(${name} "${${name}}" PARENT_SCOPE)
 endfunction()
 
+# Helper to retrieve the settings returned from pkg_check_modules()
+macro(get_package_interface package)
+    set(INCLUDES ${${package}_INCLUDE_DIRS})
+
+    set(LINKDIRS ${${package}_LIBDIR})
+
+    # We resolve the full path of each library to ensure the
+    # correct one is referenced while linking
+    foreach (lib ${${package}_LIBRARIES})
+        find_library(LIB_${lib} ${lib} HINTS ${LINKDIRS})
+        list(APPEND LIBRARIES ${LIB_${lib}})
+    endforeach ()
+endmacro()
+
 macro(find_with_pkg package interface_name PKG_CONFIG)
     pkg_check_modules(${package} ${PKG_CONFIG})
 
