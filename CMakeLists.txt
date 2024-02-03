@@ -26,7 +26,7 @@ if (NOT WIN32)
     find_package(PkgConfig)
 endif ()
 
-project(StuntRally3)
+project(StuntRally3 VERSION "3.0.2")
 
 
 #  User Options  to disable building components  --------
@@ -75,7 +75,6 @@ endif ()
 
 #  Check for dependencies
 include(DependenciesConfig)
-
 
 macro(add_recursive dir retVal)
     file(GLOB GLOB_RESULT ${dir}/*.h ${dir}/*.cpp ${dir}/*.c)
@@ -191,8 +190,63 @@ foreach (EXE ${EXE_LIST})
             Vorbis::vorbisfile
     )
 
+    if (WIN32)
+        install(TARGETS ${EXE} DESTINATION .)
+
+        # add a post-build command to copy DLLs beside the executable
+        add_custom_command(
+            TARGET ${EXE}
+            POST_BUILD
+            COMMAND ${CMAKE_COMMAND}
+                -DEXECUTABLE="$<TARGET_FILE:${EXE}>"
+                -DBIN_DIR="${CMAKE_BINARY_DIR}"
+                -DLIB_DIR="$<TARGET_FILE_DIR:${EXE}>"
+                -P "${CMAKE_SOURCE_DIR}/CMake/FixupBundle.cmake"
+        )
+    endif ()
 endforeach ()
 
 message(STATUS "---------- SR end")
+
+
+#  Install targets
+# -----------------------
+
+if (WIN32)
+    install(DIRECTORY ${CMAKE_SOURCE_DIR}/data/ DESTINATION . PATTERN ".git/*" EXCLUDE)
+    install(DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/ DESTINATION . FILES_MATCHING PATTERN "*.dll" )
+    install(FILES ${CMAKE_SOURCE_DIR}/dist/plugins_Windows.cfg DESTINATION . RENAME plugins.cfg)
+    install(FILES ${CMAKE_SOURCE_DIR}/dist/resources2.cfg DESTINATION .)
+endif ()
+
+
+#  CPack
+# -----------------------
+set(CPACK_PACKAGE_NAME "Stunt Rally")
+set(CPACK_PACKAGE_FILE_NAME "stunt-rally-${CMAKE_PROJECT_VERSION}")
+set(CPACK_PACKAGE_DESCRIPTION "Stunt Rally is a 3D racing game with own Track Editor")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Stunt Rally is a 3D racing game with own Track Editor")
+set(CPACK_PACKAGE_VENDOR "Crystal Hammer")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/dist/license.rtf")
+set(CPACK_PACKAGE_EXECUTABLES "StuntRally3" "Stunt Rally 3")
+
+if (WIN32)
+    set(CPACK_GENERATOR INNOSETUP)
+    set(CPACK_ADD_REMOVE TRUE)
+    set(CPACK_CREATE_DESKTOP_LINKS "StuntRally3" "Stunt Rally 3")
+
+    set(CPACK_INNOSETUP_ALLOW_CUSTOM_DIRECTORY ON)
+    set(CPACK_INNOSETUP_USE_MODERN_WIZARD ON)
+    # set(CPACK_INNOSETUP_ICON_FILE "${CMAKE_CURRENT_SOURCE_DIR}/sr3.ico")
+    set(CPACK_INNOSETUP_SETUP_AppId "{{67B750C8-691F-4AAB-A79C-7557314B24A4}")
+
+    set(CPACK_PACKAGE_INSTALL_DIRECTORY "${CPACK_PACKAGE_NAME}")
+    # set(CPACK_INNOSETUP_SETUP_DiskSpanning True)
+else ()
+    set(CPACK_GENERATOR 7Z)
+endif ()
+
+include(CPack)
+
 
 feature_summary(WHAT ALL)
