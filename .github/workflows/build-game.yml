@@ -109,6 +109,13 @@ jobs:
           ninja
         shell: cmd
 
+      - name: Upload bin folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows
+          path: bin/Release/
+          
+
       - name: Clean Conan pkgs
         run: conan cache clean "*" -sbd
         shell: cmd
