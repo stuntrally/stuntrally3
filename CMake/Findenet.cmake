@@ -1,0 +1,1 @@
+find_with_pkg(enet "enet::enet" "libenet >= 1.3")

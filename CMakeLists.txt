@@ -18,6 +18,8 @@ if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.22")
     cmake_policy(SET CMP0127 OLD)
 endif ()
 
+set(CMAKE_FIND_PACKAGE_PREFER_CONFIG ON)
+
 include(CMakeDependentOption)
 include(Macros)
 include(FeatureSummary)

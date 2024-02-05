@@ -13,3 +13,5 @@ find_package(RapidJSON REQUIRED)
 find_package(SDL2 REQUIRED)
 find_package(tinyxml2 REQUIRED)
 find_package(Vorbis REQUIRED)
+
+include(AddMissingTargets)
