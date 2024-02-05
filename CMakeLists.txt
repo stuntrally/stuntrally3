@@ -206,6 +206,17 @@ foreach (EXE ${EXE_LIST})
     endif ()
 endforeach ()
 
+##  Translations tool
+##------------------------------------------------------------------------------------------------------
+if (BUILD_TRANSL_TOOL)
+	message(STATUS "Configuring: " ${TRANSL_EXE})
+
+	add_executable(${TRANSL_EXE} WIN32 ./src/transl/main.cpp)
+	target_include_directories(${TRANSL_EXE} PRIVATE ./src/transl)
+
+	target_precompile_headers(${TRANSL_EXE} PRIVATE src/transl/pch.h)
+endif()
+
 message(STATUS "---------- SR end")
 
 
