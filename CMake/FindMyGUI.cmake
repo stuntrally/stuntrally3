@@ -40,11 +40,11 @@ find_path(MyGUI_INCLUDE_DIR MyGUI.h PATH_SUFFIXES MYGUI)
 
 # Find release libraries
 find_library(MyGUI_MyGUIEngine_LIBRARY_REL MyGUIEngine PATH_SUFFIXES release relwithdebinfo minsizerel)
-find_library(MyGUI_OgrePlatform_LIBRARY_REL MyGUI.OgrePlatform PATH_SUFFIXES release relwithdebinfo minsizerel)
+find_library(MyGUI_OgrePlatform_LIBRARY_REL MyGUI.Ogre2Platform PATH_SUFFIXES release relwithdebinfo minsizerel)
 
 # Find debug libraries
 find_library(MyGUI_MyGUIEngine_LIBRARY_DBG NAMES MyGUIEngine_d MyGUIEngine PATH_SUFFIXES debug)
-find_library(MyGUI_OgrePlatform_LIBRARY_DBG NAMES MyGUI.OgrePlatform_d MyGUI.OgrePlatform PATH_SUFFIXES debug)
+find_library(MyGUI_OgrePlatform_LIBRARY_DBG NAMES MyGUIOgre2Platform_d MyGUI.Ogre2Platform PATH_SUFFIXES debug)
 
 # set include directories and libraries
 set(MyGUI_INCLUDE_DIRS ${MyGUI_INCLUDE_DIR})
