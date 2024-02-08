@@ -163,9 +163,9 @@
 	<Tag name="Undrivable">Undrivable</Tag>
 	<Tag name="Car_Mass">Massa</Tag>
 	<Tag name="Car_MassFront">Mass on front</Tag>
-	<Tag name="Car_MaxTorque">Torque mass.</Tag>
+	<Tag name="Car_MaxTorque">Coppia max</Tag>
 	<Tag name="Car_MaxPower">Mass.Potenza</Tag>
-	<Tag name="Car_BhpPerTon">Bhp per tonne</Tag>
+	<Tag name="Car_BhpPerTon">Bhp per tonnellata</Tag>
 	<Tag name="Car_TopSpeed">Velocità migliore</Tag>
 	<Tag name="Car_TimeTo">Tempo di</Tag>
 	<Tag name="Car_StopTimeFrom">Ferma il tempo da</Tag>
@@ -249,6 +249,7 @@
 	<Tag name="SC_GreeceRocky">GreeceRocky</Tag>
 	<Tag name="SC_Marble">Marble</Tag>
 	<Tag name="SC_Spring">Sterzare</Tag>
+	<Tag name="SC_Anomaly">Anomaly</Tag>
 	<Tag name="P_Red">Pronto</Tag>
 	<Tag name="P_Orange">Cambia</Tag>
 	<Tag name="P_Yellow">ForestaGialla</Tag>
@@ -297,7 +298,7 @@
 	<Tag name="TipNewGame">Inizia il gioco su una nuova pista oppure riavvia quella attuale.</Tag>
 	<Tag name="TipFind">Inserisci una parte del nome per cercare (lista dei filtri).</Tag>
 	<Tag name="TrackDifficulties">Piste con difficoltà differenti</Tag>
-	<Tag name="TipTrackDesc">Testo di descrizione pista</Tag>
+	<Tag name="TipTrackDesc">Testo di descrizione pista.</Tag>
 	<Tag name="TipTrackAdvice">Track driving advices and warnings.</Tag>
 	<Tag name="TipTrackImg">Immagine di gioco per la pista selezionata.</Tag>
 	<Tag name="TipTrackMap">Minimap della pista selezionata, vista dall'alto.</Tag>
@@ -330,7 +331,7 @@
 	<Tag name="Simulation">Simulazione</Tag>
 	<Tag name="NotRecommended">Not recommended</Tag>
 	<Tag name="ABS">ABS (freni antibloccaggio)</Tag>
-	<Tag name="TipABS">Impedisce il bloccaggio delle ruote in frenata (default: disattivato)</Tag>
+	<Tag name="TipABS">Impedisce il bloccaggio delle ruote in frenata (default: disattivato).</Tag>
 	<Tag name="TCS">TCS (controllo di trazione)</Tag>
 	<Tag name="TipTCS">Impedisce che le ruote girino durante l'accelerazione (default: disattivato).</Tag>
 	<Tag name="Gravel">Ghiaia</Tag>
@@ -546,7 +547,7 @@
 	<Tag name="SpeedUnit">Velocità di unità</Tag>
 	<Tag name="Gauges">Indicatori (giri/min, velocità)</Tag>
 	<Tag name="Layout">Layout</Tag>
-	<Tag name="Minimap">Minimap</Tag>
+	<Tag name="Minimap">Minimappa</Tag>
 	<Tag name="MinimapZoom">Zoom</Tag>
 	<Tag name="MinimapRotate">Ruota</Tag>
 	<Tag name="MinimapTerrain">Terreno</Tag>
@@ -638,7 +639,7 @@
 	<Tag name="InputMapFlip">Ribalta l'auto</Tag>
 	<Tag name="InputMapRewind">Riavvolgi il tempo</Tag>
 	<Tag name="InputMapShiftUp">Cambia marcia seguente</Tag>
-	<Tag name="InputMapShiftDown">Scala marcia prec.</Tag>
+	<Tag name="InputMapShiftDown">Scala marcia</Tag>
 	<Tag name="InputMapPrevCamera">Camera precedente</Tag>
 	<Tag name="InputMapNextCamera">Camera seguente</Tag>
 	<Tag name="InputMapLastChk">Vai all'ultimo checkp.</Tag>
@@ -1295,12 +1296,24 @@
 	<Tag name="LANG_pt_BR">Português (Brasil)</Tag>
 	<Tag name="LANG_it">Italiano</Tag>
 	<Tag name="LANG_sk">Slovenský</Tag>
-	<Tag name="LANG_es_AR">Español (Argentina)</Tag>
+	<Tag name="LANG_es">Español</Tag>
 	<Tag name="LANG_cs">Čeština</Tag>
 	<Tag name="LANG_nl_NL">Nederlands</Tag>
 	<Tag name="LANG_hu_HU">Magyar</Tag>
-	<Tag name="SC_Anomaly">Anomaly</Tag>
-	<Tag name="GameVersion">3.0</Tag>
+	<Tag name="HintGraphics">To adjust graphics to your card press Screen button.</Tag>
+	<Tag name="TipDebugShaders">Will save generated shaders in user's cache/shaders/ folder. Only for those not cached already. Optionally also properties on top, messing error line numbers.</Tag>
+	<Tag name="CacheMaterials">Cache Materials</Tag>
+	<Tag name="CacheShaders">Cache Shaders</Tag>
+	<Tag name="DebugShaders">Debug Shaders</Tag>
+	<Tag name="DebugProperties">Debug Properties</Tag>
+	<Tag name="Turbo">Turbo</Tag>
+	<Tag name="Ambience">Ambience</Tag>
+	<Tag name="EditSpd">Edit speed</Tag>
+	<Tag name="InputCamFocus">\ - focums camera on current (object, anything)</Tag>
+	<Tag name="InputFluidsQuality">1,2  - change fluid rendering quality</Tag>
+	<Tag name="InputObjectsMaterial">O,P - change material</Tag>
+	<Tag name="InputParticlesSize">K,L - change size scale</Tag>
+	<Tag name="GameVersion">3.0.1</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

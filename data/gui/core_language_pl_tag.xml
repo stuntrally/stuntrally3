@@ -249,6 +249,7 @@
 	<Tag name="SC_GreeceRocky">GrecjaSkalna</Tag>
 	<Tag name="SC_Marble">Marmur</Tag>
 	<Tag name="SC_Spring">Sterowanie</Tag>
+	<Tag name="SC_Anomaly">Anomalia</Tag>
 	<Tag name="P_Red">Czerwony</Tag>
 	<Tag name="P_Orange">Pomarańczowy</Tag>
 	<Tag name="P_Yellow">Żółty</Tag>
@@ -392,7 +393,7 @@
 	<Tag name="RplAlpha">Przeźroczysty duch</Tag>
 	<Tag name="RplMaxNumViewports">Maks. liczba widoków (dla powtórek kilkugraczowych)</Tag>
 	<Tag name="GhostHideDist">Ukryj duchy, gdy odległość jest mniejsza od</Tag>
-	<Tag name="RplHideHudAids">Hide HUD aids when playing replay (pacenotes, trail)</Tag>
+	<Tag name="RplHideHudAids">Ukryj pomoce z deski podczas powtórki (znaki, linia)</Tag>
 	<Tag name="Screen">Ekran</Tag>
 	<Tag name="Video">Wideo</Tag>
 	<Tag name="Resolution">Rozdzielczość</Tag>
@@ -569,14 +570,14 @@
 	<Tag name="FOV">Kąt widzenia</Tag>
 	<Tag name="Other">Inne</Tag>
 	<Tag name="Development">Narzędzia</Tag>
-	<Tag name="FPS">Fps bar, render statistics</Tag>
+	<Tag name="FPS">Pasek Fps, statystyki renderowania</Tag>
 	<Tag name="FPS_Fps">Klatki na sekundę (FPS)</Tag>
-	<Tag name="FPS_Triangles">Millions of triangles</Tag>
-	<Tag name="FPS_Draws">Draw calls</Tag>
+	<Tag name="FPS_Triangles">Miliony trójkątów</Tag>
+	<Tag name="FPS_Draws">Zawołania rysowania</Tag>
 	<Tag name="FPS_Instances">Odległość</Tag>
 	<Tag name="FPS_Vegetation">Kolizja z wegetacją</Tag>
 	<Tag name="FPS_Workspaces">Workspaces</Tag>
-	<Tag name="FPS_Memory">GPU memory</Tag>
+	<Tag name="FPS_Memory">Pamięć karty</Tag>
 	<Tag name="Wireframe">Szkielet</Tag>
 	<Tag name="BulletDebug">debug Bullet</Tag>
 	<Tag name="BulletProfilerTxt">Czasy profilera Bullet</Tag>
@@ -642,7 +643,7 @@
 	<Tag name="InputMapPrevCamera">Poprzedni widok</Tag>
 	<Tag name="InputMapNextCamera">Następny widok</Tag>
 	<Tag name="InputMapLastChk">Start od poprzedniego punktu kontrolnego</Tag>
-	<Tag name="InputMapLights">Toggle lights</Tag>
+	<Tag name="InputMapLights">Przełącz światła</Tag>
 	<Tag name="InputMapShowOptions">Pokaż opcje</Tag>
 	<Tag name="InputMapPrevTab">Poprzednia zakładka</Tag>
 	<Tag name="InputMapNextTab">Następna zakładka</Tag>
@@ -1039,7 +1040,7 @@
 	<Tag name="InputRoadsAdd">ctrl-Enter - Dodaj drogę, również do dekoracji, rzek, itp.</Tag>
 	<Tag name="InputRoadsNext">Enter - następna droga (jeśli wiele), shift - poprzednia</Tag>
 	<Tag name="InputRoadsDel">ctrl-shift-Enter - zmaż drogę</Tag>
-	<Tag name="InputRoadsRiver">alt-Enter - toggle River (no wall, columns etc.)</Tag>
+	<Tag name="InputRoadsRiver">alt-Enter - przełącz Rzekę (bez ścian, kolumn itp.)</Tag>
 	<Tag name="InputRoadMerge">M - przełącz łączenie segm. (dla testu)</Tag>
 	<Tag name="InputRoadStats">T - okno statystyki drogi</Tag>
 	<Tag name="InputRoadLooped">N - wyłącz zapętlenie</Tag>
@@ -1155,7 +1156,7 @@
 	<Tag name="Hint-17">Ścieżka</Tag>
 	<Tag name="Hint-17text">Follow racing line trail, for best way to drive. Use its colors to your advantage. Brake early when you see it turning red.</Tag>
 	<Tag name="Hint-18">Notatki rajdowe</Tag>
-	<Tag name="Hint-18text">Observe pace note signs above road. They show turns: easy as green, medium as orange, and sharpest being red.</Tag>
+	<Tag name="Hint-18text">Obserwuj znaki tempa nad drogą. Pokazują one zakręty: łatwe zielono, średnie pomarańczowo, a najostrzejsze czerwono.</Tag>
 	<Tag name="Hint-19">Wyczynowe notatki rajdowe</Tag>
 	<Tag name="Hint-19text">Pace notes also warn about stunts like jumps, loops and on pipe drive. For jumps, also text with ideal speed is shown. Turning green on close match, orange when too slow and cyan or white when too fast.</Tag>
 	<Tag name="Hint-20">Ciecze</Tag>
@@ -1295,12 +1296,24 @@
 	<Tag name="LANG_pt_BR">Português (Brasil)</Tag>
 	<Tag name="LANG_it">Italiano</Tag>
 	<Tag name="LANG_sk">Slovenský</Tag>
-	<Tag name="LANG_es_AR">Español (Argentina)</Tag>
+	<Tag name="LANG_es">Español</Tag>
 	<Tag name="LANG_cs">Čeština</Tag>
 	<Tag name="LANG_nl_NL">Nederlands</Tag>
 	<Tag name="LANG_hu_HU">Magyar</Tag>
-	<Tag name="SC_Anomaly">Anomaly</Tag>
-	<Tag name="GameVersion">3.0</Tag>
+	<Tag name="HintGraphics">To adjust graphics to your card press Screen button.</Tag>
+	<Tag name="TipDebugShaders">Will save generated shaders in user's cache/shaders/ folder. Only for those not cached already. Optionally also properties on top, messing error line numbers.</Tag>
+	<Tag name="CacheMaterials">Cache Materials</Tag>
+	<Tag name="CacheShaders">Cache Shaders</Tag>
+	<Tag name="DebugShaders">Debug Shaders</Tag>
+	<Tag name="DebugProperties">Debug Properties</Tag>
+	<Tag name="Turbo">Turbo</Tag>
+	<Tag name="Ambience">Ambience</Tag>
+	<Tag name="EditSpd">Edit speed</Tag>
+	<Tag name="InputCamFocus">\ - focums camera on current (object, anything)</Tag>
+	<Tag name="InputFluidsQuality">1,2  - change fluid rendering quality</Tag>
+	<Tag name="InputObjectsMaterial">O,P - change material</Tag>
+	<Tag name="InputParticlesSize">K,L - change size scale</Tag>
+	<Tag name="GameVersion">3.0.1</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>
