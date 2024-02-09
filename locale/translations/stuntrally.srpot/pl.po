@@ -10,18 +10,18 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-09 18:34+0100\n"
-"PO-Revision-Date: 2023-11-11 10:04+0000\n"
-"Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
+"PO-Revision-Date: 2024-02-09 21:02+0000\n"
+"Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
-"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && ("
+"n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
 "n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -1606,12 +1606,9 @@ msgid "Marble"
 msgstr "Marmur"
 
 #. Scenery names 
-#, fuzzy
-#| msgctxt "InputMapSteering"
-#| msgid "Steering"
 msgctxt "SC_Spring"
 msgid "Spring"
-msgstr "Sterowanie"
+msgstr "Wiosna"
 
 #. Scenery names 
 msgctxt "SC_Anomaly"
@@ -1909,7 +1906,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:283 ..Welcometo.Edit
 msgctxt "HintGraphics"
 msgid "To adjust graphics to your card press Screen button."
-msgstr ""
+msgstr "By dostosować opcje do karty graficznej naciśnij Ekran."
 
 #. Hint  welcome screen 
 #: data/gui/Game_Help.layout:308 ..Welcometo.Edit
@@ -2749,21 +2746,15 @@ msgstr "jeszcze nie zrobiono, do zrobienia"
 #. Screen  info 
 #: data/gui/Editor_Options.layout:197 ..Options.Graphics.Text
 #: data/gui/Game_Options.layout:715
-#, fuzzy
-#| msgctxt "Apply"
-#| msgid "Apply"
 msgctxt "NeedApply"
 msgid "need Apply"
-msgstr "Zastosuj"
+msgstr "wymaga Zastosuj"
 
 #. Screen  info 
 #: data/gui/Editor_Options.layout:209 ..Options.Graphics.Text
-#, fuzzy
-#| msgctxt "MessageBox_Ignore"
-#| msgid "Ignore"
 msgctxt "Ignored"
 msgid "ignored"
-msgstr "Zignoruj"
+msgstr "ignorowane"
 
 #. Screen  info 
 #: data/gui/Editor_Options.layout:221 ..Options.Graphics.Edit
@@ -3864,9 +3855,6 @@ msgstr "Pasek Fps, statystyki renderowania"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:238:239:240:241
-#, fuzzy
-#| msgctxt "FramesPerSec"
-#| msgid "Frames per second"
 msgctxt "FPS_Fps"
 msgid "Frames per second"
 msgstr "Klatki na sekundę (FPS)"
@@ -3885,21 +3873,15 @@ msgstr "Zawołania rysowania"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:242
-#, fuzzy
-#| msgctxt "Distance"
-#| msgid "Distance"
 msgctxt "FPS_Instances"
 msgid "Instances"
-msgstr "Odległość"
+msgstr "Instancje"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:242
-#, fuzzy
-#| msgctxt "VegetCol"
-#| msgid "Vegetation collision"
 msgctxt "FPS_Vegetation"
 msgid "Vegetation models"
-msgstr "Kolizja z wegetacją"
+msgstr "Modele wegetacji"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:243
@@ -4447,12 +4429,9 @@ msgstr "Ctrl-F5 - zacznij test wydajności auta"
 #. Game Input  Tweak tire edit 
 #: data/gui/Game_Options.layout:1677 ..Options.Tweak.Tweak.Text
 #: :1702..Options.Tweak.Tires.Text
-#, fuzzy
-#| msgctxt "TiresEdit"
-#| msgid "Tire Edit - (Graphs in mode 4)"
 msgctxt "TiresEdit"
 msgid "Tire Edit - (Graphs mode)"
-msgstr "Edycja opon - (Grafy w trybie 4)"
+msgstr "Edycja opon - (tryb Grafów)"
 
 #. Game Input  Tweak tire edit 
 #: data/gui/Game_Options.layout:1680 ..Options.Tweak.Tweak.Text
@@ -4522,7 +4501,7 @@ msgstr "Silnik"
 #: data/gui/Game_Options.layout:1404 ..Options.Sound.Other.Text
 msgctxt "Turbo"
 msgid "Turbo"
-msgstr ""
+msgstr "Turbo"
 
 #. Sound  main 
 #: data/gui/Editor.layout:3181 ..Editor.Vegetation.Surface.Surface.Text
@@ -4550,7 +4529,7 @@ msgstr "Środowisko"
 #: data/gui/Game_Options.layout:1295 ..Options.Sound.Main.Text
 msgctxt "Ambience"
 msgid "Ambience"
-msgstr ""
+msgstr "Otoczenie"
 
 #. Sound  main 
 #: data/gui/Editor_Track.layout:634 ..Track.Game.Text
@@ -6077,12 +6056,9 @@ msgstr "Nie pokazuj komunikatów \"Zły punkt kontrolny\""
 
 #. Editor Game setup 
 #: data/gui/Editor_Track.layout:626 ..Track.Game.Check
-#, fuzzy
-#| msgctxt "VehicleLights"
-#| msgid "Vehicle Lights"
 msgctxt "NeedLights"
 msgid "Requires vehicle lights"
-msgstr "Światła Pojazdów"
+msgstr "Wymaga świateł pojazdu"
 
 #. Editor Warnings 
 #: data/gui/Editor_Help.layout:237 ..Help.Input/help.Shortcuts.Text
@@ -6194,7 +6170,7 @@ msgstr "Pominięć odśw. minimapy"
 #: data/gui/Editor_Options.layout:814 ..Options.View.Minimap.Text
 msgctxt "EditSpd"
 msgid "Edit speed"
-msgstr ""
+msgstr "Szybkość edycji"
 
 #. Editor  Settings auto 
 #: data/gui/Editor_Options.layout:935 ..Options.Settings.Settings.Check
@@ -6493,7 +6469,7 @@ msgstr "Alt-Z - przełącz widok z góry"
 #: data/gui/Editor_Help.layout:115 ..Help.Input/help.View.Text
 msgctxt "InputCamFocus"
 msgid "focus camera on current (object, anything)"
-msgstr ""
+msgstr "ustaw kamerę na obecny (obiekt, cokolwiek)"
 
 #. MAIN  Editor View toggle 
 #: data/gui/Editor_Help.layout:119 ..Help.Input/help.View.Text
@@ -6561,12 +6537,9 @@ msgstr "C - maluj kolor"
 
 #. Terrain  Toggle 
 #: data/gui/Editor_Help.layout:285 ..Help.Input/help.Terrain.Text
-#, fuzzy
-#| msgctxt "InputLockBrush"
-#| msgid "Enter - lock brush position"
 msgctxt "InputLockBrush"
 msgid "Insert - lock brush position"
-msgstr "Enter - zablokuj pozycje pędzla"
+msgstr "Insert - zablokuj pozycje pędzla"
 
 #. Terrain  Toggle 
 #: data/gui/Editor_Help.layout:289 ..Help.Input/help.Terrain.Text
@@ -7074,7 +7047,7 @@ msgstr "-,= - zmień typ cieczy (woda, błoto, itp.)"
 #: data/gui/Editor_Help.layout:654 ..Help.Input/help.Fluids.Text
 msgctxt "InputFluidsQuality"
 msgid "1,2  - change fluid rendering quality"
-msgstr ""
+msgstr "1,2  - zmień jakość cieniowania cieczy"
 
 #. Fluids  Input advanced 
 #: data/gui/Editor_Help.layout:646 ..Help.Input/help.Fluids.Text
@@ -7215,7 +7188,7 @@ msgstr "-,=  -  zmień typ obiektu"
 #: data/gui/Editor_Help.layout:716 ..Help.Input/help.Objects.Text
 msgctxt "InputObjectsMaterial"
 msgid "O,P - change material"
-msgstr ""
+msgstr "O,P - zmień materiał"
 
 #. Objects  Input 
 #: data/gui/Editor_Help.layout:708 ..Help.Input/help.Objects.Text
@@ -7258,7 +7231,7 @@ msgstr "Enter - przełącz statyczne"
 #: data/gui/Editor_Help.layout:790 ..Help.Input/help.Particles.Text
 msgctxt "InputParticlesSize"
 msgid "K,L - change size scale"
-msgstr ""
+msgstr "K,L - zmień skalę wielkości"
 
 #. HUD  Camera info  parts (use same count, separated by comma) 
 #: src/game/FollowCamera.cpp:604
@@ -7348,6 +7321,7 @@ msgstr ""
 msgctxt "CarDesc_S8"
 msgid "Good rally car, drivable on all tracks, but shorter and more steerable."
 msgstr ""
+"Dobre auto rajdowe, na wszystkie trasy. Krótsze i przez to bardziej sterowne."
 
 #. Car descriptions 
 msgctxt "CarDesc_ES"
@@ -7419,6 +7393,8 @@ msgid ""
 "Normal size bike. Light, fast and very agile. Being small it does not like "
 "terrain bumps."
 msgstr ""
+"Motor normalnej wielkości. Lekki, szybki i zwinny. Jest mały i stąd nie lubi "
+"wybojów terenu."
 
 #. Car descriptions 
 msgctxt "CarDesc_BV"
@@ -7464,6 +7440,10 @@ msgid ""
 "only. It also has high center of mass, meaning it will end with wheels up, "
 "after bad landings."
 msgstr ""
+"Niesamowicie szybki, sześcio kołowy pojazd z zaawansowanym silnikiem "
+"elektrycznym. Świetny do wyścigów na wszystkich planetach. Uwaga: łatwo "
+"kręci kołami w miejscu, ma tylko 1 bieg. Ma również wysoki środek ciężkości "
+"i może skończyć kołami do góry, po złych skokach."
 
 #. Car descriptions 
 msgctxt "CarDesc_V1"
@@ -7536,14 +7516,10 @@ msgid "Rewind"
 msgstr "Powrót"
 
 #. TIP  Hints title+text  (in How To Play) 
-#, fuzzy
-#| msgctxt "Hint-0text"
-#| msgid ""
-#| "If you crashed or you're stuck, hold [Backspace] to move back in time."
 msgctxt "Hint-0text"
 msgid "If you crashed or you're stuck, hold [Insert] to move back in time."
 msgstr ""
-"Jeśli miałeś wypadek albo utknąłeś, przytrzymaj [Backspace] by cofnąć się w "
+"Jeśli miałeś wypadek albo utknąłeś, przytrzymaj [Insert] by cofnąć się w "
 "czasie."
 
 #. TIP  Hints title+text  (in How To Play) 
@@ -7798,6 +7774,8 @@ msgid ""
 "Follow racing line trail, for best way to drive. Use its colors to your "
 "advantage. Brake early when you see it turning red."
 msgstr ""
+"Podążaj za ścieżką jazdy, najlepszą drogą prowadzenia. Użyj jej kolorów do "
+"swojej przewagi. Hamuj wcześnie kiedy zmienia się na czerwono."
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:400 ..HowToPlay.Button
@@ -7839,6 +7817,8 @@ msgid ""
 "Fluids like water and mud are safe. You can drive cars under the water and "
 "through mud. Stay out of lava and acid, which will cause damage fast."
 msgstr ""
+"Ciecze jak woda i błoto są bezpieczne. Możesz prowadzić auta pod wodą i "
+"przez błoto. Unikaj lawy i kwasu, które szybko uszkadzają pojazdy."
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:435 ..HowToPlay.Button
