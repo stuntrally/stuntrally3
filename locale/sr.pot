@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-08 18:47+0100\n"
+"POT-Creation-Date: 2024-02-09 18:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7717,7 +7717,7 @@ msgstr ""
 #: data/gui/Editor_Help.layout:115
 #: ..Help.Input/help.View.Text
 msgctxt "InputCamFocus"
-msgid "\ - focums camera on current (object, anything)"
+msgid "focus camera on current (object, anything)"
 msgstr ""
 
 #. MAIN  Editor View toggle 
