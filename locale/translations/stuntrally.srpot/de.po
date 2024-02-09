@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-09 18:34+0100\n"
-"PO-Revision-Date: 2023-11-11 10:04+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2024-02-09 21:02+0000\n"
+"Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/de/>\n"
 "Language: de\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -1745,7 +1745,7 @@ msgstr ""
 #: data/gui/Game.layout:760 ..SingleRace.Vehicle.Text :765
 msgctxt "TipCarYear"
 msgid "Year when this vehicle's production started."
-msgstr ""
+msgstr "Jahr, in dem die Produktion dieses Fahrzeugs aufgenommen wurde."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:779 ..SingleRace.Vehicle.Text :785
@@ -1754,12 +1754,15 @@ msgid ""
 "Vehicle handling difficulty. Higher values require more skill driving this "
 "vehicle well on tracks, and bring more trouble."
 msgstr ""
+"Schwierigkeit der Fahrzeugsteuerung. Höhere Werte erfordern mehr "
+"Geschicklichkeit beim Fahren des Fahrzeugs auf der Strecke und bringen mehr "
+"Probleme mit sich."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:817 ..SingleRace.Vehicle.Text :823
 msgctxt "TipCarWidth"
 msgid "Year when this vehicle's production started."
-msgstr ""
+msgstr "Jahr, in dem die Produktion dieses Fahrzeugs aufgenommen wurde."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:476 ..SingleRace.Track.Image
@@ -1783,6 +1786,8 @@ msgid ""
 "Quality rating. Higher values mean: well made, playable, good looking and "
 "interesting design."
 msgstr ""
+"Qualitätsbewertung. Höhere Werte bedeuten: gut gemacht, spielbar, gut "
+"aussehend und interessantes Design."
 
 #. Championship  end 
 #: data/gui/Game_Utils.layout:63 ..Championship.Text :132..Challenge.Text
@@ -1899,6 +1904,7 @@ msgstr ""
 msgctxt "HintGraphics"
 msgid "To adjust graphics to your card press Screen button."
 msgstr ""
+"Um die Grafik an Ihre Karte anzupassen, drücken Sie die Taste Bildschirm."
 
 #. Hint  welcome screen 
 #: data/gui/Game_Help.layout:308 ..Welcometo.Edit
@@ -2383,7 +2389,7 @@ msgstr "Dynamische Objekte"
 #: data/gui/Game.layout:1360 ..SingleRace.Setup.Collision.Check
 msgctxt "DriveOnHorizons"
 msgid "Allow driving outside map, on horizons"
-msgstr ""
+msgstr "Erlaubt das Fahren außerhalb der Karte, an Horizonten"
 
 #. Game  Damage 
 #: data/gui/Editor.layout:336 ..Editor.Sun.Fog.Text
@@ -2742,21 +2748,15 @@ msgstr "noch nicht getan, ToDo"
 #. Screen  info 
 #: data/gui/Editor_Options.layout:197 ..Options.Graphics.Text
 #: data/gui/Game_Options.layout:715
-#, fuzzy
-#| msgctxt "Apply"
-#| msgid "Apply"
 msgctxt "NeedApply"
 msgid "need Apply"
-msgstr "Anwenden"
+msgstr "braucht Anwenden"
 
 #. Screen  info 
 #: data/gui/Editor_Options.layout:209 ..Options.Graphics.Text
-#, fuzzy
-#| msgctxt "MessageBox_Ignore"
-#| msgid "Ignore"
 msgctxt "Ignored"
 msgid "ignored"
-msgstr "Ignorieren"
+msgstr "ignoriert"
 
 #. Screen  info 
 #: data/gui/Editor_Options.layout:221 ..Options.Graphics.Edit
@@ -3519,7 +3519,7 @@ msgstr "Seiten auf einmal"
 #: data/gui/Game_Options.layout:818
 msgctxt "IblSamples"
 msgid "IBL samples"
-msgstr ""
+msgstr "IBL Proben"
 
 #. Graphics  reflections 
 msgctxt "ReflMode"
@@ -3888,7 +3888,7 @@ msgstr "Vegetationsmodelle"
 #: src/common/GuiCom_Options.cpp:243
 msgctxt "FPS_Workspaces"
 msgid "Workspaces"
-msgstr ""
+msgstr "Arbeitsbereiche"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:240:243
@@ -4503,7 +4503,7 @@ msgstr "Motor"
 #: data/gui/Game_Options.layout:1404 ..Options.Sound.Other.Text
 msgctxt "Turbo"
 msgid "Turbo"
-msgstr ""
+msgstr "Turbo"
 
 #. Sound  main 
 #: data/gui/Editor.layout:3181 ..Editor.Vegetation.Surface.Surface.Text
@@ -4531,7 +4531,7 @@ msgstr "Umgebung"
 #: data/gui/Game_Options.layout:1295 ..Options.Sound.Main.Text
 msgctxt "Ambience"
 msgid "Ambience"
-msgstr ""
+msgstr "Atmosphäre"
 
 #. Sound  main 
 #: data/gui/Editor_Track.layout:634 ..Track.Game.Text
@@ -4837,9 +4837,6 @@ msgstr "Ende"
 #. Editor  Weather 
 #: data/gui/Editor.layout:149 ..Editor.Sun.Sun.Check
 #: :154:220..Editor.Sun.Fog.Check
-#, fuzzy
-#| msgctxt "DisableEdit"
-#| msgid "Disable for edit"
 msgctxt "DisableEdit"
 msgid "Disable/enable for editing."
 msgstr "Beim Bearbeiten deaktivieren"
@@ -6176,7 +6173,7 @@ msgstr "Karten-Update überspr."
 #: data/gui/Editor_Options.layout:814 ..Options.View.Minimap.Text
 msgctxt "EditSpd"
 msgid "Edit speed"
-msgstr ""
+msgstr "Geschwindigkeit der Bearbeiten"
 
 #. Editor  Settings auto 
 #: data/gui/Editor_Options.layout:935 ..Options.Settings.Settings.Check
@@ -6475,7 +6472,7 @@ msgstr "Alt-Z - Draufsicht umschalten"
 #: data/gui/Editor_Help.layout:115 ..Help.Input/help.View.Text
 msgctxt "InputCamFocus"
 msgid "focus camera on current (object, anything)"
-msgstr ""
+msgstr "fokussieren der Kamera auf das aktuelle (Objekt, irgendetwas)"
 
 #. MAIN  Editor View toggle 
 #: data/gui/Editor_Help.layout:119 ..Help.Input/help.View.Text
@@ -6905,19 +6902,19 @@ msgstr ""
 #: data/gui/Editor_Help.layout:373 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsNext"
 msgid "Enter - next road (if many), shift - previous"
-msgstr ""
+msgstr "Enter - nächste Straße (falls mehrere), Shift - vorherige"
 
 #. Road  Input  more roads
 #: data/gui/Editor_Help.layout:381 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsDel"
 msgid "ctrl-shift-Enter - delete road"
-msgstr ""
+msgstr "Strg-shift-Enter - Straße löschen"
 
 #. Road  Input  more roads
 #: data/gui/Editor_Help.layout:385 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsRiver"
 msgid "alt-Enter - toggle River (no wall, columns etc.)"
-msgstr ""
+msgstr "alt-Enter - Fluss umschalten (keine Wand, Säulen usw.)"
 
 #. Road  Input  rarely used
 #: data/gui/Editor_Help.layout:364 ..Help.Input/help.Road1.Text
@@ -7053,7 +7050,7 @@ msgstr "-,= - Gewässertyp ändern"
 #: data/gui/Editor_Help.layout:654 ..Help.Input/help.Fluids.Text
 msgctxt "InputFluidsQuality"
 msgid "1,2  - change fluid rendering quality"
-msgstr ""
+msgstr "1,2 - Qualität der Flüssigkeitsdarstellung ändern"
 
 #. Fluids  Input advanced 
 #: data/gui/Editor_Help.layout:646 ..Help.Input/help.Fluids.Text
@@ -7194,7 +7191,7 @@ msgstr "-,= - Objekttyp wechseln"
 #: data/gui/Editor_Help.layout:716 ..Help.Input/help.Objects.Text
 msgctxt "InputObjectsMaterial"
 msgid "O,P - change material"
-msgstr ""
+msgstr "O,P - Material wechseln"
 
 #. Objects  Input 
 #: data/gui/Editor_Help.layout:708 ..Help.Input/help.Objects.Text
@@ -7237,7 +7234,7 @@ msgstr "Enter - statisch umschalten"
 #: data/gui/Editor_Help.layout:790 ..Help.Input/help.Particles.Text
 msgctxt "InputParticlesSize"
 msgid "K,L - change size scale"
-msgstr ""
+msgstr "K,L - Größenskala ändern"
 
 #. HUD  Camera info  parts (use same count, separated by comma) 
 #: src/game/FollowCamera.cpp:604
@@ -7325,6 +7322,7 @@ msgstr ""
 msgctxt "CarDesc_S8"
 msgid "Good rally car, drivable on all tracks, but shorter and more steerable."
 msgstr ""
+"Gutes Rallyeauto, fahrbar auf allen Strecken, aber kürzer und besser lenkbar."
 
 #. Car descriptions 
 msgctxt "CarDesc_ES"
@@ -7341,6 +7339,8 @@ msgid ""
 "Best rally car in game, drivable on all tracks with the best experience, "
 "similar to ES."
 msgstr ""
+"Bestes Rallyeauto im Spiel, fahrbar auf allen Strecken mit der besten "
+"Erfahrung, ähnlich wie ES."
 
 #. Car descriptions 
 msgctxt "CarDesc_TW"
@@ -7395,6 +7395,8 @@ msgid ""
 "Normal size bike. Light, fast and very agile. Being small it does not like "
 "terrain bumps."
 msgstr ""
+"Normal großes Motorrad. Leicht, schnell und sehr wendig. Da es klein ist, "
+"mag es keine Unebenheiten im Gelände."
 
 #. Car descriptions 
 msgctxt "CarDesc_BV"
@@ -7413,6 +7415,8 @@ msgid ""
 "Very tuned and powerful car. Drivable on all tracks. Not best on bumps. Can "
 "spin wheels easily."
 msgstr ""
+"Sehr getuntes und leistungsstarkes Auto. Fahrbar auf allen Strecken. Nicht "
+"optimal auf Unebenheiten. Kann Räder leicht durchdrehen."
 
 #. Car descriptions 
 msgctxt "CarDesc_PH"
@@ -7778,6 +7782,9 @@ msgid ""
 "Follow racing line trail, for best way to drive. Use its colors to your "
 "advantage. Brake early when you see it turning red."
 msgstr ""
+"Folgen Sie die Rennstrecke, um die beste Fahrweise zu finden. Nutzen Sie die "
+"Farben zu Ihrem Vorteil. Bremsen Sie frühzeitig, wenn Sie sehen, dass sie "
+"rot wird."
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:400 ..HowToPlay.Button
@@ -7791,6 +7798,8 @@ msgid ""
 "Observe pace note signs above road. They show turns: easy as green, medium "
 "as orange, and sharpest being red."
 msgstr ""
+"Beachten Sie die Hinweisschilder über der Straße. Sie zeigen Kurven an: "
+"leicht in grün, mittelschwer in orange und am schärfsten in rot."
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-19"
@@ -7817,6 +7826,9 @@ msgid ""
 "Fluids like water and mud are safe. You can drive cars under the water and "
 "through mud. Stay out of lava and acid, which will cause damage fast."
 msgstr ""
+"Flüssigkeiten wie Wasser und Schlamm sind sicher. Sie können Autos unter "
+"Wasser und durch Schlamm fahren. Halten Sie sich von Lava und Säure fern, "
+"die schnell Schaden anrichten können."
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:435 ..HowToPlay.Button
@@ -7854,6 +7866,9 @@ msgid ""
 "or create your own. Game also has its vehicle editor and many other "
 "development tools."
 msgstr ""
+"Stunt Rally verfügt über einen eigenen Streckeneditor, mit dem Sie die "
+"Strecken verändern oder eigene erstellen können. Das Spiel hat auch einen "
+"Fahrzeug-Editor und viele andere Entwicklungswerkzeuge."
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:442 ..HowToPlay.Button
@@ -7880,6 +7895,8 @@ msgid ""
 "Stunt Rally is Free Libre Open Source Software. You can contribute to this "
 "project or support it with donation(s)."
 msgstr ""
+"Stunt Rally ist eine freie Open-Source-Software. Sie können zu diesem "
+"Projekt beitragen oder es mit Spenden unterstützen."
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:435 ..HowToPlay.Button
@@ -7907,6 +7924,8 @@ msgid ""
 "Use handbrake very shortly in very sharp turns. It will lock rear wheels and "
 "make car turn faster."
 msgstr ""
+"Ziehen Sie die Handbremse in sehr scharfen Kurven nur kurz an. Dadurch "
+"werden die Hinterräder blockiert und das Auto dreht sich schneller."
 
 #. Game  User Path 
 #: data/gui/Game_Help.layout:99 ..Help.Support.Text
