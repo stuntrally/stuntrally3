@@ -8,11 +8,12 @@
 #include "CApp.h"
 #include "CGui.h"
 #include "Road.h"
-// #include <OgreTerrain.h>
+#include <Terra.h>
 #include <MyGUI_TextBox.h>
 #include <MyGUI_ImageBox.h>
 #include <MyGUI_EditBox.h>
 using namespace Ogre;
+using namespace std;
 
 
 ///...........................................................................................................................
@@ -205,7 +206,8 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 		float ptLen = len/float(cnt);
 		Warn(TXT,"Road length: "+fToStr(len,0,4)+ " points to length ratio: "+fToStr(ptLen,2,4));
 		if (ptLen > 85.f)
-			Warn(WARN,"Road points (on average) are very far\n (corners could behave sharp and straights become not straight).");
+			Warn(WARN,"Road points (on average) are very far (ratio > 85)\n"
+				" (corners could behave sharp and straights become not straight).");
 		else if (ptLen > 60.f)
 			Warn(INFO,"Road points are far.");
 
@@ -272,7 +274,7 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 			if (td.layersAll[l].on)  ++lay;
 		Warn(NOTE, "Terrain - layers used: "+toStr(lay));
 
-		hqTerrain = lay >= 4;
+		hqTerrain = i == 0 && lay >= 4;
 		if (hqTerrain)  Warn(INFO,"HQ Terrain");
 		if (lay >= 5)  Warn(ERR,"Too many terrain layers used - max 4 are supported");
 		if (lay <= 2)  Warn(INFO,"Too few terrain layers used");
@@ -285,8 +287,10 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 	
 	///  🌳🪨 Vegetation
 	//---------------------------------------------------------------
-	{
-		//  layers  ----
+	if (!pSet->bTrees)
+		Warn(WARN,"---- Vegetation OFF, toggle V on - for proper check");
+	else
+	{	//  layers  ----
 		int veg = sc->densTrees > 0.f ? sc->vegLayers.size() : 0;
 		Warn(NOTE,"---- Vegetation - models used: "+toStr(veg));  // works only when shown
 		// if (sc->densTrees < 0.01f)  Warn(WARN,"No Vegetation - feels empty :(");
@@ -333,7 +337,47 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 	if (fl > 6)  Warn(WARN,"Many fluids present (> 6), disable reflection on smaller");
 	hqFluids = fl > 0;
 	if (hqFluids)  Warn(INFO,"HQ, fluid present");
-	
+
+	//  if ter above and below, fluid depth should reach lowest ter h
+	i = 1;
+	const auto* ter = scn->ters[0];
+	for (const auto& fb : sc->fluids)
+	if (!fb.solid)
+	{
+		//  check rect 2d
+		bool above = 0, shallow = 0;
+		const float sizeX = fb.size.x*0.5f, sizeZ = fb.size.z*0.5f;
+		const float txz = sc->tds[0].fTerWorldSize;  // pos at 0
+		
+		// Warn(NOTE, "Fluid ter xz: "+fToStr(txz));
+		const float  // not outside ter []
+			Xmin = max(-txz, fb.pos.x - sizeX), Xmax = min( txz, fb.pos.x + sizeX),
+			Zmin = max(-txz, fb.pos.z - sizeZ), Zmax = min( txz, fb.pos.z + sizeZ);
+		// Warn(NOTE, "Fluid "+toStr(i)+" X min "+fToStr(Xmin)+" max "+fToStr(Xmax));
+		// Warn(NOTE, "Fluid "+toStr(i)+" Z min "+fToStr(Zmin)+" max "+fToStr(Zmax));
+
+		float lowest = 10000.f;
+		//  check fluid area  grid step 1m
+		for (float x = Xmin; x <= Xmax; x += 1.f)
+		for (float z = Zmin; z <= Zmax; z += 1.f)
+		{
+			float ty = ter->getHeight(x, z);
+			if (ty < lowest)  lowest = ty;
+
+			if (!above)  if (ty < fb.pos.y)  above = 1;
+			if (!shallow)  if (ty > fb.pos.y + fb.size.y)  shallow = 1;
+		}
+		float needed = fb.pos.y - lowest;
+		// if (above && shallow)
+		if (above && fb.size.y < needed)
+		{	Warn(WARN, "Fluid "+toStr(i)+" - too shallow, doesn't reach lowest terrain depth"+
+				// "\n "+fb.name+ "  pos y: "+fToStr(fb.pos.y)+"  ter low: "+fToStr(lowest)+
+				"\n "+fb.name+ "  depth: "+fToStr(fb.size.y)+"  needed: "+fToStr(needed));
+			//fb.size.y = needed;  // fix it, const-
+		}
+		++i;
+	}
+
 	//  📦 Objects
 	//---------------------------------------------------------------
 	// int objs = sc->objects.size();

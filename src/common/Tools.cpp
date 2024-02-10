@@ -250,6 +250,7 @@ void CGui::ToolSceneXml()
 
 		//  🌊 Fluids  --------
 		for (auto& f : sc.fluids)
+		if (!f.solid)
 		{
 			if (f.size.y < 1.f)
 				LogO(trk + " ! Very shallow fluid: "+f.name+"  depth: size.y= "+fToStr(f.size.y));
