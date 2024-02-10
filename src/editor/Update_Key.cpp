@@ -132,6 +132,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			if (pSet->escquit)
 				Quit();
 			return;
+		
+		case key(F7):
+			ToolExportRoR();
+			return;
 
 		case key(F1):  case key(GRAVE):
 			if (ctrl)  // context help (show for cur mode)

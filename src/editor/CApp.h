@@ -190,6 +190,7 @@ public:
 	void AlignTerToRoad(), AlignHorizonToTer();
 	int iSnap = 0;  Ogre::Real angSnap = 0.f;
 	int iEnd = 0;  // edit: 0 scn->start 1 end
+	void ToolExportRoR();
 
 
 	//  🚧 box cursors  car start,end,  fluids, objects, emitters
