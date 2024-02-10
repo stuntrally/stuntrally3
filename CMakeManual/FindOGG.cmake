@@ -1,0 +1,1 @@
+find_with_pkg(OGG "Ogg::ogg" "ogg >= 1.2")
