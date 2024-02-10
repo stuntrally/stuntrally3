@@ -32,6 +32,7 @@ SR 3.0 📽️ `editor Videos`, all new
   objects pick `errors`  
   water reflect in `F7 cam prv`  
   minimap **RTTs** upd skip (slow), or create on save  
+  new terrain issues [here](https://groups.f-hub.org/d/SW0mnXNV/track-rework-horizons-skies-and-updates/14)
   edit moved terrains, error in ray pos-  
   _tools_: fix **scale ter h**, copy horizon, which ter, road  
 

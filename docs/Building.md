@@ -2,9 +2,9 @@
 
 How to build on Windows is on other [page](BuildingVS.md).
 
-This page describes how to build Stunt Rally 3 on **Linux** (Debian-based),  
-using Conan, and its CMake setup from this [PR here](https://github.com/stuntrally/stuntrally3/pull/1).  
-Currently CMakeLists.txt in repo is not using Conan.
+This page describes how to build Stunt Rally 3 on **Linux** (Debian-based).  
+
+By default CMakeLists.txt is using Conan for our CI builds (and its CMake setup from this [PR here](https://github.com/stuntrally/stuntrally3/pull/1).  
 
 Tested on GNU/Linux, Debian 11 and 12. It should work on Debian-based (like Ubuntu etc).  
 _First steps here are same as in my [ogre3ter-demo](https://github.com/cryham/ogre3ter-demo/) it could be easier to build that for start._  
@@ -105,7 +105,7 @@ make -j6
 
 ## 5. Get deps for SR3
 
-We use [Conan](https://conan.io/) to get all deps (same as for original Stunt Rally), info on old [wiki here](https://stuntrally.tuxfamily.org/wiki/doku.php?id=compile).  
+We use [Conan](https://conan.io/) to get all deps (same as for original Stunt Rally), info on old [wiki here](https://stuntrally.tuxfamily.org/wiki/doku.php?id=compile) for CI builds.  
 This is optional but recommended, especially on Windows.  
 See [CMakeLists.txt](/CMakeLists.txt) and adjust if needed, it has some of my setup fixes, for SDL2, OpenAL etc.  
 
@@ -129,7 +129,13 @@ cd ..
 
 ## 7. Build SR3
 
-Inside `dev/sr3`:
+At first we need to:
+- rename `CMake/` dir to e.g. `CMakeCI/`
+- rename `CMakeManual/` dir to `CMake/`
+- rename `CMakeLists.txt` to e.g. `CMakeListsCI.txt`
+- rename `CMakeLists-Debian.txt` to `CMakeLists.txt`
+
+Then Inside `dev/sr3`:
 ```
 mkdir build
 cd build
