@@ -244,8 +244,18 @@ void CGui::ToolSceneXml()
 			{
 				auto *db = hlms->getDatablock(o.material);
 				if (!db)
-					LogO(trk + "Obj mat Not Found !  " + o.material + "  mesh  " + o.name);
+					LogO(trk + " Obj mat Not Found !  " + o.material + "  mesh  " + o.name);
 			}
+		}
+
+		//  🌊 Fluids  --------
+		for (auto& f : sc.fluids)
+		{
+			if (f.size.y < 1.f)
+				LogO(trk + " ! Very shallow fluid: "+f.name+"  depth: size.y= "+fToStr(f.size.y));
+			else
+			if (f.size.y < 20.f)
+				LogO(trk + " Shallow fluid: "+f.name+"  depth: size.y= "+fToStr(f.size.y));
 		}
 
 		if (modif)
