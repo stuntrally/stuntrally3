@@ -11,7 +11,9 @@
 #include "TracksXml.h"
 #include "Axes.h"
 // #include "Road.h"
+#include <OgreImage2.h>
 
+#include <exception>
 #include <string>
 #include <filesystem>
 namespace fs = std::filesystem;
@@ -52,6 +54,7 @@ void App::ToolExportRoR()
 
 	//  subdir  track name
 	const string trk = "^" + pSet->gui.track;  // ^ for on top
+	const string name = pSet->gui.track;
 	const string dirTrk = dirRoR + trk;
 	if (!PATHS::CreateDir(dirTrk))
 	{	gui->Exp(CGui::ERR, "Can't create track dir: "+dirTrk);
@@ -117,7 +120,7 @@ void App::ToolExportRoR()
 
 	//  save Hmap  .raw  16bit 2B
 	//------------------------------------------------------------
-	const string hmapFile = path + "heightmap.raw";
+	const string hmapFile = path + name + ".raw";
 	
 	ofstream of;
 	of.open(hmapFile.c_str(), std::ios_base::binary);
@@ -168,13 +171,13 @@ void App::ToolExportRoR()
 	
 	//  📄🏔️ Terrain layers setup  save  page.otc
 	//------------------------------------------------------------------------------------------------------------------------
-	string opgFile = path + "0-page-0-0.otc";
+	string opgFile = path + name + "-page-0-0.otc";
 	ofstream lay;
 	lay.open(opgFile.c_str(), std::ios_base::out);
 
-	lay << "heightmap.raw\n";
-	// opg << "2\n";  // todo
-	lay << layers << "\n";
+	lay << name + ".raw\n";
+	lay << "2\n";  // todo
+	// lay << layers << "\n";
 	lay << "; worldSize, diffusespecular, normalheight, blendmap, blendmapmode, alpha\n";
 
 	// int layers = std::min(4, (int)td.layers.size());  // todo
@@ -192,26 +195,19 @@ void App::ToolExportRoR()
 		if (i==0)
 			lay << l.tiling << " , " << diff+", "+norm+"\n";
 		else
-			lay << l.tiling << " , " << diff+", "+norm+", roadDensity.png, R, 0.99\n";
+			lay << l.tiling << " , " << diff+", "+norm+", " + name + "-road.png, R, 0.99\n";
 
 		//  todo all layers, blendmap R,G,B,A ..
 		// "5    , desert_sand_d.jpg, desert_sand_n.jpg, roadDensity.png, R, 0.99\n";
 	}
 	lay.close();
 
-	int r = 0;
-	Image2 imgRoad;  // fixme outside road
-	try
-	{	imgRoad.load(String("roadDensity.png"),"General");  }
-	catch(...)
-	{	}
-	r = imgRoad.getWidth();
-	gui->Exp(CGui::WARN, "road Dens: "+fToStr(r));
+
 
 
 	//  📄⛰️ Terrain hmap, setup  save  .otc
 	//------------------------------------------------------------
-	string otcFile = path + "0.otc";
+	string otcFile = path + name + ".otc";
 	ofstream otc;
 	otc.open(otcFile.c_str(), std::ios_base::out);
 
@@ -220,7 +216,7 @@ void App::ToolExportRoR()
 	otc << "PagesX=0\n";
 	otc << "PagesZ=0\n";
 	otc << "\n";
-	otc << "PageFileFormat=0-page-0-0.otc\n";
+	otc << "PageFileFormat=" + name + "-page-0-0.otc\n";
 	otc << "\n";
 	otc << "Heightmap.0.0.raw.size=" << size1 << "\n";
 	otc << "Heightmap.0.0.raw.bpp=2\n";
@@ -292,29 +288,34 @@ void App::ToolExportRoR()
 
 	//  get authors from tracks.ini
 	string authors = "CryHam";
+	int trkId = 0;  // N from ini
 	int id = scn->data->tracks->trkmap[pSet->gui.track];
 	if (id > 0)
 	{	const TrackInfo& ti = scn->data->tracks->trks[id-1];
 
 		authors = ti.author=="CH" ? "CryHam" : ti.author;
-	}
-
+		trkId = ti.n;
+	}else
+		gui->Exp(CGui::ERR, "Track not in tracks.ini, no id or authors set.");
+	
 
 	//  🏞️⛅ Track/map setup  save  .terrn2
 	//------------------------------------------------------------------------------------------------------------------------
-	string terrn2File = path + "0.terrn2";
+	string terrn2File = path + name + ".terrn2";
 	ofstream trn;
 	trn.open(terrn2File.c_str(), std::ios_base::out);
 
 	trn << "[General]\n";
 	trn << "Name = "+trk+"\n";
-	trn << "GeometryConfig = 0.otc\n";
+	trn << "GeometryConfig = " + name + ".otc\n";
 	trn << "Water=0\n";  // todo  find big water h-
 	trn << "WaterLine=1\n";
 
 	trn << "AmbientColor = 0.99, 0.98, 0.97\n";  // todo ? sc->lAmb
 	//trn << "StartPosition = 0.0, 110.0, 0.0\n";  // todo  start
 	Vector3 st = Axes::toOgre(sc->startPos[0]);
+	st.x += XZsize * 0.5f;  // half ter size
+	st.z += XZsize * 0.5f;
 	trn << "StartPosition = " << fToStr(st.x)+", "+fToStr(st.y)+", "+fToStr(st.z)+"\n";
 
 	trn << "#CaelumConfigFile = \n";  // todo  caelum.os
@@ -323,29 +324,30 @@ void App::ToolExportRoR()
 	trn << "Gravity = " << -sc->gravity << "\n";
 	trn << "CategoryID = 129\n";
 	trn << "Version = 1\n";
-	trn << "GUID = 11112222-e652-4d36-a32b-b9499db7898e\n";  // todo, random hash from trk name?
+	// todo, random hash from trk name?
+	trn << "GUID = 11223344-5566-7788-" << fToStr(trkId,0,4,'0') <<"-012345678901\n";
 	trn << "\n";
 	// trn << "//If your map has a groundmodel, define the landuse file in this format:\n";
 	trn << "#TractionMap = landuse.cfg\n";  // todo  surfaces.cfg
 	trn << "\n";
 	trn << "[Authors]\n";
-	trn << "terrain = " + authors + "\n";
+	trn << "track = " + authors + "\n";
 	trn << "conversion = Exported from Stunt Rally 3 Track Editor\n";
 	trn << " \n";
 	trn << "#[Objects]\n";  // todo  objs
-	trn << "#0.tobj=\n";
+	trn << "#"+name+".tobj=\n";
 	trn << "\n";
 	trn << "#[Scripts]\n";  // todo  road, checks
 	// trn << "//If your map has a race script define it here in this format:\n";
 	// trn << "//All 0.3x races use .terrn.as as the extension, include the .terrn also:\n";
-	trn << "#0.terrn.as=\n";
+	trn << "#"+name+".terrn.as=\n";
 
 	trn.close();
 
 
 	//  📄📦 Objects  save  .tobj
 	//------------------------------------------------------------
-	string objFile = path + "0.tobj";
+	string objFile = path + name + ".tobj";
 	ofstream obj;
 	obj.open(objFile.c_str(), std::ios_base::out);
 
@@ -360,7 +362,7 @@ void App::ToolExportRoR()
 		obj << o.name +"\n";
 	}
 	//  vegetation?..
-	scn->vegetNodes;
+	// scn->vegetNodes;
 
 	obj.close();
 
