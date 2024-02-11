@@ -203,6 +203,47 @@ void App::ToolExportRoR()
 	lay.close();
 
 
+	//  🛣️ Road image,  blend last
+	//------------------------------------------------------------
+	Image2 img, im2;  // fixme outside road
+	try
+	{
+		img.load(String("roadDensity.png"), "General");
+	#if 0  //  doesnt work-
+		img.flipAroundX();
+		// img.flipAroundY();
+		img.save(path + name + "-road.png", 0, 0);
+	#else
+		im2.load(String("roadDensity.png"), "General");
+
+		const int xx = img.getWidth(), yy = img.getHeight();
+	  #if 0  //  slow way
+		for (int y = 0; y < yy; ++y)
+		for (int x = 0; x < xx; ++x)
+		{
+			ColourValue cv = img.getColourAt(xx-1 - x, y, 0);
+			im2.setColourAt(cv, x, y, 0);
+		}
+	  #else
+		TextureBox tb = img.getData(0), tb2 = im2.getData(0);
+		auto pf = img.getPixelFormat();
+		for (int y = 0; y < yy; ++y)
+		for (int x = 0; x < xx; ++x)
+		{
+			ColourValue cv = tb.getColourAt(xx-1 - x, y, 0, pf);
+			tb2.setColourAt(cv, x, y, 0, pf);
+		}
+	  #endif
+
+		im2.save(path + name + "-road.png", 0, 0);  // road blend map
+	#endif
+	}
+	catch (exception ex)
+	{
+		gui->Exp(CGui::WARN, string("Exception in road Dens flip: ") + ex.what());
+	}
+	int r = img.getWidth();
+	gui->Exp(CGui::TXT, "Road image width: "+fToStr(r));
 
 
 	//  📄⛰️ Terrain hmap, setup  save  .otc
