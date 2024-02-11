@@ -15,6 +15,7 @@
 
 #include <exception>
 #include <string>
+#include <map>
 #include <filesystem>
 namespace fs = std::filesystem;
 using namespace Ogre;
@@ -89,8 +90,9 @@ void App::ToolExportRoR()
 	const float hsc = 1.f / (hmax - hmin);
 	
 	//  world size
-	const float Ysize = hmax - hmin;
-	const float XZsize = size *  td.fTriangleSize;
+	const float Ysize = (hmax - hmin);
+	const float XZsize = size *  td.fTriangleSize,
+		half = XZsize * 0.5f;  // half ter size offset
 
 	gui->Exp(CGui::TXT, "Hmap size   " + toStr(size));
 	gui->Exp(CGui::TXT, "Height min  " + toStr(hmin));
@@ -107,14 +109,14 @@ void App::ToolExportRoR()
 				(td.hfHeight[a] - hmin) * hsc * 32767.f + 32767.f;
 	}
 
-	//  todo works?
 	//  add extra +1 col  |
-	for (int y=0; y < size; ++y)
-		hmap[y * size + size-1] = hmap[y * size + size-2];
+	const int s = size1;
+	for (int y=0; y < s; ++y)
+		hmap[y * s + s-1] = hmap[y * s + s-2];
 	
 	//  add extra +1 row __
-	const int a = (size-1) * size, a1 = (size-2) * size;
-	for (int x=0; x < size; ++x)
+	const int a = (s-1) * s, a1 = (s-2) * s;
+	for (int x=0; x < s; ++x)
 		hmap[x + a] = hmap[x + a1];
 
 
@@ -176,12 +178,12 @@ void App::ToolExportRoR()
 	lay.open(opgFile.c_str(), std::ios_base::out);
 
 	lay << name + ".raw\n";
-	lay << "2\n";  // todo
-	// lay << layers << "\n";
+	lay << "2\n";  // wip
+	// lay << layers << "\n";  // todo
 	lay << "; worldSize, diffusespecular, normalheight, blendmap, blendmapmode, alpha\n";
 
+	layers = 2;  // wip  0 ter, 1 road  only ...
 	// int layers = std::min(4, (int)td.layers.size());  // todo
-	layers = 2;  // 0 ter, 1 road  only ...
 	for (int i=0; i < layers; ++i)
 	{
 		const TerLayer& l = td.layersAll[td.layers[i]];
@@ -197,7 +199,7 @@ void App::ToolExportRoR()
 		else
 			lay << l.tiling << " , " << diff+", "+norm+", " + name + "-road.png, R, 0.99\n";
 
-		//  todo all layers, blendmap R,G,B,A ..
+		// todo all layers  blendmap R,G,B,A ..
 		// "5    , desert_sand_d.jpg, desert_sand_n.jpg, roadDensity.png, R, 0.99\n";
 	}
 	lay.close();
@@ -210,21 +212,12 @@ void App::ToolExportRoR()
 	{
 		img.load(String("roadDensity.png"), "General");
 	#if 0  //  doesnt work-
-		img.flipAroundX();
-		// img.flipAroundY();
+		img.flipAroundX();  // img.flipAroundY();
 		img.save(path + name + "-road.png", 0, 0);
 	#else
 		im2.load(String("roadDensity.png"), "General");
 
 		const int xx = img.getWidth(), yy = img.getHeight();
-	  #if 0  //  slow way
-		for (int y = 0; y < yy; ++y)
-		for (int x = 0; x < xx; ++x)
-		{
-			ColourValue cv = img.getColourAt(xx-1 - x, y, 0);
-			im2.setColourAt(cv, x, y, 0);
-		}
-	  #else
 		TextureBox tb = img.getData(0), tb2 = im2.getData(0);
 		auto pf = img.getPixelFormat();
 		for (int y = 0; y < yy; ++y)
@@ -232,11 +225,8 @@ void App::ToolExportRoR()
 		{
 			ColourValue cv = tb.getColourAt(xx-1 - x, y, 0, pf);  // flip x
 			ColourValue c2(1.f - cv.r, 0.f, 0.f, 1.f);  // invert, red only
-			// ColourValue c2(1.f - cv.r, 1.f - cv.g, 1.f - cv.b, cv.a);  // invert
 			tb2.setColourAt(c2, x, y, 0, pf);
 		}
-	  #endif
-
 		im2.save(path + name + "-road.png", 0, 0);  // road blend map
 	#endif
 	}
@@ -311,7 +301,7 @@ void App::ToolExportRoR()
 	otc << "CompositeMapDistance=5000\n";
 	otc << "\n";
 	otc << "# the default size of 'skirts' used to hide terrain cracks, default: 30\n";
-	otc << "SkirtSize=30\n";
+	otc << "SkirtSize=10\n";
 	otc << "\n";
 	otc << "#  Sets the default size of lightmaps for a new terrain, default: 1024\n";
 	otc << "LightMapSize=1024\n";
@@ -330,6 +320,7 @@ void App::ToolExportRoR()
 
 
 	//  get authors from tracks.ini
+	//------------------------------------------------------------
 	string authors = "CryHam";
 	int trkId = 0;  // N from ini
 	int id = scn->data->tracks->trkmap[pSet->gui.track];
@@ -342,6 +333,18 @@ void App::ToolExportRoR()
 		gui->Exp(CGui::ERR, "Track not in tracks.ini, no id or authors set.");
 	
 
+	//  🌊 Fluids  get 1 big for water level
+	//------------------------------------------------------------
+	int water = 0;  float Ywater = 0.f;
+	for (const auto& fl : sc->fluids)
+	{
+		if (!water && sc->fluids.size()==1 || fl.size.x > 200.f)  // pick 1st big
+		{	water = 1;
+			Ywater = fl.pos.y + Ysize;  // todo fix ?
+	}	}
+	gui->Exp(CGui::TXT, String("Water: ")+(water ? "yes" : "no")+"  Y level: "+fToStr(Ywater));
+
+
 	//  🏞️⛅ Track/map setup  save  .terrn2
 	//------------------------------------------------------------------------------------------------------------------------
 	string terrn2File = path + name + ".terrn2";
@@ -351,38 +354,44 @@ void App::ToolExportRoR()
 	trn << "[General]\n";
 	trn << "Name = "+trk+"\n";
 	trn << "GeometryConfig = " + name + ".otc\n";
-	trn << "Water=0\n";  // todo  find big water h-
-	trn << "WaterLine=1\n";
-
+	trn << "\n";
+	trn << "Water=" << water << "\n";
+	trn << "WaterLine=" << Ywater << "\n";
+	trn << "\n";
 	trn << "AmbientColor = 0.99, 0.98, 0.97\n";  // todo  sc->lAmb  unused?
-	//trn << "StartPosition = 0.0, 110.0, 0.0\n";  // todo  start
+	//  ror = sr
+	//  0, y, 0        = -470, y, 460
+	//  959, 340 y, 950 = 487, y, -472
 	Vector3 st = Axes::toOgre(sc->startPos[0]);
-	st.x += XZsize * 0.5f;  // half ter size
-	st.z += XZsize * 0.5f;
-	trn << "StartPosition = " << fToStr(st.x)+", "+fToStr(st.y)+", "+fToStr(st.z)+"\n";
+	trn << "StartPosition = " << fToStr(half - st.z)+", "+fToStr(st.y + Ysize)+", "+fToStr(st.x + half)+"\n";
+	trn << "\n";
 
 	trn << "#CaelumConfigFile = \n";  // todo  caelum.os
-	trn << "SandStormCubeMap = tracks/skyboxcol\n";  // sky meh-
-
+	trn << "SandStormCubeMap = tracks/skyboxcol\n";  // sky meh- dome?
 	trn << "Gravity = " << -sc->gravity << "\n";
+	trn << "\n";
+
 	trn << "CategoryID = 129\n";
 	trn << "Version = 1\n";
 	// todo, random hash from trk name?
 	trn << "GUID = 11223344-5566-7788-" << fToStr(trkId,0,4,'0') <<"-012345678901\n";
 	trn << "\n";
-	// trn << "//If your map has a groundmodel, define the landuse file in this format:\n";
+	//  if has groundmodel, define landuse file
 	trn << "#TractionMap = landuse.cfg\n";  // todo  surfaces.cfg
 	trn << "\n";
+
 	trn << "[Authors]\n";
 	trn << "track = " + authors + "\n";
 	trn << "conversion = Exported from Stunt Rally 3 Track Editor\n";
 	trn << " \n";
-	trn << "#[Objects]\n";  // todo  objs
-	trn << "#"+name+".tobj=\n";
+
+	trn << "[Objects]\n";
+	trn << ""+name+".tobj=\n";
+	// trn << ""+name+"-veget.tobj=\n";  // todo
 	trn << "\n";
+
 	trn << "#[Scripts]\n";  // todo  road, checks
-	// trn << "//If your map has a race script define it here in this format:\n";
-	// trn << "//All 0.3x races use .terrn.as as the extension, include the .terrn also:\n";
+	//  if has race script define .terrn.as
 	trn << "#"+name+".terrn.as=\n";
 
 	trn.close();
@@ -394,20 +403,51 @@ void App::ToolExportRoR()
 	ofstream obj;
 	obj.open(objFile.c_str(), std::ios_base::out);
 
+	int iodef = 0;
+	std::map<string, int> once;
 	for (const auto& o : sc->objects)
 	{
 		Vector3 p = Axes::toOgre(o.pos);
 		auto q = Axes::toOgreW(o.rot);
-		// obj << "257.641, 1.19744, 225.319, -0, 0, 0, 8c07UID-baja_rock_01\n";
-		obj << fToStr(p.x)+", "+fToStr(p.y)+", "+fToStr(p.z);
-		// todo q.toEulerAngles ?
-		obj << "-0, 0, 0, ";
+
+		obj << fToStr(half - p.z)+", "+fToStr(p.y + Ysize)+", "+fToStr(p.x + half)+", ";
+		// todo  fix all rot ?
+		// obj << fToStr(q.getPitch().valueDegrees()+90.f,0,3)+", "+fToStr(q.getYaw().valueDegrees(),0,3)+", "+fToStr(q.getRoll().valueDegrees(),0,3)+", ";
+		obj << fToStr(90.f,0,3)+", "+fToStr(0.f,0,3)+", "+fToStr(q.getYaw().valueDegrees(),0,3)+", ";
+		// todo  no scale ?
 		obj << o.name +"\n";
+		
+		//  object  save  .odef
+		//------------------------------------------------------------
+		string odefFile = path + o.name + ".odef";
+		// if (!fs::exists(odefFile))
+		if (once.find(o.name) != once.end())
+		{
+			once[o.name] = 1;
+			ofstream odef;
+			odef.open(odefFile.c_str(), std::ios_base::out);
+			
+			odef << o.name + ".mesh\n";
+			odef << "1, 1, 1\n";
+			odef << "\n";
+			odef << "beginmesh\n";
+			odef << "mesh " + o.name + ".mesh\n";
+			odef << "stdfriction concrete\n";
+			odef << "endmesh\n";
+			odef << "\n";
+			odef << "end\n";
+			
+			odef.close();  ++iodef;
+		}
+		// todo: once copy .mesh, texture, material ...
 	}
+	obj.close();
+
+	gui->Exp(CGui::TXT, "Objects: "+toStr(sc->objects.size())+"  odef: "+toStr(iodef));
+
 	//  vegetation?..
 	// scn->vegetNodes;
-
-	obj.close();
+	// trn << ""+name+"-veget.tobj=\n";
 
 
 	gui->Exp(CGui::INFO, "Export to RoR end.");
