@@ -413,6 +413,11 @@ public:
 	int iLoadNext = 0;
 	Ck ckCheckSave, ckCheckLoad;
 
+	//  RoR export
+	void btnExport(WP);
+	Ed edExport =0, edRoRPath =0;  void editRoRPath(Ed);
+	void Exp(eWarn type, Ogre::String text);
+
 
 	//  👆 Pick  --------------------
 	Ck ckPickSetPar;  WP panPick =0;

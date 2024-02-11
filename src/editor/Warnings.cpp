@@ -22,6 +22,13 @@ using namespace std;
 
 const static String clrWarn[CGui::WARN_ALL] = {"#F01010","#FF4040","#FFA040","#E0E040","#80F040","#60A0E0"};
 const static String strWarn[CGui::WARN_ALL] = {"FATAL ", "ERR   ", "WARN  ", "Info  ", "Note  ", "Txt   "};
+
+void CGui::Exp(eWarn type, Ogre::String text)
+{
+	LogO("RoR Export | "+strWarn[type]+text);
+	edExport->addText(clrWarn[type]+text+"\n");
+	if (type == FATAL || type == ERR || type == WARN)  ++cntWarn;  // count serious only
+}
 void CGui::Warn(eWarn type, String text)
 {
 	if (logWarn)

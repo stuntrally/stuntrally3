@@ -65,7 +65,10 @@ public:
 	//  👆 pick
 	bool pick_setpar =1;
 
-	
+	//  RoR dir
+	std::string pathExportRoR;
+
+
 //------------------------------------------
 	template <typename T>
 	bool Param(CONFIGFILE & conf, bool write, std::string pname, T & value)

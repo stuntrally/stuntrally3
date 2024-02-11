@@ -1358,6 +1358,9 @@
 	<Tag name="TweakUser">User</Tag>
 	<Tag name="TweakOriginal">Original</Tag>
 
+	<Tag name="Export">Export</Tag>
+	<Tag name="PathRoRExport">Rigs of Rods content path</Tag>
+
 
 <!--  ............................................................................................................................  -->
 <!--  Input/help  -->
