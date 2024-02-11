@@ -230,8 +230,10 @@ void App::ToolExportRoR()
 		for (int y = 0; y < yy; ++y)
 		for (int x = 0; x < xx; ++x)
 		{
-			ColourValue cv = tb.getColourAt(xx-1 - x, y, 0, pf);
-			tb2.setColourAt(cv, x, y, 0, pf);
+			ColourValue cv = tb.getColourAt(xx-1 - x, y, 0, pf);  // flip x
+			ColourValue c2(1.f - cv.r, 0.f, 0.f, 1.f);  // invert, red only
+			// ColourValue c2(1.f - cv.r, 1.f - cv.g, 1.f - cv.b, cv.a);  // invert
+			tb2.setColourAt(c2, x, y, 0, pf);
 		}
 	  #endif
 
@@ -352,7 +354,7 @@ void App::ToolExportRoR()
 	trn << "Water=0\n";  // todo  find big water h-
 	trn << "WaterLine=1\n";
 
-	trn << "AmbientColor = 0.99, 0.98, 0.97\n";  // todo ? sc->lAmb
+	trn << "AmbientColor = 0.99, 0.98, 0.97\n";  // todo  sc->lAmb  unused?
 	//trn << "StartPosition = 0.0, 110.0, 0.0\n";  // todo  start
 	Vector3 st = Axes::toOgre(sc->startPos[0]);
 	st.x += XZsize * 0.5f;  // half ter size

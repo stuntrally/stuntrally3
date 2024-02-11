@@ -133,10 +133,6 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				Quit();
 			return;
 		
-		case key(F7):
-			ToolExportRoR();
-			return;
-
 		case key(F1):  case key(GRAVE):
 			if (ctrl)  // context help (show for cur mode)
 			{
@@ -415,7 +411,9 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 
 		//  🖼️🎥 prv cam
-		case key(F7):  togPrvCam();  break;
+		case key(F7):
+			if (alt)  ToolExportRoR();
+			else      togPrvCam();  break;
 
 
 		//  💧 fluids
