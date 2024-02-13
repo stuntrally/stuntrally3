@@ -369,17 +369,18 @@ void CScene::UpdSun(float dt)
 	}
 
 	//  🌿 grass sphere pos ()
-	/*if (hasCars)
+	if (atmo)
+	if (hasCars)
 	{
 		Real r = 1.7;  r *= r;  //par
-		const Vector3* p = &carModels[0]->posSph[0];
-		mFactory->setSharedParameter("posSph0", sh::makeProperty <sh::Vector4>(new sh::Vector4(p->x,p->y,p->z,r)));
-		p = &carModels[0]->posSph[1];
-		mFactory->setSharedParameter("posSph1", sh::makeProperty <sh::Vector4>(new sh::Vector4(p->x,p->y,p->z,r)));
+		auto& p = app->carModels[0]->posSph[0];
+		atmo->posSph0 = Vector4(p.x,p.y,p.z,r);
+		p = app->carModels[0]->posSph[1];
+		atmo->posSph1 = Vector4(p.x,p.y,p.z,r);
 	}else
-	{	mFactory->setSharedParameter("posSph0", sh::makeProperty <sh::Vector4>(new sh::Vector4(0,0,500,-1)));
-		mFactory->setSharedParameter("posSph1", sh::makeProperty <sh::Vector4>(new sh::Vector4(0,0,500,-1)));
-	}*/
+	{	atmo->posSph0 = Vector4(0,0,500,-1);
+		atmo->posSph1 = Vector4(0,0,500,-1);
+	}
 
 #endif	
 

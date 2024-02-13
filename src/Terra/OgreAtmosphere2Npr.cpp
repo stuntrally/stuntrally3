@@ -74,12 +74,11 @@ namespace Ogre
 		//**  new other
 		float globalTime;  // for water, grass, wind etc
 
+		float4 posSph0;   // grass deform, 2 collision spheres pos,r^2
+		float4 posSph1;   //    for 1 car only  // todo: splitscreen meh-
+
 		// float2 windDir;   // x,z  new ..
 		// float windSpeed;  // freq, amp, turbulence-
-        
-        // todo:
-		// float4 posSph0;   // grass deform, 2 collision spheres pos,r^2
-		// float4 posSph1;   //    for 1 car only  // todo: splitscreen meh-
     };
 
     Atmosphere2Npr::Atmosphere2Npr( VaoManager *vaoManager ) :
@@ -463,6 +462,9 @@ namespace Ogre
         atmoGpu.fogFluidClr = fogFluidClr;
 
         atmoGpu.globalTime  = globalTime;
+
+        atmoGpu.posSph0 = posSph0;
+        atmoGpu.posSph1 = posSph1;
 
         mHlmsBuffer->upload( &atmoGpu, 0u, sizeof( atmoGpu ) );
     }

@@ -110,6 +110,9 @@ namespace Ogre
             Ogre::Vector4 fogFluidH;
             Ogre::Vector4 fogFluidClr;
 
+		    Ogre::Vector4 posSph0;   // grass deform 2 spheres pos,R^2
+		    Ogre::Vector4 posSph1;
+
             Preset() :
                 time( 0.0f ),
                 // densityCoeff( 0.27f ),
@@ -128,6 +131,7 @@ namespace Ogre
                 linkedSceneAmbientUpperPower( 0.1f * Math::PI ),
                 linkedSceneAmbientLowerPower( 0.01f * Math::PI ),
                 envmapScale( 1.0f ),
+                
                 //**  fog new  ----
                 fogStartDistance( 0.0f ),
                 fogHcolor(0.5,0.75,1,1),
@@ -135,7 +139,10 @@ namespace Ogre
                 fogColourSun( 0.99f, 0.99f, 0.98f, 1.f ),
                 fogColourAway( 0.74f, 0.87f, 1.0f, 1.f ),
                 fogFluidH(-1900.f, 1.f/17.f, 0.15f, 0 ),
-                fogFluidClr( 0.5f, 0.6f, 0.7f, 0.f)
+                fogFluidClr( 0.5f, 0.6f, 0.7f, 0.f),
+
+        	    posSph0(0,0,500,-1),
+		        posSph1(0,0,500,-1)
             {
             }
 
@@ -203,6 +210,8 @@ namespace Ogre
         float globalTime = 0.f;
         Vector4 fogFluidH{-1900.f, 1.f/17.f, 0.15f, 0};
         Vector4 fogFluidClr{0,0,0,0};
+
+        Vector4 posSph0{0,0,-500,1}, posSph1{0,0,-500,1};
 
     protected:
         MaterialPtr         mMaterial;
