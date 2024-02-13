@@ -1,11 +1,18 @@
-# Tested on GNU/Linux, Debian 11 and 12.
+# INFO
 
-# This assumes you used scripts to get and build latest Ogre-next from sources
+# This config assumes you used sh script to get and build latest Ogre-next from sources
 # And your Ogre source code is above, in ../Ogre/ogre-next and ../Ogre/ogre-next-deps
 
+# This is only for Linux.
+# If needed check and comment out or adjust places with:  #  fix
+
+# To use: rename this file to CMakeLists.txt and folder CMakeManual\ to CMake\
+# Details in docs\Building.md
+
+# Tested on GNU/Linux, Debian 11 and 12.
 # For Windows use CMakeLists-Windows*.txt file instead.
-# see also CMake/DependenciesConfig.cmake
-# Conan is used to get SR deps, or not if using FORCE_SYSTEM_DEPENDENCIES.
+# See also CMake/DependenciesConfig.cmake
+# Conan is not used to get SR deps here.
 
 
 cmake_minimum_required( VERSION 3.16 )
@@ -109,7 +116,7 @@ endif()
 include(DependenciesConfig)
 
 #- message( STATUS "---------- resolve_conan_dependencies" )
-#- resolve_conan_dependencies()  // fixme?
+#- resolve_conan_dependencies()  // no
 
 
 #  root dir

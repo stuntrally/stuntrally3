@@ -1,28 +1,35 @@
 {
+	"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    
     "files.associations": {
         "*.any": "csharp",
         "*.glsl": "c",
         "*.material": "csharp",
         "*.compositor": "jsonc",
-        "*.particle": "hlsl",
+        // "*.particle": "hlsl",
         "*.car": "ini",
         "*.ini": "ruby",
         "*.layout": "xml"
     },
     "files.exclude": {
         ".vscode": false,
-        "CMake/": true,
+        //"CMake/": true,
         "build/": true,
         "locale/": true,
         "Dependencies/": true,
         //"**/Hlms/*": true,
         "bin*/": true,
+        //"data/": true,
         "**/Plugins/": true,
         "**/*.bin": true,
         "**/*.so*": true,
         "**/*.cache": true,
         "**/*.zip": true,
     },
+    "C_Cpp.autocomplete": "Disabled",
+    "C_Cpp.formatting": "Disabled",
+    "C_Cpp.errorSquiggles": "Disabled",
+    "C_Cpp.intelliSenseEngine": "Disabled",
     // "cmake.configureArgs": [
     //   "-DBUILD_EDITOR=ON",
     // ],
@@ -30,10 +37,11 @@
     //   "--checks='-*'",
     //   "--header-insertion=iwyu",
     // ],
-    // "python.pythonPath": "/usr/bin/python3",
+    "python.pythonPath": "/usr/bin/python3",
     "editor.suggest.localityBonus": true,
     "editor.cursorWidth": 2,
     //  default works
-    // "cmake.buildDirectory": "${workspaceFolder}/build"
-    "cmake.buildDirectory": "${workspaceFolder}/build${buildType}"
+    "cmake.buildDirectory": "${workspaceFolder}/build"
+    //  own dirs for Debug/RelDeb etc, but broken clangd parsing,definition navigation etc?
+    // "cmake.buildDirectory": "${workspaceFolder}/build${buildType}"
 }

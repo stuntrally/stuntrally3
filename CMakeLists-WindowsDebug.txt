@@ -1,10 +1,18 @@
+# INFO
 
-# This assumes you used scripts to get and build latest Ogre-next from sources
-# And your Ogre source code is above, in ../Ogre/ogre-next and ../Ogre/ogre-next-deps
-# Tested on GNU/Linux, Debian 11.
-# Windows most likely broken and it probably needs Ogre inside Dependencies subdir here, can be linked.
+# This config assumes you used bat script to get and build latest Ogre-next from sources
+# and your Ogre source code is above, in ../Ogre/ogre-next and ../Ogre/ogre-next-deps
+# Also assuming all dependencies were built from sources.
+
+# This is only for Windows, Debug version.
+# Have to set manual paths below to yours. All start with  D:/_/sr/
+
+# To use: rename this file to CMakeLists.txt and folder CMakeManual\ to CMake\
+# Details in docs\BuildingVS.md
+
+# Tested on Windows 10.
 # see CMake/DependenciesConfig.cmake
-# Conan is used to get SR deps, or not if using FORCE_SYSTEM_DEPENDENCIES.
+# Conan is not used
 
 
 cmake_minimum_required( VERSION 3.16 )
@@ -109,7 +117,7 @@ endif()
 # include(DependenciesConfig)
 
 #- message( STATUS "---------- resolve_conan_dependencies" )
-#- resolve_conan_dependencies()  // fixme?
+#- resolve_conan_dependencies()
 
 
 #  root dir
