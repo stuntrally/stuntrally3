@@ -1,6 +1,4 @@
-#include "OgreHlmsSamplerblock.h"
 #include "pch.h"
-#include "half.hpp"
 #include "Def_Str.h"
 #include "HudRenderable.h"
 #include <OgreRoot.h>
@@ -9,6 +7,7 @@
 #include <OgreHlms.h>
 #include <OgreHlmsManager.h>
 #include <OgreHlmsUnlitDatablock.h>
+#include <OgreHlmsSamplerblock.h>
 #include <Vao/OgreVaoManager.h>
 #include <Vao/OgreVertexArrayObject.h>
 #include <Vao/OgreVertexElements.h>

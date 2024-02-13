@@ -50,12 +50,6 @@
 #include <OgreConfigFile.h>
 #include <OgreWindowEventUtilities.h>
 
-// #include <OgreTerrain.h>
-// #include <OgreTerrainGroup.h>
-// #include <OgreTerrainQuadTreeNode.h>
-// #include <OgreTerrainMaterialGeneratorA.h>
-// #include <OgreTerrainPaging.h>
-
 //#include "btBulletDynamicsCommon.h"
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>
