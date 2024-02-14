@@ -104,13 +104,15 @@ void App::ToolExportRoR()
 	gui->Exp(CGui::TXT, "World XZ size  " + toStr(XZsize));
 	gui->Exp(CGui::TXT, "World Y size   " + toStr(Ysize));
 
-	//  normalize  to 2B raw:  0..65535
+	//  normalize  to 2B raw
+	//  SR           ->  .raw     ->  RoR
+	//  hmin .. hmax ->  0..65535 ->  0.f .. Ysize
 	for (int y=0; y < size; ++y)
 	{
 		int a = y * size;
 		for (int x=0; x < size; ++x,++a)
 			hmap[x*size1 + y] =  // flip x-y
-				(td.hfHeight[a] - hmin) * hsc * 32767.f + 32767.f;
+				(td.hfHeight[a] - hmin) * hsc * 65535.f;
 	}
 
 	//  add extra +1 col  |
@@ -384,7 +386,7 @@ void App::ToolExportRoR()
 	otc << "WorldSizeZ=" << XZsize << "\n";
 	otc << "\n";
 	otc << "# Heightmap values multiply factor\n";
-	otc << "WorldSizeY=" << Ysize * 2.f << "\n";
+	otc << "WorldSizeY=" << Ysize << "\n";
 	otc << "\n";
 	otc << "# Default size of blend maps for terrain. This is the resolution of each blending layer for a new terrain. default: 1024\n";
 	otc << "LayerBlendMapSize=" << bleSize << "\n";
@@ -463,7 +465,7 @@ void App::ToolExportRoR()
 	{
 		if (!water && sc->fluids.size()==1 || fl.size.x > 200.f)  // pick 1st big
 		{	water = 1;
-			Ywater = fl.pos.y + Ysize;  // todo fix ?
+			Ywater = fl.pos.y - hmin;
 	}	}
 	gui->Exp(CGui::TXT, String("Water: ")+(water ? "yes" : "no")+"  Y level: "+fToStr(Ywater));
 
@@ -570,7 +572,7 @@ void App::ToolExportRoR()
 	//  0, y, 0        = -470, y, 460
 	//  959, 340 y, 950 = 487, y, -472
 	Vector3 st = Axes::toOgre(sc->startPos[0]);
-	trn << "StartPosition = " << fToStr(half - st.z)+", "+fToStr(st.y + Ysize)+", "+fToStr(st.x + half)+"\n";
+	trn << "StartPosition = " << fToStr(half - st.z)+", "+fToStr(st.y - hmin)+", "+fToStr(st.x + half)+"\n";
 	trn << "\n";
 
 	trn << "CaelumConfigFile = " + name + ".os\n";
@@ -629,7 +631,7 @@ void App::ToolExportRoR()
 		Vector3 p = Axes::toOgre(o.pos);
 		auto q = Axes::toOgreW(o.rot);
 
-		obj << fToStr(half - p.z)+", "+fToStr(p.y + Ysize)+", "+fToStr(p.x + half)+", ";
+		obj << fToStr(half - p.z)+", "+fToStr(p.y - hmin)+", "+fToStr(p.x + half)+", ";
 		// todo  fix all rot ?
 		// obj << fToStr(q.getPitch().valueDegrees()+90.f,0,3)+", "+fToStr(q.getYaw().valueDegrees(),0,3)+", "+fToStr(q.getRoll().valueDegrees(),0,3)+", ";
 		obj << fToStr(90.f,0,3)+", "+fToStr(0.f,0,3)+", "+fToStr(q.getYaw().valueDegrees(),0,3)+", ";
@@ -722,14 +724,14 @@ void App::ToolExportRoR()
 
 			//  rot
 			// float yaw = p.aYaw;
-			float yaw = TerUtil::GetAngle(vP1.x - vP.x, vP1.z - vP.z) *180.f/PI_d;
+			float yaw = TerUtil::GetAngle(vP1.x - vP.x, vP1.z - vP.z) *180.f/PI_d - 45.f;
 
 			// vN = scn ? TerUtil::GetNormalAt(scn->ters[0],  // 1st ter-
 			// 	vP.x, vP.z, DL.fLenDim*0.5f /*0.5f*/) : Vector3::UNIT_Y;
 
 			//  pos  ---
-			float Yup = 20.5f + rd->g_Height;  // ?
-			trd << half - vP.z << ", " << vP.y + Yup + Ysize << ", " << vP.x + half << ",   ";
+			float Yup = -0.5f + rd->g_Height;  // par ?
+			trd << half - vP.z << ", " << vP.y + Yup - hmin << ", " << vP.x + half << ",   ";
 			//  rot  ---
 			// trd << "0,0,0,  ";  // p.aYaw, ..
 			trd << "0, " << yaw << ", 0,  ";
@@ -737,9 +739,9 @@ void App::ToolExportRoR()
 			//  bridge  ---
 			// trd << "0,  0,  flat\n";
 			if (p.onTer)
-				trd << "0.25,  1.0,  both\n";
+				trd << "0.5,  0.2,  flat\n";
 			else
-				trd << "0.25,  1.0,  bridge\n";
+				trd << "0.6,  1.0,  bridge\n";
 		}
 		trd << "end_procedural_roads\n";
 		/*	0,0,0,         0,0,0,    10.0,  0,            0,             flat
