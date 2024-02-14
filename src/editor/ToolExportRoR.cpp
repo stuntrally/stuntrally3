@@ -12,8 +12,10 @@
 #include "TracksXml.h"
 #include "Axes.h"
 #include "Road.h"
+
 #include <Terra.h>
 #include <OgreImage2.h>
+#include <OgreVector3.h>
 
 #include <exception>
 #include <string>
@@ -44,7 +46,7 @@ void App::ToolExportRoR()
 	gui->Exp(CGui::INFO, "Export to RoR started..");
 
 
-	//  dir  export to RoR content path
+	//  dir  export to RoR content or mods path
 	string& dirRoR = pSet->pathExportRoR;
 	if (dirRoR.empty())
 	{	gui->Exp(CGui::ERR, "Export path empty. Need to set export RoR path first.");
@@ -368,36 +370,34 @@ void App::ToolExportRoR()
 	ofstream otc;
 	otc.open(otcFile.c_str(), std::ios_base::out);
 
-	otc << "# the amount of pages in this terrain\n";
-	otc << "# 0, 0 means that you only have one page\n";
+	otc << "# Amount of pages in this terrain, 0 0 means only one page\n";
 	otc << "PagesX=0\n";
 	otc << "PagesZ=0\n";
-	otc << "\n";
 	otc << "PageFileFormat=" + name + "-page-0-0.otc\n";
 	otc << "\n";
 	otc << "Heightmap.0.0.raw.size=" << size1 << "\n";
 	otc << "Heightmap.0.0.raw.bpp=2\n";
 	otc << "Heightmap.0.0.flipX=0\n";
 	otc << "\n";
-	otc << "# The world size of the terrain\n";
+	otc << "# World size of terrain\n";
 	otc << "WorldSizeX=" << XZsize << "\n";
 	otc << "WorldSizeZ=" << XZsize << "\n";
 	otc << "\n";
-	otc << "# the factor with what the heightmap values get multiplied with\n";
+	otc << "# Heightmap values multiply factor\n";
 	otc << "WorldSizeY=" << Ysize * 2.f << "\n";
 	otc << "\n";
-	otc << "# Sets the default size of blend maps for a new terrain. This is the resolution of each blending layer for a new terrain. default: 1024\n";
+	otc << "# Default size of blend maps for terrain. This is the resolution of each blending layer for a new terrain. default: 1024\n";
 	otc << "LayerBlendMapSize=" << bleSize << "\n";
 	otc << "\n";
 	otc << "# disableCaching=1 will always enforce regeneration of the terrain, useful if you want to change the terrain config (.otc) and test it. Does not cache the objects on it.\n";
 	otc << "disableCaching=1\n";
 	otc << "\n";
-	otc << "#optimizations\n";
+	otc << "#optimizations ----\n";
 	otc << "\n";
-	otc << "# Minimum batch size (along one edge) in vertices; must be 2^n+1. The terrain will be divided into tiles, and this is the minimum size of one tile in vertices (at any LOD). default: 17\n";
+	otc << "# Must be 2^n+1. Minimum terrain tile size in vertices (at any LOD). default: 17\n";
 	otc << "minBatchSize=17\n";
 	otc << "\n";
-	otc << "# Maximum batch size (along one edge) in vertices; must be 2^n+1 and <= 65. The terrain will be divided into hierarchical tiles, and this is the maximum size of one tile in vertices (at any LOD). default: 65\n";
+	otc << "# Must be 2^n+1 and <= 65. Maximum terrain tile size in vertices (at any LOD). default: 65\n";
 	otc << "maxBatchSize=65\n";
 	otc << "\n";
 	otc << "# Whether to support a light map over the terrain in the shader, if it's present (default true).\n";
@@ -407,7 +407,7 @@ void App::ToolExportRoR()
 	otc << "NormalMappingEnabled=1\n";  // yes
 	otc << "\n";
 	otc << "# Whether to support specular mapping per layer in the shader (default true). \n";
-	otc << "SpecularMappingEnabled=1\n";  // idk DS
+	otc << "SpecularMappingEnabled=0\n";  // idk DS
 	otc << "\n";
 	otc << "# Whether to support parallax mapping per layer in the shader (default true). \n";
 	otc << "ParallaxMappingEnabled=0\n";  // no, NH meh
@@ -425,7 +425,7 @@ void App::ToolExportRoR()
 	otc << "CompositeMapDistance=5000\n";  // off
 	otc << "\n";
 	otc << "# the default size of 'skirts' used to hide terrain cracks, default: 30\n";
-	otc << "SkirtSize=10\n";
+	otc << "SkirtSize=10\n";  // ok
 	otc << "\n";
 	otc << "#  Sets the default size of lightmaps for a new terrain, default: 1024\n";
 	otc << "LightMapSize=1024\n";
@@ -468,7 +468,91 @@ void App::ToolExportRoR()
 	gui->Exp(CGui::TXT, String("Water: ")+(water ? "yes" : "no")+"  Y level: "+fToStr(Ywater));
 
 
-	//  🏞️⛅ Track/map setup  save  .terrn2
+	//  ⛅ Caelum  sun light etc  save  .os
+	//------------------------------------------------------------------------------------------------------------------------
+	string osFile = path + name + ".os";
+	ofstream os;
+	os.open(osFile.c_str(), std::ios_base::out);
+
+	os << "caelum_sky_system " + name + ".os\n";
+	os << "{\n";
+	os << "	// .75 = 6:00\n";
+	os << "	julian_day 2458850\n";
+	os << "	time_scale 1\n";
+	os << "	longitude 30\n";
+	os << "	latitude 10\n";
+	os << "\n";
+	os << "	point_starfield {\n";
+	os << "		magnitude_scale 12.51189\n";
+	os << "		mag0_pixel_size 16\n";
+	os << "		min_pixel_size 4\n";
+	os << "		max_pixel_size 6\n";
+	os << "	}\n";
+	os << "\n";
+	os << "	manage_ambient_light true\n";
+	os << "	minimum_ambient_light 0.05 0.05 0.1\n";
+	os << "\n";
+	os << "	manage_scene_fog yes\n";  // todo..
+	os << "	ground_fog_density_multiplier 0.015\n";  // cg! no diff-
+	os << "	scene_fog_density_multiplier 0.015\n";
+	os << "\n";
+	os << "	sun {\n";  // 🌞 sun light
+	Vector3 la = sc->lAmb.GetRGB()*1.6f + Vector3(0.1,0.1,0.1);  // par amb bright
+	Vector3 ld = sc->lDiff.GetRGB()*1.6f;  // tweak..
+	Vector3 ls = sc->lSpec.GetRGB()*0.9f;
+	os << "		ambient_multiplier "+fToStr(la.x,3,5)+" "+fToStr(la.y,3,5)+" "+fToStr(la.z,3,5)+"\n";
+	os << "		diffuse_multiplier "+fToStr(ld.x,3,5)+" "+fToStr(ld.y,3,5)+" "+fToStr(ld.z,3,5)+"\n";
+	os << "		specular_multiplier "+fToStr(ls.x,3,5)+" "+fToStr(ls.y,3,5)+" "+fToStr(ls.z,3,5)+"\n";
+	os << "\n";
+	os << "		auto_disable_threshold 0.05\n";
+	os << "		auto_disable true\n";
+	os << "	}\n";
+	os << "\n";
+	os << "	moon {\n";
+	os << "		ambient_multiplier 0.2 0.2 0.2\n";
+	os << "		diffuse_multiplier 1 1 0.9\n";
+	os << "		specular_multiplier 1 1 1\n";
+	os << "\n";
+	os << "		auto_disable_threshold 0.05\n";
+	os << "		auto_disable true\n";
+	os << "	}\n";
+	os << "\n";
+	os << "	sky_dome {\n";
+	os << "		haze_enabled yes\n";
+	os << "		sky_gradients_image EarthClearSky2.png\n";
+	os << "		atmosphere_depth_image AtmosphereDepth.png\n";
+	os << "	}\n";
+	os << "\n";
+	os << "	cloud_system\n";
+	os << "	{\n";
+	os << "		cloud_layer low\n";
+	os << "		{\n";
+	os << "			height 2000\n";
+	os << "			coverage 0.2\n";
+	os << "		}\n";
+	if (0)
+	{
+	os << "		cloud_layer mid\n";
+	os << "		{\n";
+	os << "			height 3000\n";
+	os << "			coverage 0.4\n";
+	os << "		}\n";
+	}
+	if (0)
+	{
+	os << "		cloud_layer high\n";
+	os << "		{\n";
+	os << "			height 4000\n";
+	os << "			coverage 0.6\n";
+	os << "		}\n";
+	}
+	os << "	}\n";
+	os << "}\n";
+
+	os.close();
+
+
+	//  🏞️ Track/map setup  save  .terrn2
 	//------------------------------------------------------------------------------------------------------------------------
 	string terrn2File = path + name + ".terrn2";
 	ofstream trn;
@@ -481,7 +565,7 @@ void App::ToolExportRoR()
 	trn << "Water=" << water << "\n";
 	trn << "WaterLine=" << Ywater << "\n";
 	trn << "\n";
-	trn << "AmbientColor = 0.99, 0.98, 0.97\n";  // todo  sc->lAmb  unused?
+	trn << "AmbientColor = 1.0, 1.0, 1.0\n";  // unused-
 	//  ror = sr
 	//  0, y, 0        = -470, y, 460
 	//  959, 340 y, 950 = 487, y, -472
@@ -489,8 +573,8 @@ void App::ToolExportRoR()
 	trn << "StartPosition = " << fToStr(half - st.z)+", "+fToStr(st.y + Ysize)+", "+fToStr(st.x + half)+"\n";
 	trn << "\n";
 
-	trn << "#CaelumConfigFile = \n";  // todo  caelum.os
-	trn << "SandStormCubeMap = tracks/skyboxcol\n";  // sky meh- dome?
+	trn << "CaelumConfigFile = " + name + ".os\n";
+	trn << "SandStormCubeMap = tracks/skyboxcol\n";  // sky meh-
 	trn << "Gravity = " << -sc->gravity << "\n";
 	trn << "\n";
 
@@ -506,8 +590,9 @@ void App::ToolExportRoR()
 	trn << "[Authors]\n";
 	trn << "authors = " + authors + "\n";
 	trn << "conversion = Exported from Stunt Rally 3 Track Editor, version: " << SET_VER << "\n";
-	bool road = !scn->roads.empty() && scn->roads[0]->getNumPoints() > 2;
-	if (road)
+	bool roadtxt = !scn->roads.empty();
+	bool road = roadtxt && scn->roads[0]->getNumPoints() > 2;
+	if (roadtxt)
 	{
 		auto& rd = scn->roads[0];  // extra info from sr3 track
 		trn << "description = "+rd->sTxtDescr+"\n";
@@ -517,7 +602,9 @@ void App::ToolExportRoR()
 
 	trn << "[Objects]\n";
 	// trn << ""+name+".tobj=\n";
-	// trn << ""+name+"-veget.tobj=\n";  // todo
+	const bool veget = 1;  // par..
+	if (veget)
+		trn << ""+name+"-veget.tobj=\n";  // todo
 	if (road)
 		trn << ""+name+"-road.tobj=\n";
 	trn << "\n";
@@ -578,12 +665,34 @@ void App::ToolExportRoR()
 	gui->Exp(CGui::TXT, "Objects: "+toStr(sc->objects.size())+"  odef: "+toStr(iodef));
 
 
-	//  grass
+	//  🌿 Grass layers
 	//------------------------------------------------------------------------------------------------------------------------
+	//  todo  RTT.. save png
+	const SGrassLayer* g0 = &sc->grLayersAll[0];
+	for (int i=0; i < sc->ciNumGrLay; ++i)
+	{
+		const SGrassLayer* gr = &sc->grLayersAll[i];
+		if (gr->on)
+		{
+			const SGrassChannel* ch = &scn->sc->grChan[gr->iChan];
+			// ch->angMin
+			// ch->angMax
+			// gr->minSx, gr->maxSx
+			// format: grass range, SwaySpeed, SwayLength, SwayDistribution, Density, minx, miny, maxx, maxy, fadetype, minY, maxY, material colormap densitymap
+			//grass 100, 0.5, 0.05, 10, 3.0, 0.2, 0.2, 1, 1, 1, 10, 0, grass2 RoRArizona-SCRUB1.dds RoRArizona-VEGE1.dds
+			//grass 600, 0.5, 0.15, 10, 0.3, 0.3, 0.3, 1.2, 1.2, 1, 10, 0, grass4 RoRArizona-SCRUB1.dds RoRArizona-VEGE1.dds
+			//  copy grass*.png
+			//  create .material for it
+		}
+	}
 
-	//  vegetation?..
-	// scn->vegetNodes;
+
+	//  🌳🪨 Vegetation
+	//------------------------------------------------------------------------------------------------------------------------
 	// trn << ""+name+"-veget.tobj=\n";
+	// trees yawFrom, yawTo, scaleFrom, scaleTo, highDensity, distance1, distance2, meshName colormap densitymap
+	//trees 0, 360, 0.1, 0.12, 2, 60, 3000, fir05_30.mesh aspen-test.dds aspen_grass_density2.png 
+	//  todo save densitymap  0 blk .. 1 wh
 
 
 	gui->Exp(CGui::INFO, "Export to RoR end.");
