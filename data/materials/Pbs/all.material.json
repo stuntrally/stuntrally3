@@ -619,33 +619,6 @@
 			}
 		},
 
-		"3D-Diggers/base" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"alpha_test" : ["greater", 0.5, false],
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [1, 1, 1],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [1, 1, 1]
-			},
-			"fresnel" :
-			{
-				"value" : 0.03,
-				"mode" : "coeff"
-			},
-			"roughness" :
-			{
-				"value" : 0.03
-			}
-		},
-
 		"3D-Diggers/farn01" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -804,33 +777,6 @@
 				"background" : [1, 1, 1, 1],
 				"texture" : "fir02w.jpg",
 				"sampler" : "Sampler_10"
-			},
-			"specular" :
-			{
-				"value" : [0.5, 0.5, 0.5]
-			},
-			"fresnel" :
-			{
-				"value" : 0.01,
-				"mode" : "coeff"
-			},
-			"roughness" :
-			{
-				"value" : 0.01
-			}
-		},
-
-		"3D-Diggers/fir_base" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"alpha_test" : ["greater", 0.5, false],
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [1, 1, 1],
-				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
@@ -8049,6 +7995,7 @@
 			"alpha_test" : ["greater", 0.31, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [0.9, 0.9, 0.9],
@@ -23693,6 +23640,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [0.64, 0.64, 0.64],
@@ -23721,6 +23669,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [0.64, 0.64, 0.64],
@@ -23750,6 +23699,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [0.59, 0.59, 0.59],
@@ -23779,6 +23729,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1.2, 0.9],
@@ -23808,6 +23759,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [0.9, 0.9, 0.9],
@@ -24352,6 +24304,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -24387,6 +24340,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [0.6, 0.72, 0.7],
@@ -25966,6 +25920,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [0.9, 0.9, 0.9],
@@ -26208,6 +26163,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -26243,6 +26199,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -26278,6 +26235,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -26313,6 +26271,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -26348,6 +26307,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -26383,6 +26343,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -26418,6 +26379,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -26453,6 +26415,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -26488,6 +26451,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -26509,33 +26473,6 @@
 				"value" : 1,
 				"texture" : "pine_norm_norm.jpg",
 				"sampler" : "Sampler_10"
-			},
-			"roughness" :
-			{
-				"value" : 0.1
-			}
-		},
-
-		"pine_base" :
-		{
-			"macroblock" : "Macroblock_2",
-			"blendblock" : "Blendblock_0",
-			"alpha_test" : ["greater", 0.5, false],
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [1, 1, 1],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0.5, 0.5, 0.5]
-			},
-			"fresnel" :
-			{
-				"value" : 0.15,
-				"mode" : "coeff"
 			},
 			"roughness" :
 			{
@@ -47842,6 +47779,7 @@
 			"alpha_test" : ["greater", 0.75, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -47877,6 +47815,7 @@
 			"alpha_test" : ["greater", 0.75, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -47912,6 +47851,7 @@
 			"alpha_test" : ["greater", 0.75, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -47946,6 +47886,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -47981,6 +47922,7 @@
 			"alpha_test" : ["greater", 0.75, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48016,6 +47958,7 @@
 			"alpha_test" : ["greater", 0.75, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48050,6 +47993,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48077,7 +48021,7 @@
 				"value" : 0.5
 			}
 		},
-
+		
 		"tree.09.moss.mat/ALPHA/TEX/tree.09.png/VertCol/TWOSIDE" :
 		{
 			"macroblock" : "Macroblock_2",
@@ -48085,6 +48029,7 @@
 			"alpha_test" : ["greater", 0.75, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48119,6 +48064,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48148,6 +48094,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48176,6 +48123,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48205,6 +48153,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48233,6 +48182,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48262,6 +48212,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48290,6 +48241,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48319,6 +48271,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48347,6 +48300,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48376,6 +48330,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48405,6 +48360,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48433,6 +48389,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48462,6 +48419,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48491,6 +48449,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48519,6 +48478,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48548,6 +48508,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48576,6 +48537,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48605,6 +48567,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48634,6 +48597,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.05, 0.95, 1.1],
@@ -48668,6 +48632,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48697,6 +48662,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [0.9, 0.9, 0.9],
@@ -48725,6 +48691,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48754,6 +48721,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48782,6 +48750,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48811,6 +48780,7 @@
 			"alpha_test" : ["greater", 0.8, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48839,6 +48809,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48868,6 +48839,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48896,6 +48868,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48925,6 +48898,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -48953,6 +48927,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -48982,6 +48957,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49010,6 +48986,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49039,6 +49016,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49067,6 +49045,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49096,6 +49075,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49124,6 +49104,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49153,6 +49134,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49181,6 +49163,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.3, 1.3, 1.2],
@@ -49210,6 +49193,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49238,6 +49222,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49267,6 +49252,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [0.8, 0.8, 0.8],
@@ -49295,6 +49281,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49324,6 +49311,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49352,6 +49340,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49381,6 +49370,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.15, 1.15, 1.2],
@@ -49415,6 +49405,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49444,6 +49435,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49472,6 +49464,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49501,6 +49494,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49529,6 +49523,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49558,6 +49553,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49586,6 +49582,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49615,6 +49612,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49643,6 +49641,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49672,6 +49671,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49700,6 +49700,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49729,6 +49730,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [0.9, 1, 0.9],
@@ -49757,6 +49759,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49786,6 +49789,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49814,6 +49818,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49843,6 +49848,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49871,6 +49877,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49900,6 +49907,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49928,6 +49936,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -49957,6 +49966,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -49985,6 +49995,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50014,6 +50025,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -50042,6 +50054,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50071,6 +50084,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -50099,6 +50113,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50128,6 +50143,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -50156,6 +50172,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50185,6 +50202,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -50213,6 +50231,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50242,6 +50261,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -50270,6 +50290,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50299,6 +50320,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -50327,6 +50349,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50356,6 +50379,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -50384,6 +50408,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50413,6 +50438,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -50441,6 +50467,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50470,6 +50497,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -50498,6 +50526,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50527,6 +50556,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -50555,6 +50585,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50584,6 +50615,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -50612,6 +50644,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50641,6 +50674,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -50669,6 +50703,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50698,6 +50733,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -50726,6 +50762,7 @@
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
@@ -50755,6 +50792,7 @@
 			"alpha_test" : ["greater", 0.5, false],
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
+			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],

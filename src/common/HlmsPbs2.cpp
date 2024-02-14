@@ -55,7 +55,7 @@ void HlmsPbs2::calculateHashForPreCreate(
 	HlmsPbs::calculateHashForPreCreate( rnd, inOut );
 	
 	const auto& mtr = rnd->getDatablockOrMaterialName();
-	auto* db = (HlmsPbsDb2*)rnd->getDatablock();
+	const auto* db = (HlmsPbsDb2*)rnd->getDatablock();
 	// LogO("- calc pbs: " + mtr);   // on every item
 	
 	bool fluid = false;
@@ -64,11 +64,13 @@ void HlmsPbs2::calculateHashForPreCreate(
 	else
 		LogO("HlmsPbs2 pFluidsXml not set!");
 
-	if (db && db->eType == DB_Paint)
-		setProperty( "paint", 1 );
-	if (db && db->eType == DB_Fluid)
-	{	fluid = 1;
-		setProperty( "water", 1 );
+	if (db)
+	switch (db->eType)
+	{
+	case DB_Tree:	setProperty( "tree_wind", 1 );  break;
+	case DB_Fluid:	fluid = 1;
+					setProperty( "water", 1 );  break;
+	case DB_Paint:	setProperty( "paint", 1 );  break;
 	}
 
 	if (mtr.substr(0,5) == "River")
@@ -108,10 +110,20 @@ void HlmsPbs2::calculateHashForPreCaster(
     HlmsPbs::calculateHashForPreCaster( rnd, inOut );
 
 	const auto& mtr = rnd->getDatablockOrMaterialName();
+	const auto* db = (HlmsPbsDb2*)rnd->getDatablock();
 	// LogO("- cast for: " + mtr);   // on every item
 
 	if (mtr.substr(0,5) == "grass")
 		setProperty( "grass", 1 );
+
+	if (db)
+	switch (db->eType)
+	{
+	case DB_Tree:	setProperty( "tree_wind", 1 );  break;
+	// case DB_Fluid:	fluid = 1;
+	// 				setProperty( "water", 1 );  break;
+	// case DB_Paint:	setProperty( "paint", 1 );  break;
+	}
 
 	/*if (mtr.find("body") != String::npos)
 	{
@@ -150,16 +162,17 @@ HlmsPbsDb2::HlmsPbsDb2( App* app1,
 	: HlmsPbsDatablock( name, creator, macro, blend, p )
 	, app(app1)
 {
-	//  extra params in .material only!  .json in load
+	//  extra params in .material only !  .json in load
+	//----------------------------------------------------------------
 	String val,s;
 	s = name.getFriendlyText();  // hash, or name in Debug
-	if( Hlms::findParamInVec( p, "bump_scale", val ) )
+	if (Hlms::findParamInVec( p, "bump_scale", val ))
 	{
 		Real sc = s2r(val);
 		setNormalMapWeight(sc);
 		// LogO("db2 .mat "+s+" bump_scale: " + fToStr(getNormalMapWeight()));
 	}
-	if( Hlms::findParamInVec( p, "reflect", val ) )
+	if (Hlms::findParamInVec( p, "reflect", val ))
 	{
 		creator->app->vDbRefl.insert(this);  // save for later, mCubeReflTex doesn't exist yet
 		LogO("db2 .mat reflect " + s);
@@ -167,13 +180,22 @@ HlmsPbsDb2::HlmsPbsDb2( App* app1,
 	}
 
 	//  🌊 water fluid params
-	//----------------------------------------------------------------
-	if( Hlms::findParamInVec( p, "paint", val ) )
+	if (Hlms::findParamInVec( p, "paint", val ))
 	{
 		eType = DB_Paint;
 		LogO("db2 .mat paint " + s);
 		//Vector3 v = StringConverter::parseVector3( val, Vector3::UNIT_SCALE );
 		// setDiffuse( v );
+	}
+	else
+	if (Hlms::findParamInVec(p, "tree_wind", val))
+	{
+		eType = DB_Tree;
+		LogO("db2 .mat tree " + s);
+		// todo  mat to mesh ..?  get tree wind fx fy from presets..
+		// app->scn->data->pre->GetVeget();
+		// mDetailsOffsetScale[2][0] = wind fx;
+		// mDetailsOffsetScale[2][1] = wind fy;
 	}
 	else
 	if (Hlms::findParamInVec(p, "fluid", val) || Hlms::findParamInVec(p, "choppyness_scale", val))
@@ -323,6 +345,12 @@ public:
 		it = json.FindMember( "fluid" );
 		if (it != json.MemberEnd())
 			db2->eType = DB_Fluid;
+
+		it = json.FindMember( "tree_wind" );
+		if (it != json.MemberEnd())
+		{	db2->eType = DB_Tree;
+			// LogO("db2 .mat tree ");
+		}
 	}
 
 	//  Save .json  ---------------------------------
@@ -333,6 +361,8 @@ public:
 	        out += ",\n\t\t\t\"fluid\" : true";
 		if (db2->eType == DB_Paint)
 	        out += ",\n\t\t\t\"paint\" : true";
+		if (db2->eType == DB_Tree)
+	        out += ",\n\t\t\t\"tree_wind\" : true";
 
 		//  add reflect par,  rem cube, restore
 		TextureGpu *tex = db2->getTexture( PBSM_REFLECTION ), *no = 0;

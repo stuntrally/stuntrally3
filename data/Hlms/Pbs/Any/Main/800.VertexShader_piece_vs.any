@@ -285,6 +285,60 @@
 				// worldPos.xz += grassDirection * offset1 + grassDirection.zyxw * offset2;
 				worldPos.xz += float2(offset1, offset2) * 0.4;
 			}
+
+			///()  grass deform under car
+			// todo  world pos  ?
+			// sphere:  (x - x0)^2 + (y - y0)^2 + (z - z0)^2 = r^2
+			
+			// float r = atmo.posSph0.w;  // sphere radius^2
+			// if (r > 0.f)
+			// {
+			// 	float3 sph = atmo.posSph0.xyz;  // sphere pos
+			// 	float dx = worldPos.x - sph.x,  dz = worldPos.z - sph.z; //, dy = worldPos.y - sph.y;
+			// 	dx *= dx;  dz *= dz;  //dy *= dy;
+			// 	//if (dx + dy + dz < r)  // sphere
+			// 	if (dx + dz < r)  // circle (very high grasses too)
+			// 	{
+			// 		float y_on_sph = sph.y - sqrt(r - dx - dz);
+			// 		if (worldPos.y > y_on_sph)
+			// 		{	worldPos.y = y_on_sph;  worldPos.y = y_on_sph;  }
+			// 	}
+			// 	sph = atmo.posSph1.xyz;  // 2nd
+			// 	dx = worldPos.x - sph.x;  dz = worldPos.z - sph.z;
+			// 	dx *= dx;  dz *= dz;
+			// 	if (dx + dz < r)
+			// 	{
+			// 		float y_on_sph = sph.y - sqrt(r - dx - dz);
+			// 		if (worldPos.y > y_on_sph)
+			// 			worldPos.y = y_on_sph;
+			// 	}
+			// }
+		@end
+
+		//**  Tree wind
+		// property( tree_wind )  // todo: no atmo in caster ..
+		@property( tree_wind_123123 && !hlms_shadowcaster )
+			{
+				midf2 pos = worldPos.xz;
+				float time = atmo.globalTime.x; // * _h(1.2);
+				float freq = 3.2;  // par atmo..
+				float offset1 = sin(time + pos.x * 2.427 * freq) * sin(time + pos.y * 3.427 * freq);
+				float offset2 = cos(time + pos.y * 2.534 * freq) * cos(time + pos.x * 3.534 * freq);
+				// worldPos.xz += float2(offset1, offset2) * 1.4;
+
+			// #if TREE_WIND
+			//float radiusCoeff = windParams.x;
+			//float heightCoeff = windParams.y;
+			//float factorX = windParams.z;
+			//float factorY = windParams.w;
+
+				// worldPos.y += sin(time + uv2.z + position.y + position.x) * uv1.x * uv1.x * uv1.w;
+				// worldPos.x += sin(time + uv2.z ) * uv1.y * uv1.y * uv1.z;
+				
+				worldPos.x += sin(time*2.1 + worldMat[2].x * 0.61 + 0.72 * worldMat[2].z) * inputPos.y * inputPos.y * 0.1f;
+				// worldPos.z += sin(time*2.2 + pos.x * 0.012 + 0.011 * pos.y) * inputPos.y * inputPos.y * 0.1f;
+				worldPos.y += sin(time*5.3 + inputPos.x * 0.45 + 0.52 * inputPos.y) * inputPos.x * inputPos.z * 0.03f;
+			}
 		@end
 	@end
 

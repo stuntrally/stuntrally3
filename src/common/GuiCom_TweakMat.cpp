@@ -9,6 +9,7 @@
 #include "paths.h"
 
 #include "HlmsPbs2.h"
+#include "GraphicsSystem.h"
 #include <OgreHlms.h>
 #include <OgreVector3.h>
 #include <OgreHlmsPbsPrerequisites.h>
@@ -47,6 +48,15 @@ void CGuiCom::editMtrFind(Ed ed)
 
 void CGuiCom::btnMtrLoad(WP)
 {
+	// Hot reload of PBS shaders. We need to clear the microcode cache
+	// to prevent using old compiled versions.
+	Ogre::Root *root = app->mGraphicsSystem->getRoot();
+	Ogre::HlmsManager *hlmsManager = root->getHlmsManager();
+
+	Ogre::Hlms *hlms = hlmsManager->getHlms( Ogre::HLMS_PBS );
+	Ogre::GpuProgramManager::getSingleton().clearMicrocodeCache();
+	hlms->reloadFrom( hlms->getDataFolder() );
+
 #if 0  //  test 1 json  +---
 	// todo reload all?
 	auto* mgr = mRoot->getHlmsManager();
