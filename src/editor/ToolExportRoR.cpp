@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "enums.h"
+#include "Def_Str.h"
 #include "BaseApp.h"
 #include "settings.h"
 #include "paths.h"
@@ -10,7 +11,8 @@
 #include "CData.h"
 #include "TracksXml.h"
 #include "Axes.h"
-// #include "Road.h"
+#include "Road.h"
+#include <Terra.h>
 #include <OgreImage2.h>
 
 #include <exception>
@@ -32,7 +34,7 @@ void CGui::btnExport(WP)
 	app->ToolExportRoR();
 }
 
-//  Export current track for RigsOfRods
+//  Export current track for Rigs Of Rods
 //------------------------------------------------------------------------------------------------------------------------
 void App::ToolExportRoR()
 {
@@ -66,7 +68,7 @@ void App::ToolExportRoR()
 
 
 	//  ⛰️ Heightmap convert to .raw
-	//------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------------------------------
 	const auto& td = sc->tds[0];  // 1st ter only
 
 	const int size  = td.iVertsX;  // org  e.g. 1024
@@ -131,32 +133,41 @@ void App::ToolExportRoR()
 	delete[] hmap;  hmap = 0;
 
 
-	//  🏔️ Blendmap
-	//------------------------------------------------------------
+	//  🏔️ Blendmap  Layers
+	//------------------------------------------------------------------------------------------------------------------------
 	gui->Exp(CGui::TXT, "Terrain layers  " + toStr(td.layers.size()));
 
-	//  copy layer textures
+	string layTexDS[4], layTexNH[4];  // new filenames for ds,nh
 
-	int layers = std::min(4, (int)td.layers.size());
+	//  copy layer textures
+	const int layers = std::min(4, (int)td.layers.size());
 	for (int i=0; i < layers; ++i)
 	{
 		const TerLayer& l = td.layersAll[td.layers[i]];
-		// di.layerList[i].worldSize = l.tiling;
 
-		//  combined rgb,a from 2 tex
-		String pathTerTex = PATHS::Data() + "/terrain/";
-		String diff = l.texFile;  // ends with _d
-		String norm = l.texNorm;  // _n
-		gui->Exp(CGui::TXT, "layer " + toStr(i+1) + " diff, norm:  " + diff + "  " + norm);
+		//  diffuse _d, normal _n, specular _s
+		String pathTer = PATHS::Data() + "/terrain/";
+		String d_d, d_s, d_r, n_n, n_s;
+		d_d = l.texFile;  // ends with _d
+		d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");  // _s
+		n_n = l.texNorm;  // _n
+		n_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");  // _s
 		
+		string ext = 1 ? "png" : "dds";  // todo as dds fails..
+		layTexDS[i] = StringUtil::replaceAll(l.texFile,"_d.jpg","_ds."+ext);
+		layTexNH[i] = StringUtil::replaceAll(l.texNorm,"_n.jpg","_nh."+ext);
+
+		gui->Exp(CGui::TXT, "layer " + toStr(i+1) + " diff, norm:  " + d_d + "  " + n_n);
+		
+		String diff = d_d, norm = n_n;
 		string from, to;
 		try
-		{
-			from = pathTerTex + diff;  to = path + diff;
+		{	//  copy _d _n
+			from = pathTer + diff;  to = path + diff;
 			if (!fs::exists(to.c_str()))
 				fs::copy_file(from.c_str(), to.c_str());
 
-			from = pathTerTex + norm;  to = path + norm;
+			from = pathTer + norm;  to = path + norm;
 			if (!fs::exists(to.c_str()))
 				fs::copy_file(from.c_str(), to.c_str());
 		}
@@ -166,24 +177,121 @@ void App::ToolExportRoR()
 			gui->Exp(CGui::WARN, s);
 		}
 
-		// todo combine RGB+A ..  diff+spec .. ?
-		// todo convert blending to lerp(lerp( .. ??
+		//  find _s  for specular
+		String spec = d_s;
+		if (!PATHS::FileExists(pathTer + spec))
+		{	spec = n_s;
+			if (!PATHS::FileExists(pathTer + spec))
+			{	spec = d_d;
+				gui->Exp(CGui::TXT, "layer " + toStr(i+1) + " spec:  " + spec + "  " + fToStr(l.tiling));
+		}	}
+
+		//  combine RGB+A  diff + spec
+		//------------------------------------------------------------
+        Image2 imD, imS, imDS;
+        imD.load(diff, "General");  imS.load(spec, "General");
+		const int xx = imD.getWidth(), yy = imD.getHeight();
+		
+		auto pfA = PFG_RGBA8_UNORM;
+		imDS.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
+		try
+		{
+			TextureBox tbD = imD.getData(0), tbS = imS.getData(0), tbDS = imDS.getData(0);
+			auto pfD = imD.getPixelFormat(), pfS = imD.getPixelFormat();
+			for (int y = 0; y < yy; ++y)
+			for (int x = 0; x < xx; ++x)
+			{
+				ColourValue rgb = tbD.getColourAt(x, y, 0, pfD);
+				ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.1f;  // par spec mul
+				ColourValue ds(rgb.r, rgb.g, rgb.b, a.r);
+				tbDS.setColourAt(ds, x, y, 0, pfA);
+			}
+			imDS.save(path + layTexDS[i], 0, 0);
+		}
+		catch (exception ex)
+		{
+			gui->Exp(CGui::WARN, string("Exception in blendmap flip: ") + ex.what());
+		}
+
+		//  combine Norm+H
+		//------------------------------------------------------------
+        Image2 imN, imH, imNH;
+        imD.load(norm, "General");  //imS.load(spec, "General");
+		const int xn = imN.getWidth(), yn = imD.getHeight();
+		
+		imNH.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
+		try
+		{
+			TextureBox tbN = imN.getData(0), tbNH = imNH.getData(0);
+			auto pfN = imN.getPixelFormat();
+			for (int y = 0; y < yn; ++y)
+			for (int x = 0; x < xn; ++x)
+			{
+				ColourValue c = tbN.getColourAt(x, y, 0, pfN);
+				const float a = 0.f;
+				// const float a = max(0.f, 1.f - c.r - c.g);  // side
+				ColourValue nh(c.r, c.g, c.b, a);
+				tbNH.setColourAt(nh, x, y, 0, pfA);
+			}
+			imNH.save(path + layTexNH[i], 0, 0);
+		}
+		catch (exception ex)
+		{
+			gui->Exp(CGui::WARN, string("Exception in blendmap flip: ") + ex.what());
+		}
 	}
 
-	
+	//  🏔️ Blendmap  save as .png
+	//------------------------------------------------------------
+	int bleSize = 1024;
+	if (scn->ters[0]->blendmap.texture)
+	{
+		auto bleFile = path + name + "-blendmap.png";
+		// scn->ters[0]->blendmap.texture->writeContentsToFile(ble, 0, 0);
+		
+        Image2 img, im2;
+        img.convertFromTexture(scn->ters[0]->blendmap.texture, 0, 0);
+		im2 = img;
+		try
+		{	//  rotate +90 deg, -y x
+			const int xx = img.getWidth(), yy = img.getHeight();
+			bleSize = xx;
+			TextureBox tb = img.getData(0), tb2 = im2.getData(0);
+			auto pf = img.getPixelFormat();
+			for (int y = 0; y < yy; ++y)
+			for (int x = 0; x < xx; ++x)
+			{
+				ColourValue cv = tb.getColourAt(x, y, 0, pf);
+				// ColourValue cv = tb.getColourAt(xx-1 - x, yy-1 - y, 0, pf);
+				// ColourValue cv = tb.getColourAt(x, y, 0, pf);
+				ColourValue c2(cv.r, cv.g, cv.b, cv.a);
+				tb2.setColourAt(c2, yy-1-y, x, 0, pf);
+			}
+			im2.save(bleFile, 0, 0);  // ter blend map
+		}
+		catch (exception ex)
+		{
+			gui->Exp(CGui::WARN, string("Exception in blendmap flip: ") + ex.what());
+		}
+	}
+
+
 	//  📄🏔️ Terrain layers setup  save  page.otc
 	//------------------------------------------------------------------------------------------------------------------------
+	int roadAdd = 1;  // 0 off  1 add road layer last
 	string opgFile = path + name + "-page-0-0.otc";
 	ofstream lay;
 	lay.open(opgFile.c_str(), std::ios_base::out);
 
 	lay << name + ".raw\n";
-	lay << "2\n";  // wip
-	// lay << layers << "\n";  // todo
+	// layers += 1;  // on ter road last
+	lay << layers + roadAdd << "\n";  // todo
 	lay << "; worldSize, diffusespecular, normalheight, blendmap, blendmapmode, alpha\n";
 
-	layers = 2;  // wip  0 ter, 1 road  only ...
-	// int layers = std::min(4, (int)td.layers.size());  // todo
+	const char rgba[5] = "RGBA";
+	string roadDiff = "", roadNorm = "";  // set.. which?
+	float roadTile = 5.f;
+	const float mul = 1.f;  // tile par
 	for (int i=0; i < layers; ++i)
 	{
 		const TerLayer& l = td.layersAll[td.layers[i]];
@@ -194,13 +302,29 @@ void App::ToolExportRoR()
 		String diff = l.texFile;  // ends with _d
 		String norm = l.texNorm;  // _n
 
-		if (i==0)
-			lay << l.tiling << " , " << diff+", "+norm+"\n";
-		else
-			lay << l.tiling << " , " << diff+", "+norm+", " + name + "-road.png, R, 0.99\n";
+		// if (i==0)
+		// 	lay << l.tiling << " , " << diff+", "+norm+"\n";
+		// else if (i == layers-1)  // last- road
+		// 	lay << l.tiling << " , " << diff+", "+norm+", " +
+		// 		name + "-road.png, R, 0.99\n";
+		// else
+			// lay << l.tiling << " , " << diff+", "+norm+", " +
+			// lay << l.tiling << " , _" << toStr(i)+".png, "+norm+", " +
+			// lay << l.tiling << " , _" << toStr(i)+".png, _"+ toStr(i)+"_n.png, " +
+			lay << mul * l.tiling << " , " << layTexDS[i] + ", " + layTexNH[i] + ", " +
+				name + "-blendmap.png, " << rgba[i] << ", 0.99\n";
 
-		// todo all layers  blendmap R,G,B,A ..
-		// "5    , desert_sand_d.jpg, desert_sand_n.jpg, roadDensity.png, R, 0.99\n";
+		if (i == 1)  // todo gui, idk
+		{	roadDiff = diff;
+			roadNorm = norm;
+			roadTile = l.tiling;
+		}
+	}
+	if (roadAdd && !roadDiff.empty())
+	{
+		gui->Exp(CGui::TXT, "Road layer: " + fToStr(roadTile)+" , "+roadDiff+", "+roadNorm);
+		lay << roadTile << " , " << roadDiff+", "+roadNorm+", " +
+			name + "-road.png, R, 0.99\n";
 	}
 	lay.close();
 
@@ -239,7 +363,7 @@ void App::ToolExportRoR()
 
 
 	//  📄⛰️ Terrain hmap, setup  save  .otc
-	//------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------------------------------
 	string otcFile = path + name + ".otc";
 	ofstream otc;
 	otc.open(otcFile.c_str(), std::ios_base::out);
@@ -263,7 +387,7 @@ void App::ToolExportRoR()
 	otc << "WorldSizeY=" << Ysize * 2.f << "\n";
 	otc << "\n";
 	otc << "# Sets the default size of blend maps for a new terrain. This is the resolution of each blending layer for a new terrain. default: 1024\n";
-	otc << "LayerBlendMapSize=2048\n";  // todo 1024 ?
+	otc << "LayerBlendMapSize=" << bleSize << "\n";
 	otc << "\n";
 	otc << "# disableCaching=1 will always enforce regeneration of the terrain, useful if you want to change the terrain config (.otc) and test it. Does not cache the objects on it.\n";
 	otc << "disableCaching=1\n";
@@ -277,28 +401,28 @@ void App::ToolExportRoR()
 	otc << "maxBatchSize=65\n";
 	otc << "\n";
 	otc << "# Whether to support a light map over the terrain in the shader, if it's present (default true).\n";
-	otc << "LightmapEnabled=0\n";
+	otc << "LightmapEnabled=0\n";  // nope
 	otc << "\n";
 	otc << "# Whether to support normal mapping per layer in the shader (default true). \n";
-	otc << "NormalMappingEnabled=0\n";
+	otc << "NormalMappingEnabled=1\n";  // yes
 	otc << "\n";
 	otc << "# Whether to support specular mapping per layer in the shader (default true). \n";
-	otc << "SpecularMappingEnabled=1\n";
+	otc << "SpecularMappingEnabled=1\n";  // idk DS
 	otc << "\n";
 	otc << "# Whether to support parallax mapping per layer in the shader (default true). \n";
-	otc << "ParallaxMappingEnabled=0\n";
+	otc << "ParallaxMappingEnabled=0\n";  // no, NH meh
 	otc << "\n";
 	otc << "# Whether to support a global colour map over the terrain in the shader, if it's present (default true). \n";
-	otc << "GlobalColourMapEnabled=0\n";
+	otc << "GlobalColourMapEnabled=0\n";  // no
 	otc << "\n";
 	otc << "# Whether to use depth shadows (default false). \n";
-	otc << "ReceiveDynamicShadowsDepth=0\n";
+	otc << "ReceiveDynamicShadowsDepth=0\n";  // no ?
 	otc << "\n";
 	otc << "# Sets the default size of composite maps for a new terrain, default: 1024\n";
 	otc << "CompositeMapSize=1024\n";
 	otc << "\n";
 	otc << "# Set the distance at which to start using a composite map if present, default: 4000\n";
-	otc << "CompositeMapDistance=5000\n";
+	otc << "CompositeMapDistance=5000\n";  // off
 	otc << "\n";
 	otc << "# the default size of 'skirts' used to hide terrain cracks, default: 30\n";
 	otc << "SkirtSize=10\n";
@@ -307,19 +431,18 @@ void App::ToolExportRoR()
 	otc << "LightMapSize=1024\n";
 	otc << "\n";
 	otc << "# Whether the terrain will be able to cast shadows, default: 0\n";
-	otc << "CastsDynamicShadows=0\n";
+	otc << "CastsDynamicShadows=0\n";  // no
 	otc << "\n";
 	otc << "# Set the maximum screen pixel error that should  be allowed when rendering, default:\n";
-	otc << "MaxPixelError=3\n";  // todo >
+	otc << "MaxPixelError=5\n";  // > ?
 	otc << "\n";
 	// otc << "# dump the blend maps to files named blendmap_layer_X.png\n";
 	// otc << "DebugBlendMaps=0\n";
-	// otc << "NormalMappingEnabled=1\n";
 
 	otc.close();
 
 
-	//  get authors from tracks.ini
+	//  get Authors from tracks.ini
 	//------------------------------------------------------------
 	string authors = "CryHam";
 	int trkId = 0;  // N from ini
@@ -381,13 +504,22 @@ void App::ToolExportRoR()
 	trn << "\n";
 
 	trn << "[Authors]\n";
-	trn << "track = " + authors + "\n";
-	trn << "conversion = Exported from Stunt Rally 3 Track Editor\n";
+	trn << "authors = " + authors + "\n";
+	trn << "conversion = Exported from Stunt Rally 3 Track Editor, version: " << SET_VER << "\n";
+	bool road = !scn->roads.empty() && scn->roads[0]->getNumPoints() > 2;
+	if (road)
+	{
+		auto& rd = scn->roads[0];  // extra info from sr3 track
+		trn << "description = "+rd->sTxtDescr+"\n";
+		trn << "drive_advice = "+rd->sTxtAdvice+"\n";
+	}
 	trn << " \n";
 
 	trn << "[Objects]\n";
-	trn << ""+name+".tobj=\n";
+	// trn << ""+name+".tobj=\n";
 	// trn << ""+name+"-veget.tobj=\n";  // todo
+	if (road)
+		trn << ""+name+"-road.tobj=\n";
 	trn << "\n";
 
 	trn << "#[Scripts]\n";  // todo  road, checks
@@ -398,7 +530,7 @@ void App::ToolExportRoR()
 
 
 	//  📄📦 Objects  save  .tobj
-	//------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------------------------------
 	string objFile = path + name + ".tobj";
 	ofstream obj;
 	obj.open(objFile.c_str(), std::ios_base::out);
@@ -414,7 +546,7 @@ void App::ToolExportRoR()
 		// todo  fix all rot ?
 		// obj << fToStr(q.getPitch().valueDegrees()+90.f,0,3)+", "+fToStr(q.getYaw().valueDegrees(),0,3)+", "+fToStr(q.getRoll().valueDegrees(),0,3)+", ";
 		obj << fToStr(90.f,0,3)+", "+fToStr(0.f,0,3)+", "+fToStr(q.getYaw().valueDegrees(),0,3)+", ";
-		// todo  no scale ?
+		// todo  no scale ??
 		obj << o.name +"\n";
 		
 		//  object  save  .odef
@@ -444,6 +576,10 @@ void App::ToolExportRoR()
 	obj.close();
 
 	gui->Exp(CGui::TXT, "Objects: "+toStr(sc->objects.size())+"  odef: "+toStr(iodef));
+
+
+	//  grass
+	//------------------------------------------------------------------------------------------------------------------------
 
 	//  vegetation?..
 	// scn->vegetNodes;
