@@ -695,5 +695,61 @@ void App::ToolExportRoR()
 	//  todo save densitymap  0 blk .. 1 wh
 
 
+	//  🛣️ Road  points
+	//------------------------------------------------------------------------------------------------------------------------
+	if (road)
+	{	const auto& rd = scn->roads[0];
+
+		string roadFile = path + name + "-road.tobj";
+		ofstream trd;
+		trd.open(roadFile.c_str(), std::ios_base::out);
+
+		trd << "begin_procedural_roads\n";
+		trd << "//  position x,y,z   rotation rx,ry,rz,   width,   border width, border height,  type\n";
+		
+		for (int i=0; i < rd->getNumPoints() + 1; ++i)  // loop it
+		// for (int i=0; i < rd->getNumPoints(); ++i)
+		{
+			const int i0 = rd->getAdd(i,0), i1 = rd->getNext(i);
+			// const int i0 = i, i1 = rd->getNext(i);
+			const auto& p = rd->getPoint(i0), p1 = rd->getPoint(i1);
+			bool onTer = p.onTer || p1.onTer;
+
+			//  pos
+			Vector3 vP = p.pos, vP1 = p1.pos;
+			if (onTer)
+				vP.y = scn->getTerH(vP.x, vP.z);
+
+			//  rot
+			// float yaw = p.aYaw;
+			float yaw = TerUtil::GetAngle(vP1.x - vP.x, vP1.z - vP.z) *180.f/PI_d;
+
+			// vN = scn ? TerUtil::GetNormalAt(scn->ters[0],  // 1st ter-
+			// 	vP.x, vP.z, DL.fLenDim*0.5f /*0.5f*/) : Vector3::UNIT_Y;
+
+			//  pos  ---
+			float Yup = 20.5f + rd->g_Height;  // ?
+			trd << half - vP.z << ", " << vP.y + Yup + Ysize << ", " << vP.x + half << ",   ";
+			//  rot  ---
+			// trd << "0,0,0,  ";  // p.aYaw, ..
+			trd << "0, " << yaw << ", 0,  ";
+			trd << p.width << ",   ";
+			//  bridge  ---
+			// trd << "0,  0,  flat\n";
+			if (p.onTer)
+				trd << "0.25,  1.0,  both\n";
+			else
+				trd << "0.25,  1.0,  bridge\n";
+		}
+		trd << "end_procedural_roads\n";
+		/*	0,0,0,         0,0,0,    10.0,  0,            0,             flat
+			0,0,0,         0,0,0,    10.0,  0.25,         1.0,           both
+			flat - none
+			left, right, both - borders
+			bridge, bridge_no_pillars
+		*/
+		trd.close();
+	}
+
 	gui->Exp(CGui::INFO, "Export to RoR end.");
 }
