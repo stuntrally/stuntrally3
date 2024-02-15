@@ -40,6 +40,7 @@ void CGui::btnExport(WP)
 //------------------------------------------------------------------------------------------------------------------------
 void App::ToolExportRoR()
 {
+	Ogre::Timer ti;
 	//  Gui status
 	gui->Status("RoR Export..", 1,0.5,1);
 	gui->edExport->setCaption("");
@@ -282,7 +283,7 @@ void App::ToolExportRoR()
 
 	//  📄🏔️ Terrain layers setup  save  page.otc
 	//------------------------------------------------------------------------------------------------------------------------
-	int roadAdd = 1;  // 0 off  1 add road layer last
+	int roadAdd = 1;  // par-  0 off  1 add road layer last
 	string opgFile = path + name + "-page-0-0.otc";
 	ofstream lay;
 	lay.open(opgFile.c_str(), std::ios_base::out);
@@ -290,37 +291,30 @@ void App::ToolExportRoR()
 	lay << name + ".raw\n";
 	// layers += 1;  // on ter road last
 	lay << layers + roadAdd << "\n";  // todo
-	lay << "; worldSize, diffusespecular, normalheight, blendmap, blendmapmode, alpha\n";
+	lay << "; worldSize,  diffusespecular, normalheight,  blendmap, blendmapmode,  alpha\n";
 
 	const char rgba[5] = "RGBA";
 	string roadDiff = "", roadNorm = "";  // set.. which?
-	float roadTile = 5.f;
+	float roadTile = 5.f;  // par
 	const float mul = 1.f;  // tile par
 	for (int i=0; i < layers; ++i)
 	{
 		const TerLayer& l = td.layersAll[td.layers[i]];
-		// di.layerList[i].worldSize = l.tiling;
 
 		//  combined rgb,a from 2 tex
 		String pathTerTex = PATHS::Data() + "/terrain/";
 		String diff = l.texFile;  // ends with _d
 		String norm = l.texNorm;  // _n
 
-		// if (i==0)
-		// 	lay << l.tiling << " , " << diff+", "+norm+"\n";
-		// else if (i == layers-1)  // last- road
-		// 	lay << l.tiling << " , " << diff+", "+norm+", " +
-		// 		name + "-road.png, R, 0.99\n";
-		// else
-			// lay << l.tiling << " , " << diff+", "+norm+", " +
-			// lay << l.tiling << " , _" << toStr(i)+".png, "+norm+", " +
-			// lay << l.tiling << " , _" << toStr(i)+".png, _"+ toStr(i)+"_n.png, " +
-			lay << mul * l.tiling << " , " << layTexDS[i] + ", " + layTexNH[i] + ", " +
-				name + "-blendmap.png, " << rgba[i] << ", 0.99\n";
+		// lay << l.tiling << " , " << diff+", "+norm+", " +  // 2 jpg
+		// lay << l.tiling << " , _" << toStr(i)+".png, "+norm+", " +
+		// lay << l.tiling << " , _" << toStr(i)+".png, _"+ toStr(i)+"_n.png, " +  // 2 png
+		lay << mul * l.tiling << " , " << layTexDS[i] + ", " + layTexNH[i] + ", " +  // 2 rgba png
+			name + "-blendmap.png, " << rgba[i] << ", 0.99\n";
 
-		if (i == 1)  // todo gui, idk
-		{	roadDiff = diff;
-			roadNorm = norm;
+		if (i == 1)  // par  gui, idk
+		// {	roadDiff = diff;  roadNorm = norm;  // 2 jpg
+		{	roadDiff = layTexDS[i];  roadNorm = layTexNH[i];
 			roadTile = l.tiling;
 		}
 	}
@@ -363,7 +357,7 @@ void App::ToolExportRoR()
 		gui->Exp(CGui::WARN, string("Exception in road Dens flip: ") + ex.what());
 	}
 	int r = img.getWidth();
-	gui->Exp(CGui::TXT, "Road image width: "+fToStr(r));
+	gui->Exp(CGui::TXT, "Road image width: "+toStr(r));
 
 
 	//  📄⛰️ Terrain hmap, setup  save  .otc
@@ -388,12 +382,14 @@ void App::ToolExportRoR()
 	otc << "# Heightmap values multiply factor\n";
 	otc << "WorldSizeY=" << Ysize << "\n";
 	otc << "\n";
+
 	otc << "# Default size of blend maps for terrain. This is the resolution of each blending layer for a new terrain. default: 1024\n";
 	otc << "LayerBlendMapSize=" << bleSize << "\n";
 	otc << "\n";
 	otc << "# disableCaching=1 will always enforce regeneration of the terrain, useful if you want to change the terrain config (.otc) and test it. Does not cache the objects on it.\n";
 	otc << "disableCaching=1\n";
 	otc << "\n";
+
 	otc << "#optimizations ----\n";
 	otc << "\n";
 	otc << "# Must be 2^n+1. Minimum terrain tile size in vertices (at any LOD). default: 17\n";
@@ -409,10 +405,11 @@ void App::ToolExportRoR()
 	otc << "NormalMappingEnabled=1\n";  // yes
 	otc << "\n";
 	otc << "# Whether to support specular mapping per layer in the shader (default true). \n";
-	otc << "SpecularMappingEnabled=0\n";  // idk DS
+	otc << "SpecularMappingEnabled=1\n";  // idk DS
 	otc << "\n";
+
 	otc << "# Whether to support parallax mapping per layer in the shader (default true). \n";
-	otc << "ParallaxMappingEnabled=0\n";  // no, NH meh
+	otc << "ParallaxMappingEnabled=0\n";  // no meh,  no real H just guessed
 	otc << "\n";
 	otc << "# Whether to support a global colour map over the terrain in the shader, if it's present (default true). \n";
 	otc << "GlobalColourMapEnabled=0\n";  // no
@@ -420,6 +417,7 @@ void App::ToolExportRoR()
 	otc << "# Whether to use depth shadows (default false). \n";
 	otc << "ReceiveDynamicShadowsDepth=0\n";  // no ?
 	otc << "\n";
+
 	otc << "# Sets the default size of composite maps for a new terrain, default: 1024\n";
 	otc << "CompositeMapSize=1024\n";
 	otc << "\n";
@@ -435,14 +433,28 @@ void App::ToolExportRoR()
 	otc << "# Whether the terrain will be able to cast shadows, default: 0\n";
 	otc << "CastsDynamicShadows=0\n";  // no
 	otc << "\n";
+
 	otc << "# Set the maximum screen pixel error that should  be allowed when rendering, default:\n";
-	otc << "MaxPixelError=5\n";  // > ?
+	otc << "MaxPixelError=5\n";  // %  > ?
 	otc << "\n";
 	// otc << "# dump the blend maps to files named blendmap_layer_X.png\n";
 	// otc << "DebugBlendMaps=0\n";
 
 	otc.close();
 
+
+	//  🖼️ copy Preview  mini
+	//------------------------------------------------------------
+	String pathPrv = PATHS::Tracks() + "/" + name + "/preview/";
+	try
+	{	string from = pathPrv + "view.jpg", to = path + name + "-mini.jpg";
+		if (!fs::exists(to.c_str()))
+			fs::copy_file(from.c_str(), to.c_str());
+	}
+	catch (exception ex)
+	{
+		gui->Exp(CGui::WARN, string("Exception copy preview: ") + ex.what());
+	}
 
 	//  get Authors from tracks.ini
 	//------------------------------------------------------------
@@ -455,14 +467,16 @@ void App::ToolExportRoR()
 		authors = ti.author=="CH" ? "CryHam" : ti.author;
 		trkId = ti.n;
 	}else
-		gui->Exp(CGui::ERR, "Track not in tracks.ini, no id or authors set.");
+		gui->Exp(CGui::ERR, "Track not in tracks.ini, no guid id or authors set.");
 	
 
 	//  🌊 Fluids  get 1 big for water level
 	//------------------------------------------------------------
+	// par  disable, auto, h ofs
 	int water = 0;  float Ywater = 0.f;
 	for (const auto& fl : sc->fluids)
 	{
+		// sc->ror.water
 		if (!water && sc->fluids.size()==1 || fl.size.x > 200.f)  // pick 1st big
 		{	water = 1;
 			Ywater = fl.pos.y - hmin;
@@ -532,7 +546,7 @@ void App::ToolExportRoR()
 	os << "			height 2000\n";
 	os << "			coverage 0.2\n";
 	os << "		}\n";
-	if (0)
+	if (0)  // todo if cloudy..
 	{
 	os << "		cloud_layer mid\n";
 	os << "		{\n";
@@ -553,69 +567,6 @@ void App::ToolExportRoR()
 
 	os.close();
 
-
-	//  🏞️ Track/map setup  save  .terrn2
-	//------------------------------------------------------------------------------------------------------------------------
-	string terrn2File = path + name + ".terrn2";
-	ofstream trn;
-	trn.open(terrn2File.c_str(), std::ios_base::out);
-
-	trn << "[General]\n";
-	trn << "Name = "+trk+"\n";
-	trn << "GeometryConfig = " + name + ".otc\n";
-	trn << "\n";
-	trn << "Water=" << water << "\n";
-	trn << "WaterLine=" << Ywater << "\n";
-	trn << "\n";
-	trn << "AmbientColor = 1.0, 1.0, 1.0\n";  // unused-
-	//  ror = sr
-	//  0, y, 0        = -470, y, 460
-	//  959, 340 y, 950 = 487, y, -472
-	Vector3 st = Axes::toOgre(sc->startPos[0]);
-	trn << "StartPosition = " << fToStr(half - st.z)+", "+fToStr(st.y - hmin)+", "+fToStr(st.x + half)+"\n";
-	trn << "\n";
-
-	trn << "CaelumConfigFile = " + name + ".os\n";
-	trn << "SandStormCubeMap = tracks/skyboxcol\n";  // sky meh-
-	trn << "Gravity = " << -sc->gravity << "\n";
-	trn << "\n";
-
-	trn << "CategoryID = 129\n";
-	trn << "Version = 1\n";
-	// todo, random hash from trk name?
-	trn << "GUID = 11223344-5566-7788-" << fToStr(trkId,0,4,'0') <<"-012345678901\n";
-	trn << "\n";
-	//  if has groundmodel, define landuse file
-	trn << "#TractionMap = landuse.cfg\n";  // todo  surfaces.cfg
-	trn << "\n";
-
-	trn << "[Authors]\n";
-	trn << "authors = " + authors + "\n";
-	trn << "conversion = Exported from Stunt Rally 3 Track Editor, version: " << SET_VER << "\n";
-	bool roadtxt = !scn->roads.empty();
-	bool road = roadtxt && scn->roads[0]->getNumPoints() > 2;
-	if (roadtxt)
-	{
-		auto& rd = scn->roads[0];  // extra info from sr3 track
-		trn << "description = "+rd->sTxtDescr+"\n";
-		trn << "drive_advice = "+rd->sTxtAdvice+"\n";
-	}
-	trn << " \n";
-
-	trn << "[Objects]\n";
-	// trn << ""+name+".tobj=\n";
-	const bool veget = 1;  // par..
-	if (veget)
-		trn << ""+name+"-veget.tobj=\n";  // todo
-	if (road)
-		trn << ""+name+"-road.tobj=\n";
-	trn << "\n";
-
-	trn << "#[Scripts]\n";  // todo  road, checks
-	//  if has race script define .terrn.as
-	trn << "#"+name+".terrn.as=\n";
-
-	trn.close();
 
 
 	//  📄📦 Objects  save  .tobj
@@ -661,6 +612,7 @@ void App::ToolExportRoR()
 			odef.close();  ++iodef;
 		}
 		// todo: once copy .mesh, texture, material ...
+		// from old SR dir ..
 	}
 	obj.close();
 
@@ -676,13 +628,13 @@ void App::ToolExportRoR()
 		const SGrassLayer* gr = &sc->grLayersAll[i];
 		if (gr->on)
 		{
-			const SGrassChannel* ch = &scn->sc->grChan[gr->iChan];
+							const SGrassChannel* ch = &scn->sc->grChan[gr->iChan];
 			// ch->angMin
-			// ch->angMax
+		// ch->angMax
 			// gr->minSx, gr->maxSx
-			// format: grass range, SwaySpeed, SwayLength, SwayDistribution, Density, minx, miny, maxx, maxy, fadetype, minY, maxY, material colormap densitymap
-			//grass 100, 0.5, 0.05, 10, 3.0, 0.2, 0.2, 1, 1, 1, 10, 0, grass2 RoRArizona-SCRUB1.dds RoRArizona-VEGE1.dds
-			//grass 600, 0.5, 0.15, 10, 0.3, 0.3, 0.3, 1.2, 1.2, 1, 10, 0, grass4 RoRArizona-SCRUB1.dds RoRArizona-VEGE1.dds
+		// format: grass range, SwaySpeed, SwayLength, SwayDistribution, Density, minx, miny, maxx, maxy, fadetype, minY, maxY, material colormap densitymap
+		//grass 100, 0.5, 0.05, 10, 3.0, 0.2, 0.2, 1, 1, 1, 10, 0, grass2 RoRArizona-SCRUB1.dds RoRArizona-VEGE1.dds
+		//grass 600, 0.5, 0.15, 10, 0.3, 0.3, 0.3, 1.2, 1.2, 1, 10, 0, grass4 RoRArizona-SCRUB1.dds RoRArizona-VEGE1.dds
 			//  copy grass*.png
 			//  create .material for it
 		}
@@ -696,62 +648,185 @@ void App::ToolExportRoR()
 	//trees 0, 360, 0.1, 0.12, 2, 60, 3000, fir05_30.mesh aspen-test.dds aspen_grass_density2.png 
 	//  todo save densitymap  0 blk .. 1 wh
 
-
+		
 	//  🛣️ Road  points
 	//------------------------------------------------------------------------------------------------------------------------
+	const bool roadtxt = !scn->roads.empty();
+	const bool road = roadtxt && scn->roads[0]->getNumPoints() > 2;
+	bool roadFile = 0;
 	if (road)
 	{	const auto& rd = scn->roads[0];
 
-		string roadFile = path + name + "-road.tobj";
-		ofstream trd;
-		trd.open(roadFile.c_str(), std::ios_base::out);
+		//  if all points on ter, skip road, is on blendmap
+		bool roadOnTer = 1;
+		for (int i=0; i < rd->getNumPoints(); ++i)
+			if (!rd->getPoint(i).onTer)
+				roadOnTer = 0;
 
-		trd << "begin_procedural_roads\n";
-		trd << "//  position x,y,z   rotation rx,ry,rz,   width,   border width, border height,  type\n";
-		
-		for (int i=0; i < rd->getNumPoints() + 1; ++i)  // loop it
-		// for (int i=0; i < rd->getNumPoints(); ++i)
-		{
-			const int i0 = rd->getAdd(i,0), i1 = rd->getNext(i);
-			// const int i0 = i, i1 = rd->getNext(i);
-			const auto& p = rd->getPoint(i0), p1 = rd->getPoint(i1);
-			bool onTer = p.onTer || p1.onTer;
+		//  has some bridges  ------------------------
+		if (!roadOnTer)
+		{	roadFile = 1;  
+			string roadFile = path + name + "-road.tobj";
+			ofstream trd;
+			trd.open(roadFile.c_str(), std::ios_base::out);
 
-			//  pos
-			Vector3 vP = p.pos, vP1 = p1.pos;
-			if (onTer)
-				vP.y = scn->getTerH(vP.x, vP.z);
+			trd << "//  position x,y,z   rotation rx,ry,rz,   width,   border width, border height,  type\n";
+			bool begin = 0;  int iroads = 0;
 
-			//  rot
-			// float yaw = p.aYaw;
-			float yaw = TerUtil::GetAngle(vP1.x - vP.x, vP1.z - vP.z) *180.f/PI_d - 45.f;
+			for (int i=0; i < rd->getNumPoints() + 1; ++i)  // loop it
+			{
+				//  i0,1
+				const int i0 = rd->getAdd(i,0), i1 = rd->getNext(i);
+				const auto& p = rd->getPoint(i0), p1 = rd->getPoint(i1);
+				bool bridge = !p.onTer || !p1.onTer;
 
-			// vN = scn ? TerUtil::GetNormalAt(scn->ters[0],  // 1st ter-
-			// 	vP.x, vP.z, DL.fLenDim*0.5f /*0.5f*/) : Vector3::UNIT_Y;
+				if ( (i==0 || !begin) && bridge)
+				{	begin = 1;  ++iroads;
+					trd << "begin_procedural_roads\n";
+					// gui->Exp(CGui::TXT, "Road begin");
+				}
 
-			//  pos  ---
-			float Yup = -0.5f + rd->g_Height;  // par ?
-			trd << half - vP.z << ", " << vP.y + Yup - hmin << ", " << vP.x + half << ",   ";
-			//  rot  ---
-			// trd << "0,0,0,  ";  // p.aYaw, ..
-			trd << "0, " << yaw << ", 0,  ";
-			trd << p.width << ",   ";
-			//  bridge  ---
-			// trd << "0,  0,  flat\n";
-			if (p.onTer)
-				trd << "0.5,  0.2,  flat\n";
-			else
-				trd << "0.6,  1.0,  bridge\n";
+				//  length steps  |
+				Real len = rd->GetSegLen(i0);
+				const float fLenDim = 10.f;  // par ! quality, points density
+
+				// gui->Exp(CGui::TXT, "Road i0: "+toStr(i0)+"  ter: "+toStr(p.onTer?1:0) +"  l "+fToStr(len) );
+
+				//  add points on bridge  ----------
+				if (begin)
+				{
+					//  len steps
+					// const int il = 2;  // const LQ
+					const int il = 1 + (len / fLenDim);  // var, by dist
+					const int ila = il + (!bridge ? 1 : 0);  // will end, all len
+					// gui->Exp(CGui::TXT, "Road il: "+toStr(il) );
+					
+					for (int l = 0; l < ila; ++l)
+					{	//  pos
+						float fl = l;
+						Vector3 vP = rd->interpolate(i0, fl / il);
+						Vector3 vP1 = rd->interpolate(i0, (fl+1.f) / il);
+						Vector3 dir = vP1 - vP;  // along length
+
+						// float width = p.width + 2.f;  //-
+						const float width = rd->interpWidth(i0, fl / il);
+
+						// if (p.onTer)  // ?
+						// 	vP.y = scn->getTerH(vP.x, vP.z);
+						vP.y -= 0.9f;  // par  lower_ entry?  -0.5f + rd->g_Height;  //-
+
+						//  rot y
+						float yaw = TerUtil::GetAngle(dir.x, dir.z) *180.f/PI_d - 45.f - 15.f;  // par ? 45
+
+						//  write  ------
+						//  pos
+						trd << half - vP.z << ", " << vP.y - hmin << ", " << vP.x + half << ",   ";
+						//  rot
+						trd << "0, " << yaw << ", 0,  ";  // todo  p.aRoll
+						trd << width << ",   ";
+						
+						//  bridge
+						/*if (p.onTer)
+							trd << "0.5,  0.2,  flat\n";
+						else*/
+						/*if (p.cols)  // too much, bad
+							trd << "0.6,  1.0,  bridge\n";
+						else*/
+							// trd << "0.6,  1.0,  bridge_no_pillars\n";
+							trd << "0.6,  " << (p.onTer ? 0.f : 1.f) << ",  bridge_no_pillars\n";
+				}	}
+
+	
+				if (begin && !bridge)
+				{	begin = 0;
+					trd << "end_procedural_roads\n";
+					// gui->Exp(CGui::TXT, "Road end");
+				}
+			}
+			if (begin)
+				trd << "end_procedural_roads\n";
+
+			/*	0,0,0,         0,0,0,    10.0,  0,            0,             flat
+				0,0,0,         0,0,0,    10.0,  0.25,         1.0,           both
+				flat - none
+				left, right, both - borders
+				bridge, bridge_no_pillars
+			*/
+			trd.close();
+			gui->Exp(CGui::TXT, "Roads: "+toStr(iroads));
 		}
-		trd << "end_procedural_roads\n";
-		/*	0,0,0,         0,0,0,    10.0,  0,            0,             flat
-			0,0,0,         0,0,0,    10.0,  0.25,         1.0,           both
-			flat - none
-			left, right, both - borders
-			bridge, bridge_no_pillars
-		*/
-		trd.close();
 	}
 
-	gui->Exp(CGui::INFO, "Export to RoR end.");
+
+	//  🏞️ Track/map setup  save  .terrn2
+	//------------------------------------------------------------------------------------------------------------------------
+	string terrn2File = path + name + ".terrn2";
+	ofstream trn;
+	trn.open(terrn2File.c_str(), std::ios_base::out);
+
+	trn << "[General]\n";
+	trn << "Name = "+trk+"\n";
+	trn << "GeometryConfig = " + name + ".otc\n";
+	trn << "\n";
+	trn << "Water=" << water << "\n";
+	trn << "WaterLine=" << Ywater << "\n";
+	trn << "\n";
+	trn << "AmbientColor = 1.0, 1.0, 1.0\n";  // unused-
+	//  ror = sr
+	//  0, y, 0        = -470, y, 460
+	//  959, 340 y, 950 = 487, y, -472
+	Vector3 st = Axes::toOgre(sc->startPos[0]);
+	trn << "StartPosition = " << fToStr(half - st.z)+", "+fToStr(st.y - hmin)+", "+fToStr(st.x + half)+"\n";
+	trn << "\n";
+
+	trn << "CaelumConfigFile = " + name + ".os\n";
+	trn << "SandStormCubeMap = tracks/skyboxcol\n";  // sky meh-
+	trn << "Gravity = " << -sc->gravity << "\n";
+	trn << "\n";
+
+	trn << "CategoryID = 129\n";
+	trn << "Version = 1\n";
+	// todo, random hash from trk name?
+	trn << "GUID = 11223344-5566-7788-" << fToStr(trkId,0,4,'0') <<"-012345678901\n";
+	trn << "\n";
+	//  if has groundmodel, define landuse file
+	trn << "#TractionMap = landuse.cfg\n";  // todo  surfaces.cfg
+	trn << "\n";
+
+	trn << "[Authors]\n";
+	trn << "Authors = " + authors + "\n";
+	trn << "Conversion = Exported from Stunt Rally 3 Track Editor, version: " << SET_VER << "\n";
+	if (roadtxt)
+	{
+		auto& rd = scn->roads[0];  // extra info from SR3 track
+		auto len = rd->st.Length;  // road stats
+
+		trn << "stat1 = " << "Length: " <<  fToStr(len * 0.001f,2,4) << " km  /  " << fToStr(len * 0.000621371f,2,4) << " mi\n";
+		trn << "stat2 = " << "Width average: " << fToStr(rd->st.WidthAvg,1,3) << " m\n";
+		trn << "stat3 = " << "Height range: " << fToStr(rd->st.HeightDiff,0,3) << " m\n";
+		trn << "stat4 = " << "on Terrain: " << fToStr(rd->st.OnTer,0,3) << " %\n";
+		// trn << "stat5 = " << "bank_angle_avg: " << fToStr(rd->st.bankAvg,0,2) << "\n";
+		trn << "stat5 = " << "bank_angle_max: " << fToStr(rd->st.bankMax,0,2) << "'\n";
+
+		trn << "Description = "+rd->sTxtDescr+"\n";  // text
+		trn << "drive_Advice = "+rd->sTxtAdvice+"\n";
+	}
+	trn << " \n";
+
+	trn << "[Objects]\n";
+	// trn << name+".tobj=\n";
+	// if (veget)
+	// 	trn << name+"-veget.tobj=\n";
+	if (roadFile)
+		trn << name+"-road.tobj=\n";
+	trn << "\n";
+
+	trn << "#[Scripts]\n";  // todo  road, checks
+	//  if has race script define .terrn.as
+	trn << "#"+name+".terrn.as=\n";
+
+	trn.close();
+
+
+	gui->Exp(CGui::INFO, "Export to RoR end. Time: " + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
