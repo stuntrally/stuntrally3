@@ -123,8 +123,9 @@ public:
 
 		float grassMul;  // 🌿
 
-		int roadTerTexLayer;  // 🛣️
-		float roadStepDist;
+		int roadTerTexLayer;  // 🛣️  ter layer num used as tex for road
+		bool roadCols;
+		float roadStepDist, roadHadd, tileMul, wallX, wallY;
 
 		void Default();
 	} ror;

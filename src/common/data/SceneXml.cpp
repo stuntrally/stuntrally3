@@ -92,10 +92,14 @@ void Scene::RoRconfig::Default()
 	
 	water = 0;  // auto
 	yWaterOfs = -0.8f;  // easier drive through
-	grassMul = 1.f;
+	grassMul = 4.f;
 	
-	roadTerTexLayer = 1;
-	roadStepDist = 20.f;
+	roadTerTexLayer = 1;  // meh guess
+	roadStepDist = 10.f;  // hq
+	roadHadd = -0.9f;  //+
+	tileMul = 1.2f;  // 1
+	wallX = 0.6f, wallY = 1.0f;
+	roadCols = 0;
 }
 
 

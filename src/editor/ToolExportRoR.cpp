@@ -42,6 +42,9 @@ void CGui::btnExport(WP)
 void App::ToolExportRoR()
 {
 	Ogre::Timer ti;
+	const auto& sc = scn->sc;
+	const auto& ror = sc->ror;  // scene.xml config vars for RoR
+
 	//  Gui status
 	gui->Status("RoR Export..", 1,0.5,1);
 	gui->edExport->setCaption("");
@@ -68,7 +71,6 @@ void App::ToolExportRoR()
 		return;
 	}
 	const string path = dirTrk + "/";  // main
-	const auto& sc = scn->sc;
 
 
 	//  ⛰️ Heightmap convert to .raw
@@ -208,7 +210,7 @@ void App::ToolExportRoR()
 			for (int x = 0; x < xx; ++x)
 			{
 				ColourValue rgb = tbD.getColourAt(x, y, 0, pfD);
-				ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.1f;  // par spec mul
+				ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.5f;  // par spec mul ..
 				ColourValue ds(rgb.r, rgb.g, rgb.b, a.r);
 				tbDS.setColourAt(ds, x, y, 0, pfA);
 			}
@@ -234,8 +236,8 @@ void App::ToolExportRoR()
 			for (int x = 0; x < xn; ++x)
 			{
 				ColourValue c = tbN.getColourAt(x, y, 0, pfN);
-				const float a = 0.f;
-				// const float a = max(0.f, 1.f - c.r - c.g);  // side
+				// const float a = 0.f;
+				const float a = max(0.f, 1.f - c.r - c.g);  // par side ?..
 				ColourValue nh(c.r, c.g, c.b, a);
 				tbNH.setColourAt(nh, x, y, 0, pfA);
 			}
@@ -296,24 +298,23 @@ void App::ToolExportRoR()
 
 	const char rgba[5] = "RGBA";
 	string roadDiff = "", roadNorm = "";  // set.. which?
-	float roadTile = 5.f;  // par
-	const float mul = 1.f;  // tile par
+	float roadTile = 5.f;
+	const float mul = ror.tileMul;  // scale
 	for (int i=0; i < layers; ++i)
 	{
 		const TerLayer& l = td.layersAll[td.layers[i]];
 
 		//  combined rgb,a from 2 tex
-		String pathTerTex = PATHS::Data() + "/terrain/";
-		String diff = l.texFile;  // ends with _d
-		String norm = l.texNorm;  // _n
-
+		// String diff = l.texFile;  // ends with _d
+		// String norm = l.texNorm;  // _n
 		// lay << l.tiling << " , " << diff+", "+norm+", " +  // 2 jpg
 		// lay << l.tiling << " , _" << toStr(i)+".png, "+norm+", " +
 		// lay << l.tiling << " , _" << toStr(i)+".png, _"+ toStr(i)+"_n.png, " +  // 2 png
+
 		lay << mul * l.tiling << " , " << layTexDS[i] + ", " + layTexNH[i] + ", " +  // 2 rgba png
 			name + "-blendmap.png, " << rgba[i] << ", 0.99\n";
 
-		if (i == 1)  // par  gui, idk
+		if (i == ror.roadTerTexLayer)  // par
 		// {	roadDiff = diff;  roadNorm = norm;  // 2 jpg
 		{	roadDiff = layTexDS[i];  roadNorm = layTexNH[i];
 			roadTile = l.tiling;
@@ -322,7 +323,7 @@ void App::ToolExportRoR()
 	if (roadAdd && !roadDiff.empty())
 	{
 		gui->Exp(CGui::TXT, "Road layer: " + fToStr(roadTile)+" , "+roadDiff+", "+roadNorm);
-		lay << roadTile << " , " << roadDiff+", "+roadNorm+", " +
+		lay << mul * roadTile << " , " << roadDiff+", "+roadNorm+", " +
 			name + "-road.png, R, 0.99\n";
 	}
 	lay.close();
@@ -471,17 +472,28 @@ void App::ToolExportRoR()
 		gui->Exp(CGui::ERR, "Track not in tracks.ini, no guid id or authors set.");
 	
 
-	//  🌊 Fluids  get 1 big for water level
+	//  🌊 Fluid
 	//------------------------------------------------------------
-	// par  disable, auto, h ofs
-	int water = 0;  float Ywater = 0.f;
-	for (const auto& fl : sc->fluids)
+	float Ywater = 0.f;
+	int water = 0;
+	switch (ror.water)
 	{
-		// sc->ror.water
-		if (!water && sc->fluids.size()==1 || fl.size.x > 200.f)  // pick 1st big
-		{	water = 1;
-			Ywater = fl.pos.y - hmin;
-	}	}
+	case -1:  // off
+		water = 0;
+		break;
+	case 0:  // auto
+		//  get 1 big for water level
+		for (const auto& fl : sc->fluids)
+		{
+			if (!water && sc->fluids.size()==1 || fl.size.x > 200.f)  // pick 1st big
+			{	water = 1;
+				Ywater = fl.pos.y - hmin + ror.yWaterOfs;
+		}	}
+		break;
+	case 1:  // force custom manual
+		water = 1;
+		Ywater = ror.yWaterOfs;  break;
+	}
 	gui->Exp(CGui::TXT, String("Water: ")+(water ? "yes" : "no")+"  Y level: "+fToStr(Ywater));
 
 
@@ -514,9 +526,9 @@ void App::ToolExportRoR()
 	os << "	scene_fog_density_multiplier 0.015\n";
 	os << "\n";
 	os << "	sun {\n";  // 🌞 sun light
-	Vector3 la = sc->lAmb.GetRGB()  * sc->ror.lAmb + sc->ror.lAmbAdd;  // par bright
-	Vector3 ld = sc->lDiff.GetRGB() * sc->ror.lDiff;
-	Vector3 ls = sc->lSpec.GetRGB() * sc->ror.lSpec;
+	Vector3 la = sc->lAmb.GetRGB()  * ror.lAmb + ror.lAmbAdd;  // par bright
+	Vector3 ld = sc->lDiff.GetRGB() * ror.lDiff;
+	Vector3 ls = sc->lSpec.GetRGB() * ror.lSpec;
 	os << "		ambient_multiplier "+fToStr(la.x,3,5)+" "+fToStr(la.y,3,5)+" "+fToStr(la.z,3,5)+"\n";
 	os << "		diffuse_multiplier "+fToStr(ld.x,3,5)+" "+fToStr(ld.y,3,5)+" "+fToStr(ld.z,3,5)+"\n";
 	os << "		specular_multiplier "+fToStr(ls.x,3,5)+" "+fToStr(ls.y,3,5)+" "+fToStr(ls.z,3,5)+"\n";
@@ -667,10 +679,10 @@ void App::ToolExportRoR()
 				//  range,
 				veg << "grass " << "300,  ";  // par mul
 				//  Sway: Speed, Length, Distribution,
-				veg << "0.5, 0.05, 10,  ";  
+				veg << "0.5, 0.1, 10,  ";  
 				
 				//  Density,  minx, miny, maxx, maxy,
-				veg << gr->dens * sc->densGrass * 4.f << ",  ";  // par mul
+				veg << gr->dens * sc->densGrass * ror.grassMul << ",  ";
 				veg << gr->minSx <<", "<< gr->minSy <<", "<< gr->maxSx <<", "<< gr->maxSy << ", ";
 				
 				//  fadetype, minY, maxY,
@@ -749,8 +761,6 @@ void App::ToolExportRoR()
 			}
 
 		}
-
-		//  todo  RTT.. save png
 
 		mat.close();
 
@@ -889,9 +899,10 @@ void App::ToolExportRoR()
 
 	//  🛣️ Road  points
 	//------------------------------------------------------------------------------------------------------------------------
+	std::vector<string> chks;
 	const bool roadtxt = !scn->roads.empty();
 	const bool road = roadtxt && scn->roads[0]->getNumPoints() > 2;
-	bool roadFile = 0;
+	bool hasRoad = 0;
 	if (road)
 	{	const auto& rd = scn->roads[0];
 
@@ -903,7 +914,7 @@ void App::ToolExportRoR()
 
 		//  has some bridges  ------------------------
 		if (!roadOnTer)
-		{	roadFile = 1;  
+		{	hasRoad = 1;
 			string roadFile = path + name + "-road.tobj";
 			ofstream trd;
 			trd.open(roadFile.c_str(), std::ios_base::out);
@@ -926,7 +937,7 @@ void App::ToolExportRoR()
 
 				//  length steps  |
 				Real len = rd->GetSegLen(i0);
-				const float fLenDim = 10.f;  // par ! quality, points density
+				const float fLenDim = ror.roadStepDist;  // par ! quality, points density
 
 				// gui->Exp(CGui::TXT, "Road i0: "+toStr(i0)+"  ter: "+toStr(p.onTer?1:0) +"  l "+fToStr(len) );
 
@@ -951,7 +962,7 @@ void App::ToolExportRoR()
 
 						// if (p.onTer)  // ?
 						// 	vP.y = scn->getTerH(vP.x, vP.z);
-						vP.y -= 0.9f;  // par  lower_ entry?  -0.5f + rd->g_Height;  //-
+						vP.y = ror.roadHadd;  // lower for entry  // -0.9f + rd->g_Height;
 
 						//  rot y
 						float yaw = TerUtil::GetAngle(dir.x, dir.z) *180.f/PI_d - 45.f - 15.f;  // par ? 45
@@ -971,7 +982,8 @@ void App::ToolExportRoR()
 							trd << "0.6,  1.0,  bridge\n";
 						else*/
 							// trd << "0.6,  1.0,  bridge_no_pillars\n";
-							trd << "0.6,  " << (p.onTer ? 0.f : 1.f) << ",  bridge_no_pillars\n";
+							trd << ror.wallX << ",  " << (p.onTer ? 0.f : ror.wallY) << 
+								(ror.roadCols ? ",  bridge\n" : ",  bridge_no_pillars\n");
 				}	}
 
 	
@@ -994,7 +1006,7 @@ void App::ToolExportRoR()
 			gui->Exp(CGui::TXT, "Roads: "+toStr(iroads));
 		}
 	}
-
+	
 
 	//  🏞️ Track/map setup  save  .terrn2
 	//------------------------------------------------------------------------------------------------------------------------
@@ -1052,16 +1064,19 @@ void App::ToolExportRoR()
 	trn << " \n";
 
 	trn << "[Objects]\n";
-	// trn << name+".tobj=\n";
+	if (hasRoad)
+		trn << name+"-road.tobj=\n";
 	if (veget)
 		trn << name+"-veget.tobj=\n";
-	if (roadFile)
-		trn << name+"-road.tobj=\n";
+	//if (objs)
+	//	trn << name+".tobj=\n";
 	trn << "\n";
 
-	trn << "#[Scripts]\n";  // todo  road, checks
+	trn << "[Scripts]\n";
+	trn << name + ".as=\n";
+
 	//  if has race script define .terrn.as
-	trn << "#"+name+".terrn.as=\n";
+	// trn << "#"+name+".terrn.as=\n";
 
 	trn.close();
 
