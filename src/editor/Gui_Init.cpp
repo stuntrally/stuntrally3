@@ -489,7 +489,7 @@ void CGui::InitGui()
 	//------------------------------------------------------------------------
 	Ed(GrSwayDistr, editTrGr);  Ed(GrSwayLen, editTrGr);  Ed(GrSwaySpd, editTrGr);
 
-	imgGrass = fImg("ImgGrass");  //imgGrClr = fImg("ImgGrClr");
+	imgGrass = fImg("ImgGrass");
 
 	//  grass channels
 	sv= &svGrChAngMin;	sv->Init("GrChMinA",	&f, 0.f,90.f, 1.f, 1,4);  sv->DefaultF(30.f);
@@ -619,7 +619,7 @@ void CGui::InitGui()
 	///  RoR export
 	edExport = fEd("EdExport");  Btn("BtnExport", btnExport);
 	Edt(edRoRPath, "EdPathRoR", editRoRPath);  edRoRPath->setCaption(pSet->pathExportRoR);
-
+	
 	
 
 	///  📃 Fill Combo boxes  . . . . . . .

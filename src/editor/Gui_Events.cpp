@@ -218,7 +218,6 @@ void CGui::tabGrLayers(Tab wp, size_t id)
 	const SGrassLayer* gr = &sc->grLayersAll[idGrLay], *g0 = &sc->grLayersAll[0];
 
 	imgGrass->setImageTexture(gr->material + ".png");  // same mtr name as tex
-	// imgGrClr->setImageTexture(gr->colorMap);
 
 	int used=0;
 	for (int i=0; i < sc->ciNumGrLay; ++i)

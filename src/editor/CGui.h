@@ -295,7 +295,7 @@ public:
 	SV svGrMinX, svGrMaxX;
 	SV svGrMinY, svGrMaxY;
 
-	Img imgGrass =0;  //, imgGrClr =0;
+	Img imgGrass =0;
 
 	///  grass channels  --------
 	int idGrChan =0;  // help var
@@ -415,7 +415,7 @@ public:
 
 	//  RoR export
 	void btnExport(WP);
-	Ed edExport =0, edRoRPath =0;  void editRoRPath(Ed);
+		Ed edExport =0, edRoRPath =0;  void editRoRPath(Ed);
 	void Exp(eWarn type, Ogre::String text);
 
 

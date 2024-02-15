@@ -54,7 +54,7 @@ struct PGrass
 {
 	int rate = 0;
 	//  material, colormap, scenery
-	Ogre::String mtr, clr = "GrassClrJungle", sc;
+	Ogre::String mtr, sc;
 	std::string scn;
 
 	float minSx = 1.2f, minSy = 1.2f;

@@ -88,15 +88,6 @@ void CGui::InitGuiLists()
 		cmbSurface->addItem(app->surfaces[u].name);
 	
 
-	//---------------------  🌿 Grass  ---------------------
-	/*PATHS::DirList(sData + "/grass", li);
-	for (const auto& q : li)
-	{
-		if (StringUtil::startsWith(q, "grClr", false))
-			cmbGrassClr->addItem(q);
-	}*/
-
-
 	//---------------------  📦 Objects  ---------------------
 	app->vObjNames.clear();  strlist lo;
 	PATHS::DirList(sData + "/objects2", lo);

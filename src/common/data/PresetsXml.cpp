@@ -156,7 +156,6 @@ bool Presets::LoadXml(string file)
 		PGrass g;
 		a = e->Attribute("r");	if (a)  g.rate = s2i(a);
 		a = e->Attribute("g");	if (a)  g.mtr = String(a);
-		a = e->Attribute("c");	if (a)  g.clr = String(a);
 
 		a = e->Attribute("sc");	if (a)  g.sc = String(a);
 
