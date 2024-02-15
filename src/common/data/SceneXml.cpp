@@ -9,6 +9,7 @@
 #include "game.h"  // for surfaces map
 
 #include <OgreSceneNode.h>
+#include <OgreVector3.h>
 #include <tinyxml2.h>
 using namespace tinyxml2;
 using namespace std;
@@ -78,6 +79,23 @@ void Scene::Default()
 		r.tclr = SColor(0.16f,0.5f,0.2f,0.7f);  r.tcl = r.tclr.GetRGBA();
 		r.fDamage = 0.f;
 	}
+
+	ror.Default();
+}
+
+
+//  RoR defaults  ------
+void Scene::RoRconfig::Default()
+{
+	lAmbAdd = Vector3(0.1f,0.1f,0.1f);
+	lAmb = 1.6f;  lDiff = 1.6f;  lSpec = 0.9f;
+	
+	water = 0;  // auto
+	yWaterOfs = -0.8f;  // easier drive through
+	grassMul = 1.f;
+	
+	roadTerTexLayer = 1;
+	roadStepDist = 20.f;
 }
 
 

@@ -149,9 +149,27 @@ namespace Ogre
 		//  upload hmap to gpu tex after edits, rect ignored
 		void dirtyRect(Rect rect);
 
+		//  util
 		bool getHeightAt( Vector3 &vPos ) const;
 		float getAngle( float x, float z, float s) const;
 		Real getHeight( Real x, Real z ) const;
+
+		//----------------------------------------
+		/*struct Grassmap  // todo
+		{
+			Terra* pTerra =0;
+			Grassmap(Terra* terra);
+
+			TextureGpu* texture =0;
+			Pass* pass =0;
+			Camera* camera =0;
+			CompositorWorkspace* workspace =0;
+
+			void Create();
+			void SetParams(), Update();
+			void Destroy();
+		}
+		grassmap;*/
 
 		//----------------------------------------
 		struct Blendmap
@@ -159,7 +177,7 @@ namespace Ogre
 			Terra* pTerra =0;
 			Blendmap(Terra* terra);
 
-			TextureGpu* texture =0;//, *m_blendRtt;
+			TextureGpu* texture =0;
 			Pass* pass =0;
 			Camera* camera =0;
 			CompositorWorkspace* workspace =0;

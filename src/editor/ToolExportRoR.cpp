@@ -10,6 +10,7 @@
 #include "CScene.h"
 #include "CData.h"
 #include "TracksXml.h"
+#include "PresetsXml.h"
 #include "Axes.h"
 #include "Road.h"
 
@@ -493,9 +494,9 @@ void App::ToolExportRoR()
 	os << "caelum_sky_system " + name + ".os\n";
 	os << "{\n";
 	os << "	// .75 = 6:00\n";
-	os << "	julian_day 2458850\n";
+	os << "	julian_day 2458850\n";  //?
 	os << "	time_scale 1\n";
-	os << "	longitude 30\n";
+	os << "	longitude 30\n";  // todo from sun dir ?
 	os << "	latitude 10\n";
 	os << "\n";
 	os << "	point_starfield {\n";
@@ -513,9 +514,9 @@ void App::ToolExportRoR()
 	os << "	scene_fog_density_multiplier 0.015\n";
 	os << "\n";
 	os << "	sun {\n";  // 🌞 sun light
-	Vector3 la = sc->lAmb.GetRGB()*1.6f + Vector3(0.1,0.1,0.1);  // par amb bright
-	Vector3 ld = sc->lDiff.GetRGB()*1.6f;  // tweak..
-	Vector3 ls = sc->lSpec.GetRGB()*0.9f;
+	Vector3 la = sc->lAmb.GetRGB()  * sc->ror.lAmb + sc->ror.lAmbAdd;  // par bright
+	Vector3 ld = sc->lDiff.GetRGB() * sc->ror.lDiff;
+	Vector3 ls = sc->lSpec.GetRGB() * sc->ror.lSpec;
 	os << "		ambient_multiplier "+fToStr(la.x,3,5)+" "+fToStr(la.y,3,5)+" "+fToStr(la.z,3,5)+"\n";
 	os << "		diffuse_multiplier "+fToStr(ld.x,3,5)+" "+fToStr(ld.y,3,5)+" "+fToStr(ld.z,3,5)+"\n";
 	os << "		specular_multiplier "+fToStr(ls.x,3,5)+" "+fToStr(ls.y,3,5)+" "+fToStr(ls.z,3,5)+"\n";
@@ -539,30 +540,37 @@ void App::ToolExportRoR()
 	os << "		atmosphere_depth_image AtmosphereDepth.png\n";
 	os << "	}\n";
 	os << "\n";
-	os << "	cloud_system\n";
-	os << "	{\n";
-	os << "		cloud_layer low\n";
-	os << "		{\n";
-	os << "			height 2000\n";
-	os << "			coverage 0.2\n";
-	os << "		}\n";
-	if (0)  // todo if cloudy..
+
+	//  clouds  factor from presets.xml
+	auto* sky = scn->data->pre->GetSky(sc->skyMtr);
+	float cld = sky ? sky->clouds : 0.2f;
+	if (cld > 0.f)
 	{
-	os << "		cloud_layer mid\n";
-	os << "		{\n";
-	os << "			height 3000\n";
-	os << "			coverage 0.4\n";
-	os << "		}\n";
+		os << "	cloud_system\n";
+		os << "	{\n";
+		os << "		cloud_layer low\n";
+		os << "		{\n";
+		os << "			height 2000\n";
+		os << "			coverage "<< min(cld, 0.2f) <<"\n";
+		os << "		}\n";
+		if (cld >= 0.4f)
+		{
+			os << "		cloud_layer mid\n";
+			os << "		{\n";
+			os << "			height 3000\n";
+			os << "			coverage "<< min(cld, 0.6f) <<"\n";
+			os << "		}\n";
+		}
+		if (cld >= 0.7f)
+		{
+			os << "		cloud_layer high\n";
+			os << "		{\n";
+			os << "			height 4000\n";
+			os << "			coverage "<< min(cld, 1.0f) <<"\n";
+			os << "		}\n";
+		}
+		os << "	}\n";
 	}
-	if (0)
-	{
-	os << "		cloud_layer high\n";
-	os << "		{\n";
-	os << "			height 4000\n";
-	os << "			coverage 0.6\n";
-	os << "		}\n";
-	}
-	os << "	}\n";
 	os << "}\n";
 
 	os.close();
@@ -749,6 +757,120 @@ void App::ToolExportRoR()
 		//  🌳🪨 Vegetation
 		//------------------------------------------------------------------------------------------------------------------------
 
+		//  veget map
+		//------------------------------------------------------------
+		/*Image2 img, im2;
+		try
+		{
+			img.load(String("roadDensity.png"), "General");
+			im2.load(String("roadDensity.png"), "General");
+			// im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
+
+			const int xx = img.getWidth(), yy = img.getHeight();
+			TextureBox tb = img.getData(0), tb2 = im2.getData(0);
+			auto pf = img.getPixelFormat();
+			for (int y = 0; y < yy; ++y)
+			for (int x = 0; x < xx; ++x)
+			{
+				ColourValue cv = tb.getColourAt(xx-1 - x, y, 0, pf);  // flip x
+				cv.g = cv.b = cv.r;  // white
+				tb.setColourAt(cv, x, y, 0, pf);
+			}
+
+			im2.save(path + name + "-grass"+toStr(0)+".png", 0, 0);
+		}
+		catch (exception ex)
+		{
+			gui->Exp(CGui::WARN, string("Exception in grass dens map: ") + ex.what());
+		}*/
+
+
+		//  Veget Layers  ------------------------------------
+		for (size_t l=0; l < sc->vegLayers.size(); ++l)
+		{
+			VegetLayer& vg = sc->vegLayersAll[sc->vegLayers[l]];
+			String file = vg.name;  //, fpng = file+".png";
+			// vg.cnt = 0;
+
+			//  copy mesh from old SR ?  or convert v2 to v1-
+		}
+
+		#if 0
+			//  check ter angle  ------------
+			float ang = ter0->getAngle(pos.x, pos.z, td.fTriangleSize);
+			if (ang > vg.maxTerAng)
+				add = false;
+
+			// if (!add)  LogO("ter ang");
+			if (!add)  continue;  //
+
+			//  check ter height  ------------
+			bool in = ter0->getHeightAt(pos);
+			// LogO(fToStr(pos.y));
+			if (!in)  add = false;  // outside
+			
+			if (pos.y < vg.minTerH || pos.y > vg.maxTerH)
+				add = false;
+			
+			// if (!add)  LogO("ter h");
+			if (!add)  continue;  //
+			
+			//  check if in fluids  ------------
+			float fa = sc->GetDepthInFluids(pos);
+			if (fa > vg.maxDepth)
+				add = false;
+
+			// if (!add)  LogO("in fl");
+
+			//  check if on road - uses roadDensity.png
+			if (imgRoad && r > 0)  //  ----------------
+			{
+			int mx = (0.5*tws + pos.x)/tws*r,
+				my = (0.5*tws + pos.z)/tws*r;
+
+				int c = sc->trRdDist + vg.addRdist;
+				int d = c;
+				bool bMax = vg.maxRdist < 20; //100 slow-
+				if (bMax)
+					d = c + vg.maxRdist+1;  // not less than c
+
+				//  find dist to road
+				int ii,jj, rr, rmin = 3000;  //d
+				for (jj = -d; jj <= d; ++jj)
+				for (ii = -d; ii <= d; ++ii)
+				{
+					const int
+						xx = std::max(0,std::min(r-1, my+ii)),
+						yy = std::max(0,std::min(r-1, mx+jj));
+
+					const float cr = tb.getColourAt(
+						xx, yy, 0, Ogre::PFG_RGBA8_UNORM_SRGB ).r;
+					
+					if (cr < 0.75f)  // par-
+					{
+						rr = abs(ii)+abs(jj);
+						//rr = sqrt(float(ii*ii+jj*jj));  // much slower
+						rmin = std::min(rmin, rr);
+					}
+				}
+				if (rmin <= c)
+					add = false;
+
+				if (bMax && /*d > 1 &&*/ rmin > d-1)  // max dist (optional)
+					add = false;
+			}
+			// if (!add)  LogO("on rd");
+			if (!add)  continue;  //
+
+			//  check if outside of terrain?
+			// if (pos.x < 
+			
+			// if (!add)  continue;  //
+
+
+			//  **************  add  **************
+			++all;
+		#endif
 
 		// veg << "";
 		// trn << ""+name+"-veget.tobj=\n";

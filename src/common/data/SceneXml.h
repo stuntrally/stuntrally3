@@ -110,7 +110,26 @@ public:
 	std::string baseTrk;
 	int secEdited;  // time in seconds of track editing
 
+
+	//  RoR only  for export,  not needed in SR
+	//------------------------
+	struct RoRconfig
+	{
+		Ogre::Vector3 lAmbAdd;  // 🌞
+		float lAmb, lDiff, lSpec;
+
+		int water;  // 🌊 -1 off  0 auto  1 custom
+		float yWaterOfs;  // or height for custom
+
+		float grassMul;  // 🌿
+
+		int roadTerTexLayer;  // 🛣️
+		float roadStepDist;
+
+		void Default();
+	} ror;
 	
+
 	//  🌟 Main methods  ----
 	Scene();
 	void Default();
