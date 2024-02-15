@@ -688,33 +688,57 @@
 				</Widget>
 			</Widget>
 
+			<!-- Export track to RoR -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
-				<Property key="Caption" value="#A070A0#{Export}"/>
-				<Widget type="EditBox" skin="EditBoxStretch" position="32 33 600 400" name="EdExport">
-					<Property key="ReadOnly" value="true"/>
-					<Property key="MultiLine" value="true"/>
-					<Property key="WordWrap" value="true"/>
-					<Property key="VisibleHScroll" value="false"/>
-					<Property key="VisibleVScroll" value="true"/>
-					<Property key="MaxTextLength" value="4000"/>
-					<Property key="TextColour" value="1.0 0.8 0.8"/>
-					<Property key="Colour" value="0.6 0.7 0.8"/>
-					<Property key="FontName" value="font.small"/>
-					<UserString key="tip" value="#{TipTrackDescEditor}"/>
+				<Property key="Caption" value="#907090#{Export}"/>
+
+				<Widget type="TabControl" skin="TabControl" position="24 12 760 536" align="Stretch" layer="Back" name="TabWndTrack">
+					<Property key="InheritsAlpha" value="false"/>
+					<Property key="SmoothShow" value="false"/>
+					<Property key="Colour" value="0.7 0.9 1"/>
+					<Widget type="TabItem" skin="" position="2 24 794 562">
+						<Property key="Caption" value="#E0A0A0#{Warnings}"/>
+
+						<Widget type="EditBox" skin="EditBoxStretch" position="32 33 600 390" name="EdExport">
+							<Property key="ReadOnly" value="true"/>
+							<Property key="MultiLine" value="true"/>
+							<Property key="WordWrap" value="true"/>
+							<Property key="VisibleHScroll" value="false"/>
+							<Property key="VisibleVScroll" value="true"/>
+							<Property key="MaxTextLength" value="4000"/>
+							<Property key="TextColour" value="1.0 0.8 0.8"/>
+							<Property key="Colour" value="0.6 0.7 0.8"/>
+							<Property key="FontName" value="font.small"/>
+							<UserString key="tip" value="#{TipTrackDescEditor}"/>
+						</Widget>
+
+						<Widget type="Button" skin="Button" position="32 440 200 32" name="BtnExport">
+							<Property key="Caption" value="#{Export}"/>
+							<Property key="TextColour" value="0.9 0.7 0.9"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="320 444 200 24" name="ExportOnLoad">
+							<Property key="Caption" value="#{ExportOnLoad}"/>
+							<Property key="TextColour" value="0.6 0.7 0.8"/>
+						</Widget>
+					</Widget>
+
+					<Widget type="TabItem" skin="" position="2 24 794 562">
+						<Property key="Caption" value="#C0F0F0#{Settings}"/>
+						<Property key="Colour" value="1 0.9 0.4"/>
+
+						<Widget type="TextBox" skin="TextBox" position="32 32 484 24">
+							<Property key="Caption" value="#{PathRoRExport}"/>
+							<Property key="TextColour" value="0.8 0.7 0.8"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="32 56 600 24" name="EdPathRoR">
+							<Property key="Colour" value="0.9 0.9 1.0"/>
+							<Property key="MaxTextLength" value="320"/>
+							<Property key="TextColour" value="0.9 0.9 1.0"/>
+						</Widget>
+					</Widget>
+
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="32 460 484 24">
-					<Property key="Caption" value="#{PathRoRExport}"/>
-					<Property key="TextColour" value="0.8 0.7 0.8"/>
-				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="32 516 600 24" name="EdPathRoR">
-					<Property key="Colour" value="0.9 0.9 1.0"/>
-					<Property key="MaxTextLength" value="320"/>
-					<Property key="TextColour" value="0.9 0.9 1.0"/>
-				</Widget>
-				<Widget type="Button" skin="Button" position="520 460 200 32" name="BtnExport">
-					<Property key="Caption" value="#{Export}"/>
-					<Property key="TextColour" value="0.9 0.7 0.9"/>
-				</Widget>
+
 			</Widget>
 		</Widget>
 	</Widget>

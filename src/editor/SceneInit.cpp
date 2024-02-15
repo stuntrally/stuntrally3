@@ -377,6 +377,10 @@ void App::LoadTrackEv()
 		gui->WarningsCheck(scn->sc, scn->roads);
 
 	LogO(String(":::> Time Load Track: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	
+
+	if (pSet->exportOnLoad)  //!
+		ToolExportRoR();
 }
 
 

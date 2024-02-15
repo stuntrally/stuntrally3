@@ -79,6 +79,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	//  👆 pick
 	Param(c,w, "pick.set_par", pick_setpar);		Param(c,w, "pick.objGroup", objGroup);
 
-	//  RoR dir
+	//  RoR export
 	Param(c,w, "ror.path_export", pathExportRoR);
+	Param(c,w, "ror.exportOnLoad", exportOnLoad);
 }

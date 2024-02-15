@@ -415,7 +415,8 @@ public:
 
 	//  RoR export
 	void btnExport(WP);
-		Ed edExport =0, edRoRPath =0;  void editRoRPath(Ed);
+	Ck ckExportOnLoad;
+	Ed edExport =0, edRoRPath =0;  void editRoRPath(Ed);
 	void Exp(eWarn type, Ogre::String text);
 
 

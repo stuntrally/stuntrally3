@@ -65,8 +65,9 @@ public:
 	//  👆 pick
 	bool pick_setpar =1;
 
-	//  RoR dir
+	//  RoR export
 	std::string pathExportRoR;
+	bool exportOnLoad =0;
 
 
 //------------------------------------------

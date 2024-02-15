@@ -619,7 +619,8 @@ void CGui::InitGui()
 	///  RoR export
 	edExport = fEd("EdExport");  Btn("BtnExport", btnExport);
 	Edt(edRoRPath, "EdPathRoR", editRoRPath);  edRoRPath->setCaption(pSet->pathExportRoR);
-	
+	ck= &ckCheckLoad;	ck->Init("ExportOnLoad",	&pSet->exportOnLoad);
+
 	
 
 	///  📃 Fill Combo boxes  . . . . . . .
