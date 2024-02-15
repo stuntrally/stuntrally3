@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-09 18:34+0100\n"
-"PO-Revision-Date: 2023-11-11 10:04+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-02-15 14:15+0000\n"
+"Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/hu/>\n"
 "Language: hu_HU\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -109,13 +109,13 @@ msgstr "Ellenőrzőpont"
 #: src/game/Hud_Create.cpp:319
 msgctxt "WrongChk"
 msgid "Wrong Checkpoint"
-msgstr "Rossz Ellenőrzőpont"
+msgstr "Hibás ellenőrzőpont"
 
 #. Editor  status 
 #: src/editor/SceneInit.cpp:268
 msgctxt "Loading"
 msgid "Loading"
-msgstr "Töltés"
+msgstr "Betöltés"
 
 #. Editor  status 
 #: src/game/Gui_TweakSim.cpp:220 src/editor/SceneInit.cpp:373
@@ -134,7 +134,7 @@ msgstr "Mentés"
 #: src/editor/Update_Key.cpp:42
 msgctxt "Saved"
 msgid "Saved"
-msgstr "Elmentett"
+msgstr "Mentve"
 
 #. Editor  status 
 #: src/editor/SceneInit.cpp:411
@@ -237,80 +237,80 @@ msgstr "Segítség"
 #: data/gui/Game_Help.layout:131 ..Help.Tab
 msgctxt "Readme"
 msgid "Readme"
-msgstr "Readme"
+msgstr "Olvassel"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:17 ..Help.Tab
 msgctxt "Support"
 msgid "Support"
-msgstr ""
+msgstr "Támogatás"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:149 ..Help.Tab
 msgctxt "Contributing"
 msgid "Contributing"
-msgstr ""
+msgstr "Közreműködés"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:173 ..Help.Tab
 msgctxt "Credits"
 msgid "Credits"
-msgstr ""
+msgstr "Köszönetnyilvánítás"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:36 ..Help.Support.Text
 msgctxt "LinksToWeb"
 msgid "Links to websites:"
-msgstr ""
+msgstr "Weboldal-hivatkozások:"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:49 ..Help.Support.Button
 msgctxt "Homepage"
 msgid "Homepage"
-msgstr ""
+msgstr "Honlap"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:55 ..Help.Support.Button
 msgctxt "DocumentationWiki"
 msgid "Documentation (Wiki)"
-msgstr ""
+msgstr "Dokumentáció (Wiki)"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:68 ..Help.Support.Button
 msgctxt "Forum"
 msgid "Forum"
-msgstr ""
+msgstr "Fórum"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:86 ..Help.Support.Button
 msgctxt "Sources"
 msgid "Sources"
-msgstr ""
+msgstr "Források"
 
 #. MAIN  Help links 
 #: data/gui/Editor_Help.layout:24 ..Help.Input/help.Button
 #: data/gui/Game_Help.layout:74 ..Help.Support.Button
 msgctxt "TrackEditorTutorial"
 msgid "Track Editor Tutorials"
-msgstr ""
+msgstr "Pályaszerkesztő oktatóanyagai"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:80 ..Help.Support.Button
 msgctxt "Translations"
 msgid "Translations"
-msgstr ""
+msgstr "Fordítások"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:61 ..Help.Support.Button
 msgctxt "GameControllers"
 msgid "Game Controllers"
-msgstr ""
+msgstr "Játékvezérlők"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:92 ..Help.Support.Button
 msgctxt "Donations"
 msgid "Donations"
-msgstr ""
+msgstr "Adományok"
 
 #. MAIN  Championship  buttons 
 #: data/gui/Game.layout:1956 ..SingleRace.Championship.Button :1967:1978
@@ -318,7 +318,7 @@ msgstr ""
 #: src/game/Championships.cpp:227:480 src/game/Challenges.cpp:572:686
 msgctxt "Start"
 msgid "Start"
-msgstr "Start"
+msgstr "Kezdés"
 
 #. MAIN  Championship  buttons 
 #: src/game/Championships.cpp:227:475:480 src/game/Challenges.cpp:557:572:686
@@ -374,25 +374,25 @@ msgstr "Rally"
 #: data/gui/Game.layout:1893 ..SingleRace.Championship.Tab
 msgctxt "Chall_Endurance"
 msgid "Endurance"
-msgstr ""
+msgstr "Hosszútávú"
 
 #. Challenge types 
 #: data/gui/Game.layout:1896 ..SingleRace.Championship.Tab
 msgctxt "Chall_Chase"
 msgid "Chase"
-msgstr ""
+msgstr "Hajsza"
 
 #. Challenge types 
 #: data/gui/Game.layout:1902 ..SingleRace.Championship.Tab
 msgctxt "Chall_Stunts"
 msgid "Stunts"
-msgstr ""
+msgstr "Kaszkadőrmutatványok"
 
 #. Challenge types 
 #: data/gui/Game.layout:1899 ..SingleRace.Championship.Tab
 msgctxt "Chall_Extreme"
 msgid "Extreme"
-msgstr ""
+msgstr "Extrém"
 
 #. Challenge types 
 #: data/gui/Game.layout:1908 ..SingleRace.Championship.Tab
@@ -403,7 +403,7 @@ msgstr "Speciális"
 #. MAIN  Track Difficulty 
 msgctxt "Diff0"
 msgid "Test Easy"
-msgstr ""
+msgstr "Teszt (könnyű)"
 
 #. MAIN  Track Difficulty 
 msgctxt "Diff1"
@@ -437,12 +437,12 @@ msgstr "Nagyon nehéz"
 #. MAIN  Track Difficulty 
 msgctxt "Diff6"
 msgid "Extreme"
-msgstr ""
+msgstr "Extrém"
 
 #. MAIN  Track Difficulty 
 msgctxt "Diff7"
 msgid "Ultra"
-msgstr ""
+msgstr "Ultra"
 
 #. MAIN  Track Difficulty 
 #: data/gui/Game_Main.layout:190 ..NewGame.Button :205..NewGame.Image
@@ -452,6 +452,9 @@ msgid ""
 "Vehicle and Track, visible HUD elements and driving aids. All can be changed "
 "manually later."
 msgstr ""
+"A nehézség ezeket állítja be: pályák szűrése és rendezése, kiválasztott "
+"jármű és pálya, látható HUD-elemek és vezetést segítő rendszerek. Később "
+"mind módosítható kézileg."
 
 #. MAIN  Track Difficulty 
 #: data/gui/Game_Main.layout:225 ..NewGame.Button :240..NewGame.Image
@@ -464,6 +467,13 @@ msgid ""
 "on gravel. In Hard - cars rotate easier, and wheels spin already on gravel, "
 "good control is required."
 msgstr ""
+"A szimulációs mód megváltoztatja, hogy mennyire valósághűek a járművek, és "
+"milyen nehéz a vezetésük. Módosítja a sérülési módot is, és azt, hogy milyen "
+"gyorsan romlanak el a járművek. Könnyű módban: a járművek lassúk, nehéznek "
+"érződnek, és nem nagyon csúsznak ki. Közepes módban: gyorsak, csúsznak, és a "
+"kerekek kipörögnek a havon, és néha a murván is. Nehéz módban: az autók "
+"könnyebben forognak, a kerekek már murván is kipörögnek, ehhez jó "
+"irányítóképesség szükséges."
 
 #. MAIN  Track 
 #: data/gui/Common.layout:36 ..Window data/gui/Editor_Help.layout:228
@@ -495,7 +505,7 @@ msgstr "Pálya"
 #: :1938..SingleRace.Championship.Check src/game/Gui_Network.cpp:125
 msgctxt "Reverse"
 msgid "Reverse"
-msgstr ""
+msgstr "Fordítva"
 
 #. MAIN  Track 
 #: data/gui/Game.layout:25 ..SingleRace.Track.Button
@@ -523,7 +533,7 @@ msgstr "Legjobb idő"
 #: data/gui/Game.layout:383 ..SingleRace.Track.Text :2350
 msgctxt "TrackAvgSpeed"
 msgid "Avg. speed"
-msgstr ""
+msgstr "Átl. sebesség"
 
 #. MAIN  Track stats 
 #: data/gui/Editor_Track.layout:118 ..Track.Track.Text data/gui/Game.layout:134
@@ -546,7 +556,7 @@ msgstr "Terület"
 #: :2180..SingleRace.Track.Image
 msgctxt "TrackWidthAvg"
 msgid "Width avg."
-msgstr ""
+msgstr "Átl. szélesség"
 
 #. MAIN  Track stats 
 #: data/gui/Editor_Track.layout:144 ..Track.Track.Text :194..Track.Track.Image
@@ -555,7 +565,7 @@ msgstr ""
 #: :2187..SingleRace.Track.Image
 msgctxt "TrackHeightDiff"
 msgid "Height diff."
-msgstr ""
+msgstr "Szintkülönbség"
 
 #. MAIN  Track stats 
 #: data/gui/Editor_Track.layout:150 ..Track.Track.Text :200..Track.Track.Image
@@ -564,7 +574,7 @@ msgstr ""
 #: :2193..SingleRace.Track.Image src/editor/Update_EditKeyTxt.cpp:118
 msgctxt "TrackInAir"
 msgid "In air"
-msgstr ""
+msgstr "Levegőben"
 
 #. MAIN  Track stats 
 #: data/gui/Editor_Track.layout:156 ..Track.Track.Text :206..Track.Track.Image
@@ -573,7 +583,7 @@ msgstr ""
 #: :2199..SingleRace.Track.Image src/editor/Update_EditKeyTxt.cpp:119
 msgctxt "TrackPipes"
 msgid "Pipes"
-msgstr ""
+msgstr "Csövek"
 
 #. Championship Stage  stats 
 #: data/gui/Common.layout:71 ..Track-Filter.Check :74
@@ -595,13 +605,13 @@ msgstr "Pályák"
 #: src/game/Championships.cpp:444 src/game/Challenges.cpp:515:659
 msgctxt "Stage"
 msgid "Stage"
-msgstr ""
+msgstr "Szakasz"
 
 #. Championship Stage  stats 
 #: data/gui/Game.layout:2021 ..SingleRace.Tab src/game/Gui_InitChamps.cpp:63:76
 msgctxt "Stages"
 msgid "Stages"
-msgstr ""
+msgstr "Szakaszok"
 
 #. Championship Stage  stats 
 #: data/gui/Common.layout:81 ..Track-Filter.Check data/gui/Game.layout:1875
@@ -609,7 +619,7 @@ msgstr ""
 #: src/common/GuiCom_Track.cpp:214
 msgctxt "Scenery"
 msgid "Scenery"
-msgstr ""
+msgstr "Táj"
 
 #. Championship Stage  stats 
 msgctxt "Length"
@@ -633,7 +643,7 @@ msgstr "Nehézség"
 #: src/game/Challenges.cpp:527 src/editor/Update_Frame.cpp:85
 msgctxt "Distance"
 msgid "Distance"
-msgstr ""
+msgstr "Távolság"
 
 #. Championship Stage  stats 
 #: data/gui/Game.layout:553 ..SingleRace.Vehicle.Text
@@ -655,7 +665,7 @@ msgstr "m:s"
 #: src/game/Challenges.cpp:674 src/game/Gui_InitChamps.cpp:64:77
 msgctxt "Progress"
 msgid "Progress"
-msgstr ""
+msgstr "Előrehaladás"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:220 src/game/Gui_InitChamps.cpp:64:78:92
@@ -673,7 +683,7 @@ msgstr "Összpontszám"
 #: src/game/Championships.cpp:471 src/game/Challenges.cpp:562:635:659
 msgctxt "Needed"
 msgid "Needed"
-msgstr ""
+msgstr "Szükséges"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:219:469 src/game/Challenges.cpp:478:534:674
@@ -685,25 +695,25 @@ msgstr "Vége"
 #: src/game/Championships.cpp:475 src/game/Challenges.cpp:396
 msgctxt "Passed"
 msgid "Passed"
-msgstr ""
+msgstr "Továbbjutva"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:477 src/game/Challenges.cpp:396
 msgctxt "DidntPass"
 msgid "Didn't pass"
-msgstr ""
+msgstr "Nem sikerült a továbbjutás"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:475 src/game/Challenges.cpp:557
 msgctxt "NextStage"
 msgid "Continuing to next stage"
-msgstr ""
+msgstr "Tovább a következő szakaszhoz"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:477 src/game/Challenges.cpp:558
 msgctxt "RepeatStage"
 msgid "Repeating stage"
-msgstr ""
+msgstr "Szakasz megismétlése"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Challenges.cpp:609
@@ -720,132 +730,132 @@ msgstr "Engedélyezett"
 #. Car  Names  from animals 
 msgctxt "Turtle"
 msgid "Turtle"
-msgstr ""
+msgstr "Teknős"
 
 #. Car  Names  from animals 
 msgctxt "Elephant"
 msgid "Elephant"
-msgstr ""
+msgstr "Elefánt"
 
 #. Car  Names  from animals 
 msgctxt "Alligator"
 msgid "Alligator"
-msgstr ""
+msgstr "Aligátor"
 
 #. Car  Names  from animals 
 msgctxt "Bison"
 msgid "Bison"
-msgstr ""
+msgstr "Bivaly"
 
 #. Car  Names  from animals 
 msgctxt "Caterpillar"
 msgid "Caterpillar"
-msgstr ""
+msgstr "Hernyó"
 
 #. Car  Names  from animals 
 msgctxt "Rhino"
 msgid "Rhino"
-msgstr ""
+msgstr "Orrszarvú"
 
 #. Car  Names  from animals 
 msgctxt "Bear"
 msgid "Bear"
-msgstr ""
+msgstr "Medve"
 
 #. Car  Names  from animals 
 msgctxt "Coyote"
 msgid "Coyote"
-msgstr ""
+msgstr "Prérifarkas"
 
 #. Car  Names  from animals 
 msgctxt "Squirrel"
 msgid "Squirrel"
-msgstr ""
+msgstr "Mókus"
 
 #. Car  Names  from animals 
 msgctxt "Fox"
 msgid "Fox"
-msgstr ""
+msgstr "Róka"
 
 #. Car  Names  from animals 
 msgctxt "Hyena"
 msgid "Hyena"
-msgstr ""
+msgstr "Hiéna"
 
 #. Car  Names  from animals 
 msgctxt "Gorilla"
 msgid "Gorilla"
-msgstr ""
+msgstr "Gorilla"
 
 #. Car  Names  from animals 
 msgctxt "Lizard"
 msgid "Lizard"
-msgstr ""
+msgstr "Gyík"
 
 #. Car  Names  from animals 
 msgctxt "Weasel"
 msgid "Weasel"
-msgstr ""
+msgstr "Menyét"
 
 #. Car  Names  from animals 
 msgctxt "Wolf"
 msgid "Wolf"
-msgstr ""
+msgstr "Farkas"
 
 #. Car  Names  from animals 
 msgctxt "Scorpion"
 msgid "Scorpion"
-msgstr ""
+msgstr "Skorpió"
 
 #. Car  Names  from animals 
 msgctxt "Buffalo"
 msgid "Buffalo"
-msgstr ""
+msgstr "Bölény"
 
 #. Car  Names  from animals 
 msgctxt "Gazelle"
 msgid "Gazelle"
-msgstr ""
+msgstr "Gazella"
 
 #. Car  Names  from animals 
 msgctxt "Jaguar"
 msgid "Jaguar"
-msgstr ""
+msgstr "Jaguár"
 
 #. Car  Names  from animals 
 msgctxt "Puma"
 msgid "Puma"
-msgstr ""
+msgstr "Puma"
 
 #. Car  Names  from animals 
 msgctxt "Leopard"
 msgid "Leopard"
-msgstr ""
+msgstr "Leopárd"
 
 #. Car  Names  from animals 
 msgctxt "Beetle"
 msgid "Beetle"
-msgstr ""
+msgstr "Bogár"
 
 #. Car  Names  from animals 
 msgctxt "Swan"
 msgid "Swan"
-msgstr ""
+msgstr "Hattyú"
 
 #. Car  Names  from animals 
 msgctxt "Duck"
 msgid "Duck"
-msgstr ""
+msgstr "Kacsa"
 
 #. Car  Names  from animals 
 msgctxt "Hawk"
 msgid "Hawk"
-msgstr ""
+msgstr "Sólyom"
 
 #. Car  Names  from animals 
 msgctxt "Rabbit"
 msgid "Rabbit"
-msgstr ""
+msgstr "Nyúl"
 
 #. Vehicle 
 #: data/gui/Game.layout:374 ..SingleRace.Track.Text :494..SingleRace.Tab
@@ -867,6 +877,7 @@ msgstr "Járművek"
 msgctxt "TipCarsList"
 msgid "Cars list. Press Enter or [New Game] to drive with it."
 msgstr ""
+"Autólista. Nyomja meg az Entert vagy az [Új játék] lehetőséget a vezetéséhez."
 
 #. TIP  Vehicle 
 #: data/gui/Game.layout:534 ..SingleRace.Vehicle.Widget
@@ -874,7 +885,7 @@ msgstr ""
 #: :715..SingleRace.Vehicle.Image
 msgctxt "TipCarDesc"
 msgid "Vehicle description text. Can have driving advices."
-msgstr ""
+msgstr "Jármű leíró szövege. Tartalmazhat vezetési tanácsokat."
 
 #. TIP  Vehicle 
 #: data/gui/Game.layout:516 ..SingleRace.Vehicle.Button
@@ -887,52 +898,52 @@ msgstr "Játék újraindítása."
 #: data/gui/Game.layout:886 ..SingleRace.Setup.Tab
 msgctxt "Paint"
 msgid "Paint"
-msgstr ""
+msgstr "Festés"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:57
 msgctxt "P_1color"
 msgid "1 color, simple"
-msgstr ""
+msgstr "1 szín, egyszerű"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:58
 msgctxt "P_2colors"
 msgid "2 colors"
-msgstr ""
+msgstr "2 szín"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:58
 msgctxt "P_3colors"
 msgid "3 colors, changing"
-msgstr ""
+msgstr "3 szín, változó"
 
 #. Color  params 
 #: data/gui/Editor_Utils.layout:108 ..Color.Text data/gui/Game.layout:1093
 #: ..SingleRace.Setup.Paint.Text
 msgctxt "ColHue"
 msgid "Color - Hue"
-msgstr ""
+msgstr "Árnyalat"
 
 #. Color  params 
 #: data/gui/Editor_Utils.layout:124 ..Color.Text data/gui/Game.layout:1112
 #: ..SingleRace.Setup.Paint.Text
 msgctxt "ColSat"
 msgid "Saturation"
-msgstr ""
+msgstr "Telítettség"
 
 #. Color  params 
 #: data/gui/Editor_Utils.layout:140 ..Color.Text data/gui/Game.layout:1129
 #: ..SingleRace.Setup.Paint.Text
 msgctxt "ColBright"
 msgid "Brightness"
-msgstr ""
+msgstr "Fényesség"
 
 #. Color  params 
 #: data/gui/Game.layout:1146 ..SingleRace.Setup.Paint.Text
 msgctxt "ColGloss"
 msgid "Glossiness"
-msgstr ""
+msgstr "Csillogás"
 
 #. Color  params 
 #: data/gui/Editor.layout:544 ..Editor.Terrain.Light.Text
@@ -940,14 +951,14 @@ msgstr ""
 #: data/gui/MaterialEditor.layout:207 ..MaterialEditor.Main.Text
 msgctxt "ColReflect"
 msgid "Reflection"
-msgstr ""
+msgstr "Tükröződés"
 
 #. Color  params 
 #: data/gui/Game.layout:1208 ..SingleRace.Setup.Paint.Text
 #: data/gui/MaterialEditor.layout:149 ..MaterialEditor.Main.Text :194
 msgctxt "ColMetalness"
 msgid "Metalness"
-msgstr ""
+msgstr "Fémesség"
 
 #. Color  params 
 #: data/gui/Game.layout:1163 ..SingleRace.Setup.Paint.Text
@@ -959,7 +970,7 @@ msgstr ""
 #: :223:227..MaterialEditor.Main.Slider :231..MaterialEditor.Main.Edit
 msgctxt "ColRoughness"
 msgid "Roughness"
-msgstr ""
+msgstr "Durvaság"
 
 #. Color  params 
 #: data/gui/Game.layout:1209 ..SingleRace.Setup.Paint.Text
@@ -971,7 +982,7 @@ msgstr ""
 #: :164:168..MaterialEditor.Main.Slider :172..MaterialEditor.Main.Edit
 msgctxt "ColFresnel"
 msgid "Fresnel"
-msgstr ""
+msgstr "Fresnel"
 
 #. Color  params 
 #: data/gui/Game.layout:1179 ..SingleRace.Setup.Paint.Text
@@ -983,7 +994,7 @@ msgstr ""
 #: :231..MaterialEditor.Main.Edit
 msgctxt "ColClearCoat"
 msgid "Clear coat"
-msgstr ""
+msgstr "Átlátszó bevonat"
 
 #. Color  extras 
 #: data/gui/Editor_Options.layout:883 ..Options.View.Pacenotes.Text
@@ -992,13 +1003,13 @@ msgstr ""
 #: ..MaterialEditor.Main.Text
 msgctxt "Transparency"
 msgid "Transparency"
-msgstr "Átlátszó"
+msgstr "Átlátszóság"
 
 #. Color  extras 
 #: data/gui/Editor_Utils.layout:172 ..Color.Text
 msgctxt "Negative"
 msgid "Negative (darken)"
-msgstr ""
+msgstr "Negatív (sötétítés)"
 
 #. Color  extras 
 #: data/gui/Editor.layout:822 ..Editor.Terrain.Brushparameters.Button
@@ -1006,21 +1017,21 @@ msgstr ""
 #: ..SingleRace.Setup.Paint.Button
 msgctxt "CarClrRandom"
 msgid "Random"
-msgstr "Véletlen"
+msgstr "Véletlenszerű"
 
 #. Color  extras 
 #: data/gui/Editor.layout:686 ..Editor.Terrain.Brushes.Check
 #: data/gui/Game.layout:924 ..SingleRace.Setup.Paint.Check
 msgctxt "Adjust"
 msgid "Adjust"
-msgstr ""
+msgstr "Igazítás"
 
 #. Color  extras 
 #: data/gui/Editor.layout:746 ..Editor.Terrain.Brushes.Text
 #: data/gui/Game.layout:940 ..SingleRace.Setup.Paint.Check
 msgctxt "NewLine"
 msgid "New line"
-msgstr ""
+msgstr "Új sor"
 
 #. TIP  Vehicle Color 
 #: src/game/Gui_Paints.cpp:465
@@ -1029,13 +1040,16 @@ msgid ""
 "Click to apply color to vehicle, and select. Shift-Click move selected here. "
 "Alt-Click swap color with selected."
 msgstr ""
+"Kattintson a szín járműre alkalmazásához, és válasszon. A Shift+kattintás "
+"ide helyezi át a kiválasztottat. Az Alt+kattintás felcseréli a színt a "
+"kiválasztottal."
 
 #. TIP  Vehicle Color 
 #: data/gui/Game.layout:1096 ..SingleRace.Setup.Paint.Text
 #: :1100..SingleRace.Setup.Paint.Slider :1106..SingleRace.Setup.Paint.Text
 msgctxt "TipChangeHue"
 msgid "Change car color (hue)."
-msgstr ""
+msgstr "Autó színének módosítása (árnyalat)."
 
 #. TIP  Vehicle Color 
 #: data/gui/Game.layout:1003 ..SingleRace.Setup.Paint.Slider
@@ -1043,14 +1057,14 @@ msgstr ""
 #: :1123..SingleRace.Setup.Paint.Text
 msgctxt "TipChangeSat"
 msgid "Change car color saturation (white-black)."
-msgstr ""
+msgstr "Autó színtelítettségének módosítása (fehértől feketéig)."
 
 #. TIP  Vehicle Color 
 #: data/gui/Game.layout:1131 ..SingleRace.Setup.Paint.Text
 #: :1135..SingleRace.Setup.Paint.Slider :1140..SingleRace.Setup.Paint.Text
 msgctxt "TipChangeBright"
 msgid "Change car color brightness (dark-light)."
-msgstr ""
+msgstr "Autó színfényességének módosítása (sötéttől világosig)."
 
 #. TIP  Vehicle Color 
 #: data/gui/Game.layout:1147 ..SingleRace.Setup.Paint.Text
@@ -1066,7 +1080,7 @@ msgstr ""
 #: :188..MaterialEditor.Main.Edit
 msgctxt "TipChangeGloss"
 msgid "Change car color glossiness (matte-shiny)."
-msgstr ""
+msgstr "Autó csillogásának módosítása (mattól fényesig)."
 
 #. TIP  Vehicle Color 
 #: data/gui/Game.layout:1179 ..SingleRace.Setup.Paint.Text
@@ -1075,7 +1089,7 @@ msgstr ""
 #: :212..MaterialEditor.Main.Slider :216..MaterialEditor.Main.Edit
 msgctxt "TipChangeReflect"
 msgid "Change car color reflectiveness (matte-mirror)."
-msgstr ""
+msgstr "Autó tükröződésének módosítása (mattól tükörig)."
 
 #. MAIN  Vehicle basic stats 
 #: data/gui/Game.layout:79 ..SingleRace.Track.Text
@@ -1110,43 +1124,43 @@ msgstr "Típus"
 #: :835..SingleRace.Vehicle.Text :2370..SingleRace.Track.Text
 msgctxt "TrackDrivability"
 msgid "Track Drivability"
-msgstr ""
+msgstr "Pálya vezethetősége"
 
 #. MAIN  Vehicle basic stats 
 #: src/game/Gui_UtilCar.cpp:275
 msgctxt "Undrivable"
 msgid "Undrivable"
-msgstr ""
+msgstr "Vezethetetlen"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:420
 msgctxt "Car_Mass"
 msgid "Mass"
-msgstr ""
+msgstr "Tömeg"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:423
 msgctxt "Car_MassFront"
 msgid "Mass on front"
-msgstr ""
+msgstr "Tömeg elöl"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:427
 msgctxt "Car_MaxTorque"
 msgid "Max Torque"
-msgstr ""
+msgstr "Max. nyomaték"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:430
 msgctxt "Car_MaxPower"
 msgid "Max Power"
-msgstr ""
+msgstr "Max. teljesítmény"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:433
 msgctxt "Car_BhpPerTon"
 msgid "Bhp per tonne"
-msgstr ""
+msgstr "Tonnánkénti lóerő"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:441
@@ -1174,42 +1188,42 @@ msgstr "Aszfalt"
 #. MAIN  Car types 
 msgctxt "CarType_Racing"
 msgid "Racing"
-msgstr ""
+msgstr "Verseny"
 
 #. MAIN  Car types 
 msgctxt "CarType_Gravel"
 msgid "Gravel"
-msgstr ""
+msgstr "Murva"
 
 #. MAIN  Car types 
 msgctxt "CarType_Slow"
 msgid "Slow"
-msgstr ""
+msgstr "Lassú"
 
 #. MAIN  Car types 
 msgctxt "CarType_Terrain"
 msgid "Terrain"
-msgstr ""
+msgstr "Terep"
 
 #. MAIN  Car types 
 msgctxt "CarType_Extreme"
 msgid "Extreme"
-msgstr ""
+msgstr "Extrém"
 
 #. MAIN  Car types 
 msgctxt "CarType_Other"
 msgid "Other"
-msgstr ""
+msgstr "Egyéb"
 
 #. MAIN  Car types 
 msgctxt "CarType_Hover"
 msgid "Hovercraft"
-msgstr ""
+msgstr "Légpárnás"
 
 #. MAIN  Car types 
 msgctxt "CarType_Spaceship"
 msgid "Spaceship"
-msgstr ""
+msgstr "Űrhajó"
 
 #. MsgBox 
 #: src/game/Gui_Network.cpp:415:487
@@ -1240,18 +1254,18 @@ msgstr "Újra"
 #. MsgBox 
 msgctxt "MessageBox_Ignore"
 msgid "Ignore"
-msgstr "Mellőz"
+msgstr "Mellőzés"
 
 #. MsgBox 
 #: src/game/Gui_Network.cpp:415:487
 msgctxt "MessageBox_Cancel"
 msgid "Cancel"
-msgstr "Mégsem"
+msgstr "Mégse"
 
 #. MsgBox 
 msgctxt "MessageBox_Try"
 msgid "Try"
-msgstr "Próbál"
+msgstr "Kipróbálás"
 
 #. MsgBox 
 msgctxt "MessageBox_Continue"
@@ -1262,79 +1276,61 @@ msgstr "Folytatás"
 #: data/gui/Editor_Utils.layout:44 ..Text src/game/BaseApp_Create.cpp:119
 msgctxt "LoadingDesc"
 msgid "Loading, please wait..."
-msgstr "Kérem várjon, töltődik..."
+msgstr "Betöltés, kis türelmet..."
 
 #. Loading game tags 
 #: src/game/BaseApp_Create.cpp:125
 msgctxt "Initializing"
 msgid "Initializing"
-msgstr ""
+msgstr "Előkészítés"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:821
 msgctxt "LS_CLEANUP"
 msgid "Cleaning up"
-msgstr ""
+msgstr "Takarítás"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:821
-#, fuzzy
-#| msgctxt "LS_GAME"
-#| msgid "Loading game"
 msgctxt "LS_GAME"
 msgid "Loading Game"
 msgstr "Játék betöltése"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:821:897
-#, fuzzy
-#| msgctxt "LS_TREES"
-#| msgid "Loading Trees"
 msgctxt "LS_SCENE"
 msgid "Loading Scene"
-msgstr "Fák betöltése"
+msgstr "Jelenet betöltése"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:821
-#, fuzzy
-#| msgctxt "LS_TREES"
-#| msgid "Loading Trees"
 msgctxt "LS_CAR"
 msgid "Loading Vehicles"
-msgstr "Fák betöltése"
+msgstr "Járművek betöltése"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:822
-#, fuzzy
-#| msgctxt "LS_TREES"
-#| msgid "Loading Trees"
 msgctxt "LS_TER"
 msgid "Loading Terrains"
-msgstr "Fák betöltése"
+msgstr "Terepek betöltése"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:822
-#, fuzzy
-#| msgctxt "LS_CAR"
-#| msgid "Loading car"
 msgctxt "LS_ROAD"
 msgid "Loading Roads"
-msgstr "Autó betöltése"
+msgstr "Utak betöltése"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:822
 msgctxt "LS_OBJS"
 msgid "Loading Objects"
-msgstr ""
+msgstr "Tereptárgyak betöltése"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:822
-#, fuzzy
-#| msgctxt "LS_GAME"
-#| msgid "Loading game"
 msgctxt "LS_TREES"
 msgid "Loading Vegetation"
-msgstr "Játék betöltése"
+msgstr "Növényzet betöltése"
 
 #. Loading game tags 
 #: src/game/SceneInit.cpp:824
@@ -1371,14 +1367,14 @@ msgstr "km"
 #: src/common/GuiCom_Track.cpp:395
 msgctxt "UnitMi"
 msgid "mi"
-msgstr ""
+msgstr "mi"
 
 #. Units 
 #: data/gui/Editor.layout:440 ..Editor.Terrain.Size.Text
 #: src/editor/Gui_Events.cpp:314 src/common/GuiCom_Track.cpp:396
 msgctxt "UnitM"
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #. Units 
 #: src/game/Gui_Replay.cpp:184 src/game/Update_Poses.cpp:204
@@ -1436,7 +1432,7 @@ msgstr "Dzsungel"
 #. Scenery names 
 msgctxt "SC_JungleDark"
 msgid "JungleDark"
-msgstr ""
+msgstr "Sötét dzsungel"
 
 #. Scenery names 
 msgctxt "SC_Desert"
@@ -1446,7 +1442,7 @@ msgstr "Sivatag"
 #. Scenery names 
 msgctxt "SC_DesertMud"
 msgid "DesertMud"
-msgstr ""
+msgstr "Sáros sivatag"
 
 #. Scenery names 
 msgctxt "SC_Savanna"
@@ -1456,7 +1452,7 @@ msgstr "Szavanna"
 #. Scenery names 
 msgctxt "SC_SavannaDry"
 msgid "SavannaDry"
-msgstr "Száraz Szavanna"
+msgstr "Száraz szavanna"
 
 #. Scenery names 
 msgctxt "SC_Winter"
@@ -1466,7 +1462,7 @@ msgstr "Tél"
 #. Scenery names 
 msgctxt "SC_WinterWet"
 msgid "WinterWet"
-msgstr ""
+msgstr "Nedves tél"
 
 #. Scenery names 
 msgctxt "SC_Forest"
@@ -1476,12 +1472,12 @@ msgstr "Erdő"
 #. Scenery names 
 msgctxt "SC_ForestMntn"
 msgid "ForestMntn"
-msgstr ""
+msgstr "Hegyi erdő"
 
 #. Scenery names 
 msgctxt "SC_ForestYellow"
 msgid "ForestYellow"
-msgstr ""
+msgstr "Sárga erdő"
 
 #. Scenery names 
 msgctxt "SC_Finland"
@@ -1496,12 +1492,12 @@ msgstr "Izland"
 #. Scenery names 
 msgctxt "SC_IslandDark"
 msgid "IslandDark"
-msgstr ""
+msgstr "Sötét sziget"
 
 #. Scenery names 
 msgctxt "SC_Mud"
 msgid "Mud"
-msgstr ""
+msgstr "Sár"
 
 #. Scenery names 
 msgctxt "SC_Australia"
@@ -1526,42 +1522,42 @@ msgstr "Ősz"
 #. Scenery names 
 msgctxt "SC_AutumnDark"
 msgid "AutumnDark"
-msgstr ""
+msgstr "Sötét ősz"
 
 #. Scenery names 
 msgctxt "SC_Moss"
 msgid "Moss"
-msgstr ""
+msgstr "Moha"
 
 #. Scenery names 
 msgctxt "SC_Volcanic"
 msgid "Volcanic"
-msgstr ""
+msgstr "Vulkanikus"
 
 #. Scenery names 
 msgctxt "SC_VolcanicDark"
 msgid "VolcanicDark"
-msgstr ""
+msgstr "Sötét vulkanikus"
 
 #. Scenery names 
 msgctxt "SC_Unidentified"
 msgid "Unidentified"
-msgstr ""
+msgstr "Azonosítatlan"
 
 #. Scenery names 
 msgctxt "SC_Mars"
 msgid "Mars"
-msgstr ""
+msgstr "Mars"
 
 #. Scenery names 
 msgctxt "SC_Crystals"
 msgid "Crystals"
-msgstr ""
+msgstr "Kristályok"
 
 #. Scenery names 
 msgctxt "SC_GreeceWhite"
 msgid "GreeceWhite"
-msgstr ""
+msgstr "Fehér Görögország"
 
 #. Scenery names 
 msgctxt "SC_Toxic"
@@ -1571,181 +1567,169 @@ msgstr "Mérgező"
 #. Scenery names 
 msgctxt "SC_Surreal"
 msgid "Surreal"
-msgstr ""
+msgstr "Szürreális"
 
 #. Scenery names 
 msgctxt "SC_Alien"
 msgid "Alien"
-msgstr ""
+msgstr "Idegen"
 
 #. Scenery names 
 msgctxt "SC_Other"
 msgid "Other"
-msgstr ""
+msgstr "Egyéb"
 
 #. Scenery names 
 msgctxt "SC_Stone"
 msgid "Stone"
-msgstr ""
+msgstr "Kő"
 
 #. Scenery names 
 #: data/gui/Game.layout:1905 ..SingleRace.Championship.Tab
 msgctxt "SC_Space"
 msgid "Space"
-msgstr ""
+msgstr "Űr"
 
 #. Scenery names 
 msgctxt "SC_BlackDesert"
 msgid "BlackDesert"
-msgstr ""
+msgstr "Fekete sivatag"
 
 #. Scenery names 
 msgctxt "SC_SurrealSpace"
 msgid "SurrealSpace"
-msgstr ""
+msgstr "Szürreális űr"
 
 #. Scenery names 
 msgctxt "SC_GreeceRocky"
 msgid "GreeceRocky"
-msgstr ""
+msgstr "Sziklás Görögország"
 
 #. Scenery names 
 msgctxt "SC_Marble"
 msgid "Marble"
-msgstr ""
+msgstr "Márvány"
 
 #. Scenery names 
 msgctxt "SC_Spring"
 msgid "Spring"
-msgstr ""
+msgstr "Tavasz"
 
 #. Scenery names 
 msgctxt "SC_Anomaly"
 msgid "Anomaly"
-msgstr ""
+msgstr "Anomália"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:502 ..Editor.Terrain.Light.Text
 #: data/gui/Editor_Options.layout:989 ..Options.Settings.Tweak.Text
 #: data/gui/Game_Options.layout:1502 ..Options.Tweak.Other.Text
 #: data/gui/MaterialEditor.layout:67 ..MaterialEditor.Main.Text :101:135
-#, fuzzy
-#| msgctxt "NetReady"
-#| msgid "Ready"
 msgctxt "P_Red"
 msgid "Red"
-msgstr "Kész"
+msgstr "Vörös"
 
 #. Vehicle Paint names 
 msgctxt "P_Orange"
 msgid "Orange"
-msgstr ""
+msgstr "Narancs"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "Allowed"
-#| msgid "Allowed"
 msgctxt "P_Yellow"
 msgid "Yellow"
-msgstr "Engedélyezett"
+msgstr "Sárga"
 
 #. Vehicle Paint names 
 msgctxt "P_Lime"
 msgid "Lime"
-msgstr ""
+msgstr "Citromzöld"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:514 ..Editor.Terrain.Light.Text
 #: data/gui/MaterialEditor.layout:78 ..MaterialEditor.Main.Text :112:149
-#, fuzzy
-#| msgctxt "SC_Greece"
-#| msgid "Greece"
 msgctxt "P_Green"
 msgid "Green"
-msgstr "Görögország"
+msgstr "Zöld"
 
 #. Vehicle Paint names 
 msgctxt "P_Olive"
 msgid "Olive"
-msgstr ""
+msgstr "Olívzöld"
 
 #. Vehicle Paint names 
 msgctxt "P_SkyBlue"
 msgid "SkyBlue"
-msgstr ""
+msgstr "Égkék"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:526 ..Editor.Terrain.Light.Text
 #: data/gui/MaterialEditor.layout:89 ..MaterialEditor.Main.Text :123:163
 msgctxt "P_Blue"
 msgid "Blue"
-msgstr ""
+msgstr "Kék"
 
 #. Vehicle Paint names 
 msgctxt "P_Cyan"
 msgid "Cyan"
-msgstr ""
+msgstr "Cián"
 
 #. Vehicle Paint names 
 msgctxt "P_Teal"
 msgid "Teal"
-msgstr ""
+msgstr "Kékeszöld"
 
 #. Vehicle Paint names 
 msgctxt "P_Violet"
 msgid "Violet"
-msgstr ""
+msgstr "Ibolya"
 
 #. Vehicle Paint names 
 msgctxt "P_Magenta"
 msgid "Magenta"
-msgstr ""
+msgstr "Bíbor"
 
 #. Vehicle Paint names 
 msgctxt "P_Brown"
 msgid "Brown"
-msgstr ""
+msgstr "Barna"
 
 #. Vehicle Paint names 
 msgctxt "P_Black"
 msgid "Black"
-msgstr ""
+msgstr "Fekete"
 
 #. Vehicle Paint names 
 msgctxt "P_White"
 msgid "White"
-msgstr ""
+msgstr "Fehér"
 
 #. Vehicle Paint names 
 #: data/gui/Game.layout:1031 ..SingleRace.Setup.Paint.Tab
 msgctxt "P_Mix"
 msgid "Mix"
-msgstr ""
+msgstr "Kevert"
 
 #. Vehicle Paint names 
 msgctxt "P_Neon"
 msgid "Neon"
-msgstr ""
+msgstr "Neon"
 
 #. Vehicle Paint names 
 msgctxt "P_Ice"
 msgid "Ice"
-msgstr ""
+msgstr "Jég"
 
 #. Vehicle Paint names 
 msgctxt "P_Fire"
 msgid "Fire"
-msgstr ""
+msgstr "Tűz"
 
 #. Vehicle Paint names 
 msgctxt "P_Rainbow"
 msgid "Rainbow"
-msgstr ""
+msgstr "Szivárvány"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "Silver"
-#| msgid "Silver"
 msgctxt "P_Silver"
 msgid "Silver"
 msgstr "Ezüst"
@@ -1820,20 +1804,20 @@ msgstr "Gratulálunk!"
 #: src/game/Championships.cpp:281
 msgctxt "TutorEndFinished"
 msgid "You have finished this tutorial."
-msgstr ""
+msgstr "Befejezte ezt a gyakorlást."
 
 #. Championship  end 
 #: data/gui/Game_Utils.layout:70 ..Championship.Text
 #: src/game/Championships.cpp:281
 msgctxt "ChampEndFinished"
 msgid "You have finished this championship."
-msgstr "Befejezted ezt a bajnokságot."
+msgstr "Befejezte ezt a bajnokságot."
 
 #. Championship  end 
 #: data/gui/Game_Utils.layout:139 ..Challenge.Text src/game/Challenges.cpp:478
 msgctxt "ChallEndFinished"
 msgid "You have passed this challenge."
-msgstr "Kihívás teljesítve."
+msgstr "Teljesítetted ezt a kihívást."
 
 #. Championship  info text 
 #: data/gui/Game.layout:2012 ..SingleRace.Championship.Edit
@@ -1877,27 +1861,27 @@ msgstr ""
 #: data/gui/Game_Replay.layout:240 ..Window src/game/Gui_Events.cpp:478
 msgctxt "Hint"
 msgid "Hint"
-msgstr ""
+msgstr "Tipp"
 
 #. Hint  welcome screen 
 #: data/gui/Game_Help.layout:359 ..Welcometo.Check
 msgctxt "HintShow"
 msgid "Show at startup"
-msgstr ""
+msgstr "Megjelenítés indításkor"
 
 #. Hint  welcome screen 
 #: data/gui/Game_Help.layout:43 ..Help.Support.Button :363..Welcometo.Text
 #: data/gui/Game_Options.layout:218 ..Options.Input.General.Text
 msgctxt "HintKey"
 msgid "Ctrl-F1 - Show"
-msgstr "Ctrl-F1 - Mutat"
+msgstr "Ctrl+F1 – Megjelenítés"
 
 #. Hint  welcome screen 
 #: data/gui/Game_Help.layout:43 ..Help.Support.Button :257..Window
 #: data/gui/Game_Options.layout:218 ..Options.Input.General.Text
 msgctxt "WelcomeTo"
 msgid "Welcome to"
-msgstr "Légy üdvözölve"
+msgstr "Üdvözli a"
 
 #. Hint  welcome screen 
 msgctxt "HintScreen"
@@ -1932,7 +1916,7 @@ msgstr "A pálya nem található!"
 #: :1941..SingleRace.Championship.Check
 msgctxt "TipReverse"
 msgid "Reverse track direction."
-msgstr "Pálya irány megfordítása"
+msgstr "A pálya irányának megfordítása."
 
 #. TIP  Track  messages 
 #: data/gui/Game.layout:28 ..SingleRace.Track.Button
@@ -2018,7 +2002,7 @@ msgstr ""
 #: :2291..SingleRace.Track.Text
 msgctxt "fluids"
 msgid "fluids (water or mud)"
-msgstr ""
+msgstr "folyadékok (víz vagy sár)"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:132 ..Track-Filter.Check
@@ -2028,7 +2012,7 @@ msgstr ""
 #: :2295..SingleRace.Track.Text
 msgctxt "bumps"
 msgid "bumps (bumpy terrain)"
-msgstr ""
+msgstr "úthibák (egyenetlen terep)"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:140 ..Track-Filter.Check
@@ -2038,7 +2022,7 @@ msgstr ""
 #: :2299..SingleRace.Track.Text
 msgctxt "jumps"
 msgid "jumps"
-msgstr "ugrás"
+msgstr "ugrások"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:148 ..Track-Filter.Check
@@ -2048,7 +2032,7 @@ msgstr "ugrás"
 #: :2303..SingleRace.Track.Text
 msgctxt "loops"
 msgid "loops"
-msgstr ""
+msgstr "hurkok"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:156 ..Track-Filter.Check
@@ -2058,7 +2042,7 @@ msgstr ""
 #: :2307..SingleRace.Track.Text
 msgctxt "pipes"
 msgid "pipes"
-msgstr ""
+msgstr "csövek"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:164 ..Track-Filter.Check
@@ -2068,7 +2052,7 @@ msgstr ""
 #: :2311..SingleRace.Track.Text
 msgctxt "banked"
 msgid "banked"
-msgstr ""
+msgstr "padkás"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:172 ..Track-Filter.Check
@@ -2121,7 +2105,7 @@ msgstr "nehézség"
 #: :1236..SingleRace.Setup.Paint.Slider src/game/Gui_InitCar.cpp:149
 msgctxt "rating"
 msgid "rating"
-msgstr ""
+msgstr "értékelés"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:108 ..Track-Filter.Check
@@ -2131,7 +2115,7 @@ msgstr ""
 #: :2283..SingleRace.Track.Text
 msgctxt "objects"
 msgid "objects (dynamic)"
-msgstr ""
+msgstr "tereptárgyak (dinamikus)"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:116 ..Track-Filter.Check
@@ -2141,7 +2125,7 @@ msgstr ""
 #: :2287..SingleRace.Track.Text
 msgctxt "obstacles"
 msgid "obstacles (on road or in pipe)"
-msgstr ""
+msgstr "akadályok (úton vagy csőben)"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:197 ..Track-Filter.Check :204
@@ -2154,7 +2138,7 @@ msgstr ""
 #: :1232..SingleRace.Setup.Paint.Text :1236..SingleRace.Setup.Paint.Slider
 msgctxt "user"
 msgid "user"
-msgstr ""
+msgstr "felhasználó"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:204 ..Track-Filter.Check
@@ -2162,7 +2146,7 @@ msgstr ""
 #: data/gui/Game.layout:55 ..SingleRace.Track.Image :60..SingleRace.Track.Check
 msgctxt "bookmark"
 msgid "bookmark"
-msgstr ""
+msgstr "könyvjelző"
 
 #. TIP  Track stats 
 #: data/gui/Editor_Track.layout:161 ..Track.Track.Text
@@ -2189,32 +2173,32 @@ msgstr "Játék"
 #: ..Tweak.Tires.Text
 msgctxt "Setup"
 msgid "Setup"
-msgstr "Telepít"
+msgstr "Telepítés"
 
 #. Game  Split screen 
 #: data/gui/Game.layout:1587 ..SingleRace.Tab src/game/Gui_Util.cpp:185
 msgctxt "SplitScreen"
 msgid "Split Screen"
-msgstr ""
+msgstr "Osztott képernyő"
 
 #. Game  Split screen 
 #: data/gui/Game.layout:1637 ..SingleRace.SplitScreen.Text
 msgctxt "NumLocalPlayers"
 msgid "Number of local players"
-msgstr ""
+msgstr "Helyi játékosok száma"
 
 #. Game  Split screen 
 #: data/gui/Game.layout:1598 ..SingleRace.SplitScreen.Check
 msgctxt "SplitVertically"
 msgid "Split Vertically"
-msgstr ""
+msgstr "Függőleges felosztás"
 
 #. Game  Split screen 
 #: data/gui/Game.layout:1602 ..SingleRace.SplitScreen.Check
 #: src/game/Gui_Network.cpp:128
 msgctxt "ReverseStartOrder"
 msgid "Reverse starting order"
-msgstr ""
+msgstr "Kezdési sorrend megfordítása"
 
 #. Game  Split screen 
 #: data/gui/Game.layout:1650 ..SingleRace.SplitScreen.Text
@@ -2235,37 +2219,37 @@ msgstr "Szimuláció"
 #: data/gui/Game.layout:1579 ..SingleRace.Setup.Other.Text
 msgctxt "NotRecommended"
 msgid "Not recommended"
-msgstr ""
+msgstr "Nem javasolt"
 
 #. Setup  ABS,TCS 
 #: data/gui/Game.layout:1569 ..SingleRace.Setup.Other.Check
 msgctxt "ABS"
 msgid "ABS (antilock brakes)"
-msgstr ""
+msgstr "ABS (fékblokkolásgátló)"
 
 #. Setup  ABS,TCS 
 #: data/gui/Game.layout:1571 ..SingleRace.Setup.Other.Check
 msgctxt "TipABS"
 msgid "Prevents wheel lock when braking (default: off)."
-msgstr ""
+msgstr "Megakadályozza a kerekek blokkolását fékezéskor (alapértelmezés: ki)."
 
 #. Setup  ABS,TCS 
 #: data/gui/Game.layout:1574 ..SingleRace.Setup.Other.Check
 msgctxt "TCS"
 msgid "TCS (traction control)"
-msgstr ""
+msgstr "TCS (kipörgésgátló)"
 
 #. Setup  ABS,TCS 
 #: data/gui/Game.layout:1576 ..SingleRace.Setup.Other.Check
 msgctxt "TipTCS"
 msgid "Prevents wheel spinning when accelerating (default: off)."
-msgstr ""
+msgstr "Megakadályozza a kerekek kipörgését gyorsításkor (alapértelmezés: ki)."
 
 #. Setup  steering 
 #: data/gui/Game.layout:1462 ..SingleRace.Setup.Steering.Tab
 msgctxt "Gravel"
 msgid "Gravel"
-msgstr ""
+msgstr "Murva"
 
 #. Setup  steering 
 #: data/gui/Editor_Track.layout:614 ..Track.Game.Check
@@ -2290,7 +2274,7 @@ msgstr ""
 #: data/gui/Game.layout:1474 ..SingleRace.Setup.Steering.Text :1511
 msgctxt "SSS_Effect"
 msgid "Effect"
-msgstr "Effekt"
+msgstr "Hatás"
 
 #. Setup  steering 
 #: data/gui/Game.layout:1482 ..SingleRace.Setup.Steering.Text
@@ -2328,7 +2312,7 @@ msgstr "Sebességváltó"
 #: data/gui/Game.layout:1436 ..SingleRace.Setup.Gearbox.Check
 msgctxt "AutoGearbox"
 msgid "Auto gearbox"
-msgstr "Automata sebváltó"
+msgstr "Automata sebességváltó"
 
 #. Setup  Gearbox 
 #: data/gui/Game.layout:1438 ..SingleRace.Setup.Gearbox.Check
@@ -2502,7 +2486,7 @@ msgstr "Visszajátszás"
 #: src/game/Gui_Replay.cpp:64:85
 msgctxt "RplLoad"
 msgid "Load"
-msgstr "Töltés"
+msgstr "Betöltés"
 
 #. Replay 
 #: data/gui/Editor.layout:785 ..Editor.Terrain.Brushes.Button
@@ -2548,7 +2532,7 @@ msgstr "Nem létezik"
 #: src/common/GuiCom_TrackUpd.cpp:145
 msgctxt "RplAll"
 msgid "All"
-msgstr ""
+msgstr "Összes"
 
 #. Replay  list 
 #: data/gui/Editor.layout:356 ..Editor.Terrain.Text
@@ -2558,7 +2542,7 @@ msgstr ""
 #: src/editor/Gui_Events.cpp:126:387 src/editor/Update_EditKeyTxt.cpp:184
 msgctxt "RplCurrent"
 msgid "Current"
-msgstr ""
+msgstr "Jelenlegi"
 
 #. Replay  list 
 #: data/gui/Game.layout:909 ..SingleRace.Setup.Paint.Tab
@@ -2685,21 +2669,21 @@ msgstr "Videó"
 #: data/gui/Game_Options.layout:31
 msgctxt "Resolution"
 msgid "Resolution"
-msgstr ""
+msgstr "Felbontás"
 
 #. Screen 
 #: data/gui/Editor_Options.layout:37 ..Options.Screen.Main.Check
 #: data/gui/Game_Options.layout:38
 msgctxt "Fullscreen"
 msgid "Fullscreen"
-msgstr ""
+msgstr "Teljes képernyő"
 
 #. Screen 
 #: data/gui/Editor_Options.layout:115 ..Options.Screen.Video.Check
 #: data/gui/Game_Options.layout:116
 msgctxt "VRmode"
 msgid "VR Mode"
-msgstr ""
+msgstr "VR-mód"
 
 #. Screen 
 #: data/gui/Editor_Options.layout:121 ..Options.Screen.Video.Text
@@ -2707,19 +2691,19 @@ msgstr ""
 #: :962..Options.Graphics.Lights.Text
 msgctxt "Brightness"
 msgid "Brightness"
-msgstr ""
+msgstr "Fényerő"
 
 #. Screen 
 #: data/gui/Editor_Options.layout:132 ..Options.Screen.Video.Text
 #: data/gui/Game_Options.layout:133
 msgctxt "Contrast"
 msgid "Contrast"
-msgstr ""
+msgstr "Kontraszt"
 
 #. <Tag name="Gamma">Gamma</Tag>
 msgctxt "Complex"
 msgid "Complex"
-msgstr ""
+msgstr "Összetett"
 
 #. <Tag name="Gamma">Gamma</Tag>
 #: data/gui/Editor.layout:1224 ..Editor.Terrain.Tools.Button
@@ -2754,12 +2738,9 @@ msgstr ""
 
 #. Screen  info 
 #: data/gui/Editor_Options.layout:209 ..Options.Graphics.Text
-#, fuzzy
-#| msgctxt "MessageBox_Ignore"
-#| msgid "Ignore"
 msgctxt "Ignored"
 msgid "ignored"
-msgstr "Mellőz"
+msgstr "mellőzve"
 
 #. Screen  info 
 #: data/gui/Editor_Options.layout:221 ..Options.Graphics.Edit
@@ -2781,55 +2762,55 @@ msgstr "VSync"
 #: data/gui/Game_Options.layout:101
 msgctxt "RenderSystem"
 msgid "Render System"
-msgstr ""
+msgstr "Megjelenítési rendszer"
 
 #. Screen  advanced 
 #: data/gui/Editor_Options.layout:88 ..Options.Screen.Video.Text
 #: data/gui/Game_Options.layout:89
 msgctxt "AntiAliasing"
 msgid "Antialiasing"
-msgstr ""
+msgstr "Élsimítás"
 
 #. Screen  advanced 
 #: data/gui/Editor_Options.layout:49 ..Options.Screen.Main.Button
 #: data/gui/Game_Options.layout:50
 msgctxt "Change"
 msgid "Change"
-msgstr ""
+msgstr "Módosítás"
 
 #. Screen  advanced 
 #: data/gui/Editor_Options.layout:144 ..Options.Screen.Video.Check
 #: data/gui/Game_Options.layout:145
 msgctxt "LimitFPS"
 msgid "Limit frames per second"
-msgstr ""
+msgstr "Képkockaszám korlátozása"
 
 #. Screen  advanced 
 #: data/gui/Editor_Options.layout:148 ..Options.Screen.Video.Text
 #: data/gui/Game_Options.layout:149
 msgctxt "FramesPerSec"
 msgid "Frames per second"
-msgstr ""
+msgstr "Képkockaszám / mp"
 
 #. Screen  advanced 
 #: data/gui/Editor_Options.layout:162 ..Options.Screen.Video.Text
 #: data/gui/Game_Options.layout:163
 msgctxt "SleepMS"
 msgid "Sleep interval [milisec]"
-msgstr ""
+msgstr "Alvási időköz [ezredmásodpercben]"
 
 #. Graphics Presets 
 #: data/gui/Editor_Options.layout:61 ..Options.Screen.Main.Text
 #: data/gui/Game_Options.layout:62
 msgctxt "GraphicsPreset"
 msgid "Graphics preset"
-msgstr ""
+msgstr "Grafikai előbeállítás"
 
 #. Graphics Presets 
 #: src/common/GuiCom_Options.cpp:132
 msgctxt "GraphicsAll_Lowest"
 msgid "Lowest"
-msgstr "Alacsonyabb"
+msgstr "Legalacsonyabb"
 
 #. Graphics Presets 
 #: src/common/GuiCom_Options.cpp:132
@@ -2863,18 +2844,15 @@ msgstr "Nagyon magas"
 
 #. Graphics Presets 
 #: src/common/GuiCom_Options.cpp:135
-#, fuzzy
-#| msgctxt "GraphicsAll_Higher"
-#| msgid "Higher"
 msgctxt "GraphicsAll_Highest"
 msgid "Highest"
-msgstr "Magasabb"
+msgstr "Legmagasabb"
 
 #. Graphics Presets 
 #: src/common/GuiCom_Options.cpp:135
 msgctxt "GraphicsAll_Ultra"
 msgid "Ultra"
-msgstr ""
+msgstr "Ultra"
 
 #. Network Multiplayer  headers 
 #: data/gui/Game.layout:1677 ..SingleRace.Tab data/gui/Game_Options.layout:286
@@ -2882,7 +2860,7 @@ msgstr ""
 #: src/game/Gui_Replay.cpp:166 src/game/Gui_Util.cpp:182
 msgctxt "Multiplayer"
 msgid "Multiplayer"
-msgstr "Multiplayer"
+msgstr "Többjátékos"
 
 #. Network Multiplayer  headers 
 #: src/game/Gui_Init.cpp:433
@@ -2917,19 +2895,19 @@ msgstr "Játékosok"
 #: src/game/Gui_Init.cpp:437
 msgctxt "Collis."
 msgid "Collis."
-msgstr ""
+msgstr "Ütközés"
 
 #. Network Multiplayer  headers 
 #: src/game/Gui_Init.cpp:440
 msgctxt "Locked"
 msgid "Locked"
-msgstr "Zárolt"
+msgstr "Zárolva"
 
 #. Network Multiplayer  headers 
 #: src/game/Gui_Init.cpp:458
 msgctxt "Peers"
 msgid "Peers"
-msgstr ""
+msgstr "Partnerek"
 
 #. Network Multiplayer  headers 
 #: src/game/Gui_Init.cpp:459
@@ -2941,37 +2919,37 @@ msgstr "Ping"
 #: data/gui/Game.layout:1800 ..SingleRace.Multiplayer.Tab
 msgctxt "NetServer"
 msgid "Server"
-msgstr "Szerver"
+msgstr "Kiszolgáló"
 
 #. Network Server 
 #: data/gui/Game.layout:1812 ..SingleRace.Multiplayer.Server.Text
 msgctxt "NetGamesAvail"
 msgid "Available games"
-msgstr ""
+msgstr "Elérhető játékok"
 
 #. Network Server 
 #: data/gui/Game.layout:1820 ..SingleRace.Multiplayer.Server.Button
 msgctxt "NetRefreshList"
 msgid "Get/refresh list"
-msgstr ""
+msgstr "Lista lekérése/frissítése"
 
 #. Network Server 
 #: data/gui/Game.layout:1826 ..SingleRace.Multiplayer.Server.Button
 msgctxt "NetJoinGame"
 msgid "Join game"
-msgstr "Játékhoz csatlakozás"
+msgstr "Csatlakozás a játékhoz"
 
 #. Network Server 
 #: src/game/Gui_Network.cpp:412
 msgctxt "NetJoinLocked"
 msgid "Protected game"
-msgstr ""
+msgstr "Védett játék"
 
 #. Network Server 
 #: data/gui/Game.layout:1689 ..SingleRace.Multiplayer.Directconnect.Button
 msgctxt "NetCreateGame"
 msgid "Create game"
-msgstr ""
+msgstr "Játék létrehozása"
 
 #. Network Server 
 #: data/gui/Game.layout:1682 ..SingleRace.Multiplayer.Tab
@@ -2979,7 +2957,7 @@ msgstr ""
 #: src/game/Gui_Network.cpp:484
 msgctxt "NetDirectConnect"
 msgid "Direct connect"
-msgstr ""
+msgstr "Közvetlen kapcsolódás"
 
 #. Network Server 
 #: src/game/Gui_Network.cpp:485
@@ -2991,7 +2969,7 @@ msgstr "Cím"
 #: src/game/Gui_Init.cpp:441
 msgctxt "NetHost"
 msgid "Host"
-msgstr ""
+msgstr "Gazda"
 
 #. Network Server 
 #: src/game/Gui_Init.cpp:442 src/game/Gui_Network.cpp:485
@@ -3016,13 +2994,13 @@ msgstr "Játék"
 #: data/gui/Game.layout:1706 ..SingleRace.Multiplayer.Game.Text
 msgctxt "NetGameName"
 msgid "Game Name"
-msgstr ""
+msgstr "Játék neve"
 
 #. Network Game 
 #: src/game/Gui_Network.cpp:230:520
 msgctxt "NetStart"
 msgid "Start"
-msgstr "Start"
+msgstr "Indítás"
 
 #. Network Game 
 #: data/gui/Game.layout:1722 ..SingleRace.Multiplayer.Game.Button
@@ -3077,36 +3055,36 @@ msgstr ""
 #: src/game/Gui_Network.cpp:371
 msgctxt "ConnectingTo"
 msgid "Connecting to"
-msgstr ""
+msgstr "Kapcsolódás ehhez:"
 
 #. Network status 
 #: src/game/Gui_Network.cpp:258
 msgctxt "Connected"
 msgid "Connected"
-msgstr ""
+msgstr "Kapcsolódva"
 
 #. Network status 
 #: src/game/Gui_Network.cpp:269
 msgctxt "Disconnected"
 msgid "Disconnected"
-msgstr ""
+msgstr "Kapcsolat bontva"
 
 #. Network status 
 msgctxt "NetworkError"
 msgid "Network Error"
-msgstr ""
+msgstr "Hálózati hiba"
 
 #. Network messages 
 #: src/network/gameclient.cpp:344
 msgctxt "NetWrongPassword"
 msgid "Wrong password."
-msgstr ""
+msgstr "Hibás jelszó."
 
 #. Network messages 
 #: src/network/gameclient.cpp:342:379
 msgctxt "NetGameProtocolError"
 msgid "Incompatible protocol versions between peers."
-msgstr ""
+msgstr "Nem kompatibilis protokollverzió a partnerek között."
 
 #. Network messages 
 #: src/network/masterclient.cpp:107
@@ -3115,12 +3093,14 @@ msgid ""
 "Incompatible protocol version - update Stunt Rally or contact server "
 "administrator."
 msgstr ""
+"Nem kompatibilis protokollverzió – frissítse a Strunt Rallyt vagy lépjen "
+"kapcsolatba a kiszolgáló rendszergazdájával."
 
 #. Network messages 
 #: src/network/masterclient.cpp:113
 msgctxt "NetMasterConnectionError"
 msgid "Couldn't reach the master server."
-msgstr ""
+msgstr "Nem sikerült elérni a főkiszolgálót."
 
 #. Network messages 
 #: src/game/Gui_Network.cpp:373:441
@@ -3129,19 +3109,21 @@ msgid ""
 "Failed to initialize networking. Try different local port and make sure your "
 "firewall is properly configured."
 msgstr ""
+"Nem sikerült előkészíteni a hálózatot. Próbálkozzon egy másik helyi porttal, "
+"és győződjön meg arról, hogy a tűzfal helyesen van-e beállítva."
 
 #. Network Settings 
 #: data/gui/Game.layout:1760 ..SingleRace.Multiplayer.Tab
 msgctxt "NetSettings"
 msgid "Settings"
-msgstr ""
+msgstr "Beállítások"
 
 #. Network Settings 
 #: data/gui/Game.layout:1762 ..SingleRace.Multiplayer.Settings.Text
 #: src/game/Gui_Init.cpp:529
 msgctxt "NetNickname"
 msgid "Nickname"
-msgstr ""
+msgstr "Becenév"
 
 #. Network Settings 
 #: data/gui/Game.layout:1837 ..SingleRace.Multiplayer.Server.Text
@@ -3620,12 +3602,9 @@ msgstr ""
 #. Graphics  lights 
 #: data/gui/Editor_Options.layout:435 ..Options.Graphics.Lights.Check
 #: data/gui/Game_Options.layout:953
-#, fuzzy
-#| msgctxt "Vehicles"
-#| msgid "Vehicles"
 msgctxt "VehicleLights"
 msgid "Vehicle Lights"
-msgstr "Járművek"
+msgstr "Járműfények"
 
 #. Graphics  particles 
 #: data/gui/Editor_Help.layout:224 ..Help.Input/help.Shortcuts.Text
@@ -3637,13 +3616,13 @@ msgstr "Járművek"
 #: ..Replays.View.Check
 msgctxt "Particles"
 msgid "Particles"
-msgstr ""
+msgstr "Részecskék"
 
 #. Graphics  particles 
 #: data/gui/Game_Options.layout:1151 ..Options.Graphics.Particles.Check
 msgctxt "TireTrails"
 msgid "Tire Trails"
-msgstr ""
+msgstr "Guminyomok"
 
 #. View  Gauges 
 #: data/gui/Editor_Help.layout:88 ..Help.Input/help.Tab
@@ -3653,7 +3632,7 @@ msgstr ""
 #: data/gui/Game_Replay.layout:94 ..Replays.Tab
 msgctxt "View"
 msgid "View"
-msgstr ""
+msgstr "Megtekintés"
 
 #. View  Gauges 
 #: data/gui/Editor_Options.layout:1030 ..Options.Settings.Tweak.Check
@@ -3661,31 +3640,31 @@ msgstr ""
 #: :1321..Options.Sound.HUD.Text :1529..Options.Tweak.Other.Check
 msgctxt "HUD"
 msgid "HUD"
-msgstr ""
+msgstr "HUD"
 
 #. View  Gauges 
 #: data/gui/Game_Options.layout:397 ..Options.View.HUD.Check
 msgctxt "Digits"
 msgid "Digits (gear, speed)"
-msgstr ""
+msgstr "Számjegyek (fokozat, sebesség)"
 
 #. View  Gauges 
 #: data/gui/Game_Options.layout:401 ..Options.View.HUD.Text
 msgctxt "SpeedUnit"
 msgid "Speed unit"
-msgstr ""
+msgstr "Sebességegység"
 
 #. View  Gauges 
 #: data/gui/Game_Options.layout:413 ..Options.View.HUD.Check
 msgctxt "Gauges"
 msgid "Gauges (rpm, speed)"
-msgstr ""
+msgstr "Mutatók (fordulatszám, sebesség)"
 
 #. View  Gauges 
 #: data/gui/Game_Options.layout:437 ..Options.View.HUD.Text
 msgctxt "Layout"
 msgid "Layout"
-msgstr ""
+msgstr "Elrendezés"
 
 #. View  Minimap 
 #: data/gui/Editor_Options.layout:728 ..Options.View.Tab
@@ -3693,45 +3672,45 @@ msgstr ""
 #: :559..Options.View.Tab :567..Options.View.Minimap.Check
 msgctxt "Minimap"
 msgid "Minimap"
-msgstr ""
+msgstr "Kistérkép"
 
 #. View  Minimap 
 #: data/gui/Editor.layout:699 ..Editor.Terrain.Brushes.Text
 #: data/gui/Game_Options.layout:581 ..Options.View.Minimap.Check
 msgctxt "MinimapZoom"
 msgid "Zoom"
-msgstr ""
+msgstr "Nagyítás"
 
 #. View  Minimap 
 #: data/gui/Editor_Options.layout:803 ..Options.View.Minimap.Text
 #: data/gui/Game_Options.layout:585 ..Options.View.Minimap.Check
 msgctxt "MinimapRotate"
 msgid "Rotate"
-msgstr ""
+msgstr "Forgatás"
 
 #. View  Minimap 
 #: data/gui/Game_Options.layout:599 ..Options.View.Minimap.Check
 msgctxt "MinimapTerrain"
 msgid "Terrain"
-msgstr ""
+msgstr "Domborzat"
 
 #. View  Minimap 
 #: data/gui/Game_Options.layout:595 ..Options.View.Minimap.Check
 msgctxt "MinimapBorder"
 msgid "Border"
-msgstr ""
+msgstr "Határ"
 
 #. View  HUD 
 #: data/gui/Game_Options.layout:448 ..Options.View.HUD.Check
 msgctxt "TimesBar"
 msgid "Times bar"
-msgstr ""
+msgstr "Idősáv"
 
 #. View  HUD 
 #: data/gui/Game_Options.layout:452 ..Options.View.HUD.Check
 msgctxt "OpponentsList"
 msgid "Opponents List"
-msgstr ""
+msgstr "Ellenféllista"
 
 #. View  HUD 
 #: data/gui/Game_Options.layout:456 ..Options.View.HUD.Check
@@ -3833,7 +3812,7 @@ msgstr ""
 #: data/gui/Game_Options.layout:1633 ..Options.Tweak.Advanced.Text
 msgctxt "Development"
 msgid "Development"
-msgstr ""
+msgstr "Fejlesztés"
 
 #. Settings  debug 
 #: data/gui/Editor_Options.layout:1053 ..Options.Settings.Advanced.Text
