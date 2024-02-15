@@ -292,6 +292,7 @@
 	<Tag name="HintKey">Ctrl-F1 - Show</Tag>
 	<Tag name="WelcomeTo">Welcome to</Tag>
 	<Tag name="HintScreen">To change screen resolution and adjust graphics to your card press Screen button.</Tag>
+	<Tag name="HintGraphics">To adjust graphics to your card press Screen button.</Tag>
 	<Tag name="HintInput">To check keys used in game or reassign them, or to configure controller press Input button.</Tag>
 	<Tag name="TrackNotFound">Track not found !</Tag>
 	<Tag name="TipReverse">Reverse track direction.</Tag>
@@ -570,6 +571,7 @@
 	<Tag name="FOV">Angulo de vista</Tag>
 	<Tag name="Other">Otro</Tag>
 	<Tag name="Development">Desarrollo</Tag>
+	<Tag name="TipDebugShaders">Will save generated shaders in user's cache/shaders/ folder. Only for those not cached already. Optionally also properties on top, messing error line numbers.</Tag>
 	<Tag name="FPS">Fps bar, render statistics</Tag>
 	<Tag name="FPS_Fps">Cuadros por segundo</Tag>
 	<Tag name="FPS_Triangles">Millions of triangles</Tag>
@@ -580,8 +582,13 @@
 	<Tag name="FPS_Memory">GPU memory</Tag>
 	<Tag name="Wireframe">Estructura</Tag>
 	<Tag name="BulletDebug">Bullet debug</Tag>
+	<Tag name="BulletLines">Bullet debug lines</Tag>
 	<Tag name="BulletProfilerTxt">Bullet Profiler Times</Tag>
 	<Tag name="FullSoundsInfo">Full sounds info in graphs.</Tag>
+	<Tag name="CacheMaterials">Cache Materials</Tag>
+	<Tag name="CacheShaders">Cache Shaders</Tag>
+	<Tag name="DebugShaders">Debug Shaders</Tag>
+	<Tag name="DebugProperties">Debug Properties</Tag>
 	<Tag name="CarDebug">Car susp, long|,lat- slips</Tag>
 	<Tag name="CarTireVisCircles">Tire force circles visualisation</Tag>
 	<Tag name="CarDebugText">Texto de depuracion de carros</Tag>
@@ -592,12 +599,11 @@
 	<Tag name="Startup">Arranque</Tag>
 	<Tag name="MouseCapture">Capturar raton</Tag>
 	<Tag name="OgreDialog">Show Ogre dialog</Tag>
+	<Tag name="StartInMain">Comenzar en menu principal</Tag>
 	<Tag name="AutoLoad">Autocargar pista</Tag>
 	<Tag name="EscQuit">Esc quits</Tag>
-	<Tag name="BulletLines">Bullet debug lines</Tag>
 	<Tag name="ShowPictures">Mostrar imagenes mientras cargan</Tag>
 	<Tag name="MultiThread">Multi Threaded</Tag>
-	<Tag name="StartInMain">Comenzar en menu principal</Tag>
 	<Tag name="ScreenshotPng">Capturas de pantalla guardadas como .png</Tag>
 	<Tag name="Input">Entrada</Tag>
 	<Tag name="InputUnbind">Press RMB on button to unbind.</Tag>
@@ -674,9 +680,11 @@
 	<Tag name="Volume">Volumen</Tag>
 	<Tag name="VolMaster">Master</Tag>
 	<Tag name="Engine">Motor</Tag>
+	<Tag name="Turbo">Turbo</Tag>
 	<Tag name="Tires">Neumaticos</Tag>
 	<Tag name="Suspension">Suspension</Tag>
 	<Tag name="Environment">Ambiente</Tag>
+	<Tag name="Ambience">Ambience</Tag>
 	<Tag name="Reverb">Reverberation</Tag>
 	<Tag name="FluidSplash">Fluid Splash</Tag>
 	<Tag name="FluidCont">Fluid Cont.</Tag>
@@ -923,6 +931,7 @@
 	<Tag name="RoadUpdSkip">Parametros de carretera</Tag>
 	<Tag name="TerUpdSkip">Terrain update skip</Tag>
 	<Tag name="MinimapUpdSkip">Minimap update skip</Tag>
+	<Tag name="EditSpd">Edit speed</Tag>
 	<Tag name="TrackAutoLoad">Auto Load track</Tag>
 	<Tag name="AutoUpdateBlendmap">Auto update blendmap (slow for big size brushes)</Tag>
 	<Tag name="EdCamPos">Posicion de camara</Tag>
@@ -968,6 +977,7 @@
 	<Tag name="InputValueChange">Each (mouse/key) move or value change with </Tag>
 	<Tag name="InputSlowFast">shift - slow   ctrl - fast</Tag>
 	<Tag name="InputTopView">Alt-Z - toggle top view</Tag>
+	<Tag name="InputCamFocus">focus camera on current (object, anything)</Tag>
 	<Tag name="InputToggleVeget">V - Disable / enable vegetation</Tag>
 	<Tag name="InputToggleFog">G - toggle Fog</Tag>
 	<Tag name="InputToggleWeather">I - toggle Weather</Tag>
@@ -1062,6 +1072,7 @@
 	<Tag name="InputFluidsMove">LMB - move   RMB - height</Tag>
 	<Tag name="InputFluidsSize">alt-LMB - size   alt-RMB - depth</Tag>
 	<Tag name="InputFluidsType">-,=  - change fluid type (water,mud,etc.)</Tag>
+	<Tag name="InputFluidsQuality">1,2  - change fluid rendering quality</Tag>
 	<Tag name="InputFluidsTile">[,]  - change texture tiling</Tag>
 	<Tag name="InputFluidsTileY">; &apos;  - change texture tiling, one coord. only</Tag>
 	<Tag name="InputFluidsUpdate">F10  - update depth map, after terrain deform near shore</Tag>
@@ -1082,12 +1093,14 @@
 	<Tag name="InputObjectsRotReset">shift-2 - reset rotation</Tag>
 	<Tag name="InputObjectsScaleReset">shift-3 - reset scale to 1 (with shift to 0.5)</Tag>
 	<Tag name="InputObjectsType">-,=  - change object type</Tag>
+	<Tag name="InputObjectsMaterial">O,P - change material</Tag>
 	<Tag name="InputObjectsSimulate">C - simulation toggle for dynamic objects</Tag>
 	<Tag name="InputObjectsCopySel">ctrl-Ins - copy selection</Tag>
 	<Tag name="InputObjectsPaste">shift-Ins - paste copied</Tag>
 	<Tag name="InputParticlesMode">A - edit Particles</Tag>
 	<Tag name="InputParticlesDensity">[,] - change density (emission rate)</Tag>
 	<Tag name="InputParticlesStatic">Enter - toggle static</Tag>
+	<Tag name="InputParticlesSize">K,L - change size scale</Tag>
 	<Tag name="CamInfoStrings">Type,Yaw,Pitch,Dist,Height,Speed,Offset,LEFT,RIGHT,Middle,Wheel,shift,Rotate,reset,move,H,Pos</Tag>
 	<Tag name="CarDesc_OT">This is the slowest car. Very old and a bit creepy truck. Can drive only on flat tracks and with turtle speed.</Tag>
 	<Tag name="CarDesc_FR4">Quite old, heavy, broad and slow. Good for terrain but not with the best suspension. Isn't suited for faster or stunt tracks.</Tag>
@@ -1300,19 +1313,9 @@
 	<Tag name="LANG_cs">Čeština</Tag>
 	<Tag name="LANG_nl_NL">Nederlands</Tag>
 	<Tag name="LANG_hu_HU">Magyar</Tag>
-	<Tag name="HintGraphics">To adjust graphics to your card press Screen button.</Tag>
-	<Tag name="TipDebugShaders">Will save generated shaders in user's cache/shaders/ folder. Only for those not cached already. Optionally also properties on top, messing error line numbers.</Tag>
-	<Tag name="CacheMaterials">Cache Materials</Tag>
-	<Tag name="CacheShaders">Cache Shaders</Tag>
-	<Tag name="DebugShaders">Debug Shaders</Tag>
-	<Tag name="DebugProperties">Debug Properties</Tag>
-	<Tag name="Turbo">Turbo</Tag>
-	<Tag name="Ambience">Ambience</Tag>
-	<Tag name="EditSpd">Edit speed</Tag>
-	<Tag name="InputCamFocus">\ - focums camera on current (object, anything)</Tag>
-	<Tag name="InputFluidsQuality">1,2  - change fluid rendering quality</Tag>
-	<Tag name="InputObjectsMaterial">O,P - change material</Tag>
-	<Tag name="InputParticlesSize">K,L - change size scale</Tag>
+	<Tag name="Export">Export</Tag>
+	<Tag name="PathRoRExport">Rigs of Rods content path</Tag>
+	<Tag name="ExportOnLoad">Export after load</Tag>
 	<Tag name="GameVersion">3.0.1</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
