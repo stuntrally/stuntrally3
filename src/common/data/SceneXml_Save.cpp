@@ -59,6 +59,30 @@ bool Scene::SaveXml(String file)
 	root->InsertEndChild(st);
 
 
+	//  for RoR export only
+	XMLElement* roe = xml.NewElement("ror1");
+		roe->SetAttribute("aA",		toStrC( ror.lAmbAdd ));
+		roe->SetAttribute("lA",		toStrC( ror.lAmb ));
+		roe->SetAttribute("lD",		toStrC( ror.lDiff ));
+		roe->SetAttribute("lS",		toStrC( ror.lSpec ));
+
+		roe->SetAttribute("wtr",	toStrC( ror.water ));
+		roe->SetAttribute("yW",		toStrC( ror.yWaterOfs ));
+		roe->SetAttribute("grs",	toStrC( ror.grassMul ));
+	root->InsertEndChild(roe);
+
+	XMLElement* rod = xml.NewElement("ror2");
+		rod->SetAttribute("rtx",	toStrC( ror.roadTerTexLayer ));
+		rod->SetAttribute("col",	ror.roadCols ? 1 : 0);
+
+		rod->SetAttribute("d",		toStrC( ror.roadStepDist ));
+		rod->SetAttribute("h",		toStrC( ror.roadHadd ));
+		rod->SetAttribute("sc",		toStrC( ror.tileMul ));
+		rod->SetAttribute("wx",		toStrC( ror.wallX ));
+		rod->SetAttribute("wy",		toStrC( ror.wallY ));
+	root->InsertEndChild(rod);
+
+
 	XMLElement* snd = xml.NewElement("sound");  // 🔉
 		snd->SetAttribute("ambient",		ambientSnd.c_str());
 		if (ambientVol != 1.f)

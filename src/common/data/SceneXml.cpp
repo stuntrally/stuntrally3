@@ -95,11 +95,12 @@ void Scene::RoRconfig::Default()
 	grassMul = 4.f;
 	
 	roadTerTexLayer = 1;  // meh guess
+	roadCols = 0;
+
 	roadStepDist = 10.f;  // hq
 	roadHadd = -0.9f;  //+
 	tileMul = 1.2f;  // 1
-	wallX = 0.6f, wallY = 1.0f;
-	roadCols = 0;
+	wallX = 0.6f;  wallY = 1.0f;
 }
 
 

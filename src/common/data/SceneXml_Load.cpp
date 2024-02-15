@@ -66,6 +66,30 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("rot2");		if (a)  {  Vector4 v = s2v4(a);  startRot[1] = QUATERNION<float>(v.x,v.y,v.z,v.w);  }
 	}
 
+	///  for RoR export only
+	e = root->FirstChildElement("ror1");
+	if (e)
+	{	a = e->Attribute("aA");		if (a)  ror.lAmbAdd = s2v(a);
+		a = e->Attribute("lA");		if (a)  ror.lAmb = s2r(a);
+		a = e->Attribute("lD");		if (a)  ror.lDiff = s2r(a);
+		a = e->Attribute("lS");		if (a)  ror.lSpec = s2r(a);
+
+		a = e->Attribute("wtr");	if (a)  ror.water = s2i(a);
+		a = e->Attribute("yW");		if (a)  ror.yWaterOfs = s2r(a);
+		a = e->Attribute("grs");	if (a)  ror.grassMul = s2r(a);
+	}
+	e = root->FirstChildElement("ror2");
+	if (e)
+	{	a = e->Attribute("rtx");	if (a)  ror.roadTerTexLayer = s2r(a);
+		a = e->Attribute("col");	if (a)  ror.roadCols = s2i(a) > 0;
+		
+		a = e->Attribute("d");		if (a)  ror.roadStepDist = s2r(a);
+		a = e->Attribute("h");		if (a)  ror.roadHadd = s2r(a);
+		a = e->Attribute("sc");		if (a)  ror.tileMul = s2r(a);
+		a = e->Attribute("wx");		if (a)  ror.wallX = s2r(a);
+		a = e->Attribute("wy");		if (a)  ror.wallY = s2r(a);
+	}
+
 	///  🔉 sound
 	e = root->FirstChildElement("sound");
 	if (e)

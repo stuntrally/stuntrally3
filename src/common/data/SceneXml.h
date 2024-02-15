@@ -120,7 +120,6 @@ public:
 
 		int water;  // 🌊 -1 off  0 auto  1 custom
 		float yWaterOfs;  // or height for custom
-
 		float grassMul;  // 🌿
 
 		int roadTerTexLayer;  // 🛣️  ter layer num used as tex for road
