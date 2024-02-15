@@ -568,9 +568,14 @@ void App::ToolExportRoR()
 	os.close();
 
 
-
 	//  📄📦 Objects  save  .tobj
 	//------------------------------------------------------------------------------------------------------------------------
+	// ReadTxts("objects");  ReadTxts("objects2");  ReadTxts("objectsC");  ReadTxts("objects0");
+	// ReadTxts("obstacles");  ReadTxts("rocks");  ReadTxts("rockshex");
+	//- ReadTxts("skies");  
+	// ReadTxts("grass");  ReadTxts("terrain");  ReadTxts("road");
+	// ReadTxts("trees");  ReadTxts("trees2");   ReadTxts("trees-old");  //todo: replace-
+	
 	string objFile = path + name + ".tobj";
 	ofstream obj;
 	obj.open(objFile.c_str(), std::ios_base::out);
@@ -619,36 +624,147 @@ void App::ToolExportRoR()
 	gui->Exp(CGui::TXT, "Objects: "+toStr(sc->objects.size())+"  odef: "+toStr(iodef));
 
 
-	//  🌿 Grass layers
+	//  🌳🪨 Vegetation setup  save  .tobj .png
 	//------------------------------------------------------------------------------------------------------------------------
-	//  todo  RTT.. save png
-	const SGrassLayer* g0 = &sc->grLayersAll[0];
-	for (int i=0; i < sc->ciNumGrLay; ++i)
+	const bool veget = 1;  // par.. not in FPS variant
+	if (veget)
 	{
-		const SGrassLayer* gr = &sc->grLayersAll[i];
-		if (gr->on)
+		string vegFile = path + name + "-veget.tobj";
+		ofstream veg;
+		veg.open(vegFile.c_str(), std::ios_base::out);
+
+		string matFile = path + name + "-veget.material";
+		ofstream mat;
+		mat.open(matFile.c_str(), std::ios_base::out);
+
+
+		//  🌿 Grass layers
+		//------------------------------------------------------------------------------------------------------------------------
+		veg << "// format:  grass range,  SwaySpeed, SwayLength, SwayDistribution,   Density,  minx, miny, maxx, maxy,   fadetype, minY, maxY,   material colormap densitymap\n";
+
+		const SGrassLayer* g0 = &sc->grLayersAll[0];
+		for (int i=0; i < sc->ciNumGrLay; ++i)
 		{
-							const SGrassChannel* ch = &scn->sc->grChan[gr->iChan];
-			// ch->angMin
-		// ch->angMax
-			// gr->minSx, gr->maxSx
-		// format: grass range, SwaySpeed, SwayLength, SwayDistribution, Density, minx, miny, maxx, maxy, fadetype, minY, maxY, material colormap densitymap
-		//grass 100, 0.5, 0.05, 10, 3.0, 0.2, 0.2, 1, 1, 1, 10, 0, grass2 RoRArizona-SCRUB1.dds RoRArizona-VEGE1.dds
-		//grass 600, 0.5, 0.15, 10, 0.3, 0.3, 0.3, 1.2, 1.2, 1, 10, 0, grass4 RoRArizona-SCRUB1.dds RoRArizona-VEGE1.dds
-			//  copy grass*.png
-			//  create .material for it
+			const SGrassLayer* gr = &sc->grLayersAll[i];
+			if (gr->on)
+			{
+				string mapName = name + "-grass"+toStr(i)+".png";
+
+				const SGrassChannel* ch = &scn->sc->grChan[gr->iChan];
+				// ch->angMin, ch->angMax
+				//grass 600,  0.5, 0.15, 10,  0.3, 0.3, 0.3, 1.2, 1.2,  1, 10, 0, grass4 RoRArizona-SCRUB1.dds RoRArizona-VEGE1.dds
+				//grass 200,  0.5, 0.05, 10,  0.1, 0.2, 0.2, 1, 1,  1, 0, 9, seaweed none none
+				//grass 200,  0.5, 0.05, 10,  0.3, 0.2, 0.2, 1, 1,  1, 10, 0, grass1 aspen.jpg aspen_grass_density.png
+
+				//  range,
+				veg << "grass " << "300,  ";  // par mul
+				//  Sway: Speed, Length, Distribution,
+				veg << "0.5, 0.05, 10,  ";  
+				
+				//  Density,  minx, miny, maxx, maxy,
+				veg << gr->dens * sc->densGrass * 4.f << ",  ";  // par mul
+				veg << gr->minSx <<", "<< gr->minSy <<", "<< gr->maxSx <<", "<< gr->maxSy << ", ";
+				
+				//  fadetype, minY, maxY,
+				veg << "1, 10, 0,  ";
+				//  material  colormap densitymap
+				veg << gr->material << " none " << mapName << "\n";
+
+
+				//  veget map
+				//------------------------------------------------------------
+				Image2 img, im2;
+				try
+				{
+					img.load(String("roadDensity.png"), "General");
+					im2.load(String("roadDensity.png"), "General");
+					// im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
+
+					const int xx = img.getWidth(), yy = img.getHeight();
+					TextureBox tb = img.getData(0), tb2 = im2.getData(0);
+					auto pf = img.getPixelFormat();
+					for (int y = 0; y < yy; ++y)
+					for (int x = 0; x < xx; ++x)
+					{
+						float r = tb.getColourAt(xx-1 - x, y, 0, pf).r;  // flip x
+						
+						// int mx = (0.5*tws + pos.x)/tws*r,
+						// 	my = (0.5*tws + pos.z)/tws*r;
+
+
+						ColourValue cv(r,r,r);  // white
+						tb2.setColourAt(cv, x, y, 0, pf);
+					}
+					im2.save(path + mapName, 0, 0);
+				}
+				catch (exception ex)
+				{
+					gui->Exp(CGui::WARN, string("Exception in grass dens map: ") + ex.what());
+				}
+
+				//  copy grass*.png
+				//------------------------------------------------------------
+				String pathGrs = PATHS::Data() + "/grass/";
+				String grassPng = gr->material + ".png";
+				string from, to;
+				try
+				{	//  copy _d _n
+					from = pathGrs + grassPng;  to = path + grassPng;
+					if (!fs::exists(to.c_str()))
+						fs::copy_file(from.c_str(), to.c_str());
+				}
+				catch (const fs::filesystem_error & ex)
+				{
+					String s = "Error: Copying file " + from + " to " + to + " failed ! \n" + ex.what();
+					gui->Exp(CGui::WARN, s);
+				}				
+				
+				//  create .material for it
+				mat << "material " << gr->material << "\n";
+				mat << "{\n";
+				mat << "	technique\n";
+				mat << "	{\n";
+				mat << "		pass\n";
+				mat << "		{\n";
+				mat << "			cull_hardware none\n";
+				mat << "			cull_software none\n";
+				mat << "			alpha_rejection greater 128\n";
+				mat << "			texture_unit\n";
+				mat << "			{\n";
+				mat << "				texture	" << grassPng << "\n";
+				mat << "				tex_address_mode clamp\n";
+				mat << "			}\n";
+				mat << "		}\n";
+				mat << "	}\n";
+				mat << "}\n";
+				mat << "\n";
+			}
+
 		}
+
+		//  todo  RTT.. save png
+
+		mat.close();
+
+		//  🌳🪨 Vegetation
+		//------------------------------------------------------------------------------------------------------------------------
+
+
+		// veg << "";
+		// trn << ""+name+"-veget.tobj=\n";
+		// trees yawFrom, yawTo, scaleFrom, scaleTo, highDensity, distance1, distance2, meshName colormap densitymap
+		//trees 0, 360, 0.1, 0.12, 2, 60, 3000, fir05_30.mesh aspen-test.dds aspen_grass_density2.png 
+		//  todo save densitymap  0 blk .. 1 wh
+
+		// Trees
+
+		//trees yawFrom, yawTo, scaleFrom, scaleTo, highDensity, distance1, distance2, meshName colormap densitymap 
+		// trees 0, 360, 0.1, 0.12, 2, 60, 3000, fir05_30.mesh aspen-test.dds aspen_grass_density2.png 
+
+		veg.close();
 	}
 
 
-	//  🌳🪨 Vegetation
-	//------------------------------------------------------------------------------------------------------------------------
-	// trn << ""+name+"-veget.tobj=\n";
-	// trees yawFrom, yawTo, scaleFrom, scaleTo, highDensity, distance1, distance2, meshName colormap densitymap
-	//trees 0, 360, 0.1, 0.12, 2, 60, 3000, fir05_30.mesh aspen-test.dds aspen_grass_density2.png 
-	//  todo save densitymap  0 blk .. 1 wh
-
-		
 	//  🛣️ Road  points
 	//------------------------------------------------------------------------------------------------------------------------
 	const bool roadtxt = !scn->roads.empty();
@@ -815,8 +931,8 @@ void App::ToolExportRoR()
 
 	trn << "[Objects]\n";
 	// trn << name+".tobj=\n";
-	// if (veget)
-	// 	trn << name+"-veget.tobj=\n";
+	if (veget)
+		trn << name+"-veget.tobj=\n";
 	if (roadFile)
 		trn << name+"-road.tobj=\n";
 	trn << "\n";
