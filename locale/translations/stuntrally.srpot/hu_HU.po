@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-09 18:34+0100\n"
-"PO-Revision-Date: 2024-02-15 14:15+0000\n"
+"PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/hu/>\n"
@@ -4467,7 +4467,7 @@ msgstr "Hangerő"
 #: data/gui/Game_Options.layout:1239 ..Options.Sound.Main.Text
 msgctxt "VolMaster"
 msgid "Master"
-msgstr ""
+msgstr "Fő"
 
 #. Sound  main 
 #: data/gui/Game_Options.layout:1251 ..Options.Sound.Main.Text
@@ -4479,7 +4479,7 @@ msgstr "Motor"
 #: data/gui/Game_Options.layout:1404 ..Options.Sound.Other.Text
 msgctxt "Turbo"
 msgid "Turbo"
-msgstr ""
+msgstr "Turbó"
 
 #. Sound  main 
 #: data/gui/Editor.layout:3181 ..Editor.Vegetation.Surface.Surface.Text
@@ -4495,13 +4495,13 @@ msgstr "Gumik"
 #: data/gui/Game_Options.layout:1273 ..Options.Sound.Main.Text
 msgctxt "Suspension"
 msgid "Suspension"
-msgstr ""
+msgstr "Felfüggesztés"
 
 #. Sound  main 
 #: data/gui/Game_Options.layout:1284 ..Options.Sound.Main.Text
 msgctxt "Environment"
 msgid "Environment"
-msgstr ""
+msgstr "Környezet"
 
 #. Sound  main 
 #: data/gui/Game_Options.layout:1295 ..Options.Sound.Main.Text
@@ -4544,7 +4544,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:192 ..Help.Tab
 msgctxt "About"
 msgid "About"
-msgstr ""
+msgstr "Névjegy"
 
 #. About 
 #: data/gui/Common.layout:84 ..Track-Filter.Check data/gui/Game_Help.layout:199
@@ -4569,30 +4569,30 @@ msgstr ""
 #: data/gui/Game_Help.layout:221 ..Help.About.Text
 msgctxt "BasedOn"
 msgid "based on"
-msgstr ""
+msgstr "a következő alapján:"
 
 #. About 
 #: data/gui/Game_Help.layout:240 ..Help.About.Text
 msgctxt "AndUsing"
 msgid "and using"
-msgstr ""
+msgstr "és ezek használatával:"
 
 #. About 
 msgctxt "ProjectPage"
 msgid "project&apos;s page:"
-msgstr ""
+msgstr "a projekt oldala:"
 
 #. Editor  Main 
 #: data/gui/Editor_Tools.layout:4 ..Window
 msgctxt "PreviewCam"
 msgid "Preview Camera"
-msgstr ""
+msgstr "Előnézeti kamera"
 
 #. Editor  Main 
 #: data/gui/Editor_Tools.layout:11 ..PreviewCamera.Text
 msgctxt "Leave"
 msgid "Leave (exit)"
-msgstr ""
+msgstr "Elhagyás (kilépés)"
 
 #. Editor  Main 
 #: data/gui/Editor_Tools.layout:16 ..PreviewCamera.Text
@@ -5601,7 +5601,7 @@ msgstr "sebesség"
 #: data/gui/Editor.layout:1841 ..Editor.Grasses.Properties.Text
 msgctxt "distribution"
 msgid "distribution"
-msgstr ""
+msgstr "eloszlás"
 
 #. Road  Main 
 #: data/gui/Editor_Help.layout:221 ..Help.Input/help.Shortcuts.Text
@@ -5635,18 +5635,18 @@ msgstr "Fal"
 #: src/editor/Update_EditKeyTxt.cpp:57
 msgctxt "River"
 msgid "River"
-msgstr ""
+msgstr "Folyó"
 
 #. Road  Main 
 msgctxt "Hidden"
 msgid "Hidden"
-msgstr ""
+msgstr "Rejtett"
 
 #. Road  Main 
 #: data/gui/Editor.layout:2851 ..Editor.Vegetation.Road.Tab
 msgctxt "Column"
 msgid "Column"
-msgstr ""
+msgstr "Oszlop"
 
 #. Road  Main 
 #: data/gui/Editor.layout:1258 ..Editor.Terrain.Tools.Text
@@ -5655,7 +5655,7 @@ msgstr ""
 #: data/gui/MaterialEditor.layout:262 ..MaterialEditor.Tab
 msgctxt "Advanced"
 msgid "Advanced"
-msgstr ""
+msgstr "Speciális"
 
 #. Road  materials 
 #: data/gui/Editor.layout:2695 ..Editor.Vegetation.Road.Road.Text
@@ -6034,19 +6034,16 @@ msgstr ""
 
 #. Editor Game setup 
 #: data/gui/Editor_Track.layout:626 ..Track.Game.Check
-#, fuzzy
-#| msgctxt "Vehicles"
-#| msgid "Vehicles"
 msgctxt "NeedLights"
 msgid "Requires vehicle lights"
-msgstr "Járművek"
+msgstr "Járműfényeket igényel"
 
 #. Editor Warnings 
 #: data/gui/Editor_Help.layout:237 ..Help.Input/help.Shortcuts.Text
 #: data/gui/Editor_Track.layout:649 ..Track.Tab src/editor/Warnings.cpp:388
 msgctxt "Warnings"
 msgid "Warnings"
-msgstr ""
+msgstr "Figyelmeztetések"
 
 #. Editor Warnings 
 #: data/gui/Editor_Track.layout:673 ..Track.Warnings.Text
