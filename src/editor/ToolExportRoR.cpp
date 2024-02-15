@@ -668,9 +668,9 @@ void App::ToolExportRoR()
 			const SGrassLayer* gr = &sc->grLayersAll[i];
 			if (gr->on)
 			{
-				string mapName = name + "-grass"+toStr(i)+".png";
-
 				const SGrassChannel* ch = &scn->sc->grChan[gr->iChan];
+				string mapName = name + "-grass"+toStr(gr->iChan)+".png";
+
 				// ch->angMin, ch->angMax
 				//grass 600,  0.5, 0.15, 10,  0.3, 0.3, 0.3, 1.2, 1.2,  1, 10, 0, grass4 RoRArizona-SCRUB1.dds RoRArizona-VEGE1.dds
 				//grass 200,  0.5, 0.05, 10,  0.1, 0.2, 0.2, 1, 1,  1, 0, 9, seaweed none none
@@ -687,15 +687,19 @@ void App::ToolExportRoR()
 				
 				//  fadetype, minY, maxY,
 				veg << "1, 10, 0,  ";
-				//  material  colormap densitymap
+				//  material  colormap  densitymap
 				veg << gr->material << " none " << mapName << "\n";
 
 
-				//  veget map
+				//  grass dens map
 				//------------------------------------------------------------
 				Image2 img, im2;
 				try
 				{
+					const Real tws = sc->tds[0].fTerWorldSize, hws = tws * 0.5f;  //par-
+					// const Real mrg = 0.98f;
+					const auto* terrain = scn->ters[0];
+
 					img.load(String("roadDensity.png"), "General");
 					im2.load(String("roadDensity.png"), "General");
 					// im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
@@ -703,16 +707,22 @@ void App::ToolExportRoR()
 					const int xx = img.getWidth(), yy = img.getHeight();
 					TextureBox tb = img.getData(0), tb2 = im2.getData(0);
 					auto pf = img.getPixelFormat();
+
 					for (int y = 0; y < yy; ++y)
 					for (int x = 0; x < xx; ++x)
 					{
-						float r = tb.getColourAt(xx-1 - x, y, 0, pf).r;  // flip x
+						float rd = tb.getColourAt(xx-1 - x, y, 0, pf).r;  // flip x
 						
-						// int mx = (0.5*tws + pos.x)/tws*r,
-						// 	my = (0.5*tws + pos.z)/tws*r;
+						float xw = (float(x) / (xx-1) - 0.5f) * tws,
+							  zw = (float(yy-1 - y) / (yy-1) - 0.5f) * tws;
 
+						Real a = terrain->getAngle(xw, zw, 1.f);
+						Real h = terrain->getHeight(xw, zw);  // /2 par..
+						float d = rd
+								* scn->linRange(a, ch->angMin, ch->angMax, ch->angSm)
+								* scn->linRange(h, ch->hMin, ch->hMax, ch->hSm);
 
-						ColourValue cv(r,r,r);  // white
+						ColourValue cv(d,d,d);  // white
 						tb2.setColourAt(cv, x, y, 0, pf);
 					}
 					im2.save(path + mapName, 0, 0);
@@ -725,7 +735,7 @@ void App::ToolExportRoR()
 				//  copy grass*.png
 				//------------------------------------------------------------
 				String pathGrs = PATHS::Data() + "/grass/";
-				String grassPng = gr->material + ".png";
+				String grassPng = gr->material + ".png";  // same as mtr name
 				string from, to;
 				try
 				{	//  copy _d _n
@@ -759,7 +769,6 @@ void App::ToolExportRoR()
 				mat << "}\n";
 				mat << "\n";
 			}
-
 		}
 
 		mat.close();
