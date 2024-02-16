@@ -705,7 +705,7 @@
 							<Property key="WordWrap" value="true"/>
 							<Property key="VisibleHScroll" value="false"/>
 							<Property key="VisibleVScroll" value="true"/>
-							<Property key="MaxTextLength" value="4000"/>
+							<Property key="MaxTextLength" value="24000"/>
 							<Property key="TextColour" value="1.0 0.8 0.8"/>
 							<Property key="Colour" value="0.6 0.7 0.8"/>
 							<Property key="FontName" value="font.small"/>
@@ -731,9 +731,19 @@
 							<Property key="TextColour" value="0.8 0.7 0.8"/>
 						</Widget>
 						<Widget type="EditBox" skin="EditBox" position="32 56 600 24" name="EdPathRoR">
-							<Property key="Colour" value="0.9 0.9 1.0"/>
+							<Property key="Colour" value="0.95 0.9 1.0"/>
 							<Property key="MaxTextLength" value="320"/>
-							<Property key="TextColour" value="0.9 0.9 1.0"/>
+							<Property key="TextColour" value="0.95 0.9 1.0"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 90 484 24">
+							<Property key="Caption" value="#{PathOldSR}"/>
+							<Property key="TextColour" value="0.7 0.8 0.9"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="32 114 600 24" name="EdPathOldSR">
+							<Property key="Colour" value="0.9 0.95 1.0"/>
+							<Property key="MaxTextLength" value="320"/>
+							<Property key="TextColour" value="0.9 0.95 1.0"/>
 						</Widget>
 					</Widget>
 

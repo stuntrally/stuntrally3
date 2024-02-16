@@ -1359,8 +1359,9 @@
 	<Tag name="TweakOriginal">Original</Tag>
 
 	<Tag name="Export">Export</Tag>
-	<Tag name="PathRoRExport">Rigs of Rods content path</Tag>
 	<Tag name="ExportOnLoad">Export after load</Tag>
+	<Tag name="PathRoRExport">Rigs of Rods content path</Tag>
+	<Tag name="PathOldSR">Path to Stunt Rally 2.x data</Tag>
 
 
 <!--  ............................................................................................................................  -->

@@ -81,5 +81,6 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 	//  RoR export
 	Param(c,w, "ror.path_export", pathExportRoR);
+	Param(c,w, "ror.path_OldSR", pathExportOldSR);
 	Param(c,w, "ror.exportOnLoad", exportOnLoad);
 }

@@ -417,6 +417,7 @@ public:
 	void btnExport(WP);
 	Ck ckExportOnLoad;
 	Ed edExport =0, edRoRPath =0;  void editRoRPath(Ed);
+	Ed edOldSRPath =0;  void editOldSRPath(Ed);
 	void Exp(eWarn type, Ogre::String text);
 
 

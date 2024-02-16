@@ -119,7 +119,7 @@ void CScene::CreateTrees()
 		for (size_t l=0; l < sc->vegLayers.size(); ++l)
 		{
 			VegetLayer& vg = sc->vegLayersAll[sc->vegLayers[l]];
-			String file = vg.name;  //, fpng = file+".png";
+			String file = vg.name;
 			vg.cnt = 0;
 	
 			bool found = resMgr.resourceExistsInAnyGroup(file);

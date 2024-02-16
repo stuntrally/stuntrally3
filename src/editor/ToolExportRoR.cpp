@@ -17,6 +17,7 @@
 #include <Terra.h>
 #include <OgreImage2.h>
 #include <OgreVector3.h>
+#include <OgreException.h>
 
 #include <exception>
 #include <string>
@@ -31,6 +32,10 @@ using namespace std;
 void CGui::editRoRPath(Ed ed)
 {
 	pSet->pathExportRoR = ed->getCaption();
+}
+void CGui::editOldSRPath(Ed ed)
+{
+	pSet->pathExportOldSR =  ed->getCaption();
 }
 void CGui::btnExport(WP)
 {
@@ -143,7 +148,7 @@ void App::ToolExportRoR()
 
 	//  🏔️ Blendmap  Layers
 	//------------------------------------------------------------------------------------------------------------------------
-	gui->Exp(CGui::TXT, "Terrain layers  " + toStr(td.layers.size()));
+	gui->Exp(CGui::NOTE, "Terrain layers  " + toStr(td.layers.size()));
 
 	string layTexDS[4], layTexNH[4];  // new filenames for ds,nh
 
@@ -322,7 +327,7 @@ void App::ToolExportRoR()
 	}
 	if (roadAdd && !roadDiff.empty())
 	{
-		gui->Exp(CGui::TXT, "Road layer: " + fToStr(roadTile)+" , "+roadDiff+", "+roadNorm);
+		gui->Exp(CGui::NOTE, "Road layer: " + fToStr(roadTile)+" , "+roadDiff+", "+roadNorm);
 		lay << mul * roadTile << " , " << roadDiff+", "+roadNorm+", " +
 			name + "-road.png, R, 0.99\n";
 	}
@@ -445,6 +450,7 @@ void App::ToolExportRoR()
 	otc.close();
 
 
+	//------------------------------------------------------------------------------------------------------------------------
 	//  🖼️ copy Preview  mini
 	//------------------------------------------------------------
 	String pathPrv = PATHS::Tracks() + "/" + name + "/preview/";
@@ -494,7 +500,7 @@ void App::ToolExportRoR()
 		water = 1;
 		Ywater = ror.yWaterOfs;  break;
 	}
-	gui->Exp(CGui::TXT, String("Water: ")+(water ? "yes" : "no")+"  Y level: "+fToStr(Ywater));
+	gui->Exp(CGui::NOTE, String("Water: ")+(water ? "yes" : "no")+"  Y level: "+fToStr(Ywater));
 
 
 	//  ⛅ Caelum  sun light etc  save  .os
@@ -588,13 +594,12 @@ void App::ToolExportRoR()
 	os.close();
 
 
+	//------------------------------------------------------------------------------------------------------------------------
 	//  📄📦 Objects  save  .tobj
 	//------------------------------------------------------------------------------------------------------------------------
-	// ReadTxts("objects");  ReadTxts("objects2");  ReadTxts("objectsC");  ReadTxts("objects0");
-	// ReadTxts("obstacles");  ReadTxts("rocks");  ReadTxts("rockshex");
-	//- ReadTxts("skies");  
-	// ReadTxts("grass");  ReadTxts("terrain");  ReadTxts("road");
-	// ReadTxts("trees");  ReadTxts("trees2");   ReadTxts("trees-old");  //todo: replace-
+	std::vector<string> dirs;
+	dirs.push_back("objects");  dirs.push_back("objects2");  dirs.push_back("objectsC");
+	dirs.push_back("objects0");  dirs.push_back("obstacles");
 	
 	string objFile = path + name + ".tobj";
 	ofstream obj;
@@ -602,6 +607,8 @@ void App::ToolExportRoR()
 
 	int iodef = 0;
 	std::map<string, int> once;
+	int iObjMesh = 0;
+
 	for (const auto& o : sc->objects)
 	{
 		Vector3 p = Axes::toOgre(o.pos);
@@ -616,15 +623,16 @@ void App::ToolExportRoR()
 		
 		//  object  save  .odef
 		//------------------------------------------------------------
+		const string mesh = o.name + ".mesh";
 		string odefFile = path + o.name + ".odef";
 		// if (!fs::exists(odefFile))
-		if (once.find(o.name) != once.end())
+		if (once.find(o.name) == once.end())
 		{
 			once[o.name] = 1;
 			ofstream odef;
 			odef.open(odefFile.c_str(), std::ios_base::out);
 			
-			odef << o.name + ".mesh\n";
+			odef << mesh + "\n";
 			odef << "1, 1, 1\n";
 			odef << "\n";
 			odef << "beginmesh\n";
@@ -635,17 +643,51 @@ void App::ToolExportRoR()
 			odef << "end\n";
 			
 			odef.close();  ++iodef;
+
+			//------------------------------------------------------------
+			//  Find mesh  in old SR dirs
+			//------------------------------------------------------------
+			bool exists = 0;
+			string from, to;
+			for (auto& d : dirs)
+			{
+				string file = pSet->pathExportOldSR + d +"/"+ mesh;
+				if (PATHS::FileExists(file))
+				{	exists = 1;  from = file;  }
+				// gui->Exp(CGui::INFO, String("obj: ")+file+ "  ex: "+(exists?"y":"n"));
+			}
+			if (exists)
+			{
+				try
+				{	//  copy
+					to = path + mesh;
+					if (!fs::exists(to.c_str()))
+						fs::copy_file(from.c_str(), to.c_str());
+					++iObjMesh;
+				}
+				catch (const fs::filesystem_error & ex)
+				{
+					String s = "Error: Copying mesh " + from + " to " + to + " failed ! \n" + ex.what();
+					gui->Exp(CGui::WARN, s);
+					continue;
+				}
+
+				//  get mtr?  read .mat,  copy textures,  write .material ...
+			}
 		}
-		// todo: once copy .mesh, texture, material ...
-		// from old SR dir ..
 	}
 	obj.close();
 
-	gui->Exp(CGui::TXT, "Objects: "+toStr(sc->objects.size())+"  odef: "+toStr(iodef));
+	gui->Exp(CGui::TXT, "Objects: "+toStr(sc->objects.size())+"  odef: "+toStr(iodef)+"  meshes: "+toStr(iObjMesh));
 
 
+
+	//------------------------------------------------------------------------------------------------------------------------
 	//  🌳🪨 Vegetation setup  save  .tobj .png
 	//------------------------------------------------------------------------------------------------------------------------
+	const Real tws = sc->tds[0].fTerWorldSize;
+	const auto* terrain = scn->ters[0];
+
 	const bool veget = 1;  // par.. not in FPS variant
 	if (veget)
 	{
@@ -658,9 +700,10 @@ void App::ToolExportRoR()
 		mat.open(matFile.c_str(), std::ios_base::out);
 
 
+		//------------------------------------------------------------------------------------------------------------------------
 		//  🌿 Grass layers
 		//------------------------------------------------------------------------------------------------------------------------
-		veg << "// format:  grass range,  SwaySpeed, SwayLength, SwayDistribution,   Density,  minx, miny, maxx, maxy,   fadetype, minY, maxY,   material colormap densitymap\n";
+		veg << "// grass range,  SwaySpeed, SwayLength, SwayDistribution,   Density,  minx, miny, maxx, maxy,   fadetype, minY, maxY,   material colormap densitymap\n";
 
 		const SGrassLayer* g0 = &sc->grLayersAll[0];
 		for (int i=0; i < sc->ciNumGrLay; ++i)
@@ -669,13 +712,12 @@ void App::ToolExportRoR()
 			if (gr->on)
 			{
 				const SGrassChannel* ch = &scn->sc->grChan[gr->iChan];
-				string mapName = name + "-grass"+toStr(gr->iChan)+".png";
+				const string mapName = name + "-grass"+toStr(gr->iChan)+".png";
 
-				// ch->angMin, ch->angMax
-				//grass 600,  0.5, 0.15, 10,  0.3, 0.3, 0.3, 1.2, 1.2,  1, 10, 0, grass4 RoRArizona-SCRUB1.dds RoRArizona-VEGE1.dds
 				//grass 200,  0.5, 0.05, 10,  0.1, 0.2, 0.2, 1, 1,  1, 0, 9, seaweed none none
-				//grass 200,  0.5, 0.05, 10,  0.3, 0.2, 0.2, 1, 1,  1, 10, 0, grass1 aspen.jpg aspen_grass_density.png
+				//grass 600,  0.5, 0.15, 10,  0.3, 0.2, 0.2, 1, 1,  1, 10, 0, grass1 aspen.jpg aspen_grass_density.png
 
+				//  write  ------
 				//  range,
 				veg << "grass " << "300,  ";  // par mul
 				//  Sway: Speed, Length, Distribution,
@@ -696,10 +738,6 @@ void App::ToolExportRoR()
 				Image2 img, im2;
 				try
 				{
-					const Real tws = sc->tds[0].fTerWorldSize, hws = tws * 0.5f;  //par-
-					// const Real mrg = 0.98f;
-					const auto* terrain = scn->ters[0];
-
 					img.load(String("roadDensity.png"), "General");
 					im2.load(String("roadDensity.png"), "General");
 					// im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
@@ -770,142 +808,191 @@ void App::ToolExportRoR()
 				mat << "\n";
 			}
 		}
-
 		mat.close();
 
-		//  🌳🪨 Vegetation
+
 		//------------------------------------------------------------------------------------------------------------------------
+		//  🌳🪨 Vegetation  layers
+		//------------------------------------------------------------------------------------------------------------------------
+		dirs.clear();
+		dirs.push_back("trees");  dirs.push_back("trees2");  dirs.push_back("trees-old");
+		dirs.push_back("rocks");  dirs.push_back("rockshex");
+		std::map<string, int> once;
+		int iVegetMesh = 0;
 
-		//  veget map
-		//------------------------------------------------------------
-		/*Image2 img, im2;
-		try
-		{
-			img.load(String("roadDensity.png"), "General");
-			im2.load(String("roadDensity.png"), "General");
-			// im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
-
-			const int xx = img.getWidth(), yy = img.getHeight();
-			TextureBox tb = img.getData(0), tb2 = im2.getData(0);
-			auto pf = img.getPixelFormat();
-			for (int y = 0; y < yy; ++y)
-			for (int x = 0; x < xx; ++x)
-			{
-				ColourValue cv = tb.getColourAt(xx-1 - x, y, 0, pf);  // flip x
-				cv.g = cv.b = cv.r;  // white
-				tb.setColourAt(cv, x, y, 0, pf);
-			}
-
-			im2.save(path + name + "-grass"+toStr(0)+".png", 0, 0);
-		}
-		catch (exception ex)
-		{
-			gui->Exp(CGui::WARN, string("Exception in grass dens map: ") + ex.what());
-		}*/
-
-
-		//  Veget Layers  ------------------------------------
 		for (size_t l=0; l < sc->vegLayers.size(); ++l)
 		{
 			VegetLayer& vg = sc->vegLayersAll[sc->vegLayers[l]];
-			String file = vg.name;  //, fpng = file+".png";
-			// vg.cnt = 0;
+			const String mesh = vg.name;
+			const string mapName = name + "-veget"+toStr(l)+".png";
 
-			//  copy mesh from old SR ?  or convert v2 to v1-
-		}
-
-		#if 0
-			//  check ter angle  ------------
-			float ang = ter0->getAngle(pos.x, pos.z, td.fTriangleSize);
-			if (ang > vg.maxTerAng)
-				add = false;
-
-			// if (!add)  LogO("ter ang");
-			if (!add)  continue;  //
-
-			//  check ter height  ------------
-			bool in = ter0->getHeightAt(pos);
-			// LogO(fToStr(pos.y));
-			if (!in)  add = false;  // outside
-			
-			if (pos.y < vg.minTerH || pos.y > vg.maxTerH)
-				add = false;
-			
-			// if (!add)  LogO("ter h");
-			if (!add)  continue;  //
-			
-			//  check if in fluids  ------------
-			float fa = sc->GetDepthInFluids(pos);
-			if (fa > vg.maxDepth)
-				add = false;
-
-			// if (!add)  LogO("in fl");
-
-			//  check if on road - uses roadDensity.png
-			if (imgRoad && r > 0)  //  ----------------
+			//  veget dens map
+			//------------------------------------------------------------
+			Image2 img, im2;
+			try
 			{
-			int mx = (0.5*tws + pos.x)/tws*r,
-				my = (0.5*tws + pos.z)/tws*r;
+				img.load(String("roadDensity.png"), "General");
+				im2.load(String("roadDensity.png"), "General");
+				// im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
 
-				int c = sc->trRdDist + vg.addRdist;
-				int d = c;
-				bool bMax = vg.maxRdist < 20; //100 slow-
-				if (bMax)
-					d = c + vg.maxRdist+1;  // not less than c
+				const int xx = img.getWidth(), yy = img.getHeight();
+				TextureBox tb = img.getData(0), tb2 = im2.getData(0);
+				auto pf = img.getPixelFormat();
 
-				//  find dist to road
-				int ii,jj, rr, rmin = 3000;  //d
-				for (jj = -d; jj <= d; ++jj)
-				for (ii = -d; ii <= d; ++ii)
+				for (int y = 0; y < yy; ++y)
+				for (int x = 0; x < xx; ++x)
 				{
-					const int
-						xx = std::max(0,std::min(r-1, my+ii)),
-						yy = std::max(0,std::min(r-1, mx+jj));
+					float rd = tb.getColourAt(xx-1 - x, y, 0, pf).r;  // flip x
 
-					const float cr = tb.getColourAt(
-						xx, yy, 0, Ogre::PFG_RGBA8_UNORM_SRGB ).r;
-					
-					if (cr < 0.75f)  // par-
+					float xw = (float(x) / (xx-1) - 0.5f) * tws,
+						  zw = (float(yy-1 - y) / (yy-1) - 0.5f) * tws;
+
+					Real a = terrain->getAngle(xw, zw, 1.f);  //td.fTriangleSize);
+					Real h = terrain->getHeight(xw, zw);
+					float d = rd;
+					if (a > vg.maxTerAng || rd == 0.f ||
+						h > vg.maxTerH || h < vg.minTerH)
+						d = 0.f;
+					else
+					{	//  check if in fluids
+						float fa = sc->GetDepthInFluids(Vector3(xw, 0.f, zw));
+						if (fa > vg.maxDepth)
+							d = 0.f;
+						else
+						{
+						#if 1  //  slow
+							int c = sc->trRdDist + vg.addRdist;
+							int d = c;
+							bool bMax = vg.maxRdist < 20; //100 slow-
+							if (bMax)
+								d = c + vg.maxRdist+1;  // not less than c
+
+							//  find dist to road
+							int ii,jj, rr, rmin = 3000;  //d
+							for (jj = -d; jj <= d; ++jj)
+							for (ii = -d; ii <= d; ++ii)
+							{
+								const int
+									xx = std::max(0,std::min(r-1, my+ii)),
+									yy = std::max(0,std::min(r-1, mx+jj));
+
+								const float cr = tb.getColourAt(
+									xx, yy, 0, Ogre::PFG_RGBA8_UNORM_SRGB ).r;
+								
+								if (cr < 0.75f)  // par-
+								{
+									rr = abs(ii)+abs(jj);
+									//rr = sqrt(float(ii*ii+jj*jj));  // much slower
+									rmin = std::min(rmin, rr);
+								}
+							}
+							if (rmin <= c)
+								d = 0.f;
+
+							if (bMax && /*d > 1 &&*/ rmin > d-1)  // max dist (optional)
+								d = 0.f;
+						#endif
+					}	}
+
+					ColourValue cv(d,d,d);  // white
+					tb2.setColourAt(cv, x, y, 0, pf);
+				}
+				im2.save(path + mapName, 0, 0);
+			}
+			catch (exception ex)
+			{
+				gui->Exp(CGui::WARN, string("Exception in grass dens map: ") + ex.what());
+			}
+
+			
+			//  presets.xml needed
+			auto nomesh = mesh.substr(0, mesh.length()-5);
+			const PVeget* pveg = scn->data->pre->GetVeget(nomesh);
+			if (!pveg)  continue;
+			bool add = 1;
+
+			//------------------------------------------------------------
+			//  Find mesh  in old SR dirs
+			//------------------------------------------------------------
+			bool exists = 0;
+			string from, to;
+			for (auto& d : dirs)
+			{
+				string file = pSet->pathExportOldSR + d +"/"+ mesh;
+				if (PATHS::FileExists(file))
+				{	exists = 1;  from = file;  }
+				// gui->Exp(CGui::NOTE, String("veget: ")+file+ "  ex: "+(exists?"y":"n"));
+			}
+
+			//  copy mesh from old SR  ..or slow convert v2 to v1-
+			if (exists)
+			{
+				if (once.find(mesh) == once.end())
+				{	once[mesh] = 1;
+					try
+					{	//  copy
+						to = path + mesh;
+						if (!fs::exists(to.c_str()))
+							fs::copy_file(from.c_str(), to.c_str());
+						++iVegetMesh;
+					}
+					catch (const fs::filesystem_error & ex)
 					{
-						rr = abs(ii)+abs(jj);
-						//rr = sqrt(float(ii*ii+jj*jj));  // much slower
-						rmin = std::min(rmin, rr);
+						String s = "Error: Copying mesh " + from + " to " + to + " failed ! \n" + ex.what();
+						gui->Exp(CGui::WARN, s);
+						continue;
 					}
 				}
-				if (rmin <= c)
-					add = false;
 
-				if (bMax && /*d > 1 &&*/ rmin > d-1)  // max dist (optional)
-					add = false;
+				//  get mesh mtr
+				//---------------------------------------------------------------------------------------
+				try
+				{
+					String resGrp = "MeshV1";
+					v1::MeshPtr v1Mesh;
+					ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", resGrp);
+					v1Mesh = v1::MeshManager::getSingleton().load( mesh, resGrp,
+						v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
+					
+					int si = v1Mesh->getNumSubMeshes();
+					for (int i=0; i < si; ++i)
+					{
+						auto sm = v1Mesh->getSubMesh(i);
+						String mtr = sm->getMaterialName();
+						gui->Exp(CGui::TXT, mesh +" - "+ mtr);
+					}
+				}	
+				catch (Exception ex)
+				{
+					String s = "Error: loading mesh: " + mesh + " \nfrom: " + path + "\n failed ! \n" + ex.what() + "\n";
+					gui->Exp(CGui::WARN, s);
+				}
+				//  todo  read .mat,  
+				//  copy textures,  write .material  ...
+
+
+				//  write  ------
+				if (l==0)
+					veg << "\n// trees  yawFrom, yawTo,  scaleFrom, scaleTo,  highDensity,  distance1, distance2,  meshName colormap densitymap\n";
+				if (add)
+				{	//trees 0, 360, 0.1, 0.12, 2, 60, 3000, fir05_30.mesh aspen-test.dds aspen_grass_density2.png 
+					veg << "trees 0, 360, ";
+					veg << vg.minScale << ", " << vg.minScale << ", ";
+					veg << vg.dens * sc->densTrees * 2.f;
+
+					// veg << ", 60, 1000, ";  // vis dist
+					veg << ", " << pveg->visDist * 0.5f << ", " << pveg->farDist << ", ";  // par .. todo
+					veg << vg.name << " none " << mapName << "\n";
+				}
 			}
-			// if (!add)  LogO("on rd");
-			if (!add)  continue;  //
-
-			//  check if outside of terrain?
-			// if (pos.x < 
-			
-			// if (!add)  continue;  //
-
-
-			//  **************  add  **************
-			++all;
-		#endif
-
-		// veg << "";
-		// trn << ""+name+"-veget.tobj=\n";
-		// trees yawFrom, yawTo, scaleFrom, scaleTo, highDensity, distance1, distance2, meshName colormap densitymap
-		//trees 0, 360, 0.1, 0.12, 2, 60, 3000, fir05_30.mesh aspen-test.dds aspen_grass_density2.png 
-		//  todo save densitymap  0 blk .. 1 wh
-
-		// Trees
-
-		//trees yawFrom, yawTo, scaleFrom, scaleTo, highDensity, distance1, distance2, meshName colormap densitymap 
-		// trees 0, 360, 0.1, 0.12, 2, 60, 3000, fir05_30.mesh aspen-test.dds aspen_grass_density2.png 
-
+		}
 		veg.close();
+
+		gui->Exp(CGui::NOTE, "Veget meshes: " + toStr(iVegetMesh));
 	}
 
 
+	//------------------------------------------------------------------------------------------------------------------------
 	//  🛣️ Road  points
 	//------------------------------------------------------------------------------------------------------------------------
 	std::vector<string> chks;
@@ -971,7 +1058,7 @@ void App::ToolExportRoR()
 
 						// if (p.onTer)  // ?
 						// 	vP.y = scn->getTerH(vP.x, vP.z);
-						vP.y = ror.roadHadd;  // lower for entry  // -0.9f + rd->g_Height;
+						vP.y += ror.roadHadd;  // lower for entry  // -0.9f + rd->g_Height;
 
 						//  rot y
 						float yaw = TerUtil::GetAngle(dir.x, dir.z) *180.f/PI_d - 45.f - 15.f;  // par ? 45
@@ -1109,6 +1196,7 @@ void App::ToolExportRoR()
 	as.close();
 
 
+	//------------------------------------------------------------------------------------------------------------------------
 	//  🏞️ Track/map setup  save  .terrn2
 	//------------------------------------------------------------------------------------------------------------------------
 	string terrn2File = path + name + ".terrn2";
@@ -1145,19 +1233,19 @@ void App::ToolExportRoR()
 	trn << "\n";
 
 	trn << "[Authors]\n";
-	trn << "Authors = " + authors + "\n";
-	trn << "Conversion = Exported from Stunt Rally 3 Track Editor, version: " << SET_VER << "\n";
+	trn << "Authors = " + authors + "  \n";
+	trn << "Conversion = Exported from Stunt Rally 3 Track Editor, version: " << SET_VER << "  \n";
 	if (roadtxt)
 	{
 		auto& rd = scn->roads[0];  // extra info from SR3 track
 		auto len = rd->st.Length;  // road stats
 
-		trn << "stat1 = " << "Length: " <<  fToStr(len * 0.001f,2,4) << " km  /  " << fToStr(len * 0.000621371f,2,4) << " mi\n";
-		trn << "stat2 = " << "Width average: " << fToStr(rd->st.WidthAvg,1,3) << " m\n";
-		trn << "stat3 = " << "Height range: " << fToStr(rd->st.HeightDiff,0,3) << " m\n";
-		trn << "stat4 = " << "on Terrain: " << fToStr(rd->st.OnTer,0,3) << " %\n";
+		trn << "stat1 = " << "Length: " <<  fToStr(len * 0.001f,2,4) << " km  /  " << fToStr(len * 0.000621371f,2,4) << " mi  \n";
+		trn << "stat2 = " << "Width average: " << fToStr(rd->st.WidthAvg,1,3) << " m  \n";
+		trn << "stat3 = " << "Height range: " << fToStr(rd->st.HeightDiff,0,3) << " m  \n";
+		trn << "stat4 = " << "on Terrain: " << fToStr(rd->st.OnTer,0,3) << " %  \n";
 		// trn << "stat5 = " << "bank_angle_avg: " << fToStr(rd->st.bankAvg,0,2) << "\n";
-		trn << "stat5 = " << "bank_angle_max: " << fToStr(rd->st.bankMax,0,2) << "'\n";
+		trn << "stat5 = " << "bank_angle_max: " << fToStr(rd->st.bankMax,0,2) << "'  \n";
 
 		trn << "Description = "+rd->sTxtDescr+"\n";  // text
 		trn << "drive_Advice = "+rd->sTxtAdvice+"\n";
@@ -1175,12 +1263,10 @@ void App::ToolExportRoR()
 
 	trn << "[Scripts]\n";
 	trn << name + ".as=\n";
-
-	//  if has race script define .terrn.as
-	// trn << "#"+name+".terrn.as=\n";
+	//trn << name+".terrn.as=\n";
 
 	trn.close();
 
 
-	gui->Exp(CGui::INFO, "Export to RoR end. Time: " + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	gui->Exp(CGui::INFO, "Export to RoR end. Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s");
 }

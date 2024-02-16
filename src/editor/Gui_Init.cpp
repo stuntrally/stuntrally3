@@ -618,8 +618,10 @@ void CGui::InitGui()
 
 	///  RoR export
 	edExport = fEd("EdExport");  Btn("BtnExport", btnExport);
-	Edt(edRoRPath, "EdPathRoR", editRoRPath);  edRoRPath->setCaption(pSet->pathExportRoR);
 	ck= &ckCheckLoad;	ck->Init("ExportOnLoad",	&pSet->exportOnLoad);
+
+	Edt(edRoRPath, "EdPathRoR", editRoRPath);  edRoRPath->setCaption(pSet->pathExportRoR);
+	Edt(edOldSRPath, "EdPathOldSR", editOldSRPath);  edOldSRPath->setCaption(pSet->pathExportOldSR);
 
 	
 

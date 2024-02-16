@@ -67,6 +67,7 @@ public:
 
 	//  RoR export
 	std::string pathExportRoR;
+	std::string pathExportOldSR;  // data for .mesh .mat etc
 	bool exportOnLoad =0;
 
 
