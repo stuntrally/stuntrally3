@@ -26,7 +26,7 @@ const static String strWarn[CGui::WARN_ALL] = {"FATAL ", "ERR   ", "WARN  ", "In
 void CGui::Exp(eWarn type, Ogre::String text)
 {
 	LogO("RoR Export | "+strWarn[type]+text);
-	edExport->addText(clrWarn[type]+text+"\n");
+	edExportLog->addText(clrWarn[type]+text+"\n");
 	if (type == FATAL || type == ERR || type == WARN)  ++cntWarn;  // count serious only
 }
 void CGui::Warn(eWarn type, String text)
@@ -34,18 +34,18 @@ void CGui::Warn(eWarn type, String text)
 	if (logWarn)
 		LogO(strWarn[type]+text);
 	else
-		edWarn->addText(clrWarn[type]+text+"\n");
+		edWarnLog->addText(clrWarn[type]+text+"\n");
 	if (type == FATAL || type == ERR || type == WARN)  ++cntWarn;  // count serious only
 }
 	
 CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads)
 {
 	CGui::TrackWarn tw;
-	if (!edWarn && !logWarn)  return tw;
+	if (!edWarnLog && !logWarn)  return tw;
 	
 	cntWarn = 0;
 	if (!logWarn)
-		edWarn->setCaption("");
+		edWarnLog->setCaption("");
 	
 	//  High Quality, for each component
 	bool hqTerrain =0, hqHoriz =0, hqGrass =0, hqVeget =0,

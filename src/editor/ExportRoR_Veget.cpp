@@ -153,9 +153,7 @@ void ExportRoR::ExportVeget()
 		//------------------------------------------------------------------------------------------------------------------------
 		//  🌳🪨 Vegetation  layers
 		//------------------------------------------------------------------------------------------------------------------------
-		std::vector<string> dirs;
-		dirs.push_back("trees");  dirs.push_back("trees2");  dirs.push_back("trees-old");
-		dirs.push_back("rocks");  dirs.push_back("rockshex");
+		std::vector<string> dirs{"trees", "trees2", "trees-old", "rocks", "rockshex"};
 		std::map<string, int> once;
 		int iVegetMesh = 0;
 

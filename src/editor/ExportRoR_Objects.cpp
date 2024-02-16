@@ -33,9 +33,7 @@ using namespace std;
 //------------------------------------------------------------------------------------------------------------------------
 void ExportRoR::ExportObjects()
 {
-	std::vector<string> dirs;
-	dirs.push_back("objects");  dirs.push_back("objects2");  dirs.push_back("objectsC");
-	dirs.push_back("objects0");  dirs.push_back("obstacles");
+	std::vector<string> dirs{"objects", "objects2", "objectsC", "objects0", "obstacles"};
 	
 	string objFile = path + name + "-obj.tobj";
 	ofstream obj;

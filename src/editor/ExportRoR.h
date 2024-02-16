@@ -19,7 +19,10 @@ protected:
 	class Presets* pre =0;
 
 //  var
-	std::string path, name;  // main path  and  track name = *
+	std::string
+		path,     // main RoR content or mods path
+		dirName,  // subdir name for track
+		name;     // track name
 
 	bool hasRoad = 0, hasVeget = 0, hasObjects = 0;
 
@@ -33,12 +36,19 @@ public:
 	ExportRoR(App* app1);
 	void Default();
 
+	//  main
 	void ExportTrack();  // whole / full,  needs paths set in settings
 
+	//  parts
+	void SetupPath();
 	void ExportTerrain();  //  heightmap  *.raw  and  blendmap:  *.png  and  *-page-0-0.otc
 	void ExportObjects();
 	void ExportWaterSky();  // water set,  caelum .os
 	
 	void ExportRoad();     //  *-road.tobj  and  *.as
 	void ExportVeget();    //  *-veget.tobj  and  density maps *-veget?.png
+
+	//  other
+	void ConvertTerrainTex();
+	void ConvertMat();
 };

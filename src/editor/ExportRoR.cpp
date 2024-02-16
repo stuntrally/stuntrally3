@@ -11,18 +11,14 @@
 #include "CScene.h"
 #include "CData.h"
 #include "TracksXml.h"
-#include "PresetsXml.h"
 #include "Axes.h"
-#include "Road.h"
-#include "TracksXml.h"
 
-#include <Terra.h>
 #include <OgreString.h>
-#include <OgreImage2.h>
 #include <OgreVector3.h>
 #include <OgreException.h>
 
 #include <exception>
+#include <fstream>
 #include <string>
 #include <map>
 #include <filesystem>
@@ -33,6 +29,7 @@ using namespace std;
 
 
 //  gui events
+//------------------------------------------------------------
 void CGui::editRoRPath(Ed ed)
 {
 	pSet->pathExportRoR = ed->getCaption();
@@ -41,10 +38,21 @@ void CGui::editOldSRPath(Ed ed)
 {
 	pSet->pathExportOldSR =  ed->getCaption();
 }
+
 void CGui::btnExport(WP)
 {
 	app->ror->ExportTrack();
 }
+
+void CGui::btnConvertTerrain(WP)
+{
+	app->ror->ConvertTerrainTex();
+}
+void CGui::btnConvertMat(WP)
+{
+	app->ror->ConvertMat();
+}
+
 
 //  ctor
 ExportRoR::ExportRoR(App* app1)
@@ -61,10 +69,14 @@ ExportRoR::ExportRoR(App* app1)
 	pre = data->pre;
 }
 
+//  utils
+//------------------------------------------------------------
+
 //  util convert SR pos to RoR pos
 Ogre::String ExportRoR::strPos(Ogre::Vector3 pos)
 {
 	stringstream ss;
+	// todo?  add -?terZofs
 	ss << half - pos.z << ", " << pos.y - hmin << ", " << pos.x + half << ", ";
 	return ss.str();
 }
@@ -74,15 +86,51 @@ bool ExportRoR::CopyFile(std::string from, std::string to)
 {
 	try
 	{
+	#if 0  // leave
 		if (!fs::exists(to.c_str()))
 			fs::copy_file(from.c_str(), to.c_str());
-		return true;
+	#else  // replace
+		if (fs::exists(to.c_str()))
+			fs::remove(to.c_str());
+		fs::copy_file(from.c_str(), to.c_str());
+	#endif
+		String s = "Copied file: " + from + "\n  to: " + to + "\n  ";
+		gui->Exp(CGui::TXT, s);
 	}
 	catch (exception ex)
 	{
 		String s = "Error copying file: " + from + "\n  to: " + to + "\n  " + ex.what();
 		gui->Exp(CGui::WARN, s);
+		return false;
 	}
+	return true;
+}
+
+
+//  setup path, name, create dir
+//------------------------------------------------------------
+void ExportRoR::SetupPath()
+{
+	string& dirRoR = pSet->pathExportRoR;
+	if (dirRoR.empty())
+	{	gui->Exp(CGui::ERR, "Export path empty. Need to set export RoR path first.");
+		return;
+	}
+	//  end with /
+	if (!StringUtil::endsWith(dirRoR, "\\") &&
+		!StringUtil::endsWith(dirRoR, "/"))
+		dirRoR += "/";
+
+	//  dir  track name
+	name = pSet->gui.track;
+	dirName = "^" + name;  // ^ for on top
+
+	const string dirTrk = dirRoR + dirName;
+	if (!PATHS::CreateDir(dirTrk))
+	{	gui->Exp(CGui::ERR, "Can't create track dir: "+dirTrk);
+		return;
+	}
+	path = dirTrk + "/";
 }
 
 
@@ -94,52 +142,29 @@ void ExportRoR::ExportTrack()  // whole, full
 	
 	//  Gui status
 	gui->Status("RoR Export..", 1,0.5,1);
-	gui->edExport->setCaption("");
+	gui->edExportLog->setCaption("");
 	gui->Exp(CGui::INFO, "Export to RoR started..");
 
 
-	//  dir  export to RoR content or mods path
-	string& dirRoR = pSet->pathExportRoR;
-	if (dirRoR.empty())
-	{	gui->Exp(CGui::ERR, "Export path empty. Need to set export RoR path first.");
-		return;
-	}
-	//  end with /
-	if (!StringUtil::endsWith(dirRoR, "\\") &&
-		!StringUtil::endsWith(dirRoR, "/"))
-		dirRoR += "/";
-
-	//  subdir  track name
-	const string trk = "^" + pSet->gui.track;  // ^ for on top
-	name = pSet->gui.track;  // main
-
-	const string dirTrk = dirRoR + trk;
-	if (!PATHS::CreateDir(dirTrk))
-	{	gui->Exp(CGui::ERR, "Can't create track dir: "+dirTrk);
-		return;
-	}
-	path = dirTrk + "/";  // main
-
-
-	//  Export all
-	//------------------------------------------------------------
+	SetupPath();
 
 	ExportTerrain();
 
+	ExportWaterSky();
 
-	//------------------------------------------------------------------------------------------------------------------------
+	ExportObjects();
+
+	ExportVeget();
+
+	ExportRoad();
+
+
 	//  🖼️ copy Preview  mini
 	//------------------------------------------------------------
 	String pathPrv = PATHS::Tracks() + "/" + name + "/preview/";
-	try
-	{	string from = pathPrv + "view.jpg", to = path + name + "-mini.jpg";
-		if (!fs::exists(to.c_str()))
-			fs::copy_file(from.c_str(), to.c_str());
-	}
-	catch (exception ex)
-	{
-		gui->Exp(CGui::WARN, string("Exception copy preview: ") + ex.what());
-	}
+	string from = pathPrv + "view.jpg", to = path + name + "-mini.jpg";
+	CopyFile(from, to);
+
 
 	//  get Authors from tracks.ini
 	//------------------------------------------------------------
@@ -154,14 +179,6 @@ void ExportRoR::ExportTrack()  // whole, full
 	}else
 		gui->Exp(CGui::ERR, "Track not in tracks.ini, no guid id or authors set.");
 	
-	ExportWaterSky();
-
-	ExportObjects();
-
-	ExportVeget();
-
-	ExportRoad();
-
 
 	//------------------------------------------------------------------------------------------------------------------------
 	//  🏞️ Track/map setup  save  .terrn2
@@ -171,7 +188,7 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn.open(terrn2File.c_str(), std::ios_base::out);
 
 	trn << "[General]\n";
-	trn << "Name = "+trk+"\n";
+	trn << "Name = " + dirName + "\n";
 	trn << "GeometryConfig = " + name + ".otc\n";
 	trn << "\n";
 	trn << "Water=" << water << "\n";
@@ -246,5 +263,134 @@ void ExportRoR::ExportTrack()  // whole, full
 
 
 	gui->Exp(CGui::INFO, "Export to RoR end.");
+	gui->Exp(CGui::INFO, "Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s");
+}
+
+
+//  other
+//------------------------------------------------------------------------------------------------------------------------
+void ExportRoR::ConvertTerrainTex()
+{
+
+}
+
+//  Convert .mat
+//------------------------------------------------------------------------------------------------------------------------
+void ExportRoR::ConvertMat()
+{
+	Ogre::Timer ti;
+	
+	//  Gui status
+	gui->Status("Convert materials", 0.7,0.5,1);
+	gui->edExportLog->setCaption("");
+	gui->Exp(CGui::INFO, "Started Convert materials..");
+
+	string pathMat = pSet->pathExportOldSR + "/materials/scene/";
+	std::vector<string> mats{
+		"objects_dynamic.mat", "objects_static2.mat", "objects_static.mat",
+		"rocks.mat",
+		"trees_ch.mat",	"trees.mat", "trees_old.mat"};
+
+
+	SetupPath();
+
+	// for (auto& mat : mats)  // all
+	auto& fmat = mats[2];  // one
+	{
+		string mtrFile = path + fmat + "erial";
+		ofstream mat;
+		mat.open(mtrFile.c_str(), std::ios_base::out);
+
+		string matFile = pathMat + fmat;
+		ifstream fi(matFile.c_str());
+		bool first = 1;
+		string material, diffuse, normal, alpha;
+
+		gui->Exp(CGui::NOTE, String("\nread .mat: " + matFile));
+		gui->Exp(CGui::NOTE, String("save to: " + mtrFile));
+		
+		//  material in .material
+		//------------------------------------------------------------
+		auto Write = [&]()
+		{
+			bool al = !alpha.empty();
+			gui->Exp(CGui::TXT, material +"  diff: "+diffuse+"  norm: "+normal +"  "+ alpha  );
+
+			mat << "material " << material << "\n";
+			mat << "{\n";
+			mat << "	technique\n";
+			mat << "	{\n";
+			mat << "		pass\n";
+			mat << "		{\n";
+			if (al)
+			{
+				mat << "			cull_hardware none\n";
+				mat << "			cull_software none\n";
+				mat << "			alpha_rejection greater 128\n";
+			}
+			mat << "			texture_unit\n";
+			mat << "			{\n";
+			mat << "				texture	" << diffuse << "\n";
+			if (al)
+				mat << "				tex_address_mode clamp\n";
+			mat << "			}\n";
+			
+			mat << "		}\n";
+			mat << "	}\n";
+			mat << "}\n";
+			mat << "\n";
+		};
+
+		//  read .mat file
+		//------------------------------------------------------------
+		string s;
+		while (getline(fi,s))
+		{
+			string w = "material";
+			auto it = s.find(w);  if (it != string::npos)
+			{
+				if (!first)  // write mtr
+					Write();
+
+				//  set name  -----
+				material = s.substr(it + w.length() + 1);
+				//  reset rest
+				diffuse.clear();  normal.clear();  alpha.clear();
+
+				first = 0;
+			}
+
+			w = "diffuseMap";
+			it = s.find(w);  if (it != string::npos)
+			{
+				diffuse = s.substr(it + w.length() + 1);
+				// gui->Exp(CGui::TXT, material +" d:"+diffuse);
+			}
+			w = "normalMap";
+			it = s.find(w);  if (it != string::npos)
+			{
+				normal = s.substr(it + w.length() + 1);
+				// gui->Exp(CGui::TXT, material +" n:"+diffuse);
+			}
+			// todo:
+			//  ambient 1.0 1.0 1.05
+			//  diffuse 1.15 1.15 1.2
+			//  specular 0.6 0.6 0.7 32
+
+			// alpha_rejection greater 192
+			// tree_wind true
+			// cull_hardware none
+			// receives_shadows false
+			// transparent true
+		}
+		fi.close();
+
+		if (!first)  // write last
+			Write();
+
+		mat.close();
+	}
+
+	gui->Exp(CGui::INFO, "Ended Convert materials");
 	gui->Exp(CGui::INFO, "Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s");
 }

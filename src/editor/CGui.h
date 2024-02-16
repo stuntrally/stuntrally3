@@ -401,7 +401,7 @@ public:
 	};
 	TrackWarn WarningsCheck(const Scene* sc, const std::vector<SplineRoad*>& vRoads);
 
-	Ed edWarn =0;  Txt txWarn =0;
+	Ed edWarnLog =0;  Txt txWarn =0;
 	Img imgWarn =0, imgInfo =0;
 	
 	int cntWarn = 0;  // count
@@ -415,8 +415,10 @@ public:
 
 	//  RoR export
 	void btnExport(WP);
+	void btnConvertMat(WP), btnConvertTerrain(WP);
+
 	Ck ckExportOnLoad;
-	Ed edExport =0, edRoRPath =0;  void editRoRPath(Ed);
+	Ed edExportLog =0, edRoRPath =0;  void editRoRPath(Ed);
 	Ed edOldSRPath =0;  void editOldSRPath(Ed);
 	void Exp(eWarn type, Ogre::String text);
 

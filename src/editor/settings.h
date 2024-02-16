@@ -66,8 +66,8 @@ public:
 	bool pick_setpar =1;
 
 	//  RoR export
-	std::string pathExportRoR;
-	std::string pathExportOldSR;  // data for .mesh .mat etc
+	std::string pathExportRoR;    // RoR content or mods dir
+	std::string pathExportOldSR;  // SR 2.x data dir, for .mesh .mat etc
 	bool exportOnLoad =0;
 
 

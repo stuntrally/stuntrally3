@@ -646,6 +646,7 @@
 				</Widget>
 			</Widget>
 
+			<!-- Warnings -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#E0A0A0#{Warnings}"/>
 				<Widget type="ImageBox" skin="ImageBox" position="660 32 64 64" name="ImgInfo">
@@ -658,7 +659,7 @@
 					<Property key="Alpha" value="0.6"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
 				</Widget>
-				<Widget type="EditBox" skin="EditBoxStretch" position="32 33 600 400" name="Warnings">
+				<Widget type="EditBox" skin="EditBoxStretch" position="32 12 600 450" name="Warnings">
 					<Property key="ReadOnly" value="true"/>
 					<Property key="MultiLine" value="true"/>
 					<Property key="WordWrap" value="true"/>
@@ -670,19 +671,19 @@
 					<Property key="FontName" value="font.small"/>
 					<UserString key="tip" value="#{TipTrackDescEditor}"/>
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="32 460 484 24">
+				<Widget type="TextBox" skin="TextBox" position="32 490 484 24">
 					<Property key="Caption" value="#{WarningsInfo}"/>
 					<Property key="TextColour" value="0.8 0.7 0.7"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="520 460 200 24" name="CheckSave">
+				<Widget type="Button" skin="CheckBox" position="520 490 200 24" name="CheckSave">
 					<Property key="Caption" value="#{CheckOnSave}"/>
 					<Property key="TextColour" value="0.6 0.9 1"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="520 490 200 24" name="CheckLoad">
+				<Widget type="Button" skin="CheckBox" position="520 520 200 24" name="CheckLoad">
 					<Property key="Caption" value="#{CheckOnLoad}"/>
 					<Property key="TextColour" value="0.6 0.7 0.8"/>
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="232 490 284 24">
+				<Widget type="TextBox" skin="TextBox" position="232 520 284 24">
 					<Property key="Caption" value="F6 - #{InputLoadNextTrack}"/>
 					<Property key="TextColour" value="0.6 0.7 0.8"/>
 				</Widget>
@@ -699,7 +700,7 @@
 					<Widget type="TabItem" skin="" position="2 24 794 562">
 						<Property key="Caption" value="#E0A0A0#{Warnings}"/>
 
-						<Widget type="EditBox" skin="EditBoxStretch" position="32 33 600 390" name="EdExport">
+						<Widget type="EditBox" skin="EditBoxStretch" position="32 12 600 430" name="EdExport">
 							<Property key="ReadOnly" value="true"/>
 							<Property key="MultiLine" value="true"/>
 							<Property key="WordWrap" value="true"/>
@@ -712,16 +713,23 @@
 							<UserString key="tip" value="#{TipTrackDescEditor}"/>
 						</Widget>
 
-						<Widget type="Button" skin="Button" position="32 440 200 32" name="BtnExport">
+						<Widget type="Button" skin="Button" position="32 448 200 32" name="BtnExport">
 							<Property key="Caption" value="#{Export}"/>
+							<Property key="Colour" value="0.5 0.7 1.0"/>
+							<Property key="TextColour" value="0.5 0.7 1.0"/>
+						</Widget>
+
+						<Widget type="Button" skin="Button" position="312 480 180 24" name="ConvertMat4RoR">
+							<Property key="Caption" value="Convert materials"/>
 							<Property key="TextColour" value="0.9 0.7 0.9"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="320 444 200 24" name="ExportOnLoad">
-							<Property key="Caption" value="#{ExportOnLoad}"/>
-							<Property key="TextColour" value="0.6 0.7 0.8"/>
+						<Widget type="Button" skin="Button" position="512 480 180 24" name="ConvertTerrain4RoR">
+							<Property key="Caption" value="Convert terrain textures"/>
+							<Property key="TextColour" value="0.9 0.7 0.9"/>
 						</Widget>
 					</Widget>
 
+					<!-- Settings -->
 					<Widget type="TabItem" skin="" position="2 24 794 562">
 						<Property key="Caption" value="#C0F0F0#{Settings}"/>
 						<Property key="Colour" value="1 0.9 0.4"/>
@@ -745,6 +753,12 @@
 							<Property key="MaxTextLength" value="320"/>
 							<Property key="TextColour" value="0.9 0.95 1.0"/>
 						</Widget>
+
+						<Widget type="Button" skin="CheckBox" position="32 150 200 24" name="ExportOnLoad">
+							<Property key="Caption" value="#{ExportOnLoad}"/>
+							<Property key="TextColour" value="0.6 0.7 0.8"/>
+						</Widget>
+
 					</Widget>
 
 				</Widget>

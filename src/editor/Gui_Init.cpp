@@ -603,7 +603,7 @@ void CGui::InitGui()
 
 	
 	///  ⚠ Warnings  ------------------------------------
-	edWarn = fEd("Warnings");
+	edWarnLog = fEd("Warnings");
 	txWarn = mGui->createWidget<TextBox>("TextBox", 300,20, 360,32, Align::Default, "Back");
 	txWarn->setTextShadow(true);  txWarn->setTextShadowColour(Colour::Black);
 	txWarn->setTextColour(Colour(1.0,0.4,0.2));  txWarn->setFontHeight(24);
@@ -616,13 +616,16 @@ void CGui::InitGui()
 	ck= &ckCheckLoad;	ck->Init("CheckLoad",	&pSet->check_load);
 
 
-	///  RoR export
-	edExport = fEd("EdExport");  Btn("BtnExport", btnExport);
+	///  RoR export  --------
+	edExportLog = fEd("EdExport");
+	Btn("BtnExport", btnExport);
 	ck= &ckCheckLoad;	ck->Init("ExportOnLoad",	&pSet->exportOnLoad);
 
 	Edt(edRoRPath, "EdPathRoR", editRoRPath);  edRoRPath->setCaption(pSet->pathExportRoR);
 	Edt(edOldSRPath, "EdPathOldSR", editOldSRPath);  edOldSRPath->setCaption(pSet->pathExportOldSR);
 
+	Btn("ConvertMat4RoR", btnConvertMat);
+	Btn("ConvertTerrain4RoR", btnConvertTerrain);
 	
 
 	///  📃 Fill Combo boxes  . . . . . . .

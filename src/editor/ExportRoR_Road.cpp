@@ -41,6 +41,8 @@ void ExportRoR::ExportRoad()
 	std::vector<string> chks;
 	const bool roadtxt = !scn->roads.empty();
 	const bool road = roadtxt && scn->roads[0]->getNumPoints() > 2;
+	const float fLenDim = cfg->roadStepDist;  // points density
+
 	hasRoad = 0;
 	if (road)
 	{	const auto& rd = scn->roads[0];
@@ -67,6 +69,7 @@ void ExportRoR::ExportRoad()
 				const int i0 = rd->getAdd(i,0), i1 = rd->getNext(i);
 				const auto& p = rd->getPoint(i0), p1 = rd->getPoint(i1);
 				bool bridge = !p.onTer || !p1.onTer;
+				if (p.idMtr < 0)  bridge = 0;  // hidden
 
 				if ( (i==0 || !begin) && bridge)
 				{	begin = 1;  ++iroads;
@@ -74,19 +77,17 @@ void ExportRoR::ExportRoad()
 					// gui->Exp(CGui::TXT, "Road begin");
 				}
 
-				//  length steps  |
-				Real len = rd->GetSegLen(i0);
-				const float fLenDim = cfg->roadStepDist;  // par ! quality, points density
-
 				// gui->Exp(CGui::TXT, "Road i0: "+toStr(i0)+"  ter: "+toStr(p.onTer?1:0) +"  l "+fToStr(len) );
 
 				//  add points on bridge  ----------
 				if (begin)
 				{
-					//  len steps
+					//  length steps  |
 					// const int il = 2;  // const LQ
+					Real len = rd->GetSegLen(i0);
 					const int il = 1 + (len / fLenDim);  // var, by dist
-					const int ila = il + (!bridge ? 1 : 0);  // will end, all len
+					// todo more with bigger angle changes?
+					const int ila = il + (!bridge ? 1 : 0);  // bridge will end, use all length points
 					// gui->Exp(CGui::TXT, "Road il: "+toStr(il) );
 					
 					for (int l = 0; l < ila; ++l)
@@ -96,7 +97,6 @@ void ExportRoR::ExportRoad()
 						Vector3 vP1 = rd->interpolate(i0, (fl+1.f) / il);
 						Vector3 dir = vP1 - vP;  // along length
 
-						// float width = p.width + 2.f;  //-
 						const float width = rd->interpWidth(i0, fl / il);
 
 						// if (p.onTer)  // ?
@@ -115,15 +115,10 @@ void ExportRoR::ExportRoad()
 						trd << width << ",   ";
 						
 						//  bridge
-						/*if (p.onTer)
-							trd << "0.5,  0.2,  flat\n";
-						else*/
-						/*if (p.cols)  // too much, bad
-							trd << "0.6,  1.0,  bridge\n";
-						else*/
-							// trd << "0.6,  1.0,  bridge_no_pillars\n";
-							trd << cfg->wallX << ",  " << (p.onTer ? 0.f : cfg->wallY) << 
-								(cfg->roadCols ? ",  bridge\n" : ",  bridge_no_pillars\n");
+						//if (p.onTer)  trd << "0.5,  0.2,  flat\n";  else
+						//  trd << "0.6,  1.0,  bridge\n";
+						trd << cfg->wallX << ",  " << (p.onTer ? 0.f : cfg->wallY) << 
+							(cfg->roadCols ? ",  bridge\n" : ",  bridge_no_pillars\n");
 				}	}
 
 	
