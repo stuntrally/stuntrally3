@@ -36,6 +36,8 @@ using namespace std;
 //------------------------------------------------------------------------------------------------------------------------
 void ExportRoR::ExportRoad()
 {
+	Ogre::Timer ti;
+
 	std::vector<string> chks;
 	const bool roadtxt = !scn->roads.empty();
 	const bool road = roadtxt && scn->roads[0]->getNumPoints() > 2;
@@ -106,7 +108,8 @@ void ExportRoR::ExportRoad()
 
 						//  write  ------
 						//  pos
-						trd << half - vP.z << ", " << vP.y - hmin << ", " << vP.x + half << ",   ";
+						// trd << half - vP.z << ", " << vP.y - hmin << ", " << vP.x + half << ",   ";
+						trd << strPos(vP) << "  ";
 						//  rot
 						trd << "0, " << yaw << ", 0,  ";  // todo  p.aRoll
 						trd << width << ",   ";
@@ -155,7 +158,7 @@ void ExportRoR::ExportRoad()
 				Vector3 dir = vP1 - vP;  // along length
 				float yaw = TerUtil::GetAngle(dir.x, dir.z) *180.f/PI_d - 45.f - 15.f;  // par ? 45
 				// pos 
-				string s = fToStr(half - vP.z) + ", " + fToStr(vP.y - hmin) + ", " + fToStr(vP.x + half) + ",   ";
+				string s = strPos(vP) + "  ";
 				// rot
 				s += "0.0,  " + fToStr(yaw) + ",  0.0";
 				chks.push_back(s);
@@ -235,4 +238,6 @@ void ExportRoR::ExportRoad()
 	as << "\n";
 
 	as.close();
+
+	gui->Exp(CGui::INFO, "Road Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s");
 }

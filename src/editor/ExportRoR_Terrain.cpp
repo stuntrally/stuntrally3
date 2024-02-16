@@ -1,27 +1,17 @@
 #include "pch.h"
 #include "ExportRoR.h"
-
-#include "enums.h"
 #include "Def_Str.h"
-#include "BaseApp.h"
 #include "settings.h"
 #include "paths.h"
 
-#include "CApp.h"
 #include "CGui.h"
 #include "CScene.h"
 #include "CData.h"
-#include "TracksXml.h"
 #include "PresetsXml.h"
-#include "Axes.h"
-#include "Road.h"
-#include "TracksXml.h"
 
 #include <Terra.h>
-#include <OgreString.h>
 #include <OgreImage2.h>
 #include <OgreVector3.h>
-#include <OgreException.h>
 
 #include <exception>
 #include <string>
@@ -38,7 +28,6 @@ using namespace std;
 void ExportRoR::ExportTerrain()  // whole, full
 {
 	Ogre::Timer ti;
-
 
 	//  ⛰️ Heightmap convert to .raw
 	//------------------------------------------------------------------------------------------------------------------------
@@ -136,20 +125,12 @@ void ExportRoR::ExportTerrain()  // whole, full
 		
 		String diff = d_d, norm = n_n;
 		string from, to;
-		try
 		{	//  copy _d _n
 			from = pathTer + diff;  to = path + diff;
-			if (!fs::exists(to.c_str()))
-				fs::copy_file(from.c_str(), to.c_str());
+			CopyFile(from, to);
 
 			from = pathTer + norm;  to = path + norm;
-			if (!fs::exists(to.c_str()))
-				fs::copy_file(from.c_str(), to.c_str());
-		}
-		catch (const fs::filesystem_error & ex)
-		{
-			String s = "Error: Copying file " + from + " to " + to + " failed ! \n" + ex.what();
-			gui->Exp(CGui::WARN, s);
+			CopyFile(from, to);
 		}
 
 		//  find _s  for specular
@@ -411,4 +392,5 @@ void ExportRoR::ExportTerrain()  // whole, full
 
 	otc.close();
 
+	gui->Exp(CGui::INFO, "Terrain Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s");
 }

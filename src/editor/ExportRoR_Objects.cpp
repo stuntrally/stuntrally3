@@ -12,12 +12,8 @@
 #include "CScene.h"
 #include "CData.h"
 #include "TracksXml.h"
-#include "PresetsXml.h"
 #include "Axes.h"
-#include "Road.h"
-#include "TracksXml.h"
 
-#include <Terra.h>
 #include <OgreString.h>
 #include <OgreImage2.h>
 #include <OgreVector3.h>
@@ -98,19 +94,13 @@ void ExportRoR::ExportObjects()
 			}
 			if (exists)
 			{
-				try
-				{	//  copy
-					to = path + mesh;
-					if (!fs::exists(to.c_str()))
-						fs::copy_file(from.c_str(), to.c_str());
+				//  copy
+				to = path + mesh;
+				CopyFile(from, to);
+				if (CopyFile(from, to))
 					++iObjMesh;
-				}
-				catch (const fs::filesystem_error & ex)
-				{
-					String s = "Error: Copying mesh " + from + " to " + to + " failed ! \n" + ex.what();
-					gui->Exp(CGui::WARN, s);
+				else
 					continue;
-				}
 
 				//  get mtr?  read .mat,  copy textures,  write .material ...
 			}

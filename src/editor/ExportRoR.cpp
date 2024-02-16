@@ -26,6 +26,7 @@
 #include <string>
 #include <map>
 #include <filesystem>
+#include <sstream>
 namespace fs = std::filesystem;
 using namespace Ogre;
 using namespace std;
@@ -45,6 +46,7 @@ void CGui::btnExport(WP)
 	app->ror->ExportTrack();
 }
 
+//  ctor
 ExportRoR::ExportRoR(App* app1)
 {
 	app = app1;
@@ -57,6 +59,30 @@ ExportRoR::ExportRoR(App* app1)
 
 	data = scn->data;
 	pre = data->pre;
+}
+
+//  util convert SR pos to RoR pos
+Ogre::String ExportRoR::strPos(Ogre::Vector3 pos)
+{
+	stringstream ss;
+	ss << half - pos.z << ", " << pos.y - hmin << ", " << pos.x + half << ", ";
+	return ss.str();
+}
+
+//  util copy file
+bool ExportRoR::CopyFile(std::string from, std::string to)
+{
+	try
+	{
+		if (!fs::exists(to.c_str()))
+			fs::copy_file(from.c_str(), to.c_str());
+		return true;
+	}
+	catch (exception ex)
+	{
+		String s = "Error copying file: " + from + "\n  to: " + to + "\n  " + ex.what();
+		gui->Exp(CGui::WARN, s);
+	}
 }
 
 
@@ -156,7 +182,7 @@ void ExportRoR::ExportTrack()  // whole, full
 	//  0, y, 0        = -470, y, 460
 	//  959, 340 y, 950 = 487, y, -472
 	Vector3 st = Axes::toOgre(sc->startPos[0]);
-	trn << "StartPosition = " << fToStr(half - st.z)+", "+fToStr(st.y - hmin)+", "+fToStr(st.x + half)+"\n";
+	trn << "StartPosition = " << strPos(st) + "\n";
 	trn << "\n";
 
 	trn << "CaelumConfigFile = " + name + ".os\n";

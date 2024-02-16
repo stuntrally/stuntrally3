@@ -1,27 +1,20 @@
 #include "pch.h"
 #include "ExportRoR.h"
-
-#include "enums.h"
 #include "Def_Str.h"
-#include "BaseApp.h"
-#include "settings.h"
 #include "paths.h"
 
 #include "CApp.h"
 #include "CGui.h"
 #include "CScene.h"
 #include "CData.h"
-#include "TracksXml.h"
 #include "PresetsXml.h"
 #include "Axes.h"
 #include "Road.h"
 #include "TracksXml.h"
 
 #include <Terra.h>
-#include <OgreString.h>
 #include <OgreImage2.h>
 #include <OgreVector3.h>
-#include <OgreException.h>
 
 #include <exception>
 #include <string>
@@ -128,18 +121,10 @@ void ExportRoR::ExportVeget()
 				//------------------------------------------------------------
 				String pathGrs = PATHS::Data() + "/grass/";
 				String grassPng = gr->material + ".png";  // same as mtr name
-				string from, to;
-				try
-				{	//  copy _d _n
-					from = pathGrs + grassPng;  to = path + grassPng;
-					if (!fs::exists(to.c_str()))
-						fs::copy_file(from.c_str(), to.c_str());
-				}
-				catch (const fs::filesystem_error & ex)
-				{
-					String s = "Error: Copying file " + from + " to " + to + " failed ! \n" + ex.what();
-					gui->Exp(CGui::WARN, s);
-				}				
+				 
+				//  copy _d _n
+				string from = pathGrs + grassPng, to = path + grassPng;
+				CopyFile(from, to);
 				
 				//  create .material for it
 				mat << "material " << gr->material << "\n";
@@ -281,21 +266,16 @@ void ExportRoR::ExportVeget()
 			//  copy mesh from old SR  ..or slow convert v2 to v1-
 			if (exists)
 			{
+			#if 1  // no, once for all tracks
+
 				if (once.find(mesh) == once.end())
 				{	once[mesh] = 1;
-					try
-					{	//  copy
-						to = path + mesh;
-						if (!fs::exists(to.c_str()))
-							fs::copy_file(from.c_str(), to.c_str());
+
+					to = path + mesh;
+					if (CopyFile(from, to))
 						++iVegetMesh;
-					}
-					catch (const fs::filesystem_error & ex)
-					{
-						String s = "Error: Copying mesh " + from + " to " + to + " failed ! \n" + ex.what();
-						gui->Exp(CGui::WARN, s);
-						continue;
-					}
+					else
+ 						continue;
 				}
 
 				//  get mesh mtr
@@ -323,7 +303,7 @@ void ExportRoR::ExportVeget()
 				}
 				//  todo  read .mat,  
 				//  copy textures,  write .material  ...
-
+			#endif
 
 				//  write  ------
 				if (l==0)

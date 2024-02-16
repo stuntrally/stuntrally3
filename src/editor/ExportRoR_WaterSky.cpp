@@ -1,24 +1,13 @@
 #include "pch.h"
 #include "ExportRoR.h"
-
-#include "enums.h"
 #include "Def_Str.h"
-#include "BaseApp.h"
-#include "settings.h"
-#include "paths.h"
+// #include "settings.h"
 
-#include "CApp.h"
 #include "CGui.h"
 #include "CScene.h"
-#include "CData.h"
-#include "TracksXml.h"
 #include "PresetsXml.h"
-#include "TracksXml.h"
 
-#include <OgreString.h>
 #include <OgreVector3.h>
-#include <OgreException.h>
-
 #include <string>
 using namespace Ogre;
 using namespace std;
@@ -112,7 +101,7 @@ void ExportRoR::ExportWaterSky()
 	os << "\n";
 
 	//  clouds  factor from presets.xml
-	auto* sky = scn->data->pre->GetSky(sc->skyMtr);
+	auto* sky = pre->GetSky(sc->skyMtr);
 	float cld = sky ? sky->clouds : 0.2f;
 	if (cld > 0.f)
 	{
