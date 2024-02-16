@@ -67,6 +67,7 @@ bool Scene::LoadXml(String file, bool bTer)
 	}
 
 	///  for RoR export only
+	auto& ror = rorCfg;
 	e = root->FirstChildElement("ror1");
 	if (e)
 	{	a = e->Attribute("aA");		if (a)  ror.lAmbAdd = s2v(a);

@@ -60,6 +60,7 @@ bool Scene::SaveXml(String file)
 
 
 	//  for RoR export only
+	auto& ror = rorCfg;
 	XMLElement* roe = xml.NewElement("ror1");
 		roe->SetAttribute("aA",		toStrC( ror.lAmbAdd ));
 		roe->SetAttribute("lA",		toStrC( ror.lAmb ));

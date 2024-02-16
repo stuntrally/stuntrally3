@@ -14,6 +14,7 @@
 #include "paths.h"
 #include "RenderConst.h"
 #include "TracksXml.h"
+#include "ExportRoR.h"
 
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
@@ -163,6 +164,9 @@ void App::createScene01()  // once, init
 	if (quit)
 		exit(0);  //! destroy?..
 
+	
+	ror = new ExportRoR(this);  //`
+
 
 	//  🏞️ Load Track
 	if (pSet->autostart)
@@ -185,6 +189,8 @@ void App::createScene01()  // once, init
 //----------------------------------------------------------------------------------
 void App::destroyScene()
 {
+	delete ror;
+
 	DestroyEdHud();
 	
 	DestroyRnd2Tex();
@@ -379,8 +385,9 @@ void App::LoadTrackEv()
 	LogO(String(":::> Time Load Track: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 	
 
-	if (pSet->exportOnLoad)  //!
-		ToolExportRoR();
+	//  export RoR
+	if (pSet->exportOnLoad && ror)  //!
+		ror->ExportTrack();
 }
 
 

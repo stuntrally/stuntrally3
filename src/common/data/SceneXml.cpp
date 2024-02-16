@@ -80,12 +80,12 @@ void Scene::Default()
 		r.fDamage = 0.f;
 	}
 
-	ror.Default();
+	rorCfg.Default();
 }
 
 
 //  RoR defaults  ------
-void Scene::RoRconfig::Default()
+void RoRconfig::Default()
 {
 	lAmbAdd = Vector3(0.1f,0.1f,0.1f);
 	lAmb = 1.6f;  lDiff = 1.6f;  lSpec = 0.9f;
@@ -98,7 +98,7 @@ void Scene::RoRconfig::Default()
 	roadCols = 0;
 
 	roadStepDist = 10.f;  // hq
-	roadHadd = -0.9f;  //+
+	roadHadd = -0.8f;  //+
 	tileMul = 1.2f;  // 1
 	wallX = 0.6f;  wallY = 1.0f;
 }

@@ -11,6 +11,25 @@ class GAME;  class ReverbsXml;  class FluidsXml;
 namespace tinyxml2 {  class XMLElement;  }
 
 
+//  RoR only  for export,  not needed in SR
+//------------------------
+struct RoRconfig
+{
+	Ogre::Vector3 lAmbAdd;  // 🌞
+	float lAmb, lDiff, lSpec;
+
+	int water;  // 🌊 -1 off  0 auto  1 custom
+	float yWaterOfs;  // or height for custom
+	float grassMul;  // 🌿
+
+	int roadTerTexLayer;  // 🛣️  ter layer num used as tex for road
+	bool roadCols;
+	float roadStepDist, roadHadd, tileMul, wallX, wallY;
+
+	void Default();
+};
+
+
 ///  Scene setup xml
 //  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 class Scene
@@ -111,23 +130,8 @@ public:
 	int secEdited;  // time in seconds of track editing
 
 
-	//  RoR only  for export,  not needed in SR
-	//------------------------
-	struct RoRconfig
-	{
-		Ogre::Vector3 lAmbAdd;  // 🌞
-		float lAmb, lDiff, lSpec;
-
-		int water;  // 🌊 -1 off  0 auto  1 custom
-		float yWaterOfs;  // or height for custom
-		float grassMul;  // 🌿
-
-		int roadTerTexLayer;  // 🛣️  ter layer num used as tex for road
-		bool roadCols;
-		float roadStepDist, roadHadd, tileMul, wallX, wallY;
-
-		void Default();
-	} ror;
+	//  RoR only for export
+	RoRconfig rorCfg;
 	
 
 	//  🌟 Main methods  ----

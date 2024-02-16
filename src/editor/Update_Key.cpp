@@ -9,6 +9,8 @@
 #include "CScene.h"
 #include "Road.h"
 #include "paths.h"
+#include "ExportRoR.h"
+
 // #include <OgreRenderTexture.h>
 #include <MyGUI.h>
 #include <SDL_events.h>
@@ -412,7 +414,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 		//  🖼️🎥 prv cam
 		case key(F7):
-			if (alt)  ToolExportRoR();
+			if (alt)  if (ror)  ror->ExportTrack();
 			else      togPrvCam();  break;
 
 

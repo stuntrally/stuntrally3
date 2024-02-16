@@ -27,7 +27,7 @@ const Ogre::Real crAngSnaps[ciAngSnapsNum] = {0,5,15,30,45,90,180};
 namespace Ogre  {  class Rectangle2D;  class SceneNode;  class RenderTexture;  class Item;
 	class Terra;  class HlmsPbsTerraShadows;  class CompositorWorkspace;  }
 class CScene;  class CGui;  class CGuiCom;
-class GraphicsSystem;  class HudRenderable;
+class GraphicsSystem;  class HudRenderable;  class ExportRoR;
 
 enum ED_OBJ {  EO_Move=0, EO_Rotate, EO_Scale  };
 
@@ -190,7 +190,8 @@ public:
 	void AlignTerToRoad(), AlignHorizonToTer();
 	int iSnap = 0;  Ogre::Real angSnap = 0.f;
 	int iEnd = 0;  // edit: 0 scn->start 1 end
-	void ToolExportRoR();
+	
+	ExportRoR* ror =0;
 
 
 	//  🚧 box cursors  car start,end,  fluids, objects, emitters
