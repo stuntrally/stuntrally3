@@ -286,7 +286,7 @@ void ExportRoR::ConvertMat()
 	gui->Exp(CGui::INFO, "Started Convert materials..");
 
 	string pathMat = pSet->pathExportOldSR + "/materials/scene/";
-	std::vector<string> mats{
+	std::vector<string> matFiles{
 		"objects_dynamic.mat", "objects_static2.mat", "objects_static.mat",
 		"rocks.mat",
 		"trees_ch.mat",	"trees.mat", "trees_old.mat"};
@@ -294,17 +294,22 @@ void ExportRoR::ConvertMat()
 
 	SetupPath();
 
-	// for (auto& mat : mats)  // all
-	auto& fmat = mats[2];  // one
+	// auto& fmat = mats[2];  // test one
+	for (auto& fmat : matFiles)  // all
 	{
-		string mtrFile = path + fmat + "erial";
+		// string mtrFile = path + fmat + "erial";
+		string mtrFile = pSet->pathExportRoR + "materials/" + fmat + "erial";
 		ofstream mat;
 		mat.open(mtrFile.c_str(), std::ios_base::out);
 
 		string matFile = pathMat + fmat;
 		ifstream fi(matFile.c_str());
 		bool first = 1;
-		string material, diffuse, normal, alpha;
+
+		//  mat params to get
+		string material, diffTex, normTex,
+			alphaReject, cull_hardware,
+			ambient, diffuse, specular;
 
 		gui->Exp(CGui::NOTE, String("\nread .mat: " + matFile));
 		gui->Exp(CGui::NOTE, String("save to: " + mtrFile));
@@ -313,8 +318,8 @@ void ExportRoR::ConvertMat()
 		//------------------------------------------------------------
 		auto Write = [&]()
 		{
-			bool al = !alpha.empty();
-			gui->Exp(CGui::TXT, material +"  diff: "+diffuse+"  norm: "+normal +"  "+ alpha  );
+			/**/gui->Exp(CGui::TXT, material +"  diff: "+diffTex+"  norm: "+normTex+
+				"  alpha: "+alphaReject+"  cull: "+cull_hardware );/**/
 
 			mat << "material " << material << "\n";
 			mat << "{\n";
@@ -322,19 +327,31 @@ void ExportRoR::ConvertMat()
 			mat << "	{\n";
 			mat << "		pass\n";
 			mat << "		{\n";
-			if (al)
-			{
-				mat << "			cull_hardware none\n";
-				mat << "			cull_software none\n";
-				mat << "			alpha_rejection greater 128\n";
+
+			if (!ambient.empty())
+				mat << "			ambient "<< ambient <<"\n";
+			if (!diffuse.empty())
+				mat << "			diffuse "<< diffuse <<"\n";
+			if (!specular.empty())
+				mat << "			specular "<< specular <<"\n";
+
+			if (!cull_hardware.empty())
+			{	mat << "			cull_hardware "<< cull_hardware <<"\n";
+				mat << "			cull_software "<< cull_hardware <<"\n";  //?
 			}
-			mat << "			texture_unit\n";
-			mat << "			{\n";
-			mat << "				texture	" << diffuse << "\n";
-			if (al)
-				mat << "				tex_address_mode clamp\n";
-			mat << "			}\n";
-			
+			bool alpha = !alphaReject.empty();
+			if (alpha)
+				mat << "			alpha_rejection "<< alphaReject << "\n";
+
+			if (!diffTex.empty())
+			{
+				mat << "			texture_unit\n";
+				mat << "			{\n";
+				mat << "				texture	" << diffTex << "\n";
+				if (alpha)
+					mat << "				tex_address_mode clamp\n";  // for grass, only?
+				mat << "			}\n";
+			}
 			mat << "		}\n";
 			mat << "	}\n";
 			mat << "}\n";
@@ -342,44 +359,56 @@ void ExportRoR::ConvertMat()
 		};
 
 		//  read .mat file
+		//  todo won't work for inherited materials ..?
 		//------------------------------------------------------------
 		string s;
 		while (getline(fi,s))
 		{
 			string w = "material";
-			auto it = s.find(w);  if (it != string::npos)
+			auto it = s.find(w);
+			if (it != string::npos)
 			{
 				if (!first)  // write mtr
 					Write();
 
-				//  set name  -----
+				//  set name and reset rest  -----
 				material = s.substr(it + w.length() + 1);
-				//  reset rest
-				diffuse.clear();  normal.clear();  alpha.clear();
+				material = StringUtil::replaceAll(material, "{	parent", ":");  // trees_ch
+
+				diffTex.clear();  normTex.clear();
+				alphaReject.clear();  cull_hardware.clear();
+				ambient.clear();  diffuse.clear();  specular.clear();
 
 				first = 0;
 			}
 
-			w = "diffuseMap";
-			it = s.find(w);  if (it != string::npos)
-			{
-				diffuse = s.substr(it + w.length() + 1);
-				// gui->Exp(CGui::TXT, material +" d:"+diffuse);
-			}
-			w = "normalMap";
-			it = s.find(w);  if (it != string::npos)
-			{
-				normal = s.substr(it + w.length() + 1);
-				// gui->Exp(CGui::TXT, material +" n:"+diffuse);
-			}
-			// todo:
-			//  ambient 1.0 1.0 1.05
-			//  diffuse 1.15 1.15 1.2
-			//  specular 0.6 0.6 0.7 32
+			//  textures
+			w = "diffuseMap";  it = s.find(w);  bool dtex = it != string::npos;
+			if (dtex){  diffTex = s.substr(it + w.length() + 1);  /* gui->Exp(CGui::TXT, material +" d:"+diffuse);*/  }
+			
+			w = "normalMap";  it = s.find(w);
+			if (it != string::npos)  normTex = s.substr(it + w.length() + 1);
+			
+			//  alpha
+			w = "alpha_rejection";  it = s.find(w);
+			if (it != string::npos)  alphaReject = s.substr(it + w.length() + 1);
 
-			// alpha_rejection greater 192
+			w = "cull_hardware";  it = s.find(w);
+			if (it != string::npos)  cull_hardware = s.substr(it + w.length() + 1);
+
+			//  colors
+			w = "ambient";  it = s.find(w);
+			if (it != string::npos)  ambient = s.substr(it + w.length() + 1);
+			if (!dtex)
+			{
+			w = "diffuse";  it = s.find(w);
+			if (it != string::npos)  diffuse = s.substr(it + w.length() + 1);
+			}
+			w = "specular";  it = s.find(w);
+			if (it != string::npos)  specular = s.substr(it + w.length() + 1);
+
+			// todo?
 			// tree_wind true
-			// cull_hardware none
 			// receives_shadows false
 			// transparent true
 		}
