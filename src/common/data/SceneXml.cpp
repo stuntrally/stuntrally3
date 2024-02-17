@@ -105,6 +105,8 @@ void RoRconfig::Default()
 	
 	tileMul = 1.2f;  // 1
 	wallX = 0.6f;  wallY = 1.0f;
+
+	yObjOfs = -2.0f;  // 📦🏢
 }
 
 

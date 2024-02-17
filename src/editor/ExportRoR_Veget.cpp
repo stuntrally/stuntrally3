@@ -239,8 +239,8 @@ void ExportRoR::ExportVeget()
 						#endif
 					}	}
 
-					float dens = vg.dens * sc->densTrees * cfg->treesMul;  // dens mul;
-					if (Math::UnitRandom() > 0.5f * dens)  // par !!
+					float dens = vg.dens * sc->densTrees * cfg->treesMul;  // dens mul
+					if (Math::UnitRandom() > dens)  // par
 						d = 0.f;  //  place tree with 1.f,  0.f none
 					
 					ColourValue cv(d,d,d);  // white

@@ -108,10 +108,11 @@ void ExportRoR::ExportObjects()
 		//  write  ------
 		if (exists)
 		{
-			obj << fToStr(half - p.z)+", "+fToStr(p.y - hmin)+", "+fToStr(p.x + half)+", ";
+			p.y += sc->rorCfg.yObjOfs;
+			obj << strPos(p) << " ";
 			// todo  fix all rot ?
 			// obj << fToStr(q.getPitch().valueDegrees()+90.f,0,3)+", "+fToStr(q.getYaw().valueDegrees(),0,3)+", "+fToStr(q.getRoll().valueDegrees(),0,3)+", ";
-			obj << "90, 0, "+fToStr(q.getYaw().valueDegrees() + 180.f, 1,4)+", ";  // fix?
+			obj << "90, 0, "+fToStr(q.getYaw().valueDegrees() + 180.f, 1,4)+",  ";  // fix?
 			// todo  no scale ??
 			obj << o.name +"\n";
 		}

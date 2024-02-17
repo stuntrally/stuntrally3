@@ -77,7 +77,9 @@ bool Scene::LoadXml(String file, bool bTer)
 
 		a = e->Attribute("wtr");	if (a)  ror.water = s2i(a);
 		a = e->Attribute("yW");		if (a)  ror.yWaterOfs = s2r(a);
-		a = e->Attribute("grs");	if (a)  ror.grassMul = s2r(a);
+
+		a = e->Attribute("tr");		if (a)  ror.treesMul = s2r(a);
+		a = e->Attribute("gr");		if (a)  ror.grassMul = s2r(a);
 	}
 	e = root->FirstChildElement("ror2");
 	if (e)
@@ -89,6 +91,8 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("sc");		if (a)  ror.tileMul = s2r(a);
 		a = e->Attribute("wx");		if (a)  ror.wallX = s2r(a);
 		a = e->Attribute("wy");		if (a)  ror.wallY = s2r(a);
+
+		a = e->Attribute("oy");		if (a)  ror.yObjOfs = s2r(a);
 	}
 
 	///  🔉 sound

@@ -69,7 +69,9 @@ bool Scene::SaveXml(String file)
 
 		roe->SetAttribute("wtr",	toStrC( ror.water ));
 		roe->SetAttribute("yW",		toStrC( ror.yWaterOfs ));
-		roe->SetAttribute("grs",	toStrC( ror.grassMul ));
+
+		roe->SetAttribute("tr",		toStrC( ror.treesMul ));
+		roe->SetAttribute("gr",		toStrC( ror.grassMul ));
 	root->InsertEndChild(roe);
 
 	XMLElement* rod = xml.NewElement("ror2");
@@ -81,6 +83,8 @@ bool Scene::SaveXml(String file)
 		rod->SetAttribute("sc",		toStrC( ror.tileMul ));
 		rod->SetAttribute("wx",		toStrC( ror.wallX ));
 		rod->SetAttribute("wy",		toStrC( ror.wallY ));
+
+		rod->SetAttribute("oy",		toStrC( ror.yObjOfs ));
 	root->InsertEndChild(rod);
 
 
