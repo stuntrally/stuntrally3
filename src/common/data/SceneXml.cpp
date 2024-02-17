@@ -93,7 +93,7 @@ void RoRconfig::Default()
 	water = 0;  // 🌊  auto
 	yWaterOfs = -0.8f;  // easier drive through
 
-	treesMul = 0.5f;   // 🌳🪨  veget
+	treesMul = 1.f;   // 🌳🪨  veget
 	grassMul = 4.f;
 
 	//  road
@@ -101,12 +101,12 @@ void RoRconfig::Default()
 	roadCols = 0;
 
 	roadStepDist = 10.f;  // hq
-	roadHadd = -0.8f;  //+
+	roadHadd = -0.7f;  //+
 	
-	tileMul = 1.2f;  // 1
+	tileMul = 0.6f;  // 1
 	wallX = 0.6f;  wallY = 1.0f;
 
-	yObjOfs = -2.0f;  // 📦🏢
+	yObjOfs = 0.0f;  // 📦🏢
 }
 
 

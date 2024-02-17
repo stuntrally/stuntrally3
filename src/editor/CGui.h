@@ -426,8 +426,9 @@ public:
 	//  RoR track setup
 	SV svRoR_Amb, svRoR_Diff, svRoR_Spec;
 	SV svRoR_Water, svRoR_WaterOfs, svRoR_Trees, svRoR_Grass;
-	SV svRoR_RoadLay, svRoR_RoadStep, svRoR_RoadHadd; //, tileMul, wallX, wallY;
-	Ck ckRoR_RoadCols;
+	SV svRoR_RoadLay, svRoR_RoadStep, svRoR_RoadHadd;
+	Ck ckRoR_RoadCols;  SV svRoR_WallX, svRoR_WallY;
+	SV svRoR_TileMul, svRoR_ObjOfsY;
 
 
 	//  👆 Pick  --------------------

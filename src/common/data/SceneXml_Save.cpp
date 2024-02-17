@@ -80,10 +80,10 @@ bool Scene::SaveXml(String file)
 
 		rod->SetAttribute("d",		toStrC( ror.roadStepDist ));
 		rod->SetAttribute("h",		toStrC( ror.roadHadd ));
-		rod->SetAttribute("sc",		toStrC( ror.tileMul ));
 		rod->SetAttribute("wx",		toStrC( ror.wallX ));
 		rod->SetAttribute("wy",		toStrC( ror.wallY ));
 
+		rod->SetAttribute("sc",		toStrC( ror.tileMul ));
 		rod->SetAttribute("oy",		toStrC( ror.yObjOfs ));
 	root->InsertEndChild(rod);
 
