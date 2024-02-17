@@ -117,7 +117,9 @@ void ExportRoR::ExportRoad()
 						//  bridge
 						//if (p.onTer)  trd << "0.5,  0.2,  flat\n";  else
 						//  trd << "0.6,  1.0,  bridge\n";
-						trd << cfg->wallX << ",  " << (p.onTer ? 0.f : cfg->wallY) << 
+						// bool low = p.onTer;
+						bool low = p.onTer && (l == 0 || l == ila-1);
+						trd << cfg->wallX << ",  " << (low ? 0.f : cfg->wallY) << 
 							(cfg->roadCols ? ",  bridge\n" : ",  bridge_no_pillars\n");
 				}	}
 
@@ -138,7 +140,7 @@ void ExportRoR::ExportRoad()
 				bridge, bridge_no_pillars
 			*/
 			trd.close();
-			gui->Exp(CGui::TXT, "Roads: "+toStr(iroads));
+			gui->Exp(CGui::NOTE, "Roads: "+toStr(iroads));
 		}
 
 		//  get checkpoints
@@ -162,77 +164,78 @@ void ExportRoR::ExportRoad()
 
 	//  Road script  checks
 	//------------------------------------------------------------
-	string asFile = path + name + ".as";
-	ofstream as;
-	as.open(asFile.c_str(), std::ios_base::out);
-
-	as << "#include \"base.as\"\n";
-	as << "#include \"races.as\"\n";
-	as << "\n";
-	as << "racesManager races();\n";
-	as << "\n";
-	as << "void createRaces()\n";
-	as << "{\n";
-	as << "	//races.showCheckPointInfoWhenNotInRace = true;\n";
-	as << "\n";
-	as << "	races.setCallback(\"RaceFinish\", on_raceFinish);\n";
-	as << "	\n";
-	as << "	double[][] race_autocross = \n";
-	as << "		{\n";
-#if 1
-	int i = 0, n = chks.size();
-	for (auto ch : chks)
+	const int nchk = chks.size();
+	gui->Exp(CGui::NOTE, "Road checks: " + toStr(nchk));
+	if (nchk > 1)
 	{
-		bool last = i == n-1;  // no ,
-		as << "			{ " << ch << (last ? " }\n" : " },\n");
-		++i;
-	}
-#else
-	as << "			{916.0,     9.0,   454.0,     0.0,     0,  0.0},\n";
-	as << "			{871.0,     9.0,   475.0,     0.0,   180,  0.0},\n";
-	as << "			{897.0,     9.0,   524.0,     0.0,  -120,  0.0}\n";
-#endif
-	as << "		};\n";
-	as << "	int raceID = races.addRace(\"Autocross\", race_autocross, races.LAPS_Unlimited, \"31-checkpoint\", \"31-checkpoint\", \"31-checkpoint\", \"CryHam-1.0\");\n";
-	as << "	\n";
-	as << "	races.setVersion(raceID, \"CryHam-1.0\");\n";
-	as << "	races.finalize(raceID);\n";
-	as << "}\n";
-	as << "\n";
-	as << "void main()\n";
-	as << "{\n";
-	as << "	createRaces();\n";
-	as << "	//races.submitScore(false);\n";
-	as << "}\n";
-	as << "\n";
-	as << "void eventCallback(int eventnum, int value)\n";
-	as << "{\n";
-	as << "	// required for the races!\n";
-	as << "	races.eventCallback(eventnum, value);\n";
-	as << "}\n";
-	as << "\n";
-	as << "//  finishing a race\n";
-	as << "void on_raceFinish(dictionary@ info)\n";
-	as << "{\n";
-	as << "    int raceID;\n";
-	as << "    info.get(\"raceID\", raceID);\n";
-	as << "    \n";
-	as << "    float lapTime = game.getTime() - races.lapStartTime;\n";
-	as << "    float raceTime = game.getTime() - races.raceStartTime;\n";
-	as << "    \n";
-	as << "    // Race specific stuff\n";
-	as << "    if(raceID == races.getRaceIDbyName(\"Autocross\"))\n";
-	as << "    {\n";
-	as << "        // Calculate the average speeds (0.25 mile = 0.40... kilometers)\n";
-	as << "        float averageSpeed_mph = 0.25 / lapTime * 3600;\n";  // todo road length * 0.6
-	as << "        float averageSpeed_kph = 0.402336 / lapTime * 3600;\n";
-	as << "        \n";
-	as << "        game.message(\"Average speed: \" + averageSpeed_mph + \" mph (\" + averageSpeed_kph + \" km/h).\", \"chart_bar.png\", 30000, true);\n";
-	as << "    }\n";
-	as << "}  \n";
-	as << "\n";
+		string asFile = path + name + ".as";
+		ofstream as;
+		as.open(asFile.c_str(), std::ios_base::out);
 
-	as.close();
+		as << "#include \"base.as\"\n";
+		as << "#include \"races.as\"\n";
+		as << "\n";
+		as << "racesManager races();\n";
+		as << "\n";
+		as << "void createRaces()\n";
+		as << "{\n";
+		as << "	//races.showCheckPointInfoWhenNotInRace = true;\n";
+		as << "\n";
+		as << "	races.setCallback(\"RaceFinish\", on_raceFinish);\n";
+		as << "	\n";
+		as << "	double[][] race_autocross = \n";
+		as << "		{\n";
+	#if 1
+		int i = 0;
+		for (auto ch : chks)
+		{
+			bool last = i == nchk-1;  // no ,
+			as << "			{ " << ch << (last ? " }\n" : " },\n");
+			++i;
+		}
+	#endif
+		as << "		};\n";
+		as << "	int raceID = races.addRace(\"Autocross\", race_autocross, races.LAPS_Unlimited, \"31-checkpoint\", \"31-checkpoint\", \"31-checkpoint\", \"CryHam-1.0\");\n";
+		as << "	\n";
+		as << "	races.setVersion(raceID, \"CryHam-1.0\");\n";
+		as << "	races.finalize(raceID);\n";
+		as << "}\n";
+		as << "\n";
+		as << "void main()\n";
+		as << "{\n";
+		as << "	createRaces();\n";
+		as << "	//races.submitScore(false);\n";
+		as << "}\n";
+		as << "\n";
+		as << "void eventCallback(int eventnum, int value)\n";
+		as << "{\n";
+		as << "	// required for the races!\n";
+		as << "	races.eventCallback(eventnum, value);\n";
+		as << "}\n";
+		as << "\n";
+		as << "//  finishing a race\n";
+		as << "void on_raceFinish(dictionary@ info)\n";
+		as << "{\n";
+		as << "    int raceID;\n";
+		as << "    info.get(\"raceID\", raceID);\n";
+		as << "    \n";
+		as << "    float lapTime = game.getTime() - races.lapStartTime;\n";
+		as << "    float raceTime = game.getTime() - races.raceStartTime;\n";
+		as << "    \n";
+		as << "    // Race specific stuff\n";
+		as << "    if(raceID == races.getRaceIDbyName(\"Autocross\"))\n";
+		as << "    {\n";
+		as << "        // Calculate the average speeds (0.25 mile = 0.40... kilometers)\n";
+		as << "        float averageSpeed_mph = 0.25 / lapTime * 3600;\n";  // todo road length * 0.6
+		as << "        float averageSpeed_kph = 0.402336 / lapTime * 3600;\n";
+		as << "        \n";
+		as << "        game.message(\"Average speed: \" + averageSpeed_mph + \" mph (\" + averageSpeed_kph + \" km/h).\", \"chart_bar.png\", 30000, true);\n";
+		as << "    }\n";
+		as << "}  \n";
+		as << "\n";
+
+		as.close();
+	}
 
 	gui->Exp(CGui::INFO, "Road Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s\n");
 }

@@ -101,9 +101,9 @@ void ExportRoR::ExportTerrain()  // whole, full
 	//------------------------------------------------------------------------------------------------------------------------
 	gui->Exp(CGui::NOTE, "Terrain layers  " + toStr(td.layers.size()));
 
-	string layTexDS[4], layTexNH[4];  // new filenames for ds,nh
+	string layTexDS[4], layTexNH[4];  // new filenames for ds, nh
 
-	//  copy layer textures
+	//  layer textures  copy & convert
 	const int layers = std::min(4, (int)td.layers.size());
 	for (int i=0; i < layers; ++i)
 	{
@@ -113,8 +113,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 		layTexDS[i] = StringUtil::replaceAll(l.texFile,"_d.jpg","_ds."+ext);
 		layTexNH[i] = StringUtil::replaceAll(l.texNorm,"_n.jpg","_nh."+ext);
 
-		//#if 0  // NO, once for all ?  is black-
-		if (1)
+		if (copyTerTex)
 		{
 			//  diffuse _d, normal _n, specular _s
 			String pathTer = PATHS::Data() + "/terrain/";
@@ -124,7 +123,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 			n_n = l.texNorm;  // _n
 			n_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");  // _s
 			
-			gui->Exp(CGui::TXT, "layer " + toStr(i+1) + " diff, norm:  " + d_d + "  " + n_n);
+			gui->Exp(CGui::DBG, "layer " + toStr(i+1) + " diff, norm:  " + d_d + "  " + n_n);
 			
 			String diff = d_d, norm = n_n;
 			string from, to;
@@ -143,7 +142,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 			{	spec = n_s;
 				if (!PATHS::FileExists(pathTer + spec))
 				{	spec = d_d;
-					gui->Exp(CGui::TXT, "layer " + toStr(i+1) + " spec:  " + spec + "  " + fToStr(l.tiling));
+					gui->Exp(CGui::DBG, "layer " + toStr(i+1) + " spec:  " + spec + "  " + fToStr(l.tiling));
 			}	}
 
 			//  combine RGB+A  diff + spec
@@ -189,8 +188,8 @@ void ExportRoR::ExportTerrain()  // whole, full
 				for (int x = 0; x < xn; ++x)
 				{
 					ColourValue c = tbN.getColourAt(x, y, 0, pfN);
-					// const float a = 0.f;
-					const float a = max(0.f, 1.f - c.r - c.g);  // par side ?..
+					// const float a = 0.f;  // off
+					const float a = max(0.f, 1.f - c.r - c.g);  // par  side ?..
 					ColourValue nh(c.r, c.g, c.b, a);
 					tbNH.setColourAt(nh, x, y, 0, pfA);
 				}
@@ -200,8 +199,10 @@ void ExportRoR::ExportTerrain()  // whole, full
 			{
 				gui->Exp(CGui::WARN, string("Exception in combine NH: ") + ex.what());
 			}
-		}
-	}
+
+		} // copyTerTex
+	} // layers
+
 
 	//  🏔️ Blendmap  save as .png
 	//------------------------------------------------------------
@@ -355,17 +356,17 @@ void ExportRoR::ExportTerrain()  // whole, full
 	otc << "maxBatchSize=65\n";
 	otc << "\n";
 	otc << "# Whether to support a light map over the terrain in the shader, if it's present (default true).\n";
-	otc << "LightmapEnabled=0\n";  // nope?
+	otc << "LightmapEnabled=0\n";  // no ?  no change-
 	otc << "\n";
 	otc << "# Whether to support normal mapping per layer in the shader (default true). \n";
 	otc << "NormalMappingEnabled=1\n";  // yes
 	otc << "\n";
 	otc << "# Whether to support specular mapping per layer in the shader (default true). \n";
-	otc << "SpecularMappingEnabled=0\n";  // idk DS
+	otc << "SpecularMappingEnabled=0\n";  // idk DS,  no change-
 	otc << "\n";
 
 	otc << "# Whether to support parallax mapping per layer in the shader (default true). \n";
-	otc << "ParallaxMappingEnabled=0\n";  // no meh,  no real H just guessed
+	otc << "ParallaxMappingEnabled=0\n";  // no  bad, and no real H just guessed
 	otc << "\n";
 	otc << "# Whether to support a global colour map over the terrain in the shader, if it's present (default true). \n";
 	otc << "GlobalColourMapEnabled=0\n";  // no

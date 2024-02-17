@@ -407,13 +407,14 @@ public:
 	int cntWarn = 0;  // count
 	bool logWarn =0;  // only log warnings (tool)
 
-	enum eWarn {  FATAL, ERR, WARN, INFO, NOTE, TXT, WARN_ALL  };
+	enum eWarn {  FATAL, ERR, WARN, INFO, NOTE, TXT, DBG, WARN_ALL  };
 	void Warn(eWarn type, Ogre::String text);
 
 	int iLoadNext = 0;
 	Ck ckCheckSave, ckCheckLoad;
 
-	//  RoR export
+
+	//  RoR export  --------------------
 	void btnExport(WP);
 	void btnConvertMat(WP), btnConvertTerrain(WP), btnCreateOdef(WP);
 
@@ -421,6 +422,9 @@ public:
 	Ed edExportLog =0, edRoRPath =0;  void editRoRPath(Ed);
 	Ed edOldSRPath =0;  void editOldSRPath(Ed);
 	void Exp(eWarn type, Ogre::String text);
+	
+	//  RoR track setup
+	SV svRoR_Water, svRoR_WaterOfs;
 
 
 	//  👆 Pick  --------------------

@@ -55,59 +55,58 @@ void ExportRoR::ExportObjects()
 		// todo  no scale ??
 		obj << o.name +"\n";
 		
-	// #define COPY_OBJS 1  // NO, once for all tracks
-	#ifdef COPY_OBJS
-
-		//  object  save  .odef
-		//------------------------------------------------------------
-		const string mesh = o.name + ".mesh";
-		string odefFile = path + o.name + ".odef";
-		// if (!fs::exists(odefFile))
-		if (once.find(o.name) == once.end())
+		if (copyObjs)
 		{
-			once[o.name] = 1;
-			ofstream odef;
-			odef.open(odefFile.c_str(), std::ios_base::out);
-			
-			odef << mesh + "\n";
-			odef << "1, 1, 1\n";
-			odef << "\n";
-			odef << "beginmesh\n";
-			odef << "mesh " + o.name + ".mesh\n";
-			odef << "stdfriction concrete\n";
-			odef << "endmesh\n";
-			odef << "\n";
-			odef << "end\n";
-			
-			odef.close();  ++iodef;
-
-
+			//  object  save  .odef
 			//------------------------------------------------------------
-			//  Find mesh  in old SR dirs
-			//------------------------------------------------------------
-			bool exists = 0;
-			string from, to;
-			for (auto& d : dirs)
+			const string mesh = o.name + ".mesh";
+			string odefFile = path + o.name + ".odef";
+			// if (!fs::exists(odefFile))
+			if (once.find(o.name) == once.end())
 			{
-				string file = pSet->pathExportOldSR + d +"/"+ mesh;
-				if (PATHS::FileExists(file))
-				{	exists = 1;  from = file;  }
-				// gui->Exp(CGui::INFO, String("obj: ")+file+ "  ex: "+(exists?"y":"n"));
-			}
-			if (exists)
-			{
-				//  copy
-				to = path + mesh;
-				CopyFile(from, to);
-				if (CopyFile(from, to))
-					++iObjMesh;
-				else
-					continue;
+				once[o.name] = 1;
+				ofstream odef;
+				odef.open(odefFile.c_str(), std::ios_base::out);
+				
+				odef << mesh + "\n";
+				odef << "1, 1, 1\n";
+				odef << "\n";
+				odef << "beginmesh\n";
+				odef << "mesh " + o.name + ".mesh\n";
+				odef << "stdfriction concrete\n";
+				odef << "endmesh\n";
+				odef << "\n";
+				odef << "end\n";
+				
+				odef.close();  ++iodef;
 
-				//  get mtr?  read .mat,  copy textures,  write .material ...
+
+				//------------------------------------------------------------
+				//  Find mesh  in old SR dirs
+				//------------------------------------------------------------
+				bool exists = 0;
+				string from, to;
+				for (auto& d : dirs)
+				{
+					string file = pSet->pathExportOldSR + d +"/"+ mesh;
+					if (PATHS::FileExists(file))
+					{	exists = 1;  from = file;  }
+					// gui->Exp(CGui::INFO, String("obj: ")+file+ "  ex: "+(exists?"y":"n"));
+				}
+				if (exists)
+				{
+					//  copy
+					to = path + mesh;
+					CopyFile(from, to);
+					if (CopyFile(from, to))
+						++iObjMesh;
+					else
+						continue;
+
+					//  get mtr?  read .mat,  copy textures,  write .material ...
+				}
 			}
 		}
-	#endif
 	}
 	obj.close();
 
