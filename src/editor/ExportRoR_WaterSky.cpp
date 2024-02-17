@@ -69,7 +69,7 @@ void ExportRoR::ExportWaterSky()
 	os << "	manage_ambient_light true\n";
 	os << "	minimum_ambient_light 0.05 0.05 0.1\n";
 	os << "\n";
-	os << "	manage_scene_fog yes\n";  // todo..
+	// os << "	manage_scene_fog yes\n";  // todo..  unrecognized
 	os << "	ground_fog_density_multiplier 0.015\n";  // cg! no diff-
 	os << "	scene_fog_density_multiplier 0.015\n";
 	os << "\n";

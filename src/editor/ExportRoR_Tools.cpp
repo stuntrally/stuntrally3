@@ -107,8 +107,9 @@ void ExportRoR::ConvertTerrainTex()
 			for (int x = 0; x < xx; ++x)
 			{
 				ColourValue rgb = tbD.getColourAt(x, y, 0, pfD);
-				ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.5f;  // par spec mul ..
-				ColourValue ds(rgb.r, rgb.g, rgb.b, a.r);
+				// ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.1f;  // par spec mul-
+				// ColourValue ds(rgb.r, rgb.g, rgb.b, a.r);
+				ColourValue ds(rgb.r, rgb.g, rgb.b, 0.f);  //! have to 0.f, white spots bug-
 				tbDS.setColourAt(ds, x, y, 0, pfA);
 			}
 			imDS.save(pathTo + layTexDS, 0, 0);
@@ -134,8 +135,8 @@ void ExportRoR::ConvertTerrainTex()
 			for (int x = 0; x < xn; ++x)
 			{
 				ColourValue c = tbN.getColourAt(x, y, 0, pfN);
-				// const float a = 0.f;
-				const float a = max(0.f, 1.f - c.r - c.g);  // par side ?..
+				// const float a = 0.f;  // off
+				const float a = max(0.f, 1.f - 0.2f * (c.r + c.g));  // par  side ?..
 				ColourValue nh(c.r, c.g, c.b, a);
 				tbNH.setColourAt(nh, x, y, 0, pfA);
 			}
@@ -229,6 +230,11 @@ void ExportRoR::ConvertMat()
 	gui->Exp(CGui::INFO, "Started Convert materials..");
 
 	// SetupPath();
+	string pathTo = pSet->pathExportRoR + "materials/";
+	if (!PATHS::CreateDir(pathTo))
+	{	gui->Exp(CGui::ERR, "Can't create dir: "+pathTo);
+		return;
+	}
 
 	string pathMat = pSet->pathExportOldSR + "/materials/scene/";
 	std::vector<string> matFiles{
@@ -242,7 +248,7 @@ void ExportRoR::ConvertMat()
 	for (auto& fmat : matFiles)  // all
 	{
 		// string mtrFile = path + fmat + "erial";
-		string mtrFile = pSet->pathExportRoR + "materials/" + fmat + "erial";
+		string mtrFile = pathTo + fmat + "erial";
 		ofstream mat;
 		mat.open(mtrFile.c_str(), std::ios_base::out);
 
@@ -256,7 +262,7 @@ void ExportRoR::ConvertMat()
 			ambient, diffuse, specular;
 
 		gui->Exp(CGui::NOTE, String("\nread .mat: " + matFile));
-		gui->Exp(CGui::NOTE, String("save to: " + mtrFile));
+		gui->Exp(CGui::NOTE, String("     save to: " + mtrFile));
 		
 		//  material in .material
 		//------------------------------------------------------------
@@ -311,9 +317,11 @@ void ExportRoR::ConvertMat()
 		string s;
 		while (getline(fi,s))
 		{
+			auto found = [](auto& it) -> bool {  return it != string::npos;  };
+			
 			string w = "material";
-			auto it = s.find(w);
-			if (it != string::npos)
+			auto it = s.find(w), cmt = s.find("//");
+			if (found(it) && (!found(cmt) || cmt > it))  // ignore //material
 			{
 				if (!first)  // write mtr
 					Write();
@@ -326,8 +334,12 @@ void ExportRoR::ConvertMat()
 					material.find("grass") != string::npos && !first)
 					material += " : grass";
 
-				material = StringUtil::replaceAll(material, "{  parent", ":");  // grass
-				material = StringUtil::replaceAll(material, "{	parent", ":");  // trees_ch
+				//  cleanup
+				material = StringUtil::replaceAll(material, "parent", ":");  // grass, trees_ch
+				material = StringUtil::replaceAll(material, "{", "");
+				StringUtil::trim(material);
+				// material = StringUtil::replaceAll(material, " ", "");
+				// material = StringUtil::replaceAll(material, "\t", "");  // todo rem // name  ? 
 
 				diffTex.clear();  normTex.clear();
 				alphaReject.clear();  cull_hardware.clear();
@@ -337,29 +349,42 @@ void ExportRoR::ConvertMat()
 			}
 
 			//  textures
-			w = "diffuseMap";  it = s.find(w);  bool dtex = it != string::npos;
-			if (dtex){  diffTex = s.substr(it + w.length() + 1);  /* gui->Exp(CGui::TXT, material +" d:"+diffuse);*/  }
-			
+			w = "diffuseMap";  it = s.find(w);  bool dtex = found(it);
+			cmt = s.find("//");
+			if (dtex && (!found(cmt) || cmt > it))  // ignore //diffTex
+			{
+				//diffTex = s.substr(it + w.length() + 1);  // no-
+				diffTex = s;  //  cleanup
+				diffTex = StringUtil::replaceAll(diffTex, w, "");  // trees_ch
+				diffTex = StringUtil::replaceAll(diffTex, "}", "");
+				StringUtil::trim(diffTex);
+				// diffTex = StringUtil::replaceAll(diffTex, " ", "");
+				// diffTex = StringUtil::replaceAll(diffTex, "\t", "");
+				
+				// w = "}";  it = s.find(w);  //  clean same line },  todo after .png .jpg?
+				// if (found(it))  diffTex = s.substr(0, it);
+				gui->Exp(CGui::TXT, material +"  diff: "+ diffTex);
+			}		
 			w = "normalMap";  it = s.find(w);
-			if (it != string::npos)  normTex = s.substr(it + w.length() + 1);
+			if (found(it))  normTex = s.substr(it + w.length() + 1);
 			
 			//  alpha
 			w = "alpha_rejection";  it = s.find(w);
-			if (it != string::npos)  alphaReject = s.substr(it + w.length() + 1);
+			if (found(it))  alphaReject = s.substr(it + w.length() + 1);
 
 			w = "cull_hardware";  it = s.find(w);
-			if (it != string::npos)  cull_hardware = s.substr(it + w.length() + 1);
+			if (found(it))  cull_hardware = s.substr(it + w.length() + 1);
 
 			//  colors
 			w = "ambient";  it = s.find(w);
-			if (it != string::npos)  ambient = s.substr(it + w.length() + 1);
+			if (found(it))  ambient = s.substr(it + w.length() + 1);
 			if (!dtex)
 			{
 			w = "diffuse";  it = s.find(w);
-			if (it != string::npos)  diffuse = s.substr(it + w.length() + 1);
+			if (found(it))  diffuse = s.substr(it + w.length() + 1);
 			}
 			w = "specular";  it = s.find(w);
-			if (it != string::npos)  specular = s.substr(it + w.length() + 1);
+			if (found(it))  specular = s.substr(it + w.length() + 1);
 
 			// todo?
 			// tree_wind true

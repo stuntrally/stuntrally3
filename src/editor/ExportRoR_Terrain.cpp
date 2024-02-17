@@ -163,7 +163,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 					ColourValue rgb = tbD.getColourAt(x, y, 0, pfD);
 					// ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.1f;  // par spec mul-
 					// ColourValue ds(rgb.r, rgb.g, rgb.b, a.r);
-					ColourValue ds(rgb.r, rgb.g, rgb.b, 0.f);  // 0 have to, white spots bug
+					ColourValue ds(rgb.r, rgb.g, rgb.b, 0.f);  //! have to 0.f, white spots bug-
 					tbDS.setColourAt(ds, x, y, 0, pfA);
 				}
 				imDS.save(path + layTexDS[i], 0, 0);
@@ -189,7 +189,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 				{
 					ColourValue c = tbN.getColourAt(x, y, 0, pfN);
 					// const float a = 0.f;  // off
-					const float a = max(0.f, 1.f - c.r - c.g);  // par  side ?..
+					const float a = max(0.f, 1.f - 0.2f * (c.r + c.g));  // par  side ?..
 					ColourValue nh(c.r, c.g, c.b, a);
 					tbNH.setColourAt(nh, x, y, 0, pfA);
 				}
@@ -366,7 +366,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 	otc << "\n";
 
 	otc << "# Whether to support parallax mapping per layer in the shader (default true). \n";
-	otc << "ParallaxMappingEnabled=0\n";  // no  bad, and no real H just guessed
+	otc << "ParallaxMappingEnabled=0\n";  // maybe, but no real H just computed
 	otc << "\n";
 	otc << "# Whether to support a global colour map over the terrain in the shader, if it's present (default true). \n";
 	otc << "GlobalColourMapEnabled=0\n";  // no
