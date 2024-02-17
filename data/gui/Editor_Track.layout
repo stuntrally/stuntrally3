@@ -584,6 +584,7 @@
 
 			</Widget>
 
+			<!-- Game -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#C090B0#{Game}"/>
 				<Widget type="TextBox" skin="TextBox" position="32 60 268 24">
@@ -659,7 +660,7 @@
 					<Property key="Alpha" value="0.6"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
 				</Widget>
-				<Widget type="EditBox" skin="EditBoxStretch" position="32 12 600 450" name="Warnings">
+				<Widget type="EditBox" skin="EditBoxStretch" position="32 12 600 450" name="WarningsLog">
 					<Property key="ReadOnly" value="true"/>
 					<Property key="MultiLine" value="true"/>
 					<Property key="WordWrap" value="true"/>
@@ -698,9 +699,9 @@
 					<Property key="SmoothShow" value="false"/>
 					<Property key="Colour" value="0.7 0.9 1"/>
 					<Widget type="TabItem" skin="" position="2 24 794 562">
-						<Property key="Caption" value="#E0A0A0#{Warnings}"/>
+						<Property key="Caption" value="#D0D090#{Warnings}"/>
 
-						<Widget type="EditBox" skin="EditBoxStretch" position="32 12 600 430" name="EdExport">
+						<Widget type="EditBox" skin="EditBoxStretch" position="32 12 600 430" name="EdExportLog">
 							<Property key="ReadOnly" value="true"/>
 							<Property key="MultiLine" value="true"/>
 							<Property key="WordWrap" value="true"/>
@@ -713,7 +714,7 @@
 							<UserString key="tip" value="#{TipTrackDescEditor}"/>
 						</Widget>
 
-						<Widget type="Button" skin="Button" position="32 448 200 32" name="BtnExport">
+						<Widget type="Button" skin="Button" position="32 448 200 32" name="BtnExportRoR">
 							<Property key="Caption" value="#{Export}"/>
 							<Property key="Colour" value="0.5 0.7 1.0"/>
 							<Property key="TextColour" value="0.5 0.7 1.0"/>
@@ -740,9 +741,129 @@
 						</Widget>
 					</Widget>
 
-					<!-- Settings -->
+
+					<!-- Track Settings for RoR only -->
 					<Widget type="TabItem" skin="" position="2 24 794 562">
-						<Property key="Caption" value="#C0D0E0#{Settings}"/>
+						<Property key="Caption" value="#C0F0D0#{Track}"/>
+						<Property key="Colour" value="0.5 1 0.4"/>
+
+						<!-- 🌞 sun  lAmbAdd -->
+						<Widget type="TextBox" skin="TextBox" position="10 0 220 20">
+							<Property key="Caption" value="#{Sun}: #{InputMultiplier}"/>
+							<Property key="TextColour" value="0.8 0.8 0.8"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="10 20 220 20">
+							<Property key="Caption" value="#{Ambient}"/>
+							<Property key="TextColour" value="0.7 0.7 0.7"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 20 50 20" name="RoR_AmbEdit">
+							<Property key="TextColour" value="0.7 0.7 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 20 440 18" name="RoR_Amb"/>
+
+						<Widget type="TextBox" skin="TextBox" position="10 40 220 20">
+							<Property key="Caption" value="#{Diffuse}"/>
+							<Property key="TextColour" value="0.8 0.8 0.7"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 40 50 20" name="RoR_DiffEdit">
+							<Property key="TextColour" value="0.8 0.8 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 40 440 18" name="RoR_Diff"/>
+
+						<Widget type="TextBox" skin="TextBox" position="10 60 220 20">
+							<Property key="Caption" value="#{Specular}"/>
+							<Property key="TextColour" value="0.7 0.8 0.9"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 60 50 20" name="RoR_SpecEdit">
+							<Property key="TextColour" value="0.7 0.8 0.9"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 60 440 18" name="RoR_Spec"/>
+
+						<!-- 🌊 water -->
+						<Widget type="TextBox" skin="TextBox" position="10 100 220 20">
+							<Property key="Caption" value="#{Fluids}"/>
+							<Property key="TextColour" value="0.6 0.8 1.0"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 100 50 20" name="RoR_WaterEdit">
+							<Property key="TextColour" value="0.6 0.8 1.0"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 100 440 18" name="RoR_Water">
+							<Property key="Colour" value="0.6 0.8 1.0"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="10 120 220 20">
+							<Property key="Caption" value="#{Fluids}: #{TerHeight}"/>
+							<Property key="TextColour" value="0.5 0.7 0.9"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 120 50 20" name="RoR_WaterOfsEdit">
+							<Property key="TextColour" value="0.5 0.7 0.9"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 120 440 18" name="RoR_WaterOfs"/>
+
+
+						<!-- 🌳🪨 Trees -->
+						<Widget type="TextBox" skin="TextBox" position="10 160 220 20">
+							<Property key="Caption" value="#{TreeDens}"/>
+							<Property key="TextColour" value="0.6 1.0 0.6"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 160 50 20" name="RoR_TreesEdit">
+							<Property key="TextColour" value="0.7 1.0 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 160 440 18" name="RoR_Trees"/>
+
+						<!-- 🌿 Grass -->
+						<Widget type="TextBox" skin="TextBox" position="10 180 220 20">
+							<Property key="Caption" value="#{GrassDens}"/>
+							<Property key="TextColour" value="0.6 1.0 0.6"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 180 50 20" name="RoR_GrassEdit">
+							<Property key="TextColour" value="0.6 0.9 0.6"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 180 440 18" name="RoR_Grass"/>
+
+
+						<!-- 🛣️ Road -->
+						<Widget type="TextBox" skin="TextBox" position="10 200 220 20">
+							<Property key="Caption" value="#{Road}:"/>
+							<Property key="TextColour" value="1.0 0.7 0.5"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="10 220 220 20">
+							<Property key="Caption" value="#{Terrain} #{Layer}"/>
+							<Property key="TextColour" value="0.9 0.7 0.5"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 220 50 20" name="RoR_RoadLayerEdit">
+							<Property key="TextColour" value="0.9 0.7 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 220 440 18" name="RoR_RoadLayer"/>
+
+						<Widget type="Button" skin="CheckBox" position="10 240 200 20" name="RoR_RoadCols">
+							<Property key="Caption" value="#{Column}"/>
+							<Property key="TextColour" value="0.8 0.7 0.6"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="10 260 220 20">
+							<Property key="Caption" value="#{LengthDim}"/>
+							<Property key="TextColour" value="0.9 0.7 0.5"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 260 50 20" name="RoR_RoadStepEdit">
+							<Property key="TextColour" value="0.9 0.7 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 260 440 18" name="RoR_RoadStep"/>
+
+						<Widget type="TextBox" skin="TextBox" position="10 280 220 20">
+							<Property key="Caption" value="#{HeightOffset}"/>
+							<Property key="TextColour" value="0.9 0.7 0.5"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 280 50 20" name="RoR_RoadHaddEdit">
+							<Property key="TextColour" value="0.9 0.7 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 280 440 18" name="RoR_RoadHadd"/>
+						<!-- tileMul, wallX, wallY -->
+					</Widget>
+
+					<!-- editor Settings -->
+					<Widget type="TabItem" skin="" position="2 24 794 562">
+						<Property key="Caption" value="#6090E0#{Settings}"/>
 						<Property key="Colour" value="1 0.9 0.4"/>
 
 						<Widget type="TextBox" skin="TextBox" position="32 32 484 24">
@@ -769,7 +890,6 @@
 							<Property key="Caption" value="#{ExportOnLoad}"/>
 							<Property key="TextColour" value="0.6 0.8 0.9"/>
 						</Widget>
-
 					</Widget>
 
 				</Widget>

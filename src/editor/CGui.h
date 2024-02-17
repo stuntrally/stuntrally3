@@ -424,7 +424,10 @@ public:
 	void Exp(eWarn type, Ogre::String text);
 	
 	//  RoR track setup
-	SV svRoR_Water, svRoR_WaterOfs;
+	SV svRoR_Amb, svRoR_Diff, svRoR_Spec;
+	SV svRoR_Water, svRoR_WaterOfs, svRoR_Trees, svRoR_Grass;
+	SV svRoR_RoadLay, svRoR_RoadStep, svRoR_RoadHadd; //, tileMul, wallX, wallY;
+	Ck ckRoR_RoadCols;
 
 
 	//  👆 Pick  --------------------

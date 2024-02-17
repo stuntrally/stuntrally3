@@ -9,6 +9,7 @@
 #include "settings.h"
 #include "CApp.h"
 #include "CGui.h"
+#include "CScene.h"
 #include "MultiList2.h"
 #include "Slider.h"
 #include "paths.h"
@@ -603,7 +604,7 @@ void CGui::InitGui()
 
 	
 	///  ⚠ Warnings  ------------------------------------
-	edWarnLog = fEd("Warnings");
+	edWarnLog = fEd("WarningsLog");
 	txWarn = mGui->createWidget<TextBox>("TextBox", 300,20, 360,32, Align::Default, "Back");
 	txWarn->setTextShadow(true);  txWarn->setTextShadowColour(Colour::Black);
 	txWarn->setTextColour(Colour(1.0,0.4,0.2));  txWarn->setFontHeight(24);
@@ -617,8 +618,8 @@ void CGui::InitGui()
 
 
 	///  RoR export  --------
-	edExportLog = fEd("EdExport");
-	Btn("BtnExport", btnExport);
+	edExportLog = fEd("EdExportLog");
+	Btn("BtnExportRoR", btnExport);
 	ck= &ckCheckLoad;	ck->Init("ExportOnLoad",	&pSet->exportOnLoad);
 
 	Edt(edRoRPath, "EdPathRoR", editRoRPath);  edRoRPath->setCaption(pSet->pathExportRoR);
@@ -628,7 +629,26 @@ void CGui::InitGui()
 	Btn("ConvertTerrain4RoR", btnConvertTerrain);
 	Btn("CreateOdef4RoR", btnCreateOdef);
 	
+	//  RoR Track setup  --------
+	auto& ror = app->scn->sc->rorCfg;
+	sv= &svRoR_Amb;			sv->Init("RoR_Amb",		&ror.lAmb,   0.f,3.f, 1.f, 2,4);  sv->DefaultF(1.6f);
+	sv= &svRoR_Diff;		sv->Init("RoR_Diff",	&ror.lDiff,  0.f,3.f, 1.f, 2,4);  sv->DefaultF(1.6f);
+	sv= &svRoR_Spec;		sv->Init("RoR_Spec",	&ror.lSpec,  0.f,3.f, 1.f, 2,4);  sv->DefaultF(0.9f);
 
+	sv->strMap[-1] = TR("#{None}");  sv->strMap[0] = TR("#{auto}");  sv->strMap[1] = TR("#{Road_AngleManual}");
+	sv= &svRoR_Water;		sv->Init("RoR_Water",		&ror.water,      -1,1);  sv->DefaultI(0);
+	sv= &svRoR_WaterOfs;	sv->Init("RoR_WaterOfs",	&ror.yWaterOfs,  -100.f,100.f, 1.f, 2,4);  sv->DefaultF(-0.8f);
+
+	sv= &svRoR_Trees;		sv->Init("RoR_Trees",		&ror.treesMul,  0.f, 6.f, 2.f, 2,4);  sv->DefaultF(0.5f);
+	sv= &svRoR_Grass;		sv->Init("RoR_Grass",		&ror.grassMul,  0.f,12.f, 1.f, 2,4);  sv->DefaultF(4.f);
+
+	sv= &svRoR_RoadLay;		sv->Init("RoR_RoadLayer",	&ror.roadTerTexLayer,  0, 4);  sv->DefaultI(1);
+	ck= &ckRoR_RoadCols;	ck->Init("RoR_RoadCols",	&ror.roadCols);
+
+	sv= &svRoR_RoadStep;	sv->Init("RoR_RoadStep",	&ror.roadStepDist, 0.f, 100.f, 2.f, 0,2);  sv->DefaultF(10.f);
+	sv= &svRoR_RoadHadd;	sv->Init("RoR_RoadHadd",	&ror.roadHadd,    -2.f, 2.f, 1.f, 2,4);  sv->DefaultF(-0.8f);
+
+	
 	///  📃 Fill Combo boxes  . . . . . . .
 	gcom->InitClrTweakMtr();
 	InitGuiLists();

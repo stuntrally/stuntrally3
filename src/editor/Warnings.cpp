@@ -20,8 +20,8 @@ using namespace std;
 //  check track, and report warnings
 ///...........................................................................................................................
 
-const static String clrWarn[CGui::WARN_ALL] = {"#F01010","#FF4040","#FFA040","#E0E040","#80F040","#60A0E0"};
-const static String strWarn[CGui::WARN_ALL] = {"FATAL ", "ERR   ", "WARN  ", "Info  ", "Note  ", "Txt   "};
+const static String clrWarn[CGui::WARN_ALL] = {"#F01010","#FF4040","#FFA040","#E0E040","#80F040","#60A0E0","#80A0C0"};
+const static String strWarn[CGui::WARN_ALL] = { "FATAL ", "ERR   ", "WARN  ", "Info  ", "Note  ", "Txt   ", "Dbg   "};
 
 void CGui::Exp(eWarn type, Ogre::String text)
 {

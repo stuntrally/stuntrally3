@@ -15,14 +15,16 @@ namespace tinyxml2 {  class XMLElement;  }
 //------------------------
 struct RoRconfig
 {
-	Ogre::Vector3 lAmbAdd;  // 🌞
+	Ogre::Vector3 lAmbAdd;  // 🌞 sun
 	float lAmb, lDiff, lSpec;
 
-	int water;  // 🌊 -1 off  0 auto  1 custom
-	float yWaterOfs;  // or height for custom
-	float grassMul;  // 🌿
+	int water;        // 🌊 -1 off  0 auto  1 custom
+	float yWaterOfs;  // add offset or height for custom
+	
+	float treesMul;   // 🌳🪨  veget
+	float grassMul;   // 🌿
 
-	int roadTerTexLayer;  // 🛣️  ter layer num used as tex for road
+	int roadTerTexLayer;  // 🛣️  terrain layer num, used as texture for road
 	bool roadCols;
 	float roadStepDist, roadHadd, tileMul, wallX, wallY;
 
