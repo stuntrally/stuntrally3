@@ -23,7 +23,7 @@ using namespace std;
 
 
 //------------------------------------------------------------------------------------------------------------------------
-//  Export current track for Rigs Of Rods
+//  ⛰️ Terrain  Heightmap, Blendmap, Road image, scripts
 //------------------------------------------------------------------------------------------------------------------------
 void ExportRoR::ExportTerrain()  // whole, full
 {
@@ -41,7 +41,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 	memset(hmap, 0, hsize * 2);
 
 	//  find h min, max
-	float hmin = 100000.f, hmax = -hmin;
+	hmin = 100000.f;  float hmax = -hmin;
 	for (int y=0; y < size; ++y)
 	{
 		int a = y * size;
@@ -55,8 +55,8 @@ void ExportRoR::ExportTerrain()  // whole, full
 	
 	//  world size
 	const float Ysize = (hmax - hmin);
-	const float XZsize = size *  td.fTriangleSize,
-		half = XZsize * 0.5f;  // half ter size offset
+	const float XZsize = size *  td.fTriangleSize;
+	half = XZsize * 0.5f;  // half ter size offset
 
 	gui->Exp(CGui::TXT, "Hmap size   " + toStr(size));
 	gui->Exp(CGui::TXT, "Height min  " + toStr(hmin));
@@ -392,5 +392,5 @@ void ExportRoR::ExportTerrain()  // whole, full
 
 	otc.close();
 
-	gui->Exp(CGui::INFO, "Terrain Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s");
+	gui->Exp(CGui::INFO, "Terrain Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s\n");
 }

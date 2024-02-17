@@ -42,9 +42,9 @@ void ExportRoR::ExportVeget()
 		ofstream veg;
 		veg.open(vegFile.c_str(), std::ios_base::out);
 
-		string matFile = path + name + "-veget.material";
-		ofstream mat;
-		mat.open(matFile.c_str(), std::ios_base::out);
+		// string matFile = path + name + "-veget.material";
+		// ofstream mat;
+		// mat.open(matFile.c_str(), std::ios_base::out);
 
 
 		//------------------------------------------------------------------------------------------------------------------------
@@ -53,6 +53,7 @@ void ExportRoR::ExportVeget()
 		veg << "// grass range,  SwaySpeed, SwayLength, SwayDistribution,   Density,  minx, miny, maxx, maxy,   fadetype, minY, maxY,   material colormap densitymap\n";
 
 		const SGrassLayer* g0 = &sc->grLayersAll[0];
+		int igrs = 0;
 		for (int i=0; i < sc->ciNumGrLay; ++i)
 		{
 			const SGrassLayer* gr = &sc->grLayersAll[i];
@@ -60,6 +61,7 @@ void ExportRoR::ExportVeget()
 			{
 				const SGrassChannel* ch = &scn->sc->grChan[gr->iChan];
 				const string mapName = name + "-grass"+toStr(gr->iChan)+".png";
+				++igrs;
 
 				//grass 200,  0.5, 0.05, 10,  0.1, 0.2, 0.2, 1, 1,  1, 0, 9, seaweed none none
 				//grass 600,  0.5, 0.15, 10,  0.3, 0.2, 0.2, 1, 1,  1, 10, 0, grass1 aspen.jpg aspen_grass_density.png
@@ -117,6 +119,8 @@ void ExportRoR::ExportVeget()
 					gui->Exp(CGui::WARN, string("Exception in grass dens map: ") + ex.what());
 				}
 
+			#if 0  // NO, once for all
+
 				//  copy grass*.png
 				//------------------------------------------------------------
 				String pathGrs = PATHS::Data() + "/grass/";
@@ -145,9 +149,13 @@ void ExportRoR::ExportVeget()
 				mat << "	}\n";
 				mat << "}\n";
 				mat << "\n";
+			#endif
 			}
 		}
-		mat.close();
+		// mat.close();
+
+		gui->Exp(CGui::NOTE, "Grasses: " + toStr(igrs));
+
 
 
 		//------------------------------------------------------------------------------------------------------------------------
@@ -248,6 +256,10 @@ void ExportRoR::ExportVeget()
 			if (!pveg)  continue;
 			bool add = 1;
 
+
+		// #define COPY_VEGET 1  // NO, once for all tracks
+		#ifdef COPY_VEGET
+
 			//------------------------------------------------------------
 			//  Find mesh  in old SR dirs
 			//------------------------------------------------------------
@@ -264,8 +276,6 @@ void ExportRoR::ExportVeget()
 			//  copy mesh from old SR  ..or slow convert v2 to v1-
 			if (exists)
 			{
-			#if 1  // no, once for all tracks
-
 				if (once.find(mesh) == once.end())
 				{	once[mesh] = 1;
 
@@ -299,28 +309,33 @@ void ExportRoR::ExportVeget()
 					String s = "Error: loading mesh: " + mesh + " \nfrom: " + path + "\n failed ! \n" + ex.what() + "\n";
 					gui->Exp(CGui::WARN, s);
 				}
-				//  todo  read .mat,  
-				//  copy textures,  write .material  ...
-			#endif
+		#endif
 
 				//  write  ------
 				if (l==0)
 					veg << "\n// trees  yawFrom, yawTo,  scaleFrom, scaleTo,  highDensity,  distance1, distance2,  meshName colormap densitymap\n";
 				if (add)
 				{	//trees 0, 360, 0.1, 0.12, 2, 60, 3000, fir05_30.mesh aspen-test.dds aspen_grass_density2.png 
-					veg << "trees 0, 360, ";
-					veg << vg.minScale << ", " << vg.minScale << ", ";
-					veg << vg.dens * sc->densTrees * 2.f;
+					veg << "trees 0, 360,  ";
+					veg << vg.minScale << ", " << vg.minScale << ",  ";
+					veg << vg.dens * sc->densTrees * 2.f << ",  ";
 
 					// veg << ", 60, 1000, ";  // vis dist
-					veg << ", " << pveg->visDist * 0.5f << ", " << pveg->farDist << ", ";  // par .. todo
+					veg << pveg->visDist * 0.5f << ", " << pveg->farDist << ",  ";  // par .. todo
 					veg << vg.name << " none " << mapName << "\n";
 				}
+
+		#ifdef COPY_OBJS
 			}
+		#else
+				++iVegetMesh;
+		#endif
 		}
+		
 		veg.close();
 
 		gui->Exp(CGui::NOTE, "Veget meshes: " + toStr(iVegetMesh));
 	}
 
+	gui->Exp(CGui::INFO, "Time Veget: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s\n");
 }

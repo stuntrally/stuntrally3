@@ -41,7 +41,7 @@ void ExportRoR::ExportObjects()
 
 	int iodef = 0, iObjMesh = 0;
 	std::map<string, int> once;
-	const bool hasObjects = sc->objects.empty();
+	hasObjects = sc->objects.empty();
 
 	for (const auto& o : sc->objects)
 	{
@@ -55,6 +55,9 @@ void ExportRoR::ExportObjects()
 		// todo  no scale ??
 		obj << o.name +"\n";
 		
+	// #define COPY_OBJS 1  // NO, once for all tracks
+	#ifdef COPY_OBJS
+
 		//  object  save  .odef
 		//------------------------------------------------------------
 		const string mesh = o.name + ".mesh";
@@ -77,6 +80,7 @@ void ExportRoR::ExportObjects()
 			odef << "end\n";
 			
 			odef.close();  ++iodef;
+
 
 			//------------------------------------------------------------
 			//  Find mesh  in old SR dirs
@@ -103,9 +107,9 @@ void ExportRoR::ExportObjects()
 				//  get mtr?  read .mat,  copy textures,  write .material ...
 			}
 		}
+	#endif
 	}
 	obj.close();
 
-	gui->Exp(CGui::TXT, "Objects: "+toStr(sc->objects.size())+"  odef: "+toStr(iodef)+"  meshes: "+toStr(iObjMesh));
-
+	gui->Exp(CGui::TXT, "Objects: "+toStr(sc->objects.size())+"  odef: "+toStr(iodef)+"  meshes: "+toStr(iObjMesh) + "\n");
 }

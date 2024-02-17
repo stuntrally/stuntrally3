@@ -29,8 +29,8 @@ protected:
 	float hmin = 0.f, half = 0.f;  // min height, half world size
 	int water = 0;  float Ywater = 0.f;  // bool, level
 
-	Ogre::String strPos(Ogre::Vector3 pos);  // util convert SR pos to RoR pos
-	bool CopyFile(std::string from, std::string to);  // both args are path with filenames
+	Ogre::String strPos(const Ogre::Vector3& pos);  // util convert SR pos to RoR pos
+	bool CopyFile(const std::string& from, const std::string& to);  // both args are path with filenames
 
 public:
 	ExportRoR(App* app1);

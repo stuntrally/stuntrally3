@@ -234,5 +234,5 @@ void ExportRoR::ExportRoad()
 
 	as.close();
 
-	gui->Exp(CGui::INFO, "Road Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s");
+	gui->Exp(CGui::INFO, "Road Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s\n");
 }

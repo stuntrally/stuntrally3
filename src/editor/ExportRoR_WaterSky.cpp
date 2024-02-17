@@ -21,8 +21,9 @@ void ExportRoR::ExportWaterSky()
 
 	//  🌊 Fluids
 	//------------------------------------------------------------
-	float Ywater = 0.f;
-	int water = 0;
+	Ywater = 0.f;
+	water = 0;
+	
 	switch (cfg->water)
 	{
 	case -1:  // off
@@ -72,6 +73,7 @@ void ExportRoR::ExportWaterSky()
 	os << "	ground_fog_density_multiplier 0.015\n";  // cg! no diff-
 	os << "	scene_fog_density_multiplier 0.015\n";
 	os << "\n";
+
 	os << "	sun {\n";  // 🌞 sun light
 	Vector3 la = sc->lAmb.GetRGB()  * cfg->lAmb + cfg->lAmbAdd;  // par bright
 	Vector3 ld = sc->lDiff.GetRGB() * cfg->lDiff;
@@ -84,6 +86,7 @@ void ExportRoR::ExportWaterSky()
 	os << "		auto_disable true\n";
 	os << "	}\n";
 	os << "\n";
+
 	os << "	moon {\n";
 	os << "		ambient_multiplier 0.2 0.2 0.2\n";
 	os << "		diffuse_multiplier 1 1 0.9\n";
@@ -133,5 +136,4 @@ void ExportRoR::ExportWaterSky()
 	os << "}\n";
 
 	os.close();
-
 }
