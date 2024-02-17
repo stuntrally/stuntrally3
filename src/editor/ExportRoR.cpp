@@ -167,6 +167,19 @@ void ExportRoR::ExportTrack()  // whole, full
 
 	ExportRoad();
 
+	
+	//  just copy common .material to track dir  (done by convert in materials/)
+	string pathMtr = pSet->pathExportRoR + "materials/";
+	std::vector<string> files{
+		"objects_static.material",
+		"rocks.material",
+		"trees_ch.material",
+		"trees.material"};
+	for (auto& mtr : files)
+		CopyFile(pathMtr + mtr, path + mtr);
+
+	// todo  and their textures? for used mesh materials ?
+
 
 	//  🖼️ copy Preview  mini
 	//------------------------------------------------------------
