@@ -11,6 +11,7 @@
 #include "CScene.h"
 #include "CData.h"
 #include "TracksXml.h"
+#include "PresetsXml.h"
 #include "Axes.h"
 
 #include <OgreString.h>
@@ -29,8 +30,136 @@ using namespace std;
 
 
 //  Tools other
+
+//------------------------------------------------------------------------------------------------------------------------
+//  combine terrain textures to _ds, _nh
 //------------------------------------------------------------------------------------------------------------------------
 void ExportRoR::ConvertTerrainTex()
+{
+	Ogre::Timer ti;
+	const String pathTer = PATHS::Data() + "/terrain/";
+
+	//  Gui status
+	gui->Status("Convert Terrain", 0.7,0.5,1);
+	gui->edExportLog->setCaption("");
+	gui->Exp(CGui::INFO, "Started Convert Terrain Textures ..");
+	
+	gui->Exp(CGui::NOTE, "All from presets.xml, in: " + pathTer);
+
+	const string pathTo = pSet->pathExportRoR + "terrain/";
+	if (!PATHS::CreateDir(pathTo))
+	{	gui->Exp(CGui::ERR, "Can't create dir: "+pathTo);
+		return;
+	}
+
+	// SetupPath();
+
+	int all = 0, errors = 0;
+	for (auto& l : pre->ter)
+	if (l.texFile[0] != '-')
+	{
+		++all;
+		//  diffuse _d, normal _n, specular _s
+		String d_d, d_s, d_r, n_n, n_s;
+		d_d = l.texFile +".jpg";  // ends with _d
+		d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");  // _s
+		n_n = l.texNorm +".jpg";  // _n
+		n_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");  // _s
+		
+		string ext = 1 ? "png" : "dds";  // todo as dds fails..
+		String layTexDS = StringUtil::replaceAll(l.texFile,"_d","_ds."+ext);
+		String layTexNH = StringUtil::replaceAll(l.texNorm,"_n","_nh."+ext);
+
+		gui->Exp(CGui::TXT, " diff, norm:  " + d_d + "  " + n_n);
+		
+		String diff = d_d, norm = n_n;
+		string from, to;
+		{	//  copy _d _n
+			from = pathTer + diff;  to = pathTo + diff;
+			CopyFile(from, to);
+
+			from = pathTer + norm;  to = pathTo + norm;
+			CopyFile(from, to);
+		}
+
+		//  find _s  for specular
+		String spec = d_s;
+		if (!PATHS::FileExists(pathTer + spec))
+		{	spec = n_s;
+			if (!PATHS::FileExists(pathTer + spec))
+			{	spec = d_d;
+				gui->Exp(CGui::TXT, " spec:  " + spec + "  " + fToStr(l.tiling));
+		}	}
+
+		//  combine RGB+A  diff + spec
+		//------------------------------------------------------------
+        Image2 imD, imS, imDS;
+        imD.load(diff, "General");  imS.load(spec, "General");
+		const int xx = imD.getWidth(), yy = imD.getHeight();
+		
+		auto pfA = PFG_RGBA8_UNORM;
+		imDS.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
+		try
+		{
+			TextureBox tbD = imD.getData(0), tbS = imS.getData(0), tbDS = imDS.getData(0);
+			auto pfD = imD.getPixelFormat(), pfS = imD.getPixelFormat();
+			for (int y = 0; y < yy; ++y)
+			for (int x = 0; x < xx; ++x)
+			{
+				ColourValue rgb = tbD.getColourAt(x, y, 0, pfD);
+				ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.5f;  // par spec mul ..
+				ColourValue ds(rgb.r, rgb.g, rgb.b, a.r);
+				tbDS.setColourAt(ds, x, y, 0, pfA);
+			}
+			imDS.save(pathTo + layTexDS, 0, 0);
+		}
+		catch (exception ex)
+		{
+			gui->Exp(CGui::WARN, string("Exception in combine DS, save to: ") + pathTo + layTexDS);
+			++errors;
+		}
+
+		//  combine Norm+H
+		//------------------------------------------------------------
+        Image2 imN, imH, imNH;
+        imD.load(norm, "General");  //imS.load(spec, "General");
+		const int xn = imN.getWidth(), yn = imD.getHeight();
+		
+		imNH.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
+		try
+		{
+			TextureBox tbN = imN.getData(0), tbNH = imNH.getData(0);
+			auto pfN = imN.getPixelFormat();
+			for (int y = 0; y < yn; ++y)
+			for (int x = 0; x < xn; ++x)
+			{
+				ColourValue c = tbN.getColourAt(x, y, 0, pfN);
+				// const float a = 0.f;
+				const float a = max(0.f, 1.f - c.r - c.g);  // par side ?..
+				ColourValue nh(c.r, c.g, c.b, a);
+				tbNH.setColourAt(nh, x, y, 0, pfA);
+			}
+			imNH.save(pathTo + layTexNH, 0, 0);
+		}
+		catch (exception ex)
+		{
+			gui->Exp(CGui::WARN, string("Exception in combine NH, save to: ") + pathTo + layTexNH);
+			++errors;
+		}	
+	}
+
+	gui->Exp(CGui::INFO, "Count all: "+toStr(all));
+	if (errors)
+		gui->Exp(CGui::WARN, "Errors: "+toStr(errors));
+	gui->Exp(CGui::INFO, "Ended Convert Terrain Textures");
+	gui->Exp(CGui::INFO, "Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s");
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------
+//  Create .odef for all .mesh
+//------------------------------------------------------------------------------------------------------------------------
+void ExportRoR::CreateOdef()
 {
 	Ogre::Timer ti;
 
@@ -39,7 +168,7 @@ void ExportRoR::ConvertTerrainTex()
 	gui->edExportLog->setCaption("");
 	gui->Exp(CGui::INFO, "Create .odef for all .mesh ..");
 
-	SetupPath();
+	// SetupPath();
 
 	std::vector<string> dirs{
 		"objects", "objects2", "objectsC", "objects0", "obstacles",
@@ -88,7 +217,7 @@ void ExportRoR::ConvertTerrainTex()
 
 
 //------------------------------------------------------------------------------------------------------------------------
-//  Convert .mat
+//  Convert .mat to .material
 //------------------------------------------------------------------------------------------------------------------------
 void ExportRoR::ConvertMat()
 {
@@ -99,7 +228,7 @@ void ExportRoR::ConvertMat()
 	gui->edExportLog->setCaption("");
 	gui->Exp(CGui::INFO, "Started Convert materials..");
 
-	SetupPath();
+	// SetupPath();
 
 	string pathMat = pSet->pathExportOldSR + "/materials/scene/";
 	std::vector<string> matFiles{

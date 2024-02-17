@@ -109,91 +109,96 @@ void ExportRoR::ExportTerrain()  // whole, full
 	{
 		const TerLayer& l = td.layersAll[td.layers[i]];
 
-		//  diffuse _d, normal _n, specular _s
-		String pathTer = PATHS::Data() + "/terrain/";
-		String d_d, d_s, d_r, n_n, n_s;
-		d_d = l.texFile;  // ends with _d
-		d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");  // _s
-		n_n = l.texNorm;  // _n
-		n_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");  // _s
-		
 		string ext = 1 ? "png" : "dds";  // todo as dds fails..
 		layTexDS[i] = StringUtil::replaceAll(l.texFile,"_d.jpg","_ds."+ext);
 		layTexNH[i] = StringUtil::replaceAll(l.texNorm,"_n.jpg","_nh."+ext);
 
-		gui->Exp(CGui::TXT, "layer " + toStr(i+1) + " diff, norm:  " + d_d + "  " + n_n);
-		
-		String diff = d_d, norm = n_n;
-		string from, to;
-		{	//  copy _d _n
-			from = pathTer + diff;  to = path + diff;
-			CopyFile(from, to);
+		//#if 0  // NO, once for all ?  is black-
+		if (1)
+		{
+			//  diffuse _d, normal _n, specular _s
+			String pathTer = PATHS::Data() + "/terrain/";
+			String d_d, d_s, d_r, n_n, n_s;
+			d_d = l.texFile;  // ends with _d
+			d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");  // _s
+			n_n = l.texNorm;  // _n
+			n_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");  // _s
+			
+			gui->Exp(CGui::TXT, "layer " + toStr(i+1) + " diff, norm:  " + d_d + "  " + n_n);
+			
+			String diff = d_d, norm = n_n;
+			string from, to;
+			if (0)  // jpg not needed
+			{	//  copy _d _n
+				from = pathTer + diff;  to = path + diff;
+				CopyFile(from, to);
 
-			from = pathTer + norm;  to = path + norm;
-			CopyFile(from, to);
-		}
+				from = pathTer + norm;  to = path + norm;
+				CopyFile(from, to);
+			}
 
-		//  find _s  for specular
-		String spec = d_s;
-		if (!PATHS::FileExists(pathTer + spec))
-		{	spec = n_s;
+			//  find _s  for specular
+			String spec = d_s;
 			if (!PATHS::FileExists(pathTer + spec))
-			{	spec = d_d;
-				gui->Exp(CGui::TXT, "layer " + toStr(i+1) + " spec:  " + spec + "  " + fToStr(l.tiling));
-		}	}
+			{	spec = n_s;
+				if (!PATHS::FileExists(pathTer + spec))
+				{	spec = d_d;
+					gui->Exp(CGui::TXT, "layer " + toStr(i+1) + " spec:  " + spec + "  " + fToStr(l.tiling));
+			}	}
 
-		//  combine RGB+A  diff + spec
-		//------------------------------------------------------------
-        Image2 imD, imS, imDS;
-        imD.load(diff, "General");  imS.load(spec, "General");
-		const int xx = imD.getWidth(), yy = imD.getHeight();
-		
-		auto pfA = PFG_RGBA8_UNORM;
-		imDS.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
-		try
-		{
-			TextureBox tbD = imD.getData(0), tbS = imS.getData(0), tbDS = imDS.getData(0);
-			auto pfD = imD.getPixelFormat(), pfS = imD.getPixelFormat();
-			for (int y = 0; y < yy; ++y)
-			for (int x = 0; x < xx; ++x)
+			//  combine RGB+A  diff + spec
+			//------------------------------------------------------------
+			Image2 imD, imS, imDS;
+			imD.load(diff, "General");  imS.load(spec, "General");
+			const int xx = imD.getWidth(), yy = imD.getHeight();
+			
+			auto pfA = PFG_RGBA8_UNORM;
+			imDS.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
+			try
 			{
-				ColourValue rgb = tbD.getColourAt(x, y, 0, pfD);
-				ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.5f;  // par spec mul ..
-				ColourValue ds(rgb.r, rgb.g, rgb.b, a.r);
-				tbDS.setColourAt(ds, x, y, 0, pfA);
+				TextureBox tbD = imD.getData(0), tbS = imS.getData(0), tbDS = imDS.getData(0);
+				auto pfD = imD.getPixelFormat(), pfS = imD.getPixelFormat();
+				for (int y = 0; y < yy; ++y)
+				for (int x = 0; x < xx; ++x)
+				{
+					ColourValue rgb = tbD.getColourAt(x, y, 0, pfD);
+					ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.5f;  // par spec mul ..
+					ColourValue ds(rgb.r, rgb.g, rgb.b, a.r);
+					tbDS.setColourAt(ds, x, y, 0, pfA);
+				}
+				imDS.save(path + layTexDS[i], 0, 0);
 			}
-			imDS.save(path + layTexDS[i], 0, 0);
-		}
-		catch (exception ex)
-		{
-			gui->Exp(CGui::WARN, string("Exception in combine DS: ") + ex.what());
-		}
+			catch (exception ex)
+			{
+				gui->Exp(CGui::WARN, string("Exception in combine DS: ") + ex.what());
+			}
 
-		//  combine Norm+H
-		//------------------------------------------------------------
-        Image2 imN, imH, imNH;
-        imD.load(norm, "General");  //imS.load(spec, "General");
-		const int xn = imN.getWidth(), yn = imD.getHeight();
-		
-		imNH.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
-		try
-		{
-			TextureBox tbN = imN.getData(0), tbNH = imNH.getData(0);
-			auto pfN = imN.getPixelFormat();
-			for (int y = 0; y < yn; ++y)
-			for (int x = 0; x < xn; ++x)
+			//  combine Norm+H
+			//------------------------------------------------------------
+			Image2 imN, imH, imNH;
+			imD.load(norm, "General");  //imS.load(spec, "General");
+			const int xn = imN.getWidth(), yn = imD.getHeight();
+			
+			imNH.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
+			try
 			{
-				ColourValue c = tbN.getColourAt(x, y, 0, pfN);
-				// const float a = 0.f;
-				const float a = max(0.f, 1.f - c.r - c.g);  // par side ?..
-				ColourValue nh(c.r, c.g, c.b, a);
-				tbNH.setColourAt(nh, x, y, 0, pfA);
+				TextureBox tbN = imN.getData(0), tbNH = imNH.getData(0);
+				auto pfN = imN.getPixelFormat();
+				for (int y = 0; y < yn; ++y)
+				for (int x = 0; x < xn; ++x)
+				{
+					ColourValue c = tbN.getColourAt(x, y, 0, pfN);
+					// const float a = 0.f;
+					const float a = max(0.f, 1.f - c.r - c.g);  // par side ?..
+					ColourValue nh(c.r, c.g, c.b, a);
+					tbNH.setColourAt(nh, x, y, 0, pfA);
+				}
+				imNH.save(path + layTexNH[i], 0, 0);
 			}
-			imNH.save(path + layTexNH[i], 0, 0);
-		}
-		catch (exception ex)
-		{
-			gui->Exp(CGui::WARN, string("Exception in combine NH: ") + ex.what());
+			catch (exception ex)
+			{
+				gui->Exp(CGui::WARN, string("Exception in combine NH: ") + ex.what());
+			}
 		}
 	}
 

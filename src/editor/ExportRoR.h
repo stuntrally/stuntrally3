@@ -48,7 +48,8 @@ public:
 	void ExportRoad();     //  *-road.tobj  and  *.as
 	void ExportVeget();    //  *-veget.tobj  and  density maps *-veget?.png
 
-	//  other
-	void ConvertTerrainTex();
-	void ConvertMat();
+	//  tools other
+	void CreateOdef();  // make .odef for all .mesh files  in main path subdirs
+	void ConvertTerrainTex();  // combines _d + _s to _ds and _nh as .png
+	void ConvertMat();  // reads old SR .mat and saves as .material
 };

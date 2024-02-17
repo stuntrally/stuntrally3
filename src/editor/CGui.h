@@ -415,7 +415,7 @@ public:
 
 	//  RoR export
 	void btnExport(WP);
-	void btnConvertMat(WP), btnConvertTerrain(WP);
+	void btnConvertMat(WP), btnConvertTerrain(WP), btnCreateOdef(WP);
 
 	Ck ckExportOnLoad;
 	Ed edExportLog =0, edRoRPath =0;  void editRoRPath(Ed);

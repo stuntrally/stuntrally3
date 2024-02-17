@@ -706,7 +706,7 @@
 							<Property key="WordWrap" value="true"/>
 							<Property key="VisibleHScroll" value="false"/>
 							<Property key="VisibleVScroll" value="true"/>
-							<Property key="MaxTextLength" value="24000"/>
+							<Property key="MaxTextLength" value="64000"/>
 							<Property key="TextColour" value="1.0 0.8 0.8"/>
 							<Property key="Colour" value="0.6 0.7 0.8"/>
 							<Property key="FontName" value="font.small"/>
@@ -719,19 +719,30 @@
 							<Property key="TextColour" value="0.5 0.7 1.0"/>
 						</Widget>
 
-						<Widget type="Button" skin="Button" position="312 480 180 24" name="ConvertMat4RoR">
-							<Property key="Caption" value="Convert materials"/>
-							<Property key="TextColour" value="0.9 0.7 0.9"/>
-						</Widget>
+						<!-- tools other -->
 						<Widget type="Button" skin="Button" position="512 480 180 24" name="ConvertTerrain4RoR">
-							<Property key="Caption" value="Convert terrain textures"/>
-							<Property key="TextColour" value="0.9 0.7 0.9"/>
+							<Property key="Caption" value="terrain textures"/>
+							<Property key="TextColour" value="0.8 1.0 0.6"/>
+							<Property key="Colour" value="0.8 1.0 0.6"/>
+							<UserString key="tip" value="Combine Stunt Rally terrain textures _d, _s, _n to _ds and _nh"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="312 450 180 24" name="ConvertMat4RoR">
+							<Property key="Caption" value=".materials"/>
+							<Property key="TextColour" value="0.6 0.9 0.9"/>
+							<Property key="Colour" value="0.6 0.9 0.9"/>
+							<UserString key="tip" value="Convert old Stunt Rally .mat to .material in RoR path, subdir materials"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="512 450 180 24" name="CreateOdef4RoR">
+							<Property key="Caption" value=".odef for .mesh"/>
+							<Property key="TextColour" value="0.9 0.8 0.6"/>
+							<Property key="Colour" value="0.9 0.8 0.6"/>
+							<UserString key="tip" value="Create .odef for all .mesh files  in main RoR path subdirs"/>
 						</Widget>
 					</Widget>
 
 					<!-- Settings -->
 					<Widget type="TabItem" skin="" position="2 24 794 562">
-						<Property key="Caption" value="#C0F0F0#{Settings}"/>
+						<Property key="Caption" value="#C0D0E0#{Settings}"/>
 						<Property key="Colour" value="1 0.9 0.4"/>
 
 						<Widget type="TextBox" skin="TextBox" position="32 32 484 24">
@@ -754,9 +765,9 @@
 							<Property key="TextColour" value="0.9 0.95 1.0"/>
 						</Widget>
 
-						<Widget type="Button" skin="CheckBox" position="32 150 200 24" name="ExportOnLoad">
+						<Widget type="Button" skin="CheckBox" position="32 170 200 24" name="ExportOnLoad">
 							<Property key="Caption" value="#{ExportOnLoad}"/>
-							<Property key="TextColour" value="0.6 0.7 0.8"/>
+							<Property key="TextColour" value="0.6 0.8 0.9"/>
 						</Widget>
 
 					</Widget>

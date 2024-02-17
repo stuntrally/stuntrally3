@@ -52,6 +52,10 @@ void CGui::btnConvertMat(WP)
 {
 	app->ror->ConvertMat();
 }
+void CGui::btnCreateOdef(WP)
+{
+	app->ror->CreateOdef();
+}
 
 
 //  ctor
@@ -213,12 +217,12 @@ void ExportRoR::ExportTrack()  // whole, full
 	//  guid  ----
 	//  hash from tacrk name
 	size_t hsh = std::hash<std::string>()(name);
-	hsh = max(0xFFFFFFFFFFFFu, hsh);  // max 12 chars
-	char hex[32];
-	sprintf(hex, "%012zX", hsh);
-	gui->Exp(CGui::TXT, "Name hash: " + string(hex));
+	hsh &= 0xFFFFFFFFFFFFu;  // max 12 chars
+	char hex[32];  sprintf(hex, "%012zX", hsh);
+	string shex = hex;  //if (shex.length() > 12)  shex = shex.substr(0,12);
+	gui->Exp(CGui::TXT, "Track id: " + toStr(trkId) + "  Name hash: " + shex);
 	
-	trn << "GUID = 11223344-5566-7788-" << fToStr(trkId,0,4,'0') <<"-"<< hex <<"\n";
+	trn << "GUID = 11223344-5566-7788-" << fToStr(trkId,0,4,'0') <<"-"<< shex <<"\n";
 	trn << "\n";
 
 	//  if has groundmodel, define landuse file

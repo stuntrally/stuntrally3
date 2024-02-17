@@ -626,6 +626,7 @@ void CGui::InitGui()
 
 	Btn("ConvertMat4RoR", btnConvertMat);
 	Btn("ConvertTerrain4RoR", btnConvertTerrain);
+	Btn("CreateOdef4RoR", btnCreateOdef);
 	
 
 	///  📃 Fill Combo boxes  . . . . . . .
