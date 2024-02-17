@@ -18,6 +18,8 @@ protected:
 	class CData* data =0;
 	class Presets* pre =0;
 
+	bool copyTerTex, copyVeget, copyGrass, copyObjs;
+
 //  var
 	std::string
 		path,     // main RoR content or mods path
@@ -33,10 +35,11 @@ protected:
 	bool CopyFile(const std::string& from, const std::string& to);  // both args are path with filenames
 
 public:
+	//  🌟 ctor
 	ExportRoR(App* app1);
 	void Default();
 
-	//  main
+	//  🏗️ main
 	void ExportTrack();  // whole / full,  needs paths set in settings
 
 	//  parts
@@ -48,7 +51,7 @@ public:
 	void ExportRoad();     //  *-road.tobj  and  *.as
 	void ExportVeget();    //  *-veget.tobj  and  density maps *-veget?.png
 
-	//  tools other
+	//  🛠️ tools other
 	void CreateOdef();  // make .odef for all .mesh files  in main path subdirs
 	void ConvertTerrainTex();  // combines _d + _s to _ds and _nh as .png
 	void ConvertMat();  // reads old SR .mat and saves as .material

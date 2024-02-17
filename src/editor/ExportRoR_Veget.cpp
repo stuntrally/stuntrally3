@@ -16,11 +16,10 @@
 #include <OgreImage2.h>
 #include <OgreVector3.h>
 
+#include <cstdlib>
 #include <exception>
 #include <string>
 #include <map>
-#include <filesystem>
-namespace fs = std::filesystem;
 using namespace Ogre;
 using namespace std;
 
@@ -42,9 +41,10 @@ void ExportRoR::ExportVeget()
 		ofstream veg;
 		veg.open(vegFile.c_str(), std::ios_base::out);
 
-		// string matFile = path + name + "-veget.material";
-		// ofstream mat;
-		// mat.open(matFile.c_str(), std::ios_base::out);
+		ofstream mat;
+		//- if (hasGrass)
+		string matFile = path + name + "-veget.material";
+		mat.open(matFile.c_str(), std::ios_base::out);
 
 
 		//------------------------------------------------------------------------------------------------------------------------
@@ -106,8 +106,8 @@ void ExportRoR::ExportVeget()
 						Real a = terrain->getAngle(xw, zw, 1.f);
 						Real h = terrain->getHeight(xw, zw);  // /2 par..
 						float d = rd
-								* scn->linRange(a, ch->angMin, ch->angMax, ch->angSm)
-								* scn->linRange(h, ch->hMin, ch->hMax, ch->hSm);
+							* scn->linRange(a, ch->angMin, ch->angMax, ch->angSm)
+							* scn->linRange(h, ch->hMin, ch->hMax, ch->hSm);
 
 						ColourValue cv(d,d,d);  // white
 						tb2.setColourAt(cv, x, y, 0, pf);
@@ -119,7 +119,7 @@ void ExportRoR::ExportVeget()
 					gui->Exp(CGui::WARN, string("Exception in grass dens map: ") + ex.what());
 				}
 
-			#if 0  // NO, once for all
+			#if 1  // NO?, once for all bad-
 
 				//  copy grass*.png
 				//------------------------------------------------------------
@@ -152,7 +152,7 @@ void ExportRoR::ExportVeget()
 			#endif
 			}
 		}
-		// mat.close();
+		mat.close();
 
 		gui->Exp(CGui::NOTE, "Grasses: " + toStr(igrs));
 
@@ -187,7 +187,7 @@ void ExportRoR::ExportVeget()
 				for (int y = 0; y < yy; ++y)
 				for (int x = 0; x < xx; ++x)
 				{
-					float rd = tb.getColourAt(xx-1 - x, y, 0, pf).r;  // flip x
+					float rd = tb.getColourAt(xx-1 - x, y, 0, pf).r;  // no flip x
 
 					float xw = (float(x) / (xx-1) - 0.5f) * tws,
 						  zw = (float(yy-1 - y) / (yy-1) - 0.5f) * tws;
@@ -239,8 +239,12 @@ void ExportRoR::ExportVeget()
 						#endif
 					}	}
 
+					float dens = vg.dens * sc->densTrees * cfg->treesMul;  // dens mul;
+					if (Math::UnitRandom() > 0.5f * dens)  // par !!
+						d = 0.f;  //  place tree with 1.f,  0.f none
+					
 					ColourValue cv(d,d,d);  // white
-					tb2.setColourAt(cv, x, y, 0, pf);
+					tb2.setColourAt(cv, xx-1 - x, /*yy-1 -*/ y, 0, pf);  // flip x ?
 				}
 				im2.save(path + mapName, 0, 0);
 			}
@@ -254,17 +258,14 @@ void ExportRoR::ExportVeget()
 			auto nomesh = mesh.substr(0, mesh.length()-5);
 			const PVeget* pveg = scn->data->pre->GetVeget(nomesh);
 			if (!pveg)  continue;
-			bool add = 1;
 
-
-		// #define COPY_VEGET 1  // NO, once for all tracks
-		#ifdef COPY_VEGET
 
 			//------------------------------------------------------------
 			//  Find mesh  in old SR dirs
 			//------------------------------------------------------------
 			bool exists = 0;
 			string from, to;
+			
 			for (auto& d : dirs)
 			{
 				string file = pSet->pathExportOldSR + d +"/"+ mesh;
@@ -272,10 +273,19 @@ void ExportRoR::ExportVeget()
 				{	exists = 1;  from = file;  }
 				// gui->Exp(CGui::NOTE, String("veget: ")+file+ "  ex: "+(exists?"y":"n"));
 			}
+			if (!exists)  //! skip  RoR would crash
+			{
+				gui->Exp(CGui::WARN, "veget not found in old SR: "+mesh);
+				continue;
+			}
 
-			//  copy mesh from old SR  ..or slow convert v2 to v1-
+			//  copy mesh from old SR
+			//----------------------------------
 			if (exists)
 			{
+				if (!copyVeget)
+					++iVegetMesh;
+				else
 				if (once.find(mesh) == once.end())
 				{	once[mesh] = 1;
 
@@ -288,6 +298,7 @@ void ExportRoR::ExportVeget()
 
 				//  get mesh mtr
 				//---------------------------------------------------------------------------------------
+			#if 0  // NO, slow buggy, once for all
 				try
 				{
 					String resGrp = "MeshV1";
@@ -309,33 +320,33 @@ void ExportRoR::ExportVeget()
 					String s = "Error: loading mesh: " + mesh + " \nfrom: " + path + "\n failed ! \n" + ex.what() + "\n";
 					gui->Exp(CGui::WARN, s);
 				}
-		#endif
+			#endif
 
 				//  write  ------
 				if (l==0)
-					veg << "\n// trees  yawFrom, yawTo,  scaleFrom, scaleTo,  highDensity,  distance1, distance2,  meshName colormap densitymap\n";
-				if (add)
-				{	//trees 0, 360, 0.1, 0.12, 2, 60, 3000, fir05_30.mesh aspen-test.dds aspen_grass_density2.png 
-					veg << "trees 0, 360,  ";
-					veg << vg.minScale << ", " << vg.minScale << ",  ";
-					veg << vg.dens * sc->densTrees * 2.f << ",  ";
+					veg << "\n// trees  yawFrom, yawTo,  scaleFrom, scaleTo,  highDensity,  distance1, distance2," <<
+						"  meshName colormap densitymap  gridspacing collmesh\n";
 
-					// veg << ", 60, 1000, ";  // vis dist
-					veg << pveg->visDist * 0.5f << ", " << pveg->farDist << ",  ";  // par .. todo
-					veg << vg.name << " none " << mapName << "\n";
-				}
+				//trees 0, 360, 0.1, 0.12, 2, 60, 3000, fir05_30.mesh aspen-test.dds aspen_grass_density2.png 
+				veg << "trees 0, 360,  ";
+				veg << vg.minScale << ", " << vg.maxScale << ",  ";
+				veg << "1.0,  ";
+				// veg << vg.dens * sc->densTrees * cfg->treesMul << ",  ";  // must be >= 1 ?
 
-		#ifdef COPY_OBJS
-			}
-		#else
-				++iVegetMesh;
-		#endif
-		}
+				// veg << ", 60, 1000, ";  // vis dist
+				veg << pveg->visDist * 0.2f << ", " << pveg->farDist << ",  ";  // par .. todo
+				veg << vg.name << " none " << mapName;
+				
+				// veg << " -2" << "\n";  // grid?
+				veg << "\n";
+
+			} // exists
+		} // layers
 		
 		veg.close();
 
 		gui->Exp(CGui::NOTE, "Veget meshes: " + toStr(iVegetMesh));
 	}
 
-	gui->Exp(CGui::INFO, "Time Veget: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s\n");
+	gui->Exp(CGui::INFO, "Veget Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s\n");
 }

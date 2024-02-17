@@ -58,7 +58,7 @@ void CGui::btnCreateOdef(WP)
 }
 
 
-//  ctor
+//  🌟 ctor
 ExportRoR::ExportRoR(App* app1)
 {
 	app = app1;
@@ -71,9 +71,14 @@ ExportRoR::ExportRoR(App* app1)
 
 	data = scn->data;
 	pre = data->pre;
+
+	copyTerTex =1;
+	copyVeget =1;
+	copyGrass =1;
+	copyObjs =1;
 }
 
-//  utils
+//  ⛓️ utils
 //------------------------------------------------------------
 
 //  util convert SR pos to RoR pos
@@ -98,8 +103,8 @@ bool ExportRoR::CopyFile(const std::string& from, const std::string& to)
 			fs::remove(to.c_str());
 		fs::copy_file(from.c_str(), to.c_str());
 	#endif
-		String s = "Copied file: " + from + "\n  to: " + to /*+ "\n  "*/;
-		gui->Exp(CGui::TXT, s);
+		String s = "Copied: " + from + "\n        to: " + to /*+ "\n  "*/;
+		gui->Exp(CGui::DBG, s);
 	}
 	catch (exception ex)
 	{
@@ -111,7 +116,7 @@ bool ExportRoR::CopyFile(const std::string& from, const std::string& to)
 }
 
 
-//  setup path, name, create dir
+//  ⚙️ Setup path, name, create dir
 //------------------------------------------------------------
 void ExportRoR::SetupPath()
 {
@@ -214,7 +219,7 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn << "CategoryID = 129\n";
 	trn << "Version = " << 1 << "\n";  // todo global manual +
 	
-	//  guid  ----
+	//  Guid  ----
 	//  hash from tacrk name
 	size_t hsh = std::hash<std::string>()(name);
 	hsh &= 0xFFFFFFFFFFFFu;  // max 12 chars
@@ -253,15 +258,16 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn << "[Objects]\n";
 	if (hasRoad)
 		trn << name+"-road.tobj=\n";
-	// if (hasVeget)
-	// 	trn << name+"-veget.tobj=\n";
-	// if (hasObjects)
-	// 	trn << name+"-obj.tobj=\n";
+	if (hasVeget)
+		trn << name+"-veget.tobj=\n";
+	if (hasObjects)
+		trn << name+"-obj.tobj=\n";
 	trn << "\n";
 
-	trn << "[Scripts]\n";
-	trn << name + ".as=\n";
-	//trn << name+".terrn.as=\n";
+	if (hasRoad)
+	{	trn << "[Scripts]\n";
+		trn << name + ".as=\n";	 //".terrn.as=\n";
+	}
 
 	trn.close();
 
