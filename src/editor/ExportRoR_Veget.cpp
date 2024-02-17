@@ -13,6 +13,7 @@
 #include "TracksXml.h"
 
 #include <Terra.h>
+#include <OgreString.h>
 #include <OgreImage2.h>
 #include <OgreVector3.h>
 
@@ -98,19 +99,19 @@ void ExportRoR::ExportVeget()
 					for (int y = 0; y < yy; ++y)
 					for (int x = 0; x < xx; ++x)
 					{
-						float rd = tb.getColourAt(xx-1 - x, y, 0, pf).r;  // flip x
+						float rd = tb.getColourAt(xx-1 - y, x, 0, pf).r;  // flip x
 						
 						float xw = (float(x) / (xx-1) - 0.5f) * tws,
 							  zw = (float(yy-1 - y) / (yy-1) - 0.5f) * tws;
 
 						Real a = terrain->getAngle(xw, zw, 1.f);
 						Real h = terrain->getHeight(xw, zw);  // /2 par..
-						float d = rd
-							* scn->linRange(a, ch->angMin, ch->angMax, ch->angSm)
-							* scn->linRange(h, ch->hMin, ch->hMax, ch->hSm);
+						float d = rd *
+							scn->linRange(a, ch->angMin, ch->angMax, ch->angSm) *
+							scn->linRange(h, ch->hMin, ch->hMax, ch->hSm);
 
 						ColourValue cv(d,d,d);  // white
-						tb2.setColourAt(cv, x, y, 0, pf);
+						tb2.setColourAt(cv, y, x, 0, pf);
 					}
 					im2.save(path + mapName, 0, 0);
 				}
@@ -187,14 +188,14 @@ void ExportRoR::ExportVeget()
 				for (int y = 0; y < yy; ++y)
 				for (int x = 0; x < xx; ++x)
 				{
-					float rd = tb.getColourAt(xx-1 - x, y, 0, pf).r;  // no flip x
+					float rd = tb.getColourAt(xx-1 - y, x, 0, pf).r;  // flip x
 
 					float xw = (float(x) / (xx-1) - 0.5f) * tws,
 						  zw = (float(yy-1 - y) / (yy-1) - 0.5f) * tws;
 
 					Real a = terrain->getAngle(xw, zw, 1.f);  //td.fTriangleSize);
 					Real h = terrain->getHeight(xw, zw);
-					float d = rd;
+					float d = 1.f;
 					if (a > vg.maxTerAng || rd == 0.f ||
 						h > vg.maxTerH || h < vg.minTerH)
 						d = 0.f;
@@ -205,7 +206,7 @@ void ExportRoR::ExportVeget()
 							d = 0.f;
 						else
 						{
-						#if 1  //  slow ..
+						#if 1  //  terribly slow ..
 							int c = sc->trRdDist + vg.addRdist;
 							int d = c;
 							bool bMax = vg.maxRdist < 20; //100 slow-
@@ -214,8 +215,10 @@ void ExportRoR::ExportVeget()
 
 							//  find dist to road
 							int ii,jj, rr, rmin = 3000;  //d
-							for (jj = -d; jj <= d; ++jj)
-							for (ii = -d; ii <= d; ++ii)
+							for (jj = -d; jj <= d; jj+=2)
+							for (ii = -d; ii <= d; ii+=2)
+							// for (jj = -d; jj <= d; ++jj)
+							// for (ii = -d; ii <= d; ++ii)
 							{
 								const int
 									xi = std::max(0,std::min(xx-1, y+ii)),
@@ -227,7 +230,6 @@ void ExportRoR::ExportVeget()
 								if (cr < 0.75f)  // par-
 								{
 									rr = abs(ii)+abs(jj);
-									//rr = sqrt(float(ii*ii+jj*jj));  // much slower
 									rmin = std::min(rmin, rr);
 								}
 							}
@@ -239,12 +241,15 @@ void ExportRoR::ExportVeget()
 						#endif
 					}	}
 
+					//  write pixel  ------
+					//  place tree with 1.f,  0.f none
 					float dens = vg.dens * sc->densTrees * cfg->treesMul;  // dens mul
 					if (Math::UnitRandom() > dens)  // par
-						d = 0.f;  //  place tree with 1.f,  0.f none
+						d = 0.f;
 					
+					d *= rd;
 					ColourValue cv(d,d,d);  // white
-					tb2.setColourAt(cv, xx-1 - x, /*yy-1 -*/ y, 0, pf);  // flip x ?
+					tb2.setColourAt(cv, y, x, 0, pf);  // flip x-y
 				}
 				im2.save(path + mapName, 0, 0);
 			}
@@ -289,7 +294,7 @@ void ExportRoR::ExportVeget()
 				if (once.find(mesh) == once.end())
 				{	once[mesh] = 1;
 
-					to = path + mesh;
+					to = path + name;
 					if (CopyFile(from, to))
 						++iVegetMesh;
 					else
@@ -330,12 +335,14 @@ void ExportRoR::ExportVeget()
 				//trees 0, 360, 0.1, 0.12, 2, 60, 3000, fir05_30.mesh aspen-test.dds aspen_grass_density2.png 
 				veg << "trees 0, 360,  ";
 				veg << vg.minScale << ", " << vg.maxScale << ",  ";
-				veg << "1.0,  ";
-				// veg << vg.dens * sc->densTrees * cfg->treesMul << ",  ";  // must be >= 1 ?
+				
+				veg << "2.0,  ";
+				// veg << vg.dens * sc->densTrees * cfg->treesMul << ",  ";  // no, in dens png
 
 				// veg << ", 60, 1000, ";  // vis dist
-				veg << pveg->visDist * 0.2f << ", " << pveg->farDist << ",  ";  // par .. todo
-				veg << vg.name << " none " << mapName;
+				veg << pveg->visDist * 0.5f << ", " << pveg->farDist << ",  ";  // par .. todo
+				// veg << vg.name << " none " << mapName;
+				veg << name << " none " << mapName;
 				
 				// veg << " -2" << "\n";  // grid?
 				veg << "\n";
