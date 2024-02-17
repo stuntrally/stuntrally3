@@ -162,8 +162,9 @@ void ExportRoR::ExportTerrain()  // whole, full
 				for (int x = 0; x < xx; ++x)
 				{
 					ColourValue rgb = tbD.getColourAt(x, y, 0, pfD);
-					ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.5f;  // par spec mul ..
-					ColourValue ds(rgb.r, rgb.g, rgb.b, a.r);
+					// ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.1f;  // par spec mul-
+					// ColourValue ds(rgb.r, rgb.g, rgb.b, a.r);
+					ColourValue ds(rgb.r, rgb.g, rgb.b, 0.f);  // 0 have to, white spots bug
 					tbDS.setColourAt(ds, x, y, 0, pfA);
 				}
 				imDS.save(path + layTexDS[i], 0, 0);
@@ -176,7 +177,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 			//  combine Norm+H
 			//------------------------------------------------------------
 			Image2 imN, imH, imNH;
-			imD.load(norm, "General");  //imS.load(spec, "General");
+			imN.load(norm, "General");  //imS.load(spec, "General");
 			const int xn = imN.getWidth(), yn = imD.getHeight();
 			
 			imNH.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
@@ -354,13 +355,13 @@ void ExportRoR::ExportTerrain()  // whole, full
 	otc << "maxBatchSize=65\n";
 	otc << "\n";
 	otc << "# Whether to support a light map over the terrain in the shader, if it's present (default true).\n";
-	otc << "LightmapEnabled=0\n";  // nope
+	otc << "LightmapEnabled=0\n";  // nope?
 	otc << "\n";
 	otc << "# Whether to support normal mapping per layer in the shader (default true). \n";
 	otc << "NormalMappingEnabled=1\n";  // yes
 	otc << "\n";
 	otc << "# Whether to support specular mapping per layer in the shader (default true). \n";
-	otc << "SpecularMappingEnabled=1\n";  // idk DS
+	otc << "SpecularMappingEnabled=0\n";  // idk DS
 	otc << "\n";
 
 	otc << "# Whether to support parallax mapping per layer in the shader (default true). \n";

@@ -122,7 +122,7 @@ void ExportRoR::ConvertTerrainTex()
 		//  combine Norm+H
 		//------------------------------------------------------------
         Image2 imN, imH, imNH;
-        imD.load(norm, "General");  //imS.load(spec, "General");
+        imN.load(norm, "General");  //imS.load(spec, "General");
 		const int xn = imN.getWidth(), yn = imD.getHeight();
 		
 		imNH.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
