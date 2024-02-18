@@ -65,20 +65,25 @@ void ExportRoR::ExportObjects()
 			continue;
 		}
 
+		bool many = 1;  // each mesh own scale
+		// bool many = 0;  // or one for all mesh
+		string odefName = many ? o.name +"-"+ toStr(iodef) : o.name;
+
 		if (copyObjs)
 		{
 			//  object  save  .odef
 			//------------------------------------------------------------
-			string odefFile = path + o.name + ".odef";
-			// if (!fs::exists(odefFile))
-			if (once.find(o.name) == once.end())
+			string odefFile = path + odefName + ".odef";
+			// if (!fs::exists(odefFile))	
+			if (many || once.find(o.name) == once.end())
 			{
 				once[o.name] = 1;
 				ofstream odef;
 				odef.open(odefFile.c_str(), std::ios_base::out);
 				
 				odef << mesh + "\n";
-				odef << "1, 1, 1\n";
+				//odef << "1, 1, 1\n";
+				odef << o.scale.x <<", "<< o.scale.y <<", "<< o.scale.z <<"\n";
 				odef << "\n";
 				odef << "beginmesh\n";
 				odef << "mesh " + mesh + "\n";
@@ -112,9 +117,9 @@ void ExportRoR::ExportObjects()
 			obj << strPos(p) << " ";
 			// todo  fix all rot ?
 			// obj << fToStr(q.getPitch().valueDegrees()+90.f,0,3)+", "+fToStr(q.getYaw().valueDegrees(),0,3)+", "+fToStr(q.getRoll().valueDegrees(),0,3)+", ";
-			obj << "90, 0, "+fToStr(q.getYaw().valueDegrees() + 180.f, 1,4)+",  ";  // fix?
+			obj << "90, 0, "+fToStr(q.getYaw().valueDegrees() - 90.f, 1,4)+",  ";  // fix?
 			// todo  no scale ??
-			obj << o.name +"\n";
+			obj << odefName +"\n";
 		}
 	}
 	obj.close();
