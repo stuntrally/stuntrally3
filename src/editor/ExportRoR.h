@@ -20,17 +20,19 @@ protected:
 
 	bool copyTerTex, copyVeget, copyGrass, copyObjs;
 
-//  var
+	//  vars
 	std::string
 		path,     // main RoR content or mods path
 		dirName,  // subdir name for track
 		name;     // track name
+	int version = 1;
 
 	bool hasRoad = 0, hasVeget = 0, hasObjects = 0;
 
 	float hmin = 0.f, half = 0.f;  // min height, half world size
 	int water = 0;  float Ywater = 0.f;  // bool, level
 
+	//  utils
 	Ogre::String strPos(const Ogre::Vector3& pos);  // util convert SR pos to RoR pos
 	bool CopyFile(const std::string& from, const std::string& to);  // both args are path with filenames
 

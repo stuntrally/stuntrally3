@@ -21,8 +21,9 @@
 #include <fstream>
 #include <string>
 #include <map>
-#include <filesystem>
 #include <sstream>
+#include <time.h>
+#include <filesystem>
 namespace fs = std::filesystem;
 using namespace Ogre;
 using namespace std;
@@ -71,6 +72,8 @@ ExportRoR::ExportRoR(App* app1)
 
 	data = scn->data;
 	pre = data->pre;
+
+	version = 1;  // increase..
 
 	copyTerTex =1;
 	copyVeget =1;
@@ -174,7 +177,8 @@ void ExportRoR::ExportTrack()  // whole, full
 		"objects_static.material",
 		"rocks.material",
 		"trees_ch.material",
-		"trees.material"};
+		"trees.material",
+		"trees_old.material"};
 	for (auto& mtr : files)
 		CopyFile(pathMtr + mtr, path + mtr);
 
@@ -183,19 +187,24 @@ void ExportRoR::ExportTrack()  // whole, full
 
 	//  🖼️ copy Preview  mini
 	//------------------------------------------------------------
-	String pathPrv = PATHS::Tracks() + "/" + name + "/preview/";
+	// String pathPrv = PATHS::Tracks() + "/" + name + "/preview/";  // new SR
+	string pathPrv = pSet->pathExportOldSR + "tracks/" + name + "/preview/";  // old SR
 	string from = pathPrv + "view.jpg", to = path + name + "-mini.jpg";
 	CopyFile(from, to);
 
 
-	//  get Authors from tracks.ini
+	//  get Authors etc from tracks.ini
 	//------------------------------------------------------------
-	string authors = "CryHam";
+	string authors = "CryHam", scenery;
+	int difficulty = -1;
 	int trkId = 0;  // N from ini  // todo Test* same-
+
 	int id = scn->data->tracks->trkmap[pSet->gui.track];
 	if (id > 0)
 	{	const TrackInfo& ti = scn->data->tracks->trks[id-1];
 
+		difficulty = ti.diff;
+		scenery = ti.scenery;
 		authors = ti.author=="CH" ? "CryHam" : ti.author;
 		trkId = ti.n;
 	}else
@@ -230,9 +239,10 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn << "\n";
 
 	trn << "CategoryID = 129\n";
-	trn << "Version = " << 1 << "\n";  // todo global manual +
+	trn << "Version = " << version << "\n";
 	
-	//  Guid  ----
+	//  Guid
+	//------------------------------------------------------------
 	//  hash from tacrk name
 	size_t hsh = std::hash<std::string>()(name);
 	hsh &= 0xFFFFFFFFFFFFu;  // max 12 chars
@@ -247,27 +257,41 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn << "#TractionMap = landuse.cfg\n";  // todo  surfaces.cfg
 	trn << "\n";
 
+	//  Info text
+	//------------------------------------------------------------
 	trn << "[Authors]\n";
 	trn << "Authors = " + authors + "  .\n";
 	trn << "Conversion = Exported from Stunt Rally 3 Track Editor, version: " << SET_VER << "  .\n";
 
+	time_t now = time(0);
+	tm tn;  tn = *localtime(&now);
+	char dtm[80];  strftime(dtm, sizeof(dtm), "%Y-%m-%d.%X", &tn);
+	trn << "Date = " << dtm << "   .\n";
+
+	//  extra info from SR3 track
+	if (!scenery.empty())
+		trn << "stat0 = " << "Scenery = " << scenery << "   .\n";
+	if (difficulty >= 0)
+		trn << "stat1 = " << "Difficulty = " << TR("#{Diff"+toStr(difficulty)+"}") << "   .\n";  // no TR? _en
+
 	const bool roadtxt = !scn->roads.empty();
 	if (roadtxt)
-	{	auto& rd = scn->roads[0];  // extra info from SR3 track
+	{	auto& rd = scn->roads[0];
 		auto len = rd->st.Length;  // road stats
 
-		trn << "stat1 = " << "Length: " <<  fToStr(len * 0.001f,2,4) << " km  /  " << fToStr(len * 0.000621371f,2,4) << " mi  .\n";
-		trn << "stat2 = " << "Width average: " << fToStr(rd->st.WidthAvg,1,3) << " m  .\n";
-		trn << "stat3 = " << "Height range: " << fToStr(rd->st.HeightDiff,0,3) << " m  .\n";
-		trn << "stat4 = " << "Bridges: " << fToStr(rd->st.OnTer,0,3) << " %  .\n";
-		// trn << "stat5 = " << "bank angle avg: " << fToStr(rd->st.bankAvg,0,2) << "\n";
-		trn << "stat5 = " << "Max banking angle: " << fToStr(rd->st.bankMax,0,2) << "'  .\n";
+		trn << "stat2 = " << "Length: " <<  fToStr(len * 0.001f,2,4) << " km  /  " << fToStr(len * 0.000621371f,2,4) << " mi  .\n";
+		trn << "stat3 = " << "Width average: " << fToStr(rd->st.WidthAvg,1,3) << " m  .\n";
+		trn << "stat4 = " << "Height range: " << fToStr(rd->st.HeightDiff,0,3) << " m  .\n";
+		trn << "stat5 = " << "Bridges: " << fToStr(rd->st.OnTer,0,3) << " %  .\n";
+		// trn << "stat7 = " << "bank angle avg: " << fToStr(rd->st.bankAvg,0,2) << "\n";
+		trn << "stat6 = " << "Max banking angle: " << fToStr(rd->st.bankMax,0,2) << "'  .\n";
 
 		trn << "Description = "+rd->sTxtDescr+"   .\n";  // text
 		trn << "drive_Advice = "+rd->sTxtAdvice+"   .\n";
 	}
 	trn << " \n";
 
+	//------------------------------------------------------------
 	trn << "[Objects]\n";
 	if (hasRoad)
 		trn << name+"-road.tobj=\n";
