@@ -16,6 +16,7 @@
 #include <OgreString.h>
 #include <OgreImage2.h>
 #include <OgreVector3.h>
+#include <OgreColourValue.h>
 
 #include <cstdlib>
 #include <exception>
@@ -30,7 +31,6 @@ using namespace std;
 //------------------------------------------------------------------------------------------------------------------------
 void ExportRoR::ExportVeget()
 {
-	Ogre::Timer ti;
 
 	const Real tws = sc->tds[0].fTerWorldSize;
 	const auto* terrain = scn->ters[0];
@@ -47,6 +47,68 @@ void ExportRoR::ExportVeget()
 		string matFile = path + name + "-veget.material";
 		mat.open(matFile.c_str(), std::ios_base::out);
 
+		
+		//  read road dens, once, add outline for trees
+		//------------------------------------------------------------
+		Ogre::Timer tiRd;
+		char* rdGr = 0;   // [] roadDens copy  grass
+		char* rdTr = 0;  //  for trees, thick, outline
+		
+		Image2 img;  PixelFormatGpu pf;
+		int xx = 0, yy = 0;
+		try
+		{
+			img.load(String("roadDensity.png"), "General");
+			xx = img.getWidth();  yy = img.getHeight();
+			pf = img.getPixelFormat();
+
+			// im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
+			rdGr = new char[xx * yy];
+			rdTr = new char[xx * yy];
+		}
+		catch (exception ex)
+		{
+			gui->Exp(CGui::WARN, string("Exception in road dens map: ") + ex.what());
+		}						
+		if (!rdGr || !rdTr)
+			return;
+
+		TextureBox tb = img.getData(0);
+		// TextureBox tb2 = im2.getData(0);
+
+		int a = 0;
+		for (int y = 0; y < yy; ++y)
+		for (int x = 0; x < xx; ++x, ++a)
+		{
+			float rd = tb.getColourAt(xx-1 - y, x, 0, pf).r;  // flip x
+			rdGr[a] = rd > 0.995f ? 0 : 1;
+		}
+
+		const int d = 8, dd = d + 3;  // par ..
+		// const int d = 5, dd = d;
+		// const int d = 1, dd = d;  // fast
+		for (int y = d; y < yy-d; ++y)
+		for (int x = d; x < xx-d; ++x)
+		{
+			char b = 0;
+			for (int jj = -d; jj <= d; ++jj)
+			for (int ii = -d; ii <= d; ++ii)
+			if (ii + jj < dd)
+			{
+				char c = rdGr[ (y+jj) * xx + x+ii ];
+				if (c > b)  b = c;
+				rdTr[y*xx + x] = b;
+
+				// ColourValue cv{b ? 1.f : 0.f, 0.f, 0.f};
+				// tb2.setColourAt(cv, x, y, 0, pf);
+			}
+		}
+		// im2.save(path + name + "-ROAD a.png", 0, 0);
+
+		gui->Exp(CGui::INFO, "Veget road density Time: " + fToStr(tiRd.getMilliseconds()/1000.f,1,3) + " s\n");
+		Ogre::Timer ti;
+	// return;  // test
+	
 
 		//------------------------------------------------------------------------------------------------------------------------
 		//  🌿 Grass layers
@@ -86,8 +148,8 @@ void ExportRoR::ExportVeget()
 				//  grass dens map
 				//------------------------------------------------------------
 				Image2 img, im2;
-				try
-				{
+				// try
+				// {
 					img.load(String("roadDensity.png"), "General");
 					im2.load(String("roadDensity.png"), "General");
 					// im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
@@ -96,10 +158,12 @@ void ExportRoR::ExportVeget()
 					TextureBox tb = img.getData(0), tb2 = im2.getData(0);
 					auto pf = img.getPixelFormat();
 
+					int a = 0;
 					for (int y = 0; y < yy; ++y)
-					for (int x = 0; x < xx; ++x)
+					for (int x = 0; x < xx; ++x,++a)
 					{
-						float rd = tb.getColourAt(xx-1 - y, x, 0, pf).r;  // flip x
+						float rd = 1 - rdGr[a];
+							//tb.getColourAt(xx-1 - y, x, 0, pf).r;  // flip x
 						
 						float xw = (float(x) / (xx-1) - 0.5f) * tws,
 							  zw = (float(yy-1 - y) / (yy-1) - 0.5f) * tws;
@@ -114,11 +178,11 @@ void ExportRoR::ExportVeget()
 						tb2.setColourAt(cv, y, x, 0, pf);
 					}
 					im2.save(path + mapName, 0, 0);
-				}
-				catch (exception ex)
-				{
-					gui->Exp(CGui::WARN, string("Exception in grass dens map: ") + ex.what());
-				}
+				// }
+				// catch (exception ex)
+				// {
+				// 	gui->Exp(CGui::WARN, string("Exception in grass dens map: ") + ex.what());
+				// }
 
 			#if 1  // NO?, once for all bad-
 
@@ -175,20 +239,18 @@ void ExportRoR::ExportVeget()
 			//  veget dens map
 			//------------------------------------------------------------
 			Image2 img, im2;
-			try
-			{
+			// try
+			// {
 				img.load(String("roadDensity.png"), "General");
-				im2.load(String("roadDensity.png"), "General");
-				// im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
 
-				const int xx = img.getWidth(), yy = img.getHeight();
-				TextureBox tb = img.getData(0), tb2 = im2.getData(0);
-				auto pf = img.getPixelFormat();
+				im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
+				TextureBox tb2 = im2.getData(0);
 
+				int a = 0;
 				for (int y = 0; y < yy; ++y)
-				for (int x = 0; x < xx; ++x)
+				for (int x = 0; x < xx; ++x,++a)
 				{
-					float rd = tb.getColourAt(xx-1 - y, x, 0, pf).r;  // flip x
+					float rd = 1 - rdTr[a];
 
 					float xw = (float(x) / (xx-1) - 0.5f) * tws,
 						  zw = (float(yy-1 - y) / (yy-1) - 0.5f) * tws;
@@ -206,7 +268,8 @@ void ExportRoR::ExportVeget()
 							d = 0.f;
 						else
 						{
-						#if 1  //  terribly slow ..
+						#if 0  //  terribly slow ..
+						//------------------------------------------------------------
 							int c = sc->trRdDist + vg.addRdist;
 							int d = c;
 							bool bMax = vg.maxRdist < 20; //100 slow-
@@ -226,7 +289,8 @@ void ExportRoR::ExportVeget()
 
 								const float cr = tb.getColourAt(
 									xi, yj, 0, Ogre::PFG_RGBA8_UNORM_SRGB ).r;
-								
+							
+								// float rd = 1 - rdTr[(y+jj)*xx + x+ii];  //..
 								if (cr < 0.75f)  // par-
 								{
 									rr = abs(ii)+abs(jj);
@@ -252,11 +316,11 @@ void ExportRoR::ExportVeget()
 					tb2.setColourAt(cv, y, x, 0, pf);  // flip x-y
 				}
 				im2.save(path + mapName, 0, 0);
-			}
-			catch (exception ex)
-			{
-				gui->Exp(CGui::WARN, string("Exception in grass dens map: ") + ex.what());
-			}
+			// }
+			// catch (exception ex)
+			// {
+			// 	gui->Exp(CGui::WARN, string("Exception in grass dens map: ") + ex.what());
+			// }
 
 			
 			//  presets.xml needed
@@ -361,7 +425,9 @@ void ExportRoR::ExportVeget()
 		veg.close();
 
 		gui->Exp(CGui::NOTE, "Veget meshes: " + toStr(iVegetMesh));
-	}
+		delete[] rdGr;
+		delete[] rdTr;
 
-	gui->Exp(CGui::INFO, "Veget Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s\n");
+		gui->Exp(CGui::INFO, "Veget Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s\n");
+	} // hasVeget
 }
