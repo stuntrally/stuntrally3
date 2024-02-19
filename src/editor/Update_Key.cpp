@@ -414,7 +414,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 		//  🖼️🎥 prv cam
 		case key(F7):
-			if (alt){  if (ror)  ror->ExportTrack();  }
+			if (ctrl){  if (ror)  ror->ExportTrack();  }
 			else      togPrvCam();  break;
 
 

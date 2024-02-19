@@ -103,7 +103,7 @@ void RoRconfig::Default()
 	roadStepDist = 10.f;  // hq
 	roadHadd = -0.7f;  //+
 	
-	tileMul = 0.6f;  // 1
+	tileMul = 0.9f;  // 1
 	wallX = 0.6f;  wallY = 1.0f;
 
 	yObjOfs = 0.0f;  // 📦🏢

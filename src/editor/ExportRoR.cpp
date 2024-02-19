@@ -75,7 +75,7 @@ ExportRoR::ExportRoR(App* app1)
 
 	version = 1;  // increase..
 
-	copyTerTex =1;
+	copyTerTex =0; //1
 	copyVeget =1;
 	copyGrass =1;
 	copyObjs =1;
@@ -172,6 +172,8 @@ void ExportRoR::ExportTrack()  // whole, full
 
 	
 	//  just copy common .material to track dir  (done by convert in materials/)
+	if (0)
+	{
 	string pathMtr = pSet->pathExportRoR + "materials/";
 	std::vector<string> files{
 		"objects_static.material",
@@ -181,7 +183,7 @@ void ExportRoR::ExportTrack()  // whole, full
 		"trees_old.material"};
 	for (auto& mtr : files)
 		CopyFile(pathMtr + mtr, path + mtr);
-
+	}
 	// todo  and their textures? for used mesh materials ?
 
 
@@ -270,9 +272,9 @@ void ExportRoR::ExportTrack()  // whole, full
 
 	//  extra info from SR3 track
 	if (!scenery.empty())
-		trn << "stat0 = " << "Scenery = " << scenery << "   .\n";
+		trn << "stat0 = " << "Scenery: " << scenery << "   .\n";
 	if (difficulty >= 0)
-		trn << "stat1 = " << "Difficulty = " << TR("#{Diff"+toStr(difficulty)+"}") << "   .\n";  // no TR? _en
+		trn << "stat1 = " << "Difficulty: " << TR("#{Diff"+toStr(difficulty)+"}") << "   .\n";  // no TR? _en
 
 	const bool roadtxt = !scn->roads.empty();
 	if (roadtxt)
@@ -284,7 +286,7 @@ void ExportRoR::ExportTrack()  // whole, full
 		trn << "stat4 = " << "Height range: " << fToStr(rd->st.HeightDiff,0,3) << " m  .\n";
 		trn << "stat5 = " << "Bridges: " << fToStr(rd->st.OnTer,0,3) << " %  .\n";
 		// trn << "stat7 = " << "bank angle avg: " << fToStr(rd->st.bankAvg,0,2) << "\n";
-		trn << "stat6 = " << "Max banking angle: " << fToStr(rd->st.bankMax,0,2) << "'  .\n";
+		trn << "stat6 = " << "Max banking angle: " << fToStr(rd->st.bankMax,0,2) << "°  .\n";
 
 		trn << "Description = "+rd->sTxtDescr+"   .\n";  // text
 		trn << "drive_Advice = "+rd->sTxtAdvice+"   .\n";

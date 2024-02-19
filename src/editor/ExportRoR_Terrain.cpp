@@ -65,8 +65,6 @@ void ExportRoR::ExportTerrain()  // whole, full
 	gui->Exp(CGui::TXT, "World Y size   " + toStr(Ysize));
 
 	//  normalize  to 2B raw
-	//  SR           ->  .raw     ->  RoR
-	//  hmin .. hmax ->  0..65535 ->  0.f .. Ysize
 	for (int y=0; y < size; ++y)
 	{
 		int a = y * size;
@@ -278,7 +276,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 	if (roadAdd && !roadDiff.empty())
 	{
 		gui->Exp(CGui::NOTE, "Road layer: " + fToStr(roadTile)+" , "+roadDiff+", "+roadNorm);
-		lay << mul * roadTile << " , " << roadDiff+", "+roadNorm+", " +
+		lay << roadTile << " , " << roadDiff+", "+roadNorm+", " +
 			name + "-road.png, R, 0.99\n";
 	}
 	lay.close();
