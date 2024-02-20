@@ -116,9 +116,10 @@ void ExportRoR::ExportObjects()
 			p.y += sc->rorCfg.yObjOfs;
 			obj << strPos(p) << " ";
 			// todo  fix all rot ?
-			// obj << fToStr(q.getPitch().valueDegrees()+90.f,0,3)+", "+fToStr(q.getYaw().valueDegrees(),0,3)+", "+fToStr(q.getRoll().valueDegrees(),0,3)+", ";
-			obj << "90, 0, "+fToStr(q.getYaw().valueDegrees() - 90.f, 1,4)+",  ";  // fix?
-			// todo  no scale ??
+			// obj << fToStr(q.getPitch().valueDegrees() + 90.f,0,3)+", "+fToStr(-q.getYaw().valueDegrees() + 90.f,0,3)+", "+fToStr(q.getRoll().valueDegrees(),0,3)+", ";
+			//- obj << fToStr(q.getPitch().valueDegrees() + 90.f,0,3)+", "+fToStr(-q.getYaw().valueDegrees() + 90.f,0,3)+", "+fToStr(q.getRoll().valueDegrees(),0,3)+", ";
+			obj << "90, 0, "+fToStr(-q.getYaw().valueDegrees() + 90.f, 1,4)+",  ";  // ok, yaw only
+			// todo  scale, new way
 			obj << odefName +"\n";
 		}
 	}
