@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-09 18:34+0100\n"
-"PO-Revision-Date: 2024-02-15 17:02+0000\n"
+"PO-Revision-Date: 2024-02-20 13:02+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/hu/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -231,7 +231,7 @@ msgstr "Vissza"
 #: ..StuntRally##{GameVersion}.Button
 msgctxt "Help"
 msgid "Help"
-msgstr "Segítség"
+msgstr "Súgó"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:131 ..Help.Tab
@@ -4557,13 +4557,13 @@ msgstr "verzió"
 #: data/gui/Game_Help.layout:205 ..Help.About.Text
 msgctxt "GameBy"
 msgid "A game by"
-msgstr ""
+msgstr "Egy játék"
 
 #. About 
 #: data/gui/Game_Help.layout:211 ..Help.About.Text
 msgctxt "AndContributors"
 msgid "and contributors."
-msgstr ""
+msgstr "és további közreműködők jóvoltából."
 
 #. About 
 #: data/gui/Game_Help.layout:221 ..Help.About.Text
@@ -4598,13 +4598,13 @@ msgstr "Elhagyás (kilépés)"
 #: data/gui/Editor_Tools.layout:16 ..PreviewCamera.Text
 msgctxt "EnterSave"
 msgid "Enter - save"
-msgstr ""
+msgstr "Enter – mentés"
 
 #. Editor  Main 
 #: data/gui/Editor_Tools.layout:21 ..PreviewCamera.Text
 msgctxt "Screenshot"
 msgid "screenshot"
-msgstr ""
+msgstr "képernyőkép"
 
 #. Editor  Main 
 #: data/gui/Editor_Tools.layout:29 ..Window
