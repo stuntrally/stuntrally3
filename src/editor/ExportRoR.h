@@ -27,7 +27,7 @@ protected:
 		name;     // track name
 	int version = 1;
 
-	bool hasRoad = 0, hasVeget = 0, hasObjects = 0;
+	bool hasRoad = 0, hasRoadChks = 0, hasVeget = 0, hasObjects = 0;
 
 	float hmin = 0.f, half = 0.f;  // min height, half world size
 	int water = 0;  float Ywater = 0.f;  // bool, level

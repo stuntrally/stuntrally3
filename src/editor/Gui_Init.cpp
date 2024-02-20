@@ -649,9 +649,9 @@ void CGui::InitGui()
 	sv= &svRoR_RoadStep;	sv->Init("RoR_RoadStep",	&ror.roadStepDist, 0.f, 100.f, 2.f, 0,2);  sv->DefaultF(10.f);
 	sv= &svRoR_RoadHadd;	sv->Init("RoR_RoadHadd",	&ror.roadHadd,    -2.f, 2.f, 1.f, 2,4);  sv->DefaultF(-0.8f);
 	sv= &svRoR_WallX;		sv->Init("RoR_WallX",		&ror.wallX,		0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.6f);
-	sv= &svRoR_WallY;		sv->Init("RoR_WallY",		&ror.wallX,		0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.8f);
+	sv= &svRoR_WallY;		sv->Init("RoR_WallY",		&ror.wallY,		0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.8f);
 
-	sv= &svRoR_TileMul;		sv->Init("RoR_TileMul",		&ror.tileMul,	0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.8f);
+	sv= &svRoR_TileMul;		sv->Init("RoR_TileMul",		&ror.tileMul,	0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.9f);
 	sv= &svRoR_ObjOfsY;		sv->Init("RoR_ObjOfsY",		&ror.yObjOfs,	-2.f, 2.f, 1.f, 2,4);  sv->DefaultF(0.f);
 
 	

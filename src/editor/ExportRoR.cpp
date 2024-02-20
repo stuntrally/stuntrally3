@@ -135,7 +135,7 @@ void ExportRoR::SetupPath()
 
 	//  dir  track name
 	name = pSet->gui.track;
-	dirName = "^" + name;  // ^ for on top
+	dirName = "+" + name;  // ^ for on top
 
 	const string dirTrk = dirRoR + dirName;
 	if (!PATHS::CreateDir(dirTrk))
@@ -228,14 +228,15 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn << "WaterLine=" << Ywater << "\n";
 	trn << "\n";
 	trn << "AmbientColor = 1.0, 1.0, 1.0\n";  // unused-
-	//  ror = sr
-	//  0, y, 0        = -470, y, 460
-	//  959, 340 y, 950 = 487, y, -472
+
 	Vector3 st = Axes::toOgre(sc->startPos[0]);
 	trn << "StartPosition = " << strPos(st) + "\n";
 	trn << "\n";
 
 	trn << "CaelumConfigFile = " + name + ".os\n";
+	trn << "CaelumFogStart = " << sc->fogStart << "\n";  // fog
+	trn << "CaelumFogEnd = " << sc->fogEnd << "\n";
+
 	trn << "SandStormCubeMap = tracks/skyboxcol\n";  // sky meh-
 	trn << "Gravity = " << -sc->gravity << "\n";
 	trn << "\n";
@@ -303,7 +304,7 @@ void ExportRoR::ExportTrack()  // whole, full
 		trn << name+"-obj.tobj=\n";
 	trn << "\n";
 
-	if (hasRoad)
+	if (hasRoadChks)
 	{	trn << "[Scripts]\n";
 		trn << name + ".as=\n";	 //".terrn.as=\n";
 	}
