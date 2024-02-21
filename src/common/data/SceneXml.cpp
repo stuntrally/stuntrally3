@@ -87,13 +87,14 @@ void Scene::Default()
 //  RoR defaults  ------
 void RoRconfig::Default()
 {
-	lAmbAdd = Vector3(0.1f,0.1f,0.1f);  // 🌞 sun
+	lAmbAdd = 0.1f;  // 🌞 sun
 	lAmb = 1.6f;  lDiff = 1.6f;  lSpec = 0.9f;
+	fogMul = 1.0f;
 	
 	water = 0;  // 🌊  auto
 	yWaterOfs = -0.8f;  // easier drive through
 
-	treesMul = 1.f;   // 🌳🪨  veget
+	treesMul = 0.5f;   // 🌳🪨  veget
 	grassMul = 4.f;
 
 	//  road
@@ -103,7 +104,7 @@ void RoRconfig::Default()
 	roadStepDist = 10.f;  // hq
 	roadHadd = -0.7f;  //+
 	
-	tileMul = 0.9f;  // 1
+	tileMul = 0.9f;  // 1.0
 	wallX = 0.6f;  wallY = 1.0f;
 
 	yObjOfs = 0.0f;  // 📦🏢

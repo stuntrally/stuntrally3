@@ -12,6 +12,7 @@
 #include "CData.h"
 #include "TracksXml.h"
 #include "Axes.h"
+#include "GuiCom.h"
 
 #include <OgreString.h>
 #include <OgreVector3.h>
@@ -31,15 +32,6 @@ using namespace std;
 
 //  gui events
 //------------------------------------------------------------
-void CGui::editRoRPath(Ed ed)
-{
-	pSet->pathExportRoR = ed->getCaption();
-}
-void CGui::editOldSRPath(Ed ed)
-{
-	pSet->pathExportOldSR =  ed->getCaption();
-}
-
 void CGui::btnExport(WP)
 {
 	app->ror->ExportTrack();
@@ -56,6 +48,32 @@ void CGui::btnConvertMat(WP)
 void CGui::btnCreateOdef(WP)
 {
 	app->ror->CreateOdef();
+}
+
+void CGui::btnSaveSceneXml(WP)
+{
+	String dir = app->gcom->TrkDir();
+	scn->sc->SaveXml(dir + "scene.xml");
+}
+
+//  settings
+void CGui::editRoRPath(Ed ed)
+{
+	pSet->pathExportRoR = ed->getCaption();
+}
+void CGui::editOldSRPath(Ed ed)
+{
+	pSet->pathExportOldSR =  ed->getCaption();
+}
+
+//  road lay tex name
+void CGui::slRoR_RoadLay(SV* sv)
+{
+	int i = app->scn->sc->rorCfg.roadTerTexLayer;
+	auto& td = scn->sc->tds[0];
+	txRoR_RoadLay->setCaption(
+		i >= td.layers.size() ? "--" :
+		td.layersAll[i].texFile);
 }
 
 

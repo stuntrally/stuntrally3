@@ -66,6 +66,7 @@ bool Scene::SaveXml(String file)
 		roe->SetAttribute("lA",		toStrC( ror.lAmb ));
 		roe->SetAttribute("lD",		toStrC( ror.lDiff ));
 		roe->SetAttribute("lS",		toStrC( ror.lSpec ));
+		roe->SetAttribute("fg",		toStrC( ror.fogMul ));
 
 		roe->SetAttribute("wtr",	toStrC( ror.water ));
 		roe->SetAttribute("yW",		toStrC( ror.yWaterOfs ));

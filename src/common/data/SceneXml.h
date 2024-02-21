@@ -15,8 +15,9 @@ namespace tinyxml2 {  class XMLElement;  }
 //------------------------
 struct RoRconfig
 {
-	Ogre::Vector3 lAmbAdd;  // 🌞 sun
+	float lAmbAdd;  // 🌞 sun
 	float lAmb, lDiff, lSpec;
+	float fogMul;
 
 	int water;        // 🌊 -1 off  0 auto  1 custom
 	float yWaterOfs;  // add offset or height for custom

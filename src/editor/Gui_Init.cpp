@@ -628,12 +628,15 @@ void CGui::InitGui()
 	Btn("ConvertMat4RoR", btnConvertMat);
 	Btn("ConvertTerrain4RoR", btnConvertTerrain);
 	Btn("CreateOdef4RoR", btnCreateOdef);
+	Btn("SaveSceneXml", btnSaveSceneXml);
 	
 	//  RoR Track setup  --------
 	auto& ror = app->scn->sc->rorCfg;
+	sv= &svRoR_AmbAdd;		sv->Init("RoR_AmbAdd",	&ror.lSpec,  0.f,3.f, 1.f, 2,4);  sv->DefaultF(0.1f);
 	sv= &svRoR_Amb;			sv->Init("RoR_Amb",		&ror.lAmb,   0.f,3.f, 1.f, 2,4);  sv->DefaultF(1.6f);
 	sv= &svRoR_Diff;		sv->Init("RoR_Diff",	&ror.lDiff,  0.f,3.f, 1.f, 2,4);  sv->DefaultF(1.6f);
 	sv= &svRoR_Spec;		sv->Init("RoR_Spec",	&ror.lSpec,  0.f,3.f, 1.f, 2,4);  sv->DefaultF(0.9f);
+	sv= &svRoR_FogMul;		sv->Init("RoR_FogMul",	&ror.fogMul, 0.f,4.f, 1.f, 2,4);  sv->DefaultF(1.f);
 
 	sv= &svRoR_Water;
 	sv->strMap[-1] = TR("#{None}");  sv->strMap[0] = TR("#{auto}");  sv->strMap[1] = TR("#{Road_AngleManual}");
@@ -643,7 +646,8 @@ void CGui::InitGui()
 	sv= &svRoR_Trees;		sv->Init("RoR_Trees",		&ror.treesMul,  0.f, 6.f, 2.f, 2,4);  sv->DefaultF(0.5f);
 	sv= &svRoR_Grass;		sv->Init("RoR_Grass",		&ror.grassMul,  0.f,12.f, 1.f, 2,4);  sv->DefaultF(4.f);
 
-	sv= &svRoR_RoadLay;		sv->Init("RoR_RoadLayer",	&ror.roadTerTexLayer,  0, 4);  sv->DefaultI(1);
+	txRoR_RoadLay = fTxt("RoR_RoadLayTxt");
+	sv= &svRoR_RoadLay;		sv->Init("RoR_RoadLayer",	&ror.roadTerTexLayer,  0, 4);  sv->DefaultI(1);  Sev(RoR_RoadLay);
 	ck= &ckRoR_RoadCols;	ck->Init("RoR_RoadCols",	&ror.roadCols);
 
 	sv= &svRoR_RoadStep;	sv->Init("RoR_RoadStep",	&ror.roadStepDist, 0.f, 100.f, 2.f, 0,2);  sv->DefaultF(10.f);

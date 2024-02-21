@@ -98,6 +98,22 @@ void CGui::SetGuiFromXmls()
 	UpdSurfList();
 	listSurf(surfList, idSurf);
 	
+	//  RoR export cfg
+	//-----------------------------------------------
+	svRoR_AmbAdd.Upd();  svRoR_Amb.Upd();  svRoR_Diff.Upd();  svRoR_Spec.Upd();
+	svRoR_FogMul.Upd();
+
+	svRoR_Water.Upd(); 	svRoR_WaterOfs.Upd();
+	svRoR_Trees.Upd();  svRoR_Grass.Upd();
+
+	svRoR_RoadLay.Upd();  slRoR_RoadLay(0);
+	ckRoR_RoadCols.Upd();
+
+	svRoR_RoadStep.Upd();  svRoR_WallX.Upd();
+	svRoR_RoadHadd.Upd();  svRoR_WallY.Upd();
+		
+	svRoR_TileMul.Upd();  svRoR_ObjOfsY.Upd();
+
 	bGI = true;
 }
 

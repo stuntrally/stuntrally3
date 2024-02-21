@@ -424,11 +424,13 @@ public:
 	void Exp(eWarn type, Ogre::String text);
 	
 	//  RoR track setup
-	SV svRoR_Amb, svRoR_Diff, svRoR_Spec;
+	SV svRoR_Amb, svRoR_Diff, svRoR_Spec, svRoR_AmbAdd, svRoR_FogMul;
 	SV svRoR_Water, svRoR_WaterOfs, svRoR_Trees, svRoR_Grass;
-	SV svRoR_RoadLay, svRoR_RoadStep, svRoR_RoadHadd;
+	Txt txRoR_RoadLay =0;
+	SV svRoR_RoadLay, svRoR_RoadStep, svRoR_RoadHadd;  void slRoR_RoadLay(SV*);
 	Ck ckRoR_RoadCols;  SV svRoR_WallX, svRoR_WallY;
 	SV svRoR_TileMul, svRoR_ObjOfsY;
+	void btnSaveSceneXml(WP);
 
 
 	//  👆 Pick  --------------------

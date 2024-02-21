@@ -70,10 +70,11 @@ bool Scene::LoadXml(String file, bool bTer)
 	auto& ror = rorCfg;
 	e = root->FirstChildElement("ror1");
 	if (e)
-	{	a = e->Attribute("aA");		if (a)  ror.lAmbAdd = s2v(a);
+	{	a = e->Attribute("aA");		if (a)  ror.lAmbAdd = s2r(a);
 		a = e->Attribute("lA");		if (a)  ror.lAmb = s2r(a);
 		a = e->Attribute("lD");		if (a)  ror.lDiff = s2r(a);
 		a = e->Attribute("lS");		if (a)  ror.lSpec = s2r(a);
+		a = e->Attribute("fg");		if (a)  ror.fogMul = s2r(a);
 
 		a = e->Attribute("wtr");	if (a)  ror.water = s2i(a);
 		a = e->Attribute("yW");		if (a)  ror.yWaterOfs = s2r(a);
