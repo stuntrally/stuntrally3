@@ -3,7 +3,10 @@ _Help on using SR3 Track Editor._
 
 ### Introduction
 
-Stunt Rally includes a Track Editor that can be used for creating your own tracks or modifying the existing ones.
+Stunt Rally 3 includes a Track Editor that can be used for creating your own tracks or modifying the existing ones.
+
+It can also export track(s) to Rigs of Rods. Details [here](EditorExportRoR.md).
+
 
 #### OLD Video Tutorial
 
