@@ -69,7 +69,7 @@ void ExportRoR::ExportObjects()
 		// bool many = 0;  // or one for all mesh
 		string odefName = many ? o.name +"-"+ toStr(iodef) : o.name;
 
-		if (copyObjs)
+		// if (copyObjs)  // todo
 		{
 			//  object  save  .odef
 			//------------------------------------------------------------
@@ -96,7 +96,7 @@ void ExportRoR::ExportObjects()
 			
 				//  copy
 				//----------------------------------
-				if (exists)
+				if (copyObjs && exists)
 				{
 					to = path + mesh;
 					CopyFile(from, to);
@@ -104,11 +104,9 @@ void ExportRoR::ExportObjects()
 						++iObjMesh;
 					else
 						continue;
-
-					//  get mtr?  read .mat,  copy textures,  write .material ...
 				}
 			}
-		} // copyObjs
+		}
 
 		//  write  ------
 		if (exists)

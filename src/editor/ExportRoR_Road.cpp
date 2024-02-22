@@ -77,13 +77,20 @@ void ExportRoR::ExportRoad()
 			bool bridge = !p.onTer || !p1.onTer;
 			if (p.idMtr < 0)  bridge = 0;  // hidden
 
+			// gui->Exp(CGui::TXT, "Road i0: "+toStr(i0+1)+
+			// 	"  ter: "+toStr(p.onTer?1:0) + "  ter1: "+toStr(p1.onTer?1:0) + "  brd: "+toStr(bridge?1:0)  );
+
 			if ( (i==0 || !begin) && bridge)
 			{	begin = 1;  ++iroads;
 				trd << "begin_procedural_roads\n";
 				// gui->Exp(CGui::TXT, "Road begin");
 			}
 
-			// gui->Exp(CGui::TXT, "Road i0: "+toStr(i0)+"  ter: "+toStr(p.onTer?1:0) +"  l "+fToStr(len) );
+			if (begin && !bridge)
+			{	begin = 0;
+				trd << "end_procedural_roads\n";
+				// gui->Exp(CGui::TXT, "Road end");
+			}
 
 			//  add points on bridge  ----------
 			if (begin)
@@ -93,7 +100,7 @@ void ExportRoR::ExportRoad()
 				Real len = rd->GetSegLen(i0);
 				const int il = 1 + (len / fLenDim);  // var, by dist
 				// todo more with bigger angle changes?
-				const int ila = il + (!bridge ? 1 : 0);  // bridge will end, use all length points
+				const int ila = il + (p1.onTer ? 1 : 0);  // bridge will end, use all length points
 				// gui->Exp(CGui::TXT, "Road il: "+toStr(il) );
 				
 				for (int l = 0; l < ila; ++l)
@@ -124,18 +131,11 @@ void ExportRoR::ExportRoad()
 					//if (p.onTer)  trd << "0.5,  0.2,  flat\n";  else
 					//  trd << "0.6,  1.0,  bridge\n";
 					// bool low = p.onTer;
-					bool low = p.onTer && (l == 0 || l == ila-1);
+					bool low = p.onTer && l == 0 || p1.onTer && l == ila-1;
 					trd << cfg->wallX << ",  " << (low ? 0.f : cfg->wallY) << 
 						(cfg->roadCols ? ",  bridge\n" : ",  bridge_no_pillars\n");
 					// 	flat - none   left, right, both - borders   bridge, bridge_no_pillars
 			}	}
-
-
-			if (begin && !bridge)
-			{	begin = 0;
-				trd << "end_procedural_roads\n";
-				// gui->Exp(CGui::TXT, "Road end");
-			}
 		}
 		if (begin)
 			trd << "end_procedural_roads\n";
@@ -149,14 +149,15 @@ void ExportRoR::ExportRoad()
 	//------------------------------------------------------------
 	for (int i=0; i < rd->getNumPoints() + 1; ++i)  // loop it
 	{
-		const auto& p = rd->getPoint(i);
+		const int i0 = rd->getAdd(i,0);
+		const auto& p = rd->getPoint(i0);
 		if (p.chkR > 0.1f)
 		{
 			//Vector3 vP = p.pos;
 			Vector3 vP = rd->interpolate(i, 0.f);
 			Vector3 vP1 = rd->interpolate(i, 0.2f);  // par-
 			Vector3 dir = vP1 - vP;  // along length
-			float yaw = TerUtil::GetAngle(dir.x, dir.z) *180.f/PI_d /*- 90.f*/;  // ok
+			float yaw = TerUtil::GetAngle(dir.x, dir.z) *180.f/PI_d;  // ok
 			//  pos 
 			string s = strPos(vP) + "  ";
 			//  rot
@@ -168,7 +169,7 @@ void ExportRoR::ExportRoad()
 
 
 	//  Road script  checks
-	//------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------------------------------
 	const int nchk = chks.size();
 	gui->Exp(CGui::NOTE, "Road checks: " + toStr(nchk)+"  first: "+toStr(chk1st));
 	if (nchk > 1)
