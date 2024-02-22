@@ -67,8 +67,9 @@ void ExportRoR::ConvertTerrainTex()
 		n_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");  // _s
 		
 		string ext = 1 ? "png" : "dds";  // todo as dds fails..
-		String layTexDS = StringUtil::replaceAll(l.texFile,"_d","_ds."+ext);
-		String layTexNH = StringUtil::replaceAll(l.texNorm,"_n","_nh."+ext);
+		String layTexDS = StringUtil::replaceAll(d_d,"_d.jpg","_ds."+ext);
+		String layTexNH = StringUtil::replaceAll(n_n,"_n.jpg","_nh."+ext);
+		// amntn_ds.pngark_ds.png  ?
 
 		gui->Exp(CGui::TXT, " diff, norm:  " + d_d + "  " + n_n);
 		
@@ -338,8 +339,6 @@ void ExportRoR::ConvertMat()
 				material = StringUtil::replaceAll(material, "parent", ":");  // grass, trees_ch
 				material = StringUtil::replaceAll(material, "{", "");
 				StringUtil::trim(material);
-				// material = StringUtil::replaceAll(material, " ", "");
-				// material = StringUtil::replaceAll(material, "\t", "");  // todo rem // name  ? 
 
 				diffTex.clear();  normTex.clear();
 				alphaReject.clear();  cull_hardware.clear();
@@ -358,8 +357,6 @@ void ExportRoR::ConvertMat()
 				diffTex = StringUtil::replaceAll(diffTex, w, "");  // trees_ch
 				diffTex = StringUtil::replaceAll(diffTex, "}", "");
 				StringUtil::trim(diffTex);
-				// diffTex = StringUtil::replaceAll(diffTex, " ", "");
-				// diffTex = StringUtil::replaceAll(diffTex, "\t", "");
 				
 				// w = "}";  it = s.find(w);  //  clean same line },  todo after .png .jpg?
 				// if (found(it))  diffTex = s.substr(0, it);
@@ -381,12 +378,13 @@ void ExportRoR::ConvertMat()
 			if (!dtex)
 			{
 			w = "diffuse";  it = s.find(w);
-			if (found(it))  diffuse = s.substr(it + w.length() + 1);
-			}
+			if (found(it)){  cmt = s.find("true");  // ignore, bad
+				if (!found(cmt))
+					diffuse = s.substr(it + w.length() + 1);
+			}	}
 			w = "specular";  it = s.find(w);
 			if (found(it))  specular = s.substr(it + w.length() + 1);
 
-			// todo?
 			// tree_wind true
 			// receives_shadows false
 			// transparent true
