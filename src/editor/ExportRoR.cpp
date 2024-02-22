@@ -93,10 +93,10 @@ ExportRoR::ExportRoR(App* app1)
 
 	version = 1;  // increase..
 
-	copyTerTex =0; //1
-	copyVeget =1;
-	copyGrass =1;
-	copyObjs =1;
+	copyTerTex =0; // 1 data inside track
+	copyVeget =0;  // 0 data in packs
+	copyGrass =0;
+	copyObjs =0;
 }
 
 //  ⛓️ utils
@@ -249,6 +249,7 @@ void ExportRoR::ExportTrack()  // whole, full
 
 	Vector3 st = Axes::toOgre(sc->startPos[0]);
 	trn << "StartPosition = " << strPos(st) + "\n";
+	//StartRotation // ? todo yaw
 	trn << "\n";
 
 	trn << "CaelumConfigFile = " + name + ".os\n";
@@ -278,6 +279,7 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn << "#TractionMap = landuse.cfg\n";  // todo  surfaces.cfg
 	trn << "\n";
 
+
 	//  Info text
 	//------------------------------------------------------------
 	trn << "[Authors]\n";
@@ -291,26 +293,49 @@ void ExportRoR::ExportTrack()  // whole, full
 
 	//  extra info from SR3 track
 	if (!scenery.empty())
-		trn << "stat0 = " << "Scenery: " << scenery << "   .\n";
+		trn << "stat0 = " << "Scenery:  " << scenery << "   .\n";
 	if (difficulty >= 0)
-		trn << "stat1 = " << "Difficulty: " << TR("#{Diff"+toStr(difficulty)+"}") << "   .\n";  // no TR? _en
+		trn << "stat1 = " << "Difficulty:  " << TR("#{Diff"+toStr(difficulty)+"}") << "   .\n";  // no TR? _en
 
 	const bool roadtxt = !scn->roads.empty();
 	if (roadtxt)
 	{	auto& rd = scn->roads[0];
 		auto len = rd->st.Length;  // road stats
 
-		trn << "stat2 = " << "Length: " <<  fToStr(len * 0.001f,2,4) << " km  /  " << fToStr(len * 0.000621371f,2,4) << " mi  .\n";
-		trn << "stat3 = " << "Width average: " << fToStr(rd->st.WidthAvg,1,3) << " m  .\n";
-		trn << "stat4 = " << "Height range: " << fToStr(rd->st.HeightDiff,0,3) << " m  .\n";
-		trn << "stat5 = " << "Bridges: " << fToStr(rd->st.OnTer,0,3) << " %  .\n";
+		trn << "stat2 = " << "Length:  " <<  fToStr(len * 0.001f,2,4) << " km  /  " << fToStr(len * 0.000621371f,2,4) << " mi  .\n";
+		trn << "stat3 = " << "Width average:  " << fToStr(rd->st.WidthAvg,1,3) << " m  .\n";
+		trn << "stat4 = " << "Height range:  " << fToStr(rd->st.HeightDiff,0,2) << " m  .\n";
+		trn << "stat5 = " << "Bridges:  " << fToStr(rd->st.OnTer,0,2) << " %  .\n";
 		// trn << "stat7 = " << "bank angle avg: " << fToStr(rd->st.bankAvg,0,2) << "\n";
-		trn << "stat6 = " << "Max banking angle: " << fToStr(rd->st.bankMax,0,2) << "°  .\n";
+		trn << "stat6 = " << "Max banking angle:  " << fToStr(rd->st.bankMax,0,1) << "°  .\n";
 
 		trn << "Description = "+rd->sTxtDescr+"   .\n";  // text
 		trn << "drive_Advice = "+rd->sTxtAdvice+"   .\n";
 	}
 	trn << " \n";
+
+
+	//------------------------------------------------------------
+	trn << "[AssetPacks]\n";  // todo
+	trn << "sr-checkpoint-v1.assetpack=\n";
+	trn << "sr-materials-v1.assetpack=\n";
+
+	trn << "sr-objects0ad-v1.assetpack=\n";  // todo check if needed
+	trn << "sr-objects-v1.assetpack=\n";
+	trn << "sr-objects2-v1.assetpack=\n";
+	trn << "sr-objectsC-v1.assetpack=\n";
+	// trn << "sr-obstacles-v1.assetpack=\n";
+
+	trn << "sr-grass-v1.assetpack=\n";
+	trn << "sr-rocks-v1.assetpack=\n";
+
+	// trn << "sr-terrain-ext-v1.assetpack=\n";  // aln lava uni sur
+	trn << "sr-terrain-v1.assetpack=\n";
+	
+	trn << "sr-trees-v1.assetpack=\n";
+	trn << "sr-trees2-v1.assetpack=\n";
+	trn << "sr-trees-old-v1.assetpack=\n";
+
 
 	//------------------------------------------------------------
 	trn << "[Objects]\n";
