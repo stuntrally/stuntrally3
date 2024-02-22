@@ -44,9 +44,11 @@ void ExportRoR::ExportVeget()
 
 		ofstream mat;
 		//- if (hasGrass)
-		string matFile = path + name + "-veget.material";
-		mat.open(matFile.c_str(), std::ios_base::out);
-
+		if (copyVeget)
+		{
+			string matFile = path + name + "-veget.material";
+			mat.open(matFile.c_str(), std::ios_base::out);
+		}
 		
 		//  read road dens, once, add outline for trees
 		//------------------------------------------------------------
@@ -142,7 +144,8 @@ void ExportRoR::ExportVeget()
 				//  fadetype, minY, maxY,
 				veg << "1, 10, 0,  ";
 				//  material  colormap  densitymap
-				veg << gr->material << " none " << mapName << "\n";
+				//+  prefix grasses sr-
+				veg << "sr-" << gr->material << " none " << mapName << "\n";
 
 
 				//  grass dens map
@@ -184,37 +187,37 @@ void ExportRoR::ExportVeget()
 				// 	gui->Exp(CGui::WARN, string("Exception in grass dens map: ") + ex.what());
 				// }
 
-			#if 1  // NO?, once for all bad-
-
-				//  copy grass*.png
-				//------------------------------------------------------------
-				String pathGrs = PATHS::Data() + "/grass/";
-				String grassPng = gr->material + ".png";  // same as mtr name
-				 
-				//  copy _d _n
-				string from = pathGrs + grassPng, to = path + grassPng;
-				CopyFile(from, to);
-				
-				//  create .material for it
-				mat << "material " << gr->material << "\n";
-				mat << "{\n";
-				mat << "	technique\n";
-				mat << "	{\n";
-				mat << "		pass\n";
-				mat << "		{\n";
-				mat << "			cull_hardware none\n";
-				mat << "			cull_software none\n";
-				mat << "			alpha_rejection greater 128\n";
-				mat << "			texture_unit\n";
-				mat << "			{\n";
-				mat << "				texture	" << grassPng << "\n";
-				mat << "				tex_address_mode clamp\n";
-				mat << "			}\n";
-				mat << "		}\n";
-				mat << "	}\n";
-				mat << "}\n";
-				mat << "\n";
-			#endif
+				if (copyVeget)  // NO, once for all
+				{
+					//  copy grass*.png
+					//------------------------------------------------------------
+					String pathGrs = PATHS::Data() + "/grass/";
+					String grassPng = gr->material + ".png";  // same as mtr name
+					
+					//  copy _d _n
+					string from = pathGrs + grassPng, to = path + grassPng;
+					CopyFile(from, to);
+					
+					//  create .material for it
+					mat << "material " << gr->material << "\n";
+					mat << "{\n";
+					mat << "	technique\n";
+					mat << "	{\n";
+					mat << "		pass\n";
+					mat << "		{\n";
+					mat << "			cull_hardware none\n";
+					mat << "			cull_software none\n";
+					mat << "			alpha_rejection greater 128\n";
+					mat << "			texture_unit\n";
+					mat << "			{\n";
+					mat << "				texture	" << grassPng << "\n";
+					mat << "				tex_address_mode clamp\n";
+					mat << "			}\n";
+					mat << "		}\n";
+					mat << "	}\n";
+					mat << "}\n";
+					mat << "\n";
+				}
 			}
 		}
 		mat.close();
