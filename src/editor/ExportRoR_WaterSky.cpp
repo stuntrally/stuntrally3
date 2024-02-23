@@ -7,6 +7,7 @@
 #include "CScene.h"
 #include "PresetsXml.h"
 
+#include <OgreString.h>
 #include <OgreVector3.h>
 #include <string>
 using namespace Ogre;
@@ -53,13 +54,20 @@ void ExportRoR::ExportWaterSky()
 
 	os << "caelum_sky_system " + name + ".os\n";
 	os << "{\n";
-	os << "	// .75 = 6:00\n";
-	os << "	julian_day 2458850\n";  //?
+
+	const PSky* sky = pre->GetSky(sc->skyMtr);
+	float cld = sky ? sky->clouds : 0.2f;
+	float juld = !sky ? 2458971.f :  // may 12:00
+		2458979.5f + sky->daytime * 0.0416667f;  // 0:00 + t * 1 h
+	gui->Exp(CGui::TXT, String("Sky: ")+sc->skyMtr+" clouds "+fToStr(cld)+
+						" time "+fToStr(sky->daytime)+" latitude "+fToStr(sky->latitude));
+	os << "	julian_day " << juld << "\n";  //?
 	os << "	time_scale 1\n";
-	os << "	longitude 30\n";  // todo from sun dir ?
-	os << "	latitude 10\n";
+	os << "	longitude 0\n";  // from sun dir?-
+	os << "	latitude " << sky->latitude << "\n";
 	os << "\n";
-	os << "	point_starfield {\n";
+
+	os << "	point_starfield {\n";  // for night
 	os << "		magnitude_scale 12.51189\n";
 	os << "		mag0_pixel_size 16\n";
 	os << "		min_pixel_size 4\n";
@@ -74,7 +82,9 @@ void ExportRoR::ExportWaterSky()
 	os << "	scene_fog_density_multiplier 0.015\n";
 	os << "\n";
 
-	os << "	sun {\n";  // 🌞 sun light
+	//  🌞 sun light
+	//------------------------------------------------------------
+	os << "	sun {\n";
 	Vector3 la = sc->lAmb.GetRGB()  * cfg->lAmb + cfg->lAmbAdd;  // par bright
 	Vector3 ld = sc->lDiff.GetRGB() * cfg->lDiff;
 	Vector3 ls = sc->lSpec.GetRGB() * cfg->lSpec;
@@ -104,8 +114,7 @@ void ExportRoR::ExportWaterSky()
 	os << "\n";
 
 	//  clouds  factor from presets.xml
-	auto* sky = pre->GetSky(sc->skyMtr);
-	float cld = sky ? sky->clouds : 0.2f;
+	//------------------------------------------------------------
 	if (cld > 0.f)
 	{
 		os << "	cloud_system\n";
@@ -114,12 +123,13 @@ void ExportRoR::ExportWaterSky()
 		os << "		{\n";
 		os << "			height 2000\n";
 		os << "			coverage "<< min(cld, 0.2f) <<"\n";
+		// os << "			cloud_uv_factor " << 500 <<"\n";  //..cd
 		os << "		}\n";
 		if (cld >= 0.4f)
 		{
 			os << "		cloud_layer mid\n";
 			os << "		{\n";
-			os << "			height 3000\n";
+			os << "			height 2700\n";
 			os << "			coverage "<< min(cld, 0.6f) <<"\n";
 			os << "		}\n";
 		}
@@ -127,12 +137,48 @@ void ExportRoR::ExportWaterSky()
 		{
 			os << "		cloud_layer high\n";
 			os << "		{\n";
-			os << "			height 4000\n";
+			os << "			height 3500\n";  // vis far is 5000 max
 			os << "			coverage "<< min(cld, 1.0f) <<"\n";
 			os << "		}\n";
 		}
 		os << "	}\n";
 	}
+
+	//  🌧️ weather
+	//------------------------------------------------------------
+	int rain = 0, snow = 0;
+	if ( sc->rainName.find("Rain") != string::npos)  rain += sc->rainEmit;
+	if (sc->rain2Name.find("Rain") != string::npos)  rain += sc->rain2Emit;
+	if ( sc->rainName.find("Snow") != string::npos)  snow += sc->rainEmit;
+	if (sc->rain2Name.find("Snow") != string::npos)  snow += sc->rain2Emit;
+	
+	if (rain > snow && rain > 10)
+	{
+		rain = min(rain, 9000);
+		os << "	precipitation\n";
+		os << "	{\n";
+		os << "		intensity " << 1.f * rain / 9000.f << "\n";
+		// if (rain > 4000)  // no
+		// 	os << "		texture precipitation_rain.png\n";
+		// else  //  thin fine
+			os << "		texture precipitation_drizzle.png\n";
+		os << "		wind_speed 0.2 0 0.2\n";
+		os << "		camera_speed_scale 0.01 0.01 0.01\n";  // meh
+		os << "	}\n";
+	}else
+	if (snow > rain && snow > 10)
+	{
+		rain = min(snow, 5000);
+		os << "	precipitation\n";
+		os << "	{\n";
+		os << "		intensity " << 0.1f + 0.6f * rain / 5000.f << "\n";
+		os << "		texture precipitation_snow.png\n";
+		os << "		wind_speed .02 0 .02\n";
+		os << "		camera_speed_scale 0.0 0.0 0.0\n";
+		os << "		falling_direction 0 -0.2 0.02\n";
+		os << "	}\n";
+	}
+
 	os << "}\n";
 
 	os.close();

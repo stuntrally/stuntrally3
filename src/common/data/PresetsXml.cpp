@@ -87,7 +87,10 @@ bool Presets::LoadXml(string file)
 
 		a = e->Attribute("y");	if (a)  s.ldYaw = s2r(a);
 		a = e->Attribute("p");	if (a)  s.ldPitch = s2r(a);
-		a = e->Attribute("d");	if (a)  s.clouds = s2r(a);
+		
+		a = e->Attribute("d");	if (a)  s.clouds = s2r(a);  // RoR only
+		a = e->Attribute("t");	if (a)  s.daytime = s2r(a);
+		a = e->Attribute("l");	if (a)  s.latitude = s2r(a);
 
 		s.fogClr  = SColor(0.58f, 0.31f, 0.86f);
 		s.fogClr2 = SColor(0.59f, 0.45f, 0.54f);

@@ -16,7 +16,10 @@ struct PSky
 	Ogre::String mtr = "sky", clr = "#C0E0FF";
 	float ldYaw = 0.f, ldPitch = 0.f;  // sun dir
 	SColor fogClr,fogClr2;  // fog clr sun-away
-	float clouds = 0.2f;  // 0..1 coverage  for RoR sky only
+
+	float clouds = 0.2f;    // 0..1 coverage  for RoR sky only
+	float daytime = 12.f;   // 0..24  night..day
+	float latitude = 22.f;  // 0 equator jungle  40 autumn  90 pole
 };
 
 //  ⛰️ Terrain layer ----
