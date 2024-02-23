@@ -40,9 +40,10 @@ protected:
 	//  packs
 	void ListPacks();
 	bool first =1;
-	std::map<std::string, std::string> mesh2pack;
+	std::map<std::string, std::string> mesh2pack, ter2pack;
 
 	bool AddPackFor(std::string mesh);  // check if in which mesh2pack, and to packs
+	bool AddPackForTer(std::string tex);  // check if in which mesh2pack, and to packs
 	std::set<std::string> packs;
 
 public:

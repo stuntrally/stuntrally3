@@ -110,6 +110,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 		string ext = 1 ? "png" : "dds";  // todo as dds fails..
 		layTexDS[i] = StringUtil::replaceAll(l.texFile,"_d.jpg","_ds."+ext);
 		layTexNH[i] = StringUtil::replaceAll(l.texNorm,"_n.jpg","_nh."+ext);
+		AddPackForTer(layTexDS[i]);
 
 		if (copyTerTex)
 		{
@@ -134,7 +135,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 				CopyFile(from, to);
 			}
 
-			//  find _s  for specular
+			//  find _s  for specular,  ignored 0
 			String spec = d_s;
 			if (!PATHS::FileExists(pathTer + spec))
 			{	spec = n_s;

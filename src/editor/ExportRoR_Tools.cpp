@@ -388,6 +388,7 @@ void ExportRoR::ConvertMat()
 			// tree_wind true
 			// receives_shadows false
 			// transparent true
+			// mirror  clamp  ..
 		}
 		fi.close();
 
@@ -420,15 +421,29 @@ bool ExportRoR::AddPackFor(std::string mesh)
 	return 0;
 }
 
+//  check in which ter2pack, and to packs
+bool ExportRoR::AddPackForTer(std::string tex)
+{
+	auto it = ter2pack.find(tex);
+	if (it != ter2pack.end())
+	{
+		packs.emplace(it->second);
+		return 1;
+	}
+	gui->Exp(CGui::WARN, "Terrain tex not found in packs: "+tex);
+	return 0;
+}
+
 void ExportRoR::ListPacks()
 {
 	Ogre::Timer ti;
 	gui->Exp(CGui::INFO, "Started List RoR packs..");
 
 	mesh2pack.clear();
+	ter2pack.clear();
 	
 	std::set<string> pks;  // for info
-	int cnt = 0;
+	int imesh = 0, iter = 0;
 
 	strlist all_mods;  // dirs and zip files-
 	PATHS::DirList(pSet->pathExportRoR, all_mods);
@@ -448,17 +463,27 @@ void ExportRoR::ListPacks()
 				continue;
 
 			pks.emplace(dir);
+			bool ter = dir.find("terrain") != string::npos;
 			
 			for (auto& fil : all_files)
-			if (StringUtil::endsWith(fil, ".mesh"))  // add meshes
 			{
-				mesh2pack[fil] = dir;
-				++cnt;
-				// gui->Exp(CGui::TXT, "Added "+fil+" in pack "+dir);
+				if (StringUtil::endsWith(fil, ".mesh"))
+				{
+					mesh2pack[fil] = dir;  // add mesh
+					++imesh;
+					// gui->Exp(CGui::TXT, "Added "+fil+" in pack "+dir);
+				}
+				else if (ter)
+				if (StringUtil::endsWith(fil, ".png"))
+				{
+					ter2pack[fil] = dir;  // add ter tex
+					++iter;
+					// gui->Exp(CGui::TXT, "Added "+fil+" in pack "+dir);
+				}
 			}
 		}
 	}
-	gui->Exp(CGui::NOTE, "Packs: "+toStr(pks.size())+"  meshes: "+toStr(cnt));
+	gui->Exp(CGui::NOTE, "Packs: "+toStr(pks.size())+"  meshes: "+toStr(imesh)+"  terrain tex: "+toStr(iter));
 
 	gui->Exp(CGui::INFO, "Ended List RoR packs.");
 	gui->Exp(CGui::INFO, "Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s\n");

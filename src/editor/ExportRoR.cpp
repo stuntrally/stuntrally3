@@ -221,14 +221,14 @@ void ExportRoR::ExportTrack()  // whole, full
 	//  get Authors etc from tracks.ini
 	//------------------------------------------------------------
 	string authors = "CryHam", scenery;
-	int difficulty = -1;
+	int difficulty = -1, rating = -1;
 	int trkId = 0;  // N from ini  // todo Test* same-
 
 	int id = scn->data->tracks->trkmap[pSet->gui.track];
 	if (id > 0)
 	{	const TrackInfo& ti = scn->data->tracks->trks[id-1];
 
-		difficulty = ti.diff;
+		difficulty = ti.diff;  rating = ti.rating;
 		scenery = ti.scenery;
 		authors = ti.author=="CH" ? "CryHam" : ti.author;
 		trkId = ti.n;
@@ -301,21 +301,23 @@ void ExportRoR::ExportTrack()  // whole, full
 
 	//  extra info from SR3 track
 	if (!scenery.empty())
-		trn << "stat0 = " << "Scenery:  " << scenery << "   .\n";
+		trn << "stat1 = " << "Scenery:  " << scenery << "   .\n";
 	if (difficulty >= 0)
-		trn << "stat1 = " << "Difficulty:  " << TR("#{Diff"+toStr(difficulty)+"}") << "   .\n";  // no TR? _en
+		trn << "stat2 = " << "Difficulty:  " << TR("#{Diff"+toStr(difficulty)+"}") << "   .\n";  // no TR? _en
+	if (rating >= 0)
+		trn << "stat3 = " << "Rating:  " << rating << " / 6   .\n";
 
 	const bool roadtxt = !scn->roads.empty();
 	if (roadtxt)
 	{	auto& rd = scn->roads[0];
 		auto len = rd->st.Length;  // road stats
 
-		trn << "stat2 = " << "Length:  " <<  fToStr(len * 0.001f,2,4) << " km  /  " << fToStr(len * 0.000621371f,2,4) << " mi  .\n";
-		trn << "stat3 = " << "Width average:  " << fToStr(rd->st.WidthAvg,1,3) << " m  .\n";
-		trn << "stat4 = " << "Height range:  " << fToStr(rd->st.HeightDiff,0,2) << " m  .\n";
-		trn << "stat5 = " << "Bridges:  " << fToStr(rd->st.OnTer,0,2) << " %  .\n";
+		trn << "stat4 = " << "Length:  " <<  fToStr(len * 0.001f,2,4) << " km  /  " << fToStr(len * 0.000621371f,2,4) << " mi  .\n";
+		trn << "stat5 = " << "Width average:  " << fToStr(rd->st.WidthAvg,1,3) << " m  .\n";
+		trn << "stat6 = " << "Height range:  " << fToStr(rd->st.HeightDiff,0,2) << " m  .\n";
+		trn << "stat7 = " << "Bridges:  " << fToStr(rd->st.OnTer,0,2) << " %  .\n";
 		// trn << "stat7 = " << "bank angle avg: " << fToStr(rd->st.bankAvg,0,2) << "\n";
-		trn << "stat6 = " << "Max banking angle:  " << fToStr(rd->st.bankMax,0,1) << "°  .\n";
+		trn << "stat8 = " << "Max banking angle:  " << fToStr(rd->st.bankMax,0,1) << "°  .\n";
 
 		trn << "Description = "+rd->sTxtDescr+"   .\n";  // text
 		trn << "Drive_Advice = "+rd->sTxtAdvice+"   .\n";
@@ -329,7 +331,9 @@ void ExportRoR::ExportTrack()  // whole, full
 	packs.emplace("sr-checkpoint-v1");  // common, always
 	packs.emplace("sr-materials-v1");
 	packs.emplace("sr-grass-v1");
-	packs.emplace("sr-terrain-v1");
+	
+	// packs.emplace("sr-terrain-v1");  // auto if needed etc
+	// packs.emplace("sr-rocks-v1");
 
 	gui->Exp(CGui::NOTE, "\nNeeded packs:");
 	for (auto& p : packs)
@@ -337,11 +341,6 @@ void ExportRoR::ExportTrack()  // whole, full
 		gui->Exp(CGui::TXT, p);
 		trn << p << ".assetpack=\n";
 	}
-
-	// trn << "sr-rocks-v1.assetpack=\n";
-	// trn << "sr-objects0ad-v1.assetpack=\n";  // if needed etc
-
-	// trn << "sr-terrain-ext-v1.assetpack=\n";  // todo check .. aln lava uni sur ..
 	trn << "\n";
 
 
