@@ -414,6 +414,7 @@ bool ExportRoR::AddPackFor(std::string mesh)
 	auto it = mesh2pack.find(mesh);
 	if (it != mesh2pack.end())
 	{
+		gui->Exp(CGui::DBG, "Mesh:  "+mesh+"  in pack:  "+it->second);
 		packs.emplace(it->second);
 		return 1;
 	}
@@ -427,6 +428,7 @@ bool ExportRoR::AddPackForTer(std::string tex)
 	auto it = ter2pack.find(tex);
 	if (it != ter2pack.end())
 	{
+		gui->Exp(CGui::DBG, "Terrain tex:  "+tex+"  in pack:  "+it->second);
 		packs.emplace(it->second);
 		return 1;
 	}

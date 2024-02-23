@@ -286,7 +286,7 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn << "\n";
 
 
-	//  Info text
+	//  📊 Info text
 	//------------------------------------------------------------
 	trn << "[Authors]\n";
 	trn << "Authors = " + authors + "  .\n";
@@ -325,7 +325,7 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn << " \n";
 
 
-	//  packs
+	//  📦 packs
 	//------------------------------------------------------------
 	trn << "[AssetPacks]\n";
 	packs.emplace("sr-checkpoint-v1");  // common, always

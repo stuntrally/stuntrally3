@@ -57,11 +57,16 @@ void ExportRoR::ExportWaterSky()
 
 	const PSky* sky = pre->GetSky(sc->skyMtr);
 	float cld = sky ? sky->clouds : 0.2f;
-	float juld = !sky ? 2458971.f :  // may 12:00
-		2458979.5f + sky->daytime * 0.0416667f;  // 0:00 + t * 1 h
+
+	//  julian
+	double juld = !sky ? 2458971.0 :  // may 12:00
+		2458979.5 + double(sky->daytime) * 0.0416666;  // 0:00 + t * 1 h
+	ostringstream ss;  ss.width(15);
+	ss << fixed << setprecision(6) << juld;
+
 	gui->Exp(CGui::TXT, String("Sky: ")+sc->skyMtr+" clouds "+fToStr(cld)+
 						" time "+fToStr(sky->daytime)+" latitude "+fToStr(sky->latitude));
-	os << "	julian_day " << juld << "\n";  //?
+	os << "	julian_day " << ss.str() << "\n";
 	os << "	time_scale 1\n";
 	os << "	longitude 0\n";  // from sun dir?-
 	os << "	latitude " << sky->latitude << "\n";
