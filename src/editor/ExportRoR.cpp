@@ -93,10 +93,11 @@ ExportRoR::ExportRoR(App* app1)
 
 	version = 1;  // increase..
 
-	copyTerTex =0; // 1 data inside track
-	copyVeget =0;  // 0 data in packs
-	copyGrass =0;
-	copyObjs =0;
+#if 1  //  data in packs
+	copyTerTex =0;  copyVeget =0;  copyGrass =0;  copyObjs =0;
+#else  //  data inside track
+	copyTerTex =1;  copyVeget =1;  copyGrass =1;  copyObjs =1;
+#endif
 }
 
 //  ⛓️ utils
@@ -168,11 +169,15 @@ void ExportRoR::SetupPath()
 //------------------------------------------------------------------------------------------------------------------------
 void ExportRoR::ExportTrack()  // whole, full
 {
-	Ogre::Timer ti;
+	gui->edExportLog->setCaption("");  // clear log
+	
+	if (first)
+		ListPacks();
+	first =0;
 	
 	//  Gui status
+	Ogre::Timer ti;
 	gui->Status("RoR Export..", 1,0.5,1);
-	gui->edExportLog->setCaption("");
 	gui->Exp(CGui::INFO, "Export to RoR started..");
 
 
@@ -189,7 +194,7 @@ void ExportRoR::ExportTrack()  // whole, full
 	ExportRoad();
 
 	
-	//  just copy common .material to track dir  (done by convert in materials/)
+	//  no, copy common .material to track dir  (done by convert in materials/)
 	if (0)
 	{
 	string pathMtr = pSet->pathExportRoR + "materials/";
@@ -243,7 +248,8 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn << "GeometryConfig = " + name + ".otc\n";
 	trn << "\n";
 	trn << "Water=" << water << "\n";
-	trn << "WaterLine=" << Ywater << "\n";
+	if (water)
+		trn << "WaterLine=" << Ywater << "\n";
 	trn << "\n";
 	trn << "AmbientColor = 1.0, 1.0, 1.0\n";  // unused-
 
@@ -285,7 +291,9 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn << "[Authors]\n";
 	trn << "Authors = " + authors + "  .\n";
 	trn << "Conversion = Exported from Stunt Rally 3 Track Editor, version: " << SET_VER << "  .\n";
+	trn << "License = Track: GPLv3. For data see inside asset packs _*.txt files.\n";
 
+	//  datetime now
 	time_t now = time(0);
 	tm tn;  tn = *localtime(&now);
 	char dtm[80];  strftime(dtm, sizeof(dtm), "%Y-%m-%d.%X", &tn);
@@ -310,33 +318,34 @@ void ExportRoR::ExportTrack()  // whole, full
 		trn << "stat6 = " << "Max banking angle:  " << fToStr(rd->st.bankMax,0,1) << "°  .\n";
 
 		trn << "Description = "+rd->sTxtDescr+"   .\n";  // text
-		trn << "drive_Advice = "+rd->sTxtAdvice+"   .\n";
+		trn << "Drive_Advice = "+rd->sTxtAdvice+"   .\n";
 	}
 	trn << " \n";
 
 
+	//  packs
 	//------------------------------------------------------------
-	trn << "[AssetPacks]\n";  // todo
-	trn << "sr-checkpoint-v1.assetpack=\n";
-	trn << "sr-materials-v1.assetpack=\n";
+	trn << "[AssetPacks]\n";
+	packs.emplace("sr-checkpoint-v1");  // common, always
+	packs.emplace("sr-materials-v1");
+	packs.emplace("sr-grass-v1");
+	packs.emplace("sr-terrain-v1");
 
-	trn << "sr-objects0ad-v1.assetpack=\n";  // todo check if needed
-	trn << "sr-objects-v1.assetpack=\n";
-	trn << "sr-objects2-v1.assetpack=\n";
-	trn << "sr-objectsC-v1.assetpack=\n";
-	// trn << "sr-obstacles-v1.assetpack=\n";
+	gui->Exp(CGui::NOTE, "\nNeeded packs:");
+	for (auto& p : packs)
+	{
+		gui->Exp(CGui::TXT, p);
+		trn << p << ".assetpack=\n";
+	}
 
-	trn << "sr-grass-v1.assetpack=\n";
-	trn << "sr-rocks-v1.assetpack=\n";
+	// trn << "sr-rocks-v1.assetpack=\n";
+	// trn << "sr-objects0ad-v1.assetpack=\n";  // if needed etc
 
-	// trn << "sr-terrain-ext-v1.assetpack=\n";  // aln lava uni sur
-	trn << "sr-terrain-v1.assetpack=\n";
-	
-	trn << "sr-trees-v1.assetpack=\n";
-	trn << "sr-trees2-v1.assetpack=\n";
-	trn << "sr-trees-old-v1.assetpack=\n";
+	// trn << "sr-terrain-ext-v1.assetpack=\n";  // todo check .. aln lava uni sur ..
+	trn << "\n";
 
 
+	//  road veget objs .tobj
 	//------------------------------------------------------------
 	trn << "[Objects]\n";
 	if (hasRoad)
@@ -355,6 +364,6 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn.close();
 
 
-	gui->Exp(CGui::INFO, "Export to RoR end.");
+	gui->Exp(CGui::INFO, "\nExport to RoR end.");
 	gui->Exp(CGui::INFO, "Time Total: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s");
 }

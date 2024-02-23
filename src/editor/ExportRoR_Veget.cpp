@@ -350,6 +350,9 @@ void ExportRoR::ExportVeget()
 				gui->Exp(CGui::WARN, "veget not found in old SR: "+mesh);
 				continue;
 			}
+			if (!AddPackFor(mesh))  //+
+				continue;
+			
 
 			//  copy mesh from old SR
 			//----------------------------------

@@ -17,23 +17,34 @@ This has few benefits:
 
 These are all steps needed:
 
-#### RoR path
-*Main RoR* path for either *mods* or content.  
-On Linux: `/home/username/.rigsofrods/mods`  
+#### RoR mods path
+
+*Main RoR* path for *mods* (or content).  
+It should end with / or \\.  
+On Linux: `/home/username/.rigsofrods/mods/`  
 Here will tracks be exported into.  
+Also other subdirs will be needed or created.
 
-2. SR packs.
+#### Old SR
 
-Download all SR packs (from RoR reposiotory or if you have them in *mods*) and extract them in Main RoR path.  
+This the path to SR 2.x `data/` dir, where are subdirs like: materials, objects*, terrain, trees* etc.  
+It should end with / or \\.
 
-Extract `sr-*` *packs* inside *mods* dir.
+#### SR packs
+
+Download all SR packs (from RoR repository, or you could already have them in *mods*)  
+and extract them in RoR mods path.  
+
+Extract `sr-*` *packs* inside RoR *mods* dir.
 
 To have subdirs like, e.g.:
 - sr-materials-v1
   - with *.material files
   - sr-materials-v1.assetpack
-- 
-and all other available.
+- sr-trees2-v1
+- and **all** other available
+
+This is needed for auto determining which packs are needed for exported tracks.
 
 _Alternatively SR3 Track Editor can export also other way, not using packs._  
 _Simply by copying (almost) all needed resources into RoR track dir._
@@ -92,3 +103,18 @@ Old, not used now.
 
 Creates .odef file for each .mesh inside RoR mods path, in subdirs:  
 objects, objects2, objectsC, objects0, obstacles,	trees, trees2, trees-old, rocks, rockshex
+
+
+### Details
+
+When making packs, from SR data
+
+renamed:
+- all grass* to sr-grass*
+- palm.mesh to palm11.mesh and set material inside to Plm1
+- palm2.mesh to palm22.mesh
+
+not including any:
+- dynamic objects (all having .bullet file near)
+- obstacle* hexrock* hexcave* anomaly*
+- tree_dead* post_apo_building* etc from sceneries not in RoR

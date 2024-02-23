@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <map>
 
 
 //  Export current track for Rigs Of Rods
@@ -35,6 +36,14 @@ protected:
 	//  utils
 	Ogre::String strPos(const Ogre::Vector3& pos);  // util convert SR pos to RoR pos
 	bool CopyFile(const std::string& from, const std::string& to);  // both args are path with filenames
+
+	//  packs
+	void ListPacks();
+	bool first =1;
+	std::map<std::string, std::string> mesh2pack;
+
+	bool AddPackFor(std::string mesh);  // check if in which mesh2pack, and to packs
+	std::set<std::string> packs;
 
 public:
 	//  🌟 ctor

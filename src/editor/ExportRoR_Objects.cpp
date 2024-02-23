@@ -64,6 +64,9 @@ void ExportRoR::ExportObjects()
 			gui->Exp(CGui::WARN, "object not found in old SR: "+mesh);
 			continue;
 		}
+		if (!AddPackFor(mesh))  //+
+			continue;
+		
 
 		bool many = 1;  // each mesh own scale
 		// bool many = 0;  // or one for all mesh

@@ -124,7 +124,8 @@ void ExportRoR::ExportRoad()
 					// trd << half - vP.z << ", " << vP.y - hmin << ", " << vP.x + half << ",   ";
 					trd << strPos(vP) << "  ";
 					//  rot
-					trd << "0, " << yaw << ", 0,  ";  // todo  p.aRoll
+					trd << "0, " << yaw << ", 0,  ";  // only
+					// trd << p.aRoll << ", " << yaw << ", 0,  ";  // todo  p.aRoll
 					trd << width << ",   ";
 					
 					//  bridge
@@ -147,7 +148,7 @@ void ExportRoR::ExportRoad()
 
 	//  get checkpoints
 	//------------------------------------------------------------
-	for (int i=0; i < rd->getNumPoints() + 1; ++i)  // loop it
+	for (int i=0; i < rd->getNumPoints(); ++i)
 	{
 		const int i0 = rd->getAdd(i,0);
 		const auto& p = rd->getPoint(i0);

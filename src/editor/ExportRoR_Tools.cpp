@@ -401,3 +401,65 @@ void ExportRoR::ConvertMat()
 	gui->Exp(CGui::INFO, "Ended Convert materials");
 	gui->Exp(CGui::INFO, "Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s");
 }
+
+
+//------------------------------------------------------------------------------------------------------------------------
+//  RoR packs
+//------------------------------------------------------------------------------------------------------------------------
+
+//  check in which mesh2pack, and to packs
+bool ExportRoR::AddPackFor(std::string mesh)
+{
+	auto it = mesh2pack.find(mesh);
+	if (it != mesh2pack.end())
+	{
+		packs.emplace(it->second);
+		return 1;
+	}
+	gui->Exp(CGui::WARN, "Mesh not found in packs: "+mesh);
+	return 0;
+}
+
+void ExportRoR::ListPacks()
+{
+	Ogre::Timer ti;
+	gui->Exp(CGui::INFO, "Started List RoR packs..");
+
+	mesh2pack.clear();
+	
+	std::set<string> pks;  // for info
+	int cnt = 0;
+
+	strlist all_mods;  // dirs and zip files-
+	PATHS::DirList(pSet->pathExportRoR, all_mods);
+	for (auto& dir : all_mods)
+	{
+		if (StringUtil::startsWith(dir, "sr-"))
+		{
+			strlist all_files;  // content
+			PATHS::DirList(pSet->pathExportRoR+"/"+dir, all_files);
+			
+			bool ok = 0;
+			for (auto& fil : all_files)
+			if (StringUtil::endsWith(fil, ".assetpack"))  // has to be inside
+				ok = 1;
+			
+			if (!ok)
+				continue;
+
+			pks.emplace(dir);
+			
+			for (auto& fil : all_files)
+			if (StringUtil::endsWith(fil, ".mesh"))  // add meshes
+			{
+				mesh2pack[fil] = dir;
+				++cnt;
+				// gui->Exp(CGui::TXT, "Added "+fil+" in pack "+dir);
+			}
+		}
+	}
+	gui->Exp(CGui::NOTE, "Packs: "+toStr(pks.size())+"  meshes: "+toStr(cnt));
+
+	gui->Exp(CGui::INFO, "Ended List RoR packs.");
+	gui->Exp(CGui::INFO, "Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s\n");
+}
