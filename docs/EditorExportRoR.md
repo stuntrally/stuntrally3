@@ -69,10 +69,20 @@ Steps:
 
 5. Then setup paths in Export, subtab Settings.
 
-6. Go to first tab (Warnings). Press Export.  
+6. Go to first tab (Warnings). Press **Export**.  
    It can take few seconds. At end there will be log of what was done.  
    Check it for warnings (orange or red).
    If it went well (and sr packs are present if used) then you can start this track in RoR.
+
+7. Test track in RoR. Things could look or be wrong.  
+
+8. If so, go back to SR3 editor Gui, on Export tab, and **Track** subtab.  
+   Adjust if needed. Press Save there. Export, test and repeat if needed.  
+   For example, often adjusted:  
+   - Road terrain layer, check look on Layers tab (alt-T).
+   - Road height offset, moves all bridges up/down. To adjust bridge entries step.
+   - Fluids, if Auto fails, set to either None or Manual and set height.
+   - Trees density. E.g. reduce if too much or lags in RoR.
 
 
 ----
