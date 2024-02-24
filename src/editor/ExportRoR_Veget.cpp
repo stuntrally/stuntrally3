@@ -57,12 +57,14 @@ void ExportRoR::ExportVeget()
 		char* rdTr = 0;  //  for trees, thick, outline
 		
 		Image2 img;  PixelFormatGpu pf;
+		TextureBox tb;
 		int xx = 0, yy = 0;
 		try
 		{
 			img.load(String("roadDensity.png"), "General");
 			xx = img.getWidth();  yy = img.getHeight();
 			pf = img.getPixelFormat();
+			tb = img.getData(0);
 
 			// im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
 			rdGr = new char[xx * yy];
@@ -75,7 +77,7 @@ void ExportRoR::ExportVeget()
 		if (!rdGr || !rdTr)
 			return;
 
-		TextureBox tb = img.getData(0);
+		// TextureBox tb = img.getData(0);
 		// TextureBox tb2 = im2.getData(0);
 
 		int a = 0;
@@ -150,15 +152,13 @@ void ExportRoR::ExportVeget()
 
 				//  grass dens map
 				//------------------------------------------------------------
-				Image2 img, im2;
+				Image2 im2;
 				// try
 				// {
-					img.load(String("roadDensity.png"), "General");
-					im2.load(String("roadDensity.png"), "General");
-					// im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
+					// im2.load(String("roadDensity.png"), "General");
+					im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
 
-					const int xx = img.getWidth(), yy = img.getHeight();
-					TextureBox tb = img.getData(0), tb2 = im2.getData(0);
+					TextureBox tb2 = im2.getData(0);
 					auto pf = img.getPixelFormat();
 
 					int a = 0;
@@ -236,16 +236,16 @@ void ExportRoR::ExportVeget()
 		for (size_t l=0; l < sc->vegLayers.size(); ++l)
 		{
 			VegetLayer& vg = sc->vegLayersAll[sc->vegLayers[l]];
+			if (!vg.on)
+				continue;
 			const String mesh = vg.name;
 			const string mapName = name + "-veget"+toStr(l)+".png";
 
 			//  veget dens map
 			//------------------------------------------------------------
-			Image2 img, im2;
+			Image2 im2;
 			// try
 			// {
-				img.load(String("roadDensity.png"), "General");
-
 				im2.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pf);
 				TextureBox tb2 = im2.getData(0);
 
