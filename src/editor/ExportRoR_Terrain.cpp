@@ -12,6 +12,7 @@
 #include <Terra.h>
 #include <OgreImage2.h>
 #include <OgreVector3.h>
+#include <OgreColourValue.h>
 
 #include <exception>
 #include <string>
@@ -95,6 +96,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 	delete[] hmap;  hmap = 0;
 
 
+	//------------------------------------------------------------------------------------------------------------------------
 	//  🏔️ Blendmap  Layers
 	//------------------------------------------------------------------------------------------------------------------------
 	gui->Exp(CGui::NOTE, "Terrain layers  " + toStr(td.layers.size()));
@@ -203,33 +205,74 @@ void ExportRoR::ExportTerrain()  // whole, full
 	} // layers
 
 
-	//  🏔️ Blendmap  save as .png
-	//------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------------------------------
+	//  🏔️ Blendmap  save as .png  also  surfaces -surf.png
+	//------------------------------------------------------------------------------------------------------------------------
 	int bleSize = 1024;
 	if (scn->ters[0]->blendmap.texture)
 	{
 		auto bleFile = path + name + "-blendmap.png";
 		// scn->ters[0]->blendmap.texture->writeContentsToFile(ble, 0, 0);
+		auto surfFile = path + name + "-surf.png";
 		
-        Image2 img, im2;
-        img.convertFromTexture(scn->ters[0]->blendmap.texture, 0, 0);
-		im2 = img;
+        Image2 img, imb, imr, isu;
 		try
-		{	//  rotate +90 deg, -y x
+		{	//  blendmap rtt
+	        img.convertFromTexture(scn->ters[0]->blendmap.texture, 0, 0);
 			const int xx = img.getWidth(), yy = img.getHeight();
+			auto pb = img.getPixelFormat();
+			imb.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pb);
+
+			//  rotate +90 deg, -y x  ----
 			bleSize = xx;
-			TextureBox tb = img.getData(0), tb2 = im2.getData(0);
-			auto pf = img.getPixelFormat();
+			auto tb = img.getData(0), tb2 = imb.getData(0);
+
 			for (int y = 0; y < yy; ++y)
 			for (int x = 0; x < xx; ++x)
 			{
-				ColourValue cv = tb.getColourAt(x, y, 0, pf);
+				ColourValue cb = tb.getColourAt(x, y, 0, pb);
 				// ColourValue cv = tb.getColourAt(xx-1 - x, yy-1 - y, 0, pf);
 				// ColourValue cv = tb.getColourAt(x, y, 0, pf);
-				ColourValue c2(cv.r, cv.g, cv.b, cv.a);
-				tb2.setColourAt(c2, yy-1-y, x, 0, pf);
+				ColourValue c2(cb.r, cb.g, cb.b, cb.a);
+				tb2.setColourAt(c2, yy-1-y, x, 0, pb);
 			}
-			im2.save(bleFile, 0, 0);  // ter blend map
+
+			//  road  --------
+			imr.load(String("roadDensity.png"), "General");
+			const int xr = imr.getWidth(), yr = imr.getHeight();
+			auto pr = imr.getPixelFormat();
+			auto tr = imr.getData(0);
+			isu.createEmptyImage(xr, yr, 1, TextureTypes::Type2D, pr);
+			auto su = isu.getData(0);
+			
+			const ColourValue cv[6] = {
+				ColourValue(1, 0, 0, 1),  // ter 0
+				ColourValue(0, 1, 0, 1),  // ter 1
+				ColourValue(0, 0, 1, 1),  // ter 2
+				ColourValue(1, 1, 0, 1),  // ter 3
+				ColourValue(0, 1, 1, 1),  // road
+				ColourValue(1, 1, 1, 1)};
+
+			//  surf  ----
+			for (int y = 0; y < yr; ++y)
+			for (int x = 0; x < xr; ++x)
+			{
+				ColourValue cr = tr.getColourAt(xr-1 - x, y, 0, pr);
+				int xb = float(x)/(xr-1) * (xx-1);
+				int yb = float(y)/(yr-1) * (yy-1);
+				ColourValue cb = tb.getColourAt(xb, yb, 0, pb);
+
+				int i = 0;
+				if (cr.r < 0.5f)  i = 4;
+				else if (cb.r > 0.5f)  i = 0;
+				else if (cb.g > 0.5f)  i = 1;
+				else if (cb.b > 0.5f)  i = 2;
+				else if (cb.a > 0.5f)  i = 3;
+
+				su.setColourAt(cv[i], x, y, 0, pr);
+			}
+			imb.save(bleFile, 0, 0);  // ter blend map
+			isu.save(surfFile, 0, 0);  // road + ter surfaces
 		}
 		catch (exception ex)
 		{
@@ -237,7 +280,46 @@ void ExportRoR::ExportTerrain()  // whole, full
 		}
 	}
 
+	//  groundmodel.cfg  aka surfaces.cfg
+	//------------------------------------------------------------
+	/*
+	string surfFile = path + name + "-surfaces.cfg";
+	ofstream surf;
+	surf.open(surfFile.c_str(), std::ios_base::out);
 
+	surf.close();
+	*/
+
+	//  landuse.cfg
+	//------------------------------------------------------------
+	string landFile = path + name + "-landuse.cfg";
+	ofstream land;
+	land.open(landFile.c_str(), std::ios_base::out);
+
+	land << "[config]\n";
+	land << "texture = " << name << "-surf.png\n";
+	land << "# the default terrain to be used, if not using landuse its 'gravel'\n";
+	land << "defaultuse = gravel\n";
+	land << "# the friction config to load\n"; //, multiple lines possible to load multiple files\n";
+	// land << "loadGroundModelsConfig = " << name << "-surfaces.cfg\n";
+	land << "loadGroundModelsConfig = " << "sr-surfaces.cfg\n";  // common for all sr tracks
+	land << "\n";
+	land << "# the colour <--> ground type coupling\n";
+	land << "[use-map]\n";
+	//land << "#colour format explanation: 0x[fixed!](2 Alpha Char)(2 Red Char)(2 Green Char)(2 Blue Char)\n";
+	land << "\n";
+	// surf
+	land << "0xffff0000 = gravel\n";  // todo: from layer surfaces
+	land << "0xff00ff00 = grass\n";
+	land << "0xff0000ff = sand\n";
+	land << "0xffffff00 = rock\n";
+	land << "0xff00ffff = asphalt\n";
+	land << "0xffff00ff = mud\n";
+
+	land.close();
+
+
+	//------------------------------------------------------------------------------------------------------------------------
 	//  📄🏔️ Terrain layers setup  save  page.otc
 	//------------------------------------------------------------------------------------------------------------------------
 	int roadAdd = 1;  // par-  0 off  1 add road layer last
