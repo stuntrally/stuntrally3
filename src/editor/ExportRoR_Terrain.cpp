@@ -298,23 +298,30 @@ void ExportRoR::ExportTerrain()  // whole, full
 
 	land << "[config]\n";
 	land << "texture = " << name << "-surf.png\n";
-	land << "# the default terrain to be used, if not using landuse its 'gravel'\n";
+	land << "\n";
+	land << "#  default terrain to be used, if not using landuse its 'gravel'\n";
 	land << "defaultuse = gravel\n";
-	land << "# the friction config to load\n"; //, multiple lines possible to load multiple files\n";
+	land << "\n";
+	land << "#  friction configs, common for all sr tracks\n"; //, multiple lines for multiple files\n";
 	// land << "loadGroundModelsConfig = " << name << "-surfaces.cfg\n";
 	land << "loadGroundModelsConfig = " << "sr-surfaces.cfg\n";  // common for all sr tracks
 	land << "\n";
-	land << "# the colour <--> ground type coupling\n";
+	land << "#  colour to ground surface coupling\n";
 	land << "[use-map]\n";
-	//land << "#colour format explanation: 0x[fixed!](2 Alpha Char)(2 Red Char)(2 Green Char)(2 Blue Char)\n";
-	land << "\n";
-	// surf
-	land << "0xffff0000 = gravel\n";  // todo: from layer surfaces
-	land << "0xff00ff00 = grass\n";
-	land << "0xff0000ff = sand\n";
-	land << "0xffffff00 = rock\n";
-	land << "0xff00ffff = asphalt\n";
-	land << "0xffff00ff = mud\n";
+
+	//  get ter surf  ----
+	string ter[4];
+	int t = 0;
+	for (auto i : td.layers)
+		ter[t++] = td.layersAll[i].surfName;
+
+	//  write  ----
+	land << "0xffff0000 = " << ter[0] << "\n";
+	land << "0xff00ff00 = " << ter[1] << "\n";
+	land << "0xff0000ff = " << ter[2] << "\n";
+	land << "0xffffff00 = " << ter[3] << "\n";
+	land << "0xff00ffff = " << sc->layerRoad[0].surfName << "\n";
+	// land << "0xff00ffff = " << scn->roads[0].surf << "\n";
 
 	land.close();
 

@@ -45,6 +45,10 @@ void CGui::btnConvertMat(WP)
 {
 	app->ror->ConvertMat();
 }
+void CGui::btnConvertSurface(WP)
+{
+	app->ror->ConvertSurf();
+}
 void CGui::btnCreateOdef(WP)
 {
 	app->ror->CreateOdef();
@@ -281,8 +285,8 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn << "GUID = 11223344-5566-7788-" << fToStr(trkId,0,4,'0') <<"-"<< shex <<"\n";
 	trn << "\n";
 
-	//  if has groundmodel, define landuse file
-	trn << "#TractionMap = landuse.cfg\n";  // todo  surfaces.cfg
+	//  surfaces   if has groundmodel, define landuse file
+	trn << "TractionMap = " << name + "-landuse.cfg\n";
 	trn << "\n";
 
 

@@ -29,7 +29,7 @@ using namespace Ogre;
 using namespace std;
 
 
-//  Tools other
+//  Tools other for RoR tracks data
 
 //------------------------------------------------------------------------------------------------------------------------
 //  combine terrain textures to _ds, _nh
@@ -400,6 +400,66 @@ void ExportRoR::ConvertMat()
 
 	gui->Exp(CGui::INFO, "\nCount: "+toStr(all));
 	gui->Exp(CGui::INFO, "Ended Convert materials");
+	gui->Exp(CGui::INFO, "Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s");
+}
+
+
+//  surfaces to groundmodel
+void ExportRoR::ConvertSurf()
+{
+	Ogre::Timer ti;
+
+	//  Gui status
+	gui->Status("Convert surfaces", 0.7,0.7,1);
+	gui->edExportLog->setCaption("");
+	gui->Exp(CGui::INFO, "Convert surfaces to groudmodel ..");
+
+	string suFile = pSet->pathExportRoR + "sr-surfaces.cfg";
+	ofstream suf;
+	suf.open(suFile.c_str(), std::ios_base::out);
+
+	int all = 0;
+	for (auto& su : app->surfaces)
+	{
+		gui->Exp(CGui::NOTE, su.name);
+
+		suf << su.name << "\n";
+
+		++all;
+	}
+
+/*
+	enum TYPE
+	{	NONE=0, ASPHALT, GRASS, GRAVEL, CONCRETE, SAND, COBBLES, NumTypes	};
+
+	float friction, frictionX, frictionY;  // x,y - multipliers
+	float bumpWaveLength, bumpAmplitude, bumpWaveLength2, bumpAmplitude2;
+	float rollingDrag, rollingResist;
+
+	TYPE type;
+	std::string name, tireName;  // .tire file source (without ".tire")
+	CARTIRE* tire;  /// tire params set
+	
+	static CARTIRE* pTireDefault;
+	
+	TRACKSURFACE() :
+		friction(1.0f),
+		frictionX(1.0f), frictionY(1.0f),
+		bumpWaveLength(10.f), bumpAmplitude(0.f),
+		bumpWaveLength2(14.f), bumpAmplitude2(0.f),
+		rollingDrag(1.f), rollingResist(1.f),
+		type(GRASS),
+		tireName("DEFAULT"),
+		tire(CARTIRE::None())
+	{	}
+*/
+	// std::map <std::string, int> surf_map;  // name to surface id
+	// bool LoadAllSurfaces();
+
+	suf.close();
+
+	gui->Exp(CGui::INFO, "\nCount: "+toStr(all));
+	gui->Exp(CGui::INFO, "Ended Convert surfaces");
 	gui->Exp(CGui::INFO, "Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s");
 }
 

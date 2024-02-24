@@ -616,6 +616,7 @@ void CGui::InitGui()
 	ck= &ckCheckSave;	ck->Init("CheckSave",	&pSet->check_save);
 	ck= &ckCheckLoad;	ck->Init("CheckLoad",	&pSet->check_load);
 
+	Btn("SaveSceneXml", btnSaveSceneXml);  //`
 
 	///  RoR export  --------
 	edExportLog = fEd("EdExportLog");
@@ -625,10 +626,8 @@ void CGui::InitGui()
 	Edt(edRoRPath, "EdPathRoR", editRoRPath);  edRoRPath->setCaption(pSet->pathExportRoR);
 	Edt(edOldSRPath, "EdPathOldSR", editOldSRPath);  edOldSRPath->setCaption(pSet->pathExportOldSR);
 
-	Btn("ConvertMat4RoR", btnConvertMat);
-	Btn("ConvertTerrain4RoR", btnConvertTerrain);
-	Btn("CreateOdef4RoR", btnCreateOdef);
-	Btn("SaveSceneXml", btnSaveSceneXml);
+	Btn("ConvertMat4RoR", btnConvertMat);  Btn("CreateOdef4RoR", btnCreateOdef);
+	Btn("ConvertTerrain4RoR", btnConvertTerrain);  Btn("ConvertSurface4RoR", btnConvertSurface);
 	
 	//  RoR Track setup  --------
 	auto& ror = app->scn->sc->rorCfg;
@@ -656,6 +655,7 @@ void CGui::InitGui()
 	sv= &svRoR_RoadHadd;	sv->Init("RoR_RoadHadd",	&ror.roadHadd,  2.f, 2.f, 1.f, 2,4);  sv->DefaultF(-0.8f);
 	sv= &svRoR_WallX;		sv->Init("RoR_WallX",		&ror.wallX,		0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.6f);
 	sv= &svRoR_WallY;		sv->Init("RoR_WallY",		&ror.wallY,		0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.8f);
+	sv= &svRoR_RoadVegetDist;	sv->Init("RoR_RoadVegetDist",	&ror.roadVegetDist,  0, 16);  sv->DefaultI(8);
 
 	sv= &svRoR_TileMul;		sv->Init("RoR_TileMul",		&ror.tileMul,	0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.9f);
 	sv= &svRoR_ObjOfsY;		sv->Init("RoR_ObjOfsY",		&ror.yObjOfs,	-2.f, 2.f, 1.f, 2,4);  sv->DefaultF(0.f);
