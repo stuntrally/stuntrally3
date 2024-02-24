@@ -41,7 +41,8 @@ void ExportRoR::ExportRoad()
 	std::vector<string> chks;  int chk1st = 0;
 	const bool roadtxt = !scn->roads.empty();
 	const bool road = roadtxt && scn->roads[0]->getNumPoints() > 2;
-	const float fLenDim = cfg->roadStepDist;  // points density
+	const float fLenDim = cfg->roadStepDist;  // points len density
+	const float fAngDiv = cfg->roadAngDiv;  // points angle density
 
 	hasRoad = 0;  hasRoadChks = 0;
 	if (!road)
@@ -52,8 +53,9 @@ void ExportRoR::ExportRoad()
 	const auto& rd = scn->roads[0];
 
 	//  if all points on ter, skip road, is on blendmap
+	const int num = rd->getNumPoints();
 	bool roadOnTer = 1;
-	for (int i=0; i < rd->getNumPoints(); ++i)
+	for (int i=0; i < num; ++i)
 		if (!rd->getPoint(i).onTer)
 			roadOnTer = 0;
 
@@ -69,7 +71,15 @@ void ExportRoR::ExportRoad()
 		trd << "//  position x,y,z   rotation rx,ry,rz,   width,   border width, border height,  type\n";
 		bool begin = 0;  int iroads = 0;
 
-		for (int i=0; i < rd->getNumPoints() + 1; ++i)  // loop it
+		//  prepass
+		SplineRoad::DataRoad dr(0, 1);
+		dr.segs = num;
+		dr.sMin = 0;  dr.sMax = dr.segs;
+		rd->PrepassAngles(dr);
+
+		int iila = 0;  // stat cnt
+		const int num1 = rd->isLooped ? num + 1 : num;  // loop it
+		for (int i=0; i < num1; ++i)
 		{
 			//  i0,1
 			const int i0 = rd->getAdd(i,0), i1 = rd->getNext(i);
@@ -97,20 +107,32 @@ void ExportRoR::ExportRoad()
 			{
 				//  length steps  |
 				// const int il = 2;  // const LQ
-				Real len = rd->GetSegLen(i0);
-				const int il = 1 + (len / fLenDim);  // var, by dist
-				// todo more with bigger angle changes?
-				const int ila = il + (p1.onTer ? 1 : 0);  // bridge will end, use all length points
-				// gui->Exp(CGui::TXT, "Road il: "+toStr(il) );
+				float len = rd->GetSegLen(i0);
+				//  more with bigger angle changes?
+				float ayaw = fabs(p1.aYaw  - p.aYaw) / fAngDiv;  // par quality subdiv
+				float arol = fabs(p1.aRoll - p.aRoll) / fAngDiv;
+				int ilen = min(10, int(len / fLenDim));  // par max, len subdiv-
+
+				string s = "Road seg: "+toStr(i)+"  len "+fToStr(len)+"  ilen "+toStr(ilen)+"\n";
+				s += "Road roll "+fToStr(p.aRoll)+"  ayaw "+fToStr(ayaw) +" aroll "+fToStr(arol);
 				
+				//  road segment, divisions
+				ayaw = min(ayaw, 4.f);  arol = min(arol, 3.f);  // par max
+				const int il = 1 + ilen + ayaw + arol;  // var by length and angles
+				const int ila = il + (p1.onTer ? 1 : 0);  // bridge will end, use all length points
+				iila += ila;
+				
+				s += " div: "+toStr(il);
+				// gui->Exp(CGui::TXT, s);  // test, gui chk?
+
 				for (int l = 0; l < ila; ++l)
 				{	//  pos
-					float fl = l;
-					Vector3 vP = rd->interpolate(i0, fl / il);
+					float fl = l, fil = fl / il;
+					Vector3 vP = rd->interpolate(i0, fil);
 					Vector3 vP1 = rd->interpolate(i0, (fl+1.f) / il);
 					Vector3 dir = vP1 - vP;  // along length
 
-					const float width = rd->interpWidth(i0, fl / il);
+					const float width = rd->interpWidth(i0, fil);
 
 					// if (p.onTer)  // ?
 					// 	vP.y = scn->getTerH(vP.x, vP.z);
@@ -118,14 +140,17 @@ void ExportRoR::ExportRoad()
 
 					//  rot y
 					float yaw = TerUtil::GetAngle(dir.x, dir.z) *180.f/PI_d - 90.f;  // ok
+					//  rot x
+					float roll = p1.aRoll * fil + p.aRoll * (1.f - fil);  // interpolate
+					// gui->Exp(CGui::TXT, "Road l: "+toStr(l)+" r "+fToStr(roll));
 
 					//  write  ------
 					//  pos
 					// trd << half - vP.z << ", " << vP.y - hmin << ", " << vP.x + half << ",   ";
 					trd << strPos(vP) << "  ";
 					//  rot
-					trd << "0, " << yaw << ", 0,  ";  // only
-					// trd << p.aRoll << ", " << yaw << ", 0,  ";  // todo  p.aRoll
+					// trd << "0, " << yaw << ", 0,  ";  // only
+					trd << roll << ", " << yaw << ", 0,  ";  // todo PR
 					trd << width << ",   ";
 					
 					//  bridge
@@ -142,13 +167,13 @@ void ExportRoR::ExportRoad()
 			trd << "end_procedural_roads\n";
 
 		trd.close();
-		gui->Exp(CGui::NOTE, "Roads: "+toStr(iroads));
+		gui->Exp(CGui::NOTE, "Roads: "+toStr(iroads)+"  total divs: "+toStr(iila));
 	}
 
 
 	//  get checkpoints
 	//------------------------------------------------------------
-	for (int i=0; i < rd->getNumPoints(); ++i)
+	for (int i=0; i < num; ++i)
 	{
 		const int i0 = rd->getAdd(i,0);
 		const auto& p = rd->getPoint(i0);
@@ -214,7 +239,8 @@ void ExportRoR::ExportRoad()
 	#endif
 		as << "		};\n";
 		as << "	int raceID = races.addRace(\"SR\", race_sr, " <<
-			"races.LAPS_Unlimited, \"sr-checkpoint\");\n";
+			"races.LAPS_Unlimited, \"sr-checkpoint\", \"sr-start\");\n";
+			// "races.LAPS_Unlimited, \"sr-checkpoint\");\n";  // default start/finish
 			// "races.LAPS_Unlimited, \"sr-checkpoint\", \"sr-start\");\n";
 			//checkpoint object     startline object        finishline object
 			// "\"sr-checkpoint\", \"sr-checkpoint\", \"sr-checkpoint\", \"CryHam-1.0\");\n";

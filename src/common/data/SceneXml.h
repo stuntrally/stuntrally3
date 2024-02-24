@@ -27,7 +27,8 @@ struct RoRconfig
 
 	int roadTerTexLayer;  // 🛣️  terrain layer num, used as texture for road
 	bool roadCols;
-	float roadStepDist, roadHadd, wallX, wallY;
+	float roadStepDist, roadAngDiv;
+	float roadHadd, wallX, wallY;
 	
 	float tileMul;  // terrain & road layer tex tiling, scale
 	float yObjOfs;  // 📦🏢 add objects pos y

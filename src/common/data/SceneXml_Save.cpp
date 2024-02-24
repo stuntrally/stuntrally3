@@ -80,6 +80,8 @@ bool Scene::SaveXml(String file)
 		rod->SetAttribute("col",	ror.roadCols ? 1 : 0);
 
 		rod->SetAttribute("d",		toStrC( ror.roadStepDist ));
+		rod->SetAttribute("a",		toStrC( ror.roadAngDiv ));
+
 		rod->SetAttribute("h",		toStrC( ror.roadHadd ));
 		rod->SetAttribute("wx",		toStrC( ror.wallX ));
 		rod->SetAttribute("wy",		toStrC( ror.wallY ));

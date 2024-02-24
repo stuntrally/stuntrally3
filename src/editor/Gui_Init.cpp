@@ -651,7 +651,9 @@ void CGui::InitGui()
 	ck= &ckRoR_RoadCols;	ck->Init("RoR_RoadCols",	&ror.roadCols);
 
 	sv= &svRoR_RoadStep;	sv->Init("RoR_RoadStep",	&ror.roadStepDist, 0.f, 100.f, 2.f, 0,2);  sv->DefaultF(10.f);
-	sv= &svRoR_RoadHadd;	sv->Init("RoR_RoadHadd",	&ror.roadHadd,    -2.f, 2.f, 1.f, 2,4);  sv->DefaultF(-0.8f);
+	sv= &svRoR_RoadAngle;	sv->Init("RoR_RoadAngle",	&ror.roadAngDiv,   0.f, 100.f, 2.f, 0,2);  sv->DefaultF(12.f);
+
+	sv= &svRoR_RoadHadd;	sv->Init("RoR_RoadHadd",	&ror.roadHadd,  2.f, 2.f, 1.f, 2,4);  sv->DefaultF(-0.8f);
 	sv= &svRoR_WallX;		sv->Init("RoR_WallX",		&ror.wallX,		0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.6f);
 	sv= &svRoR_WallY;		sv->Init("RoR_WallY",		&ror.wallY,		0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.8f);
 

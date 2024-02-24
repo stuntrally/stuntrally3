@@ -88,6 +88,8 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("col");	if (a)  ror.roadCols = s2i(a) > 0;
 		
 		a = e->Attribute("d");		if (a)  ror.roadStepDist = s2r(a);
+		a = e->Attribute("a");		if (a)  ror.roadAngDiv = s2r(a);
+		
 		a = e->Attribute("h");		if (a)  ror.roadHadd = s2r(a);
 		a = e->Attribute("wx");		if (a)  ror.wallX = s2r(a);
 		a = e->Attribute("wy");		if (a)  ror.wallY = s2r(a);

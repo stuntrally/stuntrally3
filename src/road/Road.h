@@ -160,6 +160,7 @@ private:
 	
 ///  ***  Rebuild Geom DATA  ***
 //---------------------------------------------------------------------------------------
+	friend class ExportRoR;
 	
 	struct DataRoad  // global
 	{
