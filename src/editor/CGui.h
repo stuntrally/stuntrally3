@@ -416,7 +416,7 @@ public:
 
 	//  RoR export  --------------------
 	void btnExport(WP);
-	void btnConvertMat(WP), btnConvertTerrain(WP), btnCreateOdef(WP);
+	void btnConvertMat(WP), btnConvertTerrain(WP), btnCreateOdef(WP), btnConvertSurface(WP);
 
 	Ck ckExportOnLoad;
 	Ed edExportLog =0, edRoRPath =0;  void editRoRPath(Ed);
@@ -430,7 +430,7 @@ public:
 	Txt txRoR_RoadLay =0;
 	SV svRoR_RoadStep, svRoR_RoadAngle, svRoR_RoadHadd;
 	SV svRoR_RoadLay;  void slRoR_RoadLay(SV*);
-	Ck ckRoR_RoadCols;  SV svRoR_WallX, svRoR_WallY;
+	Ck ckRoR_RoadCols;  SV svRoR_WallX, svRoR_WallY, svRoR_RoadVegetDist;
 	
 	SV svRoR_TileMul, svRoR_ObjOfsY;
 	void btnSaveSceneXml(WP);

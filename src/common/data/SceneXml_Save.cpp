@@ -85,6 +85,7 @@ bool Scene::SaveXml(String file)
 		rod->SetAttribute("h",		toStrC( ror.roadHadd ));
 		rod->SetAttribute("wx",		toStrC( ror.wallX ));
 		rod->SetAttribute("wy",		toStrC( ror.wallY ));
+		rod->SetAttribute("v",		toStrC( ror.roadVegetDist ));
 
 		rod->SetAttribute("sc",		toStrC( ror.tileMul ));
 		rod->SetAttribute("oy",		toStrC( ror.yObjOfs ));

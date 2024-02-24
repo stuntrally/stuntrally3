@@ -29,6 +29,7 @@ struct RoRconfig
 	bool roadCols;
 	float roadStepDist, roadAngDiv;
 	float roadHadd, wallX, wallY;
+	int roadVegetDist;  // same for all veget models
 	
 	float tileMul;  // terrain & road layer tex tiling, scale
 	float yObjOfs;  // 📦🏢 add objects pos y

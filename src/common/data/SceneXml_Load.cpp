@@ -93,6 +93,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("h");		if (a)  ror.roadHadd = s2r(a);
 		a = e->Attribute("wx");		if (a)  ror.wallX = s2r(a);
 		a = e->Attribute("wy");		if (a)  ror.wallY = s2r(a);
+		a = e->Attribute("v");		if (a)  ror.roadVegetDist = s2i(a);
 
 		a = e->Attribute("sc");		if (a)  ror.tileMul = s2r(a);
 		a = e->Attribute("oy");		if (a)  ror.yObjOfs = s2r(a);

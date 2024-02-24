@@ -721,19 +721,25 @@
 						</Widget>
 
 						<!-- tools other -->
-						<Widget type="Button" skin="Button" position="532 480 180 24" name="ConvertTerrain4RoR">
-							<Property key="Caption" value="terrain textures"/>
-							<Property key="TextColour" value="0.8 1.0 0.6"/>
-							<Property key="Colour" value="0.8 1.0 0.6"/>
-							<UserString key="tip" value="Combine Stunt Rally terrain textures _d, _s, _n to _ds and _nh"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="332 450 180 24" name="ConvertMat4RoR">
-							<Property key="Caption" value=".materials"/>
+						<Widget type="Button" skin="Button" position="342 450 180 24" name="ConvertMat4RoR">
+							<Property key="Caption" value=".#{Materials}"/>
 							<Property key="TextColour" value="0.6 0.9 0.9"/>
 							<Property key="Colour" value="0.6 0.9 0.9"/>
 							<UserString key="tip" value="Convert old Stunt Rally .mat to .material in RoR path, subdir materials"/>
 						</Widget>
-						<Widget type="Button" skin="Button" position="532 450 180 24" name="CreateOdef4RoR">
+						<Widget type="Button" skin="Button" position="542 450 180 24" name="ConvertTerrain4RoR">
+							<Property key="Caption" value="#{Terrain} #{Layers}"/>
+							<Property key="TextColour" value="0.8 1.0 0.6"/>
+							<Property key="Colour" value="0.8 1.0 0.6"/>
+							<UserString key="tip" value="Combine all Stunt Rally terrain textures _d, _s, _n to _ds and _nh"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="342 480 180 24" name="ConvertSurface4RoR">
+							<Property key="Caption" value="#{Surface}"/>
+							<Property key="TextColour" value="0.9 0.9 0.8"/>
+							<Property key="Colour" value="0.8 0.8 0.5"/>
+							<UserString key="tip" value="Convert surfaces.cfg to groundmodel in main RoR path"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="542 480 180 24" name="CreateOdef4RoR">
 							<Property key="Caption" value=".odef for .mesh"/>
 							<Property key="TextColour" value="0.9 0.8 0.6"/>
 							<Property key="Colour" value="0.9 0.8 0.6"/>
@@ -742,7 +748,7 @@
 					</Widget>
 
 
-					<!-- Track Settings for RoR only -->
+					<!-- Track  for RoR only -->
 					<Widget type="TabItem" skin="" position="2 24 794 562">
 						<Property key="Caption" value="#C0F0D0#{Track}"/>
 						<Property key="Colour" value="0.5 1 0.4"/>
@@ -844,66 +850,6 @@
 						<Widget type="Slider" skin="Slider" position="300 240 440 18" name="RoR_Grass"/>
 
 
-						<!-- 🛣️ Road -->
-						<Widget type="TextBox" skin="TextBox" position="10 260 220 20">
-							<Property key="Caption" value="#{Road}:"/>
-							<Property key="TextColour" value="1.0 0.7 0.5"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="230 260 320 20" name="RoR_RoadLayTxt">
-							<Property key="TextColour" value="0.8 0.8 0.8"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="10 280 220 20">
-							<Property key="Caption" value="#{Terrain} #{Layer}"/>
-							<Property key="TextColour" value="0.9 0.7 0.5"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="230 280 50 20" name="RoR_RoadLayerEdit">
-							<Property key="TextColour" value="0.9 0.7 0.5"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="300 280 440 18" name="RoR_RoadLayer"/>
-
-						<Widget type="Button" skin="CheckBox" position="10 300 200 20" name="RoR_RoadCols">
-							<Property key="Caption" value="#{Column}"/>
-							<Property key="TextColour" value="0.8 0.7 0.6"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="10 320 220 20">
-							<Property key="Caption" value="#{LengthDim}"/>
-							<Property key="TextColour" value="0.9 0.7 0.5"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="230 320 50 20" name="RoR_RoadStepEdit">
-							<Property key="TextColour" value="0.9 0.7 0.5"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="300 320 440 18" name="RoR_RoadStep"/>
-
-						<Widget type="TextBox" skin="TextBox" position="10 340 220 20">
-							<Property key="Caption" value="#{HeightOffset}"/>
-							<Property key="TextColour" value="0.9 0.7 0.5"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="230 340 50 20" name="RoR_RoadHaddEdit">
-							<Property key="TextColour" value="0.9 0.7 0.5"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="300 340 440 18" name="RoR_RoadHadd"/>
-
-						<!-- Wall -->
-						<Widget type="TextBox" skin="TextBox" position="10 360 220 20">
-							<Property key="Caption" value="#{Wall} #{Road_Width}"/>
-							<Property key="TextColour" value="0.7 0.7 0.7"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="230 360 50 20" name="RoR_WallXEdit">
-							<Property key="TextColour" value="0.7 0.7 0.7"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="300 360 440 18" name="RoR_WallX"/>
-
-						<Widget type="TextBox" skin="TextBox" position="10 380 220 20">
-							<Property key="Caption" value="#{Wall} #{Road_Height}"/>
-							<Property key="TextColour" value="0.8 0.8 0.8"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="230 380 50 20" name="RoR_WallYEdit">
-							<Property key="TextColour" value="0.8 0.8 0.8"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="300 380 440 18" name="RoR_WallY"/>
-
 						<!-- ter,rd tiling -->
 						<Widget type="TextBox" skin="TextBox" position="10 420 220 20">
 							<Property key="Caption" value="#{Textures} #{scale}"/>
@@ -930,6 +876,93 @@
 							<Property key="TextColour" value="0.7 0.8 0.9"/>
 							<Property key="Colour" value="0.7 0.8 0.9"/>
 						</Widget>
+					</Widget>
+
+
+					<!-- 🛣️ Road  for RoR only -->
+					<Widget type="TabItem" skin="" position="2 24 794 562">
+						<Property key="Caption" value="#F0C070#{Road}"/>
+						<Property key="Colour" value="1 0.6 0.4"/>
+
+						<Widget type="TextBox" skin="TextBox" position="230 60 320 20" name="RoR_RoadLayTxt">
+							<Property key="TextColour" value="0.8 0.8 0.8"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="10 80 220 20">
+							<Property key="Caption" value="#{Terrain} #{Layer}"/>
+							<Property key="TextColour" value="0.9 0.7 0.5"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 80 50 20" name="RoR_RoadLayerEdit">
+							<Property key="TextColour" value="0.9 0.7 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 80 440 18" name="RoR_RoadLayer"/>
+
+
+						<!-- quality div -->
+						<Widget type="TextBox" skin="TextBox" position="10 120 220 20">
+							<Property key="Caption" value="#{Detail}: #{LengthDim}"/>
+							<Property key="TextColour" value="0.8 0.7 0.5"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 120 50 20" name="RoR_RoadStepEdit">
+							<Property key="TextColour" value="0.8 0.7 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 120 440 18" name="RoR_RoadStep"/>
+
+						<Widget type="TextBox" skin="TextBox" position="10 140 220 20">
+							<Property key="Caption" value="#{Detail}: #{TerLAngSm}"/>
+							<Property key="TextColour" value="0.7 0.7 0.5"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 140 50 20" name="RoR_RoadAngleEdit">
+							<Property key="TextColour" value="0.7 0.7 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 140 440 18" name="RoR_RoadAngle"/>
+
+						
+						<Widget type="TextBox" skin="TextBox" position="10 180 220 20">
+							<Property key="Caption" value="#{HeightOffset}"/>
+							<Property key="TextColour" value="0.6 0.7 0.7"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 180 50 20" name="RoR_RoadHaddEdit">
+							<Property key="TextColour" value="0.6 0.7 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 180 440 18" name="RoR_RoadHadd"/>
+
+
+						<Widget type="TextBox" skin="TextBox" position="10 200 220 20">
+							<Property key="Caption" value="#{TreeRoadDist}"/>
+							<Property key="TextColour" value="0.6 0.8 0.5"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 200 50 20" name="RoR_RoadVegetDistEdit">
+							<Property key="TextColour" value="0.6 0.8 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 200 440 18" name="RoR_RoadVegetDist"/>
+
+						
+						<!-- Column -->
+						<Widget type="Button" skin="CheckBox" position="10 260 200 20" name="RoR_RoadCols">
+							<Property key="Caption" value="#{Column}"/>
+							<Property key="TextColour" value="0.8 0.7 0.6"/>
+						</Widget>
+
+						<!-- Wall -->
+						<Widget type="TextBox" skin="TextBox" position="10 280 220 20">
+							<Property key="Caption" value="#{Wall}: #{Road_Width}"/>
+							<Property key="TextColour" value="0.7 0.7 0.7"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 280 50 20" name="RoR_WallXEdit">
+							<Property key="TextColour" value="0.7 0.7 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 280 440 18" name="RoR_WallX"/>
+
+						<Widget type="TextBox" skin="TextBox" position="10 300 220 20">
+							<Property key="Caption" value="#{Wall}: #{Road_Height}"/>
+							<Property key="TextColour" value="0.8 0.8 0.8"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 300 50 20" name="RoR_WallYEdit">
+							<Property key="TextColour" value="0.8 0.8 0.8"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 300 440 18" name="RoR_WallY"/>
+
 					</Widget>
 
 					<!-- editor Settings -->

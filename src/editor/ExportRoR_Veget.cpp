@@ -88,7 +88,7 @@ void ExportRoR::ExportVeget()
 			rdGr[a] = rd > 0.995f ? 0 : 1;
 		}
 
-		const int d = 8, dd = d + 3;  // par ..
+		const int d = cfg->roadVegetDist, dd = d + 3;  // par ..
 		// const int d = 5, dd = d;
 		// const int d = 1, dd = d;  // fast
 		for (int y = d; y < yy-d; ++y)

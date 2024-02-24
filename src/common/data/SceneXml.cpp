@@ -104,6 +104,7 @@ void RoRconfig::Default()
 	roadStepDist = 10.f;  // hq
 	roadAngDiv = 12.f;
 	roadHadd = -0.4f;  //+ -0.25 -0.7  // par
+	roadVegetDist = 8;  // global
 	
 	tileMul = 0.9f;  // 1.0
 	wallX = 0.6f;  wallY = 1.0f;

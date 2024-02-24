@@ -64,8 +64,8 @@ void ExportRoR::ExportWaterSky()
 	ostringstream ss;  ss.width(15);
 	ss << fixed << setprecision(6) << juld;
 
-	gui->Exp(CGui::TXT, String("Sky: ")+sc->skyMtr+" clouds "+fToStr(cld)+
-						" time "+fToStr(sky->daytime)+" latitude "+fToStr(sky->latitude));
+	gui->Exp(CGui::TXT, String("Sky: ")+sc->skyMtr+"  clouds "+fToStr(cld)+
+						"  time "+fToStr(sky->daytime)+"  latitude "+fToStr(sky->latitude));
 	os << "	julian_day " << ss.str() << "\n";
 	os << "	time_scale 1\n";
 	os << "	longitude 0\n";  // from sun dir?-
