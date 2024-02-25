@@ -58,6 +58,7 @@ void CGui::btnSaveSceneXml(WP)
 {
 	String dir = app->gcom->TrkDir();
 	sc->SaveXml(dir + "scene.xml");
+	Status("#{Saved} .xml", 0.5,0.7,1);
 }
 
 //  settings
@@ -111,7 +112,8 @@ ExportRoR::ExportRoR(App* app1)
 Ogre::String ExportRoR::strPos(const Ogre::Vector3& pos)
 {
 	stringstream ss;
-	// todo?  add -?terZofs
+	// todo?  add -? td.posZ
+	// ss << half - pos.z - 1.f 
 	ss << half - pos.z << ", " << pos.y - hmin << ", " << pos.x + half << ", ";
 	return ss.str();
 }
@@ -169,7 +171,7 @@ void ExportRoR::SetupPath()
 
 	//  dir  track name
 	name = pSet->gui.track;
-	dirName = "+" + name;  // ^ for on top
+	dirName = "_" + name;  // _ for on top
 
 	const string dirTrk = dirRoR + dirName;
 	if (!PATHS::CreateDir(dirTrk))
