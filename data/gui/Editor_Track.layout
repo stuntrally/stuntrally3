@@ -969,6 +969,11 @@
 							<Property key="TextColour" value="0.6 0.8 0.9"/>
 						</Widget>
 
+						<Widget type="Button" skin="CheckBox" position="32 270 200 24" name="ExportCopyData">
+							<Property key="Caption" value="#{ExportCopyData}"/>
+							<Property key="TextColour" value="0.7 0.6 0.6"/>
+						</Widget>
+
 
 						<!-- Tools other -->
 						<Widget type="TextBox" skin="TextBox" position="312 320 124 24">

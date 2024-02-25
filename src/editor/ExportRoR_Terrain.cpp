@@ -98,7 +98,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 
 	//  🏔️ Blendmap  Layers
 	//------------------------------------------------------------------------------------------------------------------------
-	gui->Exp(CGui::NOTE, "Terrain layers  " + toStr(td.layers.size()));
+	gui->Exp(CGui::NOTE, "\nTerrain layers  " + toStr(td.layers.size()));
 
 	string layTexDS[4], layTexNH[4];  // new filenames for ds, nh
 	string ext = 1 ? "png" : "dds";  // todo as dds fails..

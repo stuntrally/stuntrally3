@@ -137,14 +137,14 @@ void ExportRoR::ExportVeget()
 				//  range,
 				veg << "grass " << "300,  ";  // par mul
 				//  Sway: Speed, Length, Distribution,
-				veg << "0.5, 0.1, 10,  ";  
+				veg << "0.5, 0.3, 10,  ";  
 				
 				//  Density,  minx, miny, maxx, maxy,
 				veg << gr->dens * sc->densGrass * cfg->grassMul << ",  ";
 				veg << gr->minSx <<", "<< gr->minSy <<", "<< gr->maxSx <<", "<< gr->maxSy << ", ";
 				
 				//  fadetype, minY, maxY,
-				veg << "1, 10, 0,  ";
+				veg << "2, 0, 0,  ";
 				//  material  colormap  densitymap
 				//+  prefix grasses sr-
 				veg << "sr-" << gr->material << " none " << mapName << "\n";
@@ -409,7 +409,7 @@ void ExportRoR::ExportVeget()
 				veg << "trees 0, 360,  ";
 				veg << vg.minScale << ", " << vg.maxScale << ",  ";
 				
-				veg << "2.0,  ";
+				veg << "1.0,  ";
 				// veg << vg.dens * sc->densTrees * cfg->treesMul << ",  ";  // no, in dens png
 
 				// veg << ", 60, 1000, ";  // vis dist

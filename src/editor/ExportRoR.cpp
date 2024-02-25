@@ -57,7 +57,7 @@ void CGui::btnCreateOdef(WP)
 void CGui::btnSaveSceneXml(WP)
 {
 	String dir = app->gcom->TrkDir();
-	scn->sc->SaveXml(dir + "scene.xml");
+	sc->SaveXml(dir + "scene.xml");
 }
 
 //  settings
@@ -73,11 +73,11 @@ void CGui::editOldSRPath(Ed ed)
 //  road lay tex name
 void CGui::slRoR_RoadLay(SV* sv)
 {
-	int i = app->scn->sc->rorCfg.roadTerTexLayer;
-	auto& td = scn->sc->tds[0];
+	int i = sc->rorCfg.roadTerTexLayer;
+	auto& td = sc->tds[0];
 	txRoR_RoadLay->setCaption(
-		i >= td.layers.size() ? "--" :
-		td.layersAll[i].texFile);
+		i < td.layers.size() ? td.layersAll[td.layers[i]].texFile  // used ter
+		: td.layersAll[i].texFile);  // custom last
 }
 
 

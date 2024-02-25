@@ -618,10 +618,12 @@ void CGui::InitGui()
 
 	Btn("SaveSceneXml", btnSaveSceneXml);  //`
 
-	///  RoR export  --------
+
+	///  RoR export  ------------------------------------
 	edExportLog = fEd("EdExportLog");
 	Btn("BtnExportRoR", btnExport);
-	ck= &ckCheckLoad;	ck->Init("ExportOnLoad",	&pSet->exportOnLoad);
+	ck= &ckCheckLoad;		ck->Init("ExportOnLoad",	&pSet->exportOnLoad);
+	ck= &ckExportCopyData;  ck->Init("ExportCopyData",	&pSet->exportCopyData);
 
 	Edt(edRoRPath, "EdPathRoR", editRoRPath);  edRoRPath->setCaption(pSet->pathExportRoR);
 	Edt(edOldSRPath, "EdPathOldSR", editOldSRPath);  edOldSRPath->setCaption(pSet->pathExportOldSR);
@@ -645,8 +647,12 @@ void CGui::InitGui()
 	sv= &svRoR_Trees;		sv->Init("RoR_Trees",		&ror.treesMul,  0.f, 6.f, 2.f, 2,4);  sv->DefaultF(0.5f);
 	sv= &svRoR_Grass;		sv->Init("RoR_Grass",		&ror.grassMul,  0.f,12.f, 1.f, 2,4);  sv->DefaultF(4.f);
 
+	sv= &svRoR_TileMul;		sv->Init("RoR_TileMul",		&ror.tileMul,	0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.9f);
+	sv= &svRoR_ObjOfsY;		sv->Init("RoR_ObjOfsY",		&ror.yObjOfs,	-2.f, 2.f, 1.f, 2,4);  sv->DefaultF(0.f);
+
+	//  RoR Road setup  --------
 	txRoR_RoadLay = fTxt("RoR_RoadLayTxt");
-	sv= &svRoR_RoadLay;		sv->Init("RoR_RoadLayer",	&ror.roadTerTexLayer,  0, 4);  sv->DefaultI(1);  Sev(RoR_RoadLay);
+	sv= &svRoR_RoadLay;		sv->Init("RoR_RoadLayer",	&ror.roadTerTexLayer,  0, 5);  sv->DefaultI(1);  Sev(RoR_RoadLay);
 	ck= &ckRoR_RoadCols;	ck->Init("RoR_RoadCols",	&ror.roadCols);
 
 	sv= &svRoR_RoadStep;	sv->Init("RoR_RoadStep",	&ror.roadStepDist, 0.f, 100.f, 2.f, 0,2);  sv->DefaultF(10.f);
@@ -656,9 +662,6 @@ void CGui::InitGui()
 	sv= &svRoR_WallX;		sv->Init("RoR_WallX",		&ror.wallX,		0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.6f);
 	sv= &svRoR_WallY;		sv->Init("RoR_WallY",		&ror.wallY,		0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.8f);
 	sv= &svRoR_RoadVegetDist;	sv->Init("RoR_RoadVegetDist",	&ror.roadVegetDist,  0, 16);  sv->DefaultI(8);
-
-	sv= &svRoR_TileMul;		sv->Init("RoR_TileMul",		&ror.tileMul,	0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.9f);
-	sv= &svRoR_ObjOfsY;		sv->Init("RoR_ObjOfsY",		&ror.yObjOfs,	-2.f, 2.f, 1.f, 2,4);  sv->DefaultF(0.f);
 
 	
 	///  📃 Fill Combo boxes  . . . . . . .

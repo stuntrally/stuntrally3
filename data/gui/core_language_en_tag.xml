@@ -1360,6 +1360,7 @@
 
 	<Tag name="Export">Export</Tag>
 	<Tag name="ExportOnLoad">Export after load</Tag>
+	<Tag name="ExportCopyData">Copy data to track on export</Tag>
 	<Tag name="PathRoRExport">Rigs of Rods content path</Tag>
 	<Tag name="PathOldSR">Path to Stunt Rally 2.x data</Tag>
 

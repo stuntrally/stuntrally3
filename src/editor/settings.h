@@ -68,7 +68,7 @@ public:
 	//  RoR export
 	std::string pathExportRoR;    // RoR content or mods dir
 	std::string pathExportOldSR;  // SR 2.x data dir, for .mesh .mat etc
-	bool exportOnLoad =0;
+	bool exportOnLoad =0, exportCopyData =0;
 
 
 //------------------------------------------

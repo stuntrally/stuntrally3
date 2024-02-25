@@ -418,7 +418,7 @@ public:
 	void btnExport(WP);
 	void btnConvertMat(WP), btnConvertTerrain(WP), btnCreateOdef(WP), btnConvertSurface(WP);
 
-	Ck ckExportOnLoad;
+	Ck ckExportOnLoad, ckExportCopyData;
 	Ed edExportLog =0, edRoRPath =0;  void editRoRPath(Ed);
 	Ed edOldSRPath =0;  void editOldSRPath(Ed);
 	void Exp(eWarn type, Ogre::String text);
