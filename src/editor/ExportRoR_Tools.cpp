@@ -28,11 +28,10 @@ namespace fs = std::filesystem;
 using namespace Ogre;
 using namespace std;
 
-
 //  Tools other for RoR tracks data
 
-//------------------------------------------------------------------------------------------------------------------------
-//  combine terrain textures to _ds, _nh
+
+//  combine All Terrain textures to _ds, _nh
 //------------------------------------------------------------------------------------------------------------------------
 void ExportRoR::ConvertTerrainTex()
 {
@@ -54,100 +53,15 @@ void ExportRoR::ConvertTerrainTex()
 
 	// SetupPath();
 
-	int all = 0, errors = 0;
+	errors = 0;
+	int all = 0;
 	for (auto& l : pre->ter)
 	if (l.texFile[0] != '-')
 	{
 		++all;
-		//  diffuse _d, normal _n, specular _s
-		String d_d, d_s, d_r, n_n, n_s;
-		d_d = l.texFile +".jpg";  // ends with _d
-		d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");  // _s
-		n_n = l.texNorm +".jpg";  // _n
-		n_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");  // _s
-		
-		string ext = 1 ? "png" : "dds";  // todo as dds fails..
-		String layTexDS = StringUtil::replaceAll(d_d,"_d.jpg","_ds."+ext);
-		String layTexNH = StringUtil::replaceAll(n_n,"_n.jpg","_nh."+ext);
-		// amntn_ds.pngark_ds.png  ?
-
-		gui->Exp(CGui::TXT, " diff, norm:  " + d_d + "  " + n_n);
-		
-		String diff = d_d, norm = n_n;
-		string from, to;
-		{	//  copy _d _n
-			from = pathTer + diff;  to = pathTo + diff;
-			CopyFile(from, to);
-
-			from = pathTer + norm;  to = pathTo + norm;
-			CopyFile(from, to);
-		}
-
-		//  find _s  for specular
-		String spec = d_s;
-		if (!PATHS::FileExists(pathTer + spec))
-		{	spec = n_s;
-			if (!PATHS::FileExists(pathTer + spec))
-			{	spec = d_d;
-				gui->Exp(CGui::TXT, " spec:  " + spec + "  " + fToStr(l.tiling));
-		}	}
-
-		//  combine RGB+A  diff + spec
-		//------------------------------------------------------------
-        Image2 imD, imS, imDS;
-        imD.load(diff, "General");  imS.load(spec, "General");
-		const int xx = imD.getWidth(), yy = imD.getHeight();
-		
-		auto pfA = PFG_RGBA8_UNORM;
-		imDS.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
-		try
-		{
-			TextureBox tbD = imD.getData(0), tbS = imS.getData(0), tbDS = imDS.getData(0);
-			auto pfD = imD.getPixelFormat(), pfS = imD.getPixelFormat();
-			for (int y = 0; y < yy; ++y)
-			for (int x = 0; x < xx; ++x)
-			{
-				ColourValue rgb = tbD.getColourAt(x, y, 0, pfD);
-				// ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.1f;  // par spec mul-
-				// ColourValue ds(rgb.r, rgb.g, rgb.b, a.r);
-				ColourValue ds(rgb.r, rgb.g, rgb.b, 0.f);  //! have to 0.f, white spots bug-
-				tbDS.setColourAt(ds, x, y, 0, pfA);
-			}
-			imDS.save(pathTo + layTexDS, 0, 0);
-		}
-		catch (exception ex)
-		{
-			gui->Exp(CGui::WARN, string("Exception in combine DS, save to: ") + pathTo + layTexDS);
-			++errors;
-		}
-
-		//  combine Norm+H
-		//------------------------------------------------------------
-        Image2 imN, imH, imNH;
-        imN.load(norm, "General");  //imS.load(spec, "General");
-		const int xn = imN.getWidth(), yn = imD.getHeight();
-		
-		imNH.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
-		try
-		{
-			TextureBox tbN = imN.getData(0), tbNH = imNH.getData(0);
-			auto pfN = imN.getPixelFormat();
-			for (int y = 0; y < yn; ++y)
-			for (int x = 0; x < xn; ++x)
-			{
-				ColourValue c = tbN.getColourAt(x, y, 0, pfN);
-				// const float a = 0.f;  // off
-				const float a = max(0.f, 1.f - 0.2f * (c.r + c.g));  // par  side ?..
-				ColourValue nh(c.r, c.g, c.b, a);
-				tbNH.setColourAt(nh, x, y, 0, pfA);
-			}
-			imNH.save(pathTo + layTexNH, 0, 0);
-		}
-		catch (exception ex)
-		{
-			gui->Exp(CGui::WARN, string("Exception in combine NH, save to: ") + pathTo + layTexNH);
-			++errors;
-		}	
+		string layTexDS, layTexNH;
+		ConvertTerTex(l.texFile +".jpg", l.texNorm +".jpg",
+			pathTo, layTexDS, layTexNH, 1);
 	}
 
 	gui->Exp(CGui::INFO, "Count all: "+toStr(all));
@@ -158,7 +72,6 @@ void ExportRoR::ConvertTerrainTex()
 }
 
 
-//------------------------------------------------------------------------------------------------------------------------
 //  Create .odef for all .mesh
 //------------------------------------------------------------------------------------------------------------------------
 void ExportRoR::CreateOdef()
@@ -428,10 +341,7 @@ void ExportRoR::ConvertSurf()
 	int all = 0;
 	for (auto& su : app->surfaces)
 	{
-		gui->Exp(CGui::NOTE, su.name);
-
-		//  no?
-		// bumpWaveLength(10.f), bumpAmplitude(0.f), bumpWaveLength2(14.f), bumpAmplitude2(0.f),
+		//  no?	// bumpWaveLength(10.f), bumpAmplitude(0.f), bumpWaveLength2(14.f), bumpAmplitude2(0.f),
 		// friction(1.0f),  //mul: frictionX(1.0f), frictionY(1.0f),
 		// rollingDrag(1.f), rollingResist(1.f),
 		// type(GRASS),  // tireName("DEFAULT"), tire(CARTIRE::None())
@@ -444,14 +354,17 @@ void ExportRoR::ConvertSurf()
 
 		suf << "[" << "sr-" << su.name << "]\n";
 		// suf << "description = \n";
-		suf << "adhesion velocity = " << 2.0 << "\n";
-		float fr = su.friction + (road ? 0.1f : 0.f) - 0.2f;  // par ..
+		suf << "adhesion velocity = " << 3.0 << "\n";
+		float fr = su.friction + (road ? 0.1f : 0.f) - 0.1f;  // par ..
 		suf << "static friction coefficient = " << fr << "\n";
 		suf << "sliding friction coefficient = " << fr - 0.1f << "\n";  // par..
-		float hydr = (road ? 0.0001 : snow ? 0.002 : wet ? 0.01 : grass ? 0.01 : 0.006);
+		float hydr = (road ? 0.001 : snow ? 0.002 : wet ? 0.01 : grass ? 0.01 : 0.006);
 		suf << "hydrodynamic friction = " << hydr << "\n";
-		suf << "stribeck velocity = " << 3 << "\n";
+		suf << "stribeck velocity = " << 4 << "\n";
 		suf << "\n";
+
+		gui->Exp(CGui::TXT, su.name +"  frict: "+fToStr(fr)+" ");
+
 		// ; alpha = steady-steady, 2 is the default value
 		// ; alpha = 2
 		// ; strength = gound strength, 1 is the default value
@@ -521,10 +434,8 @@ void ExportRoR::ConvertSurf()
 }
 
 
-//------------------------------------------------------------------------------------------------------------------------
 //  util RoR packs
 //------------------------------------------------------------------------------------------------------------------------
-
 //  check in which mesh2pack, and to packs
 bool ExportRoR::AddPackFor(std::string mesh)
 {
@@ -553,6 +464,7 @@ bool ExportRoR::AddPackForTer(std::string tex)
 	return 0;
 }
 
+//  List all packs  for mesh, ter maps
 void ExportRoR::ListPacks()
 {
 	Ogre::Timer ti;
@@ -606,4 +518,106 @@ void ExportRoR::ListPacks()
 
 	gui->Exp(CGui::INFO, "Ended List RoR packs.");
 	gui->Exp(CGui::INFO, "Time: " + fToStr(ti.getMilliseconds()/1000.f,1,3) + " s\n");
+}
+
+
+//  combine terrain textures to _ds, _nh
+//------------------------------------------------------------------------------------------------------------------------
+void ExportRoR::ConvertTerTex(const String& inDiff, const String& inNorm,
+	const String& pathTo, String& outDiffS, String& outNormH, bool copy)
+{
+	String pathTer = PATHS::Data() + "/terrain/";
+
+	//  diffuse _d, normal _n, specular _s
+	String d_d, d_s, d_r, n_n, n_s;
+	d_d = inDiff;  // ends with _d
+	d_s = StringUtil::replaceAll(inDiff,"_d.","_s.");  // _s
+	n_n = inNorm;  // _n
+	n_s = StringUtil::replaceAll(inNorm,"_n.","_s.");  // _s
+
+	string ext = 1 ? "png" : "dds";  // todo as dds fails..
+	outDiffS = StringUtil::replaceAll(d_d,"_d.jpg","_ds."+ext);
+	outNormH = StringUtil::replaceAll(n_n,"_n.jpg","_nh."+ext);
+
+	if (!copy)
+		return;
+
+	gui->Exp(CGui::TXT, " diff, norm:  " + d_d + "  " + n_n);
+
+	String diff = d_d, norm = n_n;
+	string from, to;
+	if (0)  // jpg not needed
+	{	//  copy _d _n
+		from = pathTer + diff;  to = pathTo + diff;
+		CopyFile(from, to);
+
+		from = pathTer + norm;  to = pathTo + norm;
+		CopyFile(from, to);
+	}
+
+	//  find _s  for specular
+	String spec = d_s;
+	if (!PATHS::FileExists(pathTer + spec))
+	{	spec = n_s;
+		if (!PATHS::FileExists(pathTer + spec))
+		{	spec = d_d;
+			gui->Exp(CGui::TXT, " spec:  " + spec); // + "  " + fToStr(l.tiling));
+	}	}
+
+	//  combine RGB+A  diff + spec
+	//------------------------------------------------------------
+	Image2 imD, imS, imDS;
+	imD.load(diff, "General");  imS.load(spec, "General");
+	const int xx = imD.getWidth(), yy = imD.getHeight();
+
+	auto pfA = PFG_RGBA8_UNORM;
+	imDS.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
+	try
+	{
+		TextureBox tbD = imD.getData(0), tbS = imS.getData(0), tbDS = imDS.getData(0);
+		auto pfD = imD.getPixelFormat(), pfS = imD.getPixelFormat();
+		for (int y = 0; y < yy; ++y)
+		for (int x = 0; x < xx; ++x)
+		{
+			ColourValue rgb = tbD.getColourAt(x, y, 0, pfD);
+			// ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.1f;  // par spec mul-
+			// ColourValue ds(rgb.r, rgb.g, rgb.b, a.r);
+			ColourValue ds(rgb.r, rgb.g, rgb.b, 0.f);  //! have to 0.f, white spots bug-
+			tbDS.setColourAt(ds, x, y, 0, pfA);
+		}
+		imDS.save(pathTo + outDiffS, 0, 0);
+	}
+	catch (exception ex)
+	{
+		gui->Exp(CGui::WARN, string("Exception in combine DS, save to:\n") + pathTo + outDiffS);
+		++errors;
+	}
+
+	//  combine Norm+H
+	//------------------------------------------------------------
+	Image2 imN, imH, imNH;
+	imN.load(norm, "General");  //imS.load(spec, "General");
+	const int xn = imN.getWidth(), yn = imD.getHeight();
+
+	imNH.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
+	try
+	{
+		TextureBox tbN = imN.getData(0), tbNH = imNH.getData(0);
+		auto pfN = imN.getPixelFormat();
+		for (int y = 0; y < yn; ++y)
+		for (int x = 0; x < xn; ++x)
+		{
+			ColourValue c = tbN.getColourAt(x, y, 0, pfN);
+			// const float a = 0.f;  // off
+			const float a = max(0.f, 1.f - 0.2f * (c.r + c.g));  // par  side ?..
+			ColourValue nh(c.r, c.g, c.b, a);
+			tbNH.setColourAt(nh, x, y, 0, pfA);
+		}
+		imNH.save(pathTo + outNormH, 0, 0);
+	}
+	catch (exception ex)
+	{
+		gui->Exp(CGui::WARN, string("Exception in combine NH, save to:\n") + pathTo + outNormH);
+		++errors;
+	}
 }

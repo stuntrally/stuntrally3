@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <map>
+#include <OgreString.h>
 
 
 //  Export current track for Rigs Of Rods
@@ -66,7 +67,12 @@ public:
 
 	//  🛠️ tools other
 	void CreateOdef();  // make .odef for all .mesh files  in main path subdirs
-	void ConvertTerrainTex();  // combines _d + _s to _ds and _nh as .png
+	
+	void ConvertTerrainTex();  // all  combines _d + _s to _ds and _nh as .png
+	void ConvertTerTex(const Ogre::String& inDiff, const Ogre::String& inNorm,
+		const Ogre::String& pathTo, Ogre::String& outDiffS, Ogre::String& outNormH, bool copy);
+	int errors = 0;
+
 	void ConvertMat();  // reads old SR .mat and saves as .material
 	void ConvertSurf();
 };

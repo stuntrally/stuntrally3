@@ -96,12 +96,12 @@ void ExportRoR::ExportTerrain()  // whole, full
 	delete[] hmap;  hmap = 0;
 
 
-	//------------------------------------------------------------------------------------------------------------------------
 	//  🏔️ Blendmap  Layers
 	//------------------------------------------------------------------------------------------------------------------------
 	gui->Exp(CGui::NOTE, "Terrain layers  " + toStr(td.layers.size()));
 
 	string layTexDS[4], layTexNH[4];  // new filenames for ds, nh
+	string ext = 1 ? "png" : "dds";  // todo as dds fails..
 
 	//  layer textures  copy & convert
 	const int layers = std::min(4, (int)td.layers.size());
@@ -109,103 +109,11 @@ void ExportRoR::ExportTerrain()  // whole, full
 	{
 		const TerLayer& l = td.layersAll[td.layers[i]];
 
-		string ext = 1 ? "png" : "dds";  // todo as dds fails..
-		layTexDS[i] = StringUtil::replaceAll(l.texFile,"_d.jpg","_ds."+ext);
-		layTexNH[i] = StringUtil::replaceAll(l.texNorm,"_n.jpg","_nh."+ext);
+		ConvertTerTex(l.texFile, l.texNorm, path,
+					layTexDS[i], layTexNH[i], copyTerTex);
 		AddPackForTer(layTexDS[i]);
+	}
 
-		if (copyTerTex)
-		{
-			//  diffuse _d, normal _n, specular _s
-			String pathTer = PATHS::Data() + "/terrain/";
-			String d_d, d_s, d_r, n_n, n_s;
-			d_d = l.texFile;  // ends with _d
-			d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");  // _s
-			n_n = l.texNorm;  // _n
-			n_s = StringUtil::replaceAll(l.texNorm,"_n.","_s.");  // _s
-			
-			gui->Exp(CGui::DBG, "layer " + toStr(i+1) + " diff, norm:  " + d_d + "  " + n_n);
-			
-			String diff = d_d, norm = n_n;
-			string from, to;
-			if (0)  // jpg not needed
-			{	//  copy _d _n
-				from = pathTer + diff;  to = path + diff;
-				CopyFile(from, to);
-
-				from = pathTer + norm;  to = path + norm;
-				CopyFile(from, to);
-			}
-
-			//  find _s  for specular,  ignored 0
-			String spec = d_s;
-			if (!PATHS::FileExists(pathTer + spec))
-			{	spec = n_s;
-				if (!PATHS::FileExists(pathTer + spec))
-				{	spec = d_d;
-					gui->Exp(CGui::DBG, "layer " + toStr(i+1) + " spec:  " + spec + "  " + fToStr(l.tiling));
-			}	}
-
-			//  combine RGB+A  diff + spec
-			//------------------------------------------------------------
-			Image2 imD, imS, imDS;
-			imD.load(diff, "General");  imS.load(spec, "General");
-			const int xx = imD.getWidth(), yy = imD.getHeight();
-			
-			auto pfA = PFG_RGBA8_UNORM;
-			imDS.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
-			try
-			{
-				TextureBox tbD = imD.getData(0), tbS = imS.getData(0), tbDS = imDS.getData(0);
-				auto pfD = imD.getPixelFormat(), pfS = imD.getPixelFormat();
-				for (int y = 0; y < yy; ++y)
-				for (int x = 0; x < xx; ++x)
-				{
-					ColourValue rgb = tbD.getColourAt(x, y, 0, pfD);
-					// ColourValue a = tbS.getColourAt(x, y, 0, pfS) * 0.1f;  // par spec mul-
-					// ColourValue ds(rgb.r, rgb.g, rgb.b, a.r);
-					ColourValue ds(rgb.r, rgb.g, rgb.b, 0.f);  //! have to 0.f, white spots bug-
-					tbDS.setColourAt(ds, x, y, 0, pfA);
-				}
-				imDS.save(path + layTexDS[i], 0, 0);
-			}
-			catch (exception ex)
-			{
-				gui->Exp(CGui::WARN, string("Exception in combine DS: ") + ex.what());
-			}
-
-			//  combine Norm+H
-			//------------------------------------------------------------
-			Image2 imN, imH, imNH;
-			imN.load(norm, "General");  //imS.load(spec, "General");
-			const int xn = imN.getWidth(), yn = imD.getHeight();
-			
-			imNH.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pfA);
-			try
-			{
-				TextureBox tbN = imN.getData(0), tbNH = imNH.getData(0);
-				auto pfN = imN.getPixelFormat();
-				for (int y = 0; y < yn; ++y)
-				for (int x = 0; x < xn; ++x)
-				{
-					ColourValue c = tbN.getColourAt(x, y, 0, pfN);
-					// const float a = 0.f;  // off
-					const float a = max(0.f, 1.f - 0.2f * (c.r + c.g));  // par  side ?..
-					ColourValue nh(c.r, c.g, c.b, a);
-					tbNH.setColourAt(nh, x, y, 0, pfA);
-				}
-				imNH.save(path + layTexNH[i], 0, 0);
-			}
-			catch (exception ex)
-			{
-				gui->Exp(CGui::WARN, string("Exception in combine NH: ") + ex.what());
-			}
-
-		} // copyTerTex
-	} // layers
-
-
-	//------------------------------------------------------------------------------------------------------------------------
 	//  🏔️ Blendmap  save as .png  also  -surfaces.png
 	//------------------------------------------------------------------------------------------------------------------------
 	int bleSize = 1024;
@@ -280,15 +188,9 @@ void ExportRoR::ExportTerrain()  // whole, full
 		}
 	}
 
-	//  groundmodel.cfg  aka surfaces.cfg
+	//  groundmodel.cfg  from  surfaces.cfg
+	//  in tool, once for all tracks
 	//------------------------------------------------------------
-	/*
-	string surfFile = path + name + "-surfaces.cfg";
-	ofstream surf;
-	surf.open(surfFile.c_str(), std::ios_base::out);
-
-	surf.close();
-	*/
 
 	//  landuse.cfg
 	//------------------------------------------------------------
@@ -332,7 +234,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 	//------------------------------------------------------------------------------------------------------------------------
 	//  📄🏔️ Terrain layers setup  save  page.otc
 	//------------------------------------------------------------------------------------------------------------------------
-	int roadAdd = 1;  // par-  0 off  1 add road layer last
+	int roadAdd = 1;  // 0 off  1 add road layer last - always some on terrain
 	string opgFile = path + name + "-page-0-0.otc";
 	ofstream lay;
 	lay.open(opgFile.c_str(), std::ios_base::out);
@@ -345,8 +247,8 @@ void ExportRoR::ExportTerrain()  // whole, full
 	const char rgba[5] = "RGBA";
 	string roadDiff = "", roadNorm = "";  // set.. which?
 	float roadTile = 5.f;
-	const float mul = cfg->tileMul;  // scale
-	for (int i=0; i < layers; ++i)
+		const float mul = cfg->tileMul;  // scale
+		for (int i=0; i < layers; ++i)
 	{
 		const TerLayer& l = td.layersAll[td.layers[i]];
 
@@ -356,7 +258,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 		// lay << l.tiling << " , " << diff+", "+norm+", " +  // 2 jpg
 		// lay << l.tiling << " , _" << toStr(i)+".png, "+norm+", " +
 		// lay << l.tiling << " , _" << toStr(i)+".png, _"+ toStr(i)+"_n.png, " +  // 2 png
-
+		
 		lay << mul * l.tiling << " , " << layTexDS[i] + ", " + layTexNH[i] + ", " +  // 2 rgba png
 			name + "-blendmap.png, " << rgba[i] << ", 0.99\n";
 
