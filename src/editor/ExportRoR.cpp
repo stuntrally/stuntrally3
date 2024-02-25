@@ -141,6 +141,17 @@ bool ExportRoR::CopyFile(const std::string& from, const std::string& to)
 	return true;
 }
 
+//  rename colliding names with RoR
+void ExportRoR::RenameMesh(std::string& mesh)
+{
+	string name = mesh;
+		name = StringUtil::replaceAll(name, "palm2", "palm22");
+	if (name == mesh)
+		name = StringUtil::replaceAll(name, "palm", "palm11");
+	if (name != mesh)
+		gui->Exp(CGui::TXT, "renamed to: "+name);
+	mesh = name;
+}
 
 //  ⚙️ Setup path, name, create dir
 //------------------------------------------------------------

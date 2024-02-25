@@ -238,7 +238,7 @@ void ExportRoR::ExportVeget()
 			VegetLayer& vg = sc->vegLayersAll[sc->vegLayers[l]];
 			if (!vg.on)
 				continue;
-			const String mesh = vg.name;
+			String mesh = vg.name;
 			const string mapName = name + "-veget"+toStr(l)+".png";
 
 			//  veget dens map
@@ -266,7 +266,7 @@ void ExportRoR::ExportVeget()
 						d = 0.f;
 					else
 					{	//  check if in fluids
-						float fa = sc->GetDepthInFluids(Vector3(xw, 0.f, zw));
+						float fa = sc->GetDepthInFluids(Vector3(xw, h, zw));
 						if (fa > vg.maxDepth)
 							d = 0.f;
 						else
@@ -350,6 +350,7 @@ void ExportRoR::ExportVeget()
 				gui->Exp(CGui::WARN, "veget not found in old SR: "+mesh);
 				continue;
 			}
+			RenameMesh(mesh);
 			if (!AddPackFor(mesh))  //+
 				continue;
 			
@@ -359,12 +360,6 @@ void ExportRoR::ExportVeget()
 			if (exists)
 			{
 				string name = mesh;
-				//  rename colliding names with RoR
-					name = StringUtil::replaceAll(name, "palm2", "palm22");
-				if (name == mesh)
-					name = StringUtil::replaceAll(name, "palm", "palm11");
-				if (name != mesh)
-					gui->Exp(CGui::TXT, "renamed to: "+name);
 
 				if (!copyVeget)
 					++iVegetMesh;

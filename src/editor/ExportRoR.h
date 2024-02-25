@@ -36,6 +36,7 @@ protected:
 	//  utils
 	Ogre::String strPos(const Ogre::Vector3& pos);  // util convert SR pos to RoR pos
 	bool CopyFile(const std::string& from, const std::string& to);  // both args are path with filenames
+	void RenameMesh(std::string& mesh);  // colliding names with RoR
 
 	//  packs
 	void ListPacks();
