@@ -245,33 +245,43 @@ void ExportRoR::ExportTerrain()  // whole, full
 	lay << "; worldSize,  Diffuse+Specular, Normal+Height,  blendmap, blendmapmode,  alpha\n";
 
 	const char rgba[5] = "RGBA";
-	string roadDiff = "", roadNorm = "";  // set.. which?
+	String roadDS, roadNH;
 	float roadTile = 5.f;
-		const float mul = cfg->tileMul;  // scale
-		for (int i=0; i < layers; ++i)
+	
+	const int ilr = cfg->roadTerTexLayer;  // ter layer for road
+	const float mul = cfg->tileMul;  // scale
+	
+	for (int i=0; i < layers; ++i)
 	{
 		const TerLayer& l = td.layersAll[td.layers[i]];
 
-		//  combined rgb,a from 2 tex
-		// String diff = l.texFile;  // ends with _d
-		// String norm = l.texNorm;  // _n
-		// lay << l.tiling << " , " << diff+", "+norm+", " +  // 2 jpg
-		// lay << l.tiling << " , _" << toStr(i)+".png, "+norm+", " +
-		// lay << l.tiling << " , _" << toStr(i)+".png, _"+ toStr(i)+"_n.png, " +  // 2 png
+		// ConvertTerTex(l.texFile, l.texNorm, path,
+		// 			layTexDS[i], layTexNH[i], 0);
 		
 		lay << mul * l.tiling << " , " << layTexDS[i] + ", " + layTexNH[i] + ", " +  // 2 rgba png
 			name + "-blendmap.png, " << rgba[i] << ", 0.99\n";
 
-		if (i == cfg->roadTerTexLayer)  // par
-		// {	roadDiff = diff;  roadNorm = norm;  // 2 jpg
-		{	roadDiff = layTexDS[i];  roadNorm = layTexNH[i];
+		if (i == ilr)
+		{	roadDS = layTexDS[i];  roadNH = layTexNH[i];
 			roadTile = l.tiling;
 		}
 	}
-	if (roadAdd && !roadDiff.empty())
+	//  if custom,  on last 5, 6 ter layer
+	if (ilr >= 4)
 	{
-		gui->Exp(CGui::NOTE, "Road layer: " + fToStr(roadTile)+" , "+roadDiff+", "+roadNorm);
-		lay << roadTile << " , " << roadDiff+", "+roadNorm+", " +
+		const TerLayer& l = td.layersAll[ilr];
+		// roadDS = l.texFile;  roadNH = l.texNorm;
+		roadTile = l.tiling;
+
+		ConvertTerTex(l.texFile, l.texNorm, path,
+					roadDS, roadNH, copyTerTex);
+		AddPackForTer(roadDS);
+	}
+
+	if (roadAdd && !roadDS.empty())
+	{
+		gui->Exp(CGui::NOTE, "Road layer: " + fToStr(roadTile)+" , "+roadDS+", "+roadNH);
+		lay << roadTile << " , " << roadDS+", "+roadNH+", " +
 			name + "-road.png, R, 0.99\n";
 	}
 	lay.close();
