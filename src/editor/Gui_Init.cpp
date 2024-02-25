@@ -630,6 +630,7 @@ void CGui::InitGui()
 
 	Btn("ConvertMat4RoR", btnConvertMat);  Btn("CreateOdef4RoR", btnCreateOdef);
 	Btn("ConvertTerrain4RoR", btnConvertTerrain);  Btn("ConvertSurface4RoR", btnConvertSurface);
+	sv= &svRoR_Friction;	sv->Init("RoR_Friction", &pSet->rorFriction,  -0.4f,0.2f, 1.f, 2,4);  sv->DefaultF(-0.1f);
 	
 	//  RoR Track setup  --------
 	auto& ror = app->scn->sc->rorCfg;
@@ -642,9 +643,9 @@ void CGui::InitGui()
 	sv= &svRoR_Water;
 	sv->strMap[-1] = TR("#{None}");  sv->strMap[0] = TR("#{auto}");  sv->strMap[1] = TR("#{Road_AngleManual}");
 							sv->Init("RoR_Water",		&ror.water,      -2,1);  sv->DefaultI(0);
-	sv= &svRoR_WaterOfs;	sv->Init("RoR_WaterOfs",	&ror.yWaterOfs,  -100.f,100.f, 1.f, 2,4);  sv->DefaultF(-0.8f);
+	sv= &svRoR_WaterOfs;	sv->Init("RoR_WaterOfs",	&ror.yWaterOfs,  -40.f,40.f, 1.f, 2,4);  sv->DefaultF(-0.8f);
 
-	sv= &svRoR_Trees;		sv->Init("RoR_Trees",		&ror.treesMul,  0.f, 6.f, 2.f, 2,4);  sv->DefaultF(0.5f);
+	sv= &svRoR_Trees;		sv->Init("RoR_Trees",		&ror.treesMul,  0.f, 6.f, 2.f, 2,4);  sv->DefaultF(1.f);
 	sv= &svRoR_Grass;		sv->Init("RoR_Grass",		&ror.grassMul,  0.f,12.f, 1.f, 2,4);  sv->DefaultF(4.f);
 
 	sv= &svRoR_TileMul;		sv->Init("RoR_TileMul",		&ror.tileMul,	0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.9f);
@@ -658,9 +659,9 @@ void CGui::InitGui()
 	sv= &svRoR_RoadStep;	sv->Init("RoR_RoadStep",	&ror.roadStepDist, 0.f, 100.f, 2.f, 0,2);  sv->DefaultF(10.f);
 	sv= &svRoR_RoadAngle;	sv->Init("RoR_RoadAngle",	&ror.roadAngDiv,   0.f, 100.f, 2.f, 0,2);  sv->DefaultF(12.f);
 
-	sv= &svRoR_RoadHadd;	sv->Init("RoR_RoadHadd",	&ror.roadHadd,  2.f, 2.f, 1.f, 2,4);  sv->DefaultF(-0.8f);
+	sv= &svRoR_RoadHadd;	sv->Init("RoR_RoadHadd",	&ror.roadHadd,  -2.f, 1.f, 1.f, 2,4);  sv->DefaultF(-0.45f);
 	sv= &svRoR_WallX;		sv->Init("RoR_WallX",		&ror.wallX,		0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.6f);
-	sv= &svRoR_WallY;		sv->Init("RoR_WallY",		&ror.wallY,		0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.8f);
+	sv= &svRoR_WallY;		sv->Init("RoR_WallY",		&ror.wallY,		0.f, 10.f, 2.f, 2,4);  sv->DefaultF(1.f);
 	sv= &svRoR_RoadVegetDist;	sv->Init("RoR_RoadVegetDist",	&ror.roadVegetDist,  0, 16);  sv->DefaultI(8);
 
 	

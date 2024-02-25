@@ -417,6 +417,7 @@ public:
 	//  RoR export  --------------------
 	void btnExport(WP);
 	void btnConvertMat(WP), btnConvertTerrain(WP), btnCreateOdef(WP), btnConvertSurface(WP);
+	SV svRoR_Friction;
 
 	Ck ckExportOnLoad, ckExportCopyData;
 	Ed edExportLog =0, edRoRPath =0;  void editRoRPath(Ed);

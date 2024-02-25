@@ -694,7 +694,20 @@
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#907090#{Export}"/>
 
-				<Widget type="TabControl" skin="TabControl" position="24 12 760 536" align="Stretch" layer="Back" name="TabWndTrack">
+				<!-- Export -->
+				<Widget type="Button" skin="Button" position="532 6 240 32" name="BtnExportRoR">
+					<Property key="Caption" value="#{Export}"/>
+					<Property key="Colour" value="1.0 0.6 0.8"/>
+					<Property key="TextColour" value="1.0 0.6 0.8"/>
+				</Widget>
+
+				<Widget type="Button" skin="Button" position="312 10 180 22" name="SaveSceneXml">
+					<Property key="Caption" value="#{RplSave}"/>
+					<Property key="TextColour" value="0.7 0.8 0.9"/>
+					<Property key="Colour" value="0.7 0.8 0.9"/>
+				</Widget>
+
+				<Widget type="TabControl" skin="TabControl" position="24 32 760 516" align="Stretch" layer="Back" name="TabWndTrack">
 					<Property key="InheritsAlpha" value="false"/>
 					<Property key="SmoothShow" value="false"/>
 					<Property key="Colour" value="0.7 0.9 1"/>
@@ -712,12 +725,6 @@
 							<Property key="Colour" value="0.6 0.7 0.8"/>
 							<Property key="FontName" value="font.small"/>
 							<UserString key="tip" value="#{TipTrackDescEditor}"/>
-						</Widget>
-
-						<Widget type="Button" skin="Button" position="32 468 260 32" name="BtnExportRoR">
-							<Property key="Caption" value="#{Export}"/>
-							<Property key="Colour" value="1.0 0.6 0.8"/>
-							<Property key="TextColour" value="1.0 0.6 0.8"/>
 						</Widget>
 					</Widget>
 
@@ -844,12 +851,6 @@
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="300 440 440 18" name="RoR_ObjOfsY"/>
 
-
-						<Widget type="Button" skin="Button" position="412 10 180 22" name="SaveSceneXml">
-							<Property key="Caption" value="#{RplSave}"/>
-							<Property key="TextColour" value="0.7 0.8 0.9"/>
-							<Property key="Colour" value="0.7 0.8 0.9"/>
-						</Widget>
 					</Widget>
 
 
@@ -974,7 +975,17 @@
 							<Property key="TextColour" value="0.7 0.6 0.6"/>
 						</Widget>
 
+						<!-- all surf friction ofs -->
+						<Widget type="TextBox" skin="TextBox" position="10 420 220 20">
+							<Property key="Caption" value="#{RplAll} #{Surface} #{Friction}"/>
+							<Property key="TextColour" value="0.8 0.8 0.5"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="230 420 50 20" name="RoR_FrictionEdit">
+							<Property key="TextColour" value="0.8 0.8 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="300 420 440 18" name="RoR_Friction"/>
 
+						
 						<!-- Tools other -->
 						<Widget type="TextBox" skin="TextBox" position="312 320 124 24">
 							<Property key="Caption" value="#{Tools}"/>

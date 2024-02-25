@@ -355,7 +355,7 @@ void ExportRoR::ConvertSurf()
 		suf << "[" << "sr-" << su.name << "]\n";
 		// suf << "description = \n";
 		suf << "adhesion velocity = " << 3.0 << "\n";
-		float fr = su.friction + (road ? 0.1f : 0.f) - 0.1f;  // par ..
+		float fr = su.friction + (road ? 0.1f : 0.f) + pSet->rorFriction;  // par ..
 		suf << "static friction coefficient = " << fr << "\n";
 		suf << "sliding friction coefficient = " << fr - 0.1f << "\n";  // par..
 		float hydr = (road ? 0.001 : snow ? 0.002 : wet ? 0.01 : grass ? 0.01 : 0.006);
