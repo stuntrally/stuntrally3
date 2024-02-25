@@ -405,6 +405,7 @@ void ExportRoR::ConvertMat()
 
 
 //  surfaces to groundmodel
+//------------------------------------------------------------------------------------------------------------------------
 void ExportRoR::ConvertSurf()
 {
 	Ogre::Timer ti;
@@ -414,48 +415,104 @@ void ExportRoR::ConvertSurf()
 	gui->edExportLog->setCaption("");
 	gui->Exp(CGui::INFO, "Convert surfaces to groudmodel ..");
 
-	string suFile = pSet->pathExportRoR + "sr-surfaces.cfg";
+	string suFile = pSet->pathExportRoR + "sr-checkpoint-v1/sr-surfaces.cfg";
 	ofstream suf;
 	suf.open(suFile.c_str(), std::ios_base::out);
+	gui->Exp(CGui::INFO, "Saving to: "+suFile);
+
+	suf << "[general]\n";
+	suf << "version = 3\n";
+	suf << "description = Ground models for all Stunt Rally tracks. Converted from SR3 surfaces.cfg\n";
+	suf << "\n";
 
 	int all = 0;
 	for (auto& su : app->surfaces)
 	{
 		gui->Exp(CGui::NOTE, su.name);
 
-		suf << su.name << "\n";
+		//  no?
+		// bumpWaveLength(10.f), bumpAmplitude(0.f), bumpWaveLength2(14.f), bumpAmplitude2(0.f),
+		// friction(1.0f),  //mul: frictionX(1.0f), frictionY(1.0f),
+		// rollingDrag(1.f), rollingResist(1.f),
+		// type(GRASS),  // tireName("DEFAULT"), tire(CARTIRE::None())
+		// {	NONE=0, ASPHALT, GRASS, GRAVEL, CONCRETE, SAND, COBBLES, NumTypes	};
+		bool desert = su.name.find("esert") != string::npos;
+		bool snow = su.name.find("Snow") != string::npos;
+		bool grass = su.name.find("rass") != string::npos;
+		bool road = su.name.find("road") != string::npos;
+		bool wet = su.name.find("Wet") != string::npos;
 
+		suf << "[" << "sr-" << su.name << "]\n";
+		// suf << "description = \n";
+		suf << "adhesion velocity = " << 2.0 << "\n";
+		float fr = su.friction + (road ? 0.1f : 0.f) - 0.2f;  // par ..
+		suf << "static friction coefficient = " << fr << "\n";
+		suf << "sliding friction coefficient = " << fr - 0.1f << "\n";  // par..
+		float hydr = (road ? 0.0001 : snow ? 0.002 : wet ? 0.01 : grass ? 0.01 : 0.006);
+		suf << "hydrodynamic friction = " << hydr << "\n";
+		suf << "stribeck velocity = " << 3 << "\n";
+		suf << "\n";
+		// ; alpha = steady-steady, 2 is the default value
+		// ; alpha = 2
+		// ; strength = gound strength, 1 is the default value
+		// ; strength = 1
+		// else if (kname == "base") strncpy(ground_models[secName].basename, kvalue.c_str(), 255);
+
+		// PARTICLE  HARD  DUSTY  CLUMPY  tiny-
+		//  RoR
+		// tracks/Dust  tracks/Clump-  tracks/Dri-  tracks/Splash  tracks/Ripple
+		// tracks/Mud  tracks/Smoke  tracks/Snow-  tracks/particles/water1
+		//  SR3
+		// sr-Adust  sr-Dust  sr-DustSmall  sr-DustW
+		// sr-Mud  sr-MudDark  sr-WetDust
+		// sr-Gravel  sr-Dirt  sr-WetRoad
+		// sr-SnowDust  sr-SnowMud  sr-Smoke
+
+		if (desert)
+		{	suf << "fx_particle_name = " << "sr-Dust" << "\n";
+			suf << "fx_type = " << "DUSTY" << "\n";
+			suf << "fx_colour = " << "0.8, 0.8, 0.6" << "\n";
+			suf << "fx_particle_amount = " << 20 << "\n";
+			suf << "fx_particle_ttl = " << 3 << "\n";
+			suf << "\n";
+		}else if (snow)
+		{	suf << "fx_particle_name = " << "sr-DustW" << "\n";
+			suf << "fx_type = " << "DUSTY" << "\n";
+			suf << "fx_colour = " << "0.8, 0.8, 0.8" << "\n";
+			suf << "fx_particle_amount = " << 10 << "\n";
+			suf << "fx_particle_ttl = " << 2 << "\n";
+			suf << "\n";
+		}else if (grass)
+		{	suf << "fx_particle_name = " << "sr-Mud" << "\n";
+			suf << "fx_type = " << "DUSTY" << "\n";
+			suf << "fx_colour = " << "0.7, 0.6, 0.4" << "\n";
+			suf << "fx_particle_amount = " << 7 << "\n";
+			suf << "fx_particle_ttl = " << 2 << "\n";
+			suf << "\n";
+		}else if (wet)
+		{	suf << "fx_particle_name = " << "sr-WetRoad" << "\n";
+			suf << "fx_type = " << "DUSTY" << "\n";
+			suf << "fx_colour = " << "0.7, 0.7, 0.7" << "\n";
+			suf << "fx_particle_amount = " << 5 << "\n";
+			suf << "fx_particle_ttl = " << 3 << "\n";
+			suf << "\n";
+		}
+		// suf << "fx_particle_min_velo = " << 5 << "\n";
+		// suf << "fx_particle_max_velo = " << 99999 << "\n";
+		// suf << "fx_particle_velo_factor = " << 0.7 << "\n";
+		// suf << "fx_particle_fade = " << -1 << "\n";
+		// suf << "fx_particle_timedelta = " << 1 << "\n";
+		
+		// ; --- fluid mechanics optional values:
+		// ;fluid density = 200
+		// ;flow consistency index = 10000
+		// ;flow behavior index = 0.5
+		// ; solid ground level = 0 - deactivates all fluid calculations
+		// suf << "solid ground level = " << (snow ? 0.02 : wet ? 0.01 : 0.0) << "\n";  // idk-
+		// ;drag anisotropy = 0.1
+		suf << "\n";
 		++all;
 	}
-
-/*
-	enum TYPE
-	{	NONE=0, ASPHALT, GRASS, GRAVEL, CONCRETE, SAND, COBBLES, NumTypes	};
-
-	float friction, frictionX, frictionY;  // x,y - multipliers
-	float bumpWaveLength, bumpAmplitude, bumpWaveLength2, bumpAmplitude2;
-	float rollingDrag, rollingResist;
-
-	TYPE type;
-	std::string name, tireName;  // .tire file source (without ".tire")
-	CARTIRE* tire;  /// tire params set
-	
-	static CARTIRE* pTireDefault;
-	
-	TRACKSURFACE() :
-		friction(1.0f),
-		frictionX(1.0f), frictionY(1.0f),
-		bumpWaveLength(10.f), bumpAmplitude(0.f),
-		bumpWaveLength2(14.f), bumpAmplitude2(0.f),
-		rollingDrag(1.f), rollingResist(1.f),
-		type(GRASS),
-		tireName("DEFAULT"),
-		tire(CARTIRE::None())
-	{	}
-*/
-	// std::map <std::string, int> surf_map;  // name to surface id
-	// bool LoadAllSurfaces();
-
 	suf.close();
 
 	gui->Exp(CGui::INFO, "\nCount: "+toStr(all));
@@ -465,7 +522,7 @@ void ExportRoR::ConvertSurf()
 
 
 //------------------------------------------------------------------------------------------------------------------------
-//  RoR packs
+//  util RoR packs
 //------------------------------------------------------------------------------------------------------------------------
 
 //  check in which mesh2pack, and to packs

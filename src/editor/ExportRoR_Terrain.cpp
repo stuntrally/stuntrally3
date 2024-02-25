@@ -206,14 +206,14 @@ void ExportRoR::ExportTerrain()  // whole, full
 
 
 	//------------------------------------------------------------------------------------------------------------------------
-	//  🏔️ Blendmap  save as .png  also  surfaces -surf.png
+	//  🏔️ Blendmap  save as .png  also  -surfaces.png
 	//------------------------------------------------------------------------------------------------------------------------
 	int bleSize = 1024;
 	if (scn->ters[0]->blendmap.texture)
 	{
 		auto bleFile = path + name + "-blendmap.png";
 		// scn->ters[0]->blendmap.texture->writeContentsToFile(ble, 0, 0);
-		auto surfFile = path + name + "-surf.png";
+		auto surfFile = path + name + "-surfaces.png";
 		
         Image2 img, imb, imr, isu;
 		try
@@ -267,7 +267,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 				else if (cb.r > 0.5f)  i = 0;
 				else if (cb.g > 0.5f)  i = 1;
 				else if (cb.b > 0.5f)  i = 2;
-				else if (cb.a > 0.5f)  i = 3;
+				else /*if (cb.a > 0.5f)*/  i = 3;
 
 				su.setColourAt(cv[i], x, y, 0, pr);
 			}
@@ -297,7 +297,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 	land.open(landFile.c_str(), std::ios_base::out);
 
 	land << "[config]\n";
-	land << "texture = " << name << "-surf.png\n";
+	land << "texture = " << name << "-surfaces.png\n";
 	land << "\n";
 	land << "#  default terrain to be used, if not using landuse its 'gravel'\n";
 	land << "defaultuse = gravel\n";
@@ -316,11 +316,14 @@ void ExportRoR::ExportTerrain()  // whole, full
 		ter[t++] = td.layersAll[i].surfName;
 
 	//  write  ----
-	land << "0xffff0000 = " << ter[0] << "\n";
-	land << "0xff00ff00 = " << ter[1] << "\n";
-	land << "0xff0000ff = " << ter[2] << "\n";
-	land << "0xffffff00 = " << ter[3] << "\n";
-	land << "0xff00ffff = " << sc->layerRoad[0].surfName << "\n";
+	land << "0xffff0000 = " << "sr-" << ter[0] << "\n";
+	if (!ter[1].empty())
+	land << "0xff00ff00 = " << "sr-" << ter[1] << "\n";
+	if (!ter[2].empty())
+	land << "0xff0000ff = " << "sr-" << ter[2] << "\n";
+	if (!ter[3].empty())
+	land << "0xffffff00 = " << "sr-" << ter[3] << "\n";
+	land << "0xff00ffff = " << "sr-" << sc->layerRoad[0].surfName << "\n";
 	// land << "0xff00ffff = " << scn->roads[0].surf << "\n";
 
 	land.close();

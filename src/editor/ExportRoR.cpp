@@ -293,38 +293,39 @@ void ExportRoR::ExportTrack()  // whole, full
 	//  📊 Info text
 	//------------------------------------------------------------
 	trn << "[Authors]\n";
-	trn << "Authors = " + authors + "  .\n";
-	trn << "Conversion = Exported from Stunt Rally 3 Track Editor, version: " << SET_VER << "  .\n";
-	trn << "License = Track: GPLv3. For data see inside asset packs _*.txt files.\n";
+	auto e = "   .\n";
+	trn << "Authors = " + authors << e;
+	trn << "Conversion = Exported from Stunt Rally 3 Track Editor, version: " << SET_VER << e;
+	trn << "License = Track: GPLv3. For data see inside asset packs _*.txt files" << e;
 
 	//  datetime now
 	time_t now = time(0);
 	tm tn;  tn = *localtime(&now);
 	char dtm[80];  strftime(dtm, sizeof(dtm), "%Y-%m-%d.%X", &tn);
-	trn << "Date = " << dtm << "   .\n";
+	trn << "Date = " << dtm << e;
 
 	//  extra info from SR3 track
 	if (!scenery.empty())
-		trn << "stat1 = " << "Scenery:  " << scenery << "   .\n";
+		trn << "stat1 = " << "Scenery:  " << scenery << e;
 	if (difficulty >= 0)
-		trn << "stat2 = " << "Difficulty:  " << TR("#{Diff"+toStr(difficulty)+"}") << "   .\n";  // no TR? _en
+		trn << "stat2 = " << "Difficulty:  " << TR("#{Diff"+toStr(difficulty)+"}") << e;  // no TR? _en
 	if (rating >= 0)
-		trn << "stat3 = " << "Rating:  " << rating << " / 6   .\n";
+		trn << "stat3 = " << "Rating:  " << rating << " / 6" << e;
 
 	const bool roadtxt = !scn->roads.empty();
 	if (roadtxt)
 	{	auto& rd = scn->roads[0];
 		auto len = rd->st.Length;  // road stats
 
-		trn << "stat4 = " << "Length:  " <<  fToStr(len * 0.001f,2,4) << " km  /  " << fToStr(len * 0.000621371f,2,4) << " mi  .\n";
-		trn << "stat5 = " << "Width average:  " << fToStr(rd->st.WidthAvg,1,3) << " m  .\n";
-		trn << "stat6 = " << "Height range:  " << fToStr(rd->st.HeightDiff,0,2) << " m  .\n";
-		trn << "stat7 = " << "Bridges:  " << fToStr(rd->st.OnTer,0,2) << " %  .\n";
+		trn << "stat4 = " << "Length:  " <<  fToStr(len * 0.001f,2,4) << " km  /  " << fToStr(len * 0.000621371f,2,4) << " mi" << e;
+		trn << "stat5 = " << "Width average:  " << fToStr(rd->st.WidthAvg,1,3) << " m" << e;
+		trn << "stat6 = " << "Height range:  " << fToStr(rd->st.HeightDiff,0,2) << " m" << e;
+		trn << "stat7 = " << "Bridges:  " << fToStr(rd->st.OnTer,0,2) << " %" << e;
 		// trn << "stat7 = " << "bank angle avg: " << fToStr(rd->st.bankAvg,0,2) << "\n";
-		trn << "stat8 = " << "Max banking angle:  " << fToStr(rd->st.bankMax,0,1) << "°  .\n";
+		trn << "stat8 = " << "Max banking angle:  " << fToStr(rd->st.bankMax,0,1) << "°" << e;
 
-		trn << "Description = "+rd->sTxtDescr+"   .\n";  // text
-		trn << "Drive_Advice = "+rd->sTxtAdvice+"   .\n";
+		trn << "Description = "+rd->sTxtDescr << e;  // text
+		trn << "Drive_Advice = "+rd->sTxtAdvice << e;
 	}
 	trn << " \n";
 

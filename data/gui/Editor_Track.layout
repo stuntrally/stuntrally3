@@ -701,7 +701,7 @@
 					<Widget type="TabItem" skin="" position="2 24 794 562">
 						<Property key="Caption" value="#D0D090#{Warnings}"/>
 
-						<Widget type="EditBox" skin="EditBoxStretch" position="32 12 600 430" name="EdExportLog">
+						<Widget type="EditBox" skin="EditBoxStretch" position="32 12 630 450" name="EdExportLog">
 							<Property key="ReadOnly" value="true"/>
 							<Property key="MultiLine" value="true"/>
 							<Property key="WordWrap" value="true"/>
@@ -714,36 +714,10 @@
 							<UserString key="tip" value="#{TipTrackDescEditor}"/>
 						</Widget>
 
-						<Widget type="Button" skin="Button" position="32 448 220 32" name="BtnExportRoR">
+						<Widget type="Button" skin="Button" position="32 468 260 32" name="BtnExportRoR">
 							<Property key="Caption" value="#{Export}"/>
 							<Property key="Colour" value="1.0 0.6 0.8"/>
 							<Property key="TextColour" value="1.0 0.6 0.8"/>
-						</Widget>
-
-						<!-- tools other -->
-						<Widget type="Button" skin="Button" position="342 450 180 24" name="ConvertMat4RoR">
-							<Property key="Caption" value=".#{Materials}"/>
-							<Property key="TextColour" value="0.6 0.9 0.9"/>
-							<Property key="Colour" value="0.6 0.9 0.9"/>
-							<UserString key="tip" value="Convert old Stunt Rally .mat to .material in RoR path, subdir materials"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="542 450 180 24" name="ConvertTerrain4RoR">
-							<Property key="Caption" value="#{Terrain} #{Layers}"/>
-							<Property key="TextColour" value="0.8 1.0 0.6"/>
-							<Property key="Colour" value="0.8 1.0 0.6"/>
-							<UserString key="tip" value="Combine all Stunt Rally terrain textures _d, _s, _n to _ds and _nh"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="342 480 180 24" name="ConvertSurface4RoR">
-							<Property key="Caption" value="#{Surface}"/>
-							<Property key="TextColour" value="0.9 0.9 0.8"/>
-							<Property key="Colour" value="0.8 0.8 0.5"/>
-							<UserString key="tip" value="Convert surfaces.cfg to groundmodel in main RoR path"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="542 480 180 24" name="CreateOdef4RoR">
-							<Property key="Caption" value=".odef for .mesh"/>
-							<Property key="TextColour" value="0.9 0.8 0.6"/>
-							<Property key="Colour" value="0.9 0.8 0.6"/>
-							<UserString key="tip" value="Create .odef for all .mesh files  in main RoR path subdirs"/>
 						</Widget>
 					</Widget>
 
@@ -993,6 +967,37 @@
 						<Widget type="Button" skin="CheckBox" position="32 170 200 24" name="ExportOnLoad">
 							<Property key="Caption" value="#{ExportOnLoad}"/>
 							<Property key="TextColour" value="0.6 0.8 0.9"/>
+						</Widget>
+
+
+						<!-- Tools other -->
+						<Widget type="TextBox" skin="TextBox" position="312 320 124 24">
+							<Property key="Caption" value="#{Tools}"/>
+							<Property key="TextColour" value="0.7 0.8 0.9"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="312 350 180 24" name="ConvertMat4RoR">
+							<Property key="Caption" value="#{Materials}"/>
+							<Property key="TextColour" value="0.6 0.9 0.9"/>
+							<Property key="Colour" value="0.6 0.9 0.9"/>
+							<UserString key="tip" value="Convert old Stunt Rally .mat to .material in RoR path, subdir materials"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="512 350 180 24" name="ConvertTerrain4RoR">
+							<Property key="Caption" value="#{Terrain} #{Layers}"/>
+							<Property key="TextColour" value="0.8 1.0 0.6"/>
+							<Property key="Colour" value="0.8 1.0 0.6"/>
+							<UserString key="tip" value="Combine all Stunt Rally terrain textures _d, _s, _n to _ds and _nh"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="312 380 180 24" name="ConvertSurface4RoR">
+							<Property key="Caption" value="#{Surface}"/>
+							<Property key="TextColour" value="0.9 0.9 0.8"/>
+							<Property key="Colour" value="0.8 0.8 0.5"/>
+							<UserString key="tip" value="Convert surfaces.cfg to groundmodel in main RoR path"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="512 380 180 24" name="CreateOdef4RoR">
+							<Property key="Caption" value=".odef for .mesh"/>
+							<Property key="TextColour" value="0.9 0.8 0.6"/>
+							<Property key="Colour" value="0.9 0.8 0.6"/>
+							<UserString key="tip" value="Create .odef for all .mesh files  in main RoR path subdirs"/>
 						</Widget>
 					</Widget>
 
