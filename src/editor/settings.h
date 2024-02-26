@@ -3,7 +3,7 @@
 #include "settings_com.h"
 
 
-#define SET_VER  3018  // 3.0 beta rc2
+#define SET_VER  3021  // 3.0.2
 
 
 class SETTINGS : public SETcom
@@ -69,6 +69,7 @@ public:
 	std::string pathExportRoR;    // RoR content or mods dir
 	std::string pathExportOldSR;  // SR 2.x data dir, for .mesh .mat etc
 	bool exportOnLoad =0, exportCopyData =0;
+	float rorFriction = 0.0f;
 
 
 //------------------------------------------
