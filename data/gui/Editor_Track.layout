@@ -707,7 +707,7 @@
 					<Property key="Colour" value="0.7 0.8 0.9"/>
 				</Widget>
 
-				<Widget type="TabControl" skin="TabControl" position="24 32 760 516" align="Stretch" layer="Back" name="TabWndTrack">
+				<Widget type="TabControl" skin="TabControl" position="24 32 760 516" align="Stretch" layer="Back" name="SubTab">
 					<Property key="InheritsAlpha" value="false"/>
 					<Property key="SmoothShow" value="false"/>
 					<Property key="Colour" value="0.7 0.9 1"/>

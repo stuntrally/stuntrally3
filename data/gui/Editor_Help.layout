@@ -258,6 +258,10 @@
 						<Widget type="TextBox" skin="TextBox" position="204 296 170 20">
 							<Property key="Caption" value="#D0B0F0 F  #{MaterialEditor}"/>
 						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="204 326 170 20">
+							<Property key="Caption" value="#907090 N  #{Export}"/>
+						</Widget>
 					</Widget>
 	<!-- ................................................................................................................... -->
 					<Widget type="TabItem" skin="" position="2 24 754 444">

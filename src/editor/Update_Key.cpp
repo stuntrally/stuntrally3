@@ -222,10 +222,14 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 					sub->setIndexSelected( (sub->getIndexSelected() + (shift ? -1 : 1) + num) % num );  }
 			break;
    			
-		case key(KP_ENTER):  case key(RETURN):  // load track
-			if (bGuiFocus)
-			if (mWndTabsTrack->getIndexSelected() == 1 && !pSet->bMain && pSet->inMenu == WND_Track)
-				gui->btnNewGame(0);
+		case key(KP_ENTER):  case key(RETURN):
+			if (bGuiFocus && !pSet->bMain)
+				if (pSet->inMenu == WND_Track)
+					switch (mWndTabsTrack->getIndexSelected())
+					{
+					case TabTrk_Track:  gui->btnNewGame(0);  break;  // load track
+					case TabTrk_Export:  ror->ExportTrack();  break;
+					}
    			break;
 
 
@@ -324,13 +328,14 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	///  Common Keys
 	//************************************************************************************************************
 	if (alt)
-	switch (skey)    //  alt-  Shortcuts  🎛️
+	switch (skey)    //  alt-  Shortcuts  🎛️   free: P Y  3..0-
 	{
-		case key(Q):  gui->GuiShortcut(WND_Track, 1);  return;  // Q Track  🏞️
-		case key(O):  gui->GuiShortcut(WND_Track, 2);  return;  // O Tools  🛠️
+		case key(Q):  gui->GuiShortcut(WND_Track, TabTrk_Track);  return;  // Q Track  🏞️
+		case key(O):  gui->GuiShortcut(WND_Track, TabTrk_Tools);  return;  // O Tools  🛠️
 
-		case key(W):  gui->GuiShortcut(WND_Track, 3);  return;  // W Game  🚗
-		case key(J):  gui->GuiShortcut(WND_Track, 4);  return;  // J Warnings  ⚠
+		case key(W):  gui->GuiShortcut(WND_Track, TabTrk_Game);      return;  // W Game  🚗
+		case key(J):  gui->GuiShortcut(WND_Track, TabTrk_Warnings);  return;  // J Warnings  ⚠
+		case key(N):  gui->GuiShortcut(WND_Track, TabTrk_Export);    return;  // N Export
 
 		case key(S):  gui->GuiShortcut(WND_Edit, TAB_Sun);       return;  // S Sun  🌦️
 		case key(D):  gui->GuiShortcut(WND_Edit, TAB_Terrain);   return;  // D Heightmap  ⛰️

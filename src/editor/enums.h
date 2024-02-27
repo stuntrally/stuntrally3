@@ -15,6 +15,17 @@ enum WND_Types  // pSet->inMenu
 	ciMainBtns = WND_Materials  // last
 };
 
+enum TABS_Track
+{
+	TabTrk_Back=0,
+	TabTrk_Track,
+	TabTrk_Tools,
+	TabTrk_Game,
+	TabTrk_Warnings,
+	TabTrk_Export,
+	TabsTrk_ALL
+};
+
 enum TABS_Edit
 {
 	TAB_Back=0, TAB_Sun,

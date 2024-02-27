@@ -59,7 +59,7 @@ Steps:
 
     Why both?  
     _SR3 data (meshes) is incompatible with RoR, while SR2 is close as it uses same Ogre version._  
-    _But SR2 is not developed now. Thus SR3 editor is more advanced._
+    _But SR2 is not developed now. Thus SR3 editor is more advanced and it can also load old SR2 tracks._
 
 2. Start SR3 Track Editor (info in [here](Running.md)), and load any track.
 
@@ -80,9 +80,10 @@ Steps:
    Adjust if needed. Press Save there. Export, test and repeat if needed.  
    For example, often adjusted:  
    - Road terrain layer, check look on Layers tab (alt-T).
-   - Road height offset, moves all bridges up/down. To adjust bridge entries step.
+     - You can specify own RoR road texture on Layers tab, picking it in unused (e.g. last 6th) slot, not enabled.
+   - Road height offset, moves all bridges up/down. To adjust bridge entries and avoid step.
    - Fluids, if Auto fails, set to either None or Manual and set height.
-   - Trees density. E.g. reduce if too much or lags in RoR.
+   - Trees or grass density. E.g. reduce if too much or lags in RoR.
 
 
 ----
@@ -95,16 +96,22 @@ These are used for content of sr-packs.
 
 Buttons:
 
-#### .materials
+#### Materials
 
 Will convert from SR2 `data/materials/scene` all needed `.mat` files into `.material` for RoR.  
 Resulting files is in RoR mods path in subdir `materials`.
 
-#### terrain textures
+#### Terrain
 
 Will convert/combine SR2 terrain textures (files *_d, *_s, *_n .jpg) into RoR (needed _ds.png and _nh.png).  
 _d - diffuse, s - specular (ignored, bug), n - normal, h - height (now just made simply from n)_  
 Resulting files are put into RoR mods path in subdir `terrain`.
+
+#### Surfaces
+
+Will convert SR3 surfaces.cfg to RoR groundmodel.  
+All friction coeffs get added a factor, value from slider All Surface Friction.  
+Result file `sr-surfaces.cfg` is put into RoR mods path in `sr-checkpoint-v1` subdir.
 
 
 #### .odef for .mesh

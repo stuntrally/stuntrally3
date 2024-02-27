@@ -328,7 +328,12 @@ void ExportRoR::ConvertSurf()
 	gui->edExportLog->setCaption("");
 	gui->Exp(CGui::INFO, "Convert surfaces to groudmodel ..");
 
-	string suFile = pSet->pathExportRoR + "sr-checkpoint-v1/sr-surfaces.cfg";
+	string pathTo = pSet->pathExportRoR + "sr-checkpoint-v1/";
+	string suFile = pathTo + "sr-surfaces.cfg";
+	if (!PATHS::CreateDir(pathTo))
+	{	gui->Exp(CGui::ERR, "Can't create dir: "+pathTo);
+		return;
+	}
 	ofstream suf;
 	suf.open(suFile.c_str(), std::ios_base::out);
 	gui->Exp(CGui::INFO, "Saving to: "+suFile);
