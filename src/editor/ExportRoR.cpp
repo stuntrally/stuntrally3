@@ -276,8 +276,8 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn << "\n";
 
 	trn << "CaelumConfigFile = " + name + ".os\n";
-	trn << "CaelumFogStart = " << sc->fogStart << "\n";  // fog
-	trn << "CaelumFogEnd = " << sc->fogEnd << "\n";
+	trn << "CaelumFogStart = " << sc->fogStart * cfg->fogMul << "\n";  // fog
+	trn << "CaelumFogEnd = " << sc->fogEnd * cfg->fogMul << "\n";
 
 	trn << "SandStormCubeMap = tracks/skyboxcol\n";  // sky meh-
 	trn << "Gravity = " << -sc->gravity << "\n";

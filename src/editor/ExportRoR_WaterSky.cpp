@@ -126,7 +126,7 @@ void ExportRoR::ExportWaterSky()
 		os << "	{\n";
 		os << "		cloud_layer low\n";
 		os << "		{\n";
-		os << "			height 2000\n";
+		os << "			height 500\n";
 		os << "			coverage "<< min(cld, 0.2f) <<"\n";
 		// os << "			cloud_uv_factor " << 500 <<"\n";  //..cd
 		os << "		}\n";
@@ -134,7 +134,7 @@ void ExportRoR::ExportWaterSky()
 		{
 			os << "		cloud_layer mid\n";
 			os << "		{\n";
-			os << "			height 2700\n";
+			os << "			height 700\n";
 			os << "			coverage "<< min(cld, 0.6f) <<"\n";
 			os << "		}\n";
 		}
@@ -142,7 +142,7 @@ void ExportRoR::ExportWaterSky()
 		{
 			os << "		cloud_layer high\n";
 			os << "		{\n";
-			os << "			height 3500\n";  // vis far is 5000 max
+			os << "			height 1000\n";  //! vis cut off, far is 5000 max
 			os << "			coverage "<< min(cld, 1.0f) <<"\n";
 			os << "		}\n";
 		}
