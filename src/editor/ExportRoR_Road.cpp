@@ -68,6 +68,7 @@ void ExportRoR::ExportRoad()
 		ofstream trd;
 		trd.open(roadFile.c_str(), std::ios_base::out);
 
+		trd << "rot_yxz\n";
 		trd << "//  position x,y,z   rotation rx,ry,rz,   width,   border width, border height,  type\n";
 		bool begin = 0;  int iroads = 0;
 

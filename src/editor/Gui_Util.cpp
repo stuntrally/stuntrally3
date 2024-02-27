@@ -106,13 +106,15 @@ void CGui::SetGuiFromXmls()
 	svRoR_Water.Upd(); 	svRoR_WaterOfs.Upd();
 	svRoR_Trees.Upd();  svRoR_Grass.Upd();
 
+	svRoR_TileMul.Upd();  svRoR_ObjOfsY.Upd();
+
 	svRoR_RoadLay.Upd();  slRoR_RoadLay(0);
 	ckRoR_RoadCols.Upd();
 
-	svRoR_RoadStep.Upd();  svRoR_WallX.Upd();
-	svRoR_RoadHadd.Upd();  svRoR_WallY.Upd();
-		
-	svRoR_TileMul.Upd();  svRoR_ObjOfsY.Upd();
+	svRoR_RoadStep.Upd();  svRoR_RoadAngle.Upd();
+	svRoR_RoadHadd.Upd();  svRoR_WallX.Upd();  svRoR_WallY.Upd();
+
+	svRoR_RoadVegetDist.Upd();
 
 	bGI = true;
 }

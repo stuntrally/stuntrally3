@@ -382,7 +382,7 @@ Also a HLMS PBS listener, it's that default `hlmsPbs->setListener( mHlmsPbsTerra
 from Terra, this is only for Pbs objects, `hlmsTerra` has no listener (_ToDo:_ adding globalTime to both would need it).  
 Done so objects also receive terrain shadows. Only one listener can be used.  
 
-And we have own datablocks: `HlmsPbsDbCar` and `HlmsPbsDbWater` with more stuff when needed for paint or fluids.
+And we have own datablock: `HlmsPbsDb2` with more stuff when needed for paint or fluids.
 
 ### Adding more uniforms
 
@@ -426,14 +426,14 @@ _ToDo:_ ? Add renderable->hasCustomParameter( 999.. ) for all to get info in deb
 
 ### Own DataBlocks
 
-Inside `HlmsPbs2::createDatablockImpl(` we create `HlmsPbsDbCar` for vehicle paint params.  
-It has own `HlmsPbsDbCar::uploadToConstBuffer`, which is where data is uploaded from C++ to GPU material shader buffers.  
+Inside `HlmsPbs2::createDatablockImpl(` we create `HlmsPbsDb2` for vehicle paint params.  
+It has own `HlmsPbsDb2::uploadToConstBuffer`, which is where data is uploaded from C++ to GPU material shader buffers.  
 
 Currently can't change total size, must set `mUserValue[` in cpp and get in shader `material.userValue[`.  
 _ToDo:_ `body_paint` property not used yet.  
-**_ToDo:_** clone on our `HlmsPbsDbCar` fails? Same vehicles can't have different paints.
+**_ToDo:_** `HlmsPbsDb2` clone fails?
 
-When setting car material need to use `HlmsPbsDbCar*`. Set by `CarModel::SetPaint()`.  
+When setting car material need to use `HlmsPbsDb2*`. Set by `CarModel::SetPaint()`.  
 Changes need `scheduleConstBufferUpdate()` to apply.
 
 

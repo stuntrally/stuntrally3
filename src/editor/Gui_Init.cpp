@@ -645,8 +645,8 @@ void CGui::InitGui()
 							sv->Init("RoR_Water",		&ror.water,      -2,1);  sv->DefaultI(0);
 	sv= &svRoR_WaterOfs;	sv->Init("RoR_WaterOfs",	&ror.yWaterOfs,  -40.f,40.f, 1.f, 2,4);  sv->DefaultF(-0.8f);
 
-	sv= &svRoR_Trees;		sv->Init("RoR_Trees",		&ror.treesMul,  0.f, 6.f, 2.f, 2,4);  sv->DefaultF(1.f);
-	sv= &svRoR_Grass;		sv->Init("RoR_Grass",		&ror.grassMul,  0.f,12.f, 1.f, 2,4);  sv->DefaultF(4.f);
+	sv= &svRoR_Trees;		sv->Init("RoR_Trees",		&ror.treesMul,  0.f, 4.f, 2.f, 2,4);  sv->DefaultF(1.f);
+	sv= &svRoR_Grass;		sv->Init("RoR_Grass",		&ror.grassMul,  0.f, 8.f, 1.f, 2,4);  sv->DefaultF(4.f);
 
 	sv= &svRoR_TileMul;		sv->Init("RoR_TileMul",		&ror.tileMul,	0.f, 10.f, 2.f, 2,4);  sv->DefaultF(0.9f);
 	sv= &svRoR_ObjOfsY;		sv->Init("RoR_ObjOfsY",		&ror.yObjOfs,	-2.f, 2.f, 1.f, 2,4);  sv->DefaultF(0.f);
