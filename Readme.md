@@ -126,7 +126,7 @@ Sources have emojis, [this file](/src/emojis.txt) has all, with quick components
 
     Stunt Rally 3 - 3D racing game, with own Track Editor
                     based on Ogre-Next rendering and VDrift simulation
-    Copyright (C) 2010-2023  Crystal Hammer and contributors
+    Copyright (C) 2010-2024  Crystal Hammer and contributors
 
 
     This program is free software: you can redistribute it and/or modify

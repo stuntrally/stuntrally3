@@ -634,7 +634,7 @@ void CGui::InitGui()
 	
 	//  RoR Track setup  --------
 	auto& ror = app->scn->sc->rorCfg;
-	sv= &svRoR_AmbAdd;		sv->Init("RoR_AmbAdd",	&ror.lSpec,  0.f,3.f, 1.f, 2,4);  sv->DefaultF(0.1f);
+	sv= &svRoR_AmbAdd;		sv->Init("RoR_AmbAdd",	&ror.lAmbAdd,0.f,3.f, 1.f, 2,4);  sv->DefaultF(0.1f);
 	sv= &svRoR_Amb;			sv->Init("RoR_Amb",		&ror.lAmb,   0.f,3.f, 1.f, 2,4);  sv->DefaultF(1.6f);
 	sv= &svRoR_Diff;		sv->Init("RoR_Diff",	&ror.lDiff,  0.f,3.f, 1.f, 2,4);  sv->DefaultF(1.6f);
 	sv= &svRoR_Spec;		sv->Init("RoR_Spec",	&ror.lSpec,  0.f,3.f, 1.f, 2,4);  sv->DefaultF(0.9f);
