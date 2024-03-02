@@ -742,7 +742,7 @@
 						<Widget type="EditBox" skin="EditBox" position="230 20 50 20" name="RoR_AmbAddEdit">
 							<Property key="TextColour" value="0.7 0.7 0.7"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="300 60 440 18" name="RoR_AmbAdd"/>
+						<Widget type="Slider" skin="Slider" position="300 20 440 18" name="RoR_AmbAdd"/>
 
 						<Widget type="TextBox" skin="TextBox" position="10 40 220 20">
 							<Property key="Caption" value="#{Sun}: #{InputMultiplier}"/>

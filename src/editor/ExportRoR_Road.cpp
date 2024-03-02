@@ -238,7 +238,7 @@ void ExportRoR::ExportRoad()
 			if (i > nc)  i = 0;
 		}
 	#endif
-		as << "		};\n";
+		as << "    };\n";
 		as << "	int raceID = races.addRace(\"SR\", race_sr, " <<
 			"races.LAPS_Unlimited, \"sr-checkpoint\", \"sr-start\");\n";
 			// "races.LAPS_Unlimited, \"sr-checkpoint\");\n";  // default start/finish

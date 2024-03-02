@@ -634,11 +634,11 @@ void CGui::InitGui()
 	
 	//  RoR Track setup  --------
 	auto& ror = app->scn->sc->rorCfg;
-	sv= &svRoR_AmbAdd;		sv->Init("RoR_AmbAdd",	&ror.lAmbAdd,0.f,3.f, 1.f, 2,4);  sv->DefaultF(0.1f);
-	sv= &svRoR_Amb;			sv->Init("RoR_Amb",		&ror.lAmb,   0.f,3.f, 1.f, 2,4);  sv->DefaultF(1.6f);
-	sv= &svRoR_Diff;		sv->Init("RoR_Diff",	&ror.lDiff,  0.f,3.f, 1.f, 2,4);  sv->DefaultF(1.6f);
-	sv= &svRoR_Spec;		sv->Init("RoR_Spec",	&ror.lSpec,  0.f,3.f, 1.f, 2,4);  sv->DefaultF(0.9f);
-	sv= &svRoR_FogMul;		sv->Init("RoR_FogMul",	&ror.fogMul, 0.f,4.f, 1.f, 2,4);  sv->DefaultF(1.f);
+	sv= &svRoR_AmbAdd;		sv->Init("RoR_AmbAdd",	&ror.lAmbAdd,0.f,1.f, 1.f, 2,4);  sv->DefaultF(0.1f);
+	sv= &svRoR_Amb;			sv->Init("RoR_Amb",		&ror.lAmb,   0.2f,2.5f, 1.f, 2,4);  sv->DefaultF(1.6f);
+	sv= &svRoR_Diff;		sv->Init("RoR_Diff",	&ror.lDiff,  0.2f,2.5f, 1.f, 2,4);  sv->DefaultF(1.6f);
+	sv= &svRoR_Spec;		sv->Init("RoR_Spec",	&ror.lSpec,  0.f,2.f, 1.f, 2,4);  sv->DefaultF(0.9f);
+	sv= &svRoR_FogMul;		sv->Init("RoR_FogMul",	&ror.fogMul, 0.f,3.f, 1.f, 2,4);  sv->DefaultF(1.f);
 
 	sv= &svRoR_Water;
 	sv->strMap[-1] = TR("#{None}");  sv->strMap[0] = TR("#{auto}");  sv->strMap[1] = TR("#{Road_AngleManual}");

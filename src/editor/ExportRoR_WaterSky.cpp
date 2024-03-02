@@ -41,10 +41,9 @@ void ExportRoR::ExportWaterSky()
 		break;
 	case 1:  // force custom manual
 		water = 1;
-		Ywater = cfg->yWaterOfs;  break;
+		Ywater = cfg->yWaterOfs - hmin;  break;  // - hmin
 	}
 	gui->Exp(CGui::NOTE, String("Water: ")+(water ? "yes" : "no")+"  Y level: "+fToStr(Ywater));
-
 
 	//  ⛅ Caelum  sun light etc  save  .os
 	//------------------------------------------------------------------------------------------------------------------------
