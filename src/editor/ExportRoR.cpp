@@ -191,6 +191,7 @@ void ExportRoR::ExportTrack()  // whole, full
 	if (first)
 		ListPacks();
 	first =0;
+	packs.clear();
 	
 	//  Gui status
 	Ogre::Timer ti;
