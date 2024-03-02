@@ -1,4 +1,5 @@
 
+--------
 Original Cave Models:     cave_* and rock_*.mesh
 made by rubberduck from these:
 
@@ -11,36 +12,78 @@ and also made more color variants from them
 
 new cave models partly based on previous, reworked and new ones created from scratch
 
-
+--------
 Model:		rock.mesh  1rock*.png
-Url:		https://www.blendswap.com/blends/landscapes/toddmcintosh_nature_rocks2/
 Artist:		tmcintosh
 License:	CC-BY
 Date:		02/08/2012
+Url:		https://www.blendswap.com/blends/landscapes/toddmcintosh_nature_rocks2/
 Notes:		Texture by yughues (OpenGameArt user) [under CC0]
 
 
-Model:		crystal
+--------
+Model:		crystal_form1.mesh
 Low Poly Rock Formation
-Url:		https://www.blendswap.com/blend/11024
 Artist:		OliverMH
-License:    CC-BY
+License:	CC-BY
 Date:		05/12/2013
+Url:		https://www.blendswap.com/blend/11024
+including color variants
 
+Model:		crystal_form2.mesh
 Low Poly Rock Formation 2
-Url:		https://www.blendswap.com/blend/11147
 Artist:		OliverMH
-License:    CC-0
+License:	CC-0
 Date:		16/12/2013
+Url:		https://www.blendswap.com/blend/11147
+including color variants
 
+Model:		crystal_form3.mesh
+colored one? from:
+Low Poly Rocks #2
+Artist:		OliverMH
+License:	CC-BY
+Date:		29/11/2013
+Url:		https://www.blendswap.com/blend/10974
+
+--------
+Model:		crystal1.mesh
+model from:
+Gem Cave
+Artist:		sneakySniper74
+License:	CC-BY
+Date:		26/11/2013
+Url:		https://www.blendswap.com/blend/10958
+textures from: crystal_form*
+
+Model:		crystal2.mesh
+model by combining 4 from:
+Crystal cave scene
+Artist:		glad0s98
+License:	CC-0
+Date:		13/01/2013
+Url:		https://www.blendswap.com/blend/7742
+textures from: crystal_form*
+
+Model:		crystal_cube4.mesh
+model from:
+Default Cube(s)
+Artist:		DimitrisC
+License:	CC-BY
+Date:		18/02/2014
+Url:		https://www.blendswap.com/blend/11802
+
+
+--------
 various rock models (includes alien variants, snow covered, etc)
+
 Models:		rock01* - rock50*.mesh
 Lowpoly Rocks - 1-3
 Urls:		https://sketchfab.com/3d-models/lowpoly-rocks-1-d9ffac943bb24a609c1082c1aa118d76
 			https://sketchfab.com/3d-models/lowpoly-rocks-2-7f8361d14ff24e27bc460f7f7ba318b6
 			https://sketchfab.com/3d-models/lowpoly-rocks-3-c985042a860a40859c4d5ac94f1b3479
 Artist:		Loïc Norgeot
-License:    CC BY 4.0
+License:	CC BY 4.0
 Date:		08/05/2018
 
 techniques used to create the snow (first is texture, second geometry on top)

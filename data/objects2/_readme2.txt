@@ -21,22 +21,24 @@ New Pipe Obstacles
 Author: rubberduck
 License: CC0
 
----- ancient ruins
+
+---- ancien_ruins*.mesh
 Ancient Ruins (Modular)
 Author: zacharykozak
 License: CC-BY 4.0
 https://sketchfab.com/3d-models/ancient-ruins-modular-c277e5acad5849bc913e76d3fdbf32a3
 
-----
-wooden pier
+
+---- pier_*.mesh
 Author: Rico Cilliers
 License: CC0
 https://polyhaven.com/a/modular_wooden_pier
 
-----
-bridge wooden based on wooden pier
+---- bridge_wooden*.mesh
+based on wooden pier
 Author: Rico Cilliers (original) and rubberduck
 License: CC0
+
 
 ----  mining_truck.mesh
 mining_truck / Caterpillar 789c
@@ -55,9 +57,11 @@ House
 Author: Mateusz Woliński
 License: CC-BY 4.0
 https://sketchfab.com/3d-models/house-e70c4aebc911429ba9a894b38146892c
+
 icicles and snow added by rubberduck,
 window texture from houses 1-4 (CC0)
 https://www.blendswap.com/blends/view/56205
+
 
 ----  storage_tank.mesh
 Rusted Tank storage
@@ -84,6 +88,7 @@ Log Cabin Wooden
 Author: Tyler Regnart
 License: CC-BY 4.0
 https://sketchfab.com/3d-models/log-cabin-wooden-94ed8fca6efa48eaabe37b62da2fd333
+
 icicles and snow added by rubberduck,
 window texture from houses 1-4 (CC0)
 https://www.blendswap.com/blends/view/56205
@@ -101,17 +106,37 @@ License: CC-BY 4.0
 https://sketchfab.com/3d-models/wagon-f491eb62aaa24fdeb6dc52a1aab54d0c
 
 
----- concrete_bar_anomaly
+---- concrete_bar_anomaly.mesh
 based on original by: cr0wb4r
 License: CC-BY-SA
 https://www.blendswap.com/blends/game-engine/low-poly-worn-construction-barrier/
 
 
 ---- icicle*.mesh
-
 Author: rubberduck
 License: CC0
 
 self created from scratch, (except stalactites_emit_uni.jpg mixed with jungle_mntnx_s.jpg, though CC0 too)
 textures baked from high poly and procedural base material
 same meshes used for icicles and stalactites
+
+
+---- oil_pump.mesh
+Oil Pump Jack
+Author: Machine Meza
+License: CC-BY 4.0
+https://sketchfab.com/3d-models/oil-pump-jack-73e9e419df5748ceb1bbbd333c5ce8d1
+
+
+---- tree_dead_01.mesh - 03.mesh
+Mountain Trees
+Author: Jagobo
+License: CC-BY 4.0
+https://sketchfab.com/3d-models/mountain-trees-b914384f931d4b3585bd4f0bf48f0da3
+
+---- tree_dead_04.mesh
+Oak tree
+Author: evolveduk
+License: CC-BY 4.0
+https://sketchfab.com/3d-models/oak-tree-6468dd4d3eb240ef902b9057d9913606
+
