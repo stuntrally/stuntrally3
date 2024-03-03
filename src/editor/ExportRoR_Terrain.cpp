@@ -365,7 +365,7 @@ void ExportRoR::ExportTerrain()  // whole, full
 	otc << "NormalMappingEnabled=1\n";  // yes
 	otc << "\n";
 	otc << "# Whether to support specular mapping per layer in the shader (default true). \n";
-	otc << "SpecularMappingEnabled=0\n";  // idk DS,  no change-
+	otc << "SpecularMappingEnabled=1\n";  // need 1
 	otc << "\n";
 
 	otc << "# Whether to support parallax mapping per layer in the shader (default true). \n";
