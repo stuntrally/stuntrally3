@@ -12,18 +12,52 @@ This has few benefits:
   - If you also share SR3 track data with it (recommended), others could edit or modify it later too, and even drive in SR3 and RoR.
   - Path to SR3 user tracks is `/home/username/.local/share/stuntrally3/tracks`
 
+### Forum
 
+Topics on RoR Forum:
+- [Stunt Rally tracks converted for RoR](https://forum.rigsofrods.org/threads/stunt-rally-tracks-converted-for-ror.4205/)
+- [Stunt Rally asset packs](https://forum.rigsofrods.org/threads/stunt-rally-asset-packs.4204/), needed for these tracks
+- [Stunt Rally tracks exporter](https://forum.rigsofrods.org/threads/porting-content-stunt-rally-tracks-exporter.4011/), first, discussion, bugs etc.
+
+### Tracks
+
+About 55 % of all SR3 tracks are available and drivable in RoR.
+
+SR repo *tracks3* has a special [branch ror](https://github.com/stuntrally/tracks3/commits/ror) with changes done for the tracks version going for RoR.  
+Some have reduced roads, closed jumps, and other possible changes.  
+This link shows [comparison](https://github.com/stuntrally/tracks3/compare/main...ror), changes visible on road.png.  
+
+For making new tracks this branch isn't important.  
+But *sr-tracks* pack was made from this branch and has needed changes.  
+Modifying any track to fit RoR, would need updates to this branch too.  
+It is also easy to contribute any tracks or changes by forking [*tracks3*](https://github.com/stuntrally/tracks3/) repo.  
+
+#### Features
+
+Track features available in SR3 that are ignored for RoR and simply won't be there:
+- Road pipes, half-pipes, on-pipes  
+The pipe parameter is irrelevant and such roads just turn to bridges, no need to change.  
+But some need adjust for roll angles.
+- Loops and any high roll angles. Will go bad in RoR, so need to flatten, reduce.
+- Sky textures. Using few params from `presets.xml` for generation of Caelum sky setup.
+- Particles, clouds etc.
+- Height fog
+- Dynamic objects
+- Caves, hexrocks, etc. Some SR3 meshes aren't in old SR data or were renamed. Especially those with material variations.
+- Fluids, mud etc. Only one big water can be in RoR.
+
+----
 ### Setup
 
 These are all steps needed:
 
 #### RoR mods path
 
-*Main RoR* path for *mods* (or content).  
+Set *Main RoR* path for *mods* (or content) on Gui, Export tab, subtab Settings.  
 It should end with / or \\.  
 On Linux: `/home/username/.rigsofrods/mods/`  
 Here will tracks be exported into.  
-Also other subdirs will be needed or created.
+Also other subdirs will be needed or created here.
 
 #### Old SR
 
@@ -32,8 +66,8 @@ It should end with / or \\.
 
 #### SR packs
 
-Download all SR packs (from RoR repository, or you could already have them in *mods*)  
-and extract them in RoR mods path.  
+Download all SR packs (from [topic](https://github.com/stuntrally/tracks3/compare/main...ror) _or in future RoR repository, or you could already have them in *mods*_)  
+and **extract** them in RoR *mods* path.  
 
 Extract `sr-*` *packs* inside RoR *mods* dir.
 
@@ -71,12 +105,12 @@ Steps:
 
 6. Go to first tab (Warnings). Press **Export**.  
    It can take few seconds. At end there will be log of what was done.  
-   Check it for warnings (orange or red).
+   Check it for warnings (orange or red).  
    If it went well (and sr packs are present if used) then you can start this track in RoR.
 
 7. Test track in RoR. Things could look or be wrong.  
 
-8. If so, go back to SR3 editor Gui, on Export tab, and **Track** subtab.  
+8. If so, go back to SR3 editor Gui, on Export tab, and **Track** or Road subtabs.  
    Adjust if needed. Press Save there. Export, test and repeat if needed.  
    For example, often adjusted:  
    - Road terrain layer, check look on Layers tab (alt-T).
@@ -99,7 +133,8 @@ Buttons:
 #### Materials
 
 Will convert from SR2 `data/materials/scene` all needed `.mat` files into `.material` for RoR.  
-Resulting files is in RoR mods path in subdir `materials`.
+Resulting files is in RoR mods path in subdir `materials`.  
+Had manual adjusts made after, like removing not needed etc.
 
 #### Terrain
 
