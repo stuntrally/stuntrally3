@@ -39,7 +39,9 @@ Track features available in SR3 that are ignored for RoR and simply won't be the
 The pipe parameter is irrelevant and such roads just turn to bridges, no need to change.  
 But some need adjust for roll angles.
 - Loops and any high roll angles. Will go bad in RoR, so need to flatten, reduce.
-- Sky textures. Using few params from `presets.xml` for generation of Caelum sky setup.
+- Road bridge columns. All ignored now, to not appear on other roads.
+- Sky textures.  
+Using few params from `presets.xml` for generation of Caelum sky setup.
 - Particles, clouds etc.
 - Height fog
 - Dynamic objects
