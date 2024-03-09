@@ -805,14 +805,6 @@ void App::LoadMisc()
 		{	//car->fCam->mTerrain = scn->ter;  //?
 			//car->fCam->mWorld = &(pGame->collision);
 	}	}
-	
-	/*if (dstTrk)  // drop this
-	try
-	{	TexturePtr tex = Ogre::TextureManager::getSingleton().getByName("waterDepth.png");
-		if (tex)
-			tex->reload();
-	} catch(...)
-	{	}*/
 }
 
 

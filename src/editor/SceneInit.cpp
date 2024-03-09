@@ -370,12 +370,6 @@ void App::LoadTrackEv()
 
 	gui->updImgSky();  gui->updSkySun();
 
-	/*try
-	{	TexturePtr tex = TextureManager::getSingleton().getByName("waterDepth.png");
-		if (tex)
-			tex->reload();
-	}catch(...)
-	{	}*/
 
 	gui->Status("#{Loaded}", 0.5,0.7,1.0);
 	
@@ -522,7 +516,6 @@ void App::SaveTrackEv()
 	scn->sc->SaveXml(dir + "scene.xml");
 
 	SaveGrassDens();
-	// SaveWaterDepth();  //-
 
 	DelNewHmaps();
 

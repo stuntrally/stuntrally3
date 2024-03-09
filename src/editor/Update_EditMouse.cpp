@@ -168,7 +168,7 @@ void App::MouseFluids()
 				if (fl.node[n]){  fl.node[n]->setPosition(fb.pos);  fl.node[n]->_getFullTransformUpdated();  }
 			UpdFluidBox();
 		}
-		// rot not supported (bullet trigger isnt working, trees check & waterDepth is a lot simpler)
+		//  rot not supported  (bullet trigger isnt working, trees check  is a lot simpler)
 		/*else if (mbMiddle)  // rot yaw
 		{
 			Real xm = vNew.x * fRot * moveMul;

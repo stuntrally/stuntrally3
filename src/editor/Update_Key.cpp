@@ -425,7 +425,6 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 		//  💧 fluids
 		case key(W):  if (bEdit()){  SetEdMode(ED_Fluids);  UpdEditWnds();  }   break;
-		//case key(F10):  SaveWaterDepth();   break;
 
 		//  📦 objects
 		case key(C):  if (edMode == ED_Objects)  {  objSim = !objSim;  ToggleObjSim();  }  break;

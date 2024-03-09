@@ -186,7 +186,7 @@ public:
 
 
 	//  🛠️ Tools, road  -in base
-	void SaveGrassDens(), SaveWaterDepth();
+	void SaveGrassDens();
 	void AlignTerToRoad(), AlignHorizonToTer();
 	int iSnap = 0;  Ogre::Real angSnap = 0.f;
 	int iEnd = 0;  // edit: 0 scn->start 1 end
@@ -208,7 +208,7 @@ public:
 	bool bRecreateFluids =0;  // todo: only one
 	bool bRecreateFluidsRTT =0;  // gui opt apply
 	int iFlCur =0;
-	void UpdFluidBox(), UpdMtrWaterDepth();
+	void UpdFluidBox();
 	std::string newFluidName = "water blue";
 	
 

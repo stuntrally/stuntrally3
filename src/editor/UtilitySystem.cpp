@@ -36,7 +36,8 @@ bool CGui::Rename(String from, String to)
 bool CGui::Delete(String file)
 {
 	try
-	{	fs::remove(file.c_str());
+	{	if (fs::exists(file.c_str()))
+			fs::remove(file.c_str());
 	}
 	catch (const fs::filesystem_error & ex)
 	{

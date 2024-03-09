@@ -89,9 +89,3 @@ void App::UpdFluidBox()
 	ndFluidBox->setScale(fb.size);
 	ndFluidBox->_getFullTransformUpdated();
 }
-
-void App::UpdMtrWaterDepth()
-{
-	float fl = edMode == ED_Fluids ? 0.f : 1.f;
-	// sh::Factory::getInstance().setSharedParameter("waterDepth", sh::makeProperty<sh::FloatValue>(new sh::FloatValue(fl)));
-}

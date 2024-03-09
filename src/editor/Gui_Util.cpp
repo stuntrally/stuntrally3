@@ -221,8 +221,6 @@ void App::UpdEditWnds()
 
 	UpdStartPos(edMode != ED_PrvCam);  // StBox visible
 	UpdVisGui();  //br prv..
-
-	UpdMtrWaterDepth();
 }
 
 
@@ -238,10 +236,6 @@ void App::SetEdMode(ED_MODE newMode)
 	}
 	if (ndObjBox)  ndObjBox->setVisible(newMode == ED_Objects && bEdit());
 	if (ndEmtBox)  ndEmtBox->setVisible(newMode == ED_Particles && bEdit());
-
-	//if (pSet->autoWaterDepth)  //..?
-	if (edMode == ED_Fluids && newMode != ED_Fluids)
-		SaveWaterDepth();  // update, on exit from Fluids editing
 
 	edMode = newMode;
 	if (edMode >= ED_Deform && edMode <= ED_Filter)
