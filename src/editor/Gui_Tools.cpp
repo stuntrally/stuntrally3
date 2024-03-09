@@ -4,23 +4,18 @@
 #include "GuiCom.h"
 #include "CScene.h"
 #include "settings.h"
+#include "paths.h"
 #include "CApp.h"
 #include "CGui.h"
 #include "Road.h"
 #include "MessageBox/MessageBox.h"
 using namespace MyGUI;
 using namespace Ogre;
+using namespace std;
 
 
 ///  tools  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 /// . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-
-//  track files  for copy, new 
-const int cnTrkFm = 3, cnTrkFo = 1, cnTrkFp = 3;
-const Ogre::String
-	csTrkFm[cnTrkFm] = {"/heightmap.f32", "/road.xml", "/scene.xml"},  // in / 
-	csTrkFo[cnTrkFo] = {"/waterDepth.png"},							// in /objects/
-	csTrkFp[cnTrkFp] = {"/view.jpg", "/road.png", "/terrain.jpg"};	// in /preview/
 
 
 void CGui::btnTrkCopySel(WP)  // set copy source
@@ -272,17 +267,28 @@ void CGui::btnTrackNew(WP)
 			MessageBoxStyle::IconWarning | MessageBoxStyle::Ok);
 		return;  }
 
+	//  paths
 	sc->baseTrk = gcom->sListTrack;
-	String st = gcom->PathListTrk(),  t = gcom->pathTrk[1] + name,
-		sto = st + "/objects", stp = st + "/preview",  // from
-		to = t + "/objects",   tp = t + "/preview";  // to,new
+	String from = gcom->PathListTrk(),  to = gcom->pathTrk[1] + name;
 
-	//  Copy
-	CreateDir(t);  CreateDir(to);  CreateDir(tp);
-	int i;
-	for (i=0; i < cnTrkFm; ++i)  Copy(st + csTrkFm[i], t + csTrkFm[i]);  // todo: other roads too?
-	for (i=0; i < cnTrkFo; ++i)  Copy(sto + csTrkFo[i], to + csTrkFo[i]);
-	for (i=1; i < cnTrkFp; ++i)  Copy(stp + csTrkFp[i], tp + csTrkFp[i]);  // 1-not view.jpg
+	//  dirs
+	const String subdirs[3] = {"", "/objects", "/preview"};
+	CreateDir(to);  CreateDir(to +subdirs[1]);  CreateDir(to +subdirs[2]);
+
+	//  list all, copy  ----
+	// LogO("NEW all, copy  ----");
+	for (auto& d : subdirs)
+	{
+		strlist files;
+		PATHS::DirList(from + d, files);
+		
+		for (auto& f : files)
+		if (f.find(".") != string::npos)  // files only, with .
+		{
+			// LogO(d+"/"+f);
+			Copy(from + d+"/"+f, to + d+"/"+f);
+		}
+	}
 
 	gcom->sListTrack = name;  pSet->gui.track = name;  pSet->gui.track_user = 1;
 	app->UpdWndTitle();
@@ -314,6 +320,7 @@ void CGui::btnTrackRename(WP)
 }
 
 ///  Delete
+//-----------------------------------------------------------------------------------------------------------
 void CGui::btnTrackDel(WP)
 {
 	if (!gcom->bListTrackU && !pSet->allow_save)
@@ -329,14 +336,26 @@ void CGui::msgTrackDel(Message* sender, MessageBoxStyle result)
 {
 	if (result != MessageBoxStyle::Yes)
 		return;
-	String t = gcom->PathListTrk(),
-		to = t + "/objects", tp = t + "/preview";
-	int i;
-	for (i=0; i < cnTrkFo; ++i)  Delete(to + csTrkFo[i]);  // todo: other roads! list whole dir..
-	for (i=0; i < cnTrkFp; ++i)  Delete(tp + csTrkFp[i]);
-	for (i=0; i < cnTrkFm; ++i)  Delete(t + csTrkFm[i]);
-	Delete(t + "/heightmap-new.f32");
-	DeleteDir(to);  DeleteDir(tp);  DeleteDir(t);
+
+	//  dirs
+	const String subdirs[3] = {"", "/objects", "/preview"};
+	string to = gcom->PathListTrk();
+
+	//  list all, delete  ----
+	// LogO("DEL all  ----");
+	for (auto& d : subdirs)
+	{
+		strlist files;
+		PATHS::DirList(to + d, files);
+		
+		for (auto& f : files)
+		if (f.find(".") != string::npos)  // files only, with .
+		{
+			// LogO(d+"/"+f);
+			Delete(to + d+"/"+f);
+		}
+	}
+	DeleteDir(to +subdirs[1]);  DeleteDir(to +subdirs[2]);  DeleteDir(to);
 
 	String st = pSet->gui.track;
 	gcom->FillTrackLists();
