@@ -25,7 +25,23 @@ Just started video tutorial for latest version 3.0:
 10:09 **Focus** \  
 11:06 Preview camera F7  
 
+[Chapter 2: Terrain](https://youtu.be/D4_I-C3DLxo)
+
+0:08 **New/duplicate** track, backup  
+1:28 Removing not needed elements  
+2:45 Terrain size and **heightmap** setup info  
+3:54 New heightmap size, flat  
+4:23 Change triangle size  
+4:46 Approaches for making tracks  
+5:27 Terrain **Generator**  
+6:58 **Brushes** presests  
+8:07 Terrain **edit** tools: Deform, Smooth, Filter, Height  
+10:50 longer editing terrain with various brushes  
+15:28 end, look around  
+
 ToDo ...
+
+Chapter 3: Terrain Layers
 
 
 ----
