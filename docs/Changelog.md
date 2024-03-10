@@ -11,7 +11,8 @@ This section lists changes not yet released, but committed to new repositories s
   - Changing object material, sets defined in `presets.xml`
   - Toggle static for dynamic object, no `*_static.mesh`
   - Fix alt-J crash, shortcuts
-  - Export track to Rigs of Rods possible, using SR 2.x meshes
+  - Fix New track. Was having garbage for horizons, no other roads. Delete track too.
+  - Export track to Rigs of Rods added, using SR 2.x meshes
     - New tabs, settings, converters, [info here](EditorExportRoR.md).
 - Updated docs
 
