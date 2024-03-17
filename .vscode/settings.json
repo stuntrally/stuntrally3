@@ -1,6 +1,4 @@
 {
-	"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    
     "files.associations": {
         "*.any": "csharp",
         "*.glsl": "c",
@@ -26,18 +24,10 @@
         "**/*.cache": true,
         "**/*.zip": true,
     },
-    "C_Cpp.autocomplete": "Disabled",
-    "C_Cpp.formatting": "Disabled",
-    "C_Cpp.errorSquiggles": "Disabled",
-    "C_Cpp.intelliSenseEngine": "Disabled",
-    // "cmake.configureArgs": [
-    //   "-DBUILD_EDITOR=ON",
-    // ],
     // "clangd.arguments": [
     //   "--checks='-*'",
     //   "--header-insertion=iwyu",
     // ],
-    "python.pythonPath": "/usr/bin/python3",
     "editor.suggest.localityBonus": true,
     "editor.cursorWidth": 2,
     //  default works

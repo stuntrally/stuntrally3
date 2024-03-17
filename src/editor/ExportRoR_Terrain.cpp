@@ -32,7 +32,8 @@ void ExportRoR::ExportTerrain()  // whole, full
 
 	//  ⛰️ Heightmap convert to .raw
 	//------------------------------------------------------------------------------------------------------------------------
-	const auto& td = sc->tds[0];  // 1st ter only
+	const int t0 = 0;
+	const auto& td = sc->tds[t0];  // 1st ter only
 
 	const int size  = td.iVertsX;  // org  e.g. 1024
 	const int size1 = size + 1;  // e.g. 1025
@@ -117,16 +118,16 @@ void ExportRoR::ExportTerrain()  // whole, full
 	//  🏔️ Blendmap  save as .png  also  -surfaces.png
 	//------------------------------------------------------------------------------------------------------------------------
 	int bleSize = 1024;
-	if (scn->ters[0]->blendmap.texture)
+	if (scn->ters[t0]->blendmap.texture)
 	{
 		auto bleFile = path + name + "-blendmap.png";
-		// scn->ters[0]->blendmap.texture->writeContentsToFile(ble, 0, 0);
+		// scn->ters[t0]->blendmap.texture->writeContentsToFile(ble, 0, 0);
 		auto surfFile = path + name + "-surfaces.png";
 		
         Image2 img, imb, imr, isu;
 		try
 		{	//  blendmap rtt
-	        img.convertFromTexture(scn->ters[0]->blendmap.texture, 0, 0);
+	        img.convertFromTexture(scn->ters[t0]->blendmap.texture, 0, 0);
 			const int xx = img.getWidth(), yy = img.getHeight();
 			auto pb = img.getPixelFormat();
 			imb.createEmptyImage(xx, yy, 1, TextureTypes::Type2D, pb);

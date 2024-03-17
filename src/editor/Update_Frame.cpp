@@ -18,9 +18,9 @@
 using namespace Ogre;
 
 
-///  🖱️ Mouse
+///  🖱️ Camera update, Mouse
 //---------------------------------------------------------------------------------------------------------------
-void App::processMouse(double fDT)
+void App::processCamera(double fDT)
 {
 	//  static vars are smoothed
 	static Radian sYaw(0), sPth(0);
@@ -356,7 +356,7 @@ void App::update( float dt )
 		imgCur->setVisible(bGuiFocus || !bMoveCam);
 	}
 
-	processMouse(mDTime);
+	processCamera(mDTime);
 
 	
 	///  gui

@@ -451,7 +451,7 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 				float3 n1 = normalize( midf3_c( n6.x * BUMP,  n6.y * BUMP,  n6.z ));
 				float3 n2 = normalize( midf3_c( n6.x * BUMP2, n6.y * BUMP2, n6.z ));
 
-			@property( river123 )  // water fall getting white meh
+			@property( river123 )  // todo: water fall getting white meh
 				// float fall = abs(pixelData.geomNormal.y) * 0.5;
 				float fall = abs(inPs.normal.y) * 0.1;  // todo: world space normal
 				pixelData.diffuse.xyz = lerp( pixelData.diffuse.xyz, midf3_c(0.8, 0.8, 0.8), fall );

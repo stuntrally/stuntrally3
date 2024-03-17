@@ -75,7 +75,7 @@ public:
 	void UpdateKey(float dt);
 	void UpdateEnd(float dt);
 
-	void processMouse(double dt), UpdKeyBar(Ogre::Real dt);
+	void processCamera(double dt), UpdKeyBar(Ogre::Real dt);
 	Ogre::Vector3 vNew{0,0,0};
 	
 	//  🛠️ Edit all  :
