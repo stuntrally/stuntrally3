@@ -7463,6 +7463,48 @@
 			}
 		},
 
+		"OX_0" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"paint" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.4, 0.1],
+				"background" : [1, 1, 1, 1],
+				"sampler" : "Sampler_10"
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "OX_emissive.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 1,
+				"texture" : "OX_rough.png",
+				"sampler" : "Sampler_10"
+			},
+			"user_values" :
+			{
+				"0" : [0, 0.5, 1, 0.2],
+				"1" : [0, 1, 0, 0.5],
+				"2" : [1, 0.5, 0, 0.7]
+			}
+		},
+		
 		"O_0" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -8101,9 +8143,7 @@
 			"diffuse" :
 			{
 				"value" : [1, 1, 1],
-				"background" : [1, 1, 1, 1],
-				"texture" : "white.png",
-				"sampler" : "Sampler_10"
+				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
@@ -8135,10 +8175,8 @@
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
-				"value" : [0.05, 0.06, 0.07],
-				"background" : [1, 1, 1, 1],
-				"texture" : "white.png",
-				"sampler" : "Sampler_10"
+				"value" : [0.12, 0.26, 0.27],
+				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
@@ -8146,13 +8184,45 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.41, 0.52, 0.524],
+				"value" : [0.941, 0.952, 0.9524],
 				"mode" : "coloured"
 			},
 			"roughness" :
 			{
-				"value" : 0.25
-			}
+				"value" : 0.15
+			},
+			"detail_diffuse0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [8, 8],
+                "value" : 0.99,
+                "texture" : "metal_08.jpg",
+                "sampler" : "Sampler_10"
+			},
+            "detail_normal0" :
+            {
+                "mode" : "Multiply",
+                "scale" : [8, 8],
+                "value" : 0.99,
+                "texture" : "metal_08_norm.jpg",
+                "sampler" : "Sampler_10"
+            },
+			"detail_diffuse1" :
+            {
+                "mode" : "Multiply",
+                "scale" : [32, 32],
+                "value" : 0.99,
+                "texture" : "metal_12.jpg",
+                "sampler" : "Sampler_10"
+			},
+            "detail_normal1" :
+            {
+                "mode" : "Multiply",
+                "scale" : [32, 32],
+                "value" : 0.99,
+                "texture" : "metal_12_norm.jpg",
+                "sampler" : "Sampler_10"
+            }
 		},
 
 		"River_Acid_green" :
@@ -25473,7 +25543,7 @@
                 "value" : 0.5,
                 "texture" : "metal_212_wh.jpg",
                 "sampler" : "Sampler_10"
-},
+			},
             "detail_normal0" :
             {
                 "mode" : "Multiply",

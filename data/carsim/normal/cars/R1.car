@@ -13,15 +13,15 @@ yaw   = 700.0
 yaw2  = 2.0
 
 [ flares ]
-front-pos0 = 0.65,2.12,-0.21
-front-pos1 =-0.65,2.12,-0.21
+front-pos0 = 0.85,1.82,0.19
+front-pos1 =-0.85,1.82,0.19
 front-size = 1.5
 front-color = 0.97, 1, 1
 lights = 2
-brake-pos0 = 0.58,-2.05, 0.0
-brake-pos1 =-0.58,-2.05, 0.0
-brake-pos2 = 0.65,-2.02, 0.0
-brake-pos3 =-0.65,-2.02, 0.0
+brake-pos0 = 0.53,-2.23, 0.34
+brake-pos1 =-0.53,-2.23, 0.34
+brake-pos2 = 0.61,-2.21, 0.34
+brake-pos3 =-0.61,-2.21, 0.34
 brake-size = 0.46
 brake-color = 1, 0, 0
 
@@ -151,26 +151,26 @@ fuel-density = 730.0
 #  suspension
 #---------------------------
 [ suspension-front ]
-spring-constant = 102000
-bounce = 14000
-rebound = 9700
-travel = 0.35
-camber = -0.5
-caster = -0.0
-toe = -0.0
-anti-roll = 15000
-factors-file = first
+spring-constant = 25000.0
+bounce = 2100.0
+rebound = 2200.0
+travel = 2.0
+camber = -1.33
+caster = 2.02
+toe = 0.0
+anti-roll = 26000.0
+factors-file = hover
 
 [ suspension-rear ]
-spring-constant = 102000
-bounce = 14000
-rebound = 9600
-travel = 0.35
-camber = -0.5
-caster = 0.0
-toe = 0.0
-anti-roll = 7000
-factors-file = first
+spring-constant = 9000.0
+bounce = 5000.0
+rebound = 5000.0
+travel = 2.0
+camber = -0.45
+caster = 0.33
+toe = 0.2
+anti-roll = 20000.0
+factors-file = hover
 
 
 #  tires (more in .tire)
@@ -287,17 +287,17 @@ hinge = -1.1, 0, 0
 # (for car total mass and inertia) also use engine mass and position
 #---------------------------
 [ particle-00 ]  # front
-mass = 253.0
+mass = 223.0
 position =  0.7, 1.1, -0.06
 
 [ particle-01 ]
-mass = 253.0
+mass = 223.0
 position = -0.7, 1.1, -0.06
 
 [ particle-02 ]  # rear
-mass = 253.0
-position =  0.7, -1.17, -0.06
+mass = 223.0
+position =  0.7, -1.1, -0.06
 
 [ particle-03 ]
-mass = 253.0
-position = -0.7, -1.17, -0.06
+mass = 223.0
+position = -0.7, -1.1, -0.06

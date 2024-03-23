@@ -292,7 +292,7 @@ void CarModel::Create()
 	vPofs = Vector3::ZERO;
 	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    mtrId, ghost, RV_CarGlass, 0, bLogInfo);
 	
-	bool sph = vType == V_Sphere;
+	bool sphere = vType == V_Sphere, hover = vType == V_Hover;
 
 
 	//  💡 car lights  ----------------------
@@ -315,12 +315,12 @@ void CarModel::Create()
 			light->setDiffuseColour(  c * bright * contrast );
 			light->setSpecularColour( c * bright * contrast );
 
-			lightPower = sph ? 3.f : 12.f / numLights; //par  bright
+			lightPower = sphere ? 3.f : 12.f / numLights; //par  bright
 			lightPower *= Math::PI;
 			light->setPowerScale( lightPower * pSet->car_light_bright);
 
 			light->setType( 
-				sph ? Light::LT_POINT  // lol
+				sphere ? Light::LT_POINT  // lol
 				: Light::LT_SPOTLIGHT );
 			light->setDirection( bRotFix ?
 				Vector3( 0, dirY, dirZ ) :
@@ -516,6 +516,8 @@ void CarModel::Create()
 					np->attachObject(par[p][w]);
 					par[p][w]->getEmitter(0)->setEmissionRate(0.f);
 				}
+				if (hover)  continue;
+
 				//  trails
 				if (!ndWhE[w])
 				{	ndWhE[w] = ndRoot->createChildSceneNode();  ToDel(ndWhE[w]);  }
