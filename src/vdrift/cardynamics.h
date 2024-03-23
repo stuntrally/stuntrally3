@@ -187,7 +187,7 @@ public:
 	float sphereYaw = 0.f;  // 🔘 dir
 	float hov_throttle = 0.f, hov_roll = 0.f;  // 🚀 spc
 
-	void SimulateSpaceship(Dbl dt), SimulateSphere(Dbl dt);
+	void SimulateSpaceship(Dbl dt), SimulateSphere(Dbl dt), SimulateHover(Dbl dt);
 	std::string sHov;
 
 	///  -- spaceship sim params (from .car)

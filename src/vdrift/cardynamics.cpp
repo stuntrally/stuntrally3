@@ -1,6 +1,7 @@
 #ifndef SR_EDITOR
 #include "pch.h"
 #include "par.h"
+#include "cardefs.h"
 #include "cardynamics.h"
 #include "tobullet.h"
 #include "Def_Str.h"
@@ -85,7 +86,8 @@ void CARDYNAMICS::SetClutch(float value)
 
 float CARDYNAMICS::GetThrottle() const
 {
-	if (vtype == V_Spaceship)  return hov_throttle;  //
+	if (vtype == V_Spaceship || vtype == V_Hover)
+		return hov_throttle;  //
 	return engine.GetThrottle();
 }
 

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "par.h"
 #include "dbl.h"
+#include "cardefs.h"
 #include "Def_Str.h"
 #include "mathvector.h"
 #include "game.h"
@@ -177,6 +178,8 @@ void CarModel::LoadConfig(const string & pathCar)
 		vType = V_Spaceship;
 	else if (drive == "sphere")
 		vType = V_Sphere;
+	else if (drive == "craft")
+		vType = V_Hover;
 
 
 	//  wheel count

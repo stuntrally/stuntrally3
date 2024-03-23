@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "par.h"
+#include "cardefs.h"
 #include "Def_Str.h"
 #include "CScene.h"
 #include "paths.h"

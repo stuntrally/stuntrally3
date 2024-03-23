@@ -1,6 +1,7 @@
 #ifndef SR_EDITOR
 #include "pch.h"
 #include "par.h"
+#include "cardefs.h"
 #include "cardynamics.h"
 #include "collision_world.h"
 #include "settings.h"
@@ -358,6 +359,7 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 
 
 	bool car = vtype == V_Car;
+	bool hover = vtype == V_Hover;
 	if (car)
 	{
 		UpdateWheelVelocity();
@@ -471,6 +473,10 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 	///***  --------------------------------------------------
 	
 	
+	///  🚤 Hovercraft
+	if (vtype == V_Hover)
+		SimulateHover(dt);
+	else
 	///  🚀 Spaceship
 	if (vtype == V_Spaceship)
 		SimulateSpaceship(dt);
@@ -481,8 +487,8 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 	
 
 	int i;
-	Dbl normal_force[MAX_WHEELS];
-	if (car)
+		Dbl normal_force[MAX_WHEELS];
+	if (car || hover)
 	{
 		for (i = 0; i < numWheels; ++i)
 		{
@@ -491,7 +497,8 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 			if (normal_force[i] < 0) normal_force[i] = 0;
 
 			MATHVECTOR<Dbl,3> tire_friction = ApplyTireForce(i, normal_force[i], wheel_orientation[i]);
-			ApplyWheelTorque(dt, drive_torque[i], i, tire_friction, wheel_orientation[i]);
+			if (car)
+				ApplyWheelTorque(dt, drive_torque[i], i, tire_friction, wheel_orientation[i]);
 		}
 	}
 
@@ -500,7 +507,7 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 	//chassis->integrateVelocities(dt);
 
 	// update wheel state
-	if (car)
+	if (car || hover)
 	{
 		for (i = 0; i < numWheels; ++i)
 		{
@@ -641,7 +648,67 @@ void CARDYNAMICS::UpdateMass()
 }
 
 
-///  🚀 Spaceship hover
+///  🚤 Hovercraft
+///..........................................................................................................
+void CARDYNAMICS::SimulateHover(Dbl dt)
+{
+	float dmg = fDamage > 50.f ? 1.f - (fDamage-50.f)*0.02f : 1.f;
+	float dmgE = 1.f - 0.2 * dmg;
+	bool pipe =0;
+
+	//  vel
+	MATHVECTOR<Dbl,3> sv = -GetVelocity();
+	(-Orientation()).RotateVector(sv);
+	MATHVECTOR<Dbl,3> av = GetAngularVelocity();
+
+	//  roll /  vis only
+	hov_roll = sv[1] * hov.roll;  // vis degrees
+	hov_roll = std::max(-90.f, std::min(90.f, hov_roll));
+
+	MATHVECTOR<Dbl,3> dn = GetDownVector();
+	Dbl ups = dn[2] < 0.0 ? 1.0 : -1.0;
+
+	//  steer  < >
+	bool rear = sv[0] > 0.0;
+	Dbl rr = std::max(-1.0, std::min(1.0, -sv[0] * 0.4));  //par
+		//sHov += " rr "+fToStr(rr,2,5)+"\n";
+
+	MATHVECTOR<Dbl,3> t(0,0, -1000.0 * rr * ups * hov.steerForce * steerValue * dmgE);
+	Orientation().RotateVector(t);
+	Dbl damp = pipe ? hov.steerDamp : hov.steerDamp;  //damp *= 1 - fabs(steerValue);
+	ApplyTorque(t - av * damp * 1000.0);  // rotation damping
+
+
+	//  handbrake damping  v
+	btVector3 v = chassis->getLinearVelocity();
+	Dbl h = brake[2].GetHandbrakeFactor();
+	
+	//  engine  ^
+	float vel = sv.Magnitude(),  //  decrease power with velocity
+		velMul = 1.f - std::min(1.f, hov.engineVelDec * vel),
+		velMulR = 1.f - std::min(1.f, hov.engineVelDecR * vel);
+		//sHov += " m  "+fToStr(velMul,2,5)+"\n";
+
+	Dbl brk = brake[0].GetBrakeFactor() * (1.0 - h);
+	float f = hov.engineForce * velMul * hov_throttle
+			- hov.brakeForce * (rear ? velMulR : 1.f) * brk;
+
+	MATHVECTOR<Dbl,3> vf(body.GetMass() * f * dmgE * 1.03, 0, 0);  //par fix org
+	Orientation().RotateVector(vf);
+	ApplyForce(vf);
+
+
+	//  side, vel damping  --
+	sv[0] *= hov.dampAirRes;
+	sv[1] *= hov.dampSide;
+	sv[2] *= 0;  //! par  sv[2] > 0.0 ? hov.dampUp : hov.dampDn;
+	Orientation().RotateVector(sv);
+	Dbl ss = pipe ? hov.dampPmul : 1;
+	ApplyForce(sv * ss);
+}
+
+
+///  🚀 Spaceship hovering
 ///..........................................................................................................
 void CARDYNAMICS::SimulateSpaceship(Dbl dt)
 {

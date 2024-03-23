@@ -5,9 +5,9 @@
 	<color type="Slow"      color="#B0B080" />
 	<color type="Terrain"   color="#90F090" />
 	<color type="Extreme"   color="#C898E8" />
-	<color type="Other"     color="#3080E0" />
+	<color type="Other"     color="#D0E0F0" />
 	<color type="Spaceship" color="#50A0F0" />
-	<color type="Hover"     color="#70FF70" />
+	<color type="Hover"     color="#FFC030" />
 
 	<!-- global multipliers for vehicle factors, magic - see App::GetRacePos -->
 	<global easy="0.94" norm="0.95" magic="0.010"/>
@@ -41,13 +41,15 @@
  
 <c id="SX"  o="4" m="Jaguar"      v="2.0" r="5" w="3" d="3" s="8.7" y="2017" t="Asphalt"   b="1" j="0" l="0" p="0"  e="1.02" n="1.05"  a="Socksthecat" />
 <c id="Y7"  o="4" m="Leopard"     v="2.6" r="4" w="3" d="4" s="8.8" y="2013" t="Asphalt"   b="2" j="1" l="1" p="0"  e="1.06" n="1.05"  a="hasapeta" />
- 
+
 <c id="U6"  o="6" m="Beetle"      v="2.7" r="3" w="4" d="5" s="9.0" y="2412" t="Extreme"   b="0" j="0" l="0" p="0"  e="1.09" n="1.16"  a="gakpoenya, carlospanganiban, CryHam" />
  
 <c id="V2"  o="0" m="Swan"        v="2.4" r="3" w="4" d="2" s="9.4" y="2516" t="Spaceship" b="0" j="0" l="4" p="6"  e="1.00" n="1.13"  a="sypro" />
 <c id="V1"  o="0" m="Duck"        v="2.4" r="2" w="3" d="3" s="9.6" y="2523" t="Spaceship" b="0" j="0" l="4" p="6"  e="1.04" n="1.16"  a="benja" />
 <c id="V3"  o="0" m="Hawk"        v="2.4" r="3" w="4" d="3" s="9.8" y="2548" t="Spaceship" b="0" j="0" l="4" p="6"  e="1.10" n="1.20"  a="jumahsafarty" />
- 
+
+<c id="R1"  o="4" m="Eagle"       v="3.1" r="4" w="4" d="2" s="10.1" y="2135" t="Hover"    b="0" j="0" l="0" p="0"  e="1.10" n="1.20"  a="Unity Fan youtube channel" />
+
 <c id="O"   o="1" m="Rabbit"      v="2.4" r="4" w="2" d="3" s="10.2" y="2785" t="Other"    b="0" j="0" l="4" p="4"  e="1.10" n="1.17"  a="CryHam" />
 
 	<!-- e and n - are the vehicle time multipliers for simultation modes - easy and normal

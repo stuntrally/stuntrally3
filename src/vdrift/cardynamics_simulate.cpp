@@ -1,6 +1,7 @@
 #ifndef SR_EDITOR
 #include "pch.h"
 #include "par.h"
+#include "cardefs.h"
 #include "cardynamics.h"
 #include "tobullet.h"
 #include "Def_Str.h"
@@ -188,7 +189,7 @@ MATHVECTOR<Dbl,3> CARDYNAMICS::ApplyTireForce(int i, const Dbl normal_force, con
 	Dbl friction_coeff = surface.friction * wheel.GetFriction();
 	//Dbl roll_friction_coeff = surface.rollResistanceCoefficient;
 	MATHVECTOR<Dbl,3> friction_force(0);
-	if (friction_coeff > 0)
+	if (friction_coeff > 0  && vtype != V_Hover)  //!
 		friction_force = tire->GetForce(
 			normal_force /* wheel.GetFriction()*/, friction_coeff, //roll_friction_coeff,
 			hub_velocity, patch_speed, camber_rad, &wheel.slips);

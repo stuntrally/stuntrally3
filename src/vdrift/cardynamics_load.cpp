@@ -1,6 +1,7 @@
 #ifndef SR_EDITOR
 #include "pch.h"
 #include "par.h"
+#include "cardefs.h"
 #include "cardynamics.h"
 #include "collision_world.h"
 #include "game.h"  // tire params map
@@ -230,6 +231,8 @@ bool CARDYNAMICS::Load(GAME* game, CONFIGFILE& c)
 	{	vtype = V_Spaceship;  drivetype = "AWD";  }
 	else if (drivetype == "sphere")
 	{	vtype = V_Sphere;  drivetype = "AWD";  }
+	else if (drivetype == "craft")
+	{	vtype = V_Hover;  drivetype = "AWD";  }
 
 	SetDrive(drivetype);
 

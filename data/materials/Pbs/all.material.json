@@ -8091,6 +8091,70 @@
 			}
 		},
 
+		"R1_0" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"paint" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "white.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.02, 0.06, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : [1, 1, 1],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.35
+			},
+			"user_values" :
+			{
+				"0" : [0, 0.5, 1, 0.2],
+				"1" : [0, 1, 0, 0.5],
+				"2" : [1, 0.5, 0, 0.7]
+			}
+		},
+
+		"R1_interior" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.05, 0.06, 0.07],
+				"background" : [1, 1, 1, 1],
+				"texture" : "white.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.51, 0.52, 0.53]
+			},
+			"fresnel" :
+			{
+				"value" : [0.41, 0.52, 0.524],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.25
+			}
+		},
+
 		"River_Acid_green" :
 		{
 			"macroblock" : "Macroblock_2",
@@ -25462,7 +25526,7 @@
                 "value" : 0.5,
                 "texture" : "metal_212_wh.jpg",
                 "sampler" : "Sampler_10"
-},
+			},
             "detail_normal0" :
             {
                 "mode" : "Multiply",
@@ -48022,6 +48086,215 @@
 			}
 		},
 		
+		"BanyanTreeLeaves_1" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [1.1, 1.1, 1.1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "twig21g1.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : [0, 0, 0],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"BanyanTreeLeaves_2" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [1.1, 1.1, 1.1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "twig21g1.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : [0, 0, 0],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"BanyanTreeBark" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "trunk2m.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : 0,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"j1" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [1.1, 1.1, 1.1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "twig21g1.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : [0, 0, 0],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"j2" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "trunk2m.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : 0,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+
+		"jungle03leaves" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [1.1, 1.1, 1.1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "twig21g1.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : [0, 0, 0],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"jungle03trunk" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "trunk2m.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : 0,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+
 		"tree.09.moss.mat/ALPHA/TEX/tree.09.png/VertCol/TWOSIDE" :
 		{
 			"macroblock" : "Macroblock_2",

@@ -13,7 +13,10 @@ const int CarPosCnt = 8;  // size of poses queue
 
 enum VehicleType
 {
-	V_Car, V_Spaceship, V_Sphere
+	V_Car,  // 2..8 wheeled
+	V_Spaceship,  // hovering
+	V_Sphere,  // rolling, bouncy-
+	V_Hover  // racing hovercraft
 };
 
 namespace SURFACE  {
