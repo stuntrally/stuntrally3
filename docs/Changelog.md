@@ -3,6 +3,8 @@
 This section lists changes not yet released, but committed to new repositories stuntrally3 and tracks3.  
 
 
+- Game
+  - 1 New, vehicle type: Hovering car, [video](https://www.youtube.com/watch?v=9pE8JPV2M8w)
 - Tracks
   - 1 New
   - Replaced all old 4k skies with new 8k ones on all tracks
@@ -31,7 +33,7 @@ This section lists changes not yet released, but committed to new repositories s
     - Color changing **paints**, 3 colors (on Gui) at once depending on view angle
     - New paints - Big set, over **450** total
     - [Materials](Materials.md) in new .json format with more posibilities e.g. detail maps
-    - New syntax and new (more complicated) **HLMS** shaders, comparison and details in [Developing](Developing.md) file
+    - New syntax and new (more complicated) **HLMS** shaders, comparison and details in [Developing](Developing.md)
   - Better glass pipes - sorted, no random blinking
   - Vehicle front **lights** - new tab Lights in Graphics options, toggle key, WIP grass is not lit
 - Game
@@ -45,7 +47,8 @@ This section lists changes not yet released, but committed to new repositories s
   - Game window title showing mode and players count, changing color
   - More info on Fps bar (F11), colors from values (orange and red are very high), info on Gui
   - Settings for using cache and shaders debug, mouse capture and ogre dialog show.
-- New **Material Editor** - Alt-F both in game and editor. Can save json, needs adjusting after, [info](Materials.md)
+- New **Material Editor**
+  - Alt-F both in game and editor. Can save json, needs adjusting after, [info](Materials.md)
 - Moved [**translations**](Localization.md) to [Weblate]((https://hosted.weblate.org/projects/stunt-rally-3/stunt-rally-3/))
 - Editor
   - Many **terrains** - new Gui buttons: < Previous, > Next, + Add, X Delete, top right (same for Roads)

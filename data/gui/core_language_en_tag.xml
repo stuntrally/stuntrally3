@@ -976,7 +976,7 @@
 	<Tag name="AndUsing">and using</Tag>
 	<Tag name="ProjectPage">project&apos;s page:</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
-	<Tag name="GameVersion">3.0.2</Tag>
+	<Tag name="GameVersion">3.0.5</Tag>
 
 	
 	
@@ -1641,6 +1641,8 @@
 	<Tag name="CarDesc_V3">A big and heavy spaceship. Very good acceleration at start and strong braking. But doesn't reach high speeds.</Tag>
 	<Tag name="CarDesc_O">An experimental, perfectly stabilized, rotating sphere. Uses advanced spacecraft propulsion to easily move in any direction. Very fast but very bouncy.</Tag>
 	<Tag name="CarDesc_Pipes">NOTE: Currently impossible to use in pipes.</Tag>
+
+	<Tag name="CarDesc_R1">Latest antigravity stabilized hovering car. Fast and rather easy to drive. Suited for all tracks and stunts.</Tag>
 
 	
 	<!--  TIP  Hints title+text  (in How To Play)  -->

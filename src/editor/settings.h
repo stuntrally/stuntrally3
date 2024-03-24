@@ -3,7 +3,7 @@
 #include "settings_com.h"
 
 
-#define SET_VER  3021  // 3.0.2
+#define SET_VER  3051  // 3.0.5
 
 
 class SETTINGS : public SETcom
