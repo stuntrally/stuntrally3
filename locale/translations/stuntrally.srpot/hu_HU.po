@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-09 18:34+0100\n"
-"PO-Revision-Date: 2024-02-20 13:02+0000\n"
+"PO-Revision-Date: 2024-03-25 16:01+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/hu/>\n"
@@ -1741,6 +1741,8 @@ msgid ""
 "Vehicle speed rating, more means faster car. Warning, on gravel too fast "
 "cars won't be faster because they don't have enough grip."
 msgstr ""
+"A jármű sebességi besorolása, a több gyorsabb autót jelent. Figyelem, murván "
+"a túl gyors autók nem lesznek gyorsabbak, mert nincs elég tapadásuk."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:748 ..SingleRace.Vehicle.Text :752
@@ -1749,12 +1751,14 @@ msgid ""
 "Vehicle type, primary destination. Some can still be used on gravel even if "
 "not meant for it."
 msgstr ""
+"Járműtípus, elsődleges cél. Néhány használható murván is, bár nem erre "
+"szánták őket."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:760 ..SingleRace.Vehicle.Text :765
 msgctxt "TipCarYear"
 msgid "Year when this vehicle's production started."
-msgstr ""
+msgstr "A jármű gyártása kezdetének éve."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:779 ..SingleRace.Vehicle.Text :785
@@ -1763,12 +1767,14 @@ msgid ""
 "Vehicle handling difficulty. Higher values require more skill driving this "
 "vehicle well on tracks, and bring more trouble."
 msgstr ""
+"Jármű kezelhetőségi nehézsége. A magasabb érték azt jelenti, hogy a jármű "
+"vezetése a pályán nagyobb ügyességet igényel."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:817 ..SingleRace.Vehicle.Text :823
 msgctxt "TipCarWidth"
 msgid "Year when this vehicle's production started."
-msgstr ""
+msgstr "A jármű gyártása kezdetének éve."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:476 ..SingleRace.Track.Image
@@ -1781,6 +1787,9 @@ msgid ""
 "to change vehicle. Many vehicles can't handle certain track properties. "
 "Gravel type cars handle all tracks well."
 msgstr ""
+"A vezethetőség azt mondja meg, hogy a jármű milyen jól vezethető a pályán. "
+"Ha vezethetetlen, akkor jobb járművet váltani. Számos jármű nem tud egyes "
+"pályatulajdonságokat kezelni. A murva típusú autók minden pályát jól vesznek."
 
 #. TIP  Vehicle stats 
 #: data/gui/Editor_Track.layout:229 ..Track.Track.Image :331..Track.Track.Text
@@ -1792,6 +1801,8 @@ msgid ""
 "Quality rating. Higher values mean: well made, playable, good looking and "
 "interesting design."
 msgstr ""
+"Minőségi besorolás. A magasabb értékek ezt jelentik: jól legyártott, "
+"vezethető, jól kinéző és érdekes dizájnú."
 
 #. Championship  end 
 #: data/gui/Game_Utils.layout:63 ..Championship.Text :132..Challenge.Text
@@ -1828,6 +1839,9 @@ msgid ""
 "(depending on your time) is needed to pass to next stage. Car changing is "
 "possible."
 msgstr ""
+"Gyakorlás/bajnokság módban egy pályasorozatot kell végigvezetni. Egy (időn "
+"alapuló) minimális pontszám szükséges a következő pályához lépéshez. Az "
+"autóváltás lehetséges."
 
 #. Championship  info text 
 #: src/game/ChampChall.cpp:324
@@ -1836,18 +1850,23 @@ msgid ""
 "In challenge mode the game has setup, most settings can't be changed. Time "
 "or position is needed. If you pass you receive bronze, silver or gold prize."
 msgstr ""
+"Bajnokság módban a játék kezdeti beállítása után a legtöbb beállítás nem "
+"változtatható meg. Idő vagy pozíció szükséges. Ha továbbjutsz, akkor bronz, "
+"ezüst vagy arany díjat kapsz."
 
 #. Championship  info text 
 #: src/game/ChampChall.cpp:326
 msgctxt "ChampInfo2"
 msgid "Championships are usually long, have many tracks, but are easy to pass."
 msgstr ""
+"A bajnokságok általában hosszúk, számos pályából állnak, de a továbbjutás "
+"könnyű."
 
 #. Championship  info text 
 #: src/game/ChampChall.cpp:324
 msgctxt "ChallInfo2"
 msgid "Challenges are short but usually difficult to pass."
-msgstr ""
+msgstr "A kihívások rövidek, de a teljesítésük nehéz."
 
 #. Championship  info text 
 #: src/game/ChampChall.cpp:325
@@ -1856,6 +1875,8 @@ msgid ""
 "Tutorials have just a few tracks. They are easy to pass and show various "
 "track elements."
 msgstr ""
+"A gyakorlások csak néhány pályából állnak. Könnyen teljesíthetők, és számos "
+"pályaelemet mutatnak be."
 
 #. Hint  welcome screen 
 #: data/gui/Game_Replay.layout:240 ..Window src/game/Gui_Events.cpp:478
