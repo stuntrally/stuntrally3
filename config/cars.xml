@@ -1,13 +1,14 @@
 <cars>
 	<color type="Asphalt"   color="#FF9090" />
 	<color type="Racing"    color="#E0E000" />
-	<color type="Gravel"    color="#80F8FF" />
+	<color type="Gravel"    color="#70F8FF" />
 	<color type="Slow"      color="#B0B080" />
 	<color type="Terrain"   color="#90F090" />
 	<color type="Extreme"   color="#C898E8" />
-	<color type="Other"     color="#D0E0F0" />
+	<color type="Other"     color="#E0F8FF" />
 	<color type="Spaceship" color="#50A0F0" />
 	<color type="Hover"     color="#FFC030" />
+	<color type="Drone"     color="#F0F080" />
 
 	<!-- global multipliers for vehicle factors, magic - see App::GetRacePos -->
 	<global easy="0.94" norm="0.95" magic="0.010"/>
@@ -48,9 +49,12 @@
 <c id="V1"  o="0" m="Duck"        v="2.4" r="2" w="3" d="3" s="9.6" y="2523" t="Spaceship" b="0" j="0" l="4" p="6"  e="1.04" n="1.16"  a="benja" />
 <c id="V3"  o="0" m="Hawk"        v="2.4" r="3" w="4" d="3" s="9.8" y="2548" t="Spaceship" b="0" j="0" l="4" p="6"  e="1.10" n="1.20"  a="jumahsafarty" />
 
-<c id="R1"  o="4" m="Eagle"       v="3.1" r="4" w="4" d="2" s="10.1" y="2135" t="Hover"    b="0" j="0" l="0" p="0"  e="1.10" n="1.20"  a="Unity Fan youtube channel" />
-
 <c id="O"   o="1" m="Rabbit"      v="2.4" r="4" w="2" d="3" s="10.2" y="2785" t="Other"    b="0" j="0" l="4" p="4"  e="1.10" n="1.17"  a="CryHam" />
+
+<c id="R1"  o="4" m="Eagle"       v="3.1" r="4" w="4" d="2" s="11.5" y="2135" t="Hover"    b="0" j="0" l="0" p="0"  e="1.10" n="1.20"  a="Unity Fan youtube channel" />
+
+<c id="Q1"  o="1" m="Owl"         v="3.1" r="4" w="2" d="3" s="12.2" y="3125" t="Drone"    b="0" j="0" l="1" p="1"  e="1.10" n="1.17"  a="Multipainkiller Studio" />
+<c id="Q3"  o="1" m="Sparrow"     v="3.1" r="4" w="2" d="3" s="12.5" y="3231" t="Drone"    b="0" j="0" l="1" p="1"  e="1.10" n="1.17"  a="3dsofsan" />
 
 	<!-- e and n - are the vehicle time multipliers for simultation modes - easy and normal
 		Less means bigger track time (more points, easier to qualify).

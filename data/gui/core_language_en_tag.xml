@@ -184,6 +184,9 @@
 	<Tag name="Duck">Duck</Tag>
 	<Tag name="Hawk">Hawk</Tag>
 	<Tag name="Rabbit">Rabbit</Tag>
+	<Tag name="Eagle">Eagle</Tag>
+	<Tag name="Owl">Owl</Tag>
+	<Tag name="Sparrow">Sparrow</Tag>
 
 	<!--  Vehicle  -->
 	<Tag name="Vehicle">Vehicle</Tag>
@@ -258,7 +261,8 @@
 	<Tag name="CarType_Extreme">Extreme</Tag>
 	<Tag name="CarType_Other">Other</Tag>
 	<Tag name="CarType_Hover">Hovercraft</Tag>
-	<Tag name="CarType_Spaceship">Spaceship</Tag>		
+	<Tag name="CarType_Spaceship">Spaceship</Tag>
+	<Tag name="CarType_Drone">Drone</Tag>
 
 	<!--  MsgBox  -->
 	<Tag name="MessageBox_Ok">Ok</Tag>

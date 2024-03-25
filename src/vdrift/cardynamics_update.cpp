@@ -654,28 +654,22 @@ void CARDYNAMICS::SimulateHover(Dbl dt)
 {
 	float dmg = fDamage > 50.f ? 1.f - (fDamage-50.f)*0.02f : 1.f;
 	float dmgE = 1.f - 0.2 * dmg;
-	bool pipe =0;
 
 	//  vel
 	MATHVECTOR<Dbl,3> sv = -GetVelocity();
 	(-Orientation()).RotateVector(sv);
 	MATHVECTOR<Dbl,3> av = GetAngularVelocity();
 
-	//  roll /  vis only
-	hov_roll = sv[1] * hov.roll;  // vis degrees
-	hov_roll = std::max(-90.f, std::min(90.f, hov_roll));
-
 	MATHVECTOR<Dbl,3> dn = GetDownVector();
 	Dbl ups = dn[2] < 0.0 ? 1.0 : -1.0;
 
 	//  steer  < >
 	bool rear = sv[0] > 0.0;
-	Dbl rr = std::max(-1.0, std::min(1.0, -sv[0] * 0.4));  //par
-		//sHov += " rr "+fToStr(rr,2,5)+"\n";
+	Dbl rr = 1.0; //std::max(-1.0, std::min(1.0, -sv[0] * 0.4));  //par
 
 	MATHVECTOR<Dbl,3> t(0,0, -1000.0 * rr * ups * hov.steerForce * steerValue * dmgE);
 	Orientation().RotateVector(t);
-	Dbl damp = pipe ? hov.steerDamp : hov.steerDamp;  //damp *= 1 - fabs(steerValue);
+	Dbl damp = hov.steerDamp;  //damp *= 1 - fabs(steerValue);
 	ApplyTorque(t - av * damp * 1000.0);  // rotation damping
 
 
@@ -693,7 +687,7 @@ void CARDYNAMICS::SimulateHover(Dbl dt)
 	float f = hov.engineForce * velMul * hov_throttle
 			- hov.brakeForce * (rear ? velMulR : 1.f) * brk;
 
-	MATHVECTOR<Dbl,3> vf(body.GetMass() * f * dmgE * 1.03, 0, 0);  //par fix org
+	MATHVECTOR<Dbl,3> vf(body.GetMass() * f * dmgE, 0, 0);  //par fix org
 	Orientation().RotateVector(vf);
 	ApplyForce(vf);
 
@@ -703,7 +697,7 @@ void CARDYNAMICS::SimulateHover(Dbl dt)
 	sv[1] *= hov.dampSide;
 	sv[2] *= 0;  //! par  sv[2] > 0.0 ? hov.dampUp : hov.dampDn;
 	Orientation().RotateVector(sv);
-	Dbl ss = pipe ? hov.dampPmul : 1;
+	Dbl ss = /*pipe ? hov.dampPmul :*/ 1;
 	ApplyForce(sv * ss);
 }
 
