@@ -92,7 +92,8 @@ void CGui::AddCarL(string name, const CarInfo* ci)
 	
 	li->addItem(clr+ name);  int l = li->getItemCount()-1;
 	li->setSubItemNameAt(1,l, clr+ TR("#{"+ ci->name +"}"));
-	li->setSubItemNameAt(2,l, gcom->getClrDiff(ci->speed *0.76f)+ fToStr(ci->speed,1,3));
+	// li->setSubItemNameAt(2,l, gcom->getClrDiff(ci->speed *0.76f)+ fToStr(ci->speed,1,3));
+	li->setSubItemNameAt(2,l, gcom->getClrVal(ci->speed *1.3f)+ fToStr(ci->speed,1,3));
 
 	li->setSubItemNameAt(3,l, gcom->getClrRating(ci->rating)+ " "+toStr(ci->rating));
 	li->setSubItemNameAt(4,l, gcom->getClrDiff(ci->diff )+ " "+toStr(ci->diff));

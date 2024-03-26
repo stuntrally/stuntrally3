@@ -1,60 +1,63 @@
 <cars>
-	<color type="Asphalt"   color="#FF9090" />
-	<color type="Racing"    color="#E0E000" />
-	<color type="Gravel"    color="#70F8FF" />
-	<color type="Slow"      color="#B0B080" />
-	<color type="Terrain"   color="#90F090" />
-	<color type="Extreme"   color="#C898E8" />
-	<color type="Other"     color="#E0F8FF" />
-	<color type="Spaceship" color="#50A0F0" />
-	<color type="Hover"     color="#FFC030" />
-	<color type="Drone"     color="#F0F080" />
+	<color type="Asphalt"    color="#FF9090" />
+	<color type="Racing"     color="#E0E000" />
+	<color type="Gravel"     color="#70F8FF" />
+	<color type="Slow"       color="#B0B080" />
+	<color type="Terrain"    color="#90F090" />
+	<color type="Extreme"    color="#C898E8" />
+	<color type="Other"      color="#E0F8FF" />
+	<color type="Spaceship"  color="#50A0F0" />
+	<color type="Hover"      color="#FFC030" />
+	<color type="Hovercraft" color="#F040B0" />
+	<color type="Drone"      color="#F0F080" />
 
 	<!-- global multipliers for vehicle factors, magic - see App::GetRacePos -->
 	<global easy="0.94" norm="0.95" magic="0.010"/>
 
 <!-- id  o wheels  m name         v created in SR version                       b bumps  j jumps  l loops  p pipes - intolerances for GetDrivability
                           r rating*  w width  d difficulty  s speed  y year  t type                                 e easy  n normal   a author  -->
-<c id="OT"  o="4" m="Turtle"      v="2.1" r="1" w="3" d="1" s="0.4" y="1965" t="Slow"      b="1" j="3" l="4" p="2"  e="0.66" n="0.67"  a="irokrhus" />
+<c id="OT"  o="4" m="Turtle"      v="2.1" r="1" w="3" d="1" s="0.4"  y="1965" t="Slow"       b="1" j="3" l="4" p="2"  e="0.66" n="0.67"  a="irokrhus" />
  
-<c id="FR4" o="4" m="Elephant"    v="2.1" r="1" w="3" d="2" s="1.8" y="1986" t="Terrain"   b="0" j="2" l="2" p="1"  e="0.86" n="0.90"  a="computergeekman" />
-<c id="HR"  o="4" m="Alligator"   v="2.1" r="1" w="3" d="2" s="2.4" y="1996" t="Terrain"   b="0" j="1" l="2" p="1"  e="0.88" n="0.93"  a="thiagohenrinrique" />
-<c id="LK4" o="4" m="Bison"       v="2.0" r="1" w="3" d="2" s="2.7" y="2008" t="Terrain"   b="0" j="1" l="1" p="1"  e="0.89" n="0.94"  a="clarabox" />
+<c id="FR4" o="4" m="Elephant"    v="2.1" r="1" w="3" d="2" s="1.8"  y="1986" t="Terrain"    b="0" j="2" l="2" p="1"  e="0.86" n="0.90"  a="computergeekman" />
+<c id="HR"  o="4" m="Alligator"   v="2.1" r="1" w="3" d="2" s="2.4"  y="1996" t="Terrain"    b="0" j="1" l="2" p="1"  e="0.88" n="0.93"  a="thiagohenrinrique" />
+<c id="LK4" o="4" m="Bison"       v="2.0" r="1" w="3" d="2" s="2.7"  y="2008" t="Terrain"    b="0" j="1" l="1" p="1"  e="0.89" n="0.94"  a="clarabox" />
  
-<c id="U8"  o="8" m="Caterpillar" v="2.7" r="2" w="4" d="4" s="3.0" y="2123" t="Slow"      b="0" j="1" l="4" p="3"  e="0.90" n="0.94"  a="stundif" />
-<c id="MO"  o="4" m="Rhino"       v="2.7" r="1" w="6" d="6" s="3.5" y="2005" t="Extreme"   b="0" j="0" l="3" p="3"  e="0.97" n="0.96"  a="aleksandr.yatsenco" />
-<c id="UV"  o="4" m="Bear"        v="2.1" r="2" w="5" d="5" s="4.0" y="2008" t="Extreme"   b="0" j="0" l="1" p="1"  e="0.90" n="1.00"  a="greyoxide" />
+<c id="U8"  o="8" m="Caterpillar" v="2.7" r="2" w="4" d="4" s="3.0"  y="2123" t="Slow"       b="0" j="1" l="4" p="3"  e="0.90" n="0.94"  a="stundif" />
+<c id="MO"  o="4" m="Rhino"       v="2.7" r="1" w="6" d="6" s="3.5"  y="2005" t="Extreme"    b="0" j="0" l="3" p="3"  e="0.97" n="0.96"  a="aleksandr.yatsenco" />
+<c id="UV"  o="4" m="Bear"        v="2.1" r="2" w="5" d="5" s="4.0"  y="2008" t="Extreme"    b="0" j="0" l="1" p="1"  e="0.90" n="1.00"  a="greyoxide" />
  
-<c id="FN"  o="4" m="Coyote"      v="2.4" r="2" w="3" d="3" s="5.5" y="2000" t="Gravel"    b="0" j="0" l="0" p="0"  e="1.00" n="1.005" a="Neubi" />
-<c id="S8"  o="4" m="Squirrel"    v="2.0" r="3" w="3" d="3" s="6.0" y="2008" t="Gravel"    b="0" j="0" l="0" p="0"  e="0.96" n="1.00"  a="lubomircenovsky" />
-<c id="ES"  o="4" m="Fox"         v="1.2" r="4" w="3" d="3" s="6.1" y="2006" t="Gravel"    b="0" j="0" l="0" p="0"  e="1.00" n="1.01"  a="VeTi" />
-<c id="HI"  o="4" m="Hyena"       v="2.7" r="5" w="3" d="3" s="6.2" y="2014" t="Gravel"    b="0" j="0" l="0" p="0"  e="0.95" n="1.01"  a="ANDREO12" />
+<c id="FN"  o="4" m="Coyote"      v="2.4" r="2" w="3" d="3" s="5.5"  y="2000" t="Gravel"     b="0" j="0" l="0" p="0"  e="1.00" n="1.005" a="Neubi" />
+<c id="S8"  o="4" m="Squirrel"    v="2.0" r="3" w="3" d="3" s="6.0"  y="2008" t="Gravel"     b="0" j="0" l="0" p="0"  e="0.96" n="1.00"  a="lubomircenovsky" />
+<c id="ES"  o="4" m="Fox"         v="1.2" r="4" w="3" d="3" s="6.1"  y="2006" t="Gravel"     b="0" j="0" l="0" p="0"  e="1.00" n="1.01"  a="VeTi" />
+<c id="HI"  o="4" m="Hyena"       v="2.7" r="5" w="3" d="3" s="6.2"  y="2014" t="Gravel"     b="0" j="0" l="0" p="0"  e="0.95" n="1.01"  a="ANDREO12" />
  
-<c id="TW"  o="4" m="Gorilla"     v="2.1" r="3" w="6" d="5" s="7.0" y="2011" t="Extreme"   b="0" j="0" l="0" p="0"  e="0.93" n="0.94"  a="irokrhus" />
-<c id="TU"  o="4" m="Lizard"      v="2.4" r="3" w="5" d="4" s="7.3" y="2012" t="Extreme"   b="0" j="0" l="0" p="0"  e="0.96" n="0.99"  a="carlospanganiban,ChrisKuhn" />
+<c id="TW"  o="4" m="Gorilla"     v="2.1" r="3" w="6" d="5" s="7.0"  y="2011" t="Extreme"    b="0" j="0" l="0" p="0"  e="0.93" n="0.94"  a="irokrhus" />
+<c id="TU"  o="4" m="Lizard"      v="2.4" r="3" w="5" d="4" s="7.3"  y="2012" t="Extreme"    b="0" j="0" l="0" p="0"  e="0.96" n="0.99"  a="carlospanganiban,ChrisKuhn" />
  
-<c id="SZ"  o="4" m="Weasel"      v="2.4" r="4" w="3" d="3" s="8.0" y="1996" t="Gravel"    b="0" j="0" l="0" p="0"  e="0.97" n="1.03"  a="cobe571" />
-<c id="XZ"  o="4" m="Wolf"        v="2.0" r="4" w="3" d="3" s="8.4" y="2007" t="Asphalt"   b="1" j="0" l="0" p="0"  e="1.02" n="1.04"  a="Neubi" />
+<c id="SZ"  o="4" m="Weasel"      v="2.4" r="4" w="3" d="3" s="8.0"  y="1996" t="Gravel"     b="0" j="0" l="0" p="0"  e="0.97" n="1.03"  a="cobe571" />
+<c id="XZ"  o="4" m="Wolf"        v="2.0" r="4" w="3" d="3" s="8.4"  y="2007" t="Asphalt"    b="1" j="0" l="0" p="0"  e="1.02" n="1.04"  a="Neubi" />
  
-<c id="3B"  o="3" m="Scorpion"    v="2.7" r="2" w="6" d="6" s="8.5" y="2773" t="Extreme"   b="0" j="1" l="2" p="4"  e="1.00" n="1.07"  a="Valery Kharitonov" />
-<c id="BE"  o="2" m="Gazelle"     v="2.7" r="3" w="1" d="3" s="8.6" y="2334" t="Gravel"    b="1" j="0" l="0" p="1"  e="0.99" n="1.03"  a="TooManyDemons" />
-<c id="BV"  o="2" m="Buffalo"     v="2.6" r="3" w="2" d="3" s="8.6" y="2381" t="Extreme"   b="0" j="0" l="0" p="1"  e="1.01" n="1.04"  a="gakpoenya" />
+<c id="3B"  o="3" m="Scorpion"    v="2.7" r="2" w="6" d="6" s="8.5"  y="2773" t="Extreme"    b="0" j="1" l="2" p="4"  e="1.00" n="1.07"  a="Valery Kharitonov" />
+<c id="BE"  o="2" m="Gazelle"     v="2.7" r="3" w="1" d="3" s="8.6"  y="2334" t="Gravel"     b="1" j="0" l="0" p="1"  e="0.99" n="1.03"  a="TooManyDemons" />
+<c id="BV"  o="2" m="Buffalo"     v="2.6" r="3" w="2" d="3" s="8.6"  y="2381" t="Extreme"    b="0" j="0" l="0" p="1"  e="1.01" n="1.04"  a="gakpoenya" />
  
-<c id="SX"  o="4" m="Jaguar"      v="2.0" r="5" w="3" d="3" s="8.7" y="2017" t="Asphalt"   b="1" j="0" l="0" p="0"  e="1.02" n="1.05"  a="Socksthecat" />
-<c id="Y7"  o="4" m="Leopard"     v="2.6" r="4" w="3" d="4" s="8.8" y="2013" t="Asphalt"   b="2" j="1" l="1" p="0"  e="1.06" n="1.05"  a="hasapeta" />
+<c id="SX"  o="4" m="Jaguar"      v="2.0" r="5" w="3" d="3" s="8.7"  y="2017" t="Asphalt"    b="1" j="0" l="0" p="0"  e="1.02" n="1.05"  a="Socksthecat" />
+<c id="Y7"  o="4" m="Leopard"     v="2.6" r="4" w="3" d="4" s="8.9"  y="2013" t="Asphalt"    b="2" j="1" l="1" p="0"  e="1.06" n="1.05"  a="hasapeta" />
+<c id="YG"  o="4" m="Puma"        v="2.6" r="4" w="3" d="4" s="8.9"  y="2012" t="Asphalt"    b="2" j="1" l="1" p="0"  e="1.06" n="1.05"  a="ollitei" />
 
-<c id="U6"  o="6" m="Beetle"      v="2.7" r="3" w="4" d="5" s="9.0" y="2412" t="Extreme"   b="0" j="0" l="0" p="0"  e="1.09" n="1.16"  a="gakpoenya, carlospanganiban, CryHam" />
+<c id="U6"  o="6" m="Beetle"      v="2.7" r="3" w="4" d="5" s="9.0"  y="2412" t="Extreme"    b="0" j="0" l="0" p="0"  e="1.09" n="1.16"  a="gakpoenya, carlospanganiban, CryHam" />
  
-<c id="V2"  o="0" m="Swan"        v="2.4" r="3" w="4" d="2" s="9.4" y="2516" t="Spaceship" b="0" j="0" l="4" p="6"  e="1.00" n="1.13"  a="sypro" />
-<c id="V1"  o="0" m="Duck"        v="2.4" r="2" w="3" d="3" s="9.6" y="2523" t="Spaceship" b="0" j="0" l="4" p="6"  e="1.04" n="1.16"  a="benja" />
-<c id="V3"  o="0" m="Hawk"        v="2.4" r="3" w="4" d="3" s="9.8" y="2548" t="Spaceship" b="0" j="0" l="4" p="6"  e="1.10" n="1.20"  a="jumahsafarty" />
+<c id="V2"  o="0" m="Swan"        v="2.4" r="3" w="4" d="2" s="9.4"  y="2516" t="Spaceship"  b="0" j="0" l="4" p="6"  e="1.00" n="1.13"  a="sypro" />
+<c id="V1"  o="0" m="Duck"        v="2.4" r="2" w="3" d="3" s="9.6"  y="2523" t="Spaceship"  b="0" j="0" l="4" p="6"  e="1.04" n="1.16"  a="benja" />
+<c id="V3"  o="0" m="Hawk"        v="2.4" r="3" w="4" d="3" s="9.8"  y="2548" t="Spaceship"  b="0" j="0" l="4" p="6"  e="1.10" n="1.20"  a="jumahsafarty" />
 
-<c id="O"   o="1" m="Rabbit"      v="2.4" r="4" w="2" d="3" s="10.2" y="2785" t="Other"    b="0" j="0" l="4" p="4"  e="1.10" n="1.17"  a="CryHam" />
+<c id="O"   o="1" m="Rabbit"      v="2.4" r="4" w="2" d="3" s="10.2" y="2785" t="Other"      b="0" j="0" l="4" p="4"  e="1.10" n="1.17"  a="CryHam" />
 
-<c id="R1"  o="4" m="Eagle"       v="3.1" r="4" w="4" d="2" s="11.5" y="2135" t="Hover"    b="0" j="0" l="0" p="0"  e="1.10" n="1.20"  a="Unity Fan youtube channel" />
+<c id="H1"  o="4" m="Python"      v="3.1" r="4" w="4" d="2" s="8.8"  y="2008" t="Hovercraft" b="0" j="0" l="0" p="0"  e="1.10" n="1.20"  a="UNDERPOLY Project" />
+<c id="R1"  o="4" m="Eagle"       v="3.1" r="4" w="4" d="2" s="9.7"  y="2135" t="Hover"      b="0" j="0" l="0" p="0"  e="1.10" n="1.20"  a="Unity Fan youtube channel" />
 
-<c id="Q1"  o="1" m="Owl"         v="3.1" r="4" w="2" d="3" s="12.2" y="3125" t="Drone"    b="0" j="0" l="1" p="1"  e="1.10" n="1.17"  a="Multipainkiller Studio" />
-<c id="Q3"  o="1" m="Sparrow"     v="3.1" r="4" w="2" d="3" s="12.5" y="3231" t="Drone"    b="0" j="0" l="1" p="1"  e="1.10" n="1.17"  a="3dsofsan" />
+<c id="Q1"  o="1" m="Owl"         v="3.1" r="4" w="2" d="3" s="10.1" y="3125" t="Drone"      b="0" j="0" l="1" p="1"  e="1.10" n="1.17"  a="Multipainkiller Studio" />
+<c id="Q3"  o="1" m="Sparrow"     v="3.1" r="4" w="2" d="3" s="12.5" y="3231" t="Drone"      b="0" j="0" l="1" p="1"  e="1.10" n="1.17"  a="3dsofsan" />
 
 	<!-- e and n - are the vehicle time multipliers for simultation modes - easy and normal
 		Less means bigger track time (more points, easier to qualify).

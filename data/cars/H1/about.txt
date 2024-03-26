@@ -1,0 +1,6 @@
+Free Generic Hovercraft
+Author: UNDERPOLY Project
+License: CC-BY 4.0
+https://sketchfab.com/3d-models/underpoly-free-generic-hovercraft-46805762e91049b6ab20a737728ede5f
+
+Import, materials, vehicle sim & settings by CryHam

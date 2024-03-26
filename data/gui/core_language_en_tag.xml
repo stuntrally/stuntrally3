@@ -184,6 +184,7 @@
 	<Tag name="Duck">Duck</Tag>
 	<Tag name="Hawk">Hawk</Tag>
 	<Tag name="Rabbit">Rabbit</Tag>
+	<Tag name="Python">Python</Tag>
 	<Tag name="Eagle">Eagle</Tag>
 	<Tag name="Owl">Owl</Tag>
 	<Tag name="Sparrow">Sparrow</Tag>
@@ -260,7 +261,8 @@
 	<Tag name="CarType_Terrain">Terrain</Tag>
 	<Tag name="CarType_Extreme">Extreme</Tag>
 	<Tag name="CarType_Other">Other</Tag>
-	<Tag name="CarType_Hover">Hovercraft</Tag>
+	<Tag name="CarType_Hover">Hover</Tag>
+	<Tag name="CarType_Hovercraft">Hovercraft</Tag>
 	<Tag name="CarType_Spaceship">Spaceship</Tag>
 	<Tag name="CarType_Drone">Drone</Tag>
 
@@ -1638,6 +1640,7 @@
 	<Tag name="CarDesc_SX">Very tuned and powerful car. Drivable on all tracks. Not best on bumps. Can spin wheels easily.</Tag>
 	<Tag name="CarDesc_PH">Another extremely powerful and fast car. Only for fast smooth tracks, due to length and low suspension.</Tag>
 	<Tag name="CarDesc_Y7">Extremely fast car. Don't press throttle for too long. Drivable only on fast smooth tracks.</Tag>
+	<Tag name="CarDesc_YG">Extremely fast car. Not long and bit more agile. Bad on bumpy terrain.</Tag>
 
 	<Tag name="CarDesc_U6">Incredibly fast, 6 wheels driving with advanced electric engine. Great for racing on all planets. Caution: it can spin wheels easily, it has 1 gear only. It also has high center of mass, meaning it will end with wheels up, after bad landings.</Tag>
 	<Tag name="CarDesc_V1">A spaceship reworked as a hovercraft. Very fast and easy to steer. Doesn't care about terrain bumps. But being small does slide sideways.</Tag>
@@ -1646,7 +1649,10 @@
 	<Tag name="CarDesc_O">An experimental, perfectly stabilized, rotating sphere. Uses advanced spacecraft propulsion to easily move in any direction. Very fast but very bouncy.</Tag>
 	<Tag name="CarDesc_Pipes">NOTE: Currently impossible to use in pipes.</Tag>
 
+	<Tag name="CarDesc_H1">Racing hovercraft, powered with fan. Medium speed and goes sideways after turning.</Tag>
 	<Tag name="CarDesc_R1">Latest antigravity stabilized hovering car. Fast and rather easy to drive. Suited for all tracks and stunts.</Tag>
+	<Tag name="CarDesc_Q1">First working prototype of antigravity hovering drone. Not very  fast. Suited for all tracks and stunts.</Tag>
+	<Tag name="CarDesc_Q3">Incredibly fast antigravity drone. Very agile, needs quick reactions. Press throttle sparingly and briefly at first.</Tag>
 
 	
 	<!--  TIP  Hints title+text  (in How To Play)  -->
