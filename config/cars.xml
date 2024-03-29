@@ -1,16 +1,20 @@
 <cars>
-	<color type="Asphalt"    color="#FF9090" />
-	<color type="Racing"     color="#E0E000" />
-	<color type="Gravel"     color="#70F8FF" />
 	<color type="Slow"       color="#B0B080" />
 	<color type="Terrain"    color="#90F090" />
-	<color type="Extreme"    color="#C898E8" />
-	<color type="Other"      color="#E0F8FF" />
-	<color type="Spaceship"  color="#50A0F0" />
-	<color type="Hover"      color="#FFC030" />
-	<color type="Hovercraft" color="#F040B0" />
-	<color type="Drone"      color="#F0F080" />
+	<color type="Racing"     color="#E0E000" /> <!-- not used-->
 
+	<color type="Gravel"     color="#70F8FF" />
+	<color type="Extreme"    color="#A898F8" />
+	<color type="Asphalt"    color="#FF9090" />
+
+	<color type="Other"      color="#E8F8FF" />
+	<color type="Spaceship"  color="#40A0FF" />
+
+	<color type="Hover"      color="#FFB010" />
+	<color type="Hovercraft" color="#F04060" />
+	<color type="Drone"      color="#F0F050" />
+
+	
 	<!-- global multipliers for vehicle factors, magic - see App::GetRacePos -->
 	<global easy="0.94" norm="0.95" magic="0.010"/>
 
