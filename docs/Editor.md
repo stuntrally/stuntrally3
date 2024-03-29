@@ -8,11 +8,13 @@ Stunt Rally 3 includes a Track Editor that can be used for creating your own tra
 It can also export track(s) to Rigs of Rods. Details [here](EditorExportRoR.md).
 
 
-#### NEW Video Tutorial
+## NEW Video Tutorial
 
 Just started video tutorial for latest version 3.0:  
 
-[Chapter 1: Intro](https://youtu.be/Ckoz-GmU3qk)  
+[Full playlist](https://www.youtube.com/playlist?list=PLU7SCFz6w40PY3L8qFNTe4DRq_W6ofs1d) on youtube.
+
+### [Chapter 1: Intro](https://youtu.be/Ckoz-GmU3qk)  
 
 0:59 Help, input  
 1:15 **Main modes** F1, Tab  
@@ -25,7 +27,7 @@ Just started video tutorial for latest version 3.0:
 10:09 **Focus** \  
 11:06 Preview camera F7  
 
-[Chapter 2: Terrain](https://youtu.be/D4_I-C3DLxo)
+### [Chapter 2: Terrain](https://youtu.be/D4_I-C3DLxo)
 
 0:08 **New/duplicate** track, backup  
 1:28 Removing not needed elements  
@@ -39,15 +41,32 @@ Just started video tutorial for latest version 3.0:
 10:50 longer editing terrain with various brushes  
 15:28 end, look around  
 
-ToDo ...
+### [Chapter 3: Terrain Layers](https://youtu.be/NO2M1kMjR3o)
 
-Chapter 3: Terrain Layers
+0:34 Layer scale  
+0:57 Noise factors (+1 +2) intro  
+2:17 Blendmap **Test** F9  
+3:39 Example (Sway) - only terrain **Angle** ranges, smooth  
+5:26 **Default** layer - 1st, for not covered ranges, sharp edge spots  
+7:30 **Noise** factors (also -1), and parameters  
+9:06 Example (Beach) - terrain **Height** ranges  
+10:31 **Only Noise** layer, for blending other layers into it  
+12:12 Example (MountCaro) - 1st terrain Height range, sand  
+14:40 Example (MountCaro) - 2nd terrain Height range, highest  
+16:23 Example (Terrains) - 5 different, other layer setups  
+17:32 **Adding** layer for high slope angles  
+19:19 Adding layer for top heights  
+
+
+Chapter 4: Terrain Horizons
+
+ToDo ...
 
 
 ----
-#### VERY OLD Video Tutorial
+### VERY OLD Video Tutorial
 
-Outdated. Moved [here](EditorOld.md).
+Outdated. For very old SR 2.x versions. Moved [here](EditorOld.md).
 
 
 ----

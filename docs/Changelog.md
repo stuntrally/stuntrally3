@@ -4,22 +4,22 @@ This section lists changes not yet released, but committed to new repositories s
 
 
 - Game
-  - WIP: 5 New vehicles, 3 new types: hover, hovercraft, drone
+  - WIP: 5 New vehicles, 3 **new types**: hover, hovercraft, drone
     - R1 Sci-Fi Hovering car, [video](https://www.youtube.com/watch?v=9pE8JPV2M8w)
     - H1 racing hovercraft with fan
     - 2 antigravity drones: Q1 slower, Q3 incredibly fast and agile
     - YG fast car
 - Tracks
   - 1 New
-  - Replaced all old 4k skies with new 8k ones on all tracks
+  - Replaced all old 4k **skies** with new 8k ones on all tracks
   - Many updated with new horizons, few with objects etc
 - Editor
   - WIP New video tutorials, on [Editor page](Editor.md)
   - Changing object material, sets defined in `presets.xml`
   - Toggle static for dynamic object, no `*_static.mesh`
   - Fix alt-J crash, shortcuts
-  - Fix New/duplicate track. Was having garbage for horizons, no other roads. Delete track too.
-  - Export track to Rigs of Rods added, using SR 2.x meshes
+  - Fix **New/duplicate** track. Was having garbage for horizons, no other roads. Delete track too.
+  - **Export** track to Rigs of Rods added, using SR 2.x meshes
     - New tabs, settings, converters, [info here](EditorExportRoR.md).
 - Updated docs
 

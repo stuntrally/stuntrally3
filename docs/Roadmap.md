@@ -14,10 +14,10 @@ SR 3.0 📽️ `editor Videos`, all new
 
 ### 3.1 cd restore
 
+- 🌊 Water tweak par, **refract, depth** for color, border alpha  
 - 🌪️ **Wind**, for trees  
   Grass **deform** spheres, wind params, far fade-  
 - Lights on `grass`, sun lit particles-  
-- 🌊 Water tweak par, **refract, depth** for color, border alpha  
 - ⛰️ Terrain  
   **shadowmap** fix < 0, save/load-  
   add emissive, reflect par, fix triplanar normalmaps-  
@@ -30,7 +30,6 @@ SR 3.0 📽️ `editor Videos`, all new
 
 - 🏗️ Editor, fix  
   objects pick `errors`  
-  water reflect in `F7 cam prv`  
   minimap **RTTs** upd skip (slow), or create on save  
   new terrain issues [here](https://groups.f-hub.org/d/SW0mnXNV/track-rework-horizons-skies-and-updates/14)
   edit moved terrains, error in ray pos-  
@@ -41,6 +40,7 @@ SR 3.0 📽️ `editor Videos`, all new
   _Minimap_ circle, terrain add, fix pos tris  
 
 - Rest  
+  **Linux** release, appimage or flatpak
   MyGui CMake .lib, _Conan_  
   .mesh LODs test adjust-  
   water vis dist?  
