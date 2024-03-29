@@ -40,7 +40,7 @@ including color variants
 
 Model:		crystal_form3.mesh
 colored one? from:
-Low Poly Rocks #2
+Low Poly Rocks 2
 Artist:		OliverMH
 License:	CC-BY
 Date:		29/11/2013
