@@ -28,11 +28,14 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
 - **Stunt** elements: obstacles, jumps, loops, pipes or very twisted road
 - 🌊 Drives through water or mud areas (safe, won't get stuck)
 - 📦 Dynamic objects on tracks (barrels, boxes, etc), can be hit
-- 🚗 25 **Vehicles**
+- 🚗 30 **Vehicles**
   - 16 cars (Hyena or Fox are best for rally)
-  - few extreme with bigger wheels, or: 3, 6 and 8 wheeled 🚌
-  - 2 motorbikes 🏍️
-  - 3 hovering spaceships 🚀, 1 bouncy sphere 🔘
+  - few extreme with bigger wheels, or: 6 and 8 wheeled 🚌
+  - 2 motorbikes 🏍️, one 3 metal balls vehicle
+  - 1 bouncy sphere 🔘
+  - 1 racing hovercraft
+  - antigravity hovering:
+    - 3 spaceships 🚀, 2 drones🔹, 3 cars
 - 💨 Boost - key to apply rocket boosters to speed up vehicle, works in air and underwater too
 - ⏪ Rewind - hold key to go back in time (after hit or mistake)
 - Simulation modes: Easy (beginner) and Normal
