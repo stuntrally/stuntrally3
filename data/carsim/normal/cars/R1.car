@@ -65,9 +65,9 @@ steerForce = 25
 steerDamp = 10
 steerDampP = 14
 
-engineForce = 18
+engineForce = 22
 engineVelDec = 0.006
-brakeForce  = 22
+brakeForce  = 26
 
 dampAirRes = 32
 dampSide = 1800
@@ -208,9 +208,9 @@ handbrake = 3.1
 [ driver ]
 position = -0.02, -0.15, -0.2
 mass = 80.0
-view-position = -0.02, -0.40, 0.30
-hood-position = -0.4, 0, 0.50
-ground-position = -1.20, 0, 0.4
+view-position = -0.02, -0.40, 0.60
+hood-position = -0.91, 0, 0.50
+ground-position = -1.80, 0, 0.42
 
 
 #  aerodynamics
