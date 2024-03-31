@@ -655,6 +655,9 @@ void CARDYNAMICS::SimulateHover(Dbl dt)
 	float dmg = fDamage > 50.f ? 1.f - (fDamage-50.f)*0.02f : 1.f;
 	float dmgE = 1.f - 0.2 * dmg;
 
+	//  handbrake faster
+	Dbl h = brake[0].GetHandbrakeFactor();
+
 	//  vel
 	MATHVECTOR<Dbl,3> sv = -GetVelocity();
 	(-Orientation()).RotateVector(sv);
@@ -665,17 +668,13 @@ void CARDYNAMICS::SimulateHover(Dbl dt)
 
 	//  steer  < >
 	bool rear = sv[0] > 0.0;
-	Dbl rr = 1.0; //std::max(-1.0, std::min(1.0, -sv[0] * 0.4));  //par
+	Dbl rr = 1.0 + h; //std::max(-1.0, std::min(1.0, -sv[0] * 0.4));  //par..
 
 	MATHVECTOR<Dbl,3> t(0,0, -1000.0 * rr * ups * hov.steerForce * steerValue * dmgE);
 	Orientation().RotateVector(t);
 	Dbl damp = hov.steerDamp;  //damp *= 1 - fabs(steerValue);
 	ApplyTorque(t - av * damp * 1000.0);  // rotation damping
 
-
-	//  handbrake damping  v
-	btVector3 v = chassis->getLinearVelocity();
-	Dbl h = brake[2].GetHandbrakeFactor();
 	
 	//  engine  ^
 	float vel = sv.Magnitude(),  //  decrease power with velocity
@@ -687,9 +686,16 @@ void CARDYNAMICS::SimulateHover(Dbl dt)
 	float f = hov.engineForce * velMul * hov_throttle
 			- hov.brakeForce * (rear ? velMulR : 1.f) * brk;
 
-	MATHVECTOR<Dbl,3> vf(body.GetMass() * f * dmgE, 0, 0);  //par fix org
+	MATHVECTOR<Dbl,3> vf(body.GetMass() * f * dmgE, 0, 0);
 	Orientation().RotateVector(vf);
 	ApplyForce(vf);
+
+	Dbl low = 12.0 + h * 52.0;  // par  down force ..
+	MATHVECTOR<Dbl,3> vg(0, 0,
+		-body.GetMass() * low * dmgE);
+	ApplyForce(vg);
+
+	//  todo  h > 0  align to ter normal ..
 
 
 	//  side, vel damping  --

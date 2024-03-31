@@ -249,8 +249,11 @@ void CGui::listCarChng(MultiList2* li, size_t)
 
 		UpdDrivability(gcom->sListTrack, gcom->bListTrackU);
 
+		//  hide engine bhp
 		if (ci.type == "Spaceship" || ci.type == "Other")
-		{	car = false;  sd += TR("#E0E060 \n#{CarDesc_Pipes}");  }
+		{	car = false;  sd += TR("#E0E060 \n#{CarDesc_Pipes}");  }  // warn pipes
+		if (ci.type == "Hover" || ci.type == "Drone")
+		{	car = false;  }
 
 		float v = std::max(0.f, 1.f - ci.speed/13.f);
 		barCarSpeed->setImageCoord(IntCoord(v*128.f,0,128,16));
@@ -442,7 +445,7 @@ void CGui::UpdCarStats(bool car)
 
 	s[5]= "#80C0FF"+ TR("#{Car_TopSpeed}");
 	v[5]= "#90D0FF";  sVel(v[5], maxVel);  //v[5]+= TR("  #{at} ")+ fToStr(tiMaxVel,1,4) +TR(" #{UnitS} ");
-	bar(5, maxVel / 300.f, 0.6,0.9,1.0);
+	bar(5, maxVel / 500.f, 0.6,0.9,1.0);
 
 	s[6]= "#8ECEFE"+ TR("#{Car_TimeTo} ");  sVel(s[6], 100.f);
 	v[6]= "#9EDEFF"+ fToStr(t0to100,1,4) +TR(" #{UnitS} ");

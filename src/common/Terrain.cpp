@@ -237,7 +237,8 @@ void CScene::CreateBltTerrains()
 
 		if (!skip || last)
 		for (int i=0; i < 4; ++i)
-		if (b[i] || last)
+		// if (b[i] || last)
+		if (b[i])
 		{
 			btVector3 vpl(px[i], py[i], 0);
 			btCollisionShape* shp = new btStaticPlaneShape(vpl,0);
