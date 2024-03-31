@@ -4164,6 +4164,530 @@
 			}
 		},
 
+		"H1_0" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1]
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H1_1" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1]
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H1_2" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1]
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H1_3" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1]
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H1_4" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1]
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H1_5" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1]
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H1_G" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1]
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H1_interior" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"reflect" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "H1_diff.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"texture" : "H1_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"texture" : "H1_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 1.0,
+				"texture" : "H1_rough.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"H2_0" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "H2_body.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H2_1" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "H2_body.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H2_2" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "H2_body.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H2_3" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "H2_body.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H2_4" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "H2_body.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H2_5" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "H2_body.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H2_G" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "H2_body.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"H2_interior" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"reflect" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "H2_diff.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"texture" : "H2_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"texture" : "H2_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 1.0,
+				"texture" : "H2_rough.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
 		"HI_0" :
 		{
 			"macroblock" : "Macroblock_0",
@@ -7460,98 +7984,6 @@
 			"roughness" :
 			{
 				"value" : 0.8
-			}
-		},
-
-		"YG_0" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"paint" : true,
-			"diffuse" :
-			{
-				"value" : [1.0, 1.0, 1.0],
-				"background" : [1, 1, 1, 1]
-			},
-			"normal" :
-			{
-				"value" : 1.0
-			},
-			"specular" :
-			{
-				"value" : [1, 1, 1]
-			},
-			"fresnel" :
-			{
-				"value" : [0.3, 0.3, 0.3],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.1
-			}
-		},
-
-		"H1_0" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"paint" : true,
-			"diffuse" :
-			{
-				"value" : [1.0, 1.0, 1.0],
-				"background" : [1, 1, 1, 1]
-			},
-			"normal" :
-			{
-				"value" : 1.0
-			},
-			"specular" :
-			{
-				"value" : [1, 1, 1]
-			},
-			"fresnel" :
-			{
-				"value" : [0.3, 0.3, 0.3],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.1
-			}
-		},
-
-		"H1_interior" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0.1, 0.1, 0.1],
-				"background" : [1, 1, 1, 1]
-			},
-			"normal" :
-			{
-				"value" : 1.0
-			},
-			"specular" :
-			{
-				"value" : [0.2, 0.2, 0.2]
-			},
-			"fresnel" :
-			{
-				"value" : [0.5, 0.5, 0.5],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.4
 			}
 		},
 
@@ -19333,6 +19765,37 @@
 				"value" : 1,
 				"texture" : "Y7_Tire_norm.png",
 				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"YG_0" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"paint" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1]
+			},
+			"normal" :
+			{
+				"value" : 1.0
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
 			},
 			"roughness" :
 			{

@@ -159,6 +159,7 @@
 	<Tag name="CarChange">Vehicle change</Tag>
 	<Tag name="Allowed">Allowed</Tag>
 	
+
 	<!--  Car  Names  from animals  -->
 	<Tag name="Turtle">Turtle</Tag>
 	<Tag name="Elephant">Elephant</Tag>
@@ -195,12 +196,15 @@
 	<Tag name="Rabbit">Rabbit</Tag>
 
 	<Tag name="Python">Python</Tag>
+	<Tag name="Cobra">Cobra</Tag>
+
 	<Tag name="Eagle">Eagle</Tag>
 	<Tag name="Crow">Crow</Tag>
 	<Tag name="Falcon">Falcon</Tag>
 
 	<Tag name="Owl">Owl</Tag>
 	<Tag name="Sparrow">Sparrow</Tag>
+
 
 	<!--  Vehicle  -->
 	<Tag name="Vehicle">Vehicle</Tag>
@@ -1664,11 +1668,12 @@
 	<Tag name="CarDesc_O">An experimental, perfectly stabilized, rotating sphere. Uses advanced spacecraft propulsion to easily move in any direction. Very fast but very bouncy.</Tag>
 	<Tag name="CarDesc_Pipes">NOTE: Currently impossible to use in pipes.</Tag>
 
-	<Tag name="CarDesc_H1">Racing hovercraft, powered with fan. Medium speed and goes sideways after turning. Brakes added. Does hover over water. Fun to drive but very loud and inefficient.</Tag>
+	<Tag name="CarDesc_H1">Slow hovercraft, powered with only one propeller for hovering and thrust. Medium speed. Goes sideways much after turning. Brakes added. Does hover over water. Fun to drive but very loud and inefficient.</Tag>
+	<Tag name="CarDesc_H2">Fast racing hovercraft, powered with two propellers and engines. One for hovering and separate for thrust. Fast speed and goes less sideways. Brakes added. Does hover over water. Fun to drive and do stunts.</Tag>
 
-	<Tag name="CarDesc_R1">Latest antigravity stabilized hovering car. Fast and rather easy to drive. Suited for all tracks and stunts.</Tag>
-	<Tag name="CarDesc_R2">Antigravity hovering car. Fast, agile, easy to drive. Suited for all tracks and stunts.</Tag>
-	<Tag name="CarDesc_R3">Antigravity hovering car. Fast, agile, easy to drive. Suited for all tracks and stunts.</Tag>
+	<Tag name="CarDesc_R1">Latest antigravity stabilized hovering car. Fast and rather easy to drive. Somewhat big and bulky. Suited for all tracks and stunts.</Tag>
+	<Tag name="CarDesc_R2">Antigravity hovering car. Small, fast, agile and easy to drive. Suited for all tracks and stunts.</Tag>
+	<Tag name="CarDesc_R3">Antigravity hovering car. Long, fast, easy to drive. Suited for all tracks and stunts.</Tag>
 
 	<Tag name="CarDesc_Q1">First working prototype of antigravity hovering drone. Not very  fast. Suited for all tracks and stunts.</Tag>
 	<Tag name="CarDesc_Q3">Incredibly fast antigravity drone. Very agile, needs quick reactions. Press throttle sparingly and briefly at first.</Tag>
