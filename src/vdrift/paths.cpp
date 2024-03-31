@@ -38,7 +38,7 @@ namespace
 string /*PATHS::ogre_plugin,*/ PATHS::home_dir,
 	PATHS::user_config, PATHS::game_config,
 	PATHS::user_data, PATHS::game_data,
-	PATHS::cache_dir;
+	PATHS::cache_dir, PATHS::game_bin;
 stringstream PATHS::info;
 
 
@@ -141,6 +141,10 @@ void PATHS::Init(bool log_paths)
 
 	CreateDir(DataUser());  // user data
 
+	
+	fs::path exe = execname();  // binary dir
+	game_bin = exe.parent_path();
+
 
 	// Find game data dir and defaults config dir
 	char *datadir = getenv("STUNTRALLY3_DATA_ROOT");
@@ -154,14 +158,14 @@ void PATHS::Init(bool log_paths)
 		//dirs.push_back(user_data_dir);
 
 		// Adding relative path for running from sources
-		dirs.push_back(execname().parent_path().parent_path().parent_path() / "data");
-		dirs.push_back(execname().parent_path().parent_path().parent_path());
-		dirs.push_back(execname().parent_path().parent_path() / "data");
-		dirs.push_back(execname().parent_path().parent_path());
-		dirs.push_back(execname().parent_path() / "data");
-		dirs.push_back(execname().parent_path());
+		dirs.push_back(exe.parent_path().parent_path().parent_path() / "data");
+		dirs.push_back(exe.parent_path().parent_path().parent_path());
+		dirs.push_back(exe.parent_path().parent_path() / "data");
+		dirs.push_back(exe.parent_path().parent_path());
+		dirs.push_back(exe.parent_path() / "data");
+		dirs.push_back(exe.parent_path());
 		// Adding relative path from installed executable
-		dirs.push_back(execname().parent_path().parent_path() / shareDir);
+		dirs.push_back(exe.parent_path().parent_path() / shareDir);
 		#ifndef _WIN32
 		// Adding XDG_DATA_DIRS
 		{
@@ -220,6 +224,7 @@ void PATHS::Init(bool log_paths)
 		info << "Paths info" << endl;
 		info << "-------------" << endl;
 		// info << "Ogre plugin-: " << ogre_plugin << endl;
+		info << "Bin exe:      " << Bin() << endl;
 		info << "Data:         " << Data() << endl;
 		info << "ConfigDir:    " << GameConfigDir() << endl;  //?
 		// info << "Home:         " << home_dir << endl;
@@ -395,7 +400,7 @@ namespace
 }
 
 
-//  open web browser with url
+//  Open web browser with Url
 void PATHS::OpenUrl(const string& url)
 {
 #ifdef WIN32
@@ -403,5 +408,23 @@ void PATHS::OpenUrl(const string& url)
 #else
 	string cmd = "xdg-open " + url;
 	system(cmd.c_str());
+#endif
+}
+
+//  Start binary, exe  ----
+//  Crucial for starting  Track Editor
+//  from  Linux .AppImage pack  which starts game only
+void PATHS::OpenBin(const string& cmd, const string& path)
+{
+#ifdef WIN32
+	ShellExecuteA(
+		0,  // hwnd
+		0,  // str operation
+		cmd.c_str(),  // file
+		0,  // params
+		path.c_str(),  // dir
+		SW_SHOW);
+#else
+	system(cmd.c_str());  // no path, uses pwd?
 #endif
 }

@@ -13,7 +13,7 @@ class PATHS
 private:
 	static std::string /*ogre_plugin,*/ home_dir;
 	static std::string user_config, game_config;
-	static std::string user_data, game_data, cache_dir;
+	static std::string user_data, game_data, cache_dir, game_bin;
 
 public:
 	static void Init(bool log_paths=true);
@@ -33,6 +33,7 @@ public:
 	{
 		return user_config +"/"+ (ed ? "editor" : "game") + (old ? "_old" : "") + ".cfg";
 	}
+	static std::string Bin() {             return game_bin; }  // exe
 	static std::string Data() {            return game_data; }
 	static std::string DataUser() {        return user_data + "/data";  }
 	static std::string Tracks() {          return game_data + "/tracks";  }
@@ -59,5 +60,6 @@ public:
 	static bool CreateDir(const std::string& path);
 
 	static void OpenUrl(const std::string& url);
+	static void OpenBin(const std::string& cmd, const std::string& path);
 
 };

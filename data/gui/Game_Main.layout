@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <MyGUI type="Layout" version="3.2.0">
 
-	<Widget type="Window" skin="WindowC" position="1768 156 600 650" align="Center" layer="Overlapped" name="MainMenuWnd">
+	<Widget type="Window" skin="WindowC" position="1768 156 600 730" align="Center" layer="Overlapped" name="MainMenuWnd">
 		<Property key="MinSize" value="500 400"/>
 		<Property key="Caption" value="Stunt Rally #{GameVersion}"/>
 		<Property key="Alpha" value="0.7"/>
@@ -10,7 +10,7 @@
 
 <!-- 0 pan +8 img +12 btn   +72  12 84 156 228 300  336 408 480  -->
 
-		<Widget type="ImageBox" skin="ImageBox" position="0 420 589 201">
+		<Widget type="ImageBox" skin="ImageBox" position="0 520 589 201">
 			<Property key="ImageTexture" value="stuntrally-logo.jpg"/>
 			<!-- <Property key="ImageCoord" value="0 0 1892 645"/> 2.933 -->
 			<Property key="InheritsAlpha" value="false"/>
@@ -87,6 +87,15 @@
 			<Property key="TextColour" value="0.8 0.8 1"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
+		</Widget>
+
+		<Widget type="Button" skin="Button" position="108 426 404 50" align="Left" name="BtnTrackEditor">
+			<Property key="Caption" value="#{TrackEditor}"/>
+			<Property key="Colour" value="0.7 0.9 0.9"/>
+			<Property key="TextColour" value="0.7 1.0 1.0"/>
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="FontName" value="font.big"/>
+			<UserString key="tip" value="#{TipTrackEditor}"/>
 		</Widget>
 	</Widget>
 

@@ -354,6 +354,17 @@ void CGui::GuiUpdate()
 
 //  🔗 open urls
 //.......................................................................................
+//  start ed exe
+void CGui::btnTrackEditor(WP)
+{
+	auto path = PATHS::Bin();
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+	PATHS::OpenBin(path + "\\SR-Editor3.exe", path);
+#else
+	PATHS::OpenBin(path + "/sr-editor3", path);
+#endif
+}
+
 void CGui::btnWelcome(WP)
 {
 	app->mWndWelcome->setVisible(true);

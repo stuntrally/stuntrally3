@@ -572,6 +572,7 @@ public:
 
 
 	//  🔗 open urls
+	void btnTrackEditor(WP);  // start ed exe
 	void btnWelcome(WP), btnWebsite(WP), btnWiki(WP), btnWikiInput(WP);
 	void btnForum(WP), btnSources(WP), btnEdTut(WP), btnTransl(WP), btnDonations(WP);
 };

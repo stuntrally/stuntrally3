@@ -541,6 +541,7 @@ void CGui::InitGui()
 
 
 	//  🔗 open url btns  -------------
+	Btn("BtnTrackEditor", btnTrackEditor);
 	Btn("OpenWelcome", btnWelcome);  Btn("OpenWebsite", btnWebsite);   Btn("OpenSources", btnSources);
 	Btn("OpenForum",   btnForum);    Btn("OpenDonations", btnDonations);
 	//  wiki
