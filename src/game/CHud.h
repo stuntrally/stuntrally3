@@ -162,7 +162,8 @@ public:
 	Ogre::Vector3 projectPoint(const Ogre::Camera* cam, const Ogre::Vector3& pos);  // 2d xy, z - out info
 
 	//  string utils
-	Ogre::String StrClr(Ogre::ColourValue c);
+	static Ogre::String StrClr(Ogre::ColourValue c);
+	static MyGUI::Colour GetVelClr(float vel);
 
 #ifndef BT_NO_PROFILE
 	//  bullet debug text

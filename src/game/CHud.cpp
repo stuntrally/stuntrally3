@@ -20,8 +20,10 @@
 #include <OgreTechnique.h>
 // #include <MyGUI_TextBox.h>
 using namespace Ogre;
+using namespace MyGUI;
 
 
+//  ctor
 CHud::CHud(App* ap1)
 	:app(ap1)
 {
@@ -34,6 +36,53 @@ CHud::CHud(App* ap1)
 
 //  HUD utils
 //---------------------------------------------------------------------------------------------------------------
+
+//  vel clr speed 🌈
+MyGUI::Colour CHud::GetVelClr(float vel)
+{
+	const int idiv = 50, vmin = -150, vmax = 700;
+	const float fdiv = idiv;
+	
+	int v = vel;
+	int id = v > 0 ?  v / idiv :
+				-abs(v) / idiv - 1;
+	int mod = abs(v) % idiv;
+	float f = v > 0 ?  // 0..1
+		(v >= vmax ? 1.f :  mod / fdiv ) :
+		(v <= vmin ? 0.f :  1.f - (mod / fdiv) );
+
+	const static int velCnt = 17,
+		ofs0 = -vmin / idiv;  // ofs for < 0
+	const static Colour velClr[velCnt+1] = {
+		Colour(0.5f, 0.4f, 1.0f),  //-150 vmin
+		Colour(0.4f, 0.3f, 1.0f),  //-100
+		Colour(0.2f, 0.3f, 1.0f),  //-50
+		Colour(0.1f, 0.4f, 1.0f),  //  0
+		Colour(0.3f, 0.6f, 1.0f),  // 50
+		Colour(0.4f, 0.9f, 0.9f),  // 100
+		Colour(0.2f, 1.0f, 0.5f),  // 150
+		Colour(0.5f, 1.0f, 0.1f),  // 200
+		Colour(0.9f, 0.9f, 0.1f),  // 250
+		Colour(1.0f, 0.7f, 0.0f),  // 300
+		Colour(1.0f, 0.5f, 0.0f),  // 350
+		Colour(1.0f, 0.2f, 0.4f),  // 400
+		Colour(1.0f, 0.3f, 0.7f),  // 450
+		Colour(1.0f, 0.3f, 1.0f),  // 500
+		Colour(1.0f, 0.5f, 1.0f),  // 550
+		Colour(0.7f, 0.5f, 1.0f),  // 600
+		Colour(0.5f, 0.5f, 1.0f),  // 650
+		Colour(0.8f, 0.8f, 1.0f)}; // 700
+	
+	const int i1 = std::max(0, std::min(velCnt-1, id + ofs0)),
+		i2 = i1 + 1;
+	const Colour& c1 = velClr[i1], &c2 = velClr[i2];
+	Colour c(  // linear interpolate
+		c1.red   + f * (c2.red   - c1.red),
+		c1.green + f * (c2.green - c1.green),
+		c1.blue  + f * (c2.blue  - c1.blue), 1.f);
+	return c;
+}
+
 void CHud::UpdMiniTer()
 {
 	/*MaterialPtr mm = MaterialManager::getSingleton().getByName("circle_minimap");

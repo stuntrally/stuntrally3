@@ -3,6 +3,7 @@
 #include "paths.h"
 #include "CGame.h"
 #include "CGui.h"
+#include "CHud.h"
 #include "CData.h"
 #include "TracksXml.h"
 #include "GuiCom.h"
@@ -91,9 +92,9 @@ void CGui::AddCarL(string name, const CarInfo* ci)
 	String clr = data->cars->colormap[ci->type];  if (clr.length() != 7)  clr = "#C0D0E0";
 	
 	li->addItem(clr+ name);  int l = li->getItemCount()-1;
-	li->setSubItemNameAt(1,l, clr+ TR("#{"+ ci->name +"}"));
+	li->setSubItemNameAt(1,l, clr+ TR("#{"+ ci->name +"}"));  // par vel clr 
 	// li->setSubItemNameAt(2,l, gcom->getClrDiff(ci->speed *0.76f)+ fToStr(ci->speed,1,3));
-	li->setSubItemNameAt(2,l, gcom->getClrVal(ci->speed *1.3f)+ fToStr(ci->speed,1,3));
+	li->setSubItemNameAt(2,l, gcom->getClrVal(ci->speed *1.5f)+ fToStr(ci->speed,1,3));
 
 	li->setSubItemNameAt(3,l, gcom->getClrRating(ci->rating)+ " "+toStr(ci->rating));
 	li->setSubItemNameAt(4,l, gcom->getClrDiff(ci->diff )+ " "+toStr(ci->diff));
@@ -444,8 +445,12 @@ void CGui::UpdCarStats(bool car)
 		    else  s += fToStr(v*k2m, 0,3) +TR(" #{UnitMph}");
 
 	s[5]= "#80C0FF"+ TR("#{Car_TopSpeed}");
-	v[5]= "#90D0FF";  sVel(v[5], maxVel);  //v[5]+= TR("  #{at} ")+ fToStr(tiMaxVel,1,4) +TR(" #{UnitS} ");
-	bar(5, maxVel / 500.f, 0.6,0.9,1.0);
+	Colour c = CHud::GetVelClr(maxVel);
+	bar(5, maxVel / 500.f, c.red, c.green, c.blue);
+	// bar(5, maxVel / 500.f, 0.6,0.9,1.0);
+	String sc = CHud::StrClr(ColourValue(c.red, c.green, c.blue));
+	v[5]= sc;  sVel(v[5], maxVel);
+	//v[5]+= TR("  #{at} ")+ fToStr(tiMaxVel,1,4) +TR(" #{UnitS} ");
 
 	s[6]= "#8ECEFE"+ TR("#{Car_TimeTo} ");  sVel(s[6], 100.f);
 	v[6]= "#9EDEFF"+ fToStr(t0to100,1,4) +TR(" #{UnitS} ");
