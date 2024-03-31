@@ -140,7 +140,7 @@ void CHud::Size()
 
 		//  🎥 camera info
 		if (h.txCam)
-			h.txCam->setPosition(xMax-300,yMax-10);
+			h.txCam->setPosition(xMax-300,yMax-30);
 		//  abs,tcs
 		h.txAbs->setPosition(xMin+160,yMax-30);
 		h.txTcs->setPosition(xMin+220,yMax-30);

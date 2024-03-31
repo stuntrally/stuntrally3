@@ -195,7 +195,7 @@ void App::newPerfTest(float time)
 				//------------------------------------------------
 				{
 					std::string path, pathUser, pathUserDir, file;
-					bool orig = 0;  //1;  // save in sr data/
+					bool orig = pSet->dev_keys;  // save in sr data/ or user
 					bool user = gui->GetCarPath(&path, &pathUser, &pathUserDir, pSet->game.car[0], orig || scn->sc->asphalt);
 					file = pCar->pCarM->sDirname + "_stats.xml";
 					if (orig)

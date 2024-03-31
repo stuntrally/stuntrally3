@@ -82,7 +82,7 @@ There is no undo, so use F5 to reload last track state, and F4 to save it often.
 After each save, track can be tested in game.  
 If needed do manual backup copies of track folder.
 
-[Tutorial](docs/editor.md) page has more info ... and _very old videos (to be replaced)_.  
+[Tutorial](docs/Editor.md) page has more info and few new videos.  
 
 
 ------------------------------------------------------------------------------

@@ -290,10 +290,31 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 	if (h.txVel && pCar)
 	{
 		h.txVel->setCaption(fToStr(fabs(vel),0,3));
-
-		float k = pCar->GetSpeedometer() * 3.6f * 0.0025f;	// vel clr
+	#if 0  // old clr
+		float k = pCar->GetSpeedometer() * 3.6f * 0.01f;	// vel clr
 		#define m01(x)  std::min(1.f, std::max(0.f, (float) (x) ))
 		h.txVel->setTextColour(Colour(m01(k*2.f), m01(0.5f+k*1.5f-k*k*2.5f), m01(1+k*0.8f-k*k*3.5f)));
+	#else
+		int k = pCar->GetSpeedometer() * 3.6f / 50.f;	// vel clr  / 50 kmh
+		const static int velCnt = 15;
+		const static Colour velClr[velCnt] = {
+			Colour(0.0f, 0.3f, 1.0f),  //-50
+			Colour(0.1f, 0.4f, 1.0f),  //  0
+			Colour(0.3f, 0.6f, 1.0f),  // 50
+			Colour(0.4f, 0.9f, 0.9f),  // 100
+			Colour(0.2f, 1.0f, 0.5f),  // 150
+			Colour(0.5f, 1.0f, 0.1f),  // 200
+			Colour(0.9f, 0.9f, 0.1f),  // 250
+			Colour(1.0f, 0.7f, 0.0f),  // 300
+			Colour(1.0f, 0.5f, 0.0f),  // 350
+			Colour(1.0f, 0.2f, 0.4f),  // 400
+			Colour(1.0f, 0.3f, 0.7f),  // 450
+			Colour(1.0f, 0.3f, 1.0f),  // 500
+			Colour(1.0f, 0.5f, 1.0f),  // 550
+			Colour(0.7f, 0.5f, 1.0f),  // 600
+			Colour(0.5f, 0.5f, 1.0f)}; // 650
+		h.txVel->setTextColour(velClr[std::max(0, std::min(velCnt-1, k+2))]);
+	#endif
 	}
 
 	//  💨 boost fuel (time)  ------
