@@ -1657,7 +1657,7 @@
 	<Tag name="CarDesc_SX">Very tuned and powerful car. Drivable on all tracks. Not best on bumps. Can spin wheels easily.</Tag>
 	<Tag name="CarDesc_PH">Another extremely powerful and fast car. Only for fast smooth tracks, due to length and low suspension.</Tag>
 	<Tag name="CarDesc_Y7">Extremely fast car. Don't press throttle for too long. Drivable only on fast smooth tracks.</Tag>
-	<Tag name="CarDesc_YG">Extremely fast car. Not long and bit more agile. Bad on bumpy terrain.</Tag>
+	<Tag name="CarDesc_YG">Extremely fast car. Not long and quite agile. Bad on bumpy terrain. Can spin wheels easily, even on gravel.</Tag>
 
 	<Tag name="CarDesc_U6">Incredibly fast, 6 wheels driving with advanced electric engine. Great for racing on all planets. Caution: it can spin wheels easily, it has 1 gear only. It also has high center of mass, meaning it will end with wheels up, after bad landings.</Tag>
 	

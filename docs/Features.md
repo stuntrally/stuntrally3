@@ -29,8 +29,8 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
 - 🌊 Drives through water or mud areas (safe, won't get stuck)
 - 📦 Dynamic objects on tracks (barrels, boxes, etc), can be hit  
   &nbsp;
-- 🚗 32 **Vehicles**
-  - 16 cars (Hyena or Fox are best for rally)
+- 🚗 33 **Vehicles**
+  - 17 cars (Hyena or Fox are best for rally)
   - few extreme with bigger wheels, or: 6 and 8 wheeled 🚌
   - 2 motorbikes 🏍️, one 3 metal balls vehicle
   - 2 racing hovercrafts

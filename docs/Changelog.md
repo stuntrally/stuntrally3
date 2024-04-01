@@ -4,12 +4,12 @@ This section lists changes not yet released, but committed to new repositories s
 
 
 - Game
-  - 7 New vehicles (Sci-Fi)
+  - 8 New vehicles (Sci-Fi)
     - 3 new types: **hover car, hovercraft, drone**
     - 3 hovering cars: R1, R2, R3. [R1 video](https://www.youtube.com/watch?v=9pE8JPV2M8w)
     - 2 antigravity drones: Q1 slower, Q3 incredibly fast and agile
     - 2 racing hovercrafts with propeller: H1, H2
-    - _WIP: fast car YG_
+    - fast car YG
 - Tracks
   - 1 New
   - Replaced all old 4k **skies** with new 8k ones on all tracks
