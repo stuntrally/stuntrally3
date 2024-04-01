@@ -143,7 +143,7 @@ void PATHS::Init(bool log_paths)
 
 	
 	fs::path exe = execname();  // binary dir
-	game_bin = exe.parent_path();
+	game_bin = exe.parent_path().string();
 
 
 	// Find game data dir and defaults config dir
