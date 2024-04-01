@@ -294,7 +294,10 @@ void CGui::msgRplDelete(Message* sender, MessageBoxStyle result)
 	string file = GetRplListDir() +"/"+ name + ".rpl";
 
 	if (fs::exists(file))
+	{
 		fs::remove(file);
+		// todo: for ghost also remove time from .txt  
+	}
 	updReplaysList();
 }
 

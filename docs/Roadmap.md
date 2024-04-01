@@ -38,6 +38,7 @@ SR 3.0 📽️ `editor Videos`, all new
 - ⏲️ `HUD`  
   fix splitscreen gauges etc  
   _Minimap_ circle, terrain add, fix pos tris  
+  btnRplDelete for ghost should also remove its track record from .txt  
 
 - Rest  
   **Linux** release, appimage or flatpak

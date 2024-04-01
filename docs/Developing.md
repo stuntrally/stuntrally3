@@ -372,6 +372,7 @@ Customizing [doc link](https://ogrecave.github.io/ogre-next/api/latest/hlms.html
 
 From docs: Hlms implementation can be customized:
 - Through HlmsListener.  
+Example [here](https://github.com/OGRECave/ogre-next/blob/5da506c6c0aede615dea809c10e9372d81afe51d/Samples/2.0/Tutorials/Tutorial_Hlms01_Customization/Tutorial_Hlms01_MyHlmsListener.h) of adding new float4 and setProperty.  
 This allows you to have access to the buffer pass to fill extra information; or bind extra buffers to the shader.
 - Overload HlmsPbs. Intro [post](https://forums.ogre3d.org/viewtopic.php?p=554026&sid=6798838bbed3be6881aa07bf10012412#p554026)  
 Useful for overriding only specific parts, or adding new functionality that requires storing extra information in a datablock (e.g. overload HlmsPbsDatablock to add more variables, and then overload HlmsPbs::createDatablockImpl to create these custom datablocks)
