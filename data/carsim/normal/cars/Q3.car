@@ -17,14 +17,17 @@ front-pos0 = 0.0,0.6,0.0
 front-size = 1.5
 front-color = 0.97, 1, 1.02
 lights = 1
-brake-pos0 = 0.0,-0.7, 0.0
-brake-size = 0.46
-brake-color = 1, 0.4, 0
+brake-pos0 = 0.0,-0.65, 0.0
+brake-size = 0.76
+brake-color = 1, 0.1, 0
 
 [ model_ofs ]
 rot_fix = on
-boost-x = -0.00
-boost-y = -0.00
+boost-x = 0.10
+boost-y = -0.40
+boost-z = -0.14
+boost-size-z = 0.0
+boost-name = BoostCyan
 interior-x = 0.0
 interior-y = 0.0
 interior-z = 0
@@ -61,7 +64,7 @@ TopBackHm = 0.6
 offsetL = 0.0
 offsetW = 0.0
 offsetH = 0.2
-start-offsetY = 0.9
+start-offsetY = 1.0
 fluidTrigH = -0.0
 friction = 0.02
 
@@ -150,17 +153,17 @@ gear-ratio-3 = 1.92
 gear-ratio-4 = 1.37
 gear-ratio-5 = 1.00
 gear-ratio-6 = 0.79
-shift-delay = 0.08
+shift-delay = 0.02
 
 [ differential ]
 final-drive = 5.0
 anti-slip = 500.0
 
 [ fuel-tank ]
-position = -0.02, -0.66, -0.26
-capacity = 0.0492
-volume = 0.0492
-fuel-density = 730.0
+position = -0.0, -0.0, -0.0
+capacity = 0.01
+volume = 0.01
+fuel-density = 130.0
 
 
 #  suspension
@@ -217,15 +220,15 @@ max-pressure = 2.5e6
 bias = 0.5
 radius = 0.14
 area = 0.019
-handbrake = 3.1
+handbrake = 0.1
 
 
 [ driver ]
-position = -0.02, -0.15, -0.2
-mass = 80.0
-view-position = -0.02, -0.40, 0.30
-hood-position = -0.4, 0, 0.50
-ground-position = -1.20, 0, 0.4
+position = -0.0, -0.0, -0.0
+mass = 1.0
+view-position = 0.33, -0.32, 0.7
+hood-position = -0.31, 0, 0.53
+ground-position = -0.54, 0, 0.3
 
 
 #  aerodynamics

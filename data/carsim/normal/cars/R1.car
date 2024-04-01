@@ -27,8 +27,11 @@ brake-color = 1, 0, 0
 
 [ model_ofs ]
 rot_fix = on
-boost-x = -0.00
+boost-x = 0.10
 boost-y = -0.80
+boost-z = 0.04
+boost-size-z = 0.60
+boost-name = BoostCyan
 interior-x = 0.0
 interior-y = 0.0
 interior-z = 0
@@ -51,7 +54,7 @@ posLfront = 1.9
 offsetL = 0.0
 offsetW = -0.02
 offsetH = 0.2
-start-offsetY = 0.60
+start-offsetY = 0.67
 fluidTrigH = 0.0
 friction = 0.4
 
@@ -70,7 +73,7 @@ engineVelDec = 0.006
 brakeForce  = 26
 
 dampAirRes = 32
-dampSide = 1800
+dampSide = 2000
 dampUp = 1050
 dampDn = 3150
 dampPmul = 2.86
@@ -152,11 +155,11 @@ fuel-density = 730.0
 #---------------------------
 [ suspension-front ]
 spring-constant = 25000.0
-bounce = 2100.0
-rebound = 2200.0
+bounce = 3400.0
+rebound = 3200.0
 travel = 2.0
-camber = -1.33
-caster = 2.02
+camber = -0.0
+caster = 0.0
 toe = 0.0
 anti-roll = 26000.0
 factors-file = hover
@@ -166,9 +169,9 @@ spring-constant = 9000.0
 bounce = 5000.0
 rebound = 5000.0
 travel = 2.0
-camber = -0.45
-caster = 0.33
-toe = 0.2
+camber = -0.0
+caster = 0.0
+toe = 0.0
 anti-roll = 20000.0
 factors-file = hover
 

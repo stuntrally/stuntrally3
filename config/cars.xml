@@ -60,12 +60,12 @@
 <c id="O"   o="1" m="Rabbit"      v="2.4" r="4" w="2" d="3" s="7.6"  y="2085" t="Other"      b="0" j="0" l="4" p="4"  e="1.10" n="1.17"  a="CryHam" />
 <c id="V3"  o="0" m="Hawk"        v="2.4" r="3" w="4" d="3" s="7.7"  y="2148" t="Spaceship"  b="0" j="0" l="4" p="6"  e="1.10" n="1.20"  a="jumahsafarty" />
 
-<c id="R1"  o="4" m="Eagle"       v="3.1" r="4" w="4" d="2" s="7.9"  y="2235" t="Hover"      b="0" j="0" l="0" p="0"  e="1.10" n="1.20"  a="Unity Fan youtube channel" />
-<c id="R2"  o="4" m="Crow"        v="3.1" r="4" w="4" d="2" s="8.3"  y="2237" t="Hover"      b="0" j="0" l="0" p="0"  e="1.10" n="1.20"  a="Unity Fan youtube channel" />
+<c id="R1"  o="4" m="Eagle"       v="3.1" r="4" w="4" d="2" s="8.1"  y="2231" t="Hover"      b="0" j="0" l="0" p="0"  e="1.10" n="1.20"  a="Unity Fan youtube channel" />
+<c id="R2"  o="4" m="Crow"        v="3.1" r="4" w="3" d="2" s="8.3"  y="2236" t="Hover"      b="0" j="0" l="0" p="0"  e="1.10" n="1.20"  a="Unity Fan youtube channel" />
 <c id="R3"  o="4" m="Falcon"      v="3.1" r="4" w="4" d="2" s="8.5"  y="2239" t="Hover"      b="0" j="0" l="0" p="0"  e="1.10" n="1.20"  a="Unity Fan youtube channel" />
 
-<c id="Q1"  o="1" m="Owl"         v="3.1" r="4" w="2" d="3" s="8.0"  y="2325" t="Drone"      b="0" j="0" l="1" p="1"  e="1.10" n="1.17"  a="Multipainkiller Studio" />
-<c id="Q3"  o="1" m="Sparrow"     v="3.1" r="4" w="2" d="3" s="9.5"  y="2331" t="Drone"      b="0" j="0" l="1" p="1"  e="1.10" n="1.17"  a="3dsofsan" />
+<c id="Q1"  o="1" m="Owl"         v="3.1" r="4" w="2" d="3" s="8.0"  y="2305" t="Drone"      b="0" j="0" l="1" p="1"  e="1.10" n="1.17"  a="Multipainkiller Studio" />
+<c id="Q3"  o="1" m="Sparrow"     v="3.1" r="4" w="2" d="3" s="9.5"  y="2321" t="Drone"      b="0" j="0" l="1" p="1"  e="1.10" n="1.17"  a="3dsofsan" />
 
 	<!-- e and n - are the vehicle time multipliers for simultation modes - easy and normal
 		Less means bigger track time (more points, easier to qualify).

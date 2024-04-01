@@ -23,10 +23,10 @@ brake-color = 1, 0.2, 0
 
 [ model_ofs ]
 rot_fix = on
-boost-x = -0.00
+boost-x = 0.10
 boost-y = -0.40
-boost-size-z = 0.7
-boost-name = ThrusterV1
+boost-size-z = 0.66
+boost-name = BoostCyan
 interior-x = 0.0
 interior-y = 0.0
 interior-z = 0
@@ -63,7 +63,7 @@ TopBackHm = 0.6
 offsetL = 0.0
 offsetW = 0.0
 offsetH = 0.1
-start-offsetY = 0.9
+start-offsetY = 1.15
 fluidTrigH = -0.0
 friction = 0.2
 
@@ -78,7 +78,7 @@ buoy_Mul = 1.0
 hAbove = 4.0
 hRayLen = 4.0
 
-steerForce = 21
+steerForce = 22
 steerDamp = 10
 steerDampP = 10
 
@@ -159,10 +159,10 @@ final-drive = 5.0
 anti-slip = 500.0
 
 [ fuel-tank ]
-position = -0.02, -0.66, -0.26
-capacity = 0.0492
-volume = 0.0492
-fuel-density = 730.0
+position = -0.0, -0.0, -0.0
+capacity = 0.01
+volume = 0.01
+fuel-density = 30.0
 
 
 #  suspension
@@ -223,11 +223,11 @@ handbrake = 3.1
 
 
 [ driver ]
-position = -0.02, -0.15, -0.2
-mass = 80.0
-view-position = -0.02, -0.40, 0.30
+position = -0.0, -0.0, -0.0
+mass = 10.0
+view-position = 0.24, -0.48, 0.64
 hood-position = -0.4, 0, 0.50
-ground-position = -1.20, 0, 0.4
+ground-position = -0.44, 0, 0.4
 
 
 #  aerodynamics
