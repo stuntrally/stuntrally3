@@ -88,9 +88,9 @@ public:
 
 
 	//  🎥🎥 Cameras, Views  --------
-	CameraView* ca =0;
+	CameraView ca, carPrv;
 	int miCount = 0, miCurrent = 0;
-	std::vector<CameraView*> mViews;
+	std::vector<CameraView> mViews;
 	
 	//  first (after change, reset etc)
 	bool first = 1;  int iFirst = 0;  void First();
@@ -101,5 +101,5 @@ public:
 	void Next(bool bPrev = false, bool bMainOnly = false);
 	void setCamera(int ang);
 	
-	bool TypeCar() {  return ca && ca->mType == CAM_Car;  }
+	bool TypeCar() {  return ca.mType == CAM_Car;  }
 };

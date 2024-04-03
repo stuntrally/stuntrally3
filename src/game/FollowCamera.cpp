@@ -42,7 +42,7 @@ static float GetAngle(float x, float y)
 //-----------------------------------------------------------------------------------------------------
 void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLLISION_WORLD* world, bool bounce, bool sphere)
 {
-	if (!ca || !posOut)  return;
+	if (!posOut)  return;
 
 	///  input from car posInfoIn
 	Vector3 posGoal = posIn.pos;
@@ -56,8 +56,8 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 		qTop = Quaternion(Degree(-90), Vector3::UNIT_X), qSphFix = Quaternion(Degree(180), Vector3::UNIT_Z);
 
 	Quaternion  orient = orientGoal * qOrFix;
-	Vector3 caOfs = (ca->mType == CAM_Car && sphere ? Vector3(-ca->mOffset.x, -ca->mOffset.y, ca->mOffset.z)
-				: ca->mOffset);
+	Vector3 caOfs = (ca.mType == CAM_Car && sphere ? Vector3(-ca.mOffset.x, -ca.mOffset.y, ca.mOffset.z)
+				: ca.mOffset);
 	Vector3 ofs = orient * caOfs,
 		goalLook = posGoal + ofs;
 
@@ -79,7 +79,7 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 		maxDiff = Degree(1.4f);  // max diff of tilt - no sudden jumps
 	const float smoothSpeed = 14.f;  // how fast to apply tilt change
 
-	bool bUseTilt = ca->mType == CAM_ExtAng || ca->mType == CAM_Follow;
+	bool bUseTilt = ca.mType == CAM_ExtAng || ca.mType == CAM_Follow;
 	Radian tilt(0.f);
 	if (pSet->cam_tilt && bUseTilt)
 	{
@@ -126,7 +126,7 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 	
 
 	//-------------------------------------------------------------------------------------------
-	if (ca->mType == CAM_Car)	/* 3 Car - car pos & rot full */
+	if (ca.mType == CAM_Car)	/* 3 Car - car pos & rot full */
 	{
 		camPosFinal = goalLook;
 		camRotFinal = sphere ? orient * qSphFix : orient;
@@ -136,27 +136,27 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 		return;
 	}
 	
-	if (ca->mType == CAM_Follow)  ofs = ca->mOffset;
+	if (ca.mType == CAM_Follow)  ofs = ca.mOffset;
 	
 	Vector3 pos     = camPosFinal - ofs;
 	Vector3 goalPos = posGoal;
 	
 	Vector3 xyz{0,0,0};
-	if (ca->mType != CAM_Arena)
+	if (ca.mType != CAM_Arena)
 	{
 		Real x,y,z,xz;   // pitch & yaw to direction vector
-		Real ap = bUseTilt ? (ca->mPitch.valueRadians() + mATilt.valueRadians()) : ca->mPitch.valueRadians(),
-			 ay = ca->mYaw.valueRadians();
+		Real ap = bUseTilt ? (ca.mPitch.valueRadians() + mATilt.valueRadians()) : ca.mPitch.valueRadians(),
+			 ay = ca.mYaw.valueRadians();
 		y = sin(ap), xz = cos(ap);
 		x = sin(ay) * xz, z = cos(ay) * xz;
-		xyz = Vector3(x,y,z);  xyz *= ca->mDist;
+		xyz = Vector3(x,y,z);  xyz *= ca.mDist;
 	}
 	
 	bool manualOrient = false;
-	switch (ca->mType)
+	switch (ca.mType)
 	{
 		case CAM_Arena:		/* 2 Arena - free pos & rot */
-			goalPos = ca->mOffset - ofs;
+			goalPos = ca.mOffset - ofs;
 			break;
 			
 		case CAM_Free:		/* 1 Free - free rot, pos from car */
@@ -174,7 +174,7 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 			Quaternion  ory;  ory.FromAngleAxis(orient.getYaw(), Vector3::UNIT_Y);
 
 			if (first)  {  qq = ory;  }
-			else  qq = orient.Slerp(ca->mSpeed * time, qq, ory, true);
+			else  qq = orient.Slerp(ca.mSpeed * time, qq, ory, true);
 
 			//  smooth dist from vel
 			#if 0
@@ -189,11 +189,11 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 			}
 			#endif
 
-			Quaternion  qy = Quaternion(ca->mYaw, Vector3(0,1,0));
-			goalPos += qq * (xyz + ca->mOffset);
+			Quaternion  qy = Quaternion(ca.mYaw, Vector3(0,1,0));
+			goalPos += qq * (xyz + ca.mOffset);
 			
 			camPosFinal = goalPos;
-			camRotFinal = qq * qy * Quaternion(Degree(-ca->mPitch - mATilt), Vector3(1,0,0));
+			camRotFinal = qq * qy * Quaternion(Degree(-ca.mPitch - mATilt), Vector3(1,0,0));
 			manualOrient = true;
 		}	break;
 		default:  break;
@@ -201,18 +201,18 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 
 	if (!manualOrient)  // if !CAM_ExtAng
 	{
-		float dtmul = ca->mSpeed == 0 ? 1.0f : ca->mSpeed * time;
+		float dtmul = ca.mSpeed == 0 ? 1.0f : ca.mSpeed * time;
 
-		if (ca->mType ==  CAM_Arena)
+		if (ca.mType ==  CAM_Arena)
 		{
-			Vector3 Pos(0,0,0), goalPos = ca->mOffset;
+			Vector3 Pos(0,0,0), goalPos = ca.mOffset;
 			Pos = camPosFinal;  //read last state (smooth)
 			Pos += (goalPos - Pos) * dtmul;
 			
-			mAPitch += (ca->mPitch - mAPitch) * dtmul;
-			mAYaw += (ca->mYaw - mAYaw) * dtmul;
+			mAPitch += (ca.mPitch - mAPitch) * dtmul;
+			mAYaw += (ca.mYaw - mAYaw) * dtmul;
 			
-			if (first)  {  Pos = goalPos;  mAPitch = ca->mPitch;  mAYaw = ca->mYaw;  }
+			if (first)  {  Pos = goalPos;  mAPitch = ca.mPitch;  mAYaw = ca.mYaw;  }
 			camPosFinal = Pos;
 			camRotFinal = Quaternion(Degree(mAYaw), Vector3(0,1,0)) * Quaternion(Degree(mAPitch), Vector3(1,0,0));
 			manualOrient = true;
@@ -247,14 +247,14 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 	//-------------------------------------------------------------------------------------------
 	Vector3 pp = camPosFinal;
 	if (bounce)
-		pp += posIn.camOfs * ca->mOfsMul
+		pp += posIn.camOfs * ca.mOfsMul
 			* gPar.camBncScale * pSet->cam_bnc_mul;
 	
 	Vector3 p = posGoal;  p.y += 1.f;  //up
 	//Vector3 d = camRotFinal * Vector3::UNIT_Z;  d.normalise();
 	Vector3 d = pp - p;  d.normalise();
 	
-	if (!first && ca->mType != CAM_Arena)
+	if (!first && ca.mType != CAM_Arena)
 	{
 		MATHVECTOR<float,3> pos1(p.x,-p.z,p.y), dir(d.x,-d.z,d.y);  //dir = dir.Normalize();
 		COLLISION_CONTACT ct;
@@ -304,114 +304,114 @@ void FollowCamera::Apply(const PosInfo& posIn)
 //-----------------------------------------------------------------------------------------------------
 void FollowCamera::Move( bool mbLeft, bool mbRight, bool mbMiddle, bool shift, Real mx, Real my, Real mz )
 {
-	if (!ca)  return;
+	// if (!ca)  return;
 	fMoveTime = 0;
-	bool arena = ca->mType == CAM_Arena;
+	bool arena = ca.mType == CAM_Arena;
 	Real myH = my * -0.01, mzH = mz;
 	mx *= 0.005;  my *= 0.005;
 
 	if (shift && mbMiddle)
 	{
-		ca->mSpeed += my*5;
-		if (ca->mSpeed < 0.f)  ca->mSpeed = 0.f;
+		ca.mSpeed += my*5;
+		if (ca.mSpeed < 0.f)  ca.mSpeed = 0.f;
 		return;
 	}
 
 	//----------------------------------------------
 	if (arena)  // Arena - free camera
 	{
-		Real a = ca->mYaw.valueRadians(), sx = cosf(a), sy = sinf(a);
+		Real a = ca.mYaw.valueRadians(), sx = cosf(a), sy = sinf(a);
 		Vector3 vx(sx,0,-sy), vy(sy,0,sx);
 
 		if (mbMiddle)
 		{
 			const Real s = -20;
-			ca->mOffset += s*mx *vy + Vector3(0, s*my, 0);
+			ca.mOffset += s*mx *vy + Vector3(0, s*my, 0);
 		}
 		if (mbRight)
 		{
 			const Real s = 20;
 			if (shift)
-				ca->mOffset += Vector3(0, s*myH, 0);
+				ca.mOffset += Vector3(0, s*myH, 0);
 			else
-				ca->mOffset += s*mx*vx + s*my*vy;
+				ca.mOffset += s*mx*vx + s*my*vy;
 		}
 		if (mbLeft)
 		{
 			const Real s = 0.5;
-			ca->mPitch -= Radian(s*my);
+			ca.mPitch -= Radian(s*my);
 			if (!shift)
-				ca->mYaw -= Radian(s*mx);
+				ca.mYaw -= Radian(s*mx);
 		}
 		//  wheel
-		ca->mPitch  += Radian(mzH * 3.f*PI_d/180.f);
+		ca.mPitch  += Radian(mzH * 3.f*PI_d/180.f);
 		return;
 	}
 	//----------------------------------------------
-	if (ca->mType == CAM_ExtAng)
+	if (ca.mType == CAM_ExtAng)
 	{
 		if (mbMiddle)
-		{	ca->mOffset.x = 0;  ca->mOffset.z = 0;  ca->mYaw = 0.f;  }
+		{	ca.mOffset.x = 0;  ca.mOffset.z = 0;  ca.mYaw = 0.f;  }
 		if (mbLeft)
 		{
-			ca->mPitch -= Radian(my);
+			ca.mPitch -= Radian(my);
 			if (shift)
-				ca->mYaw += Radian(mx);
+				ca.mYaw += Radian(mx);
 			else
-				ca->mDist  *= 1.0 - mx * 0.4;
+				ca.mDist  *= 1.0 - mx * 0.4;
 		}
 		if (mbRight)
-		{	if (shift)	ca->mOffset += Vector3(mx, 0, my);
-			else		ca->mOffset += Vector3(0, -my, 0);
+		{	if (shift)	ca.mOffset += Vector3(mx, 0, my);
+			else		ca.mOffset += Vector3(0, -my, 0);
 		}
-		ca->mDist  *= 1.0 - mzH * 0.1;
+		ca.mDist  *= 1.0 - mzH * 0.1;
 		return;
 	}
-	if (ca->mType == CAM_Car)
+	if (ca.mType == CAM_Car)
 	{
 		if (mbMiddle)
-			ca->mOffset.x = 0;
+			ca.mOffset.x = 0;
 		if (mbLeft)
 		{
-			ca->mOffset += Vector3(0, -my, 0);
-			ca->mDist   *= 1.0 - mx * 0.4;
+			ca.mOffset += Vector3(0, -my, 0);
+			ca.mDist   *= 1.0 - mx * 0.4;
 		}
 		if (mbRight)
-			ca->mOffset += Vector3(mx, 0, my);
+			ca.mOffset += Vector3(mx, 0, my);
 
-		ca->mOffset += Vector3(0, mzH * 0.004, 0);
+		ca.mOffset += Vector3(0, mzH * 0.004, 0);
 		return;
 	}
 	//----------------------------------------------
 	if (mbMiddle)
 	{
-		if (ca->mType == CAM_Follow)
-			ca->mYaw = Degree(0);
+		if (ca.mType == CAM_Follow)
+			ca.mYaw = Degree(0);
 		else
-			ca->mOffset = Vector3(0, 0.0, 0);
+			ca.mOffset = Vector3(0, 0.0, 0);
 	}
 	if (mbRight)
 	{
 		if (!shift)
-			ca->mOffset += Vector3(0, -my, 0);
+			ca.mOffset += Vector3(0, -my, 0);
 		else
-		{	ca->mOffset += Vector3(0, myH, 0);
-			ca->mDist   *= 1.0 - mx * 0.3;
+		{	ca.mOffset += Vector3(0, myH, 0);
+			ca.mDist   *= 1.0 - mx * 0.3;
 		}
 	}
 	if (mbLeft)
 	{
 		if (!shift)
-		{	ca->mPitch -= Radian(my);
-			//ca->mDist *= 1.0 - mzH * 0.1;
+		{	ca.mPitch -= Radian(my);
+			//ca.mDist *= 1.0 - mzH * 0.1;
 		} else {
-			ca->mYaw   += Radian(mx);
-			ca->mPitch -= Radian(my);
+			ca.mYaw   += Radian(mx);
+			ca.mPitch -= Radian(my);
 		}
-		if (ca->mDist < 1.5)
-			ca->mDist = 1.5;
+		if (ca.mDist < 1.5)
+			ca.mDist = 1.5;
 	}
-	ca->mDist  *= 1.0 - mzH * 0.1;
+	ca.mDist  *= 1.0 - mzH * 0.1;
 }
 
 
@@ -419,29 +419,29 @@ void FollowCamera::Move( bool mbLeft, bool mbRight, bool mbMiddle, bool shift, R
 //-----------------------------------------------------------------------------------------------------
 bool FollowCamera::updInfo(Real time)
 {
-	if (!ca)  return false;
+	// if (!ca)  return false;
 
 	if (fMoveTime >= 1.0)	// hide after 1sec
 		return false;
 	else
 		fMoveTime += time;
 	
-	switch (ca->mType)
+	switch (ca.mType)
 	{
 	case CAM_Follow: sprintf(ss, sFmt_Follow.c_str()
-		,ca->mType, CAM_Str[ca->mType], ca->mYaw.valueDegrees(), ca->mPitch.valueDegrees(), ca->mDist
-		,ca->mOffset.y, ca->mSpeed);	break;
+		,ca.mType, CAM_Str[ca.mType], ca.mYaw.valueDegrees(), ca.mPitch.valueDegrees(), ca.mDist
+		,ca.mOffset.y, ca.mSpeed);	break;
 	case CAM_Free:   sprintf(ss, sFmt_Free.c_str()
-		,ca->mType, CAM_Str[ca->mType], ca->mYaw.valueDegrees(), ca->mPitch.valueDegrees(), ca->mDist
-		,ca->mOffset.y, ca->mSpeed);	break;
+		,ca.mType, CAM_Str[ca.mType], ca.mYaw.valueDegrees(), ca.mPitch.valueDegrees(), ca.mDist
+		,ca.mOffset.y, ca.mSpeed);	break;
 	case CAM_ExtAng:   sprintf(ss, sFmt_ExtAng.c_str()
-		,ca->mType, CAM_Str[ca->mType], ca->mPitch.valueDegrees(), ca->mDist
-		,ca->mOffset.y, ca->mOffset.x, ca->mOffset.z, ca->mSpeed);	break;
+		,ca.mType, CAM_Str[ca.mType], ca.mPitch.valueDegrees(), ca.mDist
+		,ca.mOffset.y, ca.mOffset.x, ca.mOffset.z, ca.mSpeed);	break;
 	case CAM_Arena:  sprintf(ss, sFmt_Arena.c_str()
-		,ca->mType, CAM_Str[ca->mType], ca->mYaw.valueDegrees(), ca->mPitch.valueDegrees(), ca->mDist
-		,ca->mOffset.x, ca->mOffset.y, ca->mOffset.z, ca->mSpeed);	break;
+		,ca.mType, CAM_Str[ca.mType], ca.mYaw.valueDegrees(), ca.mPitch.valueDegrees(), ca.mDist
+		,ca.mOffset.x, ca.mOffset.y, ca.mOffset.z, ca.mSpeed);	break;
 	case CAM_Car:    sprintf(ss, sFmt_Car.c_str()
-		,ca->mType, CAM_Str[ca->mType], ca->mOffset.z, ca->mOffset.x, ca->mOffset.y);	break;
+		,ca.mType, CAM_Str[ca.mType], ca.mOffset.z, ca.mOffset.x, ca.mOffset.y);	break;
 	default:  break;
 	}
 	return true;
@@ -457,22 +457,24 @@ void FollowCamera::updView()
 	if (miCount <= 0)  return;
 	miCurrent = std::max(0, std::min(miCount-1, miCurrent));
 
-	CameraView* c = mViews[miCurrent];
-	if (ca->mType != c->mType)	First();  // changed type, reset
-	*ca = *c;  // copy
+	CameraView& c = mViews[miCurrent];
+	if (ca.mType != c.mType)	First();  // changed type, reset
+	ca = c;  // copy
+	if (gPar.carPrv > 0)
+		ca = carPrv;
 	mDistReduce = 0.f;  //reset
 
 	sName = toStr(miCurrent+1) + "/" + toStr(miCount)
-		+ (ca->mMain > 0 ? ". " : "  ") + ca->mName;
+		+ (ca.mMain > 0 ? ". " : "  ") + ca.mName;
 	updName = true;
 }
 
 void FollowCamera::saveCamera()
 {
-	CameraView* c = mViews[miCurrent];
-	c->mName = ca->mName;	c->mType = ca->mType;  c->mSpeed = ca->mSpeed;
-	c->mYaw = ca->mYaw;		c->mPitch = ca->mPitch;
-	c->mDist = ca->mDist;	c->mOffset = ca->mOffset;
+	CameraView& c = mViews[miCurrent];
+	c.mName = ca.mName;  c.mType = ca.mType;  c.mSpeed = ca.mSpeed;
+	c.mYaw = ca.mYaw;    c.mPitch = ca.mPitch;
+	c.mDist = ca.mDist;  c.mOffset = ca.mOffset;
 }
 
 
@@ -496,8 +498,8 @@ void FollowCamera::Next(bool bPrev, bool bMainOnly)
 		while (cnt < miCount)
 		{
 			cnt++;  incCur(dir);
-			CameraView* c = mViews[miCurrent];
-			if (c->mMain > 0)
+			CameraView& c = mViews[miCurrent];
+			if (c.mMain > 0)
 			{	updView();  return;  }
 		}
 		miCurrent = old;
@@ -515,7 +517,6 @@ void FollowCamera::setCamera(int ang)
 FollowCamera::FollowCamera(Cam* cam1, SETTINGS* pSet1)
 	:cam(cam1), pSet(pSet1)
 { 
-	ca = new CameraView();
 	ss[0] = 0;
 }
 
@@ -526,14 +527,11 @@ void FollowCamera::First()
 
 FollowCamera::~FollowCamera()
 {
-	delete ca;  ca = 0;
 	Destroy();
 }
 
 void FollowCamera::Destroy()
 {
-	for (auto v : mViews)
-		delete v;
 	mViews.clear();
 }
 
@@ -558,27 +556,27 @@ bool FollowCamera::loadCameras()
 		
 		while (cam)
 		{
-			CameraView* c = new CameraView();  const char* a = 0;
-			c->mName = cam->Attribute("name");
-			c->mType = (CamTypes)s2i(cam->Attribute("type"));
-			c->mYaw = Degree(0);  c->mPitch = Degree(0);  c->mDist = 10.f;  c->mSpeed = 10.f;
+			CameraView c;  const char* a = 0;
+			c.mName = cam->Attribute("name");
+			c.mType = (CamTypes)s2i(cam->Attribute("type"));
+			c.mYaw = Degree(0);  c.mPitch = Degree(0);  c.mDist = 10.f;  c.mSpeed = 10.f;
 
 			a = cam->Attribute("default");	if (a)  if (s2i(a)==1)  miCurrent = miCount;
-			a = cam->Attribute("on");		if (a)  c->mMain = s2i(a)-1;
-			a = cam->Attribute("hideGlass");	if (a)  c->mHideGlass = s2i(a);
+			a = cam->Attribute("on");		if (a)  c.mMain = s2i(a)-1;
+			a = cam->Attribute("hideGlass");	if (a)  c.mHideGlass = s2i(a);
 
-			a = cam->Attribute("yaw");		if (a)  c->mYaw += Degree(s2r(a));
-			a = cam->Attribute("pitch");	if (a)  c->mPitch = Degree(s2r(a));
-			a = cam->Attribute("dist");		if (a)  c->mDist = s2r(a);
-			a = cam->Attribute("offset");	if (a)  c->mOffset = s2v(a);
-			a = cam->Attribute("speed");	if (a)  c->mSpeed = s2r(a);
-			a = cam->Attribute("spRot");	if (a)  c->mSpeedRot = s2r(a);  else  c->mSpeedRot = c->mSpeed;
-			a = cam->Attribute("bounce");	if (a)  c->mOfsMul = s2r(a);
+			a = cam->Attribute("yaw");		if (a)  c.mYaw += Degree(s2r(a));
+			a = cam->Attribute("pitch");	if (a)  c.mPitch = Degree(s2r(a));
+			a = cam->Attribute("dist");		if (a)  c.mDist = s2r(a);
+			a = cam->Attribute("offset");	if (a)  c.mOffset = s2v(a);
+			a = cam->Attribute("speed");	if (a)  c.mSpeed = s2r(a);
+			a = cam->Attribute("spRot");	if (a)  c.mSpeedRot = s2r(a);  else  c.mSpeedRot = c.mSpeed;
+			a = cam->Attribute("bounce");	if (a)  c.mOfsMul = s2r(a);
 
-			if (c->mMain >= 0)  {
-				mViews.push_back(c);  miCount++;  }
-			else
-				delete c;
+			if (c.mMain >= 0)
+			{	mViews.push_back(c);  miCount++;  }
+			else if (c.mMain == -1-1)
+				carPrv = c;
 			cam = cam->NextSiblingElement("Camera");
 		}
 	}
@@ -586,9 +584,9 @@ bool FollowCamera::loadCameras()
 	miCount = mViews.size();
 	if (miCount == 0)
 	{
-		CameraView* c = new CameraView();  c->mName = "Follow Default";
-		c->mType = CAM_Follow;  c->mYaw = Degree(0.f);  c->mPitch = Degree(14.f);
-		c->mDist = 9.f;  c->mOffset = Vector3(0.f, 2.f, 0.f);  c->mSpeed = 15.f;
+		CameraView c;  c.mName = "Follow Default";
+		c.mType = CAM_Follow;  c.mYaw = Degree(0.f);  c.mPitch = Degree(14.f);
+		c.mDist = 9.f;  c.mOffset = Vector3(0.f, 2.f, 0.f);  c.mSpeed = 15.f;
 		mViews.push_back(c);
 		miCount++;
 	}
