@@ -136,7 +136,6 @@ void App::update( float dt )
 			/*if (mSplitMgr)  //  reassign car cameras from new viewports
 			scn->mWaterRTT->setViewerCamera(cam1);
 			}*/
-			///gui->InitCarPrv();
 		}
 
 

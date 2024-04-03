@@ -526,8 +526,6 @@ IntCoord CGui::GetViewSize()
 	return IntCoord(ic.width*0.56f, ic.height*0.38f, ic.width*0.43f, ic.height*0.57f);
 }
 
-void CGui::InitCarPrv()
-{
 #if 0
 	viewCanvas = app->mWndGame->createWidget<Canvas>("Canvas", GetViewSize(), Align::Stretch);
 	viewCanvas->setInheritsAlpha(false);
@@ -556,4 +554,3 @@ void CGui::InitCarPrv()
 	//viewBox->mCameraNode->lookAt(Vector3(0,0,0), Node::TS_WORLD);
 	//viewBox->updateViewport();
 #endif
-}

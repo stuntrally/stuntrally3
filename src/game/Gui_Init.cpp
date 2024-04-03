@@ -283,6 +283,7 @@ void CGui::InitGui()
 
 	//  🔧 Tweak  ------------------------------------------------------------
 	ck= &ckDevKeys;		ck->Init("DevKeys",		&pSet->dev_keys);
+	sv= &svCarPrv;		sv->Init("CarPrv",		&gPar.carPrv, 0, 3);
 
 	Txt txt = fTxt("DevTracks");
 	string s = "";

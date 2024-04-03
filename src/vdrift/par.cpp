@@ -7,6 +7,9 @@ SParams::SParams()
 /// 🧰 _Tool_  force go back time rewind
 	backTime = 0;  //0 !in release
 
+/// 🧰 _Tool_  force camera preview
+	carPrv = 0;  //0 !in release  1 norm, 2 far, 3 close
+
 //  GAME
 	rewindSpeed = 5.f;  // 5 secs in 1 sec
 	rewindCooldown = 1.f;  // 1 sec
@@ -37,4 +40,6 @@ SParams::SParams()
 	camBncScale = 10.f;  camBncMass = 0.02f;
 }
 
-//  for other params search //par
+//  for many other params search in sources for: //par or // par
+
+SParams gPar;  // almost const

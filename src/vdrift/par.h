@@ -1,8 +1,5 @@
 #pragma once
 
-//  for making vehicle preview screens, see info in cameras.xml
-//#define CAR_PRV
-
 #define MAX_Players  6
 #define MAX_Vehicles 8  // = players and 2 ghosts
 
@@ -42,8 +39,12 @@ struct SParams
 //  take back time in rewind (for track's ghosts)
 	bool backTime;
 
+//  force car preview  camera & inputs
+//  for making vehicle preview screens, see info in cameras.xml
+	int carPrv;
+
 	//  🌟 ctor, init values
 	SParams();
 };
 
-const static SParams gPar;
+extern SParams gPar;

@@ -138,6 +138,17 @@ void CarModel::Load(int startId, bool loop)
 		//  🏁 start pos
 		auto st = pApp->scn->sc->GetStart(i, loop);
 		auto pos = st.first;  auto rot = st.second;
+
+		if (gPar.carPrv > 0)  // car preview poses
+		{	rot = QUATERNION<float>(2.23517e-007, -1.34779e-007, 0.997519, 0.0704623);
+		switch (gPar.carPrv)
+		{  	//  near, normal
+			case 1:  pos = MATHVECTOR<float,3>(-44.794, 106.05, 2.47537);  break;
+		  	//  far, for big vehicles:  U8 MO TW
+			case 2:  pos = MATHVECTOR<float,3>(-43.7288, 105.017, 2.47537);  break;
+			//  close, for small  BE-
+			case 3:  pos = MATHVECTOR<float,3>(-45.5525, 106.544, 2.47537);  break;
+		}	}
 		
 		vStartPos = Vector3(pos[0], pos[2], -pos[1]);
 		if (pSet->game.track_reversed)

@@ -43,7 +43,7 @@ void CGui::btnNewGame(WP wp)
 		s = s.substr(s.length()-1,1);
 		bool force = s=="3" || s=="4";
 	}*/
-	bool force = 1;
+	bool force = 1;  //; fixme 0 on same track and game type
 	app->NewGame(force);  app->isFocGui = false;  // off gui
 	app->mWndOpts->setVisible(app->isFocGui);
 	app->mWndRpl->setVisible(false);  app->mWndRplTxt->setVisible(false);//

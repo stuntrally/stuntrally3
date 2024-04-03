@@ -117,6 +117,8 @@ hlms graph3  unlit : graphB {  diffuse 1.0 1.0 0.0  }
 hlms graph4  unlit : graphB {  diffuse 1.0 0.5 0.0  }
 hlms graph5  unlit : graphB {  diffuse 1.0 0.0 0.0  }
 hlms graph6  unlit : graphB {  diffuse 1.0 1.0 1.0  }
+hlms graph7  unlit : graphB {  diffuse 1.0 0.5 1.0  }
+hlms graph8  unlit : graphB {  diffuse 0.5 0.5 1.0  }
 
 hlms graphA0 unlit : graphB {  diffuse 0.9 1.0 1.0  }
 hlms graphA1 unlit : graphB {  diffuse 0.8 1.0 1.0  }

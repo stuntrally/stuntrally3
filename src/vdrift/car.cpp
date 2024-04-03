@@ -182,11 +182,8 @@ void CAR::HandleInputs(const std::vector <float> & inputs, float dt)
 		float brake = !rear ? inputs[CARINPUT::BRAKE] : inputs[CARINPUT::THROTTLE];
 		dynamics.SetBrake(brake);
 	}
-	#ifdef CAR_PRV
-	dynamics.SetHandBrake(1.f);
-	#else
-	dynamics.SetHandBrake(inputs[CARINPUT::HANDBRAKE]);
-	#endif
+	//  Hand brake
+	dynamics.SetHandBrake(gPar.carPrv ? 1.f : inputs[CARINPUT::HANDBRAKE]);
 	
 	//  boost, flip over
 	if (!bRemoteCar)

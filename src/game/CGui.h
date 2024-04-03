@@ -77,7 +77,6 @@ public:
 	///-----------------------------------------------------------------------------------------------------------------
 
 	MyGUI::IntCoord GetViewSize();
-	void InitCarPrv();
 
 	WP graphV =0, graphS =0;
 	MyGUI::PolygonalSkin* graphVel =0,*graphVGrid =0, *graphSSS =0,*graphSGrid =0;
@@ -285,6 +284,7 @@ public:
 	Ck ckTireVis;  //, ckCarDbgBars;
 	Ck ckCarDbgTxt, ckCarDbgSurf;  void chkHudCreate(Ck*);
 	SV svDbgTxtClr, svDbgTxtCnt;
+	SV svCarPrv;
 
 
 	/// 📊 Options  game only

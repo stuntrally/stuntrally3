@@ -364,7 +364,7 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 	{
 		UpdateWheelVelocity();
 
-		ApplyEngineTorqueToBody();
+		ApplyEngineTorqueToBody();  //-
 
 		ApplyAerodynamicsToBody(dt);
 	}
@@ -669,6 +669,7 @@ void CARDYNAMICS::SimulateHover(Dbl dt)
 	//  steer  < >
 	bool rear = sv[0] > 0.0;
 	Dbl rr = 1.0 + h; //std::max(-1.0, std::min(1.0, -sv[0] * 0.4));  //par..
+	if (gPar.carPrv > 0)  rr = 0.0;
 
 	MATHVECTOR<Dbl,3> t(0,0, -1000.0 * rr * ups * hov.steerForce * steerValue * dmgE);
 	Orientation().RotateVector(t);
@@ -685,18 +686,31 @@ void CARDYNAMICS::SimulateHover(Dbl dt)
 	Dbl brk = brake[0].GetBrakeFactor() * (1.0 - h);
 	float f = hov.engineForce * velMul * hov_throttle
 			- hov.brakeForce * (rear ? velMulR : 1.f) * brk;
+	if (gPar.carPrv > 0)  f = 0.0;
 
 	MATHVECTOR<Dbl,3> vf(body.GetMass() * f * dmgE, 0, 0);
 	Orientation().RotateVector(vf);
 	ApplyForce(vf);
 
-	Dbl low = 12.0 + h * 52.0;  // par  down force ..
+	Dbl low = gPar.carPrv ? 12.0 :
+		12.0 + h * 52.0;  // par  down force ..
 	MATHVECTOR<Dbl,3> vg(0, 0,
 		-body.GetMass() * low * dmgE);
 	ApplyForce(vg);
 
 	//  todo  h > 0  align to ter normal ..
 
+	//  handbrake damping stop-
+	if (gPar.carPrv > 0)
+	{
+		MATHVECTOR<Dbl,3> sv = GetVelocity();
+		// (-Orientation()).RotateVector(sv);
+		ApplyForce(sv * -10000.f);
+
+		MATHVECTOR<Dbl,3> av = GetAngularVelocity();
+		ApplyTorque(av * -10000.f);
+		return;
+	}
 
 	//  side, vel damping  --
 	sv[0] *= hov.dampAirRes;
@@ -839,7 +853,7 @@ void CARDYNAMICS::SimulateSpaceship(Dbl dt)
 	float fd =            // free fall : below, anti gravity rising
 		-(vz < 0.f ? hov.hov_damp * vz : hov.hov_dampUp * vz);  // -10 -2  damp | vel
 	
-	suspension[1].velocity =  vz * 0.05;   // grn top  for graphs
+	suspension[1].velocity =  vz * 0.05;   // grn top  for graphs, vis only`
 	suspension[2].velocity = -fd * 0.006;  // ylw top
 	//suspension[3].velocity = vz < 0.f ? -0.5 : 1;
 

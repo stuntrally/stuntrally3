@@ -213,6 +213,9 @@ void App::NewGame(bool force, bool perfTest)
 	{
 		///* 👥 copy game config from gui *
 		pSet->game = pSet->gui;
+		if (gPar.carPrv > 0)
+			pSet->game.track = "Sav8-SlowFrenzy";
+		
 		//  👀 set VR, only 1 player
 		pSet->game.vr_mode = pSet->vr_mode;
 		if (pSet->game.vr_mode)

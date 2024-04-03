@@ -287,14 +287,12 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	}
 	
 	//  🔴 brake state
-	#ifndef CAR_PRV
 	bool braking = posInfo.braking > 0;
-	if (bBraking != braking)
+	if (bBraking != braking  && gPar.carPrv == 0)
 	{
 		bBraking = braking;
 		UpdateBraking();
 	}
-	#endif
 
 	//  💡 Lights front 🚗
 	if (pCar)

@@ -848,6 +848,7 @@
 	<Tag name="ProfilerTxt">Profiler times text </Tag>
 	<Tag name="TextColor">Text color</Tag>
 	<Tag name="DevKeys">Developer keys. Ctrl-F global, Alt-shift-.. load test tracks.</Tag>
+	<Tag name="CarPreview">Force car preview</Tag>
 
 	<!--  Settings  startup  -->
 	<Tag name="Startup">Startup</Tag>
