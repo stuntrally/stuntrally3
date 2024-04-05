@@ -72,7 +72,7 @@ engineVelDec = 0.005
 brakeForce  = 15
 
 dampAirRes = 72
-dampSide = 800
+dampSide = 600
 dampUp = 1050
 dampDn = 3150
 dampPmul = 2.86
