@@ -182,15 +182,13 @@ void CarModel::LoadConfig(const string & pathCar)
 
 	//  vehicle type
 	vType = V_Car;
-	string drive;
-	cf.GetParam("drive", drive);
-
-	if (drive == "hover")  //>
-		vType = V_Spaceship;
-	else if (drive == "sphere")
-		vType = V_Sphere;
-	else if (drive == "craft")
-		vType = V_Hover;
+	string type;
+	if (!cf.GetParam("type", type))	vType = V_Car;
+	else if (type == "spaceship")	vType = V_Spaceship;
+	else if (type == "sphere")		vType = V_Sphere;
+	else if (type == "hovercar")	vType = V_Hovercar;
+	else if (type == "drone")		vType = V_Drone;
+	else if (type == "hovercraft")	vType = V_Hovercraft;
 
 
 	//  wheel count

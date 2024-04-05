@@ -1,4 +1,4 @@
-drive = craft
+type = drone
 wheels = 4
 # all positions have x,y,z dir going + to: right, front, up
 

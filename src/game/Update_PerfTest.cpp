@@ -58,7 +58,7 @@ void App::newPerfTest(float time)
 		case PT_StartWait:
 		{
 			//  wheels still count
-			int whStill = cd.vtype == V_Spaceship || cd.vtype == V_Hover ? 4 : 0;
+			int whStill = cd.vtype == V_Spaceship || cd.isHover() ? 4 : 0;
 			for (int i=0; i < cd.numWheels; ++i)
 			{
 				WHEEL_POSITION wp = (WHEEL_POSITION)i;

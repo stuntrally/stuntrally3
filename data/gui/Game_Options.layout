@@ -1629,7 +1629,7 @@
 							<Property key="Colour" value="0.2 1.0 1.0"/>
 						</Widget>
 
-						<Widget type="Button" skin="CheckBox" position="388 236 256 24">
+						<Widget type="TextBox" skin="TextBox" position="388 236 256 24">
 							<Property key="Caption" value="#{CarPreview}"/>
 							<Property key="TextColour" value="0.5 0.55 1.0"/>
 						</Widget>

@@ -292,7 +292,7 @@ void CarModel::Create()
 	vPofs = Vector3::ZERO;
 	CreatePart(ndCar, vPofs, sCar, res, "_glass.mesh",    mtrId, ghost, RV_CarGlass, 0, bLogInfo);
 	
-	bool sphere = vType == V_Sphere, hover = vType == V_Hover;
+	bool sphere = vType == V_Sphere, hover = isHover();
 
 
 	//  💡 car lights  ----------------------

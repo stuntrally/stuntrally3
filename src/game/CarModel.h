@@ -48,6 +48,8 @@ public:
 	bool isGhostTrk() const {  return cType == CT_TRACK;  }
 	void SetNumWheels(int n);
 	bool hasRpm()     const {  return vType == V_Car;  }
+	bool isHover()    const
+	{	return vType == V_Hovercar || vType == V_Hovercraft || vType == V_Drone;  }
 	
 
 	//  🌟 ctor  ----

@@ -86,7 +86,7 @@ void CARDYNAMICS::SetClutch(float value)
 
 float CARDYNAMICS::GetThrottle() const
 {
-	if (vtype == V_Spaceship || vtype == V_Hover)
+	if (vtype == V_Spaceship || isHover())
 		return hov_throttle;  //
 	return engine.GetThrottle();
 }
@@ -321,14 +321,14 @@ void CARDYNAMICS::UpdateWheelTransform()
 	}
 }
 
-void CARDYNAMICS::SetDrive(const std::string & newdrive)
+void CARDYNAMICS::SetDrive(const std::string & s)
 {
-		 if (newdrive == "RWD")  drive = RWD;
-	else if (newdrive == "FWD")  drive = FWD;
-	else if (newdrive == "AWD")  drive = AWD;
-	else if (newdrive == "6WD")  drive = WD6;
-	else if (newdrive == "8WD")  drive = WD8;
-	else  assert(0);
+		 if (s == "RWD")  drive = RWD;
+	else if (s == "FWD")  drive = FWD;
+	else if (s == "AWD")  drive = AWD;
+	else if (s == "6WD")  drive = WD6;
+	else if (s == "8WD")  drive = WD8;
+	else  drive = AWD;
 }
 
 void CARDYNAMICS::AddMassParticle(Dbl newmass, MATHVECTOR<Dbl,3> newpos)

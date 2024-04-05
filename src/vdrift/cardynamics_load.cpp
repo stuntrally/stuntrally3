@@ -107,7 +107,6 @@ bool CARDYNAMICS::Load(GAME* game, CONFIGFILE& c)
 		SetNumWheels(nw);
 
 	//bTerrain = false;
-	string drive = "RWD";
 	int version = 2;
 	c.GetParam("version", version);
 	if (version > 2)
@@ -223,22 +222,24 @@ bool CARDYNAMICS::Load(GAME* game, CONFIGFILE& c)
 		}
 	}
 
+	//load type  ----
+	string type;
+	if (!c.GetParam("type", type))	vtype = V_Car;
+	else if (type == "spaceship")	vtype = V_Spaceship;
+	else if (type == "sphere")		vtype = V_Sphere;
+	else if (type == "hovercar")	vtype = V_Hovercar;
+	else if (type == "drone")		vtype = V_Drone;
+	else if (type == "hovercraft")	vtype = V_Hovercraft;
+	
+	string drivet;
+	if (!c.GetParam("drive", drivet))  drivet = "AWD";
+	SetDrive(drivet);
+
+
 	//load differential(s)
-	string drivetype;
-	if (!c.GetParamE("drive", drivetype))  return false;
-
-	if (drivetype == "hover")  //>
-	{	vtype = V_Spaceship;  drivetype = "AWD";  }
-	else if (drivetype == "sphere")
-	{	vtype = V_Sphere;  drivetype = "AWD";  }
-	else if (drivetype == "craft")
-	{	vtype = V_Hover;  drivetype = "AWD";  }
-
-	SetDrive(drivetype);
-
 	float final, a, a_tq(0), a_tq_dec(0);
 	///  new 3 sets
-	if (drivetype == "AWD" &&
+	if (drive == AWD &&
 		c.GetParam("diff-center.final-drive", a))
 	{
 		c.GetParamE("diff-rear.anti-slip", a);
@@ -267,21 +268,21 @@ bool CARDYNAMICS::Load(GAME* game, CONFIGFILE& c)
 		c.GetParam("differential.torque", a_tq);
 		c.GetParam("differential.torque-dec", a_tq_dec);
 
-		if (drivetype == "RWD")
+		if (drive == RWD)
 		{
 			diff_rear.SetFinalDrive(final);		diff_rear.SetAntiSlip(a, a_tq, a_tq_dec);
 		}
-		else if (drivetype == "FWD")
+		else if (drive == FWD)
 		{
 			diff_front.SetFinalDrive(final);	diff_front.SetAntiSlip(a, a_tq, a_tq_dec);
 		}
-		else if (drivetype == "AWD")
+		else if (drive == AWD)
 		{
 			diff_rear.SetFinalDrive(1.0);		diff_rear.SetAntiSlip(a, a_tq, a_tq_dec);
 			diff_front.SetFinalDrive(1.0);		diff_front.SetAntiSlip(a, a_tq, a_tq_dec);
 			diff_center.SetFinalDrive(final);	diff_center.SetAntiSlip(a, a_tq, a_tq_dec);
 		}
-		else if (drivetype == "6WD")
+		else if (drive == WD6)
 		{
 			diff_front.SetFinalDrive(1.0);		diff_front.SetAntiSlip(a, a_tq, a_tq_dec);
 			diff_rear.SetFinalDrive(1.0);		diff_rear.SetAntiSlip(a, a_tq, a_tq_dec);
@@ -289,7 +290,7 @@ bool CARDYNAMICS::Load(GAME* game, CONFIGFILE& c)
 			diff_rear2.SetFinalDrive(1.0);		diff_rear2.SetAntiSlip(a, a_tq, a_tq_dec);
 			diff_center2.SetFinalDrive(final);	diff_center2.SetAntiSlip(a, a_tq, a_tq_dec);
 		}
-		else if (drivetype == "8WD")
+		else if (drive == WD8)
 		{
 			diff_front.SetFinalDrive(1.0);		diff_front.SetAntiSlip(a, a_tq, a_tq_dec);
 			diff_rear.SetFinalDrive(1.0);		diff_rear.SetAntiSlip(a, a_tq, a_tq_dec);

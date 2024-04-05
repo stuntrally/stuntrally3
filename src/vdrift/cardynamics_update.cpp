@@ -359,7 +359,7 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 
 
 	bool car = vtype == V_Car;
-	bool hover = vtype == V_Hover;
+	bool hover = isHover();
 	if (car)
 	{
 		UpdateWheelVelocity();
@@ -474,7 +474,7 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 	
 	
 	///  🚤 Hovercraft
-	if (vtype == V_Hover)
+	if (isHover())
 		SimulateHover(dt);
 	else
 	///  🚀 Spaceship
@@ -587,7 +587,9 @@ void CARDYNAMICS::UpdateWheelContacts()
 		raystart = raystart - raydir * wheel[i].GetRadius();// *0.5;  //*?!
 		float raylen = wheel[i].GetRayLength();
 		// 🎯 wheel cast ray
-		world->CastRay( raystart, raydir, raylen, chassis, wheelContact, this,i, !pSet->game.collis_cars, false );
+		world->CastRay( raystart, raydir, raylen,
+			chassis, wheelContact, this,i,
+			!pSet->game.collis_cars, false );
 	}
 }
 
@@ -652,6 +654,8 @@ void CARDYNAMICS::UpdateMass()
 ///..........................................................................................................
 void CARDYNAMICS::SimulateHover(Dbl dt)
 {
+	//vtype == V_Hovercar || vtype == V_Hovercraft || vtype == V_Drone
+
 	float dmg = fDamage > 50.f ? 1.f - (fDamage-50.f)*0.02f : 1.f;
 	float dmgE = 1.f - 0.2 * dmg;
 

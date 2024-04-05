@@ -183,6 +183,8 @@ public:
 	///  other vehicles  *  *  *
 	//----------------------------------
 	VehicleType vtype = V_Car;
+	bool isHover() const
+	{	return vtype == V_Hovercar || vtype == V_Hovercraft || vtype == V_Drone;  }
 
 	float sphereYaw = 0.f;  // 🔘 dir
 	float hov_throttle = 0.f, hov_roll = 0.f;  // 🚀 spc
@@ -190,7 +192,8 @@ public:
 	void SimulateSpaceship(Dbl dt), SimulateSphere(Dbl dt), SimulateHover(Dbl dt);
 	std::string sHov;
 
-	///  -- spaceship sim params (from .car)
+	///----  spaceship sim params (from .car)  ----
+	//  used all in SimulateSpaceship, few in SimulateSphere, few in SimulateHover
 	struct HoverPar
 	{
 		float hAbove, hRayLen;

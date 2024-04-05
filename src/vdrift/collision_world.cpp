@@ -349,11 +349,11 @@ bool COLLISION_WORLD::CastRay(
 	const btCollisionObject* caster,
 	COLLISION_CONTACT& contact,  //out
 	CARDYNAMICS* cd, int w, //out pCarDyn, nWheel
-	bool ignoreCars, bool camTilt/*or treat fluids as solid*/, bool camDist) const
+	bool ignoreCars, bool camTiltOrHover/*treat fluids as solid*/, bool camDist) const
 {
 	btVector3 from = ToBulletVector(origin);
 	btVector3 to = ToBulletVector(origin + direction* length);
-	MyRayResultCallback res(from, to, caster, ignoreCars, camTilt, camDist);
+	MyRayResultCallback res(from, to, caster, ignoreCars, camTiltOrHover, camDist);
 	
 	//  data to set
 	MATHVECTOR<float,3> pos, norm;  float dist;
@@ -409,7 +409,7 @@ bool COLLISION_WORLD::CastRay(
 					int mx = (pos[0] + 0.5*tws)/tws*t;  mx = std::max(0,std::min(t-1, mx));
 					int my = (pos[1] + 0.5*tws)/tws*t;  my = std::max(0,std::min(t-1, t-1-my));
 
-					int mtr = pApp->blendMtr[my*t + mx];// todo: in each td
+					int mtr = pApp->blendMtr[my*t + mx];//; todo: in each td
                     assert(mtr < td.layers.size());
 					int id = td.layersAll[td.layers[mtr]].surfId;
 					surf = &pApp->pGame->surfaces[id];

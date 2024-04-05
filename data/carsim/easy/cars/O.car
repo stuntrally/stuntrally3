@@ -1,4 +1,4 @@
-drive = sphere
+type = sphere
 # all positions have x,y,z dir going + to: right, front, up
 
 [ steering ]

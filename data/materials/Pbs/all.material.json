@@ -17106,6 +17106,7 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
+			"paint" : true,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
