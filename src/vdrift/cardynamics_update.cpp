@@ -589,7 +589,8 @@ void CARDYNAMICS::UpdateWheelContacts()
 		// 🎯 wheel cast ray
 		world->CastRay( raystart, raydir, raylen,
 			chassis, wheelContact, this,i,
-			!pSet->game.collis_cars, false );
+			!pSet->game.collis_cars,
+			vtype == V_Hovercraft );  // does not go underwater
 	}
 }
 
