@@ -4,13 +4,16 @@ The process of releasing and things that need to be checked before.
   * Fix crashes and critical bugs
   * Be sure the code works and there is nothing that would make it broken
   * Make sure all tools or debug logs in code are disabled
-  * Try a clean rebuild and check `make install`
+  * Try a clean rebuild _and check `make install`_?
 
 ### 2. Update
   * Content
-    * For new tracks: make track's ghosts, add to ini, champs and challs xmls (all in config/)
-    * Run editor tools to check tracks (errors, presets, etc): ToolSceneXml, ToolTracksWarnings meh
-    * For new cars: check in-car cameras, perf test, easy sim, etc
+    * For new **tracks**: make [tracks ghosts](Editor.md#steps-after),  
+      add to [ini](../config/tracks.ini), [champs](../config/championships.xml) and [challs](../config/challenges.xml) xmls (all in config/)
+    * Run editor tools to check tracks (errors, presets, etc): ToolSceneXml, ToolTracksWarnings  
+      by starting with arguments `sr-editor3 scene` and `sr-editor3 warnings`
+    * For new **cars**: check in-car cameras, boost and flare pos, perf tests, easy sim, etc  
+      also either add to champs and challs or make new ones for them
   * `Readme.txt` (links, track count, etc)
   * Version numbers
     * in Gui, file `*_en.tag.xml`, tag `name="GameVersion"`

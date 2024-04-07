@@ -1,5 +1,6 @@
 ![](/data/hud/stuntrally-logo.jpg)
 
+[![Build game](https://github.com/stuntrally/stuntrally3/actions/workflows/build-game.yml/badge.svg)](https://github.com/stuntrally/stuntrally3/actions/workflows/build-game.yml)
 [![Translation status](https://hosted.weblate.org/widget/stunt-rally-3/stunt-rally-3/svg-badge.svg)](https://hosted.weblate.org/engage/stunt-rally-3/)
 ![Last commit date](https://flat.badgen.net/github/last-commit/stuntrally/stuntrally3)
 ![Commits count](https://flat.badgen.net/github/commits/stuntrally/stuntrally3)
@@ -14,7 +15,7 @@
 
 📚[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md) - is now inside docs/, Information on many pages  
 🖼️[Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from all versions and development  
-▶️[Videos](https://www.youtube.com/user/TheCrystalHammer) - from gameplay and (old) editor  
+▶️[Videos](https://www.youtube.com/user/TheCrystalHammer) - from gameplay and editor  
 💜[Donations](https://cryham.tuxfamily.org/donate/) - financial support
 
 ------------------------------------------------------------------------------
