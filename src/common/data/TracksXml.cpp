@@ -128,14 +128,14 @@ bool TracksIni::LoadIni(string file, bool check)
 		{
 		//114,Fin1-Lakes  v=2.0 06/04/13 07/04/13 :Finland  |o0 w1 ~1 J2 L0 P0 /1 s1 l2 !2 *4  T=107.8  a:CH
 			sscanf(s,
-			"%d,%s v%f %d/%d/%d %d/%d/%d :%s |o%d c%d w%d ~%d J%d L%d P%d /%d s%d n%d l%d !%d *%d  T=%f a:%s"
+			"%d,%s v%f %d/%d/%d %d/%d/%d :%s |o%d c%d w%d ~%d J%d L%d P%d /%d s%d u%d n%d l%d !%d *%d  T=%f a:%s"
 				,&t.n, name, &t.crtver
 					,&t.created.day, &t.created.month, &t.created.year
 					,&t.modified.day, &t.modified.month, &t.modified.year
 				,scenery
-				,&t.objects, &t.obstacles
-				,&t.fluids, &t.bumps, &t.jumps, &t.loops, &t.pipes
-				,&t.banked, &t.frenzy, &t.narrow, &t.longn, &t.diff, &t.rating
+				,&t.objects, &t.obstacles,  &t.fluids, &t.bumps,  &t.jumps, &t.loops, &t.pipes
+				,&t.banked, &t.frenzy, &t.underwater
+				,&t.narrow, &t.longn,  &t.diff, &t.rating
 				,&time, author);
 
 			t.name = name;
@@ -305,8 +305,10 @@ bool CarsXml::LoadXml(string file)
 		a = eCar->Attribute("y");  if (a)  c.year = s2i(a);
 		a = eCar->Attribute("o");  if (a)  c.wheels = s2i(a);
 		
-		a = eCar->Attribute("r");  if (a)  c.rating = s2i(a);
 		a = eCar->Attribute("w");  if (a)  c.width = s2i(a);
+		a = eCar->Attribute("u");  if (a)  c.underwater = s2i(a);
+
+		a = eCar->Attribute("r");  if (a)  c.rating = s2i(a);
 		a = eCar->Attribute("d");  if (a)  c.diff = s2i(a);
 
 		a = eCar->Attribute("e");  if (a)  c.easy = fEasy * s2r(a);

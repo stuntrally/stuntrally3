@@ -152,7 +152,7 @@ void CGuiCom::AddTrkL(std::string name, int user,
 	li->setSubItemNameAt(13,l,toS("#00FFFF",ti->loops));
 	li->setSubItemNameAt(14,l,toS("#FFFF00",ti->pipes));
 	li->setSubItemNameAt(15,l,toS("#C0C0C0",ti->banked));
-	li->setSubItemNameAt(16,l,toS("#C080FF",ti->frenzy));
+	li->setSubItemNameAt(16,l,toS("#C080FF",ti->frenzy));  //.. not: ti->narrow  ti->underwater
 	li->setSubItemNameAt(17,l,toS(getClrSum(ti->sum/2), ti->sum));
 	li->setSubItemNameAt(18,l,toS(getClrLong(ti->longn), ti->longn));
 	if (ui)  {  // user

@@ -39,6 +39,7 @@ float CData::GetDrivability(std::string car, std::string trk, bool track_user)
 	undrv += 1.1f * ci.jumps /3.f * ti.jumps /4.f;
 	undrv += 1.1f * ci.loops /4.f * ti.loops; // /5.f;
 	undrv += 1.4f * ci.pipes /4.f * ti.pipes /4.f;
+	undrv += 1.4f * ci.underwater * ti.underwater;
 
 	bool wnt = (ti.scenery == "Winter") || (ti.scenery == "WinterWet");
 	if (wnt && ci.wheels >= 2)  // too slippery for fast cars

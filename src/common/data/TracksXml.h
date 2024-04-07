@@ -32,8 +32,9 @@ public:
 	Date created, modified;
 
 	//  track characteristics  (byte)
+	int objects =0, obstacles =0;
 	int fluids =0, bumps =0,  jumps =0, loops =0, pipes =0;
-	int	banked =0, frenzy =0,  narrow =0, longn =0,  objects =0, obstacles =0;
+	int	banked =0, frenzy =0,  underwater =0,  narrow =0, longn =0;
 	int diff =0, rating =0,  sum =0;
 
 	int nn =0;  // number got from name eg. for Des15-.. it is 15
@@ -91,10 +92,12 @@ public:
 
 	float speed = 5.f;
 	int year = 2015, wheels = 4;
-	int width = 3, rating = 5, diff = 3;
+	int width = 3;  // used in CData::GetDrivability, with tracks.ini narrow
+	int rating = 5, diff = 3;
 	
 	//  intolerance of these, for track fitness
 	int bumps = 0, jumps = 0, loops = 0, pipes = 0;
+	int underwater = 0;  // 1 if cant go,  used with tracks.ini underwater
 	
 	//  time mul factors, for race postion, in sim modes
 	float easy = 0.96f, norm = 1.f;
