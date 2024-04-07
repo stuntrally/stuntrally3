@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-07 22:18+0200\n"
+"POT-Creation-Date: 2024-04-07 23:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1431,55 +1431,55 @@ msgid "Track Drivability"
 msgstr ""
 
 #. MAIN  Vehicle basic stats 
-#: src/game/Gui_UtilCar.cpp:282
+#: src/game/Gui_UtilCar.cpp:284
 msgctxt "Undrivable"
 msgid "Undrivable"
 msgstr ""
 
 #. MAIN  Vehicle Stats 
-#: src/game/Gui_UtilCar.cpp:427
+#: src/game/Gui_UtilCar.cpp:429
 msgctxt "Car_Mass"
 msgid "Mass"
 msgstr ""
 
 #. MAIN  Vehicle Stats 
-#: src/game/Gui_UtilCar.cpp:430
+#: src/game/Gui_UtilCar.cpp:432
 msgctxt "Car_MassFront"
 msgid "Mass on front"
 msgstr ""
 
 #. MAIN  Vehicle Stats 
-#: src/game/Gui_UtilCar.cpp:434
+#: src/game/Gui_UtilCar.cpp:436
 msgctxt "Car_MaxTorque"
 msgid "Max Torque"
 msgstr ""
 
 #. MAIN  Vehicle Stats 
-#: src/game/Gui_UtilCar.cpp:437
+#: src/game/Gui_UtilCar.cpp:439
 msgctxt "Car_MaxPower"
 msgid "Max Power"
 msgstr ""
 
 #. MAIN  Vehicle Stats 
-#: src/game/Gui_UtilCar.cpp:440
+#: src/game/Gui_UtilCar.cpp:442
 msgctxt "Car_BhpPerTon"
 msgid "Bhp per tonne"
 msgstr ""
 
 #. MAIN  Vehicle Stats 
-#: src/game/Gui_UtilCar.cpp:448
+#: src/game/Gui_UtilCar.cpp:450
 msgctxt "Car_TopSpeed"
 msgid "Top Speed"
 msgstr ""
 
 #. MAIN  Vehicle Stats 
-#: src/game/Gui_UtilCar.cpp:456:460:464
+#: src/game/Gui_UtilCar.cpp:458:462:466
 msgctxt "Car_TimeTo"
 msgid "Time to"
 msgstr ""
 
 #. MAIN  Vehicle Stats 
-#: src/game/Gui_UtilCar.cpp:468
+#: src/game/Gui_UtilCar.cpp:470
 msgctxt "Car_StopTimeFrom"
 msgid "Stop time from"
 msgstr ""
@@ -1660,7 +1660,7 @@ msgstr ""
 #: :1517..SingleRace.Setup.Steering.Text
 #: data/gui/Game_Options.layout:405
 #: ..Options.View.HUD.Button
-#: src/game/Gui_UtilCar.cpp:445
+#: src/game/Gui_UtilCar.cpp:447
 #: src/common/GuiCom_Track.cpp:480
 msgctxt "UnitKmh"
 msgid "km/h"
@@ -1669,7 +1669,7 @@ msgstr ""
 #. Units 
 #: data/gui/Game_Options.layout:409
 #: ..Options.View.HUD.Button
-#: src/game/Gui_UtilCar.cpp:446
+#: src/game/Gui_UtilCar.cpp:448
 #: src/common/GuiCom_Track.cpp:480
 msgctxt "UnitMph"
 msgid "mph"
@@ -1711,31 +1711,31 @@ msgid "MB"
 msgstr ""
 
 #. Units 
-#: src/game/Gui_UtilCar.cpp:428
+#: src/game/Gui_UtilCar.cpp:430
 msgctxt "UnitKg"
 msgid "kg"
 msgstr ""
 
 #. Units 
-#: src/game/Gui_UtilCar.cpp:435
+#: src/game/Gui_UtilCar.cpp:437
 msgctxt "UnitNm"
 msgid "Nm"
 msgstr ""
 
 #. Units 
-#: src/game/Gui_UtilCar.cpp:435:438:454
+#: src/game/Gui_UtilCar.cpp:437:440:456
 msgctxt "at"
 msgid "at"
 msgstr ""
 
 #. Units 
-#: src/game/Gui_UtilCar.cpp:435:438
+#: src/game/Gui_UtilCar.cpp:437:440
 msgctxt "UnitRpm"
 msgid "rpm"
 msgstr ""
 
 #. Units 
-#: src/game/Gui_UtilCar.cpp:438
+#: src/game/Gui_UtilCar.cpp:440
 msgctxt "UnitBhp"
 msgid "bhp"
 msgstr ""
@@ -1743,7 +1743,7 @@ msgstr ""
 #. Units 
 #: data/gui/Game.layout:564
 #: ..SingleRace.Vehicle.Text
-#: src/game/Gui_UtilCar.cpp:454:457:461:465:469
+#: src/game/Gui_UtilCar.cpp:456:459:463:467:471
 msgctxt "UnitS"
 msgid "s"
 msgstr ""
@@ -8950,9 +8950,9 @@ msgid "Fast racing hovercraft, powered with two propellers and engines. One for 
 msgstr ""
 
 #. Car descriptions 
-#: src/game/Gui_UtilCar.cpp:258
+#: src/game/Gui_UtilCar.cpp:256
 msgctxt "CarDesc_Hovercraft"
-msgid "Does hover over water always."
+msgid "Does hover over water, but can be forced under if on side."
 msgstr ""
 
 #. Car descriptions 
@@ -8971,13 +8971,14 @@ msgid "Antigravity hovering car. Long, fast, easy to drive. Suited for all track
 msgstr ""
 
 #. Car descriptions 
+#: src/game/Gui_UtilCar.cpp:258
 msgctxt "CarDesc_HoverHandbrake"
 msgid "Handbrake pushes down and lets steer more."
 msgstr ""
 
 #. Car descriptions 
 msgctxt "CarDesc_Q1"
-msgid "First working prototype of antigravity hovering drone. Not very fast. Suited for all tracks and stunts. With handbrake goes down and steers faster."
+msgid "First working prototype of antigravity hovering drone. Not very fast."
 msgstr ""
 
 #. Car descriptions 
@@ -8986,8 +8987,9 @@ msgid "Incredibly fast antigravity drone. Very agile, needs quick reactions. Pre
 msgstr ""
 
 #. Car descriptions 
-msgctxt "CarDesc_Drone"
-msgid "This antigravity ignores all fluids completely."
+#: src/game/Gui_UtilCar.cpp:260
+msgctxt "CarDesc_HoverFluids"
+msgid "By antigravity it ignores all fluids completely."
 msgstr ""
 
 #. TIP  Hints title+text  (in How To Play) 

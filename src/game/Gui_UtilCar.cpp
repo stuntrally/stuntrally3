@@ -234,7 +234,7 @@ void CGui::listCarChng(MultiList2* li, size_t)
 	String sd = String("#BFD3E5")+TR("#{CarDesc_"+sListCar+"}");
 
 	//  car info
-	bool car = true;
+	bool car = true;  // engine info
 	int id = data->cars->carmap[sListCar];
 	if (id > 0 && txCarSpeed && barCarSpeed)
 	{	const CarInfo& ci = data->cars->cars[id-1];
@@ -253,8 +253,12 @@ void CGui::listCarChng(MultiList2* li, size_t)
 		//  hide engine bhp
 		if (ci.type == "Spaceship" || ci.type == "Other")
 		{	car = false;  sd += TR("#E0E060 \n#{CarDesc_Pipes}");  }  // warn pipes
+		if (ci.type == "Hovercraft")
+		{	sd += TR("#80C0FF #{CarDesc_Hovercraft}");  }
 		if (ci.type == "Hover" || ci.type == "Drone")
-		{	car = false;  }
+		{	car = false;  sd += TR("#9090FF #{CarDesc_HoverHandbrake}");  }
+		if (ci.type == "Hover" || ci.type == "Drone")
+		{	car = false;  sd += TR("#4090F0 #{CarDesc_HoverFluids}");  }
 
 		float v = std::max(0.f, 1.f - ci.speed/13.f);
 		barCarSpeed->setImageCoord(IntCoord(v*128.f,0,128,16));

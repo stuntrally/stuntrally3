@@ -395,7 +395,7 @@
 	<Tag name="TipCarType">Vehicle type, primary destination. Some can still be used on gravel even if not meant for it.</Tag>
 	<Tag name="TipCarYear">Year when this vehicle's production started.</Tag>
 	<Tag name="TipCarDifficulty">Vehicle handling difficulty. Higher values require more skill driving this vehicle well on tracks, and bring more trouble.</Tag>
-	<Tag name="TipCarWidth">Year when this vehicle's production started.</Tag>
+	<Tag name="TipCarWidth">Rating of vehicle's width. Higher values mean more trouble in narrow tracks.</Tag>
 	
 	<Tag name="TipDrivability">Drivability tells how well will vehicle drive on track. If undrivable, best to change vehicle. Many vehicles can't handle certain track properties. Gravel type cars handle all tracks well.</Tag>
 	<Tag name="TipRating">Quality rating. Higher values mean: well made, playable, good looking and interesting design.</Tag>
@@ -1669,15 +1669,18 @@
 	<Tag name="CarDesc_O">An experimental, perfectly stabilized, rotating sphere. Uses advanced spacecraft propulsion to easily move in any direction. Very fast but very bouncy.</Tag>
 	<Tag name="CarDesc_Pipes">NOTE: Currently impossible to use in pipes.</Tag>
 
-	<Tag name="CarDesc_H1">Slow hovercraft, powered with only one propeller for hovering and thrust. Medium speed. Goes sideways much after turning. Brakes added. Does hover over water. Fun to drive but very loud and inefficient.</Tag>
-	<Tag name="CarDesc_H2">Fast racing hovercraft, powered with two propellers and engines. One for hovering and separate for thrust. Fast speed and goes less sideways. Brakes added. Does hover over water. Fun to drive and do stunts.</Tag>
+	<Tag name="CarDesc_H1">Slow hovercraft, powered with only one propeller for hovering and thrust. Slower speed. Goes sideways much after turning. Needs boost to jump over. Fun to drive but very loud and inefficient. Brakes added.</Tag>
+	<Tag name="CarDesc_H2">Fast racing hovercraft, powered with two propellers and engines. One for hovering and separate for thrust. Normal speed and still goes sideways but less. May need boost to jump over. Fun to drive and do stunts. Brakes added.</Tag>
+	<Tag name="CarDesc_Hovercraft">Does hover over water, but can be forced under if on side.</Tag>
 
-	<Tag name="CarDesc_R1">Latest antigravity stabilized hovering car. Fast and rather easy to drive. Somewhat big and bulky. Suited for all tracks and stunts.</Tag>
-	<Tag name="CarDesc_R2">Antigravity hovering car. Small, fast, agile and easy to drive. Suited for all tracks and stunts.</Tag>
+	<Tag name="CarDesc_R1">First antigravity hovering car. Fast and rather easy to drive. But somewhat big and bulky, goes more sideways.</Tag>
+	<Tag name="CarDesc_R2">Antigravity hovering car. Small, fast, agile and easy to drive. For all tracks and stunts.</Tag>
 	<Tag name="CarDesc_R3">Antigravity hovering car. Long, fast, easy to drive. Suited for all tracks and stunts.</Tag>
+	<Tag name="CarDesc_HoverHandbrake">Handbrake pushes down and lets steer more.</Tag>
 
-	<Tag name="CarDesc_Q1">First working prototype of antigravity hovering drone. Not very  fast. Suited for all tracks and stunts.</Tag>
+	<Tag name="CarDesc_Q1">First working prototype of antigravity hovering drone. Not very fast.</Tag>
 	<Tag name="CarDesc_Q3">Incredibly fast antigravity drone. Very agile, needs quick reactions. Press throttle sparingly and briefly at first.</Tag>
+	<Tag name="CarDesc_HoverFluids">By antigravity it ignores all fluids completely.</Tag>
 
 	
 	<!--  TIP  Hints title+text  (in How To Play)  -->
