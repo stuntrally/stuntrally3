@@ -40,7 +40,9 @@ void CARDYNAMICS::Update()
 	chassisRotation.RotateVector(com);
 	chassisPosition = chassisCenterOfMass - com;
 	
-	UpdateBuoyancy();
+	//V*  these ignore fluids by antigravity
+	if (!(vtype == V_Hovercar || vtype == V_Drone))
+		UpdateBuoyancy();
 }
 
 ///  🌊 Buoyancy ................................................................................................
@@ -474,7 +476,7 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 	
 	
 	///  🚤 Hovercraft
-	if (isHover())
+	if (isHover())  //V*
 		SimulateHover(dt);
 	else
 	///  🚀 Spaceship

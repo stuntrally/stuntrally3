@@ -183,7 +183,7 @@ public:
 	///  other vehicles  *  *  *
 	//----------------------------------
 	VehicleType vtype = V_Car;
-	bool isHover() const
+	bool isHover() const  //V*
 	{	return vtype == V_Hovercar || vtype == V_Hovercraft || vtype == V_Drone;  }
 
 	float sphereYaw = 0.f;  // 🔘 dir
