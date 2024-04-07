@@ -29,6 +29,8 @@
 	<Tag name="Options">Opcje</Tag>
 	<Tag name="Quit">Wyjdź</Tag>
 	<Tag name="BackMenu">Wstecz</Tag>
+	<Tag name="TrackEditor">Track Editor</Tag>
+	<Tag name="TipTrackEditor">Press to start the SR3 Track Editor, a separate program for creating and editing tracks. This will not close the game.</Tag>
 	<Tag name="Help">Pomoc</Tag>
 	<Tag name="Readme">Readme</Tag>
 	<Tag name="Support">Wsparcie</Tag>
@@ -126,6 +128,13 @@
 	<Tag name="Duck">Kaczka</Tag>
 	<Tag name="Hawk">Jastrząb</Tag>
 	<Tag name="Rabbit">Królik</Tag>
+	<Tag name="Python">Python</Tag>
+	<Tag name="Cobra">Cobra</Tag>
+	<Tag name="Eagle">Eagle</Tag>
+	<Tag name="Crow">Crow</Tag>
+	<Tag name="Falcon">Falcon</Tag>
+	<Tag name="Owl">Owl</Tag>
+	<Tag name="Sparrow">Sparrow</Tag>
 	<Tag name="Vehicle">Pojazd</Tag>
 	<Tag name="Vehicles">Pojazdy</Tag>
 	<Tag name="TipCarsList">Lista aut. Naciśnij Enter lub [Nowa Gra] by jechać wybranym.</Tag>
@@ -176,8 +185,10 @@
 	<Tag name="CarType_Terrain">Terenowy</Tag>
 	<Tag name="CarType_Extreme">Ekstremalny</Tag>
 	<Tag name="CarType_Other">Inny</Tag>
-	<Tag name="CarType_Hover">Poduszkowiec</Tag>
+	<Tag name="CarType_Hover">Hover</Tag>
+	<Tag name="CarType_Hovercraft">Hovercraft</Tag>
 	<Tag name="CarType_Spaceship">Statek kosmiczny</Tag>
+	<Tag name="CarType_Drone">Drone</Tag>
 	<Tag name="MessageBox_Ok">Ok</Tag>
 	<Tag name="MessageBox_Yes">Tak</Tag>
 	<Tag name="MessageBox_No">Nie</Tag>
@@ -275,7 +286,7 @@
 	<Tag name="TipCarType">Vehicle type, primary destination. Some can still be used on gravel even if not meant for it.</Tag>
 	<Tag name="TipCarYear">Rok w którym zaczęła się produkcja tego pojazdu.</Tag>
 	<Tag name="TipCarDifficulty">Vehicle handling difficulty. Higher values require more skill driving this vehicle well on tracks, and bring more trouble.</Tag>
-	<Tag name="TipCarWidth">Rok kiedy produkcja tego pojazdu się zaczęła.</Tag>
+	<Tag name="TipCarWidth">Rating of vehicle's width. Higher values mean more trouble in narrow tracks.</Tag>
 	<Tag name="TipDrivability">Przejezdność mówi jak dobrze pojazd będzie jechał po trasie. Jeśli nieprzejezdne, najlepiej zmienić pojazd. Wiele pojazdów nie daje rady z pewnymi elementami tras. Auta szutrowe radzą sobie dobrze ze wszystkimi trasami.</Tag>
 	<Tag name="TipRating">Ocena jakości. Wyższe wartości oznaczają: dobrze zrobione, grywalne, dobrze wyglądające i interesujący projekt.</Tag>
 	<Tag name="ChampEndCongrats">Gratulacje!</Tag>
@@ -596,6 +607,7 @@
 	<Tag name="ProfilerTxt">Czasy profilera </Tag>
 	<Tag name="TextColor">Kolor tekstu</Tag>
 	<Tag name="DevKeys">Developer keys. Ctrl-F global, Alt-shift-.. load test tracks.</Tag>
+	<Tag name="CarPreview">Force car preview</Tag>
 	<Tag name="Startup">Przy starcie</Tag>
 	<Tag name="MouseCapture">Przejmij mysz</Tag>
 	<Tag name="OgreDialog">Pokazuj dialog Ogre</Tag>
@@ -952,6 +964,11 @@
 	<Tag name="MaterialEditor">Edytor Materiałów</Tag>
 	<Tag name="TweakUser">Użytkownik</Tag>
 	<Tag name="TweakOriginal">Oryginalny</Tag>
+	<Tag name="Export">Export</Tag>
+	<Tag name="ExportOnLoad">Export after load</Tag>
+	<Tag name="ExportCopyData">Copy data to track on export</Tag>
+	<Tag name="PathRoRExport">Rigs of Rods content path</Tag>
+	<Tag name="PathOldSR">Path to Stunt Rally 2.x data</Tag>
 	<Tag name="InputHelp">Wejście/pomoc</Tag>
 	<Tag name="Shortcuts">Skróty</Tag>
 	<Tag name="InputMain">Główna</Tag>
@@ -1123,12 +1140,23 @@
 	<Tag name="CarDesc_SX">Bardzo dostosowany i mocny samochód. Może jeździć na wszystkich trasach. Nie najlepszy na wyboje. Może łatwo kręcić kołami w miejscu.</Tag>
 	<Tag name="CarDesc_PH">Another extremely powerful and fast car. Only for fast smooth tracks, due to length and low suspension.</Tag>
 	<Tag name="CarDesc_Y7">Ekstremalnie szybkie auto. Nie trzymaj gazu za długo. Jeździ dobrze tylko po szybkich, gładkich trasach.</Tag>
+	<Tag name="CarDesc_YG">Extremely fast car. Not long and quite agile. Bad on bumpy terrain. Can spin wheels easily, even on gravel.</Tag>
 	<Tag name="CarDesc_U6">Niesamowicie szybki, sześcio kołowy pojazd z zaawansowanym silnikiem elektrycznym. Świetny do wyścigów na wszystkich planetach. Uwaga: łatwo kręci kołami w miejscu, ma tylko 1 bieg. Ma również wysoki środek ciężkości i może skończyć kołami do góry, po złych skokach.</Tag>
 	<Tag name="CarDesc_V1">Statek kosmiczny przerobiony na poduszkowiec. Bardzo szybki i łatwy w prowadzeniu. Nie przeszkadają mu wyboje terenu. Ale jest mały i ślizga się bokiem.</Tag>
 	<Tag name="CarDesc_V2">Kolejny unoszący się statek. Trochę cięższy i wolniejszy, ale nie ślizga się bokiem tak łatwo.</Tag>
 	<Tag name="CarDesc_V3">Duży i ciężki statek. Bardzo dobre przyśpieszenie na początku i mocne hamowanie. Ale nie osiąga dużych prędkości.</Tag>
 	<Tag name="CarDesc_O">Eksperymentalna, idealnie stabilizowana, obracająca się sfera. Używa zaawansowanych napędów ze statków kosmicznych by łatwo poruszać się w dowolnym kierunku. Bardzo szybka ale bardzo skoczna.</Tag>
 	<Tag name="CarDesc_Pipes">UWAGA: Obecnie niemożliwe do użycia w rurach.</Tag>
+	<Tag name="CarDesc_H1">Slow hovercraft, powered with only one propeller for hovering and thrust. Slower speed. Goes sideways much after turning. Needs boost to jump over. Fun to drive but very loud and inefficient. Brakes added.</Tag>
+	<Tag name="CarDesc_H2">Fast racing hovercraft, powered with two propellers and engines. One for hovering and separate for thrust. Normal speed and still goes sideways but less. May need boost to jump over. Fun to drive and do stunts. Brakes added.</Tag>
+	<Tag name="CarDesc_Hovercraft">Does hover over water, but can be forced under if on side.</Tag>
+	<Tag name="CarDesc_R1">First antigravity hovering car. Fast and rather easy to drive. But somewhat big and bulky, goes more sideways.</Tag>
+	<Tag name="CarDesc_R2">Antigravity hovering car. Small, fast, agile and easy to drive. For all tracks and stunts.</Tag>
+	<Tag name="CarDesc_R3">Antigravity hovering car. Long, fast, easy to drive. Suited for all tracks and stunts.</Tag>
+	<Tag name="CarDesc_HoverHandbrake">Handbrake pushes down and lets steer more.</Tag>
+	<Tag name="CarDesc_Q1">First working prototype of antigravity hovering drone. Not very fast.</Tag>
+	<Tag name="CarDesc_Q3">Incredibly fast antigravity drone. Very agile, needs quick reactions. Press throttle sparingly and briefly at first.</Tag>
+	<Tag name="CarDesc_HoverFluids">By antigravity it ignores all fluids completely.</Tag>
 	<Tag name="Lesson">Lekcja</Tag>
 	<Tag name="DrivingSchool">Szkoła jazdy Stunt Rally</Tag>
 	<Tag name="LessonClick">naciśnij aby odtworzyć lekcje</Tag>
@@ -1313,10 +1341,7 @@
 	<Tag name="LANG_cs">Čeština</Tag>
 	<Tag name="LANG_nl_NL">Nederlands</Tag>
 	<Tag name="LANG_hu_HU">Magyar</Tag>
-	<Tag name="Export">Export</Tag>
-	<Tag name="PathRoRExport">Rigs of Rods content path</Tag>
-	<Tag name="ExportOnLoad">Export after load</Tag>
-	<Tag name="GameVersion">3.0.1</Tag>
+	<Tag name="GameVersion">3.0.5</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>
