@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-07 23:18+0200\n"
-"PO-Revision-Date: 2024-02-09 21:02+0000\n"
+"PO-Revision-Date: 2024-04-08 09:01+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/pl/>\n"
@@ -18,10 +18,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
-"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && ("
+"n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
 "n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -232,7 +232,7 @@ msgstr "Wstecz"
 #: data/gui/Game_Main.layout:92 ..StuntRally##{GameVersion}.Button
 msgctxt "TrackEditor"
 msgid "Track Editor"
-msgstr ""
+msgstr "Edytor Tras"
 
 #. MAIN  Menu 
 #: data/gui/Game_Main.layout:97 ..StuntRally##{GameVersion}.Button
@@ -241,6 +241,8 @@ msgid ""
 "Press to start the SR3 Track Editor, a separate program for creating and "
 "editing tracks. This will not close the game."
 msgstr ""
+"Naciśnij by uruchomić edytor tras SR3 Track Editor, osobny program do "
+"tworzenia i edycji tras. To nie zamknie gry."
 
 #. MAIN  Menu 
 #: data/gui/Editor_Help.layout:5 ..Window data/gui/Editor_Main.layout:63
@@ -485,6 +487,12 @@ msgid ""
 "on gravel. In Hard - cars rotate easier, and wheels spin already on gravel, "
 "good control is required."
 msgstr ""
+"Tryb symulacji zmienia jak realne są pojazdy i jak trudno się prowadzi. "
+"Również zmienia model uszkodzeń i jak szybko pojazdy się niszczą po "
+"uderzeniach. W trybie łatwym - pojazdy są wolne, ociężałe i ślizgają się "
+"mniej. W średnim - są szybkie, ślizgają się i kręcą kołami w miejscu na "
+"śniegu i mogą na szutrze. W trudnym - pojazdy obracają się łatwiej a koła "
+"kręcą w miejscu już na szutrze, dobra kontrola jest wymagana."
 
 #. MAIN  Track 
 #: data/gui/Common.layout:36 ..Window data/gui/Editor_Help.layout:228
@@ -871,37 +879,37 @@ msgstr "Królik"
 #. Car  Names  from animals 
 msgctxt "Python"
 msgid "Python"
-msgstr ""
+msgstr "Pyton"
 
 #. Car  Names  from animals 
 msgctxt "Cobra"
 msgid "Cobra"
-msgstr ""
+msgstr "Kobra"
 
 #. Car  Names  from animals 
 msgctxt "Eagle"
 msgid "Eagle"
-msgstr ""
+msgstr "Orzeł"
 
 #. Car  Names  from animals 
 msgctxt "Crow"
 msgid "Crow"
-msgstr ""
+msgstr "Kruk"
 
 #. Car  Names  from animals 
 msgctxt "Falcon"
 msgid "Falcon"
-msgstr ""
+msgstr "Sokół"
 
 #. Car  Names  from animals 
 msgctxt "Owl"
 msgid "Owl"
-msgstr ""
+msgstr "Sowa"
 
 #. Car  Names  from animals 
 msgctxt "Sparrow"
 msgid "Sparrow"
-msgstr ""
+msgstr "Wróbel"
 
 #. Vehicle 
 #: data/gui/Game.layout:374 ..SingleRace.Track.Text :494..SingleRace.Tab
@@ -1262,12 +1270,12 @@ msgstr "Inny"
 #. MAIN  Car types 
 msgctxt "CarType_Hover"
 msgid "Hover"
-msgstr ""
+msgstr "Unoszący"
 
 #. MAIN  Car types 
 msgctxt "CarType_Hovercraft"
 msgid "Hovercraft"
-msgstr ""
+msgstr "Poduszkowiec"
 
 #. MAIN  Car types 
 msgctxt "CarType_Spaceship"
@@ -1277,7 +1285,7 @@ msgstr "Statek kosmiczny"
 #. MAIN  Car types 
 msgctxt "CarType_Drone"
 msgid "Drone"
-msgstr ""
+msgstr "Dron"
 
 #. MsgBox 
 #: src/game/Gui_Network.cpp:415:487
@@ -1795,6 +1803,8 @@ msgid ""
 "Vehicle speed rating, more means faster car. Warning, on gravel too fast "
 "cars won't be faster because they don't have enough grip."
 msgstr ""
+"Klasyfikacja szybkości pojazdu, wyższa oznacza szybsze. Uwaga, na szutrze "
+"zbyt szybkie auta nie będą szybsze gdyż nie mają wymaganej przyczepności."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:769 ..SingleRace.Vehicle.Text :773
@@ -1803,6 +1813,8 @@ msgid ""
 "Vehicle type, primary destination. Some can still be used on gravel even if "
 "not meant for it."
 msgstr ""
+"Typ pojazdu, główne przeznaczenie. Niektóre auta mogą być używane na "
+"szutrze, nawet jeśli nie przeznaczone do tego."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:781 ..SingleRace.Vehicle.Text :786
@@ -1817,6 +1829,8 @@ msgid ""
 "Vehicle handling difficulty. Higher values require more skill driving this "
 "vehicle well on tracks, and bring more trouble."
 msgstr ""
+"Trudność kierowania pojazdem. Wyższe wartości wymagają więcej umiejętności "
+"by prowadzić ten pojazd na trasach, i sprawiają więcej kłopotów."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:838 ..SingleRace.Vehicle.Text :844
@@ -1824,6 +1838,8 @@ msgctxt "TipCarWidth"
 msgid ""
 "Rating of vehicle's width. Higher values mean more trouble in narrow tracks."
 msgstr ""
+"Ocena szerokości pojazdu. Wyższe wartości oznaczają więcej kłopotów na "
+"wąskich trasach."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:476 ..SingleRace.Track.Image
@@ -3952,7 +3968,7 @@ msgstr "Modele wegetacji"
 #: src/common/GuiCom_Options.cpp:243
 msgctxt "FPS_Workspaces"
 msgid "Workspaces"
-msgstr ""
+msgstr "Przestrzenie robocze"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:240:243
@@ -3996,7 +4012,7 @@ msgstr "Pełne info dźwięków w grafach."
 #: data/gui/Game_Options.layout:1460 ..Options.Settings.Check
 msgctxt "CacheMaterials"
 msgid "Cache Materials"
-msgstr ""
+msgstr "Buforuj materiały"
 
 #. Settings  cache, shaders 
 #: data/gui/Editor_Options.layout:958 ..Options.Settings.Settings.Check
@@ -4061,12 +4077,13 @@ msgstr "Kolor tekstu"
 msgctxt "DevKeys"
 msgid "Developer keys. Ctrl-F global, Alt-shift-.. load test tracks."
 msgstr ""
+"Klawisze dewelopera. Ctrl-F globalne, Alt-shift-.. wczytuje trasy testowe."
 
 #. Settings  car tweak visualizeations 
 #: data/gui/Game_Options.layout:1632 ..Options.Tweak.Advanced.Text
 msgctxt "CarPreview"
 msgid "Force car preview"
-msgstr ""
+msgstr "Wymuś podgląd pojazdu"
 
 #. Settings  startup 
 #: data/gui/Editor_Options.layout:927 ..Options.Settings.Settings.Text
@@ -6409,31 +6426,31 @@ msgstr "Oryginalny"
 #: data/gui/Editor_Track.layout:694 ..Track.Tab :698..Track.Export.Button
 msgctxt "Export"
 msgid "Export"
-msgstr ""
+msgstr "Eksport"
 
 #. Tweak 
 #: data/gui/Editor_Track.layout:968 ..Track.Export.Settings.Check
 msgctxt "ExportOnLoad"
 msgid "Export after load"
-msgstr ""
+msgstr "Eksportuj po wczytaniu"
 
 #. Tweak 
 #: data/gui/Editor_Track.layout:973 ..Track.Export.Settings.Check
 msgctxt "ExportCopyData"
 msgid "Copy data to track on export"
-msgstr ""
+msgstr "Kopiuj dane do trasy przy eksporcie"
 
 #. Tweak 
 #: data/gui/Editor_Track.layout:948 ..Track.Export.Settings.Text
 msgctxt "PathRoRExport"
 msgid "Rigs of Rods content path"
-msgstr ""
+msgstr "Ścieżka Rigs of Rods z zawartością"
 
 #. Tweak 
 #: data/gui/Editor_Track.layout:958 ..Track.Export.Settings.Text
 msgctxt "PathOldSR"
 msgid "Path to Stunt Rally 2.x data"
-msgstr ""
+msgstr "Ścieżka do danych Stunt Rally 2.x (data)"
 
 #. MAIN  Editor Input Gui 
 #: data/gui/Editor_Help.layout:18 ..Help.Tab
@@ -7419,6 +7436,9 @@ msgid ""
 "on all planets for whole team. It is fast but very long and can't do loops, "
 "pipes or jumps."
 msgstr ""
+"Wielki i ciężki pojazd do eksploracji z napędem na 8 kół, bliski autobusu. "
+"Świetny na wszystkich planetach dla całej grupy. Jest szybki ale bardzo "
+"długi i nie nadaje się do wyczynów jak pętle, rury i skoki."
 
 #. Car descriptions 
 msgctxt "CarDesc_MO"
@@ -7555,6 +7575,8 @@ msgid ""
 "Another extremely powerful and fast car. Only for fast smooth tracks, due to "
 "length and low suspension."
 msgstr ""
+"Kolejny ekstremalnie mocny i szybki samochód. Tylko do płaskich, gładkich "
+"tras, z powodu długości i niskiego zawieszenia."
 
 #. Car descriptions 
 msgctxt "CarDesc_Y7"
@@ -7571,6 +7593,8 @@ msgid ""
 "Extremely fast car. Not long and quite agile. Bad on bumpy terrain. Can spin "
 "wheels easily, even on gravel."
 msgstr ""
+"Ekstremalnie szybki samochód. Nie długi i dość zwrotny. Zły na wybojach. "
+"Może kręcić kołami w miejscu łatwo, nawet na szutrze."
 
 #. Car descriptions 
 msgctxt "CarDesc_U6"
@@ -7637,6 +7661,10 @@ msgid ""
 "Slower speed. Goes sideways much after turning. Needs boost to jump over. "
 "Fun to drive but very loud and inefficient. Brakes added."
 msgstr ""
+"Powolny poduszkowiec, napędzany tylko jednym śmigłem do zawisu i ciągu. "
+"Mniejsza prędkość. Znacznie idzie na bok po skręceniu. Wymaga dopalacza, aby "
+"przeskoczyć. Zabawny w prowadzeniu, ale bardzo głośny i nieefektywny. Dodano "
+"hamulce."
 
 #. Car descriptions 
 msgctxt "CarDesc_H2"
@@ -7645,12 +7673,16 @@ msgid ""
 "hovering and separate for thrust. Normal speed and still goes sideways but "
 "less. May need boost to jump over. Fun to drive and do stunts. Brakes added."
 msgstr ""
+"Szybki poduszkowiec wyścigowy, napędzany tylko dwoma śmigłami i silnikami. "
+"Jednym do zawisu i osobnym do ciągu. Normalna prędkość i mniej idzie na bok "
+"po skręceniu. Może wymagać dopalacza aby przeskoczyć. Zabawny w prowadzeniu "
+"i do wyczynów. Dodano hamulce."
 
 #. Car descriptions 
 #: src/game/Gui_UtilCar.cpp:256
 msgctxt "CarDesc_Hovercraft"
 msgid "Does hover over water, but can be forced under if on side."
-msgstr ""
+msgstr "Unosi się nad wodą, ale można go zmusić pod wodę, gdy jest bokiem."
 
 #. Car descriptions 
 msgctxt "CarDesc_R1"
@@ -7658,6 +7690,8 @@ msgid ""
 "First antigravity hovering car. Fast and rather easy to drive. But somewhat "
 "big and bulky, goes more sideways."
 msgstr ""
+"Pierwsze antygrawitacyjne unoszące się auto. Szybkie i raczej łatwe w "
+"prowadzeniu. Ale trochę duże i masywne, leci więcej bokiem."
 
 #. Car descriptions 
 msgctxt "CarDesc_R2"
@@ -7665,6 +7699,8 @@ msgid ""
 "Antigravity hovering car. Small, fast, agile and easy to drive. For all "
 "tracks and stunts."
 msgstr ""
+"Antygrawitacyjne unoszące się auto. Małe, szybkie, zwrotne i łatwe w "
+"prowadzeniu. Na wszystkie trasy i wyczyny."
 
 #. Car descriptions 
 msgctxt "CarDesc_R3"
@@ -7672,17 +7708,19 @@ msgid ""
 "Antigravity hovering car. Long, fast, easy to drive. Suited for all tracks "
 "and stunts."
 msgstr ""
+"Antygrawitacyjne unoszące się auto. Długie, szybkie i łatwe w prowadzeniu. "
+"Nadaje się na wszystkie trasy i wyczyny."
 
 #. Car descriptions 
 #: src/game/Gui_UtilCar.cpp:258
 msgctxt "CarDesc_HoverHandbrake"
 msgid "Handbrake pushes down and lets steer more."
-msgstr ""
+msgstr "Ręczny pcha w dół i steruje szybciej."
 
 #. Car descriptions 
 msgctxt "CarDesc_Q1"
 msgid "First working prototype of antigravity hovering drone. Not very fast."
-msgstr ""
+msgstr "Pierwszy działający prototyp antygrawitacyjnego drona. Niezbyt szybki."
 
 #. Car descriptions 
 msgctxt "CarDesc_Q3"
@@ -7690,12 +7728,14 @@ msgid ""
 "Incredibly fast antigravity drone. Very agile, needs quick reactions. Press "
 "throttle sparingly and briefly at first."
 msgstr ""
+"Niesamowicie szybki antygrawitacyjny dron. Bardzo zwrotny, wymaga szybkich "
+"reakcji. Użyj gazu rzadko i krótko na początku."
 
 #. Car descriptions 
 #: src/game/Gui_UtilCar.cpp:260
 msgctxt "CarDesc_HoverFluids"
 msgid "By antigravity it ignores all fluids completely."
-msgstr ""
+msgstr "Dzięki antygrawitacji ignoruje wszystkie ciecze kompletnie."
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:400 ..HowToPlay.Button :407:414:421:428:435:442
@@ -8011,6 +8051,10 @@ msgid ""
 "jumps, also text with ideal speed is shown. Turning green on close match, "
 "orange when too slow and cyan or white when too fast."
 msgstr ""
+"Notatki rajdowe ostrzegają również przed wyczynami jak skoki, pętle i jazda "
+"na rurze. W przypadku skoków wyświetlany jest również tekst z idealną "
+"prędkością. Zmienia kolor na zielony przy bliskim dopasowaniu, pomarańczowy "
+"przy zbyt wolnym i turkus lub biały przy zbyt szybkim."
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:428 ..HowToPlay.Button
