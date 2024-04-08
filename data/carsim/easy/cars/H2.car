@@ -68,12 +68,12 @@ steerForce = 27
 steerDamp = 8
 steerDampP = 10
 
-engineForce = 16
+engineForce = 11.5
 engineVelDec = 0.005
-brakeForce  = 18
+brakeForce  = 11
 
 dampAirRes = 72
-dampSide = 800
+dampSide = 1100
 dampUp = 1050
 dampDn = 3150
 dampPmul = 2.86
@@ -96,7 +96,7 @@ hov_rise = 120
 #  engine
 #---------------------------
 [ engine ]
-sound = thruster
+sound = engine
 position = 0.0, 0.4, 0.25
 mass = 200.0
 rpm-limit = 8000
@@ -122,7 +122,7 @@ torque-curve-12 = 7000, 628
 torque-curve-13 = 7500, 586
 torque-curve-14 = 8000, 556
 torque-curve-15 = 8500, 476
-real-pow-tq-mul = 1.0
+real-pow-tq-mul = 0.45
 
 [ clutch ]
 max-torque-mul = 1.3

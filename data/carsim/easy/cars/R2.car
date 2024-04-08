@@ -1,4 +1,4 @@
-type = hovercraft
+type = hovercar
 wheels = 4
 # all positions have x,y,z dir going + to: right, front, up
 
@@ -7,26 +7,31 @@ max-angle = 26
 angular-damping = 0.0
 
 [ rot_drag ]
-roll  = 100.0
-pitch = 200.0
-yaw   = 400.0
-yaw2  = 1.0
+roll  = 200.0
+pitch = 400.0
+yaw   = 700.0
+yaw2  = 2.0
 
 [ flares ]
-front-pos0 = 0.35,1.7,0.02
-front-pos1 =-0.35,1.7,0.02
-front-size = 0.9
+front-pos0 = 0.62,1.85,0.4
+front-pos1 =-0.62,1.85,0.4
+front-size = 1.5
 front-color = 0.97, 1, 1
 lights = 2
-brake-pos0 = 0.50,-1.7, 0.50
-brake-pos1 =-0.50,-1.7, 0.50
-brake-size = 0.6
-brake-color = 1, 0, 0
+brake-pos0 = 0.64,-1.59, 0.56
+brake-pos1 =-0.64,-1.59, 0.56
+brake-pos2 = 0.56,-1.57, 0.56
+brake-pos3 =-0.56,-1.57, 0.56
+brake-size = 0.5
+brake-color = 1, 0.2, 0
 
 [ model_ofs ]
 rot_fix = on
-boost-z = -0.20
-boost-y = -1.30
+boost-x = -0.10
+boost-y = -1.40
+boost-z = -0.35
+boost-size-z = 0.40
+boost-name = BoostCyan
 interior-x = 0.0
 interior-y = 0.0
 interior-z = 0
@@ -40,40 +45,35 @@ exhaust-mirror-second = 1
 #---------------------------
 [ collision ]
 com_ofs_L = 0.0
-com_ofs_H = -0.0
-radius = 0.26
-width = 0.57
-height = 0.04
-posLrear = -1.8
-posLfront = 1.67
-
-FrontWm = 0.6
-TopBack  = -1.5
-TopBackHm = 17.5
-
+com_ofs_H = 0.0
+radius = 0.2
+width = 0.63
+height = 0.28
+posLrear = -1.65
+posLfront = 1.85
 offsetL = 0.0
 offsetW = 0.0
-offsetH = 0.1
-start-offsetY = 0.45
+offsetH = 0.65
+start-offsetY = 0.50
 fluidTrigH = 0.0
 friction = 0.4
 
 
 #---------------------------
 [ hover ]
-hAbove = 1.0
+hAbove = 2.0
 hRayLen = 4.0
 
-steerForce = 27
-steerDamp = 8
-steerDampP = 10
+steerForce = 25
+steerDamp = 10
+steerDampP = 14
 
-engineForce = 16
+engineForce = 15
 engineVelDec = 0.005
-brakeForce  = 18
+brakeForce  = 15
 
-dampAirRes = 72
-dampSide = 800
+dampAirRes = 32
+dampSide = 2200
 dampUp = 1050
 dampDn = 3150
 dampPmul = 2.86
@@ -96,33 +96,26 @@ hov_rise = 120
 #  engine
 #---------------------------
 [ engine ]
-sound = thruster
-position = 0.0, 0.4, 0.25
-mass = 200.0
+sound = engine
+position = 0.0, 0.2, 0.0
+mass = 50.0
 rpm-limit = 8000
 inertia = 0.30
 start-rpm = 1000
 stall-rpm = 650
-fuel-consumption = 1e-9
+fuel-consumption = 1e-11
 friction = 230
-torque-val-mul = 0.50
+torque-val-mul = 0.80
 torque-curve-00 = 1000, 283
 torque-curve-01 = 1500, 318
 torque-curve-02 = 2000, 324
-torque-curve-03 = 2500, 372
-torque-curve-04 = 3000, 443
-torque-curve-05 = 3500, 510
-torque-curve-06 = 4000, 594
-torque-curve-07 = 4500, 675
-torque-curve-08 = 5000, 738
-torque-curve-09 = 5500, 760
-torque-curve-10 = 6000, 727
-torque-curve-11 = 6500, 668
-torque-curve-12 = 7000, 628
-torque-curve-13 = 7500, 586
-torque-curve-14 = 8000, 556
-torque-curve-15 = 8500, 476
-real-pow-tq-mul = 1.0
+torque-curve-03 = 3000, 443
+torque-curve-04 = 4000, 594
+torque-curve-05 = 5000, 738
+torque-curve-06 = 6000, 727
+torque-curve-07 = 7000, 628
+torque-curve-08 = 8000, 556
+real-pow-tq-mul = 1.2
 
 [ clutch ]
 max-torque-mul = 1.3
@@ -130,12 +123,14 @@ max-torque-mul = 1.3
 #  gearbox
 #---------------------------
 [ transmission ]
-gears = 4
+gears = 6
 gear-ratio-r = -3.41
 gear-ratio-1 = 4.38
 gear-ratio-2 = 2.86
 gear-ratio-3 = 1.92
 gear-ratio-4 = 1.37
+gear-ratio-5 = 1.00
+gear-ratio-6 = 0.79
 shift-delay = 0.08
 
 [ differential ]
@@ -143,10 +138,10 @@ final-drive = 5.0
 anti-slip = 500.0
 
 [ fuel-tank ]
-position = 0.0, -0.1, 0.0
-capacity = 0.03
-volume = 0.03
-fuel-density = 730.0
+position = 0.0, 0.0, 0.0
+capacity = 0.01
+volume = 0.01
+fuel-density = 30.0
 
 
 #  suspension
@@ -156,8 +151,8 @@ spring-constant = 25000.0
 bounce = 4100.0
 rebound = 4200.0
 travel = 2.0
-camber = -1.33
-caster = 2.02
+camber = -0.0
+caster = 0.02
 toe = 0.0
 anti-roll = 26000.0
 factors-file = hover
@@ -167,9 +162,9 @@ spring-constant = 9000.0
 bounce = 5000.0
 rebound = 5000.0
 travel = 2.0
-camber = -0.45
-caster = 0.33
-toe = 0.2
+camber = -0.0
+caster = 0.0
+toe = 0.0
 anti-roll = 20000.0
 factors-file = hover
 
@@ -203,23 +198,23 @@ max-pressure = 2.5e6
 bias = 0.5
 radius = 0.14
 area = 0.019
-handbrake = 3.1
+handbrake = 0.1
 
 
 [ driver ]
-position = -0.02, -0.15, -0.2
-mass = 70.0
-view-position = 0.44, -0.0, 0.43
-hood-position = -0.4, 0, 0.50
-ground-position = -1.5, 0, 0.2
+position = -0.0, -0.0, -0.0
+mass = 1.0
+view-position = -0.32, -0.40, 0.70
+hood-position = -1.21, 0, 0.60
+ground-position = -1.97, 0, 0.4
 
 
 #  aerodynamics
 #---------------------------
 [ drag ]
 position = 0.0, 0.0, -0.1
-frontal-area = 1.0
-drag-coefficient = 0.1
+frontal-area = 2.0
+drag-coefficient = 0.16
 
 [ wing-front ]
 position = 0.0, 1.35, 0.20
@@ -241,64 +236,64 @@ efficiency = 0.90
 # wheels front (position and suspension mount)
 #---------------------------
 [ wheel-FR ]
-position = 0.70, 1.34, -0.21
+position = 0.70, 1.34, -0.37
 roll-height = 0.9
-mass = 9
+mass = 15
 restitution = 0.1
 
 [ suspension-FR ]
-position = 0.66, 1.34, -0.02
+position = 0.66, 1.34, 0.07
 hinge = 0,0,0
 
 [ wheel-FL ]
-position = -0.70, 1.34, -0.21
+position = -0.70, 1.34, -0.37
 roll-height = 0.9
-mass = 9
+mass = 15
 restitution = 0.1
 
 [ suspension-FL ]
-position = -0.66, 1.34, -0.02
+position = -0.66, 1.34, 0.07
 hinge = 0,0,0
 
 
 # wheels rear (position and suspension mount)
 #---------------------------
 [ wheel-RR ]
-position = 0.70, -1.35, -0.21
+position = 0.70, -1.25, -0.37
 roll-height = 0.9
-mass = 9
+mass = 15
 restitution = 0.1
 
 [ suspension-RR ]
-position = 0.66, -1.35, -0.02
-hinge = -1.1, 0,0
+position = 0.66, -1.25, 0.07
+hinge = 0,0,0
 
 [ wheel-RL ]
-position = -0.70, -1.35, -0.21
+position = -0.70, -1.25, -0.37
 roll-height = 0.9
-mass = 9
+mass = 15
 restitution = 0.1
 
 [ suspension-RL ]
-position = -0.66, -1.35, -0.02
-hinge = -1.1, 0, 0
+position = -0.66, -1.25, 0.07
+hinge = 0, 0, 0
 
 
 # used to calculate the weight distribution and balance
 # (for car total mass and inertia) also use engine mass and position
 #---------------------------
 [ particle-00 ]  # front
-mass = 73.0
-position =  0.3, 1.4, -0.0
+mass = 153.0
+position =  0.7, 1.1, -0.06
 
 [ particle-01 ]
-mass =73.0
-position = -0.3, 1.4, -0.0
+mass = 15.0
+position = -0.7, 1.1, -0.06
 
 [ particle-02 ]  # rear
-mass = 73.0
-position =  0.3, -1.4, -0.0
+mass = 153.0
+position =  0.7, -1.1, -0.06
 
 [ particle-03 ]
-mass = 73.0
-position = -0.3, -1.4, -0.0
+mass = 153.0
+position = -0.7, -1.1, -0.06
