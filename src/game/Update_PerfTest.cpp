@@ -236,7 +236,7 @@ void App::newPerfTest(float time)
 					root->InsertEndChild(pw);
 
 					XMLElement* bh = xml.NewElement("bhpPerTon");
-						bh->SetAttribute("val",		toStrC(Real(bhpPerTon)) );
+						bh->SetAttribute("val",		toStrC(Real(bhpPerTon)) );  // todo resave all *m
 					root->InsertEndChild(bh);
 
 					XMLElement* tp = xml.NewElement("top");

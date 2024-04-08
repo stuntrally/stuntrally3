@@ -257,7 +257,7 @@ void CGui::listCarChng(MultiList2* li, size_t)
 		{	sd += TR("#80C0FF #{CarDesc_Hovercraft}");  }
 		if (ci.type == "Hover" || ci.type == "Drone")
 		{	car = false;  sd += TR("#9090FF #{CarDesc_HoverHandbrake}");  }
-		if (ci.type == "Hover" || ci.type == "Drone")
+		if (ci.type == "Drone")
 		{	car = false;  sd += TR("#4090F0 #{CarDesc_HoverFluids}");  }
 
 		float v = std::max(0.f, 1.f - ci.speed/13.f);
@@ -314,7 +314,7 @@ void CGui::UpdCarStats(bool car)
 
 	//  read xml  ------------------------
 	XMLElement* e;  const char* a;
-	float mass=0.f, comFront=0.f,  maxTrq=0.f, rpmMaxTq=0.f, maxPwr=0.f, rpmMaxPwr=0.f, bhpPerTon=0.f,
+	float mass=0.f, comFront=0.f,  maxTrq=0.f, rpmMaxTq=0.f, maxPwr=0.f, rpmMaxPwr=0.f, mul=1.f, bhpPerTon=0.f,
 		maxVel=0.f, tiMaxVel=0.f,  t0to60=0.f, t0to100=0.f, t0to160=0.f, t0to200=0.f,
 		stop60=0.f, stop100=0.f, stop160=0.f,  down100=0.f, down160=0.f, down200=0.f;
 
@@ -334,7 +334,7 @@ void CGui::UpdCarStats(bool car)
 	if (e)
 	{	a = e->Attribute("max");	if (a)  maxTrq = s2r(a);
 		//a = e->Attribute("rpm");	if (a)  rpmMaxTq = s2r(a);
-		//a = e->Attribute("mul");	if (a)  mul = s2r(a);
+		a = e->Attribute("mul");	if (a)  mul = s2r(a);
 	}
 	e = root->FirstChildElement("power");
 	if (e)
@@ -441,8 +441,8 @@ void CGui::UpdCarStats(bool car)
 	v[3]= "#F0C0A0"+ fToStr(maxPwr,0,3) +TR(" #{UnitBhp}");  //  #{at} ")+ fToStr(rpmMaxPwr,0,3) +TR(" #{UnitRpm} ");
 	bar(3, maxPwr / 700.f, 0.9,0.7,0.5);  vis(3,car);
 	s[4]= "#E0E0A0"+ TR("#{Car_BhpPerTon}");
-	v[4]= "#F0F0B0"+ fToStr(bhpPerTon,0,3);
-	bar(4, bhpPerTon / 450.f, 1.0,1.0,0.6);  vis(4,car);
+	v[4]= "#F0F0B0"+ fToStr(bhpPerTon * mul,0,3);  //`
+	bar(4, bhpPerTon * mul / 450.f, 1.0,1.0,0.6);  vis(4,car);
 
 	#define sVel(s,v)  \
 		if (kmh)  s += fToStr(v, 0,3) +TR(" #{UnitKmh}");  \
