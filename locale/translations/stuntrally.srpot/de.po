@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-07 23:18+0200\n"
-"PO-Revision-Date: 2024-02-09 21:02+0000\n"
+"PO-Revision-Date: 2024-04-08 09:01+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/de/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -231,7 +231,7 @@ msgstr "Zurück"
 #: data/gui/Game_Main.layout:92 ..StuntRally##{GameVersion}.Button
 msgctxt "TrackEditor"
 msgid "Track Editor"
-msgstr ""
+msgstr "Strecken-Editor"
 
 #. MAIN  Menu 
 #: data/gui/Game_Main.layout:97 ..StuntRally##{GameVersion}.Button
@@ -240,6 +240,8 @@ msgid ""
 "Press to start the SR3 Track Editor, a separate program for creating and "
 "editing tracks. This will not close the game."
 msgstr ""
+"Drücken Sie , um den SR3 Track Editor zu starten, ein separates Programm zum "
+"Erstellen und Bearbeiten von Tracks. Dadurch wird das Spiel nicht beendet."
 
 #. MAIN  Menu 
 #: data/gui/Editor_Help.layout:5 ..Window data/gui/Editor_Main.layout:63
@@ -867,37 +869,37 @@ msgstr "Kaninchen"
 #. Car  Names  from animals 
 msgctxt "Python"
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #. Car  Names  from animals 
 msgctxt "Cobra"
 msgid "Cobra"
-msgstr ""
+msgstr "Kobra"
 
 #. Car  Names  from animals 
 msgctxt "Eagle"
 msgid "Eagle"
-msgstr ""
+msgstr "Adler"
 
 #. Car  Names  from animals 
 msgctxt "Crow"
 msgid "Crow"
-msgstr ""
+msgstr "Krähe"
 
 #. Car  Names  from animals 
 msgctxt "Falcon"
 msgid "Falcon"
-msgstr ""
+msgstr "Falke"
 
 #. Car  Names  from animals 
 msgctxt "Owl"
 msgid "Owl"
-msgstr ""
+msgstr "Eule"
 
 #. Car  Names  from animals 
 msgctxt "Sparrow"
 msgid "Sparrow"
-msgstr ""
+msgstr "Sperling"
 
 #. Vehicle 
 #: data/gui/Game.layout:374 ..SingleRace.Track.Text :494..SingleRace.Tab
@@ -1258,12 +1260,12 @@ msgstr "Andere"
 #. MAIN  Car types 
 msgctxt "CarType_Hover"
 msgid "Hover"
-msgstr ""
+msgstr "Schwebend"
 
 #. MAIN  Car types 
 msgctxt "CarType_Hovercraft"
 msgid "Hovercraft"
-msgstr ""
+msgstr "Luftkissenboot"
 
 #. MAIN  Car types 
 msgctxt "CarType_Spaceship"
@@ -1273,7 +1275,7 @@ msgstr "Raumschiff"
 #. MAIN  Car types 
 msgctxt "CarType_Drone"
 msgid "Drone"
-msgstr ""
+msgstr "Drohne"
 
 #. MsgBox 
 #: src/game/Gui_Network.cpp:415:487
@@ -6412,7 +6414,7 @@ msgstr "Original"
 #: data/gui/Editor_Track.layout:694 ..Track.Tab :698..Track.Export.Button
 msgctxt "Export"
 msgid "Export"
-msgstr ""
+msgstr "Exportieren"
 
 #. Tweak 
 #: data/gui/Editor_Track.layout:968 ..Track.Export.Settings.Check
