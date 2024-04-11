@@ -4,13 +4,7 @@ License: SIL Open Font License Version 1.1
 https://github.com/google/fonts/blob/main/ofl/notosansjp/
 
 
-LiberationSans-BoldItalic.ttf
-Designer: Steve Matteson  
-License: OFL (SIL Open Font License)
-https://fontlibrary.org/en/font/liberation-sans
-
-
-DejaVuSans.ttf DejaVuLGCSans.ttf
+DejaVuSans.ttf  DejaVuLGCSans.ttf
 License: https://dejavu-fonts.github.io/License.html
 Bitstream Vera Fonts Copyright, Arev Fonts Copyright, Public Domain
 https://dejavu-fonts.github.io/Download.html

@@ -111,9 +111,12 @@ void App::createScene01()  // once, init
 		
 	bGuiFocus = false/*true*/;  bMoveCam = true;  //*--
 
+
 	//  Gui Init
 	InitAppGui();
 	gcom->CreateFonts();
+	CreateFpsBar();
+
 	baseInitGui();
 	gui->InitGui();
 	

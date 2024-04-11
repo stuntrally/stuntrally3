@@ -1,88 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MyGUI type="Resource" version="1.1">
 
-	<!-- Main Gui Fonts - variable size
-		created in code  CGuiCom::CreateFonts()
-		code ranges same as in hud.text  -->
+	<!-- Main Gui Fonts  created in code in  CGuiCom::CreateFonts()
+		variable size, ttf and code ranges by language
+		Here are only HUD digits, same for all languages
+	-->
 
 
-	<!-- Fps -->
-	<Resource type="ResourceTrueTypeFont" name="hud.fps">
-		<Property key="Source" value="DejaVuLGCSans.ttf"/>
-		<Property key="Size" value="32"/>  <!-- 24 -->
-		<Property key="Resolution" value="50"/>
-		<Property key="Antialias" value="false"/>
-		<Property key="SpaceWidth" value="14"/> <!-- 11 same as digit width-->
-		<Property key="TabWidth" value="8"/>
-		<Property key="Distance" value="4"/>
-		<Property key="OffsetHeight" value="0"/>
-		<Codes>
-			<Code range="33 127"/>
-		</Codes>
-	</Resource>
-
-
-	<!-- Hud text -->
-	<Resource type="ResourceTrueTypeFont" name="hud.text">
-		<Property key="Source" value="DejaVuLGCSans.ttf"/>
-		<Property key="Size" value="42"/>
-		<Property key="Resolution" value="50"/>
-		<Property key="Antialias" value="false"/>
-		<Property key="TabWidth" value="8"/>
-		<Property key="Distance" value="4"/>
-		<Property key="OffsetHeight" value="0"/>
-		<Codes>
-			<Code range="33 400"/>
-			<!-- romanian -->
-			<Code range="536 539"/>
-			<!-- russian -->
-			<Code range="1025 1105"/>
-			<Code range="8470"/>
-			<Code hide="1026 1039"/>
-			<Code hide="1104"/>
-		</Codes>
-	</Resource>
-
-
-	<!-- Hud Text  Big  Times -->
-	<Resource type="ResourceTrueTypeFont" name="hud.times">
-		<Property key="Source" value="LiberationSans-BoldItalic.ttf"/>
-		<Property key="Size" value="42"/>
-		<Property key="Resolution" value="50"/>
-		<Property key="Antialias" value="false"/>
-		<Property key="TabWidth" value="8"/>
-		<Property key="Distance" value="4"/>
-		<Property key="OffsetHeight" value="0"/>
-		<Codes>
-			<Code range="33 400"/>
-			<!-- romanian -->
-			<Code range="536 539"/>
-			<!-- russian -->
-			<Code range="1025 1105"/>
-			<Code range="8470"/>
-			<Code hide="1026 1039"/>
-			<Code hide="1104"/>
-		</Codes>
-	</Resource>
-
-
-	<!-- Replay, bigger digits -->
-	<Resource type="ResourceTrueTypeFont" name="hud.replay">
-		<Property key="Source" value="DejaVuLGCSans.ttf"/>
-		<Property key="Size" value="32"/>
-		<Property key="Resolution" value="50"/>
-		<Property key="Antialias" value="false"/>
-		<Property key="SpaceWidth" value="4"/>
-		<Property key="TabWidth" value="8"/>
-		<Property key="Distance" value="4"/>
-		<Property key="OffsetHeight" value="-1"/>
-		<Codes>
-			<Code range="37 58"/>
-		</Codes>
-	</Resource>
-	
-	
-	<!-- HUD, gear, vel digits -->
+	<!-- HUD, gear, vel digits 7-seg -->
     <Resource type="ResourceManualFont" name="DigGearSeg">
         <Property key="Source" value="Digital_41.png"/>
         <Property key="DefaultHeight" value="45"/>
@@ -129,27 +54,5 @@
             <Code index="substitute" coord="23 68 22 39" bearing="2 10" advance="24"/>
         </Codes>
     </Resource>
-
-
-	<!-- HUD, gear, vel digits  0-9 N R -->
-	<Resource type="ResourceTrueTypeFont" name="DigGear">
-		<!-- <Property key="Source" value="LiberationSans-BoldItalic.ttf"/>
-		<Property key="SpaceWidth" value="39"/> -->
-		<Property key="Source" value="DejaVuLGCSans.ttf"/>
-		<Property key="SpaceWidth" value="42"/>
-		<!-- <Property key="Source" value="VeraMono.ttf"/>
-		<Property key="SpaceWidth" value="40"/> -->
-		<Property key="Size" value="96"/>
-		<Property key="Resolution" value="50"/>
-		<Property key="Antialias" value="true"/>
-		<Property key="TabWidth" value="8"/>
-		<Property key="Distance" value="4"/>
-		<Property key="OffsetHeight" value="-1"/>
-		<Codes>
-			<Code range="37 58"/>
-			<Code range="78"/>
-			<Code range="82"/>
-		</Codes>
-	</Resource>-->
 
 </MyGUI>

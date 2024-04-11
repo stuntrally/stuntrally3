@@ -112,7 +112,7 @@ void AppGui::InitAppGui()
 	// mPlatform->getRenderManagerPtr()->setSceneManager(mSplitMgr->mGuiSceneMgr);
 	// mPlatform->getRenderManagerPtr()->setActiveViewport(mSplitMgr->mNumViewports);
 
-	CreateFpsBar();
+	// CreateFpsBar();  // after fonts
 }
 
 //  💥 destroy

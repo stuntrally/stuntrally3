@@ -11,6 +11,8 @@
 
 #include <OgreWindow.h>
 #include <OgreException.h>
+#include <OgreString.h>
+#include <OgreHlmsUnlit.h>
 #include <MyGUI_InputManager.h>
 #include <MyGUI_Widget.h>
 #include <MyGUI_EditBox.h>
@@ -407,14 +409,14 @@ void CGuiCom::GuiInitLang()
 		AddLang("hu_HU");
 		AddLang("ja");
 	}
-	ComboBoxPtr combo = fCmb("Lang");
-	if (!combo)  return;
-	combo->eventComboChangePosition += newDelegate(this, &CGuiCom::comboLanguage);
+	Cmb cmb;
+	CmbC(cmb, "Lang", comboLanguage);
+
 	for (auto it = languages.cbegin(); it != languages.end(); ++it)
 	{
-		combo->addItem(it->second);
+		cmb->addItem(it->second);
 		if (it->first == pSet->language)
-			combo->setIndexSelected(combo->getItemCount()-1);
+			cmb->setIndexSelected(cmb->getItemCount()-1);
 	}
 }
 
@@ -430,6 +432,7 @@ void CGuiCom::comboLanguage(ComboBox* wp, size_t val)
 	}
 	LanguageManager::getInstance().setCurrentLanguage(pSet->language);
 
+	// CreateFonts();  //!- todo
 	// todo: fix, without restart
 	//  reinit gui
 	// #ifndef SR_EDITOR
@@ -442,63 +445,145 @@ void CGuiCom::comboLanguage(ComboBox* wp, size_t val)
 //----------------------------------------------------------------------------------------------------------------
 void CGuiCom::CreateFonts()
 {
+	LogO("C--# Create Fonts");
 	MyGUI::ResourceManager& mgr = MyGUI::ResourceManager::getInstance();
-	IResource* resource = mgr.findByName("hud.text");  // based on this font
-	ResourceTrueTypeFont* bfont = resource != nullptr ? resource->castType<ResourceTrueTypeFont>(false) : 0;
-	if (!bfont)  LogO("!!Error: Can't find font: hud.text");
-
-	const int cnt = 3;
-	string names[cnt] = {"font.small","font.normal","font.big"};
-	float sizes[cnt] = {30.f, 34.f, 39.f};  // par
 	
-	String inf;
+	struct Font
+	{
+		string name;
+		float size;
+		int range;  // 0 all letters
+		// 1 digits only,  2 gear digits,R,N,  3 fps txt
+	};
+
+	const int cnt = 7;
+	const Font fonts[cnt] = {
+		{"font.small",  0.985f* 30.f, 0 },
+		{"font.normal", 0.985f* 34.f, 0 },
+		{"font.big",    0.985f* 39.f, 0 },
+		{"hud.text",    42.f, 0 },
+		// {"hud.times",   42.f, 0 },
+		{"hud.replay",  32.f, 1 },
+		{"DigGear",     96.f, 2 },  //par size * gui
+		{"hud.fps",     32.f, 3 },
+	};
+/*
+	HlmsUnlit* hlms = (HlmsUnlit*)Root::getSingleton().getHlmsManager()->getHlms( Ogre::HLMS_UNLIT );
+	// HlmsUnlitDatablock* db = (HlmsUnlitDatablock*)(hlms->getDatablock(name));
+	auto dbs = hlms->getDatablockMap();
+	for (auto& db : dbs)
+	if (StringUtil::endsWith(db.second.name, "_TrueTypeFont"))
+		// LogO(string(db.first));
+		LogO(db.second.name);
+/**/
+	bool jap = pSet->language == "ja", rus = pSet->language == "ru";
+
 	for (int i=0; i < cnt; ++i)
 	{
 		//  del old
-		const string name = names[i];
+		const auto& fnt = fonts[i];
+		const string name = fnt.name;
 		if (mgr.isExist(name))
+		{
 			mgr.removeByName(name);
+			// HlmsUnlit* hlms = (HlmsUnlit*)Root::getSingleton().getHlmsManager()->getHlms( Ogre::HLMS_UNLIT );
+			// HlmsUnlitDatablock* db = (HlmsUnlitDatablock*)(hlms->getDatablock(name));
+			// hlms->destroyDatablock(name);
+		}
 
 		//  setup font				   // par
-		float size = 0.95f* sizes[i];  // less for low screen res
+		float size = fnt.size;  // less for low screen res
 		size *= max(0.55f, min(1.2f, (app->mWindow->getHeight()/*pSet->windowy*/ - 600.f) / 600.f));
-		inf += name+"  "+fToStr(size,1,3)+"  ";
 
 		//  create
 		ResourceTrueTypeFont* font = (ResourceTrueTypeFont*)FactoryManager::getInstance().createObject("Resource", "ResourceTrueTypeFont");
 
-		//  loading from xml
-		xml::Document doc;
-		xml::ElementPtr root = doc.createRoot("ResourceTrueTypeFont"), e;
-		root->addAttribute("name", name);
+		font->setResourceName(name);
+		font->setSource( jap ? "NotoSansJP.ttf" :
+			"DejaVuLGCSans.ttf");
+		font->setSize(size);  font->setResolution(50);  font->setAntialias(false);
+		font->setTabWidth(8);  font->setDistance(4);  font->setOffsetHeight(0);
+		
+		bool spc = 0;
+		auto setSpaceWidth = [&](int w)
+		{
+			//  loading from xml
+			xml::Document doc;
+			xml::ElementPtr root = doc.createRoot("ResourceTrueTypeFont"), e;
+			// root->addAttribute("name", name);
 
-		#define AddE(key, val)  e = root->createChild("Property");  e->addAttribute("key", key);  e->addAttribute("value", val)
-		AddE("Source", "DejaVuLGCSans.ttf");
-		AddE("Size", toStr(size));  AddE("Resolution", "50");  AddE("Antialias", "false");
-		AddE("TabWidth", "8");  AddE("Distance", "4");  AddE("OffsetHeight", "0");
+			#define AddE(key, val)  e = root->createChild("Property");  e->addAttribute("key", key);  e->addAttribute("value", val)
 
-		xml::ElementPtr codes = root->createChild("Codes"), c;
-		//  char ranges
-		if (bfont)
-		{	const auto& vv = bfont->getCodePointRanges();
-			for (auto it = vv.cbegin(); it != vv.cend(); ++it)
-			if ((*it).first > 10 && (*it).first < 10000)
-			{
-				c = codes->createChild("Code");
-				c->addAttribute("range", toStr((*it).first)+" "+toStr((*it).second));
+			AddE("SpaceWidth", toStr(w));
+			font->deserialization(root, Version(3,2,0));  // has initialise!
+			spc = 1;
+		};
+
+		//  char ranges, unicode  --------
+		switch (fnt.range)
+		{
+		case 0:
+			font->addCodePointRange(33, 400);
+			font->addCodePointRange(536, 539);  // romanian
+			
+			if (rus)
+			{	font->addCodePointRange(1025, 1105);  // russian
+				font->addCodePointRange(8470, 8470);
+				font->removeCodePointRange(1026, 1039);
+				// font->removeCodePointRange(1104);
+				font->addCodePointRange(9728, 9738);
+				// font->addCodePointRange(12448, 12543);
 			}
-		}else
-		{	c = codes->createChild("Code");
-			c->addAttribute("range", "33 255");
+			if (jap)  // slow start
+			{	font->addCodePointRange(0x30A0, 0x30FF);  // japanese
+				font->addCodePointRange(0x3041, 0x3096);
+				font->addCodePointRange(0x3400, 0x4DB5);
+				font->addCodePointRange(0x4E00, 0x9FCB);
+				font->addCodePointRange(0xF900, 0xFA6A);
+				font->addCodePointRange(0x2E80, 0x2FD5);
+				// font->addCodePointRange(toStr(0xFF5F)+" "+toStr(0xFF9F)); // half-
+				// font->addCodePointRange(toStr(0x3000)+" "+toStr(0x303F));  // symb
+				// font->addCodePointRange(toStr(0x31F0)+" "+toStr(0x31FF));
+				// font->addCodePointRange(toStr(0x3220)+" "+toStr(0x3243));
+				// font->addCodePointRange(toStr(0x3280)+" "+toStr(0x337F));  //misc
+				// font->addCodePointRange(toStr(0xFF01)+" "+toStr(0xFF5E));  // norm
+			}
+			break;
+
+		case 1:
+			font->addCodePointRange(37, 58);
+			font->setOffsetHeight(-1);
+			// font->mSpaceWidth = 4; //font->setSpaceWidth(4);  // cant
+			setSpaceWidth(4);
+			break;
+
+		case 2:
+			font->addCodePointRange(37, 58);
+			font->addCodePointRange(78, 78);  font->addCodePointRange(82, 82);
+			// font->addCodePoint(78);  font->addCodePoint(82);  // cant
+			font->setAntialias(1);
+			font->setOffsetHeight(-1);
+			setSpaceWidth(42.f/96.f * size);
+			break;
+
+		case 3:
+			font->addCodePointRange(33, 127);
+			setSpaceWidth(14.f/32.f * size);
+			break;
 		}
-		//doc.save(string("fonts.txt"));
-		font->deserialization(root, Version(3,2,0));
+		if (!spc)
+			font->initialise();
 
 		//  add
 		mgr.addResource(font);
+
+		LogO("C--# Created Font: " + font->getResourceName() +"  size: "+fToStr(size));
 	}
 
-	LogO("---# Font sizes:  "+inf);
+	// auto enu = mgr.getEnumerator();
+	// while (enu)
+	// 	LogO(enu.current().first);
+	// enu.next();
 }
 
 

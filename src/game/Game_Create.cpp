@@ -155,6 +155,8 @@ void App::createScene01()
 	//  Gui Init
 	InitAppGui();
 	gcom->CreateFonts();
+	CreateFpsBar();
+
 	baseInitGui();
 	gui->InitGui();
 
