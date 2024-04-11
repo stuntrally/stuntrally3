@@ -12,7 +12,7 @@ This section lists changes not yet released, but committed to new repositories s
     - fast car YG
 - Tracks
   - 1 New
-  - Replaced all old 4k **skies** with new 8k ones on all tracks
+  - **New skies**. Replaced all old 4k with new 8k ones on all tracks
   - Many updated with new horizons, few with objects etc
 - Editor
   - WIP New video tutorials, on [Editor page](Editor.md)
@@ -23,6 +23,7 @@ This section lists changes not yet released, but committed to new repositories s
   - **Export** track to Rigs of Rods added, using SR 2.x meshes
     - New tabs, settings, converters, [info here](EditorExportRoR.md).
 - Updated docs
+- Added Japanese font and quick, basic translation
 
 ## Version 3.0 beta
 
