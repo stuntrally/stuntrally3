@@ -5,7 +5,7 @@
 #include "protocol.hpp"
 
 
-#define SET_VER  3051  // 3.0.5
+#define SET_VER  3101  // 3.1.0
 
 
 enum eGraphType  {
