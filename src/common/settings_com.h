@@ -41,10 +41,15 @@ public:
 	float bright = 1.f, contrast = 1.f;  //, gamma = 1.15f;
 	float car_light_bright = 1.f;
 	
+
 	//  hud
 	bool vr_mode = 0;  // 👀 forces 1 player
 	int fps_bar =0;  // 📈
 	float fps_mul = 1.f;  // red vals factor
+
+	//  🪟 font, gui
+	float font_gui = 1.f;  // scales
+	float font_wnds = 0.f;  // add margin
 	
 	//  🚦 pacenotes
 	float pace_dist = 200.f, pace_size = 1.f, pace_near = 1.f, pace_alpha = 1.f;

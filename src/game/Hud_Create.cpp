@@ -154,7 +154,7 @@ void CHud::Create()
 			h.txGear = h.parent->createWidget<TextBox>("TextBox",
 				0,y, 65,90, Align::Left, "Gear"+s);  h.txGear->setVisible(false);
 			h.txGear->setFontName("DigGear");
-			h.txGear->setFontHeight(106);  //par..
+			h.txGear->setFontHeight(106 * pSet->font_hud);  //par..
 			h.txGear->setTextShadowColour(Colour::Black);  h.txGear->setTextShadow(true);
 		}
 		

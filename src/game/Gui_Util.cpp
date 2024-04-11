@@ -419,7 +419,7 @@ void CGui::FillHelpTxt()
 			String text = "", s;
 			while (getline(fi,s))
 			{
-				if (s.substr(0,7) == "## Desc")
+				if (s.substr(0,8) == "## Links")
 					ok = true;  // start
 
 				bool ch = !s.empty() && s[0]=='#';  // chapters

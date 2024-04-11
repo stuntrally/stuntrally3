@@ -79,6 +79,10 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_reflect.ibl", g.refl_ibl);			// Param(c,w, "graph_reflect.mode", g.refl_mode);
 
 
+	//  🪟 font  ----
+	Param(c,w, "font.gui", font_gui);
+	Param(c,w, "font.wnds", font_wnds);
+
 	//  📈 fps  ----
 	Param(c,w, "tweak.fps", fps_bar);				Param(c,w, "tweak.fps_mul", fps_mul);
 	//  🚦 pacenotes

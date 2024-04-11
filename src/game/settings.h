@@ -81,16 +81,21 @@ public:
 	//  🚦 pacenotes
 	bool pace_show =1;  int pace_next = 4;
 
+	//  dbg
 	eGraphType graphs_type = Gh_Fps;
 	int car_dbgtxtclr = 1, car_dbgtxtcnt = 0;
 	bool sounds_info =0;
-	//  🎛️ gui
+
+	//  🎛️ gui, game
 	bool cars_sortup =1;  int cars_view = 0, cars_sort = 1;
 	int champ_type = 0, chall_type = 0;
 	bool champ_info =1;
 	int car_ed_tab = 0, tweak_tab = 0;  // gui only
 	int car_clr = -1;  // paints.ini id
 
+	//  🪟 font, hud
+	float font_hud = 1.f;  // scales
+	float font_times = 1.f;
 
 	//  📊 graphics
 	bool bFog =1;  // always on

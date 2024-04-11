@@ -452,20 +452,18 @@ void CGuiCom::CreateFonts()
 	{
 		string name;
 		float size;
-		int range;  // 0 all letters
-		// 1 digits only,  2 gear digits,R,N,  3 fps txt
+		int range;
 	};
-
-	const int cnt = 7;
+	const int cnt = 7;  //** fonts  --------
 	const Font fonts[cnt] = {
-		{"font.small",  0.985f* 30.f, 0 },
+		{"font.small",  0.985f* 30.f, 0 },  //  0 all letters Gui
 		{"font.normal", 0.985f* 34.f, 0 },
 		{"font.big",    0.985f* 39.f, 0 },
-		{"hud.text",    42.f, 0 },
-		// {"hud.times",   42.f, 0 },
-		{"hud.replay",  32.f, 1 },
-		{"DigGear",     96.f, 2 },  //par size * gui
-		{"hud.fps",     32.f, 3 },
+		{"hud.text",    42.f, 1 },  //  1 same for hud times
+		// {"hud.times",   42.f, 1 },
+		{"hud.replay",  32.f, 2 },  //  2 digits only
+		{"DigGear",     96.f, 3 },  //  3 gear digits,R,N
+		{"hud.fps",     32.f, 4 },  //  4 fps txt
 	};
 /*
 	HlmsUnlit* hlms = (HlmsUnlit*)Root::getSingleton().getHlmsManager()->getHlms( Ogre::HLMS_UNLIT );
@@ -495,16 +493,17 @@ void CGuiCom::CreateFonts()
 		float size = fnt.size;  // less for low screen res
 		size *= max(0.55f, min(1.2f, (app->mWindow->getHeight()/*pSet->windowy*/ - 600.f) / 600.f));
 
-		//  create
+		//  create  --------
 		ResourceTrueTypeFont* font = (ResourceTrueTypeFont*)FactoryManager::getInstance().createObject("Resource", "ResourceTrueTypeFont");
 
 		font->setResourceName(name);
 		font->setSource( jap ? "NotoSansJP.ttf" :
 			"DejaVuLGCSans.ttf");
-		font->setSize(size);  font->setResolution(50);  font->setAntialias(false);
+		/*font->setSize(size);*/  font->setResolution(50);  font->setAntialias(false);
 		font->setTabWidth(8);  font->setDistance(4);  font->setOffsetHeight(0);
-		
-		bool spc = 0;
+
+
+		bool spc = 0;  //  meh  --
 		auto setSpaceWidth = [&](int w)
 		{
 			//  loading from xml
@@ -522,7 +521,13 @@ void CGuiCom::CreateFonts()
 		//  char ranges, unicode  --------
 		switch (fnt.range)
 		{
-		case 0:
+		case 0:  //  Gui
+		case 1:  //  Hud Times
+			font->setSize(
+			#ifndef SR_EDITOR
+				fnt.range == 1 ? size * pSet->font_times :
+			#endif
+				size * pSet->font_gui);
 			font->addCodePointRange(33, 400);
 			font->addCodePointRange(536, 539);  // romanian
 			
@@ -550,31 +555,36 @@ void CGuiCom::CreateFonts()
 			}
 			break;
 
-		case 1:
+	#ifndef SR_EDITOR
+		case 2:  //  Replay times
+			font->setSize(size * pSet->font_gui);  //?
 			font->addCodePointRange(37, 58);
 			font->setOffsetHeight(-1);
 			// font->mSpaceWidth = 4; //font->setSpaceWidth(4);  // cant
 			setSpaceWidth(4);
 			break;
 
-		case 2:
+		case 3:  //  Hud vel, gear
+			font->setSize(size * pSet->font_hud);
 			font->addCodePointRange(37, 58);
 			font->addCodePointRange(78, 78);  font->addCodePointRange(82, 82);
 			// font->addCodePoint(78);  font->addCodePoint(82);  // cant
 			font->setAntialias(1);
 			font->setOffsetHeight(-1);
-			setSpaceWidth(42.f/96.f * size);
+			setSpaceWidth(42.f/96.f * size);  // ttf par
 			break;
-
-		case 3:
+	#endif
+		case 4:  //  Fps bar
+			font->setSize(size);
+			// font->setSize(size * pSet->font_gui);  //?
 			font->addCodePointRange(33, 127);
-			setSpaceWidth(14.f/32.f * size);
+			setSpaceWidth(14.f/32.f * size);  // ttf par
 			break;
 		}
+
 		if (!spc)
 			font->initialise();
 
-		//  add
 		mgr.addResource(font);
 
 		LogO("C--# Created Font: " + font->getResourceName() +"  size: "+fToStr(size));

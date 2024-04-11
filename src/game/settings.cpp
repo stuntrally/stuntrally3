@@ -124,6 +124,10 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "hud_tweak.car_dbgtxtclr", car_dbgtxtclr);	Param(c,w, "hud_tweak.car_dbgtxtcnt", car_dbgtxtcnt);
 	Param(c,w, "hud_tweak.graphs", show_graphs);			Param(c,w, "hud_tweak.graphs_type", (int&)graphs_type);
 
+	//  🪟 font
+	Param(c,w, "font.hud", font_hud);
+	Param(c,w, "font.times", font_times);
+
 	//  🎛️ gui
 	Param(c,w, "gui.cars_view", cars_view);			Param(c,w, "gui.cars_sort", cars_sort);
 	Param(c,w, "gui.car_ed_tab", car_ed_tab);		Param(c,w, "gui.tweak_tab", tweak_tab);

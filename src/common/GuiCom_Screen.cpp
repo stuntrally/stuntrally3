@@ -30,6 +30,7 @@ void CGuiCom::ResizeOptWnd()
 	const int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
 
 	Real xm = 0.f, ym = GetGuiMargin(wy);  // margin
+	ym += pSet->font_wnds;
 
 	Real yo = (1.f - ym)*wy, xo = 4.f/3.f * yo;  // opt wnd size in pix
 	ym = (wy - yo)*0.5f;  xm = (wx - xo)*0.5f;
