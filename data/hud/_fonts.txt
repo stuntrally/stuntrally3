@@ -1,3 +1,9 @@
+
+NotoSansJP.ttf  = NotoSansJP-Regular.ttf
+License: SIL Open Font License Version 1.1
+https://github.com/google/fonts/blob/main/ofl/notosansjp/
+
+
 LiberationSans-BoldItalic.ttf
 Designer: Steve Matteson  
 License: OFL (SIL Open Font License)
@@ -9,23 +15,3 @@ License: https://dejavu-fonts.github.io/License.html
 Bitstream Vera Fonts Copyright, Arev Fonts Copyright, Public Domain
 https://dejavu-fonts.github.io/Download.html
 
-
-Vera.ttf
-Bitstream Vera Sans
-by The Gnome Project
-nearly identical to: Open Font License
-https://en.wikipedia.org/wiki/Bitstream_Vera
-
-
-- not used yet
-Segments
-by mthsferraz
-License: Open Font License
-https://fontstruct.com/fontstructions/show/1648121/segments-4
-
-
-The FontStruction “7Segments”
-by g4mmler
-https://fontstruct.com/fontstructions/show/1462474
-License: Creative Commons Attribution Share Alike
-https://creativecommons.org/licenses/by-sa/3.0/

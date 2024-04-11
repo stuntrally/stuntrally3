@@ -126,14 +126,14 @@ See example commit adding Czech (cs) language: [link](https://github.com/stuntra
 
 Needs to be added in 4 places:
 
-data/gui/core_language.xml
+1. `data/gui/core_language.xml`
 ```
 <Info name="cs">
   <Source>core_language_cs_tag.xml</Source>
 </Info>
 ```
 
-data/gui/core_language_en_tag.xml
+2. `data/gui/core_language_en_tag.xml`
 ```
 <Tag name="LANG_CS">Čeština</Tag>
 ```
@@ -141,13 +141,13 @@ Language name in this language (found on e.g. Wikipedia).
 This will be visible in combobox on Gui.  
 Note that it needs translation update after, to have the new tag in all languages.
 
-src/common/AppGui_Init.cpp
+3. `src/common/AppGui_Init.cpp`
 ```
-else if (!strcmp(buf,"Czech")) loc = "cs";
+else if (!strcmp(buf,"Czech"))      loc = "cs";
 ```
 English name of language from windows GetLocaleInfoA function.
 
-src/common/GuiCom_Util.cpp
+4. `src/common/GuiCom_Util.cpp`
 ```
-languages["cs"] = TR("#{LANG_CS}");
+AddLang("cs");
 ```

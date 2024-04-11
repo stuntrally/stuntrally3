@@ -45,6 +45,9 @@
 		<Info name="nl_NL">
 			<Source>core_language_nl_NL_tag.xml</Source>
 		</Info>
+		<Info name="ja">
+			<Source>core_language_ja_tag.xml</Source>
+		</Info>
 	</Language>
 
 </MyGUI>

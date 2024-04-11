@@ -405,6 +405,7 @@ void CGuiCom::GuiInitLang()
 		AddLang("es");
 		AddLang("nl_NL");
 		AddLang("hu_HU");
+		AddLang("ja");
 	}
 	ComboBoxPtr combo = fCmb("Lang");
 	if (!combo)  return;
