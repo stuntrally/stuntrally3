@@ -466,6 +466,9 @@ public:
 	Ed trkName =0;  void editTrkDescr(Ed), editTrkAdvice(Ed);
 	
 
+	//  fonts
+	SV svFntWnd, svFntGui;
+
 	//  ⛓️ system, utils, mtr
 	Ogre::String strFSerrors;  // not used..
 	bool Rename(Ogre::String from, Ogre::String to);

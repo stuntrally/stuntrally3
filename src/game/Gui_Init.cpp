@@ -541,6 +541,13 @@ void CGui::InitGui()
 	gcom->ChangeTrackView();
 
 
+	//  fonts
+	sv= &svFntWnd;		sv->Init("FntWnd",		&pSet->font_wnds, -0.1f, 0.2f);  sv->DefaultF(0.f);
+	sv= &svFntGui;		sv->Init("FntGui",		&pSet->font_gui,   0.8f, 1.2f);  sv->DefaultF(1.f);
+	sv= &svFntHud;		sv->Init("FntHud",		&pSet->font_hud,   0.8f, 1.2f);  sv->DefaultF(1.f);
+	sv= &svFntTimes;	sv->Init("FntTimes",	&pSet->font_times, 0.8f, 1.2f);  sv->DefaultF(1.f);
+
+
 	//  🔗 open url btns  -------------
 	Btn("BtnTrackEditor", btnTrackEditor);
 	Btn("OpenWelcome", btnWelcome);  Btn("OpenWebsite", btnWebsite);   Btn("OpenSources", btnSources);

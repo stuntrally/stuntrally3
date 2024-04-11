@@ -76,9 +76,69 @@
 							<Property key="TextColour" value="0.5 0.8 0.8"/>
 							<Property key="FontName" value="font.big"/>
 						</Widget>
-					<!-- </Widget>
-					
+
+						<Widget type="TextBox" skin="TextBox" position="32 336 248 24">
+							<Property key="Caption" value="#{Brightness}"/>
+							<Property key="TextColour" value="0.9 0.7 0.7"/>
+							<Property key="Alpha" value="0.8"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 336 48 24" name="BrightVal">
+							<Property key="TextColour" value="0.9 0.7 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 336 216 16" name="Bright">
+							<Property key="Colour" value="0.9 0.7 0.7"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="32 366 248 24">
+							<Property key="Caption" value="#{Contrast}"/>
+							<Property key="TextColour" value="0.9 0.5 0.5"/>
+							<Property key="Alpha" value="0.8"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 366 48 24" name="ContrastVal">
+							<Property key="TextColour" value="0.9 0.5 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 366 216 16" name="Contrast">
+							<Property key="Colour" value="0.9 0.5 0.5"/>
+						</Widget>
+					</Widget>
+
 					<Widget type="TabItem" skin="" position="2 24 738 472" layer="Back">
+						<Property key="Caption" value="#A090A0#{GUI}"/>
+			
+						<Widget type="TextBox" skin="TextBox" position="32 56 136 24">
+							<Property key="Caption" value="*#{NeedRestart}"/>
+							<Property key="TextColour" value="0.6 0.5 0.6"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 106 248 24">
+							<Property key="Caption" value="#{WindowMargin}"/>
+							<Property key="TextColour" value="0.8 0.8 0.9"/>
+							<Property key="Alpha" value="0.8"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 106 48 24" name="FntWndVal">
+							<Property key="TextColour" value="0.8 0.8 0.9"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 106 316 16" name="FntWnd">
+							<Property key="Colour" value="0.8 0.8 0.9"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 136 248 24">
+							<Property key="Caption" value="#{FontSizes}"/>
+							<Property key="TextColour" value="0.8 0.7 0.8"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 166 248 24">
+							<Property key="Caption" value="#{GUI}"/>
+							<Property key="TextColour" value="0.9 0.5 0.9"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 166 48 24" name="FntGuiVal">
+							<Property key="TextColour" value="0.9 0.5 0.9"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 166 316 16" name="FntGui">
+							<Property key="Colour" value="0.9 0.5 0.9"/>
+						</Widget>
+					</Widget>
+
+				<!-- <Widget type="TabItem" skin="" position="2 24 738 472" layer="Back">
 						<Property key="Caption" value="#60D0FF#{Video}"/> -->
 
 						<!-- <Widget type="Button" skin="CheckBox" position="32 48 176 24" name="VSync">
@@ -106,41 +166,14 @@
 							<Property key="Alpha" value="0.6"/>
 							<Property key="Static" value="true"/>
 							<Property key="ReadOnly" value="true"/>
-						</Widget>-->
-						<Widget type="TextBox" skin="TextBox" position="582 488 136 24">
-							<Property key="Caption" value="*#{NeedRestart}"/>
-							<Property key="TextColour" value="0.7 1 0.5"/>
 						</Widget>
 
-						<!-- <Widget type="Button" skin="CheckBox" position="364 156 190 24" name="VRmode">
+						<Widget type="Button" skin="CheckBox" position="364 156 190 24" name="VRmode">
 							<Property key="Caption" value="#{VRmode} * = #{NotDone}"/>
 							<Property key="TextColour" value="0.3 0.6 0.8"/>
 							<Property key="FontName" value="font.small"/>
-						</Widget> -->
+						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="32 336 248 24">
-							<Property key="Caption" value="#{Brightness}"/>
-							<Property key="TextColour" value="0.9 0.7 0.7"/>
-							<Property key="Alpha" value="0.8"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="296 336 48 24" name="BrightVal">
-							<Property key="TextColour" value="0.9 0.7 0.7"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="344 336 216 16" name="Bright">
-							<Property key="Colour" value="0.9 0.7 0.7"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="32 366 248 24">
-							<Property key="Caption" value="#{Contrast}"/>
-							<Property key="TextColour" value="0.9 0.5 0.5"/>
-							<Property key="Alpha" value="0.8"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="296 366 48 24" name="ContrastVal">
-							<Property key="TextColour" value="0.9 0.5 0.5"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="344 366 216 16" name="Contrast">
-							<Property key="Colour" value="0.9 0.5 0.5"/>
-						</Widget>
-					<!-- 
 						<Widget type="Button" skin="CheckBox" position="32 176 292 26" name="LimitFpsOn">
 							<Property key="Caption" value="#{LimitFPS} **"/>
 							<Property key="TextColour" value="0.6 0.6 0.8"/>
@@ -172,8 +205,8 @@
 						<Widget type="Slider" skin="Slider" position="270 240 320 16" name="LimitSleep">
 							<Property key="Colour" value="0.7 0.6 0.8"/>
 							<Property key="Alpha" value="0.8"/>
-						</Widget> -->
-					</Widget>
+						</Widget>
+					</Widget> -->
 				</Widget>
 			</Widget>
 

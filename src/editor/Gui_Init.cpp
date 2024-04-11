@@ -705,13 +705,9 @@ void CGui::InitGui()
 	gcom->ChangeTrackView();
 	
 
-	///  🧊 3d view []  (veget models, objects)  todo:
-	//--------------------------------------------
-	//rndCanvas = mGUI->findWidget<Canvas>("CanVeget");  //?
-	// viewCanvas = app->mWndEdit->createWidget<Canvas>("Canvas", GetViewSize(), Align::Stretch);
-	// viewCanvas->setInheritsAlpha(false);
-	// viewCanvas->setPointer("hand");
-	// viewCanvas->setVisible(false);
+	//  fonts
+	sv= &svFntWnd;		sv->Init("FntWnd",		&pSet->font_wnds, -0.1f, 0.2f);  sv->DefaultF(0.f);
+	sv= &svFntGui;		sv->Init("FntGui",		&pSet->font_gui,   0.8f, 1.2f);  sv->DefaultF(1.f);
 
 
 	bGI = true;  // gui inited, gui events can now save vals

@@ -571,6 +571,9 @@ public:
 	Ed edNetServerPort =0, edNetServerIP =0;   void evEdNetServerPort(Ed), evEdNetServerIP(Ed);
 
 
+	//  fonts
+	SV svFntWnd, svFntGui, svFntHud, svFntTimes;
+
 	//  🔗 open urls
 	void btnTrackEditor(WP);  // start ed exe
 	void btnWelcome(WP), btnWebsite(WP), btnWiki(WP), btnWikiInput(WP);
