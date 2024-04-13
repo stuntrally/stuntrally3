@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-07 23:18+0200\n"
-"PO-Revision-Date: 2024-04-09 00:01+0000\n"
+"PO-Revision-Date: 2024-04-13 13:01+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/ja/>\n"
@@ -47,7 +47,7 @@ msgstr "ノー"
 #: src/game/Gui_Network.cpp:29:361:592
 msgctxt "Error"
 msgid "Error"
-msgstr ""
+msgstr "エラー"
 
 #. HUD  Times bar 
 #: src/game/Hud_Create.cpp:247
@@ -61,7 +61,7 @@ msgstr "時間"
 #: src/game/Hud_Create.cpp:277
 msgctxt "TBLast"
 msgid "Last"
-msgstr ""
+msgstr "最後"
 
 #. HUD  Times bar 
 #: src/game/Hud_Create.cpp:278
@@ -75,7 +75,7 @@ msgstr ""
 #: src/game/Gui_Init.cpp:532
 msgctxt "TBLap"
 msgid "Lap"
-msgstr ""
+msgstr "ラップ"
 
 #. HUD  Times bar 
 #: src/game/Hud_UpdatesAll.cpp:360
@@ -89,7 +89,7 @@ msgstr ""
 #: src/game/Challenges.cpp:418:553:565:641:662:679
 msgctxt "TBPosition"
 msgid "Position"
-msgstr ""
+msgstr "位置"
 
 #. HUD  Times bar 
 #: data/gui/Game.layout:400
@@ -105,14 +105,14 @@ msgstr "ポイント"
 #: src/game/Hud_UpdatesAll.cpp:411
 msgctxt "TBLapResults"
 msgid "Lap Results"
-msgstr ""
+msgstr "ラップ結果"
 
 #. HUD 
 #: data/gui/Game_Options.layout:1336
 #: ..Options.Sound.HUD.Check
 msgctxt "Checkpoint"
 msgid "Checkpoint"
-msgstr ""
+msgstr "チェックポイント"
 
 #. HUD 
 #: data/gui/Game_Options.layout:1332
@@ -120,7 +120,7 @@ msgstr ""
 #: src/game/Hud_Create.cpp:319
 msgctxt "WrongChk"
 msgid "Wrong Checkpoint"
-msgstr ""
+msgstr "間違ったチェックポイント"
 
 #. Editor  status 
 #: src/editor/SceneInit.cpp:274
@@ -327,7 +327,7 @@ msgstr "サポート"
 #: ..Help.Tab
 msgctxt "Contributing"
 msgid "Contributing"
-msgstr ""
+msgstr "貢献する"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:173
@@ -341,7 +341,7 @@ msgstr "クレジット"
 #: ..Help.Support.Text
 msgctxt "LinksToWeb"
 msgid "Links to websites:"
-msgstr ""
+msgstr "ウェブサイトへのリンク:"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:49
@@ -355,14 +355,14 @@ msgstr "ホームページ"
 #: ..Help.Support.Button
 msgctxt "DocumentationWiki"
 msgid "Documentation (Wiki)"
-msgstr ""
+msgstr "ドキュメント (Wiki)"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:68
 #: ..Help.Support.Button
 msgctxt "Forum"
 msgid "Forum"
-msgstr ""
+msgstr "フォーラム"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:86
@@ -378,21 +378,21 @@ msgstr ""
 #: ..Help.Support.Button
 msgctxt "TrackEditorTutorial"
 msgid "Track Editor Tutorials"
-msgstr ""
+msgstr "トラックエディターのチュートリアル"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:80
 #: ..Help.Support.Button
 msgctxt "Translations"
 msgid "Translations"
-msgstr ""
+msgstr "翻訳"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:61
 #: ..Help.Support.Button
 msgctxt "GameControllers"
 msgid "Game Controllers"
-msgstr ""
+msgstr "ゲームコントローラー"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:92
@@ -451,61 +451,61 @@ msgstr "賞品"
 #: src/game/Challenges.cpp:490
 msgctxt "Bronze"
 msgid "Bronze"
-msgstr ""
+msgstr "ブロンズ"
 
 #. MAIN  Challenge prizes 
 #: src/game/Challenges.cpp:490
 msgctxt "Silver"
 msgid "Silver"
-msgstr ""
+msgstr "銀"
 
 #. MAIN  Challenge prizes 
 #: src/game/Challenges.cpp:490
 msgctxt "Gold"
 msgid "Gold"
-msgstr ""
+msgstr "金"
 
 #. Challenge types 
 #: data/gui/Game.layout:1908
 #: ..SingleRace.Championship.Tab
 msgctxt "Chall_Rally"
 msgid "Rally"
-msgstr ""
+msgstr "ラリー"
 
 #. Challenge types 
 #: data/gui/Game.layout:1914
 #: ..SingleRace.Championship.Tab
 msgctxt "Chall_Endurance"
 msgid "Endurance"
-msgstr ""
+msgstr "持久力"
 
 #. Challenge types 
 #: data/gui/Game.layout:1917
 #: ..SingleRace.Championship.Tab
 msgctxt "Chall_Chase"
 msgid "Chase"
-msgstr ""
+msgstr "追跡"
 
 #. Challenge types 
 #: data/gui/Game.layout:1923
 #: ..SingleRace.Championship.Tab
 msgctxt "Chall_Stunts"
 msgid "Stunts"
-msgstr ""
+msgstr "スタント"
 
 #. Challenge types 
 #: data/gui/Game.layout:1920
 #: ..SingleRace.Championship.Tab
 msgctxt "Chall_Extreme"
 msgid "Extreme"
-msgstr ""
+msgstr "過激"
 
 #. Challenge types 
 #: data/gui/Game.layout:1929
 #: ..SingleRace.Championship.Tab
 msgctxt "Chall_Special"
 msgid "Special"
-msgstr ""
+msgstr "特別"
 
 #. MAIN  Track Difficulty 
 msgctxt "Diff0"
@@ -515,45 +515,45 @@ msgstr ""
 #. MAIN  Track Difficulty 
 msgctxt "Diff1"
 msgid "Very Easy"
-msgstr ""
+msgstr "非常に簡単"
 
 #. MAIN  Track Difficulty 
 #: data/gui/Game.layout:1908
 #: ..SingleRace.Championship.Tab
 msgctxt "Diff2"
 msgid "Easy"
-msgstr ""
+msgstr "簡単"
 
 #. MAIN  Track Difficulty 
 #: data/gui/Game.layout:1887
 #: ..SingleRace.Championship.Tab
 msgctxt "Diff3"
 msgid "Medium"
-msgstr ""
+msgstr "中くらい"
 
 #. MAIN  Track Difficulty 
 #: data/gui/Game.layout:1890
 #: ..SingleRace.Championship.Tab
 msgctxt "Diff4"
 msgid "Hard"
-msgstr ""
+msgstr "難しい"
 
 #. MAIN  Track Difficulty 
 #: data/gui/Game.layout:1893
 #: ..SingleRace.Championship.Tab
 msgctxt "Diff5"
 msgid "Very Hard"
-msgstr ""
+msgstr "とても厳しい"
 
 #. MAIN  Track Difficulty 
 msgctxt "Diff6"
 msgid "Extreme"
-msgstr ""
+msgstr "過激"
 
 #. MAIN  Track Difficulty 
 msgctxt "Diff7"
 msgid "Ultra"
-msgstr ""
+msgstr "ウルトラ"
 
 #. MAIN  Track Difficulty 
 #: data/gui/Game_Main.layout:199
@@ -613,7 +613,7 @@ msgstr ""
 #: src/editor/SceneInit.cpp:482
 msgctxt "Track"
 msgid "Track"
-msgstr ""
+msgstr "トラックマップ"
 
 #. MAIN  Track 
 #: data/gui/Editor.layout:3018
@@ -626,7 +626,7 @@ msgstr ""
 #: src/game/Gui_Network.cpp:125
 msgctxt "Reverse"
 msgid "Reverse"
-msgstr ""
+msgstr "逆行する"
 
 #. MAIN  Track 
 #: data/gui/Game.layout:25
@@ -651,7 +651,7 @@ msgstr "ニューゲーム"
 #: ..Replays.Replay.Text
 msgctxt "Find"
 msgid "Find"
-msgstr ""
+msgstr "探す"
 
 #. MAIN  Track stats 
 #: data/gui/Game.layout:378
@@ -752,7 +752,7 @@ msgstr "パイプ"
 #: src/common/GuiCom_Track.cpp:210:211
 msgctxt "Name"
 msgid "Name"
-msgstr ""
+msgstr "名前"
 
 #. Championship Stage  stats 
 #: data/gui/Game_Options.layout:1793
@@ -770,7 +770,7 @@ msgstr "トラック"
 #: src/game/Challenges.cpp:515:659
 msgctxt "Stage"
 msgid "Stage"
-msgstr ""
+msgstr "ステージ"
 
 #. Championship Stage  stats 
 #: data/gui/Game.layout:2042
@@ -795,7 +795,7 @@ msgstr "風景"
 #. Championship Stage  stats 
 msgctxt "Length"
 msgid "Length"
-msgstr ""
+msgstr "長さ"
 
 #. Championship Stage  stats 
 #: data/gui/Game.layout:796
@@ -824,7 +824,7 @@ msgstr "難易度"
 #: src/editor/Update_Frame.cpp:85
 msgctxt "Distance"
 msgid "Distance"
-msgstr ""
+msgstr "距離"
 
 #. Championship Stage  stats 
 #: data/gui/Game.layout:564
@@ -852,74 +852,74 @@ msgstr ""
 #: src/game/Gui_InitChamps.cpp:64:77
 msgctxt "Progress"
 msgid "Progress"
-msgstr ""
+msgstr "進捗"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:220
 #: src/game/Gui_InitChamps.cpp:64:78:92
 msgctxt "Score"
 msgid "Score"
-msgstr ""
+msgstr "スコア"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:425
 msgctxt "TotalScore"
 msgid "Total score"
-msgstr ""
+msgstr "合計スコア"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:471
 #: src/game/Challenges.cpp:562:635:659
 msgctxt "Needed"
 msgid "Needed"
-msgstr ""
+msgstr "必要です"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:219:469
 #: src/game/Challenges.cpp:478:534:674
 msgctxt "Finished"
 msgid "Finished"
-msgstr ""
+msgstr "終了した"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:475
 #: src/game/Challenges.cpp:396
 msgctxt "Passed"
 msgid "Passed"
-msgstr ""
+msgstr "合格した"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:477
 #: src/game/Challenges.cpp:396
 msgctxt "DidntPass"
 msgid "Didn't pass"
-msgstr ""
+msgstr "不合格"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:475
 #: src/game/Challenges.cpp:557
 msgctxt "NextStage"
 msgid "Continuing to next stage"
-msgstr ""
+msgstr "次のステージへ続く"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:477
 #: src/game/Challenges.cpp:558
 msgctxt "RepeatStage"
 msgid "Repeating stage"
-msgstr ""
+msgstr "繰り返しステージ"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Challenges.cpp:609
 msgctxt "CarChange"
 msgid "Vehicle change"
-msgstr ""
+msgstr "車両変更"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Challenges.cpp:609
 msgctxt "Allowed"
 msgid "Allowed"
-msgstr ""
+msgstr "許可された"
 
 #. Car  Names  from animals 
 msgctxt "Turtle"
@@ -939,7 +939,7 @@ msgstr "アリゲーター"
 #. Car  Names  from animals 
 msgctxt "Bison"
 msgid "Bison"
-msgstr ""
+msgstr "バイソン"
 
 #. Car  Names  from animals 
 msgctxt "Caterpillar"
@@ -949,7 +949,7 @@ msgstr "キャタピラー"
 #. Car  Names  from animals 
 msgctxt "Rhino"
 msgid "Rhino"
-msgstr ""
+msgstr "サイ"
 
 #. Car  Names  from animals 
 msgctxt "Bear"
@@ -959,12 +959,12 @@ msgstr "ベア"
 #. Car  Names  from animals 
 msgctxt "Coyote"
 msgid "Coyote"
-msgstr ""
+msgstr "コヨーテ"
 
 #. Car  Names  from animals 
 msgctxt "Squirrel"
 msgid "Squirrel"
-msgstr ""
+msgstr "リス"
 
 #. Car  Names  from animals 
 msgctxt "Fox"
@@ -989,7 +989,7 @@ msgstr "リザード"
 #. Car  Names  from animals 
 msgctxt "Weasel"
 msgid "Weasel"
-msgstr ""
+msgstr "イタチ"
 
 #. Car  Names  from animals 
 msgctxt "Wolf"
@@ -999,22 +999,22 @@ msgstr "ウルフ"
 #. Car  Names  from animals 
 msgctxt "Scorpion"
 msgid "Scorpion"
-msgstr ""
+msgstr "スコーピオン"
 
 #. Car  Names  from animals 
 msgctxt "Buffalo"
 msgid "Buffalo"
-msgstr ""
+msgstr "バッファロー"
 
 #. Car  Names  from animals 
 msgctxt "Gazelle"
 msgid "Gazelle"
-msgstr ""
+msgstr "ガゼル"
 
 #. Car  Names  from animals 
 msgctxt "Jaguar"
 msgid "Jaguar"
-msgstr ""
+msgstr "ジャガー"
 
 #. Car  Names  from animals 
 msgctxt "Puma"
@@ -1024,17 +1024,17 @@ msgstr "プーマ"
 #. Car  Names  from animals 
 msgctxt "Leopard"
 msgid "Leopard"
-msgstr ""
+msgstr "ヒョウ"
 
 #. Car  Names  from animals 
 msgctxt "Beetle"
 msgid "Beetle"
-msgstr ""
+msgstr "甲虫"
 
 #. Car  Names  from animals 
 msgctxt "Swan"
 msgid "Swan"
-msgstr ""
+msgstr "白鳥"
 
 #. Car  Names  from animals 
 msgctxt "Duck"
@@ -1044,7 +1044,7 @@ msgstr "鴨"
 #. Car  Names  from animals 
 msgctxt "Hawk"
 msgid "Hawk"
-msgstr ""
+msgstr "鷹"
 
 #. Car  Names  from animals 
 msgctxt "Rabbit"
@@ -1074,7 +1074,7 @@ msgstr "カラス"
 #. Car  Names  from animals 
 msgctxt "Falcon"
 msgid "Falcon"
-msgstr ""
+msgstr "ファルコン"
 
 #. Car  Names  from animals 
 msgctxt "Owl"
@@ -1084,7 +1084,7 @@ msgstr "フクロウ"
 #. Car  Names  from animals 
 msgctxt "Sparrow"
 msgid "Sparrow"
-msgstr ""
+msgstr "スズメ"
 
 #. Vehicle 
 #: data/gui/Game.layout:374
@@ -1108,7 +1108,7 @@ msgstr "車両"
 #: src/game/Gui_InitChamps.cpp:75
 msgctxt "Vehicles"
 msgid "Vehicles"
-msgstr ""
+msgstr "乗り物"
 
 #. TIP  Vehicle 
 msgctxt "TipCarsList"
@@ -1131,7 +1131,7 @@ msgstr ""
 #: :1687..SingleRace.SplitScreen.Button
 msgctxt "TipNewGameCar"
 msgid "Restart game."
-msgstr ""
+msgstr "ゲームを再開します。"
 
 #. Color  params 
 #: data/gui/Game.layout:907
@@ -1165,7 +1165,7 @@ msgstr ""
 #: ..SingleRace.Setup.Paint.Text
 msgctxt "ColHue"
 msgid "Color - Hue"
-msgstr ""
+msgstr "色 - 色相"
 
 #. Color  params 
 #: data/gui/Editor_Utils.layout:124
@@ -1174,7 +1174,7 @@ msgstr ""
 #: ..SingleRace.Setup.Paint.Text
 msgctxt "ColSat"
 msgid "Saturation"
-msgstr ""
+msgstr "飽和"
 
 #. Color  params 
 #: data/gui/Editor_Utils.layout:140
@@ -1183,14 +1183,14 @@ msgstr ""
 #: ..SingleRace.Setup.Paint.Text
 msgctxt "ColBright"
 msgid "Brightness"
-msgstr ""
+msgstr "輝度"
 
 #. Color  params 
 #: data/gui/Game.layout:1167
 #: ..SingleRace.Setup.Paint.Text
 msgctxt "ColGloss"
 msgid "Glossiness"
-msgstr ""
+msgstr "光沢感"
 
 #. Color  params 
 #: data/gui/Editor.layout:544
@@ -1201,7 +1201,7 @@ msgstr ""
 #: ..MaterialEditor.Main.Text
 msgctxt "ColReflect"
 msgid "Reflection"
-msgstr ""
+msgstr "リフレクション"
 
 #. Color  params 
 #: data/gui/Game.layout:1229
@@ -1229,7 +1229,7 @@ msgstr ""
 #: :231..MaterialEditor.Main.Edit
 msgctxt "ColRoughness"
 msgid "Roughness"
-msgstr ""
+msgstr "粗さ"
 
 #. Color  params 
 #: data/gui/Game.layout:1230
@@ -1248,7 +1248,7 @@ msgstr ""
 #: :172..MaterialEditor.Main.Edit
 msgctxt "ColFresnel"
 msgid "Fresnel"
-msgstr ""
+msgstr "フレネル"
 
 #. Color  params 
 #: data/gui/Game.layout:1200
@@ -1266,7 +1266,7 @@ msgstr ""
 #: :231..MaterialEditor.Main.Edit
 msgctxt "ColClearCoat"
 msgid "Clear coat"
-msgstr ""
+msgstr "クリアコート"
 
 #. Color  extras 
 #: data/gui/Editor_Options.layout:883
@@ -1279,7 +1279,7 @@ msgstr ""
 #: ..MaterialEditor.Main.Text
 msgctxt "Transparency"
 msgid "Transparency"
-msgstr ""
+msgstr "透明性"
 
 #. Color  extras 
 #: data/gui/Editor_Utils.layout:172
@@ -1296,7 +1296,7 @@ msgstr ""
 #: ..SingleRace.Setup.Paint.Button
 msgctxt "CarClrRandom"
 msgid "Random"
-msgstr ""
+msgstr "ランダム"
 
 #. Color  extras 
 #: data/gui/Editor.layout:686
@@ -1396,7 +1396,7 @@ msgstr ""
 #: :746
 msgctxt "Author"
 msgid "Author(s)"
-msgstr ""
+msgstr "著者"
 
 #. MAIN  Vehicle basic stats 
 #: data/gui/Game.layout:538
@@ -1413,7 +1413,7 @@ msgstr "スピード"
 #: src/game/Gui_InitCar.cpp:154
 msgctxt "CarYear"
 msgid "Year"
-msgstr ""
+msgstr "年"
 
 #. MAIN  Vehicle basic stats 
 #: data/gui/Game.layout:767
@@ -1421,7 +1421,7 @@ msgstr ""
 #: src/game/Gui_InitCar.cpp:155
 msgctxt "CarType"
 msgid "Type"
-msgstr ""
+msgstr "タイプ"
 
 #. MAIN  Vehicle basic stats 
 #: data/gui/Game.layout:479
@@ -1430,7 +1430,7 @@ msgstr ""
 #: :2391..SingleRace.Track.Text
 msgctxt "TrackDrivability"
 msgid "Track Drivability"
-msgstr ""
+msgstr "トラックのドライバビリティ"
 
 #. MAIN  Vehicle basic stats 
 #: src/game/Gui_UtilCar.cpp:284
@@ -1442,7 +1442,7 @@ msgstr ""
 #: src/game/Gui_UtilCar.cpp:429
 msgctxt "Car_Mass"
 msgid "Mass"
-msgstr ""
+msgstr "質量"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:432
@@ -1454,13 +1454,13 @@ msgstr ""
 #: src/game/Gui_UtilCar.cpp:436
 msgctxt "Car_MaxTorque"
 msgid "Max Torque"
-msgstr ""
+msgstr "最大トルク"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:439
 msgctxt "Car_MaxPower"
 msgid "Max Power"
-msgstr ""
+msgstr "マックスパワー"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:442
@@ -1478,7 +1478,7 @@ msgstr "トップスピード"
 #: src/game/Gui_UtilCar.cpp:458:462:466
 msgctxt "Car_TimeTo"
 msgid "Time to"
-msgstr ""
+msgstr "の時間"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:470
@@ -1494,7 +1494,7 @@ msgstr "アスファルト"
 #. MAIN  Car types 
 msgctxt "CarType_Racing"
 msgid "Racing"
-msgstr ""
+msgstr "レーシング"
 
 #. MAIN  Car types 
 msgctxt "CarType_Gravel"
@@ -1504,7 +1504,7 @@ msgstr "砂利"
 #. MAIN  Car types 
 msgctxt "CarType_Slow"
 msgid "Slow"
-msgstr ""
+msgstr "遅い"
 
 #. MAIN  Car types 
 msgctxt "CarType_Terrain"
@@ -1524,7 +1524,7 @@ msgstr ""
 #. MAIN  Car types 
 msgctxt "CarType_Hover"
 msgid "Hover"
-msgstr ""
+msgstr "ホバー"
 
 #. MAIN  Car types 
 msgctxt "CarType_Hovercraft"
@@ -1545,17 +1545,17 @@ msgstr "ドローン"
 #: src/game/Gui_Network.cpp:415:487
 msgctxt "MessageBox_Ok"
 msgid "Ok"
-msgstr ""
+msgstr "わかりました"
 
 #. MsgBox 
 msgctxt "MessageBox_Yes"
 msgid "Yes"
-msgstr ""
+msgstr "はい"
 
 #. MsgBox 
 msgctxt "MessageBox_No"
 msgid "No"
-msgstr ""
+msgstr "ノー"
 
 #. MsgBox 
 msgctxt "MessageBox_Abort"
