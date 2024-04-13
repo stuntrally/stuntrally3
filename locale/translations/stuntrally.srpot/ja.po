@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-07 23:18+0200\n"
-"PO-Revision-Date: 2024-04-13 13:01+0000\n"
+"PO-Revision-Date: 2024-04-13 15:02+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/ja/>\n"
@@ -1666,7 +1666,7 @@ msgstr ""
 #: src/common/GuiCom_Track.cpp:480
 msgctxt "UnitKmh"
 msgid "km/h"
-msgstr ""
+msgstr "キロ/ h"
 
 #. Units 
 #: data/gui/Game_Options.layout:409
@@ -1758,7 +1758,7 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Jungle"
 msgid "Jungle"
-msgstr ""
+msgstr "密林"
 
 #. Scenery names 
 msgctxt "SC_JungleDark"
@@ -1768,7 +1768,7 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Desert"
 msgid "Desert"
-msgstr ""
+msgstr "砂漠"
 
 #. Scenery names 
 msgctxt "SC_DesertMud"
@@ -1778,7 +1778,7 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Savanna"
 msgid "Savanna"
-msgstr ""
+msgstr "サバンナ"
 
 #. Scenery names 
 msgctxt "SC_SavannaDry"
@@ -1788,7 +1788,7 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Winter"
 msgid "Winter"
-msgstr ""
+msgstr "冬"
 
 #. Scenery names 
 msgctxt "SC_WinterWet"
@@ -1798,7 +1798,7 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Forest"
 msgid "Forest"
-msgstr ""
+msgstr "森"
 
 #. Scenery names 
 msgctxt "SC_ForestMntn"
@@ -1818,7 +1818,7 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Island"
 msgid "Island"
-msgstr ""
+msgstr "島"
 
 #. Scenery names 
 msgctxt "SC_IslandDark"
@@ -1843,12 +1843,12 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Canyon"
 msgid "Canyon"
-msgstr ""
+msgstr "キャニオン"
 
 #. Scenery names 
 msgctxt "SC_Autumn"
 msgid "Autumn"
-msgstr ""
+msgstr "秋"
 
 #. Scenery names 
 msgctxt "SC_AutumnDark"
@@ -1858,12 +1858,12 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Moss"
 msgid "Moss"
-msgstr ""
+msgstr "モス"
 
 #. Scenery names 
 msgctxt "SC_Volcanic"
 msgid "Volcanic"
-msgstr ""
+msgstr "火山性"
 
 #. Scenery names 
 msgctxt "SC_VolcanicDark"
@@ -1873,17 +1873,17 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Unidentified"
 msgid "Unidentified"
-msgstr ""
+msgstr "身元不明"
 
 #. Scenery names 
 msgctxt "SC_Mars"
 msgid "Mars"
-msgstr ""
+msgstr "火星"
 
 #. Scenery names 
 msgctxt "SC_Crystals"
 msgid "Crystals"
-msgstr ""
+msgstr "クリスタル"
 
 #. Scenery names 
 msgctxt "SC_GreeceWhite"
@@ -1893,17 +1893,17 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Toxic"
 msgid "Toxic"
-msgstr ""
+msgstr "有毒"
 
 #. Scenery names 
 msgctxt "SC_Surreal"
 msgid "Surreal"
-msgstr ""
+msgstr "超現実的な"
 
 #. Scenery names 
 msgctxt "SC_Alien"
 msgid "Alien"
-msgstr ""
+msgstr "エイリアン"
 
 #. Scenery names 
 msgctxt "SC_Other"
@@ -1913,14 +1913,14 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Stone"
 msgid "Stone"
-msgstr ""
+msgstr "石"
 
 #. Scenery names 
 #: data/gui/Game.layout:1926
 #: ..SingleRace.Championship.Tab
 msgctxt "SC_Space"
 msgid "Space"
-msgstr ""
+msgstr "空間"
 
 #. Scenery names 
 msgctxt "SC_BlackDesert"
@@ -1940,17 +1940,17 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Marble"
 msgid "Marble"
-msgstr ""
+msgstr "大理石"
 
 #. Scenery names 
 msgctxt "SC_Spring"
 msgid "Spring"
-msgstr ""
+msgstr "春"
 
 #. Scenery names 
 msgctxt "SC_Anomaly"
 msgid "Anomaly"
-msgstr ""
+msgstr "異常"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:502
@@ -1964,17 +1964,17 @@ msgstr ""
 #: :101:135
 msgctxt "P_Red"
 msgid "Red"
-msgstr ""
+msgstr "レッド"
 
 #. Vehicle Paint names 
 msgctxt "P_Orange"
 msgid "Orange"
-msgstr ""
+msgstr "オレンジ"
 
 #. Vehicle Paint names 
 msgctxt "P_Yellow"
 msgid "Yellow"
-msgstr ""
+msgstr "黄色"
 
 #. Vehicle Paint names 
 msgctxt "P_Lime"
@@ -1989,17 +1989,17 @@ msgstr ""
 #: :112:149
 msgctxt "P_Green"
 msgid "Green"
-msgstr ""
+msgstr "緑"
 
 #. Vehicle Paint names 
 msgctxt "P_Olive"
 msgid "Olive"
-msgstr ""
+msgstr "オリーブ"
 
 #. Vehicle Paint names 
 msgctxt "P_SkyBlue"
 msgid "SkyBlue"
-msgstr ""
+msgstr "空色"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:526
@@ -2009,42 +2009,42 @@ msgstr ""
 #: :123:163
 msgctxt "P_Blue"
 msgid "Blue"
-msgstr ""
+msgstr "青"
 
 #. Vehicle Paint names 
 msgctxt "P_Cyan"
 msgid "Cyan"
-msgstr ""
+msgstr "シアン"
 
 #. Vehicle Paint names 
 msgctxt "P_Teal"
 msgid "Teal"
-msgstr ""
+msgstr "ティール"
 
 #. Vehicle Paint names 
 msgctxt "P_Violet"
 msgid "Violet"
-msgstr ""
+msgstr "バイオレット"
 
 #. Vehicle Paint names 
 msgctxt "P_Magenta"
 msgid "Magenta"
-msgstr ""
+msgstr "赤紫色"
 
 #. Vehicle Paint names 
 msgctxt "P_Brown"
 msgid "Brown"
-msgstr ""
+msgstr "茶色"
 
 #. Vehicle Paint names 
 msgctxt "P_Black"
 msgid "Black"
-msgstr ""
+msgstr "黒"
 
 #. Vehicle Paint names 
 msgctxt "P_White"
 msgid "White"
-msgstr ""
+msgstr "ホワイト"
 
 #. Vehicle Paint names 
 #: data/gui/Game.layout:1052
@@ -2056,27 +2056,27 @@ msgstr ""
 #. Vehicle Paint names 
 msgctxt "P_Neon"
 msgid "Neon"
-msgstr ""
+msgstr "ネオン"
 
 #. Vehicle Paint names 
 msgctxt "P_Ice"
 msgid "Ice"
-msgstr ""
+msgstr "氷"
 
 #. Vehicle Paint names 
 msgctxt "P_Fire"
 msgid "Fire"
-msgstr ""
+msgstr "火"
 
 #. Vehicle Paint names 
 msgctxt "P_Rainbow"
 msgid "Rainbow"
-msgstr ""
+msgstr "虹"
 
 #. Vehicle Paint names 
 msgctxt "P_Silver"
 msgid "Silver"
-msgstr ""
+msgstr "銀"
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:755
@@ -2152,7 +2152,7 @@ msgstr ""
 #: src/game/Challenges.cpp:477
 msgctxt "ChampEndCongrats"
 msgid "Congratulations !"
-msgstr ""
+msgstr "おめでとう ！"
 
 #. Championship  end 
 #: src/game/Championships.cpp:281
