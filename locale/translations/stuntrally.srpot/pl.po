@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-07 23:18+0200\n"
-"PO-Revision-Date: 2024-04-08 09:01+0000\n"
+"PO-Revision-Date: 2024-04-13 15:02+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/pl/>\n"
@@ -3926,6 +3926,9 @@ msgid ""
 "not cached already. Optionally also properties on top, messing error line "
 "numbers."
 msgstr ""
+"Zapisze generowane shadery w katalogu użytkownika cache/shaders/. Tylko dla "
+"tych nie zapisanych jeszcze. Opcjonalnie z właściwościami na górze, "
+"zakłócającymi numery linii błędów."
 
 #. Settings  debug 
 #: data/gui/Editor_Options.layout:972 ..Options.Settings.Tweak.Text
@@ -4019,21 +4022,21 @@ msgstr "Buforuj materiały"
 #: data/gui/Game_Options.layout:1464 ..Options.Settings.Check
 msgctxt "CacheShaders"
 msgid "Cache Shaders"
-msgstr ""
+msgstr "Buforuj shader'y"
 
 #. Settings  cache, shaders 
 #: data/gui/Editor_Options.layout:1057 ..Options.Settings.Advanced.Check
 #: data/gui/Game_Options.layout:1647 ..Options.Tweak.Advanced.Check
 msgctxt "DebugShaders"
 msgid "Debug Shaders"
-msgstr ""
+msgstr "Debuguj shadery"
 
 #. Settings  cache, shaders 
 #: data/gui/Editor_Options.layout:1062 ..Options.Settings.Advanced.Check
 #: data/gui/Game_Options.layout:1652 ..Options.Tweak.Advanced.Check
 msgctxt "DebugProperties"
 msgid "Debug Properties"
-msgstr ""
+msgstr "Debuguj właściwości"
 
 #. Settings  car tweak visualizeations 
 #: data/gui/Game_Options.layout:1546 ..Options.Tweak.Graphs.Check
@@ -8084,6 +8087,9 @@ msgid ""
 "throttle to get back grip and wheels rolling normally. This will happen on "
 "surfaces like snow or with faster cars."
 msgstr ""
+"Uważaj na kręcące koła w miejscu, auto traci przyczepność i będzie zbytnio "
+"ślizgało bokiem. Puść gaz by odzyskać przyczepność i normalne toczenie kół. "
+"To dzieje się na powierzchniach takich jak śnieg lub z szybszymi autami."
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-22"
@@ -8155,6 +8161,9 @@ msgid ""
 "tracks with no roads: Flat, TerrainBig, Fluids, Snow or Asphalt. Type name "
 "in find box for quick search."
 msgstr ""
+"Na początku może być bezpieczniej i więcej frajdy, trenując jazdę na dużych "
+"trasach testowych bez dróg: Flat, TerrainBig, Fluids, Snow lub Asphalt. "
+"Wpisz w polu szukania tras by je znaleźć."
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:435 ..HowToPlay.Button
