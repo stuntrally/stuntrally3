@@ -413,6 +413,10 @@
 	<Tag name="VRmode">Modalità</Tag>
 	<Tag name="Brightness">Luminosità</Tag>
 	<Tag name="Contrast">Controller</Tag>
+	<Tag name="Gamma">Gamma</Tag>
+	<Tag name="GUI">GUI</Tag>
+	<Tag name="FontSizes">Font sizes</Tag>
+	<Tag name="WindowMargin">Window margin</Tag>
 	<Tag name="Complex">Complesso</Tag>
 	<Tag name="Simple">Semplice</Tag>
 	<Tag name="NeedRestart">* necessita il riavvio</Tag>
@@ -1342,9 +1346,6 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GUI">GUI</Tag>
-	<Tag name="FontSizes">Font sizes</Tag>
-	<Tag name="WindowMargin">Window margin</Tag>
 	<Tag name="GameVersion">3.1</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 

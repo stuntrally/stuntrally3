@@ -413,6 +413,10 @@
 	<Tag name="VRmode">Tryb VR</Tag>
 	<Tag name="Brightness">Jasność</Tag>
 	<Tag name="Contrast">Kontrast</Tag>
+	<Tag name="Gamma">Gamma</Tag>
+	<Tag name="GUI">Gamma</Tag>
+	<Tag name="FontSizes">Rozmiary czcionek</Tag>
+	<Tag name="WindowMargin">Margines okna</Tag>
 	<Tag name="Complex">Złożone</Tag>
 	<Tag name="Simple">Proste</Tag>
 	<Tag name="NeedRestart">* wymaga restartu</Tag>
@@ -582,7 +586,7 @@
 	<Tag name="FOV">Kąt widzenia</Tag>
 	<Tag name="Other">Inne</Tag>
 	<Tag name="Development">Narzędzia</Tag>
-	<Tag name="TipDebugShaders">Will save generated shaders in user's cache/shaders/ folder. Only for those not cached already. Optionally also properties on top, messing error line numbers.</Tag>
+	<Tag name="TipDebugShaders">Zapisze generowane shadery w katalogu użytkownika cache/shaders/. Tylko dla tych nie zapisanych jeszcze. Opcjonalnie z właściwościami na górze, zakłócającymi numery linii błędów.</Tag>
 	<Tag name="FPS">Pasek Fps, statystyki renderowania</Tag>
 	<Tag name="FPS_Fps">Klatki na sekundę (FPS)</Tag>
 	<Tag name="FPS_Triangles">Miliony trójkątów</Tag>
@@ -597,9 +601,9 @@
 	<Tag name="BulletProfilerTxt">Czasy profilera Bullet</Tag>
 	<Tag name="FullSoundsInfo">Pełne info dźwięków w grafach.</Tag>
 	<Tag name="CacheMaterials">Buforuj materiały</Tag>
-	<Tag name="CacheShaders">Cache Shaders</Tag>
-	<Tag name="DebugShaders">Debug Shaders</Tag>
-	<Tag name="DebugProperties">Debug Properties</Tag>
+	<Tag name="CacheShaders">Buforuj shader'y</Tag>
+	<Tag name="DebugShaders">Debuguj shadery</Tag>
+	<Tag name="DebugProperties">Debuguj właściwości</Tag>
 	<Tag name="CarDebug">Paski zawieszenia, poślizgu | -</Tag>
 	<Tag name="CarTireVisCircles">Wizualizacja kołowa sił opon</Tag>
 	<Tag name="CarDebugText">text debug auta </Tag>
@@ -1203,7 +1207,7 @@
 	<Tag name="Hint-20">Ciecze</Tag>
 	<Tag name="Hint-20text">Ciecze jak woda i błoto są bezpieczne. Możesz prowadzić auta pod wodą i przez błoto. Unikaj lawy i kwasu, które szybko uszkadzają pojazdy.</Tag>
 	<Tag name="Hint-21">Koła</Tag>
-	<Tag name="Hint-21text">Beware of spinning wheels, car looses grip and will slide too much. Release throttle to get back grip and wheels rolling normally. This will happen on surfaces like snow or with faster cars.</Tag>
+	<Tag name="Hint-21text">Uważaj na kręcące koła w miejscu, auto traci przyczepność i będzie zbytnio ślizgało bokiem. Puść gaz by odzyskać przyczepność i normalne toczenie kół. To dzieje się na powierzchniach takich jak śnieg lub z szybszymi autami.</Tag>
 	<Tag name="Hint-22">Klawiatura</Tag>
 	<Tag name="Hint-22text">Domyślnie, strzałki klawiatury służą do kierowania.</Tag>
 	<Tag name="Hint-23">Edytory</Tag>
@@ -1213,7 +1217,7 @@
 	<Tag name="Hint-25">Wsparcie</Tag>
 	<Tag name="Hint-25text">Stunt Rally jest Darmowym I Otwartym Oprogramowaniem. Możesz rozwijać ten projekt lub wesprzeć go darowizną(ami).</Tag>
 	<Tag name="Hint-26">Trasy testowe</Tag>
-	<Tag name="Hint-26text">When beginning it may be safer and more fun, to train driving on big test tracks with no roads: Flat, TerrainBig, Fluids, Snow or Asphalt. Type name in find box for quick search.</Tag>
+	<Tag name="Hint-26text">Na początku może być bezpieczniej i więcej frajdy, trenując jazdę na dużych trasach testowych bez dróg: Flat, TerrainBig, Fluids, Snow lub Asphalt. Wpisz w polu szukania tras by je znaleźć.</Tag>
 	<Tag name="Hint-27">Ręczny hamulec</Tag>
 	<Tag name="Hint-27text">Użyj hamulca ręcznego bardzo krótko w bardzo ostrych zakrętach. Zablokuje on koła i sprawi że auto szybciej się obróci.</Tag>
 	<Tag name="UserDir">Katalog użytkownika (logi, konfigi, dane, itp.)</Tag>
@@ -1342,9 +1346,6 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GUI">GUI</Tag>
-	<Tag name="FontSizes">Font sizes</Tag>
-	<Tag name="WindowMargin">Window margin</Tag>
 	<Tag name="GameVersion">3.1</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
