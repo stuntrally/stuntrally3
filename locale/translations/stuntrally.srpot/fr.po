@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-07 23:18+0200\n"
-"PO-Revision-Date: 2023-11-11 10:04+0000\n"
+"PO-Revision-Date: 2024-04-13 13:01+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/fr/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % "
 "1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -188,7 +188,7 @@ msgstr "Défi"
 #: ..NewGame.Button
 msgctxt "HowToPlay"
 msgid "How To Play"
-msgstr ""
+msgstr "Comment jouer"
 
 #. MAIN  Menu 
 #: data/gui/Game_Main.layout:48 ..StuntRally##{GameVersion}.Button
@@ -230,7 +230,7 @@ msgstr "Retour"
 #: data/gui/Game_Main.layout:92 ..StuntRally##{GameVersion}.Button
 msgctxt "TrackEditor"
 msgid "Track Editor"
-msgstr ""
+msgstr "Éditeur de piste"
 
 #. MAIN  Menu 
 #: data/gui/Game_Main.layout:97 ..StuntRally##{GameVersion}.Button
@@ -259,25 +259,25 @@ msgstr "Lisez-moi"
 #: data/gui/Game_Help.layout:17 ..Help.Tab
 msgctxt "Support"
 msgid "Support"
-msgstr ""
+msgstr "Soutien"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:149 ..Help.Tab
 msgctxt "Contributing"
 msgid "Contributing"
-msgstr ""
+msgstr "Contribuant"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:173 ..Help.Tab
 msgctxt "Credits"
 msgid "Credits"
-msgstr ""
+msgstr "Crédits"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:36 ..Help.Support.Text
 msgctxt "LinksToWeb"
 msgid "Links to websites:"
-msgstr ""
+msgstr "Liens vers des sites internet :"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:49 ..Help.Support.Button
@@ -289,7 +289,7 @@ msgstr "Page d'accueil"
 #: data/gui/Game_Help.layout:55 ..Help.Support.Button
 msgctxt "DocumentationWiki"
 msgid "Documentation (Wiki)"
-msgstr ""
+msgstr "Documentation (Wiki)"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:68 ..Help.Support.Button
@@ -301,14 +301,14 @@ msgstr "Forum"
 #: data/gui/Game_Help.layout:86 ..Help.Support.Button
 msgctxt "Sources"
 msgid "Sources"
-msgstr ""
+msgstr "Sources"
 
 #. MAIN  Help links 
 #: data/gui/Editor_Help.layout:24 ..Help.Input/help.Button
 #: data/gui/Game_Help.layout:74 ..Help.Support.Button
 msgctxt "TrackEditorTutorial"
 msgid "Track Editor Tutorials"
-msgstr ""
+msgstr "Didacticiels de l'éditeur de piste"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:80 ..Help.Support.Button
@@ -320,13 +320,13 @@ msgstr "Traductions"
 #: data/gui/Game_Help.layout:61 ..Help.Support.Button
 msgctxt "GameControllers"
 msgid "Game Controllers"
-msgstr ""
+msgstr "Contrôleurs de jeu"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:92 ..Help.Support.Button
 msgctxt "Donations"
 msgid "Donations"
-msgstr ""
+msgstr "Des dons"
 
 #. MAIN  Championship  buttons 
 #: data/gui/Game.layout:1977 ..SingleRace.Championship.Button :1988:1999
@@ -736,47 +736,47 @@ msgstr "Admis"
 #. Car  Names  from animals 
 msgctxt "Turtle"
 msgid "Turtle"
-msgstr ""
+msgstr "Tortue"
 
 #. Car  Names  from animals 
 msgctxt "Elephant"
 msgid "Elephant"
-msgstr ""
+msgstr "Éléphant"
 
 #. Car  Names  from animals 
 msgctxt "Alligator"
 msgid "Alligator"
-msgstr ""
+msgstr "Alligator"
 
 #. Car  Names  from animals 
 msgctxt "Bison"
 msgid "Bison"
-msgstr ""
+msgstr "Bison"
 
 #. Car  Names  from animals 
 msgctxt "Caterpillar"
 msgid "Caterpillar"
-msgstr ""
+msgstr "Chenille"
 
 #. Car  Names  from animals 
 msgctxt "Rhino"
 msgid "Rhino"
-msgstr ""
+msgstr "Rhinocéros"
 
 #. Car  Names  from animals 
 msgctxt "Bear"
 msgid "Bear"
-msgstr ""
+msgstr "Ours"
 
 #. Car  Names  from animals 
 msgctxt "Coyote"
 msgid "Coyote"
-msgstr ""
+msgstr "Coyote"
 
 #. Car  Names  from animals 
 msgctxt "Squirrel"
 msgid "Squirrel"
-msgstr ""
+msgstr "Écureuil"
 
 #. Car  Names  from animals 
 msgctxt "Fox"
@@ -786,22 +786,22 @@ msgstr "Renard"
 #. Car  Names  from animals 
 msgctxt "Hyena"
 msgid "Hyena"
-msgstr ""
+msgstr "Hyène"
 
 #. Car  Names  from animals 
 msgctxt "Gorilla"
 msgid "Gorilla"
-msgstr ""
+msgstr "Gorille"
 
 #. Car  Names  from animals 
 msgctxt "Lizard"
 msgid "Lizard"
-msgstr ""
+msgstr "Lézard"
 
 #. Car  Names  from animals 
 msgctxt "Weasel"
 msgid "Weasel"
-msgstr ""
+msgstr "Belette"
 
 #. Car  Names  from animals 
 msgctxt "Wolf"
@@ -811,12 +811,12 @@ msgstr "Loup"
 #. Car  Names  from animals 
 msgctxt "Scorpion"
 msgid "Scorpion"
-msgstr ""
+msgstr "Scorpion"
 
 #. Car  Names  from animals 
 msgctxt "Buffalo"
 msgid "Buffalo"
-msgstr ""
+msgstr "Buffle"
 
 #. Car  Names  from animals 
 msgctxt "Gazelle"
@@ -826,37 +826,37 @@ msgstr "Gazelle"
 #. Car  Names  from animals 
 msgctxt "Jaguar"
 msgid "Jaguar"
-msgstr ""
+msgstr "Jaguar"
 
 #. Car  Names  from animals 
 msgctxt "Puma"
 msgid "Puma"
-msgstr ""
+msgstr "Puma"
 
 #. Car  Names  from animals 
 msgctxt "Leopard"
 msgid "Leopard"
-msgstr ""
+msgstr "Léopard"
 
 #. Car  Names  from animals 
 msgctxt "Beetle"
 msgid "Beetle"
-msgstr ""
+msgstr "Scarabée"
 
 #. Car  Names  from animals 
 msgctxt "Swan"
 msgid "Swan"
-msgstr ""
+msgstr "Cygne"
 
 #. Car  Names  from animals 
 msgctxt "Duck"
 msgid "Duck"
-msgstr ""
+msgstr "Cane"
 
 #. Car  Names  from animals 
 msgctxt "Hawk"
 msgid "Hawk"
-msgstr ""
+msgstr "Faucon"
 
 #. Car  Names  from animals 
 msgctxt "Rabbit"
@@ -866,37 +866,37 @@ msgstr "Lapin"
 #. Car  Names  from animals 
 msgctxt "Python"
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #. Car  Names  from animals 
 msgctxt "Cobra"
 msgid "Cobra"
-msgstr ""
+msgstr "Cobra"
 
 #. Car  Names  from animals 
 msgctxt "Eagle"
 msgid "Eagle"
-msgstr ""
+msgstr "Aigle"
 
 #. Car  Names  from animals 
 msgctxt "Crow"
 msgid "Crow"
-msgstr ""
+msgstr "Corbeau"
 
 #. Car  Names  from animals 
 msgctxt "Falcon"
 msgid "Falcon"
-msgstr ""
+msgstr "Faucon"
 
 #. Car  Names  from animals 
 msgctxt "Owl"
 msgid "Owl"
-msgstr ""
+msgstr "Chouette"
 
 #. Car  Names  from animals 
 msgctxt "Sparrow"
 msgid "Sparrow"
-msgstr ""
+msgstr "Moineau"
 
 #. Vehicle 
 #: data/gui/Game.layout:374 ..SingleRace.Track.Text :494..SingleRace.Tab
@@ -1036,7 +1036,7 @@ msgstr ""
 #: :231..MaterialEditor.Main.Edit
 msgctxt "ColClearCoat"
 msgid "Clear coat"
-msgstr ""
+msgstr "Couche transparente"
 
 #. Color  extras 
 #: data/gui/Editor_Options.layout:883 ..Options.View.Pacenotes.Text
@@ -1073,7 +1073,7 @@ msgstr "Ajuster"
 #: data/gui/Game.layout:961 ..SingleRace.Setup.Paint.Check
 msgctxt "NewLine"
 msgid "New line"
-msgstr ""
+msgstr "Nouvelle ligne"
 
 #. TIP  Vehicle Color 
 #: src/game/Gui_Paints.cpp:465
@@ -1169,7 +1169,7 @@ msgstr "Conduite sur piste"
 #: src/game/Gui_UtilCar.cpp:284
 msgctxt "Undrivable"
 msgid "Undrivable"
-msgstr ""
+msgstr "Impossible à conduire"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:429
@@ -1257,12 +1257,12 @@ msgstr "Autre"
 #. MAIN  Car types 
 msgctxt "CarType_Hover"
 msgid "Hover"
-msgstr ""
+msgstr "Flotter"
 
 #. MAIN  Car types 
 msgctxt "CarType_Hovercraft"
 msgid "Hovercraft"
-msgstr ""
+msgstr "Aéroglisseur"
 
 #. MAIN  Car types 
 msgctxt "CarType_Spaceship"
@@ -1272,7 +1272,7 @@ msgstr "Vaisseau"
 #. MAIN  Car types 
 msgctxt "CarType_Drone"
 msgid "Drone"
-msgstr ""
+msgstr "Drone"
 
 #. MsgBox 
 #: src/game/Gui_Network.cpp:415:487
@@ -1657,7 +1657,7 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Marble"
 msgid "Marble"
-msgstr ""
+msgstr "Marbre"
 
 #. Scenery names 
 msgctxt "SC_Spring"
@@ -1691,7 +1691,7 @@ msgstr "Jaune"
 #. Vehicle Paint names 
 msgctxt "P_Lime"
 msgid "Lime"
-msgstr ""
+msgstr "Citron vert"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:514 ..Editor.Terrain.Light.Text
@@ -1703,12 +1703,12 @@ msgstr "Vert"
 #. Vehicle Paint names 
 msgctxt "P_Olive"
 msgid "Olive"
-msgstr ""
+msgstr "Olive"
 
 #. Vehicle Paint names 
 msgctxt "P_SkyBlue"
 msgid "SkyBlue"
-msgstr ""
+msgstr "Bleu ciel"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:526 ..Editor.Terrain.Light.Text
@@ -1756,12 +1756,12 @@ msgstr "Blanc"
 #: data/gui/Game.layout:1052 ..SingleRace.Setup.Paint.Tab
 msgctxt "P_Mix"
 msgid "Mix"
-msgstr ""
+msgstr "Mélanger"
 
 #. Vehicle Paint names 
 msgctxt "P_Neon"
 msgid "Neon"
-msgstr ""
+msgstr "Néon"
 
 #. Vehicle Paint names 
 msgctxt "P_Ice"
@@ -1957,6 +1957,8 @@ msgstr ""
 msgctxt "HintGraphics"
 msgid "To adjust graphics to your card press Screen button."
 msgstr ""
+"Pour ajuster les graphiques sur votre carte graphique, appuyez sur le bouton "
+"Écran."
 
 #. Hint  welcome screen 
 #: data/gui/Game_Help.layout:308 ..Welcometo.Edit
@@ -2042,7 +2044,7 @@ msgstr "Mini-carte de la piste sélectionnée, vue de dessus."
 #: data/gui/Game.layout:38 ..SingleRace.Track.Image :41:44:2074:2077:2080
 msgctxt "TipClickMax"
 msgid "Click to maximize. Then click to close."
-msgstr ""
+msgstr "Cliquez pour agrandir. Cliquez ensuite pour fermer."
 
 #. TIP  Track 
 #: data/gui/Editor_Track.layout:362 ..Track.Track.Button
@@ -2148,7 +2150,7 @@ msgstr "long"
 #: :2355..SingleRace.Track.Text
 msgctxt "sum"
 msgid "sum (of difficulties)"
-msgstr ""
+msgstr "somme (de difficultés)"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:93 ..Track-Filter.Check
@@ -2536,7 +2538,7 @@ msgstr "Fuel Boost"
 #: src/game/Gui_Init.cpp:324
 msgctxt "GoBackTime"
 msgid "Go back time"
-msgstr ""
+msgstr "Remonter le temps"
 
 #. Replay 
 #: data/gui/Game_Options.layout:237 ..Options.Input.General.Text
@@ -2798,14 +2800,14 @@ msgstr "* redémarrage requis"
 #: :721..Options.Graphics.Text
 msgctxt "NotDone"
 msgid "not done yet, ToDo"
-msgstr ""
+msgstr "pas encore fait, ToDo"
 
 #. Screen  info 
 #: data/gui/Editor_Options.layout:197 ..Options.Graphics.Text
 #: data/gui/Game_Options.layout:715
 msgctxt "NeedApply"
 msgid "need Apply"
-msgstr ""
+msgstr "besoin de postuler"
 
 #. Screen  info 
 #: data/gui/Editor_Options.layout:209 ..Options.Graphics.Text
@@ -2917,9 +2919,6 @@ msgstr "Très élevé"
 
 #. Graphics Presets 
 #: src/common/GuiCom_Options.cpp:135
-#, fuzzy
-#| msgctxt "GraphicsAll_Higher"
-#| msgid "Higher"
 msgctxt "GraphicsAll_Highest"
 msgid "Highest"
 msgstr "Plus élevé"
@@ -3836,7 +3835,7 @@ msgstr ""
 #: data/gui/Game_Options.layout:548 src/editor/Update_EditKeyTxt.cpp:57
 msgctxt "RacingLine"
 msgid "Racing Line (trail)"
-msgstr ""
+msgstr "Ligne de course (sentier)"
 
 #. View  Camera 
 #: data/gui/Editor_Options.layout:640 ..Options.View.Tab
@@ -3940,12 +3939,9 @@ msgstr "Les instances"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:242
-#, fuzzy
-#| msgctxt "VegetCol"
-#| msgid "Vegetation collision"
 msgctxt "FPS_Vegetation"
 msgid "Vegetation models"
-msgstr "Collision avec les végétaux"
+msgstr "Modèles de végétation"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:243
@@ -4575,7 +4571,7 @@ msgstr "Moteur"
 #: data/gui/Game_Options.layout:1404 ..Options.Sound.Other.Text
 msgctxt "Turbo"
 msgid "Turbo"
-msgstr ""
+msgstr "Turbo"
 
 #. Sound  main 
 #: data/gui/Editor.layout:3181 ..Editor.Vegetation.Surface.Surface.Text
@@ -4603,14 +4599,14 @@ msgstr "Environnement"
 #: data/gui/Game_Options.layout:1295 ..Options.Sound.Main.Text
 msgctxt "Ambience"
 msgid "Ambience"
-msgstr ""
+msgstr "Ambience"
 
 #. Sound  main 
 #: data/gui/Editor_Track.layout:635 ..Track.Game.Text
 #: data/gui/Game_Options.layout:1306 ..Options.Sound.Main.Check
 msgctxt "Reverb"
 msgid "Reverberation"
-msgstr ""
+msgstr "Réverbération"
 
 #. Sound  other 
 #: data/gui/Game_Options.layout:1360 ..Options.Sound.Other.Text
@@ -5934,13 +5930,13 @@ msgstr "Sur un tube"
 #: src/editor/Update_EditKeyTxt.cpp:91
 msgctxt "Road_NotReal"
 msgid "Not Real"
-msgstr ""
+msgstr "Pas vrai"
 
 #. Road Point  toggle 
 #: src/editor/Update_EditKeyTxt.cpp:104
 msgctxt "Road_Merged"
 msgid "Merged"
-msgstr ""
+msgstr "Fusionné"
 
 #. Road Point  toggle 
 #: src/editor/Update_EditKeyTxt.cpp:105
@@ -6123,18 +6119,15 @@ msgstr "Aligner l'horizon sur le terrain"
 
 #. Tools  Align 
 #: data/gui/Editor.layout:1229 ..Editor.Terrain.Tools.Text
-#, fuzzy
-#| msgctxt "CarType_Terrain"
-#| msgid "Terrain"
 msgctxt "AH_BaseTer"
 msgid "Base Terrain"
-msgstr "Terrain"
+msgstr "Terrain de base"
 
 #. Tools  Align 
 #: data/gui/Editor.layout:1238 ..Editor.Terrain.Tools.Text
 msgctxt "AH_Below"
 msgid "Below"
-msgstr ""
+msgstr "Ci-dessous"
 
 #. Editor Game setup 
 #: data/gui/Editor_Track.layout:598 ..Track.Game.Text
@@ -6247,12 +6240,9 @@ msgstr "Taille de la mini carte"
 
 #. Editor  Settings main 
 #: data/gui/Editor_Options.layout:748 ..Options.View.Minimap.Text
-#, fuzzy
-#| msgctxt "Minimap"
-#| msgid "Minimap"
 msgctxt "MiniType"
 msgid "Minimap type"
-msgstr "Minicarte"
+msgstr "Type de mini-carte"
 
 #. Editor  Settings update 
 #: data/gui/Editor_Options.layout:792 ..Options.View.Minimap.Text
@@ -6262,12 +6252,9 @@ msgstr "Taille des points de la route"
 
 #. Editor  Settings update 
 #: data/gui/Editor_Options.layout:781 ..Options.View.Minimap.Text
-#, fuzzy
-#| msgctxt "TerUpdSkip"
-#| msgid "Terrain update skip"
 msgctxt "RoadUpdSkip"
 msgid "Road update skip"
-msgstr "Fréq. de MAJ du terrain"
+msgstr ""
 
 #. Editor  Settings update 
 #: data/gui/Editor_Options.layout:770 ..Options.View.Minimap.Text
@@ -6285,7 +6272,7 @@ msgstr "Fréq. de MAJ de la minicarte"
 #: data/gui/Editor_Options.layout:814 ..Options.View.Minimap.Text
 msgctxt "EditSpd"
 msgid "Edit speed"
-msgstr ""
+msgstr "Vitesse d'édition"
 
 #. Editor  Settings auto 
 #: data/gui/Editor_Options.layout:935 ..Options.Settings.Settings.Check
@@ -6300,12 +6287,9 @@ msgstr "Mettre à jour la blendmap automatiquement"
 
 #. Editor  Settings extras 
 #: data/gui/Editor_Options.layout:1016 ..Options.Settings.Tweak.Check
-#, fuzzy
-#| msgctxt "EdCamPos"
-#| msgid "Camera position"
 msgctxt "EdCamPos"
 msgid "Camera position bar  Ctrl-C"
-msgstr "Position de la caméra"
+msgstr "Barre de position de la caméra Ctrl-C"
 
 #. Editor  Settings extras 
 #: data/gui/Editor_Options.layout:1026 ..Options.Settings.Tweak.Check
@@ -6426,7 +6410,7 @@ msgstr "Original"
 #: data/gui/Editor_Track.layout:694 ..Track.Tab :698..Track.Export.Button
 msgctxt "Export"
 msgid "Export"
-msgstr ""
+msgstr "Exporter"
 
 #. Tweak 
 #: data/gui/Editor_Track.layout:968 ..Track.Export.Settings.Check
@@ -6618,7 +6602,7 @@ msgstr "Alt-Z - activer la vue du dessus"
 #: data/gui/Editor_Help.layout:115 ..Help.Input/help.View.Text
 msgctxt "InputCamFocus"
 msgid "focus camera on current (object, anything)"
-msgstr ""
+msgstr "concentrer la caméra sur le courant (objet, n'importe quoi)"
 
 #. MAIN  Editor View toggle 
 #: data/gui/Editor_Help.layout:119 ..Help.Input/help.View.Text
@@ -6642,7 +6626,7 @@ msgstr "I - basculer la météo"
 #: data/gui/Editor_Help.layout:131 ..Help.Input/help.View.Text
 msgctxt "InputToggleParticles"
 msgid "P - toggle Particles"
-msgstr ""
+msgstr "P - basculer les particules"
 
 #. Terrain  Edit modes 
 #: data/gui/Editor_Help.layout:270 ..Help.Input/help.Terrain.Text
@@ -6695,7 +6679,7 @@ msgstr "Insérer - verrouiller la position de la brosse"
 #: data/gui/Editor_Help.layout:293 ..Help.Input/help.Terrain.Text
 msgctxt "InputTerHeightSet"
 msgid "Space - set height from cursor"
-msgstr ""
+msgstr "Espace - définir la hauteur à partir du curseur"
 
 #. Terrain  update 
 #: data/gui/Editor_Help.layout:298 ..Help.Input/help.Terrain.Text
@@ -7348,7 +7332,7 @@ msgstr "-,= - changer le type d'objet"
 #: data/gui/Editor_Help.layout:720 ..Help.Input/help.Objects.Text
 msgctxt "InputObjectsMaterial"
 msgid "O,P - change material"
-msgstr ""
+msgstr "O,P - changer de matériau"
 
 #. Objects  Input 
 #: data/gui/Editor_Help.layout:712 ..Help.Input/help.Objects.Text
@@ -7372,7 +7356,7 @@ msgstr "Maj.-Insér. - coller le presse-papiers"
 #: data/gui/Editor_Help.layout:761 ..Help.Input/help.Particles.Text
 msgctxt "InputParticlesMode"
 msgid "A - edit Particles"
-msgstr ""
+msgstr "A - modifier les particules"
 
 #. Particles  Input 
 #: data/gui/Editor_Help.layout:786 ..Help.Input/help.Particles.Text
@@ -7479,6 +7463,8 @@ msgstr ""
 msgctxt "CarDesc_S8"
 msgid "Good rally car, drivable on all tracks, but shorter and more steerable."
 msgstr ""
+"Bonne voiture de rallye, pilotable sur toutes les pistes, mais plus courte "
+"et plus maniable."
 
 #. Car descriptions 
 msgctxt "CarDesc_ES"
@@ -7495,6 +7481,8 @@ msgid ""
 "Best rally car in game, drivable on all tracks with the best experience, "
 "similar to ES."
 msgstr ""
+"Meilleure voiture de rallye du jeu, pilotable sur toutes les pistes avec la "
+"meilleure expérience, similaire à l'ES."
 
 #. Car descriptions 
 msgctxt "CarDesc_TW"
@@ -7547,6 +7535,8 @@ msgid ""
 "Normal size bike. Light, fast and very agile. Being small it does not like "
 "terrain bumps."
 msgstr ""
+"Vélo de taille normale. Léger, rapide et très agile. Étant petit, il n’aime "
+"pas les bosses du terrain."
 
 #. Car descriptions 
 msgctxt "CarDesc_BV"
@@ -7565,6 +7555,8 @@ msgid ""
 "Very tuned and powerful car. Drivable on all tracks. Not best on bumps. Can "
 "spin wheels easily."
 msgstr ""
+"Voiture très réglée et puissante. Roulable sur toutes les pistes. Pas mieux "
+"sur les bosses. Peut faire tourner les roues facilement."
 
 #. Car descriptions 
 msgctxt "CarDesc_PH"
@@ -7588,6 +7580,8 @@ msgid ""
 "Extremely fast car. Not long and quite agile. Bad on bumpy terrain. Can spin "
 "wheels easily, even on gravel."
 msgstr ""
+"Voiture extrêmement rapide. Pas long et assez agile. Mauvais sur terrain "
+"accidenté. Peut faire tourner les roues facilement, même sur du gravier."
 
 #. Car descriptions 
 msgctxt "CarDesc_U6"
@@ -7597,6 +7591,11 @@ msgid ""
 "only. It also has high center of mass, meaning it will end with wheels up, "
 "after bad landings."
 msgstr ""
+"Incroyablement rapide, 6 roues motrices avec moteur électrique avancé. Idéal "
+"pour courir sur toutes les planètes. Attention : il peut faire tourner les "
+"roues facilement, il n'a qu'une seule vitesse. Il a également un centre de "
+"masse élevé, ce qui signifie qu'il se terminera avec les roues relevées "
+"après de mauvais atterrissages."
 
 #. Car descriptions 
 msgctxt "CarDesc_V1"
@@ -7649,6 +7648,10 @@ msgid ""
 "Slower speed. Goes sideways much after turning. Needs boost to jump over. "
 "Fun to drive but very loud and inefficient. Brakes added."
 msgstr ""
+"Aéroglisseur lent, propulsé par une seule hélice pour le vol stationnaire et "
+"la poussée. Vitesse plus lente. Va de côté beaucoup après avoir tourné. Il a "
+"besoin d'un coup de pouce pour sauter par-dessus. Agréable à conduire mais "
+"très bruyant et inefficace. Freins ajoutés."
 
 #. Car descriptions 
 msgctxt "CarDesc_H2"
@@ -7657,12 +7660,18 @@ msgid ""
 "hovering and separate for thrust. Normal speed and still goes sideways but "
 "less. May need boost to jump over. Fun to drive and do stunts. Brakes added."
 msgstr ""
+"Aéroglisseur de course rapide, propulsé par deux hélices et moteurs. Un pour "
+"le vol stationnaire et un séparé pour la poussée. Vitesse normale et va "
+"toujours de côté mais moins. Il faudra peut-être un coup de pouce pour "
+"sauter par-dessus. Amusant à conduire et à faire des cascades. Freins "
+"ajoutés."
 
 #. Car descriptions 
 #: src/game/Gui_UtilCar.cpp:256
 msgctxt "CarDesc_Hovercraft"
 msgid "Does hover over water, but can be forced under if on side."
 msgstr ""
+"Plane au-dessus de l'eau, mais peut être forcé sous s'il est sur le côté."
 
 #. Car descriptions 
 msgctxt "CarDesc_R1"
@@ -7670,6 +7679,8 @@ msgid ""
 "First antigravity hovering car. Fast and rather easy to drive. But somewhat "
 "big and bulky, goes more sideways."
 msgstr ""
+"Première voiture stationnaire antigravité. Rapide et plutôt facile à "
+"conduire. Mais un peu gros et encombrant, il va plus latéralement."
 
 #. Car descriptions 
 msgctxt "CarDesc_R2"
@@ -7677,6 +7688,8 @@ msgid ""
 "Antigravity hovering car. Small, fast, agile and easy to drive. For all "
 "tracks and stunts."
 msgstr ""
+"Voiture planant antigravité. Petit, rapide, agile et facile à conduire. Pour "
+"toutes les pistes et cascades."
 
 #. Car descriptions 
 msgctxt "CarDesc_R3"
@@ -7684,6 +7697,8 @@ msgid ""
 "Antigravity hovering car. Long, fast, easy to drive. Suited for all tracks "
 "and stunts."
 msgstr ""
+"Voiture planant antigravité. Long, rapide, facile à conduire. Convient à "
+"toutes les pistes et cascades."
 
 #. Car descriptions 
 #: src/game/Gui_UtilCar.cpp:258
@@ -7695,6 +7710,7 @@ msgstr ""
 msgctxt "CarDesc_Q1"
 msgid "First working prototype of antigravity hovering drone. Not very fast."
 msgstr ""
+"Premier prototype fonctionnel de drone planant antigravité. Pas très vite."
 
 #. Car descriptions 
 msgctxt "CarDesc_Q3"
@@ -7702,31 +7718,33 @@ msgid ""
 "Incredibly fast antigravity drone. Very agile, needs quick reactions. Press "
 "throttle sparingly and briefly at first."
 msgstr ""
+"Drone antigravité incroyablement rapide. Très agile, nécessite des réactions "
+"rapides. Au début, appuyez brièvement et avec parcimonie sur l'accélérateur."
 
 #. Car descriptions 
 #: src/game/Gui_UtilCar.cpp:260
 msgctxt "CarDesc_HoverFluids"
 msgid "By antigravity it ignores all fluids completely."
-msgstr ""
+msgstr "Par antigravité, il ignore complètement tous les fluides."
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:400 ..HowToPlay.Button :407:414:421:428:435:442
 #: data/gui/Game_Replay.layout:240 ..Window
 msgctxt "Lesson"
 msgid "Lesson"
-msgstr ""
+msgstr "Leçon"
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:388 ..HowToPlay.Text
 msgctxt "DrivingSchool"
 msgid "Stunt Rally driving school"
-msgstr ""
+msgstr "Ecole de conduite Stunt Rally"
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:388 ..HowToPlay.Text
 msgctxt "LessonClick"
 msgid "click button to play a lesson"
-msgstr ""
+msgstr "cliquez sur le bouton pour jouer une leçon"
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:407 ..HowToPlay.Button
@@ -7968,7 +7986,7 @@ msgstr ""
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-15"
 msgid "Help"
-msgstr ""
+msgstr "Aide"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-15text"
@@ -8033,7 +8051,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:428 ..HowToPlay.Button
 msgctxt "Hint-20"
 msgid "Fluids"
-msgstr ""
+msgstr "Fluides"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-20text"
@@ -8046,7 +8064,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:435 ..HowToPlay.Button
 msgctxt "Hint-21"
 msgid "Wheels"
-msgstr ""
+msgstr "Roues"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-21text"
@@ -8059,7 +8077,7 @@ msgstr ""
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-22"
 msgid "Keyboard"
-msgstr ""
+msgstr "Clavier"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-22text"
@@ -8069,7 +8087,7 @@ msgstr ""
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-23"
 msgid "Editors"
-msgstr ""
+msgstr "Éditeurs"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-23text"
@@ -8083,7 +8101,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:442 ..HowToPlay.Button
 msgctxt "Hint-24"
 msgid "Details"
-msgstr ""
+msgstr "Détails"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-24text"
@@ -8096,7 +8114,7 @@ msgstr ""
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-25"
 msgid "Support"
-msgstr ""
+msgstr "Soutien"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-25text"
@@ -8104,6 +8122,8 @@ msgid ""
 "Stunt Rally is Free Libre Open Source Software. You can contribute to this "
 "project or support it with donation(s)."
 msgstr ""
+"Stunt Rally est un logiciel libre et open source. Vous pouvez contribuer à "
+"ce projet ou le soutenir par un ou plusieurs dons."
 
 #. TIP  Hints title+text  (in How To Play) 
 #: data/gui/Game_Help.layout:435 ..HowToPlay.Button
@@ -8123,7 +8143,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:435 ..HowToPlay.Button
 msgctxt "Hint-27"
 msgid "Handbrake"
-msgstr ""
+msgstr "Frein à main"
 
 #. TIP  Hints title+text  (in How To Play) 
 msgctxt "Hint-27text"
