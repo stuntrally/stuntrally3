@@ -9,17 +9,17 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 18:42+0200\n"
-"PO-Revision-Date: 2023-11-11 10:04+0000\n"
+"PO-Revision-Date: 2024-04-13 18:01+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/stunt-rally-3/"
-"stunt-rally-3/es_AR/>\n"
+"stunt-rally-3/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
-"1 : 2;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n != 0 && n % 1000000 == 0)"
+" ? 1 : 2);\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -53,19 +53,19 @@ msgstr "Error"
 #: src/game/Gui_Init.cpp:531
 msgctxt "TBTime"
 msgid "Time"
-msgstr ""
+msgstr "Tiempo"
 
 #. HUD  Times bar 
 #: src/game/Hud_Create.cpp:281
 msgctxt "TBLast"
 msgid "Last"
-msgstr ""
+msgstr "Último"
 
 #. HUD  Times bar 
 #: src/game/Hud_Create.cpp:282 src/game/Gui_Init.cpp:531
 msgctxt "TBBest"
 msgid "Best"
-msgstr ""
+msgstr "El mejor"
 
 #. HUD  Times bar 
 #: src/game/Hud_Create.cpp:251:280 src/game/Gui_Init.cpp:532
@@ -77,7 +77,7 @@ msgstr "Vuelta"
 #: src/game/Hud_UpdatesAll.cpp:360 src/game/Gui_Init.cpp:530
 msgctxt "TBPlace"
 msgid "Place"
-msgstr ""
+msgstr "Lugar"
 
 #. HUD  Times bar 
 #: src/game/Hud_Create.cpp:254:284
@@ -98,13 +98,13 @@ msgstr "Puntos"
 #: src/game/Hud_UpdatesAll.cpp:411
 msgctxt "TBLapResults"
 msgid "Lap Results"
-msgstr ""
+msgstr "Resultados de vuelta"
 
 #. HUD 
 #: data/gui/Game_Options.layout:1396 ..Options.Sound.HUD.Check
 msgctxt "Checkpoint"
 msgid "Checkpoint"
-msgstr ""
+msgstr "Control"
 
 #. HUD 
 #: data/gui/Game_Options.layout:1392 ..Options.Sound.HUD.Check
@@ -181,21 +181,21 @@ msgstr "Tutoría"
 #: src/game/Challenges.cpp:395:514:635 src/game/Gui_Util.cpp:106:166
 msgctxt "Challenge"
 msgid "Challenge"
-msgstr ""
+msgstr "Desafío"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:382 ..Window data/gui/Game_Main.layout:265
 #: ..NewGame.Button
 msgctxt "HowToPlay"
 msgid "How To Play"
-msgstr ""
+msgstr "Cómo jugar"
 
 #. MAIN  Menu 
 #: data/gui/Game_Main.layout:48 ..StuntRally##{GameVersion}.Button
 #: data/gui/Game_Replay.layout:5 ..Window
 msgctxt "ReplaysMenu"
 msgid "Replays"
-msgstr ""
+msgstr "Repeticiones"
 
 #. MAIN  Menu 
 #: data/gui/Editor_Main.layout:81
@@ -210,7 +210,7 @@ msgstr "Opciones"
 #: data/gui/Common.layout:4 ..Button
 msgctxt "Quit"
 msgid "Quit"
-msgstr ""
+msgstr "Abandonar"
 
 #. MAIN  Menu 
 #: data/gui/Editor_Help.layout:14 ..Help.Tab data/gui/Editor.layout:14
@@ -230,7 +230,7 @@ msgstr ""
 #: data/gui/Game_Main.layout:92 ..StuntRally##{GameVersion}.Button
 msgctxt "TrackEditor"
 msgid "Track Editor"
-msgstr ""
+msgstr "Editor de pistas"
 
 #. MAIN  Menu 
 #: data/gui/Game_Main.layout:97 ..StuntRally##{GameVersion}.Button
@@ -253,31 +253,31 @@ msgstr "Ayuda"
 #: data/gui/Game_Help.layout:131 ..Help.Tab
 msgctxt "Readme"
 msgid "Readme"
-msgstr ""
+msgstr "Léame"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:17 ..Help.Tab
 msgctxt "Support"
 msgid "Support"
-msgstr ""
+msgstr "Apoyo"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:149 ..Help.Tab
 msgctxt "Contributing"
 msgid "Contributing"
-msgstr ""
+msgstr "Contribución"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:173 ..Help.Tab
 msgctxt "Credits"
 msgid "Credits"
-msgstr ""
+msgstr "Créditos"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:36 ..Help.Support.Text
 msgctxt "LinksToWeb"
 msgid "Links to websites:"
-msgstr ""
+msgstr "Enlaces a sitios web:"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:49 ..Help.Support.Button
@@ -289,7 +289,7 @@ msgstr "Página web"
 #: data/gui/Game_Help.layout:55 ..Help.Support.Button
 msgctxt "DocumentationWiki"
 msgid "Documentation (Wiki)"
-msgstr ""
+msgstr "Documentación (Wiki)"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:68 ..Help.Support.Button
@@ -308,7 +308,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:74 ..Help.Support.Button
 msgctxt "TrackEditorTutorial"
 msgid "Track Editor Tutorials"
-msgstr ""
+msgstr "Tutoriales del editor de pistas"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:80 ..Help.Support.Button
@@ -320,13 +320,13 @@ msgstr "Traducciones"
 #: data/gui/Game_Help.layout:61 ..Help.Support.Button
 msgctxt "GameControllers"
 msgid "Game Controllers"
-msgstr ""
+msgstr "Controladores de juego"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:92 ..Help.Support.Button
 msgctxt "Donations"
 msgid "Donations"
-msgstr ""
+msgstr "Donations"
 
 #. MAIN  Championship  buttons 
 #: data/gui/Game.layout:1980 ..SingleRace.Championship.Button :1991:2002
@@ -346,7 +346,7 @@ msgstr "Continuar"
 #: src/game/Championships.cpp:227 src/game/Challenges.cpp:686
 msgctxt "Restart"
 msgid "Restart"
-msgstr ""
+msgstr "Reiniciar"
 
 #. MAIN  Championship  buttons 
 #: data/gui/Common.layout:47 ..Track-Filter.Button
@@ -366,19 +366,19 @@ msgstr "Premio"
 #: src/game/Challenges.cpp:490
 msgctxt "Bronze"
 msgid "Bronze"
-msgstr ""
+msgstr "Bronce"
 
 #. MAIN  Challenge prizes 
 #: src/game/Challenges.cpp:490
 msgctxt "Silver"
 msgid "Silver"
-msgstr ""
+msgstr "Plata"
 
 #. MAIN  Challenge prizes 
 #: src/game/Challenges.cpp:490
 msgctxt "Gold"
 msgid "Gold"
-msgstr ""
+msgstr "Oro"
 
 #. Challenge types 
 #: data/gui/Game.layout:1908 ..SingleRace.Championship.Tab
@@ -424,36 +424,36 @@ msgstr ""
 #. MAIN  Track Difficulty 
 msgctxt "Diff1"
 msgid "Very Easy"
-msgstr ""
+msgstr "Muy fácil"
 
 #. MAIN  Track Difficulty 
 #: data/gui/Game.layout:1908 ..SingleRace.Championship.Tab
 msgctxt "Diff2"
 msgid "Easy"
-msgstr ""
+msgstr "Fácil"
 
 #. MAIN  Track Difficulty 
 #: data/gui/Game.layout:1887 ..SingleRace.Championship.Tab
 msgctxt "Diff3"
 msgid "Medium"
-msgstr ""
+msgstr "Medio"
 
 #. MAIN  Track Difficulty 
 #: data/gui/Game.layout:1890 ..SingleRace.Championship.Tab
 msgctxt "Diff4"
 msgid "Hard"
-msgstr ""
+msgstr "Duro"
 
 #. MAIN  Track Difficulty 
 #: data/gui/Game.layout:1893 ..SingleRace.Championship.Tab
 msgctxt "Diff5"
 msgid "Very Hard"
-msgstr ""
+msgstr "Muy duro"
 
 #. MAIN  Track Difficulty 
 msgctxt "Diff6"
 msgid "Extreme"
-msgstr ""
+msgstr "Extremo"
 
 #. MAIN  Track Difficulty 
 msgctxt "Diff7"
@@ -511,7 +511,7 @@ msgstr "Pista"
 #: :1962..SingleRace.Championship.Check src/game/Gui_Network.cpp:125
 msgctxt "Reverse"
 msgid "Reverse"
-msgstr ""
+msgstr "Inverso"
 
 #. MAIN  Track 
 #: data/gui/Game.layout:25 ..SingleRace.Track.Button
@@ -527,13 +527,13 @@ msgstr "Nuevo juego"
 #: ..SingleRace.Track.Text data/gui/Game_Replay.layout:81 ..Replays.Replay.Text
 msgctxt "Find"
 msgid "Find"
-msgstr ""
+msgstr "Encontrar"
 
 #. MAIN  Track stats 
 #: data/gui/Game.layout:378 ..SingleRace.Track.Text :2370
 msgctxt "TrackBestTime"
 msgid "Best time"
-msgstr ""
+msgstr "Mejor tiempo"
 
 #. MAIN  Track stats 
 #: data/gui/Game.layout:383 ..SingleRace.Track.Text :2374
@@ -604,7 +604,7 @@ msgstr ""
 #: src/game/Championships.cpp:211 src/game/Challenges.cpp:599
 msgctxt "Tracks"
 msgid "Tracks"
-msgstr ""
+msgstr "Pistas"
 
 #. Championship Stage  stats 
 #: data/gui/Game.layout:2419 ..SingleRace.Track.Text
@@ -625,7 +625,7 @@ msgstr ""
 #: src/common/GuiCom_Track.cpp:214
 msgctxt "Scenery"
 msgid "Scenery"
-msgstr ""
+msgstr "Escenario"
 
 #. Championship Stage  stats 
 msgctxt "Length"
@@ -664,7 +664,7 @@ msgstr "Tiempo"
 #: src/game/Gui_InitChamps.cpp:63:92
 msgctxt "TimeMS"
 msgid "m:s"
-msgstr ""
+msgstr "m:s"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:219 src/game/Hud_Create.cpp:256
@@ -683,43 +683,43 @@ msgstr "Puntuación"
 #: src/game/Championships.cpp:425
 msgctxt "TotalScore"
 msgid "Total score"
-msgstr ""
+msgstr "Puntaje total"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:471 src/game/Challenges.cpp:562:635:659
 msgctxt "Needed"
 msgid "Needed"
-msgstr ""
+msgstr "Necesario"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:219:469 src/game/Challenges.cpp:478:534:674
 msgctxt "Finished"
 msgid "Finished"
-msgstr ""
+msgstr "Finalizado"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:475 src/game/Challenges.cpp:396
 msgctxt "Passed"
 msgid "Passed"
-msgstr ""
+msgstr "Aprobado"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:477 src/game/Challenges.cpp:396
 msgctxt "DidntPass"
 msgid "Didn't pass"
-msgstr ""
+msgstr "No paso"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:475 src/game/Challenges.cpp:557
 msgctxt "NextStage"
 msgid "Continuing to next stage"
-msgstr ""
+msgstr "Continuando a la siguiente etapa"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:477 src/game/Challenges.cpp:558
 msgctxt "RepeatStage"
 msgid "Repeating stage"
-msgstr ""
+msgstr "Etapa repetitiva"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Challenges.cpp:609
@@ -736,152 +736,152 @@ msgstr ""
 #. Car  Names  from animals 
 msgctxt "Turtle"
 msgid "Turtle"
-msgstr ""
+msgstr "Tortuga"
 
 #. Car  Names  from animals 
 msgctxt "Elephant"
 msgid "Elephant"
-msgstr ""
+msgstr "Elefante"
 
 #. Car  Names  from animals 
 msgctxt "Alligator"
 msgid "Alligator"
-msgstr ""
+msgstr "Caimán"
 
 #. Car  Names  from animals 
 msgctxt "Bison"
 msgid "Bison"
-msgstr ""
+msgstr "Bisonte"
 
 #. Car  Names  from animals 
 msgctxt "Caterpillar"
 msgid "Caterpillar"
-msgstr ""
+msgstr "Oruga"
 
 #. Car  Names  from animals 
 msgctxt "Rhino"
 msgid "Rhino"
-msgstr ""
+msgstr "Rinoceronte"
 
 #. Car  Names  from animals 
 msgctxt "Bear"
 msgid "Bear"
-msgstr ""
+msgstr "Oso"
 
 #. Car  Names  from animals 
 msgctxt "Coyote"
 msgid "Coyote"
-msgstr ""
+msgstr "Coyote"
 
 #. Car  Names  from animals 
 msgctxt "Squirrel"
 msgid "Squirrel"
-msgstr ""
+msgstr "Ardilla"
 
 #. Car  Names  from animals 
 msgctxt "Fox"
 msgid "Fox"
-msgstr ""
+msgstr "Zorro"
 
 #. Car  Names  from animals 
 msgctxt "Hyena"
 msgid "Hyena"
-msgstr ""
+msgstr "Hiena"
 
 #. Car  Names  from animals 
 msgctxt "Gorilla"
 msgid "Gorilla"
-msgstr ""
+msgstr "Gorila"
 
 #. Car  Names  from animals 
 msgctxt "Lizard"
 msgid "Lizard"
-msgstr ""
+msgstr "Lagarto"
 
 #. Car  Names  from animals 
 msgctxt "Weasel"
 msgid "Weasel"
-msgstr ""
+msgstr "Comadreja"
 
 #. Car  Names  from animals 
 msgctxt "Wolf"
 msgid "Wolf"
-msgstr ""
+msgstr "Lobo"
 
 #. Car  Names  from animals 
 msgctxt "Scorpion"
 msgid "Scorpion"
-msgstr ""
+msgstr "Escorpión"
 
 #. Car  Names  from animals 
 msgctxt "Buffalo"
 msgid "Buffalo"
-msgstr ""
+msgstr "Búfalo"
 
 #. Car  Names  from animals 
 msgctxt "Gazelle"
 msgid "Gazelle"
-msgstr ""
+msgstr "Gacela"
 
 #. Car  Names  from animals 
 msgctxt "Jaguar"
 msgid "Jaguar"
-msgstr ""
+msgstr "Jaguar"
 
 #. Car  Names  from animals 
 msgctxt "Puma"
 msgid "Puma"
-msgstr ""
+msgstr "Puma"
 
 #. Car  Names  from animals 
 msgctxt "Leopard"
 msgid "Leopard"
-msgstr ""
+msgstr "Leopardo"
 
 #. Car  Names  from animals 
 msgctxt "Beetle"
 msgid "Beetle"
-msgstr ""
+msgstr "Escarabajo"
 
 #. Car  Names  from animals 
 msgctxt "Swan"
 msgid "Swan"
-msgstr ""
+msgstr "Cisne"
 
 #. Car  Names  from animals 
 msgctxt "Duck"
 msgid "Duck"
-msgstr ""
+msgstr "Pata"
 
 #. Car  Names  from animals 
 msgctxt "Hawk"
 msgid "Hawk"
-msgstr ""
+msgstr "Halcón"
 
 #. Car  Names  from animals 
 msgctxt "Rabbit"
 msgid "Rabbit"
-msgstr ""
+msgstr "Conejo"
 
 #. Car  Names  from animals 
 msgctxt "Python"
 msgid "Python"
-msgstr ""
+msgstr "Pitón"
 
 #. Car  Names  from animals 
 msgctxt "Cobra"
 msgid "Cobra"
-msgstr ""
+msgstr "Cobra"
 
 #. Car  Names  from animals 
 msgctxt "Eagle"
 msgid "Eagle"
-msgstr ""
+msgstr "Águila"
 
 #. Car  Names  from animals 
 msgctxt "Crow"
 msgid "Crow"
-msgstr ""
+msgstr "Cuervo"
 
 #. Car  Names  from animals 
 msgctxt "Falcon"
@@ -891,12 +891,12 @@ msgstr ""
 #. Car  Names  from animals 
 msgctxt "Owl"
 msgid "Owl"
-msgstr ""
+msgstr "Búho"
 
 #. Car  Names  from animals 
 msgctxt "Sparrow"
 msgid "Sparrow"
-msgstr ""
+msgstr "Gorrión"
 
 #. Vehicle 
 #: data/gui/Game.layout:374 ..SingleRace.Track.Text :494..SingleRace.Tab
@@ -905,14 +905,14 @@ msgstr ""
 #: :424 src/game/Gui_Init.cpp:458 src/game/Gui_Replay.cpp:81
 msgctxt "Vehicle"
 msgid "Vehicle"
-msgstr ""
+msgstr "Vehículo"
 
 #. Vehicle 
 #: src/game/Challenges.cpp:607 src/game/Gui_Replay.cpp:151
 #: src/game/Gui_InitChamps.cpp:75
 msgctxt "Vehicles"
 msgid "Vehicles"
-msgstr ""
+msgstr "Vehículos"
 
 #. TIP  Vehicle 
 msgctxt "TipCarsList"
@@ -938,7 +938,7 @@ msgstr ""
 #: data/gui/Game.layout:907 ..SingleRace.Setup.Tab
 msgctxt "Paint"
 msgid "Paint"
-msgstr ""
+msgstr "Pintar"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:57
@@ -1011,12 +1011,9 @@ msgstr ""
 #: ..MaterialEditor.Main.Text :180:184..MaterialEditor.Main.Slider
 #: :188..MaterialEditor.Main.Edit :222..MaterialEditor.Main.Text
 #: :223:227..MaterialEditor.Main.Slider :231..MaterialEditor.Main.Edit
-#, fuzzy
-#| msgctxt "HDRParam2"
-#| msgid "Brightness"
 msgctxt "ColRoughness"
 msgid "Roughness"
-msgstr "Brillo"
+msgstr "Aspereza"
 
 #. Color  params 
 #: data/gui/Game.layout:1230 ..SingleRace.Setup.Paint.Text
@@ -1063,14 +1060,14 @@ msgstr ""
 #: ..SingleRace.Setup.Paint.Button
 msgctxt "CarClrRandom"
 msgid "Random"
-msgstr ""
+msgstr "Aleatorio"
 
 #. Color  extras 
 #: data/gui/Editor.layout:686 ..Editor.Terrain.Brushes.Check
 #: data/gui/Game.layout:945 ..SingleRace.Setup.Paint.Check
 msgctxt "Adjust"
 msgid "Adjust"
-msgstr ""
+msgstr "Ajustar"
 
 #. Color  extras 
 #: data/gui/Editor.layout:746 ..Editor.Terrain.Brushes.Text
@@ -1139,47 +1136,47 @@ msgstr "Cambiar color de reflejo (opaco-espejo)"
 #: :741..SingleRace.Vehicle.Text :746
 msgctxt "Author"
 msgid "Author(s)"
-msgstr ""
+msgstr "Autor(es)"
 
 #. MAIN  Vehicle basic stats 
 #: data/gui/Game.layout:538 ..SingleRace.Vehicle.Text
 #: :753:1517..SingleRace.Setup.Steering.Text src/game/Gui_InitCar.cpp:148
 msgctxt "CarSpeed"
 msgid "Speed"
-msgstr ""
+msgstr "Velocidad"
 
 #. MAIN  Vehicle basic stats 
 #: data/gui/Game.layout:777 ..SingleRace.Vehicle.Text
 #: src/game/Gui_InitCar.cpp:154
 msgctxt "CarYear"
 msgid "Year"
-msgstr ""
+msgstr "Año"
 
 #. MAIN  Vehicle basic stats 
 #: data/gui/Game.layout:767 ..SingleRace.Vehicle.Text
 #: src/game/Gui_InitCar.cpp:155
 msgctxt "CarType"
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #. MAIN  Vehicle basic stats 
 #: data/gui/Game.layout:479 ..SingleRace.Track.Text
 #: :856..SingleRace.Vehicle.Text :2394..SingleRace.Track.Text
 msgctxt "TrackDrivability"
 msgid "Track Drivability"
-msgstr ""
+msgstr "Manejabilidad de la pista"
 
 #. MAIN  Vehicle basic stats 
 #: src/game/Gui_UtilCar.cpp:284
 msgctxt "Undrivable"
 msgid "Undrivable"
-msgstr ""
+msgstr "No manejable"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:429
 msgctxt "Car_Mass"
 msgid "Mass"
-msgstr ""
+msgstr "Masa"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:432
@@ -1191,13 +1188,13 @@ msgstr "Tamaño frontal"
 #: src/game/Gui_UtilCar.cpp:436
 msgctxt "Car_MaxTorque"
 msgid "Max Torque"
-msgstr ""
+msgstr "Par máximo"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:439
 msgctxt "Car_MaxPower"
 msgid "Max Power"
-msgstr ""
+msgstr "Máximo poder"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:442
@@ -1209,13 +1206,13 @@ msgstr "Potencia de freno por tonelada"
 #: src/game/Gui_UtilCar.cpp:450
 msgctxt "Car_TopSpeed"
 msgid "Top Speed"
-msgstr ""
+msgstr "Velocidad máxima"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:458:462:466
 msgctxt "Car_TimeTo"
 msgid "Time to"
-msgstr ""
+msgstr "Hora de"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:470
@@ -1226,57 +1223,57 @@ msgstr ""
 #. MAIN  Car types 
 msgctxt "CarType_Asphalt"
 msgid "Asphalt"
-msgstr ""
+msgstr "Asfalto"
 
 #. MAIN  Car types 
 msgctxt "CarType_Racing"
 msgid "Racing"
-msgstr ""
+msgstr "Carreras"
 
 #. MAIN  Car types 
 msgctxt "CarType_Gravel"
 msgid "Gravel"
-msgstr ""
+msgstr "Grava"
 
 #. MAIN  Car types 
 msgctxt "CarType_Slow"
 msgid "Slow"
-msgstr ""
+msgstr "Lento"
 
 #. MAIN  Car types 
 msgctxt "CarType_Terrain"
 msgid "Terrain"
-msgstr ""
+msgstr "Terreno"
 
 #. MAIN  Car types 
 msgctxt "CarType_Extreme"
 msgid "Extreme"
-msgstr ""
+msgstr "Extremo"
 
 #. MAIN  Car types 
 msgctxt "CarType_Other"
 msgid "Other"
-msgstr ""
+msgstr "Otro"
 
 #. MAIN  Car types 
 msgctxt "CarType_Hover"
 msgid "Hover"
-msgstr ""
+msgstr "Flotar"
 
 #. MAIN  Car types 
 msgctxt "CarType_Hovercraft"
 msgid "Hovercraft"
-msgstr ""
+msgstr "Aerodeslizador"
 
 #. MAIN  Car types 
 msgctxt "CarType_Spaceship"
 msgid "Spaceship"
-msgstr ""
+msgstr "Astronave"
 
 #. MAIN  Car types 
 msgctxt "CarType_Drone"
 msgid "Drone"
-msgstr ""
+msgstr "Drone"
 
 #. MsgBox 
 #: src/game/Gui_Network.cpp:415:487
@@ -1287,33 +1284,33 @@ msgstr ""
 #. MsgBox 
 msgctxt "MessageBox_Yes"
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
 #. MsgBox 
 msgctxt "MessageBox_No"
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #. MsgBox 
 msgctxt "MessageBox_Abort"
 msgid "Abort"
-msgstr ""
+msgstr "Abortar"
 
 #. MsgBox 
 msgctxt "MessageBox_Retry"
 msgid "Retry"
-msgstr ""
+msgstr "Rever"
 
 #. MsgBox 
 msgctxt "MessageBox_Ignore"
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorar"
 
 #. MsgBox 
 #: src/game/Gui_Network.cpp:415:487
 msgctxt "MessageBox_Cancel"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #. MsgBox 
 msgctxt "MessageBox_Try"
@@ -1323,13 +1320,13 @@ msgstr ""
 #. MsgBox 
 msgctxt "MessageBox_Continue"
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
 
 #. Loading game tags 
 #: data/gui/Editor_Utils.layout:44 ..Text src/game/BaseApp_Create.cpp:119
 msgctxt "LoadingDesc"
 msgid "Loading, please wait..."
-msgstr ""
+msgstr "Cargando por favor espere..."
 
 #. Loading game tags 
 #: src/game/BaseApp_Create.cpp:125
