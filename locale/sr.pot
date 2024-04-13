@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-13 18:28+0200\n"
+"POT-Creation-Date: 2024-04-13 18:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -400,9 +400,9 @@ msgid "Donations"
 msgstr ""
 
 #. MAIN  Championship  buttons 
-#: data/gui/Game.layout:1977
+#: data/gui/Game.layout:1980
 #: ..SingleRace.Championship.Button
-#: :1988:1999
+#: :1991:2002
 #: data/gui/Game_Utils.layout:29
 #: ..Championship.Button
 #: :97..Challenge.Button
@@ -590,8 +590,8 @@ msgstr ""
 #: :461..SingleRace.Track.Button
 #: :933..SingleRace.Setup.Paint.Tab
 #: :1772..SingleRace.Multiplayer.Game.Text
-#: :2066..SingleRace.Tab
-#: :2070..SingleRace.Track.Text
+#: :2069..SingleRace.Tab
+#: :2073..SingleRace.Track.Text
 #: data/gui/Game_Options.layout:322
 #: ..Options.Input.Shortcuts.Text
 #: data/gui/Game_Replay.layout:32
@@ -620,7 +620,7 @@ msgstr ""
 #: ..Options.View.Pacenotes.Check
 #: data/gui/Game.layout:19
 #: ..SingleRace.Track.Check
-#: :1959..SingleRace.Championship.Check
+#: :1962..SingleRace.Championship.Check
 #: src/game/Gui_Network.cpp:125
 msgctxt "Reverse"
 msgid "Reverse"
@@ -654,7 +654,7 @@ msgstr ""
 #. MAIN  Track stats 
 #: data/gui/Game.layout:378
 #: ..SingleRace.Track.Text
-#: :2367
+#: :2370
 msgctxt "TrackBestTime"
 msgid "Best time"
 msgstr ""
@@ -662,7 +662,7 @@ msgstr ""
 #. MAIN  Track stats 
 #: data/gui/Game.layout:383
 #: ..SingleRace.Track.Text
-#: :2371
+#: :2374
 msgctxt "TrackAvgSpeed"
 msgid "Avg. speed"
 msgstr ""
@@ -672,7 +672,7 @@ msgstr ""
 #: ..Track.Track.Text
 #: data/gui/Game.layout:134
 #: ..SingleRace.Track.Text
-#: :2132
+#: :2135
 msgctxt "TrackLength"
 msgid "Length"
 msgstr ""
@@ -682,7 +682,7 @@ msgstr ""
 #: ..Track.Track.Text
 #: data/gui/Game.layout:138
 #: ..SingleRace.Track.Text
-#: :2136
+#: :2139
 msgctxt "TrackArea"
 msgid "Area"
 msgstr ""
@@ -694,8 +694,8 @@ msgstr ""
 #: data/gui/Game.layout:154
 #: ..SingleRace.Track.Text
 #: :203..SingleRace.Track.Image
-#: :2152..SingleRace.Track.Text
-#: :2201..SingleRace.Track.Image
+#: :2155..SingleRace.Track.Text
+#: :2204..SingleRace.Track.Image
 msgctxt "TrackWidthAvg"
 msgid "Width avg."
 msgstr ""
@@ -707,8 +707,8 @@ msgstr ""
 #: data/gui/Game.layout:160
 #: ..SingleRace.Track.Text
 #: :210..SingleRace.Track.Image
-#: :2158..SingleRace.Track.Text
-#: :2208..SingleRace.Track.Image
+#: :2161..SingleRace.Track.Text
+#: :2211..SingleRace.Track.Image
 msgctxt "TrackHeightDiff"
 msgid "Height diff."
 msgstr ""
@@ -720,8 +720,8 @@ msgstr ""
 #: data/gui/Game.layout:166
 #: ..SingleRace.Track.Text
 #: :216..SingleRace.Track.Image
-#: :2164..SingleRace.Track.Text
-#: :2214..SingleRace.Track.Image
+#: :2167..SingleRace.Track.Text
+#: :2217..SingleRace.Track.Image
 #: src/editor/Update_EditKeyTxt.cpp:118
 msgctxt "TrackInAir"
 msgid "In air"
@@ -734,8 +734,8 @@ msgstr ""
 #: data/gui/Game.layout:172
 #: ..SingleRace.Track.Text
 #: :222..SingleRace.Track.Image
-#: :2170..SingleRace.Track.Text
-#: :2220..SingleRace.Track.Image
+#: :2173..SingleRace.Track.Text
+#: :2223..SingleRace.Track.Image
 #: src/editor/Update_EditKeyTxt.cpp:119
 msgctxt "TrackPipes"
 msgid "Pipes"
@@ -762,7 +762,7 @@ msgid "Tracks"
 msgstr ""
 
 #. Championship Stage  stats 
-#: data/gui/Game.layout:2416
+#: data/gui/Game.layout:2419
 #: ..SingleRace.Track.Text
 #: src/game/Championships.cpp:444
 #: src/game/Challenges.cpp:515:659
@@ -771,7 +771,7 @@ msgid "Stage"
 msgstr ""
 
 #. Championship Stage  stats 
-#: data/gui/Game.layout:2042
+#: data/gui/Game.layout:2045
 #: ..SingleRace.Tab
 #: src/game/Gui_InitChamps.cpp:63:76
 msgctxt "Stages"
@@ -1425,7 +1425,7 @@ msgstr ""
 #: data/gui/Game.layout:479
 #: ..SingleRace.Track.Text
 #: :856..SingleRace.Vehicle.Text
-#: :2391..SingleRace.Track.Text
+#: :2394..SingleRace.Track.Text
 msgctxt "TrackDrivability"
 msgid "Track Drivability"
 msgstr ""
@@ -2122,9 +2122,9 @@ msgstr ""
 #: :483..SingleRace.Track.Text
 #: :489:853..SingleRace.Vehicle.Image
 #: :860..SingleRace.Vehicle.Text
-#: :866:2388..SingleRace.Track.Image
-#: :2395..SingleRace.Track.Text
-#: :2401
+#: :866:2391..SingleRace.Track.Image
+#: :2398..SingleRace.Track.Text
+#: :2404
 msgctxt "TipDrivability"
 msgid "Drivability tells how well will vehicle drive on track. If undrivable, best to change vehicle. Many vehicles can't handle certain track properties. Gravel type cars handle all tracks well."
 msgstr ""
@@ -2137,8 +2137,8 @@ msgstr ""
 #: ..SingleRace.Track.Image
 #: :347..SingleRace.Track.Text
 #: :819..SingleRace.Vehicle.Text
-#: :825:2243..SingleRace.Track.Image
-#: :2345..SingleRace.Track.Text
+#: :825:2246..SingleRace.Track.Image
+#: :2348..SingleRace.Track.Text
 msgctxt "TipRating"
 msgid "Quality rating. Higher values mean: well made, playable, good looking and interesting design."
 msgstr ""
@@ -2175,7 +2175,7 @@ msgid "You have passed this challenge."
 msgstr ""
 
 #. Championship  info text 
-#: data/gui/Game.layout:2033
+#: data/gui/Game.layout:2036
 #: ..SingleRace.Championship.Edit
 #: src/game/ChampChall.cpp:325:326
 msgctxt "ChampInfo"
@@ -2271,7 +2271,7 @@ msgstr ""
 #: ..Options.View.Pacenotes.Check
 #: data/gui/Game.layout:22
 #: ..SingleRace.Track.Check
-#: :1962..SingleRace.Championship.Check
+#: :1965..SingleRace.Championship.Check
 msgctxt "TipReverse"
 msgid "Reverse track direction."
 msgstr ""
@@ -2314,8 +2314,8 @@ msgstr ""
 #: data/gui/Game.layout:116
 #: ..SingleRace.Track.Edit
 #: :123..SingleRace.Track.Image
-#: :2114..SingleRace.Track.Edit
-#: :2121..SingleRace.Track.Image
+#: :2117..SingleRace.Track.Edit
+#: :2124..SingleRace.Track.Image
 msgctxt "TipTrackDesc"
 msgid "Track description text."
 msgstr ""
@@ -2326,8 +2326,8 @@ msgstr ""
 #: data/gui/Game.layout:98
 #: ..SingleRace.Track.Edit
 #: :105..SingleRace.Track.Image
-#: :2096..SingleRace.Track.Edit
-#: :2103..SingleRace.Track.Image
+#: :2099..SingleRace.Track.Edit
+#: :2106..SingleRace.Track.Image
 msgctxt "TipTrackAdvice"
 msgid "Track driving advices and warnings."
 msgstr ""
@@ -2337,7 +2337,7 @@ msgstr ""
 #: ..Track.Track.Image
 #: data/gui/Game.layout:38
 #: ..SingleRace.Track.Image
-#: :2074
+#: :2077
 msgctxt "TipTrackImg"
 msgid "In game screenshot for selected track."
 msgstr ""
@@ -2348,7 +2348,7 @@ msgstr ""
 #: :40
 #: data/gui/Game.layout:41
 #: ..SingleRace.Track.Image
-#: :44:2077:2080
+#: :44:2080:2083
 msgctxt "TipTrackMap"
 msgid "Minimap of selected track, view from top."
 msgstr ""
@@ -2359,7 +2359,7 @@ msgstr ""
 #: :37:40
 #: data/gui/Game.layout:38
 #: ..SingleRace.Track.Image
-#: :41:44:2074:2077:2080
+#: :41:44:2077:2080:2083
 msgctxt "TipClickMax"
 msgid "Click to maximize. Then click to close."
 msgstr ""
@@ -2393,8 +2393,8 @@ msgstr ""
 #: data/gui/Game.layout:271
 #: ..SingleRace.Track.Image
 #: :314..SingleRace.Track.Text
-#: :2269..SingleRace.Track.Image
-#: :2312..SingleRace.Track.Text
+#: :2272..SingleRace.Track.Image
+#: :2315..SingleRace.Track.Text
 msgctxt "fluids"
 msgid "fluids (water or mud)"
 msgstr ""
@@ -2408,8 +2408,8 @@ msgstr ""
 #: data/gui/Game.layout:276
 #: ..SingleRace.Track.Image
 #: :318..SingleRace.Track.Text
-#: :2274..SingleRace.Track.Image
-#: :2316..SingleRace.Track.Text
+#: :2277..SingleRace.Track.Image
+#: :2319..SingleRace.Track.Text
 msgctxt "bumps"
 msgid "bumps (bumpy terrain)"
 msgstr ""
@@ -2423,8 +2423,8 @@ msgstr ""
 #: data/gui/Game.layout:281
 #: ..SingleRace.Track.Image
 #: :322..SingleRace.Track.Text
-#: :2279..SingleRace.Track.Image
-#: :2320..SingleRace.Track.Text
+#: :2282..SingleRace.Track.Image
+#: :2323..SingleRace.Track.Text
 msgctxt "jumps"
 msgid "jumps"
 msgstr ""
@@ -2438,8 +2438,8 @@ msgstr ""
 #: data/gui/Game.layout:286
 #: ..SingleRace.Track.Image
 #: :326..SingleRace.Track.Text
-#: :2284..SingleRace.Track.Image
-#: :2324..SingleRace.Track.Text
+#: :2287..SingleRace.Track.Image
+#: :2327..SingleRace.Track.Text
 msgctxt "loops"
 msgid "loops"
 msgstr ""
@@ -2453,8 +2453,8 @@ msgstr ""
 #: data/gui/Game.layout:291
 #: ..SingleRace.Track.Image
 #: :330..SingleRace.Track.Text
-#: :2289..SingleRace.Track.Image
-#: :2328..SingleRace.Track.Text
+#: :2292..SingleRace.Track.Image
+#: :2331..SingleRace.Track.Text
 msgctxt "pipes"
 msgid "pipes"
 msgstr ""
@@ -2468,8 +2468,8 @@ msgstr ""
 #: data/gui/Game.layout:296
 #: ..SingleRace.Track.Image
 #: :334..SingleRace.Track.Text
-#: :2294..SingleRace.Track.Image
-#: :2332..SingleRace.Track.Text
+#: :2297..SingleRace.Track.Image
+#: :2335..SingleRace.Track.Text
 msgctxt "banked"
 msgid "banked"
 msgstr ""
@@ -2483,8 +2483,8 @@ msgstr ""
 #: data/gui/Game.layout:301
 #: ..SingleRace.Track.Image
 #: :338..SingleRace.Track.Text
-#: :2299..SingleRace.Track.Image
-#: :2336..SingleRace.Track.Text
+#: :2302..SingleRace.Track.Image
+#: :2339..SingleRace.Track.Text
 msgctxt "frenzy"
 msgid "frenzy (curly road)"
 msgstr ""
@@ -2498,8 +2498,8 @@ msgstr ""
 #: data/gui/Game.layout:250
 #: ..SingleRace.Track.Image
 #: :352..SingleRace.Track.Text
-#: :2248..SingleRace.Track.Image
-#: :2350..SingleRace.Track.Text
+#: :2251..SingleRace.Track.Image
+#: :2353..SingleRace.Track.Text
 msgctxt "long"
 msgid "long"
 msgstr ""
@@ -2513,8 +2513,8 @@ msgstr ""
 #: data/gui/Game.layout:255
 #: ..SingleRace.Track.Image
 #: :357..SingleRace.Track.Text
-#: :2253..SingleRace.Track.Image
-#: :2355..SingleRace.Track.Text
+#: :2256..SingleRace.Track.Image
+#: :2358..SingleRace.Track.Text
 msgctxt "sum"
 msgid "sum (of difficulties)"
 msgstr ""
@@ -2528,8 +2528,8 @@ msgstr ""
 #: data/gui/Game.layout:240
 #: ..SingleRace.Track.Image
 #: :343..SingleRace.Track.Text
-#: :2238..SingleRace.Track.Image
-#: :2341..SingleRace.Track.Text
+#: :2241..SingleRace.Track.Image
+#: :2344..SingleRace.Track.Text
 msgctxt "difficulty"
 msgid "difficulty"
 msgstr ""
@@ -2567,8 +2567,8 @@ msgstr ""
 #: data/gui/Game.layout:261
 #: ..SingleRace.Track.Image
 #: :306..SingleRace.Track.Text
-#: :2259..SingleRace.Track.Image
-#: :2304..SingleRace.Track.Text
+#: :2262..SingleRace.Track.Image
+#: :2307..SingleRace.Track.Text
 msgctxt "objects"
 msgid "objects (dynamic)"
 msgstr ""
@@ -2582,8 +2582,8 @@ msgstr ""
 #: data/gui/Game.layout:266
 #: ..SingleRace.Track.Image
 #: :310..SingleRace.Track.Text
-#: :2264..SingleRace.Track.Image
-#: :2308..SingleRace.Track.Text
+#: :2267..SingleRace.Track.Image
+#: :2311..SingleRace.Track.Text
 msgctxt "obstacles"
 msgid "obstacles (on road or in pipe)"
 msgstr ""
@@ -2633,8 +2633,8 @@ msgstr ""
 #: data/gui/Game.layout:177
 #: ..SingleRace.Track.Text
 #: :182:228..SingleRace.Track.Image
-#: :2175..SingleRace.Track.Text
-#: :2180:2226..SingleRace.Track.Image
+#: :2178..SingleRace.Track.Text
+#: :2183:2229..SingleRace.Track.Image
 msgctxt "TrackBankAng"
 msgid "Road banking angles: average and maximum, in degrees."
 msgstr ""
@@ -3104,7 +3104,7 @@ msgstr ""
 #: ..Track.Export.Settings.Text
 #: data/gui/Editor_Utils.layout:74
 #: ..Tab-close/openpickwindow.Button
-#: data/gui/Game.layout:1955
+#: data/gui/Game.layout:1958
 #: ..SingleRace.Championship.Check
 #: data/gui/Game_Replay.layout:27
 #: ..Replays.Replay.Button
@@ -3323,7 +3323,12 @@ msgctxt "Contrast"
 msgid "Contrast"
 msgstr ""
 
-#. <Tag name="Gamma">Gamma</Tag>
+#. Screen 
+msgctxt "Gamma"
+msgid "Gamma"
+msgstr ""
+
+#. Screen 
 #: data/gui/Editor_Options.layout:104
 #: ..Options.Screen.Tab
 #: :129..Options.Screen.GUI.Text
@@ -3334,7 +3339,7 @@ msgctxt "GUI"
 msgid "GUI"
 msgstr ""
 
-#. <Tag name="Gamma">Gamma</Tag>
+#. Screen 
 #: data/gui/Editor_Options.layout:124
 #: ..Options.Screen.GUI.Text
 #: data/gui/Game_Options.layout:126
@@ -3343,7 +3348,7 @@ msgctxt "FontSizes"
 msgid "Font sizes"
 msgstr ""
 
-#. <Tag name="Gamma">Gamma</Tag>
+#. Screen 
 #: data/gui/Editor_Options.layout:112
 #: ..Options.Screen.GUI.Text
 #: data/gui/Game_Options.layout:114
@@ -3352,12 +3357,12 @@ msgctxt "WindowMargin"
 msgid "Window margin"
 msgstr ""
 
-#. <Tag name="Gamma">Gamma</Tag>
+#. Screen 
 msgctxt "Complex"
 msgid "Complex"
 msgstr ""
 
-#. <Tag name="Gamma">Gamma</Tag>
+#. Screen 
 #: data/gui/Editor.layout:1224
 #: ..Editor.Terrain.Tools.Button
 msgctxt "Simple"
@@ -5671,7 +5676,7 @@ msgstr ""
 #: :529..Track.Tools.Text
 #: data/gui/Game.layout:967
 #: ..SingleRace.Setup.Paint.Button
-#: :2010..SingleRace.Championship.Button
+#: :2013..SingleRace.Championship.Button
 #: data/gui/Game_Replay.layout:51
 #: ..Replays.Replay.Button
 #: data/gui/Game_Tweak.layout:268
@@ -6219,7 +6224,7 @@ msgstr ""
 #: :1469
 #: data/gui/Game.layout:1902
 #: ..SingleRace.Championship.Tab
-#: :1935
+#: :1938
 #: data/gui/Game_Tweak.layout:424
 #: ..Tweak.Tab
 msgctxt "Test"
@@ -7123,8 +7128,8 @@ msgstr ""
 #: data/gui/Game.layout:188
 #: ..SingleRace.Track.Text
 #: :234..SingleRace.Track.Image
-#: :2186..SingleRace.Track.Text
-#: :2232..SingleRace.Track.Image
+#: :2189..SingleRace.Track.Text
+#: :2235..SingleRace.Track.Image
 #: src/editor/Update_EditKeyTxt.cpp:74:120
 msgctxt "Road_OnPipe"
 msgid "On Pipe"
