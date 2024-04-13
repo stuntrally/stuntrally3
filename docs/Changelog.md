@@ -22,8 +22,10 @@ This section lists changes not yet released, but committed to new repositories s
   - Fix **New/duplicate** track. Was having garbage for horizons, no other roads. Delete track too.
   - **Export** track to Rigs of Rods added, using SR 2.x meshes
     - New tabs, settings, converters, [info here](EditorExportRoR.md).
+- Both
+  - New tab Options - Screen - GUI with scales for font size and windows margin size, all need restart
 - Updated docs
-- Added Japanese font and quick, basic translation
+- Added Japanese font and quick, basic translation (could be wrong)
 
 ## Version 3.0 beta
 

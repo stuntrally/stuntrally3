@@ -86,11 +86,12 @@ void CHud::Size()
 			bx = std::min(bx, xMax -180);  // not too near to vel
 
 		//  ⏲️ gear, vel
-		if (h.txGear)  h.txGear->setPosition(gx,gy +10);
-		if (h.bckGear) h.bckGear->setPosition(gx-12,gy +10);
+		const float f = 1.f; //pSet->font_hud;  //?
+		if (h.txGear)  h.txGear->setPosition(gx*f, (gy +10)*f);
+		if (h.bckGear) h.bckGear->setPosition((gx-12)*f, (gy +10)*f);
 
-		if (h.bckVel)  h.bckVel->setPosition(vx-32,vy-6);
-		h.txVel->setPosition(vx,vy);  //h.bckVel
+		if (h.bckVel)  h.bckVel->setPosition((vx-32)*f, (vy-6)*f);
+		h.txVel->setPosition(vx*f,vy*f);  //h.bckVel
 
 		#if 0
 		h.txRewind ->setPosition(bx,   by);
@@ -109,15 +110,17 @@ void CHud::Size()
 		}
 
 		//  ⏱️ Times
-		bool hasLaps = pSet->game.hasLaps();
-		int w = 160, tx = xMin + 40, ty = yMin + 55;  //40
+		// bool hasLaps = pSet->game.hasLaps();
+		const float t = pSet->font_times;
+		int w = 160 * t, tx = xMin + 40, ty = yMin + 55;  //40
+		tx *= t;  ty *= t;
 		h.bckTimes->setPosition(tx-20,ty);
 		//tx = 24;  ty = (hasLaps ? 16 : 4);
 		h.txTimTxt->setPosition(tx,ty);
-		h.txTimes->setPosition(tx+w,ty -8);  //?-
+		h.txTimes->setPosition(tx+w,ty);  //?-
 
 		//  🏁 lap result
-		int lx = xMax - 360, ly = ty;
+		int lx = xMax - 360 * t, ly = ty;
 		h.bckLap->setPosition(lx-14,ly-8);
 		h.txLapTxt->setPosition(lx,ly);
 		h.txLap->setPosition(lx+w,ly);

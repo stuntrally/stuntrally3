@@ -105,11 +105,11 @@ void CHud::Create()
 				  wy = app->mWindow->getHeight() +20;  //+? why
 		const float asp = float(wx) / float(wy);
 
-		float t = sc->tds[0].fTerWorldSize*0.5;  // 1st ter-
-		minX = -t;  minY = -t;  maxX = t;  maxY = t;
+		const float wt = sc->tds[0].fTerWorldSize*0.5;  // 1st ter-
+		minX = -wt;  minY = -wt;  maxX = wt;  maxY = wt;
 		
-		float fMapSizeX = maxX - minX, fMapSizeY = maxY - minY;  // map size
-		float size = std::max(fMapSizeX, fMapSizeY*asp);
+		const float fMapSizeX = maxX - minX, fMapSizeY = maxY - minY;  // map size
+		const float size = std::max(fMapSizeX, fMapSizeY*asp);
 		scX = 1.f / size;  scY = 1.f / size;
 
 		//  🌍 change minimap image  -----------
@@ -141,33 +141,34 @@ void CHud::Create()
 
 
 		//  gear  text  ----
+		float f = pSet->font_hud;
 		h.parent = app->mGui->createWidget<Widget>("", 0,0,	wx, wy,
 			Align::Left,"Back","main"+s);
 
 		if (cm->vType == V_Car)
 		{
 			h.bckGear = h.parent->createWidget<ImageBox>("ImageBox",
-				0,y, 65+14,90+12, Align::Left, "IGear"+s);
+				0,y, 79*f,102*f, Align::Left, "IGear"+s);
 			h.bckGear->setImageTexture("back_gear.png");
 			h.bckGear->setAlpha(0.7f);  //par
 
 			h.txGear = h.parent->createWidget<TextBox>("TextBox",
-				0,y, 65,90, Align::Left, "Gear"+s);  h.txGear->setVisible(false);
+				0,y, 65*f,90*f, Align::Left, "Gear"+s);  h.txGear->setVisible(false);
 			h.txGear->setFontName("DigGear");
-			h.txGear->setFontHeight(106 * pSet->font_hud);  //par..
+			h.txGear->setFontHeight(106 * f);  //par..
 			h.txGear->setTextShadowColour(Colour::Black);  h.txGear->setTextShadow(true);
 		}
 		
 		//  vel  km/h  ----
 		h.bckVel = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 160+24,72+12, Align::Left, "IVel"+s);
+			0,y, 184*f,84*f, Align::Left, "IVel"+s);
 		h.bckVel->setImageTexture("back_gear.png");
 		h.bckVel->setAlpha(0.7f);
 		
 		// h.txVel = h.bckVel->createWidget<TextBox>("TextBox",
 			// 10,5, 360,96, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
 		h.txVel = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 160,72, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
+			0,y, 160*f,72*f, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
 		h.txVel->setFontName("DigGear");
 		//h.txVel->setFontHeight(64);
 		//h.txVel->setInheritsAlpha(false);
@@ -234,16 +235,17 @@ void CHud::Create()
 
 
 		///  ⏱️ times text  ----------------------
+		const float t = pSet->font_times;
 		h.bckTimes = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 350,210, Align::Left, "TimP"+s);  h.bckTimes->setVisible(false);
+			0,y, 320/*420*/*t,220*t, Align::Left, "TimP"+s);  h.bckTimes->setVisible(false);
 		h.bckTimes->setColour(Colour(0.1,0.1,0.1));
 		h.bckTimes->setAlpha(0.4f);  //par
 		h.bckTimes->setImageTexture("back_times.png");
 
 		h.txTimTxt = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 170,260, Align::Left, "TimT"+s);
+			0,y, 170*t,260*t, Align::Left, "TimT"+s);
 		h.txTimTxt->setFontName(hudTimes);
-		h.txTimTxt->setFontHeight(32);
+		// h.txTimTxt->setFontHeight(32*t);
 		h.txTimTxt->setTextShadowColour(Colour::Black);  h.txTimTxt->setTextShadow(true);
 		h.txTimTxt->setInheritsAlpha(false);
 		h.txTimTxt->setCaption(	(pSet->game.hasLaps()
@@ -255,23 +257,22 @@ void CHud::Create()
 			"\n#C8A898"+TR("#{Progress}") );/*%*/
 
 		h.txTimes = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 240,260, Align::Left, "Tim"+s);
+			0,y, 240*t,260*t, Align::Left, "Tim"+s);
 		h.txTimes->setInheritsAlpha(false);
 		h.txTimes->setFontName(hudTimes);
-		// h.txTimes->setFontName("DigGearSeg");  //-
 		// h.txTimes->setFontHeight(32);
 		h.txTimes->setTextShadow(true);
 
 
 		///  🏁 lap results  ----------------------
 		h.bckLap = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 360,210, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
+			0,y, 420*t,240*t, Align::Left, "LapP"+s);  h.bckLap->setVisible(false);
 		h.bckLap->setColour(Colour(0.4,0.4,0.4));
 		h.bckLap->setAlpha(0.5f);
 		h.bckLap->setImageTexture("back_times.png");
 
 		h.txLapTxt = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 120,300, Align::Left, "LapT"+s);
+			0,y, 120*t,300*t, Align::Left, "LapT"+s);
 		h.txLapTxt->setFontName(hudTimes);
 		// h.txLapTxt->setFontHeight(25);
 		h.txLapTxt->setTextShadow(true);
@@ -286,7 +287,7 @@ void CHud::Create()
 		h.txLapTxt->setVisible(false);
 
 		h.txLap = h.parent->createWidget<TextBox>("TextBox",
-			0,y, 230,320, Align::Left, "Lap"+s);
+			0,y, 230*t,320*t, Align::Left, "Lap"+s);
 		h.txLap->setInheritsAlpha(false);
 		h.txLap->setFontName(hudTimes);
 		// h.txLap->setFontHeight(25);

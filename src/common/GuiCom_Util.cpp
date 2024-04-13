@@ -546,12 +546,12 @@ void CGuiCom::CreateFonts()
 				font->addCodePointRange(0x4E00, 0x9FCB);
 				font->addCodePointRange(0xF900, 0xFA6A);
 				font->addCodePointRange(0x2E80, 0x2FD5);
-				// font->addCodePointRange(toStr(0xFF5F)+" "+toStr(0xFF9F)); // half-
-				// font->addCodePointRange(toStr(0x3000)+" "+toStr(0x303F));  // symb
-				// font->addCodePointRange(toStr(0x31F0)+" "+toStr(0x31FF));
-				// font->addCodePointRange(toStr(0x3220)+" "+toStr(0x3243));
-				// font->addCodePointRange(toStr(0x3280)+" "+toStr(0x337F));  //misc
-				// font->addCodePointRange(toStr(0xFF01)+" "+toStr(0xFF5E));  // norm
+				// font->addCodePointRange(0xFF5F, 0xFF9F);  // half-
+				// font->addCodePointRange(0x3000, 0x303F);  // symb
+				// font->addCodePointRange(0x31F0, 0x31FF);
+				// font->addCodePointRange(0x3220, 0x3243);
+				// font->addCodePointRange(0x3280, 0x337F);  // misc
+				// font->addCodePointRange(0xFF01, 0xFF5E);  // norm
 			}
 			break;
 
