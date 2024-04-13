@@ -47,13 +47,15 @@
 
 @piece( Screen )
 	//Screen @value(t)
-	pixelData.diffuse.xyz = lerp( pixelData.diffuse.xyz,
-						  _h( 1.0 ) - (_h( 1.0 ) - pixelData.diffuse.xyz) * (_h( 1.0 ) - detailCol@value(t).xyz),
-						  detailCol@value(t).a );
+	pixelData.diffuse.xyz  = lerp( pixelData.diffuse.xyz,  detailCol@value(t).xyz, detailCol@value(t).a );
+	pixelData.specular.xyz = lerp( pixelData.specular.xyz, detailCol@value(t).xyz, detailCol@value(t).a );
+	// pixelData.diffuse.xyz = lerp( pixelData.diffuse.xyz,
+	// 					  _h( 1.0 ) - (_h( 1.0 ) - pixelData.diffuse.xyz) * (_h( 1.0 ) - detailCol@value(t).xyz),
+	// 					  detailCol@value(t).a );
 @end
 
 @piece( Overlay )
-	//** custom alpha replace
+	//** custom alpha replace, for roads on terrain
 	//Overlay @value(t)
 	pixelData.diffuse.a *= detailCol@value(t).x;
 @end

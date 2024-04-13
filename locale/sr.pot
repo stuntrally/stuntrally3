@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-07 23:18+0200\n"
+"POT-Creation-Date: 2024-04-13 18:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgid "Error"
 msgstr ""
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:247
+#: src/game/Hud_Create.cpp:252
 #: src/game/Challenges.cpp:411:541:563:645:663:680
 #: src/game/Gui_Init.cpp:531
 msgctxt "TBTime"
@@ -56,20 +56,20 @@ msgid "Time"
 msgstr ""
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:277
+#: src/game/Hud_Create.cpp:281
 msgctxt "TBLast"
 msgid "Last"
 msgstr ""
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:278
+#: src/game/Hud_Create.cpp:282
 #: src/game/Gui_Init.cpp:531
 msgctxt "TBBest"
 msgid "Best"
 msgstr ""
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:246:276
+#: src/game/Hud_Create.cpp:251:280
 #: src/game/Gui_Init.cpp:532
 msgctxt "TBLap"
 msgid "Lap"
@@ -83,7 +83,7 @@ msgid "Place"
 msgstr ""
 
 #. HUD  Times bar 
-#: src/game/Hud_Create.cpp:249:280
+#: src/game/Hud_Create.cpp:254:284
 #: src/game/Challenges.cpp:418:553:565:641:662:679
 msgctxt "TBPosition"
 msgid "Position"
@@ -93,7 +93,7 @@ msgstr ""
 #: data/gui/Game.layout:400
 #: ..SingleRace.Track.Text
 #: src/game/Championships.cpp:470
-#: src/game/Hud_Create.cpp:250:281
+#: src/game/Hud_Create.cpp:255:285
 #: src/game/Challenges.cpp:437:452:547:564:637:661:678
 msgctxt "TBPoints"
 msgid "Points"
@@ -106,42 +106,42 @@ msgid "Lap Results"
 msgstr ""
 
 #. HUD 
-#: data/gui/Game_Options.layout:1336
+#: data/gui/Game_Options.layout:1396
 #: ..Options.Sound.HUD.Check
 msgctxt "Checkpoint"
 msgid "Checkpoint"
 msgstr ""
 
 #. HUD 
-#: data/gui/Game_Options.layout:1332
+#: data/gui/Game_Options.layout:1392
 #: ..Options.Sound.HUD.Check
-#: src/game/Hud_Create.cpp:319
+#: src/game/Hud_Create.cpp:323
 msgctxt "WrongChk"
 msgid "Wrong Checkpoint"
 msgstr ""
 
 #. Editor  status 
-#: src/editor/SceneInit.cpp:274
+#: src/editor/SceneInit.cpp:277
 msgctxt "Loading"
 msgid "Loading"
 msgstr ""
 
 #. Editor  status 
 #: src/game/Gui_TweakSim.cpp:220
-#: src/editor/SceneInit.cpp:373
+#: src/editor/SceneInit.cpp:376
 msgctxt "Loaded"
 msgid "Loaded"
 msgstr ""
 
 #. Editor  status 
-#: src/editor/SceneInit.cpp:487
+#: src/editor/SceneInit.cpp:490
 msgctxt "Saving"
 msgid "Saving"
 msgstr ""
 
 #. Editor  status 
 #: src/game/Gui_TweakSim.cpp:567
-#: src/editor/SceneInit.cpp:521
+#: src/editor/SceneInit.cpp:524
 #: src/editor/Update_Key.cpp:44
 #: src/editor/ExportRoR.cpp:60
 msgctxt "Saved"
@@ -149,13 +149,13 @@ msgid "Saved"
 msgstr ""
 
 #. Editor  status 
-#: src/editor/SceneInit.cpp:416
+#: src/editor/SceneInit.cpp:419
 msgctxt "Updating"
 msgid "Updating"
 msgstr ""
 
 #. Editor  status 
-#: src/editor/SceneInit.cpp:443
+#: src/editor/SceneInit.cpp:446
 msgctxt "Updated"
 msgid "Updated"
 msgstr ""
@@ -175,7 +175,7 @@ msgstr ""
 #: ..SingleRace.Tab
 #: data/gui/Game_Main.layout:157
 #: ..NewGame.Button
-#: data/gui/Game_Options.layout:279
+#: data/gui/Game_Options.layout:339
 #: ..Options.Input.Shortcuts.Text
 #: data/gui/Game_Utils.layout:18
 #: ..Window
@@ -189,7 +189,7 @@ msgstr ""
 #. MAIN  Menu 
 #: data/gui/Game_Main.layout:139
 #: ..NewGame.Button
-#: data/gui/Game_Options.layout:276
+#: data/gui/Game_Options.layout:336
 #: ..Options.Input.Shortcuts.Text
 #: src/game/Championships.cpp:280:424:446
 #: src/game/Gui_Util.cpp:105:165
@@ -200,7 +200,7 @@ msgstr ""
 #. MAIN  Menu 
 #: data/gui/Game_Main.layout:175
 #: ..NewGame.Button
-#: data/gui/Game_Options.layout:282
+#: data/gui/Game_Options.layout:342
 #: ..Options.Input.Shortcuts.Text
 #: data/gui/Game_Utils.layout:86
 #: ..Window
@@ -576,7 +576,7 @@ msgstr ""
 #: ..Help.Input/help.Shortcuts.Text
 #: data/gui/Editor_Main.layout:27
 #: ..StuntRally-TrackEditor-version##{GameVersion}.Button
-#: data/gui/Editor_Options.layout:830
+#: data/gui/Editor_Options.layout:863
 #: ..Options.View.Pacenotes.Check
 #: data/gui/Editor_Track.layout:5
 #: ..Window
@@ -592,14 +592,14 @@ msgstr ""
 #: :1772..SingleRace.Multiplayer.Game.Text
 #: :2066..SingleRace.Tab
 #: :2070..SingleRace.Track.Text
-#: data/gui/Game_Options.layout:262
+#: data/gui/Game_Options.layout:322
 #: ..Options.Input.Shortcuts.Text
 #: data/gui/Game_Replay.layout:32
 #: ..Replays.Replay.Button
 #: :151..Replays.View.Text
 #: src/game/Championships.cpp:445
 #: src/game/CarModel_Config.cpp:110
-#: src/game/Hud_Create.cpp:248:279
+#: src/game/Hud_Create.cpp:253:283
 #: src/game/Challenges.cpp:516
 #: src/game/Gui_Init.cpp:435
 #: src/game/SceneInit.cpp:241
@@ -608,7 +608,7 @@ msgstr ""
 #: src/game/Gui_InitChamps.cpp:90
 #: src/game/ChampChall.cpp:389
 #: src/editor/Gui_Tools.cpp:32:39:265:309
-#: src/editor/SceneInit.cpp:482
+#: src/editor/SceneInit.cpp:485
 msgctxt "Track"
 msgid "Track"
 msgstr ""
@@ -616,7 +616,7 @@ msgstr ""
 #. MAIN  Track 
 #: data/gui/Editor.layout:3018
 #: ..Editor.Vegetation.Road.Advanced.Text
-#: data/gui/Editor_Options.layout:830
+#: data/gui/Editor_Options.layout:863
 #: ..Options.View.Pacenotes.Check
 #: data/gui/Game.layout:19
 #: ..SingleRace.Track.Check
@@ -634,7 +634,7 @@ msgstr ""
 #: data/gui/Game_Main.layout:30
 #: ..StuntRally##{GameVersion}.Button
 #: :105..Window
-#: data/gui/Game_Options.layout:736
+#: data/gui/Game_Options.layout:796
 #: ..Options.Graphics.Button
 msgctxt "NewGame"
 msgid "New Game"
@@ -753,7 +753,7 @@ msgid "Name"
 msgstr ""
 
 #. Championship Stage  stats 
-#: data/gui/Game_Options.layout:1793
+#: data/gui/Game_Options.layout:1853
 #: ..Options.Tweak.Tab
 #: src/game/Championships.cpp:211
 #: src/game/Challenges.cpp:599
@@ -809,14 +809,14 @@ msgid "Difficulty"
 msgstr ""
 
 #. Championship Stage  stats 
-#: data/gui/Editor_Options.layout:280
+#: data/gui/Editor_Options.layout:313
 #: ..Options.Graphics.Reflections.Text
-#: :338..Options.Graphics.Water.Text
-#: :411..Options.Graphics.Shadows.Text
-#: data/gui/Game_Options.layout:798
+#: :371..Options.Graphics.Water.Text
+#: :444..Options.Graphics.Shadows.Text
+#: data/gui/Game_Options.layout:858
 #: ..Options.Graphics.Reflections.Text
-#: :856..Options.Graphics.Water.Text
-#: :929..Options.Graphics.Shadows.Text
+#: :916..Options.Graphics.Water.Text
+#: :989..Options.Graphics.Shadows.Text
 #: src/game/Championships.cpp:458
 #: src/game/Challenges.cpp:527
 #: src/editor/Update_Frame.cpp:85
@@ -845,7 +845,7 @@ msgstr ""
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:219
-#: src/game/Hud_Create.cpp:251
+#: src/game/Hud_Create.cpp:256
 #: src/game/Challenges.cpp:674
 #: src/game/Gui_InitChamps.cpp:64:77
 msgctxt "Progress"
@@ -1089,7 +1089,7 @@ msgstr ""
 #: ..SingleRace.Track.Text
 #: :494..SingleRace.Tab
 #: :1932..SingleRace.Championship.Tab
-#: data/gui/Game_Options.layout:265
+#: data/gui/Game_Options.layout:325
 #: ..Options.Input.Shortcuts.Text
 #: data/gui/Game_Tweak.layout:14
 #: ..Tweak.Tab
@@ -1267,11 +1267,11 @@ msgid "Clear coat"
 msgstr ""
 
 #. Color  extras 
-#: data/gui/Editor_Options.layout:883
+#: data/gui/Editor_Options.layout:916
 #: ..Options.View.Pacenotes.Text
 #: data/gui/Editor_Utils.layout:156
 #: ..Color.Text
-#: data/gui/Game_Options.layout:537
+#: data/gui/Game_Options.layout:597
 #: ..Options.View.Pacenotes.Text
 #: data/gui/MaterialEditor.layout:249
 #: ..MaterialEditor.Main.Text
@@ -1658,7 +1658,7 @@ msgstr ""
 #: data/gui/Game.layout:538
 #: ..SingleRace.Vehicle.Text
 #: :1517..SingleRace.Setup.Steering.Text
-#: data/gui/Game_Options.layout:405
+#: data/gui/Game_Options.layout:465
 #: ..Options.View.HUD.Button
 #: src/game/Gui_UtilCar.cpp:447
 #: src/common/GuiCom_Track.cpp:480
@@ -1667,7 +1667,7 @@ msgid "km/h"
 msgstr ""
 
 #. Units 
-#: data/gui/Game_Options.layout:409
+#: data/gui/Game_Options.layout:469
 #: ..Options.View.HUD.Button
 #: src/game/Gui_UtilCar.cpp:448
 #: src/common/GuiCom_Track.cpp:480
@@ -1953,9 +1953,9 @@ msgstr ""
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:502
 #: ..Editor.Terrain.Light.Text
-#: data/gui/Editor_Options.layout:989
+#: data/gui/Editor_Options.layout:1022
 #: ..Options.Settings.Tweak.Text
-#: data/gui/Game_Options.layout:1502
+#: data/gui/Game_Options.layout:1562
 #: ..Options.Tweak.Other.Text
 #: data/gui/MaterialEditor.layout:67
 #: ..MaterialEditor.Main.Text
@@ -2225,7 +2225,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:43
 #: ..Help.Support.Button
 #: :363..Welcometo.Text
-#: data/gui/Game_Options.layout:218
+#: data/gui/Game_Options.layout:278
 #: ..Options.Input.General.Text
 msgctxt "HintKey"
 msgid "Ctrl-F1 - Show"
@@ -2235,7 +2235,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:43
 #: ..Help.Support.Button
 #: :257..Window
-#: data/gui/Game_Options.layout:218
+#: data/gui/Game_Options.layout:278
 #: ..Options.Input.General.Text
 msgctxt "WelcomeTo"
 msgid "Welcome to"
@@ -2267,7 +2267,7 @@ msgid "Track not found !"
 msgstr ""
 
 #. TIP  Track  messages 
-#: data/gui/Editor_Options.layout:833
+#: data/gui/Editor_Options.layout:866
 #: ..Options.View.Pacenotes.Check
 #: data/gui/Game.layout:22
 #: ..SingleRace.Track.Check
@@ -2646,7 +2646,7 @@ msgstr ""
 #: ..Track.Tab
 #: data/gui/Game.layout:1283
 #: ..SingleRace.Setup.Tab
-#: data/gui/Game_Options.layout:272
+#: data/gui/Game_Options.layout:332
 #: ..Options.Input.Shortcuts.Text
 #: src/game/Challenges.cpp:614
 #: src/game/Gui_Network.cpp:131
@@ -2657,7 +2657,7 @@ msgstr ""
 #. Setup  Vehicle,Game 
 #: data/gui/Game.layout:900
 #: ..SingleRace.Tab
-#: data/gui/Game_Options.layout:269
+#: data/gui/Game_Options.layout:329
 #: ..Options.Input.Shortcuts.Text
 #: data/gui/Game_Tweak.layout:220
 #: ..Tweak.Tires.Text
@@ -2952,9 +2952,9 @@ msgstr ""
 #: data/gui/Game.layout:1292
 #: ..SingleRace.Setup.Game.Text
 #: :1387..SingleRace.Setup.Tab
-#: data/gui/Game_Options.layout:665
+#: data/gui/Game_Options.layout:725
 #: ..Options.View.Camera.Text
-#: :676
+#: :736
 #: src/game/Challenges.cpp:620
 #: src/game/Gui_Init.cpp:440
 #: src/game/Gui_Network.cpp:136
@@ -3020,9 +3020,9 @@ msgid "Go back time"
 msgstr ""
 
 #. Replay 
-#: data/gui/Game_Options.layout:237
+#: data/gui/Game_Options.layout:297
 #: ..Options.Input.General.Text
-#: :289..Options.Input.Shortcuts.Text
+#: :349..Options.Input.Shortcuts.Text
 #: data/gui/Game_Replay.layout:17
 #: ..Replays.Tab
 #: src/game/Gui_Replay.cpp:64:85:121:128:285:312:321
@@ -3069,7 +3069,7 @@ msgstr ""
 #: :565..MaterialEditor.Save.Button
 #: :577
 #: src/game/Gui_Replay.cpp:121:128
-#: src/editor/SceneInit.cpp:482
+#: src/editor/SceneInit.cpp:485
 msgctxt "RplSave"
 msgid "Save"
 msgstr ""
@@ -3262,15 +3262,15 @@ msgstr ""
 #: ..Welcometo.Button
 #: data/gui/Game_Options.layout:19
 #: ..Options.Tab
-#: :296..Options.Input.Shortcuts.Text
+#: :356..Options.Input.Shortcuts.Text
 msgctxt "Screen"
 msgid "Screen"
 msgstr ""
 
 #. Screen 
-#: data/gui/Editor_Options.layout:81
+#: data/gui/Editor_Options.layout:141
 #: ..Options.Screen.Tab
-#: data/gui/Game_Options.layout:82
+#: data/gui/Game_Options.layout:165
 #: 
 msgctxt "Video"
 msgid "Video"
@@ -3295,32 +3295,61 @@ msgid "Fullscreen"
 msgstr ""
 
 #. Screen 
-#: data/gui/Editor_Options.layout:115
+#: data/gui/Editor_Options.layout:171
 #: ..Options.Screen.Video.Check
-#: data/gui/Game_Options.layout:116
+#: data/gui/Game_Options.layout:199
 #: 
 msgctxt "VRmode"
 msgid "VR Mode"
 msgstr ""
 
 #. Screen 
-#: data/gui/Editor_Options.layout:121
-#: ..Options.Screen.Video.Text
-#: :444..Options.Graphics.Lights.Text
-#: data/gui/Game_Options.layout:122
-#: ..Options.Screen.Video.Text
-#: :962..Options.Graphics.Lights.Text
+#: data/gui/Editor_Options.layout:80
+#: ..Options.Screen.Main.Text
+#: :477..Options.Graphics.Lights.Text
+#: data/gui/Game_Options.layout:82
+#: ..Options.Screen.Main.Text
+#: :1022..Options.Graphics.Lights.Text
 msgctxt "Brightness"
 msgid "Brightness"
 msgstr ""
 
 #. Screen 
-#: data/gui/Editor_Options.layout:132
-#: ..Options.Screen.Video.Text
-#: data/gui/Game_Options.layout:133
+#: data/gui/Editor_Options.layout:91
+#: ..Options.Screen.Main.Text
+#: data/gui/Game_Options.layout:93
 #: 
 msgctxt "Contrast"
 msgid "Contrast"
+msgstr ""
+
+#. <Tag name="Gamma">Gamma</Tag>
+#: data/gui/Editor_Options.layout:104
+#: ..Options.Screen.Tab
+#: :129..Options.Screen.GUI.Text
+#: data/gui/Game_Options.layout:106
+#: ..Options.Screen.Tab
+#: :131..Options.Screen.GUI.Text
+msgctxt "GUI"
+msgid "GUI"
+msgstr ""
+
+#. <Tag name="Gamma">Gamma</Tag>
+#: data/gui/Editor_Options.layout:124
+#: ..Options.Screen.GUI.Text
+#: data/gui/Game_Options.layout:126
+#: 
+msgctxt "FontSizes"
+msgid "Font sizes"
+msgstr ""
+
+#. <Tag name="Gamma">Gamma</Tag>
+#: data/gui/Editor_Options.layout:112
+#: ..Options.Screen.GUI.Text
+#: data/gui/Game_Options.layout:114
+#: 
+msgctxt "WindowMargin"
+msgid "Window margin"
 msgstr ""
 
 #. <Tag name="Gamma">Gamma</Tag>
@@ -3338,12 +3367,13 @@ msgstr ""
 #. Screen  info 
 #: data/gui/Editor_Options.layout:74
 #: ..Options.Screen.Main.Text
-#: :110..Options.Screen.Video.Text
-#: :191..Options.Graphics.Text
+#: :107..Options.Screen.GUI.Text
+#: :224..Options.Graphics.Text
 #: data/gui/Game_Options.layout:75
 #: ..Options.Screen.Main.Text
-#: :111..Options.Screen.Video.Text
-#: :709..Options.Graphics.Text
+#: :109..Options.Screen.GUI.Text
+#: :194..Options.Screen.Video.Text
+#: :769..Options.Graphics.Text
 msgctxt "NeedRestart"
 msgid "* need restart"
 msgstr ""
@@ -3351,63 +3381,63 @@ msgstr ""
 #. Screen  info 
 #: data/gui/Editor.layout:1887
 #: ..Editor.Grasses.Properties.Text
-#: data/gui/Editor_Options.layout:115
+#: data/gui/Editor_Options.layout:171
 #: ..Options.Screen.Video.Check
-#: :203..Options.Graphics.Text
-#: data/gui/Game_Options.layout:116
+#: :236..Options.Graphics.Text
+#: data/gui/Game_Options.layout:199
 #: ..Options.Screen.Video.Check
-#: :721..Options.Graphics.Text
+#: :781..Options.Graphics.Text
 msgctxt "NotDone"
 msgid "not done yet, ToDo"
 msgstr ""
 
 #. Screen  info 
-#: data/gui/Editor_Options.layout:197
+#: data/gui/Editor_Options.layout:230
 #: ..Options.Graphics.Text
-#: data/gui/Game_Options.layout:715
+#: data/gui/Game_Options.layout:775
 #: 
 msgctxt "NeedApply"
 msgid "need Apply"
 msgstr ""
 
 #. Screen  info 
-#: data/gui/Editor_Options.layout:209
+#: data/gui/Editor_Options.layout:242
 #: ..Options.Graphics.Text
 msgctxt "Ignored"
 msgid "ignored"
 msgstr ""
 
 #. Screen  info 
-#: data/gui/Editor_Options.layout:221
+#: data/gui/Editor_Options.layout:254
 #: ..Options.Graphics.Edit
-#: data/gui/Game_Options.layout:733
+#: data/gui/Game_Options.layout:793
 #: 
 msgctxt "GraphicsRightHQ"
 msgid "By default better quality (less Fps) is on right. Marked with + if on left."
 msgstr ""
 
 #. Screen  vertical synchronisation 
-#: data/gui/Editor_Options.layout:84
+#: data/gui/Editor_Options.layout:144
 #: ..Options.Screen.Video.Check
-#: data/gui/Game_Options.layout:85
+#: data/gui/Game_Options.layout:168
 #: 
 msgctxt "VSync"
 msgid "VSync"
 msgstr ""
 
 #. Screen  advanced 
-#: data/gui/Editor_Options.layout:100
+#: data/gui/Editor_Options.layout:160
 #: ..Options.Screen.Video.Text
-#: data/gui/Game_Options.layout:101
+#: data/gui/Game_Options.layout:184
 #: 
 msgctxt "RenderSystem"
 msgid "Render System"
 msgstr ""
 
 #. Screen  advanced 
-#: data/gui/Editor_Options.layout:88
+#: data/gui/Editor_Options.layout:148
 #: ..Options.Screen.Video.Text
-#: data/gui/Game_Options.layout:89
+#: data/gui/Game_Options.layout:172
 #: 
 msgctxt "AntiAliasing"
 msgid "Antialiasing"
@@ -3423,27 +3453,27 @@ msgid "Change"
 msgstr ""
 
 #. Screen  advanced 
-#: data/gui/Editor_Options.layout:144
+#: data/gui/Editor_Options.layout:177
 #: ..Options.Screen.Video.Check
-#: data/gui/Game_Options.layout:145
+#: data/gui/Game_Options.layout:205
 #: 
 msgctxt "LimitFPS"
 msgid "Limit frames per second"
 msgstr ""
 
 #. Screen  advanced 
-#: data/gui/Editor_Options.layout:148
+#: data/gui/Editor_Options.layout:181
 #: ..Options.Screen.Video.Text
-#: data/gui/Game_Options.layout:149
+#: data/gui/Game_Options.layout:209
 #: 
 msgctxt "FramesPerSec"
 msgid "Frames per second"
 msgstr ""
 
 #. Screen  advanced 
-#: data/gui/Editor_Options.layout:162
+#: data/gui/Editor_Options.layout:195
 #: ..Options.Screen.Video.Text
-#: data/gui/Game_Options.layout:163
+#: data/gui/Game_Options.layout:223
 #: 
 msgctxt "SleepMS"
 msgid "Sleep interval [milisec]"
@@ -3509,7 +3539,7 @@ msgstr ""
 #. Network Multiplayer  headers 
 #: data/gui/Game.layout:1698
 #: ..SingleRace.Tab
-#: data/gui/Game_Options.layout:286
+#: data/gui/Game_Options.layout:346
 #: ..Options.Input.Shortcuts.Text
 #: data/gui/Game_Utils.layout:159
 #: ..Window
@@ -3538,7 +3568,7 @@ msgstr ""
 #: ..SingleRace.Vehicle.Tab
 #: :875:878:912..SingleRace.Setup.Paint.Tab
 #: :915:918
-#: data/gui/Game_Options.layout:188
+#: data/gui/Game_Options.layout:248
 #: ..Options.Input.Tab
 #: src/game/CarModel_Config.cpp:113
 #: src/game/Gui_Init.cpp:457
@@ -3832,29 +3862,29 @@ msgid "Hosting a multiplayer game requires port forwarding. Connecting to existi
 msgstr ""
 
 #. Effects  Main 
-#: data/gui/Game_Options.layout:313
+#: data/gui/Game_Options.layout:373
 #: ..Options.Input.Shortcuts.Text
-#: :1164..Options.Graphics.Tab
+#: :1224..Options.Graphics.Tab
 msgctxt "Effects"
 msgid "Effects"
 msgstr ""
 
 #. Effects  Main 
-#: data/gui/Game_Options.layout:1173
+#: data/gui/Game_Options.layout:1233
 #: ..Options.Graphics.Effects.Check
 msgctxt "AllEffects"
 msgid "Effects Enabled"
 msgstr ""
 
 #. Effects 
-#: data/gui/Game_Options.layout:1180
+#: data/gui/Game_Options.layout:1240
 #: ..Options.Graphics.Effects.Check
 msgctxt "Bloom"
 msgid "Bloom"
 msgstr ""
 
 #. Effects 
-#: data/gui/Game_Options.layout:1184
+#: data/gui/Game_Options.layout:1244
 #: ..Options.Graphics.Effects.Text
 msgctxt "Intensity"
 msgid "Intensity"
@@ -3881,7 +3911,7 @@ msgid "Film Grain"
 msgstr ""
 
 #. Effects 
-#: data/gui/Game_Options.layout:1198
+#: data/gui/Game_Options.layout:1258
 #: ..Options.Graphics.Effects.Check
 msgctxt "softparticles"
 msgid "Soft Particles"
@@ -3893,9 +3923,9 @@ msgid "Depth of Field"
 msgstr ""
 
 #. Effects DOF 
-#: data/gui/Editor_Options.layout:873
+#: data/gui/Editor_Options.layout:906
 #: ..Options.View.Pacenotes.Text
-#: data/gui/Game_Options.layout:517
+#: data/gui/Game_Options.layout:577
 #: 
 msgctxt "Near"
 msgid "Near"
@@ -3919,7 +3949,7 @@ msgid "Big"
 msgstr ""
 
 #. Effects (ambient shadows) 
-#: data/gui/Game_Options.layout:1193
+#: data/gui/Game_Options.layout:1253
 #: ..Options.Graphics.Effects.Check
 msgctxt "ssao"
 msgid "SSAO"
@@ -3931,21 +3961,21 @@ msgid "HDR"
 msgstr ""
 
 #. Effects HDR  broken 
-#: data/gui/Game_Options.layout:1203
+#: data/gui/Game_Options.layout:1263
 #: ..Options.Graphics.Effects.Check
 msgctxt "HDR"
 msgid "HDR+Bloom"
 msgstr ""
 
 #. Effects HDR  broken 
-#: data/gui/Game_Options.layout:1208
+#: data/gui/Game_Options.layout:1268
 #: ..Options.Graphics.Effects.Text
 msgctxt "HDRAdaptationScale"
 msgid "Adapt Scale"
 msgstr ""
 
 #. Effects HDR  broken 
-#: data/gui/Game_Options.layout:1216
+#: data/gui/Game_Options.layout:1276
 #: ..Options.Graphics.Effects.Text
 msgctxt "HDRIntensity"
 msgid "Bloom Intensity"
@@ -3984,42 +4014,42 @@ msgstr ""
 #. Graphics 
 #: data/gui/Editor_Help.layout:244
 #: ..Help.Input/help.Shortcuts.Text
-#: data/gui/Editor_Options.layout:182
+#: data/gui/Editor_Options.layout:215
 #: ..Options.Tab
-#: data/gui/Game_Options.layout:310
+#: data/gui/Game_Options.layout:370
 #: ..Options.Input.Shortcuts.Text
-#: :700..Options.Tab
+#: :760..Options.Tab
 msgctxt "Graphics"
 msgid "Graphics"
 msgstr ""
 
 #. Graphics 
-#: data/gui/Game_Options.layout:703
+#: data/gui/Game_Options.layout:763
 #: ..Options.Graphics.Text
 msgctxt "NeedNewGame"
 msgid "* need New Game"
 msgstr ""
 
 #. Graphics 
-#: data/gui/Game_Options.layout:739
+#: data/gui/Game_Options.layout:799
 #: ..Options.Graphics.Button
 msgctxt "RestartApply"
 msgid "Restart game, to apply *changes."
 msgstr ""
 
 #. Graphics 
-#: data/gui/Editor_Options.layout:239
+#: data/gui/Editor_Options.layout:272
 #: ..Options.Graphics.Reflections.Button
-#: :313..Options.Graphics.Water.Button
-#: :375..Options.Graphics.Shadows.Button
-#: :457..Options.Graphics.Vegetation.Button
-#: :555..Options.Graphics.Textures.Button
-#: data/gui/Game_Options.layout:757
+#: :346..Options.Graphics.Water.Button
+#: :408..Options.Graphics.Shadows.Button
+#: :490..Options.Graphics.Vegetation.Button
+#: :588..Options.Graphics.Textures.Button
+#: data/gui/Game_Options.layout:817
 #: ..Options.Graphics.Reflections.Button
-#: :831..Options.Graphics.Water.Button
-#: :893..Options.Graphics.Shadows.Button
-#: :975..Options.Graphics.Vegetation.Button
-#: :1073..Options.Graphics.Textures.Button
+#: :891..Options.Graphics.Water.Button
+#: :953..Options.Graphics.Shadows.Button
+#: :1035..Options.Graphics.Vegetation.Button
+#: :1133..Options.Graphics.Textures.Button
 msgctxt "Apply"
 msgid "Apply"
 msgstr ""
@@ -4034,20 +4064,20 @@ msgstr ""
 #. Graphics  Detail 
 #: data/gui/Editor.layout:2899
 #: ..Editor.Vegetation.Road.Tab
-#: data/gui/Editor_Options.layout:290
+#: data/gui/Editor_Options.layout:323
 #: ..Options.Graphics.Reflections.Text
-#: :348..Options.Graphics.Water.Text
-#: :563..Options.Graphics.Tab
-#: :602..Options.Graphics.Detail.Text
-#: :837..Options.View.Pacenotes.Text
+#: :381..Options.Graphics.Water.Text
+#: :596..Options.Graphics.Tab
+#: :635..Options.Graphics.Detail.Text
+#: :870..Options.View.Pacenotes.Text
 #: data/gui/Editor_Track.layout:877
 #: ..Track.Export.Road.Text
 #: :886
-#: data/gui/Game_Options.layout:808
+#: data/gui/Game_Options.layout:868
 #: ..Options.Graphics.Reflections.Text
-#: :866..Options.Graphics.Water.Text
-#: :1081..Options.Graphics.Tab
-#: :1120..Options.Graphics.Detail.Text
+#: :926..Options.Graphics.Water.Text
+#: :1141..Options.Graphics.Tab
+#: :1180..Options.Graphics.Detail.Text
 #: data/gui/MaterialEditor.layout:504
 #: ..MaterialEditor.Tab
 msgctxt "Detail"
@@ -4068,33 +4098,33 @@ msgstr ""
 #: data/gui/Editor.layout:3007
 #: ..Editor.Vegetation.Road.Advanced.Text
 #: :3018
-#: data/gui/Editor_Options.layout:583
+#: data/gui/Editor_Options.layout:616
 #: ..Options.Graphics.Detail.Text
-#: :854..Options.View.Pacenotes.Text
-#: data/gui/Game_Options.layout:498
-#: :1101..Options.Graphics.Detail.Text
+#: :887..Options.View.Pacenotes.Text
+#: data/gui/Game_Options.layout:558
+#: :1161..Options.Graphics.Detail.Text
 msgctxt "ViewDist"
 msgid "View distance"
 msgstr ""
 
 #. Graphics  Detail 
-#: data/gui/Editor_Options.layout:574
+#: data/gui/Editor_Options.layout:607
 #: ..Options.Graphics.Detail.Text
-#: data/gui/Game_Options.layout:1092
+#: data/gui/Game_Options.layout:1152
 #: 
 msgctxt "RoadQual"
 msgid "Road far quality"
 msgstr ""
 
 #. Graphics  Textures 
-#: data/gui/Editor_Options.layout:506
+#: data/gui/Editor_Options.layout:539
 #: ..Options.Graphics.Tab
-#: :513..Options.Graphics.Textures.Text
+#: :546..Options.Graphics.Textures.Text
 #: data/gui/Editor_Track.layout:835
 #: ..Track.Export.Track.Text
-#: data/gui/Game_Options.layout:1024
+#: data/gui/Game_Options.layout:1084
 #: ..Options.Graphics.Tab
-#: :1031..Options.Graphics.Textures.Text
+#: :1091..Options.Graphics.Textures.Text
 msgctxt "Textures"
 msgid "Textures"
 msgstr ""
@@ -4118,18 +4148,18 @@ msgid "Anisotropic"
 msgstr ""
 
 #. Graphics  Textures 
-#: data/gui/Editor_Options.layout:520
+#: data/gui/Editor_Options.layout:553
 #: ..Options.Graphics.Textures.Text
-#: data/gui/Game_Options.layout:1038
+#: data/gui/Game_Options.layout:1098
 #: 
 msgctxt "Anisotropy"
 msgid "Anisotropy"
 msgstr ""
 
 #. Graphics  Textures 
-#: data/gui/Editor_Options.layout:531
+#: data/gui/Editor_Options.layout:564
 #: ..Options.Graphics.Textures.Text
-#: data/gui/Game_Options.layout:1049
+#: data/gui/Game_Options.layout:1109
 #: 
 msgctxt "Triplanar"
 msgid "Triplanar"
@@ -4147,41 +4177,41 @@ msgstr ""
 #: ..Help.Input/help.Shortcuts.Text
 #: data/gui/Editor.layout:2291
 #: ..Editor.Tab
-#: data/gui/Editor_Options.layout:455
+#: data/gui/Editor_Options.layout:488
 #: ..Options.Graphics.Tab
-#: :565..Options.Graphics.Detail.Text
+#: :598..Options.Graphics.Detail.Text
 #: data/gui/Editor_Track.layout:508
 #: ..Track.Tools.Button
-#: data/gui/Game_Options.layout:973
+#: data/gui/Game_Options.layout:1033
 #: ..Options.Graphics.Tab
-#: :1083..Options.Graphics.Detail.Text
+#: :1143..Options.Graphics.Detail.Text
 msgctxt "Vegetation"
 msgid "Vegetation"
 msgstr ""
 
 #. Graphics  Vegetation 
-#: data/gui/Editor_Options.layout:467
+#: data/gui/Editor_Options.layout:500
 #: ..Options.Graphics.Vegetation.Text
-#: data/gui/Game_Options.layout:985
+#: data/gui/Game_Options.layout:1045
 #: 
 msgctxt "TreeMult"
 msgid "Trees multiplier"
 msgstr ""
 
 #. Graphics  Vegetation 
-#: data/gui/Editor_Options.layout:472
+#: data/gui/Editor_Options.layout:505
 #: ..Options.Graphics.Vegetation.Text
-#: :482
-#: data/gui/Game_Options.layout:990
-#: :1000
+#: :515
+#: data/gui/Game_Options.layout:1050
+#: :1060
 msgctxt "DistMult"
 msgid "Distance mul"
 msgstr ""
 
 #. Graphics  Vegetation 
-#: data/gui/Editor_Options.layout:477
+#: data/gui/Editor_Options.layout:510
 #: ..Options.Graphics.Vegetation.Text
-#: data/gui/Game_Options.layout:995
+#: data/gui/Game_Options.layout:1055
 #: 
 msgctxt "GrassMult"
 msgid "Grass mul"
@@ -4190,13 +4220,13 @@ msgstr ""
 #. Graphics  Vegetation 
 #: data/gui/Editor.layout:809
 #: ..Editor.Terrain.Brushes.Button
-#: data/gui/Editor_Options.layout:462
+#: data/gui/Editor_Options.layout:495
 #: ..Options.Graphics.Vegetation.Button
 #: data/gui/Game.layout:1015
 #: ..SingleRace.Setup.Paint.Button
 #: :1511..SingleRace.Setup.Steering.Button
 #: :1582
-#: data/gui/Game_Options.layout:980
+#: data/gui/Game_Options.layout:1040
 #: ..Options.Graphics.Vegetation.Button
 #: data/gui/Game_Tweak.layout:260
 #: ..Tweak.Tires.Button
@@ -4208,51 +4238,51 @@ msgid "Reset"
 msgstr ""
 
 #. Graphics  reflections 
-#: data/gui/Editor_Options.layout:237
+#: data/gui/Editor_Options.layout:270
 #: ..Options.Graphics.Tab
-#: data/gui/Game_Options.layout:755
+#: data/gui/Game_Options.layout:815
 #: 
 msgctxt "Reflections"
 msgid "Reflections"
 msgstr ""
 
 #. Graphics  reflections 
-#: data/gui/Editor_Options.layout:249
+#: data/gui/Editor_Options.layout:282
 #: ..Options.Graphics.Reflections.Text
-#: :361..Options.Graphics.Water.Text
-#: data/gui/Game_Options.layout:767
+#: :394..Options.Graphics.Water.Text
+#: data/gui/Game_Options.layout:827
 #: ..Options.Graphics.Reflections.Text
-#: :879..Options.Graphics.Water.Text
+#: :939..Options.Graphics.Water.Text
 msgctxt "FrameSkip"
 msgid "Frames skip"
 msgstr ""
 
 #. Graphics  reflections 
-#: data/gui/Editor_Options.layout:270
+#: data/gui/Editor_Options.layout:303
 #: ..Options.Graphics.Reflections.Text
-#: :328..Options.Graphics.Water.Text
-#: :401..Options.Graphics.Shadows.Text
-#: data/gui/Game_Options.layout:788
+#: :361..Options.Graphics.Water.Text
+#: :434..Options.Graphics.Shadows.Text
+#: data/gui/Game_Options.layout:848
 #: ..Options.Graphics.Reflections.Text
-#: :846..Options.Graphics.Water.Text
-#: :919..Options.Graphics.Shadows.Text
+#: :906..Options.Graphics.Water.Text
+#: :979..Options.Graphics.Shadows.Text
 msgctxt "MapSize"
 msgid "Map size"
 msgstr ""
 
 #. Graphics  reflections 
-#: data/gui/Editor_Options.layout:260
+#: data/gui/Editor_Options.layout:293
 #: ..Options.Graphics.Reflections.Text
-#: data/gui/Game_Options.layout:778
+#: data/gui/Game_Options.layout:838
 #: 
 msgctxt "FacesOnce"
 msgid "Faces at once"
 msgstr ""
 
 #. Graphics  reflections 
-#: data/gui/Editor_Options.layout:300
+#: data/gui/Editor_Options.layout:333
 #: ..Options.Graphics.Reflections.Text
-#: data/gui/Game_Options.layout:818
+#: data/gui/Game_Options.layout:878
 #: 
 msgctxt "IblSamples"
 msgid "IBL samples"
@@ -4282,18 +4312,18 @@ msgid "Full"
 msgstr ""
 
 #. Graphics  Water 
-#: data/gui/Editor_Options.layout:311
+#: data/gui/Editor_Options.layout:344
 #: ..Options.Graphics.Tab
-#: data/gui/Game_Options.layout:829
+#: data/gui/Game_Options.layout:889
 #: 
 msgctxt "Water"
 msgid "Water"
 msgstr ""
 
 #. Graphics  Water 
-#: data/gui/Editor_Options.layout:318
+#: data/gui/Editor_Options.layout:351
 #: ..Options.Graphics.Water.Check
-#: data/gui/Game_Options.layout:836
+#: data/gui/Game_Options.layout:896
 #: 
 #: src/editor/Update_EditKeyTxt.cpp:309
 msgctxt "WaterReflection"
@@ -4301,9 +4331,9 @@ msgid "Reflection"
 msgstr ""
 
 #. Graphics  Water 
-#: data/gui/Editor_Options.layout:322
+#: data/gui/Editor_Options.layout:355
 #: ..Options.Graphics.Water.Check
-#: data/gui/Game_Options.layout:840
+#: data/gui/Game_Options.layout:900
 #: 
 #: src/editor/Update_EditKeyTxt.cpp:309
 msgctxt "WaterRefraction"
@@ -4311,14 +4341,14 @@ msgid "Refraction"
 msgstr ""
 
 #. Graphics  shadows 
-#: data/gui/Editor_Options.layout:373
+#: data/gui/Editor_Options.layout:406
 #: ..Options.Graphics.Tab
-#: :381..Options.Graphics.Shadows.Text
-#: :439..Options.Graphics.Lights.Check
-#: data/gui/Game_Options.layout:891
+#: :414..Options.Graphics.Shadows.Text
+#: :472..Options.Graphics.Lights.Check
+#: data/gui/Game_Options.layout:951
 #: ..Options.Graphics.Tab
-#: :899..Options.Graphics.Shadows.Text
-#: :957..Options.Graphics.Lights.Check
+#: :959..Options.Graphics.Shadows.Text
+#: :1017..Options.Graphics.Lights.Check
 msgctxt "Shadows"
 msgid "Shadows"
 msgstr ""
@@ -4331,13 +4361,13 @@ msgstr ""
 #. Graphics  shadows 
 #: data/gui/Editor.layout:396
 #: ..Editor.Terrain.Tab
-#: data/gui/Editor_Options.layout:864
+#: data/gui/Editor_Options.layout:897
 #: ..Options.View.Pacenotes.Text
-#: data/gui/Game_Options.layout:417
+#: data/gui/Game_Options.layout:477
 #: ..Options.View.HUD.Text
-#: :508..Options.View.Pacenotes.Text
-#: :578..Options.View.Minimap.Text
-#: :612
+#: :568..Options.View.Pacenotes.Text
+#: :638..Options.View.Minimap.Text
+#: :672
 #: src/editor/Gui_Events.cpp:313
 #: src/editor/Update_EditKeyTxt.cpp:381
 msgctxt "Size"
@@ -4350,18 +4380,18 @@ msgid "Texture size"
 msgstr ""
 
 #. Graphics  shadows 
-#: data/gui/Editor_Options.layout:421
+#: data/gui/Editor_Options.layout:454
 #: ..Options.Graphics.Shadows.Text
-#: data/gui/Game_Options.layout:939
+#: data/gui/Game_Options.layout:999
 #: 
 msgctxt "ShadowFilter"
 msgid "Filter"
 msgstr ""
 
 #. Graphics  shadows 
-#: data/gui/Editor_Options.layout:391
+#: data/gui/Editor_Options.layout:424
 #: ..Options.Graphics.Shadows.Text
-#: data/gui/Game_Options.layout:909
+#: data/gui/Game_Options.layout:969
 #: 
 #: src/editor/Update_EditKeyTxt.cpp:383
 msgctxt "Count"
@@ -4374,18 +4404,18 @@ msgid "Lightmap size"
 msgstr ""
 
 #. Graphics  lights 
-#: data/gui/Editor_Options.layout:433
+#: data/gui/Editor_Options.layout:466
 #: ..Options.Graphics.Tab
-#: data/gui/Game_Options.layout:951
+#: data/gui/Game_Options.layout:1011
 #: 
 msgctxt "Lights"
 msgid "Lights"
 msgstr ""
 
 #. Graphics  lights 
-#: data/gui/Editor_Options.layout:435
+#: data/gui/Editor_Options.layout:468
 #: ..Options.Graphics.Lights.Check
-#: data/gui/Game_Options.layout:953
+#: data/gui/Game_Options.layout:1013
 #: 
 msgctxt "VehicleLights"
 msgid "Vehicle Lights"
@@ -4402,9 +4432,9 @@ msgstr ""
 #: ..Window
 #: data/gui/Editor_Track.layout:550
 #: ..Track.Tools.Button
-#: data/gui/Game_Options.layout:1143
+#: data/gui/Game_Options.layout:1203
 #: ..Options.Graphics.Tab
-#: :1147..Options.Graphics.Particles.Check
+#: :1207..Options.Graphics.Particles.Check
 #: data/gui/Game_Replay.layout:121
 #: ..Replays.View.Check
 msgctxt "Particles"
@@ -4412,7 +4442,7 @@ msgid "Particles"
 msgstr ""
 
 #. Graphics  particles 
-#: data/gui/Game_Options.layout:1151
+#: data/gui/Game_Options.layout:1211
 #: ..Options.Graphics.Particles.Check
 msgctxt "TireTrails"
 msgid "Tire Trails"
@@ -4422,11 +4452,11 @@ msgstr ""
 #: data/gui/Editor_Help.layout:88
 #: ..Help.Input/help.Tab
 #: :248..Help.Input/help.Shortcuts.Text
-#: data/gui/Editor_Options.layout:628
+#: data/gui/Editor_Options.layout:661
 #: ..Options.Tab
-#: data/gui/Game_Options.layout:303
+#: data/gui/Game_Options.layout:363
 #: ..Options.Input.Shortcuts.Text
-#: :389..Options.Tab
+#: :449..Options.Tab
 #: data/gui/Game_Replay.layout:94
 #: ..Replays.Tab
 msgctxt "View"
@@ -4434,52 +4464,53 @@ msgid "View"
 msgstr ""
 
 #. View  Gauges 
-#: data/gui/Editor_Options.layout:1030
+#: data/gui/Editor_Options.layout:1063
 #: ..Options.Settings.Tweak.Check
-#: data/gui/Game_Options.layout:395
-#: ..Options.View.Tab
-#: :1318..Options.Sound.Tab
-#: :1321..Options.Sound.HUD.Text
-#: :1529..Options.Tweak.Other.Check
+#: data/gui/Game_Options.layout:142
+#: ..Options.Screen.GUI.Text
+#: :455..Options.View.Tab
+#: :1378..Options.Sound.Tab
+#: :1381..Options.Sound.HUD.Text
+#: :1589..Options.Tweak.Other.Check
 msgctxt "HUD"
 msgid "HUD"
 msgstr ""
 
 #. View  Gauges 
-#: data/gui/Game_Options.layout:397
+#: data/gui/Game_Options.layout:457
 #: ..Options.View.HUD.Check
 msgctxt "Digits"
 msgid "Digits (gear, speed)"
 msgstr ""
 
 #. View  Gauges 
-#: data/gui/Game_Options.layout:401
+#: data/gui/Game_Options.layout:461
 #: ..Options.View.HUD.Text
 msgctxt "SpeedUnit"
 msgid "Speed unit"
 msgstr ""
 
 #. View  Gauges 
-#: data/gui/Game_Options.layout:413
+#: data/gui/Game_Options.layout:473
 #: ..Options.View.HUD.Check
 msgctxt "Gauges"
 msgid "Gauges (rpm, speed)"
 msgstr ""
 
 #. View  Gauges 
-#: data/gui/Game_Options.layout:437
+#: data/gui/Game_Options.layout:497
 #: ..Options.View.HUD.Text
 msgctxt "Layout"
 msgid "Layout"
 msgstr ""
 
 #. View  Minimap 
-#: data/gui/Editor_Options.layout:728
+#: data/gui/Editor_Options.layout:761
 #: ..Options.View.Tab
-#: data/gui/Game_Options.layout:306
+#: data/gui/Game_Options.layout:366
 #: ..Options.Input.Shortcuts.Text
-#: :559..Options.View.Tab
-#: :567..Options.View.Minimap.Check
+#: :619..Options.View.Tab
+#: :627..Options.View.Minimap.Check
 msgctxt "Minimap"
 msgid "Minimap"
 msgstr ""
@@ -4487,99 +4518,100 @@ msgstr ""
 #. View  Minimap 
 #: data/gui/Editor.layout:699
 #: ..Editor.Terrain.Brushes.Text
-#: data/gui/Game_Options.layout:581
+#: data/gui/Game_Options.layout:641
 #: ..Options.View.Minimap.Check
 msgctxt "MinimapZoom"
 msgid "Zoom"
 msgstr ""
 
 #. View  Minimap 
-#: data/gui/Editor_Options.layout:803
+#: data/gui/Editor_Options.layout:836
 #: ..Options.View.Minimap.Text
-#: data/gui/Game_Options.layout:585
+#: data/gui/Game_Options.layout:645
 #: ..Options.View.Minimap.Check
 msgctxt "MinimapRotate"
 msgid "Rotate"
 msgstr ""
 
 #. View  Minimap 
-#: data/gui/Game_Options.layout:599
+#: data/gui/Game_Options.layout:659
 #: ..Options.View.Minimap.Check
 msgctxt "MinimapTerrain"
 msgid "Terrain"
 msgstr ""
 
 #. View  Minimap 
-#: data/gui/Game_Options.layout:595
+#: data/gui/Game_Options.layout:655
 #: ..Options.View.Minimap.Check
 msgctxt "MinimapBorder"
 msgid "Border"
 msgstr ""
 
 #. View  HUD 
-#: data/gui/Game_Options.layout:448
-#: ..Options.View.HUD.Check
+#: data/gui/Game_Options.layout:153
+#: ..Options.Screen.GUI.Text
+#: :508..Options.View.HUD.Check
 msgctxt "TimesBar"
 msgid "Times bar"
 msgstr ""
 
 #. View  HUD 
-#: data/gui/Game_Options.layout:452
+#: data/gui/Game_Options.layout:512
 #: ..Options.View.HUD.Check
 msgctxt "OpponentsList"
 msgid "Opponents List"
 msgstr ""
 
 #. View  HUD 
-#: data/gui/Game_Options.layout:456
+#: data/gui/Game_Options.layout:516
 #: ..Options.View.HUD.Check
 msgctxt "OpponentsSorted"
 msgid "Opponents Sorted"
 msgstr ""
 
 #. View  HUD 
-#: data/gui/Game_Options.layout:608
+#: data/gui/Game_Options.layout:668
 #: ..Options.View.Minimap.Check
 msgctxt "CheckArrow"
 msgid "Checkpoint Arrow"
 msgstr ""
 
 #. View  HUD 
-#: data/gui/Game_Options.layout:604
+#: data/gui/Game_Options.layout:664
 #: ..Options.View.Minimap.Check
 msgctxt "CheckBeam"
 msgid "Next checkpoint beam"
 msgstr ""
 
 #. View  HUD 
-#: data/gui/Game_Options.layout:473
+#: data/gui/Game_Options.layout:533
 #: ..Options.View.HUD.Text
 msgctxt "CountdownTime"
 msgid "Race countdown time"
 msgstr ""
 
 #. View  Pacenotes 
-#: data/gui/Editor_Options.layout:827
+#: data/gui/Editor_Options.layout:860
 #: ..Options.View.Tab
-#: :837..Options.View.Pacenotes.Text
-#: data/gui/Game_Options.layout:486
+#: :870..Options.View.Pacenotes.Text
+#: data/gui/Game_Options.layout:546
 #: ..Options.View.Tab
-#: :493..Options.View.Pacenotes.Check
+#: :553..Options.View.Pacenotes.Check
 msgctxt "Pacenotes"
 msgid "Pacenotes"
 msgstr ""
 
 #. View  Pacenotes 
-#: data/gui/Game_Options.layout:527
+#: data/gui/Game_Options.layout:587
 #: ..Options.View.Pacenotes.Text
 msgctxt "PaceNextVisible"
 msgid "Next shown"
 msgstr ""
 
 #. View  Racing Line trail 
-#: data/gui/Editor_Options.layout:894
+#: data/gui/Editor_Options.layout:927
 #: ..Options.View.Pacenotes.Check
-#: data/gui/Game_Options.layout:548
+#: data/gui/Game_Options.layout:608
 #: 
 #: src/editor/Update_EditKeyTxt.cpp:57
 msgctxt "RacingLine"
@@ -4587,9 +4619,9 @@ msgid "Racing Line (trail)"
 msgstr ""
 
 #. View  Camera 
-#: data/gui/Editor_Options.layout:640
+#: data/gui/Editor_Options.layout:673
 #: ..Options.View.Tab
-#: data/gui/Game_Options.layout:624
+#: data/gui/Game_Options.layout:684
 #: 
 #: src/editor/Update_Frame.cpp:77
 msgctxt "Camera"
@@ -4597,28 +4629,28 @@ msgid "Camera"
 msgstr ""
 
 #. View  Camera 
-#: data/gui/Game_Options.layout:626
+#: data/gui/Game_Options.layout:686
 #: ..Options.View.Camera.Check
 msgctxt "CameraInfo"
 msgid "Camera info"
 msgstr ""
 
 #. View  Camera 
-#: data/gui/Game_Options.layout:630
+#: data/gui/Game_Options.layout:690
 #: ..Options.View.Camera.Check
 msgctxt "CameraAutoTilt"
 msgid "Camera auto tilt on slopes"
 msgstr ""
 
 #. View  Camera 
-#: data/gui/Game_Options.layout:634
+#: data/gui/Game_Options.layout:694
 #: ..Options.View.Camera.Check
 msgctxt "CameraLoopChange"
 msgid "Camera change in loops"
 msgstr ""
 
 #. View  Camera 
-#: data/gui/Game_Options.layout:639
+#: data/gui/Game_Options.layout:699
 #: ..Options.View.Camera.Check
 msgctxt "CameraBounce"
 msgid "Dynamic camera bouncing"
@@ -4630,9 +4662,9 @@ msgid "Adaptive FOV"
 msgstr ""
 
 #. View  Camera 
-#: data/gui/Game_Options.layout:654
+#: data/gui/Game_Options.layout:714
 #: ..Options.View.Camera.Text
-#: :665:676
+#: :725:736
 msgctxt "FOV"
 msgid "View angle"
 msgstr ""
@@ -4640,39 +4672,39 @@ msgstr ""
 #. Settings  debug 
 #: data/gui/Game.layout:1588
 #: ..SingleRace.Setup.Tab
-#: data/gui/Game_Options.layout:1352
+#: data/gui/Game_Options.layout:1412
 #: ..Options.Sound.Tab
-#: :1476..Options.Tweak.Tab
+#: :1536..Options.Tweak.Tab
 msgctxt "Other"
 msgid "Other"
 msgstr ""
 
 #. Settings  debug 
-#: data/gui/Editor_Options.layout:1052
+#: data/gui/Editor_Options.layout:1085
 #: ..Options.Settings.Advanced.Text
-#: data/gui/Game_Options.layout:1642
+#: data/gui/Game_Options.layout:1702
 #: ..Options.Tweak.Advanced.Text
 msgctxt "Development"
 msgid "Development"
 msgstr ""
 
 #. Settings  debug 
-#: data/gui/Editor_Options.layout:1053
+#: data/gui/Editor_Options.layout:1086
 #: ..Options.Settings.Advanced.Text
-#: :1058..Options.Settings.Advanced.Check
-#: :1063
-#: data/gui/Game_Options.layout:1643
+#: :1091..Options.Settings.Advanced.Check
+#: :1096
+#: data/gui/Game_Options.layout:1703
 #: ..Options.Tweak.Advanced.Text
-#: :1648..Options.Tweak.Advanced.Check
-#: :1653
+#: :1708..Options.Tweak.Advanced.Check
+#: :1713
 msgctxt "TipDebugShaders"
 msgid "Will save generated shaders in user's cache/shaders/ folder. Only for those not cached already. Optionally also properties on top, messing error line numbers."
 msgstr ""
 
 #. Settings  debug 
-#: data/gui/Editor_Options.layout:972
+#: data/gui/Editor_Options.layout:1005
 #: ..Options.Settings.Tweak.Text
-#: data/gui/Game_Options.layout:1485
+#: data/gui/Game_Options.layout:1545
 #: ..Options.Tweak.Other.Text
 msgctxt "FPS"
 msgid "Fps bar, render statistics"
@@ -4721,190 +4753,190 @@ msgid "GPU memory"
 msgstr ""
 
 #. Settings  debug 
-#: data/gui/Editor_Options.layout:1007
+#: data/gui/Editor_Options.layout:1040
 #: ..Options.Settings.Tweak.Check
-#: data/gui/Game_Options.layout:1519
+#: data/gui/Game_Options.layout:1579
 #: ..Options.Tweak.Other.Check
 msgctxt "Wireframe"
 msgid "Wireframe"
 msgstr ""
 
 #. Settings  debug 
-#: data/gui/Game_Options.layout:1615
+#: data/gui/Game_Options.layout:1675
 #: ..Options.Tweak.Advanced.Check
 msgctxt "BulletDebug"
 msgid "Bullet debug"
 msgstr ""
 
 #. Settings  debug 
-#: data/gui/Game_Options.layout:1612
+#: data/gui/Game_Options.layout:1672
 #: ..Options.Tweak.Advanced.Check
 msgctxt "BulletLines"
 msgid "Bullet debug lines"
 msgstr ""
 
 #. Settings  debug 
-#: data/gui/Game_Options.layout:1619
+#: data/gui/Game_Options.layout:1679
 #: ..Options.Tweak.Advanced.Check
 msgctxt "BulletProfilerTxt"
 msgid "Bullet Profiler Times"
 msgstr ""
 
 #. Settings  debug 
-#: data/gui/Game_Options.layout:1574
+#: data/gui/Game_Options.layout:1634
 #: ..Options.Tweak.Graphs.Check
 msgctxt "FullSoundsInfo"
 msgid "Full sounds info in graphs."
 msgstr ""
 
 #. Settings  cache, shaders 
-#: data/gui/Editor_Options.layout:954
+#: data/gui/Editor_Options.layout:987
 #: ..Options.Settings.Settings.Check
-#: data/gui/Game_Options.layout:1460
+#: data/gui/Game_Options.layout:1520
 #: ..Options.Settings.Check
 msgctxt "CacheMaterials"
 msgid "Cache Materials"
 msgstr ""
 
 #. Settings  cache, shaders 
-#: data/gui/Editor_Options.layout:958
+#: data/gui/Editor_Options.layout:991
 #: ..Options.Settings.Settings.Check
-#: data/gui/Game_Options.layout:1464
+#: data/gui/Game_Options.layout:1524
 #: ..Options.Settings.Check
 msgctxt "CacheShaders"
 msgid "Cache Shaders"
 msgstr ""
 
 #. Settings  cache, shaders 
-#: data/gui/Editor_Options.layout:1057
+#: data/gui/Editor_Options.layout:1090
 #: ..Options.Settings.Advanced.Check
-#: data/gui/Game_Options.layout:1647
+#: data/gui/Game_Options.layout:1707
 #: ..Options.Tweak.Advanced.Check
 msgctxt "DebugShaders"
 msgid "Debug Shaders"
 msgstr ""
 
 #. Settings  cache, shaders 
-#: data/gui/Editor_Options.layout:1062
+#: data/gui/Editor_Options.layout:1095
 #: ..Options.Settings.Advanced.Check
-#: data/gui/Game_Options.layout:1652
+#: data/gui/Game_Options.layout:1712
 #: ..Options.Tweak.Advanced.Check
 msgctxt "DebugProperties"
 msgid "Debug Properties"
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: data/gui/Game_Options.layout:1546
+#: data/gui/Game_Options.layout:1606
 #: ..Options.Tweak.Graphs.Check
 msgctxt "CarDebug"
 msgid "Car susp, long|,lat- slips"
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: data/gui/Game_Options.layout:1542
+#: data/gui/Game_Options.layout:1602
 #: ..Options.Tweak.Graphs.Check
-#: :1764..Options.Tweak.Tires.Text
+#: :1824..Options.Tweak.Tires.Text
 msgctxt "CarTireVisCircles"
 msgid "Tire force circles visualisation"
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: data/gui/Game_Options.layout:1584
+#: data/gui/Game_Options.layout:1644
 #: ..Options.Tweak.Graphs.Check
 msgctxt "CarDebugText"
 msgid "Car debug text "
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: data/gui/Game_Options.layout:1550
+#: data/gui/Game_Options.layout:1610
 #: ..Options.Tweak.Graphs.Check
 msgctxt "CarDebugSurfaces"
 msgid "Car tire surfaces"
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: data/gui/Game_Options.layout:1524
+#: data/gui/Game_Options.layout:1584
 #: ..Options.Tweak.Other.Check
 msgctxt "ProfilerTxt"
 msgid "Profiler times text "
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: data/gui/Game_Options.layout:1592
+#: data/gui/Game_Options.layout:1652
 #: ..Options.Tweak.Graphs.Text
 msgctxt "TextColor"
 msgid "Text color"
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: data/gui/Game_Options.layout:1797
+#: data/gui/Game_Options.layout:1857
 #: ..Options.Tweak.Tracks.Check
 msgctxt "DevKeys"
 msgid "Developer keys. Ctrl-F global, Alt-shift-.. load test tracks."
 msgstr ""
 
 #. Settings  car tweak visualizeations 
-#: data/gui/Game_Options.layout:1632
+#: data/gui/Game_Options.layout:1692
 #: ..Options.Tweak.Advanced.Text
 msgctxt "CarPreview"
 msgid "Force car preview"
 msgstr ""
 
 #. Settings  startup 
-#: data/gui/Editor_Options.layout:927
+#: data/gui/Editor_Options.layout:960
 #: ..Options.Settings.Settings.Text
-#: data/gui/Game_Options.layout:1429
+#: data/gui/Game_Options.layout:1489
 #: ..Options.Settings.Text
-#: :1612..Options.Tweak.Advanced.Check
+#: :1672..Options.Tweak.Advanced.Check
 msgctxt "Startup"
 msgid "Startup"
 msgstr ""
 
 #. Settings  startup 
-#: data/gui/Editor_Options.layout:948
+#: data/gui/Editor_Options.layout:981
 #: ..Options.Settings.Settings.Check
-#: data/gui/Game_Options.layout:1450
+#: data/gui/Game_Options.layout:1510
 #: ..Options.Settings.Check
 msgctxt "MouseCapture"
 msgid "Capture mouse"
 msgstr ""
 
 #. Settings  startup 
-#: data/gui/Editor_Options.layout:944
+#: data/gui/Editor_Options.layout:977
 #: ..Options.Settings.Settings.Check
-#: data/gui/Game_Options.layout:1446
+#: data/gui/Game_Options.layout:1506
 #: ..Options.Settings.Check
 msgctxt "OgreDialog"
 msgid "Show Ogre dialog"
 msgstr ""
 
 #. Settings  startup 
-#: data/gui/Editor_Options.layout:931
+#: data/gui/Editor_Options.layout:964
 #: ..Options.Settings.Settings.Check
-#: data/gui/Game_Options.layout:1433
+#: data/gui/Game_Options.layout:1493
 #: ..Options.Settings.Check
 msgctxt "StartInMain"
 msgid "Start in main menu"
 msgstr ""
 
 #. Settings  startup 
-#: data/gui/Game_Options.layout:1437
+#: data/gui/Game_Options.layout:1497
 #: ..Options.Settings.Check
 msgctxt "AutoLoad"
 msgid "Auto Load track"
 msgstr ""
 
 #. Settings  startup 
-#: data/gui/Editor_Options.layout:939
+#: data/gui/Editor_Options.layout:972
 #: ..Options.Settings.Settings.Check
-#: data/gui/Game_Options.layout:1441
+#: data/gui/Game_Options.layout:1501
 #: ..Options.Settings.Check
 msgctxt "EscQuit"
 msgid "Esc quits"
 msgstr ""
 
 #. Settings  startup 
-#: data/gui/Game_Options.layout:1454
+#: data/gui/Game_Options.layout:1514
 #: ..Options.Settings.Check
 msgctxt "ShowPictures"
 msgid "Show pictures while loading"
@@ -4923,9 +4955,9 @@ msgstr ""
 #. Input  bind 
 #: data/gui/Game_Help.layout:313
 #: ..Welcometo.Button
-#: data/gui/Game_Options.layout:183
+#: data/gui/Game_Options.layout:243
 #: ..Options.Tab
-#: :299..Options.Input.Shortcuts.Text
+#: :359..Options.Input.Shortcuts.Text
 msgctxt "Input"
 msgid "Input"
 msgstr ""
@@ -4954,21 +4986,21 @@ msgid "&lt;Assign&gt;"
 msgstr ""
 
 #. Input  bind 
-#: data/gui/Game_Options.layout:329
+#: data/gui/Game_Options.layout:389
 #: ..Options.Input.Check
 msgctxt "OneAxisThrottleBrake"
 msgid "One axis for throttle and brake"
 msgstr ""
 
 #. Input  bind 
-#: data/gui/Game_Options.layout:332
+#: data/gui/Game_Options.layout:392
 #: ..Options.Input.Check
 msgctxt "TipOneAxisThrottleBrake"
 msgid "If your controller has throttle and brake in one axis, check this. Bind axis to throttle, unbind brake. Use Inverse from throttle if needed."
 msgstr ""
 
 #. Input  headers 
-#: data/gui/Game_Options.layout:215
+#: data/gui/Game_Options.layout:275
 #: ..Options.Input.Tab
 msgctxt "InputMapGeneral"
 msgid "General"
@@ -5009,7 +5041,7 @@ msgid "Set from preset"
 msgstr ""
 
 #. Input  Detail  Control 
-#: data/gui/Game_Options.layout:346
+#: data/gui/Game_Options.layout:406
 #: ..Options.Input.Text
 #: src/game/Gui_Input.cpp:349
 msgctxt "InputDetailsFor"
@@ -5036,7 +5068,7 @@ msgid "Multiplier"
 msgstr ""
 
 #. Input  Detail  Control 
-#: data/gui/Game_Options.layout:350
+#: data/gui/Game_Options.layout:410
 #: ..Options.Input.Check
 msgctxt "InputInverse"
 msgid "Inverse"
@@ -5073,14 +5105,14 @@ msgid "Axis Full Inversed"
 msgstr ""
 
 #. Input  key setup 
-#: data/gui/Game_Options.layout:354
+#: data/gui/Game_Options.layout:414
 #: ..Options.Input.Text
 msgctxt "InputKeyboardEmulation"
 msgid "Keyboard Emulation"
 msgstr ""
 
 #. Input  key setup 
-#: data/gui/Game_Options.layout:358
+#: data/gui/Game_Options.layout:418
 #: ..Options.Input.Text
 msgctxt "InputIncreaseSensitivity"
 msgid "Sensitivity"
@@ -5092,7 +5124,7 @@ msgid "Return speed"
 msgstr ""
 
 #. Input  key setup 
-#: data/gui/Game_Options.layout:366
+#: data/gui/Game_Options.layout:426
 #: ..Options.Input.Text
 msgctxt "InputKeyAllPreset"
 msgid "Set all from preset"
@@ -5168,14 +5200,14 @@ msgid "Shift down"
 msgstr ""
 
 #. Game Input  Player 
-#: data/gui/Game_Options.layout:230
+#: data/gui/Game_Options.layout:290
 #: ..Options.Input.General.Text
 msgctxt "InputMapPrevCamera"
 msgid "Previous Camera"
 msgstr ""
 
 #. Game Input  Player 
-#: data/gui/Game_Options.layout:230
+#: data/gui/Game_Options.layout:290
 #: ..Options.Input.General.Text
 msgctxt "InputMapNextCamera"
 msgid "Next Camera"
@@ -5197,14 +5229,14 @@ msgid "Show options"
 msgstr ""
 
 #. MAIN  Game Input 
-#: data/gui/Game_Options.layout:1662
+#: data/gui/Game_Options.layout:1722
 #: ..Options.Tweak.Tweak.Text
 msgctxt "InputMapPrevTab"
 msgid "Previous tab"
 msgstr ""
 
 #. MAIN  Game Input 
-#: data/gui/Game_Options.layout:1662
+#: data/gui/Game_Options.layout:1722
 #: ..Options.Tweak.Tweak.Text
 msgctxt "InputMapNextTab"
 msgid "Next tab"
@@ -5228,35 +5260,35 @@ msgid "Screenshot"
 msgstr ""
 
 #. MAIN  Game Input 
-#: data/gui/Game_Options.layout:233
+#: data/gui/Game_Options.layout:293
 #: ..Options.Input.General.Text
 msgctxt "InputCameraTxt1"
 msgid "with shift - main cameras only"
 msgstr ""
 
 #. MAIN  Game Input 
-#: data/gui/Game_Options.layout:1662
+#: data/gui/Game_Options.layout:1722
 #: ..Options.Tweak.Tweak.Text
 msgctxt "InputGraphsType"
 msgid "change graphs type in game"
 msgstr ""
 
 #. Game Input  General 
-#: data/gui/Game_Options.layout:221
+#: data/gui/Game_Options.layout:281
 #: ..Options.Input.General.Text
 msgctxt "InputOther1"
 msgid "Up,Down - navigate in lists   Enter - start"
 msgstr ""
 
 #. Game Input  General 
-#: data/gui/Game_Options.layout:224
+#: data/gui/Game_Options.layout:284
 #: ..Options.Input.General.Text
 msgctxt "InputOther2"
 msgid "Enter - show/hide players window in multiplayer"
 msgstr ""
 
 #. Game Input  General 
-#: data/gui/Game_Options.layout:227
+#: data/gui/Game_Options.layout:287
 #: ..Options.Input.General.Text
 msgctxt "InputOther3"
 msgid "Enter - show lap results"
@@ -5265,49 +5297,49 @@ msgstr ""
 #. Game Input  General 
 #: data/gui/Editor_Help.layout:176
 #: ..Help.Input/help.Shortcuts.Text
-#: data/gui/Game_Options.layout:292
+#: data/gui/Game_Options.layout:352
 #: ..Options.Input.Shortcuts.Text
 msgctxt "InputFocusFind"
 msgid "Ctrl-F  go to find box"
 msgstr ""
 
 #. Game Input  General replay 
-#: data/gui/Game_Options.layout:240
+#: data/gui/Game_Options.layout:300
 #: ..Options.Input.General.Text
 msgctxt "InputRplCtrl1"
 msgid "Backspace - show/hide controls (hold ctrl to use mouse)"
 msgstr ""
 
 #. Game Input  General replay 
-#: data/gui/Game_Options.layout:243
+#: data/gui/Game_Options.layout:303
 #: ..Options.Input.General.Text
 msgctxt "InputRplCtrl2"
 msgid "P - pause/unpause replay"
 msgstr ""
 
 #. Game Input  General replay 
-#: data/gui/Game_Options.layout:246
+#: data/gui/Game_Options.layout:306
 #: ..Options.Input.General.Text
 msgctxt "InputRplCtrl3"
 msgid "[ , ] - wind backwards/forwards (shift - slow, ctrl,alt - fast)"
 msgstr ""
 
 #. Game Input  General replay 
-#: data/gui/Game_Options.layout:249
+#: data/gui/Game_Options.layout:309
 #: ..Options.Input.General.Text
 msgctxt "InputRplCtrl4"
 msgid "K, L - change camera view to other player"
 msgstr ""
 
 #. Game Input  Tweak edit 
-#: data/gui/Game_Options.layout:1671
+#: data/gui/Game_Options.layout:1731
 #: ..Options.Tweak.Tweak.Text
 msgctxt "TweakEdit1"
 msgid "Alt-Z - toggle tweak window (car edit)"
 msgstr ""
 
 #. Game Input  Tweak edit 
-#: data/gui/Game_Options.layout:1674
+#: data/gui/Game_Options.layout:1734
 #: ..Options.Tweak.Tweak.Text
 #: data/gui/Game_Tweak.layout:26
 #: ..Tweak.Vehicle.Button
@@ -5317,50 +5349,50 @@ msgid "Alt-Shift-Z - save file and reload game"
 msgstr ""
 
 #. Game Input  Tweak edit 
-#: data/gui/Game_Options.layout:1677
+#: data/gui/Game_Options.layout:1737
 #: ..Options.Tweak.Tweak.Text
 msgctxt "TweakEdit3"
 msgid "Ctrl-F5 - start car performance test"
 msgstr ""
 
 #. Game Input  Tweak tire edit 
-#: data/gui/Game_Options.layout:1686
+#: data/gui/Game_Options.layout:1746
 #: ..Options.Tweak.Tweak.Text
-#: :1711..Options.Tweak.Tires.Text
+#: :1771..Options.Tweak.Tires.Text
 msgctxt "TiresEdit"
 msgid "Tire Edit - (Graphs mode)"
 msgstr ""
 
 #. Game Input  Tweak tire edit 
-#: data/gui/Game_Options.layout:1689
+#: data/gui/Game_Options.layout:1749
 #: ..Options.Tweak.Tweak.Text
 msgctxt "TiresEdit1"
 msgid "PgUp/PgDn - previous, next value"
 msgstr ""
 
 #. Game Input  Tweak tire edit 
-#: data/gui/Game_Options.layout:1692
+#: data/gui/Game_Options.layout:1752
 #: ..Options.Tweak.Tweak.Text
 msgctxt "TiresEdit2"
 msgid "1,2 or Num /,* - change value"
 msgstr ""
 
 #. Game Input  Tweak tire edit 
-#: data/gui/Game_Options.layout:1695
+#: data/gui/Game_Options.layout:1755
 #: ..Options.Tweak.Tweak.Text
 msgctxt "TiresEdit3"
 msgid "Home - toggle longitudinal / lateral parameters"
 msgstr ""
 
 #. Game Input  Tweak tire edit 
-#: data/gui/Game_Options.layout:1698
+#: data/gui/Game_Options.layout:1758
 #: ..Options.Tweak.Tweak.Text
 msgctxt "TiresEdit4"
 msgid "End - toggle align moment parameters"
 msgstr ""
 
 #. Game Input  Tweak tire graphs 
-#: data/gui/Game_Options.layout:1759
+#: data/gui/Game_Options.layout:1819
 #: ..Options.Tweak.Tires.Check
 msgctxt "TireEdCommonY"
 msgid "Common y range"
@@ -5378,9 +5410,9 @@ msgstr ""
 #: ..Editor.Vegetation.Surface.Surface.Text
 #: data/gui/Editor_Track.layout:635
 #: ..Track.Game.Text
-#: data/gui/Game_Options.layout:317
+#: data/gui/Game_Options.layout:377
 #: ..Options.Input.Shortcuts.Text
-#: :1226..Options.Tab
+#: :1286..Options.Tab
 #: data/gui/Game_Tweak.layout:402
 #: ..Tweak.Surface.Text
 msgctxt "Sound"
@@ -5388,29 +5420,29 @@ msgid "Sound"
 msgstr ""
 
 #. Sound  main 
-#: data/gui/Game_Options.layout:1234
+#: data/gui/Game_Options.layout:1294
 #: ..Options.Sound.Main.Text
-#: :1354..Options.Sound.Other.Text
+#: :1414..Options.Sound.Other.Text
 msgctxt "Volume"
 msgid "Volume"
 msgstr ""
 
 #. Sound  main 
-#: data/gui/Game_Options.layout:1239
+#: data/gui/Game_Options.layout:1299
 #: ..Options.Sound.Main.Text
 msgctxt "VolMaster"
 msgid "Master"
 msgstr ""
 
 #. Sound  main 
-#: data/gui/Game_Options.layout:1251
+#: data/gui/Game_Options.layout:1311
 #: ..Options.Sound.Main.Text
 msgctxt "Engine"
 msgid "Engine"
 msgstr ""
 
 #. Sound  main 
-#: data/gui/Game_Options.layout:1404
+#: data/gui/Game_Options.layout:1464
 #: ..Options.Sound.Other.Text
 msgctxt "Turbo"
 msgid "Turbo"
@@ -5421,9 +5453,9 @@ msgstr ""
 #: ..Editor.Vegetation.Surface.Surface.Text
 #: data/gui/Editor_Track.layout:615
 #: ..Track.Game.Check
-#: data/gui/Game_Options.layout:1262
+#: data/gui/Game_Options.layout:1322
 #: ..Options.Sound.Main.Text
-#: :1703..Options.Tweak.Tab
+#: :1763..Options.Tweak.Tab
 #: data/gui/Game_Tweak.layout:216
 #: ..Tweak.Tab
 #: :407..Tweak.Surface.Text
@@ -5432,21 +5464,21 @@ msgid "Tires"
 msgstr ""
 
 #. Sound  main 
-#: data/gui/Game_Options.layout:1273
+#: data/gui/Game_Options.layout:1333
 #: ..Options.Sound.Main.Text
 msgctxt "Suspension"
 msgid "Suspension"
 msgstr ""
 
 #. Sound  main 
-#: data/gui/Game_Options.layout:1284
+#: data/gui/Game_Options.layout:1344
 #: ..Options.Sound.Main.Text
 msgctxt "Environment"
 msgid "Environment"
 msgstr ""
 
 #. Sound  main 
-#: data/gui/Game_Options.layout:1295
+#: data/gui/Game_Options.layout:1355
 #: ..Options.Sound.Main.Text
 msgctxt "Ambience"
 msgid "Ambience"
@@ -5455,35 +5487,35 @@ msgstr ""
 #. Sound  main 
 #: data/gui/Editor_Track.layout:635
 #: ..Track.Game.Text
-#: data/gui/Game_Options.layout:1306
+#: data/gui/Game_Options.layout:1366
 #: ..Options.Sound.Main.Check
 msgctxt "Reverb"
 msgid "Reverberation"
 msgstr ""
 
 #. Sound  other 
-#: data/gui/Game_Options.layout:1360
+#: data/gui/Game_Options.layout:1420
 #: ..Options.Sound.Other.Text
 msgctxt "FluidSplash"
 msgid "Fluid Splash"
 msgstr ""
 
 #. Sound  other 
-#: data/gui/Game_Options.layout:1371
+#: data/gui/Game_Options.layout:1431
 #: ..Options.Sound.Other.Text
 msgctxt "FluidCont"
 msgid "Fluid Cont."
 msgstr ""
 
 #. Sound  other 
-#: data/gui/Game_Options.layout:1382
+#: data/gui/Game_Options.layout:1442
 #: ..Options.Sound.Other.Text
 msgctxt "CarCrash"
 msgid "Car Crash"
 msgstr ""
 
 #. Sound  other 
-#: data/gui/Game_Options.layout:1393
+#: data/gui/Game_Options.layout:1453
 #: ..Options.Sound.Other.Text
 msgctxt "CarScrap"
 msgid "Car Scrap"
@@ -5597,7 +5629,7 @@ msgid "Editor"
 msgstr ""
 
 #. Editor  Main  Track 
-#: data/gui/Editor_Options.layout:224
+#: data/gui/Editor_Options.layout:257
 #: ..Options.Graphics.Button
 #: data/gui/Editor_Track.layout:27
 #: ..Track.Track.Button
@@ -5671,13 +5703,13 @@ msgid "Source track and current track are the same."
 msgstr ""
 
 #. Editor  Track  message 
-#: src/editor/SceneInit.cpp:482
+#: src/editor/SceneInit.cpp:485
 msgctxt "CantSaveOrgTrack"
 msgid "Can't save original track. Duplicate it first."
 msgstr ""
 
 #. Editor  Track  message 
-#: data/gui/Editor_Options.layout:185
+#: data/gui/Editor_Options.layout:218
 #: ..Options.Graphics.Text
 msgctxt "NeedReload"
 msgid "* need reload"
@@ -5886,16 +5918,16 @@ msgstr ""
 #: :1316..Editor.Layers.Text
 #: :2123..Editor.Grasses.Channels.Text
 #: :2633..Editor.Vegetation.Models.Text
-#: data/gui/Editor_Options.layout:536
+#: data/gui/Editor_Options.layout:569
 #: ..Options.Graphics.Textures.Text
-#: :606..Options.Graphics.Detail.Text
+#: :639..Options.Graphics.Detail.Text
 #: data/gui/Editor_Track.layout:837
 #: ..Track.Export.Track.Text
 #: :866..Track.Export.Road.Text
 #: :1000..Track.Export.Settings.Button
-#: data/gui/Game_Options.layout:1054
+#: data/gui/Game_Options.layout:1114
 #: ..Options.Graphics.Textures.Text
-#: :1124..Options.Graphics.Detail.Text
+#: :1184..Options.Graphics.Detail.Text
 #: src/editor/Update_Frame.cpp:83
 msgctxt "Terrain"
 msgid "Terrain"
@@ -6021,14 +6053,14 @@ msgstr ""
 #. Terrain  properties 
 #: data/gui/Editor.layout:479
 #: ..Editor.Terrain.Size.Text
-#: data/gui/Editor_Options.layout:546
+#: data/gui/Editor_Options.layout:579
 #: ..Options.Graphics.Textures.Text
-#: :592..Options.Graphics.Detail.Text
-#: :614
-#: data/gui/Game_Options.layout:1064
+#: :625..Options.Graphics.Detail.Text
+#: :647
+#: data/gui/Game_Options.layout:1124
 #: ..Options.Graphics.Textures.Text
-#: :1110..Options.Graphics.Detail.Text
-#: :1132
+#: :1170..Options.Graphics.Detail.Text
+#: :1192
 msgctxt "Horizon"
 msgid "Horizon"
 msgstr ""
@@ -6102,9 +6134,9 @@ msgstr ""
 #: ..Editor.Layers.Check
 #: :1960..Editor.Grasses.Grasses.Check
 #: :2458..Editor.Vegetation.Models.Check
-#: data/gui/Editor_Options.layout:1030
+#: data/gui/Editor_Options.layout:1063
 #: ..Options.Settings.Tweak.Check
-#: data/gui/Game_Options.layout:1529
+#: data/gui/Game_Options.layout:1589
 #: ..Options.Tweak.Other.Check
 msgctxt "Enabled"
 msgid "Enabled"
@@ -6172,10 +6204,10 @@ msgstr ""
 #: :1449..Editor.Layers.Text
 #: data/gui/Editor_Track.layout:835
 #: ..Track.Export.Track.Text
-#: data/gui/Game_Options.layout:643
+#: data/gui/Game_Options.layout:703
 #: ..Options.View.Camera.Text
-#: :1768..Options.Tweak.Tires.Text
-#: :1779
+#: :1828..Options.Tweak.Tires.Text
+#: :1839
 #: src/editor/Update_EditKeyTxt.cpp:305:347:379
 msgctxt "scale"
 msgid "Scale"
@@ -6265,7 +6297,7 @@ msgstr ""
 #. Terrain  Blendmap 
 #: data/gui/Editor.layout:294
 #: ..Editor.Sun.Fog.Text
-#: data/gui/Game_Options.layout:676
+#: data/gui/Game_Options.layout:736
 #: ..Options.View.Camera.Text
 msgctxt "smooth"
 msgid "smooth"
@@ -6301,7 +6333,7 @@ msgstr ""
 #. Terrain  generator 
 #: data/gui/Editor.layout:949
 #: ..Editor.Terrain.Tab
-#: data/gui/Editor_Options.layout:904
+#: data/gui/Editor_Options.layout:937
 #: ..Options.View.Tab
 msgctxt "Generator"
 msgid "Generator"
@@ -6426,7 +6458,7 @@ msgid "Surface"
 msgstr ""
 
 #. Terrain  surface  params 
-#: data/gui/Game_Options.layout:427
+#: data/gui/Game_Options.layout:487
 #: ..Options.View.HUD.Text
 msgctxt "Type"
 msgid "Type"
@@ -6721,14 +6753,14 @@ msgstr ""
 #: data/gui/Editor.layout:1992
 #: ..Editor.Grasses.Grasses.Text
 #: :2035:2566..Editor.Vegetation.Models.Text
-#: data/gui/Editor_Options.layout:592
+#: data/gui/Editor_Options.layout:625
 #: ..Options.Graphics.Detail.Text
 #: data/gui/Game.layout:1405
 #: ..SingleRace.Setup.Boost.Text
-#: data/gui/Game_Options.layout:1110
+#: data/gui/Game_Options.layout:1170
 #: ..Options.Graphics.Detail.Text
-#: :1714..Options.Tweak.Tires.Text
-#: :1725:1736
+#: :1774..Options.Tweak.Tires.Text
+#: :1785:1796
 #: src/common/GuiCom_Options.cpp:58
 msgctxt "max"
 msgid "max"
@@ -6909,9 +6941,9 @@ msgstr ""
 #: data/gui/Editor.layout:1258
 #: ..Editor.Terrain.Tools.Text
 #: :2982..Editor.Vegetation.Road.Tab
-#: data/gui/Editor_Options.layout:1036
+#: data/gui/Editor_Options.layout:1069
 #: ..Options.Settings.Tab
-#: data/gui/Game_Options.layout:1603
+#: data/gui/Game_Options.layout:1663
 #: ..Options.Tweak.Tab
 #: data/gui/MaterialEditor.layout:262
 #: ..MaterialEditor.Tab
@@ -7417,14 +7449,14 @@ msgstr ""
 #. Editor  Settings 
 #: data/gui/Editor_Help.layout:251
 #: ..Help.Input/help.Shortcuts.Text
-#: data/gui/Editor_Options.layout:911
+#: data/gui/Editor_Options.layout:944
 #: ..Options.Tab
-#: :923..Options.Settings.Tab
+#: :956..Options.Settings.Tab
 #: data/gui/Editor_Track.layout:944
 #: ..Track.Export.Tab
-#: data/gui/Game_Options.layout:320
+#: data/gui/Game_Options.layout:380
 #: ..Options.Input.Shortcuts.Text
-#: :1426..Options.Tab
+#: :1486..Options.Tab
 msgctxt "Settings"
 msgid "Settings"
 msgstr ""
@@ -7432,78 +7464,78 @@ msgstr ""
 #. Editor  Settings 
 #: data/gui/Editor_Main.layout:5
 #: ..Window
-#: data/gui/Editor_Options.layout:630
+#: data/gui/Editor_Options.layout:663
 #: ..Options.View.Text
-#: :913..Options.Settings.Text
+#: :946..Options.Settings.Text
 msgctxt "SREditorVersion"
 msgid "Stunt Rally - Track Editor - version"
 msgstr ""
 
 #. Editor  Settings main 
-#: data/gui/Editor_Options.layout:705
+#: data/gui/Editor_Options.layout:738
 #: ..Options.View.Camera.Text
 msgctxt "CamSpeed"
 msgid "Camera speed"
 msgstr ""
 
 #. Editor  Settings main 
-#: data/gui/Editor_Options.layout:716
+#: data/gui/Editor_Options.layout:749
 #: ..Options.View.Camera.Text
 msgctxt "CamInertia"
 msgid "Camera inertia"
 msgstr ""
 
 #. Editor  Settings main 
-#: data/gui/Editor_Options.layout:736
+#: data/gui/Editor_Options.layout:769
 #: ..Options.View.Minimap.Check
 msgctxt "MinimapAndSize"
 msgid "Minimap, size"
 msgstr ""
 
 #. Editor  Settings main 
-#: data/gui/Editor_Options.layout:748
+#: data/gui/Editor_Options.layout:781
 #: ..Options.View.Minimap.Text
 msgctxt "MiniType"
 msgid "Minimap type"
 msgstr ""
 
 #. Editor  Settings update 
-#: data/gui/Editor_Options.layout:792
+#: data/gui/Editor_Options.layout:825
 #: ..Options.View.Minimap.Text
 msgctxt "RoadPointSize"
 msgid "Road points size"
 msgstr ""
 
 #. Editor  Settings update 
-#: data/gui/Editor_Options.layout:781
+#: data/gui/Editor_Options.layout:814
 #: ..Options.View.Minimap.Text
 msgctxt "RoadUpdSkip"
 msgid "Road update skip"
 msgstr ""
 
 #. Editor  Settings update 
-#: data/gui/Editor_Options.layout:770
+#: data/gui/Editor_Options.layout:803
 #: ..Options.View.Minimap.Text
 msgctxt "TerUpdSkip"
 msgid "Terrain update skip"
 msgstr ""
 
 #. Editor  Settings update 
-#: data/gui/Editor_Options.layout:760
+#: data/gui/Editor_Options.layout:793
 #: ..Options.View.Minimap.Text
 msgctxt "MinimapUpdSkip"
 msgid "Minimap update skip"
 msgstr ""
 
 #. Editor  Settings update 
-#: data/gui/Editor_Options.layout:814
+#: data/gui/Editor_Options.layout:847
 #: ..Options.View.Minimap.Text
 msgctxt "EditSpd"
 msgid "Edit speed"
 msgstr ""
 
 #. Editor  Settings auto 
-#: data/gui/Editor_Options.layout:935
+#: data/gui/Editor_Options.layout:968
 #: ..Options.Settings.Settings.Check
 msgctxt "TrackAutoLoad"
 msgid "Auto Load track"
@@ -7515,35 +7547,35 @@ msgid "Auto update blendmap (slow for big size brushes)"
 msgstr ""
 
 #. Editor  Settings extras 
-#: data/gui/Editor_Options.layout:1016
+#: data/gui/Editor_Options.layout:1049
 #: ..Options.Settings.Tweak.Check
 msgctxt "EdCamPos"
 msgid "Camera position bar  Ctrl-C"
 msgstr ""
 
 #. Editor  Settings extras 
-#: data/gui/Editor_Options.layout:1026
+#: data/gui/Editor_Options.layout:1059
 #: ..Options.Settings.Tweak.Check
 msgctxt "EdInputBar"
 msgid "Input bar  Ctrl-I"
 msgstr ""
 
 #. Editor  Settings extras 
-#: data/gui/Editor_Options.layout:1040
+#: data/gui/Editor_Options.layout:1073
 #: ..Options.Settings.Advanced.Check
 msgctxt "AllowSaveOrigTrk"
 msgid "Allow saving original tracks"
 msgstr ""
 
 #. Settings  camera views 
-#: data/gui/Editor_Options.layout:648
+#: data/gui/Editor_Options.layout:681
 #: ..Options.View.Camera.Text
 msgctxt "SetCamTo"
 msgid "Set camera to"
 msgstr ""
 
 #. Settings  camera views 
-#: data/gui/Editor_Options.layout:654
+#: data/gui/Editor_Options.layout:687
 #: ..Options.View.Camera.Button
 msgctxt "Top"
 msgid "Top"
@@ -7552,7 +7584,7 @@ msgstr ""
 #. Settings  camera views 
 #: data/gui/Editor.layout:614
 #: ..Editor.Terrain.Collision.Check
-#: data/gui/Editor_Options.layout:659
+#: data/gui/Editor_Options.layout:692
 #: ..Options.View.Camera.Button
 msgctxt "Left"
 msgid "Left"
@@ -7561,7 +7593,7 @@ msgstr ""
 #. Settings  camera views 
 #: data/gui/Editor.layout:618
 #: ..Editor.Terrain.Collision.Check
-#: data/gui/Editor_Options.layout:664
+#: data/gui/Editor_Options.layout:697
 #: ..Options.View.Camera.Button
 msgctxt "Right"
 msgid "Right"
@@ -7570,7 +7602,7 @@ msgstr ""
 #. Settings  camera views 
 #: data/gui/Editor.layout:622
 #: ..Editor.Terrain.Collision.Check
-#: data/gui/Editor_Options.layout:674
+#: data/gui/Editor_Options.layout:707
 #: ..Options.View.Camera.Button
 msgctxt "Front"
 msgid "Front"
@@ -7579,54 +7611,54 @@ msgstr ""
 #. Settings  camera views 
 #: data/gui/Editor.layout:626
 #: ..Editor.Terrain.Collision.Check
-#: data/gui/Editor_Options.layout:669
+#: data/gui/Editor_Options.layout:702
 #: ..Options.View.Camera.Button
 msgctxt "Back"
 msgid "Back"
 msgstr ""
 
 #. Settings  camera views 
-#: data/gui/Editor_Options.layout:680
+#: data/gui/Editor_Options.layout:713
 #: ..Options.View.Camera.Button
 msgctxt "ViewFront"
 msgid "View Front"
 msgstr ""
 
 #. Settings  camera views 
-#: data/gui/Editor_Options.layout:685
+#: data/gui/Editor_Options.layout:718
 #: ..Options.View.Camera.Button
 msgctxt "ViewLeft"
 msgid "View Left"
 msgstr ""
 
 #. Settings  camera views 
-#: data/gui/Editor_Options.layout:690
+#: data/gui/Editor_Options.layout:723
 #: ..Options.View.Camera.Button
 msgctxt "ViewRight"
 msgid "View Right"
 msgstr ""
 
 #. Settings  camera views 
-#: data/gui/Editor_Options.layout:695
+#: data/gui/Editor_Options.layout:728
 #: ..Options.View.Camera.Button
 msgctxt "ViewStart"
 msgid "View Start"
 msgstr ""
 
 #. Tweak 
-#: data/gui/Game_Options.layout:1535
+#: data/gui/Game_Options.layout:1595
 #: ..Options.Tweak.Tab
-#: :1560..Options.Tweak.Graphs.Check
+#: :1620..Options.Tweak.Graphs.Check
 msgctxt "Graphs"
 msgid "Graphs"
 msgstr ""
 
 #. Tweak 
-#: data/gui/Editor_Options.layout:963
+#: data/gui/Editor_Options.layout:996
 #: ..Options.Settings.Tab
-#: data/gui/Game_Options.layout:1470
+#: data/gui/Game_Options.layout:1530
 #: ..Options.Tab
-#: :1659..Options.Tweak.Tab
+#: :1719..Options.Tweak.Tab
 #: data/gui/Game_Tweak.layout:5
 #: ..Window
 msgctxt "Tweak"
@@ -7636,11 +7668,11 @@ msgstr ""
 #. Tweak 
 #: data/gui/Editor_Help.layout:258
 #: ..Help.Input/help.Shortcuts.Text
-#: data/gui/Editor_Options.layout:1044
+#: data/gui/Editor_Options.layout:1077
 #: ..Options.Settings.Advanced.Button
-#: data/gui/Game_Options.layout:324
+#: data/gui/Game_Options.layout:384
 #: ..Options.Input.Shortcuts.Text
-#: :1625..Options.Tweak.Advanced.Button
+#: :1685..Options.Tweak.Advanced.Button
 #: data/gui/MaterialEditor.layout:5
 #: ..Window
 msgctxt "MaterialEditor"
@@ -7710,7 +7742,7 @@ msgstr ""
 #. MAIN  Editor Input Gui 
 #: data/gui/Editor_Help.layout:150
 #: ..Help.Input/help.Tab
-#: data/gui/Game_Options.layout:253
+#: data/gui/Game_Options.layout:313
 #: ..Options.Input.Tab
 msgctxt "Shortcuts"
 msgid "Shortcuts"
@@ -7722,8 +7754,8 @@ msgstr ""
 #: data/gui/Editor_Options.layout:23
 #: ..Options.Screen.Tab
 #: data/gui/Game_Options.layout:24
-#: :206..Options.Input.Tab
-#: :1232..Options.Sound.Tab
+#: :266..Options.Input.Tab
+#: :1292..Options.Sound.Tab
 #: data/gui/MaterialEditor.layout:58
 #: ..MaterialEditor.Tab
 msgctxt "InputMain"
@@ -7733,7 +7765,7 @@ msgstr ""
 #. MAIN  Editor Input Gui 
 #: data/gui/Editor_Help.layout:184
 #: ..Help.Input/help.Shortcuts.Edit
-#: data/gui/Game_Options.layout:259
+#: data/gui/Game_Options.layout:319
 #: ..Options.Input.Shortcuts.Edit
 msgctxt "ShortcutsInfo"
 msgid "Press with alt to quick access gui tab (or sub-tab). Pressing again will cycle sub-tabs (if any)."
@@ -8598,14 +8630,14 @@ msgstr ""
 #: :676..Help.Input/help.Tab
 #: data/gui/Editor.layout:3221
 #: ..Editor.Vegetation.Tab
-#: data/gui/Editor_Options.layout:565
+#: data/gui/Editor_Options.layout:598
 #: ..Options.Graphics.Detail.Text
 #: data/gui/Editor_Tools.layout:329
 #: ..Window
 #: data/gui/Editor_Track.layout:545
 #: ..Track.Tools.Button
 #: :845..Track.Export.Track.Text
-#: data/gui/Game_Options.layout:1083
+#: data/gui/Game_Options.layout:1143
 #: ..Options.Graphics.Detail.Text
 msgctxt "Objects"
 msgid "Objects"
@@ -9346,14 +9378,14 @@ msgstr ""
 #: ..Help.Input/help.Shortcuts.Text
 #: data/gui/Editor.layout:1166
 #: ..Editor.Terrain.Generator.Text
-#: data/gui/Game_Options.layout:1341
+#: data/gui/Game_Options.layout:1401
 #: ..Options.Sound.HUD.Text
 msgctxt "TipSliderReset"
 msgid "RMB on slider - reset to default value."
 msgstr ""
 
 #. TIP  Track 
-#: data/gui/Editor_Options.layout:227
+#: data/gui/Editor_Options.layout:260
 #: ..Options.Graphics.Button
 #: data/gui/Editor_Track.layout:30
 #: ..Track.Track.Button
