@@ -398,7 +398,7 @@ void App::update( float dt )
 	bool vis = mWndEdit && mWndEdit->getVisible() &&
 		(tab == TAB_Objects || tab == TAB_Veget && st5 == 1);
 
-	if (oldVis != vis)
+	if (oldVis != vis && rt[RT_PreView3D].nd)
 	{	oldVis = vis;
 		rt[RT_PreView3D].nd->setVisible(vis);
 		// gui->viewCanvas->setVisible(vis);
