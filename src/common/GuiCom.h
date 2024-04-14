@@ -45,7 +45,7 @@ public:
 	///  🎛️ Gui Common   --------------------------
 
 	//  🗜️ resize
-	void SizeGUI(), doSizeGUI(MyGUI::EnumeratorWidgetPtr);
+	void SizeGUI(), doSizeGUI(MyGUI::EnumeratorWidgetPtr), doTestGUI(MyGUI::EnumeratorWidgetPtr);
 	float GetGuiMargin(int wy);
 	void setOrigPos(WP wp, const char* relToWnd);
 	void CreateFonts();  // 🔠

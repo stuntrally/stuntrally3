@@ -236,8 +236,60 @@ void CGuiCom::SizeGUI()
 	#endif
 	
 	//  call recursive method for all root widgets
-	for (VectorWidgetPtr::iterator it = app->vwGui.begin(); it != app->vwGui.end(); ++it)
+	for (auto it = app->vwGui.begin(); it != app->vwGui.end(); ++it)
 		doSizeGUI((*it)->getEnumerator());
+
+#if 0  ///  🧰 _Tool_  test Gui text sizes
+	for (auto it = app->vwGui.begin(); it != app->vwGui.end(); ++it)
+		doTestGUI((*it)->getEnumerator());
+#endif
+}
+
+void CGuiCom::doTestGUI(EnumeratorWidgetPtr widgets)
+{
+	while (widgets.next())
+	{
+		WP wp = widgets.current();
+		string relativeTo = wp->getUserString("RelativeTo");
+
+		// if (relativeTo != "")
+		{
+			// WP p = wp->getParent();
+			// if (p && (
+			const auto& tp = wp->getTypeName();
+			if (
+				// (wp->getLayer() && wp->getLayer()->getName() != "ToolTip") &&
+				(
+				tp == "TextBox" ||
+				tp == "Button" || // && skin checkbox..
+				tp == "EditBox"  // && skin empty..
+				// wp->getSkin() == "a"
+			))
+			{
+				LogO(wp->getTypeName()+" "+wp->getName());
+				// if (wp->getLayer())
+				// 	LogO(wp->getLayer()->getName());
+				
+				Img img = wp->createWidget<ImageBox>("ImageBox",
+					0,0, wp->getSize().width, wp->getSize().height,  // same size
+					Align::Default, "ToolTip");
+				img->setImageTexture("white.png");
+				img->setAlpha(0.3f);  //par
+				// getClrDiff(int)
+				img->setNeedKeyFocus(0);  img->setNeedMouseFocus(0);
+			/*
+				Txt txt = wp->createWidget<TextBox>("TextBox",
+					0,0, wp->getSize().width*2, 2*wp->getSize().height,
+					Align::Default, "ToolTip");
+				txt->setTextColour(Colour::White);
+				txt->setFontName("font.small");
+				txt->setFontHeight(6);  //par
+				// img->setNeedKeyFocus(0);  img->setNeedMouseFocus(0);
+			*/
+			}
+		}
+		doTestGUI(wp->getEnumerator());
+	}
 }
 
 void CGuiCom::doSizeGUI(EnumeratorWidgetPtr widgets)
