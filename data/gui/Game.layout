@@ -1933,6 +1933,9 @@
 						<Property key="Caption" value="#D0A0FF#{Vehicle}"/>
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 578 8">
+						<Property key="Caption" value="#F0C0F0#{CarType_Hover}"/>
+					</Widget>
+					<Widget type="TabItem" skin="" position="2 24 578 8">
 						<Property key="Caption" value="#909090#{Test}"/>
 					</Widget>
 				</Widget>

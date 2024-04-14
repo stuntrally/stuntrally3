@@ -4,8 +4,8 @@
 			//  here you put display name, description text
 			//  increase ver if you changed challenge (no need if track count changed)
 
-			//  type is for putting it into gui tabs
-			//    0 Rally  1 Scenery  2 Endurance  3 Chase  4 Stunts  5 Extreme  6 Special  7 Test
+			//  type is for putting it into gui tabs   find: clrCh[MAX_CHL_TYP]
+			//  0 Rally  1 Scenery  2 Endurance  3 Chase  4 Stunts  5 Extreme  6 Space    7 Special  8 Vehicle  9 Hover    10 Test
 
 			//  difficulty is for text displayed in list
 			//    "1" easy .. "3" medium .. "6" extreme
@@ -103,7 +103,7 @@
 -->
 
 
-<!--  🏞️ Rally  short,easy  -->
+<!--  🏞️ Rally 0  short,easy  -->
 <!--========================================================================================================================-->
 
 	<challenge name="#A0C000Easy rounds" ver="1" difficulty="2" type="0"
@@ -211,12 +211,12 @@ descr="3 short, easy tracks. Nice looking locations. Caution: slow down before w
 	</challenge>
 
 
-<!--  🏝️ Scenery  -->
+<!--  🏝️ Scenery 1  -->
 <!--========================================================================================================================-->
 
 	<challenge name="#F0E060Island Beauty" ver="2" difficulty="2" type="1"
 descr="A trip through various beautiful island tracks. Many vehicles available. Caution: wider are more difficult.">
-		<cartype names="Gravel|Terrain|Asphalt|Extreme" />
+		<cartype names="Gravel|Terrain|Asphalt|Extreme|Hovercraft" />
 		<pass avgPoints="12" factor="1.5" />
 		<tracks>
 			<t name="Isl4-Sunset"    passPoints="9" />
@@ -230,7 +230,7 @@ descr="A trip through various beautiful island tracks. Many vehicles available. 
 
 	<challenge name="#FFA020Autumn Forests" ver="1" difficulty="1" type="1"
 descr="Forest tracks, mostly in nice autumn colors.">
-		<cartype names="Gravel|Terrain" />
+		<cartype names="Gravel|Terrain|Hovercraft" />
 		<pass avgPoints="11" />
 		<tracks>
 			<t name="Atm1-Autumn"      passPoints="9" />
@@ -243,7 +243,7 @@ descr="Forest tracks, mostly in nice autumn colors.">
 
 	<challenge name="#50FF50Jungle Trip" ver="1" difficulty="3" type="1"
 descr="A trip inside jungle, not too dense. On 2 long, scenic tracks.">
-		<cartype names="Gravel|Terrain" />
+		<cartype names="Gravel|Terrain|Hovercraft|Hover" />
 		<pass avgPoints="11" />
 		<tracks>
 			<t name="Jng13-Tropic"        passPoints="9" />
@@ -253,7 +253,7 @@ descr="A trip inside jungle, not too dense. On 2 long, scenic tracks.">
 
 	<challenge name="#C0F080Savanna Frenzy" ver="1" difficulty="3" type="1"
 descr="A trip to savanna, and it's frenzy roads.">
-		<cartype names="Terrain" />
+		<cartype names="Terrain|Hovercraft" />
 		<pass avgPoints="13" factor="2" />
 		<tracks>
 			<t name="Sav4-Hills"        passPoints="9" />
@@ -263,7 +263,7 @@ descr="A trip to savanna, and it's frenzy roads.">
 
 	<challenge name="#F0F000Desert Visit" ver="2" difficulty="3" type="1"
 descr="Visit to desert, on sand dunes.">
-		<car names="U6|UV|TW|TU|HR|LK4|BE|BV" />
+		<car names="U6|UV|TW|TU|HR|LK4|BE|BV|H1|H2" />
 		<pass avgPoints="11" />
 		<tracks>
 			<t name="Des1-Dunes"        passPoints="9" />
@@ -274,7 +274,7 @@ descr="Visit to desert, on sand dunes.">
 
 	<challenge name="#FFF050Persian #FFC070Fun" ver="2" difficulty="3" type="1"
 descr="Drive in narrow Persian cities.">
-		<cartype names="Gravel|Terrain" />
+		<cartype names="Gravel|Terrain|Hovercraft" />
 		<pass avgPoints="11" />
 		<tracks>
 			<t name="Des11-PersianCity" passPoints="9" />
@@ -286,7 +286,7 @@ descr="Drive in narrow Persian cities.">
 
 	<challenge name="#D0D8D8Winter Sleep" ver="2" difficulty="2" type="1"
 descr="Winter rally, slippery snow tracks.">
-		<cartype names="Gravel" />
+		<cartype names="Gravel|Hovercraft" />
 		<pass avgPoints="10" />
 		<tracks>
 			<t name="Wnt1-Cross"     passPoints="9" />
@@ -297,7 +297,7 @@ descr="Winter rally, slippery snow tracks.">
 
 	<challenge name="#A0C080Forest Lanscapes" ver="1" difficulty="2" type="1"
 descr="A trip on good looking forest tracks.">
-		<cartype names="Gravel" />
+		<cartype names="Gravel|Hovercraft" />
 		<pass avgPoints="11" />
 		<tracks>
 			<t name="For4-OSquare"      passPoints="9" />
@@ -309,7 +309,7 @@ descr="A trip on good looking forest tracks.">
 
 	<challenge name="#B0FF00Greece Coast" ver="1" difficulty="2" type="1"
 descr="Possibly bumpy, narrow or long tracks with good coastal views.">
-		<cartype names="Gravel|Terrain" />
+		<cartype names="Gravel|Terrain|Hovercraft" />
 		<pass avgPoints="11" />
 		<tracks>
 			<t name="Grc2-Coast"      passPoints="9" />
@@ -321,7 +321,7 @@ descr="Possibly bumpy, narrow or long tracks with good coastal views.">
 
 	<challenge name="#70F0B0Mossy Jungle" ver="2" difficulty="2" type="1"
 descr="Banked and mossy jungle tracks.">
-		<cartype names="Gravel|Terrain" />
+		<cartype names="Gravel|Terrain|Hovercraft" />
 		<pass avgPoints="11" />
 		<tracks>
 			<t name="Mos3-Air"        passPoints="9" />
@@ -347,7 +347,7 @@ descr="A longer collection of tracks, when it is constantly raining, not too lit
 		<car names="Y7|SX|BE|U6|TU" />
 		<sim carChng="1" />
 		<pass avgPoints="12" />
-		<tracks>
+		<tracks>f
 			<t name="For8-Stain"      passPoints="8" />
 			<t name="For4-OSquare"    passPoints="9" />
 			<t name="Jng8-Round"      passPoints="9" />
@@ -422,7 +422,7 @@ descr="Two long tracks, one inside foggy moss, other in strange new marble scene
 	</challenge>
 
 
-<!--  ⏳ Endurance  (long)  -->
+<!--  ⏳ Endurance 2  (long)  -->
 <!--========================================================================================================================-->
 
 	<challenge name="#80FF80The Long Beauty" ver="1" difficulty="2" type="2"
@@ -609,7 +609,7 @@ descr="New tracks with complex terrain and pipe installations.">
 	<challenge name="#60A0FFUnderwater #90C0FFadventures" ver="1" difficulty="5" type="2"
 descr="Normally driving underwater wouldn't be possible, but here we are. A few tracks with significant parts underwater. Still very slow to do, so you can #2080F0boost always. #80C0F0Or you could pick the fastest U6 Bug vehicle.">
 		<cartype names="Gravel|Asphalt" />
-		<car names="BV|U6|Y7" />
+		<car names="BV|U6|Y7|YG" />
 		<sim boost="3" />
 		<pass avgPoints="8" />
 		<tracks>
@@ -620,7 +620,7 @@ descr="Normally driving underwater wouldn't be possible, but here we are. A few 
 	</challenge>
 
 
-<!--  🏎️ Chase  (fast)  -->
+<!--  🏎️ Chase 3  (fast)  -->
 <!--========================================================================================================================-->
 
 	<challenge name="#C0C000Fast Banked" ver="1" difficulty="2" type="3"
@@ -636,7 +636,7 @@ descr="Short, very fast, banked forest tracks. Use boost to be faster.">
 
 	<challenge name="#C0C0A0Ancient Chase" ver="2" difficulty="3" type="3"
 descr="Fast drive through 2 ancient cities. Sometimes narrow and with sharp turns.">
-		<car names="SX|XZ|Y7" />
+		<car names="SX|XZ|Y7|YG" />
 		<pass avgPoints="13" />
 		<tracks>
 			<t name="Des17-NileCity" passPoints="13.5" />
@@ -717,7 +717,7 @@ descr="Race the fastest cars on bridged tracks as fast as you can while avoiding
 	<!-- 2.7 -->
 	<challenge name="#FFD040Quickest #F08040long chase" ver="1" difficulty="3" type="3"
 descr="The extremely fast car fast tracks. Possibly banked or long, but smooth and fun to drive at highest speeds.">
-		<car names="Y7" />
+		<car names="Y7|YG" />
 		<pass avgPoints="15" />
 		<tracks>
 			<t name="Isl13-Beauty"   passPoints="15" />
@@ -744,7 +744,7 @@ descr="The ultra fast 6x6 vehicle on big fast tracks, some highly banked (tilted
 	</challenge>
 
 
-<!--  ⛈️🌋 Extreme  conditions and weather  -->
+<!--  ⛈️🌋 Extreme 4  conditions and weather  -->
 <!--========================================================================================================================-->
 
 	<!-- 2.7  1\ -->
@@ -932,7 +932,7 @@ descr="The most extremely twisted tracks in decaying urban, apocaliptic location
 	</challenge>
 
 
-	<!--  ⭕➿ Stunts  -->
+	<!--  ⭕➿ Stunts 5  -->
 <!--========================================================================================================================-->
 
 	<challenge name="#C0F080Stunt Fun" ver="1" difficulty="3" type="5"
@@ -969,7 +969,7 @@ descr="Medium difficulty pipe tracks.">
 
 	<challenge name="#FF9070Stunt Long" ver="1" difficulty="4" type="5"
 descr="Long stunt filled tracks.">
-		<car names="SX|XZ|SZ|Y7" />
+		<car names="SX|XZ|SZ|Y7|YG" />
 		<pass avgPoints="11" />
 		<tracks>
 			<t name="Aus1-StuntPark"      passPoints="9" />
@@ -1140,7 +1140,7 @@ descr="Two new tracks with stunts in normal sceneries. Not very difficult but wi
 	</challenge>
 
 
-	<!--  🪐 Space  2.7  -->
+	<!--  🪐 Space 6  2.7  -->
 <!--========================================================================================================================-->
 
 	<challenge name="#4090F0Crystal Moon #B06050Survival" ver="1" difficulty="4" type="6"
@@ -1301,12 +1301,12 @@ Surely the last one to try. Unbelievably long and difficult. Will require many r
 	</challenge>
 
 
-	<!--  🚀🔘 Special  V? spaceships, O sphere  -->
+	<!--  🚀🔘 Special 7  V? spaceships, O sphere  -->
 <!--========================================================================================================================-->
 
 	<challenge name="#90D898Easy spacious chase" ver="1" difficulty="2" type="7"
 descr="Fly spaceships on broad terrain tracks. Be quick and use boost on straights. Caution, don't miss checkpoints by flying too high above them after jump (beams can help).">
-		<cartype names="Spaceship" />
+		<cartype names="Spaceship|Hover" />
 		<sim boost="2" />
 		<pass avgPoints="25" factor="2" />
 		<tracks>
@@ -1319,7 +1319,7 @@ descr="Fly spaceships on broad terrain tracks. Be quick and use boost on straigh
 
 	<challenge name="#E0B090Long flight" ver="1" difficulty="2" type="7"
 descr="Few very long tracks to fly with spaceships. ">
-		<cartype names="Spaceship" />
+		<cartype names="Spaceship|Hover" />
 		<pass avgPoints="19" factor="2" />
 		<tracks>
 			<t name="Can3-Vast"		passPoints="18" />
@@ -1332,7 +1332,7 @@ descr="Few very long tracks to fly with spaceships. ">
 
 	<challenge name="#C0C0A0City flight" ver="1" difficulty="3" type="7"
 descr="Flight through our 2 currently biggest cities. Be fast and don't crash. But also be on time.">
-		<cartype names="Spaceship" />
+		<cartype names="Spaceship|Hover" />
 		<pass avgPoints="21" />
 		<tracks>
 			<t name="Grc8-SlopeCity"	laps="1" passPoints="19.5" />
@@ -1342,7 +1342,7 @@ descr="Flight through our 2 currently biggest cities. Be fast and don't crash. B
 
 	<challenge name="#B0B0B0Gray day" ver="1" difficulty="3" type="7"
 descr="Fly fast through few gray, sad looking tracks.">
-		<cartype names="Spaceship" />
+		<cartype names="Spaceship|Hover" />
 		<hud chkArrow="1" chkBeam="1" />
 		<pass avgPoints="25" factor="2" />
 		<tracks>
@@ -1354,7 +1354,7 @@ descr="Fly fast through few gray, sad looking tracks.">
 
 	<challenge name="#A0C000Narrow space" ver="1" difficulty="3" type="7"
 descr="Spaceships in flat, but narrow tracks.">
-		<cartype names="Spaceship" />
+		<cartype names="Spaceship|Hover" />
 		<pass avgPoints="24" factor="1.5" />
 		<tracks>
 			<t name="Vlc1-Dark"			passPoints="25" />
@@ -1368,7 +1368,7 @@ descr="Spaceships in flat, but narrow tracks.">
 
 	<challenge name="#40D040Tight call" ver="1" difficulty="4" type="7"
 descr="Mom I don't want a spaceship, I want a car! This is a disaster waiting to happen. Spaceships in very narrow tracks. Fly extra careful and slow or you'll crash on each turn. V2 is recommended since it's the slowest one.">
-		<cartype names="Spaceship" />
+		<cartype names="Spaceship|Hover" />
 		<pass avgPoints="18" />
 		<tracks>
 			<t name="Jng1-Curly"	laps="2" passPoints="19" />
@@ -1382,7 +1382,7 @@ descr="Mom I don't want a spaceship, I want a car! This is a disaster waiting to
 
 	<challenge name="#6080B0Bridges aren't nice" ver="1" difficulty="3" type="7"
 descr="It was good to have that bridge wall holding your car. But now it's gone. Remember to keep on road, because the wall won't hold a hovering spaceship.">
-		<cartype names="Spaceship" />
+		<cartype names="Spaceship|Hover" />
 		<pass avgPoints="16" />
 		<tracks>
 			<t name="Aus5-TopTwist"		passPoints="23" />
@@ -1395,7 +1395,7 @@ descr="It was good to have that bridge wall holding your car. But now it's gone.
 
 	<challenge name="#60C0FFRound and bouncy" ver="1" difficulty="2" type="7"
 descr="Take the fast and very futuristic sphere around few tracks.">
-		<car names="O" />
+		<car names="O|Hover" />
 		<pass avgPoints="20" />
 		<tracks>
 			<t name="Vlc4-Spikeland"	passPoints="20" />
@@ -1430,7 +1430,7 @@ descr="Collection of fast and fun tracks to roll through with the Sphere.">
 
 	<challenge name="Gotta fly fast" ver="1" difficulty="3" type="7"
 descr="Fly with spaceship through winding roads.">
-		<cartype names="Spaceship" />
+		<cartype names="Spaceship|Hover" />
 		<car names="O" />
 		<hud chkArrow="1" chkBeam="1" />
 		<pass avgPoints="5" />
@@ -1442,7 +1442,7 @@ descr="Fly with spaceship through winding roads.">
 	</challenge>
 
 
-	<!--  🚌🏍️ Vehicles 2.7  unusual  OT,U8, 3B, MO, TW,TU,UV, U6, BE,BV  -->
+	<!--  🚌🏍️ Vehicles 8  2.7  unusual  OT,U8, 3B, MO, TW,TU,UV, U6, BE,BV  -->
 <!--========================================================================================================================-->
 
 	<challenge name="#80C040Turtle Slow" ver="1" difficulty="2" type="8"
@@ -1611,7 +1611,7 @@ descr="Big wheeled, extreme cars in narrow tracks with lots of rocks near road. 
 
 	<challenge name="#D0D8D8Get a grip, #F0A0A0fast" ver="1" difficulty="3" type="8"
 descr="The fastest super car on very slippery snowy roads in winter. Nonsense and without traction control pretty challenging. Release throttle whenever you notice spinning wheels to regain grip.">
-		<car names="Y7" />
+		<car names="Y7|YG" />
 		<pass avgPoints="12" />
 		<tracks>
 			<t name="Wnt1-Cross"     passPoints="11" />
@@ -1622,7 +1622,7 @@ descr="The fastest super car on very slippery snowy roads in winter. Nonsense an
 
 	<challenge name="#D0D8D8Get a grip, #80E0E0slowly" ver="1" difficulty="3" type="8"
 descr="The fastest super car, on smallest icy tracks. Extreme nonsense and thus a challenge. Using boosters is even more practical to go forward rather than engine and wheels. And landing in snow near road may be a better way of braking.">
-		<car names="Y7" />
+		<car names="Y7|YG" />
 		<sim boost="2" />
 		<pass avgPoints="16" />
 		<tracks>
@@ -1672,11 +1672,27 @@ descr="Stunts with motorbikes.">
 		</tracks>
 	</challenge>
 
-
-<!--  🧪 Test  -->
+	
+<!--  🚀🏎️ Hover 9  3.1  H1,H2, R1,R2,R3, Q1,Q3  -->
 <!--========================================================================================================================-->
 
-	<challenge name="#C0C0C0Test#80C0FF 0#D0C080 prize" ver="1" difficulty="0" type="9"
+	<challenge name="#80C040Hovercraft" ver="1" difficulty="2" type="9"
+descr="Few tracks driven with hovercraft.">
+		<sim boost="0" />
+		<cartype names="Hovercraft" />
+		<pass avgPoints="11" factor="2" />
+		<tracks>
+			<t name="For11-Dawn"     passPoints="9" />
+			<t name="Wnt4-IceSlip"   passPoints="9" />
+		</tracks>
+	</challenge>
+
+
+
+<!--  🧪 Test 10 -->
+<!--========================================================================================================================-->
+
+	<challenge name="#C0C0C0Test#80C0FF 0#D0C080 prize" ver="1" difficulty="0" type="10"
 descr="Test Challenge 0, prize points">
 		<car names="HI" />
 		<pass avgPoints="10" />
@@ -1685,7 +1701,7 @@ descr="Test Challenge 0, prize points">
 		</tracks>
 	</challenge>
 
-	<challenge name="#C0C0C0Test#A0D0FF 1#F0F080 pos" ver="1" difficulty="0" type="9"
+	<challenge name="#C0C0C0Test#A0D0FF 1#F0F080 pos" ver="1" difficulty="0" type="10"
 descr="Test Challenge 1, position pass. No rewind.">
 		<sim damage="0" boost="2" flip="2" rewind="0" />
 		<car names="HI" />
@@ -1695,7 +1711,7 @@ descr="Test Challenge 1, position pass. No rewind.">
 		</tracks>
 	</challenge>
 
-	<challenge name="#C0C0C0Test#C0FFC0 2 #FFC080points" ver="1" difficulty="1" type="9"
+	<challenge name="#C0C0C0Test#C0FFC0 2 #FFC080points" ver="1" difficulty="1" type="10"
 descr="Test Challenge 2, #FFC080points#C0FFC0 pass. #C0E0C0Car changing possible.">
 		<sim mode="normal" damage="1" boost="1" flip="1" carChng="1"/>
 		<car names="ES|HI" />
@@ -1706,7 +1722,7 @@ descr="Test Challenge 2, #FFC080points#C0FFC0 pass. #C0E0C0Car changing possible
 		</tracks>
 	</challenge>
 
-	<challenge name="#C0C0C0Test#C0C0FF 3 all" ver="1" difficulty="1" type="9"
+	<challenge name="#C0C0C0Test#C0C0FF 3 all" ver="1" difficulty="1" type="10"
 descr="Test Challenge 3, #C0C0FFall pass conditions.#FFC0C0 No rewind.">
 		<sim mode="normal" damage="2" boost="0" flip="2" rewind="0" />
 		<cartype names="Gravel" />
@@ -1718,7 +1734,7 @@ descr="Test Challenge 3, #C0C0FFall pass conditions.#FFC0C0 No rewind.">
 
 	</challenge>
 
-	<challenge name="#A0E0E0Test 4 laps, hud" ver="1" difficulty="2" type="9"
+	<challenge name="#A0E0E0Test 4 laps, hud" ver="1" difficulty="2" type="10"
 descr="Test Challenge 4, 2 laps.
 			Allow checkpoint arrow,beam and abs,tcs. Deny pacenotes, trail and track's ghost. No damage repair.">
 		<cartype names="Extreme" />

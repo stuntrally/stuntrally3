@@ -40,7 +40,7 @@ void CGui::tabChallType(Tab wp, size_t id)
 	ChallsListUpdate();
 }
 
-#define MAX_CHL_TYP 10
+#define MAX_CHL_TYP 11
 
 
 ///  Challenges list  fill
@@ -85,8 +85,8 @@ void CGui::ChallsListUpdate()
 void CGui::fillChallsList(std::vector<int> vIds)
 {
 	const char clrCh[MAX_CHL_TYP][8] = {
-	//  0 Rally  1 Scenery  2 Endurance  3 Chase  4 Stunts  5 Extreme  6 Space    7 Special  8 Vehicle  9 Test
-		"#A0D0FF","#80FF80","#C0FF60", "#FFC060","#FF8080","#C0A0E0",  "#7070F0", "#60B0FF", "#E0A0C0", "#909090" };
+	//  0 Rally  1 Scenery  2 Endurance  3 Chase  4 Stunts  5 Extreme  6 Space    7 Special  8 Vehicle  9 Hover    10 Test
+		"#A0D0FF","#80FF80","#C0FF60", "#FFC060","#FF8080","#C0A0E0",  "#7070F0", "#60B0FF", "#E0A0C0", "#F0C0F0", "#909090" };
 
 	liChalls->removeAllItems();
 	const int p = pSet->gui.champ_rev ? 1 : 0;

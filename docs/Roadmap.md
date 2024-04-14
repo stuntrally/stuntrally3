@@ -44,7 +44,7 @@ SR 3.0 📽️ `editor Videos`, all new
   **Linux** release, appimage or flatpak
   MyGui CMake .lib, _Conan_  
   .mesh LODs test adjust-  
-  water vis dist?  
+  water refl vis dist?  
   tire **trails clr**, no uv tex-  
   Fog, 2 colors cam dir fix-  
   gpu mem leaks or renders inactive  
