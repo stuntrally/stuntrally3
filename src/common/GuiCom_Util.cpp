@@ -251,24 +251,22 @@ void CGuiCom::doTestGUI(EnumeratorWidgetPtr widgets)
 	{
 		WP wp = widgets.current();
 		string relativeTo = wp->getUserString("RelativeTo");
-
 		// if (relativeTo != "")
 		{
 			// WP p = wp->getParent();
 			// if (p && (
 			const auto& tp = wp->getTypeName();
 			if (
-				// (wp->getLayer() && wp->getLayer()->getName() != "ToolTip") &&
+				// (wp->getLayer() && wp->getLayer()->getName() != "ToolTip") &&  //-
 				(
 				tp == "TextBox" ||
 				tp == "Button" || // && skin checkbox..
 				tp == "EditBox"  // && skin empty..
-				// wp->getSkin() == "a"
+				// wp->getSkin() == ""  //-
 			))
 			{
 				LogO(wp->getTypeName()+" "+wp->getName());
-				// if (wp->getLayer())
-				// 	LogO(wp->getLayer()->getName());
+				// if (wp->getLayer())  LogO(wp->getLayer()->getName());  //-
 				
 				Img img = wp->createWidget<ImageBox>("ImageBox",
 					0,0, wp->getSize().width, wp->getSize().height,  // same size
