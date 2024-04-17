@@ -51,8 +51,8 @@
 
 <c id="U6"  o="6" m="Beetle"      v="2.7" r="3" w="4" d="5" s="6.5"  y="2075" t="Extreme"    b="0" j="0" l="0" p="0" u="0"  e="1.09" n="1.16"  a="gakpoenya, carlospanganiban, CryHam" />
 
-<c id="H1"  o="4" m="Python"      v="3.1" r="4" w="4" d="3" s="4.3"  y="2003" t="Hovercraft" b="0" j="1" l="2" p="2" u="1"  e="1.10" n="1.16"  a="UNDERPOLY Project" />
-<c id="H2"  o="4" m="Cobra"       v="3.1" r="4" w="4" d="2" s="6.0"  y="2007" t="Hovercraft" b="0" j="0" l="1" p="1" u="1"  e="1.10" n="1.28"  a="CryHam, UNDERPOLY Project" />
+<c id="H1"  o="4" m="Python"      v="3.1" r="4" w="4" d="3" s="4.3"  y="2003" t="Hovercraft" b="0" j="1" l="2" p="2" u="1"  e="1.03" n="1.09"  a="UNDERPOLY Project" />
+<c id="H2"  o="4" m="Cobra"       v="3.1" r="4" w="4" d="2" s="6.0"  y="2007" t="Hovercraft" b="0" j="0" l="1" p="1" u="1"  e="1.08" n="1.17"  a="CryHam, UNDERPOLY Project" />
  
 <c id="V2"  o="0" m="Swan"        v="2.4" r="3" w="4" d="2" s="7.3"  y="2116" t="Spaceship"  b="0" j="0" l="4" p="6" u="1"  e="1.00" n="1.13"  a="sypro" />
 <c id="V1"  o="0" m="Duck"        v="2.4" r="2" w="3" d="3" s="7.5"  y="2123" t="Spaceship"  b="0" j="0" l="4" p="6" u="1"  e="1.04" n="1.16"  a="benja" />

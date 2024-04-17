@@ -670,15 +670,12 @@ void CARDYNAMICS::SimulateHover(Dbl dt)
 	(-Orientation()).RotateVector(sv);
 	MATHVECTOR<Dbl,3> av = GetAngularVelocity();
 
-	MATHVECTOR<Dbl,3> dn = GetDownVector();
-	Dbl ups = dn[2] < 0.0 ? 1.0 : -1.0;
-
 	//  steer  < >
 	bool rear = sv[0] > 0.0;
 	Dbl rr = 1.0 + h; //std::max(-1.0, std::min(1.0, -sv[0] * 0.4));  //par..
 	if (gPar.carPrv > 0)  rr = 0.0;
 
-	MATHVECTOR<Dbl,3> t(0,0, -1000.0 * rr * ups * hov.steerForce * steerValue * dmgE);
+	MATHVECTOR<Dbl,3> t(0,0, -1000.0 * rr * hov.steerForce * steerValue * dmgE);
 	Orientation().RotateVector(t);
 	Dbl damp = hov.steerDamp;  //damp *= 1 - fabs(steerValue);
 	ApplyTorque(t - av * damp * 1000.0);  // rotation damping
