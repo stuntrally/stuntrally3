@@ -229,7 +229,7 @@ void App::update( float dt )
 		//**  bullet bebug draw
 		if (dbgdraw)  // DBG_DrawWireframe
 		{
-			dbgdraw->setDebugMode(1); //pSet->bltDebug ? 1 /*+(1<<13) 255*/ : 0);
+			dbgdraw->setDebugMode(pSet->bltDebug ? 1 /*+(1<<13) 255*/ : 0);
 			dbgdraw->step();
 		}
 

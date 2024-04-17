@@ -10,6 +10,7 @@
 #include <fstream>
 #include "Gui_Def.h"
 #include "Slider.h"
+#include <OgreWindow.h>
 #include <OgreHlmsCommon.h>
 #include <OgreHlmsPbsDatablock.h>
 #include "MultiList2.h"

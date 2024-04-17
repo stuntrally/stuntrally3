@@ -1,6 +1,6 @@
 #include "pch.h"
 
-#if 0  // OLD file reference  ------
+#if 0  //  OLD  Ogre 1.x  file reference  ------
 #include "Def_Str.h"
 #include "settings.h"
 #include "BaseApp.h"
