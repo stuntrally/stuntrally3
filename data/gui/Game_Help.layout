@@ -96,11 +96,11 @@
 					<Property key="Colour" value="0.9 0.7 1.0"/>
 				</Widget>
 
-				<Widget type="TextBox" skin="TextBox" position="32 406 600 24">
+				<Widget type="TextBox" skin="TextBox" position="32 406 660 24">
 					<Property key="Caption" value="#{UserDir}"/>
 					<Property key="TextColour" value="0.7 0.85 1"/>
 				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="32 430 600 24" name="EdUserDir">
+				<Widget type="EditBox" skin="EditBox" position="32 430 660 24" name="EdUserDir">
 					<Property key="ReadOnly" value="true"/>
 					<Property key="MultiLine" value="false"/>
 					<Property key="WordWrap" value="false"/>
@@ -135,7 +135,7 @@
 					<Property key="Alpha" value="0.6"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
 				</Widget>
-				<Widget type="EditBox" skin="EditBoxStretch" position="32 16 600 480" name="Readme">
+				<Widget type="EditBox" skin="EditBoxStretch" position="32 16 600 530" name="Readme">
 					<Property key="ReadOnly" value="true"/>
 					<Property key="MultiLine" value="true"/>
 					<Property key="WordWrap" value="true"/>
@@ -146,6 +146,7 @@
 					<Property key="Colour" value="0.55 0.6 0.65"/>
 				</Widget>
 			</Widget>
+
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#C0F0C0#{Contributing}"/>
 				<Widget type="ImageBox" skin="ImageBox" position="660 48 96 96">
@@ -158,7 +159,7 @@
 					<Property key="Alpha" value="0.5"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
 				</Widget>
-				<Widget type="EditBox" skin="EditBoxStretch" position="32 16 600 480" name="Contributing">
+				<Widget type="EditBox" skin="EditBoxStretch" position="32 16 600 530" name="Contributing">
 					<Property key="ReadOnly" value="true"/>
 					<Property key="MultiLine" value="true"/>
 					<Property key="WordWrap" value="true"/>
@@ -177,7 +178,7 @@
 					<Property key="Alpha" value="0.3"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
 				</Widget>
-				<Widget type="EditBox" skin="EditBoxStretch" position="32 16 600 480" name="Credits">
+				<Widget type="EditBox" skin="EditBoxStretch" position="32 16 600 530" name="Credits">
 					<Property key="ReadOnly" value="true"/>
 					<Property key="MultiLine" value="true"/>
 					<Property key="WordWrap" value="true"/>
@@ -227,14 +228,14 @@
 				<Widget type="ImageBox" skin="ImageBox" position="8 500 341 85">
 					<Property key="ImageTexture" value="ogre-logo.png"/>
 					<UserString key="tip" value="ogre3d.org"/>
-					<Property key="Alpha" value="0.7"/>
+					<Property key="Alpha" value="0.8"/>
 				</Widget>
 				<Widget type="TextBox" skin="TextBox" position="262 516 190 44">
-					<Property key="Caption" value="Next"/>
+					<Property key="Caption" value="Next 3.0"/>
 					<Property key="TextColour" value="0.0 0.0 0.0"/>
 					<Property key="FontName" value="hud.text"/>
 					<Property key="FontHeight" value="64"/>
-					<Property key="Alpha" value="0.9"/>
+					<Property key="Alpha" value="1.0"/>
 				</Widget>
 
 				<Widget type="TextBox" skin="TextBox" position="614 476 150 24">

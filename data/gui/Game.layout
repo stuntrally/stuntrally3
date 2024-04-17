@@ -1380,7 +1380,7 @@
 							<Property key="Caption" value="#{RoadWallFullCollis}"/>
 							<Property key="TextColour" value="0.5 0.6 0.7"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="24 150 444 24" name="DriveOnHorizons">
+						<Widget type="Button" skin="CheckBox" position="24 150 544 24" name="DriveOnHorizons">
 							<Property key="Caption" value="#{DriveOnHorizons}"/>
 							<Property key="TextColour" value="0.4 0.7 0.9"/>
 						</Widget>
@@ -1736,14 +1736,16 @@
 							<Property key="Colour" value="0.65 0.8 1"/>
 							<Property key="TextColour" value="0.65 0.8 1"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="500 20 112 26" name="valNetPassword">
+						
+						<Widget type="TextBox" skin="TextBox" position="450 20 112 26" name="valNetPassword">
 							<Property key="Caption" value="#{NetPassword}:"/>
 							<Property key="TextColour" value="0.8 0.8 0.6"/>
 						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="612 18 104 24" name="edNetPassword">
+						<Widget type="EditBox" skin="EditBox" position="562 18 144 24" name="edNetPassword">
 							<Property key="Colour" value="0.8 0.8 0.6"/>
 							<Property key="TextColour" value="1 1 0.6"/>
 						</Widget>
+
 						<Widget type="Button" skin="Button" position="596 426 124 32" name="btnNetReady">
 							<Property key="Caption" value="#{NetReady}"/>
 							<Property key="Colour" value="0.6 1 0.6"/>
@@ -1757,7 +1759,8 @@
 						<Widget type="MultiListBox" skin="MultiListBox" position="20 56 412 126" name="MListPlayers">
 							<Property key="Colour" value="0.7 0.8 0.9"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="22 194 210 24" name="valNetChat">
+
+						<Widget type="TextBox" skin="TextBox" position="22 194 240 24" name="valNetChat">
 							<Property key="Caption" value="#{NetChat}"/>
 							<Property key="TextColour" value="0.6 0.8 1"/>
 						</Widget>
@@ -1773,6 +1776,7 @@
 						<Widget type="EditBox" skin="EditBox" position="20 430 412 24" name="edNetChatMsg">
 							<Property key="Colour" value="0.6 0.8 1"/>
 						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="452 56 268 360" name="valNetGameInfo">
 							<Property key="Caption" value="#{Track}:"/>
 							<Property key="TextColour" value="0.4 1.0 0.5"/>
@@ -1834,7 +1838,7 @@
 							<Property key="Alpha" value="0.1"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="20 42 124 24">
+						<Widget type="TextBox" skin="TextBox" position="20 42 224 24">
 							<Property key="Caption" value="#{NetGamesAvail}"/>
 							<Property key="TextColour" value="0.5 0.5 0.4"/>
 						</Widget>
@@ -1959,26 +1963,28 @@
 					<Property key="ImageTexture" value="gui_icons.png"/>
 				</Widget>
 
-				<Widget type="Button" skin="CheckBox" position="32 411 120 24" name="Ch_All">
+				<Widget type="Button" skin="CheckBox" position="32 411 160 24" name="Ch_All">
 					<Property key="Caption" value="#{RplAll}"/>
 					<Property key="TextColour" value="0.75 0.7 0.85"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="630 411 120 24" name="ChampRev">
+				<Widget type="Button" skin="CheckBox" position="630 411 160 24" name="ChampRev">
 					<Property key="Caption" value="#{Reverse}"/>
 					<Property key="Colour" value="0.8 1 0.6"/>
 					<Property key="TextColour" value="0.8 1 0.5"/>
 					<UserString key="tip" value="#{TipReverse}"/>
 				</Widget>
-				<Widget type="EditBox" skin="EditBoxEmpty" position="32 322 694 60" name="ChampDescr">
-					<Property key="TextColour" value="0.75 0.9 1.0"/>
-					<Property key="ReadOnly" value="true"/>
-					<Property key="MultiLine" value="true"/>
-					<Property key="WordWrap" value="true"/>
-				</Widget>
-				<Widget type="Widget" skin="PanelSkin" position="24 316 708 68">
+
+				<Widget type="Widget" skin="PanelSkin" position="24 316 708 82">
 					<Property key="Colour" value="0.6 0.75 0.9"/>
 					<Property key="Alpha" value="0.7"/>
 					<Property key="InheritsAlpha" value="false"/>
+					<Widget type="EditBox" skin="EditBoxStretch" position="6 2 694 78" name="ChampDescr">
+						<Property key="TextColour" value="0.75 0.9 1.0"/>
+						<Property key="ReadOnly" value="true"/>
+						<Property key="MultiLine" value="true"/>
+						<Property key="WordWrap" value="true"/>
+						<Property key="InheritsAlpha" value="false"/>
+					</Widget>
 				</Widget>
 
 				<Widget type="Button" skin="Button" position="320 400 144 40" name="btnTutStart">
@@ -2026,6 +2032,7 @@
 						<Property key="NeedMouse" value="false"/>
 					</Widget>
 				</Widget>
+
 				<Widget type="Button" skin="Button" position="28 484 48 40" name="btnChampInfo">
 					<Property key="Colour" value="0.6 0.8 1.0"/>
 					<Property key="TextColour" value="0.6 0.8 1.0"/>
@@ -2037,7 +2044,7 @@
 						<Property key="NeedMouse" value="false"/>
 					</Widget>
 				</Widget>
-				<Widget type="EditBox" skin="EditBoxEmpty" position="100 472 624 60" name="ChampInfo">
+				<Widget type="EditBox" skin="EditBoxEmpty" position="100 472 624 86" name="ChampInfo">
 					<Property key="Caption" value="#{ChampInfo}"/>
 					<Property key="TextColour" value="0.7 0.8 0.9"/>
 					<Property key="ReadOnly" value="true"/>

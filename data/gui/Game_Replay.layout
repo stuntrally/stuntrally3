@@ -22,21 +22,23 @@
 					<Property key="ImageTexture" value="gui_icons.png"/>
 				</Widget>
 				<Widget type="ListBox" skin="ListBox" position="14 16 186 440" name="RplList"/>
-				<Widget type="Button" skin="RadioButton" position="224 368 160 24" name="RplBtnAll">
+
+				<Widget type="Button" skin="RadioButton" position="224 368 260 24" name="RplBtnAll">
 					<Property key="Colour" value="0.6 0.8 1"/>
 					<Property key="TextColour" value="0.7 0.86 1"/>
 					<Property key="Caption" value="#{RplAll}"/>
 				</Widget>
-				<Widget type="Button" skin="RadioButton" position="224 400 160 24" name="RplBtnCur">
+				<Widget type="Button" skin="RadioButton" position="224 400 260 24" name="RplBtnCur">
 					<Property key="Colour" value="0.6 0.8 1"/>
 					<Property key="TextColour" value="0.6 0.76 0.9"/>
 					<Property key="Caption" value="#{RplCurrent} (#{Track})"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="224 432 160 24" name="RplBtnGhosts">
+				<Widget type="Button" skin="CheckBox" position="224 432 260 24" name="RplBtnGhosts">
 					<Property key="Colour" value="0.7 0.8 1"/>
 					<Property key="TextColour" value="0.7 0.8 1"/>
 					<Property key="Caption" value="#{RplGhosts}"/>
 				</Widget>
+
 				<Widget type="Button" skin="Button" position="224 260 152 32" name="RplSave">
 					<Property key="Caption" value="#{RplSave}"/>
 					<Property key="TextColour" value="0.8 1 1"/>
@@ -47,16 +49,17 @@
 					<Property key="TextColour" value="0.8 1 1"/>
 					<Property key="Colour" value="0.6 0.6 1"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="434 120 128 24" name="RplDelete">
+				<Widget type="Button" skin="Button" position="434 120 138 24" name="RplDelete">
 					<Property key="Colour" value="1 0.4 0"/>
 					<Property key="Caption" value="#{Delete}"/>
 					<Property key="TextColour" value="1 0.4 0.4"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="434 260 128 32" name="RplRename">
+				<Widget type="Button" skin="Button" position="434 260 138 32" name="RplRename">
 					<Property key="TextColour" value="1 0.8 0.4"/>
 					<Property key="Colour" value="1 0.8 0.4"/>
 					<Property key="Caption" value="#{Rename}"/>
 				</Widget>
+				
 				<Widget type="TextBox" skin="TextBox" position="224 16 384 32" name="RplName">
 					<Property key="TextColour" value="0.84 0.8 1"/>
 				</Widget>
@@ -78,12 +81,12 @@
 					<Property key="Alpha" value="0.7"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="40 476 92 24">
+				<Widget type="TextBox" skin="TextBox" position="40 476 122 24">
 					<Property key="Caption" value="#{Find}:"/>
 					<Property key="TextColour" value="0.7 0.8 0.9"/>
 					<UserString key="tip" value="#{TipFind}"/>
 				</Widget>
-				<Widget type="EditBox" skin="EditBox" position="16 500 88 24" name="RplFind">
+				<Widget type="EditBox" skin="EditBox" position="16 500 128 24" name="RplFind">
 					<Property key="Colour" value="0.7 0.8 0.9"/>
 					<Property key="MaxTextLength" value="20"/>
 					<Property key="TextColour" value="0.8 0.9 1.0"/>
@@ -101,6 +104,11 @@
 					<Property key="TextColour" value="0.6 1 0.4"/>
 					<Property key="Caption" value="#{TracksGhost}"/>
 				</Widget>
+				<Widget type="Button" skin="CheckBox" position="32 150 380 24" name="RplChkRewind">
+					<Property key="TextColour" value="0.6 0.8 1"/>
+					<Property key="Caption" value="#{RplRewindGhost}"/>
+				</Widget>
+
 				<Widget type="Button" skin="CheckBox" position="432 60 380 24" name="RplChkAutoRec">
 					<Property key="Caption" value="#{RplAutoRec}"/>
 					<Property key="TextColour" value="0.5 0.7 0.9"/>
@@ -109,23 +117,21 @@
 					<Property key="TextColour" value="0.6 0.8 1"/>
 					<Property key="Caption" value="#{RplBestOnly}"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="32 150 380 24" name="RplChkRewind">
-					<Property key="TextColour" value="0.6 0.8 1"/>
-					<Property key="Caption" value="#{RplRewindGhost}"/>
-				</Widget>
-				<Widget type="Button" skin="CheckBox" position="32 180 380 24" name="RplChkGhostOther">
-					<Property key="TextColour" value="0.6 0.8 1"/>
-					<Property key="Caption" value="#{RplGhostOther}"/>
-				</Widget>
 				<Widget type="Button" skin="CheckBox" position="432 150 380 24" name="RplChkParticles">
 					<Property key="TextColour" value="0.5 0.7 0.9"/>
 					<Property key="Caption" value="#{Ghost} #{Particles}"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="32 210 380 24" name="RplChkHideHudAids">
+
+				<Widget type="Button" skin="CheckBox" position="32 180 580 24" name="RplChkGhostOther">
+					<Property key="TextColour" value="0.6 0.8 1"/>
+					<Property key="Caption" value="#{RplGhostOther}"/>
+				</Widget>
+				<Widget type="Button" skin="CheckBox" position="32 210 580 24" name="RplChkHideHudAids">
 					<Property key="TextColour" value="0.5 0.7 0.8"/>
 					<Property key="Caption" value="#{RplHideHudAids}"/>
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="32 276 576 20">
+
+				<Widget type="TextBox" skin="TextBox" position="32 276 616 20">
 					<Property key="TextColour" value="0.6 0.75 0.85"/>
 					<Property key="Caption" value="#{RplMaxNumViewports} *"/>
 				</Widget>
