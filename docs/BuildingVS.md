@@ -104,7 +104,12 @@ This was set so in all but best to be sure. _Failing that would lead to many lin
 Building Ogre-Next from sources, using [scripts](https://github.com/OGRECave/ogre-next/tree/master/Scripts/BuildScripts/output).  
 
 Save the file [build_ogre_Visual_Studio_16_2019_x64.bat](https://raw.githubusercontent.com/OGRECave/ogre-next/master/Scripts/BuildScripts/output/build_ogre_Visual_Studio_16_2019_x64.bat)  
-and put it inside our root folder `c:\dev` then open cmd and start the `.bat`.
+and put it inside our root folder `c:\dev`
+
+We need Ogre-Next branch v3.0 now. So edit `build_ogre_Visual_Studio_16_2019_x64.bat` and replace in this top line:  
+`set OGRE_BRANCH_NAME=master"` to `set OGRE_BRANCH_NAME=v3-0` and save file.
+
+Then open cmd and start the `.bat`.
 
 This should succeed after a longer while and build Ogre-Next with its dependencies.
 

@@ -26,6 +26,9 @@ First install Ogre dependencies, as in [here](https://github.com/OGRECave/ogre-n
 
 - Save the file [build_ogre_linux_c++latest.sh](https://raw.githubusercontent.com/OGRECave/ogre-next/master/Scripts/BuildScripts/output/build_ogre_linux_c%2B%2Blatest.sh) and put it inside our root folder, called here `dev/`
 
+- We need Ogre-Next branch v3.0 now. So edit `build_ogre_linux_c++latest.sh` and replace in this top line:  
+  `OGRE_BRANCH_NAME="master"` to `OGRE_BRANCH_NAME="v3-0"` and save file.
+
 - Go into `dev/` and start it:  
   ```
   cd dev/
