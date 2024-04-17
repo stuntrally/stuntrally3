@@ -31,11 +31,11 @@
 #include <vorbis/vorbisfile.h>
 ///  Ogre
 #include <Ogre.h>  //!
-//#include <OgrePlatform.h>
 #include <OgreLogManager.h>
 #include <OgreRoot.h>
 #include <OgreCamera.h>
-#include <OgreEntity.h>
+#include <OgreItem.h>
+#include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
 
 #include <btBulletDynamicsCommon.h>

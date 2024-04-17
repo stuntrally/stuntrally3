@@ -39,16 +39,14 @@
 #include <tinyxml2.h>
 
 ///  Ogre
-#include <Ogre.h>
-#include <OgreCamera.h>
-#include <OgreEntity.h>
+#include <Ogre.h>  //!
 #include <OgreLogManager.h>
 #include <OgreRoot.h>
-#include <OgreViewport.h>
+#include <OgreCamera.h>
+#include <OgreItem.h>
+#include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
 #include <OgreWindow.h>
-#include <OgreConfigFile.h>
-#include <OgreWindowEventUtilities.h>
 
 //#include "btBulletDynamicsCommon.h"
 #include <MyGUI.h>
