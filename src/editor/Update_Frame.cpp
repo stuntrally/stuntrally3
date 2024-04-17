@@ -14,6 +14,7 @@
 #include "GraphicsSystem.h"
 #include "Terra.h"
 #include <OgreSceneNode.h>
+#include <OgreWindow.h>
 #include <MyGUI.h>
 using namespace Ogre;
 

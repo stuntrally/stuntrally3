@@ -107,12 +107,12 @@ void CGui::CreateInputTab(int iTab, bool player,
 		txt->setCaption(text);  }
 	
 
-	///  Headers  action, binding, value
-	CreateText(x0,yHdr0, sx,sy, "hdrTxt1_"+sPlr, TR("#90B0F0#{InputHeaderTxt1}"));
-	CreateText(x1,yHdr0, sx,sy, "hdrTxt2_"+sPlr, TR("#A0C0FF#{InputHeaderTxt2}"));
+	///  Headers
+	CreateText(x0,yHdr0, sx-5,sy, "hdrTxt1_"+sPlr, TR("#90B0F0#{InputHeaderTxt1}"));  // Action
+	CreateText(x1,yHdr0, sx  ,sy, "hdrTxt2_"+sPlr, TR("#A0C0FF#{InputHeaderTxt2}"));  // Binding
 	if (player)  {
-		CreateText(x2,yHdr0, sx,sy, "hdrTxt3_"+sPlr, TR("#90B0F0#{InputHeaderTxt3}"));
-		CreateText(x3,yHdr0, sx,sy, "hdrTxt4_"+sPlr, TR("#80A0E0#{InputHeaderTxt4}"));  }
+		CreateText(x2,yHdr0, sx-10,sy, "hdrTxt3_"+sPlr, TR("#90B0F0#{InputHeaderTxt3}"));  // Value
+		CreateText(x3,yHdr0, sx   ,sy, "hdrTxt4_"+sPlr, TR("#80A0E0#{InputHeaderTxt4}"));  }  // Edit
 
 	//  spacing for add y
 	static std::map <std::string, int> yRow;
