@@ -189,6 +189,7 @@ bool TracksIni::LoadIni(string file, bool check)
 	//--------------------------------------------------------------
 	if (check)
 	{
+		LogO("");
 		LogO("))) Checking: tracks.ini");
 		i = 1;  int c,n, nn = trks.size()-1;
 
