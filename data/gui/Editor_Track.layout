@@ -469,14 +469,14 @@
 					<Property key="Colour" value="0.8 0.8 1"/>
 					<Property key="Alpha" value="0.4"/>
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="36 32 116 24">
+				<Widget type="TextBox" skin="TextBox" position="36 32 124 24">
 					<Property key="Caption" value="#{SourceTrack}:"/>
 					<Property key="TextColour" value="0.7 0.7 0.9"/>
 				</Widget>
 				<Widget type="TextBox" skin="TextBox" position="160 32 136 24" name="TrkCopySelName">
 					<Property key="TextColour" value="0.8 0.8 1.0"/>
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="300 32 276 24">
+				<Widget type="TextBox" skin="TextBox" position="300 32 326 24">
 					<Property key="Caption" value="#{ChngTrkTab}"/>
 					<Property key="TextColour" value="0.5 0.5 0.8"/>
 				</Widget>
@@ -551,7 +551,7 @@
 					<Property key="Caption" value="#{Particles}"/>
 				</Widget>
 
-				<Widget type="TextBox" skin="TextBox" position="168 198 128 24">
+				<Widget type="TextBox" skin="TextBox" position="168 198 240 24">
 					<Property key="Caption" value="#{ScaleMul}"/>
 					<Property key="TextColour" value="0.4 0.6 0.4"/>
 				</Widget>
@@ -587,15 +587,15 @@
 			<!-- Game -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#C090B0#{Game}"/>
-				<Widget type="TextBox" skin="TextBox" position="32 60 268 24">
+				<Widget type="TextBox" skin="TextBox" position="32 60 288 22">
 					<Property key="Caption" value="#{Damage}: #{InputMultiplier}"/>
 					<Property key="TextColour" value="0.7 0.7 0.9"/>
 				</Widget>
 				<Widget type="Slider" skin="Slider" position="96 80 248 18" name="DamageMul"/>
-				<Widget type="TextBox" skin="TextBox" position="32 80 60 24" name="DamageMulVal">
+				<Widget type="TextBox" skin="TextBox" position="32 80 60 22" name="DamageMulVal">
 					<Property key="TextColour" value="0.7 0.7 0.9"/>
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="380 60 264 24">
+				<Widget type="TextBox" skin="TextBox" position="380 60 264 22">
 					<Property key="Caption" value="#{Gravity}"/>
 					<Property key="TextColour" value="0.9 0.76 0.6"/>
 				</Widget>
@@ -603,7 +603,7 @@
 				<Widget type="TextBox" skin="TextBox" position="380 80 60 24" name="GravityVal">
 					<Property key="TextColour" value="0.9 0.76 0.6"/>
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="380 120 264 24">
+				<Widget type="TextBox" skin="TextBox" position="380 120 264 22">
 					<Property key="Caption" value="#{Wind}"/>
 					<Property key="TextColour" value="0.7 0.8 0.8"/>
 				</Widget>
@@ -612,19 +612,19 @@
 					<Property key="TextColour" value="0.7 0.8 0.8"/>
 				</Widget>
 
-				<Widget type="Button" skin="CheckBox" position="32 160 276 24" name="TiresAsphalt">
+				<Widget type="Button" skin="CheckBox" position="32 160 330 24" name="TiresAsphalt">
 					<Property key="Caption" value="#{Tires}: #{Asphalt}"/>
 					<Property key="TextColour" value="0.7 0.7 0.7"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="32 190 320 24" name="DenyReversed">
+				<Widget type="Button" skin="CheckBox" position="32 190 330 24" name="DenyReversed">
 					<Property key="Caption" value="#{DenyReversed}"/>
 					<Property key="TextColour" value="0.6 0.8 0.8"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="32 220 320 24" name="NoWrongChks">
+				<Widget type="Button" skin="CheckBox" position="32 220 330 24" name="NoWrongChks">
 					<Property key="Caption" value="#{NoWrongChks}"/>
 					<Property key="TextColour" value="0.8 0.7 0.7"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="32 250 320 24" name="NeedLights">
+				<Widget type="Button" skin="CheckBox" position="32 250 330 24" name="NeedLights">
 					<Property key="Caption" value="#{NeedLights}"/>
 					<Property key="TextColour" value="0.9 0.9 0.7"/>
 				</Widget>
@@ -632,7 +632,8 @@
 				<Widget type="TextBox" skin="TextBox" position="32 444 264 64" name="EdInfo">
 					<Property key="TextColour" value="0.9 0.7 0.8"/>
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="380 200 264 24">
+
+				<Widget type="TextBox" skin="TextBox" position="380 200 324 24">
 					<Property key="Caption" value="#{Sound} - #{Reverb}"/>
 					<Property key="TextColour" value="0.6 0.8 1.0"/>
 				</Widget>
@@ -914,7 +915,7 @@
 
 						
 						<!-- Column -->
-						<Widget type="Button" skin="CheckBox" position="10 260 200 20" name="RoR_RoadCols">
+						<Widget type="Button" skin="CheckBox" position="10 260 220 20" name="RoR_RoadCols">
 							<Property key="Caption" value="#{Column}"/>
 							<Property key="TextColour" value="0.8 0.7 0.6"/>
 						</Widget>
@@ -965,12 +966,12 @@
 							<Property key="TextColour" value="0.9 0.95 1.0"/>
 						</Widget>
 
-						<Widget type="Button" skin="CheckBox" position="32 170 200 24" name="ExportOnLoad">
+						<Widget type="Button" skin="CheckBox" position="32 170 300 24" name="ExportOnLoad">
 							<Property key="Caption" value="#{ExportOnLoad}"/>
 							<Property key="TextColour" value="0.6 0.8 0.9"/>
 						</Widget>
 
-						<Widget type="Button" skin="CheckBox" position="32 270 200 24" name="ExportCopyData">
+						<Widget type="Button" skin="CheckBox" position="32 270 400 24" name="ExportCopyData">
 							<Property key="Caption" value="#{ExportCopyData}"/>
 							<Property key="TextColour" value="0.7 0.6 0.6"/>
 						</Widget>
@@ -987,7 +988,7 @@
 
 						
 						<!-- Tools other -->
-						<Widget type="TextBox" skin="TextBox" position="312 320 124 24">
+						<Widget type="TextBox" skin="TextBox" position="312 320 164 24">
 							<Property key="Caption" value="#{Tools}"/>
 							<Property key="TextColour" value="0.7 0.8 0.9"/>
 						</Widget>

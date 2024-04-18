@@ -111,7 +111,7 @@
 					<Property key="Colour" value="0.5 0.6 0.7"/>
 				</Widget>
 
-				<Widget type="TextBox" skin="TextBox" position="32 513 180 24">
+				<Widget type="TextBox" skin="TextBox" position="32 513 128 24">
 					<Property key="Caption" value="#{Language}**"/>
 					<Property key="TextColour" value="0.6 0.8 1"/>
 				</Widget>

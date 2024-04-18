@@ -331,7 +331,8 @@ void CGuiCom::setOrigPos(WP wp, const char* relToWnd)
 	wp->setUserString("origPosY", toStr(wp->getPosition().top));
 	wp->setUserString("origSizeX", toStr(wp->getSize().width));
 	wp->setUserString("origSizeY", toStr(wp->getSize().height));
-	wp->setUserString("RelativeTo", relToWnd);
+	if (relToWnd)
+		wp->setUserString("RelativeTo", relToWnd);
 }
 
 
