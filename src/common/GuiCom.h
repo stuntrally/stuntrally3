@@ -208,13 +208,17 @@ public:
 
 
 	///  🖥️ Screen  --------------------------
-	Ck ckVRmode;
+	Ck ckVRmode;  // unused
 	Cmb resList =0;
-	void InitGuiScreenRes(), ResizeOptWnd();
+	void InitGuiScreenRes(), ReInitGuiRSrest(), ResizeOptWnd();
+	//  util
+	std::vector<WP> vwGuiRS;  // RS rest widgets to destroy
+	void setRScfg(const Ogre::String& cfg, const Ogre::String& val);
+	Ogre::String getScreenRes(int* x=0, int* y=0);
 
-	//CK(VidFullscr);  CK(VidVSync);
-	//void btnResChng(WP);
-	void cmbGraphicsPreset(CMB); //, cmbRenderSystem(CMB);
+	CK(VidFullscr);  CK(VidVSync);
+	void btnResChng(WP);
+	void cmbGraphicsPreset(CMB), cmbScreenRes(CMB), cmbRenderSystem(CMB), cmbAntiAliasing(CMB);
 
 	//  💡 Light  --------------------------
 	SV svBright, svContrast;

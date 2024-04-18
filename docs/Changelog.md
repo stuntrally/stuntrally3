@@ -24,6 +24,7 @@ This section lists changes not yet released, but committed to new repositories s
     - New tabs, settings, converters, [info here](EditorExportRoR.md).
 - Both
   - New tab Options - Screen - GUI with scales for font size and windows margin size, all need restart
+  - Screen and Video tabs with render system options, WIP, many not done or need restart  
 - Updated docs
 - Added Japanese font and quick, basic translation (could be wrong)
 

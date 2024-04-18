@@ -27,7 +27,8 @@ class GraphicsSystem : public BaseSystem, public Ogre::UniformScalableTask
 private:
 	using BaseSystem::initialize;
 
-protected:
+public:
+// protected:
 	App* pApp =0;
 	BaseSystem          *mLogicSystem;
 
@@ -35,7 +36,7 @@ protected:
 	SDL_Window          *mSdlWindow;
 	SdlInputHandler     *mInputHandler;
 #endif
-
+protected:
 	Ogre::Window                *mRenderWindow =0;
 	Ogre::SceneManager          *mSceneManager =0;
 	Ogre::Camera                *mCamera =0;

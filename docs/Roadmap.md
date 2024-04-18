@@ -58,7 +58,7 @@ SR 3.0 📽️ `editor Videos`, all new
 
 [Horizons](https://stuntrally.tuxfamily.org/mantis/view.php?id=11), add to rest of tracks  
 🪄 **Effects**: Soft Particles, SSAO, HDR, bloom, rays?  
-🖥️ Gui render system, all **options**?  
+🖥️ finish Gui Screen/Video render system, rest options  
 🌀 Add [FastNoise](https://github.com/Auburn/FastNoiseLite) for brushes and ter gen  
 
 🌳 new trees, Bushes, more vegetation, tiny close, grasses, rock packs  
