@@ -211,7 +211,8 @@ MATHVECTOR<Dbl,3> CARDYNAMICS::ApplyTireForce(int i, const Dbl normal_force, con
 	MATHVECTOR<Dbl,3> wheel_normal(0, 0, 1);
 	wheel_space.RotateVector(wheel_normal);
 	MATHVECTOR<Dbl,3> contactpos = wheel_position[WHEEL_POSITION(i)] + wheel_normal * wheel.GetRadius() * wheel.GetRollHeight();  ///+
-	ApplyForce(world_friction_force + surface_normal * normal_force + wheel_drag, contactpos - Position());
+	if (!(isHover() && fDamage >= 100.f))  //V*  drop destroyed hovers
+		ApplyForce(world_friction_force + surface_normal * normal_force + wheel_drag, contactpos - Position());
 
 	return world_friction_force;
 }
