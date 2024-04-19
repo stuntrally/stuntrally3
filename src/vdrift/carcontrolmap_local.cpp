@@ -7,22 +7,24 @@
 
 
 //*  speed sensitive steering
-float CARCONTROLMAP_LOCAL::GetSSScoeff(float carspeed, float sss_velfactor, float sss_effect)
+float CARCONTROLMAP_LOCAL::GetSSScoeff(
+	float speed, float steer_range, float sss_velfactor, float sss_effect)
 {								//  m/s
-	float coeff = 1.f, carmph = carspeed * 2.23693629f;
-	if (carmph > 1.f)
-		coeff = std::max(1.f - sss_effect, 1.f - sss_velfactor * carspeed * 0.02f);
+	float coeff = 1.f, mph = speed * 2.23693629f;
+	if (mph > 1.f)
+		coeff = std::max(1.f - sss_effect, 1.f - sss_velfactor * speed * 0.02f);
 
 	//LogO("vel: "+fToStr(carspeed*3.6f,1,5)+"  sss: "+fToStr(coeff));
 	//val = val >= 0.f ? powf(val,1.5f) : -powf(-val,1.5f);
-	return coeff;
+	return steer_range * coeff;
 }
 
 
 ///  Process Input
 const std::vector <float> & CARCONTROLMAP_LOCAL::ProcessInput(
 	const float* channels, int player,
-	float carspeed, float sss_effect, float sss_velfactor,
+	float carspeed,
+	float sss_range, float sss_effect, float sss_velfactor,
 	bool oneAxisThrBrk, bool forceBrake,
 	bool bPerfTest, EPerfTest iPerfTestStage)
 {
@@ -75,9 +77,8 @@ const std::vector <float> & CARCONTROLMAP_LOCAL::ProcessInput(
 
 	//  steering
 	float val = forceBrake ? 0.f : (channels[A_Steering] * 2.f - 1.f);
-
-	if (sss_effect > 0.02f)
-		val *= GetSSScoeff(fabs(carspeed), sss_velfactor, sss_effect);
+	
+	val *= GetSSScoeff(fabs(carspeed), sss_range, sss_velfactor, sss_effect);
 
 	inputs[CARINPUT::STEER_RIGHT] = val > 0.f ?  val : 0.f;
 	inputs[CARINPUT::STEER_LEFT]  = val < 0.f ? -val : 0.f;

@@ -308,6 +308,7 @@ void CarModel::LoadConfig(const string & pathCar)
 		
 		whPos[i] = vec;
 	}
+	
 	//  steer angle
 	maxangle = 26.f;
 	cf.GetParamE("steering.max-angle", maxangle);

@@ -93,8 +93,8 @@ void CGui::InitGuiCar()
 
 
 	//  car setup  todo: for each player ..
-	Chk("CarABS",  chkAbs, pSet->abs[0]);  bchAbs = bchk;
-	Chk("CarTCS",  chkTcs, pSet->tcs[0]);  bchTcs = bchk;
+	Chk("CarABS",  chkAbs, pSet->abs);  bchAbs = bchk;
+	Chk("CarTCS",  chkTcs, pSet->tcs);  bchTcs = bchk;
 
 	ck= &ckCarGear;		ck->Init("CarGear",		&pSet->autoshift);  Cev(Gear);
 	ck= &ckCarRear;		ck->Init("CarRear",		&pSet->autorear);   Cev(Gear);

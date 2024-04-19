@@ -73,9 +73,9 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	// todo: this for all cars
 	Param(c,w, "car1.autotrans", autoshift);
 	Param(c,w, "car1.autorear", autorear);		Param(c,w, "car1.autorear_inv", rear_inv);
-	for (int i=0; i <= 1; ++i)  // steering
-	{	std::string s = i==1 ? "A":"";
-		Param(c,w, "car1.abs"+s, abs[i]);		Param(c,w, "car1.tcs"+s, tcs[i]);
+	Param(c,w, "car1.abs", abs);		Param(c,w, "car1.tcs", tcs);
+	for (int i=0; i <= 2; ++i)  // steering
+	{	std::string s = i==2 ? "H" : i==1 ? "A" : "";
 		Param(c,w, "car1.sss_effect"+s, sss_effect[i]);
 		Param(c,w, "car1.sss_velfactor"+s, sss_velfactor[i]);
 		Param(c,w, "car1.steer_range"+s, steer_range[i]);

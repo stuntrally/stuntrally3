@@ -35,9 +35,9 @@ using namespace MyGUI;
 //   🚗 Car
 //---------------------------------------------------------------------
 void CGui::chkAbs(WP wp)
-{	if (pChall && !pChall->abs)  return;	ChkEv(abs[iTireSet]);	if (pGame)  pGame->ProcessNewSettings();	}
-void CGui::chkTcs(WP wp)
-{	if (pChall && !pChall->tcs)  return;	ChkEv(tcs[iTireSet]);	if (pGame)  pGame->ProcessNewSettings();	}
+{	if (pChall && !pChall->abs)  return;	ChkEv(abs);  if (pGame)  pGame->ProcessNewSettings();	}
+void CGui::chkTcs(WP wp)							/*[iTireSet]*/
+{	if (pChall && !pChall->tcs)  return;	ChkEv(tcs);  if (pGame)  pGame->ProcessNewSettings();	}
 
 void CGui::chkGear(Ck*)
 {
@@ -49,12 +49,14 @@ void CGui::btnSSSReset(WP)
 {
 	pSet->sss_effect[0] = 0.574f;  pSet->sss_velfactor[0] = 0.626f;
 	pSet->sss_effect[1] = 0.650f;  pSet->sss_velfactor[1] = 0.734f;
+	pSet->sss_effect[2] = 0.300f;  pSet->sss_velfactor[2] = 0.300f;
 	SldUpd_TireSet();  slSSS(0);
 }
 void CGui::btnSteerReset(WP)
 {
 	pSet->steer_range[0] = 1.00f;  pSet->steer_sim[0] = 0.71f;
 	pSet->steer_range[1] = 0.76f;  pSet->steer_sim[1] = 1.00f;
+	pSet->steer_range[2] = 0.90f;
 	SldUpd_TireSet();  slSSS(0);
 }
 
@@ -69,11 +71,12 @@ void CGui::slSSS(SV* sv)
 
 	std::vector<FloatPoint> points,grid;
 	float vmax = 300.f;  // kmh
-	const int ii = 200;
+	const int ii = 200, it = iTireSet;
 	int i;
 	for (i = 0; i <= ii; ++i)
 	{	float v = float(i)/ii * vmax / 3.6f;  // to m/s
-		float f = CARCONTROLMAP_LOCAL::GetSSScoeff(v, pSet->sss_velfactor[iTireSet], pSet->sss_effect[iTireSet]);
+		float f = CARCONTROLMAP_LOCAL::GetSSScoeff(
+			v, pSet->steer_range[it], pSet->sss_velfactor[it], pSet->sss_effect[it]);
 		points.push_back(FloatPoint(v * xs, yo - yo * f));
 	}
 	graphSSS->setPoints(points);
@@ -99,8 +102,8 @@ void CGui::tabTireSet(Tab, size_t id)
 {
 	iTireSet = id;
 	SldUpd_TireSet();
-	bchAbs->setStateSelected(pSet->abs[id]);
-	bchTcs->setStateSelected(pSet->tcs[id]);
+	// bchAbs->setStateSelected(pSet->abs);
+	// bchTcs->setStateSelected(pSet->tcs);
 	slSSS(0);
 }
 

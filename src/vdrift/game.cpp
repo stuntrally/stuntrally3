@@ -524,14 +524,12 @@ void GAME::UpdateCarInputs(CAR & car)
 	//  race countdown or loading
 	bool forceBrake = timer.waiting || timer.pretime > 0.f || app->iLoad1stFrames > -2;
 
-	int i = app->scn->sc->asphalt ? 1 : 0;
-	float sss_eff = pSet->sss_effect[i], sss_velf = pSet->sss_velfactor[i];
-	float carspeed = car.GetSpeedDir();  //car.GetSpeed();
-	//LogO(fToStr(car.GetSpeed(),2,6)+" "+fToStr(car.GetSpeedDir(),2,6));
+	const int si = car.dynamics.vtype != V_Car ? 2 : app->scn->sc->asphalt ? 1 : 0;
 
 	//  Input
 	app->input->mPlayerInputStateMutex.lock();
-	int id = std::min(MAX_Players-1, car.id);
+
+	const int id = std::min(MAX_Players-1, car.id);
 	for (int i=0; i < MAX_Players; ++i)
 	{
 		for (int a = 0; a < NumPlayerActions; ++a)
@@ -539,8 +537,11 @@ void GAME::UpdateCarInputs(CAR & car)
 	}
 	carinputs = controls.second.ProcessInput(
 		app->input->mPlayerInputState[id], car.id,
-		carspeed, sss_eff, sss_velf,  app->mInputCtrlPlayer[id]->mbOneAxisThrottleBrake,
+		car.GetSpeedDir(),
+		pSet->steer_range[si], pSet->sss_effect[si], pSet->sss_velfactor[si],
+		app->mInputCtrlPlayer[id]->mbOneAxisThrottleBrake,
 		forceBrake, app->bPerfTest, app->iPerfTestStage);
+
 	app->input->mPlayerInputStateMutex.unlock();
 
 	car.HandleInputs(carinputs, TickPeriod());
@@ -623,7 +624,7 @@ CAR* GAME::LoadCar(const string& pathCar, const string& carname,
 
 	if (!car->Load(app,  carconf, carname,
 		start_pos, start_rot,  collision,
-		pSet->abs[0], pSet->tcs[0],
+		pSet->abs, pSet->tcs,
 		isRemote, idCar, false))
 	{
 		LogO("-==- Error! loading CAR: "+carname);
@@ -659,9 +660,9 @@ void GAME::ProcessNewSettings()
 {
 	if (controls.first)
 	{
-		int i = app->scn->sc->asphalt ? 1 : 0;
-		controls.first->SetABS(pSet->abs[i]);
-		controls.first->SetTCS(pSet->tcs[i]);
+		// int i = app->scn->sc->asphalt ? 1 : 0;
+		controls.first->SetABS(pSet->abs);
+		controls.first->SetTCS(pSet->tcs);
 		controls.first->SetAutoShift(pSet->autoshift);
 		controls.first->SetAutoRear(pSet->autorear);
 		//controls.first->SetAutoClutch(settings->rear_inv);
@@ -722,7 +723,7 @@ void GAME::UpdateTimer()
 float GAME::GetSteerRange() const
 {
 	float range = pSet->steer_sim[pSet->gui.sim_mode == "easy" ? 0 : 1];
-	range *= pSet->steer_range[/*track.asphalt*/0];
+	// range *= pSet->steer_range[/*track.asphalt*/0];  //; -
 	return range;
 }
 #endif

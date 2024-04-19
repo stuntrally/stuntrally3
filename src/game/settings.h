@@ -106,13 +106,13 @@ public:
 
 
 	//---------------  car setup
-	bool abs[2] = {0,0}, tcs[2] = {0,0},  // [2] = 0 gravel 1 asphalt
+	bool abs = 0, tcs = 0,  // meh
 		autoshift = 1, autorear = 1, rear_inv = 1, show_mph = 0;
-	float sss_effect[2] = {0.574f, 0.65f},
-		sss_velfactor[2] = {0.626f, 0.734f};
+	float sss_effect[3] = {0.574f, 0.65f, 0.3f},
+		sss_velfactor[3] = {0.626f, 0.734f, 0.3f};
 	//  steering range multipliers
-	float steer_range[2] = {1.0, 0.76},  // gravel/asphalt
-			steer_sim[2] = {0.65, 0.90};  // simulation modes  0 easy 1 normal
+	float steer_range[3] = {1.0, 0.76, 0.9},  //  0 gravel  1 asphalt  2 hovers
+			steer_sim[2] = {0.65, 0.90};  // simulation modes  0 easy  1 normal
 	std::vector<int> cam_view;  // [MAX_Players]
 
 	//---------------  game config
