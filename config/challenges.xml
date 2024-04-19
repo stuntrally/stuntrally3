@@ -1433,11 +1433,11 @@ descr="Fly with spaceship through winding roads.">
 		<cartype names="Spaceship|Hover" />
 		<car names="O" />
 		<hud chkArrow="1" chkBeam="1" />
-		<pass avgPoints="5" />
+		<pass avgPoints="17" />
 		<tracks>
-			<t name="Grc12-KapabaRivers"/>
-			<t name="Sur7-UaraHills"/>
-			<t name="Jng23-FollowValley"/>
+			<t name="Grc12-KapabaRivers" passPoints="10" />
+			<t name="Sur7-UaraHills"     passPoints="20" />
+			<t name="Jng23-FollowValley" passPoints="14" />
 		</tracks>
 	</challenge>
 
@@ -1687,6 +1687,16 @@ descr="Few tracks driven with hovercraft.">
 		</tracks>
 	</challenge>
 
+	<challenge name="#80C040The incredible drone" ver="1" difficulty="3" type="9"
+descr="Incredibly fast drone on fast tracks.">
+		<sim boost="0" />
+		<car names="Q3" />
+		<pass avgPoints="11" factor="2" />
+		<tracks>
+			<t name="For1-Slippery"  passPoints="21" />
+			<t name="Wnt1-Wet"       passPoints="24" />
+		</tracks>
+	</challenge>
 
 
 <!--  🧪 Test 10 -->
@@ -1694,7 +1704,7 @@ descr="Few tracks driven with hovercraft.">
 
 	<challenge name="#C0C0C0Test#80C0FF 0#D0C080 prize" ver="1" difficulty="0" type="10"
 descr="Test Challenge 0, prize points">
-		<car names="HI" />
+		<car names="HI|H1|R3|BV|V2" />
 		<pass avgPoints="10" />
 		<tracks>
 			<t name="TestC4-Ow"   passPoints="7" />
@@ -1704,7 +1714,7 @@ descr="Test Challenge 0, prize points">
 	<challenge name="#C0C0C0Test#A0D0FF 1#F0F080 pos" ver="1" difficulty="0" type="10"
 descr="Test Challenge 1, position pass. No rewind.">
 		<sim damage="0" boost="2" flip="2" rewind="0" />
-		<car names="HI" />
+		<car names="HI|H2|R2|BE|V3" />
 		<pass avgPos="2" />
 		<tracks>
 			<t name="TestC4-Ow"   passPos="5" />
@@ -1714,7 +1724,7 @@ descr="Test Challenge 1, position pass. No rewind.">
 	<challenge name="#C0C0C0Test#C0FFC0 2 #FFC080points" ver="1" difficulty="1" type="10"
 descr="Test Challenge 2, #FFC080points#C0FFC0 pass. #C0E0C0Car changing possible.">
 		<sim mode="normal" damage="1" boost="1" flip="1" carChng="1"/>
-		<car names="ES|HI" />
+		<car names="ES|HI|Q1|R1|V1" />
 		<pass avgPoints="8" factor="3" />
 		<tracks>
 			<t name="TestC6-Temp" passPoints="1"/>
@@ -1725,7 +1735,8 @@ descr="Test Challenge 2, #FFC080points#C0FFC0 pass. #C0E0C0Car changing possible
 	<challenge name="#C0C0C0Test#C0C0FF 3 all" ver="1" difficulty="1" type="10"
 descr="Test Challenge 3, #C0C0FFall pass conditions.#FFC0C0 No rewind.">
 		<sim mode="normal" damage="2" boost="0" flip="2" rewind="0" />
-		<cartype names="Gravel" />
+		<cartype names="Gravel|Drone" />
+		<car names="O" />
 		<pass totalTime="25" avgPoints="10" avgPos="4" />
 		<tracks>
 			<t name="TestC6-Temp" reversed="1" passTime="8" passPoints="6" passPos="10"/>
@@ -1737,12 +1748,23 @@ descr="Test Challenge 3, #C0C0FFall pass conditions.#FFC0C0 No rewind.">
 	<challenge name="#A0E0E0Test 4 laps, hud" ver="1" difficulty="2" type="10"
 descr="Test Challenge 4, 2 laps.
 			Allow checkpoint arrow,beam and abs,tcs. Deny pacenotes, trail and track's ghost. No damage repair.">
-		<cartype names="Extreme" />
+		<cartype names="Extreme|Hover|Drone" />
 		<sim abs="1" tcs="1" dmg_lap="0" />
 		<hud chkArrow="1" chkBeam="1" trkGhost="0" pacenotes="0" trail="0" />
 		<pass avgPos="5" />
 		<tracks>
 			<t name="TestC4-Ow"  laps="2" passPoints="5.0" />
+		</tracks>
+	</challenge>
+
+	<challenge name="#E0E0C0Test big #C0FFC0descr text" ver="1" difficulty="4" type="10"
+descr="Test Challenge 5, for Gui fit. Tracks with biggest descr and advice texts">
+		<car names="R2|Q3" />
+		<pass avgPoints="10" />
+		<tracks>
+			<t name="Jng26-MilkyWay"   passPoints="7" />
+			<t name="Isl21-BarrelFun"  passPoints="7" />
+			<t name="Mos6-TaraMosses"  passPoints="8" />
 		</tracks>
 	</challenge>
 

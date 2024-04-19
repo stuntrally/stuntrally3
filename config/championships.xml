@@ -810,6 +810,13 @@ descr="Really short and circular tracks. 2 Laps on each.">
 		<t name="TestC8-Align"		laps="2"/>
 	</champ>
 
+	<champ name="#E0E0C0Test big #C0FFC0descr text" ver="1" difficulty="4" type="7"
+descr="Test for Gui fit. Tracks with biggest descr and advice texts">
+		<t name="Jng26-MilkyWay"   />
+		<t name="Isl21-BarrelFun"  />
+		<t name="Mos6-TaraMosses"  />
+	</champ>
+	
 
 <!--  ALL  -->
 <!--========================================================================================================================-->
@@ -940,68 +947,13 @@ descr="Absolutely all rally tracks from game. Some easy pipes might appear.">
 		<t name="Can8-RedoPoka"/>
 		<t name="Can9-DukeRain"/>
 
+		<t name="Atm10-LakeCity"/>
+		<t name="Des19-Sandgrains"/>
+		<t name="Spr1-Rise"/>
+		<t name="Fin3-TreeTops"/>
 	</champ>
 
 	<!-- todo: add new tracks ^v 
-		<t name="Wnt1-Cross"/>
-		<t name="Wnt1-CrossLoop"/>
-		<t name="For9-MadMntnDark"/>
-		<t name="Isl3-IslandsNight"/>
-		<t name="Ano0-AnomalyFun"/>
-		<t name="Oth2-BlackWinter"/>
-		<t name="Aus9-RedDesert"/>
-		<t name="Grc10-BeachCity"/>
-		<t name="Isl15-IslandVillages"/>
-		<t name="Jng23-FollowValley"/>
-		<t name="Isl16-SandyMountain"/>
-		<t name="Can10-SandyCanyon"/>
-		<t name="Jng24-NightJungle"/>
-		<t name="For18-MountCaro"/>
-		<t name="Wnt18-MountPen"/>
-		<t name="Grc11-PickCave"/>
-		<t name="Jng25-CantorJungle"/>
-		<t name="Vlc13-BorVolcano"/>
-		<t name="For19-CrolKarstMntn"/>
-		<t name="Aus10-PreythCity"/>
-		<t name="Sur7-UaraHills"/>
-		<t name="Mos6-TaraMosses"/>
-		<t name="For20-LakoPine"/>
-		<t name="Grc12-KapabaRivers"/>
-		<t name="Grc13-YeleyStunts"/>
-		<t name="Aln4-EjeloOutpost"/>
-		<t name="Aln5-WhiteLemon"/>
-		<t name="Isl18-RoupaIsland"/>
-		<t name="Can8-RedoPoka"/>
-		<t name="Isl19-Shocacosh"/>
-		<t name="Can9-DukeRain"/>
-		<t name="Grc14-SquazeloLakes"/>
-		<t name="Atm10-LakeCity"/>
-		<t name="Isl20-Atlantis"/>
-		<t name="Blk2-Sawtooth"/>
-		<t name="Sur9-HexForest"/>
-		<t name="Cry4-Slide"/>
-		<t name="Mar2-Momayon"/>
-		<t name="Aln6-Overgrowth"/>
-		<t name="Ano1-Glitchy"/>
-		<t name="Mos8-MogFoss"/>
-
-		<t name="Des19-Sandgrains"/>
-		<t name="Mud6-Weiriwasso"/>
-		<t name="Jng26-MilkyWay"/>
-		<t name="Spr1-Rise"/>
-
-		<t name="Spc3-HyperLoops"/>
-		<t name="For21-StuntValley"/>
-		<t name="Isl21-BarrelFun"/>
-		<t name="Sav16-StuykoStunting"/>
-		<t name="Des20-DesertCoaster"/>
-		<t name="Stn2-UltraFrenzy"/>
-		<t name="Fin3-TreeTops"/>
-		<t name="Ano2-Bug"/>
-		<t name="Ano3-Oversize"/>
-		<t name="Cry5-CrystalIslands"/>
-		<t name="Apo1-TarFields"/>
-		<t name="Mar3-Plateaus"/>
 	-->
 	<champ name="ALL Stunt tracks" ver="1" difficulty="6" type="4"
 descr="Complete set of all stunt tracks from game. From easy, earliest to newest.">
@@ -1083,7 +1035,31 @@ descr="Complete set of all stunt tracks from game. From easy, earliest to newest
 		<t name="Aln5-WhiteLemon"/>
 		<t name="Isl18-RoupaIsland"/>
 		<t name="Isl19-Shocacosh"/>
-		
+
+		<t name="Wnt1-CrossLoop"/>
+		<t name="For9-MadMntnDark"/>
+		<t name="Isl20-Atlantis"/>
+		<t name="Blk2-Sawtooth"/>
+		<t name="Sur9-HexForest"/>
+		<t name="Cry4-Slide"/>
+		<t name="Mar2-Momayon"/>
+		<t name="Aln6-Overgrowth"/>
+		<t name="Ano1-Glitchy"/>
+		<t name="Mos8-MogFoss"/>
+		<t name="Mud6-Weiriwasso"/>
+		<t name="Jng26-MilkyWay"/>
+
+		<t name="Spc3-HyperLoops"/>
+		<t name="For21-StuntValley"/>
+		<t name="Isl21-BarrelFun"/>
+		<t name="Sav16-StuykoStunting"/>
+		<t name="Des20-DesertCoaster"/>
+		<t name="Stn2-UltraFrenzy"/>
+		<t name="Ano2-Bug"/>
+		<t name="Ano3-Oversize"/>
+		<t name="Cry5-CrystalIslands"/>
+		<t name="Apo1-TarFields"/>
+		<t name="Mar3-Plateaus"/>
 	</champ>
 
 </championships>
