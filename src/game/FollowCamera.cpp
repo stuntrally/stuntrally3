@@ -40,7 +40,8 @@ static float GetAngle(float x, float y)
 
 ///  💫 Update
 //-----------------------------------------------------------------------------------------------------
-void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLLISION_WORLD* world, bool bounce, bool sphere)
+void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLLISION_WORLD* world,
+	bool bounce, bool sphere, bool bounceLess)
 {
 	if (!posOut)  return;
 
@@ -247,8 +248,8 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 	//-------------------------------------------------------------------------------------------
 	Vector3 pp = camPosFinal;
 	if (bounce)
-		pp += posIn.camOfs * ca.mOfsMul
-			* gPar.camBncScale * pSet->cam_bnc_mul;
+		pp += posIn.camOfs * ca.mOfsMul * pSet->cam_bnc_mul *
+			(bounceLess ? gPar.camBncLess : gPar.camBncScale);
 	
 	Vector3 p = posGoal;  p.y += 1.f;  //up
 	//Vector3 d = camRotFinal * Vector3::UNIT_Z;  d.normalise();

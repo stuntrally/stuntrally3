@@ -391,10 +391,16 @@ void App::newPoses(float time)  // time only for camera update
 		{
 			int qn = (iCurPoses[c] + 1) % CarPosCnt;  // next index in queue
 			carPoses[qn][c] = pi;
+
+			auto vt = carM->vType;
 			//  🎥 update camera
 			if (carM->fCam)
-				carM->fCam->update(time, pi, &carPoses[qn][c], &pGame->collision,
-					!bRplPlay && pSet->cam_bounce, carM->vType == V_Sphere);
+				carM->fCam->update(
+					time, pi, &carPoses[qn][c], &pGame->collision,
+					!bRplPlay && pSet->cam_bounce,
+					vt == V_Sphere,
+					vt == V_Hovercar || vt == V_Drone || vt == V_Spaceship);  //V*
+
 			iCurPoses[c] = qn;  // atomic, set new index in queue
 			
 			//))  🔉🎥 upd sound camera

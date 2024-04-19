@@ -67,7 +67,8 @@ public:
 	#endif
 
 	///  💫 update, simulates camera  ----
-	void update(Ogre::Real time, const PosInfo& posInPrev, PosInfo* posOut, COLLISION_WORLD* world, bool bounce, bool sphere);
+	void update(Ogre::Real time, const PosInfo& posInPrev, PosInfo* posOut, COLLISION_WORLD* world,
+		bool bounce, bool sphere, bool bounceLess);
 	
 	//  apply, sets mCamera's pos and rot
 	void Apply(const PosInfo& posIn);

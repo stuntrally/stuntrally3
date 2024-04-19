@@ -1978,7 +1978,7 @@
 					<Property key="Colour" value="0.6 0.75 0.9"/>
 					<Property key="Alpha" value="0.7"/>
 					<Property key="InheritsAlpha" value="false"/>
-					<Widget type="EditBox" skin="EditBoxStretch" position="6 2 694 78" name="ChampDescr">
+					<Widget type="EditBox" skin="EditBoxEmpty" position="6 2 694 78" name="ChampDescr">
 						<Property key="TextColour" value="0.75 0.9 1.0"/>
 						<Property key="ReadOnly" value="true"/>
 						<Property key="MultiLine" value="true"/>

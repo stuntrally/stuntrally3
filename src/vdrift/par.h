@@ -33,8 +33,8 @@ struct SParams
 //  🎥 camera bounce sim
 	,camBncF, camBncFo, camBncFof
 	,camBncFHit,camBncFHitY
-	,camBncSpring, camBncDamp
-	,camBncScale, camBncMass;
+	,camBncSpring, camBncDamp, camBncMass
+	,camBncScale, camBncLess;
 
 //  take back time in rewind (for track's ghosts)
 	bool backTime;

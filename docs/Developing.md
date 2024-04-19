@@ -312,7 +312,7 @@ Code in `Grass.h` and `Grass_Mesh.cpp`.
 
 ## SR
 
-Rest of code that was same in SR 2.x. Only small changes when porting to SR3.
+Rest of code that was same in SR 2.x. Only small changes when porting to SR3. And new hovers since 3.1.
 
 ### Simulation 🚗
 
@@ -320,9 +320,12 @@ Game code in `Update_Poses.cpp` gets data from VDrift simulation (on 2nd thread)
 Rendering update calls `updatePoses(` to set vehicles (from carModels) to new poses.  
 
 VDrift simulation, main update code in `src/vdrift/cardynamics_update.cpp` in `void CARDYNAMICS::UpdateBody(`.  
-SR own code for non-car vehicles like: 🚀 Spaceship and 🔘 Sphere, is in `SimulateSpaceship(` and `SimulateSphere(`.  
 
-Few possible _ToDo:_ [here](https://stuntrally.tuxfamily.org/mantis/view.php?id=17).
+SR's own code for non-car vehicles are in: `SimulateSpaceship(` 🚀, `SimulateSphere(` 🔘, and all hovering in `SimulateHover(`.  
+Key places in code (that change simulation) for such special vehicles are marked with `//V*`.
+
+Few possible tasks _ToDo:_ [here](https://stuntrally.tuxfamily.org/mantis/view.php?id=17).
+
 
 ### Replay 📽️
 
