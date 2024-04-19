@@ -2079,7 +2079,7 @@
 
 			<Widget type="TabItem" skin="" position="2 24 794 562" name="TabTrack">
 				<Property key="Caption" value="#60E060#{Track}"/>
-				<Widget type="TextBox" skin="TextBox" position="176 516 200 24" name="TrackText">
+				<Widget type="TextBox" skin="TextBox" position="176 516 330 24" name="TrackText">
 					<Property key="InheritsAlpha" value="true"/>
 					<Property key="Colour" value="0 0 0"/>
 					<Property key="Caption" value="#{Track}"/>
@@ -2416,17 +2416,17 @@
 					<UserString key="tip" value="#{TipDrivability}"/>
 				</Widget>
 
-				<Widget type="Button" skin="Button" position="30 295 36 30" name="btnStagePrev">
+				<Widget type="Button" skin="Button" position="30 295 42 36" name="btnStagePrev">
 					<Property key="Colour" value="0.6 0.8 1.0"/>
 					<Property key="TextColour" value="0.6 0.8 1.0"/>
 					<Property key="Caption" value="&lt;"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="80 295 36 30" name="btnStageNext">
+				<Widget type="Button" skin="Button" position="80 295 42 36" name="btnStageNext">
 					<Property key="Colour" value="0.6 0.8 1.0"/>
 					<Property key="TextColour" value="0.6 0.8 1.0"/>
 					<Property key="Caption" value="&gt;"/>
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="55 220 130 25">
+				<Widget type="TextBox" skin="TextBox" position="55 220 120 25">
 					<Property key="TextColour" value="0.76 0.8 0.95"/>
 					<Property key="Caption" value="#{Stage}"/>
 				</Widget>
