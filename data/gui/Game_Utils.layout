@@ -34,13 +34,13 @@
 			<Property key="TextAlign" value="Left Top"/>
 		</Widget>
 
-		<Widget type="Button" skin="Button" position="294 544 154 46" name="btnChampStageBack">
+		<Widget type="Button" skin="Button" position="274 544 174 46" name="btnChampStageBack">
 			<Property key="Colour" value="0.47 0.47 0.47"/>
 			<Property key="TextColour" value="0.9 0.9 1"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="Caption" value="#{BackMenu}"/>
 		</Widget>
-		<Widget type="Button" skin="Button" position="488 544 154 46" name="btnChampStageStart">
+		<Widget type="Button" skin="Button" position="488 544 174 46" name="btnChampStageStart">
 			<Property key="Caption" value="#{Start}"/>
 			<Property key="Colour" value="0.6 0.8 1"/>
 			<Property key="TextColour" value="0.8 0.9 1"/>
@@ -83,7 +83,7 @@
 			<Property key="TextAlign" value="Left Top"/>
 		</Widget>
 
-		<Widget type="Button" skin="Button" position="286 410 164 40" name="btnChampEndClose">
+		<Widget type="Button" skin="Button" position="276 410 184 40" name="btnChampEndClose">
 			<Property key="Caption" value="#{Close}"/>
 			<Property key="Colour" value="0.6 0.8 1"/>
 			<Property key="TextColour" value="0.8 0.9 1"/>
@@ -110,13 +110,13 @@
 			<Property key="TextAlign" value="Left Top"/>
 		</Widget>
 
-		<Widget type="Button" skin="Button" position="294 544 154 46" name="btnChallStageBack">
+		<Widget type="Button" skin="Button" position="274 544 174 46" name="btnChallStageBack">
 			<Property key="Colour" value="0.45 0.46 0.47"/>
 			<Property key="TextColour" value="0.8 0.9 1"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="Caption" value="#{BackMenu}"/>
 		</Widget>
-		<Widget type="Button" skin="Button" position="488 544 154 46" name="btnChallStageStart">
+		<Widget type="Button" skin="Button" position="488 544 174 46" name="btnChallStageStart">
 			<Property key="Caption" value="#{Start}"/>
 			<Property key="Colour" value="0.6 1 0.8"/>
 			<Property key="TextColour" value="0.8 1 0.9"/>
@@ -164,7 +164,7 @@
 			<Property key="ImageTexture" value="ico_champ.png"/>
 		</Widget>
 		
-		<Widget type="Button" skin="Button" position="286 476 164 40" name="btnChallEndClose">
+		<Widget type="Button" skin="Button" position="276 476 184 40" name="btnChallEndClose">
 			<Property key="Caption" value="#{Close}"/>
 			<Property key="Colour" value="0.7 0.6 0.9"/>
 			<Property key="TextColour" value="0.9 0.8 1"/>

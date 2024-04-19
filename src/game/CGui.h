@@ -59,7 +59,6 @@ public:
 	void InitGui(), GuiUpdate();
 	void InitGuiCar(), InitGuiChamps();
 
-	Txt valTrkNet =0;
 	std::vector<Tab> vSubTabsGame, vSubTabsOpts, vSubTabsMat;
 	GuiPopup* popup =0;  // msg with edits
 
@@ -452,6 +451,7 @@ public:
 	void tabChampType(Tab, size_t), tabChallType(Tab, size_t);
 
 	//  🏞️ stages
+	Txt txTrkName =0;
 	Ed edChInfo =0, edChDesc =0;  WP panCh =0;
 	Txt txtCh =0, valCh =0, txtChName =0,
 		txtChP[3] ={0,0,0}, valChP[3] ={0,0,0};  // stages info, pass/progress

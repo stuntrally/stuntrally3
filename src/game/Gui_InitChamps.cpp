@@ -27,12 +27,12 @@ void CGui::InitGuiChamps()
 	int i,c;
 	app->mWndRaceBtns[1]->setVisible(pSet->difficulty < 4);  // tutorials
 
-	//  track stats 2nd set
+	//  track descr  2nd set
 	gcom->panTrkDesc[1] = fWP("panTrkDesc1");
 	gcom->trkDesc[1] = fEd("TrackDesc1");  gcom->trkAdvice[1] = fEd("TrackAdvice1");
-	valTrkNet = fTxt("TrackText");
+	txTrkName = fTxt("TrackText");
 
-	//  track stats text
+	//  track stats text  2nd set
 	for (i=0; i < gcom->StTrk; ++i)    gcom->stTrk[1][i] = fTxt("2st"+toStr(i));
 	for (i=0; i < gcom->ImStTrk; ++i)  gcom->imStTrk[1][i] = fImg("2ist"+toStr(i));
 	for (i=0; i < gcom->InfTrk; ++i)

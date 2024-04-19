@@ -247,6 +247,7 @@ void CGui::btnChallStageStart(WP)
 	{
 		LogO("|] Starting stage.");
 		app->mWndChallStage->setVisible(false);
+		app->updMouse();
 		pGame->pause = false;
 		pGame->timer.waiting = false;
 		pGame->timer.end_sim = false;
@@ -353,6 +354,7 @@ void CGui::ChallengeAdvance(float timeCur/*total*/)
 	//  show stage end [window]
 	ChallFillStageInfo(true);  // cur track
 	app->mWndChallStage->setVisible(true);
+	app->updMouse();
 
 	//  sound  🔉
 	if (passed)

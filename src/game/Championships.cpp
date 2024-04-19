@@ -302,6 +302,7 @@ void CGui::btnChampStageStart(WP)
 	{
 		LogO("|| Starting stage.");
 		app->mWndChampStage->setVisible(false);
+		app->updMouse();
 		pGame->pause = false;
 		pGame->timer.waiting = false;
 	}
@@ -384,6 +385,7 @@ void CGui::ChampionshipAdvance(float timeCur)
 	//  show stage end [window]
 	ChampFillStageInfo(true);  // cur track
 	app->mWndChampStage->setVisible(true);
+	app->updMouse();
 
 	//  sound  🔉
 	if (passed)

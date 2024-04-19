@@ -387,7 +387,7 @@ void CGui::listStageChng(MyGUI::MultiList2* li, size_t pos)
 	}
 	if (pSet->gui.champ_rev)  rev = !rev;
 
-	if (valTrkNet)  valTrkNet->setCaption(TR("#{Track}: ") + trk);
+	if (txTrkName)  txTrkName->setCaption(TR("#{Track}: ") + trk);
 	ReadTrkStatsChamp(trk, rev);
 	UpdDrivability(trk, 0);
 	gcom->sListTrack = trk;  gcom->bListTrackU = 0;
@@ -403,11 +403,13 @@ void CGui::Ch_LoadEnd()
 	{
 		ChampFillStageInfo(false);
 		app->mWndChampStage->setVisible(true);
+		app->updMouse();
 	}
 	if (pSet->game.chall_num >= 0)
 	{
 		ChallFillStageInfo(false);
 		app->mWndChallStage->setVisible(true);
+		app->updMouse();
 	}
 }
 
