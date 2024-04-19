@@ -356,16 +356,18 @@ if (bSound)
 
 
 		//  🪜 susp bump  ~~~
-		if (dynamics.vtype == V_Car)
+		auto vt = dynamics.vtype;
+		if (vt == V_Car || vt == V_Hovercraft)
 		{
-			suspbump[i].Update(suspVel[i], suspDisp[i], dt);
+			float mul = vt == V_Hovercraft ? 2.f : 1.f;  //par
+			suspbump[i].Update(suspVel[i] * mul, suspDisp[i] * mul, dt);
 			if (suspbump[i].JustSettled())
 			{
 				float bumpsize = suspbump[i].GetTotalBumpSize();
-				float gain = bumpsize * speed * 0.2f;  //par
+				float gain = mul * bumpsize * speed * 0.2f;  //par
 				gain = std::max(0.f, std::min(1.2f, gain));
 
-				if (gain > 0.2f && //!tirebump[i]->isAudible() &&
+				if (gain > 0.1f &&  //par  //!tirebump[i]->isAudible() &&
 					(gain > s.bumpvol[i] || s.bumptime[i] > 0.22f))
 				{
 					s.bumpvol[i] = gain;

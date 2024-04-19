@@ -156,7 +156,7 @@ camber = 0.0
 caster = 0.0
 toe = 0.0
 anti-roll = 26000.0
-factors-file = hover
+factors-file = hovercraft
 
 [ suspension-rear ]
 spring-constant = 9000.0
@@ -167,7 +167,7 @@ camber = 0.0
 caster = 0.0
 toe = 0.0
 anti-roll = 20000.0
-factors-file = hover
+factors-file = hovercraft
 
 
 #  tires (more in .tire)
