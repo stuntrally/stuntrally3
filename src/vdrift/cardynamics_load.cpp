@@ -122,7 +122,7 @@ bool CARDYNAMICS::Load(GAME* game, CONFIGFILE& c)
 			start_rpm, stall_rpm, fuel_consumption;
 		MATHVECTOR<double,3> position;
 		
-		if (!c.GetParamE("engine.sound", engine.sound_name))
+		if (!c.GetParam("engine.sound", engine.sound_name))
 			engine.sound_name = "engine";
 
 		if (!c.GetParam("turbo.sound", turbo.sound_name))

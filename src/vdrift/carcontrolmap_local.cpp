@@ -89,9 +89,9 @@ const std::vector <float> & CARCONTROLMAP_LOCAL::ProcessInput(
 	grUpOld[player] = grUp;  grDnOld[player] = grDn;
 	
 	//  other
-	inputs[CARINPUT::HANDBRAKE] = forceBrake ? 1.f : channels[A_HandBrake];
+	inputs[CARINPUT::HANDBRAKE] = forceBrake ? 0.f : channels[A_HandBrake];  // 1.f
 	inputs[CARINPUT::BOOST]     = forceBrake ? 0.f : channels[A_Boost];
-	inputs[CARINPUT::FLIP]      = forceBrake ? 0.f : channels[A_Flip]*2-1;
+	inputs[CARINPUT::FLIP]      = forceBrake ? 0.f : channels[A_Flip] * 2.f - 1.f;
 	
 	//  cam
 	inputs[CARINPUT::PREV_CAM]	= channels[A_PrevCamera];
