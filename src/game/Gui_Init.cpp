@@ -18,6 +18,7 @@
 // #include <OgreRoot.h>
 // #include <OgreWindow.h>
 #include <OgreOverlay.h>
+#include <OgreWindow.h>
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>
 using namespace MyGUI;
@@ -60,14 +61,14 @@ void CGui::InitGui()
 	Load("Game_Replay");  Load("Game_Tweak");
 
 
-	//  🪟 main windows  ----
+	//  🪟 main windows  [----]
 	app->mWndMain = fWnd("MainMenuWnd");  app->mWndRace = fWnd("RaceMenuWnd");
 	app->mWndGame = fWnd("GameWnd");  app->mWndReplays = fWnd("ReplaysWnd");
 	app->mWndHowTo = fWnd("HowToPlayWnd");
 	app->mWndHelp = fWnd("HelpWnd");  app->mWndOpts = fWnd("OptionsWnd");  // common
 	app->mWndMaterials = fWnd("MaterialsWnd");
 
-	//  dialog wnds  ----
+	//  dialog wnds  --[]--
 	app->mWndTrkFilt = fWnd("TrackFilterWnd");  app->mWndWelcome = fWnd("WelcomeWnd");
 
 	app->mWndChampStage = fWnd("WndChampStage");  app->mWndChampStage->setVisible(false);
@@ -78,6 +79,14 @@ void CGui::InitGui()
 	app->mWndNetEnd = fWnd("WndNetEnd");  app->mWndNetEnd->setVisible(false);
 	app->mWndTweak = fWnd("WndTweak");    app->mWndTweak->setVisible(false);
 	app->mWndTweak->setPosition(0,90);
+
+	//  center dialog wnds  --[]--
+	const int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
+	IntSize ws;
+	#define center(wnd)  ws = wnd->getSize();  wnd->setPosition((wx - ws.width) / 2, (wy - ws.height) / 2);
+	center(app->mWndChampStage)  center(app->mWndChampEnd)
+	center(app->mWndChallStage)  center(app->mWndChallEnd)
+	center(app->mWndNetEnd)
 
 
 	//  for find defines
