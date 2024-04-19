@@ -502,6 +502,7 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 			if (car)
 				ApplyWheelTorque(dt, drive_torque[i], i, tire_friction, wheel_orientation[i]);
 		}
+		if (car)  DampAtEnd();
 	}
 
 	body.Integrate2(dt);
@@ -652,8 +653,25 @@ void CARDYNAMICS::UpdateMass()
 	body.SetInertia( inertia );
 }
 
+//  damp all vehicles if  ----
+//  champ, chall ended or preview
+bool CARDYNAMICS::DampAtEnd()
+{
+	float edamp = gPar.carPrv > 0 ? -10000.f :
+		pGame->timer.end_sim ? -500.f : 0.f;
+	if (edamp < 0.f)
+	{
+		MATHVECTOR<Dbl,3> sv = GetVelocity();
+		ApplyForce(sv * edamp);
 
-///  🚤 Hovercraft
+		MATHVECTOR<Dbl,3> av = GetAngularVelocity();
+		ApplyTorque(av * edamp * 0.3f);
+		return true;
+	}
+	return false;
+}
+
+///  🚤 Hovercraft, Hovercar, Drone
 ///..........................................................................................................
 void CARDYNAMICS::SimulateHover(Dbl dt)
 {
@@ -704,17 +722,7 @@ void CARDYNAMICS::SimulateHover(Dbl dt)
 
 	//  todo  h > 0  align to ter normal ..
 
-	//  handbrake damping stop-
-	if (gPar.carPrv > 0)
-	{
-		MATHVECTOR<Dbl,3> sv = GetVelocity();
-		// (-Orientation()).RotateVector(sv);
-		ApplyForce(sv * -10000.f);
-
-		MATHVECTOR<Dbl,3> av = GetAngularVelocity();
-		ApplyTorque(av * -10000.f);
-		return;
-	}
+	if (DampAtEnd())  return;
 
 	//  side, vel damping  --
 	sv[0] *= hov.dampAirRes;
@@ -877,6 +885,8 @@ void CARDYNAMICS::SimulateSpaceship(Dbl dt)
 	Orientation().RotateVector(vg);
 	ApplyForce(vg);
 	// chassis->applyCentralForce(ToBulletVector(vg)); //-dn * fn * dmgE));
+
+	if (DampAtEnd())  return;
 }
 
 
@@ -916,6 +926,8 @@ void CARDYNAMICS::SimulateSphere(Dbl dt)
 			pipe = true;
 	}
 	const Dbl mul = 29.1;  //par
+
+	if (DampAtEnd())  return;
 
 	//  engine
 	//bool rear = false;  //transmission.GetGear() < 0;

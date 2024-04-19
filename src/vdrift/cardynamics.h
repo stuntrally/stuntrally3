@@ -190,7 +190,7 @@ public:
 	float hov_throttle = 0.f, hov_roll = 0.f;  // 🚀 spc
 
 	void SimulateSpaceship(Dbl dt), SimulateSphere(Dbl dt), SimulateHover(Dbl dt);
-	std::string sHov;
+	bool DampAtEnd();
 
 	///----  spaceship sim params (from .car)  ----
 	//  used all in SimulateSpaceship, few in SimulateSphere, few in SimulateHover
