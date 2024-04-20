@@ -29,7 +29,7 @@ See remarks on top of [build-sr3-Linux.py](../build-sr3-Linux.py) file.
 Download just the [build-sr3-Linux.py](../build-sr3-Linux.py) file, and put it inside `dev/`.
 
 Start this Python script, e.g. in terminal by:  
-`./build-sr-Linux.py`
+`python3 ./build-sr3-Linux.py`
 
 ## 4. Start StuntRally3
 
