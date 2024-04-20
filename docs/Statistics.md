@@ -2,7 +2,7 @@
 
 __This table shows all releases with their key counts and is meant for statistics purpose._
 
-Link to calculate [date difference](https://www.timeanddate.com/date/durationresult.html?d1=20&m1=12&y1=2023&d2=6&m2=4&y2=2024).
+Link to calculate [date difference](https://www.timeanddate.com/date/durationresult.html?d1=20&m1=12&y1=2023&d2=22&m2=4&y2=2024).
 
 | Legend                   |     |     | |
 |--------------------------|-----|-----|-|
@@ -10,14 +10,14 @@ Link to calculate [date difference](https://www.timeanddate.com/date/durationres
 | MB - size in MiB (based on installer) | g, e - new game / editor videos count | | |
 | **Tracks** - total Tracks count | new - tracks added (since previous) |  ren - tracks renewed (look) |del - old tracks deleted |
 | **Scn** - Sceneries count | New Sceneries - list of new sceneries introduced | | |
-| **Veh** - Vehicles count | New Vehicles - list of new vehicles added | | |
+| **Veh** - Vehicles count | new - vehicles added (since previous) | New Vehicles - list of new vehicles added | |
 | Changes - other big, noteworthy changes | | | |
 
 ### Statistics table
 
 |Version  | Date   |Days| MB  |g|e |Tracks |new|ren|del| Scn  |New Sceneries  |Vehicles|new|New Vehicles| Changes               |
 |---------|--------|----|-----|-|--|-------|---|---|---|------|---------------|--------|---|------------|-----------------------|
-|**3.1**  |  ?.4'24|>122|2100?| |3 |**229**| +1|30?|   |  41  |               | **33** | +8| R1,R2,R3, Q1,Q3, H1,H2, YG |       |
+|**3.1**  |  ?.4'24|>122|2100?| |3 |**229**| +1|>50|   |  41  |               | **33** | +8| R1,R2,R3, Q1,Q3, H1,H2, YG |       |
 |**3.0.1**|20.12'23| 17 |2100?| |  |**228**|   |   |   |  41  |               |   25   |   |            |                       |
 |**3.0**  | 3.12'23| 388|2098 |1|--|**228**|+26|153|-2 |  41  |               |   25   |   |            | OgreNext, PBS, Horizons     |
 |**2.8?** | --     |>388|2098?| |  |**227**|+25| 7 |-2 |  41  | Marble, Spring, Anomaly, PostApo |   25   |   |         |       |

@@ -197,6 +197,10 @@ Adding a line to tracks.ini at end, with your track's name (put it in original t
 See inside [tracks.ini](../config/tracks.ini) for more info about syntax and values.  
 Each rating is manually set by feeling and should be checked with other tracks to fit rest well.  
 
+After modifying a track (tracks3 PR was merged), you can edit [tracks.ini](../config/tracks.ini) and add yourself to authors (last `a:`)  
+and set modified date `dd/mm/yy` as today or to when it was done.
+
+
 ### Track's Ghost
 
 How to add Track's Ghost🏞️👻 drive to your new track.  
