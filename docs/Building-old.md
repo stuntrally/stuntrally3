@@ -29,6 +29,11 @@ First install Ogre dependencies, as in [here](https://github.com/OGRECave/ogre-n
 - We need Ogre-Next branch v3.0 now. So edit `build_ogre_linux_c++latest.sh` and replace in this top line:  
   `OGRE_BRANCH_NAME="master"` to `OGRE_BRANCH_NAME="v3-0"` and save file.
 
+- Also in same file we have to add `-D OGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS=1` 
+  in 2 lines starting with `cmake -D `...  
+  So they should start like:  
+	`cmake -D OGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS=1 `...
+
 - Go into `dev/` and start it:  
   ```
   cd dev/
@@ -42,8 +47,8 @@ First install Ogre dependencies, as in [here](https://github.com/OGRECave/ogre-n
   `dev/Ogre/ogre-next/build/Release/bin/`  
   It's good to check if they work before continuing.
 
-## 3.2 Ogre components, build
-- Important step, we need to have below 2 components built with Ogre.
+## 3.2 (optional) Ogre components, rebuild
+- Now *not needed*, optional step. We need to have below 2 components built with Ogre.
   
   In all existing / needed configurations (all 3 below):  
   _(Release is enough if all goes well, if not then Debug too)_
@@ -62,18 +67,12 @@ First install Ogre dependencies, as in [here](https://github.com/OGRECave/ogre-n
   have ON at end. _At least PLANAR_REFLECTIONS is not by default._
 
 - Now **build Ogre** again. So, in all existing / needed configurations (3 folders above),  
-  start `make -j6` or `ninja`, depends on what was used.  
+  start `ninja`  
+  _(or `make -j6` if that was used, but `-G Ninja` is in Ogre `.sh`)._  
   This will take less time than first time.  
   _If you want a full rebuild, do `make clean` or `ninja clean` before._
 
-- _Note:_ I'm not sure how to do this quicker (set both ON before 1st build).  
-  It would need setting TRUE in `Ogre/ogre-next/CMakeLists.txt` at end of line with:
-  ```
-  option( OGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS "Component to use planar reflections, can be used by both HlmsPbs & HlmsUnlit" TRUE )
-  ```
-  and option( OGRE_BUILD_COMPONENT_ATMOSPHERE has TRUE already.
-
-- _Optional note_.  
+- **Optional rebuild note.**  
   This (rebuild Ogre) step is also needed, after updating Ogre sources to latest (`git pull` in `Ogre/ogre-next/`).  
   Caution: if this was done later, after building MyGui and/or StuntRally3,  
   then you need to rebuild also MyGui and then StuntRally3.
