@@ -20,7 +20,12 @@ Basic setup for building C++ etc:
 Setup for Ogre dependencies (as in [here](https://github.com/OGRECave/ogre-next#dependencies-linux)):  
 `sudo apt-get install libfreetype6-dev libfreeimage-dev libzzip-dev libxrandr-dev libxcb-randr0-dev libxaw7-dev freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev libx11-xcb-dev libxcb-keysyms1-dev doxygen graphviz python-clang libsdl2-dev rapidjson-dev`
 
-## 3 Build all
+## 3. SR3 dependencies
+
+Needed to build SR3 itself:  
+`sudo apt-get install libbullet-dev libbullet-extras-dev libtinyxml2-dev libenet-dev libogg-dev libvorbis-dev libopenal-dev libboost-system-dev libboost-thread-dev`
+
+## 4. Build all
 
 First create a new folder `dev/` e.g. in your home dir (`mkdir dev`), and go into it (`cd dev/`).
 
@@ -31,30 +36,20 @@ Download just the [build-sr3-Linux.py](../build-sr3-Linux.py) file, and put it i
 Start this Python script, e.g. in terminal by:  
 `python3 ./build-sr3-Linux.py`
 
-## 4. Start StuntRally3
+## 5. Start StuntRally3
 
 If build succeeded, go into `sr3/bin/Release`  
 and start the executable:  
 `./sr-editor3` - for SR3 Track Editor  
 `./stuntrally3` - for SR3 game  
 
-## 5. Running
+## 6. Running
 
 For any crashes or issues, check logs inside:  
 `/home/user/.config/stuntrally3`  
-it has current logs and configs (_ed for SR3 Track Editor, without for SR3 game):
+it has current logs:
 ```
-editor.cfg - editor options
-game.cfg - game options
-
 Ogre.log - log from game
 Ogre_ed.log - log from editor
-
-ogre.cfg - Ogre start window, Render Systems setup
-ogre_ed.cfg - same, for editor
-
-MyGUI.log - MyGui logs from game and editor
-MyGUI_ed.log
 ```
-
-My folder tree with all key paths and files is at end of [Building-old](Building-old.md).
+More info and my folder tree with all key paths and files is at end of [Building-old](Building-old.md#9-running).

@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+#!/usr/bin/env python3
+#
 #  INFO:
 #  This script should get and build Stunt Rally 3 and its dependencies.
 #  On Linux. In Release mode. Tested on Debian 12.
@@ -40,6 +43,10 @@ print('===--- Start ')
 root = os.getcwd()
 print(root)
 
+if os.path.exists(data):
+	print('==-- Fail: data/ dir is present.')
+	print('==-- This script shouldn\'t be started inside git repo clone but in own new folder.')
+	exit()
 
 #  1  Ogre dir  -------------------------
 print('===--- Step 1:  ' + Ogre)

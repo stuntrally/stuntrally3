@@ -12,12 +12,12 @@ Guide below has setup steps for empty Debian 12:
 
 ## 1. Basic
 
-Basic setup for building C++ etc:  
+Basic setup for building C++ etc, need to run in terminal:  
 `sudo apt-get install g++ binutils gdb git make cmake ninja-build`
 
 ## 2. Setup dependencies
 
-First install Ogre dependencies, as in [here](https://github.com/OGRECave/ogre-next#dependencies-linux)  
+Next to install Ogre dependencies (as in [here](https://github.com/OGRECave/ogre-next#dependencies-linux)):  
 `sudo apt-get install libfreetype6-dev libfreeimage-dev libzzip-dev libxrandr-dev libxcb-randr0-dev libxaw7-dev freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev libx11-xcb-dev libxcb-keysyms1-dev doxygen graphviz python-clang libsdl2-dev`
 
 ## 3.1 Build Ogre-Next
@@ -81,7 +81,8 @@ First install Ogre dependencies, as in [here](https://github.com/OGRECave/ogre-n
 
 Get MyGui-Next, my fork of MyGui on branch `ogre3`.  
 I follow its build guide [here](https://github.com/cryham/mygui-next/tree/ogre3).  
-It needs to have set (should be by default):  
+
+No need to set, it is so by default:  
    - MYGUI_RENDERSYSTEM: 8 - Ogre 3.x
    - MYGUI_USE_FREETYPE: yes
    - all MYGUI_BUILD*: no
@@ -105,17 +106,14 @@ cmake ./../.. -DCMAKE_BUILD_TYPE="Release"
 make -j6
 ```
 
-## 5. Get deps for SR3
+## 5. Get SR3 dependencies
 
-We use [Conan](https://conan.io/) to get all deps (same as for original Stunt Rally), info on old [wiki here](https://stuntrally.tuxfamily.org/wiki/doku.php?id=compile) for CI builds.  
-This is optional but recommended, especially on Windows.  
-See [CMakeLists.txt](/CMakeLists.txt) and adjust if needed, it has some of my setup fixes, for SDL2, OpenAL etc.  
+We won't use Conan _(in step 7 we replace CI CMake files with manual ones that don't use Conan)._
 
-To get Conan: (needs Python3, is already present)  
-```
-sudo apt-get install python3-pip
-pip install conan
-```
+So we need to get all needed deps for SR3 installed first:
+
+`sudo apt-get install libbullet-dev libbullet-extras-dev libtinyxml2-dev libenet-dev libogg-dev libvorbis-dev libopenal-dev libboost-system-dev libboost-thread-dev`
+
 
 ## 6. Clone SR3
 
@@ -177,7 +175,7 @@ MyGUI_ed.log
 ```
 
 ----
-## My folder tree
+## 10. My folder tree
 
 For reference here are all key paths and files:
 ```

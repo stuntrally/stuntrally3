@@ -7,8 +7,8 @@ import re
 def get_dirs(dir):
 	return [name for name in os.listdir(dir) if os.path.isdir(os.path.join(dir, name))]
 
-#pre = '..';  # path
-pre = '.';  # path
+pre = '..';  # path
+#pre = '.';  # path
 tdir = pre+'/data/tracks'
 trks = get_dirs(tdir)
 #print(trks)
@@ -25,7 +25,7 @@ for line in times:
 		tr = r.split(line)
 		trk = tr[1]
 		#print(tr)
-		tim = tr[20]
+		tim = tr[21]
 		map[trk] = tim
 		print(trk + " " + tim)
 times.close()
