@@ -3,7 +3,7 @@
 #  On Linux. In Release mode. Tested on Debian 12.
 #
 #  It will clone repos: ogre-next-deps, ogre-next, mygui-next, stuntrally3 and tracks3.
-#  Note that this needs about 6 GB free space.
+#  Note that this needs about 6.5 GB free space.
 #
 #  It is meant to be placed and run in empty dir, not inside git repo clone.
 #  If it fails, next run will check and continue after done steps.
