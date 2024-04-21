@@ -31,7 +31,7 @@ This table lists all needed dependencies (libraries) for SR3:
 | Vorbis      | 1.3.7        | <https://xiph.org>                         | [Downloads](https://xiph.org/downloads/)                                  |
 | OpenAL Soft | 1.23.1       | <https://github.com/kcat/openal-soft>      | [tags](https://github.com/kcat/openal-soft/tags)                          |
 |             |              |                                            |                                                                           |
-| Ogre-Next, SDL2  | 3.0     | <https://www.ogre3d.org>                   | [git repo](https://github.com/OGRECave/ogre-next) not to Download, script |
+| Ogre-Next<br />has SDL2  | 3.0     | <https://www.ogre3d.org>                   | [git repo](https://github.com/OGRECave/ogre-next) not to Download, script |
 | MyGui-next  | 3.?          | <http://mygui.info/>                       | [git repo](https://github.com/cryham/mygui-next/)                         |
 
 Newer, latest versions can be used.  
@@ -109,6 +109,11 @@ and put it inside our root folder `c:\dev`
 We need Ogre-Next branch v3.0 now. So edit `build_ogre_Visual_Studio_16_2019_x64.bat` and replace in this top line:  
 `set OGRE_BRANCH_NAME=master"` to `set OGRE_BRANCH_NAME=v3-0` and save file.
 
+Also in same file we have to add `-D OGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS=1` 
+in 2 lines starting with `cmake -D `...  
+So they should start like:  
+`cmake -D OGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS=1 `...
+
 Then open cmd and start the `.bat`.
 
 This should succeed after a longer while and build Ogre-Next with its dependencies.
@@ -117,8 +122,8 @@ If so you can start and check Ogre demos and samples inside:
   `c:\dev\Ogre\ogre-next\build\bin\Release\`  
   It's good to check if they work before continuing.
 
-### 3.1 Ogre components, build
-- Important step, we need to have below 2 components built with Ogre.
+### 3.1 (Optional) Ogre components, rebuild
+- Now *not needed*, optional step. We need to have below 2 components built with Ogre.
   
   In `c:\dev\Ogre\ogre-next\build\`  
   edit the file `CMakeCache.txt` and be sure the lines:
@@ -134,13 +139,6 @@ If so you can start and check Ogre demos and samples inside:
   This will take less time than first in cmd.  
 
 ----
-- _Note:_ I'm not sure how to do this quicker (set both ON before 1st build).  
-  It would need setting TRUE in `Ogre/ogre-next/CMakeLists.txt` at end of line with:
-  ```
-  option( OGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS "Component to use planar reflections, can be used by both HlmsPbs & HlmsUnlit" TRUE )
-  ```
-  and option( OGRE_BUILD_COMPONENT_ATMOSPHERE has TRUE already.
-
 - _Optional note_.  
   This (rebuild Ogre) step is also needed, after updating Ogre sources to latest (`git pull` in `Ogre/ogre-next/`).  
   Caution: if this was done later, after building MyGui and/or StuntRally3,  
@@ -165,7 +163,7 @@ MyGui-Next is my fork of MyGui on branch `ogre3`.
 I follow its build guide [here](https://github.com/cryham/mygui-next/tree/ogre3).  
 _It isn't the latest, and was also based on fork._  
 
-It needs to have set (this should be by default):  
+No need to set, it is so by default:  
    - MYGUI_RENDERSYSTEM: 8 - Ogre 3.x
    - MYGUI_USE_FREETYPE: yes
    - all MYGUI_BUILD*: no

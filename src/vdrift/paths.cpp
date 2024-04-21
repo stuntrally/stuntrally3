@@ -231,7 +231,7 @@ void PATHS::Init(bool log_paths)
 		info << "User cfg,log: " << UserConfigDir() << endl;
 		info << "User data:    " << user_data << endl;
 		info << "Cache:        " << CacheDir() << endl;
-		info << "-------------";
+		info << "-------------" << endl;
 	}
 }
 

@@ -27,12 +27,13 @@
 Stunt Rally is a 3D racing game with own Track Editor.  
 Works on GNU/Linux and Windows.  
 
-The game has a **rally** style of driving and sliding, mostly on gravel,  
+The game has a **rally** style of driving cars and sliding, mostly on gravel,  
 with possible **stunt** elements (jumps, loops, pipes) and generated roads from 3D spline.  
-It also features few Sci-Fi vehicles and different planets🌌.
+It also features many Sci-Fi vehicles and different planets🌌.  
+All [tracks](https://stuntrally.tuxfamily.org/tracks3) and [vehicles](https://stuntrally.tuxfamily.org/cars) can be browsed on website.
 
-This SR 3.x is the continuation of old [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.x.  
-Using [Ogre-Next](https://github.com/OGRECave/ogre-next) for rendering and [VDrift](https://github.com/VDrift/vdrift) for simulation.
+SR 3.x is the continuation of old [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.x.  
+Using [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0 for rendering and [VDrift](https://github.com/VDrift/vdrift) for simulation.
 
 **Documentation** is now [inside docs/](docs/_menu.md) dir.
 
@@ -93,9 +94,8 @@ If needed do manual backup copies of track folder.
 ## ⚙️Building
 
 How to compile project from sources:  
-- On **Linux**  is described in [Building](docs/Building.md).  
-  Requires building Ogre-Next and MyGui fork from sources first.  
-- On **Windows** in [BuildingVS](docs/BuildingVS.md), building all dependecies from sources first.
+- On **Linux** is described in [Building](docs/Building.md) (Debian based). Provided script should do it.  
+- On **Windows** in [BuildingVS](docs/BuildingVS.md) (difficult), manually building all dependecies from sources first.
 
 ------------------------------------------------------------------------------
 

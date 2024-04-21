@@ -13,17 +13,17 @@ _By default CMakeLists.txt is using Conan for our [CI builds](https://github.com
 ## 1. Basic setup
 
 Basic setup for building C++ etc:  
-`sudo apt-get install g++ binutils gdb git make cmake ninja-build`
+`sudo apt-get -y install g++ binutils gdb git make cmake ninja-build`
 
 ## 2. Ogre dependencies
 
 Setup for Ogre dependencies (as in [here](https://github.com/OGRECave/ogre-next#dependencies-linux)):  
-`sudo apt-get install libfreetype6-dev libfreeimage-dev libzzip-dev libxrandr-dev libxcb-randr0-dev libxaw7-dev freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev libx11-xcb-dev libxcb-keysyms1-dev doxygen graphviz python-clang libsdl2-dev rapidjson-dev`
+`sudo apt-get -y install libfreetype6-dev libfreeimage-dev libzzip-dev libxrandr-dev libxcb-randr0-dev libxaw7-dev freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev libx11-xcb-dev libxcb-keysyms1-dev doxygen graphviz python-clang libsdl2-dev rapidjson-dev`
 
 ## 3. SR3 dependencies
 
 Needed to build SR3 itself:  
-`sudo apt-get install libbullet-dev libbullet-extras-dev libtinyxml2-dev libenet-dev libogg-dev libvorbis-dev libopenal-dev libboost-system-dev libboost-thread-dev`
+`sudo apt-get -y install libbullet-dev libbullet-extras-dev libtinyxml2-dev libenet-dev libogg-dev libvorbis-dev libopenal-dev libboost-system-dev libboost-thread-dev`
 
 ## 4. Build all
 

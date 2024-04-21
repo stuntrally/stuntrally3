@@ -13,12 +13,12 @@ Guide below has setup steps for empty Debian 12:
 ## 1. Basic
 
 Basic setup for building C++ etc, need to run in terminal:  
-`sudo apt-get install g++ binutils gdb git make cmake ninja-build`
+`sudo apt-get -y install g++ binutils gdb git make cmake ninja-build`
 
 ## 2. Setup dependencies
 
 Next to install Ogre dependencies (as in [here](https://github.com/OGRECave/ogre-next#dependencies-linux)):  
-`sudo apt-get install libfreetype6-dev libfreeimage-dev libzzip-dev libxrandr-dev libxcb-randr0-dev libxaw7-dev freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev libx11-xcb-dev libxcb-keysyms1-dev doxygen graphviz python-clang libsdl2-dev`
+`sudo apt-get -y install libfreetype6-dev libfreeimage-dev libzzip-dev libxrandr-dev libxcb-randr0-dev libxaw7-dev freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev libx11-xcb-dev libxcb-keysyms1-dev doxygen graphviz python-clang libsdl2-dev`
 
 ## 3.1 Build Ogre-Next
 
@@ -47,7 +47,7 @@ Next to install Ogre dependencies (as in [here](https://github.com/OGRECave/ogre
   `dev/Ogre/ogre-next/build/Release/bin/`  
   It's good to check if they work before continuing.
 
-## 3.2 (optional) Ogre components, rebuild
+## 3.2 (Optional) Ogre components, rebuild
 - Now *not needed*, optional step. We need to have below 2 components built with Ogre.
   
   In all existing / needed configurations (all 3 below):  
@@ -94,15 +94,15 @@ git clone https://github.com/cryham/mygui-next --branch ogre3 --single-branch
 cd mygui-next
 mkdir build
 cd build
-mkdir Debug
-cd Debug
-cmake ./../.. -DCMAKE_BUILD_TYPE="Debug"
-make -j6
-
-cd ..
 mkdir Release
 cd Release
 cmake ./../.. -DCMAKE_BUILD_TYPE="Release"
+make -j6
+
+cd ..
+mkdir Debug
+cd Debug
+cmake ./../.. -DCMAKE_BUILD_TYPE="Debug"
 make -j6
 ```
 
@@ -112,7 +112,7 @@ We won't use Conan _(in step 7 we replace CI CMake files with manual ones that d
 
 So we need to get all needed deps for SR3 installed first:
 
-`sudo apt-get install libbullet-dev libbullet-extras-dev libtinyxml2-dev libenet-dev libogg-dev libvorbis-dev libopenal-dev libboost-system-dev libboost-thread-dev`
+`sudo apt-get -y install libbullet-dev libbullet-extras-dev libtinyxml2-dev libenet-dev libogg-dev libvorbis-dev libopenal-dev libboost-system-dev libboost-thread-dev`
 
 
 ## 6. Clone SR3
