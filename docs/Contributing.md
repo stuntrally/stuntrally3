@@ -1,16 +1,16 @@
 # Contributing
 
-_How to participate in developing Stunt Rally 3 game or editor._
+_How to participate in developing Stunt Rally 3._
 
 Help is welcomed.  
 Thank you for all your contributions.
 
 Even smaller things count like:
-- Testing and reporting a bug.
-- Improving a translation to a language.
+- Testing and reporting bugs ([Issues on github](https://github.com/stuntrally/stuntrally/issues)).
+- Improving a translation to a language (on [Weblate](https://hosted.weblate.org/projects/stunt-rally-3/stunt-rally-3/), [Localization](Localization.md)).
 - Increasing popularity, spreading info about Stunt Rally 3 on internet (with link to our [website](https://stuntrally.tuxfamily.org/)).
-- Sharing an honest opinion, or idea on Forum.
-- Constructive discussion about features, etc.
+- Constructive discussions and honest opinions about features, etc.
+- Lastly new ideas (since already plenty in [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) and [Roadmap](Roadmap.md)).
 
 
 Below is a list (in no order, just my favorite 2 first)
@@ -19,10 +19,10 @@ of bigger focused contributions:
 ------------------------
 ## Programmers
 
-If you know C++, [Ogre-Next](https://forums.ogre3d.org/viewforum.php?f=25) (2 and up) or shaders,  
+If you know C++, [Ogre-Next](https://forums.ogre3d.org/viewforum.php?f=25) (3.0 and up) or shaders,  
 and preferably could handle some of the [Roadmap](Roadmap.md) tasks.  
 Details for tools and sources are in [Developing](Developing.md).  
-Own ideas could also go into SR, just need some discussion first.  
+Own ideas could also go into SR3, just need some discussion first.  
 Most ideas are already in [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php). Sorted by P (priority): 1 is most important, higher are less so.
 
 Medium changes can go through [pull requests](https://github.com/stuntrally/stuntrally/pulls).  

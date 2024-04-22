@@ -8,17 +8,22 @@
 
 ## Links
 
+### Main
 🌎[Stunt Rally Homepage](https://stuntrally.tuxfamily.org/) - Download links, track & vehicle browsers etc.  
 ⚙️[Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs & Issues, pull requests, etc.  
+📚[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md) - inside docs/, Information on many pages  
 
-🏛️[New Forum](https://groups.f-hub.org/stunt-rally/) - Discussions, Tracks, content, [how to join](https://groups.f-hub.org/d/2ftpShKs/) info on top.  
-📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - archive  
-💬Matrix chat room: #stuntrally:matrix.org  
-
-📚[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md) - is now inside docs/, Information on many pages  
+### Media
 🖼️[Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from all versions and development  
 ▶️[Videos](https://www.youtube.com/user/TheCrystalHammer) - from gameplay and editor  
 💜[Donations](https://cryham.tuxfamily.org/donate/) - financial support
+
+### Forum
+🏛️[New Forum](https://groups.f-hub.org/stunt-rally/) - Discussions, Tracks, content, [how to join](https://groups.f-hub.org/d/2ftpShKs/) info on top.  
+📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - archive  
+New:  
+🪧[Reddit](https://www.reddit.com/r/stuntrally/) - r/stuntrally/  
+💬Matrix chat room: #stuntrally:matrix.org  
 
 ------------------------------------------------------------------------------
 
@@ -39,7 +44,7 @@ Using [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0 for rendering and [
 
 ## 📊Features
 
-Stunt Rally 3 features 228 tracks in 41 sceneries and 25 vehicles.  
+Stunt Rally 3 features 229 tracks in 41 sceneries and 25 vehicles.  
 Game modes include:
 * ⏱️Single Race (with your Ghost drive, track car guide), Replays,
 * 🏆Challenges, Championships, Tutorials, (series of tracks)

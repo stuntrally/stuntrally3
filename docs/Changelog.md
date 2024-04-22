@@ -2,6 +2,7 @@
 
 This section lists changes not yet released, but committed to new repositories stuntrally3 and tracks3.  
 
+## Version 3.1
 
 - Game
   - 8 New vehicles (Sci-Fi)
@@ -10,6 +11,8 @@ This section lists changes not yet released, but committed to new repositories s
     - 2 antigravity drones: Q1 slower, Q3 incredibly fast and agile
     - 2 racing hovercrafts with propeller: H1, H2
     - fast car YG
+  - New speed sensitive steering tab and settings for Hover type vehicles on tab Setup - Steering
+    - Steering range multiplier(s) for Surface affect graph and whole group
 - Tracks
   - 1 New
   - **New skies**. Replaced all old 4k with new 8k ones on all tracks
@@ -24,7 +27,8 @@ This section lists changes not yet released, but committed to new repositories s
     - New tabs, settings, converters, [info here](EditorExportRoR.md).
 - Both
   - New tab Options - Screen - GUI with scales for font size and windows margin size, all need restart
-  - Screen and Video tabs with render system options, WIP, many not done or need restart  
+  - Screen and Video tabs with render system options, WIP few not done  
+    - Vsync works immediately, but Resolution, Fullscreen, Antialiasing need restart  
 - Updated docs
 - Added Japanese font and quick, basic translation (could be wrong)
 
