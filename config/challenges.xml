@@ -1676,7 +1676,7 @@ descr="Stunts with motorbikes.">
 <!--  🚀🏎️ Hover 9  3.1  H1,H2, R1,R2,R3, Q1,Q3  -->
 <!--========================================================================================================================-->
 
-	<challenge name="#F04040Hovercraft begin" ver="1" difficulty="2" type="9"
+	<challenge name="#F04040Hovercraft begin" ver="1" difficulty="1" type="9"
 descr="Few tracks driven with hovercraft, to start with the new vehicles. They ignore surfaces thanks to their own air cushion and go sideways always the same, also can steer in air.">
 		<sim boost="0" />
 		<cartype names="Hovercraft" />
@@ -1739,76 +1739,65 @@ descr="Hover cars on medium long tracks. Use boost and go very fast. Our anitgra
 		</tracks>
 	</challenge>
 
-	<challenge name="#F09060Hover #80C0FFunderwater #A0FFA0exploration" ver="1" difficulty="3" type="9"
-descr="Incredibly fast drone on tracks with underwater areas. They ignore fluids with antigravity, so it's easy and fast.">
-		<sim boost="3" flip="2" rewind="2" />
+	<challenge name="#F09060Hover #50B0FFunderwater #A0FFA0exploration" ver="1" difficulty="3" type="9"
+descr="For those who like underwater at normal speed. Our hover cars ignore fluids with antigravity. Now it's easy and fast to explore.">
+		<sim boost="2" flip="2" rewind="2" />
 		<cartype names="Hover" />
-		<pass avgPoints="15" factor="2" />
+		<pass avgPoints="23" factor="1" />
 		<tracks>
-			<t name="Isl20-Atlantis"   passPoints="15" />
-			<t name="Jng26-MilkyWay"   passPoints="15" />
+			<t name="Isl20-Atlantis"   passPoints="22" />
+			<t name="Jng26-MilkyWay"   passPoints="20" />
 		</tracks>
 	</challenge>
 
 	<challenge name="#FFC020Hover long exploration" ver="1" difficulty="3" type="9"
-descr="Incredibly fast drone on quite long tracks with possible stunts.">
-		<sim boost="3" flip="2" rewind="2" />
+descr="Long tracks endurance with hover cars. Thanks to these new vehicles it is much easier and faster to roam these tracks and do few stunts too.">
+		<sim boost="2" flip="2" rewind="2" />
 		<cartype names="Hover" />
-		<pass avgPoints="15" factor="2" />
+		<pass avgPoints="21" factor="1" />
 		<tracks>
-			<t name="Atm10-LakeCity"   passPoints="15" />
-			<t name="Mar2-Momayon"     passPoints="15" />
-			<t name="Wnt19-Downhill"   passPoints="15" />
+			<t name="Atm10-LakeCity"   passPoints="18" />
+			<t name="Wnt19-Downhill"   passPoints="21" />
+			<t name="Mar2-Momayon"     passPoints="17" />
 		</tracks>
 	</challenge>
 
-	<challenge name="#FFD090Hover stunts" ver="1" difficulty="4" type="9"
-descr="Few stunt tracks driven with hover cars.">
-		<sim boost="2" flip="2" />
+	<challenge name="#F0A060Hover #80FFC0stunts #80C0FFspace" ver="1" difficulty="3" type="9"
+descr="Few easy stunt tracks driven with hovercraft in space. Careful, go slower when narrow.">
+		<sim boost="1" flip="2" />
 		<cartype names="Hover" />
-		<pass avgPoints="11" factor="2" />
+		<pass avgPoints="13" factor="1" />
 		<tracks>
-			<t name="Cry4-Slide"    	passPoints="12" />
-			<t name="Isl21-BarrelFun"	passPoints="12" />
-		</tracks>
-	</challenge>
-
-	<challenge name="#F0A060Hover #80FFC0stunts #80C0FFspace" ver="1" difficulty="5" type="9"
-descr="Few stunt tracks driven with hovercraft. Very good for jumping but can cause trouble in loops or pipes, use flip also.">
-		<sim boost="2" flip="2" />
-		<cartype names="Hover" />
-		<pass avgPoints="11" factor="2" />
-		<tracks>
-			<t name="Aln4-EjeloOutpost" passPoints="12" />
-			<t name="Spc2-SpaceMine"	passPoints="12" />
+			<t name="Aln5-WhiteLemon"  passPoints="13" />
+			<t name="Spc2-SpaceMine"   passPoints="9" />
 		</tracks>
 	</challenge>
 
 	<challenge name="#FFC040Hover #80C0FFstunts #C060FFextreme" ver="1" difficulty="6" type="9"
-descr="Extreme stunt tracks driven with hover cars. Very good for jumping but can cause trouble in loops or pipes, use flip also.">
-		<sim boost="2" flip="2" />
+descr="Extreme stunt tracks driven with hover cars. Fast and good for jumping but they cause trouble in side loops, have to adjust with flip keys.">
+		<sim damage="1" boost="2" flip="2" rewind="2" />
 		<cartype names="Hover" />
-		<pass avgPoints="11" factor="2" />
+		<pass avgPoints="10" factor="2" />
 		<tracks>
-			<t name="Cry3-BlueHell"		passPoints="12" />
-			<t name="Uni7-GlassStair"	passPoints="12" />
-			<t name="Spc3-HyperLoops"	passPoints="12" />
+			<t name="Cry3-BlueHell"		passPoints="8" />
+			<t name="Uni7-GlassStairs"	passPoints="13" />
+			<t name="Spc3-HyperLoops"	passPoints="7" />
 		</tracks>
 	</challenge>
 
 	<!-- Drone -->
-	<challenge name="#FF90E0Strange #7020FFexploration" ver="1" difficulty="3" type="9"
-descr="First drone surveilace on bizarre tracks. Environments where it's difficult to find yourself around, and easy to get lost. No way to ask for directions either. We aim at good location observations. Also go slowly to not damage our new equipment.">
+	<challenge name="#FF90E0Strange #7020FFexploration" ver="1" difficulty="5" type="9"
+descr="First drone surveilace on bizarre tracks. Environments where it's difficult to find yourself around, and easy to get lost. No way to ask for directions either. We aim at good location observations. Go slowly to not damage our new equipment.">
 		<sim boost="2" flip="2" rewind="2" />
 		<car names="Q3" />
-		<pass avgPoints="11" factor="2" />
+		<pass avgPoints="13" factor="3" />
 		<tracks>
-			<t name="Ano1-Glitchy"     passPoints="6" />
-			<t name="Aln6-Overgrowth"  passPoints="5" />
-			<t name="Ano2-Bug"  	   passPoints="6" />
-			<t name="Sur9-HexForest"   passPoints="4" />
-			<t name="Blk2-Sawtooth"    passPoints="8" />
-			<t name="Sur5-FreshBreeze" passPoints="12" />
+			<t name="Ano1-Glitchy"     passPoints="12" />
+			<t name="Aln6-Overgrowth"  passPoints="6" />
+			<t name="Ano2-Bug"  	   passPoints="4" />
+			<t name="Sur9-HexForest"   passPoints="8" />
+			<t name="Blk2-Sawtooth"    passPoints="14" />
+			<t name="Sur5-FreshBreeze" passPoints="16" />
 		</tracks>
 	</challenge>
 
@@ -1816,22 +1805,22 @@ descr="First drone surveilace on bizarre tracks. Environments where it's difficu
 descr="Incredibly fast drone on fast tracks. Rewind time works.">
 		<sim boost="0" flip="2" rewind="2" />
 		<car names="Q3" />
-		<pass avgPoints="11" factor="2" />
+		<pass avgPoints="27" factor="2" />
 		<tracks>
-			<t name="For1-Slippery"  passPoints="21" />
-			<t name="Wnt2-Wet"       passPoints="24" />
-			<t name="Isl5-Shore"     passPoints="9" />
+			<t name="For1-Slippery"  passPoints="22" />
+			<t name="Wnt2-Wet"       passPoints="28" />
+			<t name="Isl5-Shore"     passPoints="20" />
 		</tracks>
 	</challenge>
 
-	<challenge name="#A0FF60Incredible drone long" ver="1" difficulty="4" type="9"
-descr="Incredibly fast drone on quite long tracks with possible stunts.">
+	<challenge name="#A0FF60Incredible drone long" ver="1" difficulty="3" type="9"
+descr="Incredibly fast drone on quite long tracks, with rare stunts. Really fast flight, much faster than any other vehicles.">
 		<sim boost="3" flip="2" rewind="2" />
 		<car names="Q3" />
-		<pass avgPoints="15" factor="2" />
+		<pass avgPoints="21" factor="1" />
 		<tracks>
 			<t name="Isl13-Beauty"   passPoints="19" />
-			<t name="Mos8-MogFoss"   passPoints="16" />
+			<t name="Mos8-MogFoss"   passPoints="19" />
 		</tracks>
 	</challenge>
 
