@@ -6,12 +6,11 @@
 	-->
 	<!-- on:  0 off  1 on  2 main -->
 
-	<Camera on="1" name="Car ground"        type="3"  bounce="0.0" offset="0  0.4 -1.6" />
-	<Camera on="2" name="Car bonnet"        type="3"  bounce="0.1" offset="0  0.5 -0.8" />
+	<Camera on="1" name="Car ground"        type="3"  bounce="0.0" offset="0  0.41 -1.61" />  <!-- first 3 offset set from .car -->
+	<Camera on="2" name="Car bonnet"        type="3"  bounce="0.1" offset="0  0.51 -0.81" />
 
-	<Camera on="1" name="Car driver"        type="3"  bounce="0.25" offset="-0.4 0.5 0.1"  hideGlass="1" />
+	<Camera on="1" name="Car driver"        type="3"  bounce="0.25" offset="-0.41 0.51 0.11"  hideGlass="1" />
 	<Camera on="0" name="Car driver"        type="3"  bounce="0.25" offset="-0.4 0.86 0.3" />
-	<Camera on="0" name="Car roof"          type="3"  bounce="0.0" offset="0  1.1  0.0" />
 	<Camera on="0" name="Car top"           type="3"  bounce="0.0" offset="0  1.2  0.0" />
 
 	<Camera on="1" name="Car left"          type="3"  bounce="0.3" offset="-1.5 0.35 2.6" />
