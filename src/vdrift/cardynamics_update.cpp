@@ -131,6 +131,8 @@ void CARDYNAMICS::UpdateBuoyancy()
 				//  wheel plane distance  water.plane.normal.z = 1  water.plane.offset = fl.pos.y;
 				whH[w] = (wheelpos[2] - fb->pos.y) * -0.5f / whR;
 				whH[w] = std::max(0.f, std::min(1.f, whH[w]));
+				if (vtype == V_Hovercraft)
+					whH[w] *= 0.1f;  //V*  less water particles and sound
 
 				if (fp.bWhForce)
 				{

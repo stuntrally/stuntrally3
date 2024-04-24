@@ -438,8 +438,10 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 			if (ps)  //  Water ~
 			{
 				float vel = posInfo.speed;  // depth.. only on surface?
-				bool e = idPar == 0 && ghPar &&  vel > 10.f && posInfo.whH[w] < 1.f;
-				float emitW = e ?  std::min(80.f, 5.0f * vel)  : 0.f;
+				float whH = posInfo.whH[w];  //V*  less on water
+				float mul = vType == V_Hovercraft ? (0.1f + 0.2f*whH) : (0.1f + 0.9f*whH);
+				bool e = idPar == 0 && ghPar &&  vel > 10.f && whH < 1.f;
+				float emitW = e ?  std::min(80.f, 5.0f * vel) * mul  : 0.f;
 
 				ParticleEmitter* pe = ps->getEmitter(0);
 				pe->setPosition(vpos + posInfo.carY * wR*0.51f);
