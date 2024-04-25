@@ -491,11 +491,6 @@ void CGui::InitGui()
 	Edt(edNetLocalPort,	"edNetLocalPort",	evEdNetLocalPort);	edNetLocalPort->setCaption(	toStr(pSet->local_port));
 
 
-	//  user dir
-	Ed edUserDir = fEd("EdUserDir");
-	edUserDir->setCaption(PATHS::UserConfigDir());
-
-
 	///  🕹️ Input tab  -------
 	InitInputGui();
 
@@ -556,6 +551,13 @@ void CGui::InitGui()
 	sv= &svFntHud;		sv->Init("FntHud",		&pSet->font_hud,   0.6f, 1.5f);  sv->DefaultF(1.f);
 	sv= &svFntTimes;	sv->Init("FntTimes",	&pSet->font_times, 0.6f, 1.5f);  sv->DefaultF(1.f);
 
+
+	//  user dir
+	Ed edUserDir = fEd("EdUserDir");
+	edUserDir->setCaption(PATHS::UserConfigDir());
+
+	edOpenUrl = fEd("OpenUrl");
+	edOpenUrl->setCaption("https://stuntrally.tuxfamily.org/");
 
 	//  🔗 open url btns  -------------
 	Btn("BtnTrackEditor", btnTrackEditor);

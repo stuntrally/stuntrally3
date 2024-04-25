@@ -369,38 +369,44 @@ void CGui::btnWelcome(WP)
 {
 	app->mWndWelcome->setVisible(true);
 }
+
+void CGui::Url(const string& url)
+{
+	edOpenUrl->setCaption(url);
+	PATHS::OpenUrl(url);
+}
 void CGui::btnWebsite(WP)
 {
-	PATHS::OpenUrl("https://stuntrally.tuxfamily.org/");
+	Url("https://stuntrally.tuxfamily.org/");
 }
 void CGui::btnWiki(WP)
 {
-	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md");
+	Url("https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md");
 }
 void CGui::btnWikiInput(WP)
 {
-	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally3/blob/main/docs/Running.md#controllers");
+	Url("https://github.com/stuntrally/stuntrally3/blob/main/docs/Running.md#controllers");
 }
 
 void CGui::btnForum(WP)
 {
-	PATHS::OpenUrl("https://groups.f-hub.org/stunt-rally/");
+	Url("https://groups.f-hub.org/stunt-rally/");
 }
 void CGui::btnSources(WP)
 {
-	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally3");
+	Url("https://github.com/stuntrally/stuntrally3");
 }
 void CGui::btnEdTut(WP)
 {
-	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally3/blob/main/docs/Editor.md");
+	Url("https://github.com/stuntrally/stuntrally3/blob/main/docs/Editor.md");
 }
 void CGui::btnTransl(WP)
 {
-	PATHS::OpenUrl("https://github.com/stuntrally/stuntrally3/blob/main/docs/Localization.md");
+	Url("https://github.com/stuntrally/stuntrally3/blob/main/docs/Localization.md");
 }
 void CGui::btnDonations(WP)
 {
-	PATHS::OpenUrl("https://cryham.tuxfamily.org/donate/");
+	Url("https://cryham.tuxfamily.org/donate/");
 }
 
 

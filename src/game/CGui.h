@@ -574,7 +574,10 @@ public:
 	//  fonts
 	SV svFntWnd, svFntGui, svFntHud, svFntTimes;
 
-	//  🔗 open urls
+	//  🔗 open urls  ----
+	Ed edOpenUrl =0;
+	void Url(const std::string& url);
+
 	void btnTrackEditor(WP);  // start ed exe
 	void btnWelcome(WP), btnWebsite(WP), btnWiki(WP), btnWikiInput(WP);
 	void btnForum(WP), btnSources(WP), btnEdTut(WP), btnTransl(WP), btnDonations(WP);
