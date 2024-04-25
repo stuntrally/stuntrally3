@@ -16,7 +16,7 @@ This section lists changes not yet released, but committed to new repositories s
 - Tracks
   - 1 New
   - **New skies**. Replaced all old 4k with new 8k ones on all tracks
-  - Many updated with new horizons, few with objects etc
+  - Many updated with new **horizons**, few with objects etc
 - Editor
   - WIP New video tutorials, on [Editor page](Editor.md)
   - Changing object material, sets defined in `presets.xml`

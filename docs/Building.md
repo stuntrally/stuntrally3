@@ -1,18 +1,18 @@
 ## About
 
-How to build on Windows is on other [page](BuildingVS.md).
+How to build on Windows is on other [page](BuildingVS.md) _(way longer and more difficult)_.
 
-This page describes how to *quickly* build Stunt Rally 3 on **Linux** (Debian-based), using provided .py script.  
-
+This page describes how to *quickly* build Stunt Rally 3 on **Linux** (Debian-based), using provided `.py` script.  
 _There is a detailed page [Building-old](Building-old.md) with all steps done manually without .py script._  
 
-Tested on GNU/Linux, Debian 12. It should work on Debian-based (like Ubuntu etc).  
+It should work on Debian-based (like Ubuntu etc).  
+Tested on GNU/Linux: Debian 12 and Kubuntu 20.04.  
 
 _By default CMakeLists.txt is using Conan for our [CI builds](https://github.com/stuntrally/stuntrally3/actions) (and its CMake setup from this [PR here](https://github.com/stuntrally/stuntrally3/pull/1))._  
 
 ## 1. Basic setup
 
-Basic setup for building C++ etc:  
+Basic setup for building C++ etc. Start in terminal:  
 `sudo apt-get -y install g++ binutils gdb git make cmake ninja-build`
 
 ## 2. Ogre dependencies

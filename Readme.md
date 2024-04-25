@@ -44,7 +44,7 @@ Using [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0 for rendering and [
 
 ## 📊Features
 
-Stunt Rally 3 features 229 tracks in 41 sceneries and 25 vehicles.  
+Stunt Rally 3 features 229 tracks in 41 sceneries and 33 vehicles.  
 Game modes include:
 * ⏱️Single Race (with your Ghost drive, track car guide), Replays,
 * 🏆Challenges, Championships, Tutorials, (series of tracks)

@@ -7,7 +7,7 @@ Link to calculate [date difference](https://www.timeanddate.com/date/durationres
 | Legend                   |     |     | |
 |--------------------------|-----|-----|-|
 | **Version** - SR Version | Date - Day.Month'Year | Days - days since previous release | |
-| MB - size in MiB (based on installer) | g, e - new game / editor videos count | | |
+| MB - size in MB (installed) | g, e - new game / editor videos count | | |
 | **Tracks** - total Tracks count | new - tracks added (since previous) |  ren - tracks renewed (look) |del - old tracks deleted |
 | **Scn** - Sceneries count | New Sceneries - list of new sceneries introduced | | |
 | **Veh** - Vehicles count | new - vehicles added (since previous) | New Vehicles - list of new vehicles added | |
@@ -17,7 +17,7 @@ Link to calculate [date difference](https://www.timeanddate.com/date/durationres
 
 |Version  | Date   |Days| MB  |g|e |Tracks |new|ren|del| Scn  |New Sceneries  |Vehicles|new|New Vehicles| Changes               |
 |---------|--------|----|-----|-|--|-------|---|---|---|------|---------------|--------|---|------------|-----------------------|
-|**3.1**  |  ?.4'24|>122|2100?| |3 |**229**| +1|>50|   |  41  |               | **33** | +8| R1,R2,R3, Q1,Q3, H1,H2, YG |       |
+|**3.1**  |25.04'24| 127|2391 | |3 |**229**| +1|>50|   |  41  |               | **33** | +8| R1,R2,R3, Q1,Q3, H1,H2, YG |       |
 |**3.0.1**|20.12'23| 17 |2100?| |  |**228**|   |   |   |  41  |               |   25   |   |            |                       |
 |**3.0**  | 3.12'23| 388|2098 |1|--|**228**|+26|153|-2 |  41  |               |   25   |   |            | OgreNext, PBS, Horizons     |
 |**2.8?** | --     |>388|2098?| |  |**227**|+25| 7 |-2 |  41  | Marble, Spring, Anomaly, PostApo |   25   |   |         |       |
