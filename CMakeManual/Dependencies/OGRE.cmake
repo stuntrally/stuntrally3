@@ -55,7 +55,8 @@ macro( findPluginAndSetPath BUILD_TYPE CFG_VARIABLE LIBRARY_NAME )
 		endif()
 
 		# Copy the DLLs to the folders.
-		copyWithSymLink( ${REAL_LIB_PATH} "${CMAKE_SOURCE_DIR}/bin/${BUILD_TYPE}/Plugins" )
+		### copyWithSymLink( ${REAL_LIB_PATH} "${CMAKE_SOURCE_DIR}/bin/${BUILD_TYPE}/Plugins" )
+		copyWithSymLink( ${REAL_LIB_PATH} "${CMAKE_SOURCE_DIR}/bin/${BUILD_TYPE}" )
 	endif()
 endmacro()
 
@@ -105,7 +106,7 @@ macro( setupPluginFileFromTemplate BUILD_TYPE OGRE_USE_SCENE_FORMAT OGRE_USE_PLA
 	# On non-Windows machines, we can only do Plugins for the current build.
 	if( WIN32 OR OGRE_BUILD_TYPE_MATCHES )
 		if( NOT APPLE )
-			file( MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/${BUILD_TYPE}/Plugins" )
+			### file( MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/${BUILD_TYPE}/Plugins" )
 		endif()
 
 		findPluginAndSetPath( ${BUILD_TYPE} OGRE_PLUGIN_RS_D3D11	RenderSystem_Direct3D11 )
@@ -113,13 +114,14 @@ macro( setupPluginFileFromTemplate BUILD_TYPE OGRE_USE_SCENE_FORMAT OGRE_USE_PLA
 		findPluginAndSetPath( ${BUILD_TYPE} OGRE_PLUGIN_RS_PARTICLE	Plugin_ParticleFX )
 		findPluginAndSetPath( ${BUILD_TYPE} OGRE_PLUGIN_RS_VULKAN	RenderSystem_Vulkan )
 
-		if( ${BUILD_TYPE} STREQUAL "Debug" )
-			configure_file( ${CMAKE_SOURCE_DIR}/CMake/Templates/Plugins.cfg.in
-							${CMAKE_SOURCE_DIR}/bin/${BUILD_TYPE}/plugins_d.cfg )
-		else()
-			configure_file( ${CMAKE_SOURCE_DIR}/CMake/Templates/Plugins.cfg.in
-							${CMAKE_SOURCE_DIR}/bin/${BUILD_TYPE}/plugins.cfg )
-		endif()
+		###  DON'T ---- SR3 has own files
+		# if( ${BUILD_TYPE} STREQUAL "Debug" )
+		# 	configure_file( ${CMAKE_SOURCE_DIR}/CMake/Templates/Plugins.cfg.in
+		# 					${CMAKE_SOURCE_DIR}/bin/${BUILD_TYPE}/plugins_d.cfg )
+		# else()
+		# 	configure_file( ${CMAKE_SOURCE_DIR}/CMake/Templates/Plugins.cfg.in
+		# 					${CMAKE_SOURCE_DIR}/bin/${BUILD_TYPE}/plugins.cfg )
+		# endif()
 
 		# Copy
 		# "${OGRE_BINARIES}/bin/${BUILD_TYPE}/OgreMain.dll" to "${CMAKE_SOURCE_DIR}/bin/${BUILD_TYPE}
@@ -195,7 +197,8 @@ function( setupResourceFileFromTemplate )
 	else()
 		set( OGRE_MEDIA_DIR "../../" )
 	endif()
-	configure_file( ${CMAKE_SOURCE_DIR}/CMake/Templates/Resources.cfg.in ${CMAKE_SOURCE_DIR}/bin/Data/resources2.cfg )
+	###  DON'T ---- SR3 has own
+	#configure_file( ${CMAKE_SOURCE_DIR}/CMake/Templates/Resources.cfg.in ${CMAKE_SOURCE_DIR}/bin/Data/resources2.cfg )
 endfunction()
 
 #----------------------------------------------------------------------------------------
@@ -381,7 +384,8 @@ set( OGRE_LIBRARIES_OUT ${OGRE_LIBRARIES} )
 
 # Plugins.cfg
 if( NOT APPLE )
-	set( OGRE_PLUGIN_DIR "Plugins" )
+	### set( OGRE_PLUGIN_DIR "Plugins" )
+	set( OGRE_PLUGIN_DIR "." )
 endif()
 
 ### = changed by CryHam
