@@ -3,7 +3,7 @@
 #
 #  INFO:
 #  This script should get and build Stunt Rally 3 and its dependencies.
-#  On Linux. In Release mode. Tested on Debian 12.
+#  On Linux. In Release mode. Tested on Debian 12 and Kubuntu 20.04.
 #
 #  It will clone repos: ogre-next-deps, ogre-next, mygui-next, stuntrally3 and tracks3.
 #  Note that this needs about 6.5 GB free space.

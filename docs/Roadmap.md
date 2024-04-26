@@ -10,7 +10,8 @@ Marked: <u>critical</u>, `crucial`, **Next or Big**, _Important_.
 ----
 ### Ogre cd restore
 
-- 🌊 Water tweak par, **refract, depth** for color, border alpha  
+- 🌊 `Water` **refract  
+  depth** for color, border alpha  
 - 🌪️ **Wind**, for trees  
   Grass **deform** spheres, wind params, far fade-  
 - Lights on `grass`, sun lit particles-  
@@ -39,17 +40,18 @@ Marked: <u>critical</u>, `crucial`, **Next or Big**, _Important_.
 ----
 ### New data
 
-🔊 Ambient [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
+🌧️ Ambient [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
 🚗🔊 More car **Sounds**.. todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7)  
-📦🔊 object hit sounds, reverb change in water, caves, pipes-  
+📦 object hit sounds, reverb change in water, caves, pipes-  
 
-⛅🌳 Remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
+Remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
 🌳 New jungle [**Trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), Bushes, more vegetation, tiny close, grasses, rock packs  
 redo or replace lowest quality meshes: shroom* 🍄, skyscraper* 🏢  
 normalize .mesh scales fir*, etc.  
-🛣️ Road: wall types, spline walls [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)  
 
 [Horizons](https://stuntrally.tuxfamily.org/mantis/view.php?id=11), add to rest of tracks  
+🛣️ Road: wall types, spline walls [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)  
+
 🪄 **Effects**: Soft Particles, **SSAO**, HDR, bloom, rays?  
 🌀 Add [FastNoise](https://github.com/Auburn/FastNoiseLite) for brushes and ter gen  
 
@@ -86,6 +88,7 @@ slow track load, shaders, !ter get h, norm, do parallel
 
 🖥️ finish Gui Screen/Video render system, rest options  
 🖱️ Input mouse bind, 👀 VR mode meh-  
+Add SR icons to: game & editor for Windows & Linux, and installer
 
 MyGui CMake .lib, Conan?  
 .mesh LODs test adjust-  
