@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-27 11:36+0200\n"
+"POT-Creation-Date: 2024-04-27 12:57+0200\n"
 "PO-Revision-Date: 2023-11-11 10:04+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/stunt-rally-3/"
@@ -91,53 +91,16 @@ msgctxt "WrongChk"
 msgid "Wrong Checkpoint"
 msgstr "Verkeerd controlepunt"
 
-#. Editor  status 
-#: src/editor/SceneInit.cpp:277
-msgctxt "Loading"
-msgid "Loading"
-msgstr "Bezig met laden…"
-
-#. Editor  status 
-#: src/game/Gui_TweakSim.cpp:220 src/editor/SceneInit.cpp:376
-msgctxt "Loaded"
-msgid "Loaded"
-msgstr "Geladen"
-
-#. Editor  status 
-#: src/editor/SceneInit.cpp:490
-msgctxt "Saving"
-msgid "Saving"
-msgstr "Bezig met opslaan…"
-
-#. Editor  status 
-#: src/game/Gui_TweakSim.cpp:567 src/editor/SceneInit.cpp:524
-#: src/editor/Update_Key.cpp:44 src/editor/ExportRoR.cpp:60
-msgctxt "Saved"
-msgid "Saved"
-msgstr "Opgeslagen"
-
-#. Editor  status 
-#: src/editor/SceneInit.cpp:419
-msgctxt "Updating"
-msgid "Updating"
-msgstr "Bezig met bijwerken…"
-
-#. Editor  status 
-#: src/editor/SceneInit.cpp:446
-msgctxt "Updated"
-msgid "Updated"
-msgstr "Bijgewerkt"
-
 #. MAIN  Menu 
 #: data/gui/Game.layout:5 ..Window data/gui/Game_Main.layout:257
-#: ..NewGame-##{GameTypes}.Button src/game/Gui_Util.cpp:187
+#: ..NewGame-GameTypes.Button src/game/Gui_Util.cpp:187
 msgctxt "SingleRace"
 msgid "Single Race"
 msgstr "Losse wedstrijd"
 
 #. MAIN  Menu 
 #: data/gui/Game.layout:1897 ..SingleRace.Tab data/gui/Game_Main.layout:293
-#: ..NewGame-##{GameTypes}.Button data/gui/Game_Options.layout:320
+#: ..NewGame-GameTypes.Button data/gui/Game_Options.layout:320
 #: ..Options.Input.Shortcuts.Text data/gui/Game_Utils.layout:20 ..Window :52
 #: src/game/Championships.cpp:280:426:448 src/game/Gui_Util.cpp:107:169
 msgctxt "Championship"
@@ -145,7 +108,7 @@ msgid "Championship"
 msgstr "Kampioenschap"
 
 #. MAIN  Menu 
-#: data/gui/Game_Main.layout:275 ..NewGame-##{GameTypes}.Button
+#: data/gui/Game_Main.layout:275 ..NewGame-GameTypes.Button
 #: data/gui/Game_Options.layout:317 ..Options.Input.Shortcuts.Text
 #: src/game/Championships.cpp:280:426:448 src/game/Gui_Util.cpp:106:168
 msgctxt "Tutorial"
@@ -153,7 +116,7 @@ msgid "Tutorial"
 msgstr "Speluitleg"
 
 #. MAIN  Menu 
-#: data/gui/Game_Main.layout:311 ..NewGame-##{GameTypes}.Button
+#: data/gui/Game_Main.layout:311 ..NewGame-GameTypes.Button
 #: data/gui/Game_Options.layout:323 ..Options.Input.Shortcuts.Text
 #: data/gui/Game_Utils.layout:96 ..Window :128
 #: src/game/Challenges.cpp:397:516:637 src/game/Gui_Util.cpp:107:169
@@ -163,7 +126,7 @@ msgstr "Uitdaging"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:394 ..Window data/gui/Game_Main.layout:211
-#: ..NewGame.Button
+#: ..NewGame-Difficulty.Button
 msgctxt "HowToPlay"
 msgid "How To Play"
 msgstr ""
@@ -195,8 +158,8 @@ msgstr "Afsluiten"
 #: ..Editor.Tab data/gui/Editor_Options.layout:13 ..Options.Tab
 #: data/gui/Editor_Track.layout:14 ..Track.Tab data/gui/Game_Help.layout:13
 #: :512..HowToPlay.Button data/gui/Game.layout:13 ..SingleRace.Tab
-#: data/gui/Game_Main.layout:229 ..NewGame.Button
-#: :330..NewGame-##{GameTypes}.Button data/gui/Game_Options.layout:13
+#: data/gui/Game_Main.layout:229 ..NewGame-Difficulty.Button
+#: :330..NewGame-GameTypes.Button data/gui/Game_Options.layout:13
 #: data/gui/Game_Replay.layout:13 ..Replays.Tab data/gui/Game_Utils.layout:40
 #: ..Championship.Button :116..Challenge.Button :185..Multiplayer.Button
 #: data/gui/MaterialEditor.layout:53 ..MaterialEditor.Tab
@@ -391,6 +354,159 @@ msgctxt "Gold"
 msgid "Gold"
 msgstr "Goud"
 
+#. Setup  Vehicle,Game 
+#: data/gui/Editor_Help.layout:235 ..Help.Input/help.Shortcuts.Text
+#: data/gui/Editor_Track.layout:588 ..Track.Tab data/gui/Game.layout:1285
+#: ..SingleRace.Setup.Tab data/gui/Game_Options.layout:313
+#: ..Options.Input.Shortcuts.Text src/game/Challenges.cpp:616
+#: src/game/Gui_Network.cpp:131
+msgctxt "Game"
+msgid "Game"
+msgstr "Spel"
+
+#. Setup  Vehicle,Game 
+#: data/gui/Game.layout:902 ..SingleRace.Tab data/gui/Game_Options.layout:310
+#: ..Options.Input.Shortcuts.Text data/gui/Game_Tweak.layout:220
+#: ..Tweak.Tires.Text
+msgctxt "Setup"
+msgid "Setup"
+msgstr "Afstellen"
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1616 ..SingleRace.Tab src/game/Gui_Util.cpp:188
+msgctxt "SplitScreen"
+msgid "Split Screen"
+msgstr ""
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1623 ..SingleRace.SplitScreen.Text
+msgctxt "NumLocalPlayers"
+msgid "Number of local players"
+msgstr "Aantal lokale spelers"
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1685 ..SingleRace.SplitScreen.Check
+msgctxt "SplitVertically"
+msgid "Split Vertically"
+msgstr "Verticaal splitsen"
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1689 ..SingleRace.SplitScreen.Check
+#: src/game/Gui_Network.cpp:128
+msgctxt "ReverseStartOrder"
+msgid "Reverse starting order"
+msgstr "Startvolgorde omdraaien"
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1668 ..SingleRace.SplitScreen.Text
+msgctxt "NumLaps"
+msgid "Number of laps"
+msgstr "Aantal ronden"
+
+#. MAIN  Game  Simulation 
+#: data/gui/Game.layout:1564 ..SingleRace.Setup.Steering.Text
+#: data/gui/Game_Main.layout:175 ..NewGame-Difficulty.Button
+#: src/game/Challenges.cpp:618 src/game/Gui_Init.cpp:452
+#: src/game/Gui_Replay.cpp:168 src/game/Gui_Network.cpp:132
+#: src/editor/Update_EditKeyTxt.cpp:349
+msgctxt "Simulation"
+msgid "Simulation"
+msgstr "Simulatie"
+
+#. Game  Damage 
+#: data/gui/Editor.layout:336 ..Editor.Sun.Fog.Text
+#: :1616..Editor.Layers.Blendmap.Blendmap.Text data/gui/Editor_Track.layout:590
+#: ..Track.Game.Text data/gui/Game.layout:1341 ..SingleRace.Setup.Game.Text
+#: src/game/Challenges.cpp:619 src/game/Gui_Network.cpp:139
+msgctxt "Damage"
+msgid "Damage"
+msgstr "Schade"
+
+#. Game  Damage 
+#: src/game/Gui_Init.cpp:330:336 src/editor/Gui_Init.cpp:643
+#: src/editor/Update_EditKeyTxt.cpp:295 src/common/GuiCom_Options.cpp:60:82:237
+msgctxt "None"
+msgid "None"
+msgstr "Geen"
+
+#. Game  Damage 
+#: src/game/Gui_Init.cpp:330
+msgctxt "Reduced"
+msgid "Reduced"
+msgstr "Verminderd"
+
+#. Game  Damage 
+#: src/game/Gui_Init.cpp:331 src/common/GuiCom_Options.cpp:61
+msgctxt "Normal"
+msgid "Normal"
+msgstr "Normaal"
+
+#. Game  Damage 
+#: data/gui/Game.layout:1357 ..SingleRace.Setup.Game.Text
+#: src/game/Gui_Network.cpp:140
+msgctxt "DamageDecLap"
+msgid "Repair each lap"
+msgstr "Elke ronde repareren"
+
+#. Game  Boost 
+#: data/gui/Game.layout:1294 ..SingleRace.Setup.Game.Text
+#: :1389..SingleRace.Setup.Tab data/gui/Game_Options.layout:713
+#: ..Options.View.Camera.Text :724 src/game/Challenges.cpp:622
+#: src/game/Gui_Init.cpp:453 src/game/Gui_Network.cpp:136
+msgctxt "Boost"
+msgid "Boost"
+msgstr "Boost"
+
+#. Game  Boost 
+#: data/gui/Game.layout:1309 ..SingleRace.Setup.Game.Text
+#: src/game/Challenges.cpp:623 src/game/Gui_Network.cpp:137
+msgctxt "Flip"
+msgid "Flip"
+msgstr ""
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:318:324 src/game/Gui_Network.cpp:43
+msgctxt "Never"
+msgid "Never"
+msgstr "Nooit"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:319:325:336 src/game/Gui_Network.cpp:43
+msgctxt "Always"
+msgid "Always"
+msgstr "Altijd"
+
+#. Game  Boost 
+#: src/game/Challenges.cpp:617 src/game/Gui_Network.cpp:135
+#: src/common/GuiCom_Options.cpp:58
+msgctxt "Any"
+msgid "Any"
+msgstr "Iedere"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:318:338 src/game/Gui_Network.cpp:43
+msgctxt "FuelLap"
+msgid "Fuel each lap"
+msgstr "Elke ronde tanken"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:319:338 src/game/Gui_Network.cpp:43
+msgctxt "FuelTime"
+msgid "Fuel over time"
+msgstr "Tussentijds tanken"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:324
+msgctxt "FuelBoost"
+msgid "Boost Fuel"
+msgstr "Tankboost"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:337
+msgctxt "GoBackTime"
+msgid "Go back time"
+msgstr ""
+
 #. Challenge types 
 #: data/gui/Game.layout:1922 ..SingleRace.Championship.Tab
 msgctxt "Chall_Rally"
@@ -472,7 +588,8 @@ msgid "Ultra"
 msgstr "Ultra"
 
 #. MAIN  Track Difficulty 
-#: data/gui/Game_Main.layout:145 ..NewGame.Button :160..NewGame.Image
+#: data/gui/Game_Main.layout:145 ..NewGame-Difficulty.Button
+#: :160..NewGame-Difficulty.Image
 msgctxt "DifficultyHelp"
 msgid ""
 "Changing difficulty does set: Tracks list filter and sorting, selected "
@@ -481,7 +598,8 @@ msgid ""
 msgstr ""
 
 #. MAIN  Track Difficulty 
-#: data/gui/Game_Main.layout:180 ..NewGame.Button :195..NewGame.Image
+#: data/gui/Game_Main.layout:180 ..NewGame-Difficulty.Button
+#: :195..NewGame-Difficulty.Image
 msgctxt "SimulationHelp"
 msgid ""
 "Simulation mode does change how realistic vehicles are and how difficult "
@@ -516,6 +634,22 @@ msgid "Track"
 msgstr "Parcours"
 
 #. MAIN  Track 
+#: data/gui/Game.layout:25 ..SingleRace.Track.Button
+#: :513..SingleRace.Vehicle.Button :1694..SingleRace.SplitScreen.Button
+#: data/gui/Game_Main.layout:31 ..StuntRally##{GameVersion}.Button :106..Window
+#: :122..NewGame-Difficulty.Button :241..Window
+#: data/gui/Game_Options.layout:784 ..Options.Graphics.Button
+msgctxt "NewGame"
+msgid "New Game"
+msgstr "Nieuw spel"
+
+#. MAIN  Track 
+#: data/gui/Game_Main.layout:241 ..Window
+msgctxt "GameTypes"
+msgid "Game Types"
+msgstr ""
+
+#. MAIN  Track 
 #: data/gui/Editor.layout:3021 ..Editor.Vegetation.Road.Advanced.Text
 #: data/gui/Editor_Options.layout:851 ..Options.View.Pacenotes.Check
 #: data/gui/Game.layout:19 ..SingleRace.Track.Check
@@ -523,16 +657,6 @@ msgstr "Parcours"
 msgctxt "Reverse"
 msgid "Reverse"
 msgstr "Spookrijden"
-
-#. MAIN  Track 
-#: data/gui/Game.layout:25 ..SingleRace.Track.Button
-#: :513..SingleRace.Vehicle.Button :1694..SingleRace.SplitScreen.Button
-#: data/gui/Game_Main.layout:31 ..StuntRally##{GameVersion}.Button :106..Window
-#: :122..NewGame.Button :241..Window data/gui/Game_Options.layout:784
-#: ..Options.Graphics.Button
-msgctxt "NewGame"
-msgid "New Game"
-msgstr "Nieuw spel"
 
 #. MAIN  Track 
 #: data/gui/Editor_Track.layout:383 ..Track.Track.Text data/gui/Game.layout:445
@@ -646,7 +770,7 @@ msgstr "Lengte"
 
 #. Championship Stage  stats 
 #: data/gui/Game.layout:798 ..SingleRace.Vehicle.Text
-#: data/gui/Game_Main.layout:140 ..NewGame.Button
+#: data/gui/Game_Main.layout:106 ..Window :140..NewGame-Difficulty.Button
 #: src/game/Championships.cpp:208:457 src/game/Challenges.cpp:526:598
 #: src/game/Gui_InitCar.cpp:150 src/game/Gui_InitChamps.cpp:62:74:91
 msgctxt "Difficulty"
@@ -744,171 +868,6 @@ msgstr "Voertuigwisseling"
 msgctxt "Allowed"
 msgid "Allowed"
 msgstr "Toegestaan"
-
-#. Car  Names  from animals 
-msgctxt "Turtle"
-msgid "Turtle"
-msgstr "Schildpad"
-
-#. Car  Names  from animals 
-msgctxt "Elephant"
-msgid "Elephant"
-msgstr "Olifant"
-
-#. Car  Names  from animals 
-msgctxt "Alligator"
-msgid "Alligator"
-msgstr ""
-
-#. Car  Names  from animals 
-msgctxt "Bison"
-msgid "Bison"
-msgstr "Bizon"
-
-#. Car  Names  from animals 
-msgctxt "Caterpillar"
-msgid "Caterpillar"
-msgstr "Rups"
-
-#. Car  Names  from animals 
-msgctxt "Rhino"
-msgid "Rhino"
-msgstr "Neushoorn"
-
-#. Car  Names  from animals 
-msgctxt "Bear"
-msgid "Bear"
-msgstr "Beer"
-
-#. Car  Names  from animals 
-msgctxt "Coyote"
-msgid "Coyote"
-msgstr "Prairiewolf"
-
-#. Car  Names  from animals 
-msgctxt "Squirrel"
-msgid "Squirrel"
-msgstr "Eekhoorn"
-
-#. Car  Names  from animals 
-msgctxt "Fox"
-msgid "Fox"
-msgstr "Vos"
-
-#. Car  Names  from animals 
-msgctxt "Hyena"
-msgid "Hyena"
-msgstr "Hyena"
-
-#. Car  Names  from animals 
-msgctxt "Gorilla"
-msgid "Gorilla"
-msgstr "Gorilla"
-
-#. Car  Names  from animals 
-msgctxt "Lizard"
-msgid "Lizard"
-msgstr "Hagedis"
-
-#. Car  Names  from animals 
-msgctxt "Weasel"
-msgid "Weasel"
-msgstr "Wezel"
-
-#. Car  Names  from animals 
-msgctxt "Wolf"
-msgid "Wolf"
-msgstr "Wolf"
-
-#. Car  Names  from animals 
-msgctxt "Scorpion"
-msgid "Scorpion"
-msgstr "Schorpioen"
-
-#. Car  Names  from animals 
-msgctxt "Buffalo"
-msgid "Buffalo"
-msgstr "Buffel"
-
-#. Car  Names  from animals 
-msgctxt "Gazelle"
-msgid "Gazelle"
-msgstr "Gazelle"
-
-#. Car  Names  from animals 
-msgctxt "Jaguar"
-msgid "Jaguar"
-msgstr "Jaguar"
-
-#. Car  Names  from animals 
-msgctxt "Puma"
-msgid "Puma"
-msgstr "Poema"
-
-#. Car  Names  from animals 
-msgctxt "Leopard"
-msgid "Leopard"
-msgstr "Luipaard"
-
-#. Car  Names  from animals 
-msgctxt "Beetle"
-msgid "Beetle"
-msgstr "Kever"
-
-#. Car  Names  from animals 
-msgctxt "Swan"
-msgid "Swan"
-msgstr "Zwaan"
-
-#. Car  Names  from animals 
-msgctxt "Duck"
-msgid "Duck"
-msgstr "Eend"
-
-#. Car  Names  from animals 
-msgctxt "Hawk"
-msgid "Hawk"
-msgstr "Havik"
-
-#. Car  Names  from animals 
-msgctxt "Rabbit"
-msgid "Rabbit"
-msgstr "Konijn"
-
-#. Car  Names  from animals 
-msgctxt "Python"
-msgid "Python"
-msgstr ""
-
-#. Car  Names  from animals 
-msgctxt "Cobra"
-msgid "Cobra"
-msgstr ""
-
-#. Car  Names  from animals 
-msgctxt "Eagle"
-msgid "Eagle"
-msgstr ""
-
-#. Car  Names  from animals 
-msgctxt "Crow"
-msgid "Crow"
-msgstr ""
-
-#. Car  Names  from animals 
-msgctxt "Falcon"
-msgid "Falcon"
-msgstr ""
-
-#. Car  Names  from animals 
-msgctxt "Owl"
-msgid "Owl"
-msgstr ""
-
-#. Car  Names  from animals 
-msgctxt "Sparrow"
-msgid "Sparrow"
-msgstr ""
 
 #. Vehicle 
 #: data/gui/Game.layout:374 ..SingleRace.Track.Text :494..SingleRace.Tab
@@ -1237,62 +1196,264 @@ msgctxt "Car_StopTimeFrom"
 msgid "Stop time from"
 msgstr "Tijd stoppen vanaf"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Asphalt"
 msgid "Asphalt"
 msgstr "Asfalt"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Racing"
 msgid "Racing"
 msgstr "Racing"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Gravel"
 msgid "Gravel"
 msgstr "Gravel"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Slow"
 msgid "Slow"
 msgstr "Langzaam"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Terrain"
 msgid "Terrain"
 msgstr "Terrein"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Extreme"
 msgid "Extreme"
 msgstr "Extreem"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Other"
 msgid "Other"
 msgstr "Overig"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 #: data/gui/Game.layout:1491 ..SingleRace.Setup.Steering.Tab
 #: :1949..SingleRace.Championship.Tab
 msgctxt "CarType_Hover"
 msgid "Hover"
 msgstr ""
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Hovercraft"
 msgid "Hovercraft"
 msgstr ""
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Spaceship"
 msgid "Spaceship"
 msgstr "Ruimteschip"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Drone"
 msgid "Drone"
 msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Turtle"
+msgid "Turtle"
+msgstr "Schildpad"
+
+#. Vehicle  Names  from animals 
+msgctxt "Elephant"
+msgid "Elephant"
+msgstr "Olifant"
+
+#. Vehicle  Names  from animals 
+msgctxt "Alligator"
+msgid "Alligator"
+msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Bison"
+msgid "Bison"
+msgstr "Bizon"
+
+#. Vehicle  Names  from animals 
+msgctxt "Caterpillar"
+msgid "Caterpillar"
+msgstr "Rups"
+
+#. Vehicle  Names  from animals 
+msgctxt "Rhino"
+msgid "Rhino"
+msgstr "Neushoorn"
+
+#. Vehicle  Names  from animals 
+msgctxt "Bear"
+msgid "Bear"
+msgstr "Beer"
+
+#. Vehicle  Names  from animals 
+msgctxt "Coyote"
+msgid "Coyote"
+msgstr "Prairiewolf"
+
+#. Vehicle  Names  from animals 
+msgctxt "Squirrel"
+msgid "Squirrel"
+msgstr "Eekhoorn"
+
+#. Vehicle  Names  from animals 
+msgctxt "Fox"
+msgid "Fox"
+msgstr "Vos"
+
+#. Vehicle  Names  from animals 
+msgctxt "Hyena"
+msgid "Hyena"
+msgstr "Hyena"
+
+#. Vehicle  Names  from animals 
+msgctxt "Gorilla"
+msgid "Gorilla"
+msgstr "Gorilla"
+
+#. Vehicle  Names  from animals 
+msgctxt "Lizard"
+msgid "Lizard"
+msgstr "Hagedis"
+
+#. Vehicle  Names  from animals 
+msgctxt "Weasel"
+msgid "Weasel"
+msgstr "Wezel"
+
+#. Vehicle  Names  from animals 
+msgctxt "Wolf"
+msgid "Wolf"
+msgstr "Wolf"
+
+#. Vehicle  Names  from animals 
+msgctxt "Scorpion"
+msgid "Scorpion"
+msgstr "Schorpioen"
+
+#. Vehicle  Names  from animals 
+msgctxt "Buffalo"
+msgid "Buffalo"
+msgstr "Buffel"
+
+#. Vehicle  Names  from animals 
+msgctxt "Gazelle"
+msgid "Gazelle"
+msgstr "Gazelle"
+
+#. Vehicle  Names  from animals 
+msgctxt "Jaguar"
+msgid "Jaguar"
+msgstr "Jaguar"
+
+#. Vehicle  Names  from animals 
+msgctxt "Puma"
+msgid "Puma"
+msgstr "Poema"
+
+#. Vehicle  Names  from animals 
+msgctxt "Leopard"
+msgid "Leopard"
+msgstr "Luipaard"
+
+#. Vehicle  Names  from animals 
+msgctxt "Beetle"
+msgid "Beetle"
+msgstr "Kever"
+
+#. Vehicle  Names  from animals 
+msgctxt "Swan"
+msgid "Swan"
+msgstr "Zwaan"
+
+#. Vehicle  Names  from animals 
+msgctxt "Duck"
+msgid "Duck"
+msgstr "Eend"
+
+#. Vehicle  Names  from animals 
+msgctxt "Hawk"
+msgid "Hawk"
+msgstr "Havik"
+
+#. Vehicle  Names  from animals 
+msgctxt "Rabbit"
+msgid "Rabbit"
+msgstr "Konijn"
+
+#. Vehicle  Names  from animals 
+msgctxt "Python"
+msgid "Python"
+msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Cobra"
+msgid "Cobra"
+msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Eagle"
+msgid "Eagle"
+msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Crow"
+msgid "Crow"
+msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Falcon"
+msgid "Falcon"
+msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Owl"
+msgid "Owl"
+msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Sparrow"
+msgid "Sparrow"
+msgstr ""
+
+#. Editor  status 
+#: src/editor/SceneInit.cpp:277
+msgctxt "Loading"
+msgid "Loading"
+msgstr "Bezig met laden…"
+
+#. Editor  status 
+#: src/game/Gui_TweakSim.cpp:220 src/editor/SceneInit.cpp:376
+msgctxt "Loaded"
+msgid "Loaded"
+msgstr "Geladen"
+
+#. Editor  status 
+#: src/editor/SceneInit.cpp:490
+msgctxt "Saving"
+msgid "Saving"
+msgstr "Bezig met opslaan…"
+
+#. Editor  status 
+#: src/game/Gui_TweakSim.cpp:567 src/editor/SceneInit.cpp:524
+#: src/editor/Update_Key.cpp:44 src/editor/ExportRoR.cpp:60
+msgctxt "Saved"
+msgid "Saved"
+msgstr "Opgeslagen"
+
+#. Editor  status 
+#: src/editor/SceneInit.cpp:419
+msgctxt "Updating"
+msgid "Updating"
+msgstr "Bezig met bijwerken…"
+
+#. Editor  status 
+#: src/editor/SceneInit.cpp:446
+msgctxt "Updated"
+msgid "Updated"
+msgstr "Bijgewerkt"
 
 #. MsgBox 
 #: src/game/Gui_Network.cpp:26 src/editor/Gui_Init.cpp:328
@@ -1862,194 +2023,6 @@ msgctxt "P_Silver"
 msgid "Silver"
 msgstr "Zilver"
 
-#. Setup  Vehicle,Game 
-#: data/gui/Editor_Help.layout:235 ..Help.Input/help.Shortcuts.Text
-#: data/gui/Editor_Track.layout:588 ..Track.Tab data/gui/Game.layout:1285
-#: ..SingleRace.Setup.Tab data/gui/Game_Options.layout:313
-#: ..Options.Input.Shortcuts.Text src/game/Challenges.cpp:616
-#: src/game/Gui_Network.cpp:131
-msgctxt "Game"
-msgid "Game"
-msgstr "Spel"
-
-#. Setup  Vehicle,Game 
-#: data/gui/Game.layout:902 ..SingleRace.Tab data/gui/Game_Options.layout:310
-#: ..Options.Input.Shortcuts.Text data/gui/Game_Tweak.layout:220
-#: ..Tweak.Tires.Text
-msgctxt "Setup"
-msgid "Setup"
-msgstr "Afstellen"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1616 ..SingleRace.Tab src/game/Gui_Util.cpp:188
-msgctxt "SplitScreen"
-msgid "Split Screen"
-msgstr ""
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1623 ..SingleRace.SplitScreen.Text
-msgctxt "NumLocalPlayers"
-msgid "Number of local players"
-msgstr "Aantal lokale spelers"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1685 ..SingleRace.SplitScreen.Check
-msgctxt "SplitVertically"
-msgid "Split Vertically"
-msgstr "Verticaal splitsen"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1689 ..SingleRace.SplitScreen.Check
-#: src/game/Gui_Network.cpp:128
-msgctxt "ReverseStartOrder"
-msgid "Reverse starting order"
-msgstr "Startvolgorde omdraaien"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1668 ..SingleRace.SplitScreen.Text
-msgctxt "NumLaps"
-msgid "Number of laps"
-msgstr "Aantal ronden"
-
-#. MAIN  Game  Simulation 
-#: data/gui/Game.layout:1564 ..SingleRace.Setup.Steering.Text
-#: data/gui/Game_Main.layout:175 ..NewGame.Button src/game/Challenges.cpp:618
-#: src/game/Gui_Init.cpp:452 src/game/Gui_Replay.cpp:168
-#: src/game/Gui_Network.cpp:132 src/editor/Update_EditKeyTxt.cpp:349
-msgctxt "Simulation"
-msgid "Simulation"
-msgstr "Simulatie"
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1608 ..SingleRace.Setup.Other.Text
-msgctxt "NotRecommended"
-msgid "Not recommended"
-msgstr "Niet aanbevolen"
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1598 ..SingleRace.Setup.Other.Check
-msgctxt "ABS"
-msgid "ABS (antilock brakes)"
-msgstr "ABS (antiblokkeersysteem)"
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1600 ..SingleRace.Setup.Other.Check
-msgctxt "TipABS"
-msgid "Prevents wheel lock when braking (default: off)."
-msgstr "Voorkomt dat de wielen blokkeren tijdens het remmen (standaard: uit)."
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1603 ..SingleRace.Setup.Other.Check
-msgctxt "TCS"
-msgid "TCS (traction control)"
-msgstr "TCS (tractiecontrole)"
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1605 ..SingleRace.Setup.Other.Check
-msgctxt "TipTCS"
-msgid "Prevents wheel spinning when accelerating (default: off)."
-msgstr ""
-"Voorkomt dat de wielen daardraaien tijdens het schakelen (standaard: uit)."
-
-#. Setup  steering 
-#: data/gui/Game.layout:1485 ..SingleRace.Setup.Steering.Tab
-msgctxt "Gravel"
-msgid "Gravel"
-msgstr "Gravel"
-
-#. Setup  steering 
-#: data/gui/Editor_Track.layout:615 ..Track.Game.Check
-#: data/gui/Game.layout:1488 ..SingleRace.Setup.Steering.Tab
-msgctxt "Asphalt"
-msgid "Asphalt"
-msgstr "Asfalt"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1495 ..SingleRace.Setup.Steering.Text
-msgctxt "SpeedSensitiveSteering"
-msgid "Speed Sensitive Steering"
-msgstr "Stuurbekrachtiging"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1497 ..SingleRace.Setup.Steering.Text
-msgctxt "TipSpeedSensitiveSteering"
-msgid "Decreases steering range with higher velocity."
-msgstr "Verlaagt de stuurkracht bij bepaalde snelheden."
-
-#. Setup  steering 
-#: data/gui/Game.layout:1500 ..SingleRace.Setup.Steering.Text :1538
-msgctxt "SSS_Effect"
-msgid "Effect"
-msgstr "Effect"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1508 ..SingleRace.Setup.Steering.Text
-msgctxt "SSS_SpeedFactor"
-msgid "Speed Factor"
-msgstr "Snelheidsfactor"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1560 ..SingleRace.Setup.Steering.Text
-msgctxt "SteerRange"
-msgid "Steering range multipliers"
-msgstr "Bereikvermenigvuldiging"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1566 ..SingleRace.Setup.Steering.Text
-#: :1571:1574..SingleRace.Setup.Steering.Slider
-msgctxt "TipSteerSim"
-msgid "Steering range multiplier, for simulation mode (Easy,Normal)."
-msgstr "Bereikvermenigvuldiging in de simulatiemodus (Makkelijk, Gemiddeld)."
-
-#. Setup  steering 
-#: data/gui/Game.layout:1579 ..SingleRace.Setup.Steering.Text
-#: :1584:1587..SingleRace.Setup.Steering.Slider
-msgctxt "TipSteerSurf"
-msgid "Steering range multiplier, for surface (Gravel,Asphalt)."
-msgstr "Bereikvermenigvuldiging op basis van oppervlak (gravel, asfalt)."
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1452 ..SingleRace.Setup.Tab
-msgctxt "Gearbox"
-msgid "Gearbox"
-msgstr "Versnellingsbak"
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1459 ..SingleRace.Setup.Gearbox.Check
-msgctxt "AutoGearbox"
-msgid "Auto gearbox"
-msgstr "Automatisch schakelen"
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1461 ..SingleRace.Setup.Gearbox.Check
-msgctxt "TipAutoGearbox"
-msgid "Uncheck for manual gears changing."
-msgstr "Schakel uit om handmatig te schakelen."
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1464 ..SingleRace.Setup.Gearbox.Check
-msgctxt "AutoRear"
-msgid "Auto Rear gear"
-msgstr ""
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1466 ..SingleRace.Setup.Gearbox.Check
-msgctxt "TipAutoRear"
-msgid "Uncheck for manual Rear gear changing."
-msgstr ""
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1469 ..SingleRace.Setup.Gearbox.Check
-msgctxt "RearThrottleInverse"
-msgid "Rear throttle inverse"
-msgstr ""
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1471 ..SingleRace.Setup.Gearbox.Check
-msgctxt "TipRearThrottleInverse"
-msgid "Inverse throttle and brake function in rear gear."
-msgstr ""
-
 #. Setup  collision 
 #: data/gui/Game.layout:1371 ..SingleRace.Setup.Collision.Check
 msgctxt "VegetCol"
@@ -2081,98 +2054,134 @@ msgctxt "DriveOnHorizons"
 msgid "Allow driving outside map, on horizons"
 msgstr ""
 
-#. Game  Damage 
-#: data/gui/Editor.layout:336 ..Editor.Sun.Fog.Text
-#: :1616..Editor.Layers.Blendmap.Blendmap.Text data/gui/Editor_Track.layout:590
-#: ..Track.Game.Text data/gui/Game.layout:1341 ..SingleRace.Setup.Game.Text
-#: src/game/Challenges.cpp:619 src/game/Gui_Network.cpp:139
-msgctxt "Damage"
-msgid "Damage"
-msgstr "Schade"
+#. Setup  Gearbox 
+#: data/gui/Game.layout:1452 ..SingleRace.Setup.Tab
+msgctxt "Gearbox"
+msgid "Gearbox"
+msgstr "Versnellingsbak"
 
-#. Game  Damage 
-#: src/game/Gui_Init.cpp:330:336 src/editor/Gui_Init.cpp:643
-#: src/editor/Update_EditKeyTxt.cpp:295 src/common/GuiCom_Options.cpp:60:82:237
-msgctxt "None"
-msgid "None"
-msgstr "Geen"
+#. Setup  Gearbox 
+#: data/gui/Game.layout:1459 ..SingleRace.Setup.Gearbox.Check
+msgctxt "AutoGearbox"
+msgid "Auto gearbox"
+msgstr "Automatisch schakelen"
 
-#. Game  Damage 
-#: src/game/Gui_Init.cpp:330
-msgctxt "Reduced"
-msgid "Reduced"
-msgstr "Verminderd"
-
-#. Game  Damage 
-#: src/game/Gui_Init.cpp:331 src/common/GuiCom_Options.cpp:61
-msgctxt "Normal"
-msgid "Normal"
-msgstr "Normaal"
-
-#. Game  Damage 
-#: data/gui/Game.layout:1357 ..SingleRace.Setup.Game.Text
-#: src/game/Gui_Network.cpp:140
-msgctxt "DamageDecLap"
-msgid "Repair each lap"
-msgstr "Elke ronde repareren"
-
-#. Game  Boost 
-#: data/gui/Game.layout:1294 ..SingleRace.Setup.Game.Text
-#: :1389..SingleRace.Setup.Tab data/gui/Game_Options.layout:713
-#: ..Options.View.Camera.Text :724 src/game/Challenges.cpp:622
-#: src/game/Gui_Init.cpp:453 src/game/Gui_Network.cpp:136
-msgctxt "Boost"
-msgid "Boost"
-msgstr "Boost"
-
-#. Game  Boost 
-#: data/gui/Game.layout:1309 ..SingleRace.Setup.Game.Text
-#: src/game/Challenges.cpp:623 src/game/Gui_Network.cpp:137
-msgctxt "Flip"
-msgid "Flip"
+#. Setup  Gearbox 
+#: data/gui/Game.layout:1464 ..SingleRace.Setup.Gearbox.Check
+msgctxt "AutoRear"
+msgid "Auto Rear gear"
 msgstr ""
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:318:324 src/game/Gui_Network.cpp:43
-msgctxt "Never"
-msgid "Never"
-msgstr "Nooit"
+#. Setup  Gearbox 
+#: data/gui/Game.layout:1469 ..SingleRace.Setup.Gearbox.Check
+msgctxt "RearThrottleInverse"
+msgid "Rear throttle inverse"
+msgstr ""
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:319:325:336 src/game/Gui_Network.cpp:43
-msgctxt "Always"
-msgid "Always"
-msgstr "Altijd"
+#. Setup  steering 
+#: data/gui/Game.layout:1485 ..SingleRace.Setup.Steering.Tab
+msgctxt "Gravel"
+msgid "Gravel"
+msgstr "Gravel"
 
-#. Game  Boost 
-#: src/game/Challenges.cpp:617 src/game/Gui_Network.cpp:135
-#: src/common/GuiCom_Options.cpp:58
-msgctxt "Any"
-msgid "Any"
-msgstr "Iedere"
+#. Setup  steering 
+#: data/gui/Editor_Track.layout:615 ..Track.Game.Check
+#: data/gui/Game.layout:1488 ..SingleRace.Setup.Steering.Tab
+msgctxt "Asphalt"
+msgid "Asphalt"
+msgstr "Asfalt"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:318:338 src/game/Gui_Network.cpp:43
-msgctxt "FuelLap"
-msgid "Fuel each lap"
-msgstr "Elke ronde tanken"
+#. Setup  steering 
+#: data/gui/Game.layout:1495 ..SingleRace.Setup.Steering.Text
+msgctxt "SpeedSensitiveSteering"
+msgid "Speed Sensitive Steering"
+msgstr "Stuurbekrachtiging"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:319:338 src/game/Gui_Network.cpp:43
-msgctxt "FuelTime"
-msgid "Fuel over time"
-msgstr "Tussentijds tanken"
+#. Setup  steering 
+#: data/gui/Game.layout:1500 ..SingleRace.Setup.Steering.Text :1538
+msgctxt "SSS_Effect"
+msgid "Effect"
+msgstr "Effect"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:324
-msgctxt "FuelBoost"
-msgid "Boost Fuel"
-msgstr "Tankboost"
+#. Setup  steering 
+#: data/gui/Game.layout:1508 ..SingleRace.Setup.Steering.Text
+msgctxt "SSS_SpeedFactor"
+msgid "Speed Factor"
+msgstr "Snelheidsfactor"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:337
-msgctxt "GoBackTime"
-msgid "Go back time"
+#. Setup  steering 
+#: data/gui/Game.layout:1560 ..SingleRace.Setup.Steering.Text
+msgctxt "SteerRange"
+msgid "Steering range multipliers"
+msgstr "Bereikvermenigvuldiging"
+
+#. Setup  ABS,TCS 
+#: data/gui/Game.layout:1608 ..SingleRace.Setup.Other.Text
+msgctxt "NotRecommended"
+msgid "Not recommended"
+msgstr "Niet aanbevolen"
+
+#. Setup  ABS,TCS 
+#: data/gui/Game.layout:1598 ..SingleRace.Setup.Other.Check
+msgctxt "ABS"
+msgid "ABS (antilock brakes)"
+msgstr "ABS (antiblokkeersysteem)"
+
+#. Setup  ABS,TCS 
+#: data/gui/Game.layout:1603 ..SingleRace.Setup.Other.Check
+msgctxt "TCS"
+msgid "TCS (traction control)"
+msgstr "TCS (tractiecontrole)"
+
+#. Setup  tips 
+#: data/gui/Game.layout:1600 ..SingleRace.Setup.Other.Check
+msgctxt "TipABS"
+msgid "Prevents wheel lock when braking (default: off)."
+msgstr "Voorkomt dat de wielen blokkeren tijdens het remmen (standaard: uit)."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1605 ..SingleRace.Setup.Other.Check
+msgctxt "TipTCS"
+msgid "Prevents wheel spinning when accelerating (default: off)."
+msgstr ""
+"Voorkomt dat de wielen daardraaien tijdens het schakelen (standaard: uit)."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1497 ..SingleRace.Setup.Steering.Text
+msgctxt "TipSpeedSensitiveSteering"
+msgid "Decreases steering range with higher velocity."
+msgstr "Verlaagt de stuurkracht bij bepaalde snelheden."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1566 ..SingleRace.Setup.Steering.Text
+#: :1571:1574..SingleRace.Setup.Steering.Slider
+msgctxt "TipSteerSim"
+msgid "Steering range multiplier, for simulation mode (Easy,Normal)."
+msgstr "Bereikvermenigvuldiging in de simulatiemodus (Makkelijk, Gemiddeld)."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1579 ..SingleRace.Setup.Steering.Text
+#: :1584:1587..SingleRace.Setup.Steering.Slider
+msgctxt "TipSteerSurf"
+msgid "Steering range multiplier, for surface (Gravel,Asphalt)."
+msgstr "Bereikvermenigvuldiging op basis van oppervlak (gravel, asfalt)."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1461 ..SingleRace.Setup.Gearbox.Check
+msgctxt "TipAutoGearbox"
+msgid "Uncheck for manual gears changing."
+msgstr "Schakel uit om handmatig te schakelen."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1466 ..SingleRace.Setup.Gearbox.Check
+msgctxt "TipAutoRear"
+msgid "Uncheck for manual Rear gear changing."
+msgstr ""
+
+#. Setup  tips 
+#: data/gui/Game.layout:1471 ..SingleRace.Setup.Gearbox.Check
+msgctxt "TipRearThrottleInverse"
+msgid "Inverse throttle and brake function in rear gear."
 msgstr ""
 
 #. Replay 
@@ -2386,17 +2395,14 @@ msgctxt "Fullscreen"
 msgid "Fullscreen"
 msgstr "Schermvullend"
 
-#. Screen 
-#: data/gui/Editor_Options.layout:150 ..Options.Screen.Video.Check
-#: data/gui/Game_Options.layout:150
-#, fuzzy
-#| msgctxt "ReflMode"
-#| msgid "Mode"
-msgctxt "VRmode"
-msgid "VR Mode"
-msgstr "Modus"
+#. Screen  vertical synchronisation 
+#: data/gui/Editor_Options.layout:122 ..Options.Screen.Video.Check
+#: data/gui/Game_Options.layout:122
+msgctxt "VSync"
+msgid "VSync"
+msgstr "Verticale synchronisatie"
 
-#. Screen 
+#. Screen  vertical synchronisation 
 #: data/gui/Editor_Options.layout:89 ..Options.Screen.Main.Text
 #: :465..Options.Graphics.Lights.Text data/gui/Game_Options.layout:89
 #: :1010..Options.Graphics.Lights.Text
@@ -2407,49 +2413,95 @@ msgctxt "Brightness"
 msgid "Brightness"
 msgstr "Helderheid"
 
-#. Screen 
+#. Screen  vertical synchronisation 
 #: data/gui/Editor_Options.layout:101 ..Options.Screen.Main.Text
 #: data/gui/Game_Options.layout:101
 msgctxt "Contrast"
 msgid "Contrast"
 msgstr ""
 
-#. Screen 
-msgctxt "Gamma"
-msgid "Gamma"
-msgstr ""
+#. Screen  advanced 
+#: data/gui/Editor_Options.layout:139 ..Options.Screen.Video.Text
+#: data/gui/Game_Options.layout:139
+msgctxt "RenderSystem"
+msgid "Render System"
+msgstr "Laadtechniek"
 
-#. Screen 
+#. Screen  advanced 
+#: data/gui/Editor_Options.layout:126 ..Options.Screen.Video.Text
+#: data/gui/Game_Options.layout:126
+msgctxt "AntiAliasing"
+msgid "Antialiasing"
+msgstr "Anti-kartelvorming"
+
+#. Screen  advanced 
+#: data/gui/Editor_Options.layout:55 ..Options.Screen.Main.Button
+#: data/gui/Game_Options.layout:55
+msgctxt "Change"
+msgid "Change"
+msgstr "Aanpassen"
+
+#. Screen  advanced 
 #: data/gui/Editor_Options.layout:162 ..Options.Screen.Tab
 #: :187..Options.Screen.GUI.Text data/gui/Game_Options.layout:162
 msgctxt "GUI"
 msgid "GUI"
 msgstr ""
 
-#. Screen 
+#. Screen  advanced 
 #: data/gui/Editor_Options.layout:182 ..Options.Screen.GUI.Text
 #: data/gui/Game_Options.layout:182
 msgctxt "FontSizes"
 msgid "Font sizes"
 msgstr ""
 
-#. Screen 
+#. Screen  advanced 
 #: data/gui/Editor_Options.layout:170 ..Options.Screen.GUI.Text
 #: data/gui/Game_Options.layout:170
 msgctxt "WindowMargin"
 msgid "Window margin"
 msgstr ""
 
-#. Screen 
+#. Screen  not used 
+msgctxt "Gamma"
+msgid "Gamma"
+msgstr ""
+
+#. Screen  not used 
+#: data/gui/Editor_Options.layout:150 ..Options.Screen.Video.Check
+#: data/gui/Game_Options.layout:150
+#, fuzzy
+#| msgctxt "ReflMode"
+#| msgid "Mode"
+msgctxt "VRmode"
+msgid "VR Mode"
+msgstr "Modus"
+
+#. Screen  not used 
 msgctxt "Complex"
 msgid "Complex"
 msgstr "Uitgebreid"
 
-#. Screen 
+#. Screen  not used 
 #: data/gui/Editor.layout:1224 ..Editor.Terrain.Tools.Button
 msgctxt "Simple"
 msgid "Simple"
 msgstr "Eenvoudig"
+
+#. Screen  not used 
+msgctxt "LimitFPS"
+msgid "Limit frames per second"
+msgstr "Aantal frames per seconde beperken"
+
+#. Screen  not used 
+msgctxt "FramesPerSec"
+msgid "Frames per second"
+msgstr "Aantal frames per seconde"
+
+#. Screen  not used 
+msgctxt "SleepMS"
+msgid "Sleep interval [milisec]"
+msgstr "Slaaptussenpoos [in ms]"
 
 #. Screen  info 
 #: data/gui/Editor_Options.layout:28 ..Options.Screen.Main.Text
@@ -2494,49 +2546,6 @@ msgid ""
 msgstr ""
 "Standaard staat betere kwaliteit (minder fps) rechts en is gemarkeerd met + "
 "indien naar links verschoven."
-
-#. Screen  vertical synchronisation 
-#: data/gui/Editor_Options.layout:122 ..Options.Screen.Video.Check
-#: data/gui/Game_Options.layout:122
-msgctxt "VSync"
-msgid "VSync"
-msgstr "Verticale synchronisatie"
-
-#. Screen  advanced 
-#: data/gui/Editor_Options.layout:139 ..Options.Screen.Video.Text
-#: data/gui/Game_Options.layout:139
-msgctxt "RenderSystem"
-msgid "Render System"
-msgstr "Laadtechniek"
-
-#. Screen  advanced 
-#: data/gui/Editor_Options.layout:126 ..Options.Screen.Video.Text
-#: data/gui/Game_Options.layout:126
-msgctxt "AntiAliasing"
-msgid "Antialiasing"
-msgstr "Anti-kartelvorming"
-
-#. Screen  advanced 
-#: data/gui/Editor_Options.layout:55 ..Options.Screen.Main.Button
-#: data/gui/Game_Options.layout:55
-msgctxt "Change"
-msgid "Change"
-msgstr "Aanpassen"
-
-#. Screen  advanced 
-msgctxt "LimitFPS"
-msgid "Limit frames per second"
-msgstr "Aantal frames per seconde beperken"
-
-#. Screen  advanced 
-msgctxt "FramesPerSec"
-msgid "Frames per second"
-msgstr "Aantal frames per seconde"
-
-#. Screen  advanced 
-msgctxt "SleepMS"
-msgid "Sleep interval [milisec]"
-msgstr "Slaaptussenpoos [in ms]"
 
 #. Graphics Presets 
 #: data/gui/Editor_Options.layout:74 ..Options.Screen.Main.Text

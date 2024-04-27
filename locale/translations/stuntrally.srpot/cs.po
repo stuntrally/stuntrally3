@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-27 11:36+0200\n"
+"POT-Creation-Date: 2024-04-27 12:57+0200\n"
 "PO-Revision-Date: 2023-11-11 10:04+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/stunt-rally-3/"
@@ -95,53 +95,16 @@ msgctxt "WrongChk"
 msgid "Wrong Checkpoint"
 msgstr "Nesprávný kontrolní bod"
 
-#. Editor  status 
-#: src/editor/SceneInit.cpp:277
-msgctxt "Loading"
-msgid "Loading"
-msgstr "Nahrává se"
-
-#. Editor  status 
-#: src/game/Gui_TweakSim.cpp:220 src/editor/SceneInit.cpp:376
-msgctxt "Loaded"
-msgid "Loaded"
-msgstr "Nahráno"
-
-#. Editor  status 
-#: src/editor/SceneInit.cpp:490
-msgctxt "Saving"
-msgid "Saving"
-msgstr "Ukládá se"
-
-#. Editor  status 
-#: src/game/Gui_TweakSim.cpp:567 src/editor/SceneInit.cpp:524
-#: src/editor/Update_Key.cpp:44 src/editor/ExportRoR.cpp:60
-msgctxt "Saved"
-msgid "Saved"
-msgstr "Uloženo"
-
-#. Editor  status 
-#: src/editor/SceneInit.cpp:419
-msgctxt "Updating"
-msgid "Updating"
-msgstr "Obnovuje se"
-
-#. Editor  status 
-#: src/editor/SceneInit.cpp:446
-msgctxt "Updated"
-msgid "Updated"
-msgstr "Aktualizováno"
-
 #. MAIN  Menu 
 #: data/gui/Game.layout:5 ..Window data/gui/Game_Main.layout:257
-#: ..NewGame-##{GameTypes}.Button src/game/Gui_Util.cpp:187
+#: ..NewGame-GameTypes.Button src/game/Gui_Util.cpp:187
 msgctxt "SingleRace"
 msgid "Single Race"
 msgstr "Jeden závod"
 
 #. MAIN  Menu 
 #: data/gui/Game.layout:1897 ..SingleRace.Tab data/gui/Game_Main.layout:293
-#: ..NewGame-##{GameTypes}.Button data/gui/Game_Options.layout:320
+#: ..NewGame-GameTypes.Button data/gui/Game_Options.layout:320
 #: ..Options.Input.Shortcuts.Text data/gui/Game_Utils.layout:20 ..Window :52
 #: src/game/Championships.cpp:280:426:448 src/game/Gui_Util.cpp:107:169
 msgctxt "Championship"
@@ -149,7 +112,7 @@ msgid "Championship"
 msgstr "Závod"
 
 #. MAIN  Menu 
-#: data/gui/Game_Main.layout:275 ..NewGame-##{GameTypes}.Button
+#: data/gui/Game_Main.layout:275 ..NewGame-GameTypes.Button
 #: data/gui/Game_Options.layout:317 ..Options.Input.Shortcuts.Text
 #: src/game/Championships.cpp:280:426:448 src/game/Gui_Util.cpp:106:168
 msgctxt "Tutorial"
@@ -157,7 +120,7 @@ msgid "Tutorial"
 msgstr "Výuka"
 
 #. MAIN  Menu 
-#: data/gui/Game_Main.layout:311 ..NewGame-##{GameTypes}.Button
+#: data/gui/Game_Main.layout:311 ..NewGame-GameTypes.Button
 #: data/gui/Game_Options.layout:323 ..Options.Input.Shortcuts.Text
 #: data/gui/Game_Utils.layout:96 ..Window :128
 #: src/game/Challenges.cpp:397:516:637 src/game/Gui_Util.cpp:107:169
@@ -167,7 +130,7 @@ msgstr "Výzva"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:394 ..Window data/gui/Game_Main.layout:211
-#: ..NewGame.Button
+#: ..NewGame-Difficulty.Button
 msgctxt "HowToPlay"
 msgid "How To Play"
 msgstr "Jak hrát"
@@ -199,8 +162,8 @@ msgstr "Ukončit"
 #: ..Editor.Tab data/gui/Editor_Options.layout:13 ..Options.Tab
 #: data/gui/Editor_Track.layout:14 ..Track.Tab data/gui/Game_Help.layout:13
 #: :512..HowToPlay.Button data/gui/Game.layout:13 ..SingleRace.Tab
-#: data/gui/Game_Main.layout:229 ..NewGame.Button
-#: :330..NewGame-##{GameTypes}.Button data/gui/Game_Options.layout:13
+#: data/gui/Game_Main.layout:229 ..NewGame-Difficulty.Button
+#: :330..NewGame-GameTypes.Button data/gui/Game_Options.layout:13
 #: data/gui/Game_Replay.layout:13 ..Replays.Tab data/gui/Game_Utils.layout:40
 #: ..Championship.Button :116..Challenge.Button :185..Multiplayer.Button
 #: data/gui/MaterialEditor.layout:53 ..MaterialEditor.Tab
@@ -395,6 +358,159 @@ msgctxt "Gold"
 msgid "Gold"
 msgstr "Zlato"
 
+#. Setup  Vehicle,Game 
+#: data/gui/Editor_Help.layout:235 ..Help.Input/help.Shortcuts.Text
+#: data/gui/Editor_Track.layout:588 ..Track.Tab data/gui/Game.layout:1285
+#: ..SingleRace.Setup.Tab data/gui/Game_Options.layout:313
+#: ..Options.Input.Shortcuts.Text src/game/Challenges.cpp:616
+#: src/game/Gui_Network.cpp:131
+msgctxt "Game"
+msgid "Game"
+msgstr "Hra"
+
+#. Setup  Vehicle,Game 
+#: data/gui/Game.layout:902 ..SingleRace.Tab data/gui/Game_Options.layout:310
+#: ..Options.Input.Shortcuts.Text data/gui/Game_Tweak.layout:220
+#: ..Tweak.Tires.Text
+msgctxt "Setup"
+msgid "Setup"
+msgstr "Nastavení"
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1616 ..SingleRace.Tab src/game/Gui_Util.cpp:188
+msgctxt "SplitScreen"
+msgid "Split Screen"
+msgstr ""
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1623 ..SingleRace.SplitScreen.Text
+msgctxt "NumLocalPlayers"
+msgid "Number of local players"
+msgstr "Počet místních hráčů"
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1685 ..SingleRace.SplitScreen.Check
+msgctxt "SplitVertically"
+msgid "Split Vertically"
+msgstr "Rozdělit svisle"
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1689 ..SingleRace.SplitScreen.Check
+#: src/game/Gui_Network.cpp:128
+msgctxt "ReverseStartOrder"
+msgid "Reverse starting order"
+msgstr "Obrátit počáteční pořadí"
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1668 ..SingleRace.SplitScreen.Text
+msgctxt "NumLaps"
+msgid "Number of laps"
+msgstr "Počet kol"
+
+#. MAIN  Game  Simulation 
+#: data/gui/Game.layout:1564 ..SingleRace.Setup.Steering.Text
+#: data/gui/Game_Main.layout:175 ..NewGame-Difficulty.Button
+#: src/game/Challenges.cpp:618 src/game/Gui_Init.cpp:452
+#: src/game/Gui_Replay.cpp:168 src/game/Gui_Network.cpp:132
+#: src/editor/Update_EditKeyTxt.cpp:349
+msgctxt "Simulation"
+msgid "Simulation"
+msgstr "Simulace"
+
+#. Game  Damage 
+#: data/gui/Editor.layout:336 ..Editor.Sun.Fog.Text
+#: :1616..Editor.Layers.Blendmap.Blendmap.Text data/gui/Editor_Track.layout:590
+#: ..Track.Game.Text data/gui/Game.layout:1341 ..SingleRace.Setup.Game.Text
+#: src/game/Challenges.cpp:619 src/game/Gui_Network.cpp:139
+msgctxt "Damage"
+msgid "Damage"
+msgstr "Škody"
+
+#. Game  Damage 
+#: src/game/Gui_Init.cpp:330:336 src/editor/Gui_Init.cpp:643
+#: src/editor/Update_EditKeyTxt.cpp:295 src/common/GuiCom_Options.cpp:60:82:237
+msgctxt "None"
+msgid "None"
+msgstr "Žádné"
+
+#. Game  Damage 
+#: src/game/Gui_Init.cpp:330
+msgctxt "Reduced"
+msgid "Reduced"
+msgstr "Částečné"
+
+#. Game  Damage 
+#: src/game/Gui_Init.cpp:331 src/common/GuiCom_Options.cpp:61
+msgctxt "Normal"
+msgid "Normal"
+msgstr "Normální"
+
+#. Game  Damage 
+#: data/gui/Game.layout:1357 ..SingleRace.Setup.Game.Text
+#: src/game/Gui_Network.cpp:140
+msgctxt "DamageDecLap"
+msgid "Repair each lap"
+msgstr "Oprava po každém kole"
+
+#. Game  Boost 
+#: data/gui/Game.layout:1294 ..SingleRace.Setup.Game.Text
+#: :1389..SingleRace.Setup.Tab data/gui/Game_Options.layout:713
+#: ..Options.View.Camera.Text :724 src/game/Challenges.cpp:622
+#: src/game/Gui_Init.cpp:453 src/game/Gui_Network.cpp:136
+msgctxt "Boost"
+msgid "Boost"
+msgstr "Zesílení"
+
+#. Game  Boost 
+#: data/gui/Game.layout:1309 ..SingleRace.Setup.Game.Text
+#: src/game/Challenges.cpp:623 src/game/Gui_Network.cpp:137
+msgctxt "Flip"
+msgid "Flip"
+msgstr "Překlopení"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:318:324 src/game/Gui_Network.cpp:43
+msgctxt "Never"
+msgid "Never"
+msgstr "Nikdy"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:319:325:336 src/game/Gui_Network.cpp:43
+msgctxt "Always"
+msgid "Always"
+msgstr "Vždy"
+
+#. Game  Boost 
+#: src/game/Challenges.cpp:617 src/game/Gui_Network.cpp:135
+#: src/common/GuiCom_Options.cpp:58
+msgctxt "Any"
+msgid "Any"
+msgstr "Jakékoli"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:318:338 src/game/Gui_Network.cpp:43
+msgctxt "FuelLap"
+msgid "Fuel each lap"
+msgstr "Dolít palivo po každém kole"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:319:338 src/game/Gui_Network.cpp:43
+msgctxt "FuelTime"
+msgid "Fuel over time"
+msgstr "Dolít palivo v průběhu času"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:324
+msgctxt "FuelBoost"
+msgid "Boost Fuel"
+msgstr "Podpůrná nádrž"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:337
+msgctxt "GoBackTime"
+msgid "Go back time"
+msgstr ""
+
 #. Challenge types 
 #: data/gui/Game.layout:1922 ..SingleRace.Championship.Tab
 msgctxt "Chall_Rally"
@@ -476,7 +592,8 @@ msgid "Ultra"
 msgstr "Přepjatá"
 
 #. MAIN  Track Difficulty 
-#: data/gui/Game_Main.layout:145 ..NewGame.Button :160..NewGame.Image
+#: data/gui/Game_Main.layout:145 ..NewGame-Difficulty.Button
+#: :160..NewGame-Difficulty.Image
 msgctxt "DifficultyHelp"
 msgid ""
 "Changing difficulty does set: Tracks list filter and sorting, selected "
@@ -487,7 +604,8 @@ msgstr ""
 "a trať, viditelné prvky HUD a jízdní pomůcky. Vše lze později změnit ručně."
 
 #. MAIN  Track Difficulty 
-#: data/gui/Game_Main.layout:180 ..NewGame.Button :195..NewGame.Image
+#: data/gui/Game_Main.layout:180 ..NewGame-Difficulty.Button
+#: :195..NewGame-Difficulty.Image
 msgctxt "SimulationHelp"
 msgid ""
 "Simulation mode does change how realistic vehicles are and how difficult "
@@ -528,6 +646,22 @@ msgid "Track"
 msgstr "Závodní trať"
 
 #. MAIN  Track 
+#: data/gui/Game.layout:25 ..SingleRace.Track.Button
+#: :513..SingleRace.Vehicle.Button :1694..SingleRace.SplitScreen.Button
+#: data/gui/Game_Main.layout:31 ..StuntRally##{GameVersion}.Button :106..Window
+#: :122..NewGame-Difficulty.Button :241..Window
+#: data/gui/Game_Options.layout:784 ..Options.Graphics.Button
+msgctxt "NewGame"
+msgid "New Game"
+msgstr "Nová hra"
+
+#. MAIN  Track 
+#: data/gui/Game_Main.layout:241 ..Window
+msgctxt "GameTypes"
+msgid "Game Types"
+msgstr ""
+
+#. MAIN  Track 
 #: data/gui/Editor.layout:3021 ..Editor.Vegetation.Road.Advanced.Text
 #: data/gui/Editor_Options.layout:851 ..Options.View.Pacenotes.Check
 #: data/gui/Game.layout:19 ..SingleRace.Track.Check
@@ -535,16 +669,6 @@ msgstr "Závodní trať"
 msgctxt "Reverse"
 msgid "Reverse"
 msgstr "Obrácené"
-
-#. MAIN  Track 
-#: data/gui/Game.layout:25 ..SingleRace.Track.Button
-#: :513..SingleRace.Vehicle.Button :1694..SingleRace.SplitScreen.Button
-#: data/gui/Game_Main.layout:31 ..StuntRally##{GameVersion}.Button :106..Window
-#: :122..NewGame.Button :241..Window data/gui/Game_Options.layout:784
-#: ..Options.Graphics.Button
-msgctxt "NewGame"
-msgid "New Game"
-msgstr "Nová hra"
 
 #. MAIN  Track 
 #: data/gui/Editor_Track.layout:383 ..Track.Track.Text data/gui/Game.layout:445
@@ -658,7 +782,7 @@ msgstr "Délka"
 
 #. Championship Stage  stats 
 #: data/gui/Game.layout:798 ..SingleRace.Vehicle.Text
-#: data/gui/Game_Main.layout:140 ..NewGame.Button
+#: data/gui/Game_Main.layout:106 ..Window :140..NewGame-Difficulty.Button
 #: src/game/Championships.cpp:208:457 src/game/Challenges.cpp:526:598
 #: src/game/Gui_InitCar.cpp:150 src/game/Gui_InitChamps.cpp:62:74:91
 msgctxt "Difficulty"
@@ -756,171 +880,6 @@ msgstr "Změna vozu"
 msgctxt "Allowed"
 msgid "Allowed"
 msgstr "Povoleno"
-
-#. Car  Names  from animals 
-msgctxt "Turtle"
-msgid "Turtle"
-msgstr "Želva"
-
-#. Car  Names  from animals 
-msgctxt "Elephant"
-msgid "Elephant"
-msgstr "Slon"
-
-#. Car  Names  from animals 
-msgctxt "Alligator"
-msgid "Alligator"
-msgstr "Krokodýl"
-
-#. Car  Names  from animals 
-msgctxt "Bison"
-msgid "Bison"
-msgstr "Bizon"
-
-#. Car  Names  from animals 
-msgctxt "Caterpillar"
-msgid "Caterpillar"
-msgstr "Housenka"
-
-#. Car  Names  from animals 
-msgctxt "Rhino"
-msgid "Rhino"
-msgstr "Nosorožec"
-
-#. Car  Names  from animals 
-msgctxt "Bear"
-msgid "Bear"
-msgstr "Medvěd"
-
-#. Car  Names  from animals 
-msgctxt "Coyote"
-msgid "Coyote"
-msgstr "Kojot"
-
-#. Car  Names  from animals 
-msgctxt "Squirrel"
-msgid "Squirrel"
-msgstr "Veverka"
-
-#. Car  Names  from animals 
-msgctxt "Fox"
-msgid "Fox"
-msgstr "Liška"
-
-#. Car  Names  from animals 
-msgctxt "Hyena"
-msgid "Hyena"
-msgstr "Hyena"
-
-#. Car  Names  from animals 
-msgctxt "Gorilla"
-msgid "Gorilla"
-msgstr "Gorila"
-
-#. Car  Names  from animals 
-msgctxt "Lizard"
-msgid "Lizard"
-msgstr "Ještěrka"
-
-#. Car  Names  from animals 
-msgctxt "Weasel"
-msgid "Weasel"
-msgstr "Lasička"
-
-#. Car  Names  from animals 
-msgctxt "Wolf"
-msgid "Wolf"
-msgstr "Vlk"
-
-#. Car  Names  from animals 
-msgctxt "Scorpion"
-msgid "Scorpion"
-msgstr "Škorpion"
-
-#. Car  Names  from animals 
-msgctxt "Buffalo"
-msgid "Buffalo"
-msgstr "Buvol"
-
-#. Car  Names  from animals 
-msgctxt "Gazelle"
-msgid "Gazelle"
-msgstr "Gazela"
-
-#. Car  Names  from animals 
-msgctxt "Jaguar"
-msgid "Jaguar"
-msgstr "Jaguár"
-
-#. Car  Names  from animals 
-msgctxt "Puma"
-msgid "Puma"
-msgstr "Puma"
-
-#. Car  Names  from animals 
-msgctxt "Leopard"
-msgid "Leopard"
-msgstr "Leopard"
-
-#. Car  Names  from animals 
-msgctxt "Beetle"
-msgid "Beetle"
-msgstr "Brouk"
-
-#. Car  Names  from animals 
-msgctxt "Swan"
-msgid "Swan"
-msgstr "Labuť"
-
-#. Car  Names  from animals 
-msgctxt "Duck"
-msgid "Duck"
-msgstr "Kačer"
-
-#. Car  Names  from animals 
-msgctxt "Hawk"
-msgid "Hawk"
-msgstr "Sokol"
-
-#. Car  Names  from animals 
-msgctxt "Rabbit"
-msgid "Rabbit"
-msgstr "Králík"
-
-#. Car  Names  from animals 
-msgctxt "Python"
-msgid "Python"
-msgstr ""
-
-#. Car  Names  from animals 
-msgctxt "Cobra"
-msgid "Cobra"
-msgstr ""
-
-#. Car  Names  from animals 
-msgctxt "Eagle"
-msgid "Eagle"
-msgstr ""
-
-#. Car  Names  from animals 
-msgctxt "Crow"
-msgid "Crow"
-msgstr ""
-
-#. Car  Names  from animals 
-msgctxt "Falcon"
-msgid "Falcon"
-msgstr ""
-
-#. Car  Names  from animals 
-msgctxt "Owl"
-msgid "Owl"
-msgstr ""
-
-#. Car  Names  from animals 
-msgctxt "Sparrow"
-msgid "Sparrow"
-msgstr ""
 
 #. Vehicle 
 #: data/gui/Game.layout:374 ..SingleRace.Track.Text :494..SingleRace.Tab
@@ -1249,62 +1208,264 @@ msgctxt "Car_StopTimeFrom"
 msgid "Stop time from"
 msgstr "Zastavit čas od"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Asphalt"
 msgid "Asphalt"
 msgstr "Asfalt"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Racing"
 msgid "Racing"
 msgstr "Závodění"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Gravel"
 msgid "Gravel"
 msgstr "Štěrk"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Slow"
 msgid "Slow"
 msgstr "Pomalé"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Terrain"
 msgid "Terrain"
 msgstr "Krajina"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Extreme"
 msgid "Extreme"
 msgstr "Extrémní"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Other"
 msgid "Other"
 msgstr "Ostatní"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 #: data/gui/Game.layout:1491 ..SingleRace.Setup.Steering.Tab
 #: :1949..SingleRace.Championship.Tab
 msgctxt "CarType_Hover"
 msgid "Hover"
 msgstr ""
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Hovercraft"
 msgid "Hovercraft"
 msgstr ""
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Spaceship"
 msgid "Spaceship"
 msgstr "Vesmírná loď"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Drone"
 msgid "Drone"
 msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Turtle"
+msgid "Turtle"
+msgstr "Želva"
+
+#. Vehicle  Names  from animals 
+msgctxt "Elephant"
+msgid "Elephant"
+msgstr "Slon"
+
+#. Vehicle  Names  from animals 
+msgctxt "Alligator"
+msgid "Alligator"
+msgstr "Krokodýl"
+
+#. Vehicle  Names  from animals 
+msgctxt "Bison"
+msgid "Bison"
+msgstr "Bizon"
+
+#. Vehicle  Names  from animals 
+msgctxt "Caterpillar"
+msgid "Caterpillar"
+msgstr "Housenka"
+
+#. Vehicle  Names  from animals 
+msgctxt "Rhino"
+msgid "Rhino"
+msgstr "Nosorožec"
+
+#. Vehicle  Names  from animals 
+msgctxt "Bear"
+msgid "Bear"
+msgstr "Medvěd"
+
+#. Vehicle  Names  from animals 
+msgctxt "Coyote"
+msgid "Coyote"
+msgstr "Kojot"
+
+#. Vehicle  Names  from animals 
+msgctxt "Squirrel"
+msgid "Squirrel"
+msgstr "Veverka"
+
+#. Vehicle  Names  from animals 
+msgctxt "Fox"
+msgid "Fox"
+msgstr "Liška"
+
+#. Vehicle  Names  from animals 
+msgctxt "Hyena"
+msgid "Hyena"
+msgstr "Hyena"
+
+#. Vehicle  Names  from animals 
+msgctxt "Gorilla"
+msgid "Gorilla"
+msgstr "Gorila"
+
+#. Vehicle  Names  from animals 
+msgctxt "Lizard"
+msgid "Lizard"
+msgstr "Ještěrka"
+
+#. Vehicle  Names  from animals 
+msgctxt "Weasel"
+msgid "Weasel"
+msgstr "Lasička"
+
+#. Vehicle  Names  from animals 
+msgctxt "Wolf"
+msgid "Wolf"
+msgstr "Vlk"
+
+#. Vehicle  Names  from animals 
+msgctxt "Scorpion"
+msgid "Scorpion"
+msgstr "Škorpion"
+
+#. Vehicle  Names  from animals 
+msgctxt "Buffalo"
+msgid "Buffalo"
+msgstr "Buvol"
+
+#. Vehicle  Names  from animals 
+msgctxt "Gazelle"
+msgid "Gazelle"
+msgstr "Gazela"
+
+#. Vehicle  Names  from animals 
+msgctxt "Jaguar"
+msgid "Jaguar"
+msgstr "Jaguár"
+
+#. Vehicle  Names  from animals 
+msgctxt "Puma"
+msgid "Puma"
+msgstr "Puma"
+
+#. Vehicle  Names  from animals 
+msgctxt "Leopard"
+msgid "Leopard"
+msgstr "Leopard"
+
+#. Vehicle  Names  from animals 
+msgctxt "Beetle"
+msgid "Beetle"
+msgstr "Brouk"
+
+#. Vehicle  Names  from animals 
+msgctxt "Swan"
+msgid "Swan"
+msgstr "Labuť"
+
+#. Vehicle  Names  from animals 
+msgctxt "Duck"
+msgid "Duck"
+msgstr "Kačer"
+
+#. Vehicle  Names  from animals 
+msgctxt "Hawk"
+msgid "Hawk"
+msgstr "Sokol"
+
+#. Vehicle  Names  from animals 
+msgctxt "Rabbit"
+msgid "Rabbit"
+msgstr "Králík"
+
+#. Vehicle  Names  from animals 
+msgctxt "Python"
+msgid "Python"
+msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Cobra"
+msgid "Cobra"
+msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Eagle"
+msgid "Eagle"
+msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Crow"
+msgid "Crow"
+msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Falcon"
+msgid "Falcon"
+msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Owl"
+msgid "Owl"
+msgstr ""
+
+#. Vehicle  Names  from animals 
+msgctxt "Sparrow"
+msgid "Sparrow"
+msgstr ""
+
+#. Editor  status 
+#: src/editor/SceneInit.cpp:277
+msgctxt "Loading"
+msgid "Loading"
+msgstr "Nahrává se"
+
+#. Editor  status 
+#: src/game/Gui_TweakSim.cpp:220 src/editor/SceneInit.cpp:376
+msgctxt "Loaded"
+msgid "Loaded"
+msgstr "Nahráno"
+
+#. Editor  status 
+#: src/editor/SceneInit.cpp:490
+msgctxt "Saving"
+msgid "Saving"
+msgstr "Ukládá se"
+
+#. Editor  status 
+#: src/game/Gui_TweakSim.cpp:567 src/editor/SceneInit.cpp:524
+#: src/editor/Update_Key.cpp:44 src/editor/ExportRoR.cpp:60
+msgctxt "Saved"
+msgid "Saved"
+msgstr "Uloženo"
+
+#. Editor  status 
+#: src/editor/SceneInit.cpp:419
+msgctxt "Updating"
+msgid "Updating"
+msgstr "Obnovuje se"
+
+#. Editor  status 
+#: src/editor/SceneInit.cpp:446
+msgctxt "Updated"
+msgid "Updated"
+msgstr "Aktualizováno"
 
 #. MsgBox 
 #: src/game/Gui_Network.cpp:26 src/editor/Gui_Init.cpp:328
@@ -1877,193 +2038,6 @@ msgctxt "P_Silver"
 msgid "Silver"
 msgstr "Stříbro"
 
-#. Setup  Vehicle,Game 
-#: data/gui/Editor_Help.layout:235 ..Help.Input/help.Shortcuts.Text
-#: data/gui/Editor_Track.layout:588 ..Track.Tab data/gui/Game.layout:1285
-#: ..SingleRace.Setup.Tab data/gui/Game_Options.layout:313
-#: ..Options.Input.Shortcuts.Text src/game/Challenges.cpp:616
-#: src/game/Gui_Network.cpp:131
-msgctxt "Game"
-msgid "Game"
-msgstr "Hra"
-
-#. Setup  Vehicle,Game 
-#: data/gui/Game.layout:902 ..SingleRace.Tab data/gui/Game_Options.layout:310
-#: ..Options.Input.Shortcuts.Text data/gui/Game_Tweak.layout:220
-#: ..Tweak.Tires.Text
-msgctxt "Setup"
-msgid "Setup"
-msgstr "Nastavení"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1616 ..SingleRace.Tab src/game/Gui_Util.cpp:188
-msgctxt "SplitScreen"
-msgid "Split Screen"
-msgstr ""
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1623 ..SingleRace.SplitScreen.Text
-msgctxt "NumLocalPlayers"
-msgid "Number of local players"
-msgstr "Počet místních hráčů"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1685 ..SingleRace.SplitScreen.Check
-msgctxt "SplitVertically"
-msgid "Split Vertically"
-msgstr "Rozdělit svisle"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1689 ..SingleRace.SplitScreen.Check
-#: src/game/Gui_Network.cpp:128
-msgctxt "ReverseStartOrder"
-msgid "Reverse starting order"
-msgstr "Obrátit počáteční pořadí"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1668 ..SingleRace.SplitScreen.Text
-msgctxt "NumLaps"
-msgid "Number of laps"
-msgstr "Počet kol"
-
-#. MAIN  Game  Simulation 
-#: data/gui/Game.layout:1564 ..SingleRace.Setup.Steering.Text
-#: data/gui/Game_Main.layout:175 ..NewGame.Button src/game/Challenges.cpp:618
-#: src/game/Gui_Init.cpp:452 src/game/Gui_Replay.cpp:168
-#: src/game/Gui_Network.cpp:132 src/editor/Update_EditKeyTxt.cpp:349
-msgctxt "Simulation"
-msgid "Simulation"
-msgstr "Simulace"
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1608 ..SingleRace.Setup.Other.Text
-msgctxt "NotRecommended"
-msgid "Not recommended"
-msgstr "Nedoporučeno"
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1598 ..SingleRace.Setup.Other.Check
-msgctxt "ABS"
-msgid "ABS (antilock brakes)"
-msgstr "ABS (antiblokovací systém)"
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1600 ..SingleRace.Setup.Other.Check
-msgctxt "TipABS"
-msgid "Prevents wheel lock when braking (default: off)."
-msgstr "Zabraňuje blokování pneumatik při brzdění (výchozí: vypnuto)."
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1603 ..SingleRace.Setup.Other.Check
-msgctxt "TCS"
-msgid "TCS (traction control)"
-msgstr "TCS (kontrola tažení)"
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1605 ..SingleRace.Setup.Other.Check
-msgctxt "TipTCS"
-msgid "Prevents wheel spinning when accelerating (default: off)."
-msgstr "Zabraňuje prokluzu pneumatik při zrychlování (výchozí: vypnuto)."
-
-#. Setup  steering 
-#: data/gui/Game.layout:1485 ..SingleRace.Setup.Steering.Tab
-msgctxt "Gravel"
-msgid "Gravel"
-msgstr "Štěrk"
-
-#. Setup  steering 
-#: data/gui/Editor_Track.layout:615 ..Track.Game.Check
-#: data/gui/Game.layout:1488 ..SingleRace.Setup.Steering.Tab
-msgctxt "Asphalt"
-msgid "Asphalt"
-msgstr "Asfalt"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1495 ..SingleRace.Setup.Steering.Text
-msgctxt "SpeedSensitiveSteering"
-msgid "Speed Sensitive Steering"
-msgstr "Řízení závisející na rychlosti"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1497 ..SingleRace.Setup.Steering.Text
-msgctxt "TipSpeedSensitiveSteering"
-msgid "Decreases steering range with higher velocity."
-msgstr "Zmenšuje rozsah řízení při vyšší rychlosti"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1500 ..SingleRace.Setup.Steering.Text :1538
-msgctxt "SSS_Effect"
-msgid "Effect"
-msgstr "Účinek"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1508 ..SingleRace.Setup.Steering.Text
-msgctxt "SSS_SpeedFactor"
-msgid "Speed Factor"
-msgstr "Rychlostní činitel"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1560 ..SingleRace.Setup.Steering.Text
-msgctxt "SteerRange"
-msgid "Steering range multipliers"
-msgstr "Činitel rozsahu řízení"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1566 ..SingleRace.Setup.Steering.Text
-#: :1571:1574..SingleRace.Setup.Steering.Slider
-msgctxt "TipSteerSim"
-msgid "Steering range multiplier, for simulation mode (Easy,Normal)."
-msgstr "Činitel rozsahu řízení, pro režim simulace (lehká, normální)"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1579 ..SingleRace.Setup.Steering.Text
-#: :1584:1587..SingleRace.Setup.Steering.Slider
-msgctxt "TipSteerSurf"
-msgid "Steering range multiplier, for surface (Gravel,Asphalt)."
-msgstr "Činitel rozsahu řízení, pro povrch (štěrk, asfalt)"
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1452 ..SingleRace.Setup.Tab
-msgctxt "Gearbox"
-msgid "Gearbox"
-msgstr "Převodovka"
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1459 ..SingleRace.Setup.Gearbox.Check
-msgctxt "AutoGearbox"
-msgid "Auto gearbox"
-msgstr "Automatická převodovka"
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1461 ..SingleRace.Setup.Gearbox.Check
-msgctxt "TipAutoGearbox"
-msgid "Uncheck for manual gears changing."
-msgstr "Zrušte zaškrtnutí pro ruční řazení."
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1464 ..SingleRace.Setup.Gearbox.Check
-msgctxt "AutoRear"
-msgid "Auto Rear gear"
-msgstr "Automatická zpátečka"
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1466 ..SingleRace.Setup.Gearbox.Check
-msgctxt "TipAutoRear"
-msgid "Uncheck for manual Rear gear changing."
-msgstr "Zrušte zaškrtnutí pro ruční zpátečku."
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1469 ..SingleRace.Setup.Gearbox.Check
-msgctxt "RearThrottleInverse"
-msgid "Rear throttle inverse"
-msgstr "Brzda = dozadu"
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1471 ..SingleRace.Setup.Gearbox.Check
-msgctxt "TipRearThrottleInverse"
-msgid "Inverse throttle and brake function in rear gear."
-msgstr "Vyměnit klávesu pro plyn a brzdy při zpátečce (zpětném chodu)."
-
 #. Setup  collision 
 #: data/gui/Game.layout:1371 ..SingleRace.Setup.Collision.Check
 msgctxt "VegetCol"
@@ -2095,99 +2069,134 @@ msgctxt "DriveOnHorizons"
 msgid "Allow driving outside map, on horizons"
 msgstr ""
 
-#. Game  Damage 
-#: data/gui/Editor.layout:336 ..Editor.Sun.Fog.Text
-#: :1616..Editor.Layers.Blendmap.Blendmap.Text data/gui/Editor_Track.layout:590
-#: ..Track.Game.Text data/gui/Game.layout:1341 ..SingleRace.Setup.Game.Text
-#: src/game/Challenges.cpp:619 src/game/Gui_Network.cpp:139
-msgctxt "Damage"
-msgid "Damage"
-msgstr "Škody"
+#. Setup  Gearbox 
+#: data/gui/Game.layout:1452 ..SingleRace.Setup.Tab
+msgctxt "Gearbox"
+msgid "Gearbox"
+msgstr "Převodovka"
 
-#. Game  Damage 
-#: src/game/Gui_Init.cpp:330:336 src/editor/Gui_Init.cpp:643
-#: src/editor/Update_EditKeyTxt.cpp:295 src/common/GuiCom_Options.cpp:60:82:237
-msgctxt "None"
-msgid "None"
-msgstr "Žádné"
+#. Setup  Gearbox 
+#: data/gui/Game.layout:1459 ..SingleRace.Setup.Gearbox.Check
+msgctxt "AutoGearbox"
+msgid "Auto gearbox"
+msgstr "Automatická převodovka"
 
-#. Game  Damage 
-#: src/game/Gui_Init.cpp:330
-msgctxt "Reduced"
-msgid "Reduced"
-msgstr "Částečné"
+#. Setup  Gearbox 
+#: data/gui/Game.layout:1464 ..SingleRace.Setup.Gearbox.Check
+msgctxt "AutoRear"
+msgid "Auto Rear gear"
+msgstr "Automatická zpátečka"
 
-#. Game  Damage 
-#: src/game/Gui_Init.cpp:331 src/common/GuiCom_Options.cpp:61
-msgctxt "Normal"
-msgid "Normal"
-msgstr "Normální"
+#. Setup  Gearbox 
+#: data/gui/Game.layout:1469 ..SingleRace.Setup.Gearbox.Check
+msgctxt "RearThrottleInverse"
+msgid "Rear throttle inverse"
+msgstr "Brzda = dozadu"
 
-#. Game  Damage 
-#: data/gui/Game.layout:1357 ..SingleRace.Setup.Game.Text
-#: src/game/Gui_Network.cpp:140
-msgctxt "DamageDecLap"
-msgid "Repair each lap"
-msgstr "Oprava po každém kole"
+#. Setup  steering 
+#: data/gui/Game.layout:1485 ..SingleRace.Setup.Steering.Tab
+msgctxt "Gravel"
+msgid "Gravel"
+msgstr "Štěrk"
 
-#. Game  Boost 
-#: data/gui/Game.layout:1294 ..SingleRace.Setup.Game.Text
-#: :1389..SingleRace.Setup.Tab data/gui/Game_Options.layout:713
-#: ..Options.View.Camera.Text :724 src/game/Challenges.cpp:622
-#: src/game/Gui_Init.cpp:453 src/game/Gui_Network.cpp:136
-msgctxt "Boost"
-msgid "Boost"
-msgstr "Zesílení"
+#. Setup  steering 
+#: data/gui/Editor_Track.layout:615 ..Track.Game.Check
+#: data/gui/Game.layout:1488 ..SingleRace.Setup.Steering.Tab
+msgctxt "Asphalt"
+msgid "Asphalt"
+msgstr "Asfalt"
 
-#. Game  Boost 
-#: data/gui/Game.layout:1309 ..SingleRace.Setup.Game.Text
-#: src/game/Challenges.cpp:623 src/game/Gui_Network.cpp:137
-msgctxt "Flip"
-msgid "Flip"
-msgstr "Překlopení"
+#. Setup  steering 
+#: data/gui/Game.layout:1495 ..SingleRace.Setup.Steering.Text
+msgctxt "SpeedSensitiveSteering"
+msgid "Speed Sensitive Steering"
+msgstr "Řízení závisející na rychlosti"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:318:324 src/game/Gui_Network.cpp:43
-msgctxt "Never"
-msgid "Never"
-msgstr "Nikdy"
+#. Setup  steering 
+#: data/gui/Game.layout:1500 ..SingleRace.Setup.Steering.Text :1538
+msgctxt "SSS_Effect"
+msgid "Effect"
+msgstr "Účinek"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:319:325:336 src/game/Gui_Network.cpp:43
-msgctxt "Always"
-msgid "Always"
-msgstr "Vždy"
+#. Setup  steering 
+#: data/gui/Game.layout:1508 ..SingleRace.Setup.Steering.Text
+msgctxt "SSS_SpeedFactor"
+msgid "Speed Factor"
+msgstr "Rychlostní činitel"
 
-#. Game  Boost 
-#: src/game/Challenges.cpp:617 src/game/Gui_Network.cpp:135
-#: src/common/GuiCom_Options.cpp:58
-msgctxt "Any"
-msgid "Any"
-msgstr "Jakékoli"
+#. Setup  steering 
+#: data/gui/Game.layout:1560 ..SingleRace.Setup.Steering.Text
+msgctxt "SteerRange"
+msgid "Steering range multipliers"
+msgstr "Činitel rozsahu řízení"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:318:338 src/game/Gui_Network.cpp:43
-msgctxt "FuelLap"
-msgid "Fuel each lap"
-msgstr "Dolít palivo po každém kole"
+#. Setup  ABS,TCS 
+#: data/gui/Game.layout:1608 ..SingleRace.Setup.Other.Text
+msgctxt "NotRecommended"
+msgid "Not recommended"
+msgstr "Nedoporučeno"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:319:338 src/game/Gui_Network.cpp:43
-msgctxt "FuelTime"
-msgid "Fuel over time"
-msgstr "Dolít palivo v průběhu času"
+#. Setup  ABS,TCS 
+#: data/gui/Game.layout:1598 ..SingleRace.Setup.Other.Check
+msgctxt "ABS"
+msgid "ABS (antilock brakes)"
+msgstr "ABS (antiblokovací systém)"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:324
-msgctxt "FuelBoost"
-msgid "Boost Fuel"
-msgstr "Podpůrná nádrž"
+#. Setup  ABS,TCS 
+#: data/gui/Game.layout:1603 ..SingleRace.Setup.Other.Check
+msgctxt "TCS"
+msgid "TCS (traction control)"
+msgstr "TCS (kontrola tažení)"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:337
-msgctxt "GoBackTime"
-msgid "Go back time"
-msgstr ""
+#. Setup  tips 
+#: data/gui/Game.layout:1600 ..SingleRace.Setup.Other.Check
+msgctxt "TipABS"
+msgid "Prevents wheel lock when braking (default: off)."
+msgstr "Zabraňuje blokování pneumatik při brzdění (výchozí: vypnuto)."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1605 ..SingleRace.Setup.Other.Check
+msgctxt "TipTCS"
+msgid "Prevents wheel spinning when accelerating (default: off)."
+msgstr "Zabraňuje prokluzu pneumatik při zrychlování (výchozí: vypnuto)."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1497 ..SingleRace.Setup.Steering.Text
+msgctxt "TipSpeedSensitiveSteering"
+msgid "Decreases steering range with higher velocity."
+msgstr "Zmenšuje rozsah řízení při vyšší rychlosti"
+
+#. Setup  tips 
+#: data/gui/Game.layout:1566 ..SingleRace.Setup.Steering.Text
+#: :1571:1574..SingleRace.Setup.Steering.Slider
+msgctxt "TipSteerSim"
+msgid "Steering range multiplier, for simulation mode (Easy,Normal)."
+msgstr "Činitel rozsahu řízení, pro režim simulace (lehká, normální)"
+
+#. Setup  tips 
+#: data/gui/Game.layout:1579 ..SingleRace.Setup.Steering.Text
+#: :1584:1587..SingleRace.Setup.Steering.Slider
+msgctxt "TipSteerSurf"
+msgid "Steering range multiplier, for surface (Gravel,Asphalt)."
+msgstr "Činitel rozsahu řízení, pro povrch (štěrk, asfalt)"
+
+#. Setup  tips 
+#: data/gui/Game.layout:1461 ..SingleRace.Setup.Gearbox.Check
+msgctxt "TipAutoGearbox"
+msgid "Uncheck for manual gears changing."
+msgstr "Zrušte zaškrtnutí pro ruční řazení."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1466 ..SingleRace.Setup.Gearbox.Check
+msgctxt "TipAutoRear"
+msgid "Uncheck for manual Rear gear changing."
+msgstr "Zrušte zaškrtnutí pro ruční zpátečku."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1471 ..SingleRace.Setup.Gearbox.Check
+msgctxt "TipRearThrottleInverse"
+msgid "Inverse throttle and brake function in rear gear."
+msgstr "Vyměnit klávesu pro plyn a brzdy při zpátečce (zpětném chodu)."
 
 #. Replay 
 #: data/gui/Game_Options.layout:278 ..Options.Input.General.Text
@@ -2400,17 +2409,14 @@ msgctxt "Fullscreen"
 msgid "Fullscreen"
 msgstr "Celá obrazovka"
 
-#. Screen 
-#: data/gui/Editor_Options.layout:150 ..Options.Screen.Video.Check
-#: data/gui/Game_Options.layout:150
-#, fuzzy
-#| msgctxt "ReflMode"
-#| msgid "Mode"
-msgctxt "VRmode"
-msgid "VR Mode"
-msgstr "Režim"
+#. Screen  vertical synchronisation 
+#: data/gui/Editor_Options.layout:122 ..Options.Screen.Video.Check
+#: data/gui/Game_Options.layout:122
+msgctxt "VSync"
+msgid "VSync"
+msgstr "VSync"
 
-#. Screen 
+#. Screen  vertical synchronisation 
 #: data/gui/Editor_Options.layout:89 ..Options.Screen.Main.Text
 #: :465..Options.Graphics.Lights.Text data/gui/Game_Options.layout:89
 #: :1010..Options.Graphics.Lights.Text
@@ -2421,7 +2427,7 @@ msgctxt "Brightness"
 msgid "Brightness"
 msgstr "Jas"
 
-#. Screen 
+#. Screen  vertical synchronisation 
 #: data/gui/Editor_Options.layout:101 ..Options.Screen.Main.Text
 #: data/gui/Game_Options.layout:101
 #, fuzzy
@@ -2431,42 +2437,88 @@ msgctxt "Contrast"
 msgid "Contrast"
 msgstr "Ovládací prvky"
 
-#. Screen 
-msgctxt "Gamma"
-msgid "Gamma"
-msgstr ""
+#. Screen  advanced 
+#: data/gui/Editor_Options.layout:139 ..Options.Screen.Video.Text
+#: data/gui/Game_Options.layout:139
+msgctxt "RenderSystem"
+msgid "Render System"
+msgstr "Vykreslovací systém"
 
-#. Screen 
+#. Screen  advanced 
+#: data/gui/Editor_Options.layout:126 ..Options.Screen.Video.Text
+#: data/gui/Game_Options.layout:126
+msgctxt "AntiAliasing"
+msgid "Antialiasing"
+msgstr "Vyhlazování"
+
+#. Screen  advanced 
+#: data/gui/Editor_Options.layout:55 ..Options.Screen.Main.Button
+#: data/gui/Game_Options.layout:55
+msgctxt "Change"
+msgid "Change"
+msgstr "Změnit"
+
+#. Screen  advanced 
 #: data/gui/Editor_Options.layout:162 ..Options.Screen.Tab
 #: :187..Options.Screen.GUI.Text data/gui/Game_Options.layout:162
 msgctxt "GUI"
 msgid "GUI"
 msgstr ""
 
-#. Screen 
+#. Screen  advanced 
 #: data/gui/Editor_Options.layout:182 ..Options.Screen.GUI.Text
 #: data/gui/Game_Options.layout:182
 msgctxt "FontSizes"
 msgid "Font sizes"
 msgstr ""
 
-#. Screen 
+#. Screen  advanced 
 #: data/gui/Editor_Options.layout:170 ..Options.Screen.GUI.Text
 #: data/gui/Game_Options.layout:170
 msgctxt "WindowMargin"
 msgid "Window margin"
 msgstr ""
 
-#. Screen 
+#. Screen  not used 
+msgctxt "Gamma"
+msgid "Gamma"
+msgstr ""
+
+#. Screen  not used 
+#: data/gui/Editor_Options.layout:150 ..Options.Screen.Video.Check
+#: data/gui/Game_Options.layout:150
+#, fuzzy
+#| msgctxt "ReflMode"
+#| msgid "Mode"
+msgctxt "VRmode"
+msgid "VR Mode"
+msgstr "Režim"
+
+#. Screen  not used 
 msgctxt "Complex"
 msgid "Complex"
 msgstr "Složitý"
 
-#. Screen 
+#. Screen  not used 
 #: data/gui/Editor.layout:1224 ..Editor.Terrain.Tools.Button
 msgctxt "Simple"
 msgid "Simple"
 msgstr "Jednoduchý"
+
+#. Screen  not used 
+msgctxt "LimitFPS"
+msgid "Limit frames per second"
+msgstr "Omezit rychlost obnovování (počet snímků za sekundu)"
+
+#. Screen  not used 
+msgctxt "FramesPerSec"
+msgid "Frames per second"
+msgstr "Snímků za vteřinu"
+
+#. Screen  not used 
+msgctxt "SleepMS"
+msgid "Sleep interval [milisec]"
+msgstr "Spánkový interval (ms)"
 
 #. Screen  info 
 #: data/gui/Editor_Options.layout:28 ..Options.Screen.Main.Text
@@ -2511,49 +2563,6 @@ msgid ""
 msgstr ""
 "Výchozí je lepší jakost (menší počet snímků za sekundu) na pravé straně. "
 "Označeno znaménkem +, pokud je také nalevo."
-
-#. Screen  vertical synchronisation 
-#: data/gui/Editor_Options.layout:122 ..Options.Screen.Video.Check
-#: data/gui/Game_Options.layout:122
-msgctxt "VSync"
-msgid "VSync"
-msgstr "VSync"
-
-#. Screen  advanced 
-#: data/gui/Editor_Options.layout:139 ..Options.Screen.Video.Text
-#: data/gui/Game_Options.layout:139
-msgctxt "RenderSystem"
-msgid "Render System"
-msgstr "Vykreslovací systém"
-
-#. Screen  advanced 
-#: data/gui/Editor_Options.layout:126 ..Options.Screen.Video.Text
-#: data/gui/Game_Options.layout:126
-msgctxt "AntiAliasing"
-msgid "Antialiasing"
-msgstr "Vyhlazování"
-
-#. Screen  advanced 
-#: data/gui/Editor_Options.layout:55 ..Options.Screen.Main.Button
-#: data/gui/Game_Options.layout:55
-msgctxt "Change"
-msgid "Change"
-msgstr "Změnit"
-
-#. Screen  advanced 
-msgctxt "LimitFPS"
-msgid "Limit frames per second"
-msgstr "Omezit rychlost obnovování (počet snímků za sekundu)"
-
-#. Screen  advanced 
-msgctxt "FramesPerSec"
-msgid "Frames per second"
-msgstr "Snímků za vteřinu"
-
-#. Screen  advanced 
-msgctxt "SleepMS"
-msgid "Sleep interval [milisec]"
-msgstr "Spánkový interval (ms)"
 
 #. Graphics Presets 
 #: data/gui/Editor_Options.layout:74 ..Options.Screen.Main.Text

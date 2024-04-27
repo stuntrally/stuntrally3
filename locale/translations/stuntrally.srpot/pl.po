@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-27 11:36+0200\n"
+"POT-Creation-Date: 2024-04-27 12:57+0200\n"
 "PO-Revision-Date: 2024-04-14 10:38+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/stunt-rally-3/"
@@ -95,53 +95,16 @@ msgctxt "WrongChk"
 msgid "Wrong Checkpoint"
 msgstr "Zły punkt kontrolny"
 
-#. Editor  status 
-#: src/editor/SceneInit.cpp:277
-msgctxt "Loading"
-msgid "Loading"
-msgstr "Wczytywanie"
-
-#. Editor  status 
-#: src/game/Gui_TweakSim.cpp:220 src/editor/SceneInit.cpp:376
-msgctxt "Loaded"
-msgid "Loaded"
-msgstr "Wczytano"
-
-#. Editor  status 
-#: src/editor/SceneInit.cpp:490
-msgctxt "Saving"
-msgid "Saving"
-msgstr "Zapisywanie"
-
-#. Editor  status 
-#: src/game/Gui_TweakSim.cpp:567 src/editor/SceneInit.cpp:524
-#: src/editor/Update_Key.cpp:44 src/editor/ExportRoR.cpp:60
-msgctxt "Saved"
-msgid "Saved"
-msgstr "Zapisano"
-
-#. Editor  status 
-#: src/editor/SceneInit.cpp:419
-msgctxt "Updating"
-msgid "Updating"
-msgstr "Aktualizacja"
-
-#. Editor  status 
-#: src/editor/SceneInit.cpp:446
-msgctxt "Updated"
-msgid "Updated"
-msgstr "Uaktualniono"
-
 #. MAIN  Menu 
 #: data/gui/Game.layout:5 ..Window data/gui/Game_Main.layout:257
-#: ..NewGame-##{GameTypes}.Button src/game/Gui_Util.cpp:187
+#: ..NewGame-GameTypes.Button src/game/Gui_Util.cpp:187
 msgctxt "SingleRace"
 msgid "Single Race"
 msgstr "Pojedynczy wyścig"
 
 #. MAIN  Menu 
 #: data/gui/Game.layout:1897 ..SingleRace.Tab data/gui/Game_Main.layout:293
-#: ..NewGame-##{GameTypes}.Button data/gui/Game_Options.layout:320
+#: ..NewGame-GameTypes.Button data/gui/Game_Options.layout:320
 #: ..Options.Input.Shortcuts.Text data/gui/Game_Utils.layout:20 ..Window :52
 #: src/game/Championships.cpp:280:426:448 src/game/Gui_Util.cpp:107:169
 msgctxt "Championship"
@@ -149,7 +112,7 @@ msgid "Championship"
 msgstr "Mistrzostwo"
 
 #. MAIN  Menu 
-#: data/gui/Game_Main.layout:275 ..NewGame-##{GameTypes}.Button
+#: data/gui/Game_Main.layout:275 ..NewGame-GameTypes.Button
 #: data/gui/Game_Options.layout:317 ..Options.Input.Shortcuts.Text
 #: src/game/Championships.cpp:280:426:448 src/game/Gui_Util.cpp:106:168
 msgctxt "Tutorial"
@@ -157,7 +120,7 @@ msgid "Tutorial"
 msgstr "Samouczek"
 
 #. MAIN  Menu 
-#: data/gui/Game_Main.layout:311 ..NewGame-##{GameTypes}.Button
+#: data/gui/Game_Main.layout:311 ..NewGame-GameTypes.Button
 #: data/gui/Game_Options.layout:323 ..Options.Input.Shortcuts.Text
 #: data/gui/Game_Utils.layout:96 ..Window :128
 #: src/game/Challenges.cpp:397:516:637 src/game/Gui_Util.cpp:107:169
@@ -167,7 +130,7 @@ msgstr "Wyzwanie"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:394 ..Window data/gui/Game_Main.layout:211
-#: ..NewGame.Button
+#: ..NewGame-Difficulty.Button
 msgctxt "HowToPlay"
 msgid "How To Play"
 msgstr "Jak grać"
@@ -199,8 +162,8 @@ msgstr "Wyjdź"
 #: ..Editor.Tab data/gui/Editor_Options.layout:13 ..Options.Tab
 #: data/gui/Editor_Track.layout:14 ..Track.Tab data/gui/Game_Help.layout:13
 #: :512..HowToPlay.Button data/gui/Game.layout:13 ..SingleRace.Tab
-#: data/gui/Game_Main.layout:229 ..NewGame.Button
-#: :330..NewGame-##{GameTypes}.Button data/gui/Game_Options.layout:13
+#: data/gui/Game_Main.layout:229 ..NewGame-Difficulty.Button
+#: :330..NewGame-GameTypes.Button data/gui/Game_Options.layout:13
 #: data/gui/Game_Replay.layout:13 ..Replays.Tab data/gui/Game_Utils.layout:40
 #: ..Championship.Button :116..Challenge.Button :185..Multiplayer.Button
 #: data/gui/MaterialEditor.layout:53 ..MaterialEditor.Tab
@@ -397,6 +360,159 @@ msgctxt "Gold"
 msgid "Gold"
 msgstr "Złoto"
 
+#. Setup  Vehicle,Game 
+#: data/gui/Editor_Help.layout:235 ..Help.Input/help.Shortcuts.Text
+#: data/gui/Editor_Track.layout:588 ..Track.Tab data/gui/Game.layout:1285
+#: ..SingleRace.Setup.Tab data/gui/Game_Options.layout:313
+#: ..Options.Input.Shortcuts.Text src/game/Challenges.cpp:616
+#: src/game/Gui_Network.cpp:131
+msgctxt "Game"
+msgid "Game"
+msgstr "Gra"
+
+#. Setup  Vehicle,Game 
+#: data/gui/Game.layout:902 ..SingleRace.Tab data/gui/Game_Options.layout:310
+#: ..Options.Input.Shortcuts.Text data/gui/Game_Tweak.layout:220
+#: ..Tweak.Tires.Text
+msgctxt "Setup"
+msgid "Setup"
+msgstr "Ustawienia"
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1616 ..SingleRace.Tab src/game/Gui_Util.cpp:188
+msgctxt "SplitScreen"
+msgid "Split Screen"
+msgstr "Ekran dzielony"
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1623 ..SingleRace.SplitScreen.Text
+msgctxt "NumLocalPlayers"
+msgid "Number of local players"
+msgstr "Liczba lokalnych graczy"
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1685 ..SingleRace.SplitScreen.Check
+msgctxt "SplitVertically"
+msgid "Split Vertically"
+msgstr "Podziel pionowo"
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1689 ..SingleRace.SplitScreen.Check
+#: src/game/Gui_Network.cpp:128
+msgctxt "ReverseStartOrder"
+msgid "Reverse starting order"
+msgstr "Odwróć pozycje startowe"
+
+#. Game  Split screen 
+#: data/gui/Game.layout:1668 ..SingleRace.SplitScreen.Text
+msgctxt "NumLaps"
+msgid "Number of laps"
+msgstr "Liczba okrążeń"
+
+#. MAIN  Game  Simulation 
+#: data/gui/Game.layout:1564 ..SingleRace.Setup.Steering.Text
+#: data/gui/Game_Main.layout:175 ..NewGame-Difficulty.Button
+#: src/game/Challenges.cpp:618 src/game/Gui_Init.cpp:452
+#: src/game/Gui_Replay.cpp:168 src/game/Gui_Network.cpp:132
+#: src/editor/Update_EditKeyTxt.cpp:349
+msgctxt "Simulation"
+msgid "Simulation"
+msgstr "Symulacja"
+
+#. Game  Damage 
+#: data/gui/Editor.layout:336 ..Editor.Sun.Fog.Text
+#: :1616..Editor.Layers.Blendmap.Blendmap.Text data/gui/Editor_Track.layout:590
+#: ..Track.Game.Text data/gui/Game.layout:1341 ..SingleRace.Setup.Game.Text
+#: src/game/Challenges.cpp:619 src/game/Gui_Network.cpp:139
+msgctxt "Damage"
+msgid "Damage"
+msgstr "Uszkodzenia"
+
+#. Game  Damage 
+#: src/game/Gui_Init.cpp:330:336 src/editor/Gui_Init.cpp:643
+#: src/editor/Update_EditKeyTxt.cpp:295 src/common/GuiCom_Options.cpp:60:82:237
+msgctxt "None"
+msgid "None"
+msgstr "Brak"
+
+#. Game  Damage 
+#: src/game/Gui_Init.cpp:330
+msgctxt "Reduced"
+msgid "Reduced"
+msgstr "Zredukowane"
+
+#. Game  Damage 
+#: src/game/Gui_Init.cpp:331 src/common/GuiCom_Options.cpp:61
+msgctxt "Normal"
+msgid "Normal"
+msgstr "Normalne"
+
+#. Game  Damage 
+#: data/gui/Game.layout:1357 ..SingleRace.Setup.Game.Text
+#: src/game/Gui_Network.cpp:140
+msgctxt "DamageDecLap"
+msgid "Repair each lap"
+msgstr "Napraw co okrążenie"
+
+#. Game  Boost 
+#: data/gui/Game.layout:1294 ..SingleRace.Setup.Game.Text
+#: :1389..SingleRace.Setup.Tab data/gui/Game_Options.layout:713
+#: ..Options.View.Camera.Text :724 src/game/Challenges.cpp:622
+#: src/game/Gui_Init.cpp:453 src/game/Gui_Network.cpp:136
+msgctxt "Boost"
+msgid "Boost"
+msgstr "Dopalacz"
+
+#. Game  Boost 
+#: data/gui/Game.layout:1309 ..SingleRace.Setup.Game.Text
+#: src/game/Challenges.cpp:623 src/game/Gui_Network.cpp:137
+msgctxt "Flip"
+msgid "Flip"
+msgstr "Odwracanie"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:318:324 src/game/Gui_Network.cpp:43
+msgctxt "Never"
+msgid "Never"
+msgstr "Nigdy"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:319:325:336 src/game/Gui_Network.cpp:43
+msgctxt "Always"
+msgid "Always"
+msgstr "Zawsze"
+
+#. Game  Boost 
+#: src/game/Challenges.cpp:617 src/game/Gui_Network.cpp:135
+#: src/common/GuiCom_Options.cpp:58
+msgctxt "Any"
+msgid "Any"
+msgstr "Dowolny"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:318:338 src/game/Gui_Network.cpp:43
+msgctxt "FuelLap"
+msgid "Fuel each lap"
+msgstr "Paliwo co okrążenie"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:319:338 src/game/Gui_Network.cpp:43
+msgctxt "FuelTime"
+msgid "Fuel over time"
+msgstr "Paliwo z czasem"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:324
+msgctxt "FuelBoost"
+msgid "Boost Fuel"
+msgstr "Paliwo dopalacza"
+
+#. Game  Boost 
+#: src/game/Gui_Init.cpp:337
+msgctxt "GoBackTime"
+msgid "Go back time"
+msgstr "Cofnij czas"
+
 #. Challenge types 
 #: data/gui/Game.layout:1922 ..SingleRace.Championship.Tab
 msgctxt "Chall_Rally"
@@ -478,7 +594,8 @@ msgid "Ultra"
 msgstr "Ultra"
 
 #. MAIN  Track Difficulty 
-#: data/gui/Game_Main.layout:145 ..NewGame.Button :160..NewGame.Image
+#: data/gui/Game_Main.layout:145 ..NewGame-Difficulty.Button
+#: :160..NewGame-Difficulty.Image
 msgctxt "DifficultyHelp"
 msgid ""
 "Changing difficulty does set: Tracks list filter and sorting, selected "
@@ -490,7 +607,8 @@ msgstr ""
 "później."
 
 #. MAIN  Track Difficulty 
-#: data/gui/Game_Main.layout:180 ..NewGame.Button :195..NewGame.Image
+#: data/gui/Game_Main.layout:180 ..NewGame-Difficulty.Button
+#: :195..NewGame-Difficulty.Image
 msgctxt "SimulationHelp"
 msgid ""
 "Simulation mode does change how realistic vehicles are and how difficult "
@@ -531,6 +649,22 @@ msgid "Track"
 msgstr "Trasa"
 
 #. MAIN  Track 
+#: data/gui/Game.layout:25 ..SingleRace.Track.Button
+#: :513..SingleRace.Vehicle.Button :1694..SingleRace.SplitScreen.Button
+#: data/gui/Game_Main.layout:31 ..StuntRally##{GameVersion}.Button :106..Window
+#: :122..NewGame-Difficulty.Button :241..Window
+#: data/gui/Game_Options.layout:784 ..Options.Graphics.Button
+msgctxt "NewGame"
+msgid "New Game"
+msgstr "Nowa Gra"
+
+#. MAIN  Track 
+#: data/gui/Game_Main.layout:241 ..Window
+msgctxt "GameTypes"
+msgid "Game Types"
+msgstr ""
+
+#. MAIN  Track 
 #: data/gui/Editor.layout:3021 ..Editor.Vegetation.Road.Advanced.Text
 #: data/gui/Editor_Options.layout:851 ..Options.View.Pacenotes.Check
 #: data/gui/Game.layout:19 ..SingleRace.Track.Check
@@ -538,16 +672,6 @@ msgstr "Trasa"
 msgctxt "Reverse"
 msgid "Reverse"
 msgstr "Odwrócenie"
-
-#. MAIN  Track 
-#: data/gui/Game.layout:25 ..SingleRace.Track.Button
-#: :513..SingleRace.Vehicle.Button :1694..SingleRace.SplitScreen.Button
-#: data/gui/Game_Main.layout:31 ..StuntRally##{GameVersion}.Button :106..Window
-#: :122..NewGame.Button :241..Window data/gui/Game_Options.layout:784
-#: ..Options.Graphics.Button
-msgctxt "NewGame"
-msgid "New Game"
-msgstr "Nowa Gra"
 
 #. MAIN  Track 
 #: data/gui/Editor_Track.layout:383 ..Track.Track.Text data/gui/Game.layout:445
@@ -661,7 +785,7 @@ msgstr "Długość"
 
 #. Championship Stage  stats 
 #: data/gui/Game.layout:798 ..SingleRace.Vehicle.Text
-#: data/gui/Game_Main.layout:140 ..NewGame.Button
+#: data/gui/Game_Main.layout:106 ..Window :140..NewGame-Difficulty.Button
 #: src/game/Championships.cpp:208:457 src/game/Challenges.cpp:526:598
 #: src/game/Gui_InitCar.cpp:150 src/game/Gui_InitChamps.cpp:62:74:91
 msgctxt "Difficulty"
@@ -759,171 +883,6 @@ msgstr "Zmiana pojazdu"
 msgctxt "Allowed"
 msgid "Allowed"
 msgstr "Dozwolone"
-
-#. Car  Names  from animals 
-msgctxt "Turtle"
-msgid "Turtle"
-msgstr "Żółw"
-
-#. Car  Names  from animals 
-msgctxt "Elephant"
-msgid "Elephant"
-msgstr "Słoń"
-
-#. Car  Names  from animals 
-msgctxt "Alligator"
-msgid "Alligator"
-msgstr "Aligator"
-
-#. Car  Names  from animals 
-msgctxt "Bison"
-msgid "Bison"
-msgstr "Bizon"
-
-#. Car  Names  from animals 
-msgctxt "Caterpillar"
-msgid "Caterpillar"
-msgstr "Gąsienica"
-
-#. Car  Names  from animals 
-msgctxt "Rhino"
-msgid "Rhino"
-msgstr "Nosorożec"
-
-#. Car  Names  from animals 
-msgctxt "Bear"
-msgid "Bear"
-msgstr "Niedźwiedź"
-
-#. Car  Names  from animals 
-msgctxt "Coyote"
-msgid "Coyote"
-msgstr "Kojot"
-
-#. Car  Names  from animals 
-msgctxt "Squirrel"
-msgid "Squirrel"
-msgstr "Wiewiórka"
-
-#. Car  Names  from animals 
-msgctxt "Fox"
-msgid "Fox"
-msgstr "Lis"
-
-#. Car  Names  from animals 
-msgctxt "Hyena"
-msgid "Hyena"
-msgstr "Hiena"
-
-#. Car  Names  from animals 
-msgctxt "Gorilla"
-msgid "Gorilla"
-msgstr "Goryl"
-
-#. Car  Names  from animals 
-msgctxt "Lizard"
-msgid "Lizard"
-msgstr "Jaszczurka"
-
-#. Car  Names  from animals 
-msgctxt "Weasel"
-msgid "Weasel"
-msgstr "Łasica"
-
-#. Car  Names  from animals 
-msgctxt "Wolf"
-msgid "Wolf"
-msgstr "Wilk"
-
-#. Car  Names  from animals 
-msgctxt "Scorpion"
-msgid "Scorpion"
-msgstr "Skorpion"
-
-#. Car  Names  from animals 
-msgctxt "Buffalo"
-msgid "Buffalo"
-msgstr "Bawół"
-
-#. Car  Names  from animals 
-msgctxt "Gazelle"
-msgid "Gazelle"
-msgstr "Gazela"
-
-#. Car  Names  from animals 
-msgctxt "Jaguar"
-msgid "Jaguar"
-msgstr "Jaguar"
-
-#. Car  Names  from animals 
-msgctxt "Puma"
-msgid "Puma"
-msgstr "Puma"
-
-#. Car  Names  from animals 
-msgctxt "Leopard"
-msgid "Leopard"
-msgstr "Lampart"
-
-#. Car  Names  from animals 
-msgctxt "Beetle"
-msgid "Beetle"
-msgstr "Chrząszcz"
-
-#. Car  Names  from animals 
-msgctxt "Swan"
-msgid "Swan"
-msgstr "Łabędź"
-
-#. Car  Names  from animals 
-msgctxt "Duck"
-msgid "Duck"
-msgstr "Kaczka"
-
-#. Car  Names  from animals 
-msgctxt "Hawk"
-msgid "Hawk"
-msgstr "Jastrząb"
-
-#. Car  Names  from animals 
-msgctxt "Rabbit"
-msgid "Rabbit"
-msgstr "Królik"
-
-#. Car  Names  from animals 
-msgctxt "Python"
-msgid "Python"
-msgstr "Pyton"
-
-#. Car  Names  from animals 
-msgctxt "Cobra"
-msgid "Cobra"
-msgstr "Kobra"
-
-#. Car  Names  from animals 
-msgctxt "Eagle"
-msgid "Eagle"
-msgstr "Orzeł"
-
-#. Car  Names  from animals 
-msgctxt "Crow"
-msgid "Crow"
-msgstr "Kruk"
-
-#. Car  Names  from animals 
-msgctxt "Falcon"
-msgid "Falcon"
-msgstr "Sokół"
-
-#. Car  Names  from animals 
-msgctxt "Owl"
-msgid "Owl"
-msgstr "Sowa"
-
-#. Car  Names  from animals 
-msgctxt "Sparrow"
-msgid "Sparrow"
-msgstr "Wróbel"
 
 #. Vehicle 
 #: data/gui/Game.layout:374 ..SingleRace.Track.Text :494..SingleRace.Tab
@@ -1246,62 +1205,264 @@ msgctxt "Car_StopTimeFrom"
 msgid "Stop time from"
 msgstr "Czas hamow. od"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Asphalt"
 msgid "Asphalt"
 msgstr "Asfalt"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Racing"
 msgid "Racing"
 msgstr "Wyścigowy"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Gravel"
 msgid "Gravel"
 msgstr "Szuter"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Slow"
 msgid "Slow"
 msgstr "Wolny"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Terrain"
 msgid "Terrain"
 msgstr "Terenowy"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Extreme"
 msgid "Extreme"
 msgstr "Ekstremalny"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Other"
 msgid "Other"
 msgstr "Inny"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 #: data/gui/Game.layout:1491 ..SingleRace.Setup.Steering.Tab
 #: :1949..SingleRace.Championship.Tab
 msgctxt "CarType_Hover"
 msgid "Hover"
 msgstr "Unoszący"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Hovercraft"
 msgid "Hovercraft"
 msgstr "Poduszkowiec"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Spaceship"
 msgid "Spaceship"
 msgstr "Statek kosmiczny"
 
-#. MAIN  Car types 
+#. MAIN  Vehicle types 
 msgctxt "CarType_Drone"
 msgid "Drone"
 msgstr "Dron"
+
+#. Vehicle  Names  from animals 
+msgctxt "Turtle"
+msgid "Turtle"
+msgstr "Żółw"
+
+#. Vehicle  Names  from animals 
+msgctxt "Elephant"
+msgid "Elephant"
+msgstr "Słoń"
+
+#. Vehicle  Names  from animals 
+msgctxt "Alligator"
+msgid "Alligator"
+msgstr "Aligator"
+
+#. Vehicle  Names  from animals 
+msgctxt "Bison"
+msgid "Bison"
+msgstr "Bizon"
+
+#. Vehicle  Names  from animals 
+msgctxt "Caterpillar"
+msgid "Caterpillar"
+msgstr "Gąsienica"
+
+#. Vehicle  Names  from animals 
+msgctxt "Rhino"
+msgid "Rhino"
+msgstr "Nosorożec"
+
+#. Vehicle  Names  from animals 
+msgctxt "Bear"
+msgid "Bear"
+msgstr "Niedźwiedź"
+
+#. Vehicle  Names  from animals 
+msgctxt "Coyote"
+msgid "Coyote"
+msgstr "Kojot"
+
+#. Vehicle  Names  from animals 
+msgctxt "Squirrel"
+msgid "Squirrel"
+msgstr "Wiewiórka"
+
+#. Vehicle  Names  from animals 
+msgctxt "Fox"
+msgid "Fox"
+msgstr "Lis"
+
+#. Vehicle  Names  from animals 
+msgctxt "Hyena"
+msgid "Hyena"
+msgstr "Hiena"
+
+#. Vehicle  Names  from animals 
+msgctxt "Gorilla"
+msgid "Gorilla"
+msgstr "Goryl"
+
+#. Vehicle  Names  from animals 
+msgctxt "Lizard"
+msgid "Lizard"
+msgstr "Jaszczurka"
+
+#. Vehicle  Names  from animals 
+msgctxt "Weasel"
+msgid "Weasel"
+msgstr "Łasica"
+
+#. Vehicle  Names  from animals 
+msgctxt "Wolf"
+msgid "Wolf"
+msgstr "Wilk"
+
+#. Vehicle  Names  from animals 
+msgctxt "Scorpion"
+msgid "Scorpion"
+msgstr "Skorpion"
+
+#. Vehicle  Names  from animals 
+msgctxt "Buffalo"
+msgid "Buffalo"
+msgstr "Bawół"
+
+#. Vehicle  Names  from animals 
+msgctxt "Gazelle"
+msgid "Gazelle"
+msgstr "Gazela"
+
+#. Vehicle  Names  from animals 
+msgctxt "Jaguar"
+msgid "Jaguar"
+msgstr "Jaguar"
+
+#. Vehicle  Names  from animals 
+msgctxt "Puma"
+msgid "Puma"
+msgstr "Puma"
+
+#. Vehicle  Names  from animals 
+msgctxt "Leopard"
+msgid "Leopard"
+msgstr "Lampart"
+
+#. Vehicle  Names  from animals 
+msgctxt "Beetle"
+msgid "Beetle"
+msgstr "Chrząszcz"
+
+#. Vehicle  Names  from animals 
+msgctxt "Swan"
+msgid "Swan"
+msgstr "Łabędź"
+
+#. Vehicle  Names  from animals 
+msgctxt "Duck"
+msgid "Duck"
+msgstr "Kaczka"
+
+#. Vehicle  Names  from animals 
+msgctxt "Hawk"
+msgid "Hawk"
+msgstr "Jastrząb"
+
+#. Vehicle  Names  from animals 
+msgctxt "Rabbit"
+msgid "Rabbit"
+msgstr "Królik"
+
+#. Vehicle  Names  from animals 
+msgctxt "Python"
+msgid "Python"
+msgstr "Pyton"
+
+#. Vehicle  Names  from animals 
+msgctxt "Cobra"
+msgid "Cobra"
+msgstr "Kobra"
+
+#. Vehicle  Names  from animals 
+msgctxt "Eagle"
+msgid "Eagle"
+msgstr "Orzeł"
+
+#. Vehicle  Names  from animals 
+msgctxt "Crow"
+msgid "Crow"
+msgstr "Kruk"
+
+#. Vehicle  Names  from animals 
+msgctxt "Falcon"
+msgid "Falcon"
+msgstr "Sokół"
+
+#. Vehicle  Names  from animals 
+msgctxt "Owl"
+msgid "Owl"
+msgstr "Sowa"
+
+#. Vehicle  Names  from animals 
+msgctxt "Sparrow"
+msgid "Sparrow"
+msgstr "Wróbel"
+
+#. Editor  status 
+#: src/editor/SceneInit.cpp:277
+msgctxt "Loading"
+msgid "Loading"
+msgstr "Wczytywanie"
+
+#. Editor  status 
+#: src/game/Gui_TweakSim.cpp:220 src/editor/SceneInit.cpp:376
+msgctxt "Loaded"
+msgid "Loaded"
+msgstr "Wczytano"
+
+#. Editor  status 
+#: src/editor/SceneInit.cpp:490
+msgctxt "Saving"
+msgid "Saving"
+msgstr "Zapisywanie"
+
+#. Editor  status 
+#: src/game/Gui_TweakSim.cpp:567 src/editor/SceneInit.cpp:524
+#: src/editor/Update_Key.cpp:44 src/editor/ExportRoR.cpp:60
+msgctxt "Saved"
+msgid "Saved"
+msgstr "Zapisano"
+
+#. Editor  status 
+#: src/editor/SceneInit.cpp:419
+msgctxt "Updating"
+msgid "Updating"
+msgstr "Aktualizacja"
+
+#. Editor  status 
+#: src/editor/SceneInit.cpp:446
+msgctxt "Updated"
+msgid "Updated"
+msgstr "Uaktualniono"
 
 #. MsgBox 
 #: src/game/Gui_Network.cpp:26 src/editor/Gui_Init.cpp:328
@@ -1832,193 +1993,6 @@ msgctxt "P_Silver"
 msgid "Silver"
 msgstr "Srebro"
 
-#. Setup  Vehicle,Game 
-#: data/gui/Editor_Help.layout:235 ..Help.Input/help.Shortcuts.Text
-#: data/gui/Editor_Track.layout:588 ..Track.Tab data/gui/Game.layout:1285
-#: ..SingleRace.Setup.Tab data/gui/Game_Options.layout:313
-#: ..Options.Input.Shortcuts.Text src/game/Challenges.cpp:616
-#: src/game/Gui_Network.cpp:131
-msgctxt "Game"
-msgid "Game"
-msgstr "Gra"
-
-#. Setup  Vehicle,Game 
-#: data/gui/Game.layout:902 ..SingleRace.Tab data/gui/Game_Options.layout:310
-#: ..Options.Input.Shortcuts.Text data/gui/Game_Tweak.layout:220
-#: ..Tweak.Tires.Text
-msgctxt "Setup"
-msgid "Setup"
-msgstr "Ustawienia"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1616 ..SingleRace.Tab src/game/Gui_Util.cpp:188
-msgctxt "SplitScreen"
-msgid "Split Screen"
-msgstr "Ekran dzielony"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1623 ..SingleRace.SplitScreen.Text
-msgctxt "NumLocalPlayers"
-msgid "Number of local players"
-msgstr "Liczba lokalnych graczy"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1685 ..SingleRace.SplitScreen.Check
-msgctxt "SplitVertically"
-msgid "Split Vertically"
-msgstr "Podziel pionowo"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1689 ..SingleRace.SplitScreen.Check
-#: src/game/Gui_Network.cpp:128
-msgctxt "ReverseStartOrder"
-msgid "Reverse starting order"
-msgstr "Odwróć pozycje startowe"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1668 ..SingleRace.SplitScreen.Text
-msgctxt "NumLaps"
-msgid "Number of laps"
-msgstr "Liczba okrążeń"
-
-#. MAIN  Game  Simulation 
-#: data/gui/Game.layout:1564 ..SingleRace.Setup.Steering.Text
-#: data/gui/Game_Main.layout:175 ..NewGame.Button src/game/Challenges.cpp:618
-#: src/game/Gui_Init.cpp:452 src/game/Gui_Replay.cpp:168
-#: src/game/Gui_Network.cpp:132 src/editor/Update_EditKeyTxt.cpp:349
-msgctxt "Simulation"
-msgid "Simulation"
-msgstr "Symulacja"
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1608 ..SingleRace.Setup.Other.Text
-msgctxt "NotRecommended"
-msgid "Not recommended"
-msgstr "Niezalecane"
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1598 ..SingleRace.Setup.Other.Check
-msgctxt "ABS"
-msgid "ABS (antilock brakes)"
-msgstr "ABS (nieblokowanie kół)"
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1600 ..SingleRace.Setup.Other.Check
-msgctxt "TipABS"
-msgid "Prevents wheel lock when braking (default: off)."
-msgstr "Zapobiega blokadzie kół przy hamowaniu (domyślnie: wył.)"
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1603 ..SingleRace.Setup.Other.Check
-msgctxt "TCS"
-msgid "TCS (traction control)"
-msgstr "TCS (kontrola trakcji)"
-
-#. Setup  ABS,TCS 
-#: data/gui/Game.layout:1605 ..SingleRace.Setup.Other.Check
-msgctxt "TipTCS"
-msgid "Prevents wheel spinning when accelerating (default: off)."
-msgstr "Zapobiega poślizgowi kół przy przyśpieszaniu (domyślnie: wył.)"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1485 ..SingleRace.Setup.Steering.Tab
-msgctxt "Gravel"
-msgid "Gravel"
-msgstr "Szuter"
-
-#. Setup  steering 
-#: data/gui/Editor_Track.layout:615 ..Track.Game.Check
-#: data/gui/Game.layout:1488 ..SingleRace.Setup.Steering.Tab
-msgctxt "Asphalt"
-msgid "Asphalt"
-msgstr "Asfalt"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1495 ..SingleRace.Setup.Steering.Text
-msgctxt "SpeedSensitiveSteering"
-msgid "Speed Sensitive Steering"
-msgstr "Sterowanie zależne od prędkości"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1497 ..SingleRace.Setup.Steering.Text
-msgctxt "TipSpeedSensitiveSteering"
-msgid "Decreases steering range with higher velocity."
-msgstr "Zmniejsza zakres sterowania kół przy wyższej prędkości auta."
-
-#. Setup  steering 
-#: data/gui/Game.layout:1500 ..SingleRace.Setup.Steering.Text :1538
-msgctxt "SSS_Effect"
-msgid "Effect"
-msgstr "Efekt"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1508 ..SingleRace.Setup.Steering.Text
-msgctxt "SSS_SpeedFactor"
-msgid "Speed Factor"
-msgstr "Współcz. prędkości"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1560 ..SingleRace.Setup.Steering.Text
-msgctxt "SteerRange"
-msgid "Steering range multipliers"
-msgstr "Mnożniki zakresu skręcania"
-
-#. Setup  steering 
-#: data/gui/Game.layout:1566 ..SingleRace.Setup.Steering.Text
-#: :1571:1574..SingleRace.Setup.Steering.Slider
-msgctxt "TipSteerSim"
-msgid "Steering range multiplier, for simulation mode (Easy,Normal)."
-msgstr "Mnożnik zakresu sterowania dla typu symulacji (Łatwy, Normalny)."
-
-#. Setup  steering 
-#: data/gui/Game.layout:1579 ..SingleRace.Setup.Steering.Text
-#: :1584:1587..SingleRace.Setup.Steering.Slider
-msgctxt "TipSteerSurf"
-msgid "Steering range multiplier, for surface (Gravel,Asphalt)."
-msgstr "Mnożnik zakresu sterowania dla nawierzchni (Szuter,Asfalt)."
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1452 ..SingleRace.Setup.Tab
-msgctxt "Gearbox"
-msgid "Gearbox"
-msgstr "Skrzynia"
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1459 ..SingleRace.Setup.Gearbox.Check
-msgctxt "AutoGearbox"
-msgid "Auto gearbox"
-msgstr "Automatyczna skrzynia biegów"
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1461 ..SingleRace.Setup.Gearbox.Check
-msgctxt "TipAutoGearbox"
-msgid "Uncheck for manual gears changing."
-msgstr "Odznacz dla ręcznej skrzyni biegów."
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1464 ..SingleRace.Setup.Gearbox.Check
-msgctxt "AutoRear"
-msgid "Auto Rear gear"
-msgstr "Automatyczny wsteczny"
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1466 ..SingleRace.Setup.Gearbox.Check
-msgctxt "TipAutoRear"
-msgid "Uncheck for manual Rear gear changing."
-msgstr "Odznacz dla ręcznej zmiany wstecznego."
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1469 ..SingleRace.Setup.Gearbox.Check
-msgctxt "RearThrottleInverse"
-msgid "Rear throttle inverse"
-msgstr "Odwrotnie gaz na R"
-
-#. Setup  Gearbox 
-#: data/gui/Game.layout:1471 ..SingleRace.Setup.Gearbox.Check
-msgctxt "TipRearThrottleInverse"
-msgid "Inverse throttle and brake function in rear gear."
-msgstr "Odwróć funkcję gazu i hamulca na wstecznym biegu."
-
 #. Setup  collision 
 #: data/gui/Game.layout:1371 ..SingleRace.Setup.Collision.Check
 msgctxt "VegetCol"
@@ -2050,99 +2024,134 @@ msgctxt "DriveOnHorizons"
 msgid "Allow driving outside map, on horizons"
 msgstr "Zazwól na jazdę poza mapą, na horyzontach"
 
-#. Game  Damage 
-#: data/gui/Editor.layout:336 ..Editor.Sun.Fog.Text
-#: :1616..Editor.Layers.Blendmap.Blendmap.Text data/gui/Editor_Track.layout:590
-#: ..Track.Game.Text data/gui/Game.layout:1341 ..SingleRace.Setup.Game.Text
-#: src/game/Challenges.cpp:619 src/game/Gui_Network.cpp:139
-msgctxt "Damage"
-msgid "Damage"
-msgstr "Uszkodzenia"
+#. Setup  Gearbox 
+#: data/gui/Game.layout:1452 ..SingleRace.Setup.Tab
+msgctxt "Gearbox"
+msgid "Gearbox"
+msgstr "Skrzynia"
 
-#. Game  Damage 
-#: src/game/Gui_Init.cpp:330:336 src/editor/Gui_Init.cpp:643
-#: src/editor/Update_EditKeyTxt.cpp:295 src/common/GuiCom_Options.cpp:60:82:237
-msgctxt "None"
-msgid "None"
-msgstr "Brak"
+#. Setup  Gearbox 
+#: data/gui/Game.layout:1459 ..SingleRace.Setup.Gearbox.Check
+msgctxt "AutoGearbox"
+msgid "Auto gearbox"
+msgstr "Automatyczna skrzynia biegów"
 
-#. Game  Damage 
-#: src/game/Gui_Init.cpp:330
-msgctxt "Reduced"
-msgid "Reduced"
-msgstr "Zredukowane"
+#. Setup  Gearbox 
+#: data/gui/Game.layout:1464 ..SingleRace.Setup.Gearbox.Check
+msgctxt "AutoRear"
+msgid "Auto Rear gear"
+msgstr "Automatyczny wsteczny"
 
-#. Game  Damage 
-#: src/game/Gui_Init.cpp:331 src/common/GuiCom_Options.cpp:61
-msgctxt "Normal"
-msgid "Normal"
-msgstr "Normalne"
+#. Setup  Gearbox 
+#: data/gui/Game.layout:1469 ..SingleRace.Setup.Gearbox.Check
+msgctxt "RearThrottleInverse"
+msgid "Rear throttle inverse"
+msgstr "Odwrotnie gaz na R"
 
-#. Game  Damage 
-#: data/gui/Game.layout:1357 ..SingleRace.Setup.Game.Text
-#: src/game/Gui_Network.cpp:140
-msgctxt "DamageDecLap"
-msgid "Repair each lap"
-msgstr "Napraw co okrążenie"
+#. Setup  steering 
+#: data/gui/Game.layout:1485 ..SingleRace.Setup.Steering.Tab
+msgctxt "Gravel"
+msgid "Gravel"
+msgstr "Szuter"
 
-#. Game  Boost 
-#: data/gui/Game.layout:1294 ..SingleRace.Setup.Game.Text
-#: :1389..SingleRace.Setup.Tab data/gui/Game_Options.layout:713
-#: ..Options.View.Camera.Text :724 src/game/Challenges.cpp:622
-#: src/game/Gui_Init.cpp:453 src/game/Gui_Network.cpp:136
-msgctxt "Boost"
-msgid "Boost"
-msgstr "Dopalacz"
+#. Setup  steering 
+#: data/gui/Editor_Track.layout:615 ..Track.Game.Check
+#: data/gui/Game.layout:1488 ..SingleRace.Setup.Steering.Tab
+msgctxt "Asphalt"
+msgid "Asphalt"
+msgstr "Asfalt"
 
-#. Game  Boost 
-#: data/gui/Game.layout:1309 ..SingleRace.Setup.Game.Text
-#: src/game/Challenges.cpp:623 src/game/Gui_Network.cpp:137
-msgctxt "Flip"
-msgid "Flip"
-msgstr "Odwracanie"
+#. Setup  steering 
+#: data/gui/Game.layout:1495 ..SingleRace.Setup.Steering.Text
+msgctxt "SpeedSensitiveSteering"
+msgid "Speed Sensitive Steering"
+msgstr "Sterowanie zależne od prędkości"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:318:324 src/game/Gui_Network.cpp:43
-msgctxt "Never"
-msgid "Never"
-msgstr "Nigdy"
+#. Setup  steering 
+#: data/gui/Game.layout:1500 ..SingleRace.Setup.Steering.Text :1538
+msgctxt "SSS_Effect"
+msgid "Effect"
+msgstr "Efekt"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:319:325:336 src/game/Gui_Network.cpp:43
-msgctxt "Always"
-msgid "Always"
-msgstr "Zawsze"
+#. Setup  steering 
+#: data/gui/Game.layout:1508 ..SingleRace.Setup.Steering.Text
+msgctxt "SSS_SpeedFactor"
+msgid "Speed Factor"
+msgstr "Współcz. prędkości"
 
-#. Game  Boost 
-#: src/game/Challenges.cpp:617 src/game/Gui_Network.cpp:135
-#: src/common/GuiCom_Options.cpp:58
-msgctxt "Any"
-msgid "Any"
-msgstr "Dowolny"
+#. Setup  steering 
+#: data/gui/Game.layout:1560 ..SingleRace.Setup.Steering.Text
+msgctxt "SteerRange"
+msgid "Steering range multipliers"
+msgstr "Mnożniki zakresu skręcania"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:318:338 src/game/Gui_Network.cpp:43
-msgctxt "FuelLap"
-msgid "Fuel each lap"
-msgstr "Paliwo co okrążenie"
+#. Setup  ABS,TCS 
+#: data/gui/Game.layout:1608 ..SingleRace.Setup.Other.Text
+msgctxt "NotRecommended"
+msgid "Not recommended"
+msgstr "Niezalecane"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:319:338 src/game/Gui_Network.cpp:43
-msgctxt "FuelTime"
-msgid "Fuel over time"
-msgstr "Paliwo z czasem"
+#. Setup  ABS,TCS 
+#: data/gui/Game.layout:1598 ..SingleRace.Setup.Other.Check
+msgctxt "ABS"
+msgid "ABS (antilock brakes)"
+msgstr "ABS (nieblokowanie kół)"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:324
-msgctxt "FuelBoost"
-msgid "Boost Fuel"
-msgstr "Paliwo dopalacza"
+#. Setup  ABS,TCS 
+#: data/gui/Game.layout:1603 ..SingleRace.Setup.Other.Check
+msgctxt "TCS"
+msgid "TCS (traction control)"
+msgstr "TCS (kontrola trakcji)"
 
-#. Game  Boost 
-#: src/game/Gui_Init.cpp:337
-msgctxt "GoBackTime"
-msgid "Go back time"
-msgstr "Cofnij czas"
+#. Setup  tips 
+#: data/gui/Game.layout:1600 ..SingleRace.Setup.Other.Check
+msgctxt "TipABS"
+msgid "Prevents wheel lock when braking (default: off)."
+msgstr "Zapobiega blokadzie kół przy hamowaniu (domyślnie: wył.)"
+
+#. Setup  tips 
+#: data/gui/Game.layout:1605 ..SingleRace.Setup.Other.Check
+msgctxt "TipTCS"
+msgid "Prevents wheel spinning when accelerating (default: off)."
+msgstr "Zapobiega poślizgowi kół przy przyśpieszaniu (domyślnie: wył.)"
+
+#. Setup  tips 
+#: data/gui/Game.layout:1497 ..SingleRace.Setup.Steering.Text
+msgctxt "TipSpeedSensitiveSteering"
+msgid "Decreases steering range with higher velocity."
+msgstr "Zmniejsza zakres sterowania kół przy wyższej prędkości auta."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1566 ..SingleRace.Setup.Steering.Text
+#: :1571:1574..SingleRace.Setup.Steering.Slider
+msgctxt "TipSteerSim"
+msgid "Steering range multiplier, for simulation mode (Easy,Normal)."
+msgstr "Mnożnik zakresu sterowania dla typu symulacji (Łatwy, Normalny)."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1579 ..SingleRace.Setup.Steering.Text
+#: :1584:1587..SingleRace.Setup.Steering.Slider
+msgctxt "TipSteerSurf"
+msgid "Steering range multiplier, for surface (Gravel,Asphalt)."
+msgstr "Mnożnik zakresu sterowania dla nawierzchni (Szuter,Asfalt)."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1461 ..SingleRace.Setup.Gearbox.Check
+msgctxt "TipAutoGearbox"
+msgid "Uncheck for manual gears changing."
+msgstr "Odznacz dla ręcznej skrzyni biegów."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1466 ..SingleRace.Setup.Gearbox.Check
+msgctxt "TipAutoRear"
+msgid "Uncheck for manual Rear gear changing."
+msgstr "Odznacz dla ręcznej zmiany wstecznego."
+
+#. Setup  tips 
+#: data/gui/Game.layout:1471 ..SingleRace.Setup.Gearbox.Check
+msgctxt "TipRearThrottleInverse"
+msgid "Inverse throttle and brake function in rear gear."
+msgstr "Odwróć funkcję gazu i hamulca na wstecznym biegu."
 
 #. Replay 
 #: data/gui/Game_Options.layout:278 ..Options.Input.General.Text
@@ -2355,14 +2364,14 @@ msgctxt "Fullscreen"
 msgid "Fullscreen"
 msgstr "Pełny ekran"
 
-#. Screen 
-#: data/gui/Editor_Options.layout:150 ..Options.Screen.Video.Check
-#: data/gui/Game_Options.layout:150
-msgctxt "VRmode"
-msgid "VR Mode"
-msgstr "Tryb VR"
+#. Screen  vertical synchronisation 
+#: data/gui/Editor_Options.layout:122 ..Options.Screen.Video.Check
+#: data/gui/Game_Options.layout:122
+msgctxt "VSync"
+msgid "VSync"
+msgstr "Synchr. pionowa"
 
-#. Screen 
+#. Screen  vertical synchronisation 
 #: data/gui/Editor_Options.layout:89 ..Options.Screen.Main.Text
 #: :465..Options.Graphics.Lights.Text data/gui/Game_Options.layout:89
 #: :1010..Options.Graphics.Lights.Text
@@ -2370,49 +2379,92 @@ msgctxt "Brightness"
 msgid "Brightness"
 msgstr "Jasność"
 
-#. Screen 
+#. Screen  vertical synchronisation 
 #: data/gui/Editor_Options.layout:101 ..Options.Screen.Main.Text
 #: data/gui/Game_Options.layout:101
 msgctxt "Contrast"
 msgid "Contrast"
 msgstr "Kontrast"
 
-#. Screen 
-msgctxt "Gamma"
-msgid "Gamma"
-msgstr "Gamma"
+#. Screen  advanced 
+#: data/gui/Editor_Options.layout:139 ..Options.Screen.Video.Text
+#: data/gui/Game_Options.layout:139
+msgctxt "RenderSystem"
+msgid "Render System"
+msgstr "System renderowania"
 
-#. Screen 
+#. Screen  advanced 
+#: data/gui/Editor_Options.layout:126 ..Options.Screen.Video.Text
+#: data/gui/Game_Options.layout:126
+msgctxt "AntiAliasing"
+msgid "Antialiasing"
+msgstr "Wygładzanie krawędzi"
+
+#. Screen  advanced 
+#: data/gui/Editor_Options.layout:55 ..Options.Screen.Main.Button
+#: data/gui/Game_Options.layout:55
+msgctxt "Change"
+msgid "Change"
+msgstr "Zmień"
+
+#. Screen  advanced 
 #: data/gui/Editor_Options.layout:162 ..Options.Screen.Tab
 #: :187..Options.Screen.GUI.Text data/gui/Game_Options.layout:162
 msgctxt "GUI"
 msgid "GUI"
 msgstr "Gamma"
 
-#. Screen 
+#. Screen  advanced 
 #: data/gui/Editor_Options.layout:182 ..Options.Screen.GUI.Text
 #: data/gui/Game_Options.layout:182
 msgctxt "FontSizes"
 msgid "Font sizes"
 msgstr "Rozmiary czcionek"
 
-#. Screen 
+#. Screen  advanced 
 #: data/gui/Editor_Options.layout:170 ..Options.Screen.GUI.Text
 #: data/gui/Game_Options.layout:170
 msgctxt "WindowMargin"
 msgid "Window margin"
 msgstr "Margines okna"
 
-#. Screen 
+#. Screen  not used 
+msgctxt "Gamma"
+msgid "Gamma"
+msgstr "Gamma"
+
+#. Screen  not used 
+#: data/gui/Editor_Options.layout:150 ..Options.Screen.Video.Check
+#: data/gui/Game_Options.layout:150
+msgctxt "VRmode"
+msgid "VR Mode"
+msgstr "Tryb VR"
+
+#. Screen  not used 
 msgctxt "Complex"
 msgid "Complex"
 msgstr "Złożone"
 
-#. Screen 
+#. Screen  not used 
 #: data/gui/Editor.layout:1224 ..Editor.Terrain.Tools.Button
 msgctxt "Simple"
 msgid "Simple"
 msgstr "Proste"
+
+#. Screen  not used 
+msgctxt "LimitFPS"
+msgid "Limit frames per second"
+msgstr "Ogranicz klatki na sekundę"
+
+#. Screen  not used 
+msgctxt "FramesPerSec"
+msgid "Frames per second"
+msgstr "Klatki na sekundę (FPS)"
+
+#. Screen  not used 
+msgctxt "SleepMS"
+msgid "Sleep interval [milisec]"
+msgstr "Czas czekania [milisek]"
 
 #. Screen  info 
 #: data/gui/Editor_Options.layout:28 ..Options.Screen.Main.Text
@@ -2454,49 +2506,6 @@ msgid ""
 msgstr ""
 "Domyślnie lepsza jakość (mniej klatek na sekundę) jest po prawej. Zaznaczone "
 "+ gdy po lewej."
-
-#. Screen  vertical synchronisation 
-#: data/gui/Editor_Options.layout:122 ..Options.Screen.Video.Check
-#: data/gui/Game_Options.layout:122
-msgctxt "VSync"
-msgid "VSync"
-msgstr "Synchr. pionowa"
-
-#. Screen  advanced 
-#: data/gui/Editor_Options.layout:139 ..Options.Screen.Video.Text
-#: data/gui/Game_Options.layout:139
-msgctxt "RenderSystem"
-msgid "Render System"
-msgstr "System renderowania"
-
-#. Screen  advanced 
-#: data/gui/Editor_Options.layout:126 ..Options.Screen.Video.Text
-#: data/gui/Game_Options.layout:126
-msgctxt "AntiAliasing"
-msgid "Antialiasing"
-msgstr "Wygładzanie krawędzi"
-
-#. Screen  advanced 
-#: data/gui/Editor_Options.layout:55 ..Options.Screen.Main.Button
-#: data/gui/Game_Options.layout:55
-msgctxt "Change"
-msgid "Change"
-msgstr "Zmień"
-
-#. Screen  advanced 
-msgctxt "LimitFPS"
-msgid "Limit frames per second"
-msgstr "Ogranicz klatki na sekundę"
-
-#. Screen  advanced 
-msgctxt "FramesPerSec"
-msgid "Frames per second"
-msgstr "Klatki na sekundę (FPS)"
-
-#. Screen  advanced 
-msgctxt "SleepMS"
-msgid "Sleep interval [milisec]"
-msgstr "Czas czekania [milisek]"
 
 #. Graphics Presets 
 #: data/gui/Editor_Options.layout:74 ..Options.Screen.Main.Text
