@@ -2,6 +2,8 @@
 
 This section lists changes not yet released, but committed to new repositories stuntrally3 and tracks3.  
 
+- Game
+  - Main menu now 3 levels
 - Updated docs
 
 ## Version 3.1
