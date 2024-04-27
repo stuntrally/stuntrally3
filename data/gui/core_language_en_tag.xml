@@ -98,12 +98,13 @@
 
 	<!--  ..............................................................................................  -->
 	
-	<!--  Setup  Vehicle,Game  -->
-	<Tag name="Game">Game</Tag>
-	<Tag name="Setup">Setup</Tag>
+	<!--  MAIN  Game  Modes  -->
+	<Tag name="SplitScreen">Split Screen</Tag>
+	<Tag name="Multiplayer">Multiplayer</Tag>
+	<Tag name="Collection">Collection</Tag>
+	<Tag name="Career">Career</Tag>
 
 	<!--  Game  Split screen  -->
-	<Tag name="SplitScreen">Split Screen</Tag>
 	<Tag name="NumLocalPlayers">Number of local players</Tag>
 	<Tag name="SplitVertically">Split Vertically</Tag>
 	<Tag name="ReverseStartOrder">Reverse starting order</Tag>
@@ -112,6 +113,11 @@
 	<!--  MAIN  Game  Simulation  -->
 	<Tag name="Simulation">Simulation</Tag>
 
+
+	<!--  Setup  Vehicle,Game  -->
+	<Tag name="Setup">Setup</Tag>
+	<Tag name="Paint">Paint</Tag>
+	<Tag name="Game">Game</Tag>
 
 	<!--  Game  Damage  -->
 	<Tag name="Damage">Damage</Tag>
@@ -175,7 +181,6 @@
 	<Tag name="TrackInAir">In air</Tag>
 	<Tag name="TrackPipes">Pipes</Tag>
 
-
 	<!--  Championship Stage  stats  -->
 	<Tag name="Name">Name</Tag>
 	<Tag name="Tracks">Tracks</Tag>
@@ -216,7 +221,6 @@
 	<Tag name="TipNewGameCar">Restart game.</Tag>
 
 	<!--  Color  params  -->
-	<Tag name="Paint">Paint</Tag>
 	<Tag name="P_1color">1 color, simple</Tag>
 	<Tag name="P_2colors">2 colors</Tag>
 	<Tag name="P_3colors">3 colors, changing</Tag>
@@ -494,6 +498,21 @@
 	<Tag name="TipRearThrottleInverse">Inverse throttle and brake function in rear gear.</Tag>
 
 
+	<!--  MAIN  options  -->
+	<Tag name="Startup">Startup</Tag>
+	<Tag name="Input">Input</Tag>
+
+	<Tag name="Sound">Sound</Tag>
+	<Tag name="Volume">Volume</Tag>
+
+	<!--  Graphics  -->
+	<Tag name="Graphics">Graphics</Tag>
+
+	<Tag name="NeedRestart">* need restart</Tag>
+	<Tag name="NeedNewGame">* need New Game</Tag>
+	<Tag name="Apply">Apply</Tag>
+	
+
 	<!--  Replay  -->
 	<Tag name="Replay">Replay</Tag>
 
@@ -565,14 +584,6 @@
 	<Tag name="SleepMS">Sleep interval [milisec]</Tag>
 
 
-	<!--  Screen  info  -->
-	<Tag name="NeedRestart">* need restart</Tag>
-	<Tag name="NotDone">not done yet, ToDo</Tag>
-	<Tag name="NeedApply">need Apply</Tag>
-	<Tag name="Ignored">ignored</Tag>
-	<Tag name="GraphicsRightHQ">By default better quality (less Fps) is on right. Marked with + if on left.</Tag>
-	
-	
 	<!--  Graphics Presets  -->
 	<Tag name="GraphicsPreset">Graphics preset</Tag>
 	<Tag name="GraphicsAll_Lowest">Lowest</Tag>
@@ -584,9 +595,15 @@
 	<Tag name="GraphicsAll_Highest">Highest</Tag>
 	<Tag name="GraphicsAll_Ultra">Ultra</Tag>
 
+	<!--  Graphics  info  -->
+	<Tag name="NotDone">not done yet, ToDo</Tag>
+	<Tag name="NeedApply">need Apply</Tag>
+	<Tag name="Ignored">ignored</Tag>
+	<Tag name="RestartApply">Restart game, to apply *changes.</Tag>
+	<Tag name="GraphicsRightHQ">By default better quality (less Fps) is on right. Marked with + if on left.</Tag>
+	
 
 	<!--  Network Multiplayer  headers  --> 
-	<Tag name="Multiplayer">Multiplayer</Tag>
 	<Tag name="Game name">Game name</Tag>
 	<Tag name="Laps">Laps</Tag>
 	<Tag name="Player">Player</Tag>
@@ -644,48 +661,6 @@
 	<Tag name="MultiplayerTip">Hosting a multiplayer game requires port forwarding. Connecting to existing game doesn't need it, provided other players have it.</Tag>
 
 
-
-	<!--  Effects  Main -->
-	<Tag name="Effects">Effects</Tag>
-	<Tag name="AllEffects">Effects Enabled</Tag>
-	<!--  Effects  -->
-	<Tag name="Bloom">Bloom</Tag>
-	<Tag name="Intensity">Intensity</Tag>
-	<Tag name="OrigImage">Darken</Tag>
-	<Tag name="MotionBlur">Motion Blur</Tag>
-
-	<Tag name="godrays">God Rays</Tag>
-	<Tag name="filmgrain">Film Grain</Tag>
-	<Tag name="softparticles">Soft Particles</Tag>
-
-	<!--  Effects DOF  -->
-	<Tag name="DepthOfField">Depth of Field</Tag>
-	<Tag name="Near">Near</Tag>
-	<Tag name="Far">Far</Tag>
-	<Tag name="Small">Small</Tag>
-	<Tag name="Big">Big</Tag>
-
-	<!--  Effects (ambient shadows)  -->
-	<Tag name="ssao">SSAO</Tag>
-
-	<!--  Effects HDR  broken  -->
-	<Tag name="HDRTab">HDR</Tag>
-	<Tag name="HDR">HDR+Bloom</Tag>
-	<Tag name="HDRAdaptationScale">Adapt Scale</Tag>
-	<Tag name="HDRIntensity">Bloom Intensity</Tag>
-	<Tag name="HDROrigImage">Bloom Darken</Tag>
-	<Tag name="HDRParam1">Exposure</Tag>
-	<Tag name="HDRParam2">Brightness</Tag>
-	<Tag name="HDRParam3">Grain</Tag>
-	<Tag name="HDRVignettingRadius">Vignetting Radius</Tag>
-	<Tag name="HDRVignettingDarkness">Vignetting Darken</Tag>
-
-
-	<!--  Graphics  -->
-	<Tag name="Graphics">Graphics</Tag>
-	<Tag name="NeedNewGame">* need New Game</Tag>
-	<Tag name="RestartApply">Restart game, to apply *changes.</Tag>
-	<Tag name="Apply">Apply</Tag>
 
 	<!--  Graphics  Detail  -->
 	<Tag name="Materials">Materials</Tag>
@@ -786,6 +761,40 @@
 	<Tag name="FOV">View angle</Tag>
 
 
+	<!--  Effects  Main  not used  -->
+	<Tag name="Effects">Effects</Tag>
+	<Tag name="AllEffects">Effects Enabled</Tag>
+
+	<Tag name="ssao">SSAO</Tag>
+	<Tag name="softparticles">Soft Particles</Tag>
+
+	<Tag name="Bloom">Bloom</Tag>
+	<Tag name="Intensity">Intensity</Tag>
+	<Tag name="OrigImage">Darken</Tag>
+	<Tag name="MotionBlur">Motion Blur</Tag>
+
+	<Tag name="godrays">God Rays</Tag>
+	<Tag name="filmgrain">Film Grain</Tag>
+	<Tag name="DepthOfField">Depth of Field</Tag>
+
+	<Tag name="Near">Near</Tag>
+	<Tag name="Far">Far</Tag>
+	<Tag name="Small">Small</Tag>
+	<Tag name="Big">Big</Tag>
+
+	<!--  Effects  HDR  not used  -->
+	<Tag name="HDRTab">HDR</Tag>
+	<Tag name="HDR">HDR+Bloom</Tag>
+	<Tag name="HDRAdaptationScale">Adapt Scale</Tag>
+	<Tag name="HDRIntensity">Bloom Intensity</Tag>
+	<Tag name="HDROrigImage">Bloom Darken</Tag>
+	<Tag name="HDRParam1">Exposure</Tag>
+	<Tag name="HDRParam2">Brightness</Tag>
+	<Tag name="HDRParam3">Grain</Tag>
+	<Tag name="HDRVignettingRadius">Vignetting Radius</Tag>
+	<Tag name="HDRVignettingDarkness">Vignetting Darken</Tag>
+
+
 	<!--  Settings  debug  -->
 	<Tag name="Other">Other</Tag>
 	<Tag name="Development">Development</Tag>
@@ -823,7 +832,6 @@
 	<Tag name="CarPreview">Force car preview</Tag>
 
 	<!--  Settings  startup  -->
-	<Tag name="Startup">Startup</Tag>
 	<Tag name="MouseCapture">Capture mouse</Tag>
 	<Tag name="OgreDialog">Show Ogre dialog</Tag>
 
@@ -837,7 +845,6 @@
 
 	
 	<!--  Input  bind  -->
-	<Tag name="Input">Input</Tag>
 	<Tag name="InputUnbind">Press RMB on button to unbind.</Tag>
 	<Tag name="InputNoJS">No joystick</Tag>
 	<Tag name="InputKeyUnassigned">-- None --</Tag>
@@ -941,11 +948,7 @@
 	<Tag name="TireEdReference">Show reference graph</Tag>
 	
 
-
 	<!--  Sound  main  -->
-	<Tag name="Sound">Sound</Tag>
-	<Tag name="Volume">Volume</Tag>
-	
 	<Tag name="VolMaster">Master</Tag>
 	<Tag name="Engine">Engine</Tag>
 	<Tag name="Turbo">Turbo</Tag>
