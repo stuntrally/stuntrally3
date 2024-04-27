@@ -17,6 +17,7 @@ class Presets;
 	class ChampsXml;
 	class ChallXml;
 	class Chall;
+	class CollectXml;
 #endif
 
 
@@ -42,13 +43,14 @@ public:
 	
 	#ifndef SR_EDITOR	// game only
 		PaintsIni* paints =0;  // car colors.ini
-		ChampsXml* champs =0;  //ProgressXml progress[2];
-		ChallXml* chall =0;  //ProgressLXml progressL[2];
+		//  games
+		ChampsXml* champs =0;    // ProgressXml progress[2];
+		ChallXml* chall =0;      // ProgressLXml progressL[2];
+		CollectXml* collect =0;  // ProgressCXml progressC;
 	#endif
 
 	//  📐 get drivability, vehicle on track fitness
 	#ifndef SR_EDITOR
 		float GetDrivability(std::string car, std::string trk, bool track_user);
-		bool IsChallCar(const Chall* ch, std::string name);
 	#endif
 };

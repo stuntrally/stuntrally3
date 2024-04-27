@@ -13,11 +13,13 @@ using Ogre::String;
 #else
 	#include "ChampsXml.h"
 	#include "ChallengesXml.h"
+	#include "CollectXml.h"
 #endif
 
 #ifndef SR_EDITOR  // game
 
 //  📐 get drivability, vehicle on track fitness
+//---------------------------------------------------------------------
 float CData::GetDrivability(std::string car, std::string trk, bool track_user)
 {
 	if (track_user)  return -1.f;  // unknown
@@ -48,50 +50,23 @@ float CData::GetDrivability(std::string car, std::string trk, bool track_user)
 	return std::min(1.f, undrv);
 }
 
-bool CData::IsChallCar(const Chall* ch, std::string name)
-{
-	int i,s;
-	if (!ch->cars.empty())
-		for (auto& c : ch->cars)  // allow specified
-			if (c == name)  return true;
-	
-	if (!ch->carsDeny.empty())
-		for (auto& c : ch->carsDeny)  // deny specified
-			if (c == name)  return false;
-
-	if (!ch->carTypes.empty())
-	{	s = ch->carTypes.size();
-
-		int id = cars->carmap[name]-1;
-		if (id >= 0)
-		{
-			const auto& ci = cars->cars[id];
-			String type = ci.type;
-
-			if (ci.wheels < ch->whMin || ci.wheels > ch->whMax)
-				return false;  // deny type if wheels not allowed
-
-			for (i=0; i < s; ++i)
-				if (type == ch->carTypes[i])  return true;
-	}	}
-	return false;
-}
 #endif
 
 
 //  📄📄 Load all xmls
+//---------------------------------------------------------------------
 void CData::Load(std::map <std::string, int>* surf_map, bool check)
 {
 	//  common
 	fluids->LoadXml(PATHS::Data() + "/materials/fluids.xml", /**/surf_map);
-	LogO(String("**** Loaded Fluids: ") + toStr(fluids->fls.size()));
+	LogO(String("L*** Loaded Fluids: ") + toStr(fluids->fls.size()));
 
 	objs->LoadXml();  //  collisions.xml
-	LogO(String("**** Loaded Vegetation collisions: ") + toStr(objs->colsMap.size()));
+	LogO(String("L*** Loaded Vegetation collisions: ") + toStr(objs->colsMap.size()));
 	
 	auto snd = PATHS::Sounds();
 	reverbs->LoadXml(snd + "/reverbs.xml");
-	LogO(String("**** Loaded Reverbs sets: ") + toStr(reverbs->revs.size()));
+	LogO(String("L*** Loaded Reverbs sets: ") + toStr(reverbs->revs.size()));
 
 	//  cars and tracks
 	auto path = PATHS::GameConfigDir();
@@ -100,7 +75,7 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 	user->LoadXml(pUser + "/tracks.xml", tracks);
 	
 	pre->LoadXml(path + "/presets.xml");
-	LogO(String("**** Loaded Presets  sky: ") + toStr(pre->sky.size())+
+	LogO(String("L*** Loaded Presets  sky: ") + toStr(pre->sky.size())+
 		"  ter: " + toStr(pre->ter.size()) +
 		"  road: " + toStr(pre->rd.size()) +
 		"  grass: " + toStr(pre->gr.size()) +
@@ -111,10 +86,13 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 		LoadPaints();
 
 		champs->LoadXml(path + "/championships.xml", tracks, check);
-		LogO(String("**** Loaded Championships: ") + toStr(champs->all.size()));
+		LogO(String("L*** Loaded Championships: ") + toStr(champs->all.size()));
 
 		chall->LoadXml(path + "/challenges.xml", tracks, check);
-		LogO(String("**** Loaded Challenges: ") + toStr(chall->all.size()));
+		LogO(String("L*** Loaded Challenges: ") + toStr(chall->all.size()));
+
+		collect->LoadXml(path + "/collections.xml", tracks, check);
+		LogO(String("L*** Loaded Collections: ") + toStr(collect->all.size()));
 	#endif
 
 
@@ -126,7 +104,7 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 			for (const ChallTrack& t : ch.trks)
 			{
 				for (const CarInfo& c : cars->cars)
-				if (IsChallCar(&ch, c.id))
+				if (ch.cars.Allows(cars, c.id))
 				{
 					float drv = GetDrivability(c.id, t.name, false);
 					float drvp = (1.f - drv) * 100.f;
@@ -149,16 +127,17 @@ void CData::LoadPaints(bool forceOrig)
 	if (PATHS::FileExists(user + ini) && !forceOrig)
 	{
 		paints->Load(user + ini);
-		LogO(String("**** Loaded user Paints: ") + toStr(paints->v.size()));
+		LogO(String("L*** Loaded user Paints: ") + toStr(paints->v.size()));
 	}else
 	{	paints->Load(path + ini);
-		LogO(String("**** Loaded game Paints: ") + toStr(paints->v.size()));
+		LogO(String("L*** Loaded game Paints: ") + toStr(paints->v.size()));
 	}
 }
 #endif
 
 
 //  🌟 ctor
+//---------------------------------------------------------------------
 CData::CData()
 {
 	fluids = new FluidsXml();
@@ -172,8 +151,10 @@ CData::CData()
 	#ifndef SR_EDITOR
 		cars = new CarsXml();
 		paints = new PaintsIni();
+		
 		champs = new ChampsXml();
 		chall = new ChallXml();
+		collect = new CollectXml();
 	#endif
 }
 
@@ -190,7 +171,9 @@ CData::~CData()
 	#ifndef SR_EDITOR
 		delete cars;
 		delete paints;
+
 		delete champs;
 		delete chall;
+		delete collect;
 	#endif
 }

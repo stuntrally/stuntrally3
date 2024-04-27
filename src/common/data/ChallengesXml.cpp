@@ -56,33 +56,8 @@ bool ChallXml::LoadXml(std::string file, TracksIni* trks, bool check)
 
 			a = eSim->Attribute("carChng");	if (a)  c.carChng = s2i(a) > 0;
 		}
-		//  cars
-		XMLElement* eCarT = eCh->FirstChildElement("cartype");
-		if (eCarT)
-		{
-			a = eCarT->Attribute("names");
-			if (a)
-			{	String s = a;
-				c.carTypes = StringUtil::split(s, "|");
-			}
-			//  wheels
-			a = eCarT->Attribute("whMin");	if (a)  c.whMin = s2i(a);
-			a = eCarT->Attribute("whMax");	if (a)  c.whMax = s2i(a);
-		}
-		//<car names="ES|HI" />
-		XMLElement* eCar = eCh->FirstChildElement("car");
-		if (eCar)
-		{
-			a = eCar->Attribute("names");
-			if (a)
-			{	String s = a;
-				c.cars = StringUtil::split(s, "|");
-			}
-			a = eCar->Attribute("deny");
-			if (a)
-			{	String s = a;
-				c.carsDeny = StringUtil::split(s, "|");
-		}	}
+
+		c.cars.LoadXml(eCh);  //  allowed
 		
 		XMLElement* eHud = eCh->FirstChildElement("hud");
 		if (eHud)

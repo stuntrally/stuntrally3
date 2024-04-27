@@ -53,33 +53,8 @@ bool CollectXml::LoadXml(std::string file, TracksIni* trks, bool check)
 			a = eSim->Attribute("flip");	if (a)  c.flip_type = s2i(a);
 			a = eSim->Attribute("rewind");	if (a)  c.rewind_type = s2i(a);
 		}
-		//  cars
-		XMLElement* eCarT = eCol->FirstChildElement("cartype");
-		if (eCarT)
-		{
-			a = eCarT->Attribute("names");
-			if (a)
-			{	String s = a;
-				c.carTypes = StringUtil::split(s, "|");
-			}
-			//  wheels
-			a = eCarT->Attribute("whMin");	if (a)  c.whMin = s2i(a);
-			a = eCarT->Attribute("whMax");	if (a)  c.whMax = s2i(a);
-		}
-		//<car names="ES|HI" />
-		XMLElement* eCar = eCol->FirstChildElement("car");
-		if (eCar)
-		{
-			a = eCar->Attribute("names");
-			if (a)
-			{	String s = a;
-				c.cars = StringUtil::split(s, "|");
-			}
-			a = eCar->Attribute("deny");
-			if (a)
-			{	String s = a;
-				c.carsDeny = StringUtil::split(s, "|");
-		}	}
+
+		c.cars.LoadXml(eCol);  //  allowed
 		
 		XMLElement* ePass = eCol->FirstChildElement("pass");
 		if (ePass)
@@ -101,7 +76,6 @@ bool CollectXml::LoadXml(std::string file, TracksIni* trks, bool check)
 		all.push_back(c);
 		eCol = eCol->NextSiblingElement("collection");
 	}
-	
 	return true;
 }
 

@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <OgreStringVector.h>
+#include "CAllowed.h"
 
 
 //  🏞️ single Track in Collection
@@ -36,8 +36,7 @@ public:
 	float factor = 1.f; // multiplier for silver,bronze points/pos prizes
 	
 	//  Allowed type(s) or specific vehicle(s), 1 or more
-	Ogre::StringVector carTypes, cars, carsDeny;
-	int whMin = 0, whMax = 10;  // allowed vehicle wheels count range [min..max]
+	CAllowed cars;
 
 	std::string track = "Jng1-Curly";
 	// std::vector<ChallTrack> trks;
