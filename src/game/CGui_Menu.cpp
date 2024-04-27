@@ -147,6 +147,9 @@ void CGui::btnMainMenu(WP wp)
 		case Games_Tutorial:   pSet->iMenu = MN_Tutorial;  break;
 		case Games_Champ:      pSet->iMenu = MN_Champ;  break;
 		case Games_Challenge:  pSet->iMenu = MN_Chall;  break;
+
+		case Games_Collection: pSet->iMenu = MN_Collect;  break;
+		case Games_Career:     pSet->iMenu = MN_Career;  break;  // todo
 		case Games_Back:       pSet->iMenu = MN1_Setup;  break;
 		}
 		app->gui->toggleGui(false);
@@ -178,7 +181,7 @@ void CGui::tabMainMenu(Tab tab, size_t id)
 	if (id != 0)  return;  // <back
 	tab->setIndexSelected(1);  // dont switch to 0
 	
-	if (pSet->iMenu >= MN_Single && pSet->iMenu <= MN_Chall)
+	if (pSet->iMenu >= MN_Single && pSet->iMenu <= MN_Career)
 		pSet->iMenu = MN1_Games;
 	else
 		pSet->iMenu = MN1_Main;

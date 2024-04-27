@@ -12,6 +12,7 @@
 #include "CGui.h"
 #include "MultiList2.h"
 #include "SoundMgr.h"
+#include "settings.h"
 // #include <OgreTextureManager.h>
 #include <MyGUI.h>
 using namespace std;
@@ -19,49 +20,39 @@ using namespace Ogre;
 using namespace MyGUI;
 
 
-///
-void CGui::BackFromChs()
+bool CGui::isCollectGui()
 {
-	pSet->gui.champ_num = -1;
-	pSet->gui.chall_num = -1;
-	pSet->gui.collect_num = -1;
-	pChall = 0;
-	CarListUpd();  // off filtering
+	return pSet->iMenu == MN_Collect;
 }
 
-bool CGui::isChallGui()
+void CGui::tabCollectType(Tab wp, size_t id)
 {
-	return pSet->iMenu == MN_Chall;
+	pSet->collect_type = id;
+	CollectListUpdate();
 }
 
-void CGui::tabChallType(Tab wp, size_t id)
-{
-	pSet->chall_type = id;
-	ChallsListUpdate();
-}
-
-#define MAX_CHL_TYP 11
+#define MAX_COL_TYP 4
 
 
-///  🥇📃 Challenges list  fill
+///  💎📃 Collections list  fill
 //----------------------------------------------------------------------------------------------------------------------
-void CGui::ChallsListUpdate()
+void CGui::CollectListUpdate()
 {
-	const int all = data->chall->all.size();
+	const int all = data->collect->all.size();
 
-	std::vector<int> vIds[MAX_CHL_TYP];  // cur diff ids for chall [types]
+	std::vector<int> vIds[MAX_COL_TYP];  // cur diff ids for collect [types]
 	for (int id = 0; id < all; ++id)
 	{
-		const Chall& chl = data->chall->all[id];
+		const Collect& col = data->collect->all[id];
 		if (pSet->ch_all || (
-			chl.diff >= pSet->difficulty &&
-			chl.diff <= pSet->difficulty+1))  vIds[chl.type].emplace_back(id);
+			col.diff >= pSet->difficulty &&
+			col.diff <= pSet->difficulty+1))  vIds[col.type].emplace_back(id);
 	}
 
-	int cntCur = vIds[pSet->chall_type].size();
+	int cntCur = vIds[pSet->collect_type].size();
 
 	//  hide empty tabs  ----
-	const int tabs = tabChall->getItemCount();
+	const int tabs = tabCollect->getItemCount();
 	for (int t = 0; t < tabs; ++t)
 	{
 		int cnt = vIds[t].size();
@@ -69,64 +60,61 @@ void CGui::ChallsListUpdate()
 		if (t == tabs-1 && !pSet->dev_keys)  // hide Test
 			cnt = 0;
 
-		tabChall->setButtonWidthAt(t, cnt == 0 ? 1 : -1);
+		tabCollect->setButtonWidthAt(t, cnt == 0 ? 1 : -1);
 
 		//  if none visible, set 1st nonempty
 		if (cntCur == 0 && cnt > 0)
 		{
-			pSet->chall_type = t;  cntCur = cnt;
-			tabChall->setIndexSelected(t);
+			pSet->collect_type = t;  cntCur = cnt;
+			tabCollect->setIndexSelected(t);
 	}	}
 
-	fillChallsList(vIds[pSet->chall_type]);
+	fillCollectList(vIds[pSet->collect_type]);
 }
 
 
-void CGui::fillChallsList(std::vector<int> vIds)
+void CGui::fillCollectList(std::vector<int> vIds)
 {
-	const char clrCh[MAX_CHL_TYP][8] = {
-	//  0 Rally  1 Scenery  2 Endurance  3 Chase  4 Stunts  5 Extreme  6 Space    7 Special  8 Vehicle  9 Hover    10 Test
-		"#A0D0FF","#80FF80","#C0FF60", "#FFC060","#FF8080","#C0A0E0",  "#7070F0", "#60B0FF", "#E0A0C0", "#F0C0F0", "#909090" };
+	const char clrCh[MAX_COL_TYP][8] = {
+	//  0 Infinite  1 Chase  2 Hard  10 Test
+		"#A0D0FF","#80FF80","#FFC060", "#909090" };
 
-	liChalls->removeAllItems();
-	const int p = pSet->gui.champ_rev ? 1 : 0;
+	liCollect->removeAllItems();
 
 	size_t sel = ITEM_NONE;
  	for (int i : vIds)
 	{
-		const Chall& chl = data->chall->all[i];
-		const ProgressChall& pc = progressL[p].chs[i];
-		const int ntrks = pc.trks.size(), ct = pc.curTrack;
-		const String& clr = clrCh[chl.type];
-		//String cars = data->carsXml.colormap[chl.ci->type];  if (cars.length() != 7)  clr = "#C0D0E0";
+		const Collect& col = data->collect->all[i];
+		const ProgressCollect& pc = progressC.chs[i];
+		// const int ntrks = pc.trks.size(), ct = pc.curTrack;
+		const String& clr = clrCh[col.type];
+		//String cars = data->carsXml.colormap[col.ci->type];  if (cars.length() != 7)  clr = "#C0D0E0";
 		
-		liChalls->addItem(""/*clr+ toStr(n/10)+toStr(n%10)*/, i+1);  int l = liChalls->getItemCount()-1;
-		liChalls->setSubItemNameAt(1,l, clr+ chl.nameGui.c_str());
-		liChalls->setSubItemNameAt(2,l, gcom->clrsDiff[chl.diff]+ TR("#{Diff"+toStr(chl.diff)+"}"));
-		liChalls->setSubItemNameAt(3,l, chl.cars.GetStr(data->cars));
+		liCollect->addItem(""/*clr+ toStr(n/10)+toStr(n%10)*/, i+1);  int l = liCollect->getItemCount()-1;
+		liCollect->setSubItemNameAt(1,l, "AAAA"); //clr+ col.nameGui.c_str());
+		liCollect->setSubItemNameAt(2,l, gcom->clrsDiff[col.diff]+ TR("#{Diff"+toStr(col.diff)+"}"));
 		
-		liChalls->setSubItemNameAt(4,l, gcom->clrsDiff[std::min(8,ntrks*2/3+1)]+ iToStr(ntrks,3));
-		liChalls->setSubItemNameAt(5,l, gcom->clrsDiff[std::min(8,int(chl.time/3.f/60.f))]+ StrTime2(chl.time));
-		liChalls->setSubItemNameAt(6,l, ct == 0 || ct == ntrks ? "" :
-			clr+ fToStr(100.f * ct / ntrks,0,3)+" %");
+		// liCollect->setSubItemNameAt(5,l, gcom->clrsDiff[std::min(8,int(col.time/3.f/60.f))]+ StrTime2(col.time));
+		// liCollect->setSubItemNameAt(6,l, ct == 0 || ct == ntrks ? "" :
+		// 	clr+ fToStr(100.f * ct / ntrks,0,3)+" %");  // collected cnt / all ..
 
-		liChalls->setSubItemNameAt(7,l, " "+ StrPrize(pc.fin+1));
-		liChalls->setSubItemNameAt(8,l, clr+ (pc.fin >= 0 ? fToStr(pc.avgPoints,1,5) : ""));
-		if (i == pSet->gui.chall_num)
+		//. liCollect->setSubItemNameAt(3,l, " "+ StrPrize(pc.fin+1));
+		// liCollect->setSubItemNameAt(8,l, clr+ (pc.fin >= 0 ? fToStr(pc.avgPoints,1,5) : ""));
+		if (i == pSet->gui.collect_num)
 			sel = l;
 	}
-	liChalls->setIndexSelected(sel);
+	liCollect->setIndexSelected(sel);
 }
 
 
-///  Challenges list  sel changed,  fill Stages list
+///  Collections list  sel changed,  fill Stages list
 //----------------------------------------------------------------------------------------------------------------------
-void CGui::listChallChng(MyGUI::MultiList2* chlist, size_t id)
+void CGui::listCollectChng(MyGUI::MultiList2* chlist, size_t id)
 {
-	if (id==ITEM_NONE || liChalls->getItemCount() == 0)  return;
+	if (id==ITEM_NONE || liCollect->getItemCount() == 0)  return;
 
-	int nch = *liChalls->getItemDataAt<int>(id)-1;
-	if (nch < 0 || nch >= data->chall->all.size())  {  LogO("Error chall sel > size.");  return;  }
+	int nch = *liCollect->getItemDataAt<int>(id)-1;
+	if (nch < 0 || nch >= data->collect->all.size())  {  LogO("Error collect sel > size.");  return;  }
 
 	CarListUpd();  // filter car list
 
@@ -134,71 +122,65 @@ void CGui::listChallChng(MyGUI::MultiList2* chlist, size_t id)
 	liStages->removeAllItems();
 
 	int n = 1, p = pSet->gui.champ_rev ? 1 : 0;
-	const Chall& ch = data->chall->all[nch];
-	int ntrks = ch.trks.size();
-	for (int i=0; i < ntrks; ++i,++n)
-	{
-		const ChallTrack& trk = ch.trks[i];
-		float po = progressL[p].chs[nch].trks[i].points;
-		StageListAdd(n, trk.name, trk.laps, po > 0.f ? "#E0F0FF"+fToStr(po,1,3) : "");
-	}
+	const Collect& ch = data->collect->all[nch];
+
 	if (edChDesc)  edChDesc->setCaption(ch.descr);
 	txtChName->setCaption(ch.nameGui);
 
-	UpdChallDetail(nch);
+	// UpdCollectDetail(nch);
 }
 
 
-//  chall allows car
-bool CGui::IsChallCar(String name)
+//  collect allows car
+bool CGui::IsCollectCar(String name)
 {
-	if (!liChalls || liChalls->getIndexSelected()==ITEM_NONE)  return true;
+	if (!liCollect || liCollect->getIndexSelected()==ITEM_NONE)  return true;
 
-	int id = *liChalls->getItemDataAt<int>(liChalls->getIndexSelected())-1;
+	int id = *liCollect->getItemDataAt<int>(liCollect->getIndexSelected())-1;
 
-	return data->chall->all[id].cars.Allows(data->cars, name);
+	return data->collect->all[id].cars.Allows(data->cars, name);
 	// return data->IsChallCar(&data->chall->all[chId], name);
 }
 
 
-///  chall start
+///  Collect start
 //---------------------------------------------------------------------
-void CGui::btnChallStart(WP)
+void CGui::btnCollectStart(WP)
 {
-	if (liChalls->getIndexSelected()==ITEM_NONE)  return;
+	if (liCollect->getIndexSelected()==ITEM_NONE)  return;
 	pSet->gui.champ_num = -1;
-	pSet->gui.chall_num = *liChalls->getItemDataAt<int>(liChalls->getIndexSelected())-1;
-	pSet->gui.collect_num = -1;
+	pSet->gui.chall_num = -1;
+	pSet->gui.collect_num = *liCollect->getItemDataAt<int>(liCollect->getIndexSelected())-1;;
 
 	//  if already finished, restart - will loose progress and scores ..
-	int chId = pSet->gui.chall_num, p = pSet->game.champ_rev ? 1 : 0;
-	LogO("|] Starting chall: "+toStr(chId)+(p?" rev":""));
-	ProgressChall& pc = progressL[p].chs[chId];
+	/*int chId = pSet->gui.collect_num, p = pSet->game.champ_rev ? 1 : 0;
+	LogO("|] Starting Collect: "+toStr(chId)+(p?" rev":""));
+	ProgressCollect& pc = progressL[p].chs[chId];
 	if (pc.curTrack == pc.trks.size())
 	{
 		LogO("|] Was at 100%, restarting progress.");
 		pc.curTrack = 0;  //pc.score = 0.f;
-	}
+	}*/
 	// change btn caption to start/continue/restart ?..
 
 	btnNewGame(0);
 }
-
+/*
 ///  stage start / end
 //----------------------------------------------------------------------------------------------------------------------
-void CGui::btnChallStageStart(WP)
+void CGui::btnCollectStageStart(WP)
 {
-	//  check if chall ended
-	int chId = pSet->game.chall_num, p = pSet->game.champ_rev ? 1 : 0;
-	ProgressChall& pc = progressL[p].chs[chId];
-	const Chall& ch = data->chall->all[chId];
-	bool last = pc.curTrack == ch.trks.size();
+	//  check if Collect ended
+	int chId = pSet->game.collect_num, p = pSet->game.champ_rev ? 1 : 0;
+	ProgressCollect& pc = progressL[p].chs[chId];
+	const Collect& ch = data->collect->all[chId];
+	// bool last = pc.curTrack == ch.trks.size();
 
-	LogO("|] This was stage " + toStr(pc.curTrack) + "/" + toStr(ch.trks.size()) + " btn");
-	if (last)
+	// LogO("|] This was stage " + toStr(pc.curTrack) + "/" + toStr(ch.trks.size()) + " btn");
+	// if (last)
 	{	//  show end window, todo: start particles..
-		app->mWndChallStage->setVisible(false);
-		app->mWndChallEnd->setVisible(true);
+		// app->mWndChallStage->setVisible(false);
+		// app->mWndChallEnd->setVisible(true);
 		
 		///  sounds  🔉
 		if (iChSnd < 0)
@@ -224,47 +206,46 @@ void CGui::btnChallStageStart(WP)
 		pGame->timer.end_sim = false;
 	}
 }
-
+/*
 //  stage back
-void CGui::btnChallStageBack(WP)
+void CGui::btnCollectStageBack(WP)
 {
 	app->mWndChallStage->setVisible(false);
 	app->isFocGui = true;  // show back gui
 	toggleGui(false);
 }
 
-//  chall end
-void CGui::btnChallEndClose(WP)
+//  Collect end
+void CGui::btnCollectEndClose(WP)
 {
 	app->mWndChallEnd->setVisible(false);
 	app->isFocGui = true;  // show back gui
 	toggleGui(false);
 }
-
+*/
 
 ///  save progressL and update it on gui
-void CGui::ProgressLSave(bool upgGui)
+void CGui::ProgressCSave(bool upgGui)
 {
-	progressL[0].SaveXml(PATHS::UserConfigDir() + "/progressL.xml");
-	progressL[1].SaveXml(PATHS::UserConfigDir() + "/progressL_rev.xml");
+	progressC.SaveXml(PATHS::UserConfigDir() + "/progressC.xml");
 	if (!upgGui)
 		return;
-	ChallsListUpdate();
-	listChallChng(liChalls, liChalls->getIndexSelected());
+	CollectListUpdate();
+	listCollectChng(liCollect, liCollect->getIndexSelected());
 }
 
-
-///  challenge advance logic
+#if 0
+///  Collection advance logic
 //  caution: called from GAME, 2nd thread, no Ogre stuff here
 //----------------------------------------------------------------------------------------------------------------------
-void CGui::ChallengeAdvance(float timeCur/*total*/)
+void CGui::CollectionAdvance(float timeCur/*total*/)
 {
-	int chId = pSet->game.chall_num, p = pSet->game.champ_rev ? 1 : 0;
-	ProgressChall& pc = progressL[p].chs[chId];
-	ProgressTrackL& pt = pc.trks[pc.curTrack];
-	const Chall& ch = data->chall->all[chId];
-	const ChallTrack& trk = ch.trks[pc.curTrack];
-	LogO("|] --- Chall end: " + ch.name);
+	int chId = pSet->game.collect_num, p = pSet->game.champ_rev ? 1 : 0;
+	ProgressCollect& pc = progressL[p].chs[chId];
+	// ProgressTrackL& pt = pc.trks[pc.curTrack];
+	const Collect& ch = data->collect->all[chId];
+	// const ChallTrack& trk = ch.trks[pc.curTrack];
+	LogO("|] --- Collect end: " + ch.name);
 
 	///  compute track  poins  --------------
 	float timeTrk = data->tracks->times[trk.name];
@@ -323,8 +304,8 @@ void CGui::ChallengeAdvance(float timeCur/*total*/)
 	pGame->timer.end_sim = true;
 
 	//  show stage end [window]
-	ChallFillStageInfo(true);  // cur track
-	app->mWndChallStage->setVisible(true);
+	CollectFillStageInfo(true);  // cur track
+	app->mWndCollectStart->setVisible(true);
 	app->updMouse();
 
 	//  sound  🔉
@@ -347,7 +328,7 @@ void CGui::ChallengeAdvance(float timeCur/*total*/)
 	}
 
 
-	//  challenge end
+	//  Collection end
 	//-----------------------------------------------------------------------------------------------
 
 	//  compute avg
@@ -364,13 +345,13 @@ void CGui::ChallengeAdvance(float timeCur/*total*/)
 	pc.curTrack++;
 	pc.totalTime = totalTime;  pc.avgPoints = avgPoints;  pc.avgPos = avgPos;
 
-	LogO("|] Chall finished");
+	LogO("|] Collect finished");
 	String s = "\n\n"+
-		TR("#C0D0F0#{Challenge}") + ": #C0D0FF" + ch.nameGui +"\n";
+		TR("#C0D0F0#{Collection}") + ": #C0D0FF" + ch.nameGui +"\n";
 	#define sPass(pa)  (pa ? TR("  #00FF00#{Passed}") : TR("  #FF8000#{DidntPass}"))
 
 
-	///  Pass Challenge  --------------
+	///  Pass Collection  --------------
 	String ss;
 	passed = true;
 	int prize = -1, pp = ch.prizes;
@@ -443,16 +424,16 @@ void CGui::ChallengeAdvance(float timeCur/*total*/)
 		iChSnd = std::min(2, std::max(0, prize-1));  // ch.diff ?
 
 
-	//  upd chall end [window]
-	imgChallFail->setVisible(!passed);
-	imgChallCup->setVisible( passed);  const int ui[3] = {2,3,4};
-	imgChallCup->setImageCoord(IntCoord(ui[std::min(2, std::max(0, pc.fin))]*128,0,128,256));
+	//  upd Collect end [window]
+	imgCollectFail->setVisible(!passed);
+	imgCollectCup->setVisible( passed);  const int ui[3] = {2,3,4};
+	imgCollectCup->setImageCoord(IntCoord(ui[std::min(2, std::max(0, pc.fin))]*128,0,128,256));
 
-	txChallEndC->setCaption(passed ? TR("#{ChampEndCongrats}") : "");
-	txChallEndF->setCaption(passed ? TR("#{ChallEndFinished}") : TR("#{Finished}"));
+	txCollectEndC->setCaption(passed ? TR("#{ChampEndCongrats}") : "");
+	txCollectEndF->setCaption(passed ? TR("#{CollectEndFinished}") : TR("#{Finished}"));
 
-	edChallEnd->setCaption(s);
-	// app->mWndChallEnd->setVisible(true);  // show after stage end
+	edCollectEnd->setCaption(s);
+	// app->mWndCollectEnd->setVisible(true);  // show after stage end
 	
 	LogO("|]");
 }
@@ -475,17 +456,17 @@ const String CGui::StrPrize(int i)  //0..3
 
 //  stage wnd text
 //----------------------------------------------------------------------------------------------------------------------
-void CGui::ChallFillStageInfo(bool finished)
+void CGui::CollectFillStageInfo(bool finished)
 {
-	int chId = pSet->game.chall_num, p = pSet->game.champ_rev ? 1 : 0;
-	const ProgressChall& pc = progressL[p].chs[chId];
+	int chId = pSet->game.collect_num, p = pSet->game.champ_rev ? 1 : 0;
+	const ProgressCollect& pc = progressL[p].chs[chId];
 	const ProgressTrackL& pt = pc.trks[pc.curTrack];
-	const Chall& ch = data->chall->all[chId];
-	const ChallTrack& trk = ch.trks[pc.curTrack];
+	const Collect& ch = data->collect->all[chId];
+	// const CollectTrack& trk = ch.trks[pc.curTrack];
 	bool last = pc.curTrack+1 == ch.trks.size();
 
 	String s =
-		"#80FFE0"+ TR("#{Challenge}") + ":  " + ch.nameGui + "\n\n" +
+		"#80FFE0"+ TR("#{Collection}") + ":  " + ch.nameGui + "\n\n" +
 		"#80FFC0"+ TR("#{Stage}") + ":  " + toStr(pc.curTrack+1) + " / " + toStr(ch.trks.size()) + "\n" +
 		"#80FF80"+ TR("#{Track}") + ":  " + trk.name + "\n\n";
 
@@ -542,8 +523,8 @@ void CGui::ChallFillStageInfo(bool finished)
 			s += "\n#DDDDBB"+ rd->sTxtAdvice + "\n#ABDDAB"+ rd->sTxtDescr;
 	}
 
-	edChallStage->setCaption(s);
-	btChallStage->setCaption(finished ? TR("#{Continue}") : TR("#{Start}"));
+	edCollectStage->setCaption(s);
+	btCollectStage->setCaption(finished ? TR("#{Continue}") : TR("#{Start}"));
 	
 	//  preview image at start
 	if (!finished)
@@ -554,11 +535,11 @@ void CGui::ChallFillStageInfo(bool finished)
 }
 
 
-//  chall details  (gui tab Stages)
+//  Collect details  (gui tab Stages)
 //----------------------------------------------------------------------------------------------------------------------
-void CGui::UpdChallDetail(int id)
+void CGui::UpdCollectDetail(int id)
 {
-	const Chall& ch = data->chall->all[id];
+	const Collect& ch = data->collect->all[id];
 	int ntrks = ch.trks.size();
 	int p = pSet->gui.champ_rev ? 1 : 0;
 	
@@ -578,7 +559,7 @@ void CGui::UpdChallDetail(int id)
 
 	//  cars  --------
 	s1 += "\n";  s2 += "\n";
-	s1 += TR("#F08080#{Vehicles}\n");       s2 += "#FFA0A0" + ch.cars.GetStr(data->cars)+"\n";
+	s1 += TR("#F08080#{Vehicles}\n");        s2 += "#FFA0A0" + StrCollectCars(ch)+"\n";
 	if (ch.carChng)
 	{	s1 += TR("#C0B0B0#{CarChange}\n");  s2 += TR("#A0B8A0#{Allowed}")+"\n";  }
 
@@ -601,12 +582,12 @@ void CGui::UpdChallDetail(int id)
 	txtCh->setCaption(s1);  valCh->setCaption(s2);
 
 
-	//  pass challenge  --------
+	//  pass Collection  --------
 	s1 = "";  s2 = "";
 	if (ch.totalTime > 0.f || ch.avgPoints > 0.f || ch.avgPos > 0.f)
 	{
 		s1 += "\n";  s2 += "\n";  int p, pp = ch.prizes;
-		s1 += TR("#F0F060#{Needed} - #{Challenge}")+"\n";   s2 += "\n";
+		s1 += TR("#F0F060#{Needed} - #{Collection}")+"\n";   s2 += "\n";
 		s1 += "#D8C0FF";  s2 += "#F0D8FF";
 		if (ch.avgPoints > 0.f){	s1 += TR("  #{TBPoints}\n");
 									for (p=0; p <= pp; ++p)  s2 += clrPrize[2-pp+ p+1]+
@@ -626,7 +607,7 @@ void CGui::UpdChallDetail(int id)
 	size_t t = liStages->getIndexSelected();
 	if (t != ITEM_NONE)
 	{
-		const ChallTrack& trk = ch.trks[t];
+		// const CollectTrack& trk = ch.trks[t];
 		if (trk.timeNeeded > 0.f || trk.passPoints > 0.f || trk.passPos > 0)
 		{
 			s1 += "\n";  s2 += "\n";
@@ -641,8 +622,8 @@ void CGui::UpdChallDetail(int id)
 
 	//  progress  --------
 	s1 = "";  s2 = "";
-	const ProgressChall& pc = progressL[p].chs[id];
-	int cur = pc.curTrack, all = data->chall->all[id].trks.size();
+	const ProgressCollect& pc = progressL[p].chs[id];
+	int cur = pc.curTrack, all = data->collect->all[id].trks.size();
 	if (cur > 0)
 	{
 		s1 += TR("#B0FFFF#{Progress}\n");    s2 += "#D0FFFF"+(cur == all ? TR("#{Finished}").asUTF8() : fToStr(100.f * cur / all,0,3)+" %")+"\n";
@@ -658,6 +639,7 @@ void CGui::UpdChallDetail(int id)
 
 	//  btn start
 	s1 = cur == all ? TR("#{Restart}") : (cur == 0 ? TR("#{Start}") : TR("#{Continue}"));
-	btStChall->setCaption(s1);
-	btChRestart->setVisible(cur > 0);
+	btStCollect->setCaption(s1);
+	// btChRestart->setVisible(cur > 0);
 }
+#endif

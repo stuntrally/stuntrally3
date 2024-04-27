@@ -199,12 +199,13 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			case Games_SplitScreen:  gui->GuiShortcut(MN_Single, TAB_Split);  gui->SetNumPlayers(-2);  break;  // 👥
 			case Games_Multiplayer:  gui->GuiShortcut(MN_Single, TAB_Multi);  gui->SetNumPlayers(1);  break;  // 📡
 
-			case Games_Tutorial:  pSet->iMenu = MN_Tutorial;  break;
-			case Games_Champ:     pSet->iMenu = MN_Champ;  break;
-			case Games_Challenge: pSet->iMenu = MN_Chall;  break;
-			// case Games_Collection:pSet->iMenu = MN_Collect;  break;  // todo
-			// case Games_Career:    pSet->iMenu = MN_Career;  break;
-			case Games_Back:      pSet->iMenu = MN1_Setup;  break;
+			case Games_Tutorial:   pSet->iMenu = MN_Tutorial;  break;
+			case Games_Champ:      pSet->iMenu = MN_Champ;  break;
+			case Games_Challenge:  pSet->iMenu = MN_Chall;  break;
+			
+			case Games_Collection: pSet->iMenu = MN_Collect;  break;
+			case Games_Career:     pSet->iMenu = MN_Career;  break;  // todo
+			case Games_Back:       pSet->iMenu = MN1_Setup;  break;
 			}
 			gui->toggleGui(false);  return;
 		default:  break;
@@ -363,8 +364,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				case MN1_Main:  break;
 				case MN1_Setup:  pSet->iMenu = MN1_Main;  break;
 				
-				case MN_Single: case MN_Tutorial: case MN_Champ: case MN_Chall:
+				case MN_Single: case MN_Tutorial: case MN_Champ:
+				case MN_Chall:  case MN_Collect:  case MN_Career:
 					pSet->iMenu = MN1_Games;  break;
+				
 				case MN_Replays:
 					if (isFocGui)  pSet->iMenu = MN1_Main;
 					break;

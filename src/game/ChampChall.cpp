@@ -1,9 +1,11 @@
 #include "pch.h"
 #include "Def_Str.h"
+#include "settings.h"
 #include "CData.h"
 #include "TracksXml.h"
 #include "ChampsXml.h"
 #include "ChallengesXml.h"
+#include "CollectXml.h"
 #include "GuiCom.h"
 #include "paths.h"
 #include "game.h"
@@ -24,14 +26,17 @@ using namespace MyGUI;
 ///______________________________________________________________________________________________
 void App::Ch_NewGame()
 {
-	if (pSet->game.champ_num >= (int)data->champs->all.size() ||
-		pSet->game.chall_num >= (int)data->chall->all.size())  // range
-	{	pSet->game.champ_num = -1;
-		pSet->game.chall_num = -1;  }
+	//  range
+	int& iChamp = pSet->game.champ_num;
+	int& iChall = pSet->game.chall_num;
+	int& iCollect = pSet->game.collect_num;
+	if (iChamp   >= (int)data->champs->all.size())   iChamp = -1;
+	if (iChall   >= (int)data->chall->all.size())    iChall = -1;
+	if (iCollect >= (int)data->collect->all.size())  iCollect = -1;
 
 	pGame->timer.end_sim = false;
-	int iChamp = pSet->game.champ_num;
-	int iChall = pSet->game.chall_num;
+
+	//---------------------------------------------------------
 	if (iChall >= 0)
 	{
 		///  🥇 challenge stage
@@ -76,6 +81,7 @@ void App::Ch_NewGame()
 		pGame->pause = true;  // wait for stage wnd close
 		pGame->timer.waiting = true;
 	}
+	//---------------------------------------------------------
 	else if (iChamp >= 0)
 	{
 		///  🏆 championship stage
@@ -98,7 +104,27 @@ void App::Ch_NewGame()
 
 		pGame->pause = true;  // wait for stage wnd close
 		pGame->timer.waiting = true;
-	}else
+	}
+	//---------------------------------------------------------
+	else if (iCollect >= 0)
+	{
+		///  💎 collection
+		ProgressCollect& pc = gui->progressC.chs[iCollect];
+		const Collect& col = data->collect->all[iCollect];
+		// const ChampTrack& trk = ch.trks[pc.curTrack];
+		pSet->game.track = col.track;  pSet->game.track_user = 0;
+		pSet->game.track_reversed = 0;
+		pSet->game.num_laps = 0;
+
+		pSet->game.boost_type = col.boost_type;
+		pSet->game.flip_type = col.flip_type;
+		pSet->game.rewind_type = col.rewind_type;
+		pSet->game.BoostDefault();  //
+
+		pGame->pause = false;  // wait for wnd close ..?
+		pGame->timer.waiting = true;
+	}
+	else
 	{	pGame->pause = false;  // single race
 		pGame->timer.waiting = false;
 	}
@@ -146,29 +172,36 @@ int App::GetRacePos(float timeCur, float timeTrk, float carTimeMul, bool coldSta
 
 ///  🪟 upd Gui vis  tutor champ chall
 //-----------------------------------------------------------------------------------------------
-void CGui::UpdChampTabVis()
+void CGui::UpdChsTabVis()
 {
-	if (!liChamps || !tabChamp || !btStChamp)  return;
+	if (!liChamps || !tabChamp || !btStChamp || !btStCollect)  return;
 	bool game = pSet->iMenu == MN_Single,   champ = pSet->iMenu == MN_Champ,
-		tutor = pSet->iMenu == MN_Tutorial, chall = pSet->iMenu == MN_Chall;
-	bool any = tutor || champ || chall;
+		tutor = pSet->iMenu == MN_Tutorial, chall = pSet->iMenu == MN_Chall,
+		collect = pSet->iMenu == MN_Collect, career = pSet->iMenu == MN_Career;
+	bool chAny = tutor || champ || chall || collect || career;
 
 	imgTut->setVisible(tutor);    btStTut->setVisible(tutor);
 	tabChamp->setVisible(champ);  imgChamp->setVisible(champ);  btStChamp->setVisible(champ);
 	tabChall->setVisible(chall);  imgChall->setVisible(chall);  btStChall->setVisible(chall);
-	btNewGameCar->setVisible(!any);
+	btNewGameCar->setVisible(!chAny);
+	imgCollect->setVisible(collect);  btStCollect->setVisible(collect);
+	imgCareer->setVisible(career);
 
 	liChamps->setVisible(!chall);  liChamps->setColour(tutor ? Colour(0.85,0.8,0.75) : Colour(0.75,0.8,0.85));
 	liChalls->setVisible( chall);  liChalls->setColour(Colour(0.74,0.7,0.82));
+	liCollect->setVisible( collect);  liCollect->setColour(Colour(1,0.74,0.7));
 	panCh->setColour(tutor ? Colour(0.9,0.8,0.7) : champ ? Colour(0.7,0.9,0.8) : Colour(0.77,0.75,0.92));
 
-	if (chall)  ChallsListUpdate();
-	else        ChampsListUpdate();
+	if (collect)  CollectListUpdate();  else
+	if (chall)  ChallsListUpdate();  else
+		ChampsListUpdate();
 
 	//if (pSet->inRace == Race_Single)
 	//	BackFromChs();
 	
 	edChInfo->setCaption(
+		career ? "" :
+		collect ? TR("#{CollectInfo}") :
 		chall ? TR("#{ChallInfo2}")+"\n"+TR("#{ChallInfo}") :
 		tutor ? TR("#{TutorInfo}")+"\n"+TR("#{ChampInfo}") :
 				TR("#{ChampInfo2}")+"\n"+TR("#{ChampInfo}"));

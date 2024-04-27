@@ -44,8 +44,6 @@ bool CollectXml::LoadXml(std::string file, TracksIni* trks, bool check)
 		if (eSim)
 		{
 			a = eSim->Attribute("mode");	if (a)  c.sim_mode = std::string(a);
-			a = eSim->Attribute("abs");		if (a)  c.abs = s2i(a) > 0;
-			a = eSim->Attribute("tcs");		if (a)  c.tcs = s2i(a) > 0;
 
 			a = eSim->Attribute("damage");	if (a)  c.damage_type = s2i(a);  // range chk..
 			
@@ -68,7 +66,7 @@ bool CollectXml::LoadXml(std::string file, TracksIni* trks, bool check)
 
 		//  track
 		XMLElement* eTr = eCol->FirstChildElement("track");
-		while (eTr)
+		if (eTr)
 		{
 			a = eTr->Attribute("name");		if (a)  c.track = std::string(a);
 		}

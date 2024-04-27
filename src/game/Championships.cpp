@@ -172,6 +172,20 @@ void CGui::updChampListDim()
 	xt = 0.03*wi.width, yt = 0.10*wi.height;  // pos
 	liChalls->setCoord(xt, yt, sw + 8/**/, 0.40/*height*/*wi.height);
 	liChalls->setVisible(isChallGui());
+
+	//  Collect  -----
+	if (!liCollect)  return;
+
+	sum = 0;  cnt = liCollect->getColumnCount();  sw = 0;
+	for (c=0; c < cnt; ++c)  sum += colCol[c];
+	for (c=0; c < cnt; ++c)
+	{
+		w = c==cnt-1 ? 18 : float(colCol[c]) / sum * 0.76/*width*/ * wi.width * 0.97/**/;
+		liCollect->setColumnWidthAt(c, w);  sw += w;
+	}
+	xt = 0.03*wi.width, yt = 0.10*wi.height;  // pos
+	liCollect->setCoord(xt, yt, sw + 8/**/, 0.40/*height*/*wi.height);
+	liCollect->setVisible(isCollectGui());
 }
 
 
@@ -238,8 +252,9 @@ void CGui::listChampChng(MyGUI::MultiList2* chlist, size_t id)
 void CGui::btnChampStart(WP)
 {
 	if (liChamps->getIndexSelected()==ITEM_NONE)  return;
-	pSet->gui.chall_num = -1;
 	pSet->gui.champ_num = *liChamps->getItemDataAt<int>(liChamps->getIndexSelected())-1;
+	pSet->gui.chall_num = -1;
+	pSet->gui.collect_num = -1;
 
 	//  if already finished, restart - will loose progress and scores ..
 	int chId = pSet->gui.champ_num, p = pSet->game.champ_rev ? 1 : 0;

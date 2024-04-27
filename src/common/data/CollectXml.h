@@ -50,10 +50,9 @@ public:
 	std::string sim_mode = "normal";
 	int damage_type = 2, boost_type = 1, flip_type = 2, rewind_type = 1;
 
-	//  Hud
+	//  Hud-
 	bool minimap = 1, chk_arr = 0, chk_beam = 0,
 		trk_ghost = 0, pacenotes = 0, trail = 0;  // deny using it if false
-	bool abs = 0, tcs = 0;  // deny if false
 	
 	//  Pass  -1 means not needed, you can use one or more conditions
 	// float totalTime = -1.f, avgPoints = -1.f, avgPos = -1.f;

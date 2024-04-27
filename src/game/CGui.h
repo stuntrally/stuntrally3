@@ -135,7 +135,7 @@ public:
 
 	//  🚗📃 Car list  (all Car = Vehicle)
 	///---------------------------------------------------
-	const static int colCar[16],colCh[16],colChL[16],colSt[16];
+	const static int colCar[16],colCh[16],colChL[16],colSt[16],colCol[16];
 
 	void CarListUpd(bool resetNotFound=false);
 	void AddCarL(std::string name, const CarInfo* ci);
