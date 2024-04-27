@@ -42,22 +42,22 @@ project( StuntRally3 )
 
 
 #  User Options  to disable building components  --------
-option(BUILD_GAME             "Build the game binary."    ON)
-option(BUILD_EDITOR           "Build the track editor."   ON)
-option(BUILD_MASTER_SERVER    "Build the game list master server."  OFF)
-option(BUILD_TRANSL_TOOL      "Build the tool for translation updating, it creates .pot"  ON)
-#^ ?
+option(BUILD_GAME           "Build the game binary."    ON)
+option(BUILD_EDITOR         "Build the track editor."   ON)
+option(BUILD_GAME_SERVER    "Build the game list server app."  ON)
+option(BUILD_TRANSL_TOOL    "Build the tool for translation updating, it creates .pot"  ON)
+
 
 #  Linux prefers lower-case exe names
 if (WIN32 OR APPLE)
     set(GAME_EXE StuntRally3)
     set(EDITOR_EXE SR-Editor3)
-    set(SERVER_EXE SR-MasterServer)
+    set(SERVER_EXE SR-GameServer)
     set(TRANSL_EXE SR-Translator)
 else()
     set(GAME_EXE stuntrally3)
     set(EDITOR_EXE sr-editor3)
-    set(SERVER_EXE sr-masterserver)
+    set(SERVER_EXE sr-gameserver)
     set(TRANSL_EXE sr-translator)
 endif()
 
@@ -348,7 +348,24 @@ if (BUILD_TRANSL_TOOL)
 	target_compile_features( ${TRANSL_EXE} PRIVATE cxx_std_17 )
 
 	set_target_properties( ${TRANSL_EXE} PROPERTIES LINKER_LANGUAGE CXX )
-	# target_link_libraries( ${TRANSL_EXE} ${LIBS} )
+endif()
+
+
+##  Game server app
+##------------------------------------------------------------------------------------------------------
+if (BUILD_GAME_SERVER)
+	message( STATUS "Configuring: " ${SERVER_EXE} )
+
+	add_executable( ${SERVER_EXE} WIN32 ./src/network/game-server/main.cpp )
+	target_include_directories( ${SERVER_EXE} PRIVATE ./src/network )
+	target_include_directories( ${SERVER_EXE} PRIVATE ./src/vdrift )
+	#  c++
+	target_compile_options(  ${SERVER_EXE} PRIVATE -Wswitch )
+	target_compile_features( ${SERVER_EXE} PRIVATE cxx_std_17 )
+	set_target_properties( ${SERVER_EXE} PROPERTIES LINKER_LANGUAGE CXX )
+
+	target_link_libraries( ${SERVER_EXE} ${Boost_LIBRARIES} )
+	target_link_libraries( ${SERVER_EXE} ${ENet_LIBRARIES} )
 endif()
 
 message( STATUS "---------- SR end" )
