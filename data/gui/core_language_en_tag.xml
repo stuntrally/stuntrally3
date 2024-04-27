@@ -19,9 +19,6 @@
 
 	<!--  General  -->
 	<Tag name="Language">Language</Tag>
-	<Tag name="Yes">Yes</Tag>
-	<Tag name="No">No</Tag>
-	<Tag name="Error">Error</Tag>
 
 	
 	<!--  HUD  Times bar  -->
@@ -67,6 +64,19 @@
 	<Tag name="Support">Support</Tag>
 	<Tag name="Contributing">Contributing</Tag>
 	<Tag name="Credits">Credits</Tag>
+
+
+	<!--  How To Play  -->
+	<Tag name="Lesson">Lesson</Tag>
+	<Tag name="DrivingSchool">Stunt Rally driving school</Tag>
+	<Tag name="LessonClick">click button to play a lesson</Tag>
+
+	<!--  Game  User Path  -->
+	<Tag name="UserDir">User Path (logs, configs, user data, etc)</Tag>
+
+	<!--  TIP  Slider  -->
+	<Tag name="TipSliderReset">RMB on slider - reset to default value.</Tag>
+
 
 	<!--  MAIN  Help links  -->
 	<Tag name="LinksToWeb">Links to websites:</Tag>
@@ -269,7 +279,6 @@
 	<Tag name="Car_TimeTo">Time to</Tag>
 	<Tag name="Car_StopTimeFrom">Stop time from</Tag>
 
-<!--  ..............................................................................................  -->
 
 	<!--  MAIN  Car types  -->
 	<Tag name="CarType_Asphalt">Asphalt</Tag>
@@ -284,7 +293,13 @@
 	<Tag name="CarType_Spaceship">Spaceship</Tag>
 	<Tag name="CarType_Drone">Drone</Tag>
 
+
+	<!--  ..............................................................................................  -->
+
 	<!--  MsgBox  -->
+	<Tag name="Yes">Yes</Tag>
+	<Tag name="No">No</Tag>
+	<Tag name="Error">Error</Tag>
 	<Tag name="MessageBox_Ok">Ok</Tag>
 	<Tag name="MessageBox_Yes">Yes</Tag>
 	<Tag name="MessageBox_No">No</Tag>
@@ -322,6 +337,8 @@
 	<Tag name="UnitBhp">bhp</Tag>
 	<Tag name="UnitS">s</Tag>
 	
+	<!--  ..............................................................................................  -->
+
 	<!--  Scenery names  -->
 	<Tag name="SC_Asphalt">Asphalt</Tag>
 	<Tag name="SC_Jungle">Jungle</Tag>
@@ -388,80 +405,7 @@
 	<Tag name="P_Rainbow">Rainbow</Tag>
 	<Tag name="P_Silver">Silver</Tag>
 
-
 <!--  ..............................................................................................  -->
-
-	<!--  TIP  Vehicle stats  -->
-	<Tag name="TipCarSpeed">Vehicle speed rating, more means faster car. Warning, on gravel too fast cars won't be faster because they don't have enough grip.</Tag>
-	<Tag name="TipCarType">Vehicle type, primary destination. Some can still be used on gravel even if not meant for it.</Tag>
-	<Tag name="TipCarYear">Year when this vehicle's production started.</Tag>
-	<Tag name="TipCarDifficulty">Vehicle handling difficulty. Higher values require more skill driving this vehicle well on tracks, and bring more trouble.</Tag>
-	<Tag name="TipCarWidth">Rating of vehicle's width. Higher values mean more trouble in narrow tracks.</Tag>
-	
-	<Tag name="TipDrivability">Drivability tells how well will vehicle drive on track. If undrivable, best to change vehicle. Many vehicles can't handle certain track properties. Gravel type cars handle all tracks well.</Tag>
-	<Tag name="TipRating">Quality rating. Higher values mean: well made, playable, good looking and interesting design.</Tag>
-
-
-	<!--  Championship  end  -->
-	<Tag name="ChampEndCongrats">Congratulations !</Tag>
-	<Tag name="TutorEndFinished">You have finished this tutorial.</Tag>
-	<Tag name="ChampEndFinished">You have finished this championship.</Tag>
-	<Tag name="ChallEndFinished">You have passed this challenge.</Tag>
-
-	<!--  Championship  info text  -->
-	<Tag name="ChampInfo">In tutorial/championship mode you drive a series of tracks. Minimum score (depending on your time) is needed to pass to next stage. Car changing is possible.</Tag>
-	<Tag name="ChallInfo">In challenge mode the game has setup, most settings can't be changed. Time or position is needed. If you pass you receive bronze, silver or gold prize.</Tag>
-	<Tag name="ChampInfo2">Championships are usually long, have many tracks, but are easy to pass.</Tag>
-	<Tag name="ChallInfo2">Challenges are short but usually difficult to pass.</Tag>
-	<Tag name="TutorInfo">Tutorials have just a few tracks. They are easy to pass and show various track elements.</Tag>
-
-	<!--  Hint  welcome screen  -->
-	<Tag name="Hint">Hint</Tag>
-	<Tag name="HintShow">Show at startup</Tag>
-	<Tag name="HintKey">Ctrl-F1 - Show</Tag>
-	<Tag name="WelcomeTo">Welcome to</Tag>
-	<Tag name="HintScreen">To change screen resolution and adjust graphics to your card press Screen button.</Tag>
-	<Tag name="HintGraphics">To adjust graphics to your card press Screen button.</Tag>
-	<Tag name="HintInput">To check keys used in game or reassign them, or to configure controller press Input button.</Tag>
-
-	<!--  TIP  Track  messages  -->
-	<Tag name="TrackNotFound">Track not found !</Tag>
-	<Tag name="TipReverse">Reverse track direction.</Tag>
-	<Tag name="TipNewGame">Start game on new track or Restart on current.</Tag>
-
-	<Tag name="TipFind">Enter part of name to find (filters list).</Tag>
-	<Tag name="TrackDifficulties">Various Track Difficulties</Tag>
-
-	<!--  TIP  Track  -->
-	<Tag name="TipTrackDesc">Track description text.</Tag>
-	<Tag name="TipTrackAdvice">Track driving advices and warnings.</Tag>
-	<Tag name="TipTrackImg">In game screenshot for selected track.</Tag>
-	<Tag name="TipTrackMap">Minimap of selected track, view from top.</Tag>
-	<Tag name="TipClickMax">Click to maximize. Then click to close.</Tag>
-	<Tag name="TipTrkViewShort">Short list view.</Tag>
-	<Tag name="TipTrkViewDetailed">Detailed list view.</Tag>
-
-	<!--  TIP  Track difficulties, on icons  -->
-	<Tag name="fluids">fluids (water or mud)</Tag>
-	<Tag name="bumps">bumps (bumpy terrain)</Tag>
-	<Tag name="jumps">jumps</Tag>
-	<Tag name="loops">loops</Tag>
-	<Tag name="pipes">pipes</Tag>
-	<Tag name="banked">banked</Tag>
-	<Tag name="frenzy">frenzy (curly road)</Tag>
-	<Tag name="long">long</Tag>
-	<Tag name="sum">sum (of difficulties)</Tag>
-	<Tag name="difficulty">difficulty</Tag>
-	<Tag name="rating">rating</Tag>
-	<Tag name="objects">objects (dynamic)</Tag>
-	<Tag name="obstacles">obstacles (on road or in pipe)</Tag>
-	<Tag name="user">user</Tag>
-	<Tag name="bookmark">bookmark</Tag>
-	<!--  TIP  Track stats  -->
-	<Tag name="TrackBankAng">Road banking angles: average and maximum, in degrees.</Tag>	
-
-<!--  ..............................................................................................  -->
-
 
 	<!--  Setup  Vehicle,Game  -->
 	<Tag name="Game">Game</Tag>
@@ -1006,6 +950,8 @@
 	<Tag name="AndUsing">and using</Tag>
 	<Tag name="ProjectPage">project&apos;s page:</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
+	
+	<!-- SR ver  settings.h SET_VER -->
 	<Tag name="GameVersion">3.1</Tag>
 
 	
@@ -1388,6 +1334,7 @@
 	<Tag name="TweakUser">User</Tag>
 	<Tag name="TweakOriginal">Original</Tag>
 
+	<!--  Export, RoR -->
 	<Tag name="Export">Export</Tag>
 	<Tag name="ExportOnLoad">Export after load</Tag>
 	<Tag name="ExportCopyData">Copy data to track on export</Tag>
@@ -1449,6 +1396,19 @@
 	<Tag name="InputTerHeight">E - Height set  (RMB change height value)</Tag>
 	<Tag name="InputTerFilter">F - Filter  (remove noise)</Tag>
 
+	<!--  Car Start  Main  -->
+	<Tag name="CarStart">Car Start</Tag>
+	<Tag name="InputStart">Start</Tag>
+	<Tag name="InputStartPos">Q - edit car start pos</Tag>
+	
+	<!--  Fluids  Main  -->
+	<Tag name="Fluids">Fluids</Tag>
+	<Tag name="InputFluidsMode">W - edit fluids</Tag>
+	<Tag name="InputObjectsMode">X - edit Objects</Tag>
+	<Tag name="InputParticlesMode">A - edit Particles</Tag>
+
+
+	<!--  ..........................................................  -->
 	<!--  Terrain  Edit modes  not used -->
 	<Tag name="InputTerPaint">A - Paint Textures (layers)</Tag>
 	<Tag name="InputPaintColor">C - Paint Color</Tag>
@@ -1476,6 +1436,7 @@
 	<Tag name="InputBrushFilter">1,2  -  Filter frequency (kernel size)</Tag>
 
 
+	<!--  ..........................................................  -->
 	<!-- Road  Input  modify basic  -->
 	<Tag name="InputRoadModify">Modify</Tag>
 	<Tag name="InputRoadEdit">R - edit road mode</Tag>
@@ -1554,11 +1515,7 @@
 	<Tag name="InputRoadStats">T - road stats window</Tag>
 	<Tag name="InputRoadLooped">N - toggle looped</Tag>
 
-
-	<!--  Car Start  Main  -->
-	<Tag name="CarStart">Car Start</Tag>
-	<Tag name="InputStart">Start</Tag>
-	<Tag name="InputStartPos">Q - edit car start pos</Tag>
+	<!--  ..........................................................  -->
 	<!--  Car Start  Input  -->
 	<Tag name="InputStartLMB">ctrl-LMB - place   LMB - move   RMB - height</Tag>
 	<Tag name="InputStartAltLMB">alt-LMB - rotate (shift - global)   alt-RMB - pitch (shift - roll)</Tag>
@@ -1571,9 +1528,6 @@
 	<Tag name="InputStartMeet">car will meet (next+ / prev-) point numbers</Tag>
 
 
-	<!--  Fluids  Main  -->
-	<Tag name="Fluids">Fluids</Tag>
-	<Tag name="InputFluidsMode">W - edit fluids</Tag>
 	<!--  Fluids  Input  -->
 	<Tag name="InputFluidsPrevNext">PgUp,PgDn (or Wheel) - previous/next fluid</Tag>
 	<Tag name="InputFluidsIns">Ins - insert new, default fluid at cursor</Tag>
@@ -1598,7 +1552,6 @@
 	<Tag name="Group">Group</Tag>
 
 	<!--  Objects  Input  -->
-	<Tag name="InputObjectsMode">X - edit Objects</Tag>
 	<Tag name="InputObjectsPrevNext">PgUp,PgDn (or Wheel) - previous/next object</Tag>
 	<Tag name="InputObjectsIns">Ins - insert new, at cursor</Tag>
 	<Tag name="InputObjectsDel">Del - delete current</Tag>
@@ -1622,20 +1575,93 @@
 	
 
 	<!--  Particles  Input  -->
-	<Tag name="InputParticlesMode">A - edit Particles</Tag>
 	<Tag name="InputParticlesDensity">[,] - change density (emission rate)</Tag>
 	<Tag name="InputParticlesStatic">Enter - toggle static</Tag>
 	<Tag name="InputParticlesSize">K,L - change size scale</Tag>
 
 
+
 <!--  ............................................................................................................................  -->
-<!--  Tips  -->
+<!--  Tips  Game  -->
+<!--  ............................................................................................................................  -->
+
+	<!--  TIP  Vehicle stats  -->
+	<Tag name="TipCarSpeed">Vehicle speed rating, more means faster car. Warning, on gravel too fast cars won't be faster because they don't have enough grip.</Tag>
+	<Tag name="TipCarType">Vehicle type, primary destination. Some can still be used on gravel even if not meant for it.</Tag>
+	<Tag name="TipCarYear">Year when this vehicle's production started.</Tag>
+	<Tag name="TipCarDifficulty">Vehicle handling difficulty. Higher values require more skill driving this vehicle well on tracks, and bring more trouble.</Tag>
+	<Tag name="TipCarWidth">Rating of vehicle's width. Higher values mean more trouble in narrow tracks.</Tag>
+	
+	<Tag name="TipDrivability">Drivability tells how well will vehicle drive on track. If undrivable, best to change vehicle. Many vehicles can't handle certain track properties. Gravel type cars handle all tracks well.</Tag>
+	<Tag name="TipRating">Quality rating. Higher values mean: well made, playable, good looking and interesting design.</Tag>
+
+
+	<!--  Championship  end  -->
+	<Tag name="ChampEndCongrats">Congratulations !</Tag>
+	<Tag name="TutorEndFinished">You have finished this tutorial.</Tag>
+	<Tag name="ChampEndFinished">You have finished this championship.</Tag>
+	<Tag name="ChallEndFinished">You have passed this challenge.</Tag>
+
+	<!--  Championship  info text  -->
+	<Tag name="ChampInfo">In tutorial/championship mode you drive a series of tracks. Minimum score (depending on your time) is needed to pass to next stage. Car changing is possible.</Tag>
+	<Tag name="ChallInfo">In challenge mode the game has setup, most settings can't be changed. Time or position is needed. If you pass you receive bronze, silver or gold prize.</Tag>
+	<Tag name="ChampInfo2">Championships are usually long, have many tracks, but are easy to pass.</Tag>
+	<Tag name="ChallInfo2">Challenges are short but usually difficult to pass.</Tag>
+	<Tag name="TutorInfo">Tutorials have just a few tracks. They are easy to pass and show various track elements.</Tag>
+
+	<!--  Hint  welcome screen  -->
+	<Tag name="Hint">Hint</Tag>
+	<Tag name="HintShow">Show at startup</Tag>
+	<Tag name="HintKey">Ctrl-F1 - Show</Tag>
+	<Tag name="WelcomeTo">Welcome to</Tag>
+	<Tag name="HintScreen">To change screen resolution and adjust graphics to your card press Screen button.</Tag>
+	<Tag name="HintGraphics">To adjust graphics to your card press Screen button.</Tag>
+	<Tag name="HintInput">To check keys used in game or reassign them, or to configure controller press Input button.</Tag>
+
+	<!--  TIP  Track  messages  -->
+	<Tag name="TrackNotFound">Track not found !</Tag>
+	<Tag name="TipReverse">Reverse track direction.</Tag>
+	<Tag name="TipNewGame">Start game on new track or Restart on current.</Tag>
+
+	<Tag name="TipFind">Enter part of name to find (filters list).</Tag>
+	<Tag name="TrackDifficulties">Various Track Difficulties</Tag>
+
+	<!--  TIP  Track  -->
+	<Tag name="TipClickMax">Click to maximize. Then click to close.</Tag>
+	<Tag name="TipTrackDesc">Track description text.</Tag>
+	<Tag name="TipTrackAdvice">Track driving advices and warnings.</Tag>
+	<Tag name="TipTrackImg">In game screenshot for selected track.</Tag>
+	<Tag name="TipTrackMap">Minimap of selected track, view from top.</Tag>
+	<Tag name="TipTrkViewShort">Short list view.</Tag>
+	<Tag name="TipTrkViewDetailed">Detailed list view.</Tag>
+
+	<!--  TIP  Track difficulties, on icons  -->
+	<Tag name="fluids">fluids (water or mud)</Tag>
+	<Tag name="bumps">bumps (bumpy terrain)</Tag>
+	<Tag name="jumps">jumps</Tag>
+	<Tag name="loops">loops</Tag>
+	<Tag name="pipes">pipes</Tag>
+	<Tag name="banked">banked</Tag>
+	<Tag name="frenzy">frenzy (curly road)</Tag>
+	<Tag name="long">long</Tag>
+	<Tag name="sum">sum (of difficulties)</Tag>
+	<Tag name="difficulty">difficulty</Tag>
+	<Tag name="rating">rating</Tag>
+	<Tag name="objects">objects (dynamic)</Tag>
+	<Tag name="obstacles">obstacles (on road or in pipe)</Tag>
+	<Tag name="user">user</Tag>
+	<Tag name="bookmark">bookmark</Tag>
+	<!--  TIP  Track stats  -->
+	<Tag name="TrackBankAng">Road banking angles: average and maximum, in degrees.</Tag>	
+
+<!--  ............................................................................................................................  -->
+<!--  Tips  Game  long  -->
 <!--  ............................................................................................................................  -->
 
 	<!--  HUD  Camera info  parts (use same count, separated by comma)  -->
 	<Tag name="CamInfoStrings">Type,Yaw,Pitch,Dist,Height,Speed,Offset,LEFT,RIGHT,Middle,Wheel,shift,Rotate,reset,move,H,Pos</Tag>
 
-	<!--  Car descriptions  -->
+	<!--  Game Vehicle descriptions  -->
 	<Tag name="CarDesc_OT">This is the slowest car. Very old and a bit creepy truck. Can drive only on flat tracks and with turtle speed.</Tag>
 
 	<Tag name="CarDesc_FR4">Quite old, heavy, broad and slow. Good for terrain but not with the best suspension. Isn't suited for faster or stunt tracks.</Tag>
@@ -1688,12 +1714,7 @@
 	<Tag name="CarDesc_Q3">Incredibly fast antigravity drone. Very agile, needs quick reactions. Press throttle sparingly and briefly at first.</Tag>
 	<Tag name="CarDesc_HoverFluids">By antigravity it ignores all fluids completely.</Tag>
 
-	
-	<!--  TIP  Hints title+text  (in How To Play)  -->
-	<Tag name="Lesson">Lesson</Tag>
-	<Tag name="DrivingSchool">Stunt Rally driving school</Tag>
-	<Tag name="LessonClick">click button to play a lesson</Tag>
-
+	<!--  TIP  Hints title+text  (in game's How To Play)  -->
 	<Tag name="Hint-0">Rewind</Tag>
 	<Tag name="Hint-0text">If you crashed or you're stuck, hold [Insert] to move back in time.</Tag>
 	<Tag name="Hint-1">Turns</Tag>
@@ -1752,16 +1773,13 @@
 	<Tag name="Hint-27text">Use handbrake very shortly in very sharp turns. It will lock rear wheels and make car turn faster.</Tag>
 
 
-	<!--  Game  User Path  -->
-	<Tag name="UserDir">User Path (logs, configs, user data, etc)</Tag>
-
-	<!--  TIP  Slider  -->
-	<Tag name="TipSliderReset">RMB on slider - reset to default value.</Tag>
+<!--  ............................................................................................................................  -->
+<!--  Tips  Editor  -->
+<!--  ............................................................................................................................  -->
 
 	<!--  TIP  Track  -->
 	<Tag name="TipLoadTrkEditor">Load track (after change) or Reload current track.</Tag>
 	<Tag name="TipTrackDescEditor">Track description text (click to edit).</Tag>
-
 
 	<!--  TIP  Track  Editor  -->
 	<Tag name="TipCopySource">Pick selected track for copy source, used in [Tools] tab.</Tag>
@@ -1770,7 +1788,8 @@
 	<Tag name="TipTrkNameEditor">Selected track name, used also for renaming track and as new track name.</Tag>
 	<Tag name="TipDeleteTrk">Permanently delete selected track.</Tag>
 
-	<!--  TIP  Sky  (leave tips for last)  -->
+
+	<!--  TIP  Sky  -->
 	<Tag name="TipSkyMats">Sky material names.</Tag>
 	<Tag name="TipSunDirPitch">Sun direction - pitch angle.</Tag>
 	<Tag name="TipSunDirYaw">Sun direction - yaw angle.</Tag>
