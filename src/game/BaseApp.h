@@ -117,8 +117,8 @@ public:
 
 
 	///  🪧 main menu  // pSet->inMenu
-	WP mWndMainPanels[ciMainBtns] ={0,}, mWndRacePanels[ciRaceBtns] ={0,};
-	Btn mWndMainBtns[ciMainBtns]  ={0,}, mWndRaceBtns[ciRaceBtns]   ={0,};
+	Img mWndMainPanels[ciMainBtns] ={0,}, mWndRacePanels[ciRaceBtns] ={0,};
+	Btn mWndMainBtns[ciMainBtns]   ={0,}, mWndRaceBtns[ciRaceBtns]   ={0,};
 
 	Wnd mWndMain =0, mWndRace =0,  // menu 2 levels
 		mWndGame =0, mWndReplays =0,

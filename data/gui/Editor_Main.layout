@@ -19,9 +19,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="88 44 372 80" name="PanMenu0">
+		<Widget type="ImageBox" skin="ImageBox" position="88 44 372 80" name="PanMenu0">
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="Colour" value="0.7 1.0 1.0"/>
-			<Property key="Alpha" value="0.7"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="100 56 344 56" name="BtnMenu0">
@@ -37,9 +37,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="88 128 372 80" name="PanMenu1">
+		<Widget type="ImageBox" skin="ImageBox" position="88 128 372 80" name="PanMenu1">
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="Colour" value="0.5 1.0 0.4"/>
-			<Property key="Alpha" value="0.7"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="100 140 344 56" name="BtnMenu1">
@@ -55,9 +55,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="88 212 372 80" name="PanMenu2">
+		<Widget type="ImageBox" skin="ImageBox" position="88 212 372 80" name="PanMenu2">
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="Colour" value="0.4 0.7 1"/>
-			<Property key="Alpha" value="0.7"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="100 224 348 56" name="BtnMenu2">
@@ -73,9 +73,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="88 296 372 80" name="PanMenu3">
+		<Widget type="ImageBox" skin="ImageBox" position="88 296 372 80" name="PanMenu3">
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="Colour" value="0.7 0.7 1"/>
-			<Property key="Alpha" value="0.7"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="100 308 348 56" name="BtnMenu3">

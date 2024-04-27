@@ -54,7 +54,7 @@ void CGui::InitMainMenu()
 	for (int i=0; i < ciMainBtns; ++i)
 	{
 		const String s = toStr(i);
-		app->mWndMainPanels[i] = fWP("PanMenu"+s);
+		app->mWndMainPanels[i] = fImg("PanMenu"+s);
 		Btn("BtnMenu"+s, btnMainMenu);  app->mWndMainBtns[i] = btn;
 	}
 

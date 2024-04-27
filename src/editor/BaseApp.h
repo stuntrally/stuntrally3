@@ -100,7 +100,7 @@ protected:
 	Tab mWndTabsTrack =0, mWndTabsEdit =0,
 		mWndTabsHelp =0, mWndTabsOpts =0, mWndTabsMat =0;  // main tabs on windows
 
-	WP mWndMainPanels[WND_ALL] ={0,};
+	Img mWndMainPanels[WND_ALL] ={0,};
 	Btn mWndMainBtns[WND_ALL] ={0,};
 
 	

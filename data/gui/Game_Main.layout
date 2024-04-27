@@ -22,9 +22,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="92 84 436 72" name="PanMenu0">
+		<Widget type="ImageBox" skin="ImageBox" position="92 84 436 72" name="PanMenu0">
 			<Property key="Colour" value="0.6 1.0 0.6"/>
-			<Property key="Alpha" value="0.9"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="108 96 404 50" align="Left" name="BtnMenu0">
@@ -40,9 +40,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="92 156 436 72" name="PanMenu1">
+		<Widget type="ImageBox" skin="ImageBox" position="92 156 436 72" name="PanMenu1">
 			<Property key="Colour" value="0.6 0.7 0.8"/>
-			<Property key="Alpha" value="0.9"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="108 168 404 50" align="Left" name="BtnMenu1">
@@ -58,9 +58,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="92 228 436 72" name="PanMenu2">
+		<Widget type="ImageBox" skin="ImageBox" position="92 228 436 72" name="PanMenu2">
 			<Property key="Colour" value="0.4 0.7 1"/>
-			<Property key="Alpha" value="0.9"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="108 240 404 47" name="BtnMenu2">
@@ -76,9 +76,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="92 300 436 72" name="PanMenu3">
+		<Widget type="ImageBox" skin="ImageBox" position="92 300 436 72" name="PanMenu3">
 			<Property key="Colour" value="0.7 0.7 1"/>
-			<Property key="Alpha" value="0.9"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="108 312 404 50" name="BtnMenu3">
@@ -113,9 +113,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="92 12 436 72" name="PanRace0">
+		<Widget type="ImageBox" skin="ImageBox" position="92 12 436 72" name="PanRace0">
 			<Property key="Colour" value="1.0 0.9 0.6"/>
-			<Property key="Alpha" value="0.9"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="108 24 404 50" align="Left" name="BtnRace0">
@@ -131,9 +131,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="92 84 436 72" name="PanRace1">
+		<Widget type="ImageBox" skin="ImageBox" position="92 84 436 72" name="PanRace1">
 			<Property key="Colour" value="1.0 0.7 0.3"/>
-			<Property key="Alpha" value="0.9"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="108 96 404 50" align="Left" name="BtnRace1">
@@ -149,9 +149,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="92 156 436 72" name="PanRace2">
+		<Widget type="ImageBox" skin="ImageBox" position="92 156 436 72" name="PanRace2">
 			<Property key="Colour" value="0.6 1 0.6"/>
-			<Property key="Alpha" value="0.9"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="108 168 404 50" align="Left" name="BtnRace2">
@@ -167,9 +167,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="92 228 436 72" name="PanRace3">
+		<Widget type="ImageBox" skin="ImageBox" position="92 228 436 72" name="PanRace3">
 			<Property key="Colour" value="0.8 0.8 1"/>
-			<Property key="Alpha" value="0.9"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="108 240 404 50" align="Left" name="BtnRace3">
@@ -186,9 +186,9 @@
 			<Property key="ImageTexture" value="track_icons.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="92 336 436 72" name="PanRace4">
+		<Widget type="ImageBox" skin="ImageBox" position="92 336 436 72" name="PanRace4">
 			<Property key="Colour" value="0.7 0.85 1.0"/>
-			<Property key="Alpha" value="0.9"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="TextBox" position="108 354 194 50" align="Left" name="BtnRace4">
@@ -221,9 +221,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="92 408 436 72" name="PanRace5">
+		<Widget type="ImageBox" skin="ImageBox" position="92 408 436 72" name="PanRace5">
 			<Property key="Colour" value="0.7 0.85 1.0"/>
-			<Property key="Alpha" value="0.9"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="TextBox" position="108 426 194 50" align="Left" name="BtnRace5">
@@ -257,9 +257,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="92 480 436 72" name="PanRace6">
+		<Widget type="ImageBox" skin="ImageBox" position="92 480 436 72" name="PanRace6">
 			<Property key="Colour" value="0.5 0.75 1"/>
-			<Property key="Alpha" value="0.95"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="108 492 404 47" name="BtnRace6">
@@ -275,9 +275,9 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="92 572 436 72" name="PanRace7">
+		<Widget type="ImageBox" skin="ImageBox" position="92 572 436 72" name="PanRace7">
 			<Property key="Colour" value="0.9 0.9 0.9"/>
-			<Property key="Alpha" value="1.0"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="108 584 404 50" name="BtnRace7">

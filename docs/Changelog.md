@@ -2,19 +2,21 @@
 
 This section lists changes not yet released, but committed to new repositories stuntrally3 and tracks3.  
 
+- Updated docs
+
 ## Version 3.1
 
 - Game
   - 8 New vehicles (Sci-Fi)
     - 3 new types: **hover car, hovercraft, drone**
-    - 3 hovering cars: R1, R2, R3. [R1 video](https://www.youtube.com/watch?v=9pE8JPV2M8w)
-    - 2 antigravity drones: Q1 slower, Q3 incredibly fast and agile
-    - 2 racing hovercrafts with propeller: H1, H2
-    - fast car YG
+    - 3 hovering cars: [R1](../data/cars/_previews/R1.jpg), [R2](../data/cars/_previews/R2.jpg), [R3](../data/cars/_previews/R3.jpg). [R1 video](https://www.youtube.com/watch?v=9pE8JPV2M8w)
+    - 2 antigravity drones: [Q1](../data/cars/_previews/Q1.jpg) slower, [Q3](../data/cars/_previews/Q3.jpg) incredibly fast and agile
+    - 2 racing hovercrafts with propeller: [H1](../data/cars/_previews/H1.jpg), [H2](../data/cars/_previews/H2.jpg)
+    - fast car [YG](../data/cars/_previews/YG.jpg)
   - New speed sensitive steering tab and settings for Hover type vehicles on tab Setup - Steering
     - Steering range multiplier(s) for Surface affect graph and whole group
 - Tracks
-  - 1 New
+  - 1 New: Wnt19-Downhill
   - **New skies**. Replaced all old 4k with new 8k ones on all tracks
   - Many updated with new **horizons**, few with objects etc
 - Editor
