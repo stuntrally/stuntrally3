@@ -263,7 +263,8 @@ void App::UpdVisGui()
 	//  wnd
 	bool g = bGuiFocus, on = pSet->hud_on;
 	bool notMain = g && !pSet->bMain;
-	mWndMain->setVisible(g && pSet->bMain);
+	mWMainMenu->setVisible(g && pSet->bMain);
+	
 	mWndTrack->setVisible(notMain && pSet->inMenu == WND_Track);
 	mWndEdit->setVisible(notMain && pSet->inMenu == WND_Edit);
 	mWndHelp->setVisible(notMain && pSet->inMenu == WND_Help);
@@ -302,7 +303,7 @@ void App::UpdVisGui()
 		ndBrush->setVisible(edMode < ED_Road && !bMoveCam && on);
 
 	for (int i=0; i < ciMainBtns; ++i)
-		mWndMainPanels[i]->setVisible(pSet->inMenu == i);
+		mMainPanels[i]->setVisible(pSet->inMenu == i);
 		
 	if (gui->txWarn)  gui->txWarn->setVisible(false);
 
@@ -399,24 +400,24 @@ void CGui::GuiShortcut(WND_Types wnd, int tab, int subtab)
 	//isFocGui = true;
 	pSet->bMain = false;  pSet->inMenu = wnd;
 	
-	TabPtr mWndTabs = 0;
+	TabPtr tabs = 0;
 	std::vector<TabControl*>* subt = 0;
 	
 	switch (wnd)
-	{	case WND_Track:		mWndTabs = app->mWndTabsTrack; subt = &vSubTabsTrack; break;
-		case WND_Edit:		mWndTabs = app->mWndTabsEdit;  subt = &vSubTabsEdit;  break;
-		case WND_Help:		mWndTabs = app->mWndTabsHelp;  subt = &vSubTabsHelp;  break;
-		case WND_Options:	mWndTabs = app->mWndTabsOpts;  subt = &vSubTabsOpts;  break;
-		case WND_Materials:	mWndTabs = app->mWndTabsMat;   subt = &vSubTabsMat;  break;
-		default:            mWndTabs = app->mWndTabsTrack; subt = &vSubTabsTrack; break;
+	{	case WND_Track:		tabs = app->mTabsTrack; subt = &vSubTabsTrack; break;
+		case WND_Edit:		tabs = app->mTabsEdit;  subt = &vSubTabsEdit;  break;
+		case WND_Help:		tabs = app->mTabsHelp;  subt = &vSubTabsHelp;  break;
+		case WND_Options:	tabs = app->mTabsOpts;  subt = &vSubTabsOpts;  break;
+		case WND_Materials:	tabs = app->mTabsMat;   subt = &vSubTabsMat;  break;
+		default:            tabs = app->mTabsTrack; subt = &vSubTabsTrack; break;
 	}
 	if (wnd != WND_Edit)
 		app->mWndPick->setVisible(false);
 	toggleGui(false);
 
 	if (tab < 0)  return;
-	size_t t = mWndTabs->getIndexSelected();
-	mWndTabs->setIndexSelected(tab);
+	size_t t = tabs->getIndexSelected();
+	tabs->setIndexSelected(tab);
 
 	if (!subt)  return;
 	TabControl* tc = (*subt)[tab];  if (!tc)  return;
@@ -446,7 +447,7 @@ void CGui::NumTabNext(int rel)
 		tab->setIndexSelected( (tab->getIndexSelected()+rel+cnt) % cnt );  \
 		event(tab, tab->getIndexSelected());  }
 
-	int id = app->mWndTabsEdit->getIndexSelected();
+	int id = app->mTabsEdit->getIndexSelected();
 	switch (id)
 	{
 		case TAB_Layers:  tab = tabsTerLayers;  tabNum(tabTerLayer);  break;

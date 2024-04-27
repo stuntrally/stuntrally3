@@ -2,9 +2,6 @@
 #include "Gui_Def.h"
 #include "AppGui.h"
 #include "GameState.h"
-// #include <OgreFrameListener.h>
-// #include <OgreWindowEventUtilities.h>
-// #include <OgreMaterialManager.h>
 #include <unordered_map>
 #include <vector>
 #include <MyGUI_KeyCode.h>
@@ -19,9 +16,9 @@ class CarModel;  class SETTINGS;  class GraphicsSystem;
 
 
 //  main, race menus
-enum Menu_Btns {  Menu_Race, Menu_Replays, Menu_Help, Menu_Options,  ciMainBtns };
-enum Race_Btns {  Race_Single, Race_Tutorial, Race_Champ, Race_Challenge,
-				  Race_Difficulty, Race_Simulation, Race_HowToPlay, Race_Back,  ciRaceBtns };
+enum Menu_Btns {  Menu_Setup, Menu_Replays, Menu_Help, Menu_Options,  ciMainBtns };
+enum Setup_Btns {  Setup_Games, Setup_Difficulty, Setup_Simulation, Setup_HowToPlay,  Setup_Back, ciSetupBtns };
+enum Games_Btns {  Games_Single, Games_Tutorial, Games_Champ, Games_Challenge,  Games_Back, ciGamesBtns };
 //  gui
 enum TAB_Game    {  TAB_Back=0, TAB_Track,TAB_Car, TAB_Setup, TAB_Split,TAB_Multi, TAB_Champs,TAB_Stages,TAB_Stage  };
 enum TAB_Options {  TABo_Back=0, TABo_Screen, TABo_Input, TABo_View, TABo_Graphics, TABo_Sound, TABo_Settings, TABo_Tweak  };
@@ -116,19 +113,24 @@ public:
 	void SetLoadingBar(float pecent);
 
 
-	///  🪧 main menu  // pSet->inMenu
-	Img mWndMainPanels[ciMainBtns] ={0,}, mWndRacePanels[ciRaceBtns] ={0,};
-	Btn mWndMainBtns[ciMainBtns]   ={0,}, mWndRaceBtns[ciRaceBtns]   ={0,};
+	///  🪧 main menu  // pSet->inMenu  3 levels
+	Wnd mWMainMenu =0, mWMainSetup =0, mWMainGames =0;
+	Img mMainPanels[ciMainBtns] ={0,}, mMainSetupPanels[ciSetupBtns] ={0,}, mMainGamesPanels[ciGamesBtns] ={0,};
+	Btn mMainBtns  [ciMainBtns] ={0,}, mMainSetupBtns  [ciSetupBtns] ={0,}, mMainGamesBtns  [ciGamesBtns] ={0,};
 
-	Wnd mWndMain =0, mWndRace =0,  // menu 2 levels
-		mWndGame =0, mWndReplays =0,
-		mWndHelp =0, mWndOpts =0, mWndMaterials =0,  // common
-		mWndWelcome =0, mWndHowTo =0, mWndRpl =0, mWndRplTxt =0,
-		mWndNetEnd =0, mWndTweak =0, mWndTrkFilt =0,  // rpl controls, netw, tools
-		mWndChampStage =0, mWndChampEnd =0,
-		mWndChallStage =0, mWndChallEnd =0;
-	Tab mWndTabsGame =0, mWndTabsRpl =0,
-		mWndTabsHelp =0, mWndTabsOpts =0, mWndTabsMat =0;  // main tabs on windows
+	///  wnds  ----
+	Wnd mWndGame =0, mWndReplays =0,
+		mWndHelp =0, mWndOpts =0,  // common in game & ed
+		mWndMaterials =0, mWndTrkFilt =0,  // common 🛠️ tools
+		
+		mWndWelcome =0, mWndHowTo =0,
+		mWndRpl =0, mWndRplTxt =0,  // 📽️ rpl controls
+		mWndNetEnd =0, mWndTweak =0,  // 📡 netw
+		mWndChampStage =0, mWndChampEnd =0,  // 🏆champ
+		mWndChallStage =0, mWndChallEnd =0;  // 🥇chall
+
+	Tab mTabsGame =0, mTabsRpl =0,  // main tabs on windows
+		mTabsHelp =0, mTabsOpts =0, mTabsMat =0;  // common tabs
 	
 	//MyGUI::VectorWidgetPtr
 	std::vector<WP> vwGui;  // all widgets to destroy

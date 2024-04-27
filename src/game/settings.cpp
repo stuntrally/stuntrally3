@@ -55,7 +55,10 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	SerializeCommon(w,c);
 
 	//  🪧 menu
-	Param(c,w, "game.menu", iMenu);  Param(c,w, "game.ymain", yMain);  Param(c,w, "game.yrace", yRace);
+	Param(c,w, "game.menu", iMenu);
+	Param(c,w, "game.ymain", yMain);
+	Param(c,w, "game.ySetup", ySetup);
+	Param(c,w, "game.yGames", yGames);
 	Param(c,w, "game.difficulty", difficulty);
 
 	//  game common

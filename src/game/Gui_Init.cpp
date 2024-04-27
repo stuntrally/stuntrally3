@@ -62,14 +62,18 @@ void CGui::InitGui()
 
 
 	//  🪟 main windows  [----]
-	app->mWndMain = fWnd("MainMenuWnd");  app->mWndRace = fWnd("RaceMenuWnd");
+	app->mWMainMenu = fWnd("MainMenuWnd");  // main menus 3 levels
+	app->mWMainSetup = fWnd("MainSetupWnd");
+	app->mWMainGames = fWnd("MainGamesWnd");
+
 	app->mWndGame = fWnd("GameWnd");  app->mWndReplays = fWnd("ReplaysWnd");
 	app->mWndHowTo = fWnd("HowToPlayWnd");
 	app->mWndHelp = fWnd("HelpWnd");  app->mWndOpts = fWnd("OptionsWnd");  // common
-	app->mWndMaterials = fWnd("MaterialsWnd");
+
 
 	//  dialog wnds  --[]--
-	app->mWndTrkFilt = fWnd("TrackFilterWnd");  app->mWndWelcome = fWnd("WelcomeWnd");
+	app->mWndMaterials = fWnd("MaterialsWnd");  app->mWndTrkFilt = fWnd("TrackFilterWnd");
+	app->mWndWelcome = fWnd("WelcomeWnd");
 
 	app->mWndChampStage = fWnd("WndChampStage");  app->mWndChampStage->setVisible(false);
 	app->mWndChampEnd   = fWnd("WndChampEnd");    app->mWndChampEnd->setVisible(false);
@@ -96,34 +100,34 @@ void CGui::InitGui()
 
 	//  Tabs  --------
 	Tab tab,sub;
-	fTabW("TabWndGame");     app->mWndTabsGame = tab;  Tev(tab, Game);
-	fTabW("TabWndReplays");  app->mWndTabsRpl = tab;
-	fTabW("TabWndOptions");  app->mWndTabsOpts = tab;
-	fTabW("TabWndHelp");     app->mWndTabsHelp = tab;
-	fTabW("TabWndMat");      app->mWndTabsMat = tab;
+	fTabW("TabWndGame");     app->mTabsGame = tab;  Tev(tab, Game);
+	fTabW("TabWndReplays");  app->mTabsRpl = tab;
+	fTabW("TabWndOptions");  app->mTabsOpts = tab;
+	fTabW("TabWndHelp");     app->mTabsHelp = tab;
+	fTabW("TabWndMat");      app->mTabsMat = tab;
 
 	//  get sub tabs
 	vSubTabsGame.clear();
-	for (i=0; i < app->mWndTabsGame->getItemCount(); ++i)
+	for (i=0; i < app->mTabsGame->getItemCount(); ++i)
 	{
-		sub = (Tab)gcom->FindSubTab(app->mWndTabsGame->getItemAt(i));
+		sub = (Tab)gcom->FindSubTab(app->mTabsGame->getItemAt(i));
 		vSubTabsGame.push_back(sub);
 	}
 	vSubTabsOpts.clear();
-	for (i=0; i < app->mWndTabsOpts->getItemCount(); ++i)
+	for (i=0; i < app->mTabsOpts->getItemCount(); ++i)
 	{
-		sub = (Tab)gcom->FindSubTab(app->mWndTabsOpts->getItemAt(i));
+		sub = (Tab)gcom->FindSubTab(app->mTabsOpts->getItemAt(i));
 		vSubTabsOpts.push_back(sub);
 	}
 	vSubTabsMat.clear();
-	for (i=0; i < app->mWndTabsMat->getItemCount(); ++i)
+	for (i=0; i < app->mTabsMat->getItemCount(); ++i)
 	{
-		sub = (Tab)gcom->FindSubTab(app->mWndTabsMat->getItemAt(i));
+		sub = (Tab)gcom->FindSubTab(app->mTabsMat->getItemAt(i));
 		vSubTabsMat.push_back(sub);
 	}
 
 	if (pSet->iMenu >= MN_Tutorial && pSet->iMenu <= MN_Chall)
-		app->mWndTabsGame->setIndexSelected(TAB_Champs);
+		app->mTabsGame->setIndexSelected(TAB_Champs);
 
 
 	//  replay  ----

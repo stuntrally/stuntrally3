@@ -34,7 +34,7 @@ void CGui::changeTrack()
 void CGui::btnNewGame(WP wp)
 {
 	if (app->mWndGame->getVisible() &&
-		app->mWndTabsGame->getIndexSelected() < TAB_Champs  || app->mClient)
+		app->mTabsGame->getIndexSelected() < TAB_Champs  || app->mClient)
 		BackFromChs();  /// champ, back to single race
 	
 	/*bool force = false;
@@ -73,8 +73,9 @@ void CGui::toggleGui(bool toggle)
 	const bool gui = app->isFocGui;
 	const int mnu = pSet->iMenu;
 
-	app->mWndMain->setVisible(gui && mnu == MN1_Main);
-	app->mWndRace->setVisible(gui && mnu == MN1_Race);
+	app->mWMainMenu->setVisible( gui && mnu == MN1_Main);  // main
+	app->mWMainSetup->setVisible(gui && mnu == MN1_Setup);
+	app->mWMainGames->setVisible(gui && mnu == MN1_Games);
 	
 	app->mWndHowTo->setVisible(  gui && mnu == MN_HowTo);
 	app->mWndReplays->setVisible(gui && mnu == MN_Replays);
@@ -108,19 +109,19 @@ void CGui::toggleGui(bool toggle)
 
 	UpdChampTabVis();
 
-	bool notMain = gui && !(mnu == MN1_Main || mnu == MN1_Race);
+	bool notMain = gui && !(mnu == MN1_Main || mnu == MN1_Setup);
 	bool vis = notMain && gc;
 	app->mWndGame->setVisible(vis);
 	if (vis)
 	{
 		UpdWndTitle();
 
-		TabItem* t = app->mWndTabsGame->getItemAt(TAB_Champs);
+		TabItem* t = app->mTabsGame->getItemAt(TAB_Champs);
 		t->setCaption(sCh);
 	}
 	if (notMain && gc)  // show hide champs,stages
 	{
-		Tab t = app->mWndTabsGame;
+		Tab t = app->mTabsGame;
 		size_t id = t->getIndexSelected();
 		t->setButtonWidthAt(TAB_Track, chAny ? 1 :-1);  if (id == TAB_Track && chAny)  t->setIndexSelected(TAB_Champs);
 		t->setButtonWidthAt(TAB_Split, chAny ? 1 :-1);  if (id == TAB_Split && chAny)  t->setIndexSelected(TAB_Champs);
@@ -137,9 +138,11 @@ void CGui::toggleGui(bool toggle)
 	if (!gui)  gcom->mToolTip->setVisible(false);
 
 	for (int i=0; i < ciMainBtns; ++i)
-		app->mWndMainPanels[i]->setVisible(pSet->yMain == i);
-	for (int i=0; i < ciRaceBtns; ++i)
-		app->mWndRacePanels[i]->setVisible(pSet->yRace == i);
+		app->mMainPanels[i]->setVisible(pSet->yMain == i);
+	for (int i=0; i < ciSetupBtns; ++i)
+		app->mMainSetupPanels[i]->setVisible(pSet->ySetup == i);
+	for (int i=0; i < ciGamesBtns; ++i)
+		app->mMainGamesPanels[i]->setVisible(pSet->yGames == i);
 		
 	//  1st center mouse
 	static bool first = true;
@@ -166,7 +169,7 @@ void CGui::UpdWndTitle()
 	UString sCh = tutor ? TR("#FFC020#{Tutorial}") :
 		champ ? TR("#B0FFB0#{Championship}") : TR("#C0C0FF#{Challenge}");
 
-	Tab t = app->mWndTabsGame;
+	Tab t = app->mTabsGame;
 	size_t id = t->getIndexSelected();
 
 	int mplr = app->mClient ? app->mClient->getPeerCount()+1 :
@@ -197,21 +200,21 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab)
 	app->isFocGui = true;
 	pSet->iMenu = menu;
 	
-	TabPtr mWndTabs = 0;
+	TabPtr tabs = 0;
 	std::vector<TabControl*>* subt = 0;
 	
 	switch (menu)
-	{	case MN_Replays:   mWndTabs = app->mWndTabsRpl;  break;
-		case MN_Help:      mWndTabs = app->mWndTabsHelp;  break;
-		case MN_Options:   mWndTabs = app->mWndTabsOpts;  subt = &vSubTabsOpts;  break;
-		case MN_Materials: mWndTabs = app->mWndTabsMat;   subt = &vSubTabsMat;  break;
-		default:           mWndTabs = app->mWndTabsGame;  subt = &vSubTabsGame;  break;
+	{	case MN_Replays:   tabs = app->mTabsRpl;  break;
+		case MN_Help:      tabs = app->mTabsHelp;  break;
+		case MN_Options:   tabs = app->mTabsOpts;  subt = &vSubTabsOpts;  break;
+		case MN_Materials: tabs = app->mTabsMat;   subt = &vSubTabsMat;  break;
+		default:           tabs = app->mTabsGame;  subt = &vSubTabsGame;  break;
 	}
 	toggleGui(false);
 
 	if (tab < 0)  return;
-	size_t t = mWndTabs->getIndexSelected();
-	mWndTabs->setIndexSelected(tab);
+	size_t t = tabs->getIndexSelected();
+	tabs->setIndexSelected(tab);
 
 	if (!subt)  return;
 	TabControl* tc = (*subt)[tab];  if (!tc)  return;
@@ -286,7 +289,7 @@ void CGui::LNext(int rel)
 		listRplChng(rplList,  LNext(rplList, rel, 11));
 	else
 	if (app->mWndGame->getVisible())
-		switch (app->mWndTabsGame->getIndexSelected())
+		switch (app->mTabsGame->getIndexSelected())
 		{
 			case TAB_Track:  if (gcom->trkList->getItemCount() == 0)  return;
 				gcom->listTrackChng(gcom->trkList,  LNext(gcom->trkList, rel, 11));  return;
@@ -327,7 +330,7 @@ void CGui::GuiUpdate()
 		InitGui();
 
 		app->bWindowResized = true;
-		app->mWndTabsOpts->setIndexSelected(3);  // switch back to view tab
+		app->mTabsOpts->setIndexSelected(3);  // switch back to view tab
 	}
 
 		

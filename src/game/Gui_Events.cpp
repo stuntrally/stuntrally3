@@ -517,7 +517,7 @@ void CGui::btnHintClose(WP)
 
 void CGui::btnHowToBack(WP)
 {
-	pSet->iMenu = MN1_Race;  toggleGui(false);
+	pSet->iMenu = MN1_Setup;  toggleGui(false);
 }
 
 

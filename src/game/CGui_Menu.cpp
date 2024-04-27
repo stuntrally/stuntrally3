@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Gui_Def.h"
+#include "BaseApp.h"
 #include "CGame.h"
 #include "CHud.h"
 #include "CGui.h"
@@ -49,27 +50,36 @@ CGui::~CGui()
 //----------------------------------------------------------------------------------------------------------------
 void CGui::InitMainMenu()
 {
-	Btn btn;
-	for (int i=0; i < ciMainBtns; ++i)
+	Btn btn;  int i;
+	for (i=0; i < ciMainBtns; ++i)
 	{
-		const String s = toStr(i);
-		app->mWndMainPanels[i] = fImg("PanMenu"+s);
-		Btn("BtnMenu"+s, btnMainMenu);  app->mWndMainBtns[i] = btn;
+		auto s = toStr(i);
+		app->mMainPanels[i] = fImg("PanMenu"+s);
+		Btn("BtnMenu"+s, btnMainMenu);  app->mMainBtns[i] = btn;
 	}
-	for (int i=0; i < ciRaceBtns; ++i)
+	for (i=0; i < ciSetupBtns; ++i)
 	{
-		const String s = toStr(i);
-		app->mWndRacePanels[i] = fImg("PanRace"+s);
-		Btn("BtnRace"+s, btnMainMenu);  app->mWndRaceBtns[i] = btn;
+		auto s = toStr(i);
+		app->mMainSetupPanels[i] = fImg("PanSetup"+s);
+		Btn("BtnSetup"+s, btnMainMenu);  app->mMainSetupBtns[i] = btn;
+	}
+	for (i=0; i < ciGamesBtns; ++i)
+	{
+		auto s = toStr(i);
+		app->mMainGamesPanels[i] = fImg("PanGames"+s);
+		Btn("BtnGames"+s, btnMainMenu);  app->mMainGamesBtns[i] = btn;
 	}
 
 	//  center
 	int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
 	
-	Wnd wnd = app->mWndMain;  IntSize w = wnd->getSize();
+	Wnd wnd = app->mWMainMenu;  IntSize w = wnd->getSize();
 	wnd->setPosition((wx-w.width)*0.5f, (wy-w.height)*0.5f);
 	
-	wnd = app->mWndRace;  w = wnd->getSize();
+	wnd = app->mWMainSetup;  w = wnd->getSize();
+	wnd->setPosition((wx-w.width)*0.5f, (wy-w.height)*0.5f);
+
+	wnd = app->mWMainGames;  w = wnd->getSize();
 	wnd->setPosition((wx-w.width)*0.5f, (wy-w.height)*0.5f);
 
 
@@ -104,38 +114,47 @@ void CGui::InitMainMenu()
 void CGui::btnMainMenu(WP wp)
 {
 	for (int i=0; i < ciMainBtns; ++i)
-		if (wp == app->mWndMainBtns[i])
-		{	switch (i)
-			{
-			case Menu_Race:     pSet->iMenu = MN1_Race;  break;
-			case Menu_Replays:  pSet->iMenu = MN_Replays;  break;
-			case Menu_Help:     pSet->iMenu = MN_Help;  break;
-			case Menu_Options:  pSet->iMenu = MN_Options;  break;
-			}
-			app->gui->toggleGui(false);
-			return;
+	if (wp == app->mMainBtns[i])
+	{	switch (i)
+		{
+		case Menu_Setup:    pSet->iMenu = MN1_Setup;  break;
+		case Menu_Replays:  pSet->iMenu = MN_Replays;  break;
+		case Menu_Help:     pSet->iMenu = MN_Help;  break;
+		case Menu_Options:  pSet->iMenu = MN_Options;  break;
 		}
-	for (int i=0; i < ciRaceBtns; ++i)
-		if (wp == app->mWndRaceBtns[i])
-		{	switch (i)
-			{
-			case Race_Single:     pSet->iMenu = MN_Single;  break;
-			case Race_Tutorial:   pSet->iMenu = MN_Tutorial;  break;
-			case Race_Champ:      pSet->iMenu = MN_Champ;  break;
-			case Race_Challenge:  pSet->iMenu = MN_Chall;  break;
-			
-			case Race_HowToPlay:  pSet->iMenu = MN_HowTo;  break;
-			case Race_Back:       pSet->iMenu = MN1_Main;  break;
-			}
-			app->gui->toggleGui(false);
-			return;
+		app->gui->toggleGui(false);
+		return;
+	}
+	for (int i=0; i < ciSetupBtns; ++i)
+	if (wp == app->mMainSetupBtns[i])
+	{	switch (i)
+		{
+		case Setup_Games:      pSet->iMenu = MN1_Games;  break;
+		case Setup_HowToPlay:  pSet->iMenu = MN_HowTo;  break;
+		case Setup_Back:       pSet->iMenu = MN1_Main;  break;
 		}
+		app->gui->toggleGui(false);
+		return;
+	}
+	for (int i=0; i < ciGamesBtns; ++i)
+	if (wp == app->mMainGamesBtns[i])
+	{	switch (i)
+		{
+		case Games_Single:     pSet->iMenu = MN_Single;  break;
+		case Games_Tutorial:   pSet->iMenu = MN_Tutorial;  break;
+		case Games_Champ:      pSet->iMenu = MN_Champ;  break;
+		case Games_Challenge:  pSet->iMenu = MN_Chall;  break;
+		case Setup_Back:       pSet->iMenu = MN1_Setup;  break;
+		}
+		app->gui->toggleGui(false);
+		return;
+	}
 }
 
 void CGui::tabMainMenu(Tab tab, size_t id)
 {
 	//_  game tab change
-	if (tab == app->mWndTabsGame)
+	if (tab == app->mTabsGame)
 	{
 		if (id == TAB_Car)
 			app->gui->CarListUpd();  //  off filtering by chall
@@ -157,7 +176,7 @@ void CGui::tabMainMenu(Tab tab, size_t id)
 	tab->setIndexSelected(1);  // dont switch to 0
 	
 	if (pSet->iMenu >= MN_Single && pSet->iMenu <= MN_Chall)
-		pSet->iMenu = MN1_Race;
+		pSet->iMenu = MN1_Games;
 	else
 		pSet->iMenu = MN1_Main;
 	app->gui->toggleGui(false);  // back to main
@@ -233,7 +252,7 @@ void CGui::comboDiff(Cmb cmb, size_t val)
 	case 5:  SetDiff(0,17, 0,6, 4,4, L,  0,0,0,0, "SX", "Mos5-Factory");  break;  // Isl17-AdapterIslands
 	case 6:  SetDiff(0,17, 0,D, 4,4, L,  0,0,0,0, "U6", "Uni7-GlassStairs");  break;
 	}
-	app->mWndRaceBtns[1]->setVisible(val < 4);  // tutorials
+	app->mMainGamesBtns[1]->setVisible(val < 4);  // tutorials
 	gcom->TrackListUpd(true);  gcom->listTrackChng(gcom->trkList,0);
 	listCarChng(carList,0);
 

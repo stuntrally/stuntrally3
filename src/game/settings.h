@@ -36,7 +36,7 @@ const static std::string csGraphNames[Gh_ALL] = {
 
 
 enum EMenu
-{	MN1_Main, MN1_Race,  // small main menus
+{	MN1_Main, MN1_Setup, MN1_Games,  // small main menus
 	MN_Single, MN_Tutorial, MN_Champ, MN_Chall,  // game, same window
 	MN_HowTo, MN_Replays,  // other windows
 	MN_Help, MN_Options, MN_Materials   // common
@@ -51,7 +51,7 @@ public:
 
 	//  🪧 menu
 	int iMenu;  // EMenu,
-	int yMain =0, yRace =0;  // kbd up/dn cursors
+	int yMain =0, ySetup =0, yGames =0;  // kbd up/dn cursors
 	int difficulty =0;
 
 	//  ✅ hud show

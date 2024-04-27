@@ -116,7 +116,7 @@ void App::update( float dt )
 
 		//  input
 		if (isFocGui && pSet->iMenu == MN_Options &&
-			mWndTabsOpts->getIndexSelected() == TABo_Input)
+			mTabsOpts->getIndexSelected() == TABo_Input)
 			gui->UpdateInputBars();
 
 		

@@ -117,7 +117,8 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	}
 
 
-	//  Main menu keys  ----
+	//  level 1  Main menu
+	//-------------------------------------------------
 	if (pSet->iMenu == MN1_Main && isFocGui)
 	{
 		switch (skey)
@@ -134,7 +135,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(RETURN):
 			switch (pSet->yMain)
 			{
-			case Menu_Race:     pSet->iMenu = MN1_Race;  break;
+			case Menu_Setup:    pSet->iMenu = MN1_Setup;  break;
 			case Menu_Replays:  pSet->iMenu = MN_Replays;  break;
 			case Menu_Help:     pSet->iMenu = MN_Help;  break;
 			case Menu_Options:  pSet->iMenu = MN_Options;  break;
@@ -143,17 +144,18 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		default:  break;
 	}	}
 
-	//  Race menu keys  ----
-	if (pSet->iMenu == MN1_Race && isFocGui)
+	//  level 2  Setup menu
+	//-------------------------------------------------
+	if (pSet->iMenu == MN1_Setup && isFocGui)
 	{
 		switch (skey)
 		{
 		case key(UP):  case key(KP_8):
-			pSet->yRace = (pSet->yRace - 1 + ciRaceBtns) % ciRaceBtns;
+			pSet->ySetup = (pSet->ySetup - 1 + ciSetupBtns) % ciSetupBtns;
 			gui->toggleGui(false);  return;
 
 		case key(DOWN):  case key(KP_2):
-			pSet->yRace = (pSet->yRace + 1) % ciRaceBtns;
+			pSet->ySetup = (pSet->ySetup + 1) % ciSetupBtns;
 			gui->toggleGui(false);  return;
 
 		case key(BACKSPACE):    pSet->iMenu = MN1_Main;
@@ -161,20 +163,50 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 		case key(KP_ENTER):
 		case key(RETURN):
-			switch (pSet->yRace)
+			switch (pSet->ySetup)
 			{
-			case Race_Single:    pSet->iMenu = MN_Single;  break;
-			case Race_Tutorial:  pSet->iMenu = MN_Tutorial;  break;
-			case Race_Champ:     pSet->iMenu = MN_Champ;  break;
-			case Race_Challenge: pSet->iMenu = MN_Chall;  break;
-			case Race_HowToPlay: pSet->iMenu = MN_HowTo;  break;
-			case Race_Back:      pSet->iMenu = MN1_Main;  break;
+			case Setup_Games:     pSet->iMenu = MN1_Games;  break;
+
+			case Setup_HowToPlay: pSet->iMenu = MN_HowTo;  break;
+			case Setup_Back:      pSet->iMenu = MN1_Main;  break;
+			}
+			gui->toggleGui(false);  return;
+		default:  break;
+	}	}
+
+	//  level 3  Games menu
+	//-------------------------------------------------
+	if (pSet->iMenu == MN1_Games && isFocGui)
+	{
+		switch (skey)
+		{
+		case key(UP):  case key(KP_8):
+			pSet->yGames = (pSet->yGames - 1 + ciSetupBtns) % ciSetupBtns;
+			gui->toggleGui(false);  return;
+
+		case key(DOWN):  case key(KP_2):
+			pSet->yGames = (pSet->yGames + 1) % ciSetupBtns;
+			gui->toggleGui(false);  return;
+
+		case key(BACKSPACE):    pSet->iMenu = MN1_Setup;
+			gui->toggleGui(false);  break;
+
+		case key(KP_ENTER):
+		case key(RETURN):
+			switch (pSet->yGames)
+			{
+			case Games_Single:    pSet->iMenu = MN_Single;  break;
+			case Games_Tutorial:  pSet->iMenu = MN_Tutorial;  break;
+			case Games_Champ:     pSet->iMenu = MN_Champ;  break;
+			case Games_Challenge: pSet->iMenu = MN_Chall;  break;
+			case Games_Back:      pSet->iMenu = MN1_Setup;  break;
 			}
 			gui->toggleGui(false);  return;
 		default:  break;
 	}	}
 
 
+	//-------------------------------------------------
 	//  Esc
 	if (skey == key(ESCAPE))
 	{
@@ -182,7 +214,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			Quit();
 		else
 			if (mWndHowTo->getVisible())
-			{	pSet->iMenu = MN1_Race;  gui->toggleGui(false);	}
+			{	pSet->iMenu = MN1_Setup;  gui->toggleGui(false);	}
 			else if (mWndChampStage->getVisible())  ///  close champ wnds
 				gui->btnChampStageStart(0);
 			else if (mWndChallStage->getVisible())  ///  chall
@@ -299,7 +331,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	#ifdef REVERB_BROWSER
 	static int ii=0;
 	#endif
-	bool trkTab = mWndTabsGame->getVisible() && mWndTabsGame->getIndexSelected() == TAB_Track;
+	bool trkTab = mTabsGame->getVisible() && mTabsGame->getIndexSelected() == TAB_Track;
 	//bool Fspc = isFocGui && trkTab && wf == gcom->edTrkFind;
 	if (!tweak)
 	{
@@ -315,7 +347,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				{	bRplWnd = !bRplWnd;  hud->Show();  return;  }  // 📽️ replay controls
 
 				if (mWndHowTo->getVisible())
-				{	pSet->iMenu = MN1_Race;  gui->toggleGui(false);  return;  }
+				{	pSet->iMenu = MN1_Setup;  gui->toggleGui(false);  return;  }
 				else if (mWndChampStage->getVisible())	// 🏆 back from champs stage wnd
 				{	gui->btnChampStageBack(0);  return;  }
 				else if (mWndChallStage->getVisible())	// 🥇 chall
@@ -324,10 +356,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				switch (pSet->iMenu)
 				{
 				case MN1_Main:  break;
-				case MN1_Race:  pSet->iMenu = MN1_Main;  break;
+				case MN1_Setup:  pSet->iMenu = MN1_Main;  break;
 				
 				case MN_Single: case MN_Tutorial: case MN_Champ: case MN_Chall:
-					pSet->iMenu = MN1_Race;  break;
+					pSet->iMenu = MN1_Games;  break;
 				case MN_Replays:
 					if (isFocGui)  pSet->iMenu = MN1_Main;
 					break;
@@ -430,7 +462,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 					case MN_Replays:	gui->btnRplLoad(0);  break;
 					case MN_Single:
 						if (mWndGame->getVisible())
-						switch (mWndTabsGame->getIndexSelected())
+						switch (mTabsGame->getIndexSelected())
 						{
 						case TAB_Track:	 gui->changeTrack();  gui->btnNewGame(0);  break;
 						case TAB_Car:	 gui->changeCar();    gui->btnNewGame(0);  break;
@@ -456,7 +488,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 			case key(SPACE):		//  ◀️ toggle reversed
 				if (isFocGui && mWndGame->getVisible())
-				switch (mWndTabsGame->getIndexSelected())
+				switch (mTabsGame->getIndexSelected())
 				{
 				case TAB_Track:  gui->ckReverse.Invert();  break;
 				case TAB_Setup:
@@ -474,7 +506,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 				{	gcom->imgTer[2]->setVisible(false);  gcom->imgMini[2]->setVisible(false);
 				}else
 				if (mWndGame->getVisible())
-				{	switch (mWndTabsGame->getIndexSelected())
+				{	switch (mTabsGame->getIndexSelected())
 					{
 					case TAB_Track: case TAB_Stage:
 						gcom->imgPrv[2]->setVisible(true);  break;
@@ -526,14 +558,14 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 			MyGUI::InputManager::getInstance().setKeyFocusWidget(gui->edCar[tab->getIndexSelected()]);  }
 	}
 	//  change Gui tabs
-	else if (isFocGui && !(mnu == MN1_Main || mnu == MN1_Race))
+	else if (isFocGui && !(mnu == MN1_Main || mnu == MN1_Setup))
 	{
 		MyGUI::TabPtr tab = 0;  MyGUI::TabControl* sub = 0;
 		switch (mnu)
-		{	case MN_Replays:  tab = mWndTabsRpl;  break;
-			case MN_Help:     tab = mWndTabsHelp;  break;
-			case MN_Options:  tab = mWndTabsOpts;  sub = gui->vSubTabsOpts[tab->getIndexSelected()];  break;
-			default:          tab = mWndTabsGame;  sub = gui->vSubTabsGame[tab->getIndexSelected()];  break;
+		{	case MN_Replays:  tab = mTabsRpl;  break;
+			case MN_Help:     tab = mTabsHelp;  break;
+			case MN_Options:  tab = mTabsOpts;  sub = gui->vSubTabsOpts[tab->getIndexSelected()];  break;
+			default:          tab = mTabsGame;  sub = gui->vSubTabsGame[tab->getIndexSelected()];  break;
 		}
 		if (tab)
 		if (alt)

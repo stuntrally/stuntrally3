@@ -58,7 +58,7 @@ void CGui::InitGui()
 
 
 	//  🪟 main windows  ----
-	app->mWndMain = fWnd("MainMenuWnd");
+	app->mWMainMenu = fWnd("MainMenuWnd");
 	app->mWndTrack = fWnd("TrackWnd");  app->mWndEdit = fWnd("EditorWnd");
 	app->mWndOpts = fWnd("OptionsWnd"); app->mWndHelp = fWnd("HelpWnd");  // common
 	app->mWndMaterials = fWnd("MaterialsWnd");
@@ -87,42 +87,42 @@ void CGui::InitGui()
 	
 	//  Tabs  --------
 	TabPtr tab,sub;
-	fTabW("TabWndTrack");  app->mWndTabsTrack = tab;
-	fTabW("TabWndEdit");   app->mWndTabsEdit = tab;
-	fTabW("TabWndOpts");   app->mWndTabsOpts = tab;
-	fTabW("TabWndHelp");   app->mWndTabsHelp = tab;
-	fTabW("TabWndMat");    app->mWndTabsMat = tab;
+	fTabW("TabWndTrack");  app->mTabsTrack = tab;
+	fTabW("TabWndEdit");   app->mTabsEdit = tab;
+	fTabW("TabWndOpts");   app->mTabsOpts = tab;
+	fTabW("TabWndHelp");   app->mTabsHelp = tab;
+	fTabW("TabWndMat");    app->mTabsMat = tab;
 
 	//  get sub tabs
 	vSubTabsTrack.clear();
 	size_t u;
-	for (u=0; u < app->mWndTabsTrack->getItemCount(); ++u)
+	for (u=0; u < app->mTabsTrack->getItemCount(); ++u)
 	{
-		sub = gcom->FindSubTab(app->mWndTabsTrack->getItemAt(u));
+		sub = gcom->FindSubTab(app->mTabsTrack->getItemAt(u));
 		vSubTabsTrack.push_back(sub);
 	}
 	vSubTabsEdit.clear();
-	for (u=0; u < app->mWndTabsEdit->getItemCount(); ++u)
+	for (u=0; u < app->mTabsEdit->getItemCount(); ++u)
 	{
-		sub = gcom->FindSubTab(app->mWndTabsEdit->getItemAt(u));
+		sub = gcom->FindSubTab(app->mTabsEdit->getItemAt(u));
 		vSubTabsEdit.push_back(sub);
 	}
 	vSubTabsHelp.clear();
-	for (u=0; u < app->mWndTabsHelp->getItemCount(); ++u)
+	for (u=0; u < app->mTabsHelp->getItemCount(); ++u)
 	{
-		sub = gcom->FindSubTab(app->mWndTabsHelp->getItemAt(u));
+		sub = gcom->FindSubTab(app->mTabsHelp->getItemAt(u));
 		vSubTabsHelp.push_back(sub);
 	}
 	vSubTabsOpts.clear();
-	for (u=0; u < app->mWndTabsOpts->getItemCount(); ++u)
+	for (u=0; u < app->mTabsOpts->getItemCount(); ++u)
 	{
-		sub = gcom->FindSubTab(app->mWndTabsOpts->getItemAt(u));
+		sub = gcom->FindSubTab(app->mTabsOpts->getItemAt(u));
 		vSubTabsOpts.push_back(sub);
 	}
 	vSubTabsMat.clear();
-	for (u=0; u < app->mWndTabsMat->getItemCount(); ++u)
+	for (u=0; u < app->mTabsMat->getItemCount(); ++u)
 	{
-		sub = gcom->FindSubTab(app->mWndTabsMat->getItemAt(u));
+		sub = gcom->FindSubTab(app->mTabsMat->getItemAt(u));
 		vSubTabsMat.push_back(sub);
 	}
 

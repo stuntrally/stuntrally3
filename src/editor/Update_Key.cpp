@@ -94,10 +94,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	if (bGuiFocus && !pSet->bMain)
 	switch (pSet->inMenu)
 	{
-		case WND_Track:   tab = mWndTabsTrack;  sub = gui->vSubTabsTrack[tab->getIndexSelected()];  break;
-		case WND_Edit:    tab = mWndTabsEdit;   sub = gui->vSubTabsEdit[tab->getIndexSelected()];  break;
+		case WND_Track:   tab = mTabsTrack;  sub = gui->vSubTabsTrack[tab->getIndexSelected()];  break;
+		case WND_Edit:    tab = mTabsEdit;   sub = gui->vSubTabsEdit[tab->getIndexSelected()];  break;
 		case WND_Help:    tab = sub = gui->vSubTabsHelp[1];  iTab1 = 0;  break;
-		case WND_Options: tab = mWndTabsOpts;   sub = gui->vSubTabsOpts[tab->getIndexSelected()];  break;
+		case WND_Options: tab = mTabsOpts;   sub = gui->vSubTabsOpts[tab->getIndexSelected()];  break;
 		default:  break;
 	}
 	bool edit = bEdit();
@@ -225,7 +225,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(KP_ENTER):  case key(RETURN):
 			if (bGuiFocus && !pSet->bMain)
 				if (pSet->inMenu == WND_Track)
-					switch (mWndTabsTrack->getIndexSelected())
+					switch (mTabsTrack->getIndexSelected())
 					{
 					case TabTrk_Track:  gui->btnNewGame(0);  break;  // load track
 					case TabTrk_Export:  ror->ExportTrack();  break;

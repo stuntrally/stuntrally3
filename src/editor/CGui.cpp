@@ -54,21 +54,21 @@ void CGui::InitMainMenu()
 	for (int i=0; i < ciMainBtns; ++i)
 	{
 		const String s = toStr(i);
-		app->mWndMainPanels[i] = fImg("PanMenu"+s);
-		Btn("BtnMenu"+s, btnMainMenu);  app->mWndMainBtns[i] = btn;
+		app->mMainPanels[i] = fImg("PanMenu"+s);
+		Btn("BtnMenu"+s, btnMainMenu);  app->mMainBtns[i] = btn;
 	}
 
 	//  center
 	int wx = app->mWindow->getWidth(), wy = app->mWindow->getHeight();
 	
-	Wnd wnd = app->mWndMain;  IntSize w = wnd->getSize();
+	Wnd wnd = app->mWMainMenu;  IntSize w = wnd->getSize();
 	wnd->setPosition((wx-w.width)*0.5f, (wy-w.height)*0.5f);
 }
 
 void CGui::btnMainMenu(WP wp)
 {
 	for (int i=0; i < ciMainBtns; ++i)
-		if (wp == app->mWndMainBtns[i])
+		if (wp == app->mMainBtns[i])
 		{
 			pSet->bMain = false;
 			pSet->inMenu = i;

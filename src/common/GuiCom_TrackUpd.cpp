@@ -227,7 +227,7 @@ void CGuiCom::trkListNext(int rel)
 	if (!b)  return;
 	
 	//  tracks
-	if (pSet->inMenu == WND_Track && app->mWndTabsTrack->getIndexSelected() == 1)
+	if (pSet->inMenu == WND_Track && app->mTabsTrack->getIndexSelected() == 1)
 	{
 		int cnt = (int)trkList->getItemCount();
 		if (cnt == 0)  return;
@@ -239,7 +239,7 @@ void CGuiCom::trkListNext(int rel)
 		listTrackChng(trkList,i);
 	}
 	else  // objects
-	if (pSet->inMenu == WND_Edit && app->mWndTabsEdit->getIndexSelected() == TAB_Objects)
+	if (pSet->inMenu == WND_Edit && app->mTabsEdit->getIndexSelected() == TAB_Objects)
 		app->gui->listObjsNext(rel);
 	else
 	if (app->mWndPick->getVisible())

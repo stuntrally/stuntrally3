@@ -93,15 +93,17 @@ protected:
 	Txt txCamPos =0, txInput =0;
 
 
-	///  🪧 main menu
-	Wnd mWndMain =0, mWndTrack =0, mWndEdit =0,
-		mWndHelp =0, mWndOpts =0, mWndMaterials =0;  // common
-	Wnd mWndTrkFilt =0, mWndPick =0;
-	Tab mWndTabsTrack =0, mWndTabsEdit =0,
-		mWndTabsHelp =0, mWndTabsOpts =0, mWndTabsMat =0;  // main tabs on windows
+	//  🪧 main menu  1 level
+	Wnd mWMainMenu =0, mWndTrack =0, mWndEdit =0;
+	Img mMainPanels[WND_ALL] ={0,};
+	Btn mMainBtns[WND_ALL] ={0,};
 
-	Img mWndMainPanels[WND_ALL] ={0,};
-	Btn mWndMainBtns[WND_ALL] ={0,};
+	///  wnds  ----
+	Wnd mWndHelp =0, mWndOpts =0,  // common in game & ed
+		mWndMaterials =0, mWndTrkFilt =0;  // common 🛠️ tools
+	Wnd mWndPick =0;
+	Tab mTabsTrack =0, mTabsEdit =0,  // main tabs on windows
+		mTabsHelp =0, mTabsOpts =0, mTabsMat =0;  // common tabs
 
 	
 	ED_MODE	edMode = ED_Deform, edModeOld = ED_Deform;
