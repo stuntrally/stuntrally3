@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-27 16:09+0200\n"
-"PO-Revision-Date: 2024-04-14 10:38+0000\n"
+"PO-Revision-Date: 2024-04-27 17:07+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/pl/>\n"
@@ -18,10 +18,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
-"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && ("
+"n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
 "n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.5.1\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -380,13 +380,13 @@ msgstr "Multiplayer"
 #: data/gui/Game_Main.layout:387 ..NewGame-GameTypes.Button
 msgctxt "Collection"
 msgid "Collection"
-msgstr ""
+msgstr "Kolekcja"
 
 #. MAIN  Game  Modes 
 #: data/gui/Game_Main.layout:406 ..NewGame-GameTypes.Button
 msgctxt "Career"
 msgid "Career"
-msgstr ""
+msgstr "Kariera"
 
 #. Game  Split screen 
 #: data/gui/Game.layout:1623 ..SingleRace.SplitScreen.Text
@@ -689,7 +689,7 @@ msgstr "Nowa Gra"
 #: data/gui/Game_Main.layout:123 ..NewGame-Difficulty.Button :260..Window
 msgctxt "GameTypes"
 msgid "Game Types"
-msgstr ""
+msgstr "Typy Gier"
 
 #. MAIN  Track 
 #: data/gui/Editor.layout:3021 ..Editor.Vegetation.Road.Advanced.Text
