@@ -220,6 +220,7 @@ void App::NewGame(bool force, bool perfTest)
 		pSet->game.vr_mode = pSet->vr_mode;
 		if (pSet->game.vr_mode)
 			pSet->game.local_players = 1;
+		
 		Ch_NewGame();
 
 		if (mClient && mLobbyState != HOSTING)  // 📡 all but host

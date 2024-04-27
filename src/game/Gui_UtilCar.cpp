@@ -46,7 +46,8 @@ bool (*CarSort[allSortFunc])(const CarL& c1, const CarL& c2) =
 //-----------------------------------------------------------------------------------------------------------
 void CGui::CarListUpd(bool resetNotFound)
 {
-	bool filter = isChallGui();
+	bool chall = isChallGui(), collect = isCollectGui();
+	bool all = !chall && !collect;
 		
 	if (carList)
 	{	carList->removeAllItems();
@@ -64,8 +65,9 @@ void CGui::CarListUpd(bool resetNotFound)
 			String name = (*i).name;  //, nlow = name;  StringUtil::toLowerCase(nlow);
 			//if (sTrkFind == "" || strstr(nlow.c_str(), sTrkFind.c_str()) != 0)
 
-			///  filter for challenge
-			if (!filter || IsChallCar(name))
+			///  filter only for challenge or collect
+			if (all || chall && IsChallCar(name)
+					|| collect && IsCollectCar(name))
 			{
 				AddCarL(name, (*i).ci);
 				if (name == pSet->gui.car[0])  {  si = ii;

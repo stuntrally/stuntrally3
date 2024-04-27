@@ -1633,6 +1633,7 @@
 	<Tag name="ChampInfo2">Championships are usually long, have many tracks, but are easy to pass.</Tag>
 	<Tag name="ChallInfo2">Challenges are short but usually difficult to pass.</Tag>
 	<Tag name="TutorInfo">Tutorials have just a few tracks. They are easy to pass and show various track elements.</Tag>
+	<Tag name="CollectInfo">In collection game, you roam a track freely (not just on roads). Aim is to collect all gems located in various places. Time can be limited or not.</Tag>
 
 	<!--  Hint  welcome screen  -->
 	<Tag name="Hint">Hint</Tag>

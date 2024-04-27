@@ -62,7 +62,7 @@ public:
 		mini_terrain =1, mini_border =1,
 		check_beam =1, check_arrow =0,  // 🥛🔝
 		show_times =1,  // ⏱️
-		ch_all =0,  // show all champs/challs
+		ch_all =0,  // show all champs/challs/collect
 		// show_opponents =0, opplist_sort =0,
 
 	//  🔧 hud tweak
@@ -87,9 +87,9 @@ public:
 	int car_dbgtxtclr = 1, car_dbgtxtcnt = 0;
 	bool sounds_info =0;
 
-	//  🎛️ gui, game
+	//  🎛️ gui, games
 	bool cars_sortup =1;  int cars_view = 0, cars_sort = 1;
-	int champ_type = 0, chall_type = 0;
+	int champ_type = 0, chall_type = 0, collect_type = 0;
 	bool champ_info =1;
 	int car_ed_tab = 0, tweak_tab = 0;  // gui only
 	int car_clr = -1;  // paints.ini id
@@ -142,6 +142,7 @@ public:
 		//  🏆 champ
 		int champ_num = -1, chall_num = -1;  // -1 none
 		bool champ_rev =0;
+		int collect_num = -1;
 
 		float pre_time = 2.f;  int start_order = 0;
 
@@ -149,7 +150,7 @@ public:
 		GameSet();
 		bool hasLaps()
 		{	return local_players > 1 || /*|| app->mClient*/
-			champ_num >= 0 || chall_num >= 0;
+				champ_num >= 0 || chall_num >= 0;
 		}
 	}  game,  // current game, changed only on new game start
 		gui;  // gui only config

@@ -45,6 +45,7 @@ void CGui::btnNewGame(WP wp)
 	}*/
 	bool force = 1;  //; fixme 0 on same track and game type
 	app->NewGame(force);  app->isFocGui = false;  // off gui
+
 	app->mWndOpts->setVisible(app->isFocGui);
 	app->mWndRpl->setVisible(false);  app->mWndRplTxt->setVisible(false);//
 	gcom->bnQuit->setVisible(app->isFocGui);
@@ -102,14 +103,18 @@ void CGui::toggleGui(bool toggle)
 	///  update track tab, for champs wnd
 	bool game = mnu == MN_Single,   champ = mnu == MN_Champ,
 		tutor = mnu == MN_Tutorial, chall = mnu == MN_Chall,
-		chAny = champ || tutor || chall, gc = game || chAny,
+		collect = mnu == MN_Collect, career = mnu == MN_Career,
+		chAny = tutor || champ || chall || collect || career,
+		gc = game || chAny,
 		split = !chAny && pSet->yGames == Games_SplitScreen,
 		multi = !chAny && pSet->yGames == Games_Multiplayer;
 	
-	UString sCh = tutor ? TR("#FFC020#{Tutorial}") :
-		champ ? TR("#B0FFB0#{Championship}") : TR("#C0C0FF#{Challenge}");
+	UString sCh =
+		collect ? TR("#C080FF#{Collection}") : career ? TR("#FF8080#{Career}") :
+		chall ? TR("#C0C0FF#{Challenge}") :
+		champ ? TR("#B0FFB0#{Championship}") : TR("#FFC020#{Tutorial}");
 
-	UpdChampTabVis();
+	UpdChsTabVis();
 
 	bool notMain = gui && !(mnu == MN1_Main || mnu == MN1_Setup || mnu == MN1_Games);
 	bool vis = notMain && gc;
@@ -165,10 +170,14 @@ void CGui::UpdWndTitle()
 	const int mnu = pSet->iMenu;
 	bool game = mnu == MN_Single,   champ = mnu == MN_Champ,
 		tutor = mnu == MN_Tutorial, chall = mnu == MN_Chall,
-		chAny = champ || tutor || chall, gc = game || chAny;
+		collect = mnu == MN_Collect, career = mnu == MN_Career,
+		chAny = tutor || champ || chall || collect || career,
+		gc = game || chAny;
 	
-	UString sCh = tutor ? TR("#FFC020#{Tutorial}") :
-		champ ? TR("#B0FFB0#{Championship}") : TR("#C0C0FF#{Challenge}");
+	UString sCh =
+		collect ? TR("#C080FF#{Collection}") : career ? TR("#FF8080#{Career}") :
+		chall ? TR("#C0C0FF#{Challenge}") :
+		champ ? TR("#B0FFB0#{Championship}") : TR("#FFC020#{Tutorial}");
 
 	Tab t = app->mTabsGame;
 	size_t id = t->getIndexSelected();
@@ -178,7 +187,8 @@ void CGui::UpdWndTitle()
 	int plr = app->pSet->gui.local_players;  // 👥 splitscreen
 
 	//  clr
-	auto clr = tutor ? Colour(1.0,0.6,0.3) : champ ? Colour(0.6,1.0,0.6) : chall ? Colour(0.6,0.6,1.0) :
+	auto clr = collect ? Colour(0.8,0.5,1.0) : career ? Colour(1.0,0.6,0.6) :
+		tutor ? Colour(1.0,0.6,0.3) : champ ? Colour(0.6,1.0,0.6) : chall ? Colour(0.6,0.6,1.0) :
 		mplr > 0 ? Colour(0.8,0.6,1.0) :
 		plr == 1 ? Colour(0.9,0.9,0.5) : Colour(0.5,1.0,1.0);
 	app->mWndGame->setColour(clr);
@@ -297,7 +307,9 @@ void CGui::LNext(int rel)
 
 			case TAB_Car:	 listCarChng(carList, LNext(carList, rel, 5));  return;
 			case TAB_Champs:
-				if (isChallGui())
+				if (isCollectGui())
+			    	listCollectChng(liCollect, LNext(liCollect, rel, 8));
+				else if (isChallGui())
 				      listChallChng(liChalls, LNext(liChalls, rel, 8));
 				else  listChampChng(liChamps, LNext(liChamps, rel, 8));
 				return;

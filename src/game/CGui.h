@@ -3,6 +3,7 @@
 #include "settings.h"
 #include "ChampsXml.h"  // progress
 #include "ChallengesXml.h"
+#include "CollectXml.h"
 #include "CInput.h"
 
 #include "SliderValue.h"
@@ -439,16 +440,14 @@ public:
 	void chkStartOrd(WP);
 
 
-	///  🏆 Championships, Challenges
+	///  🏆 Championships, Challenges, Collections
 	///-----------------------------------------------------------------------------------------------------------------
 
-	Btn btStTut =0, btStChamp =0, btStChall =0;
-	Img imgTut =0, imgChamp =0, imgChall =0;
-	//  tabs
-	Tab tabChamp =0, tabChall =0;
+	Btn btStTut =0, btStChamp =0, btStChall =0, btStCollect =0;
+	Img imgTut =0, imgChamp =0, imgChall =0, imgCollect =0, imgCareer =0;
+	Tab tabChamp =0, tabChall =0, tabCollect =0;  // tabs
 
-	//void tabTutType(Tab, size_t);
-	void tabChampType(Tab, size_t), tabChallType(Tab, size_t);
+	void tabChampType(Tab, size_t), tabChallType(Tab, size_t), tabCollectType(Tab, size_t);
 
 	//  🏞️ stages
 	Txt txTrkName =0;
@@ -462,8 +461,9 @@ public:
 	//  📄 xml  [1]= reversed  L= challenge
 	ProgressXml progress[2];
 	ProgressLXml progressL[2];
+	ProgressCXml progressC;
 
-	void ProgressSave(bool upgGui=true), ProgressLSave(bool upgGui=true);
+	void ProgressSave(bool upgGui=true), ProgressLSave(bool upgGui=true), ProgressCSave(bool upgGui=true);
 	Chall* pChall =0;  // current challenge or 0 if not
 
 	//  load
@@ -477,11 +477,13 @@ public:
 	Mli2 liStages =0, liNetEnd =0;  void listStageChng(Mli2, size_t);
 	Mli2 liChamps =0;  void listChampChng(Mli2, size_t);
 	Mli2 liChalls =0;  void listChallChng(Mli2, size_t);
+	Mli2 liCollect =0;  void listCollectChng(Mli2, size_t);
 
 	//  🪟 windows
 	void btnChampStart(WP), btnChampEndClose(WP), btnChampStageBack(WP), btnChampStageStart(WP);
 	void btnChallStart(WP), btnChallEndClose(WP), btnChallStageBack(WP), btnChallStageStart(WP);
 	void btnChRestart(WP);  Btn btChRestart =0;
+	void btnCollectStart(WP);
 
 	Btn btChampStage =0, btChallStage =0;
 	Ed edChampStage =0, edChampEnd =0;  Img imgChampStage =0, imgChampEndCup =0;
@@ -490,20 +492,20 @@ public:
 	Txt txChallEndC =0, txChallEndF =0, txChampEndF =0;
 	int iChSnd = 0;  // snd id to play
 
-	//  main
+	//  games lists
 	void fillChampsList(std::vector<int> vIds), fillChallsList(std::vector<int> vIds);  // Ids from champs/challs .all
 	void ChampsListUpdate(), ChampFillStageInfo(bool finished), ChampionshipAdvance(float timeCur);
 	void ChallsListUpdate(), ChallFillStageInfo(bool finished), ChallengeAdvance(float timeCur);
-	void btnChampInfo(WP), UpdChampTabVis();
+	void CollectListUpdate(), fillCollectList(std::vector<int> vIds);
+	void btnChampInfo(WP), UpdChsTabVis();
 	CK(ChampRev);  CK(Ch_All);
 
 	void ReadTrkStatsChamp(Ogre::String track,bool reverse);
 	void updChampListDim();
 
 	//  chall util
-	Ogre::String StrChallCars(const Chall& ch);
-	bool IsChallCar(Ogre::String name);
-	bool isChallGui();  void BackFromChs();
+	bool IsChallCar(Ogre::String name), IsCollectCar(Ogre::String name);
+	bool isChallGui(), isCollectGui();  void BackFromChs();
 
 
 	//  🛠️ _Tools_  ----

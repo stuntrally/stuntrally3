@@ -37,7 +37,7 @@ void CGui::tabChampType(Tab wp, size_t id)
 }
 
 
-///  🏆 Championships list  fill
+///  🏆📃 Championships list  fill
 //----------------------------------------------------------------------------------------------------------------------
 void CGui::ChampsListUpdate()
 {
