@@ -36,14 +36,7 @@
 	<Tag name="WrongChk">Wrong Checkpoint</Tag>
 
 
-	<!--  Editor  status  -->
-	<Tag name="Loading">Loading</Tag>
-	<Tag name="Loaded">Loaded</Tag>
-	<Tag name="Saving">Saving</Tag>
-	<Tag name="Saved">Saved</Tag>
-	<Tag name="Updating">Updating</Tag>
-	<Tag name="Updated">Updated</Tag>
-	
+	<!--  ..............................................................................................  -->
 
 	<!--  MAIN  Menu  -->
 	<Tag name="SingleRace">Single Race</Tag>
@@ -103,6 +96,44 @@
 	<Tag name="Gold">Gold</Tag>
 
 
+	<!--  ..............................................................................................  -->
+	
+	<!--  Setup  Vehicle,Game  -->
+	<Tag name="Game">Game</Tag>
+	<Tag name="Setup">Setup</Tag>
+
+	<!--  Game  Split screen  -->
+	<Tag name="SplitScreen">Split Screen</Tag>
+	<Tag name="NumLocalPlayers">Number of local players</Tag>
+	<Tag name="SplitVertically">Split Vertically</Tag>
+	<Tag name="ReverseStartOrder">Reverse starting order</Tag>
+	<Tag name="NumLaps">Number of laps</Tag>
+
+	<!--  MAIN  Game  Simulation  -->
+	<Tag name="Simulation">Simulation</Tag>
+
+
+	<!--  Game  Damage  -->
+	<Tag name="Damage">Damage</Tag>
+	<Tag name="None">None</Tag>
+	<Tag name="Reduced">Reduced</Tag>
+	<Tag name="Normal">Normal</Tag>
+	<Tag name="DamageDecLap">Repair each lap</Tag>
+
+	<!--  Game  Boost  -->
+	<Tag name="Boost">Boost</Tag>
+	<Tag name="Flip">Flip</Tag>
+
+	<Tag name="Never">Never</Tag>
+	<Tag name="Always">Always</Tag>
+	<Tag name="Any">Any</Tag>
+
+	<Tag name="FuelLap">Fuel each lap</Tag>
+	<Tag name="FuelTime">Fuel over time</Tag>
+	<Tag name="FuelBoost">Boost Fuel</Tag>
+	<Tag name="GoBackTime">Go back time</Tag>
+
+
 	<!--  Challenge types  -->
 	<Tag name="Chall_Rally">Rally</Tag>
 	<Tag name="Chall_Endurance">Endurance</Tag>
@@ -127,15 +158,18 @@
 
 	<!--  MAIN  Track  -->
 	<Tag name="Track">Track</Tag>
-	<Tag name="Reverse">Reverse</Tag>
 	<Tag name="NewGame">New Game</Tag>
+	<Tag name="GameTypes">Game Types</Tag>
+	<Tag name="Reverse">Reverse</Tag>
 	<Tag name="Find">Find</Tag>	
+
 
 	<!--  MAIN  Track stats  -->
 	<Tag name="TrackBestTime">Best time</Tag>
 	<Tag name="TrackAvgSpeed">Avg. speed</Tag>
 	<Tag name="TrackLength">Length</Tag>
 	<Tag name="TrackArea">Area</Tag>
+	
 	<Tag name="TrackWidthAvg">Width avg.</Tag>
 	<Tag name="TrackHeightDiff">Height diff.</Tag>
 	<Tag name="TrackInAir">In air</Tag>
@@ -171,55 +205,11 @@
 	<Tag name="Allowed">Allowed</Tag>
 	
 
-	<!--  Car  Names  from animals  -->
-	<Tag name="Turtle">Turtle</Tag>
-	<Tag name="Elephant">Elephant</Tag>
-	<Tag name="Alligator">Alligator</Tag>
-	<Tag name="Bison">Bison</Tag>
-
-	<Tag name="Caterpillar">Caterpillar</Tag>
-	<Tag name="Rhino">Rhino</Tag>
-	<Tag name="Bear">Bear</Tag>
-
-	<Tag name="Coyote">Coyote</Tag>
-	<Tag name="Squirrel">Squirrel</Tag>
-	<Tag name="Fox">Fox</Tag>
-	<Tag name="Hyena">Hyena</Tag>
-
-	<Tag name="Gorilla">Gorilla</Tag>
-	<Tag name="Lizard">Lizard</Tag>
-
-	<Tag name="Weasel">Weasel</Tag>
-	<Tag name="Wolf">Wolf</Tag>
-
-	<Tag name="Scorpion">Scorpion</Tag>
-	<Tag name="Buffalo">Buffalo</Tag>
-	<Tag name="Gazelle">Gazelle</Tag>
-
-	<Tag name="Jaguar">Jaguar</Tag>
-	<Tag name="Puma">Puma</Tag>
-	<Tag name="Leopard">Leopard</Tag>
-	<Tag name="Beetle">Beetle</Tag>
-
-	<Tag name="Swan">Swan</Tag>
-	<Tag name="Duck">Duck</Tag>
-	<Tag name="Hawk">Hawk</Tag>
-	<Tag name="Rabbit">Rabbit</Tag>
-
-	<Tag name="Python">Python</Tag>
-	<Tag name="Cobra">Cobra</Tag>
-
-	<Tag name="Eagle">Eagle</Tag>
-	<Tag name="Crow">Crow</Tag>
-	<Tag name="Falcon">Falcon</Tag>
-
-	<Tag name="Owl">Owl</Tag>
-	<Tag name="Sparrow">Sparrow</Tag>
-
-
 	<!--  Vehicle  -->
 	<Tag name="Vehicle">Vehicle</Tag>
 	<Tag name="Vehicles">Vehicles</Tag>
+
+
 	<!--  TIP  Vehicle  -->
 	<Tag name="TipCarsList">Cars list. Press Enter or [New Game] to drive with it.</Tag>
 	<Tag name="TipCarDesc">Vehicle description text. Can have driving advices.</Tag>
@@ -280,7 +270,9 @@
 	<Tag name="Car_StopTimeFrom">Stop time from</Tag>
 
 
-	<!--  MAIN  Car types  -->
+	<!--  ..............................................................................................  -->
+
+	<!--  MAIN  Vehicle types  -->
 	<Tag name="CarType_Asphalt">Asphalt</Tag>
 	<Tag name="CarType_Racing">Racing</Tag>
 	<Tag name="CarType_Gravel">Gravel</Tag>
@@ -293,7 +285,62 @@
 	<Tag name="CarType_Spaceship">Spaceship</Tag>
 	<Tag name="CarType_Drone">Drone</Tag>
 
+	
+	<!--  Vehicle  Names  from animals  -->
+	<Tag name="Turtle">Turtle</Tag>
+	<Tag name="Elephant">Elephant</Tag>
+	<Tag name="Alligator">Alligator</Tag>
+	<Tag name="Bison">Bison</Tag>
 
+	<Tag name="Caterpillar">Caterpillar</Tag>
+	<Tag name="Rhino">Rhino</Tag>
+	<Tag name="Bear">Bear</Tag>
+
+	<Tag name="Coyote">Coyote</Tag>
+	<Tag name="Squirrel">Squirrel</Tag>
+	<Tag name="Fox">Fox</Tag>
+	<Tag name="Hyena">Hyena</Tag>
+
+	<Tag name="Gorilla">Gorilla</Tag>
+	<Tag name="Lizard">Lizard</Tag>
+
+	<Tag name="Weasel">Weasel</Tag>
+	<Tag name="Wolf">Wolf</Tag>
+
+	<Tag name="Scorpion">Scorpion</Tag>
+	<Tag name="Buffalo">Buffalo</Tag>
+	<Tag name="Gazelle">Gazelle</Tag>
+
+	<Tag name="Jaguar">Jaguar</Tag>
+	<Tag name="Puma">Puma</Tag>
+	<Tag name="Leopard">Leopard</Tag>
+	<Tag name="Beetle">Beetle</Tag>
+
+	<Tag name="Swan">Swan</Tag>
+	<Tag name="Duck">Duck</Tag>
+	<Tag name="Hawk">Hawk</Tag>
+	<Tag name="Rabbit">Rabbit</Tag>
+
+	<Tag name="Python">Python</Tag>
+	<Tag name="Cobra">Cobra</Tag>
+
+	<Tag name="Eagle">Eagle</Tag>
+	<Tag name="Crow">Crow</Tag>
+	<Tag name="Falcon">Falcon</Tag>
+
+	<Tag name="Owl">Owl</Tag>
+	<Tag name="Sparrow">Sparrow</Tag>
+
+	<!--  Editor  status  -->
+	<Tag name="Loading">Loading</Tag>
+	<Tag name="Loaded">Loaded</Tag>
+	<Tag name="Saving">Saving</Tag>
+	<Tag name="Saved">Saved</Tag>
+	<Tag name="Updating">Updating</Tag>
+	<Tag name="Updated">Updated</Tag>
+
+
+	<!--  long lists boring  -->
 	<!--  ..............................................................................................  -->
 
 	<!--  MsgBox  -->
@@ -405,49 +452,8 @@
 	<Tag name="P_Rainbow">Rainbow</Tag>
 	<Tag name="P_Silver">Silver</Tag>
 
-<!--  ..............................................................................................  -->
-
-	<!--  Setup  Vehicle,Game  -->
-	<Tag name="Game">Game</Tag>
-	<Tag name="Setup">Setup</Tag>
-
-	<!--  Game  Split screen  -->
-	<Tag name="SplitScreen">Split Screen</Tag>
-	<Tag name="NumLocalPlayers">Number of local players</Tag>
-	<Tag name="SplitVertically">Split Vertically</Tag>
-	<Tag name="ReverseStartOrder">Reverse starting order</Tag>
-	<Tag name="NumLaps">Number of laps</Tag>
-
-	<!--  MAIN  Game  Simulation  -->
-	<Tag name="Simulation">Simulation</Tag>
-
+	<!--  ..............................................................................................  -->
 	
-	<!--  Setup  ABS,TCS  -->
-	<Tag name="NotRecommended">Not recommended</Tag>
-	<Tag name="ABS">ABS (antilock brakes)</Tag>
-	<Tag name="TipABS">Prevents wheel lock when braking (default: off).</Tag>
-	<Tag name="TCS">TCS (traction control)</Tag>
-	<Tag name="TipTCS">Prevents wheel spinning when accelerating (default: off).</Tag>
-
-	<!--  Setup  steering  -->
-	<Tag name="Gravel">Gravel</Tag>
-	<Tag name="Asphalt">Asphalt</Tag>
-	<Tag name="SpeedSensitiveSteering">Speed Sensitive Steering</Tag>
-	<Tag name="TipSpeedSensitiveSteering">Decreases steering range with higher velocity.</Tag>
-	<Tag name="SSS_Effect">Effect</Tag>
-	<Tag name="SSS_SpeedFactor">Speed Factor</Tag>
-	<Tag name="SteerRange">Steering range multipliers</Tag>
-	<Tag name="TipSteerSim">Steering range multiplier, for simulation mode (Easy,Normal).</Tag>
-	<Tag name="TipSteerSurf">Steering range multiplier, for surface (Gravel,Asphalt).</Tag>
-
-	<!--  Setup  Gearbox  -->
-	<Tag name="Gearbox">Gearbox</Tag>
-	<Tag name="AutoGearbox">Auto gearbox</Tag>
-	<Tag name="TipAutoGearbox">Uncheck for manual gears changing.</Tag>
-	<Tag name="AutoRear">Auto Rear gear</Tag>
-	<Tag name="TipAutoRear">Uncheck for manual Rear gear changing.</Tag>
-	<Tag name="RearThrottleInverse">Rear throttle inverse</Tag>
-	<Tag name="TipRearThrottleInverse">Inverse throttle and brake function in rear gear.</Tag>
 
 	<!--  Setup  collision  -->
 	<Tag name="VegetCol">Vegetation collision</Tag>
@@ -456,26 +462,37 @@
 	<Tag name="DynamicObjects">Dynamic Objects</Tag>
 	<Tag name="DriveOnHorizons">Allow driving outside map, on horizons</Tag>
 
+	<!--  Setup  Gearbox  -->
+	<Tag name="Gearbox">Gearbox</Tag>
+	<Tag name="AutoGearbox">Auto gearbox</Tag>
+	<Tag name="AutoRear">Auto Rear gear</Tag>
+	<Tag name="RearThrottleInverse">Rear throttle inverse</Tag>
 
-	<!--  Game  Damage  -->
-	<Tag name="Damage">Damage</Tag>
-	<Tag name="None">None</Tag>
-	<Tag name="Reduced">Reduced</Tag>
-	<Tag name="Normal">Normal</Tag>
-	<Tag name="DamageDecLap">Repair each lap</Tag>
+	<!--  Setup  steering  -->
+	<Tag name="Gravel">Gravel</Tag>
+	<Tag name="Asphalt">Asphalt</Tag>
+	<Tag name="SpeedSensitiveSteering">Speed Sensitive Steering</Tag>
+	<Tag name="SSS_Effect">Effect</Tag>
+	<Tag name="SSS_SpeedFactor">Speed Factor</Tag>
+	<Tag name="SteerRange">Steering range multipliers</Tag>
 
-	<!--  Game  Boost  -->
-	<Tag name="Boost">Boost</Tag>
-	<Tag name="Flip">Flip</Tag>
+	<!--  Setup  ABS,TCS  -->
+	<Tag name="NotRecommended">Not recommended</Tag>
+	<Tag name="ABS">ABS (antilock brakes)</Tag>
+	<Tag name="TCS">TCS (traction control)</Tag>
+	
+	<!--  Setup  tips  -->
+	<Tag name="TipABS">Prevents wheel lock when braking (default: off).</Tag>
+	<Tag name="TipTCS">Prevents wheel spinning when accelerating (default: off).</Tag>
 
-	<Tag name="Never">Never</Tag>
-	<Tag name="Always">Always</Tag>
-	<Tag name="Any">Any</Tag>
+	<Tag name="TipSpeedSensitiveSteering">Decreases steering range with higher velocity.</Tag>
+	<Tag name="TipSteerSim">Steering range multiplier, for simulation mode (Easy,Normal).</Tag>
+	<Tag name="TipSteerSurf">Steering range multiplier, for surface (Gravel,Asphalt).</Tag>
 
-	<Tag name="FuelLap">Fuel each lap</Tag>
-	<Tag name="FuelTime">Fuel over time</Tag>
-	<Tag name="FuelBoost">Boost Fuel</Tag>
-	<Tag name="GoBackTime">Go back time</Tag>
+	<Tag name="TipAutoGearbox">Uncheck for manual gears changing.</Tag>
+	<Tag name="TipAutoRear">Uncheck for manual Rear gear changing.</Tag>
+	<Tag name="TipRearThrottleInverse">Inverse throttle and brake function in rear gear.</Tag>
+
 
 	<!--  Replay  -->
 	<Tag name="Replay">Replay</Tag>
@@ -521,18 +538,32 @@
 	<Tag name="Video">Video</Tag>
 	<Tag name="Resolution">Resolution</Tag>
 	<Tag name="Fullscreen">Fullscreen</Tag>
-	<Tag name="VRmode">VR Mode</Tag>
+	<!--  Screen  vertical synchronisation  -->
+	<Tag name="VSync">VSync</Tag>
 	
 	<Tag name="Brightness">Brightness</Tag>
 	<Tag name="Contrast">Contrast</Tag>
-	<Tag name="Gamma">Gamma</Tag>
+
+	<!--  Screen  advanced  -->
+	<Tag name="RenderSystem">Render System</Tag>
+	<Tag name="AntiAliasing">Antialiasing</Tag>
+	<Tag name="Change">Change</Tag>
 
 	<Tag name="GUI">GUI</Tag>
 	<Tag name="FontSizes">Font sizes</Tag>
 	<Tag name="WindowMargin">Window margin</Tag>
 
+	<!--  Screen  not used  -->
+	<Tag name="Gamma">Gamma</Tag>
+	<Tag name="VRmode">VR Mode</Tag>
+
 	<Tag name="Complex">Complex</Tag>
 	<Tag name="Simple">Simple</Tag>
+
+	<Tag name="LimitFPS">Limit frames per second</Tag>
+	<Tag name="FramesPerSec">Frames per second</Tag>
+	<Tag name="SleepMS">Sleep interval [milisec]</Tag>
+
 
 	<!--  Screen  info  -->
 	<Tag name="NeedRestart">* need restart</Tag>
@@ -540,16 +571,7 @@
 	<Tag name="NeedApply">need Apply</Tag>
 	<Tag name="Ignored">ignored</Tag>
 	<Tag name="GraphicsRightHQ">By default better quality (less Fps) is on right. Marked with + if on left.</Tag>
-	<!--  Screen  vertical synchronisation  -->
-	<Tag name="VSync">VSync</Tag>
 	
-	<!--  Screen  advanced  -->
-	<Tag name="RenderSystem">Render System</Tag>
-	<Tag name="AntiAliasing">Antialiasing</Tag>
-	<Tag name="Change">Change</Tag>
-	<Tag name="LimitFPS">Limit frames per second</Tag>
-	<Tag name="FramesPerSec">Frames per second</Tag>
-	<Tag name="SleepMS">Sleep interval [milisec]</Tag>
 	
 	<!--  Graphics Presets  -->
 	<Tag name="GraphicsPreset">Graphics preset</Tag>
