@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-27 12:57+0200\n"
+"POT-Creation-Date: 2024-04-27 16:09+0200\n"
 "PO-Revision-Date: 2024-04-14 10:38+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/stunt-rally-3/"
@@ -96,41 +96,41 @@ msgid "Wrong Checkpoint"
 msgstr "Zły punkt kontrolny"
 
 #. MAIN  Menu 
-#: data/gui/Game.layout:5 ..Window data/gui/Game_Main.layout:257
-#: ..NewGame-GameTypes.Button src/game/Gui_Util.cpp:187
+#: data/gui/Game.layout:5 ..Window data/gui/Game_Main.layout:276
+#: ..NewGame-GameTypes.Button src/game/Gui_Util.cpp:189
 msgctxt "SingleRace"
 msgid "Single Race"
 msgstr "Pojedynczy wyścig"
 
 #. MAIN  Menu 
-#: data/gui/Game.layout:1897 ..SingleRace.Tab data/gui/Game_Main.layout:293
+#: data/gui/Game.layout:1897 ..SingleRace.Tab data/gui/Game_Main.layout:348
 #: ..NewGame-GameTypes.Button data/gui/Game_Options.layout:320
 #: ..Options.Input.Shortcuts.Text data/gui/Game_Utils.layout:20 ..Window :52
-#: src/game/Championships.cpp:280:426:448 src/game/Gui_Util.cpp:107:169
+#: src/game/Championships.cpp:280:426:448 src/game/Gui_Util.cpp:110:171
 msgctxt "Championship"
 msgid "Championship"
 msgstr "Mistrzostwo"
 
 #. MAIN  Menu 
-#: data/gui/Game_Main.layout:275 ..NewGame-GameTypes.Button
+#: data/gui/Game_Main.layout:330 ..NewGame-GameTypes.Button
 #: data/gui/Game_Options.layout:317 ..Options.Input.Shortcuts.Text
-#: src/game/Championships.cpp:280:426:448 src/game/Gui_Util.cpp:106:168
+#: src/game/Championships.cpp:280:426:448 src/game/Gui_Util.cpp:109:170
 msgctxt "Tutorial"
 msgid "Tutorial"
 msgstr "Samouczek"
 
 #. MAIN  Menu 
-#: data/gui/Game_Main.layout:311 ..NewGame-GameTypes.Button
+#: data/gui/Game_Main.layout:366 ..NewGame-GameTypes.Button
 #: data/gui/Game_Options.layout:323 ..Options.Input.Shortcuts.Text
 #: data/gui/Game_Utils.layout:96 ..Window :128
-#: src/game/Challenges.cpp:397:516:637 src/game/Gui_Util.cpp:107:169
+#: src/game/Challenges.cpp:397:516:637 src/game/Gui_Util.cpp:110:171
 msgctxt "Challenge"
 msgid "Challenge"
 msgstr "Wyzwanie"
 
 #. MAIN  Menu 
-#: data/gui/Game_Help.layout:394 ..Window data/gui/Game_Main.layout:211
-#: ..NewGame-Difficulty.Button
+#: data/gui/Game_Help.layout:394 ..Window data/gui/Game_Main.layout:142
+#: ..NewGame-Difficulty.Button :230
 msgctxt "HowToPlay"
 msgid "How To Play"
 msgstr "Jak grać"
@@ -162,8 +162,8 @@ msgstr "Wyjdź"
 #: ..Editor.Tab data/gui/Editor_Options.layout:13 ..Options.Tab
 #: data/gui/Editor_Track.layout:14 ..Track.Tab data/gui/Game_Help.layout:13
 #: :512..HowToPlay.Button data/gui/Game.layout:13 ..SingleRace.Tab
-#: data/gui/Game_Main.layout:229 ..NewGame-Difficulty.Button
-#: :330..NewGame-GameTypes.Button data/gui/Game_Options.layout:13
+#: data/gui/Game_Main.layout:248 ..NewGame-Difficulty.Button
+#: :425..NewGame-GameTypes.Button data/gui/Game_Options.layout:13
 #: data/gui/Game_Replay.layout:13 ..Replays.Tab data/gui/Game_Utils.layout:40
 #: ..Championship.Button :116..Challenge.Button :185..Multiplayer.Button
 #: data/gui/MaterialEditor.layout:53 ..MaterialEditor.Tab
@@ -360,29 +360,33 @@ msgctxt "Gold"
 msgid "Gold"
 msgstr "Złoto"
 
-#. Setup  Vehicle,Game 
-#: data/gui/Editor_Help.layout:235 ..Help.Input/help.Shortcuts.Text
-#: data/gui/Editor_Track.layout:588 ..Track.Tab data/gui/Game.layout:1285
-#: ..SingleRace.Setup.Tab data/gui/Game_Options.layout:313
-#: ..Options.Input.Shortcuts.Text src/game/Challenges.cpp:616
-#: src/game/Gui_Network.cpp:131
-msgctxt "Game"
-msgid "Game"
-msgstr "Gra"
-
-#. Setup  Vehicle,Game 
-#: data/gui/Game.layout:902 ..SingleRace.Tab data/gui/Game_Options.layout:310
-#: ..Options.Input.Shortcuts.Text data/gui/Game_Tweak.layout:220
-#: ..Tweak.Tires.Text
-msgctxt "Setup"
-msgid "Setup"
-msgstr "Ustawienia"
-
-#. Game  Split screen 
-#: data/gui/Game.layout:1616 ..SingleRace.Tab src/game/Gui_Util.cpp:188
+#. MAIN  Game  Modes 
+#: data/gui/Game.layout:1616 ..SingleRace.Tab data/gui/Game_Main.layout:294
+#: ..NewGame-GameTypes.Button src/game/Gui_Util.cpp:190
 msgctxt "SplitScreen"
 msgid "Split Screen"
 msgstr "Ekran dzielony"
+
+#. MAIN  Game  Modes 
+#: data/gui/Game.layout:1708 ..SingleRace.Tab data/gui/Game_Main.layout:312
+#: ..NewGame-GameTypes.Button data/gui/Game_Options.layout:327
+#: ..Options.Input.Shortcuts.Text data/gui/Game_Utils.layout:177 ..Window
+#: src/game/Gui_Replay.cpp:166 src/game/Gui_Util.cpp:187
+msgctxt "Multiplayer"
+msgid "Multiplayer"
+msgstr "Multiplayer"
+
+#. MAIN  Game  Modes 
+#: data/gui/Game_Main.layout:387 ..NewGame-GameTypes.Button
+msgctxt "Collection"
+msgid "Collection"
+msgstr ""
+
+#. MAIN  Game  Modes 
+#: data/gui/Game_Main.layout:406 ..NewGame-GameTypes.Button
+msgctxt "Career"
+msgid "Career"
+msgstr ""
 
 #. Game  Split screen 
 #: data/gui/Game.layout:1623 ..SingleRace.SplitScreen.Text
@@ -411,13 +415,37 @@ msgstr "Liczba okrążeń"
 
 #. MAIN  Game  Simulation 
 #: data/gui/Game.layout:1564 ..SingleRace.Setup.Steering.Text
-#: data/gui/Game_Main.layout:175 ..NewGame-Difficulty.Button
+#: data/gui/Game_Main.layout:195 ..NewGame-Difficulty.Button
 #: src/game/Challenges.cpp:618 src/game/Gui_Init.cpp:452
 #: src/game/Gui_Replay.cpp:168 src/game/Gui_Network.cpp:132
 #: src/editor/Update_EditKeyTxt.cpp:349
 msgctxt "Simulation"
 msgid "Simulation"
 msgstr "Symulacja"
+
+#. Setup  Vehicle,Game 
+#: data/gui/Game.layout:902 ..SingleRace.Tab data/gui/Game_Options.layout:310
+#: ..Options.Input.Shortcuts.Text data/gui/Game_Tweak.layout:220
+#: ..Tweak.Tires.Text
+msgctxt "Setup"
+msgid "Setup"
+msgstr "Ustawienia"
+
+#. Setup  Vehicle,Game 
+#: data/gui/Game.layout:909 ..SingleRace.Setup.Tab
+msgctxt "Paint"
+msgid "Paint"
+msgstr "Lakier"
+
+#. Setup  Vehicle,Game 
+#: data/gui/Editor_Help.layout:235 ..Help.Input/help.Shortcuts.Text
+#: data/gui/Editor_Track.layout:588 ..Track.Tab data/gui/Game.layout:1285
+#: ..SingleRace.Setup.Tab data/gui/Game_Options.layout:313
+#: ..Options.Input.Shortcuts.Text src/game/Challenges.cpp:616
+#: src/game/Gui_Network.cpp:131
+msgctxt "Game"
+msgid "Game"
+msgstr "Gra"
 
 #. Game  Damage 
 #: data/gui/Editor.layout:336 ..Editor.Sun.Fog.Text
@@ -594,8 +622,8 @@ msgid "Ultra"
 msgstr "Ultra"
 
 #. MAIN  Track Difficulty 
-#: data/gui/Game_Main.layout:145 ..NewGame-Difficulty.Button
-#: :160..NewGame-Difficulty.Image
+#: data/gui/Game_Main.layout:165 ..NewGame-Difficulty.Button
+#: :180..NewGame-Difficulty.Image
 msgctxt "DifficultyHelp"
 msgid ""
 "Changing difficulty does set: Tracks list filter and sorting, selected "
@@ -607,8 +635,8 @@ msgstr ""
 "później."
 
 #. MAIN  Track Difficulty 
-#: data/gui/Game_Main.layout:180 ..NewGame-Difficulty.Button
-#: :195..NewGame-Difficulty.Image
+#: data/gui/Game_Main.layout:200 ..NewGame-Difficulty.Button
+#: :215..NewGame-Difficulty.Image
 msgctxt "SimulationHelp"
 msgid ""
 "Simulation mode does change how realistic vehicles are and how difficult "
@@ -652,14 +680,13 @@ msgstr "Trasa"
 #: data/gui/Game.layout:25 ..SingleRace.Track.Button
 #: :513..SingleRace.Vehicle.Button :1694..SingleRace.SplitScreen.Button
 #: data/gui/Game_Main.layout:31 ..StuntRally##{GameVersion}.Button :106..Window
-#: :122..NewGame-Difficulty.Button :241..Window
-#: data/gui/Game_Options.layout:784 ..Options.Graphics.Button
+#: :260 data/gui/Game_Options.layout:784 ..Options.Graphics.Button
 msgctxt "NewGame"
 msgid "New Game"
 msgstr "Nowa Gra"
 
 #. MAIN  Track 
-#: data/gui/Game_Main.layout:241 ..Window
+#: data/gui/Game_Main.layout:123 ..NewGame-Difficulty.Button :260..Window
 msgctxt "GameTypes"
 msgid "Game Types"
 msgstr ""
@@ -785,7 +812,7 @@ msgstr "Długość"
 
 #. Championship Stage  stats 
 #: data/gui/Game.layout:798 ..SingleRace.Vehicle.Text
-#: data/gui/Game_Main.layout:106 ..Window :140..NewGame-Difficulty.Button
+#: data/gui/Game_Main.layout:106 ..Window :160..NewGame-Difficulty.Button
 #: src/game/Championships.cpp:208:457 src/game/Challenges.cpp:526:598
 #: src/game/Gui_InitCar.cpp:150 src/game/Gui_InitChamps.cpp:62:74:91
 msgctxt "Difficulty"
@@ -919,12 +946,6 @@ msgstr "Tekst opisowy pojazdu. Może zawierać porady prowadzenia."
 msgctxt "TipNewGameCar"
 msgid "Restart game."
 msgstr "Restart gry."
-
-#. Color  params 
-#: data/gui/Game.layout:909 ..SingleRace.Setup.Tab
-msgctxt "Paint"
-msgid "Paint"
-msgstr "Lakier"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:57
@@ -2153,6 +2174,74 @@ msgctxt "TipRearThrottleInverse"
 msgid "Inverse throttle and brake function in rear gear."
 msgstr "Odwróć funkcję gazu i hamulca na wstecznym biegu."
 
+#. MAIN  options 
+#: data/gui/Editor_Options.layout:948 ..Options.Settings.Settings.Text
+#: data/gui/Game_Options.layout:1477 ..Options.Settings.Text
+#: :1660..Options.Tweak.Advanced.Check
+msgctxt "Startup"
+msgid "Startup"
+msgstr "Przy starcie"
+
+#. MAIN  options 
+#: data/gui/Game_Help.layout:325 ..Welcometo.Button
+#: data/gui/Game_Options.layout:224 ..Options.Tab
+#: :340..Options.Input.Shortcuts.Text
+msgctxt "Input"
+msgid "Input"
+msgstr "Sterowanie"
+
+#. MAIN  options 
+#: data/gui/Editor.layout:3175 ..Editor.Vegetation.Surface.Surface.Text
+#: data/gui/Editor_Track.layout:636 ..Track.Game.Text
+#: data/gui/Game_Options.layout:358 ..Options.Input.Shortcuts.Text
+#: :1274..Options.Tab data/gui/Game_Tweak.layout:402 ..Tweak.Surface.Text
+msgctxt "Sound"
+msgid "Sound"
+msgstr "Dźwięk"
+
+#. MAIN  options 
+#: data/gui/Game_Options.layout:1282 ..Options.Sound.Main.Text
+#: :1402..Options.Sound.Other.Text
+msgctxt "Volume"
+msgid "Volume"
+msgstr "Głośność"
+
+#. Graphics 
+#: data/gui/Editor_Help.layout:245 ..Help.Input/help.Shortcuts.Text
+#: data/gui/Editor_Options.layout:203 ..Options.Tab
+#: data/gui/Game_Options.layout:351 ..Options.Input.Shortcuts.Text
+#: :748..Options.Tab
+msgctxt "Graphics"
+msgid "Graphics"
+msgstr "Grafika"
+
+#. Graphics 
+#: data/gui/Editor_Options.layout:28 ..Options.Screen.Main.Text
+#: :117..Options.Screen.Video.Text :165..Options.Screen.GUI.Text
+#: :212..Options.Graphics.Text data/gui/Game_Options.layout:28
+#: :757..Options.Graphics.Text
+msgctxt "NeedRestart"
+msgid "* need restart"
+msgstr "* wymaga restartu"
+
+#. Graphics 
+#: data/gui/Game_Options.layout:751 ..Options.Graphics.Text
+msgctxt "NeedNewGame"
+msgid "* need New Game"
+msgstr "* wymaga Nowej Gry"
+
+#. Graphics 
+#: data/gui/Editor_Options.layout:260 ..Options.Graphics.Reflections.Button
+#: :334..Options.Graphics.Water.Button :396..Options.Graphics.Shadows.Button
+#: :478..Options.Graphics.Vegetation.Button
+#: :576..Options.Graphics.Textures.Button data/gui/Game_Options.layout:805
+#: :879..Options.Graphics.Water.Button :941..Options.Graphics.Shadows.Button
+#: :1023..Options.Graphics.Vegetation.Button
+#: :1121..Options.Graphics.Textures.Button
+msgctxt "Apply"
+msgid "Apply"
+msgstr "Zastosuj"
+
 #. Replay 
 #: data/gui/Game_Options.layout:278 ..Options.Input.General.Text
 #: :330..Options.Input.Shortcuts.Text data/gui/Game_Replay.layout:17
@@ -2466,47 +2555,6 @@ msgctxt "SleepMS"
 msgid "Sleep interval [milisec]"
 msgstr "Czas czekania [milisek]"
 
-#. Screen  info 
-#: data/gui/Editor_Options.layout:28 ..Options.Screen.Main.Text
-#: :117..Options.Screen.Video.Text :165..Options.Screen.GUI.Text
-#: :212..Options.Graphics.Text data/gui/Game_Options.layout:28
-#: :757..Options.Graphics.Text
-msgctxt "NeedRestart"
-msgid "* need restart"
-msgstr "* wymaga restartu"
-
-#. Screen  info 
-#: data/gui/Editor.layout:1890 ..Editor.Grasses.Properties.Text
-#: data/gui/Editor_Options.layout:150 ..Options.Screen.Video.Check
-#: :224..Options.Graphics.Text data/gui/Game_Options.layout:150
-#: :769..Options.Graphics.Text
-msgctxt "NotDone"
-msgid "not done yet, ToDo"
-msgstr "jeszcze nie zrobiono, do zrobienia"
-
-#. Screen  info 
-#: data/gui/Editor_Options.layout:218 ..Options.Graphics.Text
-#: data/gui/Game_Options.layout:763
-msgctxt "NeedApply"
-msgid "need Apply"
-msgstr "wymaga Zastosuj"
-
-#. Screen  info 
-#: data/gui/Editor_Options.layout:230 ..Options.Graphics.Text
-msgctxt "Ignored"
-msgid "ignored"
-msgstr "ignorowane"
-
-#. Screen  info 
-#: data/gui/Editor_Options.layout:242 ..Options.Graphics.Edit
-#: data/gui/Game_Options.layout:781
-msgctxt "GraphicsRightHQ"
-msgid ""
-"By default better quality (less Fps) is on right. Marked with + if on left."
-msgstr ""
-"Domyślnie lepsza jakość (mniej klatek na sekundę) jest po prawej. Zaznaczone "
-"+ gdy po lewej."
-
 #. Graphics Presets 
 #: data/gui/Editor_Options.layout:74 ..Options.Screen.Main.Text
 #: data/gui/Game_Options.layout:74
@@ -2562,13 +2610,43 @@ msgctxt "GraphicsAll_Ultra"
 msgid "Ultra"
 msgstr "Ultra"
 
-#. Network Multiplayer  headers 
-#: data/gui/Game.layout:1708 ..SingleRace.Tab data/gui/Game_Options.layout:327
-#: ..Options.Input.Shortcuts.Text data/gui/Game_Utils.layout:177 ..Window
-#: src/game/Gui_Replay.cpp:166 src/game/Gui_Util.cpp:185
-msgctxt "Multiplayer"
-msgid "Multiplayer"
-msgstr "Multiplayer"
+#. Graphics  info 
+#: data/gui/Editor.layout:1890 ..Editor.Grasses.Properties.Text
+#: data/gui/Editor_Options.layout:150 ..Options.Screen.Video.Check
+#: :224..Options.Graphics.Text data/gui/Game_Options.layout:150
+#: :769..Options.Graphics.Text
+msgctxt "NotDone"
+msgid "not done yet, ToDo"
+msgstr "jeszcze nie zrobiono, do zrobienia"
+
+#. Graphics  info 
+#: data/gui/Editor_Options.layout:218 ..Options.Graphics.Text
+#: data/gui/Game_Options.layout:763
+msgctxt "NeedApply"
+msgid "need Apply"
+msgstr "wymaga Zastosuj"
+
+#. Graphics  info 
+#: data/gui/Editor_Options.layout:230 ..Options.Graphics.Text
+msgctxt "Ignored"
+msgid "ignored"
+msgstr "ignorowane"
+
+#. Graphics  info 
+#: data/gui/Game_Options.layout:787 ..Options.Graphics.Button
+msgctxt "RestartApply"
+msgid "Restart game, to apply *changes."
+msgstr "Zrestartuj, aby zmienić *"
+
+#. Graphics  info 
+#: data/gui/Editor_Options.layout:242 ..Options.Graphics.Edit
+#: data/gui/Game_Options.layout:781
+msgctxt "GraphicsRightHQ"
+msgid ""
+"By default better quality (less Fps) is on right. Marked with + if on left."
+msgstr ""
+"Domyślnie lepsza jakość (mniej klatek na sekundę) jest po prawej. Zaznaczone "
+"+ gdy po lewej."
 
 #. Network Multiplayer  headers 
 #: src/game/Gui_Init.cpp:447
@@ -2593,7 +2671,7 @@ msgid "Player"
 msgstr "Gracz"
 
 #. Network Multiplayer  headers 
-#: src/game/Gui_Init.cpp:450 src/game/Gui_Util.cpp:185:188
+#: src/game/Gui_Init.cpp:450 src/game/Gui_Util.cpp:187:190
 #: src/game/Gui_Network.cpp:129
 msgctxt "Players"
 msgid "Players"
@@ -2870,177 +2948,6 @@ msgid ""
 msgstr ""
 "Utworzenie gry sieciowej wymaga przekierowania portów. Dołączenie się do "
 "istniejącej nie wymaga, jeśli inni gracze mają."
-
-#. Effects  Main 
-#: data/gui/Game_Options.layout:354 ..Options.Input.Shortcuts.Text
-#: :1212..Options.Graphics.Tab
-msgctxt "Effects"
-msgid "Effects"
-msgstr "Efekty"
-
-#. Effects  Main 
-#: data/gui/Game_Options.layout:1221 ..Options.Graphics.Effects.Check
-msgctxt "AllEffects"
-msgid "Effects Enabled"
-msgstr "Efekty włączone"
-
-#. Effects 
-#: data/gui/Game_Options.layout:1228 ..Options.Graphics.Effects.Check
-msgctxt "Bloom"
-msgid "Bloom"
-msgstr "Poświata"
-
-#. Effects 
-#: data/gui/Game_Options.layout:1232 ..Options.Graphics.Effects.Text
-msgctxt "Intensity"
-msgid "Intensity"
-msgstr "Intensywność"
-
-#. Effects 
-msgctxt "OrigImage"
-msgid "Darken"
-msgstr "Ściemnienie"
-
-#. Effects 
-msgctxt "MotionBlur"
-msgid "Motion Blur"
-msgstr "Rozmycie ruchem"
-
-#. Effects 
-msgctxt "godrays"
-msgid "God Rays"
-msgstr "Promienie od słońca"
-
-#. Effects 
-msgctxt "filmgrain"
-msgid "Film Grain"
-msgstr "Ziarno kliszy"
-
-#. Effects 
-#: data/gui/Game_Options.layout:1246 ..Options.Graphics.Effects.Check
-msgctxt "softparticles"
-msgid "Soft Particles"
-msgstr "Gładkie cząstki"
-
-#. Effects DOF 
-msgctxt "DepthOfField"
-msgid "Depth of Field"
-msgstr "Głębia ostrości"
-
-#. Effects DOF 
-#: data/gui/Editor_Options.layout:896 ..Options.View.Pacenotes.Text
-#: data/gui/Game_Options.layout:561
-msgctxt "Near"
-msgid "Near"
-msgstr "Blisko"
-
-#. Effects DOF 
-msgctxt "Far"
-msgid "Far"
-msgstr "Daleko"
-
-#. Effects DOF 
-msgctxt "Small"
-msgid "Small"
-msgstr "Małe"
-
-#. Effects DOF 
-#: data/gui/Common.layout:74 ..Track-Filter.Check
-msgctxt "Big"
-msgid "Big"
-msgstr "Duże"
-
-#. Effects (ambient shadows) 
-#: data/gui/Game_Options.layout:1241 ..Options.Graphics.Effects.Check
-msgctxt "ssao"
-msgid "SSAO"
-msgstr "SSAO"
-
-#. Effects HDR  broken 
-msgctxt "HDRTab"
-msgid "HDR"
-msgstr "HDR"
-
-#. Effects HDR  broken 
-#: data/gui/Game_Options.layout:1251 ..Options.Graphics.Effects.Check
-msgctxt "HDR"
-msgid "HDR+Bloom"
-msgstr "HDR+Blask"
-
-#. Effects HDR  broken 
-#: data/gui/Game_Options.layout:1256 ..Options.Graphics.Effects.Text
-msgctxt "HDRAdaptationScale"
-msgid "Adapt Scale"
-msgstr "Skala dostosowania"
-
-#. Effects HDR  broken 
-#: data/gui/Game_Options.layout:1264 ..Options.Graphics.Effects.Text
-msgctxt "HDRIntensity"
-msgid "Bloom Intensity"
-msgstr "Intensywność blasku"
-
-#. Effects HDR  broken 
-msgctxt "HDROrigImage"
-msgid "Bloom Darken"
-msgstr "Ściemnienie blasku"
-
-#. Effects HDR  broken 
-msgctxt "HDRParam1"
-msgid "Exposure"
-msgstr "Ekspozycja"
-
-#. Effects HDR  broken 
-msgctxt "HDRParam2"
-msgid "Brightness"
-msgstr "Jasność"
-
-#. Effects HDR  broken 
-msgctxt "HDRParam3"
-msgid "Grain"
-msgstr "Ziarnistość"
-
-#. Effects HDR  broken 
-msgctxt "HDRVignettingRadius"
-msgid "Vignetting Radius"
-msgstr "Promień winietowania"
-
-#. Effects HDR  broken 
-msgctxt "HDRVignettingDarkness"
-msgid "Vignetting Darken"
-msgstr "Ściemnienie winietowania"
-
-#. Graphics 
-#: data/gui/Editor_Help.layout:245 ..Help.Input/help.Shortcuts.Text
-#: data/gui/Editor_Options.layout:203 ..Options.Tab
-#: data/gui/Game_Options.layout:351 ..Options.Input.Shortcuts.Text
-#: :748..Options.Tab
-msgctxt "Graphics"
-msgid "Graphics"
-msgstr "Grafika"
-
-#. Graphics 
-#: data/gui/Game_Options.layout:751 ..Options.Graphics.Text
-msgctxt "NeedNewGame"
-msgid "* need New Game"
-msgstr "* wymaga Nowej Gry"
-
-#. Graphics 
-#: data/gui/Game_Options.layout:787 ..Options.Graphics.Button
-msgctxt "RestartApply"
-msgid "Restart game, to apply *changes."
-msgstr "Zrestartuj, aby zmienić *"
-
-#. Graphics 
-#: data/gui/Editor_Options.layout:260 ..Options.Graphics.Reflections.Button
-#: :334..Options.Graphics.Water.Button :396..Options.Graphics.Shadows.Button
-#: :478..Options.Graphics.Vegetation.Button
-#: :576..Options.Graphics.Textures.Button data/gui/Game_Options.layout:805
-#: :879..Options.Graphics.Water.Button :941..Options.Graphics.Shadows.Button
-#: :1023..Options.Graphics.Vegetation.Button
-#: :1121..Options.Graphics.Textures.Button
-msgctxt "Apply"
-msgid "Apply"
-msgstr "Zastosuj"
 
 #. Graphics  Detail 
 #: data/gui/Editor_Track.layout:995 ..Track.Export.Settings.Button
@@ -3516,6 +3423,144 @@ msgctxt "FOV"
 msgid "View angle"
 msgstr "Kąt widzenia"
 
+#. Effects  Main  not used 
+#: data/gui/Game_Options.layout:354 ..Options.Input.Shortcuts.Text
+#: :1212..Options.Graphics.Tab
+msgctxt "Effects"
+msgid "Effects"
+msgstr "Efekty"
+
+#. Effects  Main  not used 
+#: data/gui/Game_Options.layout:1221 ..Options.Graphics.Effects.Check
+msgctxt "AllEffects"
+msgid "Effects Enabled"
+msgstr "Efekty włączone"
+
+#. Effects  Main  not used 
+#: data/gui/Game_Options.layout:1241 ..Options.Graphics.Effects.Check
+msgctxt "ssao"
+msgid "SSAO"
+msgstr "SSAO"
+
+#. Effects  Main  not used 
+#: data/gui/Game_Options.layout:1246 ..Options.Graphics.Effects.Check
+msgctxt "softparticles"
+msgid "Soft Particles"
+msgstr "Gładkie cząstki"
+
+#. Effects  Main  not used 
+#: data/gui/Game_Options.layout:1228 ..Options.Graphics.Effects.Check
+msgctxt "Bloom"
+msgid "Bloom"
+msgstr "Poświata"
+
+#. Effects  Main  not used 
+#: data/gui/Game_Options.layout:1232 ..Options.Graphics.Effects.Text
+msgctxt "Intensity"
+msgid "Intensity"
+msgstr "Intensywność"
+
+#. Effects  Main  not used 
+msgctxt "OrigImage"
+msgid "Darken"
+msgstr "Ściemnienie"
+
+#. Effects  Main  not used 
+msgctxt "MotionBlur"
+msgid "Motion Blur"
+msgstr "Rozmycie ruchem"
+
+#. Effects  Main  not used 
+msgctxt "godrays"
+msgid "God Rays"
+msgstr "Promienie od słońca"
+
+#. Effects  Main  not used 
+msgctxt "filmgrain"
+msgid "Film Grain"
+msgstr "Ziarno kliszy"
+
+#. Effects  Main  not used 
+msgctxt "DepthOfField"
+msgid "Depth of Field"
+msgstr "Głębia ostrości"
+
+#. Effects  Main  not used 
+#: data/gui/Editor_Options.layout:896 ..Options.View.Pacenotes.Text
+#: data/gui/Game_Options.layout:561
+msgctxt "Near"
+msgid "Near"
+msgstr "Blisko"
+
+#. Effects  Main  not used 
+msgctxt "Far"
+msgid "Far"
+msgstr "Daleko"
+
+#. Effects  Main  not used 
+msgctxt "Small"
+msgid "Small"
+msgstr "Małe"
+
+#. Effects  Main  not used 
+#: data/gui/Common.layout:74 ..Track-Filter.Check
+msgctxt "Big"
+msgid "Big"
+msgstr "Duże"
+
+#. Effects  HDR  not used 
+msgctxt "HDRTab"
+msgid "HDR"
+msgstr "HDR"
+
+#. Effects  HDR  not used 
+#: data/gui/Game_Options.layout:1251 ..Options.Graphics.Effects.Check
+msgctxt "HDR"
+msgid "HDR+Bloom"
+msgstr "HDR+Blask"
+
+#. Effects  HDR  not used 
+#: data/gui/Game_Options.layout:1256 ..Options.Graphics.Effects.Text
+msgctxt "HDRAdaptationScale"
+msgid "Adapt Scale"
+msgstr "Skala dostosowania"
+
+#. Effects  HDR  not used 
+#: data/gui/Game_Options.layout:1264 ..Options.Graphics.Effects.Text
+msgctxt "HDRIntensity"
+msgid "Bloom Intensity"
+msgstr "Intensywność blasku"
+
+#. Effects  HDR  not used 
+msgctxt "HDROrigImage"
+msgid "Bloom Darken"
+msgstr "Ściemnienie blasku"
+
+#. Effects  HDR  not used 
+msgctxt "HDRParam1"
+msgid "Exposure"
+msgstr "Ekspozycja"
+
+#. Effects  HDR  not used 
+msgctxt "HDRParam2"
+msgid "Brightness"
+msgstr "Jasność"
+
+#. Effects  HDR  not used 
+msgctxt "HDRParam3"
+msgid "Grain"
+msgstr "Ziarnistość"
+
+#. Effects  HDR  not used 
+msgctxt "HDRVignettingRadius"
+msgid "Vignetting Radius"
+msgstr "Promień winietowania"
+
+#. Effects  HDR  not used 
+msgctxt "HDRVignettingDarkness"
+msgid "Vignetting Darken"
+msgstr "Ściemnienie winietowania"
+
 #. Settings  debug 
 #: data/gui/Game.layout:1596 ..SingleRace.Setup.Tab
 #: data/gui/Game_Options.layout:1400 ..Options.Sound.Tab
@@ -3705,14 +3750,6 @@ msgid "Force car preview"
 msgstr "Wymuś podgląd pojazdu"
 
 #. Settings  startup 
-#: data/gui/Editor_Options.layout:948 ..Options.Settings.Settings.Text
-#: data/gui/Game_Options.layout:1477 ..Options.Settings.Text
-#: :1660..Options.Tweak.Advanced.Check
-msgctxt "Startup"
-msgid "Startup"
-msgstr "Przy starcie"
-
-#. Settings  startup 
 #: data/gui/Editor_Options.layout:969 ..Options.Settings.Settings.Check
 #: data/gui/Game_Options.layout:1498 ..Options.Settings.Check
 msgctxt "MouseCapture"
@@ -3761,14 +3798,6 @@ msgstr "Wiele wątków"
 msgctxt "ScreenshotPng"
 msgid "Screenshots saved as .png"
 msgstr "Zapisuj zrzuty ekranu jako .png"
-
-#. Input  bind 
-#: data/gui/Game_Help.layout:325 ..Welcometo.Button
-#: data/gui/Game_Options.layout:224 ..Options.Tab
-#: :340..Options.Input.Shortcuts.Text
-msgctxt "Input"
-msgid "Input"
-msgstr "Sterowanie"
 
 #. Input  bind 
 #: src/game/Gui_Input.cpp:228
@@ -4176,22 +4205,6 @@ msgstr "Wpólny zakres y"
 msgctxt "TireEdReference"
 msgid "Show reference graph"
 msgstr "Pokaż wykres odniesienia"
-
-#. Sound  main 
-#: data/gui/Editor.layout:3175 ..Editor.Vegetation.Surface.Surface.Text
-#: data/gui/Editor_Track.layout:636 ..Track.Game.Text
-#: data/gui/Game_Options.layout:358 ..Options.Input.Shortcuts.Text
-#: :1274..Options.Tab data/gui/Game_Tweak.layout:402 ..Tweak.Surface.Text
-msgctxt "Sound"
-msgid "Sound"
-msgstr "Dźwięk"
-
-#. Sound  main 
-#: data/gui/Game_Options.layout:1282 ..Options.Sound.Main.Text
-#: :1402..Options.Sound.Other.Text
-msgctxt "Volume"
-msgid "Volume"
-msgstr "Głośność"
 
 #. Sound  main 
 #: data/gui/Game_Options.layout:1287 ..Options.Sound.Main.Text
@@ -7149,7 +7162,7 @@ msgstr ""
 "elementy tras."
 
 #. Hint  welcome screen 
-#: data/gui/Game_Replay.layout:246 ..Window src/game/Gui_Events.cpp:481
+#: data/gui/Game_Replay.layout:246 ..Window src/game/Gui_Events.cpp:492
 msgctxt "Hint"
 msgid "Hint"
 msgstr "Porada"
