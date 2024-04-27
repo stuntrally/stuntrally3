@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-27 16:09+0200\n"
-"PO-Revision-Date: 2024-02-08 12:01+0000\n"
+"PO-Revision-Date: 2024-04-27 17:07+0000\n"
 "Last-Translator: Mattia <mattia.mari@proton.me>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/it/>\n"
@@ -16,9 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
-"1 : 2;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 "
+": 2;\n"
+"X-Generator: Weblate 5.5.1\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -1190,7 +1190,7 @@ msgstr "Coppia max"
 #: src/game/Gui_UtilCar.cpp:439
 msgctxt "Car_MaxPower"
 msgid "Max Power"
-msgstr "Mass.Potenza"
+msgstr "Potenza max"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:442
