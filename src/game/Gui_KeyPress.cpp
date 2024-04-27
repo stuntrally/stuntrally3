@@ -181,11 +181,11 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		switch (skey)
 		{
 		case key(UP):  case key(KP_8):
-			pSet->yGames = (pSet->yGames - 1 + ciSetupBtns) % ciSetupBtns;
+			pSet->yGames = (pSet->yGames - 1 + ciGamesBtns) % ciGamesBtns;
 			gui->toggleGui(false);  return;
 
 		case key(DOWN):  case key(KP_2):
-			pSet->yGames = (pSet->yGames + 1) % ciSetupBtns;
+			pSet->yGames = (pSet->yGames + 1) % ciGamesBtns;
 			gui->toggleGui(false);  return;
 
 		case key(BACKSPACE):    pSet->iMenu = MN1_Setup;
@@ -195,10 +195,15 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(RETURN):
 			switch (pSet->yGames)
 			{
-			case Games_Single:    pSet->iMenu = MN_Single;  break;
+			case Games_Single:       gui->GuiShortcut(MN_Single, TAB_Track);  gui->SetNumPlayers(1);  break;
+			case Games_SplitScreen:  gui->GuiShortcut(MN_Single, TAB_Split);  gui->SetNumPlayers(-2);  break;  // 👥
+			case Games_Multiplayer:  gui->GuiShortcut(MN_Single, TAB_Multi);  gui->SetNumPlayers(1);  break;  // 📡
+
 			case Games_Tutorial:  pSet->iMenu = MN_Tutorial;  break;
 			case Games_Champ:     pSet->iMenu = MN_Champ;  break;
 			case Games_Challenge: pSet->iMenu = MN_Chall;  break;
+			// case Games_Collection:pSet->iMenu = MN_Collect;  break;  // todo
+			// case Games_Career:    pSet->iMenu = MN_Career;  break;
 			case Games_Back:      pSet->iMenu = MN1_Setup;  break;
 			}
 			gui->toggleGui(false);  return;

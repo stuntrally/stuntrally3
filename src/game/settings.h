@@ -38,6 +38,7 @@ const static std::string csGraphNames[Gh_ALL] = {
 enum EMenu
 {	MN1_Main, MN1_Setup, MN1_Games,  // small main menus
 	MN_Single, MN_Tutorial, MN_Champ, MN_Chall,  // game, same window
+	MN_Collect, MN_Career,
 	MN_HowTo, MN_Replays,  // other windows
 	MN_Help, MN_Options, MN_Materials   // common
 };

@@ -25,7 +25,7 @@ void CGui::InitGuiChamps()
 	Slider* sl;  SV* sv;  Ck* ck;
 	Mli2 li;
 	int i,c;
-	app->mMainSetupBtns[1]->setVisible(pSet->difficulty < 4);  // tutorials
+	app->mMainGamesBtns[Games_Tutorial]->setVisible(pSet->difficulty < 4);  // tutorials hide
 
 	//  track descr  2nd set
 	gcom->panTrkDesc[1] = fWP("panTrkDesc1");

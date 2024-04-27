@@ -102,14 +102,16 @@ void CGui::toggleGui(bool toggle)
 	///  update track tab, for champs wnd
 	bool game = mnu == MN_Single,   champ = mnu == MN_Champ,
 		tutor = mnu == MN_Tutorial, chall = mnu == MN_Chall,
-		chAny = champ || tutor || chall, gc = game || chAny;
+		chAny = champ || tutor || chall, gc = game || chAny,
+		split = !chAny && pSet->yGames == Games_SplitScreen,
+		multi = !chAny && pSet->yGames == Games_Multiplayer;
 	
 	UString sCh = tutor ? TR("#FFC020#{Tutorial}") :
 		champ ? TR("#B0FFB0#{Championship}") : TR("#C0C0FF#{Challenge}");
 
 	UpdChampTabVis();
 
-	bool notMain = gui && !(mnu == MN1_Main || mnu == MN1_Setup);
+	bool notMain = gui && !(mnu == MN1_Main || mnu == MN1_Setup || mnu == MN1_Games);
 	bool vis = notMain && gc;
 	app->mWndGame->setVisible(vis);
 	if (vis)
@@ -124,14 +126,13 @@ void CGui::toggleGui(bool toggle)
 		Tab t = app->mTabsGame;
 		size_t id = t->getIndexSelected();
 		t->setButtonWidthAt(TAB_Track, chAny ? 1 :-1);  if (id == TAB_Track && chAny)  t->setIndexSelected(TAB_Champs);
-		t->setButtonWidthAt(TAB_Split, chAny ? 1 :-1);  if (id == TAB_Split && chAny)  t->setIndexSelected(TAB_Champs);
-		t->setButtonWidthAt(TAB_Multi, chAny ? 1 :-1);  if (id == TAB_Multi && chAny)  t->setIndexSelected(TAB_Champs);
+		t->setButtonWidthAt(TAB_Split, split ?-1 : 1);  if (id == TAB_Split && chAny)  t->setIndexSelected(TAB_Champs);
+		t->setButtonWidthAt(TAB_Multi, multi ?-1 : 1);  if (id == TAB_Multi && chAny)  t->setIndexSelected(TAB_Champs);
 		
 		t->setButtonWidthAt(TAB_Champs,chAny ?-1 : 1);  if (id == TAB_Champs && !chAny)  t->setIndexSelected(TAB_Track);
 		t->setButtonWidthAt(TAB_Stages,chAny ?-1 : 1);  if (id == TAB_Stages && !chAny)  t->setIndexSelected(TAB_Track);
 		t->setButtonWidthAt(TAB_Stage, chAny ?-1 : 1);  if (id == TAB_Stage  && !chAny)  t->setIndexSelected(TAB_Track);
 	}
-
 
 	gcom->bnQuit->setVisible(gui);
 	app->updMouse();

@@ -169,19 +169,30 @@ void CGui::radKmh(WP wp){	radUpd(true);   }
 void CGui::radMph(WP wp){	radUpd(false);  }
 
 
+//  👥 Splitscreen
+void CGui::SetNumPlayers(int plr)
+{
+	auto& splr = pSet->gui.local_players;
+	if (plr >= 0)
+		splr = plr;
+	else if (splr == 1)  // split sets more plrs
+		splr = -plr;
+
+	if (valLocPlayers)
+		valLocPlayers->setCaption(toStr(splr));
+	UpdWndTitle();
+
+	for (int t = 0; t < 2; ++t)  // hide tabs
+	for (int p = 1; p < (t == 0 ? MAX_Vehicles : MAX_Players); ++p)
+		tbPlr[t]->setButtonWidthAt(p, splr > p ? -1 : 1);
+}
+
 void CGui::btnNumPlayers(WP wp)
 {
 	auto& plr = pSet->gui.local_players;
 	if (wp)
 		sscanf(wp->getName().c_str(), "btnPlayers%d", &plr);
-
-	if (valLocPlayers)
-		valLocPlayers->setCaption(toStr(plr));
-	UpdWndTitle();
-
-	for (int t = 0; t < 2; ++t)  // hide tabs
-	for (int p = 1; p < (t == 0 ? MAX_Vehicles : MAX_Players); ++p)
-		tbPlr[t]->setButtonWidthAt(p, plr > p ? -1 : 1);
+	SetNumPlayers(plr);
 }
 
 void CGui::chkStartOrd(WP wp)

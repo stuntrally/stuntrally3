@@ -140,11 +140,14 @@ void CGui::btnMainMenu(WP wp)
 	if (wp == app->mMainGamesBtns[i])
 	{	switch (i)
 		{
-		case Games_Single:     pSet->iMenu = MN_Single;  break;
+		case Games_Single:       GuiShortcut(MN_Single, TAB_Track);  SetNumPlayers(1);  break;
+		case Games_SplitScreen:  GuiShortcut(MN_Single, TAB_Split);  SetNumPlayers(-2);  break;  // 👥
+		case Games_Multiplayer:  GuiShortcut(MN_Single, TAB_Multi);  SetNumPlayers(1);  break;  // 📡
+
 		case Games_Tutorial:   pSet->iMenu = MN_Tutorial;  break;
 		case Games_Champ:      pSet->iMenu = MN_Champ;  break;
 		case Games_Challenge:  pSet->iMenu = MN_Chall;  break;
-		case Setup_Back:       pSet->iMenu = MN1_Setup;  break;
+		case Games_Back:       pSet->iMenu = MN1_Setup;  break;
 		}
 		app->gui->toggleGui(false);
 		return;
@@ -252,7 +255,7 @@ void CGui::comboDiff(Cmb cmb, size_t val)
 	case 5:  SetDiff(0,17, 0,6, 4,4, L,  0,0,0,0, "SX", "Mos5-Factory");  break;  // Isl17-AdapterIslands
 	case 6:  SetDiff(0,17, 0,D, 4,4, L,  0,0,0,0, "U6", "Uni7-GlassStairs");  break;
 	}
-	app->mMainGamesBtns[1]->setVisible(val < 4);  // tutorials
+	app->mMainGamesBtns[Games_Tutorial]->setVisible(val < 4);  // tutorials hide
 	gcom->TrackListUpd(true);  gcom->listTrackChng(gcom->trkList,0);
 	listCarChng(carList,0);
 

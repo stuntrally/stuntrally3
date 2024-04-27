@@ -433,7 +433,7 @@ public:
 	void btnNewGame(WP), btnNewGameStart(WP);
 
 	//  👥 split screen
-	void btnNumPlayers(WP);
+	void btnNumPlayers(WP), SetNumPlayers(int num);
 	Txt valLocPlayers =0;
 	Ck ckSplitVert;
 	void chkStartOrd(WP);
