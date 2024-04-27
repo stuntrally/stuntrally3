@@ -332,7 +332,7 @@ void CGui::TweakColSave()
 	TweakColUpd(true);
 	
 	app->scn->data->objs->LoadXml();
-	LogO(String("**** Loaded Vegetation collisions: ") + toStr(app->scn->data->objs->colsMap.size()));
+	LogO(String("L*** Loaded Vegetation collisions: ") + toStr(app->scn->data->objs->colsMap.size()));
 	app->NewGame();
 }
 

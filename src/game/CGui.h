@@ -443,8 +443,8 @@ public:
 	///  🏆 Championships, Challenges, Collections
 	///-----------------------------------------------------------------------------------------------------------------
 
-	Btn btStTut =0, btStChamp =0, btStChall =0, btStCollect =0;
-	Img imgTut =0, imgChamp =0, imgChall =0, imgCollect =0, imgCareer =0;
+	Btn btStTut =0, btStChamp =0, btStChall =0, btStCollect =0;  // start
+	Img imgTut =0, imgChamp =0, imgChall =0, imgCollect =0, imgCareer =0;  // ico
 	Tab tabChamp =0, tabChall =0, tabCollect =0;  // tabs
 
 	void tabChampType(Tab, size_t), tabChallType(Tab, size_t), tabCollectType(Tab, size_t);
@@ -501,11 +501,11 @@ public:
 	CK(ChampRev);  CK(Ch_All);
 
 	void ReadTrkStatsChamp(Ogre::String track,bool reverse);
-	void updChampListDim();
+	void updChsListDim();
 
 	//  chall util
 	bool IsChallCar(Ogre::String name), IsCollectCar(Ogre::String name);
-	bool isChallGui(), isCollectGui();  void BackFromChs();
+	bool isChampGui(), isChallGui(), isCollectGui();  void BackFromChs();
 
 
 	//  🛠️ _Tools_  ----

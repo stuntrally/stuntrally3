@@ -195,9 +195,9 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(RETURN):
 			switch (pSet->yGames)
 			{
-			case Games_Single:       gui->GuiShortcut(MN_Single, TAB_Track);  gui->SetNumPlayers(1);  break;
-			case Games_SplitScreen:  gui->GuiShortcut(MN_Single, TAB_Split);  gui->SetNumPlayers(-2);  break;  // 👥
-			case Games_Multiplayer:  gui->GuiShortcut(MN_Single, TAB_Multi);  gui->SetNumPlayers(1);  break;  // 📡
+			case Games_Single:       gui->SetNumPlayers(1);  gui->GuiShortcut(MN_Single, TAB_Track);  break;
+			case Games_SplitScreen:  gui->SetNumPlayers(-2); gui->GuiShortcut(MN_Single, TAB_Split);  break;  // 👥
+			case Games_Multiplayer:  gui->SetNumPlayers(1);  gui->GuiShortcut(MN_Single, TAB_Multi);  break;  // 📡
 
 			case Games_Tutorial:   pSet->iMenu = MN_Tutorial;  break;
 			case Games_Champ:      pSet->iMenu = MN_Champ;  break;

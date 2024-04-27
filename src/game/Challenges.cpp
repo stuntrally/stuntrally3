@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "CData.h"
+#include "settings.h"
 #include "TracksXml.h"
 #include "GuiCom.h"
 #include "CScene.h"
@@ -29,6 +30,10 @@ void CGui::BackFromChs()
 	CarListUpd();  // off filtering
 }
 
+bool CGui::isChampGui()
+{
+	return pSet->iMenu == MN_Champ || pSet->iMenu == MN_Tutorial;
+}
 bool CGui::isChallGui()
 {
 	return pSet->iMenu == MN_Chall;

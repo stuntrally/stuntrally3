@@ -13,7 +13,7 @@ void BrushesIni::Load(std::string sfile)
 {
 	CONFIGFILE c;  c.Load(sfile);
 	Serialize(false, c);
-	LogO("**** Loaded brushes: "+toStr(v.size()));
+	LogO("L*** Loaded brushes: "+toStr(v.size()));
 }
 void BrushesIni::Save(std::string sfile)
 {

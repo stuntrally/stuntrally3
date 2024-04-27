@@ -80,6 +80,18 @@ void CGui::InitGuiChamps()
 	li->addColumn(" ", colChL[c++]);
 	liChalls = li;
 
+	//  💎 Collections list  -------------
+	li = trktab->createWidget<MultiList2>("MultiListBox",0,0,400,300, Align::Left | Align::VStretch);
+	Lev(li, CollectChng);  li->setVisible(false);
+
+	li->removeAllColumns();  c=0;
+	li->addColumn("#80A080", colCol[c++]);
+	li->addColumn(TR("#60F060#{Name}"), colCol[c++]);		li->addColumn(TR("#80F040#{Track}"), colCol[c++]);
+	li->addColumn(TR("#F0D040#{Difficulty}"), colChL[c++]);	li->addColumn(TR("#F09090#{Vehicles}"), colCol[c++]);
+	li->addColumn(TR("#F0F8FF#{Prize}"), colCol[c++]);		li->addColumn(TR("#80E0FF#{Time}"), colCol[c++]);
+	li->addColumn(" ", colChL[c++]);
+	liCollect = li;
+
 
 	//  🏞️ Stages list  -------------
 	trktab = (TabItem*)app->mWndGame->findWidget("TabStages");
@@ -96,19 +108,6 @@ void CGui::InitGuiChamps()
 	liStages = li;
 
 
-	//  💎 Collections list  -------------
-	li = trktab->createWidget<MultiList2>("MultiListBox",0,0,400,300, Align::Left | Align::VStretch);
-	Lev(li, CollectChng);  li->setVisible(false);
-
-	li->removeAllColumns();  c=0;
-	li->addColumn("#80A080", colChL[c++]);
-	li->addColumn(TR("#60F060#{Name}"), colChL[c++]);		li->addColumn(TR("#F0D040#{Difficulty}"), colChL[c++]);
-	li->addColumn(TR("#F09090#{Vehicles}"), colChL[c++]);
-	li->addColumn(TR("#F0F8FF#{Prize}"), colChL[c++]);		li->addColumn(TR("#80E0FF#{Time}"), colChL[c++]);
-	li->addColumn(" ", colChL[c++]);
-	liCollect = li;
-
-
 	//  tabs
 	tabChamp = fTab("ChampType");        Tev(tabChamp, ChampType);  tabChamp->setIndexSelected(pSet->champ_type);
 	tabChall = fTab("SubTabChallType");  Tev(tabChall, ChallType);  tabChall->setIndexSelected(pSet->chall_type);
@@ -117,15 +116,15 @@ void CGui::InitGuiChamps()
 	imgTut     = fImg("imgTut");      imgChamp  = fImg("imgChamp");   imgChall = fImg("imgChall");
 	imgCollect = fImg("imgCollect");  imgCareer = fImg("imgCareer");
 
-	updChampListDim();
+	updChsListDim();
 	ChampsListUpdate();  listChampChng(liChamps, liChamps->getIndexSelected());
 	ChallsListUpdate();  listChallChng(liChalls, liChalls->getIndexSelected());
 	CollectListUpdate();  listCollectChng(liCollect, liCollect->getIndexSelected());
 
-	Btn("btnTutStart",  btnChampStart);  btStTut = btn;
-	Btn("btnChampStart",btnChampStart);  btStChamp = btn;
-	Btn("btnChallStart",btnChallStart);  btStChall = btn;	Btn("btnChRestart", btnChRestart);   btChRestart = btn;
-	Btn("btnCollectStart",btnChallStart);  btStCollect = btn;
+	Btn("btnTutStart",   btnChampStart);  btStTut = btn;
+	Btn("btnChampStart", btnChampStart);  btStChamp = btn;
+	Btn("btnChallStart", btnChallStart);  btStChall = btn;	Btn("btnChRestart", btnChRestart);   btChRestart = btn;
+	Btn("btnCollectStart", btnCollectStart);  btStCollect = btn;
 
 
 	//  ch other

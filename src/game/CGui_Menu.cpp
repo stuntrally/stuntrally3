@@ -140,9 +140,9 @@ void CGui::btnMainMenu(WP wp)
 	if (wp == app->mMainGamesBtns[i])
 	{	switch (i)
 		{
-		case Games_Single:       GuiShortcut(MN_Single, TAB_Track);  SetNumPlayers(1);  break;
-		case Games_SplitScreen:  GuiShortcut(MN_Single, TAB_Split);  SetNumPlayers(-2);  break;  // 👥
-		case Games_Multiplayer:  GuiShortcut(MN_Single, TAB_Multi);  SetNumPlayers(1);  break;  // 📡
+		case Games_Single:       SetNumPlayers(1);  GuiShortcut(MN_Single, TAB_Track);  break;
+		case Games_SplitScreen:  SetNumPlayers(-2); GuiShortcut(MN_Single, TAB_Split);  break;  // 👥
+		case Games_Multiplayer:  SetNumPlayers(1);  GuiShortcut(MN_Single, TAB_Multi);  break;  // 📡
 
 		case Games_Tutorial:   pSet->iMenu = MN_Tutorial;  break;
 		case Games_Champ:      pSet->iMenu = MN_Champ;  break;

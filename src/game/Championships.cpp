@@ -109,7 +109,7 @@ void CGui::fillChampsList(std::vector<int> vIds)
 		const int ntrks = pc.trks.size(), ct = pc.curTrack;
 		const String& clr = clrCh[ch.type];
 
-		liChamps->addItem(""/*clr+ toStr(i)*/, i+1);  int l = liChamps->getItemCount()-1;
+		liChamps->addItem("", i+1);  int l = liChamps->getItemCount()-1;
 		liChamps->setSubItemNameAt(1,l, clr+ ch.name.c_str());
 		liChamps->setSubItemNameAt(2,l, gcom->getClrDiff(ch.diff)+ TR("#{Diff"+toStr(ch.diff)+"}"));
 
@@ -127,14 +127,13 @@ void CGui::fillChampsList(std::vector<int> vIds)
 
 
 ///  upd dim  champ,chall,stages lists  ----------
-void CGui::updChampListDim()
+void CGui::updChsListDim()
 {
 	const IntCoord& wi = app->mWndGame->getCoord();
 
 	//  Champs  -----
 	if (!liChamps)  return;
 	int c,w;
-
 	int sum = 0, cnt = liChamps->getColumnCount(), sw = 0;
 	for (c=0; c < cnt; ++c)  sum += colCh[c];
 	for (c=0; c < cnt; ++c)
@@ -144,11 +143,10 @@ void CGui::updChampListDim()
 	}
 	int xt = 0.03*wi.width, yt = 0.10*wi.height;  // pos
 	liChamps->setCoord(xt, yt, sw + 8/*frame*/, 0.40/*height*/*wi.height);
-	liChamps->setVisible(!isChallGui());
+	liChamps->setVisible(isChampGui());
 
 	//  Stages  -----
 	if (!liStages)  return;
-
 	sum = 0;  cnt = liStages->getColumnCount();  sw = 0;
 	for (c=0; c < cnt; ++c)  sum += colSt[c];  sum += 43;//-
 	for (c=0; c < cnt; ++c)
@@ -161,7 +159,6 @@ void CGui::updChampListDim()
 
 	//  Challs  -----
 	if (!liChalls)  return;
-
 	sum = 0;  cnt = liChalls->getColumnCount();  sw = 0;
 	for (c=0; c < cnt; ++c)  sum += colChL[c];
 	for (c=0; c < cnt; ++c)
@@ -175,7 +172,6 @@ void CGui::updChampListDim()
 
 	//  Collect  -----
 	if (!liCollect)  return;
-
 	sum = 0;  cnt = liCollect->getColumnCount();  sw = 0;
 	for (c=0; c < cnt; ++c)  sum += colCol[c];
 	for (c=0; c < cnt; ++c)

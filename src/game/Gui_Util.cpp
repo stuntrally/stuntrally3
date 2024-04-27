@@ -105,6 +105,7 @@ void CGui::toggleGui(bool toggle)
 		tutor = mnu == MN_Tutorial, chall = mnu == MN_Chall,
 		collect = mnu == MN_Collect, career = mnu == MN_Career,
 		chAny = tutor || champ || chall || collect || career,
+		stages = tutor || champ || chall,
 		gc = game || chAny,
 		split = !chAny && pSet->yGames == Games_SplitScreen,
 		multi = !chAny && pSet->yGames == Games_Multiplayer;
@@ -126,16 +127,16 @@ void CGui::toggleGui(bool toggle)
 		TabItem* t = app->mTabsGame->getItemAt(TAB_Champs);
 		t->setCaption(sCh);
 	}
-	if (notMain && gc)  // show hide champs,stages
+	if (notMain && gc)  // show hide tabs track,stages,
 	{
 		Tab t = app->mTabsGame;
 		size_t id = t->getIndexSelected();
 		t->setButtonWidthAt(TAB_Track, chAny ? 1 :-1);  if (id == TAB_Track && chAny)  t->setIndexSelected(TAB_Champs);
-		t->setButtonWidthAt(TAB_Split, split ?-1 : 1);  if (id == TAB_Split && chAny)  t->setIndexSelected(TAB_Champs);
-		t->setButtonWidthAt(TAB_Multi, multi ?-1 : 1);  if (id == TAB_Multi && chAny)  t->setIndexSelected(TAB_Champs);
+		t->setButtonWidthAt(TAB_Split, split ?-1 : 1);  if (id == TAB_Split && !split)  t->setIndexSelected(TAB_Champs);
+		t->setButtonWidthAt(TAB_Multi, multi ?-1 : 1);  if (id == TAB_Multi && !multi)  t->setIndexSelected(TAB_Champs);
 		
 		t->setButtonWidthAt(TAB_Champs,chAny ?-1 : 1);  if (id == TAB_Champs && !chAny)  t->setIndexSelected(TAB_Track);
-		t->setButtonWidthAt(TAB_Stages,chAny ?-1 : 1);  if (id == TAB_Stages && !chAny)  t->setIndexSelected(TAB_Track);
+		t->setButtonWidthAt(TAB_Stages,stages?-1 : 1);  if (id == TAB_Stages && !stages) t->setIndexSelected(TAB_Track);
 		t->setButtonWidthAt(TAB_Stage, chAny ?-1 : 1);  if (id == TAB_Stage  && !chAny)  t->setIndexSelected(TAB_Track);
 	}
 

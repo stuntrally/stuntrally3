@@ -1956,13 +1956,13 @@
 				<Widget type="TabControl" skin="TabControl" position="25 26 603 36" name="SubTabCollectType">
 					<Property key="Colour" value="0.9 0.8 1.0"/>
 					<Widget type="TabItem" skin="" position="2 24 578 8">
-						<Property key="Caption" value="#A0D0FF#{Diff2}"/>
+						<Property key="Caption" value="#80C0FF#{Chall_Endurance}"/>
 					</Widget>
-					<!-- <Widget type="TabItem" skin="" position="2 24 578 8">
-						<Property key="Caption" value="#C0FF80#{Chall_Endurance}"/>
-					</Widget> -->
 					<Widget type="TabItem" skin="" position="2 24 578 8">
-						<Property key="Caption" value="#FFC060#{Chall_Chase}"/>
+						<Property key="Caption" value="#C060FF#{Chall_Chase}"/>
+					</Widget>
+					<Widget type="TabItem" skin="" position="2 24 578 8">
+						<Property key="Caption" value="#A0D0FF#{Diff6}"/>
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 578 8">
 						<Property key="Caption" value="#909090#{Test}"/>

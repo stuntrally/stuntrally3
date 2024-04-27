@@ -420,6 +420,11 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 				h.txLap->setCaption(h.sLap);
 		}
 		if (h.txTimes)
+		if (pSet->game.collect_num >= 0)
+			h.txTimes->setCaption(
+				"\n#D0B0FF"+toStr(1)+" / "+toStr(5) +
+				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId)));
+		else
 			h.txTimes->setCaption(
 				(hasLaps ? "#A0E0D0"+toStr(tim.GetCurrentLap(carId)+1)+" / "+toStr(pSet->game.num_laps) : "") +
 				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId))+

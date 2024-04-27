@@ -46,7 +46,8 @@ void CGui::CollectListUpdate()
 		const Collect& col = data->collect->all[id];
 		if (pSet->ch_all || (
 			col.diff >= pSet->difficulty &&
-			col.diff <= pSet->difficulty+1))  vIds[col.type].emplace_back(id);
+			col.diff <= pSet->difficulty+1))
+			vIds[col.type].emplace_back(id);
 	}
 
 	int cntCur = vIds[pSet->collect_type].size();
@@ -90,9 +91,11 @@ void CGui::fillCollectList(std::vector<int> vIds)
 		const String& clr = clrCh[col.type];
 		//String cars = data->carsXml.colormap[col.ci->type];  if (cars.length() != 7)  clr = "#C0D0E0";
 		
-		liCollect->addItem(""/*clr+ toStr(n/10)+toStr(n%10)*/, i+1);  int l = liCollect->getItemCount()-1;
-		liCollect->setSubItemNameAt(1,l, "AAAA"); //clr+ col.nameGui.c_str());
-		liCollect->setSubItemNameAt(2,l, gcom->clrsDiff[col.diff]+ TR("#{Diff"+toStr(col.diff)+"}"));
+		liCollect->addItem("", i+1);  int l = liCollect->getItemCount()-1;
+		liCollect->setSubItemNameAt(1,l, clr+ col.name);
+		liCollect->setSubItemNameAt(2,l, col.track);
+		liCollect->setSubItemNameAt(3,l, gcom->clrsDiff[col.diff]+ TR("#{Diff"+toStr(col.diff)+"}"));
+		liCollect->setSubItemNameAt(4,l, col.cars.GetStr(data->cars));
 		
 		// liCollect->setSubItemNameAt(5,l, gcom->clrsDiff[std::min(8,int(col.time/3.f/60.f))]+ StrTime2(col.time));
 		// liCollect->setSubItemNameAt(6,l, ct == 0 || ct == ntrks ? "" :

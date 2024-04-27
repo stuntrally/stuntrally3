@@ -248,13 +248,19 @@ void CHud::Create()
 		// h.txTimTxt->setFontHeight(32*t);
 		h.txTimTxt->setTextShadowColour(Colour::Black);  h.txTimTxt->setTextShadow(true);
 		h.txTimTxt->setInheritsAlpha(false);
-		h.txTimTxt->setCaption(	(pSet->game.hasLaps()
-			? String("#90D0C0")+TR("#{TBLap}") : "")+
-			"\n#A0E0E0"+TR("#{TBTime}") +
-			"\n#70D070"+TR("#{Track}") +
-			"\n#C0C030"+TR("#{TBPosition}") +
-			"\n#F0C050"+TR("#{TBPoints}") +
-			"\n#C8A898"+TR("#{Progress}") );/*%*/
+		
+		if (pSet->game.collect_num >= 0)
+			h.txTimTxt->setCaption(
+				"\n#C080FF"+TR("#{Collection}") +
+				"\n#A0E0E0"+TR("#{TBTime}") );
+		else
+			h.txTimTxt->setCaption(
+				(pSet->game.hasLaps() ? String("#90D0C0")+TR("#{TBLap}") : "")+
+				"\n#A0E0E0"+TR("#{TBTime}") +
+				"\n#70D070"+TR("#{Track}") +
+				"\n#C0C030"+TR("#{TBPosition}") +
+				"\n#F0C050"+TR("#{TBPoints}") +
+				"\n#C8A898"+TR("#{Progress}") );/*%*/
 
 		h.txTimes = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 240*t,260*t, Align::Left, "Tim"+s);

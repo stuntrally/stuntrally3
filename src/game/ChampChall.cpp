@@ -122,7 +122,7 @@ void App::Ch_NewGame()
 		pSet->game.BoostDefault();  //
 
 		pGame->pause = false;  // wait for wnd close ..?
-		pGame->timer.waiting = true;
+		pGame->timer.waiting = false;
 	}
 	else
 	{	pGame->pause = false;  // single race
@@ -180,17 +180,20 @@ void CGui::UpdChsTabVis()
 		collect = pSet->iMenu == MN_Collect, career = pSet->iMenu == MN_Career;
 	bool chAny = tutor || champ || chall || collect || career;
 
-	imgTut->setVisible(tutor);    btStTut->setVisible(tutor);
-	tabChamp->setVisible(champ);  imgChamp->setVisible(champ);  btStChamp->setVisible(champ);
-	tabChall->setVisible(chall);  imgChall->setVisible(chall);  btStChall->setVisible(chall);
 	btNewGameCar->setVisible(!chAny);
-	imgCollect->setVisible(collect);  btStCollect->setVisible(collect);
-	imgCareer->setVisible(career);
-
-	liChamps->setVisible(!chall);  liChamps->setColour(tutor ? Colour(0.85,0.8,0.75) : Colour(0.75,0.8,0.85));
-	liChalls->setVisible( chall);  liChalls->setColour(Colour(0.74,0.7,0.82));
-	liCollect->setVisible( collect);  liCollect->setColour(Colour(1,0.74,0.7));
+	imgTut->setVisible(tutor);    btStTut->setVisible(tutor);
 	panCh->setColour(tutor ? Colour(0.9,0.8,0.7) : champ ? Colour(0.7,0.9,0.8) : Colour(0.77,0.75,0.92));
+
+	tabChamp->setVisible(champ);  imgChamp->setVisible(champ);  btStChamp->setVisible(champ);
+	liChamps->setVisible(champ || tutor);  liChamps->setColour(tutor ? Colour(0.85,0.8,0.75) : Colour(0.75,0.8,0.85));
+
+	tabChall->setVisible(chall);  imgChall->setVisible(chall);  btStChall->setVisible(chall);
+	liChalls->setVisible(chall);  liChalls->setColour(Colour(0.74,0.7,0.82));
+
+	imgCollect->setVisible(collect);  btStCollect->setVisible(collect);
+	tabCollect->setVisible(collect);
+	liCollect->setVisible(collect);  liCollect->setColour(Colour(0.7,0.6,0.8));
+	imgCareer->setVisible(career);
 
 	if (collect)  CollectListUpdate();  else
 	if (chall)  ChallsListUpdate();  else
