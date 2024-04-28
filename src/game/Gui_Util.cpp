@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "paths.h"
+#include "BaseApp.h"
 #include "CGame.h"
 #include "CGui.h"
 #include "CData.h"
@@ -148,8 +149,7 @@ void CGui::toggleGui(bool toggle)
 		app->mMainPanels[i]->setVisible(pSet->yMain == i);
 	for (int i=0; i < ciSetupBtns; ++i)
 		app->mMainSetupPanels[i]->setVisible(pSet->ySetup == i);
-	for (int i=0; i < ciGamesBtns; ++i)
-		app->mMainGamesPanels[i]->setVisible(pSet->yGames == i);
+	app->updPanGames();
 		
 	//  1st center mouse
 	static bool first = true;
@@ -160,15 +160,17 @@ void CGui::toggleGui(bool toggle)
 	// LogO(String(":::* Time Gui upd: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 
-void CGui::tabGame(Tab, size_t)
+void CGui::tabGame(Tab, size_t)  // main game wnd tab change
 {
-	UpdWndTitle();
+	//UpdWndTitle();
 }
 
 //  🪟 game window title and color
 void CGui::UpdWndTitle()
 {
 	const int mnu = pSet->iMenu;
+	if (mnu < MN_Single && mnu > MN_Career)
+		return;  // not set
 	bool game = mnu == MN_Single,   champ = mnu == MN_Champ,
 		tutor = mnu == MN_Tutorial, chall = mnu == MN_Chall,
 		collect = mnu == MN_Collect, career = mnu == MN_Career,
@@ -202,31 +204,43 @@ void CGui::UpdWndTitle()
 }
 
 
-//  🎛️ Gui Shortcut  ⌨️ alt-letters
+//  🎛️ Gui Shortcut  ⌨️ alt-letters, main menu btns too
 //.......................................................................................
-void CGui::GuiShortcut(EMenu menu, int tab, int subtab)
+void CGui::GuiShortcut(EMenu menu, int tab, int subtab, int game)
 {
-	if (subtab == -1 && (!app->isFocGui || pSet->iMenu != menu))
-		subtab = -2;  // cancel subtab cycling
+	if (subtab == -1 && (!app->isFocGui || (menu != MN_NoCng && pSet->iMenu != menu)))
+		subtab = -2;  // cancel subtab cycling  ?^
 
 	app->isFocGui = true;
-	pSet->iMenu = menu;
-	
+	if (menu != MN_NoCng)  // chg menu
+	{
+		pSet->iMenu = menu;
+
+		if (tab == TAB_Track || tab == TAB_Champs){  
+			SetNumPlayers(1);   app->updPanGames(game);  }
+		if (tab == TAB_Split){  
+			SetNumPlayers(-2);  app->updPanGames(game);  }  // 👥
+		if (tab == TAB_Multi){
+			SetNumPlayers(1);   app->updPanGames(game);  }  // 📡
+	}
+		
 	TabPtr tabs = 0;
 	std::vector<TabControl*>* subt = 0;
 	
-	switch (menu)
+	switch (pSet->iMenu)
 	{	case MN_Replays:   tabs = app->mTabsRpl;  break;
 		case MN_Help:      tabs = app->mTabsHelp;  break;
 		case MN_Options:   tabs = app->mTabsOpts;  subt = &vSubTabsOpts;  break;
 		case MN_Materials: tabs = app->mTabsMat;   subt = &vSubTabsMat;  break;
 		default:           tabs = app->mTabsGame;  subt = &vSubTabsGame;  break;
 	}
-	toggleGui(false);
 
-	if (tab < 0)  return;
+	if (tab < 0)
+	{	toggleGui(false);  return;  }
+
 	size_t t = tabs->getIndexSelected();
 	tabs->setIndexSelected(tab);
+	toggleGui(false);
 
 	if (!subt)  return;
 	TabControl* tc = (*subt)[tab];  if (!tc)  return;
@@ -244,7 +258,8 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab)
 	
 	if (!tc->eventTabChangeSelect.empty())
 		tc->eventTabChangeSelect(tc, tc->getIndexSelected());
-	UpdWndTitle();
+	// UpdWndTitle();
+	toggleGui(false);
 }
 
 //  close netw end

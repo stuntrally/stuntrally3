@@ -61,6 +61,14 @@ bool BaseApp::isTweak()
 	return mWndTweak && mWndTweak->getVisible();
 }
 
+void BaseApp::updPanGames(int yToSet)
+{
+	if (yToSet >= 0)
+		pSet->yGames = yToSet;
+	for (int i=0; i < ciGamesBtns; ++i)
+		mMainGamesPanels[i]->setVisible(pSet->yGames == i);
+}
+
 
 //-------------------------------------------------------------------------------------
 //  🎛️ input events  🖱️ mouse

@@ -572,6 +572,7 @@ void CGui::InitGui()
 	Btn("OpenEdTut", btnEdTut);  Btn("OpenTransl", btnTransl);  // mplr?
 
 
+	UpdWndTitle();
 	bGI = true;  // gui inited, gui events can now save vals
 
 	LogO(Ogre::String(":::* Time Init Gui: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");

@@ -140,16 +140,16 @@ void CGui::btnMainMenu(WP wp)
 	if (wp == app->mMainGamesBtns[i])
 	{	switch (i)
 		{
-		case Games_Single:       SetNumPlayers(1);  GuiShortcut(MN_Single, TAB_Track);  break;
-		case Games_SplitScreen:  SetNumPlayers(-2); GuiShortcut(MN_Single, TAB_Split);  break;  // 👥
-		case Games_Multiplayer:  SetNumPlayers(1);  GuiShortcut(MN_Single, TAB_Multi);  break;  // 📡
+		case Games_Single:       GuiShortcut(MN_Single, TAB_Track, -1, i);  return;
+		case Games_SplitScreen:  GuiShortcut(MN_Single, TAB_Split, -1, i);  return;  // 👥
+		case Games_Multiplayer:  GuiShortcut(MN_Single, TAB_Multi, -1, i);  return;  // 📡
 
-		case Games_Tutorial:   pSet->iMenu = MN_Tutorial;  break;
-		case Games_Champ:      pSet->iMenu = MN_Champ;  break;
-		case Games_Challenge:  pSet->iMenu = MN_Chall;  break;
+		case Games_Tutorial:   GuiShortcut(MN_Tutorial, TAB_Champs, -1, i);  return;
+		case Games_Champ:      GuiShortcut(MN_Champ,    TAB_Champs, -1, i);  return;
+		case Games_Challenge:  GuiShortcut(MN_Chall,    TAB_Champs, -1, i);  return;
 
-		case Games_Collection: pSet->iMenu = MN_Collect;  break;
-		case Games_Career:     pSet->iMenu = MN_Career;  break;  // todo
+		case Games_Collection: GuiShortcut(MN_Collect, TAB_Champs, -1, i);  break;
+		case Games_Career:     GuiShortcut(MN_Career,  TAB_Champs, -1, i);  break;
 		case Games_Back:       pSet->iMenu = MN1_Setup;  break;
 		}
 		app->gui->toggleGui(false);

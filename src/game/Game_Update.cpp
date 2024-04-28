@@ -198,7 +198,7 @@ void App::update( float dt )
 		         pg = alt ? 64 : ctrl ? 32 : 8;
 
 		if (isFocGui && !isTweak() && !bLoading &&
-			pSet->iMenu >= MN_Single && pSet->iMenu <= MN_Chall)
+			pSet->iMenu >= MN_Single && pSet->iMenu <= MN_Career)
 		{
 			if (keyDown)  fDn += dt;  else  if (keyPgDown)  fPgDn += dt;  else
 			if (keyUp)    fUp += dt;  else  if (keyPgUp)    fPgUp += dt;  else

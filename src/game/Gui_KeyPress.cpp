@@ -159,7 +159,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			gui->toggleGui(false);  return;
 
 		case key(BACKSPACE):    pSet->iMenu = MN1_Main;
-			gui->toggleGui(false);  break;
+			gui->toggleGui(false);  return;
 
 		case key(KP_ENTER):
 		case key(RETURN):
@@ -189,22 +189,22 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			gui->toggleGui(false);  return;
 
 		case key(BACKSPACE):    pSet->iMenu = MN1_Setup;
-			gui->toggleGui(false);  break;
+			gui->toggleGui(false);  return;
 
 		case key(KP_ENTER):
 		case key(RETURN):
 			switch (pSet->yGames)
 			{
-			case Games_Single:       gui->SetNumPlayers(1);  gui->GuiShortcut(MN_Single, TAB_Track);  break;
-			case Games_SplitScreen:  gui->SetNumPlayers(-2); gui->GuiShortcut(MN_Single, TAB_Split);  break;  // 👥
-			case Games_Multiplayer:  gui->SetNumPlayers(1);  gui->GuiShortcut(MN_Single, TAB_Multi);  break;  // 📡
+			case Games_Single:       gui->GuiShortcut(MN_Single, TAB_Track);  return;
+			case Games_SplitScreen:  gui->GuiShortcut(MN_Single, TAB_Split);  return;  // 👥
+			case Games_Multiplayer:  gui->GuiShortcut(MN_Single, TAB_Multi);  return;  // 📡
 
-			case Games_Tutorial:   pSet->iMenu = MN_Tutorial;  break;
-			case Games_Champ:      pSet->iMenu = MN_Champ;  break;
-			case Games_Challenge:  pSet->iMenu = MN_Chall;  break;
+			case Games_Tutorial:   gui->GuiShortcut(MN_Tutorial, TAB_Champs);  return;
+			case Games_Champ:      gui->GuiShortcut(MN_Champ,    TAB_Champs);  return;
+			case Games_Challenge:  gui->GuiShortcut(MN_Chall,    TAB_Champs);  return;
 			
-			case Games_Collection: pSet->iMenu = MN_Collect;  break;
-			case Games_Career:     pSet->iMenu = MN_Career;  break;  // todo
+			case Games_Collection: gui->GuiShortcut(MN_Collect, TAB_Champs);  break;
+			case Games_Career:     gui->GuiShortcut(MN_Career,  TAB_Champs);  break;
 			case Games_Back:       pSet->iMenu = MN1_Setup;  break;
 			}
 			gui->toggleGui(false);  return;
@@ -241,19 +241,21 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	//************************************************************************************************************
 	//  shortcut keys for gui access (alt-Q,C,S,G,V,.. )
 	if (alt && !shift)
+	{	EMenu no = ctrl ? MN_Single : MN_NoCng;  // ctrl sets game mode
+		auto gm = ctrl ? Games_Single : -1;
 		switch (skey)     //  alt- Shortcuts  🎛️
 		{
-			case key(Q):	gui->GuiShortcut(MN_Single, TAB_Track); return;  // Q Track  🏞️
-			case key(C):	gui->GuiShortcut(MN_Single, TAB_Car);	return;  // C Car  🚗
+			case key(Q):	gui->GuiShortcut(no, TAB_Track, -1, gm);  return;  // Q Track  🏞️
+			case key(C):	gui->GuiShortcut(no, TAB_Car,   -1, gm);  return;  // C Car  🚗
+			case key(W):	gui->GuiShortcut(no, TAB_Setup, -1, gm);  return;  // W Setup  🔩
 
-			case key(W):	gui->GuiShortcut(MN_Single, TAB_Setup); return;  // W Setup  🔩
-			case key(G):	gui->GuiShortcut(MN_Single, TAB_Split);	return;  // G SplitScreen  👥
+			case key(G):	gui->GuiShortcut(MN_Single,   TAB_Split, -1, Games_SplitScreen);  return;  // G SplitScreen  👥
+			case key(U):	gui->GuiShortcut(MN_Single,   TAB_Multi, -1, Games_Multiplayer);  return;  // U Multiplayer  📡
 
-			case key(J):	gui->GuiShortcut(MN_Tutorial, TAB_Champs);	return;  // J Tutorials
-			case key(H):	gui->GuiShortcut(MN_Champ,    TAB_Champs);	return;  // H Champs  🏆
-			case key(L):	gui->GuiShortcut(MN_Chall,    TAB_Champs);	return;  // L Challs  🥇
+			case key(J):	gui->GuiShortcut(MN_Tutorial, TAB_Champs, -1, Games_Tutorial);	return;  // J Tutorials
+			case key(H):	gui->GuiShortcut(MN_Champ,    TAB_Champs, -1, Games_Champ);		return;  // H Champs  🏆
+			case key(L):	gui->GuiShortcut(MN_Chall,    TAB_Champs, -1, Games_Challenge);	return;  // L Challs  🥇
 
-			case key(U):	gui->GuiShortcut(MN_Single,   TAB_Multi);	return;  // U Multiplayer  📡
 			case key(R):	gui->GuiShortcut(MN_Replays,  1);	return;		     // R Replays  📽️
 
 			case key(S):	gui->GuiShortcut(MN_Options, TABo_Screen);	return;  // S Screen  🖥️
@@ -269,7 +271,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			case key(F):	gui->GuiShortcut(MN_Materials, 1);  return;  // F Material editor  🔮
 			case key(K):	gui->GuiShortcut(MN_Options, TABo_Tweak);  return;  // K -Tweak  🔧
 			default:  break;
-		}
+	}	}
 	//............................................................................................................
 	//>--  dev shortcuts, alt-shift - start Test Tracks  🏞️
 	if (pSet->dev_keys && alt && shift && !mClient)
@@ -469,6 +471,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 					{
 					case MN_Replays:	gui->btnRplLoad(0);  break;
 					case MN_Single:
+					case MN_Tutorial: case MN_Champ: case MN_Chall:	case MN_Collect:
 						if (mWndGame->getVisible())
 						switch (mTabsGame->getIndexSelected())
 						{
@@ -477,10 +480,14 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 						case TAB_Split:	 gui->btnNewGame(0);  break;
 						case TAB_Multi:	 gui->chatSendMsg();  break;
 						case TAB_Champs:
-							if (gui->isChallGui())
-								  gui->btnChallStart(0);
+							   if (gui->isCollectGui())  gui->btnCollectStart(0);
+							else if (gui->isChallGui())  gui->btnChallStart(0);
 							else  gui->btnChampStart(0);  break;
 						}	break;
+						/*if (mWndGame->getVisible() && gui->isCollectGui() &&
+							mTabsGame->getIndexSelected() == TAB_Champs)
+							gui->btnCollectStart(0);
+						break;*/
 				}
 				else
 				if (mClient && !isFocGui)  // show/hide players net wnd

@@ -65,7 +65,7 @@ public:
 
 	//  Gui util
 	void toggleGui(bool toggle=true);
-	void GuiShortcut(EMenu menu, int tab, int subtab=-1);
+	void GuiShortcut(EMenu menu, int tab, int subtab=-1, int game=-1);
 	void UpdWndTitle();
 	void tabGame(Tab, size_t);
 
