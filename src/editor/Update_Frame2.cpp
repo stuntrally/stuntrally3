@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "enums.h"
 #include "Def_Str.h"
 #include "Gui_Def.h"
 #include "GuiCom.h"
@@ -75,7 +76,7 @@ void App::UpdateKey(float dt)
 
 	else if (edMode < ED_Road)
 		KeyTxtTerrain(q);  // Brush
-	
+
 	else if (edMode == ED_Start && road)
 		KeyTxtStart(q);  // Start box, road dir
 
@@ -87,6 +88,10 @@ void App::UpdateKey(float dt)
 
 	else if (edMode == ED_Particles)
 		KeyTxtEmitters(q);
+
+	else if (edMode == ED_Collects)
+		KeyTxtCollects();
+
 
 	mz = 0;  // mouse wheel
 

@@ -215,6 +215,7 @@ void App::UpdEditWnds()
 	UpdFluidBox();
 
 	if (mWndObjects)   mWndObjects->setVisible(edMode == ED_Objects && on);
+	if (mWndCollects)  mWndCollects->setVisible(edMode == ED_Collects && on);
 
 	if (mWndParticles) mWndParticles->setVisible(edMode == ED_Particles && on);
 	UpdEmtBox();

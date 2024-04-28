@@ -1,11 +1,14 @@
 #include "pch.h"
+#include "enums.h"
 #include "Def_Str.h"
 #include "CScene.h"
 #include "Axes.h"
 #include "CApp.h"
 #include "Road.h"
 #include "settings.h"
+#include "SceneClasses.h"
 
+#include <OgreVector3.h>
 #include <OgreCamera.h>
 #include <OgreSceneNode.h>
 #include <MyGUI_InputManager.h>
@@ -46,6 +49,9 @@ void App::EditMouse()
 	bool mbAny = mbLeft || mbMiddle || mbRight;
 	if (edMode == ED_Objects && mbAny)
 		MouseObjects();
+
+	if (edMode == ED_Collects && !scn->sc->collects.empty())
+		MouseCollects();
 }
 
 
@@ -357,4 +363,56 @@ void App::MouseObjects()
 	{	UpdObjPick();
 		UpdObjNewNode();
 	}
+}
+
+
+///  💎 Collectibles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+void App::MouseCollects()
+{
+	const Real fMove(0.2f), fRot(20.f), fScale(0.01f);  //par speed
+	bool upd = false;
+	const Real s = pSet->move_speed;
+
+	int i = iColCur;  //  picked or new
+	if (i < scn->sc->collects.size())
+	{
+		SCollect& o = i == -1 ? colNew : scn->sc->collects[i];
+		const Real d = mCamera->getPosition().distance(o.pos) * fMove * s;
+
+		switch (colEd)
+		{
+			case EO_Move:
+			{
+				if (mbLeft && i != -1)  // move on xz
+				{
+					Vector3 vx = mCamera->getRight();      vx.y = 0;  vx.normalise();
+					Vector3 vz = mCamera->getDirection();  vz.y = 0;  vz.normalise();
+					Vector3 vm = (-vNew.y * vz + vNew.x * vx) * d * moveMul;
+					o.pos.x += vm.x;  o.pos.z += vm.z;
+					o.nd->setPosition(o.pos);
+				}
+				else if (mbRight)  // move y
+				{
+					Real ym = -vNew.y * d * moveMul;
+					o.pos.y += ym;
+					o.nd->setPosition(o.pos);
+				}
+			}	break;
+
+			case EO_Scale:
+			{
+				float vm = (vNew.y + vNew.x) * d * moveMul;
+				float sc = 1.f + vm * fScale;
+	
+				if (mbLeft)  o.scale *= sc;  // xyz
+				o.nd->setScale(o.scale * Vector3::UNIT_SCALE);
+			}	break;
+
+			default:  break;
+		}
+	}
+	// if (upd)
+	// {	UpdObjPick();
+	// 	UpdObjNewNode();
+	// }
 }

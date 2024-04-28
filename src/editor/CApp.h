@@ -79,9 +79,10 @@ public:
 	Ogre::Vector3 vNew{0,0,0};
 	
 	//  🛠️ Edit all  :
-	void EditMouse(),  MouseRoad(), MouseStart(), MouseFluids(), MouseEmitters(), MouseObjects();
+	void EditMouse(),  MouseRoad(), MouseStart();
+	void MouseFluids(), MouseObjects(), MouseEmitters(), MouseCollects();
 	void KeyTxtRoad(Ogre::Real q), KeyTxtTerrain(Ogre::Real q), KeyTxtStart(Ogre::Real q);
-	void KeyTxtFluids(Ogre::Real q), KeyTxtObjects(), KeyTxtEmitters(Ogre::Real q);
+	void KeyTxtFluids(Ogre::Real q), KeyTxtObjects(), KeyTxtEmitters(Ogre::Real q), KeyTxtCollects();
 	
 
 	//  🆕 Create  . . . . . . . . . . . . . . . . . . . . . . . . 
@@ -95,6 +96,7 @@ public:
 	//  💎 Collectibles
 	void CreateCollects(), DestroyCollects(bool clear), ResetCollects();
 	int iCollected = 0, oldCollected = 0;  //-
+	void UpdColPick();//, PickCollect();
 
 
 	//  🌍 minimap  ----
@@ -221,10 +223,9 @@ public:
 	ED_OBJ objEd = EO_Move;  // edit mode
 
 	int iObjCur = -1;  // picked id
-	int iObjLast = 0;  // last counter, just for naming
-
 	int iObjTNew = 0;  // new object's type, id for vObjNames
 	std::vector<std::string> vObjNames, vBuildings;
+	
 	void SetObjNewType(int tnew), UpdObjNewNode();
 	void NextObjMat(int add), NextObjMat(int add, Object& o);
 	void TogObjStatic();  // toggle static
@@ -253,6 +254,19 @@ public:
 	void UpdEmtBox();
 	bool bRecreateEmitters = 0;
 	std::string newEmtName = "SmokeBrown";
+
+
+	//  💎 Collectibles  ----
+	ED_OBJ colEd = EO_Move;  // edit mode
+
+	int iColCur = -1;  // picked id
+	
+	SCollect colNew;
+	std::vector<std::string> vColNames;
+
+	void SetColNewType(int tnew), UpdColNewNode();
+	void AddNewCol(bool getName=true);
+
 
 
 	//  ⚫ Surfaces  ----

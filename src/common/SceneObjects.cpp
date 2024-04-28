@@ -237,10 +237,6 @@ void App::CreateObjects()
 		}
 	}
 	delete fileLoader;
-
-	#ifdef SR_EDITOR
-	iObjLast = scn->sc->objects.size();
-	#endif
 }
 
 
@@ -475,8 +471,6 @@ void App::AddNewObj(bool getName)  //App..
 	::Object o = objNew;
 	if (getName)
 		o.name = vObjNames[iObjTNew];
-	++iObjLast;
-	String s = toStr(iObjLast);  // counter for names
 	///TODO: ?dyn objs size, !?get center,size, rmb height..
 
 	//  pos, rot

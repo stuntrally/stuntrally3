@@ -214,7 +214,7 @@ void App::newPoses(float time)  // time only for camera update
 		//  💎 collection game
 		//-----------------------------------------------------------------------
 		bool collect = pSet->game.collect_num >= 0;
-		if (collect)
+		if (collect && lapTime > 0.1f)  //-
 			UpdCollects();
 		
 
@@ -260,6 +260,7 @@ void App::newPoses(float time)  // time only for camera update
 						///  Lap
 						bool finished = (pGame->timer.GetCurrentLap(c) >= pSet->game.num_laps)
 							&& (mClient || pSet->game.local_players > 1);  // 📡 networked or 👥 splitscreen
+						
 						bool best = finished || collect ? false :  // dont inc laps when race over (in ^)
 							pGame->timer.Lap(c, !finished, pSet->game.track_reversed);  //,boost_type?
 						double timeCur = pGame->timer.GetPlayerTimeTot(c);

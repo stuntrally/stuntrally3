@@ -85,7 +85,7 @@ protected:
 
 	Wnd mWndBrush =0, mWndCam =0, mWndStart =0,  // tool windows
 		mWndRoadCur =0, mWndRoadStats =0,
-		mWndFluids =0, mWndObjects =0, mWndParticles =0;
+		mWndFluids =0, mWndObjects =0, mWndParticles =0, mWndCollects =0;
 
 	//MyGUI::VectorWidgetPtr
 	std::vector<WP> vwGui;  // all widgets to destroy

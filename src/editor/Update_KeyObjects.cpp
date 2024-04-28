@@ -11,6 +11,8 @@
 #include "CApp.h"
 #include "CGui.h"
 #include "Road.h"
+#include "SceneClasses.h"
+#include <OgreVector3.h>
 #include <OgreSceneNode.h>
 using namespace Ogre;
 
@@ -91,6 +93,79 @@ void App::keyPressObjects(SDL_Scancode skey)
 					if (fb.hq < 2)  ++fb.hq;  bRecreateFluids = true;  break;
 				default:  break;
 		}	}
+	}
+
+	//  💎 Collects  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	if (edMode == ED_Collects && edit)
+	{	int cols = scn->sc->collects.size(), colAll = vColNames.size();
+		SCollect* o = iColCur == -1 ? &colNew :
+					((iColCur >= 0 && cols > 0 && iColCur < cols) ? &scn->sc->collects[iColCur] : 0);
+		switch (skey)
+		{
+			case key(SPACE):
+				iColCur = -1;  /*PickObject();  UpdObjPick();*/  break;
+			
+			//  ins
+			case key(INSERT):	case key(KP_0):
+			if (scn->road && scn->road->bHitTer)  // insert new
+			{
+				AddNewCol();
+				iColCur = scn->sc->collects.size()-1;  //par? auto select inserted-
+				UpdColPick();
+			}	break;
+
+			//  first, last
+			case key(HOME):  case key(KP_7):
+				iColCur = 0;  UpdColPick();  break;
+			case key(END):  case key(KP_1):
+				if (cols > 0)  iColCur = cols-1;  UpdColPick();  break;
+
+			//  prev,next
+			case key(PAGEUP):  case key(KP_9):
+				if (cols > 0) {  iColCur = (iColCur-1+cols)%cols;  }  UpdColPick();  break;
+			case key(PAGEDOWN):	case key(KP_3):
+				if (cols > 0) {  iColCur = (iColCur+1)%cols;       }  UpdColPick();  break;
+
+			//  del
+			case key(DELETE):  case key(KP_PERIOD):
+			case key(KP_5):
+				if (iColCur >= 0 && cols > 0)
+				{	SCollect& o = scn->sc->collects[iColCur];
+					mSceneMgr->destroyItem(o.it);
+					mSceneMgr->destroySceneNode(o.nd);
+					
+					if (cols == 1)	scn->sc->collects.clear();
+					else			scn->sc->collects.erase(scn->sc->collects.begin() + iColCur);
+					iColCur = std::min(iColCur, (int)scn->sc->collects.size()-1);
+					UpdColPick();
+				}	break;
+
+			//  move,scale
+			case key(1):
+				if (!shift)  colEd = EO_Move;
+				else if (o)
+				{
+					if (iColCur == -1)  // reset h
+					{
+						o->pos[2] = 0.f;
+					}
+					else if (road)  // move to ter
+					{
+						const Vector3& v = road->posHit;
+						o->pos[0] = v.x;  o->pos[1] =-v.z;  o->pos[2] = v.y + colNew.pos[2];
+						o->nd->setPosition(o->pos);  UpdColPick();
+					}
+				}	break;
+
+			case key(3):
+				if (!shift)  colEd = EO_Scale;
+				else if (o)  // reset scale
+				{
+					o->scale = 1.f;
+					o->nd->setScale(o->scale * Vector3::UNIT_SCALE);
+				}	break;
+			default:  break;
+		}
 	}
 
 	//  📦 Objects  | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |

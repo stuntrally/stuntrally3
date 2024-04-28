@@ -432,6 +432,11 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 		//  🔥 particles
 		case key(A):  if (bEdit()){  SetEdMode(ED_Particles);  UpdEditWnds();  }   break;
+
+		//  💎 collects
+		case key(Y):  if (bEdit()){  SetEdMode(ED_Collects);  UpdEditWnds();  }   break;
+		
+		//  free  Y U L K J H Z N
 		default:  break;
 	}
 }

@@ -78,6 +78,7 @@ void CGui::InitGui()
 	app->mWndFluids =    fWnd("FluidsWnd");   app->mWndFluids->setPosition(0,y);
 	app->mWndObjects =   fWnd("ObjectsWnd");  app->mWndObjects->setPosition(0,y);
 	app->mWndParticles = fWnd("ParticlesWnd"); app->mWndParticles->setPosition(0,y);
+	app->mWndCollects =  fWnd("CollectsWnd");  app->mWndCollects->setPosition(0,y);
 
 
 	//  for find defines
@@ -173,6 +174,7 @@ void CGui::InitGui()
 		if (i < FL_TXT)   flTxt[i] = fTxt("flTxt"+s);
 		if (i < OBJ_TXT)  objTxt[i]= fTxt("objTxt"+s);
 		if (i < EMT_TXT)  emtTxt[i]= fTxt("emtTxt"+s);
+		if (i < COL_TXT)  colTxt[i]= fTxt("colTxt"+s);
 	}
 
 

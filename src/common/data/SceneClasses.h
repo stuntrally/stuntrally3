@@ -206,4 +206,7 @@ public:
 	btCollisionObject* co = 0;  // 🎳 bullet
 	//  game var
 	bool collected =0;
+	
+	//  special ..
+	// float timeGood;  // appears back after
 };

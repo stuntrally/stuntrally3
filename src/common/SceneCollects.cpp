@@ -68,7 +68,6 @@ void App::CreateCollects()
 			continue;
 		}
 		o.nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode();
-		// o.SetFromBlt();
 		o.nd->setPosition(o.pos);
 		o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Objects);  // todo: in splitscreen
 		o.nd->setScale(o.scale * Vector3::UNIT_SCALE);
@@ -80,10 +79,11 @@ void App::CreateCollects()
 
 
 		//  add to bullet world (in game)
+		#ifndef SR_EDITOR
 		{
 			///  🏢 static  . . . . . . . . . . . . 
 			btCollisionShape* bshp = 0;
-			bshp = new btSphereShape(o.scale);
+			bshp = new btSphereShape(o.scale * 0.3f);  //par
 
 			size_t id = SU_Collect + i;
 			bshp->setUserPointer((void*)id);
@@ -106,10 +106,8 @@ void App::CreateCollects()
 			world->addCollisionObject(bco);
 		#endif
 		}
+		#endif
 	}
-	#ifdef SR_EDITOR
-	// iObjLast = scn->sc->objects.size();
-	#endif
 }
 
 
@@ -180,12 +178,16 @@ void App::UpdCollects()
 }
 #endif
 
-#if 0  /// TODO.. ed
 //  👆 Pick
 //-------------------------------------------------------------------------------------------------------
 
 #ifdef SR_EDITOR
-void App::UpdObjPick()
+void App::UpdColPick()
+{
+}
+
+#if 0  /// TODO.. ed
+void App::UpdColPick()
 {
 	bool st = edMode == ED_Start && !bMoveCam;
 	if (ndStartBox[0])  ndStartBox[0]->setVisible(st);
@@ -275,83 +277,45 @@ void App::PickObject()
 	//rq->clearResults();
 	mSceneMgr->destroyQuery(rq);
 }
+#endif
 
-//  upd obj selected glow
-void App::UpdObjSel()
+///  🆕 add new Collectible
+void App::AddNewCol(bool getName)
 {
-	int objs = scn->sc->objects.size();
-	for (int i=0; i < objs; ++i)
-	{
-		bool bSel = vObjSel.find(i) != vObjSel.end();
-		auto* rend = scn->sc->objects[i].it->getSubItem(0);
-		UpdSelectGlow(rend, bSel);
-	}
-}
-
-//  selection center pos, or picked pos for multi rotate and scale
-Vector3 App::GetObjPos0()
-{
-	Vector3 pos0{0,0,0};
-	if (iObjCur>=0)
-	{
-		MATHVECTOR<float,3> p = scn->sc->objects[iObjCur].pos;
-		pos0 = Vector3(p[0],p[2],-p[1]);
-	}
-	else if (!vObjSel.empty())
-	{
-		for (std::set<int>::iterator it = vObjSel.begin(); it != vObjSel.end(); ++it)
-		{
-			MATHVECTOR<float,3> p = scn->sc->objects[(*it)].pos;
-			pos0 += Vector3(p[0],p[2],-p[1]);
-		}
-		pos0 /= Real(vObjSel.size());
-	}
-	return pos0;
-}
-
-
-///  🆕 add new object
-void App::AddNewObj(bool getName)  //App..
-{
-	::Object o = objNew;
-	if (getName)
-		o.name = vObjNames[iObjTNew];
-	++iObjLast;
-	String s = toStr(iObjLast);  // counter for names
+	SCollect o = colNew;
+	// if (getName)
+	// 	o.name = vColNames[iColTNew];
 
 	//  pos, rot
 	if (getName)
 	{	// one new
 		const Vector3& v = scn->road->posHit;
-		o.pos[0] = v.x;  o.pos[1] =-v.z;  o.pos[2] = v.y + objNew.pos[2];
-	}else  // many
-	{	// offset for cursor pos..
-		//o.pos[0] = v.x;  o.pos[1] =-v.z;  o.pos[2] = v.y + objNew.pos[2];
+		// o.pos[0] = v.x;  o.pos[1] =-v.z;  o.pos[2] = v.y + colNew.pos[2];
+		o.pos[0] = v.x;  o.pos[1] = v.y + colNew.pos[2];  o.pos[2] = v.z;
 	}
 
-	//  create object
+	//  create collect
 	try
-	{	o.it = mSceneMgr->createItem(o.name + ".mesh");
+	{	o.it = mSceneMgr->createItem(/*o.name +*/ "sphere.mesh");
 		//  alpha from presets.xml
-		auto* veg = scn->data->pre->GetVeget(o.name);
-		if (veg)
-			o.it->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
+		// auto* veg = scn->data->pre->GetVeget(o.name);
+		// if (veg)
+		// 	o.it->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
 
 		o.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-		o.SetFromBlt();
-		o.nd->setScale(o.scale);
-		o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Vegetation);
+		o.nd->setPosition(o.pos);
+		o.nd->setScale(o.scale * Vector3::UNIT_SCALE);
+		o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Objects);
 
-		o.dyn = PATHS::FileExists(PATHS::Data()+"/objects/"+ o.name + ".bullet");
-		scn->sc->objects.push_back(o);
+		scn->sc->collects.push_back(o);
 	}
 	catch (Exception ex)
 	{
-		LogO("no object! " + ex.getFullDescription());
+		LogO("no new collect! " + ex.getFullDescription());
 	}
 }
 
-
+#if 0
 //  change obj to insert
 #define ITEM_NONE -1  //?
 void CGui::listObjsChng(MyGUI::List* l, size_t t)
@@ -392,24 +356,6 @@ void CGui::listObjsNext(int rel)
 }
 
 
-//  change category, fill 🏢 buildings list
-void CGui::listObjsCatChng(Li li, size_t id)
-{
-	if (id == ITEM_NONE || id >= li->getItemCount())  id = 0;
-	if (li->getItemCount()==0)  return;
-	string cat = li->getItemNameAt(id).substr(7);
-	
-	objListBld->removeAllItems();
-	for (size_t i=0; i < app->vBuildings.size(); ++i)
-	{
-		const string& s = app->vBuildings[i];
-		if (//id == 0 ||/*all*/
-			s.length() > 4 && s.substr(0,4) == cat)
-			objListBld->addItem("#E0E080"+s);
-	}
-}
-
-
 //  🔮 cycle object materials
 void App::NextObjMat(int add)
 {
@@ -444,22 +390,11 @@ void App::NextObjMat(int add, Object& o)
 	if (!o.material.empty())
 		o.it->setDatablockOrMaterialName(o.material);
 }
+#endif
 
-void App::TogObjStatic()  // toggle static
-{
-	if (!vObjSel.empty())
-	{	for (int i : vObjSel)
-			scn->sc->objects[i].stat = !scn->sc->objects[i].stat;
-		return;
-	}
-	bool bNew = iObjCur == -1;
-	Object& o = bNew || scn->sc->objects.empty() ? objNew : scn->sc->objects[iObjCur];
-	o.stat = !o.stat;
-}
-
-
+#if 0
 //  preview model for insert
-void App::SetObjNewType(int tnew)
+void App::SetColNewType(int tnew)
 {
 	iObjTNew = tnew;
 	if (objNew.nd)	{	mSceneMgr->destroySceneNode(objNew.nd);  objNew.nd = 0;  }
@@ -480,7 +415,7 @@ void App::SetObjNewType(int tnew)
 	}
 }
 
-void App::UpdObjNewNode()
+void App::UpdColNewNode()
 {
 	if (!scn->road || !objNew.nd)  return;
 
@@ -494,7 +429,6 @@ void App::UpdObjNewNode()
 	objNew.nd->setScale(objNew.scale);
 	objNew.nd->_getFullTransformUpdated();
 }
-
 #endif
 
 #endif

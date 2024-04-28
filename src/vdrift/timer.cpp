@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "timer.h"
+using namespace std;
 
 
 bool TIMER::Load(const std::string & trackrecordspath, float stagingtime)
@@ -50,27 +51,28 @@ bool TIMER::Lap(const int carId, const bool countit, bool bTrackReverse)
 	//assert(carId < car.size());
 	if (carId >= car.size())  return false;  //-
 	bool newbest = false;  // new lap best time
+	string sRev = bTrackReverse ? "_rev" : "";
 
 	if (countit)
 	{
-		std::stringstream secstr;
+		stringstream secstr;
 		secstr << "sector 0";
-		std::string lastcar;
+		string lastcar;
 		/*if (trackrecords.GetParam("last.car", lastcar))
 		{
 			if (lastcar != car[carId].GetCarType()) //clear last lap time
 			trackrecords.SetParam("last.sector 0", (float)0.0);
 		}*/
-		trackrecords.SetParam(std::string(bTrackReverse ? "rev_" : "") + "last." + secstr.str(), (float) car[carId].GetTime());
-		trackrecords.SetParam(std::string(bTrackReverse ? "rev_" : "") + "last.car", car[carId].GetCarType());
+		trackrecords.SetParam(sRev + "last." + secstr.str(), (float) car[carId].GetTime());
+		trackrecords.SetParam(sRev + "last.car", car[carId].GetCarType());
 
 		float prevbest = 0;
 		bool haveprevbest = trackrecords.GetParam(
-				car[carId].GetCarType() + (bTrackReverse ? "_rev" : "") + "." + secstr.str(), prevbest);
+			car[carId].GetCarType() + sRev + "." + secstr.str(), prevbest);
 		if (car[carId].GetTime() < prevbest || !haveprevbest)
 		{
 			trackrecords.SetParam(
-				car[carId].GetCarType() + (bTrackReverse ? "_rev" : "") + "." + secstr.str(), (float) car[carId].GetTime());
+				car[carId].GetCarType() + sRev + "." + secstr.str(), (float) car[carId].GetTime());
 			newbest = true;
 		}
 	}
