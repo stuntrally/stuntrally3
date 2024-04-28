@@ -1,9 +1,13 @@
 ## What's coming next
 
-This section lists changes not yet released, but committed to new repositories stuntrally3 and tracks3.  
+This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
 
 - Game
-  - Main menu now 3 levels
+  - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
+  - Collection, new game mode. WIP  
+    Collecting gems located on track, for completion or quicker time
+- Editor
+  - Edit mode for Collection, key Y. Insert, move gems
 - Updated docs
 
 ## Version 3.1
@@ -22,13 +26,13 @@ This section lists changes not yet released, but committed to new repositories s
   - **New skies**. Replaced all old 4k with new 8k ones on all tracks
   - Many updated with new **horizons**, few with objects etc
 - Editor
-  - WIP New video tutorials, on [Editor page](Editor.md)
+  - WIP New video tutorials, on [Editor page](Editor.md), in [playlist](https://www.youtube.com/playlist?list=PLU7SCFz6w40PY3L8qFNTe4DRq_W6ofs1d)
   - Changing object material, sets defined in `presets.xml`
   - Toggle static for dynamic object, no `*_static.mesh`
   - Fix alt-J crash, shortcuts
-  - Fix **New/duplicate** track. Was having garbage for horizons, no other roads. Delete track too.
+  - Fix **New/duplicate** track. Was having garbage for horizons, no other roads. Delete track too
   - **Export** track to Rigs of Rods added, using SR 2.x meshes
-    - New tabs, settings, converters, [info here](EditorExportRoR.md).
+    - New tabs, settings, converters, [info here](EditorExportRoR.md)
 - Both
   - New tab Options - Screen - GUI with scales for font size and windows margin size, all need restart
   - Screen and Video tabs with render system options, WIP few not done  
