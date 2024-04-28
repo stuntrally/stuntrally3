@@ -781,6 +781,8 @@
 					<Property key="Alpha" value="0.6"/>
 					<Property key="Caption" value="#{GraphicsRightHQ}"/>
 				</Widget>
+
+				<!-- 🏁 NewGame -->
 				<Widget type="Button" skin="Button" position="276 460 160 32" name="NewGame2">
 					<Property key="Caption" value="#{NewGame}"/>
 					<Property key="Colour" value="0.6 1.0 0.3"/>

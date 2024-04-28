@@ -18,7 +18,7 @@ Basic setup for building C++ etc, need to run in terminal:
 ## 2. Setup dependencies
 
 Next to install Ogre dependencies (as in [here](https://github.com/OGRECave/ogre-next#dependencies-linux)):  
-`sudo apt-get -y install libfreetype6-dev libfreeimage-dev libzzip-dev libxrandr-dev libxcb-randr0-dev libxaw7-dev freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev libx11-xcb-dev libxcb-keysyms1-dev doxygen graphviz python-clang libsdl2-dev`
+`sudo apt-get -y install libfreetype6-dev libfreeimage-dev libzzip-dev libxrandr-dev libxcb-randr0-dev libxaw7-dev freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev libx11-xcb-dev libxcb-keysyms1-dev doxygen graphviz python-clang libsdl2-dev rapidjson-dev`
 
 ## 3.1 Build Ogre-Next
 

@@ -14,14 +14,19 @@
 				<Property key="Caption" value="#FFE0C0&lt;#{BackMenu}"/>
 				<Property key="Colour" value="1 0.6 0.2"/>
 			</Widget>
+
+			<!-- 🏞️ Track -->
 			<Widget type="TabItem" skin="" position="2 24 794 562" name="TabTrack">
 				<Property key="Caption" value="#60FF60#{Track}"/>
+
 				<Widget type="Button" skin="CheckBox" position="380 524 142 24" name="ReverseOn">
 					<Property key="Caption" value="#{Reverse}"/>
 					<Property key="Colour" value="0.8 1 0.6"/>
 					<Property key="TextColour" value="0.8 1 0.5"/>
 					<UserString key="tip" value="#{TipReverse}"/>
 				</Widget>
+
+				<!-- 🏁 NewGame -->
 				<Widget type="Button" skin="Button" position="176 516 160 32" name="NewGame0">
 					<Property key="Caption" value="#{NewGame}"/>
 					<Property key="Colour" value="0.6 1.0 0.3"/>
@@ -491,6 +496,9 @@
 				</Widget>
 			</Widget>
 
+			
+			<!-- 🚗 Vehicle -->
+			<!-- ............................................................................................................... -->
 			<Widget type="TabItem" skin="" position="2 24 794 562" name="TabCar">
 				<Property key="Caption" value="#FF6050#{Vehicle}"/>
 				<Widget type="Button" skin="Button" position="16 7 40 24" name="CarView1">
@@ -510,6 +518,7 @@
 					<UserString key="tip" value="#{TipTrkViewDetailed}"/>
 				</Widget>
 
+				<!-- 🏁 NewGame -->
 				<Widget type="Button" skin="Button" position="176 516 160 32" name="NewGame1">
 					<Property key="Caption" value="#{NewGame}"/>
 					<Property key="Colour" value="0.6 1.0 0.3"/>
@@ -899,6 +908,8 @@
 			</Widget>
 			
 
+			<!-- 🔩 Setup -->
+			<!-- ............................................................................................................... -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#D0D0A0#{Setup}"/>
 				<Widget type="TabControl" skin="TabControl" position="16 16 752 504" align="Default" layer="Back" name="SubTab">
@@ -1282,6 +1293,7 @@
 						</Widget>
 					</Widget>
 
+					<!-- Game 💨🔨⏪ -->
 					<Widget type="TabItem" skin="" position="2 24 342 272">
 						<Property key="Caption" value="#B0A0F0#{Game}"/>
 						<Widget type="ImageBox" skin="ImageBox" position="12 28 32 32">
@@ -1473,6 +1485,7 @@
 						</Widget>
 					</Widget>
 
+					<!-- Steering -->
 					<Widget type="TabItem" skin="" position="2 24 746 476" name="TabTrack">
 						<Property key="Caption" value="#80F0F0#{InputMapSteering}"/>
 						<Widget type="ImageBox" skin="ImageBox" position="624 24 80 80">
@@ -1593,6 +1606,7 @@
 							<Property key="TextColour" value="0.5 0.8 1"/>
 						</Widget>
 					</Widget>
+
 					<Widget type="TabItem" skin="" position="2 24 746 476" name="TabTrack">
 						<Property key="Caption" value="#406090#{Other}"/>
 						<Widget type="Button" skin="CheckBox" position="32 88 400 24" name="CarABS">
@@ -1613,11 +1627,15 @@
 			</Widget>
 
 
+			<!-- 👥 SplitScreen -->
+			<!-- ............................................................................................................... -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#A0D0F0#{SplitScreen}"/>
-				<Widget type="ImageBox" skin="ImageBox" position="628 28 56 56">
+				
+				<Widget type="ImageBox" skin="ImageBox" position="632 28 56 56">
+					<Property key="ImageCoord" value="768 0 128 128"/>
+					<Property key="InheritsAlpha" value="false"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
-					<Property key="ImageCoord" value="0 0 32 32"/>
 				</Widget>
 
 				<Widget type="TextBox" skin="TextBox" position="24 74 432 24">
@@ -1691,6 +1709,7 @@
 					<Property key="TextColour" value="0.6 0.76 0.9"/>
 				</Widget>
 
+				<!-- 🏁 NewGame -->
 				<Widget type="Button" skin="Button" position="176 516 160 32" name="NewGame3">
 					<Property key="Caption" value="#{NewGame}"/>
 					<Property key="Colour" value="0.6 1.0 0.3"/>
@@ -1705,6 +1724,9 @@
 				</Widget>
 			</Widget>
 
+
+			<!-- 📡 Multiplayer -->
+			<!-- ............................................................................................................... -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#A0A0FF#{Multiplayer}"/>
 				<Widget type="TabControl" skin="TabControl" position="16 15 744 497" name="SubTabNet">
@@ -1712,21 +1734,24 @@
 					<Property key="SmoothShow" value="false"/>
 					<Widget type="TabItem" skin="" position="2 24 738 469">
 						<Property key="Caption" value="#FFC040#{NetDirectConnect}"/>
+						
 						<Widget type="ImageBox" skin="ImageBox" position="660 2 56 56">
 							<Property key="ImageCoord" value="640 0 128 128"/>
 							<Property key="Alpha" value="0.6"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
-						<Widget type="Button" skin="Button" position="352 206 164 40" name="btnNetCreate">
-							<Property key="Caption" value="#{NetCreateGame}"/>
-							<Property key="Colour" value="0.6 1 1"/>
-							<Property key="TextColour" value="0.5 1 1"/>
-						</Widget>
+
 						<Widget type="Button" skin="Button" position="174 206 164 40" name="btnNetDirect">
 							<Property key="Colour" value="1 0.8 0.5"/>
 							<Property key="TextColour" value="1 0.8 0.5"/>
 							<Property key="Caption" value="#{NetDirectConnect}"/>
 						</Widget>
+						<Widget type="Button" skin="Button" position="362 206 164 40" name="btnNetCreate">
+							<Property key="Caption" value="#{NetCreateGame}"/>
+							<Property key="Colour" value="0.6 1 1"/>
+							<Property key="TextColour" value="0.5 1 1"/>
+						</Widget>
+
 						<Widget type="Widget" skin="PanelSkin" position="0 0 800 500" layer="Popup" name="panelNetServer">
 							<Property key="Colour" value="0.8 0.96 1"/>
 							<Property key="Alpha" value="0.8"/>
@@ -1832,6 +1857,7 @@
 						</Widget>
 					</Widget>
 
+					<!-- Server Games x -->
 					<Widget type="TabItem" skin="" position="2 24 738 469">
 						<Property key="Caption" value="#604040#{NetServer}"/>
 						<Widget type="ImageBox" skin="ImageBox" position="660 2 56 56">
@@ -1844,6 +1870,7 @@
 							<Property key="Alpha" value="0.1"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="20 42 224 24">
 							<Property key="Caption" value="#{NetGamesAvail}"/>
 							<Property key="TextColour" value="0.5 0.5 0.4"/>
@@ -1852,6 +1879,7 @@
 							<Property key="Colour" value="0.7 1 0.7"/>
 							<Property key="Alpha" value="0.7"/>
 						</Widget>
+
 						<Widget type="Button" skin="Button" position="20 206 164 40" name="btnNetRefresh">
 							<Property key="Caption" value="#{NetRefreshList}"/>
 							<Property key="Colour" value="0.4 0.5 0.3"/>
@@ -1879,6 +1907,7 @@
 							<Property key="TextColour" value="0.6 0.6 1.0"/>
 							<Property key="Alpha" value="0.7"/>
 						</Widget>
+
 						<Widget type="EditBox" skin="EditBox" position="180 316 136 26" name="edNetServerIP">
 							<Property key="Colour" value="0.8 0.8 1"/>
 							<Property key="TextColour" value="0.8 0.8 1"/>
@@ -1894,6 +1923,9 @@
 				</Widget>
 			</Widget>
 			
+
+			<!-- 🏆🥇 Champs Tutorials Challenges etc list -->
+			<!-- ............................................................................................................... -->
 			<Widget type="TabItem" skin="" position="2 24 794 562" name="TabChamps">
 				<Property key="Caption" value="#80C0FF#{Championship}"/>
 				<Widget type="TabControl" skin="TabControl" position="24 26 567 36" name="ChampType">
@@ -2019,6 +2051,7 @@
 					</Widget>
 				</Widget>
 
+				<!-- 🏁 Game Start -->
 				<Widget type="Button" skin="Button" position="320 400 144 40" name="btnTutStart">
 					<Property key="Caption" value="#{Start}"/>
 					<Property key="Colour" value="1.0 0.8 0.4"/>
@@ -2096,6 +2129,9 @@
 				</Widget>
 			</Widget>
 
+
+			<!-- 📃 Stages list  champ, chall, etc -->
+			<!-- ............................................................................................................... -->
 			<Widget type="TabItem" skin="" position="2 24 794 562" name="TabStages">
 				<Property key="Caption" value="#80E0C0#{Stages}"/>
 				<Widget type="Widget" skin="PanelSkin" position="506 52 266 316" name="panCh">
@@ -2120,6 +2156,9 @@
 				<Widget type="TextBox" skin="TextBox" position="606 394 280 560" name="valChP2"/>
 			</Widget>
 
+			
+			<!-- 🏞️ Track 2  champ, chall, etc -->
+			<!-- ............................................................................................................... -->
 			<Widget type="TabItem" skin="" position="2 24 794 562" name="TabTrack">
 				<Property key="Caption" value="#60E060#{Track}"/>
 				<Widget type="TextBox" skin="TextBox" position="176 516 330 24" name="TrackText">

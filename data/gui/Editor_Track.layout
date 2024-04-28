@@ -15,8 +15,11 @@
 				<Property key="Caption" value="#FFE0C0&lt;#{BackMenu}"/>
 				<Property key="Colour" value="1 0.6 0.2"/>
 			</Widget>
+
+			<!-- 🏞️ Track -->
 			<Widget type="TabItem" skin="" position="2 24 794 562" name="TabTrack">
 				<Property key="Caption" value="#D0E8FF#{Track}"/>
+
 				<Widget type="TextBox" skin="TextBox" position="176 490 60 24" name="TrackText">
 					<Property key="InheritsAlpha" value="true"/>
 					<Property key="Colour" value="0 0 0"/>
@@ -24,6 +27,8 @@
 					<Property key="TextColour" value="0.4 1.0 0.5"/>
 					<UserString key="tip" value="#{TipTrkNameEditor}"/>
 				</Widget>
+
+				<!-- Load -->
 				<Widget type="Button" skin="Button" position="368 518 140 32" name="NewGame0">
 					<Property key="Caption" value="#{LoadTrack}"/>
 					<Property key="Colour" value="0.6 1.0 0.3"/>
