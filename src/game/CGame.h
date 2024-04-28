@@ -111,8 +111,15 @@ public:
 	///  🆕 Create  . . . . . . . . . . . . . . . . . . . . . . . . 
 	Ogre::String resCar, resTrk, resDrv;
 	void CreateCar(), CreateRoads(), CreateRoadsInt();
+
+	//  📦🏢 Objects
 	void CreateObjects(), DestroyObjects(bool clear), ResetObjects();
 
+	//  💎 Collectibles
+	void CreateCollects(), DestroyCollects(bool clear), ResetCollects();
+
+
+	//  New Game  ----
 	void NewGame(bool force=false, bool perfTest=false);
 	void NewGameDoLoad();
 

@@ -202,20 +202,27 @@ void App::destroyScene()
 
 	LogO("DD-- destroyScene ------DD");
 	
+	//----------------
 	scn->DelRoadDens();
+
 	scn->grass->Destroy();
 	scn->DestroyTrees();
+
 	DestroyObjects(true);
+	DestroyCollects(true);
+
 	scn->DestroyRoads();
 	scn->DestroyTerrains();
+
 	scn->refl.DestroyFluids();
 	scn->refl.DestroyRTT();
+
 	scn->DestroyEmitters(true);
 	scn->DestroyAllAtmo();
 
 	// scn->DestroyTrail(0);
 	scn->DestroyPace();
-
+	//----------------
 
 	DestroyGui();
 	
@@ -246,6 +253,8 @@ void App::NewCommon(bool onlyTerVeget)
 	if (!onlyTerVeget)
 	{
 		DestroyObjects(true);  // 📦
+		DestroyCollects(true);  // 💎
+		
 		scn->refl.DestroyFluids();  // 💧
 		scn->DestroyEmitters(true);  // 🔥
 	
@@ -353,6 +362,10 @@ void App::LoadTrackEv()
 	//  📦 Objects
 	CreateObjects();
 	
+	//  💎 Collects
+	CreateCollects();
+	
+
 	//  🌳🪨 Vegetation
 	if (pSet->bTrees)
 	{

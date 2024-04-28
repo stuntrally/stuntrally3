@@ -401,7 +401,7 @@ bool Scene::SaveXml(String file)
 
 
 	XMLElement* cols = xml.NewElement("collectible");  //  💎 Collectible gems
-		for (i=0; i < emitters.size(); ++i)
+		for (i=0; i < collects.size(); ++i)
 		{
 			const SCollect* c = &collects[i];
 			XMLElement* oc = xml.NewElement("c");
@@ -409,7 +409,7 @@ bool Scene::SaveXml(String file)
 			oc->SetAttribute("gr",	toStrC(c->groups));
 
 			oc->SetAttribute("pos",	toStrC(c->pos));
-			oc->SetAttribute("sc",	toStrC(c->size));
+			oc->SetAttribute("sc",	toStrC(c->scale));
 			
 			cols->InsertEndChild(oc);
 		}

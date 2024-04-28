@@ -88,8 +88,12 @@ public:
 	bool bVegetGrsUpd =0;
 	Ogre::String resTrk;  void NewCommon(bool onlyTerVeget);
 
+	//  📦🏢 Objects
 	void CreateObjects(), DestroyObjects(bool clear), ResetObjects();
 	void UpdObjPick(), PickObject(), ToggleObjSim(), FocusCam();
+
+	//  💎 Collectibles
+	void CreateCollects(), DestroyCollects(bool clear), ResetCollects();
 
 
 	//  🌍 minimap  ----

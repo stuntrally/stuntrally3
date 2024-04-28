@@ -197,11 +197,11 @@ class SCollect      //  💎 Collectible gem
 {
 public:
 	int type = 0, groups = 0;
-	Ogre::Vector3 pos{0,0,0}, scale{1,1,1};
+	Ogre::Vector3 pos{0,0,0};
+	float scale = 1.f;
 
 	Ogre::SceneNode* nd = 0;  // 🟢 ogre
 	Ogre::Item* it = 0;
 
-	btDefaultMotionState* ms = 0;  // 🎳 bullet
-	btCollisionObject* co = 0;
+	btCollisionObject* co = 0;  // 🎳 bullet
 };

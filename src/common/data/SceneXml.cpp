@@ -70,7 +70,9 @@ void Scene::Default()
 
 	camPos = Vector3(10.f,20.f,10.f);  camDir = Vector3(0.f,-0.3f,1.f);
 
-	fluids.clear();  objects.clear();  emitters.clear();  //
+	//  vectors
+	fluids.clear();  emitters.clear();
+	objects.clear();  collects.clear();
 
 	for (int i=0; i < 4; ++i)  // road surf
 	{

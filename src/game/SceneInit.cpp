@@ -273,6 +273,7 @@ void App::LoadCleanUp()
 		scn->refl.DestroyRTT();
 
 		DestroyObjects(true);
+		DestroyCollects(true);
 	}
 	
 	DestroyGraphs();
@@ -329,12 +330,15 @@ void App::LoadCleanUp()
 		scn->grass->Destroy();  // 🌿
 		scn->DestroyTrees();    // 🌳🪨
 
-		DestroyObjects(true);   // 📦
+		DestroyObjects(true);   // 📦🏢
+		DestroyCollects(true);   // 💎
+
 		scn->DestroyRoads();    // 🛣️
 		scn->DestroyTerrains();  // ⛰️
 		//^ cars
 		scn->refl.DestroyFluids();   // 💧
 		scn->refl.DestroyRTT();      // 💧
+		
 		scn->DestroyEmitters(true);  // 🔥
 		scn->DestroyAllAtmo();  // 🌦️
 	}
@@ -704,11 +708,14 @@ void App::LoadRoad()
 	}
 }
 
-//  📦 Objects  7
+//  📦🏢 Objects, 💎 Collects  7
 void App::LoadObjects()
 {
 	if (dstTrk)
 		CreateObjects();
+
+	if (dstTrk)
+		CreateCollects();
 }
 
 //  🌳🪨 Vegetation  8
@@ -863,7 +870,8 @@ void App::NewGameDoLoad()
 
 		case LS_TERRAIN:	LoadTerrain();	perc = 32;	break;  // ⛰️🏔️⛰️
 		case LS_ROAD:		LoadRoad();		perc = 45;	break;  // 🛣️📏🏛️⭕
-		case LS_OBJECTS:	LoadObjects();	perc = 63;	break;  // 📦🏢
+		
+		case LS_OBJECTS:	LoadObjects();	perc = 62;	break;  // 📦🏢 💎
 		case LS_TREES:		LoadTrees();	perc = 75;	break;
 
 		case LS_VIEW0: case LS_VIEW1: case LS_VIEW2: case LS_VIEW3:  // 🎥

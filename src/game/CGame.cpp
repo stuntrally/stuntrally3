@@ -87,25 +87,32 @@ void App::destroyScene()
 	
 	// gcom->mToolTip = 0;  //?
 
+	//----------------
 	scn->DelRoadDens();
+
 	scn->grass->Destroy();
 	scn->DestroyTrees();
+
 	DestroyObjects(true);
+	DestroyCollects(true);
+
 	scn->DestroyRoads();
 	scn->DestroyTerrains();
+
 	scn->refl.DestroyFluids();
 	scn->refl.DestroyRTT();
+
 	scn->DestroyEmitters(true);
 	scn->DestroyAllAtmo();
 
 	scn->DestroyPace();
 	scn->DestroyTrails();
+	//----------------
 
 	if (pGame)
 		pGame->End();
 	
 	// delete[] blendMtr;  blendMtr = 0;
-
 
 	LogO(">>>>>>>> Destroy SR ----");
 	Destroy();
