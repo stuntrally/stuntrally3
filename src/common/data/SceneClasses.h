@@ -123,7 +123,7 @@ public:
 	SColor color{0.f, 0.f, 1.f};
 };
 
-class SGrassChannel  //. 🌿⛰️ grass channel
+class SGrassChannel  //. 🌿⛰️ grass Channel
 {
 public:
 	//  min,max range and smooth range for terrain
@@ -134,7 +134,7 @@ public:
 };
 
 //  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-class FluidBox		//  💧 fluid box shape - water, mud, etc.
+class FluidBox		//  💧 Fluid box shape - water, mud, etc.
 {
 public:
 	Ogre::Vector3 pos{0,0,0}, rot{0,0,0}, size{0,0,0};
@@ -150,7 +150,7 @@ public:
 };
 
 
-class Object		//  📦 object - mesh (static🪨) or prop (dynamic)
+class Object		//  📦 Object - mesh (static🪨) or prop (dynamic)
 {
 public:
 	MATHVECTOR<float,3> pos{0,0,0};
@@ -173,7 +173,7 @@ public:
 };
 
 
-class SEmitter		//  🔥 particles ⛅☢️
+class SEmitter		//  🔥 Particles ⛅☢️
 {
 public:
 	std::string name;  // particle_system
@@ -190,4 +190,15 @@ public:
 	Ogre::ParticleSystem* ps = 0;
 	
 	void UpdEmitter();
+};
+
+
+class SCollect      //  💎 Collectible gem
+{
+public:
+	int type = 0, groups = 0;
+	Ogre::Vector3 pos{0,0,0}, size{1,1,1};
+
+	Ogre::SceneNode* nd = 0;  // 🟢 ogre
+	Ogre::Item* it = 0;
 };

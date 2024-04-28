@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Def_Str.h"
+#include "SceneClasses.h"
 #include "SceneXml.h"
 #include "FluidsXml.h"
 #include "settings.h"
@@ -397,6 +398,22 @@ bool Scene::SaveXml(String file)
 			emts->InsertEndChild(oe);
 		}
 	root->InsertEndChild(emts);
+
+
+	XMLElement* cols = xml.NewElement("collectible");  //  💎 Collectible gems
+		for (i=0; i < emitters.size(); ++i)
+		{
+			const SCollect* c = &collects[i];
+			XMLElement* oc = xml.NewElement("c");
+			oc->SetAttribute("t",	toStrC(c->type));
+			oc->SetAttribute("gr",	toStrC(c->groups));
+
+			oc->SetAttribute("pos",	toStrC(c->pos));
+			oc->SetAttribute("sc",	toStrC(c->size));
+			
+			cols->InsertEndChild(oc);
+		}
+	root->InsertEndChild(cols);
 
 
 	xml.InsertEndChild(root);

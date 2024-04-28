@@ -44,7 +44,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("secEd");		if (a)  secEdited = s2i(a);
 	}
 	
- 	///  🚗 car setup
+ 	///  🚗 car setup game
  	e = root->FirstChildElement("car");
 	if (e)
 	{	a = e->Attribute("tires");		if (a)  asphalt = s2i(a) > 0;
@@ -150,7 +150,7 @@ bool Scene::LoadXml(String file, bool bTer)
 	}
 	
 	
-	///  💧 fluids
+	///  💧 Fluids
 	e = root->FirstChildElement("fluids");
 	if (e)
 	{	u = e->FirstChildElement("fluid");
@@ -171,7 +171,7 @@ bool Scene::LoadXml(String file, bool bTer)
 	}
 	
 
-	///  ⛰️ terrain
+	///  ⛰️ Terrain
 	//  new, many
 	e = root->FirstChildElement("terrains");
 	if (e)
@@ -196,7 +196,7 @@ bool Scene::LoadXml(String file, bool bTer)
 	}
 	
 
-	///  🌳🪨 vegetation
+	///  🌳🪨 Vegetation
  	e = root->FirstChildElement("veget");
 	if (!e)
  		e = root->FirstChildElement("paged");
@@ -213,7 +213,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("trDistImp");		if (a)  trDistImp = s2r(a);
 		a = e->Attribute("trRdDist");		if (a)  trRdDist = s2i(a);
 
-		//  🌿 grass
+		//  🌿 Grass
 		int grl = 0;
 		u = e->FirstChildElement("grass");
 		while (u)
@@ -276,7 +276,7 @@ bool Scene::LoadXml(String file, bool bTer)
 			u = u->NextSiblingElement("gchan");
 		}
 		
-		///  🌳🪨 vegetation
+		///  🌳🪨 Vegetation
 		int pgl = 0;
 		u = e->FirstChildElement("layer");
 		while (u)
@@ -312,7 +312,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("dir");		if (a)  camDir = s2v(a);
 	}
 	
-	///  📦 objects
+	///  📦 Objects
 	e = root->FirstChildElement("objects");
 	if (e)
 	{	u = e->FirstChildElement("o");
@@ -334,7 +334,7 @@ bool Scene::LoadXml(String file, bool bTer)
 			u = u->NextSiblingElement("o");
 	}	}
 
-	///  🔥 emitters
+	///  🔥 Particles
 	e = root->FirstChildElement("emitters");
 	if (e)
 	{	u = e->FirstChildElement("e");
@@ -355,6 +355,24 @@ bool Scene::LoadXml(String file, bool bTer)
 			emitters.push_back(p);
 			u = u->NextSiblingElement("e");
 	}	}
+
+	//  💎 Collectible gems
+	e = root->FirstChildElement("collectible");
+	if (e)
+	{	u = e->FirstChildElement("c");
+		while (u)
+		{
+			SCollect c;
+			a = u->Attribute("t");		if (a)  c.type = s2i(a);
+			a = u->Attribute("gr");		if (a)  c.groups = s2i(a);
+
+			a = u->Attribute("pos");	if (a)  c.pos = s2v(a);
+			a = u->Attribute("sc");		if (a)  c.size = s2v(a);
+
+			collects.push_back(c);
+			u = u->NextSiblingElement("c");
+	}	}
+
 
 	UpdateFluidsId();
 

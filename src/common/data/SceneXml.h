@@ -133,6 +133,10 @@ public:
 	std::vector<SEmitter> emitters;
 
 
+	//  💎 Collectible gems  *
+	std::vector<SCollect> collects;
+
+
 	//  base track (new from) for info
 	std::string baseTrk;
 	int secEdited;  // time in seconds of track editing
