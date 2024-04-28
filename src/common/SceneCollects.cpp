@@ -79,8 +79,6 @@ void App::CreateCollects()
 		//  add to bullet world (in game)
 		{
 			///  🏢 static  . . . . . . . . . . . . 
-			//_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-
 			btCollisionShape* bshp = 0;
 			bshp = new btSphereShape(o.scale);
 
@@ -94,9 +92,9 @@ void App::CreateCollects()
 			bco->setCollisionShape(bshp);	bco->setWorldTransform(tr);
 
 			bco->setCollisionFlags(bco->getCollisionFlags() |
-				btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_NO_CONTACT_RESPONSE/**/);
+				btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_NO_CONTACT_RESPONSE);
 
-			// bco->setUserPointer(new ShapeData(ST_Fluid, 0, &fb));  ///~~
+			bco->setUserPointer(new ShapeData(ST_Collect, 0, 0, 0, &o));  /// *
 		#ifndef SR_EDITOR
 			pGame->collision.world->addCollisionObject(bco);
 			pGame->collision.shapes.push_back(bshp);
@@ -141,8 +139,12 @@ void App::ResetCollects()
 {
 	for (SCollect& o : scn->sc->collects)
 		if (o.nd)
+		{
+			o.collected = 0;
 			o.nd->setVisible(1);
+		}
 }
+
 
 #if 0  /// TODO.. ed
 //  👆 Pick

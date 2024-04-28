@@ -491,6 +491,7 @@ void GAME::AdvanceGameLogic(double dt)
 			if (bResetObj)
 			{	bResetObj = false;
 				app->ResetObjects();
+				app->ResetCollects();
 			}
 
 			if (dt > 0.0)

@@ -29,18 +29,41 @@ void IntTickCallback(btDynamicsWorld* world, btScalar timeStep)
 		btPersistentManifold* contactManifold = world->getDispatcher()->getManifoldByIndexInternal(i);
 		const btCollisionObject* bA = contactManifold->getBody0();
 		const btCollisionObject* bB = contactManifold->getBody1();
-	
-		if (bA->getCollisionFlags() & btCollisionObject::CF_NO_CONTACT_RESPONSE ||
-			bB->getCollisionFlags() & btCollisionObject::CF_NO_CONTACT_RESPONSE)  // ignore triggers
-			continue;
+		bool trigger = 	
+			bA->getCollisionFlags() & btCollisionObject::CF_NO_CONTACT_RESPONSE ||
+			bB->getCollisionFlags() & btCollisionObject::CF_NO_CONTACT_RESPONSE;
+		// if (trigger)
+		// 	continue;  // ignore triggers
 
 		void* pA = bA->getUserPointer(), *pB = bB->getUserPointer();
 		//if (pA && pB)
 		{
-			ShapeData* sdA = (ShapeData*)pA, *sdB = (ShapeData*)pB, *sdCar=0, *sdFluid=0, *sdWheel=0;
-			if (sdA) {  if (sdA->type == ST_Car)  sdCar = sdA;  else if (sdA->type == ST_Fluid)  sdFluid = sdA;  else if (sdA->type == ST_Wheel)  sdWheel = sdA;  }
-			if (sdB) {  if (sdB->type == ST_Car)  sdCar = sdB;  else if (sdB->type == ST_Fluid)  sdFluid = sdB;  else if (sdB->type == ST_Wheel)  sdWheel = sdB;  }
-	
+			ShapeData* sdA = (ShapeData*)pA, *sdB = (ShapeData*)pB,
+				*sdCar =0, *sdFluid =0, *sdWheel =0, *sdCollect =0;
+
+			if (sdA) {
+					 if (sdA->type == ST_Car)  sdCar = sdA;
+				else if (sdA->type == ST_Fluid)  sdFluid = sdA;
+				else if (sdA->type == ST_Wheel)  sdWheel = sdA;
+				else if (sdA->type == ST_Collect)  sdCollect = sdA;  }
+			if (sdB) {
+					 if (sdB->type == ST_Car)  sdCar = sdB;
+				else if (sdB->type == ST_Fluid)  sdFluid = sdB;
+				else if (sdB->type == ST_Wheel)  sdWheel = sdB;
+				else if (sdB->type == ST_Collect)  sdCollect = sdB;  }
+			
+			if (sdCollect)
+			{
+				auto* col = sdCollect->pCol;
+				if (!col->collected)
+				{	col->collected = 1;
+
+				}
+			}
+
+			if (trigger)
+				continue;  // ignore
+
 			if (sdFluid && sdFluid->pFluid)  // solid fluid hit
 				if (sdFluid->pFluid->solid)  sdFluid = 0;
 				
@@ -306,6 +329,10 @@ struct MyRayResultCallback : public btCollisionWorld::RayResultCallback
 			if (!bCamTilt && sd->type == ST_Fluid && !sd->pFluid->solid)
 				return 1.0;
 
+			//  always ignore collectibles
+			if (sd->type == ST_Collect)
+				return 1.0;
+
 			//  always ignore wheel triggers
 			if (sd->type == ST_Wheel)  // && (obj->getCollisionFlags() & btCollisionObject::CF_NO_CONTACT_RESPONSE))
 				return 1.0;
@@ -427,6 +454,7 @@ bool COLLISION_WORLD::CastRay(
 				//case SU_Vegetation: case SU_Border:
 				
 				//case SU_ObjectStatic: //case SU_ObjectDynamic:
+				//case SU_Collect:
 
 				case SU_Fluid:  //  solid fluids
 				{

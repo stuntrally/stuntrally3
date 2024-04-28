@@ -768,7 +768,7 @@ void CARDYNAMICS::Init(
 	//TODO: update this when car rewinds.. so they don't collide and "explode"
 	//chassis->getBroadphaseProxy()->m_collisionFilterMask = 0; //setCollisionFilterMask();
 	chassis->setActivationState(DISABLE_DEACTIVATION);
-	chassis->setUserPointer(new ShapeData(ST_Car, this, 0));  ///~~
+	chassis->setUserPointer(new ShapeData(ST_Car, this));  ///~~
 	
 	world.world->addAction(this);  actions.push_back(this);
 	

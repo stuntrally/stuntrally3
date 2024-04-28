@@ -16,14 +16,15 @@ const static int  // & 0xFF !
 	SU_Collect		= 0xA00;  //+collect Id  collectible gems
 
 
-//  info  for special collision objects  (fluids, triggers)
+//  info  for special collision objects:
+//  car body, fluid areas, wheel fluid triggers, collectible item triggers
 //-------------------------------------------------------------
 enum EShapeType
 {
-	ST_Car=0, ST_Fluid, ST_Wheel, ST_Other
+	ST_Car=0, ST_Fluid, ST_Wheel, ST_Collect, ST_Other
 };
 
-class CARDYNAMICS;  class FluidBox;
+class CARDYNAMICS;  class FluidBox;  class SCollect;
 class ShapeData
 {
 public:
@@ -31,11 +32,11 @@ public:
 	CARDYNAMICS* pCarDyn;
 	FluidBox* pFluid;
 	int whNum;
+	SCollect* pCol;
 
-	ShapeData( EShapeType type1)
-		: type(type1), pCarDyn(0), pFluid(0), whNum(0)
-	{	}
-	ShapeData( EShapeType type1, CARDYNAMICS* pCarDyn1, FluidBox* pFluid1, int whNum1=0)
-		: type(type1), pCarDyn(pCarDyn1), pFluid(pFluid1), whNum(whNum1)
+	ShapeData( EShapeType type1, CARDYNAMICS* pCarDyn1=0,
+		FluidBox* pFluid1=0, int whNum1=0, SCollect* pCol1=0)
+		: type(type1), pCarDyn(pCarDyn1)
+		, pFluid(pFluid1), whNum(whNum1), pCol(pCol1)
 	{	}
 };

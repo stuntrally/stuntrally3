@@ -204,4 +204,6 @@ public:
 	Ogre::Item* it = 0;
 
 	btCollisionObject* co = 0;  // 🎳 bullet
+	//  game var
+	bool collected =0;
 };
