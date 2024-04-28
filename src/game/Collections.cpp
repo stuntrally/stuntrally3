@@ -115,6 +115,8 @@ void CGui::fillCollectList(std::vector<int> vIds)
 void CGui::listCollectChng(MyGUI::MultiList2* chlist, size_t id)
 {
 	if (id==ITEM_NONE || liCollect->getItemCount() == 0)  return;
+	if (id >= liCollect->getItemCount())
+		id = 0;  // liCollect->getItemCount()-1;
 
 	int nch = *liCollect->getItemDataAt<int>(id)-1;
 	if (nch < 0 || nch >= data->collect->all.size())  {  LogO("Error collect sel > size.");  return;  }
@@ -122,15 +124,15 @@ void CGui::listCollectChng(MyGUI::MultiList2* chlist, size_t id)
 	CarListUpd();  // filter car list
 
 	//  fill stages
-	liStages->removeAllItems();
+	// liStages->removeAllItems();
 
-	int n = 1, p = pSet->gui.champ_rev ? 1 : 0;
 	const Collect& ch = data->collect->all[nch];
 
 	if (edChDesc)  edChDesc->setCaption(ch.descr);
 	txtChName->setCaption(ch.nameGui);
 
 	// UpdCollectDetail(nch);
+	// todo: fill track ..
 }
 
 

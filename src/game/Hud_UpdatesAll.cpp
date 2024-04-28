@@ -422,14 +422,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 		if (h.txTimes)
 		if (pSet->game.collect_num >= 0)
 		{
-			//  count collected
-			int cols = 0, all = app->sc->collects.size();
-			for (auto& c : app->sc->collects)
-				if (c.collected)
-				{	c.nd->setVisible(0);
-					++cols;
-					// todo ..
-				}
+			int cols = app->iCollected, all = app->sc->collects.size();
 			h.txTimes->setCaption(
 				"\n#D0B0FF" + toStr(cols)+" / "+toStr(all) +
 				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId)));

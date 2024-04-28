@@ -71,6 +71,7 @@ void HlmsPbs2::calculateHashForPreCreate(
 	case DB_Fluid:	fluid = 1;
 					setProperty( "water", 1 );  break;
 	case DB_Paint:	setProperty( "paint", 1 );  break;
+	default:  break;
 	}
 
 	if (mtr.substr(0,5) == "River")
@@ -123,6 +124,7 @@ void HlmsPbs2::calculateHashForPreCaster(
 	// case DB_Fluid:	fluid = 1;
 	// 				setProperty( "water", 1 );  break;
 	// case DB_Paint:	setProperty( "paint", 1 );  break;
+	default:  break;
 	}
 
 	/*if (mtr.find("body") != String::npos)

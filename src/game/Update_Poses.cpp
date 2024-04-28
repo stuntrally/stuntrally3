@@ -211,6 +211,13 @@ void App::newPoses(float time)  // time only for camera update
 		///-----------------------------------------------------------------------
 		
 
+		//  💎 collection game
+		//-----------------------------------------------------------------------
+		bool collect = pSet->game.collect_num >= 0;
+		if (collect)
+			UpdCollects();
+		
+
 		//  🏁 checkpoints, lap start
 		//-----------------------------------------------------------------------
 		if (bGhost && !gui->bLesson)   // dont check for ghost
@@ -253,7 +260,7 @@ void App::newPoses(float time)  // time only for camera update
 						///  Lap
 						bool finished = (pGame->timer.GetCurrentLap(c) >= pSet->game.num_laps)
 							&& (mClient || pSet->game.local_players > 1);  // 📡 networked or 👥 splitscreen
-						bool best = finished ? false :  // dont inc laps when race over (in ^)
+						bool best = finished || collect ? false :  // dont inc laps when race over (in ^)
 							pGame->timer.Lap(c, !finished, pSet->game.track_reversed);  //,boost_type?
 						double timeCur = pGame->timer.GetPlayerTimeTot(c);
 
@@ -275,7 +282,7 @@ void App::newPoses(float time)  // time only for camera update
 						bool champ = pSet->game.champ_num >= 0, chall = pSet->game.chall_num >= 0;
 						bool chs = champ || chall;
 						
-						if (!chs)
+						if (!chs && !collect)
 						{	if (newbest)  // 🔉
 								pGame->snd_lapbest->start();
 							else
@@ -295,12 +302,15 @@ void App::newPoses(float time)  // time only for camera update
 								carM->pCar->dynamics.fDamage - pSet->game.damage_dec);
 
 						//  ⏱️ upd lap results ----
-						carM->updLap = false;
-						carM->fLapAlpha = 1.f;
+						if (!collect)
+						{
+							carM->updLap = false;
+							carM->fLapAlpha = 1.f;
+						}
 
 						///  all laps
 						finished = pGame->timer.GetCurrentLap(c) >= pSet->game.num_laps;
-						if (finished && !mClient)
+						if (finished && !mClient && !collect)
 						{
 							if (!chs)
 							{	//  👥 splitscreen winner places
@@ -369,7 +379,8 @@ void App::newPoses(float time)  // time only for camera update
 									pGame->snd_chk->start();  // 🔉
 							}
 							else
-							if (carM->iInChk != carM->iCurChk && !bRplPlay &&
+							if (!collect &&  //?
+								carM->iInChk != carM->iCurChk && !bRplPlay &&
 								!scn->sc->noWrongChks)  // denies
 							{
 								carM->bWrongChk = true;  // ❌

@@ -94,6 +94,7 @@ public:
 
 	//  💎 Collectibles
 	void CreateCollects(), DestroyCollects(bool clear), ResetCollects();
+	int iCollected = 0, oldCollected = 0;  //-
 
 
 	//  🌍 minimap  ----

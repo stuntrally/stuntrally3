@@ -843,8 +843,11 @@ void App::NewGameDoLoad()
 		for (int i=0; i < carModels.size(); ++i)
 		{	CarModel* cm = carModels[i];
 			cm->updTimes = true;
-			cm->updLap = true;  cm->fLapAlpha = 1.f;
-		}
+
+			bool collect = pSet->game.collect_num >= 0;
+			if (!collect)
+			{	cm->updLap = true;  cm->fLapAlpha = 1.f;
+		}	}
 
 		//if (pSet->show_fps)
 		//	mFpsOverlay->show();

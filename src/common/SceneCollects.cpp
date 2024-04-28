@@ -16,6 +16,7 @@
 #include "CData.h"
 #include "PresetsXml.h"
 
+#include "SoundMgr.h"
 #include "Axes.h"
 #include "BtOgreGP.h"
 #include "ShapeData.h"
@@ -43,6 +44,8 @@ using namespace std;
 //-------------------------------------------------------------------------------------------------------
 void App::CreateCollects()
 {
+	iCollected = 0;  oldCollected = 0;  // game, hud
+
 	for (int i=0; i < scn->sc->collects.size(); ++i)
 	{
 		SCollect& o = scn->sc->collects[i];
@@ -97,7 +100,7 @@ void App::CreateCollects()
 			bco->setUserPointer(new ShapeData(ST_Collect, 0, 0, 0, &o));  /// *
 		#ifndef SR_EDITOR
 			pGame->collision.world->addCollisionObject(bco);
-			pGame->collision.shapes.push_back(bshp);
+			// pGame->collision.shapes.push_back(bshp);  //?
 			o.co = bco;
 		#else
 			world->addCollisionObject(bco);
@@ -137,6 +140,7 @@ void App::DestroyCollects(bool clear)
 
 void App::ResetCollects()
 {
+	iCollected = 0;  oldCollected = 0;
 	for (SCollect& o : scn->sc->collects)
 		if (o.nd)
 		{
@@ -145,6 +149,36 @@ void App::ResetCollects()
 		}
 }
 
+#ifndef SR_EDITOR  // game
+
+//  Update collection game frame
+void App::UpdCollects()
+{
+	int all = sc->collects.size();
+	if (!all)
+		return;
+
+	//  count collected
+	int cols = 0;
+	for (auto& c : sc->collects)
+		if (c.collected)
+		{	++cols;
+			c.nd->setVisible(0);
+		}
+	oldCollected = iCollected;
+	iCollected = cols;
+	
+	if (oldCollected != iCollected)
+	{
+		if (iCollected == all)
+			pGame->snd_lap->start();  // 🔉 end
+		else
+			pGame->snd_chk->start();  // 🔉 one
+		
+		// todo: show wnd, check best time, pass etc
+	}
+}
+#endif
 
 #if 0  /// TODO.. ed
 //  👆 Pick
