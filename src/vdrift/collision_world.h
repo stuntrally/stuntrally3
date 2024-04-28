@@ -69,6 +69,7 @@ public:
 	// . . . bullet sim . . .
 	btDefaultCollisionConfiguration* config;
 	btCollisionDispatcher* dispatcher;
+	btDbvtBroadphase* broadphase2;
 	bt32BitAxisSweep3* broadphase;
 	btSequentialImpulseConstraintSolver* solver;
 	DynamicsWorld* world;

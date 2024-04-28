@@ -206,17 +206,21 @@ void COLLISION_WORLD::Update(double dt, bool profiling)
 
 ///  🌟 ctor  [(  bullet world  )]
 COLLISION_WORLD::COLLISION_WORLD() : pApp(0),
-	config(0), dispatcher(0), broadphase(0), solver(0), world(0), cdOld(0), 
+	config(0), dispatcher(0), broadphase2(0), broadphase(0), solver(0), world(0), cdOld(0), 
 	fixedTimestep(1.0/60.0), maxSubsteps(7)  // default, set from settings
 {
-	config = new btDefaultCollisionConfiguration();
-	dispatcher = new btCollisionDispatcher(config);
+	config = new btDefaultCollisionConfiguration();  // memory
+	dispatcher = new btCollisionDispatcher(config);  // convex,detect
 
-	btScalar ws = 5000;  // world size
-	broadphase = new bt32BitAxisSweep3(btVector3(-ws,-ws,-ws), btVector3(ws,ws,ws));
+	btScalar ws = 15000;  //par? world size
 	solver = new btSequentialImpulseConstraintSolver();
+#if 1  // par?
+	broadphase2 = new btDbvtBroadphase();
+	world = new DynamicsWorld(dispatcher, broadphase2, solver, config);
+#else
+	broadphase = new bt32BitAxisSweep3(btVector3(-ws,-ws,-ws), btVector3(ws,ws,ws));
 	world = new DynamicsWorld(dispatcher, broadphase, solver, config);
-
+#endif
 	world->setGravity(btVector3(0.0, 0.0, -9.81)); ///~
 	//world->getSolverInfo().m_numIterations = 36;  //-
 	//world->getSolverInfo().m_splitImpulse = true;
@@ -239,6 +243,7 @@ COLLISION_WORLD::~COLLISION_WORLD()
 
 	delete world;
 	delete solver;
+	delete broadphase2;
 	delete broadphase;
 	delete dispatcher;
 	delete config;
@@ -409,7 +414,7 @@ bool COLLISION_WORLD::CastRay(
 					int mx = (pos[0] + 0.5*tws)/tws*t;  mx = std::max(0,std::min(t-1, mx));
 					int my = (pos[1] + 0.5*tws)/tws*t;  my = std::max(0,std::min(t-1, t-1-my));
 
-					int mtr = pApp->blendMtr[my*t + mx];//; todo: in each td
+					int mtr = pApp->blendMtr[my*t + mx];  //; todo: in each td
                     assert(mtr < td.layers.size());
 					int id = td.layersAll[td.layers[mtr]].surfId;
 					surf = &pApp->pGame->surfaces[id];

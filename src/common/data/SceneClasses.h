@@ -10,7 +10,7 @@
 #include <OgreQuaternion.h>
 
 namespace Ogre {  class SceneNode;  class Item;  class ParticleSystem;  }
-namespace Forests {  class GrassLayer;  }
+class btDefaultMotionState;  class btCollisionObject;  class btRigidBody;  class btTransform;
 
 
 /*struct RoadSurface  // todo ..
@@ -144,7 +144,7 @@ public:
 	std::string name;
 	int hq = 2;  // quality:  2 reflect  1 refract  0 diffuse
 
-	class btCollisionObject* cobj = 0;  // 🎳 bullet
+	btCollisionObject* cobj = 0;  // 🎳 bullet
 	int idParticles = 0;   // auto set  index for wheel particles  -1 none
 	bool solid = false, deep = false;  // auto set, from FluidParams
 };
@@ -163,11 +163,11 @@ public:
 
 	Ogre::SceneNode* nd = 0;  // 🟢 ogre
 	Ogre::Item* it = 0;
-	class btDefaultMotionState* ms = 0;  // 🎳 bullet
-	class btCollisionObject* co = 0;
-	class btRigidBody* rb = 0;
+	btDefaultMotionState* ms = 0;  // 🎳 bullet
+	btCollisionObject* co = 0;
+	btRigidBody* rb = 0;
 	bool dyn = false;  // auto set
-	class btTransform* tr1 = 0;  // 1st pos after load, for reset
+	btTransform* tr1 = 0;  // 1st pos after load, for reset
 
 	void SetFromBlt();
 };
@@ -197,8 +197,11 @@ class SCollect      //  💎 Collectible gem
 {
 public:
 	int type = 0, groups = 0;
-	Ogre::Vector3 pos{0,0,0}, size{1,1,1};
+	Ogre::Vector3 pos{0,0,0}, scale{1,1,1};
 
 	Ogre::SceneNode* nd = 0;  // 🟢 ogre
 	Ogre::Item* it = 0;
+
+	btDefaultMotionState* ms = 0;  // 🎳 bullet
+	btCollisionObject* co = 0;
 };

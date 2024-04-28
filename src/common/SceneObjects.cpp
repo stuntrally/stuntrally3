@@ -37,10 +37,7 @@
 #include <OgreSceneNode.h>
 #include <OgreCamera.h>
 #include <OgreWindow.h>
-// #include <MyGUI.h>
-// #include <MyGUI_InputManager.h>
 using namespace Ogre;
-// using namespace MyGUI;
 using namespace std;
 
 
@@ -299,7 +296,7 @@ void App::ResetObjects()
 			o.rb->setWorldTransform(*o.tr1);
 			o.ms->setWorldTransform(*o.tr1);
 			o.SetFromBlt();
-	}
+		}
 }
 
 
