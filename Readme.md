@@ -37,10 +37,10 @@ with possible **stunt** elements (jumps, loops, pipes) and generated roads from 
 It also features many Sci-Fi vehicles and different planets🌌.  
 All [tracks](https://stuntrally.tuxfamily.org/tracks3) and [vehicles](https://stuntrally.tuxfamily.org/cars) can be browsed on website.
 
-SR 3.x is the continuation of old [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.x.  
-Using [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0 for rendering and [VDrift](https://github.com/VDrift/vdrift) for simulation.
+SR 3.x is continuing old [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.x,  
+now using [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0 for rendering and [VDrift](https://github.com/VDrift/vdrift) for simulation.
 
-**Documentation** is now [inside docs/](docs/_menu.md) dir.
+**Documentation** is [inside docs/](docs/_menu.md) dir.
 
 ## 📊Features
 
@@ -110,16 +110,12 @@ Before reporting bugs or issues, be sure to [Read before posting](https://groups
 [the old one](https://forum.freegamedev.net/viewtopic.php?f=78&t=3814)) topic first.
 
 Then create a [new issue on github](https://github.com/stuntrally/stuntrally3/issues/new) (if not present already)  
-or a topic on [New Forum](https://groups.f-hub.org/stunt-rally/) (if already invited).
+or a topic on [New Forum](https://groups.f-hub.org/stunt-rally/) (if already joined, [how to](https://groups.f-hub.org/d/2ftpShKs/)).
 
 ## 🤝Contributing
 
 Help and contributing is welcome.  
-If you'd like to contribute, please check [Contributing](docs/Contributing.md).  
-You can help with:  
-- [translating](docs/Localization.md) - done on Weblate
-- testing, packaging, adding or improving content, fixing, developing code etc.  
-  done with PRs on github
+If you'd like to contribute, please check [Contributing](docs/Contributing.md) for details.  
 
 ## 🛠️Developing
 

@@ -3,9 +3,7 @@ _List of things **to do**, planned for next releases._
 This is the latest, fast updated list.  
 More in [Tasks tracker](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php?page_number=1) with older tasks too and some more detail.
 
-Git [sr3 repo](https://github.com/stuntrally/stuntrally3) and [tracks3](https://github.com/stuntrally/tracks3), older simple [terrain demo](https://github.com/cryham/ogre3ter-demo)  
-
-Marked: <u>critical</u>, `crucial`, **Next or Big**, _Important_.
+Marked: `crucial`, **Next or Big**, _Important_.
 
 ----
 ### Ogre cd restore
@@ -78,24 +76,25 @@ New tracks add to `champs` 🏆
 SR 3.0 📽️ `editor Videos`, all new  
 
 auto road/ter **Surface**: Particles, trail, sounds, from `presets.xml` not per track  
+tire **trails clr**, no uv tex-  
+
 Road noise blend, color per vertex  
 grass density as **RTT**, noise, color  
 inside height fog?, noise 3d? _volumetric_ clouds  
 
 ed _tools_: copy roads which combo,all  
 Grass read Hmap - no index, vertex buffers? texture atlas-  
-slow track load, shaders, !ter get h, norm, do parallel  
 
-🖥️ finish Gui Screen/Video render system, rest options  
+🖥️ finish render system rest options  
 🖱️ Input mouse bind, 👀 VR mode meh-  
 Add SR icons to: game & editor for Windows & Linux, and installer
 
 MyGui CMake .lib, Conan?  
 .mesh LODs test adjust-  
 water refl vis dist? low gets bad  
-tire **trails clr**, no uv tex-  
 Fog, 2 colors cam dir fix-  
 gpu mem leaks or renders inactive  
+slow track load, shaders, !ter get h, norm, do parallel  
 
 
 ----

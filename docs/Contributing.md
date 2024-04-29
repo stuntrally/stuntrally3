@@ -6,15 +6,15 @@ Help is welcomed.
 Thank you for all your contributions.
 
 Even smaller things count like:
-- Testing and reporting bugs ([Issues on github](https://github.com/stuntrally/stuntrally/issues)).
-- Improving a translation to a language (on [Weblate](https://hosted.weblate.org/projects/stunt-rally-3/stunt-rally-3/), [Localization](Localization.md)).
 - Increasing popularity, spreading info about Stunt Rally 3 on internet (with link to our [website](https://stuntrally.tuxfamily.org/)).
+- Testing and reporting bugs ([Issues on github](https://github.com/stuntrally/stuntrally/issues)).
+- Improving a **translation** to a language (on [Weblate](https://hosted.weblate.org/projects/stunt-rally-3/stunt-rally-3/), [Localization](Localization.md)).
 - Constructive discussions and honest opinions about features, etc.
 - Lastly new ideas (since already plenty in [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) and [Roadmap](Roadmap.md)).
 
 
-Below is a list (in no order, just my favorite 2 first)
-of bigger focused contributions:
+Below is a list of **bigger** focused contributions:  
+(in no order, just my favorite 2 first)
 
 ------------------------
 ## Programmers
