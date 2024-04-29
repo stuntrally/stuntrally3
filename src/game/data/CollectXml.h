@@ -5,21 +5,6 @@
 #include "CAllowed.h"
 
 
-//  🏞️ single Track in Collection
-class CollectTrack
-{
-public:
-	std::string name = "Jng1-Curly";
-	bool reversed = 0;  // track
-	int laps = 1;  // number of laps
-
-	//  pass  -1 means not needed, you can use one or more conditions
-	float passPoints = -1, timeNeeded = -1;  int passPos = -1;
-
-	//? bronze, silver, gold percent or val
-};
-
-
 ///  🥇 one Collection setup
 class Collect
 {
