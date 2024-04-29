@@ -5,10 +5,8 @@
 #include "settings.h"
 #include "SceneClasses.h"
 #include "App.h"
-#ifdef SR_EDITOR
-	#include "CGui.h"
-	#include "Road.h"
-#else
+#include "CGui.h"
+#ifndef SR_EDITOR
 	#include "game.h"
 #endif
 #include "SceneXml.h"
@@ -17,25 +15,18 @@
 #include "PresetsXml.h"
 
 #include "SoundMgr.h"
-#include "Axes.h"
-#include "BtOgreGP.h"
 #include "ShapeData.h"
 #include <BulletCollision/CollisionDispatch/btCollisionObject.h>
 #include <BulletCollision/CollisionShapes/btCollisionShape.h>
 #include <BulletCollision/CollisionShapes/btSphereShape.h>
-#include <LinearMath/btDefaultMotionState.h>
 #include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
 
 #include <OgreCommon.h>
 #include <OgreVector3.h>
-#include <OgreQuaternion.h>
-#include <OgreMeshManager.h>
-#include <OgreMaterialManager.h>
 #include <OgreItem.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include <OgreCamera.h>
-#include <OgreWindow.h>
 using namespace Ogre;
 using namespace std;
 
@@ -174,6 +165,7 @@ void App::UpdCollects()
 			pGame->snd_chk->start();  // 🔉 one
 		
 		// todo: show wnd, check best time, pass etc
+		// gui->progressC.all
 	}
 }
 #endif

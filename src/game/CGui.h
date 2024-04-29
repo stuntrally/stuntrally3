@@ -4,6 +4,7 @@
 #include "ChampsXml.h"  // progress
 #include "ChallengesXml.h"
 #include "CollectXml.h"
+#include "CareerXml.h"
 #include "CInput.h"
 
 #include "SliderValue.h"
@@ -462,6 +463,7 @@ public:
 	ProgressXml progress[2];
 	ProgressLXml progressL[2];
 	ProgressCXml progressC;
+	ProgressCareer career;
 
 	void ProgressSave(bool upgGui=true), ProgressLSave(bool upgGui=true), ProgressCSave(bool upgGui=true);
 	Chall* pChall =0;  // current challenge or 0 if not
