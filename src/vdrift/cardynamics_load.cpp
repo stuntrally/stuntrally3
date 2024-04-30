@@ -301,7 +301,7 @@ bool CARDYNAMICS::Load(GAME* game, CONFIGFILE& c)
 			diff_center3.SetFinalDrive(final);	diff_center3.SetAntiSlip(a, a_tq, a_tq_dec);
 		}
 		else
-		{	LogO(".car Error: Unknown drive type: "+drive);
+		{	LogO(".car Error: Unknown drive type: "+drivet);
 			return false;
 		}
 	}

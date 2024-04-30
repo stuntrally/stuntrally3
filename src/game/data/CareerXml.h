@@ -68,7 +68,7 @@ class ProgressCareer
 public:
 	int mode = 0;  // easy, medium, hard
 	float money = 0.f;  // credits amount
-	int diff_rank;      // difficulty rank
+	int diff_rank = 0;  // difficulty rank
 	std::vector<ProgressCar> cars;  // owned vehicles
 
 	struct SFuels
@@ -90,7 +90,7 @@ public:
 	int raced = 0.f;	    // tracks raced
 	//  tracks race places counts
 	//  i.e. how many times won 1st place on any track
-	int pos1 =0, pos2 =0, pos3 =0, pos4, pos5up =0;
+	int pos1 =0, pos2 =0, pos3 =0, pos4 =0, pos5up =0;
 
 	bool LoadXml(std::string file), SaveXml(std::string file);
 };
