@@ -4,7 +4,7 @@
 
 
 <!--  ⛅  Skies  ================================================================
-      m - material name from sky.mat  c - color (for list)
+      m - material name from .json  c - color (for list)
       d - clouds 0..1  t - hours  l - latitude deg  ]- for RoR only
       r - rating 1..5 (quality)  y - sun yaw   p - pitch
       fc - fog sun color  gc - fog away color
@@ -822,7 +822,8 @@ common:  sc - "short scenery name" (name color)
 
 
 <!--  🌳  Vegetation  ================================================================================================================================
-      p - .mesh name  r - rating 1..5  0 for group  -1 hides from list
+      p - .mesh filename (no ext)
+      r - rating 1..5  0 for group  -1 hides from list
       sa,sb - min,max scale    wx,wy - wind fx,fy
       ab - max ter angle   rd - min road dist   fd - max fluid depth
       al - alpha 0 or 1 (crystals etc)   y - offset height[m] below
@@ -1183,17 +1184,18 @@ common:  sc - "short scenery name" (name color)
 
 
 
-<!--  📦🪨  Objects, caves, rocks etc  <o 
+<!--  📦🪨  material sets  <mats
       =======================================================================================================================================
-      o - .mesh name
-      mats - material set name
- 
-      material sets  <mats
-      n - name
-      m - possible materials, separated by |
+      n - (material set) name
+      m - possible materials, separated by |  (names from .json)
 -->
 <mats n="caves" m="cave_dark|cave_brown|cave_white|cave_yellow|cave_uni|cave_alien|cave_winter|cave_orange|cave_ice|cave_ice_marble|cave_grey|cave_green" />
 
+<!--  📦🪨  Objects, caves, rocks etc  <o 
+      =======================================================================================================================================
+      o - .mesh filename (no ext)
+      mats - material set name
+-->
 <o o="cave_01" mats="caves" />
 <o o="cave_02" mats="caves" />
 <o o="cave_03" mats="caves" />
@@ -1320,12 +1322,21 @@ common:  sc - "short scenery name" (name color)
 
 
 <!--  💎 Collectibles gems  =========================================================================================================
-      o - .mesh name
+      n - name, for scene.xml
+      o - .mesh filename (no ext)
+      m - material name (if not default)
+      c - light color r g b
+      b - beam material name
 -->
-<c n="gem1b" o="gem01" c="0.3 0.7 1.0" />
-<c n="gem1y" o="gem01" c="1.0 1.0 0.3" />
-<c n="gem1o" o="gem01" c="1.0 0.4 0.1" />
-<c n="gem1g" o="gem01" c="0.3 1.0 0.2" />
-<!-- <c o="sphere" /> -->
+<c n="gem1b" o="gem01" c="0.3 0.7 1.0" b="collect_beam_b" />
+<c n="gem1y" o="gem01" c="1.0 1.0 0.3" b="collect_beam_y" />
+<c n="gem1o" o="gem01" c="1.0 0.4 0.1" b="collect_beam_o" />
+<c n="gem1g" o="gem01" c="0.3 1.0 0.2" b="collect_beam_g" />
+<!-- 
+<c n="gem1c" o="gem01" c="0.1 1.0 1.0" b="collect_beam_c" />
+<c n="gem1v" o="gem01" c="0.7 0.2 1.0" b="collect_beam_v" />
+<c n="gem1w" o="gem01" c="0.9 0.9 1.0" b="collect_beam_w" />
+<c n="gem1r" o="gem01" c="0.3 1.0 0.2" b="collect_beam_r" />
+-->
 
 </presets>

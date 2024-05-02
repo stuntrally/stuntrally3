@@ -250,6 +250,7 @@ bool Presets::LoadXml(string file)
 		PCollect c;
 		a = e->Attribute("n");	if (a)  c.name = string(a);
 		a = e->Attribute("o");	if (a)  c.mesh = string(a);
+		a = e->Attribute("m");	if (a)  c.material = string(a);
 		a = e->Attribute("c");	if (a)  c.clr = s2c(a);
 		
 		col.push_back(c);  icol[c.name] = col.size();

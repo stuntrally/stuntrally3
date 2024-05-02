@@ -90,33 +90,33 @@ bool ProgressCXml::LoadXml(std::string file)
 	if (!root)  return false;
 
 	//  clear
-	chs.clear();
+	col.clear();
 
 	const char* a;
-	XMLElement* eCh = root->FirstChildElement("collect");
-	while (eCh)
+	XMLElement* eCol = root->FirstChildElement("collect");
+	while (eCol)
 	{
 		ProgressCollect pc;
-		a = eCh->Attribute("name");	if (a)  pc.name = std::string(a);
-		a = eCh->Attribute("ver");	if (a)  pc.ver = s2i(a);
+		a = eCol->Attribute("name");	if (a)  pc.name = std::string(a);
+		a = eCol->Attribute("ver");		if (a)  pc.ver = s2i(a);
 
-		a = eCh->Attribute("t");	if (a)  pc.totalTime = s2r(a);
-		a = eCh->Attribute("z");	if (a)  pc.fin = s2i(a);
+		a = eCol->Attribute("t");	if (a)  pc.bestTime = s2r(a);
+		a = eCol->Attribute("e");	if (a)  pc.fin = s2i(a);
 		
-		//  gems
-		XMLElement* eG = eCh->FirstChildElement("g");
-		while (eG)
+		XMLElement* eG = eCol->FirstChildElement("g");
+		while (eG)  // gems
 		{
 			int i = 0;  bool z =0;
 			a = eG->Attribute("i");  if (a)  i = s2r(a);
-			a = eG->Attribute("z");  if (a)  z = s2i(a) > 0;
+			a = eG->Attribute("z");  if (a)  z = s2i(a) > 0;  // collected
 			
 			pc.gems[i] = z;
 			eG = eG->NextSiblingElement("g");
 		}
 
-		chs.push_back(pc);
-		eCh = eCh->NextSiblingElement("collect");
+		col.push_back(pc);
+		icol[pc.name] = col.size();
+		eCol = eCol->NextSiblingElement("collect");
 	}
 	return true;
 }
@@ -127,26 +127,32 @@ bool ProgressCXml::SaveXml(std::string file)
 	XMLDocument xml;
 	XMLElement* root = xml.NewElement("progress");
 
-	for (int i=0; i < chs.size(); ++i)
+	for (int i=0; i < col.size(); ++i)
 	{
-		const ProgressCollect& pc = chs[i];
+		const ProgressCollect& pc = col[i];
 		XMLElement* eCol = xml.NewElement("collect");
 			eCol->SetAttribute("name", pc.name.c_str() );
 			eCol->SetAttribute("ver",  toStrC( pc.ver ));
 
-			eCol->SetAttribute("t",  fToStr( pc.totalTime, 1).c_str());
-			eCol->SetAttribute("z",  iToStr( pc.fin ).c_str());
+			eCol->SetAttribute("t",  fToStr( pc.bestTime, 1).c_str());
+			eCol->SetAttribute("e",  toStrC( pc.fin ));
 
 			for (auto& g : pc.gems)
 			{
 				XMLElement* eG = xml.NewElement("g");
 
 				eG->SetAttribute("i",  iToStr( g.first ).c_str());
-				eG->SetAttribute("z",  g.first ? "1" : "0");
+				eG->SetAttribute("z",  g.first ? "1" : "0");  // collected
 				eCol->InsertEndChild(eG);
 			}
 		root->InsertEndChild(eCol);
 	}
 	xml.InsertEndChild(root);
 	return xml.SaveFile(file.c_str());
+}
+
+ProgressCollect* ProgressCXml::Get(std::string name)
+{
+	auto f = icol.find(name);
+	return f != icol.end() ? &col[f->second -1] : 0;
 }

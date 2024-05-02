@@ -4,8 +4,8 @@
 			//  here you put display name, description text
 			//  increase ver if you changed challenge (no need if track count changed)
 
-			//  type is for putting it into gui tabs   find: clrCh[MAX_CHL_TYP]
-			//  0 Rally  1 Scenery  2 Endurance  3 Chase  4 Stunts  5 Extreme  6 Space    7 Special  8 Vehicle  9 Hover    10 Test
+			//  type is for putting it into gui tabs   find: clrCh[MAX_COL_TYP][8]
+			//  0 Infinite  1 Chase  2 Hard  3 Test
 
 			//  difficulty is for text displayed in list
 			//    "1" easy .. "3" medium .. "6" extreme
@@ -76,7 +76,7 @@
 <!--  🏞️ 0  short,easy  infinite  -->
 <!--========================================================================================================================-->
 
-	<collection name="#A0C000Easy test" ver="1" difficulty="0" type="0"
+	<collection name="#A0C000Easy test" ver="1" difficulty="0" type="3"
 descr="Easy test cars.">
 		<cartype names="Gravel|Asphalt|Extreme" />
 		<pass timeNeeded="21" />
@@ -97,6 +97,12 @@ descr="Test drone.">
 		<track name="Test13-Hills" />
 	</collection>
 
+<collection name="#A0C000The Stunt Rally track" ver="1" difficulty="3" type="2"
+	descr="The first, original collection on Stunt Rally logo track. Each letter except river l, has a few gems, including the floating loop. Gems are also in other places on terrain or rocks, in water.">
+		<cartype names="Gravel|Asphalt|Hovercraft|Hover|Drone" />
+		<track name="TestC12-SR" />
+	</collection>
+	
 	<collection name="#A0C000Easy space" ver="1" difficulty="4" type="3"
 descr="Test Spaceship.">
 		<cartype names="Spaceship" />

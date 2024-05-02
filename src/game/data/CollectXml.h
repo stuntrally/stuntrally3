@@ -60,13 +60,13 @@ public:
 class ProgressCollect
 {
 public:
-	float totalTime = 0.f;	  // computed from all stages
-	int fin = -1;      // final prize  -1 none, 0 bronze, 1 silver, 2 gold
-	
 	std::string name;
-	int ver = 0;
-	
-	std::map<int, bool> gems;  // 
+	int ver = 0;  // resets if higher..
+
+	int fin = -1;      // final prize  -1 none, 0 bronze, 1 silver, 2 gold
+	float bestTime = 1e6;   // not per vehicle
+
+	std::map<int, bool> gems;  // collected gem ids
 };
 
 
@@ -75,6 +75,10 @@ public:
 class ProgressCXml
 {
 public:
-	std::vector<ProgressCollect> chs;
+	std::vector<ProgressCollect> col;
+	std::map<std::string, int> icol;
+	
+	ProgressCollect* Get(std::string name);
+
 	bool LoadXml(std::string file), SaveXml(std::string file);
 };
