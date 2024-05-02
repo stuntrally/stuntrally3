@@ -406,18 +406,17 @@ void App::KeyTxtCollects()
 	Txt *colTxt = gui->colTxt;
 	int cols = scn->sc->collects.size();
 	bool bNew = iColCur == -1;
-	const SCollect& o = bNew || scn->sc->collects.empty() ? colNew : scn->sc->collects[iColCur];
+	const SCollect& c = bNew || scn->sc->collects.empty() ? colNew : scn->sc->collects[iColCur];
 	UString s = bNew
 		? UString("#80FF80")+TR("#{Road_New}")+"#B0D0B0     "
 		: UString("#A0D0FF")+TR("#{Road_Cur}")+"#B0B0D0     ";
 	s = s + (bNew ? "-" : toStr(iColCur+1)+" / "+toStr(cols));
 	colTxt[0]->setCaption(s);
-	colTxt[1]->setCaption(TR("#{CarType}  ") +toStr(o.type));
-	// colTxt[1]->setCaption(bNew ? vObjNames[iObjTNew] : o.name);
-	colTxt[2]->setCaption(String(colEd==EO_Move  ?"#60FF60":"")+ TR("#{Obj_Pos}  ") +fToStr(o.pos[0],1,4)+" "+fToStr(o.pos[1],1,4)+" "+fToStr(o.pos[2],1,4));
+	colTxt[1]->setCaption(TR("#{CarType}  ") +c.name);
+	colTxt[2]->setCaption(String(colEd==EO_Move  ?"#60FF60":"")+ TR("#{Obj_Pos}  ") +fToStr(c.pos[0],1,4)+" "+fToStr(c.pos[1],1,4)+" "+fToStr(c.pos[2],1,4));
 	// colTxt[3]->setCaption(String(colEd==EO_Rotate?"#FFA0A0":"")+ TR("#{Obj_Rot}  y ") +fToStr(q.getYaw().valueDegrees(),0,3)+" p "+fToStr(q.getPitch().valueDegrees(),0,3)+" r "+fToStr(q.getRoll().valueDegrees(),0,3));
-	colTxt[4]->setCaption(String(colEd==EO_Scale ?"#60F0FF":"")+ TR("#{scale}  ") +fToStr(o.scale,2,4));
-	colTxt[5]->setCaption(TR("#{Group}  ") +toStr(o.groups));
+	colTxt[4]->setCaption(String(colEd==EO_Scale ?"#60F0FF":"")+ TR("#{scale}  ") +fToStr(c.scale,2,4));
+	colTxt[5]->setCaption(TR("#{Group}  ") +toStr(c.groups));
 
 	//  edit
 	if (mz != 0 && bEdit() && cols > 0)  // wheel prev/next

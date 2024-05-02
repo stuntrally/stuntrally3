@@ -384,7 +384,7 @@ bool Scene::SaveXml(String file)
 		{
 			const SEmitter* e = &emitters[i];
 			XMLElement* oe = xml.NewElement("e");
-			oe->SetAttribute("name",		e->name.c_str() );
+			oe->SetAttribute("name",	e->name.c_str() );
 
 			oe->SetAttribute("pos",	toStrC(e->pos));
 			oe->SetAttribute("sc",	toStrC(e->size));
@@ -405,7 +405,7 @@ bool Scene::SaveXml(String file)
 		{
 			const SCollect* c = &collects[i];
 			XMLElement* oc = xml.NewElement("c");
-			oc->SetAttribute("t",	toStrC(c->type));
+			oc->SetAttribute("n",	c->name.c_str());
 			oc->SetAttribute("gr",	toStrC(c->groups));
 
 			oc->SetAttribute("pos",	toStrC(c->pos));

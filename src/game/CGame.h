@@ -117,6 +117,8 @@ public:
 
 	//  💎 Collectibles
 	void CreateCollects(), DestroyCollects(bool clear), ResetCollects();
+	void CreateCollect(int i), DestroyCollect(int i);
+
 	int iCollected = 0, oldCollected = 0;
 	void UpdCollects();
 

@@ -458,6 +458,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			auto it = near.begin();
 			while (i < 4 && it != near.end())
 			{
+				// todo:  3d arrows? update 3d txt..
 				ss += "\n";
 				float d = sqrt((*it).dist);
 				if (d < 3.f)  ss += "#20FFFF";  else

@@ -86,7 +86,7 @@ void CGui::fillCollectList(std::vector<int> vIds)
  	for (int i : vIds)
 	{
 		const Collect& col = data->collect->all[i];
-		const ProgressCollect& pc = progressC.chs[i];
+		const ProgressCollect& pc = progressC.col[i];
 		// const int ntrks = pc.trks.size(), ct = pc.curTrack;
 		const String& clr = clrCh[col.type];
 		//String cars = data->carsXml.colormap[col.ci->type];  if (cars.length() != 7)  clr = "#C0D0E0";
