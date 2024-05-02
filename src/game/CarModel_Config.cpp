@@ -69,6 +69,9 @@ void CarModel::Defaults()
 		driver_view[i] = 0.f;  hood_view[i] = 0.f;  ground_view[i] = 0.f;
 		interiorOfs[i] = 0.f;  boostOfs[i] = 0.f;  exhaustPos[i] = 0.f;
 	}
+	boostClr[0] = 0.2f;  boostClr[1] = 0.6f;  boostClr[2] = 1.0f;
+	thrustClr[0] = 0.2f;  thrustClr[1] = 0.6f;  thrustClr[2] = 1.0f;
+
 	camDist = 1.f;
 	for (i=0; i < PAR_THRUST; ++i)
 	{
@@ -210,6 +213,8 @@ void CarModel::LoadConfig(const string & pathCar)
 	cf.GetParam("model_ofs.boost-z", boostOfs[2]);
 	cf.GetParam("model_ofs.boost-size-z", boostSizeZ);
 	cf.GetParam("model_ofs.boost-name", sBoostParName);
+	cf.GetParam("model_ofs.boost-clr", boostClr);
+	cf.GetParam("model_ofs.thrust-clr", thrustClr);
 	
 	//  🔥 thruster  spaceship hover  max 4 pairs
 	int i;
@@ -222,6 +227,7 @@ void CarModel::LoadConfig(const string & pathCar)
 		cf.GetParam(s+"-z", thrusterOfs[i][2]);
 		cf.GetParam(s+"-size-z", thrusterSizeZ[i]);
 		cf.GetParam(s+"-name", sThrusterPar[i]);
+		cf.GetParam(s+"-lit", thrusterLit[i]);
 	}
 	
 
@@ -244,6 +250,7 @@ void CarModel::LoadConfig(const string & pathCar)
 		cf.GetParam("flares."+s+"-color", pos);
 		flr.clr = ColourValue(pos[0],pos[1],pos[2]);
 		cf.GetParam("flares."+s+"-size", flr.size);
+		cf.GetParam("flares."+s+"-lit", flr.lit);
 	}
 	
 	//-  custom exhaust pos for boost particles

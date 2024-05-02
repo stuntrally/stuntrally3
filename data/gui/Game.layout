@@ -1286,7 +1286,7 @@
 
 						<!--  Paints palette  -->
 						<Widget type="ScrollView" skin="ScrollViewEmpty" position="10 45 355 300" layer="Popup" name="scvPaints">
-							<Property key="CanvasSize" value="1600 7400"/>
+							<Property key="CanvasSize" value="1600 9400"/>
 							<Widget type="ImageBox" skin="ImageBox" position="680 40 52 52" name="ImgPaintCur">
 								<Property key="ImageTexture" value="white.png"/>
 							</Widget>

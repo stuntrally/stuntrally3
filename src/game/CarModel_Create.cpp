@@ -15,6 +15,7 @@
 // #include "gameclient.hpp"
 #include "HlmsPbs2.h"
 
+#include <OgreVector3.h>
 #include <OgreColourValue.h>
 #include <OgreItem.h>
 #include <OgreSceneManager.h>
@@ -62,8 +63,8 @@ void CarModel::Destroy()
 	// 	if (MaterialManager::getSingleton().resourceExists(sMtr[i]))
 	// 		MaterialManager::getSingleton().remove(sMtr[i], resGrpId);
 	
-	for (auto l:lights)
-		mSceneMgr->destroyLight(l);
+	for (auto& l : lights)
+	{	mSceneMgr->destroyLight(l.li);  l.li = 0;  }
 	lights.clear();
 
 	s = vDelIt.size();
@@ -186,6 +187,55 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 	if (bLogInfo)  LogMeshInfo(item, sDirname + sMesh);
 }
 
+//  💡🆕 Create Light
+//-------------------------------------------------------------------------------------------------------
+void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourValue c)
+{
+	const bool front = type == LI_Front;
+	const bool sphere = vType == V_Sphere;
+	const Real dirY = -0.1f, dirZ = front ? 1.f : -1.f;  //par-
+	
+	LogO("C--L Add light: type "+toStr(type)+"  pos "+toStr(pos));  //-
+	SceneNode* node = ndCar->createChildSceneNode( SCENE_DYNAMIC, pos );
+	Light* l = mSceneMgr->createLight();
+	node->attachObject( l );  ToDel(node);
+	
+	float bright = 1.17f * pSet->bright, contrast = pSet->contrast;
+	l->setDiffuseColour(  c * bright * contrast );
+	l->setSpecularColour( c * bright * contrast );
+
+	CarLight li;
+	li.power = !front ? 3.f :
+		sphere ? 3.f : 12.f / numLights; //par  front bright
+	li.power *= Math::PI;
+	l->setPowerScale( li.power * pSet->car_light_bright);
+
+	auto lt = sphere ? Light::LT_POINT : Light::LT_SPOTLIGHT;
+	l->setType(lt);
+
+	if (lt == Light::LT_SPOTLIGHT)
+	{
+		auto dir = bRotFix ?
+			Vector3( 0, dirY, dirZ ) :
+			Vector3( -dirZ, -dirY, 0 );
+		// if (!front)  dir = -dir;
+		l->setDirection(dir);
+		if (front)
+			l->setSpotlightRange(Degree(0), Degree(40), 1.0f );  //par 5 30
+		else
+			l->setSpotlightRange(Degree(0), Degree(170), 1.0f );
+	}
+	if (/*sphere ||*/ front)
+		l->setAttenuationBasedOnRadius( 30.0f, 0.01f );
+	else //if (!front)
+		l->setAttenuationBasedOnRadius( 3.0f, 0.1f );  // brakes etc
+	
+	l->setCastShadows( front && pSet->g.li.car_shadows);
+	l->setVisible( front && sc->needLights);  // auto on for dark tracks  set pCar ..
+
+	li.li = l;  li.type = type;
+	lights.push_back(li);  // add
+}
 
 //-------------------------------------------------------------------------------------------------------
 //  🆕 Create
@@ -301,38 +351,12 @@ void CarModel::Create()
 	{
 		int cnt = fsFlares.pos.size();
 		const Real dirY = -0.1f, dirZ = 1.f;  //par-
-		LogO("c--- create car lights: " + toStr(numLights) + " flares: " + toStr(cnt));
+		LogO("C--L create car lights: " + toStr(numLights) + " flares: " + toStr(cnt));
 
 		for (int i=0; i < numLights; ++i)
 		if (i < cnt)
-		{
-			// LogO(toStr(fsFlares.pos[i]));  //-
-			SceneNode* node = ndCar->createChildSceneNode( SCENE_DYNAMIC, fsFlares.pos[i] );
-			Light* light = mSceneMgr->createLight();
-			node->attachObject( light );  ToDel(node);
-			
-			ColourValue c(1.f, 1.1f, 1.1f);  //par .car clr..
-			float bright = 0.9f*1.3f * pSet->bright, contrast = pSet->contrast;
-			light->setDiffuseColour(  c * bright * contrast );
-			light->setSpecularColour( c * bright * contrast );
-
-			lightPower = sphere ? 3.f : 12.f / numLights; //par  bright
-			lightPower *= Math::PI;
-			light->setPowerScale( lightPower * pSet->car_light_bright);
-
-			light->setType( 
-				sphere ? Light::LT_POINT  // lol
-				: Light::LT_SPOTLIGHT );
-			light->setDirection( bRotFix ?
-				Vector3( 0, dirY, dirZ ) :
-				Vector3( -dirZ, -dirY, 0 ) );
-			light->setAttenuationBasedOnRadius( 30.0f, 0.01f );
-			light->setSpotlightRange(Degree(5), Degree(40), 1.0f );  //par 5 30
-			
-			light->setCastShadows(pSet->g.li.car_shadows);
-			light->setVisible(sc->needLights);  // auto on for dark tracks  set pCar ..
-			lights.push_back(light);
-	}	}
+			CreateLight(ndCar, LI_Front, fsFlares.pos[i], ColourValue(1.f, 1.1f, 1.1f));  // par .car
+	}
 
 
 	//  ⚫ wheels  ----------------------
@@ -382,7 +406,7 @@ void CarModel::Create()
 	///  🔴 brake flares  ++ ++
 	bool hasBrakes = !fsBrakes.pos.empty(),
 		 hasFlares = !fsFlares.pos.empty() && numLights > 0;
-	if (pCar && (hasBrakes|| hasFlares))
+	if (pCar && (hasBrakes || hasFlares))
 	{
 		SceneNode* nd = ndCar->createChildSceneNode();  ToDel(nd);
 		if (hasBrakes)
@@ -392,8 +416,12 @@ void CarModel::Create()
 			// brakes->setRenderQueueGroup(RQG_CarTrails);
 			bsBrakes->setVisibilityFlags(RV_Car);
 
-			for (auto p : fsBrakes.pos)
+			for (auto& p : fsBrakes.pos)
+			{
 				bsBrakes->createBillboard(p, fsBrakes.clr);
+				if (fsBrakes.lit)
+					CreateLight(ndCar, LI_Brake, p, fsBrakes.clr);  //💡
+			}
 
 			bsBrakes->setDatablockOrMaterialName("flare1", "Popular");
 			nd->attachObject(bsBrakes);
@@ -455,11 +483,15 @@ void CarModel::Create()
 						Vector3(bsize.x * 0.97, bsize.y * 0.65, bsize.z * 0.65 * (i==0 ? 1 : -1));
 						//Vector3(1.9 /*back*/, 0.1 /*up*/, 0.6 * (i==0 ? 1 : -1)/*sides*/
 					vp.z *= boostSizeZ;
-					vp += Vector3(boostOfs[0],boostOfs[1],boostOfs[2]);
-					SceneNode* nb = ndMain->createChildSceneNode(SCENE_DYNAMIC, bcenter+vp);  ToDel(nb);
+					vp += Vector3(boostOfs[0],boostOfs[1],boostOfs[2]) + bcenter;
+					
+					SceneNode* nb = ndMain->createChildSceneNode(SCENE_DYNAMIC, vp);  ToDel(nb);
 					nb->attachObject(parBoost[i]);
-				}else
-				{	// use exhaust pos values from car file
+
+					CreateLight(ndMain, LI_Boost, vp, ColourValue(0.2f, 0.6f, 1.f));  //💡
+				}
+				else
+				{	// nope: use exhaust pos values from car file
 					Vector3 pos{0,0,0};
 					if (i==0)
 						pos = Vector3(exhaustPos[0], exhaustPos[1], exhaustPos[2]);
@@ -493,6 +525,9 @@ void CarModel::Create()
 					SceneNode* nb = ndMain->createChildSceneNode(SCENE_DYNAMIC, vp);  ToDel(nb);
 					nb->attachObject(parThrust[ii]);
 					parThrust[ii]->getEmitter(0)->setEmissionRate(0);
+
+					if (thrusterLit[w])
+						CreateLight(ndCar, LI_Thrust, vp, ColourValue(thrustClr[0],thrustClr[1],thrustClr[2]));  //💡
 		}	}	}
 
 		///  ⚫💭 wheel emitters  ------------------------

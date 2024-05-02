@@ -9,18 +9,14 @@
 #include "SceneXml.h"
 #include "CScene.h"
 #include "CGame.h"
-// #include "SplitScreen.h"
 #include "FollowCamera.h"
 #include "Road.h"
-// #include "GraphicsSystem.h"
-// #include <Compositor/OgreCompositorWorkspace.h>
 
 #include <OgreRoot.h>
 #include <OgreMath.h>
 #include <OgreVector4.h>
 #include <OgreEntity.h>
 #include <OgreItem.h>
-// #include <OgreManualObject2.h>
 #include <OgreMaterialManager.h>
 #include <OgreParticleSystem.h>
 #include <OgreParticleEmitter.h>
@@ -28,8 +24,6 @@
 #include <OgreRibbonTrail.h>
 #include <OgreBillboardSet.h>
 #include <OgreSceneNode.h>
-// #include <OgreTechnique.h>
-// #include <OgreViewport.h>
 
 #include <OgreHlmsPbsDatablock.h>
 #include "Terra.h"
@@ -219,7 +213,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	if (!ndMain)  return;
 
 
-	//  🚗 set car pos and rot
+	//  🚗 set car pos and rot  ------------------------------------
 	ndMain->setPosition(posInfo.pos);
 	if (vType == V_Sphere)
 		ndMain->setOrientation(Quaternion(Quaternion(Degree(-posInfo.hov_roll),Vector3::UNIT_Y)));
@@ -242,7 +236,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		ndSph->_getFullTransformUpdated();
 	}
 
-	//  🎥 set camera view
+	//  🎥 set camera view  ------------------------------------
 	if (fCam && cType != CT_REMOTE)
 	{	fCam->Apply(posInfoCam);
 
@@ -252,6 +246,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		
 
 		///~~  💧🎥 camera in fluid fog, detect and compute
+		//------------------------------------------------------------------------
 		iCamFluid = -1;  fCamFl = 0.f;  // none
 		const size_t sf = sc->fluids.size();
 		if (sf > 0 && pSet->game.local_players == 1)
@@ -292,24 +287,45 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	if (bBraking != braking  && gPar.carPrv == 0)
 	{
 		bBraking = braking;
-		UpdateBraking();
+		bool vis = bBraking && bVisible;
+		if (bsBrakes)
+			bsBrakes->setVisible(vis);
 	}
 
-	//  💡 Lights front 🚗
+	//  💡 Lights  ------------------------------------
 	if (pCar)
 	{	// not from posInfo, always can toggle
 		bLightsOld = bLights;
 		bLights = pCar->bLightsOn;
 		if (bLights != bLightsOld)
 		{
-			for (auto* l : lights)
-				l->setVisible(bLights);
+			for (auto& l : lights)
+			if (l.type == LI_Front)
+				l.li->setVisible(bLights);
 			if (bsFlares)
 				bsFlares->setVisible(bLights && pSet->g.li.car);
-	}	}
-	
+		}
+		float f = bBraking ? 1.f : 0.f,
+			b = posInfo.fboost, th = posInfo.hov_throttle;
+		float bri = pSet->car_light_bright;
+		
+		for (auto& l : lights)
+		{
+			if (l.type == LI_Thrust)
+			{	l.li->setPowerScale( th * l.power * bri);
+				l.li->setVisible( th > 0.1f);
+			}else
+			if (l.type == LI_Boost)
+			{	l.li->setPowerScale( b * l.power * bri);
+				l.li->setVisible( b > 0.1f);
+			}else
+			if (l.type == LI_Brake)
+			{	l.li->setPowerScale( f * l.power * bri);  //par
+				l.li->setVisible( f > 0.1f);
+		}	}
+	}	
 
-	//  ✨ update particle emitters
+	//  ✨ update particle emitters  ------------------------------------
 	if (pSet->particles && pCar)
 	{
 		//  💨 boost
@@ -331,7 +347,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		}
 	}
 
-	//  ✨ world hit
+	//  ✨ world hit  ------------------------------------
 	if (parHit)
 	{	ParticleEmitter* pe = parHit->getEmitter(0);
 		if (posInfo.fHitTime > 0.f && pSet->particles)
@@ -589,16 +605,11 @@ void CarModel::UpdKeysCam()
 
 //  utility
 //-------------------------------------------------------------------------------------------------------
-void CarModel::UpdateBraking()
-{
-	if (bsBrakes)
-		bsBrakes->setVisible(bBraking && bVisible);
-}
-
 void CarModel::updLightsBright()
 {
-	for (auto& l:lights)
-		l->setPowerScale( lightPower * pSet->car_light_bright);
+	for (auto& l : lights)
+	if (l.type == LI_Front)  // rest upd each frame
+		l.li->setPowerScale( l.power * pSet->car_light_bright);
 }
 
 //  ✨ upd particles

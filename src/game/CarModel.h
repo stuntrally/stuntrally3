@@ -89,13 +89,15 @@ public:
 		std::vector<Ogre::Vector3> pos;
 		float size = 0.2f;
 		Ogre::ColourValue clr{1,1,1,1};
+		int lit = 0;
 	}
 	fsBrakes, fsFlares;
 	
 	//  💨🔥 boost
-	float boostOfs[3], boostSizeZ;
-	float thrusterOfs[PAR_THRUST][3], thrusterSizeZ[PAR_THRUST];
+	float boostOfs[3], boostSizeZ, boostClr[3], thrustClr[3];
 	std::string sBoostParName, sThrusterPar[PAR_THRUST];
+	float thrusterOfs[PAR_THRUST][3], thrusterSizeZ[PAR_THRUST];
+	int thrusterLit[PAR_THRUST];
 
 	// ⚫💭 for tire trails
 	std::vector<float> whRadius, whWidth;
@@ -155,9 +157,21 @@ public:
 	Ogre::SceneNode* ndMain =0, *ndSph =0;
 	Ogre::Vector3 posSph[2] = {{0,0,0},{0,0,0}};  // 🟢🌿 grass sphere
 
-	std::vector<Ogre::Light*> lights;  // 💡
-	float lightPower = 1.f;
+	enum LiType
+	{
+		LI_Front, LI_Brake, LI_Revese, LI_Boost, LI_Thrust
+	};
+	struct CarLight  // 💡
+	{
+		Ogre::Light* li =0;
+		LiType type = LI_Front;
+		float power = 1.f;
+	};
+	std::vector<CarLight> lights;
 	void updLightsBright();
+	
+	void CreateLight(Ogre::SceneNode* ndCar, LiType type,
+		Ogre::Vector3 pos, Ogre::ColourValue c);
 	
 	
 	//  hide/show
@@ -230,7 +244,6 @@ public:
 	//  🔴 brakes, front flares
 	Ogre::v1::BillboardSet* bsBrakes =0, *bsFlares =0;
 	bool bBraking = true;
-	void UpdateBraking();
 
 	//  💡 Lights
 	bool bLightsOld =0, bLights =0;
