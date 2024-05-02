@@ -24,6 +24,8 @@ brake-pos2 = 0.57,-1.89, 0.73
 brake-pos3 =-0.57,-1.89, 0.73
 brake-size = 0.42
 brake-color = 1, 0.1, 0
+brake-lit0 = 1
+brake-lit1 = 1
 
 [ model_ofs ]
 rot_fix = on

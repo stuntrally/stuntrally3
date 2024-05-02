@@ -22,6 +22,8 @@ brake-pos0 = 0.65,-1.56, 0.33
 brake-pos1 =-0.65,-1.56, 0.33
 brake-size = 0.6
 brake-color = 1, 0.04, 0
+brake-lit0 = 1
+brake-lit1 = 1
 
 [ model_ofs ]
 rot_fix = on
@@ -30,6 +32,7 @@ boost-z = 0.09
 boost-y = -0.26
 boost-size-z = 0
 boost-name = BoostRed
+boost-clr = 1.0, 0.8, 0.0
 exhaust-x = 2.2
 exhaust-y = 0.45
 exhaust-z = 0.56

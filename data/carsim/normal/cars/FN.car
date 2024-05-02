@@ -21,6 +21,8 @@ brake-pos0 = 0.54,-1.53, 0.47
 brake-pos1 =-0.54,-1.53, 0.47
 brake-size = 0.9
 brake-color = 1, 0, 0
+brake-lit0 = 1
+brake-lit1 = 1
 
 [ model_ofs ]
 interior-x = -0.05

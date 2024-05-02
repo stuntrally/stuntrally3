@@ -20,6 +20,7 @@ lights = 1
 brake-pos0 = 0.0,-0.77, 0.0
 brake-size = 0.86
 brake-color = 1, 0.2, 0
+brake-lit0 = 1
 
 [ model_ofs ]
 rot_fix = on

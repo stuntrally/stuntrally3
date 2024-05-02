@@ -21,6 +21,8 @@ brake-pos0 = 0.67,-2.02, 0.08
 brake-pos1 =-0.66,-2.02, 0.08
 brake-size = 0.6
 brake-color = 1, 0, 0
+brake-lit0 = 1
+brake-lit1 = 1
 
 [ model_ofs ]
 exhaust-x = 2.2

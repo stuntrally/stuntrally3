@@ -69,32 +69,28 @@ void CarModel::Defaults()
 		driver_view[i] = 0.f;  hood_view[i] = 0.f;  ground_view[i] = 0.f;
 		interiorOfs[i] = 0.f;  boostOfs[i] = 0.f;  exhaustPos[i] = 0.f;
 	}
+
+	//  boost
+	fsBrakes.pos.clear();  fsBrakes.clr = ColourValue(1,0,0);   fsBrakes.size = 0.2f;
+	fsFlares.pos.clear();  fsFlares.clr = ColourValue(0.98,1,1);  fsFlares.size = 1.2f;
+
+	sBoostParName = "Boost";  boostSizeZ = 1.f;
 	boostClr[0] = 0.2f;  boostClr[1] = 0.6f;  boostClr[2] = 1.0f;
 	thrustClr[0] = 0.2f;  thrustClr[1] = 0.6f;  thrustClr[2] = 1.0f;
-
-	camDist = 1.f;
 	for (i=0; i < PAR_THRUST; ++i)
 	{
-		for (w=0; w<3; ++w)  thrusterOfs[i][w] = 0.f;
+		for (w=0; w < 3; ++w)  thrusterOfs[i][w] = 0.f;
 		thrusterSizeZ[i] = 0.f;
-		sThrusterPar[i] = "";
+		sThrusterPar[i] = "";   thrusterLit[i]=0;
 	}
-	fsBrakes.pos.clear();
-	fsBrakes.clr = ColourValue(1,0,0);
-	fsBrakes.size = 0.2f;
-
-	fsFlares.pos.clear();
-	fsFlares.clr = ColourValue(0.98,1,1);
-	fsFlares.size = 1.2f;
-
-	bRotFix = false;
-	sBoostParName = "Boost";  boostSizeZ = 1.f;
 
 	for (w=0; w < numWheels; ++w)
 	{
 		whRadius[w] = 0.3f;  whWidth[w] = 0.2f;
 		whTemp[w] = 0.f;
 	}
+	camDist = 1.f;
+	bRotFix = false;
 	manualExhaustPos = false;  has2exhausts = false;
 
 	maxangle = 26.f;

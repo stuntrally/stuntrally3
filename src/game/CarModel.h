@@ -93,11 +93,12 @@ public:
 	}
 	fsBrakes, fsFlares;
 	
-	//  💨🔥 boost
-	float boostOfs[3], boostSizeZ, boostClr[3], thrustClr[3];
+	//  💨🔥 boost  --------
+	float boostOfs[3], boostSizeZ, boostClr[3], thrustClr[3];  // ligth clr
 	std::string sBoostParName, sThrusterPar[PAR_THRUST];
 	float thrusterOfs[PAR_THRUST][3], thrusterSizeZ[PAR_THRUST];
 	int thrusterLit[PAR_THRUST];
+
 
 	// ⚫💭 for tire trails
 	std::vector<float> whRadius, whWidth;

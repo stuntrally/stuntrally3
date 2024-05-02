@@ -21,6 +21,8 @@ brake-pos0 = 0.77,-1.8, 0.33
 brake-pos1 =-0.77,-1.8, 0.33
 brake-size = 0.7
 brake-color = 1, 0, 0
+brake-lit0 = 1
+brake-lit1 = 1
 
 [ model_ofs ]
 boost-x = 0.0
