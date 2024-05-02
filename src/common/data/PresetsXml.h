@@ -101,7 +101,7 @@ struct PObject
 //  💎  Collect  ----
 struct PCollect
 {
-	std::string name, mesh, material;
+	std::string name, mesh, material, beamMtr;
 	Ogre::ColourValue clr;
 };
 

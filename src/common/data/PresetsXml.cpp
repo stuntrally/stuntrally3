@@ -252,6 +252,7 @@ bool Presets::LoadXml(string file)
 		a = e->Attribute("o");	if (a)  c.mesh = string(a);
 		a = e->Attribute("m");	if (a)  c.material = string(a);
 		a = e->Attribute("c");	if (a)  c.clr = s2c(a);
+		a = e->Attribute("b");	if (a)  c.beamMtr = string(a);
 		
 		col.push_back(c);  icol[c.name] = col.size();
 		e = e->NextSiblingElement("c");

@@ -883,9 +883,11 @@ void App::NewGameDoLoad()
 			if (pSet->g.li.car)
 			for (auto& c : carModels)  // on/off lights, lag
 				if (c->cType == CarModel::CT_LOCAL)
+				{
 				for (auto& l : c->lights)
-					l->setVisible(cur <= LS_VIEW3);
-
+					l.li->setVisible(cur <= LS_VIEW2 ||  //..?
+						cur >= LS_VIEW4 && cur <= LS_VIEW7);
+				}
 			LoadView(c);
 			// perc = 75.f + (90.f-75.f) * c / 9.f;
 			perc = 85;

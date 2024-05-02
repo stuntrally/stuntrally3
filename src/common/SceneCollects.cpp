@@ -62,9 +62,9 @@ void App::CreateCollect(int i)
 		if (!col->material.empty())
 			c.it->setDatablockOrMaterialName(col->material);
 
-		c.itBeam = mSceneMgr->createItem("check.mesh");
+		c.itBeam = mSceneMgr->createItem("check.mesh");  // todo: own?
 		c.itBeam->setRenderQueueGroup(RQG_Ghost);  c.itBeam->setCastShadows(false);
-		c.itBeam->setDatablockOrMaterialName("collect_beam");
+		c.itBeam->setDatablockOrMaterialName(col->beamMtr);
 		
 		// c.it->setName("Ce"+s);
 		SetTexWrap(c.it);
