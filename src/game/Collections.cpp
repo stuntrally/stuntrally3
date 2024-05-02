@@ -77,7 +77,7 @@ void CGui::CollectListUpdate()
 void CGui::fillCollectList(std::vector<int> vIds)
 {
 	const char clrCh[MAX_COL_TYP][8] = {
-	//  0 Infinite  1 Chase  2 Hard  10 Test
+	//  0 Infinite  1 Chase  2 Hard  3 Test
 		"#A0D0FF","#80FF80","#FFC060", "#909090" };
 
 	liCollect->removeAllItems();

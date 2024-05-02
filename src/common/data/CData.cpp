@@ -76,11 +76,14 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 	
 	pre->LoadXml(path + "/presets.xml");
 	LogO(String("L*** Loaded Presets  sky: ") + toStr(pre->sky.size())+
+		"  sky: " + toStr(pre->sky.size()) +
 		"  ter: " + toStr(pre->ter.size()) +
 		"  road: " + toStr(pre->rd.size()) +
 		"  grass: " + toStr(pre->gr.size()) +
-		"  veget: " + toStr(pre->veg.size()) );
-
+		"  veget: " + toStr(pre->veg.size()) +
+		"  obj: " + toStr(pre->obj.size()) +
+		"  col: " + toStr(pre->col.size())
+		);
 	#ifndef SR_EDITOR
 		cars->LoadXml(path + "/cars.xml");
 		LoadPaints();

@@ -196,12 +196,14 @@ public:
 class SCollect      //  💎 Collectible gem
 {
 public:
-	int type = 0, groups = 0;
+	std::string name;  // for presets n
+	uint groups = 0;  // game &
 	Ogre::Vector3 pos{0,0,0};
 	float scale = 1.f;
 
-	Ogre::SceneNode* nd = 0;  // 🟢 ogre
-	Ogre::Item* it = 0;
+	Ogre::SceneNode* nd = 0, *ndBeam = 0;  // 🟢 ogre
+	Ogre::Item* it = 0, *itBeam = 0;
+	Ogre::Light* light = 0;
 
 	btCollisionObject* co = 0;  // 🎳 bullet
 	//  game var

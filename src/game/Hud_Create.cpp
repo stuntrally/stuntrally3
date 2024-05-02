@@ -269,6 +269,13 @@ void CHud::Create()
 		// h.txTimes->setFontHeight(32);
 		h.txTimes->setTextShadow(true);
 
+		h.txCollect = h.parent->createWidget<TextBox>("TextBox",
+			0,y, 240*t,260*t, Align::Left, "Tim"+s);
+		h.txCollect->setInheritsAlpha(false);
+		h.txCollect->setFontName(hudTimes);
+		h.txCollect->setFontHeight(26*t);
+		h.txCollect->setTextShadow(true);
+
 
 		///  🏁 lap results  ----------------------
 		h.bckLap = h.parent->createWidget<ImageBox>("ImageBox",

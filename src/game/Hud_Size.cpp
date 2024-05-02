@@ -118,6 +118,7 @@ void CHud::Size()
 		//tx = 24;  ty = (hasLaps ? 16 : 4);
 		h.txTimTxt->setPosition(tx,ty);
 		h.txTimes->setPosition(tx+w,ty);  //?-
+		h.txCollect->setPosition(tx, ty +80*t);  //..
 
 		//  🏁 lap result
 		int lx = xMax - 360 * t, ly = ty;
@@ -226,6 +227,7 @@ void CHud::Show(bool hideAll)
 				h.ndGauges->setVisible(show);
 				h.ndMap->setVisible(pSet->trackmap);
 				h.txTimes->setVisible(times);  h.txTimTxt->setVisible(times);  h.bckTimes->setVisible(times);
+				h.txCollect->setVisible(times);
 				h.txLap->setVisible(times);  h.txLapTxt->setVisible(times);  h.bckLap->setVisible(times);
 				if (!times)  h.bckWarn->setVisible(0);
 

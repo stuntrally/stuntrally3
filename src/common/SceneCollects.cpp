@@ -36,97 +36,151 @@ using namespace std;
 void App::CreateCollects()
 {
 	iCollected = 0;  oldCollected = 0;  // game, hud
+	#ifndef SR_EDITOR
+	if (pSet->game.collect_num < 0)
+		return;
+	#endif
 
 	for (int i=0; i < scn->sc->collects.size(); ++i)
+		CreateCollect(i);
+}
+
+void App::CreateCollect(int i)
+{
+	SCollect& c = scn->sc->collects[i];
+	// String s = toStr(i);  // counter for names
+	const PCollect* col = scn->data->pre->GetCollect(c.name);
+	if (!col)
 	{
-		SCollect& o = scn->sc->collects[i];
-		String s = toStr(i);  // counter for names
-		auto name = "sphere.mesh";
-
-		//  add to ogre
-		try 
-		{	o.it = mSceneMgr->createItem(name);
-			// if (!o.material.empty())
-			// 	o.it->setDatablockOrMaterialName(o.material);
-			
-			o.it->setName("cE"+s);
-			SetTexWrap(o.it);
-			// o.it->setCastShadows(o.shadow);
-		}
-		catch (Exception& e)
-		{
-			LogO(String("Create collect fail: ") + e.what());
-			continue;
-		}
-		o.nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode();
-		o.nd->setPosition(o.pos);
-		o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Objects);  // todo: in splitscreen
-		o.nd->setScale(o.scale * Vector3::UNIT_SCALE);
-
-		//  alpha from presets.xml
-		auto* veg = scn->data->pre->GetVeget(name);
-		if (veg)
-			o.it->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
-
-
-		//  add to bullet world (in game)
-		#ifndef SR_EDITOR
-		{
-			///  🏢 static  . . . . . . . . . . . . 
-			btCollisionShape* bshp = 0;
-			bshp = new btSphereShape(o.scale * 0.3f);  //par
-
-			size_t id = SU_Collect + i;
-			bshp->setUserPointer((void*)id);
-			bshp->setMargin(0.1f); //
-
-			btCollisionObject* bco = new btCollisionObject();
-			btTransform tr;  tr.setIdentity();  tr.setOrigin(btVector3(o.pos.x,-o.pos.z,o.pos.y));
-			bco->setActivationState(DISABLE_SIMULATION);
-			bco->setCollisionShape(bshp);	bco->setWorldTransform(tr);
-
-			bco->setCollisionFlags(bco->getCollisionFlags() |
-				btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_NO_CONTACT_RESPONSE);
-
-			bco->setUserPointer(new ShapeData(ST_Collect, 0, 0, 0, &o));  /// *
-		#ifndef SR_EDITOR
-			pGame->collision.world->addCollisionObject(bco);
-			// pGame->collision.shapes.push_back(bshp);  //?
-			o.co = bco;
-		#else
-			world->addCollisionObject(bco);
-		#endif
-		}
-		#endif
+		LogO(String("Collect not in presets name: ") + c.name);
+		col = scn->data->pre->GetCollect("gem1b");  // use default 1st
 	}
+
+	//  add to ogre 🟢
+	try 
+	{	c.it = mSceneMgr->createItem(col->mesh+".mesh");
+		if (!col->material.empty())
+			c.it->setDatablockOrMaterialName(col->material);
+
+		c.itBeam = mSceneMgr->createItem("check.mesh");
+		c.itBeam->setRenderQueueGroup(RQG_Ghost);  c.itBeam->setCastShadows(false);
+		c.itBeam->setDatablockOrMaterialName("collect_beam");
+		
+		// c.it->setName("Ce"+s);
+		SetTexWrap(c.it);
+		// o.it->setCastShadows(o.shadow);
+	}
+	catch (Exception& e)
+	{
+		LogO(String("Create collect fail: ") + e.what());
+		return;;
+	}
+	//  pos, scale  ----
+	c.nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode();
+	c.nd->setPosition(c.pos);
+	c.nd->setScale(c.scale * Vector3::UNIT_SCALE);
+	c.nd->attachObject(c.it);  //o.it->setVisibilityFlags(RV_Objects);
+	// todo: collect in splitscreen
+
+	c.ndBeam = c.nd->createChildSceneNode(SCENE_DYNAMIC);
+	c.ndBeam->setPosition(c.scale * Vector3(0.f, -5.f, 0.f));  // below
+	c.ndBeam->setScale(c.scale * Vector3(0.1f, 15.f, 0.1f));  // par
+	c.ndBeam->attachObject(c.itBeam);
+	c.itBeam->setVisibilityFlags(RV_Hud3D[0]);
+
+	if (pSet->g.li.collect)  // 💡 light
+	{
+		c.light = mSceneMgr->createLight();
+		c.light->setType(Light::LT_POINT);
+		c.light->setCastShadows(0);
+		
+		// ColourValue c(0.0f, 0.5f, 1.f);  //par
+		ColourValue cl(Math::UnitRandom(), Math::UnitRandom(), Math::UnitRandom());  // rnd
+		float bright = 1.2f * pSet->bright, contrast = pSet->contrast;
+		c.light->setDiffuseColour(  cl * bright * contrast );
+		c.light->setSpecularColour( cl * bright * contrast );
+
+		float lightPower = 12.f * Math::PI; //par  bright
+		c.light->setPowerScale( lightPower ); // * pSet->car_light_bright);
+
+		c.light->setAttenuationBasedOnRadius( 2.0f, 0.1f );
+		c.nd->attachObject( c.light );
+	}
+
+	//  alpha from presets.xml
+	// auto* veg = scn->data->pre->GetVeget(name);
+	// if (veg)
+	// 	o.it->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
+	c.it->setRenderQueueGroup( RQG_AlphaVegObj );
+	c.nd->_getFullTransformUpdated();  //?
+
+
+	//  add to bullet world (in game)
+	#ifndef SR_EDITOR
+	{
+		///  🏢 static  . . . . . . . . . . . . 
+		btCollisionShape* bshp = 0;
+		bshp = new btSphereShape(c.scale * 0.3f);  //par
+
+		size_t id = SU_Collect + i;
+		bshp->setUserPointer((void*)id);
+		bshp->setMargin(0.1f); //
+
+		btCollisionObject* bco = new btCollisionObject();
+		btTransform tr;  tr.setIdentity();  tr.setOrigin(btVector3(c.pos.x,-c.pos.z,c.pos.y));
+		bco->setActivationState(DISABLE_SIMULATION);
+		bco->setCollisionShape(bshp);	bco->setWorldTransform(tr);
+
+		bco->setCollisionFlags(bco->getCollisionFlags() |
+			btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_NO_CONTACT_RESPONSE);
+
+		bco->setUserPointer(new ShapeData(ST_Collect, 0, 0, 0, &c));  /// *
+	#ifndef SR_EDITOR
+		pGame->collision.world->addCollisionObject(bco);
+		// pGame->collision.shapes.push_back(bshp);  //?
+		c.co = bco;
+	#else
+		world->addCollisionObject(bco);
+	#endif
+	}
+	#endif
 }
 
 
-///  💎💥 destroy
+///  💎💥 Destroy
+//-------------------------------------------------------------------------------------------------------
 void App::DestroyCollects(bool clear)
 {
 	for (int i=0; i < scn->sc->collects.size(); ++i)
-	{
-		SCollect& o = scn->sc->collects[i];
-		//  ogre
-		if (o.nd)  mSceneMgr->destroySceneNode(o.nd);  o.nd = 0;
-		if (o.it)  mSceneMgr->destroyItem(o.it);  o.it = 0;
+		DestroyCollect(i);
 
-		//  bullet
-		if (o.co)
-		{	delete o.co->getCollisionShape();
-			#ifdef SR_EDITOR
-			world->removeCollisionObject(o.co);
-			#else
-			pGame->collision.world->removeCollisionObject(o.co);
-			#endif
-			delete o.co;  o.co = 0;
-		}
-	}
 	if (clear)
 		scn->sc->collects.clear();
 }
 
+void App::DestroyCollect(int i)
+{
+		SCollect& c = scn->sc->collects[i];
+		//  ogre
+		if (c.ndBeam)  mSceneMgr->destroySceneNode(c.ndBeam);  c.ndBeam = 0;
+		if (c.itBeam)  mSceneMgr->destroyItem(c.itBeam);  c.itBeam = 0;
+		if (c.light)  mSceneMgr->destroyLight(c.light);
+		if (c.nd)  mSceneMgr->destroySceneNode(c.nd);  c.nd = 0;
+		if (c.it)  mSceneMgr->destroyItem(c.it);  c.it = 0;
+
+		//  bullet
+		if (c.co)
+		{	delete c.co->getCollisionShape();
+			#ifdef SR_EDITOR
+			world->removeCollisionObject(c.co);
+			#else
+			pGame->collision.world->removeCollisionObject(c.co);
+			#endif
+			delete c.co;  c.co = 0;
+		}
+}
+
+//  reset  F4 game
 void App::ResetCollects()
 {
 	iCollected = 0;  oldCollected = 0;
@@ -150,10 +204,13 @@ void App::UpdCollects()
 	//  count collected
 	int cols = 0;
 	for (auto& c : sc->collects)
+	{
+		// c.ndBeam->setScale(Vector3(0.1f, 10.f, 0.1f));  // par
 		if (c.collected)
 		{	++cols;
 			c.nd->setVisible(0);
 		}
+	}
 	oldCollected = iCollected;
 	iCollected = cols;
 	
@@ -165,7 +222,15 @@ void App::UpdCollects()
 			pGame->snd_chk->start();  // 🔉 one
 		
 		// todo: show wnd, check best time, pass etc
-		// gui->progressC.all
+
+		int id = pSet->game.collect_num;
+		const Collect& col = data->collect->all[id];
+
+		auto* pro = gui->progressC.Get(col.name);
+		if (pro)
+		{
+		// pro->
+		}
 	}
 }
 #endif

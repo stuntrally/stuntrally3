@@ -34,6 +34,7 @@
 #include <MyGUI_Ogre2Platform.h>
 using namespace Ogre;
 using namespace MyGUI;
+using namespace std;
 
 
 //  HUD utils
@@ -422,9 +423,59 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 		if (h.txTimes)
 		if (pSet->game.collect_num >= 0)
 		{
-			int cols = app->iCollected, all = app->sc->collects.size();
+			//  💎 collection
+			const auto& cols = app->sc->collects;
+			int all = cols.size();
+			auto pos = pCarM->ndMain->getPosition();
+			//  list nearest, dist
+			struct Col
+			{
+				int id;
+				float dist;
+				
+				bool operator<(const Col& other)
+				{
+					return dist < other.dist;
+				}
+			};
+			std::list<Col> near;  // nearest few
+			all = app->sc->collects.size();
+			for (int i=0; i < all; ++i)
+			if (!cols[i].collected)
+			{	Col c;
+				c.id = i;
+				c.dist = pos.squaredDistance(cols[i].pos);
+				near.push_back(c);
+
+				//  scale by dist-  todo in shader..
+				// float d = min(0.5f, max(10.f, c.dist * 0.04f));
+				// cols[i].ndBeam->setScale(d * Vector3(0.1f, 10.f, 0.1f));
+				// cols[i].ndBeam->_getFullTransformUpdated();
+			}
+			near.sort();
+			String ss;
+			int i=0;
+			auto it = near.begin();
+			while (i < 4 && it != near.end())
+			{
+				ss += "\n";
+				float d = sqrt((*it).dist);
+				if (d < 3.f)  ss += "#20FFFF";  else
+				if (d < 10.f)  ss += "#20FF20";  else
+				if (d < 40.f)  ss += "#A0FF20";  else
+				if (d < 100.f)  ss += "#FFFF20";  else
+				if (d < 400.f)  ss += "#FFB020";  else
+				if (d < 800.f)  ss += "#FF8020";  else
+				if (d < 2000.f)  ss += "#F080F0";  else
+				if (d < 3000.f)  ss += "#8080E0";  else
+								 ss += "#4080C0";
+				ss += iToStr((*it).id,2)+": "+fToStr(d, 0)+" m";
+				++it;  ++i;
+			}
+			h.txCollect->setCaption(ss);
+
 			h.txTimes->setCaption(
-				"\n#D0B0FF" + toStr(cols)+" / "+toStr(all) +
+				"\n#D0B0FF" + toStr(app->iCollected)+" / "+toStr(all) +
 				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId)));
 		}
 		else

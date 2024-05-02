@@ -43,7 +43,7 @@ public:
 	public:
 		//  ⏱️ times bar
 		Img bckTimes =0;
-		Txt txTimTxt =0, txTimes =0;
+		Txt txTimTxt =0, txTimes =0, txCollect =0;
 		Ogre::String sTimes, sLap;
 		//  🏁 lap results
 		Txt txLapTxt =0, txLap =0;  Img bckLap =0;
