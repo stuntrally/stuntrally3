@@ -297,7 +297,7 @@ void CarModel::Create()
 
 
 	//  💡 car lights  ----------------------
-	if (pSet->g.car_lights && !ghost)
+	if (pSet->g.li.car && !ghost)
 	{
 		int cnt = fsFlares.pos.size();
 		const Real dirY = -0.1f, dirZ = 1.f;  //par-
@@ -329,7 +329,7 @@ void CarModel::Create()
 			light->setAttenuationBasedOnRadius( 30.0f, 0.01f );
 			light->setSpotlightRange(Degree(5), Degree(40), 1.0f );  //par 5 30
 			
-			light->setCastShadows(pSet->g.car_light_shadows);
+			light->setCastShadows(pSet->g.li.car_shadows);
 			light->setVisible(sc->needLights);  // auto on for dark tracks  set pCar ..
 			lights.push_back(light);
 	}	}
@@ -415,7 +415,7 @@ void CarModel::Create()
 			if (pCar)  // on
 			{	if (sc->needLights)
 					pCar->bLightsOn = 1;
-				bsFlares->setVisible(pSet->g.car_lights && pCar->bLightsOn);
+				bsFlares->setVisible(pSet->g.li.car && pCar->bLightsOn);
 			}
 		}
 	}

@@ -91,10 +91,15 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	BtnC("ApplyShadows", btnShadowsApply);
 
 	//  💡 Lights
-	ck= &ckCarLights;        ck->Init("CarLights",        &pSet->g.car_lights);  //CevC(Lights);
-	ck= &ckCarLightsShadows; ck->Init("CarLightsShadows", &pSet->g.car_light_shadows);
+	ck= &ckCarLights;        ck->Init("CarLights",        &pSet->g.li.car);  //CevC(Lights);
+	ck= &ckCarLightsShadows; ck->Init("CarLightsShadows", &pSet->g.li.car_shadows);
 	sv= &svCarLightBright;   sv->Init("CarLightBright",   &pSet->car_light_bright, 0.1f,3.f, 1.f);
 															  sv->DefaultF(1.f);  SevC(CarLightBright);
+	ck= &ckCarLiRear;		ck->Init("CarLightsRear",  &pSet->g.li.rear);
+	ck= &ckCarLiBoost;		ck->Init("CarLightsBoost", &pSet->g.li.boost);
+	ck= &ckCollectLights;	ck->Init("CollectLights", &pSet->g.li.collect);
+	ck= &ckTrackLights;		ck->Init("TrackLights", &pSet->g.li.track);
+	
 
 	//  🔮 Reflection
 	sv= &svReflSkip;	sv->Init("ReflSkip",	&pSet->g.refl_skip,    0,1000, 2.f);  sv->DefaultI(0);

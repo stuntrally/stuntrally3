@@ -108,6 +108,9 @@ public:
 		SV svShadowDist;  SV svShadowFilter;  void btnShadowsApply(WP);
 		//  💡 lights
 		Ck ckCarLights, ckCarLightsShadows;  void slBright(WP);
+		Ck ckCarLiRear, ckCarLiBoost;
+		Ck ckCollectLights;  // 💎 gems
+		Ck ckTrackLights;
 
 		//  🌊 water
 		SlV(WaterSize);  //SlV(WaterSkip);

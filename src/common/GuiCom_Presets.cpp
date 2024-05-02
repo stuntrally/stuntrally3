@@ -30,21 +30,19 @@ using namespace Ogre;
 void CGuiCom::cmbGraphicsPreset(CMB)
 {
 	const static SETTINGS::Detail presets[8] = {  /*
-🖼️           LOD      ⛰️ Terain         Veget        🌒 Shadow     💡   🌊 Water          🔮 Reflect cube     
-Anisot       Obj,Veg  Tripl,hor  🌳Trees mul          Size    filt  Veh  Size              Size              
-| Tex        |        | LOD,hor  | 🌿Grass    Dist    | Cnt Dist | Light | Reflect         | Skip            
-| fil Visibl |  Road  | Horiz |  |    |  trees grass  | | Typ |  |  |shd | | refra         | | Faces     IBL 
-|  |   Dist  |   |🛣️  |\  |  /|  |    |    |    |     | | |   |  |  | |  | | |  Dist LOD   | | |  Dist LOD | */
-{0,1,  5000, 0.2,0.9, 0,0,0,0,0, 0.0f,0.0f,0.5f,0.5f, 0,1,0, 100,0, 0,0, 0,0,0,  100,0.1,  0,600,0,100,0.1,0 },  // Lowest
-{2,2, 10000, 0.6,1.5, 0,0,0,1,0, 0.5f,0.0f,0.5f,0.5f, 1,3,1, 200,1, 0,0, 0,0,0,  400,0.2,  0,60,1, 300,0.2,0 },  // Low 
-
-{4,2, 20000, 1.0,2.0, 0,0,1,1,1, 1.0f,0.5f,0.7f,0.7f, 2,3,1, 300,2, 0,0, 1,1,0,  700,0.3,  1,4,1,  500,0.3,0 },  // Medium
-{4,2, 40000, 1.2,2.5, 1,0,1,2,2, 1.0f,1.0f,1.0f,1.0f, 3,3,1, 500,2, 0,0, 1,1,1, 1000,0.4,  1,2,1,  700,0.4,0 },  // High
-{4,3, 60000, 1.5,3.0, 1,0,2,2,2, 1.5f,1.0f,1.2f,1.4f, 3,3,1, 700,3, 0,0, 1,1,1, 3000,0.4,  2,0,1, 1000,0.4,0 },  // Higher *
-
-{8,3, 60000, 1.8,3.5, 2,1,3,3,3, 1.5f,1.5f,1.5f,1.7f, 3,3,1,1000,3, 0,0, 2,1,1, 6000,0.6,  2,0,2, 2000,0.6,2 },  // Very high
-{16,3,60000, 2.4,4.0, 2,2,3,3,3, 2.0f,2.0f,2.0f,2.0f, 4,3,1,1300,4, 0,0, 3,1,1,20000,0.8,  3,0,3,20000,0.8,2 },  // Highest
-{16,3,60000, 2.4,4.0, 2,2,3,4,4, 2.5f,2.5f,3.0f,3.0f, 4,3,1,2000,4, 0,0, 4,1,1,60000,1.0,  3,0,4,60000,1.0,4 },  // Ultra
+🖼️           LOD      ⛰️ Terain         Veget        🌒 Shadow     💡 Lights    🌊 Water          🔮 Reflect cube     
+Anisot       Obj,Veg  Tripl,hor  🌳Trees mul          Size    filt  Veh   boost  Size              Size              
+| Tex        |        | LOD,hor  | 🌿Grass    Dist    | Cnt Dist |  |Rear |Track | Reflect         | Skip            
+| fil Visibl |  Road  | Horiz |  |    |  trees grass  | | Typ |  |  |shd| |col|  | | refra         | | Faces     IBL 
+|  |   Dist  |   |🛣️  |\  |  /|  |    |    |    |     | | |   |  |  | | | | | |  | | |  Dist LOD   | | |  Dist LOD | */
+{0,1,  5000, 0.2,0.9, 0,0,0,0,0, 0.0f,0.0f,0.5f,0.5f, 0,1,0, 100,0, 0,0,0,0,0,0, 0,0,0,  100,0.1,  0,600,0,100,0.1,0 },  // Lowest
+{2,2, 10000, 0.6,1.5, 0,0,0,1,0, 0.5f,0.0f,0.5f,0.5f, 1,3,1, 200,1, 0,0,0,0,0,0, 0,0,0,  400,0.2,  0,60,1, 300,0.2,0 },  // Low 
+{4,2, 20000, 1.0,2.0, 0,0,1,1,1, 1.0f,0.5f,0.7f,0.7f, 2,3,1, 300,2, 0,0,0,0,0,0, 1,1,0,  700,0.3,  1,4,1,  500,0.3,0 },  // Medium ~
+{4,2, 40000, 1.2,2.5, 1,0,1,2,2, 1.0f,1.0f,1.0f,1.0f, 3,3,1, 500,2, 1,0,0,0,0,0, 1,1,1, 1000,0.4,  1,2,1,  700,0.4,0 },  // High
+{4,3, 60000, 1.5,3.0, 1,0,2,2,2, 1.5f,1.0f,1.2f,1.4f, 3,3,1, 700,3, 1,1,0,1,0,1, 1,1,1, 3000,0.4,  2,0,1, 1000,0.4,0 },  // Higher *
+{8,3, 60000, 1.8,3.5, 2,1,3,3,3, 1.5f,1.5f,1.5f,1.7f, 3,3,1,1000,3, 1,1,1,1,1,1, 2,1,1, 6000,0.6,  2,0,2, 2000,0.6,2 },  // Very high
+{16,3,60000, 2.4,4.0, 2,2,3,3,3, 2.0f,2.0f,2.0f,2.0f, 4,3,1,1300,4, 1,1,1,1,1,1, 3,1,1,20000,0.8,  3,0,3,20000,0.8,2 },  // Highest
+{16,3,60000, 2.4,4.0, 2,2,3,4,4, 2.5f,2.5f,3.0f,3.0f, 4,3,1,2000,4, 1,1,1,1,1,1, 4,1,1,60000,1.0,  3,0,4,60000,1.0,4 },  // Ultra
 	};
 
 	pSet->preset = val;  // for info
@@ -107,6 +105,8 @@ Anisot       Obj,Veg  Tripl,hor  🌳Trees mul          Size    filt  Veh  Size 
 	svShadowDist.Upd();  svShadowFilter.Upd();  //btnShadowsApply(0);
 	//  💡 lights
 	ckCarLights.Upd();  ckCarLightsShadows.Upd();
+	ckCarLiRear.Upd();  ckCarLiBoost.Upd();
+	ckCollectLights.Upd();  ckTrackLights.Upd();
 
 	//  🌊 water
 	svWaterSize.Upd();  //svWaterSkip.Upd();

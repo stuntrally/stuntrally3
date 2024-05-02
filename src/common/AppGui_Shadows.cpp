@@ -97,7 +97,7 @@ void AppGui::createPcfShadowNode()
 	spv.push_back( sp );
 
 
-	if (pSet->g.car_lights)  // or >1 sun planets..
+	if (pSet->g.li.car)  // or >1 sun planets..
 	{
 		//  light 2  dir, spot or point
 	#ifdef USE_STATIC_BRANCHING_FOR_SHADOWMAP_LIGHTS

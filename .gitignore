@@ -2,7 +2,7 @@ syntax: glob
 *.dll
 *.pdb
 
-# VS crap
+#  VS crap
 #*.vcxproj
 #*.filters
 *.vcxproj.user
@@ -12,6 +12,8 @@ syntax: glob
 *.rule
 *.sdf
 
+#  build
+CMake*
 .cache
 bin/*
 build*/*
@@ -20,6 +22,7 @@ Dependencies/*
 #  data
 sr.log
 #*_tag.xml
+#!data/gui/core_language_en_tag.xml
 #config
 #hud
 #gui
@@ -35,6 +38,7 @@ objects2convert
 #data/materials/*
 sounds
 
+#  other crap
 .DS_Store
 iOSDependencies
 AndroidBuild/

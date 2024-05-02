@@ -65,7 +65,9 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_shadow.dist", g.shadow_dist);			Param(c,w, "graph_shadow.filter", g.shadow_filter);
 	
 	//  💡 lights
-	Param(c,w, "graph_lights.car", g.car_lights);			Param(c,w, "graph_lights.car_shadows", g.car_light_shadows);
+	Param(c,w, "graph_lights.car", g.li.car);				Param(c,w, "graph_lights.car_shadows", g.li.car_shadows);
+	Param(c,w, "graph_lights.car_rear", g.li.rear);			Param(c,w, "graph_lights.car_boost", g.li.boost);
+	Param(c,w, "graph_lights.collection", g.li.collect);	Param(c,w, "graph_lights.track", g.li.track);
 
 	//  🌊 water
 	Param(c,w, "graph_water.map_size", g.water_size);		//Param(c,w, "graph_water.skip_frames", g.water_skip);  // todo

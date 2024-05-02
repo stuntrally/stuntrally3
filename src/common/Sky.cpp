@@ -65,7 +65,8 @@ void CScene::CreateSun()
 	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 
 	//  More Lights  //** higher CPU use, bad for debug
-	if (app->pSet->g.car_lights)
+	auto& li = app->pSet->g.li;
+	if (li.car || li.track || li.collect)  // g.li.rear >+
 		mgr->setForwardClustered( true, 16, 8, 24, 4, 0, 2, 2, 50 );  //par?
 	else
 		mgr->setForwardClustered( false, 16, 8, 24, 4, 0, 2, 2, 50 );
@@ -77,7 +78,7 @@ void CScene::CreateSun()
 	ndSun->attachObject( sun );
 
 	// sun->setPowerScale( 1.f );  // should be 1 with HDR
-	sun->setPowerScale( Math::PI );  //** par! no HDR, * 2.5?  1.5 2 3* 4
+	sun->setPowerScale( Math::PI );  //** par
 	
 	UpdSun();
 }
