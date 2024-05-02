@@ -191,9 +191,9 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 //-------------------------------------------------------------------------------------------------------
 void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourValue c)
 {
-	const bool front = type == LI_Front;
+	const bool front = type == LI_Front, brake = type == LI_Brake;
 	const bool sphere = vType == V_Sphere;
-	const Real dirY = -0.1f, dirZ = front ? 1.f : -1.f;  //par-
+	const Real dirY = front ? -0.1f : -0.0f, dirZ = front ? 1.f : -1.f;  //par-
 	
 	LogO("C--L Add light: type "+toStr(type)+"  pos "+toStr(pos));  //-
 	SceneNode* node = ndCar->createChildSceneNode( SCENE_DYNAMIC, pos );
@@ -205,7 +205,7 @@ void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourVal
 	l->setSpecularColour( c * bright * contrast );
 
 	CarLight li;
-	li.power = !front ? 3.f :
+	li.power = !front ? (sphere ? 1.f : 6.f) :
 		sphere ? 3.f : 12.f / numLights; //par  front bright
 	li.power *= Math::PI;
 	l->setPowerScale( li.power * pSet->car_light_bright);
@@ -218,12 +218,10 @@ void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourVal
 		auto dir = bRotFix ?
 			Vector3( 0, dirY, dirZ ) :
 			Vector3( -dirZ, -dirY, 0 );
-		// if (!front)  dir = -dir;
+		dir.normalise();
 		l->setDirection(dir);
-		if (front)
-			l->setSpotlightRange(Degree(0), Degree(40), 1.0f );  //par 5 30
-		else
-			l->setSpotlightRange(Degree(0), Degree(170), 1.0f );
+		float deg = front ? 40.f : !brake ? 140.f : 70.f;  // par..
+		l->setSpotlightRange(Degree(0), Degree(deg), 1.0f );  //par 5 30
 	}
 	if (/*sphere ||*/ front)
 		l->setAttenuationBasedOnRadius( 30.0f, 0.01f );
@@ -355,7 +353,7 @@ void CarModel::Create()
 
 		for (int i=0; i < numLights; ++i)
 		if (i < cnt)
-			CreateLight(ndCar, LI_Front, fsFlares.pos[i], ColourValue(1.f, 1.1f, 1.1f));  // par .car
+			CreateLight(ndCar, LI_Front, fsFlares.pos[i], fsFlares.clr);
 	}
 
 
@@ -416,11 +414,13 @@ void CarModel::Create()
 			// brakes->setRenderQueueGroup(RQG_CarTrails);
 			bsBrakes->setVisibilityFlags(RV_Car);
 
+			int n=0;
 			for (auto& p : fsBrakes.pos)
 			{
 				bsBrakes->createBillboard(p, fsBrakes.clr);
-				if (fsBrakes.lit)
+				if (fsBrakes.lit[n] && pSet->g.li.rear && !ghost)
 					CreateLight(ndCar, LI_Brake, p, fsBrakes.clr);  //💡
+				++n;
 			}
 
 			bsBrakes->setDatablockOrMaterialName("flare1", "Popular");
@@ -466,6 +466,7 @@ void CarModel::Create()
 		}
 		
 		///  💨 boost emitters  ------------------------
+		String ss;
 		for (int i=0; i < PAR_BOOST; ++i)
 		{
 			String si = strI + "_" +toStr(i);
@@ -473,6 +474,9 @@ void CarModel::Create()
 			{	parBoost[i] = mSceneMgr->createParticleSystem(sBoostParName);  ToDel(parBoost[i]);
 				parBoost[i]->setVisibilityFlags(RV_Particles);
 				if (1)  // || !manualExhaustPos)
+				{
+					Vector3 p;
+				if (boostCnt == 0)
 				{
 					// no exhaust pos in car file, guess from bounding box
 					Vector3 bsize = (bodyBox.getMaximum() - bodyBox.getMinimum())*0.5,
@@ -483,28 +487,28 @@ void CarModel::Create()
 						Vector3(bsize.x * 0.97, bsize.y * 0.65, bsize.z * 0.65 * (i==0 ? 1 : -1));
 						//Vector3(1.9 /*back*/, 0.1 /*up*/, 0.6 * (i==0 ? 1 : -1)/*sides*/
 					vp.z *= boostSizeZ;
-					vp += Vector3(boostOfs[0],boostOfs[1],boostOfs[2]) + bcenter;
-					
-					SceneNode* nb = ndMain->createChildSceneNode(SCENE_DYNAMIC, vp);  ToDel(nb);
+					vp += Vector3(boostOfs[0][0],boostOfs[0][1],boostOfs[0][2]);
+					p = vp + bcenter;
+				}else
+				{
+					p = boostPos[i];  //Vector3(boostOfs[i][0], boostOfs[i][1], boostOfs[i][2]);
+				}
+					SceneNode* nb = ndCar->createChildSceneNode(SCENE_DYNAMIC, p);  ToDel(nb);
 					nb->attachObject(parBoost[i]);
 
-					CreateLight(ndMain, LI_Boost, vp, ColourValue(0.2f, 0.6f, 1.f));  //💡
-				}
-				else
-				{	// nope: use exhaust pos values from car file
-					Vector3 pos{0,0,0};
 					if (i==0)
-						pos = Vector3(exhaustPos[0], exhaustPos[1], exhaustPos[2]);
-					else if (!has2exhausts)
-						continue;
-					else
-						pos = Vector3(exhaustPos[0], exhaustPos[1], -exhaustPos[2]);
-
-					SceneNode* nb = ndMain->createChildSceneNode(SCENE_DYNAMIC, pos);  ToDel(nb);
-					nb->attachObject(parBoost[i]); 
+						ss += "\nboost-- cnt "+toStr(boostCnt)+"  p "+toStr(p);
+					ss +="\nboost"+toStr(i)+"-pos = "+fToStr(p.z,3)+", "+fToStr(-p.x,3)+", "+fToStr(-p.y,3);
+					
+					if (pSet->g.li.boost && !ghost)
+						CreateLight(ndCar, LI_Boost, p,
+							ColourValue(boostClr[0], boostClr[1], boostClr[2]));  //💡
 				}
+				if (bRotFix)
+					parBoost[i]->getEmitter(0)->setDirection(Vector3(0,0,-1));
 				parBoost[i]->getEmitter(0)->setEmissionRate(0);
 		}	}
+		LogO(ss);
 
 		///  💨 spaceship thrusters ^  ------------------------
 		for (int w=0; w < PAR_THRUST; ++w)
@@ -526,8 +530,9 @@ void CarModel::Create()
 					nb->attachObject(parThrust[ii]);
 					parThrust[ii]->getEmitter(0)->setEmissionRate(0);
 
-					if (thrusterLit[w])
-						CreateLight(ndCar, LI_Thrust, vp, ColourValue(thrustClr[0],thrustClr[1],thrustClr[2]));  //💡
+					if (thrusterLit[w] && pSet->g.li.boost && !ghost)
+						CreateLight(ndCar, LI_Thrust, vp,
+							ColourValue(thrustClr[0], thrustClr[1], thrustClr[2]));  //💡
 		}	}	}
 
 		///  ⚫💭 wheel emitters  ------------------------

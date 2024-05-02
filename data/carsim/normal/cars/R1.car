@@ -29,10 +29,8 @@ brake-lit1 = 1
 
 [ model_ofs ]
 rot_fix = on
-boost-x = 0.10
-boost-y = -0.80
-boost-z = 0.04
-boost-size-z = 0.60
+boost0-pos = 0.389, -2.315, 0.173
+boost1-pos =-0.368, -2.315, 0.173
 boost-name = BoostCyan
 interior-x = 0.0
 interior-y = 0.0

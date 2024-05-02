@@ -32,11 +32,9 @@ brake-lit3 = 1
 
 [ model_ofs ]
 rot_fix = on
-boost-x = 0.2
-boost-y = -0.31
-boost-z = 0.06
-boost-size-z = 0.55
 boost-name = BoostViol
+boost0-pos = 0.253,  -1.61, 0.131
+boost1-pos = -0.267, -1.61, 0.131
 
 #  collision shape params
 #---------------------------

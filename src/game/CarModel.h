@@ -87,14 +87,16 @@ public:
 	struct FlareSet
 	{
 		std::vector<Ogre::Vector3> pos;
+		std::vector<int> lit;  // same size
 		float size = 0.2f;
 		Ogre::ColourValue clr{1,1,1,1};
-		int lit = 0;
 	}
 	fsBrakes, fsFlares;
 	
 	//  💨🔥 boost  --------
-	float boostOfs[3], boostSizeZ, boostClr[3], thrustClr[3];  // ligth clr
+	int boostCnt;
+	Ogre::Vector3 boostPos[2];
+	float boostOfs[2][3], boostSizeZ, boostClr[3], thrustClr[3];  // light clr
 	std::string sBoostParName, sThrusterPar[PAR_THRUST];
 	float thrusterOfs[PAR_THRUST][3], thrusterSizeZ[PAR_THRUST];
 	int thrusterLit[PAR_THRUST];
@@ -109,9 +111,9 @@ public:
 	bool bRotFix =0;
 
 	//  💨 exhaust position for boost particles-
-	bool manualExhaustPos;  // if true, use values below, if false, guess from bounding box
-	bool has2exhausts;  // car has 2nd exhaust, if true, mirror exhaust 1 for position
-	float exhaustPos[3];  // position of first exhaust
+	// bool manualExhaustPos;  // if true, use values below, if false, guess from bounding box
+	// bool has2exhausts;  // car has 2nd exhaust, if true, mirror exhaust 1 for position
+	// float exhaustPos[3];  // position of first exhaust
 	
 
 	///  🆕 Create  ------------------------

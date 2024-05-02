@@ -67,7 +67,8 @@ void CarModel::Defaults()
 	for (i=0; i < 3; ++i)
 	{
 		driver_view[i] = 0.f;  hood_view[i] = 0.f;  ground_view[i] = 0.f;
-		interiorOfs[i] = 0.f;  boostOfs[i] = 0.f;  exhaustPos[i] = 0.f;
+		interiorOfs[i] = 0.f;
+		for (w=0; w < 2; ++w)  boostOfs[w][i] = 0.f;  //exhaustPos[i] = 0.f;
 	}
 
 	//  boost
@@ -75,7 +76,7 @@ void CarModel::Defaults()
 	fsFlares.pos.clear();  fsFlares.clr = ColourValue(0.98,1,1);  fsFlares.size = 1.2f;
 
 	sBoostParName = "Boost";  boostSizeZ = 1.f;
-	boostClr[0] = 0.2f;  boostClr[1] = 0.6f;  boostClr[2] = 1.0f;
+	boostClr[0] = 0.02f;  boostClr[1] = 0.1f;  boostClr[2] = 0.7f;
 	thrustClr[0] = 0.2f;  thrustClr[1] = 0.6f;  thrustClr[2] = 1.0f;
 	for (i=0; i < PAR_THRUST; ++i)
 	{
@@ -91,7 +92,7 @@ void CarModel::Defaults()
 	}
 	camDist = 1.f;
 	bRotFix = false;
-	manualExhaustPos = false;  has2exhausts = false;
+	// manualExhaustPos = false;  has2exhausts = false;
 
 	maxangle = 26.f;
 	for (w=0; w < 2; ++w)
@@ -204,10 +205,25 @@ void CarModel::LoadConfig(const string & pathCar)
 	cf.GetParam("model_ofs.rot_fix", bRotFix);
 
 	//~  💨 boost offset
-	cf.GetParam("model_ofs.boost-x", boostOfs[0]);
-	cf.GetParam("model_ofs.boost-y", boostOfs[1]);
-	cf.GetParam("model_ofs.boost-z", boostOfs[2]);
 	cf.GetParam("model_ofs.boost-size-z", boostSizeZ);
+	if (cf.GetParam("model_ofs.boost-y", boostOfs[0][1]))
+	{	boostCnt = 0;
+		cf.GetParam("model_ofs.boost-x", boostOfs[0][0]);
+	 // cf.GetParam("model_ofs.boost-y", boostOfs[0][1]);
+		cf.GetParam("model_ofs.boost-z", boostOfs[0][2]);
+	}else
+	{
+		for (int i=0; i < PAR_BOOST; ++i)
+		{	float pos[3];
+			if (cf.GetParam("model_ofs.boost"+toStr(i)+"-pos", pos))
+			{	boostCnt = i+1;
+				// boostPos[i] = Vector3(pos[0], pos[1], pos[2]);
+				boostPos[i] = bRotFix ?
+					Vector3(-pos[0], pos[2],pos[1]) :
+					Vector3(-pos[1],-pos[2],pos[0]);/**/
+			}
+		}
+	}
 	cf.GetParam("model_ofs.boost-name", sBoostParName);
 	cf.GetParam("model_ofs.boost-clr", boostClr);
 	cf.GetParam("model_ofs.thrust-clr", thrustClr);
@@ -234,31 +250,24 @@ void CarModel::LoadConfig(const string & pathCar)
 	{
 		FlareSet& flr = n ? fsBrakes : fsFlares;
 		const string s = n ? "brake" : "front";
-		bool ok = true;  i=0;
+		bool ok = true;  i = 0;
 		while (ok)
 		{
 			ok = cf.GetParam("flares."+s+"-pos"+toStr(i), pos);
+			if (ok)
+			{	flr.pos.push_back( bRotFix ?
+					Vector3(-pos[0], pos[2],pos[1]) :
+					Vector3(-pos[1],-pos[2],pos[0]) );
+				int lit = 0;
+				cf.GetParam("flares."+s+"-lit"+toStr(i), lit);
+				flr.lit.push_back( lit );
+			}
 			++i;
-			if (ok)  flr.pos.push_back( bRotFix ?
-				Vector3(-pos[0], pos[2],pos[1]) :
-				Vector3(-pos[1],-pos[2],pos[0]) );
 		}
 		cf.GetParam("flares."+s+"-color", pos);
 		flr.clr = ColourValue(pos[0],pos[1],pos[2]);
 		cf.GetParam("flares."+s+"-size", flr.size);
-		cf.GetParam("flares."+s+"-lit", flr.lit);
 	}
-	
-	//-  custom exhaust pos for boost particles
-	if (cf.GetParam("model_ofs.exhaust-x", exhaustPos[0]))
-	{
-		manualExhaustPos = true;
-		cf.GetParam("model_ofs.exhaust-y", exhaustPos[1]);
-		cf.GetParam("model_ofs.exhaust-z", exhaustPos[2]);
-	}else
-		manualExhaustPos = false;
-	if (!cf.GetParam("model_ofs.exhaust-mirror-second", has2exhausts))
-		has2exhausts = false;
 
 
 	//- 🎥 load cameras pos

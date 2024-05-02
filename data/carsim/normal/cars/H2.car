@@ -27,8 +27,8 @@ brake-lit1 = 1
 
 [ model_ofs ]
 rot_fix = on
-boost-z = -0.20
-boost-y = -1.30
+boost0-pos = 0.534, -1.821, 0.124
+boost1-pos =-0.537, -1.821, 0.124
 interior-x = 0.0
 interior-y = 0.0
 interior-z = 0

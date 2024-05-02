@@ -25,14 +25,13 @@ brake-lit0 = 1
 brake-lit1 = 1
 
 [ model_ofs ]
-boost-x = 0.0
-boost-y = 0.0
-boost-z = 0.0
+boost0-pos =  0.544, -1.91, -0.024
+boost1-pos = -0.547, -1.91, -0.024
 exhaust-x = 2.4
 exhaust-y = 0.52
 exhaust-z = 0.45
 exhaust-mirror-second = 1
-k
+
 #  collision shape params
 #---------------------------
 [ collision ]

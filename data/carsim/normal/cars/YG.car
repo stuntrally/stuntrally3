@@ -34,10 +34,8 @@ brake-lit5 = 1
 
 [ model_ofs ]
 rot_fix = on
-boost-x = -0.1
-boost-z = -0.08
-boost-y = 0.35
-boost-size-z = 0.4
+boost0-pos = 0.253, -1.956, -0.231
+boost1-pos =-0.267, -1.956, -0.231
 
 #  collision shape params
 #---------------------------

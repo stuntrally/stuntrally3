@@ -25,18 +25,18 @@ brake-lit1 = 1
 
 [ model_ofs ]
 rot_fix = on
-boost-x = -0.26
-boost-y = -0.70
-boost-z = -0.84
-boost-size-z = 0.34
 boost-name = ThrusterV1
 boost-clr = 0, 1, 1
+boost0-pos = 0.267, -0.61, 0.27
+boost1-pos =-0.267, -0.61, 0.27
+
 thrust-x = 0.66
 thrust-y = -0.27
 thrust-z = 0.285
 thrust-size-z = 0.285
 thrust-name = ThrusterV2
 thrust-clr = 0.0, 1.0, 0.5
+thrust-lit = 1
 
 
 #  collision shape params

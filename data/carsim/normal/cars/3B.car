@@ -28,10 +28,8 @@ brake-lit1 = 1
 
 [ model_ofs ]
 rot_fix = on
-boost-x = 0.25
-boost-y = -0.84
-boost-z = 1.55
-boost-size-z = 0.42
+boost0-pos = 0.516, -2.726, 0.335
+boost1-pos =-0.519, -2.726, 0.335
 boost-name = BoostViol
 exhaust-x = 2.2
 exhaust-y = 0.4

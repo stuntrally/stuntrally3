@@ -23,10 +23,8 @@ brake-lit0 = 1
 
 [ model_ofs ]
 rot_fix = on
-boost-x = -0.1
-boost-y = -0.52
-boost-z = -0.43
-boost-size-z = 0.32
+boost0-pos = 0.265, -1.53, -0.14
+boost1-pos =-0.248, -1.53, -0.14
 boost-name = ThrusterV1
 boost-clr = 0.4, 1, 1
 thrust-clr = 0.1, 0.5, 1
