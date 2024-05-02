@@ -106,7 +106,8 @@ void CGui::toggleGui(bool toggle)
 		tutor = mnu == MN_Tutorial, chall = mnu == MN_Chall,
 		collect = mnu == MN_Collect, career = mnu == MN_Career,
 		chAny = tutor || champ || chall || collect || career,
-		stages = tutor || champ || chall,
+		stages = tutor || champ || chall || career,
+		setup = tutor || champ || collect,  //..
 		gc = game || chAny,
 		split = !chAny && pSet->yGames == Games_SplitScreen,
 		multi = !chAny && pSet->yGames == Games_Multiplayer;
@@ -128,9 +129,9 @@ void CGui::toggleGui(bool toggle)
 		TabItem* t = app->mTabsGame->getItemAt(TAB_Champs);
 		t->setCaption(sCh);
 	}
-	if (notMain && gc)  // show hide tabs track,stages,
+	if (notMain && gc)  // show/hide tabs  track,stages,
 	{
-		Tab t = app->mTabsGame;
+		Tab t = app->mTabsGame;  // from Game
 		size_t id = t->getIndexSelected();
 		t->setButtonWidthAt(TAB_Track, chAny ? 1 :-1);  if (id == TAB_Track && chAny)  t->setIndexSelected(TAB_Champs);
 		t->setButtonWidthAt(TAB_Split, split ?-1 : 1);  if (id == TAB_Split && !split)  t->setIndexSelected(TAB_Champs);
@@ -139,6 +140,9 @@ void CGui::toggleGui(bool toggle)
 		t->setButtonWidthAt(TAB_Champs,chAny ?-1 : 1);  if (id == TAB_Champs && !chAny)  t->setIndexSelected(TAB_Track);
 		t->setButtonWidthAt(TAB_Stages,stages?-1 : 1);  if (id == TAB_Stages && !stages) t->setIndexSelected(TAB_Track);
 		t->setButtonWidthAt(TAB_Stage, chAny ?-1 : 1);  if (id == TAB_Stage  && !chAny)  t->setIndexSelected(TAB_Track);
+		//  from Setup  0 paint  3 collision
+		vSubTabsGame[TAB_Setup]->setButtonWidthAt(1, setup ?-1 : 1);  // 1 Game 💨🔨⏪
+		vSubTabsGame[TAB_Setup]->setButtonWidthAt(3, setup ?-1 : 1);  // 2 Boost 💨
 	}
 
 	gcom->bnQuit->setVisible(gui);
@@ -216,12 +220,12 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab, int game)
 	{
 		pSet->iMenu = menu;
 
-		if (tab == TAB_Track || tab == TAB_Champs){  
-			SetNumPlayers(1);   app->updPanGames(game);  }
-		if (tab == TAB_Split){  
-			SetNumPlayers(-2);  app->updPanGames(game);  }  // 👥
-		if (tab == TAB_Multi){
-			SetNumPlayers(1);   app->updPanGames(game);  }  // 📡
+		if (tab == TAB_Track || tab == TAB_Champs)
+		{	SetNumPlayers(1);   app->updPanGames(game);  }
+		if (tab == TAB_Split)
+		{	SetNumPlayers(-2);  app->updPanGames(game);  }  // 👥
+		if (tab == TAB_Multi)
+		{	SetNumPlayers(1);   app->updPanGames(game);  }  // 📡
 	}
 		
 	TabPtr tabs = 0;

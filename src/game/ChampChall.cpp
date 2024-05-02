@@ -109,9 +109,8 @@ void App::Ch_NewGame()
 	else if (iCollect >= 0)
 	{
 		///  💎 collection
-		ProgressCollect& pc = gui->progressC.chs[iCollect];
+		ProgressCollect& pc = gui->progressC.col[iCollect];
 		const Collect& col = data->collect->all[iCollect];
-		// const ChampTrack& trk = ch.trks[pc.curTrack];
 		pSet->game.track = col.track;  pSet->game.track_user = 0;
 		pSet->game.track_reversed = 0;
 		pSet->game.num_laps = 0;
@@ -121,12 +120,16 @@ void App::Ch_NewGame()
 		pSet->game.rewind_type = col.rewind_type;
 		pSet->game.BoostDefault();  //
 
-		pGame->pause = false;  // wait for wnd close ..?
+		pGame->pause = false;  // no wait
 		pGame->timer.waiting = false;
+		gui->ProgressCSave(0);
+		// pSet->game.trees = 1.5f;  // ..?!
+		pSet->game.collis_veget = true;
 	}
 	else
 	{	pGame->pause = false;  // single race
 		pGame->timer.waiting = false;
+		// gui->career.SaveXml(PATHS::UserConfigDir() + "/career.xml");
 	}
 }
 
