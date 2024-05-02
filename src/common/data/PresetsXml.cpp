@@ -52,6 +52,12 @@ const PObject* Presets::GetObject(std::string mesh)
 	return f != iobj.end() ? &obj[f->second -1] : 0;
 }
 
+const PCollect* Presets::GetCollect(std::string name)
+{
+	auto f = icol.find(name);
+	return f != icol.end() ? &col[f->second -1] : 0;
+}
+
 
 ///  📄 Load Presets
 //--------------------------------------------------------------------------------------------------------------------------------------
@@ -65,11 +71,17 @@ bool Presets::LoadXml(string file)
 	XMLElement* root = doc.RootElement();
 	if (!root)  return false;
 
-	//  clear
+	//  clear  ----
+	sky.clear();  isky.clear();
 	ter.clear();  iter.clear();
 	rd.clear();  ird.clear();
+
 	gr.clear();  igr.clear();
 	veg.clear();  iveg.clear();
+
+	matset.clear();  imatset.clear();
+	obj.clear();  col.clear();
+	iobj.clear();  icol.clear();
 
 	//  read
 	XMLElement* e;
@@ -153,6 +165,7 @@ bool Presets::LoadXml(string file)
 		rd.push_back(l);  ird[l.mtr] = rd.size();
 		e = e->NextSiblingElement("r");
 	}
+
 		
 	///  🌿 grass
 	e = root->FirstChildElement("g");
@@ -228,6 +241,19 @@ bool Presets::LoadXml(string file)
 		
 		obj.push_back(o);  iobj[o.name] = obj.size();
 		e = e->NextSiblingElement("o");
+	}
+
+	///  💎 collects
+ 	e = root->FirstChildElement("c");
+	while (e)
+	{
+		PCollect c;
+		a = e->Attribute("n");	if (a)  c.name = string(a);
+		a = e->Attribute("o");	if (a)  c.mesh = string(a);
+		a = e->Attribute("c");	if (a)  c.clr = s2c(a);
+		
+		col.push_back(c);  icol[c.name] = col.size();
+		e = e->NextSiblingElement("c");
 	}
 	return true;
 }

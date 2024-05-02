@@ -91,11 +91,18 @@ struct PMatSet
 	Ogre::StringVector mats;  // possible materials
 };
 
-//  📦🪨  Object material set  ----
+//  📦🪨  Object  or  ----
 struct PObject
 {
 	std::string name;  // .mesh
 	PMatSet* pMatSet =0;
+};
+
+//  💎  Collect  ----
+struct PCollect
+{
+	std::string name, mesh;
+	Ogre::ColourValue clr;
 };
 
 
@@ -115,7 +122,8 @@ public:
 	std::vector<PRoad> rd;
 	std::map<std::string, int> ird;
 	const PRoad* GetRoad(std::string mtr);
-	
+
+
 	std::vector<PGrass> gr;
 	std::map<std::string, int> igr;
 	const PGrass* GetGrass(std::string mtr);
@@ -132,6 +140,10 @@ public:
 	std::vector<PObject> obj;
 	std::map<std::string, int> iobj;
 	const PObject* GetObject(std::string mesh);
+
+	std::vector<PCollect> col;
+	std::map<std::string, int> icol;
+	const PCollect* GetCollect(std::string name);
 
 	bool LoadXml(std::string file);
 };

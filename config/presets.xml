@@ -1184,7 +1184,7 @@ common:  sc - "short scenery name" (name color)
 
 
 <!--  📦🪨  Objects, caves, rocks etc  <o 
-      =========================================================================================================
+      =======================================================================================================================================
       o - .mesh name
       mats - material set name
  
@@ -1317,5 +1317,15 @@ common:  sc - "short scenery name" (name color)
 <mats n="obelisks" m="obelisk|ObeliskCrystal|ObeliskCrystal2|ObeliskBlack" />
 
 <o o="obelisk" mats="obelisks" />
+
+
+<!--  💎 Collectibles gems  =========================================================================================================
+      o - .mesh name
+-->
+<c n="gem1b" o="gem01" c="0.3 0.7 1.0" />
+<c n="gem1y" o="gem01" c="1.0 1.0 0.3" />
+<c n="gem1o" o="gem01" c="1.0 0.4 0.1" />
+<c n="gem1g" o="gem01" c="0.3 1.0 0.2" />
+<!-- <c o="sphere" /> -->
 
 </presets>

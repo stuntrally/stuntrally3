@@ -5,7 +5,7 @@
 #include "CAllowed.h"
 
 
-///  🥇 one Collection setup
+///  🥇 one Collection track setup
 class Collect
 {
 public:
