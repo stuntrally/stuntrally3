@@ -12,6 +12,7 @@
 #include "CarModel.h"
 
 #include <OgreMath.h>
+#include <OgreWindow.h>
 #include <MyGUI.h>
 using namespace std;
 using namespace Ogre;
@@ -253,8 +254,9 @@ void CGui::btnPaintRandom(WP)
 		SetPaint();
 		// UpdImgClr();
 		UpdPaintSld();
-		// LogO("GUI OFS: "+toStr(scvPaints->getViewOffset().top)+" "+toStr(gc.y));
-		scvPaints->setViewOffset(IntPoint(0, gc.y));  // fixme? nothing
+
+		float yy = app->mWindow->getHeight() / 600.f * gc.y * 0.9f;  //par
+		scvPaints->setViewOffset(IntPoint(0, -yy));
 		return;
 	}
 	//  🌈 randomize values, adjust

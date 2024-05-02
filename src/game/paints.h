@@ -32,7 +32,7 @@ struct CarPaint
 	bool new_line = false;  // gui
 	int rate = 0;  // user rating / bookmark
 
-	int y =0;  // gui only
+	int y =0;  // gui only auto
 };
 const int MaxPaints = 990;  // par max ini
 
