@@ -560,10 +560,10 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 		if (!shift && tab->getIndexSelected() == 0)
 			tab = gui->tabEdCar;  // car edit sections
 
-		if (action(A_PrevTab)) {  // prev gui subtab
+		if (action(A_PrevTab) || action(A_PrevTab2)) {  // prev gui subtab
 			int num = tab->getItemCount();
 			tab->setIndexSelected( (tab->getIndexSelected() - 1 + num) % num );  }
-		else if (action(A_NextTab)) {  // next gui subtab
+		else if (action(A_NextTab) || action(A_NextTab2)) {  // next gui subtab
 			int num = tab->getItemCount();
 			tab->setIndexSelected( (tab->getIndexSelected() + 1) % num );  }
 
@@ -586,10 +586,10 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 		if (alt)
 		{	if (sub)  // prev, next subtab
 			{	bool chng = false;
-				if (action(A_PrevTab))
+				if (action(A_PrevTab) || action(A_PrevTab2))
 				{	int num = sub->getItemCount();  chng = true;
 					sub->setIndexSelected( (sub->getIndexSelected() - 1 + num) % num );
-				}else if (action(A_NextTab))
+				}else if (action(A_NextTab) || action(A_NextTab2))
 				{	int num = sub->getItemCount();  chng = true;
 						sub->setIndexSelected( (sub->getIndexSelected() + 1) % num );
 				}
@@ -599,12 +599,12 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 		else  // prev, next tab
 		{	int num = tab->getItemCount()-1, i = tab->getIndexSelected(), n = 0;
 			bool chng = false;
-			if (action(A_PrevTab))
+			if (action(A_PrevTab) || action(A_PrevTab2))
 			{	do{  if (i==1)  i = num;  else  --i;  ++n;  }
 				while (n < num && tab->getButtonWidthAt(i) == 1);
 				chng = true;
 			}else
-			if (action(A_NextTab))
+			if (action(A_NextTab) || action(A_NextTab2))
 			{	do{  if (i==num)  i = 1;  else  ++i;  ++n;  }
 				while (n < num && tab->getButtonWidthAt(i) == 1);
 				chng = true;

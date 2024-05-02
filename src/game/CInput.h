@@ -11,13 +11,18 @@
 // To keep them valid, make sure to:
 // - Add new actions at the end of the enum
 // - Instead of deleting an action, replace it with a dummy one eg A_Unused
+// - update defaults in LoadInputDefaults()
 
 enum Actions
-{	A_ShowOptions, A_PrevTab, A_NextTab, A_RestartGame, A_ResetGame, A_Screenshot, NumActions  };
-
+{	A_ShowOptions, A_PrevTab, A_NextTab,
+	A_RestartGame, A_ResetGame, A_Screenshot,
+	A_PrevTab2, A_NextTab2, NumActions
+};
 const static std::string csActions[NumActions] =
-{	"ShowOptions", "PrevTab", "NextTab", "RestartGame", "ResetGame", "Screenshot"  };
-
+{	"ShowOptions", "PrevTab", "NextTab",
+	"RestartGame", "ResetGame", "Screenshot",
+	"PrevTab2", "NextTab2"
+};
 
 /*enum PlayerActions
 {	A_Throttle, A_Brake, A_Steering, A_HandBrake, A_Boost, A_Flip,

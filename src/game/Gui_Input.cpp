@@ -10,6 +10,7 @@
 #include "ICSInputControlSystem.h"
 
 #include <OgreRoot.h>
+#include <OgreString.h>
 #include <MyGUI.h>
 // #include <MyGUI_Button.h>
 // #include <MyGUI_ImageBox.h>
@@ -131,7 +132,8 @@ void CGui::CreateInputTab(int iTab, bool player,
 		yRow["ShowOptions"]=y; y+=2 +1;
 		yRow["RestartGame"]=y; y+=2;    yRow["ResetGame"]=y;  y+=2 +1;
 		yRow["Screenshot"]=y;  y+=2 +1;
-		yRow["PrevTab"]=y;     y+=2;    yRow["NextTab"]=y;    y+=2 +2;
+		yRow["PrevTab"]=y;     y+=2;    yRow["NextTab"]=y;    y+=2 +1;
+		yRow["PrevTab2"]=y;    y+=2;    yRow["NextTab2"]=y;   y+=2 +2;  // x+ col2 alt..?
 	}
 
 	///  Actions  ------------------------------------------------
@@ -146,6 +148,8 @@ void CGui::CreateInputTab(int iTab, bool player,
 		Txt desc = tabitem->createWidget<TextBox>("TextBox",
 			x0, y+5, s0, sy,  Align::Default);
 		gcom->setOrigPos(desc, "OptionsWnd");
+		
+		name = StringUtil::replaceAll(name, "2", "");
 		desc->setCaption( TR("#{InputMap" + name + "}") );
 		desc->setTextColour( !player ?
 			(i==0||i==3||i==4 ? Colour(0.86f,0.93f,1.f) : Colour(0.6f,0.8f,0.95f)) :  // general
