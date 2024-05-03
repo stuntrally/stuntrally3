@@ -58,11 +58,6 @@ void CarModel::Destroy()
 		whTrail[w]->setVisible(false);	whTrail[w]->setInitialColour(0, 0.5,0.5,0.5, 0);
 		mSceneMgr->v1::destroyMovableObject(whTrail[w]);  }*/
 
-	//  destroy cloned materials
-	// for (i=0; i < NumMaterials; ++i)
-	// 	if (MaterialManager::getSingleton().resourceExists(sMtr[i]))
-	// 		MaterialManager::getSingleton().remove(sMtr[i], resGrpId);
-	
 	for (auto& l : lights)
 	{	mSceneMgr->destroyLight(l.li);  l.li = 0;  }
 	lights.clear();
@@ -83,6 +78,8 @@ void CarModel::Destroy()
 	bsBrakes = 0;
 	if (bsFlares)  mSceneMgr->destroyBillboardSet(bsFlares);
 	bsFlares = 0;
+	if (bsReverse)  mSceneMgr->destroyBillboardSet(bsReverse);
+	bsReverse = 0;
 
 	//  destroy resource group, will also destroy all resources in it
 	if (ResourceGroupManager::getSingleton().resourceGroupExists(resGrpId))
@@ -125,7 +122,7 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 	auto mesh = sCar2 + sMesh;
 	if (!FileExists(mesh))
 		return;
-	LogO("CreatePart " + sCarI + " " + mesh + " r "+  sCarI + " mtr " + sMat);
+	LogO("C==C CreatePart " + sCarI + " " + mesh + " r "+  sCarI + " mtr " + sMat);
 	
 	Item *item =0;
 	try
@@ -191,11 +188,12 @@ void CarModel::CreatePart(SceneNode* ndCar, Vector3 vPofs,
 //-------------------------------------------------------------------------------------------------------
 void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourValue c)
 {
-	const bool front = type == LI_Front, brake = type == LI_Brake;
+	const bool front = type == LI_Front, brake = type == LI_Brake, under = type == LI_Under;
 	const bool sphere = vType == V_Sphere;
-	const Real dirY = front ? -0.1f : -0.0f, dirZ = front ? 1.f : -1.f;  //par-
+	const Real dirY = under ?-1.f : front ? -0.1f : -0.0f;  //par-
+	const Real dirZ = under ? 0.f : front ?  1.0f : -1.0f;
 	
-	LogO("C--L Add light: type "+toStr(type)+"  pos "+toStr(pos));  //-
+	LogO("C**L Add light: type "+toStr(type)+"  pos "+toStr(pos));  //-
 	SceneNode* node = ndCar->createChildSceneNode( SCENE_DYNAMIC, pos );
 	Light* l = mSceneMgr->createLight();
 	node->attachObject( l );  ToDel(node);
@@ -206,11 +204,12 @@ void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourVal
 
 	CarLight li;
 	li.power = !front ? (sphere ? 1.f : 6.f) :
-		sphere ? 3.f : 12.f / numLights; //par  front bright
+		/*under ||*/ sphere ? 3.f : 12.f / numLights; //par  front bright
 	li.power *= Math::PI;
 	l->setPowerScale( li.power * pSet->car_light_bright);
 
-	auto lt = sphere ? Light::LT_POINT : Light::LT_SPOTLIGHT;
+	auto lt = //under ? Light::LT_AREA_APPROX :  // bug ter-
+		sphere ? Light::LT_POINT : Light::LT_SPOTLIGHT;
 	l->setType(lt);
 
 	if (lt == Light::LT_SPOTLIGHT)
@@ -220,16 +219,38 @@ void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourVal
 			Vector3( -dirZ, -dirY, 0 );
 		dir.normalise();
 		l->setDirection(dir);
-		float deg = front ? 40.f : !brake ? 140.f : 70.f;  // par..
+		// float deg = front ? 40.f : !brake ? 140.f : 70.f;  // par cfg..
+		float deg = front ? 40.f : !brake ? 170.f : 120.f;  // wide-
 		l->setSpotlightRange(Degree(0), Degree(deg), 1.0f );  //par 5 30
 	}
-	if (/*sphere ||*/ front)
+	if (/*sphere ||*/ front /*|| under*/)
 		l->setAttenuationBasedOnRadius( 30.0f, 0.01f );
-	else //if (!front)
-		l->setAttenuationBasedOnRadius( 3.0f, 0.1f );  // brakes etc
-	
+	else //if (!front)  // brakes etc
+		l->setAttenuationBasedOnRadius( 3.0f, 0.1f );  // par gui..
+
+	//  underside glow __
+	if (under)
+	{
+		l->setPowerScale( Math::PI *2.f );
+		l->setAttenuationBasedOnRadius( 10.0f, 0.1f );
+		// l->setDoubleSided(1);
+		l->setAffectParentNode(0);
+		auto dir = bRotFix ?
+			Vector3( 0, dirY, dirZ ) :
+			Vector3( -dirZ, -dirY, 0 );
+		l->setDirection(dir.normalisedCopy());
+		/*l->setRectSize(Vector2(2.5,3.5));  // area
+
+	    const uint32 c_areaLightsPoolId = 759384;
+        TextureGpuManager *mgr = pApp->mRoot->getRenderSystem()->getTextureGpuManager();
+        TextureGpu *areaTex = mgr->createOrRetrieveTexture(
+            "AreaLightMask0", GpuPageOutStrategy::AlwaysKeepSystemRamCopy,
+            TextureFlags::AutomaticBatching, TextureTypes::Type2D, BLANKSTRING, 0u, c_areaLightsPoolId );
+        l->setTexture( areaTex );
+        l->mTexLightMaskDiffuseMipStart = ( Ogre::uint16 )( 0.95f * 65535 );/**/
+	}
 	l->setCastShadows( front && pSet->g.li.car_shadows);
-	l->setVisible( front && sc->needLights);  // auto on for dark tracks  set pCar ..
+	l->setVisible( under || front && sc->needLights);  // auto on for dark tracks  set pCar ..
 
 	li.li = l;  li.type = type;
 	lights.push_back(li);  // add
@@ -240,7 +261,7 @@ void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourVal
 //-------------------------------------------------------------------------------------------------------
 void CarModel::Create()
 {
-	LogO("C--L Creating Vehicle: "+sDirname+" -----");
+	LogO("C==C Creating Vehicle: "+sDirname+" -----");
 	//if (!pCar)  return;
 
 	String strI = toStr(iIndex)+ (cType == CT_TRACK ? "Z" : (cType == CT_GHOST2 ? "V" :""));
@@ -354,8 +375,16 @@ void CarModel::Create()
 
 		for (int i=0; i < numLights; ++i)
 		if (i < cnt)
+		// if (fsFlares.lit[i])
 			CreateLight(ndCar, LI_Front, fsFlares.pos[i], fsFlares.clr);
 	}
+
+	if (pSet->g.li.car && !ghost)
+	ColourValue cu(0.1,0.4,0.1);  // par_
+	CreateLight(ndCar, LI_Under, Vector3(-1.0,-0.2, 0.0), cu);
+	CreateLight(ndCar, LI_Under, Vector3( 1.0,-0.2, 0.0), cu);
+	// CreateLight(ndCar, LI_Under, Vector3( 0.0,-0.2, 2.0), cu);
+	// CreateLight(ndCar, LI_Under, Vector3( 0.0,-0.2,-2.0), cu);
 
 
 	//  ⚫ wheels  ----------------------
@@ -402,12 +431,13 @@ void CarModel::Create()
 		LogO("MESH info:  "+sDirname+"\t ALL sub: "+toStr(all_subs)+"  tri: "+fToStr(all_tris/1000.f,1,4)+"k");
 	
 	
-	///  🔴 brake flares  ++ ++
-	bool hasBrakes = !fsBrakes.pos.empty(),
+	///  🔴 flares and lights  ++ ++
+	bool hasBrakes = !fsBrakes.pos.empty(), hasReverse = !fsReverse.pos.empty(),
 		 hasFlares = !fsFlares.pos.empty() && numLights > 0;
-	if (pCar && (hasBrakes || hasFlares))
+	if (pCar && (hasBrakes || hasFlares || hasReverse))
 	{
 		SceneNode* nd = ndCar->createChildSceneNode();  ToDel(nd);
+		//  brake 
 		if (hasBrakes)
 		{	bsBrakes = mSceneMgr->createBillboardSet();
 			auto s = fsBrakes.size;
@@ -423,7 +453,6 @@ void CarModel::Create()
 					CreateLight(ndCar, LI_Brake, pos, fsBrakes.clr);  //💡
 				++n;
 			}
-
 			bsBrakes->setDatablockOrMaterialName("flare1", "Popular");
 			nd->attachObject(bsBrakes);
 			bsBrakes->setVisible(false);
@@ -433,7 +462,6 @@ void CarModel::Create()
 		{	bsFlares = mSceneMgr->createBillboardSet();
 			auto s = fsFlares.size;
 			bsFlares->setDefaultDimensions(s, s);
-			// bsFlares->setRenderQueueGroup(RQG_CarTrails);
 			bsFlares->setVisibilityFlags(RV_Car);
 
 			for (auto p : fsFlares.pos)
@@ -446,6 +474,25 @@ void CarModel::Create()
 					pCar->bLightsOn = 1;
 				bsFlares->setVisible(pSet->g.li.car && pCar->bLightsOn);
 			}
+		}
+		//  reverse
+		if (hasReverse && !ghost)
+		{	bsReverse = mSceneMgr->createBillboardSet();
+			auto s = fsReverse.size;
+			bsReverse->setDefaultDimensions(s, s);
+			bsReverse->setVisibilityFlags(RV_Car);
+
+			int n = 0;
+			for (auto& pos : fsReverse.pos)
+			{
+				bsReverse->createBillboard(pos, fsReverse.clr);
+				if (fsReverse.lit[n] && pSet->g.li.car && !ghost)
+					CreateLight(ndCar, LI_Revese, pos, fsReverse.clr);  //💡
+				++n;
+			}
+			bsReverse->setDatablockOrMaterialName("flare1", "Popular");
+			nd->attachObject(bsReverse);
+			bsReverse->setVisible(false);
 		}
 	}
 	

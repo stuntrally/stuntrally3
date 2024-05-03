@@ -11,7 +11,8 @@ using namespace Ogre;
 //  🌟 ctor
 PosInfo::PosInfo()
 	:bNew(false)  // not inited
-	,pos(0,-200,0), percent(0.f), braking(0)
+	,pos(0,-200,0), percent(0.f)
+	,braking(0), reverse(0)
 	,speed(0.f), fboost(0.f), steer(0.f)
 	,hov_roll(0.f), hov_throttle(0.f)
 	,fHitTime(0.f), fParIntens(0.f), fParVel(0.f)
@@ -48,7 +49,8 @@ void PosInfo::FromRpl2(const ReplayFrame2* rf, CARDYNAMICS* cd)
 	//  hud
 	speed = rf->speed;
 	fboost = rf->fboost /255.f;  steer = rf->steer /127.f;
-	braking = rf->get(b_braking);  percent = rf->percent /255.f*100.f;
+	braking = rf->get(b_braking);  reverse = rf->gear < 0;  //..
+	percent = rf->percent /255.f*100.f;
 	hov_roll = rf->hov_roll;	hov_throttle = rf->throttle /255.f;
 
 	fHitTime = rf->fHitTime;
@@ -101,6 +103,7 @@ void PosInfo::FromCar(CAR* pCar)
 	speed = pCar->GetSpeed();
 	fboost = cd->boostVal;	//posInfo.steer = cd->steer;
 	braking = cd->IsBraking();  //percent = outside
+	reverse = cd->GetTransmission().GetCurrentGearRatio() < 0.0;
 	hov_throttle = cd->hov_throttle;
 	
 	fHitTime = cd->fHitTime;  fParIntens = cd->fParIntens;  fParVel = cd->fParVel;

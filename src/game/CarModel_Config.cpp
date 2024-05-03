@@ -61,6 +61,7 @@ void CarModel::SetNumWheels(int n)
 	ndWh.resize(n);  ndWhE.resize(n);  ndBrake.resize(n);
 }
 
+//  .car defaults
 void CarModel::Defaults()
 {
 	int i,w;
@@ -71,10 +72,12 @@ void CarModel::Defaults()
 		// for (w=0; w < 2; ++w)  //exhaustPos[i] = 0.f;
 	}
 
-	//  boost
+	//  flares
 	fsBrakes.pos.clear();  fsBrakes.clr = ColourValue(1,0,0);   fsBrakes.size = 0.2f;
 	fsFlares.pos.clear();  fsFlares.clr = ColourValue(0.98,1,1);  fsFlares.size = 1.2f;
+	fsReverse.pos.clear();  fsReverse.clr = ColourValue(1,1,1);  fsReverse.size = 0.5f;
 
+	//  boost
 	boostCnt = 0;  sBoostParName = "Boost";
 	boostClr[0] = 0.02f;  boostClr[1] = 0.1f;  boostClr[2] = 0.7f;
 	thrustClr[0] = 0.2f;  thrustClr[1] = 0.6f;  thrustClr[2] = 1.0f;
@@ -231,11 +234,12 @@ void CarModel::LoadConfig(const string & pathCar)
 
 	//~  🔴 brake flares
 	cf.GetParam("flares.lights", numLights);
+	const string sFlare[3] = {"front", "brake", "reverse"};
 	float pos[3];
-	for (int n=0; n < 2; ++n)
+	for (int n=0; n < 3; ++n)
 	{
-		FlareSet& flr = n ? fsBrakes : fsFlares;
-		const string s = n ? "brake" : "front";
+		FlareSet& flr = n==2 ? fsReverse : n==1 ? fsBrakes : fsFlares;
+		const string& s = sFlare[n];
 		bool ok = true;  i = 0;
 		while (ok)
 		{

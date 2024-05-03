@@ -2,8 +2,6 @@
 #include "mathvector.h"
 #include "quaternion.h"
 #include "cardefs.h"
-//#include "half.hpp"
-// #include <Ogre.h>
 #include <OgreVector3.h>
 #include <OgreQuaternion.h>
 
@@ -14,7 +12,6 @@ class CAR;
 //  Stores all the needed information about car coming from vdrift
 //  position,rotation of car and wheels
 //  and all data needed to update particles emitting rates and sounds
-//  todo? remove PosInfo use ReplayFrame?
 
 struct PosInfo
 {
@@ -29,7 +26,8 @@ struct PosInfo
 	float whVel[W], whSlide[W], whSqueal[W];
 	int whTerMtr[W],whRoadMtr[W];
 
-	float fboost,steer, percent;  char braking;
+	float fboost,steer, percent;
+	char braking,reverse;
 	float hov_roll/*= sph_yaw for O*/, hov_throttle;
 
 	//  💧 fluids
@@ -47,7 +45,6 @@ struct PosInfo
 	PosInfo();
 	
 	//  copy
-	void FromRpl(const ReplayFrame* rf);
 	void FromRpl2(const ReplayFrame2* rf, class CARDYNAMICS* cd);
 	void FromCar(CAR* pCar);
 };

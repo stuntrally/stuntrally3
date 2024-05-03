@@ -72,7 +72,7 @@ void App::newPoses(float time)  // time only for camera update
 				//  car
 				Axes::toOgre(pi.pos, tf.pos);
 				pi.rot = Axes::toOgre(tf.rot);
-				pi.braking = tf.brake;
+				pi.braking = tf.brake;  pi.reverse = 0;
 				pi.steer = tf.steer / 127.f;
 				//pi.fboost = 0.f;  pi.speed = 0.f;  pi.percent = 0.f;
 				//pi.fHitTime = 0.f;  pi.fParIntens = 0.f;  pi.fParVel = 0.f;

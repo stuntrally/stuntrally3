@@ -282,7 +282,8 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		angCarY = q.getYaw().valueDegrees() + 90.f;
 	}
 	
-	//  🔴 brake state
+	
+	//  🔴 brake state  flares
 	bool braking = posInfo.braking > 0;
 	if (bBraking != braking  && gPar.carPrv == 0)
 	{
@@ -291,8 +292,28 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		if (bsBrakes)
 			bsBrakes->setVisible(vis);
 	}
+	//  reverse
+	bool reverse = posInfo.reverse > 0;
+	if (bReverse != reverse  && gPar.carPrv == 0)
+	{
+		bReverse = reverse;
+		bool vis = bReverse && bVisible;
+		if (bsReverse)
+			bsReverse->setVisible(vis);
+	}
+	bReverseOld = bReverse;  // meh
+	bReverse = reverse;
+	if (bReverse != bReverseOld)
+	{
+		for (auto& l : lights)
+		if (l.type == LI_Revese)
+			l.li->setVisible(bReverse);
+		if (bsReverse)
+			bsReverse->setVisible(bReverse && pSet->g.li.car);
+	}
 
-	//  💡 Lights  ------------------------------------
+	//  💡 Lights
+	//------------------------------------------------------------------------
 	if (pCar)
 	{	// not from posInfo, always can toggle
 		bLightsOld = bLights;
@@ -304,26 +325,28 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 				l.li->setVisible(bLights);
 			if (bsFlares)
 				bsFlares->setVisible(bLights && pSet->g.li.car);
-		}
-		float f = bBraking ? 1.f : 0.f,
-			b = posInfo.fboost, th = posInfo.hov_throttle;
-		float bri = pSet->car_light_bright;
-		
-		for (auto& l : lights)
-		{
-			if (l.type == LI_Thrust)
-			{	l.li->setPowerScale( th * l.power * bri);
-				l.li->setVisible( th > 0.1f);
-			}else
-			if (l.type == LI_Boost)
-			{	l.li->setPowerScale( b * l.power * bri);
-				l.li->setVisible( b > 0.1f);
-			}else
-			if (l.type == LI_Brake)
-			{	l.li->setPowerScale( f * l.power * bri);  //par
-				l.li->setVisible( f > 0.1f);
-		}	}
-	}	
+	}	}
+
+	const float br = bBraking ? 1.f : 0.f,
+		bo = posInfo.fboost, th = posInfo.hov_throttle;
+	const float bri = pSet->car_light_bright;
+
+	//  var each frame-
+	for (auto& l : lights)
+	{
+		if (l.type == LI_Thrust)
+		{	l.li->setPowerScale( th * l.power * bri);
+			l.li->setVisible( th > 0.1f);
+		}else
+		if (l.type == LI_Boost)
+		{	l.li->setPowerScale( bo * l.power * bri);
+			l.li->setVisible( bo > 0.1f);
+		}else
+		if (l.type == LI_Brake)
+		{	l.li->setPowerScale( br * l.power * bri);  //par
+			l.li->setVisible( br > 0.1f);
+	}	}
+
 
 	//  ✨ update particle emitters  ------------------------------------
 	if (pSet->particles && pCar)

@@ -93,7 +93,7 @@ public:
 		float size = 0.2f;
 		Ogre::ColourValue clr{1,1,1,1};
 	}
-	fsBrakes, fsFlares;
+	fsBrakes, fsFlares, fsReverse;
 	
 	//  💨🔥 boost, thrusters  --------
 	int boostCnt =0;  Ogre::Vector3 boostPos[PAR_BOOST];
@@ -252,9 +252,8 @@ public:
 	std::vector<Ogre::ParticleSystem*> vDelPar;	void ToDel(Ogre::ParticleSystem* par);
 
 	//  🔴 brakes, front flares
-	Ogre::v1::BillboardSet* bsBrakes =0, *bsFlares =0;
-	bool bBraking = true;
+	Ogre::v1::BillboardSet* bsBrakes =0, *bsFlares =0, *bsReverse =0;
 
 	//  💡 Lights
-	bool bLightsOld =0, bLights =0;
+	bool bBraking = 1, bLightsOld =0, bLights =0, bReverseOld =0, bReverse = 0;
 };
