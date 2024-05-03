@@ -29,24 +29,39 @@ using namespace Ogre;
 ///..............................................................................................................................
 void CGuiCom::cmbGraphicsPreset(CMB)
 {
-	const static SETTINGS::Detail presets[8] = {  /*
-🖼️           LOD      ⛰️ Terain         Veget        🌒 Shadow     💡 Lights    🌊 Water          🔮 Reflect cube     
-Anisot       Obj,Veg  Tripl,hor  🌳Trees mul          Size    filt  Veh   boost  Size              Size              
-| Tex        |        | LOD,hor  | 🌿Grass    Dist    | Cnt Dist |  |Rear |Track | Reflect         | Skip            
-| fil Visibl |  Road  | Horiz |  |    |  trees grass  | | Typ |  |  |shd| |col|  | | refra         | | Faces     IBL 
-|  |   Dist  |   |🛣️  |\  |  /|  |    |    |    |     | | |   |  |  | | | | | |  | | |  Dist LOD   | | |  Dist LOD | */
-{0,1,  5000, 0.2,0.9, 0,0,0,0,0, 0.0f,0.0f,0.5f,0.5f, 0,1,0, 100,0, 0,0,0,0,0,0, 0,0,0,  100,0.1,  0,600,0,100,0.1,0 },  // Lowest
-{2,2, 10000, 0.6,1.5, 0,0,0,1,0, 0.5f,0.0f,0.5f,0.5f, 1,3,1, 200,1, 0,0,0,0,0,0, 0,0,0,  400,0.2,  0,60,1, 300,0.2,0 },  // Low 
-{4,2, 20000, 1.0,2.0, 0,0,1,1,1, 1.0f,0.5f,0.7f,0.7f, 2,3,1, 300,2, 0,0,0,0,0,0, 1,1,0,  700,0.3,  1,4,1,  500,0.3,0 },  // Medium ~
-{4,2, 40000, 1.2,2.5, 1,0,1,2,2, 1.0f,1.0f,1.0f,1.0f, 3,3,1, 500,2, 1,0,0,0,0,0, 1,1,1, 1000,0.4,  1,2,1,  700,0.4,0 },  // High
-{4,3, 60000, 1.5,3.0, 1,0,2,2,2, 1.5f,1.0f,1.2f,1.4f, 3,3,1, 700,3, 1,1,0,1,0,1, 1,1,1, 3000,0.4,  2,0,1, 1000,0.4,0 },  // Higher *
-{8,3, 60000, 1.8,3.5, 2,1,3,3,3, 1.5f,1.5f,1.5f,1.7f, 3,3,1,1000,3, 1,1,1,1,1,1, 2,1,1, 6000,0.6,  2,0,2, 2000,0.6,2 },  // Very high
-{16,3,60000, 2.4,4.0, 2,2,3,3,3, 2.0f,2.0f,2.0f,2.0f, 4,3,1,1300,4, 1,1,1,1,1,1, 3,1,1,20000,0.8,  3,0,3,20000,0.8,2 },  // Highest
-{16,3,60000, 2.4,4.0, 2,2,3,4,4, 2.5f,2.5f,3.0f,3.0f, 4,3,1,2000,4, 1,1,1,1,1,1, 4,1,1,60000,1.0,  3,0,4,60000,1.0,4 },  // Ultra
-	};
+const static SETTINGS::Lights lights[8] = {  /* 💡 Lights only
+	front    boost  thrust
+	|shdw  undr |  / collect
+	|  | rev |  | |  | track
+	|  |brk| |  | |  | |  */
+	{0,0,0,0,0, 0,0, 0,0 },  // Lowest
+	{0,0,0,0,0, 0,0, 0,0 },  // Low 
+	{1,0,0,0,0, 0,0, 0,0 },  // Medium ~
+	{1,1,0,0,0, 1,0, 0,1 },  // High
+	{1,1,1,0,0, 1,1, 0,1 },  // Higher *
+	{1,1,1,1,1, 1,1, 1,1 },  // Very high
+	{1,1,1,1,1, 1,1, 1,1 },  // Highest
+	{1,1,1,1,1, 1,1, 1,1 },  // Ultra
+};
+const static SETTINGS::Detail presets[8] = {  /*
+	🖼️           LOD      ⛰️ Terain         Veget        🌒 Shadow      🌊 Water          🔮 Reflect cube     
+	Anisot       Obj,Veg  Tripl,hor  🌳Trees mul          Size    filt  Size              Size              
+	| Tex        |        | LOD,hor  | 🌿Grass    Dist    | Cnt Dist |  | Reflect         | Skip            
+	| fil Visibl |  Road  | Horiz |  |    |  trees grass  | | Typ |  |  | | refra         | | Faces     IBL 
+	|  |   Dist  |   |🛣️  |\  |  /|  |    |    |    |     | | |   |  |  | | |  Dist LOD   | | |  Dist LOD | */
+	{0,1,  5000, 0.2,0.9, 0,0,0,0,0, 0.0f,0.0f,0.5f,0.5f, 0,1,0, 100,0, 0,0,0,  100,0.1,  0,600,0,100,0.1,0 },  // Lowest
+	{2,2, 10000, 0.6,1.5, 0,0,0,1,0, 0.5f,0.0f,0.5f,0.5f, 1,3,1, 200,1, 0,0,0,  400,0.2,  0,60,1, 300,0.2,0 },  // Low 
+	{4,2, 20000, 1.0,2.0, 0,0,1,1,1, 1.0f,0.5f,0.7f,0.7f, 2,3,1, 300,2, 1,1,0,  700,0.3,  1,4,1,  500,0.3,0 },  // Medium ~
+	{4,2, 40000, 1.2,2.5, 1,0,1,2,2, 1.0f,1.0f,1.0f,1.0f, 3,3,1, 500,2, 1,1,1, 1000,0.4,  1,2,1,  700,0.4,0 },  // High
+	{4,3, 60000, 1.5,3.0, 1,0,2,2,2, 1.5f,1.0f,1.2f,1.4f, 3,3,1, 700,3, 1,1,1, 3000,0.4,  2,0,1, 1000,0.4,0 },  // Higher *
+	{8,3, 60000, 1.8,3.5, 2,1,3,3,3, 1.5f,1.5f,1.5f,1.7f, 3,3,1,1000,3, 2,1,1, 6000,0.6,  2,0,2, 2000,0.6,2 },  // Very high
+	{16,3,60000, 2.4,4.0, 2,2,3,3,3, 2.0f,2.0f,2.0f,2.0f, 4,3,1,1300,4, 3,1,1,20000,0.8,  3,0,3,20000,0.8,2 },  // Highest
+	{16,3,60000, 2.4,4.0, 2,2,3,4,4, 2.5f,2.5f,3.0f,3.0f, 4,3,1,2000,4, 4,1,1,60000,1.0,  3,0,4,60000,1.0,4 },  // Ultra
+};
 
 	pSet->preset = val;  // for info
 	SETTINGS& s = *pSet;
+	s.li = lights[val];  // set all
 	s.g = presets[val];  // set all
 	s.gui.trees = s.g.trees;
 
@@ -104,9 +119,12 @@ Anisot       Obj,Veg  Tripl,hor  🌳Trees mul          Size    filt  Veh   boos
 	svShadowSize.Upd();  svShadowCount.Upd();  svShadowType.Upd();
 	svShadowDist.Upd();  svShadowFilter.Upd();  //btnShadowsApply(0);
 	//  💡 lights
-	ckCarLights.Upd();  ckCarLightsShadows.Upd();
-	ckCarLiRear.Upd();  ckCarLiBoost.Upd();
-	ckCollectLights.Upd();  ckTrackLights.Upd();
+#ifndef SR_EDITOR
+	ckLiFront.Upd();  ckLiFrontShadows.Upd();
+	ckLiBrake.Upd();  ckLiRevese.Upd();
+	ckLiBoost.Upd();  ckLiThrust.Upd();
+#endif
+	ckLiCollect.Upd();  ckLiTrack.Upd();
 
 	//  🌊 water
 	svWaterSize.Upd();  //svWaterSkip.Upd();

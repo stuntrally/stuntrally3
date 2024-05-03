@@ -60,6 +60,14 @@ public:
 	int preset = 4;  // last set, info only
 	bool hud_on =1;  // 0 won't create it, in ed hides dialogs
 
+	//  💡 lights  needs Update in presets:  Lights lights
+	struct Lights
+	{
+		bool front =0, front_shdw =0;  // shadows
+		bool brake =0, reverse =0, under =0;
+		bool boost =0, thrust =0;
+		bool collect =0, track =0;  // int..
+	} li;
 	//!  Any change or order needs Update in:  Detail presets
 	struct Detail
 	{
@@ -83,13 +91,6 @@ public:
 		//  🌒 shadow  5x
 		int shadow_size = 2, shadow_count = 3, shadow_type = Sh_Depth;
 		float shadow_dist = 600.f;  int shadow_filter = 1;  //3x3
-
-		//  💡 lights  2x
-		struct Lights
-		{
-			bool car =0, car_shadows =0, rear =0, boost =0;
-			bool collect =0, track =0;
-		} li;
 
 		//  🌊 water  5x
 		int water_size = 1;  //, water_skip = 1;  // todo

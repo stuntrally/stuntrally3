@@ -107,10 +107,13 @@ public:
 		SV svShadowSize, svShadowCount, svShadowType;
 		SV svShadowDist;  SV svShadowFilter;  void btnShadowsApply(WP);
 		//  💡 lights
-		Ck ckCarLights, ckCarLightsShadows;  void slBright(WP);
-		Ck ckCarLiRear, ckCarLiBoost;
-		Ck ckCollectLights;  // 💎 gems
-		Ck ckTrackLights;
+		void slBright(WP);
+	#ifndef SR_EDITOR
+		Ck ckLiFront, ckLiFrontShadows;
+		Ck ckLiBrake, ckLiRevese, ckLiUnder;
+		Ck ckLiBoost, ckLiThrust;
+	#endif
+		Ck ckLiCollect, ckLiTrack;  // 💎 gems
 
 		//  🌊 water
 		SlV(WaterSize);  //SlV(WaterSkip);

@@ -91,14 +91,20 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	BtnC("ApplyShadows", btnShadowsApply);
 
 	//  💡 Lights
-	ck= &ckCarLights;        ck->Init("CarLights",        &pSet->g.li.car);  //CevC(Lights);
-	ck= &ckCarLightsShadows; ck->Init("CarLightsShadows", &pSet->g.li.car_shadows);
-	sv= &svCarLightBright;   sv->Init("CarLightBright",   &pSet->car_light_bright, 0.1f,3.f, 1.f);
-															  sv->DefaultF(1.f);  SevC(CarLightBright);
-	ck= &ckCarLiRear;		ck->Init("CarLightsRear",  &pSet->g.li.rear);
-	ck= &ckCarLiBoost;		ck->Init("CarLightsBoost", &pSet->g.li.boost);
-	ck= &ckCollectLights;	ck->Init("CollectLights", &pSet->g.li.collect);
-	ck= &ckTrackLights;		ck->Init("TrackLights", &pSet->g.li.track);
+#ifndef SR_EDITOR  // game vehicles
+	ck= &ckLiFront;			ck->Init("LightsFront",        &pSet->li.front);  //CevC(Lights);
+	ck= &ckLiFrontShadows;	ck->Init("LightsFrontShadows", &pSet->li.front_shdw);
+	sv= &svCarLightBright;	sv->Init("CarLightBright",   &pSet->car_light_bright, 0.1f,3.f, 1.f);
+																sv->DefaultF(1.f);  SevC(CarLightBright);
+	ck= &ckLiBrake;		ck->Init("LightsBrake",  &pSet->li.brake);
+	ck= &ckLiRevese;	ck->Init("LightsRevese", &pSet->li.reverse);
+	ck= &ckLiUnder;		ck->Init("LightsUnder", &pSet->li.under);
+
+	ck= &ckLiBoost;		ck->Init("LightsBoost", &pSet->li.boost);
+	ck= &ckLiThrust;	ck->Init("LightsThrust", &pSet->li.thrust);
+#endif
+	ck= &ckLiCollect;	ck->Init("CollectLights", &pSet->li.collect);
+	ck= &ckLiTrack;		ck->Init("TrackLights", &pSet->li.track);
 	
 
 	//  🔮 Reflection

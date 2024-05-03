@@ -88,7 +88,7 @@ void App::CreateCollect(int i)
 	c.ndBeam->attachObject(c.itBeam);
 	c.itBeam->setVisibilityFlags(RV_Hud3D[0]);
 
-	if (pSet->g.li.collect)  // 💡 light
+	if (pSet->li.collect)  // 💡 light
 	{
 		c.light = mSceneMgr->createLight();
 		c.light->setType(Light::LT_POINT);
