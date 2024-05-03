@@ -65,8 +65,8 @@ void CScene::CreateSun()
 	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 
 	//  More Lights  //** higher CPU use, bad for debug
-	auto& li = app->pSet->g.li;
-	if (li.car || li.track || li.collect)  // g.li.rear >+
+	auto& li = app->pSet->li;
+	if (li.front)  // sum all li ?
 		mgr->setForwardClustered( true, 16, 8, 24, 4, 0, 2, 2, 50 );  //par?
 	else
 		mgr->setForwardClustered( false, 16, 8, 24, 4, 0, 2, 2, 50 );

@@ -169,7 +169,7 @@ public:
 
 	enum LiType
 	{
-		LI_Front, LI_Brake, LI_Revese, LI_Boost, LI_Thrust
+		LI_Front, LI_Brake, LI_Revese, LI_Boost, LI_Thrust, LI_Under
 	};
 	struct CarLight  // 💡
 	{

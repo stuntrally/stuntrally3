@@ -213,8 +213,8 @@ void CarModel::LoadConfig(const string & pathCar)
 		}
 	}
 	cf.GetParam("model_ofs.boost-name", sBoostParName);
-	cf.GetParam("model_ofs.boost-clr", boostClr);
-	cf.GetParam("model_ofs.thrust-clr", thrustClr);
+	cf.GetParam("model_ofs.boost-color", boostClr);
+	cf.GetParam("model_ofs.thrust-color", thrustClr);
 	
 	//  🔥 thruster  spaceship hover  max 4 pairs
 	int i;

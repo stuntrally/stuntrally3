@@ -203,7 +203,7 @@ void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourVal
 	l->setSpecularColour( c * bright * contrast );
 
 	CarLight li;
-	li.power = !front ? (sphere ? 1.f : 6.f) :
+	li.power = !front ? (sphere ? 1.f : 4.f) :  //par@
 		/*under ||*/ sphere ? 3.f : 12.f / numLights; //par  front bright
 	li.power *= Math::PI;
 	l->setPowerScale( li.power * pSet->car_light_bright);
@@ -249,7 +249,7 @@ void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourVal
         l->setTexture( areaTex );
         l->mTexLightMaskDiffuseMipStart = ( Ogre::uint16 )( 0.95f * 65535 );/**/
 	}
-	l->setCastShadows( front && pSet->g.li.car_shadows);
+	l->setCastShadows( front && pSet->li.front_shdw);
 	l->setVisible( under || front && sc->needLights);  // auto on for dark tracks  set pCar ..
 
 	li.li = l;  li.type = type;
@@ -367,7 +367,7 @@ void CarModel::Create()
 
 
 	//  💡 car lights  ----------------------
-	if (pSet->g.li.car && !ghost)
+	if (pSet->li.front && !ghost)
 	{
 		int cnt = fsFlares.pos.size();
 		const Real dirY = -0.1f, dirZ = 1.f;  //par-
@@ -379,13 +379,17 @@ void CarModel::Create()
 			CreateLight(ndCar, LI_Front, fsFlares.pos[i], fsFlares.clr);
 	}
 
-	if (pSet->g.li.car && !ghost)
-	ColourValue cu(0.1,0.4,0.1);  // par_
-	CreateLight(ndCar, LI_Under, Vector3(-1.0,-0.2, 0.0), cu);
-	CreateLight(ndCar, LI_Under, Vector3( 1.0,-0.2, 0.0), cu);
-	// CreateLight(ndCar, LI_Under, Vector3( 0.0,-0.2, 2.0), cu);
-	// CreateLight(ndCar, LI_Under, Vector3( 0.0,-0.2,-2.0), cu);
+	if (pSet->li.under && !ghost)
+	{
+		ColourValue cu;
+		auto c = pSet->gui.clr[0].glow;
+		cu.setHSB(1.f - c.hue, c.sat, c.val);
 
+		CreateLight(ndCar, LI_Under, Vector3(-1.0,-0.2, 0.0), cu);  //par..
+		CreateLight(ndCar, LI_Under, Vector3( 1.0,-0.2, 0.0), cu);
+		// CreateLight(ndCar, LI_Under, Vector3( 0.0,-0.2, 2.0), cu);
+		// CreateLight(ndCar, LI_Under, Vector3( 0.0,-0.2,-2.0), cu);
+	}
 
 	//  ⚫ wheels  ----------------------
 	int w2 = numWheels==2 ? 1 : 2;
@@ -449,7 +453,7 @@ void CarModel::Create()
 			for (auto& pos : fsBrakes.pos)
 			{
 				bsBrakes->createBillboard(pos, fsBrakes.clr);
-				if (fsBrakes.lit[n] && pSet->g.li.rear && !ghost)
+				if (fsBrakes.lit[n] && pSet->li.brake && !ghost)
 					CreateLight(ndCar, LI_Brake, pos, fsBrakes.clr);  //💡
 				++n;
 			}
@@ -472,7 +476,7 @@ void CarModel::Create()
 			if (pCar)  // on
 			{	if (sc->needLights)
 					pCar->bLightsOn = 1;
-				bsFlares->setVisible(pSet->g.li.car && pCar->bLightsOn);
+				bsFlares->setVisible(pSet->li.front && pCar->bLightsOn);
 			}
 		}
 		//  reverse
@@ -486,7 +490,7 @@ void CarModel::Create()
 			for (auto& pos : fsReverse.pos)
 			{
 				bsReverse->createBillboard(pos, fsReverse.clr);
-				if (fsReverse.lit[n] && pSet->g.li.car && !ghost)
+				if (fsReverse.lit[n] && pSet->li.front && !ghost)
 					CreateLight(ndCar, LI_Revese, pos, fsReverse.clr);  //💡
 				++n;
 			}
@@ -522,7 +526,7 @@ void CarModel::Create()
 				SceneNode* nb = ndCar->createChildSceneNode(SCENE_DYNAMIC, pos);  ToDel(nb);
 				nb->attachObject(parBoost[i]);
 
-				if (pSet->g.li.boost && !ghost)
+				if (pSet->li.boost && !ghost)
 					CreateLight(ndCar, LI_Boost, pos,
 						ColourValue(boostClr[0], boostClr[1], boostClr[2]));  //💡
 
@@ -553,7 +557,7 @@ void CarModel::Create()
 				nb->attachObject(parThrust[ii]);
 				parThrust[ii]->getEmitter(0)->setEmissionRate(0);
 
-				if (t.lit && pSet->g.li.boost && !ghost)
+				if (t.lit && pSet->li.boost && !ghost)
 					CreateLight(ndCar, LI_Thrust, pos,
 						ColourValue(thrustClr[0], thrustClr[1], thrustClr[2]));  //💡
 		}	}

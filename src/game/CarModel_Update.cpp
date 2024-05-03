@@ -40,7 +40,7 @@ void CarModel::setVisible(bool vis)
 
 	ndMain->setVisible(vis);
 	if (bsBrakes)  bsBrakes->setVisible(vis && bBraking);
-	if (bsFlares)  bsFlares->setVisible(vis && pSet->g.li.car);
+	if (bsFlares)  bsFlares->setVisible(vis && pSet->li.front);
 	// todo: fade from behind..
 
 	for (int w=0; w < numWheels; ++w)
@@ -309,7 +309,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		if (l.type == LI_Revese)
 			l.li->setVisible(bReverse);
 		if (bsReverse)
-			bsReverse->setVisible(bReverse && pSet->g.li.car);
+			bsReverse->setVisible(bReverse && pSet->li.front);
 	}
 
 	//  💡 Lights
@@ -324,7 +324,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 			if (l.type == LI_Front)
 				l.li->setVisible(bLights);
 			if (bsFlares)
-				bsFlares->setVisible(bLights && pSet->g.li.car);
+				bsFlares->setVisible(bLights && pSet->li.front);
 	}	}
 
 	const float br = bBraking ? 1.f : 0.f,
