@@ -6,6 +6,44 @@ More in [Tasks tracker](https://stuntrally.tuxfamily.org/mantis/view_all_bug_pag
 Marked: `crucial`, **Next or Big**, _Important_.
 
 ----
+### New game stuff✨
+
+🏆✨ new [game Modes](https://stuntrally.tuxfamily.org/mantis/view.php?id=21): [Career](https://forum.freegamedev.net/viewtopic.php?f=79&t=5211), WIP Collection, 3d cup models  
+Score for: drift (sliding on road), air time (jumps etc)  
+
+🕹️ New **Game** elements:  
+✨Teleporters, moving & rotating Obstacles, elevators  
+Force fields, speed up, lift, anti-gravity  
+
+Track 💡*lights* ed mode, car glow (as rect area) lights, bridges, pipe easy add lights?  
+*entities.xml* (sum of object, animation, light, 🔥particles etc)  
+
+----
+### New data
+
+🌧️ Ambient [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
+🚗🔊 More car **Sounds**.. todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7)  
+📦 object hit sounds, reverb change in water, caves, pipes-  
+
+Remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
+🌳 New jungle [**Trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), Bushes, more vegetation, tiny close, grasses, rock packs  
+redo or replace lowest quality meshes: shroom* 🍄, skyscraper* 🏢  
+normalize .mesh scales fir*, etc.  
+
+[Horizons](https://stuntrally.tuxfamily.org/mantis/view.php?id=11), add to rest of tracks  
+🛣️ Road: wall types, spline walls [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)  
+
+
+----
+### Ogre
+🪄 **Effects**: Soft Particles, **SSAO**, HDR, bloom, rays?  
+🌀 Add [FastNoise](https://github.com/Auburn/FastNoiseLite) for brushes and ter gen  
+
+🌊 Ocean: Terra waves, vehicle deform, particles  
+⏲️ Gauges with shader [demo](https://www.shadertoy.com/view/7t3fzs)  
+
+
+----
 ### Ogre cd restore
 
 - 🌊 `Water` **refract  
@@ -26,48 +64,14 @@ Marked: `crucial`, **Next or Big**, _Important_.
 - 🏗️ Editor, fix  
   objects pick `errors`  
   minimap **RTTs** upd skip (slow), or create on save  
-  new terrain issues [here](https://groups.f-hub.org/d/SW0mnXNV/track-rework-horizons-skies-and-updates/14)
-  edit moved terrains, error in ray pos-  
+  new terrain issues [here](https://groups.f-hub.org/d/SW0mnXNV/track-rework-horizons-skies-and-updates/14)  
+  edit *moved* terrains, error in ray pos-  
   _tools_: fix **scale ter h**, copy horizon, which ter, road  
 
 - ⏲️ `HUD`  
   fix splitscreen gauges etc  
   _Minimap_ circle, terrain add, fix pos tris  
   btnRplDelete for ghost should also remove its track record from .txt  
-
-----
-### New data
-
-🌧️ Ambient [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
-🚗🔊 More car **Sounds**.. todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7)  
-📦 object hit sounds, reverb change in water, caves, pipes-  
-
-Remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
-🌳 New jungle [**Trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), Bushes, more vegetation, tiny close, grasses, rock packs  
-redo or replace lowest quality meshes: shroom* 🍄, skyscraper* 🏢  
-normalize .mesh scales fir*, etc.  
-
-[Horizons](https://stuntrally.tuxfamily.org/mantis/view.php?id=11), add to rest of tracks  
-🛣️ Road: wall types, spline walls [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)  
-
-🪄 **Effects**: Soft Particles, **SSAO**, HDR, bloom, rays?  
-🌀 Add [FastNoise](https://github.com/Auburn/FastNoiseLite) for brushes and ter gen  
-
-
-----
-### New game stuff✨
-
-🕹️ New **Game** elements:  
-✨Teleporters, moving & rotating Obstacles, elevators  
-Force fields, speed up, lift, anti-gravity  
-Track 💡lights, `entities.xml` (sum of object, animation, light, 🔥particles etc)
-
-🏆✨ new [game Modes](https://stuntrally.tuxfamily.org/mantis/view.php?id=21): [Career](https://forum.freegamedev.net/viewtopic.php?f=79&t=5211), Collection, 3d cup models  
-👥 [Splitscreen](https://stuntrally.tuxfamily.org/mantis/view.php?id=26) issues  
-
-🌊 Ocean: Terra waves, vehicle deform, particles  
-⏲️ Gauges with shader [demo](https://www.shadertoy.com/view/7t3fzs)  
-
 
 ----
 ### restore cd
@@ -85,11 +89,12 @@ inside height fog?, noise 3d? _volumetric_ clouds
 ed _tools_: copy roads which combo,all  
 Grass read Hmap - no index, vertex buffers? texture atlas-  
 
+👥 [Splitscreen](https://stuntrally.tuxfamily.org/mantis/view.php?id=26) issues  
 🖥️ finish render system rest options  
 🖱️ Input mouse bind, 👀 VR mode meh-  
-Add SR icons to: game & editor for Windows & Linux, and installer
 
-MyGui CMake .lib, Conan?  
+Add SR icons to: game & editor for Windows & Linux, and installer  
+?MyGui CMake .lib, Conan  
 .mesh LODs test adjust-  
 water refl vis dist? low gets bad  
 Fog, 2 colors cam dir fix-  

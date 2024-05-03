@@ -714,6 +714,7 @@
 	<!--  Graphics  lights  -->
 	<Tag name="Lights">Lights</Tag>
 	<Tag name="VehicleLights">Vehicle Lights</Tag>
+	<Tag name="UnderGlow">Under glow</Tag>
 
 	<!--  Graphics  particles  -->
 	<Tag name="Particles">Particles</Tag>

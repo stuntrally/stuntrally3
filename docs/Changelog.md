@@ -4,9 +4,10 @@ This section lists changes not yet released, but committed to repositories stunt
 
 - Game
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
-  - **Collection**, new game mode. WIP  
+  - **Collection** - new game mode. WIP  
     - Collecting gems located on track, for completion of all or quicker time
-- More Lights: vehicle brakes, boost, collection gems, with toggable Options
+- More **Lights** - with toggable Options
+  - vehicle: brakes, boost, reverse, under glow WIP and collection gems
 - Editor
   - Edit mode for Collection, key Y  
     - Insert/remove gems, move, scale, change type (at end of presets.xml)
