@@ -2,6 +2,7 @@
 #include "pch.h"
 #include "par.h"
 #include "cardefs.h"
+#include "mathvector.h"
 #include "cardynamics.h"
 #include "tobullet.h"
 #include "Def_Str.h"
@@ -44,7 +45,7 @@ float CARDYNAMICS::GetMass() const
 Dbl CARDYNAMICS::GetSpeed() const
 {
 	return body.GetVelocity().Magnitude();
-	//return chassis->getLinearVelocity().length();
+	// const auto& v = chassis->getLinearVelocity();
 }
 
 Dbl CARDYNAMICS::GetSpeedDir() const
@@ -53,7 +54,7 @@ Dbl CARDYNAMICS::GetSpeedDir() const
 	Orientation().RotateVector(v);
 	
 	Dbl vel = body.GetVelocity().dot(v);  // car body vel in local car direction
-	return sqrt(vel*vel);
+	return vel < 0.0 ? -sqrt(vel*vel) : sqrt(vel*vel);
 }
 
 MATHVECTOR<Dbl,3> CARDYNAMICS::GetVelocity() const

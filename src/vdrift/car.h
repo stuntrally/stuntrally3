@@ -86,7 +86,7 @@ public:
 	float GetSpeedometer() const
 	{
 		return dynamics.vtype != V_Car ?
-			dynamics.GetVelocity().Magnitude() : dynamics.GetSpeedMPS();
+			dynamics.GetSpeedDir() : dynamics.GetSpeedMPS();
 	}
 
 	std::string GetCarType() const	{	return cartype;	}
