@@ -12,6 +12,7 @@
 #include <OgreHlmsManager.h>
 #include "HlmsPbs2.h"
 #include <OgreHlmsUnlitDatablock.h>
+#include <OgreHlmsTerra.h>
 #include <OgreHlmsCompute.h>
 #include <OgreHlmsCommon.h>
 
@@ -97,7 +98,7 @@ void AppGui::createPcfShadowNode()
 	spv.push_back( sp );
 
 
-	if (pSet->g.li.car)  // or >1 sun planets..
+	if (pSet->li.front)  // or >1 sun planets..
 	{
 		//  light 2  dir, spot or point
 	#ifdef USE_STATIC_BRANCHING_FOR_SHADOWMAP_LIGHTS
@@ -176,7 +177,7 @@ void AppGui::updShadowFilter()
 	hlmsPbs->setShadowSettings(fil);
 
 	HlmsTerra *hlmsTerra = (HlmsTerra*)hlmsMgr->getHlms( HLMS_USER3 );
-	hlmsPbs->setShadowSettings(fil);
+	hlmsTerra->setShadowSettings(fil);
 }
 
 //  🆕 create ESM
