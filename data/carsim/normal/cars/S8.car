@@ -25,6 +25,8 @@ brake-lit0 = 1
 brake-lit1 = 1
 
 [ model_ofs ]
+boost0-pos = 0.643, -2.043, -0.406
+boost1-pos =-0.643, -2.043, -0.406
 exhaust-x = 2.2
 exhaust-y = 0.39
 exhaust-z = -0.5

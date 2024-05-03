@@ -17,12 +17,17 @@ front-pos1 =-0.66,1.95, 0.48
 front-size = 1.5
 front-color = 1, 0.96, 0.92
 lights = 2
+brake-pos0 = 0.75, -3.13, 0.56
+brake-pos1 =-0.77, -3.13, 0.56
+brake-size = 1.0
+brake-color = 1, 0.1, 0
+brake-lit0 = 1
+brake-lit1 = 1
 
 [ model_ofs ]
 rot_fix = on
-boost-y = -2.2
-boost-z = 1.05
-boost-x = 0.4
+boost0-pos = 0.702, -3.047, 0.278
+boost1-pos =-0.769, -3.047, 0.278
 exhaust-x = 2.2
 exhaust-y = 0.45
 exhaust-z = 0.56

@@ -25,6 +25,8 @@ brake-lit0 = 1
 brake-lit1 = 1
 
 [ model_ofs ]
+boost0-pos = 0.567, -1.655, -0.244
+boost1-pos =-0.577, -1.655, -0.244
 interior-x = -0.05
 interior-y = 0.13
 interior-z = 0
