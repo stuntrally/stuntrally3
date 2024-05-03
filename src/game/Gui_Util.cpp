@@ -219,15 +219,17 @@ void CGui::GuiShortcut(EMenu menu, int tab, int subtab, int game)
 	if (menu != MN_NoCng)  // chg menu
 	{
 		pSet->iMenu = menu;
-
-		if (tab == TAB_Track || tab == TAB_Champs)
-		{	SetNumPlayers(1);   app->updPanGames(game);  }
-		if (tab == TAB_Split)
-		{	SetNumPlayers(-2);  app->updPanGames(game);  }  // 👥
-		if (tab == TAB_Multi)
-		{	SetNumPlayers(1);   app->updPanGames(game);  }  // 📡
-	}
 		
+		if (pSet->iMenu == MN_Single)  // set num plr
+		{
+			if (tab == TAB_Track || tab == TAB_Champs)
+			{	SetNumPlayers(1);   app->updPanGames(game);  }
+			if (tab == TAB_Split)
+			{	SetNumPlayers(-2);  app->updPanGames(game);  }  // 👥
+			if (tab == TAB_Multi)
+			{	SetNumPlayers(1);   app->updPanGames(game);  }  // 📡
+	}	}
+
 	TabPtr tabs = 0;
 	std::vector<TabControl*>* subt = 0;
 	

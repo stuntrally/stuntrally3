@@ -85,8 +85,9 @@ public:
 	/// return the speedometer reading (based on the driveshaft speed) in m/s
 	float GetSpeedometer() const
 	{
-		return dynamics.vtype != V_Car ?
-			dynamics.GetSpeedDir() : dynamics.GetSpeedMPS();
+		auto& t = dynamics.vtype;
+		return t == V_Sphere ? dynamics.GetVelocity().Magnitude() :
+			t != V_Car ? dynamics.GetSpeedDir() : dynamics.GetSpeedMPS();
 	}
 
 	std::string GetCarType() const	{	return cartype;	}

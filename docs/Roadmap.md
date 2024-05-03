@@ -8,8 +8,8 @@ Marked: `crucial`, **Next or Big**, _Important_.
 ----
 ### New game stuff✨
 
-🏆✨ new [game Modes](https://stuntrally.tuxfamily.org/mantis/view.php?id=21): [Career](https://forum.freegamedev.net/viewtopic.php?f=79&t=5211), WIP Collection, 3d cup models  
-Score for: drift (sliding on road), air time (jumps etc)  
+🏆 new [game Modes](https://stuntrally.tuxfamily.org/mantis/view.php?id=21): [Career](https://forum.freegamedev.net/viewtopic.php?f=79&t=5211), WIP Collection, 3d cup models  
+Score for: drift (sliding on road), air time (jumps etc), hitting dynamic objects  
 
 🕹️ New **Game** elements:  
 ✨Teleporters, moving & rotating Obstacles, elevators  

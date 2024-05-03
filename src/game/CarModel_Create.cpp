@@ -193,7 +193,7 @@ void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourVal
 	const Real dirY = under ?-1.f : front ? -0.1f : -0.0f;  //par-
 	const Real dirZ = under ? 0.f : front ?  1.0f : -1.0f;
 	
-	LogO("C**L Add light: type "+toStr(type)+"  pos "+toStr(pos));  //-
+	LogO("C**L Add light: "+strLiType[type]+"  pos "+toStr(pos));  //-
 	SceneNode* node = ndCar->createChildSceneNode( SCENE_DYNAMIC, pos );
 	Light* l = mSceneMgr->createLight();
 	node->attachObject( l );  ToDel(node);
@@ -261,7 +261,8 @@ void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourVal
 //-------------------------------------------------------------------------------------------------------
 void CarModel::Create()
 {
-	LogO("C==C Creating Vehicle: "+sDirname+" -----");
+	LogO("");
+	LogO("C==C ----- Creating Vehicle: "+sDirname+" -----");
 	//if (!pCar)  return;
 
 	String strI = toStr(iIndex)+ (cType == CT_TRACK ? "Z" : (cType == CT_GHOST2 ? "V" :""));
@@ -490,7 +491,7 @@ void CarModel::Create()
 			for (auto& pos : fsReverse.pos)
 			{
 				bsReverse->createBillboard(pos, fsReverse.clr);
-				if (fsReverse.lit[n] && pSet->li.front && !ghost)
+				if (fsReverse.lit[n] && pSet->li.reverse && !ghost)
 					CreateLight(ndCar, LI_Revese, pos, fsReverse.clr);  //💡
 				++n;
 			}
@@ -616,5 +617,5 @@ void CarModel::Create()
 		}	}
 		UpdParsTrails();
 	}
-	LogO("C--L Created Vehicle: "+sDirname+"  total lights: "+toStr(lights.size())+" -----");
+	LogO("C--L ----- Created Vehicle: "+sDirname+"  total lights: "+toStr(lights.size())+" -----\n");
 }

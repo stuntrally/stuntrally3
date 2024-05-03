@@ -284,6 +284,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 	
 	
 	//  🔴 brake state  flares
+	//------------------------------------------------------------------------
 	bool braking = posInfo.braking > 0;
 	if (bBraking != braking  && gPar.carPrv == 0)
 	{
@@ -292,7 +293,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		if (bsBrakes)
 			bsBrakes->setVisible(vis);
 	}
-	//  reverse
+	//  💡 reverse
 	bool reverse = posInfo.reverse > 0;
 	if (bReverse != reverse  && gPar.carPrv == 0)
 	{
@@ -301,7 +302,6 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		if (bsReverse)
 			bsReverse->setVisible(vis);
 	}
-	bReverseOld = bReverse;  // meh
 	bReverse = reverse;
 	if (bReverse != bReverseOld)
 	{
@@ -311,6 +311,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		if (bsReverse)
 			bsReverse->setVisible(bReverse && pSet->li.front);
 	}
+	bReverseOld = bReverse;
 
 	//  💡 Lights
 	//------------------------------------------------------------------------
