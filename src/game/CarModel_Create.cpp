@@ -240,6 +240,7 @@ void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourVal
 //-------------------------------------------------------------------------------------------------------
 void CarModel::Create()
 {
+	LogO("C--L Creating Vehicle: "+sDirname+" -----");
 	//if (!pCar)  return;
 
 	String strI = toStr(iIndex)+ (cType == CT_TRACK ? "Z" : (cType == CT_GHOST2 ? "V" :""));
@@ -414,12 +415,12 @@ void CarModel::Create()
 			// brakes->setRenderQueueGroup(RQG_CarTrails);
 			bsBrakes->setVisibilityFlags(RV_Car);
 
-			int n=0;
-			for (auto& p : fsBrakes.pos)
+			int n = 0;
+			for (auto& pos : fsBrakes.pos)
 			{
-				bsBrakes->createBillboard(p, fsBrakes.clr);
+				bsBrakes->createBillboard(pos, fsBrakes.clr);
 				if (fsBrakes.lit[n] && pSet->g.li.rear && !ghost)
-					CreateLight(ndCar, LI_Brake, p, fsBrakes.clr);  //💡
+					CreateLight(ndCar, LI_Brake, pos, fsBrakes.clr);  //💡
 				++n;
 			}
 
@@ -457,83 +458,58 @@ void CarModel::Create()
 		{	parHit = mSceneMgr->createParticleSystem("Sparks");  ToDel(parHit);
 			parHit->setVisibilityFlags(RV_Particles);
 			
-			//? MaterialPtr m = MaterialManager::getSingleton().getByName(parHit->getMaterialName());
-			//? auto s = m->getTechnique(0)->getPass(0)->getTextureUnitState(0)->getSamplerblock();
-			
 			SceneNode* np = ndRoot->createChildSceneNode();  ToDel(np);
 			np->attachObject(parHit);
 			parHit->getEmitter(0)->setEmissionRate(0);
 		}
 		
 		///  💨 boost emitters  ------------------------
-		String ss;
 		for (int i=0; i < PAR_BOOST; ++i)
 		{
 			String si = strI + "_" +toStr(i);
 			if (!parBoost[i])
 			{	parBoost[i] = mSceneMgr->createParticleSystem(sBoostParName);  ToDel(parBoost[i]);
 				parBoost[i]->setVisibilityFlags(RV_Particles);
-				if (1)  // || !manualExhaustPos)
-				{
-					Vector3 p;
-				if (boostCnt == 0)
-				{
-					// no exhaust pos in car file, guess from bounding box
-					Vector3 bsize = (bodyBox.getMaximum() - bodyBox.getMinimum())*0.5,
-						bcenter = bodyBox.getMaximum() + bodyBox.getMinimum();
-					//LogO("Car body bbox :  size " + toStr(bsize) + ",  center " + toStr(bcenter));
-					Vector3 vp = bRotFix ?
-						Vector3(bsize.z * 0.97, bsize.y * 0.65, bsize.x * 0.65 * (i==0 ? 1 : -1)) :
-						Vector3(bsize.x * 0.97, bsize.y * 0.65, bsize.z * 0.65 * (i==0 ? 1 : -1));
-						//Vector3(1.9 /*back*/, 0.1 /*up*/, 0.6 * (i==0 ? 1 : -1)/*sides*/
-					vp.z *= boostSizeZ;
-					vp += Vector3(boostOfs[0][0],boostOfs[0][1],boostOfs[0][2]);
-					p = vp + bcenter;
-				}else
-				{
-					p = boostPos[i];  //Vector3(boostOfs[i][0], boostOfs[i][1], boostOfs[i][2]);
-				}
-					SceneNode* nb = ndCar->createChildSceneNode(SCENE_DYNAMIC, p);  ToDel(nb);
-					nb->attachObject(parBoost[i]);
 
-					if (i==0)
-						ss += "\nboost-- cnt "+toStr(boostCnt)+"  p "+toStr(p);
-					ss +="\nboost"+toStr(i)+"-pos = "+fToStr(p.z,3)+", "+fToStr(-p.x,3)+", "+fToStr(-p.y,3);
-					
-					if (pSet->g.li.boost && !ghost)
-						CreateLight(ndCar, LI_Boost, p,
-							ColourValue(boostClr[0], boostClr[1], boostClr[2]));  //💡
-				}
+				const Vector3& pos = boostPos[i];
+				SceneNode* nb = ndCar->createChildSceneNode(SCENE_DYNAMIC, pos);  ToDel(nb);
+				nb->attachObject(parBoost[i]);
+
+				if (pSet->g.li.boost && !ghost)
+					CreateLight(ndCar, LI_Boost, pos,
+						ColourValue(boostClr[0], boostClr[1], boostClr[2]));  //💡
+
 				if (bRotFix)
 					parBoost[i]->getEmitter(0)->setDirection(Vector3(0,0,-1));
 				parBoost[i]->getEmitter(0)->setEmissionRate(0);
 		}	}
-		LogO(ss);
 
 		///  💨 spaceship thrusters ^  ------------------------
 		for (int w=0; w < PAR_THRUST; ++w)
-		if (!sThrusterPar[w].empty())
-		{
-			int i2 = thrusterSizeZ[w] > 0.f ? 2 : 1;
+		{	const auto& t = thruster[w];
+			if (t.sPar.empty())  continue;
+
+			int i2 = t.sizeZ > 0.f ? 2 : 1;
 			for (int i=0; i < i2; ++i)
 			{
 				int ii = w*2+i;
 				String si = strI + "_" +toStr(ii);
 				
-				if (!parThrust[ii])
-				{	parThrust[ii] = mSceneMgr->createParticleSystem(sThrusterPar[w]);  ToDel(parThrust[ii]);
-					parThrust[ii]->setVisibilityFlags(RV_Particles);
+				if (parThrust[ii])  continue;
+				parThrust[ii] = mSceneMgr->createParticleSystem(t.sPar);  ToDel(parThrust[ii]);
+				parThrust[ii]->setVisibilityFlags(RV_Particles);
 
-					Vector3 vp = Vector3(thrusterOfs[w][0],thrusterOfs[w][1],
-						thrusterOfs[w][2] + (i-1)*2*thrusterSizeZ[w]);
-					SceneNode* nb = ndMain->createChildSceneNode(SCENE_DYNAMIC, vp);  ToDel(nb);
-					nb->attachObject(parThrust[ii]);
-					parThrust[ii]->getEmitter(0)->setEmissionRate(0);
+				Vector3 pos = Vector3(t.ofs[0], t.ofs[1],
+					t.ofs[2] + (i-1)*2 * t.sizeZ);
+					
+				SceneNode* nb = ndMain->createChildSceneNode(SCENE_DYNAMIC, pos);  ToDel(nb);
+				nb->attachObject(parThrust[ii]);
+				parThrust[ii]->getEmitter(0)->setEmissionRate(0);
 
-					if (thrusterLit[w] && pSet->g.li.boost && !ghost)
-						CreateLight(ndCar, LI_Thrust, vp,
-							ColourValue(thrustClr[0], thrustClr[1], thrustClr[2]));  //💡
-		}	}	}
+				if (t.lit && pSet->g.li.boost && !ghost)
+					CreateLight(ndCar, LI_Thrust, pos,
+						ColourValue(thrustClr[0], thrustClr[1], thrustClr[2]));  //💡
+		}	}
 
 		///  ⚫💭 wheel emitters  ------------------------
 		if (!ghost)
@@ -589,4 +565,5 @@ void CarModel::Create()
 		}	}
 		UpdParsTrails();
 	}
+	LogO("C--L Created Vehicle: "+sDirname+"  total lights: "+toStr(lights.size())+" -----");
 }

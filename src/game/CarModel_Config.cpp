@@ -68,22 +68,16 @@ void CarModel::Defaults()
 	{
 		driver_view[i] = 0.f;  hood_view[i] = 0.f;  ground_view[i] = 0.f;
 		interiorOfs[i] = 0.f;
-		for (w=0; w < 2; ++w)  boostOfs[w][i] = 0.f;  //exhaustPos[i] = 0.f;
+		// for (w=0; w < 2; ++w)  //exhaustPos[i] = 0.f;
 	}
 
 	//  boost
 	fsBrakes.pos.clear();  fsBrakes.clr = ColourValue(1,0,0);   fsBrakes.size = 0.2f;
 	fsFlares.pos.clear();  fsFlares.clr = ColourValue(0.98,1,1);  fsFlares.size = 1.2f;
 
-	sBoostParName = "Boost";  boostSizeZ = 1.f;
+	boostCnt = 0;  sBoostParName = "Boost";
 	boostClr[0] = 0.02f;  boostClr[1] = 0.1f;  boostClr[2] = 0.7f;
 	thrustClr[0] = 0.2f;  thrustClr[1] = 0.6f;  thrustClr[2] = 1.0f;
-	for (i=0; i < PAR_THRUST; ++i)
-	{
-		for (w=0; w < 3; ++w)  thrusterOfs[i][w] = 0.f;
-		thrusterSizeZ[i] = 0.f;
-		sThrusterPar[i] = "";   thrusterLit[i]=0;
-	}
 
 	for (w=0; w < numWheels; ++w)
 	{
@@ -205,23 +199,14 @@ void CarModel::LoadConfig(const string & pathCar)
 	cf.GetParam("model_ofs.rot_fix", bRotFix);
 
 	//~  💨 boost offset
-	cf.GetParam("model_ofs.boost-size-z", boostSizeZ);
-	if (cf.GetParam("model_ofs.boost-y", boostOfs[0][1]))
-	{	boostCnt = 0;
-		cf.GetParam("model_ofs.boost-x", boostOfs[0][0]);
-	 // cf.GetParam("model_ofs.boost-y", boostOfs[0][1]);
-		cf.GetParam("model_ofs.boost-z", boostOfs[0][2]);
-	}else
-	{
-		for (int i=0; i < PAR_BOOST; ++i)
-		{	float pos[3];
-			if (cf.GetParam("model_ofs.boost"+toStr(i)+"-pos", pos))
-			{	boostCnt = i+1;
-				// boostPos[i] = Vector3(pos[0], pos[1], pos[2]);
-				boostPos[i] = bRotFix ?
-					Vector3(-pos[0], pos[2],pos[1]) :
-					Vector3(-pos[1],-pos[2],pos[0]);/**/
-			}
+	for (int i=0; i < PAR_BOOST; ++i)
+	{	float pos[3];
+		if (cf.GetParam("model_ofs.boost"+toStr(i)+"-pos", pos))
+		{	boostCnt = i+1;
+			// boostPos[i] = Vector3(pos[0], pos[1], pos[2]);
+			boostPos[i] = bRotFix ?
+				Vector3(-pos[0], pos[2],pos[1]) :
+				Vector3(-pos[1],-pos[2],pos[0]);/**/
 		}
 	}
 	cf.GetParam("model_ofs.boost-name", sBoostParName);
@@ -231,15 +216,16 @@ void CarModel::LoadConfig(const string & pathCar)
 	//  🔥 thruster  spaceship hover  max 4 pairs
 	int i;
 	for (i=0; i < PAR_THRUST; ++i)
-	{
+	{	auto& t = thruster[i];
+
 		string s = "model_ofs.thrust";
 		if (i > 0)  s += toStr(i);
-		cf.GetParam(s+"-x", thrusterOfs[i][0]);
-		cf.GetParam(s+"-y", thrusterOfs[i][1]);
-		cf.GetParam(s+"-z", thrusterOfs[i][2]);
-		cf.GetParam(s+"-size-z", thrusterSizeZ[i]);
-		cf.GetParam(s+"-name", sThrusterPar[i]);
-		cf.GetParam(s+"-lit", thrusterLit[i]);
+		cf.GetParam(s+"-x", t.ofs[0]);
+		cf.GetParam(s+"-y", t.ofs[1]);
+		cf.GetParam(s+"-z", t.ofs[2]);
+		cf.GetParam(s+"-size-z", t.sizeZ);
+		cf.GetParam(s+"-name", t.sPar);
+		cf.GetParam(s+"-lit", t.lit);
 	}
 	
 

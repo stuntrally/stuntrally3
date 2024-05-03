@@ -80,10 +80,12 @@ public:
 
 	//  🚗 model params  from .car
 	float interiorOfs[3];
+	
 	//  🎥 mounted cameras
 	float driver_view[3], hood_view[3], ground_view[3];
 
-	//  🔴 brake, front light flares
+
+	//  🔴 brake, front light flares  --------
 	struct FlareSet
 	{
 		std::vector<Ogre::Vector3> pos;
@@ -93,13 +95,18 @@ public:
 	}
 	fsBrakes, fsFlares;
 	
-	//  💨🔥 boost  --------
-	int boostCnt;
-	Ogre::Vector3 boostPos[2];
-	float boostOfs[2][3], boostSizeZ, boostClr[3], thrustClr[3];  // light clr
-	std::string sBoostParName, sThrusterPar[PAR_THRUST];
-	float thrusterOfs[PAR_THRUST][3], thrusterSizeZ[PAR_THRUST];
-	int thrusterLit[PAR_THRUST];
+	//  💨🔥 boost, thrusters  --------
+	int boostCnt =0;  Ogre::Vector3 boostPos[PAR_BOOST];
+	float boostClr[3], thrustClr[3];  // light clr
+	std::string sBoostParName;
+
+	struct Thruster  // 🚀 spaceships
+	{
+		std::string sPar;  // particles
+		float ofs[3] = {0.f,0.f,0.f}, sizeZ = 0.f;
+		int lit = 0;  // light
+	}
+	thruster[PAR_THRUST];
 
 
 	// ⚫💭 for tire trails
