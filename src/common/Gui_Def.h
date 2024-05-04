@@ -23,6 +23,7 @@ public:
 	TD(ListBox, Li);  TD(MultiListBox, Mli);  TD(MultiList2, Mli2);
 	TD(Canvas, Can);  TD(ScrollView, Scv);
 	typedef SliderValue SV;  typedef Check Ck;
+	#undef TD
 };
 
 
