@@ -30,6 +30,7 @@ rot_fix = on
 boost0-pos = 0.22, -1.576, 0.61
 boost1-pos =-0.22, -1.576, 0.61
 boost-name = BoostCyan
+boost-color = 0.2, 1.0, 1.0
 interior-x = 0.0
 interior-y = 0.0
 interior-z = 0

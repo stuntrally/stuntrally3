@@ -21,16 +21,23 @@ front-color = 0.97, 1, 1
 lights = 3
 brake-pos0 = 0.28,-2.47, 0.36
 brake-pos1 =-0.28,-2.47, 0.36
-brake-size = 0.6
+brake-size = 0.66
 brake-color = 1, 0, 0
 brake-lit0 = 1
 brake-lit1 = 1
+reverse-pos0 = 0.86, -2.45, 0.32
+reverse-pos1 =-0.82, -2.45, 0.32
+reverse-size = 1.0
+reverse-color = 1, 0.97, 0.8
+reverse-lit0 = 1
+reverse-lit1 = 1
 
 [ model_ofs ]
 rot_fix = on
 boost0-pos = 0.516, -2.726, 0.335
 boost1-pos =-0.519, -2.726, 0.335
 boost-name = BoostViol
+boost-color = 0.1, 0.05, 1.0
 exhaust-x = 2.2
 exhaust-y = 0.4
 exhaust-z = 0.5

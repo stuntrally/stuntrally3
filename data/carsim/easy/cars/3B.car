@@ -19,6 +19,7 @@ boost-y = -0.84
 boost-z = 1.55
 boost-size-z = 0.42
 boost-name = BoostViol
+boost-color = 0.1, 0.05, 1.0
 exhaust-x = 2.2
 exhaust-y = 0.4
 exhaust-z = 0.5

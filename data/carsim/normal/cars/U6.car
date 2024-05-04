@@ -15,7 +15,7 @@ yaw2  = 1.0
 
 [ flares ]
 front-pos0 = 0.33,0.96, 0.04
-front-pos1 =-0.33,0.96, 0.04
+front-pos1 =-0.41,0.96, 0.04
 front-size = 1.5
 front-color = 0.97, 1, 1
 lights = 2
@@ -29,10 +29,17 @@ brake-size = 0.5
 brake-color = 0.6, 0.2, 0
 brake-lit2 = 1
 brake-lit3 = 1
+reverse-pos0 = 0.21,-1.65, 0.15
+reverse-pos1 =-0.20,-1.65, 0.15
+reverse-size = 0.7
+reverse-color = 0.99, 1, 1
+reverse-lit0 = 1
+reverse-lit1 = 1
 
 [ model_ofs ]
 rot_fix = on
 boost-name = BoostViol
+boost-color = 0.1, 0.05, 1.0
 boost0-pos = 0.253,  -1.61, 0.131
 boost1-pos = -0.267, -1.61, 0.131
 

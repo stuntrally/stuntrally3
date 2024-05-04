@@ -18,16 +18,22 @@ front-size = 1.5
 front-color = 0.97, 1, 1
 lights = 2
 brake-pos0 = 0.77,-1.8, 0.33
-brake-pos1 =-0.77,-1.8, 0.33
+brake-pos1 =-0.75,-1.8, 0.33
 brake-size = 0.7
 brake-color = 1, 0, 0
 brake-lit0 = 1
 brake-lit1 = 1
+reverse-pos0 = 0.70,-1.85, 0.31
+reverse-pos1 =-0.66,-1.85, 0.31
+reverse-size = 0.8
+reverse-color = 1, 0.97, 0.8
+reverse-lit0 = 1
+reverse-lit1 = 1
 
 [ model_ofs ]
 boost0-pos = 0.733, -1.915, 0.016
 boost1-pos =-0.723, -1.915, 0.016
-#boost-clr = 0.0, 0.2, 0.7
+#boost-color = 0.0, 0.2, 0.7
 exhaust-x = 2.4
 exhaust-y = 0.52
 exhaust-z = 0.45

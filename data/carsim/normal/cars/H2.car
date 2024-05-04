@@ -19,11 +19,17 @@ front-size = 0.9
 front-color = 0.97, 1, 1
 lights = 2
 brake-pos0 = 0.50,-1.7, 0.50
-brake-pos1 =-0.50,-1.7, 0.50
-brake-size = 0.6
+brake-pos1 =-0.49,-1.7, 0.50
+brake-size = 0.7
 brake-color = 1, 0, 0
 brake-lit0 = 1
 brake-lit1 = 1
+reverse-pos0 = 0.50, -1.72, 0.56
+reverse-pos1 =-0.49, -1.72, 0.56
+reverse-size = 0.7
+reverse-color = 1, 0.97, 0.8
+reverse-lit0 = 1
+reverse-lit1 = 1
 
 [ model_ofs ]
 rot_fix = on

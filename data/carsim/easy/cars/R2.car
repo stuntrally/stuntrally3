@@ -32,6 +32,7 @@ boost-y = -1.40
 boost-z = -0.35
 boost-size-z = 0.40
 boost-name = BoostCyan
+boost-color = 0.2, 1.0, 1.0
 interior-x = 0.0
 interior-y = 0.0
 interior-z = 0

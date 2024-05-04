@@ -27,6 +27,14 @@ brake-size = 0.36
 brake-color = 1, 0.2, 0
 brake-lit0 = 1
 brake-lit1 = 1
+reverse-pos0 = 0.57,-3.27,0.08
+reverse-pos1 =-0.57,-3.27,0.08
+reverse-pos2 = 0.45,-3.42,1.41
+reverse-pos3 =-0.43,-3.42,1.41
+reverse-size = 0.8
+reverse-color = 1, 1, 1
+reverse-lit0 = 1
+reverse-lit1 = 1
 
 [ model_ofs ]
 rot_fix = on

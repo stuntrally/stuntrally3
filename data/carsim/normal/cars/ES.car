@@ -19,10 +19,16 @@ front-color = 0.97, 1, 1
 lights = 2
 brake-pos0 = 0.58,-2.05, 0.2
 brake-pos1 =-0.58,-2.05, 0.2
-brake-size = 0.46
+brake-size = 0.6
 brake-color = 1, 0, 0
 brake-lit0 = 1
 brake-lit1 = 1
+reverse-pos0 = 0.50,-2.05, 0.15
+reverse-pos1 =-0.47,-2.05, 0.15
+reverse-size = 0.7
+reverse-color = 1, 1, 1
+reverse-lit0 = 1
+reverse-lit1 = 1
 
 [ model_ofs ]
 boost0-pos = 0.608, -1.963, -0.019

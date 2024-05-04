@@ -23,10 +23,16 @@ brake-size = 0.9
 brake-color = 1, 0, 0
 brake-lit0 = 1
 brake-lit1 = 1
+reverse-pos0 = 0.54,-1.64, 0.37
+reverse-pos1 =-0.54,-1.64, 0.37
+reverse-size = 1.0
+reverse-color = 1, 1, 1
+reverse-lit0 = 1
+reverse-lit1 = 1
 
 [ model_ofs ]
-boost0-pos = 0.567, -1.655, -0.244
-boost1-pos =-0.577, -1.655, -0.244
+boost0-pos = 0.567, -1.67, -0.244
+boost1-pos =-0.577, -1.67, -0.244
 interior-x = -0.05
 interior-y = 0.13
 interior-z = 0

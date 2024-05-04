@@ -16,12 +16,16 @@ yaw2  = 2.0
 front-pos0 = 0.33,1.5,0.02
 front-pos1 =-0.33,1.5,0.02
 front-size = 0.9
-front-color = 0.97, 1, 1
+front-color = 1, 1, 0.95
 lights = 2
 brake-pos0 = 0.0,-1.215, 1.04
 brake-size = 0.6
-brake-color = 1, 0, 0
-brake-lit0 = 1
+brake-color = 1, 0.05, 0
+brake-lit0 = 1.6
+reverse-pos0 = 0.0,-1.215, 1.03
+reverse-size = 1.0
+reverse-color = 1, 1, 0.95
+reverse-lit0 = 0.6
 
 [ model_ofs ]
 rot_fix = on

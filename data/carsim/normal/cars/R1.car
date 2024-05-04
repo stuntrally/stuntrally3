@@ -23,15 +23,22 @@ brake-pos1 =-0.53,-2.23, 0.34
 brake-pos2 = 0.61,-2.21, 0.34
 brake-pos3 =-0.61,-2.21, 0.34
 brake-size = 0.46
-brake-color = 1, 0, 0
+brake-color = 1, 0.05, 0.0
 brake-lit0 = 1
 brake-lit1 = 1
+reverse-pos0 = 0.789, -2.21, 0.17
+reverse-pos1 =-0.768, -2.21, 0.17
+reverse-size = 1.0
+reverse-color = 0.97, 1, 1
+reverse-lit0 = 1
+reverse-lit1 = 1
 
 [ model_ofs ]
 rot_fix = on
-boost0-pos = 0.389, -2.315, 0.173
-boost1-pos =-0.368, -2.315, 0.173
+boost0-pos = 0.389, -2.31, 0.173
+boost1-pos =-0.368, -2.31, 0.173
 boost-name = BoostCyan
+boost-color = 0.2, 1.0, 1.0
 interior-x = 0.0
 interior-y = 0.0
 interior-z = 0
