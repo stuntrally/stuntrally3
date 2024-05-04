@@ -73,9 +73,9 @@ void CarModel::Defaults()
 	}
 
 	//  flares
-	fsBrakes.pos.clear();  fsBrakes.clr = ColourValue(1,0,0);   fsBrakes.size = 0.2f;
-	fsFlares.pos.clear();  fsFlares.clr = ColourValue(0.98,1,1);  fsFlares.size = 1.2f;
-	fsReverse.pos.clear();  fsReverse.clr = ColourValue(1,1,1);  fsReverse.size = 0.5f;
+	fsBrakes.pos.clear();  fsBrakes.lit.clear();  fsBrakes.clr = ColourValue(1,0,0);   fsBrakes.size = 0.2f;
+	fsFlares.pos.clear();  fsFlares.lit.clear();  fsFlares.clr = ColourValue(0.98,1,1);  fsFlares.size = 1.2f;
+	fsReverse.pos.clear(); fsReverse.lit.clear();  fsReverse.clr = ColourValue(1,1,1);  fsReverse.size = 0.5f;
 
 	//  boost
 	boostCnt = 0;  sBoostParName = "Boost";
@@ -248,7 +248,7 @@ void CarModel::LoadConfig(const string & pathCar)
 			{	flr.pos.push_back( bRotFix ?
 					Vector3(-pos[0], pos[2],pos[1]) :
 					Vector3(-pos[1],-pos[2],pos[0]) );
-				int lit = 0;
+				float lit = n == 0 ? 1.f : 0.f;
 				cf.GetParam("flares."+s+"-lit"+toStr(i), lit);
 				flr.lit.push_back( lit );
 			}

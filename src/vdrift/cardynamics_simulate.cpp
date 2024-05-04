@@ -269,7 +269,7 @@ void CARDYNAMICS::ApplyWheelTorque(Dbl dt, Dbl drive_torque, int i, MATHVECTOR<D
 	if (numWheels == 2 && fDamage < 100.f)
 	{
 		float dmg = 1.f - 0.5f * fDamage*0.01f;
-		Dbl v = GetSpeedDir() * 1./50.;
+		Dbl v = GetSpeed() * 1./50.;
 		v = 0.05 + 0.95 * std::min(1.0, v);  //par
 		MATHVECTOR<float,3> dn = GetDownVector();
 

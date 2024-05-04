@@ -89,7 +89,7 @@ public:
 	struct FlareSet
 	{
 		std::vector<Ogre::Vector3> pos;
-		std::vector<int> lit;  // same size
+		std::vector<float> lit;  // same size, light power, 0 off
 		float size = 0.2f;
 		Ogre::ColourValue clr{1,1,1,1};
 	}
@@ -167,29 +167,32 @@ public:
 	Ogre::SceneNode* ndMain =0, *ndSph =0;
 	Ogre::Vector3 posSph[2] = {{0,0,0},{0,0,0}};  // 🟢🌿 grass sphere
 
-	enum LiType
-	{
-		LI_Front, LI_Brake, LI_Revese, LI_Boost, LI_Thrust, LI_Under
-	};
-	struct CarLight  // 💡
-	{
-		Ogre::Light* li =0;
-		LiType type = LI_Front;
-		float power = 1.f;
-	};
-	std::vector<CarLight> lights;
-	void updLightsBright();
-	
-	void CreateLight(Ogre::SceneNode* ndCar, LiType type,
-		Ogre::Vector3 pos, Ogre::ColourValue c);
-	
-	
 	//  hide/show
 	void setVisible(bool visible);
 	bool bVisible = true;  float hideTime = 1.f;
 		
 	//  🚗 VDrift car
 	CAR* pCar =0;  // all need this set (even ghost, has it from 1st car)
+
+
+	//  💡 Lights  --------
+	enum LiType
+	{	LI_Front, LI_Brake, LI_Revese, LI_Boost, LI_Thrust, LI_Under, LI_All  };
+	const std::string strLiType[LI_All] =
+	{	"Front", "Brake", "Revese", "Boost", "Thrust", "Under" };
+	
+	struct CarLight
+	{
+		Ogre::Light* li =0;
+		LiType type = LI_Front;
+		float power = 1.f;
+	};
+	std::vector<CarLight> lights;
+	std::vector<int> liCnt;  // each type counter, size LI_All
+	void updLightsBright();
+	
+	void CreateLight(Ogre::SceneNode* ndCar, LiType type,
+		Ogre::Vector3 pos, Ogre::ColourValue c, float power);
 	
 	
 	///  🔵 Checkpoints  --------

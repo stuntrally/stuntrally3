@@ -43,6 +43,7 @@ hlms Particles/Spark unlit
 hlms flare1 unlit
 {
 	diffuse_map flare1.png
+	depth_bias 3
 	depth_write off
 	scene_blend add
 }
