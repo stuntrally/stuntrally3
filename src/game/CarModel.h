@@ -77,6 +77,7 @@ public:
 	///  📄 Config  ------------------------------------------------
 	void LoadConfig(const std::string & pathCar), Defaults();
 	void Load(int startId, bool loop);  // create game CAR
+	Ogre::Vector3 posFix(float pos[3]);
 
 	//  🚗 model params  from .car
 	float interiorOfs[3];
@@ -93,7 +94,7 @@ public:
 		float size = 0.2f;
 		Ogre::ColourValue clr{1,1,1,1};
 	}
-	fsBrakes, fsFlares, fsReverse;
+	fsBrakes, fsFlares, fsReverse, fsUnder;
 	
 	//  💨🔥 boost, thrusters  --------
 	int boostCnt =0;  Ogre::Vector3 boostPos[PAR_BOOST];

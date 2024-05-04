@@ -386,11 +386,8 @@ void CarModel::Create()
 		auto c = pSet->gui.clr[0].glow;
 		cu.setHSB(1.f - c.hue, c.sat, c.val);
 
-  		//par.. cfg flares pos..
-		CreateLight(ndCar, LI_Under, Vector3(-1.0,-0.2, 0.0), cu, 1.f);  //💡
-		CreateLight(ndCar, LI_Under, Vector3( 1.0,-0.2, 0.0), cu, 1.f);
-		// CreateLight(ndCar, LI_Under, Vector3( 0.0,-0.2, 2.0), cu, 1.f);
-		// CreateLight(ndCar, LI_Under, Vector3( 0.0,-0.2,-2.0), cu, 1.f);
+		for (auto& pos : fsUnder.pos)
+			CreateLight(ndCar, LI_Under, pos, cu, 1.f);  //💡
 	}
 
 	//  ⚫ wheels  ----------------------

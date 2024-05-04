@@ -76,6 +76,7 @@ void CarModel::Defaults()
 	fsBrakes.pos.clear();  fsBrakes.lit.clear();  fsBrakes.clr = ColourValue(1,0,0);   fsBrakes.size = 0.2f;
 	fsFlares.pos.clear();  fsFlares.lit.clear();  fsFlares.clr = ColourValue(0.98,1,1);  fsFlares.size = 1.2f;
 	fsReverse.pos.clear(); fsReverse.lit.clear();  fsReverse.clr = ColourValue(1,1,1);  fsReverse.size = 0.5f;
+	fsUnder.pos.clear();  fsUnder.lit.clear();
 
 	//  boost
 	boostCnt = 0;  sBoostParName = "Boost";
@@ -167,6 +168,12 @@ static void ConvertV2to1(float & x, float & y, float & z)
 	float tx = x, ty = y, tz = z;
 	x = ty;  y = -tx;  z = tz;
 }
+Vector3 CarModel::posFix(float pos[3])
+{
+	return bRotFix ?
+		Vector3(-pos[0], pos[2],pos[1]) :
+		Vector3(-pos[1],-pos[2],pos[0]);
+}
 void CarModel::LoadConfig(const string & pathCar)
 {
 	Defaults();
@@ -206,10 +213,7 @@ void CarModel::LoadConfig(const string & pathCar)
 	{	float pos[3];
 		if (cf.GetParam("model_ofs.boost"+toStr(i)+"-pos", pos))
 		{	boostCnt = i+1;
-			// boostPos[i] = Vector3(pos[0], pos[1], pos[2]);
-			boostPos[i] = bRotFix ?
-				Vector3(-pos[0], pos[2],pos[1]) :
-				Vector3(-pos[1],-pos[2],pos[0]);/**/
+			boostPos[i] = posFix(pos);
 		}
 	}
 	cf.GetParam("model_ofs.boost-name", sBoostParName);
@@ -245,9 +249,7 @@ void CarModel::LoadConfig(const string & pathCar)
 		{
 			ok = cf.GetParam("flares."+s+"-pos"+toStr(i), pos);
 			if (ok)
-			{	flr.pos.push_back( bRotFix ?
-					Vector3(-pos[0], pos[2],pos[1]) :
-					Vector3(-pos[1],-pos[2],pos[0]) );
+			{	flr.pos.push_back( posFix(pos) );
 				float lit = n == 0 ? 1.f : 0.f;
 				cf.GetParam("flares."+s+"-lit"+toStr(i), lit);
 				flr.lit.push_back( lit );
@@ -258,6 +260,21 @@ void CarModel::LoadConfig(const string & pathCar)
 		flr.clr = ColourValue(pos[0],pos[1],pos[2]);
 		cf.GetParam("flares."+s+"-size", flr.size);
 	}
+
+	//  under glow pos auto __
+	float width = 0.5f, front = 1.5f, rear = -1.5f;  // height = 0.4
+	cf.GetParam("collision.width", width);
+	cf.GetParam("collision.posLrear", front);
+	cf.GetParam("collision.posLfront", rear);
+	// par y_?
+	pos[0] = width;  pos[1] = 0.f;  pos[2] = -0.2f;
+	fsUnder.pos.push_back(posFix(pos));  // right
+	pos[0] = -pos[0];
+	fsUnder.pos.push_back(posFix(pos));  // left
+	pos[0] = 0.f;  pos[1] = front;  pos[2] = -0.2f;
+	// fsUnder.pos.push_back(posFix(pos));  // par? 2/4
+	pos[1] = rear;
+	// fsUnder.pos.push_back(posFix(pos));
 
 
 	//- 🎥 load cameras pos
