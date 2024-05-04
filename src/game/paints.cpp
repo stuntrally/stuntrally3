@@ -55,6 +55,12 @@ void PaintsIni::SerPaint(bool wr, CONFIGFILE & cf, const std::string s, CarPaint
 		Param(cf,wr, s+"p2mul", p.paintMul2nd);
 		Param(cf,wr, s+"p3pow", p.paintPow3rd);
 	}
+
+	//  under glow  same as main
+	if (p.type == CP_3Clrs)
+		p.glow = p.paints[1];  //0 1 2?
+	else
+		p.glow = p.clr[0];
 }
 
 //  📄 paints.ini

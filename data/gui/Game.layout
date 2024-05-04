@@ -1065,6 +1065,9 @@
 								<Widget type="TabItem" skin="" position="2 24 542 -8">
 									<Property key="Caption" value="#6060F0 #{P_Mix}"/>
 								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 542 -8">
+									<Property key="Caption" value="#C0FFC0 #{UnderGlow}"/>
+								</Widget>
 							</Widget>
 
 							<!-- clr3 mix -->

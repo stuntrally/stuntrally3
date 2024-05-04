@@ -88,7 +88,8 @@ void CGui::SldUpd_Paint()
 	const int t = tab->getIndexSelected();
 	const bool mix = t == 5;  // tab clr chg mix
 	if (!mix)  // clr hsv
-	{	auto& c = t >= 2 ? gc.paints[t-2] : gc.clr[t];
+	{	auto& c = t == 6 ? gc.glow :
+			t >= 2 ? gc.paints[t-2] : gc.clr[t];
 		svPaintH.UpdF(&c.hue);  svPaintS.UpdF(&c.sat);  svPaintV.UpdF(&c.val);
 	}
 	//  hide/show clr Type tabs  [diff] [spec] [1][2][3] [Mix]

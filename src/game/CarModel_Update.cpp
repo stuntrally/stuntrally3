@@ -768,4 +768,18 @@ void CarModel::SetPaint()
 		pNickTxt->setTextColour(MyGUI::Colour(color.r, color.g, color.b));
 	
 	// opp list text and mini pos colors - auto in hud update
+
+
+	//  under glow light  --------
+	ColourValue cg;
+	c = gc.glow;
+	cg.setHSB(1.f - c.hue, c.sat, c.val);
+	
+	for (auto& l : lights)
+	if (l.type == LI_Under)
+	{
+		float bright = 1.17f * pSet->bright, contrast = pSet->contrast;
+		l.li->setDiffuseColour(  cg * bright * contrast );
+		l.li->setSpecularColour( cg * bright * contrast );
+	}
 }
