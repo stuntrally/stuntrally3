@@ -235,47 +235,59 @@ void App::UpdCollects()
 }
 #endif
 
-//  👆 Pick
-//-------------------------------------------------------------------------------------------------------
 
 #ifdef SR_EDITOR
+
+///  🆕 add new Collectible
+void App::AddNewCol(bool getName)
+{
+	SCollect o = colNew;
+	// if (getName)
+	// 	o.name = vColNames[iColTNew];
+
+	//  pos, rot
+	if (getName)
+	{	// one new
+		const Vector3& v = scn->road->posHit;
+		// o.pos[0] = v.x;  o.pos[1] =-v.z;  o.pos[2] = v.y + colNew.pos[2];
+		o.pos[0] = v.x;  o.pos[1] = v.y + colNew.pos[2];  o.pos[2] = v.z;
+	}
+
+	auto& c = scn->sc->collects;
+	c.push_back(o);
+	CreateCollect(c.size()-1);
+}
+
+
 void App::UpdColPick()
 {
+	bool st = edMode == ED_Collects && !bMoveCam;
+	if (boxCol.nd)  boxCol.nd->setVisible(st);
+	if (boxCol.nd)  boxCol.nd->setVisible(st && !scn->road->isLooped);  // end separate
+
+
+	int cols = scn->sc->collects.size();
+	bool bCols = edMode == ED_Collects && !bMoveCam && cols > 0 && iColCur >= 0;
+	if (cols > 0)
+		iColCur = std::min(iColCur, cols-1);
+
+	if (!boxCol.nd)  return;
+	boxCol.nd->setVisible(bCols);
+	if (!bCols)  return;
+	
+	const SCollect& o = scn->sc->collects[iColCur];
+	const Aabb& ab = o.nd->getAttachedObject(0)->getLocalAabb();
+	Vector3 s = o.scale * ab.getSize();  // * sel col's node aabb
+
+	boxCol.nd->setPosition(o.pos);
+	boxCol.nd->setScale(s);
+	boxCol.nd->_getFullTransformUpdated();
 }
 
 #if 0  /// TODO.. ed
-void App::UpdColPick()
-{
-	bool st = edMode == ED_Start && !bMoveCam;
-	if (ndStartBox[0])  ndStartBox[0]->setVisible(st);
-	if (ndStartBox[1])  ndStartBox[1]->setVisible(st && !scn->road->isLooped);  // end separate
 
-
-	int objs = scn->sc->objects.size();
-	bool bObjects = edMode == ED_Objects && !bMoveCam && objs > 0 && iObjCur >= 0;
-	if (objs > 0)
-		iObjCur = std::min(iObjCur, objs-1);
-
-	if (!ndObjBox)  return;
-	ndObjBox->setVisible(bObjects);
-	if (!bObjects)  return;
-	
-	const Object& o = scn->sc->objects[iObjCur];
-	const Aabb& ab = o.nd->getAttachedObject(0)->getLocalAabb();
-	Vector3 s = o.scale * ab.getSize();  // * sel obj's node aabb
-
-	Vector3 posO = Axes::toOgre(o.pos);
-	Quaternion rotO = Axes::toOgreW(o.rot);
-
-	// Vector3 scaledCenter = ab.getCenter() * o.scale;
-	// posO += (rotO * scaledCenter);
-
-	ndObjBox->setPosition(posO);
-	ndObjBox->setOrientation(rotO);
-	ndObjBox->setScale(s);
-	ndObjBox->_getFullTransformUpdated();
-}
-
+//  👆 Pick
+//-------------------------------------------------------------------------------------------------------
 void App::PickObject()
 {
 	const auto& objs = scn->sc->objects;
@@ -336,60 +348,19 @@ void App::PickObject()
 }
 #endif
 
-///  🆕 add new Collectible
-void App::AddNewCol(bool getName)
-{
-	SCollect o = colNew;
-	// if (getName)
-	// 	o.name = vColNames[iColTNew];
-
-	//  pos, rot
-	if (getName)
-	{	// one new
-		const Vector3& v = scn->road->posHit;
-		// o.pos[0] = v.x;  o.pos[1] =-v.z;  o.pos[2] = v.y + colNew.pos[2];
-		o.pos[0] = v.x;  o.pos[1] = v.y + colNew.pos[2];  o.pos[2] = v.z;
-	}
-
-	//  create collect
-	try
-	{	o.it = mSceneMgr->createItem(/*o.name +*/ "sphere.mesh");
-		//  alpha from presets.xml
-		// auto* veg = scn->data->pre->GetVeget(o.name);
-		// if (veg)
-		// 	o.it->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
-
-		o.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-		o.nd->setPosition(o.pos);
-		o.nd->setScale(o.scale * Vector3::UNIT_SCALE);
-		o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Objects);
-
-		scn->sc->collects.push_back(o);
-	}
-	catch (Exception ex)
-	{
-		LogO("no new collect! " + ex.getFullDescription());
-	}
-}
-
 #if 0
-//  change obj to insert
+//  change collect to insert
 #define ITEM_NONE -1  //?
-void CGui::listObjsChng(MyGUI::List* l, size_t t)
+void CGui::listColsChng(MyGUI::List* l, size_t t)
 {
-	//  unselect other
-	if (l != objListDyn)  objListDyn->setIndexSelected(ITEM_NONE);
-	if (l != objListSt)	  objListSt->setIndexSelected(ITEM_NONE);
-	if (l != objListBld)  objListBld->setIndexSelected(ITEM_NONE);
-
 	if (t == ITEM_NONE)  //  sel default
-	{	/*l = objListDyn;*/  t = 0;  l->setIndexSelected(t);  }
+	{	t = 0;  l->setIndexSelected(t);  }
 	
 	std::string s = l->getItemNameAt(t).substr(7);
-	for (int i=0; i < app->vObjNames.size(); ++i)
-		if (s == app->vObjNames[i])
+	for (int i=0; i < app->vColNames.size(); ++i)
+		if (s == app->vColNames[i])
 		{
-			app->SetObjNewType(i);
+			app->SetColNewType(i);
 			Upd3DView(s+".mesh");
 			return;
 		}
