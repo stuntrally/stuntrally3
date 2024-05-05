@@ -71,27 +71,13 @@ void App::UpdateKey(float dt)
 	const Real q = (shift ? 0.05 : ctrl ? 4.0 :1.0) * 20 * dt;
 
 	SplineRoad* road = scn->road;
-	if (edMode == ED_Road && bEdit() && scn->road)
-		KeyTxtRoad(q);
-
-	else if (edMode < ED_Road)
-		KeyTxtTerrain(q);  // Brush
-
-	else if (edMode == ED_Start && road)
-		KeyTxtStart(q);  // Start box, road dir
-
-	else if (edMode == ED_Fluids)
-		KeyTxtFluids(q);
-
-	else if (edMode == ED_Objects)
-		KeyTxtObjects();
-
-	else if (edMode == ED_Particles)
-		KeyTxtEmitters(q);
-
-	else if (edMode == ED_Collects)
-		KeyTxtCollects();
-
+	if (edMode == ED_Road && bEdit() && scn->road)  KeyTxtRoad(q);
+	else if (edMode < ED_Road)        KeyTxtTerrain(q);  // Brush
+	else if (edMode == ED_Start && road)  KeyTxtStart(q);  // Start box, road dir
+	else if (edMode == ED_Fluids)     KeyTxtFluids(q);
+	else if (edMode == ED_Objects)    KeyTxtObjects();
+	else if (edMode == ED_Particles)  KeyTxtEmitters(q);
+	else if (edMode == ED_Collects)   KeyTxtCollects();
 
 	mz = 0;  // mouse wheel
 

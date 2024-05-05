@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "enums.h"
 #include "Def_Str.h"
 #include "CScene.h"
 #include "CApp.h"
@@ -421,7 +422,7 @@ void App::KeyTxtCollects()
 	//  edit
 	if (mz != 0 && bEdit() && cols > 0)  // wheel prev/next
 	{	int add = (alt ? 10 : ctrl ? 4 : 1) * mz;
-		iColCur = (iColCur - add + cols) % cols;  //UpdColPick();
+		iColCur = (iColCur - add + cols) % cols;  UpdColPick();
 	}
 }
 
@@ -467,6 +468,10 @@ void App::FocusCam()
 		dist = (sc.x + sc.y + sc.z) / 3.f + 10.f;
 		pos = boxEmit.nd->getPosition();  SetCam();
 		break;
+
+	case ED_Collects:  // 💎
+		dist = boxCol.nd->getScale().y * 10.f;
+		pos = boxCol.nd->getPosition();  SetCam();  break;
 
 	//  ter edit, cursor  ⛰️
 	case ED_Deform: case ED_Smooth: case ED_Height: case ED_Filter:

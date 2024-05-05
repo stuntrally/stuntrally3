@@ -579,7 +579,7 @@ bool GAME::NewGameDoLoadMisc(float pre_time, std::string ambient_name, float amb
 		vol_ambient = ambient_vol;
 		snd_ambient->setGain(vol_ambient * pSet->vol_ambient);
 		snd_ambient->start();  // 🔉 is during load..
-	}	
+	}
 	return true;
 }
 

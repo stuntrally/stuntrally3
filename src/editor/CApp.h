@@ -210,7 +210,7 @@ public:
 	{	Ogre::SceneNode* nd =0;
 		Ogre::Item*      it =0;
 	}
-	boxCar,boxStart[2], boxFluid, boxObj, boxEmit;
+	boxCar,boxStart[2], boxFluid, boxObj, boxEmit, boxCol;
 
 	void CreateBox(BoxCur& box, Ogre::String sMat, Ogre::String sMesh, int x = 0, bool shadow =false);
 

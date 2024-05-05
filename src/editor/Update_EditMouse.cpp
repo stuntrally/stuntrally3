@@ -376,8 +376,8 @@ void App::MouseCollects()
 	int i = iColCur;  //  picked or new
 	if (i < scn->sc->collects.size())
 	{
-		SCollect& o = i == -1 ? colNew : scn->sc->collects[i];
-		const Real d = mCamera->getPosition().distance(o.pos) * fMove * s;
+		SCollect& c = i == -1 ? colNew : scn->sc->collects[i];
+		const Real d = mCamera->getPosition().distance(c.pos) * fMove * s;
 
 		switch (colEd)
 		{
@@ -388,14 +388,14 @@ void App::MouseCollects()
 					Vector3 vx = mCamera->getRight();      vx.y = 0;  vx.normalise();
 					Vector3 vz = mCamera->getDirection();  vz.y = 0;  vz.normalise();
 					Vector3 vm = (-vNew.y * vz + vNew.x * vx) * d * moveMul;
-					o.pos.x += vm.x;  o.pos.z += vm.z;
-					o.nd->setPosition(o.pos);
+					c.pos.x += vm.x;  c.pos.z += vm.z;
+					c.nd->setPosition(c.pos);  upd = true;
 				}
 				else if (mbRight)  // move y
 				{
 					Real ym = -vNew.y * d * moveMul;
-					o.pos.y += ym;
-					o.nd->setPosition(o.pos);
+					c.pos.y += ym;
+					c.nd->setPosition(c.pos);  upd = true;
 				}
 			}	break;
 
@@ -404,15 +404,15 @@ void App::MouseCollects()
 				float vm = (vNew.y + vNew.x) * d * moveMul;
 				float sc = 1.f + vm * fScale;
 	
-				if (mbLeft)  o.scale *= sc;  // xyz
-				o.nd->setScale(o.scale * Vector3::UNIT_SCALE);
+				if (mbLeft)  c.scale *= sc;  // xyz
+				c.nd->setScale(c.scale * Vector3::UNIT_SCALE);  upd = true;
 			}	break;
 
 			default:  break;
 		}
 	}
-	// if (upd)
-	// {	UpdObjPick();
+	if (upd)
+	{	UpdColPick();
 	// 	UpdObjNewNode();
-	// }
+	}
 }

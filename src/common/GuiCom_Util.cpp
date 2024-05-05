@@ -137,17 +137,19 @@ void CGuiCom::btnQuit(WP)
 void CGuiCom::UnfocusLists()
 {
 	WP w = InputManager::getInstance().getKeyFocusWidget();
+	auto* g = app->gui;
 	while (w)
 	{
 		//LogO(w->getTypeName() +" "+ w->getName());
 
 		#ifdef SR_EDITOR
-		if (w == (WP)trkList  || w == (WP)app->gui->liSky || w == (WP)app->gui->liTex ||
-			w == (WP)app->gui->liGrs || w == (WP)app->gui->liVeg || w == (WP)app->gui->liRd)
+		if (w == (WP)trkList  || w == (WP)g->liSky || w == (WP)g->liTex ||
+			w == (WP)g->liGrs || w == (WP)g->liVeg || w == (WP)g->liRd ||
+			w == (WP)g->objListBld || w == (WP)g->objListDyn || w == (WP)g->objListSt)
 		#else
 		if (w == (WP)trkList  || (app && app->gui && (
-			w == (WP)app->gui->carList  || w == (WP)app->gui->liChalls ||
-			w == (WP)app->gui->liChamps || w == (WP)app->gui->liStages || w == (WP)app->gui->rplList)) )
+			w == (WP)g->carList  || w == (WP)g->liChalls ||
+			w == (WP)g->liChamps || w == (WP)g->liStages || w == (WP)g->rplList)) )
 		#endif
 		{
 			InputManager::getInstance().resetKeyFocusWidget();
