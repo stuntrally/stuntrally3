@@ -98,7 +98,7 @@ public:
 	void CreateCollect(int i), DestroyCollect(int i);
 
 	int iCollected = 0, oldCollected = 0;  //-
-	void UpdColPick();//, PickCollect();
+	void UpdColPick(), PickCollect();
 
 
 	//  🌍 minimap  ----
@@ -269,7 +269,7 @@ public:
 	SCollect colNew;
 	std::vector<std::string> vColNames;
 
-	void SetColNewType(int tnew), UpdColNewNode();
+	void SetColType(int add);//, UpdColNewNode();
 	void AddNewCol(bool getName=true);
 
 

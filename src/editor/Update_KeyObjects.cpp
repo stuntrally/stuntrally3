@@ -20,7 +20,6 @@ using namespace Ogre;
 //---------------------------------------------------------------------------------------------------------------
 //  Key Press
 //---------------------------------------------------------------------------------------------------------------
-
 void App::keyPressObjects(SDL_Scancode skey)
 {
 	#define key(a)  SDL_SCANCODE_##a
@@ -30,7 +29,9 @@ void App::keyPressObjects(SDL_Scancode skey)
 	
 	//  💧 Fluids  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 	if (edMode == ED_Fluids && edit)
-	{	int fls = scn->sc->fluids.size();
+	{
+		auto& fld = scn->sc->fluids;
+		int flds = fld.size();
 		const auto& dfl = scn->data->fluids->fls;
 		switch (skey)
 		{
@@ -41,36 +42,36 @@ void App::keyPressObjects(SDL_Scancode skey)
 				FluidBox fb;  fb.name = newFluidName;
 				fb.pos = road->posHit;	fb.rot = Vector3(0.f, 0.f, 0.f);
 				fb.size = Vector3(50.f, 20.f, 50.f);  fb.tile = Vector2(0.01f, 0.01f);
-				scn->sc->fluids.push_back(fb);
+				fld.push_back(fb);
 				scn->sc->UpdateFluidsId();
-				iFlCur = scn->sc->fluids.size()-1;
+				iFlCur = fld.size()-1;
 				bRecreateFluids = true;
 			}	break;
 			default:  break;
 		}
-		if (fls > 0)
+		if (flds > 0)
 		{
-			FluidBox& fb = scn->sc->fluids[iFlCur];
+			FluidBox& fb = fld[iFlCur];
 			switch (skey)
 			{
 				//  first, last
 				case key(HOME):  case key(KP_7):
 					iFlCur = 0;  UpdFluidBox();  break;
 				case key(END):  case key(KP_1):
-					iFlCur = fls-1;  UpdFluidBox();  break;
+					iFlCur = flds-1;  UpdFluidBox();  break;
 
 				//  prev,next
 				case key(PAGEUP):  case key(KP_9):
-					iFlCur = (iFlCur-1+fls)%fls;  UpdFluidBox();  break;
+					iFlCur = (iFlCur-1+flds)%flds;  UpdFluidBox();  break;
 				case key(PAGEDOWN):	case key(KP_3):
-					iFlCur = (iFlCur+1)%fls;	  UpdFluidBox();  break;
+					iFlCur = (iFlCur+1)%flds;	  UpdFluidBox();  break;
 
 				//  del
 				case key(DELETE):  case key(KP_PERIOD):
 				case key(KP_5):
-					if (fls == 1)	scn->sc->fluids.clear();
-					else			scn->sc->fluids.erase(scn->sc->fluids.begin() + iFlCur);
-					iFlCur = std::max(0, std::min(iFlCur, (int)scn->sc->fluids.size()-1));
+					if (flds == 1)	fld.clear();
+					else			fld.erase(fld.begin() + iFlCur);
+					iFlCur = std::max(0, std::min(iFlCur, (int)fld.size()-1));
 					bRecreateFluids = true;
 					break;
 
@@ -95,82 +96,11 @@ void App::keyPressObjects(SDL_Scancode skey)
 		}	}
 	}
 
-	//  💎 Collects  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-	if (edMode == ED_Collects && edit)
-	{	int cols = scn->sc->collects.size(), colAll = vColNames.size();
-		SCollect* o = iColCur == -1 ? &colNew :
-					((iColCur >= 0 && cols > 0 && iColCur < cols) ? &scn->sc->collects[iColCur] : 0);
-		switch (skey)
-		{
-			case key(SPACE):
-				iColCur = -1;  /*PickObject();  UpdObjPick();*/  break;
-			
-			//  ins
-			case key(INSERT):	case key(KP_0):
-			if (scn->road && scn->road->bHitTer)  // insert new
-			{
-				AddNewCol();
-				iColCur = scn->sc->collects.size()-1;  //par? auto select inserted-
-				UpdColPick();
-			}	break;
-
-			//  first, last
-			case key(HOME):  case key(KP_7):
-				iColCur = 0;  UpdColPick();  break;
-			case key(END):  case key(KP_1):
-				if (cols > 0)  iColCur = cols-1;  UpdColPick();  break;
-
-			//  prev,next
-			case key(PAGEUP):  case key(KP_9):
-				if (cols > 0) {  iColCur = (iColCur-1+cols)%cols;  }  UpdColPick();  break;
-			case key(PAGEDOWN):	case key(KP_3):
-				if (cols > 0) {  iColCur = (iColCur+1)%cols;       }  UpdColPick();  break;
-
-			//  del
-			case key(DELETE):  case key(KP_PERIOD):
-			case key(KP_5):
-				if (iColCur >= 0 && cols > 0)
-				{	SCollect& o = scn->sc->collects[iColCur];
-					mSceneMgr->destroyItem(o.it);
-					mSceneMgr->destroySceneNode(o.nd);
-					
-					if (cols == 1)	scn->sc->collects.clear();
-					else			scn->sc->collects.erase(scn->sc->collects.begin() + iColCur);
-					iColCur = std::min(iColCur, (int)scn->sc->collects.size()-1);
-					UpdColPick();
-				}	break;
-
-			//  move,scale
-			case key(1):
-				if (!shift)  colEd = EO_Move;
-				else if (o)
-				{
-					if (iColCur == -1)  // reset h
-					{
-						o->pos[2] = 0.f;
-					}
-					else if (road)  // move to ter
-					{
-						const Vector3& v = road->posHit;
-						o->pos[0] = v.x;  o->pos[1] =-v.z;  o->pos[2] = v.y + colNew.pos[2];
-						o->nd->setPosition(o->pos);  UpdColPick();
-					}
-				}	break;
-
-			case key(3):
-				if (!shift)  colEd = EO_Scale;
-				else if (o)  // reset scale
-				{
-					o->scale = 1.f;
-					o->nd->setScale(o->scale * Vector3::UNIT_SCALE);
-				}	break;
-			default:  break;
-		}
-	}
-
 	//  📦 Objects  | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 	if (edMode == ED_Objects && edit)
-	{	int objs = scn->sc->objects.size(), objAll = vObjNames.size();
+	{
+		auto& obj = scn->sc->objects;
+		int objs = obj.size(), objAll = vObjNames.size();
 		switch (skey)
 		{
 			case key(SPACE):
@@ -185,7 +115,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 					vObjCopy.clear();
 					for (auto it : vObjSel)
 					{
-						vObjCopy.push_back(scn->sc->objects[it]);
+						vObjCopy.push_back(obj[it]);
 					}
 					gui->Status("#{Copy}", 0.6,0.8,1.0);
 			}	}
@@ -199,7 +129,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 					{
 						objNew = i;
 						AddNewObj(false);
-						vObjSel.insert(scn->sc->objects.size()-1);  // add it to sel
+						vObjSel.insert(obj.size()-1);  // add it to sel
 					}
 					objNew = o;
 					UpdObjSel();  UpdObjPick();
@@ -208,7 +138,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 			if (scn->road && scn->road->bHitTer)  // insert new
 			{
 				AddNewObj();
-				//iObjCur = scn->sc->objects.size()-1;  //par? auto select inserted-
+				//iObjCur = obj.size()-1;  //par? auto select inserted-
 				UpdObjPick();
 			}	break;
 
@@ -244,7 +174,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 			default:  break;
 		}
 		::Object* o = iObjCur == -1 ? &objNew :
-					((iObjCur >= 0 && objs > 0 && iObjCur < objs) ? &scn->sc->objects[iObjCur] : 0);
+					((iObjCur >= 0 && objs > 0 && iObjCur < objs) ? &obj[iObjCur] : 0);
 		switch (skey)
 		{
 			//  first, last
@@ -263,13 +193,13 @@ void App::keyPressObjects(SDL_Scancode skey)
 			case key(DELETE):  case key(KP_PERIOD):
 			case key(KP_5):
 				if (iObjCur >= 0 && objs > 0)
-				{	::Object& o = scn->sc->objects[iObjCur];
+				{	::Object& o = obj[iObjCur];
 					mSceneMgr->destroyItem(o.it);
 					mSceneMgr->destroySceneNode(o.nd);
 					
-					if (objs == 1)	scn->sc->objects.clear();
-					else			scn->sc->objects.erase(scn->sc->objects.begin() + iObjCur);
-					iObjCur = std::min(iObjCur, (int)scn->sc->objects.size()-1);
+					if (objs == 1)	obj.clear();
+					else			obj.erase(obj.begin() + iObjCur);
+					iObjCur = std::min(iObjCur, (int)obj.size()-1);
 					UpdObjPick();
 				}	break;
 
@@ -311,7 +241,9 @@ void App::keyPressObjects(SDL_Scancode skey)
 
 	//  🔥 Emitters  : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
 	if (edMode == ED_Particles && edit)
-	{	int emts = scn->sc->emitters.size();
+	{
+		auto emt = scn->sc->emitters;
+		int emts = emt.size();
 		switch (skey)
 		{
 			//  prev,next
@@ -330,7 +262,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 
 			//  static
 			case key(KP_ENTER):  case key(RETURN):
-				scn->sc->emitters[iEmtCur].stat = !scn->sc->emitters[iEmtCur].stat;
+				emt[iEmtCur].stat = !emt[iEmtCur].stat;
 				bRecreateEmitters = true;  break;
 
 			//  ins
@@ -339,7 +271,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 			{
 				SEmitter em;  em.name = newEmtName;
 				em.pos = road->posHit;  em.size = Vector3(2.f, 1.f, 2.f);  em.rate = 10.f;
-				scn->sc->emitters.push_back(em);  iEmtCur = scn->sc->emitters.size()-1;
+				emt.push_back(em);  iEmtCur = emt.size()-1;
 				bRecreateEmitters = true;
 			}	break;
 
@@ -348,11 +280,90 @@ void App::keyPressObjects(SDL_Scancode skey)
 			case key(KP_5):
 				if (emts == 0)  break;
 				scn->DestroyEmitters(false);
-				if (emts == 1)	scn->sc->emitters.clear();
-				else			scn->sc->emitters.erase(scn->sc->emitters.begin() + iEmtCur);
-				iEmtCur = std::max(0, std::min(iEmtCur, (int)scn->sc->emitters.size()-1));
+				if (emts == 1)	emt.clear();
+				else			emt.erase(emt.begin() + iEmtCur);
+				iEmtCur = std::max(0, std::min(iEmtCur, (int)emt.size()-1));
 				bRecreateEmitters = true;
 				break;
+			default:  break;
+		}
+	}
+
+	//  💎 Collects  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	if (edMode == ED_Collects && edit)
+	{
+		auto& col = scn->sc->collects;
+		int cols = col.size();
+
+		SCollect* c = iColCur == -1 ? &colNew :
+					((iColCur >= 0 && cols > 0 && iColCur < cols) ? &col[iColCur] : 0);
+		switch (skey)
+		{
+			case key(SPACE):
+				iColCur = -1;  PickCollect();  UpdColPick();  break;
+			
+			//  ins
+			case key(INSERT):	case key(KP_0):
+			if (scn->road && scn->road->bHitTer)  // insert new
+			{
+				AddNewCol();
+				iColCur = col.size()-1;  //par? auto select inserted-
+				UpdColPick();
+			}	break;
+
+			//  prev,next type
+			case key(9):  case key(MINUS):   SetColType(-1);  break;
+			case key(0):  case key(EQUALS):  SetColType( 1);  break;
+
+			//  first, last
+			case key(HOME):  case key(KP_7):
+				iColCur = 0;  UpdColPick();  break;
+			case key(END):  case key(KP_1):
+				if (cols > 0)  iColCur = cols-1;  UpdColPick();  break;
+
+			//  prev,next
+			case key(PAGEUP):  case key(KP_9):
+				if (cols > 0) {  iColCur = (iColCur-1+cols)%cols;  }  UpdColPick();  break;
+			case key(PAGEDOWN):	case key(KP_3):
+				if (cols > 0) {  iColCur = (iColCur+1)%cols;       }  UpdColPick();  break;
+
+			//  del
+			case key(DELETE):  case key(KP_PERIOD):
+			case key(KP_5):
+				if (iColCur >= 0 && cols > 0)
+				{	SCollect& c = col[iColCur];
+					DestroyCollect(iColCur);
+					
+					if (cols == 1)	col.clear();
+					else			col.erase(col.begin() + iColCur);
+					iColCur = std::min(iColCur, (int)col.size()-1);
+					UpdColPick();
+				}	break;
+
+			//  move,scale
+			case key(1):
+				if (!shift)  colEd = EO_Move;
+				else if (c)
+				{
+					if (iColCur == -1)  // reset h
+					{
+						c->pos[2] = 0.f;
+					}
+					else if (road)  // move to ter
+					{
+						const Vector3& v = road->posHit;
+						c->pos[0] = v.x;  c->pos[1] =-v.z;  c->pos[2] = v.y + colNew.pos[2];
+						c->nd->setPosition(c->pos);  UpdColPick();
+					}
+				}	break;
+
+			case key(3):
+				if (!shift)  colEd = EO_Scale;
+				else if (c)  // reset scale
+				{
+					c->scale = 1.f;
+					c->nd->setScale(c->scale * Vector3::UNIT_SCALE);
+				}	break;
 			default:  break;
 		}
 	}

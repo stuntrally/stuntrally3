@@ -103,6 +103,7 @@ struct PCollect
 {
 	std::string name, mesh, material, beamMtr;
 	Ogre::ColourValue clr;
+	float scale = 1.f;
 };
 
 

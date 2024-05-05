@@ -90,7 +90,7 @@ bool ProgressCXml::LoadXml(std::string file)
 	if (!root)  return false;
 
 	//  clear
-	col.clear();
+	col.clear();  icol.clear();
 
 	const char* a;
 	XMLElement* eCol = root->FirstChildElement("collect");

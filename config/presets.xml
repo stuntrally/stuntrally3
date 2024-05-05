@@ -1328,10 +1328,10 @@ common:  sc - "short scenery name" (name color)
       c - light color r g b
       b - beam material name
 -->
-<c n="gem1b" o="gem01" c="0.3 0.7 1.0" b="collect_beam_b" />
-<c n="gem1y" o="gem01" c="1.0 1.0 0.3" b="collect_beam_y" />
-<c n="gem1o" o="gem01" c="1.0 0.4 0.1" b="collect_beam_o" />
-<c n="gem1g" o="gem01" c="0.3 1.0 0.2" b="collect_beam_g" />
+<c n="gem1b" o="gem01" s="1.0" c="0.3 0.7 1.0" b="collect_beam_b" />
+<c n="gem1y" o="gem01" s="1.5" c="1.0 1.0 0.3" b="collect_beam_y" m="gem01y" />
+<c n="gem1o" o="gem01" s="1.5" c="1.0 0.4 0.1" b="collect_beam_o" m="gem01o" />
+<c n="gem1g" o="gem01" s="2.0" c="0.3 1.0 0.2" b="collect_beam_g" m="gem01g" />
 <!-- 
 <c n="gem1c" o="gem01" c="0.1 1.0 1.0" b="collect_beam_c" />
 <c n="gem1v" o="gem01" c="0.7 0.2 1.0" b="collect_beam_v" />

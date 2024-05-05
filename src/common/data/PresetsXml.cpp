@@ -80,8 +80,8 @@ bool Presets::LoadXml(string file)
 	veg.clear();  iveg.clear();
 
 	matset.clear();  imatset.clear();
-	obj.clear();  col.clear();
-	iobj.clear();  icol.clear();
+	obj.clear();  iobj.clear();
+	col.clear();  icol.clear();	
 
 	//  read
 	XMLElement* e;
@@ -251,6 +251,7 @@ bool Presets::LoadXml(string file)
 		a = e->Attribute("n");	if (a)  c.name = string(a);
 		a = e->Attribute("o");	if (a)  c.mesh = string(a);
 		a = e->Attribute("m");	if (a)  c.material = string(a);
+		a = e->Attribute("s");	if (a)  c.scale = s2r(a);
 		a = e->Attribute("c");	if (a)  c.clr = s2c(a);
 		a = e->Attribute("b");	if (a)  c.beamMtr = string(a);
 		
