@@ -435,8 +435,12 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 		//  💎 collects
 		case key(Y):  if (bEdit()){  SetEdMode(ED_Collects);  UpdEditWnds();  }   break;
-		
-		//  free  Y U L K J H Z N
+
+		//  🎆 fields
+		case key(H):  if (bEdit()){  SetEdMode(ED_Fields);  UpdEditWnds();  }   break;
+
+
+		//  free  Y U J H Z N  not K L
 		default:  break;
 	}
 }

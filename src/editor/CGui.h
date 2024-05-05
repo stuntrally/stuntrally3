@@ -371,6 +371,9 @@ public:
 	//  ✨ Particles  ----
 	Li particlesList =0;  void listParticlesChng(Li, size_t);
 
+	//  💎 collect  ----
+	Li colList =0;
+
 
 	//  🛠️ Tools  --------------------
 	//  copy

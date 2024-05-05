@@ -212,3 +212,24 @@ public:
 	//  special ..
 	// float timeGood;  // appears back after
 };
+
+
+enum FieldTypes   //  🎆 Field
+{
+	TF_Teleport, TF_Field, TF_Gravity, TF_Accel
+};
+class SField
+{
+public:
+	FieldTypes type;
+
+	Ogre::Vector3 pos{0,0,0}, size{1,1,1};
+
+	Ogre::SceneNode* nd = 0;  // 🟢 ogre
+	Ogre::ParticleSystem* ps = 0;
+	// Ogre::Light* light = 0;
+
+	btCollisionObject* co = 0;  // 🎳 bullet
+	//  game var
+	// bool collected =0;
+};

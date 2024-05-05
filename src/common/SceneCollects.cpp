@@ -48,7 +48,7 @@ void App::CreateCollects()
 void App::CreateCollect(int i)
 {
 	SCollect& c = scn->sc->collects[i];
-	// String s = toStr(i);  // counter for names
+	String s = toStr(i);  // counter for names
 	const PCollect* col = scn->data->pre->GetCollect(c.name);
 	if (!col)
 	{
@@ -66,7 +66,7 @@ void App::CreateCollect(int i)
 		c.itBeam->setRenderQueueGroup(RQG_Ghost);  c.itBeam->setCastShadows(false);
 		c.itBeam->setDatablockOrMaterialName(col->beamMtr);
 		
-		// c.it->setName("Ce"+s);
+		c.it->setName("cE"+s);
 		SetTexWrap(c.it);
 		// o.it->setCastShadows(o.shadow);
 	}
@@ -78,7 +78,7 @@ void App::CreateCollect(int i)
 	//  pos, scale  ----
 	c.nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode();
 	c.nd->setPosition(c.pos);
-	c.nd->setScale(c.scale * Vector3::UNIT_SCALE);
+	c.nd->setScale(c.scale * col->scale * Vector3::UNIT_SCALE);
 	c.nd->attachObject(c.it);  //o.it->setVisibilityFlags(RV_Objects);
 	// todo: collect in splitscreen
 
@@ -160,24 +160,24 @@ void App::DestroyCollects(bool clear)
 
 void App::DestroyCollect(int i)
 {
-		SCollect& c = scn->sc->collects[i];
-		//  ogre
-		if (c.ndBeam)  mSceneMgr->destroySceneNode(c.ndBeam);  c.ndBeam = 0;
-		if (c.itBeam)  mSceneMgr->destroyItem(c.itBeam);  c.itBeam = 0;
-		if (c.light)  mSceneMgr->destroyLight(c.light);
-		if (c.nd)  mSceneMgr->destroySceneNode(c.nd);  c.nd = 0;
-		if (c.it)  mSceneMgr->destroyItem(c.it);  c.it = 0;
+	SCollect& c = scn->sc->collects[i];
+	//  ogre
+	if (c.ndBeam)  mSceneMgr->destroySceneNode(c.ndBeam);  c.ndBeam = 0;
+	if (c.itBeam)  mSceneMgr->destroyItem(c.itBeam);  c.itBeam = 0;
+	if (c.light)  mSceneMgr->destroyLight(c.light);
+	if (c.nd)  mSceneMgr->destroySceneNode(c.nd);  c.nd = 0;
+	if (c.it)  mSceneMgr->destroyItem(c.it);  c.it = 0;
 
-		//  bullet
-		if (c.co)
-		{	delete c.co->getCollisionShape();
-			#ifdef SR_EDITOR
-			world->removeCollisionObject(c.co);
-			#else
-			pGame->collision.world->removeCollisionObject(c.co);
-			#endif
-			delete c.co;  c.co = 0;
-		}
+	//  bullet
+	if (c.co)
+	{	delete c.co->getCollisionShape();
+		#ifdef SR_EDITOR
+		world->removeCollisionObject(c.co);
+		#else
+		pGame->collision.world->removeCollisionObject(c.co);
+		#endif
+		delete c.co;  c.co = 0;
+	}
 }
 
 //  reset  F4 game
@@ -195,6 +195,7 @@ void App::ResetCollects()
 #ifndef SR_EDITOR  // game
 
 //  Update collection game frame
+//-------------------------------------------------------------------------------------------------------
 void App::UpdCollects()
 {
 	int all = sc->collects.size();
@@ -229,7 +230,7 @@ void App::UpdCollects()
 		auto* pro = gui->progressC.Get(col.name);
 		if (pro)
 		{
-		// pro->
+		// todo: pro->
 		}
 	}
 }
@@ -284,14 +285,13 @@ void App::UpdColPick()
 	boxCol.nd->_getFullTransformUpdated();
 }
 
-#if 0  /// TODO.. ed
 
 //  👆 Pick
 //-------------------------------------------------------------------------------------------------------
-void App::PickObject()
+void App::PickCollect()
 {
-	const auto& objs = scn->sc->objects;
-	if (objs.empty())  return;
+	const auto& col = scn->sc->collects;
+	if (col.empty())  return;
 
 	iObjCur = -1;
 	const MyGUI::IntPoint& mp = MyGUI::InputManager::getInstance().getMousePosition();
@@ -309,23 +309,23 @@ void App::PickObject()
 	for (auto it = res.begin(); it != res.end(); ++it)
 	{
 		const String& s = (*it).movable->getName();
-		if (StringUtil::startsWith(s,"oE",false))
+		if (StringUtil::startsWith(s,"cE",false))
 		{
-			// LogO("RAY "+s+" "+fToStr((*it).distance,2,4));
+			LogO("RAY "+s+" "+fToStr((*it).distance,2,4));
 			int i = -1;
-			//  find obj with same name
-			for (int o=0; o < objs.size(); ++o)
-				if (objs[o].it && s == objs[o].it->getName())
+			//  find col with same name
+			for (int o=0; o < col.size(); ++o)
+				if (col[o].it && s == col[o].it->getName())
 				{	i = o;  break;  }
 			
 			//  pick
 			if (i != -1)
 			{
-				//Aabb ab = objs[i].it->getLocalAabb();
+				//Aabb ab = col[i].it->getLocalAabb();
 				//ab.getCenter();  ab.getSize();
 
-				//  closest to obj center  // fixme fails..
-				const Vector3 posSph = objs[i].nd->getPosition();
+				//  closest to col center  // fixme fails..
+				const Vector3 posSph = col[i].nd->getPosition();
 				const Vector3 ps = pos - posSph;
 				Vector3 crs = ps.crossProduct(dir);
 				Real dC = crs.length() / dir.length();
@@ -340,13 +340,12 @@ void App::PickObject()
 	}	}
 	
 	if (io != -1)  //  if none picked
-	if (iObjCur == -1)
-		iObjCur = io;
+	if (iColCur == -1)
+		iColCur = io;
 	
 	//rq->clearResults();
 	mSceneMgr->destroyQuery(rq);
 }
-#endif
 
 #if 0
 //  change collect to insert
@@ -382,67 +381,35 @@ void CGui::listObjsNext(int rel)
 		listObjsChng(li, li->getIndexSelected());
 	}
 }
-
-
-//  🔮 cycle object materials
-void App::NextObjMat(int add)
-{
-	if (!vObjSel.empty())
-	{	for (int i : vObjSel)
-			NextObjMat(add, scn->sc->objects[i]);
-		return;
-	}
-	bool bNew = iObjCur == -1;
-	Object& o = bNew || scn->sc->objects.empty() ? objNew : scn->sc->objects[iObjCur];
-	NextObjMat(add, o);
-}
-
-void App::NextObjMat(int add, Object& o)
-{
-	const PObject* obj = scn->data->pre->GetObject(o.name);
-	if (!obj || !obj->pMatSet)  return;
-	
-	auto& m = obj->pMatSet->mats;
-	int j = -1, si = m.size();
-	if (si < 2)  return;
-	
-	for (int i=0; i < si; ++i)  // find cur
-		if (m[i] == o.material)
-		{	j = i;  break;  }
-	if (j == -1)
-		j = 0;
-	else
-		j = (j + add + si) % si;  // inc
-	o.material = m[j];  // set
-
-	if (!o.material.empty())
-		o.it->setDatablockOrMaterialName(o.material);
-}
 #endif
 
-#if 0
-//  preview model for insert
-void App::SetColNewType(int tnew)
+
+//  collect type add +-1
+void App::SetColType(int add)
 {
-	iObjTNew = tnew;
-	if (objNew.nd)	{	mSceneMgr->destroySceneNode(objNew.nd);  objNew.nd = 0;  }
-	if (objNew.it)	{	mSceneMgr->destroyItem(objNew.it);  objNew.it = 0;  }
+	auto& col = scn->sc->collects;
+	if (iColCur < 0 && iColCur >= col.size())
+		return;
+	auto& name = col[iColCur].name;
+
+	auto* p = scn->data->pre;
+	int id = 0;
+	auto f = p->icol.find(name);
+	if (f != p->icol.end())
+		id = f->second -1;
 	
-	String name = vObjNames[iObjTNew];
-	objNew.dyn = PATHS::FileExists(PATHS::Data()+"/objects/"+ name + ".bullet");
-	if (objNew.dyn)  objNew.scale = Vector3::UNIT_SCALE;  // dyn no scale
-	try
-	{	objNew.it = mSceneMgr->createItem(name + ".mesh");
-		objNew.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-		objNew.nd->attachObject(objNew.it);  objNew.it->setVisibilityFlags(RV_Vegetation);
-		UpdObjNewNode();
-	}
-	catch (Exception ex)
-	{
-		LogO("no object! " + ex.getFullDescription());
-	}
+	int si = p->col.size();
+	id = (id +si +add) % si;
+
+	// iColTNew = tnew;
+	DestroyCollect(iColCur);
+	name = p->col[id].name;
+
+	CreateCollect(iColCur);
+	// UpdObjNewNode();
 }
 
+#if 0
 void App::UpdColNewNode()
 {
 	if (!scn->road || !objNew.nd)  return;
