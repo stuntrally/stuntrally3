@@ -525,7 +525,7 @@ void CGui::btnSetCam(WP wp)
 	else if (s=="CamView2")	{	cam->setPosition(xz*0.6,80,xz*0.6);  cam->setDirection(-1,-0.5,-1);  }
 	else if (s=="CamView3")	{	cam->setPosition(-xz*0.7,80,-xz*0.5);  cam->setDirection(0.8,-0.5,0.5);  }
 	else if (s=="CamView4")	{
-		Vector3 cp = app->ndCar->getPosition();  float cy = app->ndCar->getOrientation().getYaw().valueRadians();
+		Vector3 cp = app->boxCar.nd->getPosition();  float cy = app->boxCar.nd->getOrientation().getYaw().valueRadians();
 		Vector3 cd = Vector3(cosf(cy),0,-sinf(cy));
 		cam->setPosition(cp - cd * 15 + Vector3(0,7,0));  cd.y = -0.3f;
 		cam->setDirection(cd);  }

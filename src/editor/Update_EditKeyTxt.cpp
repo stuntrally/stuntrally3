@@ -271,7 +271,7 @@ void App::KeyTxtStart(Real q)
 {
 	SplineRoad* road = scn->road;
 	Txt *stTxt = gui->stTxt;
-	//Vector3 p{0,0,0};  if (ndCar)  p = ndCar->getPosition();
+	//Vector3 p{0,0,0};  if (boxCar.nd)  p = boxCar.nd->getPosition();
 	stTxt[0]->setCaption("");
 	stTxt[1]->setCaption(TR("#{Road_Width} ") +fToStr(road->vStartBoxDim.z,1,4));
 	stTxt[2]->setCaption(TR("#{Road_Height} ")+fToStr(road->vStartBoxDim.y,1,4));
@@ -451,21 +451,21 @@ void App::FocusCam()
 	}	break;
 
 	case ED_Start:  dist = 20.f;  // 🏁
-		pos = ndCar->getPosition();  SetCam();  break;
+		pos = boxCar.nd->getPosition();  SetCam();  break;
 
 	case ED_Objects:  // 📦
-		dist = ndObjBox->getScale().y * 10.f;
-		pos = ndObjBox->getPosition();  SetCam();  break;
+		dist = boxObj.nd->getScale().y * 10.f;
+		pos = boxObj.nd->getPosition();  SetCam();  break;
 
 	case ED_Fluids:  // 🌊
-		sc = ndFluidBox->getScale();
+		sc = boxFluid.nd->getScale();
 		dist = (sc.x + sc.z) / 2.f * 1.5f;
-		pos = ndFluidBox->getPosition();  SetCam();  break;
+		pos = boxFluid.nd->getPosition();  SetCam();  break;
 
 	case ED_Particles:  dist = 50.f;  // ✨
-		sc = ndEmtBox->getScale();
+		sc = boxEmit.nd->getScale();
 		dist = (sc.x + sc.y + sc.z) / 3.f + 10.f;
-		pos = ndEmtBox->getPosition();  SetCam();
+		pos = boxEmit.nd->getPosition();  SetCam();
 		break;
 
 	//  ter edit, cursor  ⛰️

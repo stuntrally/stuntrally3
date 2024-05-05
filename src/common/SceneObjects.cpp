@@ -303,8 +303,8 @@ void App::ResetObjects()
 void App::UpdObjPick()
 {
 	bool st = edMode == ED_Start && !bMoveCam;
-	if (ndStartBox[0])  ndStartBox[0]->setVisible(st);
-	if (ndStartBox[1])  ndStartBox[1]->setVisible(st && !scn->road->isLooped);  // end separate
+	if (boxStart[0].nd)  boxStart[0].nd->setVisible(st);
+	if (boxStart[1].nd)  boxStart[1].nd->setVisible(st && !scn->road->isLooped);  // end separate
 
 
 	int objs = scn->sc->objects.size();
@@ -312,8 +312,8 @@ void App::UpdObjPick()
 	if (objs > 0)
 		iObjCur = std::min(iObjCur, objs-1);
 
-	if (!ndObjBox)  return;
-	ndObjBox->setVisible(bObjects);
+	if (!boxObj.nd)  return;
+	boxObj.nd->setVisible(bObjects);
 	if (!bObjects)  return;
 	
 	const Object& o = scn->sc->objects[iObjCur];
@@ -326,10 +326,10 @@ void App::UpdObjPick()
 	// Vector3 scaledCenter = ab.getCenter() * o.scale;
 	// posO += (rotO * scaledCenter);
 
-	ndObjBox->setPosition(posO);
-	ndObjBox->setOrientation(rotO);
-	ndObjBox->setScale(s);
-	ndObjBox->_getFullTransformUpdated();
+	boxObj.nd->setPosition(posO);
+	boxObj.nd->setOrientation(rotO);
+	boxObj.nd->setScale(s);
+	boxObj.nd->_getFullTransformUpdated();
 }
 
 void App::PickObject()

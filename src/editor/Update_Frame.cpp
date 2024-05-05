@@ -425,9 +425,9 @@ void App::update( float dt )
 	// mFactory->setSharedParameter("windTimer", sh::makeProperty <sh::FloatValue>(new sh::FloatValue(mTimer)));
 	// mFactory->setSharedParameter("waterTimer", sh::makeProperty <sh::FloatValue>(new sh::FloatValue(mTimer)));
 	
-	/*if (ndCar && road)  ///()  grass sphere test
+	/*if (boxCar.nd && road)  ///()  grass sphere test
 	{
-		const Vector3& p = ndCar->getPosition();  Real r = road->vStBoxDim.z/2;  r *= r;
+		const Vector3& p = boxCar.nd->getPosition();  Real r = road->vStBoxDim.z/2;  r *= r;
 		mFactory->setSharedParameter("posSph0", sh::makeProperty <sh::Vector4>(new sh::Vector4(p.x,p.y,p.z,r)));
 		mFactory->setSharedParameter("posSph1", sh::makeProperty <sh::Vector4>(new sh::Vector4(p.x,p.y,p.z,r)));
 	}/**/

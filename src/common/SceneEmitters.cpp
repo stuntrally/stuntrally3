@@ -95,15 +95,15 @@ void App::UpdEmtBox()
 	if (emts > 0)
 		iEmtCur = std::max(0, std::min(iEmtCur, emts-1));
 
-	if (!ndEmtBox)  return;
-	ndEmtBox->setVisible(vis);
+	if (!boxEmit.nd)  return;
+	boxEmit.nd->setVisible(vis);
 	if (!vis)  return;
 	
 	const SEmitter& em = scn->sc->emitters[iEmtCur];
-	ndEmtBox->setPosition(em.pos);
-	//ndEmtBox->setOrientation(Quaternion(Degree(em.rot), em.up));
-	ndEmtBox->setScale(em.size);
-	ndEmtBox->_getFullTransformUpdated();
+	boxEmit.nd->setPosition(em.pos);
+	//boxEmit.nd->setOrientation(Quaternion(Degree(em.rot), em.up));
+	boxEmit.nd->setScale(em.size);
+	boxEmit.nd->_getFullTransformUpdated();
 }
 
 void App::SetEmtType(int rel)

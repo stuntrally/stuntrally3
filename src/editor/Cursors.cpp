@@ -14,37 +14,36 @@ using namespace Ogre;
 
 
 //  🆕🚧 Create cursor
-void App::CreateBox(SceneNode*& nd, Item*& it,
-	String sMat, String sMesh, int x, bool shadow)
+void App::CreateBox(BoxCur& box, String sMat, String sMesh, int x, bool shadow)
 {
-	if (nd)  return;
+	if (box.nd)  return;
 	// LogO("---- create cursor: " + sMat +" "+ sMesh);
-	nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	it = mSceneMgr->createItem(sMesh);
-	it->setVisibilityFlags(RV_Hud3Ded);
-	it->setCastShadows(shadow);
+	box.nd = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+	box.it = mSceneMgr->createItem(sMesh);
+	box.it->setVisibilityFlags(RV_Hud3Ded);
+	box.it->setCastShadows(shadow);
 	if (!sMat.empty())
-		it->setDatablockOrMaterialName(sMat);
+		box.it->setDatablockOrMaterialName(sMat);
 	if (!shadow)
-		it->setRenderQueueGroup(RQG_Ghost);  // after road
+		box.it->setRenderQueueGroup(RQG_Ghost);  // after road
 	
-	nd->setPosition(Vector3(x,0,0));
-	nd->attachObject(it);
-	nd->setVisible(false);
+	box.nd->setPosition(Vector3(x,0,0));
+	box.nd->attachObject(box.it);
+	box.nd->setVisible(false);
 }
 
 //  🧊🚧  Init 3d cursor meshes
 void App::CreateCursors()
 {
 	LogO("C--- create Cursors");
-	CreateBox(ndCar, itCar, "", "car.mesh", 0, 1);
+	CreateBox(boxCar, "", "car.mesh", 0, 1);
 	
-	CreateBox(ndStartBox[0], itStartBox[0], "start_box", "cube.mesh", 20000);
-	CreateBox(ndStartBox[1], itStartBox[1], "end_box", "cube.mesh", 20000);
+	CreateBox(boxStart[0], "start_box", "cube.mesh", 20000);
+	CreateBox(boxStart[1], "end_box", "cube.mesh", 20000);
 
-	CreateBox(ndFluidBox, itFluidBox, "fluid_box", "box_fluids.mesh");
-	CreateBox(ndObjBox, itObjBox, "object_box", "box_obj.mesh");
-	CreateBox(ndEmtBox, itEmtBox, "emitter_box", "box_obj.mesh");
+	CreateBox(boxFluid, "fluid_box", "box_fluids.mesh");
+	CreateBox(boxObj, "object_box", "box_obj.mesh");
+	CreateBox(boxEmit, "emitter_box", "box_obj.mesh");
 }
 
 
@@ -57,18 +56,18 @@ void App::UpdStartPos(bool vis)
 		Quaternion q1 = Axes::toOgre(scn->sc->startRot[i]);
 		if (i == iEnd)
 		{
-			ndCar->setPosition(p1);  ndCar->setOrientation(q1);
-			ndCar->setVisible(vis && gui->bGI && scn->road);  // hide before load
-			ndCar->_getFullTransformUpdated();
+			boxCar.nd->setPosition(p1);  boxCar.nd->setOrientation(q1);
+			boxCar.nd->setVisible(vis && gui->bGI && scn->road);  // hide before load
+			boxCar.nd->_getFullTransformUpdated();
 		}else
-			ndCar->setVisible(vis);
-		ndStartBox[i]->setPosition(p1);  ndStartBox[i]->setOrientation(q1);
+			boxCar.nd->setVisible(vis);
+		boxStart[i].nd->setPosition(p1);  boxStart[i].nd->setOrientation(q1);
 
 		if (scn->road)
-			ndStartBox[i]->setScale(Vector3(1, scn->road->vStartBoxDim.y, scn->road->vStartBoxDim.z));
+			boxStart[i].nd->setScale(Vector3(1, scn->road->vStartBoxDim.y, scn->road->vStartBoxDim.z));
 	
-		ndStartBox[i]->_getFullTransformUpdated();
-		ndStartBox[i]->setVisible(vis && edMode == ED_Start && bEdit());
+		boxStart[i].nd->_getFullTransformUpdated();
+		boxStart[i].nd->setVisible(vis && edMode == ED_Start && bEdit());
 	}
 }
 
@@ -80,12 +79,12 @@ void App::UpdFluidBox()
 	if (fls > 0)
 		iFlCur = std::max(0, std::min(iFlCur, fls-1));
 
-	if (!ndFluidBox)  return;
-	ndFluidBox->setVisible(bFluids);
+	if (!boxFluid.nd)  return;
+	boxFluid.nd->setVisible(bFluids);
 	if (!bFluids)  return;
 	
 	FluidBox& fb = scn->sc->fluids[iFlCur];
-	ndFluidBox->setPosition(fb.pos);
-	ndFluidBox->setScale(fb.size);
-	ndFluidBox->_getFullTransformUpdated();
+	boxFluid.nd->setPosition(fb.pos);
+	boxFluid.nd->setScale(fb.size);
+	boxFluid.nd->_getFullTransformUpdated();
 }

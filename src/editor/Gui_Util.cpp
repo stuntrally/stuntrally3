@@ -235,8 +235,8 @@ void App::SetEdMode(ED_MODE newMode)
 		SetObjNewType(iObjTNew);
 		first = false;
 	}
-	if (ndObjBox)  ndObjBox->setVisible(newMode == ED_Objects && bEdit());
-	if (ndEmtBox)  ndEmtBox->setVisible(newMode == ED_Particles && bEdit());
+	if (boxObj.nd)  boxObj.nd->setVisible(newMode == ED_Objects && bEdit());
+	if (boxEmit.nd)  boxEmit.nd->setVisible(newMode == ED_Particles && bEdit());
 
 	edMode = newMode;
 	if (edMode >= ED_Deform && edMode <= ED_Filter)
