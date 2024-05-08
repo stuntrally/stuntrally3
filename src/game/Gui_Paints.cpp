@@ -251,6 +251,7 @@ void CGui::btnPaintRandom(WP)
 		int si = v.size() - 1;
 		pSet->car_clr = Math::RangeRandom(0, si);
 		pSet->gui.clr[i] = v[pSet->car_clr];
+		pSet->gui.clr[i].GlowDef();
 		// UpdPaintSld();
 		SetPaint();
 		// UpdImgClr();
@@ -282,6 +283,7 @@ void CGui::btnPaintRandom(WP)
 	gc.paintMulAll = Math::RangeRandom(0.05f, 0.3f);
 	gc.paintMul2nd = Math::RangeRandom(2.f,4.f);
 	gc.paintPow3rd = Math::RangeRandom(2.f,5.f);
+	gc.GlowDef();
 	UpdPaintSld();
 }
 

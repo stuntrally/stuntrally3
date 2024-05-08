@@ -33,6 +33,7 @@ struct CarPaint
 	int rate = 0;  // user rating / bookmark
 
 	Clr glow;  // underglow
+	void GlowDef();
 
 	int y =0;  // gui only auto
 };
