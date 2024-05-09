@@ -364,7 +364,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		{
 			SCollect c;
 			a = u->Attribute("n");		if (a)  c.name = string(a);
-			a = u->Attribute("gr");		if (a)  c.groups = s2i(a);
+			a = u->Attribute("gr");		if (a)  c.group = s2i(a);
 
 			a = u->Attribute("pos");	if (a)  c.pos = s2v(a);
 			a = u->Attribute("sc");		if (a)  c.scale = s2r(a);

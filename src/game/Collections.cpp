@@ -43,7 +43,7 @@ void CGui::CollectListUpdate()
 	std::vector<int> vIds[MAX_COL_TYP];  // cur diff ids for collect [types]
 	for (int id = 0; id < all; ++id)
 	{
-		const Collect& col = data->collect->all[id];
+		const Collection& col = data->collect->all[id];
 		if (pSet->ch_all || (
 			col.diff >= pSet->difficulty &&
 			col.diff <= pSet->difficulty+1))
@@ -85,9 +85,8 @@ void CGui::fillCollectList(std::vector<int> vIds)
 	size_t sel = ITEM_NONE;
  	for (int i : vIds)
 	{
-		const Collect& col = data->collect->all[i];
+		const Collection& col = data->collect->all[i];
 		const ProgressCollect& pc = progressC.col[i];
-		// const int ntrks = pc.trks.size(), ct = pc.curTrack;
 		const String& clr = clrCh[col.type];
 		//String cars = data->carsXml.colormap[col.ci->type];  if (cars.length() != 7)  clr = "#C0D0E0";
 		
@@ -95,7 +94,10 @@ void CGui::fillCollectList(std::vector<int> vIds)
 		liCollect->setSubItemNameAt(1,l, clr+ col.name);
 		liCollect->setSubItemNameAt(2,l, col.track);
 		liCollect->setSubItemNameAt(3,l, gcom->clrsDiff[col.diff]+ TR("#{Diff"+toStr(col.diff)+"}"));
-		liCollect->setSubItemNameAt(4,l, col.cars.GetStr(data->cars));
+		
+		// liCollect->setSubItemNameAt(4,l, col.cars.GetStr(data->cars));
+		liCollect->setSubItemNameAt(4,l, "13/24");  // collected ..
+		liCollect->setSubItemNameAt(5,l, "6:35");  // time ..  prize?..
 		
 		// liCollect->setSubItemNameAt(5,l, gcom->clrsDiff[std::min(8,int(col.time/3.f/60.f))]+ StrTime2(col.time));
 		// liCollect->setSubItemNameAt(6,l, ct == 0 || ct == ntrks ? "" :
@@ -118,21 +120,28 @@ void CGui::listCollectChng(MyGUI::MultiList2* chlist, size_t id)
 	if (id >= liCollect->getItemCount())
 		id = 0;  // liCollect->getItemCount()-1;
 
-	int nch = *liCollect->getItemDataAt<int>(id)-1;
-	if (nch < 0 || nch >= data->collect->all.size())  {  LogO("Error collect sel > size.");  return;  }
+	int nc = *liCollect->getItemDataAt<int>(id)-1;
+	if (nc < 0 || nc >= data->collect->all.size())  {  LogO("Error collect sel > size.");  return;  }
 
 	CarListUpd();  // filter car list
 
 	//  fill stages
 	// liStages->removeAllItems();
 
-	const Collect& ch = data->collect->all[nch];
+	const Collection& col = data->collect->all[nc];
 
-	if (edChDesc)  edChDesc->setCaption(ch.descr);
-	txtChName->setCaption(ch.nameGui);
+	if (edChDesc)  edChDesc->setCaption(col.descr);
+	txtChName->setCaption(col.nameGui);
+
+	//  fill track tab
+	auto trk = col.track;
+	if (txTrkName)  txTrkName->setCaption(TR("#{Track}: ") + trk);
+	ReadTrkStatsChamp(trk, 0);
+	UpdDrivability(trk, 0);
+	gcom->sListTrack = trk;  gcom->bListTrackU = 0;
+	// CarListUpd();
 
 	// UpdCollectDetail(nch);
-	// todo: fill track ..
 }
 
 
@@ -144,7 +153,6 @@ bool CGui::IsCollectCar(String name)
 	int id = *liCollect->getItemDataAt<int>(liCollect->getIndexSelected())-1;
 
 	return data->collect->all[id].cars.Allows(data->cars, name);
-	// return data->IsChallCar(&data->chall->all[chId], name);
 }
 
 

@@ -141,8 +141,8 @@ void CGui::toggleGui(bool toggle)
 		t->setButtonWidthAt(TAB_Stages,stages?-1 : 1);  if (id == TAB_Stages && !stages) t->setIndexSelected(TAB_Track);
 		t->setButtonWidthAt(TAB_Stage, chAny ?-1 : 1);  if (id == TAB_Stage  && !chAny)  t->setIndexSelected(TAB_Track);
 		//  from Setup  0 paint  3 collision
-		vSubTabsGame[TAB_Setup]->setButtonWidthAt(1, setup ?-1 : 1);  // 1 Game 💨🔨⏪
-		vSubTabsGame[TAB_Setup]->setButtonWidthAt(3, setup ?-1 : 1);  // 2 Boost 💨
+		vSubTabsGame[TAB_Setup]->setButtonWidthAt(1, !setup ?-1 : 1);  // 1 Game 💨🔨⏪
+		vSubTabsGame[TAB_Setup]->setButtonWidthAt(3, !setup ?-1 : 1);  // 2 Boost 💨
 	}
 
 	gcom->bnQuit->setVisible(gui);

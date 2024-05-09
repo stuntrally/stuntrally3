@@ -28,7 +28,7 @@ bool CollectXml::LoadXml(std::string file, TracksIni* trks, bool check)
 	XMLElement* eCol = root->FirstChildElement("collection");
 	while (eCol)
 	{
-		Collect c;  // defaults in ctor
+		Collection c;  // defaults in ctor
 		a = eCol->Attribute("name");
 		if (a)
 		{	c.nameGui = std::string(a);
@@ -39,6 +39,7 @@ bool CollectXml::LoadXml(std::string file, TracksIni* trks, bool check)
 		a = eCol->Attribute("ver");			if (a)  c.ver = s2i(a);
 		a = eCol->Attribute("difficulty");	if (a)  c.diff = s2i(a);
 		a = eCol->Attribute("type");		if (a)  c.type = s2i(a);
+		a = eCol->Attribute("groups");		if (a)  c.groups = s2i(a);
 		
 		XMLElement* eSim = eCol->FirstChildElement("sim");
 		if (eSim)
@@ -59,8 +60,6 @@ bool CollectXml::LoadXml(std::string file, TracksIni* trks, bool check)
 		{
 			a = ePass->Attribute("timeNeeded");	if (a)  c.timeNeeded = s2r(a);
 			// bool onTime =0;  // 0 infinite  1 timed
-			// int group =0;  // collectibles group, if more
-			// a = ePass->Attribute("prizes");		if (a)  c.prizes = s2i(a);
 			a = ePass->Attribute("factor");		if (a)  c.factor = s2r(a);
 		}
 

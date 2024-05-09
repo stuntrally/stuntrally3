@@ -143,7 +143,7 @@ public:
 		//  🏆 champ
 		int champ_num = -1, chall_num = -1;  // -1 none
 		bool champ_rev =0;
-		int collect_num = -1;
+		int collect_num = -1, collect_all = 0;
 
 		float pre_time = 2.f;  int start_order = 0;
 

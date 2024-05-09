@@ -314,6 +314,10 @@ void App::keyPressObjects(SDL_Scancode skey)
 			//  prev,next type
 			case key(9):  case key(MINUS):   SetColType(-1);  break;
 			case key(0):  case key(EQUALS):  SetColType( 1);  break;
+			
+			case key(O):  case key(LEFTBRACKET):   SetColGroup(-1);  break;
+			case key(P):  case key(RIGHTBRACKET):  SetColGroup( 1);  break;
+			
 
 			//  first, last
 			case key(HOME):  case key(KP_7):

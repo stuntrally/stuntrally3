@@ -36,11 +36,12 @@ using namespace std;
 void App::CreateCollects()
 {
 	iCollected = 0;  oldCollected = 0;  // game, hud
-	#ifndef SR_EDITOR
+#ifndef SR_EDITOR
 	if (pSet->game.collect_num < 0)
 		return;
-	#endif
 
+	pSet->game.collect_all = 0;
+#endif
 	for (int i=0; i < scn->sc->collects.size(); ++i)
 		CreateCollect(i);
 }
@@ -55,6 +56,14 @@ void App::CreateCollect(int i)
 		LogO(String("Collect not in presets name: ") + c.name);
 		col = scn->data->pre->GetCollect("gem1b");  // use default 1st
 	}
+
+#ifndef SR_EDITOR
+	int& ic = pSet->game.collect_num;
+	const Collection& colx = data->collect->all[ic];
+	// LogO("COL GRP "+toStr(1u << c.group)+"  x G "+toStr( (1u << c.group) &colx.groups)+" ");
+	if ( ((1u << c.group) & colx.groups) == 0)
+		return;  // game xml groups filter
+#endif
 
 	//  add to ogre 🟢
 	try 
@@ -75,6 +84,10 @@ void App::CreateCollect(int i)
 		LogO(String("Create collect fail: ") + e.what());
 		return;;
 	}
+#ifndef SR_EDITOR
+	++pSet->game.collect_all;
+#endif
+
 	//  pos, scale  ----
 	c.nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode();
 	c.nd->setPosition(c.pos);
@@ -201,6 +214,7 @@ void App::UpdCollects()
 	int all = sc->collects.size();
 	if (!all)
 		return;
+	all = pSet->game.collect_all;
 
 	//  count collected
 	int cols = 0;
@@ -225,13 +239,14 @@ void App::UpdCollects()
 		// todo: show wnd, check best time, pass etc
 
 		int id = pSet->game.collect_num;
-		const Collect& col = data->collect->all[id];
+		const Collection& col = data->collect->all[id];
 
 		auto* pro = gui->progressC.Get(col.name);
 		if (pro)
 		{
 		// todo: pro->
 		}
+		// gui->ProgressCSave(1);
 	}
 }
 #endif
@@ -311,7 +326,7 @@ void App::PickCollect()
 		const String& s = (*it).movable->getName();
 		if (StringUtil::startsWith(s,"cE",false))
 		{
-			LogO("RAY "+s+" "+fToStr((*it).distance,2,4));
+			// LogO("RAY "+s+" "+fToStr((*it).distance,2,4));
 			int i = -1;
 			//  find col with same name
 			for (int o=0; o < col.size(); ++o)
@@ -408,6 +423,18 @@ void App::SetColType(int add)
 	CreateCollect(iColCur);
 	// UpdObjNewNode();
 }
+
+//  group  add +-1
+void App::SetColGroup(int add)
+{
+	auto& col = scn->sc->collects;
+	if (iColCur < 0 && iColCur >= col.size())
+		return;
+	auto& g = col[iColCur].group;
+	if (add < 0 && g > 0)  g += add;
+	else if (add > 0 && g < 9)  g += add;
+}
+
 
 #if 0
 void App::UpdColNewNode()

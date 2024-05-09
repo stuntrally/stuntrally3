@@ -406,7 +406,7 @@ bool Scene::SaveXml(String file)
 			const SCollect* c = &collects[i];
 			XMLElement* oc = xml.NewElement("c");
 			oc->SetAttribute("n",	c->name.c_str());
-			oc->SetAttribute("gr",	toStrC(c->groups));
+			oc->SetAttribute("gr",	toStrC(c->group));
 
 			oc->SetAttribute("pos",	toStrC(c->pos));
 			oc->SetAttribute("sc",	toStrC(c->scale));

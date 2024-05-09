@@ -87,9 +87,9 @@ void CGui::InitGuiChamps()
 	li->removeAllColumns();  c=0;
 	li->addColumn("#80A080", colCol[c++]);
 	li->addColumn(TR("#60F060#{Name}"), colCol[c++]);		li->addColumn(TR("#80F040#{Track}"), colCol[c++]);
-	li->addColumn(TR("#F0D040#{Difficulty}"), colChL[c++]);	li->addColumn(TR("#F09090#{Vehicles}"), colCol[c++]);
-	li->addColumn(TR("#F0F8FF#{Prize}"), colCol[c++]);		li->addColumn(TR("#80E0FF#{Time}"), colCol[c++]);
-	li->addColumn(" ", colChL[c++]);
+	li->addColumn(TR("#F0D040#{Difficulty}"), colCol[c++]);	//li->addColumn(TR("#F09090#{Vehicles}"), colCol[c++]);
+	li->addColumn(TR("#C0FFFF#{Collected}"), colCol[c++]);	li->addColumn(TR("#80E0FF#{Time}"), colCol[c++]);
+	li->addColumn(" ", colCol[c++]);
 	liCollect = li;
 
 

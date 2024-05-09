@@ -417,7 +417,7 @@ void App::KeyTxtCollects()
 	colTxt[2]->setCaption(String(colEd==EO_Move  ?"#60FF60":"")+ TR("#{Obj_Pos}  ") +fToStr(c.pos[0],1,4)+" "+fToStr(c.pos[1],1,4)+" "+fToStr(c.pos[2],1,4));
 	// colTxt[3]->setCaption(String(colEd==EO_Rotate?"#FFA0A0":"")+ TR("#{Obj_Rot}  y ") +fToStr(q.getYaw().valueDegrees(),0,3)+" p "+fToStr(q.getPitch().valueDegrees(),0,3)+" r "+fToStr(q.getRoll().valueDegrees(),0,3));
 	colTxt[4]->setCaption(String(colEd==EO_Scale ?"#60F0FF":"")+ TR("#{scale}  ") +fToStr(c.scale,2,4));
-	colTxt[5]->setCaption(TR("#{Group}  ") +toStr(c.groups));
+	colTxt[5]->setCaption(TR("#{Group}  ") +toStr(c.group));
 
 	//  edit
 	if (mz != 0 && bEdit() && cols > 0)  // wheel prev/next

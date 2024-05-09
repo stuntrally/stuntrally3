@@ -35,7 +35,7 @@ A quick info: it is not random, it's quite specifically formatted to how I want 
 ## Track creators
 
 If you manage to create an interesting track, it can be included in future versions.  
-More info in [this topic](https://groups.f-hub.org/d/lpntzPrD/-creating-tracks-and-their-content].  
+More info in [this topic](https://groups.f-hub.org/d/lpntzPrD/-creating-tracks-and-their-content).  
 If needed, I can finish them, may change something.  
 Tracks are licensed GPLv3 by default.
 
@@ -78,9 +78,11 @@ Financial support is possible through [CryHam's page](https://cryham.tuxfamily.o
 
 # Git Workflow 
 
-> Also new data like tracks, objects, textures, sounds etc. aren't done like this.  Just uploaded as attachments on Forum.
+## Intro ##
 
-This page describes the procedure to get your code (fixes, patches, new features, data etc.) included into Stunt Rally.  
+> New data like tracks, objects, textures, sounds, particles, etc. can alteratively be uploaded as attachments on Forum or else.
+
+This section describes the procedure to get your code (fixes, patches, new features, tracks, data etc.) included into Stunt Rally.  
   This assumes you have already cloned our code and done something with it and now are ready to share your stuff.  
 
 If you don't know what to do, but want to help, check out the repo page [Contributing](Contributing.md),  

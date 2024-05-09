@@ -439,9 +439,12 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 				}
 			};
 			std::list<Col> near;  // nearest few
-			all = app->sc->collects.size();
+			//all = app->sc->collects.size();
+			// const Collect& colx = app->data->collect->all[pSet->game.collect_num];
+			
 			for (int i=0; i < all; ++i)
-			if (!cols[i].collected)
+			if (!cols[i].collected && cols[i].nd)
+				// (( (1<<cols[i].group) & colx.groups)))
 			{	Col c;
 				c.id = i;
 				c.dist = pos.squaredDistance(cols[i].pos);
@@ -475,6 +478,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			}
 			h.txCollect->setCaption(ss);
 
+			all = pSet->game.collect_all; //vis group
 			h.txTimes->setCaption(
 				"\n#D0B0FF" + toStr(app->iCollected)+" / "+toStr(all) +
 				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId)));

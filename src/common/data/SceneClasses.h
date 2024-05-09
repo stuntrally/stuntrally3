@@ -197,7 +197,8 @@ class SCollect      //  💎 Collectible gem
 {
 public:
 	std::string name;  // for presets n
-	uint groups = 0;  // game &
+	uint group = 0;  // game xml set(s)
+
 	Ogre::Vector3 pos{0,0,0};
 	float scale = 1.f;
 

@@ -102,6 +102,7 @@
 	<Tag name="SplitScreen">Split Screen</Tag>
 	<Tag name="Multiplayer">Multiplayer</Tag>
 	<Tag name="Collection">Collection</Tag>
+	<Tag name="Collected">Collected</Tag>
 	<Tag name="Career">Career</Tag>
 
 	<!--  Game  Split screen  -->

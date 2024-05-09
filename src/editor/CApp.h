@@ -270,6 +270,7 @@ public:
 	std::vector<std::string> vColNames;
 
 	void SetColType(int add);//, UpdColNewNode();
+	void SetColGroup(int add);
 	void AddNewCol(bool getName=true);
 
 

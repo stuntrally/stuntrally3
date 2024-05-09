@@ -6,7 +6,7 @@
 
 
 ///  🥇 one Collection track setup
-class Collect
+class Collection
 {
 public:
 	//  clean name,  description text,  nameGui with colors for Gui only
@@ -24,24 +24,20 @@ public:
 	CAllowed cars;
 
 	std::string track = "Jng1-Curly";
-	// std::vector<ChallTrack> trks;
 	bool onTime =0;  // 0 infinite  1 timed
-	float timeNeeded = -1;
+	float timeNeeded = 0.f;  // for gold?
 	//collectibles in track's scene.xml
-	int group =0;  // collectibles group, if more
+	uint groups = 15;  // collectibles group mask, if more
+		// e.g.  1 easy  2 medium  3=1+2  4 hard  6=4+2 etc
 
 	//  Game setup
 	//  if empty or -1 then allows any
 	std::string sim_mode = "normal";
-	int damage_type = 2, boost_type = 1, flip_type = 2, rewind_type = 1;
+	int damage_type = 2, boost_type = 2, flip_type = 2, rewind_type = 1;
 
-	//  Hud-
+	//  Hud off
 	bool minimap = 1, chk_arr = 0, chk_beam = 0,
 		trk_ghost = 0, pacenotes = 0, trail = 0;  // deny using it if false
-	
-	//  Pass  -1 means not needed, you can use one or more conditions
-	// float totalTime = -1.f, avgPoints = -1.f, avgPos = -1.f;
-	// bool carChng = 0;  // allow car change
 };
 
 
@@ -50,7 +46,7 @@ public:
 class CollectXml
 {
 public:
-	std::vector<Collect> all;
+	std::vector<Collection> all;
 	
 	bool LoadXml(std::string file, class TracksIni* times, bool check);
 };

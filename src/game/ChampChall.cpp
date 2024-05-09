@@ -109,8 +109,8 @@ void App::Ch_NewGame()
 	else if (iCollect >= 0)
 	{
 		///  💎 collection
-		ProgressCollect& pc = gui->progressC.col[iCollect];
-		const Collect& col = data->collect->all[iCollect];
+		// ProgressCollect& pc = gui->progressC.col[iCollect];
+		const Collection& col = data->collect->all[iCollect];
 		pSet->game.track = col.track;  pSet->game.track_user = 0;
 		pSet->game.track_reversed = 0;
 		pSet->game.num_laps = 0;
@@ -119,6 +119,15 @@ void App::Ch_NewGame()
 		pSet->game.flip_type = col.flip_type;
 		pSet->game.rewind_type = col.rewind_type;
 		pSet->game.BoostDefault();  //
+
+		//  car not set, or not allowed in collect
+		if (!gui->IsCollectCar(pSet->game.car[0]))  // pick last
+		{	int cnt = gui->carList->getItemCount();
+			if (cnt > 0)
+				pSet->game.car[0] = gui->carList->getItemNameAt(std::min(0,cnt-1)).substr(7);
+			else
+			{	LogO("Error: Collect cars empty!");  return;  }
+		}
 
 		pGame->pause = false;  // no wait
 		pGame->timer.waiting = false;
@@ -252,7 +261,8 @@ void CGui::listStageChng(MyGUI::MultiList2* li, size_t pos)
 	if (pos==ITEM_NONE)  return;
 	
 	string trk;  bool rev=false;  int all=1;
-	if (isChallGui())
+	/*if (isCollectGui())
+	else*/ if (isChallGui())
 	{	if (liChalls->getIndexSelected()==ITEM_NONE)  return;
 		int nch = *liChalls->getItemDataAt<int>(liChalls->getIndexSelected())-1;
 		if (nch >= data->chall->all.size())  {  LogO("Error chall sel > size.");  return;  }

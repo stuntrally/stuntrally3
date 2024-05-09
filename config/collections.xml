@@ -76,36 +76,61 @@
 <!--  🏞️ 0  short,easy  infinite  -->
 <!--========================================================================================================================-->
 
-	<collection name="#A0C000Easy test" ver="1" difficulty="0" type="3"
+	<collection name="#A0C000Easy test" ver="1" difficulty="0" type="3" groups="1"
 descr="Easy test cars.">
-		<cartype names="Gravel|Asphalt|Extreme" />
+		<cartype names="Gravel|Asphalt|Extreme|Hovercraft|Hover|Drone" />
 		<pass timeNeeded="21" />
 		<track name="TestC6-Temp" />
 	</collection>
 
-	<collection name="#A0C000Easy hover" ver="1" difficulty="1" type="1"
+	<collection name="#A0C000Easy test" ver="1" difficulty="0" type="3" groups="3"
+descr="Easy test cars.">
+		<cartype names="Gravel|Asphalt|Extreme|Hovercraft|Hover|Drone" />
+		<pass timeNeeded="21" />
+		<track name="TestC6-Temp" />
+	</collection>
+	
+	<collection name="#A0C000Easy hover" ver="1" difficulty="1" type="1" groups="7"
 descr="Simple test hover.">
 		<cartype names="Hover" />
 		<pass timeNeeded="21" />
 		<track name="TestC4-Ow" />
 	</collection>
 
-	<collection name="#A0C000Easy drone" ver="1" difficulty="3" type="2"
+	<!-- <collection name="#A0C000Easy drone" ver="1" difficulty="3" type="2"
 descr="Test drone.">
 		<cartype names="Drone" />
 		<pass timeNeeded="21" />
 		<track name="Test13-Hills" />
-	</collection>
+	</collection> -->
 
-<collection name="#A0C000The Stunt Rally track" ver="1" difficulty="3" type="2"
-	descr="The first, original collection on Stunt Rally logo track. Each letter except river l, has a few gems, including the floating loop. Gems are also in other places on terrain or rocks, in water.">
+<collection name="#A0C000Stunt Rally one" ver="1" difficulty="2" type="0" groups="1"
+	descr="The first, easy, original collection on Stunt Rally logo track. Each letter except river l, has just one gem, including the floating loop.">
 		<cartype names="Gravel|Asphalt|Hovercraft|Hover|Drone" />
 		<track name="TestC12-SR" />
 	</collection>
+
+<collection name="#A0C000Stunt Rally more" ver="1" difficulty="3" type="0" groups="3"
+	descr="Collection on Stunt Rally logo track. Endurance type with many more gems to collect. Each letter except river l, has few gems, including the floating loop. Gems are also on terrain, rocks or in water.">
+		<cartype names="Gravel|Asphalt|Hovercraft|Hover|Drone" />
+		<track name="TestC12-SR" />
+	</collection>
+
+<collection name="#A0C000Stunt Rally extreme" ver="1" difficulty="5" type="0" groups="4"
+	descr="Extreme collection on Stunt Rally logo track. Each letter except river l, has a few gems, including the floating loop. Gems are also in other places on terrain or rocks, in water.">
+		<cartype names="Hover|Drone" />
+		<track name="TestC12-SR" />
+	</collection>
+
+<!-- <collection name="#A0C000The Stunt Rally track" ver="1" difficulty="5" type="0" groups="4"
+	descr="Collection on Stunt Rally logo track. Each letter except river l, has a few gems, including the floating loop. Gems are also in other places on terrain or rocks, in water.">
+		<cartype names="Gravel|Asphalt|Hovercraft|Hover|Drone" />
+		<track name="TestC12-SR" />
+	</collection> -->
 	
-	<collection name="#A0C000Easy space" ver="1" difficulty="4" type="3"
+	<collection name="#A0C000Terrains" ver="1" difficulty="2" type="3" groups="7"
 descr="Test Spaceship.">
-		<cartype names="Spaceship" />
+		<cartype names="Spaceship|Hover|Drone" />
 		<pass timeNeeded="21" />
 		<track name="Test14-Terrains" />
 	</collection>

@@ -162,7 +162,6 @@ bool CGui::IsChallCar(String name)
 	int id = *liChalls->getItemDataAt<int>(liChalls->getIndexSelected())-1;
 
 	return data->chall->all[id].cars.Allows(data->cars, name);
-	// return data->IsChallCar(&data->chall->all[chId], name);
 }
 
 
