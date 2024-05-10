@@ -4,6 +4,7 @@
 #include "TracksXml.h"
 #include "ChampsXml.h"
 #include "ChallengesXml.h"
+#include "CollectXml.h"
 #include "GuiCom.h"
 #include "paths.h"
 #include "game.h"
@@ -19,7 +20,7 @@ using namespace MyGUI;
 
 
 //-----------------------------------------------------------------------------------------------
-///  📄 Load  championships.xml, progress.xml (once)
+///  📄 Load  progress*.xml  (once) for all games: champs, challs, collect
 //-----------------------------------------------------------------------------------------------
 void CGui::Ch_XmlLoad()
 {
@@ -48,8 +49,17 @@ void CGui::Ch_XmlLoad()
 	}
 	#endif
 	
+	
+	ProgressLoadChamp();
+	ProgressLoadChall();
+	ProgressLoadCollect();
+}
 
-/// 🏆 Champs  ---------------------------
+
+/// 🏆 Champs
+//-----------------------------------------------------------------------------------------------
+void CGui::ProgressLoadChamp()
+{
 	ProgressXml oldprog[2];
 	oldprog[0].LoadXml(PATHS::UserConfigDir() + "/progress.xml");
 	oldprog[1].LoadXml(PATHS::UserConfigDir() + "/progress_rev.xml");
@@ -100,19 +110,23 @@ void CGui::Ch_XmlLoad()
 
 			progress[pr].chs.push_back(pc);
 	}	}
-	ProgressSave(false);  //will be later in guiInit
+	ProgressSaveChamp(false);  //will be later in guiInit
 	
 	if (progress[0].chs.size() != data->champs->all.size() ||
 		progress[1].chs.size() != data->champs->all.size())
 		LogO("|| ERROR: champs and progress sizes differ !");
+}
 
 
-/// 🥇 Challenges  ---------------------------
+/// 🥇 Challenges
+//-----------------------------------------------------------------------------------------------
+void CGui::ProgressLoadChall()
+{
 	ProgressLXml oldpr[2];
 	oldpr[0].LoadXml(PATHS::UserConfigDir() + "/progressL.xml");
 	oldpr[1].LoadXml(PATHS::UserConfigDir() + "/progressL_rev.xml");
 
-	chs = data->chall->all.size();
+	int chs = data->chall->all.size();
 	
 	///  this is for old progress ver loading, from game with newer challs
 	///  it resets progress only for challs which ver has changed (or track count)
@@ -163,9 +177,77 @@ void CGui::Ch_XmlLoad()
 
 			progressL[pr].chs.push_back(pc);
 	}	}
-	ProgressLSave(false);  //will be later in guiInit
+	ProgressSaveChall(false);  //will be later in guiInit
 	
 	if (progressL[0].chs.size() != data->chall->all.size() ||
 		progressL[1].chs.size() != data->chall->all.size())
 		LogO("|] ERROR: challs and progressL sizes differ !");
+}
+
+
+//  💎 Collection
+//-----------------------------------------------------------------------------------------------
+void CGui::ProgressLoadCollect()
+{
+	ProgressCXml oldpr;
+	oldpr.LoadXml(PATHS::UserConfigDir() + "/progressC.xml");
+
+	int cols = data->collect->all.size();
+	
+	///  this is for old progress ver loading, from game with newer collects
+	///  it resets progress only for collects which ver has changed (or track count)
+	//  fill progress
+	{
+		progressC.col.clear();
+		progressC.icol.clear();
+
+		for (int c=0; c < cols; ++c)
+		{
+			const Collection& col = data->collect->all[c];
+			
+			//  find this collect in loaded progress
+			bool found = false;  int p = 0;
+			ProgressCollect* opc = 0;
+			while (!found && p < oldpr.col.size())
+			{
+				opc = &oldpr.col[p];
+				//  same name, ver and trks count
+				if (opc->name == col.name && opc->track == col.track && opc->ver == col.ver)
+					// && opc->gems.size() == col.gems.size())
+					found = true;
+				++p;
+			}
+			if (!found)
+				LogO("|| reset progressC for collection: " + col.name);
+			
+			ProgressCollect pc;
+			pc.name = col.name;  pc.track = col.track;  pc.ver = col.ver;
+			// pc.gems = col.gems;  //..
+
+			if (found)
+			{	//  found progress, copy
+				pc.bestTime = opc->bestTime;  pc.fin = opc->fin;
+				for (auto& g : opc->gems)
+					pc.gems[g.first] = g.second;
+			}
+
+			//  fill tracks
+			/*for (int t=0; t < col.gems.size(); ++t)
+			{
+				ProgressTrackL pt;
+				if (found)  
+				{	//  found track points
+					const auto& opt = opc->gems[t];  //pt = opt;
+					// pt.points = opt.points;  pt.time = opt.time;  pt.pos = opt.pos;
+				}
+				pc.gems.push_back(pt);
+			}*/
+
+			progressC.col.push_back(pc);
+			progressC.icol[pc.name] = progressC.col.size();
+	}	}
+	ProgressSaveCollect(false);  //will be later in guiInit
+	
+	if (progressC.col.size() != data->collect->all.size())
+		LogO("|] ERROR: collect and progressC sizes differ !");
 }

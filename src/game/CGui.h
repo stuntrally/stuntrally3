@@ -459,18 +459,19 @@ public:
 	void btnStageNext(WP), btnStagePrev(WP);  Txt valStageNum =0;
 	void StageListAdd(int n, Ogre::String name, int laps, Ogre::String progress);
 
-	//  📄 xml  [1]= reversed  L= challenge
-	ProgressXml progress[2];
-	ProgressLXml progressL[2];
-	ProgressCXml progressC;
+	//  📄 games progress xmls
+	ProgressXml progress[2];    // championship  [1]= reversed
+	ProgressLXml progressL[2];  // challenge
+	ProgressCXml progressC;     // collection
 	ProgressCareer career;
 
-	void ProgressSave(bool upgGui=true), ProgressLSave(bool upgGui=true), ProgressCSave(bool upgGui=true);
 	Chall* pChall =0;  // current challenge or 0 if not
+	void ProgressSaveChamp(bool upgGui=true), ProgressSaveChall(bool upgGui=true), ProgressSaveCollect(bool upgGui=true);
+	void ProgressLoadChamp(), ProgressLoadChall(), ProgressLoadCollect();
 
 	//  load
-	void Ch_XmlLoad(), Ch_LoadEnd();
-	void UpdChallDetail(int id);
+	void Ch_XmlLoad();
+	void Ch_LoadEnd(), UpdChallDetail(int id);
 	//  const
 	const static Ogre::String StrPrize(int i/*0 none..3 gold*/), strPrize[4],clrPrize[4];
 	const static int ciAddPos[3];  const static float cfSubPoints[3];

@@ -147,7 +147,7 @@ void CGui::listChallChng(MyGUI::MultiList2* chlist, size_t id)
 		float po = progressL[p].chs[nch].trks[i].points;
 		StageListAdd(n, trk.name, trk.laps, po > 0.f ? "#E0F0FF"+fToStr(po,1,3) : "");
 	}
-	if (edChDesc)  edChDesc->setCaption(ch.descr);
+	edChDesc->setCaption(ch.descr);
 	txtChName->setCaption(ch.nameGui);
 
 	UpdChallDetail(nch);
@@ -247,7 +247,7 @@ void CGui::btnChallEndClose(WP)
 
 
 ///  save progressL and update it on gui
-void CGui::ProgressLSave(bool upgGui)
+void CGui::ProgressSaveChall(bool upgGui)
 {
 	progressL[0].SaveXml(PATHS::UserConfigDir() + "/progressL.xml");
 	progressL[1].SaveXml(PATHS::UserConfigDir() + "/progressL_rev.xml");
@@ -346,7 +346,7 @@ void CGui::ChallengeAdvance(float timeCur/*total*/)
 		if (passed)
 			pc.curTrack++;  // next stage
 
-		ProgressLSave();
+		ProgressSaveChall();
 		return;
 	}
 
@@ -438,7 +438,7 @@ void CGui::ChallengeAdvance(float timeCur/*total*/)
 		s += TR("\n#E0F0F8#{Prize}: ") + StrPrize(pc.fin+1)+"\n";
 	s += "\n"+ss;
 	
-	ProgressLSave();
+	ProgressSaveChall();
 
 	//  save which sound to play 🔉
 	if (!passed)

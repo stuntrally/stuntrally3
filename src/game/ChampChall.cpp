@@ -131,7 +131,6 @@ void App::Ch_NewGame()
 
 		pGame->pause = false;  // no wait
 		pGame->timer.waiting = false;
-		gui->ProgressCSave(0);
 		// pSet->game.trees = 1.5f;  // ..?!
 		pSet->game.collis_veget = true;
 	}

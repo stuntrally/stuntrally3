@@ -206,7 +206,7 @@ void CGui::listChampChng(MyGUI::MultiList2* chlist, size_t id)
 		float po = progress[p].chs[pos].trks[i].points;
 		StageListAdd(n, trk.name, trk.laps, po > 0.f ? "#E0F0FF"+fToStr(po,1,3) : "");
 	}
-	if (edChDesc)  edChDesc->setCaption(ch.descr);
+	edChDesc->setCaption(ch.descr);
 	txtChName->setCaption(ch.name);
 
 
@@ -335,7 +335,7 @@ void CGui::btnChampEndClose(WP)
 
 
 ///  save progress and update it on gui
-void CGui::ProgressSave(bool upgGui)
+void CGui::ProgressSaveChamp(bool upgGui)
 {
 	progress[0].SaveXml(PATHS::UserConfigDir() + "/progress.xml");
 	progress[1].SaveXml(PATHS::UserConfigDir() + "/progress_rev.xml");
@@ -410,7 +410,7 @@ void CGui::ChampionshipAdvance(float timeCur)
 		if (passed)
 			pc.curTrack++;  // next stage
 			
-		ProgressSave();
+		ProgressSaveChamp();
 	}else
 	{	//  champ ended
 		///  compute champ :score:  --------------
@@ -422,7 +422,7 @@ void CGui::ChampionshipAdvance(float timeCur)
 		//float old = pc.score;  // .. save only higher ?
 		pc.points = sum / ntrk;  // average from all tracks
 
-		ProgressSave();
+		ProgressSaveChamp();
 
 		//  save which sound to play 🔉
 		if (!passed)
