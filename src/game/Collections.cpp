@@ -91,20 +91,18 @@ void CGui::fillCollectList(std::vector<int> vIds)
 		//String cars = data->carsXml.colormap[col.ci->type];  if (cars.length() != 7)  clr = "#C0D0E0";
 		
 		liCollect->addItem("", i+1);  int l = liCollect->getItemCount()-1;
-		liCollect->setSubItemNameAt(1,l, clr+ col.name);
-		liCollect->setSubItemNameAt(2,l, col.track);
-		liCollect->setSubItemNameAt(3,l, gcom->clrsDiff[col.diff]+ TR("#{Diff"+toStr(col.diff)+"}"));
-		
-		// liCollect->setSubItemNameAt(4,l, col.cars.GetStr(data->cars));
-		liCollect->setSubItemNameAt(4,l, "13/24");  // collected ..
-		liCollect->setSubItemNameAt(5,l, "6:35");  // time ..  prize?..
-		
-		// liCollect->setSubItemNameAt(5,l, gcom->clrsDiff[std::min(8,int(col.time/3.f/60.f))]+ StrTime2(col.time));
-		// liCollect->setSubItemNameAt(6,l, ct == 0 || ct == ntrks ? "" :
-		// 	clr+ fToStr(100.f * ct / ntrks,0,3)+" %");  // collected cnt / all ..
+		liCollect->setSubItemNameAt(1,l, clr+ col.nameGui);
+		String c = gcom->GetSceneryColor(col.track, 0);
+		liCollect->setSubItemNameAt(2,l, c+ col.track);
 
-		//. liCollect->setSubItemNameAt(3,l, " "+ StrPrize(pc.fin+1));
-		// liCollect->setSubItemNameAt(8,l, clr+ (pc.fin >= 0 ? fToStr(pc.avgPoints,1,5) : ""));
+		liCollect->setSubItemNameAt(3,l, gcom->clrsDiff[col.diff]+ TR("#{Diff"+toStr(col.diff)+"}"));
+		// liCollect->setSubItemNameAt(4,l, col.cars.GetStr(data->cars));
+
+		liCollect->setSubItemNameAt(4,l, toStr(pc.gems.size()));  // "13/24");  // collected cnt / all ..
+		liCollect->setSubItemNameAt(5,l, pc.bestTime > 10000.f ? "-" :
+			gcom->clrsDiff[std::min(8,int(pc.bestTime/3.f/60.f))]+ StrTime2(pc.bestTime));
+
+		liCollect->setSubItemNameAt(6,l, " "+ StrPrize(pc.fin+1));
 		if (i == pSet->gui.collect_num)
 			sel = l;
 	}
@@ -130,7 +128,7 @@ void CGui::listCollectChng(MyGUI::MultiList2* chlist, size_t id)
 
 	const Collection& col = data->collect->all[nc];
 
-	if (edChDesc)  edChDesc->setCaption(col.descr);
+	edChDesc->setCaption(col.descr);
 	txtChName->setCaption(col.nameGui);
 
 	//  fill track tab
@@ -146,13 +144,13 @@ void CGui::listCollectChng(MyGUI::MultiList2* chlist, size_t id)
 
 
 //  collect allows car
-bool CGui::IsCollectCar(String name)
+bool CGui::IsCollectCar(String nameGui)
 {
 	if (!liCollect || liCollect->getIndexSelected()==ITEM_NONE)  return true;
 
 	int id = *liCollect->getItemDataAt<int>(liCollect->getIndexSelected())-1;
 
-	return data->collect->all[id].cars.Allows(data->cars, name);
+	return data->collect->all[id].cars.Allows(data->cars, nameGui);
 }
 
 
@@ -238,7 +236,7 @@ void CGui::btnCollectEndClose(WP)
 */
 
 ///  save progressL and update it on gui
-void CGui::ProgressCSave(bool upgGui)
+void CGui::ProgressSaveCollect(bool upgGui)
 {
 	progressC.SaveXml(PATHS::UserConfigDir() + "/progressC.xml");
 	if (!upgGui)
@@ -258,15 +256,15 @@ void CGui::CollectionAdvance(float timeCur/*total*/)
 	// ProgressTrackL& pt = pc.trks[pc.curTrack];
 	const Collect& ch = data->collect->all[chId];
 	// const ChallTrack& trk = ch.trks[pc.curTrack];
-	LogO("|] --- Collect end: " + ch.name);
+	LogO("|] --- Collect end: " + ch.nameGui);
 
 	///  compute track  poins  --------------
-	float timeTrk = data->tracks->times[trk.name];
+	float timeTrk = data->tracks->times[trk.nameGui];
 	if (timeTrk < 1.f)
 	{	LogO("|] Error: Track has no best time !");  timeTrk = 10.f;	}
 	timeTrk *= trk.laps;
 
-	LogO("|] Track: " + trk.name);
+	LogO("|] Track: " + trk.nameGui);
 	LogO("|] Your time: " + toStr(timeCur));
 	LogO("|] Best time: " + toStr(timeTrk));
 
@@ -481,11 +479,11 @@ void CGui::CollectFillStageInfo(bool finished)
 	String s =
 		"#80FFE0"+ TR("#{Collection}") + ":  " + ch.nameGui + "\n\n" +
 		"#80FFC0"+ TR("#{Stage}") + ":  " + toStr(pc.curTrack+1) + " / " + toStr(ch.trks.size()) + "\n" +
-		"#80FF80"+ TR("#{Track}") + ":  " + trk.name + "\n\n";
+		"#80FF80"+ TR("#{Track}") + ":  " + trk.nameGui + "\n\n";
 
 	if (!finished)  // track info at start
 	{
-		int id = data->tracks->trkmap[trk.name];
+		int id = data->tracks->trkmap[trk.nameGui];
 		if (id > 0)
 		{
 			const TrackInfo* ti = &data->tracks->trks[id-1];
@@ -542,7 +540,7 @@ void CGui::CollectFillStageInfo(bool finished)
 	//  preview image at start
 	if (!finished)
 	{
-		String path = gcom->PathListTrkPrv(0, trk.name);
+		String path = gcom->PathListTrkPrv(0, trk.nameGui);
 		app->prvStCh.Load(path+"view.jpg");
 	}
 }

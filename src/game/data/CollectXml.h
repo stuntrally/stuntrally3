@@ -56,7 +56,7 @@ public:
 class ProgressCollect
 {
 public:
-	std::string name;
+	std::string name, track;
 	int ver = 0;  // resets if higher..
 
 	int fin = -1;      // final prize  -1 none, 0 bronze, 1 silver, 2 gold

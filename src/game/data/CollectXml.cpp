@@ -97,6 +97,7 @@ bool ProgressCXml::LoadXml(std::string file)
 	{
 		ProgressCollect pc;
 		a = eCol->Attribute("name");	if (a)  pc.name = std::string(a);
+		a = eCol->Attribute("track");	if (a)  pc.track = std::string(a);
 		a = eCol->Attribute("ver");		if (a)  pc.ver = s2i(a);
 
 		a = eCol->Attribute("t");	if (a)  pc.bestTime = s2r(a);
@@ -131,6 +132,7 @@ bool ProgressCXml::SaveXml(std::string file)
 		const ProgressCollect& pc = col[i];
 		XMLElement* eCol = xml.NewElement("collect");
 			eCol->SetAttribute("name", pc.name.c_str() );
+			eCol->SetAttribute("track", pc.track.c_str() );
 			eCol->SetAttribute("ver",  toStrC( pc.ver ));
 
 			eCol->SetAttribute("t",  fToStr( pc.bestTime, 1).c_str());

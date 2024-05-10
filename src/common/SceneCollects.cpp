@@ -107,8 +107,11 @@ void App::CreateCollect(int i)
 		c.light->setType(Light::LT_POINT);
 		c.light->setCastShadows(0);
 		
-		// ColourValue c(0.0f, 0.5f, 1.f);  //par
-		ColourValue cl(Math::UnitRandom(), Math::UnitRandom(), Math::UnitRandom());  // rnd
+		ColourValue cl;
+		if (pSet->collectRandomClr)
+			cl = ColourValue(Math::UnitRandom(), Math::UnitRandom(), Math::UnitRandom());
+		else  cl = col->clr;
+		
 		float bright = 1.2f * pSet->bright, contrast = pSet->contrast;
 		c.light->setDiffuseColour(  cl * bright * contrast );
 		c.light->setSpecularColour( cl * bright * contrast );
@@ -211,42 +214,64 @@ void App::ResetCollects()
 //-------------------------------------------------------------------------------------------------------
 void App::UpdCollects()
 {
-	int all = sc->collects.size();
-	if (!all)
+	if (sc->collects.empty())
 		return;
-	all = pSet->game.collect_all;
+	int all = pSet->game.collect_all;
 
 	//  count collected
-	int cols = 0;
+	int iCol = 0;
 	for (auto& c : sc->collects)
 	{
 		// c.ndBeam->setScale(Vector3(0.1f, 10.f, 0.1f));  // par
 		if (c.collected)
-		{	++cols;
+		{	++iCol;
 			c.nd->setVisible(0);
 		}
 	}
 	oldCollected = iCollected;
-	iCollected = cols;
+	iCollected = iCol;
 	
 	if (oldCollected != iCollected)
 	{
-		if (iCollected == all)
-			pGame->snd_lap->start();  // 🔉 end
-		else
-			pGame->snd_chk->start();  // 🔉 one
-		
-		// todo: show wnd, check best time, pass etc
+		// todo: show wnd, check best time, pass etc-
 
 		int id = pSet->game.collect_num;
 		const Collection& col = data->collect->all[id];
 
+		//  upd progress xml
+		bool best = 0;
 		auto* pro = gui->progressC.Get(col.name);
 		if (pro)
 		{
-		// todo: pro->
-		}
-		// gui->ProgressCSave(1);
+			int i = 0;
+			for (auto& c : sc->collects)
+			{
+				if (c.collected)
+					pro->gems[i] = true;
+				++i;
+			}
+		
+			if (iCollected == all)  // end, prize
+			{
+				float time = pGame->timer.GetPlayerTime(0);
+				if (time < pro->bestTime)
+				{	best = 1;
+					pro->bestTime = time;
+				}
+				pro->fin = 1;
+			}
+		}else
+			LogO("|! collect not found in progress, wont save! "+col.name);
+
+		if (iCollected == all)  // 🔉 end snd
+		{	if (best)
+				pGame->snd_lapbest->start();
+			else
+				pGame->snd_lap->start();
+		}else
+			pGame->snd_chk->start();  // 🔉 one
+
+		gui->ProgressSaveCollect(1);  // save
 	}
 }
 #endif
