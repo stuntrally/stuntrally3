@@ -59,15 +59,18 @@ public:
 	//  📊 Graphics  ----
 	int preset = 4;  // last set, info only
 	bool hud_on =1;  // 0 won't create it, in ed hides dialogs
+	bool collectRandomClr =0;
 
-	//  💡 lights  needs Update in presets:  Lights lights
+	//!  💡 lights  needs Update in presets:  Lights lights
 	struct Lights
 	{
 		bool front =0, front_shdw =0;  // shadows
 		bool brake =0, reverse =0, under =0;
 		bool boost =0, thrust =0;
-		bool collect =0, track =0;  // int..
+		bool collect =0;
+		bool track =0;  // int..
 	} li;
+
 	//!  Any change or order needs Update in:  Detail presets
 	struct Detail
 	{

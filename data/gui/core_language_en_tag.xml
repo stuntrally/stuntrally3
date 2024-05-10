@@ -670,6 +670,7 @@
 	<Tag name="TerHQDist">Terrain HQ dist</Tag>
 	<Tag name="ViewDist">View distance</Tag>
 	<Tag name="RoadQual">Road far quality</Tag>
+	<Tag name="GridQual">Grid quality</Tag>
 
 	<!--  Graphics  Textures  -->
 	<Tag name="Textures">Textures</Tag>
@@ -1628,6 +1629,7 @@
 	<Tag name="TutorEndFinished">You have finished this tutorial.</Tag>
 	<Tag name="ChampEndFinished">You have finished this championship.</Tag>
 	<Tag name="ChallEndFinished">You have passed this challenge.</Tag>
+	<Tag name="ClickInList">Pick in list to read description and start.</Tag>
 
 	<!--  Championship  info text  -->
 	<Tag name="ChampInfo">In tutorial/championship mode you drive a series of tracks. Minimum score (depending on your time) is needed to pass to next stage. Car changing is possible.</Tag>
@@ -1635,7 +1637,7 @@
 	<Tag name="ChampInfo2">Championships are usually long, have many tracks, but are easy to pass.</Tag>
 	<Tag name="ChallInfo2">Challenges are short but usually difficult to pass.</Tag>
 	<Tag name="TutorInfo">Tutorials have just a few tracks. They are easy to pass and show various track elements.</Tag>
-	<Tag name="CollectInfo">In collection game, you roam a track freely (not just on roads). Aim is to collect all gems located in various places. Time can be limited or not.</Tag>
+	<Tag name="CollectInfo">In collection game, you roam a track freely (not just on roads). The aim is to collect all gems located in various places. Time can be limited or not. Faster time gives better prize.</Tag>
 
 	<!--  Hint  welcome screen  -->
 	<Tag name="Hint">Hint</Tag>

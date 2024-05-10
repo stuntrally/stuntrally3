@@ -2050,6 +2050,7 @@
 					<Property key="InheritsAlpha" value="false"/>
 					<Widget type="EditBox" skin="EditBoxEmpty" position="6 2 694 78" name="ChampDescr">
 						<Property key="TextColour" value="0.75 0.9 1.0"/>
+						<Property key="Caption" value="#{ClickInList}"/>
 						<Property key="ReadOnly" value="true"/>
 						<Property key="MultiLine" value="true"/>
 						<Property key="WordWrap" value="true"/>
