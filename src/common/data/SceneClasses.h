@@ -199,7 +199,7 @@ class SCollect      //  💎 Collectible gem
 {
 public:
 	std::string name;  // for presets n
-	uint group = 0;  // game xml set(s)
+	int group = 0;  // game xml set(s)
 
 	Ogre::Vector3 pos{0,0,0};
 	float scale = 1.f;
@@ -212,13 +212,13 @@ public:
 	//  game var
 	bool collected =0;
 	
-	//  special ..
+	// todo: special ..
 	// float timeGood;  // appears back after
 };
 class QCollect      //  only 💎 quick load
 {
 public:
-	uint group = 0;
+	int group = 0;
 	// bool collected =0;
 };
 

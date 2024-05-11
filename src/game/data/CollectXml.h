@@ -27,7 +27,7 @@ public:
 	CAllowed cars;
 
 	std::string track = "Jng1-Curly";
-	uint groups = 15;  // collectibles group mask, if more
+	int groups = 15;  // collectibles group mask, if more
 	// e.g.  1 easy  2 medium  3=1+2  4 hard  6=4+2  etc
 	
 	//collectibles from track's scene.xml
