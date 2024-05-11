@@ -466,7 +466,7 @@
 							<Property key="Caption" value="#{Collection} *"/>
 							<Property key="TextColour" value="0.8 0.6 1.0"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="332 278 260 24" name="CollectLiRandom">
+						<Widget type="Button" skin="CheckBox" position="332 178 260 24" name="CollectLiRandom">
 							<Property key="Caption" value="#{CarClrRandom}"/>
 							<Property key="TextColour" value="0.8 0.6 1.0"/>
 						</Widget>

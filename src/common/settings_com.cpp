@@ -70,7 +70,8 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_lights.underglow", li.under);
 	Param(c,w, "graph_lights.boost", li.boost);				Param(c,w, "graph_lights.thrust", li.thrust);
 	Param(c,w, "graph_lights.collection", li.collect);		Param(c,w, "graph_lights.track", li.track);
-	Param(c,w, "graph_lights.colrandom", collectRandomClr);
+	Param(c,w, "graph_lights.collect_random", collectRandomClr);
+	Param(c,w, "graph_lights.grid_quality", li.grid_quality);
 
 	//  🌊 water
 	Param(c,w, "graph_water.map_size", g.water_size);		//Param(c,w, "graph_water.skip_frames", g.water_skip);  // todo

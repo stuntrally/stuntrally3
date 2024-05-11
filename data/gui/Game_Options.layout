@@ -1042,16 +1042,16 @@
 							<Property key="TextColour" value="0.3 1.0 0.1"/>
 						</Widget>
 
-						<Widget type="Button" skin="CheckBox" position="32 278 260 24" name="CollectLights">
+						<Widget type="Button" skin="CheckBox" position="32 248 260 24" name="CollectLights">
 							<Property key="Caption" value="#{Collection} *"/>
 							<Property key="TextColour" value="0.8 0.6 1.0"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="332 278 260 24" name="CollectLiRandom">
+						<Widget type="Button" skin="CheckBox" position="332 248 260 24" name="CollectLiRandom">
 							<Property key="Caption" value="#{CarClrRandom}"/>
 							<Property key="TextColour" value="0.8 0.6 1.0"/>
 						</Widget>
 
-						<Widget type="Button" skin="CheckBox" position="32 308 260 24" name="TrackLights">
+						<Widget type="Button" skin="CheckBox" position="32 278 260 24" name="TrackLights">
 							<Property key="Caption" value="#{Track} *="/>
 							<Property key="TextColour" value="0.6 1 0.6"/>
 						</Widget>

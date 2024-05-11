@@ -30,18 +30,18 @@ using namespace Ogre;
 void CGuiCom::cmbGraphicsPreset(CMB)
 {
 const static SETTINGS::Lights lights[8] = {  /* 💡 Lights only
-	front    boost  thrust
-	|shdw  undr |  / collect
-	|  | rev |  | |  | track
-	|  |brk| |  | |  | |  */
-	{0,0,0,0,0, 0,0, 0,0 },  // Lowest
-	{0,0,0,0,0, 0,0, 0,0 },  // Low 
-	{1,0,0,0,0, 0,0, 0,0 },  // Medium ~
-	{1,1,0,0,0, 1,0, 0,1 },  // High
-	{1,1,1,0,0, 1,1, 0,1 },  // Higher *
-	{1,1,1,1,1, 1,1, 1,1 },  // Very high
-	{1,1,1,1,1, 1,1, 1,1 },  // Highest
-	{1,1,1,1,1, 1,1, 1,1 },  // Ultra
+	front     boost  thrust
+	|shdw   undr |  / collect
+	|  |  rev |  | |  | track
+	|  | brk| |  | |  | |  grid */
+	{0,0, 0,0,0, 0,0, 0,0, 0 },  // Lowest
+	{0,0, 0,0,0, 0,0, 0,0, 0 },  // Low 
+	{1,0, 0,0,0, 0,0, 0,0, 0 },  // Medium ~
+	{1,1, 0,0,0, 1,0, 0,1, 0 },  // High
+	{1,1, 1,0,0, 1,1, 0,1, 1 },  // Higher *
+	{1,1, 1,1,1, 1,1, 1,1, 2 },  // Very high
+	{1,1, 1,1,1, 1,1, 1,1, 2 },  // Highest
+	{1,1, 1,1,1, 1,1, 1,1, 3 },  // Ultra
 };
 const static SETTINGS::Detail presets[8] = {  /*
 	🖼️           LOD      ⛰️ Terain         Veget        🌒 Shadow      🌊 Water          🔮 Reflect cube     

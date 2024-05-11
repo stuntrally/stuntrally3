@@ -96,6 +96,8 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	ck= &ckLiFrontShadows;	ck->Init("LightsFrontShadows", &pSet->li.front_shdw);
 	sv= &svCarLightBright;	sv->Init("CarLightBright",   &pSet->car_light_bright, 0.1f,3.f, 1.f);
 																sv->DefaultF(1.f);  SevC(CarLightBright);
+	sv= &svCarLightBright;	sv->Init("LightsGrid",   &pSet->li.grid_quality, 0,3);  sv->DefaultI(0);
+
 	ck= &ckLiBrake;		ck->Init("LightsBrake",  &pSet->li.brake);
 	ck= &ckLiRevese;	ck->Init("LightsRevese", &pSet->li.reverse);
 	ck= &ckLiUnder;		ck->Init("LightsUnder", &pSet->li.under);
@@ -106,7 +108,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	ck= &ckLiCollect;	ck->Init("CollectLights", &pSet->li.collect);
 	ck= &ckLiColRndClr;	ck->Init("CollectLiRandom", &pSet->collectRandomClr);
 	ck= &ckLiTrack;		ck->Init("TrackLights", &pSet->li.track);
-	
+
 
 	//  🔮 Reflection
 	sv= &svReflSkip;	sv->Init("ReflSkip",	&pSet->g.refl_skip,    0,1000, 2.f);  sv->DefaultI(0);

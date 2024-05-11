@@ -69,6 +69,7 @@ public:
 		bool boost =0, thrust =0;
 		bool collect =0;
 		bool track =0;  // int..
+		int grid_quality = 0;
 	} li;
 
 	//!  Any change or order needs Update in:  Detail presets
