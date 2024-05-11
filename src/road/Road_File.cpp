@@ -138,12 +138,16 @@ void SplineRoad::UpdLodVis(float fBias, bool bFull)
 void SplineRoad::UpdLodVisMarks(Real distSq, bool vis)
 {
 	#ifdef SR_EDITOR  // ed markers visible  near only
+	auto cam = mCamera->cam->getPosition();
 	for (const auto& m : vMarks)
 	if (m.nd)
 	{
-		Real d = mCamera->cam->getPosition().squaredDistance(m.nd->getPosition());
-		m.nd->setVisible(vis && d < distSq);
-	}
+		if (!vis)
+			m.nd->setVisible(false);
+		else
+		{	Real d = cam.squaredDistance(m.nd->getPosition());
+			m.nd->setVisible(d < distSq);
+	}	}
 	#endif
 }
 

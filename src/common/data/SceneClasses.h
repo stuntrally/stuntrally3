@@ -8,6 +8,8 @@
 #include <OgreVector3.h>
 #include <OgreVector4.h>
 #include <OgreQuaternion.h>
+#include <vector>
+#include <string>
 
 namespace Ogre {  class SceneNode;  class Item;  class ParticleSystem;  }
 class btDefaultMotionState;  class btCollisionObject;  class btRigidBody;  class btTransform;

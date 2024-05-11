@@ -88,6 +88,7 @@ void PosInfo::FromRpl2(const ReplayFrame2* rf, CARDYNAMICS* cd)
 void PosInfo::FromCar(CAR* pCar)
 {
 	const CARDYNAMICS* cd = &pCar->dynamics;
+	bool dmg = cd->fDamage >= 100.f;  // destroyed
 	//  car
 	Axes::toOgre(pos, cd->GetPosition());
 	if (cd->vtype == V_Sphere)
@@ -101,12 +102,12 @@ void PosInfo::FromCar(CAR* pCar)
 	}
 	//  hud
 	speed = pCar->GetSpeed();
-	fboost = cd->boostVal;	//posInfo.steer = cd->steer;
-	braking = cd->IsBraking();  //percent = outside
-	reverse = cd->vtype != V_Car ?
+	fboost = dmg ? 0.f : cd->boostVal;	//posInfo.steer = cd->steer;
+	braking = dmg ? 0 : cd->IsBraking();  //percent = outside
+	reverse = dmg ? 0 : cd->vtype != V_Car ?
 		pCar->GetSpeedometer() < 0.0 :
 		cd->GetTransmission().GetCurrentGearRatio() < 0.0;
-	hov_throttle = cd->hov_throttle;
+	hov_throttle = dmg ? 0.f : cd->hov_throttle;
 	
 	fHitTime = cd->fHitTime;  fParIntens = cd->fParIntens;  fParVel = cd->fParVel;
 	vHitPos = cd->vHitPos;  vHitNorm = cd->vHitNorm;

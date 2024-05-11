@@ -235,14 +235,16 @@ void App::SetEdMode(ED_MODE newMode)
 		SetObjNewType(iObjTNew);
 		first = false;
 	}
-	if (boxObj.nd)  boxObj.nd->setVisible(newMode == ED_Objects && bEdit());
-	if (boxEmit.nd)  boxEmit.nd->setVisible(newMode == ED_Particles && bEdit());
+	bool edit = bEdit();
+	if (boxObj.nd)  boxObj.nd->setVisible(newMode == ED_Objects && edit);
+	if (boxEmit.nd)  boxEmit.nd->setVisible(newMode == ED_Particles && edit);
 
 	//  collects hide
 	bool vis = newMode == ED_Collects;
 	for (auto& c : scn->sc->collects)
 	if (c.nd)
 		c.nd->setVisible(vis);
+	if (boxCol.nd)  boxCol.nd->setVisible(vis && edit);
 
 	edMode = newMode;
 	if (edMode >= ED_Deform && edMode <= ED_Filter)
@@ -303,7 +305,9 @@ void App::UpdVisGui()
 	// mInputWrapper->setAllowGrab(pSet->mouse_capture);
 	// mInputWrapper->setGrabPointer(!vis);
 
-	if (scn->road)  scn->road->SetTerHitVis(bEdit());
+	if (scn->road)
+	{	scn->road->SetTerHitVis(bEdit());
+		/*if (!bEdit())*/  scn->road->HideMarks();  }
 	if (!g && gcom->mToolTip)  gcom->mToolTip->setVisible(false);
 
 	if (ndBrush)
