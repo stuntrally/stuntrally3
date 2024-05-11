@@ -350,6 +350,17 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 
 //  ⏱️ Times etc
 //-------------------------------------------------------------------------------------------------------------------
+//  list nearest, dist
+struct Col
+{
+	int id;
+	float dist;
+	
+	bool operator<(const Col& other)
+	{
+		return dist < other.dist;
+	}
+};
 void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 {
 	///  times, race pos  -----------------------------
@@ -429,17 +440,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			const auto& cols = app->sc->collects;
 			int all = cols.size();
 			auto pos = pCarM->ndMain->getPosition();
-			//  list nearest, dist
-			struct Col
-			{
-				int id;
-				float dist;
-				
-				bool operator<(const Col& other)
-				{
-					return dist < other.dist;
-				}
-			};
+
 			std::list<Col> near;  // nearest few
 			//all = app->sc->collects.size();
 			// const Collect& colx = app->data->collect->all[pSet->game.collect_num];
