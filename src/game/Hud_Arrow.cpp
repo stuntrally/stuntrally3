@@ -22,9 +22,9 @@ using namespace Ogre;
 
 void CHud::Arrow::Create(SceneManager* mgr, SETTINGS* pSet, int plr)
 {
+	if (it)  return;
 	if (!node)
 		node = mgr->getRootSceneNode()->createChildSceneNode();
-	if (it)  return;
 	player = plr;
 
 	it = mgr->createItem("arrow.mesh");  it->setCastShadows(false);

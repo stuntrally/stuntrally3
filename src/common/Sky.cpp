@@ -72,9 +72,11 @@ void CScene::CreateSun()
 		{
 // bEnable, width, height, numSlices |  lightsPerCell, decalsPerCell, cubeProbesPerCel  | float minDist, maxDist
 		case 0:  mgr->setForwardClustered(true, 16,  8, 24,   4, 0, 2,  2, 50);  break;
-		case 1:  mgr->setForwardClustered(true, 32, 16, 24,  16, 0, 2,  2, 100);  break;
-		case 2:  mgr->setForwardClustered(true, 64, 32, 24,  32, 0, 2,  2, 150);  break;
-		case 3:  mgr->setForwardClustered(true,128, 64,  8,  96, 0, 2,  5, 500);  break;
+		case 1:  mgr->setForwardClustered(true, 24, 12, 24,   8, 0, 2,  2, 100);  break;
+		case 2:  mgr->setForwardClustered(true, 32, 16, 24,   8, 0, 2,  2, 100);  break;
+		case 3:  mgr->setForwardClustered(true, 32, 16, 24,  16, 0, 2,  2, 150);  break;
+		// case 2:  mgr->setForwardClustered(true, 64, 32, 24,  32, 0, 2,  2, 150);  break;  // 30 fps
+		// case 3:  mgr->setForwardClustered(true,128, 64,  8,  96, 0, 2,  5, 500);  break;  // 15 fps
 	}	}
 	else
         mgr->setForwardClustered( false, 0, 0, 0, 0, 0, 0, 0, 0 );

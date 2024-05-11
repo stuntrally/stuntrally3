@@ -99,14 +99,14 @@ descr="Extreme Stunt Rally track collection. Highest locations for gems. Require
 	</collection>
 
 
-	<collection name="#C0FF40Jungle temple hideout" ver="1" difficulty="3" type="0" groups="3"
+	<collection name="#C0FF40Jungle temple hideout" ver="1" difficulty="3" type="0" groups="1"
 descr="Small but dense jungle track with hidden gems.">
 		<cartype names="Terrain|Extreme|Gravel" />
 		<sim boost="3" />
 		<track name="Jng11-Temple" />
 	</collection>
 
-	<collection name="#C0FF40Jungle temple treasure" ver="1" difficulty="5" type="2" groups="3"
+	<collection name="#C0FF40Jungle temple treasure" ver="1" difficulty="5" type="2" groups="2"
 descr="Small but dense jungle track with hidden gems.">
 		<cartype names="Hover|Drone" />
 		<sim boost="3" />

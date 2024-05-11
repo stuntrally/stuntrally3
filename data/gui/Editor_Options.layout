@@ -453,11 +453,11 @@
 					<!-- 💡 Lights -->
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#F8F888#{Lights}"/>
-						<!-- <Widget type="Button" skin="CheckBox" position="32 48 260 24" name="CarLights">
-							<Property key="Caption" value="#{VehicleLights} ##"/>
+						<!-- <Widget type="Button" skin="CheckBox" position="32 78 260 24" name="LightsFront">
+							<Property key="Caption" value="#{VehicleLights} *"/>
 							<Property key="TextColour" value="0.9 1 1"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="332 48 260 24" name="CarLightsShadows">
+						<Widget type="Button" skin="CheckBox" position="332 78 260 24" name="LightsFrontShadows">
 							<Property key="Caption" value="#{Shadows} *"/>
 							<Property key="TextColour" value="0.7 0.7 0.7"/>
 						</Widget> -->
@@ -471,6 +471,7 @@
 							<Property key="TextColour" value="0.8 0.6 1.0"/>
 						</Widget>
 
+						<!-- Collect -->
 						<Widget type="Button" skin="CheckBox" position="32 208 260 24" name="TrackLights">
 							<Property key="Caption" value="#{Track} *="/>
 							<Property key="TextColour" value="0.6 1 0.6"/>

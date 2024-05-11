@@ -227,7 +227,7 @@ public:
 	void cmbGraphicsPreset(CMB), cmbScreenRes(CMB), cmbRenderSystem(CMB), cmbAntiAliasing(CMB);
 
 	//  💡 Light  --------------------------
-	SV svBright, svContrast;
+	SV svBright, svContrast, svLightsGrid;
 	SlV(CarLightBright);
 
 

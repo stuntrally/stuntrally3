@@ -1025,7 +1025,7 @@
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="332 108 260 24" name="LightsRevese">
 							<Property key="Caption" value="#{Reverse} *"/>
-							<Property key="TextColour" value="0.3 0.7 1.0"/>
+							<Property key="TextColour" value="0.7 0.9 0.9"/>
 						</Widget>
 
 						<Widget type="Button" skin="CheckBox" position="32 138 260 24" name="LightsBoost">
@@ -1042,6 +1042,7 @@
 							<Property key="TextColour" value="0.3 1.0 0.1"/>
 						</Widget>
 
+						<!-- Collect -->
 						<Widget type="Button" skin="CheckBox" position="32 248 260 24" name="CollectLights">
 							<Property key="Caption" value="#{Collection} *"/>
 							<Property key="TextColour" value="0.8 0.6 1.0"/>
