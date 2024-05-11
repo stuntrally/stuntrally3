@@ -240,7 +240,7 @@ set(CPACK_PACKAGE_FILE_NAME "stunt-rally-${CMAKE_PROJECT_VERSION}")
 set(CPACK_PACKAGE_DESCRIPTION "Stunt Rally is a 3D racing game with own Track Editor")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Stunt Rally is a 3D racing game with own Track Editor")
 set(CPACK_PACKAGE_VENDOR "Crystal Hammer")
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/dist/license.rtf")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/License.txt")
 set(CPACK_PACKAGE_EXECUTABLES "StuntRally3" "Stunt Rally 3")
 
 if (WIN32)
