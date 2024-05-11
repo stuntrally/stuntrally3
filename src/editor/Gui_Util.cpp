@@ -238,6 +238,12 @@ void App::SetEdMode(ED_MODE newMode)
 	if (boxObj.nd)  boxObj.nd->setVisible(newMode == ED_Objects && bEdit());
 	if (boxEmit.nd)  boxEmit.nd->setVisible(newMode == ED_Particles && bEdit());
 
+	//  collects hide
+	bool vis = newMode == ED_Collects;
+	for (auto& c : scn->sc->collects)
+	if (c.nd)
+		c.nd->setVisible(vis);
+
 	edMode = newMode;
 	if (edMode >= ED_Deform && edMode <= ED_Filter)
 		iCurBr = edMode;

@@ -21757,7 +21757,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.4
+				"value" : 0.1
 			},
 			"emissive" :
 			{
@@ -21791,12 +21791,12 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.1, 0.1, 0.1],
+				"value" : [0.1, 0.1, 0.15],
 				"mode" : "coloured"
 			},
 			"roughness" :
 			{
-				"value" : 0.4
+				"value" : 0.2
 			},
 			"emissive" :
 			{
@@ -21819,7 +21819,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.5, 0.5, 0.5],
+				"value" : [0.5, 0.52, 0.52],
 				"background" : [1, 1, 1, 1],
 				"texture" : "checkpoint.png",
 				"sampler" : "Sampler_10"
@@ -21835,11 +21835,11 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.4
+				"value" : 0.1
 			},
 			"emissive" :
 			{
-				"value" : [0.2, 0.2, 0.2]
+				"value" : [0.3, 0.31, 0.32]
 			}
 		},
 
@@ -21858,7 +21858,7 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0, 0.5, 0.9],
+				"value" : [0.9, 0.2, 0.1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "checkpoint.png",
 				"sampler" : "Sampler_10"
@@ -21874,11 +21874,11 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.4
+				"value" : 0.2
 			},
 			"emissive" :
 			{
-				"value" : [0.1, 0.2, 0.3]
+				"value" : [0.3, 0.1, 0.1]
 			}
 		},
 

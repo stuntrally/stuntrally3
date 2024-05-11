@@ -92,8 +92,7 @@ void App::CreateCollect(int i)
 	c.nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode();
 	c.nd->setPosition(c.pos);
 	c.nd->setScale(c.scale * col->scale * Vector3::UNIT_SCALE);
-	c.nd->attachObject(c.it);  //o.it->setVisibilityFlags(RV_Objects);
-	// todo: collect in splitscreen
+	c.nd->attachObject(c.it);  c.it->setVisibilityFlags(RV_Objects);  //?
 
 	c.ndBeam = c.nd->createChildSceneNode(SCENE_DYNAMIC);
 	c.ndBeam->setPosition(c.scale * Vector3(0.f, -5.f, 0.f));  // below
@@ -129,6 +128,9 @@ void App::CreateCollect(int i)
 	// 	o.it->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
 	c.it->setRenderQueueGroup( RQG_AlphaVegObj );
 	c.nd->_getFullTransformUpdated();  //?
+#ifdef SR_EDITOR  // ed hide
+	c.nd->setVisible(0);
+#endif
 
 
 	//  add to bullet world (in game)
