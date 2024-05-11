@@ -33,6 +33,7 @@
 
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>
+#include <list>
 using namespace Ogre;
 using namespace MyGUI;
 using namespace std;
@@ -457,11 +458,18 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 				// cols[i].ndBeam->_getFullTransformUpdated();
 			}
 			near.sort();
-			
-			String ss;
+
+			//  dist txts
+			int id = pCarM->iIndex;
+			String ss = "\n";
 			int i=0;  auto it = near.begin();
-			while (i < 4 && it != near.end())
+			while (i < MAX_ArrCol && it != near.end())
 			{
+				//  upd arrows
+				if (pSet->check_arrow && // !bRplPlay &&
+					pCarM->cType == CarModel::CT_LOCAL)
+					arrCol[id][i].posTo = cols[(*it).id].pos;
+
 				// todo:  3d arrows? update 3d txt..
 				ss += "\n";
 				float d = sqrt((*it).dist);
@@ -477,6 +485,11 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 				ss += iToStr((*it).id,2)+": "+fToStr(d, 0)+" m";
 				++it;  ++i;
 			}
+			while (i < MAX_ArrCol)
+			{	// hide rest if less
+				arrCol[id][i].nodeRot->setVisible(0);
+				++i;
+			}
 			h.txCollect->setCaption(ss);
 
 			all = pSet->game.collect_all; //vis, for group
@@ -488,8 +501,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 				"\n#D0B0FF" + toStr(app->iCollected)+" / "+toStr(all) +
 				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId))+
 				"\n#80E0E0" + StrTime(best) );
-		}
-		else
+		}else
 			h.txTimes->setCaption(
 				(hasLaps ? "#A0E0D0"+toStr(tim.GetCurrentLap(carId)+1)+" / "+toStr(pSet->game.num_laps) : "") +
 				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId))+

@@ -234,7 +234,7 @@ void CGui::slSizeArrow(SV*)
 	if (!pSet->hud_on)  return;
 	float v = pSet->size_arrow * 0.5f;
 	for (int i = 0; i < MAX_Players; ++i)
-	{	auto* nd = hud->arrow[i].nodeRot;
+	{	auto* nd = hud->arrChk[i].nodeRot;
 		if (nd)
 		{	nd->setScale(v * Vector3::UNIT_SCALE);
 			nd->_getFullTransformUpdated();
@@ -264,12 +264,18 @@ void CGui::chkHudShow(Ck*)
 
 void CGui::chkArrow(Ck*)
 {
+	bool vis = pSet->check_arrow && !app->bHideHudArr;
 	for (int i = 0; i < MAX_Players; ++i)
-	{	auto* nd = hud->arrow[i].nodeRot;
-		if (nd)
-			nd->setVisible(pSet->check_arrow && !app->bHideHudArr);
-	}
+	{
+		auto* nd = hud->arrChk[i].nodeRot;
+		if (nd)  nd->setVisible(vis);
+
+		for (int a = 0; a < MAX_ArrCol; ++a)
+		{	nd = hud->arrCol[i][a].nodeRot;
+			if (nd)  nd->setVisible(vis);
+	}	}
 }
+
 void CGui::chkBeam(Ck*)
 {
 	for (int i=0; i < app->carModels.size(); ++i)

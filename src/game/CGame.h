@@ -168,7 +168,7 @@ public:
 	PreviewTex prvStCh;  // champ,chall stage view
 
 	bool bHideHudBeam  =0;  // hides beam when replay or no road
-	bool bHideHudArr   =0;	// hides arrow when replay,splitscreen
+	bool bHideHudArr   =0;	// hides arrow when replay
 	bool bHideHudPace  =0;  // hides pacenotes when same or deny by challenge
 	bool bHideHudTrail =0;  // hides trail if denied by challenge
 	

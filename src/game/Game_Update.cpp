@@ -173,10 +173,18 @@ void App::update( float dt )
 		{
 			updatePoses(dt);
 
+			bool col = pSet->game.collect_num >= 0;
+			float sc = pSet->size_arrow/2.f;
 			if (pSet->check_arrow && !bRplPlay && !carModels.empty())
 				for (int c = 0; c < carModels.size(); ++c)
 				if (!carModels[c]->isGhost())
-					hud->arrow[c].Update(carModels[c], dt);
+				{
+					if (!col)
+						hud->arrChk[c].Update(carModels[c], dt);
+					else
+					for (int a = 0; a < MAX_ArrCol; ++a)
+						hud->arrCol[c][a].UpdateCol(carModels[c], sc);
+				}
 
 			//  cam info text
 			if (pSet->show_cam && !carModels.empty() && hud->txCamInfo)

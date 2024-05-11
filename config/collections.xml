@@ -41,30 +41,25 @@
 		<car names="HI|ES" deny="3B" />
 
 			//  *** Pass (win) conditions ***
-			//  use many if desired  (one is good)
-			//  *use none, if using only those for track
-			//  got from all challenge stages
-			//  - average points  5.0 .. 10.0 and more  (recommended)
-			//  - average position  1.0 .. 5.0 and more
-			//  - total time in seconds  .need to sum tracks, not recommended
+			//  time - time in seconds, for gold prize
+			//  needed - 0 default,  not needed to pass, needed for better prizes
+			//    if 1 finish all collected requires time at least for lowest prize, or quicker
 			//  prizes  0 only gold  1 gold,silver  2 gold,silver,bronze (default)
 			//    pass conditions are for gold prize
 			//    silver is 1.0 points less or 2 positions more
 			//    bronze 2.0 points or 4 pos
-			//  factor is a multiplier for those values (silver,bronze)
-			//    1 is default does like above
-			//    eg. using 2 will need 2.0 points less for silver etc.
-			//    and will make it easier to pass challenge, but harder to win gold
+			//  factor - is time added for lower prize silver, 2x that for bronze
+			//    higher value will make it easier to get lower prizes
 
-		<pass timeNeeded="123" prizes="2" factor="1.5" />
+		<pass needed="0" time="123" prizes="2" factor="10" />
 
 
 		<track name=".." >
-				always one track per collection
+			//  always one track per collection
 
 	</collection>
 
-	See the Test challenges at end, to get known with various options and test in game.
+	See the Test collections at end, to get known with various options and test in game.
 -->
 
 
@@ -127,21 +122,21 @@ descr="Few gems to collect on vast Greece landscape, on top of hills with good v
 <collection name="#A0C000Temp test easy" ver="1" difficulty="0" type="3" groups="1"
 descr="Easy test cars.">
 		<cartype names="Gravel|Asphalt|Extreme|Hovercraft|Hover|Drone" />
-		<pass timeNeeded="21" />
+		<pass time="6" needed="1" prize="2" factor="2" />
 		<track name="TestC6-Temp" />
 	</collection>
 
 	<collection name="#A0C000Temp test all" ver="1" difficulty="1" type="3" groups="3"
 descr="Easy test cars.">
 		<cartype names="Gravel|Asphalt|Extreme|Hovercraft|Hover|Drone" />
-		<pass timeNeeded="21" />
+		<pass time="10" needed="1" prize="2" factor="4" />
 		<track name="TestC6-Temp" />
 	</collection>
 
-	<collection name="#A0C000Temp test hard" ver="1" difficulty="2" type="3" groups="4"
+	<collection name="#A0C000Temp test hard" ver="1" difficulty="3" type="3" groups="4"
 descr="Easy test cars.">
 		<cartype names="Gravel|Asphalt|Extreme|Hovercraft|Hover|Drone" />
-		<pass timeNeeded="21" />
+		<pass time="15" needed="1" prize="2" factor="3" />
 		<track name="TestC6-Temp" />
 	</collection>
 
@@ -149,14 +144,14 @@ descr="Easy test cars.">
 	<collection name="#A0C000Circle easy" ver="1" difficulty="1" type="3" groups="7"
 descr="Simple test hover.">
 		<cartype names="Hover" />
-		<pass timeNeeded="21" />
+		<pass time="6" needed="1" prize="2" factor="2" />
 		<track name="TestC4-Ow" />
 	</collection>
 
-	<collection name="#A0C000Terrains hover" ver="1" difficulty="2" type="3" groups="7"
+	<collection name="#A0C000Terrains hover" ver="1" difficulty="3" type="3" groups="7"
 descr="Terrains test track, with any hovering vehicle.">
 		<cartype names="Spaceship|Hover|Drone" />
-		<pass timeNeeded="21" />
+		<pass time="21" />
 		<track name="Test14-Terrains" />
 	</collection>
 

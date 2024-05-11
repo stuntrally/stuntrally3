@@ -124,12 +124,16 @@ public:
 		Ogre::SceneNode* node =0, *nodeRot =0;
 		Ogre::Quaternion qStart, qEnd, qCur;  // smooth animation
 		HlmsPbsDb2* pDb =0;
+		Ogre::Vector3 posTo;  // dir to collect
 
 		void Create(Ogre::SceneManager* mgr, SETTINGS* pSet, int plr);
+		void Destroy(Ogre::SceneManager* mgr);
+
 		void UpdateChk(SplineRoad* road, CarModel* carM, const Ogre::Vector3& pos);
 		void Update(CarModel* carM, float time);
-		void Destroy(Ogre::SceneManager* mgr);
-	} arrow[MAX_Players];
+		void UpdateCol(CarModel* carM, float sc);
+	}
+	arrChk[MAX_Players], arrCol[MAX_Players][MAX_ArrCol];
 		
 	float asp =1.f, scX =1.f, scY =1.f,
 		minX =0.f, maxX =0.f, minY =0.f, maxY =0.f;  // minimap visible range

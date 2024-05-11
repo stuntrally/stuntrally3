@@ -1176,7 +1176,7 @@
 
 		"Arrow" :
 		{
-			"macroblock" : "Macroblock_7",
+			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
@@ -1206,9 +1206,10 @@
 
 		"Arrow0" :
 		{
-			"macroblock" : "Macroblock_7",
+			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
+            "two_sided" : true,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
@@ -1239,6 +1240,7 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
+            "two_sided" : true,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
@@ -1269,6 +1271,7 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
+            "two_sided" : true,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
@@ -1299,6 +1302,7 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
+            "two_sided" : true,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
@@ -1329,6 +1333,7 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
+            "two_sided" : true,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{
@@ -1359,6 +1364,7 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
+            "two_sided" : true,
 			"workflow" : "specular_ogre",
 			"diffuse" :
 			{

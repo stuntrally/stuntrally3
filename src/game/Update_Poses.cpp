@@ -42,6 +42,7 @@ void App::newPoses(float time)  // time only for camera update
 	double rplTime = pGame->timer.GetReplayTime(0);  // from start
 	double lapTime = pGame->timer.GetPlayerTime(0);
 	double rewTime = /*pSet->rpl_ghostrewind*/1 ? pGame->timer.GetRewindTimeGh(0) : lapTime;
+	bool collect = pSet->game.collect_num >= 0;
 
 	//  iterate through all car models and set new pos info (from vdrift sim or replay)
 	CarModel* carM0 = carModels[0];
@@ -211,13 +212,6 @@ void App::newPoses(float time)  // time only for camera update
 		///-----------------------------------------------------------------------
 		
 
-		//  💎 collection game
-		//-----------------------------------------------------------------------
-		bool collect = pSet->game.collect_num >= 0;
-		if (collect && lapTime > 0.1f)  //-
-			UpdCollects();
-		
-
 		//  🏁 checkpoints, lap start
 		//-----------------------------------------------------------------------
 		if (bGhost && !gui->bLesson)   // dont check for ghost
@@ -227,8 +221,8 @@ void App::newPoses(float time)  // time only for camera update
 			///  🔝 arrow update  --------------------------------------
 			SplineRoad* road = scn->road;
 			if (pSet->check_arrow && carM->cType == CarModel::CT_LOCAL &&
-				!bRplPlay && hud->arrow[c].node && road && road->mChks.size()>0)
-		  		hud->arrow[c].UpdateChk(road, carM, pi.pos);
+				!bRplPlay && hud->arrChk[c].node && road && road->mChks.size()>0)
+		  		hud->arrChk[c].UpdateChk(road, carM, pi.pos);
 			
 			//----------------------------------------------------------------------------
 			if (carM->bGetStart)  // get finish, end box
@@ -425,6 +419,12 @@ void App::newPoses(float time)  // time only for camera update
 			}
 		}
 	}
+
+	//  💎 collection game
+	//-----------------------------------------------------------------------
+	if (collect && lapTime > 0.1f)  //-
+		UpdCollects();
+
 	PROFILER.endBlock(".newPos ");
 }
 

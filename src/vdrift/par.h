@@ -2,6 +2,7 @@
 
 #define MAX_Players  6
 #define MAX_Vehicles 8  // = players and 2 ghosts
+#define MAX_ArrCol   3  // hud arrows to collectibles gems
 
 ///  const game params  -------
 struct SParams

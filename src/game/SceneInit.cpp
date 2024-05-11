@@ -303,8 +303,11 @@ void App::LoadCleanUp()
 	}
 
 	for (int i=0; i < MAX_Players; ++i)
-		hud->arrow[i].Destroy(mSceneMgr);
-
+	{	//  arrows
+		hud->arrChk[i].Destroy(mSceneMgr);
+		for (int a = 0; a < MAX_ArrCol; ++a)
+			hud->arrCol[i][a].Destroy(mSceneMgr);
+	}
 
 	//  Delete all cars
 	for (int i=0; i < carModels.size(); ++i)
@@ -549,12 +552,22 @@ void App::LoadScene()  // 3
 		pGame->collision.world->setGravity(btVector3(0.0, 0.0, -scn->sc->gravity));
 
 
-	//  🔝 checkpoint arrow
+	//  🔝 create arrows
+	bool col = pSet->game.collect_num >= 0;
 	bool deny = gui->pChall && !gui->pChall->chk_arr;
 	if (!bHideHudArr && !deny)
 		for (int i=0; i < carModels.size(); ++i)
 		if (!carModels[i]->isGhost())
-			hud->arrow[i].Create(mSceneMgr, pSet, i);
+		{
+			if (!col)  // chk
+				hud->arrChk[i].Create(mSceneMgr, pSet, i);
+			else
+			for (int a = 0; a < MAX_ArrCol; ++a)
+			{	//  collect
+				hud->arrCol[i][a].node = carModels[i]->ndMain;
+				hud->arrCol[i][a].Create(mSceneMgr, pSet, i);
+			}
+		}
 }
 
 
@@ -661,8 +674,8 @@ void App::LoadRoad()
 	CreateRoads();   // dstTrk inside
 		
 	for (int i=0; i < MAX_Players; ++i)
-	if (hud->arrow[i].nodeRot)
-		hud->arrow[i].nodeRot->setVisible(pSet->check_arrow && !bHideHudArr);
+	if (hud->arrChk[i].nodeRot)
+		hud->arrChk[i].nodeRot->setVisible(pSet->check_arrow && !bHideHudArr);
 
 	//  boost fuel at start  . . .
 	//  based on road length

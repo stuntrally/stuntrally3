@@ -210,6 +210,7 @@ void App::ResetCollects()
 			bool no = ((1u << c.group) & colx.groups) == 0;
 			c.nd->setVisible(!no);
 		}
+	gui->chkArrow(0);  // show col arr
 	#endif
 }
 
@@ -265,6 +266,7 @@ void App::UpdCollects()
 					pro->bestTime = time;
 				}
 				pro->fin = 1;
+				// todo: prize pro->
 			}
 		}else
 			LogO("|! collect not found in progress, wont save! "+col.name);

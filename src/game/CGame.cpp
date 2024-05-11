@@ -73,8 +73,13 @@ void App::destroyScene()
 	
 	DestroyGraphs();
 	hud->Destroy();
-	for (int i = 0; i < MAX_Players; ++i)
-		hud->arrow[i].Destroy(mSceneMgr);
+
+	for (int i=0; i < MAX_Players; ++i)
+	{
+		hud->arrChk[i].Destroy(mSceneMgr);
+		for (int a = 0; a < MAX_ArrCol; ++a)
+			hud->arrCol[i][a].Destroy(mSceneMgr);
+	}
 	
 	// for (int i=0; i < MAX_Players; ++i)
 		// pSet->cam_view[i] = carsCamNum[i];

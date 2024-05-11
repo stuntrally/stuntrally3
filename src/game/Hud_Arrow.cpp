@@ -10,16 +10,17 @@
 #include "Cam.h"
 
 #include "HlmsPbs2.h"
+#include <OgreVector3.h>
 #include <OgreItem.h>
 #include <OgreSceneNode.h>
 #include <OgreCamera.h>
 #include <OgreSceneManager.h>
 using namespace Ogre;
+using namespace std;
 
 
-///  HUD Arrow
+///  🆕 create HUD Arrow
 ///---------------------------------------------------------------------------------------------------------------
-
 void CHud::Arrow::Create(SceneManager* mgr, SETTINGS* pSet, int plr)
 {
 	if (it)  return;
@@ -36,12 +37,21 @@ void CHud::Arrow::Create(SceneManager* mgr, SETTINGS* pSet, int plr)
 	
 	nodeRot = node->createChildSceneNode();
 	nodeRot->attachObject(it);
-	nodeRot->setScale(pSet->size_arrow/2.f * Vector3::UNIT_SCALE);
+	nodeRot->setScale(pSet->size_arrow/2.f * Vector3(0.5,1.f,2.f));
 	it->setVisibilityFlags(RV_Hud3D[player]);
 	nodeRot->setVisible(pSet->check_arrow);
 }
+//  💥
+void CHud::Arrow::Destroy(SceneManager* mgr)
+{
+	if (nodeRot)  mgr->destroySceneNode(nodeRot);  nodeRot = 0;
+	if (node)  mgr->destroySceneNode(node);  node = 0;
+	if (it)  mgr->destroyItem(it);  it = 0;
+	pDb = 0;
+}
 
 
+//  💫 Update
 void CHud::Arrow::UpdateChk(SplineRoad* road, CarModel* carM, const Vector3& pos)
 {
 	//  set animation start to old orientation
@@ -80,11 +90,11 @@ void CHud::Arrow::UpdateChk(SplineRoad* road, CarModel* carM, const Vector3& pos
 	}	}
 }
 
+//  💫 Update 3d
 void CHud::Arrow::Update(CarModel* carM, float time)
 {
 	//  align checkpoint arrow,  move in front of camera
 	if (!node)  return;
-
 	Camera* cam = carM->fCam->cam->cam;
 
 	Vector3 pos = cam->getPosition();
@@ -106,10 +116,21 @@ void CHud::Arrow::Update(CarModel* carM, float time)
 	nodeRot->_getFullTransformUpdated();
 }
 
-void CHud::Arrow::Destroy(SceneManager* mgr)
+
+//  💫 Update 💎
+void CHud::Arrow::UpdateCol(CarModel* carM, float sc)
 {
-	if (nodeRot)  mgr->destroySceneNode(nodeRot);  nodeRot = 0;
-	if (node)  mgr->destroySceneNode(node);  node = 0;
-	if (it)  mgr->destroyItem(it);  it = 0;
-	pDb = 0;
+	if (!node)  return;
+	Vector3 pos = carM->ndMain->getPosition() + Vector3(0, 1.f, 0);
+	Vector3 dir = pos - posTo;  // to gem
+	Real dist = dir.length();
+	dist = 1.5f - max(0.2f, min(1.0f, dist/30.f));
+	dir.normalise();
+	Quaternion quat = Vector3::UNIT_Z.getRotationTo(dir);
+
+	Vector3 arrowPos = pos - dir * 1.f;  // par  car size?
+	nodeRot->setPosition(arrowPos);
+	nodeRot->setOrientation(quat);
+	nodeRot->setScale(sc * 1.f * Vector3(0.5,1.f,2.f + 0.6f*dist) * dist);  // par
+	nodeRot->_getFullTransformUpdated();
 }
