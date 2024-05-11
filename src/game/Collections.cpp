@@ -98,7 +98,8 @@ void CGui::fillCollectList(std::vector<int> vIds)
 		liCollect->setSubItemNameAt(3,l, gcom->clrsDiff[col.diff]+ TR("#{Diff"+toStr(col.diff)+"}"));
 		// liCollect->setSubItemNameAt(4,l, col.cars.GetStr(data->cars));
 
-		liCollect->setSubItemNameAt(4,l, toStr(pc.gems.size()));  // "13/24");  // collected cnt / all ..
+		//  collected  cnt / all
+		liCollect->setSubItemNameAt(4,l, toStr(pc.gems.size()) +" #50A0F0/ #60A0D0"+ toStr(col.collects.size()) );
 		liCollect->setSubItemNameAt(5,l, pc.bestTime > 10000.f ? "-" :
 			gcom->clrsDiff[std::min(8,int(pc.bestTime/3.f/60.f))]+ StrTime2(pc.bestTime));
 
@@ -291,75 +292,13 @@ void CGui::CollectionAdvance(float timeCur/*total*/)
 		LogO("]] TotTime: " + StrTime(pt.time) + "  Needed: " + StrTime(trk.timeNeeded) + "  Passed: " + (pa ? "yes":"no"));
 		passed &= pa;
 	}
-	if (trk.passPoints > 0.f)
-	{
-		pa = pt.points >= trk.passPoints;
-		LogO("]] Points: " + fToStr(pt.points,1) + "  Needed: " + fToStr(trk.passPoints,1) + "  Passed: " + (pa ? "yes":"no"));
-		passed &= pa;
-	}
-	if (trk.passPos > 0)
-	{
-		pa = pt.pos <= trk.passPos;
-		LogO("]] Pos: " + toStr(pt.pos) + "  Needed: " + toStr(trk.passPos) + "  Passed: " + (pa ? "yes":"no"));
-		passed &= pa;
-	}
 	LogO(String("]] Passed total: ") + (passed ? "yes":"no"));
 
 	
 	//  --------------  advance  --------------
-	bool last = pc.curTrack+1 == ch.trks.size();
-	LogO("|] This was stage " + toStr(pc.curTrack+1) + "/" + toStr(ch.trks.size()));
-
 	pGame->pause = true;
 	pGame->timer.waiting = true;
 	pGame->timer.end_sim = true;
-
-	//  show stage end [window]
-	CollectFillStageInfo(true);  // cur track
-	app->mWndCollectStart->setVisible(true);
-	app->updMouse();
-
-	//  sound  🔉
-	if (passed)
-		pGame->snd_stage->start();
-	else
-		pGame->snd_fail->start();
-
-
-	if (!last || (last && !passed))
-	{
-		if (pc.curTrack == 0)  // save picked car
-			pc.car = pSet->game.car[0];
-
-		if (passed)
-			pc.curTrack++;  // next stage
-
-		ProgressLSave();
-		return;
-	}
-
-
-	//  Collection end
-	//-----------------------------------------------------------------------------------------------
-
-	//  compute avg
-	float avgPos = 0.f, avgPoints = 0.f, totalTime = 0.f;
-	int ntrks = pc.trks.size();
-	for (int t=0; t < ntrks; ++t)
-	{
-		const ProgressTrackL& pt = pc.trks[t];
-		totalTime += pt.time;  avgPoints += pt.points;  avgPos += pt.pos;
-	}
-	avgPoints /= ntrks;  avgPos /= ntrks;
-
-	//  save
-	pc.curTrack++;
-	pc.totalTime = totalTime;  pc.avgPoints = avgPoints;  pc.avgPos = avgPos;
-
-	LogO("|] Collect finished");
-	String s = "\n\n"+
-		TR("#C0D0F0#{Collection}") + ": #C0D0FF" + ch.nameGui +"\n";
-	#define sPass(pa)  (pa ? TR("  #00FF00#{Passed}") : TR("  #FF8000#{DidntPass}"))
 
 
 	///  Pass Collection  --------------

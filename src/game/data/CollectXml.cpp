@@ -2,6 +2,8 @@
 #include "Def_Str.h"
 #include "TracksXml.h"
 #include "CollectXml.h"
+#include "SceneXml.h"
+#include "paths.h"
 #include <regex>
 #include <tinyxml2.h>
 using namespace tinyxml2;
@@ -58,8 +60,9 @@ bool CollectXml::LoadXml(std::string file, TracksIni* trks, bool check)
 		XMLElement* ePass = eCol->FirstChildElement("pass");
 		if (ePass)
 		{
-			a = ePass->Attribute("timeNeeded");	if (a)  c.timeNeeded = s2r(a);
-			// bool onTime =0;  // 0 infinite  1 timed
+			a = ePass->Attribute("need");	if (a)  c.need = s2i(a) > 0;  // 0 infinite  1 timed
+			a = ePass->Attribute("time");	if (a)  c.time = s2r(a);
+			a = ePass->Attribute("prizes");	if (a)  c.prizes = s2i(a);
 			a = ePass->Attribute("factor");		if (a)  c.factor = s2r(a);
 		}
 
@@ -69,6 +72,15 @@ bool CollectXml::LoadXml(std::string file, TracksIni* trks, bool check)
 		{
 			a = eTr->Attribute("name");		if (a)  c.track = std::string(a);
 		}
+
+		//----  gems, load scene.xml  meh..
+		string path = PATHS::Tracks() + "/"+ c.track +"/";
+		Scene sc;  sc.LoadXmlCollects(path +"scene.xml");
+		
+		for (auto& q : sc.qcols)
+		if ( (1u << q.group) & c.groups)
+			c.collects.push_back(q);
+		//--------
 		
 		all.push_back(c);
 		eCol = eCol->NextSiblingElement("collection");

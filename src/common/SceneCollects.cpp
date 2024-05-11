@@ -60,9 +60,9 @@ void App::CreateCollect(int i)
 #ifndef SR_EDITOR
 	int& ic = pSet->game.collect_num;
 	const Collection& colx = data->collect->all[ic];
-	// LogO("COL GRP "+toStr(1u << c.group)+"  x G "+toStr( (1u << c.group) &colx.groups)+" ");
-	if ( ((1u << c.group) & colx.groups) == 0)
-		return;  // game xml groups filter
+	//  game xml groups filter
+	bool no = ((1u << c.group) & colx.groups) == 0;
+	if (no)  return;
 #endif
 
 	//  add to ogre 🟢
@@ -151,13 +151,9 @@ void App::CreateCollect(int i)
 			btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_NO_CONTACT_RESPONSE);
 
 		bco->setUserPointer(new ShapeData(ST_Collect, 0, 0, 0, &c));  /// *
-	#ifndef SR_EDITOR
 		pGame->collision.world->addCollisionObject(bco);
 		// pGame->collision.shapes.push_back(bshp);  //?
 		c.co = bco;
-	#else
-		world->addCollisionObject(bco);
-	#endif
 	}
 	#endif
 }
@@ -199,18 +195,26 @@ void App::DestroyCollect(int i)
 //  reset  F4 game
 void App::ResetCollects()
 {
+	#ifndef SR_EDITOR
+	int& ic = pSet->game.collect_num;
+	const Collection& colx = data->collect->all[ic];
+
 	iCollected = 0;  oldCollected = 0;
-	for (SCollect& o : scn->sc->collects)
-		if (o.nd)
+	for (SCollect& c : scn->sc->collects)
+		if (c.nd)
 		{
-			o.collected = 0;
-			o.nd->setVisible(1);
+			c.collected = 0;
+			//  game xml groups filter
+			bool no = ((1u << c.group) & colx.groups) == 0;
+			c.nd->setVisible(!no);
 		}
+	#endif
 }
 
 #ifndef SR_EDITOR  // game
 
-//  Update collection game frame
+//-------------------------------------------------------------------------------------------------------
+//  💫💎  Update collection game frame
 //-------------------------------------------------------------------------------------------------------
 void App::UpdCollects()
 {
@@ -318,7 +322,7 @@ void App::UpdColPick()
 	
 	const SCollect& o = scn->sc->collects[iColCur];
 	const Aabb& ab = o.nd->getAttachedObject(0)->getLocalAabb();
-	Vector3 s = o.scale * ab.getSize();  // * sel col's node aabb
+	Vector3 s = o.nd->getScale();  //o.scale * ab.getSize();  // * sel col's node aabb
 
 	boxCol.nd->setPosition(o.pos);
 	boxCol.nd->setScale(s);
@@ -407,11 +411,8 @@ void CGui::listColsChng(MyGUI::List* l, size_t t)
 
 void CGui::listObjsNext(int rel)
 {
-	Li li = 0;
-	if (objListDyn->getIndexSelected()!= ITEM_NONE)  li = objListDyn; //else
-	if (objListSt->getIndexSelected() != ITEM_NONE)  li = objListSt;
-	if (objListBld->getIndexSelected()!= ITEM_NONE)  li = objListBld;
-	if (li)
+	Li li = listCols;
+	if (listCols->getIndexSelected()!= ITEM_NONE)
 	{
 		size_t cnt = li->getItemCount();
 		if (cnt == 0)  return;
@@ -441,12 +442,11 @@ void App::SetColType(int add)
 	int si = p->col.size();
 	id = (id +si +add) % si;
 
-	// iColTNew = tnew;
 	DestroyCollect(iColCur);
 	name = p->col[id].name;
 
 	CreateCollect(iColCur);
-	// UpdObjNewNode();
+	UpdColPick();
 }
 
 //  group  add +-1

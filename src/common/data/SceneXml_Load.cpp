@@ -382,6 +382,44 @@ bool Scene::LoadXml(String file, bool bTer)
 }
 
 
+//  💎 Collectible gems  only
+//  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+bool Scene::LoadXmlCollects(String file)
+{
+	XMLDocument doc;
+	XMLError er = doc.LoadFile(file.c_str());
+	if (er != XML_SUCCESS)
+	{	LogO("!Error: Can't load scene.xml: "+file);  return false;  }
+		
+	XMLElement* root = doc.RootElement();
+	if (!root)  return false;
+
+	//  clear  --
+	collects.clear();
+
+	//  read only
+	XMLElement* e, *u;
+	const char* a;
+
+	e = root->FirstChildElement("collectible");
+	if (e)
+	{	u = e->FirstChildElement("c");
+		while (u)
+		{
+			QCollect c;
+			// a = u->Attribute("n");		if (a)  c.name = string(a);
+			a = u->Attribute("gr");		if (a)  c.group = s2i(a);
+
+			// a = u->Attribute("pos");	if (a)  c.pos = s2v(a);
+			// a = u->Attribute("sc");		if (a)  c.scale = s2r(a);
+
+			qcols.push_back(c);
+			u = u->NextSiblingElement("c");
+	}	}
+	return true;
+}
+
+
 //  Ter Data
 //  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 bool Scene::LoadTerData(TerData& td, XMLElement* e)

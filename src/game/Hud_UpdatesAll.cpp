@@ -444,7 +444,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			
 			for (int i=0; i < all; ++i)
 			if (!cols[i].collected && cols[i].nd)
-				// (( (1<<cols[i].group) & colx.groups)))
+				// (( (1u << cols[i].group) & colx.groups)))
 			{	Col c;
 				c.id = i;
 				c.dist = pos.squaredDistance(cols[i].pos);
@@ -456,9 +456,9 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 				// cols[i].ndBeam->_getFullTransformUpdated();
 			}
 			near.sort();
+			
 			String ss;
-			int i=0;
-			auto it = near.begin();
+			int i=0;  auto it = near.begin();
 			while (i < 4 && it != near.end())
 			{
 				// todo:  3d arrows? update 3d txt..

@@ -135,6 +135,7 @@ public:
 
 	//  💎 Collectible gems  *
 	std::vector<SCollect> collects;
+	std::vector<QCollect> qcols;  // from LoadXmlCollects only
 
 
 	//  base track (new from) for info
@@ -153,5 +154,7 @@ public:
 
 	GAME* pGame =0;  // for all surfaces by name
 	bool LoadXml(Ogre::String file, bool bTer = true), SaveXml(Ogre::String file);
+	
+	bool LoadXmlCollects(Ogre::String file);
 	bool LoadTerData(TerData& td, tinyxml2::XMLElement* e);//, SaveTerData(const TerData& td, XMLElement*& e);
 };

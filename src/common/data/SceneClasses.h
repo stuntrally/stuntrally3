@@ -213,6 +213,12 @@ public:
 	//  special ..
 	// float timeGood;  // appears back after
 };
+class QCollect      //  only 💎 quick load
+{
+public:
+	uint group = 0;
+	// bool collected =0;
+};
 
 
 enum FieldTypes   //  🎆 Field

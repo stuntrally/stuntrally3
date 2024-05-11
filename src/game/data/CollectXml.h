@@ -3,6 +3,7 @@
 #include <vector>
 #include <map>
 #include "CAllowed.h"
+#include "SceneXml.h"
 
 
 ///  🥇 one Collection track setup
@@ -15,20 +16,20 @@ public:
 	int ver = 1;   // version, if changed resets progress
 
 	// float length = 0.f; // stats for display
-	int type = 0;       // infinite, timed etc, for gui tab
-	// float time = 0.f;   // total computed (sum all tracks)
-	// int prizes = 2;     // 0 only gold  1 gold,silver  2 gold,silver,bronze
+	int type = 0;       // gui tab
+	bool need =0;       // 0 infinite  1 timed
+	float time = 0.f;   // time for gold prize
+	int prizes = 2;     // 0 only gold  1 gold,silver  2 gold,silver,bronze
 	float factor = 1.f; // multiplier for silver,bronze points/pos prizes
 	
 	//  Allowed type(s) or specific vehicle(s), 1 or more
 	CAllowed cars;
 
 	std::string track = "Jng1-Curly";
-	bool onTime =0;  // 0 infinite  1 timed
-	float timeNeeded = 0.f;  // for gold?
-	//collectibles in track's scene.xml
 	uint groups = 15;  // collectibles group mask, if more
-		// e.g.  1 easy  2 medium  3=1+2  4 hard  6=4+2 etc
+	// e.g.  1 easy  2 medium  3=1+2  4 hard  6=4+2  etc
+	//collectibles from track's scene.xml
+	std::vector<QCollect> collects;
 
 	//  Game setup
 	//  if empty or -1 then allows any
