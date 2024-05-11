@@ -5,6 +5,7 @@
 #include "CData.h"
 #include "SceneXml.h"
 #include "TracksXml.h"
+#include "CollectXml.h"
 #include "CScene.h"
 
 #include "game.h"
@@ -470,18 +471,23 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 				if (d < 100.f)  ss += "#FFFF20";  else
 				if (d < 400.f)  ss += "#FFB020";  else
 				if (d < 800.f)  ss += "#FF8020";  else
-				if (d < 2000.f)  ss += "#F080F0";  else
-				if (d < 3000.f)  ss += "#8080E0";  else
+				if (d < 1400.f)  ss += "#F080F0";  else
+				if (d < 2000.f)  ss += "#8080E0";  else
 								 ss += "#4080C0";
 				ss += iToStr((*it).id,2)+": "+fToStr(d, 0)+" m";
 				++it;  ++i;
 			}
 			h.txCollect->setCaption(ss);
 
-			all = pSet->game.collect_all; //vis group
+			all = pSet->game.collect_all; //vis, for group
+			const Collection& col = app->data->collect->all[pSet->game.collect_num];
+			auto* pro = app->gui->progressC.Get(col.name);
+			float best = pro ? pro->bestTime : 0.f;
+
 			h.txTimes->setCaption(
 				"\n#D0B0FF" + toStr(app->iCollected)+" / "+toStr(all) +
-				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId)));
+				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId))+
+				"\n#80E0E0" + StrTime(best) );
 		}
 		else
 			h.txTimes->setCaption(

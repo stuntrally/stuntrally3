@@ -28,17 +28,17 @@ public:
 	std::string track = "Jng1-Curly";
 	uint groups = 15;  // collectibles group mask, if more
 	// e.g.  1 easy  2 medium  3=1+2  4 hard  6=4+2  etc
+	
 	//collectibles from track's scene.xml
 	std::vector<QCollect> collects;
 
 	//  Game setup
-	//  if empty or -1 then allows any
-	std::string sim_mode = "normal";
+	std::string sim_mode = "normal";  //  if empty or -1 then allows any
 	int damage_type = 2, boost_type = 2, flip_type = 2, rewind_type = 1;
 
 	//  Hud off
 	bool minimap = 1, chk_arr = 0, chk_beam = 0,
-		trk_ghost = 0, pacenotes = 0, trail = 0;  // deny using it if false
+		trk_ghost = 0, pacenotes = 0, trail = 0;  // deny using it if 0 false
 };
 
 
@@ -58,7 +58,7 @@ class ProgressCollect
 {
 public:
 	std::string name, track;
-	int ver = 0;  // resets if higher..
+	int ver = 0;  // resets if higher
 
 	int fin = -1;      // final prize  -1 none, 0 bronze, 1 silver, 2 gold
 	float bestTime = 1e6;   // not per vehicle

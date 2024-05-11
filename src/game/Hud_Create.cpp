@@ -252,7 +252,8 @@ void CHud::Create()
 		if (pSet->game.collect_num >= 0)
 			h.txTimTxt->setCaption(
 				"\n#C080FF"+TR("#{Collection}") +
-				"\n#A0E0E0"+TR("#{TBTime}") );
+				"\n#A0E0E0"+TR("#{TBTime}") +
+				"\n#80E0E0"+TR("#{TBBest}") );
 		else
 			h.txTimTxt->setCaption(
 				(pSet->game.hasLaps() ? String("#90D0C0")+TR("#{TBLap}") : "")+
