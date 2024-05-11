@@ -1,9 +1,6 @@
 
-# This assumes you used scripts to get and build latest Ogre-next from sources
-# And your Ogre source code is above, in ../Ogre/ogre-next and ../Ogre/ogre-next-deps
-# Tested on GNU/Linux, Debian 11.
-# Windows most likely broken and it probably needs Ogre inside Dependencies subdir here, can be linked.
-# see CMake/DependenciesConfig.cmake
+# This CMake is for CI/CD auto builds in github Actions tab.
+# See in docs/Building.md and BuildingVS.md for building from sources.
 # Conan is used to get SR deps, or not if using FORCE_SYSTEM_DEPENDENCIES.
 
 
@@ -28,25 +25,26 @@ if (NOT WIN32)
     find_package(PkgConfig)
 endif ()
 
-project(StuntRally3 VERSION "3.0.2")
+project( StuntRally3 )
 
 
 #  User Options  to disable building components  --------
-option(BUILD_GAME             "Build the game binary."    ON)
-option(BUILD_EDITOR           "Build the track editor."   ON)
-option(BUILD_MASTER_SERVER    "Build the game list master server."  OFF)
-option(BUILD_TRANSL_TOOL      "Build the tool for translation updating, it creates .pot"  ON)
+option(BUILD_GAME           "Build the game binary."    ON)
+option(BUILD_EDITOR         "Build the track editor."   ON)
+option(BUILD_GAME_SERVER    "Build the game list server app."  ON)
+option(BUILD_TRANSL_TOOL    "Build the tool for translation updating, it creates .pot"  ON)
+
 
 #  Linux prefers lower-case exe names
 if (WIN32 OR APPLE)
     set(GAME_EXE StuntRally3)
     set(EDITOR_EXE SR-Editor3)
-    set(SERVER_EXE SR-MasterServer)
+    set(SERVER_EXE SR-GameServer)
     set(TRANSL_EXE SR-Translator)
 else ()
     set(GAME_EXE stuntrally3)
     set(EDITOR_EXE sr-editor3)
-    set(SERVER_EXE sr-masterserver)
+    set(SERVER_EXE sr-gameserver)
     set(TRANSL_EXE sr-translator)
 endif ()
 
@@ -57,7 +55,7 @@ if (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
 endif (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
 
 #  exe path  ----
-set(EXECUTABLE_OUTPUT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}")
+set( EXECUTABLE_OUTPUT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}" )
 
 #  Set CXX compile flags
 set(CMAKE_CXX_STANDARD 17)
@@ -88,9 +86,9 @@ message(STATUS "---------- SR sources")
 #  Compiler  ----
 set(COMMON_SRC_DIRS
         #  not really sources
-        Media/gui
-        Media/materials
-        Media/particles
+        data/gui
+        data/materials
+        data/particles
 
         #  libs
         ./src/btOgre2
@@ -116,8 +114,9 @@ set(COMMON_SRC_DIRS
         )
 
 #  game
-set(GAME_SRC_DIRS ${COMMON_SRC_DIRS})
-list(APPEND GAME_SRC_DIRS ./src/game)
+set( GAME_SRC_DIRS ${COMMON_SRC_DIRS} )
+list( APPEND GAME_SRC_DIRS ./src/game )
+list( APPEND GAME_SRC_DIRS ./src/game/data )
 #list( APPEND GAME_SRC_DIRS ./src/sound )
 #list( APPEND GAME_SRC_DIRS ./src/vdrift )
 list( APPEND GAME_SRC_DIRS ./src/oics )  # libs
@@ -125,21 +124,21 @@ list( APPEND GAME_SRC_DIRS ./src/network )
 
 
 #  editor
-set(EDITOR_SRC_DIRS ${COMMON_SRC_DIRS})
-list(APPEND EDITOR_SRC_DIRS ./src/editor)
+set( EDITOR_SRC_DIRS ${COMMON_SRC_DIRS} )
+list( APPEND EDITOR_SRC_DIRS ./src/editor )
 
 
 #  exe list  game and editor
 if (BUILD_GAME)
-    list(APPEND EXE_LIST ${GAME_EXE})
+    list( APPEND EXE_LIST ${GAME_EXE} )
 endif ()
 if (BUILD_EDITOR)
-    list(APPEND EXE_LIST ${EDITOR_EXE})
+    list( APPEND EXE_LIST ${EDITOR_EXE} )
 endif ()
 
 ##  Executables
 ##------------------------------------------------------------------------------------------------------
-foreach (EXE ${EXE_LIST})
+foreach( EXE ${EXE_LIST} )
 
     message(STATUS "Configuring: " ${EXE})
 
@@ -157,6 +156,7 @@ foreach (EXE ${EXE_LIST})
         add_recursive(${subdir} EXE_SOURCES)
     endforeach ()
 
+    #  exe  ----
     add_executable(${EXE} WIN32 ${EXE_SOURCES})
 
     # Generate source groups for use in IDEs
@@ -211,12 +211,12 @@ endforeach ()
 ##  Translations tool
 ##------------------------------------------------------------------------------------------------------
 if (BUILD_TRANSL_TOOL)
-	message(STATUS "Configuring: " ${TRANSL_EXE})
+    message(STATUS "Configuring: " ${TRANSL_EXE})
 
-	add_executable(${TRANSL_EXE} WIN32 ./src/transl/main.cpp)
-	target_include_directories(${TRANSL_EXE} PRIVATE ./src/transl)
+    add_executable(${TRANSL_EXE} WIN32 ./src/transl/main.cpp)
+    target_include_directories(${TRANSL_EXE} PRIVATE ./src/transl)
 
-	target_precompile_headers(${TRANSL_EXE} PRIVATE src/transl/pch.h)
+    target_precompile_headers(${TRANSL_EXE} PRIVATE src/transl/pch.h)
 endif()
 
 message(STATUS "---------- SR end")
