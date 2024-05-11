@@ -1,9 +1,10 @@
 #pragma once
+#include "CAllowed.h"
+#include "SceneXml.h"
 #include <string>
 #include <vector>
 #include <map>
-#include "CAllowed.h"
-#include "SceneXml.h"
+#include <OgrePrerequisites.h>  // uint
 
 
 ///  🥇 one Collection track setup
