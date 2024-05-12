@@ -137,6 +137,9 @@ public:
 	std::vector<SCollect> collects;
 	std::vector<QCollect> qcols;  // from LoadXmlCollects only
 
+	//  🎆 Fields  ^
+	std::vector<SField> fields;
+
 
 	//  base track (new from) for info
 	std::string baseTrk;

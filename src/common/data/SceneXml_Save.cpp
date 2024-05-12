@@ -404,16 +404,32 @@ bool Scene::SaveXml(String file)
 		for (i=0; i < collects.size(); ++i)
 		{
 			const SCollect* c = &collects[i];
-			XMLElement* oc = xml.NewElement("c");
-			oc->SetAttribute("n",	c->name.c_str());
-			oc->SetAttribute("gr",	toStrC(c->group));
+			XMLElement* ce = xml.NewElement("c");
+			ce->SetAttribute("n",	c->name.c_str());
+			ce->SetAttribute("gr",	toStrC(c->group));
 
-			oc->SetAttribute("pos",	toStrC(c->pos));
-			oc->SetAttribute("sc",	toStrC(c->scale));
+			ce->SetAttribute("pos",	toStrC(c->pos));
+			ce->SetAttribute("sc",	toStrC(c->scale));
 			
-			cols->InsertEndChild(oc);
+			cols->InsertEndChild(ce);
 		}
 	root->InsertEndChild(cols);
+
+
+	XMLElement* flds = xml.NewElement("fields");  //  🎆 Fields
+		for (i=0; i < fields.size(); ++i)
+		{
+			const SField* f = &fields[i];
+			XMLElement* fe = xml.NewElement("f");
+			fe->SetAttribute("t",	toStrC(f->type));
+
+			fe->SetAttribute("pos",	toStrC(f->pos));
+			fe->SetAttribute("dir",	toStrC(f->dir));
+			fe->SetAttribute("sz",	toStrC(f->size));
+			
+			flds->InsertEndChild(fe);
+		}
+	root->InsertEndChild(flds);
 
 
 	xml.InsertEndChild(root);

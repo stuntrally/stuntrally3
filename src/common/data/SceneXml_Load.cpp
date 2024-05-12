@@ -235,15 +235,6 @@ bool Scene::LoadXml(String file, bool bTer)
 			a = u->Attribute("swayLen");	if (a)  g.swayLen = s2r(a);
 			a = u->Attribute("swaySpeed");	if (a)  g.swaySpeed = s2r(a);
 			
-		#if 1  //  old < 2.3  (no channels)
-		if (grl == 0)  {
-			a = u->Attribute("terMaxAng");	if (a)  grChan[0].angMax = s2r(a);
-			a = u->Attribute("terAngSm");	if (a)  grChan[0].angSm = s2r(a);
-
-			a = u->Attribute("terMinH");	if (a)  grChan[0].hMin = s2r(a);
-			a = u->Attribute("terMaxH");	if (a)  grChan[0].hMax = s2r(a);
-			a = u->Attribute("terHSm");		if (a)  grChan[0].hSm = s2r(a);  }
-		#endif
 			grLayersAll[grl++] = g;
 			u = u->NextSiblingElement("grass");
 		}
@@ -371,6 +362,23 @@ bool Scene::LoadXml(String file, bool bTer)
 
 			collects.push_back(c);
 			u = u->NextSiblingElement("c");
+	}	}
+
+	//  🎆 Fields
+	e = root->FirstChildElement("fields");
+	if (e)
+	{	u = e->FirstChildElement("f");
+		while (u)
+		{
+			SField f;
+			a = u->Attribute("t");		if (a)  f.type = (FieldTypes)s2i(a);
+
+			a = u->Attribute("pos");	if (a)  f.pos = s2v(a);
+			a = u->Attribute("dir");	if (a)  f.dir = s2v(a);
+			a = u->Attribute("sz");		if (a)  f.size = s2v(a);
+
+			fields.push_back(f);
+			u = u->NextSiblingElement("f");
 	}	}
 
 
