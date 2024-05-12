@@ -36,6 +36,7 @@ App::App()
 		br[i].shape = BRS_Sinus;
 		br[i].height = 10.f;  br[i].filter = 2.f;
 	}
+	colNew.pos.y = 1.f;  // new ofs h
 }
 
 

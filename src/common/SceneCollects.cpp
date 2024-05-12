@@ -128,8 +128,10 @@ void App::CreateCollect(int i)
 	// 	o.it->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
 	c.it->setRenderQueueGroup( RQG_AlphaVegObj );
 	c.nd->_getFullTransformUpdated();  //?
+
 #ifdef SR_EDITOR  // ed hide
-	c.nd->setVisible(0);
+	bool vis = edMode == ED_Collects && !bMoveCam;
+	c.nd->setVisible(vis);
 #endif
 
 
@@ -290,31 +292,20 @@ void App::UpdCollects()
 ///  🆕 add new Collectible
 void App::AddNewCol(bool getName)
 {
-	SCollect o = colNew;
-	// if (getName)
-	// 	o.name = vColNames[iColTNew];
-
-	//  pos, rot
-	if (getName)
-	{	// one new
-		const Vector3& v = scn->road->posHit;
-		// o.pos[0] = v.x;  o.pos[1] =-v.z;  o.pos[2] = v.y + colNew.pos[2];
-		o.pos[0] = v.x;  o.pos[1] = v.y + colNew.pos[2];  o.pos[2] = v.z;
-	}
-
-	auto& c = scn->sc->collects;
-	c.push_back(o);
-	CreateCollect(c.size()-1);
+	SCollect c = colNew;
+	
+	const Vector3& v = scn->road->posHit;
+	c.pos = v;
+	c.pos.y += colNew.pos.y;
+	
+	auto& col = scn->sc->collects;
+	col.push_back(c);
+	CreateCollect(col.size()-1);
 }
 
 
 void App::UpdColPick()
 {
-	bool st = edMode == ED_Collects && !bMoveCam;
-	if (boxCol.nd)  boxCol.nd->setVisible(st);
-	if (boxCol.nd)  boxCol.nd->setVisible(st && !scn->road->isLooped);  // end separate
-
-
 	int cols = scn->sc->collects.size();
 	bool bCols = edMode == ED_Collects && !bMoveCam && cols > 0 && iColCur >= 0;
 	if (cols > 0)
@@ -341,7 +332,7 @@ void App::PickCollect()
 	const auto& col = scn->sc->collects;
 	if (col.empty())  return;
 
-	iObjCur = -1;
+	iColCur = -1;
 	const MyGUI::IntPoint& mp = MyGUI::InputManager::getInstance().getMousePosition();
 	Real mx = Real(mp.left)/mWindow->getWidth(), my = Real(mp.top)/mWindow->getHeight();
 	Ray ray = mCamera->getCameraToViewportRay(mx,my);  // 0..1
@@ -395,7 +386,59 @@ void App::PickCollect()
 	mSceneMgr->destroyQuery(rq);
 }
 
+
+//  collect type add +-1
+void App::SetColType(int add)
+{
+	auto& col = scn->sc->collects;
+	bool out = iColCur < 0 || iColCur >= col.size();
+	auto& name = out ? colNew.name : col[iColCur].name;
+
+	auto* p = scn->data->pre;
+	int id = 0;  // find cur in presets
+	auto f = p->icol.find(name);
+	if (f != p->icol.end())
+		id = f->second -1;
+	
+	int si = p->col.size();
+	id = (id +si +add) % si;  // add
+	if (!out)
+		DestroyCollect(iColCur);
+	name = p->col[id].name;  // set
+
+	if (out)  return;
+	CreateCollect(iColCur);
+	UpdColPick();
+}
+
+//  group  add +-1
+void App::SetColGroup(int add)
+{
+	auto& col = scn->sc->collects;
+	bool out = iColCur < 0 || iColCur >= col.size();
+	auto& g = out ? colNew.group : col[iColCur].group;
+
+	if (add < 0 && g > 0)  g += add;
+	else if (add > 0 && g < 9)  g += add;
+}
+
+
 #if 0
+void App::UpdColNewNode()
+{
+	if (!scn->road || !colNew.nd)  return;
+
+	bool vis = scn->road->bHitTer && bEdit() && iObjCur == -1 && edMode == ED_Objects;
+	colNew.nd->setVisible(vis);
+	if (!vis)  return;
+	
+	Vector3 p = scn->road->posHit;  p.y += colNew.pos[2];
+	colNew.SetFromBlt();
+	colNew.nd->setPosition(p);
+	colNew.nd->setScale(colNew.scale);
+	colNew.nd->_getFullTransformUpdated();
+}
+
 //  change collect to insert
 #define ITEM_NONE -1  //?
 void CGui::listColsChng(MyGUI::List* l, size_t t)
@@ -428,58 +471,4 @@ void CGui::listObjsNext(int rel)
 }
 #endif
 
-
-//  collect type add +-1
-void App::SetColType(int add)
-{
-	auto& col = scn->sc->collects;
-	if (iColCur < 0 && iColCur >= col.size())
-		return;
-	auto& name = col[iColCur].name;
-
-	auto* p = scn->data->pre;
-	int id = 0;
-	auto f = p->icol.find(name);
-	if (f != p->icol.end())
-		id = f->second -1;
-	
-	int si = p->col.size();
-	id = (id +si +add) % si;
-
-	DestroyCollect(iColCur);
-	name = p->col[id].name;
-
-	CreateCollect(iColCur);
-	UpdColPick();
-}
-
-//  group  add +-1
-void App::SetColGroup(int add)
-{
-	auto& col = scn->sc->collects;
-	if (iColCur < 0 && iColCur >= col.size())
-		return;
-	auto& g = col[iColCur].group;
-	if (add < 0 && g > 0)  g += add;
-	else if (add > 0 && g < 9)  g += add;
-}
-
-
-#if 0
-void App::UpdColNewNode()
-{
-	if (!scn->road || !objNew.nd)  return;
-
-	bool vis = scn->road->bHitTer && bEdit() && iObjCur == -1 && edMode == ED_Objects;
-	objNew.nd->setVisible(vis);
-	if (!vis)  return;
-	
-	Vector3 p = scn->road->posHit;  p.y += objNew.pos[2];
-	objNew.SetFromBlt();
-	objNew.nd->setPosition(p);
-	objNew.nd->setScale(objNew.scale);
-	objNew.nd->_getFullTransformUpdated();
-}
-#endif
-
-#endif
+#endif  // ed

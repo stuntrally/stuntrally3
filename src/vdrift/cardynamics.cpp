@@ -351,8 +351,12 @@ void CARDYNAMICS::AddAerodynamicDevice(const MATHVECTOR<Dbl,3> & newpos,
 
 char CARDYNAMICS::IsBraking() const
 {
+	if (fDamage >= 100.f)
+		return 0;
+
+	// if (vtype == V_Car)
+
 	//  true when any wheel is braking
-	if (fDamage < 100.f)
 	for (int w=0; w < numWheels; ++w)
 	{
 		WHEEL_POSITION wp = (WHEEL_POSITION)w;

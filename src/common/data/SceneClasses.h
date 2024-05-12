@@ -198,7 +198,7 @@ public:
 class SCollect      //  💎 Collectible gem
 {
 public:
-	std::string name;  // for presets n
+	std::string name = "gem1b";  // for presets n
 	int group = 0;  // game xml set(s)
 
 	Ogre::Vector3 pos{0,0,0};
@@ -223,16 +223,16 @@ public:
 };
 
 
-enum FieldTypes   //  🎆 Field
+enum FieldTypes     //  🎆 Field
 {
-	TF_Teleport, TF_Field, TF_Gravity, TF_Accel
+	TF_Teleport, TF_Field, TF_Gravity, TF_Accel, TF_All
 };
 class SField
 {
 public:
 	FieldTypes type;
 
-	Ogre::Vector3 pos{0,0,0}, size{1,1,1};
+	Ogre::Vector3 pos{0,0,0}, dir{0,1,0}, size{1,1,1};
 
 	Ogre::SceneNode* nd = 0;  // 🟢 ogre
 	Ogre::ParticleSystem* ps = 0;

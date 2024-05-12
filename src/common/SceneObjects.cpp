@@ -298,8 +298,8 @@ void App::ResetObjects()
 
 //  👆 Pick
 //-------------------------------------------------------------------------------------------------------
-
 #ifdef SR_EDITOR
+
 void App::UpdObjPick()
 {
 	bool st = edMode == ED_Start && !bMoveCam;
@@ -685,4 +685,4 @@ void CGui::listParticlesChng(Li li, size_t id)
 	app->bRecreateEmitters = true;
 }
 
-#endif
+#endif  // ed
