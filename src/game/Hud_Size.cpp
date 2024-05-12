@@ -118,7 +118,7 @@ void CHud::Size()
 		//tx = 24;  ty = (hasLaps ? 16 : 4);
 		h.txTimTxt->setPosition(tx,ty);
 		h.txTimes->setPosition(tx+w,ty);  //?-
-		h.txCollect->setPosition(tx, ty +80*t);  //..
+		h.txCollect->setPosition(tx+w, ty +90*t);  //..
 
 		//  🏁 lap result
 		int lx = xMax - 360 * t, ly = ty;

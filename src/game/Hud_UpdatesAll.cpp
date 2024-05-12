@@ -23,13 +23,10 @@
 
 // #include <OgreWindow.h>
 #include <OgreSceneNode.h>
-#include <OgreMaterialManager.h>
-#include <OgrePass.h>
-#include <OgreTechnique.h>
-#include <OgreManualObject2.h>
+// #include <OgreMaterialManager.h>
+// #include <OgrePass.h>
+// #include <OgreTechnique.h>
 #include <OgreSceneManager.h>
-#include <OgreOverlayManager.h>
-#include <OgreOverlayElement.h>
 
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>
@@ -497,7 +494,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			all = pSet->game.collect_all; //vis, for group
 			const Collection& col = app->data->collect->all[pSet->game.collect_num];
 			auto* pro = app->gui->progressC.Get(col.name);
-			float best = pro ? pro->bestTime : 0.f;
+			float best = pro && pro->bestTime < 1e5 ?  pro->bestTime : 0.f;
 
 			h.txTimes->setCaption(
 				"\n#D0B0FF" + toStr(app->iCollected)+" / "+toStr(all) +

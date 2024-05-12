@@ -555,13 +555,15 @@ void App::LoadScene()  // 3
 	//  🔝 create arrows
 	bool col = pSet->game.collect_num >= 0;
 	bool deny = gui->pChall && !gui->pChall->chk_arr;
+	bool road = scn->road && scn->road->getNumPoints() > 2;
 	if (!bHideHudArr && !deny)
 		for (int i=0; i < carModels.size(); ++i)
 		if (!carModels[i]->isGhost())
 		{
-			if (!col)  // chk
+			if (!col && road)  // chk
 				hud->arrChk[i].Create(mSceneMgr, pSet, i);
-			else
+			
+			if (col)
 			for (int a = 0; a < MAX_ArrCol; ++a)
 			{	//  collect
 				hud->arrCol[i][a].node = carModels[i]->ndMain;
