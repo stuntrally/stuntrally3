@@ -1,20 +1,24 @@
  This is a list of other crucial SR3 files, not only in src/ dir.
  It has the content and format of VSCodium Favorites Manager extension file in:
- /home/ch/.config/Code/User/favorites.user/Default.list.txt
- To use it, replace ch with your username, and /home/ch/_sr/_sr3/ with full path to SR3 repo.
+ /home/user/.config/Code/User/favorites.user/Default.list.txt
+ To use it, replace user with your username, and /home/user/_sr/ with full path to SR3 repo.
 
-/home/ch/_sr/_sr3/docs/Roadmap.md|** Roadmap 📈💥
-/home/ch/_sr/_sr3/docs/Developing.md|** Developing 📝
-/home/ch/.config/stuntrally3/game.cfg|-- game .cfg -- ⚙️
-/home/ch/.config/stuntrally3/Ogre.log|Game .log 🟢
-/home/ch/.config/stuntrally3/ogre.cfg
-/home/ch/.config/stuntrally3/editor.cfg|-=- ed .cfg -=- ⚙️
-/home/ch/.config/stuntrally3/Ogre_ed.log|Editor .log 🟢
-/home/ch/.config/stuntrally3/ogre_ed.cfg
-/home/ch/_sr/_sr3/src/btOgre2/README.md|- Readme 🖼️
-/home/ch/_sr/_sr3/src/emojis.txt|emojis ✨
-/home/ch/_sr/_sr3/config/tracks.ini|tracks ini 🏞️
-/home/ch/_sr/_sr3/data/gui/core_language_en_tag.xml|Gui -- en xml 🎛️
-/home/ch/_sr/_sr3/data/gui/Game_Options.layout
-/home/ch/_sr/_sr3/data/gui/Editor_Options.layout
-/home/ch/_sr/_sr3/data/gui/Editor.layout
+/home/user/_sr/docs/Developing.md|** Developing
+/home/user/_sr/docs/Roadmap.md|** Roadmap 📝
+/home/user/_sr/docs/Changelog.md|** Changelog
+/home/user/.config/stuntrally3/paint.cfg|paint cfg🌈
+/home/user/.config/stuntrally3/game.cfg|-- game .cfg -- ⚙️
+/home/user/.config/stuntrally3/Ogre.log|Game .log 🟢
+/home/user/.config/stuntrally3/ogre.cfg
+/home/user/.config/stuntrally3/editor.cfg|-=- ed .cfg -=- ⚙️
+/home/user/.config/stuntrally3/Ogre_ed.log|Editor .log 🟢
+/home/user/.config/stuntrally3/ogre_ed.cfg
+/home/user/_sr/src/btOgre2/README.md|- Readme 🖼️
+/home/user/_sr/src/emojis.txt|emojis ✨
+/home/user/_sr/config/tracks.ini|tracks ini 🏞️
+/home/user/_sr/data/gui/core_language_en_tag.xml|Gui -- en xml 🎛️
+/home/user/_sr/data/gui/Game_Options.layout
+/home/user/_sr/data/gui/Editor_Options.layout
+/home/user/_sr/data/gui/Editor.layout
+/home/user/.config/stuntrally3/MyGUI.log
+/home/user/_sr/CMakeLists.txt
