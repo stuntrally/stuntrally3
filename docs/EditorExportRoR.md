@@ -1,5 +1,6 @@
 _Help on using SR3 Track Editor to export track(s) to Rigs of Rods._
 
+Page with help on using SR3 Track Editor [here](Editor.md).
 
 ### Introduction
 

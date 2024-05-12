@@ -10,7 +10,7 @@ It can also export track(s) to Rigs of Rods. Details [here](EditorExportRoR.md).
 
 ## NEW Video Tutorial
 
-Just started video tutorial for latest version 3.0:  
+Newly started video tutorial from version 3.0:  
 
 [Full playlist](https://www.youtube.com/playlist?list=PLU7SCFz6w40PY3L8qFNTe4DRq_W6ofs1d) on youtube.
 

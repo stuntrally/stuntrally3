@@ -6,12 +6,15 @@ This section lists changes not yet released, but committed to repositories stunt
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
   - **Collection** - new game mode. WIP  
     - Collecting gems located on track, for completion of all or quicker time
+    - Hud 3D arrows on vehicle pointing to closest 3 gems
   - More **Lights** - with toggable Options
     - vehicle: brakes, boost, reverse, under glow and collection gems
-  - New tab on Paints - Adjust for **Under glow** color H,S,V
+  - New tab on Paints - Adjust - **Under glow** for color H,S,V
 - Editor
   - Edit mode for Collection, key Y  
-    - Insert/remove gems, move, scale, change type (at end of presets.xml)
+    - Insert/remove gems, move, scale
+    - change type (for look, at end of presets.xml)
+    - change group (for more sets on 1 track)
 - Updated docs
 
 ## Version 3.1
