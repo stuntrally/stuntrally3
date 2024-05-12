@@ -90,6 +90,10 @@
 			<Property key="FontName" value="font.big"/>
 		</Widget>
 
+		<Widget type="ImageBox" skin="ImageBox" position="32 422 56 56">
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="ImageTexture" value="sr-editor.png"/>
+		</Widget>
 		<Widget type="Button" skin="Button" position="108 426 404 50" align="Left" name="BtnTrackEditor">
 			<Property key="Caption" value="#{TrackEditor}"/>
 			<Property key="Colour" value="0.7 0.9 0.9"/>
@@ -270,6 +274,7 @@
 		</Widget>
 		<Widget type="ImageBox" skin="ImageBox" position="92 12 436 72" name="PanGames0">
 			<Property key="Colour" value="1.0 0.9 0.6"/>
+			<Property key="Alpha" value="0.9"/>
 			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
@@ -287,31 +292,32 @@
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
 		<Widget type="ImageBox" skin="ImageBox" position="92 84 436 72" name="PanGames1">
-			<Property key="Colour" value="0.5 0.9 0.9"/>
+			<Property key="Colour" value="0.4 0.9 0.9"/>
 			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="108 96 404 50" align="Left" name="BtnGames1">
-			<Property key="Caption" value="#A0D0F0#{SplitScreen}"/>
-			<Property key="Colour" value="0.5 0.9 0.9"/>
+			<Property key="Caption" value="#50F0F0#{SplitScreen}"/>
+			<Property key="Colour" value="0.3 0.9 0.9"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
 		</Widget>
 
 		<Widget type="ImageBox" skin="ImageBox" position="32 164 56 56">
 			<Property key="ImageCoord" value="640 0 128 128"/>
-			<Property key="Alpha" value="0.6"/>
+			<Property key="Colour" value="0.6 0.8 1"/>
+			<Property key="Alpha" value="0.7"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
 		<Widget type="ImageBox" skin="ImageBox" position="92 156 436 72" name="PanGames2">
-			<Property key="Colour" value="0.7 0.7 1"/>
+			<Property key="Colour" value="0.3 0.7 1"/>
 			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="108 168 404 50" align="Left" name="BtnGames2">
-			<Property key="Caption" value="#A0A0FF#{Multiplayer}"/>
-			<Property key="Colour" value="0.7 0.7 1"/>
+			<Property key="Caption" value="#3090FF#{Multiplayer}"/>
+			<Property key="Colour" value="0.3 0.6 1"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
 		</Widget>
@@ -375,6 +381,7 @@
 
 		<Widget type="ImageBox" skin="ImageBox" position="532 308 56 56">
 			<Property key="ImageCoord" value="768 128 128 128"/>
+			<Property key="Colour" value="0.9 0.8 1"/>
 			<Property key="Alpha" value="0.7"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>

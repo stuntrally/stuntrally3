@@ -170,41 +170,58 @@ void CGui::tabGame(Tab, size_t)  // main game wnd tab change
 }
 
 //  🪟 game window title and color
+//.......................................................................................
 void CGui::UpdWndTitle()
 {
 	const int mnu = pSet->iMenu;
 	if (mnu < MN_Single && mnu > MN_Career)
 		return;  // not set
+	
 	bool game = mnu == MN_Single,   champ = mnu == MN_Champ,
 		tutor = mnu == MN_Tutorial, chall = mnu == MN_Chall,
 		collect = mnu == MN_Collect, career = mnu == MN_Career,
 		chAny = tutor || champ || chall || collect || career,
 		gc = game || chAny;
 	
-	UString sCh =
-		collect ? TR("#C080FF#{Collection}") : career ? TR("#FF8080#{Career}") :
-		chall ? TR("#C0C0FF#{Challenge}") :
-		champ ? TR("#B0FFB0#{Championship}") : TR("#FFC020#{Tutorial}");
-
 	Tab t = app->mTabsGame;
 	size_t id = t->getIndexSelected();
 
 	int mplr = app->mClient ? app->mClient->getPeerCount()+1 :
 		id == TAB_Multi ? 1 : 0;  // 📡 networked
 	int plr = app->pSet->gui.local_players;  // 👥 splitscreen
-
-	//  clr
-	auto clr = collect ? Colour(0.8,0.5,1.0) : career ? Colour(1.0,0.6,0.6) :
-		tutor ? Colour(1.0,0.6,0.3) : champ ? Colour(0.6,1.0,0.6) : chall ? Colour(0.6,0.6,1.0) :
-		mplr > 0 ? Colour(0.8,0.6,1.0) :
-		plr == 1 ? Colour(0.9,0.9,0.5) : Colour(0.5,1.0,1.0);
-	app->mWndGame->setColour(clr);
-	//  title
-	app->mWndGame->setCaption(
-		mplr > 0 ?  TR("#{Multiplayer} - #{Players}: ") + toStr(mplr)  :
-		chAny ?  sCh  :
-		plr == 1 ?  TR("#{SingleRace}") :
-			TR("#{SplitScreen} - #{Players}: ") + toStr(plr) );
+	
+	Colour c;  UString s;  // title
+	if (mplr)
+	{	c = Colour(0.2,0.6,1.0);
+		s = TR("#80C0FF#{Multiplayer} - #{Players}: ") + toStr(mplr);
+	}
+	else if (career)
+	{	c = Colour(1.0,0.6,0.6);
+		s = TR("#FFA0A0#{Career}");
+	}
+	else if (collect)
+	{	c = plr == 1 ? Colour(0.9,0.7,1.0) : Colour(0.8,0.6,1.0);
+		s = plr == 1 ? TR("#D0A0FF#{Collection}") :
+			TR("#E0C0FF#{Collection} - #{SplitScreen} - #{Players}: ") + toStr(plr);
+	}
+	else if (chall)
+	{	c = Colour(0.6,0.6,1.0);
+		s = TR("#C0C0FF#{Challenge}");
+	}
+	else if (champ)
+	{	c = Colour(0.5,1.0,0.5);
+		s = TR("#A0FFA0#{Championship}");
+	}
+	else if (tutor)
+	{	c = Colour(1.0,0.6,0.3);
+		s = TR("#FFC020#{Tutorial}");
+	}else
+	{	c = plr == 1 ? Colour(0.9,0.9,0.5) : Colour(0.5,1.0,1.0);
+		s = plr == 1 ? TR("#F0F050#{SingleRace}") :
+			TR("#60F0F0#{SplitScreen} - #{Players}: ") + toStr(plr);
+	}
+	app->mWndGame->setColour(c);
+	app->mWndGame->setCaption(s);
 }
 
 

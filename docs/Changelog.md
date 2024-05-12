@@ -3,19 +3,18 @@
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
 
 - Game
-  - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
   - **Collection** - new game mode. WIP  
     - Collecting gems located on track, for completion of all or quicker time
     - Hud 3D arrows on vehicle pointing to closest 3 gems
   - More **Lights** - with toggable Options
     - vehicle: brakes, boost, reverse, under glow and collection gems
   - New tab on Paints - Adjust - **Under glow** for color H,S,V
+  - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
 - Editor
   - Edit mode for Collection, key Y  
     - Insert/remove gems, move, scale
     - change type (for look, at end of presets.xml)
     - change group (for more sets on 1 track)
-- Updated docs
 
 ## Version 3.1
 
@@ -44,8 +43,8 @@ This section lists changes not yet released, but committed to repositories stunt
   - New tab Options - Screen - GUI with scales for font size and windows margin size, all need restart
   - Screen and Video tabs with render system options, WIP few not done  
     - Vsync works immediately, but Resolution, Fullscreen, Antialiasing need restart  
-- Updated docs
-- Added Japanese font and quick, basic translation (could be wrong)
+- Added Japanese font and quick, basic translation (could be wrong)  
+- Linux binary release
 
 ## Version 3.0 beta
 

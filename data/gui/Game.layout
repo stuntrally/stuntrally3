@@ -1636,7 +1636,7 @@
 			<!-- 👥 SplitScreen -->
 			<!-- ............................................................................................................... -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
-				<Property key="Caption" value="#A0D0F0#{SplitScreen}"/>
+				<Property key="Caption" value="#40FFFF#{SplitScreen}"/>
 				
 				<Widget type="ImageBox" skin="ImageBox" position="632 28 56 56">
 					<Property key="ImageCoord" value="768 0 128 128"/>
@@ -1734,7 +1734,7 @@
 			<!-- 📡 Multiplayer -->
 			<!-- ............................................................................................................... -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
-				<Property key="Caption" value="#A0A0FF#{Multiplayer}"/>
+				<Property key="Caption" value="#3090FF#{Multiplayer}"/>
 				<Widget type="TabControl" skin="TabControl" position="16 15 744 497" name="SubTabNet">
 					<Property key="Colour" value="0.73 0.88 1"/>
 					<Property key="SmoothShow" value="false"/>
