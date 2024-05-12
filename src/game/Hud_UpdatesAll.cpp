@@ -351,12 +351,13 @@ void CHud::UpdCarTexts(int carId, Hud& h, float time, CAR* pCar)
 //  ⏱️ Times etc
 //-------------------------------------------------------------------------------------------------------------------
 //  list nearest, dist
-struct Col
+class LiCol
 {
+public:
 	int id;
 	float dist;
 	
-	bool operator<(const Col& other)
+	bool operator<(const LiCol& other)
 	{
 		return dist < other.dist;
 	}
@@ -441,30 +442,30 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			int all = cols.size();
 			auto pos = pCarM->ndMain->getPosition();
 
-			std::list<Col> near;  // nearest few
+			std::list<LiCol> li;  // nearest few
 			//all = app->sc->collects.size();
 			// const Collect& colx = app->data->collect->all[pSet->game.collect_num];
 			
 			for (int i=0; i < all; ++i)
 			if (!cols[i].collected && cols[i].nd)
 				// (( (1u << cols[i].group) & colx.groups)))
-			{	Col c;
+			{	LiCol c;
 				c.id = i;
 				c.dist = pos.squaredDistance(cols[i].pos);
-				near.push_back(c);
+				li.push_back(c);
 
 				//  scale by dist-  todo in shader..
 				// float d = min(0.5f, max(10.f, c.dist * 0.04f));
 				// cols[i].ndBeam->setScale(d * Vector3(0.1f, 10.f, 0.1f));
 				// cols[i].ndBeam->_getFullTransformUpdated();
 			}
-			near.sort();
+			li.sort();
 
 			//  dist txts
 			int id = pCarM->iIndex;
 			String ss = "\n";
-			int i=0;  auto it = near.begin();
-			while (i < MAX_ArrCol && it != near.end())
+			int i=0;  auto it = li.begin();
+			while (i < MAX_ArrCol && it != li.end())
 			{
 				//  upd arrows
 				if (pSet->check_arrow && // !bRplPlay &&
