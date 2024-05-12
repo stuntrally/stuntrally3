@@ -18,12 +18,15 @@
 ▶️[Videos](https://www.youtube.com/user/TheCrystalHammer) - from gameplay and editor  
 💜[Donations](https://cryham.tuxfamily.org/donate/) - financial support
 
-### Forum
+### Feedback
+💬[Discord](https://discord.gg/KXuCwhTE)  
+🪧[Reddit](https://www.reddit.com/r/stuntrally/) - r/stuntrally/  
+[github discussions](https://github.com/stuntrally/stuntrally3/discussions)  
+Matrix chat room: #stuntrally:matrix.org  
+
+### Forum  
 🏛️[New Forum](https://groups.f-hub.org/stunt-rally/) - Discussions, Tracks, content, [how to join](https://groups.f-hub.org/d/2ftpShKs/) info on top.  
 📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - archive  
-New:  
-🪧[Reddit](https://www.reddit.com/r/stuntrally/) - r/stuntrally/  
-💬Matrix chat room: #stuntrally:matrix.org  
 
 ------------------------------------------------------------------------------
 
@@ -67,7 +70,8 @@ Esc or Tab - shows/hides GUI.
 
 Quick setup help is on the Welcome screen, shown at game start, or by Ctrl-F1.  
 - Use Ogre config dialog before start to adjust Screen resolution, etc (start with `cfg` argument will show it).  
-  Only OpenGL 3+ Rendering Subsystem is supported now
+  OpenGL 3+ Rendering Subsystem is recommended now,  
+  but Vulkan seems better on Windows with integrated GPUs or laptops.
 - Open Options to pick graphics preset according to your GPU and *do* restart.  
 - Open Options tab Input, to see or reassign keys, or configure a game controller, info [here](docs/Running.md#input).  
 
