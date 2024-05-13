@@ -570,6 +570,7 @@ void App::LoadScene()  // 3
 			{	//  collect
 				hud->arrCol[i][a].node = carModels[i]->ndMain;
 				hud->arrCol[i][a].Create(mSceneMgr, pSet, i);
+				hud->arrCol[i][a].it->setDatablockOrMaterialName("collect_arrow");				
 			}
 		}
 }

@@ -78,11 +78,11 @@ public:
 	{	return type == RD_Road;  }
 	bool IsRiver()   // just 🛣️road,  no wall, no column, no _ter materials
 	{	return type == RD_River;  }
-	bool IsDecor()   // just 📏wall,  for platforms and decorations  //todo:
+	bool IsDecor()   // just 📏wall,  for platforms and decorations
 	{	return type == RD_Decor;  }
-	
 	bool IsTrail()   // just 🎗️road (like river), but has colors per vertex
 	{	return type == RD_Trail;  }
+
 	int trailSegId;  // for current road trace only
 	int player = 0;  // splitscreen player for trail RV_Hud3D[..]
 
