@@ -266,7 +266,7 @@ void CGui::InitGui()
 	sv= &svMoveSpd;		sv->Init("MoveSpd",		&pSet->move_speed, 0.1f,8.f, 3.f);  sv->DefaultF(1.f);
 	
 
-	//  📈 debug, other
+	//  📈 debug, other 🌐
 	ck= &ckWireframe;	ck->Init("Wireframe",	&app->bWireframe);  Cev(Wireframe);
 	ck= &ckCamPos;		ck->Init("CamPos",		&pSet->camPos);    Cev(CamPos);
 	ck= &ckInputBar;	ck->Init("InputBar",	&pSet->inputBar);  Cev(InputBar);

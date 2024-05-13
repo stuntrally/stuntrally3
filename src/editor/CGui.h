@@ -97,7 +97,7 @@ public:
 	CK(Minimap);
 	void btnSetCam(WP);
 
-	//  📈 debug, other
+	//  📈 debug, other 🌐
 	CK(Wireframe);  Ck ckAllowSave;  CK(HudOn);
 	CK(InputBar);  CK(CamPos);
 

@@ -78,7 +78,7 @@ public:
 
 
 	//  ⛓️ Utils  ----------------
-	//  Wireframe
+	//  🌐 Wireframe
 	bool bWireframe = 0;
 	void SetWireframe();
 	void SetWireframe(Ogre::HlmsTypes type, bool wire);

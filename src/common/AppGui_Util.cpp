@@ -17,7 +17,7 @@ using namespace Ogre;
 using namespace std;
 
 
-//  ⛓️ util  Wireframe
+//  ⛓️ util  🌐 Wireframe
 //----------------------------------------------------------------
 void AppGui::SetWireframe()
 {

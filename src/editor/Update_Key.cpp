@@ -233,7 +233,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
    			break;
 
 
-		//  📈 Fps, WireFrame  F11, F10
+		//  📈 Fps, 🌐 WireFrame  F11, F10
 		case key(F11):
 			gcom->nextFps();  return;
 

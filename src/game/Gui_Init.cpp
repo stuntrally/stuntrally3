@@ -272,7 +272,7 @@ void CGui::InitGui()
 	valGraphsType->setCaption(toStr(pSet->graphs_type));
 
 
-	//  📈 debug, other  ------------------------------------------------------------
+	//  📈 debug, other 🌐  ------------------------------------------------------------
 	ck= &ckWireframe;	ck->Init("Wireframe",   &app->bWireframe);  Cev(Wireframe);
 	ck= &ckHudOn;		ck->Init("HudOn",       &pSet->hud_on);
 
