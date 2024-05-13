@@ -2,7 +2,8 @@
 #include "SColor.h"
 #include "mathvector.h"
 #include "quaternion.h"
-// #include <Ogre.h>
+#include "Road.h"
+
 #include <OgreCommon.h>
 #include <OgreVector2.h>
 #include <OgreVector3.h>
@@ -98,6 +99,7 @@ public:
 };
 
 
+//  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 class VegetLayer	//  🌳🪨 Vegetation model
 {
 public:
@@ -135,6 +137,7 @@ public:
 	float rdPow = 0.f;  // road border adjust
 };
 
+
 //  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 class FluidBox		//  💧 Fluid box shape - water, mud, etc.
 {
@@ -152,6 +155,7 @@ public:
 };
 
 
+//  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 class Object		//  📦 Object - mesh (static🪨) or prop (dynamic)
 {
 public:
@@ -239,4 +243,47 @@ public:
 	Ogre::Item* it = 0;  //rem-
 
 	btCollisionObject* co = 0;  // 🎳 bullet
+};
+
+
+//  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+class SEntity       // Entity 😮 todo
+//  Any combination of stuff
+//  e.g. lamp,  bonfire, flaming barrel, mine, magnetic ball
+//  flying plane,  cloud with thunder, opening gate, laser turret
+{
+public:
+	Ogre::Vector3 pos{0,0,0}, scale{1,1,1};
+	Ogre::Quaternion rot;
+
+	Ogre::SceneNode* nd = 0;  // 🟢 ogre
+	Ogre::Item* it = 0;  // mesh
+	//vector<>  many, offset pos,rot?,sc
+	
+	Ogre::ParticleSystem* ps = 0;
+	Ogre::Light* li =0;
+	Ogre::v1::BillboardSet* bs =0;
+
+	std::string name;  // mesh file name
+	std::string material;  // variant, default if empty
+
+	SplineMarkEd animPath;  // animation move, rot ang-, scale=width
+	// SplineMarkEd lightning;
+	// field type(s), shape dim, more events
+
+	//  flags
+	bool dynamic = false;  // auto set, has .bullet
+	bool stat = false;  // force static, if dyn
+	bool shadow = true;
+
+	// 🎳 bullet trigger shape for events..
+	// todo: e.g. car damage, open gate, turn on light, laser shoot..
+	// btCollisionObject* trigger = 0;
+	// Ogre::ParticleSystem* psTrig = 0;
+
+	btDefaultMotionState* ms = 0;  // 🎳 bullet for dynamic
+	btCollisionObject* co = 0;
+	btRigidBody* rb = 0;
+	btTransform* tr1 = 0;  // 1st pos after load, for reset
+	void SetFromBlt();
 };

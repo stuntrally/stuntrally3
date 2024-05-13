@@ -58,8 +58,7 @@ void App::CreateField(int i)
 	//  add to ogre 🟢
 	try 
 	{	c.it = mSceneMgr->createItem("cube.mesh");  //-
-		// if (!col->material.empty())
-		// 	c.it->setDatablockOrMaterialName(col->material);
+		c.it->setDatablockOrMaterialName("checkpoint");
 
 		// c.it->setName("cE"+s);
 		// SetTexWrap(c.it);

@@ -1033,7 +1033,7 @@
 							<Property key="TextColour" value="1.0 0.8 0.8"/>
 						</Widget>
 
-						<!-- wireframe -->
+						<!-- 🌐 wireframe -->
 						<Widget type="ImageBox" skin="ImageBox" position="32 116 30 30">
 							<Property key="ImageCoord" value="640 256 128 128"/>
 							<Property key="Alpha" value="0.4"/>
