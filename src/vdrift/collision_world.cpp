@@ -60,17 +60,8 @@ void IntTickCallback(btDynamicsWorld* world, btScalar timeStep)
 			}
 
 			if (sdField && sdCar)
-			{
-				auto* fld = sdField->pField;
-				// sdCar->pCarDyn->inField = 
-
-				// TF_Teleport, TF_Field, TF_Gravity, TF_Accel, TF_All
-				
-				auto p = sdCar->pCarDyn->GetPosition();
-				p[2] += 5.f;  //-
-				sdCar->pCarDyn->SetPosition(p);
-				// const MATHVECTOR<Dbl,3> f(0,100000,100000);
-				// sdCar->pCarDyn->ApplyForce(f);  //?
+			{	// add field to car
+				sdCar->pCarDyn->inFields.push_back(sdField->pField);
 			}
 
 
@@ -317,7 +308,7 @@ struct MyRayResultCallback : public btCollisionWorld::RayResultCallback
 		, bIgnoreCars(ignoreCars), bCamTilt(camTilt), bCamDist(camDist)
 	{	}
 
-	btVector3	m_rayFromWorld;//used to calculate hitPointWorld from hitFraction
+	btVector3	m_rayFromWorld; // used to calculate hitPointWorld from hitFraction
 	btVector3	m_rayToWorld;
 
 	btVector3	m_hitNormalWorld{0,0,1};
@@ -334,22 +325,25 @@ struct MyRayResultCallback : public btCollisionWorld::RayResultCallback
 			return 1.0;
 					
 		//  no other cars collision (for wheel raycasts)
+		//------------------------------------------------------------
 		ShapeData* sd = (ShapeData*)obj->getUserPointer();
 		if (sd)
 		{
 			if (bIgnoreCars && sd->type == ST_Car)
 				return 1.0;
 			
-			//  car ignores fluids (camera not)
+			//  car ignores 🌊 fluids (camera not)
 			//  hovercrafts treat fluids as solids
 			if (!bCamTilt && sd->type == ST_Fluid && !sd->pFluid->solid)
 				return 1.0;
 
-			//  always ignore collectibles
-			if (sd->type == ST_Collect)
-				return 1.0;
+			//  always ignore 💎 collectibles
+			if (sd->type == ST_Collect)  return 1.0;
 
-			//  always ignore wheel triggers
+			//  always ignore 🎆 fields
+			if (sd->type == ST_Field)  return 1.0;
+
+			//  always ignore ⚫ wheel triggers
 			if (sd->type == ST_Wheel)  // && (obj->getCollisionFlags() & btCollisionObject::CF_NO_CONTACT_RESPONSE))
 				return 1.0;
 		}
@@ -470,7 +464,7 @@ bool COLLISION_WORLD::CastRay(
 				//case SU_Vegetation: case SU_Border:
 				
 				//case SU_ObjectStatic: //case SU_ObjectDynamic:
-				//case SU_Collect:
+				//case SU_Collect:  // in MyRayResultCallback
 				//case SU_Field:
 
 				case SU_Fluid:  //  solid fluids

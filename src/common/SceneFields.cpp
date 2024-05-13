@@ -46,7 +46,7 @@ void App::CreateFields()
 
 void App::CreateField(int i)
 {
-	SField& c = scn->sc->fields[i];
+	SField& f = scn->sc->fields[i];
 	// String s = toStr(i);  // counter for names
 	/*const PCollect* col = scn->data->pre->GetCollect(c.name);
 	if (!col)
@@ -57,12 +57,17 @@ void App::CreateField(int i)
 
 	//  add to ogre 🟢
 	try 
-	{	c.it = mSceneMgr->createItem("cube.mesh");  //-
-		c.it->setDatablockOrMaterialName("checkpoint");
+	{	f.it = mSceneMgr->createItem("cube.mesh");  //-
+		f.it->setDatablockOrMaterialName(
+			f.type == TF_Accel ? "checkpoint_lap" :  // cyan
+			f.type == TF_Gravity ? "checkpoint_lastlap" :  // yellow
+			f.type == TF_Teleport ? "checkpoint_finish" :  // red
+				"checkpoint_normal"  // green
+		);
 
 		// c.it->setName("cE"+s);
 		// SetTexWrap(c.it);
-		c.it->setCastShadows(0);
+		f.it->setCastShadows(0);
 	}
 	catch (Exception& e)
 	{
@@ -71,13 +76,13 @@ void App::CreateField(int i)
 	}
 
 	//  pos, scale  ----
-	c.nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode();
-	c.nd->setPosition(c.pos);
-	c.nd->setScale(c.size);
-	c.nd->attachObject(c.it);  c.it->setVisibilityFlags(RV_Objects);  //?
+	f.nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode();
+	f.nd->setPosition(f.pos);
+	f.nd->setScale(f.size);
+	f.nd->attachObject(f.it);  f.it->setVisibilityFlags(RV_Objects);  //?
 
-	c.it->setRenderQueueGroup( RQG_AlphaVegObj );
-	c.nd->_getFullTransformUpdated();  //?
+	f.it->setRenderQueueGroup( RQG_AlphaVegObj );
+	f.nd->_getFullTransformUpdated();  //?
 
 #ifdef SR_EDITOR  // ed hide
 	bool vis = edMode == ED_Fields && !bMoveCam;
@@ -90,24 +95,24 @@ void App::CreateField(int i)
 	{
 		///  🏢 static  . . . . . . . . . . . . 
 		btCollisionShape* bshp = 0;
-		bshp = new btBoxShape(btVector3(c.size.x,c.size.y,c.size.z) * 0.3f);  //par
+		bshp = new btBoxShape(btVector3(f.size.x,f.size.z,f.size.y) * 0.5f);  //par
 
 		size_t id = SU_Collect + i;
 		bshp->setUserPointer((void*)id);
 		bshp->setMargin(0.1f); //
 
 		btCollisionObject* bco = new btCollisionObject();
-		btTransform tr;  tr.setIdentity();  tr.setOrigin(btVector3(c.pos.x,-c.pos.z,c.pos.y));
+		btTransform tr;  tr.setIdentity();  tr.setOrigin(btVector3(f.pos.x,-f.pos.z,f.pos.y));
 		bco->setActivationState(DISABLE_SIMULATION);
 		bco->setCollisionShape(bshp);	bco->setWorldTransform(tr);
 
 		bco->setCollisionFlags(bco->getCollisionFlags() |
 			btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_NO_CONTACT_RESPONSE);
 
-		bco->setUserPointer(new ShapeData(ST_Field, 0, 0, 0, 0, &c));  /// *
+		bco->setUserPointer(new ShapeData(ST_Field, 0, 0, 0, 0, &f));  /// *
 		pGame->collision.world->addCollisionObject(bco);
 		// pGame->collision.shapes.push_back(bshp);  //?
-		c.co = bco;
+		f.co = bco;
 	}
 	#endif
 }

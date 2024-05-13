@@ -10,11 +10,13 @@ This section lists changes not yet released, but committed to repositories stunt
     - vehicle: brakes, boost, reverse, under glow and collection gems
   - New tab on Paints - Adjust - **Under glow** for color H,S,V
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
+  - WIP Fields: teleporters, force fields, speed up, lift, anti-gravity  
 - Editor
   - Edit mode for Collection, key Y  
     - Insert/remove gems, move, scale
     - change type (for look, at end of presets.xml)
     - change group (for more sets on 1 track)
+  - WIP Edit mode for Fields, key H  
 
 ## Version 3.1
 

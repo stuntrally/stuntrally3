@@ -24,7 +24,7 @@
 #include "Buoyancy.h"
 
 class MODEL;  class CONFIGFILE;  class COLLISION_WORLD;  class FluidBox;  class GAME;
-class SETTINGS;  class Scene;  class FluidsXml;
+class SETTINGS;  class Scene;  class FluidsXml;  class SField;
 
 
 class CARDYNAMICS : public btActionInterface
@@ -34,6 +34,7 @@ public:
 	SETTINGS* pSet =0;
 	Scene* pScene =0;  // for fluids
 	FluidsXml* pFluids =0;  // to get fluid params
+
 	std::vector<float> inputsCopy;  // just for dbg info txt
 
 	int numWheels;  // copy from CAR
@@ -57,7 +58,9 @@ public:
 	virtual void debugDraw(btIDebugDraw* debugDrawer)	{	}
 
 // graphics interface, interpolated
-	void Update(), UpdateBuoyancy(); // update interpolated chassis state
+	void Update();  // update interpolated chassis state
+	void UpdateBuoyancy(), UpdateFields();
+
 	const MATHVECTOR<Dbl,3> & GetCenterOfMassPosition() const	{	return chassisCenterOfMass;		}
 	const MATHVECTOR<Dbl,3> & GetPosition() const	{	return chassisPosition;		}
 	const QUATERNION<Dbl> & GetOrientation() const	{	return chassisRotation;		}
@@ -168,6 +171,7 @@ public:
 	float doFlip = 0.f, doBoost = 0.f;    // Fuel set later when road length known
 	float boostFuel = 0.f, boostFuelStart = 0.f, boostVal = 0.f, fBoostFov = 0.f;
 
+	std::list<SField*> inFields;  // 🎆
 	std::list<FluidBox*> inFluids;  /// list of fluids this car is in (if any)
 	std::vector<std::list<FluidBox*> > inFluidsWh;
 	

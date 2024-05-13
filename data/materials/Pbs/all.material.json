@@ -21583,8 +21583,8 @@
 
 		"collect_arrow" :
 		{
-			"macroblock" : "Macroblock_8",
-			"blendblock" : "Blendblock_2",
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"transparency" :
@@ -21595,23 +21595,21 @@
 			},
 			"diffuse" :
 			{
-				"value" : [1, 1, 1],
-				"background" : [1, 1, 1, 1],
-				"texture" : "checkpoint.png",
-				"sampler" : "Sampler_10"
+				"value" : [0.2, 0.7, 0.1],
+				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0, 0, 0]
+				"value" : [0.1, 0.13, 0.15]
 			},
 			"fresnel" :
 			{
-				"value" : [0.1, 0.1, 0.1],
+				"value" : [0.1, 0.12, 0.12],
 				"mode" : "coloured"
 			},
 			"roughness" :
 			{
-				"value" : 0.4
+				"value" : 0.5
 			}
 		},
 

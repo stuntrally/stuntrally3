@@ -13,6 +13,7 @@
 #include "SceneXml.h"
 #include "FluidsXml.h"
 #include "ShapeData.h"
+#include "SceneClasses.h"
 #include "CGame.h"
 #include "Buoyancy.h"
 
@@ -42,8 +43,45 @@ void CARDYNAMICS::Update()
 	
 	//V*  these ignore fluids by antigravity
 	if (!(vtype == V_Hovercar || vtype == V_Drone))
-		UpdateBuoyancy();
+		UpdateBuoyancy();  // 🌊
+
+	if (!inFields.empty())
+		UpdateFields();
 }
+
+
+//  🎆 Fields  ..........................................................
+void CARDYNAMICS::UpdateFields()
+{
+	auto m = chassis->getMass();
+	for (auto* fld : inFields)
+	switch (fld->type)
+	{
+		case TF_Gravity:
+		{	auto f = m * pScene->gravity * 2.f;  // par..
+			chassis->applyCentralForce( btVector3(0,0,f) );
+		}	break;
+		
+		case TF_Accel:
+		{	auto f = m * 32.f;  // par, dir
+			chassis->applyCentralForce( btVector3(f,0,0) );
+		}	break;
+		
+		case TF_Teleport:
+		{	auto p = GetPosition();
+			p[1] += 11.f;  //-
+			// p[2] += 11.f;  //^
+			SetPosition(p);
+		}	break;
+		
+		case TF_Damp:
+		{	btVector3 v = chassis->getLinearVelocity();
+			chassis->applyCentralForce(v * -800);
+		}	break;
+	}
+	inFields.clear();
+}
+
 
 ///  🌊 Buoyancy ................................................................................................
 void CARDYNAMICS::UpdateBuoyancy()

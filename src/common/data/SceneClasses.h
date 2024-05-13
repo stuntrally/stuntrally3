@@ -227,9 +227,9 @@ public:
 };
 
 
-enum FieldTypes     //  🎆 Field
+enum FieldTypes     //  🎆 Field ⏫⏩
 {
-	TF_Teleport, TF_Field, TF_Gravity, TF_Accel, TF_All
+	TF_Gravity, TF_Accel, TF_Teleport, TF_Damp, TF_All
 };
 class SField
 {
@@ -237,6 +237,7 @@ public:
 	FieldTypes type;
 
 	Ogre::Vector3 pos{0,0,0}, dir{0,1,0}, size{1,1,1};
+	// float factor = 1.f;  // par
 
 	Ogre::SceneNode* nd = 0;  // 🟢 ogre
 	Ogre::ParticleSystem* ps = 0;
@@ -250,7 +251,7 @@ public:
 class SEntity       // Entity 😮 todo
 //  Any combination of stuff
 //  e.g. lamp,  bonfire, flaming barrel, mine, magnetic ball
-//  flying plane,  cloud with thunder, opening gate, laser turret
+//  flying plane,  cloud with thunder, opening gate, water jet, laser turret
 {
 public:
 	Ogre::Vector3 pos{0,0,0}, scale{1,1,1};

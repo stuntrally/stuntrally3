@@ -12,8 +12,8 @@ collection: logic btn continue, restart, hid collected gems on start
 Career hide or todo  
 
 fix .car thrusters lights pos, boost count  
-ed Fields todo  
 3d cups, win particles, new best time hud show  
+ed Fields todo  
 
 new tracks^  
 ?Water depth, SSAO?  
