@@ -28,28 +28,42 @@ using std::vector;  using std::min;  using std::max;
 // #define USE_GRID_R
 // #define USE_GRID_W
 
+//  bridge, walls
+// +y     road       decor 1   decor 2   decor 3
+// |      2-1  6-5    21--07    1/0\7      1-0
+// 0--+x  | 0--7 |    |    |   2<   >6   2|   |7
+//        3______4    34--56    3\4/5    3|   |6
+//                                         4_5
+//  📏 wall front indices
+const static int WFid[6][3] =
+	{{2,1,0},{3,2,0},{5,4,7},{6,5,7}, {7,3,0},{4,3,7}};
+// todo: more types, set per seg,  xml custom?, alternate 2..
 
-//  road       decor
-//  2-1	 6-5   2--1--0
-//  | 0--7 |   3     7
-//  3______4   4__5__6
-//  📏 front wall indices
-const static int WFid[6][3] = {{2,1,0},{3,2,0},{5,4,7},{6,5,7}, {7,3,0},{4,3,7}};
-
-struct stWiPntW {  Real x,y, uv, nx,ny;  };  // wall width points
-const static int ciwW = 7;  // wall  width steps  // todo: types..
-const static stWiPntW wiPntW[ciwW+1][4] = {  // section shape
-	//  normal road                     //  pipe wall                                                         //  wall decor
-	{{-0.5f, -0.0f, 0.0f,  1.0f, 0.0f}, {-0.28f, 0.68f,0.0f, -1.0f, 0.0f}, {-0.14f, 1.5f, 0.0f, -1.0f, 0.0f}, { 0.5f,  0.0f, 0.0f,  0.0f,-1.0f}},
-	{{-0.5f,  1.2f, 0.5f,  0.5f, 0.5f}, {-0.28f, 0.5f, 0.2f, -0.5f, 0.5f}, {-0.14f, 1.4f, 0.2f, -0.5f, 0.5f}, { 0.0f,  0.0f, 1.0f,  0.0f,-1.0f}},
-	{{-0.56f, 1.2f, 0.2f, -0.5f, 0.5f}, {-0.28f, 0.0f, 0.2f, -0.5f, 0.0f}, {-0.14f, 1.3f, 0.2f, -0.5f, 0.0f}, {-0.5f,  0.0f, 2.0f, -0.5f, 0.5f}},
-	{{-0.56f,-0.9f, 1.6f, -0.5f,-0.5f}, {-0.2f, -0.9f, 0.5f, -0.1f,-0.5f}, {-0.1f,  1.2f, 0.5f, -0.1f,-0.5f}, {-0.5f, -0.5f, 2.5f, -1.0f, 0.0f}},
-	{{ 0.56f,-0.9f, 3.0f,  0.5f,-0.5f}, { 0.2f, -0.9f, 0.5f,  0.1f,-0.5f}, { 0.1f,  1.2f, 0.5f,  0.1f,-0.5f}, {-0.5f, -1.0f, 3.0f, -0.5f,-0.5f}},
-	{{ 0.56f, 1.2f, 1.6f,  0.5f, 0.5f}, { 0.28f, 0.0f, 0.2f,  0.5f, 0.0f}, { 0.14f, 1.3f, 0.2f,  0.5f, 0.0f}, { 0.0f, -1.0f, 4.0f,  0.0f, 1.0f}},
-	{{ 0.5f,  1.2f, 0.2f, -0.5f, 0.5f}, { 0.28f, 0.5f, 0.2f,  0.5f, 0.5f}, { 0.14f, 1.4f, 0.2f,  0.5f, 0.5f}, { 0.5f, -1.0f, 5.2f,  0.5f, 0.5f}},
-	{{ 0.5f, -0.0f, 0.5f, -1.0f, 0.0f}, { 0.28f, 0.68f,0.2f,  1.0f, 0.0f}, { 0.14f, 1.5f, 0.2f,  1.0f, 0.0f}, { 0.5f, -0.5f, 5.5f,  1.0f, 0.0f}}};
-
-
+//  wall width points, uv+add
+struct WallWidthPnt
+{	Real x,y, uv, nx,ny;
+};
+const static int ciwW = 7;  // wall  width steps  todo: any, vector
+const static WallWidthPnt wallWidth[ciwW+1][3] = {  // section shape
+	//  road wall                       //  pipe wall                      //  on pipe                      
+	{{-0.5f, -0.0f, 0.0f,  1.0f, 0.0f}, {-0.28f, 0.68f,0.0f, -1.0f, 0.0f}, {-0.14f, 1.5f, 0.0f, -1.0f, 0.0f}},
+	{{-0.5f,  1.2f, 0.5f,  0.5f, 0.5f}, {-0.28f, 0.5f, 0.2f, -0.5f, 0.5f}, {-0.14f, 1.4f, 0.2f, -0.5f, 0.5f}},
+	{{-0.56f, 1.2f, 0.2f, -0.5f, 0.5f}, {-0.28f, 0.0f, 0.2f, -0.5f, 0.0f}, {-0.14f, 1.3f, 0.2f, -0.5f, 0.0f}},
+	{{-0.56f,-0.9f, 1.6f, -0.5f,-0.5f}, {-0.2f, -0.9f, 0.5f, -0.1f,-0.5f}, {-0.1f,  1.2f, 0.5f, -0.1f,-0.5f}},
+	{{ 0.56f,-0.9f, 3.0f,  0.5f,-0.5f}, { 0.2f, -0.9f, 0.5f,  0.1f,-0.5f}, { 0.1f,  1.2f, 0.5f,  0.1f,-0.5f}},
+	{{ 0.56f, 1.2f, 1.6f,  0.5f, 0.5f}, { 0.28f, 0.0f, 0.2f,  0.5f, 0.0f}, { 0.14f, 1.3f, 0.2f,  0.5f, 0.0f}},
+	{{ 0.5f,  1.2f, 0.2f, -0.5f, 0.5f}, { 0.28f, 0.5f, 0.2f,  0.5f, 0.5f}, { 0.14f, 1.4f, 0.2f,  0.5f, 0.5f}},
+	{{ 0.5f, -0.0f, 0.5f, -1.0f, 0.0f}, { 0.28f, 0.68f,0.2f,  1.0f, 0.0f}, { 0.14f, 1.5f, 0.2f,  1.0f, 0.0f}}};
+const static WallWidthPnt wallDecor[ciwW+1][3] = {  // section shape
+	//  wall decor 1                    //  decor 2-                       // decor 3-
+	{{ 0.5f,  0.5f, 0.0f,  0.0f, 1.0f}, { 0.0f,  1.0f, 0.0f,  0.0f, 1.0f}, { 0.5f,  1.0f, 0.0f,  0.0f, 1.0f}},
+	{{-0.5f,  0.5f, 4.0f,  0.0f, 1.0f}, {-0.5f,  0.5f, 1.0f, -0.5f, 0.5f}, {-0.5f,  1.0f, 1.0f,  0.0f, 1.0f}},
+	{{-0.5f,  0.5f, 0.0f, -1.0f, 0.0f}, {-1.0f,  0.0f, 1.0f, -1.0f, 0.0f}, {-1.0f,  0.5f, 1.0f, -1.0f, 0.0f}},
+	{{-0.5f, -0.5f, 0.5f, -1.0f, 0.0f}, {-0.5f, -0.5f, 1.0f, -0.5f,-0.5f}, {-1.0f, -0.5f, 1.0f, -1.0f, 0.0f}},
+	{{-0.5f, -0.5f, 0.0f,  0.0f,-1.0f}, { 0.0f, -1.0f, 1.0f,  0.0f,-1.0f}, {-0.5f, -1.0f, 1.0f,  0.0f,-1.0f}},
+	{{ 0.5f, -0.5f, 4.0f,  0.0f,-1.0f}, { 0.5f, -0.5f, 1.0f,  0.5f,-0.5f}, { 0.5f, -1.0f, 1.0f,  0.0f,-1.0f}},
+	{{ 0.5f, -0.5f, 0.0f,  1.0f, 0.0f}, { 1.0f,  0.0f, 1.0f,  1.0f, 0.0f}, { 1.0f, -0.5f, 1.0f,  1.0f, 0.0f}},
+	{{ 0.5f,  0.5f, 0.5f,  1.0f, 0.0f}, { 0.5f,  0.5f, 1.0f,  0.5f, 0.5f}, { 1.0f,  0.5f, 1.0f,  1.0f, 0.0f}}};
 
 //  Build Segment Geometry
 //----------------------------------------------------------------------------------------------------------------------------
@@ -389,9 +403,10 @@ void SplineRoad::BuildSeg(
 				Real tcLW = tc * (DS.pipe ? g_tcMulPW : g_tcMulW);
 				for (int w=0; w <= ciwW; ++w)  // width +1
 				{
-					int pp = IsDecor() ? 3 :
-						(p1 > 0.f || p2 > 0.f) ? (onP ? 2 : 1) : 0;  //  pipe wall
-					stWiPntW wP = wiPntW[w][pp];
+					int pp = (p1 > 0.f || p2 > 0.f) ? (onP ? 2 : 1) : 0;  //  pipe wall
+					WallWidthPnt wP = IsDecor() ?
+						wallDecor[w][0] :  // todo type per seg..
+						wallWidth[w][pp];
 
 					if (trans)
 					{
@@ -403,8 +418,11 @@ void SplineRoad::BuildSeg(
 					}
 					uv += wP.uv;
 
-					Vector3 vP = vL0 + vw * wP.x + vn * wP.y;
-					Vector3 vN =     vwn * wP.nx + vn * wP.ny;  vN.normalise();
+					Vector3 vP = IsDecor() ?
+						//  wall decor  0 -- .. 0.5 [] .. 1 |  by pipe factor
+						vL0 + (1.f-fPipe) * wiMul * vwn * wP.x + fPipe * wiMul * vn * wP.y :
+						vL0 + vw * wP.x + vn * wP.y;  // bridge wall
+					Vector3 vN = vwn * wP.nx + vn * wP.ny;  vN.normalise();
 
 					//>  data Wall
 					DLM.posW.push_back(vP);  DLM.normW.push_back(vN);
@@ -500,7 +518,7 @@ void SplineRoad::BuildSeg(
 		}
 
 		//  bullet trimesh  at lod 0
-		if (DL.isLod0 && blt && IsRoad())  /// todo: river too..
+		if (DL.isLod0 && blt && (IsRoad() || IsDecor()))  // todo: river too?
 			createSeg_Collision(DLM,DS);
 	}
 }
