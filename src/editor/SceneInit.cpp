@@ -210,6 +210,7 @@ void App::destroyScene()
 
 	DestroyObjects(true);
 	DestroyCollects(true);
+	DestroyFields(true);
 
 	scn->DestroyRoads();
 	scn->DestroyTerrains();
@@ -252,8 +253,9 @@ void App::NewCommon(bool onlyTerVeget)
 
 	if (!onlyTerVeget)
 	{
-		DestroyObjects(true);  // 📦
+		DestroyObjects(true);   // 📦🏢
 		DestroyCollects(true);  // 💎
+		DestroyFields(true);    // 🎆
 		
 		scn->refl.DestroyFluids();  // 💧
 		scn->DestroyEmitters(true);  // 🔥
@@ -364,7 +366,10 @@ void App::LoadTrackEv()
 	
 	//  💎 Collects
 	CreateCollects();
-	
+
+	//  🎆 Fields
+	CreateFields();
+
 
 	//  🌳🪨 Vegetation
 	if (pSet->bTrees)

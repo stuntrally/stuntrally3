@@ -122,6 +122,10 @@ public:
 	int iCollected = 0, oldCollected = 0;
 	void UpdCollects();
 
+	//  🎆 Fields
+	void CreateFields(), DestroyFields(bool clear);
+	void CreateField(int i), DestroyField(int i);
+
 
 	//  New Game  ----
 	void NewGame(bool force=false, bool perfTest=false);

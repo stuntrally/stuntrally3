@@ -100,6 +100,7 @@ void App::destroyScene()
 
 	DestroyObjects(true);
 	DestroyCollects(true);
+	DestroyFields(true);
 
 	scn->DestroyRoads();
 	scn->DestroyTerrains();

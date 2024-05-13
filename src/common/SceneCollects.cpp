@@ -290,7 +290,7 @@ void App::UpdCollects()
 #ifdef SR_EDITOR
 
 ///  🆕 add new Collectible
-void App::AddNewCol(bool getName)
+void App::AddNewCol()
 {
 	SCollect c = colNew;
 	

@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseApp.h"
+#include "SceneClasses.h"
 #include "enums.h"
 #include "mathvector.h"
 #include "quaternion.h"
@@ -10,13 +11,9 @@
 #include "PreviewScene.h"
 
 #include <SDL_keycode.h>
-// #include <Ogre.h>
 #include <OgreCommon.h>
 #include <OgreVector3.h>
 #include <OgreString.h>
-// #include <OgreRenderTargetListener.h>
-// #include <OgreShadowCameraSetup.h>
-// #include <OgreTexture.h>
 
 #define BrushMaxSize  1024
 
@@ -33,7 +30,6 @@ enum ED_OBJ {  EO_Move=0, EO_Rotate, EO_Scale  };
 
 
 class App : public BaseApp
-			// public Ogre::RenderTargetListener
 {
 public:
 	App();
@@ -99,6 +95,10 @@ public:
 
 	int iCollected = 0, oldCollected = 0;  //-
 	void UpdColPick(), PickCollect();
+
+	//  🎆 Fields
+	void CreateFields(), DestroyFields(bool clear);
+	void CreateField(int i), DestroyField(int i);
 
 
 	//  🌍 minimap  ----
@@ -172,7 +172,7 @@ public:
 	BrushSet& curBr() {  return br[iCurBr];  }
 
 
-	//  ⛰️ Terrain edit ----
+	//  ⛰️ Terrain edit  ----
 	bool GetEditRect(Ogre::Vector3& pos, Ogre::Rect& brushrect, Ogre::Rect& maprect, int size, int& cx, int& cy);
 	void Deform(Ogre::Vector3 &pos, float dtime, float brMul);
 	void Height(Ogre::Vector3 &pos, float dtime, float brMul);
@@ -210,14 +210,14 @@ public:
 	{	Ogre::SceneNode* nd =0;
 		Ogre::Item*      it =0;
 	}
-	boxCar,boxStart[2], boxFluid, boxObj, boxEmit, boxCol;
+	boxCar,boxStart[2], boxFluid, boxObj, boxEmit, boxCol, boxField;
 
 	void CreateBox(BoxCur& box, Ogre::String sMat, Ogre::String sMesh, int x = 0, bool shadow =false);
 
 	void togPrvCam();
 
 
-	//  💧 Fluids
+	//  💧 Fluids  ~~~~
 	bool bRecreateFluids =0;  // todo: only one
 	bool bRecreateFluidsRTT =0;  // gui opt apply
 	int iFlCur =0;
@@ -271,8 +271,19 @@ public:
 
 	void SetColType(int add);//, UpdColNewNode();
 	void SetColGroup(int add);
-	void AddNewCol(bool getName=true);
+	void AddNewCol();
 
+
+	//  📦 Fields  ----
+	ED_OBJ fldEd = EO_Move;  // edit mode
+	int iFldCur = -1;  // picked id
+	
+	void SetFldNewType(int tnew), UpdFldNewNode();
+	// void NextFldMat(int add), NextFldMat(int add, Field& o);
+	void AddNewFld();
+	void UpdFldPick();
+
+	SField fldNew;  //Object*..
 
 
 	//  ⚫ Surfaces  ----

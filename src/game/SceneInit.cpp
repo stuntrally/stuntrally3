@@ -272,8 +272,9 @@ void App::LoadCleanUp()
 		scn->refl.DestroyFluids();
 		scn->refl.DestroyRTT();
 
-		DestroyObjects(true);
-		DestroyCollects(true);
+		DestroyObjects(true);   // 📦🏢
+		DestroyCollects(true);  // 💎
+		DestroyFields(true);    // 🎆
 	}
 	
 	DestroyGraphs();
@@ -334,10 +335,11 @@ void App::LoadCleanUp()
 		scn->DestroyTrees();    // 🌳🪨
 
 		DestroyObjects(true);   // 📦🏢
-		DestroyCollects(true);   // 💎
+		DestroyCollects(true);  // 💎
+		DestroyFields(true);    // 🎆
 
 		scn->DestroyRoads();    // 🛣️
-		scn->DestroyTerrains();  // ⛰️
+		scn->DestroyTerrains(); // ⛰️
 		//^ cars
 		scn->refl.DestroyFluids();   // 💧
 		scn->refl.DestroyRTT();      // 💧
@@ -723,7 +725,7 @@ void App::LoadRoad()
 	}
 }
 
-//  📦🏢 Objects, 💎 Collects  7
+//  📦🏢 Objects, 💎 Collects, 🎆 Fields  7
 void App::LoadObjects()
 {
 	if (dstTrk)
@@ -731,6 +733,9 @@ void App::LoadObjects()
 
 	if (dstTrk)
 		CreateCollects();
+
+	if (dstTrk)
+		CreateFields();
 }
 
 //  🌳🪨 Vegetation  8

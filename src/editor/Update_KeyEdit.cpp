@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "enums.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
 #include "Gui_Def.h"
@@ -367,6 +368,89 @@ void App::keyPressObjects(SDL_Scancode skey)
 				{
 					c->scale = 1.f;
 					c->nd->setScale(c->scale * Vector3::UNIT_SCALE);
+				}	break;
+			default:  break;
+		}
+	}
+
+
+	//  🎆 Fields  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	if (edMode == ED_Fields && edit)
+	{
+		auto& fld = scn->sc->fields;
+		int flds = fld.size();
+
+		SField* f = iFldCur == -1 ? &fldNew :
+					((iFldCur >= 0 && flds > 0 && iFldCur < flds) ? &fld[iFldCur] : 0);
+		switch (skey)
+		{
+			// case key(SPACE):
+			// 	iFldCur = -1;  PickField();  UpdFldPick();  break;
+			
+			//  ins
+			case key(INSERT):	case key(KP_0):
+			if (scn->road && scn->road->bHitTer)  // insert new
+			{
+				AddNewFld();
+				iFldCur = fld.size()-1;  //par? auto select inserted-
+				// UpdFldPick();
+			}	break;
+
+			//  prev,next type
+			// case key(9):  case key(MINUS):   SetFldType(-1);  break;
+			// case key(0):  case key(EQUALS):  SetFldType( 1);  break;
+			
+			// case key(O):  case key(LEFTBRACKET):   SetFldGroup(-1);  break;
+			// case key(P):  case key(RIGHTBRACKET):  SetFldGroup( 1);  break;
+			
+
+			//  first, last
+			case key(HOME):  case key(KP_7):
+				iFldCur = 0;  UpdFldPick();  break;
+			case key(END):  case key(KP_1):
+				if (flds > 0)  iFldCur = flds-1;  UpdFldPick();  break;
+
+			//  prev,next
+			case key(PAGEUP):  case key(KP_9):
+				if (flds > 0) {  iFldCur = (iFldCur-1+flds)%flds;  }  UpdFldPick();  break;
+			case key(PAGEDOWN):	case key(KP_3):
+				if (flds > 0) {  iFldCur = (iFldCur+1)%flds;       }  UpdFldPick();  break;
+
+			//  del
+			case key(DELETE):  case key(KP_PERIOD):
+			case key(KP_5):
+				if (iFldCur >= 0 && flds > 0)
+				{	SField& c = fld[iFldCur];
+					// DestroyField(iFldCur);
+					
+					if (flds == 1)	fld.clear();
+					else			fld.erase(fld.begin() + iFldCur);
+					iFldCur = std::min(iFldCur, (int)fld.size()-1);
+					UpdFldPick();
+				}	break;
+
+			//  move,scale
+			case key(1):
+				if (!shift)  fldEd = EO_Move;
+				else if (f)
+				{
+					if (iFldCur == -1)  // reset h
+					{
+						f->pos.y = 0.f;
+					}
+					else if (road)  // move to ter
+					{
+						f->pos = road->posHit;
+						f->nd->setPosition(f->pos);  UpdFldPick();
+					}
+				}	break;
+
+			case key(3):
+				if (!shift)  fldEd = EO_Scale;
+				else if (f)  // reset scale
+				{
+					// f->size = 1.f;
+					f->nd->setScale(f->size * Vector3::UNIT_SCALE);
 				}	break;
 			default:  break;
 		}

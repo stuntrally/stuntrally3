@@ -32,34 +32,47 @@ void IntTickCallback(btDynamicsWorld* world, btScalar timeStep)
 		bool trigger = 	
 			bA->getCollisionFlags() & btCollisionObject::CF_NO_CONTACT_RESPONSE ||
 			bB->getCollisionFlags() & btCollisionObject::CF_NO_CONTACT_RESPONSE;
-		// if (trigger)
-		// 	continue;  // ignore triggers
 
 		void* pA = bA->getUserPointer(), *pB = bB->getUserPointer();
 		//if (pA && pB)
 		{
 			ShapeData* sdA = (ShapeData*)pA, *sdB = (ShapeData*)pB,
-				*sdCar =0, *sdFluid =0, *sdWheel =0, *sdCollect =0;
+				*sdCar =0, *sdFluid =0, *sdWheel =0, *sdCollect =0, *sdField =0;
 
 			if (sdA) {
 					 if (sdA->type == ST_Car)  sdCar = sdA;
 				else if (sdA->type == ST_Fluid)  sdFluid = sdA;
 				else if (sdA->type == ST_Wheel)  sdWheel = sdA;
-				else if (sdA->type == ST_Collect)  sdCollect = sdA;  }
+				else if (sdA->type == ST_Collect)  sdCollect = sdA;
+				else if (sdA->type == ST_Field)  sdField = sdA;  }
 			if (sdB) {
 					 if (sdB->type == ST_Car)  sdCar = sdB;
 				else if (sdB->type == ST_Fluid)  sdFluid = sdB;
 				else if (sdB->type == ST_Wheel)  sdWheel = sdB;
-				else if (sdB->type == ST_Collect)  sdCollect = sdB;  }
+				else if (sdB->type == ST_Collect)  sdCollect = sdB;
+				else if (sdB->type == ST_Field)  sdField = sdB;  }
 			
-			if (sdCollect)
+			if (sdCollect && sdCar)
 			{
 				auto* col = sdCollect->pCol;
 				if (!col->collected)
-				{	col->collected = 1;
-
-				}
+					col->collected = 1;
 			}
+
+			if (sdField && sdCar)
+			{
+				auto* fld = sdField->pField;
+				// sdCar->pCarDyn->inField = 
+
+				// TF_Teleport, TF_Field, TF_Gravity, TF_Accel, TF_All
+				
+				auto p = sdCar->pCarDyn->GetPosition();
+				p[2] += 5.f;  //-
+				sdCar->pCarDyn->SetPosition(p);
+				// const MATHVECTOR<Dbl,3> f(0,100000,100000);
+				// sdCar->pCarDyn->ApplyForce(f);  //?
+			}
+
 
 			if (trigger)
 				continue;  // ignore
@@ -256,6 +269,9 @@ COLLISION_WORLD::COLLISION_WORLD() : pApp(0),
 	world->getSolverInfo().m_restitution = 0.0f;
 	world->getDispatchInfo().m_enableSPU = true;
 	world->setForceUpdateAllAabbs(false);  //+
+	// world->getDispatchInfo().m_dispatchFunc = btDispatcherInfo::DISPATCH_DISCRETE;
+	// world->getDispatchInfo().m_useContinuous = false;  //-
+	// world->getDispatchInfo().m_allowedCcdPenetration = 0.104;  // 0.04
 
 	world->setInternalTickCallback(IntTickCallback,this,false);
 }
@@ -455,6 +471,7 @@ bool COLLISION_WORLD::CastRay(
 				
 				//case SU_ObjectStatic: //case SU_ObjectDynamic:
 				//case SU_Collect:
+				//case SU_Field:
 
 				case SU_Fluid:  //  solid fluids
 				{
@@ -467,7 +484,7 @@ bool COLLISION_WORLD::CastRay(
 				
 				default:
 				{
-					int id = sc->layerRoad[0].surfId;  // todo objects surf?
+					int id = sc->layerRoad[0].surfId;  // todo objects surf-
 					surf = &pApp->pGame->surfaces[id];
 
 					if (cd)

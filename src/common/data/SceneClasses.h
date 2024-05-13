@@ -236,9 +236,7 @@ public:
 
 	Ogre::SceneNode* nd = 0;  // 🟢 ogre
 	Ogre::ParticleSystem* ps = 0;
-	// Ogre::Light* light = 0;
+	Ogre::Item* it = 0;  //rem-
 
 	btCollisionObject* co = 0;  // 🎳 bullet
-	//  game var
-	// bool collected =0;
 };

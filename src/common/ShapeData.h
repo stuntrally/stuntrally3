@@ -13,7 +13,8 @@ const static int  // & 0xFF !
 	SU_ObjectStatic	= 0x800,
 	SU_Fluid 		= 0x900,  //+surfId  solid fluids, ice etc
 	//SU_ObjectDynamic= 0xA00;  //..
-	SU_Collect		= 0xA00;  //+collect Id  collectible gems
+	SU_Collect		= 0xA00,  //+collect Id  collectible gems
+	SU_Field		= 0xD00;  //+field Id  teleporters,accel,antigrav,etc
 
 
 //  info  for special collision objects:
@@ -21,10 +22,12 @@ const static int  // & 0xFF !
 //-------------------------------------------------------------
 enum EShapeType
 {
-	ST_Car=0, ST_Fluid, ST_Wheel, ST_Collect, ST_Other
+	ST_Car=0, ST_Fluid, ST_Wheel, ST_Collect, ST_Field, ST_Other
 };
 
-class CARDYNAMICS;  class FluidBox;  class SCollect;
+class CARDYNAMICS;
+class FluidBox;  class SCollect;  class SField;
+
 class ShapeData
 {
 public:
@@ -33,10 +36,11 @@ public:
 	FluidBox* pFluid;
 	int whNum;
 	SCollect* pCol;
+	SField* pField;
 
 	ShapeData( EShapeType type1, CARDYNAMICS* pCarDyn1=0,
-		FluidBox* pFluid1=0, int whNum1=0, SCollect* pCol1=0)
+		FluidBox* pFluid1=0, int whNum1=0, SCollect* pCol1=0, SField* pField1=0)
 		: type(type1), pCarDyn(pCarDyn1)
-		, pFluid(pFluid1), whNum(whNum1), pCol(pCol1)
+		, pFluid(pFluid1), whNum(whNum1), pCol(pCol1), pField(pField1)
 	{	}
 };
