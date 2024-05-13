@@ -36,7 +36,7 @@ This small left top bar shows values (that change, especially when moving), in d
 This is better explained on Gui for each mode.
 
 ### Wireframe
-Toggle wireframe mode with F10.  
+Toggle 🌐 wireframe mode with F10.  
 It is useful to check how dense are triangles in car/wheel model (or also for whole track).
 
    

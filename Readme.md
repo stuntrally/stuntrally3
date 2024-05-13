@@ -4,7 +4,8 @@
 [![Translation status](https://hosted.weblate.org/widget/stunt-rally-3/stunt-rally-3/svg-badge.svg)](https://hosted.weblate.org/engage/stunt-rally-3/)
 ![Last commit date](https://flat.badgen.net/github/last-commit/stuntrally/stuntrally3)
 ![Commits count](https://flat.badgen.net/github/commits/stuntrally/stuntrally3)
-![License](https://flat.badgen.net/github/license/stuntrally/stuntrally3)
+![License](https://flat.badgen.net/github/license/stuntrally/stuntrally3)  
+[![Discord](https://img.shields.io/discord/1239125025395703858?label=Discord&logo=Discord&logoColor=white)](https://discord.gg/KXuCwhTE)  
 
 ## Links
 
@@ -115,6 +116,11 @@ Before reporting bugs or issues, be sure to [Read before posting](https://groups
 
 Then create a [new issue on github](https://github.com/stuntrally/stuntrally3/issues/new) (if not present already)  
 or a topic on [New Forum](https://groups.f-hub.org/stunt-rally/) (if already joined, [how to](https://groups.f-hub.org/d/2ftpShKs/)).
+
+Other way is to use:
+[Discord](https://discord.gg/KXuCwhTE) (also for chat),
+[Reddit](https://www.reddit.com/r/stuntrally/) or
+[github discussions](https://github.com/stuntrally/stuntrally3/discussions)  
 
 ## 🤝Contributing
 

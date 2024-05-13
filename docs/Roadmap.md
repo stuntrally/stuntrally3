@@ -5,6 +5,19 @@ More in [Tasks tracker](https://stuntrally.tuxfamily.org/mantis/view_all_bug_pag
 
 Marked: `crucial`, **Next or Big**, _Important_.
 
+### SR 3.2
+
+Add gems to **tracks**  
+collection: logic btn continue, restart, hid collected gems on start  
+Career hide or todo  
+
+fix .car thrusters lights pos, boost count  
+ed Fields todo  
+3d cups, win particles, new best time hud show  
+
+new tracks^  
+?Water depth, SSAO?  
+
 ----
 ### New game stuff✨
 
@@ -12,8 +25,9 @@ Marked: `crucial`, **Next or Big**, _Important_.
 Score for: drift (sliding on road), air time (jumps etc), hitting dynamic objects  
 
 🕹️ New **Game** elements:  
-✨Teleporters, moving & rotating Obstacles, elevators  
-Force fields, speed up, lift, anti-gravity  
+🎆 Fields: teleporters, force fields, speed up, lift, anti-gravity  
+🎳 moving & rotating obstacles, elevators  
+
 
 Track 💡*lights* ed mode, car glow (as rect area) lights, bridges, pipe easy add lights?  
 *entities.xml* (sum of object, animation, light, 🔥particles etc)  
