@@ -8,15 +8,17 @@ This section lists changes not yet released, but committed to repositories stunt
     - Hud 3D arrows on vehicle pointing to closest 3 gems
   - More **Lights** - with toggable Options
     - vehicle: brakes, boost, reverse, under glow and collection gems
-  - New tab on Paints - Adjust - **Under glow** for color H,S,V
+  - New tab on Setup - Paints - Adjust - **Under glow** for color H,S,V
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
-  - WIP Fields: teleporters, force fields, speed up, lift, anti-gravity  
+  - WIP Fields, areas: teleporters, force fields, speed up, lift, anti-gravity  
 - Editor
   - Edit mode for Collection, key Y  
     - Insert/remove gems, move, scale
     - change type (for look, at end of presets.xml)
     - change group (for more sets on 1 track)
   - WIP Edit mode for Fields, key H  
+  - Road: wall type, for decoration walls, rectangular
+    - pipe parameter changes it from wide at 0, to square at 0.5 to tall at 1.0
 
 ## Version 3.1
 
