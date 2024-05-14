@@ -78,6 +78,7 @@ void App::UpdateKey(float dt)
 	else if (edMode == ED_Objects)    KeyTxtObjects();
 	else if (edMode == ED_Particles)  KeyTxtEmitters(q);
 	else if (edMode == ED_Collects)   KeyTxtCollects();
+	else if (edMode == ED_Fields)     KeyTxtFields();
 
 	mz = 0;  // mouse wheel
 

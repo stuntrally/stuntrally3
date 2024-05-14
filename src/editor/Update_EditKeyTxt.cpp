@@ -404,7 +404,7 @@ void App::KeyTxtEmitters(Real q)
 //----------------------------------------------------------------
 void App::KeyTxtCollects()
 {
-	Txt *colTxt = gui->colTxt;
+	Txt* colTxt = gui->colTxt;
 	int cols = scn->sc->collects.size();
 	bool bNew = iColCur == -1;
 	const SCollect& c = bNew || scn->sc->collects.empty() ? colNew : scn->sc->collects[iColCur];
@@ -425,6 +425,37 @@ void App::KeyTxtCollects()
 		iColCur = (iColCur - add + cols) % cols;  UpdColPick();
 	}
 }
+
+
+///  🎆 Fields
+//----------------------------------------------------------------
+void App::KeyTxtFields()
+{
+	Txt* fldTxt = gui->fldTxt;
+	int flds = scn->sc->fields.size();
+	bool bNew = iFldCur == -1;
+	const SField& c = bNew || scn->sc->fields.empty() ? fldNew : scn->sc->fields[iFldCur];
+	UString s = bNew
+		? UString("#80FF80")+TR("#{Road_New}")+"#B0D0B0     "
+		: UString("#A0D0FF")+TR("#{Road_Cur}")+"#B0B0D0     ";
+	s = s + (bNew ? "-" : toStr(iFldCur+1)+" / "+toStr(flds));
+	fldTxt[0]->setCaption(s);
+	const char* strFld[TF_All] = {
+		"Gravity", "Accel", "Teleport", "Damp" };
+
+	fldTxt[1]->setCaption(TR("#{CarType}  ") +strFld[c.type]);
+	fldTxt[2]->setCaption(String(fldEd==EO_Move  ?"#60FF60":"")+ TR("#{Obj_Pos}  ") +fToStr(c.pos[0],1,4)+" "+fToStr(c.pos[1],1,4)+" "+fToStr(c.pos[2],1,4));
+	fldTxt[3]->setCaption(String(fldEd==EO_Rotate?"#FFA0A0":"")+ TR("#{Obj_Rot}  ") +fToStr(c.dir.x,1,3)+" "+fToStr(c.dir.y,1,3)+" "+fToStr(c.dir.z,1,3));
+	fldTxt[4]->setCaption(String(fldEd==EO_Scale ?"#60F0FF":"")+ TR("#{scale}  ") +fToStr(c.size.x,2,4)+" "+fToStr(c.size.y,2,4)+" "+fToStr(c.size.z,2,4));
+	// fldTxt[5]->setCaption(TR("#{Group}  ") +toStr(c.group));
+
+	//  edit
+	if (mz != 0 && bEdit() && flds > 0)  // wheel prev/next
+	{	int add = (alt ? 10 : ctrl ? 4 : 1) * mz;
+		iFldCur = (iFldCur - add + flds) % flds;  UpdFldPick();
+	}
+}
+
 
 #undef isKey
 
@@ -472,6 +503,10 @@ void App::FocusCam()
 	case ED_Collects:  // 💎
 		dist = boxCol.nd->getScale().y * 10.f;
 		pos = boxCol.nd->getPosition();  SetCam();  break;
+
+	case ED_Fields:  // 🎆
+		dist = boxField.nd->getScale().y * 10.f;
+		pos = boxField.nd->getPosition();  SetCam();  break;
 
 	//  ter edit, cursor  ⛰️
 	case ED_Deform: case ED_Smooth: case ED_Height: case ED_Filter:

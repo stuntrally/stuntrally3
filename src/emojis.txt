@@ -26,8 +26,8 @@ You can search in code by emoji for all that is related to it.
  🎛️ GUI  gui       🔵 Checkpoint  chk  📊 Options     🪟 Window wnd*   🆕 Create                                           💡 Light
                    📐 Drivability                                                        🧵 thread     🧰 _Tool_ dev       🌒 shadow
  🎥 Camera  cam                        📈 Fps         🗜️ Resize        💫 Update  upd    🌀 noise      🪛 param  // par    👀 VR mode-
- 📽️ Replay  rpl    💎 collection       📉 Graphs      🔗 url                per frame                  🧪 test  src       
-                   💷 career                          🖱️ Mouse         🔁 Refresh        👆 pick  ed                       🌠 Hlms  shader
+ 📽️ Replay  rpl    💎 Collection       📉 Graphs      🔗 url                per frame                  🧪 test  src       
+                   💷 Career                          🖱️ Mouse         🔁 Refresh        👆 pick  ed                       🌠 Hlms  shader
  👻 Ghost  gho                         📝 Help         ⌨️ Keys                 single     🚧 cursor     🏗️👷 Editor  ed     🪄 compositor
  👈 Hint  lesson                       ❔ tooltip                      🌈 Colors  clr    📍 marker     🎳 Bullet collis    
                                                        🗺️ language     🔺 triangle  tri   ⚠ warnings   🎯 ray cast         

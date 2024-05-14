@@ -1270,7 +1270,22 @@
 	<Tag name="Obj_Rot">Rot.</Tag>
 	<!--  Objects, Fluids  window  -->
 	<Tag name="Tile">Tile</Tag>
-	
+
+
+	<!--  Editor tools  -->
+	<Tag name="CarStart">Car Start</Tag>
+	<Tag name="Fluids">Fluids</Tag>
+
+	<Tag name="Objects">Objects</Tag>
+
+	<Tag name="ObjDynamic">Dynamic</Tag>
+	<Tag name="ObjStatic">Static</Tag>
+	<Tag name="ObjBuildings">Buildings</Tag>
+	<Tag name="ObjRocks">Rocks</Tag>
+	<Tag name="Group">Group</Tag>
+
+	<Tag name="Fields">Fields</Tag>
+
 
 	<!--  Tools  -->
 	<Tag name="Tools">Tools</Tag>
@@ -1425,12 +1440,10 @@
 	<Tag name="InputTerFilter">F - Filter  (remove noise)</Tag>
 
 	<!--  Car Start  Main  -->
-	<Tag name="CarStart">Car Start</Tag>
 	<Tag name="InputStart">Start</Tag>
 	<Tag name="InputStartPos">Q - edit car start pos</Tag>
 	
 	<!--  Fluids  Main  -->
-	<Tag name="Fluids">Fluids</Tag>
 	<Tag name="InputFluidsMode">W - edit fluids</Tag>
 	<Tag name="InputObjectsMode">X - edit Objects</Tag>
 	<Tag name="InputParticlesMode">A - edit Particles</Tag>
@@ -1570,14 +1583,6 @@
 	<Tag name="InputFluidsTileY">; &apos;  - change texture tiling, one coord. only</Tag>
 	<Tag name="InputFluidsUpdate">F10  - update depth map, after terrain deform near shore</Tag>
 
-
-	<!--  Objects  Main  -->
-	<Tag name="Objects">Objects</Tag>
-	<Tag name="ObjDynamic">Dynamic</Tag>
-	<Tag name="ObjStatic">Static</Tag>
-	<Tag name="ObjBuildings">Buildings</Tag>
-	<Tag name="ObjRocks">Rocks</Tag>
-	<Tag name="Group">Group</Tag>
 
 	<!--  Objects  Input  -->
 	<Tag name="InputObjectsPrevNext">PgUp,PgDn (or Wheel) - previous/next object</Tag>

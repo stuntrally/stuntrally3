@@ -78,7 +78,8 @@ public:
 	void EditMouse(),  MouseRoad(), MouseStart();
 	void MouseFluids(), MouseObjects(), MouseEmitters(), MouseCollects();
 	void KeyTxtRoad(Ogre::Real q), KeyTxtTerrain(Ogre::Real q), KeyTxtStart(Ogre::Real q);
-	void KeyTxtFluids(Ogre::Real q), KeyTxtObjects(), KeyTxtEmitters(Ogre::Real q), KeyTxtCollects();
+	void KeyTxtFluids(Ogre::Real q), KeyTxtObjects(), KeyTxtEmitters(Ogre::Real q);
+	void KeyTxtCollects(), KeyTxtFields();
 	
 
 	//  🆕 Create  . . . . . . . . . . . . . . . . . . . . . . . . 
@@ -274,7 +275,7 @@ public:
 	void AddNewCol();
 
 
-	//  📦 Fields  ----
+	//  🎆 Fields  ----
 	ED_OBJ fldEd = EO_Move;  // edit mode
 	int iFldCur = -1;  // picked id
 	
@@ -283,7 +284,7 @@ public:
 	void AddNewFld();
 	void UpdFldPick();
 
-	SField fldNew;  //Object*..
+	SField fldNew;
 
 
 	//  ⚫ Surfaces  ----

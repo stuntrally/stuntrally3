@@ -793,6 +793,10 @@ void SplineRoad::createSeg_Collision(
 	const DataLodMesh& DLM,
 	const DataSeg& DS)
 {
+	btTransform tr;  tr.setIdentity();  //tr.setOrigin(pc);
+
+if (!IsDecor())
+{
 	btTriangleMesh* trimesh = new btTriangleMesh();  vbtTriMesh.push_back(trimesh);
 	
 	#define vToBlt(v)   btVector3(v.x, -v.z, v.y)
@@ -812,7 +816,6 @@ void SplineRoad::createSeg_Collision(
 	shape->setMargin(0.01f);  //?
 	
 	btCollisionObject* bco = new btCollisionObject();
-	btTransform tr;  tr.setIdentity();  //tr.setOrigin(pc);
 	
 	bco->setActivationState(DISABLE_SIMULATION);
 	bco->setCollisionShape(shape);	bco->setWorldTransform(tr);
@@ -832,13 +835,13 @@ void SplineRoad::createSeg_Collision(
 		pGame->collision.world->addCollisionObject(bco);
 		pGame->collision.shapes.push_back(shape);
 	#endif
-
+}
 	
 	//  📏 Wall  ]
 	#ifndef SR_EDITOR  // in Game
 	bool wall = !DLM.posW.empty();
 	if (wall)
-	{	trimesh = new btTriangleMesh();  vbtTriMesh.push_back(trimesh);
+	{	btTriangleMesh* trimesh = new btTriangleMesh();  vbtTriMesh.push_back(trimesh);
 		
 		for (int i = 0; i < DLM.iLmrgW-1; ++i)  // length
 		{	int iiW = i* (ciwW+1);

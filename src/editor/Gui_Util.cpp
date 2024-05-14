@@ -216,6 +216,7 @@ void App::UpdEditWnds()
 
 	if (mWndObjects)   mWndObjects->setVisible(edMode == ED_Objects && on);
 	if (mWndCollects)  mWndCollects->setVisible(edMode == ED_Collects && on);
+	if (mWndFields)    mWndFields->setVisible(edMode == ED_Fields && on);
 
 	if (mWndParticles) mWndParticles->setVisible(edMode == ED_Particles && on);
 	UpdEmtBox();
