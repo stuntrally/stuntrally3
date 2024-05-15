@@ -20,6 +20,14 @@ using namespace MyGUI;
 
 #define isKey(a)  IsKey(SDL_SCANCODE_##a)
 
+//  common left  1 pos  2 rot  3 scale
+// #define  sPos  TR("#{Obj_Pos} ")
+// #define  sRot  TR("#{Obj_Rot} ")
+// #define  sScl  TR("#{scale}  ")
+#define  sPos  ""
+#define  sRot  ""
+#define  sScl  ""
+
 
 //  🛣️📍 Road Point
 //---------------------------------------------------------------------------------------------------------------
@@ -302,10 +310,10 @@ void App::KeyTxtFluids(Real q)
 	{	FluidBox& fb = scn->sc->fluids[iFlCur];
 		flTxt[0]->setCaption(TR("#{Road_Cur}     ") +toStr(iFlCur+1)+" / "+toStr(scn->sc->fluids.size()));
 		flTxt[1]->setCaption(gcom->ClrName(fb.name) + fb.name);
-		flTxt[2]->setCaption(TR("#{Obj_Pos}  ") +fToStr(fb.pos.x,1,4)+" "+fToStr(fb.pos.y,1,4)+" "+fToStr(fb.pos.z,1,4));
+		flTxt[2]->setCaption(sPos +fToStr(fb.pos.x,1,4)+" "+fToStr(fb.pos.y,1,4)+" "+fToStr(fb.pos.z,1,4));
 		flTxt[3]->setCaption("");
-		//flTxt[3]->setCaption(TR("#{Obj_Rot}:  ")+fToStr(fb.rot.x,1,4));
-		flTxt[3]->setCaption(TR("#{scale}  ") +fToStr(fb.size.x,1,4)+" "+fToStr(fb.size.y,1,4)+" "+fToStr(fb.size.z,1,4));
+		//flTxt[3]->setCaption(sRot +fToStr(fb.rot.x,1,4));
+		flTxt[3]->setCaption(sScl +fToStr(fb.size.x,1,4)+" "+fToStr(fb.size.y,1,4)+" "+fToStr(fb.size.z,1,4));
 		flTxt[4]->setCaption(TR("#{Tile}  ") +fToStr(fb.tile.x,3,5)+" "+fToStr(fb.tile.y,3,5));
 
 		//  quality
@@ -345,9 +353,9 @@ void App::KeyTxtObjects()
 		s = s + (bNew ? "-" : toStr(iObjCur+1)+" / "+toStr(objs));
 	objTxt[0]->setCaption(s);
 	objTxt[1]->setCaption(bNew ? vObjNames[iObjTNew] : o.name);
-	objTxt[2]->setCaption(String(objEd==EO_Move  ?"#60FF60":"")+ TR("#{Obj_Pos}  ") +fToStr(o.pos[0],1,4)+" "+fToStr(o.pos[2],1,4)+" "+fToStr(-o.pos[1],1,4));
-	objTxt[3]->setCaption(String(objEd==EO_Rotate?"#FFA0A0":"")+ TR("#{Obj_Rot}  y ") +fToStr(q.getYaw().valueDegrees(),0,3)+" p "+fToStr(q.getPitch().valueDegrees(),0,3)+" r "+fToStr(q.getRoll().valueDegrees(),0,3));
-	objTxt[4]->setCaption(String(objEd==EO_Scale ?"#60F0FF":"")+ TR("#{scale}  ") +fToStr(o.scale.x,2,4)+" "+fToStr(o.scale.y,2,4)+" "+fToStr(o.scale.z,2,4));
+	objTxt[2]->setCaption(String(objEd==EO_Move  ?"#60FF60":"")+ sPos +fToStr(o.pos[0],1,4)+" "+fToStr(o.pos[2],1,4)+" "+fToStr(-o.pos[1],1,4));
+	objTxt[3]->setCaption(String(objEd==EO_Rotate?"#FFA0A0":"")+ sRot +"y " +fToStr(q.getYaw().valueDegrees(),0,3)+" p "+fToStr(q.getPitch().valueDegrees(),0,3)+" r "+fToStr(q.getRoll().valueDegrees(),0,3));
+	objTxt[4]->setCaption(String(objEd==EO_Scale ?"#60F0FF":"")+ sScl +fToStr(o.scale.x,2,4)+" "+fToStr(o.scale.y,2,4)+" "+fToStr(o.scale.z,2,4));
 
 	objTxt[5]->setCaption(TR("#{Simulation}:  ") + TR(objSim?"#{Yes}":"#{No}")); // +"      "+toStr(world->getNumCollisionObjects()));
 	objTxt[5]->setTextColour(objSim ? MyGUI::Colour(1.0,0.9,1.0) : MyGUI::Colour(0.8,0.8,0.83));
@@ -377,9 +385,9 @@ void App::KeyTxtEmitters(Real q)
 	s = s + (bNew ? "-" : toStr(iEmtCur+1)+" / "+toStr(emts));
 	emtTxt[0]->setCaption(s);
 	emtTxt[1]->setCaption(/*bNew ? vObjNames[iEmtTNew] :*/ e.name);
-	emtTxt[2]->setCaption(String(emtEd==EO_Move  ?"#60FF60":"")+ TR("#{Obj_Pos}  ") +fToStr(e.pos.x,1,4)+" "+fToStr(e.pos.y,1,4)+" "+fToStr(e.pos.z,1,4));
-	emtTxt[3]->setCaption(String(emtEd==EO_Rotate?"#FFA0A0":"")+ TR("#{Obj_Rot}  y ") +fToStr(e.rot/*e.up.x*/,0,3) );
-	emtTxt[4]->setCaption(String(emtEd==EO_Scale ?"#60F0FF":"")+ TR("#{scale}  ") +fToStr(e.size.x,2,4)+" "+fToStr(e.size.y,2,4)+" "+fToStr(e.size.z,2,4));
+	emtTxt[2]->setCaption(String(emtEd==EO_Move  ?"#60FF60":"")+ sPos +fToStr(e.pos.x,1,4)+" "+fToStr(e.pos.y,1,4)+" "+fToStr(e.pos.z,1,4));
+	emtTxt[3]->setCaption(String(emtEd==EO_Rotate?"#FFA0A0":"")+ sRot +"y " +fToStr(e.rot/*e.up.x*/,0,3) );
+	emtTxt[4]->setCaption(String(emtEd==EO_Scale ?"#60F0FF":"")+ sScl +fToStr(e.size.x,2,4)+" "+fToStr(e.size.y,2,4)+" "+fToStr(e.size.z,2,4));
 	
 	emtTxt[5]->setCaption(TR("#{Size}: ") +fToStr(e.parScale,2,4)+" * "+fToStr(e.par.x,1,3) );
 	emtTxt[6]->setCaption(TR("#{Density}: ") +fToStr(e.rate,0,3) );
@@ -414,9 +422,9 @@ void App::KeyTxtCollects()
 	s = s + (bNew ? "-" : toStr(iColCur+1)+" / "+toStr(cols));
 	colTxt[0]->setCaption(s);
 	colTxt[1]->setCaption(TR("#{CarType}  ") +c.name);
-	colTxt[2]->setCaption(String(colEd==EO_Move  ?"#60FF60":"")+ TR("#{Obj_Pos}  ") +fToStr(c.pos[0],1,4)+" "+fToStr(c.pos[1],1,4)+" "+fToStr(c.pos[2],1,4));
-	// colTxt[3]->setCaption(String(colEd==EO_Rotate?"#FFA0A0":"")+ TR("#{Obj_Rot}  y ") +fToStr(q.getYaw().valueDegrees(),0,3)+" p "+fToStr(q.getPitch().valueDegrees(),0,3)+" r "+fToStr(q.getRoll().valueDegrees(),0,3));
-	colTxt[4]->setCaption(String(colEd==EO_Scale ?"#60F0FF":"")+ TR("#{scale}  ") +fToStr(c.scale,2,4));
+	colTxt[2]->setCaption(String(colEd==EO_Move  ?"#60FF60":"")+ sPos +fToStr(c.pos[0],1,4)+" "+fToStr(c.pos[1],1,4)+" "+fToStr(c.pos[2],1,4));
+	// colTxt[3]->setCaption(String(colEd==EO_Rotate?"#FFA0A0":"")+ sRot +"y " +fToStr(q.getYaw().valueDegrees(),0,3)+" p "+fToStr(q.getPitch().valueDegrees(),0,3)+" r "+fToStr(q.getRoll().valueDegrees(),0,3));
+	colTxt[4]->setCaption(String(colEd==EO_Scale ?"#60F0FF":"")+ sScl +fToStr(c.scale,2,4));
 	colTxt[5]->setCaption(TR("#{Group}  ") +toStr(c.group));
 
 	//  edit
@@ -444,9 +452,9 @@ void App::KeyTxtFields()
 		"Gravity", "Accel", "Teleport", "Damp" };
 
 	fldTxt[1]->setCaption(TR("#{CarType}  ") +strFld[c.type]);
-	fldTxt[2]->setCaption(String(fldEd==EO_Move  ?"#60FF60":"")+ TR("#{Obj_Pos}  ") +fToStr(c.pos[0],1,4)+" "+fToStr(c.pos[1],1,4)+" "+fToStr(c.pos[2],1,4));
-	fldTxt[3]->setCaption(String(fldEd==EO_Rotate?"#FFA0A0":"")+ TR("#{Obj_Rot}  ") +fToStr(c.dir.x,1,3)+" "+fToStr(c.dir.y,1,3)+" "+fToStr(c.dir.z,1,3));
-	fldTxt[4]->setCaption(String(fldEd==EO_Scale ?"#60F0FF":"")+ TR("#{scale}  ") +fToStr(c.size.x,2,4)+" "+fToStr(c.size.y,2,4)+" "+fToStr(c.size.z,2,4));
+	fldTxt[2]->setCaption(String(fldEd==EO_Move  ?"#60FF60":"")+ sPos +fToStr(c.pos[0],1,4)+" "+fToStr(c.pos[1],1,4)+" "+fToStr(c.pos[2],1,4));
+	fldTxt[3]->setCaption(String(fldEd==EO_Rotate?"#FFA0A0":"")+ sRot +fToStr(c.dir.x,1,3)+" "+fToStr(c.dir.y,1,3)+" "+fToStr(c.dir.z,1,3));
+	fldTxt[4]->setCaption(String(fldEd==EO_Scale ?"#60F0FF":"")+ sScl +fToStr(c.size.x,2,4)+" "+fToStr(c.size.y,2,4)+" "+fToStr(c.size.z,2,4));
 	// fldTxt[5]->setCaption(TR("#{Group}  ") +toStr(c.group));
 
 	//  edit

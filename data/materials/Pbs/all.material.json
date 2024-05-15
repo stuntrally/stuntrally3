@@ -28744,6 +28744,36 @@
 			}
 		},
 
+		"field_box" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.3, 0.1, 0.1],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.2, 0.1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.1, 0.1],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			},
+			"emissive" :
+			{
+				"value" : [0.4, 0.2, 0.2]
+			}
+		},
+
 		"obstaclesAnomaly" :
 		{
 			"macroblock" : "Macroblock_0",

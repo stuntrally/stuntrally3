@@ -45,7 +45,7 @@ void App::CreateCursors()
 	CreateBox(boxObj, "object_box", "box_obj.mesh");
 	CreateBox(boxEmit, "emitter_box", "box_obj.mesh");
 	CreateBox(boxCol, "collect_box", "box_obj.mesh");
-	CreateBox(boxField, "fluid_box", "box_fluids.mesh");
+	CreateBox(boxField, "field_box", "box_obj.mesh");
 }
 
 

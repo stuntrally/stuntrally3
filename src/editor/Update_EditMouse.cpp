@@ -52,6 +52,9 @@ void App::EditMouse()
 
 	if (edMode == ED_Collects && !scn->sc->collects.empty())
 		MouseCollects();
+
+	if (edMode == ED_Fields && !scn->sc->fields.empty())
+		MouseFields();
 }
 
 
@@ -413,6 +416,73 @@ void App::MouseCollects()
 	}
 	if (upd)
 	{	UpdColPick();
+	// 	UpdObjNewNode();
+	}
+}
+
+
+///  🎆 Fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+void App::MouseFields()
+{
+	const Real fMove(0.2f), fRot(20.f), fScale(0.01f);  //par speed
+	bool upd = false;
+	const Real s = pSet->move_speed;
+
+	int i = iFldCur;  //  picked or new
+	if (i < scn->sc->fields.size())
+	{
+		SField& c = i == -1 ? fldNew : scn->sc->fields[i];
+		const Real d = mCamera->getPosition().distance(c.pos) * fMove * s;
+
+		switch (fldEd)
+		{
+			case EO_Move:
+			{
+				if (mbLeft && i != -1)  // move on xz
+				{
+					Vector3 vx = mCamera->getRight();      vx.y = 0;  vx.normalise();
+					Vector3 vz = mCamera->getDirection();  vz.y = 0;  vz.normalise();
+					Vector3 vm = (-vNew.y * vz + vNew.x * vx) * d * moveMul;
+					c.pos.x += vm.x;  c.pos.z += vm.z;
+					c.nd->setPosition(c.pos);  upd = true;
+				}
+				else if (mbRight)  // move y
+				{
+					Real ym = -vNew.y * d * moveMul;
+					c.pos.y += ym;
+					c.nd->setPosition(c.pos);  upd = true;
+				}
+			}	break;
+
+			case EO_Rotate:
+			{
+				/*Real xm = -vNew.x * fRot * moveMul *PI_d/180.f * s;
+				Quaternion q(o.rot.w(),o.rot.x(),o.rot.y(),o.rot.z());
+				Radian r = Radian(xm);  Quaternion qr;
+
+				qr.FromAngleAxis(r, mbLeft ? Vector3::UNIT_Z : (mbRight ? Vector3::UNIT_Y : Vector3::UNIT_X));
+				if (sel || alt)  q = qr * q;  else  q = q * qr;
+				o.rot = QUATERNION<float>(q.x,q.y,q.z,q.w);
+
+				upd1 = true;*/
+			}	break;
+
+			case EO_Scale:
+			{
+				float vm = (vNew.y + vNew.x) * d * moveMul;
+				float sc = 1.f + vm * fScale;
+	
+				if (mbLeft)        c.size *= sc;  // xyz
+				else if (mbRight)  c.size.y *= sc;  // y
+				else if (mbMiddle) c.size.z *= sc;  // z
+				c.nd->setScale(c.size);  upd = true;
+			}	break;
+
+			default:  break;
+		}
+	}
+	if (upd)
+	{	UpdFldPick();
 	// 	UpdObjNewNode();
 	}
 }

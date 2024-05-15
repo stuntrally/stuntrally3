@@ -147,6 +147,8 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 					case ED_Fluids:   gui->GuiShortcut(WND_Help, 1, 9);  break;
 					case ED_Objects:  gui->GuiShortcut(WND_Help, 1, 10);  break;
 					case ED_Particles:gui->GuiShortcut(WND_Help, 1, 11);  break;
+					case ED_Collects: gui->GuiShortcut(WND_Help, 1, 12);  break;
+					case ED_Fields:   gui->GuiShortcut(WND_Help, 1, 13);  break;
 					case ED_PrvCam:
 					default:		  gui->GuiShortcut(WND_Help, 1, 0);  break;
 			}	}

@@ -393,12 +393,12 @@ void App::keyPressObjects(SDL_Scancode skey)
 			{
 				AddNewFld();
 				iFldCur = fld.size()-1;  //par? auto select inserted-
-				// UpdFldPick();
+				UpdFldPick();
 			}	break;
 
 			//  prev,next type
-			// case key(9):  case key(MINUS):   SetFldType(-1);  break;
-			// case key(0):  case key(EQUALS):  SetFldType( 1);  break;
+			case key(9):  case key(MINUS):   SetFldType(-1);  break;
+			case key(0):  case key(EQUALS):  SetFldType( 1);  break;
 			
 			// case key(O):  case key(LEFTBRACKET):   SetFldGroup(-1);  break;
 			// case key(P):  case key(RIGHTBRACKET):  SetFldGroup( 1);  break;

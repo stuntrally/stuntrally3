@@ -76,7 +76,9 @@ public:
 	
 	//  🛠️ Edit all  :
 	void EditMouse(),  MouseRoad(), MouseStart();
-	void MouseFluids(), MouseObjects(), MouseEmitters(), MouseCollects();
+	void MouseFluids(), MouseObjects(), MouseEmitters();
+	void MouseCollects(), MouseFields();
+
 	void KeyTxtRoad(Ogre::Real q), KeyTxtTerrain(Ogre::Real q), KeyTxtStart(Ogre::Real q);
 	void KeyTxtFluids(Ogre::Real q), KeyTxtObjects(), KeyTxtEmitters(Ogre::Real q);
 	void KeyTxtCollects(), KeyTxtFields();
@@ -280,11 +282,11 @@ public:
 	int iFldCur = -1;  // picked id
 	
 	void SetFldNewType(int tnew), UpdFldNewNode();
-	// void NextFldMat(int add), NextFldMat(int add, Field& o);
 	void AddNewFld();
 	void UpdFldPick();
 
 	SField fldNew;
+	void SetFldType(int add);
 
 
 	//  ⚫ Surfaces  ----

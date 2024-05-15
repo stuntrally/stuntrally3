@@ -1443,10 +1443,12 @@
 	<Tag name="InputStart">Start</Tag>
 	<Tag name="InputStartPos">Q - edit car start pos</Tag>
 	
-	<!--  Fluids  Main  -->
+	<!--  Other Edit modes  -->
 	<Tag name="InputFluidsMode">W - edit fluids</Tag>
 	<Tag name="InputObjectsMode">X - edit Objects</Tag>
 	<Tag name="InputParticlesMode">A - edit Particles</Tag>
+	<Tag name="InputCollectMode">edit Collectibles (crystals, gems, resources, etc.)</Tag>
+	<Tag name="InputObjectsMode">edit Fields (speed acceleration, antigravity lift, etc.)</Tag>
 
 
 	<!--  ..........................................................  -->
@@ -1611,6 +1613,7 @@
 	<Tag name="InputParticlesDensity">[,] - change density (emission rate)</Tag>
 	<Tag name="InputParticlesStatic">Enter - toggle static</Tag>
 	<Tag name="InputParticlesSize">K,L - change size scale</Tag>
+	<Tag name="InputParticlesType">change particles type</Tag>
 
 
 

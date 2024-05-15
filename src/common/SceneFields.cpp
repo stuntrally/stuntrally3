@@ -236,6 +236,22 @@ void App::PickField()
 #endif
 
 
+//  type add +-1
+void App::SetFldType(int add)
+{
+	auto& fld = scn->sc->fields;
+	bool out = iFldCur < 0 || iFldCur >= fld.size();
+	auto& type = out ? fldNew.type : fld[iFldCur].type;
+
+	int t = (type +TF_All +add) % TF_All;  // add
+	if (!out)
+		DestroyField(iFldCur);
+	type = (FieldTypes)t;
+	if (!out)
+		CreateField(iFldCur);
+}
+
+
 ///  🆕 add new field
 void App::AddNewFld()
 {
