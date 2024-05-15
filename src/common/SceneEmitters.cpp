@@ -88,6 +88,43 @@ void CScene::DestroyEmitters(bool clear)
 
 //-------------------------------------------------------------------------------------------------------
 #ifdef SR_EDITOR
+void App::PickEmitters()
+{
+	const auto& emts = scn->sc->emitters;
+	bool vis = edMode == ED_Particles && !emts.empty() && !bMoveCam && pSet->bEmitters;
+	if (!vis)  return;
+
+	iEmtCur = -1;
+	const MyGUI::IntPoint& mp = MyGUI::InputManager::getInstance().getMousePosition();
+	Real mx = Real(mp.left)/mWindow->getWidth(), my = Real(mp.top)/mWindow->getHeight();
+	Ray ray = mCamera->getCameraToViewportRay(mx,my);  // 0..1
+	const Vector3& pos = mCamera->getDerivedPosition(), dir = ray.getDirection();
+
+	Real distC = 100000.f;
+	int ie = -1;
+	for (int i=0; i < emts.size(); ++i)
+	{
+		//  closest to emt center  // fixme fails..
+		const Vector3 posSph = emts[i].nd->getPosition();
+		const Vector3 ps = pos - posSph;
+		Vector3 crs = ps.crossProduct(dir);
+		Real dC = crs.length() / dir.length();
+
+		//  same side of z plane?
+		// box emts[i].size ?..
+		//if ((*it).distance < dist)  // closest aabb
+		if (dC < distC)  // closest center
+		{
+			ie = i;
+			//dist = (*it).distance;
+			distC = dC;
+	}	}
+	
+	if (ie != -1)  //  if none picked
+	if (iEmtCur == -1)
+		iEmtCur = ie;
+}
+
 void App::UpdEmtBox()
 {
 	int emts = scn->sc->emitters.size();

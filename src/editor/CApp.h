@@ -260,7 +260,7 @@ public:
 	std::vector<std::string> vEmtNames;
 	void SetEmtType(int rel);
 
-	void UpdEmtBox();
+	void PickEmitters(), UpdEmtBox();
 	bool bRecreateEmitters = 0;
 	std::string newEmtName = "SmokeBrown";
 

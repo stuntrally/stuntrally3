@@ -247,6 +247,9 @@ void App::keyPressObjects(SDL_Scancode skey)
 		int emts = emt.size();
 		switch (skey)
 		{
+			case key(SPACE):
+				iEmtCur = -1;  PickEmitters();  UpdEmtBox();  break;
+
 			//  prev,next
 			case key(PAGEUP):  case key(KP_9):
 				if (emts > 0) {  iEmtCur = (iEmtCur-1+emts)%emts;  }  UpdEmtBox();  break;
