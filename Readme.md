@@ -5,7 +5,7 @@
 ![Last commit date](https://flat.badgen.net/github/last-commit/stuntrally/stuntrally3)
 ![Commits count](https://flat.badgen.net/github/commits/stuntrally/stuntrally3)
 ![License](https://flat.badgen.net/github/license/stuntrally/stuntrally3)  
-[![Discord](https://img.shields.io/discord/1239125025395703858?label=Discord&logo=Discord&logoColor=white)](https://discord.gg/KXuCwhTE)  
+[![Discord](https://img.shields.io/discord/1239125025395703858?label=Discord&logo=Discord&logoColor=white)](https://discord.gg/TywnXxAtR6)  
 
 ## Links
 
@@ -20,7 +20,7 @@
 💜[Donations](https://cryham.tuxfamily.org/donate/) - financial support
 
 ### Feedback
-💬[Discord](https://discord.gg/KXuCwhTE)  
+💬[Discord](https://discord.gg/TywnXxAtR6)  
 🪧[Reddit](https://www.reddit.com/r/stuntrally/) - r/stuntrally/  
 [github discussions](https://github.com/stuntrally/stuntrally3/discussions)  
 Matrix chat room: #stuntrally:matrix.org  
@@ -36,9 +36,9 @@ Matrix chat room: #stuntrally:matrix.org
 Stunt Rally is a 3D racing game with own Track Editor.  
 Works on GNU/Linux and Windows.  
 
-The game has a **rally** style of driving cars and sliding, mostly on gravel,  
+For cars the game has a **rally** style of driving and sliding, mostly on gravel and loose surfaces.  
 with possible **stunt** elements (jumps, loops, pipes) and generated roads from 3D spline.  
-It also features many Sci-Fi vehicles and different planets🌌.  
+It includes many Sci-Fi vehicles and different planets🌌. Even surreal locations.  
 All [tracks](https://stuntrally.tuxfamily.org/tracks3) and [vehicles](https://stuntrally.tuxfamily.org/cars) can be browsed on website.
 
 SR 3.x is continuing old [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.x,  
@@ -120,7 +120,7 @@ or a topic on [New Forum](https://groups.f-hub.org/stunt-rally/) (if already joi
 Other way is to use:
 [Discord](https://discord.gg/KXuCwhTE) (also for chat),
 [Reddit](https://www.reddit.com/r/stuntrally/) or
-[github discussions](https://github.com/stuntrally/stuntrally3/discussions)  
+[github discussions](https://github.com/stuntrally/stuntrally3/discussions).  
 
 ## 🤝Contributing
 
