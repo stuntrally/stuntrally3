@@ -1445,10 +1445,20 @@
 	
 	<!--  Other Edit modes  -->
 	<Tag name="InputFluidsMode">W - edit fluids</Tag>
+	<Tag name="TipFluidExamples">water, mud, acid, ice, lava, oil, etc.</Tag>
+
 	<Tag name="InputObjectsMode">X - edit Objects</Tag>
+	<Tag name="TipObjectExamples">crates, buildings, obstacles, caves, etc.</Tag>
+
 	<Tag name="InputParticlesMode">A - edit Particles</Tag>
-	<Tag name="InputCollectMode">edit Collectibles (crystals, gems, resources, etc.)</Tag>
-	<Tag name="InputObjectsMode">edit Fields (speed acceleration, antigravity lift, etc.)</Tag>
+	<Tag name="TipParticleExamples">cloud, fire, smoke, etc.</Tag>
+
+	<Tag name="InputCollectMode">edit Collectibles</Tag>
+	<Tag name="TipCollectExamples">crystals, gems, resources, etc.</Tag>
+	<Tag name="InputCollectGroup">Collectible group (for more sets)</Tag>
+
+	<Tag name="InputFieldsMode">edit Fields</Tag>
+	<Tag name="TipFieldExamples">acceleration, gravity lift, etc.</Tag>
 
 
 	<!--  ..........................................................  -->

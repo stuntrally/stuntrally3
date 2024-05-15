@@ -1,5 +1,5 @@
 Various markers in sources for key sections, methods, components, etc or just for info, comment, mark, etc.
-Other text(s) near is an alternative or hint or  a short-cut (2-3 letters).
+Other text(s) near can be alternative(s) or hint(s) or  a short-cut (2-3 letters).
 You can search in code by emoji for all that is related to it.
 
  _______            _________           ____________      ___________        _______         ______          _________
@@ -7,13 +7,13 @@ You can search in code by emoji for all that is related to it.
                                                                                                              
  🏝️ scenery         💧🌊 Fluids        🌞 Sun            ⏱️ HUD timer       🌍 Minimap      🛣️ Road         🚗 Vehicle  car  🚀 Spaceship  
  🏞️ Track Scene           water mud    ⛅ Sky clouds                         ⏲️ Gauges                       ⚫💭 Tire wheel  🔘 Sphere     
-      trk   scn     ✨ Particles                         🥛 Next chk beam                    📏 Wall bridge  🪜 suspension    🏍️ Motorbike  
- ⛰️ Terrain  ter    🔥 Emitters  emt   🌫️ Fog            🔝 Arrow           🚦 Pacenotes    🏛️ Column  col                    🚌 Bus        
+      trk   scn     ✨🔥 Particles                       🥛 Next chk beam                    📏 Wall bridge  🪜 suspension    🏍️ Motorbike  
+ ⛰️ Terrain  ter       Emitters  emt   🌫️ Fog            🔝 Arrow           🚦 Pacenotes    🏛️ Column  col                    🚌 Bus        
  🏔️ Blendmap                           🌦️🌧️ Weather                         🎗️ Trail                         📈 engine        🚤 Hover      
-            Trees   📦 Objects  obj        rain snow     🔨 Damage hit      ❌ wrong chk     ⭕ Pipe         🔴 brake         
- 🌳🪨 Veget-ation   🏢    buildings    🌪️ wind           💨 Boost                           ➰➿ Loop                         
+            Trees   📦🏢 Objects  obj      rain snow     🔨 Damage hit      ❌ wrong chk     ⭕ Pipe         🔴 brake         
+ 🌳🪨 Veget-ation     caves buildings  🌪️ wind           💨 Boost                           ➰➿ Loop                         
  🌿 Grass  grs      🎆 Fields   fld                      ⏪ Rewind          🎨 paint                                           
-                                       🪐🌌 Space                                                                              
+                      accelerate lift  🪐🌌 Space                                                                              
                                        ⛈️🌋 Extreme                                                          
                                                                                                             
  ____________      ______              _____          _______           ______           ________      _______              ________

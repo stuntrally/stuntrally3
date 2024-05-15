@@ -1,6 +1,7 @@
 <presets>
 <!-- This is the file with all that is available in  SR3 Track Editor's  Pick Lists.  Also used by game.
-     Add any new content here, to be available, and align with spaces for look.  -->
+     Except for particles, those are just in .particle files.
+     Add any new content here, to be available.  Align with spaces for look.  -->
 
 
 <!--  ⛅  Skies  ================================================================

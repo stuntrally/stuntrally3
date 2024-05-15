@@ -646,9 +646,9 @@
 	<!-- ................................................................................................................... -->
 					<Widget type="TabItem" skin="" position="2 24 754 444">
 						<Property key="Caption" value="#50B0FF#{Fluids}"/>
-						<Widget type="TextBox" skin="TextBox" position="96 14 272 20">
+						<Widget type="TextBox" skin="TextBox" position="96 14 672 20">
 							<Property key="TextColour" value="0.3 0.65 1.0"/>
-							<Property key="Caption" value="#{InputFluidsMode}"/>
+							<Property key="Caption" value="#{InputFluidsMode} - #{TipFluidExamples}"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="12 44 376 20">
@@ -694,9 +694,9 @@
 	<!-- ................................................................................................................... -->
 					<Widget type="TabItem" skin="" position="2 24 754 444">
 						<Property key="Caption" value="#D0D0D0#{Objects}"/>
-						<Widget type="TextBox" skin="TextBox" position="96 14 272 20">
+						<Widget type="TextBox" skin="TextBox" position="96 14 672 20">
 							<Property key="TextColour" value="0.9 0.9 0.9"/>
-							<Property key="Caption" value="#{InputObjectsMode}"/>
+							<Property key="Caption" value="#{InputObjectsMode} - #{TipObjectExamples}"/>
 						</Widget>
 						
 						<Widget type="TextBox" skin="TextBox" position="12 44 376 20">
@@ -781,9 +781,9 @@
 	<!-- ................................................................................................................... -->
 					<Widget type="TabItem" skin="" position="2 24 754 444">
 						<Property key="Caption" value="#F0F070#{Particles}"/>
-						<Widget type="TextBox" skin="TextBox" position="96 14 272 20">
+						<Widget type="TextBox" skin="TextBox" position="96 14 672 20">
 							<Property key="TextColour" value="0.9 0.9 0.5"/>
-							<Property key="Caption" value="#{InputParticlesMode}"/>
+							<Property key="Caption" value="#{InputParticlesMode} - #{TipParticleExamples}"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="12 44 376 20">
@@ -813,12 +813,12 @@
 
 						<!-- custom -->
 						<Widget type="TextBox" skin="TextBox" position="12 208 376 20">
-							<Property key="TextColour" value="0.85 0.95 0.8"/>
+							<Property key="TextColour" value="1.0 1.0 0.8"/>
 							<Property key="Caption" value="9,0  /  -,=  - #{InputParticlesType}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="12 244 376 20">
 							<Property key="TextColour" value="0.9 0.9 0.6"/>
-							<Property key="Caption" value="O,P /  #{InputParticlesDensity}"/>
+							<Property key="Caption" value="O,P  /  #{InputParticlesDensity}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="12 278 376 20">
 							<Property key="TextColour" value="0.8 0.8 0.7"/>
@@ -853,8 +853,8 @@
 					<Widget type="TabItem" skin="" position="2 24 754 444">
 						<Property key="Caption" value="#C080FF#{Collection}"/>
 						<Widget type="TextBox" skin="TextBox" position="96 14 672 20">
-							<Property key="TextColour" value="0.9 0.9 0.9"/>
-							<Property key="Caption" value="Y - #{InputCollectMode}"/>
+							<Property key="TextColour" value="0.8 0.6 1.0"/>
+							<Property key="Caption" value="Y - #{InputCollectMode} - #{TipCollectExamples}"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="12 44 376 20">
@@ -884,12 +884,12 @@
 
 						<!-- custom -->
 						<Widget type="TextBox" skin="TextBox" position="12 208 376 20">
-							<Property key="TextColour" value="0.6 0.76 0.9"/>
+							<Property key="TextColour" value="0.7 0.86 1.0"/>
 							<Property key="Caption" value="9,0  /  #{InputObjectsType}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="12 244 376 20">
-							<Property key="TextColour" value="0.6 0.86 0.9"/>
-							<Property key="Caption" value="O,P  /  #{Group}"/>
+							<Property key="TextColour" value="0.8 0.6 1.0"/>
+							<Property key="Caption" value="O,P  /  [,]  - #{InputCollectGroup}"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="396 44 368 20">
@@ -916,8 +916,8 @@
 					<Widget type="TabItem" skin="" position="2 24 754 444">
 						<Property key="Caption" value="#FF6060#{Fields}"/>
 						<Widget type="TextBox" skin="TextBox" position="96 14 672 20">
-							<Property key="TextColour" value="0.9 0.9 0.9"/>
-							<Property key="Caption" value="H - #{InputFieldsMode}"/>
+							<Property key="TextColour" value="1.0 0.5 0.5"/>
+							<Property key="Caption" value="H - #{InputFieldsMode} - #{TipFieldExamples}"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="12 44 376 20">
@@ -947,7 +947,7 @@
 
 						<!-- custom -->
 						<Widget type="TextBox" skin="TextBox" position="12 208 376 20">
-							<Property key="TextColour" value="0.6 0.76 0.9"/>
+							<Property key="TextColour" value="0.7 0.86 1.0"/>
 							<Property key="Caption" value="9,0  /  #{InputObjectsType}"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="12 244 376 20">
