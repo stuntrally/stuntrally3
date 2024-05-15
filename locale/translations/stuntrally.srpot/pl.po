@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-15 20:44+0200\n"
-"PO-Revision-Date: 2024-04-27 17:07+0000\n"
+"PO-Revision-Date: 2024-05-15 21:02+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/pl/>\n"
@@ -18,10 +18,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
-"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && ("
+"n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
 "n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Weblate 5.5.1\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -398,7 +398,7 @@ msgstr "Kolekcja"
 #: src/game/Gui_InitChamps.cpp:90
 msgctxt "Collected"
 msgid "Collected"
-msgstr ""
+msgstr "Zebrane"
 
 #. MAIN  Game  Modes 
 #: data/gui/Game_Main.layout:413 ..NewGame-GameTypes.Button
@@ -3038,7 +3038,7 @@ msgstr "Jakość drogi daleko"
 #: data/gui/Game_Options.layout:1060
 msgctxt "GridQual"
 msgid "Grid quality"
-msgstr ""
+msgstr "Jakość siatki"
 
 #. Graphics  Textures 
 #: data/gui/Editor_Options.layout:542 ..Options.Graphics.Tab
@@ -3279,7 +3279,7 @@ msgstr "Światła Pojazdów"
 #: data/gui/Game_Options.layout:1040 ..Options.Graphics.Lights.Check
 msgctxt "UnderGlow"
 msgid "Under glow"
-msgstr ""
+msgstr "Podświetlenie"
 
 #. Graphics  particles 
 #: data/gui/Editor_Help.layout:231 ..Help.Input/help.Shortcuts.Text
@@ -5782,7 +5782,7 @@ msgstr "Grupa"
 #: data/gui/Editor_Tools.layout:657 ..Window
 msgctxt "Fields"
 msgid "Fields"
-msgstr ""
+msgstr "Pola"
 
 #. Tools 
 #: data/gui/Editor_Help.layout:238 ..Help.Input/help.Shortcuts.Text
@@ -6448,7 +6448,7 @@ msgstr "W - edytuj ciecze"
 #: data/gui/Editor_Help.layout:650 ..Help.Input/help.Fluids.Text
 msgctxt "TipFluidExamples"
 msgid "water, mud, acid, ice, lava, oil, etc."
-msgstr ""
+msgstr "woda, błoto, kwas, lód, lawa, ropa, itd."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:698 ..Help.Input/help.Objects.Text
@@ -6460,7 +6460,7 @@ msgstr "X - edytuj obiekty"
 #: data/gui/Editor_Help.layout:698 ..Help.Input/help.Objects.Text
 msgctxt "TipObjectExamples"
 msgid "crates, buildings, obstacles, caves, etc."
-msgstr ""
+msgstr "skrzynki, budynki, przeszkody, jaskinie, itd."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:785 ..Help.Input/help.Particles.Text
@@ -6472,37 +6472,37 @@ msgstr "A - edycja Cząstek"
 #: data/gui/Editor_Help.layout:785 ..Help.Input/help.Particles.Text
 msgctxt "TipParticleExamples"
 msgid "cloud, fire, smoke, etc."
-msgstr ""
+msgstr "chmura, ogień, dym, itd."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:856 ..Help.Input/help.Collection.Text
 msgctxt "InputCollectMode"
 msgid "edit Collectibles"
-msgstr ""
+msgstr "edytuj Kolekcje"
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:856 ..Help.Input/help.Collection.Text
 msgctxt "TipCollectExamples"
 msgid "crystals, gems, resources, etc."
-msgstr ""
+msgstr "kryształy, klejnoty, zasoby, itd."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:891 ..Help.Input/help.Collection.Text
 msgctxt "InputCollectGroup"
 msgid "Collectible group (for more sets)"
-msgstr ""
+msgstr "Grupa kolekcjonowania (do wielu zestawów)"
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:919 ..Help.Input/help.Fields.Text
 msgctxt "InputFieldsMode"
 msgid "edit Fields"
-msgstr ""
+msgstr "edytuj Pola"
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:919 ..Help.Input/help.Fields.Text
 msgctxt "TipFieldExamples"
 msgid "acceleration, gravity lift, etc."
-msgstr ""
+msgstr "przyśpieszanie, wyciąg grawitacyjny, itd."
 
 #. Terrain  Edit modes  not used 
 msgctxt "InputTerPaint"
@@ -7141,7 +7141,7 @@ msgstr "K,L - zmień skalę wielkości"
 #: :954..Help.Input/help.Fields.Text
 msgctxt "InputParticlesType"
 msgid "change particles type"
-msgstr ""
+msgstr "zmień typ cząstek"
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:766 ..SingleRace.Vehicle.Text :774
@@ -7247,7 +7247,7 @@ msgstr "Wygrałeś to wyzwanie."
 #: data/gui/Game.layout:2052 ..SingleRace.Championship.Edit
 msgctxt "ClickInList"
 msgid "Pick in list to read description and start."
-msgstr ""
+msgstr "Wybierz z listy by przeczytać opis i zacząć."
 
 #. Championship  info text 
 #: data/gui/Game.layout:2130 ..SingleRace.Championship.Edit
@@ -7304,6 +7304,10 @@ msgid ""
 "to collect all gems located in various places. Time can be limited or not. "
 "Faster time gives better prize."
 msgstr ""
+"W trybie gry Kolecja, swobodnie poruszasz się po terenie (nie tylko po "
+"drogach). Celem jest zebranie wszystkich klejnotów znajdujących się w "
+"różnych miejscach. Czas może być ograniczony lub nie. Szybszy czas daje "
+"lepszą nagrodę."
 
 #. Hint  welcome screen 
 #: data/gui/Game_Replay.layout:246 ..Window src/game/Gui_Events.cpp:498
