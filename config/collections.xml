@@ -6,7 +6,7 @@
 			//  increase ver  if you changed collection (this will reset user's progress for it)
 
 			//  type  is for putting it into gui tabs   find: clrCh[MAX_COL_TYP][8]
-			//  0 Infinite  1 Chase (timed)  2 Extreme (hard)  3 Test
+			//  0 Endurance (infinite)  1 Chase (timed)  2 Extreme (hard)  3 Test
 
 			//  difficulty  is for text displayed in list
 			//    "1" easy .. "3" medium .. "6" extreme
@@ -93,26 +93,117 @@ descr="Extreme Stunt Rally track collection. Highest locations for gems. Require
 		<track name="TestC12-SR" />
 	</collection>
 
+	<!-- tracks -->
+	<collection name="#A0A0E0Dunes rocky tops" ver="1" difficulty="2" type="0" groups="1"
+descr="Easy collection with terrain cars for places on top of rocky hills in desert.">
+		<cartype names="Terrain" />
+		<sim boost="0" rewind="0" />
+		<track name="Des1-Dunes" />
+	</collection>
 
-	<collection name="#C0FF40Jungle temple hideout" ver="1" difficulty="3" type="0" groups="1"
+	<collection name="#90E0E0Loops #FF8030in air" ver="1" difficulty="6" type="2" groups="1"
+descr="Difficult and tricky collection of gems in air below loops top, needs falling down from middle or other place.">
+		<cartype names="Gravel" />
+		<sim boost="0" />
+		<track name="Sav3-Loops" />
+	</collection>
+
+	<collection name="Rocky jungle gems" ver="1" difficulty="4" type="0" groups="1"
+descr="Difficult to get place for cars in tricky, rocky dips in jungle, and few on hills. Careful for damage and use rewind to get back.">
+		<cartype names="Gravel" />
+		<sim boost="0" />
+		<track name="Jng3-Rocky" />
+	</collection>
+
+	<collection name="#C0E070Hills #FF6030in air" ver="1" difficulty="7" type="2" groups="1"
+descr="Difficult gems on top of ballons with fast drone.">
+		<car names="Q3|R2" />
+		<sim boost="3" />
+		<track name="Sav4-Hills" />
+	</collection>
+
+	<collection name="SBridge terrain" ver="1" difficulty="3" type="0" groups="1"
+descr="Gems located on terrain tops, and in bumpy places. Careful for damage, no rewind.">
+		<cartype names="Gravel" />
+		<sim boost="2" damage="2" rewind="0" />
+		<track name="Des4-SBridge" />
+	</collection>
+
+	<collection name="#D0D040LowJumps terrain" ver="1" difficulty="3" type="0" groups="1"
+descr="Gems located on terrain tops collecting with hovercraft.">
+		<cartype names="Hovercraft" />
+		<sim boost="1" />
+		<track name="Des5-LowJumps" />
+	</collection>
+
+	<collection name="#FFC040HighJumps nearby" ver="1" difficulty="3" type="0" groups="1"
+descr="Gems are on side of jumps, requiring to jump slightly to side to collect them. Rewind makes it quicker to get all from each place.">
+		<cartype names="Hover" />
+		<sim boost="3" />
+		<track name="Des6-HighJumps" />
+	</collection>
+
+	<collection name="#F0F0B0Technical floating" ver="1" difficulty="4" type="0" groups="1"
+descr="Desert gems floating in air, requiring to jump off from road or nearby terrain slope to get them.">
+		<cartype names="Hover" />
+		<sim boost="3" />
+		<track name="Des8-Technical" />
+	</collection>
+
+
+	<collection name="Jungle fun hideout" ver="1" difficulty="4" type="0" groups="1"
+descr="Jungle fun track with hidden gems.">
+		<cartype names="Terrain|Extreme" />
+		<sim boost="2" />
+		<track name="Jng6-Fun" />
+	</collection>
+
+	<collection name="Bumpy hilly bike trip" ver="1" difficulty="4" type="0" groups="1"
+descr="Mud Bumps track with lots of gems in various places. Many on top of hills, some in dips, few in flat places near slopes.">
+		<car names="BE" />
+		<sim boost="3" />
+		<track name="Mud2-Bumps" />
+	</collection>
+
+	<collection name="Jungle temple hideout" ver="1" difficulty="3" type="0" groups="1"
 descr="Small but dense jungle track with hidden gems.">
 		<cartype names="Terrain|Extreme|Gravel" />
 		<sim boost="3" />
 		<track name="Jng11-Temple" />
 	</collection>
 
-	<collection name="#C0FF40Jungle temple treasure" ver="1" difficulty="5" type="2" groups="2"
+	<collection name="Jungle temple treasure" ver="1" difficulty="5" type="2" groups="2"
 descr="Small but dense jungle track with hidden gems.">
 		<cartype names="Hover|Drone" />
 		<sim boost="3" />
 		<track name="Jng11-Temple" />
 	</collection>
 
-	<collection name="#C0FF40Gems on Greece hills" ver="1" difficulty="2" type="0" groups="3"
+	<collection name="Mad Mntn Dark" ver="1" difficulty="6" type="2" groups="3"
+descr="Mad Mntn track in dark with heavy rain. Difficult places for gems, many on hexrock platforms and on top of caves or hills.">
+		<cartype names="Spaceship" />
+		<sim boost="3" damage="0" />
+		<track name="For9-MadMntnDark" />
+	</collection>
+
+	<collection name="Gems on Greece hills" ver="1" difficulty="2" type="0" groups="3"
 descr="Few gems to collect on vast Greece landscape, on top of hills with good views.">
-		<cartype names="Extreme|Gravel|Asphalt|Hovercraft|Hover|Drone" />
 		<sim boost="3" />
 		<track name="Grc1-Long" />
+	</collection>
+
+	<collection name="Canyon hills" ver="1" difficulty="3" type="0" groups="3"
+descr="Plenty of gems on canyon hills, few under bridges and on platforms for look out.">
+		<cartype names="Hover|Drone|Spaceship" />
+		<sim boost="3" />
+		<track name="Aus3-Canyon" />
+	</collection>
+
+	<collection name="#B0A0D0Satellite visits" ver="1" difficulty="2" type="0" groups="1"
+descr="Easy collection, each satellite antenna (near road) has a gem, usually in front.">
+		<cartype names="Extreme" />
+		<sim boost="3" />
+		<track name="Sur7-UaraHills" />
 	</collection>
 
 
