@@ -42,6 +42,8 @@ void CAllowed::LoadXml(XMLElement* xml)
 		{	String s = a;
 			carsDeny = StringUtil::split(s, "|");
 	}	}
+	if (!eCarT && !eCar)
+		all = true;
 }
 
 #ifndef SR_EDITOR
@@ -103,6 +105,6 @@ bool CAllowed::Allows(CarsXml* xml, std::string name) const
 			for (i=0; i < s; ++i)
 				if (type == types[i])  return true;
 	}	}
-	return false;
+	return all;
 }
 #endif

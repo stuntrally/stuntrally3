@@ -15,6 +15,7 @@ class CAllowed
 public:
 	Ogre::StringVector types, cars, carsDeny;
 	int whMin = 0, whMax = 10;  // allowed vehicle wheels count range [min..max]
+	bool all = false;  // allowed
 
 	void LoadXml(tinyxml2::XMLElement* xml);
 

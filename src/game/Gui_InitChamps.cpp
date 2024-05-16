@@ -124,8 +124,10 @@ void CGui::InitGuiChamps()
 
 	Btn("btnTutStart",   btnChampStart);  btStTut = btn;
 	Btn("btnChampStart", btnChampStart);  btStChamp = btn;
-	Btn("btnChallStart", btnChallStart);  btStChall = btn;	Btn("btnChRestart", btnChRestart);   btChRestart = btn;
-	Btn("btnCollectStart", btnCollectStart);  btStCollect = btn;
+	Btn("btnChallStart", btnChallStart);  btStChall = btn;
+	Btn("btnChRestart", btnChRestart);   btChRestart = btn;
+	Btn("btnCollectStart",   btnCollectStart);  btStCollect = btn;
+	Btn("btnCollectRestart", btnChRestart);  btColRestart = btn;
 
 
 	//  ch other

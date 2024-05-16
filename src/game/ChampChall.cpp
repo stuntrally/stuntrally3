@@ -115,6 +115,10 @@ void App::Ch_NewGame()
 		pSet->game.track_reversed = 0;
 		pSet->game.num_laps = 0;
 
+		pSet->game.sim_mode = col.sim_mode;
+		pSet->game.damage_type = col.damage_type;
+		pSet->game.damage_dec = 0.f;
+
 		pSet->game.boost_type = col.boost_type;
 		pSet->game.flip_type = col.flip_type;
 		pSet->game.rewind_type = col.rewind_type;
@@ -338,15 +342,30 @@ void CGui::btnChRestart(WP)
 	if (pSet->iMenu == MN_Tutorial || pSet->iMenu == MN_Champ)
 	{
 		if (liChamps->getIndexSelected()==ITEM_NONE)  return;
-		int chId = *liChamps->getItemDataAt<int>(liChamps->getIndexSelected())-1;
-		ProgressChamp& pc = progress[p].chs[chId];
-		pc.curTrack = 0;  ChampsListUpdate();
+		int id = *liChamps->getItemDataAt<int>(liChamps->getIndexSelected())-1;
+		
+		ProgressChamp& pc = progress[p].chs[id];
+		pc.curTrack = 0;
+		ChampsListUpdate();
 	}
 	else if (pSet->iMenu == MN_Chall)
 	{
 		if (liChalls->getIndexSelected()==ITEM_NONE)  return;
-		int chId = *liChalls->getItemDataAt<int>(liChalls->getIndexSelected())-1;
-		ProgressChall& pc = progressL[p].chs[chId];
-		pc.curTrack = 0;  ChallsListUpdate();
+		int id = *liChalls->getItemDataAt<int>(liChalls->getIndexSelected())-1;
+		
+		ProgressChall& pc = progressL[p].chs[id];
+		pc.curTrack = 0;
+		ChallsListUpdate();
+	}
+	else if (pSet->iMenu == MN_Collect)
+	{
+		if (liCollect->getIndexSelected()==ITEM_NONE)  return;
+		int id = *liCollect->getItemDataAt<int>(liCollect->getIndexSelected())-1;
+		
+		ProgressCollect& pc = progressC.col[id];
+		pc.fin = -1;
+		pc.bestTime = 1e6;
+		pc.gems.clear();
+		CollectListUpdate();
 	}
 }

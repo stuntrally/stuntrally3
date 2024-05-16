@@ -9,13 +9,14 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 Add gems to **tracks**  
 collection: logic btn continue, restart, hid collected gems on start  
-Career hide or todo  
+
+3d cups, win particles, new best time hud show  
+ed Fields accel par, dir, teleport end  
 
 fix .car thrusters lights pos, boost count  
-3d cups, win particles, new best time hud show  
-ed Fields todo  
+Career hide or todo  
 
-new tracks^  
+new track(s) with^ add walls  
 ?Water depth, SSAO?  
 
 ----
@@ -25,12 +26,11 @@ new tracks^
 Score for: drift (sliding on road), air time (jumps etc), hitting dynamic objects  
 
 🕹️ New **Game** elements:  
-🎆 Fields: teleporters, force fields, speed up, lift, anti-gravity  
 🎳 moving & rotating obstacles, elevators  
 
-
 Track 💡*lights* ed mode, car glow (as rect area) lights, bridges, pipe easy add lights?  
-*entities.xml* (sum of object, animation, light, 🔥particles etc)  
+**entities**.xml (sum of object, animation, light, 🔥particles etc)  
+Road wall types, [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)  
 
 ----
 ### New data
@@ -45,11 +45,10 @@ redo or replace lowest quality meshes: shroom* 🍄, skyscraper* 🏢
 normalize .mesh scales fir*, etc.  
 
 [Horizons](https://stuntrally.tuxfamily.org/mantis/view.php?id=11), add to rest of tracks  
-🛣️ Road: wall types, spline walls [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)  
 
 
 ----
-### Ogre
+### Ogre new
 🪄 **Effects**: Soft Particles, **SSAO**, HDR, bloom, rays?  
 🌀 Add [FastNoise](https://github.com/Auburn/FastNoiseLite) for brushes and ter gen  
 

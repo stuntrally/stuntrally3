@@ -76,10 +76,6 @@ void CGui::CollectListUpdate()
 
 void CGui::fillCollectList(std::vector<int> vIds)
 {
-	const char clrCh[MAX_COL_TYP][8] = {
-	//  0 Infinite  1 Chase  2 Hard  3 Test
-		"#A0D0FF","#80FF80","#FFC060", "#909090" };
-
 	liCollect->removeAllItems();
 
 	size_t sel = ITEM_NONE;
@@ -87,12 +83,10 @@ void CGui::fillCollectList(std::vector<int> vIds)
 	{
 		const Collection& col = data->collect->all[i];
 		const ProgressCollect& pc = progressC.col[i];
-		const String& clr = clrCh[col.type];
-		//String cars = data->carsXml.colormap[col.ci->type];  if (cars.length() != 7)  clr = "#C0D0E0";
 		
 		liCollect->addItem("", i+1);  int l = liCollect->getItemCount()-1;
-		liCollect->setSubItemNameAt(1,l, clr+ col.nameGui);
 		String c = gcom->GetSceneryColor(col.track, 0);
+		liCollect->setSubItemNameAt(1,l, c+ col.nameGui);
 		liCollect->setSubItemNameAt(2,l, c+ col.track);
 
 		liCollect->setSubItemNameAt(3,l, gcom->clrsDiff[col.diff]+ TR("#{Diff"+toStr(col.diff)+"}"));
@@ -140,7 +134,7 @@ void CGui::listCollectChng(MyGUI::MultiList2* chlist, size_t id)
 	gcom->sListTrack = trk;  gcom->bListTrackU = 0;
 	// CarListUpd();
 
-	// UpdCollectDetail(nch);
+	// UpdCollectDetail(nc);
 }
 
 
@@ -590,6 +584,6 @@ void CGui::UpdCollectDetail(int id)
 	//  btn start
 	s1 = cur == all ? TR("#{Restart}") : (cur == 0 ? TR("#{Start}") : TR("#{Continue}"));
 	btStCollect->setCaption(s1);
-	// btChRestart->setVisible(cur > 0);
+	// btnCollectRestart->setVisible(cur > 0);
 }
 #endif

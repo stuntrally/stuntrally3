@@ -485,7 +485,7 @@ public:
 	//  🪟 windows
 	void btnChampStart(WP), btnChampEndClose(WP), btnChampStageBack(WP), btnChampStageStart(WP);
 	void btnChallStart(WP), btnChallEndClose(WP), btnChallStageBack(WP), btnChallStageStart(WP);
-	void btnChRestart(WP);  Btn btChRestart =0;
+	void btnChRestart(WP);  Btn btChRestart =0, btColRestart =0;
 	void btnCollectStart(WP);
 
 	Btn btChampStage =0, btChallStage =0;
