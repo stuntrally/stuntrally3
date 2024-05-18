@@ -148,8 +148,9 @@ void CGuiCom::UnfocusLists()
 			w == (WP)g->objListBld || w == (WP)g->objListDyn || w == (WP)g->objListSt)
 		#else
 		if (w == (WP)trkList  || (app && app->gui && (
-			w == (WP)g->carList  || w == (WP)g->liChalls ||
-			w == (WP)g->liChamps || w == (WP)g->liStages || w == (WP)g->rplList)) )
+			w == (WP)g->carList || w == (WP)g->rplList ||
+			w == (WP)g->liChamps || w == (WP)g->liChalls || w == (WP)g->liStages) ||
+			w == (WP)g->liCollect ))
 		#endif
 		{
 			InputManager::getInstance().resetKeyFocusWidget();

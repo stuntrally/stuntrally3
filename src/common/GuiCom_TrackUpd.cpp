@@ -7,6 +7,7 @@
 #include "TracksXml.h"
 #include "CData.h"
 #include "CScene.h"
+#include "settings_com.h"
 #ifndef SR_EDITOR
 	#include "game.h"
 	#include "CGame.h"
@@ -91,6 +92,7 @@ void CGuiCom::TrackListUpd(bool resetNotFound)
 {
 	if (trkList)
 	{	trkList->removeAllItems();
+		xTrk = 0;  yTrk = 0;
 		int ii = 0, a = 0, si = -1;  bool bFound = false;
 
 		//  sort
@@ -283,33 +285,22 @@ void CGui::btnCarView1(WP) {  pSet->cars_view = 0;  gcom->updTrkListDim();  }
 void CGui::btnCarView2(WP) {  pSet->cars_view = 1;  gcom->updTrkListDim();  }
 #endif
 
-void CGuiCom::btnTrkView1(WP)
+void CGuiCom::comboTrkView(Cmb wp, size_t val)
 {
-	addTrkView(-1);
+	pSet->tracks_view = val;
 	ChangeTrackView();
-}
-void CGuiCom::btnTrkView2(WP)
-{
-	addTrkView(1);
-	ChangeTrackView();
-}
-void CGuiCom::addTrkView(int add)
-{
-	auto& v = pSet->tracks_view;
-	auto all = pSet->TrkViews;
-	v = (v + add + all) % all;
 }
 void CGuiCom::ChangeTrackView()
 {
 	auto v = pSet->tracks_view;
-	bool full = v >= 1, det = v == 1;
-	if (txtTrkViewVal)
-		txtTrkViewVal->setCaption(toStr(v+1));
 
-	imgTrkIco1->setVisible(det);  imgTrkIco2->setVisible(det);
+	bool img = v == TV_ListWide;  // col icons
+	imgTrkIco1->setVisible(img);  imgTrkIco2->setVisible(img);
+
+	bool prv = v != TV_ListWide && v != TV_GalleryBig;
 	if (imgPrv[0])
-		imgPrv[0]->setVisible(!det);
-	panTrkDesc[0]->setVisible(!det);
+		imgPrv[0]->setVisible(prv);
+	panTrkDesc[0]->setVisible(prv);
 
 	ChkUpd_Col();
 	updTrkListDim();  // change size, columns
@@ -342,43 +333,57 @@ void CGuiCom::updTrkListDim()
 	//  🏞️ tracks list
 	//-------------------------------
 	if (!trkList)  return;
-	int v = pSet->tracks_view;
-
-	int c, sum = 0, cnt = trkList->getColumnCount();
-	for (c=0; c < cnt-1; ++c)
-		if (pSet->colVisDef[1][c])  sum += colTrk[c];
-
 	const IntCoord& wi = app->mWndOpts->getCoord();
-	int sw = 0, xico1 = 0, xico2 = 0, wico = 0;
-	
-	for (c=0; c < cnt; ++c)
-	{
-		float wf = float(colTrk[c]) / sum * 0.625/*width*/ * wi.width * 0.97/*frame*/;
-		int w = c==cnt-1 ? 18 :  pSet->col_vis[v][c] ? wf : 0;
-		trkList->setColumnWidthAt(c, w);
-		sw += w;
-		if (c == 6)  wico = w;
-		if (c < 6)   xico1 += w;
-		if (c < 17)  xico2 += w;
-	}
+	int c, sum, cnt, sw, xt, yt;
 
-	int xt = 0.017*wi.width, yt = 0.062*wi.height, yico = yt - wico - 1;  //0.02*wi.height;
-	trkList->setCoord(xt, yt, sw + 8/*frame*/, 0.73/*height*/*wi.height);
-	
-	imgTrkIco1->setCoord(xt + xico1+2, yico, 11*wico, wico);
-	imgTrkIco2->setCoord(xt + xico2+wico*3/4, yico, 2*wico, wico);
-	#ifndef SR_EDITOR
+	int v = pSet->tracks_view;
+	bool gal = v >= TV_GalleryList;
+	if (!gal)
+	{
+		sum = 0;  cnt = trkList->getColumnCount();
+		for (c=0; c < cnt-1; ++c)
+			if (pSet->colVisDef[TV_ListWide][c])  sum += colTrk[c];
+
+		int sw = 0, xico1 = 0, xico2 = 0, wico = 0;
+		
+		for (c=0; c < cnt; ++c)
+		{
+			float wf = float(colTrk[c]) / sum * 0.625/*width*/ * wi.width * 0.97/*frame*/;
+			int w = c==cnt-1 ? 18 :  pSet->col_vis[v][c] ? wf : 0;
+			trkList->setColumnWidthAt(c, w);
+			sw += w;
+			if (c == 6)  wico = w;
+			if (c < 6)   xico1 += w;
+			if (c < 17)  xico2 += w;
+		}
+
+		xt = 0.017*wi.width;  yt = 0.062*wi.height;  int yico = yt - wico - 1;  //0.02*wi.height;
+		trkList->setCoord(xt, yt, sw + 8/*frame*/, 0.73/*height*/*wi.height);
+		
+		imgTrkIco1->setCoord(xt + xico1+2, yico, 11*wico, wico);
+		imgTrkIco2->setCoord(xt + xico2+wico*3/4, yico, 2*wico, wico);
+	}
+#ifndef SR_EDITOR  // mplr hides
 	bool hid = app->gui->panNetTrack && app->gui->panNetTrack->getVisible();
 	if (!hid)
-	#endif
-		trkList->setVisible(true);
+#endif
+		trkList->setVisible(!gal);
+	
+	//  gallery ::
+	scvTracks->setVisible(gal);
+	if (gal)
+	{
+		int xt = 0.017*wi.width, yt = 0.062*wi.height;
+		float wg = v == TV_GalleryBig ? 0.62 : 0.2;
+		scvTracks->setCoord(xt, yt, wg*wi.width, 0.73*wi.height);
+	}
 
 	//  🚗 car list
 	//-------------------------------
-	#ifndef SR_EDITOR
+#ifndef SR_EDITOR  // game
 	bool full = pSet->cars_view;
-
-	sum = 0;  sw = 0;  cnt = app->gui->carList->getColumnCount();
+	sum = 0;  sw = 0;
+	cnt = app->gui->carList->getColumnCount();
 	for (c=0; c < cnt; ++c)  sum += app->gui->colCar[c];
 	for (c=0; c < cnt; ++c)
 	{
@@ -387,19 +392,16 @@ void CGuiCom::updTrkListDim()
 		app->gui->carList->setColumnWidthAt(c, w);
 		sw += w;
 	}
-
-	xt = 0.017*wi.width;  yt = 0.062*wi.height, yico = yt - wico - 1;  //0.02*wi.height;
+	xt = 0.017*wi.width;  yt = 0.062*wi.height;
 	app->gui->carList->setCoord(xt, yt, sw + 8/*frame*/, 0.41/*height*/*wi.height);
-	#endif
-	
-	#ifndef SR_EDITOR
+
 	if (app->gui->panNetTrack)  {
 		Tbi trkTab = fTbi("TabTrack");
 		const IntCoord& tc = trkTab->getCoord();
 		app->gui->panNetTrack->setCoord(0, 0.82f*tc.height, tc.width*0.64f, 0.162f*tc.height);  }
-	#endif
+#endif
 
-	#ifdef SR_EDITOR
+#ifdef SR_EDITOR  // ed pick
 	const IntCoord& wp = app->mWndPick->getCoord();
 	//IntCoord ic(0.01*wp.width, 0.04*wp.height, 0.38*wp.width, 0.93*wp.height);
 	IntCoord ic(0.01*wp.width, 0.055*wp.height, 0.38*wp.width, 0.89*wp.height);
@@ -411,5 +413,5 @@ void CGuiCom::updTrkListDim()
 
 	float ih = 0.045f;
 	app->bckInput->setRealCoord(0.2f, 1.f-ih, 0.5f, ih);
-	#endif
+#endif
 }

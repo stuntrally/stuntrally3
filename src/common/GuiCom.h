@@ -149,7 +149,9 @@ public:
 	void SortTrkList();
 	void TrackListUpd(bool resetNotFound=false);
 
-	Mli2 trkList =0;
+	Mli2 trkList =0;  Scv scvTracks =0;
+	int xTrk = 0, yTrk = 0;
+
 	WP panTrkDesc[2] ={0,0};
 	Ed trkDesc[2] ={0,0}, trkAdvice[2] ={0,0};  // description, advice
 	bool needSort(Mli2 li);
@@ -178,10 +180,9 @@ public:
 	void ReadTrkStats();
 
 	//  📰 track views
-	Txt txtTrkViewVal =0;
-	void btnTrkView1(WP), btnTrkView2(WP), btnTrkFilter(WP);
-	void ChangeTrackView(), addTrkView(int add);
-	void updTrkListDim();
+	Cmb cmbTrkView =0;  void comboTrkView(CMB);	
+	void btnTrkFilter(WP);
+	void ChangeTrackView(), updTrkListDim();
 
 
 	//  🔻 filter  ---

@@ -24,6 +24,7 @@
 // #include <OgreTerrain.h>
 // #include <OgreWindow.h>
 #include <MyGUI.h>
+// #include "MyGUI_ScrollView.h"
 //#include <MyGUI_Delegate.h>
 //#include <MyGUI_Widget.h>
 //#include <MyGUI_EditBox.h>
@@ -94,14 +95,13 @@ String CGuiCom::GetSceneryColor(String name, String* sc)
 		String ss;
 		size_t p = name.find_first_of("-0123456789");
 		if (p != string::npos)
-		{	ss = name.substr(0, p);  //LogO(ss);
-			String s1 = scnN[ss];  if (sc)  *sc = s1;
-			return scnClr[s1];
-		}else
-		{	ss += name.c_str()[0];
-			String s1 = scnN[ss];  if (sc)  *sc = s1;
-			return scnClr[s1];
-	}	}
+			ss = name.substr(0, p);  //LogO(ss);
+		else
+			ss += name.c_str()[0];
+		String s1 = scnN[ss];  if (sc)  *sc = s1;
+		return scnClr[s1];
+	}
+	return "#707070";
 }
 //-----------------------------------------------------------------------------------------------------------
 
@@ -174,6 +174,10 @@ void CGuiCom::GuiInitTrack()
 	trkList = li;
    	li->eventListChangePosition += newDelegate(this, &CGuiCom::listTrackChng);
    	li->setVisible(false);
+
+	//  gallery
+	scvTracks = fScv("scvTracks");
+	// trktab->createWidget<ScrollView>
 	
 	//  🖼️ preview images
 	#ifdef SR_EDITOR  // game in Gui_Init
@@ -189,22 +193,32 @@ void CGuiCom::GuiInitTrack()
 	for (i=0; i < ImStTrk; ++i) imStTrk[0][i] = fImg("ist"+toStr(i));
 	for (i=0; i < InfTrk; ++i){  infTrk[0][i] = fTxt("ti"+toStr(i));  imInfTrk[0][i] =  fImg("iti"+toStr(i));  }
 
-	SV* sv;  Ck* ck;
+	SV* sv;  Ck* ck;  ButtonPtr btn;
 	//  ⭐ user
 	sv= &svUserRate;  sv->Init("UserRate", &iUserRate, 0, 6);  sv->DefaultI(5);  SevC(UserRate);
 	ck= &ckUserBookm;  ck->Init("UserBookm", &bUserBookm);  CevC(UserBookm);
 		
 	EdC(edTrkFind, "TrkFind", editTrkFind);
 
-	ButtonPtr btn;  // 📰 views
-	BtnC("TrkView1", btnTrkView1);  imgTrkIco1 = fImg("TrkView2icons1");
-	BtnC("TrkView2", btnTrkView2);  imgTrkIco2 = fImg("TrkView2icons2");
-	txtTrkViewVal = fTxt("TrkViewVal");
+	//  📰 views
+	CmbC(cmbTrkView, "CmbTrkView", comboTrkView);
+	auto* cmb = cmbTrkView;
+	cmb->removeAllItems();
+	cmb->addItem(TR("#{ViewList}"));  cmb->addItem(TR("#{ViewListUser}"));
+	cmb->addItem(TR("#{ViewListDetail}"));
+	cmb->addItem(TR("#{ViewGallery}"));  cmb->addItem(TR("#{ViewGalleryBig}"));
+	cmb->setIndexSelected(pSet->tracks_view);
+
+	imgTrkIco1 = fImg("TrkView2icons1");
+	imgTrkIco2 = fImg("TrkView2icons2");
+	
 	//  🔻 filter
-	BtnC("TrkFilter", btnTrkFilter);  BtnC("TrkFilterClose", btnTrkFilter);
+	BtnC("TrkFilter", btnTrkFilter);
+	BtnC("TrkFilterClose", btnTrkFilter);
 	ck= &ckTrkFilter;  ck->Init("TracksFilter", &pSet->tracks_filter);  CevC(TrkFilter);
 	txtTracksFAll = fTxt("TracksFAll");
 	txtTracksFCur = fTxt("TracksFCur");
+	
 	
 	//  🏞️🏛️ columns  ----
 	li->removeAllColumns();  int c=0;

@@ -50,29 +50,29 @@
 				</Widget>
 
 				<!-- user xml -->
-				<Widget type="ImageBox" skin="ImageBox" position="172 4 20 20">
+				<Widget type="ImageBox" skin="ImageBox" position="232 4 20 20">
 					<Property key="ImageTexture" value="track_icons.png"/>
 					<Property key="ImageCoord" value="320 32 32 32"/>
 					<Property key="Alpha" value="0.7"/>
 					<UserString key="tip" value="#{user}: #{bookmark}"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="190 8 20 20" name="UserBookm">
+				<Widget type="Button" skin="CheckBox" position="250 8 20 20" name="UserBookm">
 					<Property key="Caption" value=""/>
 					<Property key="TextColour" value="0.6 1 1"/>
 					<UserString key="tip" value="#{user}: #{bookmark}"/>
 				</Widget>
-				<Widget type="ImageBox" skin="ImageBox" position="210 4 20 20">
+				<Widget type="ImageBox" skin="ImageBox" position="280 4 20 20">
 					<Property key="ImageTexture" value="track_icons.png"/>
 					<Property key="ImageCoord" value="288 32 32 32"/>
 					<Property key="Alpha" value="0.6"/>
 					<UserString key="tip" value="#{user}: #{rating}"/>
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="234 6 16 16" name="UserRateVal">
+				<Widget type="TextBox" skin="TextBox" position="304 6 16 16" name="UserRateVal">
 					<Property key="Caption" value="5"/>
 					<Property key="TextColour" value="0.6 0.8 1"/>
 					<UserString key="tip" value="#{user}: #{rating}"/>
 				</Widget>
-				<Widget type="Slider" skin="Slider" position="252 8 90 12" name="UserRate">
+				<Widget type="Slider" skin="Slider" position="322 8 90 12" name="UserRate">
 					<Property key="Colour" value="0.6 1 1"/>
 					<UserString key="tip" value="#{user}: #{rating}"/>
 				</Widget>
@@ -360,24 +360,18 @@
 					<Property key="ImageCoord" value="352 0 64 32"/>
 					<UserString key="tip" value="#{TrackDifficulties}"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="16 7 36 24" name="TrkView1">
-					<Property key="Caption" value="&lt;"/>
-					<Property key="Alpha" value="0.8"/>
-					<Property key="Colour" value="0.6 0.8 1.0"/>
-					<Property key="TextColour" value="0.45 0.58 0.8"/>
-					<UserString key="tip" value="#{TipTrkViewShort}"/>
-				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="55 12 18 24" name="TrkViewVal">
-					<Property key="Caption" value="0"/>
-					<Property key="TextColour" value="0.5 0.6 0.7"/>
+
+				<Widget type="ComboBox" skin="ComboBox" position="16 7 110 20" name="CmbTrkView">
+					<Property key="Colour" value="0.5 0.7 0.9"/>
+					<Property key="TextColour" value="0.5 0.7 0.9"/>
+					<Property key="Static" value="true"/>
+					<Property key="ReadOnly" value="true"/>
 					<Property key="FontName" value="font.small"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="64 7 36 24" name="TrkView2">
-					<Property key="Caption" value="&gt;"/>
-					<Property key="Alpha" value="0.8"/>
-					<Property key="Colour" value="0.6 0.8 1.0"/>
-					<Property key="TextColour" value="0.45 0.58 0.8"/>
-					<UserString key="tip" value="#{TipTrkViewDetailed}"/>
+			
+				<!--  tracks gallery  -->
+				<Widget type="ScrollView" skin="ScrollViewEmpty" position="16 45 355 300" layer="Popup" name="scvTracks">
+					<Property key="CanvasSize" value="1600 9400"/>
 				</Widget>
 
 				<Widget type="ImageBox" skin="ImageBox" position="16 494 24 24">
