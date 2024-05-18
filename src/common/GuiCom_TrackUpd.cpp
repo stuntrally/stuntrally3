@@ -90,86 +90,93 @@ bool TrkSort(const TrkL& t1, const TrkL& t2)
 //-----------------------------------------------------------------------------------------------------------
 void CGuiCom::TrackListUpd(bool resetNotFound)
 {
-	if (trkList)
-	{	trkList->removeAllItems();
-		xTrk = 0;  yTrk = 0;
-		int ii = 0, a = 0, si = -1;  bool bFound = false;
+	if (!trkList)  return;
+	trkList->removeAllItems();
+	xTrk = 0;  yTrk = 0;
+	int ii = 0, a = 0, si = -1;  bool bFound = false;
 
-		//  sort
-		TrkL::idSort = min(18, (int)trkList->mSortColumnIndex);
+	//  gal dest
+	for (auto img : imgGal)
+		mGui->destroyWidget(img);
+	imgGal.clear();
+	for (auto txt : txtGal)
+		mGui->destroyWidget(txt);
+	txtGal.clear();
 
-		auto liTrk2 = liTrk;  // copy
-		liTrk2.sort(TrkSort);
-		if (!trkList->mSortUp)  liTrk2.reverse();
+	//  sort
+	TrkL::idSort = min(18, (int)trkList->mSortColumnIndex);
+
+	auto liTrk2 = liTrk;  // copy
+	liTrk2.sort(TrkSort);
+	if (!trkList->mSortUp)  liTrk2.reverse();
+	
+	//  original
+	for (auto i = liTrk2.begin(); i != liTrk2.end(); ++i)
+	{
+		String name = (*i).name, nlow = name;  StringUtil::toLowerCase(nlow);
+		const auto* ti = (*i).ti;  const auto* ui = (*i).ui;
 		
-		//  original
-		for (auto i = liTrk2.begin(); i != liTrk2.end(); ++i)
-		{
-			String name = (*i).name, nlow = name;  StringUtil::toLowerCase(nlow);
-			const auto* ti = (*i).ti;  const auto* ui = (*i).ui;
-			
-			if (!pSet->gui.track_user && name == pSet->gui.track)
-			{	bFound = true;  bListTrackU = 0;  }
-			
-			bool add = 0;
-			if (sTrkFind == "" || strstr(nlow.c_str(), sTrkFind.c_str()) != 0)
-			if (!pSet->tracks_filter || !ti || !ui ||  //  filtering
-				ti->ver      >= pSet->col_fil[0][0]  && ti->ver      <= pSet->col_fil[1][0]  &&
-				ti->diff     >= pSet->col_fil[0][1]  && ti->diff     <= pSet->col_fil[1][1]  &&
-				ti->rating   >= pSet->col_fil[0][2]  && ti->rating   <= pSet->col_fil[1][2]  &&
-
-				ti->objects  >= pSet->col_fil[0][3]  && ti->objects  <= pSet->col_fil[1][3]  &&
-				ti->obstacles>= pSet->col_fil[0][4]  && ti->obstacles<= pSet->col_fil[1][4]  &&
-				ti->fluids   >= pSet->col_fil[0][5]  && ti->fluids   <= pSet->col_fil[1][5]  &&
-				ti->bumps    >= pSet->col_fil[0][6]  && ti->bumps    <= pSet->col_fil[1][6]  &&
-				ti->jumps    >= pSet->col_fil[0][7]  && ti->jumps    <= pSet->col_fil[1][7]  &&
-				ti->loops    >= pSet->col_fil[0][8]  && ti->loops    <= pSet->col_fil[1][8]  &&
-				ti->pipes    >= pSet->col_fil[0][9]  && ti->pipes    <= pSet->col_fil[1][9]  &&
-				ti->banked   >= pSet->col_fil[0][10] && ti->banked   <= pSet->col_fil[1][10] &&
-				ti->frenzy   >= pSet->col_fil[0][11] && ti->frenzy   <= pSet->col_fil[1][11] &&
-				ti->sum      >= pSet->col_fil[0][12] && ti->sum      <= pSet->col_fil[1][12] &&
-				ti->longn    >= pSet->col_fil[0][13] && ti->longn    <= pSet->col_fil[1][13] &&
-
-				ui->rating   >= pSet->col_fil[0][14] && ui->rating   <= pSet->col_fil[1][14] &&
-				ui->bookm    >= pSet->col_fil[0][15] && ui->bookm    <= pSet->col_fil[1][15])
-			{
-				AddTrkL(name, 0, (*i).ti, (*i).ui);
-				if (!pSet->gui.track_user && name == pSet->gui.track)  {  si = ii;
-					trkList->setIndexSelected(si);  }
-				
-				if (ti && !ti->test && !ti->testC)  ++a;  // dont count test tracks
-				++ii;  add = 1;
-			}
-			//if (!add)  LogO("!add: " + name);  // test missing
-		}
-		int all = max(1, app->scn->data->tracks->cntAll);
-		txtTracksFCur->setCaption(TR("#{Road_Cur}: ")+toStr(a) +"     "+
-			getClrSum((iClrsSum-1) * a/all)+ fToStr(100.f * a/all, 1,4)+"%");
-		txtTracksFAll->setCaption(TR("#{RplAll}: "+toStr(all)));
+		if (!pSet->gui.track_user && name == pSet->gui.track)
+		{	bFound = true;  bListTrackU = 0;  }
 		
-		//  user
-		for (auto i = liTracksUser.begin(); i != liTracksUser.end(); ++i)
-		{
-			String name = *i, nlow = name;  StringUtil::toLowerCase(nlow);
-			if (sTrkFind == "" || strstr(nlow.c_str(), sTrkFind.c_str()) != 0)
-			{
-				AddTrkL("*" + (*i) + "*", 1, 0, 0);
-				if (pSet->gui.track_user && name == pSet->gui.track)  {  si = ii;
-					trkList->setIndexSelected(si);
-					bFound = true;  bListTrackU = 1;  }
-				++ii;
-		}	}
+		bool add = 0;
+		if (sTrkFind == "" || strstr(nlow.c_str(), sTrkFind.c_str()) != 0)
+		if (!pSet->tracks_filter || !ti || !ui ||  //  filtering
+			ti->ver      >= pSet->col_fil[0][0]  && ti->ver      <= pSet->col_fil[1][0]  &&
+			ti->diff     >= pSet->col_fil[0][1]  && ti->diff     <= pSet->col_fil[1][1]  &&
+			ti->rating   >= pSet->col_fil[0][2]  && ti->rating   <= pSet->col_fil[1][2]  &&
 
-		//  not found last track, set 1st  .. only 
-		if (resetNotFound && !bFound && !liTracks.empty())
-		{	pSet->gui.track = *liTracks.begin();  pSet->gui.track_user = 0;
-			#ifdef SR_EDITOR
-			app->UpdWndTitle();
-			#endif
+			ti->objects  >= pSet->col_fil[0][3]  && ti->objects  <= pSet->col_fil[1][3]  &&
+			ti->obstacles>= pSet->col_fil[0][4]  && ti->obstacles<= pSet->col_fil[1][4]  &&
+			ti->fluids   >= pSet->col_fil[0][5]  && ti->fluids   <= pSet->col_fil[1][5]  &&
+			ti->bumps    >= pSet->col_fil[0][6]  && ti->bumps    <= pSet->col_fil[1][6]  &&
+			ti->jumps    >= pSet->col_fil[0][7]  && ti->jumps    <= pSet->col_fil[1][7]  &&
+			ti->loops    >= pSet->col_fil[0][8]  && ti->loops    <= pSet->col_fil[1][8]  &&
+			ti->pipes    >= pSet->col_fil[0][9]  && ti->pipes    <= pSet->col_fil[1][9]  &&
+			ti->banked   >= pSet->col_fil[0][10] && ti->banked   <= pSet->col_fil[1][10] &&
+			ti->frenzy   >= pSet->col_fil[0][11] && ti->frenzy   <= pSet->col_fil[1][11] &&
+			ti->sum      >= pSet->col_fil[0][12] && ti->sum      <= pSet->col_fil[1][12] &&
+			ti->longn    >= pSet->col_fil[0][13] && ti->longn    <= pSet->col_fil[1][13] &&
+
+			ui->rating   >= pSet->col_fil[0][14] && ui->rating   <= pSet->col_fil[1][14] &&
+			ui->bookm    >= pSet->col_fil[0][15] && ui->bookm    <= pSet->col_fil[1][15])
+		{
+			AddTrkL(name, 0, (*i).ti, (*i).ui);
+			if (!pSet->gui.track_user && name == pSet->gui.track)  {  si = ii;
+				trkList->setIndexSelected(si);  }
+			
+			if (ti && !ti->test && !ti->testC)  ++a;  // dont count test tracks
+			++ii;  add = 1;
 		}
-		if (si > -1)  // center
-			trkList->beginToItemAt(max(0, si-11));
+		//if (!add)  LogO("!add: " + name);  // test missing
 	}
+	int all = max(1, app->scn->data->tracks->cntAll);
+	txtTracksFCur->setCaption(TR("#{Road_Cur}: ")+toStr(a) +"     "+
+		getClrSum((iClrsSum-1) * a/all)+ fToStr(100.f * a/all, 1,4)+"%");
+	txtTracksFAll->setCaption(TR("#{RplAll}: "+toStr(all)));
+	
+	//  user
+	for (auto i = liTracksUser.begin(); i != liTracksUser.end(); ++i)
+	{
+		String name = *i, nlow = name;  StringUtil::toLowerCase(nlow);
+		if (sTrkFind == "" || strstr(nlow.c_str(), sTrkFind.c_str()) != 0)
+		{
+			AddTrkL("*" + (*i) + "*", 1, 0, 0);
+			if (pSet->gui.track_user && name == pSet->gui.track)  {  si = ii;
+				trkList->setIndexSelected(si);
+				bFound = true;  bListTrackU = 1;  }
+			++ii;
+	}	}
+
+	//  not found last track, set 1st  .. only 
+	if (resetNotFound && !bFound && !liTracks.empty())
+	{	pSet->gui.track = *liTracks.begin();  pSet->gui.track_user = 0;
+		#ifdef SR_EDITOR
+		app->UpdWndTitle();
+		#endif
+	}
+	if (si > -1)  // center
+		trkList->beginToItemAt(max(0, si-11));
 }
 
 bool CGuiCom::needSort(Mli2 li)

@@ -151,6 +151,8 @@ public:
 
 	Mli2 trkList =0;  Scv scvTracks =0;
 	int xTrk = 0, yTrk = 0;
+	std::vector<Img> imgGal;
+	std::vector<Txt> txtGal;
 
 	WP panTrkDesc[2] ={0,0};
 	Ed trkDesc[2] ={0,0}, trkAdvice[2] ={0,0};  // description, advice

@@ -12,6 +12,7 @@
 #include "CScene.h"
 #include "CGui.h"
 #include "App.h"
+#include "settings_com.h"
 #ifndef SR_EDITOR
 	#include "game.h"
 	#include "CHud.h"
@@ -122,7 +123,38 @@ void CGuiCom::AddTrkL(std::string name, int user,
 		shrt = name.substr(p+1);  // short name
 	}else
 	{	pre = name;  shrt = name;  }
-	
+
+
+	//  gallery img  []  ----
+	if (1 && scvTracks)
+	{
+		int sx = 160, sm = sx + 16, ya = 24;
+		Img img = scvTracks->createWidget<ImageBox>("ImageBox",
+			xTrk, yTrk+ya, sx, sx+ya, Align::Left);
+			// xTrk, yTrk, sx, sx, Align::Left);
+		img->setImageTexture(name+".jpg");  // _previews/
+
+		Txt txt = scvTracks->createWidget<TextBox>("TextBox",
+			xTrk, yTrk, sx, sx, Align::Left);
+		txt->setCaption(c+ shrt);  txt->setTextShadow(1);
+		txt->setFontName("font.small");
+		
+		// setOrigPos(img, "GameWnd");
+		// img->setNeedMouseFocus(0);
+		if (pSet->tracks_view == TV_GalleryList)
+			yTrk += sm+ya;
+		else
+		{	xTrk += sm;
+			if (xTrk > 800)
+			{	xTrk = 0;
+				yTrk += sm+ya;
+		}	}
+		imgGal.push_back(img);
+		txtGal.push_back(txt);
+	}
+	// scvTracks->setSc
+
+
 	//  add  name = prefix-short
 	li->addItem(c+ pre, 0);
 	int l = li->getItemCount()-1;
@@ -175,9 +207,7 @@ void CGuiCom::GuiInitTrack()
    	li->eventListChangePosition += newDelegate(this, &CGuiCom::listTrackChng);
    	li->setVisible(false);
 
-	//  gallery
-	scvTracks = fScv("scvTracks");
-	// trktab->createWidget<ScrollView>
+	scvTracks = fScv("scvTracks");  // gallery
 	
 	//  🖼️ preview images
 	#ifdef SR_EDITOR  // game in Gui_Init

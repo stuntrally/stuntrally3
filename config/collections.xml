@@ -123,9 +123,9 @@ descr="Difficult gems on top of ballons with fast drone.">
 	</collection>
 
 	<collection name="SBridge terrain" ver="1" difficulty="3" type="0" groups="1"
-descr="Gems located on terrain tops, and in bumpy places. Careful for damage, no rewind.">
+descr="Gems located on terrain tops, and in bumpy places. Endurance type, careful for damage, no rewind.">
 		<cartype names="Gravel" />
-		<sim boost="2" damage="2" rewind="0" />
+		<sim boost="2" damage="1" rewind="0" />
 		<track name="Des4-SBridge" />
 	</collection>
 
@@ -179,10 +179,10 @@ descr="Small but dense jungle track with hidden gems.">
 		<track name="Jng11-Temple" />
 	</collection>
 
-	<collection name="Mad Mntn Dark" ver="1" difficulty="6" type="2" groups="3"
-descr="Mad Mntn track in dark with heavy rain. Difficult places for gems, many on hexrock platforms and on top of caves or hills.">
+	<collection name="Mad Mntn Dark" ver="1" difficulty="5" type="2" groups="3"
+descr="Mad Mntn track in dark with heavy rain. Difficult places for gems, many on hexrock platforms and on top of caves or hills. But with Spaceship it's easier and softer to navigate here.">
 		<cartype names="Spaceship" />
-		<sim boost="3" damage="0" />
+		<sim boost="3" damage="1" />
 		<track name="For9-MadMntnDark" />
 	</collection>
 
@@ -193,10 +193,17 @@ descr="Few gems to collect on vast Greece landscape, on top of hills with good v
 	</collection>
 
 	<collection name="Canyon hills" ver="1" difficulty="3" type="0" groups="3"
-descr="Plenty of gems on canyon hills, few under bridges and on platforms for look out.">
+descr="Plenty of gems on canyon hills, few under bridges and on platforms for look out. For fast hovering vehicles.">
 		<cartype names="Hover|Drone|Spaceship" />
 		<sim boost="3" />
 		<track name="Aus3-Canyon" />
+	</collection>
+
+	<collection name="#D0D040Volcanic dark islands" ver="1" difficulty="2" type="0" groups="1"
+descr="Gems located on hill tops and on few small islands, in almost dark.">
+		<cartype names="Hovercraft" />
+		<sim boost="1" />
+		<track name="Vlc1-Dark" />
 	</collection>
 
 	<collection name="#B0A0D0Satellite visits" ver="1" difficulty="2" type="0" groups="1"
