@@ -139,13 +139,10 @@ public:
 	std::map<Ogre::String, Ogre::String> scnClr, scnN;
 
 
-	///  🏞️ Track  ----------------------------------------------------
-
-	//  selected track name, user
-	Ogre::String sListTrack;
-	bool bListTrackU = 0;
-	
+	///  🏞️ Track list/gallery
 	void listTrackChng(Mli2, size_t);
+	void imgTrkGal(WP img);
+
 	void SortTrkList();
 	void TrackListUpd(bool resetNotFound=false);
 
@@ -154,6 +151,13 @@ public:
 	std::vector<Img> imgGal;
 	std::vector<Txt> txtGal;
 
+
+	///  🏞️ Track  ----------------------------------------------------
+
+	//  selected track name, user
+	Ogre::String sListTrack;
+	bool bListTrackU = 0;
+	
 	WP panTrkDesc[2] ={0,0};
 	Ed trkDesc[2] ={0,0}, trkAdvice[2] ={0,0};  // description, advice
 	bool needSort(Mli2 li);

@@ -61,7 +61,6 @@ const String CGuiCom::getClrLong(int i)   {  return clrsLong  [std::min(iClrsLon
 const String CGuiCom::getClrSum(int i)    {  return clrsSum   [std::min(iClrsSum   -1,i)];  }
 
 
-//  * * * *  CONST  * * * *
 //  column widths in MultiList2,  track detailed
 const int wi = 15;            // id name nm   N  scn ver
 const int CGuiCom::colTrk[35] = {40, 90, 80, 25, 76, 25, wi, wi, wi, wi, wi, wi, wi, wi, wi, wi, wi, 22, 22, wi, wi, 24};
@@ -73,7 +72,8 @@ const int CGui::colSt [16] = {4, 170, 100, 90, 50, 80, 70};  // stages
 const int CGui::colCol[16] = {4, 100, 80, 60, 40, 30, 50, 24};  // collect
 #endif
 
-//  get scenery color string from track name
+
+//  util  get scenery color string from track name
 String CGuiCom::GetSceneryColor(String name, String* sc)
 {
 	if (name.length() < 3)  return "#707070";
@@ -107,6 +107,15 @@ String CGuiCom::GetSceneryColor(String name, String* sc)
 //-----------------------------------------------------------------------------------------------------------
 
 
+//  gallery image click
+void CGuiCom::imgTrkGal(WP img)
+{
+	auto i = s2i(img->getUserString("i"));
+	trkList->setIndexSelected(i);
+	trkList->beginToItemAt(max(0, i-11));
+	listTrackChng(trkList, i);
+}
+
 //  📃➕ Add tracks list item
 void CGuiCom::AddTrkL(std::string name, int user,
 	const TrackInfo* ti, const UserTrkInfo* ui)
@@ -126,28 +135,28 @@ void CGuiCom::AddTrkL(std::string name, int user,
 
 
 	//  gallery img  []  ----
-	if (1 && scvTracks)
+	if (scvTracks)
 	{
-		int sx = 160, sm = sx + 16, ya = 24;
+		int sx = 60, sm = sx + 16, yt = 20;  // par zoom..?
 		Img img = scvTracks->createWidget<ImageBox>("ImageBox",
-			xTrk, yTrk+ya, sx, sx+ya, Align::Left);
-			// xTrk, yTrk, sx, sx, Align::Left);
-		img->setImageTexture(name+".jpg");  // _previews/
+			xTrk, yTrk, sx, sx, Align::Left);
+		// img->setImageTexture(name+".jpg");  // _previews/
+		img->eventMouseButtonClick += newDelegate(this, &CGuiCom::imgTrkGal);
+		img->setUserString("i", toStr(trkList->getItemCount()));
 
 		Txt txt = scvTracks->createWidget<TextBox>("TextBox",
-			xTrk, yTrk, sx, sx, Align::Left);
+			xTrk, yTrk + sx, sx, yt, Align::Left);
 		txt->setCaption(c+ shrt);  txt->setTextShadow(1);
 		txt->setFontName("font.small");
 		
-		// setOrigPos(img, "GameWnd");
-		// img->setNeedMouseFocus(0);
+		// setOrigPos(img, "GameWnd");  //?
 		if (pSet->tracks_view == TV_GalleryList)
-			yTrk += sm+ya;
+			yTrk += sm + yt;
 		else
 		{	xTrk += sm;
 			if (xTrk > 800)
 			{	xTrk = 0;
-				yTrk += sm+ya;
+				yTrk += sm + yt;
 		}	}
 		imgGal.push_back(img);
 		txtGal.push_back(txt);
@@ -364,7 +373,6 @@ void CGuiCom::FillTrackLists()
 
 ///  . .  🏞️🗒️ util tracks stats  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 //----------------------------------------------------------------------------------------------------------------
-
 void CGuiCom::ReadTrkStats()
 {
 	String sRd = PathListTrk() + "/road.xml";
