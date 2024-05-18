@@ -1,8 +1,11 @@
 #pragma once
 #include "configfile.h"
 
-enum eShadowType
+enum EShadowType
 {	Sh_None=0, Sh_Depth, Sh_Soft  };
+
+enum ETracksView
+{	TV_List=0, TV_ListUser, TV_ListWide, TV_GalleryList, TV_GalleryBig, TV_ALL  };
 
 const static int
 	COL_VIS = 21, COL_FIL = 16;
@@ -109,7 +112,7 @@ public:
 
 	//  📰🔻 Tracks list  ----
 	//  view, sort column, filter on
-	const static int TrkViews = 3;
+	const static int TrkViews = 3;  // list, not all ETracksView
 	int tracks_view =0, tracks_sort =2;
 	bool tracks_sortup =1, tracks_filter =0;
 

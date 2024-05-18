@@ -170,6 +170,12 @@
 	<Tag name="Reverse">Reverse</Tag>
 	<Tag name="Find">Find</Tag>	
 
+	<Tag name="ViewList">List</Tag>
+	<Tag name="ViewListUser">List user</Tag>
+	<Tag name="ViewListDetail">List wide</Tag>
+	<Tag name="ViewGallery">Gallery list</Tag>
+	<Tag name="ViewGalleryBig">Gallery big</Tag>
+
 
 	<!--  MAIN  Track stats  -->
 	<Tag name="TrackBestTime">Best time</Tag>
@@ -980,7 +986,7 @@
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 	
 	<!-- SR ver  settings.h SET_VER -->
-	<Tag name="GameVersion">3.1</Tag>
+	<Tag name="GameVersion">3.2</Tag>
 
 	
 	
