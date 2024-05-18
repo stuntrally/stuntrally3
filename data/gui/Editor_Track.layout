@@ -371,7 +371,7 @@
 			
 				<!--  tracks gallery  -->
 				<Widget type="ScrollView" skin="ScrollViewEmpty" position="16 45 355 300" layer="Popup" name="scvTracks">
-					<Property key="CanvasSize" value="1600 9400"/>
+					<Property key="CanvasSize" value="1600 19400"/>
 				</Widget>
 
 				<Widget type="ImageBox" skin="ImageBox" position="16 494 24 24">

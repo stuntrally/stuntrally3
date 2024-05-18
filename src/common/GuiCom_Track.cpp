@@ -137,7 +137,7 @@ void CGuiCom::AddTrkL(std::string name, int user,
 	//  gallery img  []  ----
 	if (scvTracks)
 	{
-		int sx = 60, sm = sx + 16, yt = 20;  // par zoom..?
+		int sx = 160, sm = sx + 16, yt = 26;  // par zoom..?
 		Img img = scvTracks->createWidget<ImageBox>("ImageBox",
 			xTrk, yTrk, sx, sx, Align::Left);
 		img->setImageTexture(name+".jpg");  // _previews/
