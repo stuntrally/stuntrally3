@@ -381,8 +381,9 @@ void CGuiCom::updTrkListDim()
 	if (gal)
 	{
 		int xt = 0.017*wi.width, yt = 0.062*wi.height;
-		float wg = v == TV_GalleryBig ? 0.62 : 0.2;
+		float wg = v == TV_GalleryBig ? 0.62 : 0.18;
 		scvTracks->setCoord(xt, yt, wg*wi.width, 0.73*wi.height);
+		// scvTracks->setCanvasSize(1600, 9400);
 	}
 
 	//  🚗 car list

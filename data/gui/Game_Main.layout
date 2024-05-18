@@ -1,6 +1,28 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <MyGUI type="Layout" version="3.2.0">
 
+	<Widget type="Widget" skin="PanelSkin" position="2288 20 326 98" layer="Popup" name="GameInfoWnd">
+		<Property key="Alpha" value="0.8"/>
+		<Property key="Colour" value="0.6 0.8 1.0"/>
+		<UserString key="NotSized" value="1"/>
+		<Property key="Visible" value="false"/>
+		<Widget type="EditBox" skin="EditBoxEmpty" position="4 8 784 96" name="edGameInfo">
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="Alpha" value="0.9"/>
+			<Property key="TextColour" value="0.8 0.9 1.0"/>
+			<Property key="Colour" value="0.5 0.56 0.6"/>
+			<Property key="ReadOnly" value="true"/>
+			<Property key="WordWrap" value="true"/>
+			<Property key="MultiLine" value="true"/>
+			<Property key="Static" value="true"/>
+			<Property key="MaxTextLength" value="2000"/>
+			<Property key="NeedMouse" value="false"/>
+			<Property key="TextAlign" value="Left Top"/>
+			<UserString key="NotSized" value="1"/>
+		</Widget>
+	</Widget>
+
+
 	<Widget type="Window" skin="WindowC" position="1768 156 600 730" align="Center" layer="Overlapped" name="MainMenuWnd">
 		<Property key="MinSize" value="500 400"/>
 		<Property key="Caption" value="Stunt Rally #{GameVersion}"/>
@@ -418,6 +440,18 @@
 			<Property key="FontName" value="font.big"/>
 		</Widget>
 
+
+		<Widget type="Button" skin="Button" position="728 572 88 88" name="btnGameInfo">
+			<Property key="Colour" value="0.6 0.8 1.0"/>
+			<Property key="TextColour" value="0.6 0.8 1.0"/>
+			<Widget type="ImageBox" skin="ImageBox" position="4 4 84 84">
+				<Property key="ImageCoord" value="128 768 128 128"/>
+				<Property key="Alpha" value="0.6"/>
+				<Property key="InheritsAlpha" value="false"/>
+				<Property key="ImageTexture" value="gui_icons.png"/>
+				<Property key="NeedMouse" value="false"/>
+			</Widget>
+		</Widget>
 		
 		<Widget type="ImageBox" skin="ImageBox" position="32 580 56 56">
 			<Property key="ImageCoord" value="256 896 128 128"/>

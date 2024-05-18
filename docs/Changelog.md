@@ -11,6 +11,8 @@ This section lists changes not yet released, but committed to repositories stunt
   - New tab on Setup - Paints - Adjust - **Under glow** for color H,S,V
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
   - WIP Fields, areas: teleporters, force fields, speed up, lift, anti-gravity, damping  
+- Gui
+  - Tracks view new modes: gallery and gallery list
 - Editor
   - Edit mode for Collection, key Y  
     - Insert/remove gems, move, scale

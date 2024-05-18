@@ -217,20 +217,36 @@ void CGui::UpdChsTabVis()
 	//if (pSet->inRace == Race_Single)
 	//	BackFromChs();
 	
-	edChInfo->setCaption(
+	updGameInfo();
+	btChRestart->setVisible(false);
+}
+
+//  info text
+void CGui::updGameInfo()
+{
+	if (!edGameInfo)  return;
+	if (pSet->iMenu == MN1_Setup)
+	{	edGameInfo->setCaption(
+			pSet->ySetup == Setup_Difficulty ? TR("#{DifficultyHelp}") :
+			pSet->ySetup == Setup_Simulation ? TR("#{SimulationHelp}") : "");
+		return;
+	}
+	int g = pSet->yGames;
+	bool game = g == Games_Single,  champ = g == Games_Champ,
+		tutor = g == Games_Tutorial, chall = g == Games_Challenge,
+		collect = g == Games_Collection, career = g == Games_Career;
+	edGameInfo->setCaption(
 		career ? "" :
 		collect ? TR("#{CollectInfo}") :
 		chall ? TR("#{ChallInfo2}")+"\n"+TR("#{ChallInfo}") :
 		tutor ? TR("#{TutorInfo}")+"\n"+TR("#{ChampInfo}") :
-				TR("#{ChampInfo2}")+"\n"+TR("#{ChampInfo}"));
-	
-	btChRestart->setVisible(false);
+		champ ? TR("#{ChampInfo2}")+"\n"+TR("#{ChampInfo}") : "");
 }
-
-void CGui::btnChampInfo(WP)
+void CGui::btnGameInfo(WP)
 {
 	pSet->champ_info = !pSet->champ_info;
-	if (edChInfo)  edChInfo->setVisible(pSet->champ_info);
+	updGameInfo();
+	app->mWndGameInfo->setVisible(pSet->champ_info);
 }
 
 

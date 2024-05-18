@@ -39,10 +39,10 @@ void CGui::InitGuiChamps()
 	{	gcom->infTrk[1][i] = fTxt("2ti"+toStr(i));  gcom->imInfTrk[1][i] = fImg("2iti"+toStr(i));  }
 
 
-	//  champ
-	edChInfo = fEd("ChampInfo");
-	if (edChInfo)  edChInfo->setVisible(pSet->champ_info);
-	Btn("btnChampInfo",btnChampInfo);
+	//  info
+	edGameInfo = fEd("edGameInfo");
+	edGameInfo->setVisible(pSet->champ_info);
+	Btn("btnGameInfo",btnGameInfo);
 
 	panCh = fWP("panCh");
 	txtCh = fTxt("txtChDetail");  txtChName = fTxt("txtChName");

@@ -452,7 +452,7 @@ public:
 
 	//  🏞️ stages
 	Txt txTrkName =0;
-	Ed edChInfo =0, edChDesc =0;  WP panCh =0;
+	Ed edChDesc =0;  WP panCh =0;
 	Txt txtCh =0, valCh =0, txtChName =0,
 		txtChP[3] ={0,0,0}, valChP[3] ={0,0,0};  // stages info, pass/progress
 
@@ -500,7 +500,8 @@ public:
 	void ChampsListUpdate(), ChampFillStageInfo(bool finished), ChampionshipAdvance(float timeCur);
 	void ChallsListUpdate(), ChallFillStageInfo(bool finished), ChallengeAdvance(float timeCur);
 	void CollectListUpdate(), fillCollectList(std::vector<int> vIds);
-	void btnChampInfo(WP), UpdChsTabVis();
+
+	Ed edGameInfo =0;  void btnGameInfo(WP), updGameInfo(), UpdChsTabVis();
 	CK(ChampRev);  CK(Ch_All);
 
 	void ReadTrkStatsChamp(Ogre::String track,bool reverse);

@@ -77,7 +77,11 @@ void CGui::toggleGui(bool toggle)
 
 	app->mWMainMenu->setVisible( gui && mnu == MN1_Main);  // main
 	app->mWMainSetup->setVisible(gui && mnu == MN1_Setup);
+
 	app->mWMainGames->setVisible(gui && mnu == MN1_Games);
+	bool v = pSet->champ_info && gui && (mnu == MN1_Games || mnu == MN1_Setup);
+	app->mWndGameInfo->setVisible(v);
+	updGameInfo();
 	
 	app->mWndHowTo->setVisible(  gui && mnu == MN_HowTo);
 	app->mWndReplays->setVisible(gui && mnu == MN_Replays);

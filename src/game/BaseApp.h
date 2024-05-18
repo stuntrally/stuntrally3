@@ -115,7 +115,7 @@ public:
 
 
 	///  🪧 main menu  // pSet->inMenu  3 levels
-	Wnd mWMainMenu =0, mWMainSetup =0, mWMainGames =0;
+	Wnd mWMainMenu =0, mWMainSetup =0, mWMainGames =0;  WP mWndGameInfo =0;
 	Img mMainPanels[ciMainBtns] ={0,}, mMainSetupPanels[ciSetupBtns] ={0,}, mMainGamesPanels[ciGamesBtns] ={0,};
 	Btn mMainBtns  [ciMainBtns] ={0,}, mMainSetupBtns  [ciSetupBtns] ={0,}, mMainGamesBtns  [ciGamesBtns] ={0,};
 	void updPanGames(int yToSet=-1);

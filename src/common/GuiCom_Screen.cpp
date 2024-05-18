@@ -46,6 +46,9 @@ void CGuiCom::ResizeOptWnd()
 
 #ifndef SR_EDITOR  // game
 	app->mWndGame->setCoord(xm, ym, xo, yo);
+	app->mWndGameInfo->setCoord(xm, 0, xo, 0.15f*wy);  // info top
+	app->gui->edGameInfo->setCoord(8, 8, xo -16, 0.15f*wy -16);
+
 	app->mWndReplays->setCoord(xm, ym, xo, yo);
 	app->mWndWelcome->setCoord(xm, ym, xo, yo);
 	app->mWndHowTo->setCoord(xm, ym, xo, yo);

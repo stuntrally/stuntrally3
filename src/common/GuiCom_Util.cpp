@@ -347,7 +347,7 @@ void CGuiCom::GuiInitTooltip()
 	mToolTip->setVisible(false);
 	mToolTipTxt = mToolTip->getChildAt(0)->castType<Edit>();
 
-	for (VectorWidgetPtr::iterator it = app->vwGui.begin(); it != app->vwGui.end(); ++it)
+	for (auto it = app->vwGui.begin(); it != app->vwGui.end(); ++it)
 		setToolTips((*it)->getEnumerator());
 }
 
@@ -406,8 +406,8 @@ void CGuiCom::notifyToolTip(WP wp, const ToolTipInfo &info)
 	}
 	if (info.type == ToolTipInfo::Show)
 	{
-		mToolTip->setSize(320, 128);  // start size for wrap
-		mToolTipTxt->setSize(320, 128);
+		mToolTip->setSize(620, 128);  // start size for wrap
+		mToolTipTxt->setSize(620, 128);
 
 		String s = TR(wp->getUserString("tip"));
 		mToolTipTxt->setCaption(s);
