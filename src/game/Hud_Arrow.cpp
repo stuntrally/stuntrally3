@@ -121,8 +121,17 @@ void CHud::Arrow::Update(CarModel* carM, float time)
 void CHud::Arrow::UpdateCol(CarModel* carM, float sc)
 {
 	if (!node)  return;
-	Vector3 pos = carM->ndMain->getPosition() + Vector3(0, 1.f, 0);
+	Vector3 pos = carM->ndMain->getPosition();
+	bool car = carM->fCam->TypeCar();  // incar
+	if (!car)
+		pos.y += 1.f;  // up 3d
+	
 	Vector3 dir = pos - posTo;  // to gem
+	if (car)
+	{	auto z = carM->ndMain->getOrientation().xAxis(), y = carM->ndMain->getOrientation().yAxis();
+		pos -= z * 9.f + y * 0.3f;  // in front
+	}
+
 	Real dist = dir.length();
 	dist = 1.5f - max(0.2f, min(1.0f, dist/30.f));
 	dir.normalise();

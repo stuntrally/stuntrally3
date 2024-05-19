@@ -13,6 +13,7 @@ collection: logic btn continue, restart, hid collected gems on start
 3d cups, win particles, new best time hud show  
 ed Fields accel par, dir, teleport end  
 
+**fix** multiplayer  
 fix .car thrusters lights pos, boost count  
 Career hide or todo  
 
