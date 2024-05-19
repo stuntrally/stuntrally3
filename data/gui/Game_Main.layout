@@ -361,6 +361,7 @@
 			<Property key="TextColour" value="1.0 0.7 0.4"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
+			<UserString key="tip" value="#{TutorInfo}\n#{ChampInfo}"/>
 		</Widget>
 
 		<Widget type="ImageBox" skin="ImageBox" position="532 164 56 56">
@@ -379,6 +380,7 @@
 			<Property key="TextColour" value="0.6 1 0.6"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
+			<UserString key="tip" value="#{ChampInfo2}\n#{ChampInfo}"/>
 		</Widget>
 
 		<Widget type="ImageBox" skin="ImageBox" position="532 236 56 56">
@@ -397,6 +399,7 @@
 			<Property key="TextColour" value="0.8 0.8 1"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
+			<UserString key="tip" value="#{ChallInfo2}\n#{ChallInfo}"/>
 		</Widget>
 
 		<!--  +8 img  0 pan  +12 btn   +72  rows  0 y = 12 84 156 228 300 372 444 516  -->
@@ -419,6 +422,7 @@
 			<Property key="TextColour" value="0.8 0.6 1"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
+			<UserString key="tip" value="#{CollectInfo}"/>
 		</Widget>
 
 		<Widget type="ImageBox" skin="ImageBox" position="532 380 56 56">
@@ -441,7 +445,7 @@
 		</Widget>
 
 
-		<Widget type="Button" skin="Button" position="728 572 88 88" name="btnGameInfo">
+		<Widget type="Button" skin="Button" position="868 572 88 88" name="btnGameInfo">
 			<Property key="Colour" value="0.6 0.8 1.0"/>
 			<Property key="TextColour" value="0.6 0.8 1.0"/>
 			<Widget type="ImageBox" skin="ImageBox" position="4 4 84 84">

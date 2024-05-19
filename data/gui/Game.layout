@@ -1924,26 +1924,29 @@
 			</Widget>
 			
 
-			<!-- 🏆🥇 Champs Tutorials Challenges etc list -->
+			<!-- 🏆🥇 Champs, Tutorials, Challenges, Collect etc list -->
 			<!-- ............................................................................................................... -->
 			<Widget type="TabItem" skin="" position="2 24 794 562" name="TabChamps">
 				<Property key="Caption" value="#80C0FF#{Championship}"/>
 				<Widget type="TabControl" skin="TabControl" position="24 26 567 36" name="ChampType">
 					<Property key="Colour" value="0.8 0.9 1.0"/>
 					<Widget type="TabItem" skin="" position="2 24 532 8">
-						<Property key="Caption" value="#A0F0FF#{Diff3}"/>
+						<Property key="Caption" value="#80FF20#{Diff3}"/>
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 532 8">
-						<Property key="Caption" value="#60C0FF#{Diff4}"/>
+						<Property key="Caption" value="#FFFF20#{Diff4}"/>
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 532 8">
-						<Property key="Caption" value="#A0A0E0#{Diff5}"/>
+						<Property key="Caption" value="#FFB020#{Diff5}"/>
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 532 8">
-						<Property key="Caption" value="#80FF80#{Scenery}"/>
+						<Property key="Caption" value="#B0FF60#{Scenery}"/>
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 532 8">
-						<Property key="Caption" value="#A0D080#{Scenery} 2"/>
+						<Property key="Caption" value="#60F0A0#{Scenery} 2"/>
+					</Widget>
+					<Widget type="TabItem" skin="" position="2 24 532 8">
+						<Property key="Caption" value="#20A0FF#{SC_Space}"/>
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 532 8">
 						<Property key="Caption" value="#909090#{Test}"/>
@@ -1988,10 +1991,13 @@
 				<Widget type="TabControl" skin="TabControl" position="25 26 603 36" name="SubTabCollectType">
 					<Property key="Colour" value="0.9 0.8 1.0"/>
 					<Widget type="TabItem" skin="" position="2 24 578 8">
-						<Property key="Caption" value="#80C0FF#{Chall_Endurance}"/>
+						<Property key="Caption" value="#80C0FF#{Diff2}"/>
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 578 8">
-						<Property key="Caption" value="#80FF80#{Chall_Chase}"/>
+						<Property key="Caption" value="#80FFA0#{Chall_Endurance}"/>
+					</Widget>
+					<Widget type="TabItem" skin="" position="2 24 578 8">
+						<Property key="Caption" value="#F0FF80#{Chall_Chase}"/>
 					</Widget>
 					<Widget type="TabItem" skin="" position="2 24 578 8">
 						<Property key="Caption" value="#FFC060#{Diff6}"/>

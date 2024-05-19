@@ -7,7 +7,7 @@
 		//  type  is one of:
 		//  0 tutorial  1 tutorial hard
 		//  2 normal  3 hard  4 very hard
-		//  5 scenery  6 scenery2  7 test
+		//  5 scenery  6 scenery2  7 scenery3  8 test
 
 	<champ name="Tutorial Basic" ver="2" difficulty="1" type="0"
 
@@ -601,7 +601,8 @@ descr="Island championship. Part 2.">
 
 <!--  Senery champs,  part 2  -->
 <!--========================================================================================================================-->
-<champ name="Mud" ver="2" difficulty="2" type="6"
+
+	<champ name="Mud" ver="2" difficulty="2" type="6"
 descr="Mud championship.">
 		<t name="Mud2-Bumps"/>
 		<t name="Mud3-Mudlake"/>
@@ -702,69 +703,6 @@ descr="Volcanic championship.">
 		<t name="Vlc13-BorVolcano"/>
 	</champ>
 
-	<champ name="Unidentified" ver="2" difficulty="5" type="6"
-descr="Unidentified championship.">
-		<t name="Uni1-Magic"/>
-		<t name="Uni2-Swirl"/>
-		<t name="Uni3-Cloud"/>
-		<t name="Uni4-Pipeline"/>
-		<t name="Uni5-PipeJumps"/>
-		<t name="Uni6-Wild"/>
-		<t name="Uni7-GlassStairs"/>
-	</champ>
-	<champ name="Mars" ver="1" difficulty="4" type="6"
-descr="Mars championship.">
-		<t name="Mrs1-Mars"/>
-		<t name="Mrs2-Red"/>
-		<t name="Mrs3-Hot"/>
-		<t name="Mrs4-Platforms"/>
-	</champ>
-
-	<champ name="Toxic and PostApo" ver="1" difficulty="4" type="6"
-descr="Toxic championship.">
-		<t name="Tox1-Radioactive"/>
-		<t name="Tox2-AcidLakes"/>
-		<t name="Apo1-TarFields"/>
-	</champ>
-	<champ name="Crystals" ver="1" difficulty="3" type="6"
-descr="Crystals championship.">
-		<t name="Cry1-CrystalMoon"/>
-		<t name="Cry2-MagicFog"/>
-		<t name="Cry3-BlueHell"/>
-		<t name="Cry4-Slide"/>
-		<t name="Cry5-CrystalIslands"/>
-	</champ>
-	<champ name="Surreal" ver="4" difficulty="2" type="6"
-descr="Surreal championship.">
-		<t name="Sur1-Surreal"/>
-		<t name="Sur3-Chaotic"/>
-	</champ>
-	<champ name="Marble" ver="1" difficulty="3" type="6"
-descr="Marble championship.">
-		<t name="Mar1-Infinity"/>
-		<t name="Mar2-Momayon"/>
-		<t name="Mar3-Plateaus"/>
-	</champ>
-	<champ name="SurrealSpace" ver="1" difficulty="5" type="6"
-descr="SurrealSpace championship.">
-		<t name="Sur2-GreenStar"/>
-		<t name="Sur4-BlueWinter"/>
-		<t name="Sur5-FreshBreeze"/>
-		<t name="Sur6-AkkaPadre"/>
-		<t name="Sur7-UaraHills"/>
-		<t name="Sur8-BloCorcle"/>
-	</champ>
-
-	<champ name="Alien" ver="1" difficulty="5" type="6"
-descr="Alien championship.">
-		<t name="Aln1-AlienBase"/>
-		<t name="Aln2-Freefall"/>
-		<t name="Aln3-MushroomBeach"/>
-		<t name="Aln4-EjeloOutpost"/>
-		<t name="Aln5-WhiteLemon"/>
-		<t name="Aln6-Overgrowth"/>
-	</champ>
-
 	<champ name="Stone" ver="1" difficulty="5" type="6"
 descr="Stone championship.">
 		<t name="Stn1-StoneQuarry"/>
@@ -775,19 +713,87 @@ descr="Championship of single track sceneries.">
 		<t name="Oth1-FogCity"/>
 		<t name="Oth2-BlackWinter"/>
 	</champ>
-	<champ name="Space" ver="1" difficulty="3" type="6"
+
+
+<!--  Senery champs,  part 3  -->
+<!--========================================================================================================================-->
+	<champ name="Unidentified" ver="2" difficulty="5" type="7"
+descr="Unidentified championship.">
+		<t name="Uni1-Magic"/>
+		<t name="Uni2-Swirl"/>
+		<t name="Uni3-Cloud"/>
+		<t name="Uni4-Pipeline"/>
+		<t name="Uni5-PipeJumps"/>
+		<t name="Uni6-Wild"/>
+		<t name="Uni7-GlassStairs"/>
+	</champ>
+	<champ name="Mars" ver="1" difficulty="4" type="7"
+descr="Mars championship.">
+		<t name="Mrs1-Mars"/>
+		<t name="Mrs2-Red"/>
+		<t name="Mrs3-Hot"/>
+		<t name="Mrs4-Platforms"/>
+	</champ>
+
+	<champ name="Toxic and PostApo" ver="1" difficulty="4" type="7"
+descr="Toxic championship.">
+		<t name="Tox1-Radioactive"/>
+		<t name="Tox2-AcidLakes"/>
+		<t name="Apo1-TarFields"/>
+	</champ>
+	<champ name="Crystals" ver="1" difficulty="3" type="7"
+descr="Crystals championship.">
+		<t name="Cry1-CrystalMoon"/>
+		<t name="Cry2-MagicFog"/>
+		<t name="Cry3-BlueHell"/>
+		<t name="Cry4-Slide"/>
+		<t name="Cry5-CrystalIslands"/>
+	</champ>
+
+	<champ name="Surreal" ver="4" difficulty="2" type="7"
+descr="Surreal championship.">
+		<t name="Sur1-Surreal"/>
+		<t name="Sur3-Chaotic"/>
+	</champ>
+	<champ name="Marble" ver="1" difficulty="3" type="7"
+descr="Marble championship.">
+		<t name="Mar1-Infinity"/>
+		<t name="Mar2-Momayon"/>
+		<t name="Mar3-Plateaus"/>
+	</champ>
+	<champ name="SurrealSpace" ver="1" difficulty="5" type="7"
+descr="SurrealSpace championship.">
+		<t name="Sur2-GreenStar"/>
+		<t name="Sur4-BlueWinter"/>
+		<t name="Sur5-FreshBreeze"/>
+		<t name="Sur6-AkkaPadre"/>
+		<t name="Sur7-UaraHills"/>
+		<t name="Sur8-BloCorcle"/>
+	</champ>
+
+	<champ name="Alien" ver="1" difficulty="5" type="7"
+descr="Alien championship.">
+		<t name="Aln1-AlienBase"/>
+		<t name="Aln2-Freefall"/>
+		<t name="Aln3-MushroomBeach"/>
+		<t name="Aln4-EjeloOutpost"/>
+		<t name="Aln5-WhiteLemon"/>
+		<t name="Aln6-Overgrowth"/>
+	</champ>
+
+	<champ name="Space" ver="1" difficulty="3" type="7"
 descr="Championship of single track sceneries in Space.">
 		<t name="Spc1-Minerals"/>
 		<t name="Spc2-SpaceMine"/>
 		<t name="Spc3-HyperLoops"/>
 	</champ>
-	<champ name="Black" ver="1" difficulty="3" type="6"
+	<champ name="Black" ver="1" difficulty="3" type="7"
 descr="Black planet championship.">
 		<t name="Blk1-Darkness"/>
 		<t name="Blk2-Sawtooth"/>
 	</champ>
 
-	<champ name="Anomaly" ver="1" difficulty="5" type="6"
+	<champ name="Anomaly" ver="1" difficulty="5" type="7"
 descr="Anomaly scenery (graphical glitches) championship.">
 		<t name="Ano0-AnomalyFun"/>
 		<t name="Ano1-Glitchy"/>
@@ -801,17 +807,17 @@ descr="Anomaly scenery (graphical glitches) championship.">
 <!--  Test  -->
 <!--========================================================================================================================-->
 
-	<champ name="Test-1" ver="1" difficulty="0" type="7"
+	<champ name="Test-1" ver="1" difficulty="0" type="8"
 descr="Fastest 1 track, to test logic.">
 		<t name="TestC6-Temp"/>
 	</champ>
-	<champ name="Test-3" ver="1" difficulty="0" type="7"
+	<champ name="Test-3" ver="1" difficulty="0" type="8"
 descr="Fastest 3 tracks, to test logic.">
 		<t name="TestC6-Temp" reversed="0"/>
 		<t name="TestC4-Ow"/>
 		<t name="TestC1-Circle"/>
 	</champ>
-	<champ name="Test tracks" ver="1" difficulty="1" type="7"
+	<champ name="Test tracks" ver="1" difficulty="1" type="8"
 descr="Really short and circular tracks. 2 Laps on each.">
 		<t name="TestC1-Circle"		laps="2"/>
 		<t name="TestC2-PipeHalf"	laps="2"/>
@@ -822,7 +828,7 @@ descr="Really short and circular tracks. 2 Laps on each.">
 		<t name="TestC8-Align"		laps="2"/>
 	</champ>
 
-	<champ name="#E0E0C0Test big #C0FFC0descr text" ver="1" difficulty="4" type="7"
+	<champ name="#E0E0C0Test big #C0FFC0descr text" ver="1" difficulty="4" type="8"
 descr="Test for Gui fit. Tracks with biggest descr and advice texts">
 		<t name="Jng26-MilkyWay"   />
 		<t name="Isl21-BarrelFun"  />

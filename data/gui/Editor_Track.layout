@@ -392,7 +392,7 @@
 					<UserString key="tip" value="#{TipFind}"/>
 				</Widget>
 
-				<Widget type="Button" skin="Button" position="116 7 40 24" name="TrkFilter">
+				<Widget type="Button" skin="Button" position="126 7 40 24" name="TrkFilter">
 					<Property key="Alpha" value="0.7"/>
 					<Property key="Colour" value="0.7 0.7 1.0"/>
 					<Property key="TextColour" value="0.6 0.6 0.9"/>

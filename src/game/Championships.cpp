@@ -19,6 +19,7 @@ using namespace Ogre;
 using namespace MyGUI;
 
 
+#define ciChampTypes  9
 
 void CGui::chkCh_All(Ck* ck)
 {
@@ -59,7 +60,7 @@ void CGui::ChampsListUpdate()
 	//if (pSet->iMenu == MN_Champ)
 
 
-	std::vector<int> vIds[8];  // cur diff ids for champ [types]
+	std::vector<int> vIds[ciChampTypes];  // cur diff ids for champ [types]
 	for (int id = 0; id < all; ++id)
 	{
 		const Champ& ch = data->champs->all[id];
@@ -94,9 +95,10 @@ void CGui::ChampsListUpdate()
 
 void CGui::fillChampsList(std::vector<int> vIds)
 {
-	const char clrCh[8][8] = {  // 🌈
-	//  0 tutorial  1 tutorial hard  // 2 normal  3 hard  4 very hard  // 5 scenery  6 scenery2  7 test
-		"#FFFFA0", "#E0E000",   "#A0F0FF", "#60C0FF", "#A0A0E0",   "#80FF80", "#A0D080",  "#909090"  };
+	const char clrCh[ciChampTypes][8] = {  // 🌈
+		"#FFFFA0", "#E0E000",  //  0 tutorial  1 tutorial hard
+		"#A0F0FF", "#60C0FF", "#A0A0E0",    // 2 normal  3 hard  4 very hard  
+		"#80FF80", "#A0D080", "#A0A0FF", "#909090"  };  // 5 scenery  6 scenery2  7 scenery3  8 test
 
 	liChamps->removeAllItems();
 	const int rev = pSet->gui.champ_rev ? 1 : 0;

@@ -31,7 +31,7 @@ void CGui::tabCollectType(Tab wp, size_t id)
 	CollectListUpdate();
 }
 
-#define MAX_COL_TYP 4
+#define MAX_COL_TYP 5  //+1, tabs
 
 
 ///  💎📃 Collections list  fill
