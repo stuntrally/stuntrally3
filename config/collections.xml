@@ -1,58 +1,62 @@
 <collections>
 <!--  Full example with Help:
-			//  ***  Main ***
-			//  here you put unique display name (can have colors like #RRGGBB),
-			//  description text, and
-			//  increase ver  if you changed collection (this will reset user's progress for it)
+			|  ***  Main ***
+			|  here you put unique display name (can have colors like #RRGGBB),
+			|  description text, and
+			|  increase ver  if you changed collection (this will reset user's progress for it)
 
-			//  type  is for putting it into gui tabs   find: clrCh[MAX_COL_TYP][8]
-			//  0 Easy  1 Endurance (infinite)  2 Chase (timed)  3 Extreme (hard)  4 Test
+			|  type  is for putting it into gui tabs   find: clrCh[MAX_COL_TYP][8]
+			|  0 Easy  1 Endurance (infinite)  2 Chase (timed)  3 Extreme (hard)  4 Test
 
-			//  difficulty  is for text displayed in list
-			//    "1" easy .. "3" medium .. "6" extreme
+			|  difficulty  is for text displayed in list
+			|    "1" easy .. "3" medium .. "6" extreme
 			
-			//  groups  is a sum of gem groups (set in editor):
-			//  1 for gem 0,   2 for gem 1,   4 for gem 2,   8 gem 3,   2^n gem n  etc
-			//  e.g. 3 means gem types 1 and 2
+			|  groups  is a sum of gem groups (set in editor):
+			|  1 for gem 0,   2 for gem 1,   4 for gem 2,   8 gem 3,   2^n gem n  etc
+			|  e.g. 3 means gem types 1 and 2
 
 	<collection name="Test Collect 1" ver="1" difficulty="0" type="4" groups="3"
 			descr="Collection 1, to test logic.">
 
-			//  *** Game setup ***
-			//  Simulation mode:   "easy" or "normal" (default)
-			//  damage:  "0" None   "1" Reduced           "2" Normal (default)
-			//  boost:   "0" Never  "1" FuelLap           "2" FuelTime (default)   "3" Always
-			//  flip:    "0" Never  "1" FuelBoost         "2" Always (default)
-			//  rewind:  "0" None   "1" Always (default)  "2" Take back time (dont use)
+			|  *** Game setup ***
+			|  Simulation mode:   "easy" or "normal" (default)
+			|  damage:  "0" None   "1" Reduced           "2" Normal (default)
+			|  boost:   "0" Never  "1" FuelLap           "2" FuelTime (default)   "3" Always
+			|  flip:    "0" Never  "1" FuelBoost         "2" Always (default)
+			|  rewind:  "0" None   "1" Always (default)  "2" Take back time (dont use)
 
 		<sim mode="normal" damage="2" boost="1" flip="2" rewind="1" />
 
-			//  *** Cars i.e. Vehicles ***
-			//  you can put either cartype or car  or both
-			//  if more than 1, separate with |
-			//  see in cars.xml (or in Gui) for all type names and cars id
-			//  only those types or cars you put here will be available
-			//  optional:
-			//    deny=".." disallow specific vehicles
-			//    allowed vehicle wheels count range: [whMin .. whMax]
-			//  order of check is car names, deny, wheels range, car type, (see IsChallCar)
+			|  *** Cars i.e. Vehicles ***
+			|  you can put either cartype or car  or both
+			|  if more than 1, separate with |
+			|  see in cars.xml (or in Gui) for all type names and cars id
+			|  only those types or cars you put here will be available
+			|  optional:
+			|    deny=".." disallow specific vehicles
+			|    allowed vehicle wheels count range: [whMin .. whMax]
+			|  order of check is car names, deny, wheels range, car type, (see IsChallCar)
 
 		<cartype names="Gravel" whMin="2" whMax="4" />
 		<car names="HI|ES" deny="3B" />
 
-			//  *** Pass (win) conditions ***
-			//  time - time in seconds,  if less wins gold prize
-			//  needed - 0 default,  not needed to pass, needed for better prizes
-			//    if 1, finish all collects, also requires time, at least for lowest prize, or quicker
-			//  prizes  0 only gold  1 gold,silver  2 gold,silver,bronze (default, max)
-			//  factor - time added  for lower prize silver, and 2x that for bronze
-			//    higher value will make it easier to get lower prizes
+			|  *** Pass (win) conditions ***
+			|  time - time in seconds
+			|     collecting all:  with less time, wins gold prize
+			|     if not set any time will win gold
+			|  needed
+			|     0 (default) - not needed to pass, needed for better prizes
+			|     if 1 - finish all collects, also requires time, at least for lowest prize, or quicker
+			|  prizes
+			|     0 only gold 🥇  1 gold,silver 🥇🥈  2 gold,silver,bronze (default, max) 🥇🥈🥉
+			|  factor - time added  for lower prize silver, and 2x that for bronze
+			|     higher value will make it easier to get lower prizes
 
 		<pass needed="1" time="6" prizes="2" factor="2" />
-			//  e.g. ^ means:  < 6 sec  gold,  < 8 sec silver,  < 10 sec bronze,  >= 10 sec won't pass
+			|  e.g. ^ means:  < 6 sec  gold,  < 8 sec silver,  < 10 sec bronze,  >= 10 sec won't pass
 
 		<track name=".." >
-			//  always one track per collection
+			|  always one track per collection
 
 	</collection>
 
@@ -67,12 +71,14 @@
 	<collection name="#60B0FFStunt Rally one" ver="1" difficulty="2" type="0" groups="1"
 descr="The first, easy, original collection on Stunt Rally logo track. Each letter except river l, has just one gem, including the floating loop.">
 		<cartype names="Gravel|Asphalt|Extreme" />
+		<pass time="1:55" factor="20" />
 		<track name="TestC12-SR" />
 	</collection>
 
 	<collection name="#20FF20Stunt Rally more" ver="1" difficulty="3" type="1" groups="3"
 descr="Collection on Stunt Rally logo track. Endurance type with many more gems to collect. Each letter except river l, has few gems, including the floating loop. Gems are also on terrain, rocks or in water.">
 		<cartype names="Gravel|Asphalt|Hovercraft|Hover|Drone" />
+		<pass time="6:46" factor="30" />
 		<track name="TestC12-SR" />
 	</collection>
 
@@ -80,6 +86,7 @@ descr="Collection on Stunt Rally logo track. Endurance type with many more gems 
 descr="Hard Stunt Rally track collection. Gems placed in difficult to get places, but not that high.">
 		<cartype names="Hover|Drone" />
 		<sim boost="3" />
+		<pass time="4:45" factor="30" />
 		<track name="TestC12-SR" />
 	</collection>
 
@@ -87,6 +94,7 @@ descr="Hard Stunt Rally track collection. Gems placed in difficult to get places
 descr="Extreme Stunt Rally track collection. Highest locations for gems. Requires flying to get on top. Use any nearby hill to jump off high in direction towards gem.">
 		<cartype names="Hover|Drone" />
 		<sim boost="3" />
+		<pass time="4:05" factor="40" />
 		<track name="TestC12-SR" />
 	</collection>
 
@@ -98,8 +106,8 @@ descr="Easy collection with terrain cars for places on top of rocky hills in des
 		<track name="Des1-Dunes" />
 	</collection>
 
-	<collection name="#90E0E0Loops #FF8030in air" ver="1" difficulty="6" type="3" groups="1"
-descr="Difficult and tricky collection of gems in air below loops top, needs falling down from middle or other place.">
+	<collection name="#90E0E0Loops #FF8030in air" ver="1" difficulty="5" type="3" groups="1"
+descr="Tricky collection of gems in air below loops top, needs falling down from middle or other place. Moving camera view to side makes it much easier.">
 		<cartype names="Gravel" />
 		<sim boost="0" />
 		<track name="Sav3-Loops" />
@@ -119,9 +127,10 @@ descr="Gems located around a nice savannah terrain, mostly on hill tops.">
 		<track name="Sav4-Hills" />
 	</collection>
 	<collection name="#C0E070Hills #FF6030in air" ver="1" difficulty="7" type="3" groups="1"
-descr="Difficult to collect gems, located on top of or below all ballons. Using fastest drone you can jump off from terrain and fly to anywhere. It's a matter of aim and patience at that high speed though.">
+descr="Difficult to collect gems, located on top of or below all balloons. Using fastest drone you can jump off from terrain and fly to anywhere. It's a matter of aim and patience at that high speed though.">
 		<car names="Q3|R2" />
 		<sim boost="3" damage="1" />
+		<pass time="33:00" factor="360" />
 		<track name="Sav4-Hills" />
 	</collection>
 
@@ -179,6 +188,7 @@ descr="Small but dense jungle track with hidden gems.">
 descr="Small but dense jungle track with hidden gems.">
 		<cartype names="Hover|Drone" />
 		<sim boost="3" />
+		<pass time="1:50" factor="20" />
 		<track name="Jng11-Temple" />
 	</collection>
 
@@ -186,6 +196,7 @@ descr="Small but dense jungle track with hidden gems.">
 descr="Mad Mntn track in dark with heavy rain. Difficult places for gems, many on hexrock platforms and on top of caves or hills. But with Spaceship it's easier and softer to navigate here.">
 		<cartype names="Spaceship" />
 		<sim boost="3" damage="1" />
+		<pass time="5:25" factor="30" />
 		<track name="For9-MadMntnDark" />
 	</collection>
 
@@ -252,12 +263,14 @@ descr="Forest Castle track with gems close to road and on top towers.">
 descr="Forest Castle track with gems on the very top towers, and tricky ones located after drop below usually in the middle of tower walls.">
 		<cartype names="Gravel|Asphalt" />
 		<sim boost="2" />
+		<pass time="7:00" factor="30" />
 		<track name="For13-Castle" />
 	</collection>
-	<collection name="Castle #FF3030chandeliers" ver="1" difficulty="5" type="3" groups="4"
+	<collection name="Castle #F04040chandeliers" ver="1" difficulty="5" type="3" groups="4"
 descr="Castle track with 3 floating sets of 6 gems and 1 higher, forming big chandeliers in air. Needs some rewinding to catch them right when falling.">
 		<cartype names="Hover" />
 		<sim boost="2" />
+		<pass time="4:25" factor="30" />
 		<track name="For13-Castle" />
 	</collection>
 
@@ -278,34 +291,39 @@ descr="Mostly on slippery icy hills. No problem with boost.">
 	</collection>
 
 	
-	<collection name="GlassStairs terrain" ver="1" difficulty="5" type="3" groups="1"
+	<collection name="GlassStairs #A040F0terrain" ver="1" difficulty="5" type="3" groups="1"
 descr="Very long exploration, for gems in various terrain places, some harder to get.">
 		<cartype names="Hover|Spaceship|Drone" />
 		<sim boost="3" />
+		<pass time="17:00" factor="60" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
-	<collection name="GlassStairs hard" ver="1" difficulty="5" type="3" groups="2"
+	<collection name="GlassStairs #F09010hard" ver="1" difficulty="5" type="3" groups="2"
 descr="Difficult, extensive collection of various gems. Few suspended in air, some on top of loops and pipes.">
 		<cartype names="Hover|Spaceship|Drone" />
 		<sim boost="3" />
+		<pass time="14:00" factor="30" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
-	<collection name="GlassStairs Extreme" ver="1" difficulty="6" type="3" groups="16"
+	<collection name="GlassStairs #F060B0Extreme" ver="1" difficulty="6" type="3" groups="16"
 descr="Many gems in extremely difficult locations. Hidden under glass pipes or suspended above.">
 		<cartype names="Hover|Spaceship" />
 		<sim boost="3" />
+		<pass time="33:00" factor="360" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
-	<collection name="GlassStairs #80A0FFcrystal harvest" ver="1" difficulty="4" type="3" groups="8"
+	<collection name="GlassStairs #2090FFcrystal harvest" ver="1" difficulty="4" type="3" groups="8"
 descr="Collecting crystals from hexagonal formations in suspended places.">
 		<cartype names="Hover|Spaceship" />
 		<sim boost="3" />
+		<pass time="6:55" factor="30" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
-	<collection name="GlassStairs #C0C8D0structure repairs" ver="1" difficulty="3" type="3" groups="4"
+	<collection name="GlassStairs #A0B0C0structure repairs" ver="1" difficulty="3" type="3" groups="4"
 descr="GlassStairs track, visiting places on buildings. Gems with not an easy way to get to them.">
 		<cartype names="Spaceship" />
 		<sim boost="1" />
+		<pass time="4:40" factor="20" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
 
@@ -313,22 +331,24 @@ descr="GlassStairs track, visiting places on buildings. Gems with not an easy wa
 descr="Easy collection, each satellite antenna (near road) has a gem, usually in front.">
 		<cartype names="Extreme" />
 		<sim boost="3" />
+		<pass time="2:05" factor="10" />
 		<track name="Sur7-UaraHills" />
 	</collection>
 
 	<collection name="Crystal Islands" ver="1" difficulty="4" type="3" groups="1"
-descr="Crystal gems in somewhat hidden places on Islands.">
+descr="Crystal gems in somewhat hidden places on islands.">
 		<cartype names="Hover|Spaceship" />
 		<sim boost="2" />
+		<pass time="8:50" factor="30" />
 		<track name="Cry5-CrystalIslands" />
 	</collection>
 
 
-<!--  🛠️ 3  Test fast  -->
+<!--  🛠️ 4  Test fast  -->
 <!--========================================================================================================================-->
 
 <collection name="#80C000Temp test easy" ver="1" difficulty="0" type="4" groups="1"
-descr="Easy test cars.">
+descr="Easy test all. Times: less than 6 sec for gold, 8 silver, 10 bronze.">
 		<cartype names="Gravel|Asphalt|Extreme|Hovercraft|Hover|Drone" />
 		<pass time="6" needed="1" prize="2" factor="2" />
 		<track name="TestC6-Temp" />
@@ -336,37 +356,38 @@ descr="Easy test cars.">
 
 	<collection name="#80C000Temp test all" ver="1" difficulty="1" type="4" groups="3"
 descr="Easy test cars.">
-		<cartype names="Gravel|Asphalt|Extreme|Hovercraft|Hover|Drone" />
+		<cartype names="Asphalt|Hovercraft|Hover|Drone" />
+		<car names="U6" />
 		<pass time="26" needed="1" prize="2" factor="4" />
 		<track name="TestC6-Temp" />
 	</collection>
 
 	<collection name="#80C000Temp test hard" ver="1" difficulty="3" type="4" groups="4"
 descr="Easy test cars.">
-		<cartype names="Gravel|Asphalt|Extreme|Hovercraft|Hover|Drone" />
+		<cartype names="Hover|Drone" />
 		<pass time="35" needed="0" prize="2" factor="5" />
 		<track name="TestC6-Temp" />
 	</collection>
 
 
 	<collection name="#D0F060Circle easy" ver="1" difficulty="1" type="4" groups="7"
-descr="Simple test hover.">
+descr="Simple test.">
 		<cartype names="Hover" />
-		<pass time="6" needed="1" prize="2" factor="2" />
+		<pass time="10" needed="0" prize="2" factor="2" />
 		<track name="TestC4-Ow" />
 	</collection>
 
 	<collection name="Test Hills" ver="1" difficulty="1" type="4" groups="7"
-descr="Simple test hover.">
+descr="Simple test terrain.">
 		<cartype names="Asphalt|Hover|Drone" />
-		<pass time="6" needed="1" prize="2" factor="2" />
+		<pass time="11" needed="1" prize="2" factor="2" />
 		<track name="Test13-Hills" />
 	</collection>
 
 	<collection name="#A0C0F0Terrains hover" ver="1" difficulty="3" type="4" groups="7"
 descr="Terrains test track, with any hovering vehicle.">
 		<cartype names="Spaceship|Hover|Drone" />
-		<pass time="21" />
+		<pass time="2:00" />
 		<track name="Test14-Terrains" />
 	</collection>
 

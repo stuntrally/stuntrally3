@@ -1338,6 +1338,7 @@ common:  sc - "short scenery name" (name color)
 <c n="gem1v" o="gem01" s="1.5" c="0.7 0.5 1.0" b="collect_beam_v" m="gem01v" />
 <c n="gem1w" o="gem01" s="1.8" c="0.8 0.8 0.9" b="collect_beam_w" m="gem01w" />
 <c n="gem1r" o="gem01" s="1.5" c="1.0 0.2 0.2" b="collect_beam_r" m="gem01r" />
+<c n="gem1p" o="gem01" s="2.0" c="1.0 0.2 0.7" b="collect_beam_p" m="gem01p" />
 
 
 </presets>
