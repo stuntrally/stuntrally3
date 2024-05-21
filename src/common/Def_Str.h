@@ -5,6 +5,7 @@
 #include <OgreVector3.h>
 #include <OgreLogManager.h>
 #include <OgreStringConverter.h>
+#include <OgreString.h>
 #include <MyGUI_LanguageManager.h>
 
 //  Log in ogre.log
@@ -75,4 +76,15 @@ static Ogre::String StrTime2(float time)  // short
 		return ss;
 	}else
 		return "-:--";
+}
+
+static float s2time(Ogre::String s)  // parse m:ss or sec
+{
+	if (s.find(':') != s.npos)
+	{
+		Ogre::StringVector ms = Ogre::StringUtil::split(s, ":");
+		float m = s2r(ms[0]), s = s2r(ms[1]);
+		return m * 60.f + s;
+	}
+	return s2r(s);
 }

@@ -20,7 +20,7 @@
 💜[Donations](https://cryham.tuxfamily.org/donate/) - financial support
 
 ### Feedback
-💬[Discord](https://discord.gg/TywnXxAtR6)  
+💬[Discord](https://discord.gg/TywnXxAtR6) - Community  
 🪧[Reddit](https://www.reddit.com/r/stuntrally/) - r/stuntrally/  
 [github discussions](https://github.com/stuntrally/stuntrally3/discussions)  
 Matrix chat room: #stuntrally:matrix.org  

@@ -178,55 +178,6 @@ void CGui::btnCollectStart(WP)
 	btnNewGame(0);
 }
 /*
-///  stage start / end
-//----------------------------------------------------------------------------------------------------------------------
-void CGui::btnCollectStageStart(WP)
-{
-	//  check if Collect ended
-	int chId = pSet->game.collect_num, p = pSet->game.champ_rev ? 1 : 0;
-	ProgressCollect& pc = progressL[p].chs[chId];
-	const Collect& ch = data->collect->all[chId];
-	// bool last = pc.curTrack == ch.trks.size();
-
-	// LogO("|] This was stage " + toStr(pc.curTrack) + "/" + toStr(ch.trks.size()) + " btn");
-	// if (last)
-	{	//  show end window, todo: start particles..
-		// app->mWndChallStage->setVisible(false);
-		// app->mWndChallEnd->setVisible(true);
-		
-		///  sounds  🔉
-		if (iChSnd < 0)
-			pGame->snd_fail->start();
-		else
-			pGame->snd_win[iChSnd]->start();
-		return;
-	}
-
-	bool finished = pGame->timer.GetLastLap(0) > 0.f;  //?-
-	if (finished)
-	{
-		LogO("|] Loading next stage.");
-		app->mWndChallStage->setVisible(false);
-		btnNewGame(0);
-	}else
-	{
-		LogO("|] Starting stage.");
-		app->mWndChallStage->setVisible(false);
-		app->updMouse();
-		pGame->pause = false;
-		pGame->timer.waiting = false;
-		pGame->timer.end_sim = false;
-	}
-}
-/*
-//  stage back
-void CGui::btnCollectStageBack(WP)
-{
-	app->mWndChallStage->setVisible(false);
-	app->isFocGui = true;  // show back gui
-	toggleGui(false);
-}
-
 //  Collect end
 void CGui::btnCollectEndClose(WP)
 {
@@ -246,165 +197,9 @@ void CGui::ProgressSaveCollect(bool upgGui)
 	listCollectChng(liCollect, liCollect->getIndexSelected());
 }
 
+
 #if 0
-///  Collection advance logic
-//  caution: called from GAME, 2nd thread, no Ogre stuff here
-//----------------------------------------------------------------------------------------------------------------------
-void CGui::CollectionAdvance(float timeCur/*total*/)
-{
-	int chId = pSet->game.collect_num, p = pSet->game.champ_rev ? 1 : 0;
-	ProgressCollect& pc = progressL[p].chs[chId];
-	// ProgressTrackL& pt = pc.trks[pc.curTrack];
-	const Collect& ch = data->collect->all[chId];
-	// const ChallTrack& trk = ch.trks[pc.curTrack];
-	LogO("|] --- Collect end: " + ch.nameGui);
-
-	///  compute track  poins  --------------
-	float timeTrk = data->tracks->times[trk.nameGui];
-	if (timeTrk < 1.f)
-	{	LogO("|] Error: Track has no best time !");  timeTrk = 10.f;	}
-	timeTrk *= trk.laps;
-
-	LogO("|] Track: " + trk.nameGui);
-	LogO("|] Your time: " + toStr(timeCur));
-	LogO("|] Best time: " + toStr(timeTrk));
-
-	float carMul = app->GetCarTimeMul(pSet->game.car[0], pSet->game.sim_mode);
-	float points = 0.f;  int pos = 0;
-
-	#if 1  // test score +- sec diff
-	for (int i=-2; i <= 2; ++i)
-	{
-		pos = app->GetRacePos(timeCur + i*2.f, timeTrk, carMul, true, &points);
-		LogO("|] var, add time: "+toStr(i*2)+" sec, points: "+fToStr(points,2));
-	}
-	#endif
-	pos = app->GetRacePos(timeCur, timeTrk, carMul, true, &points);
-
-	pt.time = timeCur;  pt.points = points;  pt.pos = pos;
-
-	
-	///  Pass Stage  --------------
-	bool passed = true, pa;
-	if (trk.timeNeeded > 0.f)
-	{
-		pa = pt.time <= trk.timeNeeded;
-		LogO("]] TotTime: " + StrTime(pt.time) + "  Needed: " + StrTime(trk.timeNeeded) + "  Passed: " + (pa ? "yes":"no"));
-		passed &= pa;
-	}
-	LogO(String("]] Passed total: ") + (passed ? "yes":"no"));
-
-	
-	//  --------------  advance  --------------
-	pGame->pause = true;
-	pGame->timer.waiting = true;
-	pGame->timer.end_sim = true;
-
-
-	///  Pass Collection  --------------
-	String ss;
-	passed = true;
-	int prize = -1, pp = ch.prizes;
-
-	//  time  1:00  ---------------
-	if (ch.totalTime > 0.f)
-	{
-		pa = pc.totalTime <= ch.totalTime;
-		// for p <= pp ..
-
-		LogO("]] TotalTime: "+StrTime(pc.totalTime)+"  Needed: "+StrTime(ch.totalTime)+"  Passed: "+(pa ? "yes":"no"));
-		ss += TR("#D8C0FF#{TBTime}")+": "+StrTime(pc.totalTime)+"   /  "+StrTime(ch.totalTime) + sPass(pa) +"\n";
-		passed &= pa;
-	}
-
-	//  position  1st  ---------------
-	if (ch.avgPos > 0.f)
-	{
-		ss += TR("#D8C0FF#{TBPosition}")+": "+fToStr(pc.avgPos,2,5)+"   /";
-		String sp;  bool pa0;
-		for (p=0; p <= pp; ++p)
-		{
-			float pass = ch.avgPos + ciAddPos[p] * ch.factor;
-			pa = pc.avgPos <= pass;
-			if (pa && p > prize)  prize = p;
-			
-			LogO("]] AvgPos: "+fToStr(pc.avgPos,1)+"  Needed: "+fToStr(pass,1)+"  Prize: "+toStr(p)+"  Passed: "+(pa ? "yes":"no"));
-			sp += "  "+clrPrize[2-pp+ p+1]+ fToStr(pass,1,3);
-			if (p == 0)
-			{	passed &= pa;  pa0 = pa;  }
-		}
-		ss += sp +" "+ sPass(pa0) +"\n";
-	}
-
-	//  points  10.0  ---------------
-	if (ch.avgPoints > 0.f)
-	{
-		ss += TR("#D8C0FF#{TBPoints}")+": "+fToStr(pc.avgPoints,2,5)+"   /";
-		String sp;  bool pa0;
-		for (p=0; p <= pp; ++p)
-		{
-			float pass = ch.avgPoints - cfSubPoints[p] * ch.factor;
-			pa = pc.avgPoints >= pass;
-			if (pa && p > prize)  prize = p;
-
-			LogO("]] AvgPoints: "+fToStr(pc.avgPoints,1)+"  Needed: "+fToStr(pass,1)+"  Prize: "+toStr(p)+"  Passed: "+(pa ? "yes":"no"));
-			sp = "  "+clrPrize[2-pp+ p+1]+ fToStr(pass,1,3) + sp;
-			if (p == 0)
-			{	passed &= pa;  pa0 = pa;  }  // lost if didn't pass worst prize
-		}
-		ss += sp +" "+ sPass(pa0) +"\n";
-	}else  //if (passed)  // write points always on end
-		ss += TR("#C0E0FF#{TBPoints}")+": "+fToStr(pc.avgPoints,2,5) /*+ sPass(pa)*/ +"\n";
-
-	LogO(String("]] Passed total: ") + (passed ? "yes":"no") +"  Prize: "+toStr(prize));
-	
-	
-	//  end
-	pc.fin = passed ? prize : -1;
-	if (passed)
-		s += TR("\n#E0F0F8#{Prize}: ") + StrPrize(pc.fin+1)+"\n";
-	s += "\n"+ss;
-	
-	ProgressLSave();
-
-	//  save which sound to play 🔉
-	if (!passed)
-		iChSnd = -1;
-	else
-		iChSnd = std::min(2, std::max(0, prize-1));  // ch.diff ?
-
-
-	//  upd Collect end [window]
-	imgCollectFail->setVisible(!passed);
-	imgCollectCup->setVisible( passed);  const int ui[3] = {2,3,4};
-	imgCollectCup->setImageCoord(IntCoord(ui[std::min(2, std::max(0, pc.fin))]*128,0,128,256));
-
-	txCollectEndC->setCaption(passed ? TR("#{ChampEndCongrats}") : "");
-	txCollectEndF->setCaption(passed ? TR("#{CollectEndFinished}") : TR("#{Finished}"));
-
-	edCollectEnd->setCaption(s);
-	// app->mWndCollectEnd->setVisible(true);  // show after stage end
-	
-	LogO("|]");
-}
-
-
-//  Prize const  * * *
-const String
-	CGui::clrPrize[4] = {"","#D0B050","#D8D8D8","#E8E050"},
-	CGui::strPrize[4] = {"","#{Bronze}","#{Silver}","#{Gold}"};
-
-//  lowering pass req
-const int   CGui::ciAddPos[3]    = {4,2,0};
-const float CGui::cfSubPoints[3] = {2.f,1.f,0.f};
-
-const String CGui::StrPrize(int i)  //0..3
-{
-	return clrPrize[i] + TR(strPrize[i]);
-}
-
-
-//  stage wnd text
+//  collect details text
 //----------------------------------------------------------------------------------------------------------------------
 void CGui::CollectFillStageInfo(bool finished)
 {
@@ -412,7 +207,6 @@ void CGui::CollectFillStageInfo(bool finished)
 	const ProgressCollect& pc = progressL[p].chs[chId];
 	const ProgressTrackL& pt = pc.trks[pc.curTrack];
 	const Collect& ch = data->collect->all[chId];
-	// const CollectTrack& trk = ch.trks[pc.curTrack];
 	bool last = pc.curTrack+1 == ch.trks.size();
 
 	String s =
@@ -420,7 +214,7 @@ void CGui::CollectFillStageInfo(bool finished)
 		"#80FFC0"+ TR("#{Stage}") + ":  " + toStr(pc.curTrack+1) + " / " + toStr(ch.trks.size()) + "\n" +
 		"#80FF80"+ TR("#{Track}") + ":  " + trk.nameGui + "\n\n";
 
-	if (!finished)  // track info at start
+	if (!finished)  // track info at start -
 	{
 		int id = data->tracks->trkmap[trk.nameGui];
 		if (id > 0)

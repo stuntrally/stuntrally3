@@ -1,19 +1,20 @@
 <championships>
 <!--  Full example with Help:
-		//  ***  Main ***
-		//  name (can have colors like #RRGGBB),
-		increase ver, if you changed  (added/removed/ordered tracks etc. this will reset user's progress for it)
+		|  ***  Main ***
+		|  name - can have colors like #RRGGBB
+		|  ver - increase if you changed,
+		|    added/removed/ordered tracks etc. This will reset user's progress for it.
 
-		//  type  is one of:
-		//  0 tutorial  1 tutorial hard
-		//  2 normal  3 hard  4 very hard
-		//  5 scenery  6 scenery2  7 scenery3  8 test
+		|  type  is one of:
+		|  0 tutorial  1 tutorial hard
+		|  2 normal  3 hard  4 very hard
+		|  5 scenery  6 scenery2  7 scenery3  8 test
 
 	<champ name="Tutorial Basic" ver="2" difficulty="1" type="0"
 
-			//  ***  Tracks ***
-			// name - has track name
-			// optional: laps count  1 is the default
+			|  ***  Tracks ***
+			| name - has track name
+			| optional: laps count  1 is the default
 		<t name=".." laps=".."/>
 -->
 

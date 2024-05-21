@@ -105,7 +105,7 @@ void PosInfo::FromCar(CAR* pCar)
 	fboost = dmg ? 0.f : cd->boostVal;	//posInfo.steer = cd->steer;
 	braking = dmg ? 0 : cd->IsBraking();  //percent = outside
 	reverse = dmg ? 0 : cd->vtype != V_Car ?
-		pCar->GetSpeedometer() < 0.0 :
+		pCar->GetSpeedometer() < -0.5 :  //par reduce blink
 		cd->GetTransmission().GetCurrentGearRatio() < 0.0;
 	hov_throttle = dmg ? 0.f : cd->hov_throttle;
 	

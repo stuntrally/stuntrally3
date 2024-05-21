@@ -270,8 +270,9 @@ void App::UpdCollects()
 
 				LogO("]* Collect end, time: "+StrTime(time));
 				int prize = -1, pp = col.prizes;
-				if (pp == 0)
-					prize = 2;  // gold, no others
+				
+				if (pp == 0 || col.time < 1.f)
+					prize = 2;  // gold, no others, or no time set
 				else
 					for (int p=0; p <= pp; ++p)
 					{
