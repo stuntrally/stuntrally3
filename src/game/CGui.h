@@ -451,6 +451,9 @@ public:
 	void tabChampType(Tab, size_t), tabChallType(Tab, size_t), tabCollectType(Tab, size_t);
 
 	//  🏞️ stages
+	#define ImgTrk 8
+	Img imgTrk[ImgTrk] ={0,};
+	
 	Txt txTrkName =0;
 	Ed edChDesc =0;  WP panCh =0;
 	Txt txtCh =0, valCh =0, txtChName =0,

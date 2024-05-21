@@ -83,11 +83,14 @@ void CGui::fillCollectList(std::vector<int> vIds)
 	{
 		const Collection& col = data->collect->all[i];
 		const ProgressCollect& pc = progressC.col[i];
+
+		int id = data->tracks->trkmap[col.track]-1;  if (id < 0)  continue;
+		const TrackInfo& ti = data->tracks->trks[id];
 		
 		liCollect->addItem("", i+1);  int l = liCollect->getItemCount()-1;
 		String c = gcom->GetSceneryColor(col.track, 0);
 		liCollect->setSubItemNameAt(1,l, c+ col.nameGui);
-		liCollect->setSubItemNameAt(2,l, c+ col.track);
+		liCollect->setSubItemNameAt(2,l, c+ ti.nshrt.c_str());  //c+ col.track);
 
 		liCollect->setSubItemNameAt(3,l, gcom->clrsDiff[col.diff]+ TR("#{Diff"+toStr(col.diff)+"}"));
 		// liCollect->setSubItemNameAt(4,l, col.cars.GetStr(data->cars));
@@ -120,11 +123,14 @@ void CGui::listCollectChng(MyGUI::MultiList2* chlist, size_t id)
 
 	//  fill stages
 	// liStages->removeAllItems();
+	for (int i=0; i < ImgTrk; ++i)
+		imgTrk[i]->setVisible(i < 1);
 
 	const Collection& col = data->collect->all[nc];
 
 	edChDesc->setCaption(col.descr);
 	txtChName->setCaption(col.nameGui);
+	imgTrk[0]->setImageTexture(col.track+".jpg");
 
 	//  fill track tab
 	auto trk = col.track;

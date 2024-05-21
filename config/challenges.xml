@@ -1610,7 +1610,7 @@ descr="Big wheeled, extreme cars in narrow tracks with lots of rocks near road. 
 	</challenge>
 
 	<challenge name="#D0D8D8Get a grip, #F0A0A0fast" ver="1" difficulty="3" type="8"
-descr="The fastest super car on very slippery snowy roads in winter. Nonsense and without traction control pretty challenging. Release throttle whenever you notice spinning wheels to regain grip.">
+descr="The fastest super cars, on very slippery snowy roads in winter. Nonsense and without traction control pretty challenging. Release throttle whenever you notice spinning wheels to regain grip.">
 		<car names="Y7|YG" />
 		<pass avgPoints="12" />
 		<tracks>
@@ -1621,7 +1621,7 @@ descr="The fastest super car on very slippery snowy roads in winter. Nonsense an
 	</challenge>
 
 	<challenge name="#D0D8D8Get a grip, #80E0E0slowly" ver="1" difficulty="3" type="8"
-descr="The fastest super car, on smallest icy tracks. Extreme nonsense and thus a challenge. Using boosters is even more practical to go forward rather than engine and wheels. And landing in snow near road may be a better way of braking.">
+descr="The fastest super cars, on smallest icy tracks. Extreme nonsense and thus a challenge. Using boosters is even more practical to go forward rather than engine and wheels. And landing in snow near road may be a better way of braking.">
 		<car names="Y7|YG" />
 		<sim boost="2" />
 		<pass avgPoints="16" />
@@ -1632,7 +1632,7 @@ descr="The fastest super car, on smallest icy tracks. Extreme nonsense and thus 
 	</challenge>
 
 	<challenge name="#A0C080Nice motorbike trip" ver="1" difficulty="2" type="8"
-descr="Nice drive with regular motorbike on easy tracks.">
+descr="Nice drive with motorbikes on easy tracks.">
 		<car names="BE|BV" />
 		<pass avgPoints="10" />
 		<tracks>
@@ -1644,7 +1644,7 @@ descr="Nice drive with regular motorbike on easy tracks.">
 	</challenge>
 
 	<challenge name="#B0F080Long motorbike trip" ver="1" difficulty="3" type="8"
-descr="Nice drive with regular motorbike.">
+descr="Nice drive with motorbikes.">
 		<car names="BE|BV" />
 		<pass avgPoints="10" />
 		<tracks>
@@ -1657,7 +1657,7 @@ descr="Nice drive with regular motorbike.">
 	</challenge>
 
 	<challenge name="Motorbike stunts" ver="1" difficulty="4" type="8"
-descr="Stunts with motorbikes.">
+descr="Stunts with motorbikes. Pretty long selection and tracks.">
 		<car names="BE|BV" />
 		<pass avgPoints="10" />
 		<tracks>

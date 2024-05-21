@@ -133,10 +133,12 @@ void CGui::listChallChng(MyGUI::MultiList2* chlist, size_t id)
 	int nch = *liChalls->getItemDataAt<int>(id)-1;
 	if (nch < 0 || nch >= data->chall->all.size())  {  LogO("Error chall sel > size.");  return;  }
 
-	CarListUpd();  // filter car list
+	CarListUpd();  // filter car list  todo: off
 
 	//  fill stages
 	liStages->removeAllItems();
+	for (int i=0; i < ImgTrk; ++i)
+		imgTrk[i]->setVisible(0);
 
 	int n = 1, p = pSet->gui.champ_rev ? 1 : 0;
 	const Chall& ch = data->chall->all[nch];
@@ -145,8 +147,12 @@ void CGui::listChallChng(MyGUI::MultiList2* chlist, size_t id)
 	{
 		const ChallTrack& trk = ch.trks[i];
 		float po = progressL[p].chs[nch].trks[i].points;
+		
 		StageListAdd(n, trk.name, trk.laps, po > 0.f ? "#E0F0FF"+fToStr(po,1,3) : "");
-	}
+		if (i < ImgTrk)
+		{	imgTrk[i]->setImageTexture(trk.name+".jpg");
+			imgTrk[i]->setVisible(1);
+	}	}
 	edChDesc->setCaption(ch.descr);
 	txtChName->setCaption(ch.nameGui);
 

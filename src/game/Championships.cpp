@@ -195,6 +195,8 @@ void CGui::listChampChng(MyGUI::MultiList2* chlist, size_t id)
 	
 	//  fill stages
 	liStages->removeAllItems();
+	for (int i=0; i < ImgTrk; ++i)
+		imgTrk[i]->setVisible(0);
 
 	int pos = *liChamps->getItemDataAt<int>(id)-1;
 	if (pos < 0 || pos >= data->champs->all.size())  {  LogO("Error champ sel > size.");  return;  }
@@ -206,8 +208,12 @@ void CGui::listChampChng(MyGUI::MultiList2* chlist, size_t id)
 	{
 		const ChampTrack& trk = ch.trks[i];
 		float po = progress[p].chs[pos].trks[i].points;
+		
 		StageListAdd(n, trk.name, trk.laps, po > 0.f ? "#E0F0FF"+fToStr(po,1,3) : "");
-	}
+		if (i < ImgTrk)
+		{	imgTrk[i]->setImageTexture(trk.name+".jpg");
+			imgTrk[i]->setVisible(1);
+	}	}
 	edChDesc->setCaption(ch.descr);
 	txtChName->setCaption(ch.name);
 

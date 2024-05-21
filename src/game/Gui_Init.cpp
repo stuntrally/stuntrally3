@@ -526,7 +526,7 @@ void CGui::InitGui()
 	{	Btn("NewGame"+toStr(i), btnNewGame);  if (i==1)  btNewGameCar = btn;  }
 
 
-	//  🏆 Championships, Challenges  ----
+	//  🏆 Champs, Challs, Collects etc  ----
 	InitGuiChamps();
 
 

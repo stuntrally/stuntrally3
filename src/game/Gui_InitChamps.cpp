@@ -42,6 +42,7 @@ void CGui::InitGuiChamps()
 	//  info
 	edGameInfo = fEd("edGameInfo");
 	edGameInfo->setVisible(pSet->champ_info);
+	updGameInfo();
 	Btn("btnGameInfo",btnGameInfo);
 
 	panCh = fWP("panCh");
@@ -51,6 +52,9 @@ void CGui::InitGuiChamps()
 		txtChP[i] = fTxt("txtChP"+s);
 		valChP[i] = fTxt("valChP"+s);  }
 	edChDesc = fEd("ChampDescr");
+
+	for (i=0; i < ImgTrk; ++i)
+		imgTrk[i] = fImg("imgTrk"+toStr(i));
 
 
 	//  🏆 Champs list  -------------
