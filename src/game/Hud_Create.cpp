@@ -251,6 +251,7 @@ void CHud::Create()
 		
 		if (pSet->game.collect_num >= 0)
 			h.txTimTxt->setCaption(
+				"#80B0D0"+TR("#{Prize}") +
 				"\n#C080FF"+TR("#{Collection}") +
 				"\n#A0E0E0"+TR("#{TBTime}") +
 				"\n#80E0E0"+TR("#{TBBest}") );

@@ -23,7 +23,7 @@ public:
 	int diff;  // difficulty
 	int ver;  // ver, if changed reset progress..
 	float length;  // stats to display
-	int type;  // tutorial, champ easy, normal etc
+	int type;  // tutorial, champ easy, normal, scenery, test etc
 	float time;  // total, computed (sum of all tracks)
 
 	std::vector<ChampTrack> trks;

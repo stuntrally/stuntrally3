@@ -240,7 +240,7 @@ bool TracksIni::LoadIni(string file, bool check)
 					if (fabs(td) > 20.f)
 					{	ss.str("");
 						ss << "time diff big: " << setw(19) << s+sRev;
-						ss << " time "+StrTime(tgh)+" trk "+StrTime(ti)+" d "+fToStr(td,0,3);
+						ss << " time  "+StrTime(tgh)+"  track  "+StrTime(ti)+"  d  "+fToStr(td,0,3);
 						LogO(ss.str());
 				}	}
 			}

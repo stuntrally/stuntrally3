@@ -120,6 +120,7 @@ public:
 	void CreateCollect(int i), DestroyCollect(int i);
 
 	int iCollected = 0, oldCollected = 0;
+	int iCollectedPrize = -2;  // -2 ongoing -1 none  0 bronze ..
 	void UpdCollects();
 
 	//  🎆 Fields

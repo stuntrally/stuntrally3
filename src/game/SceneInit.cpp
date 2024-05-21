@@ -199,6 +199,7 @@ void App::NewGame(bool force, bool perfTest)
  
 	bLoading = true;  iLoad1stFrames = 0;
 	carIdWin = 1;  iRplCarOfs = 0;
+	iCollectedPrize = -2;
 
 	//  wait until sim finishes
 	while (bSimulating)

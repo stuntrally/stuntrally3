@@ -247,7 +247,7 @@ void App::UpdCollects()
 		int id = pSet->game.collect_num;
 		const Collection& col = data->collect->all[id];
 
-		//  upd progress xml
+		//  upd progress xml, win
 		bool best = 0;
 		auto* pro = gui->progressC.Get(col.name);
 		if (pro)
@@ -267,8 +267,32 @@ void App::UpdCollects()
 				{	best = 1;
 					pro->bestTime = time;
 				}
-				pro->fin = 1;
-				// todo: prize pro->
+
+				LogO("]* Collect end, time: "+StrTime(time));
+				int prize = -1, pp = col.prizes;
+				if (pp == 0)
+					prize = 2;  // gold, no others
+				else
+					for (int p=0; p <= pp; ++p)
+					{
+						float t = col.time + (2-p) * col.factor;
+						bool pass = time < t;
+						if (pass)
+							prize = p;
+						
+						LogO("]*   Needed: "+StrTime(t)+"  Prize: "+toStr(p)+"  "+(pass ? "yes":"no"));
+					}
+
+				if (col.need)  // time needed to pass
+				{
+					if (prize == -1)
+						LogO("]* Collect Failed needed time.");
+				}
+				if (prize > pro->fin)
+					pro->fin = prize;
+
+				LogO("]* Collect prize won: "+toStr(prize));
+				iCollectedPrize = prize;
 			}
 		}else
 			LogO("|! collect not found in progress, wont save! "+col.name);
@@ -287,7 +311,8 @@ void App::UpdCollects()
 #endif
 
 
-#ifdef SR_EDITOR
+#ifdef SR_EDITOR  // ed
+//-------------------------------------------------------------------------------------------------------
 
 ///  🆕 add new Collectible
 void App::AddNewCol()
@@ -423,7 +448,7 @@ void App::SetColGroup(int add)
 }
 
 
-#if 0
+#if 0  // todo..
 void App::UpdColNewNode()
 {
 	if (!scn->road || !colNew.nd)  return;

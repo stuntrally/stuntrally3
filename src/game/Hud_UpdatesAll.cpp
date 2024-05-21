@@ -458,7 +458,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			}
 			li.sort();
 
-			//  dist txts
+			//  distance texts
 			int id = pCarM->iIndex;
 			String ss = "\n";
 			int i=0;  auto it = li.begin();
@@ -469,7 +469,7 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 					pCarM->cType == CarModel::CT_LOCAL)
 					arrCol[id][i].posTo = cols[(*it).id].pos;
 
-				// todo:  3d arrows? update 3d txt..
+				// todo: 3d txt on arrows?
 				ss += "\n";
 				float d = sqrt((*it).dist);
 				if (d < 3.f)  ss += "#20FFFF";  else
@@ -496,12 +496,22 @@ void CHud::UpdTimes(int carId, Hud& h, float time, CAR* pCar, CarModel* pCarM)
 			auto* pro = app->gui->progressC.Get(col.name);
 			float best = pro && pro->bestTime < 1e5 ?  pro->bestTime : 0.f;
 
-			h.txTimes->setCaption(
-				"\n#D0B0FF" + toStr(app->iCollected)+" / "+toStr(all) +
+			String s;  // collection
+			int cp = app->iCollectedPrize;
+			switch (cp)
+			{
+			case -2:  break;
+			case -1:
+				s = TR("#F08020#{DidntPass}");  break;
+			case 0:  case 1:  case 2:
+				s = app->gui->StrPrize(cp+1);  break;
+			}
+			s +="\n#D0B0FF" + toStr(app->iCollected)+" / "+toStr(all) +
 				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId))+
-				"\n#80E0E0" + StrTime(best) );
+				"\n#80E0E0" + StrTime(best);
+			h.txTimes->setCaption(s);
 		}else
-			h.txTimes->setCaption(
+			h.txTimes->setCaption(  // normal race
 				(hasLaps ? "#A0E0D0"+toStr(tim.GetCurrentLap(carId)+1)+" / "+toStr(pSet->game.num_laps) : "") +
 				"\n#A0E0E0" + StrTime(tim.GetPlayerTime(carId))+
 				(cur ? String("  ") + (diff > 0.f ? "#80E0FF+" : "#60FF60-")+

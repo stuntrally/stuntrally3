@@ -8,10 +8,11 @@ Marked: `crucial`, **Next or Big**, _Important_.
 ### SR 3.2
 
 Add gems to **tracks**  
-collection: logic btn continue, restart, hid collected gems on start  
+logic btn continue, hid collected gems on start?  
 
+more collect types 3d  
 3d cups, win particles, new best time hud show  
-ed Fields accel par, dir, teleport end  
+ed Fields: accel par, dir, teleport end  
 
 **fix** multiplayer  
 fix .car thrusters lights pos, boost count  

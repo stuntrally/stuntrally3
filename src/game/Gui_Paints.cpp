@@ -484,5 +484,5 @@ void CGui::UpdPaintImgs()
 		gcom->doSizeGUI(tbPlrPaint->getEnumerator());
 	
 	UpdPaintCur();
-	LogO(String("::: Time upd Paints: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+	LogO(String(":::* Time upd Paints: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }

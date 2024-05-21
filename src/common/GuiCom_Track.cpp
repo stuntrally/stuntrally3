@@ -66,10 +66,11 @@ const int wi = 15;            // id name nm   N  scn ver
 const int CGuiCom::colTrk[35] = {40, 90, 80, 25, 76, 25, wi, wi, wi, wi, wi, wi, wi, wi, wi, wi, wi, 22, 22, wi, wi, 24};
 #ifndef SR_EDITOR
 const int CGui::colCar[16] = {34, 80, 27, wi, wi, wi, wi, 37, 45, 24};  // car
+//  column widths  games lists
 const int CGui::colCh [16] = {4, 200, 120, 50, 80, 80, 60, 40};  // champs
 const int CGui::colChL[16] = {4, 180, 90, 100, 50, 60, 60, 60, 50};  // challs
 const int CGui::colSt [16] = {36, 170, 100, 90, 50, 80, 70};  // stages
-const int CGui::colCol[16] = {4, 100, 80, 60, 40, 30, 50, 24};  // collect
+const int CGui::colCol[16] = {4, 120, 80, 60, 40, 30, 50, 24};  // collect
 #endif
 
 

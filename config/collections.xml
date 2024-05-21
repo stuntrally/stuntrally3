@@ -41,18 +41,15 @@
 		<car names="HI|ES" deny="3B" />
 
 			//  *** Pass (win) conditions ***
-			//  time - time in seconds, for gold prize
+			//  time - time in seconds,  if less wins gold prize
 			//  needed - 0 default,  not needed to pass, needed for better prizes
-			//    if 1 finish all collected requires time at least for lowest prize, or quicker
-			//  prizes  0 only gold  1 gold,silver  2 gold,silver,bronze (default)
-			//    pass conditions are for gold prize
-			//    silver is 1.0 points less or 2 positions more
-			//    bronze 2.0 points or 4 pos
-			//  factor - is time added for lower prize silver, 2x that for bronze
+			//    if 1, finish all collects, also requires time, at least for lowest prize, or quicker
+			//  prizes  0 only gold  1 gold,silver  2 gold,silver,bronze (default, max)
+			//  factor - time added  for lower prize silver, and 2x that for bronze
 			//    higher value will make it easier to get lower prizes
 
-		<pass needed="0" time="123" prizes="2" factor="10" />
-
+		<pass needed="1" time="6" prizes="2" factor="2" />
+			//  e.g. ^ means:  < 6 sec  gold,  < 8 sec silver,  < 10 sec bronze,  >= 10 sec won't pass
 
 		<track name=".." >
 			//  always one track per collection
@@ -219,19 +216,19 @@ descr="Hovercraft visit to small islands, buildings and edge locations on Shore 
 		<track name="Isl5-Shore" />
 	</collection>
 
-	<collection name="Hole around" ver="1" difficulty="3" type="1" groups="1"
+	<collection name="Hole around" ver="1" difficulty="4" type="1" groups="1"
 descr="Tricky gems located in round circles on the Hole track. No boost or rewind so need to gain momentum to reach top edge and not cause damage.">
 		<cartype names="Gravel|Asphalt" />
 		<sim boost="0" rewind="0" />
 		<track name="Sav13-Hole" />
 	</collection>
-	<collection name="Hole top" ver="1" difficulty="3" type="1" groups="2"
+	<collection name="Hole top" ver="1" difficulty="4" type="1" groups="2"
 descr="Hole track, with gems on top of hills, also on horizon.">
 		<cartype names="Hover|Drone" />
 		<sim boost="2" />
 		<track name="Sav13-Hole" />
 	</collection>
-	<collection name="Hole pillars" ver="1" difficulty="3" type="2" groups="4"
+	<collection name="Hole pillars" ver="1" difficulty="4" type="1" groups="4"
 descr="Small set of gems on high pillars away from start of Hole track, on horizon.">
 		<cartype names="Hover|Drone" />
 		<sim boost="2" />
@@ -245,8 +242,8 @@ descr="Canyon Hairpins track with gems on the very top of those hairpin hills.">
 		<track name="Can1-Hairpins" />
 	</collection>
 
-	<collection name="Castle #80C0F0towers" ver="1" difficulty="3" type="1" groups="1"
-descr="Forest Castle track with gems on the very top towers, and tricky ones located after drop below usually in the middle of tower walls.">
+	<collection name="Castle #80C0F0towers" ver="1" difficulty="2" type="0" groups="1"
+descr="Forest Castle track with gems close to road and on top towers.">
 		<cartype names="Gravel|Asphalt" />
 		<sim boost="2" />
 		<track name="For13-Castle" />
@@ -281,8 +278,8 @@ descr="Mostly on slippery icy hills. No problem with boost.">
 	</collection>
 
 	
-	<collection name="GlassStairs terrain" ver="1" difficulty="2" type="1" groups="1"
-descr="Gems in various terrain places, some hard to get.">
+	<collection name="GlassStairs terrain" ver="1" difficulty="5" type="3" groups="1"
+descr="Very long exploration, for gems in various terrain places, some harder to get.">
 		<cartype names="Hover|Spaceship|Drone" />
 		<sim boost="3" />
 		<track name="Uni7-GlassStairs" />
@@ -293,22 +290,22 @@ descr="Difficult, extensive collection of various gems. Few suspended in air, so
 		<sim boost="3" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
-	<collection name="GlassStairs crystal extreme" ver="1" difficulty="6" type="3" groups="16"
-descr="Few gems but in extremely difficult locations.">
+	<collection name="GlassStairs Extreme" ver="1" difficulty="6" type="3" groups="16"
+descr="Many gems in extremely difficult locations. Hidden under glass pipes or suspended above.">
 		<cartype names="Hover|Spaceship" />
 		<sim boost="3" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
-	<collection name="GlassStairs crystal harvest" ver="1" difficulty="4" type="3" groups="8"
+	<collection name="GlassStairs #80A0FFcrystal harvest" ver="1" difficulty="4" type="3" groups="8"
 descr="Collecting crystals from hexagonal formations in suspended places.">
 		<cartype names="Hover|Spaceship" />
 		<sim boost="3" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
-	<collection name="GlassStairs structure repairs" ver="1" difficulty="3" type="3" groups="4"
+	<collection name="GlassStairs #C0C8D0structure repairs" ver="1" difficulty="3" type="3" groups="4"
 descr="GlassStairs track, visiting places on buildings. Gems with not an easy way to get to them.">
-		<cartype names="Hover|Spaceship" />
-		<sim boost="3" />
+		<cartype names="Spaceship" />
+		<sim boost="1" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
 
@@ -319,7 +316,7 @@ descr="Easy collection, each satellite antenna (near road) has a gem, usually in
 		<track name="Sur7-UaraHills" />
 	</collection>
 
-	<collection name="Crystal Islands" ver="1" difficulty="4" type="1" groups="1"
+	<collection name="Crystal Islands" ver="1" difficulty="4" type="3" groups="1"
 descr="Crystal gems in somewhat hidden places on Islands.">
 		<cartype names="Hover|Spaceship" />
 		<sim boost="2" />
@@ -340,14 +337,14 @@ descr="Easy test cars.">
 	<collection name="#80C000Temp test all" ver="1" difficulty="1" type="4" groups="3"
 descr="Easy test cars.">
 		<cartype names="Gravel|Asphalt|Extreme|Hovercraft|Hover|Drone" />
-		<pass time="10" needed="1" prize="2" factor="4" />
+		<pass time="26" needed="1" prize="2" factor="4" />
 		<track name="TestC6-Temp" />
 	</collection>
 
 	<collection name="#80C000Temp test hard" ver="1" difficulty="3" type="4" groups="4"
 descr="Easy test cars.">
 		<cartype names="Gravel|Asphalt|Extreme|Hovercraft|Hover|Drone" />
-		<pass time="15" needed="1" prize="2" factor="3" />
+		<pass time="35" needed="0" prize="2" factor="5" />
 		<track name="TestC6-Temp" />
 	</collection>
 

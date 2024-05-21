@@ -207,6 +207,15 @@ descr="Medium tracks with plenty of close by rocks.">
 		<t name="Stn1-StoneQuarry"/>
 	</champ>
 
+	<champ name="Various mountains" ver="3" difficulty="2" type="2"
+descr="Few tracks around small mountains, rather easy.">
+		<t name="For20-LakoPine"/>
+		<t name="Can10-SandyCanyon"/>
+		<t name="Grc11-PickCave"/>
+		<t name="For19-CrolKarstMntn"/>
+		<t name="Jng23-FollowValley"/>
+	</champ>
+
 
 <!--  Hard  -->
 <!--........................................................................................................................-->
@@ -319,6 +328,15 @@ descr="Best, colorful sceneries on other planets.">
 		<t name="Uni6-Wild"/>
 	</champ>
 
+	<champ name="Difficult mountains" ver="1" difficulty="5" type="3"
+descr="Very long tracks in high mountains.">
+		<t name="Wnt18-MountPen"/>
+		<t name="Vlc13-BorVolcano"/>
+		<t name="Jng25-CantorJungle"/>
+		<t name="For18-MountCaro"/>
+		<t name="Mos6-TaraMosses"/>
+	</champ>
+
 
 <!--  Very Hard  -->
 <!--........................................................................................................................-->
@@ -418,30 +436,14 @@ descr="Newest space stunt tracks.">
 	<!--
 		<t name="Oth2-BlackWinter"/>
 		<t name="Aus9-RedDesert"/>
+		<t name="Sur7-UaraHills"/>
+		<t name="Jng24-NightJungle"/>
 
-		<t name="Grc12-KapabaRivers"/>
 		<t name="Grc10-BeachCity"/>
 		<t name="Isl15-IslandVillages"/>
-		<t name="Jng23-FollowValley"/>
-
-		<t name="Jng24-NightJungle"/>
-		<t name="For18-MountCaro"/>
-		<t name="Wnt18-MountPen"/>
-
-		<t name="Jng25-CantorJungle"/>
-		<t name="Vlc13-BorVolcano"/>
-
 		<t name="Aus10-PreythCity"/>
-		<t name="Mos6-TaraMosses"/>
+		<t name="Grc12-KapabaRivers"/>
 	-->
-	<champ name="Various mountains" ver="2" difficulty="2" type="5"
-descr="Desert championship. Part 1.">
-		<t name="For20-LakoPine"/>
-		<t name="Can10-SandyCanyon"/>
-		<t name="Grc11-PickCave"/>
-		<t name="For19-CrolKarstMntn"/>
-		<!-- <t name="Sur7-UaraHills"/> -->
-	</champ>
 
 
 <!--========================================================================================================================-->

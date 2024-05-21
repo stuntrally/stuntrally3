@@ -677,6 +677,7 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 		pGame->timer.Reset(-1);
 		pGame->timer.pretime = mClient ? 2.0f : pSet->game.pre_time;  // same for all multi players
 
+		iCollectedPrize = -2;
 		carIdWin = 1;  //
 		ghost.Clear();  replay.Clear();
 	}
