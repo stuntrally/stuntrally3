@@ -118,16 +118,17 @@ descr="Tricky collection of gems in air below loops top, needs falling down from
 	<collection name="Rocky jungle gems" ver="1" difficulty="4" type="1" groups="1"
 descr="Difficult to get place for cars in tricky, rocky dips in jungle, and few on hills. Careful for damage and use rewind to get back.">
 		<cartype names="Gravel" />
-		<sim boost="0" />
-		<pass time="2:35" next="10" />
+		<car deny="ES" />
+		<sim boost="2" />
+		<pass time="6:25" next="30" />
 		<track name="Jng3-Rocky" />
 	</collection>
 
 	<collection name="Savanna Hills" ver="1" difficulty="3" type="1" groups="2"
 descr="Gems located around a nice savannah terrain, mostly on hill tops.">
-		<car names="Terrain|Gravel" />
+		<cartype names="Terrain|Gravel" />
 		<sim boost="2" />
-		<pass time="5:10" next="30" />
+		<pass time="6:10" next="30" />
 		<track name="Sav4-Hills" />
 	</collection>
 	<collection name="#C0E070Hills #FF6030in air" ver="1" difficulty="7" type="3" groups="1"
@@ -142,7 +143,7 @@ descr="Difficult to collect gems, located on top of or below all balloons. Using
 descr="Gems located on terrain tops, and in bumpy places. Endurance type, careful for damage, no rewind.">
 		<cartype names="Gravel" />
 		<sim boost="2" damage="1" rewind="0" />
-		<pass time="5:20" next="30" />
+		<pass time="3:25" next="30" />
 		<track name="Des4-SBridge" />
 	</collection>
 
@@ -150,7 +151,7 @@ descr="Gems located on terrain tops, and in bumpy places. Endurance type, carefu
 descr="Gems located on terrain tops collecting with hovercraft.">
 		<cartype names="Hovercraft" />
 		<sim boost="1" />
-		<pass time="2:43" next="10" />
+		<pass time="2:15" next="10" />
 		<track name="Des5-LowJumps" />
 	</collection>
 
@@ -174,7 +175,7 @@ descr="Desert gems floating in air, requiring to jump off from road or nearby te
 descr="Gems located in river, lake and on hills.">
 		<cartype names="Terrain|Extreme" />
 		<sim boost="3" />
-		<pass time="6:20" next="30" />
+		<pass time="5:40" next="30" />
 		<track name="Sav7-HighMadness" />
 	</collection>
 
@@ -218,9 +219,11 @@ descr="Mad Mntn track in dark with heavy rain. Difficult places for gems, many o
 		<track name="For9-MadMntnDark" />
 	</collection>
 
-	<collection name="Gems on Greece hills" ver="1" difficulty="2" type="1" groups="3"
+	<collection name="Greece hills" ver="1" difficulty="2" type="1" groups="3"
 descr="Few gems to collect on vast Greece landscape, on top of hills with good views.">
+		<cartype names="Gravel|Terrain|Extreme" />
 		<sim boost="3" />
+		<pass time="5:00" next="30" />
 		<track name="Grc1-Long" />
 	</collection>
 
@@ -228,6 +231,7 @@ descr="Few gems to collect on vast Greece landscape, on top of hills with good v
 descr="Plenty of gems on canyon hills, few under bridges and on platforms for look out. For fast hovering vehicles.">
 		<cartype names="Hover|Drone|Spaceship" />
 		<sim boost="3" />
+		<pass time="8:30" next="40" />
 		<track name="Aus3-Canyon" />
 	</collection>
 
@@ -243,19 +247,22 @@ descr="Gems located on hill tops and on few small islands, in almost dark.">
 descr="Hovercraft visit to small islands, buildings and edge locations on Shore track.">
 		<cartype names="Hovercraft" />
 		<sim boost="1" />
+		<pass time="5:30" next="30" />
 		<track name="Isl5-Shore" />
 	</collection>
 
 	<collection name="Hole around" ver="1" difficulty="4" type="1" groups="1"
 descr="Tricky gems located in round circles on the Hole track. No boost or rewind so need to gain momentum to reach top edge and not cause damage.">
 		<cartype names="Gravel|Asphalt" />
-		<sim boost="0" rewind="0" />
+		<sim boost="0" damage="1" rewind="0" />
+		<pass time="3:30" next="30" />
 		<track name="Sav13-Hole" />
 	</collection>
 	<collection name="Hole top" ver="1" difficulty="4" type="1" groups="2"
 descr="Hole track, with gems on top of hills, also on horizon.">
 		<cartype names="Hover|Drone" />
 		<sim boost="2" />
+		<pass time="7:30" next="30" />
 		<track name="Sav13-Hole" />
 	</collection>
 	<collection name="Hole pillars" ver="1" difficulty="4" type="1" groups="4"
@@ -303,11 +310,13 @@ descr="Castle track with 3 floating sets of 6 gems and 1 higher, forming big cha
 		<track name="For13-Castle" />
 	</collection>
 
+	
 	<collection name="Autumn Orange hills" ver="1" difficulty="3" type="1" groups="1"
 descr="Rainy autumn track with gems on top of close hills. Few also inside, near trees.">
 		<cartype names="Gravel|Asphalt" />
 		<cartype names="BV|U6" />
 		<sim boost="1" />
+		<pass time="9:20" next="40" />
 		<track name="Atm3-Orange" />
 	</collection>
 
@@ -316,6 +325,7 @@ descr="Rainy autumn track with gems on top of close hills. Few also inside, near
 descr="Mostly on slippery icy hills. No problem with boost.">
 		<cartype names="Gravel" />
 		<sim boost="2" />
+		<pass time="8:50" next="40" />
 		<track name="Wnt17-FrozenGarden" />
 	</collection>
 
@@ -363,6 +373,7 @@ descr="Easy collection, each satellite antenna (near road) has a gem, usually in
 		<pass time="2:05" next="10" />
 		<track name="Sur7-UaraHills" />
 	</collection>
+
 
 	<collection name="Crystal Islands" ver="1" difficulty="4" type="3" groups="1"
 descr="Crystal gems in somewhat hidden places on islands.">

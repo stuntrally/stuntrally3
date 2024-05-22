@@ -60,7 +60,7 @@ const int ciShadowSizesA[ciShadowSizesNum] = {256,512,1024,2048,4096};
 static Ogre::String StrTime(float time)  // format time string
 {
 	int min = (int) time / 60;
-	float secs = time - min*60;
+	float secs = floor(time - min*60);
 	if (time != 0.f)
 	{	Ogre::String ss = toStr(min)+":"+fToStr(secs,2,5,'0');
 		return ss;
@@ -70,8 +70,8 @@ static Ogre::String StrTime(float time)  // format time string
 static Ogre::String StrTime2(float time)  // short
 {
 	int min = (int) time / 60;
-	float secs = time - min*60;
-	if (time != 0.0)
+	float secs = floor(time - min*60);
+	if (time != 0.f)
 	{	Ogre::String ss = toStr(min)+":"+fToStr(secs,0,2,'0');
 		return ss;
 	}else
