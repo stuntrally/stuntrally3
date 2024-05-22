@@ -49,10 +49,10 @@
 			|     if 1 - finish all collects, also requires time, at least for lowest prize, or quicker
 			|  prizes
 			|     0 only gold 🥇  1 gold,silver 🥇🥈  2 gold,silver,bronze (default, max) 🥇🥈🥉
-			|  factor - time added  for lower prize silver, and 2x that for bronze
+			|  next - time added  for lower prize silver, and 2x that for bronze
 			|     higher value will make it easier to get lower prizes
 
-		<pass needed="1" time="6" prizes="2" factor="2" />
+		<pass needed="1" time="6" prizes="2" next="2" />
 			|  e.g. ^ means:  < 6 sec  gold,  < 8 sec silver,  < 10 sec bronze,  >= 10 sec won't pass
 
 		<track name=".." >
@@ -71,14 +71,14 @@
 	<collection name="#60B0FFStunt Rally one" ver="1" difficulty="2" type="0" groups="1"
 descr="The first, easy, original collection on Stunt Rally logo track. Each letter except river l, has just one gem, including the floating loop.">
 		<cartype names="Gravel|Asphalt|Extreme" />
-		<pass time="1:55" factor="20" />
+		<pass time="1:55" next="20" />
 		<track name="TestC12-SR" />
 	</collection>
 
 	<collection name="#20FF20Stunt Rally more" ver="1" difficulty="3" type="1" groups="3"
 descr="Collection on Stunt Rally logo track. Endurance type with many more gems to collect. Each letter except river l, has few gems, including the floating loop. Gems are also on terrain, rocks or in water.">
 		<cartype names="Gravel|Asphalt|Hovercraft|Hover|Drone" />
-		<pass time="6:46" factor="30" />
+		<pass time="6:45" next="30" />
 		<track name="TestC12-SR" />
 	</collection>
 
@@ -86,7 +86,7 @@ descr="Collection on Stunt Rally logo track. Endurance type with many more gems 
 descr="Hard Stunt Rally track collection. Gems placed in difficult to get places, but not that high.">
 		<cartype names="Hover|Drone" />
 		<sim boost="3" />
-		<pass time="4:45" factor="30" />
+		<pass time="4:45" next="30" />
 		<track name="TestC12-SR" />
 	</collection>
 
@@ -94,7 +94,7 @@ descr="Hard Stunt Rally track collection. Gems placed in difficult to get places
 descr="Extreme Stunt Rally track collection. Highest locations for gems. Requires flying to get on top. Use any nearby hill to jump off high in direction towards gem.">
 		<cartype names="Hover|Drone" />
 		<sim boost="3" />
-		<pass time="4:05" factor="40" />
+		<pass time="4:05" next="40" />
 		<track name="TestC12-SR" />
 	</collection>
 
@@ -103,6 +103,7 @@ descr="Extreme Stunt Rally track collection. Highest locations for gems. Require
 descr="Easy collection with terrain cars for places on top of rocky hills in desert.">
 		<cartype names="Terrain" />
 		<sim boost="0" rewind="0" />
+		<pass time="2:35" next="10" />
 		<track name="Des1-Dunes" />
 	</collection>
 
@@ -110,6 +111,7 @@ descr="Easy collection with terrain cars for places on top of rocky hills in des
 descr="Tricky collection of gems in air below loops top, needs falling down from middle or other place. Moving camera view to side makes it much easier.">
 		<cartype names="Gravel" />
 		<sim boost="0" />
+		<pass time="3:20" next="30" />
 		<track name="Sav3-Loops" />
 	</collection>
 
@@ -117,6 +119,7 @@ descr="Tricky collection of gems in air below loops top, needs falling down from
 descr="Difficult to get place for cars in tricky, rocky dips in jungle, and few on hills. Careful for damage and use rewind to get back.">
 		<cartype names="Gravel" />
 		<sim boost="0" />
+		<pass time="2:35" next="10" />
 		<track name="Jng3-Rocky" />
 	</collection>
 
@@ -124,13 +127,14 @@ descr="Difficult to get place for cars in tricky, rocky dips in jungle, and few 
 descr="Gems located around a nice savannah terrain, mostly on hill tops.">
 		<car names="Terrain|Gravel" />
 		<sim boost="2" />
+		<pass time="5:10" next="30" />
 		<track name="Sav4-Hills" />
 	</collection>
 	<collection name="#C0E070Hills #FF6030in air" ver="1" difficulty="7" type="3" groups="1"
 descr="Difficult to collect gems, located on top of or below all balloons. Using fastest drone you can jump off from terrain and fly to anywhere. It's a matter of aim and patience at that high speed though.">
 		<car names="Q3|R2" />
 		<sim boost="3" damage="1" />
-		<pass time="33:00" factor="360" />
+		<pass time="33:00" next="360" />
 		<track name="Sav4-Hills" />
 	</collection>
 
@@ -138,6 +142,7 @@ descr="Difficult to collect gems, located on top of or below all balloons. Using
 descr="Gems located on terrain tops, and in bumpy places. Endurance type, careful for damage, no rewind.">
 		<cartype names="Gravel" />
 		<sim boost="2" damage="1" rewind="0" />
+		<pass time="5:20" next="30" />
 		<track name="Des4-SBridge" />
 	</collection>
 
@@ -145,6 +150,7 @@ descr="Gems located on terrain tops, and in bumpy places. Endurance type, carefu
 descr="Gems located on terrain tops collecting with hovercraft.">
 		<cartype names="Hovercraft" />
 		<sim boost="1" />
+		<pass time="2:43" next="10" />
 		<track name="Des5-LowJumps" />
 	</collection>
 
@@ -152,6 +158,7 @@ descr="Gems located on terrain tops collecting with hovercraft.">
 descr="Gems are on side of jumps, requiring to jump slightly to side to collect them. Rewind makes it quicker to get all from each place.">
 		<cartype names="Hover" />
 		<sim boost="3" />
+		<pass time="2:08" next="15" />
 		<track name="Des6-HighJumps" />
 	</collection>
 
@@ -159,14 +166,23 @@ descr="Gems are on side of jumps, requiring to jump slightly to side to collect 
 descr="Desert gems floating in air, requiring to jump off from road or nearby terrain slope to get them.">
 		<cartype names="Hover" />
 		<sim boost="3" />
+		<pass time="4:05" next="30" />
 		<track name="Des8-Technical" />
 	</collection>
 
+	<collection name="HighMadness river" ver="1" difficulty="3" type="1" groups="1"
+descr="Gems located in river, lake and on hills.">
+		<cartype names="Terrain|Extreme" />
+		<sim boost="3" />
+		<pass time="6:20" next="30" />
+		<track name="Sav7-HighMadness" />
+	</collection>
 
 	<collection name="Jungle fun hideout" ver="1" difficulty="4" type="0" groups="1"
 descr="Jungle fun track with hidden gems.">
 		<cartype names="Terrain|Extreme" />
 		<sim boost="2" />
+		<pass time="7:20" next="30" />
 		<track name="Jng6-Fun" />
 	</collection>
 
@@ -174,6 +190,7 @@ descr="Jungle fun track with hidden gems.">
 descr="Mud Bumps track with lots of gems in various places. Many on top of hills, some in dips, few in flat places near slopes.">
 		<car names="BE" />
 		<sim boost="3" />
+		<pass time="11:00" next="40" />
 		<track name="Mud2-Bumps" />
 	</collection>
 
@@ -181,6 +198,7 @@ descr="Mud Bumps track with lots of gems in various places. Many on top of hills
 descr="Small but dense jungle track with hidden gems.">
 		<cartype names="Terrain|Extreme|Gravel" />
 		<sim boost="3" />
+		<pass time="2:35" next="10" />
 		<track name="Jng11-Temple" />
 	</collection>
 
@@ -188,7 +206,7 @@ descr="Small but dense jungle track with hidden gems.">
 descr="Small but dense jungle track with hidden gems.">
 		<cartype names="Hover|Drone" />
 		<sim boost="3" />
-		<pass time="1:50" factor="20" />
+		<pass time="1:50" next="20" />
 		<track name="Jng11-Temple" />
 	</collection>
 
@@ -196,7 +214,7 @@ descr="Small but dense jungle track with hidden gems.">
 descr="Mad Mntn track in dark with heavy rain. Difficult places for gems, many on hexrock platforms and on top of caves or hills. But with Spaceship it's easier and softer to navigate here.">
 		<cartype names="Spaceship" />
 		<sim boost="3" damage="1" />
-		<pass time="5:25" factor="30" />
+		<pass time="5:25" next="30" />
 		<track name="For9-MadMntnDark" />
 	</collection>
 
@@ -217,6 +235,7 @@ descr="Plenty of gems on canyon hills, few under bridges and on platforms for lo
 descr="Gems located on hill tops and on few small islands, in almost dark.">
 		<cartype names="Hovercraft" />
 		<sim boost="1" />
+		<pass time="2:30" next="10" />
 		<track name="Vlc1-Dark" />
 	</collection>
 
@@ -246,10 +265,19 @@ descr="Small set of gems on high pillars away from start of Hole track, on horiz
 		<track name="Sav13-Hole" />
 	</collection>
 
+	<collection name="HighPeaks lakes" ver="1" difficulty="3" type="0" groups="1"
+descr="High peaked mountain track. In each one of 4 lakes there are 2 gems to collect with hovercraft. Careful about damage on bridges.">
+		<cartype names="Hovercraft" />
+		<sim boost="2" />
+		<pass time="5:10" next="30" />
+		<track name="For12-HighPeaks" />
+	</collection>
+
 	<collection name="Hairpin tops" ver="1" difficulty="3" type="0" groups="1"
 descr="Canyon Hairpins track with gems on the very top of those hairpin hills.">
 		<cartype names="Gravel|Asphalt" />
 		<sim boost="1" />
+		<pass time="4:10" next="10" />
 		<track name="Can1-Hairpins" />
 	</collection>
 
@@ -257,20 +285,21 @@ descr="Canyon Hairpins track with gems on the very top of those hairpin hills.">
 descr="Forest Castle track with gems close to road and on top towers.">
 		<cartype names="Gravel|Asphalt" />
 		<sim boost="2" />
+		<pass time="2:35" next="10" />
 		<track name="For13-Castle" />
 	</collection>
 	<collection name="Castle #FFD020candles" ver="1" difficulty="4" type="3" groups="3"
 descr="Forest Castle track with gems on the very top towers, and tricky ones located after drop below usually in the middle of tower walls.">
 		<cartype names="Gravel|Asphalt" />
 		<sim boost="2" />
-		<pass time="7:00" factor="30" />
+		<pass time="7:00" next="30" />
 		<track name="For13-Castle" />
 	</collection>
 	<collection name="Castle #F04040chandeliers" ver="1" difficulty="5" type="3" groups="4"
 descr="Castle track with 3 floating sets of 6 gems and 1 higher, forming big chandeliers in air. Needs some rewinding to catch them right when falling.">
 		<cartype names="Hover" />
 		<sim boost="2" />
-		<pass time="4:25" factor="30" />
+		<pass time="4:25" next="30" />
 		<track name="For13-Castle" />
 	</collection>
 
@@ -295,35 +324,35 @@ descr="Mostly on slippery icy hills. No problem with boost.">
 descr="Very long exploration, for gems in various terrain places, some harder to get.">
 		<cartype names="Hover|Spaceship|Drone" />
 		<sim boost="3" />
-		<pass time="17:00" factor="60" />
+		<pass time="17:00" next="60" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
 	<collection name="GlassStairs #F09010hard" ver="1" difficulty="5" type="3" groups="2"
 descr="Difficult, extensive collection of various gems. Few suspended in air, some on top of loops and pipes.">
 		<cartype names="Hover|Spaceship|Drone" />
 		<sim boost="3" />
-		<pass time="14:00" factor="30" />
+		<pass time="14:00" next="30" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
 	<collection name="GlassStairs #F060B0Extreme" ver="1" difficulty="6" type="3" groups="16"
 descr="Many gems in extremely difficult locations. Hidden under glass pipes or suspended above.">
 		<cartype names="Hover|Spaceship" />
 		<sim boost="3" />
-		<pass time="33:00" factor="360" />
+		<pass time="33:00" next="360" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
 	<collection name="GlassStairs #2090FFcrystal harvest" ver="1" difficulty="4" type="3" groups="8"
 descr="Collecting crystals from hexagonal formations in suspended places.">
 		<cartype names="Hover|Spaceship" />
 		<sim boost="3" />
-		<pass time="6:55" factor="30" />
+		<pass time="6:55" next="30" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
 	<collection name="GlassStairs #A0B0C0structure repairs" ver="1" difficulty="3" type="3" groups="4"
 descr="GlassStairs track, visiting places on buildings. Gems with not an easy way to get to them.">
 		<cartype names="Spaceship" />
 		<sim boost="1" />
-		<pass time="4:40" factor="20" />
+		<pass time="4:40" next="20" />
 		<track name="Uni7-GlassStairs" />
 	</collection>
 
@@ -331,7 +360,7 @@ descr="GlassStairs track, visiting places on buildings. Gems with not an easy wa
 descr="Easy collection, each satellite antenna (near road) has a gem, usually in front.">
 		<cartype names="Extreme" />
 		<sim boost="3" />
-		<pass time="2:05" factor="10" />
+		<pass time="2:05" next="10" />
 		<track name="Sur7-UaraHills" />
 	</collection>
 
@@ -339,7 +368,7 @@ descr="Easy collection, each satellite antenna (near road) has a gem, usually in
 descr="Crystal gems in somewhat hidden places on islands.">
 		<cartype names="Hover|Spaceship" />
 		<sim boost="2" />
-		<pass time="8:50" factor="30" />
+		<pass time="8:50" next="30" />
 		<track name="Cry5-CrystalIslands" />
 	</collection>
 
@@ -350,7 +379,7 @@ descr="Crystal gems in somewhat hidden places on islands.">
 <collection name="#80C000Temp test easy" ver="1" difficulty="0" type="4" groups="1"
 descr="Easy test all. Times: less than 6 sec for gold, 8 silver, 10 bronze.">
 		<cartype names="Gravel|Asphalt|Extreme|Hovercraft|Hover|Drone" />
-		<pass time="6" needed="1" prize="2" factor="2" />
+		<pass time="6" needed="1" prize="2" next="2" />
 		<track name="TestC6-Temp" />
 	</collection>
 
@@ -358,14 +387,14 @@ descr="Easy test all. Times: less than 6 sec for gold, 8 silver, 10 bronze.">
 descr="Easy test cars.">
 		<cartype names="Asphalt|Hovercraft|Hover|Drone" />
 		<car names="U6" />
-		<pass time="26" needed="1" prize="2" factor="4" />
+		<pass time="26" needed="1" prize="2" next="4" />
 		<track name="TestC6-Temp" />
 	</collection>
 
 	<collection name="#80C000Temp test hard" ver="1" difficulty="3" type="4" groups="4"
 descr="Easy test cars.">
 		<cartype names="Hover|Drone" />
-		<pass time="35" needed="0" prize="2" factor="5" />
+		<pass time="35" needed="0" prize="2" next="5" />
 		<track name="TestC6-Temp" />
 	</collection>
 
@@ -373,14 +402,14 @@ descr="Easy test cars.">
 	<collection name="#D0F060Circle easy" ver="1" difficulty="1" type="4" groups="7"
 descr="Simple test.">
 		<cartype names="Hover" />
-		<pass time="10" needed="0" prize="2" factor="2" />
+		<pass time="10" needed="0" prize="2" next="2" />
 		<track name="TestC4-Ow" />
 	</collection>
 
 	<collection name="Test Hills" ver="1" difficulty="1" type="4" groups="7"
 descr="Simple test terrain.">
 		<cartype names="Asphalt|Hover|Drone" />
-		<pass time="11" needed="1" prize="2" factor="2" />
+		<pass time="11" needed="1" prize="2" next="2" />
 		<track name="Test13-Hills" />
 	</collection>
 

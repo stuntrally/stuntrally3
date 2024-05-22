@@ -19,9 +19,9 @@ public:
 	// float length = 0.f; // stats for display
 	int type = 0;       // gui tab
 	bool need =0;       // 0 infinite  1 timed
-	float time = 0.f;   // time for gold prize
+	float time = 0.f;   // time for gold prize (less needed)
 	int prizes = 2;     // 0 only gold  1 gold,silver  2 gold,silver,bronze
-	float factor = 1.f; // multiplier for silver,bronze points/pos prizes
+	float next = 1.f;   // added time for silver, 2x for bronze
 	
 	//  Allowed type(s) or specific vehicle(s), 1 or more
 	CAllowed cars;

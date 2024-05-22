@@ -60,10 +60,10 @@ bool CollectXml::LoadXml(std::string file, TracksIni* trks, bool check)
 		XMLElement* ePass = eCol->FirstChildElement("pass");
 		if (ePass)
 		{
-			a = ePass->Attribute("need");	if (a)  c.need = s2i(a) > 0;  // 0 infinite  1 timed
-			a = ePass->Attribute("time");	if (a)  c.time = s2time(a);
-			a = ePass->Attribute("prizes");	if (a)  c.prizes = s2i(a);
-			a = ePass->Attribute("factor");		if (a)  c.factor = s2r(a);
+			a = ePass->Attribute("need");    if (a)  c.need = s2i(a) > 0;  // 0 infinite  1 timed
+			a = ePass->Attribute("time");    if (a)  c.time = s2time(a);
+			a = ePass->Attribute("prizes");  if (a)  c.prizes = s2i(a);
+			a = ePass->Attribute("next");    if (a)  c.next = s2r(a);
 		}
 
 		//  track

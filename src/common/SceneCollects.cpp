@@ -276,7 +276,7 @@ void App::UpdCollects()
 				else
 					for (int p=0; p <= pp; ++p)
 					{
-						float t = col.time + (2-p) * col.factor;
+						float t = col.time + (2-p) * col.next;
 						bool pass = time < t;
 						if (pass)
 							prize = p;
