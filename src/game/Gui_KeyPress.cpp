@@ -204,7 +204,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			case Games_Challenge:  gui->GuiShortcut(MN_Chall,    TAB_Champs);  return;
 			
 			case Games_Collection: gui->GuiShortcut(MN_Collect, TAB_Champs);  break;
-			case Games_Career:     gui->GuiShortcut(MN_Career,  TAB_Champs);  break;
+			// case Games_Career:     gui->GuiShortcut(MN_Career,  TAB_Champs);  break;
 			case Games_Back:       pSet->iMenu = MN1_Setup;  break;
 			}
 			gui->toggleGui(false);  return;

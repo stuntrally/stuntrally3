@@ -234,9 +234,9 @@ void CGui::updGameInfo()
 	int g = pSet->yGames;
 	bool game = g == Games_Single,  champ = g == Games_Champ,
 		tutor = g == Games_Tutorial, chall = g == Games_Challenge,
-		collect = g == Games_Collection, career = g == Games_Career;
+		collect = g == Games_Collection;//, career = g == Games_Career;
 	edGameInfo->setCaption(
-		career ? "" :
+		// career ? "" :
 		collect ? TR("#{CollectInfo}") :
 		chall ? TR("#{ChallInfo2}")+"\n"+TR("#{ChallInfo}") :
 		tutor ? TR("#{TutorInfo}")+"\n"+TR("#{ChampInfo}") :

@@ -19,7 +19,7 @@ class CarModel;  class SETTINGS;  class GraphicsSystem;
 enum Menu_Btns {  Menu_Setup, Menu_Replays, Menu_Help, Menu_Options,  ciMainBtns };
 enum Setup_Btns {  Setup_Games,  Setup_HowToPlay,  Setup_Difficulty, Setup_Simulation,  Setup_Back, ciSetupBtns };
 enum Games_Btns {  Games_Single, Games_SplitScreen, Games_Multiplayer, 
-					Games_Tutorial, Games_Champ, Games_Challenge, Games_Collection, Games_Career,  Games_Back, ciGamesBtns };
+					Games_Tutorial, Games_Champ, Games_Challenge, Games_Collection, /*Games_Career,*/  Games_Back, ciGamesBtns };
 //  gui
 enum TAB_Game    {  TAB_Back=0, TAB_Track,TAB_Car, TAB_Setup, TAB_Split,TAB_Multi, TAB_Champs,TAB_Stages,TAB_Stage  };
 enum TAB_Options {  TABo_Back=0, TABo_Screen, TABo_Input, TABo_View, TABo_Graphics, TABo_Sound, TABo_Settings, TABo_Tweak  };

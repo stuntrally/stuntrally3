@@ -7,20 +7,21 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-Add gems to **tracks**  
-logic btn continue, hid collected gems on start?  
-
+Add gems to tracks  
+gui collect details  
 more collect types 3d  
+xml par continuous?, logic btn continue, hid collected gems on start?  
+
 3d cups, win particles, new best time hud show  
 ed Fields: accel par, dir, teleport end  
 
 **fix** multiplayer  
 fix .car thrusters lights pos, boost count  
 Career hide or todo  
+broken mygui set scrollview size, gallery list  
 
 new track(s) with^ add walls  
 ?Water depth, SSAO?  
-broken mygui set scrollview size  
 
 ----
 ### New game stuff✨

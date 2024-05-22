@@ -85,7 +85,7 @@ void CGui::InitMainMenu()
 
 	//  Difficulty  ---
 	Cmb(diffList, "DiffList", comboDiff);
-
+	
 	auto add = [&](int diff)
 	{
 		auto clr = gcom->getClrDiff(diff);
@@ -149,7 +149,7 @@ void CGui::btnMainMenu(WP wp)
 		case Games_Challenge:  GuiShortcut(MN_Chall,    TAB_Champs, -1, i);  return;
 
 		case Games_Collection: GuiShortcut(MN_Collect, TAB_Champs, -1, i);  break;
-		case Games_Career:     GuiShortcut(MN_Career,  TAB_Champs, -1, i);  break;
+		// case Games_Career:     GuiShortcut(MN_Career,  TAB_Champs, -1, i);  break;
 		case Games_Back:       pSet->iMenu = MN1_Setup;  break;
 		}
 		app->gui->toggleGui(false);
