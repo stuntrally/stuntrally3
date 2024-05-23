@@ -83,11 +83,11 @@ void CGui::ChallsListUpdate()
 			tabChall->setIndexSelected(t);
 	}	}
 
-	fillChallsList(vIds[pSet->chall_type]);
+	FillChallsList(vIds[pSet->chall_type]);
 }
 
 
-void CGui::fillChallsList(std::vector<int> vIds)
+void CGui::FillChallsList(std::vector<int> vIds)
 {
 	const char clrCh[MAX_CHL_TYP][8] = {
 	//  0 Rally  1 Scenery  2 Endurance  3 Chase  4 Stunts  5 Extreme  6 Space    7 Special  8 Vehicle  9 Hover    10 Test
@@ -135,11 +135,13 @@ void CGui::listChallChng(MyGUI::MultiList2* chlist, size_t id)
 
 	CarListUpd();  // filter car list  todo: off
 
-	//  fill stages
+	//  clear
 	liStages->removeAllItems();
 	for (int i=0; i < ImgTrk; ++i)
 		imgTrk[i]->setVisible(0);
+	imgTrkBig->setVisible(0);
 
+	//  fill stages
 	int n = 1, p = pSet->gui.champ_rev ? 1 : 0;
 	const Chall& ch = data->chall->all[nch];
 	int ntrks = ch.trks.size();
@@ -465,21 +467,6 @@ void CGui::ChallengeAdvance(float timeCur/*total*/)
 	// app->mWndChallEnd->setVisible(true);  // show after stage end
 	
 	LogO("|]");
-}
-
-
-//  Prize const  * * *
-const String
-	CGui::clrPrize[4] = {"","#D0B050","#D8D8D8","#E8E050"},
-	CGui::strPrize[4] = {"","#{Bronze}","#{Silver}","#{Gold}"};
-
-//  lowering pass req
-const int   CGui::ciAddPos[3]    = {4,2,0};
-const float CGui::cfSubPoints[3] = {2.f,1.f,0.f};
-
-const String CGui::StrPrize(int i)  //0..3
-{
-	return clrPrize[i] + TR(strPrize[i]);
 }
 
 

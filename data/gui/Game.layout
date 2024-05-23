@@ -1928,8 +1928,8 @@
 			<!-- ............................................................................................................... -->
 			<Widget type="TabItem" skin="" position="2 24 794 562" name="TabChamps">
 				<Property key="Caption" value="#80C0FF#{Championship}"/>
-				<Widget type="TabControl" skin="TabControl" position="24 26 567 36" name="ChampType">
-					<Property key="Colour" value="0.8 0.9 1.0"/>
+				<Widget type="TabControl" skin="TabControl" position="24 26 565 31" name="ChampType">
+					<Property key="Colour" value="0.4 1.0 0.6"/>
 					<Widget type="TabItem" skin="" position="2 24 532 8">
 						<Property key="Caption" value="#80FF20#{Diff3}"/>
 					</Widget>
@@ -1952,8 +1952,8 @@
 						<Property key="Caption" value="#909090#{Test}"/>
 					</Widget>
 				</Widget>
-				<Widget type="TabControl" skin="TabControl" position="25 26 603 36" name="SubTabChallType">
-					<Property key="Colour" value="0.9 0.8 1.0"/>
+				<Widget type="TabControl" skin="TabControl" position="25 26 599 31" name="SubTabChallType">
+					<Property key="Colour" value="0.5 0.5 1.0"/>
 					<Widget type="TabItem" skin="" position="2 24 578 8">
 						<Property key="Caption" value="#A0D0FF#{Diff2}"/><!--#{Chall_Rally}-->
 					</Widget>
@@ -1988,8 +1988,8 @@
 						<Property key="Caption" value="#909090#{Test}"/>
 					</Widget>
 				</Widget>
-				<Widget type="TabControl" skin="TabControl" position="25 26 603 36" name="SubTabCollectType">
-					<Property key="Colour" value="0.9 0.8 1.0"/>
+				<Widget type="TabControl" skin="TabControl" position="25 26 567 31" name="SubTabCollectType">
+					<Property key="Colour" value="0.7 0.3 1.0"/>
 					<Widget type="TabItem" skin="" position="2 24 578 8">
 						<Property key="Caption" value="#80C0FF#{Diff2}"/>
 					</Widget>
@@ -2007,27 +2007,27 @@
 					</Widget>
 				</Widget>
 
-				<Widget type="ImageBox" skin="ImageBox" position="642 88 128 128" name="imgTut">
+				<Widget type="ImageBox" skin="ImageBox" position="652 28 128 128" name="imgTut">
 					<Property key="ImageCoord" value="0 128 128 128"/>
 					<Property key="Alpha" value="1.0"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
 				</Widget>
-				<Widget type="ImageBox" skin="ImageBox" position="642 88 128 128" name="imgChamp">
+				<Widget type="ImageBox" skin="ImageBox" position="652 28 128 128" name="imgChamp">
 					<Property key="ImageCoord" value="0 256 128 128"/>
 					<Property key="Alpha" value="1.0"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
 				</Widget>
-				<Widget type="ImageBox" skin="ImageBox" position="642 88 128 128" name="imgChall">
+				<Widget type="ImageBox" skin="ImageBox" position="652 28 128 128" name="imgChall">
 					<Property key="ImageCoord" value="0 384 128 128"/>
 					<Property key="Alpha" value="1.0"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
 				</Widget>
-				<Widget type="ImageBox" skin="ImageBox" position="642 88 128 128" name="imgCollect">
+				<Widget type="ImageBox" skin="ImageBox" position="652 28 128 128" name="imgCollect">
 					<Property key="ImageCoord" value="768 128 128 128"/>
 					<Property key="Alpha" value="1.0"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
 				</Widget>
-				<Widget type="ImageBox" skin="ImageBox" position="642 88 128 128" name="imgCareer">
+				<Widget type="ImageBox" skin="ImageBox" position="652 28 128 128" name="imgCareer">
 					<Property key="ImageCoord" value="768 256 128 128"/>
 					<Property key="Alpha" value="1.0"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
@@ -2049,6 +2049,13 @@
 				<Widget type="ImageBox" skin="ImageBox" position="564 318 80 80" name="imgTrk6">
 				</Widget>
 				<Widget type="ImageBox" skin="ImageBox" position="654 318 80 80" name="imgTrk7">
+				</Widget>
+
+				<Widget type="ImageBox" skin="ImageBox" position="604 228 168 168" name="imgTrkBig">
+				</Widget>
+				<Widget type="TextBox" skin="TextBox" position="24 308 140 92" name="txColDetail0">
+				</Widget>
+				<Widget type="TextBox" skin="TextBox" position="164 308 440 92" name="txColDetail1">
 				</Widget>
 
 				<!-- descr txt -->
@@ -2100,10 +2107,10 @@
 						<Property key="NeedMouse" value="false"/>
 					</Widget>
 				</Widget>
-				<Widget type="Button" skin="Button" position="330 500 154 40" name="btnCollectStart">
+				<Widget type="Button" skin="Button" position="330 500 154 40" name="btnChallStart">
 					<Property key="Caption" value="#{Start}"/>
-					<Property key="Colour" value="0.8 0.6 1.0"/>
-					<Property key="TextColour" value="0.8 0.6 1.0"/>
+					<Property key="Colour" value="0.6 0.6 1"/>
+					<Property key="TextColour" value="0.8 0.8 1"/>
 					<Widget type="ImageBox" skin="ImageBox" position="2 4 32 32">
 						<Property key="ImageCoord" value="256 0 128 128"/>
 						<Property key="Alpha" value="0.7"/>
@@ -2111,10 +2118,10 @@
 						<Property key="NeedMouse" value="false"/>
 					</Widget>
 				</Widget>
-				<Widget type="Button" skin="Button" position="330 500 154 40" name="btnChallStart">
+				<Widget type="Button" skin="Button" position="330 500 154 40" name="btnCollectStart">
 					<Property key="Caption" value="#{Start}"/>
-					<Property key="Colour" value="0.4 1 0.8"/>
-					<Property key="TextColour" value="0.4 1 0.8"/>
+					<Property key="Colour" value="0.8 0.5 1.0"/>
+					<Property key="TextColour" value="0.8 0.7 1.0"/>
 					<Widget type="ImageBox" skin="ImageBox" position="2 4 32 32">
 						<Property key="ImageCoord" value="256 0 128 128"/>
 						<Property key="Alpha" value="0.7"/>

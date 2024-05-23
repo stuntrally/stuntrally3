@@ -128,7 +128,7 @@ void App::update( float dt )
 			gcom->ResizeOptWnd();
 			gcom->SizeGUI();
 			gcom->updTrkListDim();
-			gui->updChsListDim();  // resize lists
+			gui->updGamesListDim();  // resize lists
 			gui->slSSS(0);
 			gui->listCarChng(gui->carList,0);  // had wrong size
 			bRecreateHUD = true;

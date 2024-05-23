@@ -21,16 +21,6 @@ using namespace MyGUI;
 
 #define ciChampTypes  9
 
-void CGui::chkCh_All(Ck* ck)
-{
-	chkChampRev(ck);
-}
-void CGui::chkChampRev(Ck*)
-{
-	ChampsListUpdate();
-	ChallsListUpdate();
-}
-
 void CGui::tabChampType(Tab wp, size_t id)
 {
 	pSet->champ_type = id;
@@ -54,7 +44,7 @@ void CGui::ChampsListUpdate()
 				ch.diff >= pSet->difficulty &&
 				ch.diff <= pSet->difficulty+1))  vIds.emplace_back(id);
 		}
-		fillChampsList(vIds);
+		FillChampsList(vIds);
 		return;
 	}
 	//if (pSet->iMenu == MN_Champ)
@@ -89,11 +79,11 @@ void CGui::ChampsListUpdate()
 			tabChamp->setIndexSelected(t);
 	}	}
 
-	fillChampsList(vIds[pSet->champ_type + 2]);
+	FillChampsList(vIds[pSet->champ_type + 2]);
 }
 
 
-void CGui::fillChampsList(std::vector<int> vIds)
+void CGui::FillChampsList(std::vector<int> vIds)
 {
 	const char clrCh[ciChampTypes][8] = {  // 🌈
 		"#FFFFA0", "#E0E000",  //  0 tutorial  1 tutorial hard
@@ -128,79 +118,22 @@ void CGui::fillChampsList(std::vector<int> vIds)
 }
 
 
-///  upd dim  champ,chall,stages lists  ----------
-void CGui::updChsListDim()
-{
-	const IntCoord& wi = app->mWndGame->getCoord();
-
-	//  Champs  -----
-	if (!liChamps)  return;
-	int c,w;
-	int sum = 0, cnt = liChamps->getColumnCount(), sw = 0;
-	for (c=0; c < cnt; ++c)  sum += colCh[c];
-	for (c=0; c < cnt; ++c)
-	{
-		w = c==cnt-1 ? 18 : float(colCh[c]) / sum * 0.76/*width*/ * wi.width * 0.97/*frame*/;
-		liChamps->setColumnWidthAt(c, w);  sw += w;
-	}
-	int xt = 0.03*wi.width, yt = 0.10*wi.height;  // pos
-	liChamps->setCoord(xt, yt, sw + 8/*frame*/, 0.40/*height*/*wi.height);
-	liChamps->setVisible(isChampGui());
-
-	//  Stages  -----
-	if (!liStages)  return;
-	sum = 0;  cnt = liStages->getColumnCount();  sw = 0;
-	for (c=0; c < cnt; ++c)  sum += colSt[c];  sum += 43;//-
-	for (c=0; c < cnt; ++c)
-	{
-		w = c==cnt-1 ? 18 : float(colSt[c]) / sum * 0.58/*width*/ * wi.width * 0.97/**/;
-		liStages->setColumnWidthAt(c, w);  sw += w;
-	}
-	liStages->setCoord(xt, yt, sw + 8/**/, 0.50/*height*/*wi.height);
-	liStages->setVisible(true);
-
-	//  Challs  -----
-	if (!liChalls)  return;
-	sum = 0;  cnt = liChalls->getColumnCount();  sw = 0;
-	for (c=0; c < cnt; ++c)  sum += colChL[c];
-	for (c=0; c < cnt; ++c)
-	{
-		w = c==cnt-1 ? 18 : float(colChL[c]) / sum * 0.76/*width*/ * wi.width * 0.97/**/;
-		liChalls->setColumnWidthAt(c, w);  sw += w;
-	}
-	xt = 0.03*wi.width, yt = 0.10*wi.height;  // pos
-	liChalls->setCoord(xt, yt, sw + 8/**/, 0.40/*height*/*wi.height);
-	liChalls->setVisible(isChallGui());
-
-	//  Collect  -----
-	if (!liCollect)  return;
-	sum = 0;  cnt = liCollect->getColumnCount();  sw = 0;
-	for (c=0; c < cnt; ++c)  sum += colCol[c];
-	for (c=0; c < cnt; ++c)
-	{
-		w = c==cnt-1 ? 18 : float(colCol[c]) / sum * 0.76/*width*/ * wi.width * 0.97/**/;
-		liCollect->setColumnWidthAt(c, w);  sw += w;
-	}
-	xt = 0.03*wi.width, yt = 0.10*wi.height;  // pos
-	liCollect->setCoord(xt, yt, sw + 8/**/, 0.40/*height*/*wi.height);
-	liCollect->setVisible(isCollectGui());
-}
-
-
 ///  🏆📃 Championships list  sel changed,  fill Stages list
 //----------------------------------------------------------------------------------------------------------------------
 void CGui::listChampChng(MyGUI::MultiList2* chlist, size_t id)
 {
 	if (id==ITEM_NONE || liChamps->getItemCount() == 0)  return;
 	
-	//  fill stages
+	//  clear
 	liStages->removeAllItems();
 	for (int i=0; i < ImgTrk; ++i)
 		imgTrk[i]->setVisible(0);
+	imgTrkBig->setVisible(0);
 
 	int pos = *liChamps->getItemDataAt<int>(id)-1;
 	if (pos < 0 || pos >= data->champs->all.size())  {  LogO("Error champ sel > size.");  return;  }
 
+	//  fill stages
 	int n = 1, p = pSet->gui.champ_rev ? 1 : 0;
 	const Champ& ch = data->champs->all[pos];
 	int ntrks = ch.trks.size();

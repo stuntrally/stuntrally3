@@ -17,7 +17,6 @@ using namespace std;
 
 ///  🎛️ Gui Init  🏆 Championships
 //---------------------------------------------------------------------------------------------------------------------
-
 void CGui::InitGuiChamps()
 {
 	//  for find defines
@@ -55,6 +54,8 @@ void CGui::InitGuiChamps()
 
 	for (i=0; i < ImgTrk; ++i)
 		imgTrk[i] = fImg("imgTrk"+toStr(i));
+	imgTrkBig = fImg("imgTrkBig");
+	txColDetail[0] = fTxt("txColDetail0");  txColDetail[1] = fTxt("txColDetail1");
 
 
 	//  🏆 Champs list  -------------
@@ -121,11 +122,6 @@ void CGui::InitGuiChamps()
 	imgTut     = fImg("imgTut");      imgChamp  = fImg("imgChamp");   imgChall = fImg("imgChall");
 	imgCollect = fImg("imgCollect");  imgCareer = fImg("imgCareer");
 
-	updChsListDim();
-	ChampsListUpdate();  listChampChng(liChamps, liChamps->getIndexSelected());
-	ChallsListUpdate();  listChallChng(liChalls, liChalls->getIndexSelected());
-	CollectListUpdate();  listCollectChng(liCollect, liCollect->getIndexSelected());
-
 	Btn("btnTutStart",   btnChampStart);  btStTut = btn;
 	Btn("btnChampStart", btnChampStart);  btStChamp = btn;
 	Btn("btnChallStart", btnChallStart);  btStChall = btn;
@@ -160,5 +156,10 @@ void CGui::InitGuiChamps()
 	imgChallFail   = fImg("ChallEndImgFail");  txChallEndF = fTxt("ChallEndFinished");
 	imgChallCup    = fImg("ChallEndImgCup");   txChallEndC = fTxt("ChallEndCongrats");
 
-	UpdChsTabVis();
+	//  Init, vis, fill  -------------
+	UpdGamesTabVis();
+	updGamesListDim();
+	ChampsListUpdate();  listChampChng(liChamps, liChamps->getIndexSelected());
+	ChallsListUpdate();  listChallChng(liChalls, liChalls->getIndexSelected());
+	CollectListUpdate();  listCollectChng(liCollect, liCollect->getIndexSelected());
 }

@@ -452,8 +452,9 @@ public:
 
 	//  🏞️ stages
 	#define ImgTrk 8
-	Img imgTrk[ImgTrk] ={0,};
-	
+	Img imgTrk[ImgTrk] ={0,}, imgTrkBig =0;
+	Txt txColDetail[2] ={0,0};
+
 	Txt txTrkName =0;
 	Ed edChDesc =0;  WP panCh =0;
 	Txt txtCh =0, valCh =0, txtChName =0,
@@ -499,16 +500,17 @@ public:
 	int iChSnd = 0;  // snd id to play
 
 	//  games lists
-	void fillChampsList(std::vector<int> vIds), fillChallsList(std::vector<int> vIds);  // Ids from champs/challs .all
 	void ChampsListUpdate(), ChampFillStageInfo(bool finished), ChampionshipAdvance(float timeCur);
 	void ChallsListUpdate(), ChallFillStageInfo(bool finished), ChallengeAdvance(float timeCur);
-	void CollectListUpdate(), fillCollectList(std::vector<int> vIds);
+	void CollectListUpdate(), UpdCollectDetail(int id);
+	void FillChampsList(std::vector<int> vIds), FillChallsList(std::vector<int> vIds);  // Ids from champs/challs .all
+	void FillCollectList(std::vector<int> vIds);
 
-	Ed edGameInfo =0;  void btnGameInfo(WP), updGameInfo(), UpdChsTabVis();
+	Ed edGameInfo =0;  void btnGameInfo(WP), updGameInfo(), UpdGamesTabVis();
 	CK(ChampRev);  CK(Ch_All);
 
 	void ReadTrkStatsChamp(Ogre::String track,bool reverse);
-	void updChsListDim();
+	void updGamesListDim();
 
 	//  chall util
 	bool IsChallCar(Ogre::String name), IsCollectCar(Ogre::String name);

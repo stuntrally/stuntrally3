@@ -2,6 +2,7 @@
 #include "Def_Str.h"
 #include "CData.h"
 #include "TracksXml.h"
+#include "CollectXml.h"
 #include "GuiCom.h"
 #include "CScene.h"
 #include "paths.h"
@@ -13,7 +14,6 @@
 #include "MultiList2.h"
 #include "SoundMgr.h"
 #include "settings.h"
-// #include <OgreTextureManager.h>
 #include <MyGUI.h>
 using namespace std;
 using namespace Ogre;
@@ -70,11 +70,11 @@ void CGui::CollectListUpdate()
 			tabCollect->setIndexSelected(t);
 	}	}
 
-	fillCollectList(vIds[pSet->collect_type]);
+	FillCollectList(vIds[pSet->collect_type]);
 }
 
 
-void CGui::fillCollectList(std::vector<int> vIds)
+void CGui::FillCollectList(std::vector<int> vIds)
 {
 	liCollect->removeAllItems();
 
@@ -124,13 +124,15 @@ void CGui::listCollectChng(MyGUI::MultiList2* chlist, size_t id)
 	//  fill stages
 	// liStages->removeAllItems();
 	for (int i=0; i < ImgTrk; ++i)
-		imgTrk[i]->setVisible(i < 1);
+		imgTrk[i]->setVisible(0);
 
 	const Collection& col = data->collect->all[nc];
 
 	edChDesc->setCaption(col.descr);
 	txtChName->setCaption(col.nameGui);
-	imgTrk[0]->setImageTexture(col.track+".jpg");
+
+	imgTrkBig->setImageTexture(col.track+".jpg");
+	imgTrkBig->setVisible(1);
 
 	//  fill track tab
 	auto trk = col.track;
@@ -140,7 +142,8 @@ void CGui::listCollectChng(MyGUI::MultiList2* chlist, size_t id)
 	gcom->sListTrack = trk;  gcom->bListTrackU = 0;
 	// CarListUpd();
 
-	// UpdCollectDetail(nc);
+	UpdCollectDetail(nc);
+	UpdGamesTabVis();
 }
 
 
@@ -198,192 +201,64 @@ void CGui::ProgressSaveCollect(bool upgGui)
 }
 
 
-#if 0
-//  collect details text
-//----------------------------------------------------------------------------------------------------------------------
-void CGui::CollectFillStageInfo(bool finished)
-{
-	int chId = pSet->game.collect_num, p = pSet->game.champ_rev ? 1 : 0;
-	const ProgressCollect& pc = progressL[p].chs[chId];
-	const ProgressTrackL& pt = pc.trks[pc.curTrack];
-	const Collect& ch = data->collect->all[chId];
-	bool last = pc.curTrack+1 == ch.trks.size();
-
-	String s =
-		"#80FFE0"+ TR("#{Collection}") + ":  " + ch.nameGui + "\n\n" +
-		"#80FFC0"+ TR("#{Stage}") + ":  " + toStr(pc.curTrack+1) + " / " + toStr(ch.trks.size()) + "\n" +
-		"#80FF80"+ TR("#{Track}") + ":  " + trk.nameGui + "\n\n";
-
-	if (!finished)  // track info at start -
-	{
-		int id = data->tracks->trkmap[trk.nameGui];
-		if (id > 0)
-		{
-			const TrackInfo* ti = &data->tracks->trks[id-1];
-			s += "#A0D0FF"+ TR("#{Difficulty}:  ") + gcom->clrsDiff[ti->diff] + TR("#{Diff"+toStr(ti->diff)+"}") + "\n";
-			if (app->scn->road)
-			{	Real len = app->scn->road->st.Length*0.001f * (pSet->show_mph ? 0.621371f : 1.f);
-				s += "#A0D0FF"+ TR("#{Distance}:  ") + "#B0E0FF" + 
-					fToStr(len, 1,4) + (pSet->show_mph ? TR(" #{UnitMi}") : TR(" #{UnitKm}")) + "\n\n";
-		}	}
-	}
-
-	if (finished)  // stage
-	{
-		s += "#80C0FF"+TR("#{Finished}.") + "\n\n";
-		
-		///  Pass Stage  --------------
-		bool passed = true, pa;
-		if (trk.timeNeeded > 0.f)
-		{
-			pa = pt.time <= trk.timeNeeded;
-			s += TR("#D8C0FF#{TBTime}: ") + StrTime(pt.time) + "  / " + StrTime(trk.timeNeeded) + sPass(pa) +"\n";
-			passed &= pa;
-		}
-		if (trk.passPoints > 0.f)
-		{
-			pa = pt.points >= trk.passPoints;
-			s += TR("#D8C0FF#{TBPoints}: ") + fToStr(pt.points,1) + "  / " + fToStr(trk.passPoints,1) + sPass(pa) +"\n";
-			passed &= pa;
-		}
-		if (trk.passPos > 0)
-		{
-			pa = pt.pos <= trk.passPos;
-			s += TR("#D8C0FF#{TBPosition}: ") + toStr(pt.pos) + "  / " + toStr(trk.passPos) + sPass(pa) +"\n";
-			passed &= pa;
-		}
-		
-		if (passed)	s += "\n\n"+TR(last ? "#00FF00#{Continue}." : "#00FF00#{NextStage}.");
-		else		s += "\n\n"+TR("#FF6000#{RepeatStage}.");
-	}
-	else
-	{	///  Pass needed  --------------
-		s += "#F0F060"+ TR("#{Needed}") +"\n";
-		if (trk.timeNeeded > 0.f)	s += TR("  #D8C0FF#{TBTime}: ") + StrTime(trk.timeNeeded) +"\n";
-		if (trk.passPoints > 0.f)	s += TR("  #D8C0FF#{TBPoints}: ") + fToStr(trk.passPoints,1) +"\n";
-		if (trk.passPos > 0)		s += TR("  #D8C0FF#{TBPosition}: ") + toStr(trk.passPos) +"\n";
-		auto rd = app->scn->road;
-		if (rd)
-			s += "\n#DDDDBB"+ rd->sTxtAdvice + "\n#ABDDAB"+ rd->sTxtDescr;
-	}
-
-	edCollectStage->setCaption(s);
-	btCollectStage->setCaption(finished ? TR("#{Continue}") : TR("#{Start}"));
-	
-	//  preview image at start
-	if (!finished)
-	{
-		String path = gcom->PathListTrkPrv(0, trk.nameGui);
-		app->prvStCh.Load(path+"view.jpg");
-	}
-}
-
-
-//  Collect details  (gui tab Stages)
+//  Collect details  text
 //----------------------------------------------------------------------------------------------------------------------
 void CGui::UpdCollectDetail(int id)
 {
-	const Collect& ch = data->collect->all[id];
-	int ntrks = ch.trks.size();
-	int p = pSet->gui.champ_rev ? 1 : 0;
-	
+	const Collection& col = data->collect->all[id];
 	String s1,s2,clr;
-	//s1 += "\n";  s2 += "\n";
 
 	//  track  --------
-	clr = gcom->getClrDiff(ch.diff);
-	s1 += clr+ TR("#{Difficulty}\n");    s2 += clr+ TR("#{Diff"+toStr(ch.diff)+"}")+"\n";
-
-	clr = gcom->getClrDiff(ntrks * 2/3 +1);
-	s1 += clr+ TR("#{Tracks}\n");        s2 += clr+ toStr(ntrks)+"\n";
+	// clr = gcom->getClrDiff(col.diff);
+	// s1 += clr+ TR("#{Difficulty}\n");    s2 += clr+ TR("#{Diff"+toStr(col.diff)+"}")+"\n";
+	// s1 += clr+ TR("#{Track}\n");        s2 += col.track+"\n";
 
 	//s1 += "\n";  s2 += "\n";
-	clr = gcom->getClrDiff(ch.time /3.f/60.f);
-	s1 += TR("#80F0E0#{Time} [#{TimeMS}.]\n"); s2 += "#C0FFE0"+clr+ StrTime2(ch.time)+"\n";
+	if (col.time > 0)
+	{
+		s1 += TR("  #80F0E0#{Time}");
+		if (col.need)  s1 += TR("#F0FFFF  #{Needed}");
+		s1 +="\n";
 
+		int p, pp = col.prizes;
+		if (pp > 0)
+			for (p=0; p <= pp; ++p)
+			{	s2 += StrPrize(3-p) +"  "+ StrTime2(col.time + p * col.next)+"   ";  }
+		s2 += "\n";
+	}
 	//  cars  --------
-	s1 += "\n";  s2 += "\n";
-	s1 += TR("#F08080#{Vehicles}\n");        s2 += "#FFA0A0" + StrCollectCars(ch)+"\n";
-	if (ch.carChng)
-	{	s1 += TR("#C0B0B0#{CarChange}\n");  s2 += TR("#A0B8A0#{Allowed}")+"\n";  }
-
+	// s1 += "\n";  s2 += "\n";
+	s1 += TR("#F08080  #{Vehicles}\n");        s2 += "#FFA0A0" + col.cars.GetStr(data->cars)+"\n";
 	
 	//  game  --------
-	s1 += "\n";  s2 += "\n";
-	s1 += TR("#D090E0#{Game}")+"\n";     s2 += "\n";
+	// s1 += "\n";  s2 += "\n";
+	// s1 += TR("#D090E0#{Game}")+"\n";     s2 += "\n";
 	#define cmbs(cmb, i)  (i>=0 ? cmb->getItemNameAt(i) : TR("#{Any}"))
-	s1 += TR("#A0B0C0  #{Simulation}\n");  s2 += "#B0C0D0"+ ch.sim_mode +"\n";
-	s1 += TR("#A090E0  #{Damage}\n");      s2 += "#B090FF"+ cmbs(cmbDamage, ch.damage_type) +"\n";
-	s1 += TR("#B080C0  #{InputMapRewind}\n"); s2 += "#C090D0"+ cmbs(cmbRewind, ch.rewind_type) +"\n";
+	// s1 += TR("#A0B0C0  #{Simulation}\n");  s2 += "#B0C0D0"+ col.sim_mode +"\n";
+	s1 += TR("#A090E0  #{Damage}\n");      s2 += "#B090FF"+ cmbs(cmbDamage, col.damage_type) +"\n";
+	s1 += TR("#B080C0  #{InputMapRewind}\n"); s2 += "#C090D0"+ cmbs(cmbRewind, col.rewind_type) +"\n";
 	//s1 += "\n";  s2 += "\n";
-	s1 += TR("#80C0FF  #{Boost}\n");       s2 += "#90D0FF"+ cmbs(cmbBoost, ch.boost_type) +"\n";
-	s1 += TR("#6098A0  #{Flip}\n");        s2 += "#7098A0"+ cmbs(cmbFlip, ch.flip_type) +"\n";
+	s1 += TR("#80C0FF  #{Boost}\n");       s2 += "#90D0FF"+ cmbs(cmbBoost, col.boost_type) +"\n";
+	// s1 += TR("#6098A0  #{Flip}\n");        s2 += "#7098A0"+ cmbs(cmbFlip, col.flip_type) +"\n";
 
 	//  hud  --------
 	//s1 += "\n";  s2 += "\n";
 	//bool minimap, chk_arr, chk_beam, trk_ghost;  // deny using it if false
 
-	txtCh->setCaption(s1);  valCh->setCaption(s2);
+	txColDetail[0]->setCaption(s1);  txColDetail[1]->setCaption(s2);
 
-
-	//  pass Collection  --------
-	s1 = "";  s2 = "";
-	if (ch.totalTime > 0.f || ch.avgPoints > 0.f || ch.avgPos > 0.f)
-	{
-		s1 += "\n";  s2 += "\n";  int p, pp = ch.prizes;
-		s1 += TR("#F0F060#{Needed} - #{Collection}")+"\n";   s2 += "\n";
-		s1 += "#D8C0FF";  s2 += "#F0D8FF";
-		if (ch.avgPoints > 0.f){	s1 += TR("  #{TBPoints}\n");
-									for (p=0; p <= pp; ++p)  s2 += clrPrize[2-pp+ p+1]+
-											fToStr(ch.avgPoints - cfSubPoints[p] * ch.factor ,1,3)+"  ";
-									s2 += "\n";  }
-		if (ch.avgPos > 0.f)  {		s1 += TR("  #{TBPosition}\n");
-									for (p=0; p <= pp; ++p)  s2 += clrPrize[2-pp+ p+1]+
-											fToStr(ch.avgPos + ciAddPos[p] * ch.factor ,1,3)+"  ";
-									s2 += "\n";  }
-		if (ch.totalTime > 0.f){	s1 += TR("  #{TBTime}\n");
-									s2 += StrTime(ch.totalTime)+"\n";  }
-	}
-	txtChP[1]->setCaption(s1);  valChP[1]->setCaption(s2);
-	
-	//  pass stage  --------
-	s1 = "";  s2 = "";
-	size_t t = liStages->getIndexSelected();
-	if (t != ITEM_NONE)
-	{
-		// const CollectTrack& trk = ch.trks[t];
-		if (trk.timeNeeded > 0.f || trk.passPoints > 0.f || trk.passPos > 0)
-		{
-			s1 += "\n";  s2 += "\n";
-			s1 += TR("#FFC060#{Needed} - #{Stage}")+"\n";   s2 += "\n";
-			s1 += "#D8C0FF";   s2 += "#F0D8FF";
-			if (trk.passPoints > 0.f){	s1 += TR("  #{TBPoints}\n");    s2 += fToStr(trk.passPoints,2,5)+"\n";  }
-			if (trk.passPos > 0.f)  {	s1 += TR("  #{TBPosition}\n");  s2 += fToStr(trk.passPos,2,5)+"\n";  }
-			if (trk.timeNeeded > 0.f){	s1 += TR("  #{TBTime}\n");      s2 += StrTime(trk.timeNeeded)+"\n";  }
-	}	}
-	txtChP[0]->setCaption(s1);  valChP[0]->setCaption(s2);
-
-
+/*
 	//  progress  --------
 	s1 = "";  s2 = "";
 	const ProgressCollect& pc = progressL[p].chs[id];
 	int cur = pc.curTrack, all = data->collect->all[id].trks.size();
 	if (cur > 0)
 	{
-		s1 += TR("#B0FFFF#{Progress}\n");    s2 += "#D0FFFF"+(cur == all ? TR("#{Finished}").asUTF8() : fToStr(100.f * cur / all,0,3)+" %")+"\n";
 		s1 += TR("#F8FCFF#{Prize}\n");       s2 += StrPrize(pc.fin+1)+"\n";
-		#define clrP(b)  if (b)  {  s1 += "#C8D0F0";  s2 += "#E0F0FF";  }else{  s1 += "#80A0C0";  s2 += "#90B0D0";  }
-		s1 += "\n";  s2 += "\n";  clrP(ch.avgPoints > 0.f);
-		s1 += TR("  #{TBPoints}\n");    s2 += fToStr(pc.avgPoints,2,5)+"\n";  clrP(ch.avgPos > 0.f);
-		s1 += TR("  #{TBPosition}\n");  s2 += fToStr(pc.avgPos,2,5)+"\n";  clrP(ch.totalTime > 0.f);
-		s1 += TR("  #{TBTime}\n");      s2 += StrTime(pc.totalTime)+"\n";
-	}
-	txtChP[2]->setCaption(s1);  valChP[2]->setCaption(s2);
-
+*/
 
 	//  btn start
-	s1 = cur == all ? TR("#{Restart}") : (cur == 0 ? TR("#{Start}") : TR("#{Continue}"));
-	btStCollect->setCaption(s1);
+	// s1 = cur == all ? TR("#{Restart}") : (cur == 0 ? TR("#{Start}") : TR("#{Continue}"));
+	// btStCollect->setCaption(s1);
 	// btnCollectRestart->setVisible(cur > 0);
 }
-#endif
