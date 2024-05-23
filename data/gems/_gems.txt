@@ -4,3 +4,21 @@ Author: Kelsey113
 License: CC BY 4.0
 https://sketchfab.com/3d-models/chaos-emerald-3a9d89ec0d6642ee8a8fc42a1361c701
 
+
+---- cup_gold.mesh
+Gold sport cup
+Author: David Glynch
+License: CC BY 4.0
+https://sketchfab.com/3d-models/gold-sport-cup-de1bd92d5d914345a42f2820e73a7804
+
+---- cup_silver.mesh
+Antique Trophy Goblets
+Author: Mad_Lobster_Workshop
+License: CC BY 4.0
+https://sketchfab.com/3d-models/antique-trophy-goblets-07b46238d3d34842af48ad817f38f341
+
+---- cup_bronze.mesh
+Day31 Trophy
+Author: TheLastAirblender
+License: CC BY 4.0
+https://sketchfab.com/3d-models/day31-trophy-5cbb82dda4284841b51d6d0974a741ab

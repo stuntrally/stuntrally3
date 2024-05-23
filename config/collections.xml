@@ -44,7 +44,7 @@
 			|  time - time in seconds
 			|     collecting all:  with less time, wins gold prize
 			|     if not set any time will win gold
-			|  needed
+			|  need
 			|     0 (default) - not needed to pass, needed for better prizes
 			|     if 1 - finish all collects, also requires time, at least for lowest prize, or quicker
 			|  prizes
@@ -52,7 +52,7 @@
 			|  next - time added  for lower prize silver, and 2x that for bronze
 			|     higher value will make it easier to get lower prizes
 
-		<pass needed="1" time="6" prizes="2" next="2" />
+		<pass need="1" time="6" prizes="2" next="2" />
 			|  e.g. ^ means:  < 6 sec  gold,  < 8 sec silver,  < 10 sec bronze,  >= 10 sec won't pass
 
 		<track name=".." >
@@ -390,7 +390,7 @@ descr="Crystal gems in somewhat hidden places on islands.">
 <collection name="#80C000Temp test easy" ver="1" difficulty="0" type="4" groups="1"
 descr="Easy test all. Times: less than 6 sec for gold, 8 silver, 10 bronze.">
 		<cartype names="Gravel|Asphalt|Extreme|Hovercraft|Hover|Drone" />
-		<pass time="6" needed="1" prize="2" next="2" />
+		<pass time="6" need="1" prize="2" next="2" />
 		<track name="TestC6-Temp" />
 	</collection>
 
@@ -398,14 +398,14 @@ descr="Easy test all. Times: less than 6 sec for gold, 8 silver, 10 bronze.">
 descr="Easy test cars.">
 		<cartype names="Asphalt|Hovercraft|Hover|Drone" />
 		<car names="U6" />
-		<pass time="26" needed="1" prize="2" next="4" />
+		<pass time="26" need="1" prize="2" next="4" />
 		<track name="TestC6-Temp" />
 	</collection>
 
 	<collection name="#80C000Temp test hard" ver="1" difficulty="3" type="4" groups="4"
 descr="Easy test cars.">
 		<cartype names="Hover|Drone" />
-		<pass time="35" needed="0" prize="2" next="5" />
+		<pass time="35" need="0" prize="2" next="5" />
 		<track name="TestC6-Temp" />
 	</collection>
 
@@ -413,14 +413,14 @@ descr="Easy test cars.">
 	<collection name="#D0F060Circle easy" ver="1" difficulty="1" type="4" groups="7"
 descr="Simple test.">
 		<cartype names="Hover" />
-		<pass time="10" needed="0" prize="2" next="2" />
+		<pass time="10" need="0" prize="2" next="2" />
 		<track name="TestC4-Ow" />
 	</collection>
 
 	<collection name="Test Hills" ver="1" difficulty="1" type="4" groups="7"
 descr="Simple test terrain.">
 		<cartype names="Asphalt|Hover|Drone" />
-		<pass time="11" needed="1" prize="2" next="2" />
+		<pass time="11" need="1" prize="2" next="2" />
 		<track name="Test13-Hills" />
 	</collection>
 
