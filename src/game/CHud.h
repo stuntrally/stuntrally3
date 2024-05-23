@@ -117,23 +117,32 @@ public:
 	HudRenderable   *hrTireVis[MAX_TireVis] ={0,0,0,0,};
 
 
-	///  🔝 arrow to next checkpoint 3d
-	struct Arrow
-	{	int player = 0;
-		Ogre::Item* it =0;
-		Ogre::SceneNode* node =0, *nodeRot =0;
+	///  🔝 Hud3d  general mesh in 3d but on hud
+	//  arrows to next checkpoint, collect gems, win cups etc
+	class Hud3d
+	{
+		int player = 0;
 		Ogre::Quaternion qStart, qEnd, qCur;  // smooth animation
 		HlmsPbsDb2* pDb =0;
+
+		float dist = 0.f;  // cup anim
+		Ogre::Degree yaw{0.f};
+	public:
+		Ogre::Item* it =0;  // 🟢 ogre
+		Ogre::SceneNode* node =0, *nodeRot =0;
 		Ogre::Vector3 posTo;  // dir to collect
 
-		void Create(Ogre::SceneManager* mgr, SETTINGS* pSet, int plr);
+		void Create(Ogre::SceneManager* mgr, SETTINGS* pSet, int plr,
+			bool scale1 =0, Ogre::String mesh="", Ogre::String mtr="");
 		void Destroy(Ogre::SceneManager* mgr);
 
 		void UpdateChk(SplineRoad* road, CarModel* carM, const Ogre::Vector3& pos);
 		void Update(CarModel* carM, float time);
 		void UpdateCol(CarModel* carM, float sc);
+		void UpdateCup(CarModel* carM, float time), ShowCup();
 	}
-	arrChk[MAX_Players], arrCol[MAX_Players][MAX_ArrCol];
+	arrChk[MAX_Players], arrCol[MAX_Players][MAX_ArrCol],
+	cup[3];
 		
 	float asp =1.f, scX =1.f, scY =1.f,
 		minX =0.f, maxX =0.f, minY =0.f, maxY =0.f;  // minimap visible range

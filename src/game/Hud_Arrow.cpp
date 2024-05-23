@@ -21,28 +21,37 @@ using namespace std;
 
 ///  🆕 create HUD Arrow
 ///---------------------------------------------------------------------------------------------------------------
-void CHud::Arrow::Create(SceneManager* mgr, SETTINGS* pSet, int plr)
+void CHud::Hud3d::Create(SceneManager* mgr, SETTINGS* pSet, int plr,
+	bool scale1, Ogre::String mesh, Ogre::String mtr)
 {
 	if (it)  return;
 	if (!node)
 		node = mgr->getRootSceneNode()->createChildSceneNode();
 	player = plr;
 
-	it = mgr->createItem("arrow.mesh");  it->setCastShadows(false);
+	if (mesh.empty())
+	{	mesh = "arrow.mesh";
+		if (mtr.empty())  mtr = "Arrow"+toStr(player);
+	}
+	it = mgr->createItem(mesh);  it->setCastShadows(false);
 	it->setRenderQueueGroup(RQG_Hud3);
-	it->setDatablockOrMaterialName("Arrow"+toStr(player));
+	if (!mtr.empty())
+		it->setDatablockOrMaterialName(mtr);
 
 	pDb = dynamic_cast<HlmsPbsDb2*>( it->getSubItem(0)->getDatablock() );
 	// LogO(pDb ? "arrow db2 cast ok" : "arrow db2 cast fail");
 	
 	nodeRot = node->createChildSceneNode();
 	nodeRot->attachObject(it);
-	nodeRot->setScale(pSet->size_arrow/2.f * Vector3(0.5,1.f,2.f));
+	nodeRot->setScale(
+		scale1 ? Vector3::UNIT_SCALE :  // cup
+		pSet->size_arrow/2.f * Vector3(0.5,1.f,2.f));  // arrows
 	it->setVisibilityFlags(RV_Hud3D[player]);
-	nodeRot->setVisible(pSet->check_arrow);
+	nodeRot->setVisible(scale1 ? 0 : pSet->check_arrow);  // cups hidden
 }
-//  💥
-void CHud::Arrow::Destroy(SceneManager* mgr)
+
+//  💥 destroy
+void CHud::Hud3d::Destroy(SceneManager* mgr)
 {
 	if (nodeRot)  mgr->destroySceneNode(nodeRot);  nodeRot = 0;
 	if (node)  mgr->destroySceneNode(node);  node = 0;
@@ -52,7 +61,7 @@ void CHud::Arrow::Destroy(SceneManager* mgr)
 
 
 //  💫 Update
-void CHud::Arrow::UpdateChk(SplineRoad* road, CarModel* carM, const Vector3& pos)
+void CHud::Hud3d::UpdateChk(SplineRoad* road, CarModel* carM, const Vector3& pos)
 {
 	//  set animation start to old orientation
 	qStart = qCur;
@@ -91,7 +100,7 @@ void CHud::Arrow::UpdateChk(SplineRoad* road, CarModel* carM, const Vector3& pos
 }
 
 //  💫 Update 3d
-void CHud::Arrow::Update(CarModel* carM, float time)
+void CHud::Hud3d::Update(CarModel* carM, float time)
 {
 	//  align checkpoint arrow,  move in front of camera
 	if (!node)  return;
@@ -118,7 +127,7 @@ void CHud::Arrow::Update(CarModel* carM, float time)
 
 
 //  💫 Update 💎
-void CHud::Arrow::UpdateCol(CarModel* carM, float sc)
+void CHud::Hud3d::UpdateCol(CarModel* carM, float sc)
 {
 	if (!node)  return;
 	Vector3 pos = carM->ndMain->getPosition();
@@ -142,4 +151,40 @@ void CHud::Arrow::UpdateCol(CarModel* carM, float sc)
 	nodeRot->setOrientation(quat);
 	nodeRot->setScale(sc * 1.f * Vector3(0.5,1.f,2.f + 0.6f*dist) * dist);  // par
 	nodeRot->_getFullTransformUpdated();
+}
+
+
+//  💫 Update cup 🏆
+void CHud::Hud3d::UpdateCup(CarModel* carM, float time)
+{
+	if (!node)  return;
+	if (!node)  return;
+	Camera* cam = carM->fCam->cam->cam;
+
+	Vector3 pos = cam->getPosition();
+	Vector3 z = cam->getDirection();
+	Vector3 y = cam->getUp();
+	
+	Vector3 arrowPos = pos + (1.6f + dist) * z + -0.2f * y;
+	node->setPosition(arrowPos);  // in 3d, camera space
+
+	if (dist > 0.f)
+	{	dist -= time * 1.f + dist * time * 4.f;
+		if (dist < 0.f)  dist = 0.f;
+	}
+	
+	qCur.FromAngleAxis(yaw, Vector3(0,1,0));
+	auto q = cam->getOrientation();
+	yaw += Degree(time * 25.f);  // anim rotate
+	qEnd.FromAngleAxis(Degree(20.f), y);  // pitch
+	
+	nodeRot->setOrientation(qEnd *q * qCur);
+	// it->setLightMask(3); //..?
+	nodeRot->_getFullTransformUpdated();
+}
+
+void CHud::Hud3d::ShowCup()
+{
+	dist = 10.f;
+	nodeRot->setVisible(1);
 }

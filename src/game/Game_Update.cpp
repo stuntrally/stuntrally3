@@ -195,6 +195,9 @@ void App::update( float dt )
 						hud->txCamInfo->setCaption(String(cam->ss));
 					hud->txCamInfo->setVisible(vis);
 			}	}
+
+			for (int i=0; i < 3; ++i)
+				hud->cup[i].UpdateCup(carModels[0], dt);
 		}
 
 		

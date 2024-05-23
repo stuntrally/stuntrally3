@@ -11,14 +11,14 @@ particle_system Sparks
 	emitter Box
 	{
 		angle	30
-		colour_range_start  1 0.8 0.2
-		colour_range_end    1 0.5 0.0
+		colour_range_start  1 0.8 0.4
+		colour_range_end    1 0.5 0.1
 		velocity	3
-		velocity_min	1
+		velocity_min	2
 		velocity_max	6
-		time_to_live       1.2
-		time_to_live_min   0.8
-		time_to_live_max   1.9
+		time_to_live       1.6
+		time_to_live_min   1.2
+		time_to_live_max   2.4
 		width	0.4
 		height	0.4
 		depth	0.1
@@ -30,9 +30,9 @@ particle_system Sparks
 	}
 	affector ColourFader
 	{
-		red	  -0.18
+		red	  -0.2
 		green -0.5
-		blue  -0.75
+		blue  -0.8
 	}
     affector Scaler
     {

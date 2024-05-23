@@ -535,4 +535,15 @@ void CHud::Destroy()
 	
 	for (i=0; i < MAX_TireVis; ++i)
 	{	Dest2(ndTireVis[i])  Del(hrTireVis[i])  }
+
+	//  arrows  ----
+	for (int i=0; i < MAX_Players; ++i)
+	{
+		arrChk[i].Destroy(scm);
+		for (int a = 0; a < MAX_ArrCol; ++a)
+			arrCol[i][a].Destroy(scm);
+	}
+	//  win cups
+	for (int i=0; i < 3; ++i)
+		cup[i].Destroy(scm);
 }

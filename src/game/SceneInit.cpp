@@ -304,13 +304,6 @@ void App::LoadCleanUp()
 		ResourceGroupManager::getSingleton().addResourceLocation(resTrk, "FileSystem");
 	}
 
-	for (int i=0; i < MAX_Players; ++i)
-	{	//  arrows
-		hud->arrChk[i].Destroy(mSceneMgr);
-		for (int a = 0; a < MAX_ArrCol; ++a)
-			hud->arrCol[i][a].Destroy(mSceneMgr);
-	}
-
 	//  Delete all cars
 	for (int i=0; i < carModels.size(); ++i)
 	{
@@ -574,6 +567,14 @@ void App::LoadScene()  // 3
 				hud->arrCol[i][a].it->setDatablockOrMaterialName("collect_arrow");				
 			}
 		}
+	
+	//  win cups
+	hud->cup[0].Create(mSceneMgr, pSet, 0, 1, "cup_bronze.mesh", "");
+	hud->cup[1].Create(mSceneMgr, pSet, 0, 1, "cup_silver.mesh", "");
+	hud->cup[2].Create(mSceneMgr, pSet, 0, 1, "cup_gold.mesh", "");
+	// hud->cup[0].ShowCup();
+	// hud->cup[1].ShowCup();
+	// hud->cup[2].ShowCup();  // win show..
 }
 
 

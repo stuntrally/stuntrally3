@@ -2573,6 +2573,144 @@
 			}
 		},
 
+		"cup_bronze" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"reflect" : true,
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.07, 0.04, 0.01],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.67, 0.38, 0.22]
+			},
+			"fresnel" :
+			{
+				"value" : [0.68, 0.4, 0.15],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "cup_bronze_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.12
+			}
+		},
+
+		"cup_bronze1" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"reflect" : true,
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.13, 0.06, 0.02],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.9, 0.41, 0.15]
+			},
+			"fresnel" :
+			{
+				"value" : [0.9, 0.48, 0.25],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1
+			},
+			"roughness" :
+			{
+				"value" : 0.05
+			}
+		},
+
+		"cup_gold" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"reflect" : true,
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "cup_gold_d.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.0, 1.0, 0.8],
+				"texture" : "cup_gold_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [1, 1, 0.9],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1
+			},
+			"roughness" :
+			{
+				"value" : 1.0,
+				"texture" : "cup_gold_r.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"cup_silver" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"reflect" : true,
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.1, 0.1, 0.1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "cup_silver_d.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.6, 0.6]
+			},
+			"fresnel" :
+			{
+				"value" : [0.6, 0.6, 0.6],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "cup_silver_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4,
+				"texture" : "cup_silver_r.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
 		"DebugSphere1234" :
 		{
 			"macroblock" : "Macroblock_0",
