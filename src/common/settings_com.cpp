@@ -106,7 +106,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	int i,v,ii,a;
 	
 	if (w)	//  write  ----
-	{	for (v=0; v < TrkViews; ++v)
+	{	for (v=0; v < TV_ALL; ++v)
 		{
 			s = "";  ii = COL_VIS;
 			for (i=0; i < ii; ++i)
@@ -128,7 +128,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 		}
 	}else	//  read  ----
 	{
-		for (v=0; v < TrkViews; ++v)
+		for (v=0; v < TV_ALL; ++v)
 		{
 			if (Param(c,w, "gui_tracks.columns"+iToStr(v), s))
 			{	std::stringstream sc(s);
@@ -156,17 +156,18 @@ int SETcom::GetTexSize(int n)
 SETcom::SETcom()   ///  Defaults
 {
 	int i,v;
-	for (v=0; v < TrkViews; ++v)
+	for (v=0; v < TV_ALL; ++v)
 		for (i=0; i < COL_VIS; ++i)  col_vis[v][i] = colVisDef[v][i];
 	for (v=0; v < 2; ++v)
 		for (i=0; i < COL_FIL; ++i)  col_fil[v][i] = colFilDef[v][i];
 }
 
 //  🏞️📃🏛️ tracks list views columns  --
-const bool SETcom::colVisDef[TrkViews][COL_VIS] =
+const bool SETcom::colVisDef[TV_ALL][COL_VIS] =
 	{{0,0,1, 0,0,0, 1,1, 0,0,0,0,0,0,0,0,0,0,0,0,0},
 	 {0,0,1, 0,0,0, 1,0, 0,0,0,0,0,0,0,0,0,0,0,1,1},
-	 {1,0,1, 1,1,1, 1,1, 1,1,1,1,1,1,1,1,1,1,1,0,0}};
+	 {1,0,1, 1,1,1, 1,1, 1,1,1,1,1,1,1,1,1,1,1,0,0},
+	 {0,0,1, 0,0,0, 0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0}};  // unused
 	
 const char SETcom::colFilDef[2][COL_FIL] =
 // ver diff rating  objects obstacles  fluids bumps  jumps loops pipes  banked frenzy  sum longn

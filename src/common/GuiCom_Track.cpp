@@ -151,9 +151,9 @@ void CGuiCom::AddTrkL(std::string name, int user,
 		txt->setFontName("font.small");
 		
 		// setOrigPos(img, "GameWnd");  //?
-		if (pSet->tracks_view == TV_GalleryList)
+		/*if (pSet->tracks_view == TV_GalleryList)
 			yTrk += sm + yt;
-		else
+		else*/
 		{	xTrk += sm;
 			if (xTrk > 800)
 			{	xTrk = 0;
@@ -245,8 +245,8 @@ void CGuiCom::GuiInitTrack()
 	auto* cmb = cmbTrkView;
 	cmb->removeAllItems();
 	cmb->addItem(TR("#{ViewList}"));  cmb->addItem(TR("#{ViewListUser}"));
-	cmb->addItem(TR("#{ViewListDetail}"));
-	cmb->addItem(TR("#{ViewGallery}"));  cmb->addItem(TR("#{ViewGalleryBig}"));
+	cmb->addItem(TR("#{ViewListDetail}"));  // cmb->addItem(TR("#{ViewGalleryList}"));
+	cmb->addItem(TR("#{ViewGallery}"));
 	cmb->setIndexSelected(pSet->tracks_view);
 
 	imgTrkIco1 = fImg("TrkView2icons1");

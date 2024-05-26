@@ -5,7 +5,7 @@ enum EShadowType
 {	Sh_None=0, Sh_Depth, Sh_Soft  };
 
 enum ETracksView
-{	TV_List=0, TV_ListUser, TV_ListWide, TV_GalleryList, TV_GalleryBig, TV_ALL  };
+{	TV_List=0, TV_ListUser, TV_ListWide, /*TV_GalleryList,*/ TV_GalleryBig, TV_ALL  };
 
 const static int
 	COL_VIS = 21, COL_FIL = 16;
@@ -112,15 +112,14 @@ public:
 
 	//  📰🔻 Tracks list  ----
 	//  view, sort column, filter on
-	const static int TrkViews = 3;  // list, not all ETracksView
 	int tracks_view =0, tracks_sort =2;
 	bool tracks_sortup =1, tracks_filter =0;
 
 
-	bool col_vis[TrkViews][COL_VIS];  // visible columns for track views
+	bool col_vis[TV_ALL][COL_VIS];  // visible columns for track views
 	int  col_fil[2][COL_FIL];  // filtering range for columns 0min-1max
 
-	const static bool colVisDef[TrkViews][COL_VIS];  // view columns
+	const static bool colVisDef[TV_ALL][COL_VIS];  // view columns
 	const static char colFilDef[2][COL_FIL];  // min,max
 	
 

@@ -344,7 +344,7 @@ void CGuiCom::updTrkListDim()
 	int c, sum, cnt, sw, xt, yt;
 
 	int v = pSet->tracks_view;
-	bool gal = v >= TV_GalleryList;
+	bool gal = v >= TV_GalleryBig; // >= TV_GalleryList;
 	if (!gal)
 	{
 		sum = 0;  cnt = trkList->getColumnCount();
@@ -376,15 +376,20 @@ void CGuiCom::updTrkListDim()
 #endif
 		trkList->setVisible(!gal);
 	
-	//  gallery ::
+	//  🏞️ tracks gallery ::
+	//-------------------------------
 	scvTracks->setVisible(gal);
 	if (gal)
 	{
 		int xt = 0.017*wi.width, yt = 0.062*wi.height;
 		float wg = v == TV_GalleryBig ? 0.62 : 0.18;
 		scvTracks->setCoord(xt, yt, wg*wi.width, 0.73*wi.height);
-		// scvTracks->setCanvasSize(1600, 9400);
+
+		// scvTracks->setCanvasSize(1200, yy*2 + 100);  // todo: gallery list..
+		// if (bGI)  // resize
+			// doSizeGUI(scvTracks->getEnumerator());
 	}
+
 
 	//  🚗 car list
 	//-------------------------------

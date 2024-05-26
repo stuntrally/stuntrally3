@@ -173,8 +173,8 @@
 	<Tag name="ViewList">List</Tag>
 	<Tag name="ViewListUser">List user</Tag>
 	<Tag name="ViewListDetail">List wide</Tag>
-	<Tag name="ViewGallery">Gallery list</Tag>
-	<Tag name="ViewGalleryBig">Gallery big</Tag>
+	<Tag name="ViewGalleryList">Gallery list</Tag>
+	<Tag name="ViewGallery">Gallery</Tag>
 
 
 	<!--  MAIN  Track stats  -->

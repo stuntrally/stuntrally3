@@ -11,7 +11,6 @@ This section lists changes not yet released, but committed to repositories stunt
   - New tab on Setup - Paints - Adjust - **Under glow** for color H,S,V
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
   - 3D win cups shown on game end
-  - WIP Fields, areas: teleporters, force fields, speed up, lift, anti-gravity, damping  
 - Gui
   - Tracks view new modes: gallery and gallery list
 - Editor
@@ -20,6 +19,7 @@ This section lists changes not yet released, but committed to repositories stunt
     - change type (for look, at end of presets.xml)
     - change group (for more sets on 1 track)
   - WIP Edit mode for Fields, key H  
+    - areas: teleporters, force fields, speed up, lift, anti-gravity, damping  
   - Road: wall type, for decoration walls, rectangular
     - pipe parameter changes it from wide at 0, to square at 0.5 to tall at 1.0
 
