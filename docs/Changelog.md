@@ -10,6 +10,7 @@ This section lists changes not yet released, but committed to repositories stunt
     - vehicle: brakes, boost, reverse, under glow and collection gems
   - New tab on Setup - Paints - Adjust - **Under glow** for color H,S,V
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
+  - 3D win cups shown on game end
   - WIP Fields, areas: teleporters, force fields, speed up, lift, anti-gravity, damping  
 - Gui
   - Tracks view new modes: gallery and gallery list

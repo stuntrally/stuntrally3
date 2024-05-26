@@ -22,7 +22,7 @@ using namespace std;
 ///  🆕 create HUD Arrow
 ///---------------------------------------------------------------------------------------------------------------
 void CHud::Hud3d::Create(SceneManager* mgr, SETTINGS* pSet, int plr,
-	bool scale1, Ogre::String mesh, Ogre::String mtr)
+	float scale, Ogre::String mesh, Ogre::String mtr)
 {
 	if (it)  return;
 	if (!node)
@@ -44,10 +44,10 @@ void CHud::Hud3d::Create(SceneManager* mgr, SETTINGS* pSet, int plr,
 	nodeRot = node->createChildSceneNode();
 	nodeRot->attachObject(it);
 	nodeRot->setScale(
-		scale1 ? Vector3::UNIT_SCALE :  // cup
+		scale > 0.f ? Vector3::UNIT_SCALE :  // cup
 		pSet->size_arrow/2.f * Vector3(0.5,1.f,2.f));  // arrows
 	it->setVisibilityFlags(RV_Hud3D[player]);
-	nodeRot->setVisible(scale1 ? 0 : pSet->check_arrow);  // cups hidden
+	nodeRot->setVisible(scale > 0.f ? 0 : pSet->check_arrow);  // cups hidden
 }
 
 //  💥 destroy
@@ -185,6 +185,13 @@ void CHud::Hud3d::UpdateCup(CarModel* carM, float time)
 
 void CHud::Hud3d::ShowCup()
 {
+	if (!nodeRot)  return;
 	dist = 10.f;
 	nodeRot->setVisible(1);
+}
+
+void CHud::Hud3d::Hide()
+{
+	if (!nodeRot)  return;
+	nodeRot->setVisible(0);
 }

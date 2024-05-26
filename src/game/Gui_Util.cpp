@@ -4,6 +4,7 @@
 #include "BaseApp.h"
 #include "CGame.h"
 #include "CGui.h"
+#include "CHud.h"
 #include "CData.h"
 #include "TracksXml.h"
 #include "GuiCom.h"
@@ -92,7 +93,11 @@ void CGui::toggleGui(bool toggle)
 	bool v = pSet->champ_info && gui && (mnu == MN1_Games || mnu == MN1_Setup);
 	app->mWndGameInfo->setVisible(v);
 	updGameInfo();
+	
 	CarListUpd();  // filter, back
+	
+	for (int i=0; i < 3; ++i)
+		hud->cup[i].Hide();
 
 
 	//  hide fullscr prv

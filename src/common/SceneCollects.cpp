@@ -8,6 +8,7 @@
 #include "CGui.h"
 #ifndef SR_EDITOR
 	#include "game.h"
+	#include "CHud.h"
 #endif
 #include "SceneXml.h"
 #include "CScene.h"
@@ -294,6 +295,8 @@ void App::UpdCollects()
 
 				LogO("]* Collect prize won: "+toStr(prize));
 				iCollectedPrize = prize;
+				if (prize >= 0)
+					hud->cup[prize].ShowCup();
 			}
 		}else
 			LogO("|! collect not found in progress, wont save! "+col.name);

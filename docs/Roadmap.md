@@ -8,11 +8,10 @@ Marked: `crucial`, **Next or Big**, _Important_.
 ### SR 3.2
 
 Add gems to tracks  
-gui collect details  
 more collect types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
 
-3d cups, win particles, new best time hud show  
+hud new best time show, win particles-  
 ed Fields: accel par, dir, teleport end  
 
 **fix** multiplayer  

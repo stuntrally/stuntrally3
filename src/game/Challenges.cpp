@@ -216,7 +216,9 @@ void CGui::btnChallStageStart(WP)
 		if (iChSnd < 0)
 			pGame->snd_fail->start();
 		else
-			pGame->snd_win[iChSnd]->start();
+		{	pGame->snd_win[iChSnd]->start();
+			hud->cup[iChSnd].ShowCup();
+		}
 		return;
 	}
 

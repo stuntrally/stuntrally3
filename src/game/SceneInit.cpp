@@ -569,12 +569,9 @@ void App::LoadScene()  // 3
 		}
 	
 	//  win cups
-	hud->cup[0].Create(mSceneMgr, pSet, 0, 1, "cup_bronze.mesh", "");
-	hud->cup[1].Create(mSceneMgr, pSet, 0, 1, "cup_silver.mesh", "");
-	hud->cup[2].Create(mSceneMgr, pSet, 0, 1, "cup_gold.mesh", "");
-	// hud->cup[0].ShowCup();
-	// hud->cup[1].ShowCup();
-	// hud->cup[2].ShowCup();  // win show..
+	hud->cup[0].Create(mSceneMgr, pSet, 0, 0.9f, "cup_bronze.mesh", "");
+	hud->cup[1].Create(mSceneMgr, pSet, 0, 1.0f, "cup_silver.mesh", "");
+	hud->cup[2].Create(mSceneMgr, pSet, 0, 1.0f, "cup_gold.mesh", "");
 }
 
 

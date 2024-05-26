@@ -133,13 +133,13 @@ public:
 		Ogre::Vector3 posTo;  // dir to collect
 
 		void Create(Ogre::SceneManager* mgr, SETTINGS* pSet, int plr,
-			bool scale1 =0, Ogre::String mesh="", Ogre::String mtr="");
+			float scale = 0.f, Ogre::String mesh="", Ogre::String mtr="");
 		void Destroy(Ogre::SceneManager* mgr);
 
 		void UpdateChk(SplineRoad* road, CarModel* carM, const Ogre::Vector3& pos);
 		void Update(CarModel* carM, float time);
 		void UpdateCol(CarModel* carM, float sc);
-		void UpdateCup(CarModel* carM, float time), ShowCup();
+		void UpdateCup(CarModel* carM, float time), ShowCup(), Hide();
 	}
 	arrChk[MAX_Players], arrCol[MAX_Players][MAX_ArrCol],
 	cup[3];
