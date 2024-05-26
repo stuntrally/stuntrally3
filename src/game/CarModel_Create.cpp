@@ -202,9 +202,9 @@ void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourVal
 	l->setDiffuseColour(  c * bright * contrast );
 	l->setSpecularColour( c * bright * contrast );
 
-	CarLight li;
-	li.power = !front ? (sphere ? 1.f : 4.f) :  //par@
-		/*under ||*/ sphere ? 3.f : 12.f / numLights; //par  front bright
+	CarLight li;  // par bright 💡
+	li.power = !front ? (sphere ? 1.f : 3.f) :  // back
+		/*under ||*/ sphere ? 2.f : 10.f / numLights; // front
 	li.power *= Math::PI * power;
 	l->setPowerScale( li.power * pSet->car_light_bright);
 
@@ -220,8 +220,8 @@ void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourVal
 		dir.normalise();
 		l->setDirection(dir);
 		// float deg = front ? 40.f : !brake ? 140.f : 70.f;  // par cfg..
-		float deg = front ? 40.f : !brake ? 170.f : 120.f;  // wide-
-		l->setSpotlightRange(Degree(0), Degree(deg), 1.0f );  //par 5 30
+		float deg = front ? 40.f : !brake ? 170.f : 120.f;  // par 5 30  wide-
+		l->setSpotlightRange(Degree(0), Degree(deg), 1.0f );
 	}
 	if (/*sphere ||*/ front /*|| under*/)
 		l->setAttenuationBasedOnRadius( 30.0f, 0.01f );
