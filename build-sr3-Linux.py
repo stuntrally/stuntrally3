@@ -3,7 +3,7 @@
 #
 #  INFO:
 #  This script should get and build Stunt Rally 3 and its dependencies.
-#  On Linux. In Release mode. Tested on Debian 12 and Kubuntu 20.04.
+#  On Linux. Tested on Debian 12 and Kubuntu 20.04.
 #
 #  It will clone repos: ogre-next-deps, ogre-next, mygui-next, stuntrally3 and tracks3.
 #  Note that this needs about 6.5 GB free space.
@@ -12,12 +12,27 @@
 #  If it fails, next run will check and continue after done steps.
 #  To force repeating a step, delete a build dir, or .git, etc. Details below.
 
-#  user params  ----------
-#  Could be changed by user
-ogreBranch = 'v3-0'
-myguiBranch = 'ogre3'
 
 #-------------------------
+#  User params:
+#  These could be changed by user.
+#-------------------------
+Config = 'Release'  # choose one
+#Config = 'Debug'
+
+ogreBranch = 'v3-0'
+myguiBranch = 'ogre3'
+srBranch = 'main'
+tracksBranch = 'main'
+cloneTracks = True  # choose one
+#cloneTracks = False
+
+#  use https  or git (if you have a fork)
+gitSR = 'https://github.com/stuntrally/'  # choose one
+#gitSR = 'git@github.com:stuntrally/'
+#-------------------------
+
+
 import os
 import sys
 
@@ -25,15 +40,17 @@ import sys
 #  Shouldn't be changed
 git = '.git'
 build = 'build'
+
 Ogre = 'Ogre'
 ogre_next_deps = 'ogre-next-deps'
 ogre_next = 'ogre-next'
 Dependencies = 'Dependencies'
-Release = 'Release'
 mygui_next = 'mygui-next'
+
 sr3 = 'sr3'
 data = 'data'
 tracks = 'tracks'
+
 bin = 'bin'
 binSRed = 'sr-editor3'
 binSR = 'stuntrally3'
@@ -74,11 +91,19 @@ if not os.path.exists(git):
 
 if not os.path.exists(build):
 	os.mkdir(build)
-	os.chdir(build)
-	print('===--- Step 2b:  building ' + ogre_next_deps)
-	os.system('cmake  -G Ninja ..')
-	os.system('ninja')
-	#os.system('ninja install')  # ?-
+os.chdir(build)
+
+if not os.path.exists(Config):
+	os.mkdir(Config)
+os.chdir(Config)
+
+print('===--- Step 2b:  building ' + ogre_next_deps)
+ret = os.system('cmake -D CMAKE_BUILD_TYPE="'+Config+'"  -G Ninja ../..')
+if ret != 0:
+	exit(ret)
+
+os.system('ninja')
+#os.system('ninja install')  # ?-
 
 
 #  3  ogre-next  --------------------------------------------------
@@ -104,26 +129,27 @@ if not os.path.exists(Dependencies):
 
 if not os.path.exists(build):
 	os.mkdir(build)
-	
 os.chdir(build)
-if not os.path.exists(Release):
-	os.mkdir(Release)
-	os.chdir(Release)
-	print('===--- Step 3c:  build: ' + ogre_next + ' - ' + Release)
 
-	ret = os.system('cmake -D OGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS=1 '+
-					'-D OGRE_CONFIG_THREAD_PROVIDER=0 -D OGRE_CONFIG_THREADS=0 '+
-					#'-D OGRE_BUILD_COMPONENT_SCENE_FORMAT=1 '+
-					#'-D OGRE_BUILD_SAMPLES2=1 -D OGRE_BUILD_TESTS=1 '+
-					'-D OGRE_BUILD_SAMPLES2=1 -D OGRE_BUILD_TESTS=0 '+
-					'-D CMAKE_BUILD_TYPE="Release"  -G Ninja ../..')
-	if ret != 0:
-		exit(ret)
-	#print('cmake return: '+str(ret))
+if not os.path.exists(Config):
+	os.mkdir(Config)
+os.chdir(Config)
 
-	ret = os.system('ninja')
-	if ret != 0:
-		exit(ret)
+print('===--- Step 3c:  build: ' + ogre_next + ' - ' + Config)
+
+ret = os.system('cmake -D OGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS=1 '+
+				'-D OGRE_CONFIG_THREAD_PROVIDER=0 -D OGRE_CONFIG_THREADS=0 '+
+				#'-D OGRE_BUILD_COMPONENT_SCENE_FORMAT=1 '+
+				#'-D OGRE_BUILD_SAMPLES2=1 -D OGRE_BUILD_TESTS=1 '+
+				'-D OGRE_BUILD_SAMPLES2=1 -D OGRE_BUILD_TESTS=0 '+
+				'-D CMAKE_BUILD_TYPE="'+Config+'"  -G Ninja ../..')
+if ret != 0:
+	exit(ret)
+#print('cmake return: '+str(ret))
+
+ret = os.system('ninja')
+if ret != 0:
+	exit(ret)
 
 
 #  4  mygui-next  --------------------------------------------------
@@ -143,20 +169,21 @@ if not os.path.exists(git):
 
 if not os.path.exists(build):
 	os.mkdir(build)
-	
 os.chdir(build)
-if not os.path.exists(Release):
-	os.mkdir(Release)
-	os.chdir(Release)
-	print('===--- Step 4b:  build: ' + mygui_next + ' - ' + Release)
 
-	ret = os.system('cmake -D CMAKE_BUILD_TYPE="Release"  -G Ninja ../..')
-	if ret != 0:
-		exit(ret)
+if not os.path.exists(Config):
+	os.mkdir(Config)
+os.chdir(Config)
 
-	ret = os.system('ninja')
-	if ret != 0:
-		exit(ret)
+print('===--- Step 4b:  build: ' + mygui_next + ' - ' + Config)
+
+ret = os.system('cmake -D CMAKE_BUILD_TYPE="'+Config+'"  -G Ninja ../..')
+if ret != 0:
+	exit(ret)
+
+ret = os.system('ninja')
+if ret != 0:
+	exit(ret)
 
 
 #  5  SR3  --------------------------------------------------
@@ -170,15 +197,15 @@ os.chdir(sr3)
 
 if not os.path.exists(git):
 	print('===--- Step 5a:  git clone: ' + sr3)
-	ret = os.system('git clone --depth="1" https://github.com/stuntrally/stuntrally3.git .')
+	ret = os.system('git clone --depth="1" --single-branch --branch '+srBranch+' '+gitSR+'stuntrally3.git .')
 	if ret != 0:
 		exit(ret)
 
 os.chdir(data)
 
-if not os.path.exists(tracks):
+if cloneTracks and not os.path.exists(tracks):
 	print('===--- Step 5b:  git clone: ' + sr3 + ' ' + tracks)
-	ret = os.system('git clone --depth="1" https://github.com/stuntrally/tracks3.git '+tracks)
+	ret = os.system('git clone --depth="1" --single-branch --branch '+tracksBranch+' '+gitSR+'tracks3.git '+tracks)
 	if ret != 0:
 		exit(ret)
 
@@ -204,27 +231,28 @@ if os.path.exists('CMakeLists-Debian.txt'):
 
 if not os.path.exists(build):
 	os.mkdir(build)
-	
 os.chdir(build)
-if not os.path.exists(Release):
-	os.mkdir(Release)
-	os.chdir(Release)
-	print('===--- Step 6b:  build: ' + sr3 + ' - ' + Release)
 
-	ret = os.system('cmake -D CMAKE_BUILD_TYPE="Release"  -G Ninja ../..')
-	if ret != 0:
-		exit(ret)
+if not os.path.exists(Config):
+	os.mkdir(Config)
+os.chdir(Config)
 
-	ret = os.system('ninja')
-	if ret != 0:
-		exit(ret)
+print('===--- Step 6b:  build: ' + sr3 + ' - ' + Config)
+
+ret = os.system('cmake -D CMAKE_BUILD_TYPE="'+Config+'"  -G Ninja ../..')
+if ret != 0:
+	exit(ret)
+
+ret = os.system('ninja')
+if ret != 0:
+	exit(ret)
 
 
 #  7  SR3  test builds  --------------------------------------------------
 print('===--- Step 7:  test builds: ' + sr3)
 
 os.chdir(root)
-path_bin = os.path.join(sr3, bin, Release)
+path_bin = os.path.join(sr3, bin, Config)
 pathSRed = os.path.join(path_bin, binSRed)
 pathSR   = os.path.join(path_bin, binSR)
 
