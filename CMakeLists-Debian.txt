@@ -30,7 +30,7 @@ set(CMAKE_CONFIGURATION_TYPES "Debug" "Release" CACHE STRING "Configuration type
 
 if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.22")
     cmake_policy(SET CMP0127 OLD)
-endif()
+endif ()
 
 include(CMakeDependentOption)
 include(Macros)
@@ -54,12 +54,12 @@ if (WIN32 OR APPLE)
     set(EDITOR_EXE SR-Editor3)
     set(SERVER_EXE SR-GameServer)
     set(TRANSL_EXE SR-Translator)
-else()
+else ()
     set(GAME_EXE stuntrally3)
     set(EDITOR_EXE sr-editor3)
     set(SERVER_EXE sr-gameserver)
     set(TRANSL_EXE sr-translator)
-endif()
+endif ()
 
 set(_PREFIX "SR_")
 
@@ -90,24 +90,27 @@ endif (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
 set( EXECUTABLE_OUTPUT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}" )
 
 #  Set CXX compile flags
-if( MSVC )
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
-else()
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Wno-comment -Wno-dangling-else -Wno-deprecated-declarations -Wno-parentheses")
+set(CMAKE_CXX_STANDARD 17)
+#if( MSVC )
+#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+#else()
+#  off warnings
+if( NOT MSVC )
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-comment -Wno-dangling-else -Wno-deprecated-declarations -Wno-parentheses")
 endif()
 
 if (CMAKE_COMPILER_IS_GNUCXX)
     message(STATUS "GCC detected, adding compile flags")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
-endif()
+endif ()
 
-if( MSVC )
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
-	if( NOT PLATFORM_X64 )
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /arch:SSE2")
-	endif()
-	add_definitions( -DUNICODE -D_UNICODE )
-endif()
+if (MSVC)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
+    if( NOT PLATFORM_X64 )
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /arch:SSE2")
+    endif()
+    add_definitions( -DUNICODE -D_UNICODE )
+endif ()
 
 
 #  deps  ----
@@ -130,9 +133,9 @@ set( OGRE_NEXT_DIR ${DIR_ONE_ABOVE}/Ogre/ogre-next )
 set( OGRE_SOURCE ${OGRE_NEXT_DIR}/ )
 
 if ( CMAKE_BUILD_TYPE STREQUAL "Debug" )
-	set( OGRE_BINARIES ${OGRE_NEXT_DIR}/build/Debug )
+    set( OGRE_BINARIES ${OGRE_NEXT_DIR}/build/Debug )
 else()
-	set( OGRE_BINARIES ${OGRE_NEXT_DIR}/build/Release )
+    set( OGRE_BINARIES ${OGRE_NEXT_DIR}/build/Release )
 endif()
 
 include( CMake/Dependencies/OGRE.cmake )
@@ -153,45 +156,46 @@ include_directories( ${DIR_ONE_ABOVE}/mygui-next/Platforms/Ogre2/Ogre2Platform/i
 
 
 macro( add_recursive dir retVal )
-	file( GLOB GLOB_RESULT ${dir}/*.h ${dir}/*.cpp ${dir}/*.c )
-	list( APPEND ${retVal} ${GLOB_RESULT})
+    file( GLOB GLOB_RESULT ${dir}/*.h ${dir}/*.cpp ${dir}/*.c )
+    list( APPEND ${retVal} ${GLOB_RESULT})
 endmacro()
 
 message( STATUS "---------- SR sources" )
 
 #  Compiler  ----
 set( COMMON_SRC_DIRS
-	#  not really sources
-	data/gui
-	data/materials
-	data/particles
+    #  not really sources
+    data/gui
+    data/materials
+    data/particles
 
-	#  libs
-	./src/btOgre2
-	
-	#  sources
-	./src/common
-	./src/common/data
-	./src/common/MessageBox
-	./src/road
-	./src/OgreCommon
-	./src/OgreCommon/System
-	./src/OgreCommon/System/Android
-	./src/OgreCommon/System/Desktop
-	./src/OgreCommon/Threading
-	./src/OgreCommon/Utils
-	./src/Terra
-	./src/Terra/Hlms
-	./src/Terra/Hlms/PbsListener
-	#  both game and ed  meh-
-	#./src/vdriftCommon
-	./src/sound
-	./src/vdrift
+    #  libs
+    ./src/btOgre2
+    
+    #  sources
+    ./src/common
+    ./src/common/data
+    ./src/common/MessageBox
+    ./src/road
+    ./src/OgreCommon
+    ./src/OgreCommon/System
+    ./src/OgreCommon/System/Android
+    ./src/OgreCommon/System/Desktop
+    ./src/OgreCommon/Threading
+    ./src/OgreCommon/Utils
+    ./src/Terra
+    ./src/Terra/Hlms
+    ./src/Terra/Hlms/PbsListener
+    #  both game and ed  meh-
+    #./src/vdriftCommon
+    ./src/sound
+    ./src/vdrift
 )
 
 #  game
 set( GAME_SRC_DIRS ${COMMON_SRC_DIRS} )
 list( APPEND GAME_SRC_DIRS ./src/game )
+list( APPEND GAME_SRC_DIRS ./src/game/data )
 #list( APPEND GAME_SRC_DIRS ./src/sound )
 #list( APPEND GAME_SRC_DIRS ./src/vdrift )
 list( APPEND GAME_SRC_DIRS ./src/oics )  # libs
@@ -205,10 +209,10 @@ list( APPEND EDITOR_SRC_DIRS ./src/editor )
 
 #  exe list  game and editor
 if (BUILD_GAME)
-	list( APPEND EXE_LIST ${GAME_EXE} )
+    list( APPEND EXE_LIST ${GAME_EXE} )
 endif()
 if (BUILD_EDITOR)
-	list( APPEND EXE_LIST ${EDITOR_EXE} )
+    list( APPEND EXE_LIST ${EDITOR_EXE} )
 endif()
 
 
@@ -237,135 +241,135 @@ message( STATUS "--- Bullet: " ${BULLET_FOUND} )
 ##------------------------------------------------------------------------------------------------------
 foreach( EXE ${EXE_LIST} )
 
-	message( STATUS "Configuring: " ${EXE} )
+    message( STATUS "Configuring: " ${EXE} )
 
-	#  sources  ----
-	set( EXE_SOURCES "")
+    #  sources  ----
+    set( EXE_SOURCES "")
 
-	if ( ${EXE} STREQUAL ${EDITOR_EXE} )  # ed
-		set( SRC_DIRS ${EDITOR_SRC_DIRS} )
-	else()
-		set( SRC_DIRS ${GAME_SRC_DIRS} )
-	endif()
+    if ( ${EXE} STREQUAL ${EDITOR_EXE} )  # ed
+        set( SRC_DIRS ${EDITOR_SRC_DIRS} )
+    else ()
+        set( SRC_DIRS ${GAME_SRC_DIRS} )
+    endif ()
 
-	foreach( subdir ${SRC_DIRS} )
-		#message( STATUS ${subdir} )
-		add_recursive( ${subdir} EXE_SOURCES )
-	endforeach()
+    foreach( subdir ${SRC_DIRS} )
+        #message( STATUS ${subdir} )
+        add_recursive( ${subdir} EXE_SOURCES )
+    endforeach ()
 
-	#  exe  ----
-	add_executable( ${EXE} WIN32 ${EXE_SOURCES} )
-
-
-	#  add includes  ----
-	foreach( subdir ${SRC_DIRS} )
-		#message( STATUS ${subdir} )
-		target_include_directories( ${EXE} PRIVATE ${subdir} )
-	endforeach()
-
-	target_include_directories( ${EXE} PRIVATE ${BULLET_INCLUDE_DIRS} )
-
-	#  fix 5  ENet  since conan fails
-	# find_package( ENet REQUIRED )  # inside Dep..cmake
-	if ( ${EXE} STREQUAL ${GAME_EXE} )  # game, once
-		target_include_directories( ${EXE} PRIVATE ${ENet_INCLUDE_DIRS} )
-		target_include_directories( ${EXE} PRIVATE ${Boost_INCLUDE_DIRS} )
-	endif()
+    #  exe  ----
+    add_executable( ${EXE} WIN32 ${EXE_SOURCES} )
 
 
-	#  pch.h
-	if ( ${EXE} STREQUAL ${EDITOR_EXE} )  # ed
-	    set_target_properties( ${EXE} PROPERTIES COMPILE_FLAGS "-DSR_EDITOR" )
-		target_precompile_headers( ${EXE} PRIVATE src/editor/pch.h )
-	else()
-		target_precompile_headers( ${EXE} PRIVATE src/game/pch.h )
-	endif()
+    #  add includes  ----
+    foreach( subdir ${SRC_DIRS} )
+    #message( STATUS ${subdir} )
+    target_include_directories( ${EXE} PRIVATE ${subdir} )
+    endforeach ()
 
-	#  c++
-	target_compile_options(  ${EXE} PRIVATE -Wswitch )
-	target_compile_features( ${EXE} PRIVATE cxx_std_17 )
+    target_include_directories( ${EXE} PRIVATE ${BULLET_INCLUDE_DIRS} )
 
-
-	#  add linker  ----
-	#  threads
-	target_link_libraries( ${EXE} ${CMAKE_THREAD_LIBS_INIT} )
+    #  fix 5  ENet  since conan fails
+    # find_package( ENet REQUIRED )  # inside Dep..cmake
+    if ( ${EXE} STREQUAL ${GAME_EXE} )  # game, once
+        target_include_directories( ${EXE} PRIVATE ${ENet_INCLUDE_DIRS} )
+        target_include_directories( ${EXE} PRIVATE ${Boost_INCLUDE_DIRS} )
+    endif ()
 
 
-	#  OpenAL
-	target_link_libraries( ${EXE} "${OPENAL_LIBRARY}" )
+    #  pch.h
+    if ( ${EXE} STREQUAL ${EDITOR_EXE} )  # ed
+        set_target_properties( ${EXE} PROPERTIES COMPILE_FLAGS "-DSR_EDITOR" )
+        target_precompile_headers( ${EXE} PRIVATE src/editor/pch.h )
+    else ()
+        target_precompile_headers( ${EXE} PRIVATE src/game/pch.h )
+    endif ()
 
-	#  bullet
-	target_link_libraries( ${EXE} ${BULLET_LIBRARIES} -lBulletWorldImporter )
-
-
-	#  Ogre  ----
-	target_link_libraries( ${EXE} ${OGRE_LIBRARIES} )
-
-	#  SDL
-	target_link_libraries( ${EXE} "-lSDL2" )
-
-
-	#  MyGui  ----   # todo: windows ..
-	if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-    	set(SUFFIX_D "_d")
-	else()
-		set(SUFFIX_D "")
-	endif()
-
-	target_link_libraries( ${EXE} ${DIR_ONE_ABOVE}/mygui-next/build/${CMAKE_BUILD_TYPE}/lib/libMyGUI.Ogre2Platform${SUFFIX_D}.a )
-
-	if ( ${EXE} STREQUAL ${GAME_EXE} )  # game, once
-		add_library( libMyGUIEngine SHARED IMPORTED )
-	endif()
-	set_target_properties( libMyGUIEngine PROPERTIES IMPORTED_LOCATION ${DIR_ONE_ABOVE}/mygui-next/build/${CMAKE_BUILD_TYPE}/lib/libMyGUIEngine${SUFFIX_D}.so )
-	target_link_libraries( ${EXE} libMyGUIEngine )
+    #  c++
+    target_compile_options(  ${EXE} PRIVATE -Wswitch )
+    #target_compile_features( ${EXE} PRIVATE cxx_std_17 )
 
 
-	#  ENet, boost  for networking  ----
-	if ( ${EXE} STREQUAL ${GAME_EXE} )  # game, once
-		target_link_libraries( ${EXE} ${Boost_LIBRARIES} )
-		target_link_libraries( ${EXE} ${ENet_LIBRARIES} )
-	endif()
+    #  add linker  ----
+    #  threads
+    target_link_libraries( ${EXE} ${CMAKE_THREAD_LIBS_INIT} )
 
-	#  rest
-	#message( STATUS "Libs  " ${EXE} "  " ${LIBS} )
-	target_link_libraries( ${EXE} ${LIBS} )
 
-endforeach()
+    #  OpenAL
+    target_link_libraries( ${EXE} "${OPENAL_LIBRARY}" )
+
+    #  bullet
+    target_link_libraries( ${EXE} ${BULLET_LIBRARIES} -lBulletWorldImporter )
+
+
+    #  Ogre  ----
+    target_link_libraries( ${EXE} ${OGRE_LIBRARIES} )
+
+    #  SDL
+    target_link_libraries( ${EXE} "-lSDL2" )
+
+
+    #  MyGui  ----   # todo: windows ..
+    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+        set(SUFFIX_D "_d")
+    else ()
+        set(SUFFIX_D "")
+    endif ()
+
+    target_link_libraries( ${EXE} ${DIR_ONE_ABOVE}/mygui-next/build/${CMAKE_BUILD_TYPE}/lib/libMyGUI.Ogre2Platform${SUFFIX_D}.a )
+
+    if ( ${EXE} STREQUAL ${GAME_EXE} )  # game, once
+    add_library( libMyGUIEngine SHARED IMPORTED )
+    endif()
+    set_target_properties( libMyGUIEngine PROPERTIES IMPORTED_LOCATION ${DIR_ONE_ABOVE}/mygui-next/build/${CMAKE_BUILD_TYPE}/lib/libMyGUIEngine${SUFFIX_D}.so )
+    target_link_libraries( ${EXE} libMyGUIEngine )
+
+
+    #  ENet, boost  for networking  ----
+    if ( ${EXE} STREQUAL ${GAME_EXE} )  # game, once
+    target_link_libraries( ${EXE} ${Boost_LIBRARIES} )
+    target_link_libraries( ${EXE} ${ENet_LIBRARIES} )
+    endif()
+
+    #  rest
+    #message( STATUS "Libs  " ${EXE} "  " ${LIBS} )
+    target_link_libraries( ${EXE} ${LIBS} )
+
+endforeach ()
 
 
 ##  Translations tool
 ##------------------------------------------------------------------------------------------------------
 if (BUILD_TRANSL_TOOL)
-	message( STATUS "Configuring: " ${TRANSL_EXE} )
+    message( STATUS "Configuring: " ${TRANSL_EXE} )
 
-	add_executable( ${TRANSL_EXE} WIN32 ./src/transl/main.cpp )
-	target_include_directories( ${TRANSL_EXE} PRIVATE ./src/transl )
+    add_executable( ${TRANSL_EXE} WIN32 ./src/transl/main.cpp )
+    target_include_directories( ${TRANSL_EXE} PRIVATE ./src/transl )
 
-	target_precompile_headers( ${TRANSL_EXE} PRIVATE src/transl/pch.h )
-	#  c++
-	target_compile_options(  ${TRANSL_EXE} PRIVATE -Wswitch )
-	target_compile_features( ${TRANSL_EXE} PRIVATE cxx_std_17 )
+    target_precompile_headers( ${TRANSL_EXE} PRIVATE src/transl/pch.h )
+    #  c++
+    target_compile_options(  ${TRANSL_EXE} PRIVATE -Wswitch )
+    #target_compile_features( ${TRANSL_EXE} PRIVATE cxx_std_17 )
 
-	set_target_properties( ${TRANSL_EXE} PROPERTIES LINKER_LANGUAGE CXX )
-endif()
+    set_target_properties( ${TRANSL_EXE} PROPERTIES LINKER_LANGUAGE CXX )
+endif ()
 
 
 ##  Game server app
 ##------------------------------------------------------------------------------------------------------
 if (BUILD_GAME_SERVER)
-	message( STATUS "Configuring: " ${SERVER_EXE} )
+    message( STATUS "Configuring: " ${SERVER_EXE} )
 
-	add_executable( ${SERVER_EXE} WIN32 ./src/network/game-server/main.cpp )
-	target_include_directories( ${SERVER_EXE} PRIVATE ./src/network )
-	target_include_directories( ${SERVER_EXE} PRIVATE ./src/vdrift )
-	#  c++
-	target_compile_options(  ${SERVER_EXE} PRIVATE -Wswitch )
-	target_compile_features( ${SERVER_EXE} PRIVATE cxx_std_17 )
-	set_target_properties( ${SERVER_EXE} PROPERTIES LINKER_LANGUAGE CXX )
+    add_executable( ${SERVER_EXE} WIN32 ./src/network/game-server/main.cpp )
+    target_include_directories( ${SERVER_EXE} PRIVATE ./src/network )
+    target_include_directories( ${SERVER_EXE} PRIVATE ./src/vdrift )
+    #  c++
+    target_compile_options(  ${SERVER_EXE} PRIVATE -Wswitch )
+    #target_compile_features( ${SERVER_EXE} PRIVATE cxx_std_17 )
+    set_target_properties( ${SERVER_EXE} PROPERTIES LINKER_LANGUAGE CXX )
 
-	target_link_libraries( ${SERVER_EXE} ${Boost_LIBRARIES} )
-	target_link_libraries( ${SERVER_EXE} ${ENet_LIBRARIES} )
-endif()
+    target_link_libraries( ${SERVER_EXE} ${Boost_LIBRARIES} )
+    target_link_libraries( ${SERVER_EXE} ${ENet_LIBRARIES} )
+endif ()
 
 message( STATUS "---------- SR end" )
