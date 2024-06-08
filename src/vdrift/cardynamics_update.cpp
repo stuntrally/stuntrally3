@@ -78,6 +78,9 @@ void CARDYNAMICS::UpdateFields()
 		{	btVector3 v = chassis->getLinearVelocity();
 			chassis->applyCentralForce(v * -800);
 		}	break;
+		
+		case TF_All:
+			break;
 	}
 	inFields.clear();
 }
