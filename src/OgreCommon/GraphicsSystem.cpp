@@ -183,13 +183,16 @@ void GraphicsSystem::initialize( const String &windowTitle )
 #else
 		"";
 #endif
+#ifndef SR_EDITOR
+	int plr = pApp->pSet->net_local_plr;
+#endif
 
 	const AbiCookie abiCookie = generateAbiCookie();
 	mRoot = OGRE_NEW Root( &abiCookie, pluginsPath, cfgPath,
 	#ifdef SR_EDITOR
 		mLogCfgFolder + "Ogre_ed.log",
 	#else
-		mLogCfgFolder + "Ogre.log",
+		mLogCfgFolder + "Ogre"+(plr > 0 ? toStr(plr) : "")+".log",
 	#endif
 		windowTitle );
 

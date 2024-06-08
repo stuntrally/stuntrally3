@@ -2,6 +2,7 @@
 #include "Gui_Def.h"
 #include "paths.h"
 #include "settings.h"
+#include "MainEntryPoints.h"
 
 #include <MyGUI_Gui.h>
 #include <MyGUI_Ogre2Platform.h>
@@ -178,4 +179,25 @@ void AppGui::LoadSettings()
 
 	cout << PATHS::info.str();
 	// LogO(PATHS::info.str());  // no log yet
+
+
+
+#ifndef SR_EDITOR
+	//  📡 Helper for testing networked games on 1 PC
+	//  use number > 0 in command parameter,  adds it to nick, port and own ogre.log
+	auto& args = MainEntryPoints::args;
+
+	int num = -1;
+	
+	if (args.all.size() > 1)
+	{
+		num = Ogre::StringConverter::parseInt(args.all[1]);
+	}
+	if (num > 0)
+	{
+		pSet->net_local_plr = num;
+		pSet->local_port += num;
+		pSet->nickname += Ogre::StringConverter::toString(num);
+	}
+#endif
 }

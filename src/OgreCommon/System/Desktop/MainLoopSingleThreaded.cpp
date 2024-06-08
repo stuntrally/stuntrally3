@@ -70,6 +70,7 @@ int MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 	GameState *logicGameState = 0;
 	LogicSystem *logicSystem = 0;
 
+	//**
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 	args.all = std::vector<std::string>( __argv, __argv + __argc );
 #else
@@ -83,7 +84,8 @@ int MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 	
 	std::cout << "Init :: LoadSettings\n";
 	app->LoadSettings();
-	
+	//**
+
 	std::cout << "Init :: createSystems\n";
 	MainEntryPoints::createSystems( app.get(),
 		&graphicsGameState, &graphicsSystem,

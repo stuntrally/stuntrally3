@@ -1,18 +1,14 @@
-#include "enums.h"
 #include "pch.h"
+#include "enums.h"
 #include "Def_Str.h"
-#include "RenderConst.h"
 #include "CData.h"
-#include "paths.h"
 #include "CApp.h"
 #include "CGui.h"
 #include "GuiCom.h"
 #include "CScene.h"
 #include "Axes.h"
-#include "Road.h"
 #include "TracksXml.h"
-// #include "RenderBoxScene.h"
-#include "settings.h"
+
 #include "GraphicsSystem.h"
 #include "MainEntryPoints.h"
 #include <string>
@@ -46,9 +42,7 @@ void App::Load()
 {
 	Ogre::Timer ti;
 
-	LoadSettings();
-
-
+	//  log args
 	auto& args = MainEntryPoints::args;
 	LogO("A--- Cmd Line Arguments: "+toStr(args.all.size()));
 	LogO("A--- exe path: "+args.all[0]);

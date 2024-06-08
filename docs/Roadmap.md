@@ -5,22 +5,25 @@ More in [Tasks tracker](https://stuntrally.tuxfamily.org/mantis/view_all_bug_pag
 
 Marked: `crucial`, **Next or Big**, _Important_.
 
+
 ### SR 3.2
 
-Add gems to tracks  
+?multiplayer [issue](https://github.com/stuntrally/stuntrally3/issues/28)  
+fix .car thrusters lights pos, boost count  
+
+
+### SR 3.2 or 3.3
+
+Add **gems** to tracks  
 more collect types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
 
 hud new best time show, win particles-  
 ed Fields: accel par, dir, teleport end  
 
-**fix** multiplayer  
-fix .car thrusters lights pos, boost count  
-Career hide or todo  
-broken mygui set scrollview size, gallery list  
+new track(s) with fields, add walls  
+🌊?Water depth, SSAO?  
 
-new track(s) with^ add walls  
-?Water depth, SSAO?  
 
 ----
 ### New game stuff✨
@@ -35,6 +38,7 @@ Track 💡*lights* ed mode, car glow (as rect area) lights, bridges, pipe easy a
 **entities**.xml (sum of object, animation, light, 🔥particles etc)  
 Road wall types, [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)  
 
+
 ----
 ### New data
 
@@ -48,15 +52,16 @@ redo or replace lowest quality meshes: shroom* 🍄, skyscraper* 🏢
 normalize .mesh scales fir*, etc.  
 
 [Horizons](https://stuntrally.tuxfamily.org/mantis/view.php?id=11), add to rest of tracks  
+broken mygui set scrollview size, gallery list  
 
 
 ----
 ### Ogre new
-🪄 **Effects**: Soft Particles, **SSAO**, HDR, bloom, rays?  
+🪄 Effects: **Soft** Particles, **SSAO**, HDR, bloom, rays?  
 🌀 Add [FastNoise](https://github.com/Auburn/FastNoiseLite) for brushes and ter gen  
 
-🌊 Ocean: Terra waves, vehicle deform, particles  
-⏲️ Gauges with shader [demo](https://www.shadertoy.com/view/7t3fzs)  
+🌊 Ocean from Terra, **waves**, vehicle deform, particles  
+⏲️ Gauges with shader? [demo](https://www.shadertoy.com/view/7t3fzs)  
 
 
 ----
