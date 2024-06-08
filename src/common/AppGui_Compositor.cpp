@@ -38,17 +38,22 @@ using namespace Ogre;
 
 
 //  common
+//-----------------------------------------------------------------------------------------
 void AppGui::AddGuiShadows(bool vr_mode, int i, bool gui)
 {
 	auto* mgr = mRoot->getCompositorManager2();
 	CompositorNodeDef* node = mgr->getNodeDefinitionNonConst("SR3_Render"+toStr(i));  //SR3_RenderAbs
-	CompositorTargetDef* target = node->getTargetPass(0);
+	CompositorTargetDef* target = node->getTargetPass(2);  // 0
 	auto passes = target->getCompositorPasses();
+	// LogO("Target passes "+toStr(node->getNumTargetPasses()));
+	// for (auto& p : passes)
+	// 	LogO("pass: "+toStr(p->getType()));
 	CompositorPassDef* pass = passes.back();
 
 	//  🎛️ Gui, add MyGUI pass  ----
 	if (gui)
 	{
+		// if (passes.empty())
 		if (pass->getType() != PASS_CUSTOM)
 		{
 			pass = target->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
@@ -61,10 +66,14 @@ void AppGui::AddGuiShadows(bool vr_mode, int i, bool gui)
 	}	}
 
 
-	//  🌒 shadows
-	const int is = 1;  // 1
-	assert( dynamic_cast<CompositorPassSceneDef *>(passes[is]) );
-	CompositorPassSceneDef* ps = static_cast<CompositorPassSceneDef *>(passes[is]);
+	//  🌒 shadows  ----
+	const int np = 2;  // 1
+	target = node->getTargetPass(0);  // 0
+	// LogO("Target passes "+toStr(node->getNumTargetPasses()));
+	// for (auto& p : passes)
+	// 	LogO("pass: "+toStr(p->getType()));
+	assert( dynamic_cast<CompositorPassSceneDef *>(passes[np]) );
+	CompositorPassSceneDef* ps = static_cast<CompositorPassSceneDef *>(passes[np]);
 	
 	switch (pSet->g.shadow_type)
 	{

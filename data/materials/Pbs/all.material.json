@@ -17990,16 +17990,84 @@
 			}
 		},
 
-		"Water_cyan" :
+		"WaterBlue":
 		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_2",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"transparency" :
 			{
-				"value" : 0.9061712,
-				"mode" : "Transparent",
+				"value" : 0.15,
+				"mode" : "Refractive",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.026, 0.037, 0.057],
+				"background" : [1, 1, 1, 1],
+				"sampler" : "wrap"
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.55, 0.59],
+				"sampler" : "wrap"
+			},
+			"fresnel" :
+			{
+				"value" : 0.4,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 0.5,
+				"texture" : "mntn_black_n.jpg",
+				"sampler" : "wrap"
+			},
+			"roughness" :
+			{
+				"value" : 0.25,
+				"sampler" : "wrap"
+			},
+
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"offset" : [0.15, 0.1],
+				"scale" : [0.3, 0.15],
+				"sampler" : "wrap"
+			},
+			"detail_diffuse1" :
+			{
+				"value" : 1,
+				"offset" : [0.3, 0.3],
+				"sampler" : "wrap"
+			},
+			"detail_diffuse2" :
+			{
+				"value" : 1,
+				"offset" : [1, 0.15],
+				"scale" : [25, 1.5],
+				"sampler" : "wrap"
+			},
+			"detail_diffuse3" :
+			{
+				"value" : 1,
+				"offset" : [6, 0.4],
+				"sampler" : "wrap"
+			}
+		},
+
+		"Water_cyan" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"fluid" : true,
+            "refraction_strength" : 0.9,
+			"transparency" :
+			{
+				"value" : 0.8061712,
+				"mode" : "Refractive",
 				"use_alpha_from_textures" : true
 			},
 			"diffuse" :
@@ -18015,8 +18083,8 @@
 			},
 			"fresnel" :
 			{
-				"value" : [0.23471282, 0.3, 0.3],
-				"mode" : "coloured"
+				"value" : 0.2,
+				"mode" : "coeff"
 			},
 			"normal" :
 			{
@@ -21726,12 +21794,6 @@
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"receive_shadows" : false,
-			"transparency" :
-			{
-				"value" : 0.9,
-				"mode" : "Transparent",
-				"use_alpha_from_textures" : true
-			},
 			"diffuse" :
 			{
 				"value" : [0.2, 0.7, 0.1],

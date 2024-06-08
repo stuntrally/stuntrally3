@@ -16,6 +16,7 @@
 @end
 
 @piece( applyRefractions )
+@property( !hlms_shadowcaster )
 	@property( !fresnel_scalar )
 		midf refractF0 = pixelData.F0;
 	@else
@@ -59,5 +60,6 @@
 	@end
 
 	finalColour += refractionCol.xyz * (_h( 1.0 ) - refractionAlpha);
+@end
 @end
 @end

@@ -184,8 +184,11 @@
 
 
 //-----------------------------------------------------------------------------
-//		BODY CODE
+//		BODY CODE  //** This is Pbs
 //-----------------------------------------------------------------------------
+@property( hlms_shadowcaster )
+//		BODY CODE  //** This is Shadow !
+@end
 
 @piece( LoadMaterial )
 	@property( !lower_gpu_overhead )
@@ -404,7 +407,7 @@
 
 
 			@property( (water || river) && !hlms_shadowcaster )
-			//~~~~~~~ water begin
+			//~~~~~~~ water begin  //** This is Water
 
 				@piece( GetNorm )
 						getTSNormal( textureMaps@value( normal_map_tex_idx ),
@@ -889,6 +892,7 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 			@end
 
 			@property( paint )
+				//** This is Paint
 				//---- clr3 mix  color changing paints  ***
 				if (material.userValue[0].w > _h( 0.0 ))  // all black
 				{
@@ -1022,7 +1026,10 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 				@insertpiece( BRDF_EnvMap )
 			@end
 
-			@insertpiece( applyRefractions )
+			@property( !hlms_shadowcaster && !paint && !grass && !sky )
+				//**  applyRefractions  **
+				@insertpiece( applyRefractions )
+			@end
 
 
 			//**  ed Selected Glow  **

@@ -24,7 +24,7 @@ const Ogre::uint8
 	RQ_7        = 70,
 	RQ_GlassV2  = 80,
 	RQ_GlassV1  = 105,
-	RQ_OVERLAY  = 200,
+	RQ_OVERLAY  = 220,  // 200
 
 	RQG_Sky          = 5,
 
@@ -35,7 +35,7 @@ const Ogre::uint8
 	RQG_Road         = RQ_7,
 	RQG_RoadBlend    = RQ_7 +1,
 
-	RQG_Fluid        = RQ_7 +4,  // water etc
+	RQG_Fluid        = 210,  //RQ_7 +4,  // water etc
 	RQG_Grass        = RQ_7 +5,  // veget grass
 
 	RQG_PipeGlass    = RQ_GlassV2 +2,   // glass pipe road`
@@ -77,13 +77,14 @@ const Ogre::uint32
 	RV_SkyMain      = 0x00000100,  // ⛅   sky for main view
 	RV_SkyPlanarRefl= 0x00000200,  // ⛅🪞 sky for fluids refl 🌊
 	RV_SkyCubeRefl  = 0x00000400,  // ⛅🔮 sky for dynamic refl car,metals,etc
+	RV_Fluid        = 0x00000002, //0x01000000,
   
 	RV_Car          = 0x00000080,  // 🚗⚫ car,interior, tires  in game  (hide in reflection render)
 	RV_CarGlass     = 0x00000040,  // 🚗🪟 car glass in game  (hide for in car camera)
 	RV_Particles    = RV_Car,
 
 	//  vis masks
-	RV_MaskGameAll  = RV_SkyMain + RV_Road + RV_Terrain + RV_Vegetation + RV_VegetGrass + RV_Objects 
+	RV_MaskGameAll  = RV_SkyMain + RV_Road + RV_Terrain + RV_Vegetation + RV_VegetGrass + RV_Objects + RV_Fluid
 					+ RV_Car + RV_CarGlass, // + RV_Hud3D[player],
 	RV_MaskReflect  = RV_SkyCubeRefl + RV_Road + RV_Terrain + RV_Vegetation + RV_Objects,  // no hud, grass, car,glass,tires
 	//  most as  visibility_mask  in SR3.compositor

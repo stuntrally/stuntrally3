@@ -206,6 +206,7 @@ abstract target cubemap_target
 
 		visibility_mask  0x0000042D  // 1 rd 4 ter 8 vgt 20 obj  400 sky
 		// visibility_mask  0x0000046D  // + 40 grass
+		rq_last	  199
 
 		overlays		off
 		camera_cubemap_reorient true
@@ -270,9 +271,187 @@ compositor_node CubemapNodeMsaa
 
 
 //------------------------------------------------------------------------------------
-//  🏞️  [Main render]  (👥 split screens too and 🏗️ ed)
+//  🏞️  [Main render]  (👥 split screens too and 🏗️ ed)  NEW Refract
 //------------------------------------------------------------------------------------
 abstract compositor_node SR3_RenderAbs
+{
+	in 0 rt_renderwindow
+	in 1 dynamic_cubemap
+
+	texture depthBuffer	target_width target_height PFG_D32_FLOAT
+	texture rtt01		target_width target_height target_format
+	texture rtt_final	target_width target_height target_format
+
+	rtv rtt01
+	{
+		depth_stencil	depthBuffer
+	}
+	rtv rtt_final
+	{
+		depth_stencil	depthBuffer
+	}
+
+	target rtt01
+	{
+		// pass clear  //  --------
+		// {
+		// 	profiling_id "Clear all"
+		// 	identifier	22000
+
+		// 	//  executed on first view/eye
+		// 	execution_mask			0x01
+		// 	//  affected by modifier, apply to the whole screen
+		// 	viewport_modifier_mask	0x00
+
+		// 	//  Only write to MSAA surface, don't resolve, overlays legacy problem
+		// 	store
+		// 	{
+		// 		colour	store
+		// 		depth	store
+		// 		stencil	store
+		// 	}
+		// 	colour_value  0.02 0.015 0.03 1
+		// }
+
+		//  [Main Render]  --------
+		pass render_scene
+		{
+			profiling_id "Main view"
+			identifier	22202
+
+			//  executed in all views/eyes
+			execution_mask			0xff
+			//  affected by modifier, so renders to a portion of screen
+			viewport_modifier_mask	0xff
+
+			load
+			{
+				all				clear
+				// clear_depth  1.0
+				clear_colour	0.2 0.4 0.6 1
+			}
+			store
+			{
+				colour	store_or_resolve
+				depth	store
+				stencil	dont_care
+			}
+
+			//  materials in this pass will be using this cubemap
+			expose dynamic_cubemap
+
+			// visibility_mask  0x000011FF   // set later  RV_MaskGameAll
+			// visibility_mask  0x00000001   // set later  RV_MaskGameAll
+			visibility_mask  0x000011FD   // set later  RV_MaskGameAll
+			// rq_last		110  // glass,par etc
+			rq_last		209
+
+			overlays	off
+			// shadows		SR3_Shadows  //** added in code
+		}
+
+
+		//  for Hud, split  --------
+		pass render_scene
+		{
+			profiling_id "HUD"
+			identifier	22501
+
+			// executed in all eyes, not views
+			// execution_mask			0xff
+			// executed on first view/eye
+			execution_mask			0x01
+			// affected by modifier, apply to the whole screen
+			viewport_modifier_mask	0x00
+
+			store
+			{
+				colour	store
+				depth	store  //-
+				stencil	store
+			}
+			visibility_mask  0x00002000  // RV_Hud
+
+			rq_first	225
+			rq_last		230
+
+			overlays	off
+		}
+
+		//** added in code  --------
+		// pass custom MYGUI
+		// {
+			// provider?
+			// profiling_id "GUI"
+
+			// executed in the second eye
+			// execution_mask			0x02
+			// apply to the whole screen
+			// viewport_modifier_mask	0x00
+			
+			// rq_first	254
+			// rq_last		255
+			
+			// overlays	on
+		// }
+	}
+
+	target rtt_final
+	{
+		pass render_quad
+		{
+			// Only colour must be dont_care, since we must still preserve the depth buffer's contents!
+			load { colour dont_care }
+			material Ogre/Copy/4xFP32
+			input 0 rtt01
+		}
+
+		//  Pass with refractive objects
+		pass render_scene
+		{
+			load
+			{
+				all		load
+			}
+			store
+			{
+				colour	store_or_resolve
+				depth	dont_care
+				stencil	dont_care
+			}
+
+			// ?
+			// expose demo_dynamic_cubemap
+			// identifier	22201
+			// identifier	25001
+
+			visibility_mask  0x01000000
+			// visibility_mask  0x00000002
+			rq_first	210
+			rq_last		211
+
+			overlays		on
+			//shadows			Tutorial_TerrainShadowNode reuse
+			use_refractions	depthBuffer rtt01
+		}
+	}
+
+	target rt_renderwindow
+	{
+		//  Output to window
+		pass render_quad
+		{
+			load { all dont_care }
+			material Ogre/Copy/4xFP32
+			input 0 rtt_final
+		}
+	}
+}
+
+
+//  🏞️  [Main render]  OLD no refract
+//------------------------------------------------------------------------------------
+abstract compositor_node SR3_RenderAbsOld
 {
 	in 0 rt_renderwindow
 	in 1 dynamic_cubemap
@@ -348,7 +527,7 @@ abstract compositor_node SR3_RenderAbs
 			}
 			visibility_mask  0x00002000  // RV_Hud
 
-			rq_first	200
+			rq_first	221 //200
 			rq_last		230
 
 			overlays	off
@@ -400,6 +579,7 @@ compositor_node PlanarReflectNode
 			}
 
 			visibility_mask  0x0000022D  // 1 rd 4 ter 8 vgt 20 obj  200 sky
+			rq_last		209
 			overlays		 off
 			//shadows  SR3_Shadows  // no-
 		}
