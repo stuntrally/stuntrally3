@@ -127,7 +127,7 @@ float snoise1(vec2 v)
 float snoise(vec2 v, float zoom, int octaves, float persistence)
 {
     float total = 0.0;
-    for (int i=0; i < 5; ++i)  // const loop
+    for (int i=0; i < 5; i++)  // const loop
     {
         float frequency = pow(2.f, float(i));
         float amplitude = pow(persistence, float(i));
