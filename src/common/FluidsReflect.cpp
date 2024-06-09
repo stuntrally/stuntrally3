@@ -248,10 +248,11 @@ void FluidsReflect::CreateFluids()
         Hlms *hlms = app->mRoot->getHlmsManager()->getHlms( HLMS_PBS );
         HlmsPbs *pbs = static_cast<HlmsPbs *>( hlms );
         // pbs->setPlanarReflections( mPlanarReflect );
-        auto* db = (HlmsPbsDatablock*)pbs->getDatablock("WaterBlue");//"Water_cyan");
+        auto* db = (HlmsPbsDatablock*)pbs->getDatablock("WaterBlue");
+		// auto* db = (HlmsPbsDatablock*)pbs->getDatablock("Water_cyan");
         
         // db->setTransparency( 0.82f, Ogre::HlmsPbsDatablock::Refractive );
-        db->setFresnel( Ogre::Vector3( 0.2f ), false );
+        db->setFresnel( Ogre::Vector3( 0.9f ), false );
         // db->setFresnel( Ogre::Vector3( 0.1f, 0.4f, 0.9f ), true );  // crash, shader F0?
         db->setRefractionStrength( 0.9f );  // par+  not in json-
 
@@ -260,7 +261,7 @@ void FluidsReflect::CreateFluids()
         // waterItem->setVisibilityFlags( 2 );
 	#endif
 		//  [0] above  [1] below
-		for (int n=0; n < 2; ++n)
+		for (int n=0; n < 1; ++n)  // 2  // todo refract wirefr bad
 		{
 			item[n] = mgr->createItem( mesh, dyn );
 			item[n]->setDatablock( sMtr );

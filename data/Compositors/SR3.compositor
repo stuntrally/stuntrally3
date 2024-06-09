@@ -343,6 +343,8 @@ abstract compositor_node SR3_RenderAbs
 			// visibility_mask  0x000011FF   // set later  RV_MaskGameAll
 			// visibility_mask  0x00000001   // set later  RV_MaskGameAll
 			visibility_mask  0x000011FD   // set later  RV_MaskGameAll
+			//! set later at end in all  : SR3_RenderAbs
+
 			// rq_last		110  // glass,par etc
 			rq_last		209
 
@@ -422,11 +424,11 @@ abstract compositor_node SR3_RenderAbs
 
 			// ?
 			// expose demo_dynamic_cubemap
-			// identifier	22201
+			identifier	22201
 			// identifier	25001
 
-			visibility_mask  0x01000000
-			// visibility_mask  0x00000002
+			// visibility_mask  0x01000000
+			visibility_mask  0x00000002
 			rq_first	210
 			rq_last		211
 
@@ -640,34 +642,36 @@ compositor_node_shadow SR3_Shadows
 //  [Main Nodes]  for all  Max_Players,  vis mask  same as RV_Hud3D[..]
 //------------------------------------------------------------------------------------
 compositor_node SR3_Render0 : SR3_RenderAbs
-{	target rt_renderwindow
-	{	pass clear			{	}
-		pass render_scene	{	visibility_mask  0x000011FF  }
-}	}
+{
+}
+// {	target rt_renderwindow
+// 	{	pass clear			{	}
+// 		pass render_scene	{	visibility_mask  0x000011FD  }
+// }	}
 compositor_node SR3_Render1 : SR3_RenderAbs
 {	target rt_renderwindow
 	{	pass clear			{	}
-		pass render_scene	{	visibility_mask  0x000101FF  }
+		pass render_scene	{	visibility_mask  0x000101FD  }
 }	}
 compositor_node SR3_Render2 : SR3_RenderAbs
 {	target rt_renderwindow
 	{	pass clear			{	}
-		pass render_scene	{	visibility_mask  0x000201FF  }
+		pass render_scene	{	visibility_mask  0x000201FD  }
 }	}
 compositor_node SR3_Render3 : SR3_RenderAbs
 {	target rt_renderwindow
 	{	pass clear			{	}
-		pass render_scene	{	visibility_mask  0x000401FF  }
+		pass render_scene	{	visibility_mask  0x000401FD  }
 }	}
 compositor_node SR3_Render4 : SR3_RenderAbs
 {	target rt_renderwindow
 	{	pass clear			{	}
-		pass render_scene	{	visibility_mask  0x000801FF  }
+		pass render_scene	{	visibility_mask  0x000801FD  }
 }	}
 compositor_node SR3_Render5 : SR3_RenderAbs
 {	target rt_renderwindow
 	{	pass clear			{	}
-		pass render_scene	{	visibility_mask  0x001001FF  }
+		pass render_scene	{	visibility_mask  0x001001FD  }
 }	}
 
 //  [Workspaces]  0 also for ed 🏗️
