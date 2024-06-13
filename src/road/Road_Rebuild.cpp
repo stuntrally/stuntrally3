@@ -762,9 +762,15 @@ void SplineRoad::createSeg_Meshes(
 		if (it)
 		{	auto que = 
 				//IsTrail() ? RQG_RoadBlend /*: RQG_Hud1*/ : // ?
-				pipeGlass || IsRiver() ? RQG_PipeGlass : RQG_Road;
+				IsRiver() ? RQG_Fluid :
+				pipeGlass ? RQG_PipeGlass : RQG_Road;
 			it->setRenderQueueGroup(que);
 			if (it2)  it2->setRenderQueueGroup(que);
+			
+			if (IsRiver())
+			{	it->setVisibilityFlags( RV_Fluid );
+				if (it2)  it2->setVisibilityFlags( RV_Fluid );
+			}
 
 			// if (IsTrail())
 			// 	it->setVisibilityFlags(RV_Hud3D);
