@@ -132,13 +132,14 @@ compositor_node Rtt_View3D
 
 			visibility_mask  0x000001FF  // normal
 			rq_first  0
-			rq_last	  199  // before RQ_OVERLAY
+			rq_last	  209  // before RQ_OVERLAY
 
 			overlays	off
 			shadows		SR3_Shadows  //! rem-
 			// todo: use that from code, not SR3_Shadows from here
 		}
 	}
+	// todo: rest for water refract ...
 }
 //  end of  Editor only
 
@@ -354,31 +355,31 @@ abstract compositor_node SR3_RenderAbs
 
 
 		//  for Hud, split  --------
-		pass render_scene
-		{
-			profiling_id "HUD"
-			identifier	22501
+		// pass render_scene
+		// {
+		// 	profiling_id "HUD"
+		// 	identifier	22501
 
-			// executed in all eyes, not views
-			// execution_mask			0xff
-			// executed on first view/eye
-			execution_mask			0x01
-			// affected by modifier, apply to the whole screen
-			viewport_modifier_mask	0x00
+		// 	// executed in all eyes, not views
+		// 	// execution_mask			0xff
+		// 	// executed on first view/eye
+		// 	execution_mask			0x01
+		// 	// affected by modifier, apply to the whole screen
+		// 	viewport_modifier_mask	0x00
 
-			store
-			{
-				colour	store
-				depth	store  //-
-				stencil	store
-			}
-			visibility_mask  0x00002000  // RV_Hud
+		// 	store
+		// 	{
+		// 		colour	store
+		// 		depth	store  //-
+		// 		stencil	store
+		// 	}
+		// 	visibility_mask  0x00002000  // RV_Hud
 
-			rq_first	225
-			rq_last		230
+		// 	rq_first	220  // 225
+		// 	rq_last		225  // 230
 
-			overlays	off
-		}
+		// 	overlays	off
+		// }
 
 		//** added in code  --------
 		// pass custom MYGUI
@@ -408,7 +409,7 @@ abstract compositor_node SR3_RenderAbs
 			input 0 rtt01
 		}
 
-		//  Pass with refractive objects
+		//  water, Pass with refractive objects
 		pass render_scene
 		{
 			load
@@ -422,19 +423,43 @@ abstract compositor_node SR3_RenderAbs
 				stencil	dont_care
 			}
 
-			// ?
 			// expose demo_dynamic_cubemap
 			identifier	22201
-			// identifier	25001
 
-			// visibility_mask  0x01000000
 			visibility_mask  0x00000002
 			rq_first	210
 			rq_last		211
 
 			overlays		on
-			//shadows			Tutorial_TerrainShadowNode reuse
+			//shadows		Tutorial_TerrainShadowNode reuse
 			use_refractions	depthBuffer rtt01
+		}
+
+		//  for Hud, split  --------
+		pass render_scene
+		{
+			profiling_id "HUD"
+			identifier	22501
+
+			// executed in all eyes, not views
+			// execution_mask			0xff
+			// executed on first view/eye
+			execution_mask			0x01
+			// affected by modifier, apply to the whole screen
+			viewport_modifier_mask	0x00
+
+			store
+			{
+				colour	store
+				depth	store  //-
+				stencil	store
+			}
+			visibility_mask  0x00002080  // RV_Hud, RV_Particles
+
+			rq_first	220  // 225
+			rq_last		230  // 230
+
+			overlays	off
 		}
 	}
 
@@ -582,7 +607,7 @@ compositor_node PlanarReflectNode
 
 			visibility_mask  0x0000022D  // 1 rd 4 ter 8 vgt 20 obj  200 sky
 			rq_last		209
-			overlays		 off
+			overlays	 off
 			//shadows  SR3_Shadows  // no-
 		}
 
@@ -602,13 +627,16 @@ workspace PlanarReflections
 }
 
 
-//  🌒 shadows  - for ed prv cam .. // todo: drop this
+//  🌒 shadows  - HQ, only for ed preview cam
 //------------------------------------------------------------------------------------
 compositor_node_shadow SR3_Shadows
 {
 	technique pssm
 
-	texture atlas 3072 2048 PFG_D32_FLOAT
+	//**  shadows par
+	// texture atlas 3072 2048 PFG_D32_FLOAT  // medium 2k
+	// texture atlas 6144 4096 PFG_D32_FLOAT  // high 4k
+	texture atlas 12288 8192 PFG_D32_FLOAT  // ultra high 8k
 
 	num_splits		3
 	pssm_lambda		0.95
@@ -631,8 +659,10 @@ compositor_node_shadow SR3_Shadows
 		{
 			pass render_scene
 			{
-				profiling_id "Shadows unused"
+				profiling_id "Shadows ed prv"
 				identifier	77877
+
+				rq_last		219
 			}
 		}
 	}
@@ -642,37 +672,62 @@ compositor_node_shadow SR3_Shadows
 //  [Main Nodes]  for all  Max_Players,  vis mask  same as RV_Hud3D[..]
 //------------------------------------------------------------------------------------
 compositor_node SR3_Render0 : SR3_RenderAbs
-{
-}
-// {	target rt_renderwindow
-// 	{	pass clear			{	}
-// 		pass render_scene	{	visibility_mask  0x000011FD  }
-// }	}
+{	target rtt01
+	{	pass render_scene	{	visibility_mask  0x000011FD  }
+}	}
 compositor_node SR3_Render1 : SR3_RenderAbs
-{	target rt_renderwindow
-	{	pass clear			{	}
-		pass render_scene	{	visibility_mask  0x000101FD  }
+{	target rtt01
+	{	pass render_scene	{	visibility_mask  0x000101FD  }
 }	}
 compositor_node SR3_Render2 : SR3_RenderAbs
+{	target rtt01
+	{	pass render_scene	{	visibility_mask  0x000201FD  }
+}	}
+compositor_node SR3_Render3 : SR3_RenderAbs
+{	target rtt01
+	{	pass render_scene	{	visibility_mask  0x000401FD  }
+}	}
+compositor_node SR3_Render4 : SR3_RenderAbs
+{	target rtt01
+	{	pass render_scene	{	visibility_mask  0x000801FD  }
+}	}
+compositor_node SR3_Render5 : SR3_RenderAbs
+{	target rtt01
+	{	pass render_scene	{	visibility_mask  0x001001FD  }
+}	}
+
+//  Old  no refract  ----
+compositor_node SR3_RenderOld0 : SR3_RenderAbsOld
+{	target rt_renderwindow
+	{	pass clear			{	}
+		pass render_scene	{	visibility_mask  0x000011FF  }
+}	}
+compositor_node SR3_RenderOld1 : SR3_RenderAbsOld
+{	target rt_renderwindow
+	{	pass clear			{	}
+		pass render_scene	{	visibility_mask  0x000101FF  }
+}	}
+compositor_node SR3_RenderOld2 : SR3_RenderAbsOld
 {	target rt_renderwindow
 	{	pass clear			{	}
 		pass render_scene	{	visibility_mask  0x000201FD  }
 }	}
-compositor_node SR3_Render3 : SR3_RenderAbs
+compositor_node SR3_RenderOld3 : SR3_RenderAbsOld
 {	target rt_renderwindow
 	{	pass clear			{	}
 		pass render_scene	{	visibility_mask  0x000401FD  }
 }	}
-compositor_node SR3_Render4 : SR3_RenderAbs
+compositor_node SR3_RenderOld4 : SR3_RenderAbsOld
 {	target rt_renderwindow
 	{	pass clear			{	}
 		pass render_scene	{	visibility_mask  0x000801FD  }
 }	}
-compositor_node SR3_Render5 : SR3_RenderAbs
+compositor_node SR3_RenderOld5 : SR3_RenderAbsOld
 {	target rt_renderwindow
 	{	pass clear			{	}
 		pass render_scene	{	visibility_mask  0x001001FD  }
 }	}
+
 
 //  [Workspaces]  0 also for ed 🏗️
 //------------------------------------------------------------------------------------
@@ -705,4 +760,36 @@ workspace SR3_Workspace5
 {
 	connect_external 0 SR3_Render5 0
 	connect_external 1 SR3_Render5 1
+}
+
+//  Old  no refract  ----
+workspace SR3_WorkspaceOld0
+{
+	connect_external 0 SR3_RenderOld0 0  // Render Window  on channel #0
+	connect_external 1 SR3_RenderOld0 1  // Cubemap  on channel #1
+}
+workspace SR3_WorkspaceOld1
+{
+	connect_external 0 SR3_RenderOld1 0
+	connect_external 1 SR3_RenderOld1 1
+}
+workspace SR3_WorkspaceOld2
+{
+	connect_external 0 SR3_RenderOld2 0
+	connect_external 1 SR3_RenderOld2 1
+}
+workspace SR3_WorkspaceOld3
+{
+	connect_external 0 SR3_RenderOld3 0
+	connect_external 1 SR3_RenderOld3 1
+}
+workspace SR3_WorkspaceOld4
+{
+	connect_external 0 SR3_RenderOld4 0
+	connect_external 1 SR3_RenderOld4 1
+}
+workspace SR3_WorkspaceOld5
+{
+	connect_external 0 SR3_RenderOld5 0
+	connect_external 1 SR3_RenderOld5 1
 }

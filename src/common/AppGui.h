@@ -143,8 +143,11 @@ public:
 	void ApplyReflect();  // to all Db2s, after CubeRefl created
 	std::set<HlmsPbsDb2*> vDbRefl;
 
-	void AddGuiShadows(bool vr_mode = false, int i = 0, bool gui = true);
+	void AddGuiShadows(bool vr_mode = false, int plr = 0, bool gui = true);
 	Ogre::CompositorWorkspace* SetupCompositor();
+
+	//  util get SR3_ name for player
+	Ogre::String getRender(int plr=0), getWorkspace(int plr=0);
 
 
 	//  👥 Split screen  ----------------
