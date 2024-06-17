@@ -68,10 +68,11 @@ void CARDYNAMICS::UpdateFields()
 		}	break;
 		
 		case TF_Teleport:
-		{	auto p = GetPosition();
-			p[1] += 11.f;  //-
-			// p[2] += 11.f;  //^
+		{	auto p = GetPosition();  // relative no-
+			p[1] += 11.f;  // p[2] += 11.f;  //^
 			SetPosition(p);
+			// SetPosition(fld.pos2);
+			// SetOrientation(fld.rot2);  // todo: ed, end place
 		}	break;
 		
 		case TF_Damp:
@@ -625,6 +626,7 @@ void CARDYNAMICS::SynchronizeChassis()
 
 void CARDYNAMICS::UpdateWheelContacts()
 {
+#if 1
 	MATHVECTOR<float,3> raydir = GetDownVector();
 	for (int i = 0; i < numWheels; ++i)
 	{
@@ -638,6 +640,53 @@ void CARDYNAMICS::UpdateWheelContacts()
 			!pSet->game.collis_cars,
 			vtype == V_Hovercraft );  //V* does not go underwater  todo: if fluid deep .. how?
 	}
+#else
+	MATHVECTOR<Dbl,3> x(1, 0, 0);
+	Orientation().RotateVector(x);
+	MATHVECTOR<Dbl,3> y(0, 1, 0);
+	Orientation().RotateVector(x);
+
+	const int aa = 3, bb = 2;  // todo .. more wheel rays
+	// const int aa = 0, bb = 0;
+	for (int i = 0; i < numWheels; ++i)
+	{
+		std::vector<COLLISION_CONTACT> vwc;
+		for (int b = -bb; b <= bb; ++b)
+		for (int a = -aa; a <= aa; ++a)
+		{
+			Dbl ang = a * PI_d / 6.f, bng = b * PI_d / 6.f;
+			MATHVECTOR<Dbl,3> v(sinf(ang), sinf(bng), -cosf(ang));
+			v.Normalize();
+			Orientation().RotateVector(v);
+			MATHVECTOR<float,3> raydir = v;
+
+			// COLLISION_CONTACT & wheelContact = wheel_contact[WHEEL_POSITION(i)];
+			COLLISION_CONTACT wc;
+			MATHVECTOR<float,3> raystart = LocalToWorld(wheel[i].GetExtendedPosition());
+			raystart = raystart - raydir * wheel[i].GetRadius();// *0.5;  //*?!
+			float raylen = wheel[i].GetRayLength();
+			// float raylen = wheel[i].GetRadius();  //-
+			
+			// 🎯 wheel cast ray
+			bool hit = world->CastRay( raystart, raydir, raylen,
+				chassis, wc, this,i,
+				!pSet->game.collis_cars,
+				vtype == V_Hovercraft );  //V* does not go underwater  todo: if fluid deep .. how?
+			// if (hit 
+			vwc.push_back(wc);
+		}
+		
+		float depth = 1000.f;
+		COLLISION_CONTACT & cls = vwc[0];
+		for (auto& wc : vwc)
+			if (wc.GetDepth() < depth)
+			{
+				depth = wc.GetDepth();
+				cls = wc;
+			}
+		wheel_contact[WHEEL_POSITION(i)] = cls;
+	}
+#endif
 }
 
 
