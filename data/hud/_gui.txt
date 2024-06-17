@@ -1,4 +1,4 @@
----- Gui
+---- Hud
 
 gauges2.png gauges3.png
 from SpeedDreams  https://www.speed-dreams.net/en/
@@ -6,6 +6,8 @@ https://sourceforge.net/p/speed-dreams/code/HEAD/tree/trunk/COPYING.txt
 https://sourceforge.net/p/speed-dreams/code/HEAD/tree/trunk/data/data/credits.xml
 License: GPL v2
 rest of gauges edited
+
+---- Gui
 
 gui_icons.png - has many from:
 https://www.openclipart.org/

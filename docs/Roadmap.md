@@ -8,11 +8,11 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
+🌊Water refract, depth, WIP  
+SSAO?  
+
 ?multiplayer [issue](https://github.com/stuntrally/stuntrally3/issues/28)  
 fix .car thrusters lights pos, boost count  
-
-
-### SR 3.2 or 3.3
 
 Add **gems** to tracks  
 more collect types 3d  
@@ -22,7 +22,6 @@ hud new best time show, win particles-
 ed Fields: accel par, dir, teleport end  
 
 new track(s) with fields, add walls  
-🌊?Water depth, SSAO?  
 
 
 ----

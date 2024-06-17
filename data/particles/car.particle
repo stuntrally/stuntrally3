@@ -3,8 +3,8 @@ particle_system Sparks
 {
 	quota           1000
 	material		Particles/Spark
-	particle_width	0.04
-	particle_height	0.22
+	particle_width	0.03
+	particle_height	0.17
 	cull_each		false
 	billboard_type  oriented_self
 
@@ -34,10 +34,10 @@ particle_system Sparks
 		green -0.5
 		blue  -0.8
 	}
-    affector Scaler
-    {
-   	    rate -0.06
-    }
+    // affector Scaler  // can crash negative dims
+    // {
+   	//     rate -0.01
+    // }
 	affector DirectionRandomiser
 	{
 		randomness  8
