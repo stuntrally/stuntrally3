@@ -397,8 +397,8 @@
 		outVs.zwDepth.xy = outVs_Position.zw;
 	@end
 
-	@property( hlms_fog )
-		outVs.worldH = worldPos.y;
+	@property( !hlms_shadowcaster )
+		outVs.worldH = worldPos.y;  //**
 	@end
 
 	@property( hlms_global_clip_planes )

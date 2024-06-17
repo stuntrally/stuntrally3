@@ -19,7 +19,8 @@
 	@property( !fresnel_scalar )
 		midf refractF0 = pixelData.F0;
 	@else
-		midf refractF0 = max( pixelData.F0.x, pixelData.F0.y, pixelData.F0.z );
+		// midf refractF0 = max( pixelData.F0.x, pixelData.F0.y, pixelData.F0.z );  //-
+		midf refractF0 = max( pixelData.F0.y, pixelData.F0.z );
 	@end
 
 	// refractNormal must be in view space, and we ignore .z component
@@ -27,16 +28,40 @@
 										  refractF0, pixelData.NdotV ).xy;
 	float2 refractUv = screenPosUv.xy + float2( refractNormal2d.xy ) *
 					   float2( material.refractionStrength,
-							   material.refractionStrength * passBuf.aspectRatio ) /
-					   ( (-inPs.pos.z + 1.0) * (-inPs.pos.z + 1.0) );
+							   material.refractionStrength * passBuf.aspectRatio )
+					//  new
+					//	/ 10.0;  // const strong
+					// / (10.0 + -inPs.pos.z * 0.5);  // soft
+						// / (10.0 + -inPs.pos.z * 0.2) * 2.0;  // soft
+					//	/ (1.0 + -inPs.pos.z * 0.2);  // ok
+						// / (1.0 + max(12.0, -inPs.pos.z * 0.2));  // ok
+					// / (1.0 + max(5.0, -inPs.pos.z * 0.1));  // no-
+					//  org
+					//   / ( (-inPs.pos.z + 1.0) * (-inPs.pos.z + 1.0) );  // org - none far, bad near
+					//   / ( (-inPs.pos.z + 1.0 ) );  // bad close
+					//   / ( -inPs.pos.z * 0.5 + 2.0);  // strong- near, no far
+					//  good
+					//   / ( max(21.0, -inPs.pos.z) * 0.5 + 2.0);  // * big near, no far
+					//   / ( max(31.0, -inPs.pos.z) * 0.5 + 2.0);  // + ok near, no far
+					//   / ( max(121.0, -inPs.pos.z) * 0.2 + 2.0);  // ~ soft near, good far
+					  / ( max(21.0, -inPs.pos.z) * 0.2 + 2.0) * 0.5;  // - tiny strong near and far
+					//  old meh
+					//   / ( min(-72.0, max(-21.0, -inPs.pos.z)) * 0.2 + 1.0);  // ~ soft near, ok far
+					//   / ( min(-71.0, max(-1.0, -inPs.pos.z)) * 1.0 + 1.0);  // ~ soft near, ok far
+					//   / ( min(-21.0, max(-11.0, -inPs.pos.z)) * 0.7 + 1.0);  // *- tiny strong
+					//   / ( min(-41.0, max(-2.0, -inPs.pos.z)) * 0.7 + 1.0);  // ^ nice near, strong far
+	refractUv.y += 0.07;  // try fix top mess`-
+	float2 refractUvOrg = refractUv;
+
 	midf3 refractionCol = OGRE_SampleLevelF16( refractionMap, refractionMapSampler, refractUv, 0 ).xyz;
 	midf refractionDepth = OGRE_SampleLevelF16( depthTextureNoMsaa, refractionMapSampler, refractUv, 0 ).x;
 
-	// We may need to fallback to regular transparency if we're sampling to close to the edges
+	// We may need to fallback to regular transparency if we're sampling too close to the edges
 	// or the object being refracted is in front of us.
 	midf3 fallbackRefractionCol = OGRE_Load2DF16( refractionMap, iFragCoord.xy, 0 ).xyz;
 
-	refractUv = saturate( abs( screenPosUv.xy * 2.0 - 1.0 ) * 10.0 - 9.0 );
+	refractUv = saturate( abs( screenPosUv.xy * 2.0 - 1.0 ) * 10.0 - 9.0 );  // org blend
+	// refractUv = saturate( abs( screenPosUv.xy * 2.0 - 1.0 ) * 20.0 - 18.0 );
 	midf fallbackRefrW = midf_c( max( refractUv.x, refractUv.y ) );
 	fallbackRefrW = fallbackRefrW * fallbackRefrW;
 
@@ -52,6 +77,44 @@
 
 	refractionCol = lerp( refractionCol, fallbackRefractionCol, fallbackRefrW );
 
+
+	// refractionCol.x *= 0.4f;  // colorize cyan-blue
+	// refractionCol.y *= 0.9f;
+
+	//  depth  ------
+	midf depthValue = OGRE_SampleLevelF16( depthTextureNoMsaa, refractionMapSampler, screenPosUv.xy, 0 ).x;
+	// midf4 ndc = midf4( screenPosUv.xy * 2.0 - 1.0, depthValue, 1.0 );  // normal
+	midf4 ndc = midf4( refractUvOrg.xy * 2.0 - 1.0, depthValue, 1.0 );  // refracted ?
+	midf4 tmp = mul( ndc, inverse( passBuf.viewProj ) );  // worldViewProj-
+	midf3 pos = tmp.xyz / tmp.w;
+	
+	midf depth = inPs.worldH - pos.y;
+	midf diff = depth;
+	// depth = min(40, max(0, depth));  // max depth
+	// depth = min(20, max(0, depth));  // max depth
+	// depth = 0.1 + min(40, max(0, 6.0 + 20.0 * depth * 0.6));  // max depth
+	depth = min(40, max(0, 6.0 + 10.0 * depth * 0.6));  // max depth
+
+	// midf3 deepFade = 1.1 * midf3(0.034, 0.022, 0.01);  // fade  blue dark
+	midf3 deepFade = 1.1 * midf3(0.03, 0.025, 0.015);  // fade  blue cyan
+	// midf3 deepFade = 1.1 * midf3(0.02, 0.02, 0.01);  // fade  blue clear
+	// midf3 deepFade = 1.1 * midf3(0.04, 0.02, 0.01);  // fade  blue cyan
+	// midf3 deepFade = 1.0 * midf3(0.08, 0.02, 0.01);  // fade  cyan green
+
+	// depth = midf_c( exp2( depth * 0.06 ) );  // amount
+	// depth = min(1.0, max(0.0, depth));  // max depth
+	// midf3 deepFade = 8.0 * midf3(0.1, 0.02, 0.01);  // fade
+
+	// midf3 deepClr = midf3(0.2, 0.33, 0.4);  // deepest color
+	// refractionCol.x = max(deepClr.x, refractionCol.x - depth * deepFade.x);
+	// refractionCol.y = max(deepClr.y, refractionCol.y - depth * deepFade.y);
+	// refractionCol.z = max(deepClr.z, refractionCol.z - depth * deepFade.z);
+	refractionCol.x *= 1.0 - depth * deepFade.x;
+	refractionCol.y *= 1.0 - depth * deepFade.y;
+	refractionCol.z *= 1.0 - depth * deepFade.z;
+	// pixelData.diffuse.w = max(0.0, 1.0 - depth * 0.1);  // fade alpha..
+
+	//  set clr
 	@property( use_texture_alpha )
 		midf refractionAlpha = midf_c( material.F0.w ) * pixelData.diffuse.w;
 	@else
@@ -59,5 +122,16 @@
 	@end
 
 	finalColour += refractionCol.xyz * (_h( 1.0 ) - refractionAlpha);
+
+	//  fade out border
+	midf3 originalColBehindObject = OGRE_SampleLevelF16( refractionMap, refractionMapSampler, screenPosUv.xy, 0 ).xyz;
+	midf alpha = min(1.0, abs(diff) * 1.4);
+	finalColour = lerp( originalColBehindObject, finalColour, alpha );
+
+	//  test
+	// finalColour = midf3( inPs.worldH * 0.001, inPs.worldH * 0.002, 0.01 * inPs.worldH);
+	// finalColour = midf3( inPs.worldH * 10.1, inPs.worldH * 8.1, 9.1 * inPs.worldH);
+	// finalColour = midf3( depthValue * 300.0, depthValue * 1000.0, 20.0 * inPs.worldH);
+
 @end
 @end

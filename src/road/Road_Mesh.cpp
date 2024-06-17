@@ -276,7 +276,9 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 	#endif
 
 		it->setVisible(false);  it->setCastShadows(false);//-
-		it->setVisibilityFlags(trail ? RV_Hud3D[player] : RV_Road);
+		it->setVisibilityFlags(
+			IsRiver() ? RV_Fluid :
+			trail ? RV_Hud3D[player] : RV_Road);
 		node->attachObject(it);
 
 

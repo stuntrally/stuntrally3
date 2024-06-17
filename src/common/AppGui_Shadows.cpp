@@ -156,7 +156,8 @@ void AppGui::createPcfShadowNode()
 		VisibilityFlags::RESERVED_VISIBILITY_FLAGS,  // visibilityMask
 		1.5f,   // xyPadding = 1.5f,
 		RQG_Sky,  		// firstRq = 0u,
-		RQG_PipeGlass	// lastRq = 255u
+		RQG_Fluid-1
+		// RQG_PipeGlass	// lastRq = 255u
 	);
 	mSceneMgr->setShadowDirectionalLightExtrusionDistance( pSet->g.shadow_dist );
 	mSceneMgr->setShadowFarDistance( pSet->g.shadow_dist );

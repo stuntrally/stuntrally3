@@ -457,8 +457,12 @@ struct Material
 		@property( hlms_fog )
 			// fog.xyz = colour
 			INTERPOLANT( midf3 fog, @counter(texcoord) );
+		@end
+
+		@property( !hlms_shadowcaster )
 			INTERPOLANT( float worldH, @counter(texcoord) );  //**
 		@end
+		
 	@else
 		@property( alpha_test )
 			@foreach( hlms_uv_count, n )

@@ -4,6 +4,7 @@
 #include "App.h"
 #include "CScene.h"
 #include "FluidsXml.h"
+#include "settings.h"
 
 #include "OgreHlmsPbsTerraShadows.h"
 #include <OgreHlmsJsonPbs.h>
@@ -86,6 +87,9 @@ void HlmsPbs2::calculateHashForPreCreate(
 	else 
 	if (mtr.substr(0,4) == "sky/")
 		setProperty( "sky", 1 );
+
+	if (fluid)
+		setProperty( "refract", app->pSet->g.water_refract );
 
 	/*if (mtr.find("body") != String::npos)
 	{
