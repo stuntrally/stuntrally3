@@ -1,53 +1,94 @@
 Model:		gum_tree.mesh
-Url:		https://www.opengameart.org/content/gum-tree
-Artist:		lattice (OpenGameArt user)
+Artist:		lattice
 License:	CC-BY 3.0
-Date:		04/11/2010
+Date:		11/04/2010
+Url:		https://www.opengameart.org/content/gum-tree
 
 Model:		palm2.mesh
+Artist:		yughues
+License:	CC0
+Date:		03/11/2011
 Url: 		https://opengameart.org/content/palm-tree-v2
-Artist:		yughues (OpenGameArt user)
-License:	CC0 (Public Domain)
-Date:		12/23/2011
 
-
-Model:		fern.mesh
-Url: 		https://opengameart.org/content/fern-v21-double-sided-pack
-Artist:		yughues (OpenGameArt user)
-License:	CC0 (Public Domain)
-Date:		02/04/2012
-
-Model:		fern2.mesh
-Url:		https://opengameart.org/content/fern-pack
-Artist:		yughues (OpenGameArt user)
-License:	CC0 (Public Domain)
-Date:		02/05/2012
+Models:		fern.mesh, fern2.mesh
+Artist:		yughues
+License:	CC-BY 3.0
+Date:		21/05/2011
+Urls: 		https://opengameart.org/content/fern-v21-double-sided-pack
+			https://opengameart.org/content/fern-pack
 
 
 Model:		jungle_tree.mesh
-License: 	CC0 (Public domain)
-Link: 		https://www.blendswap.com/blends/plants/bge-tree/
-			https://blendswap.com/blend/2196
 Artist:		Bardes
+License: 	CC0
+Date:		27/06/2010
+Url: 		https://blendswap.com/blend/2196
 Notes:		Bark texture by OpenGameArt user yughues, licensed CC0
 			low-polying, baked textures & normals in blender by scrawl
 
 Model:		palm_plant.mesh
+Artist:		yughues
+License:	CC-BY 3.0
+Date:		18/12/2011
 Url:		https://opengameart.org/content/palm-plant
-Artist:		yughues (OpenGameArt user)
-License:	CC0 (Public Domain)
-Date:		02/05/2012
 
 Model:		plant_tropical.mesh
-Url:		https://opengameart.org/content/tropical-plant-02-0
-Artist:		yughues (OpenGameArt user)
-License:	CC0 (Public Domain)
+Artist:		yughues
+License:	CC0
 Date:		19/04/2012
+Url:		https://opengameart.org/content/tropical-plant-02-0
 
 
-9 Models:	pine1_full.mesh  pine2_tall_full  pine3_fat_full  and _half, _norm variants
+9 Models:	pine1_full.mesh,  pine2_tall_full,  pine3_fat_full  and variants: _half, _norm
 Model:		cactus.mesh
-Url:		https://opengameart.org/content/freebies-mundo-commissions
-Artist:		yughues (OpenGameArt user)
-License:	CC0 (Public Domain)
+Artist:		yughues
+License:	CC0
 Date:		18/08/2012
+Url:		https://opengameart.org/content/freebies-mundo-commissions
+
+
+-----  new  SR 3.2  -----
+
+Model:		jungle1_wide.mesh
+Artist:		TechArtBGN
+License:	CC-BY 4.0
+Date:		18/03/2024
+Url:		https://sketchfab.com/3d-models/tree-gn-40da979cb23f492583ec89c4196cff4e
+
+Model:		jungle2_wide.mesh
+Artist:		Valery.Li
+License:	CC-BY 4.0
+Date:		17/11/2021
+Url:		https://sketchfab.com/3d-models/chinese-banyan-ficus-microcarpa-2a0dbcdf8f5d48f5ad79987c7a8170ce
+
+Model:		jungle3_tall.mesh
+Artist:		rodrigo  gelmi.com.br
+License:	CC-BY 4.0
+Date:		01/08/2023
+Url:		https://sketchfab.com/3d-models/jungle-tree-b760147faadf41eabb2bb6cb85274d8a
+
+
+Model:		palm_arabic.mesh
+Artist:		rodrigo  gelmi.com.br
+License:	CC-BY 4.0
+Date:		24/06/2020
+Url:		https://sketchfab.com/3d-models/arabic-palmtree-d76f0654b92d4cf994b528555525219b
+
+Model:		palm_coconut1.mesh
+Artist:		ar.jethin  Pixel_Monster
+License:	CC-BY 4.0
+Date:		22/11/2020
+Url:		https://sketchfab.com/3d-models/coconut-tree-low-poly-8c5d6b661b2f4c37834d87cd187eb907
+
+
+Models:		bush01..05.mesh
+Artist:		yughues
+License:	CC0
+Date:		19/07/2012
+Url:		https://opengameart.org/content/bushes
+
+Models:		bush11..15.mesh
+Artist:		yughues
+License:	CC0
+Date:		08/01/2013
+Url:		https://opengameart.org/content/tropical-shrubs

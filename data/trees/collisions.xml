@@ -24,6 +24,18 @@
 
 		<object mesh= "plant_tropical.mesh" />
 		<object mesh= "palm_plant.mesh" />
+
+		<object mesh= "bush01.mesh" />
+		<object mesh= "bush02.mesh" />
+		<object mesh= "bush03.mesh" />
+		<object mesh= "bush04.mesh" />
+		<object mesh= "bush05.mesh" />
+
+		<object mesh= "bush11.mesh" />
+		<object mesh= "bush12.mesh" />
+		<object mesh= "bush13.mesh" />
+		<object mesh= "bush14.mesh" />
+		<object mesh= "bush15.mesh" />
 	</none>
 	
 <!-- old -->
@@ -199,6 +211,26 @@
 	</object>
 	<object mesh= "treeG-16birTallUp.mesh">
 		<shape type="capsZ" ofs="0.0 0.0 4" r="0.2" h="8.0" frict="0.7" restit="0.9" />
+	</object>
+
+
+<!-- jng new -->
+	<object mesh= "jungle1_wide.mesh">
+		<shape type="capsZ" ofs="0.0 0 0.0" r="0.6" h="3.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "jungle2_wide.mesh">
+		<shape type="capsZ" ofs="0.0 0 0.0" r="0.6" h="3.0" frict="0.7" restit="0.9" />
+	</object>
+
+	<object mesh= "jungle3_tall.mesh">
+		<shape type="capsZ" ofs="0 0 0.0" r="0.3" h="4.0" frict="0.7" restit="0.9" />
+	</object>
+
+	<object mesh= "palm_arabic.mesh">
+		<shape type="capsZ" ofs="0 0 0.0" r="0.2" h="4.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "palm_coconut1.mesh">
+		<shape type="capsZ" ofs="0 0 0.0" r="0.2" h="5.0" frict="0.7" restit="0.9" />
 	</object>
 
 	
