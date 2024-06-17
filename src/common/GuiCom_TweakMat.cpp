@@ -16,6 +16,7 @@
 #include <OgreHlmsCommon.h>
 #include <OgreHlmsPbsDatablock.h>
 #include <MyGUI.h>
+#include <fstream>
 #include <utility>
 using namespace MyGUI;
 using namespace Ogre;
@@ -73,25 +74,6 @@ void CGuiCom::btnMtrSave(WP)
 	if (!twk.db)  return;
 	auto* mgr = app->mRoot->getHlmsManager();
 	mgr->saveMaterial( twk.db, PATHS::MaterialsDir() +"/"+ pSet->tweak_mtr + ".json", 0, "");
-}
-
-//  save All  hlms pbs as .json
-void CGuiCom::btnMtrSaveAll(WP)
-{
-	auto* mgr = app->mRoot->getHlmsManager();
-#if 1  //  1 json
-	mgr->saveMaterials(HLMS_PBS, PATHS::MaterialsDir()+"/all.material.json", 0, "", true);  // latest
-#else  //  1 json per material-
-	HlmsPbs2 *hlmsPbs2 = static_cast<HlmsPbs2 *>( mgr->getHlms( HLMS_PBS ) );
-	const auto& dbm = hlmsPbs2->getDatablockMap();
-	for (const auto& db : dbm)
-	{
-		const auto& dbe = db.second;
-		LogO(dbe.name);
-		mgr->saveMaterial( dbe.datablock,
-			PATHS::MaterialsDir() +"/"+ dbe.name + ".material.json", 0, "");
-	}
-#endif
 }
 
 
@@ -233,7 +215,7 @@ void CGuiCom::updTweakMtr()
 
 	//----------------------------------------------------------------------------------------------------
 	StringStream s;  // info only ..
-	const static String sTypes[DB_ALL] = { "PBS", "Paint", "Fluid" };
+	const static String sTypes[DB_ALL] = { "PBS", "Paint", "Fluid", "Tree" };
 
 	s << "#C0C0C0Reflect: #E0E0E0" << (twk.db->reflect ? "yes" : "no");
 	s << "#B0C0D0   Type: #D0E0F0" << sTypes[twk.db->eType] << endl;
@@ -425,4 +407,65 @@ void CGuiCom::GetTweakMtr()
 		// unlit  not needed, wont edit
 	}
 	vsTweakMtrs = vsMaterials;
+}
+
+
+//  save All  hlms pbs as .json
+//----------------------------------------------------------------------------------------------------
+void CGuiCom::btnMtrSaveAll(WP)
+{
+	auto* mgr = app->mRoot->getHlmsManager();
+#if 0  //  1 json per material-
+	HlmsPbs2 *hlmsPbs2 = static_cast<HlmsPbs2 *>( mgr->getHlms( HLMS_PBS ) );
+	const auto& dbm = hlmsPbs2->getDatablockMap();
+	for (const auto& db : dbm)
+	{
+		const auto& dbe = db.second;
+		LogO(dbe.name);
+		mgr->saveMaterial( dbe.datablock,
+			PATHS::MaterialsDir() +"/"+ dbe.name + ".material.json", 0, "");
+	}
+#else  //  1 json
+	String file = PATHS::MaterialsDir()+"/all.material.json";
+	mgr->saveMaterials(HLMS_PBS, file, 0, "", true);  // latest
+
+	/*ifstream stream(file.c_str(), ifstream::in);
+	if (!stream.fail())
+	{	try
+		{	while(!stream.eof())
+			{
+				char ch[256+2];
+				stream.getline(ch,256);
+				string line = ch;
+				StringUtil::trim(line);
+ 
+				if (StringUtil::startsWith(line, type))
+				{
+					//LogO(line);
+					auto vec = StringUtil::split(line," \t:");
+					bool skipFirst = true;
+					for (auto it : vec)
+					{
+						string match = it;
+						StringUtil::trim(match);
+						if (!match.empty())
+						{
+							if (skipFirst)
+							{	skipFirst = false;  continue;	}
+
+							//LogO(match);
+							vsMaterials.push_back(match);						
+							break;
+						}
+					}
+			}	}
+		}catch (Ogre::Exception &e)
+		{
+			LogO("GetMaterialsMat Exception! " + e.getFullDescription());
+	}	}
+	else
+		LogO("GetMaterialsMat, can't open: " + filename);
+	stream.close();*/
+
+#endif
 }

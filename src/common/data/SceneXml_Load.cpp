@@ -216,7 +216,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		//  🌿 Grass
 		int grl = 0;
 		u = e->FirstChildElement("grass");
-		while (u)
+		while (u && grl < ciNumGrLay)
 		{
 			SGrassLayer g;
 			a = u->Attribute("on");			if (a)  g.on = s2i(a);  else  g.on = 1;
@@ -270,7 +270,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		///  🌳🪨 Vegetation
 		int pgl = 0;
 		u = e->FirstChildElement("layer");
-		while (u)
+		while (u && pgl < ciNumVegLay)
 		{
 			VegetLayer l;
 			a = u->Attribute("on");			if (a)  l.on = s2i(a);  else  l.on = 1;

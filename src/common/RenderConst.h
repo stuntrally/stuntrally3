@@ -44,7 +44,7 @@ const Ogre::uint8
 	RQG_CarGlass     = RQ_GlassV2 +4,   // 
 	RQG_Ghost        = RQ_GlassV2 +7,   // markers, debug
 
-	RQG_CarTrails    = RQ_GlassV1,      // v1 trails after glass
+	RQG_CarTrails    = RQ_7 +6,  //RQ_GlassV1,      // v1 trails after glass
 	RQG_CarParticles = RQ_GlassV1 +3,   // v1 particles after trails
 
 	RQG_Weather      = RQ_GlassV1 +5,   // v1 particles rain etc
