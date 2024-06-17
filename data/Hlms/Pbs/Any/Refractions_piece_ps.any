@@ -55,7 +55,6 @@
 
 	midf3 refractionCol = OGRE_SampleLevelF16( refractionMap, refractionMapSampler, refractUv, 0 ).xyz;
 	midf refractionDepth = OGRE_SampleLevelF16( depthTextureNoMsaa, refractionMapSampler, refractUv, 0 ).x;
-	// midf3 orgCol = refractionCol;
 
 	// We may need to fallback to regular transparency if we're sampling too close to the edges
 	// or the object being refracted is in front of us.
@@ -90,13 +89,16 @@
 	midf3 pos = tmp.xyz / tmp.w;
 	
 	midf depth = inPs.worldH - pos.y;
+	midf diff = depth;
 	// depth = min(40, max(0, depth));  // max depth
 	// depth = min(20, max(0, depth));  // max depth
 	// depth = 0.1 + min(40, max(0, 6.0 + 20.0 * depth * 0.6));  // max depth
 	depth = min(40, max(0, 6.0 + 10.0 * depth * 0.6));  // max depth
 
 	// midf3 deepFade = 1.1 * midf3(0.034, 0.022, 0.01);  // fade  blue dark
-	midf3 deepFade = 1.1 * midf3(0.04, 0.02, 0.01);  // fade  blue cyan
+	midf3 deepFade = 1.1 * midf3(0.03, 0.025, 0.015);  // fade  blue cyan
+	// midf3 deepFade = 1.1 * midf3(0.02, 0.02, 0.01);  // fade  blue clear
+	// midf3 deepFade = 1.1 * midf3(0.04, 0.02, 0.01);  // fade  blue cyan
 	// midf3 deepFade = 1.0 * midf3(0.08, 0.02, 0.01);  // fade  cyan green
 
 	// depth = midf_c( exp2( depth * 0.06 ) );  // amount
@@ -112,7 +114,7 @@
 	refractionCol.z *= 1.0 - depth * deepFade.z;
 	// pixelData.diffuse.w = max(0.0, 1.0 - depth * 0.1);  // fade alpha..
 
-
+	//  set clr
 	@property( use_texture_alpha )
 		midf refractionAlpha = midf_c( material.F0.w ) * pixelData.diffuse.w;
 	@else
@@ -120,12 +122,13 @@
 	@end
 
 	finalColour += refractionCol.xyz * (_h( 1.0 ) - refractionAlpha);
-	// diffuseCol.w = 0.1;  //? alpha border..
-	// material.F0.w = 0.1;
 
-	// finalColour = orgCol.xyz;
-	// finalColour += orgCol.xyz * (_h( 1.0 ) - refractionAlpha);
-	
+	//  fade out border
+	midf3 originalColBehindObject = OGRE_SampleLevelF16( refractionMap, refractionMapSampler, screenPosUv.xy, 0 ).xyz;
+	midf alpha = min(1.0, abs(diff) * 1.4);
+	finalColour = lerp( originalColBehindObject, finalColour, alpha );
+
+	//  test
 	// finalColour = midf3( inPs.worldH * 0.001, inPs.worldH * 0.002, 0.01 * inPs.worldH);
 	// finalColour = midf3( inPs.worldH * 10.1, inPs.worldH * 8.1, 9.1 * inPs.worldH);
 	// finalColour = midf3( depthValue * 300.0, depthValue * 1000.0, 20.0 * inPs.worldH);

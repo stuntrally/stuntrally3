@@ -1026,7 +1026,7 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 				@insertpiece( BRDF_EnvMap )
 			@end
 
-			@property( !hlms_shadowcaster && !paint && !grass && !sky )
+			@property( !hlms_shadowcaster && !paint && !grass && !sky && refract )
 				//**  applyRefractions  **
 				@insertpiece( applyRefractions )
 			@end
