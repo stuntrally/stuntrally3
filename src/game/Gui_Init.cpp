@@ -299,13 +299,22 @@ void CGui::InitGui()
 	ck= &ckDevKeys;		ck->Init("DevKeys",		&pSet->dev_keys);
 	sv= &svCarPrv;		sv->Init("CarPrv",		&gPar.carPrv, 0, 3);
 
-	Txt txt = fTxt("DevTracks");
-	string s = "";
-	for (auto t : pSet->dev_tracks)
-	{	s += t.first;
-		s += " - " + t.second + "\n";
+	const char* ch = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	int len = strlen(ch);
+	for (int i=0; i < len; ++i)
+	{
+		string s = "DevTrk";
+		char c = ch[i];
+		s += string{c};
+		Cmb cb = fCmb(s);
+		if (cb->eventComboAccept.empty())
+			cb->eventComboAccept += newDelegate(this, &CGui::comboDevTrk);
+
+		// cb->addItem("");
+		auto f = pSet->dev_tracks.find(c);
+		if (f != pSet->dev_tracks.end())
+			cb->setCaption((*f).second);
 	}
-	txt->setCaption(s);
 
 
 	//  🔨 Game  ------------------------------------------------------------

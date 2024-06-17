@@ -579,3 +579,13 @@ void CGui::btnTweakTireReset(WP)
 	pGame->reloadSimNeed = true;
 	txtTweakTire->setCaption(TR("#FF9030#{Reset}."));
 }
+
+
+void CGui::comboDevTrk(Cmb wp,  size_t val)
+{
+	string s = wp->getName();
+	s = s.substr(6,1);  // "DevTrk_"
+	char c = s[0];
+	pSet->dev_tracks[c] = wp->getCaption();
+	LogO(s+" "+wp->getCaption());
+}
