@@ -117,18 +117,19 @@ void App::CreateObjects()
 	const static int dirCnt = 7;
 	const static char* dirs[dirCnt] = {  // add also in all resources2.cfg
 		"objects", "rocks", "objects2", "obstacles", "objects0", "objectsC", "rockshex"};
+	
 	for (auto& o : objExists)
 	{
 		o.second = false;
 		for (int d=0; d < dirCnt; ++d)
-			if (PATHS::FileExists(PATHS::Data() +"/"+ dirs[d] +"/"+ o.first + ".mesh"))
+			if (PATHS::FileExists(PATHS::Models() +"/"+ dirs[d] +"/"+ o.first + ".mesh"))
 			{	o.second = true;  break;  }
 
 		if (!o.second)
 			LogO("Warning: CreateObjects mesh doesn't exist: " + o.first + ".mesh");
 	}
 	for (auto& ob : objHasBlt)
-		ob.second = PATHS::FileExists(PATHS::Data() +"/"+ dirs[0] +"/"+ ob.first + ".bullet");
+		ob.second = PATHS::FileExists(PATHS::Models() +"/"+ dirs[0] +"/"+ ob.first + ".bullet");
 
 
 	//  loader
@@ -209,7 +210,7 @@ void App::CreateObjects()
 			fileLoader->mTrOfs.setOrigin(btVector3(o.pos[0],o.pos[1],o.pos[2]));
 			fileLoader->mTrOfs.setRotation(btQuaternion(o.rot[0],o.rot[1],o.rot[2],o.rot[3]));
 			//fileLoader->setVerboseMode(true);//
-			std::string file = PATHS::Data()+"/objects/"+o.name+".bullet";
+			std::string file = PATHS::Objects() + o.name + ".bullet";
 
 			if (fileLoader->loadFile(file.c_str()))
 			{
@@ -496,7 +497,7 @@ void App::AddNewObj(bool getName)  //App..
 		o.nd->setScale(o.scale);
 		o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Vegetation);
 
-		o.dyn = PATHS::FileExists(PATHS::Data()+"/objects/"+ o.name + ".bullet");
+		o.dyn = PATHS::FileExists(PATHS::Objects() + o.name + ".bullet");
 		scn->sc->objects.push_back(o);
 	}
 	catch (Exception ex)
@@ -620,7 +621,7 @@ void App::SetObjNewType(int tnew)
 	if (objNew.it)	{	mSceneMgr->destroyItem(objNew.it);  objNew.it = 0;  }
 	
 	String name = vObjNames[iObjTNew];
-	objNew.dyn = PATHS::FileExists(PATHS::Data()+"/objects/"+ name + ".bullet");
+	objNew.dyn = PATHS::FileExists(PATHS::Objects() + name + ".bullet");
 	if (objNew.dyn)  objNew.scale = Vector3::UNIT_SCALE;  // dyn no scale
 	try
 	{	objNew.it = mSceneMgr->createItem(name + ".mesh");

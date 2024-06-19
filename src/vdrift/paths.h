@@ -36,9 +36,13 @@ public:
 	static std::string Bin() {             return game_bin; }  // exe
 	static std::string Data() {            return game_data; }
 	static std::string DataUser() {        return user_data + "/data";  }
+
+	static std::string Models() {          return game_data + "/models";  }
+	static std::string Objects() {         return game_data + "/models/objects/";  }
+	static std::string Terrain() {         return game_data + "/textures/terrain";  }
+
 	static std::string Tracks() {          return game_data + "/tracks";  }
 	static std::string TracksUser() {      return user_data + "/tracks";  }
-	static std::string Terrain() {         return game_data + "/textures/terrain"; }
 
 	static std::string CarSim() {          return game_data + "/carsim";  }
 	static std::string CarSimU() {         return user_data + "/data/carsim";  }

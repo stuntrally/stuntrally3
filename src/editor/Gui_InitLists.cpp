@@ -31,8 +31,8 @@ using namespace std;
 void CGui::InitGuiLists() 
 {
 	///  Fill Combo boxes  . . . . . . .
-	string sData = PATHS::Data();
-	String sMat = sData +"/materials/Pbs/";  // path
+	String sMat = PATHS::Data() +"/materials/Pbs/";  // path
+	string sModels = PATHS::Models(), sObjects = PATHS::Objects();
 	int u,n;
 	Btn btn;  Ck* ck;
 
@@ -90,8 +90,8 @@ void CGui::InitGuiLists()
 
 	//---------------------  📦 Objects  ---------------------
 	app->vObjNames.clear();  strlist lo;
-	PATHS::DirList(sData + "/objects2", lo);
-	PATHS::DirList(sData + "/objects", lo);
+	PATHS::DirList(sModels + "/objects2", lo);
+	PATHS::DirList(sObjects, lo);
 	for (auto q : lo)
 		if (StringUtil::endsWith(q, ".mesh"))
 		{	string name = q.substr(0, q.length()-5);  //no .ext
@@ -109,7 +109,7 @@ void CGui::InitGuiLists()
 
 	for (u=0; u < app->vObjNames.size(); ++u)
 	{	const string& name = app->vObjNames[u];
-		if (name != "sphere" && PATHS::FileExists(sData+"/objects/"+ name + ".bullet"))
+		if (name != "sphere" && PATHS::FileExists(sObjects +"/"+ name + ".bullet"))
 			objListDyn->addItem("#A0E0FF"+name);  // dynamic
 	}
 	
@@ -122,12 +122,12 @@ void CGui::InitGuiLists()
 		std::map<string, int> cats;  // yeah cats are fun
 		int b0 = app->vBuildings.size();
 		lo.clear();
-		PATHS::DirList(sData + path, lo);
+		PATHS::DirList(sModels + path, lo);
 
 		for (const auto& q : lo)
 			if (StringUtil::endsWith(q,".mesh"))
 			{	string name = q.substr(0, q.length()-5);  //no .ext
-				if (name != "sphere" && !PATHS::FileExists(sData+"/objects/"+ name + ".bullet"))
+				if (name != "sphere" && !PATHS::FileExists(sObjects +"/"+ name + ".bullet"))
 				{	// no dynamic
 
 					string cat;

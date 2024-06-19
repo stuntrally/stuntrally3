@@ -253,11 +253,11 @@ bool PATHS::CreateDir(const string& path)
 	return true;
 }
 
-
+//  Folder listing
 bool PATHS::DirList(string dirpath, strlist& dirlist, string extension)
 {
-//------Folder listing code for POSIX
 #ifndef _WIN32
+	//------  Linux
 	DIR *dp;
 	struct dirent *ep;
 	dp = opendir(dirpath.c_str());
@@ -277,7 +277,7 @@ bool PATHS::DirList(string dirpath, strlist& dirlist, string extension)
 	else
 		return false;
 #else
-//------Folder listing for WIN32
+	//------  Windows
 	HANDLE          hList;
 	CHAR            szDir[MAX_PATH+1];
 	WIN32_FIND_DATAA FileData;
@@ -308,10 +308,9 @@ bool PATHS::DirList(string dirpath, strlist& dirlist, string extension)
 		}
 	}
 	FindClose(hList);
-#endif
-//------End
+#endif  //------  End
 	
-	// remove non-matcthing extensions
+	// remove non-matching extensions
 	if (!extension.empty())
 	{
 		list <list <string>::iterator> todel;
