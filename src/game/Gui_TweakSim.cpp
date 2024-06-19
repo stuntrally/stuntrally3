@@ -323,12 +323,14 @@ void CGui::TweakColSave()
 	text = StringUtil::replaceAll(text, "##", "#");
 	//text = StringUtil::replaceAll(text, "#E5F4FF", "");  //!
 
-	std::string path = PATHS::DataUser() + "/trees";
+	std::string path = PATHS::DataUser() + "/models";
 	PATHS::CreateDir(path);
 	path += "/collisions.xml";
+	
 	std::ofstream fo(path.c_str());
 	fo << text.c_str();
 	fo.close();
+	
 	TweakColUpd(true);
 	
 	app->scn->data->objs->LoadXml();
@@ -345,7 +347,7 @@ void CGui::TweakColUpd(bool user)
 void CGui::TweakColLoad()
 {
 	bool user = true;
-	std::string name = "/trees/collisions.xml",  // user
+	std::string name = "/models/collisions.xml",  // user
 		file = PATHS::DataUser() + name;
 	if (!PATHS::FileExists(file))  // original
 	{	file = PATHS::Data() + name;  user = false;  }
@@ -366,7 +368,8 @@ void CGui::TweakColLoad()
 	MyGUI::InputManager::getInstance().setKeyFocusWidget(edTweakCol);
 }
 
-void CGui::btnTweakColSave(WP){	TweakColSave();  }
+void CGui::btnTweakColSave(WP)
+{	TweakColSave();  }
 
 
 ///  Tweak read / save file

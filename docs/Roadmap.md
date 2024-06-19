@@ -56,7 +56,11 @@ broken mygui set scrollview size, gallery list
 
 ----
 ### Ogre new
-🪄 Effects: **Soft** Particles, **SSAO**, HDR, bloom, rays?  
+🪄 Effects: **Soft** Particles  
+**SSAO**, HDR, bloom  
+lens flare [shaders](https://www.shadertoy.com/results?query=lens+flare)  
+sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
+
 🌀 Add [FastNoise](https://github.com/Auburn/FastNoiseLite) for brushes and ter gen  
 
 🌊 Ocean from Terra, **waves**, vehicle deform, particles  

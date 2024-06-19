@@ -14,7 +14,7 @@ bool BltObjects::LoadXml()
 	colsMap.clear();
 	colsMapFind = colsMap.end();
 	
-	std::string name = "/trees/collisions.xml",  // user
+	std::string name = "/models/collisions.xml",  // user
 		file = PATHS::DataUser() + name;
 	if (!PATHS::FileExists(file))  // original
 		file = PATHS::Data() + name;

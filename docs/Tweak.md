@@ -76,7 +76,7 @@ This can be set in in `game.cfg` under `tweak_tracks` for each digit/letter key.
 As shown on previous screen, you can see yellow capsule shapes for palms.   
 We use such simple shapes for trees. No need for full trimesh and should be faster.
 
-Editing those tree collisions, is done in game, file collisions.xml.
+Editing those tree collisions, is done in game, file [collisions.xml](../data/models/collisions.xml).
 
 Open Tweak window and switch to collisions tab, to edit that file.   
 Shift-Alt-Z will save your modifications, and restart game.   
