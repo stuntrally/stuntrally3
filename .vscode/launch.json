@@ -12,6 +12,14 @@
 			"program": "${workspaceFolder}/bin/Debug/stuntrally3",
 			"cwd": "${workspaceFolder}/bin/Debug/"
 		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "game Debug 2 mplr lldb",
+			"args": ["2"],
+			"program": "${workspaceFolder}/bin/Debug/stuntrally3",
+			"cwd": "${workspaceFolder}/bin/Debug/"
+		},
 		// {
 		// 	"type": "gdb",
 		// 	"request": "launch",

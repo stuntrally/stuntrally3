@@ -11,8 +11,10 @@ This section lists changes not yet released, but committed to repositories stunt
   - New tab on Setup - Paints - Adjust - **Under glow** for color H,S,V
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
   - 3D win cups shown on game end
-- Gui
-  - Tracks view new modes: gallery and gallery list
+  - Gui shows small track previews for game track / series
+- Both
+  - *WIP* Water refraction and depth color ..
+  - Gui Tracks view, new mode: gallery
 - Editor
   - Edit mode for Collection, key Y  
     - Insert/remove gems, move, scale
