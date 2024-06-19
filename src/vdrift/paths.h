@@ -38,6 +38,7 @@ public:
 	static std::string DataUser() {        return user_data + "/data";  }
 	static std::string Tracks() {          return game_data + "/tracks";  }
 	static std::string TracksUser() {      return user_data + "/tracks";  }
+	static std::string Terrain() {         return game_data + "/textures/terrain"; }
 
 	static std::string CarSim() {          return game_data + "/carsim";  }
 	static std::string CarSimU() {         return user_data + "/data/carsim";  }
@@ -46,7 +47,7 @@ public:
 	static std::string Replays() {         return user_data + "/replays";  }
 	static std::string Ghosts() {          return user_data + "/ghosts";  }
 	static std::string TrkGhosts() {       return game_data + "/ghosts";  }
-	static std::string Lessons() {         return game_data + "/lessons";  }
+	static std::string Lessons() {         return game_data + "/ghosts/lessons";  }
 
 	static std::string Records() {         return user_data + "/records";  }
 	static std::string Sounds() {          return game_data + "/sounds";  }

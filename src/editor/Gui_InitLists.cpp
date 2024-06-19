@@ -66,7 +66,7 @@ void CGui::InitGuiLists()
 	Cmb(cmbTexNorm, "TexNormal", comboTexNorm);  cmbTexNorm->addItem("flat_n.png");
 
 	strlist li;
-	PATHS::DirList(sData + "/terrain", li);
+	PATHS::DirList(PATHS::Terrain(), li);
 	for (const auto& q : li)
 	{
 		if (StringUtil::match(q, "*_n.*", false))

@@ -92,7 +92,7 @@ void CScene::CreateTerrain1(int n)
 		// di.layerList[i].worldSize = l.tiling;
 
 		//  combined rgb,a from 2 tex
-		String path = PATHS::Data() + "/terrain/";
+		String path = PATHS::Terrain()+"/";
 		String d_d, d_s, d_r, n_n, n_s, fname;
 		
 		//  diffuse  ----

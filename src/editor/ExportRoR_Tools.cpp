@@ -36,7 +36,7 @@ using namespace std;
 void ExportRoR::ConvertTerrainTex()
 {
 	Ogre::Timer ti;
-	const String pathTer = PATHS::Data() + "/terrain/";
+	const String pathTer = PATHS::Terrain()+"/";
 
 	//  Gui status
 	gui->Status("Convert Terrain", 0.7,0.5,1);
@@ -531,7 +531,7 @@ void ExportRoR::ListPacks()
 void ExportRoR::ConvertTerTex(const String& inDiff, const String& inNorm,
 	const String& pathTo, String& outDiffS, String& outNormH, bool copy)
 {
-	String pathTer = PATHS::Data() + "/terrain/";
+	String pathTer = PATHS::Terrain()+"/";
 
 	//  diffuse _d, normal _n, specular _s
 	String d_d, d_s, d_r, n_n, n_s;
