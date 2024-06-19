@@ -4,6 +4,7 @@ _Todo:_ Renew screenshots {{..
 
    
 #### Introduction ####
+
 This Wiki describes the .car file format (car settings), car parameters inside of it and what editing them does.
 
 You can either use this when tweaking existing cars or if you modeled a car,  
@@ -11,6 +12,7 @@ use it to put car in game properly with physics _(or you can also leave this par
 
    
 #### Editing .car file ####
+
 This part explains .car file sections, adjusting those car parameters and fitting model.
 
 Stunt Rally .car file is based on VDrift .car file from older version (April 2010).   
@@ -19,6 +21,7 @@ _For reference base, you can read [VDrift wiki](http://wiki.vdrift.net/index.php
 
    
 ### Location ###
+
 Since we have simulation modes (currently 2: easy and normal) there are 2 .car files (1 for each mode).
 
 data/carsim/easy/cars/3S/3S.car  
@@ -292,7 +295,7 @@ exhaust-mirror-second = 1
 
 There is a visualisation for body collision in game (bullet debug, use it when editing).
 
-{{http:_stuntrally.tuxfamily.org/uploads/images/wiki/5.jpg}}
+![](images/5.jpg)
 
 Editing collison H params is quite tricky since most of them are relative to some other values (and may depend on something else).
 
@@ -367,9 +370,10 @@ friction = 230
 
 
 ## Section t, - torque curve ##
+
 Graph used to visualize the curves (engine torque and power from rpm):
 
-{{http:_stuntrally.tuxfamily.org/uploads/images/wiki/6.jpg}}
+![](images/6.jpg)
 
   * _torque-val-mul_ - is the global multiplier (scales all points torque values) and can quickly change car's engine power
 
@@ -410,7 +414,7 @@ max-torque-mul = 1.1
 
 Useful graph for visualising all gear ratios with torque curve from car speed.
 
-{{http:_stuntrally.tuxfamily.org/uploads/images/wiki/7.jpg}}
+![](images/7.jpg)
 
 It also shows at which rpm will gears auto shift (rpmLow) and until which speed will gear work (velMax).
 
@@ -485,7 +489,7 @@ torque-dec - anti-slip-torque-deceleration-factor
 
 There is a graph visualising current suspension positions for all wheels and next for suspension move velocities.
 
-{{http:_stuntrally.tuxfamily.org/uploads/images/wiki/8.jpg}}
+![](images/8.jpg)
 
   * _spring-constant_ - is the wheel rate (in N/m).
 
@@ -558,7 +562,8 @@ handbrake = 4.8
 
    
 ### Aerodynamics ###
-{{http:_stuntrally.tuxfamily.org/uploads/images/wiki/9.jpg}}
+
+![](images/9.jpg)
 
 Aerodynamics is quite important and determines car path when flying after jump and car handling at higher speeds (downforce), since tire forces depend on down force it should make car "stick" more to ground when driving faster.
 
@@ -604,6 +609,7 @@ efficiency = 0.92
 
    
 ### Hood camera ###
+
 Probably last thing to adjust is the position of driver and hood cameras (which are specific to each car):
 
 When changing those: switch to that camera, adjust it's position (LMB, RMB, ..) and pick those values from camera info text.

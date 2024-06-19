@@ -2,6 +2,7 @@ _Various tools and visualizations to tweak game._
 
 
 ## Tools list
+
 This Wiki describes most tools available in game (found on Tweak tab).   
 How to use them and what are they for.   
 Mainly they are helpful in visualizing the result of edited .car sections.
@@ -22,9 +23,11 @@ They are listed here for quick guide:
 
    
 #### Common
+
 In game and editor.
 
 ### Fps bar
+
 Cycle Fps bar mode with F11.  
 
 This small left top bar shows values (that change, especially when moving), in default mode:
@@ -36,6 +39,7 @@ This small left top bar shows values (that change, especially when moving), in d
 This is better explained on Gui for each mode.
 
 ### Wireframe
+
 Toggle 🌐 wireframe mode with F10.  
 It is useful to check how dense are triangles in car/wheel model (or also for whole track).
 
@@ -44,15 +48,16 @@ It is useful to check how dense are triangles in car/wheel model (or also for wh
 
    
 ### Bullet Debug Lines
+
 This is useful to check and adjust the shape of car body that collides.  
 To use bullet lines first check the global (Startup) option, and restart game.
 
-{{http://stuntrally.tuxfamily.org/uploads/images/wiki/1.jpg}}
+![](images/1.jpg)
 
    
 If game was started with it enabled, you can toggle bullet debug lines with Ctrl-F10 or the next checkbox.
 
-{{http://stuntrally.tuxfamily.org/uploads/images/wiki/2.jpg}}
+![](images/2.jpg)
 
 If you just need to edit car collision, don't use official tracks.   
 _They have a lot of vegetation and it will be horribly slow to draw all lines (and this stays until you quit and restart game)._   
@@ -85,6 +90,7 @@ See the top of this file for more info (e.g. how to disable collision or use ful
 
    
 ### Car file Editor
+
 Editing car settings (.car file) is done in game.
 ```
 Alt-Z - toggles car editor in game.
@@ -102,6 +108,7 @@ where mode is current simulation mode (easy or normal).
 
    
 ### Graphs
+
 Graphs in game can be used to test more advanced car behaviour and simulation.
 
 Press F9 to show/hide, F2,F3 will cycle through various graph types. Or use Gui to pick from combo.
@@ -112,13 +119,14 @@ Those are explained more in [VehicleEditing](VehicleEditing.md).
 
    
 ### Car debug Text
+
 This was the first simulation visualisation and it is still useful if you want to check the values (if they don't change too fast).
 
 Use this checkbox to toggle it or Shift-F9.
 
 On Gui you can also change how many text sections are displayed and change text color to black or white.
 
-{{http://stuntrally.tuxfamily.org/uploads/images/wiki/3.jpg}}
+![](images/3.jpg)
 
    
 ### Performance test
@@ -139,7 +147,7 @@ Most of those stats are then shown in info panel on Gui when when picking car in
 
 _Run it for each sim mode (provided you made it different as game requires). See bottom of page for differences list._
 
-{{http://stuntrally.tuxfamily.org/uploads/images/wiki/4.jpg}}
+![](images/4.jpg)
 
 
    
@@ -148,13 +156,14 @@ _Run it for each sim mode (provided you made it different as game requires). See
    
 ### Surfaces
 
-{{http://stuntrally.tuxfamily.org/uploads/images/wiki/12.jpg}}
+![](images/12.jpg)
 
    
 ### Tires
-{{http://stuntrally.tuxfamily.org/uploads/images/wiki/10.jpg}}
 
-{{http://stuntrally.tuxfamily.org/uploads/images/wiki/11.jpg}}
+![](images/10.jpg)
+
+![](images/11.jpg)
 
 Tire editing is meant only for people with good knowledge of simulation, who know Pacejka Magic Formula.
 
