@@ -3,7 +3,7 @@
 ; CHANGE to yours when starting script
 !define BINARY_DIR "d:\_\sr\SR3_inst\sr"
 ; also change Release Version
-!define PRODUCT_VERSION "3.1"
+!define PRODUCT_VERSION "3.2"
 
 ; redist path should contain both VC_redist.x86.exe and VC_redist.x64.exe
 ; got from https://learn.microsoft.com/en-GB/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2015-2017-2019-and-2022
