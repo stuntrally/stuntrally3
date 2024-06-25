@@ -8,16 +8,20 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-🌊Water refract, depth, WIP  
+🌊**Water** refract, depth  
+split json, all fluids json, no refract option  
+add refract clr, depth clr params  
+underwater top, fix depth, pass projmatrix not inverse  
+fix compositor, particles etc  
 SSAO?  
 
-?multiplayer [issue](https://github.com/stuntrally/stuntrally3/issues/28)  
-fix .car thrusters lights pos, boost count  
+bushes, lods, add to tracks  
+🌳new jungle trees, lods  
 
-Add **gems** to tracks  
-more collect types 3d  
+Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
 
+`fix` .car thrusters lights pos, boost count  
 hud new best time show, win particles-  
 ed Fields: accel par, dir, teleport end  
 
@@ -47,6 +51,7 @@ Road wall types, [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)
 
 Remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
 🌳 New jungle [**Trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), Bushes, more vegetation, tiny close, grasses, rock packs  
+
 redo or replace lowest quality meshes: shroom* 🍄, skyscraper* 🏢  
 normalize .mesh scales fir*, etc.  
 
