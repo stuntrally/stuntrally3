@@ -8,17 +8,16 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-🌊**Water** refract, depth  
-split json, all fluids json, no refract option  
+split json, 🌊all **fluids** json, no refract option  
 add refract clr, depth clr params  
-underwater top, fix depth, pass projmatrix not inverse  
-fix compositor, particles etc  
+underwater top, pass projmatrix not inverse  
+fix compositor, hud3d, particles etc  
 SSAO?  
 
-bushes, lods, add to tracks  
+🌿bushes, lods, add to tracks  
 🌳new jungle trees, lods  
 
-Add **gems** to tracks, more types 3d  
+💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
 
 `fix` .car thrusters lights pos, boost count  
