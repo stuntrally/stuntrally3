@@ -28,13 +28,13 @@
 										  refractF0, pixelData.NdotV ).xy;
 	float2 refractUv = screenPosUv.xy + float2( refractNormal2d.xy ) *
 					   float2( material.refractionStrength,
-							   material.refractionStrength * passBuf.aspectRatio )
+							   material.refractionStrength * passBuf.aspectRatio * 0.2)  //par`
 					//  new
-					//	/ 10.0;  // const strong
+					// / 10.0;  // const strong
 					// / (10.0 + -inPs.pos.z * 0.5);  // soft
-						// / (10.0 + -inPs.pos.z * 0.2) * 2.0;  // soft
-					//	/ (1.0 + -inPs.pos.z * 0.2);  // ok
-						// / (1.0 + max(12.0, -inPs.pos.z * 0.2));  // ok
+					// / (10.0 + -inPs.pos.z * 0.2) * 2.0;  // soft
+					// / (1.0 + -inPs.pos.z * 0.2);  // ok``
+					// / (1.0 + max(12.0, -inPs.pos.z * 0.2));  // ok
 					// / (1.0 + max(5.0, -inPs.pos.z * 0.1));  // no-
 					//  org
 					//   / ( (-inPs.pos.z + 1.0) * (-inPs.pos.z + 1.0) );  // org - none far, bad near
@@ -50,7 +50,7 @@
 					//   / ( min(-71.0, max(-1.0, -inPs.pos.z)) * 1.0 + 1.0);  // ~ soft near, ok far
 					//   / ( min(-21.0, max(-11.0, -inPs.pos.z)) * 0.7 + 1.0);  // *- tiny strong
 					//   / ( min(-41.0, max(-2.0, -inPs.pos.z)) * 0.7 + 1.0);  // ^ nice near, strong far
-	refractUv.y += 0.07;  // try fix top mess`-
+	//refractUv.y += 0.07;  // try fix top mess y -no
 	float2 refractUvOrg = refractUv;
 
 	midf3 refractionCol = OGRE_SampleLevelF16( refractionMap, refractionMapSampler, refractUv, 0 ).xyz;
@@ -82,10 +82,11 @@
 	// refractionCol.y *= 0.9f;
 
 	//  depth  ------
-	midf depthValue = OGRE_SampleLevelF16( depthTextureNoMsaa, refractionMapSampler, screenPosUv.xy, 0 ).x;
-	// midf4 ndc = midf4( screenPosUv.xy * 2.0 - 1.0, depthValue, 1.0 );  // normal
-	midf4 ndc = midf4( refractUvOrg.xy * 2.0 - 1.0, depthValue, 1.0 );  // refracted ?
-	midf4 tmp = mul( ndc, inverse( passBuf.viewProj ) );  // worldViewProj-
+	// midf depthValue = OGRE_SampleLevelF16( depthTextureNoMsaa, refractionMapSampler, screenPosUv.xy, 0 ).x;  // normal-
+	// midf4 ndc = midf4( screenPosUv.xy * 2.0 - 1.0, depthValue, 1.0 );  // normal-
+	midf depthValue = OGRE_SampleLevelF16( depthTextureNoMsaa, refractionMapSampler, refractUvOrg.xy, 0 ).x;  // refracted
+	midf4 ndc = midf4( refractUvOrg.xy * 2.0 - 1.0, depthValue, 1.0 );  // refracted
+	midf4 tmp = mul( ndc, inverse( passBuf.viewProj ) );  // worldViewProj-  // todo atmo. pass matrix..
 	midf3 pos = tmp.xyz / tmp.w;
 	
 	midf depth = inPs.worldH - pos.y;
@@ -96,10 +97,10 @@
 	depth = min(40, max(0, 6.0 + 10.0 * depth * 0.6));  // max depth
 
 	// midf3 deepFade = 1.1 * midf3(0.034, 0.022, 0.01);  // fade  blue dark
-	midf3 deepFade = 1.1 * midf3(0.03, 0.025, 0.015);  // fade  blue cyan
+	// midf3 deepFade = 1.1 * midf3(0.03, 0.025, 0.015);  // fade  blue cyan
 	// midf3 deepFade = 1.1 * midf3(0.02, 0.02, 0.01);  // fade  blue clear
 	// midf3 deepFade = 1.1 * midf3(0.04, 0.02, 0.01);  // fade  blue cyan
-	// midf3 deepFade = 1.0 * midf3(0.08, 0.02, 0.01);  // fade  cyan green
+	midf3 deepFade = 1.0 * midf3(0.06, 0.02, 0.01);  // fade  cyan green
 
 	// depth = midf_c( exp2( depth * 0.06 ) );  // amount
 	// depth = min(1.0, max(0.0, depth));  // max depth
@@ -124,14 +125,17 @@
 	finalColour += refractionCol.xyz * (_h( 1.0 ) - refractionAlpha);
 
 	//  fade out border
-	midf3 originalColBehindObject = OGRE_SampleLevelF16( refractionMap, refractionMapSampler, screenPosUv.xy, 0 ).xyz;
-	midf alpha = min(1.0, abs(diff) * 1.4);
-	finalColour = lerp( originalColBehindObject, finalColour, alpha );
+	midf3 originalCol = OGRE_SampleLevelF16( refractionMap, refractionMapSampler, screenPosUv.xy, 0 ).xyz;
+	midf alpha = min(1.0, abs(diff) * 6.4);
+	finalColour = lerp( originalCol, finalColour, alpha );
 
 	//  test
 	// finalColour = midf3( inPs.worldH * 0.001, inPs.worldH * 0.002, 0.01 * inPs.worldH);
 	// finalColour = midf3( inPs.worldH * 10.1, inPs.worldH * 8.1, 9.1 * inPs.worldH);
-	// finalColour = midf3( depthValue * 300.0, depthValue * 1000.0, 20.0 * inPs.worldH);
+	// finalColour = midf3( depthValue * 300.0, depthValue * 1000.0, 20.0 * inPs.worldH);  //`
+	// finalColour = midf3( pos.y * 70.1, -inPs.worldH * 51.0, 30.1 * inPs.worldH);  //`-
+	// finalColour = midf3( depth * 0.1, diff * 0.1, 1.1 * atmo.fogHcolor.x);  //
+	// finalColour = midf3(alpha, alpha, alpha);
 
 @end
 @end
