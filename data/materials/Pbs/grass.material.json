@@ -20,18 +20,6 @@
 
 	"macroblocks" :
 	{
-		"Macroblock_0" :
-		{
-			"scissor_test" : false,
-			"depth_clamp" : false,
-			"depth_check" : true,
-			"depth_write" : true,
-			"depth_function" : "less_equal",
-			"depth_bias_constant" : 0,
-			"depth_bias_slope_scale" : 0,
-			"cull_mode" : "clockwise",
-			"polygon_mode" : "solid"
-		},
 		"Macroblock_2" :
 		{
 			"scissor_test" : false,
@@ -42,102 +30,6 @@
 			"depth_bias_constant" : 0,
 			"depth_bias_slope_scale" : 0,
 			"cull_mode" : "none",
-			"polygon_mode" : "solid"
-		},
-		"Macroblock_4" :
-		{
-			"scissor_test" : false,
-			"depth_clamp" : false,
-			"depth_check" : true,
-			"depth_write" : true,
-			"depth_function" : "less_equal",
-			"depth_bias_constant" : 3,
-			"depth_bias_slope_scale" : 0,
-			"cull_mode" : "clockwise",
-			"polygon_mode" : "solid"
-		},
-		"Macroblock_7" :
-		{
-			"scissor_test" : false,
-			"depth_clamp" : false,
-			"depth_check" : false,
-			"depth_write" : false,
-			"depth_function" : "less_equal",
-			"depth_bias_constant" : 0,
-			"depth_bias_slope_scale" : 0,
-			"cull_mode" : "none",
-			"polygon_mode" : "solid"
-		},
-		"Macroblock_8" :
-		{
-			"scissor_test" : false,
-			"depth_clamp" : false,
-			"depth_check" : true,
-			"depth_write" : false,
-			"depth_function" : "less_equal",
-			"depth_bias_constant" : 0,
-			"depth_bias_slope_scale" : 0,
-			"cull_mode" : "none",
-			"polygon_mode" : "solid"
-		},
-		"Macroblock_9" :
-		{
-			"scissor_test" : false,
-			"depth_clamp" : false,
-			"depth_check" : true,
-			"depth_write" : false,
-			"depth_function" : "less_equal",
-			"depth_bias_constant" : 0,
-			"depth_bias_slope_scale" : 0,
-			"cull_mode" : "clockwise",
-			"polygon_mode" : "solid"
-		},
-		"Macroblock_13" :
-		{
-			"scissor_test" : false,
-			"depth_clamp" : false,
-			"depth_check" : true,
-			"depth_write" : true,
-			"depth_function" : "less_equal",
-			"depth_bias_constant" : 3,
-			"depth_bias_slope_scale" : 0,
-			"cull_mode" : "none",
-			"polygon_mode" : "solid"
-		},
-		"Macroblock_14" :
-		{
-			"scissor_test" : false,
-			"depth_clamp" : false,
-			"depth_check" : true,
-			"depth_write" : false,
-			"depth_function" : "less_equal",
-			"depth_bias_constant" : 3,
-			"depth_bias_slope_scale" : 0,
-			"cull_mode" : "none",
-			"polygon_mode" : "solid"
-		},
-		"Macroblock_15" :
-		{
-			"scissor_test" : false,
-			"depth_clamp" : false,
-			"depth_check" : true,
-			"depth_write" : false,
-			"depth_function" : "less_equal",
-			"depth_bias_constant" : 3,
-			"depth_bias_slope_scale" : 0,
-			"cull_mode" : "clockwise",
-			"polygon_mode" : "solid"
-		},
-		"Macroblock_17" :
-		{
-			"scissor_test" : false,
-			"depth_clamp" : false,
-			"depth_check" : true,
-			"depth_write" : false,
-			"depth_function" : "less_equal",
-			"depth_bias_constant" : 3,
-			"depth_bias_slope_scale" : 0,
-			"cull_mode" : "anticlockwise",
 			"polygon_mode" : "solid"
 		}
 	},
