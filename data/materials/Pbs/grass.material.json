@@ -1,36 +1,6 @@
 {
 	"samplers" :
 	{
-		"Sampler_10" :
-		{
-			"min" : "anisotropic",
-			"mag" : "anisotropic",
-			"mip" : "anisotropic",
-			"u" : "wrap",
-			"v" : "wrap",
-			"w" : "wrap",
-			"miplodbias" : 0,
-			"max_anisotropic" : 8,
-			"compare_function" : "disabled",
-			"border" :[1, 1, 1, 1],
-			"min_lod" : -3.4028235e+38,
-			"max_lod" : 3.4028235e+38
-		},
-		"Sampler_Sky" :
-		{
-			"min" : "anisotropic",
-			"mag" : "anisotropic",
-			"mip" : "anisotropic",
-			"u" : "mirror",
-			"v" : "mirror",
-			"w" : "mirror",
-			"miplodbias" : 0,
-			"max_anisotropic" : 8,
-			"compare_function" : "disabled",
-			"border" :[1, 1, 1, 1],
-			"min_lod" : -3.4028235e+38,
-			"max_lod" : 3.4028235e+38
-		},
 		"Sampler_Grass" :
 		{
 			"min" : "anisotropic",
@@ -233,7 +203,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "alienPlant01a.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -266,7 +236,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "alienPlant01b.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -299,7 +269,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "flower01.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -328,7 +298,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "flower01b.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -357,7 +327,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "flower02.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -386,7 +356,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "flower02AnomalyA.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -419,7 +389,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "flower02AnomalyB.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -448,7 +418,7 @@
 				"value" : [0.5, 0.5, 0.4],
 				"background" : [1, 1, 1, 1],
 				"texture" : "flower02AnomalyC.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -477,7 +447,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "flower03.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -2677,7 +2647,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "seaweed01.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -2706,7 +2676,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "seaweed02.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -2735,7 +2705,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "seaweed03.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -2764,7 +2734,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "seaweedTall01.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -2793,7 +2763,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "seaweedTall02.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -2822,7 +2792,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "seaweedTall03.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -2851,7 +2821,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "seaweedTall04.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
@@ -2880,7 +2850,7 @@
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
 				"texture" : "seaweedTall05.png",
-				"sampler" : "Sampler_10"
+				"sampler" : "Sampler_Grass"
 			},
 			"specular" :
 			{
