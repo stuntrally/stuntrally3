@@ -15,36 +15,6 @@
 			"border" :[1, 1, 1, 1],
 			"min_lod" : -3.4028235e+38,
 			"max_lod" : 3.4028235e+38
-		},
-		"Sampler_Sky" :
-		{
-			"min" : "anisotropic",
-			"mag" : "anisotropic",
-			"mip" : "anisotropic",
-			"u" : "mirror",
-			"v" : "mirror",
-			"w" : "mirror",
-			"miplodbias" : 0,
-			"max_anisotropic" : 8,
-			"compare_function" : "disabled",
-			"border" :[1, 1, 1, 1],
-			"min_lod" : -3.4028235e+38,
-			"max_lod" : 3.4028235e+38
-		},
-		"Sampler_Grass" :
-		{
-			"min" : "anisotropic",
-			"mag" : "anisotropic",
-			"mip" : "anisotropic",
-			"u" : "clamp",
-			"v" : "clamp",
-			"w" : "clamp",
-			"miplodbias" : 0,
-			"max_anisotropic" : 8,
-			"compare_function" : "disabled",
-			"border" :[1, 1, 1, 1],
-			"min_lod" : -3.4028235e+38,
-			"max_lod" : 3.4028235e+38
 		}
 	},
 
