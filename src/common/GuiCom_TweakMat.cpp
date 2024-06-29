@@ -428,44 +428,5 @@ void CGuiCom::btnMtrSaveAll(WP)
 #else  //  1 json
 	String file = PATHS::MaterialsDir()+"/all.material.json";
 	mgr->saveMaterials(HLMS_PBS, file, 0, "", true);  // latest
-
-	/*ifstream stream(file.c_str(), ifstream::in);
-	if (!stream.fail())
-	{	try
-		{	while(!stream.eof())
-			{
-				char ch[256+2];
-				stream.getline(ch,256);
-				string line = ch;
-				StringUtil::trim(line);
- 
-				if (StringUtil::startsWith(line, type))
-				{
-					//LogO(line);
-					auto vec = StringUtil::split(line," \t:");
-					bool skipFirst = true;
-					for (auto it : vec)
-					{
-						string match = it;
-						StringUtil::trim(match);
-						if (!match.empty())
-						{
-							if (skipFirst)
-							{	skipFirst = false;  continue;	}
-
-							//LogO(match);
-							vsMaterials.push_back(match);						
-							break;
-						}
-					}
-			}	}
-		}catch (Ogre::Exception &e)
-		{
-			LogO("GetMaterialsMat Exception! " + e.getFullDescription());
-	}	}
-	else
-		LogO("GetMaterialsMat, can't open: " + filename);
-	stream.close();*/
-
 #endif
 }

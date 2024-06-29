@@ -39,6 +39,7 @@ public:
 
 	static std::string Models() {          return game_data + "/models";  }
 	static std::string Objects() {         return game_data + "/models/objects/";  }
+	static std::string Textures() {        return game_data + "/textures";  }
 	static std::string Terrain() {         return game_data + "/textures/terrain";  }
 
 	static std::string Tracks() {          return game_data + "/tracks";  }

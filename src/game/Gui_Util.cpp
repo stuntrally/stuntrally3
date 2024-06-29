@@ -482,7 +482,8 @@ void CGui::FillHelpTxt()
 
 	ed = fEd("Credits");
 	if (ed)
-	{	string dir = PATHS::Data()+"/";
+	{
+		string dir[3] = {PATHS::Data()+"/", PATHS::Models()+"/", PATHS::Textures()+"/"};
 		String text = "", sep = "-------------------------------------------------------";
 
 		auto Sep = [&](String title)
@@ -491,7 +492,6 @@ void CGui::FillHelpTxt()
 		};
 		auto ReadTxt = [&](string path)
 		{
-			path = dir + path;
 			text += "\n#F0F0C0====  File: " + path + "#D0D0D0\n\n";
 			std::ifstream fi(path.c_str());
 			if (fi.good())
@@ -501,26 +501,32 @@ void CGui::FillHelpTxt()
 					text += s + "\n";
 			}
 		};
-		auto ReadTxts = [&](string path)
+		auto ReadTxts = [&](string path, int i=1)
 		{
+			path = dir[i] + path;
 			strlist lo;
-			PATHS::DirList(dir + path, lo, "txt");
+			PATHS::DirList(path, lo, "txt");
 			
 			Sep(path);
-			for (auto p:lo)
-				ReadTxt(path +"/"+ p);
+			for (auto p : lo)
+				if (p[0] == '_')
+					ReadTxt(path +"/"+ p);
 		};
 		Sep("Vehicles");
-		for (auto c:data->cars->cars)
-			ReadTxt("cars/" + c.id + "/about.txt");
+		for (auto c : data->cars->cars)
+			ReadTxt(dir[0] + "cars/" + c.id + "/about.txt");
 
 		ReadTxts("objects");  ReadTxts("objects2");  ReadTxts("objectsC");  ReadTxts("objects0");
 		ReadTxts("obstacles");  ReadTxts("rocks");  ReadTxts("rockshex");
-		ReadTxts("skies");  
-		ReadTxts("grass");  ReadTxts("terrain");  ReadTxts("road");
-		ReadTxts("trees");  ReadTxts("trees2");   ReadTxts("trees-old");  //todo: replace-
-		ReadTxts("sounds");  ReadTxts("hud");
-		//  particles-
+		ReadTxts("gems");
+		
+		ReadTxts("skies",2);  
+		ReadTxts("grass",2);  ReadTxts("terrain",2);  ReadTxts("road",2);
+
+		ReadTxts("trees");  ReadTxts("trees2");   ReadTxts("trees-old");
+
+		ReadTxts("sounds",0);  ReadTxts("hud",0);
+		ReadTxts("particles",0);
 
 		ed->setCaption(UString(text));
 		ed->setVScrollPosition(0);
