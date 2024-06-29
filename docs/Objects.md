@@ -223,7 +223,7 @@ Only use hight poly (over 50k tris) meshes if:
 ### Materials
 
 It is needed to name materials in blender with some prefix (e.g. from your object) so that all material names are unique in game.  
-Then knowing your material name(s), it's needed to add them in [all.material.json](../data/materials/Pbs/all.material.json).
+Then knowing your material name(s), it's needed to add them in `.material.json` file (one that has similar materials group).
 More about syntax with examples in [Materials](Materials.md#🌠-new-materialjson) page, 2nd half.
 
 Texture files should also be copied to `data/objects*` (same place where .mesh and .bullet).  

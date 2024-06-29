@@ -7,6 +7,7 @@ _Info on how to add new textures and materials for terrain, road, grass, objects
 This page explains what to do when adding new content.  
 I.e. where to put your new data and which files need to be edited so it can appear and look good in SR3.
 
+
 ### 📄 Presets
 
 The file [config/presets.xml](../config/presets.xml) is used by editor and game.  
@@ -21,31 +22,33 @@ that are set (by default) when picking in editor (less manual setup needed).
 The `r - rating` param is subjective and high values are meant for best, most popular resources used.  
 If you add a unique thing, used on couple tracks, rate it low, unless it's meant to be more.
 
+
 ### 🔮 Materials
 
-**All materials** are now in [all.material.json](../data/materials/Pbs/all.material.json).  
+**All materials** are now in [here](../data/materials/Pbs/) in `*.material.json` files.  
 Only unlit: particles and hud aren't yet.  
 More info on this `.json` format at bottom.
 
 ### 📝 Text
 
 There are files `_*.txt` in each key data subdir, with info for:  
-- original data name, author, license, url etc.  
+- original data name, author, license, date, url etc.  
 
-These are gathered on **Credits** tab in game.  
-These `txt` files need to be filled any time we add something new.  
-Whether it's your creation or others, we should note it in there.
+These are all gathered and listed on Help - **Credits** tab in game.  
+These files need to be filled any time we add something new.  
+Whether it's your creation or others, we should note it in there, even for CC0.
+
 
 ## ⛅ Skies
 
-Sky textures are in [data/skies](../data/skies). More info in [_skies-new.txt](../data/skies/_skies-new.txt) and [_skies-old.txt](../data/skies/_skies-old.txt).  
-Those are 360x90 degree spherical textures. One texture for whole skydome, size 4k x 1k (old) or new 8k x 2k (1k is 1024).  
-Material names start with `sky/`. To add new, just copy last and replace "emissive" texture for yours.
+Sky textures are in [data/textures/skies](../data/textures/skies). More info in [_skies.txt](../data/textures/skies/_skies.txt).  
+Those are 360x90 degree spherical textures. One texture for whole skydome, 8k x 2k (1k is 1024).  
+Material names start with `sky/` in `sky.material.json`. To add new, just copy last and replace "emissive" texture for yours.
 
 
 ## ⛰️ Terrain
 
-Textures for terrain layers are in [data/terrain](../data/terrain). More info in [_terrain.txt](../data/terrain/_terrain.txt).  
+Textures for terrain layers are in [data/textures/terrain](../data/textures/terrain). More info in [_terrain.txt](../data/textures/terrain/_terrain.txt).  
 They are all .jpg saved at about 97%. Size is square 1k (1024) or 2k.
 
 Name endings mean:  
@@ -60,18 +63,20 @@ Unlike other things, terrain has its own material and shader, so only adding to 
 
 ## 🛣️ Road etc
 
-Road textures are in [data/road](../data/road) with also some general for water etc.  
-Some info in [_readme.txt](../data/road/_readme.txt). _ToDo: rest_
+**Road** textures are in [data/textures/road](../data/textures/road) with also some general for water etc.  
+Some info in [_road2.txt](../data/textures/road/_road2.txt) and [_road1.txt](../data/textures/road/_road1.txt). _ToDo: rest, need more.._
 
-When adding a new road material you need to add two materials e.g. `roadJungle_ter` and `roadJungle`.  
+When adding a new road material in [road.material.json](../data/materials/Pbs/road.material.json),  
+you need to add two materials e.g. `roadJungle_ter` and `roadJungle`.  
 The one with `_ter` is for road **on terrain**, it has more bumps, and alpha border/texture.  
 The other (without `_ter`) is for **bridged** roads and is more flat, it can use own textures.
 
 **Other** materials include: road wall, pipe, pipe glass, pipe wall, column, and universal.  
-Since every material is in `all.material.json`, the only good list for orientation is in `presets.xml` and same in editor.
+These are in [wall.material.json](../data/materials/Pbs/wall.material.json),
+A good list for orientation is in `presets.xml` and same in editor.
 
-**Pipe glass** materials are twice in _all.material.json_ e.g. `pipeGlass` and `pipeGlass2`.  
-So 2nd has `2` at end and only difference is in Macroblock, `cull_mode`.  
+**Pipe glass** materials are twice in [pipe.material.json](../data/materials/Pbs/pipe.material.json) e.g. `pipeGlass` and `pipeGlass2`.  
+So 2nd has `2` added at end and only difference is in Macroblock, `cull_mode`.  
 This 2nd is auto cloned by SR3 code, but since we save(d) all materials at once, they're just in `.json` too.
 
 **Rivers** have a similar situation, a `River_` material is basically a copy of a `Water_` material.  
@@ -81,26 +86,30 @@ Since we can't inherit in `.json`, we'd need to copy each new fluid material int
 
 ## 🌿 Grass
 
-Grass textures are in data/grass. They are transparent .png and mostly 512x512.  
+Grass textures are in [data/textures/grass](../data/textures/grass).  
+These are transparent .png and mostly 512x512.  
+Flowers, seaweeds and all else posing as grass are also there.  
+Materials are simple and in [grass.material.json](../data/materials/Pbs/grass.material.json).  
 
 
 ## 🌳🪨 Vegetation
 
-Models (meshes) are in `data/trees*`.  
+Models (meshes and their textures) are in `data/models/trees*`.  
 The `trees-old` should to be replaced eventually with better.  
-Rocks, caves, crystals etc are in `data/rocks` and `data/rockshex`.  
+Rocks, caves, crystals etc are in `data/models/rocks` and `data/models/rockshex`.  
 More info in their `_*.txt` files.
 
 
 ## 📦🏢 Objects
 
 Objects have their own [Objects page](Objects.md) for meshes, exporting etc.  
-Meshes, textures etc are in `data/`, subdirs:  
+Meshes, textures etc are in `data/models/`, subdirs:  
 - `objects` - for dynamic objects with `.bullet` files and their 2nd `*_static.mesh` if needed (just a copy of `.mesh`).  
 - `objects0` - for 0.A.D. models (mainly buildings) only, converted (from .dae).  
 - `objects2` - for static objects with just `.mesh` and textures.
 - `objectsC` - for new City buildings, Alien etc. Also has various, universal `metal*` textures.
 - `obstacles` - recently split, only for obstacles.
+- `gems` - recent collectible item(s) and win cups.
 
 Each subdir has a `_*.txt` file with info on all from this folder. Any new model added needs also a new entry there in `_*.txt`.  
 This is important for Credits in game, for credits to authors (if CC-BY, CC-BY-SA, but CC0 too) and tracking licenses, models, urls, etc.  
@@ -138,17 +147,19 @@ From old `.mat` files main parameters changed are:
 - `twoside_diffuse true` - now `"two_sided" : true` - for tree leaves, glass (not pipe) etc
 - `terrain_light_map true` - gone, now automatic
 
-## 🆕 New .material (temporary)
+## 🆕 Temporary .material
   
 > Note: New Ogre-Next `.material` format is worse than `.json` (info below)  
-and should be used just temporarily.
+and is used just temporarily.
 
-> A couple of _freaking hopeless_ issues to keep in mind:  
+> A couple of issues to keep in mind:  
 > In `.material` scripts you can't set textures to **wrap**  
-> (and they _don't_ by default) or other sampler configs, but inheriting works.  
+> (and they _don't_ by default) or other sampler configs,  
+> but inheriting works and format is much shorter.  
+
 > The `.material` is just meant as a faster way of porting old SR `.mat`,  
 > then best to save as .json from Material Editor (still a lot manual work to do).  
-> And still for few exceptions, like the unlit particles and hud stuff.
+> And for few exceptions, like the unlit particles and Hud stuff.
 
 New `.material` example of a material `ES_glass` **inheriting** from `car_glass`:  
 ```
@@ -200,13 +211,11 @@ Find material (search by name above) and then use sliders to tweak. There are fe
 ## 🌠 New .material.json
 
 We now use `.material.json` format (for almost all materials). It is more advanced, but longer.  
-A bit worse to edit by hand. Especially having all in one file.  
-There are no comments in json, sadly. And the file has over 50000 lines already.
+A bit worse to edit by hand. There are no comments in json, sadly.
 
 Material Editor GUI can **save** into `.json` files in:  
 `/home/user/.cache/stuntrally3/materials`  
 either one material or all.  
-It won't be exactly the same as in [all.material.json](../data/materials/Pbs/all.material.json).
 
 In `.material.json` you **can't inherit** materials (confirmed [here](https://forums.ogre3d.org/viewtopic.php?p=553712#p553712)).  
 Need to **duplicate** them whole e.g. for rivers, pipe glass (2 at end, other cull) and vehicles (painted) body (6 times + ghost 😩).  
@@ -215,7 +224,7 @@ Also important is to not break **.json syntax**. E.g. don't leave a comma `,` be
 It also needs more symbols like `: " [ ] { }` to work.  
 I highly recommend using an IDE that does check syntax  
 and underlines in red right when a syntax error happens during editing.  
-I use VSCodium, but possilby smaller editors could too.  
+I use [VSCodium](https://github.com/VSCodium/vscodium), but possibly smaller editors could too.  
 
 
 ### Top blocks
@@ -247,11 +256,12 @@ Not particles yet. Terrain layers won't be there.
 
 ## 💧 Fluids
 
-Fluids like `Water_*` and `River_*` aren't meant to be edited by hand in `.json`.  
-Parameters stored don't have names, hard to say which value does what (code in HlmsPbsDb2::HlmsPbsDb2).  
-Simply use Material Editor Gui to tweak them. Save, single material .json.
+Fluids like `Water_*`, etc and `River_*` aren't meant to be edited by hand in `.json`.  
+Parameters stored there don't have names, hard to say which value does what (code is in `HlmsPbsDb2::HlmsPbsDb2`).  
+Simply use Material Editor Gui to tweak them.  
+Save single material .json (or all).
 
-Then manually merge with `all.material.json`.  
+Then *manually* merge with `fluid.material.json`.  
 You could overwrite whole 'pbs' section, leaving top blocks.
 But have to replace samplers etc to our.  
 For testing you can save in Material Editor and put new files with all json.

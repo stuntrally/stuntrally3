@@ -1,4 +1,6 @@
------- Info
+Terrain textures
+
+------ File suffix info
 _d - diffuse
 _s - specular amount (not color)
 	if not present, will be black (no specular)

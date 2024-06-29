@@ -1,0 +1,45 @@
+---- aurora
+aurora01, aurora03
+Author: Schnuffel2002
+License: CC-BY-SA 4.0
+https://commons.wikimedia.org/wiki/File:Aurora_shapes.jpg
+
+aurora02
+Author: Jonathan Bean
+License: CC0
+https://commons.wikimedia.org/wiki/File:Jonathan_Bean_2016-10-20_(Unsplash).jpg
+
+aurora04
+Author: Varjisakka
+License: CC-BY-SA 3.0
+https://commons.wikimedia.org/wiki/File:Northern_Lights_02.jpg
+
+
+---- made by rubberduck ..
+bubble.png
+bubble-grease.png
+
+cloud*.png  * 1..9
+
+
+---- old, from Ogre, modified by CryHam
+droplet.png
+droplet-long.png
+flare1.png
+spark.png
+
+
+----
+Author: CryHam
+License: CC0
+
+boost.png  boost_red.png
+
+fire1.png  fire2.png  fire3.png
+fluid-*.png
+
+dirt.png    dust.png
+gravel.png  lava1.png   mud.png
+smoke.png   snow.png
+
+tireband.png   trail.png

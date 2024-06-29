@@ -1,4 +1,4 @@
----- NEW skies ----
+---- New skies ----
 file(s) *.jpg        url  https://..
 
 anomaly_01           https://ambientcg.com/view?id=DaySkyHDRI027B

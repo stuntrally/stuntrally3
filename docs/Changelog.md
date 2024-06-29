@@ -7,13 +7,14 @@ This section lists changes not yet released, but committed to repositories stunt
     - Collecting gems located on track, for completion of all or quicker time
     - Hud 3D arrows on vehicle pointing to closest 3 gems
   - More **Lights** - with toggable Options
-    - vehicle: brakes, boost, reverse, under glow and collection gems
+    - for vehicle: brakes, boost, reverse, under glow and for collection gems
   - New tab on Setup - Paints - Adjust - **Under glow** for color H,S,V
+    - under glow color also auto set by picking paint
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
   - 3D win cups shown on game end
   - Gui shows small track previews for game track / series
 - Both
-  - *WIP* Water refraction and depth color ..
+  - **Water** refraction and depth color ..
   - Gui Tracks view, new mode: gallery
 - Editor
   - Edit mode for Collection, key Y  
@@ -24,6 +25,9 @@ This section lists changes not yet released, but committed to repositories stunt
     - areas: teleporters, force fields, speed up, lift, anti-gravity, damping  
   - Road: wall type, for decoration walls, rectangular
     - pipe parameter changes it from wide at 0, to square at 0.5 to tall at 1.0
+- Other
+  - split all.material.json to many files
+  - in data dir, added subdirs: models, textures etc
 
 ## Version 3.1
 
