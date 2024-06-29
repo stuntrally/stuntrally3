@@ -95,32 +95,6 @@
 	"pbs" : 
 	{
 
-		"BaseWhite" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0.5, 0.5, 0.5],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [1, 1, 1]
-			},
-			"fresnel" :
-			{
-				"value" : [0.01, 0.01, 0.01],
-				"mode" : "coloured"
-			},
-			"roughness" :
-			{
-				"value" : 0.4
-			}
-		},
-
 		"Buddha_Statue" :
 		{
 			"macroblock" : "Macroblock_0",
