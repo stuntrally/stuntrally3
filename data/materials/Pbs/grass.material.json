@@ -1,0 +1,2901 @@
+{
+	"samplers" :
+	{
+		"Sampler_10" :
+		{
+			"min" : "anisotropic",
+			"mag" : "anisotropic",
+			"mip" : "anisotropic",
+			"u" : "wrap",
+			"v" : "wrap",
+			"w" : "wrap",
+			"miplodbias" : 0,
+			"max_anisotropic" : 8,
+			"compare_function" : "disabled",
+			"border" :[1, 1, 1, 1],
+			"min_lod" : -3.4028235e+38,
+			"max_lod" : 3.4028235e+38
+		},
+		"Sampler_Sky" :
+		{
+			"min" : "anisotropic",
+			"mag" : "anisotropic",
+			"mip" : "anisotropic",
+			"u" : "mirror",
+			"v" : "mirror",
+			"w" : "mirror",
+			"miplodbias" : 0,
+			"max_anisotropic" : 8,
+			"compare_function" : "disabled",
+			"border" :[1, 1, 1, 1],
+			"min_lod" : -3.4028235e+38,
+			"max_lod" : 3.4028235e+38
+		},
+		"Sampler_Grass" :
+		{
+			"min" : "anisotropic",
+			"mag" : "anisotropic",
+			"mip" : "anisotropic",
+			"u" : "clamp",
+			"v" : "clamp",
+			"w" : "clamp",
+			"miplodbias" : 0,
+			"max_anisotropic" : 8,
+			"compare_function" : "disabled",
+			"border" :[1, 1, 1, 1],
+			"min_lod" : -3.4028235e+38,
+			"max_lod" : 3.4028235e+38
+		}
+	},
+
+	"macroblocks" :
+	{
+		"Macroblock_0" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : true,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 0,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "clockwise",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_2" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : true,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 0,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "none",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_4" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : true,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 3,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "clockwise",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_7" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : false,
+			"depth_write" : false,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 0,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "none",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_8" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : false,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 0,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "none",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_9" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : false,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 0,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "clockwise",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_13" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : true,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 3,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "none",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_14" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : false,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 3,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "none",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_15" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : false,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 3,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "clockwise",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_17" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : false,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 3,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "anticlockwise",
+			"polygon_mode" : "solid"
+		}
+	},
+
+	"blendblocks" :
+	{
+		"Blendblock_0" :
+		{
+			"alpha_to_coverage" : false,
+			"blendmask" : "rgba",
+			"separate_blend" : false,
+			"src_blend_factor" : "one",
+			"dst_blend_factor" : "zero",
+			"blend_operation" : "add"
+		},
+		"Blendblock_1" :
+		{
+			"alpha_to_coverage" : false,
+			"blendmask" : "rgba",
+			"separate_blend" : true,
+			"src_blend_factor" : "src_alpha",
+			"dst_blend_factor" : "one_minus_src_alpha",
+			"src_alpha_blend_factor" : "one",
+			"dst_alpha_blend_factor" : "zero",
+			"blend_operation" : "add",
+			"blend_operation_alpha" : "add"
+		},
+		"Blendblock_2" :
+		{
+			"alpha_to_coverage" : false,
+			"blendmask" : "rgba",
+			"separate_blend" : false,
+			"src_blend_factor" : "one",
+			"dst_blend_factor" : "one_minus_src_alpha",
+			"blend_operation" : "add"
+		},
+		"Blendblock_6" :
+		{
+			"alpha_to_coverage" : false,
+			"blendmask" : "rgba",
+			"separate_blend" : true,
+			"src_blend_factor" : "one",
+			"dst_blend_factor" : "one",
+			"src_alpha_blend_factor" : "one",
+			"dst_alpha_blend_factor" : "zero",
+			"blend_operation" : "add",
+			"blend_operation_alpha" : "add"
+		}
+	},
+
+	"pbs" : 
+	{
+
+		"alienPlant01a" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "alienPlant01a.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			},
+			"emissive" :
+			{
+				"value" : [0.2, 0.2, 0.2]
+			}
+		},
+
+		"alienPlant01b" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "alienPlant01b.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			},
+			"emissive" :
+			{
+				"value" : [0.2, 0.2, 0.2]
+			}
+		},
+
+		"flower01" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "flower01.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"flower01b" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "flower01b.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"flower02" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "flower02.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"flower02AnomalyA" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "flower02AnomalyA.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			},
+			"emissive" :
+			{
+				"value" : [0.3, 0.3, 0.3]
+			}
+		},
+
+		"flower02AnomalyB" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "flower02AnomalyB.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"flower02AnomalyC" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "flower02AnomalyC.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"flower03" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "flower03.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass10" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass10.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass11w" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass11w.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass11wg" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass11wg.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass12o" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass12o.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass12s" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass12s.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass12w" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass12w.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass12y-" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass12y-.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass15" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass15.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass15g" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass15g.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass15o" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass15o.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass16g" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass16g.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass16r" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass16r.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass16s" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass16s.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass17" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass17.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass17r" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass17r.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass18gw" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass18gw.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass18s" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass18s.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass18w" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass18w.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass18wg" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass18wg.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass19" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass19.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass2" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass2.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass20" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass20.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass20p" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass20p.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass2g" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass2g.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass3" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass3.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass3g" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass3g.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass3m" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass3m.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass3o" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass3o.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass3s" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass3s.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass3y" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass3y.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass4m" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass4m.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass4v" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass4v.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass4v-alien" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass4v-alien.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass5" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass5.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass6r" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass6r.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass6s" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass6s.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass7wg" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass7wg.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass7wy" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass7wy.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass8g" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass8g.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grass9r" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grass9r.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassAnomaly01a" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassAnomaly01a.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			},
+			"emissive" :
+			{
+				"value" : [0.3, 0.3, 0.3]
+			}
+		},
+
+		"grassAnomaly01b" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassAnomaly01b.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassAnomaly01c" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassAnomaly01c.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassAnomaly02a" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassAnomaly02a.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			},
+			"emissive" :
+			{
+				"value" : [0.3, 0.3, 0.3]
+			}
+		},
+
+		"grassAnomaly02b" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassAnomaly02b.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassAnomaly02c" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassAnomaly02c.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassAnomaly03a" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassAnomaly03a.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			},
+			"emissive" :
+			{
+				"value" : [0.3, 0.3, 0.3]
+			}
+		},
+
+		"grassAnomaly03b" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassAnomaly03b.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassAnomaly03c" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassAnomaly03c.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassAnomaly04a" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassAnomaly04a.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			},
+			"emissive" :
+			{
+				"value" : [0.3, 0.3, 0.3]
+			}
+		},
+
+		"grassAnomaly04b" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassAnomaly04b.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassAnomaly04c" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1.49, 1.49, 1.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassAnomaly04c.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassAustralia" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassAustralia.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassDesert" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassDesert.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassForest" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassForest.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassGreece" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.55, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassGreece.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassJungle" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassJungle.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassSavanna" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassSavanna.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassUnidentified" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.4, 0.4, 0.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassUnidentified.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassWinter" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassWinter.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassX10b" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassX10b.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassX10b-alien" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassX10b-alien.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassX13p" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassX13p.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassXc" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassXc.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassXc-alien" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassXc-alien.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassXv" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassXv.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"grassZ10" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassZ10.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "grassZ10.png",
+				"sampler" : "Sampler_Grass"
+			}
+		},
+
+		"grassZ11" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassZ11.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "grassZ11.png",
+				"sampler" : "Sampler_Grass"
+			}
+		},
+
+		"grassZ13p" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassZ13p.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "grassZ13p.png",
+				"sampler" : "Sampler_Grass"
+			}
+		},
+
+		"grassZ13r" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassZ13r.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "grassZ13r.png",
+				"sampler" : "Sampler_Grass"
+			}
+		},
+
+		"grassZ14r" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassZ14r.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "grassZ14r.png",
+				"sampler" : "Sampler_Grass"
+			}
+		},
+
+		"grassZ1r" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "grassZ1r.png",
+				"sampler" : "Sampler_Grass"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "grassZ1r.png",
+				"sampler" : "Sampler_Grass"
+			}
+		},
+
+		"grass_emis" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			},
+			"emissive" :
+			{
+				"value" : [1, 1, 1]
+			}
+		},
+
+		"seaweed01" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "seaweed01.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"seaweed02" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "seaweed02.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"seaweed03" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "seaweed03.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"seaweedTall01" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "seaweedTall01.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"seaweedTall02" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "seaweedTall02.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"seaweedTall03" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "seaweedTall03.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"seaweedTall04" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "seaweedTall04.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"seaweedTall05" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.5, false],
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "seaweedTall05.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0, 0, 0]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		}
+
+	}
+}

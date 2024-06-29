@@ -1,0 +1,9449 @@
+{
+	"samplers" :
+	{
+		"Sampler_10" :
+		{
+			"min" : "anisotropic",
+			"mag" : "anisotropic",
+			"mip" : "anisotropic",
+			"u" : "wrap",
+			"v" : "wrap",
+			"w" : "wrap",
+			"miplodbias" : 0,
+			"max_anisotropic" : 8,
+			"compare_function" : "disabled",
+			"border" :[1, 1, 1, 1],
+			"min_lod" : -3.4028235e+38,
+			"max_lod" : 3.4028235e+38
+		},
+		"Sampler_Sky" :
+		{
+			"min" : "anisotropic",
+			"mag" : "anisotropic",
+			"mip" : "anisotropic",
+			"u" : "mirror",
+			"v" : "mirror",
+			"w" : "mirror",
+			"miplodbias" : 0,
+			"max_anisotropic" : 8,
+			"compare_function" : "disabled",
+			"border" :[1, 1, 1, 1],
+			"min_lod" : -3.4028235e+38,
+			"max_lod" : 3.4028235e+38
+		},
+		"Sampler_Grass" :
+		{
+			"min" : "anisotropic",
+			"mag" : "anisotropic",
+			"mip" : "anisotropic",
+			"u" : "clamp",
+			"v" : "clamp",
+			"w" : "clamp",
+			"miplodbias" : 0,
+			"max_anisotropic" : 8,
+			"compare_function" : "disabled",
+			"border" :[1, 1, 1, 1],
+			"min_lod" : -3.4028235e+38,
+			"max_lod" : 3.4028235e+38
+		}
+	},
+
+	"macroblocks" :
+	{
+		"Macroblock_0" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : true,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 0,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "clockwise",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_2" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : true,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 0,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "none",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_4" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : true,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 3,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "clockwise",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_7" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : false,
+			"depth_write" : false,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 0,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "none",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_8" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : false,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 0,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "none",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_9" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : false,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 0,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "clockwise",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_13" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : true,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 3,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "none",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_14" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : false,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 3,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "none",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_15" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : false,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 3,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "clockwise",
+			"polygon_mode" : "solid"
+		},
+		"Macroblock_17" :
+		{
+			"scissor_test" : false,
+			"depth_clamp" : false,
+			"depth_check" : true,
+			"depth_write" : false,
+			"depth_function" : "less_equal",
+			"depth_bias_constant" : 3,
+			"depth_bias_slope_scale" : 0,
+			"cull_mode" : "anticlockwise",
+			"polygon_mode" : "solid"
+		}
+	},
+
+	"blendblocks" :
+	{
+		"Blendblock_0" :
+		{
+			"alpha_to_coverage" : false,
+			"blendmask" : "rgba",
+			"separate_blend" : false,
+			"src_blend_factor" : "one",
+			"dst_blend_factor" : "zero",
+			"blend_operation" : "add"
+		},
+		"Blendblock_1" :
+		{
+			"alpha_to_coverage" : false,
+			"blendmask" : "rgba",
+			"separate_blend" : true,
+			"src_blend_factor" : "src_alpha",
+			"dst_blend_factor" : "one_minus_src_alpha",
+			"src_alpha_blend_factor" : "one",
+			"dst_alpha_blend_factor" : "zero",
+			"blend_operation" : "add",
+			"blend_operation_alpha" : "add"
+		},
+		"Blendblock_2" :
+		{
+			"alpha_to_coverage" : false,
+			"blendmask" : "rgba",
+			"separate_blend" : false,
+			"src_blend_factor" : "one",
+			"dst_blend_factor" : "one_minus_src_alpha",
+			"blend_operation" : "add"
+		},
+		"Blendblock_6" :
+		{
+			"alpha_to_coverage" : false,
+			"blendmask" : "rgba",
+			"separate_blend" : true,
+			"src_blend_factor" : "one",
+			"dst_blend_factor" : "one",
+			"src_alpha_blend_factor" : "one",
+			"dst_alpha_blend_factor" : "zero",
+			"blend_operation" : "add",
+			"blend_operation_alpha" : "add"
+		}
+	},
+
+	"pbs" : 
+	{
+
+		"road" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadAdesert" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.744, 0.65, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAdesertD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.32, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadAdesertDark" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.77, 0.67, 0.70],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAdesertD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.32, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadAdesertDark_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.77, 0.67, 0.70],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAdesert.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.32, 0.32, 0.32]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadAdesert_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.74],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAdesert.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.32, 0.32, 0.32]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadAlien" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.6, 0.7, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAlien.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.5, 0.6],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadAlienD" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.81, 0.8, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAlienD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.34, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadAlienDTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.81, 0.8, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAlienD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.34, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadAlienDTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.87, 0.95, 0.88],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAlienD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.34, 0.32]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadAlienD_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.87, 0.95, 0.88],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAlienD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.34, 0.32]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadAlienStone" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.537, 0.586, 0.48899996],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadAlienStone_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.537, 0.586, 0.48899996],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadAlienTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.6, 0.7, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAlien.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.5, 0.6],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadAlienTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.8, 0.9, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAlien.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.6, 0.5]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadAlien_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.9, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAlien.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.6, 0.5]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadAsphalt" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.744, 0.744, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphalt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadAsphaltAnomaly" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.1, 0.744, 2.75],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [2.1, 0, 0.4],
+				"texture" : "roadAsphaltAnomaly_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadAsphaltAnomalySpace" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.1, 0.744, 2.75],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.7, 0, 0.4],
+				"texture" : "roadAsphaltAnomalySpace_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"roadAsphaltAnomalySpaceStreaks" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.1, 0.744, 2.75],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphaltAnomalyStreaks.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.7, 0, 0.4],
+				"texture" : "roadAsphaltAnomalySpace_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"roadAsphaltAnomalySpaceStreaks_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.1, 0.744, 2.75],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphaltAnomalyStreaks.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.7, 0, 0.4],
+				"texture" : "roadAsphaltAnomalySpace_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.52
+			}
+		},
+
+		"roadAsphaltAnomalySpace_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.1, 0.744, 2.75],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.7, 0, 0.4],
+				"texture" : "roadAsphaltAnomalySpace_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"roadAsphaltAnomalyStreaks" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.1, 0.744, 2.75],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphaltAnomalyStreaks.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [2.1, 0, 0.4],
+				"texture" : "roadAsphalt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadAsphaltAnomalyStreaks_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.1, 0.744, 2.75],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphaltAnomalyStreaks.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [2.1, 0, 0.4],
+				"texture" : "roadAsphalt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.45
+			}
+		},
+
+		"roadAsphaltAnomaly_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.1, 0.744, 2.75],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [2.1, 0, 0.4],
+				"texture" : "roadAsphaltAnomaly_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"roadAsphaltSpace" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.15755147,
+				"roughness" : 0.001
+			},
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphaltSpace1.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.802472],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.9, 0.9, 0.9760004],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.02334096,
+				"texture" : "roadAsphaltSpace_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.12594318,
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadAsphaltSpaceBlue" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.773604,
+				"roughness" : 0.001
+			},
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.85],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphaltSpace1.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.59044164, 0.6050682, 0.7608874],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.649657, 0.71693665, 0.8778279],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 2.3268926,
+				"texture" : "roadMetal2_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.15,
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadAsphaltSpaceBlue_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.616855,
+				"roughness" : 0.09289693
+			},
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.85],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphaltSpace1.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.65],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.13901556,
+				"texture" : "roadMetal2_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.27207834
+			}
+		},
+
+		"roadAsphaltSpace_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.776794,
+				"roughness" : 0.05144928
+			},
+			"diffuse" :
+			{
+				"value" : [0.5529758, 0.652667, 0.76405996],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphaltSpace1.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.68914634, 0.72316176, 0.7513962],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.8219123, 0.8678715, 0.9],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.19175154,
+				"texture" : "roadAsphaltSpace_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5794407
+			}
+		},
+
+		"roadAsphalt_ter_no" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.744, 0.744, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphalt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadCanyon1" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.6, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "canyonroad1.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.35, 0.3, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadCanyon1Transp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.8, 0.6, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "canyonroad1.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.35, 0.3, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadCanyon1Transp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.8, 0.6, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "canyonroad1.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.35, 0.3, 0.25]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadCanyon1_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.6, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "canyonroad1.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.35, 0.3, 0.25]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadCanyon2" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.744, 0.55, 0.3],
+				"background" : [1, 1, 1, 1],
+				"texture" : "canyonroad2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.35, 0.3, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadCanyon2Transp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.744, 0.55, 0.3],
+				"background" : [1, 1, 1, 1],
+				"texture" : "canyonroad2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.35, 0.3, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadCanyon2Transp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.744, 0.55, 0.3],
+				"background" : [1, 1, 1, 1],
+				"texture" : "canyonroad2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.35, 0.3, 0.25]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadCanyon2_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.744, 0.55, 0.3],
+				"background" : [1, 1, 1, 1],
+				"texture" : "canyonroad2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.35, 0.3, 0.25]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadCdesert" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.9, 0.82, 0.63],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAdesertD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.24, 0.16],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadCdesert_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.86, 0.85, 0.63],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAdesert.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.24, 0.16]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadCrystal" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.2, 0.6, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.25, 0.5],
+				"texture" : "roadAsphalt_spec3w.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.9, 0.9, 0.95],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1s.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.02
+			}
+		},
+
+		"roadCrystalCyan" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.32, 1.4199998, 1.32],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.6, 0.6],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.2,
+				"texture" : "rdGravel_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadCrystalCyanTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.32, 1.4199998, 1.32],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.6, 0.6],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.2,
+				"texture" : "rdGravel_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadCrystalCyanTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.32, 1.4199998, 1.32],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.6, 0.6],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.2,
+				"texture" : "rdGravel_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadCrystalCyan_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.32, 1.4199998, 1.32],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.6, 0.6],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.2,
+				"texture" : "rdGravel_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadCrystalPink" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1.4199998, 0.42, 0.72],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.3, 0.4],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.2,
+				"texture" : "rdGravel_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadCrystalPinkTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [1.4199998, 0.42, 0.72],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.3, 0.4],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.2,
+				"texture" : "rdGravel_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadCrystalPinkTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [1.4199998, 0.42, 0.72],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.3, 0.4],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.2,
+				"texture" : "rdGravel_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadCrystalPink_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1.4199998, 0.42, 0.72],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.3, 0.4],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.2,
+				"texture" : "rdGravel_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadCrystalTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.4, 0.8, 1.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.05, 0.25, 0.5],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.2,
+				"texture" : "rdGravel_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadCrystalTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.3, 0.6, 1.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.05, 0.4, 0.8],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.2,
+				"texture" : "rdGravel_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadCrystal_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.051, 0.35, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.11, 0.31, 0.52]
+			},
+			"fresnel" :
+			{
+				"value" : [0.82, 0.84, 0.86],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadDesert" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.94927645, 1.0130335, 0.7449826],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesertD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.66092414, 0.5385521, 0.45826077],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.64626986, 0.59727263, 0.45826077],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadDesertAnomaly" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.63, 0.65, 0.62],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesertAnomaly_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.52]
+			},
+			"fresnel" :
+			{
+				"value" : 0.818,
+				"mode" : "coeff"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"roadDesertAnomaly_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.66, 0.65, 0.52],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesertAnomaly.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.52],
+				"texture" : "roadDesertAnomaly_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.13],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadDesertBlack" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphalt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.12, 0.12, 0.12],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadDesertBlackTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphalt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.12, 0.12, 0.12],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadDesertBlackTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesertBlack.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.1, 0.1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.7,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadDesertBlack_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesertBlack.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.1, 0.1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadDesertD" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.81, 0.8, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesertD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.34, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadDesertD_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.87, 0.95, 0.88],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesertD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.34, 0.32]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadDesertOrn" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.81, 0.7, 0.55],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesert.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.34, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadDesertOrn_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.9, 0.8, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesert.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.16, 0.14, 0.12]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadDesertTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesertD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.34, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadDesertTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.95, 0.87, 0.72],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesert.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.16, 0.14, 0.12]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.7,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadDesert_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8259845, 0.70854735, 0.4898582],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesert.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23679918, 0.2305587, 0.15652776]
+			},
+			"fresnel" :
+			{
+				"value" : [0.5059184, 0.48719835, 0.35099038],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5837197
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadFunny" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadFunny.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadJDarkD_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadFunny_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadFunny.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadJDarkD_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadGDesert" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.63, 0.65, 0.62],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesert.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadGDesert_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.66, 0.65, 0.52],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadDesert.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadIce" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.86751866,
+				"roughness" : 0.001
+			},
+			"diffuse" :
+			{
+				"value" : [0.40718478, 0.41471735, 0.41723844],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.37508073, 0.39721316, 0.4122014],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.29315066, 0.3044394, 0.3135722],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.13332252,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.033228185,
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadIceTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1.02, 1.02],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.15,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadIceTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.92, 0.9, 0.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.9, 0.92, 0.92],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.3,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadIce_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.62, 0.54, 0.476],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.51, 0.46, 0.43],
+				"texture" : "roadAlpha2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1s.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [0.99, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"roadIceBlue" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.86751866,
+				"roughness" : 0.001
+			},
+			"diffuse" :
+			{
+				"value" : [0.43, 0.44, 0.63],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.45, 0.40, 0.77],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.27, 0.30, 0.38],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.13332252,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.033228185,
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadIceBlueTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.9, 0.9, 0.98],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1.02, 1.12],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.27, 0.30, 0.38],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.15,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadIceBlueTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.92, 0.9, 0.98],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.9, 0.92, 0.98],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.31, 0.3, 0.36],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.3,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadIceBlue_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.49, 0.52],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.52, 0.36, 0.44],
+				"texture" : "roadAlpha2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.31, 0.3, 0.36],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1s.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [0.99, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadInvisibleDesert" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadInvisibleDesert_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.5]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadInvisibleForest" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadInvisibleForest_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.5]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadInvisibleGravel" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadInvisibleGravel_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.5]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadInvisibleJungle" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadInvisibleJungle_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.5]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadInvisibleSnow" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadInvisibleSnow_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.5]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadJDark" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJDark.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4,
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadJDarkD" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJDarkD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadJDarkD_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJDarkD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.43, 0.43, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadJDarkDs" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJDarkD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.03, 0.03, 0.03],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadJDarkDs_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJDarkD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.03, 0.03, 0]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadJDarkTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJDark.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadJDarkTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.7, 0.6, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJDark.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.43, 0.43, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadJDarkWet" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJDark.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadJDarkWet_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.6, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJDark.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "roadAlpha2s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1s.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.03
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadJDark_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.6, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJDark.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.33, 0.33, 0.3]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.3
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadJungle" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJungle.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadJungleTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJungle.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadJungleTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.65, 0.65, 0.65],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJungle.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.15]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadJungleWet" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJungle.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadJungleWet_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.6, 0.6, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJungle.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "roadAlpha2s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.1, 0.1, 0.1],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1s.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.03
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadJungle_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJungle.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1s.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.16
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMagicMirror" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.042, 0.0517, 0.119],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.34, 0.28, 0.5],
+				"texture" : "roadAsphalt_spec3w.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [1, 1, 1],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "flat_n.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			}
+		},
+
+		"roadMagicMirrorCyan" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.32, 1.22, 1.72],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.6, 0.85],
+				"texture" : "roadAsphalt_spec3w.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [1, 1, 1],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "flat_n.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			}
+		},
+
+		"roadMagicMirrorCyan_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.32, 1.22, 1.72],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.6, 0.85]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.015
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMagicMirrorPink" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.69, 0.27, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.3, 0.45],
+				"texture" : "roadAsphalt_spec3w.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [1, 1, 1],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "flat_n.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMagicMirrorPink_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.69, 0.27, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.3, 0.45]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.015
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMagicMirror_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.032, 0.042, 0.082],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.23]
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.015
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMarbleStone" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.79699993, 0.526, 0.5989999],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadMarbleStone_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.79699993, 0.526, 0.5989999],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMars" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.744, 0.65, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMars.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.32, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadMars_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadMarsTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.744, 0.65, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMars.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.36, 0.32, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.6,
+				"texture" : "roadMars_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadMarsTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.74],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMars.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.32, 0.32, 0.32]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.6,
+				"texture" : "roadMars_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadMars_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.74],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMars.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.32, 0.32, 0.32]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadMars_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMetal1" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMetal1.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadMetal1_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.015,
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMetal1Anomaly" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.3, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMetal1Anomaly.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 0.2, 1],
+				"texture" : "roadMetal1Anomaly_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.5,
+				"texture" : "roadMetal1.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadMetal1Anomaly_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.3, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMetal1Anomaly.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 0.2, 1],
+				"texture" : "roadMetal1Anomaly_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.4,
+				"texture" : "roadMetal1.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.55
+			}
+		},
+
+		"roadMetal1_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.95540535,
+				"roughness" : 0.07916595
+			},
+			"diffuse" :
+			{
+				"value" : [0.46431875, 0.4942108, 0.50247055],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMetal1.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.35608706, 0.35608706, 0.4090082],
+				"texture" : "roadAlpha2s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.5472848, 0.59044164, 0.61095214],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.06251328,
+				"texture" : "roadMetal2_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.28566846
+			}
+		},
+
+		"roadMetal2" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.38602895,
+				"roughness" : 0.001
+			},
+			"diffuse" :
+			{
+				"value" : [0.8089348, 0.81217265, 0.8546554],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMetal2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.7928101, 0.871186],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.9, 0.9725577, 0.9485729],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.08833747,
+				"texture" : "roadMetal2_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.505897,
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMetal2Anomaly" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.7, 0.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMetal2Anomaly.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [2, 1, 1],
+				"texture" : "roadMetal2Anomaly_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.2,
+				"texture" : "roadMetal2Anomaly_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadMetal2Anomaly_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.7, 1.2],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMetal2Anomaly.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [2, 1, 1],
+				"texture" : "roadMetal2Anomaly_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.3,
+				"texture" : "roadMetal2Anomaly_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadMetal2_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"clear_coat" :
+			{
+				"value" : 0.14460625,
+				"roughness" : 0.001
+			},
+			"diffuse" :
+			{
+				"value" : [0.7, 0.6466517, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMetal2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.5352347,
+				"texture" : "roadMetal2_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.4703942
+			}
+		},
+
+		"roadMoss" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMoss.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.15, 0.24, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadMoss2" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.66, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMoss.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.15, 0.33, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadMoss2_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.6, 0.744, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMoss.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.15, 0.33, 0.25]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMossAnomaly" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMossAnomaly.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.65, 0.24, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.3
+			}
+		},
+
+		"roadMossAnomaly2" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMossAnomaly2.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.65, 0.24, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.18
+			}
+		},
+
+		"roadMossAnomaly2_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.6, 0.6, 0.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMossAnomaly2.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.65, 0.24, 0.25]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.07
+			}
+		},
+
+		"roadMossAnomaly_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.6, 0.6, 0.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMossAnomaly.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.65, 0.24, 0.25]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"roadMossMarble" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1.16, 0.21, 0.42],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMoss.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.58, 0.13, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadMossMarble_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1.16, 0.23, 0.41],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMoss.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.58, 0.13, 0.25]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMossTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMoss.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.15, 0.24, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadMossTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.6, 0.6, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMoss.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.15, 0.24, 0.25]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadMossWet" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMoss.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.15, 0.24, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadMossWet_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.6, 0.6, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMoss.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.6, 0.6],
+				"texture" : "roadAlpha2s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.03
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [0.99, 0.03],
+				"texture" : "roadAlpha2.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMoss_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.6, 0.6, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMoss.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.15, 0.24, 0.25]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMud" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMud.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.2],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4,
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMudOil" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.4, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJDarkD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.35],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.12,
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMudOil_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.5, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadJDarkD.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.43, 0.4, 0.45]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.33
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadMudTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMud.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.2],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadMudTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMud.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadMudWet" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMud.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.2],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadMudWet_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMud.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.7, 0.7, 0.6],
+				"texture" : "roadAlpha2s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.07
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2.jpg",
+				"sampler" : "Sampler_10"
+			}
+
+		},
+
+		"roadMud_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMud.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.1, 0.1]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1.7,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.34
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			},
+			"detail_normal0" :
+			{
+				"value" : 1,
+				"scale" : [1, 0.1],
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadNdirt" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdDirt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadNdirtTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdDirt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadNdirtTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdDirt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rdDirt_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadNdirtWet" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdDirt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadNdirtWet_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.6, 0.6, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdDirt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"texture" : "roadAlpha2s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rdDirt_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.03
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [0.99, 0.03],
+				"texture" : "roadAlpha2.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadNdirt_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdDirt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.2, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rdDirt_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadNgravel" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphalt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.6, 0.6],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadNgravelWet" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadAsphalt.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.6, 0.6],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadNgravelWet_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.6, 0.6, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1],
+				"texture" : "roadAlpha2s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.4, 0.4, 0.4],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rdGravel_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.015
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [0.99, 0.03],
+				"texture" : "roadAlpha2.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadNgravel_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.6, 0.6, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "rdGravel.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.5]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "rdGravel_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSand" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.82, 0.82, 0.82],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSand.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSand2" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.82, 0.82, 0.82],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSand2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSand2Transp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.82, 0.82, 0.82],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSand2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSand2Transp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.82, 0.82, 0.82],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSand2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadSand2_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.82, 0.82, 0.82],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSand2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSandDark" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.32, 0.42, 0.22],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.2],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandDarkTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.52, 0.62, 0.42],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.2],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandDarkTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.52, 0.62, 0.42],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadSandDark_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.32, 0.42, 0.22],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSandMagic" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.119, 0.22, 0.42],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.15, 0.1, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.1, 0.4, 1],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.3
+			}
+		},
+
+		"roadSandMagicCyan" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.32, 1.22, 1.72],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.6, 0.6],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.3
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandMagicCyan_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.32, 1.22, 1.72],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.6, 0.6]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.3,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.2
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSandMagicPink" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.99, 0.6, 1.25],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.3, 0.45],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.3
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandMagicPink_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.99, 0.6, 1.25],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.3, 0.45]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.3,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSandMagic_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.119, 0.22, 0.42],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.3, 0.5]
+			},
+			"fresnel" :
+			{
+				"value" : [0.1, 0.4, 1],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.2
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSandMarble" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.9, 0.77, 0.73],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.33, 0.32, 0.33],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandMarblePink" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1.02, 0.61, 0.66],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.33, 0.32, 0.33],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandMarblePinkTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [1.02, 0.61, 0.66],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.33, 0.32, 0.33],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandMarblePinkTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [1.02, 0.61, 0.66],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.33, 0.32, 0.33]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadSandMarblePink_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1.02, 0.61, 0.66],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.33, 0.32, 0.33]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSandMarbleTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.9, 0.77, 0.73],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.33, 0.32, 0.33],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandMarbleTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.9, 0.77, 0.73],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.33, 0.32, 0.33]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadSandMarble_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.9, 0.77, 0.73],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.33, 0.32, 0.33]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSandSet" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.82, 0.82, 0.82],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSand.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandSetTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.82, 0.82, 0.82],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSand.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandSetTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.82, 0.82, 0.82],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSand.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadSandSet_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.82, 0.82, 0.82],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSand.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSandShore" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.85, 0.744, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.31, 0.32, 0.33],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandShoreTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.85, 0.744, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.31, 0.32, 0.33],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandShoreTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.85, 0.744, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.31, 0.32, 0.33]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadSandShore_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.85, 0.744, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.32, 0.32, 0.3]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSandToxic" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.4, 0.6, 0.33],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.35, 0.2],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.22
+			}
+		},
+
+		"roadSandToxic_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.4, 0.6, 0.31],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandSet.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.37, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.24
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSandTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.82, 0.82, 0.82],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSand.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.82, 0.82, 0.82],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSand.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadSandWhite" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandW.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.23],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandWhiteTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandW.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.23],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSandWhiteTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandW.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.23]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadSandWhite_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSandW.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.23]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSand_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.82, 0.82, 0.82],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSand.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.23, 0.23, 0.22]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSavannah" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSavannah.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSavannahAnomaly" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSavannahAnomaly.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.2, 1.2, 0.28],
+				"texture" : "roadSavannahAnomaly.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"roadSavannahAnomaly_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSavannahAnomaly.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.2, 1.2, 0.28],
+				"texture" : "roadSavannahAnomaly.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.8
+			}
+		},
+
+		"roadSavannahTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSavannah.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.28],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSavannahTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSavannah.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.28],
+				"texture" : "roadAsphalt_spec2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadSavannahWet" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSavannah.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.28],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSavannahWet_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSavannah.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.7, 0.7, 0.6],
+				"texture" : "roadAlpha2s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.07
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSavannah_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSavannah.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.28]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSnow" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.95, 0.85, 0.85],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.3,
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"roadSnowWhite" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.95, 0.9, 0.86],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.38],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.5, 0.5, 0.6],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.3,
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		
+
+		"roadSnowGrn" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnowGrn.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.62, 0.62],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSnowGrnTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnowGrn.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.62, 0.62],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSnowGrnTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.8, 0.8, 0.8],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnowGrn.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.62, 0.62]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadSnowGrn_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnowGrn.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.8, 0.82, 0.82],
+				"texture" : "roadAlpha2s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1s.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.03,
+				"sampler" : "Sampler_10"
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [0.99, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSnowTransp" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.9, 0.85, 0.85],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.7, 0.72, 0.72],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSnowTransp_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.9, 0.85, 0.85],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.62, 0.62]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"roadSnowWet" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadSnowWet_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.75, 0.7, 0.65],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.55, 0.5, 0.45],
+				"texture" : "roadAlpha2s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.45, 0.4, 0.4],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.02
+			},
+			"detail_weight" :
+			{
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [0.99, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSnow_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.64, 0.53, 0.45],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.26, 0.26]
+			},
+			"fresnel" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+		
+		"roadSnowWhite_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"reflect" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.653, 0.58, 0.53],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.295, 0.29]
+			},
+			"fresnel" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "roadDesert_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSpring" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSpring.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.25, 0.3, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.2
+			}
+		},
+
+		"roadSpring2" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.5, 0.66, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSpring2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.15, 0.33, 0.25],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.22
+			}
+		},
+
+		"roadSpring2_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.6, 0.744, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSpring2.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.15, 0.33, 0.25]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.15
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadSpring_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.66, 0.68, 0.65],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSpring.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.15, 0.2, 0.15]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.16
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"roadStone" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.337, 0.286, 0.189],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"texture" : "roadAsphalt_spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.4
+			}
+		},
+
+		"roadStone_ter" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.337, 0.286, 0.189],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadSnow.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"mode" : "Overlay",
+				"scale" : [1, 0.03],
+				"texture" : "roadAlpha2y.png",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"road_col" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.54, 0.55, 0.55],
+				"background" : [1, 1, 1, 1],
+				"texture" : "concrete03.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.25, 0.25, 0.25]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "brass_patina_n.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"road_col_Alien" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "alien_wall.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.35, 0.36, 0.35]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"road_col_Black" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.26, 0.26, 0.26],
+				"background" : [1, 1, 1, 1],
+				"texture" : "brass_patina.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.28, 0.3]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 3,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"road_col_Blue" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.45, 0.6, 0.744],
+				"background" : [1, 1, 1, 1],
+				"texture" : "brass_patina.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.2, 0.35, 0.5]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_2.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"road_col_Dark" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.55, 0.6, 0.55],
+				"background" : [1, 1, 1, 1],
+				"texture" : "brass_patina.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.35, 0.36, 0.35]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"road_col_Desert" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.54, 0.53, 0.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "concrete1w.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.29]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_col_Red" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.6, 0.54, 0.5],
+				"background" : [1, 1, 1, 1],
+				"texture" : "concrete03.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.29]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "concrete_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_col_Winter" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1.14, 1.24],
+				"background" : [1, 1, 1, 1],
+				"texture" : "concrete03.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.43, 0.42, 0.41]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "concrete_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+		
+		"road_col_Ice" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"reflect" : true,
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.62, 0.55, 0.6],
+				"background" : [1, 1, 1, 1],
+				"texture" : "ice_d.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.46, 0.66, 0.85],
+				"texture" : "ice_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [1, 1, 1.04],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.75,
+				"texture" : "ice_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
+		"road_col_crystal" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.95, 0.95, 0.95],
+				"background" : [1, 1, 1, 1],
+				"texture" : "crystal_wall.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.21, 0.21, 0.61]
+			},
+			"fresnel" :
+			{
+				"value" : 0.818,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 1
+			}
+		},
+
+		"road_col_crystal_cyan" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.95, 1.35, 0.65],
+				"background" : [1, 1, 1, 1],
+				"texture" : "crystal_wall.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.21, 0.41, 0.41]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1.2,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"road_col_crystal_pink" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1.45, 0.95, 0.95],
+				"background" : [1, 1, 1, 1],
+				"texture" : "crystal_wall_pink.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.31, 0.21, 0.21]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1.2,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"road_col_spring" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.95, 0.85, 0.55],
+				"background" : [1, 1, 1, 1],
+				"texture" : "roadMoss.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.41, 0.61, 0.31]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 0.7,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.6
+			}
+		},
+
+		"road_col_wheel_anomaly" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1.49, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "HI_WheelWall_col.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 1.6, 0.8]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "HI_WheelWall_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_terrain" :
+		{
+			"macroblock" : "Macroblock_4",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.5]
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.5
+			}
+		},
+
+		"road_wall" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "brass_patina.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "brass_patina_n.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_wall_Alien" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "alien_wall.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.18, 0.21, 0.14]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_wall_Black" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.26, 0.26, 0.26],
+				"background" : [1, 1, 1, 1],
+				"texture" : "brass_patina.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.28, 0.3]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 3,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_wall_Desert" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.6, 0.6, 0.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "concrete1w.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.2]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "concrete_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_wall_JDark" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.31, 0.35, 0.25],
+				"background" : [1, 1, 1, 1],
+				"texture" : "brass_patina.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.25, 0.26, 0.24]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 4,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_wall_Jungle" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.54, 0.61, 0.476],
+				"background" : [1, 1, 1, 1],
+				"texture" : "brass_patina.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.18, 0.21, 0.14]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 2,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_wall_Red" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.678, 0.61, 0.59],
+				"background" : [1, 1, 1, 1],
+				"texture" : "brass_patina.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.33, 0.31, 0.27]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 3,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_wall_Winter" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.9, 0.93, 0.93],
+				"background" : [1, 1, 1, 1],
+				"texture" : "concrete1w.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.6, 0.6, 0.6]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 2,
+				"texture" : "concrete_norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+		
+		"road_wall_Ice" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"reflect" : true,
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.32, 0.62, 0.72],
+				"background" : [1, 1, 1, 1],
+				"texture" : "ice_d.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.46, 0.67, 0.85],
+				"texture" : "ice_s.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [1, 1, 1.14],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 0.75,
+				"texture" : "ice_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			}
+		},
+
+		"road_wall_crystal" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.95, 0.95, 0.95],
+				"background" : [1, 1, 1, 1],
+				"texture" : "crystal_wall.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.21, 0.21, 0.61]
+			},
+			"fresnel" :
+			{
+				"value" : [0.4, 0.4, 0.4],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.2
+			}
+		},
+
+		"road_wall_crystal_cyan" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.95, 1.35, 0.65],
+				"background" : [1, 1, 1, 1],
+				"texture" : "crystal_wall.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.21, 0.41, 0.41]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1.5,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_wall_crystal_pink" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1.45, 0.95, 0.95],
+				"background" : [1, 1, 1, 1],
+				"texture" : "crystal_wall_pink.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1.31, 0.21, 0.21]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1.5,
+				"texture" : "normal_1.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_wall_metal_01_anomaly" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "metal_29norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1, 1.2],
+				"texture" : "metal_29spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "metal_29.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_wall_metal_02_anomaly" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1.6, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "metal_40.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [1, 1.6, 1],
+				"texture" : "metal_40norm.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "metal_40spec.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_wall_spring" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.95, 0.95, 0.95],
+				"background" : [1, 1, 1, 1],
+				"texture" : "wall_spring.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.21, 0.21, 0.61]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1.1,
+				"texture" : "wall_spring_norm.png",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		},
+
+		"road_wall_wheel_anomaly" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_1",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "HI_WheelWall.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.6, 0.8]
+			},
+			"fresnel" :
+			{
+				"value" : 0.01,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "HI_WheelWall_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.7
+			}
+		}
+
+	}
+}
