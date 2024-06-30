@@ -1,4 +1,14 @@
+From:
+../Ogre/ogre-next/Docs/2.0/JSON/PbsAllSettings.json
+../Ogre/ogre-next/Docs/src/manual/HlmsPBSDatablockReference.md
+
+https://github.com/OGRECave/ogre-next/blob/v3-0/Docs/src/manual/HlmsPBSDatablockReference.md
+https://github.com/OGRECave/ogre-next/blob/v3-0/Docs/2.0/JSON/PbsAllSettings.json
+https://github.com/OGRECave/ogre-next/blob/v3-0/Docs/2.0/JSON/PbsExample.material.json
+
+
 {
+    
     "samplers" :
    {
         "unique_name" :
@@ -54,19 +64,32 @@
     {
         "material_name" :
         {
+            "macroblock" : "unique_name" ["unique_name", "unique_name_for_shadows"],
             "macroblock" : "unique_name",
             "blendblock" : "unique_name",
+
             "alpha_test" : ["disabled", 0.5],
+			"alpha_test" : ["greater", 0.5, false],
+            "alpha_test" : ["less" "less_equal" "equal" "not_equal" "greater_equal" "greater" "never" "always" "disabled", 0.5],
+
             "shadow_const_bias" : 0.01,
             "two_sided"  :  false,
             "receive_shadows"	:	true,
 
+			"reflect" : true,
+			"fluid" : true,
+
             "workflow" : "specular_fresnel",
+			"workflow" : "specular_ogre",
+
+			"refraction_strength" : 0.8,
 
             "transparency" :
             {
                 "value" : 1.0,
                 "mode" : "None",
+				"mode" : "Transparent",
+				"mode" : "Refractive",
                 "use_alpha_from_textures" : true
             },
 
@@ -79,9 +102,21 @@
                 "uv" : 0
             },
 
+            "emissive" :
+            {
+                "value" : [1.0, 1.0, 1.0],
+                "texture" : "texture.png",
+                "sampler" : "unique_name",
+                "uv" : 0,
+                "lightmap" : false
+            },
+
             "specular" :
             {
-                "value" : [1, 1, 1]
+                "value" : [1, 1, 1],
+                "texture" : "texture.png",
+                "sampler" : "unique_name",
+                "uv" : 0
             },
 
             "roughness" :
@@ -118,6 +153,7 @@
 
             "detail_diffuse0" :
             {
+                "mode" : "NormalNonPremul" "NormalPremul" "Add" "Subtract" "Multiply" "Multiply2x" "Screen" "Overlay" "Lighten" "Darken" "GrainExtract" "GrainMerge" "Difference",
                 "mode" : "Multiply",
                 "offset" : [0, 0],
                 "scale" : [4, 4],
@@ -163,6 +199,13 @@
             {
                 "texture" : "cubemap.png",
                 "sampler" : "unique_name"
+            }
+
+            "user_values" :
+            {
+                "0" : [0.0, 0.0, 0.0, 0.0],
+                "1" : [0.0, 0.0, 0.0, 0.0],
+                "2" : [0.0, 0.0, 0.0, 0.0]
             }
         }
     }

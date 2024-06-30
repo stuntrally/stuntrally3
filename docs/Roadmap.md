@@ -8,10 +8,10 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-split json, 🌊all **fluids** json, no refract option  
+🌊all **fluids** json, no refract option  
 add refract clr, depth clr params  
-underwater top, pass projmatrix not inverse  
-fix compositor, hud3d, particles etc  
+**under**water top, pass projmatrix not inverse  
+**fix** compositor, hud3d, particles etc  
 SSAO?  
 
 🌿bushes, lods, add to tracks  

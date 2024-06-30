@@ -188,7 +188,7 @@ There is no reflMap or `reflect_map`, we can use either:
 
 Need to add `reflect yes` to .material to get that `env_refl` (environment reflection cubemap) as before.
 
-**Quick examples**, top of [PbsExample.material-](../data/materials/Pbs/PbsExample.material-).
+**Quick examples**, top of [_Example.material-](../data/materials/Pbs/_Example.material-).
 
 For terrain layer textures these parames are in `presets.xml` as:  
 `ro - roughness, me - metalness, re - reflection`.
@@ -243,6 +243,9 @@ then check other similar material and copy its top section, like:
 			"blendblock" : "Blendblock_0",
 ```
 to your material. It should render properly then.
+
+**Quick examples**, with (almost) full syntax, in [_Example.material.json-](../data/materials/Pbs/_Example.material.json-). 
+With also links on top.
 
 ----
 
