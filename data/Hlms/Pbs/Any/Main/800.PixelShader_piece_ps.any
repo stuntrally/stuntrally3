@@ -447,10 +447,13 @@ uv3 = UV * WAVE_SCALE*0.25+ WIND_DIR *timer* WIND_SPEED*0.07-(normal1.xy/normal1
 uv3 = UV * WAVE_SCALE*0.5 + WIND_DIR *timer* WIND_SPEED*0.09-(normal2.xy/normal2.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(+0.03 ,+0.04);   float3 normal3 = @insertpiece(GetNorm)
 uv3 = UV * WAVE_SCALE*1.0 + WIND_DIR *timer* WIND_SPEED*0.4 -(normal3.xy/normal3.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(-0.02 ,+0.1 );   float3 normal4 = @insertpiece(GetNorm)
 uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(+0.1  ,-0.06);   float3 normal5 = @insertpiece(GetNorm)
+// uv3 = UV * WAVE_SCALE*17.4+ WIND_DIR *timer* WIND_SPEED*0.6 -(normal1.xy/normal1.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(+0.063,-0.053);  float3 normal6 = @insertpiece(GetNorm)
+// uv3 = UV * WAVE_SCALE*18.3+ WIND_DIR *timer* WIND_SPEED*0.5 -(normal2.xy/normal2.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(-0.052,+0.064);  float3 normal7 = @insertpiece(GetNorm)
 
 				float3 n6 = normal0 * BIG_WAVES_X   + normal1 * BIG_WAVES_Y +
 							normal2 * MID_WAVES_X   + normal3 * MID_WAVES_Y +
 							normal4 * SMALL_WAVES_X + normal5 * SMALL_WAVES_Y;
+							// normal6 * SMALL_WAVES_X + normal7 * SMALL_WAVES_Y;
 				float3 n1 = normalize( midf3_c( n6.x * BUMP,  n6.y * BUMP,  n6.z ));
 				float3 n2 = normalize( midf3_c( n6.x * BUMP2, n6.y * BUMP2, n6.z ));
 
@@ -461,6 +464,7 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 			@end
 
 				pixelData.normal = lerp(n1, n2, SPEC2);
+				// pixelData.normal.y = 1.0 - pixelData.normal.y;
 				// pixelData.diffuse.xyz = n1;  // test stuff ..
 				// pixelData.normal = midf3_c(0.0,0.0,1.0);
 

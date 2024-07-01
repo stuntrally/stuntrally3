@@ -77,43 +77,56 @@
 
 	refractionCol = lerp( refractionCol, fallbackRefractionCol, fallbackRefrW );
 
-
 	// refractionCol.x *= 0.4f;  // colorize cyan-blue
 	// refractionCol.y *= 0.9f;
 
+
 	//  depth  ------
-	// midf depthValue = OGRE_SampleLevelF16( depthTextureNoMsaa, refractionMapSampler, screenPosUv.xy, 0 ).x;  // normal-
-	// midf4 ndc = midf4( screenPosUv.xy * 2.0 - 1.0, depthValue, 1.0 );  // normal-
-	midf depthValue = OGRE_SampleLevelF16( depthTextureNoMsaa, refractionMapSampler, refractUvOrg.xy, 0 ).x;  // refracted
-	midf4 ndc = midf4( refractUvOrg.xy * 2.0 - 1.0, depthValue, 1.0 );  // refracted
-	midf4 tmp = mul( ndc, inverse( passBuf.viewProj ) );  // worldViewProj-  // todo atmo. pass matrix..
-	midf3 pos = tmp.xyz / tmp.w;
+	float4x4 invVP = inverse( passBuf.viewProj );  // worldViewProj-  // todo atmo. pass matrix..
+
+	midf depthOrg = OGRE_SampleLevelF16( depthTextureNoMsaa, refractionMapSampler, screenPosUv.xy, 0 ).x;
+	midf4 ndcOrg = midf4( screenPosUv.xy * 2.0 - 1.0, depthOrg, 1.0 );
+	midf4 tmpOrg = mul( ndcOrg, invVP );
+	midf3 posOrg = tmpOrg.xyz / tmpOrg.w;
+
+	midf depthRfr = OGRE_SampleLevelF16( depthTextureNoMsaa, refractionMapSampler, refractUvOrg.xy, 0 ).x;
+	midf4 ndcRfr = midf4( refractUvOrg.xy * 2.0 - 1.0, depthRfr, 1.0 );
+	midf4 tmpRfr = mul( ndcRfr, invVP );
+	midf3 posRfr = tmpRfr.xyz / tmpRfr.w;
 	
-	midf depth = inPs.worldH - pos.y;
-	midf diff = depth;
-	// depth = min(40, max(0, depth));  // max depth
-	// depth = min(20, max(0, depth));  // max depth
-	// depth = 0.1 + min(40, max(0, 6.0 + 20.0 * depth * 0.6));  // max depth
-	depth = min(40, max(0, 6.0 + 10.0 * depth * 0.6));  // max depth
+	midf depth = inPs.worldH - posOrg.y; //posRfr.y;
+	midf border = inPs.worldH - posOrg.y;
+
+	// float depth = min(40, max(0, depth));  // max depth
+	// float depth = min(20, max(0, depth));  // max depth
+	// float depth = 0.1 + min(40, max(0, 6.0 + 20.0 * depth * 0.6));  // max depth
+	float d = min(40, max(0, 3.0 + 10.0 * depth * 0.6));  // max depth +
+
 
 	// midf3 deepFade = 1.1 * midf3(0.034, 0.022, 0.01);  // fade  blue dark
 	// midf3 deepFade = 1.1 * midf3(0.03, 0.025, 0.015);  // fade  blue cyan
 	// midf3 deepFade = 1.1 * midf3(0.02, 0.02, 0.01);  // fade  blue clear
 	// midf3 deepFade = 1.1 * midf3(0.04, 0.02, 0.01);  // fade  blue cyan
 	midf3 deepFade = 1.0 * midf3(0.06, 0.02, 0.01);  // fade  cyan green
+	// midf3 deepFade = 8.0 * midf3(0.1, 0.02, 0.01);  // fade
 
 	// depth = midf_c( exp2( depth * 0.06 ) );  // amount
 	// depth = min(1.0, max(0.0, depth));  // max depth
-	// midf3 deepFade = 8.0 * midf3(0.1, 0.02, 0.01);  // fade
 
-	// midf3 deepClr = midf3(0.2, 0.33, 0.4);  // deepest color
+	// midf3 clrShallow = pixelData.diffuse.xyz;
+	// midf3 clrDeep = midf3(0.0, 0.05, 0.05);  // deepest color
+	// float d = min(1.0, depth * 0.03);  // todo new..
+	// float d  = min(1.0, exp2( -depth * 0.8 ));
+	// float de = min(1.0, exp2( -depth * 0.03 ));
+	// midf3 clrMix = lerp(clrDeep, clrShallow, de);
+	// refractionCol = lerp(clrMix, refractionCol, d);
+
 	// refractionCol.x = max(deepClr.x, refractionCol.x - depth * deepFade.x);
 	// refractionCol.y = max(deepClr.y, refractionCol.y - depth * deepFade.y);
 	// refractionCol.z = max(deepClr.z, refractionCol.z - depth * deepFade.z);
-	refractionCol.x *= 1.0 - depth * deepFade.x;
-	refractionCol.y *= 1.0 - depth * deepFade.y;
-	refractionCol.z *= 1.0 - depth * deepFade.z;
-	// pixelData.diffuse.w = max(0.0, 1.0 - depth * 0.1);  // fade alpha..
+	refractionCol.x *= max(0.0, 1.0 - d * deepFade.x);  //+
+	refractionCol.y *= max(0.0, 1.0 - d * deepFade.y);
+	refractionCol.z *= max(0.0, 1.0 - d * deepFade.z);
 
 	//  set clr
 	@property( use_texture_alpha )
@@ -126,8 +139,13 @@
 
 	//  fade out border
 	midf3 originalCol = OGRE_SampleLevelF16( refractionMap, refractionMapSampler, screenPosUv.xy, 0 ).xyz;
-	midf alpha = min(1.0, abs(diff) * 6.4);
+	midf alpha = max(0.0, min(1.0, border * 16.4));
 	finalColour = lerp( originalCol, finalColour, alpha );
+
+	//  caustics ..
+	// midf foam = max(0.0, min(1.0, border * 0.4));
+	// midf3 foamCol = midf3(0.7,0.8,0.9);
+	// finalColour = lerp( foamCol, finalColour, foam );
 
 	//  test
 	// finalColour = midf3( inPs.worldH * 0.001, inPs.worldH * 0.002, 0.01 * inPs.worldH);
