@@ -1,0 +1,34 @@
+
+Models:		fern.mesh, fern2.mesh
+Artist:		yughues
+License:	CC-BY 3.0
+Date:		21/05/2011
+Urls: 		https://opengameart.org/content/fern-v21-double-sided-pack
+			https://opengameart.org/content/fern-pack
+
+Model:		palm_plant.mesh
+Artist:		yughues
+License:	CC-BY 3.0
+Date:		18/12/2011
+Url:		https://opengameart.org/content/palm-plant
+
+Model:		plant_tropical.mesh
+Artist:		yughues
+License:	CC0
+Date:		19/04/2012
+Url:		https://opengameart.org/content/tropical-plant-02-0
+
+
+-----  new  SR 3.2  -----
+
+Models:		bush01..05.mesh
+Artist:		yughues
+License:	CC0
+Date:		19/07/2012
+Url:		https://opengameart.org/content/bushes
+
+Models:		bush11..15.mesh
+Artist:		yughues
+License:	CC0
+Date:		08/01/2013
+Url:		https://opengameart.org/content/tropical-shrubs

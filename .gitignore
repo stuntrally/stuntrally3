@@ -1,17 +1,4 @@
 syntax: glob
-*.dll
-*.pdb
-
-#  VS crap
-#*.vcxproj
-#*.filters
-*.vcxproj.user
-*.ilk
-*.tlog
-*.obj
-*.rule
-*.sdf
-
 #  build
 CMake*
 .cache
@@ -26,26 +13,33 @@ sr.log
 #config
 #hud
 #gui
-tracks*
+#tracks*
 #cars
 data/ghosts/original/
 objects2convert
-#data/objects*/
-#data/trees*/
-#data/road/
+#data/models/objects*/
+#data/models/trees*/
+#data/textures/road/
 #terrain
 #data
 #data/materials/*
 sounds
 
+#  VS crap
+*.dll
+*.pdb
+#*.vcxproj
+#*.filters
+*.vcxproj.user
+*.ilk
+*.tlog
+*.obj
+*.rule
+*.sdf
+
 #  other crap
 .DS_Store
-iOSDependencies
-AndroidBuild/
-AndroidDependencies/
 Build/
-EmscriptenDependencies
-EmscriptenBuild
 cmake-build-*/
 .idea/
 _build

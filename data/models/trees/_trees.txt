@@ -10,14 +10,6 @@ License:	CC0
 Date:		03/11/2011
 Url: 		https://opengameart.org/content/palm-tree-v2
 
-Models:		fern.mesh, fern2.mesh
-Artist:		yughues
-License:	CC-BY 3.0
-Date:		21/05/2011
-Urls: 		https://opengameart.org/content/fern-v21-double-sided-pack
-			https://opengameart.org/content/fern-pack
-
-
 Model:		jungle_tree.mesh
 Artist:		Bardes
 License: 	CC0
@@ -25,19 +17,6 @@ Date:		27/06/2010
 Url: 		https://blendswap.com/blend/2196
 Notes:		Bark texture by OpenGameArt user yughues, licensed CC0
 			low-polying, baked textures & normals in blender by scrawl
-
-Model:		palm_plant.mesh
-Artist:		yughues
-License:	CC-BY 3.0
-Date:		18/12/2011
-Url:		https://opengameart.org/content/palm-plant
-
-Model:		plant_tropical.mesh
-Artist:		yughues
-License:	CC0
-Date:		19/04/2012
-Url:		https://opengameart.org/content/tropical-plant-02-0
-
 
 9 Models:	pine1_full.mesh,  pine2_tall_full,  pine3_fat_full  and variants: _half, _norm
 Model:		cactus.mesh
@@ -80,15 +59,3 @@ License:	CC-BY 4.0
 Date:		22/11/2020
 Url:		https://sketchfab.com/3d-models/coconut-tree-low-poly-8c5d6b661b2f4c37834d87cd187eb907
 
-
-Models:		bush01..05.mesh
-Artist:		yughues
-License:	CC0
-Date:		19/07/2012
-Url:		https://opengameart.org/content/bushes
-
-Models:		bush11..15.mesh
-Artist:		yughues
-License:	CC0
-Date:		08/01/2013
-Url:		https://opengameart.org/content/tropical-shrubs
