@@ -2375,54 +2375,72 @@
 							<Property key="Alpha" value="0.7"/>
 						</Widget>
 
-						<Widget type="Widget" skin="" position="136 12 634 24">
-							<Widget type="TabControl" skin="TabControlIcon" position="0 0 616 24" name="LTrNumTab">
+						<Widget type="Widget" skin="" position="16 12 734 24">
+							<Widget type="TabControl" skin="TabControlIcon" position="0 0 716 24" name="LTrNumTab">
 								<Property key="Colour" value="0.6 0.8 0.8"/>
 								<Property key="Visible" value="true"/>
-								<Property key="ButtonWidth" value="70"/>
+								<!-- <Property key="ButtonWidth" value="50"/> -->
 								<Property key="SmoothShow" value="false"/>
 								<UserString key="tip" value="#{TipVegetGroups}"/>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#60D0F0 1"/>
+									<Property key="Caption" value="#E08020 1"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#68E0F0 2"/>
+									<Property key="Caption" value="#E0C020 2"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#70E0E0 3"/>
+									<Property key="Caption" value="#E0E020 3"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#70B0D0 4"/>
+									<Property key="Caption" value="#B0E030 4"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#70A0C0 5"/>
+									<Property key="Caption" value="#80E030 5"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#6890B0 6"/>
+									<Property key="Caption" value="#30F030 6"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#6080A0 7"/>
+									<Property key="Caption" value="#30E060 7"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#8080C8 8"/>
+									<Property key="Caption" value="#30E080 8"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#8070C0 9"/>
+									<Property key="Caption" value="#40E0B0 9"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#8060B0 10"/>
+									<Property key="Caption" value="#50E0D010"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#805090 11"/>
+									<Property key="Caption" value="#60E0F011"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#804070 12"/>
+									<Property key="Caption" value="#70E0E012"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#803050 13"/>
+									<Property key="Caption" value="#70B0D013"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#602040 14"/>
+									<Property key="Caption" value="#6080A014"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#8080C815"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#A070A016"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#C0506017"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#B0305018"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#A0204019"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#80101020"/>
 								</Widget>
 							</Widget>
 							<!--<Widget type="Widget" skin="PanelSkin" position="0 0 528 24">-->
