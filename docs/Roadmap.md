@@ -14,8 +14,9 @@ add refract clr, depth clr params
 **fix** compositor, hud3d, particles etc  
 SSAO?  
 
-🌿bushes, lods, add to tracks  
+🌿bushes, lods  
 🌳new jungle trees, lods  
+**add** to tracks  
 
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  

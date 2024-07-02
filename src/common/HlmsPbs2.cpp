@@ -88,8 +88,8 @@ void HlmsPbs2::calculateHashForPreCreate(
 	if (mtr.substr(0,4) == "sky/")
 		setProperty( "sky", 1 );
 
-	if (fluid)
-		setProperty( "refract", app->pSet->g.water_refract );
+	if (fluid && app->pSet->g.water_refract)
+		setProperty( "refract", 1 );
 
 	/*if (mtr.find("body") != String::npos)
 	{
