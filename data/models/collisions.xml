@@ -19,23 +19,28 @@
 		<object mesh= "fern2.mesh" />
 		<object mesh= "fern2_black.mesh" />
 
-		<object mesh= "plant1.mesh" />
-		<object mesh= "plant2.mesh" />
-
-		<object mesh= "plant_tropical.mesh" />
 		<object mesh= "palm_plant.mesh" />
+		<object mesh= "plant_tropical.mesh" />
+		<object mesh= "tropic_leaves.mesh" />
 
+		<object mesh= "blueberry.mesh" />
+		<object mesh= "bushes1.mesh" />
+		<object mesh= "bushes2.mesh" />
+		<object mesh= "bush_grass1.mesh" />
+		<object mesh= "bush_grass2.mesh" />
+		<object mesh= "fern_bush.mesh" />
+		
 		<object mesh= "bush01.mesh" />
-		<object mesh= "bush02.mesh" />
-		<object mesh= "bush03.mesh" />
+		<object mesh= "bush02dry_red.mesh" />
+		<object mesh= "bush03flower_viol.mesh" />
 		<object mesh= "bush04.mesh" />
 		<object mesh= "bush05.mesh" />
 
-		<object mesh= "bush11.mesh" />
-		<object mesh= "bush12.mesh" />
-		<object mesh= "bush13.mesh" />
-		<object mesh= "bush14.mesh" />
-		<object mesh= "bush15.mesh" />
+		<object mesh= "bush11flower_red.mesh" />
+		<object mesh= "bush12flower_red2.mesh" />
+		<object mesh= "bush13tall_ylw.mesh" />
+		<object mesh= "bush14tall_spots.mesh" />
+		<object mesh= "bush15palm.mesh" />
 	</none>
 	
 <!-- old -->
