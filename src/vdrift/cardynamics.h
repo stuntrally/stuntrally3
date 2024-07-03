@@ -171,10 +171,16 @@ public:
 	float doFlip = 0.f, doBoost = 0.f;    // Fuel set later when road length known
 	float boostFuel = 0.f, boostFuelStart = 0.f, boostVal = 0.f, fBoostFov = 0.f;
 
-	std::list<SField*> inFields;  // 🎆
-	std::list<FluidBox*> inFluids;  /// list of fluids this car is in (if any)
-	std::vector<std::list<FluidBox*> > inFluidsWh;
 	
+	//  collis triggers etc
+	//----------------------------------
+	float fVegetDamp = 0.f;  // 🌿 veget bush damping, sum
+	std::list<SField*> inFields;  // 🎆
+
+	std::list<FluidBox*> inFluids;  /// 🌊 list of fluids this car is in (if any)
+	std::vector<std::list<FluidBox*> > inFluidsWh;
+
+
 	Ogre::Vector3 vHitPos{0,0,0}, vHitNorm{0,0,1};  // 🔨 world hit data
 	Ogre::Vector3 vHitCarN{0,0,1}, vHitDmgN{0,0,1};
 	float fHitDmgA = 0.f;  // damage factors
@@ -183,7 +189,8 @@ public:
 		fCarScrap = 0.f, fCarScreech = 0.f;
 	btVector3 velPrev{0,0,0};
 	Dbl time = 0.0;  // for wind only
-	
+
+
 	///  other vehicles  *  *  *
 	//----------------------------------
 	VehicleType vtype = V_Car;

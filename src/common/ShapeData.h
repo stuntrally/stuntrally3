@@ -18,11 +18,15 @@ const static int  // & 0xFF !
 
 
 //  info  for special collision objects:
-//  car body, fluid areas, wheel fluid triggers, collectible item triggers
 //-------------------------------------------------------------
 enum EShapeType
 {
-	ST_Car=0, ST_Fluid, ST_Wheel, ST_Collect, ST_Field, ST_Other
+	ST_Car=0,  //  car body
+	ST_Fluid, ST_Wheel,  //  fluid area, wheel fluid trigger
+	ST_Collect,  //  💎 collectible item trigger
+	ST_Field,   //  🎆 field, one of FieldTypes
+	ST_Damp,   //  🌿 veget bush, slowing
+	ST_Other
 };
 
 class CARDYNAMICS;
@@ -33,14 +37,21 @@ class ShapeData
 public:
 	EShapeType type;
 	CARDYNAMICS* pCarDyn;
-	FluidBox* pFluid;
+	FluidBox* pFluid;  // 🌊
 	int whNum;
-	SCollect* pCol;
-	SField* pField;
 
-	ShapeData( EShapeType type1, CARDYNAMICS* pCarDyn1=0,
-		FluidBox* pFluid1=0, int whNum1=0, SCollect* pCol1=0, SField* pField1=0)
+	SCollect* pCol;  // 💎
+	SField* pField;  // 🎆
+	float fDamp;  // 🌿 veget bush
+
+	ShapeData( EShapeType type1, CARDYNAMICS* pCarDyn1 =0,
+		FluidBox* pFluid1 =0, int whNum1 =0,
+		SCollect* pCol1 =0,
+		SField* pField1 =0, float fDamp1 =0.f)
+		
 		: type(type1), pCarDyn(pCarDyn1)
-		, pFluid(pFluid1), whNum(whNum1), pCol(pCol1), pField(pField1)
+		, pFluid(pFluid1), whNum(whNum1)
+		, pCol(pCol1)
+		, pField(pField1), fDamp(fDamp1)
 	{	}
 };

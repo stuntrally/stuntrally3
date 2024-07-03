@@ -1,4 +1,5 @@
 #pragma once
+#include "dbl.h"
 #include "SColor.h"
 #include "mathvector.h"
 #include "quaternion.h"
@@ -237,7 +238,11 @@ public:
 	FieldTypes type;
 
 	Ogre::Vector3 pos{0,0,0}, dir{0,1,0}, size{1,1,1};
-	// float factor = 1.f;  // par
+	float factor = 1.f;  // par for grav, accel, damp
+	
+	//  teleport destination
+	MATHVECTOR<Dbl,3> pos2;
+	QUATERNION<Dbl> dir2;
 
 	Ogre::SceneNode* nd = 0;  // 🟢 ogre
 	Ogre::ParticleSystem* ps = 0;

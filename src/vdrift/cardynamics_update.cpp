@@ -47,6 +47,14 @@ void CARDYNAMICS::Update()
 
 	if (!inFields.empty())
 		UpdateFields();
+
+	//  veget bush damp
+	if (fVegetDamp > 0.f)
+	{
+		btVector3 v = chassis->getLinearVelocity();
+		chassis->applyCentralForce(v * -800 * fVegetDamp);
+		fVegetDamp = 0.f;
+	}
 }
 
 
@@ -68,11 +76,12 @@ void CARDYNAMICS::UpdateFields()
 		}	break;
 		
 		case TF_Teleport:
-		{	auto p = GetPosition();  // relative no-
-			p[1] += 11.f;  // p[2] += 11.f;  //^
-			SetPosition(p);
-			// SetPosition(fld.pos2);
-			// SetOrientation(fld.rot2);  // todo: ed, end place
+		{	//auto p = GetPosition();  // relative no-
+			// p[1] += 11.f;  // p[2] += 11.f;  //^
+			// SetPosition(p);
+			// pCar->SetPosition(fld->pos2, fld->dir2)
+			SetPosition(fld->pos2);  // destination
+			// SetOrientation(fld->dir2);
 		}	break;
 		
 		case TF_Damp:

@@ -348,9 +348,17 @@ void CScene::CreateTrees()
 					btCollisionObject* bco = new btCollisionObject();
 					bco->setActivationState(DISABLE_SIMULATION);
 					bco->setCollisionShape(bshp);	bco->setWorldTransform(tr);
-					bco->setFriction(shp->friction);  bco->setRestitution(shp->restitution);
-					bco->setCollisionFlags(bco->getCollisionFlags() |
-						btCollisionObject::CF_STATIC_OBJECT /*| btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+
+					if (shp->damping > 0.f)
+					{
+						bco->setCollisionFlags(bco->getCollisionFlags() |
+							btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_NO_CONTACT_RESPONSE/**/);
+						bco->setUserPointer(new ShapeData(ST_Damp, 0, 0, 0, 0, 0, shp->damping));  /// *
+					}else
+					{	bco->setFriction(shp->friction);  bco->setRestitution(shp->restitution);
+						bco->setCollisionFlags(bco->getCollisionFlags() |
+							btCollisionObject::CF_STATIC_OBJECT /*| btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+					}
 					app->pGame->collision.world->addCollisionObject(bco);
 					app->pGame->collision.shapes.push_back(bshp);
 					++cntshp;

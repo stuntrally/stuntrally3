@@ -8,14 +8,14 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-🌊all **fluids** json, no refract option  
+🌊all **fluids** json, no refract test  
 add refract clr, depth clr params  
 **under**water top, pass projmatrix not inverse  
 **fix** compositor, hud3d, particles etc  
 SSAO?  
 
-🌿bushes, lods  
-🌳new jungle trees, lods  
+🌿**bushes**, lods  
+🌳new jungle [**trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), lods  
 **add** to tracks  
 
 💎Add **gems** to tracks, more types 3d  
@@ -50,7 +50,6 @@ Road wall types, [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)
 📦 object hit sounds, reverb change in water, caves, pipes-  
 
 Remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
-🌳 New jungle [**Trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), Bushes, more vegetation, tiny close, grasses, rock packs  
 
 redo or replace lowest quality meshes: shroom* 🍄, skyscraper* 🏢  
 normalize .mesh scales fir*, etc.  
@@ -73,10 +72,8 @@ sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)
 
 
 ----
-### Ogre cd restore
+### Ogre cd, restore
 
-- 🌊 `Water` **refract  
-  depth** for color, border alpha  
 - 🌪️ **Wind**, for trees  
   Grass **deform** spheres, wind params, far fade-  
 - Lights on `grass`, sun lit particles-  
@@ -106,7 +103,7 @@ sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)
 ### restore cd
 
 New tracks add to `champs` 🏆  
-SR 3.0 📽️ `editor Videos`, all new  
+SR 3 📽️ `editor Videos`, all new  
 
 auto road/ter **Surface**: Particles, trail, sounds, from `presets.xml` not per track  
 tire **trails clr**, no uv tex-  

@@ -50,6 +50,7 @@ bool BltObjects::LoadXml()
 
 			a = n->Attribute("frict");	if (a)  shp.friction = s2r(a);
 			a = n->Attribute("restit");	if (a)  shp.restitution = s2r(a);
+			a = n->Attribute("damp");	if (a)  shp.damping = s2r(a);
 					
 			//  add shape
 			col.shapes.push_back(shp);

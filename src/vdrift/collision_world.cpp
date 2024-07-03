@@ -37,26 +37,33 @@ void IntTickCallback(btDynamicsWorld* world, btScalar timeStep)
 		//if (pA && pB)
 		{
 			ShapeData* sdA = (ShapeData*)pA, *sdB = (ShapeData*)pB,
-				*sdCar =0, *sdFluid =0, *sdWheel =0, *sdCollect =0, *sdField =0;
+				*sdCar =0, *sdFluid =0, *sdWheel =0, *sdCollect =0, *sdField =0, *sdDamp =0;
 
 			if (sdA) {
 					 if (sdA->type == ST_Car)  sdCar = sdA;
 				else if (sdA->type == ST_Fluid)  sdFluid = sdA;
 				else if (sdA->type == ST_Wheel)  sdWheel = sdA;
-				else if (sdA->type == ST_Collect)  sdCollect = sdA;
-				else if (sdA->type == ST_Field)  sdField = sdA;  }
+				else if (sdA->type == ST_Damp)   sdDamp = sdA;
+				else if (sdA->type == ST_Field)  sdField = sdA;
+				else if (sdA->type == ST_Collect)  sdCollect = sdA;  }
 			if (sdB) {
 					 if (sdB->type == ST_Car)  sdCar = sdB;
 				else if (sdB->type == ST_Fluid)  sdFluid = sdB;
 				else if (sdB->type == ST_Wheel)  sdWheel = sdB;
-				else if (sdB->type == ST_Collect)  sdCollect = sdB;
-				else if (sdB->type == ST_Field)  sdField = sdB;  }
+				else if (sdB->type == ST_Damp)   sdDamp = sdB;
+				else if (sdB->type == ST_Field)  sdField = sdB;
+				else if (sdB->type == ST_Collect)  sdCollect = sdB;  }
 			
 			if (sdCollect && sdCar)
 			{
 				auto* col = sdCollect->pCol;
 				if (!col->collected)
 					col->collected = 1;
+			}
+
+			if (sdDamp && sdCar)
+			{
+				sdCar->pCarDyn->fVegetDamp += sdDamp->fDamp;
 			}
 
 			if (sdField && sdCar)
@@ -113,8 +120,14 @@ void DynamicsWorld::solveConstraints(btContactSolverInfo& solverInfo)
 		//if (pA && pB)
 		{
 			ShapeData* sdA = (ShapeData*)pA, *sdB = (ShapeData*)pB, *sdCar=0, *sdFluid=0, *sdWheel=0;
-			if (sdA) {  if (sdA->type == ST_Car)  sdCar = sdA;  else if (sdA->type == ST_Fluid)  sdFluid = sdA;  else if (sdA->type == ST_Wheel)  sdWheel = sdA;  }
-			if (sdB) {  if (sdB->type == ST_Car)  sdCar = sdB;  else if (sdB->type == ST_Fluid)  sdFluid = sdB;  else if (sdB->type == ST_Wheel)  sdWheel = sdB;  }
+			if (sdA) {
+				if (sdA->type == ST_Car)    sdCar = sdA;  else
+				if (sdA->type == ST_Fluid)  sdFluid = sdA;  else
+				if (sdA->type == ST_Wheel)  sdWheel = sdA;  }
+			if (sdB) {
+				if (sdB->type == ST_Car)    sdCar = sdB;  else
+				if (sdB->type == ST_Fluid)  sdFluid = sdB;  else
+				if (sdB->type == ST_Wheel)  sdWheel = sdB;  }
 
 			if (sdFluid)  /// wheel - fluid  -----~~~------~~~-----
 				if (sdWheel)
@@ -337,15 +350,19 @@ struct MyRayResultCallback : public btCollisionWorld::RayResultCallback
 			if (!bCamTilt && sd->type == ST_Fluid && !sd->pFluid->solid)
 				return 1.0;
 
-			//  always ignore 💎 collectibles
-			if (sd->type == ST_Collect)  return 1.0;
-
-			//  always ignore 🎆 fields
-			if (sd->type == ST_Field)  return 1.0;
-
-			//  always ignore ⚫ wheel triggers
+			//  always ignore:
+			//  ⚫ wheel triggers
 			if (sd->type == ST_Wheel)  // && (obj->getCollisionFlags() & btCollisionObject::CF_NO_CONTACT_RESPONSE))
 				return 1.0;
+
+			//  🌿 veget bush damp
+			if (sd->type == ST_Damp)  return 1.0;
+
+			//  🎆 fields
+			if (sd->type == ST_Field)  return 1.0;
+
+			//  💎 collectibles
+			if (sd->type == ST_Collect)  return 1.0;
 		}
 
 		//  cam ingores dynamic objects (car not)

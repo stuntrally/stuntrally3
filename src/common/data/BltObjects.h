@@ -8,7 +8,7 @@
 
 
 enum eBLTshape {  BLT_None=0, BLT_Sphere, BLT_CapsZ, BLT_Mesh, BLT_ALL };
-static std::string sBLTshape[BLT_ALL] = {"", "sphere", "capsZ", "mesh" };
+const static std::string sBLTshape[BLT_ALL] = {"", "sphere", "capsZ", "mesh" };
 
 
 struct BltShape
@@ -16,7 +16,9 @@ struct BltShape
 	eBLTshape type = BLT_Sphere;
 	float radius = 1.f, height = 1.f;  // dims
 	Ogre::Vector3 offset{0,0,0};  //Quaternion rot;  // pos, rot-
+	
 	float friction = 0.2f, restitution = 0.9f;  // collision pars
+	float damping = 0.f;
 };
 
 
