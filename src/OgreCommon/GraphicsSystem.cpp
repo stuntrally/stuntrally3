@@ -778,11 +778,6 @@ void GraphicsSystem::createAtmosphere( Light *sunLight )
 		atmosphere->setPreset( preset );
 	}
 
-	atmosphere->setSunDir(
-		sunLight->getDirection(),
-		std::asin( Math::Clamp( -sunLight->getDirection().y, -1.0f, 1.0f ) ) /
-			Math::PI );
-	atmosphere->setLight( sunLight );
 	atmosphere->setSky( mSceneManager, true );
 #endif
 }

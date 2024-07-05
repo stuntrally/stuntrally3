@@ -95,9 +95,6 @@ void CScene::CreateSun()
 
 void CScene::DestroySun()
 {
-	if (atmo)
-		atmo->setLight(0);
-	
 	auto *mgr = app->mSceneMgr;
 	if (sun)
 		mgr->destroyLight(sun);
@@ -117,9 +114,6 @@ void CScene::CreateFog()
 	auto *mgr = app->mSceneMgr;
 
 	atmo = OGRE_NEW Atmosphere2Npr( app->mRoot->getRenderSystem()->getVaoManager() );
-
-	atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
-	atmo->setLight( sun );  //-
 	atmo->setSky( mgr, true );
 	
 	OGRE_ASSERT_HIGH( dynamic_cast<Atmosphere2Npr*>( mgr->getAtmosphere() ) );
@@ -325,10 +319,7 @@ void CScene::UpdSun(float dt)
 	Vector3 dir = SplineRoad::GetRot(sc->ldYaw - sc->skyYaw, -sc->ldPitch);
 	// sun->setDiffuseColour( 0.0, 1.0, 0.0);
 	// sun->setSpecularColour(0.0, 0.0, 1.0);
-	if (atmo)  // todo: drop..
-	{	atmo->setSunDir( sun->getDirection(), sc->ldPitch / 180.f );
-		atmo->setLight(sun);
-	}
+
 	sun->setDirection(dir);
 	ndSun->_getFullTransformUpdated();
 

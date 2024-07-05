@@ -144,7 +144,6 @@ namespace Ogre
         Vector3 mSunDir;
         /// In range [0; 1] where
         float  mNormalizedTimeOfDay;
-        Light *mLinkedLight;
 
     public:
         /// PUBLIC VARIABLE. This variable can be altered directly.
@@ -180,42 +179,12 @@ namespace Ogre
 
         Ogre::SceneManager * mSceneManager;
 
-        void syncToLight();
-
     public:
         Atmosphere2Npr( VaoManager *vaoManager );
         ~Atmosphere2Npr() override;
 
         void setSky( Ogre::SceneManager *sceneManager, bool bEnabled );
         void destroySky( Ogre::SceneManager *sceneManager );
-
-        /** Links an existing directional to be updated using the Atmosphere's parameters
-        @param light
-            Light to associate with.
-            Can be nullptr to unlink it.
-            Light pointer must stay alive while linked (i.e. no dangling pointers)
-        */
-        void setLight( Light *ogre_nullable light );
-
-        /** Sets the time of day.
-        @remarks
-            Assumes Y is up
-        @param sunAltitude
-            Altitude of the sun.
-            At 90° the sun is facing downards (i.e. 12pm)
-            *Must* be in range [0; pi)
-        @param azimuth
-            Rotation around Y axis. In radians.
-        */
-        void setSunDir( const Radian sunAltitude, const Ogre::Radian azimuth = Radian( 0.0f ) );
-
-        /** More direct approach on setting time of day.
-        @param sunDir
-            Sun's light direction (or moon). Will be normalized.
-        @param normalizedTimeOfDay
-            In range [0; 1] where 0 is when the sun goes out and 1 when it's gone.
-        */
-        void setSunDir( const Ogre::Vector3 &sunDir, const float normalizedTimeOfDay );
 
         /// Sets a specific preset as current.
         void setPreset( const Preset &preset );

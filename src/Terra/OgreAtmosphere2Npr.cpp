@@ -85,7 +85,6 @@ namespace Ogre
         mSunDir( Ogre::Vector3( 0, 1, 1 ).normalisedCopy() ),
         mNormalizedTimeOfDay( std::asin( mSunDir.y ) ),
         mSceneManager(0),
-        mLinkedLight( 0 ),
         mAtmosphereSeaLevel( 0.0f ),
         mAtmosphereHeight( 110.0f * 1000.0f ),  // in meters (actually in units)
         mHlmsBuffer( 0 ),
@@ -101,22 +100,7 @@ namespace Ogre
         mVaoManager->destroyConstBuffer( mHlmsBuffer );
         mHlmsBuffer = 0;
     }
-    //-------------------------------------------------------------------------
-    inline Vector3 getSkyRayleighAbsorption( const Vector3 &vDir, const float density )
-    {
-        Vector3 absorption = -density * vDir;
-        absorption.x = std::exp2( absorption.x );
-        absorption.y = std::exp2( absorption.y );
-        absorption.z = std::exp2( absorption.z );
-        return absorption * 2.0f;
-    }
     
-    //-------------------------------------------------------------------------
-    void Atmosphere2Npr::syncToLight()
-    {
-        return;
-    }
-
     //-------------------------------------------------------------------------
     void Atmosphere2Npr::setSky( Ogre::SceneManager *sceneManager, bool bEnabled )
     {
@@ -126,8 +110,6 @@ namespace Ogre
             sceneManager->_setAtmosphere( this );
         else
             sceneManager->_setAtmosphere( nullptr );
-
-        syncToLight();
     }
 
     //-------------------------------------------------------------------------
@@ -135,63 +117,13 @@ namespace Ogre
     {
 
     }
-    //-------------------------------------------------------------------------
-    void Atmosphere2Npr::setLight( Light *light )
-    {
-        mLinkedLight = light;
-        syncToLight();
-    }
-    //-------------------------------------------------------------------------
-    void Atmosphere2Npr::setSunDir( const Radian sunAltitude, const Radian azimuth )
-    {
-        float sinSunAzimuth = std::sin( azimuth.valueRadians() );
-        float cosSunAzimuth = std::cos( azimuth.valueRadians() );
-        float sinSunAltitude = std::sin( sunAltitude.valueRadians() );
-        float cosSunAltitude = std::cos( sunAltitude.valueRadians() );
 
-        Ogre::Vector3 sunDir( sinSunAzimuth * cosSunAltitude, sinSunAltitude,
-                              cosSunAzimuth * cosSunAltitude );
-        setSunDir( -sunDir, sunAltitude.valueRadians() / Math::PI );
-    }
-    //-------------------------------------------------------------------------
-    void Atmosphere2Npr::setSunDir( const Ogre::Vector3 &sunDir, const float normalizedTimeOfDay )
-    {
-        mSunDir = -sunDir;
-        mSunDir.normalise();
-
-        mNormalizedTimeOfDay = std::min( normalizedTimeOfDay, 1.0f - 1e-6f );
-
-        // setPackedParams();
-        syncToLight();
-    }
-    
-    //-------------------------------------------------------------------------
-    void Atmosphere2Npr::setPreset( const Preset &preset )
-    {
-        mPreset = preset;
-        // setPackedParams();
-        syncToLight();
-    }
-    
+  
     //-------------------------------------------------------------------------
     void Atmosphere2Npr::_update( SceneManager *sceneManager, Camera *camera )
     {
         // const Vector3 *corners = camera->getWorldSpaceCorners();
         const Vector3 &cameraPos = camera->getDerivedPosition();
-
-        /*const Real invFarPlane = 1.0f / camera->getFarClipDistance();
-        Vector3 cameraDirs[4];
-        cameraDirs[0] = ( corners[5] - cameraPos ) * invFarPlane;
-        cameraDirs[1] = ( corners[6] - cameraPos ) * invFarPlane;
-        cameraDirs[2] = ( corners[4] - cameraPos ) * invFarPlane;
-        cameraDirs[3] = ( corners[7] - cameraPos ) * invFarPlane;
-
-        std::map<Ogre::SceneManager *, Rectangle2D *>::iterator itor = mSkies.find( sceneManager );
-        OGRE_ASSERT_LOW( itor != mSkies.end() );
-        Rectangle2D *sky = itor->second;
-
-        sky->setNormals( cameraDirs[0], cameraDirs[1], cameraDirs[2], cameraDirs[3] );
-        sky->update();*/
 
         Vector3 cameraDisplacement( Vector3::ZERO );
         {
@@ -199,9 +131,6 @@ namespace Ogre
             camHeight *= 1.0f;
             camHeight = ( camHeight - mAtmosphereSeaLevel ) / mAtmosphereHeight;
             cameraDisplacement[1] = camHeight;
-
-            // GpuProgramParametersSharedPtr psParams = mPass->getFragmentProgramParameters();
-            // psParams->setNamedConstant( "cameraDisplacement", cameraDisplacement );
         }
 
         AtmoSettingsGpu atmoGpu;
@@ -225,8 +154,8 @@ namespace Ogre
         const Vector4 packedParams2( mSunDir, mPreset.horizonLimit );
         const Vector4 packedParams3( mPreset.skyColour, mPreset.densityDiffusion );
 
-        atmoGpu.skyLightAbsorption = Vector4( getSkyRayleighAbsorption( mPreset.skyColour, lightDensity ), cameraPos.x );
-        atmoGpu.sunAbsorption =      Vector4( getSkyRayleighAbsorption( 1.0f - mPreset.skyColour, lightDensity ), cameraPos.y );
+        atmoGpu.skyLightAbsorption = Vector4( 1.f,1.f,1.f, cameraPos.x );
+        atmoGpu.sunAbsorption =      Vector4( 1.f,1.f,1.f, cameraPos.y );
         atmoGpu.cameraDisplacement = Vector4( cameraDisplacement, cameraPos.z );
         atmoGpu.packedParams1 = packedParams1;
         atmoGpu.packedParams2 = packedParams2;

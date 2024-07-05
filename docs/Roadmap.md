@@ -23,7 +23,7 @@ xml par continuous?, logic btn continue, hid collected gems on start?
 
 `fix` .car thrusters lights pos, boost count  
 hud new best time show, win particles-  
-ed Fields: accel par, dir, teleport end  
+**ed** Fields: accel par, dir, teleport end  
 
 new track(s) with fields, add walls  
 
