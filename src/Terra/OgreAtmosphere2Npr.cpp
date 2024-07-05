@@ -85,15 +85,13 @@ namespace Ogre
         mSunDir( Ogre::Vector3( 0, 1, 1 ).normalisedCopy() ),
         mNormalizedTimeOfDay( std::asin( mSunDir.y ) ),
         mLinkedLight( 0 ),
-        mConvention( Yup ),
         mAtmosphereSeaLevel( 0.0f ),
         mAtmosphereHeight( 110.0f * 1000.0f ),  // in meters (actually in units)
-        mPass( 0 ),
         mHlmsBuffer( 0 ),
         mVaoManager( vaoManager )
     {
         mHlmsBuffer = vaoManager->createConstBuffer( sizeof( AtmoSettingsGpu ), BT_DEFAULT, 0, false );
-        createMaterial();
+        // createMaterial();
     }
     //-------------------------------------------------------------------------
     Atmosphere2Npr::~Atmosphere2Npr()
@@ -113,40 +111,8 @@ namespace Ogre
 
         mSkies.clear();
 
-        if( mMaterial )
-        {
-            MaterialManager &materialManager = MaterialManager::getSingleton();
-            materialManager.remove( mMaterial );
-            mMaterial.reset();
-            mPass = 0;
-        }
-
         mVaoManager->destroyConstBuffer( mHlmsBuffer );
         mHlmsBuffer = 0;
-    }
-    //-------------------------------------------------------------------------
-    void Atmosphere2Npr::createMaterial()
-    {
-        OGRE_ASSERT_LOW( !mMaterial );
-
-        MaterialManager &materialManager = MaterialManager::getSingleton();
-
-        mMaterial = materialManager.getByName( "Ogre/Atmo/NprSky",
-                                               ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME );
-        if( !mMaterial )
-        {
-            OGRE_EXCEPT( Exception::ERR_FILE_NOT_FOUND,
-                         "To use the sky, bundle the resources included in Samples/Media/Common and "
-                         "Samples/Media/Hlms/Pbs/Any/Atmosphere",
-                         "Atmosphere2Npr::createMaterial" );
-        }
-
-        mMaterial = mMaterial->clone( mMaterial->getName() + "/" +
-                                      StringConverter::toString( Id::generateNewId<Atmosphere2Npr>() ) );
-        mMaterial->load();
-
-        mPass = mMaterial->getTechnique( 0u )->getPass( 0u );
-        setPackedParams();
     }
     //-------------------------------------------------------------------------
     inline Vector3 getSkyRayleighAbsorption( const Vector3 &vDir, const float density )
@@ -161,39 +127,7 @@ namespace Ogre
     //-------------------------------------------------------------------------
     void Atmosphere2Npr::setPackedParams()
     {
-        const float sunHeight = std::sin( mNormalizedTimeOfDay * Math::PI );
-        const float sunHeightWeight = std::exp2( -1.0f / sunHeight );
-        // Gets smaller as sunHeight gets bigger
-        const float lightDensity =
-            mPreset.densityCoeff / std::pow( std::max( sunHeight, 0.0035f ), 0.75f );
-
-        Vector4 packedParams0;
-        packedParams0.x = mPreset.densityCoeff;  // densityCoeff
-        packedParams0.y = lightDensity;          // lightDensity
-        packedParams0.z = sunHeight;             // sunHeight
-        packedParams0.w = sunHeightWeight;       // sunHeightWeight
-
-        const Vector3 mieAbsorption =
-            std::pow( std::max( 1.0f - lightDensity, 0.1f ), 4.0f ) *
-            Math::lerp( mPreset.skyColour, Vector3::UNIT_SCALE, sunHeightWeight );
-        const float finalMultiplier =
-            ( 0.5f + Math::smoothstep( 0.02f, 0.4f, sunHeightWeight ) ) * mPreset.skyPower;
-        const Vector4 packedParams1( mieAbsorption, finalMultiplier );
-        const Vector4 packedParams2( mSunDir, mPreset.horizonLimit );
-        const Vector4 packedParams3( mPreset.skyColour, mPreset.densityDiffusion );
-
-        GpuProgramParametersSharedPtr psParams = mPass->getFragmentProgramParameters();
-
-        psParams->setNamedConstant( "packedParams0", packedParams0 );
-        psParams->setNamedConstant( "skyLightAbsorption",
-                                    getSkyRayleighAbsorption( mPreset.skyColour, lightDensity ) );
-        psParams->setNamedConstant(
-            "sunAbsorption", Vector4( getSkyRayleighAbsorption( 1.0f - mPreset.skyColour, lightDensity ),
-                                      mPreset.sunPower ) );
-        psParams->setNamedConstant( "packedParams1", packedParams1 );
-        psParams->setNamedConstant( "packedParams2", packedParams2 );
-        psParams->setNamedConstant( "packedParams3", packedParams3 );
-        // psParams->setNamedConstant( "packedParams3", packedParams3 );
+        return;
     }
 
     //-------------------------------------------------------------------------
@@ -222,7 +156,7 @@ namespace Ogre
         const ColourValue lowerHemi( lowerHemi3.x, lowerHemi3.y, lowerHemi3.z );
 
         Vector3 hemiDir( Vector3::ZERO );
-        hemiDir[mConvention & 0x3u] = ( mConvention & NegationFlag ) ? -1.0f : 1.0f;
+        hemiDir[1] = 1.0f;
         hemiDir += Quaternion( Degree( 180.0f ), hemiDir ) * mSunDir;
         hemiDir.normalise();
 
@@ -254,9 +188,9 @@ namespace Ogre
                              Rectangle2D::GeometryFlagQuad | Rectangle2D::GeometryFlagNormals );
             sky->setGeometry( -Ogre::Vector2::UNIT_SCALE, Ogre::Vector2( 2.0f ) );
             sky->setRenderQueueGroup( 212u );  // Render after most stuff
-            sceneManager->getRootSceneNode( SCENE_STATIC )->attachObject( sky );
+            // sceneManager->getRootSceneNode( SCENE_STATIC )->attachObject( sky );
 
-            sky->setMaterial( mMaterial );
+            // sky->setMaterial( mMaterial );
             mSkies[sceneManager] = sky;
         }
         else
@@ -392,10 +326,10 @@ namespace Ogre
     //-------------------------------------------------------------------------
     void Atmosphere2Npr::_update( SceneManager *sceneManager, Camera *camera )
     {
-        const Vector3 *corners = camera->getWorldSpaceCorners();
+        // const Vector3 *corners = camera->getWorldSpaceCorners();
         const Vector3 &cameraPos = camera->getDerivedPosition();
 
-        const Real invFarPlane = 1.0f / camera->getFarClipDistance();
+        /*const Real invFarPlane = 1.0f / camera->getFarClipDistance();
         Vector3 cameraDirs[4];
         cameraDirs[0] = ( corners[5] - cameraPos ) * invFarPlane;
         cameraDirs[1] = ( corners[6] - cameraPos ) * invFarPlane;
@@ -407,17 +341,17 @@ namespace Ogre
         Rectangle2D *sky = itor->second;
 
         sky->setNormals( cameraDirs[0], cameraDirs[1], cameraDirs[2], cameraDirs[3] );
-        sky->update();
+        sky->update();*/
 
         Vector3 cameraDisplacement( Vector3::ZERO );
         {
-            float camHeight = cameraPos[mConvention & 0x03u];
-            camHeight *= ( mConvention & NegationFlag ) ? -1.0f : 1.0f;
+            float camHeight = cameraPos[1];
+            camHeight *= 1.0f;
             camHeight = ( camHeight - mAtmosphereSeaLevel ) / mAtmosphereHeight;
-            cameraDisplacement[mConvention & 0x03u] = camHeight;
+            cameraDisplacement[1] = camHeight;
 
-            GpuProgramParametersSharedPtr psParams = mPass->getFragmentProgramParameters();
-            psParams->setNamedConstant( "cameraDisplacement", cameraDisplacement );
+            // GpuProgramParametersSharedPtr psParams = mPass->getFragmentProgramParameters();
+            // psParams->setNamedConstant( "cameraDisplacement", cameraDisplacement );
         }
 
         AtmoSettingsGpu atmoGpu;

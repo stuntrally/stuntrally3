@@ -153,18 +153,6 @@ namespace Ogre
 
         typedef FastArray<Preset> PresetArray;
 
-        enum AxisConvention
-        {
-            Xup,
-            Yup,
-            Zup,
-            NegationFlag = ( 1u << 2u ),
-            NegXup = Xup | NegationFlag,
-            NegYup = Yup | NegationFlag,
-            NegZup = Zup | NegationFlag,
-
-        };
-
     protected:
         PresetArray mPresets;
 
@@ -177,7 +165,7 @@ namespace Ogre
     public:
         /// PUBLIC VARIABLE. This variable can be altered directly.
         /// Changes are reflected immediately.
-        AxisConvention mConvention;
+        // AxisConvention mConvention;
         /// When camera's height == mAtmosphereSeaLevel, the camera is considered to be at the ground
         /// i.e. camera_height - mAtmosphereSeaLevel = 0
         ///
@@ -201,18 +189,19 @@ namespace Ogre
         Vector4 posSph0{0,0,-500,1}, posSph1{0,0,-500,1};
 
     protected:
-        MaterialPtr         mMaterial;
-        Pass *ogre_nullable mPass;
+        // MaterialPtr         mMaterial;
+        // Pass *ogre_nullable mPass;
 
         /// Contains all settings in a GPU buffer for Hlms to consume
         ConstBufferPacked *mHlmsBuffer;
         VaoManager        *mVaoManager;
 
+        // Ogre::SceneManager * mSceneManager;
         std::map<Ogre::SceneManager *, Rectangle2D *> mSkies;
 
         // We must clone the material in case there's more than one
         // Atmosphere2Npr with different settings.
-        void createMaterial();
+        // void createMaterial();
 
         void setPackedParams();
 
