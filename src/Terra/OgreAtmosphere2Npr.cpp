@@ -84,6 +84,7 @@ namespace Ogre
     Atmosphere2Npr::Atmosphere2Npr( VaoManager *vaoManager ) :
         mSunDir( Ogre::Vector3( 0, 1, 1 ).normalisedCopy() ),
         mNormalizedTimeOfDay( std::asin( mSunDir.y ) ),
+        mSceneManager(0),
         mLinkedLight( 0 ),
         mAtmosphereSeaLevel( 0.0f ),
         mAtmosphereHeight( 110.0f * 1000.0f ),  // in meters (actually in units)
@@ -91,25 +92,11 @@ namespace Ogre
         mVaoManager( vaoManager )
     {
         mHlmsBuffer = vaoManager->createConstBuffer( sizeof( AtmoSettingsGpu ), BT_DEFAULT, 0, false );
-        // createMaterial();
     }
     //-------------------------------------------------------------------------
     Atmosphere2Npr::~Atmosphere2Npr()
     {
-        auto itor = mSkies.begin(), endt = mSkies.end();
-
-        while( itor != endt )
-        {
-            if( itor->first->getAtmosphere() == this )
-                itor->first->_setAtmosphere( nullptr );
-
-            itor->second->detachFromParent();
-            OGRE_DELETE itor->second;
-
-            ++itor;
-        }
-
-        mSkies.clear();
+        mSceneManager->_setAtmosphere( nullptr );
 
         mVaoManager->destroyConstBuffer( mHlmsBuffer );
         mHlmsBuffer = 0;
@@ -125,80 +112,16 @@ namespace Ogre
     }
     
     //-------------------------------------------------------------------------
-    void Atmosphere2Npr::setPackedParams()
+    void Atmosphere2Npr::syncToLight()
     {
         return;
     }
 
     //-------------------------------------------------------------------------
-    void Atmosphere2Npr::syncToLight()
-    {
-        if( !mLinkedLight )
-            return;
-
-        mLinkedLight->setType( Light::LT_DIRECTIONAL );
-        mLinkedLight->setDirection( -mSunDir );
-
-        Vector3 sunColour3 = getAtmosphereAt( mSunDir );
-        const Real maxPower = std::max( std::max( sunColour3.x, sunColour3.y ), sunColour3.z );
-        sunColour3 /= maxPower;
-        const ColourValue sunColour( sunColour3.x, sunColour3.y, sunColour3.z );
-        mLinkedLight->setDiffuseColour( sunColour );
-        mLinkedLight->setSpecularColour( sunColour );
-        mLinkedLight->setPowerScale( mPreset.linkedLightPower );
-
-        const Vector3 upperHemi3 = getAtmosphereAt( Vector3::UNIT_Y, true ) *
-                                   ( mPreset.linkedSceneAmbientUpperPower / maxPower );
-        const Vector3 lowerHemi3 = getAtmosphereAt( Vector3::UNIT_X + Vector3( 0, 0.1f, 0 ), true ) *
-                                   ( mPreset.linkedSceneAmbientLowerPower / maxPower );
-
-        const ColourValue upperHemi( upperHemi3.x, upperHemi3.y, upperHemi3.z );
-        const ColourValue lowerHemi( lowerHemi3.x, lowerHemi3.y, lowerHemi3.z );
-
-        Vector3 hemiDir( Vector3::ZERO );
-        hemiDir[1] = 1.0f;
-        hemiDir += Quaternion( Degree( 180.0f ), hemiDir ) * mSunDir;
-        hemiDir.normalise();
-
-        const float envmapScale = mPreset.envmapScale;
-        auto itor = mSkies.begin(), endt = mSkies.end();
-
-        while( itor != endt )
-        {
-            if( itor->first->getAtmosphere() == this )
-                itor->first->setAmbientLight( upperHemi, lowerHemi, hemiDir, envmapScale );
-            ++itor;
-        }
-    }
-
-    //-------------------------------------------------------------------------
     void Atmosphere2Npr::setSky( Ogre::SceneManager *sceneManager, bool bEnabled )
     {
-        Rectangle2D *sky = 0;
+        mSceneManager = sceneManager;
 
-        std::map<Ogre::SceneManager *, Rectangle2D *>::iterator itor = mSkies.find( sceneManager );
-        if( itor == mSkies.end() )
-        {
-            sky = OGRE_NEW Rectangle2D( Id::generateNewId<MovableObject>(),
-                                        &sceneManager->_getEntityMemoryManager( SCENE_STATIC ),
-                                        sceneManager );
-            // We can't use BT_DYNAMIC_* because the scene may be rendered from multiple cameras
-            // in the same frame, and dynamic supports only one set of values per frame
-            sky->initialize( BT_DEFAULT,
-                             Rectangle2D::GeometryFlagQuad | Rectangle2D::GeometryFlagNormals );
-            sky->setGeometry( -Ogre::Vector2::UNIT_SCALE, Ogre::Vector2( 2.0f ) );
-            sky->setRenderQueueGroup( 212u );  // Render after most stuff
-            // sceneManager->getRootSceneNode( SCENE_STATIC )->attachObject( sky );
-
-            // sky->setMaterial( mMaterial );
-            mSkies[sceneManager] = sky;
-        }
-        else
-        {
-            sky = itor->second;
-        }
-
-        sky->setVisible( bEnabled );
         if( bEnabled )
             sceneManager->_setAtmosphere( this );
         else
@@ -210,12 +133,7 @@ namespace Ogre
     //-------------------------------------------------------------------------
     void Atmosphere2Npr::destroySky( Ogre::SceneManager *sceneManager )
     {
-        std::map<Ogre::SceneManager *, Rectangle2D *>::iterator itor = mSkies.find( sceneManager );
-        if( itor != mSkies.end() )
-        {
-            OGRE_DELETE itor->second;
-            mSkies.erase( itor );
-        }
+
     }
     //-------------------------------------------------------------------------
     void Atmosphere2Npr::setLight( Light *light )
@@ -243,83 +161,15 @@ namespace Ogre
 
         mNormalizedTimeOfDay = std::min( normalizedTimeOfDay, 1.0f - 1e-6f );
 
-        setPackedParams();
+        // setPackedParams();
         syncToLight();
-    }
-    //-------------------------------------------------------------------------
-    void Atmosphere2Npr::setPresets( const PresetArray &presets )
-    {
-        mPresets = presets;
-
-        auto itor = mPresets.begin(), endt = mPresets.end();
-
-        while( itor != endt )
-        {
-            if( fabsf( itor->time ) > 1.0f )
-            {
-                LogManager::getSingleton().logMessage(
-                    "Preset outside range [-1; 1] in Atmosphere2Npr::setPresets" );
-            }
-            ++itor;
-        }
-
-        std::sort( mPresets.begin(), mPresets.end(), Preset() );
-    }
-    
-    //-------------------------------------------------------------------------
-    void Atmosphere2Npr::updatePreset( const Vector3 &sunDir, const float fTime )
-    {
-        if( mPresets.empty() )
-        {
-            LogManager::getSingleton().logMessage(
-                "Atmosphere2Npr::updatePreset but mPresets is empty!" );
-            return;
-        }
-
-        // Find presets
-        PresetArray::const_iterator itor =
-            std::lower_bound( mPresets.begin(), mPresets.end(), fTime, Preset() );
-
-        if( itor == mPresets.end() )
-            itor = mPresets.end() - 1u;
-
-        float prevTime = itor->time;
-        PresetArray::const_iterator prevIt = itor;
-        if( prevIt != mPresets.begin() )
-        {
-            --prevIt;
-            prevTime = prevIt->time;
-        }
-        else
-        {
-            prevIt = mPresets.end() - 1u;
-            prevTime = prevIt->time - 2.0f;
-        }
-
-        // Interpolate
-        float timeLength = ( itor->time - prevTime );
-        if( timeLength == 0.0f )
-            timeLength = 1.0f;
-
-        Preset result;
-        const float fW = Math::saturate( ( fTime - prevTime ) / timeLength );
-        // result.lerp( *prevIt, *itor, fW );
-
-        // Manually set the sun dir so that later setPreset syncs to light
-        mSunDir = -sunDir;
-        mSunDir.normalise();
-
-        mNormalizedTimeOfDay = std::min( fabsf( result.time ), 1.0f - 1e-6f );
-
-        // Set the interpolated result
-        setPreset( result );
     }
     
     //-------------------------------------------------------------------------
     void Atmosphere2Npr::setPreset( const Preset &preset )
     {
         mPreset = preset;
-        setPackedParams();
+        // setPackedParams();
         syncToLight();
     }
     
@@ -410,11 +260,13 @@ namespace Ogre
         hlms->_setProperty( "atmosky_npr", int32( constBufferSlot ) );
         return 1u;
     }
+
     //-------------------------------------------------------------------------
     uint32 Atmosphere2Npr::getNumConstBuffersSlots() const
     {
         return 1u;
     }
+
     //-------------------------------------------------------------------------
     uint32 Atmosphere2Npr::bindConstBuffers( CommandBuffer *commandBuffer, size_t slotIdx )
     {
@@ -424,12 +276,6 @@ namespace Ogre
             PixelShader, uint16( slotIdx ), mHlmsBuffer, 0, (uint32)mHlmsBuffer->getTotalSizeBytes() );
 
         return 1u;
-    }
-    
-    //-------------------------------------------------------------------------
-    Vector3 Atmosphere2Npr::getAtmosphereAt( const Vector3 cameraDir, bool bSkipSun )
-    {
-        return Vector3();
     }
     
 }  // namespace Ogre

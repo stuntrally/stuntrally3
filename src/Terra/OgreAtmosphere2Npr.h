@@ -42,25 +42,9 @@ THE SOFTWARE.
 
 namespace Ogre
 {
-    /** \addtogroup Component
-     *  @{
-     */
-    /** \addtogroup Material
-     *  @{
-     */
-
     OGRE_ASSUME_NONNULL_BEGIN
 
-    /** Non-physically-based-render (NPR) Atmosphere solution
-
-        This solution is also integrated into HlmsPbs.
-
-        It may seem counter-intuitive to include an NPR solution in a PBR solution (HlmsPbs)
-        However it makes sense because it looks nice and is efficient for most cases.
-
-        A PBR solution is iterative and requires more resources.
-    */
-    class /*_OgreAtmosphereExport*/ Atmosphere2Npr final : public AtmosphereComponent
+    class Atmosphere2Npr final : public AtmosphereComponent
     {
     public:
         struct Preset
@@ -189,21 +173,12 @@ namespace Ogre
         Vector4 posSph0{0,0,-500,1}, posSph1{0,0,-500,1};
 
     protected:
-        // MaterialPtr         mMaterial;
-        // Pass *ogre_nullable mPass;
 
         /// Contains all settings in a GPU buffer for Hlms to consume
         ConstBufferPacked *mHlmsBuffer;
         VaoManager        *mVaoManager;
 
-        // Ogre::SceneManager * mSceneManager;
-        std::map<Ogre::SceneManager *, Rectangle2D *> mSkies;
-
-        // We must clone the material in case there's more than one
-        // Atmosphere2Npr with different settings.
-        // void createMaterial();
-
-        void setPackedParams();
+        Ogre::SceneManager * mSceneManager;
 
         void syncToLight();
 
@@ -242,28 +217,11 @@ namespace Ogre
         */
         void setSunDir( const Ogre::Vector3 &sunDir, const float normalizedTimeOfDay );
 
-        /// Sets multiple presets at different times for interpolation
-        /// We will sort the array.
-        ///
-        /// You must call Atmosphere2Npr::updatePreset to take effect
-        void setPresets( const PresetArray &presets );
-
-        const PresetArray &getPresets() const { return mPresets; }
-
-        /** After having called Atmosphere2Npr::setPresets, this function will interpolate
-            between mPresets[fTime] and mPresets[fTime+1].
-        @param sunDir
-            Sun's light direction (or moon). Will be normalized.
-        @param fTime
-            Param. Should be in range [-1; 1] where [-1; 0] is meant
-            to be night and [0; 1] is day
-        */
-        void updatePreset( const Ogre::Vector3 &sunDir, const float fTime );
-
         /// Sets a specific preset as current.
         void setPreset( const Preset &preset );
 
         const Preset &getPreset() const { return mPreset; }
+
 
         void _update( SceneManager *sceneManager, Camera *camera ) override;
 
@@ -273,23 +231,10 @@ namespace Ogre
 
         uint32 bindConstBuffers( CommandBuffer *commandBuffer, size_t slotIdx ) override;
 
-        /**
-        @remarks
-            We assume camera displacement is 0.
-        @param cameraDir
-            Point to look at
-        @param bSkipSun
-            When true, the sun disk is skipped
-        @return
-            The value at that camera direction, given the current parameters
-        */
-        Vector3 getAtmosphereAt( const Vector3 cameraDir, bool bSkipSun = false );
     };
 
     OGRE_ASSUME_NONNULL_END
 
-    /** @} */
-    /** @} */
 }  // namespace Ogre
 
 #include <OgreHeaderSuffix.h>
