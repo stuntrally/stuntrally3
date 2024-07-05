@@ -81,16 +81,17 @@ namespace Ogre
 		// float windSpeed;  // freq, amp, turbulence-
     };
 
-    Atmosphere2Npr::Atmosphere2Npr( VaoManager *vaoManager ) :
+    Atmosphere2Npr::Atmosphere2Npr( VaoManager *vaoManager, Ogre::SceneManager *sceneManager ) :
         mSunDir( Ogre::Vector3( 0, 1, 1 ).normalisedCopy() ),
         mNormalizedTimeOfDay( std::asin( mSunDir.y ) ),
-        mSceneManager(0),
+        mSceneManager(sceneManager),
         mAtmosphereSeaLevel( 0.0f ),
         mAtmosphereHeight( 110.0f * 1000.0f ),  // in meters (actually in units)
         mHlmsBuffer( 0 ),
         mVaoManager( vaoManager )
     {
         mHlmsBuffer = vaoManager->createConstBuffer( sizeof( AtmoSettingsGpu ), BT_DEFAULT, 0, false );
+        sceneManager->_setAtmosphere( this );
     }
     //-------------------------------------------------------------------------
     Atmosphere2Npr::~Atmosphere2Npr()
@@ -101,24 +102,7 @@ namespace Ogre
         mHlmsBuffer = 0;
     }
     
-    //-------------------------------------------------------------------------
-    void Atmosphere2Npr::setSky( Ogre::SceneManager *sceneManager, bool bEnabled )
-    {
-        mSceneManager = sceneManager;
 
-        if( bEnabled )
-            sceneManager->_setAtmosphere( this );
-        else
-            sceneManager->_setAtmosphere( nullptr );
-    }
-
-    //-------------------------------------------------------------------------
-    void Atmosphere2Npr::destroySky( Ogre::SceneManager *sceneManager )
-    {
-
-    }
-
-  
     //-------------------------------------------------------------------------
     void Atmosphere2Npr::_update( SceneManager *sceneManager, Camera *camera )
     {

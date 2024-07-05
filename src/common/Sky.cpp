@@ -113,8 +113,7 @@ void CScene::CreateFog()
 	LogO("C--- create Atmosphere");
 	auto *mgr = app->mSceneMgr;
 
-	atmo = OGRE_NEW Atmosphere2Npr( app->mRoot->getRenderSystem()->getVaoManager() );
-	atmo->setSky( mgr, true );
+	atmo = OGRE_NEW Atmosphere2Npr( app->mRoot->getRenderSystem()->getVaoManager(), mgr );
 	
 	OGRE_ASSERT_HIGH( dynamic_cast<Atmosphere2Npr*>( mgr->getAtmosphere() ) );
 	atmo = static_cast<Atmosphere2Npr*>( mgr->getAtmosphere() );
@@ -132,12 +131,14 @@ void CScene::DestroyFog()
 	atmo = 0;
 }
 
-//  🌫️ Fog set Atmo params  ------
+
+//  🌫️ Fog set Atmo params
+//-------------------------------------------------------------------------------------
 void CScene::UpdFog(bool on, bool off)
 {
 	if (!atmo || !sun)  return;
 	bool fog = off ? false : app->pSet->bFog || on;
-	Atmosphere2Npr::Preset p = atmo->getPreset();
+	Atmosphere2Npr::Preset& p = atmo->getPreset();
 
 	p.fogStartDistance = sc->fogStart;
 	p.fogDensity = !fog ? 0.000001f :
@@ -175,7 +176,6 @@ void CScene::UpdFog(bool on, bool off)
 	p.linkedSceneAmbientUpperPower = 0.2f * Math::PI;  // ?
 	p.linkedSceneAmbientLowerPower = 0.2f * Math::PI;
 	p.envmapScale = 1.0f;
-	atmo->setPreset( p );
 }
 
 

@@ -769,16 +769,8 @@ void GraphicsSystem::createAtmosphere( Light *sunLight )
 		OGRE_DELETE atmosphere;
 	}
 
-	Atmosphere2Npr *atmosphere =
-		OGRE_NEW Atmosphere2Npr( mRoot->getRenderSystem()->getVaoManager() );
-	{
-		// Preserve the Power Scale explicitly set by the sample
-		Atmosphere2Npr::Preset preset = atmosphere->getPreset();
-		preset.linkedLightPower = sunLight->getPowerScale();
-		atmosphere->setPreset( preset );
-	}
-
-	atmosphere->setSky( mSceneManager, true );
+	Atmosphere2Npr *atmosphere = OGRE_NEW Atmosphere2Npr(
+		mRoot->getRenderSystem()->getVaoManager(), mSceneManager );
 #endif
 }
 

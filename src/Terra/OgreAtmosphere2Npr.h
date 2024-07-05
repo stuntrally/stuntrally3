@@ -129,16 +129,9 @@ namespace Ogre
 		        posSph1(0,0,500,-1)
             {
             }
-
-            bool operator()( const Preset &a, const Preset &b ) const { return a.time < b.time; }
-            bool operator()( const float a, const Preset &b ) const { return a < b.time; }
-            bool operator()( const Preset &a, const float b ) const { return a.time < b; }
         };
 
-        typedef FastArray<Preset> PresetArray;
-
     protected:
-        PresetArray mPresets;
 
         Preset  mPreset;
         Vector3 mSunDir;
@@ -146,22 +139,7 @@ namespace Ogre
         float  mNormalizedTimeOfDay;
 
     public:
-        /// PUBLIC VARIABLE. This variable can be altered directly.
-        /// Changes are reflected immediately.
-        // AxisConvention mConvention;
-        /// When camera's height == mAtmosphereSeaLevel, the camera is considered to be at the ground
-        /// i.e. camera_height - mAtmosphereSeaLevel = 0
-        ///
-        /// Regarding the unit of measurement, see mAtmosphereHeight
         float mAtmosphereSeaLevel;
-        /// How big is the "atmosphere". Earth's thermosphere is at about 110 km.
-        ///
-        /// This value must be in "units". If your engine stores the camera in millimeters,
-        /// this value must be in millimeters. If your engine uses meters, this value must
-        /// be in meters.
-        ///
-        /// Thus the visible atmosphere is in range
-        /// [mAtmosphereSeaLevel; mAtmosphereSeaLevel + mAtmosphereHeight)
         float mAtmosphereHeight;
 
         //**  new
@@ -180,16 +158,10 @@ namespace Ogre
         Ogre::SceneManager * mSceneManager;
 
     public:
-        Atmosphere2Npr( VaoManager *vaoManager );
+        Atmosphere2Npr( VaoManager *vaoManager, Ogre::SceneManager *sceneManager );
         ~Atmosphere2Npr() override;
 
-        void setSky( Ogre::SceneManager *sceneManager, bool bEnabled );
-        void destroySky( Ogre::SceneManager *sceneManager );
-
-        /// Sets a specific preset as current.
-        void setPreset( const Preset &preset );
-
-        const Preset &getPreset() const { return mPreset; }
+        Preset &getPreset() { return mPreset; }
 
 
         void _update( SceneManager *sceneManager, Camera *camera ) override;
