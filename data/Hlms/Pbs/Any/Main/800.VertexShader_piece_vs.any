@@ -369,7 +369,7 @@
 	@insertpiece( DoShadowReceiveVS )
 	@insertpiece( DoShadowCasterVS )
 
-	@insertpiece( DoAtmosphereNprSky )
+	//insertpiece( DoAtmosphereNprSky )
 
 	/// hlms_uv_count will be 0 on shadow caster passes w/out alpha test
 	@foreach( hlms_uv_count, n )

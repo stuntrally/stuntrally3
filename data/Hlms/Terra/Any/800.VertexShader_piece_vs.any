@@ -136,7 +136,7 @@
 		@insertpiece( DoShadowCasterVS )
 	@end
 
-	@insertpiece( DoAtmosphereNprSky )
+	//insertpiece( DoAtmosphereNprSky )
 
 @property( syntax == metal || lower_gpu_overhead )
 	@property( hlms_fine_light_mask || hlms_forwardplus_fine_light_mask )
