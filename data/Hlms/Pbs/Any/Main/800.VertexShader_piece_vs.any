@@ -14,7 +14,8 @@
 	// START UNIFORM DECLARATION  VS  Pbs
 	@insertpiece( PassStructDecl )
 	@property( hlms_skeleton || hlms_shadowcaster || hlms_pose || syntax == metal || lower_gpu_overhead )@insertpiece( InstanceStructDecl )@end
-	@insertpiece( AtmosphereNprSkyStructDecl )
+
+	@insertpiece( AtmoStructDecl )
 	@insertpiece( custom_vs_uniformStructDeclaration )
 	// END UNIFORM DECLARATION  VS  Pbs
 

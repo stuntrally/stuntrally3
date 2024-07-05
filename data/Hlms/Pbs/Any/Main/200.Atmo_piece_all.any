@@ -1,24 +1,14 @@
-// NPR = Non-Physically-based Rendering Atmo
+//  params for ALL shaders, fog etc
 
 //#include "SyntaxHighlightingMisc.h"
 
 @property( atmosky_npr )
 
-@piece( AtmosphereNprSkyStructDecl )
+@piece( AtmoStructDecl )
 
 	struct AtmoSettings  // same as AtmoSettingsGpu
 	{
-		float densityCoeff;
-		float lightDensity;
-		float sunHeight;
-		float sunHeightWeight;
-
-		float4 skyLightAbsorption;
-		float4 sunAbsorption;
 		float4 cameraDisplacement;
-		float4 packedParams1;
-		float4 packedParams2;
-		float4 packedParams3;
 
 		float fogDensity;
 		float fogBreakMinBrightness;

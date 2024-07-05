@@ -13,7 +13,7 @@
 		@end
 		@insertpiece( MaterialStructDecl )
 		@insertpiece( InstanceStructDecl )
-		@insertpiece( AtmosphereNprSkyStructDecl )
+		@insertpiece( AtmoStructDecl )
 	@end
 	@insertpiece( custom_ps_uniformStructDeclaration )
 	// END UNIFORM DECLARATION  PS  Pbs

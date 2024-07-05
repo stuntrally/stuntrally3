@@ -21,7 +21,7 @@
 		@insertpiece( TerraMaterialStructDecl )
 		#define material materialArray[0]
 	@end
-	@insertpiece( AtmosphereNprSkyStructDecl )
+	@insertpiece( AtmoStructDecl )
 	@insertpiece( custom_vs_uniformStructDeclaration )
 	// END UNIFORM DECLARATION  VS  Terra
 

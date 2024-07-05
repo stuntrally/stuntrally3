@@ -49,10 +49,6 @@
         midf4 fogColour = lerp( atmo.fogColourSun,
                                 atmo.fogColourAway,  fogDir );
 
-        finalColour.xyz = lerp(
-                            lerp( finalColour.xyz, inPs.fog.xyz *tr,  fogColour.w),  // transparency
-                            finalColour.xyz,  fogWeight );  // atmo orig
-
         finalColour.xyz =
             //camPosW * 10.0 + 0.001 *  // test
             lerp( lerp( finalColour.xyz, fogColour.xyz *tr, fogColour.w ),  // transparency

@@ -161,21 +161,9 @@ void CScene::UpdFog(bool on, bool off)
 	p.fogColourSun = sc->fogClr.GetRGBA();
 	p.fogColourAway = sc->fogClr2.GetRGBA();
 
- 	// pars  not used, not on gui..
-	p.densityCoeff = 0.27f;  //0.47f;
-	p.densityDiffusion = 0.75f;  //2.0f;
-	p.horizonLimit = 0.025f;
-	p.sunPower = 1.0f;
-	p.skyPower = 1.0f;
-	// p.skyColour = Vector3(0,0.5,1);// sc->fogClr2.GetRGB();
-	p.skyColour = sc->fogClr2.GetRGB1(); //?- Vector3(0.234f, 0.57f, 1.0f);
-	
+ 	// pars  not on gui..
 	p.fogBreakMinBrightness = 0.25f;
 	p.fogBreakFalloff = 0.1f;
-	p.linkedLightPower = sun->getPowerScale();
-	p.linkedSceneAmbientUpperPower = 0.2f * Math::PI;  // ?
-	p.linkedSceneAmbientLowerPower = 0.2f * Math::PI;
-	p.envmapScale = 1.0f;
 }
 
 

@@ -454,10 +454,10 @@ struct Material
 			INTERPOLANT( float3 cullCamPosXY, @counter(texcoord) );
 		@end
 
-		@property( hlms_fog )
-			// fog.xyz = colour
-			INTERPOLANT( midf3 fog, @counter(texcoord) );
-		@end
+		// property( hlms_fog )
+		// 	// fog.xyz = colour
+		// 	INTERPOLANT( midf3 fog, @counter(texcoord) );
+		// end
 
 		@property( !hlms_shadowcaster )
 			INTERPOLANT( float worldH, @counter(texcoord) );  //**

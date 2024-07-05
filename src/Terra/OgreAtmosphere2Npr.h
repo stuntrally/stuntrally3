@@ -49,16 +49,6 @@ namespace Ogre
     public:
         struct Preset
         {
-            /// Must be in range [-1; 1] where range [-1; 0] is night and [0; 1] is day
-            float time;
-
-            float         densityCoeff;
-            float         densityDiffusion;
-            float         horizonLimit;  // Most relevant in sunsets and sunrises
-            float         sunPower;      // For HDR (affects the sun on the sky)
-            float         skyPower;      // For HDR (affects skyColour)
-            Ogre::Vector3 skyColour;     // In range [0; 1]
-            
             /// Affects objects' fog (not sky)
             float fogDensity;
             /// Very bright objects (i.e. reflect lots of light)
@@ -77,15 +67,6 @@ namespace Ogre
             /// Range: (0; inf)
             float fogBreakFalloff;
 
-            /// Power scale for the linked light
-            float linkedLightPower;
-            /// Power scale for the upper hemisphere ambient light
-            float linkedSceneAmbientUpperPower;
-            /// Power scale for the lower hemisphere ambient light
-            float linkedSceneAmbientLowerPower;
-            /// Value to send to SceneManager::setAmbientLight
-            float envmapScale;
-
             //**  fog new  ----
             float fogStartDistance;
             Ogre::Vector4 fogHcolor, fogHparams;
@@ -97,24 +78,10 @@ namespace Ogre
 		    Ogre::Vector4 posSph0;   // grass deform 2 spheres pos,R^2
 		    Ogre::Vector4 posSph1;
 
-            Preset() :
-                time( 0.0f ),
-                // densityCoeff( 0.27f ),
-                // densityDiffusion( 0.75f ),
-                densityCoeff( 0.47f ),
-                densityDiffusion( 2.0f ),
-                horizonLimit( 0.025f ),
-                sunPower( 1.0f ),
-                skyPower( 1.0f ),
-                skyColour( 0.334f, 0.57f, 1.0f ),
-                
+            Preset() :               
                 fogDensity( 0.0001f ),
                 fogBreakMinBrightness( 0.25f ),
                 fogBreakFalloff( 0.1f ),
-                linkedLightPower( Math::PI ),
-                linkedSceneAmbientUpperPower( 0.1f * Math::PI ),
-                linkedSceneAmbientLowerPower( 0.01f * Math::PI ),
-                envmapScale( 1.0f ),
                 
                 //**  fog new  ----
                 fogStartDistance( 0.0f ),
@@ -134,13 +101,8 @@ namespace Ogre
     protected:
 
         Preset  mPreset;
-        Vector3 mSunDir;
-        /// In range [0; 1] where
-        float  mNormalizedTimeOfDay;
 
     public:
-        float mAtmosphereSeaLevel;
-        float mAtmosphereHeight;
 
         //**  new
         float globalTime = 0.f;

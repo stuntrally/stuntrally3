@@ -46,17 +46,7 @@ namespace Ogre
 {
     struct AtmoSettingsGpu  // same as AtmoSettings
     {
-        float densityCoeff;  // not used.. remove?
-        float lightDensity;
-        float sunHeight;
-        float sunHeightWeight;
-
-        float4 skyLightAbsorption;
-        float4 sunAbsorption;
         float4 cameraDisplacement;
-        float4 packedParams1;
-        float4 packedParams2;
-        float4 packedParams3;
 
         float fogDensity;
         float fogBreakMinBrightness;
@@ -82,11 +72,7 @@ namespace Ogre
     };
 
     Atmosphere2Npr::Atmosphere2Npr( VaoManager *vaoManager, Ogre::SceneManager *sceneManager ) :
-        mSunDir( Ogre::Vector3( 0, 1, 1 ).normalisedCopy() ),
-        mNormalizedTimeOfDay( std::asin( mSunDir.y ) ),
         mSceneManager(sceneManager),
-        mAtmosphereSeaLevel( 0.0f ),
-        mAtmosphereHeight( 110.0f * 1000.0f ),  // in meters (actually in units)
         mHlmsBuffer( 0 ),
         mVaoManager( vaoManager )
     {
@@ -106,44 +92,9 @@ namespace Ogre
     //-------------------------------------------------------------------------
     void Atmosphere2Npr::_update( SceneManager *sceneManager, Camera *camera )
     {
-        // const Vector3 *corners = camera->getWorldSpaceCorners();
         const Vector3 &cameraPos = camera->getDerivedPosition();
 
-        Vector3 cameraDisplacement( Vector3::ZERO );
-        {
-            float camHeight = cameraPos[1];
-            camHeight *= 1.0f;
-            camHeight = ( camHeight - mAtmosphereSeaLevel ) / mAtmosphereHeight;
-            cameraDisplacement[1] = camHeight;
-        }
-
         AtmoSettingsGpu atmoGpu;
-
-        const float sunHeight = std::sin( mNormalizedTimeOfDay * Math::PI );
-        const float sunHeightWeight = std::exp2( -1.0f / sunHeight );
-        // Gets smaller as sunHeight gets bigger
-        const float lightDensity =
-            mPreset.densityCoeff / std::pow( std::max( sunHeight, 0.0035f ), 0.75f );
-
-        atmoGpu.densityCoeff = mPreset.densityCoeff;
-        atmoGpu.lightDensity = lightDensity;
-        atmoGpu.sunHeight = sunHeight;
-        atmoGpu.sunHeightWeight = sunHeightWeight;
-
-        const Vector3 mieAbsorption =
-            std::pow( std::max( 1.0f - lightDensity, 0.1f ), 4.0f ) *
-            Math::lerp( mPreset.skyColour, Vector3::UNIT_SCALE, sunHeightWeight );
-        const float finalMultiplier = ( 0.5f + Math::smoothstep( 0.02f, 0.4f, sunHeightWeight ) ) * mPreset.skyPower;
-        const Vector4 packedParams1( mieAbsorption, finalMultiplier );
-        const Vector4 packedParams2( mSunDir, mPreset.horizonLimit );
-        const Vector4 packedParams3( mPreset.skyColour, mPreset.densityDiffusion );
-
-        atmoGpu.skyLightAbsorption = Vector4( 1.f,1.f,1.f, cameraPos.x );
-        atmoGpu.sunAbsorption =      Vector4( 1.f,1.f,1.f, cameraPos.y );
-        atmoGpu.cameraDisplacement = Vector4( cameraDisplacement, cameraPos.z );
-        atmoGpu.packedParams1 = packedParams1;
-        atmoGpu.packedParams2 = packedParams2;
-        atmoGpu.packedParams3 = packedParams3;
 
         atmoGpu.fogDensity = mPreset.fogDensity;
         atmoGpu.fogBreakMinBrightness = mPreset.fogBreakMinBrightness * mPreset.fogBreakFalloff;
