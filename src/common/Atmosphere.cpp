@@ -1,52 +1,21 @@
-/*
------------------------------------------------------------------------------
-This source file is part of OGRE-Next
-    (Object-oriented Graphics Rendering Engine)
-For the latest info, see http://www.ogre3d.org/
-
-Copyright (c) 2000-2014 Torus Knot Software Ltd
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
------------------------------------------------------------------------------
-*/
-
-#include <OgreAtmosphere2Npr.h>
-
+#include "pch.h"
+#include "Atmosphere.h"
 #include "CommandBuffer/OgreCbShaderBuffer.h"
 #include "CommandBuffer/OgreCommandBuffer.h"
 #include <OgreCamera.h>
 #include <OgreHlms.h>
-#include <OgreLogManager.h>
-#include <OgreMaterialManager.h>
 #include <OgrePass.h>
-#include <OgreRectangle2D2.h>
 #include <OgreSceneManager.h>
 #include <OgreShaderPrimitives.h>
-#include <OgreTechnique.h>
 #include "Vao/OgreConstBufferPacked.h"
 #include "Vao/OgreVaoManager.h"
 
 namespace Ogre
 {
+    //  🌠 for all shaders in atmo.
     struct AtmoSettingsGpu  // same as AtmoSettings
     {
-        float4 cameraDisplacement;
+        float4 cameraDisplacement;  // padding
 
         float fogDensity;
         float fogBreakMinBrightness;
@@ -71,7 +40,10 @@ namespace Ogre
 		// float windSpeed;  // freq, amp, turbulence-
     };
 
-    Atmosphere2Npr::Atmosphere2Npr( VaoManager *vaoManager, Ogre::SceneManager *sceneManager ) :
+
+    //  🌟 ctor
+    //-------------------------------------------------------------------------
+    Atmosphere::Atmosphere( VaoManager *vaoManager, Ogre::SceneManager *sceneManager ) :
         mSceneManager(sceneManager),
         mHlmsBuffer( 0 ),
         mVaoManager( vaoManager )
@@ -79,8 +51,8 @@ namespace Ogre
         mHlmsBuffer = vaoManager->createConstBuffer( sizeof( AtmoSettingsGpu ), BT_DEFAULT, 0, false );
         sceneManager->_setAtmosphere( this );
     }
-    //-------------------------------------------------------------------------
-    Atmosphere2Npr::~Atmosphere2Npr()
+
+    Atmosphere::~Atmosphere()
     {
         mSceneManager->_setAtmosphere( nullptr );
 
@@ -89,8 +61,9 @@ namespace Ogre
     }
     
 
+    //  💫 Update
     //-------------------------------------------------------------------------
-    void Atmosphere2Npr::_update( SceneManager *sceneManager, Camera *camera )
+    void Atmosphere::_update( SceneManager *sceneManager, Camera *camera )
     {
         const Vector3 &cameraPos = camera->getDerivedPosition();
 
@@ -116,23 +89,23 @@ namespace Ogre
 
         mHlmsBuffer->upload( &atmoGpu, 0u, sizeof( atmoGpu ) );
     }
-    
+
+
+    //  🟢 ogre Update
     //-------------------------------------------------------------------------
-    uint32 Atmosphere2Npr::preparePassHash( Hlms *hlms, size_t constBufferSlot )
+    uint32 Atmosphere::preparePassHash( Hlms *hlms, size_t constBufferSlot )
     {
         hlms->_setProperty( HlmsBaseProp::Fog, 1 );
         hlms->_setProperty( "atmosky_npr", int32( constBufferSlot ) );
         return 1u;
     }
 
-    //-------------------------------------------------------------------------
-    uint32 Atmosphere2Npr::getNumConstBuffersSlots() const
+    uint32 Atmosphere::getNumConstBuffersSlots() const
     {
         return 1u;
     }
 
-    //-------------------------------------------------------------------------
-    uint32 Atmosphere2Npr::bindConstBuffers( CommandBuffer *commandBuffer, size_t slotIdx )
+    uint32 Atmosphere::bindConstBuffers( CommandBuffer *commandBuffer, size_t slotIdx )
     {
         *commandBuffer->addCommand<CbShaderBuffer>() = CbShaderBuffer(
             VertexShader, uint16( slotIdx ), mHlmsBuffer, 0, (uint32)mHlmsBuffer->getTotalSizeBytes() );

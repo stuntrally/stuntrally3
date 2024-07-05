@@ -28,7 +28,7 @@
 #include <OgreCamera.h>
 #include <OgreWindow.h>
 #include "Terra.h"
-#include <OgreAtmosphere2Npr.h>
+#include "Atmosphere.h"
 
 #include "ICSInputControlSystem.h"
 #include <SDL_keycode.h>

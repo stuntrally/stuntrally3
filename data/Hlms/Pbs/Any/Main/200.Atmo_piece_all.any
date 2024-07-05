@@ -1,7 +1,5 @@
 //  params for ALL shaders, fog etc
 
-//#include "SyntaxHighlightingMisc.h"
-
 @property( atmosky_npr )
 
 @piece( AtmoStructDecl )

@@ -36,7 +36,7 @@
 #include <OgreOverlayManager.h>
 
 #include <OgreAtmosphereComponent.h>
-#include "OgreAtmosphere2Npr.h"
+#include "Atmosphere.h"
 #include <fstream>
 
 #if OGRE_USE_SDL2
@@ -769,7 +769,7 @@ void GraphicsSystem::createAtmosphere( Light *sunLight )
 		OGRE_DELETE atmosphere;
 	}
 
-	Atmosphere2Npr *atmosphere = OGRE_NEW Atmosphere2Npr(
+	Atmosphere *atmosphere = OGRE_NEW Atmosphere(
 		mRoot->getRenderSystem()->getVaoManager(), mSceneManager );
 #endif
 }

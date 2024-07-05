@@ -34,7 +34,7 @@
 #include <OgreHlmsPbsPrerequisites.h>
 
 #include <OgreAtmosphereComponent.h>
-#include <OgreAtmosphere2Npr.h>
+#include "Atmosphere.h"
 #include "OgreHlmsPbsTerraShadows.h"
 using namespace Ogre;
 
@@ -113,10 +113,10 @@ void CScene::CreateFog()
 	LogO("C--- create Atmosphere");
 	auto *mgr = app->mSceneMgr;
 
-	atmo = OGRE_NEW Atmosphere2Npr( app->mRoot->getRenderSystem()->getVaoManager(), mgr );
+	atmo = OGRE_NEW Atmosphere( app->mRoot->getRenderSystem()->getVaoManager(), mgr );
 	
-	OGRE_ASSERT_HIGH( dynamic_cast<Atmosphere2Npr*>( mgr->getAtmosphere() ) );
-	atmo = static_cast<Atmosphere2Npr*>( mgr->getAtmosphere() );
+	OGRE_ASSERT_HIGH( dynamic_cast<Atmosphere*>( mgr->getAtmosphere() ) );
+	atmo = static_cast<Atmosphere*>( mgr->getAtmosphere() );
 
 	UpdFog();
 }	
@@ -138,7 +138,7 @@ void CScene::UpdFog(bool on, bool off)
 {
 	if (!atmo || !sun)  return;
 	bool fog = off ? false : app->pSet->bFog || on;
-	Atmosphere2Npr::Preset& p = atmo->getPreset();
+	Atmosphere::Preset& p = atmo->getPreset();
 
 	p.fogStartDistance = sc->fogStart;
 	p.fogDensity = !fog ? 0.000001f :
