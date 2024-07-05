@@ -369,7 +369,7 @@ namespace Ogre
 
         Preset result;
         const float fW = Math::saturate( ( fTime - prevTime ) / timeLength );
-        result.lerp( *prevIt, *itor, fW );
+        // result.lerp( *prevIt, *itor, fW );
 
         // Manually set the sun dir so that later setPreset syncs to light
         mSunDir = -sunDir;
@@ -477,7 +477,10 @@ namespace Ogre
         return 1u;
     }
     //-------------------------------------------------------------------------
-    uint32 Atmosphere2Npr::getNumConstBuffersSlots() const { return 1u; }
+    uint32 Atmosphere2Npr::getNumConstBuffersSlots() const
+    {
+        return 1u;
+    }
     //-------------------------------------------------------------------------
     uint32 Atmosphere2Npr::bindConstBuffers( CommandBuffer *commandBuffer, size_t slotIdx )
     {
@@ -488,130 +491,11 @@ namespace Ogre
 
         return 1u;
     }
-    //-------------------------------------------------------------------------
-    inline float getSunDisk( const float LdotV, const float sunY, const float sunPower )
-    {
-        return std::pow( LdotV, Math::lerp( 4.0f, 8500.0f, sunY ) ) * sunPower;
-    }
-    //-------------------------------------------------------------------------
-    inline float getMie( const float LdotV ) { return LdotV; }
-    //-------------------------------------------------------------------------
-    inline Vector3 pow3( Vector3 v, float e )
-    {
-        return Vector3( std::pow( v.x, e ), std::pow( v.y, e ), std::pow( v.z, e ) );
-    }
-    //-------------------------------------------------------------------------
-    inline Vector3 exp2( Vector3 v )
-    {
-        return Vector3( std::exp2( v.x ), std::exp2( v.y ), std::exp2( v.z ) );
-    }
     
     //-------------------------------------------------------------------------
     Vector3 Atmosphere2Npr::getAtmosphereAt( const Vector3 cameraDir, bool bSkipSun )
     {
-        Vector3 atmoCameraDir = cameraDir.normalisedCopy();
-
-        const Vector3 p_sunDir = mSunDir;
-        const float p_densityDiffusion = mPreset.densityDiffusion;
-        const float p_borderLimit = mPreset.horizonLimit;
-        const float p_densityCoeff = mPreset.densityCoeff;
-        const float p_sunHeight = std::sin( mNormalizedTimeOfDay * Math::PI );
-        const float p_sunHeightWeight = std::exp2( -1.0f / p_sunHeight );
-        // Gets smaller as sunHeight gets bigger
-        const float p_lightDensity =
-            mPreset.densityCoeff / std::pow( std::max( p_sunHeight, 0.0035f ), 0.75f );
-        const Vector3 p_skyColour = mPreset.skyColour;
-        const float p_finalMultiplier =
-            ( 0.5f + Math::smoothstep( 0.02f, 0.4f, p_sunHeightWeight ) ) * mPreset.skyPower;
-        const Vector3 p_sunAbsorption =
-            getSkyRayleighAbsorption( 1.0f - mPreset.skyColour, p_lightDensity );
-        const Vector3 p_mieAbsorption =
-            std::pow( std::max( 1.0f - p_lightDensity, 0.1f ), 4.0f ) *
-            Math::lerp( mPreset.skyColour, Vector3::UNIT_SCALE, p_sunHeightWeight );
-        const Vector3 p_skyLightAbsorption =
-            getSkyRayleighAbsorption( mPreset.skyColour, p_lightDensity );
-
-        const float LdotV = std::max( atmoCameraDir.dotProduct( p_sunDir ), 0.0f );
-
-        atmoCameraDir.y +=
-            p_densityDiffusion * 0.075f * ( 1.0f - atmoCameraDir.y ) * ( 1.0f - atmoCameraDir.y );
-        atmoCameraDir.normalise();
-
-        atmoCameraDir.y = std::max( atmoCameraDir.y, p_borderLimit );
-
-        // It's not a mistake. We do this twice. Doing it before p_borderLimit
-        // allows the horizon to shift. Doing it after p_borderLimit lets
-        // the sky to get darker as we get upwards.
-        atmoCameraDir.normalise();
-
-        const float LdotV360 = atmoCameraDir.dotProduct( p_sunDir ) * 0.5f + 0.5f;
-
-        // ptDensity gets smaller as sunHeight gets bigger
-        // ptDensity gets smaller as atmoCameraDir.y gets bigger
-        const float ptDensity =
-            p_densityCoeff /
-            std::pow( std::max( atmoCameraDir.y / ( 1.0f - p_sunHeight ), 0.0035f ),
-                      Math::lerp( 0.10f, p_densityDiffusion, std::pow( atmoCameraDir.y, 0.3f ) ) );
-
-        const float sunDisk = getSunDisk( LdotV, p_sunHeight, mPreset.sunPower );
-
-        const float antiMie = std::max( p_sunHeightWeight, 0.08f );
-
-        const Vector3 skyAbsorption = getSkyRayleighAbsorption( p_skyColour, ptDensity );
-        const Vector3 skyColourGradient = pow3( exp2( -atmoCameraDir.y / p_skyColour ), 1.5f );
-
-        const float mie = getMie( LdotV360 );
-
-        Vector3 atmoColour = Vector3( 0.0f, 0.0f, 0.0f );
-
-        const Vector3 sharedTerms = skyColourGradient * skyAbsorption;
-
-        atmoColour += antiMie * sharedTerms * p_sunAbsorption;
-        atmoColour += ( mie * ptDensity * p_lightDensity ) * sharedTerms * p_skyLightAbsorption;
-        atmoColour += mie * p_mieAbsorption;
-        atmoColour *= p_lightDensity;
-
-        atmoColour *= p_finalMultiplier;
-        if( !bSkipSun )
-            atmoColour += sunDisk * p_skyLightAbsorption;
-
-        return atmoColour;
+        return Vector3();
     }
     
-    //-------------------------------------------------------------------------
-    void Atmosphere2Npr::Preset::lerp( const Preset &a, const Preset &b, const float w )
-    {
-        #define LERP_VALUE( x ) this->x = Math::lerp( a.x, b.x, w )
-        if( a.time > b.time )
-        {
-            this->time = Math::lerp( a.time - 2.0f, b.time, w );
-            if( this->time < -1.0f )
-                this->time += 2.0f;
-        }
-        else
-        {
-            LERP_VALUE( time );
-        }
-        LERP_VALUE( densityCoeff );
-        LERP_VALUE( densityDiffusion );
-        LERP_VALUE( horizonLimit );
-        LERP_VALUE( sunPower );
-        LERP_VALUE( skyPower );
-        LERP_VALUE( skyColour );
-        LERP_VALUE( fogColourSun );
-        LERP_VALUE( fogColourAway );
-
-        LERP_VALUE( fogDensity );
-        LERP_VALUE( fogBreakMinBrightness );
-        LERP_VALUE( fogBreakFalloff );
-        LERP_VALUE( fogStartDistance );
-
-        LERP_VALUE( linkedLightPower );
-        LERP_VALUE( linkedSceneAmbientUpperPower );
-        LERP_VALUE( linkedSceneAmbientLowerPower );
-        LERP_VALUE( envmapScale );
-        //fogHcolor fogHparams ?
-        #undef LERP_VALUE
-    }
-
 }  // namespace Ogre

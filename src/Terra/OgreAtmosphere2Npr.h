@@ -146,19 +146,6 @@ namespace Ogre
             {
             }
 
-            /// Sets this = lerp( a, b, w );
-            /// where:
-            ///     a = lerp( a, b, 0 );
-            ///     b = lerp( a, b, 1 );
-            ///
-            /// 'time' is interpolated in a special manner to wrap around
-            /// in range [-1; 1]. Thus if a.time > b.time, then we wrap around
-            /// so that:
-            ///     time = lerp( 0.8, -0.8, 0.25 ) =  0.9
-            ///     time = lerp( 0.8, -0.8, 0.50 ) =  Either 1.0 or -1.0
-            ///     time = lerp( 0.8, -0.8, 0.75 ) = -0.9
-            void lerp( const Preset &a, const Preset &b, const float w );
-
             bool operator()( const Preset &a, const Preset &b ) const { return a.time < b.time; }
             bool operator()( const float a, const Preset &b ) const { return a < b.time; }
             bool operator()( const Preset &a, const float b ) const { return a.time < b; }
