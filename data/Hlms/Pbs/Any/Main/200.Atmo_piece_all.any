@@ -6,8 +6,6 @@
 
 	struct AtmoSettings  // same as AtmoSettingsGpu
 	{
-		float4 cameraDisplacement;  // padding
-
 		float fogDensity;
 		float fogBreakMinBrightness;
 		float fogBreakFalloff;

@@ -140,7 +140,7 @@ void AppGui::CreateFpsBar()
 	bckFps->setAlpha(0.9f);  //bckFps->setVisible(false);
 
 	txFps = mGui->createWidget<TextBox>("TextBox",
-		6,3, 226,78, Align::Default, "Popup");
+		6,0, 226,78, Align::Default, "Popup");
 	txFps->setFontName("hud.fps");  //txFps->setAlpha(1.f);
 	txFps->setTextShadow(true);  txFps->setTextShadowColour(Colour::Black);
 }

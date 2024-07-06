@@ -15,8 +15,6 @@ using namespace Ogre;
 //  🌠 for all shaders in atmo.
 struct AtmoSettingsGpu  // same as AtmoSettings
 {
-    float4 cameraDisplacement;  // padding
-
     float fogDensity;
     float fogBreakMinBrightness;
     float fogBreakFalloff;
