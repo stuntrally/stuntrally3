@@ -275,9 +275,9 @@
 
 		//**  Grass Wind  **
 		@property( grass && !hlms_shadowcaster )
-			midf2 pos = worldPos.xz;
 			if (inVs_uv0.y == 0.0f)  // top
 			{
+				midf2 pos = worldPos.xz;
 				float time = atmo.globalTime.x; // * _h(1.2);
 				float freq = 3.2;  // par atmo..
 				float offset1 = sin(time + pos.x * 2.427 * freq) * sin(time + pos.y * 3.427 * freq);
@@ -288,32 +288,30 @@
 			}
 
 			///()  grass deform under car
-			// todo  world pos  ?
-			// sphere:  (x - x0)^2 + (y - y0)^2 + (z - z0)^2 = r^2
-			
-			// float r = atmo.posSph0.w;  // sphere radius^2
-			// if (r > 0.f)
-			// {
-			// 	float3 sph = atmo.posSph0.xyz;  // sphere pos
-			// 	float dx = worldPos.x - sph.x,  dz = worldPos.z - sph.z; //, dy = worldPos.y - sph.y;
-			// 	dx *= dx;  dz *= dz;  //dy *= dy;
-			// 	//if (dx + dy + dz < r)  // sphere
-			// 	if (dx + dz < r)  // circle (very high grasses too)
-			// 	{
-			// 		float y_on_sph = sph.y - sqrt(r - dx - dz);
-			// 		if (worldPos.y > y_on_sph)
-			// 		{	worldPos.y = y_on_sph;  worldPos.y = y_on_sph;  }
-			// 	}
-			// 	sph = atmo.posSph1.xyz;  // 2nd
-			// 	dx = worldPos.x - sph.x;  dz = worldPos.z - sph.z;
-			// 	dx *= dx;  dz *= dz;
-			// 	if (dx + dz < r)
-			// 	{
-			// 		float y_on_sph = sph.y - sqrt(r - dx - dz);
-			// 		if (worldPos.y > y_on_sph)
-			// 			worldPos.y = y_on_sph;
-			// 	}
-			// }
+			float r = atmo.posSph0.w;  // sphere radius^2
+			if (r > 0.f)
+			{
+				//  sphere:  (x - x0)^2 + (y - y0)^2 + (z - z0)^2 = r^2
+				float3 sph = atmo.posSph0.xyz;  // sphere pos
+				float dx = worldPos.x - sph.x,  dz = worldPos.z - sph.z; //, dy = worldPos.y - sph.y;
+				dx *= dx;  dz *= dz;  //dy *= dy;
+				//if (dx + dy + dz < r)  // sphere
+				if (dx + dz < r)  // circle (very high grasses too)
+				{
+					float y_on_sph = sph.y - sqrt(r - dx - dz);
+					if (worldPos.y > y_on_sph)
+					{	worldPos.y = y_on_sph;  worldPos.y = y_on_sph;  }
+				}
+				sph = atmo.posSph1.xyz;  // 2nd
+				dx = worldPos.x - sph.x;  dz = worldPos.z - sph.z;
+				dx *= dx;  dz *= dz;
+				if (dx + dz < r)
+				{
+					float y_on_sph = sph.y - sqrt(r - dx - dz);
+					if (worldPos.y > y_on_sph)
+						worldPos.y = y_on_sph;
+				}
+			}
 		@end
 
 		//**  Tree wind
