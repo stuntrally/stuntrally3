@@ -193,9 +193,9 @@ bool Presets::LoadXml(string file)
 		PVeget l;
 		a = e->Attribute("r");	if (a)  l.rate = s2i(a);
 		a = e->Attribute("p");	if (a)  l.name = String(a);
+		a = e->Attribute("b");	if (a)  l.bush = s2i(a)>0;
 
 		a = e->Attribute("sc");	if (a)  l.sc = String(a);
-
 		a = e->Attribute("sa");	if (a)  l.minScale = s2r(a);
 		a = e->Attribute("sb");	if (a)  l.maxScale = s2r(a);
 

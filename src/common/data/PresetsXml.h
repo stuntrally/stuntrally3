@@ -59,7 +59,6 @@ struct PGrass
 	int rate = 0;
 	//  material, colormap, scenery
 	Ogre::String mtr, sc;
-	std::string scn;
 
 	float minSx = 1.2f, minSy = 1.2f;
 	float maxSx = 1.6f, maxSy = 1.6f;  // sizes
@@ -70,7 +69,8 @@ struct PVeget
 {
 	int rate = 0;
 	Ogre::String sc;
-	std::string name, scn;
+	std::string name;
+	bool bush =0;
 
 	float minScale = 0.6f, maxScale = 1.2f;
 	float windFx = 0.02f, windFy = 0.002f;
