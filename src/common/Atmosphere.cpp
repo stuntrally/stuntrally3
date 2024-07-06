@@ -32,7 +32,7 @@ struct AtmoSettingsGpu  // same as AtmoSettings
     float4 posSph0;   // grass deform, 2 collision spheres pos,r^2
     float4 posSph1;   //    for 1 car only  // todo: splitscreen meh-
 
-    float globalTime;  // for water, grass, wind etc
+    float4 globalTime;  // for water, grass, wind etc
 
     // float2 windDir;   // x,z  new ..
     // float windSpeed;  // freq, amp, turbulence-

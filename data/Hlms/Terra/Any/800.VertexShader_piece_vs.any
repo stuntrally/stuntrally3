@@ -25,7 +25,7 @@
 	@insertpiece( custom_vs_uniformStructDeclaration )
 	// END UNIFORM DECLARATION  VS  Terra
 
-	@insertpiece( DeclAtmosphereNprSkyFuncs )
+	// insertpiece( DeclAtmosphereNprSkyFuncs )
 @end
 
 @piece( VertexTerraTransform )

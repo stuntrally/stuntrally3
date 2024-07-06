@@ -1,6 +1,6 @@
 //  params for ALL shaders, fog etc
 
-@property( atmosky_npr )
+// property( atmosky_npr )  //** todo?
 
 @piece( AtmoStructDecl )
 
@@ -23,7 +23,7 @@
 		float4 posSph0;  // grass, 2 collision spheres pos,r^2
 		float4 posSph1;  //    for 1 car only  // todo: splitscreen meh-
 		
-		float globalTime;  // for water, grass, wind etc
+		float4 globalTime;  // for water, grass, wind etc
 	};
 
 	@property( syntax != metal )
@@ -35,9 +35,9 @@
 @end
 
 @property( syntax == metal )
-	@piece( AtmosphereNprSkyDecl )
+	@piece( AtmoStructDeclMetal )
 		, constant AtmoSettings &atmo [[buffer(CONST_SLOT_START+@value(atmosky_npr))]]
 	@end
 @end
 
-@end
+// end

@@ -13,8 +13,10 @@
 		@end
 		@insertpiece( MaterialStructDecl )
 		@insertpiece( InstanceStructDecl )
-		@insertpiece( AtmoStructDecl )
+		//insertpiece( AtmoStructDecl )
 	@end
+
+	@insertpiece( AtmoStructDecl )
 	@insertpiece( custom_ps_uniformStructDeclaration )
 	// END UNIFORM DECLARATION  PS  Pbs
 

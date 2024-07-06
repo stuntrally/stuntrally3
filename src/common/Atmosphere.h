@@ -29,7 +29,7 @@ public:
     //**  new
     //  grass deform 2 spheres pos,R^2
     Ogre::Vector4 posSph0{0,0,-500,-11}, posSph1{0,0,-500,-11};
-    float globalTime = 0.f;
+    Ogre::Vector4 globalTime{0.f, 0.f, 0.f, 0.f};
 
 
 protected:
