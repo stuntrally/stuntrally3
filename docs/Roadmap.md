@@ -72,17 +72,18 @@ sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)
 
 
 ----
-### Ogre cd, restore
+### Ogre cd, restore, optimize
 
 - 🌪️ **Wind**, for trees  
-  Grass **deform** spheres, wind params, far fade-  
-- Lights on `grass`, sun lit particles-  
+  Grass wind params, far fade-  
+- lit particles, lights on `grass`  
 - ⛰️ Terrain  
-  **shadowmap** fix < 0, save/load-  
-  add emissive, reflect par, fix triplanar normalmaps-  
+  **shadowmap** fix < 0  
+  add emissive, reflect par  
   blendmap also .hlsl or .any for DX  
   read blendmap, for ter wheel **surface** ids, many ters  
-  pages visibility fix restore  
+  fix restore pages visibility  
+  fix triplanar normalmaps-  
 - 🛣️ Road  
   **Grid** for walls, road, pipes, ed update cell  
   1 mesh with 4 LODs, shader fix specular stretch  
@@ -91,7 +92,7 @@ sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)
   objects pick `errors`  
   minimap **RTTs** upd skip (slow), or create on save  
   new terrain issues [here](https://groups.f-hub.org/d/SW0mnXNV/track-rework-horizons-skies-and-updates/14)  
-  edit *moved* terrains, error in ray pos-  
+  edit `moved` terrains, error in ray pos-  
   _tools_: fix **scale ter h**, copy horizon, which ter, road  
 
 - ⏲️ `HUD`  
@@ -110,7 +111,8 @@ tire **trails clr**, no uv tex-
 
 Road noise blend, color per vertex  
 grass density as **RTT**, noise, color  
-inside height fog?, noise 3d? _volumetric_ clouds  
+inside height fog?  
+noise 3d? _volumetric_ clouds  
 
 ed _tools_: copy roads which combo,all  
 Grass read Hmap - no index, vertex buffers? texture atlas-  
@@ -122,7 +124,7 @@ Grass read Hmap - no index, vertex buffers? texture atlas-
 Add SR icons to: game & editor for Windows & Linux, and installer  
 ?MyGui CMake .lib, Conan  
 .mesh LODs test adjust-  
-water refl vis dist? low gets bad  
+water refl vis dist? low gets cut bad  
 Fog, 2 colors cam dir fix-  
 gpu mem leaks or renders inactive  
 slow track load, shaders, !ter get h, norm, do parallel  
@@ -154,11 +156,3 @@ Basically all [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.
 ed roads: [split](https://stuntrally.tuxfamily.org/mantis/view.php?id=4), checkpoints, merge?  
 sim new poses _interpolation_?  
 [Pace notes](https://stuntrally.tuxfamily.org/mantis/view.php?id=14) - game Info window for all signs  
-
-
-----
-### 2.x old, won't fix
-
-new deps with latest Ogre fix for terrain visibility, resulting in editor vegetation issue  
-meh, fix shadow check [here](https://github.com/OGRECave/ogre/blob/master/Media/RTShaderLib/GLSL/SGXLib_IntegratedPSSM.glsl#L86), screens [here](https://forums.ogre3d.org/viewtopic.php?t=96888&sid=bf9864a27e57f24f55950ccb5d273dea)  
-

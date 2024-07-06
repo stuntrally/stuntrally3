@@ -14,17 +14,18 @@ This section lists changes not yet released, but committed to repositories stunt
   - 3D win cups shown on game end
   - Gui shows small track previews for game track / series
 - Both
-  - **Water** refraction and depth color ..
+  - **Water** refraction, depth color, soft border, WIP
+  - Bushes, WIP
   - Gui Tracks view, new mode: gallery
 - Editor
+  - Road: wall type, for decoration walls, rectangular
+    - pipe parameter changes it from wide at 0, to square at 0.5 to tall at 1.0
   - Edit mode for Collection, key Y  
     - Insert/remove gems, move, scale
     - change type (for look, at end of presets.xml)
     - change group (for more sets on 1 track)
-  - WIP Edit mode for Fields, key H  
+  - Edit mode for Fields, key H, WIP  
     - areas: teleporters, force fields, speed up, lift, anti-gravity, damping  
-  - Road: wall type, for decoration walls, rectangular
-    - pipe parameter changes it from wide at 0, to square at 0.5 to tall at 1.0
 - Other
   - split all.material.json to many files
   - in data dir, added subdirs: models, textures etc
