@@ -9,9 +9,9 @@
 #include <OgreShaderPrimitives.h>
 #include "Vao/OgreConstBufferPacked.h"
 #include "Vao/OgreVaoManager.h"
+using namespace Ogre;
 
-namespace Ogre
-{
+
     //  🌠 for all shaders in atmo.
     struct AtmoSettingsGpu  // same as AtmoSettings
     {
@@ -21,7 +21,7 @@ namespace Ogre
         float fogBreakMinBrightness;
         float fogBreakFalloff;
         
-		//**  fog new, SR3 added
+		//**  fog new
    		float fogStartDistance;
         float4 fogHcolor;
         float4 fogHparams;
@@ -43,7 +43,7 @@ namespace Ogre
 
     //  🌟 ctor
     //-------------------------------------------------------------------------
-    Atmosphere::Atmosphere( VaoManager *vaoManager, Ogre::SceneManager *sceneManager ) :
+    Atmosphere::Atmosphere( VaoManager *vaoManager, SceneManager *sceneManager ) :
         mSceneManager(sceneManager),
         mHlmsBuffer( 0 ),
         mVaoManager( vaoManager )
@@ -114,5 +114,3 @@ namespace Ogre
 
         return 1u;
     }
-    
-}  // namespace Ogre

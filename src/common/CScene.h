@@ -9,11 +9,11 @@
 #include <OgreString.h>
 
 namespace Ogre  {
-	class Terra;  class Atmosphere;  class HlmsPbsTerraShadows;
+	class Terra;  class HlmsPbsTerraShadows;
 	class Light;  class SceneNode;  class Camera;  class SceneManager;
 	class Viewport;  class Root;  class ParticleSystem;  }
 class App;  class Scene;  class CData;  class TerData;
-class SplineRoad;  class PaceNotes;  class Grass;
+class SplineRoad;  class PaceNotes;  class Grass;  class Atmosphere;
 
 
 ///  🟢 Ogre parts for a track/map
@@ -57,7 +57,7 @@ public:
 	void CreateSun(), DestroySun(), UpdSun(float dt=0.f);
 
 	//  🌫️ Fog / Atmo
-	Ogre::Atmosphere* atmo = 0;
+	Atmosphere* atmo = 0;
 	void CreateFog(), DestroyFog(), UpdFog(bool force_on =false, bool force_off =false);
 	
 	//  🌧️ Weather :  rain, snow

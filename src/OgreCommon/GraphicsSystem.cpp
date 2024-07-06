@@ -763,15 +763,11 @@ void GraphicsSystem::initMiscParamsListener( NameValuePairList &params )
 //--------------------------------------------------------------------------------------------------------------------------------
 void GraphicsSystem::createAtmosphere( Light *sunLight )
 {
-#ifdef OGRE_BUILD_COMPONENT_ATMOSPHERE
-	{
-		AtmosphereComponent *atmosphere = mSceneManager->getAtmosphereRaw();
-		OGRE_DELETE atmosphere;
-	}
+	AtmosphereComponent *atmosphere = mSceneManager->getAtmosphereRaw();
+	OGRE_DELETE atmosphere;
 
-	Atmosphere *atmosphere = OGRE_NEW Atmosphere(
+	Atmosphere *atmo = OGRE_NEW Atmosphere(
 		mRoot->getRenderSystem()->getVaoManager(), mSceneManager );
-#endif
 }
 
 //-----------------------------------------------------------------------------------

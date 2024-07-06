@@ -795,9 +795,6 @@ namespace Ogre
 		outLibraryFoldersPaths.push_back( "Hlms/Common/" + shaderSyntax );
 		outLibraryFoldersPaths.push_back( "Hlms/Common/Any" );
 		outLibraryFoldersPaths.push_back( "Hlms/Pbs/Any" );
-#ifdef OGRE_BUILD_COMPONENT_ATMOSPHERE
-		outLibraryFoldersPaths.push_back( "Hlms/Pbs/Any/Atmosphere" );
-#endif
 		outLibraryFoldersPaths.push_back( "Hlms/Pbs/Any/Main" );
 		outLibraryFoldersPaths.push_back( "Hlms/Terra/Any" );
 
