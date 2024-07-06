@@ -100,6 +100,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.5, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
@@ -129,6 +131,8 @@
 			"macroblock" : "Macroblock_0",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.5, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
@@ -230,6 +234,8 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.5, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
@@ -265,6 +271,8 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.5, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
@@ -304,6 +312,8 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.5, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
@@ -340,6 +350,8 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.5, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
@@ -377,6 +389,8 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.5, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"diffuse" :
@@ -516,9 +530,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.0, 1.0, 1.0],
@@ -552,9 +567,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.0, 1.0, 1.0],
@@ -588,9 +604,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [2.0, 2.0, 2.0],
@@ -624,9 +641,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [2.0, 2.0, 2.0],
@@ -660,9 +678,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.5, 1.5, 1.5],
@@ -697,9 +716,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.0, 1.0, 1.0],
@@ -733,9 +753,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.0, 1.0, 1.0],
@@ -769,9 +790,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.0, 1.0, 1.0],
@@ -805,9 +827,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.0, 1.0, 1.0],
@@ -841,9 +864,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.0, 1.0, 1.0],
@@ -878,9 +902,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.0, 1.0, 1.0],
@@ -914,9 +939,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.0, 1.0, 1.0],
@@ -950,9 +976,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.0, 1.0, 1.0],
@@ -986,9 +1013,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.0, 1.0, 1.0],
@@ -1022,9 +1050,10 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
-			"tree_wind" : true,
 			"diffuse" :
 			{
 				"value" : [1.2, 1.2, 1.2],

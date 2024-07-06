@@ -87,20 +87,15 @@ void HlmsPbs2::calculateHashForPreCreate(
 	if (fluid)
 		setProperty( "water", 1 );
 	else
-	// if (mtr.substr(0,5) == "grass")
-	// 	setProperty( "grass", 1 );
-	// else 
+	if (mtr.substr(0,5) == "grass")
+		setProperty( "grass", 1 );
+	else 
 	if (mtr.substr(0,4) == "sky/")
 		setProperty( "sky", 1 );
 
 	if (fluid && app->pSet->g.water_refract)
 		setProperty( "refract", 1 );
 
-	/*if (mtr.find("body") != String::npos)
-	{
-		// LogO("body_paint");
-		setProperty( "body_paint", 1 );
-	}*/
 	if (mtr.find("_ter") != std::string::npos &&
 		mtr.substr(0,4) == "road")
 		setProperty( "road", 1 );  // todo: ? specular uv mul
@@ -123,7 +118,7 @@ void HlmsPbs2::calculateHashForPreCaster(
 	const auto* db = (HlmsPbsDb2*)rnd->getDatablock();
 	// LogO("- cast for: " + mtr);   // on every item
 
-	// if (mtr.substr(0,5) == "grass")
+	// if (mtr.substr(0,5) == "grass")  // doesnt cast shadow
 	// 	setProperty( "grass", 1 );
 
 	if (db)
@@ -131,14 +126,14 @@ void HlmsPbs2::calculateHashForPreCaster(
 		if (db->wind)
 			setProperty( "tree_wind", 1 );
 
-		switch (db->eType)
+		/*switch (db->eType)
 		{
-		case DB_Grass:  setProperty( "grass", 1 );  break;
+		// case DB_Grass:  setProperty( "grass", 1 );  break;
 		// case DB_Fluid:	fluid = 1;
 		// 				setProperty( "water", 1 );  break;
 		// case DB_Paint:	setProperty( "paint", 1 );  break;
 		default:  break;
-		}
+		}*/
 	}
 }
 
