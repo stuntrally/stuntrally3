@@ -124,6 +124,7 @@ public:
 		std::string track{"Test1-Flat"};  bool track_user =0;  // 🏞️
 		bool track_reversed =0;
 		float trees = 1.5f;  // 🌳🪨 veget common
+		float bushes = 1.f;
 
 		std::vector<std::string> car;  // [MAX_Players]   local players
 		std::vector<CarPaint> clr;     // [MAX_Vehicles]  also for ghosts 🎨  own paint.cfg

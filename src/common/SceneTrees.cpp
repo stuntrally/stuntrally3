@@ -86,8 +86,10 @@ void CScene::CreateTrees()
 	SETTINGS* pSet = app->pSet;
 	#ifdef SR_EDITOR
 	Real fTrees = pSet->gui.trees * sc->densTrees;
+	Real fBushes = pSet->gui.bushes;
 	#else
 	Real fTrees = pSet->game.trees * sc->densTrees;
+	Real fBushes = pSet->game.bushes;
 	#endif
 	
 
@@ -161,7 +163,8 @@ void CScene::CreateTrees()
 			Vector3 ofs(0,0,0);  if (col)  ofs = col->offset;  // mesh offset
 
 			//  num trees  ----------------------------------------------------------------
-			int cnt = fTrees * 6000 * vg.dens, all = 0;
+			int cnt = 6000 * vg.dens * (veg->bush ? fBushes : fTrees);
+			int all = 0;  // stat
 			// LogO(String("col?  ")+(col?"y":"n")+ " ofs x "+fToStr(ofs.x,2)+ " z "+fToStr(ofs.y,2));
 			
 			for (int i = 0; i < cnt; ++i)
@@ -273,7 +276,8 @@ void CScene::CreateTrees()
 
 				//  how far visible  // todo: * norm scale, aabb?
 				Real dist =  /*rare far*/ i % 3 == 0 ? veg->farDist : veg->visDist;
-				item->setRenderingDistance( dist * pSet->g.trees_dist );
+				Real setDist = veg->bush ? pSet->g.bushes_dist : pSet->g.trees_dist;
+				item->setRenderingDistance( dist * setDist );
 				vegetItems.push_back(item);
 
 			#if 0  //  marker | test

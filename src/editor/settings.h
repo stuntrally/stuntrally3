@@ -25,7 +25,8 @@ public:
 	public:
 		std::string track{"Isl6-Flooded"};
 		bool track_user =0;
-		float trees =1.5f;  // common
+		float trees = 1.5f;  // 🌳🪨 veget common
+		float bushes = 1.f;
 	} gui;
 	
 	//  ⚙️ misc

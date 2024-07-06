@@ -58,6 +58,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	//  🌳🪨🌿 veget
 	Param(c,w, "graph_veget.grass", g.grass);				// graph_veget.trees later in settings
 	Param(c,w, "graph_veget.trees_dist", g.trees_dist);		Param(c,w, "graph_veget.grass_dist", g.grass_dist);
+	Param(c,w, "graph_veget.bushes_dist", g.bushes_dist);
 
 	//  🌒 shadow
 	Param(c,w, "graph_shadow.size", g.shadow_size);

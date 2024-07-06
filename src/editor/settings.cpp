@@ -28,7 +28,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 	//  🚗 game common
 	Param(c,w, "game.track", gui.track);			Param(c,w, "game.track_user", gui.track_user);
-	Param(c,w, "graph_veget.trees", gui.trees);
+	Param(c,w, "graph_veget.trees", gui.trees);		Param(c,w, "graph_veget.bushes", gui.bushes);
 
 	//  🚦 pacenotes
 	Param(c,w, "pacenotes.show", pace_show);

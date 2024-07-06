@@ -1070,50 +1070,76 @@
 					<!-- 🌳🌿 Vegetation -->
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#90FF30#{Vegetation}"/>
-						<Widget type="Button" skin="Button" position="32 180 200 26" layer="Back" name="ApplyVeget">
+						<Widget type="Button" skin="Button" position="32 240 200 26" layer="Back" name="ApplyVeget">
 							<Property key="Caption" value="#{Apply}"/>
 							<Property key="Colour" value="0.8 1 0.7"/>
 							<Property key="TextColour" value="0.8 1 0.7"/>
 						</Widget>
-						<Widget type="Button" skin="Button" position="464 180 136 26" name="VegetReset">
+						<Widget type="Button" skin="Button" position="464 240 136 26" name="VegetReset">
 							<Property key="Caption" value="#{Reset}"/>
 							<Property key="Colour" value="0.6 1.0 0.3"/>
 							<Property key="TextColour" value="0.3 1 0.2"/>
 						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="210 20 176 24">
+							<Property key="Caption" value="#{InputMultiplier}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.4 0.9 0.4"/>
+						</Widget>
+
 						<Widget type="TextBox" skin="TextBox" position="32 50 176 24">
-							<Property key="Caption" value="#{TreeMult}"/>
+							<Property key="Caption" value="#{Vegetation}"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.5 1 0.5"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="32 80 176 24">
-							<Property key="Caption" value="#{DistMult}"/>
-							<Property key="Colour" value="0 0 0"/>
-							<Property key="TextColour" value="0.5 0.8 0.5"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="32 110 176 24">
-							<Property key="Caption" value="#{GrassMult}"/>
-							<Property key="Colour" value="0 0 0"/>
-							<Property key="TextColour" value="0.7 1 0.5"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="32 140 176 24">
-							<Property key="Caption" value="#{DistMult}"/>
-							<Property key="Colour" value="0 0 0"/>
-							<Property key="TextColour" value="0.7 0.8 0.5"/>
-						</Widget>
 						<Widget type="Slider" skin="Slider" position="280 50 320 18" name="Trees"/>
-						<Widget type="Slider" skin="Slider" position="280 80 320 18" name="TreesDist"/>
-						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="Grass"/>
-						<Widget type="Slider" skin="Slider" position="280 140 320 18" name="GrassDist"/>
 						<Widget type="TextBox" skin="TextBox" position="210 50 60 24" name="TreesVal">
 							<Property key="TextColour" value="0.5 1 0.5"/>
 						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="52 80 176 24">
+							<Property key="Caption" value="#{distance}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.5 0.8 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 80 320 18" name="TreesDist"/>
 						<Widget type="TextBox" skin="TextBox" position="210 80 60 24" name="TreesDistVal">
 							<Property key="TextColour" value="0.5 0.8 0.5"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="210 110 60 24" name="GrassVal">
+
+						<Widget type="TextBox" skin="TextBox" position="32 110 176 24">
+							<Property key="Caption" value="#{Bush}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.5 1 0.8"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="Bush"/>
+						<Widget type="TextBox" skin="TextBox" position="210 110 60 24" name="BushVal">
+							<Property key="TextColour" value="0.5 1 0.8"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="52 140 176 24">
+							<Property key="Caption" value="#{distance}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.5 0.8 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 140 320 18" name="BushDist"/>
+						<Widget type="TextBox" skin="TextBox" position="210 140 60 24" name="BushDistVal">
+							<Property key="TextColour" value="0.5 0.8 0.7"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 170 176 24">
+							<Property key="Caption" value="#{Grasses}"/>
+							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.7 1 0.5"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="210 140 60 24" name="GrassDistVal">
+						<Widget type="Slider" skin="Slider" position="280 170 320 18" name="Grass"/>
+						<Widget type="TextBox" skin="TextBox" position="210 170 60 24" name="GrassVal">
+							<Property key="TextColour" value="0.7 1 0.5"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="52 200 176 24">
+							<Property key="Caption" value="#{distance}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.7 0.8 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 200 320 18" name="GrassDist"/>
+						<Widget type="TextBox" skin="TextBox" position="210 200 60 24" name="GrassDistVal">
 							<Property key="TextColour" value="0.7 0.8 0.5"/>
 						</Widget>
 					</Widget>

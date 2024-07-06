@@ -62,8 +62,8 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "game.difficulty", difficulty);
 
 	//  game common
-	Param(c,w, "game.track", gui.track);				Param(c,w, "game.track_user", gui.track_user);
-	Param(c,w, "graph_veget.trees", gui.trees);
+	Param(c,w, "game.track", gui.track);			Param(c,w, "game.track_user", gui.track_user);
+	Param(c,w, "graph_veget.trees", gui.trees);		Param(c,w, "graph_veget.bushes", gui.bushes);
 
 
 	//  🚗 cars

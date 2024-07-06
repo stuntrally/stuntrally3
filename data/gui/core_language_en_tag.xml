@@ -689,9 +689,9 @@
 
 	<!--  Graphics  Vegetation  -->
 	<Tag name="Vegetation">Vegetation</Tag>
-	<Tag name="TreeMult">Trees multiplier</Tag>
+	<Tag name="Bush">Bush</Tag>
 	<Tag name="DistMult">Distance mul</Tag>
-	<Tag name="GrassMult">Grass mul</Tag>
+
 	<Tag name="Reset">Reset</Tag>
 
 	<!--  Graphics  reflections  -->
