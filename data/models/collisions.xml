@@ -14,35 +14,81 @@
 		<object mesh= "shroom2_1.mesh" />
 		<object mesh= "shroom2_2.mesh" />
 		<object mesh= "shroom2_3.mesh" />
-
-		<object mesh= "fern.mesh" />
-		<object mesh= "fern2.mesh" />
-		<object mesh= "fern2_black.mesh" />
-
-		<object mesh= "palm_plant.mesh" />
-		<object mesh= "plant_tropical.mesh" />
-		<object mesh= "tropic_leaves.mesh" />
-
-		<object mesh= "blueberry.mesh" />
-		<object mesh= "bushes1.mesh" />
-		<object mesh= "bushes2.mesh" />
-		<object mesh= "bush_grass1.mesh" />
-		<object mesh= "bush_grass2.mesh" />
-		<object mesh= "fern_bush.mesh" />
-		
-		<object mesh= "bush01.mesh" />
-		<object mesh= "bush02dry_red.mesh" />
-		<object mesh= "bush03flower_viol.mesh" />
-		<object mesh= "bush04.mesh" />
-		<object mesh= "bush05.mesh" />
-
-		<object mesh= "bush11flower_red.mesh" />
-		<object mesh= "bush12flower_red2.mesh" />
-		<object mesh= "bush13tall_ylw.mesh" />
-		<object mesh= "bush14tall_spots.mesh" />
-		<object mesh= "bush15palm.mesh" />
 	</none>
 	
+	<!--  bush damping -->
+	<object mesh= "fern2.mesh">
+		<shape type="sphere" ofs="0 0 0.1" r="0.8" frict="0.0" restit="0.0" damp="0.5" />
+	</object>
+	<object mesh= "fern.mesh">
+		<shape type="sphere" ofs="0 0 0.1" r="0.8" frict="0.0" restit="0.0" damp="0.5" />
+	</object>
+	<object mesh= "fern2_black.mesh">
+		<shape type="sphere" ofs="0 0 0.1" r="0.8" frict="0.0" restit="0.0" damp="0.5" />
+	</object>
+
+	<object mesh= "palm_plant.mesh">
+		<shape type="sphere" ofs="0 0 0.0" r="0.9" frict="0.0" restit="0.0" damp="0.7" />
+	</object>
+	<object mesh= "plant_tropical.mesh">
+		<shape type="sphere" ofs="0 0 0.0" r="1.0" frict="0.0" restit="0.0" damp="0.7" />
+	</object>
+	<object mesh= "tropic_leaves.mesh">
+		<shape type="sphere" ofs="0 0 0.1" r="0.4" frict="0.0" restit="0.0" damp="0.5" />
+	</object>
+
+	<object mesh= "blueberry.mesh">
+		<shape type="sphere" ofs="0 0 0.3" r="0.6" frict="0.0" restit="0.0" damp="0.8" />
+	</object>
+	<object mesh= "bush_grass1.mesh">
+		<shape type="sphere" ofs="0 0 0.2" r="0.3" frict="0.0" restit="0.0" damp="0.3" />
+	</object>
+	<object mesh= "bush_grass2.mesh">
+		<shape type="sphere" ofs="0 0 0.2" r="0.4" frict="0.0" restit="0.0" damp="0.3" />
+	</object>
+	<object mesh= "bushes1.mesh">
+		<shape type="sphere" ofs="0 0 0.2" r="0.6" frict="0.0" restit="0.0" damp="1" />
+	</object>
+	<object mesh= "bushes2.mesh">
+		<shape type="sphere" ofs="0 0 0.3" r="1.0" frict="0.0" restit="0.0" damp="1.2" />
+	</object>
+	<object mesh= "fern_bush.mesh">
+		<shape type="sphere" ofs="0 0 0.3" r="0.6" frict="0.0" restit="0.0" damp="0.8" />
+	</object>
+	
+	<object mesh= "bush01.mesh">
+		<shape type="sphere" ofs="0 0 0.4" r="0.4" frict="0.0" restit="0.0" damp="1" />
+	</object>
+	<object mesh= "bush02dry_red.mesh">
+		<shape type="sphere" ofs="0 0 0.2" r="0.5" frict="0.0" restit="0.0" damp="1" />
+	</object>
+	<object mesh= "bush03flower_viol.mesh">
+		<shape type="capsZ" ofs="0 0 0.4" r="0.6" h="0.5" frict="0.0" restit="0.0" damp="1" />
+	</object>
+	<object mesh= "bush04.mesh">
+		<shape type="sphere" ofs="0 0 0.2" r="0.6" frict="0.0" restit="0.0" damp="1" />
+	</object>
+	<object mesh= "bush05.mesh">
+		<shape type="sphere" ofs="0 0 0.6" r="0.6" frict="0.0" restit="0.0" damp="1.2" />
+	</object>
+
+	<object mesh= "bush11flower_red.mesh">
+		<shape type="sphere" ofs="0 0 0.5" r="0.5" frict="0.0" restit="0.0" damp="0.7" />
+	</object>
+	<object mesh= "bush12flower_red2.mesh">
+		<shape type="sphere" ofs="0 0 0.5" r="0.5" frict="0.0" restit="0.0" damp="0.7" />
+	</object>
+	<object mesh= "bush13tall_ylw.mesh">
+		<shape type="capsZ" ofs="0 0 0.4" r="0.4" h="0.6" frict="0.0" restit="0.0" damp="2" />
+	</object>
+	<object mesh= "bush14tall_spots.mesh">
+		<shape type="capsZ" ofs="0 -0.01 0.6" r="0.06" h="1.1" frict="0.2" restit="0.7" />
+	</object>
+	<object mesh= "bush15palm.mesh">
+		<shape type="sphere" ofs="0 0 0.1" r="0.7" frict="0.0" restit="0.0" damp="1.2" />
+	</object>
+
+
 <!-- old -->
 	<!-- <object mesh= "tree.07.mesh" ofs="1.2 -0.7 1.4"> -->
 	<object mesh= "tree.07.mesh">

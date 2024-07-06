@@ -48,11 +48,11 @@ void CARDYNAMICS::Update()
 	if (!inFields.empty())
 		UpdateFields();
 
-	//  veget bush damp
+	//**  veget bush damp
 	if (fVegetDamp > 0.f)
 	{
 		btVector3 v = chassis->getLinearVelocity();
-		chassis->applyCentralForce(v * -800 * fVegetDamp);
+		chassis->applyCentralForce(v * -500 * fVegetDamp);  //par`
 		fVegetDamp = 0.f;
 	}
 }

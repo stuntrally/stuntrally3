@@ -827,7 +827,6 @@
 			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"alpha_test" : ["greater", 0.3, false],
-			"grass" : true,
 			"tree_wind" : true,
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
