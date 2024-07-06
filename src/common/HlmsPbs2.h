@@ -66,10 +66,11 @@ public:
 //  replaces ALL default HlmsPbsDatablocks
 enum EType
 {
-	DB_PBS =0,  // default normal
+	DB_PBS =0, // default normal
 	DB_Paint,  // paint for vehicles
 	DB_Fluid,  // water, mud etc
-	DB_Tree,  // tree with wind
+	DB_Tree,   // tree with wind
+	DB_Grass,  // grass deform under vehicle
 	DB_ALL
 };
 

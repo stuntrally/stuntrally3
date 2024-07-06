@@ -69,6 +69,7 @@ void HlmsPbs2::calculateHashForPreCreate(
 	switch (db->eType)
 	{
 	case DB_Tree:	setProperty( "tree_wind", 1 );  break;
+	case DB_Grass:  setProperty( "grass", 1 );  break;
 	case DB_Fluid:	fluid = 1;
 					setProperty( "water", 1 );  break;
 	case DB_Paint:	setProperty( "paint", 1 );  break;
@@ -125,6 +126,7 @@ void HlmsPbs2::calculateHashForPreCaster(
 	switch (db->eType)
 	{
 	case DB_Tree:	setProperty( "tree_wind", 1 );  break;
+	case DB_Grass:	setProperty( "grass", 1 );  break;
 	// case DB_Fluid:	fluid = 1;
 	// 				setProperty( "water", 1 );  break;
 	// case DB_Paint:	setProperty( "paint", 1 );  break;
@@ -168,7 +170,7 @@ HlmsPbsDb2::HlmsPbsDb2( App* app1,
 	: HlmsPbsDatablock( name, creator, macro, blend, p )
 	, app(app1)
 {
-	//  extra params in .material only !  .json in load
+	//  OLD  extra params in .material only !  .json in load
 	//----------------------------------------------------------------
 	String val,s;
 	s = name.getFriendlyText();  // hash, or name in Debug
@@ -193,15 +195,13 @@ HlmsPbsDb2::HlmsPbsDb2( App* app1,
 		//Vector3 v = StringConverter::parseVector3( val, Vector3::UNIT_SCALE );
 		// setDiffuse( v );
 	}
-	else
-	if (Hlms::findParamInVec(p, "tree_wind", val))
+	else if (Hlms::findParamInVec(p, "grass", val))
+	{
+		eType = DB_Grass;
+	}
+	else if (Hlms::findParamInVec(p, "tree_wind", val))
 	{
 		eType = DB_Tree;
-		LogO("db2 .mat tree " + s);
-		// todo  mat to mesh ..?  get tree wind fx fy from presets..
-		// app->scn->data->pre->GetVeget();
-		// mDetailsOffsetScale[2][0] = wind fx;
-		// mDetailsOffsetScale[2][1] = wind fy;
 	}
 	else
 	if (Hlms::findParamInVec(p, "fluid", val) || Hlms::findParamInVec(p, "choppyness_scale", val))
@@ -337,6 +337,7 @@ public:
 		HlmsJsonPbs::loadMaterial( json, blocks, datablock, resourceGroup );
 		HlmsPbsDb2* db2 = (HlmsPbsDb2*)datablock;
 
+		//  custom params
 		auto it = json.FindMember( "reflect" );
 		if (it != json.MemberEnd() /*&& it->value.IsString()*/)
 		{
@@ -357,6 +358,11 @@ public:
 		{	db2->eType = DB_Tree;
 			// LogO("db2 .mat tree ");
 		}
+		it = json.FindMember( "grass" );
+		if (it != json.MemberEnd())
+		{	db2->eType = DB_Grass;
+			// LogO("db2 .mat grass ");
+		}
 	}
 
 	//  Save .json  ---------------------------------
@@ -369,6 +375,8 @@ public:
 	        out += ",\n\t\t\t\"paint\" : true";
 		if (db2->eType == DB_Tree)
 	        out += ",\n\t\t\t\"tree_wind\" : true";
+		if (db2->eType == DB_Grass)
+	        out += ",\n\t\t\t\"grass\" : true";
 
 		//  add reflect par,  rem cube, restore
 		TextureGpu *tex = db2->getTexture( PBSM_REFLECTION ), *no = 0;
