@@ -138,32 +138,31 @@ void CScene::UpdFog(bool on, bool off)
 {
 	if (!atmo || !sun)  return;
 	bool fog = off ? false : app->pSet->bFog || on;
-	Atmosphere::Preset& p = atmo->getPreset();
 
-	p.fogStartDistance = sc->fogStart;
-	p.fogDensity = !fog ? 0.000001f :
-		4000.f / sc->fogEnd * 0.0001f;  //** par`
-		// 4000.f / (sc->fogEnd - sc->fogStart) * 0.0001f;  //** par-
-	p.fogHcolor = sc->fogClrH.GetRGBA();
-	p.fogHparams = !fog ? Vector4(
+	atmo->fogStartDistance = sc->fogStart;
+	atmo->fogDensity = !fog ? 0.000001f :
+		4000.f / sc->fogEnd * 0.0001f;  //par
+		// 4000.f / (sc->fogEnd - sc->fogStart) * 0.0001f;
+	atmo->fogHcolor = sc->fogClrH.GetRGBA();
+	atmo->fogHparams = !fog ? Vector4(
 		-10000.f,
 		0.001f,
 		0.000001f, 0)
 	: Vector4(
 		sc->fogHeight - sc->fogHDensity,
 		1.f/sc->fogHDensity,
-		2000.f / sc->fogHEnd * 0.0004f,  //** par`
-		// 2000.f / (sc->fogHEnd - sc->fogHStart) * 0.0004f,  //** par`
+		2000.f / sc->fogHEnd * 0.0004f,  //par
+		// 2000.f / (sc->fogHEnd - sc->fogHStart) * 0.0004f,
 		sc->fogHStart);
 
 	//sc->fogHeight, ok ? 1.f/sc->fogHDensity : 0.f,
 	//sc->fogHStart, 1.f/(sc->fogHEnd - sc->fogHStart);
-	p.fogColourSun = sc->fogClr.GetRGBA();
-	p.fogColourAway = sc->fogClr2.GetRGBA();
+	atmo->fogColourSun = sc->fogClr.GetRGBA();
+	atmo->fogColourAway = sc->fogClr2.GetRGBA();
 
- 	// pars  not on gui..
-	p.fogBreakMinBrightness = 0.25f;
-	p.fogBreakFalloff = 0.1f;
+ 	// par  not on gui..
+	atmo->fogBreakMinBrightness = 0.25f;
+	atmo->fogBreakFalloff = 0.1f;
 }
 
 
