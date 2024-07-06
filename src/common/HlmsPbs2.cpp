@@ -66,14 +66,18 @@ void HlmsPbs2::calculateHashForPreCreate(
 		LogO("HlmsPbs2 pFluidsXml not set!");
 
 	if (db)
-	switch (db->eType)
 	{
-	case DB_Tree:	setProperty( "tree_wind", 1 );  break;
-	case DB_Grass:  setProperty( "grass", 1 );  break;
-	case DB_Fluid:	fluid = 1;
-					setProperty( "water", 1 );  break;
-	case DB_Paint:	setProperty( "paint", 1 );  break;
-	default:  break;
+		if (db->wind)
+			setProperty( "tree_wind", 1 );
+
+		switch (db->eType)
+		{
+		case DB_Grass:  setProperty( "grass", 1 );  break;
+		case DB_Fluid:	fluid = 1;
+						setProperty( "water", 1 );  break;
+		case DB_Paint:	setProperty( "paint", 1 );  break;
+		default:  break;
+		}
 	}
 
 	if (mtr.substr(0,5) == "River")
@@ -83,9 +87,9 @@ void HlmsPbs2::calculateHashForPreCreate(
 	if (fluid)
 		setProperty( "water", 1 );
 	else
-	if (mtr.substr(0,5) == "grass")
-		setProperty( "grass", 1 );
-	else 
+	// if (mtr.substr(0,5) == "grass")
+	// 	setProperty( "grass", 1 );
+	// else 
 	if (mtr.substr(0,4) == "sky/")
 		setProperty( "sky", 1 );
 
@@ -119,25 +123,23 @@ void HlmsPbs2::calculateHashForPreCaster(
 	const auto* db = (HlmsPbsDb2*)rnd->getDatablock();
 	// LogO("- cast for: " + mtr);   // on every item
 
-	if (mtr.substr(0,5) == "grass")
-		setProperty( "grass", 1 );
+	// if (mtr.substr(0,5) == "grass")
+	// 	setProperty( "grass", 1 );
 
 	if (db)
-	switch (db->eType)
 	{
-	case DB_Tree:	setProperty( "tree_wind", 1 );  break;
-	case DB_Grass:	setProperty( "grass", 1 );  break;
-	// case DB_Fluid:	fluid = 1;
-	// 				setProperty( "water", 1 );  break;
-	// case DB_Paint:	setProperty( "paint", 1 );  break;
-	default:  break;
-	}
+		if (db->wind)
+			setProperty( "tree_wind", 1 );
 
-	/*if (mtr.find("body") != String::npos)
-	{
-		// LogO("body_paint");
-		setProperty( "body_paint", 1 );
-	}*/
+		switch (db->eType)
+		{
+		case DB_Grass:  setProperty( "grass", 1 );  break;
+		// case DB_Fluid:	fluid = 1;
+		// 				setProperty( "water", 1 );  break;
+		// case DB_Paint:	setProperty( "paint", 1 );  break;
+		default:  break;
+		}
+	}
 }
 
 
@@ -195,14 +197,6 @@ HlmsPbsDb2::HlmsPbsDb2( App* app1,
 		//Vector3 v = StringConverter::parseVector3( val, Vector3::UNIT_SCALE );
 		// setDiffuse( v );
 	}
-	else if (Hlms::findParamInVec(p, "grass", val))
-	{
-		eType = DB_Grass;
-	}
-	else if (Hlms::findParamInVec(p, "tree_wind", val))
-	{
-		eType = DB_Tree;
-	}
 	else
 	if (Hlms::findParamInVec(p, "fluid", val) || Hlms::findParamInVec(p, "choppyness_scale", val))
 	{
@@ -257,7 +251,13 @@ HlmsPbsDb2::HlmsPbsDb2( App* app1,
 		setTransparency( colour.w == 0.0 ? refractColour.w : 1.0 );
 		setRefractionStrength( bump_fresn_refra.z );
 		//bump_fresn_refra
-
+	}
+	else
+	{	//  bushes have both
+		if (Hlms::findParamInVec(p, "grass", val))
+			eType = DB_Grass;
+		if (Hlms::findParamInVec(p, "tree_wind", val))
+			wind = 1;
 	}
 	scheduleConstBufferUpdate();
 }
@@ -355,14 +355,11 @@ public:
 
 		it = json.FindMember( "tree_wind" );
 		if (it != json.MemberEnd())
-		{	db2->eType = DB_Tree;
-			// LogO("db2 .mat tree ");
-		}
+			db2->wind = 1;
+
 		it = json.FindMember( "grass" );
 		if (it != json.MemberEnd())
-		{	db2->eType = DB_Grass;
-			// LogO("db2 .mat grass ");
-		}
+			db2->eType = DB_Grass;
 	}
 
 	//  Save .json  ---------------------------------
@@ -373,10 +370,10 @@ public:
 	        out += ",\n\t\t\t\"fluid\" : true";
 		if (db2->eType == DB_Paint)
 	        out += ",\n\t\t\t\"paint\" : true";
-		if (db2->eType == DB_Tree)
-	        out += ",\n\t\t\t\"tree_wind\" : true";
 		if (db2->eType == DB_Grass)
 	        out += ",\n\t\t\t\"grass\" : true";
+		if (db2->wind)
+	        out += ",\n\t\t\t\"tree_wind\" : true";
 
 		//  add reflect par,  rem cube, restore
 		TextureGpu *tex = db2->getTexture( PBSM_REFLECTION ), *no = 0;

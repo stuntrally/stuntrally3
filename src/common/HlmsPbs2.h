@@ -69,8 +69,8 @@ enum EType
 	DB_PBS =0, // default normal
 	DB_Paint,  // paint for vehicles
 	DB_Fluid,  // water, mud etc
-	DB_Tree,   // tree with wind
-	DB_Grass,  // grass deform under vehicle
+	// DB_Tree,   // tree with wind
+	DB_Grass,  // grass,bush deform under vehicle
 	DB_ALL
 };
 
@@ -88,9 +88,10 @@ public:
 	//  fluid params
 	// Ogre::Vector4 waterClr[3] = {Ogre::Vector4(0,0.5,1,0), Ogre::Vector4(0,1,0,0), Ogre::Vector4(1,0.5,0,0)};
 
-	//  cube reflect  object,road..
-	bool reflect = false;
-	
+	bool reflect = 0;  //  cube reflect  object, road..
+	bool wind = 0;  // trees, bushes
+
+
 	HlmsPbsDb2(	App* app1,
 		Ogre::IdString name, HlmsPbs2 *creator,
 		const Ogre::HlmsMacroblock *macro,

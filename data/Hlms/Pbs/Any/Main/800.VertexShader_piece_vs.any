@@ -27,7 +27,7 @@
 	@end
 
     @insertpiece( DeclShadowMapMacros )
-	@insertpiece( DeclAtmosphereNprSkyFuncs )
+	// insertpiece( DeclAtmosphereNprSkyFuncs )
 @end
 
 @property( !hlms_skeleton )
@@ -287,27 +287,32 @@
 				worldPos.xz += float2(offset1, offset2) * 0.4;
 			}
 
-			///()  grass deform under car
+			//**  grass deform under car  **
 			float r = atmo.posSph0.w;  // sphere radius^2
 			if (r > 0.f)
 			{
-				//  sphere:  (x - x0)^2 + (y - y0)^2 + (z - z0)^2 = r^2
+				//()  sphere:  (x - x0)^2 + (y - y0)^2 + (z - z0)^2 = r^2
 				float3 sph = atmo.posSph0.xyz;  // sphere pos
+				float yy = 0.0;
+				@property( tree_wind )  // bushes less
+					yy = 0.5;
+				@end
 				float dx = worldPos.x - sph.x,  dz = worldPos.z - sph.z; //, dy = worldPos.y - sph.y;
 				dx *= dx;  dz *= dz;  //dy *= dy;
 				//if (dx + dy + dz < r)  // sphere
-				if (dx + dz < r)  // circle (very high grasses too)
+				if (dx + dz < r)  // circle, very high grasses too
 				{
-					float y_on_sph = sph.y - sqrt(r - dx - dz);
+					float y_on_sph = yy + sph.y - sqrt(r - dx - dz);
 					if (worldPos.y > y_on_sph)
-					{	worldPos.y = y_on_sph;  worldPos.y = y_on_sph;  }
+						worldPos.y = y_on_sph;
 				}
-				sph = atmo.posSph1.xyz;  // 2nd
+				//()  2nd
+				sph = atmo.posSph1.xyz;
 				dx = worldPos.x - sph.x;  dz = worldPos.z - sph.z;
 				dx *= dx;  dz *= dz;
 				if (dx + dz < r)
 				{
-					float y_on_sph = sph.y - sqrt(r - dx - dz);
+					float y_on_sph = yy + sph.y - sqrt(r - dx - dz);
 					if (worldPos.y > y_on_sph)
 						worldPos.y = y_on_sph;
 				}
@@ -315,14 +320,14 @@
 		@end
 
 		//**  Tree wind
-		// property( tree_wind )  // todo: no atmo in caster ..
-		@property( tree_wind_123123 && !hlms_shadowcaster )
+		// property( tree_wind )  // todo: in caster ..
+		@property( tree_wind && !hlms_shadowcaster )
 			{
 				midf2 pos = worldPos.xz;
 				float time = atmo.globalTime.x; // * _h(1.2);
-				float freq = 3.2;  // par atmo..
-				float offset1 = sin(time + pos.x * 2.427 * freq) * sin(time + pos.y * 3.427 * freq);
-				float offset2 = cos(time + pos.y * 2.534 * freq) * cos(time + pos.x * 3.534 * freq);
+				// float freq = 3.2;  // par atmo..
+				// float offset1 = sin(time + pos.x * 2.427 * freq) * sin(time + pos.y * 3.427 * freq);
+				// float offset2 = cos(time + pos.y * 2.534 * freq) * cos(time + pos.x * 3.534 * freq);
 				// worldPos.xz += float2(offset1, offset2) * 1.4;
 
 			// #if TREE_WIND
@@ -334,9 +339,12 @@
 				// worldPos.y += sin(time + uv2.z + position.y + position.x) * uv1.x * uv1.x * uv1.w;
 				// worldPos.x += sin(time + uv2.z ) * uv1.y * uv1.y * uv1.z;
 				
-				worldPos.x += sin(time*2.1 + worldMat[2].x * 0.61 + 0.72 * worldMat[2].z) * inputPos.y * inputPos.y * 0.1f;
-				// worldPos.z += sin(time*2.2 + pos.x * 0.012 + 0.011 * pos.y) * inputPos.y * inputPos.y * 0.1f;
-				worldPos.y += sin(time*5.3 + inputPos.x * 0.45 + 0.52 * inputPos.y) * inputPos.x * inputPos.z * 0.03f;
+				//  sway slow
+				worldPos.x += sin( time * 1.51 + worldMat[2].x * 0.51 + 0.67 * worldMat[2].z) * inputPos.y * inputPos.y * 0.016f;
+				worldPos.z += sin( time * 1.42 + worldMat[2].x * 0.76 - 0.65 * worldMat[2].z) * inputPos.y * inputPos.y * 0.017f;
+				//  tiny fast
+				worldPos.y += sin((time * 3.25 + inputPos.z) * (1.92 + 0.4 * worldMat[2].y))
+							* sin((time * 2.52 + inputPos.x) * (2.42 + 2.4 * worldMat[2].z)) * inputPos.y * inputPos.z * 0.02f;
 			}
 		@end
 	@end

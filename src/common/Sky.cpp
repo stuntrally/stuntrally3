@@ -327,7 +327,7 @@ void CScene::UpdSun(float dt)
 
 	//  🌪️ inc time for  water, grass wind, etc
 	if (atmo && dt > 0.f)
-		atmo->globalTime += dt;
+		atmo->globalTime.x += dt;
 	
 
 	//  🌊 underwater
