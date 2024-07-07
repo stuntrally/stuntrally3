@@ -55,8 +55,11 @@ void Scene::Default()
 	tds.clear();
 	// td.Default();
 
+	//  veget
 	densTrees=0;  densGrass=0;  grDensSmooth=6;
-	grPage = 80;  grDist = 80;
+	vegLayers.clear();
+	for (int i=0; i < ciNumVegLay; ++i)
+		vegLayersAll[i].on = 0;
 
 	for (int i=0; i < ciNumGrLay; ++i)
 	{
@@ -66,7 +69,7 @@ void Scene::Default()
 		gr->minSx = 1.2f;  gr->minSy = 1.2f;  gr->maxSx = 1.6f;  gr->maxSy = 1.6f;
 		gr->swayDistr = 4.0f;  gr->swayLen = 0.2f;  gr->swaySpeed = 0.5f;
 	}
-	trPage = 200;  trDist = 200;  trDistImp = 800;  trRdDist = 3;
+	trRdDist = 3;
 
 	camPos = Vector3(10.f,20.f,10.f);  camDir = Vector3(0.f,-0.3f,1.f);
 

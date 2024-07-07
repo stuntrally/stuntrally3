@@ -105,8 +105,6 @@ public:
 	
 	///  🌳🪨  Vegetation params  --------
 	float densTrees, densGrass;  int grDensSmooth;
-	float grPage, grDist;
-	float trPage, trDist, trDistImp;  // not used anymore
 	int trRdDist;  // dist from road to trees
 
 	//  🌿 grass layers  paged

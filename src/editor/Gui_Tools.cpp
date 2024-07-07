@@ -110,10 +110,7 @@ void CGui::btnCopyVeget(WP)
 	Scene sF;  sF.LoadXml(from + "/scene.xml");
 
 	sc->densGrass = sF.densGrass;  sc->densTrees = sF.densTrees;
-	sc->trPage = sF.trPage;  sc->trDist = sF.trDist;
-	sc->trRdDist = sF.trRdDist;  sc->trDistImp = sF.trDistImp;
-
-	sc->grPage = sF.grPage;  sc->grDist = sF.grDist;
+	sc->trRdDist = sF.trRdDist;
 
 	for (int i=0; i < sc->ciNumGrLay; ++i)
 		sc->grLayersAll[i] = sF.grLayersAll[i];

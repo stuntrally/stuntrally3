@@ -83,18 +83,18 @@ void CScene::CreateTrees()
 	//  pos0 - original  pos - with offset
 	Vector3 pos0 = Vector3::ZERO, pos = Vector3::ZERO;  Real yaw;
 
-	SETTINGS* pSet = app->pSet;
+	SETTINGS* pSet = app->pSet;  Real dTr = sc->densTrees;
 	#ifdef SR_EDITOR
-	Real fTrees = pSet->gui.trees * sc->densTrees;
-	Real fBushes = pSet->gui.bushes;
+	Real fTrees = pSet->gui.trees * dTr;
+	Real fBushes = pSet->gui.bushes * dTr;
 	#else
-	Real fTrees = pSet->game.trees * sc->densTrees;
-	Real fBushes = pSet->game.bushes;
+	Real fTrees = pSet->game.trees * dTr;
+	Real fBushes = pSet->game.bushes * dTr;
 	#endif
 	
 
 	//---------------------------------------------- Trees ----------------------------------------------
-	if (fTrees > 0.f)
+	if (fTrees > 0.f || fBushes > 0.f)
 	{
 		//if (!pSet->impostors_only)
 		//sc->trDist * pSet->trees_dist, 0);

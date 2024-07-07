@@ -199,18 +199,11 @@ bool Scene::LoadXml(String file, bool bTer)
 	///  🌳🪨 Vegetation
  	e = root->FirstChildElement("veget");
 	if (!e)
- 		e = root->FirstChildElement("paged");
+ 		e = root->FirstChildElement("paged");  // old
 	if (e)
 	{	a = e->Attribute("densTrees");		if (a)  densTrees = s2r(a);
 		a = e->Attribute("densGrass");		if (a)  densGrass = s2r(a);
-		//  grass
-		a = e->Attribute("grPage");			if (a)  grPage = s2r(a);
-		a = e->Attribute("grDist");			if (a)  grDist = s2r(a);
 		a = e->Attribute("grDensSmooth");	if (a)  grDensSmooth = s2i(a);
-		//  trees
-		a = e->Attribute("trPage");			if (a)  trPage = s2r(a);
-		a = e->Attribute("trDist");			if (a)  trDist = s2r(a);
-		a = e->Attribute("trDistImp");		if (a)  trDistImp = s2r(a);
 		a = e->Attribute("trRdDist");		if (a)  trRdDist = s2i(a);
 
 		//  🌿 Grass
