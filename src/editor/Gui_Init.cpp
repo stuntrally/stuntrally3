@@ -300,8 +300,15 @@ void CGui::InitGui()
 	sv= &svFogHStart;	sv->Init("FogHStart",	&sc->fogHStart,  0.f,2000.f, 2.f, 0,3);  sv->DefaultF(0.f);    Sev(UpdFog);
 	sv= &svFogHEnd;		sv->Init("FogHEnd",		&sc->fogHEnd,    0.f,2000.f, 2.f, 0,3);  sv->DefaultF(60.f);   Sev(UpdFog);
 	sv= &svFogHeight;	sv->Init("FogHeight",	&sc->fogHeight, -200.f,200.f, 1.f, 1,4);  sv->DefaultF(-300.f);  Sev(UpdFog);
-	sv= &svFogHDensity;	sv->Init("FogHDensity",	&sc->fogHDensity,  0.f,200.f, 2.f, 1,4);  sv->DefaultF(60.f);  Sev(UpdFog);
+	sv= &svFogHDensity;	sv->Init("FogHDensity",	&sc->fogHDensity, 0.f, 200.f, 2.f, 1,4);  sv->DefaultF(60.f);  Sev(UpdFog);
 	sv= &svFogHDmg;		sv->Init("FogHDmg",		&sc->fHDamage,    0.f, 30.f, 1.5f, 1,3);  sv->DefaultF(0.f);
+	//  🌪️ Wind
+	sv= &svWindForce;	sv->Init("WindForce",	&sc->windForce, -3.f,3.f, 1.f, 2,5);  sv->DefaultF(0.f);
+	sv= &svWindOfs;		sv->Init("WindOfs",		&sc->windOfs,    0.f,3.f, 1.f, 2,5);  sv->DefaultF(0.f);
+	sv= &svWindAmpl;	sv->Init("WindAmpl",	&sc->windAmpl,   0.f,6.f, 1.f, 2,5);  sv->DefaultF(1.f);
+	sv= &svWindFreq;	sv->Init("WindFreq",	&sc->windFreq, 0.01f,6.f, 1.f, 2,5);  sv->DefaultF(1.f);
+	sv= &svWindYaw;		sv->Init("WindYaw",		&sc->windYaw, -180.f,180.f, 1.f, 1,4);  sv->DefaultF(0.f);
+
 	//  toggle vis
 	ck= &ckFog;			ck->Init("FogEnable",		&pSet->bFog);  Cev(Fog);
 	ck= &ckWeather;		ck->Init("WeatherEnable",	&pSet->bWeather);
@@ -493,8 +500,6 @@ void CGui::InitGui()
 
 	///  🌿 Grass
 	//------------------------------------------------------------------------
-	Ed(GrSwayDistr, editTrGr);  Ed(GrSwayLen, editTrGr);  Ed(GrSwaySpd, editTrGr);
-
 	imgGrass = fImg("ImgGrass");
 
 	//  grass channels
@@ -562,7 +567,6 @@ void CGui::InitGui()
 
 	///  🎮 Game  ------------------------------------
 	sv= &svDamage;		sv->Init("DamageMul",	&sc->damageMul, 0.f,2.f, 1.f, 2,4);  sv->DefaultF(1.f);
-	sv= &svWind;		sv->Init("WindAmt",		&sc->windAmt,  -6.f,6.f, 1.f, 2,5);  sv->DefaultF(0.f);
 	sv= &svGravity;		sv->Init("Gravity",		&sc->gravity,   2.f,20.f, 1.5f, 2,4);  sv->DefaultF(9.81f);
 	ck= &ckDenyReversed;	ck->Init("DenyReversed",	&sc->denyReversed);
 	ck= &ckTiresAsphalt;	ck->Init("TiresAsphalt",	&sc->asphalt);

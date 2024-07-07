@@ -111,8 +111,8 @@ bool Scene::SaveXml(String file)
 		{	sky->SetAttribute("rain2Name",	rain2Name.c_str());
 			sky->SetAttribute("rain2Emit",	toStrC( rain2Emit ));
 		}
-		if (windAmt != 0.f)
-			sky->SetAttribute("windAmt",	toStrC( windAmt ));
+		if (windForce != 0.f)
+			sky->SetAttribute("windAmt",	toStrC( windForce ));
 		if (skyYaw != 0.f)
 			sky->SetAttribute("skyYaw",	toStrC( skyYaw ));
 	root->InsertEndChild(sky);
@@ -141,7 +141,14 @@ bool Scene::SaveXml(String file)
 		li->SetAttribute("diffuse",		lDiff.Save().c_str() );
 		li->SetAttribute("specular",	lSpec.Save().c_str() );
 	root->InsertEndChild(li);
-	
+
+	XMLElement* wd = xml.NewElement("wind");  // 🌪️
+		wd->SetAttribute("ofs",	toStrC( windOfs ));
+		wd->SetAttribute("amp",	toStrC( windAmpl ));
+		wd->SetAttribute("fq",	toStrC( windFreq ));
+		wd->SetAttribute("yaw",	toStrC( windYaw ));
+	root->InsertEndChild(wd);
+
 
 	XMLElement* fls = xml.NewElement("fluids");  // 💧
 		for (int i=0; i < fluids.size(); ++i)
@@ -281,10 +288,6 @@ bool Scene::SaveXml(String file)
 			grl->SetAttribute("maxSx",	toStrC( g.maxSx ));
 			grl->SetAttribute("minSy",	toStrC( g.minSy ));
 			grl->SetAttribute("maxSy",	toStrC( g.maxSy ));
-
-			grl->SetAttribute("swayDistr",	toStrC( g.swayDistr ));
-			grl->SetAttribute("swayLen",	toStrC( g.swayLen ));
-			grl->SetAttribute("swaySpeed",	toStrC( g.swaySpeed ));
 			pgd->InsertEndChild(grl);
 		}
 
@@ -323,8 +326,6 @@ bool Scene::SaveXml(String file)
 			vgl->SetAttribute("ofsY",		toStrC( l.ofsY ));
 			vgl->SetAttribute("addTrRdDist",toStrC( l.addRdist ));
 			vgl->SetAttribute("maxRdist",	toStrC( l.maxRdist ));
-			vgl->SetAttribute("windFx",		toStrC( l.windFx ));
-			vgl->SetAttribute("windFy",		toStrC( l.windFy ));
 
 			vgl->SetAttribute("maxTerAng",	toStrC( l.maxTerAng ));
 			vgl->SetAttribute("minTerH",	toStrC( l.minTerH ));

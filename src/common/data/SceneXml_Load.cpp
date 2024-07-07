@@ -116,7 +116,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("rainName");	if (a)  rainName = String(a);
 		a = e->Attribute("rain2Emit");	if (a)  rain2Emit = s2i(a);
 		a = e->Attribute("rain2Name");	if (a)  rain2Name = String(a);
-		a = e->Attribute("windAmt");	if (a)  windAmt = s2r(a);
+		a = e->Attribute("windAmt");	if (a)  windForce = s2r(a);
 		a = e->Attribute("skyYaw");		if (a)  skyYaw = s2r(a);
 	}
 	///  🌫️ fog
@@ -147,6 +147,14 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("ambient");	if (a)  lAmb.Load(a);
 		a = e->Attribute("diffuse");	if (a)  lDiff.Load(a);
 		a = e->Attribute("specular");	if (a)  lSpec.Load(a);
+	}
+	///  🌪️ wind
+	e = root->FirstChildElement("wind");
+	if (e)
+	{	a = e->Attribute("ofs");	if (a)  windOfs = s2r(a);
+		a = e->Attribute("amp");	if (a)  windAmpl = s2r(a);
+		a = e->Attribute("fq");		if (a)  windFreq = s2r(a);
+		a = e->Attribute("yaw");	if (a)  windYaw = s2r(a);
 	}
 	
 	
@@ -223,10 +231,6 @@ bool Scene::LoadXml(String file, bool bTer)
 			a = u->Attribute("maxSx");		if (a)  g.maxSx = s2r(a);
 			a = u->Attribute("minSy");		if (a)  g.minSy = s2r(a);
 			a = u->Attribute("maxSy");		if (a)  g.maxSy = s2r(a);
-
-			a = u->Attribute("swayDistr");	if (a)  g.swayDistr = s2r(a);
-			a = u->Attribute("swayLen");	if (a)  g.swayLen = s2r(a);
-			a = u->Attribute("swaySpeed");	if (a)  g.swaySpeed = s2r(a);
 			
 			grLayersAll[grl++] = g;
 			u = u->NextSiblingElement("grass");
@@ -275,8 +279,6 @@ bool Scene::LoadXml(String file, bool bTer)
 			a = u->Attribute("ofsY");		if (a)  l.ofsY = s2r(a);
 			a = u->Attribute("addTrRdDist");if (a)  l.addRdist = s2i(a);
 			a = u->Attribute("maxRdist");	if (a)  l.maxRdist = s2i(a);
-			a = u->Attribute("windFx");		if (a)  l.windFx = s2r(a);
-			a = u->Attribute("windFy");		if (a)  l.windFy = s2r(a);
 
 			a = u->Attribute("maxTerAng");	if (a)  l.maxTerAng = s2r(a);
 			a = u->Attribute("minTerH");	if (a)  l.minTerH = s2r(a);

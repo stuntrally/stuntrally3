@@ -24,6 +24,7 @@
 					<Property key="InheritsAlpha" value="false"/>
 					<Property key="SmoothShow" value="false"/>
 					<Property key="Colour" value="0.7 0.9 1"/>
+
 					<Widget type="TabItem" skin="" position="2 24 754 478">
 						<Property key="Caption" value="#FFFF80#{Sun}"/>
 						<Widget type="ImageBox" skin="ImageBox" position="34 20 36 26">
@@ -344,6 +345,78 @@
 							<Property key="TextColour" value="0.9 0.6 0.6"/>
 						</Widget>
 					</Widget>
+
+					<!-- 🌪️ Wind -->
+					<Widget type="TabItem" skin="" position="2 24 754 478">
+						<Property key="Caption" value="#C0C0C0#{Wind}"/>
+						<Widget type="ImageBox" skin="ImageBox" position="664 4 56 56">
+							<Property key="ImageCoord" value="896 0 128 128"/>
+							<Property key="Alpha" value="0.5"/>
+							<Property key="ImageTexture" value="gui_icons.png"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="44 74 104 24">
+							<Property key="Caption" value="#{Brush_Force}"/>
+							<Property key="TextColour" value="0.5 0.75 1"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="216 74 420 16" name="WindForce">
+							<Property key="Colour" value="0.6 0.8 1"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="152 70 56 24" name="WindForceEdit">
+							<Property key="Colour" value="0.6 0.8 1"/>
+							<Property key="TextColour" value="0.6 0.8 1"/>
+						</Widget>
+						
+						<Widget type="TextBox" skin="TextBox" position="44 104 104 24">
+							<Property key="Caption" value="#{Brush_Offset}"/>
+							<Property key="TextColour" value="0.5 0.75 1"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="216 104 420 16" name="WindOfs">
+							<Property key="Colour" value="0.6 0.8 1"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="152 100 56 24" name="WindOfsEdit">
+							<Property key="Colour" value="0.6 0.8 1"/>
+							<Property key="TextColour" value="0.6 0.8 1"/>
+						</Widget>
+						
+						<Widget type="TextBox" skin="TextBox" position="44 134 104 24">
+							<Property key="Caption" value="#{Amplitude}"/>
+							<Property key="TextColour" value="0.5 0.75 1"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="216 134 420 16" name="WindAmpl">
+							<Property key="Colour" value="0.6 0.8 1"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="152 130 56 24" name="WindAmplEdit">
+							<Property key="Colour" value="0.6 0.8 1"/>
+							<Property key="TextColour" value="0.6 0.8 1"/>
+						</Widget>
+						
+						<Widget type="TextBox" skin="TextBox" position="44 164 104 24">
+							<Property key="Caption" value="#{Frequency}"/>
+							<Property key="TextColour" value="0.5 0.75 1"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="216 164 420 16" name="WindFreq">
+							<Property key="Colour" value="0.6 0.8 1"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="152 160 56 24" name="WindFreqEdit">
+							<Property key="Colour" value="0.6 0.8 1"/>
+							<Property key="TextColour" value="0.6 0.8 1"/>
+						</Widget>
+						
+						<Widget type="TextBox" skin="TextBox" position="44 194 104 24">
+							<Property key="Caption" value="#{Road_Yaw}"/>
+							<Property key="TextColour" value="0.5 0.75 1"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="216 194 420 16" name="WindYaw">
+							<Property key="Colour" value="0.6 0.8 1"/>
+						</Widget>
+						<Widget type="EditBox" skin="EditBox" position="152 190 56 24" name="WindYawEdit">
+							<Property key="Colour" value="0.6 0.8 1"/>
+							<Property key="TextColour" value="0.6 0.8 1"/>
+						</Widget>
+						
+					</Widget>
+
 				</Widget>
 			</Widget>
 
@@ -1816,62 +1889,6 @@
 							<UserString key="tip" value="#{TipGrassDens}"/>
 						</Widget>
 
-						<!-- <Widget type="TextBox" skin="TextBox" position="88 72 100 24">
-							<Property key="Caption" value="#{page}"/>
-							<Property key="TextColour" value="0.6 0.9 0.3"/>
-							<UserString key="tip" value="#{TipGrassPageLength}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="88 96 100 24">
-							<Property key="Caption" value="#{distance}"/>
-							<Property key="TextColour" value="0.6 0.9 0.3"/>
-							<UserString key="tip" value="#{TipGrassVisDist}"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="192 68 48 24" name="GrPage">
-							<Property key="Colour" value="0.5 0.7 0.3"/>
-							<Property key="TextColour" value="0.6 0.9 0.3"/>
-							<UserString key="tip" value="#{TipGrassPageLength}"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="192 92 48 24" name="GrDist">
-							<Property key="Colour" value="0.5 0.7 0.3"/>
-							<Property key="TextColour" value="0.6 0.9 0.3"/>
-							<UserString key="tip" value="#{TipGrassVisDist}"/>
-						</Widget> -->
-
-						<Widget type="TextBox" skin="TextBox" position="352 76 204 24">
-							<Property key="Caption" value="#{Wind}, #{GrassSway} ="/>
-							<Property key="TextColour" value="0.6 1 0.4"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="392 108 112 24">
-							<Property key="Caption" value="#{distribution} ="/>
-							<Property key="TextColour" value="0.6 0.9 0.3"/>
-							<UserString key="tip" value="#{TipGrassSwayDistr}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="392 132 112 24">
-							<Property key="Caption" value="#{length} ="/>
-							<Property key="TextColour" value="0.6 0.9 0.3"/>
-							<UserString key="tip" value="#{TipGrassSwayLen}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="392 156 112 24">
-							<Property key="Caption" value="#{speed} ="/>
-							<Property key="TextColour" value="0.6 0.9 0.3"/>
-							<UserString key="tip" value="#{TipGrassSwaySpd}"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="508 128 48 24" name="GrSwayLen">
-							<Property key="TextColour" value="0.6 0.9 0.3"/>
-							<Property key="Colour" value="0.6 0.9 0.3"/>
-							<UserString key="tip" value="#{TipGrassSwayLen}"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="508 152 48 24" name="GrSwaySpd">
-							<Property key="Colour" value="0.6 0.9 0.3"/>
-							<Property key="TextColour" value="0.6 0.9 0.3"/>
-							<UserString key="tip" value="#{TipGrassSwaySpd}"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="508 104 48 24" name="GrSwayDistr">
-							<Property key="TextColour" value="0.6 0.9 0.3"/>
-							<Property key="Colour" value="0.6 0.9 0.3"/>
-							<UserString key="tip" value="#{TipGrassSwayDistr}"/>
-						</Widget>
-
 						<Widget type="TextBox" skin="TextBox" position="352 220 156 24">
 							<Property key="Caption" value="#{GrDensSmooth} ="/>
 							<Property key="TextColour" value="0.75 0.95 0.45"/>
@@ -2319,38 +2336,6 @@
 							<UserString key="tip" value="#{TipTreeDens}"/>
 						</Widget>
 
-						<!-- <Widget type="TextBox" skin="TextBox" position="88 72 100 24">
-							<Property key="Caption" value="#{page}"/>
-							<Property key="TextColour" value="0.8 0.8 0.4"/>
-							<UserString key="tip" value="#{TipModelPageLength}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="88 96 100 24">
-							<Property key="Caption" value="#{distance}"/>
-							<Property key="TextColour" value="0.8 0.8 0.4"/>
-							<UserString key="tip" value="#{TipModelVisDist}"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="192 68 48 24" name="TrPage">
-							<Property key="Colour" value="0.6 0.6 0.4"/>
-							<Property key="TextColour" value="0.8 0.8 0.4"/>
-							<UserString key="tip" value="#{TipModelPageLength}"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="192 92 48 24" name="TrDist">
-							<Property key="Colour" value="0.6 0.6 0.4"/>
-							<Property key="TextColour" value="0.8 0.8 0.4"/>
-							<UserString key="tip" value="#{TipModelVisDist}"/>
-						</Widget> -->
-
-						<!-- <Widget type="TextBox" skin="TextBox" position="32 132 156 24">
-							<Property key="Caption" value="#{ImpostorDist}"/>
-							<Property key="TextColour" value="0.7 0.7 0.4"/>
-							<UserString key="tip" value="#{TipImpDist}"/>
-						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="192 128 48 24" name="TrImpDist">
-							<Property key="Colour" value="0.6 0.6 0.5"/>
-							<Property key="TextColour" value="0.8 0.8 0.4"/>
-							<UserString key="tip" value="#{TipImpDist}"/>
-						</Widget> -->
-
 						<Widget type="TextBox" skin="TextBox" position="352 184 156 24">
 							<Property key="Caption" value="#{TreeRoadDist}"/>
 							<Property key="TextColour" value="0.9 0.7 0.4"/>
@@ -2543,33 +2528,6 @@
 							<Property key="Colour" value="0.6 0.9 0.9"/>
 							<UserString key="tip" value="#{TipModelMaxScale}"/>
 						</Widget>
-
-						<!-- <Widget type="TextBox" skin="TextBox" position="16 187 116 20">
-							<Property key="Caption" value=".#{wind} Fx-"/>
-							<Property key="TextColour" value="0.5 0.6 0.7"/>
-							<UserString key="tip" value="#{TipWindInflL}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="16 212 116 20">
-							<Property key="Caption" value=".#{wind} Fy-"/>
-							<Property key="TextColour" value="0.5 0.6 0.7"/>
-							<UserString key="tip" value="#{TipWindInflH}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="136 187 56 20" name="LTrWindFxVal">
-							<Property key="TextColour" value="0.5 0.6 0.7"/>
-							<UserString key="tip" value="#{TipWindInflL}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="136 212 56 20" name="LTrWindFyVal">
-							<Property key="TextColour" value="0.5 0.6 0.7"/>
-							<UserString key="tip" value="#{TipWindInflH}"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="196 189 268 14" name="LTrWindFx">
-							<Property key="Colour" value="0.6 0.7 0.8"/>
-							<UserString key="tip" value="#{TipWindInflL}"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="196 214 268 14" name="LTrWindFy">
-							<Property key="Colour" value="0.6 0.7 0.8"/>
-							<UserString key="tip" value="#{TipWindInflH}"/>
-						</Widget> -->
 
 						<Widget type="TextBox" skin="TextBox" position="16 246 116 20">
 							<Property key="Caption" value=".#{DistToRoad}"/>

@@ -161,7 +161,7 @@
 	@end
 
 	@property( hlms_fog )
-		outVs.worldH = worldPos.y;
+		outVs.worldH = worldPos.y;  //**
 	@end
 
 	@property( hlms_instanced_stereo )

@@ -208,11 +208,6 @@ void Grass::Create(App* app1)
 			}	// pages
 
 			LogO(String("grass x ") +iToStr(na,5) +"  pages "+ toStr(pg) +"  mtr "+ gr->material);
-			// g0->swayDistr;
-			// g0->swayLen;  g0->swaySpeed;
-			// FADETECH_ALPHA  //FADETECH_GROW-
-			// gr->colorMap
-			// l->setDensityMap(grassDensRTex, MapChannel(gr->iChan));
 		}
 	}
 

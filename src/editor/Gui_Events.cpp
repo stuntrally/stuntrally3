@@ -197,14 +197,6 @@ void CGui::editTrGr(Ed ed)
 	Real r = s2r(ed->getCaption());
 	String n = ed->getName();
 	SGrassLayer* gr = &sc->grLayersAll[idGrLay], *g0 = &sc->grLayersAll[0];
-
-	//      if (n=="GrPage")  sc->grPage = r;   else if (n=="GrDist")  sc->grDist = r;
-	// else if (n=="TrPage")  sc->trPage = r;   else if (n=="TrDist")  sc->trDist = r;
-	// else if (n=="TrImpDist")  sc->trDistImp = r;
-
-	     if (n=="GrSwayDistr")  g0->swayDistr = r;
-	else if (n=="GrSwayLen")  g0->swayLen = r;
-	else if (n=="GrSwaySpd")  g0->swaySpeed = r;
 }
 
 
@@ -234,10 +226,6 @@ void CGui::tabGrLayers(Tab wp, size_t id)
 	
 	Vector3 c = gr->color.GetRGB();
 	clrGrass->setColour(Colour(c.x,c.y,c.z));
-
-	_Ed(GrSwayDistr, g0->swayDistr);
-	_Ed(GrSwayLen, g0->swayLen);
-	_Ed(GrSwaySpd, g0->swaySpeed);  //g0-
 }
 
 //  tab changed, set slider pointer values, and update
@@ -432,8 +420,13 @@ void CGui::SldUpd_Road()
 void CGui::SldUpd_Game()
 {
 	svDamage.UpdF(&sc->damageMul);
-	svWind.UpdF(&sc->windAmt);
 	svGravity.UpdF(&sc->gravity);
+
+	svWindForce.UpdF(&sc->windForce);
+	svWindOfs.UpdF(&sc->windOfs);
+	svWindAmpl.UpdF(&sc->windAmpl);
+	svWindFreq.UpdF(&sc->windFreq);
+	svWindYaw.UpdF(&sc->windYaw);
 }
 void CGui::comboReverbs(Cmb cmb, size_t val)  // reverb sets
 {

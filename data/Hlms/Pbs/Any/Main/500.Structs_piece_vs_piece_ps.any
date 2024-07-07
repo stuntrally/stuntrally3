@@ -460,7 +460,7 @@ struct Material
 		// end
 
 		@property( !hlms_shadowcaster )
-			INTERPOLANT( float worldH, @counter(texcoord) );  //**
+			INTERPOLANT( float worldH, @counter(texcoord) );  //** for Height fog and fluids depth
 		@end
 		
 	@else

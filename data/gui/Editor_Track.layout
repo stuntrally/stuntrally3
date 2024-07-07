@@ -602,14 +602,6 @@
 				<Widget type="TextBox" skin="TextBox" position="380 80 60 24" name="GravityVal">
 					<Property key="TextColour" value="0.9 0.76 0.6"/>
 				</Widget>
-				<Widget type="TextBox" skin="TextBox" position="380 120 264 22">
-					<Property key="Caption" value="#{Wind}"/>
-					<Property key="TextColour" value="0.7 0.8 0.8"/>
-				</Widget>
-				<Widget type="Slider" skin="Slider" position="444 140 320 18" name="WindAmt"/>
-				<Widget type="TextBox" skin="TextBox" position="380 140 60 24" name="WindAmtVal">
-					<Property key="TextColour" value="0.7 0.8 0.8"/>
-				</Widget>
 
 				<Widget type="Button" skin="CheckBox" position="32 160 330 24" name="TiresAsphalt">
 					<Property key="Caption" value="#{Tires}: #{Asphalt}"/>

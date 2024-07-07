@@ -28,27 +28,30 @@ void Scene::Default()
 
 	asphalt = false;  denyReversed = false;  noWrongChks = false;
 	needLights = false;
-	
-	windAmt = 0.f;  damageMul = 1.f;
-	gravity = 9.81f;
+	//  game
+	gravity = 9.81f;  damageMul = 1.f;
+	road1mtr = true;
 	
 	ambientSnd = "";  sReverbs = "";
 	ambientVol = 1.f;
 
+	//  sky
 	skyMtr = "World/NoonSky";  skyYaw = 0.f;
 	rainEmit = 0;  rainName = "";
 	rain2Emit = 0;  rain2Name = "";
-
+	//  sun
+	ldPitch = 50.f;  ldYaw = 30.f;
+	lAmb  = SColor(0.16f, 0.0f, 0.45f);
+	lDiff = SColor(0.16f, 0.0f, 0.7f);	lSpec = SColor(0.16f, 0.05f, 1.f);
+	//  fog
 	fogStart = 600;  fogEnd = 1600;
 	fogClr = fogClr2 = fogClrH = SColor(0.73f, 0.86f, 1.0f, 1.f);
 	fogHeight = -300.f;  fogHDensity = 100.f;  fogHStart = 0;  fogHEnd = 400;
 	fHDamage = 0.f;
-	road1mtr = true;
+	//  wind
+	windOfs = 0.f;  windFreq  = 0.f;  windAmpl = 0.f;  windYaw = 0.f;
 
-	ldPitch = 50.f;  ldYaw = 30.f;
-	lAmb  = SColor(0.16f, 0.0f, 0.45f);
-	lDiff = SColor(0.16f, 0.0f, 0.7f);	lSpec = SColor(0.16f, 0.05f, 1.f);
-
+	//  particles
 	sParDust = "Dust";  sParMud = "Mud";  sParSmoke = "Smoke";
 	sFluidWater = "FluidWater";  sFluidMud = "FluidMud";  sFluidMudSoft = "FluidMudSoft";
 
@@ -67,7 +70,6 @@ void Scene::Default()
 		gr->on = i == 0;
 		gr->material = "grassJungle";  gr->color = SColor(0.f,0.f,1.f);  // white
 		gr->minSx = 1.2f;  gr->minSy = 1.2f;  gr->maxSx = 1.6f;  gr->maxSy = 1.6f;
-		gr->swayDistr = 4.0f;  gr->swayLen = 0.2f;  gr->swaySpeed = 0.5f;
 	}
 	trRdDist = 3;
 

@@ -325,10 +325,18 @@ void CScene::UpdSun(float dt)
 		// 0.8f, 0x0 );  // env? EnvFeatures_DiffuseGiFromReflectionProbe
 		// -dir + Ogre::Vector3::UNIT_Y * 0.2f );
 
+
 	//  🌪️ inc time  for  water, grass wind, etc
 	if (atmo && dt > 0.f)
 	{
 		atmo->timeWind.x += dt;
+		//  🌪️ wind
+		atmo->timeWind.y = sc->windOfs;
+		atmo->timeWind.z = sc->windAmpl;
+		atmo->timeWind.w = sc->windFreq;
+		float yaw = sc->windYaw * PI_d/180.f;
+		atmo->windDir.x = cosf(yaw);  // + atmo->timeWind.x * sc->windFreq..
+		atmo->windDir.y = -sinf(yaw);
 	}
 	
 

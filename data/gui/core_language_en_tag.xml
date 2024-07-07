@@ -1132,6 +1132,7 @@
 	<Tag name="Surface">Surface</Tag>
 	<Tag name="Type">Type</Tag>
 	<Tag name="BumpWavelen">Bump:  WaveLen</Tag>
+	<Tag name="Frequency">Frequency</Tag>
 	<Tag name="Amplitude">Amplitude</Tag>
 	<Tag name="Friction">Friction</Tag>
 	<Tag name="RollingDrag">Rolling Drag</Tag>
@@ -1184,6 +1185,7 @@
 
 	<Tag name="distance">distance</Tag>
 	<Tag name="length">length</Tag>
+	<Tag name="speed">speed</Tag>
 
 	<!--  Vegetation  global  -->
 	<Tag name="TreeRoadDist">Trees to road dist.</Tag>
@@ -1198,11 +1200,6 @@
 	<Tag name="GrColorMap">Color map</Tag>
 	<Tag name="Channels">Channels</Tag>
 	<Tag name="Channel">Channel</Tag>
-
-	<!--  Vegetation  Grass sway  -->
-	<Tag name="GrassSway">Sway</Tag>
-	<Tag name="speed">speed</Tag>
-	<Tag name="distribution">distribution</Tag>
 
 
 	<!--  Road  Main  -->

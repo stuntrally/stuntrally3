@@ -30,9 +30,9 @@ public:
     //  🌿 grass deform,  2 collision spheres: pos,R^2
     Ogre::Vector4 posSph0{0,0,-500,-11}, posSph1{0,0,-500,-11};
     
-    //  time  🌪️ wind: amount, amplitude, freq, 
+    //  time  🌪️ wind: y offset, z amplitude, w freq
     Ogre::Vector4 timeWind{0.f, 0.f, 0.f, 0.f};
-    //  wind dir x,y
+    //  wind dir x,z
     Ogre::Vector4 windDir{1.f, 0.f, 0.f, 0.f};
 
 

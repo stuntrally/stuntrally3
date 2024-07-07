@@ -123,12 +123,16 @@ public:
 	SV svSunPitch, svSunYaw, svSkyYaw;
 	void slUpdSky(SV*), slUpdSun(SV*), slUpdFog(SV*);
 
+	Img clrAmb =0, clrDiff =0, clrSpec =0;
+	Img clrFog =0, clrFog2 =0, clrFogH =0;
+
+	//  🌫️ Fog
 	SV svFogStart, svFogEnd;
 	SV svFogHStart, svFogHEnd;  // Hfog
 	SV svFogHeight, svFogHDensity, svFogHDmg;
 
-	Img clrAmb =0, clrDiff =0, clrSpec =0;
-	Img clrFog =0, clrFog2 =0, clrFogH =0;
+	//  🌪️ Wind
+	SV svWindForce, svWindOfs, svWindAmpl, svWindFreq, svWindYaw;
 
 	//  toggle vis
 	CK(Fog);  Ck ckWeather;  CK(Emitters);
@@ -248,10 +252,7 @@ public:
 	///  🌳🪨🌿  Vegetation  ----------------------------------------
 	//  global params
 	SV svGrassDens, svTreesDens;
-	// Ed edGrPage =0, edGrDist =0;
-	// Ed edTrPage =0, edTrDist =0, edTrImpDist =0;
 	//  grass
-	Ed edGrSwayDistr =0, edGrSwayLen =0, edGrSwaySpd =0;
 	void editTrGr(Ed);
 	SV svTrRdDist;  SV svGrDensSmooth;
 
@@ -340,7 +341,7 @@ public:
 
 	
 	//  🚗 Game  --------------------
-	SV svDamage, svWind, svGravity;
+	SV svDamage, svGravity;
 	CK(DenyReversed);  CK(TiresAsphalt);
 	CK(NoWrongChks);  CK(NeedLights);
 	void SldUpd_Game();

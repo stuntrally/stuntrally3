@@ -106,9 +106,10 @@ class VegetLayer	//  🌳🪨 Vegetation model
 public:
 	bool on = false;
 	Ogre::String name;  float dens = 0.1f;
-	float windFx = 0.f, windFy = 0.f;
+
 	int addRdist = 0, maxRdist = 20;  // add,max dist to road
 	float minScale = 0.1f, maxScale = 0.25f, ofsY = 0.f;
+
 	float maxTerAng = 50.f, minTerH = -100.f, maxTerH = 100.f;  // terrain
 	float maxDepth = 5.f;  // in fluid
 	int cnt = 0;  // count on track, for stats
@@ -121,7 +122,6 @@ public:
 	bool on = false;
 	float dens = 0.1f;
 	float minSx = 1.2f, minSy = 1.2f, maxSx = 1.6f, maxSy = 1.6f;  // x,y size range
-	float swayDistr = 4.f, swayLen = 0.2f, swaySpeed = 0.5f;  // sway
 	int iChan = 0;  // which channel to use
 
 	Ogre::String material{"grassForest"};

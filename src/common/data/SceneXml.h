@@ -76,11 +76,13 @@ public:
 	bool denyReversed;  // track (road) dir
 	bool noWrongChks;  // dont show "wrong checkpoint" messages
 
-	float windAmt;  //, windDirYaw, windTurbulFreq,windTurbulAmp;
 	float damageMul;  // reduce car damage in loops
 	float gravity;  // 9.81
 	bool road1mtr = 1;  // if true (default) road has only 1 surface type
-	
+
+	//  🍃 wind
+	float windForce, windOfs, windAmpl, windFreq, windYaw;
+
 
 	//  🔉 sound
 	std::string ambientSnd, sReverbs;  void UpdRevSet();

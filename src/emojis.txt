@@ -11,7 +11,7 @@ You can search in code by emoji for all that is related to it.
  ⛰️ Terrain  ter       Emitters  emt   🌫️ Fog            🔝 Arrow           🚦 Pacenotes    🏛️ Column  col                    🚌 Bus        
  🏔️ Blendmap                           🌦️🌧️ Weather                         🎗️ Trail                         📈 engine        🚤 Hover      
             Trees   📦🏢 Objects  obj      rain snow     🔨 Damage hit      ❌ wrong chk     ⭕ Pipe         🔴 brake         
- 🌳🪨 Veget-ation     caves buildings  🌪️ wind           💨 Boost                           ➰➿ Loop                         
+ 🌳🪨 Veget-ation     caves buildings  🌪️🍃 wind         💨 Boost                           ➰➿ Loop                         
  🌿 Grass  grs      🎆 Fields   fld                      ⏪ Rewind          🎨 paint                                           
                       accelerate lift  🪐🌌 Space                                                                              
                                        ⛈️🌋 Extreme                                                          
