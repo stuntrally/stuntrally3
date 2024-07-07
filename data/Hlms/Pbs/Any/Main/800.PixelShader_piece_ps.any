@@ -441,7 +441,7 @@
 				#define SPEC2        material.detailOffsetScale[3].y
 
 float2 UV = inPs.uv@value(uv_diffuse).xy;
-float timer = atmo.globalTime.x;
+float timer = atmo.timeWind.x;
 float2
 uv3 = UV * WAVE_SCALE*0.05+ WIND_DIR *timer* WIND_SPEED*0.04                                   + WIND_SPEED2 *timer* float2(-0.015,-0.005);  float3 normal0 = @insertpiece(GetNorm)
 uv3 = UV * WAVE_SCALE*0.1 + WIND_DIR *timer* WIND_SPEED*0.08-(normal0.xy/normal0.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(+0.020,+0.015);  float3 normal1 = @insertpiece(GetNorm)
@@ -1041,7 +1041,7 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 			//**  ed Selected Glow  **
 			@property( selected_glow && !hlms_shadowcaster )
 				finalColour.xyz += float3(0.2, 0.5, 0.8)
-					* (_h(0.5) + _h(0.2) * sin(atmo.globalTime.x * _h(3.5)) );
+					* (_h(0.5) + _h(0.2) * sin(atmo.timeWind.x * _h(3.5)) );
 			@end
 
 

@@ -4,26 +4,19 @@
 
 @piece( AtmoStructDecl )
 
-	struct AtmoSettings  // same as AtmoSettingsGpu
+	struct AtmoSettings  // same as AtmoSettingsGpu info in Atmosphere.h
 	{
-		float fogDensity;
-		float fogBreakMinBrightness;
-		float fogBreakFalloff;
+		//**  fog
+		float4 fogDensStartBreak;
+		float4 fogHcolor, fogHparams;
+		float4 fogColourSun, fogColourAway;
+		float4 fogFluidH, fogFluidClr;
 
-		//**  fog new, SR3 added, fog
-		float fogStartDistance;
-		float4 fogHcolor;
-		float4 fogHparams;
-		float4 fogColourSun;
-		float4 fogColourAway;
-		float4 fogFluidH;
-		float4 fogFluidClr;
-
-		//  new other
-		float4 posSph0;  // grass, 2 collision spheres pos,r^2
-		float4 posSph1;  //    for 1 car only  // todo: splitscreen meh-
+		//  grass deform 2 spheres pos,r^2
+		float4 posSph0, posSph1;
 		
-		float4 globalTime;  // for water, grass, wind etc
+	    //  time, wind
+		float4 timeWind, windDir;
 	};
 
 	@property( syntax != metal )

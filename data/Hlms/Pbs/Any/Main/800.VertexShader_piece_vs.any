@@ -278,7 +278,7 @@
 			if (inVs_uv0.y == 0.0f)  // top
 			{
 				midf2 pos = worldPos.xz;
-				float time = atmo.globalTime.x; // * _h(1.2);
+				float time = atmo.timeWind.x; // * _h(1.2);
 				float freq = 3.2;  // par atmo..
 				float offset1 = sin(time + pos.x * 2.427 * freq) * sin(time + pos.y * 3.427 * freq);
 				float offset2 = cos(time + pos.y * 2.534 * freq) * cos(time + pos.x * 3.534 * freq);
@@ -324,7 +324,7 @@
 		@property( tree_wind && !hlms_shadowcaster )
 			{
 				midf2 pos = worldPos.xz;
-				float time = atmo.globalTime.x; // * _h(1.2);
+				float time = atmo.timeWind.x; // * _h(1.2);
 				// float freq = 3.2;  // par atmo..
 				// float offset1 = sin(time + pos.x * 2.427 * freq) * sin(time + pos.y * 3.427 * freq);
 				// float offset2 = cos(time + pos.y * 2.534 * freq) * cos(time + pos.x * 3.534 * freq);

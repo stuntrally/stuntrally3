@@ -26,11 +26,11 @@
 
         // **  Distance fog
         const midf luminance = dot( finalColour.xyz, midf3_c( _h(0.212655), _h(0.715158), _h(0.072187) ) );
-        const midf lumFogWeight = max( exp2(
-            atmo.fogBreakFalloff * luminance + atmo.fogBreakMinBrightness ), _h(0.0) );  // todo: par gui..
+        const midf lumFogWeight = max( exp2(    // fogBreakFalloff, fogBreakMinBrightness
+            atmo.fogDensStartBreak.w * luminance + atmo.fogDensStartBreak.z ), _h(0.0) );
         
-        const float distToCamera = max( _h(0.0), distToCameraH - atmo.fogStartDistance );
-        midf fogWeight = midf_c( exp2( -distToCamera * atmo.fogDensity ) );  // amount
+        const float distToCamera = max( _h(0.0), distToCameraH - atmo.fogDensStartBreak.y );
+        midf fogWeight = midf_c( exp2( -distToCamera * atmo.fogDensStartBreak.x ) );  // amount
         fogWeight = saturate( lerp( _h(1.0), fogWeight, lumFogWeight ) );
         
 

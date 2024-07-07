@@ -325,9 +325,11 @@ void CScene::UpdSun(float dt)
 		// 0.8f, 0x0 );  // env? EnvFeatures_DiffuseGiFromReflectionProbe
 		// -dir + Ogre::Vector3::UNIT_Y * 0.2f );
 
-	//  🌪️ inc time for  water, grass wind, etc
+	//  🌪️ inc time  for  water, grass wind, etc
 	if (atmo && dt > 0.f)
-		atmo->globalTime.x += dt;
+	{
+		atmo->timeWind.x += dt;
+	}
 	
 
 	//  🌊 underwater
