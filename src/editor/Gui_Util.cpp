@@ -55,12 +55,15 @@ void CGui::SetGuiFromXmls()
 	svSkyYaw.Upd();  svSunPitch.Upd();  svSunYaw.Upd();
 	_Clr(Amb, sc->lAmb);  _Clr(Diff, sc->lDiff);  _Clr(Spec, sc->lSpec);
 	_Clr(Fog, sc->fogClr);  _Clr(Fog2, sc->fogClr2);  _Clr(FogH, sc->fogClrH);
+	
 	svFogStart.Upd();	svFogEnd.Upd();
 	svFogHStart.Upd();	svFogHEnd.Upd();
 	svFogHeight.Upd();	svFogHDensity.Upd();  svFogHDmg.Upd();
-	svRain1Rate.Upd();	svRain2Rate.Upd();	
-	_Cmb(cmbRain1, sc->rainName);
-	_Cmb(cmbRain2, sc->rain2Name);
+	
+	for (int i=0; i < NumWeather; ++i)
+	{	svRainRate[i].Upd();
+		_Cmb(cmbRain[i], sc->rainName[i]);
+	}
 	_Cmb(cmbReverbs, sc->sReverbs);  UpdRevDescr();
 	
 	//  ⛰️ Terrain

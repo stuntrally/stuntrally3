@@ -112,10 +112,13 @@ bool Scene::LoadXml(String file, bool bTer)
 	e = root->FirstChildElement("sky");
 	if (e)
 	{	a = e->Attribute("material");	if (a)  skyMtr = String(a);
-		a = e->Attribute("rainEmit");	if (a)  rainEmit = s2i(a);
-		a = e->Attribute("rainName");	if (a)  rainName = String(a);
-		a = e->Attribute("rain2Emit");	if (a)  rain2Emit = s2i(a);
-		a = e->Attribute("rain2Name");	if (a)  rain2Name = String(a);
+		
+		for (int i=0; i < NumWeather; ++i)
+		{
+			string sn, si = i==0 ? "" : toStr(i+1);
+			sn = "rain"+si+"Emit";  a = e->Attribute(sn.c_str());	if (a)  rainEmit[i] = s2i(a);
+			sn = "rain"+si+"Name";  a = e->Attribute(sn.c_str());	if (a)  rainName[i] = String(a);
+		}		
 		a = e->Attribute("windAmt");	if (a)  windForce = s2r(a);
 		a = e->Attribute("skyYaw");		if (a)  skyYaw = s2r(a);
 	}
@@ -127,7 +130,6 @@ bool Scene::LoadXml(String file, bool bTer)
 		a = e->Attribute("color");		if (a)  fogClr.Load(a);
 		a = e->Attribute("color2");		if (a)  fogClr2.Load(a);  else  fogClr2 = fogClr;
 	}
-	///  🌫️ fog H
 	e = root->FirstChildElement("fogH");
 	if (e)
 	{	a = e->Attribute("color");		if (a)  fogClrH.Load(a);

@@ -151,10 +151,10 @@ void ExportRoR::ExportWaterSky()
 	//  🌧️ weather
 	//------------------------------------------------------------
 	int rain = 0, snow = 0;
-	if ( sc->rainName.find("Rain") != string::npos)  rain += sc->rainEmit;
-	if (sc->rain2Name.find("Rain") != string::npos)  rain += sc->rain2Emit;
-	if ( sc->rainName.find("Snow") != string::npos)  snow += sc->rainEmit;
-	if (sc->rain2Name.find("Snow") != string::npos)  snow += sc->rain2Emit;
+	if (sc->rainName[0].find("Rain") != string::npos)  rain += sc->rainEmit[0];
+	if (sc->rainName[1].find("Rain") != string::npos)  rain += sc->rainEmit[1];
+	if (sc->rainName[0].find("Snow") != string::npos)  snow += sc->rainEmit[0];
+	if (sc->rainName[1].find("Snow") != string::npos)  snow += sc->rainEmit[1];
 	
 	if (rain > snow && rain > 10)
 	{

@@ -48,14 +48,11 @@ void CGui::comboSky(Cmb cmb, size_t val)  // sky materials
 	updImgSky();  updSkySun();
 }
 
-void CGui::comboRain1(Cmb cmb, size_t val)  // rain types
+void CGui::comboRain(Cmb cmb, size_t val)  // rain types
 {
-	String s = cmb->getItemNameAt(val);  sc->rainName = s;
-	app->scn->DestroyWeather();  app->scn->CreateWeather();
-}
-void CGui::comboRain2(Cmb cmb, size_t val)
-{
-	String s = cmb->getItemNameAt(val);  sc->rain2Name = s;
+	auto sn = cmb->getName();  // RainCmb.
+	int i = s2i(sn.substr(7));
+	String s = cmb->getItemNameAt(val);  sc->rainName[i] = s;
 	app->scn->DestroyWeather();  app->scn->CreateWeather();
 }
 

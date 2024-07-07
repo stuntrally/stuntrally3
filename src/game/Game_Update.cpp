@@ -292,12 +292,9 @@ void App::update( float dt )
 
 
 		//  🌧️ stop rain/snow when paused
-		if (scn->pr && scn->pr2 && pGame)
-		{
-			if (pGame->pause)
-				{	 scn->pr->setSpeedFactor(0.f);  scn->pr2->setSpeedFactor(0.f);  }
-			else{	 scn->pr->setSpeedFactor(1.f);  scn->pr2->setSpeedFactor(1.f);  }
-		}
+		if (pGame)
+			for (auto* pr : scn->psWeather)
+				pr->setSpeedFactor(pGame->pause ? 0.f : 1.f);
 
 
 		//  📽️ replay forward,backward keys

@@ -71,9 +71,10 @@ void CGui::btnCopySun(WP)
 
 	sc->skyMtr = sF.skyMtr;  // sky
 	sc->skyYaw = sF.skyYaw;
-	sc->rainEmit = sF.rainEmit;  sc->rain2Emit = sF.rain2Emit;
-	sc->rainName = sF.rainName;  sc->rain2Name = sF.rain2Name;
-
+	for (int i=0; i < NumWeather; ++i)
+	{	sc->rainEmit[i] = sF.rainEmit[i];
+		sc->rainName[i] = sF.rainName[i];
+	}
 	sc->fogClr = sF.fogClr;  sc->fogClr2 = sF.fogClr2;  sc->fogClrH = sF.fogClrH;
 	sc->fogStart = sF.fogStart;  sc->fogEnd = sF.fogEnd;
 	sc->fogHStart = sF.fogHStart;  sc->fogHEnd = sF.fogHEnd;

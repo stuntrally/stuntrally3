@@ -1,4 +1,5 @@
 #pragma once
+#include "par.h"
 #include "SColor.h"
 #include "SceneClasses.h"
 
@@ -55,7 +56,11 @@ public:
 
 	//  ⛅ Sky
 	Ogre::String skyMtr;  float skyYaw;
-	int  rainEmit,rain2Emit;  Ogre::String rainName,rain2Name;
+	
+	//  🌧️ weather
+	int  rainEmit[NumWeather];
+	Ogre::String rainName[NumWeather];
+
 	//  🌞 Sun, Light
 	float ldPitch, ldYaw;  // dir angles
 	SColor lAmb,lDiff,lSpec;

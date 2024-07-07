@@ -326,11 +326,10 @@ void CScene::UpdSun(float dt)
 		// -dir + Ogre::Vector3::UNIT_Y * 0.2f );
 
 
-	//  🌪️ inc time  for  water, grass wind, etc
+	//  🌪️ wind  for trees,grass,water,rain etc
 	if (atmo && dt > 0.f)
 	{
-		atmo->timeWind.x += dt;
-		//  🌪️ wind
+		atmo->timeWind.x += dt;  // inc time
 		atmo->timeWind.y = sc->windOfs;
 		atmo->timeWind.z = sc->windAmpl;
 		atmo->timeWind.w = sc->windFreq;
@@ -383,8 +382,6 @@ void CScene::UpdSun(float dt)
 
 #endif	
 
-	//  wind
-
 	//  post, gamma-
 }
 
@@ -394,38 +391,37 @@ void CScene::UpdSun(float dt)
 void CScene::CreateWeather()
 {
 	LogO("C--- create Weather");
-	if (!pr && !sc->rainName.empty())
-	{	try
-		{	pr = app->mSceneMgr->createParticleSystem(sc->rainName);
-		}catch (Exception& ex)
-		{	LogO("Warning: particle_system: " + sc->rainName + " doesn't exist");
-			return;
+	for (int i=0; i < NumWeather; ++i)
+	{
+		auto*& pr = psWeather[i];
+		if (!pr && !sc->rainName[i].empty())
+		{	try
+			{	pr = app->mSceneMgr->createParticleSystem(sc->rainName[i]);
+			}
+			catch (Exception& ex)
+			{	LogO("Warning: particle_system: " + sc->rainName[i] + " doesn't exist");
+				return;
+			}
+			pr->setVisibilityFlags(RV_Particles);
+			//pr->setRenderQueueGroup(RQG_Weather);
+
+			auto* nd =app->mSceneMgr->getRootSceneNode()->createChildSceneNode();
+			nd->attachObject(pr);
+			ndWeather[i] = nd;
+
+			pr->getEmitter(0)->setEmissionRate(0);
+			pr->_update(2.f);  // emit, started 2 sec ago
 		}
-		pr->setVisibilityFlags(RV_Particles);
-		app->mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(pr);
-		// pr->setRenderQueueGroup(RQG_Weather);
-		pr->getEmitter(0)->setEmissionRate(0);
-		pr->_update(2.f);  // emit, started 2 sec ago
-	}
-	if (!pr2 && !sc->rain2Name.empty())
-	{	try
-		{	pr2 = app->mSceneMgr->createParticleSystem(sc->rain2Name);
-		}catch (Exception& ex)
-		{	LogO("Warning: particle_system: " + sc->rainName + " doesn't exist");
-			return;
-		}
-		pr2->setVisibilityFlags(RV_Particles);
-		app->mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(pr2);
-		// pr2->setRenderQueueGroup(RQG_Weather);
-		pr2->getEmitter(0)->setEmissionRate(0);
-		pr2->_update(2.f);
 	}
 }
 void CScene::DestroyWeather()
 {
 	LogO("D--- destroy Weather");
-	if (pr)  {  app->mSceneMgr->destroyParticleSystem(pr);   pr=0;  }
-	if (pr2) {  app->mSceneMgr->destroyParticleSystem(pr2);  pr2=0;  }
+	for (auto*& nd : ndWeather)
+	if (nd){  app->mSceneMgr->destroySceneNode(nd);  nd=0;  }
+		
+	for (auto*& pr : psWeather)
+	if (pr){  app->mSceneMgr->destroyParticleSystem(pr);  pr=0;  }
 }
 
 //  💫🌧️ Update Weather
@@ -441,21 +437,22 @@ void CScene::UpdateWeather(Camera* cam, float invDT, float emitMul)
 	//  given movement and rotation speeds
 	Vector3 par = pos
 		+ (dir + 0.6f * rot) * 12.f  // in front
-		// + rot * 1.f  //par rot effect on emitter pos
 		+ vel * 0.2f;  //par move effect on emitter pos
 	
 	oldPos = pos;  oldDir = dir;
+	// Vector3 wdir();  
 
-	if (pr && sc->rainEmit > 0)
+	int i=0;
+	for (auto* pr : psWeather)
 	{
-		auto* pe = pr->getEmitter(0);
-		pe->setPosition(par);
-		pe->setEmissionRate(emitMul * sc->rainEmit);
-	}
-	if (pr2 && sc->rain2Emit > 0)
-	{
-		auto* pe = pr2->getEmitter(0);
-		pe->setPosition(par);
-		pe->setEmissionRate(emitMul * sc->rain2Emit);
+		auto emt = sc->rainEmit[i];
+		if (pr && emt > 0)
+		{
+			auto* pe = pr->getEmitter(0);
+			pe->setPosition(par);
+			// pe->setDirection(wdir);
+			pe->setEmissionRate(emitMul * emt);
+		}
+		++i;
 	}
 }

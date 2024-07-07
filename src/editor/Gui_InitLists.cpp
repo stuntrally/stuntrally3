@@ -33,7 +33,7 @@ void CGui::InitGuiLists()
 	///  Fill Combo boxes  . . . . . . .
 	String sMat = PATHS::Data() +"/materials/Pbs/";  // path
 	string sModels = PATHS::Models(), sObjects = PATHS::Objects();
-	int u,n;
+	int u,n,i;
 	Btn btn;  Ck* ck;
 
 	
@@ -46,14 +46,14 @@ void CGui::InitGuiLists()
 
 
 	//---------------------  🌧️ Weather  ---------------------
-	Cmb(cmbRain1, "Rain1Cmb", comboRain1);  cmbRain1->addItem("");
-	Cmb(cmbRain2, "Rain2Cmb", comboRain2);  cmbRain2->addItem("");
-
 	gcom->GetMaterials("weather.particle", true, "particle_system");
-	for (auto& s : gcom->vsMaterials)
+	for (i=0; i < NumWeather; ++i)
 	{
-		cmbRain1->addItem(s);  cmbRain2->addItem(s);
-	}	
+		Cmb(cmbRain[i], "RainCmb"+toStr(i), comboRain);
+		cmbRain[i]->addItem("");
+		for (auto& s : gcom->vsMaterials)
+			cmbRain[i]->addItem(s);
+	}
 
 	//---------------------  🔥 Emitters  ---------------------
 	gcom->GetMaterials("emitters.particle", true, "particle_system");

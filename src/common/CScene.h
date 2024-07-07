@@ -57,11 +57,14 @@ public:
 	void CreateSun(), DestroySun(), UpdSun(float dt=0.f);
 
 	//  🌫️ Fog / Atmo
-	Atmosphere* atmo = 0;
+	Atmosphere* atmo = 0;  // shader params
 	void CreateFog(), DestroyFog(), UpdFog(bool force_on =false, bool force_off =false);
 	
+
 	//  🌧️ Weather :  rain, snow
-	Ogre::ParticleSystem *pr = 0, *pr2 = 0;
+	Ogre::ParticleSystem* psWeather[NumWeather] ={0,0};
+	Ogre::SceneNode* ndWeather[NumWeather] ={0,0};
+
 	void CreateWeather(), DestroyWeather();
 	void UpdateWeather(Ogre::Camera* cam, float lastFPS = 60.f, float emitMul = 1.f);
 

@@ -115,11 +115,11 @@ public:
 
 	//  🌦️🌫️ Sky  --------------------
 	Img imgSky =0, imgSkySun =0;  Btn btnSky =0;  // pick
-	Cmb cmbRain1 =0, cmbRain2 =0;
-	void comboSky(CMB), comboRain1(CMB),comboRain2(CMB);
+	Cmb cmbRain[NumWeather] ={0,0};
+	void comboSky(CMB), comboRain(CMB);
 	void updImgSky(), updSkySun();
 
-	SV svRain1Rate, svRain2Rate;
+	SV svRainRate[NumWeather];
 	SV svSunPitch, svSunYaw, svSkyYaw;
 	void slUpdSky(SV*), slUpdSun(SV*), slUpdFog(SV*);
 

@@ -37,8 +37,8 @@ void Scene::Default()
 
 	//  sky
 	skyMtr = "World/NoonSky";  skyYaw = 0.f;
-	rainEmit = 0;  rainName = "";
-	rain2Emit = 0;  rain2Name = "";
+	for (int i=0; i < NumWeather; ++i)
+	{	rainEmit[i] = 0;  rainName[i] = "";  }
 	//  sun
 	ldPitch = 50.f;  ldYaw = 30.f;
 	lAmb  = SColor(0.16f, 0.0f, 0.45f);

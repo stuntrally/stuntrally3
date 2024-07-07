@@ -663,7 +663,7 @@ void CARDYNAMICS::Init(
 	COLLISION_WORLD& world,
 	const MATHVECTOR<Dbl,3>& position, const QUATERNION<Dbl>& orientation)
 {
-	pSet = pSet1;  pScene = pScene1;  pFluids = pFluids1;
+	pSet = pSet1;  sc = pScene1;  pFluids = pFluids1;
 	this->world = &world;
 
 	MATHVECTOR<Dbl,3> zero(0, 0, 0);

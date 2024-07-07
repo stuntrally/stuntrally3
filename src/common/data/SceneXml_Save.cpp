@@ -103,13 +103,13 @@ bool Scene::SaveXml(String file)
 
 	XMLElement* sky = xml.NewElement("sky");  // ⛅
 		sky->SetAttribute("material",	skyMtr.c_str());
-		if (rainEmit > 0 && rainName != "")
-		{	sky->SetAttribute("rainName",	rainName.c_str());
-			sky->SetAttribute("rainEmit",	toStrC( rainEmit ));
-		}
-		if (rain2Emit > 0 && rain2Name != "")
-		{	sky->SetAttribute("rain2Name",	rain2Name.c_str());
-			sky->SetAttribute("rain2Emit",	toStrC( rain2Emit ));
+
+		for (int i=0; i < NumWeather; ++i)
+		if (rainEmit[i] > 0 && rainName[i] != "")
+		{
+			string sn, si = i==0 ? "" : toStr(i+1);
+			sn = "rain"+si+"Name";  sky->SetAttribute(sn.c_str(),	rainName[i].c_str());
+			sn = "rain"+si+"Emit";  sky->SetAttribute(sn.c_str(),	toStrC( rainEmit[i] ));
 		}
 		if (windForce != 0.f)
 			sky->SetAttribute("windAmt",	toStrC( windForce ));

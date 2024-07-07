@@ -66,7 +66,7 @@ void CARDYNAMICS::UpdateFields()
 	switch (fld->type)
 	{
 		case TF_Gravity:
-		{	auto f = m * pScene->gravity * 2.f;  // par..
+		{	auto f = m * sc->gravity * 2.f;  // par..
 			chassis->applyCentralForce( btVector3(0,0,f) );
 		}	break;
 		
@@ -99,7 +99,7 @@ void CARDYNAMICS::UpdateFields()
 ///  🌊 Buoyancy ................................................................................................
 void CARDYNAMICS::UpdateBuoyancy()
 {
-	if (!pScene || (pScene->fluids.size() == 0) || !pFluids)  return;
+	if (!sc || (sc->fluids.size() == 0) || !pFluids)  return;
 
 	//float bc = /*sinf(chassisPosition[0]*20.3f)*cosf(chassisPosition[1]*30.4f) +*/
 	//	sinf(chassisPosition[0]*0.3f)*cosf(chassisPosition[1]*0.32f);
@@ -426,7 +426,7 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 	
 
 	//  extra damage from scene <><>
-	if (pScene && pSet->game.damage_type > 0)
+	if (sc && pSet->game.damage_type > 0)
 	{
 		float fRed = pSet->game.damage_type==1 ? 0.5f : 1.f;
 
@@ -437,7 +437,7 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 		{
 			float d = 0.5f * wheel_contact[w].GetDepth() / wheel[w].GetRadius();
 			int mtr = whTerMtr[w]-1;
-			auto& td = pScene->tds[0];  // 1st ter only-
+			auto& td = sc->tds[0];  // 1st ter only-
 			if (d < 1.f && mtr >= 0 && mtr < td.layers.size())
 			{
 				const TerLayer& lay = td.layersAll[td.layers[mtr]];
@@ -446,11 +446,11 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 		}	}
 
 		/// <><> height fog damage _
-		if (pScene->fHDamage > 0.f && chassisPosition[2] < pScene->fogHeight)
+		if (sc->fHDamage > 0.f && chassisPosition[2] < sc->fogHeight)
 		{
-			float h = (pScene->fogHeight - chassisPosition[2]) / pScene->fogHDensity;
+			float h = (sc->fogHeight - chassisPosition[2]) / sc->fogHDensity;
 			if (h > 0.2f)  //par
-				fDamage += pScene->fHDamage * h * fRed * dt;
+				fDamage += sc->fHDamage * h * fRed * dt;
 		}
 
 		/// <><> fluid damage _
@@ -460,15 +460,16 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 	}
 	
 
-	///***  wind ~->
-	if (pScene && pScene->windAmt > 0.01f)
+	///***  🌪️ wind push  ~->
+	if (sc && sc->windForce > 0.01f)
 	{
-		float f = body.GetMass()*pScene->windAmt;
+		float f = body.GetMass() * sc->windForce;
 			// simple modulation
 			float n = 1.f + 0.3f * sin(time*4.3f)*cosf(time*7.74f);
 			time += dt;
 		//LogO(fToStr(n,4,6));
-		MATHVECTOR<Dbl,3> v(-f*n,0,0);  // todo yaw, dir
+		float yaw = sc->windYaw * PI_d/180.f;
+		MATHVECTOR<Dbl,3> v(-f*cosf(yaw), f*sinf(yaw), 0);  // todo yaw, dir
 		ApplyForce(v);
 	}
 

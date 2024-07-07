@@ -32,7 +32,7 @@ class CARDYNAMICS : public btActionInterface
 public:
 
 	SETTINGS* pSet =0;
-	Scene* pScene =0;  // for fluids
+	Scene* sc =0;  // for fluids
 	FluidsXml* pFluids =0;  // to get fluid params
 
 	std::vector<float> inputsCopy;  // just for dbg info txt
