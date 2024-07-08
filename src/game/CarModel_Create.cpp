@@ -514,7 +514,7 @@ void CarModel::Create()
 		}
 		
 		///  💨 boost emitters  ------------------------
-		for (int i=0; i < PAR_BOOST; ++i)
+		for (int i=0; i < boostCnt; ++i)
 		{
 			String si = strI + "_" +toStr(i);
 			if (!parBoost[i])

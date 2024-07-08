@@ -294,6 +294,7 @@ void App::update( float dt )
 		//  🌧️ stop rain/snow when paused
 		if (pGame)
 			for (auto* pr : scn->psWeather)
+			if (pr)
 				pr->setSpeedFactor(pGame->pause ? 0.f : 1.f);
 
 
