@@ -59,3 +59,9 @@ License:	CC-BY 4.0
 Date:		22/11/2020
 Url:		https://sketchfab.com/3d-models/coconut-tree-low-poly-8c5d6b661b2f4c37834d87cd187eb907
 
+Model:		palm_date.mesh
+Artist:		evolveduk
+License:	CC-BY 4.0
+Date:		18/04/2022
+Url:		https://sketchfab.com/3d-models/date-palm-11acf710e6c149daa8d6fb8cdc5d087f
+
