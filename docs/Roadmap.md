@@ -11,17 +11,19 @@ Marked: `crucial`, **Next or Big**, _Important_.
 🌊all **fluids** json, no refract test  
 add refract clr, depth clr params  
 **under**water top, pass projmatrix not inverse  
-**fix** compositor, hud3d, particles etc  
+`Fix` compositor, hud3d, particles, ed prv cam  
 SSAO?  
 
+🌪️**wind** params in json, trees, grass-  
 🌿**bushes**, lods  
 🌳new jungle [**trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), lods  
 **add** to tracks  
+`fix` ed obj prv deform, prv cam 
 
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
 
-`fix` .car thrusters lights pos, boost count  
+fix .car thrusters lights pos  
 **ed** Fields: accel par, dir, teleport end  
 
 new track(s) with fields, add walls  
@@ -45,8 +47,8 @@ Road wall types, [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)
 ----
 ### New data
 
-🌧️ Ambient [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
-🚗🔊 More car **Sounds**.. todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7)  
+🌧️ **Ambient** [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
+🚗🔊 More car `Sounds`.. todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7)  
 📦 object hit sounds, reverb change in water, caves, pipes-  
 
 Remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
@@ -61,22 +63,20 @@ broken mygui set scrollview size, gallery list
 ----
 ### Ogre new
 🪄 Effects: **Soft** Particles  
-**SSAO**, HDR, bloom  
+`SSAO`, HDR, bloom  
 lens flare [shaders](https://www.shadertoy.com/results?query=lens+flare)  
 sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
 
 🌀 Add [FastNoise](https://github.com/Auburn/FastNoiseLite) for brushes and ter gen  
 
-🌊 Ocean from Terra, **waves**, vehicle deform, particles  
+🌊 Ocean from Terra, **waves**, vehicle deform, fluid *particles*  
 ⏲️ Gauges with shader? [demo](https://www.shadertoy.com/view/7t3fzs)  
 
 
 ----
 ### Ogre cd, restore, optimize
 
-- 🌪️ **Wind**, for trees  
-  Grass wind params, far fade-  
-- lit particles, lights on `grass`  
+- lit particles, lights on `grass`, grass far fade-
 - ⛰️ Terrain  
   **shadowmap** fix < 0  
   add emissive, reflect par  

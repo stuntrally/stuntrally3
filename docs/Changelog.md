@@ -4,22 +4,27 @@ This section lists changes not yet released, but committed to repositories stunt
 
 - Game
   - **Collection** - new game mode. WIP  
-    - Collecting gems located on track, for completion of all or quicker time
-    - Hud 3D arrows on vehicle pointing to closest 3 gems
+    - Collecting all gems located on track, for completion or quicker time
+    - Hud 3D arrows on vehicle, pointing to closest 3 gems
   - More **Lights** - with toggable Options
     - for vehicle: brakes, boost, reverse, under glow and for collection gems
+- Both
+  - **Water** refraction, depth color, soft border, WIP
+  - **Bushes**, separate multiplier options, WIP
+  - Tree wind animation
+  - grass and bushes deform under vehicle
+- Gui
   - New tab on Setup - Paints - Adjust - **Under glow** for color H,S,V
     - under glow color also auto set by picking paint
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
   - 3D win cups shown on game end
   - Gui shows small track previews for game track / series
-- Both
-  - **Water** refraction, depth color, soft border, WIP
-  - Bushes, WIP
   - Gui Tracks view, new mode: gallery
 - Editor
   - Road: wall type, for decoration walls, rectangular
     - pipe parameter changes it from wide at 0, to square at 0.5 to tall at 1.0
+  - New tab Sun - **Wind**
+    - unified params, (WIP) affecting: trees, grass, water, weather particles
   - Edit mode for Collection, key Y  
     - Insert/remove gems, move, scale
     - change type (for look, at end of presets.xml)
