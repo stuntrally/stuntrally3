@@ -249,7 +249,7 @@
 					<UserString key="tip" value="#{TipLoadTrkEditor}"/>
 				</Widget>
 
-				<Widget type="TabControl" skin="TabControl" position="16 32 700 400" name="SubTab">
+				<Widget type="TabControl" skin="TabControl" position="16 32 744 400" name="SubTab">
 					<Property key="ButtonAutoWidth" value="true"/>
 					<Property key="Colour" value="0.73 1 0.98"/>
 					<Property key="SmoothShow" value="false"/>

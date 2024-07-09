@@ -315,7 +315,13 @@ void CGui::InitGui()
 		if (f != pSet->dev_tracks.end())
 			cb->setCaption((*f).second);
 	}
-
+	//  simulation
+	txSimDetail = fTxt("SimDetail");
+	sv= &svSimQuality;
+		sv->strMap[0] = TR("#{GraphicsAll_Low}");   sv->strMap[1] = TR("#{GraphicsAll_Medium}");
+		sv->strMap[2] = TR("#{GraphicsAll_High}");  sv->strMap[3] = TR("#{GraphicsAll_Ultra}");
+							sv->Init("SimQuality",	&pSet->g.sim_quality, 0,3);  Sev(SimQuality);
+	slSimQuality(0);
 
 	//  🔨 Game  ------------------------------------------------------------
 	ck= &ckVegetCollis;		ck->Init("VegetCollis",		&pSet->gui.collis_veget);

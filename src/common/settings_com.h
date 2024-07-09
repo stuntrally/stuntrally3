@@ -78,6 +78,7 @@ public:
 	//!  Any change or order needs Update in:  Detail presets
 	struct Detail
 	{
+		int sim_quality = 3;
 		//  🖼️ textures filtering  2x
 		int anisotropy = 4;
 		int tex_filt = 2;

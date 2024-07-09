@@ -25,6 +25,29 @@ using namespace MyGUI;
 using namespace Ogre;
 
 
+///  set simulation settings for preset
+///.........................................................
+#ifndef SR_EDITOR  ///  Game only
+void CGuiCom::UpdSimQuality()
+{
+	auto& s = *pSet;
+	switch (s.g.sim_quality)
+	{
+	case 0:  s.game_fq =  80.f;  s.blt_fq =  80.f;  s.blt_iter = 12;  s.dyn_iter = 30;  break;  // lowest
+	case 1:  s.game_fq = 120.f;  s.blt_fq = 120.f;  s.blt_iter = 18;  s.dyn_iter = 45;  break;
+	case 2:  s.game_fq = 160.f;  s.blt_fq = 160.f;  s.blt_iter = 24;  s.dyn_iter = 60;  break;  // normal
+	case 3:  s.game_fq = 320.f;  s.blt_fq = 320.f;  s.blt_iter = 24;  s.dyn_iter = 60;  break;
+	}
+	String t;  // sim info txt
+	t += "Game frequency:  "+fToStr(s.game_fq,0)+" Hz\n";
+	t += "Bullet frequency:  "+fToStr(s.blt_fq,0)+" Hz\n";
+	t += " Bullet iterations:  "+iToStr(s.blt_iter)+"\n";
+	t += " Car Dynamics iterations:  "+iToStr(s.dyn_iter)+"\n";
+	t += "Car Dynamics frequency:  "+fToStr(s.blt_fq * s.dyn_iter,0)+" Hz\n";
+	app->gui->txSimDetail->setCaption(t);
+}
+#endif
+
 ///  change all Graphics settings
 ///..............................................................................................................................
 void CGuiCom::cmbGraphicsPreset(CMB)
@@ -44,19 +67,19 @@ const static SETTINGS::Lights lights[8] = {  /* 💡 Lights only
 	{1,1, 1,1,1, 1,1, 1,1, 3 },  // Ultra
 };
 const static SETTINGS::Detail presets[8] = {  /*
-	🖼️           LOD      ⛰️ Terain         Veget                  🌒 Shadow      🌊 Water          🔮 Reflect cube     
-	Anisot       Obj,Veg  Tripl,hor  🌳Trees  mul                   Size    filt  Size              Size              
-	| Tex        |        | LOD,hor  |         🌿Bushes             | Cnt Dist |  | Reflect         | Skip            
-	| fil Visibl |  Road  | Horiz |  |    dist |    dist 🌿Grass    | | Typ |  |  | | refra         | | Faces     IBL 
-	|  |   Dist  |   |🛣️  |\  |  /|  |    |    |    |    |    dist  | | |   |  |  | | |  Dist LOD   | | |  Dist LOD | */
-	{0,1,  5000, 0.2,0.9, 0,0,0,0,0, 0.0f,0.5f,0.0f,0.5f,0.0f,0.5f, 0,1,0, 100,0, 0,0,0,  100,0.1,  0,600,0,100,0.1,0 },  // Lowest
-	{2,2, 10000, 0.6,1.5, 0,0,0,1,0, 0.5f,0.5f,0.0f,0.5f,0.0f,0.5f, 1,3,1, 200,1, 0,0,0,  400,0.2,  0,60,1, 300,0.2,0 },  // Low 
-	{4,2, 20000, 1.0,2.0, 0,0,1,1,1, 1.0f,0.7f,0.5f,0.7f,0.5f,0.7f, 2,3,1, 300,2, 1,1,0,  700,0.3,  1,4,1,  500,0.3,0 },  // Medium ~
-	{4,2, 40000, 1.2,2.5, 1,0,1,2,2, 1.0f,1.0f,1.0f,1.0f,1.0f,1.0f, 3,3,1, 500,2, 1,1,1, 1000,0.4,  1,2,1,  700,0.4,0 },  // High
-	{4,3, 60000, 1.5,3.0, 1,0,2,2,2, 1.5f,1.2f,1.0f,1.4f,1.0f,1.4f, 3,3,1, 700,3, 1,1,1, 3000,0.4,  2,0,1, 1000,0.4,0 },  // Higher *
-	{8,3, 60000, 1.8,3.5, 2,1,3,3,3, 1.5f,1.5f,1.5f,1.7f,1.5f,1.7f, 3,3,1,1000,3, 2,1,1, 6000,0.6,  2,0,2, 2000,0.6,2 },  // Very high
-	{16,3,60000, 2.4,4.0, 2,2,3,3,3, 2.0f,2.0f,2.0f,2.0f,2.0f,2.0f, 4,3,1,1300,4, 3,1,1,20000,0.8,  3,0,3,20000,0.8,2 },  // Highest
-	{16,3,60000, 2.4,4.0, 2,2,3,4,4, 2.5f,3.0f,2.5f,3.0f,2.5f,3.0f, 4,3,1,2000,4, 4,1,1,60000,1.0,  3,0,4,60000,1.0,4 },  // Ultra
+	   🖼️           LOD      ⛰️ Terain         Veget                  🌒 Shadow      🌊 Water          🔮 Reflect cube     
+Sim	   Anisot       Obj,Veg  Tripl,hor  🌳Trees  mul                   Size    filt  Size              Size              
+Qlty   | Tex        |        | LOD,hor  |         🌿Bushes             | Cnt Dist |  | Reflect         | Skip            
+	\  \ fil Visibl |  Road  | Horiz |  |    dist |    dist 🌿Grass    | | Typ |  |  | | refra         | | Faces     IBL 
+	 |  | |   Dist  |   |🛣️  |\  |  /|  |    |    |    |    |    dist  | | |   |  |  | | |  Dist LOD   | | |  Dist LOD | */
+	{0, 0,1,  5000, 0.2,0.9, 0,0,0,0,0, 0.0f,0.5f,0.0f,0.5f,0.0f,0.5f, 0,1,0, 100,0, 0,0,0,  100,0.1,  0,600,0,100,0.1,0 },  // Lowest
+	{1, 2,2, 10000, 0.6,1.5, 0,0,0,1,0, 0.5f,0.5f,0.0f,0.5f,0.0f,0.5f, 1,3,1, 200,1, 0,0,0,  400,0.2,  0,60,1, 300,0.2,0 },  // Low 
+	{1, 4,2, 20000, 1.0,2.0, 0,0,1,1,1, 1.0f,0.7f,0.5f,0.7f,0.5f,0.7f, 2,3,1, 300,2, 1,1,0,  700,0.3,  1,4,1,  500,0.3,0 },  // Medium ~
+	{2, 4,2, 40000, 1.2,2.5, 1,0,1,2,2, 1.0f,1.0f,1.0f,1.0f,1.0f,1.0f, 3,3,1, 500,2, 1,1,1, 1000,0.4,  1,2,1,  700,0.4,0 },  // High
+	{2, 4,3, 60000, 1.5,3.0, 1,0,2,2,2, 1.5f,1.2f,1.0f,1.4f,1.0f,1.4f, 3,3,1, 700,3, 1,1,1, 3000,0.4,  2,0,1, 1000,0.4,0 },  // Higher *
+	{2, 8,3, 60000, 1.8,3.5, 2,1,3,3,3, 1.5f,1.5f,1.5f,1.7f,1.5f,1.7f, 3,3,1,1000,3, 2,1,1, 6000,0.6,  2,0,2, 2000,0.6,2 },  // Very high
+	{2, 16,3,60000, 2.4,4.0, 2,2,3,3,3, 2.0f,2.0f,2.0f,2.0f,2.0f,2.0f, 4,3,1,1300,4, 3,1,1,20000,0.8,  3,0,3,20000,0.8,2 },  // Highest
+	{3, 16,3,60000, 2.4,4.0, 2,2,3,4,4, 2.5f,3.0f,2.5f,3.0f,2.5f,3.0f, 4,3,1,2000,4, 4,1,1,60000,1.0,  3,0,4,60000,1.0,4 },  // Ultra
 };
 
 	pSet->preset = val;  // for info
@@ -66,8 +89,7 @@ const static SETTINGS::Detail presets[8] = {  /*
 	s.gui.trees = s.g.trees;
 
 #ifndef SR_EDITOR  ///  Game only
-	//game_fq = 100.f;  blt_fq = 60.f;  blt_iter = 7;  dyn_iter = 10;  mult_thr = 0;  //sim low
-	//veget_collis = true;  car_collis = false;
+	UpdSimQuality();
 
 	s.particles = val >= 1;  s.trails = val >= 1;
 	
@@ -139,6 +161,9 @@ const static SETTINGS::Detail presets[8] = {  /*
 
 	auto* g = app->gui;
 #ifndef SR_EDITOR   ///  game only
+	g->svSimQuality.Upd();
+	UpdSimQuality();
+
 	g->ckParticles.Upd();  g->ckTrails.Upd();
 	g->svParticles.Upd();  g->svTrails.Upd();
 

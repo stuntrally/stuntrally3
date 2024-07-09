@@ -677,6 +677,7 @@
 	<Tag name="ViewDist">View distance</Tag>
 	<Tag name="RoadQual">Road far quality</Tag>
 	<Tag name="GridQual">Grid quality</Tag>
+	<Tag name="Quality">Quality</Tag>
 
 	<!--  Graphics  Textures  -->
 	<Tag name="Textures">Textures</Tag>

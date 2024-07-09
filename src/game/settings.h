@@ -178,8 +178,12 @@ public:
 	bool snd_reverb = 1;  std::string snd_device;
 
 	//  💫 sim freq (1/interval timestep)
-	float game_fq = 160.f, blt_fq = 160.f,  perf_speed = 100000.f;
-	int blt_iter = 24, dyn_iter = 60,  thread_sleep = 5; //, gui_sleep;
+	float game_fq = 160.f, blt_fq = 160.f;
+	int blt_iter = 24, dyn_iter = 60;
+	// guicom::g.sim_quality, sets above from presets
+	
+	float perf_speed = 100000.f;  // other
+	int thread_sleep = 5; //, gui_sleep;
 
 	//  ⚫📉 tire graphs vis
 	float tc_r = 6000.f, tc_xr = 1.f;  // tire circles max

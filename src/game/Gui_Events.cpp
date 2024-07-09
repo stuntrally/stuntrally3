@@ -315,6 +315,8 @@ void CGui::chkTrailShow(Ck*)
 
 void CGui::chkReverse(Ck*) {  gcom->ReadTrkStats();  }
 
+void CGui::slSimQuality(SV*) {  gcom->UpdSimQuality();  }
+
 
 //  📉 Graphs  -^-.-
 

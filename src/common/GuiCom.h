@@ -234,6 +234,9 @@ public:
 	CK(VidFullscr);  CK(VidVSync);
 	void btnResChng(WP);
 	void cmbGraphicsPreset(CMB), cmbScreenRes(CMB), cmbRenderSystem(CMB), cmbAntiAliasing(CMB);
+#ifndef SR_EDITOR
+	void UpdSimQuality();
+#endif
 
 	//  💡 Light  --------------------------
 	SV svBright, svContrast, svLightsGrid;

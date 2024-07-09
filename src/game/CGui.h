@@ -287,7 +287,10 @@ public:
 	Ck ckCarDbgTxt, ckCarDbgSurf;  void chkHudCreate(Ck*);
 	SV svDbgTxtClr, svDbgTxtCnt;
 	SV svCarPrv;
-
+	
+	SlV(SimQuality);  // game sim freqs
+	Txt txSimDetail =0;
+	
 
 	/// 📊 Options  game only
 	///-----------------------------------------------------------------------------------------------------------------

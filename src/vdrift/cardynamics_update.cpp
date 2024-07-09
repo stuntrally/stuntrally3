@@ -463,13 +463,13 @@ void CARDYNAMICS::UpdateBody(Dbl dt, Dbl drive_torque[])
 	///***  🌪️ wind push  ~->
 	if (sc && sc->windForce > 0.01f)
 	{
-		float f = body.GetMass() * sc->windForce;
-			// simple modulation
-			float n = 1.f + 0.3f * sin(time*4.3f)*cosf(time*7.74f);
-			time += dt;
+		//  simple modulation
+		float n = 1.f + 0.3f * sin(time*4.3f)*cosf(time*7.74f);
+		time += dt;
+		float f = body.GetMass() * sc->windForce * n;
 		//LogO(fToStr(n,4,6));
 		float yaw = sc->windYaw * PI_d/180.f;
-		MATHVECTOR<Dbl,3> v(-f*cosf(yaw), f*sinf(yaw), 0);  // todo yaw, dir
+		MATHVECTOR<Dbl,3> v(f*cosf(yaw), f*sinf(yaw), 0);
 		ApplyForce(v);
 	}
 
@@ -589,9 +589,10 @@ void CARDYNAMICS::Tick(Dbl dt)
 	// has to happen before UpdateDriveline, overrides clutch, throttle
 	UpdateTransmission(dt);
 
-	const int num_repeats = pSet->dyn_iter;  ///~ 30+  o:10
+	const int num_repeats = pSet->dyn_iter;  /// 60  30~  org 10
 	const float internal_dt = dt / num_repeats;
-	for(int i = 0; i < num_repeats; ++i)
+	// LogO(fToStr(dt,6,9)+" "+fToStr(internal_dt,8,9));  // 0.006250 0.00010417
+	for (int i = 0; i < num_repeats; ++i)
 	{
 		Dbl drive_torque[MAX_WHEELS];
 

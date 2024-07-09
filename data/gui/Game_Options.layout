@@ -796,7 +796,7 @@
 					</Widget>
 				</Widget>
 
-				<Widget type="TabControl" skin="TabControl" position="16 32 700 400" name="SubTab">
+				<Widget type="TabControl" skin="TabControl" position="16 32 744 400" name="SubTab">
 					<Property key="ButtonAutoWidth" value="true"/>
 					<Property key="Colour" value="0.73 1 0.98"/>
 					<Property key="SmoothShow" value="false"/>
@@ -1281,6 +1281,24 @@
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="210 80 60 24" name="TrailsVal">
 							<Property key="TextColour" value="1.0 0.8 0.6"/>
+						</Widget>
+					</Widget>
+
+					<!-- Simulation -->
+					<Widget type="TabItem" skin="" position="2 24 694 272">
+						<Property key="Caption" value="#80B0E0#{Simulation}"/>
+
+						<Widget type="TextBox" skin="TextBox" position="32 50 172 24">
+							<Property key="Caption" value="#{Quality} **"/>
+							<Property key="TextColour" value="0.6 0.7 1.0"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 50 320 18" name="SimQuality"/>
+						<Widget type="TextBox" skin="TextBox" position="210 50 60 24" name="SimQualityVal">
+							<Property key="TextColour" value="0.6 0.7 1.0"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 90 320 160" name="SimDetail" >
+							<Property key="TextColour" value="0.5 0.7 0.9"/>
 						</Widget>
 					</Widget>
 

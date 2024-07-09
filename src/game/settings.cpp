@@ -198,6 +198,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	//  🎳 sim
 	Param(c,w, "sim.game_freq", game_fq);			Param(c,w, "sim.dynamics_iter", dyn_iter);
 	Param(c,w, "sim.bullet_freq", blt_fq);			Param(c,w, "sim.bullet_iter", blt_iter);
+	Param(c,w, "sim.quality", g.sim_quality);
 	Param(c,w, "sim.thread_sleep", thread_sleep);	Param(c,w, "sim.perf_speed", perf_speed);
 	//Param(c,w, "sim.gui_sleep", gui_sleep);
 
