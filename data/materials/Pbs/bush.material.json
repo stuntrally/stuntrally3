@@ -1007,6 +1007,43 @@
 			}
 		},
 
+		"blueberryAtm":
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"alpha_test" : ["greater", 0.3, false],
+			"grass" : true,
+			"tree_wind" : true,
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "blueberryAtm.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : 0.1,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "blueberry_n.jpg",				
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.31
+			}
+		},
+
 		"bush_grass" :
 		{
 			"macroblock" : "Macroblock_2",
