@@ -305,10 +305,10 @@ void CGui::InitGui()
 	sv= &svFogHDensity;	sv->Init("FogHDensity",	&sc->fogHDensity, 0.f, 200.f, 2.f, 1,4);  sv->DefaultF(60.f);  Sev(UpdFog);
 	sv= &svFogHDmg;		sv->Init("FogHDmg",		&sc->fHDamage,    0.f, 30.f, 1.5f, 1,3);  sv->DefaultF(0.f);
 	//  🌪️ Wind
-	sv= &svWindForce;	sv->Init("WindForce",	&sc->windForce, -3.f,3.f, 1.f, 2,5);  sv->DefaultF(0.f);
-	sv= &svWindOfs;		sv->Init("WindOfs",		&sc->windOfs,    0.f,3.f, 1.f, 2,5);  sv->DefaultF(0.f);
-	sv= &svWindAmpl;	sv->Init("WindAmpl",	&sc->windAmpl,   0.f,6.f, 1.f, 2,5);  sv->DefaultF(1.f);
-	sv= &svWindFreq;	sv->Init("WindFreq",	&sc->windFreq, 0.01f,6.f, 1.f, 2,5);  sv->DefaultF(1.f);
+	sv= &svWindForce;	sv->Init("WindForce",	&sc->windForce,  0.f,6.f, 1.f, 2,5);  sv->DefaultF(0.f);
+	sv= &svWindOfs;		sv->Init("WindOfs",		&sc->windOfs,    0.f,3.f, 2.f, 2,5);  sv->DefaultF(0.f);
+	sv= &svWindAmpl;	sv->Init("WindAmpl",	&sc->windAmpl,   0.f,4.f, 2.f, 2,5);  sv->DefaultF(0.3f);
+	sv= &svWindFreq;	sv->Init("WindFreq",	&sc->windFreq, 0.01f,4.f, 2.f, 2,5);  sv->DefaultF(0.4f);
 	sv= &svWindYaw;		sv->Init("WindYaw",		&sc->windYaw, -180.f,180.f, 1.f, 1,4);  sv->DefaultF(0.f);
 
 	//  toggle vis

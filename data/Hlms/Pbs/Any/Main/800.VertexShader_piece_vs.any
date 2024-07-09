@@ -193,9 +193,9 @@
 @piece( VertexTransform )
 	@insertpiece( custom_vs_preTransform )
 	//Lighting is in view space
-	@property( hlms_normal || hlms_qtangent )	outVs.pos		= @insertpiece( CalculatePsPos );@end
-	@property( hlms_normal || hlms_qtangent )	outVs.normal	= mul( @insertpiece(local_normal), toMidf3x3( worldViewMat ) );@end
-	@property( normal_map )						outVs.tangent	= mul( @insertpiece(local_tangent), toMidf3x3( worldViewMat ) );@end
+	@property( hlms_normal || hlms_qtangent )	outVs.pos		= @insertpiece( CalculatePsPos );  @end
+	@property( hlms_normal || hlms_qtangent )	outVs.normal	= mul( @insertpiece(local_normal), toMidf3x3( worldViewMat ) );  @end
+	@property( normal_map )						outVs.tangent	= mul( @insertpiece(local_tangent), toMidf3x3( worldViewMat ) );  @end
 	@property( !hlms_dual_paraboloid_mapping )
         @property( !hlms_use_uv_baking )
 			@property( !hlms_instanced_stereo )
@@ -273,23 +273,26 @@
 			midf3 worldNorm = mul( inputNormal, toMidf3x3( worldMat ) ).xyz;
 		@end
 
-		//**  Grass Wind  **
+		//**  Grass Wind  --------------------------------------------------------
 		@property( grass && !hlms_shadowcaster )
 			if (inVs_uv0.y == 0.0f)  // top
 			{
+				// float4 w = worldMat[2], p = inputPos;
+				float ofs = atmo.timeWind.y, ampl = atmo.timeWind.z, freq = atmo.timeWind.w * 3;
+				float2 dir = atmo.windDir.xy; // * material.userValue[0].x;
+
 				midf2 pos = worldPos.xz;
 				float time = atmo.timeWind.x; // * _h(1.2);
-				float freq = 3.2;  // par atmo..
-				float offset1 = sin(time + pos.x * 2.427 * freq) * sin(time + pos.y * 3.427 * freq);
-				float offset2 = cos(time + pos.y * 2.534 * freq) * cos(time + pos.x * 3.534 * freq);
-				// float4 grassDirection = float4(1.0, 0.0, 0.0, 0.0);
-				// worldPos.xz += grassDirection * offset1 + grassDirection.zyxw * offset2;
-				worldPos.xz += float2(offset1, offset2) * 0.4;
+				float cfreq = 0.9;  // par atmo..
+				float x = sin((time + pos.x * 2.427 * cfreq) * freq) * sin((time + pos.y * 3.427 * cfreq) * freq);
+				float y = cos((time + pos.y * 2.534 * cfreq) * freq) * cos((time + pos.x * 3.534 * cfreq) * freq);
+				worldPos.xz += dir * 0.28 * ofs + float2(x, y) * 1.4 * dir * ampl;
 			}
 
 			//**  grass deform under car  **
+			//--------------------------------------------------------
 			float r = atmo.posSph0.w;  // sphere radius^2
-			if (r > 0.f)
+			if (r > 0.1f)
 			{
 				//()  sphere:  (x - x0)^2 + (y - y0)^2 + (z - z0)^2 = r^2
 				float3 sph = atmo.posSph0.xyz;  // sphere pos
@@ -319,34 +322,32 @@
 			}
 		@end
 
-		//**  Tree wind
+		//**  Tree wind  --------------------------------------------------------
 		// property( tree_wind )  // todo: in caster ..
 		@property( tree_wind && !hlms_shadowcaster )
 			{
-				midf2 pos = worldPos.xz;
+				float2 pos = worldPos.xz;
 				float time = atmo.timeWind.x; // * _h(1.2);
 				// float freq = 3.2;  // par atmo..
 				// float offset1 = sin(time + pos.x * 2.427 * freq) * sin(time + pos.y * 3.427 * freq);
 				// float offset2 = cos(time + pos.y * 2.534 * freq) * cos(time + pos.x * 3.534 * freq);
 				// worldPos.xz += float2(offset1, offset2) * 1.4;
-
-			// #if TREE_WIND
-			//float radiusCoeff = windParams.x;
-			//float heightCoeff = windParams.y;
-			//float factorX = windParams.z;
-			//float factorY = windParams.w;
-
 				// worldPos.y += sin(time + uv2.z + position.y + position.x) * uv1.x * uv1.x * uv1.w;
 				// worldPos.x += sin(time + uv2.z ) * uv1.y * uv1.y * uv1.z;
 				
+				//  wind var
+				float4 w = worldMat[2], p = inputPos;
+				float ofs = atmo.timeWind.y, ampl = atmo.timeWind.z, freq = atmo.timeWind.w;
+				float2 dir = atmo.windDir.xy; // * material.userValue[0].x;
 				//  sway slow
-				worldPos.x += sin( time * 1.51 + worldMat[2].x * 0.51 + 0.67 * worldMat[2].z) * inputPos.y * inputPos.y * 0.016f;
-				worldPos.z += sin( time * 1.42 + worldMat[2].x * 0.76 - 0.65 * worldMat[2].z) * inputPos.y * inputPos.y * 0.017f;
+				worldPos.x += (sin(freq * (time * 1.51 + w.x * 0.51 + 0.67 * w.z)) * ampl + ofs)* 0.016 * p.y * p.y * dir.x;
+				worldPos.z += (sin(freq * (time * 1.42 + w.x * 0.76 - 0.65 * w.z)) * ampl + ofs)* 0.016 * p.y * p.y * dir.y;
 				//  tiny fast
-				worldPos.y += sin((time * 3.25 + inputPos.z) * (1.92 + 0.4 * worldMat[2].y))
-							* sin((time * 2.52 + inputPos.x) * (2.42 + 2.4 * worldMat[2].z)) * inputPos.y * inputPos.z * 0.02f;
+				worldPos.y += sin(freq * (time * 3.25 + p.z) * (1.92 + 0.4 * w.y))
+							* sin(freq * (time * 2.52 + p.x) * (2.42 + 2.4 * w.z)) * p.y * p.z * 0.02 * ampl;
 			}
 		@end
+		//--------------------------------------------------------
 	@end
 
 	@insertpiece( PoseTransform )

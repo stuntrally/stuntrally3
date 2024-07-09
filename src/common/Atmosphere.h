@@ -8,6 +8,7 @@
 #include <map>
 
 
+//  global shader params for all
 class Atmosphere final : public Ogre::AtmosphereComponent
 {
 public:

@@ -517,6 +517,7 @@
 
 	<Tag name="NeedRestart">* need restart</Tag>
 	<Tag name="NeedNewGame">* need New Game</Tag>
+	<Tag name="NeedReload">* need reload</Tag>
 	<Tag name="Apply">Apply</Tag>
 	
 
@@ -1018,7 +1019,6 @@
 	<Tag name="CopyTrackNoSource">No source track selected.</Tag>
 	<Tag name="CopyTrackSourceSame">Source track and current track are the same.</Tag>
 	<Tag name="CantSaveOrgTrack">Can't save original track. Duplicate it first.</Tag>
-	<Tag name="NeedReload">* need reload</Tag>
 	
 
 	<!--  Editor  Sun  -->

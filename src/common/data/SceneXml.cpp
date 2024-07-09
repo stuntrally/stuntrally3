@@ -35,21 +35,23 @@ void Scene::Default()
 	ambientSnd = "";  sReverbs = "";
 	ambientVol = 1.f;
 
-	//  sky
-	skyMtr = "World/NoonSky";  skyYaw = 0.f;
+	//  ⛅ sky
+	skyMtr = "sky/day_clouds_04_blue";  skyYaw = 0.f;
 	for (int i=0; i < NumWeather; ++i)
 	{	rainEmit[i] = 0;  rainName[i] = "";  }
-	//  sun
+	//  🌞 sun
 	ldPitch = 50.f;  ldYaw = 30.f;
 	lAmb  = SColor(0.16f, 0.0f, 0.45f);
 	lDiff = SColor(0.16f, 0.0f, 0.7f);	lSpec = SColor(0.16f, 0.05f, 1.f);
-	//  fog
+
+	//  🌫️ fog
 	fogStart = 600;  fogEnd = 1600;
 	fogClr = fogClr2 = fogClrH = SColor(0.73f, 0.86f, 1.0f, 1.f);
 	fogHeight = -300.f;  fogHDensity = 100.f;  fogHStart = 0;  fogHEnd = 400;
 	fHDamage = 0.f;
-	//  wind
-	windOfs = 0.f;  windFreq  = 0.f;  windAmpl = 0.f;  windYaw = 0.f;
+	//  🌪️ wind
+	windForce = 0.f;
+	windOfs = 0.f;  windAmpl = 0.3f;  windFreq = 0.4f;  windYaw = 0.2f;
 
 	//  particles
 	sParDust = "Dust";  sParMud = "Mud";  sParSmoke = "Smoke";
@@ -58,7 +60,7 @@ void Scene::Default()
 	tds.clear();
 	// td.Default();
 
-	//  veget
+	//  🌳 veget
 	densTrees=0;  densGrass=0;  grDensSmooth=6;
 	vegLayers.clear();
 	for (int i=0; i < ciNumVegLay; ++i)
@@ -120,7 +122,7 @@ void RoRconfig::Default()
 }
 
 
-///  start
+///  🏁 start
 ///------------------------------
 pair <MATHVECTOR<float,3>, QUATERNION<float> > Scene::GetStart(int index, bool notLoopedReverse)
 {
@@ -136,7 +138,7 @@ pair <MATHVECTOR<float,3>, QUATERNION<float> > Scene::GetStart(int index, bool n
 }
 
 
-void Scene::UpdRevSet()
+void Scene::UpdRevSet()  // 🔉 sound
 {
 	if (!pReverbsXml)  return;
 	string s = sReverbs == "" ? "base" : sReverbs;

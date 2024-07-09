@@ -379,7 +379,11 @@ void CScene::UpdSun(float dt)
 	{	atmo->posSph0 = Vector4(0,0,500,-1);
 		atmo->posSph1 = Vector4(0,0,500,-1);
 	}
-
+#else	//  ed
+	if (atmo)
+	{	atmo->posSph0 = Vector4(0,0,500,-1);
+		atmo->posSph1 = Vector4(0,0,500,-1);
+	}
 #endif	
 
 	//  post, gamma-
@@ -427,6 +431,7 @@ void CScene::DestroyWeather()
 //  💫🌧️ Update Weather
 void CScene::UpdateWeather(Camera* cam, float invDT, float emitMul)
 {
+	//  get cam vel  pos & rot
 	const Vector3& pos = cam->getPosition(), dir = cam->getDirection();
 	static Vector3 oldPos = pos, oldDir = dir;
 
@@ -435,12 +440,22 @@ void CScene::UpdateWeather(Camera* cam, float invDT, float emitMul)
 
 	//  try to predict where to emit
 	//  given movement and rotation speeds
-	Vector3 par = pos
+	Vector3 emitPos = pos
 		+ (dir + 0.6f * rot) * 12.f  // in front
 		+ vel * 0.2f;  //par move effect on emitter pos
 	
 	oldPos = pos;  oldDir = dir;
-	// Vector3 wdir();  
+	
+	//  wind dir
+	float yaw = sc->windYaw * PI_d/180.f;
+	float t = atmo ? atmo->timeWind.x : 0.f;
+	float a = std::min(1.f, sc->windOfs * 0.3f
+				- sin(t * sc->windFreq * 3.21f) 
+				* sin(t * sc->windFreq * 3.63f) * 0.05f * sc->windAmpl);  // par how much goes sideway
+	// float a = std::min(1.f, sc->windOfs * 0.3f);  // const-
+	float a1 = 1.f - a;
+	Vector3 emitDir( a * cosf(yaw), -a1, -a * sinf(yaw));
+	// emitDir.normalise();  //?
 
 	int i=0;
 	for (auto* pr : psWeather)
@@ -449,8 +464,8 @@ void CScene::UpdateWeather(Camera* cam, float invDT, float emitMul)
 		if (pr && emt > 0)
 		{
 			auto* pe = pr->getEmitter(0);
-			pe->setPosition(par);
-			// pe->setDirection(wdir);
+			pe->setPosition(emitPos);
+			pe->setDirection(emitDir);
 			pe->setEmissionRate(emitMul * emt);
 		}
 		++i;

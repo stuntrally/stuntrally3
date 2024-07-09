@@ -429,9 +429,9 @@
 				#define WIND_SPEED   material.detailOffsetScale[2].x * 1.32
 				#define WIND_SPEED2  material.detailOffsetScale[2].x * 0.21
 			@else  // water
-				#define WIND_DIR     float2(0.5, -0.8)  // todo: par, same for grass, trees too
-				#define WIND_SPEED   material.detailOffsetScale[2].x * 0.32
-				#define WIND_SPEED2  material.detailOffsetScale[2].x * 2.0
+				#define WIND_DIR     float2(atmo.windDir.x, atmo.windDir.y)
+				#define WIND_SPEED   material.detailOffsetScale[2].x * 0.32 * (1.0 + atmo.timeWind.y)
+				#define WIND_SPEED2  material.detailOffsetScale[2].x * 2.0  * (1.0 + atmo.timeWind.y)
 			@end
 				#define WAVE_CHOP    material.detailOffsetScale[2].y * 0.01
 				#define WAVE_SCALE  -material.detailOffsetScale[2].z

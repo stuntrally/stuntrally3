@@ -203,18 +203,18 @@
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#C0C0F0#{Graphics}"/>
 
+				<Widget type="TextBox" skin="TextBox" position="582 440 236 20">
+					<Property key="Caption" value="*#{NeedRestart}"/>
+					<Property key="TextColour" value="0.5 0.9 1"/>
+					<Property key="FontName" value="font.small"/>
+					<Property key="Alpha" value="0.7"/>
+				</Widget>
 				<Widget type="TextBox" skin="TextBox" position="582 460 236 20">
 					<Property key="Caption" value="#{NeedReload}"/>
 					<Property key="TextColour" value="0.5 1 0.9"/>
 					<Property key="FontName" value="font.small"/>
 					<Property key="Alpha" value="0.7"/>
 				</Widget>
-				<!-- <Widget type="TextBox" skin="TextBox" position="582 480 236 20">
-					<Property key="Caption" value="*#{NeedRestart}"/>
-					<Property key="TextColour" value="0.5 0.9 1"/>
-					<Property key="FontName" value="font.small"/>
-					<Property key="Alpha" value="0.7"/>
-				</Widget> -->
 				<Widget type="TextBox" skin="TextBox" position="582 480 236 20">
 					<Property key="Caption" value="^ #{NeedApply}"/>
 					<Property key="TextColour" value="0.5 1 0.9"/>

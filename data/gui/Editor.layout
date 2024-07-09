@@ -355,64 +355,64 @@
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="44 74 104 24">
+						<Widget type="TextBox" skin="TextBox" position="44 44 104 24">
 							<Property key="Caption" value="#{Brush_Force}"/>
-							<Property key="TextColour" value="0.5 0.75 1"/>
+							<Property key="TextColour" value="1 0.75 0.5"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="216 74 420 16" name="WindForce">
-							<Property key="Colour" value="0.6 0.8 1"/>
+						<Widget type="Slider" skin="Slider" position="216 44 420 16" name="WindForce">
+							<Property key="Colour" value="1 0.8 0.6"/>
 						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="152 70 56 24" name="WindForceEdit">
-							<Property key="Colour" value="0.6 0.8 1"/>
-							<Property key="TextColour" value="0.6 0.8 1"/>
+						<Widget type="EditBox" skin="EditBox" position="152 40 56 24" name="WindForceEdit">
+							<Property key="Colour" value="1 0.8 0.6"/>
+							<Property key="TextColour" value="1 0.8 0.6"/>
 						</Widget>
 						
 						<Widget type="TextBox" skin="TextBox" position="44 104 104 24">
 							<Property key="Caption" value="#{Brush_Offset}"/>
-							<Property key="TextColour" value="0.5 0.75 1"/>
+							<Property key="TextColour" value="0.5 0.85 1"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="216 104 420 16" name="WindOfs">
-							<Property key="Colour" value="0.6 0.8 1"/>
+							<Property key="Colour" value="0.6 0.9 1"/>
 						</Widget>
 						<Widget type="EditBox" skin="EditBox" position="152 100 56 24" name="WindOfsEdit">
-							<Property key="Colour" value="0.6 0.8 1"/>
-							<Property key="TextColour" value="0.6 0.8 1"/>
+							<Property key="Colour" value="0.6 0.9 1"/>
+							<Property key="TextColour" value="0.6 0.9 1"/>
 						</Widget>
 						
 						<Widget type="TextBox" skin="TextBox" position="44 134 104 24">
 							<Property key="Caption" value="#{Amplitude}"/>
-							<Property key="TextColour" value="0.5 0.75 1"/>
+							<Property key="TextColour" value="0.75 0.5 1"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="216 134 420 16" name="WindAmpl">
-							<Property key="Colour" value="0.6 0.8 1"/>
+							<Property key="Colour" value="0.8 0.6 1"/>
 						</Widget>
 						<Widget type="EditBox" skin="EditBox" position="152 130 56 24" name="WindAmplEdit">
-							<Property key="Colour" value="0.6 0.8 1"/>
-							<Property key="TextColour" value="0.6 0.8 1"/>
+							<Property key="Colour" value="0.8 0.6 1"/>
+							<Property key="TextColour" value="0.8 0.6 1"/>
 						</Widget>
 						
 						<Widget type="TextBox" skin="TextBox" position="44 164 104 24">
 							<Property key="Caption" value="#{Frequency}"/>
-							<Property key="TextColour" value="0.5 0.75 1"/>
+							<Property key="TextColour" value="0.7 0.7 1"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="216 164 420 16" name="WindFreq">
-							<Property key="Colour" value="0.6 0.8 1"/>
+							<Property key="Colour" value="0.7 0.7 1"/>
 						</Widget>
 						<Widget type="EditBox" skin="EditBox" position="152 160 56 24" name="WindFreqEdit">
-							<Property key="Colour" value="0.6 0.8 1"/>
-							<Property key="TextColour" value="0.6 0.8 1"/>
+							<Property key="Colour" value="0.7 0.7 1"/>
+							<Property key="TextColour" value="0.7 0.7 1"/>
 						</Widget>
 						
-						<Widget type="TextBox" skin="TextBox" position="44 194 104 24">
+						<Widget type="TextBox" skin="TextBox" position="44 224 104 24">
 							<Property key="Caption" value="#{Road_Yaw}"/>
-							<Property key="TextColour" value="0.5 0.75 1"/>
+							<Property key="TextColour" value="0.7 0.9 0.5"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="216 194 420 16" name="WindYaw">
-							<Property key="Colour" value="0.6 0.8 1"/>
+						<Widget type="Slider" skin="Slider" position="216 224 420 16" name="WindYaw">
+							<Property key="Colour" value="0.7 0.9 0.6"/>
 						</Widget>
-						<Widget type="EditBox" skin="EditBox" position="152 190 56 24" name="WindYawEdit">
-							<Property key="Colour" value="0.6 0.8 1"/>
-							<Property key="TextColour" value="0.6 0.8 1"/>
+						<Widget type="EditBox" skin="EditBox" position="152 220 56 24" name="WindYawEdit">
+							<Property key="Colour" value="0.7 0.9 0.6"/>
+							<Property key="TextColour" value="0.7 0.9 0.6"/>
 						</Widget>
 						
 					</Widget>
