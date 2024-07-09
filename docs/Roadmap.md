@@ -14,11 +14,11 @@ add refract clr, depth clr params
 `Fix` compositor, hud3d, particles, ed prv cam  
 SSAO?  
 
-🌪️**wind** params in json, trees, grass-  
+🌪️**wind** params in json, trees, bushes, grass-  
 🌿**bushes**, lods  
 🌳new jungle [**trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), lods  
 **add** to tracks  
-`fix` ed obj prv deform, prv cam 
+`fix ed` obj prv deform, prv cam 
 
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  

@@ -40,6 +40,9 @@
 	<object mesh= "blueberry.mesh">
 		<shape type="sphere" ofs="0 0 0.3" r="0.6" frict="0.0" restit="0.0" damp="0.8" />
 	</object>
+	<object mesh= "blueberryAtm.mesh">
+		<shape type="sphere" ofs="0 0 0.3" r="0.6" frict="0.0" restit="0.0" damp="0.8" />
+	</object>
 	<object mesh= "bush_grass1.mesh">
 		<shape type="sphere" ofs="0 0 0.2" r="0.3" frict="0.0" restit="0.0" damp="0.3" />
 	</object>
@@ -282,6 +285,9 @@
 	</object>
 	<object mesh= "palm_coconut1.mesh">
 		<shape type="capsZ" ofs="0 0 0.0" r="0.2" h="5.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "palm_date.mesh">
+		<shape type="capsZ" ofs="0 0 0.0" r="0.2" h="4.0" frict="0.7" restit="0.9" />
 	</object>
 
 	
