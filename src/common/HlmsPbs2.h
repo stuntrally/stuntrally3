@@ -43,7 +43,8 @@ public:
 		Ogre::Renderable *renderable, Ogre::PiecesMap *inOutPieces ) override;
 
 	void calculateHashForPreCaster(
-		 Ogre::Renderable *renderable, Ogre::PiecesMap *inOutPieces ) override;
+		Ogre::Renderable *renderable, Ogre::PiecesMap *inOutPieces,
+		const Ogre::PiecesMap *normalPassPieces ) override;
 
 	//  ctor  new HlmsPbsDb2
 	Ogre::HlmsDatablock *createDatablockImpl(

@@ -412,7 +412,8 @@ namespace Ogre
 
 
 	//-----------------------------------------------------------------------------------
-	void HlmsTerra::calculateHashForPreCaster( Renderable *renderable, PiecesMap *inOutPieces )
+	void HlmsTerra::calculateHashForPreCaster( Renderable *renderable, PiecesMap *inOutPieces,
+		const PiecesMap *normal)
 	{
 		// Override, since shadow casting is very basic
 		mSetProperties.clear();

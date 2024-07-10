@@ -110,9 +110,9 @@ void HlmsPbs2::calculateHashForPreCreate(
 }
 
 void HlmsPbs2::calculateHashForPreCaster(
-	Renderable *rnd, PiecesMap *inOut )
+	Renderable *rnd, PiecesMap *inOut, const PiecesMap *normal )
 {
-    HlmsPbs::calculateHashForPreCaster( rnd, inOut );
+    HlmsPbs::calculateHashForPreCaster( rnd, inOut, normal );
 
 	const auto& mtr = rnd->getDatablockOrMaterialName();
 	const auto* db = (HlmsPbsDb2*)rnd->getDatablock();
