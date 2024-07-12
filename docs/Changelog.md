@@ -1,6 +1,7 @@
 ## What's coming next
 
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
+WIP means work in progress, still being developed
 
 - Game
   - **Collection** - new game mode. WIP  
@@ -11,6 +12,7 @@ This section lists changes not yet released, but committed to repositories stunt
 - Both
   - **Water** refraction, depth color, soft border, WIP
   - **Bushes**, separate multiplier options, WIP
+  - new **Palms** on desert and island sceneries WIP
   - Tree wind animation
   - grass and bushes deform under vehicle
 - Gui

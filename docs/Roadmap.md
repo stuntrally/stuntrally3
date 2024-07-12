@@ -8,13 +8,17 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
+`fix` multiplayer on windows [issue](https://github.com/stuntrally/stuntrally3/issues/28)
+
 🌊all **fluids** json, no refract test  
 add refract clr, depth clr params  
 **under**water top, pass projmatrix not inverse  
 `Fix` compositor, hud3d, particles, ed prv cam  
 SSAO?  
 
-🌪️**wind** params in json, trees, bushes, grass-  
+🌪️**wind** params in json, scale for all trees, bushes, grass sway own-  
+wind shadow caster too  
+
 🌿**bushes**, lods  
 🌳new jungle [**trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), lods  
 **add** to tracks  
