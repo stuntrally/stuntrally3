@@ -499,7 +499,7 @@ void CGuiCom::comboLanguage(ComboBox* wp, size_t val)
 //----------------------------------------------------------------------------------------------------------------
 void CGuiCom::CreateFonts()
 {
-	LogO("C--# Create Fonts");
+	LogO("C--# Create Fonts ----");
 	MyGUI::ResourceManager& mgr = MyGUI::ResourceManager::getInstance();
 	
 	struct Font

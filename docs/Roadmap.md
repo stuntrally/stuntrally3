@@ -27,6 +27,7 @@ wind shadow caster too
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
 
+`fix` boost particles  
 fix .car thrusters lights pos  
 **ed** Fields: accel par, dir, teleport end  
 
