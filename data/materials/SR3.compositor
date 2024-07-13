@@ -32,7 +32,7 @@ compositor_node Rtt_RoadDens
 			rq_last	  72
 
 			overlays	off
-			// enable_forward_plus false  // is not recognized ?
+			enable_forwardplus no
 		}
 	}
 }
@@ -67,12 +67,13 @@ compositor_node Rtt_RoadPreview
 			rq_last	  72
 
 			overlays	off
-			// enable_forward_plus false
+			enable_forwardplus no
 		}
 	}
 }
 
 //  🏗️ ed rtt 2  for terrain.jpg minimap preview
+//------------------------------------------------------------------------------------
 compositor_node Rtt_Terrain
 {
 	in 0 rt_output
@@ -101,12 +102,14 @@ compositor_node Rtt_Terrain
 			rq_last	  76   // RQG_Fluid too
 
 			overlays	off
-			// enable_forward_plus false
+			enable_forwardplus no
 		}
 	}
 }
 
+//------------------------------------------------------------------------------------
 //  🏗️ ed rtt 3  cam preview  normal all
+//------------------------------------------------------------------------------------
 compositor_node Rtt_View3D
 {
 	in 0 rt_output
@@ -136,12 +139,13 @@ compositor_node Rtt_View3D
 
 			overlays	off
 			shadows		SR3_Shadows  //! rem-
-			// todo: use that from code, not SR3_Shadows from here
+			// todo? use that from code, not SR3_Shadows from here
+			// enable_forwardplus no  //-
+			lod_bias	2.0
 		}
 	}
 	// todo: rest for water refract ...
 }
-//  end of  Editor only
 
 
 //  🧊 3d preview  other scene
@@ -176,18 +180,20 @@ compositor_node Rtt_PreView3D
 
 			overlays	off
 			// shadows	SR3_Shadows  // no-
+			enable_forwardplus no
 		}
 	}
 }
+//  end of  Editor only
 
 
 //  🔮 cube reflections
-//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------
 abstract target cubemap_target
 {
 	pass render_scene
 	{
-		profiling_id "Cube Reflection"
+		profiling_id "Cube Reflect"
 		identifier	33306
 
 		load
@@ -214,7 +220,16 @@ abstract target cubemap_target
 		// shadows		SR3_Shadows
 		// ^ crashes ..
 		// todo: use that from code, not SR3_Shadows from here
+		enable_forwardplus no
 	}
+
+	// pass generate_mipmaps  // ?
+	// {
+	// 	profiling_id "Cube Reflect Mipmaps"
+	// 	identifier 33201
+	
+	// 	// mipmap_method compute_hq
+	// }
 }
 
 compositor_node CubemapNode
@@ -271,19 +286,24 @@ compositor_node CubemapNodeMsaa
 }
 
 
-//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------
 //  🏞️  [Main render]  (👥 split screens too and 🏗️ ed)  NEW Refract
-//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------
 abstract compositor_node SR3_RenderAbs
 {
 	in 0 rt_renderwindow
 	in 1 dynamic_cubemap
 
-	texture depthBuffer	target_width target_height PFG_D32_FLOAT
-	texture rtt01		target_width target_height target_format
-	texture rtt_final	target_width target_height target_format
+	texture depthBuffer  target_width target_height PFG_D32_FLOAT
+	texture rtt_first    target_width target_height target_format
+	texture rtt_refract  target_width target_height target_format
+	texture rtt_final    target_width target_height target_format
 
-	rtv rtt01
+	rtv rtt_first
+	{
+		depth_stencil	depthBuffer
+	}
+	rtv rtt_refract
 	{
 		depth_stencil	depthBuffer
 	}
@@ -292,7 +312,8 @@ abstract compositor_node SR3_RenderAbs
 		depth_stencil	depthBuffer
 	}
 
-	target rtt01
+
+	target rtt_first
 	{
 		// pass clear  //  --------
 		// {
@@ -347,39 +368,12 @@ abstract compositor_node SR3_RenderAbs
 			//! set later at end in all  : SR3_RenderAbs
 
 			// rq_last		110  // glass,par etc
-			rq_last		209
+			// rq_last		209  //`
+			rq_last		80
 
 			overlays	off
 			// shadows		SR3_Shadows  //** added in code
 		}
-
-
-		//  for Hud, split  --------
-		// pass render_scene
-		// {
-		// 	profiling_id "HUD"
-		// 	identifier	22501
-
-		// 	// executed in all eyes, not views
-		// 	// execution_mask			0xff
-		// 	// executed on first view/eye
-		// 	execution_mask			0x01
-		// 	// affected by modifier, apply to the whole screen
-		// 	viewport_modifier_mask	0x00
-
-		// 	store
-		// 	{
-		// 		colour	store
-		// 		depth	store  //-
-		// 		stencil	store
-		// 	}
-		// 	visibility_mask  0x00002000  // RV_Hud
-
-		// 	rq_first	220  // 225
-		// 	rq_last		225  // 230
-
-		// 	overlays	off
-		// }
 
 		//** added in code  --------
 		// pass custom MYGUI
@@ -399,14 +393,15 @@ abstract compositor_node SR3_RenderAbs
 		// }
 	}
 
-	target rtt_final
+
+	target rtt_refract
 	{
 		pass render_quad
 		{
 			// Only colour must be dont_care, since we must still preserve the depth buffer's contents!
 			load { colour dont_care }
 			material Ogre/Copy/4xFP32
-			input 0 rtt01
+			input 0 rtt_first
 		}
 
 		//  water, Pass with refractive objects
@@ -432,8 +427,82 @@ abstract compositor_node SR3_RenderAbs
 
 			overlays		on
 			//shadows		Tutorial_TerrainShadowNode reuse
-			use_refractions	depthBuffer rtt01
+			use_refractions	depthBuffer rtt_first
 		}
+
+	}
+
+
+	target rtt_final
+	{
+		pass render_quad
+		{
+			// Only colour must be dont_care, since we must still preserve the depth buffer's contents!
+			load { colour dont_care }
+			material Ogre/Copy/4xFP32
+			input 0 rtt_refract
+		}
+
+		//  [Main Render 2]  --------
+		pass render_scene
+		{
+			profiling_id "Main view2"
+			identifier	22204
+
+			//  executed in all views/eyes
+			execution_mask			0xff
+			//  affected by modifier, so renders to a portion of screen
+			viewport_modifier_mask	0xff
+
+			// skip_load_store_semantics true
+			// load { all dont_care }
+			// load { colour dont_care }
+			load {  all load }
+			store
+			{
+				colour	store
+				depth	store  //-
+				stencil	store
+			}
+			// store
+			// {
+			// 	colour	store_or_resolve
+			// 	depth	store
+			// 	stencil	dont_care
+			// }
+
+			//  materials in this pass will be using this cubemap
+			//expose dynamic_cubemap
+
+			visibility_mask  0x000011FD
+			//! set later at end in all  : SR3_RenderAbs
+
+			// rq_last		110  // glass,par etc
+			rq_first		76  //82
+			// rq_last		209
+
+			overlays	off
+			// shadows		SR3_Shadows  //** added in code
+		}
+	}
+
+
+	target rt_renderwindow
+	{
+		//  Output to window
+		pass render_quad
+		{
+			load { all dont_care }
+			store
+			{
+				colour	store
+				depth	dont_care  //-
+				stencil	dont_care
+			}
+			material Ogre/Copy/4xFP32
+			input 0 rtt_final
+		}
+
 
 		//  for Hud, split  --------
 		pass render_scene
@@ -462,22 +531,11 @@ abstract compositor_node SR3_RenderAbs
 			overlays	off
 		}
 	}
-
-	target rt_renderwindow
-	{
-		//  Output to window
-		pass render_quad
-		{
-			load { all dont_care }
-			material Ogre/Copy/4xFP32
-			input 0 rtt_final
-		}
-	}
 }
 
 
 //  🏞️  [Main render]  OLD no refract
-//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------
 abstract compositor_node SR3_RenderAbsOld
 {
 	in 0 rt_renderwindow
@@ -580,7 +638,7 @@ abstract compositor_node SR3_RenderAbsOld
 }
 
 
-//  🪞 planar reflections  Water 🌊 fluids
+//  🪞 planar Reflections  Water 🌊 fluids
 //------------------------------------------------------------------------------------
 compositor_node PlanarReflectNode
 {
@@ -669,34 +727,35 @@ compositor_node_shadow SR3_Shadows
 }
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------
 //  [Main Nodes]  for all  Max_Players,  vis mask  same as RV_Hud3D[..]
 //------------------------------------------------------------------------------------
 compositor_node SR3_Render0 : SR3_RenderAbs
-{	target rtt01
+{	target rtt_first
 	{	pass render_scene	{	visibility_mask  0x000011FD  }
 }	}
 compositor_node SR3_Render1 : SR3_RenderAbs
-{	target rtt01
+{	target rtt_first
 	{	pass render_scene	{	visibility_mask  0x000101FD  }
 }	}
 compositor_node SR3_Render2 : SR3_RenderAbs
-{	target rtt01
+{	target rtt_first
 	{	pass render_scene	{	visibility_mask  0x000201FD  }
 }	}
 compositor_node SR3_Render3 : SR3_RenderAbs
-{	target rtt01
+{	target rtt_first
 	{	pass render_scene	{	visibility_mask  0x000401FD  }
 }	}
 compositor_node SR3_Render4 : SR3_RenderAbs
-{	target rtt01
+{	target rtt_first
 	{	pass render_scene	{	visibility_mask  0x000801FD  }
 }	}
 compositor_node SR3_Render5 : SR3_RenderAbs
-{	target rtt01
+{	target rtt_first
 	{	pass render_scene	{	visibility_mask  0x001001FD  }
 }	}
 
-//  Old  no refract  ----
+//  Old  no refract
 compositor_node SR3_RenderOld0 : SR3_RenderAbsOld
 {	target rt_renderwindow
 	{	pass clear			{	}

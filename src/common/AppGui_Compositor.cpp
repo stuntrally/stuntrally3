@@ -58,7 +58,7 @@ void AppGui::AddGuiShadows(bool vr_mode, int plr, bool gui)
 	CompositorNodeDef* node = mgr->getNodeDefinitionNonConst(getRender(plr));
 	// LogO("--++ WS Target Gui passes "+toStr(node->getNumTargetPasses()));
 
-	CompositorTargetDef* target = node->getTargetPass(old ? 0 : 2);
+	CompositorTargetDef* target = node->getTargetPass(old ? 0 : 3);
 	auto passes = target->getCompositorPasses();
 	// for (auto& p : passes)
 		// LogO("--++ WS  pass:  type "+toStr(p->getType())+"  id "+toStr(p->mIdentifier)+"  "+p->mProfilingId);
