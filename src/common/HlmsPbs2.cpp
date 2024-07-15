@@ -167,7 +167,8 @@ HlmsPbsDb2::HlmsPbsDb2( App* app1,
 	: HlmsPbsDatablock( name, creator, macro, blend, p )
 	, app(app1)
 {
-	//  OLD  extra params in .material only !  .json in load
+	//  OLD  extra params  in .material only !
+	//  for .json below  in HlmsJsonPbs2 loadMaterial
 	//----------------------------------------------------------------
 	String val,s;
 	s = name.getFriendlyText();  // hash, or name in Debug
@@ -275,6 +276,7 @@ void HlmsPbsDb2::uploadToConstBuffer( char *dstPtr, uint8 dirtyFlags )
 
 	// LogO("paint db2 upload");
 	HlmsPbsDatablock::uploadToConstBuffer( dstPtr, dirtyFlags );
+
 return;  // !!
 
 	// todo .. send paint par

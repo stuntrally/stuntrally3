@@ -37,7 +37,10 @@ using namespace Ogre;
 void App::CreateRnd2Tex()
 {
 	const char* strWs[RT_ALL] = {
-		"Rtt_RoadDens", "Rtt_RoadPreview", "Rtt_Terrain", "Rtt_View3D", "Rtt_PreView3D"};
+		"Rtt_RoadDens", "Rtt_RoadPreview", "Rtt_Terrain",
+		// "SR3_Render1",
+		"Rtt_View3D",
+		"Rtt_PreView3D"};
 		
 	auto* texMgr = mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
 	auto* wsMgr = mRoot->getCompositorManager2();
@@ -53,7 +56,7 @@ void App::CreateRnd2Tex()
 		{
 			auto* scMgr = prv3D ? prvScene.mgr : mSceneMgr;
 
-			//  🖼️ Texture & RTT
+			//  🖼️ Texture
 			r.tex = texMgr->createTexture( "EdTex" + si,
 				GpuPageOutStrategy::SaveToSystemRam,
 				TextureFlags::ManualTexture, TextureTypes::Type2D );
@@ -71,6 +74,7 @@ void App::CreateRnd2Tex()
 				PFG_RGBA8_UNORM_SRGB );  // ok jpg, white prv, like old SR
 			r.tex->scheduleTransitionTo( GpuResidency::Resident );
 
+			//  RTT
 			auto flags = TextureFlags::RenderToTexture; // | TextureFlags::AllowAutomipmaps;
 			r.rtt = texMgr->createTexture( "EdRtt" + si,
 				GpuPageOutStrategy::Discard, flags, TextureTypes::Type2D );
@@ -324,7 +328,8 @@ void App::UpdMiniVis()
 		bool vis = 
 			full ? i == RT_View3D :
 			pSet->trackmap && i == pSet->num_mini;
-		if (rt[i].nd)  rt[i].nd->setVisible(vis);
+		if (rt[i].nd)
+			rt[i].nd->setVisible(vis);
 	}
 	if (ndBck)  ndBck->setVisible(full);
 	if (ndPos)  ndPos->setVisible(pSet->trackmap && !full);

@@ -152,7 +152,7 @@ void AppGui::createPcfShadowNode()
 		1.0f,   // splitPadding = 1.0f,
 		0.125f, // splitBlend = 0.125f,
 		0.313f, // splitFade = 0.313f,
-		0,      // numStableSplits = 0,  // par ?? would be awesome if it worked, has artifacts..
+		0,      // numStableSplits = 0,  //** par ?? would be awesome if it worked, has artifacts..?
 		VisibilityFlags::RESERVED_VISIBILITY_FLAGS,  // visibilityMask
 		1.5f,   // xyPadding = 1.5f,
 		RQG_Sky,  		// firstRq = 0u,

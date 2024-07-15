@@ -107,46 +107,6 @@ compositor_node Rtt_Terrain
 	}
 }
 
-//------------------------------------------------------------------------------------
-//  🏗️ ed rtt 3  cam preview  normal all
-//------------------------------------------------------------------------------------
-compositor_node Rtt_View3D
-{
-	in 0 rt_output
-
-	target rt_output
-	{
-		pass render_scene
-		{
-			profiling_id "RTT 3 view all"
-			identifier	11103
-
-			load
-			{
-				all				clear
-				clear_colour	0 0 0 1  // black
-			}
-			store
-			{
-				colour	store
-				depth	store
-				stencil	store
-			}
-
-			visibility_mask  0x000001FF  // normal
-			rq_first  0
-			rq_last	  209  // before RQ_OVERLAY
-
-			overlays	off
-			shadows		SR3_Shadows  //! rem-
-			// todo? use that from code, not SR3_Shadows from here
-			// enable_forwardplus no  //-
-			lod_bias	2.0
-		}
-	}
-	// todo: rest for water refract ...
-}
-
 
 //  🧊 3d preview  other scene
 //------------------------------------------------------------------------------------
@@ -184,6 +144,50 @@ compositor_node Rtt_PreView3D
 		}
 	}
 }
+
+
+
+//  🌒 shadows  - HQ, only for ed preview cam
+//------------------------------------------------------------------------------------
+compositor_node_shadow SR3_Shadows
+{
+	technique pssm
+
+	//**  shadows par
+	// texture atlas 3072 2048 PFG_D32_FLOAT  // medium 2k
+	// texture atlas 6144 4096 PFG_D32_FLOAT  // high 4k
+	texture atlas 12288 8192 PFG_D32_FLOAT  // ultra high 8k
+
+	num_splits		3
+	pssm_lambda		0.95
+	shadow_map 0 atlas uv 0.000000000000000 0.0 0.666666666666667 1.0 light 0 split 0
+	shadow_map 1 atlas uv 0.666666666666667 0.0 0.333333333333333 0.5 light 0 split 1
+	shadow_map 2 atlas uv 0.666666666666667 0.5 0.333333333333333 0.5 light 0 split 2
+
+	target atlas
+	{
+		pass clear
+		{
+			colour_value 1 1 1 1
+			identifier	77000
+		}
+	}
+
+	shadow_map_target_type directional
+	{
+		shadow_map 0 1 2
+		{
+			pass render_scene
+			{
+				profiling_id "Shadows ed prv"
+				identifier	77877
+
+				rq_last		219
+			}
+		}
+	}
+}
+
 //  end of  Editor only
 
 
@@ -283,6 +287,94 @@ compositor_node CubemapNodeMsaa
 			input tmpCubemap
 			output cubemap
 	}	}
+}
+
+
+//  🪞 planar Reflections  Water 🌊 fluids
+//------------------------------------------------------------------------------------
+compositor_node PlanarReflectNode
+{
+	in 0 rt_renderwindow
+
+	target rt_renderwindow
+	{
+		pass render_scene
+		{
+			profiling_id "Planar Reflection"
+			identifier 44001
+
+			load
+			{
+				all				clear
+				clear_colour	0.2 0.4 0.6 1
+			}
+			store
+			{
+				colour	store_or_resolve
+				depth	dont_care
+				stencil	dont_care
+			}
+
+			visibility_mask  0x0000022D  // 1 rd 4 ter 8 vgt 20 obj  200 sky
+			rq_last		209
+			overlays	 off
+			//shadows  SR3_Shadows  // no-
+		}
+
+		pass generate_mipmaps
+		{
+			profiling_id "Planar Reflect Mipmaps"
+			identifier 44201
+		
+			mipmap_method compute_hq
+		}
+	}
+}
+
+workspace PlanarReflections
+{
+	connect_output PlanarReflectNode 0
+}
+
+
+//------------------------------------------------------------------------------------
+//  🏗️ ed rtt 3  cam preview  normal all
+//------------------------------------------------------------------------------------------------------------------------------------------
+compositor_node Rtt_View3D
+{
+	in 0 rt_output
+
+	target rt_output
+	{
+		pass render_scene
+		{
+			profiling_id "RTT 3 view all"
+			identifier	11103
+
+			load
+			{
+				all				clear
+				clear_colour	0 0 0 1  // black
+			}
+			store
+			{
+				colour	store
+				depth	store
+				stencil	store
+			}
+
+			visibility_mask  0x000001FF  // normal
+			rq_first  0
+			rq_last	  209  // before RQ_OVERLAY
+
+			overlays	off
+			shadows		SR3_Shadows  //! rem-
+			// todo? use that from code, not SR3_Shadows from here
+			// enable_forwardplus no  //-
+			lod_bias	2.0
+		}
+	}
+	// todo: rest for water refract ...
 }
 
 
@@ -634,95 +726,6 @@ abstract compositor_node SR3_RenderAbsOld
 			
 			// overlays	on
 		// }
-	}
-}
-
-
-//  🪞 planar Reflections  Water 🌊 fluids
-//------------------------------------------------------------------------------------
-compositor_node PlanarReflectNode
-{
-	in 0 rt_renderwindow
-
-	target rt_renderwindow
-	{
-		pass render_scene
-		{
-			profiling_id "Planar Reflection"
-			identifier 44001
-
-			load
-			{
-				all				clear
-				clear_colour	0.2 0.4 0.6 1
-			}
-			store
-			{
-				colour	store_or_resolve
-				depth	dont_care
-				stencil	dont_care
-			}
-
-			visibility_mask  0x0000022D  // 1 rd 4 ter 8 vgt 20 obj  200 sky
-			rq_last		209
-			overlays	 off
-			//shadows  SR3_Shadows  // no-
-		}
-
-		pass generate_mipmaps
-		{
-			profiling_id "Planar Reflect Mipmaps"
-			identifier 44201
-		
-			mipmap_method compute_hq
-		}
-	}
-}
-
-workspace PlanarReflections
-{
-	connect_output PlanarReflectNode 0
-}
-
-
-//  🌒 shadows  - HQ, only for ed preview cam
-//------------------------------------------------------------------------------------
-compositor_node_shadow SR3_Shadows
-{
-	technique pssm
-
-	//**  shadows par
-	// texture atlas 3072 2048 PFG_D32_FLOAT  // medium 2k
-	// texture atlas 6144 4096 PFG_D32_FLOAT  // high 4k
-	texture atlas 12288 8192 PFG_D32_FLOAT  // ultra high 8k
-
-	num_splits		3
-	pssm_lambda		0.95
-	shadow_map 0 atlas uv 0.000000000000000 0.0 0.666666666666667 1.0 light 0 split 0
-	shadow_map 1 atlas uv 0.666666666666667 0.0 0.333333333333333 0.5 light 0 split 1
-	shadow_map 2 atlas uv 0.666666666666667 0.5 0.333333333333333 0.5 light 0 split 2
-
-	target atlas
-	{
-		pass clear
-		{
-			colour_value 1 1 1 1
-			identifier	77000
-		}
-	}
-
-	shadow_map_target_type directional
-	{
-		shadow_map 0 1 2
-		{
-			pass render_scene
-			{
-				profiling_id "Shadows ed prv"
-				identifier	77877
-
-				rq_last		219
-			}
-		}
 	}
 }
 
