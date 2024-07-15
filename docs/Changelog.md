@@ -11,8 +11,8 @@ WIP means work in progress, still being developed
     - for vehicle: brakes, boost, reverse, under glow and for collection gems
 - Both
   - **Water** refraction, depth color, soft border, WIP
-  - **Bushes**, separate multiplier options, WIP
-  - new **Palms** on desert and island sceneries WIP
+  - **Bushes**, separate multiplier and distance options, WIP
+  - New **Palms** on desert and island sceneries WIP
   - Tree wind animation
   - grass and bushes deform under vehicle
 - Gui

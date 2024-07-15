@@ -334,7 +334,7 @@ void CGui::SldUpd_PgL()
 void CGui::chkPgLayOn(Ck*)
 {
 	sc->UpdVegLayers();
-	SetUsedStr(valLTrAll, sc->vegLayers.size(), 6);
+	SetUsedStr(valLTrAll, sc->vegLayers.size(), 10);
 }
 
 void CGui::Upd3DView(String mesh)

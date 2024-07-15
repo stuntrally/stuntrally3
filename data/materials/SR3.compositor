@@ -338,9 +338,8 @@ workspace PlanarReflections
 
 
 //------------------------------------------------------------------------------------
-//  🏗️ ed rtt 3  cam preview  normal all
-//------------------------------------------------------------------------------------------------------------------------------------------
-compositor_node Rtt_View3D
+//  🏗️ ed rtt 3  cam preview  normal all OLD
+compositor_node Rtt_View3D_Old
 {
 	in 0 rt_output
 
@@ -374,7 +373,162 @@ compositor_node Rtt_View3D
 			lod_bias	2.0
 		}
 	}
-	// todo: rest for water refract ...
+}
+
+//------------------------------------------------------------------------------------
+//  🏗️ ed rtt 3  cam preview  normal all
+//------------------------------------------------------------------------------------------------------------------------------------------
+compositor_node Rtt_View3D
+{
+	in 0 rt_output
+	// in 1 dynamic_cubemap  // todo..
+
+	texture depthBuffer  target_width target_height PFG_D32_FLOAT
+	texture rtt_first    target_width target_height target_format
+	texture rtt_refract  target_width target_height target_format
+	texture rtt_final    target_width target_height target_format
+
+	rtv rtt_first
+	{
+		depth_stencil	depthBuffer
+	}
+	rtv rtt_refract
+	{
+		depth_stencil	depthBuffer
+	}
+	rtv rtt_final
+	{
+		depth_stencil	depthBuffer
+	}
+
+
+	target rtt_first
+	{
+		//  [Main Render]  --------
+		pass render_scene
+		{
+			profiling_id "RTT 3 view all"
+			identifier	11103
+
+			execution_mask			0xff
+			viewport_modifier_mask	0xff
+
+			load
+			{
+				all				clear
+				// clear_depth  1.0
+				clear_colour	0.2 0.4 0.6 1
+			}
+			store
+			{
+				colour	store_or_resolve
+				depth	store
+				stencil	dont_care
+			}
+
+			// expose dynamic_cubemap
+
+			visibility_mask  0x000011FD   // set later  RV_MaskGameAll
+
+			rq_last		80
+
+			overlays	off
+			shadows		SR3_Shadows  //** ed
+			lod_bias	2.0
+		}
+	}
+
+	target rtt_refract
+	{
+		pass render_quad
+		{
+			//  preserve depth buffer
+			load {  colour dont_care  }
+			material Ogre/Copy/4xFP32
+			input 0 rtt_first
+		}
+
+		//  water, Pass with refractive objects
+		pass render_scene
+		{
+			load
+			{
+				all		load
+			}
+			store
+			{
+				colour	store_or_resolve
+				depth	dont_care
+				stencil	dont_care
+			}
+
+			// expose demo_dynamic_cubemap
+			identifier	22201
+
+			visibility_mask  0x00000002
+			rq_first	210
+			rq_last		211
+
+			overlays		on
+			use_refractions	depthBuffer rtt_first
+		}
+
+	}
+
+
+	target rtt_final
+	{
+		pass render_quad
+		{
+			//  preserve depth buffer
+			load {  colour dont_care  }
+			material Ogre/Copy/4xFP32
+			input 0 rtt_refract
+		}
+
+		//  [Main Render 2]  --------
+		pass render_scene
+		{
+			profiling_id "Main view2"
+			identifier	12204
+
+			execution_mask			0xff
+			viewport_modifier_mask	0xff
+
+			load {  all load }
+			store
+			{
+				colour	store
+				depth	store  //-
+				stencil	dont_care
+			}
+
+			//expose dynamic_cubemap
+
+			visibility_mask  0x000011FD
+
+			rq_first		76  //82
+
+			overlays	off
+			// shadows		SR3_Shadows  //** added in code
+		}
+	}
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			load { all dont_care }
+			store
+			{
+				colour	store
+				depth	dont_care  //-
+				stencil	dont_care
+			}
+			material Ogre/Copy/4xFP32
+			input 0 rtt_final
+		}
+	}
 }
 
 
@@ -407,26 +561,6 @@ abstract compositor_node SR3_RenderAbs
 
 	target rtt_first
 	{
-		// pass clear  //  --------
-		// {
-		// 	profiling_id "Clear all"
-		// 	identifier	22000
-
-		// 	//  executed on first view/eye
-		// 	execution_mask			0x01
-		// 	//  affected by modifier, apply to the whole screen
-		// 	viewport_modifier_mask	0x00
-
-		// 	//  Only write to MSAA surface, don't resolve, overlays legacy problem
-		// 	store
-		// 	{
-		// 		colour	store
-		// 		depth	store
-		// 		stencil	store
-		// 	}
-		// 	colour_value  0.02 0.015 0.03 1
-		// }
-
 		//  [Main Render]  --------
 		pass render_scene
 		{
@@ -454,8 +588,6 @@ abstract compositor_node SR3_RenderAbs
 			//  materials in this pass will be using this cubemap
 			expose dynamic_cubemap
 
-			// visibility_mask  0x000011FF   // set later  RV_MaskGameAll
-			// visibility_mask  0x00000001   // set later  RV_MaskGameAll
 			visibility_mask  0x000011FD   // set later  RV_MaskGameAll
 			//! set later at end in all  : SR3_RenderAbs
 
@@ -490,8 +622,8 @@ abstract compositor_node SR3_RenderAbs
 	{
 		pass render_quad
 		{
-			// Only colour must be dont_care, since we must still preserve the depth buffer's contents!
-			load { colour dont_care }
+			//  preserve depth buffer
+			load {  colour dont_care  }
 			material Ogre/Copy/4xFP32
 			input 0 rtt_first
 		}
@@ -529,8 +661,8 @@ abstract compositor_node SR3_RenderAbs
 	{
 		pass render_quad
 		{
-			// Only colour must be dont_care, since we must still preserve the depth buffer's contents!
-			load { colour dont_care }
+			//  preserve depth buffer
+			load {  colour dont_care  }
 			material Ogre/Copy/4xFP32
 			input 0 rtt_refract
 		}
@@ -541,27 +673,16 @@ abstract compositor_node SR3_RenderAbs
 			profiling_id "Main view2"
 			identifier	22204
 
-			//  executed in all views/eyes
 			execution_mask			0xff
-			//  affected by modifier, so renders to a portion of screen
 			viewport_modifier_mask	0xff
 
-			// skip_load_store_semantics true
-			// load { all dont_care }
-			// load { colour dont_care }
 			load {  all load }
 			store
 			{
 				colour	store
 				depth	store  //-
-				stencil	store
+				stencil	dont_care
 			}
-			// store
-			// {
-			// 	colour	store_or_resolve
-			// 	depth	store
-			// 	stencil	dont_care
-			// }
 
 			//  materials in this pass will be using this cubemap
 			//expose dynamic_cubemap
@@ -569,9 +690,7 @@ abstract compositor_node SR3_RenderAbs
 			visibility_mask  0x000011FD
 			//! set later at end in all  : SR3_RenderAbs
 
-			// rq_last		110  // glass,par etc
 			rq_first		76  //82
-			// rq_last		209
 
 			overlays	off
 			// shadows		SR3_Shadows  //** added in code

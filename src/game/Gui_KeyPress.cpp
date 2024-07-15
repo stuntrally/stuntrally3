@@ -241,7 +241,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	//************************************************************************************************************
 	//  shortcut keys for gui access (alt-Q,C,S,G,V,.. )
 	if (alt && !shift)
-	{	EMenu no = ctrl ? MN_Single : MN_NoCng;  // ctrl sets game mode
+	{	EMenu no = !ctrl ? MN_Single : MN_NoCng;  // ctrl sets game mode
 		auto gm = ctrl ? Games_Single : -1;
 		switch (skey)     //  alt- Shortcuts  🎛️
 		{

@@ -161,7 +161,7 @@ Also has simulation for spaceships, sphere etc, and for `Buoyancy.*`.
 
 # Ogre-Next
 
-Ogre-Next has few components: Terra, Atmosphere and PlanarReflections in sources form.  
+Ogre-Next has few components: Terra, `Atmosphere` and PlanarReflections in sources form.  
 Those are included in SR3, inside `src/Terra/` and modified for our needs.  
 The basic application code and setup is also included from Ogre-Next, inside `src/OgreCommon`, modified.  
 Many key changes are marked with `//** `, searching it will find all modified places.
@@ -246,9 +246,9 @@ Main **shaders** for all materials (except terrain and particles) here:
 structures with variables passed to them are in:  
 [500.Structs_piece_vs_piece_ps.any](../data/Hlms/Pbs/Any/Main/500.Structs_piece_vs_piece_ps.any)  
 
-Keep in mind [post](https://forums.ogre3d.org/viewtopic.php?p=554100&sid=6798838bbed3be6881aa07bf10012412#p554100),
-in .any this does not comment: // @property( hlms_fog )  
-Either add && 0 inside, or any letters to make non existing name, or remove @ too.
+Keep in mind ([post](https://forums.ogre3d.org/viewtopic.php?p=554100&sid=6798838bbed3be6881aa07bf10012412#p554100)),
+that in .any this does not comment: `// @property( hlms_fog )`  
+Either add `0 &&` inside, or any letters to make non existing name, or remove `@` too.
 
 ### Compositor
 
@@ -392,7 +392,7 @@ And we have own datablock: `HlmsPbsDb2` with more stuff when needed for paint or
 
 Adding more params for Pbs shaders and terrain. E.g. `globalTime` and our own height fog like `fogHparams`.  
 Easiest to add new in `struct AtmoSettingsGpu` also `struct AtmoSettings` and then fill it in `Atmosphere2Npr::_update` (called each frame).  
-**_ToDo:_** This is half working way. Not all have `atmo` struct.  
+This is mostly working, even for shadow casters etc.  
 
 _ToDo:_ [topic](https://forums.ogre3d.org/viewtopic.php?p=535357#p535357) done through HlmsListener using `getPassBufferSize` and `preparePassBuffer`.
 
