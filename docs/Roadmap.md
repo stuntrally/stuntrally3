@@ -10,25 +10,24 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 `fix` multiplayer on windows [issue](https://github.com/stuntrally/stuntrally3/issues/28)
 
-🌊all **fluids** json, rivers, no refract fix  
+🌊all **fluids** json, **rivers**, no refract fix  
 add refract clr, depth clr params  
 **under**water top, pass projmatrix not inverse  
-`Fix` compositor, hud3d, particles, ed prv cam  
-SSAO?  
+`fix` compositor, glass, more fluids at once, hud?, ed prv no wind-  
+`fix` boost particles  
 
-🌪️**wind** params in json, **scale** for all trees, bushes, grass sway own-  
-wind shadow caster too  
+🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
+wind anim shadow caster too  
 
 🌿**bushes**, lods, **add** to tracks  
 🌳new jungle [**trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), lods  
-`fix ed` obj prv deform, prv cam 
 
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
 
-`fix` boost particles  
 fix .car thrusters lights pos  
 **ed** Fields: accel par, dir, teleport end  
+SSAO?  convert .compositor to C++  
 
 new track(s) with fields, add walls  
 hud new best time show, win particles-  

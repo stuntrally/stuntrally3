@@ -1,11 +1,12 @@
 ![](/data/hud/stuntrally-logo.jpg)
 
 [![Build game](https://github.com/stuntrally/stuntrally3/actions/workflows/build-game.yml/badge.svg)](https://github.com/stuntrally/stuntrally3/actions/workflows/build-game.yml)
-[![Translation status](https://hosted.weblate.org/widget/stunt-rally-3/stunt-rally-3/svg-badge.svg)](https://hosted.weblate.org/engage/stunt-rally-3/)
+[![Translation status](https://hosted.weblate.org/widget/stunt-rally-3/stunt-rally-3/svg-badge.svg)](https://hosted.weblate.org/engage/stunt-rally-3/)  
 ![Last commit date](https://flat.badgen.net/github/last-commit/stuntrally/stuntrally3)
 ![Commits count](https://flat.badgen.net/github/commits/stuntrally/stuntrally3)
 ![License](https://flat.badgen.net/github/license/stuntrally/stuntrally3)  
-[![Discord](https://img.shields.io/discord/1239125025395703858?label=Discord&logo=Discord&logoColor=white)](https://discord.gg/TywnXxAtR6)  
+[![Discord](https://img.shields.io/discord/1239125025395703858?label=Discord&logo=Discord&logoColor=white)](https://discord.gg/TywnXxAtR6)
+![](https://img.shields.io/github/downloads/stuntrally/stuntrally3/total.svg)
 
 ## Links
 
@@ -20,10 +21,10 @@
 💜[Donations](https://cryham.tuxfamily.org/donate/) - financial support
 
 ### Feedback
-💬[Discord](https://discord.gg/TywnXxAtR6) - Community  
+💬[Discord](https://discord.gg/TywnXxAtR6) - chat, Community  
 🪧[Reddit](https://www.reddit.com/r/stuntrally/) - r/stuntrally/  
 [github discussions](https://github.com/stuntrally/stuntrally3/discussions)  
-Matrix chat room: #stuntrally:matrix.org  
+Matrix (e.g. with [element app](https://element.io/download)) chat room: #stuntrally:matrix.org  
 
 ### Forum  
 🏛️[New Forum](https://groups.f-hub.org/stunt-rally/) - Discussions, Tracks, content, [how to join](https://groups.f-hub.org/d/2ftpShKs/) info on top.  
@@ -33,7 +34,7 @@ Matrix chat room: #stuntrally:matrix.org
 
 ## 📄Description
 
-Stunt Rally is a 3D racing game with own Track Editor.  
+Stunt Rally is a 3D racing game, including Sci-Fi and own Track Editor.  
 Works on GNU/Linux and Windows.  
 
 For cars the game has a **rally** style of driving and sliding, mostly on gravel and loose surfaces.  
