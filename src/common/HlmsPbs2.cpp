@@ -75,10 +75,17 @@ void HlmsPbs2::calculateHashForPreCreate(
 		case DB_Grass:  setProperty( "grass", 1 );  break;
 		case DB_Fluid:	fluid = 1;
 						setProperty( "water", 1 );  break;
+		case DB_Particle:
+			setProperty( "hlms_normal", 1);
+			setProperty( "hlms_qtangent", 1);
+			setProperty( "particle", 1 );  break;
 		case DB_Paint:	setProperty( "paint", 1 );  break;
 		default:  break;
 		}
 	}
+
+	// if (mtr.substr(0,4) == "Dust")
+	// 	setProperty( "particle", 1 );
 
 	if (mtr.substr(0,5) == "River")
 	{	fluid = 1;
@@ -357,6 +364,10 @@ public:
 		it = json.FindMember( "grass" );
 		if (it != json.MemberEnd())
 			db2->eType = DB_Grass;
+
+		it = json.FindMember( "particle" );
+		if (it != json.MemberEnd())
+			db2->eType = DB_Particle;
 	}
 
 	//  Save .json  ---------------------------------
@@ -371,6 +382,8 @@ public:
 	        out += ",\n\t\t\t\"grass\" : true";
 		if (db2->wind)
 	        out += ",\n\t\t\t\"tree_wind\" : true";
+		if (db2->eType == DB_Particle)
+	        out += ",\n\t\t\t\"particle\" : true";
 
 		//  add reflect par,  rem cube, restore
 		TextureGpu *tex = db2->getTexture( PBSM_REFLECTION ), *no = 0;

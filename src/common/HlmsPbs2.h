@@ -72,6 +72,7 @@ enum EType
 	DB_Fluid,  // water, mud etc
 	// DB_Tree,   // tree with wind
 	DB_Grass,  // grass,bush deform under vehicle
+	DB_Particle,  // particles, dust todo
 	DB_ALL
 };
 
