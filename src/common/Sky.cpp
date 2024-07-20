@@ -114,6 +114,9 @@ void CScene::CreateFog()
 	auto *mgr = app->mSceneMgr;
 
 	atmo = OGRE_NEW Atmosphere( app->mRoot->getRenderSystem()->getVaoManager(), mgr );
+#ifdef SR_EDITOR
+	app->prvScene.mgr->_setAtmosphere(atmo);
+#endif
 	
 	OGRE_ASSERT_HIGH( dynamic_cast<Atmosphere*>( mgr->getAtmosphere() ) );
 	atmo = static_cast<Atmosphere*>( mgr->getAtmosphere() );
@@ -126,6 +129,9 @@ void CScene::DestroyFog()
 	LogO("D--- destroy Atmosphere");
 	auto *mgr = app->mSceneMgr;
 
+#ifdef SR_EDITOR
+	app->prvScene.mgr->_setAtmosphere(0);
+#endif
 	AtmosphereComponent *atm = mgr->getAtmosphereRaw();
 	OGRE_DELETE atm;
 	atmo = 0;
@@ -451,7 +457,7 @@ void CScene::UpdateWeather(Camera* cam, float invDT, float emitMul)
 	float t = atmo ? atmo->timeWind.x : 0.f;
 	float a = std::min(1.f, sc->windOfs * 0.3f
 				- sin(t * sc->windFreq * 3.21f) 
-				* sin(t * sc->windFreq * 3.63f) * 0.05f * sc->windAmpl);  // par how much goes sideway
+				* sin(t * sc->windFreq * 3.63f) * 0.08f * sc->windAmpl);  // par how much goes sideway
 	// float a = std::min(1.f, sc->windOfs * 0.3f);  // const-
 	float a1 = 1.f - a;
 	Vector3 emitDir( a * cosf(yaw), -a1, -a * sinf(yaw));

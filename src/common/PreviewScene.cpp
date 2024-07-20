@@ -72,12 +72,16 @@ bool PreviewScene::Create(App* app1)
 	// ndCam?	
 	// ws = 0;
 
+	// mgr->_setAtmosphere(app->atmo)
+
 	return true;
 }
 
 //  💥 Destroy
 void PreviewScene::Destroy()
 {
+	mgr->_setAtmosphere(0);
+
 	LogO("D--P PreviewScene Destroy");
 	Unload();
 
