@@ -273,6 +273,7 @@ public:
 	Btn btnVeget =0;  // pick
 	Tab tabsPgLayers =0;  void tabPgLayers(TAB);
 	CK(PgLayOn);  Txt valLTrAll =0;
+	constexpr static int ciLTrAllYlw = 15;
 	void btnUpdateVeget(WP);
 
 	SV svLTrDens;

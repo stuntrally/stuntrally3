@@ -42,6 +42,7 @@ hlms hud/minimap unlit
     diffuse  1 1 1
 	scene_blend alpha_blend
 	cull_mode none
+	depth_write off
 
 	diffuse_map road.png
 	// diffuse_map terrain.jpg
@@ -52,6 +53,7 @@ hlms hud/CarPos unlit
     diffuse  1 1 1
 	scene_blend alpha_blend
 	cull_mode none
+	depth_write off
 
 	diffuse_map carpos0.png
 }
@@ -150,12 +152,14 @@ hlms ed_RoadDens unlit
 	diffuse 1 1 1
 	diffuse_map white.png
 	cull_mode none
+	//depth_write off
 }
 hlms ed_RoadPreview unlit
 {
 	diffuse 1 1 1
 	diffuse_map white.png
 	cull_mode none
+	//depth_write off
 }
 
 hlms ed_Rtt_0 unlit
@@ -163,31 +167,37 @@ hlms ed_Rtt_0 unlit
 	// diffuse_map  RttTex0  // set in cpp
 	diffuse 1 1 1
 	cull_mode none
+	depth_write off
 }
 hlms ed_Rtt_1 unlit
 {
 	diffuse 1 1 1
 	cull_mode none
+	depth_write off
 }
 hlms ed_Rtt_2 unlit
 {
 	diffuse 1 1 1
+	depth_write off
 	cull_mode none
 }
 hlms ed_Rtt_3 unlit
 {
 	diffuse 1 1 1
 	cull_mode none
+	depth_write off
 }
 hlms ed_Rtt_4 unlit
 {
 	diffuse 1 1 1
 	cull_mode none
+	depth_write off
 }
 hlms ed_Bck unlit
 {
 	diffuse 0.05 0.1 0.2
 	cull_mode none
+	depth_write off
 }
 
 
@@ -199,12 +209,14 @@ hlms edBrush unlit
 	cull_mode none
 	scene_blend alpha_blend
 	alpha_rejection greater 2
+	depth_write off
 }
 hlms edTerGen unlit
 {
 	// diffuse_map  TerGenTex  // set in cpp
 	diffuse 1 1 1
 	cull_mode none
+	depth_write off
 }
 
 
@@ -216,6 +228,8 @@ hlms circle_deform unlit
 	diffuse  0.2 0.8 0.0
 	depth_bias 3
 	cull_mode none
+	depth_write off  //-
+	// depth_check off
     // fog_en false
 }
 
@@ -227,6 +241,7 @@ hlms circle_height unlit
 	// specular 0.25 0.3 0.25
 	depth_bias 3
 	cull_mode none
+	depth_write off
 }
 
 hlms circle_smooth unlit
@@ -235,6 +250,7 @@ hlms circle_smooth unlit
 	diffuse 0.0 0.9 0.8
 	depth_bias 3
 	cull_mode none
+	depth_write off
 }
 
 hlms circle_filter unlit
@@ -243,5 +259,6 @@ hlms circle_filter unlit
 	diffuse  0.4 0.7 1.0
 	depth_bias 3
 	cull_mode none
+	depth_write off
 }
 

@@ -279,7 +279,7 @@ void CGui::tabPgLayers(Tab wp, size_t id)
 			liVeg->setIndexSelected(i);
 			
 	Upd3DView(lay.name);
-	SetUsedStr(valLTrAll, sc->vegLayers.size(), 6);
+	SetUsedStr(valLTrAll, sc->vegLayers.size(), ciLTrAllYlw);
 	txVCnt->setCaption(toStr(lay.cnt));
 }
 
@@ -334,7 +334,7 @@ void CGui::SldUpd_PgL()
 void CGui::chkPgLayOn(Ck*)
 {
 	sc->UpdVegLayers();
-	SetUsedStr(valLTrAll, sc->vegLayers.size(), 10);
+	SetUsedStr(valLTrAll, sc->vegLayers.size(), ciLTrAllYlw);
 }
 
 void CGui::Upd3DView(String mesh)
