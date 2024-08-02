@@ -10,17 +10,19 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 `fix` multiplayer on windows [issue](https://github.com/stuntrally/stuntrally3/issues/28)
 
-🌊all **fluids** json, **rivers**, no refract fix  
-add refract clr, depth clr params  
-**under**water top, pass projmatrix not inverse  
-`fix` compositor, glass, more fluids at once, hud?, ed prv no wind-  
+🌊**add** refract clr, `depth` clr params, no refract fix  
+**under**water top, `pass` projmatrix not inverse  
+`fix` compositor, car glass, `more` fluids at once, hud?,  
+ed prv add wtr to ter, ed prv obj no wind-  
 `fix` boost particles  
 
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
 wind anim shadow caster too  
 
 🌿**bushes**, lods, **add** to tracks  
-🌳new jungle [**trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), lods  
+🌳new [**trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), lods  
+rem tree.0* from: For, Sav, Jng,  Aus, Isl, Vlc  
+rem farn* palm,2?  
 
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
