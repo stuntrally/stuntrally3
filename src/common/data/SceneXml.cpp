@@ -63,8 +63,9 @@ void Scene::Default()
 	//  🌳 veget
 	densTrees=0;  densGrass=0;  grDensSmooth=6;
 	vegLayers.clear();
+	VegetLayer vgl;
 	for (int i=0; i < ciNumVegLay; ++i)
-		vegLayersAll[i].on = 0;
+		vegLayersAll[i] = vgl;
 
 	for (int i=0; i < ciNumGrLay; ++i)
 	{
