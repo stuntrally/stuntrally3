@@ -859,9 +859,14 @@ common:  sc - "short scenery name" (name color)
 <v sc="Des"  p="cactus"               r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="0.40" sb="0.72"  wx="0.00" wy="0.000"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Des"  p="palm"                 r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="1.78" sb="2.74"  wx="0.60" wy="0.010"  ab="15.07" rd="1" fd="0.0" />
 <v sc="Des"  p="palm2"                r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="2.00" sb="3.31"  wx="0.30" wy="0.115"  ab="30.03" rd="1" fd="0.0" />
+
 <v sc="Des"  p="palm_arabic"          r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="1.10" sb="1.61"  wx="0.30" wy="0.115"  ab="30.03" rd="1" fd="0.0" />
-<v sc="Des"  p="palm_coconut1"        r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="1.10" sb="1.51"  wx="0.30" wy="0.115"  ab="28.03" rd="1" fd="0.0" />
-<v sc="Des"  p="palm_date"            r="2" al="0"  vd="500" vD=" 800"  y="0.52" sa="1.00" sb="1.51"  wx="0.30" wy="0.115"  ab="25.03" rd="1" fd="0.0" />
+<v sc="Jng"  p="palm_coconut1"        r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="1.10" sb="1.51"  wx="0.30" wy="0.115"  ab="28.03" rd="1" fd="0.0" />
+<v sc="Grc"  p="palm_date"            r="2" al="0"  vd="500" vD=" 800"  y="0.52" sa="1.00" sb="1.51"  wx="0.30" wy="0.115"  ab="25.03" rd="1" fd="0.0" />
+<v sc="Jng"  p="palm_coco3a"          r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="Jng"  p="palm_coco3b"          r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="Des"  p="palm_fan"             r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+
 
 <v sc="Jng"  p="---- Jungle ----"     r="0" />
 <!--  Trees  🟢 Jungle  new  -->
@@ -882,7 +887,7 @@ common:  sc - "short scenery name" (name color)
 
 
 <!--  🌲 Pines  ================  -->
-<v sc="For" p="---- Forest ----"      r="0" />
+<v sc="For" p="---- Pines ----"      r="0" />
 <v sc="For"  p="fir05"                r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.04" sb="0.10"  wx="2.80" wy="0.100"  ab="30.72" rd="1" fd="0.0" />
 <v sc="For"  p="fir06"                r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.04" sb="0.12"  wx="1.80" wy="0.100"  ab="27.49" rd="1" fd="0.0" />
 <v sc="For"  p="fir14"                r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.06" sb="0.09"  wx="1.80" wy="0.100"  ab="50.00" rd="1" fd="0.0" />

@@ -28,24 +28,13 @@ Url:		https://opengameart.org/content/freebies-mundo-commissions
 
 -----  new  SR 3.2  -----
 
-Model:		jungle1_wide.mesh
-Artist:		TechArtBGN
+Model:		beech1_wide.mesh  beech2_tall.mesh
+Artist:		LordSamueliSolo  LadyLionStudios
 License:	CC-BY 4.0
-Date:		18/03/2024
-Url:		https://sketchfab.com/3d-models/tree-gn-40da979cb23f492583ec89c4196cff4e
+Date:		18/03/2022
+Url:		https://sketchfab.com/3d-models/beech-trees-free-low-poly-f59546058ee44e73920e79fa78614f21
 
-Model:		jungle2_wide.mesh
-Artist:		Valery.Li
-License:	CC-BY 4.0
-Date:		17/11/2021
-Url:		https://sketchfab.com/3d-models/chinese-banyan-ficus-microcarpa-2a0dbcdf8f5d48f5ad79987c7a8170ce
-
-Model:		jungle3_tall.mesh
-Artist:		rodrigo  gelmi.com.br
-License:	CC-BY 4.0
-Date:		01/08/2023
-Url:		https://sketchfab.com/3d-models/jungle-tree-b760147faadf41eabb2bb6cb85274d8a
-
+-----  new palms
 
 Model:		palm_arabic.mesh
 Artist:		rodrigo  gelmi.com.br
@@ -65,3 +54,54 @@ License:	CC-BY 4.0
 Date:		18/04/2022
 Url:		https://sketchfab.com/3d-models/date-palm-11acf710e6c149daa8d6fb8cdc5d087f
 
+Model:		palm_coco3a.mesh  palm_coco3b.mesh
+Artist:		LordSamueliSolo  LadyLionStudios
+License:	CC-BY 4.0
+Date:		18/03/2022
+Url:		https://sketchfab.com/3d-models/coconut-palm-trees-free-low-poly-0e84a55ab79a44ecaa693675408aa252
+
+Model:		palm_fan.mesh
+Artist:		TreDè  luigi_disilvestre
+License:	CC-BY 4.0
+Date:		29/08/2022
+Url:		https://sketchfab.com/3d-models/free-game-ready-palm-e8c0ea53410947b0b7f20d33702f4098
+
+
+-----  todo:
+Model:		jungle1_wide.mesh
+Artist:		TechArtBGN
+License:	CC-BY 4.0
+Date:		18/03/2024
+Url:		https://sketchfab.com/3d-models/tree-gn-40da979cb23f492583ec89c4196cff4e
+
+Model:		jungle2_wide.mesh
+Artist:		Valery.Li
+License:	CC-BY 4.0
+Date:		17/11/2021
+Url:		https://sketchfab.com/3d-models/chinese-banyan-ficus-microcarpa-2a0dbcdf8f5d48f5ad79987c7a8170ce
+
+Model:		jungle3_tall.mesh
+Artist:		rodrigo  gelmi.com.br
+License:	CC-BY 4.0
+Date:		01/08/2023
+Url:		https://sketchfab.com/3d-models/jungle-tree-b760147faadf41eabb2bb6cb85274d8a
+
+
+	todo:
+Model:		palm_coco..mesh
+Artist:		evolveduk
+License:	CC-BY 4.0
+Date:		08/05/2022
+Url:		https://sketchfab.com/3d-models/coconut-palm-26e787f2ff2e4c0fb004c3b0210805a3
+
+Model:		palm_fan1..6.mesh
+Artist:		Rusoski
+License:	CC-BY 4.0
+Date:		28/08/2018
+Url:		https://sketchfab.com/3d-models/low-poly-palms-pack-bf1cadd21a704739bc19d535ae741728
+
+Model:		palm_tall.mesh
+Artist:		Aliyeredon
+License:	CC-BY 4.0
+Date:		06/05/2022
+Url:		https://sketchfab.com/3d-models/realistic-palm-tree-model-vol2-56e55c30c03b4b6993441e0a15b87a19
