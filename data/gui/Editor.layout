@@ -2425,7 +2425,22 @@
 									<Property key="Caption" value="#A0204019"/>
 								</Widget>
 								<Widget type="TabItem" skin="" position="2 24 610 -14">
-									<Property key="Caption" value="#80101020"/>
+									<Property key="Caption" value="#90202020"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#80202021"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#70101022"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#70101023"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#60101024"/>
+								</Widget>
+								<Widget type="TabItem" skin="" position="2 24 610 -14">
+									<Property key="Caption" value="#50101025"/>
 								</Widget>
 							</Widget>
 							<!--<Widget type="Widget" skin="PanelSkin" position="0 0 528 24">-->

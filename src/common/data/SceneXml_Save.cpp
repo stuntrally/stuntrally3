@@ -313,26 +313,34 @@ bool Scene::SaveXml(String file)
 			pgd->InsertEndChild(gch);
 		}
 
+		VegetLayer nvg;  // default
 		for (i=0; i < ciNumVegLay; ++i)  // 🌳🪨 models
 		{
 			const VegetLayer& l = vegLayersAll[i];
-			XMLElement* vgl = xml.NewElement("layer");
-			vgl->SetAttribute("on",			l.on ? 1 : 0);
-			vgl->SetAttribute("name",		l.name.c_str());
-			vgl->SetAttribute("dens",		toStrC( l.dens ));
-			vgl->SetAttribute("minScale",	toStrC( l.minScale ));
-			vgl->SetAttribute("maxScale",	toStrC( l.maxScale ));
+			if (l == nvg)
+			{
+				XMLElement* vgl = xml.NewElement("layer");
+				vgl->SetAttribute("on",			0);
+				pgd->InsertEndChild(vgl);  // empty
+			}else
+			{
+				XMLElement* vgl = xml.NewElement("layer");
+				vgl->SetAttribute("on",			l.on ? 1 : 0);
+				vgl->SetAttribute("name",		l.name.c_str());
+				vgl->SetAttribute("dens",		toStrC( l.dens ));
+				vgl->SetAttribute("minScale",	toStrC( l.minScale ));
+				vgl->SetAttribute("maxScale",	toStrC( l.maxScale ));
 
-			vgl->SetAttribute("ofsY",		toStrC( l.ofsY ));
-			vgl->SetAttribute("addTrRdDist",toStrC( l.addRdist ));
-			vgl->SetAttribute("maxRdist",	toStrC( l.maxRdist ));
+				vgl->SetAttribute("ofsY",		toStrC( l.ofsY ));
+				vgl->SetAttribute("addTrRdDist",toStrC( l.addRdist ));
+				vgl->SetAttribute("maxRdist",	toStrC( l.maxRdist ));
 
-			vgl->SetAttribute("maxTerAng",	toStrC( l.maxTerAng ));
-			vgl->SetAttribute("minTerH",	toStrC( l.minTerH ));
-			vgl->SetAttribute("maxTerH",	toStrC( l.maxTerH ));
-			vgl->SetAttribute("maxDepth",	toStrC( l.maxDepth ));
-			pgd->InsertEndChild(vgl);
-		}
+				vgl->SetAttribute("maxTerAng",	toStrC( l.maxTerAng ));
+				vgl->SetAttribute("minTerH",	toStrC( l.minTerH ));
+				vgl->SetAttribute("maxTerH",	toStrC( l.maxTerH ));
+				vgl->SetAttribute("maxDepth",	toStrC( l.maxDepth ));
+				pgd->InsertEndChild(vgl);
+		}	}
 	root->InsertEndChild(pgd);
 
 

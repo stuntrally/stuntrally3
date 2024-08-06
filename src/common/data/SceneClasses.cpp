@@ -93,3 +93,14 @@ void TerData::UpdLayers()
 				layers.push_back(i);
 	}	}
 }
+
+
+bool VegetLayer::operator==(const VegetLayer& v) const
+{
+	return on == v.on && name == v.name && dens == v.dens &&
+		addRdist == v.addRdist && maxRdist == v.maxRdist &&
+		minScale == v.minScale && maxScale == v.maxScale && ofsY == v.ofsY &&
+		maxTerAng == v.maxTerAng &&
+		minTerH == v.minTerH && maxTerH == v.maxTerH &&
+		maxDepth == v.maxDepth;
+}

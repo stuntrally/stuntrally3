@@ -120,7 +120,7 @@ public:
 	SGrassChannel grChan[4];
 
 	//  model layers  (trees,rocks,etc)  not paged
-	const static int ciNumVegLay = 20;  // max all, for edit
+	const static int ciNumVegLay = 25;  // max all, for edit
 	VegetLayer vegLayersAll[ciNumVegLay];
 	std::vector<int> vegLayers;    // active only (on)
 	void UpdVegLayers();

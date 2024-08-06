@@ -113,6 +113,8 @@ public:
 	float maxTerAng = 50.f, minTerH = -100.f, maxTerH = 100.f;  // terrain
 	float maxDepth = 5.f;  // in fluid
 	int cnt = 0;  // count on track, for stats
+	
+	bool operator==(const VegetLayer& v) const;
 };
 
 //  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
