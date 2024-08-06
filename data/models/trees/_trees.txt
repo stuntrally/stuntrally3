@@ -28,11 +28,24 @@ Url:		https://opengameart.org/content/freebies-mundo-commissions
 
 -----  new  SR 3.2  -----
 
-Model:		beech1_wide.mesh  beech2_tall.mesh
+Model:		tree_jng1.mesh  tree_jng2.mesh  tree_jng3.mesh
+Artist:		TechArtBGN
+License:	CC-BY 4.0
+Date:		24/09/2022
+Url:		https://sketchfab.com/3d-models/tree-wind-system-87a2022bd8ad4c85b4d11825143e4e77
+
+Models:		beech1_wide.mesh  beech2_tall.mesh
 Artist:		LordSamueliSolo  LadyLionStudios
 License:	CC-BY 4.0
 Date:		18/03/2022
 Url:		https://sketchfab.com/3d-models/beech-trees-free-low-poly-f59546058ee44e73920e79fa78614f21
+
+	todo:
+Model:		elm1.mesh  elm2.mesh
+Artist:		LordSamueliSolo  LadyLionStudios
+License:	CC-BY 4.0
+Date:		20/03/2022
+Url:		https://sketchfab.com/3d-models/elm-trees-free-low-poly-352c29c013434d6585e74332699310e2
 
 -----  new palms
 
@@ -54,7 +67,7 @@ License:	CC-BY 4.0
 Date:		18/04/2022
 Url:		https://sketchfab.com/3d-models/date-palm-11acf710e6c149daa8d6fb8cdc5d087f
 
-Model:		palm_coco3a.mesh  palm_coco3b.mesh
+Models:		palm_coco3a.mesh  palm_coco3b.mesh
 Artist:		LordSamueliSolo  LadyLionStudios
 License:	CC-BY 4.0
 Date:		18/03/2022
@@ -87,14 +100,14 @@ Date:		01/08/2023
 Url:		https://sketchfab.com/3d-models/jungle-tree-b760147faadf41eabb2bb6cb85274d8a
 
 
-	todo:
+-----  todo:
 Model:		palm_coco..mesh
 Artist:		evolveduk
 License:	CC-BY 4.0
 Date:		08/05/2022
 Url:		https://sketchfab.com/3d-models/coconut-palm-26e787f2ff2e4c0fb004c3b0210805a3
 
-Model:		palm_fan1..6.mesh
+Models:		palm_fan1..6.mesh
 Artist:		Rusoski
 License:	CC-BY 4.0
 Date:		28/08/2018

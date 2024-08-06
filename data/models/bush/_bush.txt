@@ -33,7 +33,7 @@ License:	CC0
 Date:		08/01/2013
 Url:		https://opengameart.org/content/tropical-shrubs
 
-	TODO
+	todo:
 Models:		tiny1..5.mesh
 Artist:		yughues / Nobiax
 License:	CC0
@@ -47,7 +47,8 @@ License:	CC-BY 4.0
 Date:		06/11/2017
 Url:		https://sketchfab.com/3d-models/blueberry-2d6ec794ac5c45939a7f23cb9d219e10
 
-Model:		bushes1.mesh  bushes2.mesh   Low Poly Bushes
+Low Poly Bushes
+Models:		bushes1.mesh  bushes2.mesh  bushes1_sav.mesh  bushes2_sav.mesh
 Artist:		OliverMH
 License:	CC-BY
 Date:		15/11/2013
@@ -65,8 +66,14 @@ License:	CC-BY 4.0
 Date:		29/07/2019
 Url:		https://sketchfab.com/3d-models/tropical-plant-7365d3fc0eb148028c751364dd172952
 
-Model:		bush_grass1.mesh  bush_grass2.mesh
+Models:		bush_grass1.mesh  bush_grass2.mesh
 Artist:		Pixel Life
 License:	CC-BY 4.0
 Date:		27/11/2023
 Url:		https://sketchfab.com/3d-models/grass-bushes-game-ready-asset-aa1fa43af9bf4228adfddb54ea123ad1
+
+Model:		tropic_peacock.mesh
+Artist:		The_Structure_World
+License:	CC-BY 4.0
+Date:		02/01/2022
+Url:		https://sketchfab.com/3d-models/tropcial-peacock-plant-4af286ea07c94254a3830de9a56dabbc

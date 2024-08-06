@@ -876,9 +876,14 @@ common:  sc - "short scenery name" (name color)
 <v sc="Jng"  p="jungle4_big"          r="2" al="0"  vd="400" vD=" 800"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
 
 <!--  Trees  🟢 Jng  old  -->
-<v sc="Jng"  p="tree.07"              r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
-<v sc="Jng"  p="tree.07"              r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="2.45" sb="3.15"  wx="0.30" wy="0.004"  ab="38.18" rd="5" fd="0.0" />
-<v sc="Jng"  p="tree.09"              r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
+<v sc="Jng"  p="tree.07"              r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
+<v sc="Jng"  p="tree.07"              r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="2.45" sb="3.15"  wx="0.30" wy="0.004"  ab="38.18" rd="5" fd="0.0" />
+<v sc="Jng"  p="tree.09"              r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
+
+<v sc="Sav"  p="acacia1"              r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
+<v sc="Sav"  p="tree_jng1"            r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
+<v sc="Sav"  p="tree_jng2"            r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
+<v sc="Sav"  p="tree_jng3"            r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
 
 <v sc="Sav"  p="jungle_tree"          r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="1.61" sb="2.05"  wx="0.40" wy="0.002"  ab="29.26" rd="1" fd="0.0" />
 
@@ -927,10 +932,13 @@ common:  sc - "short scenery name" (name color)
 
 <v sc="For"  p="blueberry"            r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 <v sc="Atm"  p="blueberryAtm"         r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
-<v sc="For"  p="bushes1"              r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
-<v sc="For"  p="bushes2"              r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 <v sc="Des"  p="bush_grass1"          r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.40" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 <v sc="Des"  p="bush_grass2"          r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.40" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
+
+<v sc="For"  p="bushes1"              r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
+<v sc="For"  p="bushes2"              r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
+<v sc="Sav"  p="bushes1_sav"          r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="0.90" sb="1.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
+<v sc="Sav"  p="bushes2_sav"          r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="0.90" sb="1.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 
 <v sc="For"  p="bush01"               r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.80" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 <v sc="Can"  p="bush02dry_red"        r="4" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.80" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
@@ -1115,6 +1123,11 @@ common:  sc - "short scenery name" (name color)
 <v sc="Grc"  p="treeGG-37acaTall"     r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.33"  wx="0.33" wy="0.040"  ab="40.00" rd="1" fd="0.0" />
 <v sc="Grc"  p="treeGW-41aspMid"      r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="1.15" sb="1.67"  wx="0.43" wy="0.010"  ab="11.93" rd="1" fd="0.0" />
 <v sc="Mos"  p="treeGY-36aspMed"      r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.92" sb="1.22"  wx="0.70" wy="0.010"  ab="30.63" rd="1" fd="0.0" />
+
+<v sc="For"  p="---- Trees new ----"  r="0" />
+<v sc="For"  p="beech1_wide"          r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="For"  p="beech2_tall"          r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+
 
 
 <!--  🍄 Shrooms  ================  -->
