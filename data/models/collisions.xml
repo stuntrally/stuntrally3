@@ -36,6 +36,9 @@
 	<object mesh= "tropic_leaves.mesh">
 		<shape type="sphere" ofs="0 0 0.1" r="0.4" frict="0.0" restit="0.0" damp="0.5" />
 	</object>
+	<object mesh= "tropic_peacock.mesh">
+		<shape type="sphere" ofs="0 0 0.1" r="0.4" frict="0.0" restit="0.0" damp="0.5" />
+	</object>
 
 	<object mesh= "blueberry.mesh">
 		<shape type="sphere" ofs="0 0 0.3" r="0.6" frict="0.0" restit="0.0" damp="0.8" />
@@ -49,16 +52,23 @@
 	<object mesh= "bush_grass2.mesh">
 		<shape type="sphere" ofs="0 0 0.2" r="0.4" frict="0.0" restit="0.0" damp="0.3" />
 	</object>
+	<object mesh= "fern_bush.mesh">
+		<shape type="sphere" ofs="0 0 0.3" r="0.6" frict="0.0" restit="0.0" damp="0.8" />
+	</object>
+
 	<object mesh= "bushes1.mesh">
 		<shape type="sphere" ofs="0 0 0.2" r="0.6" frict="0.0" restit="0.0" damp="1" />
 	</object>
 	<object mesh= "bushes2.mesh">
 		<shape type="sphere" ofs="0 0 0.3" r="1.0" frict="0.0" restit="0.0" damp="1.2" />
 	</object>
-	<object mesh= "fern_bush.mesh">
-		<shape type="sphere" ofs="0 0 0.3" r="0.6" frict="0.0" restit="0.0" damp="0.8" />
+	<object mesh= "bushes1_sav.mesh">
+		<shape type="sphere" ofs="0 0 0.2" r="0.6" frict="0.0" restit="0.0" damp="1" />
 	</object>
-	
+	<object mesh= "bushes2_sav.mesh">
+		<shape type="sphere" ofs="0 0 0.3" r="1.0" frict="0.0" restit="0.0" damp="1.2" />
+	</object>
+
 	<object mesh= "bush01.mesh">
 		<shape type="sphere" ofs="0 0 0.4" r="0.4" frict="0.0" restit="0.0" damp="1" />
 	</object>
@@ -270,16 +280,17 @@
 
 <!-- jng new -->
 	<object mesh= "jungle1_wide.mesh">
-		<shape type="capsZ" ofs="0.0 0 0.0" r="0.6" h="3.0" frict="0.7" restit="0.9" />
+		<shape type="capsZ" ofs="0.0 0 4.0" r="0.7" h="8.0" frict="0.7" restit="0.9" />
 	</object>
 	<object mesh= "jungle2_wide.mesh">
-		<shape type="capsZ" ofs="0.0 0 0.0" r="0.6" h="3.0" frict="0.7" restit="0.9" />
+		<shape type="capsZ" ofs="0.0 0 4.0" r="0.8" h="8.0" frict="0.7" restit="0.9" />
 	</object>
 
 	<object mesh= "jungle3_tall.mesh">
-		<shape type="capsZ" ofs="0 0 0.0" r="0.3" h="4.0" frict="0.7" restit="0.9" />
+		<shape type="capsZ" ofs="0 0 6.0" r="0.35" h="12.0" frict="0.7" restit="0.9" />
 	</object>
 
+<!-- palm new -->
 	<object mesh= "palm_arabic.mesh">
 		<shape type="capsZ" ofs="0 0 0.0" r="0.2" h="4.0" frict="0.7" restit="0.9" />
 	</object>
@@ -288,6 +299,36 @@
 	</object>
 	<object mesh= "palm_date.mesh">
 		<shape type="capsZ" ofs="0 0 0.0" r="0.2" h="4.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "palm_coco3a.mesh">
+		<shape type="capsZ" ofs="0 0 0.0" r="0.2" h="2.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "palm_coco3b.mesh">
+		<shape type="capsZ" ofs="0.0 0 0.0" r="0.2" h="2.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "palm_fan.mesh">
+		<shape type="capsZ" ofs="0.0 0 0.0" r="0.5" h="3.0" frict="0.7" restit="0.9" />
+	</object>
+
+<!-- for new -->
+	<object mesh= "beech1_wide.mesh">
+		<shape type="capsZ" ofs="0.0 0 0.0" r="0.5" h="3.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "beech2_tall.mesh">
+		<shape type="capsZ" ofs="0.0 0 0.0" r="0.5" h="3.0" frict="0.7" restit="0.9" />
+	</object>
+
+	<object mesh= "acacia1.mesh">
+		<shape type="capsZ" ofs="0.0 0 2.0" r="0.15" h="4.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "tree_jng1.mesh">
+		<shape type="capsZ" ofs="0.0 0 4.0" r="0.6" h="8.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "tree_jng2.mesh">
+		<shape type="capsZ" ofs="0.0 0 4.0" r="0.7" h="8.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "tree_jng3.mesh">
+		<shape type="capsZ" ofs="0.0 0 4.0" r="0.6" h="8.0" frict="0.7" restit="0.9" />
 	</object>
 
 	
