@@ -28,6 +28,12 @@ Url:		https://opengameart.org/content/freebies-mundo-commissions
 
 -----  new  SR 3.2  -----
 
+Model:		acacia1.mesh
+Artist:		evolveduk
+License:	CC-BY 4.0
+Date:		06/06/2022
+Url:		https://sketchfab.com/3d-models/acacia-tree-bb14c2bb679b4d0bb1c578a27e2ddabf
+
 Model:		tree_jng1.mesh  tree_jng2.mesh  tree_jng3.mesh
 Artist:		TechArtBGN
 License:	CC-BY 4.0
@@ -40,12 +46,17 @@ License:	CC-BY 4.0
 Date:		18/03/2022
 Url:		https://sketchfab.com/3d-models/beech-trees-free-low-poly-f59546058ee44e73920e79fa78614f21
 
-	todo:
-Model:		elm1.mesh  elm2.mesh
+Models:		elm1.mesh  elm2.mesh  elm3.mesh
 Artist:		LordSamueliSolo  LadyLionStudios
 License:	CC-BY 4.0
 Date:		20/03/2022
 Url:		https://sketchfab.com/3d-models/elm-trees-free-low-poly-352c29c013434d6585e74332699310e2
+
+Models:		oak1.mesh  oak2.mesh  oak3.mesh
+Artist:		LordSamueliSolo  LadyLionStudios
+License:	CC-BY 4.0
+Date:		20/03/2022
+Url:		https://sketchfab.com/3d-models/oak-trees-free-low-poly-7a689370f9ec46cea2cbc94641c225e6
 
 -----  new palms
 
