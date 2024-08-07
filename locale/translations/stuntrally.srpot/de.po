@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-07 21:34+0200\n"
-"PO-Revision-Date: 2024-07-27 23:09+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2024-08-07 21:09+0000\n"
+"Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/de/>\n"
 "Language: de\n"
@@ -728,31 +728,31 @@ msgstr "Suchen"
 #: src/common/GuiCom_Track.cpp:246
 msgctxt "ViewList"
 msgid "List"
-msgstr ""
+msgstr "Liste"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:246
 msgctxt "ViewListUser"
 msgid "List user"
-msgstr ""
+msgstr "Benutzerliste"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:247
 msgctxt "ViewListDetail"
 msgid "List wide"
-msgstr ""
+msgstr "breite Liste"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:247
 msgctxt "ViewGalleryList"
 msgid "Gallery list"
-msgstr ""
+msgstr "Galerieliste"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:248
 msgctxt "ViewGallery"
 msgid "Gallery"
-msgstr ""
+msgstr "Galerie"
 
 #. MAIN  Track stats 
 #: data/gui/Game.layout:383 ..SingleRace.Track.Text :2490
@@ -3060,13 +3060,13 @@ msgstr "Straßenqualität"
 #: data/gui/Game_Options.layout:1060
 msgctxt "GridQual"
 msgid "Grid quality"
-msgstr ""
+msgstr "Netzqualität"
 
 #. Graphics  Detail 
 #: data/gui/Game_Options.layout:1291 ..Options.Graphics.Simulation.Text
 msgctxt "Quality"
 msgid "Quality"
-msgstr ""
+msgstr "Qualität"
 
 #. Graphics  Textures 
 #: data/gui/Editor_Options.layout:568 ..Options.Graphics.Tab
@@ -3131,7 +3131,7 @@ msgstr "Vegetation"
 #: data/gui/Game_Options.layout:1108
 msgctxt "Bush"
 msgid "Bush"
-msgstr ""
+msgstr "Busch"
 
 #. Graphics  Vegetation 
 msgctxt "DistMult"
@@ -3299,7 +3299,7 @@ msgstr "Fahrzeugbeleuchtung"
 #: data/gui/Game_Options.layout:1040 ..Options.Graphics.Lights.Check
 msgctxt "UnderGlow"
 msgid "Under glow"
-msgstr ""
+msgstr "Unter leuchten"
 
 #. Graphics  particles 
 #: data/gui/Editor_Help.layout:231 ..Help.Input/help.Shortcuts.Text
@@ -5108,7 +5108,7 @@ msgstr "Bump: WaveLen"
 #: data/gui/Editor.layout:394 ..Editor.Sun.Wind.Text
 msgctxt "Frequency"
 msgid "Frequency"
-msgstr ""
+msgstr "Frequenz"
 
 #. Terrain  surface  params 
 #: data/gui/Editor.layout:382 ..Editor.Sun.Wind.Text
@@ -5788,7 +5788,7 @@ msgstr "Gruppe"
 #: data/gui/Editor_Tools.layout:657 ..Window
 msgctxt "Fields"
 msgid "Fields"
-msgstr ""
+msgstr "Gebiete"
 
 #. Tools 
 #: data/gui/Editor_Help.layout:238 ..Help.Input/help.Shortcuts.Text
@@ -6453,7 +6453,7 @@ msgstr "W - Gewässer bearbeiten"
 #: data/gui/Editor_Help.layout:650 ..Help.Input/help.Fluids.Text
 msgctxt "TipFluidExamples"
 msgid "water, mud, acid, ice, lava, oil, etc."
-msgstr ""
+msgstr "Wasser, Schlamm, Säure, Eis, Lava, Öl, usw."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:698 ..Help.Input/help.Objects.Text
@@ -6465,7 +6465,7 @@ msgstr "X - Objekte bearbeiten"
 #: data/gui/Editor_Help.layout:698 ..Help.Input/help.Objects.Text
 msgctxt "TipObjectExamples"
 msgid "crates, buildings, obstacles, caves, etc."
-msgstr ""
+msgstr "Kisten, Gebäude, Hindernisse, Höhlen, usw."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:785 ..Help.Input/help.Particles.Text
@@ -6477,37 +6477,37 @@ msgstr "A - Partikel bearbeiten"
 #: data/gui/Editor_Help.layout:785 ..Help.Input/help.Particles.Text
 msgctxt "TipParticleExamples"
 msgid "cloud, fire, smoke, etc."
-msgstr ""
+msgstr "Wolke, Feuer, Rauch, usw."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:856 ..Help.Input/help.Collection.Text
 msgctxt "InputCollectMode"
 msgid "edit Collectibles"
-msgstr ""
+msgstr "Sammlerstücke bearbeiten"
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:856 ..Help.Input/help.Collection.Text
 msgctxt "TipCollectExamples"
 msgid "crystals, gems, resources, etc."
-msgstr ""
+msgstr "Kristalle, Edelsteine, Ressourcen usw."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:891 ..Help.Input/help.Collection.Text
 msgctxt "InputCollectGroup"
 msgid "Collectible group (for more sets)"
-msgstr ""
+msgstr "Sammlergruppe (für weitere Sets)"
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:919 ..Help.Input/help.Fields.Text
 msgctxt "InputFieldsMode"
 msgid "edit Fields"
-msgstr ""
+msgstr "Gebiete bearbeiten"
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:919 ..Help.Input/help.Fields.Text
 msgctxt "TipFieldExamples"
 msgid "acceleration, gravity lift, etc."
-msgstr ""
+msgstr "Beschleunigung, Schwerkraftaufzug usw."
 
 #. Terrain  Edit modes  not used 
 msgctxt "InputTerPaint"
@@ -7146,7 +7146,7 @@ msgstr "K,L - Größenskala ändern"
 #: :954..Help.Input/help.Fields.Text
 msgctxt "InputParticlesType"
 msgid "change particles type"
-msgstr ""
+msgstr "Partikeltyp ändern"
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:760 ..SingleRace.Vehicle.Text :768
@@ -7254,7 +7254,7 @@ msgstr "Sie haben die Herausforderung gewonnen."
 #: data/gui/Game.layout:2067 ..SingleRace.Championship.Edit
 msgctxt "ClickInList"
 msgid "Pick in list to read description and start."
-msgstr ""
+msgstr "Wählen Sie in der Liste, um die Beschreibung zu lesen und zu starten."
 
 #. Championship  info text 
 #: data/gui/Game_Main.layout:363 ..NewGame-GameTypes.Button :382
@@ -7318,6 +7318,10 @@ msgid ""
 "to collect all gems located in various places. Time can be limited or not. "
 "Faster time gives better prize."
 msgstr ""
+"Im Sammelspiel bewegst du dich frei auf einer Strecke (nicht nur auf Straßen)"
+". Ziel ist es, alle Edelsteine zu sammeln, die sich an verschiedenen Orten "
+"befinden. Die Zeit kann begrenzt sein oder nicht. Eine schnellere Zeit gibt "
+"einen besseren Preis."
 
 #. Hint  welcome screen 
 #: data/gui/Game_Replay.layout:246 ..Window src/game/Gui_Events.cpp:500
