@@ -3410,7 +3410,7 @@
 
 		"pyramid_big" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
@@ -3528,7 +3528,7 @@
 
 		"pyramid_small" :
 		{
-			"macroblock" : "Macroblock_0",
+			"macroblock" : "Macroblock_2",
 			"blendblock" : "Blendblock_0",
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",

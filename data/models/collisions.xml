@@ -312,23 +312,46 @@
 
 <!-- for new -->
 	<object mesh= "beech1_wide.mesh">
-		<shape type="capsZ" ofs="0.0 0 0.0" r="0.5" h="3.0" frict="0.7" restit="0.9" />
+		<shape type="capsZ" ofs="0.0 0 4.0" r="0.45" h="8.0" frict="0.7" restit="0.9" />
 	</object>
 	<object mesh= "beech2_tall.mesh">
-		<shape type="capsZ" ofs="0.0 0 0.0" r="0.5" h="3.0" frict="0.7" restit="0.9" />
+		<shape type="capsZ" ofs="0.0 0 6.0" r="0.4" h="12.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "elm1.mesh">
+		<shape type="capsZ" ofs="-0.1 0 6.0" r="0.4" h="12.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "elm2.mesh">
+		<shape type="capsZ" ofs="0.0 0 6.0" r="0.4" h="12.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "elm3.mesh">
+		<shape type="capsZ" ofs="0.0 0 6.0" r="0.4" h="12.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "oak1.mesh">
+		<shape type="capsZ" ofs="0.0 0 6.0" r="0.45" h="12.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "oak2.mesh">
+		<shape type="capsZ" ofs="0.0 0 6.0" r="0.45" h="12.0" frict="0.7" restit="0.9" />
+	</object>
+	<object mesh= "oak3.mesh">
+		<shape type="capsZ" ofs="0.0 0 7.0" r="0.5" h="14.0" frict="0.7" restit="0.9" />
 	</object>
 
 	<object mesh= "acacia1.mesh">
 		<shape type="capsZ" ofs="0.0 0 2.0" r="0.15" h="4.0" frict="0.7" restit="0.9" />
 	</object>
 	<object mesh= "tree_jng1.mesh">
-		<shape type="capsZ" ofs="0.0 0 4.0" r="0.6" h="8.0" frict="0.7" restit="0.9" />
+		<shape type="capsZ" ofs="0.0 0 7.0" r="0.65" h="14.0" frict="0.7" restit="0.9" />
 	</object>
 	<object mesh= "tree_jng2.mesh">
-		<shape type="capsZ" ofs="0.0 0 4.0" r="0.7" h="8.0" frict="0.7" restit="0.9" />
+		<shape type="capsZ" ofs="0.0 0 7.0" r="0.95" h="14.0" frict="0.7" restit="0.9" />
 	</object>
 	<object mesh= "tree_jng3.mesh">
-		<shape type="capsZ" ofs="0.0 0 4.0" r="0.6" h="8.0" frict="0.7" restit="0.9" />
+		<shape type="capsZ" ofs="0.0 0 7.0" r="0.7" h="14.0" frict="0.7" restit="0.9" />
+	</object>
+
+	<object mesh= "ceiba.mesh">
+		<shape type="capsZ" ofs="0.0 0 8.0" r="1.6" h="16.0" frict="0.7" restit="0.9" />
+		<shape type="sphere" ofs="0.0 0 -0.5" r="6.6" frict="0.7" restit="0.9" />
 	</object>
 
 	

@@ -12,12 +12,11 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 🌊**add** refract clr, `depth` clr params, no refract fix  
 **under**water top, `pass` projmatrix not inverse  
-`fix` compositor, car glass, `more` fluids at once, hud?,  
-ed prv add wtr to ter, ed prv obj no wind-  
-`fix` boost particles  
+`fix` compositor: `boost` particles, car glass, `more` fluids at once, hud?,  
+`ed` prv add wtr to ter  
 
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
-wind anim shadow caster too  
+wind anim shadow caster too, ed prv obj no wind-  
 
 🌿**bushes**, lods, **add** to tracks  
 🌳new [**trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), lods  
