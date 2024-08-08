@@ -266,7 +266,7 @@ bool Scene::SaveXml(String file)
 
 	XMLElement* pgd = xml.NewElement("veget");  // 🌳🪨 vegetation
 		pgd->SetAttribute("densGrass",   toStrC( densGrass ));
-		pgd->SetAttribute("densTrees",   toStrC( densTrees ));
+		pgd->SetAttribute("densTrees2",  toStrC( densTrees ));
 		pgd->SetAttribute("grDensSmooth",toStrC( grDensSmooth ));
 		pgd->SetAttribute("trRdDist",	toStrC( trRdDist  ));
 

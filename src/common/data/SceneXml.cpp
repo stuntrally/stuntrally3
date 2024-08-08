@@ -142,6 +142,7 @@ pair <MATHVECTOR<float,3>, QUATERNION<float> > Scene::GetStart(int index, bool n
 void Scene::UpdRevSet()  // 🔉 sound
 {
 	if (!pReverbsXml)  return;
+	{	LogO("! UpdRevSet no pReverbsXml");  return;  }
 	string s = sReverbs == "" ? "base" : sReverbs;
 
 	int id = pReverbsXml->revmap[sReverbs]-1;
@@ -163,7 +164,8 @@ void Scene::UpdRevSet()  // 🔉 sound
 
 void Scene::UpdateFluidsId()
 {
-	if (!pFluidsXml)  return;
+	if (!pFluidsXml)
+	{	LogO("! UpdateFluidsId no pFluidsXml");  return;  }
 	
 	//  set fluids id from name
 	for (int i=0; i < fluids.size(); ++i)
@@ -181,7 +183,9 @@ void Scene::UpdateFluidsId()
 
 void Scene::UpdateSurfId()
 {
-	if (!pGame)  return;
+	if (!pGame)
+	{	LogO("! UpdateSurfId no pGame");  return;  }
+
 	//  update surfId from surfName
 	int i;
 	auto& td = tds[0];  // 1st ter

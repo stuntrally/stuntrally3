@@ -1,4 +1,5 @@
 #pragma once
+#include "CScene.h"
 #include "par.h"
 #include "SColor.h"
 #include "SceneClasses.h"
@@ -8,7 +9,8 @@
 #include "mathvector.h"
 #include "quaternion.h"
 
-class GAME;  class ReverbsXml;  class FluidsXml;
+class CGuiCom;  class GAME;  class CScene;
+class ReverbsXml;  class FluidsXml;
 namespace tinyxml2 {  class XMLElement;  }
 
 
@@ -161,6 +163,7 @@ public:
 	void UpdateFluidsId(), UpdateSurfId();
 
 	GAME* pGame =0;  // for all surfaces by name
+	CGuiCom* gcom =0;  // for TrkDir to hmap file
 	bool LoadXml(Ogre::String file, bool bTer = true), SaveXml(Ogre::String file);
 	
 	bool LoadXmlCollects(Ogre::String file);

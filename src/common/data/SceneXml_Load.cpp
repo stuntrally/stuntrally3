@@ -3,7 +3,13 @@
 #include "SceneXml.h"
 #include "SceneClasses.h"
 #include "FluidsXml.h"
+
 #include "game.h"  // for surfaces map
+#include "App.h"
+#include "CScene.h"
+#include "GuiCom.h"
+#include "paths.h"
+
 #include <OgreSceneNode.h>
 #include <tinyxml2.h>
 using namespace tinyxml2;
@@ -211,7 +217,15 @@ bool Scene::LoadXml(String file, bool bTer)
 	if (!e)
  		e = root->FirstChildElement("paged");  // old
 	if (e)
-	{	a = e->Attribute("densTrees");		if (a)  densTrees = s2r(a);
+	{	a = e->Attribute("densTrees");		if (a)
+		{
+			densTrees = s2r(a);
+			LogO("dens: "+toStr(densTrees)+" tws: "+fToStr(tds[0].fTerWorldSize)+" tws1: "+fToStr(tds[1].fTerWorldSize));
+			auto tws = tds[0].fTerWorldSize;
+			densTrees = 1000000.f * densTrees / tws / tws;
+			LogO("dens2: "+fToStr(densTrees,9,11));
+		}
+		a = e->Attribute("densTrees2");		if (a)  densTrees = s2r(a);
 		a = e->Attribute("densGrass");		if (a)  densGrass = s2r(a);
 		a = e->Attribute("grDensSmooth");	if (a)  grDensSmooth = s2i(a);
 		a = e->Attribute("trRdDist");		if (a)  trRdDist = s2i(a);
@@ -450,7 +464,16 @@ bool Scene::LoadTerData(TerData& td, XMLElement* e)
 	a = e->Attribute("bR");		if (a)  td.bR = s2i(a)>0;
 	a = e->Attribute("bF");		if (a)  td.bF = s2i(a)>0;
 	a = e->Attribute("bB");		if (a)  td.bB = s2i(a)>0;
-	td.UpdVals();
+
+	//  get iVerts from hmap file
+	int n = tds.size();
+	String fname = gcom->app->scn->getHmap(n, 0);
+	bool exists = PATHS::FileExists(fname);
+	if (!exists)
+		LogO("Terrains error! No hmap file: "+fname);
+	else
+		td.getFileSize(fname);
+	// td.UpdVals();  //^in
 
 	int il = 0;
 	u = e->FirstChildElement("texture");
