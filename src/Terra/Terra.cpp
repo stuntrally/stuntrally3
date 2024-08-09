@@ -213,7 +213,7 @@ namespace Ogre
 		m_shadowMapper->setMinimizeMemoryConsumption( bMinimizeMemory );
 		m_shadowMapper->createShadowMap( getId(), m_heightMapTex, bLowResShadow );
 
-		calculateOptimumSkirtSize();
+		// calculateOptimumSkirtSize();  //** no, relative
 	}
 
 
@@ -375,10 +375,22 @@ namespace Ogre
 			if( !allEqualInLine )
 				m_skirtSize = std::min( minHeight, m_skirtSize );
 		}
-
 		m_skirtSize /= m_fHeightMul;
 	}
 
+	//-----------------------------------------------------------------------------------
+	bool Terra::worldInside( const Vector3 &vPos ) const
+	{
+		GridPoint retVal;
+		const float fWidth = static_cast<float>( m_iWidth );
+		const float fDepth = static_cast<float>( m_iHeight );
+
+		const float fX = floorf( ((vPos.x - m_terrainOrigin.x) * m_xzInvDimensions.x) * fWidth );
+		const float fZ = floorf( ((vPos.z - m_terrainOrigin.z) * m_xzInvDimensions.y) * fDepth );
+		retVal.x = fX >= 0.0f ? static_cast<uint32>( fX ) : 0xffffffff;
+		retVal.z = fZ >= 0.0f ? static_cast<uint32>( fZ ) : 0xffffffff;
+		return retVal.x < m_iWidth-1 && retVal.z < m_iHeight-1;
+	}
 	//-----------------------------------------------------------------------------------
 	inline GridPoint Terra::worldToGrid( const Vector3 &vPos ) const
 	{
@@ -390,7 +402,6 @@ namespace Ogre
 		const float fZ = floorf( ((vPos.z - m_terrainOrigin.z) * m_xzInvDimensions.y) * fDepth );
 		retVal.x = fX >= 0.0f ? static_cast<uint32>( fX ) : 0xffffffff;
 		retVal.z = fZ >= 0.0f ? static_cast<uint32>( fZ ) : 0xffffffff;
-
 		return retVal;
 	}
 	//-----------------------------------------------------------------------------------
@@ -402,9 +413,9 @@ namespace Ogre
 
 		retVal.x = (gPos.x / fWidth) * m_xzDimensions.x + m_terrainOrigin.x;
 		retVal.y = (gPos.z / fDepth) * m_xzDimensions.y + m_terrainOrigin.z;
-
 		return retVal;
 	}
+
 	//-----------------------------------------------------------------------------------
 	bool Terra::isVisible( const GridPoint &gPos, const GridPoint &gSize ) const
 	{
@@ -442,7 +453,6 @@ namespace Ogre
 			if( side == Plane::NEGATIVE_SIDE )
 				return false;
 		}
-
 		return true;
 	}
 	//-----------------------------------------------------------------------------------
@@ -627,7 +637,6 @@ namespace Ogre
 						addRenderable( pos, cellSize, currentLod );
 				}
 			}
-
 			optimizeCellsAndAdd();
 		}
 	}

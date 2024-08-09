@@ -57,14 +57,9 @@ void Grass::Create(App* app1)
 	const Real tws = sc->tds[0].fTerWorldSize, hws = tws * 0.5f;  //par-
 	const Real mrg = 0.98f;
 
-	const Real fGrass = pSet->g.grass * sc->densGrass * 3.0f;  // std::min(pSet->grass, 
-	#ifdef SR_EDITOR
-	const Real fTrees = pSet->gui.trees * sc->densTrees;
-	#else
-	const Real fTrees = pSet->game.trees * sc->densTrees;
-	#endif
-	
-	if (fGrass <= 0.f)  return;
+	const Real fGrass = pSet->veg.grass * sc->densGrass * 3.0f;  // std::min(pSet->grass, 
+	if (fGrass <= 0.f)
+		return;
 	LogManager::getSingleton().setLogDetail(LoggingLevel::LL_NORMAL);  // skip warnings for no loader
 
 	// sc->grPage;  GrassPage(sc->grDist * pSet->grass_dist);  // global, not or per track ?
@@ -202,7 +197,7 @@ void Grass::Create(App* app1)
 						db->setDiffuse(gr->color.GetRGB());
 					
 					gd.node->setPosition(Vector3(xp, yp, zp));
-					gd.it->setRenderingDistance( 100.f * pSet->g.grass_dist );  //par
+					gd.it->setRenderingDistance( 100.f * pSet->veg.grass_dist );  //par
 					gds.push_back(gd);  ++all;
 				}
 			}	// pages

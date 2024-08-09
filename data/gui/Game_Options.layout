@@ -1144,6 +1144,64 @@
 						</Widget>
 					</Widget>
 
+					<!-- 🌳 Horizon Vegetation -->
+					<Widget type="TabItem" skin="" position="2 24 694 272">
+						<Property key="Caption" value="#30F030#{Horizon}"/>
+						<Widget type="Button" skin="Button" position="32 240 200 26" layer="Back" name="HorApplyVeget">
+							<Property key="Caption" value="#{Apply}"/>
+							<Property key="Colour" value="0.8 1 0.7"/>
+							<Property key="TextColour" value="0.8 1 0.7"/>
+						</Widget>
+						<!-- <Widget type="Button" skin="Button" position="464 240 136 26" name="VegetReset">
+							<Property key="Caption" value="#{Reset}"/>
+							<Property key="Colour" value="0.6 1.0 0.3"/>
+							<Property key="TextColour" value="0.3 1 0.2"/>
+						</Widget> -->
+						<Widget type="TextBox" skin="TextBox" position="210 20 176 24">
+							<Property key="Caption" value="#{InputMultiplier}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.4 0.9 0.4"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 50 176 24">
+							<Property key="Caption" value="#{Vegetation}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.5 1 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 50 320 18" name="HorTrees"/>
+						<Widget type="TextBox" skin="TextBox" position="210 50 60 24" name="HorTreesVal">
+							<Property key="TextColour" value="0.5 1 0.5"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="52 80 176 24">
+							<Property key="Caption" value="#{distance}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.5 0.8 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 80 320 18" name="HorTreesDist"/>
+						<Widget type="TextBox" skin="TextBox" position="210 80 60 24" name="HorTreesDistVal">
+							<Property key="TextColour" value="0.5 0.8 0.5"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 110 176 24">
+							<Property key="Caption" value="#{Bush}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.5 1 0.8"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 110 320 18" name="HorBush"/>
+						<Widget type="TextBox" skin="TextBox" position="210 110 60 24" name="HorBushVal">
+							<Property key="TextColour" value="0.5 1 0.8"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="52 140 176 24">
+							<Property key="Caption" value="#{distance}"/>
+							<Property key="Colour" value="0 0 0"/>
+							<Property key="TextColour" value="0.5 0.8 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 140 320 18" name="HorBushDist"/>
+						<Widget type="TextBox" skin="TextBox" position="210 140 60 24" name="HorBushDistVal">
+							<Property key="TextColour" value="0.5 0.8 0.7"/>
+						</Widget>
+					</Widget>
+
 					<!-- 🖼️ Textures -->
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#60FF60#{Textures}"/>

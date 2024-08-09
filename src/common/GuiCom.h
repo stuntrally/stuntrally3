@@ -100,8 +100,8 @@ public:
 		SlV(TerLod);  SV svHorizLod;
 
 		//  🌳🪨🌿 veget
-		SV svTrees, svTreesDist;
-		SV svBush, svBushDist;
+		SV svTrees, svTreesDist, svHorTrees, svHorTreesDist;
+		SV svBush, svBushDist, svHorBush, svHorBushDist;
 		SV svGrass, svGrassDist;
 		void btnVegetReset(WP), btnVegetApply(WP);
 

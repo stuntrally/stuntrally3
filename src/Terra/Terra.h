@@ -150,6 +150,7 @@ namespace Ogre
 		void dirtyRect(Rect rect);
 
 		//  util
+		bool worldInside( const Vector3 &vPos ) const;
 		bool getHeightAt( Vector3 &vPos ) const;
 		float getAngle( float x, float z, float s) const;
 		Real getHeight( Real x, Real z ) const;

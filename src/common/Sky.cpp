@@ -330,7 +330,7 @@ void CScene::UpdSun(float dt)
 		-dir);
 		// 0.8f, 0x0 );  // env? EnvFeatures_DiffuseGiFromReflectionProbe
 		// -dir + Ogre::Vector3::UNIT_Y * 0.2f );
-
+	
 
 	//  🌪️ wind  for trees,grass,water,rain etc
 	if (atmo && dt > 0.f)
@@ -455,9 +455,9 @@ void CScene::UpdateWeather(Camera* cam, float invDT, float emitMul)
 	//  wind dir
 	float yaw = sc->windYaw * PI_d/180.f;
 	float t = atmo ? atmo->timeWind.x : 0.f;
-	float a = std::min(1.f, sc->windOfs * 0.3f
+	float a = std::min(1.f, sc->windOfs * 0.4f  // par how much goes sideway
 				- sin(t * sc->windFreq * 3.21f) 
-				* sin(t * sc->windFreq * 3.63f) * 0.08f * sc->windAmpl);  // par how much goes sideway
+				* sin(t * sc->windFreq * 3.63f) * 0.08f * sc->windAmpl);
 	// float a = std::min(1.f, sc->windOfs * 0.3f);  // const-
 	float a1 = 1.f - a;
 	Vector3 emitDir( a * cosf(yaw), -a1, -a * sinf(yaw));

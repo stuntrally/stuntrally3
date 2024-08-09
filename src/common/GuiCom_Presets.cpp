@@ -66,27 +66,43 @@ const static SETTINGS::Lights lights[8] = {  /* 💡 Lights only
 	{1,1, 1,1,1, 1,1, 1,1, 2 },  // Highest
 	{1,1, 1,1,1, 1,1, 1,1, 3 },  // Ultra
 };
+const static SETTINGS::Veget veget[8] = {  /* 🌳🪨🪴🌿 Veget only
+ 	🌳Trees  mul                    Horiz mul           
+ 	|          🪴Bushes             🌳Trees   🪴Bushes  
+	|     dist |    dist 🌿Grass    |    dist |    dist 
+	|     |    |    |    |    dist  |    |    |    |    */
+	{0.0f,0.5f,0.0f,0.5f,0.0f,0.5f, 0.0f,0.0f,0.0f,0.0f },  // Lowest
+	{0.5f,0.5f,0.0f,0.5f,0.0f,0.5f, 0.0f,0.0f,0.0f,0.0f },  // Low 
+	{1.0f,0.7f,0.5f,0.7f,0.5f,0.7f, 0.0f,0.0f,0.0f,0.0f },  // Medium ~
+	{1.0f,1.0f,1.0f,1.0f,1.0f,1.0f, 0.0f,0.0f,0.0f,0.0f },  // High
+	{1.5f,1.2f,1.0f,1.4f,1.0f,1.4f, 0.5f,0.0f,0.0f,0.0f },  // Higher *
+	{1.5f,1.5f,1.5f,1.7f,1.5f,1.7f, 0.6f,0.0f,0.5f,0.1f },  // Very high
+	{2.0f,2.0f,2.0f,2.0f,2.0f,2.0f, 0.8f,0.5f,0.5f,0.5f },  // Highest
+	{2.5f,3.0f,2.5f,3.0f,2.5f,3.0f, 1.0f,1.0f,1.0f,1.0f },  // Ultra
+};
 const static SETTINGS::Detail presets[8] = {  /*
-	   🖼️           LOD      ⛰️ Terain         Veget                  🌒 Shadow      🌊 Water          🔮 Reflect cube     
-Sim	   Anisot       Obj,Veg  Tripl,hor  🌳Trees  mul                   Size    filt  Size              Size              
-Qlty   | Tex        |        | LOD,hor  |         🌿Bushes             | Cnt Dist |  | Reflect         | Skip            
-	\  \ fil Visibl |  Road  | Horiz |  |    dist |    dist 🌿Grass    | | Typ |  |  | | refra         | | Faces     IBL 
-	 |  | |   Dist  |   |🛣️  |\  |  /|  |    |    |    |    |    dist  | | |   |  |  | | |  Dist LOD   | | |  Dist LOD | */
-	{0, 0,1,  5000, 0.2,0.9, 0,0,0,0,0, 0.0f,0.5f,0.0f,0.5f,0.0f,0.5f, 0,1,0, 100,0, 0,0,0,  100,0.1,  0,600,0,100,0.1,0 },  // Lowest
-	{1, 2,2, 10000, 0.6,1.5, 0,0,0,1,0, 0.5f,0.5f,0.0f,0.5f,0.0f,0.5f, 1,3,1, 200,1, 0,0,0,  400,0.2,  0,60,1, 300,0.2,0 },  // Low 
-	{1, 4,2, 20000, 1.0,2.0, 0,0,1,1,1, 1.0f,0.7f,0.5f,0.7f,0.5f,0.7f, 2,3,1, 300,2, 1,1,0,  700,0.3,  1,4,1,  500,0.3,0 },  // Medium ~
-	{2, 4,2, 40000, 1.2,2.5, 1,0,1,2,2, 1.0f,1.0f,1.0f,1.0f,1.0f,1.0f, 3,3,1, 500,2, 1,1,1, 1000,0.4,  1,2,1,  700,0.4,0 },  // High
-	{2, 4,3, 60000, 1.5,3.0, 1,0,2,2,2, 1.5f,1.2f,1.0f,1.4f,1.0f,1.4f, 3,3,1, 700,3, 1,1,1, 3000,0.4,  2,0,1, 1000,0.4,0 },  // Higher *
-	{2, 8,3, 60000, 1.8,3.5, 2,1,3,3,3, 1.5f,1.5f,1.5f,1.7f,1.5f,1.7f, 3,3,1,1000,3, 2,1,1, 6000,0.6,  2,0,2, 2000,0.6,2 },  // Very high
-	{2, 16,3,60000, 2.4,4.0, 2,2,3,3,3, 2.0f,2.0f,2.0f,2.0f,2.0f,2.0f, 4,3,1,1300,4, 3,1,1,20000,0.8,  3,0,3,20000,0.8,2 },  // Highest
-	{3, 16,3,60000, 2.4,4.0, 2,2,3,4,4, 2.5f,3.0f,2.5f,3.0f,2.5f,3.0f, 4,3,1,2000,4, 4,1,1,60000,1.0,  3,0,4,60000,1.0,4 },  // Ultra
+	   🖼️           LOD      ⛰️ Terain  🌒 Shadow     🌊 Water          🔮 Reflect cube     
+Sim	   Anisot       Obj,Veg  Tripl,hor   Size    filt  Size              Size              
+Qlty   | Tex        |        | LOD,hor   | Cnt Dist |  | Reflect         | Skip            
+	\  \ fil Visibl |  Road  | Horiz |   | | Typ |  |  | | refra         | | Faces     IBL 
+	 |  | |   Dist  |   |🛣️  |\  |  /|   | | |   |  |  | | |  Dist LOD   | | |  Dist LOD | */
+	{0, 0,1,  5000, 0.2,0.9, 0,0,0,0,0,  0,1,0, 100,0, 0,0,0,  100,0.1,  0,600,0,100,0.1,0 },  // Lowest
+	{1, 2,2, 10000, 0.6,1.5, 0,0,0,1,0,  1,3,1, 200,1, 0,0,0,  400,0.2,  0,60,1, 300,0.2,0 },  // Low 
+	{1, 4,2, 20000, 1.0,2.0, 0,0,1,1,1,  2,3,1, 300,2, 1,1,0,  700,0.3,  1,4,1,  500,0.3,0 },  // Medium ~
+	{2, 4,2, 40000, 1.2,2.5, 1,0,1,2,2,  3,3,1, 500,2, 1,1,1, 1000,0.4,  1,2,1,  700,0.4,0 },  // High
+	{2, 4,3, 60000, 1.5,3.0, 1,0,2,2,2,  3,3,1, 700,3, 1,1,1, 3000,0.4,  2,0,1, 1000,0.4,0 },  // Higher *
+	{2, 8,3, 60000, 1.8,3.5, 2,1,3,3,3,  3,3,1,1000,3, 2,1,1, 6000,0.6,  2,0,2, 2000,0.6,2 },  // Very high
+	{2, 16,3,60000, 2.4,4.0, 2,2,3,3,3,  4,3,1,1300,4, 3,1,1,20000,0.8,  3,0,3,20000,0.8,2 },  // Highest
+	{3, 16,3,60000, 2.4,4.0, 2,2,3,4,4,  4,3,1,2000,4, 4,1,1,60000,1.0,  3,0,4,60000,1.0,4 },  // Ultra
 };
 
 	pSet->preset = val;  // for info
 	SETTINGS& s = *pSet;
-	s.li = lights[val];  // set all
 	s.g = presets[val];  // set all
-	s.gui.trees = s.g.trees;
+	s.li = lights[val];
+	s.veg = veget[val];
+	s.gui.trees = s.veg.trees;
+	s.gui.bushes = s.veg.bushes;  //?-
 
 #ifndef SR_EDITOR  ///  Game only
 	UpdSimQuality();

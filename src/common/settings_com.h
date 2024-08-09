@@ -75,6 +75,16 @@ public:
 		int grid_quality = 0;
 	} li;
 
+	struct Veget
+	{
+		//  🌳🪨🌿 veget  6x
+		float trees = 1.5f, trees_dist = 1.f;  // only for presets [] arrays
+		float grass = 1.f, grass_dist = 1.f;  //! trees in gui. set for mplr
+		float bushes = 1.f, bushes_dist = 1.f;
+		float hor_trees = 0.5f, hor_trees_dist = 0.5f;  // horiz 4x
+		float hor_bushes = 0.3f, hor_bushes_dist = 0.3f;
+	} veg;
+
 	//!  Any change or order needs Update in:  Detail presets
 	struct Detail
 	{
@@ -91,11 +101,6 @@ public:
 		int ter_tripl = 1, tripl_horiz = 0;
 		int horizons = 3;
 		int ter_lod = 2, horiz_lod = 2;
-
-		//  🌳🪨🌿 veget  6x
-		float trees = 1.5f, trees_dist = 1.f;  // only for presets [] arrays
-		float grass = 1.f, grass_dist = 1.f;  //! trees in gui. set for mplr
-		float bushes = 1.f, bushes_dist = 1.f;
 
 		//  🌒 shadow  5x
 		int shadow_size = 2, shadow_count = 3, shadow_type = Sh_Depth;

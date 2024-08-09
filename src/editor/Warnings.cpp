@@ -303,8 +303,8 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 		// if (sc->densTrees < 0.01f)  Warn(WARN,"No Vegetation - feels empty :(");
 		hqVeget = veg >= 6;
 		if (hqVeget)   Warn(INFO,"HQ Vegetation");
-		if (veg >= 12)  Warn(WARN,"Too many models used - not recommended");  //par..
-		if (veg <= 4)  Warn(INFO,"Too few models used - feels empty :(");
+		if (veg >= 21)  Warn(WARN,"Too many models used - not recommended");  //par..
+		if (veg <= 6)  Warn(INFO,"Too few models used - feels empty :(");
 		
 		//  total count
 		//  todo: this needs getTerH & angle, without Terra loaded

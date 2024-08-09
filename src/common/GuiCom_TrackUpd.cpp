@@ -225,7 +225,8 @@ void CGuiCom::listTrackChng(Mli2 li, size_t pos)
 #ifdef SR_EDITOR
 	if (app->gui->iLoadNext==0)
 #endif
-		ReadTrkStats();
+		if (app->gui->bGI)  // todo: upd track stats after gui show?
+			ReadTrkStats();
 }
 
 //  key util

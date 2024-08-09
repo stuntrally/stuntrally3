@@ -63,6 +63,7 @@ void App::Load()
 	gcom = new CGuiCom(this);
 	gcom->mGui = mGui;
 	gcom->sc = scn->sc;
+	scn->sc->gcom = gcom;
 
 	gui = new CGui(this);
 	// gui->viewBox = new wraps::RenderBoxScene();

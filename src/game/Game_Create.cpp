@@ -74,6 +74,8 @@ void App::Load()
 	hud = new CHud(this);
 
 	gcom = new CGuiCom(this);
+	scn->sc->gcom = gcom;
+
 	gui = new CGui(this);
 	gui->gcom = gcom;
 	// hud->gui = gui;
@@ -85,7 +87,7 @@ void App::Load()
 
 	pGame->app = this;
 	sc = scn->sc;
-
+	
 	pGame->ReloadSimData();
 
 
