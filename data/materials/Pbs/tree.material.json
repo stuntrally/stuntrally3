@@ -5467,7 +5467,7 @@
 			},
 			"specular" :
 			{
-				"value" : [0.4, 0.4, 0.4]
+				"value" : [0.2, 0.2, 0.2]
 			},
 			"fresnel" :
 			{
@@ -5482,7 +5482,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.3
+				"value" : 0.43
 			}
 		},
 
@@ -5554,7 +5554,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.2
+				"value" : 0.32
 			}
 		},
 
@@ -5604,7 +5604,7 @@
 			"tree_wind" : true,
 			"diffuse" :
 			{
-				"value" : [0.7, 0.7, 0.7],
+				"value" : [0.4, 0.45, 0.6],
 				"background" : [1, 1, 1, 1],
 				"texture" : "oak_leaves.png",
 				"sampler" : "Sampler_10"
@@ -5626,7 +5626,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.2
+				"value" : 0.34
 			}
 		},
 

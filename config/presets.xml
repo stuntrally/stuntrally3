@@ -878,7 +878,7 @@ common:  sc - "short scenery name" (name color)
 <v sc="Jng"  p="tree_jng3g"           r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
 
 <!--  Trees  🟢 Jng  old  -->
-<v sc="Sav"  p="acacia1"              r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
+<v sc="Sav"  p="acacia1"              r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="1.15" sb="1.55"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
 <v sc="Sav"  p="tree_jng1"            r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
 <v sc="Sav"  p="tree_jng2"            r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
 <v sc="Sav"  p="tree_jng3"            r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
@@ -1118,14 +1118,14 @@ common:  sc - "short scenery name" (name color)
 <v sc="Mos"  p="treeGY-36aspMed"      r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.92" sb="1.22"  wx="0.70" wy="0.010"  ab="30.63" rd="1" fd="0.0" />
 
 <v sc="For"  p="---- Trees new ----"  r="0" />
-<v sc="For"  p="beech1_wide"          r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
-<v sc="For"  p="beech2_tall"          r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
-<v sc="For"  p="elm1"                 r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
-<v sc="For"  p="elm2"                 r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
-<v sc="For"  p="elm3"                 r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
-<v sc="For"  p="oak1"                 r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
-<v sc="For"  p="oak2"                 r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
-<v sc="For"  p="oak3"                 r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="For"  p="beech1_wide"          r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.70" sb="1.10"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="For"  p="beech2_tall"          r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.70" sb="1.10"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="For"  p="elm1"                 r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.70" sb="1.10"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="For"  p="elm2"                 r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.70" sb="1.00"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="For"  p="elm3"                 r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.70" sb="1.00"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="For"  p="oak1"                 r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.70" sb="1.00"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="For"  p="oak2"                 r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.70" sb="1.00"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="For"  p="oak3"                 r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.70" sb="1.00"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
 
 
 
