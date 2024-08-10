@@ -4430,7 +4430,7 @@
 			"roughness" :
 			{
 				"value" : 1.0,
-				"texture" : "jungle1_bark_r.png",
+				"texture" : "jungle1_bark_r.jpg",
 				"sampler" : "Sampler_10"
 			}
 		},
@@ -4523,12 +4523,12 @@
 			{
 				"value" : [2, 2, 2],
 				"background" : [1, 1, 1, 1],
-				"texture" : "jungle1_cortex.png",
+				"texture" : "jungle1_cortex.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
 			{
-				"value" : [0.2, 0.2, 0.2]
+				"value" : [0.3, 0.3, 0.3]
 			},
 			"fresnel" :
 			{
@@ -4957,7 +4957,7 @@
 			{
 				"value" : [1, 1, 1],
 				"background" : [1, 1, 1, 1],
-				"texture" : "jungle4.jpg",
+				"texture" : "jungle4_bark.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
@@ -4972,6 +4972,7 @@
 			"normal" :
 			{
 				"value" : 1,
+				"texture" : "jungle1_bark_n.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"roughness" :

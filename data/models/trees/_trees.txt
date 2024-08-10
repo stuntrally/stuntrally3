@@ -4,12 +4,14 @@ License:	CC-BY 3.0
 Date:		11/04/2010
 Url:		https://www.opengameart.org/content/gum-tree
 
+	todo rem:
 Model:		palm2.mesh
 Artist:		yughues
 License:	CC0
 Date:		03/11/2011
 Url: 		https://opengameart.org/content/palm-tree-v2
 
+	todo rem:
 Model:		jungle_tree.mesh
 Artist:		Bardes
 License: 	CC0
@@ -18,7 +20,7 @@ Url: 		https://blendswap.com/blend/2196
 Notes:		Bark texture by OpenGameArt user yughues, licensed CC0
 			low-polying, baked textures & normals in blender by scrawl
 
-9 Models:	pine1_full.mesh,  pine2_tall_full,  pine3_fat_full  and variants: _half, _norm
+9 Models:	pine1_full.mesh,  pine2_tall_full,  pine3_fat_full  and variants: *_half, *_norm
 Model:		cactus.mesh
 Artist:		yughues
 License:	CC0
@@ -27,19 +29,22 @@ Url:		https://opengameart.org/content/freebies-mundo-commissions
 
 
 -----  new  SR 3.2  -----
+All final .mesh modified by CryHam, reduced, decimated, low poly, etc.
 
+-----  Sav  -----
 Model:		acacia1.mesh
 Artist:		evolveduk
 License:	CC-BY 4.0
 Date:		06/06/2022
 Url:		https://sketchfab.com/3d-models/acacia-tree-bb14c2bb679b4d0bb1c578a27e2ddabf
 
-Model:		tree_jng1.mesh  tree_jng2.mesh  tree_jng3.mesh
+6 Models:	tree_jng1.mesh  tree_jng2.mesh  tree_jng3.mesh  and *g variants
 Artist:		TechArtBGN
 License:	CC-BY 4.0
 Date:		24/09/2022
 Url:		https://sketchfab.com/3d-models/tree-wind-system-87a2022bd8ad4c85b4d11825143e4e77
 
+-----  Forest  -----
 Models:		beech1_wide.mesh  beech2_tall.mesh
 Artist:		LordSamueliSolo  LadyLionStudios
 License:	CC-BY 4.0
@@ -58,8 +63,7 @@ License:	CC-BY 4.0
 Date:		20/03/2022
 Url:		https://sketchfab.com/3d-models/oak-trees-free-low-poly-7a689370f9ec46cea2cbc94641c225e6
 
------  new palms
-
+-----  palms  -----
 Model:		palm_arabic.mesh
 Artist:		rodrigo  gelmi.com.br
 License:	CC-BY 4.0
@@ -90,8 +94,7 @@ License:	CC-BY 4.0
 Date:		29/08/2022
 Url:		https://sketchfab.com/3d-models/free-game-ready-palm-e8c0ea53410947b0b7f20d33702f4098
 
-
------  todo:
+-----  Jungle  -----
 Model:		jungle1_wide.mesh
 Artist:		TechArtBGN
 License:	CC-BY 4.0
@@ -110,9 +113,22 @@ License:	CC-BY 4.0
 Date:		01/08/2023
 Url:		https://sketchfab.com/3d-models/jungle-tree-b760147faadf41eabb2bb6cb85274d8a
 
+Model:		jungle4_mango.mesh
+Artist:		stealth86
+License:	CC-BY 4.0
+Date:		28/02/2022
+Url:		https://sketchfab.com/3d-models/mango-tree-4b186052228d43d8b3fbb63213677de8
 
------  todo:
-Model:		palm_coco..mesh
+Model:		jungle5_ceiba.mesh
+Artist:		Valery.Li
+License:	CC-BY 4.0
+Date:		03/11/2021
+Url:		https://sketchfab.com/3d-models/ceiba-pentandra-tree-9142b8f06e384f1c9554c9b10da79d2a
+Notes:		remade top,  using Nobiax CC0 texture..
+
+
+-----  todo: ?
+Model:		palm_coco2.mesh
 Artist:		evolveduk
 License:	CC-BY 4.0
 Date:		08/05/2022

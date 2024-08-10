@@ -871,7 +871,7 @@ common:  sc - "short scenery name" (name color)
 <v sc="Jng"  p="jungle1_wide"         r="4" al="0"  vd="300" vD=" 600"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
 <v sc="Jng"  p="jungle2_wide"         r="4" al="0"  vd="300" vD=" 600"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
 <v sc="Jng"  p="jungle3_tall"         r="5" al="0"  vd="500" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
-<v sc="Jng"  p="jungle4_big"          r="2" al="0"  vd="400" vD=" 800"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
+<v sc="Jng"  p="jungle4_mango"        r="2" al="0"  vd="400" vD=" 800"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
 <v sc="Jng"  p="jungle5_ceiba"        r="2" al="0"  vd="400" vD=" 800"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
 <v sc="Jng"  p="tree_jng1g"           r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
 <v sc="Jng"  p="tree_jng2g"           r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
