@@ -847,7 +847,7 @@ common:  sc - "short scenery name" (name color)
 <!--  🌳  Vegetation  ================================================================================================================================
       p - .mesh filename (no ext)
       r - rating 1..5  0 for group  -1 hides from list
-      sa,sb - min,max scale    wx,wy - wind fx,fy
+      sa,sb - min,max scale    wx,wy - wind fx,fy = not used
       b - bush, mark
       ab - max ter angle   rd - min road dist   fd - max fluid depth
       al - alpha 0 or 1 (crystals etc)   y - offset height[m] below
@@ -859,11 +859,11 @@ common:  sc - "short scenery name" (name color)
 <v sc="Des"  p="cactus"               r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="0.40" sb="0.72"  wx="0.00" wy="0.000"  ab="26.93" rd="1" fd="0.0" />
 
 <v sc="Des"  p="palm_arabic"          r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="1.10" sb="1.61"  wx="0.30" wy="0.115"  ab="30.03" rd="1" fd="0.0" />
-<v sc="Jng"  p="palm_coconut1"        r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="1.10" sb="1.51"  wx="0.30" wy="0.115"  ab="28.03" rd="1" fd="0.0" />
-<v sc="Grc"  p="palm_date"            r="2" al="0"  vd="500" vD=" 800"  y="0.52" sa="1.00" sb="1.51"  wx="0.30" wy="0.115"  ab="25.03" rd="1" fd="0.0" />
-<v sc="Jng"  p="palm_coco3a"          r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
-<v sc="Jng"  p="palm_coco3b"          r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
-<v sc="Des"  p="palm_fan"             r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="Jng"  p="palm_coconut1"        r="5" al="0"  vd="600" vD="1000"  y="0.52" sa="1.10" sb="1.51"  wx="0.30" wy="0.115"  ab="28.03" rd="1" fd="0.0" />
+<v sc="Grc"  p="palm_date"            r="3" al="0"  vd="500" vD=" 800"  y="0.52" sa="1.00" sb="1.51"  wx="0.30" wy="0.115"  ab="25.03" rd="1" fd="0.0" />
+<v sc="Jng"  p="palm_coco3a"          r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="Jng"  p="palm_coco3b"          r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
+<v sc="Des"  p="palm_fan"             r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.90" sb="1.30"  wx="0.32" wy="0.005"  ab="26.84" rd="1" fd="0.0" />
 
 
 <v sc="Jng"  p="---- Jungle ----"     r="0" />
@@ -871,20 +871,20 @@ common:  sc - "short scenery name" (name color)
 <v sc="Jng"  p="jungle1_wide"         r="4" al="0"  vd="300" vD=" 600"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
 <v sc="Jng"  p="jungle2_wide"         r="4" al="0"  vd="300" vD=" 600"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
 <v sc="Jng"  p="jungle3_tall"         r="5" al="0"  vd="500" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
-<v sc="Jng"  p="jungle4_mango"        r="2" al="0"  vd="400" vD=" 800"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
-<v sc="Jng"  p="jungle5_ceiba"        r="2" al="0"  vd="400" vD=" 800"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
+<v sc="Jng"  p="jungle4_mango"        r="4" al="0"  vd="400" vD=" 800"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
+<v sc="Jng"  p="jungle5_ceiba"        r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.70" wy="0.010"  ab="38.53" rd="2" fd="0.0" />
 <v sc="Jng"  p="tree_jng1g"           r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
-<v sc="Jng"  p="tree_jng2g"           r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
+<v sc="Jng"  p="tree_jng2g"           r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
 <v sc="Jng"  p="tree_jng3g"           r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
 
 <!--  Trees  🟢 Jng  old  -->
 <v sc="Sav"  p="acacia1"              r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="1.15" sb="1.55"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
-<v sc="Sav"  p="tree_jng1"            r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
+<v sc="Sav"  p="tree_jng1"            r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
 <v sc="Sav"  p="tree_jng2"            r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
-<v sc="Sav"  p="tree_jng3"            r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
+<v sc="Sav"  p="tree_jng3"            r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.15"  wx="0.60" wy="0.010"  ab="29.94" rd="2" fd="0.0" />
 
-<v sc="Aus"  p="gum_tree"             r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.00" sb="1.14"  wx="0.80" wy="0.014"  ab="14.00" rd="1" fd="0.0" />
-<v sc="Uni"  p="gum_tree"             r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="1.45" sb="2.22"  wx="0.30" wy="0.004"  ab="20.48" rd="1" fd="0.0" />
+<v sc="Aus"  p="gum_tree"             r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.00" sb="1.14"  wx="0.80" wy="0.014"  ab="14.00" rd="1" fd="0.0" />
+<v sc="Uni"  p="gum_tree"             r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="1.45" sb="2.22"  wx="0.30" wy="0.004"  ab="20.48" rd="1" fd="0.0" />
 
 
 <!--  🌲 Pines  ================  -->
@@ -897,11 +897,11 @@ common:  sc - "short scenery name" (name color)
 <v sc="For"  p="pine2_tall_norm"      r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="0.53" sb="0.81"  wx="0.75" wy="0.010"  ab="26.62" rd="1" fd="0.0" />
 <v sc="Fin"  p="pine2_tall_norm"      r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="1.11" sb="1.78"  wx="0.41" wy="0.018"  ab="21.17" rd="1" fd="0.0" />
 <v sc="For"  p="pine2_tall_norm"      r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="0.46" sb="0.68"  wx="1.80" wy="0.100"  ab="18.62" rd="1" fd="0.0" />
-<v sc="For"  p="pine3_fat_norm"       r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="0.57" sb="1.10"  wx="0.81" wy="0.018"  ab="50.00" rd="1" fd="0.0" />
+<v sc="For"  p="pine3_fat_norm"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.57" sb="1.10"  wx="0.81" wy="0.018"  ab="50.00" rd="1" fd="0.0" />
 
 <v sc="Wet"  p="pine1_half"           r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="0.98" sb="1.20"  wx="0.10" wy="0.017"  ab="11.08" rd="1" fd="0.0" />
 <v sc="Wet"  p="pine2_tall_half"      r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="0.74" sb="0.99"  wx="0.07" wy="0.026"  ab="12.80" rd="1" fd="0.0" />
-<v sc="Wet"  p="pine3_fat_half"       r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="1.05" sb="1.51"  wx="0.07" wy="0.017"  ab=" 7.54" rd="1" fd="0.0" />
+<v sc="Wet"  p="pine3_fat_half"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="1.05" sb="1.51"  wx="0.07" wy="0.017"  ab=" 7.54" rd="1" fd="0.0" />
 
 <v sc="Wnt"  p="fir05w"               r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.04" sb="0.10"  wx="2.80" wy="0.100"  ab="25.44" rd="1" fd="0.0" />
 <v sc="Wnt"  p="fir06w"               r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.04" sb="0.12"  wx="1.80" wy="0.100"  ab="27.49" rd="1" fd="0.0" />
@@ -920,29 +920,29 @@ common:  sc - "short scenery name" (name color)
 <v sc="Vlc"  p="palm_plant"           r="1" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.68" sb="2.21"  wx="0.06" wy="0.010"  ab="26.07" b="1" rd="1" fd="0.0" />
 <v sc="Jng"  p="plant_tropical"       r="5" al="0"  vd="400" vD=" 400"  y="0.00" sa="1.41" sb="1.79"  wx="0.06" wy="0.015"  ab="27.49" b="1" rd="1" fd="0.0" />
 
-<v sc="Jng"  p="tropic_leaves"        r="3" al="0"  vd="400" vD=" 400"  y="0.00" sa="1.21" sb="1.89"  wx="0.06" wy="0.015"  ab="27.49" b="1" rd="1" fd="0.0" />
+<v sc="Jng"  p="tropic_leaves"        r="4" al="0"  vd="400" vD=" 400"  y="0.00" sa="1.21" sb="1.89"  wx="0.06" wy="0.015"  ab="27.49" b="1" rd="1" fd="0.0" />
 <v sc="Jng"  p="tropic_peacock"       r="2" al="0"  vd="400" vD=" 400"  y="0.00" sa="1.21" sb="1.89"  wx="0.06" wy="0.015"  ab="27.49" b="1" rd="1" fd="0.0" />
 
-<v sc="For"  p="blueberry"            r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
+<v sc="For"  p="blueberry"            r="4" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 <v sc="Atm"  p="blueberryAtm"         r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 <v sc="Des"  p="bush_grass1"          r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.40" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
-<v sc="Des"  p="bush_grass2"          r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.40" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
+<v sc="Des"  p="bush_grass2"          r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.40" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 
 <v sc="For"  p="bushes1"              r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
-<v sc="For"  p="bushes2"              r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
+<v sc="For"  p="bushes2"              r="4" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.80"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 <v sc="Sav"  p="bushes1_sav"          r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="0.90" sb="1.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 <v sc="Sav"  p="bushes2_sav"          r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="0.90" sb="1.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 
 <v sc="For"  p="bush01"               r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.80" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
-<v sc="Can"  p="bush02dry_red"        r="4" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.80" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
+<v sc="Can"  p="bush02dry_red"        r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.80" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 <v sc="Jng"  p="bush03flower_viol"    r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.30" sb="1.90"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
-<v sc="Can"  p="bush04"               r="5" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.80" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
-<v sc="For"  p="bush05"               r="4" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.60" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
+<v sc="Can"  p="bush04"               r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.80" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
+<v sc="For"  p="bush05"               r="5" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.60" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 
-<v sc="Jng"  p="bush11flower_red"     r="4" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.60"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
+<v sc="Jng"  p="bush11flower_red"     r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.20" sb="1.60"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 <v sc="Jng"  p="bush12flower_red2"    r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.80" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 <v sc="Des"  p="bush13tall_ylw"       r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.80" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
-<v sc="Jng"  p="bush14tall_spots"     r="4" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.80" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
+<v sc="Jng"  p="bush14tall_spots"     r="3" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.80" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 <v sc="Jng"  p="bush15palm"           r="5" al="0"  vd="300" vD=" 300"  y="0.00" sa="1.80" sb="2.30"  wx="1.30" wy="0.060"  ab="40.00" b="1" rd="1" fd="0.0" />
 
 
