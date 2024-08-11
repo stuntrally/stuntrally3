@@ -2,7 +2,7 @@
 
 __This table shows all releases with their key counts and is meant for statistics purpose._
 
-Link to calculate [date difference](https://www.timeanddate.com/date/durationresult.html?d1=20&m1=12&y1=2023&d2=22&m2=4&y2=2024).
+Link to calculate [date difference](https://www.timeanddate.com/date/durationresult.html?d1=25&m1=04&y1=2024&d2=11&m2=8&y2=2024).
 
 | Legend                   |     |     | |
 |--------------------------|-----|-----|-|
@@ -17,11 +17,11 @@ Link to calculate [date difference](https://www.timeanddate.com/date/durationres
 
 |Version  | Date   |Days| MB  |g|e |Tracks |new|ren|del| Scn  |New Sceneries  |Vehicles|new|New Vehicles| Changes               |
 |---------|--------|----|-----|-|--|-------|---|---|---|------|---------------|--------|---|------------|-----------------------|
-|**3.2**  |--.--'24| 127|2451?| |  |**229**|   |>40|   |  41  |               | **33** |   |            | add Bushes            |
+|**3.2**  |--.--'24|>108|2451?| |  |**229**|   |>85|   |**40**|rem DesertMud  | **33** |   |            | new Bushes, Trees, Palms |
 |**3.1**  |25.04'24| 127|2391 | |3 |**229**| +1|>50|   |  41  |               | **33** | +8| R1,R2,R3, Q1,Q3, H1,H2, YG |       |
 |**3.0.1**|20.12'23| 17 |2100?| |  |**228**|   |   |   |  41  |               |   25   |   |            |                       |
 |**3.0**  | 3.12'23| 388|2098 |1|--|**228**|+26|153|-2 |  41  |               |   25   |   |            | OgreNext, PBS, Horizons     |
-|**2.8?** | --     |>388|2098?| |  |**227**|+25| 7 |-2 |  41  | Marble, Spring, Anomaly, PostApo |   25   |   |         |       |
+|**2.8?** | --     |>640|2098?| |  |**227**|+25| 7 |-2 |  41  | Marble, Spring, Anomaly, PostApo |   25   |   |         |       |
 |         |        |    |     | |  |       |   |   |   |      |               |        |   |            |                       |
 |**2.7**  |11.11'22|2609|1408 |1|- |**202**|+34|130|-4 |**37**| SurrealSpace, GreeceRocky, Other | **25** | +7| HI, SX, BE, U6, U8, MO, 3B | removed cars: 3S,360,CT,M3,TC6, N1,S1 |
 |**2.6.2**|25.03'22| -  | -   | |  |**172**|   |   |   |  34  |               |   25   |   |            |                       |

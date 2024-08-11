@@ -54,7 +54,7 @@ CGuiCom::CGuiCom(App* app1)
 	//  and presets.xml  colors from  sc=".."
 	scnN["Jng"] = "Jungle";        scnN["JngD"]= "JungleDark";      scnN["Mos"] = "Moss";          
 	scnN["For"] = "Forest";        scnN["ForM"]= "ForestMntn";      scnN["ForY"]= "ForestYellow";
-	scnN["Fin"] = "Finland";       scnN["Mud"] = "Mud";             scnN["DesM"]= "DesertMud";
+	scnN["Fin"] = "Finland";       scnN["Mud"] = "Mud";
 
 	scnN["Sav"] = "Savanna";       scnN["SavD"]= "SavannaDry";      scnN["Stn"] = "Stone";
 	scnN["Grc"] = "Greece";        scnN["GrcW"]= "GreeceWhite";     scnN["GrcR"] = "GreeceRocky";  
@@ -78,7 +78,7 @@ CGuiCom::CGuiCom(App* app1)
 	//  🏝️ scenery 🌈 colors  for track names  *  *  * * * * ** ** ** *** *** ****
 	scnClr["Jungle"]       = "#50FF50";  scnClr["JungleDark"]   = "#40C040";  scnClr["Moss"]         = "#70F0B0";
 	scnClr["Forest"]       = "#A0C000";  scnClr["ForestMntn"]   = "#A0C080";  scnClr["ForestYellow"] = "#C0C000";
-	scnClr["Finland"]      = "#A0E080";  scnClr["Mud"]          = "#A0A000";  scnClr["DesertMud"]    = "#B0B000";
+	scnClr["Finland"]      = "#A0E080";  scnClr["Mud"]          = "#A0A000";
 
 	scnClr["Savanna"]      = "#C0F080";  scnClr["SavannaDry"]   = "#C0D090";  scnClr["Stone"]        = "#A0A0A0";
 	scnClr["Greece"]       = "#B0FF00";  scnClr["GreeceWhite"]  = "#C0C0A0";  scnClr["GreeceRocky"]  = "#B0A8A0";

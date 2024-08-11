@@ -18,15 +18,13 @@ Marked: `crucial`, **Next or Big**, _Important_.
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
 wind anim shadow caster too, ed prv obj no wind-  
 
-🌿**bushes**, lods, **add** to tracks  
-🌳new [**trees**](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), lods  
-rem tree.0* from: For, Sav, Jng,  Aus, Isl, Vlc  
-rem farn* palm,2?  
+🌳new [trees](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), shrooms, etc  
 
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
 
 fix .car thrusters lights pos  
+hide flares with in car camera  
 **ed** Fields: accel par, dir, teleport end  
 SSAO?  convert .compositor to C++  
 
