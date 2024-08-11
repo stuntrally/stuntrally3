@@ -10,15 +10,16 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 `fix` multiplayer on windows [issue](https://github.com/stuntrally/stuntrally3/issues/28)
 
-🌊**add** refract clr, `depth` clr params, no refract fix  
-**under**water top, `pass` projmatrix not inverse  
+🌊**add** refract clr, `depth` clr params  
+`fix` emissive fluids, fix no refract, `fix` crash on: Surreal, HexForest  
+**under**water top, *pass* projmatrix not inverse  
 `fix` compositor: `boost` particles, car glass, `more` fluids at once, hud?,  
-`ed` prv add wtr to ter  
+`ed` **prv** add wtr to ter  
 
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
-wind anim shadow caster too, ed prv obj no wind-  
+wind anim *shadow caster* too, ed prv obj no wind-  
 
-🌳new [trees](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), shrooms, etc  
+🌳new [trees](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), *shrooms*, etc  
 
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
@@ -28,7 +29,7 @@ hide flares with in car camera
 **ed** Fields: accel par, dir, teleport end  
 SSAO?  convert .compositor to C++  
 
-new track(s) with fields, add walls  
+*new* track(s) with fields, add walls  
 hud new best time show, win particles-  
 
 

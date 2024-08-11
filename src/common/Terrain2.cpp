@@ -73,11 +73,11 @@ void CScene::CreateTerrain1(int n)
 	// tdb->setBrdf(TerraBrdf::Default);  //
 	// tdb->setBrdf(TerraBrdf::BlinnPhong);  // +💡
 	tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);  // +💡 rough+
-	// tdb->setBrdf(TerraBrdf::BlinnPhongFullLegacy);  //- white bad
+	// tdb->setBrdf(TerraBrdf::BlinnPhongFullLegacy);  //- white bad const
 	// tdb->setBrdf(TerraBrdf::BlinnPhongSeparateDiffuseFresnel);  //** no fresnel-?
-	// tdb->setBrdf(TerraBrdf::CookTorranceSeparateDiffuseFresnel);  //** no specular?
+	// tdb->setBrdf(TerraBrdf::CookTorranceSeparateDiffuseFresnel);  //** bright
 	// tdb->setBrdf(TerraBrdf::CookTorrance);  // dull tiny spec-+
-	// tdb->setBrdf(TerraBrdf::DefaultUncorrelated);  // dark-
+	// tdb->setBrdf(TerraBrdf::DefaultUncorrelated);  // ok
 	// tdb->setBrdf(TerraBrdf::DefaultSeparateDiffuseFresnel);  //- mirror?-
 	// tdb->setDiffuse(Vector3(1,1,1));
 
@@ -141,6 +141,7 @@ void CScene::CreateTerrain1(int n)
 			if (tex)
 			{	tdb->setTexture( TERRA_DETAIL_METALNESS0 + i, tex );
 				tdb->setSamplerblock( TERRA_DETAIL_METALNESS0 + i, sb );
+				// TERRA_DETAIL_ROUGHNESS0 ?
 		}	}
 		
 		// Real ofy = bTripl ? 0.499 : 0.0, ofx = bTripl ? 0.501 : 0.0,  // meh
