@@ -41,7 +41,7 @@ using namespace Ogre;
 ///  🌳🪨 Vegetation  ^ ^ ^ ^
 //---------------------------------------------------------------------------------------------------------------
 
-void CScene::DestroyTrees()
+void CScene::DestroyVeget()
 {
 	LogO("D--V destroy Veget Trees");
 
@@ -55,7 +55,7 @@ void CScene::DestroyTrees()
 	vegetItems.clear();
 }
 
-void CScene::RecreateTrees()
+void CScene::RecreateVeget()
 {
 #ifdef SR_EDITOR
 	if (!app->pSet->bTrees)
@@ -63,14 +63,14 @@ void CScene::RecreateTrees()
 	else
 		CreateTrees();
 #else
-	DestroyTrees();  // not used
-	CreateTrees();
+	DestroyVeget();  // not used
+	CreateVeget();
 #endif
 }
 
 ///  🌳🪨🪴  Create Vegetation
 //------------------------------------------------------------------------------------------------------------------
-void CScene::CreateTrees()
+void CScene::CreateVeget()
 {
 	if (ters.empty())  return;  // just gui
 	LogO("C--V Create Veget Trees");
@@ -78,17 +78,29 @@ void CScene::CreateTrees()
 	iVegetAll = 0;
 	// updGrsTer();
 
-	//  terrains
-	//---------------------------------------------------------
+	//  Terrains
+	//------------------------------------------------------------------------------------------
+	int iVegetTer0 = 0;
 	Terra* ter0 = 0;  // prev ter iHoriz 0
 	for (int it = 0; it < ters.size(); ++it)
 	{
 		auto* ter = ters[it];
 		const auto& td = sc->tds[it];
-		const Real tws = td.fTerWorldSize;
-		if (td.iHorizon >= 2)
+		Real tws = td.fTerWorldSize;
+
+		SETTINGS* pSet = app->pSet;
+		const auto& gs = //GameSet
+		#ifdef SR_EDITOR
+			pSet->gui;
+		#else
+			pSet->game;
+		#endif
+
+		if (td.iHorizon >= 2)  // only 1st
 			continue;
 		bool horiz = td.iHorizon == 1;
+		if (horiz)  // less dist
+			tws *= pSet->veg.hor_trees_dist;
 
 		//  density
 		// Real horizMul = 1.f; // /*1.f / */ (1.f + td.iHorizon * 23);
@@ -98,20 +110,11 @@ void CScene::CreateTrees()
 		Real dTr = sc->densTrees; // * horizMul;
 		dTr = dTr / 1000000.f * tws * tws;
 
-		SETTINGS* pSet = app->pSet;
-		const auto& gs = //GameSet
-		#ifdef SR_EDITOR
-			pSet->gui;
-		#else
-			pSet->game;
-		#endif
 		Real hTr = horiz ? pSet->veg.hor_trees  : 1.f;
 		Real hBu = horiz ? pSet->veg.hor_bushes : 1.f;
 		Real fTrees  = gs.trees  * dTr * hTr;
 		Real fBushes = gs.bushes * dTr * hBu;
 		
-
-		//---------------------------------------------- Trees ----------------------------------------------
 		if (fTrees > 0.f || fBushes > 0.f)
 		{
 			//if (!pSet->impostors_only)
@@ -133,8 +136,9 @@ void CScene::CreateTrees()
 			else
 				LogO("TREES no imgRoad !");
 
-			//  Tree Layers  ------------------------------------
-			int nn = 0;
+			///  Veget Layers  
+			//------------------------------------------------------------------------------------------
+			int vegAllLay = 0, nn = 0;
 			for (size_t l=0; l < sc->vegLayers.size(); ++l)
 			{
 				VegetLayer& vg = sc->vegLayersAll[sc->vegLayers[l]];
@@ -171,18 +175,20 @@ void CScene::CreateTrees()
 					SubMesh* sm = msh->getSubMesh(i);
 					tris += sm->indexData->indexCount;
 				}
-				LogO("TREE info:  "+file+"\t sub: "+toStr(subs)+"  tri: "+fToStr(tris/1000.f,1,4)+"k");
+				LogO("Veget info:  "+file+"\t sub: "+toStr(subs)+"  tri: "+fToStr(tris/1000.f,1,4)+"k");
 				#endif
 
 
-				///  collision object
+				///  collision
 				const BltCollision* col = data->objs->Find(vg.name);
 				Vector3 ofs(0,0,0);  if (col)  ofs = col->offset;  // mesh offset
 
-				//  num trees  ----------------------------------------------------------------
+				//----------------------------------------------------------------
+				//  models count
+				//----------------------------------------------------------------
 				int cnt = 6000 * vg.dens * (veg->bush ? fBushes : fTrees);  // old
-				LogO("tws: "+fToStr(tws)+" tr cnt: "+toStr(cnt)+" c/t2: "+fToStr(cnt/tws/tws,8,10));
 				int all = 0;  // stat
+				LogO("tws: "+fToStr(tws)+" tr cnt: "+toStr(cnt)+" c/t2: "+fToStr(cnt/tws/tws,8,10));  //-
 				// LogO(String("col?  ")+(col?"y":"n")+ " ofs x "+fToStr(ofs.x,2)+ " z "+fToStr(ofs.y,2));
 				
 				for (int i = 0; i < cnt; ++i)
@@ -214,6 +220,10 @@ void CScene::CreateTrees()
 					pos.x += vo.x * scl;  pos.z += vo.y * scl;
 
 
+					//----------------------------------------------------------------
+					//  add checks
+					//----------------------------------------------------------------
+
 					//  check for horizon if on main ter  ------------
 					if (td.iHorizon > 0 && ter0)
 					{
@@ -224,7 +234,7 @@ void CScene::CreateTrees()
 					}
 					if (!add)  continue;  //
 
-					//  check ter angle  ------------
+					//  ter ⛰️Angle  ------------
 					float ang = ter->getAngle(pos.x, pos.z, td.fTriangleSize);
 					if (ang > vg.maxTerAng)
 						add = false;
@@ -232,7 +242,7 @@ void CScene::CreateTrees()
 					// if (!add)  LogO("ter ang");
 					if (!add)  continue;  //
 
-					//  check ter height  ------------
+					//  ter 🏔️Height  ------------
 					// bool in = ter->worldInside(pos);
 					bool in = ter->getHeightAt(pos);
 					// LogO(fToStr(pos.y));
@@ -244,14 +254,14 @@ void CScene::CreateTrees()
 					// if (!add)  LogO("ter h");
 					if (!add)  continue;  //
 					
-					//  check if in fluids  ------------
+					//  if in  🌊Fluids  ------------
 					float fa = sc->GetDepthInFluids(pos);
 					if (fa > vg.maxDepth)
 						add = false;
 
 					// if (!add)  LogO("in fl");
 
-					//  check if on road - uses roadDensity.png
+					//  if on  🛣️Road - uses roadDensity.png
 					if (imgRoad && r > 0)  //  ----------------
 					{
 					int mx = (0.5*tws + pos.x)/tws*r,
@@ -291,145 +301,169 @@ void CScene::CreateTrees()
 					// if (!add)  LogO("on rd");
 					if (!add)  continue;  //
 
+					//  🟢 Ogre add 1
+					//--------------------------------
+					Create1Veget( pos0, pos, yaw, scl,
+						veg, vg, i, col, cntshp);
 
-					//  **************  add  **************
-					++all;
-					Item *item = mgr->createItem( file,
-						ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
-					
-					item->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
-					item->setVisibilityFlags( RV_Vegetation );
-					app->SetTexWrap(item);
+					//  + count stats
+					++all;  ++vg.cnt;  ++iVegetAll;  ++vegAllLay;
 
-					//  how far visible  // todo: * norm scale, aabb?
-					Real dist =  /*rare far*/ i % 3 == 0 ? veg->farDist : veg->visDist;
-					Real setDist = veg->bush ?
-						(/*horiz ? pSet->veg.hor_bushes_dist :*/ pSet->veg.bushes_dist) :
-						(/*horiz ? pSet->veg.hor_trees_dist  :*/ pSet->veg.trees_dist);
-					item->setRenderingDistance( dist * setDist );
-					vegetItems.push_back(item);
-
-				#if 0  //  marker | test
-					Item *item2 = mgr->createItem( "ring_blue_stick.mesh",
-						ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
-					vegetItems.push_back(item2);
-
-					SceneNode *node2 = rootNode->createChildSceneNode( SCENE_STATIC );
-					node2->attachObject( item2 );
-					node2->setPosition( pos0 );
-					vegetNodes.push_back(node2);
-				#endif
-
-					SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
-					node->attachObject( item );
-					node->scale( scl * Vector3::UNIT_SCALE );
-
-					pos.y -= veg->yOfs;  // ofs below
-					// pos.y += std::min( item->getLocalAabb().getMinimum().y, Real(0.0f) ) * -0.1f + lay.down;  //par
-					// todo: ter h in few +-xz, get lowest slow-
-					node->setPosition( pos );
-					
-					Degree a( yaw );
-					Quaternion q;  q.FromAngleAxis( a, Vector3::UNIT_Y );
-					if (0) // todo: par pg.tilt ..
-					{
-						Degree at( Math::RangeRandom(0, 20.f) );
-						Quaternion qt;  qt.FromAngleAxis( -at, Vector3::UNIT_Z );
-						node->setOrientation( qt * q );
-					}else
-						node->setOrientation( q );
-					vegetNodes.push_back(node);
-					//  ****************************
-					
-					++vg.cnt;  ++iVegetAll;  // count stats
-						
-					
-					///  🎳 add to bullet world
-					#ifndef SR_EDITOR  //  in Game
-					int cc = col ? col->shapes.size() : 0;
-					//  not found in xml or specified, 1 shape
-					bool useTrimesh = !col || cc == 1 && col->shapes[0].type == BLT_Mesh;
-					bool noCol = data->objs->colNone[vg.name];
-
-					if (pSet->game.collis_veget && !noCol)
-					if (!useTrimesh)
-					for (int c=0; c < cc; ++c)  // all shapes
-					{
-						const BltShape* shp = &col->shapes[c];
-						Vector3 pos = pos0;  // restore original place
-						Vector3 ofs = shp->offset;
-						//  offset shape  pos, rotY, scl
-						Vector2 vo;  float yr = Degree(-yaw).valueRadians();
-						// LogO("veget shp  i "+toStr(i)+"  yr "+toStr(yr)+"  p "+toStr(pos0)+" ");
-						float cyr = cos(yr), syr = sin(yr);
-						vo.x = ofs.x * cyr - ofs.y * syr;
-						vo.y = ofs.x * syr + ofs.y * cyr;
-						pos.x += vo.x * scl;  pos.z += vo.y * scl;
-
-						//  apply pos offset xyz, rotY, mul by scale
-						ter->getHeightAt(pos);
-						btVector3 pc(pos.x, -pos.z, pos.y + ofs.z * scl);  // center
-						btTransform tr;  tr.setIdentity();  tr.setOrigin(pc);
-
-						btCollisionShape* bshp = 0;
-						if (shp->type == BLT_CapsZ)
-							bshp = new btCapsuleShapeZ(shp->radius * scl, shp->height * scl);
-						else
-							bshp = new btSphereShape(shp->radius * scl);
-						bshp->setUserPointer((void*)SU_Vegetation);
-
-						btCollisionObject* bco = new btCollisionObject();
-						bco->setActivationState(DISABLE_SIMULATION);
-						bco->setCollisionShape(bshp);	bco->setWorldTransform(tr);
-
-						if (shp->damping > 0.f)
-						{
-							bco->setCollisionFlags(bco->getCollisionFlags() |
-								btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_NO_CONTACT_RESPONSE/**/);
-							bco->setUserPointer(new ShapeData(ST_Damp, 0, 0, 0, 0, 0, shp->damping));  /// *
-						}else
-						{	bco->setFriction(shp->friction);  bco->setRestitution(shp->restitution);
-							bco->setCollisionFlags(bco->getCollisionFlags() |
-								btCollisionObject::CF_STATIC_OBJECT /*| btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
-						}
-						app->pGame->collision.world->addCollisionObject(bco);
-						app->pGame->collision.shapes.push_back(bshp);
-						++cntshp;
-					}
-					else  // 🪨 use trimesh  . . . . . . . . . . . . 
-					{
-						const BltShape* shp = !col ? &data->objs->defPars : &col->shapes[0];
-						Vector3 pc(pos0.x, pos.y, pos0.z);
-						Quaternion q;  q.FromAngleAxis(Degree(yaw), Vector3::UNIT_Y);
-
-						Matrix4 tre;  tre.makeTransform(pc, scl*Vector3::UNIT_SCALE, q);
-						BtOgre::StaticMeshToShapeConverter converter(item, tre);
-						btCollisionShape* shape = converter.createTrimesh();
-						shape->setUserPointer((void*)SU_Vegetation);
-
-						btCollisionObject* bco = new btCollisionObject();
-						btTransform tr;  tr.setIdentity();
-						bco->setActivationState(DISABLE_SIMULATION);
-						bco->setCollisionShape(shape);	bco->setWorldTransform(tr);
-						bco->setFriction(shp->friction);  bco->setRestitution(shp->restitution);
-						bco->setCollisionFlags(bco->getCollisionFlags() |
-							btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
-						app->pGame->collision.world->addCollisionObject(bco);
-						app->pGame->collision.shapes.push_back(shape);
-						++cntshp;
-					}
-					#endif
-				}
+				}	//  i cnt  layer Models
 				LogO("Tree:  "+file+"\t cnt: "+toStr(all)+" / "+toStr(cnt));
-			}
+			}	// l  veget Layers
+
+			//  ter 0 stats
+			if (horiz)
+				iVegetTer0 += vegAllLay;
 			if (td.iHorizon == 0 /*&& !ter0*/)  // could be many0-
 				ter0 = ter;
 			LogO(String("***** Vegetation models count: ") + toStr(iVegetAll) + "  shapes: " + toStr(cntshp));
-		}
-	}
+
+		}	// > 0
+	}	//  Terrains
+
 	LogO(String(":::* Time Trees: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 
+
+void CScene::Create1Veget(
+	Vector3 pos0, Vector3 pos, Real yaw, Real scl,
+	const PVeget* veg, const VegetLayer& vg, int i,
+	const class BltCollision* col, int& cntshp)
+{
+	SETTINGS* pSet = app->pSet;
+	SceneManager *mgr = app->mSceneMgr;
+	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
+
+	//  🟢 Ogre add
+	//----------------------------------------------------------------
+	String file = vg.name;
+	Item *item = mgr->createItem( file,
+		ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
+	
+	item->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
+	item->setVisibilityFlags( RV_Vegetation );
+	app->SetTexWrap(item);
+
+	//  how far visible  // todo: * norm scale, aabb?
+	Real dist =  /*rare far*/ i % 3 == 0 ? veg->farDist : veg->visDist;
+	Real setDist = veg->bush ?
+		(/*horiz ? pSet->veg.hor_bushes_dist :*/ pSet->veg.bushes_dist) :
+		(/*horiz ? pSet->veg.hor_trees_dist  :*/ pSet->veg.trees_dist);
+	item->setRenderingDistance( dist * setDist );
+	vegetItems.push_back(item);
+
+#if 0  //  marker | test
+	Item *item2 = mgr->createItem( "ring_blue_stick.mesh",
+		ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
+	vegetItems.push_back(item2);
+
+	SceneNode *node2 = rootNode->createChildSceneNode( SCENE_STATIC );
+	node2->attachObject( item2 );
+	node2->setPosition( pos0 );
+	vegetNodes.push_back(node2);
+#endif
+
+	SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
+	node->attachObject( item );
+	node->scale( scl * Vector3::UNIT_SCALE );
+
+	pos.y -= veg->yOfs;  // ofs below
+	// pos.y += std::min( item->getLocalAabb().getMinimum().y, Real(0.0f) ) * -0.1f + lay.down;  //par
+	// todo: ter h in few +-xz, get lowest slow-
+	node->setPosition( pos );
+	
+	Degree a( yaw );
+	Quaternion q;  q.FromAngleAxis( a, Vector3::UNIT_Y );
+	if (0) // todo: par pg.tilt ..
+	{
+		Degree at( Math::RangeRandom(0, 20.f) );
+		Quaternion qt;  qt.FromAngleAxis( -at, Vector3::UNIT_Z );
+		node->setOrientation( qt * q );
+	}else
+		node->setOrientation( q );
+	vegetNodes.push_back(node);
+
+	
+	///  🎳 add to bullet world
+	//----------------------------------------------------------------
+	#ifndef SR_EDITOR  //  in Game
+	int cc = col ? col->shapes.size() : 0;
+	//  not found in xml or specified, 1 shape
+	bool useTrimesh = !col || cc == 1 && col->shapes[0].type == BLT_Mesh;
+	bool noCol = data->objs->colNone[vg.name];
+
+	if (pSet->game.collis_veget && !noCol)
+	if (!useTrimesh)
+	for (int c=0; c < cc; ++c)  // all shapes
+	{
+		const BltShape* shp = &col->shapes[c];
+		Vector3 pos = pos0;  // restore original place
+		Vector3 ofs = shp->offset;
+		//  offset shape  pos, rotY, scl
+		Vector2 vo;  float yr = Degree(-yaw).valueRadians();
+		// LogO("veget shp  i "+toStr(i)+"  yr "+toStr(yr)+"  p "+toStr(pos0)+" ");
+		float cyr = cos(yr), syr = sin(yr);
+		vo.x = ofs.x * cyr - ofs.y * syr;
+		vo.y = ofs.x * syr + ofs.y * cyr;
+		pos.x += vo.x * scl;  pos.z += vo.y * scl;
+
+		//  apply pos offset xyz, rotY, mul by scale
+		ter->getHeightAt(pos);
+		btVector3 pc(pos.x, -pos.z, pos.y + ofs.z * scl);  // center
+		btTransform tr;  tr.setIdentity();  tr.setOrigin(pc);
+
+		btCollisionShape* bshp = 0;
+		if (shp->type == BLT_CapsZ)
+			bshp = new btCapsuleShapeZ(shp->radius * scl, shp->height * scl);
+		else
+			bshp = new btSphereShape(shp->radius * scl);
+		bshp->setUserPointer((void*)SU_Vegetation);
+
+		btCollisionObject* bco = new btCollisionObject();
+		bco->setActivationState(DISABLE_SIMULATION);
+		bco->setCollisionShape(bshp);	bco->setWorldTransform(tr);
+
+		if (shp->damping > 0.f)
+		{
+			bco->setCollisionFlags(bco->getCollisionFlags() |
+				btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_NO_CONTACT_RESPONSE/**/);
+			bco->setUserPointer(new ShapeData(ST_Damp, 0, 0, 0, 0, 0, shp->damping));  /// *
+		}else
+		{	bco->setFriction(shp->friction);  bco->setRestitution(shp->restitution);
+			bco->setCollisionFlags(bco->getCollisionFlags() |
+				btCollisionObject::CF_STATIC_OBJECT /*| btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+		}
+		app->pGame->collision.world->addCollisionObject(bco);
+		app->pGame->collision.shapes.push_back(bshp);
+		++cntshp;
+	}
+	else  // 🪨 use trimesh  . . . . . . . . . . . . 
+	{
+		const BltShape* shp = !col ? &data->objs->defPars : &col->shapes[0];
+		Vector3 pc(pos0.x, pos.y, pos0.z);
+		Quaternion q;  q.FromAngleAxis(Degree(yaw), Vector3::UNIT_Y);
+
+		Matrix4 tre;  tre.makeTransform(pc, scl*Vector3::UNIT_SCALE, q);
+		BtOgre::StaticMeshToShapeConverter converter(item, tre);
+		btCollisionShape* shape = converter.createTrimesh();
+		shape->setUserPointer((void*)SU_Vegetation);
+
+		btCollisionObject* bco = new btCollisionObject();
+		btTransform tr;  tr.setIdentity();
+		bco->setActivationState(DISABLE_SIMULATION);
+		bco->setCollisionShape(shape);	bco->setWorldTransform(tr);
+		bco->setFriction(shp->friction);  bco->setRestitution(shp->restitution);
+		bco->setCollisionFlags(bco->getCollisionFlags() |
+			btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
+		app->pGame->collision.world->addCollisionObject(bco);
+		app->pGame->collision.shapes.push_back(shape);
+		++cntshp;
+	}
+	#endif
+	//----------------------------------------------------------------
+}
 
 void CScene::LoadRoadDens()
 {
