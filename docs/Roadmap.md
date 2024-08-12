@@ -19,6 +19,7 @@ Marked: `crucial`, **Next or Big**, _Important_.
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
 wind anim *shadow caster* too, ed prv obj no wind-  
 
+**limit** horizon trees  
 🌳new [trees](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), *shrooms*, etc  
 
 💎Add **gems** to tracks, more types 3d  

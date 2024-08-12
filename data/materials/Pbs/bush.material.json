@@ -95,69 +95,6 @@
 	"pbs" : 
 	{
 
-		"3D-Diggers/farn01" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"alpha_test" : ["greater", 0.5, false],
-			"grass" : true,
-			"tree_wind" : true,
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0.7, 0.7, 0.7],
-				"background" : [1, 1, 1, 1],
-				"texture" : "farn01.png",
-				"sampler" : "Sampler_10"
-			},
-			"specular" :
-			{
-				"value" : [0.1, 0.1, 0.1]
-			},
-			"fresnel" :
-			{
-				"value" : 0.03,
-				"mode" : "coeff"
-			},
-			"roughness" :
-			{
-				"value" : 0.03
-			}
-		},
-
-		"3D-Diggers/farn02" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"alpha_test" : ["greater", 0.5, false],
-			"grass" : true,
-			"tree_wind" : true,
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0.7, 0.7, 0.7],
-				"background" : [1, 1, 1, 1],
-				"texture" : "farn02.png",
-				"sampler" : "Sampler_10"
-			},
-			"specular" :
-			{
-				"value" : [0.1, 0.1, 0.1]
-			},
-			"fresnel" :
-			{
-				"value" : 0.03,
-				"mode" : "coeff"
-			},
-			"roughness" :
-			{
-				"value" : 0.03
-			}
-		},
-
-
 		"3D-Diggers/shroom1" :
 		{
 			"macroblock" : "Macroblock_0",
