@@ -69,7 +69,7 @@ struct PVeget
 {
 	int rate = 0;
 	Ogre::String sc;
-	std::string name;
+	std::string name, mtr;
 	bool bush =0;
 
 	float minScale = 0.6f, maxScale = 1.2f;

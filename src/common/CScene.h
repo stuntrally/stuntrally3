@@ -1,10 +1,10 @@
 #pragma once
 // #include "PreviewTex.h"
-//#include "SceneClasses.h"
 #include "par.h"
 #include "Road.h"
 #include "FluidsReflect.h"
 #include "Grid.h"
+#include "SceneClasses.h"
 #include <OgreVector3.h>
 #include <OgreString.h>
 
@@ -14,6 +14,7 @@ namespace Ogre  {
 	class Viewport;  class Root;  class ParticleSystem;  }
 class App;  class Scene;  class CData;  class TerData;
 class SplineRoad;  class PaceNotes;  class Grass;  class Atmosphere;
+struct PVeget;  class BltCollision;
 
 
 ///  🟢 Ogre parts for a track/map
@@ -93,12 +94,17 @@ public:
 	void CreateTrail(Cam* cam, int id =0, bool bHideHudTrail =0);
 
 	
-	//  🌳🪨 Vegetation Trees
+	//  🌳🪨 Vegetation models, trees etc
 	//-----------------------------------
 	Ogre::Image2* imgRoad = 0;  int imgRoadSize = 0;
 	void LoadRoadDens(), DelRoadDens();
 
-	void CreateTrees(), DestroyTrees(), RecreateTrees(); //, updGrsTer(), UpdCamera();
+	void CreateVeget(), DestroyVeget(), RecreateVeget(); //, updGrsTer(), UpdCamera();
+	void Create1Veget(
+		Ogre::Vector3 pos0, Ogre::Vector3 pos, Ogre::Real yaw, Ogre::Real scl,
+		const PVeget* veg, const VegetLayer& vg, int i,
+		const BltCollision* col, int& cntshp);
+	
 	int iVegetAll = 0;  // for info
 	std::vector<Ogre::Item*> vegetItems;
 	std::vector<Ogre::SceneNode*> vegetNodes;

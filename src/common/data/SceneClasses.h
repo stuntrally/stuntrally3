@@ -105,7 +105,7 @@ class VegetLayer	//  🌳🪨 Vegetation model
 {
 public:
 	bool on = false;
-	Ogre::String name;  float dens = 0.1f;
+	Ogre::String name, mtr;  float dens = 0.1f;
 
 	int addRdist = 0, maxRdist = 20;  // add,max dist to road
 	float minScale = 0.1f, maxScale = 0.25f, ofsY = 0.f;
