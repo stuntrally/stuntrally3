@@ -18,7 +18,7 @@ public:
 	bool Create(App* app1);
 	void Destroy();
 
-	bool Load(Ogre::String mesh);
+	bool Load(Ogre::String mesh, Ogre::String mtr="");
 	void Unload();
 	void Update(float dt);
 	float yaw =0.f;  // rot angle

@@ -301,7 +301,7 @@ void CGui::listPickVeg(Mli2 li, size_t pos)
 	s += ".mesh";
 
 	auto& l = sc->vegLayersAll[idPgLay];
-	l.name = s;
+	l.name = s;  l.mtr = p->mtr;
 	
 	//  preset
 	if (pSet->pick_setpar && p)
@@ -313,5 +313,5 @@ void CGui::listPickVeg(Mli2 li, size_t pos)
 		l.maxDepth = p->maxDepth;  svLTrFlDepth.Upd();
 		l.addRdist = p->addRdist;  svLTrRdDist.Upd();
 	}
-	Upd3DView(s);
+	Upd3DView(l.name, l.mtr);
 }

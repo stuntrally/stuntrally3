@@ -327,6 +327,8 @@ bool Scene::SaveXml(String file)
 				XMLElement* vgl = xml.NewElement("layer");
 				vgl->SetAttribute("on",			l.on ? 1 : 0);
 				vgl->SetAttribute("name",		l.name.c_str());
+				if (!l.mtr.empty())
+				vgl->SetAttribute("mtr",		l.mtr.c_str());
 				vgl->SetAttribute("dens",		toStrC( l.dens ));
 				vgl->SetAttribute("minScale",	toStrC( l.minScale ));
 				vgl->SetAttribute("maxScale",	toStrC( l.maxScale ));

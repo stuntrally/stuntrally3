@@ -264,7 +264,7 @@ public:
 	MyGUI::IntCoord GetViewSize();
 	Ogre::String viewMesh;
 	float tiViewUpd =0;
-	void Upd3DView(Ogre::String mesh);
+	void Upd3DView(Ogre::String mesh, Ogre::String mtr="");
 	
 	///  🌳🪨  models layers  --------
 	int idPgLay =0;  // help var

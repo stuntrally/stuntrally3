@@ -278,7 +278,7 @@ void CGui::tabPgLayers(Tab wp, size_t id)
 		if (liVeg->getSubItemNameAt(1,i).substr(7) == s)
 			liVeg->setIndexSelected(i);
 			
-	Upd3DView(lay.name);
+	Upd3DView(lay.name, lay.mtr);
 	SetUsedStr(valLTrAll, sc->vegLayers.size(), ciLTrAllYlw);
 	txVCnt->setCaption(toStr(lay.cnt));
 }
@@ -337,11 +337,11 @@ void CGui::chkPgLayOn(Ck*)
 	SetUsedStr(valLTrAll, sc->vegLayers.size(), ciLTrAllYlw);
 }
 
-void CGui::Upd3DView(String mesh)
+void CGui::Upd3DView(String mesh, String mtr)
 {
 	viewMesh = mesh;
 	tiViewUpd = 0.f;
-	app->prvScene.Load(mesh);
+	app->prvScene.Load(mesh, mtr);
 	updVegetInfo();
 }
 

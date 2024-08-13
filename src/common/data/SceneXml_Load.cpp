@@ -238,7 +238,6 @@ bool Scene::LoadXml(String file, bool bTer)
 			SGrassLayer g;
 			a = u->Attribute("on");			if (a)  g.on = s2i(a);  else  g.on = 1;
 			a = u->Attribute("mtr");		if (a)  g.material = String(a);
-			// a = u->Attribute("clr");		if (a)  g.colorMap = String(a);  // old-
 			a = u->Attribute("cl");			if (a)  g.color.Load(a);  // new
 			a = u->Attribute("dens");		if (a)  g.dens = s2r(a);
 			a = u->Attribute("chan");		if (a)  g.iChan = s2i(a);
@@ -288,6 +287,7 @@ bool Scene::LoadXml(String file, bool bTer)
 			VegetLayer l;
 			a = u->Attribute("on");			if (a)  l.on = s2i(a);  else  l.on = 1;
 			a = u->Attribute("name");		if (a)  l.name = String(a);
+			a = u->Attribute("mtr");		if (a)  l.mtr = String(a);
 			a = u->Attribute("dens");		if (a)  l.dens = s2r(a);
 			a = u->Attribute("minScale");	if (a)  l.minScale = s2r(a);
 			a = u->Attribute("maxScale");	if (a)  l.maxScale = s2r(a);

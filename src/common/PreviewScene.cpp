@@ -102,7 +102,7 @@ void PreviewScene::Unload()
 
 
 //  🔁 Load mesh
-bool PreviewScene::Load(Ogre::String mesh)
+bool PreviewScene::Load(String mesh, String mtr)
 {
 	if (!mgr)  return false;
 	if (node)
@@ -113,6 +113,8 @@ bool PreviewScene::Load(Ogre::String mesh)
 
 	try
 	{	item = mgr->createItem(mesh);
+		if (!mtr.empty())
+			item->setDatablockOrMaterialName(mtr);
 		
 		//  txt for info  --------
 		sInfo.clear();
