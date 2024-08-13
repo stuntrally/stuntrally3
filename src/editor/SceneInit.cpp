@@ -206,7 +206,7 @@ void App::destroyScene()
 	scn->DelRoadDens();
 
 	scn->grass->Destroy();
-	scn->DestroyVeget();
+	scn->DestroyVegets();
 
 	DestroyObjects(true);
 	DestroyCollects(true);
@@ -249,7 +249,7 @@ void App::NewCommon(bool onlyTerVeget)
 	//  🌳🪨  Vegetation
 	scn->DelRoadDens();
 	scn->grass->Destroy();  // 🌿
-	scn->DestroyVeget();
+	scn->DestroyVegets();
 
 	if (!onlyTerVeget)
 	{
@@ -375,7 +375,7 @@ void App::LoadTrackEv()
 	if (pSet->bTrees)
 	{
 		scn->LoadRoadDens();
-		scn->CreateVeget();  // trees after objects so they aren't inside them
+		scn->CreateVegets();  // trees after objects so they aren't inside them
 		scn->grass->Create(this);  // 🌿
 	}
 
@@ -456,7 +456,7 @@ void App::UpdateTrackEv()
 	//CreateObjects();
 
 	if (pSet->bTrees)
-	{	scn->CreateVeget();
+	{	scn->CreateVegets();
 		scn->grass->Create(this);  // 🌿
 	}
 	DestroyRnd2Tex();
@@ -486,9 +486,9 @@ void CGui::btnUpdateGrass(WP)
 
 void CGui::btnUpdateVeget(WP)
 {
-	scn->DestroyVeget();  // 🌳🪨
+	scn->DestroyVegets();  // 🌳🪨
 	if (pSet->bTrees)
-		scn->CreateVeget();
+		scn->CreateVegets();
 }
 
 

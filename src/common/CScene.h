@@ -99,11 +99,11 @@ public:
 	Ogre::Image2* imgRoad = 0;  int imgRoadSize = 0;
 	void LoadRoadDens(), DelRoadDens();
 
-	void CreateVeget(), DestroyVeget(), RecreateVeget(); //, updGrsTer(), UpdCamera();
-	void Create1Veget(
+	void CreateVegets(), DestroyVegets(), RecreateVegets(); //, updGrsTer(), UpdCamera();
+	void CreateVeget1(
 		Ogre::Vector3 pos0, Ogre::Vector3 pos, Ogre::Real yaw, Ogre::Real scl,
 		const PVeget* veg, const VegetLayer& vg, int i,
-		const BltCollision* col, int& cntshp);
+		bool horiz, const BltCollision* col, int& cntshp);
 	
 	int iVegetAll = 0;  // for info
 	std::vector<Ogre::Item*> vegetItems;

@@ -34,7 +34,7 @@ using namespace Ogre;
 
 ///  🌳🪨🪴🍄  Create Vegetation
 //------------------------------------------------------------------------------------------------------------------
-void CScene::CreateVeget()
+void CScene::CreateVegets()
 {
 	if (ters.empty())  return;  // just gui
 	LogO("C--V Create Veget Trees");
@@ -266,8 +266,8 @@ void CScene::CreateVeget()
 
 					//  🟢 Ogre add 1
 					//--------------------------------
-					Create1Veget( pos0, pos, yaw, scl,
-						veg, vg, i, col, cntshp);
+					CreateVeget1( pos0, pos, yaw, scl,
+						veg, vg, i,  horiz, col, cntshp);
 
 					//  + count stats
 					++all;  ++vg.cnt;  ++iVegetAll;  ++vegAllLay;
@@ -292,10 +292,10 @@ void CScene::CreateVeget()
 
 //  🟢 Ogre add
 //------------------------------------------------------------------------------------------
-void CScene::Create1Veget(
+void CScene::CreateVeget1(
 	Vector3 pos0, Vector3 pos, Real yaw, Real scl,
 	const PVeget* veg, const VegetLayer& vg, int i,
-	const class BltCollision* col, int& cntshp)
+	bool horiz, const class BltCollision* col, int& cntshp)
 {
 	SETTINGS* pSet = app->pSet;
 	SceneManager *mgr = app->mSceneMgr;
@@ -349,6 +349,8 @@ void CScene::Create1Veget(
 		node->setOrientation( q );
 	vegetNodes.push_back(node);
 
+if (horiz)
+	return;
 	
 	///  🎳 add to bullet world
 	//----------------------------------------------------------------
@@ -430,7 +432,7 @@ void CScene::Create1Veget(
 }
 
 
-void CScene::DestroyVeget()
+void CScene::DestroyVegets()
 {
 	LogO("D--V destroy Veget Trees");
 
@@ -444,16 +446,16 @@ void CScene::DestroyVeget()
 	vegetItems.clear();
 }
 
-void CScene::RecreateVeget()
+void CScene::RecreateVegets()
 {
 #ifdef SR_EDITOR
 	if (!app->pSet->bTrees)
-		DestroyVeget();
+		DestroyVegets();
 	else
-		CreateVeget();
+		CreateVegets();
 #else
-	DestroyVeget();  // not used
-	CreateVeget();
+	DestroyVegets();  // not used
+	CreateVegets();
 #endif
 }
 

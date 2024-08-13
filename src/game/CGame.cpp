@@ -96,7 +96,7 @@ void App::destroyScene()
 	scn->DelRoadDens();
 
 	scn->grass->Destroy();
-	scn->DestroyVeget();
+	scn->DestroyVegets();
 
 	DestroyObjects(true);
 	DestroyCollects(true);

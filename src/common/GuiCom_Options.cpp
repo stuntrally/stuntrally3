@@ -318,8 +318,8 @@ void CGuiCom::btnVegetApply(WP)
 #endif
 	if (!app->scn->imgRoadSize)
 		app->scn->LoadRoadDens();
-	app->scn->DestroyVeget();
-	app->scn->CreateVeget();
+	app->scn->DestroyVegets();
+	app->scn->CreateVegets();
 	
 	app->scn->grass->Destroy();
 	app->scn->grass->Create(app);

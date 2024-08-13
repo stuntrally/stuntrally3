@@ -326,7 +326,7 @@ void App::LoadCleanUp()
 	{
 		scn->DelRoadDens();
 		scn->grass->Destroy();  // 🌿
-		scn->DestroyVeget();    // 🌳🪨
+		scn->DestroyVegets();    // 🌳🪨
 
 		DestroyObjects(true);   // 📦🏢
 		DestroyCollects(true);  // 💎
@@ -744,7 +744,7 @@ void App::LoadTrees()
 	if (dstTrk)
 	{
 		scn->LoadRoadDens();
-		scn->CreateVeget();
+		scn->CreateVegets();
 		scn->grass->Create(this);  // 🌿
 	}	
 		
