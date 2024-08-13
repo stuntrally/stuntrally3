@@ -3,14 +3,11 @@
 #include "RenderConst.h"
 #include "CData.h"
 #include "SceneXml.h"
-#include "Axes.h"
 #include "BltObjects.h"
 #include "ShapeData.h"
 #include "data/PresetsXml.h"
 
 #include "CScene.h"
-// #include "SplineBase.h"
-// #include "GuiCom.h"
 #ifdef SR_EDITOR
 	#include "CApp.h"
 	#include "settings.h"
@@ -18,10 +15,8 @@
 	#include "CGame.h"
 	#include "settings.h"
 	#include "game.h"
-	// #include "SplitScreen.h"
 	#include "BtOgreGP.h"
 #endif
-#include "paths.h"
 #include "MersenneTwister.h"
 
 // #include <filesystem>
@@ -37,38 +32,7 @@
 using namespace Ogre;
 
 
-//---------------------------------------------------------------------------------------------------------------
-///  🌳🪨 Vegetation  ^ ^ ^ ^
-//---------------------------------------------------------------------------------------------------------------
-
-void CScene::DestroyVeget()
-{
-	LogO("D--V destroy Veget Trees");
-
-	SceneManager *mgr = app->mSceneMgr;
-	for (auto* node : vegetNodes)
-		mgr->destroySceneNode(node);
-	vegetNodes.clear();
-	
-	for (auto* item : vegetItems)
-		mgr->destroyItem(item);
-	vegetItems.clear();
-}
-
-void CScene::RecreateVeget()
-{
-#ifdef SR_EDITOR
-	if (!app->pSet->bTrees)
-		DestroyTrees();
-	else
-		CreateTrees();
-#else
-	DestroyVeget();  // not used
-	CreateVeget();
-#endif
-}
-
-///  🌳🪨🪴  Create Vegetation
+///  🌳🪨🪴🍄  Create Vegetation
 //------------------------------------------------------------------------------------------------------------------
 void CScene::CreateVeget()
 {
@@ -128,7 +92,6 @@ void CScene::CreateVeget()
 
 			//  set random seed  // add seed in scene.xml and in editor gui?
 			MTRand rnd((MTRand::uint32)1213);
-			#define getTerPos()		(rnd.rand()-0.5) * td.fTriangleSize * td.iVertsX;  //td.fTerWorldSize
 
 			TextureBox tb;
 			if (imgRoad)
@@ -197,14 +160,14 @@ void CScene::CreateVeget()
 					Vector3 pos0 = Vector3::ZERO, pos = Vector3::ZERO;  Real yaw;
 
 					#if 0  ///  test shapes, new objects
-						yaw = (nn * 15) % 360;  // grid
-						// yaw = 0.f;
-						pos.z = -100 +(nn / 9) * 20;  pos.x = -100 +(nn % 9) * 20;
-						Real scl = pg.minScale;
-						++nn;
+						yaw = (nn * 15) % 360;  // yaw = 0.f;  // grid
+						pos.z = -100 +(nn / 9) * 20;
+						pos.x = -100 +(nn % 9) * 20;
+						Real scl = pg.minScale;  ++nn;
 					#else
 						yaw = rnd.rand(360.0);
-						pos.x = getTerPos();  pos.z = getTerPos();
+						pos.x = (rnd.rand()-0.5) * tws;  //td.fTriangleSize * td.iVertsX;  //td.fTerWorldSize
+						pos.z = (rnd.rand()-0.5) * tws;
 						Real scl = rnd.rand() * (vg.maxScale - vg.minScale) + vg.minScale;
 					#endif
 					pos0 = pos;  // store original place
@@ -327,6 +290,8 @@ void CScene::CreateVeget()
 }
 
 
+//  🟢 Ogre add
+//------------------------------------------------------------------------------------------
 void CScene::Create1Veget(
 	Vector3 pos0, Vector3 pos, Real yaw, Real scl,
 	const PVeget* veg, const VegetLayer& vg, int i,
@@ -336,12 +301,11 @@ void CScene::Create1Veget(
 	SceneManager *mgr = app->mSceneMgr;
 	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 
-	//  🟢 Ogre add
-	//----------------------------------------------------------------
-	String file = vg.name;
-	Item *item = mgr->createItem( file,
+	Item *item = mgr->createItem( vg.name,
 		ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
-	
+	if (!vg.mtr.empty())
+		item->setDatablockOrMaterialName(vg.mtr);
+
 	item->setRenderQueueGroup( veg->alpha ? RQG_AlphaVegObj : RQG_Road );
 	item->setVisibilityFlags( RV_Vegetation );
 	app->SetTexWrap(item);
@@ -354,16 +318,16 @@ void CScene::Create1Veget(
 	item->setRenderingDistance( dist * setDist );
 	vegetItems.push_back(item);
 
-#if 0  //  marker | test
-	Item *item2 = mgr->createItem( "ring_blue_stick.mesh",
-		ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
-	vegetItems.push_back(item2);
+	#if 0  //  marker | test
+		Item *item2 = mgr->createItem( "ring_blue_stick.mesh",
+			ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
+		vegetItems.push_back(item2);
 
-	SceneNode *node2 = rootNode->createChildSceneNode( SCENE_STATIC );
-	node2->attachObject( item2 );
-	node2->setPosition( pos0 );
-	vegetNodes.push_back(node2);
-#endif
+		SceneNode *node2 = rootNode->createChildSceneNode( SCENE_STATIC );
+		node2->attachObject( item2 );
+		node2->setPosition( pos0 );
+		vegetNodes.push_back(node2);
+	#endif
 
 	SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
 	node->attachObject( item );
@@ -388,7 +352,7 @@ void CScene::Create1Veget(
 	
 	///  🎳 add to bullet world
 	//----------------------------------------------------------------
-	#ifndef SR_EDITOR  //  in Game
+#ifndef SR_EDITOR  //  in Game
 	int cc = col ? col->shapes.size() : 0;
 	//  not found in xml or specified, 1 shape
 	bool useTrimesh = !col || cc == 1 && col->shapes[0].type == BLT_Mesh;
@@ -461,9 +425,38 @@ void CScene::Create1Veget(
 		app->pGame->collision.shapes.push_back(shape);
 		++cntshp;
 	}
-	#endif
 	//----------------------------------------------------------------
+#endif
 }
+
+
+void CScene::DestroyVeget()
+{
+	LogO("D--V destroy Veget Trees");
+
+	SceneManager *mgr = app->mSceneMgr;
+	for (auto* node : vegetNodes)
+		mgr->destroySceneNode(node);
+	vegetNodes.clear();
+	
+	for (auto* item : vegetItems)
+		mgr->destroyItem(item);
+	vegetItems.clear();
+}
+
+void CScene::RecreateVeget()
+{
+#ifdef SR_EDITOR
+	if (!app->pSet->bTrees)
+		DestroyVeget();
+	else
+		CreateVeget();
+#else
+	DestroyVeget();  // not used
+	CreateVeget();
+#endif
+}
+
 
 void CScene::LoadRoadDens()
 {
