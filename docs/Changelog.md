@@ -4,24 +4,27 @@ This section lists changes not yet released, but committed to repositories stunt
 WIP means work in progress, still being developed
 
 - Game
-  - **Collection** - new game mode. WIP  
+  - **Collection** - new game mode
     - Collecting all gems located on track, for completion or quicker time
     - Hud 3D arrows on vehicle, pointing to closest 3 gems
   - More **Lights** - with toggable Options
     - for vehicle: brakes, boost, reverse, under glow and for collection gems
 - Both
-  - **Water** refraction, depth color, soft border, WIP
-  - **Bushes**, separate multiplier and distance options, WIP
-  - New **Palms** on desert and island sceneries WIP
-  - Tree wind animation
-  - grass and bushes deform under vehicle
+  - **Water** refraction, depth color, soft border
+  - **Vegetation**, over half of tracks renewed
+    - **New Bushes**, separate multiplier and distance options
+    - **New** models: Palms, Jungle trees, mushrooms
+    - Vegetation on Horizon, new tab in options
+    - Limit (total count) option
+    - Tree wind animation, WIP
+    - grass and bushes deform under vehicle
 - Gui
   - New tab on Setup - Paints - Adjust - **Under glow** for color H,S,V
     - under glow color also auto set by picking paint
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
-  - 3D win cups shown on game end
+  - 3D win **cups** shown on game end
   - Gui shows small track previews for game track / series
-  - Gui Tracks view, new mode: gallery
+  - Gui Tracks view, new mode: **gallery**
 - Editor
   - Road: wall type, for decoration walls, rectangular
     - pipe parameter changes it from wide at 0, to square at 0.5 to tall at 1.0
@@ -124,6 +127,7 @@ WIP means work in progress, still being developed
     - **cfg or config** forces showing Ogre dialog with screen and rendering options
     - Starting with ? shows help for all. In code search for _Tool_ or references to MainEntryPoints::args
 - **Bugs** and notable **missing** features from SR 2.8, not yet present in SR 3.0:
+  - `broken multiplayer on Windows`
   - Video options: Resolution, Vsync, Antialiasing, etc are not on Gui, but in Ogre dialog before start. No Limit Fps
     - Can't change them without quit. Also possibly alt-tab could require track reload on Windows.
   - Terrain shadowmap, Fluids: depth color, Refraction, smooth border. Grass deform, Trees wind.
@@ -137,3 +141,5 @@ WIP means work in progress, still being developed
     - Every color in e.g. sun, particles, materials etc needs adjusting when converting from SR 2.x (make it darker, more saturated)
   - Grass not lit by vehicle lights, particles are unlit
   
+  ----
+  Old SR 2.x changelog [here](https://github.com/stuntrally/stuntrally/blob/master/docs/changelog.md)
