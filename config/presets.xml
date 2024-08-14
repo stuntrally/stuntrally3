@@ -83,7 +83,7 @@
 <s m="sky/sunset_05_clear_red"   c="#e06070"  r="1" p="8"   y="65"  d="0.0" t="19.0" l="38"  fc="0.074 0.876 0.983 0.940 0.0" gc="0.606 0.498 0.158 1.000 0.0" /> <!-- -->
 <s m="sky/sunset_06"             c="#d0d080"  r="1" p="10"  y="-50" d="0.1" t="18.0" l="36"  fc="0.111 0.729 0.565 0.417 0.0" gc="0.583 0.186 0.154 1.000 0.0" /> <!-- -->
 
-<!--  anomaly  -->
+<!--  🫧 Anomaly  -->
 <s m="sky/anomaly_01"            c="#56f782"  r="2" p="55"  y="0"   d="0.4" t="14.0" l="12"  fc="0.843 0.000 1.111 0.970 0.043" gc="0.597 0.702 0.237 0.271 0.345" /> <!-- Ano2-Bug -->
 <s m="sky/anomaly_02"            c="#448b72"  r="1" p="18"  y="-35" d="0.1" t="14.0" l="22"  fc="0.308 0.618 0.820 1.926 0.252" gc="0.684 0.618 0.397 1.040 0.219" /> <!-- Ano3-Oversize  -->
 <s m="sky/anomaly_03"            c="#ff7b52"  r="3" p="8"   y="-90" d="0.2" t="14.0" l="32"  fc="0.171 1.000 0.900 1.000 0.000" gc="0.556 1.000 0.900 1.000 0.000" /> <!-- Ano0-AnomalyFun -->
@@ -293,6 +293,7 @@ common:  sc - "short scenery name" (name color)
 <!-- new metal grid texture -->
 <t sc="Spc"  t="space_metal_grid_d"   n="space_metal_grid_n"   s="25.0"  r="1" su="Metal"           ro="0.25" me="0.9" re="1"  tp="0" du="0.0" ds="1.0" md="0.0" tr="0.46 0.46 0.46 0.7"  aa="0"  ab="22" />
 
+<!--  🫧 Anomaly  ================  -->
 <t sc="Ano"  t="---- new Anomaly ------"  r="0" />      <!--  -->
 <t sc="Ano"  t="grass_mix_anomaly_d"        n="grass_mix_anomaly_n"         s="8.02"  r="4" su="GrassJungle"  ro="0.11" me="0.9" re="0"  tp="0" du="0.0" ds="0.2" md="0.8" tr="0.18 0.36 0.04 0.7"  aa="0"  ab="28" />
 <t sc="Ano"  t="lava2_anomaly_d"            n="lava2_anomaly_s"             s="14.55" r="1" su="Rocks"        ro="0.15" me="0.9" re="0"  tp="0" du="0.0" ds="0.0" md="0.5" tr="0.32 0.32 0.32 0.3"  aa="26" ab="45" />
@@ -405,6 +406,7 @@ common:  sc - "short scenery name" (name color)
 <r sc="Oth"  m="roadInvisibleSnow"         r="3" su="roadSnow"    re="0"  du="0.0" ds="0.0" md="0.0" tr="0.40 0.36 0.16 0.4" />
 <r sc="Oth"  m="roadInvisibleForest"       r="3" su="roadForest"  re="0"  du="0.0" ds="0.0" md="0.0" tr="0.40 0.36 0.16 0.4" />
 
+<!--  🫧 Anomaly  ================  -->
 <r sc="Ano"  m="---- Anomaly ----"    r="0" />   <!-- -->
 <r sc="Sur"  m="roadDesertAnomaly"              r="5" su="roadDesert"  re="0"  du="0.4" ds="0.9" md="0.0" tr="0.30 0.66 0.96 0.7" />
 <r sc="Sur"  m="roadSavannahAnomaly"            r="2" su="roadGravel"  re="0"  du="0.0" ds="0.2" md="0.0" tr="0.40 0.40 0.20 0.8" />
@@ -485,6 +487,7 @@ common:  sc - "short scenery name" (name color)
 <r sc="Can"  m="pipeMetalOrn"           r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Oth"  m="pipeMetalBlue"          r="2" su="roadDesert"   re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
+<!--  🫧 Anomaly  ================  -->
 <r sc="Ano"  m="---- Anomaly ----"      r="0" />   <!-- -->
 <r sc="Oth"  m="pipeGlassAnomaly1"              r="3" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Mrs"  m="pipeGlassAnomaly1Red"           r="3" su="roadDesert"  re="0"  du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -712,6 +715,7 @@ common:  sc - "short scenery name" (name color)
 <r sc="Jng"  m="River_milky_blue"     r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Grc"  m="River_milky_cyan"     r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 
+<!--  🫧 Anomaly  ================  -->
 <r sc="Ano"  m="River_anomaly_blue"      r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Ano"  m="River_Anomaly_jelly_1"   r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
 <r sc="Ano"  m="River_Anomaly_jelly_2"   r="1" su="roadDesert"   du="0.0" ds="0.5" md="0.0" tr="0.10 0.10 0.10 0.7" />
@@ -826,6 +830,7 @@ common:  sc - "short scenery name" (name color)
 <g sc="Jng"  g="seaweed02"         r="2" xa="1.80" xb="2.10" ya="1.76" yb="2.07" />
 <g sc="Jng"  g="seaweed03"         r="2" xa="1.80" xb="2.10" ya="1.76" yb="2.07" />
 
+<!--  🫧 Anomaly  ================  -->
 <g sc="Ano"  g="---- Anomaly ----"     r="0" />   <!-- -->
 <g sc="Ano"  g="grassAnomaly01a"       r="1" xa="2.50" xb="3.34" ya="2.32" yb="3.93" />
 <g sc="Ano"  g="grassAnomaly01b"       r="1" xa="2.50" xb="3.34" ya="2.32" yb="3.93" />
@@ -948,7 +953,7 @@ common:  sc - "short scenery name" (name color)
 
 <!--  🪨  Rocks 40x  ================  -->
 <!--  rocks  brown  🟤 For, ⚫ Jng -->
-<v sc="Stn"  p="=== ROCKS ==="        r="0" />
+<v sc="Stn"  p="===- ROCKS -==="        r="0" />
 <v sc="Jng"  p="rock01brown1up"       r="5" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="24" rd="2" fd="1.0" />
 <v sc="Mud"  p="rock02brown2flat"     r="3" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="24" rd="2" fd="1.0" />
 
@@ -1013,6 +1018,7 @@ common:  sc - "short scenery name" (name color)
 <v sc="Aus"  p="rock40red3flat"       r="2" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Aus"  p="rock44red4rndWh"      r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 
+<!--  🟢 Alien  ================  -->
 <v sc="Aln"  p="=== Rocks Aln ==="         r="0" />
 <v sc="Aln"  p="rock47alienRound1"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Aln"  p="rock47alienRound1Green"    r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
@@ -1028,6 +1034,18 @@ common:  sc - "short scenery name" (name color)
 <v sc="Grc"  p="rock50yellowRound"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Aln"  p="rock50alienWhite2"         r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 
+<v sc="Aln"  p="rock_L2"              r="3" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.77" sb="1.25"  wx="0" wy="0"  ab="30.41" rd="1" fd="2.0" />
+<v sc="Aln"  p="rock_L3"              r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="1.23" sb="1.61"  wx="0" wy="0"  ab="36.70" rd="1" fd="2.0" />
+<v sc="Aln"  p="rock_L4"              r="2" al="0"  vd="400" vD=" 600"  y="0.00" sa="1.16" sb="1.89"  wx="0" wy="0"  ab="38.10" rd="1" fd="2.0" />
+
+<v sc="Aln"  p="gum_tree_alien"       r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="1.45" sb="2.22"  wx="0.30" wy="0.004"  ab="20.48" rd="1" fd="0.0" />
+<v sc="Aln"  p="jungle_tree_alien"    r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="1.61" sb="2.05"  wx="0.40" wy="0.002"  ab="29.26" rd="1" fd="0.0" />
+
+<!--  ⚫ Black, emissive  ================  -->
+<v sc="Blk"  p="gum_tree_black"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="1.45" sb="2.22"  wx="0.30" wy="0.004"  ab="20.48" rd="1" fd="0.0" />
+<v sc="Blk"  p="fern2_black"          r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="0.30" sb="0.44"  wx="0" wy="0"  ab="29.12" rd="1" fd="0.5" />
+
+<!--  🫧 Anomaly  ================  -->
 <g sc="Ano"  g="---- Anomaly ----"         r="0" />   <!-- -->
 <v sc="Ano"  p="crystal1_anomaly"          r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
 <v sc="Ano"  p="crystal2_anomaly"          r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.70" sb="1.20"  wx="0" wy="0"  ab="34" rd="2" fd="1.0" />
@@ -1130,18 +1148,30 @@ common:  sc - "short scenery name" (name color)
 
 
 <!--  🍄 Shrooms  ================  -->
-<v sc="Uni"  p="---- Unidentified"    r="0" />
-<v sc="For"  p="shroom1_2"            r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.15" sb="0.25"  wx="0" wy="0"  ab="21.14" rd="1" fd="0.0" />
-<v sc="For"  p="shroom1_3"            r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.16" sb="0.26"  wx="0" wy="0"  ab="21.14" rd="1" fd="0.0" />
-<v sc="For"  p="shroom2_2"            r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.32" sb="0.49"  wx="0" wy="0"  ab="32.73" rd="1" fd="0.0" />
-<v sc="For"  p="shroom2_3"            r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.20" sb="0.30"  wx="0" wy="0"  ab="21.33" rd="1" fd="0.0" />
+<v sc="Uni"  p="---- Unidentified"  r="0" />
+<v sc="Uni"  p="mushrooms1"         r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Mrs"  p="mushrooms1"  m="mushrooms_red"
+                                    r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Uni"  p="mushrooms2"         r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Mrs"  p="mushrooms2"  m="mushrooms_red"
+                                    r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Aln"  p="mushrooms2"  m="mushrooms_grn"
+                                    r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Uni"  p="mushrooms3"         r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Mrs"  p="mushrooms3"  m="mushrooms_red"
+                                    r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Aln"  p="mushrooms3"  m="mushrooms_grn"
+                                    r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
 
-<v sc="Uni"  p="shroom1_1_unid"       r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="2.06" sb="4.00"  wx="0" wy="0.06" ab="48.86" rd="6" fd="0.0" />
-<v sc="Uni"  p="shroom1_2_unid"       r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="1.90" sb="3.18"  wx="0" wy="0"  ab="21.69" rd="6" fd="0.0" />
-<v sc="Uni"  p="shroom1_3_unid"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="2.06" sb="4.00"  wx="0" wy="0"  ab="44.13" rd="6" fd="0.0" />
-<v sc="Uni"  p="shroom2_1_unid"       r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="1.43" sb="4.00"  wx="0" wy="0"  ab="39.74" rd="6" fd="0.0" />
-<v sc="Uni"  p="shroom2_2_unid"       r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="3.23" sb="4.00"  wx="0" wy="0"  ab="29.03" rd="6" fd="0.0" />
-<v sc="Uni"  p="shroom2_3_unid"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="1.43" sb="4.00"  wx="0" wy="0"  ab="25.56" rd="6" fd="0.0" />
+<v sc="Uni"  p="shroom_tall1"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Uni"  p="shroom_tall2"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Uni"  p="shroom_tall3"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+
+<v sc="Uni"  p="shrooms_tall"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Aln"  p="shrooms_tall"  m="shrooms_tall_grn"
+                                    r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Aln"  p="shroom_tree"        r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+
 
 <v sc="Uni"  p="rock_n1-W"            r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="2.23" sb="3.05"  wx="0" wy="0"  ab="28.86" rd="6" fd="2.0" />
 <v sc="Uni"  p="rock_n4r-W"           r="2" al="0"  vd="400" vD=" 600"  y="0.00" sa="1.66" sb="2.25"  wx="0" wy="0"  ab="16.00" rd="1" fd="2.0" />
@@ -1182,6 +1212,29 @@ common:  sc - "short scenery name" (name color)
 
 <v sc="Cry"  p="crystal_flower_pink"  r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 
+<!--  🫧 Anomaly  ================  -->
+<v sc="Ano"  p="---- Anomaly ----"        r="0" />   <!-- -->
+<v sc="Ano"  p="balloon1_anomaly"         r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="balloon2_anomaly"         r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="big_tire_anomaly"         r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="concrete_bar_anomaly"     r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="cone_anomaly"             r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="crate_2_anomaly"          r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="crate2m_anomaly"          r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="crate_anomaly"            r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="crystal1_anomaly"         r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="crystal2_anomaly"         r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="obstacleRingAnomaly"      r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="plastic_barrel_anomaly"   r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="plastic_big_anomaly"      r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="plastic_big_hvy_anomaly"  r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="rock02brown2flat_anomaly" r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="rock08white3tall_anomaly" r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="rock12orange_anomaly"     r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="rock26grayBlue_anomaly"   r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Ano"  p="rock35red1edgy_anomaly"   r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+
+
 <v sc="Wnt"  p="---- icicles"           r="0" />
 <v sc="Wnt"  p="icicles_05"             r="-1" al="1"  vd="200" vD="400"   y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Wnt"  p="icicles_01"             r="-1" al="1"  vd="200" vD="400"   y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
@@ -1214,46 +1267,6 @@ common:  sc - "short scenery name" (name color)
 <v sc="Wnt"  p="icicles_small_row_03"   r="-1" al="1"  vd="200" vD="400"   y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Wnt"  p="icicles_small_row_04"   r="-1" al="1"  vd="200" vD="400"   y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Wnt"  p="icicles_small_row_05"   r="-1" al="1"  vd="200" vD="400"   y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-
-<v sc="Ano"  p="---- Anomaly ----"        r="0" />   <!-- -->
-<v sc="Ano"  p="balloon1_anomaly"         r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="balloon2_anomaly"         r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="big_tire_anomaly"         r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="concrete_bar_anomaly"     r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="cone_anomaly"             r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="crate_2_anomaly"          r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="crate2m_anomaly"          r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="crate_anomaly"            r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="crystal1_anomaly"         r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="crystal2_anomaly"         r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="obstacleRingAnomaly"      r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="plastic_barrel_anomaly"   r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="plastic_big_anomaly"      r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="plastic_big_hvy_anomaly"  r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="rock02brown2flat_anomaly" r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="rock08white3tall_anomaly" r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="rock12orange_anomaly"     r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="rock26grayBlue_anomaly"   r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-<v sc="Ano"  p="rock35red1edgy_anomaly"   r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
-
-
-<!--  🟢 Alien  ================  -->
-<v sc="Aln"  p="---- Alien  ----"     r="0" />
-<v sc="Aln"  p="gum_tree_alien"       r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="1.45" sb="2.22"  wx="0.30" wy="0.004"  ab="20.48" rd="1" fd="0.0" />
-<v sc="Aln"  p="jungle_tree_alien"    r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="1.61" sb="2.05"  wx="0.40" wy="0.002"  ab="29.26" rd="1" fd="0.0" />
-
-<v sc="Aln"  p="rock_L2"              r="3" al="0"  vd="400" vD=" 600"  y="0.00" sa="0.77" sb="1.25"  wx="0" wy="0"  ab="30.41" rd="1" fd="2.0" />
-<v sc="Aln"  p="rock_L3"              r="1" al="0"  vd="400" vD=" 600"  y="0.00" sa="1.23" sb="1.61"  wx="0" wy="0"  ab="36.70" rd="1" fd="2.0" />
-<v sc="Aln"  p="rock_L4"              r="2" al="0"  vd="400" vD=" 600"  y="0.00" sa="1.16" sb="1.89"  wx="0" wy="0"  ab="38.10" rd="1" fd="2.0" />
-
-<v sc="Aln"  p="shroom1_1_alien"      r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.15" sb="0.25"  wx="0" wy="0"  ab="21.14" rd="1" fd="0.0" />
-<v sc="Aln"  p="shroom1_2_alien"      r="2" al="0"  vd="600" vD="1000"  y="0.52" sa="0.32" sb="0.49"  wx="0" wy="0"  ab="32.73" rd="1" fd="0.0" />
-<v sc="Aln"  p="shroom1_3_alien"      r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.20" sb="0.30"  wx="0" wy="0"  ab="21.33" rd="1" fd="0.0" />
-
-<!--  ⚫ Black, emissive  ================  -->
-<v sc="Blk"  p="gum_tree_black"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="1.45" sb="2.22"  wx="0.30" wy="0.004"  ab="20.48" rd="1" fd="0.0" />
-<v sc="Blk"  p="fern2_black"          r="2" al="0"  vd="300" vD=" 300"  y="0.00" sa="0.30" sb="0.44"  wx="0" wy="0"  ab="29.12" rd="1" fd="0.5" />
-
 
 
 <!--  📦🪨  material sets  <mats
