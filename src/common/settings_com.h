@@ -83,6 +83,7 @@ public:
 		float bushes = 1.f, bushes_dist = 1.f;
 		float hor_trees = 0.5f, hor_trees_dist = 0.5f;  // horiz 4x
 		float hor_bushes = 0.3f, hor_bushes_dist = 0.3f;
+		int limit = 20000;  // max models count
 	} veg;
 
 	//!  Any change or order needs Update in:  Detail presets

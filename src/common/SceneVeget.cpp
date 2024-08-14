@@ -155,6 +155,7 @@ void CScene::CreateVegets()
 				// LogO(String("col?  ")+(col?"y":"n")+ " ofs x "+fToStr(ofs.x,2)+ " z "+fToStr(ofs.y,2));
 				
 				for (int i = 0; i < cnt; ++i)
+				if (iVegetAll < pSet->veg.limit)
 				{
 					//  pos0 - original  pos - with offset
 					Vector3 pos0 = Vector3::ZERO, pos = Vector3::ZERO;  Real yaw;

@@ -102,7 +102,7 @@ public:
 		//  🌳🪨🌿 veget
 		SV svTrees, svTreesDist, svHorTrees, svHorTreesDist;
 		SV svBush, svBushDist, svHorBush, svHorBushDist;
-		SV svGrass, svGrassDist;
+		SV svGrass, svGrassDist, svVegetLimit;
 		void btnVegetReset(WP), btnVegetApply(WP);
 
 		//  🌒 shadow

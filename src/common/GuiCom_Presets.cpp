@@ -71,14 +71,14 @@ const static SETTINGS::Veget veget[8] = {  /* 🌳🪨🪴🌿 Veget only
  	|          🪴Bushes             🌳Trees   🪴Bushes  
 	|     dist |    dist 🌿Grass    |    dist |    dist 
 	|     |    |    |    |    dist  |    |    |    |    */
-	{0.0f,0.5f,0.0f,0.5f,0.0f,0.5f, 0.0f,0.0f,0.0f,0.0f },  // Lowest
-	{0.5f,0.5f,0.0f,0.5f,0.0f,0.5f, 0.0f,0.0f,0.0f,0.0f },  // Low 
-	{1.0f,0.7f,0.5f,0.7f,0.5f,0.7f, 0.0f,0.0f,0.0f,0.0f },  // Medium ~
-	{1.0f,1.0f,1.0f,1.0f,1.0f,1.0f, 0.0f,0.0f,0.0f,0.0f },  // High
-	{1.5f,1.2f,1.0f,1.4f,1.0f,1.4f, 0.5f,0.0f,0.0f,0.0f },  // Higher *
-	{1.5f,1.5f,1.5f,1.7f,1.5f,1.7f, 0.6f,0.0f,0.5f,0.1f },  // Very high
-	{2.0f,2.0f,2.0f,2.0f,2.0f,2.0f, 0.8f,0.5f,0.5f,0.5f },  // Highest
-	{2.5f,3.0f,2.5f,3.0f,2.5f,3.0f, 1.0f,1.0f,1.0f,1.0f },  // Ultra
+	{0.0f,0.5f,0.0f,0.5f,0.0f,0.5f, 0.0f,0.0f,0.0f,0.0f,   000 },  // Lowest
+	{0.5f,0.5f,0.0f,0.5f,0.0f,0.5f, 0.0f,0.0f,0.0f,0.0f,  1000 },  // Low 
+	{1.0f,0.7f,0.5f,0.7f,0.5f,0.7f, 0.0f,0.0f,0.0f,0.0f,  5000 },  // Medium ~
+	{1.0f,1.0f,1.0f,1.0f,1.0f,1.0f, 0.0f,0.0f,0.0f,0.0f, 10000 },  // High
+	{1.5f,1.2f,1.0f,1.4f,1.0f,1.4f, 0.5f,0.0f,0.0f,0.0f, 20000 },  // Higher *
+	{1.5f,1.5f,1.5f,1.7f,1.5f,1.7f, 0.6f,0.0f,0.5f,0.1f, 30000 },  // Very high
+	{2.0f,2.0f,2.0f,2.0f,2.0f,2.0f, 0.8f,0.5f,0.5f,0.5f, 40000 },  // Highest
+	{2.5f,3.0f,2.5f,3.0f,2.5f,3.0f, 1.0f,1.0f,1.0f,1.0f, 60000 },  // Ultra
 };
 const static SETTINGS::Detail presets[8] = {  /*
 	   🖼️           LOD      ⛰️ Terain  🌒 Shadow     🌊 Water          🔮 Reflect cube     

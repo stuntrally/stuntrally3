@@ -562,12 +562,21 @@
 						<Widget type="TextBox" skin="TextBox" position="210 200 60 24" name="GrassDistVal">
 							<Property key="TextColour" value="0.7 0.8 0.5"/>
 						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 320 172 24">
+							<Property key="Caption" value="#{Limit} #{max}"/>
+							<Property key="TextColour" value="0.3 1 0.3"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 320 320 18" name="VegetLimit"/>
+						<Widget type="TextBox" skin="TextBox" position="210 320 60 24" name="VegetLimitVal">
+							<Property key="TextColour" value="0.3 1 0.3"/>
+						</Widget>
 					</Widget>
 
 					<!-- 🌳 Horizon Vegetation -->
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#30F030#{Horizon}"/>
-						<Widget type="Button" skin="Button" position="32 240 200 26" layer="Back" name="HorApplyVeget">
+						<Widget type="Button" skin="Button" position="32 210 200 26" layer="Back" name="HorApplyVeget">
 							<Property key="Caption" value="#{Apply}"/>
 							<Property key="Colour" value="0.8 1 0.7"/>
 							<Property key="TextColour" value="0.8 1 0.7"/>
@@ -619,6 +628,15 @@
 						<Widget type="Slider" skin="Slider" position="280 140 320 18" name="HorBushDist"/>
 						<Widget type="TextBox" skin="TextBox" position="210 140 60 24" name="HorBushDistVal">
 							<Property key="TextColour" value="0.5 0.8 0.7"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 320 172 24">
+							<Property key="Caption" value="#{Horizon} #{max} ##"/>
+							<Property key="TextColour" value="0.4 1 1"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="280 320 320 18" name="Horizons"/>
+						<Widget type="TextBox" skin="TextBox" position="210 320 60 24" name="HorizonsVal">
+							<Property key="TextColour" value="0.4 1 1"/>
 						</Widget>
 					</Widget>
 
@@ -707,15 +725,6 @@
 						<Widget type="Slider" skin="Slider" position="280 140 320 18" name="ViewDist"/>
 						<Widget type="TextBox" skin="TextBox" position="210 140 60 24" name="ViewDistVal">
 							<Property key="TextColour" value="0.5 0.7 0.8"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="32 170 172 24">
-							<Property key="Caption" value="#{Horizon} #{max} ##"/>
-							<Property key="TextColour" value="0.4 0.7 1.0"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="280 170 320 18" name="Horizons"/>
-						<Widget type="TextBox" skin="TextBox" position="210 170 60 24" name="HorizonsVal">
-							<Property key="TextColour" value="0.4 0.7 1.0"/>
 						</Widget>
 
 						<!-- ter lod -->
